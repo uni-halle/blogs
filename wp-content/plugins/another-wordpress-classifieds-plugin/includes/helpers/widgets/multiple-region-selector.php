@@ -121,10 +121,14 @@ class AWPCP_MultipleRegionSelector {
         wp_enqueue_script( 'awpcp-multiple-region-selector' );
 
         awpcp()->js->localize( 'multiple-region-selector', array(
-            'select-placeholder' => _x( 'Select %s', 'Select <Region Type> in Multiple Region Selector', 'AWPCP' ),
-            'duplicated-region' => __( 'This particular region is already selected in another field. Please choose one or more sub-regions, to make the selection more specific, or change the selected region.', 'AWPCP' ),
-            'add-region' => ($context == "search") ? __( 'Add Search Region', 'AWPCP' ) : __( 'Add Region', 'AWPCP' ),
-            'remove-region' => ($context == "search") ? __( 'Delete Search Region', 'AWPCP' ) : __( 'Remove Region', 'AWPCP' )
+            'select-placeholder' => _x( 'Select %s', 'Select <Region Type> in Multiple Region Selector', 'another-wordpress-classifieds-plugin' ),
+            'duplicated-region' => __( 'This particular region is already selected in another field. Please choose one or more sub-regions, to make the selection more specific, or change the selected region.', 'another-wordpress-classifieds-plugin' ),
+            'missing-country' => __( 'You did not enter your country. Your country is required.', 'another-wordpress-classifieds-plugin' ),
+            'missing-state' => __( 'You did not enter your state. Your state is required.', 'another-wordpress-classifieds-plugin' ),
+            'missing-county' => __( 'You did not enter your county/village. Your county/village is required.', 'another-wordpress-classifieds-plugin' ),
+            'missing-city' => __( 'You did not enter your city. Your city is required.', 'another-wordpress-classifieds-plugin' ),
+            'add-region' => ($context == "search") ? __( 'Add Search Region', 'another-wordpress-classifieds-plugin' ) : __( 'Add Region', 'another-wordpress-classifieds-plugin' ),
+            'remove-region' => ($context == "search") ? __( 'Delete Search Region', 'another-wordpress-classifieds-plugin' ) : __( 'Remove Region', 'another-wordpress-classifieds-plugin' )
         ) );
 
         $regions = array();

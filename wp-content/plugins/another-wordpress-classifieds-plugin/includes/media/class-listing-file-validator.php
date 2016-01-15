@@ -14,7 +14,7 @@ abstract class AWPCP_ListingFileValidator {
         $upload_limits = $this->get_listing_upload_limits( $listing );
 
         if ( ! in_array( $file->get_mime_type(), $upload_limits['mime_types'] ) ) {
-            $message = __( 'The type of the uploaded file <filename> is not allowed.', 'AWPCP' );
+            $message = __( 'The type of the uploaded file <filename> is not allowed.', 'another-wordpress-classifieds-plugin' );
             $this->throw_file_validation_exception( $file, $message );
         }
 
@@ -24,7 +24,7 @@ abstract class AWPCP_ListingFileValidator {
         }
 
         if ( ! file_exists( $file->get_path() ) ) {
-            $message = __( 'The file <filename> was not found in the temporary uploads directory.', 'AWPCP' );
+            $message = __( 'The file <filename> was not found in the temporary uploads directory.', 'another-wordpress-classifieds-plugin' );
             $this->throw_file_validation_exception( $file, $message );
         }
 
@@ -43,7 +43,7 @@ abstract class AWPCP_ListingFileValidator {
         $filesize = filesize( $file->get_path() );
 
         if ( empty( $filesize ) || $filesize <= 0 ) {
-            $message = __( 'There was an error trying to find out the file size of the file <filename>.', 'AWPCP' );
+            $message = __( 'There was an error trying to find out the file size of the file <filename>.', 'another-wordpress-classifieds-plugin' );
             $this->throw_file_validation_exception( $file, $message );
         }
 
@@ -54,7 +54,7 @@ abstract class AWPCP_ListingFileValidator {
         }
 
         if ( $filesize < $upload_limits['min_file_size'] ) {
-            $message = __( 'The file <filename> is smaller than the minimum allowed file size of <bytes-count> bytes. The file was not uploaded.', 'AWPCP' );
+            $message = __( 'The file <filename> is smaller than the minimum allowed file size of <bytes-count> bytes. The file was not uploaded.', 'another-wordpress-classifieds-plugin' );
             $message = str_replace( '<bytes-count>', $upload_limits['min_file_size'], $message );
             $this->throw_file_validation_exception( $file, $message );
         }

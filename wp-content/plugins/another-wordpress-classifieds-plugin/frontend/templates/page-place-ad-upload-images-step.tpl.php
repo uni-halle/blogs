@@ -1,4 +1,4 @@
-<h2><?php _e('Upload Files', 'AWPCP') ?></h2>
+<h2><?php _e('Upload Files', 'another-wordpress-classifieds-plugin') ?></h2>
 
 <?php
     if ( isset( $transaction ) && get_awpcp_option( 'show-create-listing-form-steps' ) ) {
@@ -8,11 +8,11 @@
 
 <?php
     if (get_awpcp_option('imagesapprove') == 1) {
-        $messages[] = __('Image approval is in effect so any new images you upload will not be visible to viewers until an admin approves them.', 'AWPCP');
+        $messages[] = __('Image approval is in effect so any new images you upload will not be visible to viewers until an admin approves them.', 'another-wordpress-classifieds-plugin');
     }
 
     if ($images_uploaded > 0) {
-        $messages[] = _x('Thumbnails of already uploaded images are shown below.', 'images upload step', 'AWPCP');
+        $messages[] = _x('Thumbnails of already uploaded images are shown below.', 'images upload step', 'another-wordpress-classifieds-plugin');
     }
 
     foreach ($messages as $message) {
@@ -27,7 +27,7 @@
 <?php include( AWPCP_DIR . '/templates/components/media-center.tpl.php' ); ?>
 
 <form class="awpcp-upload-images-form" method="post" enctype="multipart/form-data">
-	<p class="form-submit">
+	<p class="awpcp-form-submit">
 		<input class="button" type="submit" value="<?php echo esc_attr( $next ); ?>" id="submit-no-images" name="submit-no-images">
 
 		<input type="hidden" name="step" value="upload-images">

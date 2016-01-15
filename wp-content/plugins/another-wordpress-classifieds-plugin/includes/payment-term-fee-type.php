@@ -5,7 +5,7 @@ class AWPCP_FeeType extends AWPCP_PaymentTermType {
     const TYPE = 'fee';
 
     public function __construct() {
-        parent::__construct(_x('Fee', 'payment term type', 'AWPCP'), self::TYPE, '');
+        parent::__construct(_x('Fee', 'payment term type', 'another-wordpress-classifieds-plugin'), self::TYPE, '');
         add_action('awpcp-transaction-status-updated', array($this, 'update_buys_count'), 10, 2);
     }
 
@@ -32,7 +32,7 @@ class AWPCP_FeeType extends AWPCP_PaymentTermType {
     private function get_free_payment_term() {
         return new AWPCP_Fee(array(
             'id' => 0,
-            'name' => __('Free Listing', 'AWPCP'),
+            'name' => __('Free Listing', 'another-wordpress-classifieds-plugin'),
             'description' => '',
             'duration_amount' => get_awpcp_option('addurationfreemode'),
             'duration_interval' => AWPCP_Fee::INTERVAL_DAY,

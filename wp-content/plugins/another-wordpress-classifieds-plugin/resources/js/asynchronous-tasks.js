@@ -1,13 +1,15 @@
 /*global AWPCP*/
 
-AWPCP.define('awpcp/asynchronous-tasks', ['jquery', 'knockout', 'awpcp/settings'],
-function($, ko, settings) {
+AWPCP.define('awpcp/asynchronous-tasks', ['jquery', 'knockout', 'moment', 'awpcp/settings'],
+function($, ko, moment, settings) {
 
-    function AsynchronousTask(name, action) {
-        this.name = ko.observable(name);
-        this.action = action;
-        this.recordsCount = ko.observable(null);
-        this.recordsLeft = ko.observable(null);
+    function AsynchronousTask(data) {
+        this.name = ko.observable(data.name);
+        this.action = data.action;
+        this.recordsCount = ko.observable(data.recordsCount || null);
+        this.recordsLeft = ko.observable(data.recordsLeft || null);
+        this.startTime = ko.observable(null);
+        this.lastUpdated = ko.observable(null);
 
         this.progress = ko.computed(function() {
             var recordsCount = this.recordsCount(),
@@ -26,6 +28,44 @@ function($, ko, settings) {
 
             return '' + progress + '%';
         }, this).extend({ throttle: 1 });
+
+        this.remainingTime = ko.computed((function() {
+            var lastRemainingTimeUpdateTime = new Date(),
+                remainingTime = null;
+
+            return function() {
+                var startTime = this.startTime(),
+                    lastUpdated = this.lastUpdated(),
+                    progress = parseFloat( this.progress() ),
+                    now = new Date(),
+                    progressLeft, timeTaken, remainingSeconds;
+
+                if ( ( now - lastRemainingTimeUpdateTime ) < 2500 ) {
+                    return remainingTime;
+                }
+
+                if ( startTime === null || lastUpdated === null ) {
+                    return null;
+                }
+
+                if ( progress === 0 ) {
+                    return null;
+                }
+
+                progressLeft = 100 - progress;
+                timeTaken = lastUpdated - startTime;
+                remainingSeconds = progressLeft * timeTaken / progress / 1000;
+                lastRemainingTimeUpdateTime = now;
+
+                if ( remainingSeconds > 0 ) {
+                    remainingTime = moment(now).add(remainingSeconds, 'seconds').from(now, true);
+                } else {
+                    remainingTime = null;
+                }
+
+                return remainingTime;
+            };
+        })(), this);
     }
 
     function AsynchronousTasks(tasks, texts) {
@@ -42,7 +82,7 @@ function($, ko, settings) {
         this.tasks = ko.observableArray([]);
 
         $.each(tasks, $.proxy(function(index, task) {
-            this.tasks.push(new AsynchronousTask(task.name, task.action));
+            this.tasks.push(new AsynchronousTask(task));
         }, this));
 
         this.tasksCount = this.tasks().length;
@@ -98,14 +138,20 @@ function($, ko, settings) {
         },
 
         runTask: function() {
-            var tasks = this.tasks();
+            var tasks = this.tasks(), task;
 
             if (this.currentTaskIndex() >= this.tasksCount) {
                 this.working(false);
                 this.completed(true);
             } else {
+                task = tasks[this.currentTaskIndex()];
+
+                if ( task.startTime() === null ) {
+                    task.startTime(new Date());
+                }
+
                 $.getJSON(settings.get('ajaxurl'), {
-                    action: tasks[this.currentTaskIndex()].action
+                    action: task.action
                 }, $.proxy(this.handleAjaxResponse, this));
             }
         },
@@ -128,6 +174,7 @@ function($, ko, settings) {
 
             task.recordsCount(task.recordsCount() || parseInt(response.recordsCount, 10));
             task.recordsLeft(parseInt(response.recordsLeft, 10));
+            task.lastUpdated( new Date() );
 
             if (task.recordsLeft() === 0) {
                 this.tasksCompleted(this.tasksCompleted() + 1);

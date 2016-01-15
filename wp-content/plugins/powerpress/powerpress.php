@@ -3,7 +3,7 @@
 Plugin Name: Blubrry PowerPress
 Plugin URI: http://create.blubrry.com/resources/powerpress/
 Description: <a href="http://create.blubrry.com/resources/powerpress/" target="_blank">Blubrry PowerPress</a> is the No. 1 Podcasting plugin for WordPress. Developed by podcasters for podcasters; features include Simple and Advanced modes, multiple audio/video player options, subscribe to podcast tools, podcast SEO features, and more! Fully supports iTunes, Google Play, Stitcher, and Blubrry Podcasting directories, as well as all podcast applications and clients.
-Version: 6.2.1
+Version: 6.3.1
 Author: Blubrry
 Author URI: http://www.blubrry.com/
 Requires at least: 3.7
@@ -23,7 +23,7 @@ Credits:
 	flashembed(), License: MIT by Tero Piirainen (tipiirai [at] gmail.com)
 		Note: code found at bottom of player.js
 	
-Copyright 2008-2014 RawVoice Inc. (http://www.rawvoice.com)
+Copyright 2008-2016 RawVoice Inc. (http://www.rawvoice.com)
 
 License: GPL (http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt)
 
@@ -35,7 +35,7 @@ if( !function_exists('add_action') )
 	die("access denied.");
 	
 // WP_PLUGIN_DIR (REMEMBER TO USE THIS DEFINE IF NEEDED)
-define('POWERPRESS_VERSION', '6.2.1' );
+define('POWERPRESS_VERSION', '6.3.1' );
 
 // Translation support:
 if ( !defined('POWERPRESS_ABSPATH') )
@@ -598,7 +598,12 @@ function powerpress_rss2_head()
 		echo "\t".'<itunes:subtitle>' . powerpress_format_itunes_value($Feed['itunes_subtitle'], 'subtitle') . '</itunes:subtitle>'.PHP_EOL;
 	else
 		echo "\t".'<itunes:subtitle>'.  powerpress_format_itunes_value( get_bloginfo('description'), 'subtitle') .'</itunes:subtitle>'.PHP_EOL;
-		
+	$podcast_title_safe = '';
+	if( version_compare($GLOBALS['wp_version'], 4.4, '<' ) ) {
+		$podcast_title_safe .= get_bloginfo_rss('name');
+	}
+	$podcast_title_safe .= get_wp_title_rss();
+	 
 	if( !empty($Feed['rss2_image']) || !empty($Feed['itunes_image']) )
 	{
 		if( !empty($Feed['rss2_image']) ) // If the RSS image is set, use it, otherwise use the iTunes image...
@@ -607,10 +612,7 @@ function powerpress_rss2_head()
 			$rss_image = $Feed['itunes_image'];
 		
 		echo "\t". '<image>' .PHP_EOL;
-		if( is_category() && !empty($Feed['title']) )
-			echo "\t\t".'<title>' . esc_html( get_bloginfo_rss('name') ) . '</title>'.PHP_EOL;
-		else
-			echo "\t\t".'<title>' . esc_html( get_bloginfo_rss('name') . get_wp_title_rss() ) . '</title>'.PHP_EOL;
+		echo "\t\t".'<title>' . $podcast_title_safe . '</title>'.PHP_EOL;
 		echo "\t\t".'<url>' . esc_html( str_replace(' ', '+', $rss_image)) . '</url>'.PHP_EOL;
 		echo "\t\t".'<link>'. $Feed['url'] . '</link>' . PHP_EOL;
 		echo "\t".'</image>' . PHP_EOL;
@@ -618,16 +620,12 @@ function powerpress_rss2_head()
 	else // Use the default image
 	{
 		echo "\t". '<image>' .PHP_EOL;
-		if( (is_category() || is_tax() || is_tag() ) && !empty($Feed['title']) )
-			echo "\t\t".'<title>' . esc_html( get_bloginfo_rss('name') ) . '</title>'.PHP_EOL;
-		else
-			echo "\t\t".'<title>' . esc_html( get_bloginfo_rss('name') . get_wp_title_rss() ) . '</title>'.PHP_EOL;
+		echo "\t\t".'<title>' . $podcast_title_safe . '</title>'.PHP_EOL;
 		echo "\t\t".'<url>' . powerpress_get_root_url() . 'rss_default.jpg</url>'.PHP_EOL;
 		echo "\t\t".'<link>'. $Feed['url'] . '</link>' . PHP_EOL;
 		echo "\t".'</image>' . PHP_EOL;
 	}
-	
-	
+		
 	// Handle iTunes categories
 	$Categories = powerpress_itunes_categories();
 	$Cat1 = false; $Cat2 = false; $Cat3 = false;
@@ -1065,7 +1063,7 @@ function powerpress_bloginfo_rss($content, $field = '')
 					$Feed = get_option('powerpress_feed');
 			}
 		}
-		//$Feed = true;
+		
 		if( $Feed )
 		{
 			switch( $field )
@@ -1086,7 +1084,7 @@ function powerpress_bloginfo_rss($content, $field = '')
 					else if( is_category() )
 						return get_category_link( get_query_var('cat') );
 				}; break;
-				case 'name': {
+				case 'name': { // As of wp 4.4+ title is handled by get_the_title_rss completely.
 					if( !empty($Feed['title']) )
 						$new_value = $Feed['title'];
 				}; break;
@@ -1121,23 +1119,65 @@ add_filter('get_bloginfo_rss', 'powerpress_bloginfo_rss', 10, 2);
 
 function powerpress_wp_title_rss($title)
 {
-	if( powerpress_is_custom_podcast_feed() )
+	if( version_compare($GLOBALS['wp_version'], 4.4, '>=' ) )
 	{
-		if( is_category() )
+		if( powerpress_is_custom_podcast_feed() )
 		{
-			$Feed = get_option('powerpress_cat_feed_'.get_query_var('cat') );
-			if( $Feed && isset($Feed['title']) && $Feed['title'] != '' )
-				return ''; // We alrady did a custom title, lets not add the category to it...
-		}
-		else
-		{
-			return ''; // It is not a category, lets not mess with our beautiful title then
+			if( is_category() ) {
+				$Feed = get_option('powerpress_cat_feed_'.get_query_var('cat') );
+			}
+			else if( is_tax() || is_tag() ) {
+				global $powerpress_feed;
+				if( !empty($powerpress_feed['term_taxonomy_id']) )
+					$Feed = get_option('powerpress_taxonomy_'.$powerpress_feed['term_taxonomy_id'] );
+			}
+			else
+			{
+				global $powerpress_feed;
+				
+				if( !empty($powerpress_feed['post_type']) )
+				{
+					$feed_slug = get_query_var('feed');
+					$PostTypeSettingsArray = get_option('powerpress_posttype_'.$powerpress_feed['post_type'] );
+					if( !empty($PostTypeSettingsArray[ $feed_slug ]) )
+						$Feed = $PostTypeSettingsArray[ $feed_slug ];
+				}
+				else
+				{
+					$Feed = get_option('powerpress_feed_'.get_query_var('feed') );
+					if( empty($Feed) && get_query_var('feed') === 'podcast' )
+						$Feed = get_option('powerpress_feed');
+				}
+			}
+			
+			if( $Feed )
+			{
+				if( !empty($Feed['title']) )
+					return esc_html( $Feed['title'] );
+			}
 		}
 	}
+	else
+	{
+		if( powerpress_is_custom_podcast_feed() )
+		{
+			if( is_category() )
+			{
+				$Feed = get_option('powerpress_cat_feed_'.get_query_var('cat') );
+				if( $Feed && isset($Feed['title']) && $Feed['title'] != '' )
+					return ''; // We alrady did a custom title, lets not add the category to it...
+			}
+			else
+			{
+				return ''; // It is not a category, lets not mess with our beautiful title then
+			}
+		}
+	}
+
 	return $title;
 }
 
-add_filter('wp_title_rss', 'powerpress_wp_title_rss');
+add_filter('get_wp_title_rss', 'powerpress_wp_title_rss');
 
 function powerpress_the_title_rss($title)
 {
@@ -1177,7 +1217,7 @@ function powerpress_the_title_rss($title)
 	
 	if( !empty($GeneralSettings['seo_append_show_title']) )
 	{
-		$title_of_program = get_bloginfo_rss('name');
+		$title_of_program = get_wp_title_rss();
 		
 		if( defined('POWERPRESS_APPEND_SHOW_TITLE_SEPARATOR') && POWERPRESS_APPEND_SHOW_TITLE_SEPARATOR )
 			$new_title .= ' '. POWERPRESS_APPEND_SHOW_TITLE_SEPARATOR .' '.$title_of_program;
@@ -1232,17 +1272,8 @@ function powerpress_do_podcast_feed($for_comments=false)
 		}
 	}
 	
-	//$wp_query->get_posts(); // No longer needed as it duplicates the existing get posts query already performed
-	if( !empty($GeneralSettings['episode_box_feature_in_itunes']) ||  !empty($powerpress_feed['maximize_feed'])  )
-	{
-		// Use the template for the always featured option
-		load_template( POWERPRESS_ABSPATH . '/feed-podcast.php' );
-	}
-	else
-	{
-		do_feed_rss2(false);
-	}
-	
+	// Use the template to gurantee future WordPress behavior
+	load_template( POWERPRESS_ABSPATH . '/feed-podcast.php' );
 }
 
 function powerpress_template_redirect()
@@ -1588,7 +1619,7 @@ function powerpress_load_general_feed_settings()
 				if( !empty($Feed['itunes_talent_name']) )
 					$powerpress_feed['itunes_talent_name'] = $Feed['itunes_talent_name'];
 				else
-					$powerpress_feed['itunes_talent_name'] = get_bloginfo_rss('name');
+					$powerpress_feed['itunes_talent_name'] = get_wp_title_rss();
 				$powerpress_feed['enhance_itunes_summary'] = $Feed['enhance_itunes_summary'];
 				if( !empty($GeneralSettings['seo_itunes']) )
 					$powerpress_feed['enhance_itunes_summary'] = 1;
@@ -1646,7 +1677,7 @@ function powerpress_load_general_feed_settings()
 						if( !empty($Feed['itunes_talent_name']) )
 							$powerpress_feed['itunes_talent_name'] = $Feed['itunes_talent_name'];
 						else
-							$powerpress_feed['itunes_talent_name'] = get_bloginfo_rss('name');
+							$powerpress_feed['itunes_talent_name'] = get_wp_title_rss();
 						$powerpress_feed['enhance_itunes_summary'] = $Feed['enhance_itunes_summary'];
 						if( !empty($GeneralSettings['seo_itunes']) )
 							$powerpress_feed['enhance_itunes_summary'] = 1;
@@ -1713,7 +1744,7 @@ function powerpress_load_general_feed_settings()
 					if( !empty($Feed['itunes_talent_name']) )
 						$powerpress_feed['itunes_talent_name'] = $Feed['itunes_talent_name'];
 					else
-						$powerpress_feed['itunes_talent_name'] = get_bloginfo_rss('name');
+						$powerpress_feed['itunes_talent_name'] = get_wp_title_rss();
 					$powerpress_feed['enhance_itunes_summary'] = $Feed['enhance_itunes_summary'];
 					if( !empty($GeneralSettings['seo_itunes']) )
 						$powerpress_feed['enhance_itunes_summary'] = 1;
@@ -1777,7 +1808,7 @@ function powerpress_load_general_feed_settings()
 					if( !empty($FeedSettingsBasic['itunes_talent_name']) )
 						$powerpress_feed['itunes_talent_name'] = $FeedSettingsBasic['itunes_talent_name'];
 					else
-						$powerpress_feed['itunes_talent_name'] = get_bloginfo_rss('name');
+						$powerpress_feed['itunes_talent_name'] = get_wp_title_rss();
 					$powerpress_feed['enhance_itunes_summary'] = 0;
 					if( isset($FeedSettingsBasic['enhance_itunes_summary']) )
 						$powerpress_feed['enhance_itunes_summary'] = $FeedSettingsBasic['enhance_itunes_summary'];

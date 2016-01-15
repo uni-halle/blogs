@@ -153,7 +153,7 @@ function awpcp_ad_renewed_user_email( $ad ) {
 function awpcp_ad_renewed_admin_email( $ad, $body ) {
 	$mail = new AWPCP_Email;
 	$mail->to[] = awpcp_admin_email_to();
-	$mail->subject = sprintf( __( 'The classifieds listing "%s" has been successfully renewed.', 'AWPCP' ), $ad->ad_title );
+	$mail->subject = sprintf( __( 'The classifieds listing "%s" has been successfully renewed.', 'another-wordpress-classifieds-plugin' ), $ad->ad_title );
 
 	$template = AWPCP_DIR . '/frontend/templates/email-ad-renewed-success-admin.tpl.php';
 	$mail->prepare( $template, compact( 'body' ) );
@@ -180,12 +180,12 @@ function awpcp_send_ad_renewed_email($ad) {
  */
 function awpcp_renew_ad_success_message($ad, $text=null, $send_email=true) {
 	if (is_null($text)) {
-		$text = __("The Ad has been successfully renewed. New expiration date is %s. ", 'AWPCP');
+		$text = __("The Ad has been successfully renewed. New expiration date is %s. ", 'another-wordpress-classifieds-plugin');
 	}
 
 	$return = '';
 	if (is_admin()) {
-		$return = sprintf('<a href="%1$s">%2$s</a>', awpcp_get_user_panel_url(), __('Return to Listings', 'AWPCP'));
+		$return = sprintf('<a href="%1$s">%2$s</a>', awpcp_get_user_panel_url(), __('Return to Listings', 'another-wordpress-classifieds-plugin'));
 	}
 
 	if ($send_email) {
@@ -218,7 +218,7 @@ function deletead($adid, $adkey, $editemail, $force=false, &$errors=array()) {
 	$isadmin = checkifisadmin() || $force;
 
 	if (get_awpcp_option('onlyadmincanplaceads') && ($isadmin != 1)) {
-		$message = __("You do not have permission to perform the function you are trying to perform. Access to this page has been denied","AWPCP");
+		$message = __("You do not have permission to perform the function you are trying to perform. Access to this page has been denied",'another-wordpress-classifieds-plugin');
 		$errors[] = $message;
 
 	} else {
@@ -232,19 +232,19 @@ function deletead($adid, $adkey, $editemail, $force=false, &$errors=array()) {
 			$ad = AWPCP_Ad::find_by_id($adid);
 			if ( $ad && $ad->delete() ) {
 				if (($isadmin == 1) && is_admin()) {
-					$message=__("The Ad has been deleted","AWPCP");
+					$message=__("The Ad has been deleted",'another-wordpress-classifieds-plugin');
 					return $message;
 				} else {
-					$message=__("Your Ad details and any photos you have uploaded have been deleted from the system","AWPCP");
+					$message=__("Your Ad details and any photos you have uploaded have been deleted from the system",'another-wordpress-classifieds-plugin');
 					$errors[] = $message;
 				}
 			} else if ( $ad === null ) {
-				$errors[] = __( "The specified Ad doesn't exists.", 'AWPCP' );
+				$errors[] = __( "The specified Ad doesn't exists.", 'another-wordpress-classifieds-plugin' );
 			} else {
-				$errors[] = __( "There was an error trying to delete the Ad. The Ad was not deleted.", 'AWPCP' );
+				$errors[] = __( "There was an error trying to delete the Ad. The Ad was not deleted.", 'another-wordpress-classifieds-plugin' );
 			}
 		} else {
-			$message=__("Problem encountered. Cannot complete  request","AWPCP");
+			$message=__("Problem encountered. Cannot complete  request",'another-wordpress-classifieds-plugin');
 			$errors[] = $message;
 		}
 	}
@@ -332,7 +332,7 @@ function awpcp_ad_posted_email( $ad, $transaction = null, $message = '', $notify
 
 		$admin_message = new AWPCP_Email;
 		$admin_message->to[] = awpcp_admin_email_to();
-		$admin_message->subject = __( 'New classified listing created', 'AWPCP' );
+		$admin_message->subject = __( 'New classified listing created', 'another-wordpress-classifieds-plugin' );
 
 		$params = array('page' => 'awpcp-listings',  'action' => 'view', 'id' => $ad->ad_id);
 		$url = add_query_arg( urlencode_deep( $params ), admin_url( 'admin.php' ) );
@@ -373,7 +373,7 @@ function awpcp_render_listings_items( $listings, $context ) {
 			$rendered_listing = awpcp_featured_ad_class( $listing->ad_id, $rendered_listing );
 		}
 
-		$items[] = apply_filters( 'awpcp-render-listing-item', $rendered_listing, $i + 1 );
+		$items[] = apply_filters( 'awpcp-render-listing-item', $rendered_listing, $listing, $i + 1 );
 	}
 
 	return $items;
@@ -388,27 +388,13 @@ function awpcp_login_form($message=null, $redirect=null) {
 		$redirect = awpcp_current_url();
 	}
 
-	$registration_url = get_awpcp_option( 'registrationurl' );
-	if ( empty( $registration_url ) ) {
-		if ( function_exists( 'wp_registration_url' ) ) {
-			$registration_url = wp_registration_url();
-		} else {
-			$registration_url = site_url( 'wp-login.php?action=register', 'login' );
-		}
+	$login_form = apply_filters( 'awpcp-login-form-implementation', null );
+
+	if ( ! is_object( $login_form ) || ! method_exists( $login_form, 'render' ) ) {
+		$login_form = awpcp_default_login_form_implementation();
 	}
 
-	$redirect_to = urlencode( add_query_arg( 'register', true, $redirect ) );
-	$register_url = add_query_arg( array( 'redirect_to' => $redirect_to ), $registration_url );
-
-	$redirect_to = urlencode( add_query_arg( 'reset', true, $redirect ) );
-	$lost_password_url = add_query_arg( array( 'redirect_to' => $redirect_to ), wp_lostpassword_url() );
-
-	ob_start();
-		include( AWPCP_DIR . '/frontend/templates/login-form.tpl.php' );
-		$form = ob_get_contents();
-	ob_end_clean();
-
- 	return $form;
+	return $login_form->render( $redirect, $message );
 }
 
 

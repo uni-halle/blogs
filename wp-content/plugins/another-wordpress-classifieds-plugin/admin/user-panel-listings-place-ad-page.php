@@ -7,7 +7,7 @@ class AWPCP_UserListingsPlaceAd extends AWPCP_AdminListingsPlaceAd {
 
     public function __construct($page=false, $title=false) {
         $page = $page ? $page : 'awpcp-admin-listings-place-ad';
-        $title = $title ? $title : __('AWPCP Ad Management Panel - Listings - Place Ad', 'AWPCP');
+        $title = $title ? $title : __('AWPCP Ad Management Panel - Listings - Place Ad', 'another-wordpress-classifieds-plugin');
         parent::__construct($page, $title);
     }
 

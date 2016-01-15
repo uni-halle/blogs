@@ -13,7 +13,7 @@ define( 'WPTOUCH_DEBUG', FALSE );
 define( 'WPTOUCH_SIMULATE_ALL', FALSE );
 
 // Max News items
-define( 'WPTOUCH_MAX_NEWS_ITEMS', 12 );
+define( 'WPTOUCH_MAX_NEWS_ITEMS', 10 );
 
 if ( defined( 'WPTOUCH_IS_FREE' ) ) {
 	define( 'WPTOUCH_PRODUCT_NAME', 'WPtouch' );
@@ -44,7 +44,7 @@ function wptouch_check_url_ssl( $ssl_string ) {
 
 define( 'WPTOUCH_URL', wptouch_check_url_ssl( plugins_url() . '/' . WPTOUCH_ROOT_NAME ) );
 
-define( 'WPTOUCH_ADMIN_DIR', WPTOUCH_DIR . '/admin' );
+define( 'WPTOUCH_ADMIN_DIR', WPTOUCH_DIR . DIRECTORY_SEPARATOR . 'admin' );
 define( 'WPTOUCH_ADMIN_URL', WPTOUCH_URL . '/admin' );
 
 if ( !defined( 'WPTOUCH_BASE_CONTENT_DIR' ) && !defined( 'WPTOUCH_BASE_CONTENT_URL' ) ) {
@@ -52,22 +52,22 @@ if ( !defined( 'WPTOUCH_BASE_CONTENT_DIR' ) && !defined( 'WPTOUCH_BASE_CONTENT_U
 }
 
 define( 'WPTOUCH_CUSTOM_ICON_SET_NAME', __( 'Custom Icons', 'wptouch-pro' ) );
-define( 'WPTOUCH_TEMP_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR . '/temp' );
+define( 'WPTOUCH_TEMP_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR . DIRECTORY_SEPARATOR . 'temp' );
 define( 'WPTOUCH_TEMP_URL', WPTOUCH_BASE_CONTENT_URL . '/temp' );
-define( 'WPTOUCH_CUSTOM_SET_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR .'/icons' );
-define( 'WPTOUCH_CUSTOM_UPLOAD_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR .'/uploads' );
-define( 'WPTOUCH_CUSTOM_ICON_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR . '/icons/custom' );
-define( 'WPTOUCH_CUSTOM_THEME_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR .'/themes' );
-define( 'WPTOUCH_CUSTOM_ADDON_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR .'/extensions' );
-define( 'WPTOUCH_CUSTOM_LANG_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR .'/lang' );
+define( 'WPTOUCH_CUSTOM_SET_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR . DIRECTORY_SEPARATOR . 'icons' );
+define( 'WPTOUCH_CUSTOM_UPLOAD_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR . DIRECTORY_SEPARATOR . 'uploads' );
+define( 'WPTOUCH_CUSTOM_ICON_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR . DIRECTORY_SEPARATOR . 'icons' . DIRECTORY_SEPARATOR . 'custom' );
+define( 'WPTOUCH_CUSTOM_THEME_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR . DIRECTORY_SEPARATOR . 'themes' );
+define( 'WPTOUCH_CUSTOM_ADDON_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR . DIRECTORY_SEPARATOR . 'extensions' );
+define( 'WPTOUCH_CUSTOM_LANG_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR . DIRECTORY_SEPARATOR . 'lang' );
 
-define( 'WPTOUCH_DEBUG_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR . '/debug' );
+define( 'WPTOUCH_DEBUG_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR . DIRECTORY_SEPARATOR . 'debug' );
 define( 'WPTOUCH_DEBUG_URL', WPTOUCH_BASE_CONTENT_URL . '/debug' );
-define( 'WPTOUCH_CACHE_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR . '/cache' );
-define( 'WPTOUCH_BACKUP_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR . '/backups' );
+define( 'WPTOUCH_CACHE_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR . DIRECTORY_SEPARATOR . 'cache' );
+define( 'WPTOUCH_BACKUP_DIRECTORY', WPTOUCH_BASE_CONTENT_DIR . DIRECTORY_SEPARATOR . 'backups' );
 
-define( 'WPTOUCH_CACHE_URL', WPTOUCH_BASE_CONTENT_URL . '/cache' );
-define( 'WPTOUCH_CUSTOM_ICON_URL', WPTOUCH_BASE_CONTENT_URL .'/icons/custom' );
+define( 'WPTOUCH_CACHE_URL', WPTOUCH_BASE_CONTENT_URL . DIRECTORY_SEPARATOR . 'cache' );
+define( 'WPTOUCH_CUSTOM_ICON_URL', WPTOUCH_BASE_CONTENT_URL . DIRECTORY_SEPARATOR . 'icons' . DIRECTORY_SEPARATOR . 'custom' );
 
 // Separates the two types of settings in terms of usability
 define( 'WPTOUCH_SETTING_BASIC', 0 );
@@ -83,7 +83,18 @@ define( 'WPTOUCH_MULTISITE_LICENSED', 'wptouch_pro_licensed' );
 define( 'WPTOUCH_THUMBNAIL_SIZE', 144 );
 define( 'WPTOUCH_FEATURED_SIZE', 900 );
 define( 'WPTOUCH_EXCERPT_LENGTH', 24 );
-define( 'WPTOUCH_PRO_README_FILE', 'http://www.wptouch.com/wptouch-pro-3/readme.txt' );
+define( 'WPTOUCH_PRO_README_FILE', 'http://www.wptouch.com/wptouch-pro-4/readme.txt' );
+
+define( 'WPTOUCH_ADMIN_UPDATES_AVAILABLE', __( 'Updates Available', 'wptouch-pro' ) );
+define( 'WPTOUCH_ADMIN_MULTISITE_SETUP', __( 'Multisite Setup', 'wptouch-pro' ) );
+define( 'WPTOUCH_ADMIN_SETUP_GENERAL', __( 'General', 'wptouch-pro' ) );
+define( 'WPTOUCH_ADMIN_SETUP_COMPAT', __( 'Compatibility', 'wptouch-pro' ) );
+define( 'WPTOUCH_ADMIN_SETUP_DEVICES', __( 'Devices', 'wptouch-pro' ) );
+define( 'WPTOUCH_ADMIN_MENU_MANAGE_ICON_SETS', __( 'Menu Settings', 'wptouch-pro' ) );
+define( 'WPTOUCH_PRO_ADMIN_THEME_CUSTOMIZING', __( 'Customize Theme', 'wptouch-pro' ) );
+define( 'WPTOUCH_PRO_ADMIN_THEME_GOPRO', __( 'Go Pro', 'wptouch-pro' ) );
+define( 'WPTOUCH_PRO_ADMIN_THEMES', __( 'Themes', 'wptouch-pro' ) );
+define( 'WPTOUCH_PRO_ADMIN_ADDONS', __( 'Extensions', 'wptouch-pro' ) );
 
 define( 'ADDON_SETTING_DOMAIN', 'addons' );
 
@@ -96,5 +107,3 @@ if ( defined( 'WPTOUCH_IS_FREE' ) ) {
 } else {
 	define( 'WPTOUCH_API_CHECK_INTERVAL', 1500 );
 }
-
-require_once( 'mobile-user-agents.php' );

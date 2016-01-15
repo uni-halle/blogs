@@ -193,6 +193,15 @@ class Tribe__Events__Cost_Utils {
 
 		$costs = $this->parse_cost_range( $costs );
 
+		// if there's only one item, we're looking at a single event. If the cost is non-numeric, let's
+		// return the non-numeric cost so that value is preserved
+		if ( 1 === count( $costs ) && ! is_numeric( current( $costs ) ) ) {
+			return current( $costs );
+		}
+
+		// make sure we are only trying to get numeric min/max values
+		$costs = array_filter( $costs, 'is_numeric' );
+
 		if ( empty( $costs ) ) {
 			return 0;
 		}
@@ -207,8 +216,8 @@ class Tribe__Events__Cost_Utils {
 				break;
 		}
 
-		// use a regular expression instead of is_numeric
-		if ( ! preg_match( $this->get_cost_regex(), $cost ) ) {
+		// If there isn't anything on the cost just return 0
+		if ( empty( $cost ) ) {
 			return 0;
 		}
 
@@ -273,11 +282,11 @@ class Tribe__Events__Cost_Utils {
 			return array();
 		}
 
-		// remove any empty prices
-		$costs = array_filter( (array) $costs );
+		// make sure costs is an array
+		$costs = (array) $costs;
 
-		// If it's empty returns 0
-		if ( empty( $costs ) ) {
+		// If there aren't any costs, return a blank array
+		if ( 0 === count( $costs ) ) {
 			return array();
 		}
 
@@ -289,6 +298,9 @@ class Tribe__Events__Cost_Utils {
 			// Get the required parts
 			if ( preg_match_all( '/' . $price_regex . '/', $cost, $matches ) ) {
 				$cost = reset( $matches );
+			} else {
+				$cost = array( $cost );
+				continue;
 			}
 
 			// Get the max number of decimals for the range
@@ -307,8 +319,15 @@ class Tribe__Events__Cost_Utils {
 		$costs = call_user_func_array( 'array_merge', $costs );
 
 		foreach ( $costs as $cost ) {
-			// Creates a Well Balanced Index that will perform good on a Key Sorting method
-			$index = str_replace( '.', '', number_format( str_replace( $this->get_separators(), '.', $cost ), $max ) );
+			$numeric_cost = str_replace( $this->get_separators(), '.', $cost );
+
+			if ( is_numeric( $numeric_cost ) ) {
+				// Creates a Well Balanced Index that will perform good on a Key Sorting method
+				$index = str_replace( array( '.', ',' ), '', number_format( $numeric_cost, $max ) );
+			} else {
+				// Makes sure that we have "index-safe" string
+				$index = sanitize_title( $numeric_cost );
+			}
 
 			// Keep the Costs in a organizeable array by keys with the "numeric" value
 			$ocost[ $index ] = $cost;

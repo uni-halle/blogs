@@ -1,7 +1,6 @@
 <?php
 
 add_action( 'foundation_module_init_mobile', 'foundation_base_init' );
-add_action( 'wptouch_preview', 'foundation_base_add_preview_code' );
 
 function foundation_base_get_script_deps() {
 	$settings = foundation_get_settings();
@@ -24,17 +23,12 @@ function foundation_base_get_script_deps() {
 	}
 
 	$wam_allowed = apply_filters( 'wptouch_allow_wam', true );
-	if ( defined( 'WPTOUCH_MODULE_WEBAPP_INSTALLED' ) && ( $wam_allowed && $settings->webapp_mode_enabled ) ) {
+
+	if ( defined( 'WPTOUCH_MODULE_WEBAPP_INSTALLED' ) && ( $wam_allowed ) ) {
 		$script_deps[] = 'foundation_webapp';
 	}
 
 	return $script_deps;
-}
-
-function foundation_base_add_preview_code() {
-	if ( wptouch_in_preview_window() ) {
-		echo wptouch_capture_include_file( dirname( __FILE__ ) . '/preview-bar.php' );
-	}
 }
 
 function foundation_base_init() {
@@ -42,7 +36,7 @@ function foundation_base_init() {
 		'foundation_base',
 		foundation_get_base_module_url() . '/base/base.js',
 		foundation_base_get_script_deps(),
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		true
 	);
 
@@ -50,17 +44,17 @@ function foundation_base_init() {
 		'foundation__public_base',
 		foundation_get_base_module_url() . '/base/base-public.js',
 		foundation_base_get_script_deps(),
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		true
 	);
 
 	// Only load preview script when we are in a preview window
-	if ( wptouch_in_preview_window() ) {
+	if ( wptouch_in_preview() ) {
 		wp_enqueue_script(
 			'foundation-preview',
 			foundation_get_base_module_url() . '/base/wptouch-preview.js',
 			array( 'foundation_base' ),
-			FOUNDATION_VERSION,
+			md5( FOUNDATION_VERSION ),
 			true
 		);
 	}

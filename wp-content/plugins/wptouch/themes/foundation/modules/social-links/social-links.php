@@ -5,19 +5,11 @@ add_action( 'wptouch_pre_footer', 'foundation_show_social_links_area' );
 function foundation_social_links_settings( $page_options ) {
 	wptouch_add_page_section(
 		FOUNDATION_PAGE_BRANDING,
-		__( 'Footer Social Links', 'wptouch-pro' ),
+		__( 'Social Media Links', 'wptouch-pro' ),
 		'footer-social-links',
 		array(
-//			wptouch_add_setting(
-//				'checkbox',
-//				'show_social_links',
-//				'Show Social Links',
-//				__( 'Show links to your social networks in the footer', 'wptouch-pro' ),
-//				WPTOUCH_SETTING_BASIC,
-//				'2.0'
-//			),
 			wptouch_add_setting(
-				'text',
+				'url',
 				'social_facebook_url',
 				'Facebook',
 				__( 'Full URL to your Facebook page', 'wptouch-pro' ),
@@ -25,7 +17,7 @@ function foundation_social_links_settings( $page_options ) {
 				'1.0'
 			),
 			wptouch_add_setting(
-				'text',
+				'url',
 				'social_twitter_url',
 				'Twitter',
 				__( 'Full URL to your Twitter profile', 'wptouch-pro' ),
@@ -33,7 +25,7 @@ function foundation_social_links_settings( $page_options ) {
 				'1.0'
 			),
 			wptouch_add_setting(
-				'text',
+				'url',
 				'social_google_url',
 				'Google+',
 				__( 'Full URL to your Google+ profile', 'wptouch-pro' ),
@@ -41,7 +33,7 @@ function foundation_social_links_settings( $page_options ) {
 				'1.0'
 			),
 			wptouch_add_setting(
-				'text',
+				'url',
 				'social_instagram_url',
 				'Instagram',
 				__( 'Full URL to your Instagram profile', 'wptouch-pro' ),
@@ -49,7 +41,7 @@ function foundation_social_links_settings( $page_options ) {
 				'1.0'
 			),
 			wptouch_add_setting(
-				'text',
+				'url',
 				'social_tumblr_url',
 				__( 'Tumblr', 'wptouch-pro' ),
 				__( 'Full URL to your Tumblr profile', 'wptouch-pro' ),
@@ -57,7 +49,7 @@ function foundation_social_links_settings( $page_options ) {
 				'2.0.1'
 			),
 			wptouch_add_pro_setting(
-				'text',
+				'url',
 				'social_pinterest_url',
 				'Pinterest',
 				__( 'Full URL to your Pinterest page', 'wptouch-pro' ),
@@ -65,7 +57,7 @@ function foundation_social_links_settings( $page_options ) {
 				'1.0.2'
 			),
 			wptouch_add_pro_setting(
-				'text',
+				'url',
 				'social_vimeo_url',
 				'Vimeo',
 				__( 'Full URL to your Vimeo page', 'wptouch-pro' ),
@@ -73,7 +65,7 @@ function foundation_social_links_settings( $page_options ) {
 				'1.0.2'
 			),
 			wptouch_add_pro_setting(
-				'text',
+				'url',
 				'social_youtube_url',
 				'YouTube',
 				sprintf( __( 'Full URL to your %s profile', 'wptouch-pro' ), 'YouTube' ),
@@ -81,7 +73,7 @@ function foundation_social_links_settings( $page_options ) {
 				'1.0.5'
 			),
 			wptouch_add_pro_setting(
-				'text',
+				'url',
 				'social_linkedin_url',
 				__( 'LinkedIn', 'wptouch-pro' ),
 				__( 'Full URL to your LinkedIn profile', 'wptouch-pro' ),
@@ -89,7 +81,7 @@ function foundation_social_links_settings( $page_options ) {
 				'1.0.2'
 			),
 			wptouch_add_setting(
-				'text',
+				'url',
 				'social_yelp_url',
 				'Yelp',
 				__( 'Full URL to your Yelp profile', 'wptouch-pro' ),
@@ -97,7 +89,7 @@ function foundation_social_links_settings( $page_options ) {
 				'1.0'
 			),
 			wptouch_add_setting(
-				'text',
+				'url',
 				'social_email_url',
 				__( 'E-Mail', 'wptouch-pro' ),
 				__( 'E-Mail address', 'wptouch-pro' ),
@@ -105,7 +97,7 @@ function foundation_social_links_settings( $page_options ) {
 				'1.0'
 			),
 			wptouch_add_setting(
-				'text',
+				'url',
 				'social_rss_url',
 				'RSS',
 				__( 'Full URL to your RSS feed', 'wptouch-pro' ),
@@ -115,7 +107,8 @@ function foundation_social_links_settings( $page_options ) {
 
 		),
 		$page_options,
-		FOUNDATION_SETTING_DOMAIN
+		FOUNDATION_SETTING_DOMAIN,
+		true
 	);
 
 	return $page_options;

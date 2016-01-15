@@ -307,8 +307,8 @@ class nggAdminPanel{
 			case "nggallery-manage-album" :
                 wp_enqueue_script( 'jquery-ui-dialog' );
                 wp_enqueue_script( 'jquery-ui-sortable' );
-                wp_enqueue_script( 'select2' );
-				wp_enqueue_style('select2');
+                wp_enqueue_script( 'ngg_select2' );
+				wp_enqueue_style('ngg_select2');
 			break;
 		}
 	}

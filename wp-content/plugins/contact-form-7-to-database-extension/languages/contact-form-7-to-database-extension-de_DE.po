@@ -9,12 +9,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2013-02-19 18:50+0100\n"
+"PO-Revision-Date: 2015-12-30 09:52+0100\n"
 "Last-Translator: Klaus Bostelmann <service@bostelmann.de>\n"
 "Language-Team: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 "Language: de_DE\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: CFDBView.php:58
 msgid "Rate this Plugin"
@@ -319,7 +319,7 @@ msgstr "Erweiterter Export"
 
 #: CFDBViewWhatsInDB.php:225
 msgid "Delete All This Form's Records"
-msgstr "Alle Daten von diesem Formulars löschen"
+msgstr "Alle Daten dieses Formulars löschen"
 
 #: CFDBViewWhatsInDB.php:237
 msgid "Edit Data Mode"

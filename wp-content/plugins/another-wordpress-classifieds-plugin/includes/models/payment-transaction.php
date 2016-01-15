@@ -58,11 +58,11 @@ class AWPCP_Payment_Transaction {
 		if (!is_array(self::$defaults)) {
 			self::$defaults = array(
 				'id' => null,
-				'user_id' => null,
+				'user_id' => 0,
 				'status' => self::STATUS_NEW,
 				'payment_status' => null,
-                'payment_gateway' => null,
-                'payer_email' => null,
+                'payment_gateway' => '',
+                'payer_email' => '',
 				'items' => array(),
 				'data' => array(),
 				'errors' => array(),
@@ -195,7 +195,7 @@ class AWPCP_Payment_Transaction {
 
 	private function verify_open_conditions(&$errors) {
 		if (get_awpcp_option('enable-credit-system') && empty($this->user_id)) {
-			$errors[] = __('The transaction must be assigned to a WordPress user.', 'AWPCP');
+			$errors[] = __('The transaction must be assigned to a WordPress user.', 'another-wordpress-classifieds-plugin');
 			return false;
 		}
 
@@ -205,7 +205,7 @@ class AWPCP_Payment_Transaction {
     private function verify_ready_to_checkout_conditions(&$errors) {
         $items = count($this->get_items());
 		if ($items === 0) {
-			$errors[] = __('The transaction has no items.', 'AWPCP');
+			$errors[] = __('The transaction has no items.', 'another-wordpress-classifieds-plugin');
 			return false;
 		}
 
@@ -217,9 +217,9 @@ class AWPCP_Payment_Transaction {
             $plan = $payments->get_credit_plan($this->get('credit-plan'));
 
             if (is_null($plan)) {
-                $message = __('The amount of credit in your account is not enough to pay for the selected items. Please choose one of the available Credit Plans in addition to the other items you are about to buy or add credit to your account from your Profile Page.<br>You need %d extra credit.', 'AWPCP');
+                $message = __('The amount of credit in your account is not enough to pay for the selected items. Please choose one of the available Credit Plans in addition to the other items you are about to buy or add credit to your account from your Profile Page.<br>You need %d extra credit.', 'another-wordpress-classifieds-plugin');
             } else {
-                $message = __('The selected Credit Plan is not enough to pay for the selected items. Please choose a bigger Credit Plan or add credit to your account from your Profile Page.<br>You need %d extra credit.', 'AWPCP');
+                $message = __('The selected Credit Plan is not enough to pay for the selected items. Please choose a bigger Credit Plan or add credit to your account from your Profile Page.<br>You need %d extra credit.', 'another-wordpress-classifieds-plugin');
             }
 
             $errors[] = sprintf($message, - $balance);
@@ -246,7 +246,7 @@ class AWPCP_Payment_Transaction {
         $payment_method = awpcp_payments_api()->get_transaction_payment_method($this);
 
         if (!$this->payment_is_not_required() && is_null($payment_method)) {
-            $errors[] = __('You must select a payment method.', 'AWPCP');
+            $errors[] = __('You must select a payment method.', 'another-wordpress-classifieds-plugin');
             return false;
         }
 
@@ -255,7 +255,7 @@ class AWPCP_Payment_Transaction {
 
     public function verify_payment_completed_conditions(&$errors) {
         if (empty($this->payment_status)) {
-            $errors[] = __('The payment status for this transaction hasn\'t been defined.', 'AWPCP');
+            $errors[] = __('The payment status for this transaction hasn\'t been defined.', 'another-wordpress-classifieds-plugin');
             return false;
         }
 

@@ -69,7 +69,7 @@ class FG_Joomla_to_WordPress {
 	public function __construct() {
 
 		$this->plugin_name = 'fg-joomla-to-wordpress';
-		$this->version = '2.9.0';
+		$this->version = '2.9.2';
 
 		$this->load_dependencies();
 		$this->set_locale();

@@ -1,7 +1,11 @@
 <?php
-
 // Main template functions for WPtouch Pro
 function wptouch_head() {
+	if ( is_single() ) {
+		add_action( 'wp_head', 'wptouch_canonical_link' );
+		remove_action( 'wp_head', 'rel_canonical' );
+	}
+
 	do_action( 'wptouch_pre_head' );
 	wp_head();
 	do_action( 'wptouch_post_head' );
@@ -26,9 +30,7 @@ function wptouch_site_title() {
 }
 
 function wptouch_get_site_title() {
-	$settings = wptouch_get_settings();
-
-	return apply_filters( 'wptouch_site_title', $settings->site_title );
+	return get_bloginfo('name');
 }
 
 function wptouch_have_posts() {
@@ -71,13 +73,26 @@ function wptouch_body_classes() {
 
 function wptouch_get_body_classes() {
 	global $wptouch_pro;
-	$settings = $wptouch_pro->get_settings();
 
 	$body_classes = array();
 
 	// Add a class to the body when we're in preview mode, or the preview window
-	if ( $settings->display_mode == 'preview' || wptouch_in_preview_window() ) {
+	if ( wptouch_in_preview() ) {
 		$body_classes[] = 'preview-mode';
+	}
+
+	$colors = foundation_get_theme_colors();
+	foreach ( $colors as $color ) {
+		$domain_settings = $wptouch_pro->get_settings( $color->domain );
+
+		if ( isset( $color->luma_threshold ) && $color->luma_threshold != false ) {
+			$current_luma = wptouch_hex_to_luma( $domain_settings->{ $color->setting } );
+			if ( $current_luma < $color->luma_threshold ) {
+				$body_classes[] = 'dark-' . $color->luma_class;
+			} else {
+				$body_classes[] = 'light-' . $color->luma_class;
+			}
+		}
 	}
 
 	return implode( ' ', apply_filters( 'wptouch_body_classes', $body_classes ) );
@@ -88,13 +103,15 @@ function wptouch_make_css_friendly( $name ) {
 }
 
 function wptouch_canonical_link() {
+	global $post;
+
 	$settings = foundation_get_settings();
 	$wordpress_posts_page = get_option( 'page_for_posts' );
 	$wptouch_posts_page = $settings->latest_posts_page;
 	$on_wptouch_posts_page = false;
 
 	if ( $wptouch_posts_page != 'none' ) {
-		$on_wptouch_posts_page = get_permalink() == get_permalink( $wptouch_posts_page );
+		$on_wptouch_posts_page = get_permalink( $post->ID ) == get_permalink( $wptouch_posts_page );
 	}
 
 	if ( is_home() && !$on_wptouch_posts_page ) {
@@ -104,7 +121,7 @@ function wptouch_canonical_link() {
 			$permalink = site_url() . '/';
 		}
 	} else {
-		$permalink = get_permalink();
+		$permalink = get_permalink( $post->ID );
 	}
 
 	echo '<link rel="canonical" href="' . $permalink . '" />';
@@ -289,31 +306,12 @@ function wptouch_the_mobile_switch_link() {
 
 function wptouch_get_mobile_switch_link() {
 	$settings = wptouch_get_settings();
-
-/*
-	TODO: Deprecated
-	switch( $settings->mobile_switch_link_target ) {
-		case 'current_page':
-			$link_target = $_SERVER['REQUEST_URI'];
-			break;
-		case 'home_page':
-			$link_target = home_url();
-			break;
-		default:
-			$link_target = '';
-			break;
-	}
-*/
-	$link_target = apply_filters( 'wptouch_mobile_switch_link_target', $_SERVER[ 'REQUEST_URI' ] );
-
-	$nonce = wp_create_nonce( 'wptouch_switch' );
-
-	return apply_filters( 'wptouch_mobile_switch_link', get_bloginfo( 'url' ) . '?wptouch_switch=desktop&amp;redirect=' . urlencode( $link_target ) . '&amp;nonce=' . $nonce );
+	return apply_filters( 'wptouch_mobile_switch_link', '?wptouch_switch=desktop' );
 }
 
 function wptouch_use_mobile_switch_link() {
 	$settings = wptouch_get_settings();
-	if ( $settings->show_switch_link == true ) {
+	if  ( apply_filters( 'wptouch_show_mobile_switch_link', $settings->show_switch_link == true ) ) {
 		return true;
 	} else {
 		return false;

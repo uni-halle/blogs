@@ -50,7 +50,7 @@
 		<?php } ?>
 	</div> <!-- content -->
 
-	<?php get_template_part( 'related-posts' ); ?>
+	<?php do_action( 'wptouch_after_post_content' ); ?>
 
 	<?php get_template_part( 'nav-bar' ); ?>
 	<?php if ( comments_open() || wptouch_have_comments() ) { ?>

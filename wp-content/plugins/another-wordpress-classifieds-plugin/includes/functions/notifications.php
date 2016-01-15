@@ -30,7 +30,7 @@ function awpcp_send_listing_posted_notification_to_moderators( $listing, $transa
 
     $admin_message = new AWPCP_Email;
     $admin_message->to = $email_recipients;
-    $admin_message->subject = __( 'New classified listing created', 'AWPCP' );
+    $admin_message->subject = __( 'New classified listing created', 'another-wordpress-classifieds-plugin' );
 
     $params = array('page' => 'awpcp-listings',  'action' => 'view', 'id' => $listing->ad_id);
     $url = add_query_arg( urlencode_deep( $params ), admin_url( 'admin.php' ) );
@@ -68,7 +68,7 @@ function awpcp_send_listing_updated_notification_to_moderators( $listing, $messa
         return false;
     }
 
-    $subject = __( 'Listing "%s" was updated', 'AWPCP' );
+    $subject = __( 'Listing "%s" was updated', 'another-wordpress-classifieds-plugin' );
     $subject = sprintf( $subject, $listing->get_title() );
 
     $user_message = awpcp_ad_updated_user_email( $listing, $messages );
@@ -184,21 +184,21 @@ function awpcp_get_messages_for_listing_awaiting_approval_notification( $listing
     $manage_images_url = add_query_arg( urlencode_deep( $params ), admin_url( 'admin.php' ) );
 
     if ( $moderate_images && ! $moderate_listings ) {
-        $subject = __( 'Images on listing "%s" are awaiting approval', 'AWPCP' );
+        $subject = __( 'Images on listing "%s" are awaiting approval', 'another-wordpress-classifieds-plugin' );
 
-        $message = __( 'Images on Ad "%s" are awaiting approval. You can approve the images going to the Manage Images section for that Ad and clicking the "Enable" button below each image. Click here to continue: %s.', 'AWPCP');
+        $message = __( 'Images on Ad "%s" are awaiting approval. You can approve the images going to the Manage Images section for that Ad and clicking the "Enable" button below each image. Click here to continue: %s.', 'another-wordpress-classifieds-plugin');
         $messages = array( sprintf( $message, $listing->get_title(), $manage_images_url ) );
     } else {
-        $subject = __( 'Listing "%s" is awaiting approval', 'AWPCP' );
+        $subject = __( 'Listing "%s" is awaiting approval', 'another-wordpress-classifieds-plugin' );
 
-        $message = __('The Ad "%s" is awaiting approval. You can approve the Ad going to the Manage Listings section and clicking the "Enable" action shown on top. Click here to continue: %s.', 'AWPCP');
+        $message = __('The Ad "%s" is awaiting approval. You can approve the Ad going to the Manage Listings section and clicking the "Enable" action shown on top. Click here to continue: %s.', 'another-wordpress-classifieds-plugin');
         $params = array('page' => 'awpcp-listings',  'action' => 'view', 'id' => $listing->ad_id);
         $url = add_query_arg( urlencode_deep( $params ), admin_url( 'admin.php' ) );
 
         $messages[] = sprintf( $message, $listing->get_title(), $url );
 
         if ( $moderate_images ) {
-            $message = __( 'Additionally, You can approve the images going to the Manage Images section for that Ad and clicking the "Enable" button below each image. Click here to continue: %s.', 'AWPCP' );
+            $message = __( 'Additionally, You can approve the images going to the Manage Images section for that Ad and clicking the "Enable" button below each image. Click here to continue: %s.', 'another-wordpress-classifieds-plugin' );
             $messages[] = sprintf( $message, $manage_images_url );
         }
     }
@@ -227,10 +227,10 @@ function awpcp_send_listing_media_uploaded_notifications( $file, $listing ) {
         return false;
     }
 
-    $subject = __( 'There are images awaiting approval in listing <listing-title>', 'AWPCP' );
+    $subject = __( 'There are images awaiting approval in listing <listing-title>', 'another-wordpress-classifieds-plugin' );
     $subject = str_replace( '<listing-title>', $listing->get_title(), $subject );
 
-    $message = __( 'The file <<file-name>> was added to listing "<listing-title>" and is awaiting administrator approval.', 'AWPCP' );
+    $message = __( 'The file <<file-name>> was added to listing "<listing-title>" and is awaiting administrator approval.', 'another-wordpress-classifieds-plugin' );
     $message = str_replace( '<file-name>', $file->name, $message );
     $message = str_replace( '<listing-title>', $listing->get_title(), $message );
 
@@ -265,7 +265,7 @@ function awpcp_send_listing_was_flagged_notification( $listing ) {
 
     $mail = new AWPCP_Email;
     $mail->to = awpcp_admin_email_to();
-    $mail->subject = str_replace( '<listing-title>', $listing->get_title(), __( 'Listing <listing-title> was flagged', 'AWPCP' ) );
+    $mail->subject = str_replace( '<listing-title>', $listing->get_title(), __( 'Listing <listing-title> was flagged', 'another-wordpress-classifieds-plugin' ) );
 
     $mail->prepare( $template, $params );
 

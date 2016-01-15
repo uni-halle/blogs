@@ -4,7 +4,7 @@ function wptouch_settings_process( $wptouch_pro ) {
 		$wptouch_pro->verify_post_nonce();
 
 		// Clear the cookie
-		setcookie( 'wptouch-admin-menu', 0, time() - 3600 );
+		setcookie( 'wptouch-4-admin-menu', 0, time() - 3600 );
 
 		WPTOUCH_DEBUG( WPTOUCH_INFO, "Settings are being reset" );
 		$wptouch_pro->erase_all_settings();
@@ -19,7 +19,7 @@ function wptouch_settings_process( $wptouch_pro ) {
 			delete_site_option( WPTOUCH_MULTISITE_LICENSED );
 		}
 
-		$wptouch_pro->redirect_to_page( admin_url( 'admin.php?page=wptouch-admin-touchboard' ) );
+		$wptouch_pro->redirect_to_page( admin_url( 'admin.php?page=wptouch-admin-general-settings' ) );
 
 		wptouch_delete_all_transients();
 
@@ -87,11 +87,8 @@ function wptouch_settings_process( $wptouch_pro ) {
 
 		// Handle automatic backup
 		$settings = wptouch_get_settings();
-		if ( $settings->automatically_backup_settings ) {
-			require_once( 'admin-backup-restore.php' );
-
-			wptouch_backup_settings();
-		}
+		require_once( 'admin-backup-restore.php' );
+		wptouch_backup_settings();
 	}
 
 	do_action( 'wptouch_admin_save_settings_completed' );

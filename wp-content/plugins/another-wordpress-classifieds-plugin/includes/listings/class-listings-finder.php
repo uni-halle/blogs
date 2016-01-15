@@ -26,12 +26,16 @@ class AWPCP_ListingsFinder {
 
         if ( $query['fields'] == 'count' ) {
             return $this->db->get_var( $this->prepare_query( "$select $where $order" ) );
-        } else if ( $query['raw'] ) {
-            return $this->db->get_results( $this->prepare_query( "$select $where $order $limit" ) );
+        }
+
+        if ( $query['raw'] ) {
+            $listings = $this->db->get_results( $this->prepare_query( "$select $where $order $limit" ) );
         } else {
             $items = $this->db->get_results( $this->prepare_query( "$select $where $order $limit" ) );
-            return array_map( array( 'AWPCP_Ad', 'from_object' ), $items );
+            $listings = array_map( array( 'AWPCP_Ad', 'from_object' ), $items );
         }
+
+        return apply_filters( 'awpcp-find-listings', $listings, $query );
     }
 
     private function reset_query() {
@@ -150,7 +154,7 @@ class AWPCP_ListingsFinder {
             $this->build_meta_conditions( $query ),
         );
 
-        $conditions = apply_filters( 'awpcp-find-listings-conditions', $conditions, $query );
+        $conditions = apply_filters( 'awpcp-find-listings-conditions', $conditions, $query, $this );
 
         $flattened_conditions = $this->flatten_conditions( $conditions, 'OR' );
         $where_conditions = $this->group_conditions( $flattened_conditions, 'AND' );
@@ -377,7 +381,7 @@ class AWPCP_ListingsFinder {
         return $this->flatten_conditions( $conditions, 'AND' );
     }
 
-    private function add_join_clause( $clause ) {
+    public function add_join_clause( $clause ) {
         $this->clauses['join'][] = $clause;
     }
 
@@ -502,7 +506,7 @@ class AWPCP_ListingsFinder {
         return $flattened_conditions;
     }
 
-    private function group_conditions( $conditions, $connector = 'OR' ) {
+    public function group_conditions( $conditions, $connector = 'OR' ) {
         $conditions_count = count( $conditions );
 
         if ( is_array( $conditions ) && $conditions_count >= 1 ) {
@@ -528,13 +532,13 @@ class AWPCP_ListingsFinder {
 
     private function build_order_clause( $query ) {
         if ( ! is_null( $query['orderby'] ) ) {
-            return $this->build_order_by_clause( $query['orderby'], $query['order'] );
+            return $this->build_order_by_clause( $query['orderby'], $query['order'], $query );
         } else {
             return '';
         }
     }
 
-    private function build_order_by_clause( $orderby, $order ) {
+    private function build_order_by_clause( $orderby, $order, $query ) {
         $basedate = 'CASE WHEN renewed_date IS NULL THEN ad_startdate ELSE GREATEST(ad_startdate, renewed_date) END';
         $is_paid = 'CASE WHEN ad_fee_paid > 0 THEN 1 ELSE 0 END';
 
@@ -611,6 +615,7 @@ class AWPCP_ListingsFinder {
         }
 
         $parts = array_filter( apply_filters( 'awpcp-ad-order-conditions', $parts, $orderby, $order ) );
+        $parts = array_filter( apply_filters( 'awpcp-find-listings-order-conditions', $parts, $orderby, $order, $query ) );
 
         return sprintf( 'ORDER BY %s', sprintf( implode( ', ', $parts ), $order ) );
     }

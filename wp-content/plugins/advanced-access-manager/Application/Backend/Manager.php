@@ -43,7 +43,7 @@ class AAM_Backend_Manager {
         //manager AAM Ajax Requests
         add_action('wp_ajax_aam', array($this, 'ajax'));
         //manager AAM Features Content rendering
-        add_action('admin_action_aam-content', array($this, 'renderContent'));
+        add_action('admin_action_aamc', array($this, 'renderContent'));
         //manager user search and authentication control
         add_filter('user_search_columns', array($this, 'searchColumns'));
         //manage access action to the user list
@@ -72,7 +72,7 @@ class AAM_Backend_Manager {
     public function enqueueScript() {
         if (AAM::isAAM()) {
             echo "<script type=\"text/javascript\">\n";
-            echo file_get_contents(AAM_MEDIA . '/js/aam-hook.js');
+            echo file_get_contents(AAM_BASE . '/media/js/aam-hook.js');
             echo "</script>\n";
         }
     }
@@ -93,6 +93,32 @@ class AAM_Backend_Manager {
                         $extension->title
                     )
                 );
+            }
+        }
+        
+        //TODO - Remove in Feb 2016
+        $this->checkRedundantExtensions();
+    }
+    
+    /**
+     * @todo Remove in Feb 2016
+     */
+    protected function checkRedundantExtensions() {
+        $basedir = AAM_Core_Repository::getInstance()->getBasedir();
+        
+        //iterate through each active extension and load it
+        if (file_exists($basedir)) {
+            foreach (scandir($basedir) as $extension) {
+                if (!in_array($extension, array('.', '..'))) {
+                    if (!preg_match('/^[a-z]{1}[a-z\-]+$/', $extension)) {
+                        AAM_Core_Console::add(
+                            sprintf(
+                                AAM_Backend_Helper::preparePhrase('Please manually remove [%s] and re-install the extension if necessary', 'b'), 
+                                $basedir . '/' . $extension
+                            )
+                        );
+                    }
+                }
             }
         }
     }
@@ -146,10 +172,12 @@ class AAM_Backend_Manager {
      * @access public
      */
     public function userActions($actions, $user) {
-        $url = admin_url('admin.php?page=aam&user=' . $user->ID);
-        
-        $actions['aam']  = '<a href="' . $url . '">';
-        $actions['aam'] .= __('Manage Access', AAM_KEY) . '</a>';
+        if (current_user_can('edit_user', $user->ID)) {
+            $url = admin_url('admin.php?page=aam&user=' . $user->ID);
+
+            $actions['aam']  = '<a href="' . $url . '">';
+            $actions['aam'] .= __('Manage Access', AAM_KEY) . '</a>';
+        }
         
         return $actions;
     }

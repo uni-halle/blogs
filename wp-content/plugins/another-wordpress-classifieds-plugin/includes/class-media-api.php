@@ -7,7 +7,7 @@ function awpcp_media_api() {
 class AWPCP_MediaAPI {
     private static $instance = null;
 
-    private function __construct() {}
+    public function __construct() {}
 
     public static function instance() {
         if ( is_null( self::$instance ) ) {
@@ -25,6 +25,7 @@ class AWPCP_MediaAPI {
             'mime_type' => awpcp_get_property( $object, 'mime_type', null ),
             'enabled' => awpcp_get_property( $object, 'enabled', null ),
             'status' => awpcp_get_property( $object, 'status', null ),
+            'metadata' => maybe_serialize( awpcp_get_property( $object, 'metadata', null ) ),
             'is_primary' => awpcp_get_property( $object, 'is_primary', null ),
         );
 
@@ -95,6 +96,10 @@ class AWPCP_MediaAPI {
             $data['created'] = awpcp_datetime();
         }
 
+        if ( ! isset( $data['metadata'] ) || ! is_array( $data['metadata'] ) ) {
+            $data['metadata'] = '';
+        }
+
         $data['enabled'] = absint( $data['enabled'] );
         $data['is_primary'] = absint( $data['is_primary'] );
 
@@ -111,17 +116,7 @@ class AWPCP_MediaAPI {
             return false;
         }
 
-        $info = awpcp_utf8_pathinfo( AWPCPUPLOADDIR . $media->name );
-
-        $filenames = apply_filters( 'awpcp-file-associated-paths', array(
-            AWPCPUPLOADDIR . "{$media->path}",
-            AWPCPUPLOADDIR . "{$info['basename']}",
-            AWPCPUPLOADDIR . "{$info['filename']}-large.{$info['extension']}",
-            AWPCPTHUMBSUPLOADDIR . "{$info['basename']}",
-            AWPCPTHUMBSUPLOADDIR . "{$info['filename']}-primary.{$info['extension']}",
-        ), $media );
-
-        foreach ( $filenames as $filename ) {
+        foreach ( $media->get_associated_paths() as $filename ) {
             if ( file_exists( $filename ) ) {
                 @unlink( $filename );
             }
@@ -338,5 +333,17 @@ class AWPCP_MediaAPI {
         } else {
             return false;
         }
+    }
+
+    public function get_metadata( $image, $name, $default = false ) {
+        if ( isset( $image->metadata[ $name ] ) ) {
+            return $image->metadata[ $name ];
+        } else {
+            return $default;
+        }
+    }
+
+    public function set_metadata( $image, $name, $value ) {
+        $image->metadata[ $name ] = $value;
     }
 }

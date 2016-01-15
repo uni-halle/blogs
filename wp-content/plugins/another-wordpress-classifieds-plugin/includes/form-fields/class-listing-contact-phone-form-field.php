@@ -17,7 +17,7 @@ class AWPCP_ListingContactPhoneFormField extends AWPCP_FormField {
     }
 
     public function get_name() {
-        return _x( "Contact Person's Phone Number", 'ad details form', 'AWPCP' );
+        return _x( "Contact Person's Phone Number", 'ad details form', 'another-wordpress-classifieds-plugin' );
     }
 
     protected function is_required() {

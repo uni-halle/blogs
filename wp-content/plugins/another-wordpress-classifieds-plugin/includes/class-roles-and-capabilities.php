@@ -67,7 +67,7 @@ class AWPCP_RolesAndCapabilities {
         $capabilities = array_combine( $capabilities, array_pad( array(), count( $capabilities ), true ) );
 
         if ( is_null( $role ) ) {
-            $role = add_role( 'awpcp-moderator', __( 'Classifieds Moderator', 'AWPCP' ), $capabilities );
+            $role = add_role( 'awpcp-moderator', __( 'Classifieds Moderator', 'another-wordpress-classifieds-plugin' ), $capabilities );
         } else {
             $this->add_capabilities_to_role( $role, array_keys( $capabilities ) );
         }

@@ -48,11 +48,11 @@ function awpcp_display_listings( $query, $context, $options ) {
     } else {
         $before_pagination[20]['user-content'] = $options['before_pagination'];
     }
-    $before_pagination = apply_filters( 'awpcp-listings-before-content', $before_pagination, $context );
+    $before_pagination = apply_filters( 'awpcp-content-before-listings-pagination', $before_pagination, $context );
     ksort( $before_pagination );
     $before_pagination = awpcp_flatten_array( $before_pagination );
 
-    $before_list = apply_filters( 'awpcp-display-ads-before-list', $options['before_list'], $context );
+    $before_list = apply_filters( 'awpcp-content-before-listings-list', $options['before_list'], $context );
 
     if ( $listings_count > 0 ) {
         $pagination_options = array(
@@ -69,7 +69,7 @@ function awpcp_display_listings( $query, $context, $options ) {
     }
 
     $after_pagination = array( 'user-content' => $options['after_pagination'] );
-    $after_pagination = apply_filters( 'awpcp-listings-after-content', $after_pagination, $context );
+    $after_pagination = apply_filters( 'awpcp-content-after-listings-pagination', $after_pagination, $context );
 
     $after_content = apply_filters( 'awpcp-content-after-listings-page', $options['after_content'], $context );
 

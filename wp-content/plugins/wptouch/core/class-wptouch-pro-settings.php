@@ -18,9 +18,11 @@ class WPtouchSettings extends stdClass {
 // These settings should never be adjusted, but rather should be augmented at a later time */
 class WPtouchDefaultSettings30 extends WPtouchSettings {
 	function WPtouchDefaultSettings30() {
-		// Basic or advanced mode
-/* TODO: Deprecated		$this->settings_mode = WPTOUCH_SETTING_BASIC;*/
-		$this->display_mode = 'normal';
+
+		// Wizard
+		$this->show_wizard = true;
+		$this->show_free_wizard = false;
+		$this->show_network_wizard = true;
 
 		// Setup - General
 		$this->site_title = get_bloginfo( 'name' );
@@ -31,17 +33,19 @@ class WPtouchDefaultSettings30 extends WPtouchSettings {
 		}
 
 		// Setup - Desktop / Mobile Switching
-/* TODO: Deprecated		$this->desktop_is_first_view = false;*/
 		$this->show_switch_link = true;
 		$this->switch_link_method = 'automatic';
-/* TODO: Deprecated		$this->mobile_switch_link_target = 'current_page';*/
+
+		// Setup - Multisite Network Admin Regionalization
+		$this->force_network_locale = 'auto';
 
 		// Setup - Regionalization
 		$this->force_locale = 'auto';
-		/* TODO: Remove deprecated setting
-		$this->translate_admin = true;*/
+		$this->translate_admin = true;
 
 		// Setup - Statistics
+		$this->analytics_embed_method = 'disabled';
+		$this->analytics_google_id = '';
 		$this->custom_stats_code = '';
 
 		// Setup - Home Page Redirect
@@ -49,33 +53,45 @@ class WPtouchDefaultSettings30 extends WPtouchSettings {
 		$this->homepage_redirect_wp_target = 0;
 		$this->homepage_redirect_custom_target = '';
 
-		// Setup - Backup and Import
-		$this->automatically_backup_settings = true;
-
-		// Setup - Tools and Debug
-		/* TODO: Deprecated $this->show_footer_load_times = false;*/
-		// Deprecated in 3.1
-		$this->preview_mode = 'off';
+		// Changed from preview_mode in 3.x for 4.0
+		$this->new_display_mode = true;
 
 		// Setup - Compatibility
-		$this->include_functions_from_desktop_theme = false;
-		$this->functions_php_loading_method = 'translate';
-
-		$this->enable_shortcode_compatibility = false;
-		$this->shortcode_compatibility_method = 'remove_shortcodes';
+		$this->process_desktop_shortcodes = false;
 		$this->remove_shortcodes = '';
 
 		$this->url_filter_behaviour = 'disabled';
 		$this->filtered_urls = '';
+		$this->filtered_urls_exact = false;
+
+		// Device Support
+		$this->enable_ios_phone = true;
+		$this->enable_android_phone = true;
+		$this->enable_blackberry_phone = true;
+		$this->enable_firefox_phone = true;
+		$this->enable_opera_phone = true;
+		$this->enable_windows_phone = true;
+
+		$this->enable_ios_tablet = true;
+		$this->enable_android_tablet = true;
+		$this->enable_windows_tablet = true;
+		$this->enable_kindle_tablet = true;
+		$this->enable_blackberry_tablet = true;
+		$this->enable_webos_tablet = true;
+
 		$this->custom_user_agents = '';
 
-		// Default Theme
-		$this->current_theme_friendly_name = 'Bauhaus';
-		$this->current_theme_location = '/plugins/' . WPTOUCH_ROOT_NAME . '/themes';
-		$this->current_theme_name = 'bauhaus';
 
-		// Warnings
-		$this->dismissed_notifications = array();
+		// Default Theme
+		if ( defined( 'WPTOUCH_IS_FREE' ) ) {
+			$this->current_theme_friendly_name = 'Bauhaus';
+			$this->current_theme_location = '/plugins/' . WPTOUCH_ROOT_NAME . '/themes';
+			$this->current_theme_name = 'bauhaus';
+		} else {
+			$this->current_theme_friendly_name = false;
+			$this->current_theme_location = false;
+			$this->current_theme_name = false;
+		}
 
 		// Menu
 		$this->custom_menu_name = 'wp';
@@ -83,7 +99,7 @@ class WPtouchDefaultSettings30 extends WPtouchSettings {
 		$this->prepended_menu_name = 'none';
 
 		$this->enable_parent_items = true;
-		$this->enable_menu_icons = true;
+		$this->enable_menu_icons = false;
 
 		$this->default_menu_icon = WPTOUCH_DEFAULT_MENU_ICON;
 		$this->disabled_menu_items = array();
@@ -93,21 +109,6 @@ class WPtouchDefaultSettings30 extends WPtouchSettings {
 		$this->debug_log = false;
 		$this->debug_log_level = WPTOUCH_ALL;
 		$this->debug_log_salt = substr( md5( mt_rand() ), 0, 10 );
-
-		// Settings that are not yet hooked up and might go away
-		$this->menu_icons = array();			// ?
-		$this->menu_sort_order = 'wordpress';
-		$this->menu_disable_parent_as_child = false;
-		$this->disable_menu = false;
-		$this->make_links_clickable = false;
-		$this->custom_css_file = '';
-		$this->wptouch_enable_custom_post_types = false;
-		$this->always_refresh_css_js_files = false;
-		$this->classic_excluded_categories = false;
-		$this->convert_menu_links_to_internal = false;
-
-		// Settings that probably need to go away
-		$this->post_thumbnails_enabled = true;
 
 		// Add-Ons
 		$this->active_addons = array();
@@ -130,6 +131,8 @@ class WPtouchDefaultSettingsBNCID30 extends WPtouchSettings {
 		$this->license_expiry_date = 0;
 
 		$this->referral_user_id = false;
+		$this->allow_multisite = true;
+		$this->multisite_control = true;
 	}
 };
 

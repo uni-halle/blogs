@@ -10,9 +10,50 @@
 * html .clearfix             { zoom: 1; } /* IE6 */
 *:first-child+html .clearfix { zoom: 1; } /* IE7 */
 
+.align-text-right {
+    text-align: right;
+}
+.align-text-left {
+    text-align: left;
+}
+
 .awpcp-clearboth {
     clear: both;
 }
-.align-text-right {
-    text-align: right;
+.awpcp-clearleft {
+    clear: left;
+}
+
+.awpcp-hidden {
+    display: none;
+}
+
+.awpcp-hide-if-js {
+    display: none;
+}
+.no-js .awpcp-hide-if-js {
+    display: block;
+}
+
+.awpcp-width-20p {
+    width: 20%;
+}
+
+.awpcp-inline-label {
+    display: inline-block;
+}
+.awpcp-block-label {
+    display: block;
+}
+
+.awpcp-list {
+    margin-right: 0;
+
+    > li {
+        text-align: left;
+    }
+}
+.awpcp-list-no-style {
+    list-style-type: none;
+    padding: 0;
 }

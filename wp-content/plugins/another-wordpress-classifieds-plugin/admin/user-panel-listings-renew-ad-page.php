@@ -7,7 +7,7 @@ class AWPCP_UserListingsRenewAd extends AWPCP_AdminListingsRenewAd {
 
     public function __construct($page=false, $title=false) {
         $page = $page ? $page : 'awpcp-admin-listings-renew-ad';
-        $title = $title ? $title : __('AWPCP Ad Management Panel - Listings - Renew Ad', 'AWPCP');
+        $title = $title ? $title : __('AWPCP Ad Management Panel - Listings - Renew Ad', 'another-wordpress-classifieds-plugin');
         parent::__construct($page, $title);
     }
 

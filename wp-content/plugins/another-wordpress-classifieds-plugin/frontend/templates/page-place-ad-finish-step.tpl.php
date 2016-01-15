@@ -6,9 +6,9 @@
 
 <?php if (!is_admin()): ?>
     <?php if ($edit): ?>
-    <?php echo awpcp_print_message(__("Your changes have been saved.", 'AWPCP')); ?>
+    <?php echo awpcp_print_message(__("Your changes have been saved.", 'another-wordpress-classifieds-plugin')); ?>
     <?php else: ?>
-    <?php echo awpcp_print_message(__("Your Ad has been submitted.", "AWPCP")); ?>
+    <?php echo awpcp_print_message(__("Your Ad has been submitted.", 'another-wordpress-classifieds-plugin')); ?>
     <?php endif; ?>
 <?php endif; ?>
 

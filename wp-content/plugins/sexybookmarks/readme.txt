@@ -3,7 +3,7 @@ Contributors: shareaholic
 Tags: shareaholic, shareholic, sexybookmarks, recommendations, related content, cookie consent, share buttons, email button, social sharing, social bookmarking, share image, image sharing, follow buttons, floated share buttons, floating share buttons, analytics, social media, social plugin, facebook, twitter, google plus, google bookmarks, gmail, linkedin, pinterest, reddit, tumblr, evernote, digg, delicious, stumbleupon, printfriendly, fancy, amazon, xing, vk, yahoo, mister wong, viadeo, odnoklassniki box.net, diigo, yammer, ycombinator, hotmail, instapaper, mixi, arto, whatsapp, hootsuite, inbound.org, plurk, aim, buffer, meneame, pinboard.in, stumpedia, bitly, blogger, yummly, izeby, kaboodle, weibo, instagram, tinyurl,  typepad, weheartit, flipboard, pocket, wanelo, fark, wykop, symphony, kindle, houzz, youtube, sms, onenote, google classroom, disqus, spotify, zillow, feedly, kik, line, livejournal, baidu
 Requires at least: 3.0
 Tested up to: 4.4
-Stable tag: 7.7.1.0
+Stable tag: 7.8.0.1
 
 World's leading all-in-one Content Amplification Platform that helps grow your site traffic, engagement, conversions & monetization for FREE.
 
@@ -114,7 +114,7 @@ Shareaholic is used all over the world. Our goal is to support Shareaholic in th
 * Greek (el_GR) by [Takis Bouyouris](http://www.nevma.gr)
 * German (de_DE) by Oliver Heinrich
 * French (fr_FR) by Rozenn Dagorn
-* Dutch (nl_NL) by Patrick Ruers
+* Dutch (nl_NL) by Patrick Catthoor
 * Português (pt_PT)
 * Afrikaans (af_AF)
 * Italian (it_IT)
@@ -122,6 +122,7 @@ Shareaholic is used all over the world. Our goal is to support Shareaholic in th
 * Spanish - Mexico (es_MX) by [Luis Jared Pardo](http://www.clickseguro.net)
 * Spanish - Spain (es_ES) by [David Marco Busto](http://alfabetadigital.com)
 * Romanian (ro_RO)
+* Malay – Bahasa Melayu (ms_MY) by [Lela Iskandar Suhaimi](http://www.jomjalan.com.my/)
 * Contribute a translation! -- we would appreciate your help in translating Shareaholic into even more languages! It doesn’t take much to get started. Instructions: https://shareaholic.com/tools/wordpress/translate
 
 == Screenshots ==
@@ -192,6 +193,14 @@ Please see here: [Shareaholic Helpdesk](http://support.shareaholic.com/hc/en-us)
 Please see here: [Usage & Installation Instructions](http://support.shareaholic.com/hc/en-us/categories/200101476-WordPress-Plugin)
 
 == Changelog ==
+
+= 7.8.0.1 =
+* Bugfix: removed call to the Delicious count API in the server-side connectivity check
+
+= 7.8.0.0 =
+* Various language localization updates
+  * Dutch (nl_NL) by Patrick Catthoor
+  * Malay – Bahasa Melayu (ms_MY) by [Lela Iskandar Suhaimi](http://www.jomjalan.com.my/)
 
 = 7.7.1.0 =
 
@@ -1010,6 +1019,12 @@ Please see here: [Usage & Installation Instructions](http://support.shareaholic.
 * Minified stylesheet to save a couple KB
 
 == Upgrade Notice ==
+
+= 7.8.0.1 =
+* Bugfix: removed call to the Delicious count API in the server-side connectivity check
+
+= 7.8.0.0 =
+Various language localization updates
 
 = 7.7.1.0 =
 * This is a major update with lots of new features and enhancements that you'll love!

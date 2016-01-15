@@ -1,25 +1,168 @@
 /* jshint latedef: false */
-/* global AWPCP, plupload */
+/* global AWPCP, plupload, Backbone, _ */
 
 AWPCP.define( 'awpcp/media-uploader', [ 'jquery', 'awpcp/settings' ],
 function( $, settings) {
-    var MediaUploader = function( element, options ) {
-        var self = this;
+    var MediaUploader = Backbone.Model.extend({
+        initialize: function() {
+            $.subscribe( '/file/deleted', _.bind( this.onFileDeleted, this ) );
+        },
 
-        self.element = $( element );
-        self.options = options;
+        prepareUploader: function( container, dropzone, browseButton ) {
+            var self = this;
 
-        insertOrUpdateUploadRestrictionsMessage();
-        configurePluploadQueue();
+            plupload.addFileFilter( 'restrict_file_size', _.bind( self.filterFileBySize, self ) );
+            plupload.addFileFilter( 'restrict_file_count', _.bind( self.filterFileByCount, self ) );
 
-        $.subscribe( '/file/deleted', onFileDeleted );
+            self.uploader = new plupload.Uploader({
+                browse_button: browseButton.get(0),
+                url: settings.get( 'ajaxurl' ),
+                container: container.get(0),
+                drop_element: dropzone.get(0),
+                filters: {
+                    mime_types: _.bind( self.getFileTypeFilters, self ),
+                    restrict_file_size: true,
+                    restrict_file_count: true
+                },
+                multipart_params: {
+                    action: 'awpcp-upload-listing-media',
+                    listing: self.get('settings').listing_id,
+                    nonce: self.get('settings').nonce
+                },
+                multi_selection: false,
+                chunk_size: '10000000',
+                runtimes: 'html5,flash,silverlight,html4',
+                flash_swf_url : self.get('settings').flash_swf_url,
+                silverlight_xap_url : self.get('settings').silverlight_xap_url
+            });
 
-        function insertOrUpdateUploadRestrictionsMessage() {
-            var message = '', titles = [], replacements = {}, files_left = 0, max_file_size = 0;
+            self.uploader.init();
+
+            self.uploader.bind( 'FilesAdded', self.onFilesAdded, self );
+            self.uploader.bind( 'UploadProgress', self.onUploadProgress, self );
+            self.uploader.bind( 'FileUploaded', self.onFileUplaoded, self );
+        },
+
+        filterFileBySize: function( enabled, file, done ) {
+            var self = this,
+                group = self.getFileGroup( file ), message;
+
+            if ( group === null ) {
+                return done( false );
+            }
+
+            if ( file.size > group.max_file_size ) {
+                message = settings.l10n( 'media-uploader-strings', 'file-is-too-large' );
+                message = message.replace( '<filename>', '<strong>' + file.name + '</strong>' );
+                message = message.replace( '<bytes-count>', '<strong>' + group.max_file_size + '</strong>' );
+
+                $.publish( '/messages/media-uploader', { type: 'error', 'content': message } );
+
+                return done( false );
+            }
+
+            return done( true );
+        },
+
+        getFileGroup: function( file ) {
+            var self = this,
+                fileGroup = null;
+
+            $.each( self.get( 'settings' ).allowed_files, function( title, group ) {
+                if ( $.inArray( file.type, group.mime_types ) !== -1 ) {
+                    fileGroup = group;
+                    return false; // break
+                }
+            } );
+
+            return fileGroup;
+        },
+
+        filterFileByCount: function( enabled, file, done ) {
+            var self = this,
+                group = self.getFileGroup( file ), message;
+
+            if ( group === null ) {
+                return done( false );
+            }
+
+            if ( group.uploaded_file_count >= group.allowed_file_count ) {
+                message = settings.l10n('media-uploader-strings', 'cannot-add-more-files' );
+                message = message.replace( '<filename>', '<strong>' + file.name + '</strong>' );
+
+                $.publish( '/messages/media-uploader', { type: 'error', 'content': message } );
+
+                return done( false );
+            }
+
+            group.uploaded_file_count = group.uploaded_file_count + 1;
+
+            return done( true );
+        },
+
+        getFileTypeFilters: function() {
+            var self = this;
+
+            return $.map( self.get('settings').allowed_files, function( group, title ) {
+                return { title: title.substr( 0, 1 ).toUpperCase() + title.substr( 1 ), extensions: group.extensions.join( ',' ) };
+            } );
+        },
+
+        onFilesAdded: function( uploader, files ) {
+            $.each( files, function( index, file ) {
+                $.publish( '/file/added', file );
+            } );
+
+            uploader.start();
+        },
+
+        onUploadProgress: function( uploader, file ) {
+            $.publish( '/file/progress', [ uploader, file ] );
+        },
+
+        onFileUplaoded: function( uploader, file, data ) {
+            var response = $.parseJSON( data.response );
+
+            if ( response.status === 'ok' && response.file ) {
+                $.publish( '/file/uploaded', [ file, response.file ] );
+            } else if ( response.status !== 'ok' ) {
+                this.decreaseFileCountInGroup( file );
+                file.status = plupload.FAILED;
+
+                // to force the queue widget to update the icon and the uploaded files count
+                this.uploader.trigger( 'UploadProgress', file );
+
+                $.publish( '/file/failed', file );
+                $.publish( '/messages/media-uploader', { type: 'error', 'content': response.errors.join( ' ' ) } );
+            }
+
+            this.trigger('media-uploader:file-uploaded');
+        },
+
+        onFileDeleted: function( event, file ) {
+            this.decreaseFileCountInGroup( file );
+            this.trigger('media-uploader:file-deleted');
+        },
+
+        decreaseFileCountInGroup: function( file ) {
+            var group = this.getFileGroup( file );
+
+            if ( group !== null ) {
+                group.uploaded_file_count = group.uploaded_file_count - 1;
+            }
+        },
+
+        buildUploadRestrictionsMessage: function() {
+            var self = this,
+                message = '',
+                titles = [],
+                replacements = {},
+                files_left = 0,
+                max_file_size = 0;
 
             settings.l10n( 'media-uploader-strings', 'upload-restrictions' );
 
-            $.each( self.options.allowed_files, function( title, group ) {
+            $.each( self.get('settings').allowed_files, function( title, group ) {
                 files_left = ( group.allowed_file_count - group.uploaded_file_count );
 
                 if ( files_left > 0 ) {
@@ -39,145 +182,9 @@ function( $, settings) {
                 message = message.replace( search, replacement );
             } );
 
-            self.element.find( '.awpcp-media-uploader-upload-restrictions' ).html( message );
+            return message;
         }
-
-        function configurePluploadQueue() {
-            plupload.addFileFilter( 'restrict_file_size', filterFileBySize );
-            plupload.addFileFilter( 'restrict_file_count', filterFileByCount );
-
-            // the second call to pluploadQueue is to retrieve a reference to
-            // the plupload.Uploader object.
-            self.uploader = self.element.find( '.awpcp-media-uploader-queue' )
-                .pluploadQueue( {
-                    url: settings.get( 'ajaxurl' ),
-                    filters: {
-                        mime_types: getFileTypeFilters(),
-                        restrict_file_size: true,
-                        restrict_file_count: true
-                    },
-                    multipart_params: {
-                        action: 'awpcp-upload-listing-media',
-                        listing: options.listing_id,
-                        nonce: options.nonce
-                    },
-                    multi_selection: false,
-                    chunk_size: '10000000',
-                    runtimes: 'html5,flash,silverlight,html4',
-                    multiple_queues: true,
-                    flash_swf_url : options.flash_swf_url,
-                    silverlight_xap_url : options.silverlight_xap_url,
-                    init: {
-                        FilesAdded: onFilesAdded,
-                        FileUploaded: onFileUplaoded,
-                        FilesRemoved: onFilesRemoved
-                    }
-                } )
-                .pluploadQueue();
-        }
-
-        function filterFileBySize( enabled, file, done ) {
-            var group = getFileGroup( file ), message;
-
-            if ( group === null ) {
-                return done( false );
-            }
-
-            if ( file.size > group.max_file_size ) {
-                message = settings.l10n( 'media-uploader-strings', 'file-is-too-large' );
-                message = message.replace( '<filename>', '<strong>' + file.name + '</strong>' );
-                message = message.replace( '<bytes-count>', '<strong>' + group.max_file_size + '</strong>' );
-
-                $.publish( '/messages/media-uploader', { type: 'error', 'content': message } );
-
-                return done( false );
-            }
-
-            return done( true );
-        }
-
-        function getFileGroup( file ) {
-            var fileGroup = null;
-
-            $.each( self.options.allowed_files, function( title, group ) {
-                if ( $.inArray( file.type, group.mime_types ) !== -1 ) {
-                    fileGroup = group;
-                    return false; // break
-                }
-            } );
-
-            return fileGroup;
-        }
-
-        function filterFileByCount( enabled, file, done ) {
-            var group = getFileGroup( file ), message;
-
-            if ( group === null ) {
-                return done( false );
-            }
-
-            if ( group.uploaded_file_count >= group.allowed_file_count ) {
-                message = settings.l10n('media-uploader-strings', 'cannot-add-more-files' );
-                message = message.replace( '<filename>', '<strong>' + file.name + '</strong>' );
-
-                $.publish( '/messages/media-uploader', { type: 'error', 'content': message } );
-
-                return done( false );
-            }
-
-            group.uploaded_file_count = group.uploaded_file_count + 1;
-
-            return done( true );
-        }
-
-        function getFileTypeFilters() {
-            return $.map( self.options.allowed_files, function( group, title ) {
-                return { title: title.substr( 0, 1 ).toUpperCase() + title.substr( 1 ), extensions: group.extensions.join( ',' ) };
-            } );
-        }
-
-        function onFilesAdded( uploader, files ) {
-            $.each( files, function( index, file ) {
-                $.publish( '/file/added', file );
-            } );
-        }
-
-        function onFileUplaoded( uploader, file, data ) {
-            var response = $.parseJSON( data.response );
-
-            if ( response.status === 'ok' && response.file ) {
-                $.publish( '/file/uploaded', [ file, response.file ] );
-                insertOrUpdateUploadRestrictionsMessage();
-            } else if ( response.status !== 'ok' ) {
-                file.status = plupload.FAILED;
-                // to force the queue widget to update the icon and the uploaded files count
-                self.uploader.trigger( 'UploadProgress', file );
-
-                $.publish( '/messages/media-uploader', { type: 'error', 'content': response.errors.join( ' ' ) } );
-            }
-        }
-
-        function onFilesRemoved( uploader, files ) {
-            $.each( files, function( index, file ) {
-                decreaseFileCountInGroup( file );
-            } );
-
-            insertOrUpdateUploadRestrictionsMessage();
-        }
-
-        function onFileDeleted( event, file ) {
-            decreaseFileCountInGroup( file );
-            insertOrUpdateUploadRestrictionsMessage();
-        }
-
-        function decreaseFileCountInGroup( file ) {
-            var group = getFileGroup( file );
-
-            if ( group !== null ) {
-                group.uploaded_file_count = group.uploaded_file_count - 1;
-            }
-        }
-    };
+    });
 
     return MediaUploader;
 } );

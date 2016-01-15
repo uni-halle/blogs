@@ -202,3 +202,19 @@ function wptouch_recursive_copy( $source_dir, $dest_dir ) {
 		closedir( $src_dir );
 	}
 }
+
+function wptouch_is_path_writable( $test_path ) {
+    $isOK = false;
+    $path = trim( $test_path );
+    if ( ( $path != '' ) && is_dir( $path ) && is_writable( $path ) ) {
+        $tmpfile = "mPC_" . uniqid( mt_rand() ) . '.writable';
+        $fullpathname = str_replace( DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR, $path . DIRECTORY_SEPARATOR . $tmpfile );
+        $fp = @fopen( $fullpathname, "w" );
+        if ( $fp !== false ) {
+            $isOK = true;
+        }
+        @fclose( $fp );
+        @unlink( $fullpathname );
+    }
+    return $isOK;
+}

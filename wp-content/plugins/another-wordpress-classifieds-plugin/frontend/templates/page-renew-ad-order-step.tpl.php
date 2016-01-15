@@ -1,4 +1,4 @@
-<h2><?php _ex('Select Payment Term', 'renew ad order step', 'AWPCP') ?></h2>
+<h2><?php _ex('Select Payment Term', 'renew ad order step', 'another-wordpress-classifieds-plugin') ?></h2>
 
 <?php foreach ($messages as $message): ?>
     <?php echo awpcp_print_message($message) ?>
@@ -15,8 +15,8 @@
 <form class="awpcp-order-form" method="post">
     <?php echo $payments->render_payment_terms_form_field( $transaction, $table, $form_errors ); ?>
 
-    <p class="form-submit">
-        <input class="button" type="submit" value="<?php echo esc_attr( __( 'Continue', 'AWPCP' ) ); ?>" id="submit" name="submit">
+    <p class="awpcp-form-submit">
+        <input class="button" type="submit" value="<?php echo esc_attr( __( 'Continue', 'another-wordpress-classifieds-plugin' ) ); ?>" id="submit" name="submit">
         <?php if (!is_null($transaction)): ?>
         <input type="hidden" value="<?php echo esc_attr( $transaction->id ); ?>" name="transaction_id">
         <?php endif; ?>

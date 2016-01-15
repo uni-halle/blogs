@@ -58,6 +58,6 @@ function awpcp_render_template( $template, $params ) {
 }
 
 function awpcp_admin_page_title() {
-    $sections = array_merge( func_get_args(), array( __( 'Classifieds Management System', 'AWPCP' ) ) );
+    $sections = array_merge( func_get_args(), array( __( 'Classifieds Management System', 'another-wordpress-classifieds-plugin' ) ) );
     return implode( ' &ndash; ', $sections );
 }

@@ -130,8 +130,8 @@ function awpcp_count_listings_in_categories() {
     // TODO: ideally there would be a function to get all visible Ads,
     // and modules, like Regions, would use hooks to include their own
     // conditions.
-    if ( function_exists( 'awpcp_regions' ) && function_exists( 'awpcp_regions_api' ) ) {
-        if ( $active_region = awpcp_regions()->get_active_region() ) {
+    if ( function_exists( 'awpcp_region_control_module' ) && function_exists( 'awpcp_regions_api' ) ) {
+        if ( $active_region = awpcp_region_control_module()->get_active_region() ) {
             $conditions[] = awpcp_regions_api()->sql_where( $active_region->region_id );
         }
     }

@@ -61,7 +61,7 @@ function wptouch_mwp_update_notification( $premium_updates ) {
 		return;
 	}
 
-	$myplugin = get_plugin_data( WPTOUCH_DIR . '/wptouch-pro-3.php' );
+	$myplugin = get_plugin_data( WPTOUCH_DIR . '/wptouch-pro.php' );
 	$myplugin['type'] = 'plugin';
 
 	$latest_info = mwp_wptouch_pro_get_latest_info();
@@ -90,7 +90,7 @@ function wptouch_mwp_perform_update( $update ){
 		return;
 	}
 
-	$my_addon = get_plugin_data(  WPTOUCH_DIR . '/wptouch-pro-3.php' );
+	$my_addon = get_plugin_data(  WPTOUCH_DIR . '/wptouch-pro.php' );
 	$my_addon[ 'type' ] = 'plugin';
 
 	$latest_info = mwp_wptouch_pro_get_latest_info();

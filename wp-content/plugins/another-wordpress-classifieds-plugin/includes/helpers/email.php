@@ -34,11 +34,11 @@ class AWPCP_Email {
 
         switch ($format) {
             case 'plain':
-                $content_type = 'text/plain; charset="' . get_option('blog_charset') . '"';
+                $content_type = 'text/plain; charset="' . get_bloginfo( 'charset' ) . '"';
                 break;
 
             case 'html':
-                $content_type = 'text/html; charset="' . get_option('blog_charset') . '"';
+                $content_type = 'text/html; charset="' . get_bloginfo( 'charset' ) . '"';
                 break;
         }
 

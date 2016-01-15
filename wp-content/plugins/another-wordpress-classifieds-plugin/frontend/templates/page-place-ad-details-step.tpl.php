@@ -1,4 +1,4 @@
-<h2><?php echo esc_html( __( 'Enter Ad Details', 'AWPCP' ) ); ?></h2>
+<h2><?php echo esc_html( __( 'Enter Ad Details', 'another-wordpress-classifieds-plugin' ) ); ?></h2>
 
 <?php
     if ( isset( $transaction ) && get_awpcp_option( 'show-create-listing-form-steps' ) ) {
@@ -27,14 +27,14 @@
 
         <?php if ($ui['user-dropdown']): ?>
 
-        <h3><?php echo esc_html( __( 'Ad Owner', 'AWPCP' ) ); ?></h3>
+        <h3><?php echo esc_html( __( 'Ad Owner', 'another-wordpress-classifieds-plugin' ) ); ?></h3>
         <p class="awpcp-form-spacer">
             <?php
                 echo awpcp_users_field()->render( array(
                     'required' => awpcp_get_option( 'requireuserregistration' ),
                     'selected' => awpcp_array_data( 'user_id', $edit ? null : '', $form ),
-                    'label' => __( 'User', 'AWPCP' ),
-                    'default' => __( 'Select an User owner for this Ad', 'AWPCP' ),
+                    'label' => __( 'User', 'another-wordpress-classifieds-plugin' ),
+                    'default' => __( 'Select an User owner for this Ad', 'another-wordpress-classifieds-plugin' ),
                     'id' => 'ad-user-id',
                     'name' => 'user',
                     'class' => array( 'awpcp-users-dropdown', 'awpcp-dropdown' ),
@@ -47,10 +47,10 @@
 
         <?php if ($ui['start-end-date']): ?>
 
-        <h3><?php echo esc_html( __( 'Start & End Date', 'AWPCP' ) ); ?></h3>
+        <h3><?php echo esc_html( __( 'Start & End Date', 'another-wordpress-classifieds-plugin' ) ); ?></h3>
 
         <p class="awpcp-form-spacer">
-            <label for="start-date"><?php echo esc_html( _x( 'Start Date', 'ad details form', 'AWPCP' ) ); ?><?php echo $required['start-date'] ? '*' : ''; ?></label>
+            <label for="start-date"><?php echo esc_html( _x( 'Start Date', 'ad details form', 'another-wordpress-classifieds-plugin' ) ); ?><?php echo $required['start-date'] ? '*' : ''; ?></label>
             <?php $date = awpcp_datetime( 'awpcp-date', $form['start_date'] ); ?>
             <input class="inputbox" id="start-date" type="text" size="50" datepicker-placeholder value="<?php echo awpcp_esc_attr($date); ?>" />
             <input type="hidden" name="start_date" value="<?php echo esc_attr( awpcp_datetime( 'Y/m/d', $form['start_date'] ) ); ?>" />
@@ -58,7 +58,7 @@
         </p>
 
         <p class="awpcp-form-spacer">
-            <label for="end-date"><?php echo esc_html( _x( 'End Date', 'ad details form', 'AWPCP' ) ); ?><?php echo $required['end-date'] ? '*' : ''; ?></label>
+            <label for="end-date"><?php echo esc_html( _x( 'End Date', 'ad details form', 'another-wordpress-classifieds-plugin' ) ); ?><?php echo $required['end-date'] ? '*' : ''; ?></label>
             <?php $date = awpcp_datetime( 'awpcp-date', $form['end_date'] ); ?>
             <input class="inputbox" id="end-date" type="text" size="50" datepicker-placeholder value="<?php echo awpcp_esc_attr($date); ?>" />
             <input type="hidden" name="end_date" value="<?php echo esc_attr( awpcp_datetime( 'Y/m/d', $form['end_date'] ) ); ?>" />
@@ -67,7 +67,7 @@
 
         <?php endif; ?>
 
-        <h3><?php echo esc_html( __( 'Add Details and Contact Information', 'AWPCP' ) ); ?></h3>
+        <h3><?php echo esc_html( __( 'Add Details and Contact Information', 'another-wordpress-classifieds-plugin' ) ); ?></h3>
 
         <?php if ($ui['category-field']): ?>
         <p class="awpcp-form-spacer">
@@ -91,14 +91,14 @@
         <?php $text = get_awpcp_option('tos') ?>
 
         <?php if (string_starts_with($text, 'http://', false) || string_starts_with($text, 'https://', false)): ?>
-            <a href="<?php echo esc_attr( $text ); ?>" target="_blank"><?php echo esc_html( _x( "Read our Terms of Service", 'ad details form', "AWPCP" ) ); ?></a>
+            <a href="<?php echo esc_attr( $text ); ?>" target="_blank"><?php echo esc_html( _x( "Read our Terms of Service", 'ad details form', 'another-wordpress-classifieds-plugin' ) ); ?></a>
         <?php else: ?>
-            <label><?php echo esc_html( _x( 'Terms of service:', 'ad details form', 'AWPCP' ) ); ?><?php echo $required['terms-of-service'] ? '*' : ''; ?></label>
+            <label><?php echo esc_html( _x( 'Terms of service:', 'ad details form', 'another-wordpress-classifieds-plugin' ) ); ?><?php echo $required['terms-of-service'] ? '*' : ''; ?></label>
             <textarea readonly="readonly" rows="5" cols="50"><?php echo esc_textarea( $text ); ?></textarea>
         <?php endif ?>
             <br>
             <input class="required" id="terms-of-service" type="checkbox" name="terms-of-service" value="1" />
-            <label class="inline" for="terms-of-service"><?php echo esc_html( _x( 'I agree to the terms of service', 'ad details form', 'AWPCP' ) ); ?></label>
+            <label class="inline" for="terms-of-service"><?php echo esc_html( _x( 'I agree to the terms of service', 'ad details form', 'another-wordpress-classifieds-plugin' ) ); ?></label>
             <?php echo awpcp_form_error('terms-of-service', $errors) ?>
         </p>
         <?php endif ?>
@@ -112,9 +112,9 @@
         <?php endif; ?>
 
         <?php if ( $preview ): ?>
-        <input type="submit" class="button" value="<?php echo esc_attr( __( 'Preview Ad', 'AWPCP' ) ); ?>" />
+        <input type="submit" class="button" value="<?php echo esc_attr( __( 'Preview Ad', 'another-wordpress-classifieds-plugin' ) ); ?>" />
         <?php else: ?>
-        <input type="submit" class="button" value="<?php echo esc_attr( __( 'Continue', 'AWPCP' ) ); ?>" />
+        <input type="submit" class="button" value="<?php echo esc_attr( __( 'Continue', 'another-wordpress-classifieds-plugin' ) ); ?>" />
         <?php endif; ?>
 	</form>
 </div>

@@ -137,7 +137,7 @@ class AWPCP_CategoriesCollection {
             $rows_affected = $this->db->insert( AWPCP_TABLE_CATEGORIES, $data, array( '%s', '%d', '%d' ) );
 
             if ( $rows_affected === false ) {
-                $this->throw_database_exception( __( 'There was an error trying to save the category to the database.', 'AWPCP' ) );
+                $this->throw_database_exception( __( 'There was an error trying to save the category to the database.', 'another-wordpress-classifieds-plugin' ) );
             }
 
             $category->id = $this->db->insert_id;
@@ -155,7 +155,7 @@ class AWPCP_CategoriesCollection {
 
     private function validate_category( $category ) {
         if ( empty( $category->name ) ) {
-            throw new AWPCP_Exception( __( 'The name of the Category is required.', 'AWPCP' ) );
+            throw new AWPCP_Exception( __( 'The name of the Category is required.', 'another-wordpress-classifieds-plugin' ) );
         }
         if ( $category->id > 0 && $category->id == $category->parent ) {
             throw new AWPCP_Exception( __( 'The ID of the parent category and the ID of the category must be different.' ) );
@@ -207,7 +207,7 @@ class AWPCP_CategoriesCollection {
         $row = $this->db->get_row( $this->db->prepare( $sql, $category_id ) );
 
         if ( $row === false ) {
-            $this->throw_database_exception( __( 'There was an error trying to retrieve existing category information.', 'AWPCP' ) );
+            $this->throw_database_exception( __( 'There was an error trying to retrieve existing category information.', 'another-wordpress-classifieds-plugin' ) );
         }
 
         return $row;
@@ -222,7 +222,7 @@ class AWPCP_CategoriesCollection {
             $rows_updated = $this->db->update( AWPCP_TABLE_CATEGORIES, $data, $where, $format );
 
             if ( $rows_updated === false ) {
-                $this->throw_database_exception( __( 'There was an error trying to save the category to the database.', 'AWPCP' ) );
+                $this->throw_database_exception( __( 'There was an error trying to save the category to the database.', 'another-wordpress-classifieds-plugin' ) );
             }
 
             return $rows_updated;
@@ -237,7 +237,7 @@ class AWPCP_CategoriesCollection {
         $rows_affected = $this->db->query( $this->db->prepare( $sql, $category->parent, $category->id ) );
 
         if ( $rows_affected === false ) {
-            $this->throw_database_exception( __( 'There was an error trying to update category parent information in Ads table.', 'AWPCP' ) );
+            $this->throw_database_exception( __( 'There was an error trying to update category parent information in Ads table.', 'another-wordpress-classifieds-plugin' ) );
         }
 
         return $rows_affected;
@@ -270,7 +270,7 @@ class AWPCP_CategoriesCollection {
     }
 
     private function throw_no_category_was_found_with_id_exception( $category_id ) {
-        $message = __( 'No category was found with ID: %d', 'AWPCP' );
+        $message = __( 'No category was found with ID: %d', 'another-wordpress-classifieds-plugin' );
         throw new AWPCP_Exception( sprintf( $message, $category_id ) );
     }
 
@@ -279,6 +279,19 @@ class AWPCP_CategoriesCollection {
      */
     public function get_all() {
         return AWPCP_Category::query( array(
+            'orderby' => 'category_order ASC, category_name',
+            'order' => 'ASC',
+        ) );
+    }
+
+    /**
+     * @since 3.6.5
+     */
+    public function get_categories_hierarchy( $categories_ids ) {
+        $categories_ids = array_map( 'absint', $categories_ids );
+
+        return AWPCP_Category::query( array(
+            'where' => sprintf( 'category_parent_id IN ( %1$s ) OR category_id IN ( %1$s )', implode( ',', $categories_ids ) ),
             'orderby' => 'category_order ASC, category_name',
             'order' => 'ASC',
         ) );

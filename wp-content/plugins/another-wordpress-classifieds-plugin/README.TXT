@@ -2,10 +2,10 @@
 Contributors: awpcp
 Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified script,classified theme,classifieds theme,wp classifieds,wp classified
-Requires at least: 3.9
-Tested up to: 4.3
-Last Updated: 2015-Aug-19
-Stable tag: tags/3.5.3.1
+Requires at least: 4.0
+Tested up to: 4.4
+Last Updated: 2015-Dec-29
+Stable tag: tags/3.6.3.1
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -144,7 +144,6 @@ NEW module(s): [Mark as Sold](http://awpcp.com/premium-modules/mark-as-sold-modu
 * [Extra Fields](http://awpcp.com/premium-modules/extra-fields-module?ref=wp)
 * [Region Control](http://awpcp.com/premium-modules/regions-control-module?ref=wp)
 * [Category Icons](http://awpcp.com/premium-modules/category-icons-module?ref=wp)
-* [Google Checkout](http://awpcp.com/premium-modules/google-checkout-module?ref=wp)
 * [RSS Feeds](http://awpcp.com/premium-modules/rss-module?ref=wp)
 * [Featured Ads](http://awpcp.com/premium-modules/featured-ads-module?ref=wp)
 * [Fee per Category](http://www.awpcp.com/premium-modules/fee-per-category-module?ref=wp)
@@ -162,7 +161,7 @@ If you love the plugin, [please consider purchasing a Premium Module](http://awp
 
 == Credits ==
 
-Copyright 2009-15 awpcp.com
+Copyright 2009-16 awpcp.com
 
 AWPCP Classifieds icons courtesy of http://www.famfamfam.com/lab/icons/silk/
 dcfunctions.php used with permission under GPL by Dan Caragea http://www.datemill.com
@@ -223,8 +222,154 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 
 == Changelog ==
 
-= Version 3.5.3.1 =
-* Minor updates to support WP 4.3
+= Version 3.6.3.1 =
+* Fixed fatal error when upgrading from 3.5.3.x on upgrade routines that were calling incorrect function
+
+= Version 3.6.3 =
+* Start using PayPal TLS Test Sandbox endpoints (for PP security update in Jan 2016).
+* Prevent REPLY-TO-AD shortcode from being executed more than once.
+* Avoid showing duplicated messages in Search Ads form.
+* Do not print empty hidden fields in Category Selector.
+* Avoid trying to process non-existing files in Image Dimensions Generator.
+* Prevent PHP Warning in awpcp_unique_filename when $path does not exists.
+* Update translation files with lost plural strings.
+* Add plugin integration to fix conflict between WooCommerce and AWPCP.
+* Use empty string as User Agent when contacting awpcp.com.
+* Allow AWPCPSHOWCAT to accept multiple categories IDs.
+* Add show_categories_list parameter to AWPCPSHOWCAT shortcode.
+* Fix layout issues when Genesis admin theme is being used.
+* Fix Strict Standards error in Import Payment Transaction Task Handler.
+* Fix references to no longer defined properties in plugin installer.
+* Prevent database errors trying to upgrade from 2.0.6..
+* Remove usage of awpcp_get_image_url in Migrate Media Information Task Handler.
+* Updated French translation to fix missing and incorrect strings
+
+= Version 3.6.2 =
+* Register premium modules widgets on load_module.
+* Add constant to hold the lowest priority value used in actions and filters.
+* Prevent race condition trying to update licenses status in main store.
+* Fix typo in notice shown when one or more licenses are inactive.
+* Add Flush Rewrite Rules button to Debug admin page.
+
+= Version 3.6.1 =
+* Increase credits balance even when payment is not required.
+* Give priority to the category_id parameter passed in $_REQUEST.
+* Update Rewrite Rules to prevent showing the wrong category.
+* Use getimagesize to calculate image dimensions.
+
+= Version 3.6 =
+* Add AWPCPUSERLISTINGS shortcode.
+* Show helptext longer than 20 characters below the textfield.
+* Add support for more currency symbols.
+* Allow admins to control whether user information is overwritten or not.
+* Submit Search Listings form to the current page.
+* Submit Category Selector information to the current page.
+* Add Russian, Slovakian translations from Transifex.
+* Add German translation.
+* Add filter to generate Listing's access key.
+* Add function to unregister widgets safely.
+* Include width and height attributes in image tags.
+* Rename 'Unpaid' filter to 'Incomplete'.
+* Add opt-in setting to send emails from wordpress@<website-domain>.
+* Update Form Field table to support changes in WP 4.3.
+* Update admin Listings Table to take support modifications in WP 4.3.
+* Use H1 for headings in Admin Screens in WP 4.3 or above.
+* Change Search Ads page introduction text.
+* Allow user to post listings in more than one region using Fees.
+* Add explanatory note about the proper configuraiton for a successful integration with Facebook.
+* Add description field for Fees.
+* Change the text for the 'Free Ads expiration threshold' setting.
+* Schedule first clear cache action 10 seconds from now.
+* Update cacert.pem.
+* Start uploading files as soon as they are added to the queue.
+* Prevent user from leaving the page without uploading the files.
+* Replace Plupload Queue with a simpler Files Upload widget.
+* Remove Plupload Queue scripts.
+* Show an alert if no files have been uploaded.
+* Update code to validate Akismet and CAPTCHA settings.
+* Add settings to control usage of CAPTCHA in Place Ad and Reply to Ad forms separately.
+* Add settings to control usage of Akismet in Place Ad and Reply to Ad forms separately.
+* Update appearance of Media Uploader and Media Manager in different screen sizes.
+* Update text domain to match plugin's slug.
+* Add awpcp_format_number and awpcp_format_integer functions.
+* Add support for Emojis.
+* Show WP Members login form if available.
+* Automatically add BuddyPress Listings to the list of active components.
+* Remove Checkout/Payment step when an administrator is posting a listing.
+* Show the Login step only when the user actually has to log in.
+* Add plugin integration for Facebook Button Plugin.
+* Add documentation for CSV Importer.
+* Update heading tags in admin screens.
+* Fix translation issue in Listings Media Center.
+* [Search Listings] Do not include previous query parameters as hidden fields.
+* Fix Fatal Error during ajax requests.
+* Fix: shows posted date if listing is not renewed.
+* Fix sorting problem in Manage Listings caused by Featured Listings module.
+* Fix Ad's get_category_name method.
+* Encode whitespace in media URLs.
+* Fix CategoryDropdown to notify other widgets at startup.
+* Update Facebook Integration documentation.
+* Remove margin from list of attachments.
+* Use same order conditions for listings in Manage Listings and Latest Ads Widget.
+* Drop PHP4 style constructors for classes.
+* Remove no longer used reCAPTCHA library.
+* Fix awpcp_find_page function.
+* Add manual upgrade task to fix problematic filenames.
+* Render form steps using span instead of a tags.
+* Fix bug in pagination links.
+* Replace backslashes with regular slash in media URLs.
+* Show Manage Images step if all image slots are already used.
+* Order Ad Posted By field options alphabetically.
+* Fix bug in awpcp_get_browse_category_url_from_id().
+* Do not show primary image as part of $images placeholder.
+* Add upgrade routine to create Tasks table if missing.
+* Fix javascript conflict with BD's ReCaptcha.
+* Add missing string translation in Uninstall page.
+* Redirect users to Manual Upgrade page.
+* Update uploaded file count when a file is rejected by the server.
+* Fix duplicate listing title problem.
+* Show an estimate of the remaining time for manual upgrade tasks.
+* Replace 'form-submit' CSS class with 'awpcp-form-submit'.
+* Fix PHP Notice in WP 4.3 when Subscriptions module is activated.
+* Fix Preview Step.
+* Fix styles for thumbnails generator.
+* Update plugin to use version v2.4 of Facebook API (#1288, #1293).
+* Prevent unnecessary slashes in Fee descriptions and names.
+* Update function to return the Manage Credit Section URL.
+* Fix missing query context in Search Listings page (Closes #1298).
+* Fix layout issues in Uploaded Files Manager.
+* Make sure selected regions remain selected during preview steps.
+* Fix missing regions validation in frontend.
+* Fix duplicated regions validation in frontend.
+* Hide Uploads File step unless all available fees allow to upload files.
+* Fix JavaScript error in WP 3.9.8.
+* Remove unused CSS.
+* Prevent empty needle PHP warning in Page Title Builder.
+* Update default values in Payment_Transaction to match database defaults.
+* Merge duplicated AWPCP_Test_Media classes.
+* Fix tests for Categories Collection.
+* Fix for PHP Fatal error: Class 'WP_REST_Server' not found.
+* Fix get_url_from_path method in Media class.
+* Fix URL generation in Buy Credits and Renew Subscription pages.
+* Fix typo in Buy Credits page.
+* Fix Credit Plans Table to show amounts and numbers using format settings.
+* Fix problems in Category Icons module.
+* Properly set email content charset.
+* Properly set email content charset.
+* Fix problems with Categories Selector in main page.
+* Make sure the large version of images is properly deleted.
+* Update plugin's translation files.
+* Fix division by zero error in awpcp_pagination().
+* Update URL functions to support PATHINFO permalinks.
+* Fix sprintf() warning in Image Placeholders handler.
+* Make sure Category Selector resets page number.
+* Update awpcp_get_formatted_number() to work with multibyte characters.
+* Update code that shows notices for problems with premium modules.
+* Add tests for awpcp_format_number and awpcp_format_money.
+* Use non-breaking space as separator between currency symbol and amount.
+* Fix currency format in Manage Fees admin page.
+* Fix missing title column error in CSV Import.
+* Fix problem with apostrophes in Region Control fields.
 
 = Version 3.5.3 =
 * Remove restriction that prevents Moderators from using Bulk delete.

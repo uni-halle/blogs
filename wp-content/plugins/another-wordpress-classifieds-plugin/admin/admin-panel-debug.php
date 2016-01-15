@@ -2,7 +2,7 @@
 
 class AWPCP_Admin_Debug {
 
-	public function AWPCP_Admin_Debug() {
+	public function __construct() {
 		add_action('init', array($this, 'download'));
 	}
 

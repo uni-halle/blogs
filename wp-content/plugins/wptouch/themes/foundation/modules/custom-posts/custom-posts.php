@@ -154,22 +154,9 @@ function wptouch_custom_posts_render_theme_settings( $page_options ) {
 
 	$post_types = wptouch_custom_posts_get_list( true );
 	if ( count( $post_types ) ) {
-		foreach( $post_types as $post_type ) {
-			$setting = wptouch_add_setting(
-				'post_type',
-				'enabled_custom_post_types[' . $post_type . ']',
-				sprintf( __( 'Enable %s', 'wptouch-pro' ), $post_type ),
-				'',
-				WPTOUCH_SETTING_BASIC,
-				'1.0',
-				FOUNDATION_SETTING_DOMAIN
-			);
-
-			$custom_post_settings[] = $setting;
-		}
 
 		wptouch_add_page_section(
-			FOUNDATION_PAGE_GENERAL,
+			WPTOUCH_ADMIN_SETUP_COMPAT,
 			__( 'Custom Post Support', 'wptouch-pro' ),
 			'foundation-web-custom-post-type-support',
 			array(
@@ -181,26 +168,43 @@ function wptouch_custom_posts_render_theme_settings( $page_options ) {
 					WPTOUCH_SETTING_BASIC,
 					'1.0'
 				),
-				wptouch_add_setting(
-					'checkbox',
-					'custom_post_types_in_post_index',
-					__( 'Include custom post-type posts in blog index', 'wptouch-pro' ),
-					'',
-					WPTOUCH_SETTING_BASIC,
-					'1.0'
-				),
 			),
 			$page_options,
 			FOUNDATION_SETTING_DOMAIN
 		);
 
+		foreach( $post_types as $post_type ) {
+			$setting = wptouch_add_setting(
+				'post_type',
+				'enabled_custom_post_types[' . $post_type . ']',
+				sprintf( __( '%s', 'wptouch-pro' ), $post_type ),
+				'',
+				WPTOUCH_SETTING_BASIC,
+				'1.0',
+				FOUNDATION_SETTING_DOMAIN
+			);
+
+			$custom_post_settings[] = $setting;
+		}
+
+		$custom_post_settings[]	= wptouch_add_setting(
+			'checkbox',
+			'custom_post_types_in_post_index',
+			__( 'Include custom post-type posts in blog index', 'wptouch-pro' ),
+			'',
+			WPTOUCH_SETTING_BASIC,
+			'1.0'
+		);
+
 		wptouch_add_page_section(
-			FOUNDATION_PAGE_GENERAL,
+			WPTOUCH_ADMIN_SETUP_COMPAT,
 			__( 'Custom Post Types', 'wptouch-pro' ),
 			'foundation-web-custom-post-types',
 			$custom_post_settings,
 			$page_options,
-			FOUNDATION_SETTING_DOMAIN
+			FOUNDATION_SETTING_DOMAIN,
+			false,
+			wptouchize_it( __( 'Select which custom post types WPtouch Pro should load when displaying your site.', 'wptouch-pro' ) )
 		);
 	}
 

@@ -7,7 +7,7 @@ function foundation_fastclick_init() {
 		'foundation_fastclick_wptouch', 
 		foundation_get_base_module_url() . '/fastclick/wptouch.fastclick.js',
 		array( 'jquery' ),
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		true 
 	);
 
@@ -15,7 +15,7 @@ function foundation_fastclick_init() {
 		'foundation_fastclick', 
 		foundation_get_base_module_url() . '/fastclick/fastclick.min.js',
 		array( 'foundation_fastclick_wptouch' ),
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		true 
 	);	
 }

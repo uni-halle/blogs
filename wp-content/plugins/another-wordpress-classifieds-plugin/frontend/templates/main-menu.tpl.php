@@ -1,6 +1,6 @@
 <?php if ( count( $menu_items ) > 0 ): ?>
 <div class="awpcp-navigation awpcp-menu-items-container clearfix">
-    <span class="awpcp-menu-toggle"><?php echo esc_html( __( 'Classifieds Menu', 'AWPCP' ) ); ?></span>
+    <span class="awpcp-menu-toggle"><?php echo esc_html( __( 'Classifieds Menu', 'another-wordpress-classifieds-plugin' ) ); ?></span>
     <div class="awpcp-nav-menu">
         <ul class="awpcp-menu-items clearfix">
         <?php foreach ( $menu_items as $item => $parts ): ?>

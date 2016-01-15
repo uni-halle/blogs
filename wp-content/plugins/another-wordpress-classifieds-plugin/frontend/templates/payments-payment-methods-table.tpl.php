@@ -1,7 +1,7 @@
 <table class="awpcp-table awpcp-payment-methods-table">
     <tbody>
     <?php if (empty($payment_methods)): ?>
-        <tr><td colspan="2"><?php echo __('No payment methods available.', 'AWPCP') ?></td></tr>
+        <tr><td colspan="2"><?php echo __('No payment methods available.', 'another-wordpress-classifieds-plugin') ?></td></tr>
     <?php endif ?>
 
     <?php foreach ($payment_methods as $pm): ?>

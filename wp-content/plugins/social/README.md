@@ -1,15 +1,17 @@
 # Social #
-**Contributors:** crowdfavorite, alexkingorg
+**Contributors:** MailChimp, alexkingorg
 **Tags:** comments, facebook, twitter, social, broadcast, import, integrate, integration
 **Requires at least:** 3.8
 **Tested up to:** 4.2
-**Stable tag:** 3.1.1
+**Stable tag:** 3.1.2
 **License:** GPLv2
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
 Broadcast posts to Twitter and/or Facebook, pull in reactions from each (replies, retweets, comments, "likes") as comments, and allow commenters to log in with their Twitter/Facebook identities.
 
 ## Description ##
+
+**On Feb. 10, we'll be retiring Social so we can focus on new projects. It will be removed from the WordPress Plugin Directory, and support for the plugin will no longer be available.**
 
 Brought to you by [MailChimp](http://mailchimp.com/), [Social](http://mailchimp.com/social-plugin-for-wordpress/) is a lightweight plugin that handles a lot of the heavy lifting of making your blog seamlessly integrate with social networking sites [Twitter](http://twitter.com/) and [Facebook](http://facebook.com/).
 
@@ -320,6 +322,9 @@ Much to the consternation of developers everywhere, Twitter provides direct CDN 
 * (fix) use esc_url_raw() (thanks kanedo)
 
 ## Changelog ##
+
+### 3.1.2 ###
+* Announce sunset date.
 
 ### 3.1.1 ###
 * (fix) Add FB page permissions when requesting the app

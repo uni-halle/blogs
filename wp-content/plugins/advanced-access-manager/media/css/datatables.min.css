@@ -80,14 +80,17 @@ table.dataTable thead .sorting:after,table.dataTable thead .sorting_asc:after,ta
     right: 8px;
 }
 table.dataTable thead .sorting:after {
-    content: "\e150";
+    font-family: "fontello";
+    content: "\e81d";
     opacity: 0.2;
 }
 table.dataTable thead .sorting_asc:after {
-    content: "\e155";
+    font-family: "fontello";
+    content: "\e81b";
 }
 table.dataTable thead .sorting_desc:after {
-    content: "\e156";
+    font-family: "fontello";
+    content: "\e81c";
 }
 table.dataTable thead .sorting_asc_disabled:after,table.dataTable thead .sorting_desc_disabled:after {
     color: #eee;

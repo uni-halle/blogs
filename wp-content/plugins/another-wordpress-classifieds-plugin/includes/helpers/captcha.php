@@ -36,7 +36,7 @@ class AWPCP_DefaultCAPTCHA extends AWPCP_CAPTCHA {
         $hash = $this->hash( $a + $b );
         $answer = awpcp_post_param( 'captcha' );
 
-        $label = _x( 'Enter the value of the following sum: %d + %d', 'CAPTCHA', 'AWPCP' ) . '*';
+        $label = _x( 'Enter the value of the following sum: %d + %d', 'CAPTCHA', 'another-wordpress-classifieds-plugin' ) . '*';
         $label = sprintf( $label, $a, $b );
 
         $html = '<label for="captcha"><span>%s</span></label>';
@@ -53,9 +53,9 @@ class AWPCP_DefaultCAPTCHA extends AWPCP_CAPTCHA {
         $is_valid = strcmp( $expected, $this->hash( $answer ) ) === 0;
 
         if ( empty( $answer ) ) {
-            $error = __( 'You did not solve the math problem. Please solve the math problem to proceed.', 'AWPCP' );
+            $error = __( 'You did not solve the math problem. Please solve the math problem to proceed.', 'another-wordpress-classifieds-plugin' );
         } else if ( !$is_valid ) {
-            $error = __( 'Your solution to the math problem was incorrect. Please try again.', 'AWPCP' );
+            $error = __( 'Your solution to the math problem was incorrect. Please try again.', 'another-wordpress-classifieds-plugin' );
         }
 
         return $is_valid;
@@ -94,7 +94,7 @@ class AWPCP_reCAPTCHA extends AWPCP_CAPTCHA {
     }
 
     private function missing_key_message() {
-        $message = __( 'To use reCAPTCHA you must get an API key from %s.', 'AWPCP' );
+        $message = __( 'To use reCAPTCHA you must get an API key from %s.', 'another-wordpress-classifieds-plugin' );
         $link = sprintf( '<a href="%1$s">%1$s</a>', 'https://www.google.com/recaptcha/admin' );
         return sprintf( $message, $link );
     }
@@ -118,7 +118,7 @@ class AWPCP_reCAPTCHA extends AWPCP_CAPTCHA {
         ) );
 
         if ( is_wp_error( $response ) ) {
-            $message = __( 'There was an error trying to verify the reCAPTCHA answer. <reCAPTCHA-error>', 'AWPCP' );
+            $message = __( 'There was an error trying to verify the reCAPTCHA answer. <reCAPTCHA-error>', 'another-wordpress-classifieds-plugin' );
             $error = str_replace( 'reCAPTCHA-error', $response->get_error_message(), $message );
             return false;
         }
@@ -131,7 +131,7 @@ class AWPCP_reCAPTCHA extends AWPCP_CAPTCHA {
             $error = $this->process_error_codes( $json['error-codes'] );
             return false;
         } else {
-            $error = __( "Your answers couldn't be verified by the reCAPTCHA server.", 'AWPCP' );
+            $error = __( "Your answers couldn't be verified by the reCAPTCHA server.", 'another-wordpress-classifieds-plugin' );
             return false;
         }
     }
@@ -142,17 +142,17 @@ class AWPCP_reCAPTCHA extends AWPCP_CAPTCHA {
         foreach ( $error_codes as $error_code ) {
             switch( $error_code ) {
                 case 'missing-input-secret':
-                    $errors[] = _x( 'The secret parameter is missing', 'recaptcha-error', 'AWPCP' );
+                    $errors[] = _x( 'The secret parameter is missing', 'recaptcha-error', 'another-wordpress-classifieds-plugin' );
                     break;
                 case 'invalid-input-secret':
-                    $errors[] = _x( 'The secret parameter is invalid or malformed.', 'recaptcha-error', 'AWPCP' );
+                    $errors[] = _x( 'The secret parameter is invalid or malformed.', 'recaptcha-error', 'another-wordpress-classifieds-plugin' );
                     break;
                 case 'missing-input-response':
-                    $errors[] = _x( 'The response parameter is missing.', 'recaptcha-error', 'AWPCP' );
+                    $errors[] = _x( 'The response parameter is missing.', 'recaptcha-error', 'another-wordpress-classifieds-plugin' );
                     break;
                 case 'invalid-input-response':
                 default:
-                    $errors[] = _x( 'The response parameter is invalid or malformed.', 'recaptcha-error', 'AWPCP' );
+                    $errors[] = _x( 'The response parameter is invalid or malformed.', 'recaptcha-error', 'another-wordpress-classifieds-plugin' );
                     break;
             }
         }

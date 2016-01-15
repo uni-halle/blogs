@@ -30,14 +30,24 @@ class AWPCP_PageTitleBuilder {
         $original_title = $title;
 
         if ( ! $this->is_properly_configured() ) {
-            return $title;
+            return $original_title;
+        }
+
+        $default_page_title = $this->get_page_title();
+
+        if ( empty( $default_page_title ) ) {
+            return $default_page_title;
+        }
+
+        if ( $this->title_already_includes_page_title( $original_title, $default_page_title ) ) {
+            return $original_title;
         }
 
         // We want to strip separators characters from each side of
         // the title. WordPress uses wptexturize to replace some characters
         // with HTML entities, we need to do the same in case the separator
         // is one of those characters.
-        $regex = '(\s(?:' . preg_quote($separator, '/') . '|' . preg_quote(trim(wptexturize(" $separator ")), '/') . ')\s*)';
+        $regex = '(\s' . $this->build_separator_regex( $separator ) . '\s*)';
         if (preg_match('/^' . $regex . '/', $title, $matches)) {
             $title = preg_replace('/^' . $regex . '/', '', $title);
             $appendix = ($matches[0]);
@@ -48,17 +58,26 @@ class AWPCP_PageTitleBuilder {
             $appendix = '';
         }
 
+        $sep = $this->get_separator( $separator );
+
         // if $seplocation is empty we are probably being called from one of
         // the SEO plugin's integration functions. We need to strip the
         // blog's name from the title and add it again at the end of the proceess
         if (empty($seplocation)) {
-            list($title, $name, $seplocation) = $this->seplocation($title, $separator);
+            $result = $this->find_seplocation( $title, $sep );
+
+            $title = $result['page_title'];
+            $name = $result['blog_name'];
+            $seplocation = $result['seplocation'];
         } else {
             $name = '';
         }
 
-        $sep = $this->get_separator( $separator );
         $page_title = $this->get_page_title( $sep, $seplocation );
+
+        if ( empty( $page_title ) ) {
+            return $original_title;
+        }
 
         if ( $this->title_already_includes_page_title( $original_title, $page_title ) ) {
             return $original_title;
@@ -83,31 +102,89 @@ class AWPCP_PageTitleBuilder {
         return true;
     }
 
-    private function seplocation($title, $sep) {
-        $name = awpcp_get_blog_name( $decode_html = false );
-        $regex = false;
-        $seplocation = false;
+    private function build_separator_regex( $separator ) {
+        return '(?:' . preg_quote($separator, '/') . '|' . preg_quote(trim(wptexturize(" $separator ")), '/') . ')';
+    }
 
-        $left = '/^' . preg_quote($name, '/') . '\s*' . preg_quote(trim($sep), '/') . '\s*/';
-        $right = '/' . '\s*' . preg_quote(trim($sep), '/') . '\s*' . preg_quote($name, '/') . '/';
+    private function get_queried_object_name() {
+        if ( ! empty( $this->category_id ) ) {
+            return get_adcatname( $this->category_id );
+        } else if ( ! is_null( $this->listing ) ) {
+            return $this->listing->get_title();
+        }
 
-        $seplocation = '';
+        return '';
+    }
+
+    private function find_seplocation( $title, $separator ) {
+        $title_info = $this->find_seplocation_using_blog_name( $title, $separator );
+
+        if ( ! empty( $title_info ) ) {
+            return $title_info;
+        }
+
+        $title_info = $this->find_seplocation_using_queried_object_name( $title, $separator );
+
+        if ( ! empty( $title_info ) ) {
+            return $title_info;
+        }
+
+        return array( 'page_title' => $title, 'blog_name' => '', 'seplocation' => '' );
+    }
+
+    private function find_seplocation_using_blog_name( $title, $separator ) {
+        $blog_name = awpcp_get_blog_name( $decode_html = false );
+
+        $result = $this->find_name_position_in_title( $title, $blog_name, $separator );
+
+        if ( ! isset( $result['regex'] ) || empty( $result['regex'] ) ) {
+            return false;
+        }
+
+        $page_title = preg_replace( $result['regex'], '', $title );
+        $blog_name = $result['matches'][0];
+
+        return array(
+            'page_title' => $page_title,
+            'blog_name' => $blog_name,
+            'seplocation' => $result['name_position']
+        );
+    }
+
+    private function find_name_position_in_title( $title, $name, $sep ) {
+        $separator_regex = $this->build_separator_regex( trim( $sep ) );
+
+        $left = '/^' . preg_quote($name, '/') . '\s*' . $separator_regex . '\s*/';
+        $right = '/' . '\s*' . $separator_regex . '\s*' . preg_quote($name, '/') . '/';
+
         if (preg_match($left, $title, $matches)) {
-            $seplocation = 'left';
+            $name_position = 'left';
             $regex = $left;
         } else if (preg_match($right, $title, $matches)) {
-            $seplocation = 'right';
+            $name_position = 'right';
             $regex = $right;
-        }
-
-        if ($regex) {
-            $title = preg_replace($regex, '', $title);
-            $name = $matches[0];
         } else {
-            $name = '';
+            $name_position = false;
+            $regex = false;
         }
 
-        return array($title, $name, $seplocation);
+        return compact( 'name_position', 'regex', 'matches' );
+    }
+
+    private function find_seplocation_using_queried_object_name( $title, $separator ) {
+        $object_name = $this->get_queried_object_name();
+
+        $result = $this->find_name_position_in_title( $title, $object_name, $separator );
+
+        if ( ! isset( $result['regex'] ) || empty( $result['regex'] ) ) {
+            return false;
+        }
+
+        return array(
+            'page_title' => $title,
+            'blog_name' => '',
+            'seplocation' => $result['name_position'] === 'left' ? 'right' : 'left',
+        );
     }
 
     private function get_separator( $fallback_separator = '-' ) {
@@ -185,6 +262,10 @@ class AWPCP_PageTitleBuilder {
         }
 
         $page_title = $this->get_page_title();
+
+        if ( empty( $page_title ) ) {
+            return $post_title;
+        }
 
         if ( $this->title_already_includes_page_title( $post_title, $page_title ) ) {
             return $post_title;

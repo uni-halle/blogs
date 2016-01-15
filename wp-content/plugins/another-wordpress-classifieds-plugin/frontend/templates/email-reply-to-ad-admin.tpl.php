@@ -1,16 +1,16 @@
 <?php // emails are sent in plain text, blank lines in templates and spaces at 
       // the end of the lineare required ?>
-<?php _e('Someone responded to one of the Ads in your website.', 'AWPCP'); ?>
+<?php _e('Someone responded to one of the Ads in your website.', 'another-wordpress-classifieds-plugin'); ?>
 
 
-<?php _e("Contacting about", "AWPCP"); ?>: <?php echo $ad_title; ?> 
+<?php _e("Contacting about", 'another-wordpress-classifieds-plugin'); ?>: <?php echo $ad_title; ?> 
 <?php echo urldecode( $ad_url ); ?> 
 
-<?php _ex("Message", 'reply email', "AWPCP"); ?>:
+<?php _ex("Message", 'reply email', 'another-wordpress-classifieds-plugin'); ?>:
 
     <?php echo $message; ?> 
 
-<?php _e("Reply to", "AWPCP"); ?>: <?php echo $sender_name; ?>, <?php echo $sender_email; ?>
+<?php _e("Reply to", 'another-wordpress-classifieds-plugin'); ?>: <?php echo $sender_name; ?>, <?php echo $sender_email; ?>
 
 
 <?php echo $nameofsite; ?> 

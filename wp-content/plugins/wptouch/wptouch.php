@@ -2,19 +2,19 @@
 /*
 	Plugin Name: WPtouch Mobile Plugin
 	Plugin URI: http://www.wptouch.com/
-	Version: 3.8.9
-	Description: Make your WordPress website mobile-friendly with just a few clicks
+	Version: 4.0.2
+	Description: Make a beautiful mobile-friendly version of your website with just a few clicks
 	Author: BraveNewCode Inc.
-	Author URI: http://www.wptouch.com/
+	Author URI: http://www.bravenewcode.com/
 	Text Domain: wptouch-pro
 	Domain Path: /lang
 	License: GNU General Public License 2.0 (GPL) http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
-	Trademark: 'WPtouch' is an unregistered trademark of BraveNewCode Inc., and 'WPtouch Pro' is a registered trademark of BraveNewCode Inc.; neither term can be re-used in conjuction with GPL v2 distributions or conveyances of this software under the license terms of the GPL v2 without express prior permission of BraveNewCode Inc.
+	Trademark: 'WPtouch' and 'WPtouch Pro' are trademarks of BraveNewCode Inc.; neither term can be re-used in conjuction with GPL v2 distributions or conveyances of this software under the license terms of the GPL v2 without express prior permission of BraveNewCode Inc.
 */
 
-function wptouch_create_three_object() {
+function wptouch_create_four_object() {
 	if ( !defined( 'WPTOUCH_IS_PRO' ) ) {
-		define( 'WPTOUCH_VERSION', '3.8.9' );
+		define( 'WPTOUCH_VERSION', '4.0.2' );
 
 		define( 'WPTOUCH_BASE_NAME', basename( __FILE__, '.php' ) . '.php' );
 		define( 'WPTOUCH_DIR', WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . basename( __FILE__, '.php' ) );
@@ -22,6 +22,7 @@ function wptouch_create_three_object() {
 		$data = explode( DIRECTORY_SEPARATOR, WPTOUCH_DIR );
 		define( 'WPTOUCH_ROOT_NAME', $data[ count( $data ) - 1 ] );
 
+		define( 'WPTOUCH_PLUGIN_ACTIVATE_NAME', plugin_basename( __FILE__ ) );
 
 		global $wptouch_pro;
 
@@ -44,7 +45,7 @@ function wptouch_create_three_object() {
 			// Load right-to-left text code
 			require_once( 'core/rtl.php' );
 
-			$wptouch_pro = new WPtouchProThree;
+			$wptouch_pro = new WPtouchProFour;
 			$wptouch_pro->initialize();
 
 			do_action( 'wptouch_pro_loaded' );
@@ -62,7 +63,7 @@ function wptouch_disable_self() {
 function wptouch_handle_activation() {
 	global $wptouch_pro;
 	if ( !$wptouch_pro ) {
-		wptouch_create_three_object();
+		wptouch_create_four_object();
 	}
 
 	$wptouch_pro->handle_activation();
@@ -72,7 +73,7 @@ function wptouch_handle_activation() {
 function wptouch_handle_deactivation() {
 	global $wptouch_pro;
 	if ( !$wptouch_pro ) {
-		wptouch_create_three_object();
+		wptouch_create_four_object();
 	}
 
 	$wptouch_pro->handle_deactivation();
@@ -83,6 +84,27 @@ register_activation_hook( __FILE__,  'wptouch_handle_activation' );
 register_deactivation_hook( __FILE__, 'wptouch_handle_deactivation' );
 
 // Main WPtouch Pro activation hook
-add_action( 'plugins_loaded', 'wptouch_create_three_object' );
+add_action( 'plugins_loaded', 'wptouch_create_four_object' );
 add_action( 'admin_init', 'wptouch_disable_self' );
 
+add_filter( 'wptouch_settings_page_before_render', 'wptouch_free_order_sections', 10, 2 );
+function wptouch_free_order_sections( $page_info, $page_name ) {
+
+	if ( $page_name == 'Theme Settings' ) {
+		$weights = array();
+
+		foreach ( $page_info->sections as $section_name => $section ) {
+			$weights[ $section->weight ][ $section_name ] = $section;
+		}
+
+		ksort( $weights );
+
+		$page_info->sections = array();
+
+		foreach ( $weights as $weight => $sections ) {
+			$page_info->sections = array_merge( $page_info->sections, $sections );
+		}
+	}
+
+	return $page_info;
+}

@@ -1,4 +1,4 @@
-<h3><?php _ex( 'Complete Payment', 'add credit checkout step', 'AWPCP' ); ?></h3>
+<h3><?php _ex( 'Complete Payment', 'add credit checkout step', 'another-wordpress-classifieds-plugin' ); ?></h3>
 
 <?php foreach ( $messages as $message ): ?>
     <?php echo awpcp_print_message( $message ); ?>

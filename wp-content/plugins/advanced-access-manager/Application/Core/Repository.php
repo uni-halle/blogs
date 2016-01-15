@@ -96,15 +96,18 @@ class AAM_Core_Repository {
      * @access public
      */
     public function load() {
-        $basedir = WP_CONTENT_DIR . self::RELPATH;
+        $basedir = $this->getBasedir();
 
         if (file_exists($basedir)) {
             //iterate through each active extension and load it
-            foreach (scandir($basedir) as $module) {
-                if (!in_array($module, array('.', '..'))) {
-                    $this->bootstrapExtension($basedir . '/' . $module);
+            foreach (scandir($basedir) as $extension) {
+                if (!in_array($extension, array('.', '..'))) {
+                    $this->bootstrapExtension($basedir . '/' . $extension);
                 }
             }
+            //Very important hook for cases when there is extensions dependancy.
+            //For example AAM Plus Package depends on AAM Utitlities properties
+            do_action('aam-post-extensions-load');
         }
     }
 
@@ -136,12 +139,12 @@ class AAM_Core_Repository {
      * @global type $wp_filesystem
      */
     public function addExtension($content) {
-        $filepath  = WP_CONTENT_DIR . self::RELPATH . '/' . uniqid('aam_');
+        $filepath  = $this->getBasedir() . '/' . uniqid('aam_');
         
         $response = file_put_contents($filepath, $content);
         if (!is_wp_error($response)) { //unzip the archive
             WP_Filesystem(false, false, true); //init filesystem
-            $response = unzip_file($filepath, WP_CONTENT_DIR . self::RELPATH);
+            $response = unzip_file($filepath, $this->getBasedir());
             if (!is_wp_error($response)) {
                 $response = true;
             }
@@ -196,6 +199,20 @@ class AAM_Core_Repository {
     
     /**
      * 
+     * @param type $slug
+     * 
+     * @return type
+     */
+    public function pluginStatus($slug) {
+        require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
+        
+        $plugin = plugins_api('plugin_information', array('slug' => $slug));
+        
+        return install_plugin_install_status( $plugin);
+    }
+    
+    /**
+     * 
      * @return type
      */
     protected function prepareExtensionCache() {
@@ -228,7 +245,7 @@ class AAM_Core_Repository {
         $error = false;
 
         //create a directory if does not exist
-        $basedir = WP_CONTENT_DIR . self::RELPATH;
+        $basedir = $this->getBasedir();
         if (!file_exists($basedir)) {
             if (!@mkdir($basedir, fileperms(ABSPATH) & 0777 | 0755, true)) {
                 $error = sprintf(__('Failed to create %s', AAM_KEY), $basedir);
@@ -240,6 +257,16 @@ class AAM_Core_Repository {
         }
 
         return $error;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getBasedir() {
+        $basedir = WP_CONTENT_DIR . self::RELPATH;
+        
+        return AAM_Core_ConfigPress::get('aam.extentionDir', $basedir);
     }
 
 }

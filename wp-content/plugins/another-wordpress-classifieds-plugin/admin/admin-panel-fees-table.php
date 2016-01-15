@@ -41,6 +41,10 @@ class AWPCP_FeesTable extends WP_List_Table {
                 $orderby = sprintf('imagesallowed %1$s, adterm_name', $params['order']);
                 break;
 
+            case 'regions':
+                $orderby = sprintf( 'regions &1$s, adterm_name', $params['order'] );
+                break;
+
             case 'title-characters':
                 $orderby = sprintf( 'title_characters %1$s, adterm_name', $params['order'] );
                 break;
@@ -105,22 +109,24 @@ class AWPCP_FeesTable extends WP_List_Table {
         $columns = array();
 
         $columns['cb'] = '<input type="checkbox" />';
-        $columns['name'] = __('Name', 'AWPCP');
-        $columns['duration'] = __('Duration', 'AWPCP');
-        $columns['interval'] = __('Units', 'AWPCP');
-        $columns['images'] = __('Images Allowed', 'AWPCP');
-        $columns['title_characters'] = __( 'Characters in Title', 'AWPCP' );
-        $columns['characters'] = __('Characters in Description', 'AWPCP');
-        $columns['price'] = __('Price', 'AWPCP');
-        $columns['credits'] = __('Credits', 'AWPCP');
+        $columns['name'] = __('Name', 'another-wordpress-classifieds-plugin');
+        $columns['description'] = __( 'Description', 'another-wordpress-classifieds-plugin' );
+        $columns['duration'] = __('Duration', 'another-wordpress-classifieds-plugin');
+        $columns['interval'] = __('Units', 'another-wordpress-classifieds-plugin');
+        $columns['images'] = __('Images Allowed', 'another-wordpress-classifieds-plugin');
+        $columns['regions'] = __( 'Regions', 'another-wordpress-classifieds-plugin' );
+        $columns['title_characters'] = __( 'Chars in Title', 'another-wordpress-classifieds-plugin' );
+        $columns['characters'] = __( 'Chars in Description', 'another-wordpress-classifieds-plugin' );
+        $columns['price'] = __('Price', 'another-wordpress-classifieds-plugin');
+        $columns['credits'] = __('Credits', 'another-wordpress-classifieds-plugin');
 
         if (function_exists('awpcp_price_cats'))
-            $columns['categories'] = __('Categories', 'AWPCP');
+            $columns['categories'] = __('Categories', 'another-wordpress-classifieds-plugin');
 
         if (function_exists('awpcp_featured_ads'))
-            $columns['featured'] = __('Featured Ads', 'AWPCP');
+            $columns['featured'] = __('Featured Ads', 'another-wordpress-classifieds-plugin');
 
-        $columns['private'] = __( 'Private', 'AWPCP' );
+        $columns['private'] = __( 'Private', 'another-wordpress-classifieds-plugin' );
 
         return $columns;
     }
@@ -131,6 +137,7 @@ class AWPCP_FeesTable extends WP_List_Table {
             'duration' => array('duration', true),
             'interval' => array('interval', true),
             'images' => array('images', true),
+            'regions' => array( 'regions', true ),
             'title_characters' => array('title-characters', true),
             'characters' => array('characters', true),
             'price' => array('price', true),
@@ -160,6 +167,10 @@ class AWPCP_FeesTable extends WP_List_Table {
         return $item->get_name() . $this->row_actions($this->get_row_actions($item), true);
     }
 
+    public function column_description( $item ) {
+        return $item->description;
+    }
+
     public function column_duration($item) {
         return $item->duration_amount;
     }
@@ -172,6 +183,10 @@ class AWPCP_FeesTable extends WP_List_Table {
         return $item->images;
     }
 
+    public function column_regions( $item ) {
+        return $item->regions;
+    }
+
     public function column_characters($item) {
         return $item->get_characters_allowed();
     }
@@ -181,7 +196,7 @@ class AWPCP_FeesTable extends WP_List_Table {
     }
 
     public function column_price($item) {
-        return number_format($item->price, 2);
+        return awpcp_format_money( $item->price, 2 );
     }
 
     public function column_credits($item) {
@@ -199,11 +214,11 @@ class AWPCP_FeesTable extends WP_List_Table {
     }
 
     public function column_featured($item) {
-        return $item->featured ? __('Yes', 'AWPCP') : __('No', 'AWPCP');
+        return $item->featured ? __('Yes', 'another-wordpress-classifieds-plugin') : __('No', 'another-wordpress-classifieds-plugin');
     }
 
     public function column_private($item) {
-        return $item->private ? __( 'Yes', 'AWPCP' ) : __( 'No', 'AWPCP' );
+        return $item->private ? __( 'Yes', 'another-wordpress-classifieds-plugin' ) : __( 'No', 'another-wordpress-classifieds-plugin' );
     }
 
     public function single_row($item) {

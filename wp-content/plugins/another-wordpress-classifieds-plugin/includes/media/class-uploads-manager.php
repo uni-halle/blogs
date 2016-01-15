@@ -26,7 +26,7 @@ class AWPCP_UploadsManager {
         $destination_dir = $this->get_path_for_relative_path( $relative_path );
 
         if ( ! file_exists( $destination_dir ) && ! mkdir( $destination_dir, awpcp_directory_permissions(), true ) ) {
-            throw new AWPCP_Exception( __( "Destination directory doesn't exists and couldn't be created.", 'AWPCP' ) );
+            throw new AWPCP_Exception( __( "Destination directory doesn't exists and couldn't be created.", 'another-wordpress-classifieds-plugin' ) );
         }
 
         $target_directories = array_merge( array( $destination_dir ), $related_directories );
@@ -39,7 +39,7 @@ class AWPCP_UploadsManager {
         } else {
             unlink( $file->get_path() );
 
-            $message = _x( 'The file %s could not be copied to the destination directory.', 'upload files', 'AWPCP' );
+            $message = _x( 'The file %s could not be copied to the destination directory.', 'upload files', 'another-wordpress-classifieds-plugin' );
             $message = sprintf( $message, $file->get_real_name() );
 
             throw new AWPCP_Exception( $message );

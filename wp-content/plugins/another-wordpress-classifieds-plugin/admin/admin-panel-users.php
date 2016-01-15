@@ -36,7 +36,7 @@ class AWPCP_AdminUsers {
     }
 
     public function get_columns($columns) {
-        $columns['balance'] = _x('Account Balance', 'credit system on users table', 'AWPCP');
+        $columns['balance'] = _x('Account Balance', 'credit system on users table', 'another-wordpress-classifieds-plugin');
         return $columns;
     }
 
@@ -48,10 +48,10 @@ class AWPCP_AdminUsers {
 
                 if (awpcp_current_user_is_admin()) {
                     $url = add_query_arg('action', 'credit', awpcp_current_url());
-                    $actions['credit'] = "<a class='credit' href='" .  esc_url( $url ) . "'>" . __('Add Credit', 'AWPCP') . "</a>";
+                    $actions['credit'] = "<a class='credit' href='" .  esc_url( $url ) . "'>" . __('Add Credit', 'another-wordpress-classifieds-plugin') . "</a>";
 
                     $url = add_query_arg('action', 'debit', awpcp_current_url());
-                    $actions['debit'] = "<a class='debit' href='" . esc_url( $url ) . "'>" . __('Remove Credit', 'AWPCP') . "</a>";
+                    $actions['debit'] = "<a class='debit' href='" . esc_url( $url ) . "'>" . __('Remove Credit', 'another-wordpress-classifieds-plugin') . "</a>";
                 }
 
                 $table = $this->get_table();
@@ -65,7 +65,7 @@ class AWPCP_AdminUsers {
         $user = get_user_by('id', $user_id);
 
         if (is_null($user)) {
-            $message = __("The specified User doesn't exists.", 'AWPCP');
+            $message = __("The specified User doesn't exists.", 'another-wordpress-classifieds-plugin');
             $response = array('status' => 'error', 'message' => $message);
         }
 

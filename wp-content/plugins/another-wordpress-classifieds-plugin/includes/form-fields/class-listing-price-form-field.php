@@ -17,7 +17,7 @@ class AWPCP_ListingPriceFormField extends AWPCP_FormField {
     }
 
     public function get_name() {
-        return _x( 'Item Price', 'ad details form', 'AWPCP' );
+        return _x( 'Item Price', 'ad details form', 'another-wordpress-classifieds-plugin' );
     }
 
     protected function is_required() {

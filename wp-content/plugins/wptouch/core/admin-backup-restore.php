@@ -50,7 +50,7 @@ function wptouch_backup_settings() {
 
 			if ( isset( $settings_to_save[ 'bncid' ]->bncid ) ) {
 				//unset( $settings_to_save[ 'bncid' ]->bncid );
-			}			
+			}
 		}
 
 		ksort( $settings_to_save );
@@ -89,6 +89,8 @@ function wptouch_restore_settings( $encoded_string ) {
 		foreach( $settings as $domain => $settings_object ) {
 			$settings_object->domain = $domain;
 			$settings_object->save();
+
+			do_action( 'wptouch_after_restore_settings', $domain, $settings_object );
 		}
 	}
 }

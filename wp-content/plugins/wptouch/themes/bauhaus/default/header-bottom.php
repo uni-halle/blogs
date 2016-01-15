@@ -2,11 +2,11 @@
 		<div id="menu" class="wptouch-menu show-hide-menu">
 			<?php if ( wptouch_has_menu( 'primary_menu' ) ) { wptouch_show_menu( 'primary_menu' ); } ?>
 
-			<?php if (  wptouch_fdn_show_login() ) { ?>
+			<?php if (  get_option( 'comment_registration' ) ) { ?>
 				<ul class="menu-tree login-link">
 					<li>
 					<?php if ( !is_user_logged_in() ) { ?>
-					<a class="login-toggle tappable no-ajax" href="#">
+					<a class="login-toggle tappable no-ajax" href="<?php echo wp_login_url( esc_url_raw( $_SERVER['REQUEST_URI'] ) ); ?>">
 						<i class="wptouch-icon-key"></i> Login
 					</a>
 				<?php } else { ?>
@@ -50,17 +50,19 @@
 		</div>
 	</div>
 	<?php } ?>
+	
+	<div class="content-wrap">
 
-	<?php do_action( 'wptouch_advertising_top' ); ?>
-
-	<?php if ( is_home() ) { ?>
-		<?php if ( function_exists( 'foundation_featured_slider' ) ) { ?>
-			<?php foundation_featured_slider(); ?>
+		<?php do_action( 'wptouch_advertising_top' ); ?>
+	
+		<?php if ( is_home() ) { ?>
+			<?php if ( function_exists( 'foundation_featured_slider' ) ) { ?>
+				<?php foundation_featured_slider(); ?>
+			<?php } ?>
 		<?php } ?>
+	
+	<?php if ( is_archive() ) { ?>
+		<div class="post-page-head-area bauhaus">
+			<?php wptouch_fdn_archive_title_text(); ?>
+		</div>
 	<?php } ?>
-
-<?php if ( is_archive() ) { ?>
-	<div class="post-page-head-area bauhaus">
-		<?php wptouch_fdn_archive_title_text(); ?>
-	</div>
-<?php } ?>

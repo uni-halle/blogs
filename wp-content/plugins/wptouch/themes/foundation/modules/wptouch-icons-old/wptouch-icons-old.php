@@ -7,7 +7,7 @@ function foundation_wptouch_icons_old_init() {
 		'foundation_wptouch_icons_old_css',
 		foundation_get_base_module_url() . '/wptouch-icons-old/css/wptouch-icons.css',
 		'',
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		'screen'
 	);
 }

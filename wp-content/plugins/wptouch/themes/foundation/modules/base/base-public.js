@@ -6,10 +6,10 @@ function wptouchFdnIsiOS6() {
 }
 
 function wptouchFdnHasFixedPos() {
-	if ( jQuery( 'body' ).hasClass( 'preview-mode' ) ) {
+	if ('-webkit-overflow-scrolling' in document.body.style ){
 		return true;
 	} else {
-		return '-webkit-overflow-scrolling' in document.body.style;
+		return false;
 	}
 }
 

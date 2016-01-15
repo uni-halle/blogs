@@ -9,7 +9,7 @@ class AWPCP_BuyCreditsPage extends AWPCP_BasePage {
         parent::__construct( $steps, $request );
 
         $this->page = 'awpcp-buy-credits';
-        $this->title = __( 'Buy Credits', 'AWPCP' );
+        $this->title = __( 'Buy Credits', 'another-wordpress-classifieds-plugin' );
     }
 
     public function get_transaction( $create = true ) {
@@ -69,9 +69,9 @@ class AWPCP_BuyCreditsPage extends AWPCP_BasePage {
 
         if ( ! is_null( $transaction ) && $transaction->get( 'context' ) != 'add-credit' ) {
             $page_name = $this->title;
-            $page_url = $this->url( array( 'page', $this->page ) );
+            $page_url = $this->url( array( 'page' => $this->page ) );
 
-            $message = __( 'You are trying to buy credits using a transaction created for a different purpose. Pelase go back to the <a href="%s">%s</a> page.<br>If you think this is an error please contact the administrator and provide the following transaction ID: %s', 'AWPCP' );
+            $message = __( 'You are trying to buy credits using a transaction created for a different purpose. Pelase go back to the <a href="%s">%s</a> page.<br>If you think this is an error please contact the administrator and provide the following transaction ID: %s', 'another-wordpress-classifieds-plugin' );
             $message = sprintf( $message, $page_url, $page_name, $transaction->id );
 
             throw new AWPCP_Exception( $message );
@@ -84,7 +84,7 @@ class AWPCP_BuyCreditsPage extends AWPCP_BasePage {
         if ( ! is_null( $transaction ) && $transaction->is_payment_completed() ) {
             if ( ! $transaction->was_payment_successful() ) {
                 $this->errors = array_merge( $this->errors, awpcp_flatten_array( $transaction->errors ) );
-                $message = __('The payment associated with this transaction failed (see reasons below).', 'AWPCP');
+                $message = __('The payment associated with this transaction failed (see reasons below).', 'another-wordpress-classifieds-plugin');
 
                 throw new AWPCP_Exception( $message );
             }
@@ -113,7 +113,7 @@ class AWPCP_BuyCreditsPage extends AWPCP_BasePage {
     }
 
     protected function render_user_not_allowed_error() {
-        $this->errors[] = __( 'You are not allowed to buy credits.', 'AWPCP' );
+        $this->errors[] = __( 'You are not allowed to buy credits.', 'another-wordpress-classifieds-plugin' );
         $this->render_page_error();
     }
 }

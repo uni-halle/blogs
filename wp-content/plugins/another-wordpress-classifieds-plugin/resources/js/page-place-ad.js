@@ -3,10 +3,12 @@ AWPCP.run('awpcp/page-place-ads', [
     'jquery',
     'awpcp/media-center',
     'awpcp/datepicker-field',
+    'awpcp/user-information-updater',
+    'awpcp/multiple-region-selector-validator',
     'awpcp/settings',
     'awpcp/jquery-userfield',
     'awpcp/jquery-validate-methods'
-], function( $, MediaCenter, DatepickerField, settings ) {
+], function( $, MediaCenter, DatepickerField, UserInformationUpdater, MultipleRegionsSelectorValidator, settings ) {
     var AWPCP = jQuery.AWPCP = jQuery.extend({}, jQuery.AWPCP, AWPCP);
 
     $.AWPCP.PaymentTermsTable = function(table) {
@@ -211,8 +213,10 @@ AWPCP.run('awpcp/page-place-ads', [
         (function() {
             form = container.find('.awpcp-details-form');
             if (form.length) {
-                // update profile information everytime the selected user changes
-                $.noop(new $.AWPCP.UserInformation(container));
+                if ( settings.get( 'overwrite-contact-information-on-user-change' ) ) {
+                    var updater = new UserInformationUpdater( container );
+                    updater.watch();
+                }
 
                 container.find('[autocomplete-field], [dropdown-field]').userfield();
 
@@ -228,7 +232,18 @@ AWPCP.run('awpcp/page-place-ads', [
 
                 form.validate({
                     messages: $.AWPCP.l10n('page-place-ad-details'),
-                    onfocusout: false
+                    onfocusout: false,
+                    submitHandler: function( form ) {
+                        if ( MultipleRegionsSelectorValidator.showErrorsIfUserSelectedDuplicatedRegions( form ) ) {
+                            return false;
+                        }
+
+                        if ( MultipleRegionsSelectorValidator.showErrorsIfRequiredFieldsAreEmpty( form ) ) {
+                            return false;
+                        }
+
+                        form.submit();
+                    }
                 });
             }
         })();

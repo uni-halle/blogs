@@ -17,7 +17,7 @@ class AWPCP_ContentAwareSidebarsListingsCategoriesModule extends CASModule {
     private $request;
 
     public function __construct( $categories = null, $listings = null, $walker = null, $request = null ) {
-        parent::__construct( AWPCP_CAS_LISTINGS_CATEGORIES_MODULE, __( 'Categories (AWPCP)', 'AWPCP' ) );
+        parent::__construct( AWPCP_CAS_LISTINGS_CATEGORIES_MODULE, __( 'Categories (AWPCP)', 'another-wordpress-classifieds-plugin' ) );
 
         if ( is_null( $categories ) ) {
             $this->categories = awpcp_categories_collection();

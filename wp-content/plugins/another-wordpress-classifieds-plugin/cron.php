@@ -83,16 +83,16 @@ function doadexpirations() {
 
         $body = $bodybase;
         $body.= "\n\n";
-        $body.= __( "Listing Details", "AWPCP" );
+        $body.= __( "Listing Details", 'another-wordpress-classifieds-plugin' );
         $body.= "\n\n";
-        $body.= __( "Ad Title:", "AWPCP" );
+        $body.= __( "Ad Title:", 'another-wordpress-classifieds-plugin' );
         $body.= " $adtitle";
         $body.= "\n\n";
-        $body.= __( "Posted:", "AWPCP" );
+        $body.= __( "Posted:", 'another-wordpress-classifieds-plugin' );
         $body.= " $adstartdate";
         $body.= "\n\n";
 
-        $body.= __( "Renew your ad by visiting:", "AWPCP" );
+        $body.= __( "Renew your ad by visiting:", 'another-wordpress-classifieds-plugin' );
         $body.= " " . urldecode( awpcp_get_renew_ad_url( $ad->ad_id ) );
         $body.= "\n\n";
 

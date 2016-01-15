@@ -54,14 +54,48 @@ class C_NextGen_Shortcode_Manager
         if (defined('NGG_DISABLE_FILTER_THE_CONTENT') && NGG_DISABLE_FILTER_THE_CONTENT)
             return;
 
-        add_filter('the_content', array(&$this, 'deactivate_all'), -(PHP_INT_MAX-1));
+		// We have to temporily enable our shortcodes before wptexturize runs, and then
+		// disable them again immediately afterwards
+		global $wp_filter;
+
+		$filters = $wp_filter['the_content'][10];
+		$wp_filter['the_content'][10] = array();
+		foreach ($filters as $k=>$v) {
+			if ($k == 'wptexturize') {
+				$wp_filter['the_content'][10]['before_wptexturize'] = array(
+					'function'		=> 	array(&$this, 'activate_all_for_wptexturize'),
+					'accepted_args'	=>	1
+				);
+				$wp_filter['the_content'][10][$k] = $v;
+				$wp_filter['the_content'][10]['after_wptexturize'] = array(
+					'function'		=> 	array(&$this, 'deactivate_all'),
+					'accepted_args'	=>	1
+				);
+
+			}
+			else $wp_filter['the_content'][10][$k] = $v;
+		}
+
+		add_filter('the_content', array(&$this, 'deactivate_all_for_wptexturize'), -(PHP_INT_MAX-1));
         add_filter('the_content', array(&$this, 'parse_content'), PHP_INT_MAX-1);
+
+	}
+
+	function activate_all_for_wptexturize($content)
+	{
+		$this->activate_all();
+		return $content;
+	}
+
+	function deactivate_all_for_wptexturize($content)
+	{
+		return $this->deactivate_all($content);
 	}
 
 	/**
 	 * Deactivates all shortcodes
 	 */
-	function deactivate_all($content)
+	function deactivate_all($content, $increment_runlevel=TRUE)
 	{
 		// There is a bug in Wordpress itself: when a hook recurses any hooks meant to execute after it are discarded.
 		// For example the following code, despite expectations, will NOT display 'bar' as bar() is never executed.
@@ -76,7 +110,7 @@ class C_NextGen_Shortcode_Manager
 		 * add_action('foo', 'bar');
 		 * do_action('foo');
 		 */
-		$this->_runlevel += 1;
+		if ($increment_runlevel) $this->_runlevel += 1;
 		if ($this->_runlevel > 1 && defined('WP_DEBUG') && WP_DEBUG && !is_admin() && !$this->_has_warned)
 		{
 			$this->_has_warned = TRUE;

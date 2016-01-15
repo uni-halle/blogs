@@ -8,10 +8,8 @@ require_once(AWPCP_DIR . '/includes/helpers/page.php');
  */
 class AWPCP_SearchAdsPage extends AWPCP_Page {
 
-    public $messages = array();
-
     public function __construct($page='awpcp-search-ads', $title=null) {
-        parent::__construct($page, is_null($title) ? __('Search Ads', 'AWPCP') : $title);
+        parent::__construct($page, is_null($title) ? __('Search Ads', 'another-wordpress-classifieds-plugin') : $title);
     }
 
     public function get_current_action($default='searchads') {
@@ -30,7 +28,7 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
 
         $awpcp = awpcp();
         $awpcp->js->localize( 'page-search-ads', array(
-            'keywordphrase' => __( 'You did not enter a keyword or phrase to search for. You must at the very least provide a keyword or phrase to search for.', 'AWPCP' )
+            'keywordphrase' => __( 'You did not enter a keyword or phrase to search for. You must at the very least provide a keyword or phrase to search for.', 'another-wordpress-classifieds-plugin' )
         ) );
 
         return $this->_dispatch();
@@ -58,7 +56,7 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
             'regions' => awpcp_request_param('regions'),
         ) );
 
-        $data = apply_filters( 'awpcp-get-posted-data', $data, 'search' );
+        $data = apply_filters( 'awpcp-get-posted-data', $data, 'search', array() );
 
         return $data;
     }
@@ -67,26 +65,25 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
         $filtered = array_filter($data);
 
         if (empty($filtered)) {
-            $errors[] = __("You did not enter a keyword or phrase to search for. You must at the very least provide a keyword or phrase to search for.", "AWPCP");
+            $errors[] = __("You did not enter a keyword or phrase to search for. You must at the very least provide a keyword or phrase to search for.", 'another-wordpress-classifieds-plugin');
         }
 
         if (!empty($data['query']) && strlen($data['query']) < 3) {
-            $errors['query'] = __("You have entered a keyword that is too short to search on. Search keywords must be at least 3 letters in length. Please try another term.", "AWPCP");
+            $errors['query'] = __("You have entered a keyword that is too short to search on. Search keywords must be at least 3 letters in length. Please try another term.", 'another-wordpress-classifieds-plugin');
         }
 
         if (!empty($data['min_price']) && !is_numeric($data['min_price'])) {
-            $errors['min_price'] = __("You have entered an invalid minimum price. Make sure your price contains numbers only. Please do not include currency symbols.", "AWPCP");
+            $errors['min_price'] = __("You have entered an invalid minimum price. Make sure your price contains numbers only. Please do not include currency symbols.", 'another-wordpress-classifieds-plugin');
         }
 
         if (!empty($data['max_price']) && !is_numeric($data['max_price'])) {
-            $errors['max_price'] = __("You have entered an invalid maximum price. Make sure your price contains numbers only. Please do not include currency symbols.", "AWPCP");
+            $errors['max_price'] = __("You have entered an invalid maximum price. Make sure your price contains numbers only. Please do not include currency symbols.", 'another-wordpress-classifieds-plugin');
         }
 
         return empty($errors);
     }
 
     protected function search_step() {
-        $this->messages[] = __("Use the form below to conduct a broad or narrow search. For a broader search enter fewer parameters. For a narrower search enter as many parameters as needed to limit your search to a specific criteria.", "AWPCP");
         return $this->search_form($this->get_posted_data());
     }
 
@@ -98,14 +95,22 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
         $ui['price-field'] = get_awpcp_option('displaypricefield');
         $ui['allow-user-to-search-in-multiple-regions'] = get_awpcp_option('allow-user-to-search-in-multiple-regions');
 
-        $messages = $this->messages;
+        $messages = array( __( 'Use the form below to select the fields on which you want to search. Adding more fields makes for a more specific search. Using fewer fields will make for a broader search.', 'another-wordpress-classifieds-plugin' ) );
 
         $url_params = wp_parse_args( parse_url( awpcp_current_url(), PHP_URL_QUERY ) );
-        $hidden = awpcp_flatten_array( array_merge( $url_params, array( 'a' => 'dosearch' ) ) );
 
-        $page = $this;
+        foreach ( $form as $name => $value ) {
+            if ( isset( $url_params[ $name ] ) ) {
+                unset( $url_params[ $name ] );
+            }
+        }
+
+        $action_url = awpcp_current_url();
+        $hidden = array_merge( $url_params, array( 'a' => 'dosearch' ) );
+
+        $params = compact( 'action_url', 'ui', 'form', 'hidden', 'messages', 'errors' );
+
         $template = AWPCP_DIR . '/frontend/templates/page-search-ads.tpl.php';
-        $params = compact('page', 'ui', 'form', 'hidden', 'messages', 'errors');
 
         return $this->render($template, $params);
     }
@@ -129,6 +134,7 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
 
     private function search_listings( $form ) {
         $query = array_merge( $form, array(
+            'context' => 'public-listings',
             'keyword' => $form['query'],
             'category_id' => $form['category'],
             'contact_name' => $form['name'],
@@ -157,7 +163,7 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
 
         $return_link = '<div class="awpcp-return-to-search-link awpcp-clearboth"><a href="<link-url>"><link-text></a></div>';
         $return_link = str_replace( '<link-url>', esc_url( $href ), $return_link );
-        $return_link = str_replace( '<link-text>', __( 'Return to Search', 'AWPCP' ), $return_link );
+        $return_link = str_replace( '<link-text>', __( 'Return to Search', 'another-wordpress-classifieds-plugin' ), $return_link );
 
         return $return_link;
     }

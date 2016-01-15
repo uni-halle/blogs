@@ -5,7 +5,7 @@ require_once( AWPCP_DIR . '/frontend/page-browse-ads.php' );
 class AWPCP_BrowseCategoriesPage extends AWPCP_BrowseAdsPage {
 
     public function __construct($page='awpcp-browse-categories', $title=null) {
-        $title = is_null($title) ? __( 'Browse Categories', 'AWPCP' ) : $title;
+        $title = is_null($title) ? __( 'Browse Categories', 'another-wordpress-classifieds-plugin' ) : $title;
         parent::__construct( $page, $title );
     }
 

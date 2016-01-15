@@ -76,7 +76,7 @@ class CF7DBOptionsManager {
      * Cleanup: remove all options from the DB
      * @return void
      */
-    protected function deleteSavedOptions() {
+    public function deleteSavedOptions() {
         $optionMetaData = $this->getOptionMetaData();
         if (is_array($optionMetaData)) {
             foreach ($optionMetaData as $aOptionKey => $aOptionMeta) {
@@ -127,14 +127,19 @@ class CF7DBOptionsManager {
      * to enforce "scoping" the options in the WP options table thereby avoiding name conflicts
      * @param $optionName string defined in settings.php and set as keys of $this->optionMetaData
      * @param $default string default value to return if the option is not set
+     * @param $saveDefault boolean indicates whether to save the default value if no value was found.
+     * this helps prevents calls to the DB b/c the option does not exist and so cannot be cached by WP
      * @return string the value from delegated call to get_option(), or optional default value
      * if option is not set.
      */
-    public function getOption($optionName, $default = null) {
+    public function getOption($optionName, $default = null, $saveDefault = false) {
         $prefixedOptionName = $this->prefix($optionName); // how it is stored in DB
         $retVal = get_option($prefixedOptionName);
         if (!$retVal && $default) {
             $retVal = $default;
+            if ($saveDefault) {
+                add_option($optionName, $default);
+            }
         }
         return $retVal;
     }
@@ -155,7 +160,7 @@ class CF7DBOptionsManager {
      * to enforce "scoping" the options in the WP options table thereby avoiding name conflicts
      * @param  $optionName string defined in settings.php and set as keys of $this->optionMetaData
      * @param  $value mixed the new value
-     * @return null from delegated call to delete_option()
+     * @return bool from delegated call to add_option()
      */
     public function addOption($optionName, $value) {
         $prefixedOptionName = $this->prefix($optionName); // how it is stored in DB
@@ -163,11 +168,11 @@ class CF7DBOptionsManager {
     }
 
     /**
-     * A wrapper function delegating to WP add_option() but it prefixes the input $optionName
+     * A wrapper function delegating to WP update_option() but it prefixes the input $optionName
      * to enforce "scoping" the options in the WP options table thereby avoiding name conflicts
      * @param  $optionName string defined in settings.php and set as keys of $this->optionMetaData
      * @param  $value mixed the new value
-     * @return null from delegated call to delete_option()
+     * @return bool from delegated call to update_option()
      */
     public function updateOption($optionName, $value) {
         $prefixedOptionName = $this->prefix($optionName); // how it is stored in DB
@@ -198,7 +203,7 @@ class CF7DBOptionsManager {
      * @param  $roleName
      * @return string a WP capability or '' if unknown input role
      */
-    protected function roleToCapability($roleName) {
+    public function roleToCapability($roleName) {
         switch ($roleName) {
             case 'Super Admin':
                 return 'manage_options';
@@ -422,7 +427,7 @@ class CF7DBOptionsManager {
      * @param  $optionValue string
      * @return string __($optionValue) if it is listed in this method, otherwise just returns $optionValue
      */
-    protected function getOptionValueI18nString($optionValue) {
+    public function getOptionValueI18nString($optionValue) {
         switch ($optionValue) {
             case 'true': return __('true', 'contact-form-7-to-database-extension');
             case 'false': return __('false', 'contact-form-7-to-database-extension');

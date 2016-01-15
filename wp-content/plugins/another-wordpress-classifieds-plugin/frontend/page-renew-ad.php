@@ -40,13 +40,13 @@ class AWPCP_RenewAdPage extends AWPCP_Place_Ad_Page {
         $ad = $this->get_ad();
 
         if (is_null($ad)) {
-            $message = __("The specified Ad doesn't exist or you reached this page directly, without specifying the Ad ID.", 'AWPCP');
+            $message = __("The specified Ad doesn't exist or you reached this page directly, without specifying the Ad ID.", 'another-wordpress-classifieds-plugin');
             return $this->render('content', awpcp_print_error($message));
         } else if (!$ad->is_about_to_expire() && !$ad->has_expired()) {
-            $message = __("The specified Ad doesn't need to be renewed.", 'AWPCP');
+            $message = __("The specified Ad doesn't need to be renewed.", 'another-wordpress-classifieds-plugin');
             return $this->render('content', awpcp_print_error($message));
         } else if ( !$this->verify_renew_ad_hash( $ad ) ) {
-            $message = __("There was an error trying to renew your Ad. The URL is not valid. Please contact the Administrator of this site for further assistance.", 'AWPCP');
+            $message = __("There was an error trying to renew your Ad. The URL is not valid. Please contact the Administrator of this site for further assistance.", 'another-wordpress-classifieds-plugin');
             return $this->render('content', awpcp_print_error($message));
         }
 
@@ -55,7 +55,7 @@ class AWPCP_RenewAdPage extends AWPCP_Place_Ad_Page {
         if (!is_null($transaction) && $transaction->get('context') != $this->context) {
             $page_name = awpcp_get_page_name('renew-ad-page-name');
             $page_url = awpcp_get_renew_ad_url( $ad->ad_id );
-            $message = __('You are trying to post an Ad using a transaction created for a different purpose. Pelase go back to the <a href="%s">%s</a> page.<br>If you think this is an error please contact the administrator and provide the following transaction ID: %s', 'AWPCP');
+            $message = __('You are trying to post an Ad using a transaction created for a different purpose. Pelase go back to the <a href="%s">%s</a> page.<br>If you think this is an error please contact the administrator and provide the following transaction ID: %s', 'another-wordpress-classifieds-plugin');
             $message = sprintf($message, $page_url, $page_name, $transaction->id);
             return $this->render('content', awpcp_print_error($message));
         }
@@ -64,7 +64,7 @@ class AWPCP_RenewAdPage extends AWPCP_Place_Ad_Page {
 
         if (!is_null($transaction) && $transaction->is_payment_completed()) {
             if ( ! $transaction->was_payment_successful() ) {
-                $message = __('You can\'t renew your Ad at this time because the payment associated with this transaction failed (see reasons below).', 'AWPCP');
+                $message = __('You can\'t renew your Ad at this time because the payment associated with this transaction failed (see reasons below).', 'another-wordpress-classifieds-plugin');
                 $message = awpcp_print_message($message);
                 $message = $message . awpcp_payments_api()->render_transaction_errors($transaction);
                 return $this->render('content', $message);
@@ -83,7 +83,7 @@ class AWPCP_RenewAdPage extends AWPCP_Place_Ad_Page {
         $implementation = $this->get_renew_ad_page_implementation($ad);
 
         if (is_null($implementation)) {
-            $message = __("The Ad was posted under a Payment Term that no longer exists or is disabled. The Ad can't be renewed.", 'AWPCP');
+            $message = __("The Ad was posted under a Payment Term that no longer exists or is disabled. The Ad can't be renewed.", 'another-wordpress-classifieds-plugin');
             $content = '<p>' . $this->get_return_link($ad) . '</p>';
             return $this->render('content', awpcp_print_error($message) . $content);
         }
@@ -118,16 +118,16 @@ class AWPCP_RenewAdPage extends AWPCP_Place_Ad_Page {
 
     public function get_return_link($ad) {
         if (is_admin()) {
-            return sprintf('<a href="%1$s">%2$s</a>', $this->get_panel_url(), __('Return to Listings', 'AWPCP'));
+            return sprintf('<a href="%1$s">%2$s</a>', $this->get_panel_url(), __('Return to Listings', 'another-wordpress-classifieds-plugin'));
         } else {
-            return sprintf('<a href="%1$s">%2$s</a>', url_showad($ad->ad_id), __('You can see your Ad here', 'AWPCP'));
+            return sprintf('<a href="%1$s">%2$s</a>', url_showad($ad->ad_id), __('You can see your Ad here', 'another-wordpress-classifieds-plugin'));
         }
     }
 
     public function render_finish_step($ad) {
         $return = $this->get_return_link($ad);
 
-        $response = __("The Ad has been successfully renewed. New expiration date is %s. ", 'AWPCP');
+        $response = __("The Ad has been successfully renewed. New expiration date is %s. ", 'another-wordpress-classifieds-plugin');
         $response = sprintf("%s %s.", sprintf($response, $ad->get_end_date()), $return);
 
         $params = compact('response');
@@ -147,10 +147,10 @@ class AWPCP_RenewAdPageImplementation {
 
     protected function validate_order($data, &$errors=array()) {
         if (is_null($data['term'])) {
-            $errors[] = __('You should choose one of the available Payment Terms.', 'AWPCP');
+            $errors[] = __('You should choose one of the available Payment Terms.', 'another-wordpress-classifieds-plugin');
         } else {
             if ($data['term']->type != $data['fee']->type || $data['term']->id != $data['fee']->id) {
-                $errors[] = __("You are trying to renew your Ad using a different Payment Term. That's not allowed.", 'AWPCP');
+                $errors[] = __("You are trying to renew your Ad using a different Payment Term. That's not allowed.", 'another-wordpress-classifieds-plugin');
             }
         }
     }
@@ -223,7 +223,7 @@ class AWPCP_RenewAdPageImplementation {
 
         $messages = $this->messages;
         if (awpcp_current_user_is_admin()) {
-            $messages[] = __("You are logged in as an administrator. Any payment steps will be skipped.", "AWPCP");
+            $messages[] = __("You are logged in as an administrator. Any payment steps will be skipped.", 'another-wordpress-classifieds-plugin');
         }
 
         $params = array(
@@ -269,7 +269,7 @@ class AWPCP_RenewAdPageImplementation {
         }
 
         if ( !$transaction->is_doing_checkout() && !$transaction->is_processing_payment() ) {
-            $message = __('We can\'t process payments for this Payment Transaction at this time. Please contact the website administrator and provide the following transaction ID: %s', 'AWPCP');
+            $message = __('We can\'t process payments for this Payment Transaction at this time. Please contact the website administrator and provide the following transaction ID: %s', 'another-wordpress-classifieds-plugin');
             $message = sprintf($message, $transaction->id);
             return $this->page->render('content', awpcp_print_error($message));
         }
@@ -331,7 +331,7 @@ class AWPCP_RenewAdPageImplementation {
         $ad = $this->page->get_ad();
 
         if (is_null($ad)) {
-            $message = __('The Ad associated with this transaction doesn\'t exists.', 'AWPCP');
+            $message = __('The Ad associated with this transaction doesn\'t exists.', 'another-wordpress-classifieds-plugin');
             return $this->page->render('content', awpcp_print_error($message));
         }
 

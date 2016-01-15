@@ -1,6 +1,6 @@
 <?php
 
-define( 'BNC_API_VERSION', '4.2' );
+define( 'BNC_API_VERSION', '5.0' );
 define( 'BNC_API_URL', 'http://api.wptouch.com/v/' . BNC_API_VERSION );
 define( 'BNC_API_TIMEOUT', 30 );
 
@@ -24,7 +24,7 @@ class BNCAPI {
 		$this->server_down = false;
 		$this->response_code = 0;
 		$this->attempts = 0;
-		$this->product_name = 'wptouch-pro-3';
+		$this->product_name = 'wptouch-pro-4';
 
 		if ( $this->bncid && $this->license_key ) {
 			$this->might_have_license = true;
@@ -42,6 +42,15 @@ class BNCAPI {
 
 		// Always use the PHP serialization method for data
 		$params[ 'format' ] = 'php';
+
+		if ( is_multisite() ) {
+			$params[ 'multisite' ] = 1;
+			$params[ 'site_id' ] = get_current_blog_id();
+			$params[ 'network_activated' ] = ( is_plugin_active_for_network( WPTOUCH_PLUGIN_SLUG ) ? '1' : '0' );
+			$params[ 'network_controlled' ] = ( wptouch_is_controlled_network() ? '1' : '0' );
+		} else {
+			$params[ 'multisite' ] = 0;
+		}
 
 		if ( $do_auth && $this->might_have_license ) {
 			// Sort the parameters
@@ -79,6 +88,8 @@ class BNCAPI {
         $raw_response = wp_remote_request( $url, $options );
         if ( !is_wp_error( $raw_response ) ) {
         	if ( $raw_response['response']['code'] == 200 ) {
+
+        	//	echo "\n\n" . $raw_response[ 'body' ] . "\n\n"; die;
         		$result = unserialize( $raw_response['body'] );
 
         		$this->response_code = $result['code'];
@@ -162,6 +173,7 @@ class BNCAPI {
 		$params = array(
 			'bncid' => $this->bncid,
 			'site' => $this->get_proper_server_name(),
+			'product_name' => $this->product_name,
 			'current_version' => WPTOUCH_VERSION
 		);
 
@@ -180,10 +192,10 @@ class BNCAPI {
 	}
 
 	function get_all_available_addons() {
-
 		$params = array(
 			'bncid' => $this->bncid,
 			'site' => $this->get_proper_server_name(),
+			'product_name' => $this->product_name,
 			'current_version' => WPTOUCH_VERSION
 		);
 
@@ -253,6 +265,7 @@ class BNCAPI {
 		);
 
 		$result = false;
+
 		if ( $this->might_have_license ) {
 			$params[ 'bncid' ] = $this->bncid;
 			$result = $this->do_api_request( 'products', 'get_version', $params, true );
@@ -299,6 +312,38 @@ class BNCAPI {
 		$result = $this->do_api_request( 'user', 'add_license', $params, true );
 		if ( $result and $result['status'] == 'ok' ) {
 			return true;
+		}
+
+		return false;
+	}
+
+	function user_remove_license() {
+		if ( !$this->might_have_license ) {
+			return false;
+		}
+
+		$params = array(
+			'bncid' => $this->bncid,
+			'product_name' => $this->product_name,
+			'site' => $this->get_proper_server_name()
+		);
+
+		$result = $this->do_api_request( 'user', 'remove_license', $params, true );
+		if ( $result and $result['status'] == 'ok' ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	function translations_get_list() {
+		$params = array(
+			'product_name' => $this->product_name
+		);
+
+		$result = $this->do_api_request( 'translations', 'get_list', $params, false );
+		if ( $result and $result['status'] == 'ok' ) {
+			return $result [ 'result' ][ 'language_info' ];
 		}
 
 		return false;

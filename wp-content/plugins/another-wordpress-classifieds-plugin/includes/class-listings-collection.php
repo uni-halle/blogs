@@ -40,7 +40,7 @@ class AWPCP_ListingsCollection {
     }
 
     private function throw_no_listing_was_found_with_id_exception( $listing_id ) {
-        $message = __( 'No Listing was found with id: %d.', 'AWPCP' );
+        $message = __( 'No Listing was found with id: %d.', 'another-wordpress-classifieds-plugin' );
         throw new AWPCP_Exception( sprintf( $message, $listing_id ) );
     }
 

@@ -21,8 +21,8 @@ class cOsm_icon
   private $icon_name= 'no', $icon_URL = 'no';
   private $icon_height = -1,$icon_width = -1,$icon_offset_height = -1,$icon_offset_width = -1;
   private $icon_color = 'no';
-
- // just not to break shortcodes before v3.1
+  
+// just not to break shortcodes before v3.1
  private function replaceOldIcon($a_IconName){
   if ($a_IconName == "car.png"){
     return "mic_black_car_01.png";
@@ -75,7 +75,7 @@ class cOsm_icon
     $a_IconName == "wpttemp-green.png" || $a_IconName == "wpttemp-red.png" ||
     $a_IconName == "mic_yel_restaurant_chinese_01.png" ||
     $a_IconName == "mic_yel_campingtents_01.png" ||
-    $a_IconName == "mic_toilets_disability_01.png" || $a_IconName == "mic_shark_icon.png" ||
+    $a_IconName == "mic_blue_toilets_disability_01.png" || $a_IconName == "mic_shark_icon.png" ||
     $a_IconName == "mic_red_pizzaria_01.png" || $a_IconName == "mic_parasailing_01.png" ||
     $a_IconName == "mic_green_horseriding_01.png" ||
     $a_IconName == "mic_blue_tweet_01.png" ||

@@ -8,7 +8,7 @@ function foundation_infinite_scroll_init() {
 		'foundation_infinite_scroll', 
 		foundation_get_base_module_url() . '/infinite-scroll/infinite-scroll.js', 
 		array( 'jquery' ),
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		true
 	);
 }

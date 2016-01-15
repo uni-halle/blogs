@@ -26,8 +26,8 @@ class AWPCP_FormFieldsTable extends WP_List_Table {
     public function get_columns() {
         $columns = array(
             'cb' => '<input type="checkbox" />',
-            'name' => _x( 'Name', 'form field name', 'AWPCP' ),
-            'slug' => _x( 'Slug', 'form field slug', 'AWPCP' ),
+            'name' => _x( 'Name', 'form field name', 'another-wordpress-classifieds-plugin' ),
+            'slug' => _x( 'Slug', 'form field slug', 'another-wordpress-classifieds-plugin' ),
         );
 
         return $columns;

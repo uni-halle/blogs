@@ -17,7 +17,7 @@ function foundation_font_awesome_init() {
 		'foundation_font_awesome_css',
 		foundation_get_base_module_url() . '/font-awesome/font-awesome.min.css',
 		'',
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		'screen'
 	);
 }

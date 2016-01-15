@@ -303,7 +303,7 @@ class Mixin_Attach_To_Post extends Mixin
         $this->mark_script('iris');
         $this->mark_script('wp-color-picker');
         $this->mark_script('nextgen_admin_page');
-        $this->mark_script('select2');
+        $this->mark_script('ngg_select2');
         // Enqueue frame event publishing
         wp_enqueue_script('frame_event_publisher');
         $this->object->mark_script('frame_event_publisher');
@@ -317,9 +317,9 @@ class Mixin_Attach_To_Post extends Mixin
         $this->object->mark_script('jquery-ui-tooltip');
         $this->object->mark_script('ngg_tabs');
         // Ensure select2
-        wp_enqueue_style('select2');
-        wp_enqueue_script('select2');
-        $this->object->mark_script('select2');
+        wp_enqueue_style('ngg_select2');
+        wp_enqueue_script('ngg_select2');
+        $this->object->mark_script('ngg_select2');
         // Ensure that the Photocrati AJAX library is loaded
         wp_enqueue_script('photocrati_ajax');
         $this->object->mark_script('photocrati_ajax');

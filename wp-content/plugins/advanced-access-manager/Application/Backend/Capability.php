@@ -82,12 +82,28 @@ class AAM_Backend_Capability {
                     $cap,
                     $this->getGroup($cap),
                     AAM_Backend_Helper::getHumanText($cap),
-                    ($subject->hasCapability($cap) ? 'checked' : 'unchecked')
+                    $this->prepareActionList($cap)
                 );
             }
         }
 
         return json_encode($response);
+    }
+    
+    /**
+     * 
+     * @param type $cap
+     * @return type
+     */
+    protected function prepareActionList($cap) {
+        $subject = AAM_Backend_View::getSubject();
+        $actions = array();
+        
+        $actions[] = ($subject->hasCapability($cap) ? 'checked' : 'unchecked');
+        
+        return implode(
+            ',', apply_filters('aam-cap-row-actions-filter', $actions, $subject)
+        );
     }
 
     /**
@@ -101,13 +117,12 @@ class AAM_Backend_Capability {
             $caps = array_merge($caps, $role->capabilities);
         }
         
-        $subject = AAM_Backend_View::getSubject();
         foreach (array_keys($caps) as $cap) {
             $response[] = array(
                 $cap,
                 $this->getGroup($cap),
                 AAM_Backend_Helper::getHumanText($cap),
-                ($subject->hasCapability($cap) ? 'checked' : 'unchecked')
+                $this->prepareActionList($cap)
             );
         }
         

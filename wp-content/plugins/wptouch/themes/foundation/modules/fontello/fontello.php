@@ -7,7 +7,7 @@ function foundation_fontello_init() {
 		'foundation_fontello_css',
 		foundation_get_base_module_url() . '/fontello/css/fontello.css',
 		'',
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		'screen'
 	);
 }

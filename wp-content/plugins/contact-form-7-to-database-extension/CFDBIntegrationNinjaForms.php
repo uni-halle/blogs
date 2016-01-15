@@ -1,7 +1,7 @@
 <?php
 
 /*
-    "Contact Form to Database" Copyright (C) 2011-2015 Michael Simpson  (email : michael.d.simpson@gmail.com)
+    "Contact Form to Database" Copyright (C) 2011-2016 Michael Simpson  (email : michael.d.simpson@gmail.com)
 
     This file is part of Contact Form to Database.
 
@@ -50,7 +50,9 @@ class CFDBIntegrationNinjaForms {
     public function saveFormData() {
         try {
             $data = $this->convertData();
-            return $this->plugin->saveFormData($data);
+            if ($data) {
+                return $this->plugin->saveFormData($data);
+            }
         } catch (Exception $ex) {
             $this->plugin->getErrorLog()->logException($ex);
         }
@@ -72,35 +74,43 @@ class CFDBIntegrationNinjaForms {
         $uploadFiles = array();
 
         // Get all the user submitted values
-        $submitted_field_ids = array_keys($ninja_forms_processing->get_all_submitted_fields());
-        $all_fields = $ninja_forms_processing->get_all_fields();
 
-        if (is_array($all_fields)) {
-            foreach ($all_fields as $field_id => $user_value) {
-                if (in_array($field_id, $submitted_field_ids)) {
-                    if ($ninja_forms_processing->get_field_setting($field_id, 'type') == '_honeypot') {
-                        continue;
-                    }
-                    $field_name = $ninja_forms_processing->get_field_setting($field_id, 'label');
-                    if (is_array($user_value)) {
-                        $postedData[$field_name] = implode(',', $user_value);
-                    } else {
-                        $postedData[$field_name] = $user_value;
+        $submitted_fields = $ninja_forms_processing->get_all_submitted_fields();
+        if (is_array($submitted_fields)) {
+            $submitted_field_ids = array_keys($submitted_fields);
+            $all_fields = $ninja_forms_processing->get_all_fields($submitted_fields);
+            if (is_array($all_fields)) {
+                foreach ($all_fields as $field_id => $user_value) {
+                    if (in_array($field_id, $submitted_field_ids)) {
+                        if ($ninja_forms_processing->get_field_setting($field_id, 'type') == '_honeypot') {
+                            continue;
+                        }
+                        $field_name = $ninja_forms_processing->get_field_setting($field_id, 'label');
+                        if (is_array($user_value)) {
+                            $postedData[$field_name] = implode(',', $user_value);
+                        } else {
+                            $postedData[$field_name] = $user_value;
+                        }
                     }
                 }
+                $formTitle = 'Ninja Form';
+                if (isset($ninja_forms_processing->data['form']['form_title'])) {
+                    $formTitle = $ninja_forms_processing->data['form']['form_title'];
+                }
+
+                return (object)array(
+                        'title' => $formTitle,
+                        'posted_data' => $postedData,
+                        'uploaded_files' => $uploadFiles);
+
             }
+        } else {
+            // There is no form data to process.
+            // Ignore the form submission event
+            // Seems to happen when PayPal
+            // https://wordpress.org/support/topic/weird-error-code-appearing-when-someone-submits-using-ninja-forms?replies=2#post-7889546
         }
-
-        $formTitle = 'Ninja Form';
-        if (isset($ninja_forms_processing->data['form']['form_title'])) {
-            $formTitle = $ninja_forms_processing->data['form']['form_title'];
-        }
-
-        return (object)array(
-                'title' => $formTitle,
-                'posted_data' => $postedData,
-                'uploaded_files' => $uploadFiles);
+        return null;
     }
-
 
 }

@@ -7,7 +7,7 @@ function foundation_hammer_init() {
 		'foundation_hammer',
 		foundation_get_base_module_url() . '/hammer/hammer.min.js',
 		array( 'jquery' ),
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		true
 	);
 
@@ -15,7 +15,7 @@ function foundation_hammer_init() {
 		'foundation_hammer_wptouch',
 		foundation_get_base_module_url() . '/hammer/wptouch.hammer.js',
 		array( 'foundation_hammer' ),
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		true
 	);
 }

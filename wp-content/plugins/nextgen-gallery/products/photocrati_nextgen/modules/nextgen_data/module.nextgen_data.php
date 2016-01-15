@@ -103,5 +103,20 @@ class M_NextGen_Data extends C_Base_Module
     	
     	return $order_by;
     }
+
+	static function strip_html($data, $just_scripts=FALSE)
+	{
+		$retval = $data;
+
+		if (!$just_scripts)
+			$retval = wp_strip_all_tags($retval, TRUE);
+		else {
+			$retval = preg_replace( '@<(script|style)[^>]*?>.*?</\\1>@si', '', $retval );
+			$retval= preg_replace('/[\r\n\t ]+/', ' ', $retval);
+		}
+		$retval = preg_replace("/\son[^=]+=/", '', $retval);
+
+		return $retval;
+	}
 }
 new M_NextGen_Data();

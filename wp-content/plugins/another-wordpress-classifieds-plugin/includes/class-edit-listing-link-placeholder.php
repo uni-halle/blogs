@@ -29,13 +29,13 @@ class AWPCP_EditListingLinkPlaceholder {
 
         $template = str_replace( '<edit-listing-url>', esc_url( awpcp_get_edit_listing_url( $listing ) ), $template );
         $template = str_replace( '<link-title>', esc_attr( $this->generate_link_title( $listing ) ), $template );
-        $template = str_replace( '<link-text>', esc_html( _x( 'Edit Ad', 'text for edit listing link', 'AWPCP' ) ), $template );
+        $template = str_replace( '<link-text>', esc_html( _x( 'Edit Ad', 'text for edit listing link', 'another-wordpress-classifieds-plugin' ) ), $template );
 
         return $template;
     }
 
     private function generate_link_title( $listing ) {
-        $template = _x( 'Edit <listing-title>', 'title attribute for edit listing link', 'AWPCP' );
+        $template = _x( 'Edit <listing-title>', 'title attribute for edit listing link', 'another-wordpress-classifieds-plugin' );
         $template = str_replace( '<listing-title>', $listing->get_title(), $template );
 
         return $template;

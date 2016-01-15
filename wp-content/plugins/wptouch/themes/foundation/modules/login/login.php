@@ -9,11 +9,11 @@ add_action( 'wptouch_post_footer', 'foundation_add_login_form' );
 function foundation_login_init() {
 	// Load JS
 	if ( wptouch_fdn_show_login() ) {
-		wp_enqueue_script( 
-			'foundation_login_jquery', 
-			foundation_get_base_module_url() . '/login/wptouch-login.js', 
+		wp_enqueue_script(
+			'foundation_login_jquery',
+			foundation_get_base_module_url() . '/login/wptouch-login.js',
 			array( 'jquery' ),
-			FOUNDATION_VERSION,
+			md5( FOUNDATION_VERSION ),
 			true
 		);
 	}
@@ -35,15 +35,15 @@ function foundation_login_settings( $page_options ) {
 			wptouch_add_setting(
 				'checkbox',
 				'show_login_box',
-				__( 'Use fly-in login form', 'wptouch-pro' ),
-				__( 'Will add login links and allow mobile visitors to login to your website from mobile devices', 'wptouch-pro' ),
+				__( 'Allow Login', 'wptouch-pro' ),
+				__( 'Will add login/out links', 'wptouch-pro' ),
 				WPTOUCH_SETTING_BASIC,
 				'2.0'
 			),
 			wptouch_add_setting(
 				'checkbox',
 				'show_login_links',
-				__( 'Show "Sign-up" and "Lost Password?" links', 'wptouch-pro' ),
+				__( 'Include "Sign-up" and "Lost Password?" links', 'wptouch-pro' ),
 				'',
 				WPTOUCH_SETTING_BASIC,
 				'2.0'
@@ -59,7 +59,7 @@ function foundation_login_settings( $page_options ) {
 
 function foundation_add_login_form(){
 	if ( wptouch_fdn_show_login() ) {
-		$content = wptouch_capture_include_file( dirname( __FILE__ ) . '/login-html.php' );	
+		$content = wptouch_capture_include_file( dirname( __FILE__ ) . '/login-html.php' );
 		echo $content;
 	}
 }
@@ -70,15 +70,15 @@ function wptouch_fdn_show_login(){
 	if ( $settings->show_login_box ) {
 		return true;
 	} else {
-		return false;		
+		return false;
 	}
 }
 
 function wptouch_fdn_show_login_links(){
 	$settings = foundation_get_settings();
-	if ( $settings->show_login_links ) {
+	if ( apply_filters( 'wptouch_show_login_links', $settings->show_login_links ) ) {
 		return true;
 	} else {
-		return false;		
+		return false;
 	}
 }

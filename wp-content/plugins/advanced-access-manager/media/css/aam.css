@@ -88,6 +88,9 @@
 .icon-download-cloud:before { content: '\e818'; } /* '' */
 .icon-github:before { content: '\e819'; } /* '' */
 .icon-twitter:before { content: '\e81a'; } /* '' */
+.icon-sort-down:before { content: '\e81b'; } /* '' */
+.icon-sort-up:before { content: '\e81c'; } /* '' */
+.icon-sort:before { content: '\e81d'; } /* '' */
 
 .animate-spin {
     -moz-animation: spin 2s infinite linear;
@@ -199,6 +202,10 @@ html, body {
 
 .js .postbox .hndle, .js .widget .widget-top {
     cursor: auto;
+}
+
+.hndle a {
+    font-size: 1em;
 }
 
 /** BOOTSTRAP **/
@@ -404,6 +411,10 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
     margin-top: 30px;
 }
 
+.aam-block {
+    display: block;
+}
+
 .aam-lock {
     position: absolute;
     top: 0;
@@ -599,7 +610,7 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
 
 .aam-help-menu {
     float: right;
-    font-size: 1.2em;
+    font-size: 1em;
     color: #337ab7;
     cursor: pointer;
 }

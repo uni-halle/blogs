@@ -14,7 +14,7 @@ class M_DataMapper extends C_Base_Module
 			'photocrati-datamapper',
 			'DataMapper',
 			'Provides a database abstraction layer following the DataMapper pattern',
-			'0.8',
+			'0.9',
 			'http://www.photocrati.com',
 			'Photocrati Media',
 			'http://www.photocrati.com'
@@ -74,7 +74,7 @@ class M_DataMapper extends C_Base_Module
 	function set_custom_wp_query_fields($fields, &$wp_query)
 	{
 		if ($wp_query->get('datamapper')) {
-			if (($custom_fields = $wp_query->get('fields'))) {
+			if (($custom_fields = $wp_query->get('fields')) && $custom_fields != 'ids') {
 				$fields = $custom_fields;
 			}
 		}

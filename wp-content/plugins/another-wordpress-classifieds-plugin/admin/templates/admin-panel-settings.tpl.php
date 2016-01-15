@@ -1,6 +1,6 @@
 <?php $page_id = 'awpcp-admin-settings' ?>
 <?php $page_class = "$page_id awpcp-$group->slug"; ?>
-<?php $page_title = awpcp_admin_page_title( sprintf( __( '%s Settings', 'AWPCP' ), $group->name ) ); ?>
+<?php $page_title = awpcp_admin_page_title( sprintf( __( '%s Settings', 'another-wordpress-classifieds-plugin' ), $group->name ) ); ?>
 
 <?php include(AWPCP_DIR . '/admin/templates/admin-panel-header.tpl.php') ?>
 
@@ -30,7 +30,7 @@
 
 				<?php if ( $output ): ?>
 				<p class="submit hidden">
-					<input type="submit" value="<?php _e( 'Save Changes', 'AWPCP' ); ?>" class="button-primary" id="submit-top" name="submit">
+					<input type="submit" value="<?php _e( 'Save Changes', 'another-wordpress-classifieds-plugin' ); ?>" class="button-primary" id="submit-top" name="submit">
 				</p>
 				<?php endif; ?>
 
@@ -44,7 +44,11 @@
 
 				<?php if ( $output ): ?>
 				<p class="submit">
-					<input type="submit" value="<?php _e('Save Changes', 'AWPCP') ?>" class="button-primary" id="submit-bottom" name="submit">
+					<?php if ( $group->slug == 'licenses-settings' ): ?>
+					<input type="submit" value="<?php _e('Save Keys and Activate', 'another-wordpress-classifieds-plugin') ?>" class="button-primary" id="submit-bottom" name="submit">
+					<?php else: ?>
+					<input type="submit" value="<?php _e('Save Changes', 'another-wordpress-classifieds-plugin') ?>" class="button-primary" id="submit-bottom" name="submit">
+					<?php endif; ?>
 				</p>
 				<?php endif; ?>
 			</form>

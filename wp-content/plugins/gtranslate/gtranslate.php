@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: http://gtranslate.net/?xyz=998
 Description: Makes your website <strong>multilingual</strong> and available to the world using Google Translate. For support visit <a href="http://gtranslate.net/forum/">GTranslate Forum</a>.
-Version: 2.0.3
+Version: 2.0.5
 Author: Edvard Ananyan
 Author URI: http://gtranslate.net
 
@@ -78,6 +78,7 @@ class GTranslate extends WP_Widget {
         $wp_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 
         wp_enqueue_style('gtranslate-style', $wp_plugin_url.'/gtranslate-style'.$data['flag_size'].'.css');
+        wp_enqueue_script('jquery');
     }
 
     function widget($args) {
@@ -133,15 +134,16 @@ class GTranslate extends WP_Widget {
 
 $script = <<<EOT
 
-var languages = ['Afrikaans','Albanian','Arabic','Armenian','Azerbaijani','Basque','Belarusian','Bulgarian','Catalan','Chinese (Simplified)','Chinese (Traditional)','Croatian','Czech','Danish','Dutch','English','Estonian','Filipino','Finnish','French','Galician','Georgian','German','Greek','Haitian Creole','Hebrew','Hindi','Hungarian','Icelandic','Indonesian','Irish','Italian','Japanese','Korean','Latvian','Lithuanian','Macedonian','Malay','Maltese','Norwegian','Persian','Polish','Portuguese','Romanian','Russian','Serbian','Slovak','Slovenian','Spanish','Swahili','Swedish','Thai','Turkish','Ukrainian','Urdu','Vietnamese','Welsh','Yiddish'];
-var language_codes = ['af','sq','ar','hy','az','eu','be','bg','ca','zh-CN','zh-TW','hr','cs','da','nl','en','et','tl','fi','fr','gl','ka','de','el','ht','iw','hi','hu','is','id','ga','it','ja','ko','lv','lt','mk','ms','mt','no','fa','pl','pt','ro','ru','sr','sk','sl','es','sw','sv','th','tr','uk','ur','vi','cy','yi'];
+var languages = ['Afrikaans','Albanian','Arabic','Armenian','Aurebesh','Azerbaijani','Basque','Belarusian','Bengali','Bosnian','Bulgarian','Burmese','Catalan','Cebuano','Chichewa','Chinese (Simplified)','Chinese (Traditional)','Croatian','Czech','Danish','Dutch','English','Esperanto','Estonian','Filipino','Finnish','French','Galician','Georgian','German','Greek','Gujarati','Haitian Creole','Hausa','Hebrew','Hindi','Hmong','Hungarian','Icelandic','Igbo','Indonesian','Irish','Italian','Japanese','Javanese','Kannada','Kazakh','Khmer','Korean','Lao','Latin','Latvian','Lithuanian','Macedonian','Malagasy','Malay','Malayalam','Maltese','Maori','Marathi','Mongolian','Nepali','Norwegian','Persian','Polish','Portuguese','Punjabi','Romanian','Russian','Serbian','Sesotho','Sinhalese','Slovak','Slovenian','Somali','Spanish','Sundanese','Swahili','Swedish','Tajik','Tamil','Telugu','Thai','Turkish','Ukrainian','Urdu','Uzbek','Vietnamese','Welsh','Yiddish','Yoruba','Zulu'];
+var language_codes = ['af','sq','ar','hy','qab','az','eu','be','bn','bs','bg','my','ca','ceb','ny','zh-CN','zh-TW','hr','cs','da','nl','en','eo','et','tl','fi','fr','gl','ka','de','el','gu','ht','ha','iw','hi','hmn','hu','is','ig','id','ga','it','ja','jw','kn','kk','km','ko','lo','la','lv','lt','mk','mg','ms','ml','mt','mi','mr','mn','ne','no','fa','pl','pt','pa','ro','ru','sr','st','si','sk','sl','so','es','su','sw','sv','tg','ta','te','th','tr','uk','ur','uz','vi','cy','yi','yo','zu'];
 var languages_map = {en_x: 0, en_y: 0, ar_x: 100, ar_y: 0, bg_x: 200, bg_y: 0, zhCN_x: 300, zhCN_y: 0, zhTW_x: 400, zhTW_y: 0, hr_x: 500, hr_y: 0, cs_x: 600, cs_y: 0, da_x: 700, da_y: 0, nl_x: 0, nl_y: 100, fi_x: 100, fi_y: 100, fr_x: 200, fr_y: 100, de_x: 300, de_y: 100, el_x: 400, el_y: 100, hi_x: 500, hi_y: 100, it_x: 600, it_y: 100, ja_x: 700, ja_y: 100, ko_x: 0, ko_y: 200, no_x: 100, no_y: 200, pl_x: 200, pl_y: 200, pt_x: 300, pt_y: 200, ro_x: 400, ro_y: 200, ru_x: 500, ru_y: 200, es_x: 600, es_y: 200, sv_x: 700, sv_y: 200, ca_x: 0, ca_y: 300, tl_x: 100, tl_y: 300, iw_x: 200, iw_y: 300, id_x: 300, id_y: 300, lv_x: 400, lv_y: 300, lt_x: 500, lt_y: 300, sr_x: 600, sr_y: 300, sk_x: 700, sk_y: 300, sl_x: 0, sl_y: 400, uk_x: 100, uk_y: 400, vi_x: 200, vi_y: 400, sq_x: 300, sq_y: 400, et_x: 400, et_y: 400, gl_x: 500, gl_y: 400, hu_x: 600, hu_y: 400, mt_x: 700, mt_y: 400, th_x: 0, th_y: 500, tr_x: 100, tr_y: 500, fa_x: 200, fa_y: 500, af_x: 300, af_y: 500, ms_x: 400, ms_y: 500, sw_x: 500, sw_y: 500, ga_x: 600, ga_y: 500, cy_x: 700, cy_y: 500, be_x: 0, be_y: 600, is_x: 100, is_y: 600, mk_x: 200, mk_y: 600, yi_x: 300, yi_y: 600, hy_x: 400, hy_y: 600, az_x: 500, az_y: 600, eu_x: 600, eu_y: 600, ka_x: 700, ka_y: 600, ht_x: 0, ht_y: 700, ur_x: 100, ur_y: 700};
 
 function RefreshDoWidgetCode() {
     var new_line = "\\n";
     var widget_preview = '<!-- GTranslate: http://gtranslate.net/ -->'+new_line;
     var widget_code = '';
-    var translation_method = jQuery('#translation_method').val();
+    var translation_method = 'onfly'; //jQuery('#translation_method').val();
+    var widget_look = jQuery('#widget_look').val();
     var default_language = jQuery('#default_language').val();
     var flag_size = jQuery('#flag_size').val();
     var pro_version = jQuery('#pro_version:checked').length > 0 ? true : false;
@@ -149,8 +151,36 @@ function RefreshDoWidgetCode() {
     var new_window = jQuery('#new_window:checked').length > 0 ? true : false;
     var analytics = jQuery('#analytics:checked').length > 0 ? true : false;
 
-    if(pro_version || enterprise_version)
+    if(pro_version || enterprise_version) {
         translation_method = 'redirect';
+        jQuery('#new_window_option').show();
+    } else {
+        jQuery('#new_window_option').hide();
+    }
+
+    if(widget_look == 'dropdown' || widget_look == 'flags_dropdown') {
+        jQuery('#dropdown_languages_option').show();
+    } else {
+        jQuery('#dropdown_languages_option').hide();
+    }
+
+    if(widget_look == 'flags' || widget_look == 'flags_dropdown' || widget_look == 'dropdown_with_flags') {
+        jQuery('#flag_languages_option').show();
+    } else {
+        jQuery('#flag_languages_option').hide();
+    }
+
+    if(widget_look == 'flags' || widget_look == 'dropdown' || widget_look == 'dropdown_with_flags') {
+        jQuery('#line_break_option').hide();
+    } else {
+        jQuery('#line_break_option').show();
+    }
+
+    if(widget_look == 'dropdown_with_flags' || widget_look == 'dropdown') {
+        jQuery('#flag_size_option').hide();
+    } else {
+        jQuery('#flag_size_option').show();
+    }
 
     if(pro_version && enterprise_version)
         pro_version = false;
@@ -178,7 +208,8 @@ function RefreshDoWidgetCode() {
         widget_preview += '<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"><\/script>'+new_line;
     } else if(translation_method == 'on_fly' || translation_method == 'redirect' || translation_method == 'onfly') {
         // Adding flags
-        if(jQuery('#show_flags:checked').length) {
+        if(widget_look == 'flags' || widget_look == 'flags_dropdown' /* jQuery('#show_flags:checked').length */) {
+            //console.log('adding flags');
             jQuery.each(languages, function(i, val) {
                 lang = language_codes[i];
                 if(jQuery('#fincl_langs'+lang+':checked').length) {
@@ -198,8 +229,9 @@ function RefreshDoWidgetCode() {
         }
 
         // Adding dropdown
-        if(jQuery('#show_dropdown:checked').length) {
-            if(jQuery('#show_flags:checked').length && jQuery('#add_new_line:checked').length)
+        if(widget_look == 'dropdown' || widget_look == 'flags_dropdown' /* jQuery('#show_dropdown:checked').length */) {
+            //console.log('adding dropdown');
+            if(/* jQuery('#show_flags:checked').length*/ (widget_look == 'flags' || widget_look == 'flags_dropdown') && jQuery('#add_new_line:checked').length)
                 widget_preview += '<br />';
             else
                 widget_preview += ' ';
@@ -217,6 +249,8 @@ function RefreshDoWidgetCode() {
 
         // Adding onfly html and css
         if(translation_method == 'onfly') {
+            //console.log('adding onfly html, css and javascript');
+
             widget_code += '<style type="text/css">'+new_line;
             widget_code += '<!--'+new_line;
             widget_code += "#goog-gt-tt {display:none !important;}"+new_line;
@@ -236,7 +270,63 @@ function RefreshDoWidgetCode() {
             widget_code += '<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"><\/script>'+new_line;
         }
 
+        if(widget_look == 'dropdown_with_flags') {
+            // Adding slider html
+            widget_preview += '<div class="switcher notranslate">'+new_line;
+            widget_preview += '<div class="selected">'+new_line;
+            widget_preview += '<a href="#" onclick="return false;"><span class="gflag" style="background-position:-'+languages_map[default_language.replace('-', '')+'_x']+'px -'+languages_map[default_language.replace('-', '')+'_y']+'px;"><img src="$wp_plugin_url/blank.png" height="'+16+'" width="'+16+'" alt="'+default_language+'" /></span>'+languages[language_codes.indexOf(default_language)]+'</a>'+new_line;
+            widget_preview += '</div>'+new_line;
+            widget_preview += '<div class="option">'+new_line;
+            jQuery.each(languages, function(i, val) {
+                lang = language_codes[i];
+                if(jQuery('#fincl_langs'+lang+':checked').length) {
+                    lang_name = val;
+                    flag_x = languages_map[lang.replace('-', '')+'_x'];
+                    flag_y = languages_map[lang.replace('-', '')+'_y'];
+
+                    var href = '#';
+                    if(pro_version)
+                        href = (lang == default_language) ? '$site_url' : '$site_url'.replace('$site_url'.split('/').slice(0, 3).join('/'), '$site_url'.split('/').slice(0, 3).join('/')+'/'+lang);
+                    else if(enterprise_version)
+                        href = (lang == default_language) ? '$site_url' : '$site_url'.replace('$site_url'.split('/').slice(2, 3)[0].replace('www.', ''), lang + '.' + '$site_url'.split('/').slice(2, 3)[0].replace('www.', '')).replace('://www.', '://');
+
+                    widget_preview += '<a href="'+href+'" onclick="doGTranslate(\''+default_language+'|'+lang+'\');jQuery(this).parent().parent().find(\'div.selected a\').html(jQuery(this).html());return false;" title="'+lang_name+'" class="nturl'+(default_language == lang ? ' selected' : '')+'"><span class="gflag" style="background-position:-'+flag_x+'px -'+flag_y+'px;"><img src="$wp_plugin_url/blank.png" height="'+16+'" width="'+16+'" alt="'+lang+'" /></span>'+lang_name+'</a>';
+                }
+            });
+
+            widget_preview += '</div>'+new_line;
+            widget_preview += '</div>'+new_line;
+
+            // Adding slider javascript
+            widget_preview += '<script type="text/javascript">'+new_line;
+            widget_preview += "jQuery('.switcher .selected').click(function() {if(!(jQuery('.switcher .option').is(':visible'))) {jQuery('.switcher .option').stop(true,true).delay(50).slideDown(800);}});"+new_line;
+            widget_preview += "jQuery('body').not('.switcher .selected').mousedown(function() {if(jQuery('.switcher .option').is(':visible')) {jQuery('.switcher .option').stop(true,true).delay(300).slideUp(800);}});"+new_line;
+            widget_preview += '<\/script>'+new_line;
+
+            // Adding slider css
+            widget_preview += '<style type="text/css">'+new_line;
+            widget_preview += '<!--'+new_line;
+            widget_preview += 'span.gflag {font-size:16px;padding:1px 0;background-repeat:no-repeat;background-image:url($wp_plugin_url/16.png);}'+new_line;
+            widget_preview += 'span.gflag img {border:0;margin-top:2px;}'+new_line;
+            widget_preview += '.switcher {font-family:Arial;font-size:10pt;text-align:left;cursor:pointer;overflow:hidden;width:163px;line-height:16px;}'+new_line;
+            widget_preview += '.switcher a {text-decoration:none;display:block;font-size:10pt;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;}'+new_line;
+            widget_preview += '.switcher a span.gflag {margin-right:3px;padding:0;display:block;float:left;}'+new_line;
+            widget_preview += '.switcher .selected {background:#FFFFFF url($wp_plugin_url/switcher.png) repeat-x;position:relative;z-index:9999;}'+new_line;
+            widget_preview += '.switcher .selected a {border:1px solid #CCCCCC;background:url($wp_plugin_url/arrow_down.png) 146px center no-repeat;color:#666666;padding:3px 5px;width:151px;}'+new_line;
+            widget_preview += '.switcher .selected a:hover {background:#F0F0F0 url($wp_plugin_url/arrow_down.png) 146px center no-repeat;}'+new_line;
+            widget_preview += '.switcher .option {position:relative;z-index:9998;border-left:1px solid #CCCCCC;border-right:1px solid #CCCCCC;border-bottom:1px solid #CCCCCC;background-color:#EEEEEE;display:none;width:161px;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;}'+new_line;
+            widget_preview += '.switcher .option a {color:#000;padding:3px 5px;}'+new_line;
+            widget_preview += '.switcher .option a:hover {background:#FFC;}'+new_line;
+            widget_preview += '.switcher .option a.selected {background:#FFC;}'+new_line;
+            widget_preview += '#selected_lang_name {float: none;}'+new_line;
+            widget_preview += '.l_name {float: none !important;margin: 0;}'+new_line;
+            widget_preview += '-->'+new_line;
+            widget_preview += '</style>'+new_line+new_line;
+        }
+
         // Adding javascript
+        //console.log('adding doGTranslate javascript');
+
         widget_code += new_line+new_line;
         widget_code += '<script type="text/javascript">'+new_line;
         widget_code += '/* <![CDATA[ */'+new_line;
@@ -281,6 +371,10 @@ function RefreshDoWidgetCode() {
             widget_code += 'function gfg(name) {name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var regexS="[\\?&]"+name+"=([^&#]*)";var regex=new RegExp(regexS);var results=regex.exec(location.href);if(results==null)return "";return results[1];}'+new_line;
         } else if(translation_method == 'onfly') {
             widget_code += "function GTranslateFireEvent(element,event){try{if(document.createEventObject){var evt=document.createEventObject();element.fireEvent('on'+event,evt)}else{var evt=document.createEvent('HTMLEvents');evt.initEvent(event,true,true);element.dispatchEvent(evt)}}catch(e){}}function doGTranslate(lang_pair){if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var teCombo;var sel=document.getElementsByTagName('select');for(var i=0;i<sel.length;i++)if(sel[i].className=='goog-te-combo')teCombo=sel[i];if(document.getElementById('google_translate_element2')==null||document.getElementById('google_translate_element2').innerHTML.length==0||teCombo.length==0||teCombo.innerHTML.length==0){setTimeout(function(){doGTranslate(lang_pair)},500)}else{teCombo.value=lang;GTranslateFireEvent(teCombo,'change');GTranslateFireEvent(teCombo,'change')}}"+new_line;
+            if(widget_look == 'dropdown_with_flags') {
+                widget_code += "function GTranslateGetCurrentLang() {var keyValue = document.cookie.match('(^|;) ?googtrans=([^;]*)(;|$)');return keyValue ? keyValue[2].split('/')[2] : null;}"+new_line;
+                widget_code += "if(GTranslateGetCurrentLang() != null)jQuery(document).ready(function() {jQuery('div.switcher div.selected a').html(jQuery('div.switcher div.option').find('span.gflag img[alt=\"'+GTranslateGetCurrentLang()+'\"]').parent().parent().html());});"+new_line;
+            }
         }
 
         widget_code += '/* ]]> */'+new_line;
@@ -303,6 +397,8 @@ function ShowWidgetPreview(widget_preview) {
 
     jQuery('head').append( jQuery('<link rel="stylesheet" type="text/css" />').attr('href', '$wp_plugin_url/gtranslate-style'+jQuery('#flag_size').val()+'.css') );
     jQuery('#widget_preview').html(widget_preview);
+    if(jQuery('#widget_look').val() == 'dropdown_with_flags')
+        jQuery('#widget_preview').prepend('<p style="color:#f44;margin-top:5px;">This look is new, if you are having issues, please post on <a href="http://gtranslate.net/forum/" target="_blank">GTranslate Forum</a></p>');
 }
 
 jQuery('#pro_version').attr('checked', '$pro_version'.length > 0);
@@ -311,12 +407,40 @@ jQuery('#new_window').attr('checked', '$new_window'.length > 0);
 jQuery('#analytics').attr('checked', '$analytics'.length > 0);
 jQuery('#load_jquery').attr('checked', '$load_jquery'.length > 0);
 jQuery('#add_new_line').attr('checked', '$add_new_line'.length > 0);
-jQuery('#show_dropdown').attr('checked', '$show_dropdown'.length > 0);
-jQuery('#show_flags').attr('checked', '$show_flags'.length > 0);
+//jQuery('#show_dropdown').attr('checked', '$show_dropdown'.length > 0);
+//jQuery('#show_flags').attr('checked', '$show_flags'.length > 0);
 
 jQuery('#default_language').val('$default_language');
-jQuery('#translation_method').val('$translation_method');
+//jQuery('#translation_method').val('$translation_method');
+jQuery('#widget_look').val('$widget_look');
 jQuery('#flag_size').val('$flag_size');
+
+if(jQuery('#pro_version:checked').length || jQuery('#enterprise_version:checked').length)
+    jQuery('#new_window_option').show();
+
+if('$widget_look' == 'dropdown' || '$widget_look' == 'flags_dropdown') {
+    jQuery('#dropdown_languages_option').show();
+} else {
+    jQuery('#dropdown_languages_option').hide();
+}
+
+if('$widget_look' == 'flags' || '$widget_look' == 'flags_dropdown' || '$widget_look' == 'dropdown_with_flags') {
+    jQuery('#flag_languages_option').show();
+} else {
+    jQuery('#flag_languages_option').hide();
+}
+
+if('$widget_look' == 'flags' || '$widget_look' == 'dropdown' || '$widget_look' == 'dropdown_with_flags') {
+    jQuery('#line_break_option').hide();
+} else {
+    jQuery('#line_break_option').show();
+}
+
+if('$widget_look' == 'dropdown_with_flags' || '$widget_look' == 'dropdown') {
+    jQuery('#flag_size_option').hide();
+} else {
+    jQuery('#flag_size_option').show();
+}
 
 if(jQuery('#widget_code').val() == '')
     RefreshDoWidgetCode();
@@ -343,14 +467,25 @@ foreach($fincl_langs as $lang)
             <div class="postbox">
                 <h3 id="settings">Widget options</h3>
                 <div class="inside">
-                    <table style="font-size:11px;">
-                    <tr>
+                    <table style="width:100%;" cellpadding="4">
+                    <!--tr>
                         <td class="option_name">Translation method:</td>
                         <td>
                             <select id="translation_method" name="translation_method" onChange="RefreshDoWidgetCode()">
                                 <option value="google_default">Google Default</option>
                                 <option value="redirect">Redirect</option>
                                 <option value="onfly">On Fly</option>
+                            </select>
+                        </td>
+                    </tr-->
+                    <tr>
+                        <td class="option_name">Widget look:</td>
+                        <td>
+                            <select id="widget_look" name="widget_look" onChange="RefreshDoWidgetCode()">
+                                <option value="flags_dropdown">Flags and dropdown</option>
+                                <option value="dropdown_with_flags">Nice dropdown with flags</option>
+                                <option value="dropdown">Dropdown</option>
+                                <option value="flags">Flags</option>
                             </select>
                         </td>
                     </tr>
@@ -362,18 +497,25 @@ foreach($fincl_langs as $lang)
                                 <option value="sq">Albanian</option>
                                 <option value="ar">Arabic</option>
                                 <option value="hy">Armenian</option>
+                                <option value="qab">Aurebesh</option>
                                 <option value="az">Azerbaijani</option>
                                 <option value="eu">Basque</option>
                                 <option value="be">Belarusian</option>
+                                <option value="bn">Bengali</option>
+                                <option value="bs">Bosnian</option>
                                 <option value="bg">Bulgarian</option>
+                                <option value="my">Burmese</option>
                                 <option value="ca">Catalan</option>
+                                <option value="ceb">Cebuano</option>
+                                <option value="ny">Chichewa</option>
                                 <option value="zh-CN">Chinese (Simplified)</option>
                                 <option value="zh-TW">Chinese (Traditional)</option>
                                 <option value="hr">Croatian</option>
                                 <option value="cs">Czech</option>
                                 <option value="da">Danish</option>
                                 <option value="nl">Dutch</option>
-                                <option value="en" selected>English</option>
+                                <option value="en" selected="selected">English</option>
+                                <option value="eo">Esperanto</option>
                                 <option value="et">Estonian</option>
                                 <option value="tl">Filipino</option>
                                 <option value="fi">Finnish</option>
@@ -382,46 +524,69 @@ foreach($fincl_langs as $lang)
                                 <option value="ka">Georgian</option>
                                 <option value="de">German</option>
                                 <option value="el">Greek</option>
+                                <option value="gu">Gujarati</option>
                                 <option value="ht">Haitian Creole</option>
+                                <option value="ha">Hausa</option>
                                 <option value="iw">Hebrew</option>
                                 <option value="hi">Hindi</option>
+                                <option value="hmn">Hmong</option>
                                 <option value="hu">Hungarian</option>
                                 <option value="is">Icelandic</option>
+                                <option value="ig">Igbo</option>
                                 <option value="id">Indonesian</option>
                                 <option value="ga">Irish</option>
                                 <option value="it">Italian</option>
                                 <option value="ja">Japanese</option>
+                                <option value="jw">Javanese</option>
+                                <option value="kn">Kannada</option>
+                                <option value="kk">Kazakh</option>
+                                <option value="km">Khmer</option>
                                 <option value="ko">Korean</option>
+                                <option value="lo">Lao</option>
+                                <option value="la">Latin</option>
                                 <option value="lv">Latvian</option>
                                 <option value="lt">Lithuanian</option>
                                 <option value="mk">Macedonian</option>
+                                <option value="mg">Malagasy</option>
                                 <option value="ms">Malay</option>
+                                <option value="ml">Malayalam</option>
                                 <option value="mt">Maltese</option>
+                                <option value="mi">Maori</option>
+                                <option value="mr">Marathi</option>
+                                <option value="mn">Mongolian</option>
+                                <option value="ne">Nepali</option>
                                 <option value="no">Norwegian</option>
                                 <option value="fa">Persian</option>
                                 <option value="pl">Polish</option>
                                 <option value="pt">Portuguese</option>
+                                <option value="pa">Punjabi</option>
                                 <option value="ro">Romanian</option>
                                 <option value="ru">Russian</option>
                                 <option value="sr">Serbian</option>
+                                <option value="st">Sesotho</option>
+                                <option value="si">Sinhalese</option>
                                 <option value="sk">Slovak</option>
                                 <option value="sl">Slovenian</option>
+                                <option value="so">Somali</option>
                                 <option value="es">Spanish</option>
+                                <option value="su">Sundanese</option>
                                 <option value="sw">Swahili</option>
                                 <option value="sv">Swedish</option>
+                                <option value="tg">Tajik</option>
+                                <option value="ta">Tamil</option>
+                                <option value="te">Telugu</option>
                                 <option value="th">Thai</option>
                                 <option value="tr">Turkish</option>
                                 <option value="uk">Ukrainian</option>
                                 <option value="ur">Urdu</option>
+                                <option value="uz">Uzbek</option>
                                 <option value="vi">Vietnamese</option>
                                 <option value="cy">Welsh</option>
                                 <option value="yi">Yiddish</option>
+                                <option value="yo">Yoruba</option>
+                                <option value="zu">Zulu</option>
                             </select>
                         </td>
-                    </tr>
-                    <tr>
-                        <td class="option_name">Open in new window:</td>
-                        <td><input id="new_window" name="new_window" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
                     </tr>
                     <tr>
                         <td class="option_name">Analytics:</td>
@@ -435,11 +600,16 @@ foreach($fincl_langs as $lang)
                         <td class="option_name">Operate with Enterprise version:</td>
                         <td><input id="enterprise_version" name="enterprise_version" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
                     </tr>
-                    <tr>
+                    <tr id="new_window_option" style="display:none;">
+                        <td class="option_name">Open in new window:</td>
+                        <td><input id="new_window" name="new_window" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
+                    </tr>
+
+                    <!--tr>
                         <td class="option_name">Show flags:</td>
                         <td><input id="show_flags" name="show_flags" value="1" type="checkbox" checked="checked" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
-                    </tr>
-                    <tr>
+                    </tr-->
+                    <tr id="flag_size_option">
                         <td class="option_name">Flag size:</td>
                         <td>
                         <select id="flag_size"  name="flag_size" onchange="RefreshDoWidgetCode()">
@@ -449,10 +619,11 @@ foreach($fincl_langs as $lang)
                         </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="option_name">Flag languages:</td>
-                        <td>
-                        <div style="height:55px;overflow-y:scroll;">
+                    <tr id="flag_languages_option" style="display:none;">
+                        <td class="option_name" colspan="2">Flag languages:<br /><br />
+
+                        <div>
+                        <div style="width:25%;float:left;">
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsaf" name="fincl_langs[]" value="af"><label for="fincl_langsaf">Afrikaans</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langssq" name="fincl_langs[]" value="sq"><label for="fincl_langssq">Albanian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsar" name="fincl_langs[]" value="ar"><label for="fincl_langsar">Arabic</label><br />
@@ -468,6 +639,8 @@ foreach($fincl_langs as $lang)
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langscs" name="fincl_langs[]" value="cs"><label for="fincl_langscs">Czech</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsda" name="fincl_langs[]" value="da"><label for="fincl_langsda">Danish</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsnl" name="fincl_langs[]" value="nl"><label for="fincl_langsnl">Dutch</label><br />
+                        </div>
+                        <div style="width:25%;float:left;">
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsen" name="fincl_langs[]" value="en" checked><label for="fincl_langsen">English</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langset" name="fincl_langs[]" value="et"><label for="fincl_langset">Estonian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langstl" name="fincl_langs[]" value="tl"><label for="fincl_langstl">Filipino</label><br />
@@ -483,6 +656,8 @@ foreach($fincl_langs as $lang)
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langshu" name="fincl_langs[]" value="hu"><label for="fincl_langshu">Hungarian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsis" name="fincl_langs[]" value="is"><label for="fincl_langsis">Icelandic</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsid" name="fincl_langs[]" value="id"><label for="fincl_langsid">Indonesian</label><br />
+                        </div>
+                        <div style="width:25%;float:left;">
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsga" name="fincl_langs[]" value="ga"><label for="fincl_langsga">Irish</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsit" name="fincl_langs[]" value="it" checked><label for="fincl_langsit">Italian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsja" name="fincl_langs[]" value="ja"><label for="fincl_langsja">Japanese</label><br />
@@ -498,6 +673,8 @@ foreach($fincl_langs as $lang)
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langspt" name="fincl_langs[]" value="pt" checked><label for="fincl_langspt">Portuguese</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsro" name="fincl_langs[]" value="ro"><label for="fincl_langsro">Romanian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsru" name="fincl_langs[]" value="ru" checked><label for="fincl_langsru">Russian</label><br />
+                        </div>
+                        <div style="width:25%;float:left;">
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langssr" name="fincl_langs[]" value="sr"><label for="fincl_langssr">Serbian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langssk" name="fincl_langs[]" value="sk"><label for="fincl_langssk">Slovak</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langssl" name="fincl_langs[]" value="sl"><label for="fincl_langssl">Slovenian</label><br />
@@ -512,29 +689,37 @@ foreach($fincl_langs as $lang)
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langscy" name="fincl_langs[]" value="cy"><label for="fincl_langscy">Welsh</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsyi" name="fincl_langs[]" value="yi"><label for="fincl_langsyi">Yiddish</label><br />
                         </div>
+                        </div>
+                        <br /><br />
                         </td>
                     </tr>
-                    <tr>
-                        <td class="option_name">Add new line:</td>
+                    <tr id="line_break_option" style="display:none;">
+                        <td class="option_name">Line break after flags:</td>
                         <td><input id="add_new_line" name="add_new_line" value="1" type="checkbox" checked="checked" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
                     </tr>
-                    <tr>
+                    <!--tr>
                         <td class="option_name">Show dropdown:</td>
                         <td><input id="show_dropdown" name="show_dropdown" value="1" type="checkbox" checked="checked" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
-                    </tr>
-                    <tr>
-                        <td class="option_name">Dropdown languages:</td>
-                        <td>
-                        <div style="height:55px;overflow-y:scroll;">
+                    </tr-->
+                    <tr id="dropdown_languages_option" style="display:none;">
+                        <td class="option_name" colspan="2">Dropdown languages:<br /><br />
+                        <div>
+                        <div style="width:25%;float:left;">
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsaf" name="incl_langs[]" value="af" checked><label for="incl_langsaf">Afrikaans</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssq" name="incl_langs[]" value="sq" checked><label for="incl_langssq">Albanian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsar" name="incl_langs[]" value="ar" checked><label for="incl_langsar">Arabic</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshy" name="incl_langs[]" value="hy" checked><label for="incl_langshy">Armenian</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsqab" name="incl_langs[]" value="qab" checked><label for="incl_langsqab">Aurebesh</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsaz" name="incl_langs[]" value="az" checked><label for="incl_langsaz">Azerbaijani</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langseu" name="incl_langs[]" value="eu" checked><label for="incl_langseu">Basque</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsbe" name="incl_langs[]" value="be" checked><label for="incl_langsbe">Belarusian</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsbn" name="incl_langs[]" value="bn" checked><label for="incl_langsbn">Bengali</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsbs" name="incl_langs[]" value="bs" checked><label for="incl_langsbs">Bosnian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsbg" name="incl_langs[]" value="bg" checked><label for="incl_langsbg">Bulgarian</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmy" name="incl_langs[]" value="my" checked><label for="incl_langsmy">Burmese</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsca" name="incl_langs[]" value="ca" checked><label for="incl_langsca">Catalan</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsceb" name="incl_langs[]" value="ceb" checked><label for="incl_langsceb">Cebuano</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsny" name="incl_langs[]" value="ny" checked><label for="incl_langsny">Chichewa</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langszh-CN" name="incl_langs[]" value="zh-CN" checked><label for="incl_langszh-CN">Chinese (Simplified)</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langszh-TW" name="incl_langs[]" value="zh-TW" checked><label for="incl_langszh-TW">Chinese (Traditional)</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshr" name="incl_langs[]" value="hr" checked><label for="incl_langshr">Croatian</label><br />
@@ -542,6 +727,9 @@ foreach($fincl_langs as $lang)
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsda" name="incl_langs[]" value="da" checked><label for="incl_langsda">Danish</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsnl" name="incl_langs[]" value="nl" checked><label for="incl_langsnl">Dutch</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsen" name="incl_langs[]" value="en" checked><label for="incl_langsen">English</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langseo" name="incl_langs[]" value="eo" checked><label for="incl_langseo">Esperanto</label><br />
+                        </div>
+                        <div style="width:25%;float:left;">
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langset" name="incl_langs[]" value="et" checked><label for="incl_langset">Estonian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langstl" name="incl_langs[]" value="tl" checked><label for="incl_langstl">Filipino</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsfi" name="incl_langs[]" value="fi" checked><label for="incl_langsfi">Finnish</label><br />
@@ -550,40 +738,72 @@ foreach($fincl_langs as $lang)
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langska" name="incl_langs[]" value="ka" checked><label for="incl_langska">Georgian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsde" name="incl_langs[]" value="de" checked><label for="incl_langsde">German</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsel" name="incl_langs[]" value="el" checked><label for="incl_langsel">Greek</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsgu" name="incl_langs[]" value="gu" checked><label for="incl_langsgu">Gujarati</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsht" name="incl_langs[]" value="ht" checked><label for="incl_langsht">Haitian Creole</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsha" name="incl_langs[]" value="ha" checked><label for="incl_langsha">Hausa</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsiw" name="incl_langs[]" value="iw" checked><label for="incl_langsiw">Hebrew</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshi" name="incl_langs[]" value="hi" checked><label for="incl_langshi">Hindi</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshmn" name="incl_langs[]" value="hmn" checked><label for="incl_langshmn">Hmong</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshu" name="incl_langs[]" value="hu" checked><label for="incl_langshu">Hungarian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsis" name="incl_langs[]" value="is" checked><label for="incl_langsis">Icelandic</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsig" name="incl_langs[]" value="ig" checked><label for="incl_langsig">Igbo</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsid" name="incl_langs[]" value="id" checked><label for="incl_langsid">Indonesian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsga" name="incl_langs[]" value="ga" checked><label for="incl_langsga">Irish</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsit" name="incl_langs[]" value="it" checked><label for="incl_langsit">Italian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsja" name="incl_langs[]" value="ja" checked><label for="incl_langsja">Japanese</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsjw" name="incl_langs[]" value="jw" checked><label for="incl_langsjw">Javanese</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langskn" name="incl_langs[]" value="kn" checked><label for="incl_langskn">Kannada</label><br />
+                        </div>
+                        <div style="width:25%;float:left;">
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langskk" name="incl_langs[]" value="kk" checked><label for="incl_langskk">Kazakh</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langskm" name="incl_langs[]" value="km" checked><label for="incl_langskm">Khmer</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsko" name="incl_langs[]" value="ko" checked><label for="incl_langsko">Korean</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langslo" name="incl_langs[]" value="lo" checked><label for="incl_langslo">Lao</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsla" name="incl_langs[]" value="la" checked><label for="incl_langsla">Latin</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langslv" name="incl_langs[]" value="lv" checked><label for="incl_langslv">Latvian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langslt" name="incl_langs[]" value="lt" checked><label for="incl_langslt">Lithuanian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmk" name="incl_langs[]" value="mk" checked><label for="incl_langsmk">Macedonian</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmg" name="incl_langs[]" value="mg" checked><label for="incl_langsmg">Malagasy</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsms" name="incl_langs[]" value="ms" checked><label for="incl_langsms">Malay</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsml" name="incl_langs[]" value="ml" checked><label for="incl_langsml">Malayalam</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmt" name="incl_langs[]" value="mt" checked><label for="incl_langsmt">Maltese</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmi" name="incl_langs[]" value="mi" checked><label for="incl_langsmi">Maori</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmr" name="incl_langs[]" value="mr" checked><label for="incl_langsmr">Marathi</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmn" name="incl_langs[]" value="mn" checked><label for="incl_langsmn">Mongolian</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsne" name="incl_langs[]" value="ne" checked><label for="incl_langsne">Nepali</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsno" name="incl_langs[]" value="no" checked><label for="incl_langsno">Norwegian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsfa" name="incl_langs[]" value="fa" checked><label for="incl_langsfa">Persian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langspl" name="incl_langs[]" value="pl" checked><label for="incl_langspl">Polish</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langspt" name="incl_langs[]" value="pt" checked><label for="incl_langspt">Portuguese</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langspa" name="incl_langs[]" value="pa" checked><label for="incl_langspa">Punjabi</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsro" name="incl_langs[]" value="ro" checked><label for="incl_langsro">Romanian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsru" name="incl_langs[]" value="ru" checked><label for="incl_langsru">Russian</label><br />
+                        </div>
+                        <div style="width:25%;float:left;">
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssr" name="incl_langs[]" value="sr" checked><label for="incl_langssr">Serbian</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsst" name="incl_langs[]" value="st" checked><label for="incl_langsst">Sesotho</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssi" name="incl_langs[]" value="si" checked><label for="incl_langssi">Sinhalese</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssk" name="incl_langs[]" value="sk" checked><label for="incl_langssk">Slovak</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssl" name="incl_langs[]" value="sl" checked><label for="incl_langssl">Slovenian</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsso" name="incl_langs[]" value="so" checked><label for="incl_langsso">Somali</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langses" name="incl_langs[]" value="es" checked><label for="incl_langses">Spanish</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssu" name="incl_langs[]" value="su" checked><label for="incl_langssu">Sundanese</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssw" name="incl_langs[]" value="sw" checked><label for="incl_langssw">Swahili</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssv" name="incl_langs[]" value="sv" checked><label for="incl_langssv">Swedish</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langstg" name="incl_langs[]" value="tg" checked><label for="incl_langstg">Tajik</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsta" name="incl_langs[]" value="ta" checked><label for="incl_langsta">Tamil</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langste" name="incl_langs[]" value="te" checked><label for="incl_langste">Telugu</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsth" name="incl_langs[]" value="th" checked><label for="incl_langsth">Thai</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langstr" name="incl_langs[]" value="tr" checked><label for="incl_langstr">Turkish</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsuk" name="incl_langs[]" value="uk" checked><label for="incl_langsuk">Ukrainian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsur" name="incl_langs[]" value="ur" checked><label for="incl_langsur">Urdu</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsuz" name="incl_langs[]" value="uz" checked><label for="incl_langsuz">Uzbek</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsvi" name="incl_langs[]" value="vi" checked><label for="incl_langsvi">Vietnamese</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langscy" name="incl_langs[]" value="cy" checked><label for="incl_langscy">Welsh</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsyi" name="incl_langs[]" value="yi" checked><label for="incl_langsyi">Yiddish</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsyo" name="incl_langs[]" value="yo" checked><label for="incl_langsyo">Yoruba</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langszu" name="incl_langs[]" value="zu" checked><label for="incl_langszu">Zulu</label><br />
+                        </div>
                         </div>
                         </td>
                     </tr>
@@ -619,6 +839,28 @@ foreach($fincl_langs as $lang)
                     </div>
                 </div>
             </div>
+
+            <div id="poststuff">
+                <div class="postbox">
+                    <h3 id="settings">Do you like GTranslate?</h3>
+                    <div class="inside">
+                        <p>Please write a review on <a href="https://wordpress.org/support/view/plugin-reviews/gtranslate?filter=5">WordPress.org</a>.</p>
+
+                        <div id="fb-root"></div>
+                        <script>(function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=231165476898475";
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+
+                        <div class="fb-page" data-href="https://www.facebook.com/gtranslate" data-width="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/gtranslate"><a href="https://www.facebook.com/gtranslate">GTranslate</a></blockquote></div></div>
+
+                    </div>
+                </div>
+            </div>
+
             <div id="poststuff">
                 <div class="postbox">
                     <h3 id="settings">Useful info</h3>
@@ -659,6 +901,7 @@ foreach($fincl_langs as $lang)
 
         <script type="text/javascript"><?php echo $script; ?></script>
         <style type="text/css">
+        .postbox #settings {padding-left:12px;}
         .og_left_col {      width: 59%;     }
         .og_right_col {     width: 39%;     float: right;       }
         .og_left_col #poststuff,        .og_right_col #poststuff {      min-width: 0;       }
@@ -687,10 +930,11 @@ foreach($fincl_langs as $lang)
         $data['analytics'] = isset($_POST['analytics']) ? $_POST['analytics'] : '';
         $data['load_jquery'] = isset($_POST['load_jquery']) ? $_POST['load_jquery'] : '';
         $data['add_new_line'] = isset($_POST['add_new_line']) ? $_POST['add_new_line'] : '';
-        $data['show_dropdown'] = isset($_POST['show_dropdown']) ? $_POST['show_dropdown'] : '';
-        $data['show_flags'] = isset($_POST['show_flags']) ? $_POST['show_flags'] : '';
+        //$data['show_dropdown'] = isset($_POST['show_dropdown']) ? $_POST['show_dropdown'] : '';
+        //$data['show_flags'] = isset($_POST['show_flags']) ? $_POST['show_flags'] : '';
         $data['default_language'] = $_POST['default_language'];
         $data['translation_method'] = $_POST['translation_method'];
+        $data['widget_look'] = $_POST['widget_look'];
         $data['flag_size'] = $_POST['flag_size'];
         $data['widget_code'] = stripslashes($_POST['widget_code']);
         $data['incl_langs'] = $_POST['incl_langs'];
@@ -707,11 +951,12 @@ foreach($fincl_langs as $lang)
         $data['analytics'] = isset($data['analytics']) ? $data['analytics'] : '';
         $data['load_jquery'] = isset($data['load_jquery']) ? $data['load_jquery'] : '1';
         $data['add_new_line'] = isset($data['add_new_line']) ? $data['add_new_line'] : '1';
-        $data['show_dropdown'] = isset($data['show_dropdown']) ? $data['show_dropdown'] : '1';
-        $data['show_flags'] = isset($data['show_flags']) ? $data['show_flags'] : '1';
+        //$data['show_dropdown'] = isset($data['show_dropdown']) ? $data['show_dropdown'] : '1';
+        //$data['show_flags'] = isset($data['show_flags']) ? $data['show_flags'] : '1';
         $data['default_language'] = isset($data['default_language']) ? $data['default_language'] : 'en';
         $data['translation_method'] = isset($data['translation_method']) ? $data['translation_method'] : 'onfly';
         if($data['translation_method'] == 'on_fly') $data['translation_method'] = 'redirect';
+        $data['widget_look'] = isset($data['widget_look']) ? $data['widget_look'] : 'flags_dropdown';
         $data['flag_size'] = isset($data['flag_size']) ? $data['flag_size'] : '16';
         $data['widget_code'] = isset($data['widget_code']) ? $data['widget_code'] : '';
         $data['incl_langs'] = isset($data['incl_langs']) ? $data['incl_langs'] : array();

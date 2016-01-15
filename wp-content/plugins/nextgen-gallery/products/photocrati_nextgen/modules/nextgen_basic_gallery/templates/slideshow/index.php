@@ -3,7 +3,7 @@
 <?php if ($show_thumbnail_link) { ?>
 	<!-- Thumbnails Link -->
 	<div class="slideshowlink">
-        <a href='<?php echo esc_attr($thumbnail_link); ?>'><?php esc_html_e($thumbnail_link_text); ?></a>
+        <a href='<?php echo esc_attr($thumbnail_link); ?>'><?php echo esc_html($thumbnail_link_text); ?></a>
 	</div>
 <?php } ?>
 

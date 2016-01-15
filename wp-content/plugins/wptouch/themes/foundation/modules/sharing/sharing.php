@@ -29,7 +29,7 @@ function foundation_disable_sharing_links() {
 }
 
 function foundation_sharing_classes() {
-	$share_classes = array( 'sharing-options', 'clearfix' );
+	$share_classes = array( 'sharing-options', 'wptouch-clearfix' );
 
 	$settings = foundation_get_settings();
 
@@ -91,32 +91,40 @@ function foundation_handle_share_links_bottom( $content ) {
 function foundation_sharing_settings( $page_options ) {
 	wptouch_add_page_section(
 		FOUNDATION_PAGE_BRANDING,
-		__( 'Sharing', 'wptouch-pro' ),
+		__( 'Social Sharing', 'wptouch-pro' ),
 		'social-sharing',
 		array(
 			wptouch_add_setting(
+				'no-setting-text',
+				'share_info',
+				__( 'Will show Facebook, Twitter, Pinterest and Email buttons.', 'wptouch-pro' ),
+				false,
+				WPTOUCH_SETTING_BASIC,
+				'2.0'
+			),
+			wptouch_add_setting(
 				'checkbox',
 				'show_share',
-				__( 'Show sharing links', 'wptouch-pro' ),
-				__( 'Will show Facebook, Twitter, Google+ and Email buttons on single posts.', 'wptouch-pro' ),
+				__( 'Show sharing links on posts', 'wptouch-pro' ),
+				false,
 				WPTOUCH_SETTING_BASIC,
-				'1.0'
+				'2.0'
 			),
 			wptouch_add_setting(
 				'checkbox',
 				'share_on_pages',
-				__( 'Show sharing links on pages', 'wptouch-pro' ),
-				__( 'Will show Facebook, Twitter, Google+ and Email buttons on pages as well as single posts.', 'wptouch-pro' ),
-				WPTOUCH_SETTING_ADVANCED,
+				__( 'Also show on pages', 'wptouch-pro' ),
+				false,
+				WPTOUCH_SETTING_BASIC,
 				'2.0'
 			),
 			wptouch_add_setting(
 				'radiolist',
 				'share_location',
 				__( 'Sharing links location', 'wptouch-pro' ),
-				'',
-				WPTOUCH_SETTING_ADVANCED,
-				'1.0',
+				false,
+				WPTOUCH_SETTING_BASIC,
+				'2.0',
 				array(
 					'top' => __( 'Above post content', 'wptouch-pro' ),
 					'bottom' => __( 'Below post content', 'wptouch-pro' )
@@ -126,9 +134,9 @@ function foundation_sharing_settings( $page_options ) {
 				'radiolist',
 				'share_colour_scheme',
 				__( 'Color scheme', 'wptouch-pro' ),
-				'',
+				false,
 				WPTOUCH_SETTING_BASIC,
-				'1.0',
+				'2.0',
 				array(
 					'default' => __( 'Theme colors', 'wptouch-pro' ),
 					'vibrant' => __( 'Social network colors', 'wptouch-pro' )
@@ -136,7 +144,8 @@ function foundation_sharing_settings( $page_options ) {
 			)
 		),
 		$page_options,
-		FOUNDATION_SETTING_DOMAIN
+		FOUNDATION_SETTING_DOMAIN,
+		true
 	);
 
 	return $page_options;

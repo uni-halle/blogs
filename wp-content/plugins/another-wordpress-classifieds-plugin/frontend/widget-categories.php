@@ -3,13 +3,13 @@
 class AWPCP_CategoriesWidget extends WP_Widget {
 
     public function __construct() {
-        $description = __('Displays a list of Ad categories.', 'AWPCP');
-        parent::__construct( 'awpcp-categories', __( 'AWPCP Categories', 'AWPCP' ), array('description' => $description));
+        $description = __('Displays a list of Ad categories.', 'another-wordpress-classifieds-plugin');
+        parent::__construct( 'awpcp-categories', __( 'AWPCP Categories', 'another-wordpress-classifieds-plugin' ), array('description' => $description));
     }
 
     protected function defaults() {
         $defaults = array(
-            'title' => __('Ad Categories', 'AWPCP'),
+            'title' => __('Ad Categories', 'another-wordpress-classifieds-plugin'),
             'hide-empty' => 0,
             'show-parents-only' => 0,
             'show-ad-count' => get_awpcp_option( 'showadcount' ),

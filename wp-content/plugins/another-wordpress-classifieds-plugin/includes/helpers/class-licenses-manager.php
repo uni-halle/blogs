@@ -6,11 +6,14 @@ function awpcp_licenses_manager() {
 
 class AWPCP_LicensesManager {
 
+    const LICENSE_STATUS_UNKNOWN = 'unknown';
+    const LICENSE_STATUS_INVALID = 'invalid';
     const LICENSE_STATUS_VALID = 'valid';
     const LICENSE_STATUS_EXPIRED = 'expired';
     const LICENSE_STATUS_INACTIVE = 'inactive';
     const LICENSE_STATUS_SITE_INACTIVE = 'site_inactive';
     const LICENSE_STATUS_DEACTIVATED = 'deactivated';
+    const LICENSE_STATUS_DISABLED = 'disabled';
 
     private $edd;
     private $settings;
@@ -20,30 +23,34 @@ class AWPCP_LicensesManager {
         $this->settings = $settings;
     }
 
+    public function get_license_setting_name( $module_slug ) {
+        return "{$module_slug}-license";
+    }
+
     public function set_module_license( $module_slug, $license ) {
-        $this->settings->set_or_update_option( "{$module_slug}-license", $license );
+        $this->settings->set_or_update_option( $this->get_license_setting_name( $module_slug ), $license );
         $this->drop_license_status( $module_slug );
     }
 
     public function get_module_license( $module_slug ) {
-        return $this->settings->get_option( "{$module_slug}-license" );
+        return $this->settings->get_option( $this->get_license_setting_name( $module_slug ) );
     }
 
     public function is_license_valid( $module_name, $module_slug ) {
         return $this->get_license_status( $module_name, $module_slug ) === self::LICENSE_STATUS_VALID;
     }
 
-    private function get_license_status( $module_name, $module_slug ) {
+    public function get_license_status( $module_name, $module_slug ) {
         static $cache = array();
 
         if ( ! isset( $cache[ $module_slug ] ) ) {
-            $cache[ $module_slug ] = $this->calculate_license_status( $module_name, $module_slug );
+            $cache[ $module_slug ] = $this->get_and_update_license_status( $module_name, $module_slug );
         }
 
         return $cache[ $module_slug ];
     }
 
-    private function calculate_license_status( $module_name, $module_slug ) {
+    private function get_and_update_license_status( $module_name, $module_slug ) {
         $license_status = get_site_transient( $this->get_license_status_transient_key( $module_slug ) );
 
         if ( $license_status !== false ) {
@@ -52,9 +59,18 @@ class AWPCP_LicensesManager {
 
         try {
             $license_status = $this->get_license_status_from_store( $module_name, $module_slug );
-        } catch ( AWPCP_Exception $e ) {
-            $license_status = $this->settings->get_option( "{$module_slug}-license-status" );
-            awpcp_flash( $e->format_errors() );
+        } catch ( AWPCP_Infinite_Loop_Detected_Exception $e ) {
+            $license_status = null;
+            awpcp_flash( $e->getMessage() );
+        } catch ( AWPCP_Easy_Digital_Downloads_Exception $e ) {
+            $license_status = self::LICENSE_STATUS_UNKNOWN;
+            awpcp_flash( $e->getMessage() );
+        }
+
+        if ( ! is_null( $license_status ) ) {
+            $this->update_license_status( $module_slug, $license_status );
+        } else {
+            $license_status = self::LICENSE_STATUS_UNKNOWN;
         }
 
         return $license_status;
@@ -67,10 +83,14 @@ class AWPCP_LicensesManager {
     }
 
     private function get_license_status_from_store( $module_name, $module_slug ) {
-        $license_information = $this->edd->check_license( $module_name, $this->get_module_license( $module_slug ) );
-        $license_status = $license_information->license;
+        $module_license = $this->get_module_license( $module_slug );
 
-        $this->update_license_status( $module_slug, $license_status );
+        if ( ! empty( $module_license ) ) {
+            $license_information = $this->edd->check_license( $module_name, $module_license );
+            $license_status = $license_information->license;
+        } else {
+            $license_status = self::LICENSE_STATUS_INVALID;
+        }
 
         return $license_status;
     }
@@ -102,19 +122,23 @@ class AWPCP_LicensesManager {
         return $this->get_license_status( $module_name, $module_slug ) === self::LICENSE_STATUS_EXPIRED;
     }
 
+    public function is_license_disabled( $module_name, $module_slug ) {
+        return $this->get_license_status( $module_name, $module_slug ) === self::LICENSE_STATUS_DISABLED;
+    }
+
     public function activate_license( $module_name, $module_slug ) {
         try {
             $response = $this->edd->activate_license( $module_name, $this->get_module_license( $module_slug ) );
             $this->update_license_status( $module_slug, $response->license );
             return $response->license === self::LICENSE_STATUS_VALID;
-        } catch ( AWPCP_Exception $e ) {
+        } catch ( AWPCP_Easy_Digital_Downloads_Exception $e ) {
             $this->drop_license_status( $module_slug );
-            awpcp_flash( $e->format_errors() );
+            awpcp_flash( $e->getMessage() );
             return false;
         }
     }
 
-    private function drop_license_status( $module_slug ) {
+    public function drop_license_status( $module_slug ) {
         delete_site_transient( $this->get_license_status_transient_key( $module_slug ) );
         $this->settings->set_or_update_option( "{$module_slug}-license-status", false );
     }
@@ -124,9 +148,9 @@ class AWPCP_LicensesManager {
             $response = $this->edd->deactivate_license( $module_name, $this->get_module_license( $module_slug ) );
             $this->update_license_status( $module_slug, $response->license );
             return $response->license === self::LICENSE_STATUS_DEACTIVATED;
-        } catch ( AWPCP_Exception $e ) {
+        } catch ( AWPCP_Easy_Digital_Downloads_Exception $e ) {
             $this->drop_license_status( $module_slug );
-            awpcp_flash( $e->format_errors() );
+            awpcp_flash( $e->getMessage() );
             return false;
         }
     }

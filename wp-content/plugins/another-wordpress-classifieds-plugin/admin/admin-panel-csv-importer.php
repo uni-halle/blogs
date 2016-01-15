@@ -1,7 +1,5 @@
 <?php
 
-require_once(AWPCP_DIR . '/import.php');
-
 class AWPCP_Admin_CSV_Importer {
 
 	public function scripts() {
@@ -62,7 +60,7 @@ class AWPCP_Admin_CSV_Importer {
 
 		if (!empty($import_type)) {
 
-			$msg = __('There was an error with your CSV file: %s', 'AWPCP');
+			$msg = __('There was an error with your CSV file: %s', 'another-wordpress-classifieds-plugin');
 			list($csv_error, $message) = awpcp_uploaded_file_error($_FILES['import']);
 			if (!in_array($csv_error, array(UPLOAD_ERR_OK))) {
 				$form_errors['import'] = sprintf($msg, $message);
@@ -70,11 +68,11 @@ class AWPCP_Admin_CSV_Importer {
 				$csv_file_name = $_FILES['import']['name'];
 				$ext = trim(strtolower(substr(strrchr($csv_file_name, "."), 1)));
 				if ($ext != "csv") {
-					$form_errors['import'] = sprintf($msg, __('Please upload a valid CSV file.', 'AWPCP'));
+					$form_errors['import'] = sprintf($msg, __('Please upload a valid CSV file.', 'another-wordpress-classifieds-plugin'));
 				}
 			}
 
-			$msg = __('There was an error with your ZIP file: %s', 'AWPCP');
+			$msg = __('There was an error with your ZIP file: %s', 'another-wordpress-classifieds-plugin');
 			list($zip_error, $message) = awpcp_uploaded_file_error($_FILES['import_zip']);
 			if (!in_array($zip_error, array(UPLOAD_ERR_OK, UPLOAD_ERR_NO_FILE))) {
 				$form_errors['import_zip'] = sprintf($msg, $message);
@@ -82,32 +80,31 @@ class AWPCP_Admin_CSV_Importer {
 				$zip_file_name = $_FILES['import_zip']['name'];
 				$ext = trim(strtolower(substr(strrchr($zip_file_name, "."), 1)));
 				if ($ext != "zip") {
-					$form_errors['import_zip'] = sprintf($msg, __('Please upload a valid ZIP file.', 'AWPCP'));
+					$form_errors['import_zip'] = sprintf($msg, __('Please upload a valid ZIP file.', 'another-wordpress-classifieds-plugin'));
 				}
 			}
 
 			if (!empty($start_date)) {
 				$date_arr = explode("/", $start_date);
 				if (!is_valid_date($date_arr[0], $date_arr[1], $date_arr[2])) {
-					$form_errors['startDate'] = __('Invalid Start Date.', 'AWPCP');
+					$form_errors['startDate'] = __('Invalid Start Date.', 'another-wordpress-classifieds-plugin');
 				} else if (strlen($date_arr[2]) != 4) {
-					$form_errors['startDate'] = __('Invalid Start Date -- Year Must be of Four Digit.', 'AWPCP');
+					$form_errors['startDate'] = __('Invalid Start Date -- Year Must be of Four Digit.', 'another-wordpress-classifieds-plugin');
 				}
 			}
 
 			if (!empty($end_date)) {
 				$date_arr = explode("/", $end_date);
 				if (!is_valid_date($date_arr[0], $date_arr[1], $date_arr[2])) {
-					$form_errors['endDate'] = __('Invalid End Date.', 'AWPCP');
+					$form_errors['endDate'] = __('Invalid End Date.', 'another-wordpress-classifieds-plugin');
 				} else if (strlen($date_arr[2]) != 4) {
-					$form_errors['endDate'] = __('Invalid End Date -- Year Must be of Four Digit.', 'AWPCP');
+					$form_errors['endDate'] = __('Invalid End Date -- Year Must be of Four Digit.', 'another-wordpress-classifieds-plugin');
 				}
 			}
 
 			if (empty($form_errors)) {
  				if (empty($errors)) {
 					$csv = $_FILES['import']['tmp_name'];
-					$zip = $_FILES['import_zip']['tmp_name'];
 
 					$importer = new AWPCP_CSV_Importer(array(
 						'start-date' => $start_date,
@@ -121,7 +118,7 @@ class AWPCP_Admin_CSV_Importer {
 						'test-import' => $test_import)
 					);
 
-					$importer->import($csv, $zip, $errors, $messages);
+					$importer->import($csv, $_FILES['import_zip'], $errors, $messages);
  				}
 			}
 		}

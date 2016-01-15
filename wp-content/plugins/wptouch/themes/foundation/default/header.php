@@ -17,8 +17,6 @@
 
 	<body <?php body_class( wptouch_get_body_classes() ); ?>>
 
-		<?php do_action( 'wptouch_preview' ); ?>
-
 		<?php do_action( 'wptouch_body_top' ); ?>
 
 		<?php get_template_part( 'header-bottom' ); ?>

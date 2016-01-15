@@ -13,6 +13,7 @@ module.exports = function(grunt) {
           '<%= path.awpcp %>/js/awpcp.js',
           '<%= path.awpcp %>/js/jquery.js',
           '<%= path.awpcp %>/js/knockout.js',
+          '<%= path.awpcp %>/js/moment.js',
           '<%= path.awpcp %>/js/components/category-dropdown/*.js',
           '<%= path.awpcp %>/js/components/datepicker-field/*.js',
           '<%= path.awpcp %>/js/components/file-manager/*.js',
@@ -21,6 +22,8 @@ module.exports = function(grunt) {
           '<%= path.awpcp %>/js/components/media-center.js',
           '<%= path.awpcp %>/js/components/messages/*.js',
           '<%= path.awpcp %>/js/components/thumbnails-generator/*.js',
+          '<%= path.awpcp %>/js/components/user-information-updater/*.js',
+          '<%= path.awpcp %>/js/components/multiple-region-selector/multiple-region-selector-validator.js',
           '<%= path.awpcp %>/js/asynchronous-tasks.js',
           '<%= path.awpcp %>/js/collapsible.js',
           '<%= path.awpcp %>/js/localization.js',
@@ -41,8 +44,8 @@ module.exports = function(grunt) {
         '<%= path.awpcp %>/js/awpcp-admin.src.js': [
           '<%= path.awpcp %>/js/components/settings-validator.js',
         ],
-        '<%= path.awpcp %>/js/components/plupload-queue/jquery-plupload-queue.src.js': [
-          '<%= path.awpcp %>/js/components/plupload-queue/i18n.js'
+        '<%= path.awpcp %>/js/jquery-breakpoints/jquery-breakpoints.src.js': [
+          '<%= path.awpcp %>/js/jquery-breakpoints/jquery-breakpoints.js'
         ]
       }
     },

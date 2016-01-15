@@ -31,3 +31,8 @@ body {
 	bottom: 0;
 	z-index: -1;
 }
+
+.page-wrapper {
+	left: 0;
+	right: 0;
+}

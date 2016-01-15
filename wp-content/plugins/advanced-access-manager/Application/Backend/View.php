@@ -168,6 +168,22 @@ class AAM_Backend_View {
             'status' => AAM_Core_API::updateOption('aam-welcome', 0)
         ));
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getErrorFixStatus() {
+        $plugin = AAM_Core_Repository::getInstance()->pluginStatus('WP Error Fix');
+        
+        if ($plugin['status'] == 'install') {
+            $response = array('status' => 'show', 'url' => $plugin['url']);
+        } else {
+            $response = array('status' => 'hide');
+        }
+        
+        return json_encode($response);
+    }
 
     /**
      * Get Subject

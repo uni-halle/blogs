@@ -20,6 +20,7 @@ class AWPCP_Missing_Pages_Finder {
 
         // pages that are registered in the code but no referenced in the DB
         $pages_not_referenced = array_diff( $registered_pages, $referenced_pages );
+        $pages_not_used = array_diff( $referenced_pages, $registered_pages );
         $registered_pages_ids = awpcp_get_page_ids_by_ref( $registered_pages );
 
         $query = 'SELECT posts.ID post, posts.post_status status ';
@@ -30,6 +31,10 @@ class AWPCP_Missing_Pages_Finder {
         $missing_pages = array( 'not-found' => array(), 'not-published' => array(), 'not-referenced' => array() );
 
         foreach ( $plugin_pages as $page_ref => $page_info ) {
+            if ( in_array( $page_ref, $pages_not_used ) ) {
+                continue;
+            }
+
             $page = isset( $existing_pages[ $page_info['page_id'] ] ) ? $existing_pages[ $page_info['page_id'] ] : null;
 
             if ( is_object( $page ) && isset( $page->status ) && $page->status != 'publish' ) {

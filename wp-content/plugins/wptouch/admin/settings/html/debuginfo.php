@@ -8,14 +8,13 @@
 ?>
 
 <?php $settings = wptouch_get_settings(); ?>
+
 <?php if ( $settings->debug_log ) { ?>
 	<strong><a class="button" href="<?php echo ( WPTOUCH_DEBUG_URL . '/' . wptouch_debug_get_filename() ); ?>" target="_blank"><?php _e( 'View Debug File', 'wptouch-pro' ); ?></a></strong>
 <br /><br />
 <?php } ?>
-<?php if ( wptouch_get_locale() == 'fr_FR' ) { ?>
-<strong><?php _e( 'Your Server Configuration', 'wptouch-pro' ); ?> :</strong>
-<?php } else { ?>
-<strong><?php _e( 'Your Server Configuration', 'wptouch-pro' ); ?>:</strong>
-<?php } ?>
+
+
+<h3><?php _e( 'Server Configuration', 'wptouch-pro' ); ?></h3>
 <br />
 <?php echo implode( ', ', $debug_data );

@@ -5,7 +5,7 @@ abstract class AWPCP_ListingActionWithConfirmation extends AWPCP_ListingAction {
     public abstract function get_confirmation_message();
 
     public function get_cancel_button_label() {
-        return __( 'Cancel', 'AWPCP' );
+        return __( 'Cancel', 'another-wordpress-classifieds-plugin' );
     }
 
     protected function get_template() {

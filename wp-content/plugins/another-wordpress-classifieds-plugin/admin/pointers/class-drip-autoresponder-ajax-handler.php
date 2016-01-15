@@ -20,7 +20,7 @@ class AWPCP_DripAutoresponderAjaxHandler extends AWPCP_AjaxHandler {
 
     public function ajax() {
         if ( ! wp_verify_nonce( $this->request->post( 'nonce' ), 'drip-autoresponder' ) ) {
-            return $this->error_response( __( 'You are not authorizred to perform this action.', 'AWPCP' ) );
+            return $this->error_response( __( 'You are not authorizred to perform this action.', 'another-wordpress-classifieds-plugin' ) );
         }
 
         $action = $this->request->post( 'action' );
@@ -36,7 +36,7 @@ class AWPCP_DripAutoresponderAjaxHandler extends AWPCP_AjaxHandler {
         $posted_data = $this->get_posted_data();
 
         if ( ! awpcp_is_valid_email_address( $posted_data['email'] ) ) {
-            return $this->error_response( _x( 'The email address entered is not valid.', 'drip-autoresponder', 'AWPCP' ) );
+            return $this->error_response( _x( 'The email address entered is not valid.', 'drip-autoresponder', 'another-wordpress-classifieds-plugin' ) );
         }
 
         $response = wp_remote_post( self::DRIP_FORM_URL, array(
@@ -111,8 +111,8 @@ class AWPCP_DripAutoresponderAjaxHandler extends AWPCP_AjaxHandler {
     private function render_pointer_content() {
         $template = '<h3><title></h3><p><content></p>';
 
-        $title = _x( 'Thank you for signing up!', 'drip-autoresponder', 'AWPCP' );
-        $content = _x( 'Please check your email and click the link provided to confirm your subscription.', 'drip-autoresponder', 'AWPCP' );
+        $title = _x( 'Thank you for signing up!', 'drip-autoresponder', 'another-wordpress-classifieds-plugin' );
+        $content = _x( 'Please check your email and click the link provided to confirm your subscription.', 'drip-autoresponder', 'another-wordpress-classifieds-plugin' );
 
         $template = str_replace( '<title>', $title, $template );
         $template = str_replace( '<content>', $content, $template );
@@ -141,7 +141,7 @@ class AWPCP_DripAutoresponderAjaxHandler extends AWPCP_AjaxHandler {
     }
 
     private function get_unexpected_error_message() {
-        return __( 'An unexpected error ocurred.', 'AWPCP' );
+        return __( 'An unexpected error ocurred.', 'another-wordpress-classifieds-plugin' );
     }
 
     private function autoresponder_dismissed() {

@@ -3,8 +3,8 @@ Contributors: petervanderdoes
 Donate link: http://blog.avirtualhome.com/wordpress-plugins/
 Tags: extended, categories, widget, top categories
 Requires at least: 2.3
-Tested up to: 4.2
-Stable tag: 4.0.1
+Tested up to: 4.4
+Stable tag: 4.0.2
 
 The AVH Extended Categories Widgets gives you three widgets for displaying categories.
 == Description ==
@@ -139,6 +139,9 @@ Whether Widget 2 shows Movie or Music depends on the creation order of groups. I
 None
 
 == Changelog ==
+= Version 4.0.2 =
+* Certain methods show notice of undefined variables. 
+
 = Version 4.0.1 =
 * Post-Auth SQL Injection Vulnerability  
   Only occurs for WordPress versions lower than 3.3

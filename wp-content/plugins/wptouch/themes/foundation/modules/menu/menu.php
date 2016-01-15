@@ -20,17 +20,19 @@ function foundation_get_page_walker( $walker, $menu_name ) {
 			$settings = wptouch_get_settings( $menu_info->settings_domain );
 			$setting_value = $menu_info->setting_name;
 
-			$menu_to_show = $settings->$setting_value;
+			if ( isset( $settings->$setting_value ) ) {
+				$menu_to_show = $settings->$setting_value;
 
-			if ( $menu_name == $menu_to_show ) {
-				// This is the menu that is showing
-				switch ( $menu_info->menu_type ) {
-					case 'dropdown':
-						// This is already taken care of by the walkel
-						break;
-					default:
-						$walker = apply_filters( 'wptouch_unhandled_page_walker', $walker, $menu_info->menu_type );
-						break;
+				if ( $menu_name == $menu_to_show ) {
+					// This is the menu that is showing
+					switch ( $menu_info->menu_type ) {
+						case 'dropdown':
+							// This is already taken care of by the walkel
+							break;
+						default:
+							$walker = apply_filters( 'wptouch_unhandled_page_walker', $walker, $menu_info->menu_type );
+							break;
+					}
 				}
 			}
 		}
@@ -51,20 +53,12 @@ function foundation_menu_get_style_deps() {
 }
 
 function foundation_menu_init() {
-	/*
-	wp_enqueue_style(
-		'foundation_menu',
-		foundation_get_base_module_url() . '/menu/menu.css',
-		foundation_menu_get_style_deps(),
-		FOUNDATION_VERSION
-	);
-	*/
 
 	wp_enqueue_script(
 		'foundation_menu',
 		foundation_get_base_module_url() . '/menu/menu.js',
 		array( 'jquery' ),
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		true
 	);
 }

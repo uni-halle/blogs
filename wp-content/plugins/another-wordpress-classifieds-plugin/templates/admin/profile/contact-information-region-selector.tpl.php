@@ -12,7 +12,7 @@
 
                         <input class="multiple-region regular-text" type="text" data-bind="attr: { id: id }, value: selectedText, visible: showTextField, disable: $root.options.disabled" />
 
-                        <span class="loading-message" data-bind="visible: loading"><?php echo esc_html( _x( 'loading...', 'loading region options', 'AWPCP' ) ); ?></span>
+                        <span class="loading-message" data-bind="visible: loading"><?php echo esc_html( _x( 'loading...', 'loading region options', 'another-wordpress-classifieds-plugin' ) ); ?></span>
 
                         <input type="hidden" data-bind="attr: { name: param }, value: selected" />
                     </td>

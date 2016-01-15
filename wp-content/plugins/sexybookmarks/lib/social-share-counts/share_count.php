@@ -54,12 +54,6 @@ abstract class ShareaholicShareCount {
         'prepare' => 'google_plus_prepare_request',
         'callback' => 'google_plus_count_callback',
       ),
-      'delicious' => array(
-        'url' => 'http://feeds.delicious.com/v2/json/urlinfo/data?url=%s',
-        'method' => 'GET',
-        'timeout' => 3,
-        'callback' => 'delicious_count_callback',
-      ),
       'pinterest' => array(
         'url' => 'https://api.pinterest.com/v1/urls/count.json?url=%s&callback=f',
         'method' => 'GET',
@@ -258,23 +252,6 @@ abstract class ShareaholicShareCount {
     $body = json_decode($response['body'], true);
     // special case: do not return false if the count is not set because the api can return without counts
     return isset($body[0]['result']['metadata']['globalCounts']['count']) ? intval($body[0]['result']['metadata']['globalCounts']['count']) : 0;
-  }
-
-
-  /**
-   * Callback function for delicious count API
-   * Gets the delicious counts from response
-   *
-   * @param Array $response The response from calling the API
-   * @return mixed The counts from the API or false if error
-   */
-  public function delicious_count_callback($response) {
-    if($this->has_http_error($response)) {
-      return false;
-    }
-    $body = json_decode($response['body'], true);
-    // special case: do not return false if the count is set because the api can return without total posts
-    return isset($body[0]['total_posts']) ? intval($body[0]['total_posts']) : 0;
   }
 
 

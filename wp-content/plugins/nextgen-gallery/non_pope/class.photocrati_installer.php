@@ -204,7 +204,8 @@ if (!class_exists('C_Photocrati_Installer'))
 				C_Component_Factory::$_instances = array();
 
 				foreach ($diff as $module_name) {
-					if (($handler = self::get_handler_instance(array_shift(explode('|', $module_name))))) {
+					$parts = explode('|', $module_name);
+					if (($handler = self::get_handler_instance(array_shift($parts)))) {
 						if (method_exists($handler, 'install'))
                             $handler->install($reset);
 					}

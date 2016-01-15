@@ -29,9 +29,7 @@ function( $ ) {
 
                 self.widget.choose(selected);
             } else {
-                setTimeout(function() {
-                    self.widget.change(null);
-                }, 100);
+                setTimeout( function() { self.widget.change(null); }, 100 );
             }
 
         // using a single dropdown
@@ -40,6 +38,8 @@ function( $ ) {
                 var category_id = parseInt(self.dropdown.val(), 10);
                 $.publish('/category/updated' , [self.dropdown, isNaN(category_id) ? null : category_id]);
             });
+
+            setTimeout( function() { self.dropdown.change(); }, 100 );
         }
     };
 

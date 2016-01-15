@@ -8,7 +8,7 @@ function foundation_spinjs_init() {
 		'foundation_spinjs',
 		foundation_get_base_module_url() . '/spinjs/spin.min.js',
 		array( 'jquery' ),
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		true
 	);
 
@@ -16,7 +16,7 @@ function foundation_spinjs_init() {
 		'foundation_spinjs_jquery',
 		foundation_get_base_module_url() . '/spinjs/spin-jquery.js',
 		array( 'foundation_spinjs' ),
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		true
 	);
 }

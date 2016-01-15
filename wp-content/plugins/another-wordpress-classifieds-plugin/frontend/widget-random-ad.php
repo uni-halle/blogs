@@ -6,12 +6,12 @@ require_once(AWPCP_DIR . '/frontend/widget-latest-ads.php');
 class AWPCP_RandomAdWidget extends AWPCP_LatestAdsWidget {
 
     public function __construct($id=null, $name=null, $description=null) {
-        parent::__construct('awpcp-random-ads', __('AWPCP Random Ads', 'AWPCP'), __('Displays a list of random Ads', 'AWPCP'));
+        parent::__construct('awpcp-random-ads', __('AWPCP Random Ads', 'another-wordpress-classifieds-plugin'), __('Displays a list of random Ads', 'another-wordpress-classifieds-plugin'));
     }
 
     protected function defaults() {
         return wp_parse_args( array(
-            'title' => __('Random Ads', 'AWPCP'),
+            'title' => __('Random Ads', 'another-wordpress-classifieds-plugin'),
             'limit' => 1,
         ), parent::defaults() );
     }

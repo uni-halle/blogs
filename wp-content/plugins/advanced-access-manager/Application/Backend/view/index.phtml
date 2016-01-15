@@ -27,8 +27,8 @@
                     <div class="modal-body">
                         <p class="aam-info"><?php echo __('AAM main objective is to control access to your frontend and backend resources. In some cases your website may get slower because AAM performs additional checks. That is why it is important to have AAM caching turned on. Please follow few simple steps below to turn on the caching mechanism.', AAM_KEY); ?></p>
                         <ul class="aam-numeric-list">
-                            <li><?php echo AAM_Backend_Helper::preparePhrase(__('Go to [Extensions] tab and click [Download] button for [AAM Utilities]', AAM_KEY), 'b', 'b', 'i'); ?>;</li>
-                            <li><?php echo AAM_Backend_Helper::preparePhrase(__('After [AAM Utilities] installed successfully, go to [Utilities] tab and enable [Caching].', AAM_KEY), 'i', 'b', 'b'); ?></ol>
+                            <li><?php echo AAM_Backend_Helper::preparePhrase('Go to [Extensions] tab and click [Download] button for [AAM Utilities]', 'b', 'b', 'i'); ?>;</li>
+                            <li><?php echo AAM_Backend_Helper::preparePhrase('After [AAM Utilities] installed successfully, go to [Utilities] tab and enable [Caching].', 'i', 'b', 'b'); ?></ol>
                         </ul>
                     </div>
                     <div class="modal-footer">
@@ -285,6 +285,19 @@
                         </div>
                     </div>
                     <?php do_action('aam-sidebar-ui-action', 'bottom'); ?>
+                    
+                    <!-- Error Fix Promotion: begin -->
+                    <div class="postbox hidden" id="errorfix-promotion">
+                        <h3 class="hndle">
+                            <span>Website Error Fix</span>
+                            <a href="https://wordpress.org/plugins/wp-error-fix/" target="_blank" class="aam-help-menu"><i class="icon-help-circled"></i></a>
+                        </h3>
+                        <div class="inside">
+                            <p class="aam-info">Keep your webiste error free with our new plugin <b>WP Error Fix</b>.</p>
+                            <a href="#" class="btn btn-warning btn-lg btn-block" id="errorfix-install-btn">Install WP Error Fix</a>
+                        </div>
+                    </div>
+                    <!-- Error Fix Promotion: end -->
                 </div>
             </div>
         </div>

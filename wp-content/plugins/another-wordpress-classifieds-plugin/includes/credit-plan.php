@@ -92,13 +92,13 @@ class AWPCP_CreditPlan {
 
     private function validate($data, &$errors=array()) {
         if (empty($data['name']))
-            $errors[] = __('The name of the plan is required.', 'AWPCP');
+            $errors[] = __('The name of the plan is required.', 'another-wordpress-classifieds-plugin');
 
         if ($data['credits'] <= 0)
-            $errors[] = __('The number of credits must be greater than zero.', 'AWPCP');
+            $errors[] = __('The number of credits must be greater than zero.', 'another-wordpress-classifieds-plugin');
 
         if ($data['price'] < 0)
-            $errors[] = __('The price must be greater or equal than zero.', 'AWPCP');
+            $errors[] = __('The price must be greater or equal than zero.', 'another-wordpress-classifieds-plugin');
 
         return empty($errors);
     }
@@ -136,7 +136,7 @@ class AWPCP_CreditPlan {
 
         $plan = self::find_by_id($id);
         if (is_null($plan)) {
-            $errors[] = __("The Credit Plan doesn't exist.", 'AWPCP');
+            $errors[] = __("The Credit Plan doesn't exist.", 'another-wordpress-classifieds-plugin');
             return false;
         }
 

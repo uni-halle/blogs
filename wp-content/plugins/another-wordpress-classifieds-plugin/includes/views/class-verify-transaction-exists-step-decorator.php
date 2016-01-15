@@ -14,7 +14,7 @@ class AWPCP_VerifyTransactionExistsStepDecorator extends AWPCP_StepDecorator {
         $transaction = $controller->get_transaction();
 
         if ( is_null( $transaction ) ) {
-            $message = __( 'There was an error processing your Payment Request. Please try again or contact an Administrator.', 'AWPCP' );
+            $message = __( 'There was an error processing your Payment Request. Please try again or contact an Administrator.', 'another-wordpress-classifieds-plugin' );
             throw new AWPCP_Exception( $message );
         }
     }

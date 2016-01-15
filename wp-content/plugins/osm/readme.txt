@@ -2,8 +2,8 @@
 Contributors: MiKa
 Tags: map, OpenStreetMap, Google Maps, googlemaps, geo, KML, GPX, geotag, geolocation, geocache, geocaching, OSM, travelogue, OpenLayers, CloudMade, marker, POI, geocode, geotagging, location, Tracks, WMS, OpenWeatherMap, fullscreen, OpenSeaMap, stamen, basemap, exif, meta, widget
 Requires at least: 3.0
-Tested up to: 4.3.1
-Stable tag: 3.5.4
+Tested up to: 4.4.1
+Stable tag: 3.6.1
 
 Customize maps in your post, pages and widgets. Add geotag to your blog and site. Use GPX, KML, ... 
 
@@ -11,7 +11,7 @@ Customize maps in your post, pages and widgets. Add geotag to your blog and site
 If you want to get detailed information about the OSM-plugin visit these pages:
 
 * Homepage: [WP-OSM-Plugin](http://wp-osm-plugin.hanblog.net/ "OSM-plugin")
-* Forum: [EN](http://wp-osm-plugin.hanblog.net/forum/forum-en/ "OSM-plugin forum EN")/[DE](http://wp-osm-plugin.hanblog.net/forum/forum-de/ "OSM-plugin forum DE")
+* Forum: [EN|DE](http://wp-osm-plugin.hanblog.net/forums/ "OSM-plugin forum EN|DE")
 * Twitter: [@WP_OSM_Plugin](https://twitter.com/wp_osm_plugin "@WP_OSM_Plugin")
 * FacebooK: [HanBlog Net](https://de-de.facebook.com/people/HanBlog-Net/100010432170169 "HanBlog")
 

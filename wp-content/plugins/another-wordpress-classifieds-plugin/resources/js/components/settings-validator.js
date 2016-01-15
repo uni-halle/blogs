@@ -15,8 +15,13 @@ AWPCP.define( 'awpcp/settings-validator', [
                     fieldName = field.attr( 'name' ),
                     setting = $.parseJSON( field.attr( 'awpcp-setting' ) );
 
-                options.messages[ fieldName ] = setting.validation.messages;
-                options.rules[ fieldName ] = self.getSettingRules( setting );
+                if ( setting && setting.validation && setting.validation.messages ) {
+                    options.messages[ fieldName ] = setting.validation.messages;
+                }
+
+                if ( setting && setting.validation && setting.validation.rules ) {
+                    options.rules[ fieldName ] = self.getSettingRules( setting );
+                }
 
                 self.setupSettingBehavior( field, setting );
             } );

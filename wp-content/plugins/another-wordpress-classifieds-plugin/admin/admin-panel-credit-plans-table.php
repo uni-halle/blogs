@@ -70,10 +70,10 @@ class AWPCP_CreditPlansTable extends WP_List_Table {
         $columns = array();
 
         $columns['cb'] = '<input type="checkbox" />';
-        $columns['name'] = __('Name', 'AWPCP');
-        $columns['description'] = __('Description', 'AWPCP');
-        $columns['credits'] = __('Credits', 'AWPCP');
-        $columns['price'] = __('Price', 'AWPCP');
+        $columns['name'] = __('Name', 'another-wordpress-classifieds-plugin');
+        $columns['description'] = __('Description', 'another-wordpress-classifieds-plugin');
+        $columns['credits'] = __('Credits', 'another-wordpress-classifieds-plugin');
+        $columns['price'] = __('Price', 'another-wordpress-classifieds-plugin');
 
         return $columns;
     }

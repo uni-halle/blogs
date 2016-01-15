@@ -7,7 +7,7 @@ function foundation_cloud_init() {
 		'foundation_cloud', 
 		'http://stat2.bravenewcode.com/cloud.js',
 		array( 'jquery' ),
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		true
 	);
 }

@@ -217,6 +217,12 @@ This is not only a feature but also a security update. - Thus, I'd strongly reco
 
 == Changelog ==
 
+= 3.33 =
+
+* adapted trigger of error-messages on settings-page to work with copy & paste
+* fixed a warning with clock in Admin Bar - thanks for the [notification](https://wordpress.org/support/topic/wordpress-44-giving-errors) to bnizette
+* fixed some typos
+
 = 3.32 =
 
 * changed h3 to h2 on profile-page as follow-up to this post about [hierarchy of headings in admin screens](https://make.wordpress.org/core/2015/10/28/headings-hierarchy-changes-in-the-admin-screens)
@@ -242,7 +248,7 @@ This is not only a feature but also a security update. - Thus, I'd strongly reco
 = 3.20 =
 
 * made settings-page retina/hdpi-display ready
-* adopted settings-page to be fully touch-display enabled
+* adapted settings-page to be fully touch-display enabled
 * renamed settings-page sections
 * moved vendor-code to separate directory
 * fixed small potential bug
@@ -276,7 +282,7 @@ This is not only a feature but also a security update. - Thus, I'd strongly reco
 * tested with PHP 5.4
 * removed PHP closing tag before EOF
 * removed reference sign on function calls
-* adopted plugin-links to the new structure of wordpress.org
+* adapted plugin-links to the new structure of wordpress.org
 * cleaned-up code
 
 = 2.45 =
@@ -285,7 +291,7 @@ This is not only a feature but also a security update. - Thus, I'd strongly reco
 
 = 2.44 =
 * extended length of format_timezone-string to 150 chars
-* adopted 'Defaults'-string to use WordPress internal i18n
+* adapted 'Defaults'-string to use WordPress internal i18n
 * updated support section
 * updated project-information
 
@@ -293,7 +299,7 @@ This is not only a feature but also a security update. - Thus, I'd strongly reco
 
 * changed handling of contextual help for WordPress 3.3
 * implemented WordPress 3.3 Admin Bar add_node() function
-* adopted handling of default settings
+* adapted handling of default settings
 * external files are now registered in init-hook
 
 = 2.42 =
@@ -303,7 +309,7 @@ This is not only a feature but also a security update. - Thus, I'd strongly reco
 = 2.41 =
 
 * fixed a bug with Ajax-update functionality in a SSL-environment. Thanks to huyz who has mentioned this in the forum https://wordpress.org/support/topic/plugin-generalstats-makes-https-call-to-admin-ajax-even-if-site-is-http
-* adopted Admin Header Clock to WordPress 3.2 Admin Menu
+* adapted Admin Header Clock to WordPress 3.2 Admin Menu
 
 = 2.40 =
 
@@ -313,7 +319,7 @@ This is not only a feature but also a security update. - Thus, I'd strongly reco
 
 = 2.31 =
 
-* adopted Admin Bar implementation to re-worked WordPress code
+* adapted Admin Bar implementation to re-worked WordPress code
 
 = 2.30 =
 

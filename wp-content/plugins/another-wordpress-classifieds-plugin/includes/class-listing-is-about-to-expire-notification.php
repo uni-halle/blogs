@@ -35,7 +35,7 @@ class AWPCP_ListingIsAboutToExpireNotification {
         if ( $days_left == 0 || $days_left >= 1 ) {
             return floor( $days_left );
         } else {
-            return __( 'less than 1', 'AWPCP' );
+            return __( 'less than 1', 'another-wordpress-classifieds-plugin' );
         }
     }
 

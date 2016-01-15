@@ -2,7 +2,7 @@
 
 class AWPCP_Admin_Settings {
 
-	public function AWPCP_Admin_Settings() {
+	public function __construct() {
 		// TODO: avoid instatiation of this class until is necessary
 		$pages = awpcp_classfieds_pages_settings();
 		$facebook = new AWPCP_Facebook_Page_Settings();
@@ -164,13 +164,13 @@ class AWPCP_Facebook_Page_Settings {
 		if ( $current_step >= 2 ) {
 			// Login URL.
 			$redirect_uri = add_query_arg( 'obtain_user_token', 1, admin_url( '/admin.php?page=awpcp-admin-settings&g=facebook-settings' ) );
-			$login_url = $fb->get_login_url( $redirect_uri, 'publish_pages,publish_actions,manage_pages,user_groups' );
+			$login_url = $fb->get_login_url( $redirect_uri, 'publish_pages,publish_actions,manage_pages,user_managed_groups' );
 		}
 
 		if ( isset( $_GET['code_error'] ) && isset( $_GET['error_message'] )  ) {
-			$errors[] = esc_html( sprintf( __( 'We could not obtain a valid access token from Facebook. The API returned the following error: %s', 'AWPCP' ), $_GET['error_message'] ) );
+			$errors[] = esc_html( sprintf( __( 'We could not obtain a valid access token from Facebook. The API returned the following error: %s', 'another-wordpress-classifieds-plugin' ), $_GET['error_message'] ) );
 		} else if ( isset( $_GET['code_error'] ) ) {
-			$errors[] = esc_html( __( 'We could not obtain a valid access token from Facebook. Please try again.', 'AWPCP' ) );
+			$errors[] = esc_html( __( 'We could not obtain a valid access token from Facebook. Please try again.', 'another-wordpress-classifieds-plugin' ) );
 		}
 
 		if ( $this->get_current_action() == 'diagnostics' ) {
@@ -178,14 +178,14 @@ class AWPCP_Facebook_Page_Settings {
 			$fb->validate_config( $diagnostics_errors );
 
 			$error_msg  = '';
-			$error_msg .= '<strong>' . __( 'Facebook Config Diagnostics', 'AWPCP' ) . '</strong><br />';
+			$error_msg .= '<strong>' . __( 'Facebook Config Diagnostics', 'another-wordpress-classifieds-plugin' ) . '</strong><br />';
 
 			if ( $diagnostics_errors ) {
 				foreach ( $diagnostics_errors as &$e ) {
 					$error_msg .= '&#149; ' . $e . '<br />';
 				}
 			} else {
-				$error_msg .= __( 'Everything looks OK.', 'AWPCP' );
+				$error_msg .= __( 'Everything looks OK.', 'another-wordpress-classifieds-plugin' );
 			}
 
 			$errors[] = $error_msg;
@@ -235,7 +235,7 @@ class AWPCP_Facebook_Page_Settings {
 		$awpcp_fb->set_config( $config );
 
 		if ( $last_error = $awpcp_fb->get_last_error() ) {
-			$message = __( 'There was an error trying to contact Facebook servers: "%s".', 'AWPCP' );
+			$message = __( 'There was an error trying to contact Facebook servers: "%s".', 'another-wordpress-classifieds-plugin' );
 			$errors[] = sprintf( $message, $last_error->message );
 		} else {
 			$errors = array();

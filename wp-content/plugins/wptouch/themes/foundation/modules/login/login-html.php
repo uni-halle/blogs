@@ -24,7 +24,7 @@ $login_args = array(
 
 	</div>
 
-	<?php if ( !wptouch_fdn_is_web_app_mode() && wptouch_fdn_show_login_links() ) { ?>
+	<?php if ( wptouch_fdn_show_login_links() ) { ?>
 		<div class="login-links">
 			<?php $link_destination = esc_url_raw( $_SERVER[ 'REQUEST_URI'], array( 'http', 'https' ) ); ?>
 			<a class="sign-up tappable" href="<?php echo site_url( '/wp-login.php?action=register&redirect_to=' . $link_destination ); ?>"><?php _e( 'Sign-up', 'wptouch-pro' ); ?></a>

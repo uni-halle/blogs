@@ -38,7 +38,7 @@ class CFDBIntegrationContactForm7 {
         // Generate submit_time for CF7 mail. Some people complain this causes an error
         // so this is now optional and off by default. Seems to be related to CF7
         // checking its data against blacklist
-        if ($this->plugin->getOption('GenerateSubmitTimeInCF7Email', 'false') == 'true') {
+        if ($this->plugin->getOption('GenerateSubmitTimeInCF7Email', 'false', true) == 'true') {
             add_action('wpcf7_posted_data', array(&$this, 'generateSubmitTimeForCF7'));
         }
     }

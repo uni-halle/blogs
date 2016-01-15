@@ -99,6 +99,11 @@ class M_Attach_To_Post extends C_Base_Module
 		);
 	}
 
+	function does_request_require_frame_communication()
+	{
+		return (strpos($_SERVER['REQUEST_URI'], 'attach_to_post') !== FALSE OR strpos($_SERVER['HTTP_REFERER'], 'attach_to_post') !== FALSE OR array_key_exists('attach_to_post', $_REQUEST));
+	}
+
 
 	function _register_hooks()
 	{
@@ -112,10 +117,12 @@ class M_Attach_To_Post extends C_Base_Module
         add_action('admin_enqueue_scripts',     array(&$this, 'fix_ie11'), PHP_INT_MAX-1);
 
         // Emit frame communication events
-        add_action('ngg_created_new_gallery',	array(&$this, 'new_gallery_event'));
-        add_action('ngg_after_new_images_added',array(&$this, 'images_added_event'));
-        add_action('ngg_page_event',			array(&$this, 'nextgen_page_event'));
-        add_action('ngg_manage_tags',           array(&$this, 'manage_tags_event'));
+		if ($this->does_request_require_frame_communication()) {
+			add_action('ngg_created_new_gallery',	array(&$this, 'new_gallery_event'));
+			add_action('ngg_after_new_images_added',array(&$this, 'images_added_event'));
+			add_action('ngg_page_event',			array(&$this, 'nextgen_page_event'));
+			add_action('ngg_manage_tags',           array(&$this, 'manage_tags_event'));
+		}
 
         // Admin-only hooks
 		if (is_admin()) {

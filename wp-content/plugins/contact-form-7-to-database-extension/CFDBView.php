@@ -52,7 +52,7 @@ abstract class CFDBView {
      * @return void
      */
     protected function headerLinks(&$plugin) {
-        $notDonated = 'true' != $plugin->getOption('Donated', 'false');
+        $notDonated = 'true' != $plugin->getOption('Donated', 'false', true);
         ?>
     <table style="width:100%;">
         <tbody>

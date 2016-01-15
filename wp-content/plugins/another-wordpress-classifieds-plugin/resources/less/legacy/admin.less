@@ -18,6 +18,13 @@
     width: auto;
 }
 
+@media only screen and (max-width:960px) {
+    .wrap .awpcp-main-content {
+        float: none;
+        width: auto;
+    }
+}
+
 
 /* Common
  --------------------------------------------------------------------------- */
@@ -31,30 +38,6 @@
 .row .legend {
     margin-right: 20px;
     width: 130px;
-}
-
-.tabs {
-    background: #EEE;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    padding: 4px 8px 0;
-}
-.tabs li {
-    float: left;
-    margin: 0 4px 0 0;
-}
-.tabs li a {
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    display: block;
-    font-size: 1.1em;
-    padding: 7px 6px;
-    text-decoration: none;
-}
-.tabs li a:hover, .tabs li a.active {
-    background: #FFF;
 }
 
 .nav-tab-wrapper {
@@ -118,6 +101,14 @@
 
 .awpcp-update-nag {
     display: block !important;
+    padding: 70px 15px 11px;
+}
+.awpcp-update-nag-title {
+    font-size: 1.7em;
+    font-weight: bold;
+}
+.awpcp-update-nag p {
+    font-size: 1.1em;
 }
 
 .awpcp-sticky-notice {
@@ -266,6 +257,15 @@
     .awpcp-license-valid {
         color: green;
     }
+    .awpcp-license-inactive {
+        color: blue;
+    }
+    .awpcp-license-expired {
+        color: orange;
+    }
+    .awpcp-license-invalid {
+        color: red;
+    }
 }
 
 /* =Admin Credit Plans
@@ -296,10 +296,13 @@
 }
 
 .awpcp-admin-fees .inline-edit-col label .title {
-    width: 6em;
+    width: 10em;
 }
 .awpcp-admin-fees .inline-edit-col label .input-text-wrap {
-    margin-left: 6em;
+    margin-left: 10em;
+}
+.awpcp-admin-fees .inline-edit-col label .helptext {
+    float: right;
 }
 
 .awpcp-admin-fees .inline-edit-col .category-checklist {

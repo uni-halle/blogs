@@ -102,10 +102,13 @@ function wptouch_admin_get_split_version( $ver ) {
 	return $float_ver;
 }
 
-function wptouch_admin_is_setting_pro() {
-	global $_primed_setting;
+function wptouch_admin_is_setting_pro( $setting = false ) {
+	if ( !$setting ) {
+		global $_primed_setting;
+		$setting = $_primed_setting;
+	}
 
-	return $_primed_setting->is_pro;
+	return $setting->is_pro;
 }
 
 function wptouch_admin_is_setting_new() {

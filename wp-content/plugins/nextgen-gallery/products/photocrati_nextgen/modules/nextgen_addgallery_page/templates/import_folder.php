@@ -1,6 +1,11 @@
-<p><?php _e('Select a folder to import. The folder name will be used as the title of the gallery.', 'nggallery'); ?></p>
+<p><?php _e('Select a folder to import.', 'nggallery'); ?></p>
 <div id="file_browser">
 </div>
+<p>
+    <label for="import_gallery_title">
+        <input type="text" name="import_gallery_title" id="import_gallery_title"/>
+    </label>
+</p>
 <p>
     <input type="checkbox" id="import_keep_location" name="keep_location" value="on" /> <label for="import_keep_location"> <?php esc_html_e('Keep images in original location.', 'nggallery'); ?> <span style="font-size: 85%"><?php esc_html_e('Caution: If you keep images in the original folder and later delete the gallery, the images in that folder might be deleted depending on your settings.', 'nggallery'); ?></span></label><br/><br/>
     <input type="button" id="import_button" name="import_folder" value="<?php _e('Import Folder', 'nggallery'); ?>" class="button-primary"/>

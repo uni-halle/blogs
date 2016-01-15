@@ -33,6 +33,7 @@ class AWPCP_CategoriesRenderer {
 
     private function merge_params( $params ) {
         return wp_parse_args( $params, array(
+            'category_id' => null,
             'parent_category_id' => null,
             'show_empty_categories' => true,
             'show_children_categories' => true,
@@ -78,7 +79,11 @@ class AWPCP_CategoriesRenderer {
     private function get_categories( $params ) {
         $selected_categories = array();
 
-        if ( is_null( $params['parent_category_id'] ) && $params['show_children_categories'] ) {
+        if ( ! is_null( $params['category_id'] ) && $params['show_children_categories'] ) {
+            $categories_found = $this->categories->get_categories_hierarchy( $params['category_id'] );
+        } else if ( ! is_null( $params['category_id'] ) ) {
+            $categories_found = $this->categories->find( array( 'id' => $params['category_id'] ) );
+        } else if ( is_null( $params['parent_category_id'] ) && $params['show_children_categories'] ) {
             $categories_found = $this->categories->get_all();
         } else if ( is_null( $params['parent_category_id'] ) ) {
             $categories_found = $this->categories->find_by_parent_id( 0 );

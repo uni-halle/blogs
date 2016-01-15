@@ -177,7 +177,7 @@ class AWPCP_ListingsAPI {
         $alerts = array();
 
         if ( ! $ad->verified ) {
-            $alerts[] = __( 'You need to verify the email address used as the contact email address for this Ad. The Ad will remain in a disabled status until you verify you address. A verification email has been sent to you.', 'AWPCP' );
+            $alerts[] = __( 'You need to verify the email address used as the contact email address for this Ad. The Ad will remain in a disabled status until you verify you address. A verification email has been sent to you.', 'another-wordpress-classifieds-plugin' );
         }
 
         if ( get_awpcp_option( 'adapprove' ) == 1 && $ad->disabled ) {
@@ -185,7 +185,7 @@ class AWPCP_ListingsAPI {
         }
 
         if ( get_awpcp_option( 'imagesapprove' ) == 1 ) {
-            $alerts[] = __( "If you have uploaded images your images will not show up until an admin has approved them.", "AWPCP" );
+            $alerts[] = __( "If you have uploaded images your images will not show up until an admin has approved them.", 'another-wordpress-classifieds-plugin' );
         }
 
         return $alerts;
@@ -235,7 +235,7 @@ class AWPCP_ListingsAPI {
     public function send_verification_email( $ad ) {
         $mail = new AWPCP_Email;
         $mail->to[] = awpcp_format_email_address( $ad->ad_contact_email, $ad->ad_contact_name );
-        $mail->subject = sprintf( __( 'Verify the email address used for Ad "%s"', 'AWPCP' ), $ad->get_title() );
+        $mail->subject = sprintf( __( 'Verify the email address used for Ad "%s"', 'another-wordpress-classifieds-plugin' ), $ad->get_title() );
 
         $verification_link = awpcp_get_email_verification_url( $ad->ad_id );
 

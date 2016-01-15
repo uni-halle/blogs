@@ -1,17 +1,28 @@
 <?php if (!$download): ?>
 	<?php $page_id = 'awpcp-admin-debug' ?>
-	<?php $page_title = awpcp_admin_page_title( __( 'Debug', 'AWPCP' ) ); ?>
+	<?php $page_title = awpcp_admin_page_title( __( 'Debug', 'another-wordpress-classifieds-plugin' ) ); ?>
 
 	<?php include(AWPCP_DIR . '/admin/templates/admin-panel-header.tpl.php') ?>
 <?php endif ?>
 
-		<?php $msg = _x('This information can help AWPCP Developers to debug possible problems. If you are submitting a bug report please <strong><a href="%s">Download the Debug Information</a></strong> and attach it to your bug report or take a minute to copy the information below to <a href="http://fpaste.org" target="_blank">http://fpaste.org</a> and provide the resulting URL in your report.', 'debug page', 'AWPCP') ?>
+		<?php echo awpcp_html_admin_second_level_heading( array( 'content' => __( 'Are you seeng 404 Not Found errors?', 'another-wordpress-classifieds-plugin' ) ) ); ?>
+
+		<?php $message = __( "If you are seeing multiple 404 Not Found errors in your website, it is possible that some Rewrite Rules are missing or corrupted. Please click the button bellow to navigate to the <permalinks-settings-link>Permalinks Settings</a> page. Opening that page in your browser will flush the Rewrite Rules in your site. WordPress will then ask all installed and active plugins to register their rules and those 404 Not Found errors should be gone. If that's not the case, please contact <support-link>customer support</a>.", 'another-wordpress-classifieds-plugin' ); ?>
+		<?php $message = str_replace( '<support-link>', '<a href="http://awpcp.com/contact/">', $message ); ?>
+		<?php $message = str_replace( '<permalinks-settings-link>', '<a href="' . esc_url( admin_url( 'options-permalink.php' ) ) . '">', $message ); ?>
+		<p><?php echo $message ?></p>
+
+		<p><a class="button-primary" href="<?php echo esc_url( admin_url( 'options-permalink.php' ) ); ?>"><?php echo _x( 'Flush Rewrite Rules', 'debug page', 'another-wordpress-classifieds-plugin' ); ?></a></p>
+
+		<?php echo awpcp_html_admin_second_level_heading( array( 'content' => __( 'Debug Information', 'another-wordpress-classifieds-plugin' ) ) ); ?>
+
+		<?php $msg = _x('This information can help AWPCP Developers to debug possible problems. If you are submitting a bug report please <strong><a href="%s">Download the Debug Information</a></strong> and attach it to your bug report or take a minute to copy the information below to <a href="http://fpaste.org" target="_blank">http://fpaste.org</a> and provide the resulting URL in your report.', 'debug page', 'another-wordpress-classifieds-plugin') ?>
 		<p><?php echo sprintf( $msg, esc_url( add_query_arg( 'download', 'debug page', awpcp_current_url() ) ) ); ?></p>
 
-		<?php $title_pages = _x('AWPCP Pages', 'debug page', 'AWPCP') ?>
-		<?php $title_php_info = _x('PHP Info', 'debug page', 'AWPCP') ?>
-		<?php $title_settings = _x('AWPCP Settings', 'debug page', 'AWPCP') ?>
-		<?php $title_rules = _x('Rewrite Rules', 'debug page', 'AWPCP') ?>
+		<?php $title_pages = _x('AWPCP Pages', 'debug page', 'another-wordpress-classifieds-plugin') ?>
+		<?php $title_php_info = _x('PHP Info', 'debug page', 'another-wordpress-classifieds-plugin') ?>
+		<?php $title_settings = _x('AWPCP Settings', 'debug page', 'another-wordpress-classifieds-plugin') ?>
+		<?php $title_rules = _x('Rewrite Rules', 'debug page', 'another-wordpress-classifieds-plugin') ?>
 
 		<h2 class="nav-tab-wrapper">
 			<a class="nav-tab" href="#awpcp-debug-awpcp-pages"><?php echo $title_pages; ?></a>
@@ -23,14 +34,14 @@
 		<div class="metabox-holder">
 
 		<div id="awpcp-debug-awpcp-pages" class="postbox">
-		    <h3 class="hndle1"><span><?php echo $title_pages ?></span></h3>
+		    <?php echo awpcp_html_postbox_handle( array( 'heading_tag' => 'h3', 'content' => $title_pages ) ); ?>
 		    <div class="inside">
 				<table>
 					<thead>
 						<tr>
-							<th><?php _e('Stored ID', 'AWPCP') ?></th>
-							<th><?php _e('Reference', 'AWPCP') ?></th>
-							<th><?php _e('Title', 'AWPCP') ?></th>
+							<th><?php _e('Stored ID', 'another-wordpress-classifieds-plugin') ?></th>
+							<th><?php _e('Reference', 'another-wordpress-classifieds-plugin') ?></th>
+							<th><?php _e('Title', 'another-wordpress-classifieds-plugin') ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -39,7 +50,7 @@
 						<tr>
 							<td class="align-center"><?php echo $info['page_id']; ?></td>
 							<td class="align-center"><?php echo $page_ref; ?></td>
-							<td><?php echo $page ? $page->post_title : __( 'Page not found', 'AWPCP' ); ?></td>
+							<td><?php echo $page ? $page->post_title : __( 'Page not found', 'another-wordpress-classifieds-plugin' ); ?></td>
 						</tr>
 				<?php endforeach ?>
 					</tbody>
@@ -48,13 +59,13 @@
 	    </div>
 
 		<div id="awpcp-debug-awpcp-settings" class="postbox">
-		    <h3 class="hndle1"><span><?php echo $title_settings ?></span></h3>
+		    <?php echo awpcp_html_postbox_handle( array( 'heading_tag' => 'h3', 'content' => $title_settings ) ); ?>
 		    <div class="inside">
 		    	<table>
 					<thead>
 						<tr>
-							<th><?php _e('Option Name', 'AWPCP') ?></th>
-							<th><?php _e('Option Value', 'AWPCP') ?></th>
+							<th><?php _e('Option Name', 'another-wordpress-classifieds-plugin') ?></th>
+							<th><?php _e('Option Value', 'another-wordpress-classifieds-plugin') ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -72,13 +83,13 @@
 	    </div>
 
 		<div id="awpcp-debug-rewrite-rules" class="postbox">
-		    <h3 class="hndle1"><span><?php echo $title_rules ?></span></h3>
+		    <?php echo awpcp_html_postbox_handle( array( 'heading_tag' => 'h3', 'content' => $title_rules ) ); ?>
 		    <div class="inside">
 				<table>
 					<thead>
 						<tr>
-							<th><?php _e('Pattern', 'AWPCP') ?></th>
-							<th><?php _e('Replacement', 'AWPCP') ?></th>
+							<th><?php _e('Pattern', 'another-wordpress-classifieds-plugin') ?></th>
+							<th><?php _e('Replacement', 'another-wordpress-classifieds-plugin') ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -94,30 +105,30 @@
 	    </div>
 
 		<div id="awpcp-debug-php-info" class="postbox">
-		    <h3 class="hndle1"><span><?php echo $title_php_info ?></span></h3>
+		    <?php echo awpcp_html_postbox_handle( array( 'heading_tag' => 'h3', 'content' => $title_php_info ) ); ?>
 		    <div class="inside">
 				<table>
 					<tbody>
 						<tr>
-							<th scope="row"><?php _ex('PHP Version', 'debug page', 'AWPCP') ?></th>
+							<th scope="row"><?php _ex('PHP Version', 'debug page', 'another-wordpress-classifieds-plugin') ?></th>
 							<td scope="row"><?php echo phpversion() ?></td>
 						</tr>
 						<tr>
-							<th scope="row"><?php _ex('cURL', 'debug page', 'AWPCP') ?></th>
-							<td><?php echo in_array('curl', get_loaded_extensions()) ? __('Installed', 'AWPCP') : __('Not Installed', 'AWPCP') ?></td>
+							<th scope="row"><?php _ex('cURL', 'debug page', 'another-wordpress-classifieds-plugin') ?></th>
+							<td><?php echo in_array('curl', get_loaded_extensions()) ? __('Installed', 'another-wordpress-classifieds-plugin') : __('Not Installed', 'another-wordpress-classifieds-plugin') ?></td>
 						</tr>
 						<tr>
-							<th scope="row"><?php _ex("cURL's alternate CA info (cacert.pem)", 'debug page', 'AWPCP') ?></th>
-							<td><?php echo file_exists(AWPCP_DIR . '/cacert.pem') ? _x('Exists', 'alternate CA info for cURL', 'AWPCP') : _x('Missing', 'alternate CA info for cURL', 'AWPCP'); ?></td>
+							<th scope="row"><?php _ex("cURL's alternate CA info (cacert.pem)", 'debug page', 'another-wordpress-classifieds-plugin') ?></th>
+							<td><?php echo file_exists(AWPCP_DIR . '/cacert.pem') ? _x('Exists', 'alternate CA info for cURL', 'another-wordpress-classifieds-plugin') : _x('Missing', 'alternate CA info for cURL', 'another-wordpress-classifieds-plugin'); ?></td>
 						</tr>
 						<tr>
-							<th scope="row"><?php _ex('PayPal Connection', 'debug page', 'AWPCP') ?></th>
+							<th scope="row"><?php _ex('PayPal Connection', 'debug page', 'another-wordpress-classifieds-plugin') ?></th>
 							<?php $response = awpcp_paypal_verify_received_data(array(), $errors) ?>
 							<?php if ($response === 'INVALID'): ?>
-							<td><?php _ex('Working', 'debug page', 'AWPCP')	?></td>
+							<td><?php _ex('Working', 'debug page', 'another-wordpress-classifieds-plugin')	?></td>
 							<?php else: ?>
 							<td>
-								<?php _ex('Not Working', 'debug page', 'AWPCP') ?><br/>
+								<?php _ex('Not Working', 'debug page', 'another-wordpress-classifieds-plugin') ?><br/>
 								<?php foreach ($errors as $error): ?>
 								<?php echo $error ?><br/>
 								<?php endforeach ?>

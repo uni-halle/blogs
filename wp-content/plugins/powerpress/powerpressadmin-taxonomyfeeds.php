@@ -90,7 +90,8 @@ function powerpress_admin_taxonomyfeeds()
 		
 		//$category = get_category_to_edit($cat_ID);
 		$term_object = get_term( $term_ID, $taxonomy_type, OBJECT, 'edit');
-		
+		if( is_wp_error($term_object) )
+			continue;
 		
 		$columns = powerpress_admin_taxonomyfeeds_columns();
 		$hidden = array();

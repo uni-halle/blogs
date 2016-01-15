@@ -1,9 +1,3 @@
-<label for="latest_posts_page"><?php _e( "Custom latest posts page", "wptouch-pro" ); ?></label>
+<?php _e( 'Posts page', 'wptouch-pro' ); ?>
 
-<?php if ( wptouch_admin_get_setting_level() == WPTOUCH_SETTING_ADVANCED ) { ?>
-	<span class="advanced"><?php _e( 'Advanced', 'wptouch-pro' ); ?></span>
-<?php } ?>
-
-<?php if ( wptouch_admin_is_setting_new() ) { ?>
-	<span class="new"><?php _e( 'New', 'wptouch-pro' ); ?></span>
-<?php } ?>
+<?php global $latest_post_options; echo $latest_post_options; ?>

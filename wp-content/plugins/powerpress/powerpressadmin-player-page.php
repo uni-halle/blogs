@@ -61,18 +61,17 @@ function powerpress_admin_players($type='audio')
 	}
 	else if( $type == 'video' )
 	{
-		if( empty($General['video_player']) )
-		{
+		if( empty($General['video_player']) ) {
 			$select_player = true;
-		}
-		switch( $General['video_player'] )
-		{
-			case 'mediaelement-video':
-			case 'videojs-html5-video-player-for-wordpress':
-			case 'html5video': break;
-			default: {
-				$select_player = true;
-			};
+		} else {
+			switch( $General['video_player'] ) {
+				case 'mediaelement-video':
+				case 'videojs-html5-video-player-for-wordpress':
+				case 'html5video': break;
+				default: {
+					$select_player = true;
+				};
+			}
 		}
 	}
 	else
@@ -244,6 +243,8 @@ table.html5formats tr > td:first-child {
 <?php
 		if( $type == 'video' ) // Video player
 		{
+			if( empty($General['video_player']) )
+				$General['video_player'] = '';
 ?>
 <table class="form-table">
 <tr valign="top">
@@ -389,6 +390,9 @@ table.html5formats tr > td:first-child {
 	 // Start adding logic here to display options based on the player selected...
 	 if( $type == 'audio' )
 	 {
+		if( empty($General['player']) )
+			$General['player'] = '';
+		
 		switch( $General['player'] )
 		{
 			case 'audio-player': {
@@ -930,7 +934,7 @@ function audio_player_defaults()
 	<?php echo __('Play Icon', 'powerpress'); ?></th>
 	<td>
 
-	<input type="text" id="audio_custom_play_button" name="General[audio_custom_play_button]" style="width: 60%;" value="<?php echo esc_attr($General['audio_custom_play_button']); ?>" maxlength="250" />
+	<input type="text" id="audio_custom_play_button" name="General[audio_custom_play_button]" style="width: 60%;" value="<?php echo esc_attr($General['audio_custom_play_button']); ?>" maxlength="255" />
 	<a href="#" onclick="javascript: window.open( document.getElementById('audio_custom_play_button').value ); return false;"><?php echo __('preview', 'powerpress'); ?></a>
 
 	<p><?php echo __('Place the URL to the play icon above.', 'powerpress'); ?> <?php echo __('Example', 'powerpress'); ?>: http://example.com/images/audio_play_icon.jpg<br /><br />
@@ -1020,7 +1024,7 @@ function audio_player_defaults()
 	 }
 	 else if( $type == 'video' )
 	 {
-			$player_to_configure = $General['video_player'];
+			$player_to_configure = (!empty($General['video_player'])?$General['video_player']:'');
 			switch( $player_to_configure )
 			{
 				case 'html5':
@@ -1089,7 +1093,8 @@ function audio_player_defaults()
 					<?php
 				}; break;
 				case 'mejs': // $player_to_configure
-				case 'mediaelement-video': {
+				case 'mediaelement-video':
+				default: {
 					?>
 					<p><?php echo __('Configure MediaElement.js Player', 'powerpress'); ?></p>
 <table class="form-table">
@@ -1207,7 +1212,7 @@ function audio_player_defaults()
 <?php echo __('Default Poster Image', 'powerpress'); ?></th>
 <td>
 
-<input type="text" id="poster_image" name="General[poster_image]" style="width: 60%;" value="<?php echo esc_attr($General['poster_image']); ?>" maxlength="250" />
+<input type="text" id="poster_image" name="General[poster_image]" style="width: 60%;" value="<?php echo esc_attr($General['poster_image']); ?>" maxlength="255" />
 <a href="#" onclick="javascript: window.open( document.getElementById('poster_image').value ); return false;"><?php echo __('preview', 'powerpress'); ?></a>
 
 <p><?php echo __('Place the URL to the poster image above.', 'powerpress'); ?> <?php echo __('Example', 'powerpress'); ?>: http://example.com/images/poster.jpg<br /><br />
@@ -1241,7 +1246,7 @@ function audio_player_defaults()
 <?php echo __('Video Play Icon', 'powerpress'); ?></th>
 <td>
 
-<input type="text" id="video_custom_play_button" name="General[video_custom_play_button]" style="width: 60%;" value="<?php echo esc_attr($General['video_custom_play_button']); ?>" maxlength="250" />
+<input type="text" id="video_custom_play_button" name="General[video_custom_play_button]" style="width: 60%;" value="<?php echo esc_attr($General['video_custom_play_button']); ?>" maxlength="255" />
 <a href="#" onclick="javascript: window.open( document.getElementById('video_custom_play_button').value ); return false;"><?php echo __('preview', 'powerpress'); ?></a>
 
 <p><?php echo __('Place the URL to the play icon above.', 'powerpress'); ?> <?php echo __('Example', 'powerpress'); ?>: http://example.com/images/video_play_icon.jpg<br /><br />

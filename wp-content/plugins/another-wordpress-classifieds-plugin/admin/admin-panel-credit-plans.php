@@ -11,8 +11,8 @@ class AWPCP_AdminCreditPlans extends AWPCP_AdminPageWithTable {
 
     public function __construct() {
         $page = 'awpcp-admin-credit-plans';
-        $title = awpcp_admin_page_title( __( 'Manage Credit Plans', 'AWPCP' ) );
-        $menu = __('Credit Plans', 'AWPCP');
+        $title = awpcp_admin_page_title( __( 'Manage Credit Plans', 'another-wordpress-classifieds-plugin' ) );
+        $menu = __('Credit Plans', 'another-wordpress-classifieds-plugin');
 
         parent::__construct($page, $title, $menu);
 
@@ -39,8 +39,8 @@ class AWPCP_AdminCreditPlans extends AWPCP_AdminPageWithTable {
 
     public function actions($plan, $filter=false) {
         $actions = array();
-        $actions['edit'] = array(__('Edit', 'AWPCP'), $this->url(array('action' => 'edit', 'id' => $plan->id)));
-        $actions['trash'] = array(__('Delete', 'AWPCP'), $this->url(array('action' => 'delete', 'id' => $plan->id)));
+        $actions['edit'] = array(__('Edit', 'another-wordpress-classifieds-plugin'), $this->url(array('action' => 'edit', 'id' => $plan->id)));
+        $actions['trash'] = array(__('Delete', 'another-wordpress-classifieds-plugin'), $this->url(array('action' => 'delete', 'id' => $plan->id)));
 
         if (is_array($filter))
             $actions = array_intersect_key($actions, array_combine($filter, $filter));
@@ -81,7 +81,7 @@ class AWPCP_AdminCreditPlans extends AWPCP_AdminPageWithTable {
             $plan = new AWPCP_CreditPlan($_POST);
 
             if ($plan->save($errors) === false) {
-                $message = __('The form has errors', 'AWPCP');
+                $message = __('The form has errors', 'another-wordpress-classifieds-plugin');
                 $response = array('status' => 'error', 'message' => $message, 'errors' => $errors);
             } else {
                 if (is_null($this->table)) {
@@ -111,7 +111,7 @@ class AWPCP_AdminCreditPlans extends AWPCP_AdminPageWithTable {
     private function ajax_edit($id) {
         $plan = AWPCP_CreditPlan::find_by_id($id);
         if (is_null($plan)) {
-            $message = _x("The specified Credit Plan doesn't exists.", 'credit plans ajax', 'AWPCP');
+            $message = _x("The specified Credit Plan doesn't exists.", 'credit plans ajax', 'another-wordpress-classifieds-plugin');
             $response = array('status' => 'error', 'message' => $message);
         } else {
             $response = $this->ajax_add($plan);
@@ -124,7 +124,7 @@ class AWPCP_AdminCreditPlans extends AWPCP_AdminPageWithTable {
         $errors = array();
 
         if (is_null(AWPCP_CreditPlan::find_by_id($id))) {
-            $message = _x("The specified Credit Plan doesn't exists.", 'credit plans ajax', 'AWPCP');
+            $message = _x("The specified Credit Plan doesn't exists.", 'credit plans ajax', 'another-wordpress-classifieds-plugin');
             $response = array('status' => 'error', 'message' => $message);
         } else if (isset($_POST['remove'])) {
             if (AWPCP_CreditPlan::delete($id, $errors)) {

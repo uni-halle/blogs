@@ -76,7 +76,7 @@ class AWPCP_BasePage extends AWPCP_Page {
         if ( isset( $this->steps[ $step_name ] ) ) {
             return $this->steps[ $step_name ];
         } else {
-            $message = __( 'Unkown step "%s". Please contact the administrator about this error.', 'AWPCP' );
+            $message = __( 'Unkown step "%s". Please contact the administrator about this error.', 'another-wordpress-classifieds-plugin' );
             throw new AWPCP_Exception( sprintf( $message, $step_name ) );
         }
     }
@@ -129,7 +129,7 @@ class AWPCP_BasePage extends AWPCP_Page {
             $this->errors[] = $exception->getMessage();
             $step->get( $this );
         } else {
-            $message = __( 'Your request cannot be processed at this time. Please try again or contact the administrator about the incident.', 'AWPCP' );
+            $message = __( 'Your request cannot be processed at this time. Please try again or contact the administrator about the incident.', 'another-wordpress-classifieds-plugin' );
             throw new AWPCP_Exception( $message, $exception->get_errors() );
         }
     }

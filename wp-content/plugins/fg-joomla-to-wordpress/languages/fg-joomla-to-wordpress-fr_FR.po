@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FG Joomla to WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-17 23:29+0100\n"
-"PO-Revision-Date: 2015-11-17 23:29+0100\n"
+"POT-Creation-Date: 2015-11-21 10:07+0100\n"
+"PO-Revision-Date: 2015-11-21 10:08+0100\n"
 "Last-Translator: F. GILLES\n"
 "Language-Team: F. GILLES\n"
 "Language: fr_FR\n"
@@ -91,13 +91,13 @@ msgstr ""
 "3.0, 3.1, 3.2, 3.3 et 3.4."
 
 #: admin/class-fg-joomla-to-wordpress-admin.php:253
+#, php-format
 msgid ""
-"For any issue, please read the <a href=\"http://wordpress.org/plugins/fg-"
-"joomla-to-wordpress/faq/\" target=\"_blank\">FAQ</a> first."
+"For any issue, please read the <a href=\"%s\" target=\"_blank\">FAQ</a> "
+"first."
 msgstr ""
-"En cas de problème, veuillez d'abord vous référez à la <a href=\"http://"
-"wordpress.org/plugins/fg-joomla-to-wordpress/faq/\" target=\"_blank\">FAQ</"
-"a>."
+"Pour toute question, veuillez d'abord lire la <a href=\"%s\" target=\"_blank"
+"\">FAQ</a>."
 
 #: admin/class-fg-joomla-to-wordpress-admin.php:258
 #: admin/class-fg-joomla-to-wordpress-admin.php:608
@@ -268,11 +268,12 @@ msgstr ""
 "relancer."
 
 #: admin/class-fg-joomla-to-wordpress-ftp.php:128
-#: admin/class-fg-joomla-to-wordpress-ftp.php:212
+#: admin/class-fg-joomla-to-wordpress-ftp.php:134
+#: admin/class-fg-joomla-to-wordpress-ftp.php:235
 msgid "FTP connection failed"
 msgstr "Connexion FTP échouée"
 
-#: admin/class-fg-joomla-to-wordpress-ftp.php:186
+#: admin/class-fg-joomla-to-wordpress-ftp.php:202
 msgid "FTP connection successful"
 msgstr "Connexion FTP réussie"
 
@@ -974,6 +975,14 @@ msgstr "Tester la connexion à la base de données"
 #: includes/class-fg-joomla-to-wordpress.php:209
 msgid "Import"
 msgstr "Importer"
+
+#~ msgid ""
+#~ "For any issue, please read the <a href=\"http://wordpress.org/plugins/fg-"
+#~ "joomla-to-wordpress/faq/\" target=\"_blank\">FAQ</a> first."
+#~ msgstr ""
+#~ "En cas de problème, veuillez d'abord vous référez à la <a href=\"http://"
+#~ "wordpress.org/plugins/fg-joomla-to-wordpress/faq/\" target=\"_blank"
+#~ "\">FAQ</a>."
 
 #~ msgid ""
 #~ "<a href=\"http://wordpress.org/plugins/fg-joomla-to-wordpress/faq/\" "

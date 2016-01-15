@@ -66,6 +66,16 @@ class M_NextGen_AddGallery_Page extends C_Base_Module
     function _register_hooks()
     {
         add_action('admin_init', array(&$this, 'register_scripts'));
+        add_filter('ngg_non_minified_files', array($this, 'do_not_minify'), 10, 2);
+    }
+
+    // plupload i18n JS should not be minified
+    function do_not_minify($path, $module)
+    {
+        $retval = FALSE;
+        if ($module == 'photocrati-nextgen_addgallery_page' && strpos($path, '/i18n/') !== FALSE)
+            $retval = TRUE;
+        return $retval;
     }
 
     function register_scripts()

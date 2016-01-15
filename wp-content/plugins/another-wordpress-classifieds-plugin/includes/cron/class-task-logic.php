@@ -36,15 +36,15 @@ class AWPCP_TaskLogic {
 
     public function format_status() {
         if ( $this->is_new() ) {
-            return _x( 'New', 'task status', 'AWPCP' );
+            return _x( 'New', 'task status', 'another-wordpress-classifieds-plugin' );
         } else if ( $this->is_delayed() ) {
-            return _x( 'Delayed', 'task status', 'AWPCP' );
+            return _x( 'Delayed', 'task status', 'another-wordpress-classifieds-plugin' );
         } else if ( $this->is_failing() ) {
-            return _x( 'Failing', 'task status', 'AWPCP' );
+            return _x( 'Failing', 'task status', 'another-wordpress-classifieds-plugin' );
         } else if ( $this->failed() ) {
-            return _x( 'Failed', 'task status', 'AWPCP' );
+            return _x( 'Failed', 'task status', 'another-wordpress-classifieds-plugin' );
         } else if ( $this->is_complete() ) {
-            return _x( 'Complete', 'task status', 'AWPCP' );
+            return _x( 'Complete', 'task status', 'another-wordpress-classifieds-plugin' );
         }
     }
 

@@ -13,7 +13,7 @@ class AWPCP_AccountBalancePage extends AWPCP_BuyCreditsPage {
         parent::__construct( $steps, $request );
 
         $this->page = 'awpcp-user-account';
-        $this->menu = $this->title = __( 'Account Balance', 'AWPCP' );
+        $this->menu = $this->title = __( 'Account Balance', 'another-wordpress-classifieds-plugin' );
     }
 
     public function show_sidebar() {
@@ -29,7 +29,7 @@ class AWPCP_AccountBalancePage extends AWPCP_BuyCreditsPage {
     }
 
     protected function render_user_not_allowed_error() {
-        $this->errors[] = __( "Administrator users are not allowed to access this page. They can't add or remove credits to their accounts.", 'AWPCP' );
+        $this->errors[] = __( "Administrator users are not allowed to access this page. They can't add or remove credits to their accounts.", 'another-wordpress-classifieds-plugin' );
         $this->render_page_error();
     }
 }

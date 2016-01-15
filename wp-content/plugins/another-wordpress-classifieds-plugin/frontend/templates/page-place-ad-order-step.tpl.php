@@ -1,7 +1,7 @@
 <?php if ( get_awpcp_option( 'freepay' ) == 1 ): ?>
-<h2><?php echo esc_html( _x( 'Select Category and Payment Term', 'place ad order step', 'AWPCP' ) ); ?></h2>
+<h2><?php echo esc_html( _x( 'Select Category and Payment Term', 'place ad order step', 'another-wordpress-classifieds-plugin' ) ); ?></h2>
 <?php else: ?>
-<h2><?php echo esc_html( _x( 'Select Category', 'place ad order step', 'AWPCP' ) ); ?></h2>
+<h2><?php echo esc_html( _x( 'Select Category', 'place ad order step', 'another-wordpress-classifieds-plugin' ) ); ?></h2>
 <?php endif; ?>
 
 <?php
@@ -25,7 +25,7 @@
 <?php endif ?>
 
 <form class="awpcp-order-form" method="post">
-    <h3><?php echo esc_html( _x( 'Please select a Category for your Ad', 'place ad order step', 'AWPCP' ) ); ?></h3>
+    <h3><?php echo esc_html( _x( 'Please select a Category for your Ad', 'place ad order step', 'another-wordpress-classifieds-plugin' ) ); ?></h3>
 
     <p class="awpcp-form-spacer">
         <?php $dropdown = new AWPCP_CategoriesDropdown(); ?>
@@ -34,14 +34,14 @@
     </p>
 
     <?php if (awpcp_current_user_is_moderator()): ?>
-    <h3><?php echo esc_html( _x( 'Please select the owner for this Ad', 'place ad order step', 'AWPCP' ) ); ?></h3>
+    <h3><?php echo esc_html( _x( 'Please select the owner for this Ad', 'place ad order step', 'another-wordpress-classifieds-plugin' ) ); ?></h3>
     <p class="awpcp-form-spacer">
         <?php
             echo awpcp_users_field()->render( array(
                 'required' => true,
                 'selected' => awpcp_array_data( 'user', '', $form ),
-                'label' => __( 'User', 'AWPCP' ),
-                'default' => __( 'Select an User owner for this Ad', 'AWPCP' ),
+                'label' => __( 'User', 'another-wordpress-classifieds-plugin' ),
+                'default' => __( 'Select an User owner for this Ad', 'another-wordpress-classifieds-plugin' ),
                 'id' => 'ad-user-id',
                 'name' => 'user',
                 'class' => array( 'awpcp-users-dropdown', 'awpcp-dropdown' ),
@@ -55,8 +55,8 @@
     <?php echo $payments->render_payment_terms_form_field( $transaction, $table, $form_errors ); ?>
     <?php endif; ?>
 
-    <p class="form-submit">
-        <input class="button" type="submit" value="<?php echo esc_attr( __('Continue', 'AWPCP' ) ); ?>" id="submit" name="submit">
+    <p class="awpcp-form-submit">
+        <input class="button" type="submit" value="<?php echo esc_attr( __('Continue', 'another-wordpress-classifieds-plugin' ) ); ?>" id="submit" name="submit">
         <?php if (!is_null($transaction)): ?>
         <input type="hidden" value="<?php echo esc_attr( $transaction->id ); ?>" name="transaction_id">
         <?php endif; ?>

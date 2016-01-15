@@ -25,7 +25,7 @@ class AWPCP_Fee extends AWPCP_PaymentTerm {
             // standard
             'id' => $object->adterm_id,
             'name' => $object->adterm_name,
-            'description' => '',
+            'description' => $object->description,
             'duration_amount' => $object->rec_period,
             'duration_interval' => $object->rec_increment,
             'price' => $object->amount,
@@ -35,6 +35,7 @@ class AWPCP_Fee extends AWPCP_PaymentTerm {
             'characters' => $object->characters_allowed,
             'title_characters' => $object->title_characters,
             'images' => $object->imagesallowed,
+            'regions' => $object->regions,
             'ads' => 1,
             'private' => $object->private,
             // custom
@@ -104,7 +105,7 @@ class AWPCP_Fee extends AWPCP_PaymentTerm {
 
         $plan = self::find_by_id($id);
         if (is_null($plan)) {
-            $errors[] = __("The Fee doesn't exist.", 'AWPCP');
+            $errors[] = __("The Fee doesn't exist.", 'another-wordpress-classifieds-plugin');
             return false;
         }
 
@@ -112,7 +113,7 @@ class AWPCP_Fee extends AWPCP_PaymentTerm {
         $ads = AWPCP_Ad::find( $wpdb->prepare( $where, $id ) );
 
         if (!empty($ads)) {
-            $errors[] = __("The Fee can't be deleted because there are active Ads in the system that are associated with the Fee ID.", 'AWPCP');
+            $errors[] = __("The Fee can't be deleted because there are active Ads in the system that are associated with the Fee ID.", 'another-wordpress-classifieds-plugin');
             return false;
         }
 
@@ -146,12 +147,14 @@ class AWPCP_Fee extends AWPCP_PaymentTerm {
 
     protected function translate($_data) {
         $data['adterm_id'] = absint( $_data['id'] );
-        $data['adterm_name'] = $_data['name'];
+        $data['adterm_name'] = stripslashes( $_data['name'] );
+        $data['description'] = stripslashes( $_data['description'] );
         $data['amount'] = $_data['price'];
         $data['credits'] = absint( $_data['credits'] );
         $data['rec_period'] = absint( $_data['duration_amount'] );
         $data['rec_increment'] = $_data['duration_interval'];
         $data['imagesallowed'] = absint( $_data['images'] );
+        $data['regions'] = absint( $_data['regions'] );
         $data['title_characters'] = absint( $_data['title_characters'] );
         $data['characters_allowed'] = absint( $_data['characters'] );
         $data['categories'] = $_data['categories'];
@@ -204,7 +207,7 @@ class AWPCP_Fee extends AWPCP_PaymentTerm {
         $recipient = self::find_by_id($id);
 
         if (is_null($recipient)) {
-            $errors[] = __("The recipient Fee doesn't exists.", 'AWPCP');
+            $errors[] = __("The recipient Fee doesn't exists.", 'another-wordpress-classifieds-plugin');
         }
 
         $query = 'UPDATE ' . AWPCP_TABLE_ADS . ' SET adterm_id = %d ';
@@ -213,5 +216,9 @@ class AWPCP_Fee extends AWPCP_PaymentTerm {
         $result = $wpdb->query($wpdb->prepare($query, $recipient->id, $this->id));
 
         return $result !== false;
+    }
+
+    public function get_regions_allowed() {
+        return $this->regions;
     }
 }

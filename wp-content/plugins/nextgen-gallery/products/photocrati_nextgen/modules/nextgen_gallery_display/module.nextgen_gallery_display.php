@@ -207,8 +207,13 @@ class M_Gallery_Display extends C_Base_Module
             $fs = C_Fs::get_instance();
             $abspath = $fs->find_static_abspath('photocrati-nextgen_gallery_display#fontawesome/font-awesome.css');
             if ($abspath) {
+	            $router = C_Router::get_instance();
                 $file_content = file_get_contents($abspath);
-                $file_content = str_replace('../fonts/fontawesome-webfont.woff', site_url('/?ngg_serve_fontawesome_woff=1'), $file_content);
+	            $file_content = str_replace('../fonts/fontawesome-webfont.eot',   $router->get_static_url($this->module_id . '#fonts/fontawesome-webfont.eot'),   $file_content);
+	            $file_content = str_replace('../fonts/fontawesome-webfont.svg',   $router->get_static_url($this->module_id . '#fonts/fontawesome-webfont.svg'),   $file_content);
+	            $file_content = str_replace('../fonts/fontawesome-webfont.ttf',   $router->get_static_url($this->module_id . '#fonts/fontawesome-webfont.ttf'),   $file_content);
+	            $file_content = str_replace('../fonts/fontawesome-webfont.woff2', $router->get_static_url($this->module_id . '#fonts/fontawesome-webfont.woff2'), $file_content);
+	            $file_content = str_replace('../fonts/fontawesome-webfont.woff', site_url('/?ngg_serve_fontawesome_woff=1'), $file_content);
                 header('Content-Type: text/css');
                 echo $file_content;
                 throw new E_Clean_Exit();

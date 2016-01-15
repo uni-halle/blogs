@@ -250,7 +250,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 
 			$data['title'] = __('Import Joomla (FG)', 'fg-joomla-to-wordpress');
 			$data['description'] = __('This plugin will import sections, categories, posts, medias (images, attachments) and web links from a Joomla database into WordPress.<br />Compatible with Joomla versions 1.5, 1.6, 1.7, 2.5, 3.0, 3.1, 3.2, 3.3 and 3.4.', 'fg-joomla-to-wordpress');
-			$data['description'] .= "<br />\n" . __('For any issue, please read the <a href="http://wordpress.org/plugins/fg-joomla-to-wordpress/faq/" target="_blank">FAQ</a> first.', 'fg-joomla-to-wordpress');
+			$data['description'] .= "<br />\n" . sprintf(__('For any issue, please read the <a href="%s" target="_blank">FAQ</a> first.', 'fg-joomla-to-wordpress'), $this->faq_url);
 			$data['posts_count'] = $this->count_posts('post');
 			$data['pages_count'] = $this->count_posts('page');
 			$data['media_count'] = $this->count_posts('attachment');

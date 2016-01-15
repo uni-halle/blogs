@@ -281,7 +281,10 @@ jQuery(document).ready( function($) {
 	jQuery('.iedit').mouseover(
 		function(e){
 			jQuery(this).parent().find('.row-actions').css('visibility', 'hidden');
-			jQuery(this).next('.row_actions:first').find('.row-actions:first').css('visibility', 'visible');
+			jQuery(this).next('.row_actions:first').find('.row-actions:first').css({
+				'visibility': 'visible',
+				'left': 0 // WP 4.4 compatibility; it assigns left:-9999em by default to row-actions
+			});
 		}
 	);
 

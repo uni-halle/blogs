@@ -24,6 +24,9 @@ function( ko ) {
         vm.iconUrl = file.iconUrl;
         vm.url = file.url;
 
+        vm.progress = ko.observable( file.progress ? parseInt( file.progress, 10 ) : null );
+        vm.shouldShowProgressBar = ko.computed( shouldShowProgressBar );
+
         function isApproved() {
             return vm.status() === 'Approved';
         }
@@ -34,6 +37,10 @@ function( ko ) {
 
         function isAwaitingApproval() {
             return vm.status() === 'Awaiting-Approval';
+        }
+
+        function shouldShowProgressBar() {
+            return vm.progress() !== null;
         }
     };
 

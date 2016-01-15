@@ -25,7 +25,7 @@ class AWPCP_CreditPlansNotices {
     }
 
     private function render_notice() {
-        $message = __( "You enabled the Credit System, but there are no credit plans defined. Please <credits-section-link>add credit plans or disable the Credit System</a>.", 'AWPCP' );
+        $message = __( "You enabled the Credit System, but there are no credit plans defined. Please <credits-section-link>add credit plans or disable the Credit System</a>.", 'another-wordpress-classifieds-plugin' );
         $message = str_replace( '<credits-section-link>' , sprintf( '<a href="%s">', awpcp_get_admin_credit_plans_url() ), $message );
         echo awpcp_print_error( $message );
     }

@@ -2,8 +2,8 @@
 /*
 Plugin Name: Social
 Plugin URI: http://mailchimp.com/social-plugin-for-wordpress/
-Description: Broadcast newly published posts and pull in discussions using integrations with Twitter and Facebook. Brought to you by <a href="http://mailchimp.com">MailChimp</a>.
-Version: 3.1.1
+Description: Broadcast newly published posts and pull in discussions using integrations with Twitter and Facebook. Brought to you by <a href="http://mailchimp.com">MailChimp</a>. <strong>On Feb. 10, we'll be retiring Social so we can focus on new projects. It will be removed from the WordPress Plugin Directory, and support for the plugin will no longer be available.</strong>
+Version: 3.1.2
 Author: Crowd Favorite
 Author URI: http://crowdfavorite.com/
 */

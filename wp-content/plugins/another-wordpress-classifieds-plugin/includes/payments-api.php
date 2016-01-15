@@ -49,7 +49,7 @@ class AWPCP_PaymentsAPI {
 
     private function get_url($action, $transaction) {
         if (get_option('permalink_structure')) {
-            return home_url("/awpcpx/payments/$action/{$transaction->id}");
+            return awpcp_get_url_with_page_permastruct( "/awpcpx/payments/$action/{$transaction->id}" );
         } else {
             $params = array(
                 'awpcpx' => true,
@@ -103,7 +103,7 @@ class AWPCP_PaymentsAPI {
             return;
         }
 
-        if ( $transaction->payment_is_completed() || $transaction->payment_is_pending() ) {
+        if ( $transaction->was_payment_successful() ) {
             $this->maybe_increase_account_balance( $transaction );
         }
 
@@ -375,18 +375,18 @@ class AWPCP_PaymentsAPI {
         $transaction = AWPCP_Payment_Transaction::find_by_id( get_query_var( 'awpcp-txn' ) );
 
         if (is_null($transaction)) {
-            $messages[] = __('The specified payment transaction doesn\'t exists. We can\'t process your payment.', 'AWPCP');
-            $messages[] = __('Please contact customer service if you are viewing this message after having made a payment. If you have not tried to make a payment and you are viewing this message, it means this message is being shown in error and can be disregarded.', 'AWPCP');
-            $messages[] = __('Return to <a href="%s">home page</a>.', 'AWPCP');
+            $messages[] = __('The specified payment transaction doesn\'t exists. We can\'t process your payment.', 'another-wordpress-classifieds-plugin');
+            $messages[] = __('Please contact customer service if you are viewing this message after having made a payment. If you have not tried to make a payment and you are viewing this message, it means this message is being shown in error and can be disregarded.', 'another-wordpress-classifieds-plugin');
+            $messages[] = __('Return to <a href="%s">home page</a>.', 'another-wordpress-classifieds-plugin');
             wp_die(sprintf('<p>' . join('</p><p>', $messages) . '</p>', home_url()));
         }
 
         $payment_method = $this->get_transaction_payment_method($transaction);
 
         if (is_null($payment_method)) {
-            $messages[] = __("The payment method associated with this transaction is not available at this time. We can't process your payment.", 'AWPCP');
-            $messages[] = __('Please contact customer service if you are viewing this message after having made a payment. If you have not tried to make a payment and you are viewing this message, it means this message is being shown in error and can be disregarded.', 'AWPCP');
-            $messages[] = __('Return to <a href="%s">home page</a>.', 'AWPCP');
+            $messages[] = __("The payment method associated with this transaction is not available at this time. We can't process your payment.", 'another-wordpress-classifieds-plugin');
+            $messages[] = __('Please contact customer service if you are viewing this message after having made a payment. If you have not tried to make a payment and you are viewing this message, it means this message is being shown in error and can be disregarded.', 'another-wordpress-classifieds-plugin');
+            $messages[] = __('Return to <a href="%s">home page</a>.', 'another-wordpress-classifieds-plugin');
             wp_die(sprintf('<p>' . join('</p><p>', $messages) . '</p>', home_url()));
         }
 
@@ -494,7 +494,7 @@ class AWPCP_PaymentsAPI {
             return '';
 
         $balance = $this->format_account_balance();
-        $text = sprintf( __( 'You currently have %s credits in your account.', 'AWPCP' ), $balance );
+        $text = sprintf( __( 'You currently have %s credits in your account.', 'another-wordpress-classifieds-plugin' ), $balance );
 
         return awpcp_print_message( $text );
     }
@@ -536,10 +536,10 @@ class AWPCP_PaymentsAPI {
         }
 
         $column_names = array(
-            'plan' => _x( 'Plan', 'credit plans table', 'AWPCP' ),
-            'description' => _x( 'Description', 'credit plans table', 'AWPCP' ),
-            'credits' => _x( 'Credits', 'credit plans table', 'AWPCP' ),
-            'price' => _x( 'Price', 'credit plans table', 'AWPCP' ),
+            'plan' => _x( 'Plan', 'credit plans table', 'another-wordpress-classifieds-plugin' ),
+            'description' => _x( 'Description', 'credit plans table', 'another-wordpress-classifieds-plugin' ),
+            'credits' => _x( 'Credits', 'credit plans table', 'another-wordpress-classifieds-plugin' ),
+            'price' => _x( 'Price', 'credit plans table', 'another-wordpress-classifieds-plugin' ),
         );
 
         ob_start();
@@ -615,7 +615,7 @@ class AWPCP_PaymentsAPI {
         } else if (isset($result['output'])) {
             $integration = $payment_method->get_integration_type();
             if ($integration === AWPCP_PaymentGateway::INTEGRATION_BUTTON) {
-                $message = _x('Please use the button below to complete your payment.', 'checkout-payment page', 'AWPCP');
+                $message = _x('Please use the button below to complete your payment.', 'checkout-payment page', 'another-wordpress-classifieds-plugin');
                 $html = $this->render_checkout_payment_template($result['output'], $message, $transaction);
             } else if ($integration === AWPCP_PaymentGateway::INTEGRATION_CUSTOM_FORM) {
                 $html = $result['output'];
@@ -631,33 +631,33 @@ class AWPCP_PaymentsAPI {
         $success = false;
 
         if ($transaction->payment_is_completed() || $transaction->payment_is_pending()) {
-            $title = __('Payment Completed', 'AWPCP');
+            $title = __('Payment Completed', 'another-wordpress-classifieds-plugin');
 
             if ($transaction->payment_is_completed())
-                $text = __('Your Payment has been processed successfully. Please press the button below to continue with the process.', 'AWPCP');
+                $text = __('Your Payment has been processed successfully. Please press the button below to continue with the process.', 'another-wordpress-classifieds-plugin');
             else if ($transaction->payment_is_pending())
-                $text = __('Your Payment has been processed successfully. However is still pending approvation from the payment gateway. Please press the button below to continue with the process.', 'AWPCP');
+                $text = __('Your Payment has been processed successfully. However is still pending approvation from the payment gateway. Please press the button below to continue with the process.', 'another-wordpress-classifieds-plugin');
 
             $success = true;
 
         } else if ($transaction->payment_is_not_required()) {
-            $title = __('Payment Not Required', 'AWPCP');
-            $text = __('No Payment is required for this transaction. Please press the button below to continue with the process.', 'AWPCP');
+            $title = __('Payment Not Required', 'another-wordpress-classifieds-plugin');
+            $text = __('No Payment is required for this transaction. Please press the button below to continue with the process.', 'another-wordpress-classifieds-plugin');
 
             $success = true;
 
         } else if ($transaction->payment_is_failed()) {
-            $title = __('Payment Failed', 'AWPCP');
-            $text = __("Your Payment has been processed successfully. However, the payment gateway didn't return a payment status that allows us to continue with the process. Please contact the website administrator to solve this issue.", 'AWPCP');
+            $title = __('Payment Failed', 'another-wordpress-classifieds-plugin');
+            $text = __("Your Payment has been processed successfully. However, the payment gateway didn't return a payment status that allows us to continue with the process. Please contact the website administrator to solve this issue.", 'another-wordpress-classifieds-plugin');
 
         } else if ($transaction->payment_is_canceled()) {
-            $title = __('Payment Canceled', 'AWPCP');
-            $text = __("The Payment transaction was canceled. You can't post an Ad this time.", 'AWPCP');
+            $title = __('Payment Canceled', 'another-wordpress-classifieds-plugin');
+            $text = __("The Payment transaction was canceled. You can't post an Ad this time.", 'another-wordpress-classifieds-plugin');
 
         // } else if ($transaction->payment_is_invalid() || $transaction->payment_is_not_verified()) {
         } else {
-            $title = __('Payment Error', 'AWPCP');
-            $text = __("There was an error processing your payment. The payment status couldn't be found. Please contact the website admin to solve this issue.", 'AWPCP');
+            $title = __('Payment Error', 'another-wordpress-classifieds-plugin');
+            $text = __("There was an error processing your payment. The payment status couldn't be found. Please contact the website admin to solve this issue.", 'another-wordpress-classifieds-plugin');
         }
 
         $redirect = $transaction->get('redirect');
@@ -673,11 +673,11 @@ class AWPCP_PaymentsAPI {
 
     public function render_payment_completed_page_title($transaction) {
         if ($transaction->was_payment_successful()) {
-            return __('Payment Completed', 'AWPCP');
+            return __('Payment Completed', 'another-wordpress-classifieds-plugin');
         } else if ($transaction->payment_is_canceled()) {
-            return __('Payment Canceled', 'AWPCP');
+            return __('Payment Canceled', 'another-wordpress-classifieds-plugin');
         } else {
-            return __('Payment Failed', 'AWPCP');
+            return __('Payment Failed', 'another-wordpress-classifieds-plugin');
         }
     }
 }

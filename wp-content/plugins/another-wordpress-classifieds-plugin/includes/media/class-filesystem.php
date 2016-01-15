@@ -31,13 +31,13 @@ class AWPCP_Filesystem {
         $previous_umask = umask( 0 );
 
         if ( ! @mkdir( $path, $this->get_default_directory_mode(), true ) ) {
-            $message = __( 'There was a problem trying to create directory <directory-name>.', 'AWPCP' );
+            $message = __( 'There was a problem trying to create directory <directory-name>.', 'another-wordpress-classifieds-plugin' );
             $message = str_replace( '<directory-name>', awpcp_utf8_basename( $path ), $message );
             throw new AWPCP_Exception( $message );
         }
 
         if ( ! @chown( $path, fileowner( WP_CONTENT_DIR ) ) ) {
-            $message = __( 'There was a problem trying to change the owner of <directory-name>.', 'AWPCP' );
+            $message = __( 'There was a problem trying to change the owner of <directory-name>.', 'another-wordpress-classifieds-plugin' );
             $message = str_replace( '<directory-name>', awpcp_utf8_basename( $path ), $message );
             throw new AWPCP_Exception( $message );
         }
@@ -53,13 +53,13 @@ class AWPCP_Filesystem {
 
     private function make_directory_writable( $path ) {
         // provides fileop class.
-        require_once(AWPCP_DIR . '/fileop.class.php');
+        require_once(AWPCP_DIR . '/includes/class-fileop.php');
 
         $previous_umask = umask( 0 );
         $fileop = new fileop();
 
         if ( ! $fileop->set_permission( $path, $this->get_default_directory_mode() ) ) {
-            $message = __( 'There was a problem trying to make directory <directory-name> writable.', 'AWPCP' );
+            $message = __( 'There was a problem trying to make directory <directory-name> writable.', 'another-wordpress-classifieds-plugin' );
             $message = str_replace( '<directory-name>', awpcp_utf8_basename( $path ), $message );
             throw new AWPCP_Exception( $message );
         }

@@ -26,7 +26,7 @@ class AWPCP_FeePaymentTermsNotices {
     }
 
     private function render_notice() {
-        $message = __( "You have payments enabled, but there are no payment terms defined. Users won't be able to post Ads. Please <fee-section-link>add payment terms</a> or <payments-settings-link>configure the website as a free board</a>.", 'AWPCP' );
+        $message = __( "You have payments enabled, but there are no payment terms defined. Users won't be able to post Ads. Please <fee-section-link>add payment terms</a> or <payments-settings-link>configure the website as a free board</a>.", 'another-wordpress-classifieds-plugin' );
         $message = str_replace( '<fee-section-link>' , sprintf( '<a href="%s">', awpcp_get_admin_fees_url() ), $message );
         $message = str_replace( '<payments-settings-link>' , sprintf( '<a href="%s">', awpcp_get_admin_settings_url( 'payment-settings' ) ), $message );
         echo awpcp_print_error( $message );

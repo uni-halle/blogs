@@ -40,7 +40,7 @@ function wptouch_get_addon_classes( $extra_classes = array() ) {
 
 	$classes = $extra_classes;
 
-	if ( wptouch_is_addon_active() ) {
+	if ( !is_network_admin() && wptouch_is_addon_active() ) {
 		$classes[] = 'active';
 	}
 
@@ -227,7 +227,7 @@ function wptouch_get_addon_description() {
 function wptouch_cloud_addon_update_available() {
 	global $wptouch_cur_addon;
 
-	return ( !wptouch_is_addon_in_cloud() && isset( $wptouch_cur_addon->upgrade_available ) && $wptouch_cur_addon->upgrade_available );
+	return ( !wptouch_is_addon_in_cloud() && isset( $wptouch_cur_addon->extension_upgrade_available ) && $wptouch_cur_addon->extension_upgrade_available );
 }
 
 
@@ -244,14 +244,14 @@ function wptouch_is_addon_in_cloud() {
 	return ( isset( $wptouch_cur_addon->location ) && ( $wptouch_cur_addon->location == 'cloud' ) );
 }
 
-function wptouch_the_addon_screenshot() {
-	echo wptouch_get_addon_screenshot();
+function wptouch_the_addon_icon() {
+	echo wptouch_get_addon_icon();
 }
 
-function wptouch_get_addon_screenshot() {
+function wptouch_get_addon_icon() {
 	global $wptouch_cur_addon;
 	if ( $wptouch_cur_addon ) {
-		return apply_filters( 'wptouch_addon_screenshot', $wptouch_cur_addon->screenshot );
+		return apply_filters( 'wptouch_addon_icon', $wptouch_cur_addon->screenshot );
 	}
 
 	return false;
@@ -262,12 +262,12 @@ function wptouch_the_addon_activate_link_url() {
 }
 
 function wptouch_get_addon_activate_link_url() {
-	return add_query_arg( array(
+	return esc_url( add_query_arg( array(
 		'admin_command' => 'activate_addon',
 		'addon_name' => urlencode( wptouch_get_addon_title() ),
 		'addon_location' => urlencode( wptouch_get_addon_location() ),
 		'admin_menu_nonce' => wptouch_admin_menu_get_nonce()
-	), admin_url( 'admin.php?page=wptouch-admin-themes-and-addons') );
+	) ) );
 }
 
 function wptouch_the_addon_deactivate_link_url() {
@@ -280,7 +280,7 @@ function wptouch_get_addon_deactivate_link_url() {
 		'addon_name' => urlencode( wptouch_get_addon_title() ),
 		'addon_location' => urlencode( wptouch_get_addon_location() ),
 		'admin_menu_nonce' => wptouch_admin_menu_get_nonce()
-	), admin_url( 'admin.php?page=wptouch-admin-themes-and-addons' ) );
+	), admin_url( 'admin.php?page=wptouch-admin-general-settings' ) );
 }
 
 global $wptouch_addon_previews;
@@ -330,7 +330,6 @@ function wptouch_get_addon_preview_url() {
 	return wptouch_get_addon_url() . '/preview/' . $wptouch_addon_preview_item;
 }
 
-
 function wptouch_the_addon_preview_url() {
 	echo wptouch_get_addon_preview_url();
 }
@@ -341,3 +340,20 @@ function wptouch_reset_addon_preview() {
 	$wptouch_addon_preview_iterator = false;
 }
 
+function wptouch_the_addon_changelog() {
+	echo wptouch_get_addon_changelog();
+}
+
+function wptouch_get_addon_changelog() {
+	global $wptouch_cur_addon;
+	return $wptouch_cur_addon->changelog;
+}
+
+function wptouch_the_addon_long_desc() {
+	echo wptouch_get_addon_long_desc();
+}
+
+function wptouch_get_addon_long_desc() {
+	global $wptouch_cur_addon;
+	return $wptouch_cur_addon->long_description;
+}

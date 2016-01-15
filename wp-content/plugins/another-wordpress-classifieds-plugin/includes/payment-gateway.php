@@ -47,51 +47,51 @@ abstract class AWPCP_PaymentGateway {
 
     protected function validate_posted_billing_information($data, &$errors=array()) {
         if (empty($data['country'])) {
-            $errors['country'] = __('The Country is required', 'AWPCP');
+            $errors['country'] = __('The Country is required', 'another-wordpress-classifieds-plugin');
         }
 
         if (empty($data['credit_card_number'])) {
-            $errors['credit_card_number'] = __('The Credit Card Number is required.', 'AWPCP');
+            $errors['credit_card_number'] = __('The Credit Card Number is required.', 'another-wordpress-classifieds-plugin');
         }
 
         if (empty($data['exp_month'])) {
-            $errors['exp_month'] = __('The Expiration Month is required.', 'AWPCP');
+            $errors['exp_month'] = __('The Expiration Month is required.', 'another-wordpress-classifieds-plugin');
         }
 
         if (empty($data['exp_year'])) {
-            $errors['exp_year'] = __('The Expiration Year is required.', 'AWPCP');
+            $errors['exp_year'] = __('The Expiration Year is required.', 'another-wordpress-classifieds-plugin');
         }
 
         if (empty($data['csc'])) {
-            $errors['csc'] = __('The Card Security Code is required.', 'AWPCP');
+            $errors['csc'] = __('The Card Security Code is required.', 'another-wordpress-classifieds-plugin');
         }
 
         if (empty($data['first_name'])) {
-            $errors['first_name'] = __('The First Name is required.', 'AWPCP');
+            $errors['first_name'] = __('The First Name is required.', 'another-wordpress-classifieds-plugin');
         }
 
         if (empty($data['last_name'])) {
-            $errors['last_name'] = __('The Last Name is required.', 'AWPCP');
+            $errors['last_name'] = __('The Last Name is required.', 'another-wordpress-classifieds-plugin');
         }
 
         if (empty($data['address_1'])) {
-            $errors['address_1'] = __('The Address Line 1 is required.', 'AWPCP');
+            $errors['address_1'] = __('The Address Line 1 is required.', 'another-wordpress-classifieds-plugin');
         }
 
         if (empty($data['city'])) {
-            $errors['city'] = __('The City is required.', 'AWPCP');
+            $errors['city'] = __('The City is required.', 'another-wordpress-classifieds-plugin');
         }
 
         if (in_array($data['country'], array('US', 'CA', 'AU')) && empty($data['state'])) {
-            $errors['state'] = __('The State is required.', 'AWPCP');
+            $errors['state'] = __('The State is required.', 'another-wordpress-classifieds-plugin');
         }
 
         if (empty($data['postal_code'])) {
-            $errors['postal_code'] = __('The Postal Code is required.', 'AWPCP');
+            $errors['postal_code'] = __('The Postal Code is required.', 'another-wordpress-classifieds-plugin');
         }
 
         if (empty($data['email'])) {
-            $errors['email'] = __('The Email is required.', 'AWPCP');
+            $errors['email'] = __('The Email is required.', 'another-wordpress-classifieds-plugin');
         }
 
         return empty($errors);

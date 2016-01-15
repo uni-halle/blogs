@@ -62,7 +62,7 @@
 			$this->start_element('nextgen_gallery.image', 'item', $image);
 			
 			?>
-    	<a href="<?php echo esc_attr($settings['link']); ?>"
+    	<a href="<?php echo esc_url($settings['link']); ?>"
 		     title="<?php echo esc_attr($image->description)?>"
              data-src="<?php echo esc_attr($storage->get_image_url($image)); ?>"
              data-thumbnail="<?php echo esc_attr($storage->get_image_url($image, 'thumb')); ?>"

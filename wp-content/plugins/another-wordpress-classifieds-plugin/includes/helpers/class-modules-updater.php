@@ -1,6 +1,6 @@
 <?php
 
-// uncomment this line for testing
+// // uncomment this line for testing
 // set_site_transient( 'update_plugins', null );
 
 /**
@@ -65,8 +65,8 @@ class AWPCP_ModulesUpdater {
 
         try {
             $information = $this->get_information_for_module( $module );
-        } catch ( AWPCP_Exception $e ) {
-            awpcp_flash( $e->format_errors() );
+        } catch ( AWPCP_Easy_Digital_Downloads_Exception $e ) {
+            awpcp_flash( $e->getMessage() );
             return $plugins_information;
         }
 
@@ -105,8 +105,8 @@ class AWPCP_ModulesUpdater {
 
         try {
             $information = $this->get_information_for_module( $this->modules[ $args->slug ] );
-        } catch ( AWPCP_Exception $e ) {
-            awpcp_flash( $e->format_errors() );
+        } catch ( AWPCP_Easy_Digital_Downloads_Exception $e ) {
+            awpcp_flash( $e->getMessage() );
             return $response;
         }
 

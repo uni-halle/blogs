@@ -30,7 +30,7 @@ class AWPCP_RenewListingsAdminPage extends AWPCP_ListingActionAdminPage {
         try {
             $this->renew_listing( $listing );
         } catch ( AWPCP_Exception $e ) {
-            $message = __( 'There was an error trying to renew Ad %s.', 'AWPCP' );
+            $message = __( 'There was an error trying to renew Ad %s.', 'another-wordpress-classifieds-plugin' );
             $message = sprintf( $message, '<strong>' . $listing->get_title() . '</strong>' );
 
             $this->errors[] = $message . ' ' . $e->format_errors();
@@ -40,13 +40,13 @@ class AWPCP_RenewListingsAdminPage extends AWPCP_ListingActionAdminPage {
 
     private function renew_listing( $listing ) {
         if ( ! $listing->has_expired() && ! $listing->is_about_to_expire() ) {
-            throw new AWPCP_Exception( __( "The Ad hasn't expired yet and is not about to expire.", 'AWPCP' ) );
+            throw new AWPCP_Exception( __( "The Ad hasn't expired yet and is not about to expire.", 'another-wordpress-classifieds-plugin' ) );
         }
 
         $term = $this->payments->get_ad_payment_term( $listing );
 
         if ( ! is_object( $term ) ) {
-            throw new AWPCP_Exception( __( "We couldn't find a valid payment term associated with this Ad.", 'AWPCP' ) );
+            throw new AWPCP_Exception( __( "We couldn't find a valid payment term associated with this Ad.", 'another-wordpress-classifieds-plugin' ) );
         }
 
         if ( ! $term->ad_can_be_renewed( $listing ) ) {
@@ -65,11 +65,11 @@ class AWPCP_RenewListingsAdminPage extends AWPCP_ListingActionAdminPage {
 
     private function show_results() {
         if ( $this->successful == 0 && $this->failed == 0 ) {
-            awpcp_flash( __( 'No Ads were selected', 'AWPCP' ), 'error' );
+            awpcp_flash( __( 'No Ads were selected', 'another-wordpress-classifieds-plugin' ), 'error' );
         } else {
-            $success_message = _n( '%d Ad was renewed', '%d Ads were renewed', $this->successful, 'AWPCP' );
+            $success_message = _n( '%d Ad was renewed', '%d Ads were renewed', $this->successful, 'another-wordpress-classifieds-plugin' );
             $success_message = sprintf( $success_message, $this->successful );
-            $error_message = sprintf( __('there was an error trying to renew %d Ads', 'AWPCP'), $this->failed );
+            $error_message = sprintf( __('there was an error trying to renew %d Ads', 'another-wordpress-classifieds-plugin'), $this->failed );
 
             $this->show_bulk_operation_result_message( $this->successful, $this->failed, $success_message, $error_message );
         }

@@ -59,7 +59,7 @@ function wptouch_theme_info_url() {
 function wptouch_cloud_theme_update_available() {
 	global $wptouch_cur_theme;
 
-	return ( !wptouch_is_theme_in_cloud() && isset( $wptouch_cur_theme->upgrade_available ) && $wptouch_cur_theme->upgrade_available );
+	return ( !wptouch_is_theme_in_cloud() && isset( $wptouch_cur_theme->theme_upgrade_available ) && $wptouch_cur_theme->theme_upgrade_available );
 }
 
 function wptouch_cloud_theme_get_update_version() {
@@ -84,16 +84,12 @@ function wptouch_get_theme_classes( $extra_classes = array() ) {
 
 	$classes = $extra_classes;
 
-	if ( wptouch_is_theme_active() ) {
+	if ( !is_network_admin() && wptouch_is_theme_active() ) {
 		$classes[] = 'active';
 	}
 
 	if ( wptouch_is_theme_in_cloud() ) {
 		$classes[] = 'cloud';
-	}
-
-	if ( wptouch_is_theme_custom() ) {
-		$classes[] = 'custom';
 	}
 
 	if ( wptouch_has_theme_tags() ) {
@@ -120,25 +116,24 @@ function wptouch_get_theme_tags() {
 	return apply_filters( 'wptouch_theme_tags', $wptouch_cur_theme->tags );
 }
 
+function wptouch_trim_trailing_slashes( $str ) {
+	return trim( $str, DIRECTORY_SEPARATOR );
+}
+
 function wptouch_is_theme_active() {
 	global $wptouch_pro;
 	global $wptouch_cur_theme;
 
 	$settings = $wptouch_pro->get_settings();
 
-	$current_theme_location = $settings->current_theme_location . '/' . $settings->current_theme_name;
+	$current_theme_location = $settings->current_theme_location . DIRECTORY_SEPARATOR . $settings->current_theme_name;
 
-	return ( $wptouch_cur_theme->location == $current_theme_location );
+	return ( wptouch_trim_trailing_slashes( $wptouch_cur_theme->location ) == wptouch_trim_trailing_slashes( $current_theme_location ) );
 }
 
 function wptouch_active_theme_has_settings() {
 	$menu = apply_filters( 'wptouch_theme_menu', array() );
 	return count( $menu );
-}
-
-function wptouch_is_theme_custom() {
-	global $wptouch_cur_theme;
-	return ( $wptouch_cur_theme->custom_theme );
 }
 
 function wptouch_is_theme_child() {
@@ -238,11 +233,11 @@ function wptouch_get_theme_description() {
 	return false;
 }
 
-function wptouch_the_theme_screenshot() {
-	echo wptouch_get_theme_screenshot();
+function wptouch_the_theme_icon() {
+	echo wptouch_get_theme_icon();
 }
 
-function wptouch_get_theme_screenshot() {
+function wptouch_get_theme_icon() {
 	global $wptouch_cur_theme;
 	if ( $wptouch_cur_theme ) {
 		return apply_filters( 'wptouch_theme_screenshot', $wptouch_cur_theme->screenshot );
@@ -292,7 +287,7 @@ function wptouch_the_theme_buy_url() {
 	echo wptouch_get_theme_buy_url();
 }
 
-function wtouch_the_theme_activate_link_url() {
+function wptouch_the_theme_activate_link_url() {
 	echo wptouch_get_theme_activate_link_url();
 }
 
@@ -305,7 +300,7 @@ function wptouch_get_theme_activate_link_url() {
 	) ) );
 }
 
-function wtouch_the_theme_copy_link_url() {
+function wptouch_the_theme_copy_link_url() {
 	echo wptouch_get_theme_copy_link_url();
 }
 
@@ -331,59 +326,81 @@ function wptouch_get_theme_delete_link_url() {
 	) ) );
 }
 
-global $wptouch_theme_previews;
-global $wptouch_theme_preview_item;
-global $wptouch_theme_preview_iterator;
-
-function wptouch_get_theme_preview_images() {
-	require_once( WPTOUCH_DIR . '/core/file-operations.php' );
-
-	return wptouch_get_files_in_directory( WP_CONTENT_DIR . wptouch_get_theme_location() . '/preview', '.jpg', false );
+function wptouch_the_theme_changelog() {
+	echo wptouch_get_theme_changelog();
 }
 
-function wptouch_has_theme_preview_images() {
-	global $wptouch_theme_preview_iterator;
-	global $wptouch_theme_previews;
+function wptouch_get_theme_changelog() {
+	global $wptouch_cur_theme;
+	return $wptouch_cur_theme->changelog;
+}
 
-	if ( !$wptouch_theme_preview_iterator ) {
-		$wptouch_theme_previews = wptouch_get_theme_preview_images();
-		$wptouch_theme_preview_iterator = new WPtouchArrayIterator( $wptouch_theme_previews );
+function wptouch_the_theme_long_desc() {
+	echo wptouch_get_theme_long_desc();
+}
+
+function wptouch_get_theme_long_desc() {
+	global $wptouch_cur_theme;
+	return wpautop( $wptouch_cur_theme->long_description );
+}
+
+global $wptouch_theme_screenshots;
+global $wptouch_theme_screenshot_item;
+global $wptouch_theme_screenshot_iterator;
+
+function wptouch_get_theme_screenshots() {
+	global $wptouch_cur_theme;
+	if ( isset( $wptouch_cur_theme->preview_images ) ) {
+		return $wptouch_cur_theme->preview_images;
+	} else {
+		return array();
+	}
+}
+
+function wptouch_has_theme_screenshots() {
+	global $wptouch_theme_screenshot_iterator;
+	global $wptouch_theme_screenshots;
+
+	if ( !$wptouch_theme_screenshot_iterator ) {
+		$wptouch_theme_screenshots = wptouch_get_theme_screenshots();
+		$wptouch_theme_screenshot_iterator = new WPtouchArrayIterator( $wptouch_theme_screenshots );
 	}
 
-	return $wptouch_theme_preview_iterator->have_items();
+	return $wptouch_theme_screenshot_iterator->have_items();
 }
 
-function wptouch_the_theme_preview_image() {
-	global $wptouch_theme_preview_iterator;
-	global $wptouch_theme_preview_item;
+function wptouch_the_theme_screenshot() {
+	global $wptouch_theme_screenshot_iterator;
+	global $wptouch_theme_screenshot_item;
 
-	$wptouch_theme_preview_item = $wptouch_theme_preview_iterator->the_item();
+	$wptouch_theme_screenshot_item = $wptouch_theme_screenshot_iterator->the_item();
 
-	return apply_filters( 'wptouch_theme_preview_image', $wptouch_theme_preview_item );
+	return apply_filters( 'wptouch_theme_screenshot', $wptouch_theme_screenshot_item );
 }
 
-function wptouch_get_theme_preview_image_num() {
-	global $wptouch_theme_preview_iterator;
+function wptouch_get_theme_screenshot_num() {
+	global $wptouch_theme_screenshot_iterator;
 
-	return $wptouch_theme_preview_iterator->current_position();
+	return $wptouch_theme_screenshot_iterator->current_position();
 }
 
-function wptouch_is_first_theme_preview_image() {
-	return ( wptouch_get_theme_preview_image_num() == 1 );
+function wptouch_is_first_theme_screenshot() {
+	return ( wptouch_get_theme_screenshot_num() == 1 );
 }
 
-function wptouch_get_theme_preview_url() {
-	global $wptouch_theme_preview_item;
-	return wptouch_check_url_ssl( wptouch_get_theme_url() . '/preview/' . $wptouch_theme_preview_item );
+function wptouch_get_theme_screenshot_url() {
+	global $wptouch_theme_screenshot_item;
+	return $wptouch_theme_screenshot_item;
 }
 
-function wptouch_the_theme_preview_url() {
-	echo wptouch_get_theme_preview_url();
+function wptouch_the_theme_screenshot_url() {
+	echo wptouch_get_theme_screenshot_url();
 }
 
-function wptouch_reset_theme_preview() {
-	global $wptouch_theme_preview_iterator;
+function wptouch_reset_theme_screenshot() {
+	global $wptouch_theme_screenshot_iterator;
 
-	$wptouch_theme_preview_iterator = false;
+	$wptouch_theme_screenshot_iterator = false;
 }
+
 

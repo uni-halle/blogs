@@ -8,6 +8,12 @@ include_once(dirname(dirname(__FILE__)) . '/CF7DBPlugin.php');
  * @return null
  */
 function get_option($optionName) {
+
+    global $alt_get_options;
+    if (isset($alt_get_options)) {
+        return $alt_get_options($optionName);
+    }
+
     $optionName = substr($optionName, strlen('CF7DBPlugin_'));
     $plugin = new CF7DBPlugin();
     $options = $plugin->getOptionMetaData();
@@ -38,10 +44,11 @@ function get_option($optionName) {
 }
 
 
-function __($text, $domain = 'default') {
-    return $text;
+if (!function_exists('__')) {
+    function __($text, $domain = 'default') {
+        return $text;
+    }
 }
-
 function _e($text, $domain = 'default') {
     echo $text;
 }

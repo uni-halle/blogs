@@ -60,9 +60,12 @@ class AAM_Frontend_Manager {
 
         $user = AAM::getUser();
         if (is_single() || is_page()) {
-            if ($user->getObject('post', $post->ID)->has('frontend.read')) {
+            $object = $user->getObject('post', $post->ID);
+            if ($object->has('frontend.read')) {
                 AAM_Core_API::reject();
             }
+            //trigger any action that is listeting 
+            do_action('aam-wp-action', $object);
         }
     }
 

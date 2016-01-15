@@ -58,9 +58,7 @@ class WPtouchAddonThemeInstaller {
 	}
 
 	private function can_install_directly( $path ) {
-		$destination_dir = WPTOUCH_BASE_CONTENT_DIR . '/' . $path;
-
-		return is_writable( $destination_dir );
+		return is_writable( $path );
 	}
 
 	private function can_unzip() {
@@ -117,7 +115,7 @@ class WPtouchAddonThemeInstaller {
 				return $temp_name;
 			}
 		} else if ( $method == 'DIRECT' ) {
-			$source_file = fopen( $package, 'rb' );
+			$source_file = @fopen( $package, 'rb' );
 			if ( $source_file ) {
 				$temp_dir = $this->get_writable_temp_directory( $alternate_path );
 				$temp_name = tempnam( $temp_dir, 'wptouch-' );
@@ -149,6 +147,15 @@ class WPtouchAddonThemeInstaller {
 	}
 
 	function can_perform_install( $path ) {
+		if ( defined( 'WPTOUCH_NO_INSTALL' ) ) {
+			return false;
+		}
+
+		$path = WPTOUCH_BASE_CONTENT_DIR . '/' . $path;
+		return $this->can_perform_install_anywhere( $path );
+	}
+
+	function can_perform_install_anywhere( $path ) {
 		return $this->can_download_directly() && $this->can_install_directly( $path ) && $this->can_unzip();
 	}
 
@@ -157,13 +164,17 @@ class WPtouchAddonThemeInstaller {
 	}
 
 	function install( $name, $package, $path ) {
-		if ( !$this->can_download_directly() ) {
+		$this->install_anywhere( $name, $package, wptouch_get_multsite_aware_install_path( $path ) );;
+	}
+
+	function install_anywhere( $name, $package, $path, $uploaded = false ) {
+		if ( !$uploaded && !$this->can_download_directly() ) {
 			$this->add_error( __( "No server support for directly downloading new Cloud packages.", "wptouch-pro" ) );
 			return false;
 		}
 
 		if ( !$this->can_install_directly( $path ) ) {
-			$this->add_error( sprintf( __( "Unable to write to directory %s. Try relaxing permissions to allow writing to this location.", "wptouch-pro" ), WPTOUCH_BASE_CONTENT_DIR . '/'. $path ) );
+			$this->add_error( sprintf( __( "Unable to write to directory %s. Try relaxing permissions to allow writing to this location.", "wptouch-pro" ), $path ) );
 			return false;
 		}
 
@@ -172,9 +183,14 @@ class WPtouchAddonThemeInstaller {
 			return false;
 		}
 
-		$file_name = $this->download_file( $package, WPTOUCH_BASE_CONTENT_DIR . '/' . $path );
+		if ( !$uploaded ) {
+			$file_name = $this->download_file( $package, $path );
+		} elseif ( $uploaded ) {
+			$file_name = $uploaded;
+		}
+
 		if ( $file_name ) {
-			$this->unzip_file( $file_name, WPTOUCH_BASE_CONTENT_DIR . '/' . $path );
+			$this->unzip_file( $file_name, $path );
 
 			@unlink( $file_name );
 		} else {

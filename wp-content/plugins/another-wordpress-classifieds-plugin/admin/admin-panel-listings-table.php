@@ -22,7 +22,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
         if ( isset( $search_params['query']['category_id'] ) && $search_params['query']['category_id'] ) {
             $category = AWPCP_Category::find_by_id( $search_params['query']['category_id'] );
             if (!is_null($category)) {
-                awpcp_flash(sprintf(__('Showing Ads from %s category.', 'AWPCP'), "<strong>{$category->name}</strong>"));
+                awpcp_flash(sprintf(__('Showing Ads from %s category.', 'another-wordpress-classifieds-plugin'), "<strong>{$category->name}</strong>"));
             }
         }
 
@@ -67,7 +67,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
             $query['include_listings_in_children_categories'] = true;
         }
 
-        $show_unpaid = false;
+        $show_incomplete = false;
         $show_non_verified = false;
         $show_expired = false;
         $show_awaiting_approval = false;
@@ -81,9 +81,9 @@ class AWPCP_Listings_Table extends WP_List_Table {
                 $query['flagged'] = true;
                 break;
 
-            case 'unpaid':
+            case 'incomplete':
                 $query['payment_status'] = 'Unpaid';
-                $show_unpaid = true;
+                $show_incomplete = true;
                 break;
 
             case 'non-verified':
@@ -126,7 +126,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
                 break;
 
             default:
-                $query['orderby'] = 'start-date';
+                $query['orderby'] = 'renewed-date';
                 break;
         }
 
@@ -136,7 +136,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
 
         return array(
             'query' => $query,
-            'filters' => compact( 'show_unpaid', 'show_expired', 'show_non_verified', 'show_awaiting_approval' ),
+            'filters' => compact( 'show_incomplete', 'show_expired', 'show_non_verified', 'show_awaiting_approval' ),
         );
     }
 
@@ -152,7 +152,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
         } else if ( $filters['show_non_verified'] ) {
             $this->total_items = $listings->count_successfully_paid_listings_with_query( $query );
             $this->items = $listings->find_successfully_paid_listings_with_query( $query );
-        } else if ( $filters['show_unpaid'] ) {
+        } else if ( $filters['show_incomplete'] ) {
             $this->total_items = $listings->count_listings_with_query( $query );
             $this->items = $listings->find_listings_with_query( $query );
         } else {
@@ -171,25 +171,25 @@ class AWPCP_Listings_Table extends WP_List_Table {
         $columns = array();
 
         $columns['cb'] = '<input type="checkbox" />';
-        $columns['title'] = __( 'Title', 'AWPCP' );
+        $columns['title'] = __( 'Title', 'another-wordpress-classifieds-plugin' );
 
         if ( awpcp_current_user_is_admin() ) {
-            $columns['access_key'] = __( 'Access Key', 'AWPCP' );
+            $columns['access_key'] = __( 'Access Key', 'another-wordpress-classifieds-plugin' );
         }
 
-        $columns['start_date'] = __('Start Date', 'AWPCP');
-        $columns['end_date'] = __('End Date', 'AWPCP');
-        $columns['renewed_date'] = __('Renewed Date', 'AWPCP');
-        $columns['status'] = __('Status', 'AWPCP');
-        $columns['payment_term'] = __('Payment Term', 'AWPCP');
-        $columns['payment_status'] = __('Payment Status', 'AWPCP');
+        $columns['start_date'] = __('Start Date', 'another-wordpress-classifieds-plugin');
+        $columns['end_date'] = __('End Date', 'another-wordpress-classifieds-plugin');
+        $columns['renewed_date'] = __('Renewed Date', 'another-wordpress-classifieds-plugin');
+        $columns['status'] = __('Status', 'another-wordpress-classifieds-plugin');
+        $columns['payment_term'] = __('Payment Term', 'another-wordpress-classifieds-plugin');
+        $columns['payment_status'] = __('Payment Status', 'another-wordpress-classifieds-plugin');
 
         if ( defined( 'AWPCP_FEATURED_ADS_MODULE' ) ) {
-            $columns['featured'] = __( 'Featured', 'AWPCP' );
+            $columns['featured'] = __( 'Featured', 'another-wordpress-classifieds-plugin' );
         }
 
         if ( awpcp_current_user_is_moderator() ) {
-            $columns['owner'] = __('Owner', 'AWPCP');
+            $columns['owner'] = __('Owner', 'another-wordpress-classifieds-plugin');
         }
 
         return $columns;
@@ -213,20 +213,20 @@ class AWPCP_Listings_Table extends WP_List_Table {
         $actions = array();
         if ( awpcp_current_user_is_admin() ) {
             $actions = array(
-                'bulk-enable' => __( 'Enable', 'AWPCP' ),
-                'bulk-disable' => __( 'Disable', 'AWPCP' ),
-                'bulk-make-featured' => __( 'Make Featured', 'AWPCP' ),
-                'bulk-remove-featured' => __( 'Make Non Featured', 'AWPCP' ),
-                'bulk-renew' => __( 'Renew', 'AWPCP' ),
-                'bulk-spam' => __( 'Mark as SPAM', 'AWPCP' )
+                'bulk-enable' => __( 'Enable', 'another-wordpress-classifieds-plugin' ),
+                'bulk-disable' => __( 'Disable', 'another-wordpress-classifieds-plugin' ),
+                'bulk-make-featured' => __( 'Make Featured', 'another-wordpress-classifieds-plugin' ),
+                'bulk-remove-featured' => __( 'Make Non Featured', 'another-wordpress-classifieds-plugin' ),
+                'bulk-renew' => __( 'Renew', 'another-wordpress-classifieds-plugin' ),
+                'bulk-spam' => __( 'Mark as SPAM', 'another-wordpress-classifieds-plugin' )
             );
 
             $fb = AWPCP_Facebook::instance();
             if ( $fb->get( 'page_token' ) )
-                $actions['bulk-send-to-facebook'] = __( 'Send to Facebook', 'AWPCP' );
+                $actions['bulk-send-to-facebook'] = __( 'Send to Facebook', 'another-wordpress-classifieds-plugin' );
         }
 
-        $actions['bulk-delete'] = __( 'Delete', 'AWPCP' );
+        $actions['bulk-delete'] = __( 'Delete', 'another-wordpress-classifieds-plugin' );
 
         return $actions;
     }
@@ -239,7 +239,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
             'images-awaiting-approval' => 'images-awaiting-approval',
             'is-featured' => 'featured-ads',
             'flagged' => 'flagged-ads',
-            'unpaid' => 'unpaid-ads',
+            'incomplete' => 'incomplete-listings',
             'non-verified' => 'non-verified-ads',
             'completed' => 'completed',
         );
@@ -247,15 +247,15 @@ class AWPCP_Listings_Table extends WP_List_Table {
         $selected = awpcp_array_data($this->params['filterby'], 'completed', $filters);
 
         $views = array(
-            'new' => array( __( 'New', 'AWPCP' ), $this->page->url( array( 'filterby' => 'new', 'filter' => true ) ) ),
-            'expired' => array( __( 'Expired', 'AWPCP' ), $this->page->url( array( 'filterby' => 'expired', 'filter' => true ) ) ),
-            'awaiting-approval' => array( __( 'Ads Awaiting Approval', 'AWPCP' ), $this->page->url( array( 'filterby' => 'awaiting-approval', 'filter' => true ) ) ),
-            'images-awaiting-approval' => array( __( 'Images Awaiting Approval', 'AWPCP' ), $this->page->url( array( 'filterby' => 'images-awaiting-approval', 'filter' => true ) ) ),
-            'featured-ads' => array(__('Featured', 'AWPCP'), $this->page->url(array('filterby' => 'is-featured', 'filter' => true))),
-            'flagged-ads'  => array(__('Flagged', 'AWPCP'), $this->page->url(array('filterby' => 'flagged', 'filter' => true))),
-            'unpaid-ads' => array(__('Unpaid', 'AWPCP'), $this->page->url(array('filterby' => 'unpaid', 'filter' => true))),
-            'non-verified-ads' => array( __( 'Unverified', 'AWPCP' ), $this->page->url( array( 'filterby' => 'non-verified', 'filter' => true ) ) ),
-            'completed' => array( __( 'Completed', 'AWPCP' ), $this->page->url( array( 'filterby' => 'completed', 'filter' => false ) ) ),
+            'new' => array( __( 'New', 'another-wordpress-classifieds-plugin' ), $this->page->url( array( 'filterby' => 'new', 'filter' => true ) ) ),
+            'expired' => array( __( 'Expired', 'another-wordpress-classifieds-plugin' ), $this->page->url( array( 'filterby' => 'expired', 'filter' => true ) ) ),
+            'awaiting-approval' => array( __( 'Ads Awaiting Approval', 'another-wordpress-classifieds-plugin' ), $this->page->url( array( 'filterby' => 'awaiting-approval', 'filter' => true ) ) ),
+            'images-awaiting-approval' => array( __( 'Images Awaiting Approval', 'another-wordpress-classifieds-plugin' ), $this->page->url( array( 'filterby' => 'images-awaiting-approval', 'filter' => true ) ) ),
+            'featured-ads' => array(__('Featured', 'another-wordpress-classifieds-plugin'), $this->page->url(array('filterby' => 'is-featured', 'filter' => true))),
+            'flagged-ads'  => array(__('Flagged', 'another-wordpress-classifieds-plugin'), $this->page->url(array('filterby' => 'flagged', 'filter' => true))),
+            'incomplete-listings' => array( __( 'Incomplete', 'another-wordpress-classifieds-plugin' ), $this->page->url( array( 'filterby' => 'incomplete', 'filter' => true ) ) ),
+            'non-verified-ads' => array( __( 'Unverified', 'another-wordpress-classifieds-plugin' ), $this->page->url( array( 'filterby' => 'non-verified', 'filter' => true ) ) ),
+            'completed' => array( __( 'Completed', 'another-wordpress-classifieds-plugin' ), $this->page->url( array( 'filterby' => 'completed', 'filter' => false ) ) ),
         );
 
         return $this->page->links($views, $selected);
@@ -266,18 +266,18 @@ class AWPCP_Listings_Table extends WP_List_Table {
             return;
 
         $id = 'search-by';
-        $label = __('Search by', 'AWPCP');
+        $label = __('Search by', 'another-wordpress-classifieds-plugin');
 
-        $options['id'] = __('Ad ID', 'AWPCP');
-        $options['title'] = __('Ad Title', 'AWPCP');
-        $options['keyword'] = __('Keyword', 'AWPCP');
-        $options['location'] = __('Location', 'AWPCP');
+        $options['id'] = __('Ad ID', 'another-wordpress-classifieds-plugin');
+        $options['title'] = __('Ad Title', 'another-wordpress-classifieds-plugin');
+        $options['keyword'] = __('Keyword', 'another-wordpress-classifieds-plugin');
+        $options['location'] = __('Location', 'another-wordpress-classifieds-plugin');
 
         if ( awpcp_current_user_is_admin() ) {
-            $options['payer-email'] = __('Payer Email', 'AWPCP');
+            $options['payer-email'] = __('Payer Email', 'another-wordpress-classifieds-plugin');
         }
 
-        $options['user'] = __('User', 'AWPCP');
+        $options['user'] = __('User', 'another-wordpress-classifieds-plugin');
 
         $search_by = awpcp_request_param('search-by', 'title');
 
@@ -316,7 +316,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
         ) );
 
         $submit_button = '<input class="button" type="submit" value="%s">';
-        $submit_button = sprintf( $submit_button, esc_attr( _x( 'Filter', 'admin listings table', 'AWPCP' ) ) );
+        $submit_button = sprintf( $submit_button, esc_attr( _x( 'Filter', 'admin listings table', 'another-wordpress-classifieds-plugin' ) ) );
 
         $template = '<div class="alignleft actions awpcp-category-filter"><category-selector><submit-button></div>';
         $template = str_replace( '<category-selector>', $category_selector, $template );
@@ -361,7 +361,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
             '<a class="awpcp-admin-listings-table-listing-title" title="%3$s" href="%2$s">%1$s</a>',
             $item->get_title(),
             $this->page->url( array( 'action' => 'view', 'id' => $item->ad_id ) ),
-            __( 'View Ad.', 'AWPCP' )
+            __( 'View Ad.', 'another-wordpress-classifieds-plugin' )
         );
 
         return $content . $this->row_actions( $this->get_row_actions( $item ), true );
@@ -389,7 +389,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
 
         if ( $item->verified == 0 ) {
             $url = $this->page->url( array( 'action' => 'mark-verified', 'id' => $item->ad_id ) );
-            $actions['mark-verified'] = array( __( 'Mark as Verified', 'AWPCP' ), $url );
+            $actions['mark-verified'] = array( __( 'Mark as Verified', 'another-wordpress-classifieds-plugin' ), $url );
         }
 
         if ( ! empty( $actions ) ) {
@@ -398,7 +398,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
             $actions = '';
         }
 
-        $status = $item->disabled ? __( 'Disabled', 'AWPCP' ) : __( 'Enabled', 'AWPCP' );
+        $status = $item->disabled ? __( 'Disabled', 'another-wordpress-classifieds-plugin' ) : __( 'Enabled', 'another-wordpress-classifieds-plugin' );
 
         return $status . $actions;
     }
@@ -412,7 +412,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
 
         if ($item->payment_status == 'Unpaid') {
             $url = $this->page->url(array('action' => 'mark-paid', 'id' => $item->ad_id));
-            $actions['mark-paid'] = array( __( 'Mark as Paid', 'AWPCP' ), $url );
+            $actions['mark-paid'] = array( __( 'Mark as Paid', 'another-wordpress-classifieds-plugin' ), $url );
         }
 
         if ( ! empty( $actions ) ) {
@@ -425,7 +425,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
     }
 
     public function column_featured($item) {
-        return $item->is_featured_ad ? __('Featured', 'AWPCP') : __('Not Featured', 'AWPCP');
+        return $item->is_featured_ad ? __('Featured', 'another-wordpress-classifieds-plugin') : __('Not Featured', 'another-wordpress-classifieds-plugin');
     }
 
     public function column_owner($item) {

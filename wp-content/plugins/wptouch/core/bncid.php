@@ -1,6 +1,5 @@
 <?php
 
-define( 'WPTOUCH_PRO_BNCAPI_PRODUCT_NAME', 'wptouch-pro-3' );
 define( 'WPTOUCH_BNCID_CACHE_TIME', 3600 );
 
 define( 'WPTOUCH_BNCID_DONT_CACHE', 0 );
@@ -77,9 +76,25 @@ function wptouch_check_api( $force_refresh = false ) {
 				$bnc_settings->license_accepted_time = $current_time;
 				$bnc_settings->license_expired = 0;
 				$bnc_settings->license_expiry_date = 0;
+				$bnc_settings->licensed_site = $result[ 'site' ];
+				$bnc_settings->license_total_sites = 0;
+				$bnc_settings->license_friendly_name = '';
+				$bnc_settings->license_used_sites = 0;
 
 				if ( $result[ 'license_expiry_date'] ) {
 					$bnc_settings->license_expiry_date = $result[ 'license_expiry_date'];
+				}
+
+				if ( $result[ 'licenses_total_sites'] ) {
+					$bnc_settings->license_total_sites = $result[ 'licenses_total_sites' ];
+				}
+
+				if ( $result[ 'license_friendly_name'] ) {
+					$bnc_settings->license_friendly_name = $result[ 'license_friendly_name' ];
+				}
+
+				if ( $result[ 'license_used_sites'] ) {
+					$bnc_settings->license_used_sites = $result[ 'license_used_sites' ];
 				}
 
 				// Check for the user's referral code

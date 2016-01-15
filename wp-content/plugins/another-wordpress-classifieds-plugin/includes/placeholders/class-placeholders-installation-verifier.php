@@ -12,7 +12,19 @@ class AWPCP_PlaceholdersInstallationVerifier {
     }
 
     protected function is_placeholder_missing( $placeholder ) {
-        return strpos( $this->settings->get_option( 'awpcpshowtheadlayout' ), $placeholder ) === false;
+        return $this->is_placeholder_missing_in_single_listing_layout( $placeholder );
+    }
+
+    protected function is_placeholder_missing_in_single_listing_layout( $placeholder ) {
+        return $this->is_placeholder_missing_in_setting( 'awpcpshowtheadlayout' , $placeholder );
+    }
+
+    protected function is_placeholder_missing_in_listings_layout( $placeholder ) {
+        return $this->is_placeholder_missing_in_setting( 'displayadlayoutcode' , $placeholder );
+    }
+
+    private function is_placeholder_missing_in_setting( $setting_name, $placeholder ) {
+        return strpos( $this->settings->get_option( $setting_name ), $placeholder ) === false;
     }
 
     protected function show_missing_placeholder_notice( $warning_message ) {

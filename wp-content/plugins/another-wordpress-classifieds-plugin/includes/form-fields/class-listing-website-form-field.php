@@ -17,7 +17,7 @@ class AWPCP_ListingWebsiteFormField extends AWPCP_FormField {
     }
 
     public function get_name() {
-        return _x( 'Website URL', 'ad details form', 'AWPCP' );
+        return _x( 'Website URL', 'ad details form', 'another-wordpress-classifieds-plugin' );
     }
 
     protected function is_required() {

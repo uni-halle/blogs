@@ -1,3 +1,3 @@
-<?php _e( 'Hello', 'AWPCP' ) ?>,
+<?php _e( 'Hello', 'another-wordpress-classifieds-plugin' ) ?>,
 
 <?php echo $message; ?>

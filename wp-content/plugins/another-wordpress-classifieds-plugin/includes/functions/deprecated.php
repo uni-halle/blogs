@@ -57,7 +57,7 @@ function awpcp_display_ads($where, $byl, $hidepager, $grouporderby, $adorcat, $b
 
         if (!$ads_exist) {
             $showcategories="<p style=\"padding:10px\">";
-            $showcategories.=__("There are currently no ads in the system","AWPCP");
+            $showcategories.=__("There are currently no ads in the system",'another-wordpress-classifieds-plugin');
             $showcategories.="</p>";
             $pager1='';
             $pager2='';
@@ -113,7 +113,7 @@ function awpcp_display_ads($where, $byl, $hidepager, $grouporderby, $adorcat, $b
 
             if (empty($ads)) {
                 $showcategories="<p style=\"padding:20px;\">";
-                $showcategories.=__("There were no ads found","AWPCP");
+                $showcategories.=__("There were no ads found",'another-wordpress-classifieds-plugin');
                 $showcategories.="</p>";
                 $pager1='';
                 $pager2='';
@@ -140,7 +140,7 @@ function awpcp_display_ads($where, $byl, $hidepager, $grouporderby, $adorcat, $b
             $output .= '</div>';
 
             $output .= "<input type=\"hidden\" name=\"a\" value=\"browsecat\" />&nbsp;<input class=\"button\" type=\"submit\" value=\"";
-            $output .= __("Change Category","AWPCP");
+            $output .= __("Change Category",'another-wordpress-classifieds-plugin');
             $output .= "\" /></form></div>";
 
             $output .= "<div class=\"pager\">$pager1</div><div class=\"fixfloat\"></div>";
@@ -148,13 +148,13 @@ function awpcp_display_ads($where, $byl, $hidepager, $grouporderby, $adorcat, $b
             $output .= "<div id='awpcpcatname' class=\"fixfloat\">";
 
             if ($category_id > 0) {
-                $output .= "<h3>" . __("Category: ", "AWPCP") . get_adcatname($category_id) . "</h3>";
+                $output .= "<h3>" . __("Category: ", 'another-wordpress-classifieds-plugin') . get_adcatname($category_id) . "</h3>";
             }
 
             $output .= "</div>";
         }
 
-        $output .= apply_filters('awpcp-display-ads-before-list', '');
+        $output .= apply_filters('awpcp-content-before-listings-list', '');
         $output .= "$showcategories";
 
         if ($ads_exist) {
@@ -187,8 +187,8 @@ function awpcp_render_ads($ads, $context='listings', $config=array(), $paginatio
 
     $items = awpcp_render_listings_items( $ads, $context );
 
-    $before_content = apply_filters('awpcp-listings-before-content', array(), $context);
-    $after_content = apply_filters('awpcp-listings-after-content', array(), $context);
+    $before_content = apply_filters('awpcp-content-before-listings-pagination', array(), $context);
+    $after_content = apply_filters('awpcp-content-after-listings-pagination', array(), $context);
     $pagination_block = is_array( $pagination ) ? awpcp_pagination( $pagination, '' ) : '';
 
     ob_start();
@@ -219,7 +219,7 @@ function awpcp_upload_files( $ad, $files, &$errors=array() ) {
             if ( $can_upload !== false ) {
                 $errors[ $name ] = $can_upload;
             } else {
-                $message = _x( 'An error occurred trying to upload the file %s.', 'upload files', 'AWPCP' );
+                $message = _x( 'An error occurred trying to upload the file %s.', 'upload files', 'another-wordpress-classifieds-plugin' );
                 $errors[ $name ] = sprintf( $message, '<strong>' . $info['name'] . '</strong>' );
             }
             continue;
@@ -241,7 +241,7 @@ function awpcp_upload_files( $ad, $files, &$errors=array() ) {
 
                 $uploaded[] = $file;
             } else {
-                $message = _x( 'The file %s was properly uploaded but there was a problem trying to save the information to the database.', 'upload files', 'AWPCP' );
+                $message = _x( 'The file %s was properly uploaded but there was a problem trying to save the information to the database.', 'upload files', 'another-wordpress-classifieds-plugin' );
                 $errors[ $name ] = sprintf( $message, '<strong>' . $result['original'] . '</strong>' );
             }
         } else {
@@ -258,8 +258,8 @@ function awpcp_upload_files( $ad, $files, &$errors=array() ) {
  *
  * @param $error    if an error occurs the error message will be returned by reference
  *                  using this variable.
- * @param $action   'upload' if the file was uplaoded using an HTML File field.
- *                  'copy' if the file was uplaoded using a different method. Images
+ * @param $action   'upload' if the file was uploaded using an HTML File field.
+ *                  'copy' if the file was uploaded using a different method. Images
  *                  extracted from a ZIP file during Ad import.
  * @return          false if an error occurs or an array with the upload file information
  *                  on success.
@@ -273,7 +273,7 @@ function awpcp_upload_file( $file, $constraints, &$error=false, $action='upload'
     $mime_type = $file[ 'type' ];
 
     if ( ! in_array( $mime_type, $constraints[ 'mime_types' ] ) ) {
-        $error = _x( 'The type of the uplaoded file %s is not allowed.', 'upload files', 'AWPCP' );
+        $error = _x( 'The type of the uploaded file %s is not allowed.', 'upload files', 'another-wordpress-classifieds-plugin' );
         $error = sprintf( $error, '<strong>' . $filename . '</strong>' );
         return false;
     }
@@ -281,13 +281,13 @@ function awpcp_upload_file( $file, $constraints, &$error=false, $action='upload'
     $paths = awpcp_get_uploads_directories();
 
     if ( ! file_exists( $tmpname ) ) {
-        $error = _x( 'The specified file does not exists: %s.', 'upload files', 'AWPCP' );
+        $error = _x( 'The specified file does not exists: %s.', 'upload files', 'another-wordpress-classifieds-plugin' );
         $error = sprintf( $error, '<strong>' . $filename . '</strong>' );
         return false;
     }
 
     if ( $action == 'upload' && ! is_uploaded_file( $tmpname ) ) {
-        $error = _x( 'Unknown error encountered while uploading the image.', 'upload files', 'AWPCP' );
+        $error = _x( 'Unknown error encountered while uploading the image.', 'upload files', 'another-wordpress-classifieds-plugin' );
         $error = sprintf( $error, '<strong>' . $filename . '</strong>' );
         return false;
     }
@@ -295,20 +295,20 @@ function awpcp_upload_file( $file, $constraints, &$error=false, $action='upload'
     $file_size = filesize( $tmpname );
 
     if ( empty( $file_size ) || $file_size <= 0 ) {
-        $error = _x( 'There was an error trying to find out the file size of the image %s.', 'upload files', 'AWPCP' );
+        $error = _x( 'There was an error trying to find out the file size of the image %s.', 'upload files', 'another-wordpress-classifieds-plugin' );
         $error = sprintf( $error, '<strong>' . $filename . '</strong>' );
         return false;
     }
 
     if ( in_array( $mime_type, awpcp_get_image_mime_types() ) ) {
         if ( $file_size > $constraints['max_image_size'] ) {
-            $error = _x( 'The file %s was larger than the maximum allowed file size of %s bytes. The file was not uploaded.', 'upload files', 'AWPCP' );
+            $error = _x( 'The file %s was larger than the maximum allowed file size of %s bytes. The file was not uploaded.', 'upload files', 'another-wordpress-classifieds-plugin' );
             $error = sprintf( $error, '<strong>' . $filename . '</strong>', $constraints['max_image_size'] );
             return false;
         }
 
         if ( $file_size < $constraints['min_image_size'] ) {
-            $error = _x( 'The size of %1$s was too small. The file was not uploaded. File size must be greater than %2$d bytes.', 'upload files', 'AWPCP' );
+            $error = _x( 'The size of %1$s was too small. The file was not uploaded. File size must be greater than %2$d bytes.', 'upload files', 'another-wordpress-classifieds-plugin' );
             $error = sprintf( $error, '<strong>' . $filename . '</strong>', $constraints['min_image_size'] );
             return false;
         }
@@ -316,25 +316,25 @@ function awpcp_upload_file( $file, $constraints, &$error=false, $action='upload'
         $img_info = getimagesize( $tmpname );
 
         if ( ! isset( $img_info[ 0 ] ) && ! isset( $img_info[ 1 ] ) ) {
-            $error = _x( 'The file %s does not appear to be a valid image file.', 'upload files', 'AWPCP' );
+            $error = _x( 'The file %s does not appear to be a valid image file.', 'upload files', 'another-wordpress-classifieds-plugin' );
             $error = sprintf( $error, '<strong>' . $filename . '</strong>' );
             return false;
         }
 
         if ( $img_info[ 0 ] < $constraints['min_image_width'] ) {
-            $error = _x( 'The image %s did not meet the minimum width of %s pixels. The file was not uploaded.', 'upload files', 'AWPCP');
+            $error = _x( 'The image %s did not meet the minimum width of %s pixels. The file was not uploaded.', 'upload files', 'another-wordpress-classifieds-plugin');
             $error = sprintf( $error, '<strong>' . $filename . '</strong>', $constraints['min_image_width'] );
             return false;
         }
 
         if ( $img_info[ 1 ] < $constraints['min_image_height'] ) {
-            $error = _x( 'The image %s did not meet the minimum height of %s pixels. The file was not uploaded.', 'upload files', 'AWPCP');
+            $error = _x( 'The image %s did not meet the minimum height of %s pixels. The file was not uploaded.', 'upload files', 'another-wordpress-classifieds-plugin');
             $error = sprintf( $error, '<strong>' . $filename . '</strong>', $constraints['min_image_height'] );
             return false;
         }
     } else {
         if ( $file_size > $constraints['max_attachment_size'] ) {
-            $error = _x( 'The file %s was larger than the maximum allowed file size of %s bytes. The file was not uploaded.', 'upload files', 'AWPCP' );
+            $error = _x( 'The file %s was larger than the maximum allowed file size of %s bytes. The file was not uploaded.', 'upload files', 'another-wordpress-classifieds-plugin' );
             $error = sprintf( $error, '<strong>' . $filename . '</strong>', $constraints['max_attachment_size'] );
             return false;
         }
@@ -344,18 +344,18 @@ function awpcp_upload_file( $file, $constraints, &$error=false, $action='upload'
     $newpath = trailingslashit( $paths['files_dir'] ) . $newname;
 
     if ( $action == 'upload' && ! @move_uploaded_file( $tmpname, $newpath ) ) {
-        $error = _x( 'The file %s could not be moved to the destination directory.', 'upload files', 'AWPCP' );
+        $error = _x( 'The file %s could not be moved to the destination directory.', 'upload files', 'another-wordpress-classifieds-plugin' );
         $error = sprintf( $error, '<strong>' . $filename . '</strong>' );
         return false;
     } else if ( $action == 'copy' && ! @copy( $tmpname, $newpath ) ) {
-        $error = _x( 'The file %s could not be copied to the destination directory.', 'upload files', 'AWPCP' );
+        $error = _x( 'The file %s could not be copied to the destination directory.', 'upload files', 'another-wordpress-classifieds-plugin' );
         $error = sprintf( $message, '<strong>' . $filename . '</strong>' );
         return false;
     }
 
     if ( in_array( $mime_type, awpcp_get_image_mime_types() ) ) {
         if ( ! awpcp_create_image_versions( $newname, $paths['files_dir'] ) ) {
-            $error = _x( 'Could not create resized versions of image %s.', 'upload files', 'AWPCP' );
+            $error = _x( 'Could not create resized versions of image %s.', 'upload files', 'another-wordpress-classifieds-plugin' );
             $error = sprintf( $error, '<strong>' . $filename . '</strong>' );
 
             # TODO: unlink resized version, thumbnail and primary image
@@ -384,7 +384,7 @@ function awpcp_get_allowed_mime_types() {
 }
 
 /**
- * File type, size and dimension constraints for uplaoded files.
+ * File type, size and dimension constraints for uploaded files.
  *
  * @since 3.0.2
  * @deprecated 3.4
@@ -419,7 +419,7 @@ function awpcp_can_upload_file_to_ad( $file, $ad ) {
 
     if ( in_array( $file['type'], $image_mime_types ) ) {
         if ( $images_allowed <= $images_uploaded ) {
-            $result = _x( "You can't add more images to this Ad. There are not remaining images slots.", 'upload files', 'AWPCP' );
+            $result = _x( "You can't add more images to this Ad. There are not remaining images slots.", 'upload files', 'another-wordpress-classifieds-plugin' );
         }
     }
 
@@ -427,7 +427,7 @@ function awpcp_can_upload_file_to_ad( $file, $ad ) {
 }
 
 /**
- * Returns information about the number of files uplaoded to an Ad, and
+ * Returns information about the number of files uploaded to an Ad, and
  * the number of files that can still be added to that same Ad.
  *
  * @since 3.0.2
@@ -467,7 +467,7 @@ function awpcp_get_uploads_directories() {
         $upload_dir = $wpcontentdir . '/' . $upload_dir_name . '/';
 
         // Required to set permission on main upload directory
-        require_once(AWPCP_DIR . '/fileop.class.php');
+        require_once(AWPCP_DIR . '/includes/class-fileop.php');
 
         $fileop = new fileop();
         $owner = fileowner( $wpcontentdir );
@@ -633,4 +633,11 @@ function get_categorynameidall($cat_id = 0) {
     }
 
     return $optionitem;
+}
+
+/**
+ * @deprecated since 2.0.7
+ */
+function checkfortable($table) {
+    return awpcp_table_exists($table);
 }

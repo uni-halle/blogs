@@ -28,17 +28,17 @@ class AWPCP_UploadListingMediaAjaxHandler extends AWPCP_AjaxHandler {
 
     public function ajax() {
         try {
-            $this->try_to_process_uplaoded_file();
+            $this->try_to_process_uploaded_file();
         } catch ( AWPCP_Exception $e ) {
             return $this->multiple_errors_response( $e->get_errors() );
         }
     }
 
-    private function try_to_process_uplaoded_file() {
+    private function try_to_process_uploaded_file() {
         $listing = $this->listings->get( $this->request->post( 'listing' ) );
 
         if ( ! $this->is_user_authorized_to_upload_media_to_listing( $listing ) ) {
-            throw new AWPCP_Exception( __( 'You are not authorized to upload files.', 'AWPCP' ) );
+            throw new AWPCP_Exception( __( 'You are not authorized to upload files.', 'another-wordpress-classifieds-plugin' ) );
         }
 
         return $this->process_uploaded_file( $listing );

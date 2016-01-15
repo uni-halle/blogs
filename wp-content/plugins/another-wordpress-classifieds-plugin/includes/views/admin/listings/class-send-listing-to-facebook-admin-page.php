@@ -24,15 +24,15 @@ class AWPCP_SendListingToFacebookAdminPage extends AWPCP_ListingActionAdminPage 
         $destinations = array();
 
         if ( $this->facebook_config->is_page_set() ) {
-            $destinations['page'] = __( 'Facebook Page', 'AWPCP' );
+            $destinations['page'] = __( 'Facebook Page', 'another-wordpress-classifieds-plugin' );
         }
 
         if ( $this->facebook_config->is_group_set() ) {
-            $destinations['group'] = __( 'Facebook Group', 'AWPCP' );
+            $destinations['group'] = __( 'Facebook Group', 'another-wordpress-classifieds-plugin' );
         }
 
         if ( empty( $destinations ) ) {
-            $this->errors[] = __( "AWPCP could not post to Facebook because you haven't selected a Page or a Group.", 'AWPCP' );
+            $this->errors[] = __( "AWPCP could not post to Facebook because you haven't selected a Page or a Group.", 'another-wordpress-classifieds-plugin' );
         } else {
             foreach ( $this->get_selected_listings() as $listing ) {
                 $this->try_to_send_listing_to_facebook( $listing, $destinations );
@@ -44,7 +44,7 @@ class AWPCP_SendListingToFacebookAdminPage extends AWPCP_ListingActionAdminPage 
 
     private function try_to_send_listing_to_facebook( $listing, $destinations ) {
         if ( $listing->disabled ) {
-            $message = __( "The Ad %s was not sent to Facebook because is currently disabled. If you share it, Facebook servers and users won't be able to access it.", 'AWPCP' );
+            $message = __( "The Ad %s was not sent to Facebook because is currently disabled. If you share it, Facebook servers and users won't be able to access it.", 'another-wordpress-classifieds-plugin' );
             $this->errors[] = sprintf( $message, '<strong>' . $listing->get_title() . '</strong>' );
             return;
         }
@@ -53,7 +53,7 @@ class AWPCP_SendListingToFacebookAdminPage extends AWPCP_ListingActionAdminPage 
             try {
                 call_user_func( array( $this, 'send_listing_to_facebook_' . $destination ), $listing );
             } catch ( AWPCP_Exception $exception ) {
-                $message = _x( 'There was an error trying to send the listing %s to a %s.', '... <listing-title> to a <Facebook Group/Page>', 'AWPCP' );
+                $message = _x( 'There was an error trying to send the listing %s to a %s.', '... <listing-title> to a <Facebook Group/Page>', 'another-wordpress-classifieds-plugin' );
                 $message = sprintf( $message, '<strong>' . $listing->get_title() . '</strong>', $label );
 
                 $this->errors[] = $message . ' ' . $exception->format_errors();
@@ -77,7 +77,7 @@ class AWPCP_SendListingToFacebookAdminPage extends AWPCP_ListingActionAdminPage 
         $listings_failed = array_sum( $this->failed );
 
         if ( ( $listings_processed + $listings_failed ) == 0 ) {
-            awpcp_flash( __( 'No Ads were selected', 'AWPCP' ), 'error' );
+            awpcp_flash( __( 'No Ads were selected', 'another-wordpress-classifieds-plugin' ), 'error' );
         } else {
             $this->show_send_to_facebook_page_results();
             $this->show_send_to_facebook_group_results();
@@ -85,7 +85,7 @@ class AWPCP_SendListingToFacebookAdminPage extends AWPCP_ListingActionAdminPage 
 
         if ( $listings_processed == 0 && $listings_failed > 0 && ! empty( $this->errors ) ) {
             $link = '<a href="' . admin_url( 'admin.php?page=awpcp-admin-settings&g=facebook-settings' ) . '">';
-            $message = __( 'There were errors trying to Send Ads to Facebook, perhaps your credentials are invalid or have expired. Please check your <a>settings</a>. If your token expired, please try to get a new access token from Facebook using the link in step 2 of the settings.', 'AWPCP' );
+            $message = __( 'There were errors trying to Send Ads to Facebook, perhaps your credentials are invalid or have expired. Please check your <a>settings</a>. If your token expired, please try to get a new access token from Facebook using the link in step 2 of the settings.', 'another-wordpress-classifieds-plugin' );
             $this->errors[] = str_replace( '<a>', $link, $message );
         }
 
@@ -95,17 +95,17 @@ class AWPCP_SendListingToFacebookAdminPage extends AWPCP_ListingActionAdminPage 
     }
 
     private function show_send_to_facebook_page_results() {
-        $success_message = _n( '%d Ad was sent to a Facebook Page', '%d Ads were sent to a Facebook Page', $this->successful['page'], 'AWPCP' );
+        $success_message = _n( '%d Ad was sent to a Facebook Page', '%d Ads were sent to a Facebook Page', $this->successful['page'], 'another-wordpress-classifieds-plugin' );
         $success_message = sprintf( $success_message, $this->successful['page'] );
-        $error_message = sprintf( __('there was an error trying to send %d Ads to a Facebook Page', 'AWPCP'), $this->failed['page'] );
+        $error_message = sprintf( __('there was an error trying to send %d Ads to a Facebook Page', 'another-wordpress-classifieds-plugin'), $this->failed['page'] );
 
         $this->show_bulk_operation_result_message( $this->successful['page'], $this->failed['page'], $success_message, $error_message );
     }
 
     private function show_send_to_facebook_group_results() {
-        $success_message = _n( '%d Ad was sent to a Facebook Group', '%d Ads were sent to a Facebook Group', $this->successful['group'], 'AWPCP' );
+        $success_message = _n( '%d Ad was sent to a Facebook Group', '%d Ads were sent to a Facebook Group', $this->successful['group'], 'another-wordpress-classifieds-plugin' );
         $success_message = sprintf( $success_message, $this->successful['group'] );
-        $error_message = sprintf( __('there was an error trying to send %d Ads to a Facebook Group', 'AWPCP'), $this->failed['group'] );
+        $error_message = sprintf( __('there was an error trying to send %d Ads to a Facebook Group', 'another-wordpress-classifieds-plugin'), $this->failed['group'] );
 
         $this->show_bulk_operation_result_message( $this->successful['group'], $this->failed['group'], $success_message, $error_message );
     }

@@ -41,7 +41,7 @@ class AWPCP_UploadGeneratedThumbnailAjaxHandler extends AWPCP_AjaxHandler {
         $media = $this->media->find_by_id( $this->request->post( 'file' ) );
 
         if ( is_null( $media ) ) {
-            throw new AWPCP_Exception( __( 'Trying to upload a thumbnail for an unknown file.', 'AWPCP' ) );
+            throw new AWPCP_Exception( __( 'Trying to upload a thumbnail for an unknown file.', 'another-wordpress-classifieds-plugin' ) );
         }
 
         $listing = $this->listings->get( $media->ad_id );
@@ -69,7 +69,7 @@ class AWPCP_UploadGeneratedThumbnailAjaxHandler extends AWPCP_AjaxHandler {
         if ( $was_thumbnail_created ) {
             return $this->success( array( 'thumbnailUrl' => $media->get_thumbnail_url() ) );
         } else {
-            $message = __( 'There was an error trying to store the uploaded thumbnail for file <filename>.', 'AWPCP' );
+            $message = __( 'There was an error trying to store the uploaded thumbnail for file <filename>.', 'another-wordpress-classifieds-plugin' );
             $message = str_replace( '<filename>', $media->name, $message );
             return $this->multiple_errors_response( $message );
         }
@@ -79,7 +79,7 @@ class AWPCP_UploadGeneratedThumbnailAjaxHandler extends AWPCP_AjaxHandler {
         $thumbnail = $this->request->post( 'thumbnail' );
 
         if ( ! preg_match( '/data:([^;]*);base64,(.*)/', $thumbnail, $matches ) ) {
-            throw new AWPCP_Exception( __( 'No thumbnail data found.', 'AWPCP' ) );
+            throw new AWPCP_Exception( __( 'No thumbnail data found.', 'another-wordpress-classifieds-plugin' ) );
         }
 
         $uploads_dir = $this->settings->get_runtime_option( 'awpcp-uploads-dir' );

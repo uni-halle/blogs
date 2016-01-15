@@ -115,10 +115,13 @@ if ( ! class_exists( 'Tribe__Events__Query' ) ) {
 				? true // this is an event query of some type
 				: false; // move along, this is not the query you are looking for
 
-			// is the query pulling posts from the past
-			if ( $query->is_main_query() && ! empty( $_REQUEST['tribe_event_display'] ) && $_REQUEST['tribe_event_display'] == 'past' ) {
+			// is the query pulling posts from the past?
+			$past_requested = ! empty( $_REQUEST['tribe_event_display'] ) && 'past' === $_REQUEST['tribe_event_display'];
+			$display_past   = 'past' === $query->get( 'eventDisplay' );
+
+			if ( $query->is_main_query() && $past_requested ) {
 				$query->tribe_is_past = true;
-			} elseif ( tribe_is_ajax_view_request() && $query->get( 'eventDisplay' ) == 'past' ) {
+			} elseif ( tribe_is_ajax_view_request() && ( $display_past || $past_requested ) ) {
 				$query->tribe_is_past = true;
 			} elseif ( $query->get( 'tribe_is_past' ) ) {
 				$query->tribe_is_past = true;
@@ -164,7 +167,7 @@ if ( ! class_exists( 'Tribe__Events__Query' ) ) {
 				do_action( 'log', 'multi_posttype', 'default', $query->tribe_is_multi_posttype );
 				add_filter( 'posts_fields', array( __CLASS__, 'multi_type_posts_fields' ), 10, 2 );
 				add_filter( 'posts_join', array( __CLASS__, 'posts_join' ), 10, 2 );
-				add_filter( 'posts_join', array( __CLASS__, 'posts_join_orderby' ), 10, 2 );
+				add_filter( 'posts_join', array( __CLASS__, 'posts_join_venue_organizer' ), 10, 2 );
 				add_filter( 'posts_distinct', array( __CLASS__, 'posts_distinct' ) );
 				add_filter( 'posts_orderby', array( __CLASS__, 'posts_orderby' ), 10, 2 );
 				do_action( 'tribe_events_pre_get_posts', $query );
@@ -177,7 +180,7 @@ if ( ! class_exists( 'Tribe__Events__Query' ) ) {
 				if ( ! ( $query->is_main_query() && 'month' === $query->get( 'eventDisplay' ) ) ) {
 					add_filter( 'posts_fields', array( __CLASS__, 'posts_fields' ), 10, 2 );
 					add_filter( 'posts_join', array( __CLASS__, 'posts_join' ), 10, 2 );
-					add_filter( 'posts_join', array( __CLASS__, 'posts_join_orderby' ), 10, 2 );
+					add_filter( 'posts_join', array( __CLASS__, 'posts_join_venue_organizer' ), 10, 2 );
 					add_filter( 'posts_where', array( __CLASS__, 'posts_where' ), 10, 2 );
 					add_filter( 'posts_distinct', array( __CLASS__, 'posts_distinct' ) );
 				} else {
@@ -499,30 +502,6 @@ if ( ! class_exists( 'Tribe__Events__Query' ) ) {
 		}
 
 		/**
-		 * Custom SQL join for orderby
-		 *
-		 * @param string   $join_sql
-		 * @param wp_query $query
-		 *
-		 * @return string
-		 */
-		public static function posts_join_orderby( $join_sql, $query ) {
-			global $wpdb;
-			switch ( $query->get( 'orderby' ) ) {
-				case 'venue':
-					$join_sql .= " LEFT JOIN {$wpdb->postmeta} tribe_order_by_venue_meta ON {$wpdb->posts}.ID = tribe_order_by_venue_meta.post_id AND tribe_order_by_venue_meta.meta_key='_EventVenueID' LEFT JOIN {$wpdb->posts} tribe_order_by_venue ON tribe_order_by_venue_meta.meta_value = tribe_order_by_venue.ID ";
-					break;
-				case 'organizer':
-					$join_sql .= " LEFT JOIN {$wpdb->postmeta} tribe_order_by_organizer_meta ON {$wpdb->posts}.ID = tribe_order_by_organizer_meta.post_id AND tribe_order_by_organizer_meta.meta_key='_EventOrganizerID' LEFT JOIN {$wpdb->posts} tribe_order_by_organizer ON tribe_order_by_organizer_meta.meta_value = tribe_order_by_organizer.ID ";
-					break;
-				default:
-					break;
-			}
-
-			return apply_filters( 'tribe_events_query_posts_join_orderby', $join_sql );
-		}
-
-		/**
 		 * Custom SQL conditional for event duration meta field
 		 *
 		 * @param string   $where_sql
@@ -669,26 +648,23 @@ if ( ! class_exists( 'Tribe__Events__Query' ) ) {
 		 */
 		public static function posts_orderby( $order_sql, $query ) {
 			global $wpdb;
-			$postmeta_table = self::postmeta_table( $query );
 
 			if ( $query->tribe_is_event || $query->tribe_is_event_category ) {
-				$order   = ( isset( $query->order ) && ! empty( $query->order ) ) ? $query->order : $query->get( 'order' );
-				$orderby = ( isset( $query->orderby ) && ! empty( $query->orderby ) ) ? $query->orderby : $query->get( 'orderby' );
+				$order   = ( isset( $query->query_vars['order'] ) && ! empty( $query->query_vars['order'] ) ) ? $query->query_vars['order'] : $query->get( 'order' );
+				$orderby = ( isset( $query->query_vars['orderby'] ) && ! empty( $query->query_vars['orderby'] ) ) ? $query->query_vars['orderby'] : $query->get( 'orderby' );
 
-//				$order_sql = "DATE(MIN({$postmeta_table}.meta_value)) {$order}, TIME({$postmeta_table}.meta_value) {$order}";
 				if ( self::can_inject_date_field( $query ) ) {
+					$old_orderby = $order_sql;
 					$order_sql = "EventStartDate {$order}";
+
+					if ( $old_orderby ) {
+						$order_sql .= ", {$old_orderby}";
+					}
 				}
 
 				do_action( 'log', 'orderby', 'default', $orderby );
 
 				switch ( $orderby ) {
-					case 'venue':
-						$order_sql = "tribe_order_by_venue.post_title {$order}, " . $order_sql;
-						break;
-					case 'organizer':
-						$order_sql = "tribe_order_by_organizer.post_title {$order}, " . $order_sql;
-						break;
 					case 'title':
 						$order_sql = "{$wpdb->posts}.post_title {$order}, " . $order_sql;
 						break;
@@ -716,6 +692,100 @@ if ( ! class_exists( 'Tribe__Events__Query' ) ) {
 			$order_sql = apply_filters( 'tribe_events_query_posts_orderby', $order_sql, $query );
 
 			return $order_sql;
+		}
+
+		/**
+		 * Adds a custom SQL join when ordering by venue or organizer is desired.
+		 *
+		 * @param string   $join_sql
+		 * @param wp_query $query
+		 *
+		 * @return string
+		 */
+		public static function posts_join_venue_organizer( $join_sql, $query ) {
+			global $wpdb;
+
+			switch ( $query->get( 'orderby' ) ) {
+				case 'venue':
+					$join_sql .= " LEFT JOIN {$wpdb->postmeta} tribe_order_by_venue_meta ON {$wpdb->posts}.ID = tribe_order_by_venue_meta.post_id AND tribe_order_by_venue_meta.meta_key='_EventVenueID' LEFT JOIN {$wpdb->posts} tribe_order_by_venue ON tribe_order_by_venue_meta.meta_value = tribe_order_by_venue.ID ";
+					break;
+				case 'organizer':
+					$join_sql .= " LEFT JOIN {$wpdb->postmeta} tribe_order_by_organizer_meta ON {$wpdb->posts}.ID = tribe_order_by_organizer_meta.post_id AND tribe_order_by_organizer_meta.meta_key='_EventOrganizerID' LEFT JOIN {$wpdb->posts} tribe_order_by_organizer ON tribe_order_by_organizer_meta.meta_value = tribe_order_by_organizer.ID ";
+					break;
+				default:
+					return $join_sql;
+					break;
+			}
+
+			/**
+			 * Ensures we add the matching corresponding code to the order clause.
+			 *
+			 * We use posts_clauses (as opposed to posts_orderby) in this case to avoid
+			 * it being overwritten by Tribe__Events__Admin_List methods.
+			 *
+			 * @see Tribe__Events__Admin_List
+			 */
+			add_filter( 'posts_clauses', array( __CLASS__, 'posts_orderby_venue_organizer' ), 100, 2 );
+
+			if ( has_filter( 'tribe_events_query_posts_join_orderby' ) ) {
+				/**
+				 * Historically this filter has only been useful to modify the joins setup
+				 * in relation to organizers and venues. In future it may have a more general
+				 * application or may be removed.
+				 *
+				 * @deprecated since 4.0.2
+				 *
+				 * @var string $join_sql
+				 */
+				$join_sql = apply_filters( 'tribe_events_query_posts_join_orderby', $join_sql );
+
+				_doing_it_wrong(
+					'tribe_events_query_posts_join_orderby (filter)',
+					'To modify joins in relation to venues and organizers specifically you are encouraged to use the tribe_events_query_posts_join_venue_organizer hook.',
+					'4.0.2'
+				);
+			}
+
+			/**
+			 * Provides an opportunity to modify the join condition added to the query when
+			 * ordering by venue or organizer.
+			 *
+			 * @var string $join_sql
+			 */
+			return apply_filters( 'tribe_events_query_posts_join_venue_organizer', $join_sql );
+		}
+
+		/**
+		 * Appends the necessary conditions to the order clause to sort by either venue or
+		 * organizer.
+		 *
+		 * @param  array    $clauses
+		 * @param  WP_Query $query
+		 * @return string
+		 */
+		public static function posts_orderby_venue_organizer( array $clauses, $query ) {
+			// This filter has to be added for every individual query that requires it
+			remove_filter( 'posts_clauses', array( __CLASS__, 'posts_orderby_venue_organizer' ), 100 );
+
+			$order   = ( isset( $query->order ) && ! empty( $query->order ) ) ? $query->order : $query->get( 'order' );
+			$orderby = ( isset( $query->orderby ) && ! empty( $query->orderby ) ) ? $query->orderby : $query->get( 'orderby' );
+
+			switch ( $orderby ) {
+				case 'venue':
+					$clauses['orderby'] = "tribe_order_by_venue.post_title {$order}, " . $clauses['orderby'];
+					break;
+				case 'organizer':
+					$clauses['orderby'] = "tribe_order_by_organizer.post_title {$order}, " . $clauses['orderby'];
+					break;
+				default:
+					return $clauses;
+					break;
+			}
+
+			// Trim trailing characters
+			$clauses['orderby'] = trim( $clauses['orderby'], ", \t\n\r\0\x0B" );
+
+			return $clauses;
 		}
 
 		/**
@@ -935,13 +1005,13 @@ if ( ! class_exists( 'Tribe__Events__Query' ) ) {
 		 * @return string
 		 **/
 		private static function postmeta_table( $query ) {
-
+			/** @var \wpdb $wpdb */
 			global $wpdb;
+			$postmeta_table = $wpdb->postmeta;
 
 			if ( ! $query->tribe_is_multi_posttype ) {
-				return $wpdb->postmeta;
+				return $postmeta_table;
 			}
-
 
 			$qv = $query->query_vars;
 
@@ -962,7 +1032,6 @@ if ( ! class_exists( 'Tribe__Events__Query' ) ) {
 			}
 
 			return $postmeta_table;
-
 		}
 
 		/**

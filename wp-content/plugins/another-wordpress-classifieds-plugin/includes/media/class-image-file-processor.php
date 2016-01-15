@@ -53,7 +53,7 @@ class AWPCP_ImageFileProcessor {
 
     private function make_intermediate_image_size( $file, $destination_dir, $width, $height, $crop = false, $suffix='' ) {
         if ( ! file_exists( $destination_dir ) && ! mkdir( $destination_dir, awpcp_directory_permissions(), true ) ) {
-            throw new AWPCP_Exception( __( "Destination directory doesn't exists and couldn't be created.", 'AWPCP' ) );
+            throw new AWPCP_Exception( __( "Destination directory doesn't exists and couldn't be created.", 'another-wordpress-classifieds-plugin' ) );
         }
 
         $image = image_make_intermediate_size( $file->get_path(), $width, $height, $crop );

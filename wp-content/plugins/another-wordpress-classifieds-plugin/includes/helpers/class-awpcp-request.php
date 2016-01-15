@@ -155,7 +155,12 @@ class AWPCP_Request {
     }
 
     public function is_bot() {
+        if ( ! isset( $_SERVER['HTTP_USER_AGENT'] ) ) {
+            return false;
+        }
+
         $regexp = '/' . implode( '|', self::$bot_user_agents_keywords ) . '/';
+
         return (bool) preg_match( $regexp, strtolower( $_SERVER['HTTP_USER_AGENT'] ) );
     }
 }

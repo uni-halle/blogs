@@ -80,7 +80,7 @@ function awpcp_get_ad_location($ad_id, $country=false, $county=false, $state=fal
 	}
 
 	if (!empty($places)) {
-		$location = sprintf('%s: %s', __("Location","AWPCP"), join(', ', $places));
+		$location = sprintf('%s: %s', __("Location",'another-wordpress-classifieds-plugin'), join(', ', $places));
 	} else {
 		$location = '';
 	}
@@ -112,9 +112,9 @@ function showad( $adid=null, $omitmenu=false, $preview=false, $send_email=true, 
     $awpcp->js->set( 'page-show-ad-flag-ad-nonce', wp_create_nonce('flag_ad') );
 
     $awpcp->js->localize( 'page-show-ad', array(
-        'flag-confirmation-message' => __( 'Are you sure you want to flag this ad?', 'AWPCP' ),
-        'flag-success-message' => __( 'This Ad has been flagged.', 'AWPCP' ),
-        'flag-error-message' => __( 'An error occurred while trying to flag the Ad.', 'AWPCP' )
+        'flag-confirmation-message' => __( 'Are you sure you want to flag this ad?', 'another-wordpress-classifieds-plugin' ),
+        'flag-success-message' => __( 'This Ad has been flagged.', 'another-wordpress-classifieds-plugin' ),
+        'flag-error-message' => __( 'An error occurred while trying to flag the Ad.', 'another-wordpress-classifieds-plugin' )
     ) );
 
 	$preview = $preview === true || 'preview' == awpcp_array_data('adstatus', '', $_GET);
@@ -139,10 +139,9 @@ function showad( $adid=null, $omitmenu=false, $preview=false, $send_email=true, 
 	if (!empty($adid)) {
 		// filters to provide alternative method of storing custom
 		// layouts (e.g. can be outside of this plugin's directory)
-		$prefix = 'awpcp_single_ad_template';
-		if (has_action("{$prefix}_action") || has_filter("{$prefix}_filter")) {
-			do_action("{$prefix}_action");
-			return apply_filters("{$prefix}_filter");
+		if ( has_action( 'awpcp_single_ad_template_action' ) || has_filter( 'awpcp_single_ad_template_filter' ) ) {
+			do_action( 'awpcp_single_ad_template_action' );
+			return apply_filters( 'awpcp_single_ad_template_filter' );
 
 		} else {
 			$results = AWPCP_Ad::query( array( 'where' => $wpdb->prepare( 'ad_id = %d', $adid ) ) );
@@ -153,7 +152,7 @@ function showad( $adid=null, $omitmenu=false, $preview=false, $send_email=true, 
 			}
 
 			if (is_null($ad)) {
-				$message = __( 'Sorry, that listing is not available. Please try browsing or searching existing listings.', 'AWPCP' );
+				$message = __( 'Sorry, that listing is not available. Please try browsing or searching existing listings.', 'another-wordpress-classifieds-plugin' );
 				return '<div id="classiwrapper">' . awpcp_print_error($message) . '</div><!--close classiwrapper-->';
 			}
 
@@ -170,22 +169,22 @@ function showad( $adid=null, $omitmenu=false, $preview=false, $send_email=true, 
 			$output = sprintf( $output, $content_before_page, $omitmenu ? '' : awpcp_menu_items(), $content_after_page );
 
 			if (!$is_moderator && !$is_ad_owner && !$preview && $ad->disabled == 1) {
-				$message = __('The Ad you are trying to view is pending approval. Once the Administrator approves it, it will be active and visible.', 'AWPCP');
+				$message = __('The Ad you are trying to view is pending approval. Once the Administrator approves it, it will be active and visible.', 'another-wordpress-classifieds-plugin');
 				return str_replace( '<!--awpcp-single-ad-layout-->', awpcp_print_error( $message ), $output );
 			}
 
 			if ( awpcp_request_param('verified') && $ad->verified ) {
-				$messages[] = awpcp_print_message( __( 'Your email address was successfully verified.', 'AWPCP' ) );
+				$messages[] = awpcp_print_message( __( 'Your email address was successfully verified.', 'another-wordpress-classifieds-plugin' ) );
 			}
 
 			if ($show_messages && $is_moderator && $ad->disabled == 1) {
-				$message = __('This Ad is currently disabled until the Administrator approves it. Only you (the Administrator) and the author can see it.', 'AWPCP');
+				$message = __('This Ad is currently disabled until the Administrator approves it. Only you (the Administrator) and the author can see it.', 'another-wordpress-classifieds-plugin');
 				$messages[] = awpcp_print_error($message);
 			} else if ( $show_messages && ( $is_ad_owner || $preview ) && ! $ad->verified ) {
-				$message = __('This Ad is currently disabled until you verify the email address used for the contact information. Only you (the author) can see it.', 'AWPCP');
+				$message = __('This Ad is currently disabled until you verify the email address used for the contact information. Only you (the author) can see it.', 'another-wordpress-classifieds-plugin');
 				$messages[] = awpcp_print_error($message);
 			} else if ( $show_messages && ( $is_ad_owner || $preview ) && $ad->disabled == 1 ) {
-				$message = __('This Ad is currently disabled until the Administrator approves it. Only you (the author) can see it.', 'AWPCP');
+				$message = __('This Ad is currently disabled until the Administrator approves it. Only you (the author) can see it.', 'another-wordpress-classifieds-plugin');
 				$messages[] = awpcp_print_error($message);
 			}
 

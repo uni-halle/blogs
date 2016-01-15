@@ -6,7 +6,7 @@
  */
 class AWPCP_Facebook {
 
-    const GRAPH_API_VERSION = 'v2.3';
+    const GRAPH_API_VERSION = 'v2.4';
 
 	private static $instance = null;
     private $access_token = '';
@@ -28,12 +28,12 @@ class AWPCP_Facebook {
         $app_access_token = '';
 
         if ( !$app_id || !$app_secret ) {
-            $errors[] = __( 'Missing App ID an Secret.', 'AWPCP' );
+            $errors[] = __( 'Missing App ID and Secret.', 'another-wordpress-classifieds-plugin' );
             return;
         }
 
         if ( ! $user_id || ! $user_token ) {
-            $errors[] = __( 'Missing a valid User Access Token.', 'AWPCP' );
+            $errors[] = __( 'Missing a valid User Access Token.', 'another-wordpress-classifieds-plugin' );
             return;
         }
 
@@ -46,7 +46,7 @@ class AWPCP_Facebook {
         }
 
         if ( ! $response || ! isset( $response->data ) ) {
-            $errors[] = __( 'Could not validate User Access Token. Are you connected to the internet?', 'AWPCP' );
+            $errors[] = __( 'Could not validate User Access Token. Are you connected to the internet?', 'another-wordpress-classifieds-plugin' );
             return;
         }
 
@@ -59,12 +59,12 @@ class AWPCP_Facebook {
         }
 
         if ( ! in_array( 'manage_pages', $permissions ) || ( ! in_array( 'publish_pages', $permissions ) && ! in_array( 'publish_actions', $permissions ) ) ) {
-            $errors[] = __( 'User Access Token is valid but doesn\'t have the permissions required for AWPCP integration (publish_pages, publis_actions and manage_pages).', 'AWPCP' );
+            $errors[] = __( 'User Access Token is valid but doesn\'t have the permissions required for AWPCP integration (publish_pages, publis_actions and manage_pages).', 'another-wordpress-classifieds-plugin' );
             return;
         }
 
         if ( !$page_token || !$page_id ) {
-            $errors[] = __( 'No Facebook page is selected (missing page id or token).', 'AWPCP' );
+            $errors[] = __( 'No Facebook page is selected (missing page id or token).', 'another-wordpress-classifieds-plugin' );
         }
     }
 

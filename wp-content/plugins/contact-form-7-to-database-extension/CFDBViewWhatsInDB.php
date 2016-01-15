@@ -34,7 +34,7 @@ class CFDBViewWhatsInDB extends CFDBView {
 
         global $wpdb;
         $tableName = $plugin->getSubmitsTableName();
-        $useDataTables = $plugin->getOption('UseDataTablesJS', 'true') == 'true';
+        $useDataTables = $plugin->getOption('UseDataTablesJS', 'true', true) == 'true';
         $tableHtmlId = 'cf2dbtable';
 
         // Identify which forms have data in the database
@@ -293,7 +293,7 @@ class CFDBViewWhatsInDB extends CFDBView {
                 }
                 $menuJS = $this->createDatatableLengthMenuJavascriptString($maxVisible);
 
-                $sScrollX = $plugin->getOption('HorizontalScroll', 'true') == 'true' ? '"100%"' : '""';
+                $sScrollX = $plugin->getOption('HorizontalScroll', 'true', true) == 'true' ? '"100%"' : '""';
                 ?>
             <script type="text/javascript" language="Javascript">
                 var oTable;
@@ -336,7 +336,7 @@ class CFDBViewWhatsInDB extends CFDBView {
             <?php
                 $exporter = new ExportToHtmlTable();
             $dbRowCount = $exporter->getDBRowCount($currSelection);
-            $maxRows = $plugin->getOption('MaxRows', '100');
+            $maxRows = $plugin->getOption('MaxRows', '100', true);
             $startRow = $this->paginationDiv($plugin, $dbRowCount, $maxRows, $page);
             ?>
             <div <?php if (!$useDataTables) echo 'style="overflow:auto; max-height:500px; max-width:500px; min-width:75px"' ?>>
@@ -381,10 +381,18 @@ class CFDBViewWhatsInDB extends CFDBView {
             <tr>
                 <td align="center" colspan="4">
                     <span style="font-size:x-small; font-style: italic;">
-                        <?php echo htmlspecialchars(__('Did you know: This plugin captures data from both these plugins:', 'contact-form-7-to-database-extension')); ?>
+                        <?php echo htmlspecialchars(__('Did you know: This plugin captures data from these plugins:', 'contact-form-7-to-database-extension')); ?>
+                        <br/>
                         <a target="_cf7" href="http://wordpress.org/extend/plugins/contact-form-7/">Contact Form 7</a>,
                         <a target="_fscf" href="http://wordpress.org/extend/plugins/si-contact-form/">Fast Secure Contact Form</a>,
-                        <a target="_jetpack" href="http://wordpress.org/extend/plugins/jetpack/">JetPack Contact Form</a>
+                        <a target="_jetpack" href="http://wordpress.org/extend/plugins/jetpack/">JetPack Contact Form</a>,
+                        <a target="_gravityforms" href="https://wordpress.org/plugins/tags/gravity-forms/">Gravity Forms</a>,
+                        <a target="_wr" href="https://wordpress.org/plugins/wr-contactform/">WR ContactForm</a>,
+                        <a target="_formidable" href="https://wordpress.org/plugins/formidable/">Formidable Forms (BETA)</a>,
+                        <a target="_quform" href="http://codecanyon.net/item/quform-wordpress-form-builder/706149/">Quform (BETA)</a>,
+                        <a target="_ninjaforms" href="https://wordpress.org/plugins/ninja-forms/">Ninja Forms (BETA)</a>,
+                        <a target="_caldera" href="https://wordpress.org/plugins/caldera-forms/">Caldera Forms (BETA)</a>
+                        <a target="_cf2" href="https://wordpress.org/plugins/cforms2/">CFormsII Forms (BETA)</a>
                     </span>
                 </td>
             </tr>
@@ -415,7 +423,7 @@ class CFDBViewWhatsInDB extends CFDBView {
         </table>
     </div>
     <?php
-           if ($currSelection && 'true' == $plugin->getOption('ShowQuery')) {
+           if ($currSelection && 'true' == $plugin->getOption('ShowQuery', 'false', true)) {
             ?>
         <div id="query" style="margin: 20px; border: dotted #d3d3d3 1pt;">
             <strong><?php echo htmlspecialchars(__('Query:', 'contact-form-7-to-database-extension')); ?></strong><br/>

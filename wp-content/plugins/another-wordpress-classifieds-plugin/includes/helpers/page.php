@@ -47,7 +47,7 @@ class AWPCP_Page {
                 $content = ob_get_contents();
             ob_end_clean();
         } else {
-            $content = __('Template not found.', 'AWPCP');
+            $content = __('Template not found.', 'another-wordpress-classifieds-plugin');
         }
 
         ob_start();

@@ -24,7 +24,10 @@ function( $, ko, FileViewModel, settings ) {
         vm.getFileCSSClasses = getFileCSSClasses;
         vm.getFileId = getFileId;
 
+        $.subscribe( '/file/added', onFileAdded );
         $.subscribe( '/file/uploaded', onFileUploaded );
+        $.subscribe( '/file/progress', onUploadProgress );
+        $.subscribe( '/file/failed', onUploadFailed );
         $.subscribe( '/file/thumbnail-updated', onFileThumbnailUpdated );
 
         function prepareFiles( files ) {
@@ -196,8 +199,52 @@ function( $, ko, FileViewModel, settings ) {
             return 'file-' + file.id;
         }
 
+        function onFileAdded( event, file ) {
+            vm.files.push( new FileViewModel( {
+                id: file.id,
+                name: file.name,
+                mimeType: file.type,
+                status: 'Approved',
+                progress: file.percent
+            } ) );
+        }
+
+        function onUploadProgress( event, plupload, pluploadFile ) {
+            $.each( vm.files(), function( index, file ) {
+                if ( file.id === pluploadFile.id ) {
+                    file.progress( pluploadFile.percent );
+                }
+            } );
+        }
+
         function onFileUploaded( event, pluploadFile, fileInfo ) {
-            vm.files.push( new FileViewModel( fileInfo ) );
+            var pluploadFilePosition = null;
+
+            $.each( vm.files(), function( index, file ) {
+                if ( file.id === pluploadFile.id ) {
+                    pluploadFilePosition = index;
+                }
+            } );
+
+            if ( pluploadFilePosition != null ) {
+                vm.files.splice( pluploadFilePosition, 1, new FileViewModel( fileInfo ) );
+            } else {
+                vm.files.push( new FileViewModel( fileInfo ) );
+            }
+        }
+
+        function onUploadFailed( event, pluploadFile ) {
+            var pluploadFilePosition = null;
+
+            $.each( vm.files(), function( index, file ) {
+                if ( file.id === pluploadFile.id ) {
+                    pluploadFilePosition = index;
+                }
+            } );
+
+            if ( pluploadFilePosition != null ) {
+                vm.files.splice( pluploadFilePosition, 1 );
+            }
         }
 
         function onFileThumbnailUpdated( event, pluploadFile, fileInfo, thumbnailUrl ) {

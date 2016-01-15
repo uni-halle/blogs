@@ -1736,7 +1736,8 @@ function powerpress_admin_menu()
 			
 			add_options_page( __('PowerPress', 'powerpress'), __('PowerPress', 'powerpress'), POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_basic.php', 'powerpress_admin_page_basic');
 			
-			add_submenu_page('powerpress/powerpressadmin_basic.php', __('Migrate to Blubrry Podcast Media Hosting', 'powerpress'), __('Migrate Media', 'powerpress') .' '. powerpressadmin_new('font-weight: bold; color: #ffffff;') , POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_migrate.php', 'powerpress_admin_page_migrate');
+			add_submenu_page('powerpress/powerpressadmin_basic.php', __('Import podcast feed from SoundCloud, LibSyn, PodBean or other podcast service.', 'powerpress'), __('Import Podcast', 'powerpress') .' '. powerpressadmin_new('font-weight: bold; color: #ffffff;') , POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_import_feed.php', 'powerpress_admin_page_import_feed');
+			add_submenu_page('powerpress/powerpressadmin_basic.php', __('Migrate media files to Blubrry Podcast Media Hosting with only a few clicks.', 'powerpress'), __('Migrate Media', 'powerpress') .' '. powerpressadmin_new('font-weight: bold; color: #ffffff;') , POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_migrate.php', 'powerpress_admin_page_migrate');
 			add_submenu_page('powerpress/powerpressadmin_basic.php', __('PowerPress Podcasting SEO', 'powerpress'), '<span style="color:#f18500">'. __('Podcasting SEO', 'powerpress') .'</span> '.powerpressadmin_new('font-weight: bold; color: #ffffff;') .'', POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_search.php', 'powerpress_admin_page_search');
 			
 			add_submenu_page('powerpress/powerpressadmin_basic.php', __('PowerPress Audio Player Options', 'powerpress'), __('Audio Player', 'powerpress'), POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_player.php', 'powerpress_admin_page_players');
@@ -3056,6 +3057,14 @@ function powerpress_admin_page_migrate()
 	powerpress_admin_page_header('powerpress/powerpressadmin_migrate.php');
 	require_once( POWERPRESS_ABSPATH .'/powerpressadmin-migrate.php');
 	powerpress_admin_migrate();
+	powerpress_admin_page_footer(false);
+}
+
+function powerpress_admin_page_import_feed()
+{
+	powerpress_admin_page_header('powerpress/powerpressadmin_import_feed.php');
+	require_once( POWERPRESS_ABSPATH .'/powerpressadmin-import-feed.php');
+	powerpress_admin_import_feed();
 	powerpress_admin_page_footer(false);
 }
 
@@ -4447,7 +4456,7 @@ function powerpresspartner_clammr_info($Settings=true)
 <img src="<?php echo powerpress_get_root_url(); ?>images/clammr.png" style="width: 30px; height: 30px; position: absolute; top: 0; left: -34px;" />
 <?php echo __('Clammr Player PowerPress Add-on', 'powerpress'); ?>  <?php echo powerpressadmin_new(); ?></h3> 
 <p style="margin-left: 50px;">
-	<?php echo __('Blubrry has partnered with Clammr to enable a social-themed audio player for your site. As visitors listen to your podcast, they can tap the integrated Clammr Button to tag their favorite highlights and share them to Facebook and Twitter. The shared highligths contain links back to you full audio and site, driving additional audience and traffic to you.', 'powerpress'); ?>
+	<?php echo __('Blubrry has partnered with Clammr to enable a social-themed audio player for your site. As visitors listen to your podcast, they can tap the integrated Clammr Button to tag their favorite highlights and share them to Facebook and Twitter. The shared highlights contain links back to your full audio and site, driving additional audience and traffic to you.', 'powerpress'); ?>
 </p>
 <?php if( $Settings ) { if( $ClammrPluginEnabled == false ) {
 
@@ -4471,4 +4480,8 @@ $PowerPressClammr = get_option('powerpress_clammr');
 require_once( POWERPRESS_ABSPATH .'/powerpressadmin-jquery.php');
 // Only include the dashboard when appropriate.
 require_once( POWERPRESS_ABSPATH .'/powerpressadmin-dashboard.php');
+
+if( defined('WP_LOAD_IMPORTERS') ) {
+	require_once( POWERPRESS_ABSPATH .'/powerpressadmin-rss-import.php');
+}
 

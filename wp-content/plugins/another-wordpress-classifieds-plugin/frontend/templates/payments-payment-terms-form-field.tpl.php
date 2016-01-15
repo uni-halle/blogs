@@ -1,5 +1,5 @@
 <?php if ( $show_payment_terms ): ?>
-    <h3><?php _e( 'Please select a payment term for your Ad', 'AWPCP' ); ?></h3>
+    <h3><?php _e( 'Please select a payment term for your Ad', 'another-wordpress-classifieds-plugin' ); ?></h3>
 
     <?php echo awpcp_form_error( 'payment-term', $form_errors ); ?>
     <?php echo $table->render(); ?>
@@ -9,5 +9,5 @@
     <?php $items = $table->get_items(); ?>
     <?php $value = $table->item_id( $items[0], array_shift( $accepted_payment_types ) ); ?>
     <?php $attrs = array( 'type' => 'hidden', 'name' => 'payment_term', 'value' => $value ); ?>
-    <?php echo sprintf( '<input %s>', awpcp_render_attributes( $attrs ) ); ?>
+    <?php echo sprintf( '<input %s>', awpcp_html_attributes( $attrs ) ); ?>
 <?php endif; ?>

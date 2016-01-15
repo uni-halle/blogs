@@ -13,7 +13,7 @@ class AWPCP_CategoriesDropdown {
         extract( $params = wp_parse_args( $params, array(
             'context' => 'default',
             'name' => 'category',
-            'label' => __( 'Ad Category', 'AWPCP' ),
+            'label' => __( 'Ad Category', 'another-wordpress-classifieds-plugin' ),
             'required' => true,
             'selected' => null,
             'placeholders' => array(),
@@ -21,18 +21,18 @@ class AWPCP_CategoriesDropdown {
 
         if ( $context == 'search' ) {
             $placeholders = array_merge( array(
-                'default-option-first-level' => __( 'All Categories', 'AWPCP' ),
-                'default-option-second-level' => __( 'All Sub-categories', 'AWPCP' ),
+                'default-option-first-level' => __( 'All Categories', 'another-wordpress-classifieds-plugin' ),
+                'default-option-second-level' => __( 'All Sub-categories', 'another-wordpress-classifieds-plugin' ),
             ), $placeholders );
         } else {
             if ( get_awpcp_option( 'noadsinparentcat' ) ) {
-                $second_level_option_placeholder = __( 'Select a Sub-category', 'AWPCP' );
+                $second_level_option_placeholder = __( 'Select a Sub-category', 'another-wordpress-classifieds-plugin' );
             } else {
-                $second_level_option_placeholder = __( 'Select a Sub-category (optional)', 'AWPCP' );
+                $second_level_option_placeholder = __( 'Select a Sub-category (optional)', 'another-wordpress-classifieds-plugin' );
             }
 
             $placeholders = array_merge( array(
-                'default-option-first-level' => __( 'Select a Category', 'AWPCP' ),
+                'default-option-first-level' => __( 'Select a Category', 'another-wordpress-classifieds-plugin' ),
                 'default-option-second-level' => $second_level_option_placeholder
             ), $placeholders );
         }
@@ -85,27 +85,5 @@ class AWPCP_CategoriesDropdown {
 }
 
 function awpcp_render_category_selector( $params = array() ) {
-    $browse_categories_page_url = get_permalink( awpcp_get_page_id_by_ref( 'browse-categories-page-name' ) );
-
-    $category_id = (int) awpcp_request_param( 'category_id', -1 );
-    $category_id = $category_id === -1 ? (int) get_query_var( 'cid' ) : $category_id;
-
-    $category_dropdown_params = wp_parse_args( $params, array(
-        'context' => 'search',
-        'name' => 'category_id',
-        'selected' => $category_id,
-    ) );
-
-    $hidden = array(
-        'a' => 'browsecat',
-        'results' => awpcp_request_param( 'results' ),
-        'offset' => awpcp_request_param( 'offset' ),
-    );
-
-    ob_start();
-    include( AWPCP_DIR . '/templates/frontend/category-selector.tpl.php' );
-    $output = ob_get_contents();
-    ob_end_clean();
-
-    return $output;
+    return awpcp_categories_selector_component()->render( $params );
 }

@@ -4,7 +4,7 @@ class AWPCP_2CheckoutPaymentGateway extends AWPCP_PaymentGateway {
 
     public function __construct() {
         $icon = AWPCP_URL . '/resources/images/payments-2checkout.png';
-        parent::__construct('2checkout', _x('2Checkout', 'payment gateways', 'AWPCP'), '', $icon);
+        parent::__construct('2checkout', _x('2Checkout', 'payment gateways', 'another-wordpress-classifieds-plugin'), '', $icon);
     }
 
     public function get_integration_type() {
@@ -59,7 +59,7 @@ class AWPCP_2CheckoutPaymentGateway extends AWPCP_PaymentGateway {
             return true;
 
         } else {
-            $msg=__("There appears to be a problem with your payment. Please contact the administrator if you are viewing this message after having made a payment via 2Checkout. If you have not tried to make a payment and you are viewing this message, it means this message has been sent in error and can be disregarded.","AWPCP");
+            $msg=__("There appears to be a problem with your payment. Please contact the administrator if you are viewing this message after having made a payment via 2Checkout. If you have not tried to make a payment and you are viewing this message, it means this message has been sent in error and can be disregarded.",'another-wordpress-classifieds-plugin');
             $transaction->errors['verification'][] = $msg;
             return false;
         }
@@ -93,7 +93,7 @@ class AWPCP_2CheckoutPaymentGateway extends AWPCP_PaymentGateway {
         $totals = $transaction->get_totals();
         $amount = number_format($totals['money'], 2);
         if ($amount !== $x_amount) {
-            $msg = __("The amount you have paid does not match the required amount for this transaction. Please contact us to clarify the problem.", "AWPCP");
+            $msg = __("The amount you have paid does not match the required amount for this transaction. Please contact us to clarify the problem.", 'another-wordpress-classifieds-plugin');
             $transaction->errors['validation'] = $msg;
             $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_INVALID;
             awpcp_payment_failed_email($transaction, $message);
@@ -101,7 +101,7 @@ class AWPCP_2CheckoutPaymentGateway extends AWPCP_PaymentGateway {
         }
 
         if (strcasecmp($x_Login, get_awpcp_option('2checkout')) !== 0) {
-            $msg = __("There was an error processing your transaction. If funds have been deducted from your account, they have not been processed to our account. You will need to contact PayPal about the matter.", "AWPCP");
+            $msg = __("There was an error processing your transaction. If funds have been deducted from your account, they have not been processed to our account. You will need to contact PayPal about the matter.", 'another-wordpress-classifieds-plugin');
             $transaction->errors['validation'] = $msg;
             $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_INVALID;
             awpcp_payment_failed_email($transaction, $message);
@@ -111,7 +111,7 @@ class AWPCP_2CheckoutPaymentGateway extends AWPCP_PaymentGateway {
         // TODO: handle this filter for Ads and Subscriptions
         $duplicated = apply_filters('awpcp-payments-is-duplicated-transaction', false, $txn_id);
         if ($duplicated) {
-            $msg = __("It appears this transaction has already been processed. If you do not see your ad in the system please contact the site adminstrator for assistance.", "AWPCP");
+            $msg = __("It appears this transaction has already been processed. If you do not see your ad in the system please contact the site adminstrator for assistance.", 'another-wordpress-classifieds-plugin');
             $transaction->errors['validation'] = $msg;
             $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_INVALID;
             awpcp_payment_failed_email($transaction, $message);

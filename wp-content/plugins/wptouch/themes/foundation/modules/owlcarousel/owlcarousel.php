@@ -7,14 +7,14 @@ function foundation_owlcarousel_init() {
 		'foundation_owlcarousel',
 		foundation_get_base_module_url() . '/owlcarousel/assets/owl.carousel.css',
 		'',
-		FOUNDATION_VERSION
+		md5( FOUNDATION_VERSION )
 	);
 
 	wp_enqueue_script(
 		'foundation_owlcarousel',
 		foundation_get_base_module_url() . '/owlcarousel/owl.carousel.min.js',
 		array( 'jquery' ),
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		true
 	);
 }

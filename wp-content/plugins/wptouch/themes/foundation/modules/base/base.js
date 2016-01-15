@@ -3,8 +3,8 @@
 
 // Try to get out of frames!
 function wptouchFdnEscFrames() {
-	if ( window.top != window.self ) {
-		window.top.location = self.location.href
+	if ( window.top != window.self && window.top.location.pathname.indexOf( 'customize.php' ) == '-1' ) {
+		window.top.location = self.location.href;
 	}
 }
 
@@ -92,7 +92,7 @@ function wptouchFdnUpdateOrientation() {
 }
 
 function wptouchFdnDoDeviceAndOrientationListener() {
-	jQuery( window ).resize( function() {
+	jQuery( window ).on( 'resize', function() {
 		wptouchFdnUpdateDevice();
 		wptouchFdnUpdateOrientation();
 	}).resize();
@@ -127,19 +127,8 @@ function wptouchFdnSetupShowHideToggles() {
 			jQuery( '#' + targetId ).attr( 'data-source-click', linkId ).webkitSlideToggle();
 
 			e.preventDefault();
+			e.stopImmediatePropagation();
 		});
-	});
-}
-
-function wptouchFdnCheckHideAddressBar() {
-	if ( jQuery( 'body' ).hasClass( 'hide-address-bar' ) ) {
-		window.scrollTo( 0,1 );
-	}
-}
-
-function wptouchFdnPreviewReload() {
-	jQuery( '#preview-bar' ).find( '.refresher' ).on( 'click', function() {
-		setTimeout( window.location.reload.bind( window.location ), 0 );
 	});
 }
 
@@ -176,7 +165,7 @@ function wptouchFdnSetupjQuery() {
 	    return this;
 	}
 
-	// Set the form element tabindex automagically
+	// Set form elements tabindex automagically
 	jQuery( function() {
 		var tabindex = 1;
 		jQuery( 'input, select, textarea' ).each( function() {
@@ -209,8 +198,6 @@ function wptouchFdnBaseReady() {
 	wptouchFdnDoDeviceAndOrientationListener();
 	wptouchFdnSetupBackToTopLinks();
 	wptouchFdnSetupShowHideToggles();
-	wptouchFdnCheckHideAddressBar();
-	wptouchFdnPreviewReload();
 	wptouchFdnSwitchToggle();
 	wptouchFdnHandleShortcode();
 	wptouchFdnSetupjQuery();

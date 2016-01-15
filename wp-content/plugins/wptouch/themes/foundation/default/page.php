@@ -1,6 +1,5 @@
 <?php if ( foundation_is_theme_using_module( 'custom-latest-posts' ) && wptouch_fdn_is_custom_latest_posts_page() ) { ?>
 
-	<?php wptouch_fdn_custom_latest_posts_query(); ?>
 	<?php get_template_part( 'index' ); ?>
 
 <?php } else { ?>
@@ -14,7 +13,7 @@
 		<?php } ?>
 	</div> <!-- content -->
 
-	<?php if ( wptouch_fdn_show_comments_on_pages() && ( comments_open() || have_comments() ) ) { ?>
+	<?php if ( comments_open() || have_comments() ) { ?>
 		<div id="comments">
 			<?php comments_template(); ?>
 		</div>

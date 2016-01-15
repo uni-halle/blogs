@@ -21,6 +21,6 @@ function wptouch_admin_is_checklist_option_selected() {
 			return false;
 		}
 	} else {
-		return ( isset( $settings->$setting_name ) && in_array( wptouch_admin_get_list_option_key() , $settings->$setting_name ) );
+		return ( isset( $settings->$setting_name ) && is_array( $settings->$setting_name ) && in_array( wptouch_admin_get_list_option_key() , $settings->$setting_name ) );
 	}
 }

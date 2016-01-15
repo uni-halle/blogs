@@ -21,7 +21,7 @@ class AWPCP_ListingActionAdminPage {
 
     protected function show_bulk_operation_result_message( $successful_count, $failed_count, $success_message, $error_message ) {
         if ( $successful_count > 0 && $failed_count > 0) {
-            $message = _x( '%s and %s.', 'Listing bulk operations: <message-ok> and <message-error>.', 'AWPCP' );
+            $message = _x( '%s and %s.', 'Listing bulk operations: <message-ok> and <message-error>.', 'another-wordpress-classifieds-plugin' );
             awpcp_flash( sprintf( $message, $success_message, $error_message ), 'error' );
         } else if ( $successful_count > 0 ) {
             awpcp_flash( $success_message . '.' );

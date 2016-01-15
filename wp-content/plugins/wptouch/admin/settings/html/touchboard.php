@@ -1,7 +1,7 @@
 <?php $settings = wptouch_get_settings(); ?>
 
 <!-- what's new right side -->
-<div class="overview-right-wrap clearfix">
+<div class="overview-right-wrap wptouch-clearfix">
 	<div id="touchboard-links" class="overview-box-appearance">
 		<h3><?php _e( 'Quick Links', 'wptouch-pro' ); ?></h3>
 		<ul>

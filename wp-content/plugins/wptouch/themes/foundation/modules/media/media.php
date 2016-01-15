@@ -6,66 +6,46 @@ add_action( 'wptouch_admin_page_render_wptouch-admin-theme-settings', 'foundatio
 function foundation_media_init() {
 
 	$settings = foundation_get_settings();
-	if ( $settings->video_handling_type == 'fitvids' ) {
+	if ( $settings->new_video_handling ) {
 
 		// Load FitVids
-		wp_enqueue_script( 
-			'foundation_media_fitvids', 
-			foundation_get_base_module_url() . '/media/fitvids.js', 
+		wp_enqueue_script(
+			'foundation_media_fitvids',
+			foundation_get_base_module_url() . '/media/fitvids.js',
 			array( 'foundation_base' ),
-			FOUNDATION_VERSION,
+			md5( FOUNDATION_VERSION ),
 			true
 		);
-	
-	} elseif ( $settings->video_handling_type == 'fluidvids' ) {
-	
-		// Load Fluid Width Videos
-		wp_enqueue_script( 
-			'foundation_media_fluidvids', 
-			foundation_get_base_module_url() . '/media/fluid-width-videos.js', 
-			array( 'foundation_base' ),
-			FOUNDATION_VERSION,
-			true
-		);
-	
-	}
-	
-	if ( $settings->video_handling_type != 'none' ) {
-		wp_enqueue_script( 
-			'foundation_media_handling', 
+
+		wp_enqueue_script(
+			'foundation_media_handling',
 			foundation_get_base_module_url() . '/media/media.js',
 			false,
-			FOUNDATION_VERSION,
-			true 
+			md5( FOUNDATION_VERSION ),
+			true
 		);
+
 	}
-	
 }
 
 function foundation_media_settings( $page_options ){
 	wptouch_add_page_section(
-		FOUNDATION_PAGE_GENERAL,
+		WPTOUCH_ADMIN_SETUP_COMPAT,
 		__( 'Video Handling', 'wptouch-pro' ),
 		'foundation-media-settings',
 		array(
 			wptouch_add_pro_setting(
-				'list',
-				'video_handling_type',
-				'',
-				'',
+				'checkbox',
+				'new_video_handling',
+				__( 'Use FitVids to automatically scale videos', 'wptouch-pro' ),
+				__( 'FitVids is a small JavaScript helper that will detect videos from a variety of web sources and automatically scale them to fill the container and format them with the correct aspect ratio.', 'wptouch-pro' ),
 				WPTOUCH_SETTING_BASIC,
-				'1.0',
-				array(
-					'none' => __( 'None', 'wptouch-pro' ),
-					'css' => __( 'CSS only (HTML5 videos)', 'wptouch-pro' ),
-					'fitvids' => __( 'FitVids Method', 'wptouch-pro' ),
-					'fluidvids' => __( 'Fluid-Width Method', 'wptouch-pro' )
-				)
-			),
+				'4.0'
+			)
 		),
 		$page_options,
 		FOUNDATION_SETTING_DOMAIN
 	);
-	
+
 	return $page_options;
 }

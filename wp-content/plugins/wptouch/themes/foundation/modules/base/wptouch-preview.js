@@ -1,5 +1,5 @@
 function wptouchDoPreview() {
-	jQuery( 'a' ).each( function() {
+	jQuery( 'a:not(.load-more-link)' ).each( function() {
 		var linkLocation = jQuery( this ).attr( 'href' );
 		if ( linkLocation ) {
 			if ( linkLocation.search( "\\?" ) == -1 ) {

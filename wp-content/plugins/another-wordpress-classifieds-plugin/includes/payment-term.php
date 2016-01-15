@@ -49,16 +49,16 @@ class AWPCP_PaymentTerm {
     public static function get_duration_interval_label($interval, $amount=2) {
         switch ($interval) {
             case self::INTERVAL_DAY:
-                $label = _nx('Day', 'Days', $amount, 'payment terms', 'AWPCP');
+                $label = _nx('Day', 'Days', $amount, 'payment terms', 'another-wordpress-classifieds-plugin');
                 break;
             case self::INTERVAL_WEEK:
-                $label = _nx('Week', 'Weeks', $amount, 'payment terms', 'AWPCP');
+                $label = _nx('Week', 'Weeks', $amount, 'payment terms', 'another-wordpress-classifieds-plugin');
                 break;
             case self::INTERVAL_MONTH:
-                $label = _nx('Month', 'Months', $amount, 'payment terms', 'AWPCP');
+                $label = _nx('Month', 'Months', $amount, 'payment terms', 'another-wordpress-classifieds-plugin');
                 break;
             case self::INTERVAL_YEAR:
-                $label = _nx('Year', 'Years', $amount, 'payment terms', 'AWPCP');
+                $label = _nx('Year', 'Years', $amount, 'payment terms', 'another-wordpress-classifieds-plugin');
                 break;
         }
 
@@ -118,31 +118,31 @@ class AWPCP_PaymentTerm {
 
     protected function validate($data, &$errors=array()) {
         if (empty($data['name']))
-            $errors[] = __('The name of the plan is required.', 'AWPCP');
+            $errors[] = __('The name of the plan is required.', 'another-wordpress-classifieds-plugin');
 
         if ($data['duration_amount'] < 0)
-            $errors[] = __('The duration amount must be equal or greater than zero.', 'AWPCP');
+            $errors[] = __('The duration amount must be equal or greater than zero.', 'another-wordpress-classifieds-plugin');
 
         if (!in_array($data['duration_interval'], self::get_duration_intervals()))
-            $errors[] = __('The duration interval is invalid.', 'AWPCP');
+            $errors[] = __('The duration interval is invalid.', 'another-wordpress-classifieds-plugin');
 
         if ($data['images'] < 0)
-            $errors[] = __('The number of images allowed must be equal or greater than zero.', 'AWPCP');
+            $errors[] = __('The number of images allowed must be equal or greater than zero.', 'another-wordpress-classifieds-plugin');
 
         if ($data['regions'] < 0)
-            $errors[] = __( 'The number of regions allowed must be equal or greater than zero.', 'AWPCP' );
+            $errors[] = __( 'The number of regions allowed must be equal or greater than zero.', 'another-wordpress-classifieds-plugin' );
 
         if ($data['characters'] < 0)
-            $errors[] = __('The number of characters allowed must be equal or greater than zero.', 'AWPCP');
+            $errors[] = __('The number of characters allowed must be equal or greater than zero.', 'another-wordpress-classifieds-plugin');
 
         if ( $data['title_characters'] < 0 )
-            $errors[] = __( 'The number of characters allowed in the title must be equal or greater than zero.', 'AWPCP' );
+            $errors[] = __( 'The number of characters allowed in the title must be equal or greater than zero.', 'another-wordpress-classifieds-plugin' );
 
         if ($data['credits'] < 0)
-            $errors[] = __('The number of credits must be greater than zero.', 'AWPCP');
+            $errors[] = __('The number of credits must be greater than zero.', 'another-wordpress-classifieds-plugin');
 
         if ($data['price'] < 0)
-            $errors[] = __('The price must be equal or greater than zero.', 'AWPCP');
+            $errors[] = __('The price must be equal or greater than zero.', 'another-wordpress-classifieds-plugin');
 
         return empty($errors);
     }

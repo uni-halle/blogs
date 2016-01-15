@@ -98,6 +98,7 @@
                                 </div>
                             </td>
                         </tr>
+                        <?php do_action('aam-post-access-option-action', 'post', 'frontend'); ?>
 
                         <tr class="aam-backend-post-access">
                             <td colspan="2" class="aam-table-group">
@@ -146,6 +147,7 @@
                                 </div>
                             </td>
                         </tr>
+                        <?php do_action('aam-post-access-option-action', 'post', 'backend'); ?>
 
                     </tbody>
                 </table>
@@ -171,8 +173,8 @@
                         </ul>
 
                         <p class="aam-info aam-hint">
-                            * <?php echo AAM_Backend_Helper::preparePhrase(__('[post] - any post, page or custom post type', AAM_KEY), 'strong'); ?>;<br/>
-                            * <?php echo AAM_Backend_Helper::preparePhrase(__('[category] - any taxonomy/term or custom taxonomy', AAM_KEY), 'strong'); ?>.
+                            * <?php echo AAM_Backend_Helper::preparePhrase('[post] - any post, page or custom post type', 'strong'); ?>;<br/>
+                            * <?php echo AAM_Backend_Helper::preparePhrase('[category] - any taxonomy/term or custom taxonomy', 'strong'); ?>.
                         </p>
                     </div>
                     <div class="modal-footer">
@@ -190,7 +192,7 @@
                         <h4 class="modal-title"><?php echo __('Reset Information', AAM_KEY); ?></h4>
                     </div>
                     <div class="modal-body aam-info-modal">
-                        <p><?php echo AAM_Backend_Helper::preparePhrase(__('[Settings may not be inherited] message indicates that access settings for current post or category are not inherited from parent category, role or default settings because they were modified for this particular post or category. Click [Reset] if you need to reset the access.', AAM_KEY), 'strong', 'strong'); ?></p>
+                        <p><?php echo AAM_Backend_Helper::preparePhrase('[Settings may not be inherited] message indicates that access settings for current post or category are not inherited from parent category, role or default settings because they were modified for this particular post or category. Click [Reset] if you need to reset the access.', 'strong', 'strong'); ?></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo __('OK', AAM_KEY); ?></button>

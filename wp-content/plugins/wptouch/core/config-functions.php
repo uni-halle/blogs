@@ -24,11 +24,11 @@ function wptouch_setup_base_content_dir() {
 
 		if ( $blog_id ) {
 			wptouch_create_directory_if_not_exist( WPTOUCH_BASE_CONTENT_MS_DIR );
-			$desirable_dir = $desirable_dir . '/' . $blog_id;
+			$desirable_dir = $desirable_dir . DIRECTORY_SEPARATOR . $blog_id;
 		}
 	}
 
-	$undesirable_dir = $wptouch_upload_dir[ 'basedir' ] . '/wptouch-data';
+	$undesirable_dir = $wptouch_upload_dir[ 'basedir' ] . DIRECTORY_SEPARATOR . 'wptouch-data';
 	if ( file_exists( $undesirable_dir ) ) {
 		// Need to migrate here
 		//define( 'WPTOUCH_BASE_CONTENT_DIR', $wptouch_upload_dir[ 'basedir' ] . '/wptouch-data' );
@@ -37,10 +37,10 @@ function wptouch_setup_base_content_dir() {
 
 		$migration_paths = array( 'themes', 'icons', 'lang', 'uploads', 'add-ons', 'backups' );
 		foreach( $migration_paths as $path ) {
-			if ( file_exists( $undesirable_dir . '/' . $path ) ) {
-				if ( !file_exists( WP_CONTENT_DIR . $desirable_dir . '/' . $path ) ) {
+			if ( file_exists( $undesirable_dir . DIRECTORY_SEPARATOR . $path ) ) {
+				if ( !file_exists( WP_CONTENT_DIR . $desirable_dir . DIRECTORY_SEPARATOR . $path ) ) {
 					// This is a fresh migration, so let's just move it
-					if ( !rename( $undesirable_dir . '/' . $path, WP_CONTENT_DIR . $desirable_dir . '/' . $path ) ) {
+					if ( !rename( $undesirable_dir . DIRECTORY_SEPARATOR . $path, WP_CONTENT_DIR . $desirable_dir . DIRECTORY_SEPARATOR . $path ) ) {
 						define( 'WPTOUCH_MIGRATION_OLD_ISSUE', 1 );
 					}
 				}

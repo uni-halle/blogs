@@ -3,7 +3,7 @@
 /**
   Plugin Name: Advanced Access Manager
   Description: Manage User and Role Access to WordPress Backend and Frontend.
-  Version: 3.0.5
+  Version: 3.0.9
   Author: Vasyl Martyniuk <vasyl@vasyltech.com>
   Author URI: http://www.vasyltech.com
 
@@ -99,8 +99,9 @@ class AAM {
     public static function isAAM() {
         $page   = AAM_Core_Request::get('page');
         $action = AAM_Core_Request::post('action');
+        $intersect = array_intersect(array('aam', 'aamc'), array($page, $action));
         
-        return (is_admin() && (in_array('aam', array($page, $action))));
+        return (is_admin() && count($intersect));
     }
 
     /**
@@ -113,7 +114,9 @@ class AAM {
      */
     public static function getInstance() {
         if (is_null(self::$_instance)) {
-            load_plugin_textdomain(AAM_KEY, false, dirname(__FILE__) . '/Lang');
+            load_plugin_textdomain(
+                    AAM_KEY, false, dirname(plugin_basename(__FILE__)) . '/Lang/'
+            );
             self::$_instance = new self;
         }
 
@@ -158,7 +161,7 @@ class AAM {
         $dirname = WP_CONTENT_DIR . '/aam';
         
         if (file_exists($dirname) === false) {
-            mkdir($dirname, fileperms( ABSPATH ) & 0777 | 0755);
+            @mkdir($dirname, fileperms( ABSPATH ) & 0777 | 0755);
         }
     }
 
@@ -180,6 +183,9 @@ class AAM {
         if (file_exists($dirname)) {
             AAM_Core_API::removeDirectory($dirname);
         }
+        
+        //clear schedules
+        wp_clear_scheduled_hook('aam-cron');
     }
 
 }
@@ -188,6 +194,7 @@ if (defined('ABSPATH')) {
     //define few common constants
     define('AAM_MEDIA', plugins_url('/media', __FILE__));
     define('AAM_KEY', 'advanced-access-manager');
+    define('AAM_BASE', dirname(__FILE__));
     
     //register autoloader
     require (dirname(__FILE__) . '/autoloader.php');

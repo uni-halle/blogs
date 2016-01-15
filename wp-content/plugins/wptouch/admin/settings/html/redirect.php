@@ -1,3 +1,5 @@
+<?php _e( 'Redirect target', 'wptouch-pro' ); ?>
+
 <?php
 	$settings = wptouch_get_settings();
 
@@ -12,6 +14,3 @@
 	$contents = str_replace( $value_string, $value_string . ' selected', $contents );
 
 	echo $contents;
-
-?>
-<label for="homepage_redirect_wp_target"><?php _e( 'WordPress Page', 'wptouch-pro' ); ?></label>

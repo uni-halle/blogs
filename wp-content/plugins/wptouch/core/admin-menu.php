@@ -1,21 +1,27 @@
 <?php
+add_action( 'admin_menu', 'wptouch_menu_redirects', 1 );
+function wptouch_menu_redirects() {
+	$settings = wptouch_get_settings();
 
+	if ( defined( 'WPTOUCH_IS_FREE' ) ) {
+		$show_wizard = $settings->show_free_wizard;
+	} else {
+		$show_wizard = $settings->show_wizard;
+	}
+
+	if ( $show_wizard && ( strstr( $_SERVER[ 'REQUEST_URI' ], '?page=wptouch-admin-general-settings' ) || strstr( $_SERVER[ 'REQUEST_URI' ], '?page=wptouch-admin-license' ) ) ) {
+		wp_redirect( admin_url( 'admin.php?page=wptouch-admin-wizard' ) );
+		die();
+	} elseif ( !$show_wizard && !defined( 'WPTOUCH_SHOW_WIZARD' ) && strstr( $_SERVER[ 'REQUEST_URI' ], '?page=wptouch-admin-wizard' ) ) {
+		wp_redirect( admin_url( 'admin.php?page=wptouch-admin-general-settings' ) );
+		die();
+	}
+}
 
 // All available built-in WPtouch Pro menu items go here
-define( 'WPTOUCH_PRO_ADMIN_TOUCHBOARD', 'wptouch-admin-touchboard' );
+define( 'WPTOUCH_PRO_ADMIN_WIZARD', 'wptouch-admin-wizard' );
 define( 'WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS', 'wptouch-admin-general-settings' );
-define( 'WPTOUCH_PRO_ADMIN_MENUS', 'wptouch-admin-menus' );
-define( 'WPTOUCH_PRO_ADMIN_MENUS_DISABLED', 'wptouch-admin-menus-disabled' );
-define( 'WPTOUCH_PRO_ADMIN_WARNINGS', 'wptouch-admin-warnings' );
 define( 'WPTOUCH_PRO_ADMIN_LICENSE', 'wptouch-admin-license' );
-define( 'WPTOUCH_PRO_ADMIN_UPGRADE', 'wptouch-admin-upgrade' );
-define( 'WPTOUCH_PRO_ADMIN_UPGRADE_LICENSE', 'wptouch-admin-upgrade-license' );
-
-define( 'WPTOUCH_PRO_ADMIN_THEMES_AND_ADDONS', 'wptouch-admin-themes-and-addons' );
-define( 'WPTOUCH_PRO_ADMIN_THEME_OPTIONS', 'wptouch-admin-theme-settings' );
-
-define( 'WPTOUCH_PRO_ADMIN_ADDON_OPTIONS', 'wptouch-admin-addon-settings' );
-define( 'WPTOUCH_PRO_ADMIN_ADDON_OPTIONS_GENERAL', __( 'General', 'wptouch-pro' ) );
 
 function wptouch_admin_create_menu( $id, $friendly_name, $menu_type = WPTOUCH_PRO_ADMIN_SETTINGS_PAGE, $display_name = false ) {
 	$menu = new stdClass;
@@ -28,56 +34,90 @@ function wptouch_admin_create_menu( $id, $friendly_name, $menu_type = WPTOUCH_PR
 	return $menu;
 }
 
-function wptouch_admin_get_predefined_menus( $network_only = false ) {
+function wptouch_admin_get_predefined_menus( $network_admin = false ) {
 	$available_menus = array();
-
-	if ( $network_only ) {
-		$available_menus = array(
-			WPTOUCH_PRO_ADMIN_TOUCHBOARD => wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_TOUCHBOARD, __( 'What\'s New', 'wptouch-pro' ) )
-		);
-	} else {
-		$available_menus = array(
-			WPTOUCH_PRO_ADMIN_TOUCHBOARD => wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_TOUCHBOARD, __( 'What\'s New', 'wptouch-pro' ) ),
-			WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS => wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS, __( 'Core Settings', 'wptouch-pro' ) ),
-			WPTOUCH_PRO_ADMIN_THEMES_AND_ADDONS => wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_THEMES_AND_ADDONS, __( 'Themes & Extensions', 'wptouch-pro' ) ),
-			WPTOUCH_PRO_ADMIN_THEME_OPTIONS => wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_THEME_OPTIONS, __( 'Theme Settings', 'wptouch-pro' ), WPTOUCH_PRO_ADMIN_SETTINGS_PAGE, sprintf( __( '%s Settings', 'wptouch-pro' ), wptouch_get_bloginfo( 'active_theme_friendly_name' ) ) ),
-		);
-
-		$settings = wptouch_get_settings();
-		if ( isset( $settings->active_addons ) && is_array( $settings->active_addons ) && count( $settings->active_addons ) ) {
-			$available_menus[ WPTOUCH_PRO_ADMIN_ADDON_OPTIONS ] = wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_ADDON_OPTIONS, __( 'Extension Settings', 'wptouch-pro' ) );
-		}
-
-		if ( wptouch_get_registered_theme_count() ) {
-			// Need to see if a theme has a menu available
-			$available_menus[ WPTOUCH_PRO_ADMIN_MENUS ] = wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_MENUS, __( 'Menus', 'wptouch-pro' ) );
-		} else {
-			$available_menus[ WPTOUCH_PRO_ADMIN_MENUS_DISABLED ] = wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_MENUS_DISABLED, __( 'Menus', 'wptouch-pro' ) );
-		}
-	}
-
-	// Check multisite
-	if ( !defined( 'WPTOUCH_IS_FREE' ) && ( wptouch_can_show_license_menu() || defined( 'WPTOUCH_FORCE_SHOW_LICENSE_PANEL' ) ) ) {
-		$available_menus[ WPTOUCH_PRO_ADMIN_LICENSE ] = wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_LICENSE, __( 'License', 'wptouch-pro' ), WPTOUCH_PRO_ADMIN_CUSTOM_PAGE );
-	}
-
-	// Check multisite
+	$settings = wptouch_get_settings();
 	if ( defined( 'WPTOUCH_IS_FREE' ) ) {
-		$available_menus[ WPTOUCH_PRO_ADMIN_UPGRADE ] = wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_UPGRADE, __( 'Upgrade to Pro', 'wptouch-pro' ), WPTOUCH_PRO_ADMIN_CUSTOM_PAGE );
-	} elseif ( !defined( 'WPTOUCH_CLIENT_MODE' ) && wptouch_license_upgrade_available() ) {
-        $settings = wptouch_get_settings( 'bncid' );
-        
-        if ( $settings->bncid && $settings->wptouch_license_key ) {
-            $available_menus[ WPTOUCH_PRO_ADMIN_UPGRADE_LICENSE ] = wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_UPGRADE_LICENSE, __( 'Upgrade License', 'wptouch-pro' ), WPTOUCH_PRO_ADMIN_CUSTOM_PAGE );
-        }
+		$show_wizard = $settings->show_free_wizard;
+	} else {
+		$show_wizard = $settings->show_wizard;
+	}
+	$show_network_wizard = $settings->show_network_wizard;
+	$wizard_title = __( 'Setup Wizard', 'wptouch-pro' );
+	$settings_title = __( 'Settings', 'wptouch-pro' );
+	$license_title = sprintf( __( 'License %s Support', 'wptouch-pro' ), '&amp;' );
+	$network_admin = is_network_admin();
+	if ( $network_admin ) {
+		if ( $show_network_wizard ) {
+			$available_menus = array(
+				WPTOUCH_PRO_ADMIN_WIZARD => wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_WIZARD, $wizard_title, WPTOUCH_PRO_ADMIN_CUSTOM_PAGE ),
+			);
+		} elseif ( defined( 'WPTOUCH_SHOW_NETWORK_WIZARD' ) ) {
+			$available_menus = array(
+				WPTOUCH_PRO_ADMIN_WIZARD => wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_WIZARD, $wizard_title, WPTOUCH_PRO_ADMIN_CUSTOM_PAGE ),
+				WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS => wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS, $settings_title ),
+			);
+		} else {
+			$available_menus = array(
+				WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS => wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS, $settings_title ),
+			);
+		}
+
+		if ( !$show_network_wizard ) {
+			$available_menus[ WPTOUCH_PRO_ADMIN_LICENSE ] = wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_LICENSE, $license_title, WPTOUCH_PRO_ADMIN_CUSTOM_PAGE );
+		}
+	} else {
+		if ( $show_wizard ) {
+			$available_menus = array(
+				WPTOUCH_PRO_ADMIN_WIZARD => wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_WIZARD, $wizard_title, WPTOUCH_PRO_ADMIN_CUSTOM_PAGE ),
+			);
+		} elseif ( defined( 'WPTOUCH_SHOW_WIZARD' ) ) {
+			$available_menus = array(
+				WPTOUCH_PRO_ADMIN_WIZARD => wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_WIZARD, $wizard_title, WPTOUCH_PRO_ADMIN_CUSTOM_PAGE ),
+				WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS => wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS, $settings_title )
+			);
+		} else {
+			$available_menus = array(
+				WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS => wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS, $settings_title ),
+			);
+		}
+
+		if ( !defined( 'WPTOUCH_IS_FREE' ) && !$show_wizard && ( current_user_can( 'activate_plugins' ) || current_user_can( 'manage_network' ) ) && !is_plugin_active_for_network( WPTOUCH_PLUGIN_SLUG ) ) {
+			$available_menus[ WPTOUCH_PRO_ADMIN_LICENSE ] = wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_LICENSE, $license_title, WPTOUCH_PRO_ADMIN_CUSTOM_PAGE );
+		}
 	}
 
 	return apply_filters( 'wptouch_available_menus', $available_menus );
 }
 
-function wptouch_admin_get_root_slug() {
+function wptouch_admin_get_root_slug( $network_admin = false ) {
 	$menu = wptouch_admin_get_predefined_menus();
+	$settings = wptouch_get_settings();
+	if ( defined( 'WPTOUCH_IS_FREE' ) ) {
+		$show_wizard = $settings->show_free_wizard;
+	} else {
+		$show_wizard = $settings->show_wizard;
+	}
+	$show_network_wizard = $settings->show_network_wizard;
+	$network_admin = is_network_admin();
 
-	return $menu[ WPTOUCH_PRO_ADMIN_TOUCHBOARD ]->slug;
+	if ( $network_admin ) {
+		if ( $show_network_wizard ) {
+			return $menu[ WPTOUCH_PRO_ADMIN_WIZARD ]->slug;
+		} else {
+			return $menu[ WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS ]->slug;
+			return $menu[ WPTOUCH_PRO_ADMIN_LICENSE ]->slug;
+		}
+	} else {
+		if ( $show_wizard ) {
+			return $menu[ WPTOUCH_PRO_ADMIN_WIZARD ]->slug;
+		} else {
+			if ( defined( 'WPTOUCH_SHOW_WIZARD' ) ) {
+				return $menu[ WPTOUCH_PRO_ADMIN_WIZARD ]->slug;
+			}
+			return $menu[ WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS ]->slug;
+			return $menu[ WPTOUCH_PRO_ADMIN_LICENSE ]->slug;
+		}
+	}
 }
 

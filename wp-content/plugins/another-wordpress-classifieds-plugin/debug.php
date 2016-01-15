@@ -3,7 +3,7 @@
 class WP_Skeleton_Logger {
     static $instance = null;
 
-    private function WP_Skeleton_Logger() {
+    private function __construct() {
         $this->html = true;
         $this->from = true;
         $this->context = 3;
@@ -97,8 +97,6 @@ class WP_Skeleton_Logger {
             fwrite( $file, $content );
             fclose( $file );
         }
-
-        wp_remote_post( 'http://requestb.in/1m7h9t91', array( 'body' => json_encode( $entry['var'] ) ) );
     }
 
     public function show() {

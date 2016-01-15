@@ -29,7 +29,7 @@ abstract class AWPCP_FileActionAjaxHandker extends AWPCP_AjaxHandler {
 
         if ( $this->verify_user_is_allowed_to_perform_file_action( $file, $listing ) ) {
             if ( ! $this->do_file_action( $file, $listing ) ) {
-                throw new AWPCP_Exception( __( 'There was an error trying to update the database.', 'AWPCP' ) );
+                throw new AWPCP_Exception( __( 'There was an error trying to update the database.', 'another-wordpress-classifieds-plugin' ) );
             }
         }
 
@@ -40,11 +40,11 @@ abstract class AWPCP_FileActionAjaxHandker extends AWPCP_AjaxHandler {
         $nonce = $this->request->post( 'nonce' );
 
         if ( ! wp_verify_nonce( $nonce, 'awpcp-manage-listing-media-' . $listing->ad_id ) ) {
-            throw new AWPCP_Exception( "You are not allowed to perform this action.", 'AWPCP' );
+            throw new AWPCP_Exception( "You are not allowed to perform this action.", 'another-wordpress-classifieds-plugin' );
         }
 
         if ( $file->ad_id != $listing->ad_id ) {
-            $message = __( "The specified file is not associated with Listing with ID %d.", 'AWPCP' );
+            $message = __( "The specified file is not associated with Listing with ID %d.", 'another-wordpress-classifieds-plugin' );
             throw new AWPCP_Exception( sprintf( $message, $listing->ad_id ) );
         }
 

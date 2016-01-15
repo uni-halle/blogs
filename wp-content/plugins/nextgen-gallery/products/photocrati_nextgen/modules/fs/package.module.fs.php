@@ -271,7 +271,7 @@ class Mixin_Fs_Instance_Methods extends Mixin
         }
         // Join the paths together
         $retval = implode(DIRECTORY_SEPARATOR, $retval);
-        if (strpos($retval, $this->get_document_root()) !== 0) {
+        if (strpos($retval, $this->get_document_root()) !== 0 && strtoupper(substr(PHP_OS, 0, 3)) != 'WIN') {
             $retval = DIRECTORY_SEPARATOR . trim($retval, '/\\');
         }
         return $retval;

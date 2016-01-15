@@ -1,12 +1,15 @@
 <?php
-/*
- Plugin Name: Another Wordpress Classifieds Plugin (AWPCP)
- Plugin URI: http://www.awpcp.com
- Description: AWPCP - A plugin that provides the ability to run a free or paid classified ads service on your wordpress blog. <strong>!!!IMPORTANT!!!</strong> Whether updating a previous installation of Another Wordpress Classifieds Plugin or installing Another Wordpress Classifieds Plugin for the first time, please backup your wordpress database before you install/uninstall/activate/deactivate/upgrade Another Wordpress Classifieds Plugin.
- Version: 3.5.3.1
- Author: D. Rodenbaugh
- License: GPLv2 or any later version
- Author URI: http://www.skylineconsult.com
+
+/**
+ * Plugin Name: Another WordPress Classifieds Plugin (AWPCP)
+ * Plugin URI: http://www.awpcp.com
+ * Description: AWPCP - A plugin that provides the ability to run a free or paid classified ads service on your WP site. <strong>!!!IMPORTANT!!!</strong> It's always a good idea to do a BACKUP before you upgrade AWPCP!
+ * Version: 3.6.3.1
+ * Author: D. Rodenbaugh
+ * License: GPLv2 or any later version
+ * Author URI: http://www.skylineconsult.com
+ * Text Domain: another-wordpress-classifieds-plugin
+ * Domain Path: /languages
  */
 
 /**
@@ -35,6 +38,8 @@ if (preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) {
 define( 'AWPCP_BASENAME', basename( dirname( __FILE__ ) ) );
 define( 'AWPCP_DIR', rtrim( plugin_dir_path( __FILE__ ), '/' ) );
 define( 'AWPCP_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) );
+
+define( 'AWPCP_LOWEST_FILTER_PRIORITY', 1000000 );
 
 global $awpcp;
 
@@ -71,22 +76,19 @@ require_once(AWPCP_DIR . "/debug.php");
 require_once(AWPCP_DIR . "/functions.php");
 require_once( AWPCP_DIR . "/includes/functions/categories.php" );
 require_once( AWPCP_DIR . "/includes/functions/deprecated.php" );
+require( AWPCP_DIR . '/includes/functions/file-upload.php' );
 require_once( AWPCP_DIR . "/includes/functions/format.php" );
 require_once( AWPCP_DIR . "/includes/functions/hooks.php" );
 require_once( AWPCP_DIR . "/includes/functions/listings.php" );
 require_once( AWPCP_DIR . "/includes/functions/notifications.php" );
 require_once( AWPCP_DIR . "/includes/functions/payments.php" );
 require_once( AWPCP_DIR . "/includes/functions/routes.php" );
+require( AWPCP_DIR . "/includes/functions/legacy.php" );
 
 $nameofsite = awpcp_get_blog_name();
 
 // cron
 require_once(AWPCP_DIR . "/cron.php");
-
-// other resources
-require_once(AWPCP_DIR . "/dcfunctions.php");
-require_once(AWPCP_DIR . "/functions_awpcp.php");
-require_once(AWPCP_DIR . "/upload_awpcp.php");
 
 // API & Classes
 require_once(AWPCP_DIR . "/includes/exceptions.php");
@@ -94,10 +96,13 @@ require_once(AWPCP_DIR . "/includes/exceptions.php");
 require_once(AWPCP_DIR . "/includes/compatibility/compatibility.php");
 require_once( AWPCP_DIR . "/includes/compatibility/class-add-meta-tags-plugin-integration.php" );
 require_once(AWPCP_DIR . "/includes/compatibility/class-all-in-one-seo-pack-plugin-integration.php");
+require( AWPCP_DIR . "/includes/compatibility/class-facebook-button-plugin-integration.php");
 require_once(AWPCP_DIR . "/includes/compatibility/class-facebook-plugin-integration.php");
 require_once( AWPCP_DIR . '/includes/compatibility/class-facebook-all-plugin-integration.php' );
 require_once( AWPCP_DIR . "/includes/compatibility/class-yoast-wordpress-seo-plugin-integration.php" );
 require_once( AWPCP_DIR . "/includes/compatibility/class-woocommerce-plugin-integration.php" );
+require( AWPCP_DIR . "/includes/compatibility/class-wp-members-login-form-implementation.php");
+require( AWPCP_DIR . "/includes/compatibility/class-wp-members-plugin-integration.php");
 
 require_once( AWPCP_DIR . "/includes/functions/settings.php" );
 
@@ -155,8 +160,6 @@ require_once( AWPCP_DIR . "/includes/listings/class-listing-action.php" );
 require_once( AWPCP_DIR . "/includes/listings/class-listing-action-with-confirmation.php" );
 require_once( AWPCP_DIR . "/includes/listings/class-delete-listing-action.php" );
 
-require_once( AWPCP_DIR . "/includes/media/class-media-manager-component.php" );
-
 require_once( AWPCP_DIR . "/includes/meta/class-meta-tags-generator.php" );
 require_once( AWPCP_DIR . "/includes/meta/class-tag-renderer.php" );
 
@@ -167,6 +170,7 @@ require_once(AWPCP_DIR . "/includes/models/image.php");
 require_once(AWPCP_DIR . "/includes/models/payment-transaction.php");
 
 require_once( AWPCP_DIR . "/includes/db/class-database-column-creator.php" );
+require( AWPCP_DIR . "/includes/db/class-database-helper.php" );
 
 require_once( AWPCP_DIR . "/includes/views/class-ajax-handler.php" );
 require_once( AWPCP_DIR . "/includes/views/class-base-page.php" );
@@ -208,7 +212,6 @@ require_once( AWPCP_DIR . "/includes/views/admin/listings/class-listings-table-s
 require_once( AWPCP_DIR . "/includes/views/admin/listings/class-listings-table-search-conditions-parser.php" );
 require_once( AWPCP_DIR . "/includes/views/admin/account-balance/class-account-balance-page.php" );
 require_once( AWPCP_DIR . "/includes/views/admin/account-balance/class-account-balance-page-summary-step.php" );
-require_once( AWPCP_DIR . "/includes/views/admin/settings/class-update-license-status-request-handler.php" );
 
 require_once( AWPCP_DIR . '/includes/cron/class-task-queue.php' );
 require_once( AWPCP_DIR . '/includes/cron/class-task-logic-factory.php' );
@@ -216,19 +219,25 @@ require_once( AWPCP_DIR . '/includes/cron/class-task-logic.php' );
 require_once( AWPCP_DIR . '/includes/cron/class-tasks-collection.php' );
 require_once( AWPCP_DIR . '/includes/cron/class-background-process.php' );
 
-require_once( AWPCP_DIR . '/includes/media/class-file-types.php' );
-require_once( AWPCP_DIR . '/includes/media/class-listing-file-handler.php' );
 require_once( AWPCP_DIR . '/includes/media/class-listing-file-validator.php' );
+
+require( AWPCP_DIR . '/includes/media/class-file-handlers-manager.php' );
+require_once( AWPCP_DIR . '/includes/media/class-file-types.php' );
 require_once( AWPCP_DIR . '/includes/media/class-file-uploader.php' );
 require_once( AWPCP_DIR . '/includes/media/class-file-validation-errors.php' );
 require_once( AWPCP_DIR . '/includes/media/class-filesystem.php' );
+require( AWPCP_DIR . '/includes/media/class-image-dimensions-generator.php' );
 require_once( AWPCP_DIR . '/includes/media/class-image-file-handler.php' );
+require( AWPCP_DIR . '/includes/media/class-image-file-mover.php' );
 require_once( AWPCP_DIR . '/includes/media/class-image-file-processor.php' );
 require_once( AWPCP_DIR . '/includes/media/class-image-file-validator.php' );
+require( AWPCP_DIR . '/includes/media/class-image-media-creator.php' );
 require_once( AWPCP_DIR . '/includes/media/class-image-resizer.php' );
+require( AWPCP_DIR . '/includes/media/class-listings-media-uploader-component.php' );
 require_once( AWPCP_DIR . '/includes/media/class-listing-upload-limits.php' );
+require( AWPCP_DIR . '/includes/media/class-listing-media-creator.php' );
 require_once( AWPCP_DIR . "/includes/media/class-media-manager-component.php" );
-require_once( AWPCP_DIR . '/includes/media/class-media-manager.php' );
+require_once( AWPCP_DIR . "/includes/media/class-media-manager.php" );
 require_once( AWPCP_DIR . '/includes/media/class-media-uploader-component.php' );
 require_once( AWPCP_DIR . "/includes/media/class-messages-component.php" );
 require_once( AWPCP_DIR . '/includes/media/class-mime-types.php' );
@@ -237,6 +246,9 @@ require_once( AWPCP_DIR . '/includes/media/class-uploaded-file-logic.php' );
 require_once( AWPCP_DIR . '/includes/media/class-uploads-manager.php' );
 require_once( AWPCP_DIR . '/includes/media/class-upload-listing-media-ajax-handler.php' );
 require_once( AWPCP_DIR . '/includes/media/class-upload-generated-thumbnail-ajax-handler.php' );
+
+require( AWPCP_DIR . "/includes/modules/class-license-settings-update-handler.php" );
+require( AWPCP_DIR . "/includes/modules/class-license-settings-actions-request-handler.php" );
 
 require_once( AWPCP_DIR . '/includes/placeholders/class-placeholders-installation-verifier.php' );
 
@@ -251,13 +263,31 @@ require_once( AWPCP_DIR . "/includes/settings/class-registration-settings.php" )
 require_once( AWPCP_DIR . "/includes/settings/class-user-notifications-settings.php" );
 require_once( AWPCP_DIR . "/includes/settings/class-window-title-settings.php" );
 
+require( AWPCP_DIR . "/includes/upgrade/class-calculate-image-dimensions-upgrade-task-handler.php" );
+require( AWPCP_DIR . "/includes/upgrade/class-database-tables.php" );
 require_once( AWPCP_DIR . "/includes/upgrade/class-fix-empty-media-mime-type-upgrade-routine.php" );
+require_once( AWPCP_DIR . "/includes/upgrade/class-manual-upgrade-tasks-manager.php" );
+require_once( AWPCP_DIR . "/includes/upgrade/class-manual-upgrade-tasks.php" );
+require_once( AWPCP_DIR . "/includes/upgrade/class-sanitize-media-filenames-upgrade-task-handler.php" );
+require_once( AWPCP_DIR . "/includes/upgrade/class-upgrade-task-ajax-handler-factory.php" );
+require_once( AWPCP_DIR . "/includes/upgrade/class-upgrade-task-ajax-handler.php" );
+
+require_once( AWPCP_DIR . "/includes/upgrade/class-import-payment-transactions-task-handler.php" );
+require_once( AWPCP_DIR . "/includes/upgrade/class-migrate-media-information-task-handler.php" );
+require_once( AWPCP_DIR . "/includes/upgrade/class-migrate-regions-information-task-handler.php" );
+require_once( AWPCP_DIR . "/includes/upgrade/class-update-media-status-task-handler.php" );
+
+require_once( AWPCP_DIR . "/includes/wordpress/class-wordpress-scripts.php" );
+
+require( AWPCP_DIR . '/includes/class-csv-importer.php' );
 
 require_once( AWPCP_DIR . '/includes/class-edit-listing-url-placeholder.php' );
 require_once( AWPCP_DIR . '/includes/class-edit-listing-link-placeholder.php' );
 
 require_once( AWPCP_DIR . "/includes/class-listings-api.php" );
 require_once( AWPCP_DIR . "/includes/class-cookie-manager.php" );
+require( AWPCP_DIR . '/includes/class-default-login-form-implementation.php' );
+require_once( AWPCP_DIR . "/includes/class-exceptions.php" );
 require_once( AWPCP_DIR . "/includes/class-fees-collection.php" );
 require_once( AWPCP_DIR . "/includes/class-listing-authorization.php" );
 require_once( AWPCP_DIR . "/includes/class-listing-payment-transaction-handler.php" );
@@ -267,6 +297,8 @@ require_once( AWPCP_DIR . "/includes/class-listings-metadata.php" );
 require_once( AWPCP_DIR . "/includes/class-media-api.php" );
 require_once( AWPCP_DIR . "/includes/class-missing-pages-finder.php" );
 require_once( AWPCP_DIR . "/includes/class-pages-creator.php" );
+require( AWPCP_DIR . '/includes/class-plugin-rewrite-rules.php' );
+require( AWPCP_DIR . '/includes/class-rewrite-rules-helper.php' );
 require_once( AWPCP_DIR . "/includes/class-roles-and-capabilities.php" );
 require_once( AWPCP_DIR . "/includes/class-secure-url-redirection-handler.php" );
 require_once( AWPCP_DIR . "/includes/class-users-collection.php" );
@@ -288,7 +320,7 @@ require_once(AWPCP_DIR . "/includes/payment-gateway-2checkout.php");
 require_once(AWPCP_DIR . "/includes/payment-terms-table.php");
 
 // installation functions
-require_once(AWPCP_DIR . "/install.php");
+require( AWPCP_DIR . "/installer.php" );
 
 // admin functions
 require_once(AWPCP_DIR . "/admin/admin-panel.php");
@@ -305,10 +337,13 @@ require_once( AWPCP_DIR . '/admin/form-fields/class-update-form-fields-order-aja
 
 // frontend functions
 require_once(AWPCP_DIR . "/frontend/placeholders.php");
-require_once(AWPCP_DIR . "/frontend/payment-functions.php");
 require_once(AWPCP_DIR . "/frontend/ad-functions.php");
 require_once(AWPCP_DIR . "/frontend/shortcode.php");
 
+require( AWPCP_DIR . '/frontend/class-categories-selector-component.php' );
+require( AWPCP_DIR . '/frontend/class-categories-renderer-factory.php' );
+require( AWPCP_DIR . '/frontend/class-image-placeholders.php' );
+require( AWPCP_DIR . '/frontend/class-query.php' );
 require_once(AWPCP_DIR . "/frontend/widget-search.php");
 require_once(AWPCP_DIR . "/frontend/widget-latest-ads.php");
 require_once(AWPCP_DIR . "/frontend/widget-random-ad.php");
@@ -340,12 +375,17 @@ class AWPCP {
 		$this->settings = AWPCP_Settings_API::instance();
 		$this->js = AWPCP_JavaScript::instance();
         $this->installer = AWPCP_Installer::instance();
+        $this->manual_upgrades = awpcp_manual_upgrade_tasks();
 	}
 
     public function bootstrap() {
+        $this->rewrite_rules = awpcp_plugin_rewrite_rules();
+
         if ( $this->settings->get_option( 'activatelanguages' ) ) {
-            awpcp_load_plugin_textdomain( __FILE__, 'AWPCP' );
+            awpcp_load_plugin_textdomain( __FILE__, 'another-wordpress-classifieds-plugin' );
         }
+
+        $this->modules_manager = awpcp_modules_manager();
 
         // register settings, this will define default values for settings
         // that have never been stored
@@ -353,14 +393,14 @@ class AWPCP {
 
         $this->setup_runtime_options();
 
-        awpcp_register_activation_hook( __FILE__, array( $this->installer, 'install_or_upgrade' ) );
+        awpcp_register_activation_hook( __FILE__, array( $this->installer, 'activate' ) );
 
         add_action('plugins_loaded', array($this, 'setup'), 10);
 
         // register rewrite rules when the plugin file is loaded.
         // generate_rewrite_rules or rewrite_rules_array hooks are
         // too late to add rules using add_rewrite_rule function
-        add_action('page_rewrite_rules', 'awpcp_add_rewrite_rules');
+        add_action( 'page_rewrite_rules', array( $this->rewrite_rules, 'add_rewrite_rules' ) );
         add_filter('query_vars', 'awpcp_query_vars');
     }
 
@@ -424,10 +464,11 @@ class AWPCP {
         $wpdb->awpcp_admeta = AWPCP_TABLE_AD_META;
 
 		$this->settings->setup();
-		$this->modules_manager = awpcp_modules_manager();
         $this->modules_updater = awpcp_modules_updater();
 		$this->payments = awpcp_payments_api();
 		$this->listings = awpcp_listings_api();
+
+        $this->manual_upgrades->register_upgrade_tasks();
 
 		$this->admin = new AWPCP_Admin();
 		$this->panel = new AWPCP_User_Panel();
@@ -437,10 +478,10 @@ class AWPCP {
 
         add_action( 'generate_rewrite_rules', array( $this, 'clear_categories_list_cache' ) );
 
+        add_action( 'init', array( $this->compatibility, 'load_plugin_integrations_on_init' ) );
 		add_action( 'init', array($this, 'init' ));
-		add_action( 'init', array($this, 'register_custom_style'), 1000000 );
+		add_action( 'init', array($this, 'register_custom_style'), AWPCP_LOWEST_FILTER_PRIORITY );
 
-		add_action( 'admin_init', array( $this, 'check_compatibility_with_premium_modules' ) );
 		add_action('admin_notices', array($this, 'admin_notices'));
 		add_action( 'admin_notices', array( $this->modules_manager, 'show_admin_notices' ) );
 
@@ -460,7 +501,9 @@ class AWPCP {
 		// some upgrade operations can't be done in background.
 		// if one those is pending, we will disable all other features
 		// until the user executes the upgrade operaton
-		if ( ! get_option( 'awpcp-pending-manual-upgrade' ) ) {
+        $has_pending_manual_upgrades = $this->manual_upgrades->has_pending_tasks();
+
+		if ( ! $has_pending_manual_upgrades ) {
     		$this->pages = new AWPCP_Pages();
 
             add_action( 'awpcp-process-payment-transaction', array( $this, 'process_transaction_update_payment_status' ) );
@@ -481,6 +524,10 @@ class AWPCP {
     		awpcp_schedule_activation();
 
     		$this->modules_manager->load_modules();
+        } else if ( $has_pending_manual_upgrades && get_option( 'awpcp-activated' ) ) {
+            delete_option( 'awpcp-activated' );
+            wp_redirect( awpcp_get_admin_upgrade_url() );
+            exit;
         }
 	}
 
@@ -580,14 +627,18 @@ class AWPCP {
                 add_action( 'admin_notices', array( awpcp_fee_payment_terms_notices(), 'dispatch' ) );
                 add_action( 'admin_notices', array( awpcp_credit_plans_notices(), 'dispatch' ) );
 
-                $handler = awpcp_update_license_status_request_handler();
-                add_action( 'admin_init', array( $handler, 'dispatch' ) );
+                // TODO: do we really need to execute this every time the plugin settings are saved?
+                $handler = awpcp_license_settings_update_handler();
+                add_action( 'update_option_' . $this->settings->setting_name, array( $handler, 'process_settings' ), 10, 2 );
+
+                $handler = awpcp_license_settings_actions_request_handler();
+                add_action( 'wp_redirect', array( $handler, 'dispatch' ) );
             } else {
                 // load resources required in admin screens only, visible to non-admin users only.
             }
         } else {
             // load resources required in frontend screens only.
-            add_action( 'template_redirect', array( new AWPCP_SecureURLRedirectionHandler(), 'dispatch' ) );
+            add_action( 'template_redirect', array( awpcp_secure_url_redirection_handler(), 'dispatch' ) );
         }
 
         add_filter( 'awpcp-content-placeholders', array( $this, 'register_content_placeholders' ) );
@@ -597,7 +648,7 @@ class AWPCP {
 
 		if (!get_option('awpcp_installationcomplete', 0)) {
 			update_option('awpcp_installationcomplete', 1);
-			awpcp_create_pages(__('AWPCP', 'AWPCP'));
+			awpcp_create_pages( __( 'AWPCP', 'another-wordpress-classifieds-plugin' ) );
 			$this->flush_rewrite_rules = true;
 		}
 
@@ -622,6 +673,8 @@ class AWPCP {
 	}
 
     private function ajax_setup() {
+        $this->manual_upgrades->register_upgrade_task_handlers();
+
         // load resources required to handle Ajax requests only.
         $handler = awpcp_users_autocomplete_ajax_handler();
         add_action( 'wp_ajax_awpcp-autocomplete-users', array( $handler, 'ajax' ) );
@@ -656,8 +709,7 @@ class AWPCP {
         $handler = awpcp_update_form_fields_order_ajax_handler();
         add_action( 'wp_ajax_awpcp-update-form-fields-order', array( $handler, 'ajax' ) );
 
-        $media_manager = awpcp_new_media_manager();
-        $media_manager->register_file_handler( awpcp_image_file_handler() );
+        add_action( 'awpcp-file-handlers', array( $this, 'register_file_handlers' ) );
 
         $handler = awpcp_drip_autoresponder_ajax_handler();
         add_action( 'wp_ajax_awpcp-autoresponder-user-subscribed', array( $handler, 'ajax' ) );
@@ -675,8 +727,8 @@ class AWPCP {
 	}
 
 	private function missing_gd_library_notice() {
-        $message = __( "AWPCP requires the graphics processing library GD and it is not installed. Contact your web host to fix this.", "AWPCP" );
-        $message = sprintf( '<strong>%s</strong> %s', __( 'Warning', 'AWPCP' ), $message );
+        $message = __( "AWPCP requires the graphics processing library GD and it is not installed. Contact your web host to fix this.", 'another-wordpress-classifieds-plugin' );
+        $message = sprintf( '<strong>%s</strong> %s', __( 'Warning', 'another-wordpress-classifieds-plugin' ), $message );
         return awpcp_print_error( $message );
 	}
 
@@ -692,139 +744,148 @@ class AWPCP {
 		if ( is_null( $modules ) ) {
 			$modules = array(
 				'attachments' => array(
-					'name' => __( 'Attachments', 'AWPCP' ),
-					'url' => 'http://awpcp.com/premium-modules/attachments-module/?ref=panel',
+					'name' => __( 'Attachments', 'another-wordpress-classifieds-plugin' ),
+					'url' => 'http://awpcp.com/downloads/attachments-module/?ref=panel',
 					'installed' => defined( 'AWPCP_ATTACHMENTS_MODULE' ),
 					'version' => 'AWPCP_ATTACHMENTS_MODULE_DB_VERSION',
-					'required' => '3.5.1',
+					'required' => '3.6',
 				),
 				'authorize.net' => array(
-					'name' => __(  'Authorize.Net', 'AWPCP'  ),
-					'url' => 'http://awpcp.com/premium-modules/authorizenet-payment-module/?ref=user-panel',
+					'name' => __(  'Authorize.Net', 'another-wordpress-classifieds-plugin'  ),
+					'url' => 'http://awpcp.com/downloads/authorizenet-module/?ref=user-panel',
 					'installed' => defined( 'AWPCP_AUTHORIZE_NET_MODULE' ),
 					'version' => 'AWPCP_AUTHORIZE_NET_MODULE_DB_VERSION',
-					'required' => '3.0.3',
+					'required' => '3.6',
 				),
 				'buddypress-listings' => array(
-					'name' => __( 'BuddyPress Listings', 'AWPCP' ),
-					'url' => 'http://awpcp.com/premium-modules/buddypress-module/?ref=panel',
+					'name' => __( 'BuddyPress Listings', 'another-wordpress-classifieds-plugin' ),
+					'url' => 'http://awpcp.com/downloads/buddypress-module/?ref=panel',
 					'installed' => defined( 'AWPCP_BUDDYPRESS_LISTINGS_MODULE_DB_VERSION' ),
 					'version' => 'AWPCP_BUDDYPRESS_LISTINGS_MODULE_DB_VERSION',
-					'required' => '3.4',
+					'required' => '3.6',
 				),
                 'campaign-manager' => array(
-                    'name' => __( 'Campaign Manager', 'AWPCP' ),
+                    'name' => __( 'Campaign Manager', 'another-wordpress-classifieds-plugin' ),
                     'url' => 'http://awpcp.com/premium-modules/campaign-manager-module/?ref=panel',
                     'installed' => defined( 'AWPCP_CAMPAIGN_MANAGER_MODULE' ),
                     'version' => 'AWPCP_CAMPAIGN_MANAGER_MODULE_DB_VERSION',
-                    'required' => '1.0.2',
+                    'required' => '3.6',
                 ),
 				'category-icons' => array(
-					'name' => __( 'Category Icons', 'AWPCP' ),
-					'url' => 'http://www.awpcp.com/premium-modules/category-icons-module?ref=panel',
+					'name' => __( 'Category Icons', 'another-wordpress-classifieds-plugin' ),
+					'url' => 'http://awpcp.com/downloads/category-icons-module/?ref=panel',
 					'installed' => defined( 'AWPCP_CATEGORY_ICONS_MODULE_DB_VERSION' ),
 					'version' => 'AWPCP_CATEGORY_ICONS_MODULE_DB_VERSION',
-					'required' => '3.4.1',
+					'required' => '3.6',
 				),
 				'comments' => array(
-					'name' => __(  'Comments & Ratings', 'AWPCP'  ),
-					'url' => 'http://www.awpcp.com/premium-modules/comments-ratings-module/?ref=panel',
+					'name' => __(  'Comments & Ratings', 'another-wordpress-classifieds-plugin'  ),
+					'url' => 'http://awpcp.com/downloads/comments-ratings-module/?ref=panel',
 					'installed' => defined( 'AWPCP_COMMENTS_MODULE' ),
 					'version' => 'AWPCP_COMMENTS_MODULE_VERSION',
-					'required' => '3.4.1',
+					'required' => '3.6',
 				),
 				'coupons' => array(
-					'name' => __( 'Coupons/Discount', 'AWPCP' ),
-					'url' => 'http://www.awpcp.com/premium-modules/coupon-module/?ref=panel',
+					'name' => __( 'Coupons/Discount', 'another-wordpress-classifieds-plugin' ),
+					'url' => 'http://awpcp.com/downloads/coupons-module/?ref=panel',
 					'installed' => defined( 'AWPCP_COUPONS_MODULE' ),
 					'version' => 'AWPCP_COUPONS_MODULE_DB_VERSION',
-					'required' => '3.0.3',
+					'required' => '3.6',
 				),
 				'extra-fields' => array(
-					'name' => __( 'Extra Fields', 'AWPCP' ),
-					'url' => 'http://www.awpcp.com/premium-modules/extra-fields-module?ref=panel',
+					'name' => __( 'Extra Fields', 'another-wordpress-classifieds-plugin' ),
+					'url' => 'http://awpcp.com/downloads/extra-fields-module/?ref=panel',
 					'installed' => defined( 'AWPCP_EXTRA_FIELDS_MODULE' ),
 					'version' => 'AWPCP_EXTRA_FIELDS_MODULE_DB_VERSION',
-					'required' => '3.4.2',
+					'required' => '3.6',
 				),
 				'featured-ads' => array(
-					'name' => __( 'Featured Ads', 'AWPCP' ),
-					'url' => 'http://www.awpcp.com/premium-modules/featured-ads-module?ref=panel',
+					'name' => __( 'Featured Ads', 'another-wordpress-classifieds-plugin' ),
+					'url' => 'http://awpcp.com/downloads/featured-ads-module/?ref=panel',
 					'installed' => defined( 'AWPCP_FEATURED_ADS_MODULE' ),
 					'version' => 'AWPCP_FEATURED_ADS_MODULE_DB_VERSION',
-					'required' => '3.4',
+					'required' => '3.6',
 				),
 				'fee-per-category' => array(
-					'name' => __( 'Fee per Category', 'AWPCP' ),
-					'url' =>'http://www.awpcp.com/premium-modules/fee-per-category-module?ref=panel',
+					'name' => __( 'Fee per Category', 'another-wordpress-classifieds-plugin' ),
+					'url' =>'http://awpcp.com/downloads/fee-category-module/?ref=panel',
 					'installed' => function_exists( 'awpcp_price_cats' ),
 					'version' => 'AWPCP_FPC_MODULE_DB_VERSION',
-					'required' => '3.4',
+					'required' => '3.6',
 				),
 				'google-checkout' => array(
-					'name' => __( 'Google Checkout', 'AWPCP' ),
+					'name' => __( 'Google Checkout', 'another-wordpress-classifieds-plugin' ),
 					'url' => 'http://www.awpcp.com/premium-modules/google-checkout-module/?ref=panel',
 					'installed' => defined( 'AWPCP_GOOGLE_CHECKOUT_MODULE' ),
 					'version' => 'AWPCP_GOOGLE_CHECKOUT_MODULE_DB_VERSION',
-					'required' => '3.0.1',
+					'required' => '3.6',
+                    'private' => true,
 				),
                 'mark-as-sold' => array(
-                    'name' => __( 'Mark as Sold', 'AWPCP' ),
-                    'url' => 'http://www.awpcp.com/premium-modules/mark-as-sold-module/?ref=panel',
+                    'name' => __( 'Mark as Sold', 'another-wordpress-classifieds-plugin' ),
+                    'url' => 'http://awpcp.com/downloads/mark-as-sold-module/?ref=panel',
                     'installed' => defined( 'AWPCP_MARK_AS_SOLD_MODULE' ),
                     'version' => 'AWPCP_MARK_AS_SOLD_MODULE_DB_VERSION',
-                    'required' => '1.0.1',
+                    'required' => '3.6',
                 ),
 				'paypal-pro' => array(
-					'name' => __(  'PayPal Pro', 'AWPCP'  ),
-					'url' => 'http://www.awpcp.com/premium-modules/paypalpro-payment-module/?ref=user-panel',
+					'name' => __(  'PayPal Pro', 'another-wordpress-classifieds-plugin'  ),
+					'url' => 'http://awpcp.com/downloads/paypal-pro-module/?ref=user-panel',
 					'installed' => defined( 'AWPCP_PAYPAL_PRO_MODULE' ),
 					'version' => 'AWPCP_PAYPAL_PRO_MODULE_DB_VERSION',
-					'required' => '3.0.2',
+					'required' => '3.6',
 				),
 				'region-control' => array(
-					'name' => __( 'Regions Control', 'AWPCP' ),
-					'url' => 'http://www.awpcp.com/premium-modules/regions-control-module?ref=panel',
+					'name' => __( 'Regions Control', 'another-wordpress-classifieds-plugin' ),
+					'url' => 'http://awpcp.com/downloads/regions-module/?ref=panel',
 					'installed' => defined( 'AWPCP_REGION_CONTROL_MODULE' ),
 					'version' => 'AWPCP_REGION_CONTROL_MODULE_DB_VERSION',
-					'required' => '3.5.1',
+					'required' => '3.6',
 				),
 				'restricted-categories' => array(
-					'name' => __( 'Restricted Categories', 'AWPCP' ),
+					'name' => __( 'Restricted Categories', 'another-wordpress-classifieds-plugin' ),
 					'url' => 'http://awpcp.com/premium-modules/restricted-categories-module?ref=panel',
 					'installed' => defined( 'AWPCP_RESTRICTED_CATEGORIES_MODULE' ),
 					'version' => 'AWPCP_RESTRICTED_CATEGORIES_MODULE_DB_VERSION',
-					'required' => '3.4',
+					'required' => '3.6',
 				),
 				'rss' => array(
-					'name' => __( 'RSS', 'AWPCP' ),
-					'url' => 'http://www.awpcp.com/premium-modules/rss-module?ref=panel',
+					'name' => __( 'RSS', 'another-wordpress-classifieds-plugin' ),
+					'url' => 'http://awpcp.com/downloads/rss-feeds-module/?ref=panel',
 					'installed' => defined( 'AWPCP_RSS_MODULE' ),
 					'version' => 'AWPCP_RSS_MODULE_DB_VERSION',
-					'required' => '3.0.3',
+					'required' => '3.6',
 				),
 				'subscriptions' => array(
-					'name' => __( 'Subscriptions', 'AWPCP' ),
-					'url' => 'http://www.awpcp.com/premium-modules/subscriptions-module/?ref=panel',
+					'name' => __( 'Subscriptions', 'another-wordpress-classifieds-plugin' ),
+					'url' => 'http://awpcp.com/downloads/subscriptions-module/ ?ref=panel',
 					'installed' => defined( 'AWPCP_SUBSCRIPTIONS_MODULE' ),
 					'version' => 'AWPCP_SUBSCRIPTIONS_MODULE_DB_VERSION',
-					'required' => '3.4',
+					'required' => '3.6'
 				),
                 'videos' => array(
-                    'name' => __( 'Videos', 'AWPCP' ),
-                    'url' => 'http://www.awpcp.com/',
+                    'name' => __( 'Videos', 'another-wordpress-classifieds-plugin' ),
+                    'url' => 'http://www.awpcp.com/premium-modules/',
                     'installed' => defined( 'AWPCP_VIDEOS_MODULE' ),
                     'version' => 'AWPCP_VIDEOS_MODULE_DB_VERSION',
-                    'required' => '3.5.2',
+                    'required' => '3.6',
                     'private' => true,
                 ),
 				'xml-sitemap' => array(
-					'name' => __(  'XML Sitemap', 'AWPCP'  ),
+					'name' => __( 'XML Sitemap', 'another-wordpress-classifieds-plugin'  ),
 					'url' => 'http://www.awpcp.com/premium-modules/',
 					'installed' => function_exists( 'awpcp_generate_ad_entries' ),
 					'version' => 'AWPCP_XML_SITEMAP_MODULE_DB_VERSION',
-					'required' => '3.2.3',
+					'required' => '3.6',
 				),
+                'zip-code-search' => array(
+                    'name' => __( 'ZIP Code Search Module', 'another-wordpress-classifieds-plugin' ),
+                    'url' => 'http://www.awpcp.com/premium-modules/',
+                    'installed' => defined( 'AWPCP_ZIP_CODE_SEARCH_MODULE_DB_VERSION' ),
+                    'version' => 'AWPCP_ZIP_CODE_SEARCH_MODULE_DB_VERSION',
+                    'required' => '3.6',
+                    'private' => true,
+                ),
 			);
 		}
 
@@ -846,32 +907,6 @@ class AWPCP {
 		}
 
 		return true;
-	}
-
-	/**
-	 * @since 3.0.2
-	 */
-	public function check_compatibility_with_premium_modules() {
-		$this->errors = awpcp_get_property($this, 'errors', array());
-
-		$modules = $this->get_premium_modules_information();
-
-		foreach ($modules as $module => $params) {
-			if (!$params['installed']) continue;
-
-			if (defined($params['version'])) {
-				$version = constant($params['version']);
-			} else {
-				$version = '0.0.1';
-			}
-
-			if (version_compare($version, $params['required']) < 0) {
-				$message = __('The %1$s module you have installed is outdated and not compatible with this version of AWPCP. Please get %1$s %2$s or newer.', 'AWPCP');
-				$name = "<strong>{$params['name']}</strong>";
-				$required = "<strong>{$params['required']}</strong>";
-				$this->errors[] = sprintf($message, $name, $required);
-			}
-		}
 	}
 
 	/**
@@ -897,30 +932,22 @@ class AWPCP {
 		}
 
 		wp_register_style('awpcp-jquery-ui', "//ajax.googleapis.com/ajax/libs/jqueryui/$ui_version/themes/smoothness/jquery-ui.css", array(), $ui_version);
-        wp_register_style( 'awpcp-jquery-plupload-queue', "{$vendors}/jquery-plupload-queue/css/jquery.plupload.queue.css", array(), '2.1.1' );
 
 		wp_register_script('awpcp-jquery-validate', "{$js}/jquery-validate/all.js", array('jquery'), '1.10.0', true);
         wp_register_script( 'awpcp-knockout', "//ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js", array(), '3.1.0', true );
+        wp_register_script( 'awpcp-momentjs-with-locales', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js', array(), '2.10.6', true );
+        wp_register_script( 'awpcp-jquery-breakpoints', "{$js}/jquery-breakpoints/jquery-breakpoints.min.js", array('jquery'), $awpcp_db_version, true );
 
-        wp_register_script(
-            'awpcp-jquery-plupload-queue-source',
-            "{$vendors}/jquery-plupload-queue/jquery.plupload.queue.min.js",
-            array( 'jquery', 'plupload-all' ),
-            '2.1.1',
-            true
-        );
+		/* helpers */
 
-        wp_register_script(
-            'awpcp-jquery-plupload-queue',
-            "{$js}/components/plupload-queue/jquery-plupload-queue.min.js",
-            array( 'awpcp', 'awpcp-jquery-plupload-queue-source' ),
+		wp_register_script(
+            'awpcp',
+            "{$js}/awpcp.min.js",
+            array( 'jquery', 'backbone', 'awpcp-knockout', 'awpcp-jquery-breakpoints' ),
             $awpcp_db_version,
             true
         );
 
-		/* helpers */
-
-		wp_register_script( 'awpcp', "{$js}/awpcp.min.js", array( 'awpcp-knockout', 'jquery' ), $awpcp_db_version, true );
         wp_register_script( 'awpcp-admin', "{$js}/awpcp-admin.min.js", array( 'awpcp', 'awpcp-jquery-validate' ), $awpcp_db_version, true );
 
 		wp_register_script( 'awpcp-billing-form', "{$js}/awpcp-billing-form.js", array( 'awpcp' ), $awpcp_db_version, true );
@@ -941,11 +968,12 @@ class AWPCP {
 		wp_register_script('awpcp-admin-settings', "{$js}/admin-settings.js", array('awpcp-admin'), $awpcp_db_version, true);
 		wp_register_script('awpcp-admin-fees', "{$js}/admin-fees.js", array('awpcp-admin-wp-table-ajax'), $awpcp_db_version, true);
 		wp_register_script('awpcp-admin-credit-plans', "{$js}/admin-credit-plans.js", array('awpcp-admin-wp-table-ajax'), $awpcp_db_version, true);
-		wp_register_script( 'awpcp-admin-listings', "{$js}/admin-listings.js", array( 'awpcp', 'awpcp-admin-wp-table-ajax', 'awpcp-jquery-plupload-queue' ), $awpcp_db_version, true );
+		wp_register_script( 'awpcp-admin-listings', "{$js}/admin-listings.js", array( 'awpcp', 'awpcp-admin-wp-table-ajax', 'plupload-all' ), $awpcp_db_version, true );
 		wp_register_script('awpcp-admin-users', "{$js}/admin-users.js", array('awpcp-admin-wp-table-ajax'), $awpcp_db_version, true);
 		wp_register_script( 'awpcp-admin-attachments', "{$js}/admin-attachments.js", array( 'awpcp' ), $awpcp_db_version, true );
 		wp_register_script( 'awpcp-admin-import', "{$js}/admin-import.js", array( 'awpcp', 'jquery-ui-datepicker', 'jquery-ui-autocomplete' ), $awpcp_db_version, true );
         wp_register_script( 'awpcp-admin-form-fields', "{$js}/admin-form-fields.js", array( 'awpcp', 'jquery-ui-sortable', 'jquery-effects-highlight', 'jquery-effects-core' ), $awpcp_db_version, true );
+        wp_register_script( 'awpcp-admin-manual-upgrade', "{$js}/admin-manual-upgrade.js", array( 'awpcp', 'awpcp-momentjs-with-locales' ), $awpcp_db_version, true );
 
         wp_register_script(
             'awpcp-admin-pointers',
@@ -965,7 +993,7 @@ class AWPCP {
 		wp_register_style( 'awpcp-frontend-style-lte-ie-7', "{$css}/awpcpstyle-lte-ie-7.css", array( 'awpcp-frontend-style' ), $awpcp_db_version );
 		$wp_styles->add_data( 'awpcp-frontend-style-lte-ie-7', 'conditional', 'lte IE 7' );
 
-        $dependencies = array( 'awpcp', 'awpcp-multiple-region-selector', 'awpcp-jquery-validate', 'awpcp-jquery-plupload-queue', 'jquery-ui-datepicker', 'jquery-ui-autocomplete' );
+        $dependencies = array( 'awpcp', 'awpcp-multiple-region-selector', 'awpcp-jquery-validate', 'jquery-ui-datepicker', 'jquery-ui-autocomplete', 'plupload-all' );
 		wp_register_script( 'awpcp-page-place-ad', "{$js}/page-place-ad.js", $dependencies, $awpcp_db_version, true );
 
         $dependencies = array('awpcp', 'awpcp-multiple-region-selector', 'awpcp-jquery-validate', 'jquery-ui-datepicker');
@@ -985,8 +1013,6 @@ class AWPCP {
 	}
 
 	public function enqueue_scripts() {
-        wp_enqueue_style( 'awpcp-jquery-plupload-queue' );
-
 		if (is_admin()) {
 			wp_enqueue_style('awpcp-admin-style');
 			wp_enqueue_script('awpcp-admin-general');
@@ -1006,86 +1032,54 @@ class AWPCP {
 	}
 
 	public function localize_scripts() {
+        $scripts = awpcp_wordpress_scripts();
+
 		// localize jQuery Validate messages
 		$this->js->set( 'default-validation-messages', array(
-			'required' => __( 'This field is required.', 'AWPCP' ),
-			'email' => __( 'Please enter a valid email address.', 'AWPCP' ),
-			'url' => __( 'Please enter a valid URL.', 'AWPCP' ),
-            'classifiedsurl' => __( 'Please enter a valid URL.', 'AWPCP' ),
-			'number' => __( 'Please enter a valid number.', 'AWPCP' ),
-			'money' => __( 'Please enter a valid amount.', 'AWPCP' ),
+			'required' => __( 'This field is required.', 'another-wordpress-classifieds-plugin' ),
+			'email' => __( 'Please enter a valid email address.', 'another-wordpress-classifieds-plugin' ),
+			'url' => __( 'Please enter a valid URL.', 'another-wordpress-classifieds-plugin' ),
+            'classifiedsurl' => __( 'Please enter a valid URL.', 'another-wordpress-classifieds-plugin' ),
+			'number' => __( 'Please enter a valid number.', 'another-wordpress-classifieds-plugin' ),
+			'money' => __( 'Please enter a valid amount.', 'another-wordpress-classifieds-plugin' ),
 		) );
-
-        $script = 'awpcp-jquery-plupload-queue';
-        if ( wp_script_is( $script, 'queue' ) || wp_script_is( $script, 'done' ) || wp_script_is( $script, 'to_do' ) ) {
-            $this->js->localize( 'plupload-queue', array(
-                'Stop Upload' => _x( 'Stop Upload', 'uploader queue', 'AWPCP' ),
-                "Upload URL might be wrong or doesn't exist." => _x( "Upload URL might be wrong or doesn't exist.", 'uploader queue', 'AWPCP' ),
-                'tb' => _x( 'tb', 'uploader queue', 'AWPCP' ),
-                'Size' => _x( 'Size', 'uploader queue', 'AWPCP' ),
-                'Close' => _x( 'Close', 'uploader queue', 'AWPCP' ),
-                'Init error.' => _x( 'Init error.', 'uploader queue', 'AWPCP' ),
-                'Add files to the upload queue and click the start button.' => _x( 'Add files to the upload queue and click the start button.', 'uploader queue', 'AWPCP' ),
-                'Filename' => _x( 'Filename', 'uploader queue', 'AWPCP' ),
-                'Image format either wrong or not supported.' => _x( 'Image format either wrong or not supported.', 'uploader queue', 'AWPCP' ),
-                'Status' => _x( 'Status', 'uploader queue', 'AWPCP' ),
-                'HTTP Error.' => _x( 'HTTP Error.', 'uploader queue', 'AWPCP' ),
-                'Start Upload' => _x( 'Start Upload', 'uploader queue', 'AWPCP' ),
-                'mb' => _x( 'mb', 'uploader queue', 'AWPCP' ),
-                'kb' => _x( 'kb', 'uploader queue', 'AWPCP' ),
-                'Duplicate file error.' => _x( 'Duplicate file error.', 'uploader queue', 'AWPCP' ),
-                'File size error.' => _x( 'File size error.', 'uploader queue', 'AWPCP' ),
-                'N/A' => _x( 'N/A', 'uploader queue', 'AWPCP' ),
-                'gb' => _x( 'gb', 'uploader queue', 'AWPCP' ),
-                'Error: Invalid file extension:' => _x( 'Error: Invalid file extension:', 'uploader queue', 'AWPCP' ),
-                'Select files' => _x( 'Select files', 'uploader queue', 'AWPCP' ),
-                '%s already present in the queue.' => _x( '%s already present in the queue.', 'uploader queue', 'AWPCP' ),
-                'File: %s' => _x( 'File: %s', 'uploader queue', 'AWPCP' ),
-                'b' => _x( 'b', 'uploader queue', 'AWPCP' ),
-                'Uploaded %d/%d files' => _x( 'Uploaded %d/%d files', 'uploader queue', 'AWPCP' ),
-                'Upload element accepts only %d file(s) at a time. Extra files were stripped.' => _x( 'Upload element accepts only %d file(s) at a time. Extra files were stripped.', 'uploader queue', 'AWPCP' ),
-                '%d files queued' => _x( '%d files queued', 'uploader queue', 'AWPCP' ),
-                'File: %s, size: %d, max file size: %d' => _x( 'File: %s, size: %d, max file size: %d', 'uploader queue', 'AWPCP' ),
-                'Drag files here.' => _x( 'Drag files here.', 'uploader queue', 'AWPCP' ),
-                'Runtime ran out of available memory.' => _x( 'Runtime ran out of available memory.', 'uploader queue', 'AWPCP' ),
-                'File count error.' => _x( 'File count error.', 'uploader queue', 'AWPCP' ),
-                'File extension error.' => _x( 'File extension error.', 'uploader queue', 'AWPCP' ),
-                'Error: File too large:' => _x( 'Error: File too large:', 'uploader queue', 'AWPCP' ),
-                'Add Files' => _x( 'Add Files', 'uploader queue', 'AWPCP' ),
-            ) );
-        }
 
         global $wp_locale;
 
         $this->js->localize( 'datepicker', array(
-            // 'clearText' => _x( 'Clear', '[UI Datepicker] Display text for clear link', 'AWPCP' ),
-            // 'clearStatus' => _x( 'Erase the current date', '[UI Datepicker] Status text for clear link', 'AWPCP' ),
-            // 'closeText' => _x( 'Close', '[UI Datepicker] Display text for close link', 'AWPCP' ),
-            // 'closeStatus' => _x( 'Close without change', '[UI Datepicker] Status text for close link', 'AWPCP' ),
-            'prevText' => _x( '&#x3c;Prev', '[UI Datepicker] Display text for previous month link', 'AWPCP' ),
-            // 'prevStatus' => _x( 'Show the previous month', '[UI Datepicker] Status text for previous month link', 'AWPCP' ),
-            'nextText' => _x( 'Next&#x3e;', '[UI Datepicker] Display text for next month link', 'AWPCP' ),
-            // 'nextStatus' => _x( 'Show the next month', '[UI Datepicker] Status text for next month link', 'AWPCP' ),
-            // 'currentText' => _x( 'Today', '[UI Datepicker] Display text for current month link', 'AWPCP' ),
-            // 'currentStatus' => _x( 'Show the current month', '[UI Datepicker] Status text for current month link', 'AWPCP' ),
+            // 'clearText' => _x( 'Clear', '[UI Datepicker] Display text for clear link', 'another-wordpress-classifieds-plugin' ),
+            // 'clearStatus' => _x( 'Erase the current date', '[UI Datepicker] Status text for clear link', 'another-wordpress-classifieds-plugin' ),
+            // 'closeText' => _x( 'Close', '[UI Datepicker] Display text for close link', 'another-wordpress-classifieds-plugin' ),
+            // 'closeStatus' => _x( 'Close without change', '[UI Datepicker] Status text for close link', 'another-wordpress-classifieds-plugin' ),
+            'prevText' => _x( '&#x3c;Prev', '[UI Datepicker] Display text for previous month link', 'another-wordpress-classifieds-plugin' ),
+            // 'prevStatus' => _x( 'Show the previous month', '[UI Datepicker] Status text for previous month link', 'another-wordpress-classifieds-plugin' ),
+            'nextText' => _x( 'Next&#x3e;', '[UI Datepicker] Display text for next month link', 'another-wordpress-classifieds-plugin' ),
+            // 'nextStatus' => _x( 'Show the next month', '[UI Datepicker] Status text for next month link', 'another-wordpress-classifieds-plugin' ),
+            // 'currentText' => _x( 'Today', '[UI Datepicker] Display text for current month link', 'another-wordpress-classifieds-plugin' ),
+            // 'currentStatus' => _x( 'Show the current month', '[UI Datepicker] Status text for current month link', 'another-wordpress-classifieds-plugin' ),
             'monthNames' => array_values( $wp_locale->month ), // Names of months for drop-down and formatting
             'monthNamesShort' => array_values( $wp_locale->month_abbrev ), // For formatting
-            // 'monthStatus' => _x( 'Show a different month', '[UI Datepicker] Status text for selecting a month', 'AWPCP' ),
-            // 'yearStatus' => _x( 'Show a different year', '[UI Datepicker] Status text for selecting a year', 'AWPCP' ),
-            // 'weekHeader' => _x( 'Wk', '[UI Datepicker] Header for the week of the year column', 'AWPCP' ),
-            // 'weekStatus' => _x( 'Week of the year', '[UI Datepicker] Status text for the week of the year column', 'AWPCP' ),
+            // 'monthStatus' => _x( 'Show a different month', '[UI Datepicker] Status text for selecting a month', 'another-wordpress-classifieds-plugin' ),
+            // 'yearStatus' => _x( 'Show a different year', '[UI Datepicker] Status text for selecting a year', 'another-wordpress-classifieds-plugin' ),
+            // 'weekHeader' => _x( 'Wk', '[UI Datepicker] Header for the week of the year column', 'another-wordpress-classifieds-plugin' ),
+            // 'weekStatus' => _x( 'Week of the year', '[UI Datepicker] Status text for the week of the year column', 'another-wordpress-classifieds-plugin' ),
             'dayNames' => array_values( $wp_locale->weekday ),
             'dayNamesShort' => array_values( $wp_locale->weekday_abbrev ), // For formatting
             'dayNamesMin' => array_values( $wp_locale->weekday_initial ), // Column headings for days starting at Sunday
-            // 'dayStatus' => _x( 'Set DD as first week day', '[UI Datepicker] Status text for the day of the week selection', 'AWPCP' ),
-            // 'dateStatus' => _x( 'Select DD, M d', '[UI Datepicker] Status text for the date selection', 'AWPCP' ),
-            'firstDay' => intval( _x( '0', '[UI Datepicker] The first day of the week, Sun = 0, Mon = 1, ...', 'AWPCP' ) ),
-            // 'initStatus' => _x( 'Select a date', '[UI Datepicker] Initial Status text on opening', 'AWPCP' ),
+            // 'dayStatus' => _x( 'Set DD as first week day', '[UI Datepicker] Status text for the day of the week selection', 'another-wordpress-classifieds-plugin' ),
+            // 'dateStatus' => _x( 'Select DD, M d', '[UI Datepicker] Status text for the date selection', 'another-wordpress-classifieds-plugin' ),
+            'firstDay' => intval( _x( '0', '[UI Datepicker] The first day of the week, Sun = 0, Mon = 1, ...', 'another-wordpress-classifieds-plugin' ) ),
+            // 'initStatus' => _x( 'Select a date', '[UI Datepicker] Initial Status text on opening', 'another-wordpress-classifieds-plugin' ),
             'isRTL' => $wp_locale->text_direction == 'ltr' ? false : true // True if right-to-left language, false if left-to-right
         ) );
 
-        $script = 'awpcp';
-        if ( wp_script_is( $script, 'queue' ) || wp_script_is( $script, 'done' ) || wp_script_is( $script, 'to_do' ) ) {
+        $this->js->localize( 'media-uploader-beforeunload', array(
+            'files-are-being-uploaded' => __( 'There are files currently being uploaded.', 'another-wordpress-classifieds-plugin' ),
+            'files-pending-to-be-uploaded' => __( 'There are files pending to be uploaded.', 'another-wordpress-classifieds-plugin' ),
+            'no-files-were-uploaded' => __( "You haven't uploaded any images or files.", 'another-wordpress-classifieds-plugin' ),
+        ) );
+
+        if ( $scripts->script_will_be_printed( 'awpcp' ) ) {
             $this->js->print_data();
         }
 	}
@@ -1139,6 +1133,15 @@ class AWPCP {
 
     public function register_notification_handlers() {
         add_action( 'awpcp-media-uploaded', 'awpcp_send_listing_media_uploaded_notifications', 10, 2 );
+    }
+
+    public function register_file_handlers( $file_handlers ) {
+        $file_handlers['image'] = array(
+            'mime_types' => $this->settings->get_runtime_option( 'image-mime-types' ),
+            'constructor' => 'awpcp_image_file_handler',
+        );
+
+        return $file_handlers;
     }
 
 
@@ -1228,7 +1231,7 @@ class AWPCP {
 	public function get_regions_options() {
 		$type = awpcp_request_param( 'type', '', $_GET );
 		$parent_type = awpcp_request_param( 'parent_type', '', $_GET );
-		$parent = awpcp_request_param( 'parent', '', $_GET );
+		$parent = stripslashes( awpcp_request_param( 'parent', '', $_GET ) );
 		$context = awpcp_request_param( 'context', '', $_GET );
 
 		$options = apply_filters( 'awpcp-get-regions-options', false, $type, $parent_type, $parent, $context );
@@ -1256,6 +1259,9 @@ class AWPCP {
     	die();
 	}
 
+	/**
+	 * XXX: Used in Region Control installer.
+	 */
 	public function clear_categories_list_cache() {
 		$transient_keys = get_option( 'awpcp-categories-list-cache-keys', array() );
 		foreach ( $transient_keys as $transient_key ) {
@@ -1397,88 +1403,6 @@ function awpcp_pages_with_rewrite_rules() {
 		'payment-cancel-page-name'
 	);
 }
-
-function awpcp_add_rewrite_rules($rules) {
-	$pages = awpcp_pages_with_rewrite_rules();
-	$patterns = array();
-
-	foreach ($pages as $refname) {
-		if ($id = awpcp_get_page_id_by_ref($refname)) {
-			if ($page = get_page($id)) {
-				$patterns[$refname] = get_page_uri($page->ID);
-			}
-		}
-	}
-
-	// Payments API rewrite rules
-	add_rewrite_rule('awpcpx/payments/return/([a-zA-Z0-9]+)',
-		'index.php?awpcpx=1&awpcp-module=payments&awpcp-action=return&awpcp-txn=$matches[1]', 'top');
-	add_rewrite_rule('awpcpx/payments/notify/([a-zA-Z0-9]+)',
-		'index.php?awpcpx=1&awpcp-module=payments&awpcp-action=notify&awpcp-txn=$matches[1]', 'top');
-	add_rewrite_rule('awpcpx/payments/cancel/([a-zA-Z0-9]+)',
-		'index.php?awpcpx=1&awpcp-module=payments&awpcp-action=cancel&awpcp-txn=$matches[1]', 'top');
-
-	// Ad Email Verification rewrite rules
-	add_rewrite_rule( 'awpcpx/listings/verify/([0-9]+)/([a-zA-Z0-9]+)',
-		'index.php?awpcpx=1&awpcp-module=listings&awpcp-action=verify&awpcp-ad=$matches[1]&awpcp-hash=$matches[2]', 'top' );
-
-	if (isset($patterns['show-ads-page-name'])) {
-        add_rewrite_rule(
-            '(' . $patterns['show-ads-page-name'] . ')/(\d+)',
-            'index.php?pagename=$matches[1]&id=$matches[2]',
-            'top'
-        );
-	}
-
-	if (isset($patterns['reply-to-ad-page-name'])) {
-		add_rewrite_rule('('.$patterns['reply-to-ad-page-name'].')/(.+?)/(.+?)',
-						 'index.php?pagename=$matches[1]&id=$matches[2]', 'top');
-	}
-
-    if ( isset( $patterns['edit-ad-page-name'] ) ) {
-        add_rewrite_rule(
-            '(' . $patterns['edit-ad-page-name'] . ')(?:/([0-9]+))?/?$',
-            'index.php?pagename=$matches[1]&id=$matches[2]',
-            'top'
-        );
-    }
-
-	if (isset($patterns['browse-categories-page-name'])) {
-		add_rewrite_rule('('.$patterns['browse-categories-page-name'].')/(.+?)/(.+?)',
-						 'index.php?pagename=$matches[1]&cid=$matches[2]&a=browsecat',
-						 'top');
-	}
-
-	if (isset($patterns['payment-thankyou-page-name'])) {
-		add_rewrite_rule('('.$patterns['payment-thankyou-page-name'].')/([a-zA-Z0-9]+)',
-						 'index.php?pagename=$matches[1]&awpcp-txn=$matches[2]', 'top');
-	}
-
-	if (isset($patterns['payment-cancel-page-name'])) {
-		add_rewrite_rule('('.$patterns['payment-cancel-page-name'].')/([a-zA-Z0-9]+)',
-						 'index.php?pagename=$matches[1]&awpcp-txn=$matches[2]', 'top');
-	}
-
-	$view_categories = sanitize_title(get_awpcp_option('view-categories-page-name'));
-
-	if (isset($patterns['main-page-name'])) {
-		add_rewrite_rule('('.$patterns['main-page-name'].')/('.$view_categories.')($|[/?])',
-						 'index.php?pagename=$matches[1]&layout=2&cid='.$view_categories,
-						 'top');
-		add_rewrite_rule('('.$patterns['main-page-name'].')/(setregion)/(.+?)/(.+?)',
-						 'index.php?pagename=$matches[1]&regionid=$matches[3]&a=setregion',
-						 'top');
-		add_rewrite_rule('('.$patterns['main-page-name'].')/(classifiedsrss)/(\d+)',
-						 'index.php?pagename=$matches[1]&awpcp-action=rss&cid=$matches[3]',
-						 'top');
-		add_rewrite_rule('('.$patterns['main-page-name'].')/(classifiedsrss)',
-						 'index.php?pagename=$matches[1]&awpcp-action=rss',
-						 'top');
-	}
-
-	return $rules;
-}
-
 
 /**
  * Register AWPCP query vars

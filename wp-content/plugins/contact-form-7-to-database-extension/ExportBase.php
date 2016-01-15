@@ -741,7 +741,7 @@ class ExportBase {
      * @return bool
      */
     public function queryPermitAllFunctions() {
-        return $this->plugin->getOption('FunctionsInShortCodes', 'false') === 'true';
+        return $this->plugin->getOption('FunctionsInShortCodes', 'false', true) === 'true';
     }
 
     /**

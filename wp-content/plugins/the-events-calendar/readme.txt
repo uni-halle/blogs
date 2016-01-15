@@ -4,8 +4,8 @@ Contributors: ModernTribe, borkweb, zbtirrell, barry.hughes, bordoni, brianjesse
 Tags: events, calendar, event, venue, organizer, dates, date, google maps, conference, workshop, concert, meeting, seminar, summit, class, modern tribe, tribe, widget
 Donate link: http://m.tri.be/29
 Requires at least: 3.9
-Tested up to: 4.3.1
-Stable tag: 4.0
+Tested up to: 4.4
+Stable tag: 4.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -207,7 +207,7 @@ The plugin is produced by <a href="http://m.tri.be/2s">Modern Tribe Inc</a>.
 <a href="https://profiles.wordpress.org/borkweb">Matthew Batchelder</a>
 <a href="https://profiles.wordpress.org/neillmcshea">Neill McShea</a>
 <a href="https://profiles.wordpress.org/mastromktg">Nick Mastromattei</a>
-<a href="https://profiles.wordpress.org/nicosantos”>Nico Santo</a>
+<a href="https://profiles.wordpress.org/nicosantos">Nico Santo</a>
 <a href="https://profiles.wordpress.org/peterchester">Peter Chester</a>
 <a href="https://profiles.wordpress.org/roblagatta">Rob La Gatta</a>
 <a href="https://profiles.wordpress.org/reid.peifer">Reid Peifer</a>
@@ -309,6 +309,51 @@ At no point during the 3.0 lifecycle will the major version change. But you can 
 
 == Changelog ==
 
+= [4.0.4] 2015-12-23 =
+
+* Tweak - Including the latest embedded Event Tickets release for backward compatibility
+
+= [4.0.3] 2015-12-22 =
+
+* Tweak - Adjust single-event.php template to allow the "Time" title and content to be filterable (Props to Sitecrafting for highlighting this issue!)
+* Fix - Resolved issue with an overly escaped Event Category edit URL that prevented editing categories (Thanks to Ian for the first report of this issue!)
+* Fix - Fixed issue where clicking on columns on the Events listed in the Admin Dashboard were ALWAYS sorted by Event start/end date before sorting by the column selected (Cheers to Corrado for bringing this to our attention!)
+
+= [4.0.2] 2015-12-16 =
+
+* Tweak - Adding better support for non-numeric cost values on events (Props to Mirja for highlighting this!)
+* Tweak - Avoid notice level errors when advanced events list widget settings are saved (Thank you Johan for reporting the issue!)
+* Tweak - Improve messaging in the same-slug warning message (Thanks to Simon for bringing this to our attention!)
+* Tweak - Hook to Event Tickets to inject event dates into ticket emails
+* Tweak - Adding better support for default venues (Props to Karly for noting this!)
+* Tweak - Improve handling of internationalized slugs (Cheers to Oliver for the help!)
+* Fix - Ensure the past events list displays the correct events when accessed via ajax (Thank you Jesse for highlighting this!)
+* Fix - Support ordering by venue/organizer within event queries (Thank you Doug for bringing this to our attention!)
+* Fix - Fixed issue where events with the same date/time would sometimes be excluded from single-event navigation (Cheers to JeremyEnglert for the tip!)
+* Fix - Resolved issue where events set with the explicit cost of 0 were not showing as "Free" (Thank you terrizsolo for reporting this!)
+* Fix - Fixed bug where the datepicker in Twenty Sixteen was really ugly
+* Fix - Fixed bug where using Quick Edit on events caused the table columns in the event list to become jumbled on save (Props to A K for the report!)
+* Fix - Resolved bug where category links sometimes included event category 1 (Thank you Anthony for the original report of this problem!)
+* Fix - Fixed a settings page URL (Props to Kristy for the heads up!)
+
+= [4.0.1] 2015-12-10 =
+
+* Tweak - Add a warning message for major updates
+* Tweak - For SEO reasons, use an h1 for the title rather than an h2 (props to wpexplorer for this fix)
+* Tweak - Target the calendar view grid in JS using a simpler selector
+* Fix - Resolved WP 4.4 related fatal on the Nav Menu page that prevented the admin footer from rendering/enqueuing JS
+* Fix - Resolved bug where visiting /events/upcoming could sometimes result in an infinite redirect loop
+* Fix - Removed `wp_trim_excerpt` and use only it's powers, fixing the excerpt problem
+* Fix - Fixed bug where the mobile calendar view did not display the date for the date being viewed
+* Fix - Fixed bug where the admin toolbar's Events > Import > CSV did not link to the CSV importer page
+* Fix - Fixed issue where the events list in the admin dashboard were not ordered in an intuitive manner
+* Fix - Resolved bug where sorting by event category or tag resulted in an error
+* Fix - Fixed bug where full event content text was displayed where excerpts should have been displayed
+* Fix - Resolved issue where events imported via CSV were excluded from single event navigation
+* Fix - Fixed bug where /events/list would sometimes 404 on a new install
+* Fix - Resolved bug where multiday all-day events displayed the end date as one day later than it should be when the End of Day Cut-off was set to something other than 12am
+* Fix - Timezone handling fixed within generated iCal feeds
+
 = [4.0] 2015-12-02 =
 
 * Security - A TON of escaping was added to our codebase thanks to the efforts of the always-helpful Andy Fragen (@afragen)
@@ -334,9 +379,9 @@ At no point during the 3.0 lifecycle will the major version change. But you can 
 * Tweak - Drop the use of the generic CSS class "placeholder" in favor of "tribe-event-placeholder" (Thanks to Marc on the forums!)
 * Tweak - Adjusted the CSS padding on Admin Menu items for Events
 * Tweak - Various codesniffer fixes
+* Tweak - tribe_get_venue_link() no longer echoes if you ask it to return an <a> element
 * Tweak - Error messages for empty Venue names
 * Tweak - Improve our responsiveness for the widget mini calendar, allowing smaller sidebars.
-* Tweak - tribe_get_vanue_link() no longer echoes if you ask it to return an <a> element
 * Tweak - No longer retrieve empty costs when fetching all costs for all events
 * Tweak - Change the priority of bootstrapping the-events-calendar to ensure it occurs before any of the TEC addons in the event some addons are upgraded to v4.0 later than TEC
 * Tweak - Adjust the logic used for adding a noindex/follow tag to event views
@@ -1070,4 +1115,3 @@ Please see the changelog for the complete list of changes in this release. Remem
 = 2.0.3 =
 
 2.0.3 is a minor bug patch for 2.0. Are you upgrading from 1.6.5? Events 2.0 is a MAJOR upgrade, please backup your data and plan a little time in case you have to make any theme edits. Check out the upgrade tutorials in support on the tri.be website.
-

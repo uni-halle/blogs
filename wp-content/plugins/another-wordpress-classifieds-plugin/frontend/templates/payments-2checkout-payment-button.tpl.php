@@ -26,5 +26,5 @@
 	<input type="hidden" name="demo" value="Y" />
 	<?php endif ?>
 
-	<input type="image" src="<?php echo esc_attr( $awpcp_imagesurl ); ?>/buybow2checkout.gif" border="0" name="submit" alt="<?php echo esc_attr( __( 'Pay With 2Checkout', 'AWPCP' ) ); ?>" />
+	<input type="image" src="<?php echo esc_attr( $awpcp_imagesurl ); ?>/buybow2checkout.gif" border="0" name="submit" alt="<?php echo esc_attr( __( 'Pay With 2Checkout', 'another-wordpress-classifieds-plugin' ) ); ?>" />
 </form>

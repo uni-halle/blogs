@@ -235,12 +235,26 @@ function powerpressadmin_advanced_options($General)
 	<h3><?php echo __('Advanced Options', 'powerpress'); ?></h3>
 	<div style="margin-left: 50px;">
 		<div>
+			<input type="checkbox" name="NULL[import_podcast]" value="1" checked disabled /> 
+			<strong><a href="<?php echo admin_url('admin.php?page=powerpress/powerpressadmin_import_feed.php'); ?>"><?php echo __('Import Podcast', 'powerpress'); ?></a></strong> <?php echo powerpressadmin_new(); ?> - 
+			<?php echo __('Import podcast feed from SoundCloud, LibSyn, PodBean or other podcast service.', 'powerpress'); ?> 
+		</div>
+		<div>
+			<input type="checkbox" name="NULL[migrate_media]" value="1" checked disabled /> 
+			<strong><a href="<?php echo admin_url('admin.php?page=powerpress/powerpressadmin_migrate.php'); ?>"><?php echo __('Migrate Media', 'powerpress'); ?></a></strong> <?php echo powerpressadmin_new(); ?> - 
+			<?php echo __('Migrate media files to Blubrry Podcast Media Hosting with only a few clicks.', 'powerpress'); ?> 
+		</div>
+		<div>
+			<input type="checkbox" name="NULL[podcasting_seo]" value="1" checked disabled /> 
+			<strong><a href="<?php echo admin_url('admin.php?page=powerpress/powerpressadmin_search.php'); ?>"><?php echo __('Podcasting SEO', 'powerpress'); ?></a></strong> <?php echo powerpressadmin_new(); ?> - 
+			<?php echo __('Select from 3 different web based audio players.', 'powerpress'); ?> 
+		</div>
+		
+		<div>
 			<input type="checkbox" name="NULL[player_options]" value="1" checked disabled /> 
 			<strong><?php echo __('Audio Player Options', 'powerpress'); ?></strong> - 
 			<?php echo __('Select from 3 different web based audio players.', 'powerpress'); ?> 
 			<span style="font-size: 85%;">(<a href="<?php echo admin_url('admin.php?page=powerpress/powerpressadmin_player.php'); ?>"><?php echo __('configure audio player', 'powerpress'); ?></a>)</span>
-			
-			
 		</div>
 		<div>
 			<input type="checkbox" name="NULL[video_player_options]" value="1" checked disabled /> 
@@ -546,7 +560,7 @@ SelectEmbedField(<?php echo $General['episode_box_embed']; ?>);
 <tr valign="top">
 <th scope="row"><?php echo __('Default Media URL', 'powerpress'); ?></th> 
 <td>
-	<input type="text" style="width: 80%;" name="General[default_url]" value="<?php echo esc_attr($General['default_url']); ?>" maxlength="250" />
+	<input type="text" style="width: 80%;" name="General[default_url]" value="<?php echo esc_attr($General['default_url']); ?>" maxlength="255" />
 	<p><?php echo __('e.g. http://example.com/mediafolder/', 'powerpress'); ?></p>
 	<p><?php echo __('URL above will prefix entered file names that do not start with \'http://\'. URL above must end with a trailing slash. You may leave blank if you always enter the complete URL to your media when creating podcast episodes.', 'powerpress'); ?>
 	</p>
@@ -760,7 +774,7 @@ function powerpressadmin_edit_googleplay($FeedSettings, $General, $FeedAttribs =
 <tr valign="top">
 <th scope="row"><?php echo __('Google Play Listing URL', 'powerpress'); ?></th> 
 <td>
-<input type="text" style="width: 80%;" name="Feed[googleplay_url]" value="<?php echo esc_attr($FeedSettings['googleplay_url']); ?>" maxlength="250" />
+<input type="text" style="width: 80%;" name="Feed[googleplay_url]" value="<?php echo esc_attr($FeedSettings['googleplay_url']); ?>" maxlength="255" />
 <p><?php echo __('Your listing URL will be issued to you from Google Play Music.', 'powerpress'); ?></p>
 <!-- <p><?php echo sprintf(__('e.g. %s', 'powerpress'), 'http://itunes.apple.com/podcast/title-of-podcast/id<strong>000000000</strong>'); ?></p> -->
 
@@ -778,7 +792,7 @@ function powerpressadmin_edit_googleplay($FeedSettings, $General, $FeedAttribs =
 <span class="powerpress-required"><?php echo __('Required', 'powerpress'); ?></span>
 </th>
 <td>
-<input type="text" name="Feed[googleplay_email]" class="bpp_input_med" value="<?php echo esc_attr($FeedSettings['googleplay_email']); ?>" maxlength="250" />
+<input type="text" name="Feed[googleplay_email]" class="bpp_input_med" value="<?php echo esc_attr($FeedSettings['googleplay_email']); ?>" maxlength="255" />
 <div>(<?php echo __('Google will email this address when your podcast is accepted into the Google Play Music Podcast Directory.', 'powerpress'); ?>)</div>
 </td>
 </tr>
@@ -787,7 +801,7 @@ function powerpressadmin_edit_googleplay($FeedSettings, $General, $FeedAttribs =
 <?php echo __('Google Play Author', 'powerpress'); ?> 
 </th>
 <td>
-<input type="text" name="Feed[googleplay_author]" class="bpp_input_med" value="<?php echo esc_attr($FeedSettings['googleplay_author']); ?>" maxlength="250" />
+<input type="text" name="Feed[googleplay_author]" class="bpp_input_med" value="<?php echo esc_attr($FeedSettings['googleplay_author']); ?>" maxlength="255" />
 <div>(<?php echo __('iTunes Author will be used if left blank', 'powerpress'); ?>)</div>
 </td>
 </tr>
@@ -867,6 +881,7 @@ function powerpressadmin_edit_itunes_general($FeedSettings, $General, $FeedAttri
 	}
 	
 	$itunes_feed_url = '';
+
 	switch( $FeedAttribs['type'] )
 	{
 		case 'ttid':
@@ -891,7 +906,7 @@ function powerpressadmin_edit_itunes_general($FeedSettings, $General, $FeedAttri
 <tr valign="top">
 <th scope="row"><?php echo __('iTunes Subscription URL', 'powerpress'); ?></th> 
 <td>
-<input type="text" style="width: 80%;" name="Feed[itunes_url]" value="<?php echo esc_attr($FeedSettings['itunes_url']); ?>" maxlength="250" />
+<input type="text" style="width: 80%;" name="Feed[itunes_url]" value="<?php echo esc_attr($FeedSettings['itunes_url']); ?>" maxlength="255" />
 <p><?php echo sprintf(__('e.g. %s', 'powerpress'), 'http://itunes.apple.com/podcast/title-of-podcast/id<strong>000000000</strong>'); ?></p>
 
 <p><?php echo sprintf( __('Click the following link to %s.', 'powerpress'), '<a href="http://create.blubrry.com/manual/podcast-promotion/submit-podcast-to-itunes/?podcast-feed='. urlencode($itunes_feed_url) .'" target="_blank">'. __('Publish a Podcast on iTunes', 'powerpress') .'</a>'); ?>
@@ -1034,7 +1049,7 @@ function powerpressadmin_edit_media_statistics($General)
 			<?php echo __('Redirect URL 1', 'powerpress'); ?> 
 			</th>
 			<td>
-			<input type="text" style="width: 60%;" name="<?php if( stripos($General['redirect1'], $StatsIntegrationURL) !== false ) echo 'NULL[redirect1]'; else echo 'General[redirect1]'; ?>" value="<?php echo esc_attr($General['redirect1']); ?>" onChange="return CheckRedirect(this);" maxlength="250" <?php if( stripos($General['redirect1'], $StatsIntegrationURL) !== false ) { echo ' readOnly="readOnly"';  $StatsIntegrationURL = false; } ?> /> 
+			<input type="text" style="width: 60%;" name="<?php if( stripos($General['redirect1'], $StatsIntegrationURL) !== false ) echo 'NULL[redirect1]'; else echo 'General[redirect1]'; ?>" value="<?php echo esc_attr($General['redirect1']); ?>" onChange="return CheckRedirect(this);" maxlength="255" <?php if( stripos($General['redirect1'], $StatsIntegrationURL) !== false ) { echo ' readOnly="readOnly"';  $StatsIntegrationURL = false; } ?> /> 
 			</td>
 			</tr>
 			</table>
@@ -1053,7 +1068,7 @@ function powerpressadmin_edit_media_statistics($General)
 			<?php echo __('Redirect URL 2', 'powerpress'); ?> 
 			</th>
 			<td>
-			<input type="text"  style="width: 60%;" name="<?php if( stripos($General['redirect2'], $StatsIntegrationURL) !== false ) echo 'NULL[redirect2]'; else echo 'General[redirect2]'; ?>" value="<?php echo esc_attr($General['redirect2']); ?>" onblur="return CheckRedirect(this);" maxlength="250" <?php if( stripos($General['redirect2'], $StatsIntegrationURL) !== false ) { echo ' readOnly="readOnly"';  $StatsIntegrationURL = false; } ?> />
+			<input type="text"  style="width: 60%;" name="<?php if( stripos($General['redirect2'], $StatsIntegrationURL) !== false ) echo 'NULL[redirect2]'; else echo 'General[redirect2]'; ?>" value="<?php echo esc_attr($General['redirect2']); ?>" onblur="return CheckRedirect(this);" maxlength="255" <?php if( stripos($General['redirect2'], $StatsIntegrationURL) !== false ) { echo ' readOnly="readOnly"';  $StatsIntegrationURL = false; } ?> />
 			</td>
 			</tr>
 			</table>
@@ -1071,7 +1086,7 @@ function powerpressadmin_edit_media_statistics($General)
 			<?php echo __('Redirect URL 3', 'powerpress'); ?> 
 			</th>
 			<td>
-			<input type="text" style="width: 60%;" name="<?php if( stripos($General['redirect3'], $StatsIntegrationURL) !== false ) echo 'NULL[redirect3]'; else echo 'General[redirect3]'; ?>" value="<?php echo esc_attr($General['redirect3']); ?>" onblur="return CheckRedirect(this);" maxlength="250" <?php if( stripos($General['redirect3'], $StatsIntegrationURL) !== false ) echo ' readOnly="readOnly"'; ?> />
+			<input type="text" style="width: 60%;" name="<?php if( stripos($General['redirect3'], $StatsIntegrationURL) !== false ) echo 'NULL[redirect3]'; else echo 'General[redirect3]'; ?>" value="<?php echo esc_attr($General['redirect3']); ?>" onblur="return CheckRedirect(this);" maxlength="255" <?php if( stripos($General['redirect3'], $StatsIntegrationURL) !== false ) echo ' readOnly="readOnly"'; ?> />
 			</td>
 			</tr>
 			</table>
@@ -1646,7 +1661,7 @@ function powerpressadmin_edit_artwork($FeedSettings, $General)
 <span class="powerpress-required"><?php echo __('Required', 'powerpress'); ?></span>
 </th>
 <td>
-<input type="text" id="itunes_image" name="Feed[itunes_image]" style="width: 60%; margin-top: 10px;" value="<?php echo esc_attr( !empty($FeedSettings['itunes_image'])? $FeedSettings['itunes_image']:''); ?>" maxlength="250" />
+<input type="text" id="itunes_image" name="Feed[itunes_image]" style="width: 60%; margin-top: 10px;" value="<?php echo esc_attr( !empty($FeedSettings['itunes_image'])? $FeedSettings['itunes_image']:''); ?>" maxlength="255" />
 <a href="#" onclick="javascript: window.open( document.getElementById('itunes_image').value ); return false;"><?php echo __('preview', 'powerpress'); ?></a>
 
 <p><?php echo __('iTunes image must be at least 1400 x 1400 pixels in .jpg or .png format. iTunes image must not exceed 3000 x 3000 pixels and must use RGB color space.', 'powerpress'); ?> <?php echo __('Example', 'powerpress'); ?>: http://example.com/images/itunes.jpg
@@ -1698,7 +1713,7 @@ function powerpressadmin_edit_artwork($FeedSettings, $General)
 <?php echo __('Google Play Image', 'powerpress'); ?>  <?php echo powerpressadmin_new(); ?>
 </th>
 <td>
-<input type="text" id="googleplay_image" name="Feed[googleplay_image]" style="width: 60%; margin-top: 10px;" value="<?php echo esc_attr( !empty($FeedSettings['googleplay_image'])? $FeedSettings['googleplay_image']:''); ?>" maxlength="250" />
+<input type="text" id="googleplay_image" name="Feed[googleplay_image]" style="width: 60%; margin-top: 10px;" value="<?php echo esc_attr( !empty($FeedSettings['googleplay_image'])? $FeedSettings['googleplay_image']:''); ?>" maxlength="255" />
 <a href="#" onclick="javascript: window.open( document.getElementById('googleplay_image').value ); return false;"><?php echo __('preview', 'powerpress'); ?></a>
 
 <p><?php echo __('Google Play image must be at least 1200 x 1200 pixels in .jpg or .png format to be eligible for featuring. Image must not exceed 7000 x 7000 pixels.', 'powerpress'); ?> <?php echo __('Example', 'powerpress'); ?>: http://example.com/images/googleplay.jpg
@@ -1724,7 +1739,7 @@ function powerpressadmin_edit_artwork($FeedSettings, $General)
 <span style="font-size: 85%; margin-left: 5px;"><?php echo __('Recommendation: Use iTunes image', 'powerpress'); ?></span>
 </th>
 <td>
-<input type="text" id="rss2_image" name="Feed[rss2_image]" style="width: 60%; margin-top: 10px;" value="<?php echo esc_attr( !empty($FeedSettings['rss2_image'])? $FeedSettings['rss2_image']:''); ?>" maxlength="250" />
+<input type="text" id="rss2_image" name="Feed[rss2_image]" style="width: 60%; margin-top: 10px;" value="<?php echo esc_attr( !empty($FeedSettings['rss2_image'])? $FeedSettings['rss2_image']:''); ?>" maxlength="255" />
 <a href="#" onclick="javascript: window.open( document.getElementById('rss2_image').value ); return false;"><?php echo __('preview', 'powerpress'); ?></a>
 
 <p><?php echo __('Place the URL to the RSS image above.', 'powerpress'); ?> <?php echo __('Example', 'powerpress'); ?> http://mysite.com/images/rss.jpg</p>

@@ -3,14 +3,14 @@
 <?php echo get_awpcp_option('contactformbodymessage'); ?>
 
 
-<?php _e("Contacting about", "AWPCP"); ?>: <?php echo $ad_title; ?> 
+<?php _e("Contacting about", 'another-wordpress-classifieds-plugin'); ?>: <?php echo $ad_title; ?> 
 <?php echo urldecode( $ad_url ); ?> 
 
-<?php _ex("Message", 'reply email', "AWPCP"); ?>:
+<?php _ex("Message", 'reply email', 'another-wordpress-classifieds-plugin'); ?>:
 
     <?php echo $message; ?> 
 
-<?php _e("Reply to", "AWPCP"); ?>: <?php echo $sender_name; ?>, <?php echo $sender_email; ?>
+<?php _e("Reply to", 'another-wordpress-classifieds-plugin'); ?>: <?php echo $sender_name; ?>, <?php echo $sender_email; ?>
 
 
 <?php echo $nameofsite; ?> 

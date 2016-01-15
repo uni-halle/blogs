@@ -3,7 +3,7 @@
 class AWPCP_Search_Widget extends WP_Widget {
 
 	function __construct() {
-		parent::__construct(false, __('AWPCP Search Ads', 'AWPCP'));
+		parent::__construct(false, __('AWPCP Search Ads', 'another-wordpress-classifieds-plugin'));
 	}
 
 	/**
@@ -42,7 +42,7 @@ class AWPCP_Search_Widget extends WP_Widget {
 
         $selected = stripslashes_deep( awpcp_request_param( 'searchname', null ) );
 
-        return $this->select( $options, __('Find ads by Contact Name', "AWPCP"), 'searchname', $selected, __( 'All Contact Names', 'AWPCP' ) );
+        return $this->select( $options, __('Find ads by Contact Name', 'another-wordpress-classifieds-plugin'), 'searchname', $selected, __( 'All Contact Names', 'another-wordpress-classifieds-plugin' ) );
     }
 
     /**
@@ -89,9 +89,9 @@ class AWPCP_Search_Widget extends WP_Widget {
 	 */
 	public function select($options, $label, $name, $selected=null, $default=null) {
 		$id = 'awpcp-search-' . sanitize_title($label);
-        $default = is_null( $default ) ? __('Select Option', 'AWPCP') : $default;
+        $default = is_null( $default ) ? __('Select Option', 'another-wordpress-classifieds-plugin') : $default;
 
-		$html = sprintf('<label for="%s">%s</label>', $id, $label);
+		$html = sprintf('<label for="%s" class="awpcp-block-label">%s</label>', $id, $label);
 		$html .= sprintf('<select id="%s" name="%s">', $id, $name);
 		if (is_array($options)) {
 			$html .= sprintf( '<option value="">%s</option>', $default );
@@ -104,7 +104,7 @@ class AWPCP_Search_Widget extends WP_Widget {
 				}
 			}
 		} else {
-			$html .= sprintf('<option value="">%s</option>', __('Select Option', 'AWPCP'));
+			$html .= sprintf('<option value="">%s</option>', __('Select Option', 'another-wordpress-classifieds-plugin'));
 			$html .= $options;
 		}
 		$html .= '</select>';
@@ -137,7 +137,7 @@ class AWPCP_Search_Widget extends WP_Widget {
 		$keywordphrase = stripslashes_deep( awpcp_request_param( 'keywordphrase' ) );
 
 		if ($instance['show_keyword'] == 1) {
-			echo '<label for="awpcp-search-keywordphrase">' . __('Search by keyword', "AWPCP") . '</label>';
+			echo '<label for="awpcp-search-keywordphrase" class="awpcp-block-label">' . __('Search by keyword', 'another-wordpress-classifieds-plugin') . '</label>';
 			echo '<input id="awpcp-search-keywordphrase" type="text" name="keywordphrase" value="' . esc_attr($keywordphrase) . '">';
 		}
 		if ($instance['show_by'] == 1) {
@@ -147,7 +147,7 @@ class AWPCP_Search_Widget extends WP_Widget {
 		echo $this->render_region_fields( $instance );
 
 		if ($instance['show_category'] == 1) {
-			$label = __('Search by Category', "AWPCP");
+			$label = __('Search by Category', 'another-wordpress-classifieds-plugin');
 			$name = 'searchcategory';
 			$selected = stripslashes_deep( awpcp_request_param( $name, null ) );
 
@@ -161,7 +161,9 @@ class AWPCP_Search_Widget extends WP_Widget {
             ) );
 		}
 
-		echo '<div class="submit"><input class="button" type="submit" value="' . __( 'Search', 'AWPCP' ) . '"></div>';
+        do_action( 'awpcp-search-listings-widget-form-field' );
+
+		echo '<div class="submit"><input class="button" type="submit" value="' . __( 'Search', 'another-wordpress-classifieds-plugin' ) . '"></div>';
         echo '</form></div>';
         echo '</div>';
 		echo $after_widget;

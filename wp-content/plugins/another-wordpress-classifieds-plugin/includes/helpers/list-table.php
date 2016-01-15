@@ -30,7 +30,10 @@ class AWPCP_List_Table extends WP_List_Table {
 		$hidden = get_hidden_columns( $this->_screen );
 		$sortable = $this->_sortable;
 
-		return array( $columns, $hidden, $sortable );
+		$column_slugs = array_keys( $columns );
+		$primary_column = $column_slugs[1];
+
+		return array( $columns, $hidden, $sortable, $primary_column );
 	}
 
 	function get_columns() {

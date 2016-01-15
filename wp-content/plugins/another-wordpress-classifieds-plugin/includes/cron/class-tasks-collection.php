@@ -23,7 +23,7 @@ class AWPCP_TasksCollection {
         ) );
 
         if ( $result === false ) {
-            $messsage = __( 'There was an error trying to save the task to the database.', 'AWPCP' );
+            $messsage = __( 'There was an error trying to save the task to the database.', 'another-wordpress-classifieds-plugin' );
             throw new AWPCP_Exception( $message );
         }
 
@@ -36,11 +36,11 @@ class AWPCP_TasksCollection {
         $result = $this->db->get_row( $this->db->prepare( $sql, $task_id ) );
 
         if ( $result === false ) {
-            throw new AWPCP_Exception( __( 'There was an error trying to find tasks in the database.', 'AWPCP' ) );
+            throw new AWPCP_Exception( __( 'There was an error trying to find tasks in the database.', 'another-wordpress-classifieds-plugin' ) );
         }
 
         if ( is_null( $result ) ) {
-            $message = __( 'There is no task with ID %d.', 'AWPCP' );
+            $message = __( 'There is no task with ID %d.', 'another-wordpress-classifieds-plugin' );
             throw new AWPCP_Exception( sprintf( $message, $task_id ) );
         }
 

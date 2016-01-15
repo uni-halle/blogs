@@ -2,11 +2,13 @@
 
 class AWPCP_Media {
 
+    public $metadata;
+
     const STATUS_AWAITING_APPROVAL = 'Awaiting-Approval';
     const STATUS_APPROVED = 'Approved';
     const STATUS_REJECTED = 'Rejected';
 
-    public function __construct( $id, $ad_id, $name, $path, $mime_type, $enabled, $status, $is_primary, $created ) {
+    public function __construct( $id, $ad_id, $name, $path, $mime_type, $enabled, $status, $is_primary, $metadata, $created ) {
         $this->id = $id;
         $this->ad_id = $ad_id;
         $this->name = $name;
@@ -15,6 +17,7 @@ class AWPCP_Media {
         $this->enabled = $enabled;
         $this->status = $status;
         $this->is_primary = $is_primary;
+        $this->metadata = $metadata;
         $this->created = $created;
     }
 
@@ -28,6 +31,7 @@ class AWPCP_Media {
             $object->enabled,
             $object->status,
             $object->is_primary,
+            isset( $object->metadata ) ? maybe_unserialize( $object->metadata ) : array(),
             $object->created
         );
     }
@@ -50,8 +54,19 @@ class AWPCP_Media {
         return (bool) $this->is_primary;
     }
 
-    public function get_original_file_path() {
-        return trailingslashit( AWPCPUPLOADDIR ) . $this->path;
+    public function get_associated_paths() {
+        $info = awpcp_utf8_pathinfo( AWPCPUPLOADDIR . $this->name );
+
+        $filenames = apply_filters( 'awpcp-file-associated-paths', array(
+            AWPCPUPLOADDIR . "{$info['basename']}",
+            AWPCPUPLOADDIR . "{$info['filename']}-large.{$info['extension']}",
+            AWPCPUPLOADDIR . "{$this->path}",
+            AWPCPUPLOADDIR . str_replace( $info['filename'], "{$info['filename']}-large", $this->path ),
+            AWPCPTHUMBSUPLOADDIR . "{$info['basename']}",
+            AWPCPTHUMBSUPLOADDIR . "{$info['filename']}-primary.{$info['extension']}",
+        ), $this );
+
+        return $filenames;
     }
 
     public function get_url( $size = 'thumbnail' ) {
@@ -67,10 +82,32 @@ class AWPCP_Media {
     }
 
     public function get_original_file_url() {
-        return trailingslashit( AWPCPUPLOADURL ) . $this->path;
+        return $this->get_url_from_path( $this->get_original_file_path() );
+    }
+
+    private function get_url_from_path( $path ) {
+        $url = $path ? $this->sanitize_url( str_replace( WP_CONTENT_DIR, WP_CONTENT_URL, $path ) ) : false;
+        return apply_filters( 'awpcp-media-url-from-path', $url, $path, $this );
+    }
+
+    private function sanitize_url( $url ) {
+        $windows_directory_separator = '\\';
+
+        $url = str_replace( ' ', '%20', $url );
+        $url = str_replace( $windows_directory_separator, '/', $url );
+
+        return $url;
+    }
+
+    public function get_original_file_path() {
+        return trailingslashit( AWPCPUPLOADDIR ) . $this->path;
     }
 
     public function get_large_image_url() {
+        return $this->get_url_from_path( $this->get_large_image_path() );
+    }
+
+    public function get_large_image_path() {
         $file_path = $this->get_original_file_path();
 
         $alternatives = array(
@@ -78,41 +115,12 @@ class AWPCP_Media {
             $file_path
         );
 
-        return $this->get_url_from_path( $this->get_path_from_alternatives( $alternatives ) );
+        return $this->get_path_from_alternatives( $alternatives );
     }
 
     private function get_path_with_suffix( $path, $suffix ) {
         $extension = awpcp_get_file_extension( $path );
         return str_replace( ".{$extension}", "-{$suffix}.{$extension}", $path );
-    }
-
-    private function get_url_with_suffix( $base_url, $suffix ) {
-        $extension = awpcp_get_file_extension( $this->get_original_file_url() );
-        return str_replace( ".{$extension}", "-{$suffix}.{$extension}", $base_url );
-    }
-
-    public function get_primary_thumbnail_url() {
-        $thumbnail_path = $this->get_thumbnail_path();
-
-        $alternatives = array(
-            $this->get_path_with_suffix( $thumbnail_path, 'primary' ),
-            $thumbnail_path,
-            $this->get_original_file_path(),
-        );
-
-        return $this->get_url_from_path( $this->get_path_from_alternatives( $alternatives ) );
-    }
-
-    public function get_thumbnail_url() {
-        return $this->get_url_from_path( $this->get_thumbnail_path() );
-    }
-
-    public function get_thumbnail_path() {
-        $alternatives = apply_filters( 'awpcp-get-file-thumbnail-url-alternatives', array(
-            trailingslashit( AWPCPTHUMBSUPLOADDIR ) . $this->name,
-        ), $this );
-
-        return $this->get_path_from_alternatives( $alternatives );
     }
 
     private function get_path_from_alternatives( $alternatives ) {
@@ -125,8 +133,32 @@ class AWPCP_Media {
         return false;
     }
 
-    private function get_url_from_path( $path ) {
-        return $path ? str_replace( rtrim( ABSPATH, '/' ), get_site_url(), $path ) : false;
+    public function get_primary_thumbnail_url() {
+        return $this->get_url_from_path( $this->get_primary_thumbnail_path() );
+    }
+
+    public function get_primary_thumbnail_path() {
+        $thumbnail_path = $this->get_thumbnail_path();
+
+        $alternatives = array(
+            $this->get_path_with_suffix( $thumbnail_path, 'primary' ),
+            $thumbnail_path,
+            $this->get_original_file_path(),
+        );
+
+        return $this->get_path_from_alternatives( $alternatives );
+    }
+
+    public function get_thumbnail_url() {
+        return $this->get_url_from_path( $this->get_thumbnail_path() );
+    }
+
+    public function get_thumbnail_path() {
+        $alternatives = apply_filters( 'awpcp-get-file-thumbnail-url-alternatives', array(
+            trailingslashit( AWPCPTHUMBSUPLOADDIR ) . $this->name,
+        ), $this );
+
+        return $this->get_path_from_alternatives( $alternatives );
     }
 
     public function get_icon_url() {
@@ -157,7 +189,7 @@ class AWPCP_FilesCollection {
         $file = awpcp_media_api()->find_by_id( $file_id );
 
         if ( is_null( $file ) ) {
-            $message = __( 'No file was found with id: %d', 'AWPCP' );
+            $message = __( 'No file was found with id: %d', 'another-wordpress-classifieds-plugin' );
             throw new AWPCP_Exception( sprintf( $message, $file_id ) );
         }
 

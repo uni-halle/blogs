@@ -42,8 +42,8 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
     protected function _dispatch($default=null) {
         if ( $this->should_redirect_user_to_ad_management_panel() ) {
             $url = admin_url('admin.php?page=awpcp-panel');
-            $message = __('Please go to the Ad Management panel to edit your Ads.', 'AWPCP');
-            $message = sprintf('%s <a href="%s">%s</a>.', $message, $url, __('Click here', 'AWPCP'));
+            $message = __('Please go to the Ad Management panel to edit your Ads.', 'another-wordpress-classifieds-plugin');
+            $message = sprintf('%s <a href="%s">%s</a>.', $message, $url, __('Click here', 'another-wordpress-classifieds-plugin'));
             return $this->render('content', awpcp_print_message($message));
         } else {
             return $this->handle_request( $default );
@@ -73,7 +73,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
             if ( $this->is_user_allowed_to_edit( $ad ) ) {
                 return $this->render_page( $this->get_current_action( 'details' ) );
             } else {
-                $message = __( 'You are not allowed to edit the specified Ad.', 'AWPCP' );
+                $message = __( 'You are not allowed to edit the specified Ad.', 'another-wordpress-classifieds-plugin' );
                 return $this->render( 'content', awpcp_print_error( $message ) );
             }
         } else {
@@ -115,27 +115,27 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
 
         if ($form['attempts'] == 0 && get_awpcp_option('enable-user-panel') == 1) {
             $url = admin_url('admin.php?page=awpcp-panel');
-            $message = __('You are currently not logged in, if you have an account in this website you can log in and go to the Ad Management panel to edit your Ads.', 'AWPCP');
-            $message = sprintf('%s <a href="%s">%s</a>', $message, $url, __('Click here', 'AWPCP'));
+            $message = __('You are currently not logged in, if you have an account in this website you can log in and go to the Ad Management panel to edit your Ads.', 'another-wordpress-classifieds-plugin');
+            $message = sprintf('%s <a href="%s">%s</a>', $message, $url, __('Click here', 'another-wordpress-classifieds-plugin'));
             $this->messages[] = $message;
         }
 
         $send_access_key_url = add_query_arg( array( 'step' => 'send-access-key' ), $this->url() );
 
         if (empty($form['ad_email'])) {
-            $errors['ad_email'] = __('Please enter the email address you used when you created your Ad in addition to the Ad access key that was emailed to you after your Ad was submitted.', 'AWPCP');
+            $errors['ad_email'] = __('Please enter the email address you used when you created your Ad in addition to the Ad access key that was emailed to you after your Ad was submitted.', 'another-wordpress-classifieds-plugin');
         } else if (!is_email($form['ad_email'])) {
-            $errors['ad_email'] = __('Please enter a valid email address.', 'AWPCP');
+            $errors['ad_email'] = __('Please enter a valid email address.', 'another-wordpress-classifieds-plugin');
         }
 
         if (empty($form['ad_key'])) {
-            $errors['ad_key'] = __('Please enter your Ad access key.', 'AWPCP');
+            $errors['ad_key'] = __('Please enter your Ad access key.', 'another-wordpress-classifieds-plugin');
         }
 
         if (empty($errors)) {
             $this->ad = AWPCP_Ad::find_by_email_and_key($form['ad_email'], $form['ad_key']);
             if (is_null($this->ad)) {
-                $errors[] = __('The email address and access key you entered does not match any of the Ads in our system.', 'AWPCP');
+                $errors[] = __('The email address and access key you entered does not match any of the Ads in our system.', 'another-wordpress-classifieds-plugin');
             } else {
                 return $this->details_step();
             }
@@ -168,7 +168,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         $listing_id = $this->get_listing_id();
 
         if ( $listing_id ) {
-            $message = __( 'The specified Ad doesn\'t exists.', 'AWPCP' );
+            $message = __( 'The specified Ad doesn\'t exists.', 'another-wordpress-classifieds-plugin' );
             return $this->render( 'content', awpcp_print_error( $message ) );
         } else {
             return $this->enter_email_and_key_step();
@@ -205,10 +205,10 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         $required = $this->get_required_fields();
 
         if ( is_admin() ) {
-            $manage_attachments = __( 'Manage Attachments', 'AWPCP' );
+            $manage_attachments = __( 'Manage Attachments', 'another-wordpress-classifieds-plugin' );
             $url = add_query_arg( array( 'action' => 'manage-images', 'id' => $ad->ad_id ), $this->url() );
             $link = sprintf( '<strong><a href="%s" title="%s">%s</a></strong>', esc_url( $url ), esc_attr( $manage_attachments ), esc_html( $manage_attachments ) );
-            $message = __( "Go to the %s section to manage the Images and Attachments for this Ad.", "AWPCP");
+            $message = __( "Go to the %s section to manage the Images and Attachments for this Ad.", 'another-wordpress-classifieds-plugin');
 
             $this->messages[] = sprintf( $message, $link );
         }
@@ -226,7 +226,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         $ad = $this->get_ad();
 
         if (is_null($ad)) {
-            $message = __('The specified Ad doesn\'t exists.', 'AWPCP');
+            $message = __('The specified Ad doesn\'t exists.', 'another-wordpress-classifieds-plugin');
             return $this->render('content', awpcp_print_error($message));
         }
 
@@ -271,7 +271,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         }
 
         if (!$ad->save()) {
-            $errors[] = __('There was an unexpected error trying to save your Ad details. Please try again or contact an administrator.', 'AWPCP');
+            $errors[] = __('There was an unexpected error trying to save your Ad details. Please try again or contact an administrator.', 'another-wordpress-classifieds-plugin');
             return $this->details_step_form($ad, $data, $errors);
         }
 
@@ -293,7 +293,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         $ad = $this->get_ad();
 
         if (is_null($ad)) {
-            $message = __('The specified Ad doesn\'t exists. No images can be added at this time.', 'AWPCP');
+            $message = __('The specified Ad doesn\'t exists. No images can be added at this time.', 'another-wordpress-classifieds-plugin');
             return $this->render('content', awpcp_print_error($message));
         }
 
@@ -345,7 +345,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
                 'ad_id' => $ad->ad_id,
                 'edit-hash' => $this->get_edit_hash( $ad ) ),
             'messages' => $this->messages,
-            'next' => __( 'Finish', 'AWPCP' ),
+            'next' => __( 'Finish', 'another-wordpress-classifieds-plugin' ),
         ) );
 
         $template = AWPCP_DIR . '/frontend/templates/page-place-ad-upload-images-step.tpl.php';
@@ -357,14 +357,14 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         $ad = $this->get_ad();
 
         if (is_null($ad)) {
-            $message = __('The specified Ad doesn\'t exists.', 'AWPCP');
+            $message = __('The specified Ad doesn\'t exists.', 'another-wordpress-classifieds-plugin');
             return $this->render('content', awpcp_print_error($message));
         }
 
         awpcp_listings_api()->consolidate_existing_ad( $ad );
 
         if (is_admin()) {
-            $message = __('The Ad has been edited successfully. <a href="%s">Go back to view listings</a>.', 'AWPCP');
+            $message = __('The Ad has been edited successfully. <a href="%s">Go back to view listings</a>.', 'another-wordpress-classifieds-plugin');
             $page = awpcp_current_user_is_moderator() ? 'awpcp-listings' : 'awpcp-panel';
             $url = add_query_arg('page', $page, admin_url('admin.php'));
 
@@ -385,12 +385,12 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         $ad = $this->get_ad();
 
         if (is_null($ad)) {
-            $message = __('The specified Ad doesn\'t exists.', 'AWPCP');
+            $message = __('The specified Ad doesn\'t exists.', 'another-wordpress-classifieds-plugin');
             return $this->render('content', awpcp_print_error($message));
         }
 
         if ( ! awpcp_post_param( 'confirm', false ) || ! $ad->delete() ) {
-            $this->messages[] = __('There was a problem trying to delete your Ad. The Ad was not deleted.', 'AWPCP');
+            $this->messages[] = __('There was a problem trying to delete your Ad. The Ad was not deleted.', 'another-wordpress-classifieds-plugin');
             return $this->details_step();
         }
 
@@ -402,7 +402,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
     }
 
     private function render_delete_listing_confirmation() {
-        $this->messages[] = __( 'Your Ad has been successfully deleted.', 'AWPCP' );
+        $this->messages[] = __( 'Your Ad has been successfully deleted.', 'another-wordpress-classifieds-plugin' );
         $template = AWPCP_DIR . '/templates/frontend/edit-listing-page-delete-listing-confirmation.tpl.php';
 
         return $this->render( $template, array(
@@ -422,22 +422,22 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
 
         if ($form['attempts'] == 0 && get_awpcp_option('enable-user-panel') == 1) {
             $url = admin_url('admin.php?page=awpcp-panel');
-            $message = __('You are currently not logged in, if you have an account in this website you can log in and go to the Ad Management panel to edit your Ads.', 'AWPCP');
-            $message = sprintf('%s <a href="%s">%s</a>', $message, $url, __('Click here', 'AWPCP'));
+            $message = __('You are currently not logged in, if you have an account in this website you can log in and go to the Ad Management panel to edit your Ads.', 'another-wordpress-classifieds-plugin');
+            $message = sprintf('%s <a href="%s">%s</a>', $message, $url, __('Click here', 'another-wordpress-classifieds-plugin'));
             $this->messages[] = $message;
         }
 
         if (empty($form['ad_email'])) {
-            $errors['ad_email'] = __('Please enter the email address you used when you created your Ad.', 'AWPCP');
+            $errors['ad_email'] = __('Please enter the email address you used when you created your Ad.', 'another-wordpress-classifieds-plugin');
         } else if (!is_email($form['ad_email'])) {
-            $errors['ad_email'] = __('Please enter a valid email address.', 'AWPCP');
+            $errors['ad_email'] = __('Please enter a valid email address.', 'another-wordpress-classifieds-plugin');
         }
 
         $ads = array();
         if ( empty( $errors ) ) {
             $ads = AWPCP_Ad::find_by_email( $form['ad_email'] );
             if ( empty( $ads ) ) {
-                $errors[] = __('The email address you entered does not match any of the Ads in our system.', 'AWPCP');
+                $errors[] = __('The email address you entered does not match any of the Ads in our system.', 'another-wordpress-classifieds-plugin');
             }
         } else if ( $form['attempts'] == 0 ) {
             $errors = array();
@@ -480,10 +480,10 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         ));
 
         if ($message->send()) {
-            $this->messages[] = sprintf( __( 'The access keys were sent to %s.', 'AWPCP' ), esc_html( $recipient ) );
+            $this->messages[] = sprintf( __( 'The access keys were sent to %s.', 'another-wordpress-classifieds-plugin' ), esc_html( $recipient ) );
             return true;
         } else {
-            $errors[] = sprintf( __( 'There was an error trying to send the email to %s.', 'AWPCP' ), esc_html( $recipient ) );
+            $errors[] = sprintf( __( 'There was an error trying to send the email to %s.', 'another-wordpress-classifieds-plugin' ), esc_html( $recipient ) );
             return false;
         }
     }

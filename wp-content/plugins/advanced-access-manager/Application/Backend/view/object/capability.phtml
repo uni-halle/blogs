@@ -3,7 +3,7 @@
         <div class="row aam-user-note hidden">
             <div class="col-xs-12">
                 <p class="aam-info">
-                    <?php echo AAM_Backend_Helper::preparePhrase(__('[Please notice!] You are not allowed to assign or create a new capability that does not belong to user\'s role. Consider creating a new role with desired list of capabilities and then assign that role to user.', AAM_KEY), 'strong'); ?>
+                    <?php echo AAM_Backend_Helper::preparePhrase('[Please notice!] You are not allowed to assign or create a new capability that does not belong to user\'s role. Consider creating a new role with desired list of capabilities and then assign that role to user.', 'strong'); ?>
                 </p>
             </div>
         </div>
@@ -28,8 +28,8 @@
                 <tr>
                     <th>ID</th>
                     <th width="30%"><?php echo __('Category', AAM_KEY); ?></th>
-                    <th width="60%"><?php echo __('Capability', AAM_KEY); ?></th>
-                    <th><?php echo __('Assign', AAM_KEY); ?></th>
+                    <th width="50%"><?php echo __('Capability', AAM_KEY); ?></th>
+                    <th><?php echo __('Actions', AAM_KEY); ?></th>
                 </tr>
             </thead>
             <tbody></tbody>

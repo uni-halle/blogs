@@ -51,7 +51,7 @@ class AWPCP_Ad {
 		$ad->websiteurl = $object->websiteurl;
 		$ad->posterip = $object->posterip;
 
-		return $ad;
+		return apply_filters( 'awpcp-listing-from-object', $ad, $object );
 	}
 
 	public static function find_by_category_id($id) {
@@ -330,7 +330,7 @@ class AWPCP_Ad {
 	}
 
 	public static function generate_key() {
-		return md5(sprintf('%s%s%d', AUTH_KEY, uniqid('', true), rand(1, 1000)));
+		return md5( sprintf( '%s%s%d', AUTH_KEY, uniqid( '', true ), rand( 1, 1000 ) ) );
 	}
 
 	private static function _get_ad_regions($ad_id) {
@@ -505,8 +505,9 @@ class AWPCP_Ad {
 	}
 
 	public function get_category_name() {
-		if (!isset($this->category_name))
-			$this->category_name = get_adcatname($object->category_id);
+		if ( ! isset( $this->category_name ) ) {
+			$this->category_name = get_adcatname( $this->ad_category_id );
+		}
 		return $this->category_name;
 	}
 
@@ -515,8 +516,9 @@ class AWPCP_Ad {
 	 */
 	public function get_access_key() {
 		if ( empty( $this->ad_key ) ) {
-			$this->ad_key = AWPCP_Ad::generate_key();
-			$this->save();
+            $access_key = AWPCP_Ad::generate_key();
+            $this->ad_key = apply_filters( 'awpcp-listing-access-key', $access_key, $this );
+            $this->save();
 		}
 
 		return $this->ad_key;
@@ -527,7 +529,7 @@ class AWPCP_Ad {
 	 */
 	public function get_payment_term_name() {
 		$payment_term = awpcp_payments_api()->get_ad_payment_term( $this );
-		return $payment_term ? $payment_term->name : __( 'N/A', 'AWPCP' );
+		return $payment_term ? $payment_term->name : __( 'N/A', 'another-wordpress-classifieds-plugin' );
 	}
 
 	/**
@@ -668,18 +670,18 @@ class AWPCP_Ad {
 
 	function get_payment_status() {
 		if (empty($this->payment_status)) {
-			return _x('N/A', 'ad payment status', 'AWPCP');
+			return _x('N/A', 'ad payment status', 'another-wordpress-classifieds-plugin');
 		}
 
 		switch($this->payment_status) {
 			case AWPCP_Payment_Transaction::PAYMENT_STATUS_PENDING:
-				return _x('Pending', 'ad payment status', 'AWPCP');
+				return _x('Pending', 'ad payment status', 'another-wordpress-classifieds-plugin');
 			case AWPCP_Payment_Transaction::PAYMENT_STATUS_COMPLETED:
-				return _x('Completed', 'ad payment status', 'AWPCP');
+				return _x('Completed', 'ad payment status', 'another-wordpress-classifieds-plugin');
 			case AWPCP_Payment_Transaction::PAYMENT_STATUS_NOT_REQUIRED:
-				return _x('Not Required', 'ad payment status', 'AWPCP');
+				return _x('Not Required', 'ad payment status', 'another-wordpress-classifieds-plugin');
 			case 'Unpaid':
-				return _x('Unpaid', 'ad payment status', 'AWPCP');
+				return _x('Unpaid', 'ad payment status', 'another-wordpress-classifieds-plugin');
 			default:
 				return 'Undefined';
 		}

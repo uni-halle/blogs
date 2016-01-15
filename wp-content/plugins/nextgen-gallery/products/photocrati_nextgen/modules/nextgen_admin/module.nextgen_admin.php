@@ -122,8 +122,8 @@ class M_NextGen_Admin extends C_Base_Module
         wp_register_style('gritter',  $router->get_static_url('photocrati-nextgen_admin#gritter/css/gritter.css'));
         wp_register_script('ngg_progressbar', $router->get_static_url('photocrati-nextgen_admin#ngg_progressbar.js'), array('gritter'));
         wp_register_style('ngg_progressbar', $router->get_static_url('photocrati-nextgen_admin#ngg_progressbar.css'), array('gritter'));
-        wp_register_style('select2', $router->get_static_url('photocrati-nextgen_admin#select2/select2.css'));
-        wp_register_script('select2', $router->get_static_url('photocrati-nextgen_admin#select2/select2.modded.js'));
+        wp_register_style('ngg_select2', $router->get_static_url('photocrati-nextgen_admin#select2/select2.css'));
+        wp_register_script('ngg_select2', $router->get_static_url('photocrati-nextgen_admin#select2/select2.modded.js'));
         wp_register_script(
             'jquery.nextgen_radio_toggle',
             $router->get_static_url('photocrati-nextgen_admin#jquery.nextgen_radio_toggle.js'),

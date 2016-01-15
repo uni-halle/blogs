@@ -1,5 +1,5 @@
 <div class="awpcp-media-center">
-    <?php $media_uploader = awpcp_media_uploader_component(); ?>
+    <?php $media_uploader = awpcp_listings_media_uploader_component(); ?>
     <?php echo $media_uploader->render( $media_uploader_configuration ); ?>
 
     <?php $messages = awpcp_messages_component(); ?>

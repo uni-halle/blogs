@@ -459,7 +459,7 @@ function showDialog() {
 				<?php if ($album && $this->currentID){ ?>
 					<input class="button-primary" type="submit" name="update" value="<?php esc_attr_e('Update', 'nggallery'); ?>"/>
 					<?php if(nggGallery::current_user_can( 'NextGEN Edit album settings' )) { ?>
-					<input class="button-secondary" type="submit" name="showThickbox" value="<?php esc_attr_e( 'Edit album', 'nggallery'); ?>" onclick="showDialog(); return false;" />
+					<input class="button-secondary" type="submit" name="showThickbox" value="<?php esc_attr_e( 'Edit Album', 'nggallery'); ?>" onclick="showDialog(); return false;" />
 					<?php } ?>
 					<?php if(nggGallery::current_user_can( 'NextGEN Add/Delete album' )) { ?>
 					<input class="button-secondary action "type="submit" name="delete" value="<?php esc_attr_e('Delete', 'nggallery'); ?>" onclick="javascript:check=confirm('<?php echo esc_js('Delete album ?','nggallery'); ?>');if(check==false) return false;"/>

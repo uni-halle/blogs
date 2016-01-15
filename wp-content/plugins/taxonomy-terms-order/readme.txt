@@ -1,9 +1,10 @@
 === Category Order and Taxonomy Terms Order  ===
-Contributors: Nsp Code
+Contributors: nsp-code
 Donate link: http://www.nsp-code.com/donate.php
 Tags: category order,terms order, taxonomy order, admin order
 Requires at least: 2.8
-Tested up to: 4.3
+Tested up to: 4.4
+Stable tag: 1.4.7
 
 Order Categories and all custom taxonomies terms (hierarchically) and child terms using a Drag and Drop Sortable javascript capability. No Theme update is required.
 
@@ -47,6 +48,11 @@ Absolutelly, the plugin can do that. In fact you can configure so only the admin
 All ideas are welcome and i put them on my list to be implemented into the new versions. Anyway this may take time, but if you are in a rush, please consider a small donation and we can arrange something.
 
 == Change Log ==
+
+= 1.4.7 =
+  - Texdomain change to taxonomy-terms-order to allow translations through translate.wordpress.org
+  - WordPress 4.4 compatibility update
+  - Css updates  
 
 = 1.4.6.1 =
   - Security bug fix
@@ -105,4 +111,4 @@ Make sure you get the latest version
 == Localization ==
 
 Available in English, Dutch, French, Deutch, Slovak, Japanese, Traditional Chineze, Brazilian Portuguese, Hungarian, Ukrainian, Czech and Romanian
-Whant to contribute with a translation to your language? Please use the attached to.pot file 
+Whant to contribute with a translation to your language? Please check at https://translate.wordpress.org/projects/wp-plugins/taxonomy-terms-order 

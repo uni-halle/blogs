@@ -1,0 +1,548 @@
+# Copyright (C) 2015 Shareaholic | share buttons, analytics, related content
+# This file is distributed under the same license as the Shareaholic | share buttons, analytics, related content package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Shareaholic | share buttons, analytics, related content "
+"7.6.2.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shareaholic\n"
+"POT-Creation-Date: 2015-12-02 12:04+0800\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-12-02 15:03+0800\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.6\n"
+"Last-Translator: Lela Iskandar <iskandarsuhaimi@gmail.com>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ms_MY@latin\n"
+
+#: admin.php:81
+msgid "You have been using the "
+msgstr "Anda telah menggunakan "
+
+#: admin.php:81
+msgid ""
+" for some time now, do you like it? If so, please consider leaving us a "
+"review on WordPress.org! It would help us out a lot and we would really "
+"appreciate it."
+msgstr ""
+"selama beberapa waktu sekarang, jadi adakah anda sukakannya? Jika ya, "
+"pertimbangkanlah untuk meninggalkan ulasan di WordPress.org! Ia benar-benar "
+"akan membantu dan kami cukup menghargainya."
+
+#: admin.php:84
+msgid "Leave a Review"
+msgstr "Tinggalkan Ulasan"
+
+#: admin.php:85
+msgid "No thanks"
+msgstr "Tidak, terima kasih"
+
+#: admin.php:283
+msgid "Shareaholic Settings"
+msgstr "Tetapan Shareaholic"
+
+#. Author of the plugin/theme
+#: admin.php:284 utilities.php:117
+msgid "Shareaholic"
+msgstr "Shareaholic"
+
+#: admin.php:292 admin.php:293 templates/settings.php:4 utilities.php:134
+msgid "App Manager"
+msgstr "Pengurus App"
+
+#: admin.php:300 admin.php:301 templates/advanced_settings.php:4
+msgid "Advanced Settings"
+msgstr "Tetapan Lanjutan"
+
+#: admin.php:316 admin.php:385
+msgid "Settings successfully saved"
+msgstr "Tetapan berjaya disimpan"
+
+#: admin.php:379
+msgid "Settings successfully reset. Refresh this page to complete the reset."
+msgstr ""
+"Tetapan berjaya di resetkan. Muat semula laman ini untuk melengkapkan reset."
+
+#: templates/advanced_settings.php:8
+msgid "You rarely should need to edit the settings on this page."
+msgstr "Anda hampir tidak perlu melakukan edit pada tetapan di muka ini."
+
+#: templates/advanced_settings.php:8
+msgid ""
+"After changing any Shareaholic advanced setting, it is good practice to "
+"clear any WordPress caching plugins (if you are using one, like W3 Total "
+"Cache or WP Super Cache)."
+msgstr ""
+"Selepas menukar apa-apa tetapan lanjutan Shareaholic, adalah satu amalan "
+"yang baik untuk mengosongkan semula mana-mana plugin cache Wordpress (jika "
+"anda ada menggunakannya, seperti W3 Total Cache atau WP Super Cache)"
+
+#: templates/advanced_settings.php:15
+msgid "Advanced"
+msgstr "Tetapan Lanjutan"
+
+#: templates/advanced_settings.php:20
+msgid "Disable <code>Open Graph</code> tags"
+msgstr "Matikan tag <code>Open Graph</code>"
+
+#: templates/advanced_settings.php:20
+msgid "(it is recommended NOT to disable open graph tags)"
+msgstr "(adalah disarankan untuk TIDAK mematikan tag open graph)"
+
+#: templates/advanced_settings.php:26
+msgid "Disable Admin Bar Menu (requires page refresh)"
+msgstr "Matikan Menu Bar Admin (perlu muat semula halaman)"
+
+#: templates/advanced_settings.php:32
+msgid "Disable Debugger (it is recommended NOT to disable the debugger)"
+msgstr ""
+"Matikan Penyahralat (adalah disarankan untuk TIDAK mematikan penyahralat)"
+
+#: templates/advanced_settings.php:38
+msgid "Disable server-side Share Counts API"
+msgstr "Matikan API Kiraan Perkongsian di sebelah-pelayan"
+
+#: templates/advanced_settings.php:38
+msgid ""
+"(unless there are issues with calling the service, it is recommended NOT to "
+"disable this API)"
+msgstr ""
+"(melainkan ada terdapat isu-isu untuk memanggil perkhidmatan ini, adalah "
+"disarankan untuk TIDAK mematikan API ini)"
+
+#: templates/advanced_settings.php:40 templates/settings.php:93
+msgid "Saving Changes..."
+msgstr "Sedang Menyimpan Perubahan..."
+
+#: templates/advanced_settings.php:40 templates/settings.php:93
+msgid "Save Changes"
+msgstr "Simpan Perubahan"
+
+#: templates/advanced_settings.php:48
+msgid "Server Connectivity"
+msgstr "Sambungan ke Pelayan"
+
+#: templates/advanced_settings.php:50
+msgid "All Shareaholic servers are reachable"
+msgstr "Semua pelayan Shareaholic dapat dicapai"
+
+#: templates/advanced_settings.php:51
+msgid "Shareaholic should be working correctly."
+msgstr "Shareaholic sepatutnya berfungsi dengan lancar."
+
+#: templates/advanced_settings.php:51
+msgid "All Shareaholic servers are accessible."
+msgstr "Semua pelayan Shareaholic boleh diakses."
+
+#: templates/advanced_settings.php:53
+msgid "Unable to reach any Shareaholic server"
+msgstr "Gagal mencapai mana-mana pelayan Shareaholic"
+
+#: templates/advanced_settings.php:53 templates/advanced_settings.php:60
+msgid "Checking..."
+msgstr "Memeriksa..."
+
+#: templates/advanced_settings.php:53 templates/advanced_settings.php:60
+msgid "Re-check"
+msgstr "Semak semula"
+
+#: templates/advanced_settings.php:54
+msgid ""
+"A network problem or firewall is blocking all connections from your web "
+"server to Shareaholic.com.  <strong>Shareaholic cannot work correctly until "
+"this is fixed.</strong>  Please contact your web host or firewall "
+"administrator and give them <a href=\"%s\" target=\"_blank\">this "
+"information about Shareaholic and firewalls</a>. Let us <a href=\"#\" "
+"onclick=\"%s\">know</a> too, so we can follow up!"
+msgstr ""
+"Terdapat masalah rangkaian atau firewall sedang menyekat semua sambungan "
+"daripada pelayan web anda ke Shareaholic.com. <strong> Shareaholic tidak "
+"boleh berfungsi dengan baik sehinggalah ini diperbetulkan.</ strong> Sila "
+"hubungi hos web atau pentadbir firewall anda dan berikan mereka <a href=\"%s"
+"\" target=\"_blank\">maklumat ini mengenai Shareaholic dan firewall</ a >. "
+"<a href=\"#\" onclick=\"%s\">Maklumkan kami</a> juga, agar kami boleh "
+"membuat tindakan susulan!"
+
+#: templates/advanced_settings.php:57
+msgid "Server-side Share Counts API is reachable"
+msgstr "API Kiraan Perkongsian di sebelah-pelayan dapat dicapai"
+
+#: templates/advanced_settings.php:58
+msgid "The server-side Share Counts API should be working correctly."
+msgstr ""
+"API Kiraan Perkongsian di sebelah -pelayan sepatutnya berfungsi dengan baik."
+
+#: templates/advanced_settings.php:58
+msgid "All servers and services needed by the API are accessible."
+msgstr "Semua pelayan dan perkhidmatan yang diperlukan oleh API boleh diakses."
+
+#: templates/advanced_settings.php:60
+msgid "Unable to reach the server-side Share Count API"
+msgstr "Gagal mencapai API Kiraan Perkongsian di sebelah-pelayan"
+
+#: templates/advanced_settings.php:61
+msgid ""
+"A network problem or firewall is blocking connections from your web server "
+"to various Share Count APIs.  <strong>The API cannot work correctly until "
+"this is fixed.</strong>  If you continue to face this issue, please contact "
+"<a href=\"#\" onclick=\"%s\">us</a> and we will follow up! In the meantime, "
+"if you disable the server-side Share Counts API from the Advanced options "
+"above, Shareaholic will default to using client-side APIs for share counts "
+"successfully -- so nothing to worry about!"
+msgstr ""
+"Terdapat masalah rangkaian atau firewall sedang menyekat sambungan daripada "
+"pelayan web anda ke pelbagai API Kiraan Perkongsian. <strong> API tidak "
+"boleh berfungsi dengan baik sehinggalah ini diperbaiki.</ strong> Jika anda "
+"terus menerus menghadapi isu ini, sila hubungi <a href=\"#\" onclick=\"%s"
+"\">kami</a> dan kami akan mengambil tindakan susulan! Dalam pada itu, jika "
+"anda mematikan API Perkongsian Kiraan sebelah-pelayan daripada pilihan "
+"Tetapan Lanjutan di atas, Shareaholic akan kembali menggunakan API sebelah-"
+"klien untuk mengira jumlah perkongsian dengan jayanya - jadi tiada apa yang "
+"perlu dibimbangkan!"
+
+#: templates/advanced_settings.php:68
+msgid "Your Shareaholic Site ID"
+msgstr "ID Shareaholic Untuk Laman Anda"
+
+#: templates/advanced_settings.php:72
+msgid "Not set."
+msgstr "Tidak ditetapkan."
+
+#: templates/advanced_settings.php:82
+msgid "Reset"
+msgstr "Reset"
+
+#: templates/advanced_settings.php:83
+msgid ""
+"This will reset all of your settings and start you from scratch. This can "
+"not be undone."
+msgstr ""
+"Ini akan menetapkan semula kesemua tetapan anda dan memulakan anda dari "
+"awal. Ini tidak boleh diundur semula."
+
+#: templates/advanced_settings.php:85
+msgid "Resetting Plugin..."
+msgstr "Menetapkan Semula Plugin..."
+
+#: templates/advanced_settings.php:85
+msgid "Reset Plugin"
+msgstr "Reset Plugin"
+
+#: templates/deprecation_warnings.php:6
+msgid ""
+"will be deprecated SOON. Please update the code found in the following files "
+"at your convenience:"
+msgstr ""
+"akan ditamatkan TIDAK LAMA LAGI. Sila ambil masa untuk mengemaskini kod yang "
+"terdapat dalam fail-fail berikut :"
+
+#: templates/failed_to_create_api_key.php:6
+#: templates/terms_of_service_notice.php:6
+msgid ""
+"Action required: You've installed Shareaholic for WordPress.  We're ready "
+"when you are. %sGet started now &raquo;%s"
+msgstr ""
+"Tindakan diperlukan: Anda telah memasang Shareaholic untuk WordPress. Kami "
+"bersedia apabila anda telah sedia. % sMulakan sekarang &raquo;%s"
+
+#: templates/failed_to_create_api_key_modal.php:2
+msgid "Setup Shareaholic"
+msgstr "Tetapan Shareaholic"
+
+#: templates/failed_to_create_api_key_modal.php:7
+msgid ""
+"It appears that we are having some trouble setting up Shareaholic for "
+"WordPress right now. This is usually temporary. Please revisit this section "
+"after a few minutes or click \"retry\" now."
+msgstr ""
+"Kami menghadapi sedikit masalah menetapkan Shareaholic untuk Wordpress buat "
+"masa ini. Ini selalunya hanya sementara. Sila kembali ke bahagian ini semula "
+"selepas beberapa minit atau klik \"cuba lagi\" sekarang."
+
+#: templates/failed_to_create_api_key_modal.php:12
+msgid "Retry"
+msgstr "Cuba Lagi"
+
+#: templates/failed_to_create_api_key_modal.php:15
+msgid "or, try again later."
+msgstr "atau, cuba lagi kemudian."
+
+#: templates/failed_to_create_api_key_modal.php:19
+msgid ""
+"If you continue to get this prompt for more than a few hours, try to check "
+"server connectivity or reset the plugin in %sadvanced settings%s."
+msgstr ""
+"Jika anda berterusan mendapat prompt ini untuk lebih daripada beberapa jam, "
+"cuba periksa sambungan pelayan atau tetapkan semula plugin di %tetapan "
+"lanjutan%s."
+
+#: templates/failed_to_create_api_key_modal.php:19
+msgid ""
+"Also, if you have a question or have a bug to report, please %slet us know%s."
+msgstr ""
+"Juga, jika anda ada soalan atau ralat untuk dilaporkan, sila %sberitahu kami"
+"%s."
+
+#: templates/footer.php:8
+msgid ""
+"If you like our work, show some love and %sgive us a good rating%s. Made "
+"with much love in Boston, Massachusetts."
+msgstr ""
+"Jika anda sukakan apa yang kami buat, lihatkan sedikit kasih sayang dan "
+"%sberikan kami rating yang baik%s. Dibuat dengan penuh cinta di Boston, "
+"Massachusetts."
+
+#: templates/meta_boxes.php:6
+msgid "Hide Share Buttons"
+msgstr "Sorok Butang Kongsi"
+
+#: templates/meta_boxes.php:16
+msgid "Hide Related Content"
+msgstr "Sorok Kandungan Berkaitan"
+
+#: templates/meta_boxes.php:26
+msgid "Exclude from Related Content"
+msgstr "Kecualikan daripada Kandungan Berkaitan"
+
+#: templates/meta_boxes.php:36
+msgid "Do not include Open Graph tags"
+msgstr "Jangan masukkan tag Open Graph"
+
+#: templates/settings.php:18
+msgid ""
+"First time here? Read %sUnderstanding the new Shareaholic for WordPress "
+"interface and configuration settings.%s"
+msgstr ""
+"Pertama kali di sini? Baca %sMemahami Shareaholic yang baru untuk antaramuka "
+"WordPress serta konfigurasi tetapan.%s"
+
+#: templates/settings.php:18
+msgid ""
+"If you are upgrading from an earlier version of Shareaholic for WordPress "
+"and need help, have a question or have a bug to report, please %slet us know"
+"%s."
+msgstr ""
+"Jika anda menaik taraf dari versi Shareaholic untuk WordPress sebelum ini "
+"dan memerlukan bantuan, ada soalan atau ralat untuk dilaporkan, sila "
+"%shubungi kami%s."
+
+#: templates/settings.php:21
+msgid "Related & Promoted Content"
+msgstr "Kandungan Dipromosi & Berkaitan"
+
+#: templates/settings.php:22
+msgid ""
+"Pick where you want the app to be displayed. Click \"Customize\" to "
+"customize look & feel, themes, block lists, etc."
+msgstr ""
+"Pilih di mana anda mahu app ini dipaparkan. Klik \"Sesuaikan\" untuk "
+"menyesuaikan rupa dan rasa, tema, senarai blok, dan lain-lain."
+
+#: templates/settings.php:40 templates/settings.php:72
+msgid "Customize"
+msgstr "Sesuaikan"
+
+#: templates/settings.php:48
+msgid "Edit Related & Promoted Content Settings"
+msgstr "Edit Tetapan Kandungan Dipromosi & Berkaitan"
+
+#: templates/settings.php:52
+msgid "Share Buttons"
+msgstr "Butang Perkongsian"
+
+#: templates/settings.php:53
+msgid ""
+"Pick where you want your buttons to be displayed. Click \"Customize\" to "
+"customize look & feel, themes, share counters, alignment, etc."
+msgstr ""
+"Pilih di mana anda ingin butang anda dipaparkan. Klik \"Sesuaikan\" untuk "
+"menyesuaikan rupa dan rasa, tema, kiraan perkongsian, penjajaran, dan lain-"
+"lain."
+
+#: templates/settings.php:80
+msgid "Edit Share Button Settings"
+msgstr "Edit Tetapan Butang Perkongsian"
+
+#: templates/settings.php:84
+msgid "Monetization"
+msgstr "Penjanaan Wang"
+
+#: templates/settings.php:85
+msgid ""
+"Configure your  monetization settings from one place, including Promoted "
+"Content, Affiliate Links App, etc."
+msgstr ""
+"Buat konfigurasi tetapan penjanaan wang anda dari satu tempat, termasuk "
+"Kandungan Dipromosi, Pautan App Affiliate, dan lain-lain"
+
+#: templates/settings.php:87
+msgid "Edit Monetization Settings"
+msgstr "Edit Tetapan Penjanaan Wang"
+
+#: templates/terms_of_service_modal.php:2
+msgid "Welcome to Shareaholic!"
+msgstr "Selamat datang ke Shareaholic!"
+
+#: templates/terms_of_service_modal.php:4
+msgid ""
+"%sThe all-in-one content amplification platform%s that takes your content to "
+"the next level."
+msgstr ""
+"%sPlatform amplifikasi kandungan semua-dalam-satu%s yang membawa kandungan "
+"anda ke peringkat seterusnya."
+
+#: templates/terms_of_service_modal.php:12
+msgid "Engage"
+msgstr "Menarik"
+
+#: templates/terms_of_service_modal.php:13
+msgid ""
+"Increase traffic, time on site and repeat visits with our award winning "
+"toolset."
+msgstr ""
+"Tingkatkan trafik, masa di laman web dan lawatan semula dengan set "
+"perkakasan kami yang telah memenangi anugerah."
+
+#: templates/terms_of_service_modal.php:17
+msgid "Discover"
+msgstr "Mengetahui"
+
+#: templates/terms_of_service_modal.php:18
+msgid "Understand your audience with our easy-to-use analytics dashboard."
+msgstr ""
+"Fahami pelawat anda dengan papan pemuka analitik  kami yang mudah digunakan."
+
+#: templates/terms_of_service_modal.php:22
+msgid "Earn"
+msgstr "Membiayai"
+
+#: templates/terms_of_service_modal.php:23
+msgid "Generate revenue with personalized, unobtrusive native ads."
+msgstr ""
+"Jana pendapatan dengan iklan asli yang bersifat peribadi dan tidak "
+"mengganggu."
+
+#: templates/terms_of_service_modal.php:27
+msgid "Acquire"
+msgstr "Perolehi"
+
+#: templates/terms_of_service_modal.php:28
+msgid "Reach over 400 million people with native ads and promoted content."
+msgstr ""
+"Capai lebih daripada 400 juta orang dengan iklan asli dan kandungan yang "
+"dipromosi."
+
+#: templates/terms_of_service_modal.php:35
+msgid "Get Started »"
+msgstr "Mula Sekarang »"
+
+#: templates/terms_of_service_modal.php:36
+msgid ""
+"By clicking \"Get Started\" you agree to Shareholic's %sTerms of Service%s "
+"and %sPrivacy Policy%s."
+msgstr ""
+"Dengan mengklik \"Mula Sekarang\" anda bersetuju dengan %sTerma Perkhidmatan"
+"%s dan %sPolisi Peribadi%s  Shareholic."
+
+#: templates/terms_of_service_modal.php:39
+msgid ""
+"Note: Shareaholic incorporates trusted 3rd party services like Google "
+"Analytics to enhance social analytics and service reliability."
+msgstr ""
+"Nota: Shareaholic menggabungkan perkhidmatan pihak ke-3 yang dipercayai "
+"seperti Google Analytics untuk meningkatkan analisis sosial dan "
+"kebolehpercayaan perkhidmatan."
+
+#: templates/terms_of_service_modal.php:39
+msgid "You can toggle this setting under \"Advanced Settings\" at any time."
+msgstr ""
+"Anda boleh menukar-tukar tetapan ini di bawah \"Tetapan Lanjutan\" pada bila-"
+"bila masa."
+
+#: templates/why_to_sign_up.php:2
+msgid "Gain access to more features with a FREE Shareaholic account:"
+msgstr ""
+"Dapatkan akses kepada ciri-ciri tambahan dengan akaun PERCUMA Shareaholic:"
+
+#: templates/why_to_sign_up.php:4
+msgid "Floating Share buttons"
+msgstr "Butang Kongsi terapung"
+
+#: templates/why_to_sign_up.php:5
+msgid "Follow buttons"
+msgstr "Butang Follow"
+
+#: templates/why_to_sign_up.php:6
+msgid "Revenue Generating Apps"
+msgstr "App Menjana Pendapatan"
+
+#: templates/why_to_sign_up.php:7
+msgid "Social Analytics, plus lots more!"
+msgstr "Analitik Sosial, serta banyak lagi!"
+
+#: templates/why_to_sign_up.php:10
+msgid "Configure additional features &#8594;"
+msgstr "Konfigurasi fungsi tambahan &#8594;"
+
+#: templates/why_to_sign_up.php:12
+msgid "Already have a Shareaholic account? Click the button above to log in."
+msgstr "Sudah mempunyai akaun Shareaholic? Klik butang di atas untuk masuk."
+
+#: templates/why_to_sign_up.php:17
+msgid "Need help? Visit the Shareaholic Helpdesk"
+msgstr "Perlukan bantuan? Kunjungi Meja Bantuan Shareaholic"
+
+#: templates/why_to_sign_up.php:18
+msgid "Submit a new or updated language translation"
+msgstr "Hantar terjemahan bahasa yang baru atau yang terkini"
+
+#: templates/why_to_sign_up.php:19
+msgid ""
+"Get the Shareaholic Browser Extension to share content from anywhere on the "
+"web"
+msgstr ""
+"Dapatkan Extension Browser Shareaholic untuk berkongsi kandungan dari mana-"
+"mana sahaja di web"
+
+#: templates/why_to_sign_up.php:20
+msgid "Why am I seeing ads?"
+msgstr "Mengapa saya melihat iklan?"
+
+#: utilities.php:100
+msgid "Settings"
+msgstr "Tetapan"
+
+#: utilities.php:141
+msgid "Website Settings"
+msgstr "Tetapan Laman"
+
+#: utilities.php:148
+msgid "FAQ & Support"
+msgstr "Soalan Lazim dan Sokongan"
+
+#. Plugin Name of the plugin/theme
+msgid "Shareaholic | share buttons, analytics, related content"
+msgstr "Shareaholic | butang perkongsian, analitik, kandungan berkaitan"
+
+#. Plugin URI of the plugin/theme
+msgid "https://shareaholic.com/publishers/"
+msgstr "https://shareaholic.com/publishers/"
+
+#. Description of the plugin/theme
+msgid ""
+"Whether you want to get people sharing, grow your fans, make money, or know "
+"who's reading your content, Shareaholic will help you get it done. See <a "
+"href=\"admin.php?page=shareaholic-settings\">configuration panel</a> for "
+"more settings."
+msgstr ""
+"Samada anda mahu untuk membolehkan orang berkongsi, menambah peminat, "
+"menjana wang, atau mengetahui siapa pembaca kandungan anda, Shareaholic akan "
+"membantu anda melakukannya. Lihat <a href=\"admin.php?page=shareaholic-"
+"settings\">panel konfigurasi</a> untuk tetapan lanjut."
+
+# Lela Iskandar Suhaimi
+# http://www.jomjalan.com.my
+#. Author URI of the plugin/theme
+msgid "https://shareaholic.com"
+msgstr "https://shareaholic.com"

@@ -34,7 +34,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
     }
 
     public function transaction_error() {
-        return __('There was an error processing your Payment Request. Please try again or contact an Administrator.', 'AWPCP');
+        return __('There was an error processing your Payment Request. Please try again or contact an Administrator.', 'another-wordpress-classifieds-plugin');
     }
 
     public function get_transaction($create=false) {
@@ -49,6 +49,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             $this->transaction->set('context', $this->context);
             $this->transaction->set('redirect', $this->url());
             $this->transaction->set('redirect-data', array('step' => 'payment-completed'));
+            $this->transaction->set( 'user-just-logged-in', awpcp_request_param( 'loggedin', false ) );
         }
 
         return $this->transaction;
@@ -87,24 +88,24 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         $awpcp = awpcp();
 
         $awpcp->js->localize( 'page-place-ad-order', array(
-            'category' => __( 'Please select a category.', 'AWPCP' ),
-            'user' => __( "Please select the Ad's owner.", 'AWPCP' ),
-            'payment_term' => __( 'Please select a payment term.', 'AWPCP' ),
+            'category' => __( 'Please select a category.', 'another-wordpress-classifieds-plugin' ),
+            'user' => __( "Please select the Ad's owner.", 'another-wordpress-classifieds-plugin' ),
+            'payment_term' => __( 'Please select a payment term.', 'another-wordpress-classifieds-plugin' ),
         ) );
 
         $awpcp->js->localize( 'page-place-ad-details', array(
-            'ad_title' => __( 'Please type in a title for your Ad.', 'AWPCP' ),
-            'websiteurl' => __( 'Please type in a valid URL.', 'AWPCP' ),
-            'ad_contact_name' => __( 'Please type in the name of the person to contact.', 'AWPCP' ),
-            'ad_contact_email' => __( 'Please type in the email address of the person to contact.', 'AWPCP' ),
-            'ad_contact_phone' => __( 'Please type in the phone number of the person to contact.', 'AWPCP' ),
-            'ad_country' => __( 'The country is a required field.', 'AWPCP' ),
-            'ad_county_village' => __( 'The county is a required field.', 'AWPCP' ),
-            'ad_state' => __( 'The state is a required field.', 'AWPCP' ),
-            'ad_city' => __( 'The city is a required field.', 'AWPCP' ),
-            'ad_item_price' => __( 'Please type in a price for your Ad.', 'AWPCP' ),
-            'ad_details' => __( 'Please type in the details of your Ad.', 'AWPCP' ),
-            'captcha' => __( 'Please type in the result of the operation.', 'AWPCP' ),
+            'ad_title' => __( 'Please type in a title for your Ad.', 'another-wordpress-classifieds-plugin' ),
+            'websiteurl' => __( 'Please type in a valid URL.', 'another-wordpress-classifieds-plugin' ),
+            'ad_contact_name' => __( 'Please type in the name of the person to contact.', 'another-wordpress-classifieds-plugin' ),
+            'ad_contact_email' => __( 'Please type in the email address of the person to contact.', 'another-wordpress-classifieds-plugin' ),
+            'ad_contact_phone' => __( 'Please type in the phone number of the person to contact.', 'another-wordpress-classifieds-plugin' ),
+            'ad_country' => __( 'The country is a required field.', 'another-wordpress-classifieds-plugin' ),
+            'ad_county_village' => __( 'The county is a required field.', 'another-wordpress-classifieds-plugin' ),
+            'ad_state' => __( 'The state is a required field.', 'another-wordpress-classifieds-plugin' ),
+            'ad_city' => __( 'The city is a required field.', 'another-wordpress-classifieds-plugin' ),
+            'ad_item_price' => __( 'Please type in a price for your Ad.', 'another-wordpress-classifieds-plugin' ),
+            'ad_details' => __( 'Please type in the details of your Ad.', 'another-wordpress-classifieds-plugin' ),
+            'captcha' => __( 'Please type in the result of the operation.', 'another-wordpress-classifieds-plugin' ),
         ) );
 
         if (is_admin()) {
@@ -119,7 +120,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
 
         // only admin users are allowed to place Ads
         if (get_awpcp_option('onlyadmincanplaceads') && ($is_admin_user != 1)) {
-            $message = __("You do not have permission to perform the function you are trying to perform. Access to this page has been denied","AWPCP");
+            $message = __("You do not have permission to perform the function you are trying to perform. Access to this page has been denied",'another-wordpress-classifieds-plugin');
             return $this->render('content', awpcp_print_error($message));
         }
 
@@ -133,7 +134,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         if (!is_null($transaction) && $transaction->get('context') != $this->context) {
             $page_name = awpcp_get_page_name('place-ad-page-name');
             $page_url = awpcp_get_page_url('place-ad-page-name');
-            $message = __('You are trying to post an Ad using a transaction created for a different purpose. Pelase go back to the <a href="%s">%s</a> page.<br>If you think this is an error please contact the administrator and provide the following transaction ID: %s', 'AWPCP');
+            $message = __('You are trying to post an Ad using a transaction created for a different purpose. Pelase go back to the <a href="%s">%s</a> page.<br>If you think this is an error please contact the administrator and provide the following transaction ID: %s', 'another-wordpress-classifieds-plugin');
             $message = sprintf($message, $page_url, $page_name, $transaction->id);
             return $this->render('content', awpcp_print_error($message));
         }
@@ -142,7 +143,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
 
         if (!is_null($transaction) && $transaction->is_payment_completed()) {
             if (!($transaction->was_payment_successful() || $transaction->payment_is_canceled())) {
-                $message = __('You can\'t post an Ad at this time because the payment associated with this transaction failed (see reasons below).', 'AWPCP');
+                $message = __('You can\'t post an Ad at this time because the payment associated with this transaction failed (see reasons below).', 'another-wordpress-classifieds-plugin');
                 $message = awpcp_print_message($message);
                 $message = $message . awpcp_payments_api()->render_transaction_errors($transaction);
                 return $this->render('content', $message);
@@ -212,7 +213,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
 
     protected function validate_order($data, &$errors=array()) {
         if ($data['category'] <= 0) {
-            $errors['category'] = __('Ad Category field is required', 'AWPCP');
+            $errors['category'] = __('Ad Category field is required', 'another-wordpress-classifieds-plugin');
         }
 
         try {
@@ -223,25 +224,25 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         }
 
         if (get_awpcp_option('noadsinparentcat') && !category_is_child($data['category'])) {
-            $message = __("You cannot list your Ad in top level categories. You need to select a sub-category of category %s.", "AWPCP");
+            $message = __("You cannot list your Ad in top level categories. You need to select a sub-category of category %s.", 'another-wordpress-classifieds-plugin');
             $errors['category'] = sprintf( $message, $category_name );
         }
 
         if (awpcp_current_user_is_moderator() && empty($data['user'])) {
-            $errors['user'] = __('You should select an owner for this Ad.', 'AWPCP');
+            $errors['user'] = __('You should select an owner for this Ad.', 'another-wordpress-classifieds-plugin');
         }
 
         if (is_null($data['term'])) {
-            $errors['payment-term'] = __('You should choose one of the available Payment Terms.', 'AWPCP');
+            $errors['payment-term'] = __('You should choose one of the available Payment Terms.', 'another-wordpress-classifieds-plugin');
         }
 
         if (!empty($data['term']->categories) && !in_array($data['category'], $data['term']->categories)) {
-            $message = __('The Payment Term you selected is not valid for the category %s', 'AWPCP');
+            $message = __('The Payment Term you selected is not valid for the category %s', 'another-wordpress-classifieds-plugin');
             $errors['payment-term'] = sprintf( $message, $category_name );
         }
 
         if ( ! awpcp_current_user_is_admin() && ! is_null( $data['term'] ) && $data['term']->private ) {
-            $message = __( 'The Payment Term you selected is not available for non-administrator users.', 'AWPCP' );
+            $message = __( 'The Payment Term you selected is not available for non-administrator users.', 'another-wordpress-classifieds-plugin' );
             $errors['payment-term'] = $message;
         }
 
@@ -251,11 +252,11 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
     }
 
     public function login_step() {
-        $message = __('Hi, You need to be a registered user to post Ads in this website. Please use the form below to login or click the link to register.', 'AWPCP');
+        $message = __('Hi, You need to be a registered user to post Ads in this website. Please use the form below to login or click the link to register.', 'another-wordpress-classifieds-plugin');
 
         $params = array(
             'message' => $message,
-            'page_url' => awpcp_get_page_url( 'place-ad-page-name' ),
+            'page_url' => add_query_arg( 'loggedin', true, awpcp_get_page_url( 'place-ad-page-name' ) ),
         );
 
         $template = AWPCP_DIR . '/frontend/templates/page-place-ad-login-step.tpl.php';
@@ -355,7 +356,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         // display initial form and show errors, if any
         $messages = $this->messages;
         if (awpcp_current_user_is_admin()) {
-            $messages[] = __("You are logged in as an administrator. Any payment steps will be skipped.", "AWPCP");
+            $messages[] = __("You are logged in as an administrator. Any payment steps will be skipped.", 'another-wordpress-classifieds-plugin');
         }
 
         $params = array(
@@ -409,7 +410,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         }
 
         if ( !$transaction->is_doing_checkout() && !$transaction->is_processing_payment() ) {
-            $message = __('We can\'t process payments for this Payment Transaction at this time. Please contact the website administrator and provide the following transaction ID: %s', 'AWPCP');
+            $message = __('We can\'t process payments for this Payment Transaction at this time. Please contact the website administrator and provide the following transaction ID: %s', 'another-wordpress-classifieds-plugin');
             $message = sprintf($message, $transaction->id);
             return $this->render('content', awpcp_print_error($message));
         }
@@ -543,12 +544,16 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             $info['ad_contact_name'] = trim( $data->first_name . " " . $data->last_name );
         }
 
-        $info['regions'][] = array_filter( array(
+        $user_region = array_filter( array(
             'country' => awpcp_array_data( 'ad_country', '', $info ),
             'state' => awpcp_array_data( 'ad_state', '', $info ),
             'city' => awpcp_array_data( 'ad_city', '', $info ),
             'county' => awpcp_array_data( 'ad_county_village', '', $info ),
         ), 'strlen' );
+
+        if ( ! empty( $user_region ) ) {
+            $info['regions'][] = $user_region;
+        }
 
         $info = apply_filters( 'awpcp-listing-details-user-info', $info, $user_id );
 
@@ -668,6 +673,8 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
 
         $data['is_featured_ad'] = absint($data['is_featured_ad']);
 
+        $data = apply_filters( 'awpcp-get-posted-data', $data, 'details', $from );
+
         return $data;
     }
 
@@ -682,15 +689,15 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         $messages = $this->messages;
 
         if ( $edit ) {
-            $messages[] = __("Your Ad details have been filled out in the form below. Make any changes needed and then resubmit the Ad to update it.", "AWPCP");
+            $messages[] = __("Your Ad details have been filled out in the form below. Make any changes needed and then resubmit the Ad to update it.", 'another-wordpress-classifieds-plugin');
         } else if ($is_admin_user) {
-            $messages[] = __("You are logged in as an administrator. Any payment steps will be skipped.", "AWPCP");
+            $messages[] = __("You are logged in as an administrator. Any payment steps will be skipped.", 'another-wordpress-classifieds-plugin');
         } else if (empty($errors)) {
-            $messages[] = __("Fill out the form below to post your classified Ad.", "AWPCP");
+            $messages[] = __("Fill out the form below to post your classified Ad.", 'another-wordpress-classifieds-plugin');
         }
 
         if (!empty($errors)) {
-            $message = __( "We found errors in the details you submitted. A detailed error message is shown in front or below each invalid field. Please fix the errors and submit the form again.", 'AWPCP' );
+            $message = __( "We found errors in the details you submitted. A detailed error message is shown in front or below each invalid field. Please fix the errors and submit the form again.", 'another-wordpress-classifieds-plugin' );
             $errors = array_merge(array($message), $errors);
         }
 
@@ -715,7 +722,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         $ui['price-field'] = get_awpcp_option('displaypricefield') == 1;
         $ui['extra-fields'] = $hasextrafieldsmodule && function_exists('awpcp_extra_fields_render_form');
         $ui['terms-of-service'] = !$edit && !$is_moderator && get_awpcp_option('requiredtos');
-        $ui['captcha'] = !$edit && !is_admin() && ( get_awpcp_option( 'captcha-enabled' ) == 1 );
+        $ui['captcha'] = !$edit && !is_admin() && ( get_awpcp_option( 'captcha-enabled-in-place-listing-form' ) == 1 );
 
         $hidden['step'] = 'save-details';
         $hidden['ad_id'] = $form['ad_id'];
@@ -779,7 +786,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         $form = array();
 
         if (is_null($transaction)) {
-            $message = __("Hi, Payment is required for posting Ads in this website and we couldn't find a Payment Transaction asssigned to you. You can't post Ads this time. If you think this is an error please contact the website Administrator.", 'AWPCP');
+            $message = __("Hi, Payment is required for posting Ads in this website and we couldn't find a Payment Transaction assigned to you. You can't post Ads this time. If you think this is an error please contact the website Administrator.", 'another-wordpress-classifieds-plugin');
             return $this->render('content', awpcp_print_error($message));
         }
 
@@ -806,36 +813,36 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         $user_id = awpcp_array_data('user_id', 0, $data);
         $user_payment_term = awpcp_array_data('user_payment_term', '', $data);
         if (get_awpcp_option('freepay') == 1 && $user_id > 0 && empty($user_payment_term) && !$edit) {
-            $errors['user_payment_term'] = __('You did not select a Payment Term. Please select a Payment Term for this Ad.', 'AWPCP');
+            $errors['user_payment_term'] = __('You did not select a Payment Term. Please select a Payment Term for this Ad.', 'another-wordpress-classifieds-plugin');
         }
 
         $start_date = strtotime($data['start_date']);
         if ($edit && $is_moderator && empty($data['start_date'])) {
-            $errors['start_date'] = __('Please enter a start date for the Ad.', 'AWPCP');
+            $errors['start_date'] = __('Please enter a start date for the Ad.', 'another-wordpress-classifieds-plugin');
         }
 
         $end_date = strtotime($data['end_date']);
         if ($edit && $is_moderator && empty($data['end_date'])) {
-            $errors['end_date'] = __('Please enter an end date for the Ad.', 'AWPCP');
+            $errors['end_date'] = __('Please enter an end date for the Ad.', 'another-wordpress-classifieds-plugin');
         }
 
         if ($edit && $is_moderator && $start_date > $end_date) {
-            $errors['start_date'] = __('The start date must occur before the end date.', 'AWPCP');
+            $errors['start_date'] = __('The start date must occur before the end date.', 'another-wordpress-classifieds-plugin');
         }
 
         // Check for ad title
         if (empty($data['ad_title'])) {
-            $errors['ad_title'] = __("You did not enter a title for your Ad", "AWPCP");
+            $errors['ad_title'] = __("You did not enter a title for your Ad", 'another-wordpress-classifieds-plugin');
         }
 
         // Check for ad details
         if (empty($data['ad_details'])) {
-            $errors['ad_details'] = __("You did not enter any text for your Ad. Please enter some text for your Ad.", "AWPCP");
+            $errors['ad_details'] = __("You did not enter any text for your Ad. Please enter some text for your Ad.", 'another-wordpress-classifieds-plugin');
         }
 
         // Check for ad category
         if (empty($data['ad_category']) && $edit) {
-            $errors['ad_category'] = __("You did not select a category for your Ad. Please select a category for your Ad.", "AWPCP");
+            $errors['ad_category'] = __("You did not select a category for your Ad. Please select a category for your Ad.", 'another-wordpress-classifieds-plugin');
         }
 
         // If website field is checked and required make sure website value was entered
@@ -843,30 +850,30 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             (get_awpcp_option('displaywebsitefieldreqop') == 1))
         {
             if (empty($data['websiteurl'])) {
-                $errors['websiteurl'] = __("You did not enter your website address. Your website address is required.","AWPCP");
+                $errors['websiteurl'] = __("You did not enter your website address. Your website address is required.",'another-wordpress-classifieds-plugin');
             }
         }
 
         //If they have submitted a website address make sure it is correctly formatted
         if (!empty($data['websiteurl']) && !isValidURL($data['websiteurl'])) {
-            $errors['websiteurl'] = __("Your website address is not properly formatted. Please make sure you have included the http:// part of your website address","AWPCP");
+            $errors['websiteurl'] = __("Your website address is not properly formatted. Please make sure you have included the http:// part of your website address",'another-wordpress-classifieds-plugin');
         }
 
         // Check for ad poster's name
         if (empty($data['ad_contact_name'])) {
-            $errors['ad_contact_name'] = __("You did not enter your name. Your name is required.", "AWPCP");
+            $errors['ad_contact_name'] = __("You did not enter your name. Your name is required.", 'another-wordpress-classifieds-plugin');
         }
 
         // Check for ad poster's email address
         if (empty($data['ad_contact_email'])) {
-            $errors['ad_contact_email'] = __("You did not enter your email. Your email is required.", "AWPCP");
+            $errors['ad_contact_email'] = __("You did not enter your email. Your email is required.", 'another-wordpress-classifieds-plugin');
         }
 
         // Check if email address entered is in a valid email address format
         if ( ! awpcp_is_valid_email_address( $data['ad_contact_email'] ) ) {
-            $errors['ad_contact_email'] = __("The email address you entered was not a valid email address. Please check for errors and try again.", "AWPCP");
+            $errors['ad_contact_email'] = __("The email address you entered was not a valid email address. Please check for errors and try again.", 'another-wordpress-classifieds-plugin');
         } else if ( ! awpcp_is_email_address_allowed( $data['ad_contact_email'] ) ) {
-            $message = __( 'The email address you entered is not allowed in this website. Please use an email address from one of the following domains: %s.', 'AWPCP' );
+            $message = __( 'The email address you entered is not allowed in this website. Please use an email address from one of the following domains: %s.', 'another-wordpress-classifieds-plugin' );
             $domains_whitelist = explode( "\n", get_awpcp_option( 'ad-poster-email-address-whitelist' ) );
             $domains_list = '<strong>' . implode( '</strong>, <strong>', $domains_whitelist ) . '</strong>';
             $errors['ad_contact_email'] = sprintf( $message, $domains_list );
@@ -877,7 +884,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             (get_awpcp_option('displayphonefieldreqop') == 1))
         {
             if (empty($data['ad_contact_phone'])) {
-                $errors['ad_contact_phone'] = __("You did not enter your phone number. Your phone number is required.", "AWPCP");
+                $errors['ad_contact_phone'] = __("You did not enter your phone number. Your phone number is required.", 'another-wordpress-classifieds-plugin');
             }
         }
 
@@ -895,7 +902,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             (get_awpcp_option('displaycountryfieldreqop') == 1))
         {
             if ( ! awpcp_array_data( 'country', false, $region_fields ) ) {
-                $errors['regions'] = __("You did not enter your country. Your country is required.", "AWPCP");
+                $errors['regions'] = __("You did not enter your country. Your country is required.", 'another-wordpress-classifieds-plugin');
             }
         }
 
@@ -904,7 +911,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             (get_awpcp_option('displaystatefieldreqop') == 1))
         {
             if ( ! awpcp_array_data( 'state', false, $region_fields ) ) {
-                $errors['regions'] = __("You did not enter your state. Your state is required.", "AWPCP");
+                $errors['regions'] = __("You did not enter your state. Your state is required.", 'another-wordpress-classifieds-plugin');
             }
         }
 
@@ -913,7 +920,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             (get_awpcp_option('displaycityfieldreqop') == 1))
         {
             if ( ! awpcp_array_data( 'city', false, $region_fields ) ) {
-                $errors['regions'] = __("You did not enter your city. Your city is required.", "AWPCP");
+                $errors['regions'] = __("You did not enter your city. Your city is required.", 'another-wordpress-classifieds-plugin');
             }
         }
 
@@ -922,20 +929,20 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             (get_awpcp_option('displaycountyvillagefieldreqop') == 1))
         {
             if ( ! awpcp_array_data( 'county', false, $region_fields ) ) {
-                $errors['regions'] = __("You did not enter your county/village. Your county/village is required.", "AWPCP");
+                $errors['regions'] = __("You did not enter your county/village. Your county/village is required.", 'another-wordpress-classifieds-plugin');
             }
         }
 
         // If price field is checked and required make sure a price has been entered
         if ( get_awpcp_option('displaypricefield') == 1 && get_awpcp_option('displaypricefieldreqop') == 1 ) {
             if ( strlen($data['ad_item_price']) === 0 || $data['ad_item_price'] === false )
-                $errors['ad_item_price'] = __("You did not enter the price of your item. The item price is required.","AWPCP");
+                $errors['ad_item_price'] = __("You did not enter the price of your item. The item price is required.",'another-wordpress-classifieds-plugin');
         }
 
         // Make sure the item price is a numerical value
         if ( get_awpcp_option('displaypricefield') == 1 && strlen( $data['ad_item_price'] ) > 0 ) {
             if ( !is_numeric( $data['ad_item_price'] ) )
-                $errors['ad_item_price'] = __("You have entered an invalid item price. Make sure your price contains numbers only. Please do not include currency symbols.","AWPCP");
+                $errors['ad_item_price'] = __("You have entered an invalid item price. Make sure your price contains numbers only. Please do not include currency symbols.",'another-wordpress-classifieds-plugin');
         }
 
         if ($hasextrafieldsmodule == 1) {
@@ -953,10 +960,10 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
 
         // Terms of service required and accepted?
         if (!$edit && !$is_moderator && get_awpcp_option('requiredtos') && empty($data['terms-of-service'])) {
-            $errors['terms-of-service'] = __("You did not accept the terms of service", "AWPCP");
+            $errors['terms-of-service'] = __("You did not accept the terms of service", 'another-wordpress-classifieds-plugin');
         }
 
-        if ( !$edit && !is_admin() && get_awpcp_option( 'captcha-enabled' ) ) {
+        if ( !$edit && !is_admin() && get_awpcp_option( 'captcha-enabled-in-place-listing-form' ) ) {
             $captcha = awpcp_create_captcha( get_awpcp_option( 'captcha-provider' ) );
 
             $error = '';
@@ -965,11 +972,11 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             }
         }
 
-        if (get_awpcp_option('useakismet')) {
+        if ( get_awpcp_option( 'use-akismet-in-place-listing-form' ) ) {
             $spam_filter = awpcp_listing_spam_filter();
 
             if ( $spam_filter->is_spam( $data ) ) {
-                $errors[] = __("Your Ad was flagged as spam. Please contact the administrator of this site.", "AWPCP");
+                $errors[] = __("Your Ad was flagged as spam. Please contact the administrator of this site.", 'another-wordpress-classifieds-plugin');
             }
         }
 
@@ -1060,8 +1067,10 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             $ad->ad_last_updated = $now;
             $ad->posterip = awpcp_getip();
 
+            $ad = apply_filters( 'awpcp-before-save-listing', $ad, $data );
+
             if (!$ad->save()) {
-                $errors[] = __('There was an unexpected error trying to save your Ad details. Please try again or contact an administrator.', 'AWPCP');
+                $errors[] = __('There was an unexpected error trying to save your Ad details. Please try again or contact an administrator.', 'another-wordpress-classifieds-plugin');
                 return $this->details_step_form($transaction, $data, $errors);
             }
 
@@ -1092,7 +1101,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         $allowed_files = awpcp_listing_upload_limits()->get_listing_upload_limits( $listing );
 
         foreach ( $allowed_files as $file_type => $limits ) {
-            if ( $limits['allowed_file_count'] > $limits['uploaded_file_count'] ) {
+            if ( $limits['allowed_file_count'] >= $limits['uploaded_file_count'] ) {
                 return true;
             }
         }
@@ -1116,14 +1125,14 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         $transaction = $this->get_transaction();
 
         if (is_null($transaction)) {
-            $message = __('We were unable to find a Payment Transaction assigned to this operation. No images can be added at this time.', 'AWPCP');
+            $message = __('We were unable to find a Payment Transaction assigned to this operation. No images can be added at this time.', 'another-wordpress-classifieds-plugin');
             return $this->render('content', awpcp_print_error($message));
         }
 
         $ad = AWPCP_Ad::find_by_id($transaction->get('ad-id', 0));
 
         if (is_null($ad)) {
-            $message = __('The specified Ad doesn\'t exists. No images can be added at this time.', 'AWPCP');
+            $message = __('The specified Ad doesn\'t exists. No images can be added at this time.', 'another-wordpress-classifieds-plugin');
             return $this->render('content', awpcp_print_error($message));
         }
 
@@ -1137,10 +1146,10 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         $show_preview = (bool) get_awpcp_option('show-ad-preview-before-payment');
         $pay_first = (bool) get_awpcp_option('pay-before-place-ad');
 
-        if ( $skip && $pay_first ) {
-            return $this->finish_step();
-        } else if ( $skip && $show_preview ) {
+        if ( $skip && $show_preview ) {
             return $this->preview_step();
+        } else if ( $skip && $pay_first ) {
+            return $this->finish_step();
         } else if ( $skip ) {
             return $this->checkout_step();
         } else {
@@ -1176,16 +1185,12 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
 
         extract( $params );
 
-        if ( $images_uploaded > 0 && $pay_first ) {
-            $next = __( 'Finish', 'AWPCP' );
-        } else if ( $images_uploaded == 0 && false == $pay_first && $show_preview ) {
-            $next = __( 'Preview Ad', 'AWPCP' );
-        } else if ( $images_uploaded == 0) {
-            $next = __( 'Place Ad', 'AWPCP' );
-        } else if ( $show_preview ) {
-            $next = __( 'Preview Ad', 'AWPCP' );
+        if ( $show_preview ) {
+            $next = __( 'Preview Ad', 'another-wordpress-classifieds-plugin' );
+        } else if ( $pay_first ) {
+            $next = __( 'Place Ad', 'another-wordpress-classifieds-plugin' );
         } else {
-            $next = __( 'Checkout', 'AWPCP' );
+            $next = __( 'Checkout', 'another-wordpress-classifieds-plugin' );
         }
 
         $params = array_merge( $params, array(
@@ -1204,21 +1209,25 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         $transaction = $this->get_transaction();
 
         if ( is_null( $transaction ) ) {
-            $message = __('We were unable to find a Payment Transaction assigned to this operation.', 'AWPCP');
+            $message = __('We were unable to find a Payment Transaction assigned to this operation.', 'another-wordpress-classifieds-plugin');
             return $this->render('content', awpcp_print_error($message));
         }
 
         $ad = AWPCP_Ad::find_by_id($transaction->get('ad-id', 0));
 
         if ( is_null( $ad ) ) {
-            $message = __('The Ad associated with this transaction doesn\'t exists.', 'AWPCP');
+            $message = __('The Ad associated with this transaction doesn\'t exists.', 'another-wordpress-classifieds-plugin');
             return $this->render('content', awpcp_print_error($message));
         }
+
+        $pay_first = (bool) get_awpcp_option('pay-before-place-ad');
 
         if ( isset( $_POST['edit-details'] ) ) {
             return $this->details_step();
         } else if ( isset( $_POST['manage-images'] ) ) {
             return $this->upload_images_step();
+        } else if ( $pay_first && isset( $_POST['finish'] ) ) {
+            return $this->finish_step();
         } else if ( isset( $_POST['finish'] ) ) {
             return $this->checkout_step();
         } else {
@@ -1251,14 +1260,14 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         $send_email = false;
 
         if (is_null($transaction)) {
-            $message = __('We were unable to find a Payment Transaction assigned to this operation.', 'AWPCP');
+            $message = __('We were unable to find a Payment Transaction assigned to this operation.', 'another-wordpress-classifieds-plugin');
             return $this->render('content', awpcp_print_error($message));
         }
 
         $ad = AWPCP_Ad::find_by_id($transaction->get('ad-id', 0));
 
         if (is_null($ad)) {
-            $message = __('The Ad associated with this transaction doesn\'t exists.', 'AWPCP');
+            $message = __('The Ad associated with this transaction doesn\'t exists.', 'another-wordpress-classifieds-plugin');
             return $this->render('content', awpcp_print_error($message));
         }
 

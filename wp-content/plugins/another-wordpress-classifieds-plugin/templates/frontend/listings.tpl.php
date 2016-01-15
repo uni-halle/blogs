@@ -17,7 +17,7 @@
         <?php if ( count( $items ) ): ?>
             <?php echo implode( '', $items ); ?>
         <?php else: ?>
-            <p><?php echo esc_html( __( 'There were no listings found.', 'AWPCP' ) ); ?></p>
+            <p><?php echo esc_html( __( 'There were no listings found.', 'another-wordpress-classifieds-plugin' ) ); ?></p>
         <?php endif;?>
     </div>
 

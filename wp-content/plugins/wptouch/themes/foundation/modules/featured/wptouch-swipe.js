@@ -69,5 +69,7 @@ function foundationCreateDots() {
 }
 
 jQuery( document ).ready( function() {
-	doFoundationFeaturedLoaded();
+	if ( jQuery( '#slider' ).length ) {
+		doFoundationFeaturedLoaded();
+	}
 });

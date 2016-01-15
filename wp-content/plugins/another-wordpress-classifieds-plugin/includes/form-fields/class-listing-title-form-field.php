@@ -15,17 +15,17 @@ class AWPCP_ListingTitleFormField extends AWPCP_FormField {
     }
 
     public function get_name() {
-        return __( 'Listing Title', 'AWPCP' );
+        return __( 'Listing Title', 'another-wordpress-classifieds-plugin' );
     }
 
     public function render( $value, $errors, $listing, $context ) {
         $characters_limit = $this->get_characters_limit_for_listing( $listing );
 
         if ( $characters_limit['characters_allowed'] == 0 ) {
-            $characters_allowed_text = _x('No characters limit.', 'ad details form', 'AWPCP');
+            $characters_allowed_text = _x('No characters limit.', 'ad details form', 'another-wordpress-classifieds-plugin');
             $remaining_characters_text = '';
         } else {
-            $characters_allowed_text = _x('characters left.', 'ad details form', 'AWPCP');
+            $characters_allowed_text = _x('characters left.', 'ad details form', 'another-wordpress-classifieds-plugin');
             $remaining_characters_text = $characters_limit['remaining_characters'];
         }
 

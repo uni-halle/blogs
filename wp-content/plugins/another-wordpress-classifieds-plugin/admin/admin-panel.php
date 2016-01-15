@@ -20,7 +20,7 @@ class AWPCP_Admin {
 
 	public function __construct() {
 		$this->title = awpcp_admin_page_title();
-		$this->menu = _x('Classifieds', 'awpcp admin menu', 'AWPCP');
+		$this->menu = _x('Classifieds', 'awpcp admin menu', 'another-wordpress-classifieds-plugin');
 
 		// not a page, but an extension to the Users table
 		$this->users = new AWPCP_AdminUsers();
@@ -64,7 +64,7 @@ class AWPCP_Admin {
 			return;
 		}
 
-		if ( get_option( 'awpcp-pending-manual-upgrade' ) ) {
+		if ( awpcp()->manual_upgrades->has_pending_tasks() ) {
 			ob_start();
 				include( AWPCP_DIR . '/admin/templates/admin-pending-manual-upgrade-notice.tpl.php' );
 				$html = ob_get_contents();
@@ -145,10 +145,12 @@ class AWPCP_Admin {
 		if ( !empty( $awpcp_pages ) ) {
 			$duplicated_pages = '<strong>' . join( '</strong>, <strong>', $awpcp_pages ) . '</strong>';
 
-			$message = _n( count( $awpcp_pages),
-						  '%1$s has the same name as the %2$s. That will cause %1$s to become unreachable. Please make sure you don\'t have duplicate page names.',
-						  '%1$s have the same name as the %2$s. That will cause %1$s to become unreachable. Please make sure you don\'t have duplicate page names.',
-						  'AWPCP' );
+            $message = _n(
+                '%1$s has the same name as the %2$s. That will cause %1$s to become unreachable. Please make sure you don\'t have duplicate page names.',
+                '%1$s have the same name as the %2$s. That will cause %1$s to become unreachable. Please make sure you don\'t have duplicate page names.',
+                count( $awpcp_pages),
+                'another-wordpress-classifieds-plugin'
+            );
 			$message = sprintf( $message, $duplicated_pages, $view_categories_label );
 
 			echo awpcp_print_error( $message );
@@ -157,10 +159,12 @@ class AWPCP_Admin {
 		if ( !empty( $wp_pages ) ) {
 			$duplicated_pages = '<strong>' . join( '</strong>, <strong>', $wp_pages ) . '</strong>';
 
-			$message = _n( count( $wp_pages),
-						  'Page %1$s has the same name as the AWPCP %2$s. That will cause WordPress page %1$s to become unreachable. The %2$s is dynamic; you don\'t need to create a real WordPress page to show the list of cateogries, the plugin will generate it for you. If the WordPress page was created to show the default list of AWPCP categories, you can delete it and this error message will go away. Otherwise, please make sure you don\'t have duplicate page names.',
-						  'Pages %1$s have the same name as the AWPCP %2$s. That will cause WordPress pages %1$s to become unreachable. The %2$s is dynamic; you don\'t need to create a real WordPress page to show the list of cateogries, the plugin will generate it for you. If the WordPress pages were created to show the default list of AWPCP categories, you can delete them and this error message will go away. Otherwise, please make sure you don\'t have duplicate page names.',
-						  'AWPCP' );
+            $message = _n(
+                'Page %1$s has the same name as the AWPCP %2$s. That will cause WordPress page %1$s to become unreachable. The %2$s is dynamic; you don\'t need to create a real WordPress page to show the list of cateogries, the plugin will generate it for you. If the WordPress page was created to show the default list of AWPCP categories, you can delete it and this error message will go away. Otherwise, please make sure you don\'t have duplicate page names.',
+                'Pages %1$s have the same name as the AWPCP %2$s. That will cause WordPress pages %1$s to become unreachable. The %2$s is dynamic; you don\'t need to create a real WordPress page to show the list of cateogries, the plugin will generate it for you. If the WordPress pages were created to show the default list of AWPCP categories, you can delete them and this error message will go away. Otherwise, please make sure you don\'t have duplicate page names.',
+                count( $wp_pages),
+                'another-wordpress-classifieds-plugin'
+            );
 			$message = sprintf( $message, $duplicated_pages, $view_categories_label );
 
 			echo awpcp_print_error( $message );
@@ -183,9 +187,11 @@ class AWPCP_Admin {
 
 	private function get_manage_credits_section_url() {
 		$full_url = add_query_arg( 'action', 'awpcp-manage-credits', admin_url( 'users.php' ) );
-		$relative_url = str_replace( get_site_url(), '', $full_url );
 
-		return $relative_url;
+		$domain = awpcp_request()->domain();
+		$domain_position = strpos( $full_url, $domain );
+
+		return substr( $full_url, $domain_position + strlen( $domain ) );
 	}
 
 	/**
@@ -219,9 +225,10 @@ class AWPCP_Admin {
 
 		$capability = awpcp_admin_capability();
 
-		if (get_option('awpcp-pending-manual-upgrade')) {
+		if ( awpcp()->manual_upgrades->has_pending_tasks() ) {
 			$parts = array($this->upgrade->title, $this->upgrade->menu, $this->upgrade->page);
 			$page = add_menu_page($parts[0], $parts[1], $capability, $parts[2], array($this->upgrade, 'dispatch'), MENUICO);
+			add_action('admin_print_styles-' . $page, array($this->upgrade, 'scripts'));
 
 		} else {
 			$parent = $this->home->page;
@@ -237,8 +244,8 @@ class AWPCP_Admin {
 
 			$page = add_submenu_page(
 				$parent,
-				awpcp_admin_page_title( __( 'Settings', 'AWPCP' ) ),
-				__( 'Settings', 'AWPCP' ),
+				awpcp_admin_page_title( __( 'Settings', 'another-wordpress-classifieds-plugin' ) ),
+				__( 'Settings', 'another-wordpress-classifieds-plugin' ),
 				$capability,
 				'awpcp-admin-settings',
 				array( $this->settings, 'dispatch' )
@@ -251,7 +258,7 @@ class AWPCP_Admin {
 
 			if ( current_user_can( $capability ) ) {
 				$url = $this->get_manage_credits_section_url();
-				$submenu['awpcp.php'][] = array( __( 'Manage Credit', 'AWPCP' ), $capability, $url );
+				$submenu['awpcp.php'][] = array( __( 'Manage Credit', 'another-wordpress-classifieds-plugin' ), $capability, $url );
 			}
 
 			$parts = array($this->fees->title, $this->fees->menu, $this->fees->page);
@@ -260,8 +267,8 @@ class AWPCP_Admin {
 
 			add_submenu_page(
 				$parent,
-				awpcp_admin_page_title( __( 'Manage Categories', 'AWPCP' ) ),
-				__( 'Categories', 'AWPCP' ),
+				awpcp_admin_page_title( __( 'Manage Categories', 'another-wordpress-classifieds-plugin' ) ),
+				__( 'Categories', 'another-wordpress-classifieds-plugin' ),
 				$capability,
 				'awpcp-admin-categories',
 				'awpcp_opsconfig_categories'
@@ -286,10 +293,10 @@ class AWPCP_Admin {
 			do_action('awpcp_admin_add_submenu_page', $parent, $capability);
 
 			if ($hasextrafieldsmodule) {
-				add_submenu_page($parent, __('Manage Extra Fields', 'AWPCP'), __('Extra Fields', 'AWPCP'), $capability, 'Configure5', 'awpcp_add_new_field');
+				add_submenu_page($parent, __('Manage Extra Fields', 'another-wordpress-classifieds-plugin'), __('Extra Fields', 'another-wordpress-classifieds-plugin'), $capability, 'Configure5', 'awpcp_add_new_field');
 			}
 
-			$hook = add_submenu_page($parent, __('Import Ad', 'AWPCP'), __('Import', 'AWPCP'), $capability, 'awpcp-import', array($this->importer, 'dispatch'));
+			$hook = add_submenu_page($parent, __('Import Ad', 'another-wordpress-classifieds-plugin'), __('Import', 'another-wordpress-classifieds-plugin'), $capability, 'awpcp-import', array($this->importer, 'dispatch'));
 			add_action("load-{$hook}", array($this->importer, 'scripts'));
 
 			add_submenu_page($parent, 'Debug', 'Debug', $capability, 'awpcp-debug', array($this->debug, 'dispatch'));
@@ -462,14 +469,14 @@ function awpcp_admin_categories_render_category_item($category, $level, $start, 
 	if ($hascaticonsmodule == 1 && is_installed_category_icon_module()) {
 		$url = esc_url( add_query_arg( 'action', 'managecaticon', $admin_categories_url ) );
 		$managecaticon = "<a href=\"$url\"><img src=\"$awpcp_imagesurl/icon_manage_ico.png\" alt=\"";
-		$managecaticon.= __("Manage Category Icon", "AWPCP");
-		$managecaticon.= "\" title=\"" . __("Manage Category Icon", "AWPCP") . "\" border=\"0\"/></a>";
+		$managecaticon.= __("Manage Category Icon", 'another-wordpress-classifieds-plugin');
+		$managecaticon.= "\" title=\"" . __("Manage Category Icon", 'another-wordpress-classifieds-plugin') . "\" border=\"0\"/></a>";
 	} else {
 		$managecaticon = '';
 	}
 
-	$awpcpeditcategoryword = __("Edit Category","AWPCP");
-	$awpcpdeletecategoryword = __("Delete Category","AWPCP");
+	$awpcpeditcategoryword = __("Edit Category",'another-wordpress-classifieds-plugin');
+	$awpcpdeletecategoryword = __("Delete Category",'another-wordpress-classifieds-plugin');
 
 
 	$row = '<tr>';
@@ -621,25 +628,25 @@ function awpcp_opsconfig_categories() {
 			$cat_parent_ID = null;
 		}
 
-		$add_label = __( 'Add A New Category', 'AWPCP' );
+		$add_label = __( 'Add A New Category', 'another-wordpress-classifieds-plugin' );
 		$add_url = awpcp_get_admin_categories_url();
 		$addnewlink = '<a class="" title="%1$s" href="%2$s"" accesskey="s">%1$s</a>';
 		$addnewlink = sprintf( $addnewlink, $add_label, $add_url );
 
 		if ($aeaction == 'edit')
 		{
-			$aeword1=__("You are currently editing the category shown below","AWPCP");
-			$aeword2=__("Save Category Changes","AWPCP");
-			$aeword3=__("Parent Category","AWPCP");
-			$aeword4=__("Category List Order","AWPCP");
+			$aeword1=__("You are currently editing the category shown below",'another-wordpress-classifieds-plugin');
+			$aeword2=__("Save Category Changes",'another-wordpress-classifieds-plugin');
+			$aeword3=__("Parent Category",'another-wordpress-classifieds-plugin');
+			$aeword4=__("Category List Order",'another-wordpress-classifieds-plugin');
 		}
 		elseif ($aeaction == 'delete')
 		{
 			if ( $cat_ID != 1)
 			{
-				$aeword1=__("If you're sure that you want to delete this category please press the delete button","AWPCP");
-				$aeword2=__("Delete Category","AWPCP");
-				$aeword3=__("Parent Category","AWPCP");
+				$aeword1=__("If you're sure that you want to delete this category please press the delete button",'another-wordpress-classifieds-plugin');
+				$aeword2=__("Delete Category",'another-wordpress-classifieds-plugin');
+				$aeword3=__("Parent Category",'another-wordpress-classifieds-plugin');
 				$aeword4='';
 
 				if (ads_exist_cat($cat_ID))
@@ -656,32 +663,32 @@ function awpcp_opsconfig_categories() {
 						$move_to_category = awpcp_categories_collection()->get( $movetocat );
 						$movetoname = $move_to_category->name;
 					} catch ( AWPCP_Exception $e ) {
-						$movetoname = __( 'Untitled', 'AWPCP' );
+						$movetoname = __( 'Untitled', 'another-wordpress-classifieds-plugin' );
 					}
 
 					$promptmovetocat="<p>";
-					$promptmovetocat.=__("The category contains ads. If you do not select a category to move them to the ads will be moved to:","AWPCP");
+					$promptmovetocat.=__("The category contains ads. If you do not select a category to move them to the ads will be moved to:",'another-wordpress-classifieds-plugin');
 					$promptmovetocat.="<b>$movetoname</b></p>";
 
 					try {
 						$move_to_category = awpcp_categories_collection()->get( 1 );
 						$defaultcatname = $move_to_category->name;
 					} catch ( AWPCP_Exception $e ) {
-						$defaultcatname = __( 'Untitled', 'AWPCP' );
+						$defaultcatname = __( 'Untitled', 'another-wordpress-classifieds-plugin' );
 					}
 
 					if (category_has_children($cat_ID))
 					{
 						$promptmovetocat.="<p>";
-						$promptmovetocat.=__("The category also has children. If you do not specify a move-to category the children will be adopted by","AWPCP");
+						$promptmovetocat.=__("The category also has children. If you do not specify a move-to category the children will be adopted by",'another-wordpress-classifieds-plugin');
 						$promptmovetocat.="<b>$defaultcatname</b><p><b>";
-						$promptmovetocat.=__("Note","AWPCP");
+						$promptmovetocat.=__("Note",'another-wordpress-classifieds-plugin');
 						$promptmovetocat.=":</b>";
-						$promptmovetocat.=__("The move-to category specified applies to both ads and categories","AWPCP");
+						$promptmovetocat.=__("The move-to category specified applies to both ads and categories",'another-wordpress-classifieds-plugin');
 						$promptmovetocat.="</p>";
 					}
 					$promptmovetocat.="<p align=\"center\"><select name=\"movetocat\"><option value=\"0\">";
-					$promptmovetocat.=__("Please select a Move-To category","AWPCP");
+					$promptmovetocat.=__("Please select a Move-To category",'another-wordpress-classifieds-plugin');
 					$promptmovetocat.="</option>";
 					$categories=  get_categorynameid($cat_ID,$cat_parent_ID,$exclude=$cat_ID);
 					$promptmovetocat.="$categories</select>";
@@ -691,7 +698,7 @@ function awpcp_opsconfig_categories() {
 			}
 			else
 			{
-				$aeword1 = __( 'Sorry but you cannot delete %s. It is the default category and the default category cannot be deleted.', 'AWPCP' );
+				$aeword1 = __( 'Sorry but you cannot delete %s. It is the default category and the default category cannot be deleted.', 'another-wordpress-classifieds-plugin' );
 				$aeword1 = sprintf( $aeword1, '<strong>' . $category_name . '</strong>' );
 
 				$aeword2='';
@@ -706,10 +713,10 @@ function awpcp_opsconfig_categories() {
 				$aeaction="newcategory";
 			}
 
-			$aeword1 = __( 'Add a New Category', 'AWPCP' );
-			$aeword2=__("Add New Category","AWPCP");
-			$aeword3=__("List Category Under","AWPCP");
-			$aeword4=__("Category List Order","AWPCP");
+			$aeword1 = __( 'Add a new category', 'another-wordpress-classifieds-plugin' );
+			$aeword2=__( 'Add new category', 'another-wordpress-classifieds-plugin' );
+			$aeword3=__( 'List category under', 'another-wordpress-classifieds-plugin' );
+			$aeword4=__( 'Category list order', 'another-wordpress-classifieds-plugin' );
 			$addnewlink = '';
 		}
 		if ($aeaction == 'delete')
@@ -723,7 +730,7 @@ function awpcp_opsconfig_categories() {
 			else
 			{
 				$categorynameinput="<span style=\"background:transparent url($awpcp_imagesurl/delete_ico.png) left center no-repeat;padding-left:20px;\">";
-				$categorynameinput.=__("Category to Delete","AWPCP");
+				$categorynameinput.=__("Category to Delete",'another-wordpress-classifieds-plugin');
 				$categorynameinput.=": $category_name</span>";
 				$selectinput="<p style=\"background:#D54E21;padding:3px;color:#ffffff;\">$thecategoryparentname</p>";
 				$submitbuttoncode="<input type=\"submit\" class=\"button-primary button\" name=\"createeditadcategory\" value=\"$aeword2\" />";
@@ -733,11 +740,11 @@ function awpcp_opsconfig_categories() {
 		{
 			$section_icon_style = "background:transparent url($awpcp_imagesurl/edit_ico.png) left center no-repeat;padding-left:20px;";
 
-			$categorynameinput = __("Category to Edit","AWPCP");
+			$categorynameinput = __("Category to Edit",'another-wordpress-classifieds-plugin');
 			$categorynameinput.=": $category_name ";
 			$categorynamefield = "<input name=\"category_name\" id=\"cat_name\" type=\"text\" class=\"inputbox\" value=\"$category_name\" size=\"40\" style=\"width: 90%\"/>";
 			$selectinput="<select name=\"category_parent_id\"><option value=\"0\">";
-			$selectinput.=__("Make This a Top Level Category","AWPCP");
+			$selectinput.=__("Make This a Top Level Category",'another-wordpress-classifieds-plugin');
 			$selectinput.="</option>";
 			$orderinput="<input name=\"category_order\" id=\"category_order\" type=\"text\" class=\"inputbox\" value=\"$category_order\" size=\"3\"/>";
 			$categories=  get_categorynameid($cat_ID,$cat_parent_ID,$exclude='');
@@ -748,10 +755,10 @@ function awpcp_opsconfig_categories() {
 		else {
 			$section_icon_style = "background:transparent url($awpcp_imagesurl/post_ico.png) left center no-repeat;padding-left:20px;";
 
-			$categorynameinput = __( 'Enter the category name', 'AWPCP' );
+			$categorynameinput = __( 'Enter the category name', 'another-wordpress-classifieds-plugin' );
 			$categorynamefield ="<input name=\"category_name\" id=\"cat_name\" type=\"text\" class=\"inputbox\" value=\"$category_name\" size=\"40\" style=\"width: 90%\"/>";
 			$selectinput="<select name=\"category_parent_id\"><option value=\"0\">";
-			$selectinput.=__("Make This a Top Level Category","AWPCP");
+			$selectinput.=__("Make This a Top Level Category",'another-wordpress-classifieds-plugin');
 			$selectinput.="</option>";
 			$orderinput="<input name=\"category_order\" id=\"category_order\" type=\"text\" class=\"inputbox\" value=\"$category_order\" size=\"3\"/>";
 			$categories=  get_categorynameid($cat_ID,$cat_parent_ID,$exclude='');
@@ -762,7 +769,7 @@ function awpcp_opsconfig_categories() {
 
 		// Start the page display
 		$output .= "<div class=\"wrap\"><h2>";
-		$output .= awpcp_admin_page_title( __( 'Manage Categories', 'AWPCP' ) );
+		$output .= awpcp_admin_page_title( __( 'Manage Categories', 'another-wordpress-classifieds-plugin' ) );
 		$output .= "</h2>";
 		if (isset($message) && !empty($message))
 		{
@@ -779,19 +786,19 @@ function awpcp_opsconfig_categories() {
 		}
 
 		$output .= "<b>";
-		$output .= __("Icon Meanings","AWPCP");
+		$output .= __("Icon Meanings",'another-wordpress-classifieds-plugin');
 		$output .= ":</b> &nbsp;&nbsp;&nbsp;<img src=\"$awpcp_imagesurl/edit_ico.png\" alt=\"";
-		$output .= __("Edit Category","AWPCP");
+		$output .= __("Edit Category",'another-wordpress-classifieds-plugin');
 		$output .= "\" border=\"0\"/>";
-		$output .= __("Edit Category","AWPCP");
+		$output .= __("Edit Category",'another-wordpress-classifieds-plugin');
 		$output .= " &nbsp;&nbsp;&nbsp;<img src=\"$awpcp_imagesurl/delete_ico.png\" alt=\"";
-		$output .= __("Delete Category","AWPCP");
+		$output .= __("Delete Category",'another-wordpress-classifieds-plugin');
 		$output .= "\" border=\"0\"/>";
-		$output .= __("Delete Category","AWPCP");
+		$output .= __("Delete Category",'another-wordpress-classifieds-plugin');
 
 
 		if ($hascaticonsmodule == 1 && is_installed_category_icon_module() ) {
-			$label = __("Manage Category Icon", "AWPCP");
+			$label = __("Manage Category Icon", 'another-wordpress-classifieds-plugin');
 			$output .= " &nbsp;&nbsp;&nbsp;<img src=\"$awpcp_imagesurl/icon_manage_ico.png\" alt=\"";
 			$output .= $label;
 			$output .= "\" border=\"0\"/>";
@@ -850,20 +857,20 @@ function awpcp_opsconfig_categories() {
 
 		$output .= "$pager1 <form name=\"mycats\" id=\"mycats\" method=\"post\">
 		 <p><input type=\"submit\" name=\"deletemultiplecategories\" class=\"button\" value=\"";
-		$output .= __("Delete Selected Categories","AWPCP");
+		$output .= __("Delete Selected Categories",'another-wordpress-classifieds-plugin');
 		$output .= "\" />
 		 <input type=\"submit\" name=\"movemultiplecategories\" class=\"button\" value=\"";
-		$output .= __("Move Selected Categories","AWPCP");
+		$output .= __("Move Selected Categories",'another-wordpress-classifieds-plugin');
 		$output .= "\" />
 		 <select name=\"moveadstocategory\"><option value=\"0\">";
-		$output .= __("Select Move-To category","AWPCP");
+		$output .= __("Select Move-To category",'another-wordpress-classifieds-plugin');
 		$output .= "</option>";
 		$movetocategories=  get_categorynameid($cat_id = 0,$cat_parent_id= 0,$exclude);
 		$output .= "$movetocategories</select></p>
 		<p>";
-		$output .= __( 'Delete categories should do this with existing Ads', 'AWPCP' );
-		$output .= ": <label><input type=\"radio\" name=\"movedeleteads\" value=\"1\" checked='checked' > " . __( 'Move Ads to new category', 'AWPCP' ) . "</label>";
-		$output .= " <label><input type=\"radio\" name=\"movedeleteads\" value=\"2\" > " . __( 'Delete Ads too', 'AWPCP' ) . "</label></p>";
+		$output .= __( 'Delete categories should do this with existing Ads', 'another-wordpress-classifieds-plugin' );
+		$output .= ": <label><input type=\"radio\" name=\"movedeleteads\" value=\"1\" checked='checked' > " . __( 'Move Ads to new category', 'another-wordpress-classifieds-plugin' ) . "</label>";
+		$output .= " <label><input type=\"radio\" name=\"movedeleteads\" value=\"2\" > " . __( 'Delete Ads too', 'another-wordpress-classifieds-plugin' ) . "</label></p>";
 
 		$children = awpcp_get_categories_hierarchy();
 		$categories = AWPCP_Category::query( array(
@@ -875,27 +882,27 @@ function awpcp_opsconfig_categories() {
 		$items = awpcp_admin_categories_render_category_items( $categories, $children, $offset, $results, $count );
 
 		$opentable='<table class="listcatsh"><tr>';
-		$opentable.='<td style="width:10%; text-align: center;">' . __('Category ID', 'AWPCP') . '</td>';
+		$opentable.='<td style="width:10%; text-align: center;">' . __('Category ID', 'another-wordpress-classifieds-plugin') . '</td>';
 		$opentable.="<td style=\"width:30%;padding:5px;\"><label><input type=\"checkbox\" onclick=\"CheckAll()\" />&nbsp;";
-		$opentable.=__("Category Name (Total Ads)","AWPCP");
+		$opentable.=__("Category Name (Total Ads)",'another-wordpress-classifieds-plugin');
 		$opentable.="</label></td><td style=\"width:35%;padding:5px;\">";
-		$opentable.=__("Parent","AWPCP");
+		$opentable.=__("Parent",'another-wordpress-classifieds-plugin');
 		$opentable.="</td><td style=\"width:5%;padding:5px;\">";
-		$opentable.=__("Order","AWPCP");
+		$opentable.=__("Order",'another-wordpress-classifieds-plugin');
 		$opentable.="</td><td style=\"width:20%;padding:5px;;\">";
-		$opentable.=__("Action","AWPCP");
+		$opentable.=__("Action",'another-wordpress-classifieds-plugin');
 		$opentable.="</td></tr>";
 
 		$closetable='<tr>';
-		$closetable.='<td>' . __('Category ID', 'AWPCP') . '</td>';
+		$closetable.='<td>' . __('Category ID', 'another-wordpress-classifieds-plugin') . '</td>';
 		$closetable.='<td style="padding:5px;">';
-		$closetable.=__("Category Name (Total Ads)","AWPCP");
+		$closetable.=__("Category Name (Total Ads)",'another-wordpress-classifieds-plugin');
 		$closetable.="</td><td style=\"padding:5px;\">";
-		$closetable.=__("Parent","AWPCP");
+		$closetable.=__("Parent",'another-wordpress-classifieds-plugin');
 		$closetable.="</td><td style=\"padding:5px;\">";
-		$closetable.=__("Order","AWPCP");
+		$closetable.=__("Order",'another-wordpress-classifieds-plugin');
 		$closetable.="</td><td style=\"padding:5px;\">";
-		$closetable.=__("Action","AWPCP");
+		$closetable.=__("Action",'another-wordpress-classifieds-plugin');
 		$closetable.="</td></tr></table>";
 
 		$theitems=smart_table2($items,intval($results/$results),$opentable,$closetable, false);
@@ -1089,7 +1096,7 @@ function awpcp_handle_admin_requests() {
 
 			try {
 				awpcp_categories_collection()->save( $category );
-				$themessagetoprint = __( 'The new category was successfully added.', 'AWPCP' );
+				$themessagetoprint = __( 'The new category was successfully added.', 'another-wordpress-classifieds-plugin' );
 			} catch ( AWPCP_Exception $e ) {
 				$themessagetoprint = $e->getMessage();
 			}
@@ -1108,7 +1115,7 @@ function awpcp_handle_admin_requests() {
 			// Make sure this is not the default category. If it is the default category alert that the default category can only be renamed not deleted
 			if ($category_id == 1)
 			{
-				$themessagetoprint=__("Sorry but you cannot delete the default category. The default category can only be renamed","AWPCP");
+				$themessagetoprint=__("Sorry but you cannot delete the default category. The default category can only be renamed",'another-wordpress-classifieds-plugin');
 			} else {
 				//Proceed with the delete instructions
 
@@ -1176,7 +1183,7 @@ function awpcp_handle_admin_requests() {
 
 				do_action( 'awpcp-category-deleted', $category_id );
 
-				$themessagetoprint=__("The category has been deleted","AWPCP");
+				$themessagetoprint=__("The category has been deleted",'another-wordpress-classifieds-plugin');
 			}
 		}
 		elseif ($aeaction == 'edit')
@@ -1188,14 +1195,14 @@ function awpcp_handle_admin_requests() {
 
 			try {
 				awpcp_categories_collection()->save( $category );
-				$themessagetoprint = __( 'Your category changes have been saved.', 'AWPCP' );
+				$themessagetoprint = __( 'Your category changes have been saved.', 'another-wordpress-classifieds-plugin' );
 			} catch ( AWPCP_Exception $e ) {
 				$themessagetoprint = $e->getMessage();
 			}
 		}
 		else
 		{
-			$themessagetoprint=__("No changes made to categories.","AWPCP");
+			$themessagetoprint=__("No changes made to categories.",'another-wordpress-classifieds-plugin');
 		}
 
 		$message="<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"awpcp-updated updated fade\">$themessagetoprint</div>";
@@ -1234,11 +1241,11 @@ function awpcp_handle_admin_requests() {
 
 			}
 
-			$themessagetoprint=__("With the exception of any category that was being moved to itself, the categories have been moved","AWPCP");
+			$themessagetoprint=__("With the exception of any category that was being moved to itself, the categories have been moved",'another-wordpress-classifieds-plugin');
 		}
 		else
 		{
-			$themessagetoprint=__("The categories have not been moved because you did not indicate where you want the categories to be moved to","AWPCP");
+			$themessagetoprint=__("The categories have not been moved because you did not indicate where you want the categories to be moved to",'another-wordpress-classifieds-plugin');
 		}
 
 		$message="<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"awpcp-updated updated fade\">$themessagetoprint</div>";
@@ -1333,7 +1340,7 @@ function awpcp_handle_admin_requests() {
 				$query = "DELETE FROM  " . AWPCP_TABLE_CATEGORIES . " WHERE category_id='$cattodel'";
 				$wpdb->query( $query );
 
-				$themessagetoprint=__("The categories have been deleted","AWPCP");
+				$themessagetoprint=__("The categories have been deleted",'another-wordpress-classifieds-plugin');
 			}
 
 		}

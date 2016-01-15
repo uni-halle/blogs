@@ -36,6 +36,9 @@ class AWPCP_Compatibility {
 
         $integration = awpcp_add_meta_tags_plugin_integration();
         add_filter( 'awpcp-should-generate-opengraph-tags', array( $integration, 'should_generate_opengraph_tags' ), 10, 2 );
+
+        $integration = awpcp_facebook_button_plugin_integration();
+        $integration->setup();
     }
 
     private function load_content_aware_sidebars_integration() {
@@ -49,5 +52,20 @@ class AWPCP_Compatibility {
     private function load_woocommerce_integration() {
         $woocommerce_integration = awpcp_woocommerce_plugin_integration();
         add_filter( 'woocommerce_prevent_admin_access', array( $woocommerce_integration, 'filter_prevent_admin_access' ) );
+
+        if ( ! is_admin() ) {
+            add_filter( 'woocommerce_unforce_ssl_checkout', array( $woocommerce_integration, 'filter_unforce_ssl_checkout' ) );
+        }
+    }
+
+    public function load_plugin_integrations_on_init() {
+        if ( !is_user_logged_in() ) {
+            $this->load_plugin_integrations_for_anonymous_users();
+        }
+    }
+
+    private function load_plugin_integrations_for_anonymous_users() {
+        $integration = awpcp_wp_members_plugin_integration();
+        add_filter( 'awpcp-login-form-implementation', array( $integration, 'get_login_form_implementation' ) );
     }
 }

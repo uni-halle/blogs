@@ -1,6 +1,6 @@
 <div id="classiwrapper">
 
-	<h2><?php _e('Renew Ad', 'AWPCP') ?></h2>
+	<h2><?php _e('Renew Ad', 'another-wordpress-classifieds-plugin') ?></h2>
 
 <?php if (in_array($step, array('renew-ad', 'error', 'post-checkout'))): ?>
 
@@ -12,7 +12,7 @@
 	<p><?php echo $part ?></p>
 	<?php endforeach ?>
 
-	<?php $msg = __('Please click the payment button below to proceed with Payment for your Ad renewal. You will be asked to pay %s.', 'AWPCP') ?>
+	<?php $msg = __('Please click the payment button below to proceed with Payment for your Ad renewal. You will be asked to pay %s.', 'another-wordpress-classifieds-plugin') ?>
 	<p><?php echo sprintf($msg, $amount) ?></p>
 	<?php echo $content ?>
 

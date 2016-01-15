@@ -229,7 +229,7 @@ dt {
 	<tr valign="top">
 	<th scope="row"><?php echo __("Find in URL", 'powerpress'); ?></th> 
 	<td>
-			<input type="text" id="find_string" name="FindReplace[find_string]" style="width: 50%;" value="<?php echo esc_attr($FindReplace['find_string']); ?>" maxlength="250" <?php if( $FindReplace['step'] != 1 ) { echo ' readOnly'; } ?> />
+			<input type="text" id="find_string" name="FindReplace[find_string]" style="width: 50%;" value="<?php echo esc_attr($FindReplace['find_string']); ?>" maxlength="255" <?php if( $FindReplace['step'] != 1 ) { echo ' readOnly'; } ?> />
 			<?php if( $FindReplace['step'] != 1 ) { ?><a href="#" onclick="jQuery('#replace_step').val('1');jQuery('#replace_step').closest('form').submit();return false;"><?php echo __('Modify', 'powerpress'); ?></a><?php } ?>
 			<p style="margin: 0; font-size: 90%;"><?php echo __('Example', 'powerpress'); ?>: http://www.oldsite.com/</p>
 	</td>
@@ -237,7 +237,7 @@ dt {
 	<tr valign="top">
 	<th scope="row"><?php echo __('Replace with', 'powerpress'); ?></th> 
 	<td>
-			<input type="text" id="replace_string" name="FindReplace[replace_string]" style="width: 50%;" value="<?php echo esc_attr($FindReplace['replace_string']); ?>" maxlength="250" <?php if( $FindReplace['step'] != 1 ) { echo ' readOnly'; } ?> />
+			<input type="text" id="replace_string" name="FindReplace[replace_string]" style="width: 50%;" value="<?php echo esc_attr($FindReplace['replace_string']); ?>" maxlength="255" <?php if( $FindReplace['step'] != 1 ) { echo ' readOnly'; } ?> />
 			<?php if( $FindReplace['step'] != 1 ) { ?><a href="#" onclick="jQuery('#replace_step').val('1');jQuery('#replace_step').closest('form').submit();return false;"><?php echo __('Modify', 'powerpress'); ?></a><?php } ?>
 			<p style="margin: 0; font-size: 90%;"><?php echo __('Example', 'powerpress'); ?>: http://www.newsite.com/</p>
 	</td>

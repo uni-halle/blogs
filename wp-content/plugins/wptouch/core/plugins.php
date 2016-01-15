@@ -1,8 +1,4 @@
 <?php
-function wptouch_return_false() {
-	return false;
-}
-
 function wptouch_remove_jetpack_related() {
 	if ( class_exists( 'Jetpack_RelatedPosts' ) )
 	{
@@ -20,7 +16,7 @@ function wptouch_plugins_generate_hook_list( $wptouch_pro, $settings ) {
 	$new_plugin_list = array();
 
 	foreach( $php_files as $plugin_file ) {
-		$path_info = explode( '/', $plugin_file );
+		$path_info = explode( DIRECTORY_SEPARATOR, $plugin_file );
 
 		if ( $path_info[1] <> 'index.php' ) {
 			$plugin_slug = $path_info[1];

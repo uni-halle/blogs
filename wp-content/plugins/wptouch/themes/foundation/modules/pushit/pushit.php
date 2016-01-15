@@ -11,7 +11,7 @@ function foundation_pushit_init() {
 		'foundation_pushit',
 		foundation_get_base_module_url() . '/pushit/pushit.css',
 		'',
-		FOUNDATION_VERSION
+		md5( FOUNDATION_VERSION )
 	);
 
 	// PushIt JS
@@ -19,7 +19,7 @@ function foundation_pushit_init() {
 		'foundation_pushit',
 		foundation_get_base_module_url() . '/pushit/pushit.js',
 		array( 'jquery' ),
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		true
 	);
 }

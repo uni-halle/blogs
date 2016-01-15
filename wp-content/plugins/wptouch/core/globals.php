@@ -5,27 +5,17 @@ if ( !defined( 'WPTOUCH_IS_FREE' ) ) {
 }
 
 define( 'WPTOUCH_PRO_DESKTOP_FCN_CACHE_TIME', 3600 );
+define( 'WPTOUCH_PRO_LIVE_PREVIEW_SETTING', 1 );
 
-add_action( 'wptouch_pro_loaded', 'wptouch_load_add_ons' );
 add_filter( 'wptouch_modify_setting__compat__enabled_plugins', 'wptouch_modify_enabled_plugins' );
 
 require_once( WPTOUCH_DIR . '/core/class-array-iterator.php' );
+require_once( WPTOUCH_DIR . '/core/multisite.php' );
 
 function wptouch_is_mobile_theme_showing() {
 	global $wptouch_pro;
 
 	return ( $wptouch_pro->is_mobile_device && $wptouch_pro->showing_mobile_theme );
-}
-
-function wptouch_load_add_ons() {
-	require_once( WPTOUCH_DIR . '/core/file-operations.php' );
-	$php_files = wptouch_get_all_recursive_files( WPTOUCH_DIR . '/include/add-ons/', '.php' );
-
-	if ( $php_files && count( $php_files ) ) {
-		foreach( $php_files as $php_file ) {
-			require_once( WPTOUCH_DIR . '/include/add-ons' . $php_file );
-		}
-	}
 }
 
 function wptouch_locate_template( $param1, $param2, $param3, $param4 = false, $param5 = false ) {
@@ -66,8 +56,6 @@ function wptouch_locate_template( $param1, $param2, $param3, $param4 = false, $p
 		} else {
 			wptouch_include_functions_file( $wptouch_pro, $template_file, $template_path, $current_path, 'require' );
 		}
-	} else {
-		// add debug statement
 	}
 }
 
@@ -138,10 +126,6 @@ function wptouch_capture_include_file( $file_name ) {
 	return $contents;
 }
 
-function wptouch_is_multisite_enabled() {
-	return is_multisite();
-}
-
 function wptouch_get_supported_user_agents() {
 	global $wptouch_pro;
 	return $wptouch_pro->get_supported_user_agents();
@@ -197,7 +181,7 @@ function wptouch_rss_date( $rss_date ) {
 	echo date( 'F jS, Y', $date_time );
 }
 
-function wptouch_in_preview_window() {
+function wptouch_in_preview() {
 	return ( isset( $_GET['wptouch_preview_theme'] ) );
 }
 
@@ -221,7 +205,6 @@ function wptouch_desktop_switch_link( $echo_result = true ) {
 
 function wptouch_should_show_desktop_switch_link() {
 	global $wptouch_pro;
-
 	return ( $wptouch_pro->is_mobile_device && !$wptouch_pro->showing_mobile_theme );
 }
 
@@ -231,16 +214,7 @@ function wptouch_the_desktop_switch_link() {
 
 function wptouch_get_desktop_switch_link() {
 	global $wptouch_pro;
-
-	if ( isset( $wptouch_pro->post[ 'wptouch_switch_location' ] ) ) {
-		$redirect_location = $wptouch_pro->post[ 'wptouch_switch_location' ];
-	} else {
-		$redirect_location = esc_url_raw( $_SERVER['REQUEST_URI'], array( 'http', 'https' ) );
-	}
-
-	$nonce = wp_create_nonce( 'wptouch_switch' );
-
-	return apply_filters( 'wptouch_desktop_switch_link', get_bloginfo( 'url' ) . '?wptouch_switch=mobile&amp;redirect=' . urlencode( $redirect_location ) . '&amp;nonce=' . $nonce );
+	return apply_filters( 'wptouch_desktop_switch_link', '?wptouch_switch=mobile' );
 }
 
 if ( defined( 'WPTOUCH_IS_FREE' ) ) {
@@ -258,7 +232,7 @@ if ( defined( 'WPTOUCH_IS_FREE' ) ) {
 }
 
 function wptouch_admin_url( $url ) {
-	if ( is_plugin_active_for_network( WPTOUCH_PLUGIN_SLUG ) ) {
+	if ( is_network_admin() ) {
 		return network_admin_url( $url );
 	} else {
 		return admin_url( $url );
@@ -272,21 +246,6 @@ function wptouch_is_site_licensed() {
 
 function wptouch_should_show_activation_nag() {
 	return wptouch_should_show_license_nag();
-}
-
-function wptouch_is_multisite_primary() {
-	global $blog_id;
-	return ( $blog_id == 1 );
-}
-
-function wptouch_is_multisite_secondary() {
-	if ( wptouch_is_multisite_enabled() ) {
-		global $blog_id;
-
-		return ( $blog_id > 1 );
-	} else {
-		return false;
-	}
 }
 
 function wptouch_bloginfo( $setting_name ) {
@@ -320,7 +279,11 @@ function wptouch_get_bloginfo( $setting_name ) {
 			$setting = $wptouch_pro->get_current_theme_uri();
 			break;
 		case 'site_title':
-			$setting = stripslashes( $settings->site_title );
+			if ( $settings->site_title != '' ) {
+				$setting = $settings->site_title;
+			} else {
+				$setting = get_bloginfo('name');
+			}
 			break;
 		case 'wptouch_directory':
 			$setting = WPTOUCH_DIR;
@@ -421,23 +384,24 @@ function wptouch_get_locale() {
 }
 
 function wptouch_get_desktop_bloginfo( $param ) {
-        switch( $param ) {
-                case 'stylesheet_directory':
-                case 'template_url':
-                case 'template_directory':
-                        return content_url() . '/themes/' . get_option( 'template' );
-                default:
-                        return get_bloginfo( $param );
-        }
+		switch( $param ) {
+				case 'stylesheet_directory':
+				case 'template_url':
+				case 'template_directory':
+					return content_url() . '/themes/' . get_option( 'template' );
+				default:
+					return get_bloginfo( $param );
+		}
 }
 
 function wptouch_desktop_bloginfo( $param ) {
-        echo wptouch_get_desktop_bloginfo( $param );
+	echo wptouch_get_desktop_bloginfo( $param );
 }
 
 function wptouch_can_cloud_install( $theme = true ) {
 	global $wptouch_pro;
 	return $wptouch_pro->can_perform_cloud_install( $theme );
+//	return false; // for testing
 }
 
 function wptouchize_it( $str ) {
@@ -448,3 +412,157 @@ function wptouchize_it( $str ) {
 	}
 }
 
+function wptouch_load_framework( $version = 2 ) {
+	require_once( WPTOUCH_DIR . '/themes/foundation/root-functions.php' );
+	require_once( WPTOUCH_DIR . '/themes/foundation/default/functions.php' );
+
+	add_action( 'wp_enqueue_scripts', 'wptouch_foundation_load_framework_styles', 1 );
+}
+
+function wptouch_foundation_load_framework_styles() {
+	wp_enqueue_style( 'foundation-framework-style', WPTOUCH_URL . '/themes/foundation/default/style.css', false, md5( WPTOUCH_VERSION ) );
+}
+
+function wptouch_return_false() {
+	return false;
+}
+
+function wptouch_theme_version_compare( $required_version, $operator ) {
+	// Example: wptouch_theme_version_compare( '4.0', '>=' ); will return true if current theme requires 4.0 or higher
+
+	global $wptouch_pro;
+	$current_theme = $wptouch_pro->get_current_theme_info();
+	if ( isset( $current_theme->plugin_version ) && version_compare( $current_theme->plugin_version, $required_version, $operator ) ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function wptouch_admin_get_languages() {
+	$languages = array(
+		'auto' => __( 'Auto-detect', 'wptouch-pro' ),
+		'en_US' => 'English',
+		'fr_FR' => 'Français',
+		'it_IT' => 'Italiano',
+		'es_ES' => 'Español',
+		'sv_SE' => 'Svenska',
+		'de_DE' => 'Deutsch',
+		'el' => 'ελληνικά',
+		'da_DK' => 'Dansk',
+		'pt' => 'Português',
+		'nl_NL' => 'Nederlands',
+		'hu' => 'Magyar',
+		'id_ID' => 'Bahasa Indonesia',
+		'he_IL' => 'עִבְרִית',
+		'vi' => 'Tiếng Việt',
+		'tr' => 'Türkçe',
+		'ru_RU' => 'русский',
+		'th' => 'ภาษาไทย',
+		'ja_JP' => '日本語',
+		'zh_CN' => '简体字',
+		'zh_HK' => '繁體字',
+		'ko_KR' => '한국어,조선말',
+		'hi_IN' => 'मानक हिन्दी',
+		'ar' => 'العربية/عربي'
+	);
+
+	return apply_filters( 'wptouch_admin_languages', $languages );
+}
+
+function wptouch_free_go_pro() {
+	// Apply license
+	global $wptouch_pro;
+
+	$settings = $wptouch_pro->get_settings();
+	$settings->upgrade_from_free = true;
+	$settings->current_theme_friendly_name = false;
+	$settings->save();
+
+	$result = wptouch_free_upgrade_plugin();
+
+	return $result;
+}
+
+function wptouch_free_upgrade_plugin() {
+	global $wptouch_pro;
+	$wptouch_pro->bnc_api = false;
+
+	$settings = wptouch_get_settings( 'bncid' );
+	$wptouch_pro->setup_bncapi( $settings->bncid, $settings->wptouch_license_key, true );
+	$bnc_api = $wptouch_pro->get_bnc_api();
+
+	$plugin_name = 'wptouch/wptouch.php';
+
+    // Check for WordPress 3.0 function
+	if ( function_exists( 'is_super_admin' ) ) {
+		$option = get_site_transient( 'update_plugins' );
+	} else {
+		$option = function_exists( 'get_transient' ) ? get_transient( 'update_plugins' ) : get_option( 'update_plugins' );
+	}
+
+	$version_available = false;
+
+	$latest_info = $bnc_api->get_product_version();
+
+	if ( $latest_info && $latest_info[ 'version' ] != WPTOUCH_VERSION ) {
+		WPTOUCH_DEBUG( WPTOUCH_INFO, 'A new product update is available [' . $latest_info['version'] . ']' );
+
+		if ( isset( $latest_info[ 'upgrade_url' ] ) && wptouch_has_license() ) {
+
+			if ( !isset( $option->response[ $plugin_name ] ) ) {
+				$option->response[ $plugin_name ] = new stdClass();
+			}
+
+			// Update upgrade options
+			$option->response[ $plugin_name ]->url = 'http://www.wptouch.com/';
+			$option->response[ $plugin_name ]->package = $latest_info[ 'upgrade_url' ];
+			$option->response[ $plugin_name ]->new_version = $latest_info['version'];
+			$option->response[ $plugin_name ]->id = '0';
+			$option->response[ $plugin_name ]->slug = WPTOUCH_ROOT_NAME;
+		} else {
+			if ( is_object( $option ) && isset( $option->response ) ) {
+				unset( $option->response[ $plugin_name ] );
+			}
+		}
+
+		$wptouch_pro->latest_version_info = $latest_info;
+		$upgrade_available = $latest_info[ 'version' ];
+	} else {
+		if ( is_object( $option ) && isset( $option->response ) ) {
+			unset( $option->response[ $plugin_name ] );
+		}
+	}
+
+	if ( isset( $option->response[ $plugin_name ] ) ) {
+		// WordPress 3.0 changed some stuff, so we check for a WP 3.0 function
+		if ( function_exists( 'is_super_admin' ) ) {
+			set_site_transient( 'update_plugins', $option );
+		} else if ( function_exists( 'set_transient' ) ) {
+			set_transient( 'update_plugins', $option );
+		}
+
+		// Do Upgrade
+		include_once( ABSPATH . 'wp-admin/includes/admin.php' );
+		include_once( ABSPATH . 'wp-admin/includes/class-wp-upgrader.php' );
+		$upgrader = new Plugin_Upgrader( new Automatic_Upgrader_Skin() );
+		$upgrader->upgrade( 'wptouch/wptouch.php' );
+
+		if ( is_array( $upgrader->skin->result ) ) {
+			deactivate_plugins( 'wptouch/wptouch.php' );
+			$new_plugin_identifier = 'wptouch-pro/wptouch-pro.php';
+
+			$active_plugins = get_option( 'active_plugins', array() );
+			if ( !in_array( $new_plugin_identifier, $active_plugins ) ) {
+				$active_plugins[] = $new_plugin_identifier;
+				update_option( 'active_plugins', $active_plugins );
+			}
+
+			return '1';
+		} else {
+			return '0';
+		}
+	} else {
+		return '0';
+	}
+}

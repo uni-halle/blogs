@@ -62,7 +62,7 @@ class Mixin_Frame_Event_Publisher extends Mixin
             $write_cookie = XMLRPC_REQUEST == FALSE;
         }
         if ($write_cookie) {
-            setrawcookie($this->object->setting_name . '_' . $id, $this->object->_encode($data));
+            setrawcookie($this->object->setting_name . '_' . $id, $this->object->_encode($data), time() + 10800, '/', parse_url(site_url(), PHP_URL_HOST));
         }
         return $data;
     }

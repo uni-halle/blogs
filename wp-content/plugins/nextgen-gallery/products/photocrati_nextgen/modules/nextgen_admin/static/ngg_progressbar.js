@@ -36,9 +36,6 @@
             },
 
             set: function(percent, text){
-              // You can set the percentage of completion, as well as the text message to appear
-              if (typeof(text) == 'undefined') text = percent;
-
               // You can optionally just pass in a message, and we'll assume that it's an infinite progress bar
               // and use 100 completion, with the message as the text
               if (isNaN(percent)) {
@@ -46,6 +43,10 @@
                   percent = 100;
               }
               percent = percent + "%";
+
+                // You can set the percentage of completion, as well as the text message to appear
+                if (typeof(text) == 'undefined') text = percent;
+
               this.status_el.animate({
                   width: percent
               }).text(text);

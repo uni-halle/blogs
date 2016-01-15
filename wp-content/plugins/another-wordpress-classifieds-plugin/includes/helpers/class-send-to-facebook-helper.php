@@ -24,11 +24,11 @@ class AWPCP_SendToFacebookHelper {
         }
 
         if ( $this->listings_metadata->get( $listing->ad_id, 'sent-to-facebook' ) ) {
-            throw new AWPCP_Exception( __( 'The Ad was already sent to Facebook Page.', 'AWPCP' ) );
+            throw new AWPCP_Exception( __( 'The Ad was already sent to Facebook Page.', 'another-wordpress-classifieds-plugin' ) );
         }
 
         if ( $listing->disabled ) {
-            throw new AWPCP_Exception( __( "The Ad is currently disabled. If you share it, Facebook servers and users won't be able to access it.", 'AWPCP' ) );
+            throw new AWPCP_Exception( __( "The Ad is currently disabled. If you share it, Facebook servers and users won't be able to access it.", 'another-wordpress-classifieds-plugin' ) );
         }
 
         $this->do_facebook_request( $listing,
@@ -49,13 +49,13 @@ class AWPCP_SendToFacebookHelper {
         try {
             $response = $this->facebook_config->api_request( $path, $method, $params );
         } catch ( Exception $e ) {
-            $message = __( "There was an error trying to contact Facebook servers: %s.", 'AWPCP' );
+            $message = __( "There was an error trying to contact Facebook servers: %s.", 'another-wordpress-classifieds-plugin' );
             $message = sprintf( $message, $e->getMessage() );
             throw new AWPCP_Exception( $message );
         }
 
         if ( ! $response || ! isset( $response->id ) ) {
-            $message = __( 'Facebook API returned the following errors: %s.', 'AWPCP' );
+            $message = __( 'Facebook API returned the following errors: %s.', 'another-wordpress-classifieds-plugin' );
             $message = sprintf( $message, $this->facebook_config->get_last_error()->message );
             throw new AWPCP_Exception( $message );
         }
@@ -77,11 +77,11 @@ class AWPCP_SendToFacebookHelper {
         }
 
         if ( $this->listings_metadata->get( $listing->ad_id, 'sent-to-facebook-group' ) ) {
-            throw new AWPCP_Exception( __( 'The Ad was already sent to Facebook Group.', 'AWPCP' ) );
+            throw new AWPCP_Exception( __( 'The Ad was already sent to Facebook Group.', 'another-wordpress-classifieds-plugin' ) );
         }
 
         if ( $listing->disabled ) {
-            throw new AWPCP_Exception( __( "The Ad is currently disabled. If you share it, Facebook servers and users won't be able to access it.", 'AWPCP' ) );
+            throw new AWPCP_Exception( __( "The Ad is currently disabled. If you share it, Facebook servers and users won't be able to access it.", 'another-wordpress-classifieds-plugin' ) );
         }
 
         $this->do_facebook_request( $listing,

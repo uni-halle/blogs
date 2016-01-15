@@ -12,7 +12,7 @@ function foundation_tappable_init() {
 		'foundation_tappable', 
 		foundation_get_base_module_url() . '/tappable/tappable.min.js',
 		array( 'jquery' ),
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		true
 	);
 	
@@ -20,7 +20,7 @@ function foundation_tappable_init() {
 		'foundation_tappable_wptouch', 
 		foundation_get_base_module_url() . '/tappable/wptouch.tappable.js',
 		array( 'foundation_tappable' ),
-		FOUNDATION_VERSION,
+		md5( FOUNDATION_VERSION ),
 		true 
 	);
 }

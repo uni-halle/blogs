@@ -8,14 +8,14 @@
 
 <?php echo $payments->render_account_balance(); ?>
 
-<h3><?php echo esc_html( __( 'Select a Credit Plan', 'add credit order step', 'AWPCP' ) ); ?></h3>
+<h3><?php echo esc_html( __( 'Select a Credit Plan', 'add credit order step', 'another-wordpress-classifieds-plugin' ) ); ?></h3>
 
 <form method="post">
 
     <?php echo $payments->render_credit_plans_table( $transaction, true ); ?>
 
-    <p class="form-submit">
-        <input class="button" type="submit" value="<?php echo esc_attr( __( 'Continue', 'AWPCP' ) ); ?>" id="submit" name="submit">
+    <p class="awpcp-form-submit">
+        <input class="button" type="submit" value="<?php echo esc_attr( __( 'Continue', 'another-wordpress-classifieds-plugin' ) ); ?>" id="submit" name="submit">
         <?php if ( ! is_null( $transaction ) ): ?>
         <input type="hidden" value="<?php echo esc_attr( $transaction->id ); ?>" name="transaction_id">
         <?php endif; ?>

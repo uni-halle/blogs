@@ -4,8 +4,8 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
 
     public function __construct($id=null, $name=null, $description=null) {
         $id = is_null($id) ? 'awpcp-latest-ads': $id;
-        $name = is_null($name) ? __('AWPCP Latest Ads', 'AWPCP') : $name;
-        $description = is_null($description) ? __('Displays a list of latest Ads', 'AWPCP') : $description;
+        $name = is_null($name) ? __('AWPCP Latest Ads', 'another-wordpress-classifieds-plugin') : $name;
+        $description = is_null($description) ? __('Displays a list of latest Ads', 'another-wordpress-classifieds-plugin') : $description;
         parent::__construct($id, $name, array('description' => $description));
     }
 
@@ -17,7 +17,7 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
         );
 
         $defaults = array(
-            'title' => __('Latest Ads', 'AWPCP'),
+            'title' => __('Latest Ads', 'another-wordpress-classifieds-plugin'),
             'show-title' => 1,
             'show-excerpt' => 1,
             'show-images' => 1,
@@ -59,7 +59,7 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
     }
 
     private function render_empty_widget( $html_class ) {
-        return sprintf( '<li class="awpcp-empty-widget %s">%s</li>', $html_class, __( 'There are currently no Ads to show.', 'AWPCP' ) );
+        return sprintf( '<li class="awpcp-empty-widget %s">%s</li>', $html_class, __( 'There are currently no Ads to show.', 'another-wordpress-classifieds-plugin' ) );
     }
 
     private function render_widget( $items, $instance, $html_class ) {
@@ -98,7 +98,7 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
 
         if ($instance['show-excerpt']) {
             $excerpt = stripslashes( awpcp_utf8_substr( $item->ad_details, 0, 50 ) ) . "...";
-            $read_more = sprintf( '<a class="awpcp-widget-read-more" href="%s">[%s]</a>', $item_url, __( 'Read more', 'AWPCP' ) );
+            $read_more = sprintf( '<a class="awpcp-widget-read-more" href="%s">[%s]</a>', $item_url, __( 'Read more', 'another-wordpress-classifieds-plugin' ) );
             $html_excerpt = sprintf( '<div class="awpcp-listings-widget-item-excerpt">%s%s</div>', $excerpt, $read_more );
         } else {
             $html_excerpt = '';
@@ -132,10 +132,23 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
         if ( empty( $image_url ) ) {
             $html_image = '';
         } else {
-            $html_image = sprintf( '<a class="awpcp-listings-widget-item-listing-link self" href="%1$s"><img src="%2$s" alt="%3$s" /></a>',
-                                   url_showad( $item->ad_id ),
-                                   $image_url,
-                                   esc_attr( $item->ad_title ) );
+            $image_dimensions = awpcp_media_api()->get_metadata( $image, 'image-dimensions', array() );
+            $image_dimensions = awpcp_array_data( 'thumbnail', array(), $image_dimensions );
+
+            $image_attributes = array(
+                'attributes' => array(
+                    'alt' => esc_attr( $item->get_title() ),
+                    'src' => $image_url,
+                    'width' => awpcp_array_data( 'width', null, $image_dimensions ),
+                    'height' => awpcp_array_data( 'height', null, $image_dimensions ),
+                ),
+            );
+
+            $html_image = sprintf(
+                '<a class="awpcp-listings-widget-item-listing-link self" href="%s">%s</a>',
+                url_showad( $item->ad_id ),
+                awpcp_html_image( $image_attributes )
+            );
         }
 
         return apply_filters( 'awpcp-listings-widget-listing-thumbnail', $html_image, $item );
@@ -143,7 +156,8 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
 
     protected function query($instance) {
         return array(
-            'context' => 'public-listings',
+            'context' => array( 'public-listings', 'latest-listings-widget' ),
+            'orderby' => 'renewed-date',
             'limit' => $instance['limit'],
         );
     }

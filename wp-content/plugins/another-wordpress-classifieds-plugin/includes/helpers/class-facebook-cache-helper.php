@@ -10,9 +10,13 @@ class AWPCP_FacebookCacheHelper {
         $this->schedule_clear_cache_action( $ad );
     }
 
-    private function schedule_clear_cache_action( $ad ) {
+    private function schedule_clear_cache_action( $listing ) {
+        $this->schedule_clear_cache_action_seconds_from_now( $listing, 10 );
+    }
+
+    private function schedule_clear_cache_action_seconds_from_now( $ad, $wait_time ) {
         if ( ! wp_next_scheduled( 'awpcp-clear-ad-facebook-cache', array( $ad->ad_id ) ) ) {
-            wp_schedule_single_event( time() + 5 * MINUTE_IN_SECONDS, 'awpcp-clear-ad-facebook-cache', array( $ad->ad_id ) );
+            wp_schedule_single_event( time() + $wait_time, 'awpcp-clear-ad-facebook-cache', array( $ad->ad_id ) );
         }
     }
 
@@ -46,7 +50,7 @@ class AWPCP_FacebookCacheHelper {
         if ( $this->is_successful_response( $response ) ) {
             do_action( 'awpcp-listing-facebook-cache-cleared', $ad );
         } else {
-            $this->schedule_clear_cache_action( $ad );
+            $this->reschedule_clear_cache_action( $ad );
         }
     }
 
@@ -70,5 +74,9 @@ class AWPCP_FacebookCacheHelper {
         }
 
         return true;
+    }
+
+    private function reschedule_clear_cache_action( $listing ) {
+        $this->schedule_clear_cache_action_seconds_from_now( $listing, 5 * MINUTE_IN_SECONDS );
     }
 }

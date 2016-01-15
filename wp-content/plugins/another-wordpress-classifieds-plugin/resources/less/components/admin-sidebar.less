@@ -1,6 +1,9 @@
 .awpcp-admin-sidebar {
+    width: 20% !important;
+
     .postbox {
-        min-width: 200px;
+        min-width: 100%;
+        max-width: 200px;
 
         .hndle {
             cursor: default;
@@ -11,5 +14,11 @@
     }
     .awpcp-get-a-premium-module .hndle {
         border-bottom-color: #E9E9B2;
+    }
+}
+
+@media only screen and (max-width:960px) {
+    .awpcp-admin-sidebar {
+        display: none;
     }
 }

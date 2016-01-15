@@ -34,7 +34,7 @@ abstract class AWPCP_UserField {
             'required' => false,
             'selected' => false,
             'label' => false,
-            'default' => __( 'Select an User', 'AWPCP' ),
+            'default' => __( 'Select an User', 'another-wordpress-classifieds-plugin' ),
             'id' => null,
             'name' => 'user',
             'class' => array(),

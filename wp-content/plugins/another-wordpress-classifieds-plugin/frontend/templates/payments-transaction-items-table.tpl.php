@@ -1,8 +1,8 @@
 <table class="awpcp-table awpcp-transaction-items-table">
     <thead>
         <tr>
-            <th class="item"><?php _ex('Item', 'transaction items', 'AWPCP'); ?></th>
-            <th class="amount"><?php _ex('Amount', 'transaction items', 'AWPCP'); ?></th>
+            <th class="item"><?php _ex('Item', 'transaction items', 'another-wordpress-classifieds-plugin'); ?></th>
+            <th class="amount"><?php _ex('Amount', 'transaction items', 'another-wordpress-classifieds-plugin'); ?></th>
         </tr>
     </thead>
 
@@ -31,13 +31,13 @@
 
         <?php if ($show_credits): ?>
         <tr>
-            <td class="row-header"><?php _ex('Total Amount (credit)', 'transaction items', 'AWPCP'); ?></td>
+            <td class="row-header"><?php _ex('Total Amount (credit)', 'transaction items', 'another-wordpress-classifieds-plugin'); ?></td>
             <td class="amount"><?php echo esc_html( number_format( $totals['credits'], 0 ) ); ?></td>
         </tr>
         <?php endif; ?>
 
         <tr>
-            <?php $label = sprintf( '%s (%s)', _x( 'Total Amount', 'transaction items', 'AWPCP' ), awpcp_get_currency_symbol() ); ?>
+            <?php $label = sprintf( '%s (%s)', _x( 'Total Amount', 'transaction items', 'another-wordpress-classifieds-plugin' ), awpcp_get_currency_symbol() ); ?>
             <td class="row-header"><?php echo esc_html( $label ); ?></td>
             <td class="amount"><?php echo esc_html( awpcp_format_money( $totals['money'] ) ); ?></td>
         </tr>

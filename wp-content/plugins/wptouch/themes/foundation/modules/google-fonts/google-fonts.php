@@ -17,7 +17,7 @@ function foundation_admin_panel( $page_options ) {
 		$fonts = foundation_get_google_font_pairings();
 
 		if ( count( $fonts ) ) {
-			$font_defaults = array( 'default' => __( 'Browser Fonts', 'wptouch-pro' ) );
+			$font_defaults = array( 'default' => __( 'Browser Default Fonts', 'wptouch-pro' ) );
 
 			foreach( $fonts as $setting_value => $font_info ) {
 				$font_defaults[ $setting_value ] = sprintf( '%s & %s', $font_info[0]->name, $font_info[1]->name );
@@ -29,9 +29,9 @@ function foundation_admin_panel( $page_options ) {
 				'foundation-typography',
 				array(
 					wptouch_add_setting(
-						'list',
+						'select',
 						'typography_sets',
-						__( 'Font style', 'wptouch-pro' ),
+						__( 'Font Pairing', 'wptouch-pro' ),
 						__( 'Choose a Google font pairing designed for this theme, or default browser fonts.', 'wptouch-pro' ),
 						WPTOUCH_SETTING_BASIC,
 						'1.0',
@@ -39,7 +39,10 @@ function foundation_admin_panel( $page_options ) {
 					)
 				),
 				$page_options,
-				FOUNDATION_SETTING_DOMAIN
+				FOUNDATION_SETTING_DOMAIN,
+				true,
+				false,
+				20
 			);
 		}
 	}
@@ -82,7 +85,6 @@ function foundation_google_fonts_init() {
 		}
 
 		$selected_font_info = foundation_google_fonts_get_selected_info();
-
 		if ( $selected_font_info ) {
 			$family_string = '';
 			$inline_style_data = '';
@@ -103,8 +105,8 @@ function foundation_google_fonts_init() {
 
 					$new_families[] = $font_string;
 
-					$inline_style_data .= "." . $font_info->selector . "-font" . " {\n";
-					$inline_style_data .= "\tfont-family: '" . $font_info->name . "', " . $font_info->fallback . ";\n";
+					$inline_style_data .= "." . $font_info->selector . "-font" . "{\n";
+					$inline_style_data .= "\t font-family: '" . $font_info->name . "', " . $font_info->fallback . ";\n";
 					$inline_style_data .= "}\n";
 				}
 
@@ -116,7 +118,7 @@ function foundation_google_fonts_init() {
 					'foundation_google_fonts',
 					'//fonts.googleapis.com/css?family=' . $family_string,
 					false,
-					FOUNDATION_VERSION,
+					md5( FOUNDATION_VERSION ),
 					false
 				);
 

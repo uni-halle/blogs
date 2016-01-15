@@ -7,7 +7,7 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
 
     public function __construct() {
         $icon = AWPCP_URL . '/resources/images/payments-paypal.jpg';
-        parent::__construct('paypal', _x('PayPal', 'payment gateways', 'AWPCP'), '', $icon);
+        parent::__construct('paypal', _x('PayPal', 'payment gateways', 'another-wordpress-classifieds-plugin'), '', $icon);
     }
 
     public function get_integration_type() {
@@ -24,9 +24,9 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
      */
     private function verify_recevied_data_with_curl($postfields='', $cainfo=true, &$errors=array()) {
         if (get_awpcp_option('paylivetestmode') == 1) {
-            $paypal_url = "https://www.sandbox.paypal.com/cgi-bin/webscr";
+            $paypal_url = "https://test-ipnpb.sandbox.paypal.com/cgi-bin/webscr";
         } else {
-            $paypal_url = "https://www.paypal.com/cgi-bin/webscr";
+            $paypal_url = "https://ipnpb.paypal.com/cgi-bin/webscr";
         }
 
         $ch = curl_init($paypal_url);
@@ -70,9 +70,9 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
      */
     private function verify_received_data_with_fsockopen($content, &$errors=array()) {
         if (get_awpcp_option('paylivetestmode') == 1) {
-            $host = "www.sandbox.paypal.com";
+            $host = "test-ipnpb.sandbox.paypal.com";
         } else {
-            $host = "www.paypal.com";
+            $host = "ipnpb.paypal.com";
         }
 
         $response = 'ERROR';
@@ -154,15 +154,15 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
             $url = awpcp_current_url();
 
             if ($variables <= 0) {
-                $message = __("We haven't received your payment information from PayPal yet and we are unable to verify your transaction. Please reload this page or visit <a href=\"%s\">%s</a> in 30 seconds to continue placing your Ad.", 'AWPCP');
+                $message = __("We haven't received your payment information from PayPal yet and we are unable to verify your transaction. Please reload this page or visit <a href=\"%s\">%s</a> in 30 seconds to continue placing your Ad.", 'another-wordpress-classifieds-plugin');
                 $errors[] = sprintf($message, $url, $url);
             } else {
-                $message = __("PayPal returned the following status from your payment: %s. %d payment variables were posted.",'AWPCP');
+                $message = __("PayPal returned the following status from your payment: %s. %d payment variables were posted.",'another-wordpress-classifieds-plugin');
                 $errors[] = sprintf($message, $response, count($_POST));
-                $errors[] = __("If this status is not COMPLETED or VERIFIED, then you may need to wait a bit before your payment is approved, or contact PayPal directly as to the reason the payment is having a problem.",'AWPCP');
+                $errors[] = __("If this status is not COMPLETED or VERIFIED, then you may need to wait a bit before your payment is approved, or contact PayPal directly as to the reason the payment is having a problem.",'another-wordpress-classifieds-plugin');
             }
 
-            $errors[] = __("If you have any further questions, please contact this site administrator.",'AWPCP');
+            $errors[] = __("If you have any further questions, please contact this site administrator.",'another-wordpress-classifieds-plugin');
 
             if ($variables <= 0)
                 $transaction->errors['verification-get'] = $errors;
@@ -231,7 +231,7 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
         $amount = number_format($totals['money'], 2);
         $amount_before_tax = number_format($mc_gross - $tax, 2);
         if ($amount != $mc_gross && $amount != $payment_gross && $amount != $amount_before_tax) {
-            $message = __("The amount you have paid does not match the required amount for this transaction. Please contact us to clarify the problem.", "AWPCP");
+            $message = __("The amount you have paid does not match the required amount for this transaction. Please contact us to clarify the problem.", 'another-wordpress-classifieds-plugin');
             $transaction->errors['validation'] = $message;
             $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_INVALID;
             awpcp_payment_failed_email($transaction, $message);
@@ -240,7 +240,7 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
 
         $paypal_email = get_awpcp_option('paypalemail');
         if (strcasecmp($receiver_email, $paypal_email) !== 0 && strcasecmp($business, $paypal_email) !== 0) {
-            $message = __("There was an error processing your transaction. If funds have been deducted from your account, they have not been processed to our account. You will need to contact PayPal about the matter.", "AWPCP");
+            $message = __("There was an error processing your transaction. If funds have been deducted from your account, they have not been processed to our account. You will need to contact PayPal about the matter.", 'another-wordpress-classifieds-plugin');
             $transaction->errors['validation'] = $message;
             $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_INVALID;
             awpcp_payment_failed_email($transaction, $message);
@@ -250,7 +250,7 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
         // TODO: handle this filter for Ads and Subscriptions
         $duplicated = apply_filters('awpcp-payments-is-duplicated-transaction', false, $txn_id);
         if ($duplicated) {
-            $message = __("It appears this transaction has already been processed. If you do not see your ad in the system please contact the site adminstrator for assistance.", "AWPCP");
+            $message = __("It appears this transaction has already been processed. If you do not see your ad in the system please contact the site adminstrator for assistance.", 'another-wordpress-classifieds-plugin');
             $transaction->errors['validation'] = $message;
             $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_INVALID;
             awpcp_payment_failed_email($transaction, $message);
@@ -275,7 +275,7 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
             $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_FAILED;
 
         } else {
-            $message = __("We couldn't determine the payment status for your transaction. Please contact customer service if you are viewing this message after having made a payment. If you have not tried to make a payment and you are viewing this message, it means this message is being shown in error and can be disregarded.", "AWPCP");
+            $message = __("We couldn't determine the payment status for your transaction. Please contact customer service if you are viewing this message after having made a payment. If you have not tried to make a payment and you are viewing this message, it means this message is being shown in error and can be disregarded.", 'another-wordpress-classifieds-plugin');
             $transaction->errors['validation'] = $message;
             $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_UNKNOWN;
 
@@ -340,7 +340,7 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
     }
 
     public function process_payment_canceled($transaction) {
-        $transaction->errors[] = __("The payment transaction was canceled by the user.", "AWPCP");
+        $transaction->errors[] = __("The payment transaction was canceled by the user.", 'another-wordpress-classifieds-plugin');
         $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_CANCELED;
     }
 }

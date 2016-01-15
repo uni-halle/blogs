@@ -31,8 +31,19 @@ function checkforduplicate($cpagename_awpcp) {
  * Check if the page identified by $refname exists.
  */
 function awpcp_find_page($refname) {
-    $page = get_page( awpcp_get_page_id_by_ref( $refname ) );
-    return is_object( $page );
+    $page_id = awpcp_get_page_id_by_ref( $refname );
+
+    if ( empty( $page_id ) ) {
+        return false;
+    }
+
+    $page = get_page( $page_id );
+
+    if ( ! is_object( $page ) || $page->ID != $page_id ) {
+        return false;
+    }
+
+    return true;
 }
 
 /**
@@ -194,27 +205,11 @@ function is_awpcp_admin_page() {
 }
 
 function is_awpcp_browse_listings_page() {
-    return awpcp_queried_object_is_page_that_has_shortcode( 'AWPCPBROWSEADS' );
-}
-
-function awpcp_queried_object_is_page_that_has_shortcode( $shortcode ) {
-    global $wp_the_query;
-
-    if ( ! $wp_the_query || ! $wp_the_query->is_page() ) {
-        return false;
-    }
-
-    $page = $wp_the_query->get_queried_object();
-
-    if ( ! $page || ! has_shortcode( $page->post_content, $shortcode ) ) {
-        return false;
-    }
-
-    return true;
+    return awpcp_query()->is_browse_listings_page();
 }
 
 function is_awpcp_browse_categories_page() {
-    return awpcp_queried_object_is_page_that_has_shortcode( 'AWPCPBROWSECATS' );
+    return awpcp_query()->is_browse_categories_page();
 }
 
 function url_showad($ad_id) {
@@ -272,12 +267,16 @@ function url_showad($ad_id) {
     return apply_filters( 'awpcp-listing-url', $url, $ad );
 }
 
+function awpcp_get_browse_categories_page_url() {
+    return awpcp_get_page_url( 'browse-categories-page-name' );
+}
+
 /**
  * @since 3.4
  */
 function awpcp_get_browse_category_url_from_id( $category_id ) {
     try {
-        $category = awpcp_listings_collection()->get( $category_id );
+        $category = awpcp_categories_collection()->get( $category_id );
         $category_url = url_browsecategory( $category );
     } catch ( AWPCP_Exception $ex ) {
         $category_url = '';
@@ -288,7 +287,7 @@ function awpcp_get_browse_category_url_from_id( $category_id ) {
 
 function url_browsecategory( $category ) {
     $permalinks = get_option('permalink_structure');
-    $base_url = awpcp_get_page_url('browse-categories-page-name');
+    $base_url = awpcp_get_browse_categories_page_url();
 
     $cat_id = $category->id;
     $cat_slug = sanitize_title( $category->name );
@@ -346,15 +345,7 @@ function awpcp_get_main_page_name() {
  * is also the home page.
  */
 function awpcp_get_main_page_url() {
-    $id = awpcp_get_page_id_by_ref('main-page-name');
-
-    if (get_option('permalink_structure')) {
-        $url = home_url(get_page_uri($id));
-    } else {
-        $url = add_query_arg('page_id', $id, home_url());
-    }
-
-    return user_trailingslashit($url);
+    return awpcp_get_page_url( 'main-page-name', true );
 }
 
 /**
@@ -373,38 +364,74 @@ function awpcp_get_main_page_url() {
  * @since 2.0.7
  */
 function awpcp_get_page_url($pagename, $trailingslashit=false) {
-    global $wp_rewrite;
-
-    $id = awpcp_get_page_id_by_ref($pagename);
-
-    if (get_option('permalink_structure')) {
-        $permalink = $wp_rewrite->get_page_permastruct();
-        $permalink = str_replace( '%pagename%', get_page_uri( $id ), $permalink );
-
-        $url = home_url( $permalink );
-        $url = $trailingslashit ? user_trailingslashit( $url ) : rtrim($url, '/');
-    } else {
-        $url = add_query_arg( 'page_id', $id, home_url('/') );
-    }
-
-    return $url;
+    $page_id = awpcp_get_page_id_by_ref( $pagename );
+    return awpcp_get_page_link( $page_id, $trailingslashit );
 }
 
 /**
  * @since 3.0.2
  */
 function awpcp_get_view_categories_url() {
-    $permalinks = get_option('permalink_structure');
-    $main_page_id = awpcp_get_page_id_by_ref('main-page-name');
-    $page_name = get_awpcp_option('view-categories-page-name');
-    $slug = sanitize_title($page_name);
+    global $wp_rewrite;
 
-    if ( !empty( $permalinks ) ) {
-        $url = sprintf( '%s/%s', trim( home_url( get_page_uri( $main_page_id ) ), '/' ), $slug );
-        $url = user_trailingslashit( $url );
+    $permalink_structure = $wp_rewrite->get_page_permastruct();
+    $main_page_id = awpcp_get_page_id_by_ref( 'main-page-name' );
+
+    $url = awpcp_get_page_link( $main_page_id );
+
+    if ( !empty( $permalink_structure ) ) {
+        $page_name = get_awpcp_option('view-categories-page-name');
+        $page_slug = sanitize_title( $page_name );
+
+        $url = rtrim( $url, '/' );
+        $url = user_trailingslashit( "$url/$page_slug", 'page' );
     } else {
-        $url = add_query_arg( array( 'page_id' => $main_page_id, 'layout' => 2 ), home_url('/') );
+        $url = add_query_arg( 'layout', 2, $url );
     }
+
+    return $url;
+}
+
+/**
+ * Based on WP's _get_page_link().
+ *
+ * @since 3.6
+ */
+function awpcp_get_page_link( $page_or_page_id, $trailingslashit = false ) {
+    global $wp_rewrite;
+
+    $page = get_post( $page_or_page_id );
+
+    if ( ! is_a( $page, 'WP_Post' ) ) {
+        return '';
+    }
+
+    $permalink_structure = $wp_rewrite->get_page_permastruct();
+
+    if ( !empty( $permalink_structure ) ) {
+        $link = awpcp_get_url_with_page_permastruct( get_page_uri( $page ) );
+        $link = $trailingslashit ? user_trailingslashit( $link, 'page' ) : rtrim( $link, '/' );
+    } else {
+        $link = home_url( '?page_id=' . $page->ID );
+    }
+
+    return $link;
+}
+
+/**
+ * Necessary to generate custom URLs, like those for awpcpx endpoints,
+ * that work when PATHINFO permalinks are enabled.
+ *
+ * @see https://codex.wordpress.org/Using_Permalinks#PATHINFO:_.22Almost_Pretty.22
+ * @since 3.6
+ */
+function awpcp_get_url_with_page_permastruct( $path ) {
+    global $wp_rewrite;
+
+    $permalink_structure = $wp_rewrite->get_page_permastruct();
+
+    $url = str_replace( '%pagename%', ltrim( $path, '/' ), $permalink_structure );
+    $url = home_url( $url );
 
     return $url;
 }
@@ -486,7 +513,7 @@ function awpcp_get_email_verification_url( $ad_id ) {
     $hash = awpcp_get_email_verification_hash( $ad_id );
 
     if ( get_option( 'permalink_structure' ) ) {
-        return home_url( "/awpcpx/listings/verify/{$ad_id}/$hash" );
+        return awpcp_get_url_with_page_permastruct( "/awpcpx/listings/verify/{$ad_id}/$hash" );
     } else {
         $params = array(
             'awpcpx' => true,

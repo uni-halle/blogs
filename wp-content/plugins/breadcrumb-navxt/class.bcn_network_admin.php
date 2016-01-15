@@ -16,7 +16,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 require_once(dirname(__FILE__) . '/includes/block_direct_access.php');
-//Do a PHP version check, require 5.2 or newer
+//Do a PHP version check, require 5.3 or newer
 if(version_compare(phpversion(), '5.3.0', '<'))
 {
 	//Only purpose of this function is to echo out the PHP version error
@@ -42,7 +42,7 @@ if(!class_exists('mtekk_adminKit'))
  */
 class bcn_network_admin extends mtekk_adminKit
 {
-	const version = '5.3.0';
+	const version = '5.3.1';
 	protected $full_name = 'Breadcrumb NavXT Network Settings';
 	protected $short_name = 'Breadcrumb NavXT';
 	protected $access_level = 'manage_network_options';
@@ -271,10 +271,6 @@ class bcn_network_admin extends mtekk_adminKit
 					}
 				}
 			}
-			//Add custom post types
-			breadcrumb_navxt::find_posttypes($opts);
-			//Add custom taxonomy types
-			breadcrumb_navxt::find_taxonomies($opts);
 			//Set the max title length to 20 if we are not limiting the title and the length was 0
 			if(!$opts['blimit_title'] && $opts['amax_title_length'] == 0)
 			{
@@ -283,13 +279,14 @@ class bcn_network_admin extends mtekk_adminKit
 		}
 		//Save the passed in opts to the object's option array
 		$this->opt = $opts;
+		//End with resetting up the options
+		breadcrumb_navxt::setup_options($this->opt);
 	}
 	function opts_update_prebk(&$opts)
 	{
-		//Add custom post types
-		breadcrumb_navxt::find_posttypes($this->opt);
-		//Add custom taxonomy types
-		breadcrumb_navxt::find_taxonomies($this->opt);
+		//Add any new custom post types, or taxonomies
+		breadcrumb_navxt::setup_options($opts);
+		$opts = apply_filters('bcn_opts_update_prebk', $opts);
 	}
 	/**
 	 * help action hook function

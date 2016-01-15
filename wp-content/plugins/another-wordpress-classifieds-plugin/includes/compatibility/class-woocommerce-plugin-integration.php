@@ -1,14 +1,16 @@
 <?php
 
 function awpcp_woocommerce_plugin_integration() {
-    return new AWPCP_WooCommercePluginIntegration( awpcp()->settings );
+    return new AWPCP_WooCommercePluginIntegration( awpcp_query(), awpcp()->settings );
 }
 
 class AWPCP_WooCommercePluginIntegration {
 
+    private $query;
     private $settings;
 
-    public function __construct( $settings ) {
+    public function __construct( $query, $settings ) {
+        $this->query = $query;
         $this->settings = $settings;
     }
 
@@ -17,6 +19,14 @@ class AWPCP_WooCommercePluginIntegration {
             return false;
         } else {
             return $prevent_access;
+        }
+    }
+
+    public function filter_unforce_ssl_checkout( $value ) {
+        if ( $value && $this->query->is_page_that_accepts_payments() ) {
+            return false;
+        } else {
+            return $value;
         }
     }
 }

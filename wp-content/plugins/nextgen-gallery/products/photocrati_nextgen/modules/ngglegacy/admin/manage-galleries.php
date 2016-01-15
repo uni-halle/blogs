@@ -14,7 +14,7 @@ function nggallery_manage_gallery_main() {
 
 	$start = ( $_GET['paged'] - 1 ) * $items_per_page;
 
-    if (!empty($_GET['order']) && in_array($_GET['order'], array('DESC', 'ASC')))
+    if (!empty($_GET['order']) && in_array(strtoupper($_GET['order']), array('DESC', 'ASC')))
 		$order = $_GET['order'];
 	else
 		$order = apply_filters('ngg_manage_galleries_items_order', 'ASC');
@@ -452,7 +452,7 @@ class _NGG_Galleries_List_Table extends WP_List_Table {
 			$sortable[$id] = $data;
 		}
 
-		return array( $columns, $hidden, $sortable );
+		return array( $columns, $hidden, $sortable, null );
 	}
 
     // define the columns to display, the syntax is 'internal name' => 'display name'
