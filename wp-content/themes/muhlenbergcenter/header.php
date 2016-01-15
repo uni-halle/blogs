@@ -32,15 +32,15 @@
 
             <?php if ( is_home() || is_front_page() ) : ?>
             <?php /* get the slider posts */
-            $sliderConditions = array (
-                'category_name' => 'slider',
-                'post_type'     => 'post',
-                'post_status'   => 'publish',
-                'orderby'       => 'date',
-                'nopaging'      => true
-            );
-            $the_query = new WP_Query( $sliderConditions );
-            if ( $the_query->have_posts() ) :
+                $sliderConditions = array (
+                    'category_name' => 'slider',
+                    'post_type'     => 'post',
+                    'post_status'   => 'publish',
+                    'orderby'       => 'date',
+                    'nopaging'      => true
+                );
+                $the_query = new WP_Query( $sliderConditions );
+                if ( $the_query->have_posts() ) :
             ?>
             <div class="row slider visible-for-medium-up">
                 <div class="small-12 columns">
@@ -48,7 +48,9 @@
                         <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
                         <li>
                             <?php if ( has_post_thumbnail() ) : ?>
-                            <?php the_post_thumbnail( 'full' ); ?>
+                            <a href="<?php echo esc_url( home_url( '/' ) ) . 'events/categories/' . get_post_meta( $post->ID, 'slug-of-event-category', true ) . '/'; ?>">
+                                <?php the_post_thumbnail( 'full' ); ?>
+                            </a>
                             <?php endif; ?>
                             <div class="orbit-caption">
                                 <?php the_title(); ?>

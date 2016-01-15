@@ -29,6 +29,9 @@ function generate_body_classes( $classes )
 		generate_get_defaults() 
 	);
 	
+	// Add the GeneratePress class
+	$classes[] = 'generatepress';
+	
 	// Get the layout
 	$layout = generate_get_layout();
 	

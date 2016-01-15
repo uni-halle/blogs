@@ -142,7 +142,7 @@ function generate_customize_register( $wp_customize ) {
 		'slug'=>'link_color_hover', 
 		'default' => $defaults['link_color_hover'],
 		'label' => __('Link Color Hover', 'generate'),
-		'transport' => 'refresh'
+		'transport' => 'postMessage'
 	);
 	$body_colors[] = array(
 		'slug'=>'link_color_visited', 

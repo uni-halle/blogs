@@ -404,11 +404,6 @@ if ( !function_exists('generate_get_color_defaults') && !function_exists('genera
 			input[type="reset"]:hover, 
 			input[type="submit"]:hover,
 			.button:hover,
-			button:focus, 
-			html input[type="button"]:focus, 
-			input[type="reset"]:focus, 
-			input[type="submit"]:focus,
-			.button:focus,
 			button:active, 
 			html input[type="button"]:active, 
 			input[type="reset"]:active, 
@@ -443,13 +438,8 @@ if ( !function_exists('generate_get_color_defaults') && !function_exists('genera
 				$output .= $temporary_output;
 		}
 		
-		$widget_padding = '';
-		if ( $generate_settings['sidebar_widget_background_color'] !== $generate_settings['content_background_color'] ) :
-			$widget_padding = '.one-container .widget{padding:30px;}';
-		endif;
-		
 		$output = str_replace(array("\r", "\n", "\t"), '', $output);
-		return $output . $widget_padding;
+		return $output;
 	}
 	
 	/**

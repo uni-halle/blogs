@@ -106,6 +106,8 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
         'tc_sidebars_option_map',
         //FOOTER
         'tc_footer_global_settings_option_map',
+        //WOOCOMMERCE
+        'tc_woocommerce_option_map',
         //ADVANCED OPTIONS
         'tc_custom_css_option_map',
         'tc_performance_option_map',
@@ -379,7 +381,9 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                    IMAGE SECTION
     ------------------------------------------------------------------------------------------------------*/
     function tc_images_option_map( $get_default = null ) {
-      return array(
+      global $wp_version;
+
+      $_image_options =  array(
               'tc_fancybox' =>  array(
                                 'default'       => 1,
                                 'control'   => 'TC_controls' ,
@@ -437,6 +441,29 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'notice'    => __( 'This option dynamically centers your images on any devices, vertically or horizontally according to their initial aspect ratio.' , 'customizr' ),
               )
       );//end of images options
+      //add responsive image settings for wp >= 4.4
+      if ( version_compare( $wp_version, '4.4', '>=' ) )
+        $_image_options = array_merge( $_image_options, array(
+               'tc_resp_slider_img'  =>  array(
+                                'default'     => 0,
+                                'control'     => 'TC_controls' ,
+                                'title'       => __( 'Responsive settings', 'customizr' ),
+                                'label'       => __( "Enable the WordPress responsive image feature for the slider" , "customizr" ),
+                                'section'     => 'images_sec' ,
+                                'type'        => 'checkbox' ,
+              ),
+              'tc_resp_thumbs_img'  =>  array(
+                                'default'     => 0,
+                                'control'     => 'TC_controls' ,
+                                'label'       => __( "Enable the WordPress responsive image feature for the theme's thumbnails" , "customizr" ),
+                                'section'     => 'images_sec' ,
+                                'notice'      => __( 'This feature has been introduced in WordPress v4.4+ (dec-2015), and might have minor side effects on some of your existing images. Check / uncheck this option to safely verify that your images are displayed nicely.' , 'customizr' ),
+                                'type'        => 'checkbox' ,
+              )
+          )
+        );
+
+      return $_image_options;
     }
 
 
@@ -1997,6 +2024,31 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
     }
 
 
+
+    /******************************************************************************************************
+    *******************************************************************************************************
+    * PANEL : WOOCOMMERCE OPTIONS
+    *******************************************************************************************************
+    ******************************************************************************************************/
+    /*-----------------------------------------------------------------------------------------------------
+                                     HEADER CART
+    ------------------------------------------------------------------------------------------------------*/
+    function tc_woocommerce_option_map( $get_default = null ) {
+      return array(
+              'tc_woocommerce_header_cart' => array(
+                               'default'   => 1,
+                               'label'     => __( 'Display the shopping cart in the header' , 'customizr' ),
+                               'control'   =>  'TC_controls' ,
+                               'section'   => 'tc_woocommerce_sec',
+                               'notice'    => __( "You can display a cart icon showing the number of items in your cart next to your header's tagline", 'customizr' ),
+                               'type'      => 'checkbox' ,
+                               'priority'  => 10,
+              )
+        );
+    }
+
+
+
     /******************************************************************************************************
     *******************************************************************************************************
     * PANEL : ADVANCED OPTIONS
@@ -2511,7 +2563,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
       foreach ( $socials as $key => $data ) {
         $priority += $incr;
         $type      = isset( $data['type'] ) && ! is_null( $data['type'] ) ? $data['type'] : 'url';
-        
+
         $_new_map[$key]  = array(
                       'default'       => ( isset($data['default']) && !is_null($data['default']) ) ? $data['default'] : null,
                       'sanitize_callback' => array( $this , 'tc_sanitize_' . $type ),

@@ -23,21 +23,28 @@
 	// background color
 	wp.customize( 'generate_settings[background_color]', function( value ) {
 		value.bind( function( newval ) {
-			$( 'body' ).css('background-color', newval );
+			$( 'style#generate-style-inline-css' ).append( 'body{background-color:' + newval + '}' );
 		} );
 	} );
 	
 	// Text color
 	wp.customize( 'generate_settings[text_color]', function( value ) {
 		value.bind( function( newval ) {
-			$( '.inside-article, .comments-area, .page-header, .one-container .container, .paging-navigation, .inside-page-header' ).css('color', newval );
+			$( 'style#generate-style-inline-css' ).append( 'body, .inside-article, .comments-area, .page-header, .one-container .container, .paging-navigation, .inside-page-header{color:' + newval + '}' );
 		} );
 	} );
 	
 	// Link color
 	wp.customize( 'generate_settings[link_color]', function( value ) {
 		value.bind( function( newval ) {
-			$( '.site-content a, .site-content a:visited' ).css('color', newval );
+			$( 'style#generate-style-inline-css' ).append( 'a, a:visited{color:' + newval + '}' );
+		} );
+	} );
+	
+	// Link color hover
+	wp.customize( 'generate_settings[link_color_hover]', function( value ) {
+		value.bind( function( newval ) {
+			$( 'style#generate-style-inline-css' ).append( 'a:hover{color:' + newval + '}' );
 		} );
 	} );
 	

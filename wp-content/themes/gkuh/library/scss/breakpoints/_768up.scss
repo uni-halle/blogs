@@ -19,6 +19,12 @@ GENERAL STYLES
 
 body {}
 
+$contentwidth: 80%;
+
+.maincontainer {
+    width: $contentwidth;
+}
+
 /*********************
 LAYOUT & GRID STYLES
 *********************/
@@ -26,6 +32,37 @@ LAYOUT & GRID STYLES
 .wrap {
 //	width: 760px;
 }
+
+/******************************************************************
+H1, H2, H3, H4, H5 STYLES
+******************************************************************/
+
+h1, .h1 {
+	font-size: 2.2em;
+	line-height: 1.2em;
+}
+
+h2, .h2 {
+	font-size: 1.5em;
+	line-height: 1.3em;
+	margin-bottom: 0.375em;
+}
+
+h3, .h3 {
+	font-size: 1.3em;
+}
+
+h4, .h4 {
+	font-size: 1.2em;
+}
+
+h5, .h5, h6, .h6 {
+	font-size: 1.1em;
+	line-height: 2.09em;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
 
 /*********************
 HEADER STYLES
@@ -125,23 +162,56 @@ POSTS & CONTENT STYLES
 			}
 }
 
-.entry-content {
-    padding: 0; }
-
 $page-content-value: 67;
 
-.page-content {
-    width: $page-content-value * 1%;
+.entry-content {
+    padding: 0;
+}
+
+.page-content { //sidebar width and border
     height: 100%;
+    width: $page-content-value * 1%;
     float: left;
     border-right: 1px dashed $border-color; /* border to sidebar */
-    padding-right: 2em;
+    padding: 0 2em 0 0;
+    
+}
+
+.home .page-content { //front page is without sidebar and therefore should not have sidebar space and border
+    width: 100% !important;
+    border: 0 !important;
+    padding: 0 !important;
 }
 
 .themenuebersicht {
+    font-family: $bree, $sans-serif;
     font-size: 1.2em;
     padding: 0 0 0 1em;
 }
+
+/* adjusting the smaller version in the sidebar */
+.widget .themenuebersicht {
+    font-family: $opensans;
+    font-weight: 700;
+    font-size: 1.1em;
+    padding: 0 0 0 0.5em;
+    margin-left: 0.5em;
+    
+    li {
+        padding-left: 0.3em;
+        
+        a {
+        margin: 0;
+        padding: 0.28em 1em;
+        }
+        
+    }
+    
+    .sidebar-current-item a:before {
+        color: #fff;
+    }
+  }
+ 
 
 /*********************
 SIDEBARS & ASIDES
@@ -156,19 +226,25 @@ SIDEBARS & ASIDES
 .sidebar {
     width: (100 - $page-content-value) * 1%;
     float: right;
-    font-size: 0.8em;
-    
+    font-size: 0.75em;
     height: 100%;
+    padding: 0 1.5em;
 }
 
 	.widgettitle {
-		//border-bottom: 2px solid #444;
 		margin-bottom: 0.25em;
+        margin-top: 0;
+        padding-top: 1em;
+        border-top: 1px dashed $border-color;        
 	}
 
+//    .widgettitle:first-of-type {
+//            border-top: 0;
+//        }
+
+
 	.widget {
-		padding: 0 10px;
-		margin-bottom: 2.2em;
+		margin-bottom: 1.5em;
 
 		ul {
 			li {
@@ -185,6 +261,46 @@ SIDEBARS & ASIDES
 				}
 			}
 		}
+        
+        .partnerlist {
+            position: relative;
+            
+            a {
+                display: block;
+                text-decoration: none;
+                margin-bottom: 0.5em;
+                color: $text-color;
+                
+                &:hover {
+                    color: $gkuh;
+                }
+            }
+            
+            img.logohidden {
+                display: none;
+                width: 70%;
+                margin: 0;
+            }
+            
+            a#pll1:hover ~ img#pli1,
+            a#pll2:hover ~ img#pli2,
+            a#pll3:hover ~ img#pli3,
+            a#pll4:hover ~ img#pli4,
+            a#pll5:hover ~ img#pli5,
+            a#pll6:hover ~ img#pli6,
+            a#pll7:hover ~ img#pli7, {
+                display: block;
+                margin: 0.5em auto;
+            }
+        }
+        
+        .hideatshow img {
+                margin: 0;
+            }
+        
+        .partnerlist:hover + div.hideatshow {
+                display: none;
+        }
 	}
 
 
@@ -293,6 +409,7 @@ $centerwidth: $centerwidth-value * 1%;
 
 .footer {
     height: $footerheight;
+    box-shadow: 0px 0px 10px 2px #888;
 }
 
 /* show breadcrumbs on larger devices */
@@ -314,15 +431,10 @@ $centerwidth: $centerwidth-value * 1%;
 .breadcrumbs span[typeof="v:Breadcrumb"]:last-child span[property="v:title"],
 .breadcrumbs a[property="v:title"] {
     display: inline-block;
-    //padding: 0;
-    //margin-top: -3px;
     vertical-align: middle;
-    max-width: 200px;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
-    //color: $gkuh;
-    
+    text-overflow: ellipsis;    
 }
 
 .breadcrumbs span[typeof="v:Breadcrumb"]:last-child span[property="v:title"] {

@@ -1,0 +1,884 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GeneratePress\n"
+"POT-Creation-Date: 2015-11-29 19:18+0800\n"
+"PO-Revision-Date: 2015-11-30 17:40+0800\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Last-Translator: \n"
+"Language: zh_CN\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:17
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "空空如也，不可思议……"
+
+#: 404.php:22
+msgid "It looks like nothing was found at this location. Maybe try searching?"
+msgstr "此处看起来比较冷清。不如尝试一下搜索？"
+
+#: archive.php:33
+#, php-format
+msgid "About %s"
+msgstr "关于 %s"
+
+#: archive.php:41
+#, php-format
+msgid "Day: %s"
+msgstr "日：%s"
+
+#: archive.php:44
+#, php-format
+msgid "Month: %s"
+msgstr "月：%s"
+
+#: archive.php:47
+#, php-format
+msgid "Year: %s"
+msgstr "年：%s"
+
+#: archive.php:50
+msgid "Asides"
+msgstr "旁白"
+
+#: archive.php:53
+msgid "Images"
+msgstr "图片"
+
+#: archive.php:56
+msgid "Videos"
+msgstr "视频"
+
+#: archive.php:59
+msgid "Quotes"
+msgstr "引用"
+
+#: archive.php:62
+msgid "Links"
+msgstr "链接"
+
+#: archive.php:65 sidebar-left.php:39 sidebar.php:38
+msgid "Archives"
+msgstr "文章归档"
+
+#: comments.php:29
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "&ldquo;%2$s&rdquo; 中有 %1$s 条评论或留言"
+
+#: comments.php:36 comments.php:58
+msgid "Comment navigation"
+msgstr "您的评论正在等待批准"
+
+#: comments.php:37 comments.php:59
+msgid "&larr; Older Comments"
+msgstr "&larr; 早前的评论"
+
+#: comments.php:38 comments.php:60
+msgid "Newer Comments &rarr;"
+msgstr "最近的评论 &rarr;"
+
+#: comments.php:70
+msgid "Comments are closed."
+msgstr "暂时不开放评论。"
+
+#: comments.php:75
+msgid "Name"
+msgstr "名字"
+
+#: comments.php:76
+msgid "Email"
+msgstr "电子邮件"
+
+#: comments.php:77
+msgid "Website"
+msgstr "网站"
+
+#: comments.php:82
+#, php-format
+msgid "You must be <a href=\"%1$s\">logged in</a> to post a comment."
+msgstr "你需要先<a href=\"%1$s\">登录</a>才能发表评论。"
+
+#: comments.php:83
+#, php-format
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
+msgstr ""
+"你正以<a href=\"%1$s\">%2$s</a>的身份登录，<a href=\"%3$s\" title=“注销登录”>"
+"登出？</a>"
+
+#: comments.php:88
+msgid "Leave a Comment"
+msgstr "留言或评论"
+
+#: comments.php:89
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "回复给 %s"
+
+#: comments.php:90
+msgid "Cancel reply"
+msgstr "取消回复"
+
+#: comments.php:91
+msgid "Post Comment"
+msgstr "评论"
+
+#: content-link.php:29 content-page.php:24 content-single.php:25 content.php:28
+msgid "Pages:"
+msgstr "页码："
+
+#: content-page.php:30 content-single.php:35 inc/template-tags.php:117
+#: inc/template-tags.php:137
+msgid "Edit"
+msgstr "编辑"
+
+#: footer.php:37 functions.php:152
+msgid "Footer Widget 1"
+msgstr "页脚小工具 1"
+
+#: footer.php:39
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 1."
+msgstr ""
+"前往 <a href=\"%1$s\"><strong>Appearance / Widgets</strong></a> 并拖拽小工具"
+"到也页脚区域 1 以替换这个小工具内容。"
+
+#: footer.php:40 footer.php:54 footer.php:68 footer.php:82 footer.php:96
+#, php-format
+msgid ""
+"To remove or choose the number of footer widgets, go to <a href=\"%1$s"
+"\"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>."
+msgstr ""
+"要移除这个小工具或调整位置，前往 <a href=\"%1$s\"><strong>Appearance / "
+"Customize / Layout / Footer Widgets</strong></a>。"
+
+#: footer.php:51 functions.php:160
+msgid "Footer Widget 2"
+msgstr "页脚小工具 2"
+
+#: footer.php:53
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 2."
+msgstr ""
+"前往 <a href=\"%1$s\"><strong>Appearance / Widgets</strong></a> 并拖拽小工具"
+"到也页脚区域 2 以替换这个小工具内容。"
+
+#: footer.php:65 functions.php:168
+msgid "Footer Widget 3"
+msgstr "页脚小工具 3"
+
+#: footer.php:67
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 3."
+msgstr ""
+"前往 <a href=\"%1$s\"><strong>Appearance / Widgets</strong></a> 并拖拽小工具"
+"到也页脚区域 3 以替换这个小工具内容。"
+
+#: footer.php:79 functions.php:176
+msgid "Footer Widget 4"
+msgstr "页脚小工具 4"
+
+#: footer.php:81
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 4."
+msgstr ""
+"前往 <a href=\"%1$s\"><strong>Appearance / Widgets</strong></a> 并拖拽小工具"
+"到也页脚区域 4 以替换这个小工具内容。"
+
+#: footer.php:93 functions.php:184
+msgid "Footer Widget 5"
+msgstr "页脚小工具 5"
+
+#: footer.php:95
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 5."
+msgstr ""
+"前往 <a href=\"%1$s\"><strong>Appearance / Widgets</strong></a> 并拖拽小工具"
+"到也页脚区域 5 以替换这个小工具内容。"
+
+#: functions.php:48
+msgid "Primary Menu"
+msgstr "主菜单"
+
+#: functions.php:128 inc/customizer.php:362 inc/metaboxes.php:57
+#: inc/sanitize.php:195
+msgid "Right Sidebar"
+msgstr "右边栏"
+
+#: functions.php:136 inc/customizer.php:361 inc/metaboxes.php:61
+#: inc/sanitize.php:194
+msgid "Left Sidebar"
+msgstr "左边栏"
+
+#: functions.php:144
+msgid "Header"
+msgstr "顶部"
+
+#: functions.php:389 inc/options.php:174
+msgid "Copyright"
+msgstr ""
+
+#: functions.php:397 inc/options.php:24 inc/options.php:67
+msgid "GeneratePress"
+msgstr ""
+
+#: functions.php:397
+msgid "Proudly powered by WordPress"
+msgstr "由 WordPress 驱动"
+
+#: functions.php:397
+msgid "WordPress"
+msgstr ""
+
+#: header.php:21
+msgid "Skip to content"
+msgstr "跳转到文章"
+
+#: inc/add-ons/controls.php:34
+msgid "Default fonts"
+msgstr "默认字体"
+
+#: inc/add-ons/controls.php:53
+msgid "Google fonts"
+msgstr "Google 字体"
+
+#: inc/add-ons/controls.php:62
+msgid "Font family"
+msgstr "字体"
+
+#: inc/add-ons/disable-elements.php:59 inc/options.php:181
+msgid "Disable Elements"
+msgstr "禁用元素"
+
+#: inc/add-ons/disable-elements.php:81 inc/add-ons/disable-elements.php:83
+msgid "Content Title"
+msgstr "内容标题"
+
+#: inc/add-ons/disable-elements.php:87 inc/customizer.php:764
+msgid "Add-on available"
+msgstr "可用的扩展插件"
+
+#: inc/add-ons/typography.php:322 inc/options.php:146
+msgid "Typography"
+msgstr "版面"
+
+#: inc/add-ons/typography.php:344
+msgid "Body"
+msgstr "主体"
+
+#: inc/add-ons/typography.php:366
+msgid "Font weight"
+msgstr "字重"
+
+#: inc/add-ons/typography.php:390
+msgid "Text transform"
+msgstr "大小写转换"
+
+#: inc/add-ons/typography.php:413
+msgid "Font size"
+msgstr "字号/大小"
+
+#: inc/add-ons/typography.php:430 inc/customizer.php:188 inc/customizer.php:689
+msgid "More Settings"
+msgstr "更多设置"
+
+#: inc/add-ons/typography.php:433
+#, php-format
+msgid "Looking to add more typography settings?<br /> %s."
+msgstr "想添加更多字体？<br />%s"
+
+#: inc/add-ons/typography.php:437
+msgid "Check out Generate Typography"
+msgstr "获得更多字体"
+
+#: inc/controls.php:51
+msgid "Select Image"
+msgstr "选择图片"
+
+#: inc/controls.php:51
+msgid "Use Image"
+msgstr "使用图片"
+
+#: inc/controls.php:51
+msgid "Upload"
+msgstr "上传"
+
+#: inc/controls.php:52
+msgid "Remove"
+msgstr "移除"
+
+#: inc/customizer.php:22
+msgid "Site Identity"
+msgstr "站点信息"
+
+#: inc/customizer.php:30
+msgid "Set Front Page"
+msgstr "设置首页"
+
+#: inc/customizer.php:51
+msgid "Hide site title"
+msgstr "隐藏站点标题"
+
+#: inc/customizer.php:70
+msgid "Hide site tagline"
+msgstr "隐藏站点说明"
+
+#: inc/customizer.php:90
+msgid "Logo"
+msgstr ""
+
+#: inc/customizer.php:103 inc/options.php:130
+msgid "Colors"
+msgstr "颜色"
+
+#: inc/customizer.php:114
+msgid "Base Colors"
+msgstr "基本颜色"
+
+#: inc/customizer.php:126
+msgid "Background Color"
+msgstr "背景颜色"
+
+#: inc/customizer.php:132
+msgid "Text Color"
+msgstr "文字颜色"
+
+#: inc/customizer.php:138
+msgid "Link Color"
+msgstr "链接颜色"
+
+#: inc/customizer.php:144
+msgid "Link Color Hover"
+msgstr "链接颜色（激活）"
+
+#: inc/customizer.php:150
+msgid "Link Color Visited"
+msgstr "链接颜色（已访问）"
+
+#: inc/customizer.php:191
+#, php-format
+msgid "Looking to add more color settings?<br /> %s."
+msgstr "想添加更多颜色？<br />%s"
+
+#: inc/customizer.php:195
+msgid "Check out Generate Colors"
+msgstr "获得更多颜色"
+
+#: inc/customizer.php:210
+msgid "Layout"
+msgstr "版式布局"
+
+#: inc/customizer.php:212
+msgid "Allows you to edit your theme's layout."
+msgstr "允许你编辑主题的版式布局。"
+
+#: inc/customizer.php:233
+msgid "Container Width"
+msgstr "容器宽度"
+
+#: inc/customizer.php:260
+msgid "Header Layout"
+msgstr "标题版式"
+
+#: inc/customizer.php:263 inc/customizer.php:326 inc/customizer.php:592
+#: inc/sanitize.php:29 inc/sanitize.php:46 inc/sanitize.php:250
+msgid "Fluid / Full Width"
+msgstr "液体式填充/全宽"
+
+#: inc/customizer.php:264 inc/customizer.php:327 inc/customizer.php:593
+#: inc/sanitize.php:30 inc/sanitize.php:47 inc/sanitize.php:251
+msgid "Contained"
+msgstr "限制在容器内"
+
+#: inc/customizer.php:291
+msgid "Header Alignment"
+msgstr "标题对齐"
+
+#: inc/customizer.php:294 inc/customizer.php:393 inc/sanitize.php:155
+msgid "Left"
+msgstr "左对齐"
+
+#: inc/customizer.php:295 inc/customizer.php:394 inc/sanitize.php:156
+msgid "Center"
+msgstr "居中对齐"
+
+#: inc/customizer.php:296 inc/customizer.php:395 inc/sanitize.php:157
+msgid "Right"
+msgstr "右对齐"
+
+#: inc/customizer.php:323
+msgid "Navigation Layout"
+msgstr "导航栏布局"
+
+#: inc/customizer.php:354
+msgid "Navigation Position"
+msgstr "导航栏位置"
+
+#: inc/customizer.php:357 inc/sanitize.php:190
+msgid "Below Header"
+msgstr "在标题下方"
+
+#: inc/customizer.php:358 inc/sanitize.php:191
+msgid "Above Header"
+msgstr "在标题上方"
+
+#: inc/customizer.php:359 inc/sanitize.php:192
+msgid "Float Right"
+msgstr "浮动居右"
+
+#: inc/customizer.php:360 inc/sanitize.php:193
+msgid "Float Left"
+msgstr "浮动居左"
+
+#: inc/customizer.php:363 inc/sanitize.php:196
+msgid "No Navigation"
+msgstr "隐藏导航栏"
+
+#: inc/customizer.php:390
+msgid "Navigation Alignment"
+msgstr "导航栏对齐"
+
+#: inc/customizer.php:422
+msgid "Navigation Search"
+msgstr "导航栏搜索"
+
+#: inc/customizer.php:425 inc/sanitize.php:173
+msgid "Enabled"
+msgstr "开启"
+
+#: inc/customizer.php:426 inc/sanitize.php:174
+msgid "Disabled"
+msgstr "关闭"
+
+#: inc/customizer.php:453
+msgid "Content Layout"
+msgstr "文章布局"
+
+#: inc/customizer.php:456 inc/sanitize.php:212
+msgid "Separate Containers"
+msgstr "独立容器"
+
+#: inc/customizer.php:457 inc/sanitize.php:213
+msgid "One Container"
+msgstr "一体化"
+
+#: inc/customizer.php:484 inc/metaboxes.php:20
+msgid "Sidebar Layout"
+msgstr "边栏布局"
+
+#: inc/customizer.php:487 inc/customizer.php:522 inc/customizer.php:557
+#: inc/sanitize.php:229
+msgid "Sidebar / Content"
+msgstr "边栏/文章"
+
+#: inc/customizer.php:488 inc/customizer.php:523 inc/customizer.php:558
+#: inc/sanitize.php:230
+msgid "Content / Sidebar"
+msgstr "文章/边栏"
+
+#: inc/customizer.php:489 inc/customizer.php:524 inc/customizer.php:559
+#: inc/metaboxes.php:67 inc/sanitize.php:231
+msgid "Content (no sidebars)"
+msgstr "文章（无边栏）"
+
+#: inc/customizer.php:490 inc/customizer.php:525 inc/customizer.php:560
+#: inc/sanitize.php:232
+msgid "Sidebar / Content / Sidebar"
+msgstr "边栏/文章/边栏"
+
+#: inc/customizer.php:491 inc/customizer.php:526 inc/customizer.php:561
+#: inc/sanitize.php:233
+msgid "Sidebar / Sidebar / Content"
+msgstr "边栏/边栏/文章"
+
+#: inc/customizer.php:492 inc/customizer.php:527 inc/customizer.php:562
+#: inc/sanitize.php:234
+msgid "Content / Sidebar / Sidebar"
+msgstr "文章/边栏/边栏"
+
+#: inc/customizer.php:519
+msgid "Blog Sidebar Layout"
+msgstr "部落格边栏版式"
+
+#: inc/customizer.php:554
+msgid "Single Post Sidebar Layout"
+msgstr "文章边栏版式"
+
+#: inc/customizer.php:589
+msgid "Footer Layout"
+msgstr "页脚样式"
+
+#: inc/customizer.php:620 inc/metaboxes.php:125
+msgid "Footer Widgets"
+msgstr "页脚小工具"
+
+#: inc/customizer.php:642 inc/options.php:188
+msgid "Blog"
+msgstr "部落格"
+
+#: inc/customizer.php:668
+msgid "Blog Post Content"
+msgstr "部落格文章"
+
+#: inc/customizer.php:671 inc/sanitize.php:288
+msgid "Show full post"
+msgstr "显示整篇文章"
+
+#: inc/customizer.php:672 inc/sanitize.php:289
+msgid "Show excerpt"
+msgstr "显示文章摘要"
+
+#: inc/customizer.php:692
+#, php-format
+msgid "Looking to add more blog settings?<br /> %s."
+msgstr "想添加更多部落格设置？<br />%s"
+
+#: inc/customizer.php:696
+msgid "Check out Generate Blog"
+msgstr "获得更多部落格设置"
+
+#: inc/customizer.php:728
+msgid "Default"
+msgstr "默认"
+
+#: inc/customizer.php:822
+msgid "Add-ons Available! Take a look"
+msgstr "有可用的扩展插件！一览究竟"
+
+#: inc/metaboxes.php:55
+msgid "Global Layout Settings"
+msgstr "全局版式设置"
+
+#: inc/metaboxes.php:59 inc/metaboxes.php:63 inc/metaboxes.php:71
+#: inc/metaboxes.php:75 inc/metaboxes.php:79
+msgid "Content"
+msgstr "文章"
+
+#: inc/metaboxes.php:59 inc/metaboxes.php:63 inc/metaboxes.php:71
+#: inc/metaboxes.php:75 inc/metaboxes.php:79
+msgid "Sidebar"
+msgstr "边栏"
+
+#: inc/metaboxes.php:65
+msgid "No Sidebars"
+msgstr "无边栏"
+
+#: inc/metaboxes.php:69
+msgid "Both Sidebars"
+msgstr "双边栏"
+
+#: inc/metaboxes.php:73
+msgid "Both Sidebars on Left"
+msgstr "左侧双边栏"
+
+#: inc/metaboxes.php:77
+msgid "Both Sidebars on Right"
+msgstr "右侧双边栏"
+
+#: inc/metaboxes.php:160
+msgid "Global Footer Widget Settings"
+msgstr "来自全球的页脚小工具设置"
+
+#: inc/metaboxes.php:162 inc/metaboxes.php:164
+msgid "0 Widgets"
+msgstr "没有小工具"
+
+#: inc/metaboxes.php:166 inc/metaboxes.php:168
+msgid "1 Widget"
+msgstr "1 个小工具"
+
+#: inc/metaboxes.php:170 inc/metaboxes.php:172
+msgid "2 Widgets"
+msgstr "2 个小工具"
+
+#: inc/metaboxes.php:174 inc/metaboxes.php:176
+msgid "3 Widgets"
+msgstr "3 个小工具"
+
+#: inc/metaboxes.php:178 inc/metaboxes.php:180
+msgid "4 Widgets"
+msgstr "4 个小工具"
+
+#: inc/metaboxes.php:182 inc/metaboxes.php:184
+msgid "5 Widgets"
+msgstr "5 个小工具"
+
+#: inc/navigation.php:91
+msgid "Menu"
+msgstr "菜单"
+
+#: inc/navigation.php:131 inc/template-tags.php:366 inc/template-tags.php:395
+#: searchform.php:13
+msgctxt "submit button"
+msgid "Search"
+msgstr "搜索"
+
+#: inc/options.php:64 inc/options.php:120
+msgid "Customize"
+msgstr "自定义"
+
+#: inc/options.php:70
+#, php-format
+msgctxt "made with love"
+msgid "Made with %s by Tom Usborne"
+msgstr "由 Tom Usborne 智造，因 %s 而创作。"
+
+#: inc/options.php:74 inc/options.php:123
+msgid "Add-ons"
+msgstr "扩展插件"
+
+#: inc/options.php:76
+msgid "Support"
+msgstr "支持"
+
+#: inc/options.php:77
+msgid "Knowledgebase"
+msgstr "技术文档"
+
+#: inc/options.php:78
+msgid ""
+"Please help support the ongoing development of GeneratePress by buying me a "
+"coffee :)"
+msgstr "请支持我们的发展，只要一杯咖啡的价钱！"
+
+#: inc/options.php:78
+msgid "Buy me a coffee :)"
+msgstr "请我一杯咖啡 :)"
+
+#: inc/options.php:86
+msgid "Add-on Updates"
+msgstr "扩展插件升级"
+
+#: inc/options.php:98
+msgid "Delete Customizer Settings"
+msgstr "删除自定义设置"
+
+#: inc/options.php:100
+#, php-format
+msgid ""
+"<strong>Warning:</strong> Deleting your <a href=\"%1$s\">Customizer</a> "
+"settings can not be undone."
+msgstr ""
+"<strong>警告：</strong>删除你的<a href=\"%1$s\">自定义</a>设置是无法恢复的。"
+
+#: inc/options.php:101
+msgid ""
+"Consider using our Import/Export add-on to export your settings before "
+"deleting them."
+msgstr "在删除它们之前，请考虑使用我们的「导入/导出工具」来导出你的设置。"
+
+#: inc/options.php:106
+msgid "Warning: This will delete your settings."
+msgstr "警告：这会删除你的设置。"
+
+#: inc/options.php:108
+msgid "Delete Default Customizer Settings"
+msgstr "删除默认的自定义设置"
+
+#: inc/options.php:138
+msgid "Sections"
+msgstr "模块"
+
+#: inc/options.php:153
+msgid "Menu Plus"
+msgstr "高级菜单"
+
+#: inc/options.php:160
+msgid "Page Header"
+msgstr "页顶"
+
+#: inc/options.php:167
+msgid "Import / Export"
+msgstr "导入/导出"
+
+#: inc/options.php:195
+msgid "Hooks"
+msgstr ""
+
+#: inc/options.php:202
+msgid "Spacing"
+msgstr "空间"
+
+#: inc/options.php:209
+msgid "Backgrounds"
+msgstr "背景"
+
+#: inc/options.php:216
+msgid "Secondary Nav"
+msgstr "第二导航栏"
+
+#: inc/options.php:228 inc/options.php:235
+msgid "Not activated."
+msgstr "未激活。"
+
+#: inc/options.php:230 inc/options.php:237
+msgid "Activated."
+msgstr "已激活。"
+
+#: inc/options.php:286
+msgid "Settings saved."
+msgstr "已保存设置。"
+
+#: inc/options.php:290
+msgid "Import successful."
+msgstr "导入成功。"
+
+#: inc/options.php:294
+msgid "Settings removed."
+msgstr "已删除设置。"
+
+#: inc/template-tags.php:39
+msgid "&larr; Previous"
+msgstr "&larr; 上一页"
+
+#: inc/template-tags.php:40
+msgid "Next &rarr;"
+msgstr "下一页 &rarr;"
+
+#: inc/template-tags.php:76
+msgid "Post navigation"
+msgstr "文章导航栏"
+
+#: inc/template-tags.php:80 inc/template-tags.php:86
+msgid "Previous"
+msgstr "上一页"
+
+#: inc/template-tags.php:81 inc/template-tags.php:90
+msgid "Next"
+msgstr "下一页"
+
+#: inc/template-tags.php:86
+msgid "Older posts"
+msgstr "先前的文章"
+
+#: inc/template-tags.php:90
+msgid "Newer posts"
+msgstr "最新的文章"
+
+#: inc/template-tags.php:117
+msgid "Pingback:"
+msgstr ""
+
+#: inc/template-tags.php:134
+#, php-format
+msgctxt "1: date, 2: time"
+msgid "%1$s at %2$s"
+msgstr "%1$s 的 %2$s"
+
+#: inc/template-tags.php:151
+msgid "Your comment is awaiting moderation."
+msgstr "你的评论已提交审核。"
+
+#: inc/template-tags.php:205
+msgid "by"
+msgstr "由"
+
+#: inc/template-tags.php:207
+#, php-format
+msgid "View all posts by %s"
+msgstr "查看所有 %s 的文章"
+
+#: inc/template-tags.php:222 inc/template-tags.php:233
+msgid "Read more"
+msgstr "查看全文"
+
+#: inc/template-tags.php:340
+msgctxt "label"
+msgid "Search"
+msgstr "搜索"
+
+#: inc/template-tags.php:417 inc/template-tags.php:425
+msgctxt "Used between list items, there is a space after the comma."
+msgid ", "
+msgstr "， "
+
+#: inc/template-tags.php:420
+msgctxt "Used before category names."
+msgid "Categories"
+msgstr "分类"
+
+#: inc/template-tags.php:428
+msgctxt "Used before tag names."
+msgid "Tags"
+msgstr "标签"
+
+#: inc/template-tags.php:436
+msgid "Leave a comment"
+msgstr "留言或评论"
+
+#: inc/template-tags.php:436
+msgid "1 Comment"
+msgstr "1 条留言或评论"
+
+#: inc/template-tags.php:436
+msgid "% Comments"
+msgstr "% 条留言或评论"
+
+#: no-results.php:15
+msgid "Nothing Found"
+msgstr "已尽力搜寻……"
+
+#: no-results.php:22
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "准备好发表第一篇文章了吗？<a href=\"%1$s\">现在就开始</a>。"
+
+#: no-results.php:26
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr "似乎没有与之相关的内容，要不换个关键词再试试？"
+
+#: no-results.php:31
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr "似乎我们没能呈现你想要的内容。要不尝试一下搜索？"
+
+#: search.php:16
+#, php-format
+msgid "Search Results for: %s"
+msgstr "和 %s 相关的内容，都在这里了："
+
+#: searchform.php:10 searchform.php:11
+msgctxt "label"
+msgid "Search for:"
+msgstr "已搜寻："
+
+#: searchform.php:11
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "搜索 &hellip;"
+
+#: sidebar-left.php:46 sidebar.php:45
+msgid "Meta"
+msgstr "元数据"

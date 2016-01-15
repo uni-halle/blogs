@@ -81,6 +81,10 @@ if ( ! isset( $content_width ) ) {
 // Thumbnail sizes
 add_image_size( 'bones-thumb-600', 600, 150, true );
 add_image_size( 'bones-thumb-300', 300, 100, true );
+add_image_size( 'bones-thumb-120', 900, 75, true );
+add_image_size( 'bones-thumb-20-10', 200, 100, true );
+add_image_size( 'bones-thumb-975', 900, 75, true );
+add_image_size( 'bones-thumb-2075', 200, 75, true );
 add_image_size( 'bones-thumb-200', 200, 50, true );
 
 /*
@@ -109,6 +113,9 @@ function bones_custom_image_sizes( $sizes ) {
     return array_merge( $sizes, array(
         'bones-thumb-600' => __('600px by 150px'),
         'bones-thumb-300' => __('300px by 100px'),
+        'bones-thumb-20-10' => __('200px by 100px'),
+        'bones-thumb-2075' => __('200px by 75px'),
+        'bones-thumb-975' => __('900px by 75px'),
         'bones-thumb-200' => __('200px by 50px'),
     ) );
 }
@@ -201,7 +208,113 @@ function bones_register_sidebars() {
 /****** Allow Shortcode in Widgets *******/
 add_filter('widget_text', 'do_shortcode');
 
-/******** GKUHplus pagelist widget *******/
+/*********************** 
+GKUHplus partnerlist widget 
+************************/
+
+/**
+ * Adds Foo_Widget widget.
+ */
+class gkuh_partnerlist extends WP_Widget {
+
+	/**
+	 * Register widget with WordPress.
+	 */
+	function __construct() {
+		parent::__construct(
+			'gkuh_partnerlist', // Base ID
+			__( 'GKUHplus Partnerliste', 'text_domain' ), // Name
+			array( 'description' => __( 'Liste der GKUHplus Projektpartner. Bitte als unterstes Widget in der Leiste platzieren.', 'text_domain' ), ) // Args
+		);
+	}
+
+	/**
+	 * Front-end display of widget.
+	 *
+	 * @see WP_Widget::widget()
+	 *
+	 * @param array $args     Widget arguments.
+	 * @param array $instance Saved values from database.
+	 */
+	public function widget( $args, $instance ) {
+		echo $args['before_widget'];
+		if ( ! empty( $instance['title'] ) ) {
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+		}
+        $gkuhlogopath = get_template_directory_uri() . '/library/images/partners/';
+        echo '<div class="partnerlist">
+        <a id="pll1" href="http://uni-halle.de" target="_blank">Martin-Luther-Universität Halle-Wittenberg</a>
+        <a id="pll2" href="http://www.vit.de" target="_blank">Vereinigte Informationssysteme Tierhaltung w.V.</a>
+        <a id="pll3" href="http://www.ohg-genetic.de" target="_blank">Osnabrücker Herdbuch e.G.</a>
+        <a id="pll4" href="http://ltr.de" target="_blank">Landesverband Thüringer Rinderzüchter Zucht- und Absatzgenossenschaft e.G.</a>
+        <a id="pll5" href="http://www.tvlev.de" target="_blank">Thüringer Verband für Leistungs- und Qualitätsprüfungen in der Tierzucht e.V.</a>
+        <a id="pll6" href="http://www.lkv-we.de" target="_blank">Landeskontrollverband Weser Ems</a>
+        <a id="pll7" href="http://www.lkvbw.de" target="_blank">Landesverband Baden-Württemberg für Leistungsprüfungen in der Tierzucht e.V.</a>
+        
+        <img class="logohidden" alt="Logo Martin-Luther-Universität Halle-Wittenberg" id="pli1" src="' . $gkuhlogopath . 'mlu_logo.png' . '">
+        <img class="logohidden" alt="Logo Vereinigte Informationssysteme Tierhaltung w.V." id="pli2" src="' . $gkuhlogopath . 'vit_logo.png' . '">
+        <img class="logohidden" alt="Logo Osnabrücker Herdbuch e.G." id="pli3" src="' . $gkuhlogopath . 'ohg_logo.png' . '">
+        <img class="logohidden" alt="Logo Landesverband Thüringer Rinderzüchter Zucht- und Absatzgenossenschaft e.G." id="pli4" src="' . $gkuhlogopath . 'ltr_logo.png' . '">
+        <img class="logohidden" alt="Logo Thüringer Verband für Leistungs- und Qualitätsprüfungen in der Tierzucht e.V." id="pli5" src="' . $gkuhlogopath . 'tvl_logo.png' . '">
+        <img class="logohidden" alt="Logo Landeskontrollverband Weser Ems" id="pli6" src="' . $gkuhlogopath . 'lkvwe_logo.png' . '">
+        <img class="logohidden" alt="Logo Landesverband Baden-Württemberg für Leistungsprüfungen in der Tierzucht e.V." id="pli7" src="' . $gkuhlogopath . 'lkvbw_logo.png' . '">
+        </div>
+        <div class="hideatshow">
+        <img class="hideatshow" alt="" style="float:right; width:50%;" src="' . $gkuhlogopath . 'ble_logo.png' . '">
+        <img width="50%" alt="" src="' . $gkuhlogopath . 'bmel_logo.png' . '">
+        <img width="40%" alt="" src="' . $gkuhlogopath . 'rentenbank_logo.png' . '">
+        </div>
+        ';
+        
+		echo $args['after_widget'];
+	}
+
+	/**
+	 * Back-end widget form.
+	 *
+	 * @see WP_Widget::form()
+	 *
+	 * @param array $instance Previously saved values from database.
+	 */
+	public function form( $instance ) {
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'New title', 'text_domain' );
+		?>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+		</p>
+		<?php 
+	}
+
+	/**
+	 * Sanitize widget form values as they are saved.
+	 *
+	 * @see WP_Widget::update()
+	 *
+	 * @param array $new_instance Values just sent to be saved.
+	 * @param array $old_instance Previously saved values from database.
+	 *
+	 * @return array Updated safe values to be saved.
+	 */
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+
+		return $instance;
+	}
+
+} // class Foo_Widget
+
+// register Foo_Widget widget
+function register_gkuh_partnerlist() {
+    register_widget( 'gkuh_partnerlist' );
+}
+add_action( 'widgets_init', 'register_gkuh_partnerlist' );
+
+/*********************** 
+GKUHplus pagelist widget 
+************************/
+
 // Creating the widget 
 class gkuh_pagelist_widget extends WP_Widget {
 
@@ -217,6 +330,23 @@ __('GKUHplus Seitenliste', 'gkuh_pagelist_widget_domain'),
 array( 'description' => __( 'Hier wird die Liste der Seiten in der aktuellen Lektion angezeigt', 'gkuh_pagelist_widget_domain' ), ) 
 );
 }
+    
+// Widget Backend 
+public function form( $instance ) {
+if ( isset( $instance[ 'title' ] ) ) {
+$title = $instance[ 'title' ];
+}
+else {
+$title = __( 'New title', 'gkuh_pagelist_widget_domain' );
+}
+// Widget admin form
+?>
+<p>
+<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+</p>
+<?php 
+}
 
 // Creating widget front-end
 // This is where the action happens
@@ -229,7 +359,7 @@ echo $args['before_title'] . $title . $args['after_title'];
 
     if ( in_category( array( 'inhalt', 'quiz' ) )) { //only display submenu on pages with category 'Lektionsinhalt' oder 'Quiz' 
         
- echo '<h2>In dieser Lektion:</h2>';
+ echo '<h4 class="widgettitle">In dieser Lektion:</h4>';
     
     $menu_name = 'main-nav';
 
@@ -258,7 +388,7 @@ echo $args['before_title'] . $title . $args['after_title'];
             $menu_list .= '<li class="sidebar-menu-parent"><a href="' . $url . '">' . $title . '</a></li>';
         }
 	}
-	$menu_list .= '</ul>';
+	$menu_list .= '</ol></div>';
     } else {
 	$menu_list = '<ul><li>Menu "' . $menu_name . '" nicht definiert.</li></ul>';
     }
@@ -266,25 +396,9 @@ echo $args['before_title'] . $title . $args['after_title'];
     
 echo $args['after_widget'];
 }
-    
     }
 		
-// Widget Backend 
-public function form( $instance ) {
-if ( isset( $instance[ 'title' ] ) ) {
-$title = $instance[ 'title' ];
-}
-else {
-$title = __( 'New title', 'gkuh_pagelist_widget_domain' );
-}
-// Widget admin form
-?>
-<p>
-<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
-<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
-</p>
-<?php 
-}
+
 	
 // Updating widget replacing old instances with new
 public function update( $new_instance, $old_instance ) {
@@ -295,12 +409,10 @@ return $instance;
 } // Class gkuh_pagelist_widget ends here
 
 // Register and load the widget
-function wpb_load_widget() {
+function wpb_load_gkuhwid1() {
 	register_widget( 'gkuh_pagelist_widget' );
 }
-add_action( 'widgets_init', 'wpb_load_widget' );
-
-
+add_action( 'widgets_init', 'wpb_load_gkuhwid1' );
 
 
 /************* COMMENT LAYOUT *********************/
@@ -653,31 +765,32 @@ This is crucial for many features including previous/next page, menu colors, sub
 
 function page_list_by_main_nav(){
 		$menu_name = 'main-nav';
-        $topid = get_cat_ID( 'lektion' ); //get ID from parent topical category to later get the topic child category from all set categories
+        $topid = get_cat_ID( 'lektion' ); //get ID from parent topical category to later filter the important categories
 
     	if ( ( $location = get_nav_menu_locations() ) && isset( $location[ $menu_name ] ) ) {
 		$menu = wp_get_nav_menu_object( $location[ $menu_name ] );
 		$menu_items = wp_get_nav_menu_items($menu->term_id);
 		$menupagelist = array();
-        //$catslugs = array();
+        $catslugs = array();
             
 			foreach ( (array) $menu_items as $key => $menu_item ) {
                 
                 $categories = get_the_category($menu_item->object_id);
-                    foreach($categories as $category) {
-                        
-                        if (cat_is_ancestor_of($topid, $category)) {
-                            $topicat_slug = $category->slug;
-                            $topicat_id = $category->term_id; 
-                            }
-                            else {
-                                $topicat_slug = 0;
-                                $topicat_id = 0;
-                                 }
-                        
-                        $catslug = $category->slug;
-                        $catslugs[] = $catslug;     
-                    };
+               
+                foreach($categories as $category) {
+
+                    if (cat_is_ancestor_of($topid, $category)) {
+                        $topicat_slug = $category->slug;
+                        $topicat_id = $category->term_id;
+                    }
+                    else {
+                        $topicat_slug = 0;
+                        $topicat_id = 0;
+                     }
+
+                    $catslug = $category->slug;
+                    $catslugs[] = $catslug;
+                };
                 
 				$menupagelist[] = array("id"                => $menu_item->object_id,
                                         "post_status"       => $menu_item->post_status,
@@ -693,9 +806,9 @@ function page_list_by_main_nav(){
 			};
             
 		return $menupagelist;
-        return $topid;
-        return $topicat_slug;
-        return $topicat_id;
+        //return $topid;
+        //return $topicat_slug;
+        //return $topicat_id;
 		} 
 };                  
 

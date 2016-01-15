@@ -4,7 +4,7 @@ Theme URI: https://generatepress.com
 Author: Thomas Usborne
 Author URI: http://edge22.com
 Description: GeneratePress is a fast, lightweight (less than 1MB zipped), mobile responsive WordPress theme built with speed, SEO and usability in mind. Create your website just the way you want it using the Customizer and see the changes take place right in front of you before you publish. GeneratePress is mobile responsive, W3C Markup Validated, Schema.org microdata integrated, search engine friendly, cross browser compatible (including IE8+), WooCommerce compatible, BuddyPress compatible and 100% translatable. GeneratePress has 8 widget areas, 5 navigation positions, 5 sidebar layouts and much more. Navigate to Appearance > Customize to start customizing! Available in English, German, Portuguese, Spanish, Russian, French, Norwegian, Polish, Czech, Danish, Italian, Greek, Romanian, Slovak, Bulgarian and Dutch! See more and check out our awesome add-ons at https://generatepress.com
-Version: 1.3.21
+Version: 1.3.23
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: generate
@@ -464,10 +464,6 @@ input[type="file"] {
 .main-navigation a {
 	display: block;
 	text-decoration: none;
-	-webkit-transition:padding 0s ease-in-out;
-	-moz-transition:padding 0s ease-in-out;
-	-o-transition:padding 0s ease-in-out;
-	transition: padding 0s ease-in-out;
 }
 .main-navigation ul ul {
 	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
@@ -490,7 +486,8 @@ input[type="file"] {
 .main-navigation ul ul li {
 	width:100%;
 }
-.main-navigation ul li:hover > ul {
+.main-navigation ul li:hover > ul,
+.main-navigation ul li.sfHover > ul {
 	display: block;
 }
 .nav-float-right .main-navigation {
@@ -584,13 +581,9 @@ input[type="file"] {
 }
 
 .nav-aligned-right.nav-below-header .main-navigation .menu > li, 
-.nav-aligned-right.nav-below-header .main-navigation .sf-menu > li,
 .nav-aligned-right.nav-above-header .main-navigation .menu > li, 
-.nav-aligned-right.nav-above-header .main-navigation .sf-menu > li,
 .nav-aligned-center.nav-below-header .main-navigation .menu > li, 
-.nav-aligned-center.nav-below-header .main-navigation .sf-menu > li,
-.nav-aligned-center.nav-above-header .main-navigation .menu > li, 
-.nav-aligned-center.nav-above-header .main-navigation .sf-menu > li {
+.nav-aligned-center.nav-above-header .main-navigation .menu > li {
 	float: none;
 	display: inline-block;
 	*display: inline;
@@ -625,6 +618,78 @@ input[type="file"] {
 
 .main-navigation .main-nav ul li .dropdown-toggle {
 	display: none;
+}
+
+.sf-menu .menu-item-has-children > a:first-child {
+	padding-right: 2.5em;
+	*padding-right: 1em;
+}
+.sf-menu .menu-item-has-children > a:first-child:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 1em;
+	margin-top: -3px;
+	height: 0;
+	width: 0;
+	border: 5px solid transparent;
+	border-top-color: inherit;
+	margin-top: -5px;
+	border-color: transparent;
+	border-left-color: inherit; 
+}
+.sf-menu > .menu-item-has-children > a:first-child:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 1em;
+	margin-top: -3px;
+	height: 0;
+	width: 0;
+	border: 5px solid transparent;
+	border-top-color: inherit;
+}
+
+.both-left .widget-area .sf-menu .menu-item-has-children > a:after,
+.left-sidebar .widget-area .sf-menu .menu-item-has-children > a:after,
+.both-sidebars .widget-area .inside-left-sidebar .sf-menu .menu-item-has-children > a:after {
+  margin-top: -5px;
+  margin-right: -3px;
+  border-color: transparent;
+  border-left-color: inherit;
+  opacity: 1;
+}
+
+.both-right .widget-area .sf-menu .menu-item-has-children > a:after,
+.right-sidebar .widget-area .sf-menu .menu-item-has-children > a:after,
+.both-sidebars .widget-area .inside-right-sidebar .sf-menu .menu-item-has-children > a:after {
+  margin-top: -5px;
+  margin-right: -3px;
+  border-color: transparent;
+  border-right-color: inherit;
+  opacity: 1;
+}
+
+.widget-area .main-navigation li {
+	float: none;
+	display: block;
+	width:100%;
+	padding: 0;
+	margin: 0;
+}
+
+.widget-area .main-navigation ul ul {
+	top: 0;
+	left: 100%;
+	width:220px;
+}
+
+.both-right .widget-area .main-navigation ul ul,
+.right-sidebar .widget-area .main-navigation ul ul,
+.both-sidebars .widget-area .inside-right-sidebar .main-navigation ul ul
+ {
+	right: 100%;
+	left: auto;
 }
 
 /* =Content
@@ -1095,7 +1160,8 @@ h4, h5, h6 {
 .site-main {
 	margin: 30px 0;
 }
-.separate-containers .site-main > *:last-child {
+.separate-containers .site-main > *:last-child,
+.one-container .site-main > *:last-child {
 	margin-bottom: 0;
 }
 .inside-right-sidebar,
@@ -1132,6 +1198,9 @@ h4, h5, h6 {
 }
 .one-container .inside-article {
 	padding: 0 0 30px 0;
+}
+.one-container.page .inside-article {
+	padding-bottom: 0;
 }
 
 /* Widget styling */
@@ -1189,75 +1258,6 @@ h4, h5, h6 {
 #wp-calendar #prev,
 #wp-calendar #prev + .pad {
 	border-right: 0;
-}
-
-/* Widget navigation */
-.widget-area .main-navigation {
-	margin-bottom:30px;
-}
-.widget-area .main-navigation li {
-	float: none;
-	display: block;
-	width:100%;
-	padding: 0;
-	margin: 0;
-}
-
-.widget-area .main-navigation ul ul {
-	top: 0;
-	left: 100%;
-	width:220px;
-}
-
-.widget-area .sf-menu li .sf-with-ul:after {
-  margin-top: -5px;
-  margin-right: -3px;
-  border-color: transparent;
-  border-left-color: inherit;
-  border-right-color: transparent;
-  opacity: 1;
-}
-
-.widget-area .sf-menu .sf-with-ul:after,
-.widget-area .sf-menu > li:hover > .sf-with-ul:after, 
-.widget-area .sf-menu > .sfHover > .sf-with-ul:after, 
-.widget-area .sf-menu > li > .sf-with-ul:focus:after {
-  border-left-color: inherit;
-  border-top-color: transparent;
-  opacity: 1;
-}
-
-.both-right .widget-area .main-navigation ul ul,
-.right-sidebar .widget-area .main-navigation ul ul,
-.both-sidebars .widget-area .inside-right-sidebar .main-navigation ul ul
- {
-	right: 100%;
-	left: auto;
-}
-
-.both-right .widget-area .sf-menu li .sf-with-ul:after,
-.right-sidebar .widget-area .sf-menu li .sf-with-ul:after,
-.both-sidebars .widget-area .inside-right-sidebar .sf-menu li .sf-with-ul:after {
-  margin-top: -5px;
-  margin-right: -3px;
-  border-color: transparent;
-  border-right-color: inherit; /* edit this to suit design (no rgba in IE8) */
-  opacity: 1;
-}
-
-.both-right .widget-area .sf-menu li > .sf-with-ul:focus:after,
-.right-sidebar .widget-area .sf-menu li > .sf-with-ul:focus:after,
-.both-sidebars .widget-area .inside-right-sidebar .sf-menu li > .sf-with-ul:focus:after,
-.both-right .widget-area .sf-menu li:hover > .sf-with-ul:after,
-.right-sidebar .widget-area .sf-menu li:hover > .sf-with-ul:after,
-.both-sidebars .widget-area .inside-right-sidebar .sf-menu li:hover > .sf-with-ul:after,
-.both-right .widget-area .sf-menu .sfHover > .sf-with-ul:after,
-.right-sidebar .widget-area .sf-menu .sfHover > .sf-with-ul:after,
-.both-sidebars .widget-area .inside-right-sidebar .sf-menu .sfHover > .sf-with-ul:after  {
-  border-right-color: inherit;
-  border-top-color: transparent;
-  border-left-color: transparent;
-  opacity: 1;
 }
 
 .sidebar .grid-container {
@@ -1575,6 +1575,10 @@ div.bbp-topic-tags {
 /* Beaver Builder */
 .fl-builder .container.grid-container {
 	max-width: 100%;
+}
+
+.fl-builder.one-container .site-content {
+	padding:0;
 }
 
 /* MailChimp CSS */

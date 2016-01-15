@@ -13,14 +13,22 @@ get_header(); ?>
         echo do_shortcode(
             '[events_list scope="future" tag="home" limit="3"]
                 <article class="medium-4 columns event teaser" data-equalizer-watch>
-                    {has_image}#_EVENTIMAGE{/has_image}
-                    {no_image}#_CATEGORYIMAGE{/no_image}
+                    {has_image}
+                    <a href="#_EVENTURL" title="More about #_EVENTNAME">
+                        #_EVENTIMAGE
+                    </a>
+                    {/has_image}
+                    {no_image}
+                    <a href="#_EVENTURL" title="More about #_EVENTNAME">
+                        #_CATEGORYIMAGE
+                    </a>
+                    {/no_image}
                     <h2>#_EVENTLINK</h2>
                     <ul class="no-bullet">
                         <li>#_EVENTDATES</li>
                         {has_time}<li>#_EVENTTIMES</li>{/has_time}
                         <li>#_LOCATIONADDRESS</li>
-                        <li>#_LOCATIONPOSTCODE, #_LOCATIONTOWN</li>
+                        <li>#_LOCATIONPOSTCODE #_LOCATIONTOWN</li>
                     </ul>
                     <p>
                         <a href="upcoming-events/">Show all upcoming events</a>
@@ -32,7 +40,7 @@ get_header(); ?>
 
 </div>
 
-<?php /* get the slider posts */
+<?php /* get the posts for person slider */
 $personSliderConditions = array (
     'category_name' => 'personenslider',
     'post_type'     => 'post',

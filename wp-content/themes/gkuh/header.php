@@ -40,6 +40,12 @@
 		<?php // end analytics ?>
         
         
+        <?php
+            //@todo attempt to call function to create the important page list and set global variables (not working)
+            //$page_array = page_list_by_main_nav();
+        ?>
+        
+        
          
 <!-- call function for color categries from functions.php  -->
         
@@ -51,10 +57,7 @@
     if(function_exists('rl_color')){
         $rl_category_color = rl_color($the_category_id);
     }
-        
-    
-       
-?>
+ ?>
         
 <!-- set the category color classes with the respective color (which is set in the admin area as category setting) -->        
         <style>
@@ -62,10 +65,12 @@
             .ccolor, .sf-with-ul:after, .themenuebersicht li a:before, .themenuebersicht li a:hover:before, .prevname a:hover, .nextname a:hover {color: <?php echo $rl_category_color; ?>;}
             
             /* add classes where the BACKGROUND-COLOR property should have category color */
-            .ccolorbgrd, .themenuebersicht li a:after, .sidebar-current-item {background-color: <?php echo $rl_category_color; ?>;}
+            .ccolorbgrd, .themenuebersicht li a:after, .widget .themenuebersicht .sidebar-current-item a:before, .themenuebersicht a:hover:before {background-color: <?php echo $rl_category_color; ?>;}
             
             /* add classes where the border-color property should have category color */
             .ccolorborder, .themenuebersicht li a:before, .themenuebersicht li a:before {border-color: <?php echo $rl_category_color; ?>;}
+            
+            /* other classes with category color styles */
             
             .svgbutton:hover {fill: <?php echo $rl_category_color; ?>;}
             

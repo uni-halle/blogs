@@ -8,11 +8,11 @@
  *
  * This is a modified version of the default stylesheet provided by the MediaElement.js project.
  *
- * @version   20140416
+ * @version   20141221
  * @license   http://opensource.org/licenses/MIT
  * @author    John Dyer
  * @author    Justin Tadlock <justin@justintadlock.com>
- * @copyright Copyright (c) 2013
+ * @copyright Copyright (c) 2013 - 2014
  * @link      https://github.com/justintadlock/theme-mediaelement
  * @link      http://mediaelementjs.com
  */
@@ -365,7 +365,8 @@
 }
 
 	/* Individual control sections. */
-	.mejs-controls div {
+	.mejs-controls > div,
+	.mejs-controls > a {
 		display:     block;
 		float:       left;
 		margin:      0;
@@ -443,32 +444,38 @@
 			display: block;
 			float:   left;
 			width:   auto;
-			margin:  1px 2px 0 0;
+			margin:  2px 2px 0 0;
 			color:   #fff;
 		}
 
 		.mejs-time .mejs-currenttime {}
+		.mejs-time .mejs-duration {}
 
 	/* Wrapper div for the time rail. */
 
 	.mejs-controls .mejs-time-rail {
-		direction:   ltr;
-		width:       200px;
-		padding-top: 5px;
+		direction: ltr;
+		width:     200px;
+		padding:   5px 5px 0;
 	}
 
+		/* Wrapper for the time rail elements. */
+		.mejs-controls .mejs-time-slider { 
+		} 
+
 		/* Individual elements within the time rail */
-		.mejs-time-rail span {
+		.mejs-time-rail span,
+		.mejs-time-rail > a {
 			display:  block;
 			position: absolute;
-			width:    180px;
 			height:   10px;
 			cursor:   pointer;
 		}
 
 		/* Total time. */
 		.mejs-time-rail .mejs-time-total {
-			margin:     5px;
+			position:   relative;
+			margin:     5px 0;
 			background: #222;
 		}
 
@@ -679,12 +686,13 @@
 		height:   26px;
 		width:    60px;
 		position: relative;
+		display:  table;
 	}
 
 		/* Volume total. */
 		.mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
 			position:   absolute;
-			top:        11px;
+			top:        21px;
 			left:       0;
 			width:      50px;
 			height:     8px;
@@ -697,7 +705,7 @@
 		/* Volume current. */
 		.mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
 			position:   absolute;
-			top:        11px;
+			top:        21px;
 			left:       0;
 			width:      50px;
 			height:     8px;
@@ -858,13 +866,22 @@
 					}
 
 /**
- * 05: Clear - Clears any floated elements at the end of the container.
+ * 05: Clear and Off-screen- Clears elements. Hides screen-reader text.
  * --------------------------------------------------------------------------- */
 
 .mejs-clear,
 .wp-playlist-item {
     clear: both;
 }
+
+.mejs-offscreen {
+	position: absolute;
+	top:      -9999em;
+}
+
+	.ltr .mejs-offscreen { left:  -9999em; }
+
+	.rtl .mejs-offscreen { right: -9999em; }
 
 /**
  * 06: Playlists - WordPress-created playlists.

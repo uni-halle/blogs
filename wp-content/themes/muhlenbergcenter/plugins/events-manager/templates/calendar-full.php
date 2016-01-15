@@ -122,12 +122,10 @@ $col_max = count($calendar['row_headers']); //each time this collumn number is r
                                         </span>
                                     </li>
                                     <li>
-                                        <?= $startDate->format('h:i a') ?>-<?= $endDate->format('h:i a') ?>
+                                        <?= $startDate->format('h:i a') ?> – <?= $endDate->format('h:i a') ?>
                                     </li>
                                     <li>
-                                        <?= $event->location->location_address ?>
-                                    </li>
-                                    <li>
+                                        <?= $event->location->location_address ?><br>
                                         <?= $event->location->location_postcode ?>
                                         <?= $event->location->location_town ?>
                                     </li>

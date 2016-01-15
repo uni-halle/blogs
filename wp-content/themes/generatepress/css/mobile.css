@@ -34,6 +34,10 @@
 		display: block;
 	}
 	
+	.main-navigation ul li.sfHover > ul {
+		display: none;
+	}
+	
 	button.menu-toggle {
 		background-color: transparent;
 		width: 100%;
@@ -46,14 +50,6 @@
 		background-color: transparent;
 		border: 0;
 		outline: 0;
-	}
-	
-	.main-navigation ul li:hover > ul {
-		display: none;
-	}
-	
-	.sf-menu li:hover > ul, .sf-menu li.sfHover > ul {
-		display: none;
 	}
 	
 	.sub-menu.toggled-on,
@@ -139,13 +135,9 @@
 		clear: both;
 	}
 	
-	.nav-aligned-right.nav-below-header .main-navigation .menu > li, 
 	.nav-aligned-right.nav-below-header .main-navigation .sf-menu > li, 
-	.nav-aligned-right.nav-above-header .main-navigation .menu > li, 
 	.nav-aligned-right.nav-above-header .main-navigation .sf-menu > li, 
-	.nav-aligned-center.nav-below-header .main-navigation .menu > li, 
 	.nav-aligned-center.nav-below-header .main-navigation .sf-menu > li, 
-	.nav-aligned-center.nav-above-header .main-navigation .menu > li, 
 	.nav-aligned-center.nav-above-header .main-navigation .sf-menu > li {
 		display: block;
 		margin: 0;
@@ -190,13 +182,11 @@
 		text-align: center;
 	}
 	
-	.sf-menu .menu-item-has-children > a:first-child,
-	.sf-menu .page_item_has_children > a:first-child {
+	.sf-menu .menu-item-has-children > a:first-child {
 		padding-right: 1em;
 	}
 	
-	.sf-menu .menu-item-has-children > a:first-child:after,
-	.sf-menu .page_item_has_children > a:first-child:after {
+	.sf-menu .menu-item-has-children > a:first-child:after {
 		display: none;
 	}
 	

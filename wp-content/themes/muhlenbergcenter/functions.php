@@ -59,7 +59,7 @@ function muhlenbergcenter_setup() {
 	add_editor_style( array( 'css/editor-style.css' ) );
 
     // Clean up the wp_head action.
-    remove_action( 'wp_head', 'feed_links', 2 );
+    // remove_action( 'wp_head', 'feed_links', 2 );
     remove_action( 'wp_head', 'rsd_link' ); 
     remove_action( 'wp_head', 'wlwmanifest_link' );
     remove_action( 'wp_head', 'wp_generator' );
@@ -185,6 +185,10 @@ function muhlenbergcenter_scripts() {
         wp_dequeue_script('jquery');
         wp_deregister_script('jquery');
     }
+
+    // Remove plugin crab
+    remove_action('wp_enqueue_scripts', array('EM_Scripts_and_Styles', 'public_enqueue'));
+    remove_action('wp_enqueue_scripts', array('EM_Scripts_and_Styles', 'localize_script'));
 
     // Load stylesheets to the closing head tag.
     wp_enqueue_style('main', get_stylesheet_uri(), array(), 'v0.6.1');

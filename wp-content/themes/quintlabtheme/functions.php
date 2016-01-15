@@ -11,6 +11,12 @@ define('QL_BASE', get_bloginfo('url') . '/wp-content/themes/quintlabtheme/');
 
 //require_once('includes/types.php');
 require_once('includes/fields.php');
+require_once('includes/wp_simpleform.php');
+
+//compat: missing acf
+//if (!function_exists('the_field')) { function the_field() {} }
+//if (!function_exists('has_sub_field')) { function has_sub_field() {} }
+//if (!function_exists('get_field')) { function get_field() {} }
 
 
 //load localization
@@ -110,7 +116,7 @@ function ql_form_success() {
     $email = $_POST['wpsf_email'];
     $subject = $_POST['wpsf_subject'];
     $message = $_POST['wpsf_message'];
-    wp_mail(get_option('admin_email'), "[quintlab] Contact form", "Subject: $subject\n\n$message");
+    wp_mail("franziska.goetze@landw.uni-halle.de", "[quintlab] Contact form", "Subject: $subject\n\n$message");
 }
 
 

@@ -28,22 +28,34 @@ else {
             <nav role="navigation">
 
                 <!-- Previous and Next Page Functionality -->
-
-                <?php
+<?php
+                
+$pagelist = page_list_by_main_nav();
+mebug($pagelist);                
+//@TODO: Use this array to calculate positions for the navigation buttons.
+                
+                
 $frontpage_ID = get_option('page_on_front');
+
+
+// array of page ids for easy prev-next function
+$pages = array_column($pagelist, 'id');                
+//mebug($pages);
+                
+// get id of current page        
+$currentid = get_the_ID();
+//mebug('currentid = ' . $currentid);
+                
+// check the position of the current page's id in the list                
+$current = array_search($currentid, $pages);
+//mebug('current = ' . $current);
+                
+// get id of empty parent page "Themen" to later exclude from prev-next navigation                       
 $themen = get_page_by_path( 'themen');
 $themen_ID = $themen->ID;
-                $prevnextargs = array(
-                    'sort_column'   => 'menu_order',
-                    'sort_order'    => 'asc',
-                    'exclude'       => '24');
-$pagelist = get_pages($prevnextargs);
-//$pages = array();
-foreach ($pagelist as $page) {
-   $pages[] += $page->ID;
-}
 
-$current = array_search(get_the_ID(), $pages);
+//check if current page is the one before or after the "Themen" and exclude  
+//there's probably an easy way to do this but th
 $beforethemen = array_search($themen_ID, $pages)-1;
 $afterthemen = array_search($themen_ID, $pages)+1;
 if($current == $beforetheme){
@@ -57,7 +69,8 @@ elseif($current == $afterthemen){
 else {
     $prevID = $pages[$current-1];
     $nextID = $pages[$current+1];
-}            
+}
+
 ?>
 
                     <!-- container of prev-next elements -->
@@ -92,7 +105,7 @@ else {
         
         //find category (slug and id) of this page (only the topic-related one which is a child category of 'lektion')
         
-    $topid = get_cat_ID( 'lektion' ); //@todo should work without because of global variables set in header - or isnt that how it works?
+    $topid = get_cat_ID( 'lektion' ); 
     if($topid){                  //check if the required category exists
 /*        foreach((get_the_category()) as $childcat) {
                 if (cat_is_ancestor_of($topid, $childcat)) {
@@ -143,7 +156,7 @@ else {
 
                                 <div class="statuscow" id="cont">
                                     <div class="svgscalefix-circle">
-
+                                    
                                     <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 50 50" xml:space="preserve" enable-background="new 0 0 50 50" preserveAspectRatio="xMidYMid meet">
                                         <!-- background circle and the one who then looks like the progress -->
                                         <circle r="<?php echo $rad . 'em' ?>" cx="25" cy="25" fill="transparent" stroke-dasharray="0" stroke-dashoffset="0" class="circle-bgrd" stroke-width="0.5em" stroke="<?php echo $rl_category_color; ?>"></circle>
@@ -195,4 +208,3 @@ else {
         </body>
 
         </html>
-        <!-- end of site. what a ride! -->

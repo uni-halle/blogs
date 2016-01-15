@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto+Slab:300,700);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto+Slab:300,700);
 @import url(../bower_components/normalize.css/normalize.css);
 html {
   box-sizing: border-box; }
@@ -2693,7 +2693,7 @@ main .imageitems .imageitem {
     content: "";
     display: table; }
   main .imageitems .imageitem .image img {
-    width: 66%;
+    width: 70%;
     margin-bottom: 1em; }
   @media (min-width: 590px) {
     main .imageitems .imageitem .image {
@@ -2722,6 +2722,8 @@ main .imageitems .imageitem {
       width: 14.70196%; }
       main .imageitems .imageitem .image:last-child {
         margin-right: 0; } }
+  main .imageitems .imageitem .image.narrow img {
+    width: 55%; }
   @media (min-width: 590px) {
     main .imageitems .imageitem article {
       float: left;

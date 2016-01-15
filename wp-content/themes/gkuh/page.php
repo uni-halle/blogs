@@ -59,7 +59,11 @@ if ( in_category( 'uebersicht' )) {
                                     
                                   </div>  
                                     
-                                <?php get_sidebar( gkuh ); ?>
+                                <?php
+                                    if (!is_front_page() ) {
+                                    get_sidebar( gkuh ); 
+                                    }
+                                ?>
                                     
 								</section> 
 
@@ -83,7 +87,6 @@ if ( in_category( 'uebersicht' )) {
 				</div>
 
 			</div>
-
 
 
 <?php get_footer(); ?>

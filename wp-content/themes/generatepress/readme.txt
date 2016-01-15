@@ -75,11 +75,3 @@ FontAwesome
 
 Font License: SIL OFL 1.1 - http://scripts.sil.org/OFL
 Code License: MIT License - http://opensource.org/licenses/mit-license.html
-
--------------------------------------------------------
-jQuery Superfish Menu Plugin
--------------------------------------------------------
-
-Dual licensed under the MIT and GPL licenses:
-http://www.opensource.org/licenses/mit-license.php
-http://www.gnu.org/licenses/gpl.html

@@ -23,12 +23,12 @@ $alert-green:       #e6efc2;
 $alert-blue:        #d5edf8;
 
 $black:             #323944;
-$white:             #fff;
+$white:             #ffffff;
 
 $light-gray:        #d8d8d8; /* 15% black, top nav bgrd */ 
 $gray:              #7f7f7f; /* 50% black, footer nav buttons*/
 $dark-gray:         #323232; /* nav background */
-$text-color:        #5c6b80;
+$text-color:        $dark-gray; /*#5c6b80*/
 $meta-gray:         #9fa6b4;
 
 $tan:               #eceee5;

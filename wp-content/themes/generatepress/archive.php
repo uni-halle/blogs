@@ -30,7 +30,7 @@ get_header(); ?>
 							*/
 							the_post();
 							echo get_avatar( get_the_author_meta( 'ID' ), 75 );
-							printf( __( 'About %s', 'generate' ), '<span class="vcard">' . get_the_author() . '</span>' );
+							printf( '<span class="vcard">' . get_the_author() . '</span>' );
 							/* Since we called the_post() above, we need to
 							 * rewind the loop back to the beginning that way
 							 * we can run the loop properly, in full.

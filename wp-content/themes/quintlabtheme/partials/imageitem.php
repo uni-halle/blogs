@@ -1,5 +1,5 @@
 <div class="imageitem">
-    <div class="image"><?php echo $image ?></div>
+    <div class="image <?php echo $imageclass; ?>"><?php echo $image ?></div>
     <article>
         <?php
         if ($title) {

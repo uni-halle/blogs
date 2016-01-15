@@ -1725,20 +1725,16 @@ footer#footer .colophon .credits a[class*=icon-] {
 
 /* Gif Loader if center slide option is checked */
 .tc-slider-loader-wrapper {
-  height: 500px;
+  height: 100%;
   width: 100%;
-  line-height: 500px;
   position: absolute;
-  z-index: 1000;
-  text-align: center;
+  z-index: 99;/*less than the default sticky-header z-index */
   background: #FAFAFA;
 }
 .tc-img-gif-loader {
-  line-height: 15px;
-  vertical-align: middle;
   width: 100%;
   display: inline-block;
-  position: relative;
+  height: 100%;
 }
 /* CUSTOM SLIDER HEIGHT */
 .custom-slider-height .carousel-inner .item {
@@ -3043,7 +3039,10 @@ footer#footer .colophon {
 footer#footer .colophon a, footer#footer .colophon p {
   color:@FooterBg;
 }
-
+footer#footer .colophon .credits span[class*=text],
+footer#footer .colophon .credits a{
+  display: inline-block;
+}
 
 
 footer .widget_recent_entries li:after {
@@ -3078,7 +3077,12 @@ footer ul, footer ol {
   width: 45px;
   height: 43px;
   line-height: 43px;
-  right: 30px;
+  & when (@is_rtl = true) {
+    left: 30px;
+  }
+  & when (@is_rtl = false) {
+    right: 30px;
+  }
   bottom: 25px;
   padding-top: 2px;
   border-top-left-radius: 10px;

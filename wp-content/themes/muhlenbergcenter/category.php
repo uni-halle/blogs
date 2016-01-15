@@ -16,7 +16,7 @@ get_header(); ?>
         </div>
     </div>
 
-    <?php if( is_category( array( 'pictures', 'press', 'videos' ) ) ) : ?>
+    <?php if( is_category( array( 'pictures', 'press', 'videos', 'board-of-directors' ) ) ) : ?>
     <div class="row">
         <div class="small-12 columns">
             <ul class="medium-block-grid-3">
@@ -31,7 +31,7 @@ get_header(); ?>
     // End the loop.
     endwhile; ?>
 
-    <?php if( is_category( array( 'pictures', 'press', 'videos' ) ) ) : ?>
+    <?php if( is_category( array( 'pictures', 'press', 'videos', 'board-of-directors' ) ) ) : ?>
             </ul>
         </div>
     </div>

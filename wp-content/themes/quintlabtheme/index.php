@@ -103,6 +103,7 @@
                             <?php
                             while (has_sub_field('image_items')) {
                                 $image = ql_get_acf_image(get_sub_field('image_item_image'));
+                                $imageclass = "";
                                 $title = get_sub_field('image_item_title');
                                 $text = get_sub_field('image_item_text');
                                 include("partials/imageitem.php");
@@ -235,6 +236,7 @@
                             <?php
                             foreach ($publications as $publication) {
                                 $image = ql_get_post_thumbnail($publication->ID);
+                                $imageclass = "narrow";
                                 $title = $publication->post_title;
                                 $authors = get_field('authors', $publication->ID);
                                 $year = get_field('year', $publication->ID);

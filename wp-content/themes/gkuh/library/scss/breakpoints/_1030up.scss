@@ -9,9 +9,17 @@ be seen on the Desktop.
 
 ******************************************************************/
 
-.wrap {
+/*.wrap {
   width: 1040px;
+}*/
+
+$contentwidth: 70%;
+
+.maincontainer {
+    width: $contentwidth;
+    max-width: 1000px;
 }
+
 
 $centerwidth: 15%;
 

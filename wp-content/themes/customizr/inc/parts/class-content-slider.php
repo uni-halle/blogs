@@ -127,7 +127,25 @@ class TC_slider {
 
     //attachment image
     $alt                    = apply_filters( 'tc_slide_background_alt' , trim(strip_tags(get_post_meta( $id, '_wp_attachment_image_alt' , true))) );
-    $slide_background       = wp_get_attachment_image( $id, $img_size, false, array( 'class' => 'slide' , 'alt' => $alt ) );
+
+    $slide_background_attr  = array( 'class' => 'slide' , 'alt' => $alt );
+
+    //allow responsive images?
+    if ( version_compare( $GLOBALS['wp_version'], '4.4', '>=' ) )
+      if ( 0 == esc_attr( TC_utils::$inst->tc_opt('tc_resp_slider_img') ) ) {
+        $slide_background_attr['srcset'] = " ";
+        //trick, => will produce an empty attr srcset as in wp-includes/media.php the srcset is calculated and added
+        //only when the passed srcset attr is not empty. This will avoid us to:
+        //a) add a filter to get rid of already computed srcset
+        // or
+        //b) use preg_replace to get rid of srcset and sizes attributes from the generated html
+        //Side effect:
+        //we'll see an empty ( or " " depending on the browser ) srcset attribute in the html
+        //to avoid this we filter the attributes getting rid of the srcset if any.
+        //Basically this trick, even if ugly, will avoid the srcset attr computation
+        add_filter( 'wp_get_attachment_image_attributes', array( TC_post_thumbnails::$instance, 'tc_remove_srcset_attr' ) );
+      }
+    $slide_background       = wp_get_attachment_image( $id, $img_size, false, $slide_background_attr );
 
     //adds all values to the slide array only if the content exists (=> handle the case when an attachment has been deleted for example). Otherwise go to next slide.
     if ( !isset($slide_background) || empty($slide_background) )
@@ -164,7 +182,7 @@ class TC_slider {
     $ID                     = $_post->ID;
 
     //attachment image
-    $thumb                  = TC_post_thumbnails::$instance -> tc_get_thumbnail_model($img_size, $ID);
+    $thumb                  = TC_post_thumbnails::$instance -> tc_get_thumbnail_model($img_size, $ID, null, isset($args['slider_responsive_images']) ? $args['slider_responsive_images'] : null );
     $slide_background       = isset($thumb) && isset($thumb['tc_thumb']) ? $thumb['tc_thumb'] : null;
     // we don't want to show slides with no image
     if ( ! $slide_background )
@@ -395,7 +413,7 @@ class TC_slider {
       'limit'               => esc_attr( TC_utils::$inst->tc_opt( 'tc_posts_slider_number' ) ),
       'link_type'           => esc_attr( TC_utils::$inst->tc_opt( 'tc_posts_slider_link') ),
     );
-    
+
     $args         = apply_filters( 'tc_get_pre_posts_slides_args', wp_parse_args( $args, $defaults ) );
     extract( $args );
 
@@ -410,7 +428,7 @@ class TC_slider {
     // b) the transient doesn't exist
     if ( false !== $pre_slides )
       return $pre_slides;
-    
+
     //retrieve posts from the db
     $queried_posts    = $this -> tc_query_posts_slider( $args );
 
@@ -427,6 +445,9 @@ class TC_slider {
     add_filter( 'tc_post_thumb_inline_style', '__return_empty_string', 100 );
     /*** end tc_thumb setup ***/
 
+    //allow responsive images?
+    if ( version_compare( $GLOBALS['wp_version'], '4.4', '>=' ) )
+      $args['slider_responsive_images'] = 0 == esc_attr( TC_utils::$inst->tc_opt('tc_resp_slider_img') ) ? false : true ;
 
     /* Get the pre_model */
     $pre_slides = $pre_slides_posts = array();
@@ -589,7 +610,7 @@ class TC_slider {
              $limit,
              $offset
     );
-    
+
     $sql = apply_filters( 'tc_query_posts_slider_sql', $sql, $args );
 
     $_posts = $wpdb->get_results( $sql );
@@ -742,12 +763,12 @@ class TC_slider {
   *
   */
   function tc_render_slider_loader_view( $slider_name_id ) {
-    if ( 'demo' != $slider_name_id && ( 1 != esc_attr( TC_utils::$inst->tc_opt( 'tc_display_slide_loader') ) || ! apply_filters( 'tc_display_slider_loader' , true ) ) )
+    if ( ! $this -> tc_is_slider_loader_active( $slider_name_id ) )
       return;
+
     ?>
       <div id="tc-slider-loader-wrapper-<?php echo self::$rendered_sliders ?>" class="tc-slider-loader-wrapper" style="display:none;">
         <div class="tc-img-gif-loader">
-          <img data-no-retina alt="loading" src="<?php echo apply_filters('tc_slider_loader_src' , sprintf( '%1$s/%2$s' , TC_BASE_URL , 'inc/assets/img/slider-loader.gif') ) ?>">
         </div>
       </div>
 
@@ -876,7 +897,7 @@ class TC_slider {
 
     //display edit link for logged in users with  edit_post capabilities
     //upload_files cap isn't a good lower limit 'cause for example and Author can upload_files but actually cannot edit medias he/she hasn't uploaded
-    
+
     $show_slide_edit_link  = ( is_user_logged_in() && current_user_can( 'edit_post', $id ) ) ? true : false;
     $show_slide_edit_link  = apply_filters('tc_show_slide_edit_link' , $show_slide_edit_link && ! is_null($data['link_id']), $id );
 
@@ -905,7 +926,7 @@ class TC_slider {
   function tc_render_slider_edit_link_view( $slides, $slider_name_id ) {
     if ( 'demo' == $slider_name_id )
       return;
-    
+
     $show_slider_edit_link    = false;
 
     //We have to show the slider edit link to
@@ -915,11 +936,11 @@ class TC_slider {
       $show_slider_edit_link = ( is_user_logged_in() && current_user_can('edit_theme_options') ) ? true : false;
       $_edit_link            = TC_utils::tc_get_customizer_url( array( 'control' => 'tc_front_slider', 'section' => 'frontpage_sec') );
     }else if ( is_singular() ){ // we have a snippet to display sliders in categories, we don't want the slider edit link displayed there
-      global $post;  
+      global $post;
       $show_slider_edit_link = ( is_user_logged_in() && ( current_user_can('edit_pages') || current_user_can( 'edit_posts', $post -> ID ) ) ) ? true : false;
       $_edit_link            = get_edit_post_link( $post -> ID ) . '#slider_sectionid';
     }
- 
+
     $show_slider_edit_link = apply_filters( 'tc_show_slider_edit_link' , $show_slider_edit_link, $slider_name_id );
     if ( ! $show_slider_edit_link )
       return;
@@ -1112,6 +1133,21 @@ class TC_slider {
     return apply_filters( 'tc_slider_active_status', false , $queried_id );
   }
 
+  /**
+  * helper
+  * returns whether or not the slider loading icon must be displayed
+  * @return  boolean
+  *
+  */
+  private function tc_is_slider_loader_active( $slider_name_id ) {
+    //The slider loader must be printed when
+    //a) we have to render the demo slider
+    //b) display slider loading option is enabled (can be filtered)
+    return ( 'demo' == $slider_name_id
+        || apply_filters( 'tc_display_slider_loader', 1 == esc_attr( TC_utils::$inst->tc_opt( 'tc_display_slide_loader') ), $slider_name_id )
+    );
+  }
+
 
   /**
   * hook : tc_slider_height, fired in tc_user_options_style
@@ -1147,6 +1183,17 @@ class TC_slider {
   * @since Customizr 3.2.6
   */
   function tc_write_slider_inline_css( $_css ) {
+    //custom css for the slider loader gif
+    if ( $this -> tc_is_slider_loader_active( $this -> tc_get_current_slider( $this -> tc_get_real_id() ) ) ) {
+      $_slider_loader_src = apply_filters( 'tc_slider_loader_src' , sprintf( '%1$s/%2$s' , TC_BASE_URL , 'inc/assets/img/slider-loader.gif') );
+      if ( $_slider_loader_src )
+        $_css = sprintf( "$_css\n%s",
+         ".tc-slider-loader-wrapper .tc-img-gif-loader {
+            background: url('$_slider_loader_src') no-repeat center center;
+         }"
+        );
+    }
+
     // 1) Do we have a custom height ?
     // 2) check if the setting must be applied to all context
     $_custom_height     = apply_filters( 'tc_slider_height' , esc_attr( TC_utils::$inst->tc_opt( 'tc_slider_default_height') ) );
@@ -1244,13 +1291,13 @@ class TC_slider {
   * @since Customizr 3.4.9
   */
   function tc_cache_posts_slider( $args = array() ) {
-    $defaults = array (  
+    $defaults = array (
       //use the home slider_width
       'img_size'        => 1 == TC_utils::$inst->tc_opt( 'tc_slider_width' ) ? 'slider-full' : 'slider',
       'load_transient'  => false,
       'store_transient' => true,
       'transient_name'  => 'tc_posts_slides'
-    ); 
+    );
     $this -> tc_get_pre_posts_slides( wp_parse_args( $args, $defaults) );
   }
 

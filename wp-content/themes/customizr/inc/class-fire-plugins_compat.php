@@ -50,6 +50,7 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
       add_theme_support( 'optimize-press' );
       add_theme_support( 'sensei' );
       add_theme_support( 'visual-composer' );//or js-composer as they call it
+      add_theme_support( 'disqus' );
     }
 
 
@@ -116,6 +117,11 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
       /* Visual Composer */
       if ( current_theme_supports( 'visual-composer') && $this -> tc_is_plugin_active('js_composer/js_composer.php') )
         $this -> tc_set_vc_compat();
+
+      /* Disqus Comment System */
+      if ( current_theme_supports( 'disqus') && $this -> tc_is_plugin_active('disqus-comment-system/disqus.php') )
+        $this -> tc_set_disqus_compat();
+
     }//end of plugin compatibility function
 
 
@@ -471,7 +477,7 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
 
         return $sliders;
       }
-      //credits: @Srdja,
+      //credits: @Srdjan,
       function add_theme_options_filter() {
         add_filter( 'option_tc_theme_options', 'theme_options_filter', 99 );
       }
@@ -554,6 +560,7 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
         //credits @Srdjan
         // Filter slides in admin screens
         add_action( '__attachment_slider_infos', 'add_theme_options_filter', 9 );
+        add_action( '__post_slider_infos', 'add_theme_options_filter', 9 );
         // Update translated slide post meta
         add_action( 'edit_attachment', 'edit_attachment_action', 99 );
         // Pre-save hook
@@ -840,7 +847,10 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
                                                   break;
         }//end of switch on hook
       }//end of nested function
-
+      //Helper
+      function tc_wc_is_checkout_cart() {
+        return is_checkout() || is_cart() || defined('WOOCOMMERCE_CHECKOUT') || defined('WOOCOMMERCE_CART');
+      }
       // use Customizr title
       // initially used to display the edit button
       add_filter( 'the_title', 'tc_woocommerce_the_title' );
@@ -912,6 +922,175 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
       function tc_woocommerce_change_meta_boxes_priority($priority , $screen) {
          return ( 'product' == $screen ) ? 'default' : $priority ;
       }
+
+      //woocommerce options in the Customizer
+      //add new panel
+      add_filter( 'tc_add_panel_map', 'tc_woocommerce_popul_panel_map' );
+      function tc_woocommerce_popul_panel_map( $panel_map ) {
+        $tc_woocommerce_panel_map = array(
+            'tc-woocommerce-panel' => array(
+                  'priority'       => 50,
+                  'capability'     => 'edit_theme_options',
+                  'title'          => __( 'WooCommerce options' , 'customizr' ),
+                  'description'    => __( "WooCommerce settings for the Customizr theme." , 'customizr' )
+            )
+        );
+        return array_merge( $panel_map, $tc_woocommerce_panel_map );
+      }
+      //add new section
+      add_filter( 'tc_add_section_map', 'tc_woocommerce_popul_section_map' );
+      function tc_woocommerce_popul_section_map( $_sections ) {
+        $tc_woocommerce_section_map = array(
+            'tc_woocommerce_sec' => array(
+                  'title'          => __( 'Header Cart' , 'customizr' ),
+                  'priority'       => 50,
+                  'panel'          => 'tc-woocommerce-panel'
+            )
+        );
+        return array_merge( $_sections, $tc_woocommerce_section_map );
+      }
+      //end woocommerce options in the Customizer
+
+      /* rendering the cart icon in the header */
+      //narrow the tagline
+      add_filter( 'tc_tagline_class', 'tc_woocommerce_force_tagline_width', 100 );
+      function tc_woocommerce_force_tagline_width( $_class ) {
+        return 1 == esc_attr( TC_utils::$inst->tc_opt( 'tc_woocommerce_header_cart' ) ) ? 'span6' : $_class ;
+      }
+
+      //print the cart menu in the header
+      add_action( '__navbar', 'tc_woocommerce_header_cart', is_rtl() ? 9 : 19 );
+      function tc_woocommerce_header_cart() {
+        if ( 1 != esc_attr( TC_utils::$inst->tc_opt( 'tc_woocommerce_header_cart' ) ) )
+          return;
+
+        $_main_item_class = '';
+        $_cart_count      = WC()->cart->get_cart_contents_count();
+        //highlight the cart icon when in the Cart or Ceckout page
+        if ( tc_wc_is_checkout_cart() ) {
+          $_main_item_class = 'current-menu-item';
+        }
+
+       ?>
+       <div class="tc-wc-menu tc-open-on-hover span1">
+         <ul class="tc-wc-header-cart nav tc-hover-menu">
+           <li class="<?php echo esc_attr( $_main_item_class ); ?> menu-item">
+             <a class="cart-contents" href="<?php echo esc_url( WC()->cart->get_cart_url() ); ?>" title="<?php _e( 'View your shopping cart', 'customizr' ); ?>">
+             <?php if ( $_cart_count > 0 ) { //do not display cart count if there are no items 'cause atm wc doesn't update this with ajax (storefront), do we want to look into this??>
+               <span class="count btn-link"><?php echo $_cart_count; ?></span>
+             <?php } ?>
+            </a>
+            <?php
+            ?>
+            <?php if ( ! tc_wc_is_checkout_cart() ) : //do not display the dropdown in the cart or checkout page ?>
+              <ul class="dropdown-menu">
+               <li>
+                 <?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
+                </li>
+              </ul>
+            <?php endif; ?>
+           </li>
+          </ul>
+        </div>
+      <?php
+      }
+
+      add_filter('tc_user_options_style', 'tc_woocommerce_header_cart_css');
+      function tc_woocommerce_header_cart_css( $_css ) {
+        if ( 1 != esc_attr( TC_utils::$inst->tc_opt( 'tc_woocommerce_header_cart' ) ) )
+          return;
+        /* The only real decision I took here is the following:
+        * I let the "count" number possibily overflow the parent (span1) width
+        * so that as it grows it won't break on a new line. This is quite an hack to
+        * keep the cart space as small as possible (span1) and do not hurt the tagline too much (from span7 to span6). Also nobody will, allegedly, have more than 10^3 products in its cart
+        */
+        $_header_layout  = esc_attr( TC_utils::$inst->tc_opt( 'tc_header_layout') );
+        $_resp_pos_css   = 'right' == $_header_layout ? 'float: left;' : '';
+        $_wc_t_align     = 'left';
+        //dropdown top arrow, as we open the drodpdown on the right we have to move the top arrow accordingly
+        $_dd_top_arrow   = '.navbar .tc-wc-menu .nav > li > .dropdown-menu:before { right: 9px; left: auto;} .navbar .tc-wc-menu .nav > li > .dropdown-menu:after { right: 10px; left: auto; }';
+
+        //rtl custom css
+        if ( is_rtl() ) {
+          $_wc_t_align   = 'right';
+          $_dd_top_arrow = '';
+        }
+        return sprintf( "%s\n%s",
+              $_css,
+              ".sticky-enabled .tc-header .tc-wc-menu { display: none; }
+               .tc-header .tc-wc-menu .nav {
+                 text-align: right;
+               }
+               $_dd_top_arrow
+               .tc-header .tc-wc-menu .dropdown-menu {
+                  right: 0; left: auto; width: 250px; padding: 2px;
+               }
+               .tc-header .tc-wc-menu {
+                 float: right; clear:none; margin-top: 10px;
+               }
+               .tc-header .tc-wc-menu .nav > li {
+                 float:none;
+               }
+               .tc-wc-menu ul.dropdown-menu .buttons a,
+               .tc-wc-menu ul {
+                 width: 100%;
+                 -webkit-box-sizing: border-box;
+                 -moz-box-sizing: border-box;
+                 box-sizing: border-box;
+               }
+               .tc-wc-menu ul.dropdown-menu .buttons a {
+                 margin: 10px 5px 0 0px; text-align: center;
+               }
+               .tc-wc-menu .nav > li > a:before {
+                 content: '\\f447';
+                 font-family: 'genericons';
+                 speak:none; position:absolute;
+                 top:-.1em; font-size:1.8em; left: 0;
+               }
+               .tc-header .tc-wc-menu .nav > li > a {
+                 position: relative;
+                 padding-right: 0 !important;
+                 padding-left: 0 !important;
+                 display:inline-block;
+                 border-bottom: none;
+                 text-align: right;
+                 height: 1em;
+                 min-width:1.8em;
+               }
+               .tc-wc-menu .count {
+                 font-size: 0.7em;
+                 margin-left: 2.1em;
+                 pointer-events: none;
+               }
+               .tc-wc-menu .woocommerce.widget_shopping_cart li {
+                 padding: 0.5em;
+               }
+               .tc-header .tc-wc-menu .woocommerce.widget_shopping_cart p,
+               .tc-header .tc-wc-menu .woocommerce.widget_shopping_cart li {
+                 padding-right: 1em;
+                 padding-left: 1em;
+                 text-align: $_wc_t_align;
+                 font-size: inherit; font-family: inherit;
+               }
+               .tc-wc-menu .widget_shopping_cart .product_list_widget li a.remove {
+                 position: relative; float: left; top: auto; margin-right: 0.2em;
+               }
+               /* hack for the first letter issue */
+               .tc-wc-menu .count:before {
+                 content: '';
+               }
+               .tc-wc-menu .widget_shopping_cart .product_list_widget {
+                 max-height: 10em;
+                 overflow-y: auto;
+                 padding: 1em 0;
+               }
+               @media (max-width: 979px) {
+                .tc-wc-menu[class*=span] { width: auto; margin:18px 0 0 0; $_resp_pos_css }
+                .tc-wc-menu .dropdown-menu { display: none !important;}
+               }
+        ");
+      }
+      /*end rendering the cart icon in the header */
     }//end woocommerce compat
 
 
@@ -942,6 +1121,39 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
       }
     }//end woocommerce compat
 
+
+    /**
+    * Disqus Comment System compat hooks
+    *
+    * @package Customizr
+    * @since Customizr 3.4+
+    */
+    private function tc_set_disqus_compat() {
+      if ( ! function_exists( 'tc_disqus_comments_enabled' ) ) {
+        function tc_disqus_comments_enabled() {
+          return function_exists( 'dsq_is_installed' ) && function_exists( 'dsq_can_replace' )
+                 && dsq_is_installed() && dsq_can_replace();
+        }
+      }
+      //replace the default comment link anchor with a more descriptive disqus anchor
+      add_filter( 'tc_bubble_comment_anchor', 'tc_disqus_bubble_comment_anchor' );
+      function tc_disqus_bubble_comment_anchor( $anchor ) {
+        return tc_disqus_comments_enabled() ? '#tc-disqus-comments' : $anchor;
+      }
+      //wrap disqus comments template in a convenient div
+      add_action( 'tc_before_comments_template' , 'tc_disqus_comments_wrapper' );
+      add_action( 'tc_after_comments_template'  , 'tc_disqus_comments_wrapper' );
+      function tc_disqus_comments_wrapper() {
+        if ( ! tc_disqus_comments_enabled() )
+          return;
+
+        switch ( current_filter() ) {
+          case 'tc_before_comments_template' : echo '<div id="tc-disqus-comments">';
+                                               break;
+          case 'tc_after_comments_template'  : echo '</div>';
+        }
+      }
+    }//end woocommerce compat
 
     /**
     * CUSTOMIZR WRAPPERS

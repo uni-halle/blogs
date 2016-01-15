@@ -70,6 +70,7 @@ function generate_content_nav( $nav_id ) {
 		return;
 
 	$nav_class = ( is_single() ) ? 'post-navigation' : 'paging-navigation';
+	$category_specific = apply_filters( 'generate_category_post_navigation', false );
 
 	?>
 	<nav id="<?php echo esc_attr( $nav_id ); ?>" class="<?php echo $nav_class; ?>">
@@ -77,8 +78,8 @@ function generate_content_nav( $nav_id ) {
 
 	<?php if ( is_single() ) : // navigation links for single posts ?>
 
-		<?php previous_post_link( '<div class="nav-previous"><span class="prev" title="' . __('Previous','generate') . '">%link</span></div>', '%title' ); ?>
-		<?php next_post_link( '<div class="nav-next"><span class="next" title="' . __('Next','generate') . '">%link</span></div>', '%title' ); ?>
+		<?php previous_post_link( '<div class="nav-previous"><span class="prev" title="' . __('Previous','generate') . '">%link</span></div>', '%title', $category_specific ); ?>
+		<?php next_post_link( '<div class="nav-next"><span class="next" title="' . __('Next','generate') . '">%link</span></div>', '%title', $category_specific ); ?>
 
 	<?php elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : // navigation links for home, archive, and search pages ?>
 
@@ -108,7 +109,7 @@ if ( ! function_exists( 'generate_comment' ) ) :
  */
 function generate_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
-	$args['avatar_size'] = 50;
+	$args['avatar_size'] = apply_filters( 'generate_comment_avatar_size', 50 );
 
 	if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) : ?>
 

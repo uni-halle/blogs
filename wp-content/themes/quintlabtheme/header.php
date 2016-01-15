@@ -32,7 +32,8 @@
             </div>
             <div class='mlulogo'>
                 <a href='http://www.uni-halle.de/'>
-                    <img alt='' src='<?php echo QL_BASE; ?>img/logo_mlu.png'>
+                    Martin-Luther-Universität<br/>
+                    Halle-Wittenberg
                 </a>
             </div>
         </header>
