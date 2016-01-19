@@ -3,7 +3,7 @@
 <div class="tile loop-entry thumb <?php foreach( get_the_category() as $cat ) { echo $cat->slug . '  '; } ?>
 post<?php the_ID();?>
 ">
-<a href="<?php the_permalink(' ') ?>" title="<?php the_title(); ?>">
+<a href="<?php the_permalink(/*' '*/) ?>" title="<?php the_title(); ?>">
         <div class="loop-entry-thumbnail">
             <?php the_post_thumbnail('thumbnail'); ?>
         </div>
@@ -20,7 +20,7 @@ post<?php the_ID();?>
 <div class="tile loop-entry <?php foreach( get_the_category() as $cat ) { echo $cat->slug . '  '; } ?>
 post<?php the_ID();?>
 ">
-<a href="<?php the_permalink(' ') ?>" title="<?php the_title(); ?>">
+<a href="<?php the_permalink(/*' '*/) ?>" title="<?php the_title(); ?>">
     	<h2 class="text-header"><?php the_title(); ?></h2>
     	<p class="text3"><?php  echo excerpt('15'); ?></p>
     <!-- END loop-entry-details -->  
