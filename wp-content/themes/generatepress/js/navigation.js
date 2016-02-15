@@ -7,18 +7,12 @@
 	$.fn.GenerateMobileMenu = function( options ) {
 		// Set the default settings
 		var settings = $.extend({
-			menu: '.main-navigation',
-			dropdown_toggle: true
+			menu: '.main-navigation'
 		}, options );
 		
 		// Bail if our menu doesn't exist
 		if ( ! $( settings.menu ).length ) {
 			return;
-		}
-		
-		// Add dropdown toggle that display child menu items.
-		if ( settings.dropdown_toggle ) {
-			$( settings.menu + ' .menu-item-has-children > a' ).after( '<a href="#" class="dropdown-toggle" aria-expanded="false"><i class="fa fa-caret-down"></i></a>' );
 		}
 		
 		// Open the mobile menu
@@ -39,12 +33,18 @@ jQuery( document ).ready( function( $ ) {
 	$( '#site-navigation .menu-toggle' ).GenerateMobileMenu();
 	
 	// Build the mobile button that displays the dropdown menu
-	$( document ).on( 'click', 'nav .dropdown-toggle', function( e ) {
+	$( document ).on( 'click', 'nav .dropdown-menu-toggle', function( e ) {
 		e.preventDefault();
-		$( this ).toggleClass( 'toggle-on' );
-		$( this ).next( '.children, .sub-menu' ).toggleClass( 'toggled-on' );
-		$( this ).attr( 'aria-expanded', $( this ).attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
-		$( this ).html( $( this ).html() === '<i class="fa fa-caret-down"></i>' ? '<i class="fa fa-caret-up"></i>' : '<i class="fa fa-caret-down"></i>' );
+		// Get the clicked element
+		var _this = $( this );
+		var mobile = $( '.menu-toggle' );
+		var slideout = $( '.slideout-navigation' );
+		
+		if ( mobile.is( ':visible' ) || 'visible' == slideout.css( 'visibility' ) ) {
+			_this.closest( 'li' ).toggleClass( 'sfHover' );
+			_this.parent().next( '.children, .sub-menu' ).toggleClass( 'toggled-on' );
+			_this.attr( 'aria-expanded', $( this ).attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
+		}
 		return false;
 	});
 });

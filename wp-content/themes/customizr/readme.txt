@@ -40,6 +40,35 @@ The exceptions to this license are as follows:
 
 
 #######################  Changelog ######################
+= 3.4.18 January 30th 2016 =
+* Updated Italian translation plus a typo
+* Add: new option - display woocommerce cart in the header when sticky fixes #499
+* Fix: fix grid not considering custom max height in left sidebar layout
+* Fix: fix smartloaded img not correctly displayed in some browsers fixes #534
+* Fix: fix slider link with QTranslate X in pre-path mode thanks to @justinbb fixes #531
+* Fix: fix broken link to the header's navigation doc
+* Fix: fix broken links to theme's faq
+* Fix: fix broken links to the slider docs
+* Fix: fix broken links to the docs in class-fire-utils
+* Fix: fix grid expanded post edit link not reachable fixes #286
+* Fix: refine alignment when tagline not shown
+
+= 3.4.17 January 23rd 2016 =
+* Add: a few translation tr_TR thanks to @ghost
+* Add : Indonesian translation. Thanks to Rio Bermano
+* Fix : some Swedish translation strings. Thanks to Mia Oberg.
+* Fix: fix post-metas hierarchical tax check when building button class
+* Fix: prefer mysqli api to the mysql ones (deprecated) in sys-info fixes #508
+* Fix: amend wrong documentation link in sidebar widget placeholder fixes #502
+* Fix: fix jetpack's photon - theme smartload compatibility issue 
+* Fix: fix btt-arrow and scroll-down issue Also use more descriptive variable names. fixes #477
+* Fix: fix disabling wc-header-cart to reset tc_user_options_style
+* Fix: avoid smartload conflict with buddypress setting avatar img fixes #467 a)
+* Fix: better html comments fix rare cases when some html comments were considered as server's directives. fixes #470
+* Fix: skip URIS images among imgs to smartload fixes #463
+* Fix: smarload preg callback - reverse strpos param order
+* Fix: apply border bottom only to theme sidebars widget list item
+
 = 3.4.16 December 10th 2015 =
 * Added: WooCommerce cart in the header
 * Added: Turkish (tr_TR) translation files

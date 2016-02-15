@@ -51,21 +51,22 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
       add_theme_support( 'sensei' );
       add_theme_support( 'visual-composer' );//or js-composer as they call it
       add_theme_support( 'disqus' );
+      add_theme_support( 'uris' );
     }
 
 
 
     /**
-    * This function handles the following plugins compatibility : Jetpack (for the carousel addon), Bbpress, Qtranslate, Woocommerce
+    * This function handles the following plugins compatibility : Jetpack (for the carousel addon and photon), Bbpress, Qtranslate, Woocommerce
     *
     * @package Customizr
     * @since Customizr 3.0.15
     */
     function tc_plugins_compatibility() {
       /* JETPACK */
-      //adds compatibilty with the jetpack image carousel
+      //adds compatibilty with the jetpack image carousel and photon
       if ( current_theme_supports( 'jetpack' ) && $this -> tc_is_plugin_active('jetpack/jetpack.php') )
-        add_filter( 'tc_gallery_bool', '__return_false' );
+        $this -> tc_set_jetpack_compat();
 
       /* BBPRESS */
       //if bbpress is installed and activated, we can check the existence of the contextual boolean function is_bbpress() to execute some code
@@ -121,8 +122,45 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
       /* Disqus Comment System */
       if ( current_theme_supports( 'disqus') && $this -> tc_is_plugin_active('disqus-comment-system/disqus.php') )
         $this -> tc_set_disqus_compat();
-
+ 
+      /* Ultimate Responsive Image Slider  */
+      if ( current_theme_supports( 'uris' ) && $this -> tc_is_plugin_active('ultimate-responsive-image-slider/ultimate-responsive-image-slider.php') )
+        $this -> tc_set_uris_compat();
     }//end of plugin compatibility function
+
+
+
+    /**
+    * Jetpack compat hooks
+    *
+    * @package Customizr
+    * @since Customizr 3.4+
+    */
+    private function tc_set_jetpack_compat() {
+      //jetpack image carousel 
+      //this filter doesn't exist anymore it has been replaced by
+      //tc_is_gallery_enabled
+      //I think we can remove the following compatibility as everything seems to work (considering that it doesn't do anything atm)
+      //and we haven't received any complain
+      //Also we now have a whole gallery section of settings and we coul redirect users there to fine tune it
+      add_filter( 'tc_gallery_bool', '__return_false' ); 
+
+      //Photon jetpack's module conflicts with our smartload feature:
+      //Photon removes the width,height attribute in php, then in js it compute them (when they have the special attribute 'data-recalc-dims') 
+      //based on the img src. When smartload is enabled the images parsed by its js which are not already smartloaded are dummy
+      //and their width=height is 1. The image is correctly loaded but the space
+      //assigned to it will be 1x1px. Photon js, is compatible with Auttomatic plugin lazy load and it sets the width/height
+      //attribute only when the img is smartloaded. This is pretty useless to me, as it doesn't solve the main issue:
+      //document's height change when the img are smartloaded.
+      //Anyway to avoid the 1x1 issue we alter the img attribute (data-recalc-dims) which photon adds to the img tag(php) so
+      //the width/height will not be erronously recalculated
+      if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'photon' ) )
+        add_filter( 'tc_img_smartloaded', 'tc_jp_smartload_img');
+      function tc_jp_smartload_img( $img ) {
+        return str_replace( 'data-recalc-dims', 'data-tcjp-recalc-dims', $img );    
+      }    
+    }//end jetpack compat
+
 
 
 
@@ -184,6 +222,21 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
       add_filter( 'tc_are_comments_enabled', 'tc_buddypress_disable_comments' );
       function tc_buddypress_disable_comments($bool){
         return ( is_page() && function_exists('is_buddypress') && is_buddypress() ) ? false : $bool;
+      }
+      //disable smartload in change-avatar buddypress profile page
+      //to avoid the img tag (in a template loaded with backbone) being parsed on server side but
+      //not correctly processed by the front js.
+      //the action hook "xprofile_screen_change_avatar" is a buddypress specific hook
+      //fired before wp_head where we hook tc_parse_imgs
+      //side-effect: all the images in this pages will not be smartloaded, this isn't a big deal
+      //as there should be at maximum 2 images there:
+      //1) the avatar, if already set
+      //2) a cover image, if already set
+      //anyways this page is not a regular "front" page as it pertains more to a "backend" side
+      //if we can call it that way.
+      add_action( 'xprofile_screen_change_avatar', 'tc_buddypress_maybe_disable_img_smartload' );
+      function tc_buddypress_maybe_disable_img_smartload() {
+        add_filter( 'tc_opt_tc_img_smart_load', '__return_false' );
       }
     }
 
@@ -995,32 +1048,44 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
       <?php
       }
 
+      //add woommerce header cart classes to the header (sticky enabled)
+      add_filter( 'tc_header_classes'   , 'tc_woocommerce_set_header_classes');
+      function tc_woocommerce_set_header_classes( $_classes ) {
+        if ( 1 == esc_attr( TC_utils::$inst->tc_opt( 'tc_woocommerce_header_cart' ) ) )  
+          $_classes[]          = ( 1 != esc_attr( TC_utils::$inst->tc_opt( 'tc_woocommerce_header_cart_sticky' ) ) ) ? 'tc-wccart-off' : 'tc-wccart-on';
+        return $_classes;
+      }
+
+      //add woocommerce header cart CSS
       add_filter('tc_user_options_style', 'tc_woocommerce_header_cart_css');
       function tc_woocommerce_header_cart_css( $_css ) {
         if ( 1 != esc_attr( TC_utils::$inst->tc_opt( 'tc_woocommerce_header_cart' ) ) )
-          return;
+          return $_css;
+
         /* The only real decision I took here is the following:
         * I let the "count" number possibily overflow the parent (span1) width
         * so that as it grows it won't break on a new line. This is quite an hack to
         * keep the cart space as small as possible (span1) and do not hurt the tagline too much (from span7 to span6). Also nobody will, allegedly, have more than 10^3 products in its cart
         */
-        $_header_layout  = esc_attr( TC_utils::$inst->tc_opt( 'tc_header_layout') );
-        $_resp_pos_css   = 'right' == $_header_layout ? 'float: left;' : '';
-        $_wc_t_align     = 'left';
+        $_header_layout      = esc_attr( TC_utils::$inst->tc_opt( 'tc_header_layout') );
+        $_resp_pos_css       = 'right' == $_header_layout ? 'float: left;' : '';
+        $_wc_t_align         = 'left';
+
         //dropdown top arrow, as we open the drodpdown on the right we have to move the top arrow accordingly
-        $_dd_top_arrow   = '.navbar .tc-wc-menu .nav > li > .dropdown-menu:before { right: 9px; left: auto;} .navbar .tc-wc-menu .nav > li > .dropdown-menu:after { right: 10px; left: auto; }';
+        $_dd_top_arrow       = '.navbar .tc-wc-menu .nav > li > .dropdown-menu:before { right: 9px; left: auto;} .navbar .tc-wc-menu .nav > li > .dropdown-menu:after { right: 10px; left: auto; }';
 
         //rtl custom css
         if ( is_rtl() ) {
-          $_wc_t_align   = 'right';
-          $_dd_top_arrow = '';
+          $_wc_t_align       = 'right';
+          $_dd_top_arrow     = '';
         }
+
         return sprintf( "%s\n%s",
               $_css,
-              ".sticky-enabled .tc-header .tc-wc-menu { display: none; }
-               .tc-header .tc-wc-menu .nav {
-                 text-align: right;
-               }
+              ".sticky-enabled .tc-header.tc-wccart-off .tc-wc-menu { display: none; }
+               .sticky-enabled .tc-tagline-off.tc-wccart-on .tc-wc-menu { margin-left: 0; margin-top: 11px; }
+               .sticky-enabled .tc-tagline-off.tc-wccart-on .btn-toggle-nav { margin-top: 5px; }
+               .tc-header .tc-wc-menu .nav { text-align: right; }
                $_dd_top_arrow
                .tc-header .tc-wc-menu .dropdown-menu {
                   right: 0; left: auto; width: 250px; padding: 2px;
@@ -1045,7 +1110,7 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
                  content: '\\f447';
                  font-family: 'genericons';
                  speak:none; position:absolute;
-                 top:-.1em; font-size:1.8em; left: 0;
+                 top:-.12em; font-size:1.7em; left: 0;
                }
                .tc-header .tc-wc-menu .nav > li > a {
                  position: relative;
@@ -1085,9 +1150,10 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
                  padding: 1em 0;
                }
                @media (max-width: 979px) {
-                .tc-wc-menu[class*=span] { width: auto; margin:18px 0 0 0; $_resp_pos_css }
+                .tc-wc-menu[class*=span] { width: auto; margin:17px 0 0 0; $_resp_pos_css }
                 .tc-wc-menu .dropdown-menu { display: none !important;}
-               }
+              }
+              @media (max-width: 767px) { .sticky-enabled .tc-wccart-on .brand { width: 50%;} }
         ");
       }
       /*end rendering the cart icon in the header */
@@ -1153,7 +1219,34 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
           case 'tc_after_comments_template'  : echo '</div>';
         }
       }
-    }//end woocommerce compat
+    }//end disqus compat
+
+
+    /**
+    * Ultimate Responsive Image Slider compat hooks
+    *
+    * @package Customizr
+    * @since Customizr 3.4+
+    */
+    private function tc_set_uris_compat() {
+      add_filter ( 'tc_img_smart_load_options', 'tc_uris_disable_img_smartload' ) ;
+      function tc_uris_disable_img_smartload( $options ){
+        if ( ! is_array( $options ) )
+          $options = array();
+        
+        if ( ! is_array( $options['opts'] ) )
+          $options['opts'] = array();
+
+        if ( ! is_array( $options['opts']['excludeImg'] ) )
+          $options['opts']['excludeImg'] = array();
+
+        $options['opts']['excludeImg'][] = '.sp-image';
+
+        return $options;
+      }
+    }//end uris compat
+
+
 
     /**
     * CUSTOMIZR WRAPPERS
@@ -1193,7 +1286,7 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
 
         <?php do_action( '__after_main_container' ); ?>
 
-      </div><!--#main-wrapper"-->
+      </div><!-- //#main-wrapper -->
       <?php
     }
 

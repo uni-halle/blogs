@@ -48,21 +48,57 @@
                             <ul class="medium-block-grid-3">
                             <?php while( $latestposts->have_posts() ) : $latestposts->the_post(); ?>
                                 <li id="post-<?php the_ID(); ?>" class="media">
-                                    <?php if( has_post_thumbnail() ) : ?>
+                                    <?php if(in_category(array('pictures', 'press'))) : ?>
                                         <div class="thumbnail">
                                             <a href="<?php the_permalink(); ?>"
                                                title="<?php sprintf( _e( 'More about ', 'muhlenbergcenter' ), the_title() ); ?>">
-                                                <?php the_post_thumbnail( array(285,180) ); ?>
+                                                <?php if( has_post_thumbnail() ) : ?>
+                                                        <?php the_post_thumbnail( array(285,180) ); ?>
+                                                <?php elseif(in_category('press')) : ?>
+                                                        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/teaser_press.jpg" alt="teaser image" />
+                                                <?php elseif(in_category('pictures')) : ?>
+                                                        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/teaser_pictures.jpg" alt="teaser image" />
+                                                <?php endif; ?>
                                             </a>
                                         </div>
-                                    <?php /*else :
-                                        echo '<div class="flex-video">' . get_the_content() . '</div>';*/
-                                    endif; ?>
+                                    <?php else : ?>
+                                        <?php 
+                                            /*
+                                               Check if custom field 'Video-ID' is used
+                                               if true return content
+                                            */
+                                            $youtube = get_post_meta(get_the_ID(), 'Video-ID', true);
+                                            if (!empty($youtube)) :
+                                        ?>
+                                        <div class="thumbnail">
+                                            <div class="flex-video">
+                                                <iframe src="https://www.youtube-nocookie.com/embed/<?php echo $youtube ?>?rel=0"
+                                                        class="video-player"
+                                                        allowfullscreen>
+                                                </iframe>
+                                            </div>
+                                       </div>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                    <p class="meta-info">
+                                        <span class="meta-info__category">
+                                        <?php $categories = get_the_category();
+                                        if ( ! empty( $categories ) ) {
+                                            echo esc_html( $categories[0]->name );   
+                                        }
+                                        ?>
+                                        </span> |
+                                        <span class="meta-info__date"><?php the_date(); ?></span>
+                                    </p>
                                     <p>
+                                        <?php if(in_category('videos')) : ?>
+                                            <?= the_title(); ?>
+                                        <?php else : ?>
                                         <a href="<?php the_permalink(); ?>"
                                            title="<?php sprintf( _e( 'More about ', 'muhlenbergcenter' ), the_title() ); ?>">
-                                            <?php the_date(); ?>: <?php the_title(); ?>
+                                            <?php the_title(); ?>
                                         </a>
+                                        <?php endif; ?>
                                     </p>
                                 </li>
                             <?php endwhile; ?>
@@ -109,6 +145,41 @@
 
                 <div class="medium-8  columns">
                     <?php the_content(); ?>
+                </div>
+            </div>
+
+        <?php elseif ( is_page( 'event-archive' ) ) : /* contents of the event archive */ ?>
+
+            <div class="row">
+                <div class="small-12  columns">
+                    <?php
+                        echo do_shortcode(
+                            '[events_list_grouped mode="yearly" scope="past"]
+                                <div class="row event-item">
+                                    {has_image}
+                                    <div class="medium-4 columns">
+                                        <a href="#_EVENTURL" title="More about #_EVENTNAME">
+                                            #_EVENTIMAGE
+                                        </a>
+                                    </div>
+                                    {/has_image}
+                                    {no_image}
+                                    <div class="medium-4 columns">
+                                        <a href="#_EVENTURL" title="More about #_EVENTNAME">
+                                            #_CATEGORYIMAGE
+                                        </a>
+                                    </div>
+                                    {/no_image}
+                                    <div class="medium-8 columns">
+                                        <p class="event-item__date">#_EVENTDATES</p>
+                                        <p class="event-item__category">#_CATEGORYNAME</p>
+                                        <h2 class="event-item__title">#_EVENTLINK</h2>
+                                        <div class="event-item__consultant">#_ATT{consultant_name}</div>
+                                    </div>
+                                </div>
+                            [/events_list_grouped]'
+                        );
+                    ?>
                 </div>
             </div>
 

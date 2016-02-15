@@ -65,13 +65,8 @@ if ( ! function_exists( 'catchbox_header_menu' ) ) :
  * @since Catch Box 2.5
  */
 function catchbox_header_menu() { ?>
-    <nav id="access" role="navigation">
+    <nav id="access" class="main-navigation menu-focus" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'catch-box' ); ?>">
         <h3 class="assistive-text"><?php _e( 'Primary menu', 'catch-box' ); ?></h3>
-        <?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
-        <div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'catch-box' ); ?>"><?php _e( 'Skip to primary content', 'catch-box' ); ?></a></div>
-        <div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 'catch-box' ); ?>"><?php _e( 'Skip to secondary content', 'catch-box' ); ?></a></div>
-        <?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assiged to the primary position is the one used. If none is assigned, the menu with the lowest ID is used. */ ?>
-    
         <?php
             if ( has_nav_menu( 'primary', 'catch-box' ) ) { 
                 $args = array(
@@ -93,16 +88,13 @@ function catchbox_header_menu() { ?>
         // Check is footer menu is enable or not
         $options = catchbox_get_theme_options();
         if ( !empty ($options ['enable_menus'] ) ) :
-            $menuclass = "mobile-enable";
+            $menuclass = "menu-focus mobile-enable";
         else :
-            $menuclass = "mobile-disable";
+            $menuclass = "menu-focus mobile-disable";
         endif;
         ?>
-        <nav id="access-secondary" class="<?php echo $menuclass; ?>"  role="navigation">
+        <nav id="access-secondary" class="<?php echo $menuclass; ?>"  role="navigation" aria-label="<?php esc_attr_e( 'Secondary Menu', 'catch-box' ); ?>">
             <h3 class="assistive-text"><?php _e( 'Secondary menu', 'catch-box' ); ?></h3>
-                <?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
-                <div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'catch-box' ); ?>"><?php _e( 'Skip to primary content', 'catch-box' ); ?></a></div>
-                <div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 'catch-box' ); ?>"><?php _e( 'Skip to secondary content', 'catch-box' ); ?></a></div>
             <?php wp_nav_menu( array( 'theme_location'  => 'secondary', 'container_class' => 'menu-secondary-container' ) );  ?>
         </nav>
     <?php }
@@ -129,7 +121,7 @@ function catchbox_footer_menu_display() {
             $menuclass = "mobile-disable";
         endif;
         ?>
-        <nav id="access-footer" class="<?php echo $menuclass; ?>" role="navigation">
+        <nav id="access-footer" class="<?php echo $menuclass; ?>" role="navigation" aria-label="<?php esc_attr_e( 'Footer Menu', 'catch-box' ); ?>">
             <h3 class="assistive-text"><?php _e( 'Footer menu', 'catch-box' ); ?></h3>
             <?php wp_nav_menu( array( 'theme_location'  => 'footer', 'container_class' => 'menu-footer-container', 'depth' => 1 ) );  ?>
         </nav>
@@ -142,67 +134,14 @@ endif; //catchbox_footer_menu_display
 add_action( 'catchbox_footer_menu', 'catchbox_footer_menu_display', 10 ); 
 
 
-if ( ! function_exists( 'catchbox_mobile_menus' ) ) :
+if ( ! function_exists( 'catchbox_mobile_header_menu' ) ) :
 /**
- * This function loads Mobile Menus
- *
- * @get the data value from theme options
- * @uses catchbox_after action to add the code in the footer
- */
-function catchbox_mobile_menus() {
-    //Getting Ready to load options data
-    $options = catchbox_get_theme_options();
-    
-    echo '<nav id="mobile-header-left-nav" class="mobile-menu" role="navigation">';
-        if ( has_nav_menu( 'primary' ) ) :
-            $args = array(
-                'theme_location'    => 'primary',
-                'container'         => false,
-                'items_wrap'        => '<ul id="header-left-nav" class="menu">%3$s</ul>'
-            );
-            wp_nav_menu( $args );
-        else :
-            wp_page_menu( array( 'menu_class'  => 'menu' ) );
-        endif;
-    echo '</nav><!-- #mobile-header-left-nav -->';
-
-    if ( ( !empty ( $options ['enable_menus'] ) &&  has_nav_menu( 'secondary' ) ) ) :
-        echo '<nav id="mobile-header-right-nav" class="mobile-menu" role="navigation">';
-            $args = array(
-                'theme_location'    => 'secondary',
-                'container'         => false,
-                'items_wrap'        => '<ul id="header-right-nav" class="menu">%3$s</ul>'
-            );
-            wp_nav_menu( $args );
-        echo '</nav><!-- #mobile-header-right-nav -->';
-    endif;
-
-    // Check Footer Menu
-    if ( ( !empty ( $options ['enable_menus'] ) && has_nav_menu( 'footer' ) ) ) :
-        echo '<nav id="mobile-footer-nav" class="mobile-menu" role="navigation">';
-            $args = array(
-                'theme_location'    => 'footer',
-                'container'         => false,
-                'items_wrap'        => '<ul id="footer-nav" class="menu">%3$s</ul>'
-            );
-            wp_nav_menu( $args );
-        echo '</nav><!-- #mobile-footer-nav -->';
-    endif;
-
-}
-endif; //catchbox_mobile_menus
-
-add_action( 'catchbox_after', 'catchbox_mobile_menus', 20 );
-
-
-if ( ! function_exists( 'catchbox_mobile_header_nav_anchor' ) ) :
-/**
- * This function loads Mobile Menus Anchor in Header Section
+ * This function loads Mobile Menus in Header Section
  *
  * @get the data value from theme options
  * @uses catchbox_after_headercontent action to add in the Header
  */
-function catchbox_mobile_header_nav_anchor() {
+function catchbox_mobile_header_menu() {
     //Getting Ready to load options data
     $options = catchbox_get_theme_options();
 
@@ -221,6 +160,20 @@ function catchbox_mobile_header_nav_anchor() {
             </a>
         </div><!-- #mobile-header-menu -->
 
+        <nav id="mobile-header-left-nav" class="mobile-menu"  role="navigation" aria-label="<?php esc_attr_e( 'Primary Mobile Menu', 'catch-box' ); ?>">
+            <?php if ( has_nav_menu( 'primary' ) ) :
+                $args = array(
+                    'theme_location'    => 'primary',
+                    'container'         => false,
+                    'items_wrap'        => '<ul id="header-left-nav" class="menu">%3$s</ul>'
+                );
+                wp_nav_menu( $args );
+            else :
+                wp_page_menu( array( 'menu_class'  => 'menu' ) );
+            endif; ?>
+        </nav><!-- #mobile-header-left-nav -->
+
+
         <?php
         if ( ( !empty ( $options ['enable_menus'] ) &&  has_nav_menu( 'secondary' ) ) ) {
             $classes = "mobile-menu-anchor secondary-menu";
@@ -234,23 +187,36 @@ function catchbox_mobile_header_nav_anchor() {
                 <span class="mobile-menu-text"><?php _e( 'Secondary Menu', 'catch-box' );?></span>
             </a>
         </div><!-- #mobile-header-menu -->
+
+        <?php if ( ( !empty ( $options ['enable_menus'] ) &&  has_nav_menu( 'secondary' ) ) ) : ?>
+            <nav id="mobile-header-right-nav" class="mobile-menu"  role="navigation" aria-label="<?php esc_attr_e( 'Secondary Mobile Menu', 'catch-box' ); ?>">
+                <?php
+                    $args = array(
+                        'theme_location'    => 'secondary',
+                        'container'         => false,
+                        'items_wrap'        => '<ul id="header-right-nav" class="menu">%3$s</ul>'
+                    );
+                    wp_nav_menu( $args ); 
+                ?>
+            </nav><!-- #mobile-header-right-nav -->
+        <?php endif; ?>
     </div><!-- .menu-access-wrap -->   
 
     <?php    
 }
-endif; //catchbox_mobile_header_nav_anchor  
+endif; //catchbox_mobile_header_menu  
   
-add_action( 'catchbox_after_headercontent', 'catchbox_mobile_header_nav_anchor', 20 );
+add_action( 'catchbox_after_headercontent', 'catchbox_mobile_header_menu', 20 );
 
 
-if ( ! function_exists( 'catchbox_mobile_footer_nav_anchor' ) ) :
+if ( ! function_exists( 'catchbox_mobile_footer_menu' ) ) :
 /**
- * This function loads Mobile Menus Anchor in Footer Section
+ * This function loads Footer Mobile Menus in Footer Section
  *
  * @get the data value from theme options
  * @uses catchbox_footer_menu action to add in the Header
  */
-function catchbox_mobile_footer_nav_anchor() {
+function catchbox_mobile_footer_menu() {
     //Getting Ready to load options data
     $options = catchbox_get_theme_options();
 
@@ -261,10 +227,20 @@ function catchbox_mobile_footer_nav_anchor() {
                     <span class="mobile-menu-text"><?php _e( 'Footer Menu', 'catch-box' );?></span>
                 </a>
             </div><!-- #mobile-footer-menu -->
+            <?php 
+                echo '<nav id="mobile-footer-nav" class="mobile-menu" role="navigation" aria-label="' . esc_attr__( 'Secondary Mobile Menu', 'catch-box' ) . '">';
+                    $args = array(
+                        'theme_location'    => 'footer',
+                        'container'         => false,
+                        'items_wrap'        => '<ul id="footer-nav" class="menu">%3$s</ul>'
+                    );
+                    wp_nav_menu( $args );
+                echo '</nav><!-- #mobile-footer-nav -->';
+            ?>
         </div><!-- .menu-access-wrap -->  
         <?php  
     }  
 }
-endif; //catchbox_mobile_footer_nav_anchor 
+endif; //catchbox_mobile_footer_menu 
 
-add_action( 'catchbox_footer_menu', 'catchbox_mobile_footer_nav_anchor', 20 );
+add_action( 'catchbox_footer_menu', 'catchbox_mobile_footer_menu', 20 );

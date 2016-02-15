@@ -5,7 +5,7 @@
  * @package GeneratePress
  */
 	
-define( 'GENERATE_VERSION', '1.3.23');
+define( 'GENERATE_VERSION', '1.3.27');
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 
@@ -101,6 +101,7 @@ function generate_get_defaults()
 		'header_alignment_setting' => 'left',
 		'nav_layout_setting' => 'fluid-nav',
 		'nav_position_setting' => 'nav-below-header',
+		'nav_dropdown_type' => 'hover',
 		'nav_search' => 'disable',
 		'content_layout_setting' => 'separate-containers',
 		'layout_setting' => 'right-sidebar',
@@ -109,6 +110,7 @@ function generate_get_defaults()
 		'post_content' => 'full',
 		'footer_layout_setting' => 'fluid-footer',
 		'footer_widget_setting' => '3',
+		'back_to_top' => '',
 		'background_color' => '#efefef',
 		'text_color' => '#3a3a3a',
 		'link_color' => '#1e73be',
@@ -258,10 +260,19 @@ function generate_scripts()
 	// JS
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'generate-navigation', get_template_directory_uri() . '/js/navigation.min.js', array( 'jquery' ), GENERATE_VERSION, true );
-	wp_enqueue_script( 'generate-dropdown', get_template_directory_uri() . '/js/dropdown.min.js', array( 'jquery' ), GENERATE_VERSION, true );
-
+	
+	if ( 'click' == $generate_settings[ 'nav_dropdown_type' ] || 'click-arrow' == $generate_settings[ 'nav_dropdown_type' ] ) {
+		wp_enqueue_script( 'generate-dropdown-click', get_template_directory_uri() . '/js/dropdown-click.min.js', array( 'jquery' ), GENERATE_VERSION, true );
+	} else {
+		wp_enqueue_script( 'generate-dropdown', get_template_directory_uri() . '/js/dropdown.min.js', array( 'jquery' ), GENERATE_VERSION, true );
+	}
+	
 	if ( 'enable' == $generate_settings['nav_search'] ) {
 		wp_enqueue_script( 'generate-navigation-search', get_template_directory_uri() . '/js/navigation-search.min.js', array('jquery'), GENERATE_VERSION, true );
+	}
+	
+	if ( 'enable' == $generate_settings['back_to_top'] ) {
+		wp_enqueue_script( 'generate-back-to-top', get_template_directory_uri() . '/js/back-to-top.min.js', array('jquery'), GENERATE_VERSION, true );
 	}
 	
 	if ( 'nav-left-sidebar' == $generate_settings['nav_position_setting'] || 'nav-right-sidebar' == $generate_settings['nav_position_setting'] ) {
@@ -395,7 +406,7 @@ add_action('generate_copyright_line','generate_add_login_attribution');
 function generate_add_login_attribution()
 {
 	?>
-	&#x000B7; <a href="<?php echo esc_url('http://generatepress.com');?>" target="_blank" title="<?php _e('GeneratePress','generate');?>" itemprop="url"><?php _e('GeneratePress','generate');?></a> &#x000B7; <a href="http://wordpress.org" target="_blank" title="<?php _e('Proudly powered by WordPress','generate');?>"><?php _e('WordPress','generate');?></a>
+	&#x000B7; <a href="<?php echo esc_url('https://generatepress.com');?>" target="_blank" title="<?php _e('GeneratePress','generate');?>" itemprop="url"><?php _e('GeneratePress','generate');?></a>
 	<?php
 }
 

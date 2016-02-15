@@ -1,10 +1,64 @@
-== Changelog ==
+== Change log ==
+
+Version 4.3.3
+* Bug Fixed: Accessibility
+** Fixed: Keyboard navigation for Pagination
+** Fixed: Contrast for calendar widget and comments link
+* Fixed German, Russian, French, Portuguese(Brazil) and Danish translation
+
+Version 4.3.2
+* Added accessibility-ready tag
+* Bug Fixed: Accessibility
+** Fixed: Headings
+** Fixed: Contrasts
+** Fixed: Keyboard navigation
+** Fixed: Disallowed by removing `targer="_blank"` 
+* Added: Disable scrollup option
+
+Version 4.3.1
+* Bug Fixed: Comment form style issue ( Reported by James W D )
+* Updated: Sidr menu script to version 2.1.0
+
+Version 4.3
+* Added: Meetup social icon
+* Bug Fixed: Continue Reading - Text domain issue (content-aside.php and functions.php) (Reported by jie66)
+* Bug Fixed: Gallery images styles (Reported by Petr Sabata)
+* Replaced: Twitter old social icon with the new one
+
+Version 4.2.1
+* Fixed: Continue Reading - Text domain issue (Reported by jie66)
+
+Version 4.2
+* Added Accessibility support
+** Fixed: Headings
+** Fixed: ARIA Landmark Roles
+** Fixed: Linked Text
+** Fixed: Controls
+** Fixed: Keyboard Navigation
+** Fixed: Contrasts
+** Fixed: Skip Links
+** Fixed: Forms
+** Fixed: Images
+** Checked: Media
+** Checked: Not Allowed
+** Replaced catchbox_mobile_header_nav_anchor() with catchbox_mobile_header_menu() 
+** Replaced catchbox_mobile_footer_nav_anchor() with catchbox_mobile_footer_menu()
+** Moved header mobile menus from catchbox_mobile_menus() to catchbox_mobile_header_menu() 
+** Moved footer mobile menu from catchbox_mobile_menus() to catchbox_mobile_footer_menu() 
+* Bug Fixed: Slider next and previous anchor issue (Reported by Keith)
+* Bug Fixed: Text in Customizer Label "Slider Effect Options" extra tab
+* Bug Fixed: Image size issue in mobile devices due to padding and border ( Reported by mailhunter )
+* Compatibility fixed: Customizer Reset option not working when returning any value in WordPress 4.4
+* Removed: pngfix.js and pngfix.min.js  no longer needed to support png issue in IE6
+* Updated: html5.js
+* Updated: Genericons to 3.4.1
+* Updated: screenshot
 
 Version 4.1
 * Added text-domain in style.css file
 * Added screen-reader-text css class to support Accessibility
 * Bug Fixed: Mobile menu color schemes and line height
-* Bug Fixed: Incorrect links fixed in Customizer Important Links 
+* Bug Fixed: Incorrect links fixed in Customizer Important Links
 * Updated: French translation fr_FR.po and fr_FR.mo
 
 Version 4.0
@@ -14,8 +68,8 @@ Version 4.0
 * Bug Fixed: Disabling Featured Post slider issue (Reported by mrdave43)
 * Bug Fixed: Customizer Dropdown type saving issue
 * Removed old scripts
-** catchbox-allmenu-min.js and catchbox-allmenu.js 
-** catchbox-menu-min.js and catchbox-menu.js 
+** catchbox-allmenu-min.js and catchbox-allmenu.js
+** catchbox-menu-min.js and catchbox-menu.js
 
 Version 3.9
 * Added Lithuanian translation lt_LT.po and lt_LT.mo
@@ -37,7 +91,7 @@ Version 3.6.1
 * Bug Fixed: Breadcrumbs div issue when Breadcrumbs is disable in WordPress SEO by Yoast plugin (Reported by Franziska)
 
 Version 3.6
-* Added support for Breadcrumbs via Breadcrumb NavXT and WordPress SEO by Yoast 
+* Added support for Breadcrumbs via Breadcrumb NavXT and WordPress SEO by Yoast
 * Updated codes to comply with deprecating PHP4 style constructors in WordPress 4.3
 
 Version 3.5.3
@@ -142,7 +196,7 @@ Version 2.9
 ** Fixed RTL
 ** Fixed overflow long title
 ** Removed duplicate colour code for title
-** Fixed heading font sizes overwriting page/post title 
+** Fixed heading font sizes overwriting page/post title
 * Replaced responsive menu icon
 
 Version 2.8.3
@@ -217,7 +271,7 @@ Version 2.5
 * Changed hgroup wrap with div id header-content wrap
 * Depreciated Action Hooks
 -- catchbox_startgenerator_open
--- catchbox_startgenerator_close action hook 
+-- catchbox_startgenerator_close action hook
 
 Version 2.4
 * Added Serbian translation sr_RS.po and sr_RS.mo
@@ -234,7 +288,7 @@ Version 2.3.1
 * Update Italian translation it_IT.po and it_IT.mo
 
 Version 2.3
-* Added Arabic translation ar.po and ar.mo 
+* Added Arabic translation ar.po and ar.mo
 * Update Spanish translation es_ES.po and es_ES.mo
 
 Version 2.2.2
@@ -254,7 +308,7 @@ Version 2.2
 Version 2.1.1
 * Fixed author info color in Dark color scheme
 * Fixed Social Icon title for Vimeo and Flickr
-* Added Responsive menu support for default wp_page_menu 
+* Added Responsive menu support for default wp_page_menu
 * Fixed Arrow on Responsive Menu
 * Removed simplecatch_sort_query_by_post_in function as post orderby is already implement in WordPress Version 3.5 by default
 
@@ -269,18 +323,18 @@ Version 2.0.2
 
 Version 2.0.1
 * Added content layout excerpt to show full content if found excerpt empty
-* Added Separator  for Header Image and Site Details  
+* Added Separator  for Header Image and Site Details
 
 Version 2.0
 * Added Italian translation it_IT.po and it_IT.mo
 
 Version 1.9
 * Center image in the slider if the image size is smaller then wrapper
-* Added Croatian translation hr_HR.po and hr_HR.mo 
+* Added Croatian translation hr_HR.po and hr_HR.mo
 
 Version 1.8
 * Added Czech translation cs_CZ.po and cs_CZ.mo
-* Updated French Language 
+* Updated French Language
 
 Version 1.7.2.2
 * Fixed Missing text domain in comment catchbox_comment_form_fields() function
@@ -327,7 +381,7 @@ Version 1.5.5.1
 
 Version 1.5.5
 * Fixed body_class filter loop for layout issue found in version 1.5.4
-* Fixed CSS for Content on Right Layout 
+* Fixed CSS for Content on Right Layout
 
 Version 1.5.4
 * Fixed Default Layout and Page Template Issue with body_class filter
@@ -350,7 +404,7 @@ Version 1.4.1
 * Fixed css for Threaded Comment Image Issue
 
 Version 1.4
-* Fixed Slider Initialization 
+* Fixed Slider Initialization
 * Added Option to Disable Header Search in Theme Option Panel
 * Added Info bar in Theme Option Panel
 * Change the license to GPL 2
@@ -389,7 +443,7 @@ Version 1.1.3.2
 * Fixed dark.css for dark color scheme
 
 Version 1.1.3.1
-* Fixed Slider loading issue and display overlap 
+* Fixed Slider loading issue and display overlap
 * Added un-minified version of JS as per GPL
 
 Version 1.1.3
@@ -435,7 +489,7 @@ Version 1.0.4
 * Added Style for Single Page Navigation
 
 Version 1.0.3
-* Fixed DEBUG ERROR 
+* Fixed DEBUG ERROR
   ** theme-options.php Undefined index: feed_url on line 410
 * Fixed UNIT TEST
   ** Footer menu: Now only display parent menu in footer menu. I have describe it in readme.txt
@@ -454,5 +508,5 @@ Version 1.0.1
 * Added text domain $beginning[ 'postid' ] = __( 'ID' ); in function catchbox_post_id_column()
 * Fixed undefined index for feed_url and moved the function catchbox_rss_redirect() from function.php to theme-options.php
 * Fixed undefined index for custom_css in theme-options.php
-* Added margin left for sub level list in widget lists. 
-* Added function catchbox_filter_wp_title() to filter the wp_title() 
+* Added margin left for sub level list in widget lists.
+* Added function catchbox_filter_wp_title() to filter the wp_title()

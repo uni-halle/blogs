@@ -4,7 +4,7 @@
  */
 (function($) {
     //Add More Theme Options Button
-    $('.preview-notice').prepend('<span id="catchbox_upgrade"><a target="_blank" class="button btn-upgrade" href="' + catchbox_misc_links.upgrade_link + '">' + catchbox_misc_links.upgrade_text + '</a></span>');
+    $('.preview-notice').prepend('<span id="catchbox_upgrade"><a class="button btn-upgrade" href="' + catchbox_misc_links.upgrade_link + '">' + catchbox_misc_links.upgrade_text + '</a></span>');
     jQuery('#customize-info .btn-upgrade, .misc_links').click(function(event) {
         event.stopPropagation();
     });

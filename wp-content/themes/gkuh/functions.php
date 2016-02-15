@@ -70,6 +70,58 @@ wp_enqueue_script( 'superfish-config', get_template_directory_uri() . '/library/
 add_action( 'after_setup_theme', 'bones_ahoy' );
 
 
+/*********************************
+CREATE PAGE LIST BY MAIN NAV ORDER
+*********************************/
+/*
+This is crucial for many features including previous/next page, menu colors, submenus and progress. The usual order of wordpress pages/posts is difficult to set and we want to always use the order given for the main nav menu
+*/
+
+function page_list_by_main_nav(){
+		$menu_name = 'main-nav';
+        $topid = get_cat_ID( 'lektion' ); //get ID from parent topical category to later filter the important categories
+
+    	if ( ( $location = get_nav_menu_locations() ) && isset( $location[ $menu_name ] ) ) {
+		$menu = wp_get_nav_menu_object( $location[ $menu_name ] );
+		$menu_items = wp_get_nav_menu_items($menu->term_id);
+		$menupagelist = array();
+        $catslugs = array();
+            
+			foreach ( (array) $menu_items as $key => $menu_item ) {         
+                
+                $categories = get_the_category($menu_item->object_id);
+               
+                    foreach($categories as $category) {
+                        $catslug = $category->slug;
+                        $catslugs[] = $catslug;
+                        
+                        // check if category is topical category and if so, set slug and id of category for the pagelist
+                        if (cat_is_ancestor_of($topid, $category)) {
+                            $topicat = $category->slug;
+                            $topicat_id = $category->term_id;
+                            $topicat_count = $category->category_count;
+                        }
+                    };
+                
+				$menupagelist[] = array("post_status"       => $menu_item->post_status,
+                                        "title"             => $menu_item->title,
+                                        "parent"            => $menu_item->post_parent,
+                                        "url"               => $menu_item->url,
+                                        "categories"        => $catslugs,
+                                        "topical_catslug"   => $topicat,
+                                        "topical_catid"     => $topicat_id,
+                                        "topicat_count"     => $topicat_count,
+                                        "id"                => $menu_item->object_id,
+                                       );
+                
+                unset($topicat, $topicat_id, $catslugs, $topicat_count); 
+			};
+        
+            return $menupagelist;
+		} 
+};
+
+
 /************* OEMBED SIZE OPTIONS *************/
 
 if ( ! isset( $content_width ) ) {
@@ -211,10 +263,6 @@ add_filter('widget_text', 'do_shortcode');
 /*********************** 
 GKUHplus partnerlist widget 
 ************************/
-
-/**
- * Adds Foo_Widget widget.
- */
 class gkuh_partnerlist extends WP_Widget {
 
 	/**
@@ -720,9 +768,7 @@ function rl_color($catid){
 /**********************
 CATEGORIES TO NAV ITEMS
 ***********************/
-/** 
-adds category as css class to menu page items 
-**/
+/* adds category as css class to menu page items */
 
 function wpa_category_nav_class( $classes, $item ){
     if( $item->post_parent != 0 ){
@@ -740,76 +786,5 @@ function wpa_category_nav_class( $classes, $item ){
 }
 add_filter( 'nav_menu_css_class', 'wpa_category_nav_class', 10, 2 );
 
-
-/*********************************
-CREATE PAGE LIST BY MAIN NAV ORDER @todo
-*********************************/
-/*
-This is crucial for many features including previous/next page, menu colors, submenus and progress. The usual order of wordpress pages/posts is difficult to set and we want to always use the order given for the main nav menu
-*/
-
-// Menu item IDs
-//function grab_menu_items(){
-//		$menu_name = 'main-nav';
-//
-//    	if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) {
-//		$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-//		$menu_items = wp_get_nav_menu_items($menu->term_id);
-//		$menupages = array();
-//			foreach ( (array) $menu_items as $key => $menu_item ) {
-//				$menupages[] = $menu_item->object_id;
-//			}
-//		return $menupages;
-//		} else { return; }
-//}
-
-function page_list_by_main_nav(){
-		$menu_name = 'main-nav';
-        $topid = get_cat_ID( 'lektion' ); //get ID from parent topical category to later filter the important categories
-
-    	if ( ( $location = get_nav_menu_locations() ) && isset( $location[ $menu_name ] ) ) {
-		$menu = wp_get_nav_menu_object( $location[ $menu_name ] );
-		$menu_items = wp_get_nav_menu_items($menu->term_id);
-		$menupagelist = array();
-        $catslugs = array();
-            
-			foreach ( (array) $menu_items as $key => $menu_item ) {
-                
-                $categories = get_the_category($menu_item->object_id);
-               
-                foreach($categories as $category) {
-
-                    if (cat_is_ancestor_of($topid, $category)) {
-                        $topicat_slug = $category->slug;
-                        $topicat_id = $category->term_id;
-                    }
-                    else {
-                        $topicat_slug = 0;
-                        $topicat_id = 0;
-                     }
-
-                    $catslug = $category->slug;
-                    $catslugs[] = $catslug;
-                };
-                
-				$menupagelist[] = array("id"                => $menu_item->object_id,
-                                        "post_status"       => $menu_item->post_status,
-                                        "title"             => $menu_item->title,
-                                        "parent"            => $menu_item->menu_item_parent,
-                                        "url"               => $menu_item->url,
-                                        "categories"        => $catslugs,
-                                        "topical_cat slug"  => $topicat_slug,
-                                        "topical cat id"    => $topicat_id,
-                                       );
-                
-                 unset($catslugs); //do not delete - we need that!
-			};
-            
-		return $menupagelist;
-        //return $topid;
-        //return $topicat_slug;
-        //return $topicat_id;
-		} 
-};                  
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

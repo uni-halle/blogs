@@ -31,12 +31,17 @@
 <?php elseif ( is_category( 'board-of-directors' ) ) : /* Begin: Category Borad of Directors */ ?>
 <li id="post-<?php the_ID(); ?>" class="person">
     <?php if ( has_post_thumbnail() ) : ?>
-    <a href="<?php the_permalink(); ?>" title="<?php sprintf( _e( 'More about ', 'muhlenbergcenter' ), the_title() ); ?>">
-        <?php the_post_thumbnail( array(285,180) ); ?>
-    </a>
+    <div class="thumbnail">
+        <a href="<?php the_permalink(); ?>"
+           title="<?php sprintf( _e( 'More about ', 'muhlenbergcenter' ), the_title() ); ?>">
+            <?php the_post_thumbnail( array(285,180) ); ?>
+        </a>
+    </div>
     <?php endif; ?>
     <h3 class="person__name">
-        <a href="<?php the_permalink(); ?>" class="person__link" title="<?php sprintf( _e( 'More about ', 'muhlenbergcenter' ), the_title() ); ?>">
+        <a href="<?php the_permalink(); ?>"
+           class="person__link"
+           title="<?php sprintf( _e( 'More about ', 'muhlenbergcenter' ), the_title() ); ?>">
             <?php the_title(); ?><br/>
             <span><?php echo get_post_meta( $post->ID, 'position', true ); ?></span>
         </a>
@@ -45,7 +50,8 @@
         <li><?php echo get_post_meta( $post->ID, 'email', true ); ?></li>
         <li>Phone: <?php echo get_post_meta( $post->ID, 'phone', true ); ?></li>
         <li>
-            <a href="<?php the_permalink(); ?>" title="<?php sprintf( _e( 'More about ', 'muhlenbergcenter' ), the_title() ); ?>">
+            <a href="<?php the_permalink(); ?>"
+               title="<?php sprintf( _e( 'More about ', 'muhlenbergcenter' ), the_title() ); ?>">
                 <?php _e('read more', 'muhlenbergcenter'); ?>
             </a>
         </li>

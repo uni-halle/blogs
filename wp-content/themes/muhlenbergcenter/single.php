@@ -8,20 +8,7 @@ get_header(); ?>
 
 <div class="row">
 
-    <?php
-    while ( have_posts() ) : the_post();
-
-        if ( has_post_format( array('gallery', 'video') ) ) : /* Single view for galleries and videos */ ?>
-        <div class="small-12 columns">
-            <?php the_title( '<h1 class="page-title"><span>', '</span></h1>' );?>
-            <div class="row">
-                <div class="small-12 columns">
-                    <?php the_content();?>
-                </div>
-            </div>
-        </div>
-
-        <?php elseif ( in_category( array('board-of-directors', 'press') ) ) : /* Single view for directors and press */ ?>
+    <?php while ( have_posts() ) : the_post(); ?>
         <div class="small-12 columns">
             <p class="page-title">
                 <span>
@@ -32,12 +19,21 @@ get_header(); ?>
                     ?>
                 </span>
             </p>
-            
+
             <div class="row">
                 <div class="medium-4 columns">
-                    <?php if ( has_post_thumbnail() ) {
-                        the_post_thumbnail( array(285,180) );
-                    } ?>
+                    <?php if ( has_post_thumbnail() ) : ?>
+                        <?php the_post_thumbnail( array(285,180) ); ?>
+                    <?php elseif ( in_category('pictures') ) : ?>
+                        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/teaser_pictures.jpg"
+                             alt="teaser image" />
+                    <?php elseif ( in_category('videos') ) : ?>
+                        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/teaser_videos.jpg"
+                             alt="teaser image" />
+                    <?php elseif ( in_category('press') ) : ?>
+                        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/teaser_press.jpg"
+                             alt="teaser image" />
+                    <?php endif; ?>
 
                     <?php if ( in_category('board-of-directors') ) : ?>
                     <div class="contact-info">
@@ -61,15 +57,7 @@ get_header(); ?>
                 </div>
             </div>
         </div>
-
-        <?php else : /* all other posts */ ?>
-
-        <?php get_template_part( 'content', get_post_format() );?>
-
-        <?php endif;
-
-    endwhile;
-    ?>
+    <?php endwhile; ?>
 
 </div>
 

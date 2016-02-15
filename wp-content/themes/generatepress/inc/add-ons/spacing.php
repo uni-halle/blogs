@@ -260,11 +260,11 @@ if ( !function_exists('generate_spacing_css') ) :
 	}
 endif;
 
-if ( ! function_exists( 'generate_mobile_search_spacing_fallback' ) ) :
+if ( ! function_exists( 'generate_additional_spacing' ) ) :
 /**
  * Add fallback CSS for our mobile search icon color
  */
-function generate_mobile_search_spacing_fallback()
+function generate_additional_spacing()
 {
 	if ( function_exists( 'generate_spacing_get_defaults' ) ) :
 		$spacing_settings = wp_parse_args( 
@@ -281,6 +281,20 @@ function generate_mobile_search_spacing_fallback()
 			'padding-left' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
 			'padding-right' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
 			'line-height' => ( isset( $spacing_settings['menu_item_height'] ) ) ? $spacing_settings['menu_item_height'] . 'px' : null,
+		),
+		
+		'.menu-item-has-children .dropdown-menu-toggle' => array(
+			'padding-right' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
+		),
+		
+		'.slideout-navigation .main-nav ul li.menu-item-has-children a' => array(
+			'padding-right' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
+		),
+		
+		'.menu-item-has-children ul .dropdown-menu-toggle' => array (
+			'padding-top' => ( isset( $spacing_settings[ 'sub_menu_item_height' ] ) ) ? $spacing_settings[ 'sub_menu_item_height' ] . 'px' : null,
+			'padding-bottom' => ( isset( $spacing_settings[ 'sub_menu_item_height' ] ) ) ? $spacing_settings[ 'sub_menu_item_height' ] . 'px' : null,
+			'margin-top' => ( isset( $spacing_settings[ 'sub_menu_item_height' ] ) ) ? '-' . $spacing_settings[ 'sub_menu_item_height' ] . 'px' : null,
 		)
 		
 	);
@@ -320,7 +334,7 @@ if ( ! function_exists( 'generate_mobile_search_spacing_fallback_css' ) ) :
 add_action( 'wp_enqueue_scripts', 'generate_mobile_search_spacing_fallback_css', 50 );
 function generate_mobile_search_spacing_fallback_css() 
 {
-	wp_add_inline_style( 'generate-style', generate_mobile_search_spacing_fallback() );
+	wp_add_inline_style( 'generate-style', generate_additional_spacing() );
 }
 endif;
 

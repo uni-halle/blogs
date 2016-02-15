@@ -1,0 +1,65 @@
+* 1.0.11 - 19/01/2016
+====================
+- Fixed: issue with google font
+
+
+* 1.0.10 - 19/01/2016
+====================
+- Fixed: widgets alignment when they are too long on Phone section
+
+
+* 1.0.9 - 11/01/2016
+====================
+- Fixed: Learn More button on Welcome section
+
+
+* 1.0.8 - 21/12/2015
+====================
+- Changed: theme shows latest blog posts by default
+
+
+* 1.0.7 - 21/12/2015
+====================
+- Fixed: client widget.
+- Fixed: prefix on scripts
+- Added: licensing from images
+
+
+* 1.0.6 - 12/12/2015
+====================
+- Fixed: pricing widget.
+
+
+* 1.0.5 - 12/12/2015
+====================
+- Added: prefix for enqueued scripts.
+
+
+* 1.0.4 - 04/12/2015
+====================
+- Removed: iframe codes for oEmbed
+- Removed: Team widget area
+- Added: prefix for thumbnail sizes
+- Added: prefix customizer Class
+- Added: html5shiv
+- Fixed: error when pricing widget is empty
+
+
+* 1.0.3 - 02/11/2015
+====================
+- Fixed: Some functions to support PHP 5.4
+
+
+* 1.0.2 - 31/10/2015
+====================
+- Added: Enable/disable option to front page sections
+
+
+* 1.0.1 - 30/10/2015
+====================
+- Complete Theme Update
+
+
+* 1.0.0 - 09/09/2015
+====================
+- Released

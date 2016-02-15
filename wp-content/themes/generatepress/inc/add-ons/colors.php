@@ -158,7 +158,6 @@ if ( !function_exists('generate_get_color_defaults') && !function_exists('genera
 			),
 			
 			'button.menu-toggle:hover,
-			button.menu-toggle:active,
 			button.menu-toggle:focus,
 			.main-navigation .mobile-bar-items a,
 			.main-navigation .mobile-bar-items a:hover,
@@ -172,14 +171,16 @@ if ( !function_exists('generate_get_color_defaults') && !function_exists('genera
 			),
 			
 			// Navigation background/text on hover
-			'.main-navigation .main-nav ul li > a:hover, 
+			'.main-navigation .main-nav ul li > a:hover,
+			.main-navigation .main-nav ul li > a:focus, 
 			.main-navigation .main-nav ul li.sfHover > a' => array(
 				'color' => $generate_settings['navigation_text_hover_color'],
 				'background-color' => $generate_settings['navigation_background_hover_color']
 			),
 			
 			// Sub-Navigation background/text on hover
-			'.main-navigation .main-nav ul ul li > a:hover, 
+			'.main-navigation .main-nav ul ul li > a:hover,
+			.main-navigation .main-nav ul ul li > a:focus,			
 			.main-navigation .main-nav ul ul li.sfHover > a' => array(
 				'color' => $generate_settings['subnavigation_text_hover_color'],
 				'background-color' => $generate_settings['subnavigation_background_hover_color']

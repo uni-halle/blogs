@@ -6,38 +6,55 @@
 
 get_header(); ?>
 
-<div class="row home" data-equalizer>
-
-    <?php
-        /* Shortcode: 3 aktuelle Events mit Tag "home" ausgeben */
-        echo do_shortcode(
-            '[events_list scope="future" tag="home" limit="3"]
-                <article class="medium-4 columns event teaser" data-equalizer-watch>
-                    {has_image}
-                    <a href="#_EVENTURL" title="More about #_EVENTNAME">
-                        #_EVENTIMAGE
-                    </a>
-                    {/has_image}
-                    {no_image}
-                    <a href="#_EVENTURL" title="More about #_EVENTNAME">
-                        #_CATEGORYIMAGE
-                    </a>
-                    {/no_image}
-                    <h2>#_EVENTLINK</h2>
-                    <ul class="no-bullet">
-                        <li>#_EVENTDATES</li>
-                        {has_time}<li>#_EVENTTIMES</li>{/has_time}
-                        <li>#_LOCATIONADDRESS</li>
-                        <li>#_LOCATIONPOSTCODE #_LOCATIONTOWN</li>
-                    </ul>
-                    <p>
-                        <a href="upcoming-events/">Show all upcoming events</a>
-                    </p>
-                </article>
-            [/events_list]'
-        );
-    ?>
-
+<div class="row home" data-equalizer data-equalize-on="medium">
+    <div class="small-12 columns">
+        <ul class="medium-block-grid-3">
+    
+        <?php
+            /* Shortcode: 3 aktuelle Events mit Tag "home" ausgeben */
+            echo do_shortcode(
+                '[events_list scope="future" tag="home" limit="3"]
+                    <li data-equalizer-watch>
+                        <article class="event-teaser">
+                            {has_image}
+                            <div class="thumbnail">
+                                <a href="#_EVENTURL" title="More about #_EVENTNAME">
+                                    #_EVENTIMAGE
+                                </a>
+                            </div>
+                            {/has_image}
+                            {no_image}
+                            <div class="thumbnail">
+                                <a href="#_EVENTURL" title="More about #_EVENTNAME">
+                                    #_CATEGORYIMAGE
+                                </a>
+                            </div>
+                            {/no_image}
+                            <p class="meta-info">
+                                <span class="meta-info__category">#_CATEGORYNAME</span> |
+                                <span class="meta-info__date">#Y-#m-#d</span>
+                            </p>
+                            <h2 class="event-teaser__title">#_EVENTLINK</h2>
+                            <ul class="no-bullet">
+                                <!--
+                                <li>#_ATT{consultant_name}</li>
+                                <li>#_EVENTDATES</li>
+                                {has_time}<li>#_EVENTTIMES</li>{/has_time}
+                                -->
+                                <li>#_LOCATIONADDRESS</li>
+                                <li>#_LOCATIONPOSTCODE #_LOCATIONTOWN</li>
+                            </ul>
+                            <p>
+                                <a href="#_EVENTURL" title="More about #_EVENTNAME">More information</a>
+                            </p>
+                        </article>
+                    </li>
+                [/events_list]'
+            );
+        ?>
+    
+        </ul>
+    </div>
 </div>
 
 <?php /* get the posts for person slider */

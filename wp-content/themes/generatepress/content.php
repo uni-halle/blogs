@@ -3,7 +3,7 @@
  * @package GeneratePress
  */
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php generate_article_schema( 'BlogPosting' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php generate_article_schema( 'CreativeWork' ); ?>>
 	<div class="inside-article">
 		<?php do_action( 'generate_before_content'); ?>
 		<header class="entry-header">

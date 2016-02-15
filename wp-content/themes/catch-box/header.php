@@ -49,6 +49,8 @@ do_action( 'catchbox_before' ); ?>
 	<?php 
     /** 
      * catchbox_before_header hook
+     *
+     * @hooked catchbox_skiptocontain - 10
      */
     do_action( 'catchbox_before_header' ); 
     ?> 
@@ -79,7 +81,7 @@ do_action( 'catchbox_before' ); ?>
 		 * catchbox_after_headercontent hook
 		 *
          * @hooked catchbox_header_menu - 10
-         * @hooked catchbox_mobile_header_nav_anchor - 20
+         * @hooked catchbox_mobile_header_menu - 20
 		 */
 		do_action( 'catchbox_after_headercontent' ); ?>           
                 
@@ -108,7 +110,7 @@ do_action( 'catchbox_before' ); ?>
 		 */
         do_action( 'catchbox_before_primary' ); ?>
         
-		<div id="primary">
+		<div id="primary" class="content-area">
         
 			<?php 
             /** 

@@ -1,0 +1,219 @@
+.animations-enable #main{
+	opacity: 0;
+	.translate(0;50px);
+	.transition(~"opacity 500ms, transform 500ms")
+}
+.pace-done.animations-enable #main, .no-js #main{
+	opacity: 1;
+	.translate(0;0);
+}
+
+
+
+
+
+
+/*Post Title 								*/
+/*------------------------------------------*/
+.post-title {
+	margin-bottom: 0.88235294117647em;
+	margin-top: 0;
+}
+.post-title a{
+	color: inherit;
+	text-align: left;
+}
+
+
+
+
+
+
+/*Post										*/
+/*------------------------------------------*/
+.blog article, .search article, .archive article{
+	margin-bottom: 8.75rem;
+}
+.single article, .page article{
+	margin-bottom: 4.375em;
+	padding-bottom: 0;
+}
+
+
+/*More Link									*/
+/*------------------------------------------*/
+
+.more-link{
+	display: block;
+	clear: both;
+}
+	
+/*Image Post								*/
+/*------------------------------------------*/
+.post-image{
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 30px;
+}
+	.post-image a{
+		display:block;
+		text-align: center;
+	}
+	.post-image img{
+		width:100%;
+		vertical-align: bottom;
+		height: auto;
+	}
+
+.post-image:hover .post_date, .post-image:hover .post-title_wrap{
+	opacity: 0;
+	.transition( all 200ms linear);
+}
+
+
+/*Metadata 									*/
+/*------------------------------------------*/
+.metadata{
+	margin: 1.78571428571429em 0;
+	overflow:hidden;
+	border-right: none;
+	border-left: none;
+	border-top: none;
+	padding-top: 1.07142857142857em;
+	border-top: 1px solid @gray-lighter;
+	border-bottom: 1px solid @gray-lighter;
+	.font-size(14);
+}
+
+.single .metadata{
+	margin: 1.25em 0;
+}
+
+.metadata ul{
+	margin:0;
+	padding: 0;
+}
+.metadata ul li{
+	list-style: none;
+	line-height: 1.4em;
+	margin: 0;
+	margin-right: 1.78571428571429em;
+	padding: 0 0 1.07142857142857em 0;
+	float: left;
+	position: relative;
+	color: lighten(@gray-light2, 8%);
+}
+
+.metadata ul li i{
+	margin-right: 0.35714285714286em;
+	.font-size(14);
+	text-align: center;
+	color: @gray-light2;
+}
+
+.metadata ul li a{
+	text-decoration: none;
+	color: @gray-light2;
+}
+.metadata ul li a:hover{
+	text-decoration: underline;
+}
+.metadata ul li.meta_comments{
+}
+.metadata ul li.meta_tags a{
+}
+.metadata hr{
+	margin: 0;
+}
+
+
+/* Page Headers															*/
+/*----------------------------------------------------------------------*/
+.page-header{
+	margin-bottom: 70px;
+}
+
+/* Archive and Search													*/
+/*----------------------------------------------------------------------*/
+.archive .post, .search .post, .archive .page, .search .page{
+	background-color: @gray-lighter2;
+	padding: 30px;
+	margin-bottom: 6.25rem;
+}
+.archive .post .metadata{
+	margin-bottom: 0;
+}
+
+/* 404																	*/
+/*----------------------------------------------------------------------*/
+.widgets-404{
+	margin: 100px 0;
+}
+
+.error404 .search-form{
+	width: 50%;
+}
+.error404 .search-form .search-submit{
+	outline: none;
+	width: auto;
+	padding-left: 12px;
+	height: auto;
+
+	&:hover{
+		.transition(all 200ms);
+		background-color: @gray;
+		border-color: @gray;
+		color: #fff;
+	}
+	
+}
+
+/*Pagination															*/
+/*----------------------------------------------------------------------*/
+.pagination_wrap{
+	text-align: center;
+}
+.pagination{
+	margin: 0 0 3.125rem 0;
+}
+.pagination .screen-reader-text{
+	display: none;
+}
+
+.pagination a, .pagination span{
+    background-color: @contrastColor;
+    border: 2px solid @gray-lighter;
+    color: @gray-light;
+    float: left;
+    line-height: 1.42857;
+    margin-left: -2px;
+    padding: 6px 12px;
+    position: relative;
+    text-decoration: none;
+    font-size: 14px;
+}
+.pagination .current{
+	background-color: @gray-lighter;
+	color: @heroColor;
+	border-color: @gray-lighter;
+}
+.pagination a:hover{
+	background-color: @gray-lighter;
+	color: @heroColor;
+	border-color: @gray-lighter;
+	cursor: pointer;
+}
+
+
+
+.pagination li.active a{
+	background-color: @heroColor;
+	color: @contrastColor;
+	border-color: @heroColor;
+}
+.pagination li.active a:hover{
+	background-color: @contrastColor;
+	color: @heroColor;
+	border-color: @heroColor;
+	cursor: pointer;
+}

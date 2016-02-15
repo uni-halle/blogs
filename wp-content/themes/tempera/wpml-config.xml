@@ -1,0 +1,54 @@
+<wpml-config> 
+    <admin-texts>
+        <key name="tempera_settings">
+			<key name="tempera_logoupload" />
+			<key name="tempera_favicon" />
+		
+            <key name="tempera_sliderimg1" />
+            <key name="tempera_slidertitle1" />
+     	    <key name="tempera_slidertext1" />
+           	<key name="tempera_sliderlink1" />
+            <key name="tempera_sliderimg2" />
+            <key name="tempera_slidertitle2" />
+            <key name="tempera_slidertext2" />
+            <key name="tempera_sliderlink2" />
+            <key name="tempera_sliderimg3" />
+            <key name="tempera_slidertitle3" />
+            <key name="tempera_slidertext3" />
+            <key name="tempera_sliderlink3" />
+            <key name="tempera_sliderimg4" />
+            <key name="tempera_slidertitle4" />
+            <key name="tempera_slidertext4" />
+            <key name="tempera_sliderlink4" />
+            <key name="tempera_sliderimg5" />
+            <key name="tempera_slidertitle5" />
+            <key name="tempera_slidertext5" />
+            <key name="tempera_sliderlink5" />
+            <key name="tempera_slidereadmore" />
+			
+            <key name="tempera_columnstitle" />
+            <key name="tempera_fronttext1" />
+            <key name="tempera_fronttext3" />
+            <key name="tempera_fronttext2" />
+            <key name="tempera_fronttext4" />
+            <key name="tempera_fronttext5" />
+            <key name="tempera_fronttext6" />
+			
+            <key name="tempera_excerptcont" />
+			
+            <key name="tempera_social2" />
+            <key name="tempera_social_title1" />
+            <key name="tempera_social4" />
+            <key name="tempera_social_title3" />
+            <key name="tempera_social6" />
+            <key name="tempera_social_title5" />
+            <key name="tempera_social8" />
+            <key name="tempera_social_title7" />
+            <key name="tempera_social10" />
+            <key name="tempera_social_title9" />
+
+            <key name="tempera_copyright" />			
+			
+        </key>
+    </admin-texts>  
+</wpml-config>

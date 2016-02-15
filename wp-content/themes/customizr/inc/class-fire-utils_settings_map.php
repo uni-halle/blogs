@@ -732,7 +732,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'notice'        => sprintf( '%1$s<br/><br/>%2$s',
                                   __( 'When the menu style is set to "Side Menu", the menu position is the side on which the menu will be revealed.' , 'customizr' ),
                                   sprintf( __("To change the global header layout, %s" , "customizr"),
-                                    sprintf( '<a href="%1$s" target="_blank" title="%3$s">%2$s &raquo;</a>',
+                                    sprintf( '<a href="%1$s" title="%3$s">%2$s &raquo;</a>',
                                       "javascript:wp.customize.section('header_layout_sec').focus();",
                                       __("jump to the Design and Layout section" , "customizr"),
                                       __("Change the header layout", "customizr")
@@ -1040,7 +1040,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'section'     => 'frontpage_sec' ,
                                 'type'        => 'checkbox' ,
                                 'priority'       => 54,
-                                'notice'    => sprintf('%1$s <a href="http://docs.presscustomizr.com/customizr/recommended-plugins/#images" target="_blank">%2$s</a>',
+                                'notice'    => sprintf('%1$s <a href="http://docs.presscustomizr.com/article/74-recommended-plugins-for-the-customizr-wordpress-theme/#images" target="_blank">%2$s</a>',
                                     __( "If this option is checked, your images will be resized with your custom height on upload. This is better for your overall loading performance." , 'customizr' ),
                                     __( "You might want to regenerate your thumbnails." , 'customizr')
                                 ),
@@ -1164,7 +1164,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'priority'       => 40,
                                 'notice'    => sprintf('<br/> %s<br/>%s',
                                     sprintf( __("The above layout options will set your layout globally for your post and pages. But you can also define the layout for each post and page individually. Learn how in the %s.", "customizr"),
-                                        sprintf('<a href="%1$s" title="%2$s" target="_blank">%2$s<span style="font-size: 17px;" class="dashicons dashicons-external"></span></a>' , esc_url('docs.presscustomizr.com/customizr/content-options/#pages-and-posts-layout'), __("Customizr theme documentation" , "customizr" )
+                                        sprintf('<a href="%1$s" title="%2$s" target="_blank">%2$s<span style="font-size: 17px;" class="dashicons dashicons-external"></span></a>' , esc_url('http://docs.presscustomizr.com/article/107-customizr-theme-options-pages-and-posts-layout'), __("Customizr theme documentation" , "customizr" )
                                         )
                                     ),
                                     sprintf( __("If you need to change the layout design of the front page, then open the 'Front Page' section above this one.", "customizr") )
@@ -2038,12 +2038,22 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
               'tc_woocommerce_header_cart' => array(
                                'default'   => 1,
                                'label'     => __( 'Display the shopping cart in the header' , 'customizr' ),
-                               'control'   =>  'TC_controls' ,
+                               'control'   => 'TC_controls' ,
                                'section'   => 'tc_woocommerce_sec',
                                'notice'    => __( "You can display a cart icon showing the number of items in your cart next to your header's tagline", 'customizr' ),
                                'type'      => 'checkbox' ,
                                'priority'  => 10,
-              )
+              ),
+              'tc_woocommerce_header_cart_sticky' => array(
+                               'default'   => 1,
+                               'label'     => __( 'Sticky header: display the shopping cart' , 'customizr' ),
+                               'control'   => 'TC_controls' ,
+                               'section'   => 'tc_woocommerce_sec',
+                               'type'      => 'checkbox' ,
+                               'priority'  => 15,
+                               'transport' => 'postMessage'
+              ),
+
         );
     }
 
@@ -2183,9 +2193,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
     function tc_popul_remove_section_map( $_sections ) {
       //customizer option array
       $remove_section = array(
-        'background_image' ,
         'static_front_page' ,
-        'colors',
         'nav',
         'title_tagline',
         'tc_page_comments'
@@ -2252,7 +2260,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
         );
       } else {
         $nav_section_desc .= "<br/>" . sprintf( __("You can create new menu and edit your menu's content %s." , "customizr"),
-          sprintf( '<strong><a href="%1$s" target="_blank" title="%3$s">%2$s &raquo;</a><strong>',
+          sprintf( '<strong><a href="%1$s" title="%3$s">%2$s &raquo;</a><strong>',
             "javascript:wp.customize.section('nav').container.find('.customize-section-back').trigger('click'); wp.customize.panel('nav_menus').focus();",
             __("in the menu panel" , "customizr"),
             __("create/edit menus", "customizr")

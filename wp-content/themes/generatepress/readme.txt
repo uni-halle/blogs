@@ -26,7 +26,8 @@ GeneratePress has up to 8 widget area. 1 in your header, 1 for each sidebar and 
 	- Add-ons are available for further customization.
 
 == Page Headers ==
-When adding a page or post, set your "Featured Image" to activate the page header.
+When adding a page or post, set your "Featured Image" to activate the page header: 
+https://generatepress.com/knowledgebase/featured-images/
 
 == Social Icons ==
 To add the social icons, use this free plugin: https://wordpress.org/plugins/lightweight-social-icons/
@@ -36,7 +37,8 @@ Once activated, add the widget to the "Header" widget area in "Appearance > Widg
 To add content columns, use this free plugin: https://wordpress.org/plugins/lightweight-grid-columns
 
 == Replicating the Screenshot ==
-If you want to replicate the screenshot you see on WordPress.org, please refer to this article: https://generatepress.com/knowledgebase/replicating-the-screenshot/
+If you want to replicate the screenshot you see on WordPress.org, please refer to this article: 
+https://generatepress.com/knowledgebase/replicating-the-screenshot/
 
 -------------------------------------------------------
 GeneratePress License
@@ -53,7 +55,7 @@ Screenshot Licenses
 Screenshot images are all licensed under CC0 1.0 Universal - http://creativecommons.org/publicdomain/zero/1.0/deed.en
 http://pixabay.com/en/home-office-workstation-office-336378/
 http://pixabay.com/en/utah-mountain-biking-bike-biking-95032/
-http://pixabay.com/en/city-skyscrapers-urban-building-731106/
+http://pixabay.com/en/desk-computer-modern-keyboard-1140699/
 
 -------------------------------------------------------
 Unsemantic Framework

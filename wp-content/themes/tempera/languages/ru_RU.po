@@ -1,0 +1,2817 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Tempera v1.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-26 09:35+0400\n"
+"PO-Revision-Date: 2014-07-29 10:59:43+0000\n"
+"Last-Translator: Alexander\n"
+"Language-Team: Cryout Creations\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%100/10==1 ? 2 : n%10==1 ? 0 : (n+9)%10>3 ? 2 : 1;\n"
+"X-Generator: Poedit 1.6.7\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: 404.php:17
+#@ tempera
+msgid "Not Found"
+msgstr "Не найдено"
+
+#: 404.php:20
+#@ tempera
+msgid "Apologies, but the page you requested could not be found. Perhaps searching will help."
+msgstr "Извините, но запрошенная вами страница не найдена. Возможно, Вам поможет поиск."
+
+#: admin/admin-functions.php:62
+#@ tempera
+msgid "Before you can upload your import file, you will need to fix the following error:"
+msgstr "Прежде чем вы сможете загрузить ваш файл импорта, вы должны исправить следующие ошибки:"
+
+#: admin/admin-functions.php:70
+#@ tempera
+msgid "Import Tempera Theme Options"
+msgstr "Импортировать файл настроек Tempera"
+
+#: admin/admin-functions.php:72
+#@ tempera
+msgid "Hi! This is where you import the  Tempera settings.<i> Please remember that this is still an experimental feature.</i>"
+msgstr "Привет! Это то самое место, где вы можете импортировать настройки Tempera. <i>Пожалуйста, помните, что эта функция ещё находится в статусе экспериментальной.</i>"
+
+#: admin/admin-functions.php:74
+#@ tempera
+msgid "Just choose a file from your computer:"
+msgstr "Просто выберите файл со своего компьютера:"
+
+#: admin/admin-functions.php:76
+#, php-format
+#@ tempera
+msgid "Maximum size: %s"
+msgstr "Максимальный размер: %s"
+
+#: admin/admin-functions.php:82
+#@ tempera
+msgid "And import!"
+msgstr "И импортируйте!"
+
+#: admin/admin-functions.php:148
+#@ tempera
+msgid "Import Tempera Theme Options "
+msgstr "Импортировать настройки темы Tempera "
+
+#: admin/admin-functions.php:151
+#@ tempera
+msgid "Great! The options have been imported!"
+msgstr "Отлично! Настройки были импортированы!"
+
+#: admin/admin-functions.php:152
+#@ tempera
+msgid "Go back to the Tempera options page and check them out!"
+msgstr "Вернитесь на страницу настроек Tempera и посмотрите на результат!"
+
+#: admin/admin-functions.php:155
+#: admin/admin-functions.php:161
+#: admin/admin-functions.php:167
+#@ tempera
+msgid "Oops, there's a small problem."
+msgstr "Упс, у нас маленькая проблема."
+
+#: admin/admin-functions.php:156
+#@ tempera
+msgid "The uploaded file does not contain valid Tempera options. Make sure the file is exported from the Tempera Options page."
+msgstr "Загруженный файл не содержит верных настроек Tempera. Пожалуйста, убедитесь что этот файл был экспортирован со страницы настроек Tempera."
+
+#: admin/admin-functions.php:162
+#@ tempera
+msgid "The uploaded file could not be read."
+msgstr "Загруженный файл не может быть прочитан."
+
+#: admin/admin-functions.php:168
+#@ tempera
+msgid "The uploaded file is not supported. Make sure the file was exported from the Tempera page and that it is a text file."
+msgstr "Загруженный файл не поддерживается. Пожалуйста, убедитесь что файл был экспортирован со страницы настроек Tempera и что он является текстовым."
+
+#: admin/admin-functions.php:177
+#@ tempera
+msgid "Oops! The file is empty or there was no file. This error could also be caused by uploads being disabled in your php.ini or by post_max_size being defined as smaller than upload_max_filesize in php.ini."
+msgstr "Упс! Файл пустой, или его вообще нет. Такая ошибка может быть также вызвана настройками загрузки файлов в вашем файле php.ini или же в следствие того, что post_max_size определён как меньший чем upload_max_filesize в php.ini."
+
+#: admin/admin-functions.php:183
+#@ tempera
+msgid "ERROR: You are not authorised to perform that operation"
+msgstr "ОШИБКА: У вас нет прав для совершения этой операции"
+
+#: admin/admin-functions.php:198
+#@ tempera
+msgid "Select one of the preset color schemes and press the Load button.<br> <b> CAUTION! </b> When loading a color scheme, the Tempera theme settings under Text and Color Settings will be overriden. All other settings will remain intact.<br> <u>SUGGESTION:</u> It's always better to export your current theme settings before loading a color scheme."
+msgstr "Выберите одну из предустановленных цветовых схем и нажмите на кнопку Загрузить.<br> <b> ВНИМАНИЕ! </b> При загрузке цветовой схемы все настройки темы в разделе Текст и Цвет будут перезаписаны. Все остальные настройки затронуты не будут.<br> <u>ДОБРВЫЙ СОВЕТ:</u> Всегда стоит экспортировать текущие настройки перед загрузкой цветовой темы."
+
+#: admin/admin-functions.php:222
+#@ tempera
+msgid "Load Color Scheme"
+msgstr "Загрузить цветовую схему"
+
+#: admin/admin-functions.php:288
+#@ tempera
+msgid "No news items."
+msgstr "Новостей нет."
+
+#: admin/admin-functions.php:292
+#@ tempera
+msgid "Posted on"
+msgstr "Опубликованно "
+
+#: admin/main.php:114
+#@ tempera
+msgid "Layout Settings"
+msgstr "Настройки раскладки страницы"
+
+#: admin/main.php:115
+#@ tempera
+msgid "Header Settings"
+msgstr "Настройки заголовка"
+
+#: admin/main.php:116
+#: admin/main.php:173
+#@ tempera
+msgid "Presentation Page"
+msgstr "Страница презентации"
+
+#: admin/main.php:117
+#@ tempera
+msgid "Text Settings"
+msgstr "Настройки текста"
+
+#: admin/main.php:118
+#@ tempera
+msgid "Color Settings"
+msgstr "Настройки цвета"
+
+#: admin/main.php:119
+#@ tempera
+msgid "Graphics Settings"
+msgstr "Настройки графики"
+
+#: admin/main.php:120
+#@ tempera
+msgid "Post Information Settings"
+msgstr "Настройки информации о публикации"
+
+#: admin/main.php:121
+#@ tempera
+msgid "Post Excerpt Settings"
+msgstr "Настройка отрывков публикации"
+
+#: admin/main.php:122
+#@ tempera
+msgid "Featured Image Settings"
+msgstr "Настройка связанного изображения"
+
+#: admin/main.php:123
+#@ tempera
+msgid "Social Media Settings"
+msgstr "Настройка социальных сетей"
+
+#: admin/main.php:124
+#@ tempera
+msgid "Miscellaneous Settings"
+msgstr "Прочие настройки"
+
+#: admin/main.php:127
+#@ tempera
+msgid "Main Layout"
+msgstr "Основная раскладка"
+
+#: admin/main.php:128
+#@ tempera
+msgid "Content / Sidebar Width"
+msgstr "Ширина колонки контента / боковых колонок"
+
+#: admin/main.php:129
+#@ tempera
+msgid "Responsiveness"
+msgstr "Отзывчивость"
+
+#: admin/main.php:132
+#@ tempera
+msgid "Enable Presentation Page"
+msgstr "Включить страницу презентации"
+
+#: admin/main.php:133
+#@ tempera
+msgid "Show Posts on Presentation Page"
+msgstr "Показывать публикации на странице презентации"
+
+#: admin/main.php:134
+#@ tempera
+msgid "Slider Settings"
+msgstr "Настройки слайдера"
+
+#: admin/main.php:135
+#@ tempera
+msgid "Slides"
+msgstr "Слайды"
+
+#: admin/main.php:136
+#: includes/theme-setup.php:311
+#@ tempera
+msgid "Presentation Page Columns"
+msgstr "Колонки страницы презентации"
+
+#: admin/main.php:137
+#@ tempera
+msgid "Extras"
+msgstr "Дополнительно"
+
+#: admin/main.php:140
+#@ tempera
+msgid "Header Height"
+msgstr "Высота заголовка"
+
+#: admin/main.php:141
+#@ tempera
+msgid "Header Image"
+msgstr "Изображение заголовка"
+
+#: admin/main.php:142
+#@ tempera
+msgid "Site Header"
+msgstr "Заголовок сайта"
+
+#: admin/main.php:143
+#@ tempera
+msgid "Custom Logo Upload"
+msgstr "Загрузить свой логотип"
+
+#: admin/main.php:144
+#@ tempera
+msgid "Header Content Spacing"
+msgstr "Расстояние контента в заголовке"
+
+#: admin/main.php:145
+#@ tempera
+msgid "FavIcon Upload"
+msgstr "Загрузка FavIcon"
+
+#: admin/main.php:146
+#@ tempera
+msgid "Header Widget Width"
+msgstr "Ширина заголовка виджета"
+
+#: admin/main.php:149
+#: admin/settings.php:613
+#: admin/settings.php:632
+#: admin/settings.php:650
+#: admin/settings.php:668
+#: admin/settings.php:689
+#@ tempera
+msgid "General Font"
+msgstr "Шрифт общего назначения"
+
+#: admin/main.php:150
+#@ tempera
+msgid "Post Title Font "
+msgstr "Шрифт заголовка публикации"
+
+#: admin/main.php:151
+#@ tempera
+msgid "Widget Title Font"
+msgstr "Шрифт заголовка виджета"
+
+#: admin/main.php:152
+#@ tempera
+msgid "Site Title Font"
+msgstr "Шрифт заголовка сайта"
+
+#: admin/main.php:153
+#@ tempera
+msgid "Main Menu Font"
+msgstr "Шрифт главного меню"
+
+#: admin/main.php:154
+#@ tempera
+msgid "Headings Font"
+msgstr "Шрифт заголовков"
+
+#: admin/main.php:155
+#@ tempera
+msgid "Force Text Align"
+msgstr "Принудительное выравнивание текста"
+
+#: admin/main.php:156
+#@ tempera
+msgid "Paragraph spacing"
+msgstr "Расстояние между абзацами"
+
+#: admin/main.php:157
+#@ tempera
+msgid "Paragraph Indent"
+msgstr "Отступ абзаца"
+
+#: admin/main.php:158
+#@ tempera
+msgid "Headings Indent"
+msgstr "Отступ заголовка"
+
+#: admin/main.php:159
+#@ tempera
+msgid "Line Height"
+msgstr "Высота строки"
+
+#: admin/main.php:160
+#@ tempera
+msgid "Word Spacing"
+msgstr "Расстояние между словами"
+
+#: admin/main.php:161
+#@ tempera
+msgid "Letter Spacing"
+msgstr "Расстояние между буквами"
+
+#: admin/main.php:162
+#@ tempera
+msgid "Uppercase Text"
+msgstr "Текст заглавными буквами"
+
+#: admin/main.php:166
+#@ tempera
+msgid "Background Image"
+msgstr "Фоновое изображение"
+
+#: admin/main.php:167
+#@ tempera
+msgid "General"
+msgstr "Общее"
+
+#: admin/main.php:168
+#@ tempera
+msgid "Accents"
+msgstr "Акценты"
+
+#: admin/main.php:169
+#: admin/settings.php:811
+#@ tempera
+msgid "Site Title"
+msgstr "Заголовок сайта"
+
+#: admin/main.php:170
+#@ tempera
+msgid "Main Menu"
+msgstr "Главное меню"
+
+#: admin/main.php:171
+#: admin/main.php:183
+#: admin/settings.php:1476
+#@ tempera
+msgid "Top Bar"
+msgstr "Верхнее меню"
+
+#: admin/main.php:172
+#@ tempera
+msgid "Content"
+msgstr "Содержимое"
+
+#: admin/main.php:174
+#@ tempera
+msgid "Sidebar Widgets"
+msgstr "Виджеты боковых колонок"
+
+#: admin/main.php:175
+#@ tempera
+msgid "Footer Widgets"
+msgstr "Виджеты подвала"
+
+#: admin/main.php:176
+#@ tempera
+msgid "Links"
+msgstr "Ссылки"
+
+#: admin/main.php:177
+#@ tempera
+msgid "Post metas"
+msgstr "Мета-информация публикаций"
+
+#: admin/main.php:178
+#@ tempera
+msgid "Socials"
+msgstr "Социальные"
+
+#: admin/main.php:179
+#@ tempera
+msgid "Caption type"
+msgstr "Тип заголовка"
+
+#: admin/main.php:184
+#@ tempera
+msgid "Breadcrumbs"
+msgstr "Путь на сайте (хлебные крошки)"
+
+#: admin/main.php:185
+#@ tempera
+msgid "Pagination"
+msgstr "Разбиение на страницы"
+
+#: admin/main.php:186
+#@ tempera
+msgid "Menu Alignment"
+msgstr "Выравнивание меню"
+
+#: admin/main.php:187
+#@ tempera
+msgid "Content Margins"
+msgstr "Поля содержимого"
+
+#: admin/main.php:188
+#@ tempera
+msgid "Post Images Border"
+msgstr "Рамка изображений в публикациях"
+
+#: admin/main.php:189
+#@ tempera
+msgid "Content List Bullets"
+msgstr "Иконки элементов списков"
+
+#: admin/main.php:190
+#@ tempera
+msgid "Page Titles"
+msgstr "Заголовки страниц"
+
+#: admin/main.php:191
+#@ tempera
+msgid "Category Titles"
+msgstr "Заголовки рубрик"
+
+#: admin/main.php:192
+#@ tempera
+msgid "Hide Tables"
+msgstr "Скрыть таблицы"
+
+#: admin/main.php:193
+#@ tempera
+msgid "Back to Top button"
+msgstr "Кнопка Наверх"
+
+#: admin/main.php:196
+#@ tempera
+msgid "Meta Bar Position"
+msgstr "Расположение мета-полосы"
+
+#: admin/main.php:197
+#@ tempera
+msgid "Show on Blog Metas"
+msgstr "Показывать в мета-информации блога"
+
+#: admin/main.php:198
+#@ tempera
+msgid "Show on Single Pages"
+msgstr "Показывать на одиночных страницах"
+
+#: admin/main.php:199
+#@ tempera
+msgid "Text Under Comments"
+msgstr "Текст под комментариями"
+
+#: admin/main.php:200
+#@ tempera
+msgid "Comments are closed text"
+msgstr "Текст фразы \"Комментирование закрыто\""
+
+#: admin/main.php:201
+#@ tempera
+msgid "Comments off"
+msgstr "Комментарии выключены"
+
+#: admin/main.php:204
+#: includes/theme-functions.php:239
+#@ tempera
+msgid "Home Page"
+msgstr "Главная страница"
+
+#: admin/main.php:205
+#: admin/settings.php:343
+#: admin/settings.php:439
+#@ tempera
+msgid "Sticky Posts"
+msgstr "Прилепленные публикации"
+
+#: admin/main.php:206
+#@ tempera
+msgid "Archive and Category Pages"
+msgstr "Страницы архивов и рубрик"
+
+#: admin/main.php:207
+#@ tempera
+msgid "Number of Words for Post Excerpts "
+msgstr "Количество слов в отрывке публикации"
+
+#: admin/main.php:208
+#@ tempera
+msgid "Magazine Layout"
+msgstr "Журнальная развёртка"
+
+#: admin/main.php:209
+#@ tempera
+msgid "Excerpt suffix"
+msgstr "Суффикс отрывка"
+
+#: admin/main.php:210
+#@ tempera
+msgid "Continue reading link text "
+msgstr "Текст ссылки на продолжения чтения "
+
+#: admin/main.php:211
+#@ tempera
+msgid "HTML tags in Excerpts"
+msgstr "Теги HTML в отрывках"
+
+#: admin/main.php:214
+#@ tempera
+msgid "Featured Images as POST Thumbnails "
+msgstr "Связанные изображения как миниатюры публикаций"
+
+#: admin/main.php:215
+#@ tempera
+msgid "Auto Select Images From Posts "
+msgstr "Автовыбор изображения из публикаций"
+
+#: admin/main.php:216
+#@ tempera
+msgid "Thumbnails Alignment "
+msgstr "Выравнивание миниатюр"
+
+#: admin/main.php:217
+#@ tempera
+msgid "Thumbnails Size "
+msgstr "Размер миниатюр "
+
+#: admin/main.php:218
+#@ tempera
+msgid "Featured Images as HEADER Images "
+msgstr "Связанные изображения как изображения заголовка"
+
+#: admin/main.php:221
+#@ tempera
+msgid "Link nr. 1"
+msgstr "Ссылка номер 1"
+
+#: admin/main.php:222
+#@ tempera
+msgid "Link nr. 2"
+msgstr "Ссылка номер 2"
+
+#: admin/main.php:223
+#@ tempera
+msgid "Link nr. 3"
+msgstr "Ссылка номер 3"
+
+#: admin/main.php:224
+#@ tempera
+msgid "Link nr. 4"
+msgstr "Ссылка номер 4"
+
+#: admin/main.php:225
+#@ tempera
+msgid "Link nr. 5"
+msgstr "Ссылка номер 6"
+
+#: admin/main.php:226
+#@ tempera
+msgid "Socials display"
+msgstr "Показывать социальные"
+
+#: admin/main.php:229
+#@ tempera
+msgid "Internet Explorer Compatibility Tag"
+msgstr "Тег совместимости с Internet Explorer"
+
+#: admin/main.php:230
+#@ tempera
+msgid "Custom Footer Text"
+msgstr "Свой текст в подвале"
+
+#: admin/main.php:231
+#@ tempera
+msgid "Custom CSS"
+msgstr "Свой CSS"
+
+#: admin/main.php:232
+#@ tempera
+msgid "Custom JavaScript"
+msgstr "Свой JavaScript"
+
+#: admin/main.php:258
+#@ tempera
+msgid "Sorry, but you do not have sufficient permissions to access this page."
+msgstr "Извините, но у вас не хватает прав для доступа к этой странице."
+
+#: admin/main.php:277
+#@ tempera
+msgid "Tempera settings updated successfully."
+msgstr "Настройки темы Tempera успешно обновлены."
+
+#: admin/main.php:293
+#@ tempera
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: admin/main.php:294
+#@ tempera
+msgid "Reset to Defaults"
+msgstr "Сбросить в настройки по умолчанию"
+
+#: admin/main.php:326
+#@ tempera
+msgid "Import/Export Settings"
+msgstr "Испортировать/экспортировать настройки"
+
+#: admin/main.php:331
+#@ tempera
+msgid "Export Theme options"
+msgstr "Экспорт настроек темы"
+
+#: admin/main.php:332
+#@ tempera
+msgid "It's that easy: a mouse click away - the ability to export your Tempera settings and save them on your computer. Feeling safer? You should!"
+msgstr "Это просто: в один щелчок мыши экспортировать настройки Tempera и сохранить их на вашем компьютере. Чувствуете себя в безопасности? А должны бы!"
+
+#: admin/main.php:337
+#@ tempera
+msgid "Import Theme options"
+msgstr "Импорт настроек темы"
+
+#: admin/main.php:338
+#@ tempera
+msgid "Without the import, the export would just be a fool's exercise. Make sure you have the exported file ready and see you after the mouse click."
+msgstr "Без функции импорта, функция экспорта была бы упражнением для дураков. Пожалуйста, убедитесь что у вас есть экспортированный файл. Увидимся после щелчка мышью."
+
+#: admin/main.php:343
+#@ tempera
+msgid "Color Schemes"
+msgstr "Цветовые схемы"
+
+#: admin/main.php:344
+#@ tempera
+msgid "A collection of preset color schemes to use as the starting point for your site. Just load one up and see your blog in a different light."
+msgstr "Коллекция предсозданных цветовых схем для начала использования на вашем сайте. Просто загрузите одну из них и вы увидете свой сайт в новом свете."
+
+#: admin/main.php:352
+#@ tempera
+msgid "Tempera Latest News"
+msgstr "Новости Tempera"
+
+#: admin/main.php:363
+#@ tempera
+msgid "Reset Tempera Settings to Defaults?"
+msgstr "Сбросить настройки Tempera в значения по умолчанию?"
+
+#: admin/prototypes.php:30
+#@ tempera
+msgid "or Google font"
+msgstr "или шрифт Google"
+
+#: admin/settings.php:28
+#@ tempera
+msgid "One column (no sidebars)"
+msgstr "Одна колонка (без боковых колонок)"
+
+#: admin/settings.php:29
+#@ tempera
+msgid "Two columns, sidebar on the right"
+msgstr "Две колонки, боковая колонка справа"
+
+#: admin/settings.php:30
+#@ tempera
+msgid "Two columns, sidebar on the left"
+msgstr "Две колонки, боковая колонка слева"
+
+#: admin/settings.php:31
+#@ tempera
+msgid "Three columns, sidebars on the right"
+msgstr "Три колонки, боковые колонки справа"
+
+#: admin/settings.php:32
+#@ tempera
+msgid "Three columns, sidebars on the left"
+msgstr "Три колонки, боковые колонки слева"
+
+#: admin/settings.php:33
+#@ tempera
+msgid "Three columns, one sidebar on each side"
+msgstr "Три колонки, боковые колонки по бокам"
+
+#: admin/settings.php:41
+#@ tempera
+msgid "Choose your layout. Possible options are: <br> No sidebar, a single sidebar on either left of right, two sidebars on either left or right and two sidebars on each side.<br>This can be overriden in pages by using Page Templates."
+msgstr "Выберите свою раскладку. Возможные варианты: <br> Нет боковых колонок, одна боковая колонка слева или справа, две боковых колонки слева, справа или по сторонам.<br>Это может быть переопределено в настройках страницы с помощью Шаблона страницы."
+
+#: admin/settings.php:90
+#@ tempera
+msgid "Content ="
+msgstr "Содержимое ="
+
+#: admin/settings.php:91
+#@ tempera
+msgid "Sidebar(s) ="
+msgstr "Боковые колонки ="
+
+#: admin/settings.php:92
+#@ tempera
+msgid "Total width ="
+msgstr "Общая ширина ="
+
+#: admin/settings.php:99
+#@ tempera
+msgid "Select the width of your <b>content</b> and <b>sidebar(s)</b>. When using a 3 columns layout (with 2 sidebars) they will each have half the configured width."
+msgstr "Выберите ширину вашего <b>основного содержимого</b> и <b>боковых колонок. При использовании трёхколончатой раскладки (с двумя боковыми колонками), ширина каждой будет в половину настроенной здесь величины.</b>"
+
+#: admin/settings.php:108
+#: admin/settings.php:200
+#: admin/settings.php:209
+#: admin/settings.php:720
+#: admin/settings.php:767
+#: admin/settings.php:964
+#: admin/settings.php:979
+#: admin/settings.php:1080
+#: admin/settings.php:1096
+#: admin/settings.php:1269
+#: admin/settings.php:1298
+#: admin/settings.php:1321
+#: admin/settings.php:1340
+#: admin/settings.php:1389
+#: admin/settings.php:1533
+#@ tempera
+msgid "Enable"
+msgstr "Вкл"
+
+#: admin/settings.php:108
+#: admin/settings.php:200
+#: admin/settings.php:209
+#: admin/settings.php:720
+#: admin/settings.php:964
+#: admin/settings.php:979
+#: admin/settings.php:1080
+#: admin/settings.php:1096
+#: admin/settings.php:1269
+#: admin/settings.php:1298
+#: admin/settings.php:1321
+#: admin/settings.php:1340
+#: admin/settings.php:1389
+#: admin/settings.php:1533
+#@ tempera
+msgid "Disable"
+msgstr "Выкл"
+
+#: admin/settings.php:116
+#@ tempera
+msgid "Allow zoom"
+msgstr "Разрешить увеличение (zoom)"
+
+#: admin/settings.php:117
+#@ tempera
+msgid "Enable to make Tempera fully responsive. The layout and general sizes of your blog will adjust depending on what device and what resolution it is viewed in.<br> Do not disable unless you have a good reason to."
+msgstr "Включите чтобы сделать Tempera полностью отзывчивой. Раскладка и все размеры вашего сайта будут подстраиваться под устройство и разрешение экрана.<br> Не выключайте, если у вас нет на это действительно хорошей причины."
+
+#: admin/settings.php:129
+#@ tempera
+msgid "Select the header's height. After saving the settings go and upload your new header image. The header's width will be "
+msgstr "Выберите высоту заголовка. После сохранения настроек загрузите новое изображение заголовка. Ширина заголовка будет "
+
+#: admin/settings.php:135
+#@ tempera
+msgid "Define header image"
+msgstr "Укажите изображение заголовка "
+
+#: admin/settings.php:136
+#@ tempera
+msgid "Center the header image horizontally"
+msgstr "Центрировать заглавное изображение по горизонтали"
+
+#: admin/settings.php:138
+#@ tempera
+msgid "Keep header image aspect ratio."
+msgstr "Выдерживать соотношение сторон заглавного изображения."
+
+#: admin/settings.php:139
+#@ tempera
+msgid "By default the header has a minimum height set. This option removes that and the header becomes fully responsive, scalling to any size.<br> Only enable this if you're <b>not</b> using a logo or site title and description in the header. "
+msgstr "По умолчанию высота заглавного изображения установлена в минимальное значение. Эта настройка убирает данную установку и заголовок становится полностью отзывчивым, масштабируясь под любой размер.<br> Включайте это, только если вы <b>НЕ</b> используете логотип или заголовок и описание сайта."
+
+#: admin/settings.php:147
+#@ tempera
+msgid "Site Title and Description"
+msgstr "Заголовок и описание сайта"
+
+#: admin/settings.php:147
+#@ tempera
+msgid "Custom Logo"
+msgstr "Свой логотип"
+
+#: admin/settings.php:147
+#@ tempera
+msgid "Clickable header image"
+msgstr "Заглавное изобразжение, чувствительное к щелчку мыши (кликабельное)"
+
+#: admin/settings.php:147
+#@ tempera
+msgid "Empty"
+msgstr "Пусто"
+
+#: admin/settings.php:149
+#@ tempera
+msgid "Choose what to display inside your header area."
+msgstr "Выберите, что показывать внутри области заголовка."
+
+#: admin/settings.php:157
+#@ tempera
+msgid "Custom Logo upload. The logo will appear over the header image if you have used one."
+msgstr "Загрузка своего логотипа. Логотип будет отображаться поверх заглавного изображения, если вы используете таковое."
+
+#: admin/settings.php:158
+#: admin/settings.php:175
+#: admin/settings.php:414
+#@ tempera
+msgid "Select / Upload Image"
+msgstr "Выберите / Загрузите изображение"
+
+#: admin/settings.php:163
+#@ tempera
+msgid "top"
+msgstr "сверху"
+
+#: admin/settings.php:164
+#@ tempera
+msgid "left"
+msgstr "слева"
+
+#: admin/settings.php:165
+#@ tempera
+msgid "Select the top and left spacing for the header content. Use it to better position your site title and description or custom logo inside the header. "
+msgstr "Выберите верхнее и левое расстояние для содержимого заголовка. Используйте для лучшего позиционирования заголовка и описания сайта или логотипа внутри области заголовка."
+
+#: admin/settings.php:174
+#@ tempera
+msgid "Limitations: It has to be an image. It should be max 64x64 pixels in dimensions. Recommended file extensions .ico and .png. <br> <strong>Note that some browsers do not display the changed favicon instantly.</strong>"
+msgstr "Ограничение: Это должно быть изображение. Оно должно быть размером не более 64x64 пикселей. Рекомендованные форматы файлов: .ico и .png.<br><strong>Имейте в виду, что некоторые браузеры не отображают изменённый favicon сразу.</strong>"
+
+#: admin/settings.php:184
+#@ tempera
+msgid "60%"
+msgstr "60%"
+
+#: admin/settings.php:184
+#@ tempera
+msgid "50%"
+msgstr "50%"
+
+#: admin/settings.php:184
+#@ tempera
+msgid "33%"
+msgstr "33%"
+
+#: admin/settings.php:184
+#@ tempera
+msgid "25%"
+msgstr "25%"
+
+#: admin/settings.php:186
+#@ tempera
+msgid "Limit the header widget area max width as percentage of the entire header width."
+msgstr "Ограничить максимальную ширину зоны заголовка виджета как процент от всей ширины заголовка. "
+
+#: admin/settings.php:202
+#@ tempera
+msgid "Enable the presentation front-page. This will become your new home page. <br> If you want another page to hold your latest blog posts, choose 'Blog Template (Posts Page)' from Page Templates while creating or editing that page."
+msgstr "Включить страницу презентации. Она станет вашей новой домашней страницей. <br> Если вы хотите чтобы другая страница содержала ваши крайние публикации, выберите 'Шаблон блога (страница публикаций)' из Шаблонов страница при создании или редактировании этой страницы."
+
+#: admin/settings.php:212
+#@ tempera
+msgid "posts"
+msgstr "публикаций"
+
+#: admin/settings.php:213
+#@ tempera
+msgid "Enable to display latest posts on the presentation page, below the columns. Sticky posts are always displayed and not counted."
+msgstr "Включите для отображения крайних публикаций на странице презентации, сразу под колонками. Прилипшие публикации отображаются всегда и не учитываются."
+
+#: admin/settings.php:220
+#@ tempera
+msgid "Slider Dimensions:"
+msgstr "Размеры слайдера:"
+
+#: admin/settings.php:221
+#@ tempera
+msgid "width"
+msgstr "ширина"
+
+#: admin/settings.php:222
+#@ tempera
+msgid "height"
+msgstr "высота"
+
+#: admin/settings.php:223
+#@ tempera
+msgid "The dimensions of your slider. Make sure your images are of the same size."
+msgstr "Размеры вашего слайдера. Пожалуйста, убедитесь что все изображения имеют одинаковый размер."
+
+#: admin/settings.php:225
+#@ tempera
+msgid "Animation:"
+msgstr "Анимация:"
+
+#: admin/settings.php:227
+#@ tempera
+msgid "Random"
+msgstr "Случайная"
+
+#: admin/settings.php:227
+#@ tempera
+msgid "Fold"
+msgstr "Складывание"
+
+#: admin/settings.php:227
+#@ tempera
+msgid "Fade"
+msgstr "Затухание"
+
+#: admin/settings.php:227
+#@ tempera
+msgid "SlideInRight"
+msgstr "Выезд справа"
+
+#: admin/settings.php:227
+#@ tempera
+msgid "SlideInLeft"
+msgstr "Выезд слева"
+
+#: admin/settings.php:227
+#@ tempera
+msgid "SliceDown"
+msgstr "Разделение сверху"
+
+#: admin/settings.php:227
+#@ tempera
+msgid "SliceDownLeft"
+msgstr "Разделение сверху-справа"
+
+#: admin/settings.php:227
+#@ tempera
+msgid "SliceUp"
+msgstr "Разделение вверх"
+
+#: admin/settings.php:227
+#@ tempera
+msgid "SliceUpLeft"
+msgstr "Разделение вверх-влево"
+
+#: admin/settings.php:227
+#@ tempera
+msgid "SliceUpDown"
+msgstr "Разделение вверх-вниз"
+
+#: admin/settings.php:227
+#@ tempera
+msgid "SliceUpDownLeft"
+msgstr "Разделение вверх-вниз-влево"
+
+#: admin/settings.php:227
+#@ tempera
+msgid "BoxRandom"
+msgstr "Случайный прямоугольник"
+
+#: admin/settings.php:227
+#@ tempera
+msgid "BoxRain"
+msgstr "Прямоугольник дождём"
+
+#: admin/settings.php:227
+#@ tempera
+msgid "BoxRainReverse"
+msgstr "Обратный прямоугольник дождём"
+
+#: admin/settings.php:227
+#@ tempera
+msgid "BoxRainGrow"
+msgstr "Растущий прямоугольник дождём"
+
+#: admin/settings.php:227
+#@ tempera
+msgid "BoxRainGrowReverse"
+msgstr "Обратный растущий прямоугольник дождём"
+
+#: admin/settings.php:236
+#@ tempera
+msgid "The transition effect of your slides."
+msgstr "Эффекты замены слайдов."
+
+#: admin/settings.php:238
+#@ tempera
+msgid "Animation Time:"
+msgstr "Время анимации:"
+
+#: admin/settings.php:239
+#: admin/settings.php:243
+#@ tempera
+msgid "milliseconds"
+msgstr "миллисекунд"
+
+#: admin/settings.php:240
+#@ tempera
+msgid "The time in which the transition animation will take place."
+msgstr "Время, за которое анимация заменит слайд."
+
+#: admin/settings.php:242
+#@ tempera
+msgid "Pause Time:"
+msgstr "Время паузы:"
+
+#: admin/settings.php:244
+#@ tempera
+msgid "The time in which a slide will be still and visible."
+msgstr "Это время, в течение которого слайд будет виден и неподвижен."
+
+#: admin/settings.php:246
+#@ tempera
+msgid "Slider navigation:"
+msgstr "Навигация слайдера:"
+
+#: admin/settings.php:248
+#@ tempera
+msgid "Numbers"
+msgstr "Числа"
+
+#: admin/settings.php:248
+#@ tempera
+msgid "Bullets"
+msgstr "Точки"
+
+#: admin/settings.php:248
+#@ tempera
+msgid "None"
+msgstr "Нет"
+
+#: admin/settings.php:256
+#@ tempera
+msgid "Your slider navigation type. Shown under the slider."
+msgstr "Тип навигации слайдера. Показывается под слайдером."
+
+#: admin/settings.php:258
+#@ tempera
+msgid "Slider arrows:"
+msgstr "Стрелки слайдера:"
+
+#: admin/settings.php:260
+#@ tempera
+msgid "Always Visible"
+msgstr "Всегда видны"
+
+#: admin/settings.php:260
+#@ tempera
+msgid "Visible on Hover"
+msgstr "Видны если провести мышью"
+
+#: admin/settings.php:260
+#@ tempera
+msgid "Hidden"
+msgstr "Скрыты"
+
+#: admin/settings.php:268
+#@ tempera
+msgid "The Left and Right arrows on your slider"
+msgstr "Левая и правая стрелки слайдера"
+
+#: admin/settings.php:270
+#@ tempera
+msgid "Slider Border Width:"
+msgstr "Ширина рамки слайдера:"
+
+#: admin/settings.php:271
+#: admin/settings.php:275
+#@ tempera
+msgid "px"
+msgstr "пкс"
+
+#: admin/settings.php:272
+#@ tempera
+msgid "The slider's border width. You can also edit its color from the Color Settings. Use a border width when your slider is smaller than the total site width."
+msgstr "Ширина рамки слайдера. Вы можете также выбрать её цвет в настройках цвета. Используйте рамку, если слайдер уже чем ширина сайта."
+
+#: admin/settings.php:274
+#@ tempera
+msgid "Slider Top Margin:"
+msgstr "Расстояние сверху от слайдера:"
+
+#: admin/settings.php:276
+#@ tempera
+msgid "Add a top margin for the slider. By default this margin is 0 and you will want to increase this value when the width of the slider is smaller than the total width of the site."
+msgstr "Добавляет расстояние сверху от слайдера. По умолчанию это расстояние равно 0 и вы можете его увиличить его, если ширина слайдера меньше ширины сайта."
+
+#: admin/settings.php:343
+#@ tempera
+msgid "Custom Slides"
+msgstr "Свои слайды"
+
+#: admin/settings.php:343
+#: admin/settings.php:439
+#@ tempera
+msgid "Latest Posts"
+msgstr "Крайние публикации"
+
+#: admin/settings.php:343
+#: admin/settings.php:439
+#@ tempera
+msgid "Random Posts"
+msgstr "Случайные публикации"
+
+#: admin/settings.php:343
+#: admin/settings.php:439
+#@ tempera
+msgid "Latest Posts from Category"
+msgstr "Крайние публикации из рубрики"
+
+#: admin/settings.php:343
+#: admin/settings.php:439
+#@ tempera
+msgid "Random Posts from Category"
+msgstr "Случайные публикации из рубрики"
+
+#: admin/settings.php:343
+#: admin/settings.php:439
+#@ tempera
+msgid "Specific Posts"
+msgstr "Конкретные публикации"
+
+#: admin/settings.php:343
+#: admin/settings.php:439
+#@ tempera
+msgid "Disabled"
+msgstr "Выкл"
+
+#: admin/settings.php:352
+#@ tempera
+msgid "Only the slides with a defined image will become active and visible in the live slider.<br>When using slides from posts, make sure the selected posts have featured images.<br>Read the FAQs for more info."
+msgstr "Только слайды с определённым изображением будут активны и видны в слайдере. <br>При использовании слайдов из публикаций, убедитесь что у публикаций есть продвигаемые изображения.<br>Прочтите FAQ, если информации не хватило."
+
+#: admin/settings.php:357
+#@ tempera
+msgid "Latest posts will be loaded into the slider."
+msgstr "Крайние публикации будут загружены в слайдер."
+
+#: admin/settings.php:361
+#@ tempera
+msgid "Random posts will be loaded into the slider."
+msgstr "Случайные публикации будут загружены в слайдер."
+
+#: admin/settings.php:365
+#@ tempera
+msgid "Latest posts from the category you choose will be loaded in the slider."
+msgstr "Крайние публикации из выбранной рубрики будут загружены в слайдер."
+
+#: admin/settings.php:369
+#@ tempera
+msgid "Random posts from the category you choose will be loaded into the slider."
+msgstr "Случайные публикации из выбранной рубрики будут загружены в слайдер."
+
+#: admin/settings.php:373
+#@ tempera
+msgid "Only sticky posts will be loaded into the slider."
+msgstr "Только прилипшие публикации будут загружены в слайдер."
+
+#: admin/settings.php:377
+#: admin/settings.php:473
+#@ tempera
+msgid "List the post IDs you want to display (separated by a comma): "
+msgstr "Перечислите ID публикаций, которые будут отображаться (через запятую):"
+
+#: admin/settings.php:382
+#: admin/settings.php:483
+#@ tempera
+msgid "<br> Choose the category: "
+msgstr "<br> Выберите рубрику: "
+
+#: admin/settings.php:384
+#: admin/settings.php:485
+#@ tempera
+msgid "Select Category"
+msgstr "Выбрать рубрику"
+
+#: admin/settings.php:398
+#: admin/settings.php:499
+#@ tempera
+msgid "Number of posts to show:"
+msgstr "Количество публикаций для показа:"
+
+#: admin/settings.php:409
+#@ tempera
+msgid "Slide"
+msgstr "Слайд"
+
+#: admin/settings.php:411
+#: content/content-image.php:26
+#@ tempera
+msgid "Image"
+msgstr "Изображение"
+
+#: admin/settings.php:415
+#@ tempera
+msgid "Title"
+msgstr "Заголовок"
+
+#: admin/settings.php:418
+#@ tempera
+msgid "Text"
+msgstr "Текст"
+
+#: admin/settings.php:421
+#: content/content-link.php:33
+#@ tempera
+msgid "Link"
+msgstr "Ссылка"
+
+#: admin/settings.php:439
+#@ tempera
+msgid "Widget Columns"
+msgstr "Колонки виджетов"
+
+#: admin/settings.php:448
+#@ tempera
+msgid "Only the columns with a defined image will become active and visible on the presentation page.<br>When using columns from posts, make sure the selected posts have featured images.<br>Read the FAQs for more info."
+msgstr "Только колонки с определённым изображением будут активны и видны на странице презентации. <br>При использовании колонок из публикаций, убедитесь что выбранные публикации имеют связанные изображения.<br>Читайте FAQ для дополнительных знаний."
+
+#: admin/settings.php:453
+#@ tempera
+msgid "Latest posts will be loaded into the columns."
+msgstr "Крайние публикации будут загружены в колонки."
+
+#: admin/settings.php:457
+#@ tempera
+msgid "Random posts will be loaded into the columns."
+msgstr "Случайные публикации будут загружены в колонки."
+
+#: admin/settings.php:461
+#@ tempera
+msgid "Latest posts from the category you choose will be loaded in the columns."
+msgstr "Крайние публикации из рубрики будут загружены в колонки."
+
+#: admin/settings.php:465
+#@ tempera
+msgid "Random posts from the category you choose will be loaded into the columns."
+msgstr "Случайные публикации из рубрики будут загружены в колонки."
+
+#: admin/settings.php:469
+#@ tempera
+msgid "Only sticky posts will be loaded into the columns."
+msgstr "Только прилипшие публикации будут загружены в колонки."
+
+#: admin/settings.php:478
+#@ tempera
+msgid "Load your custom Widgets as columns. Go to <a>Appearance >> Widgets</a> and create your custom columns using the Columns widget. You can use as many as you want."
+msgstr "Загрузите свои виджеты как колонки. Зайдите в <a>Внешний вид >> Виджеты</a> и создайте свои колонки используя виджет Колонки. Вы можете сделать столько, сколько хотите."
+
+#: admin/settings.php:506
+#@ tempera
+msgid "Columns per row:"
+msgstr "Колонок в строке:"
+
+#: admin/settings.php:516
+#@ tempera
+msgid "Image Size:"
+msgstr "Размер изображения:"
+
+#: admin/settings.php:517
+#@ tempera
+msgid "Height: "
+msgstr "Высота: "
+
+#: admin/settings.php:518
+#@ tempera
+msgid "Width: "
+msgstr "Ширина: "
+
+#: admin/settings.php:519
+#@ tempera
+msgid "The sizes for your column images. The width is dependent on total site width and not configurable."
+msgstr "Размеры ваших изображений. Ширина зависит от ширины сайта и не настраивается."
+
+#: admin/settings.php:521
+#@ tempera
+msgid "Read more text:"
+msgstr "Текст ссылки на чтение далее:"
+
+#: admin/settings.php:524
+#@ tempera
+msgid "The linked text that appears at the bottom of each column. Leave empty to hide the link."
+msgstr "Текст со ссылкой, появляющийся внизу каждой колонки. Оставьте пустым чтобы скрыть ссылку."
+
+#: admin/settings.php:533
+#@ tempera
+msgid "Extra Text"
+msgstr "Дополнительный текст"
+
+#: admin/settings.php:535
+#@ tempera
+msgid "Text for the Presentation Page"
+msgstr "Текст для страницы презентации"
+
+#: admin/settings.php:537
+#@ tempera
+msgid "More text for the Presentation Page. The top title is just below the slider, the second title is below the columns. A text area supporting HTML tags and shortcodes below each title<br>It's all optional so leave any input field empty to not dispaly it."
+msgstr "Больше текста для страницы презентации. Верхний заголовок будет сразу под слайдером, второй заголоков под колонками. Текстовая HTML-область под каждым заголовком.<br>Это всё опционально, так что оставьте поля пустыми чтобы скрыть их."
+
+#: admin/settings.php:539
+#@ tempera
+msgid "Top Title"
+msgstr "Верхний заголовок"
+
+#: admin/settings.php:541
+#@ tempera
+msgid "Top Text"
+msgstr "Верхний текст"
+
+#: admin/settings.php:544
+#@ tempera
+msgid "Second Title"
+msgstr "Второй заголовок"
+
+#: admin/settings.php:546
+#@ tempera
+msgid "Second text"
+msgstr "Второй текст"
+
+#: admin/settings.php:549
+#@ tempera
+msgid "Hide areas"
+msgstr "Скрыть области"
+
+#: admin/settings.php:551
+#@ tempera
+msgid "Choose the areas to hide on the first page."
+msgstr "Выберите области, которые нужно скрыть на первой странице."
+
+#: admin/settings.php:562
+#@ tempera
+msgid "Hide the header area (logo/title and/or image/empty area)."
+msgstr "Скрыть область заголовка (логотип/заголовок и/или изображение)"
+
+#: admin/settings.php:565
+#@ tempera
+msgid "Hide the main menu and the top menu."
+msgstr "Скрыть главное меню и верхнее меню."
+
+#: admin/settings.php:568
+#@ tempera
+msgid "Hide the footer widgets. "
+msgstr "Скрыть виджеты подвала. "
+
+#: admin/settings.php:571
+#@ tempera
+msgid "Hide the footer (copyright area)."
+msgstr "Скрыть подвал (область копирайта)."
+
+#: admin/settings.php:596
+#@ tempera
+msgid "Select the general font family and size or insert the Google Font name you'll use in your blog. This will affect all text except the one controlled by the options below. "
+msgstr "Выберите шрифт общего пользования или вставьте имя шрифта Google для использования на сайте. Это затронет весь текст кроме управляемого настройками ниже. "
+
+#: admin/settings.php:615
+#@ tempera
+msgid "Select the font family and size or insert the Google Font name you want for your titles. It will affect post titles and page titles. Leave 'General Font' and the general font values you selected will be used."
+msgstr "Выберите шрифт или вставьте имя шрифта Google для заголовков. Это затронет заголовки публикаций и страниц. Оставьте 'Шрифт общего назначения' для использования общего шрифта сайта, выбранного выше."
+
+#: admin/settings.php:634
+#@ tempera
+msgid "Select the font family and size or insert the Google Font name you want your widget titles to have. Leave 'General Font' and the general font values you selected will be used."
+msgstr "Выберите шрифт или вставьте имя шрифта Google для заголовков виджетов. Оставьте 'Шрифт общего назначения' для использования общего шрифта сайта, выбранного выше."
+
+#: admin/settings.php:652
+#@ tempera
+msgid "Select the font family and size or insert the Google Font name you want your site title and tagline to use. Leave 'General Font' and the general font values you selected will be used."
+msgstr "Выберите шрифт или вставьте имя шрифта Google для заголовка сайта и строки тегов. Оставьте 'Шрифт общего назначения' для использования общего шрифта сайта, выбранного выше."
+
+#: admin/settings.php:670
+#@ tempera
+msgid "Select the font family and size or insert the Google Font name you want your main menu to use. Leave 'General Font' and the general font values you selected will be used."
+msgstr "Выберите шрифт или вставьте имя шрифта Google для главного меню. Оставьте 'Шрифт общего назначения' для использования общего шрифта сайта, выбранного выше."
+
+#: admin/settings.php:691
+#@ tempera
+msgid "Select the font family and size or insert the Google Font name you want your headings to have (h1 - h6 tags will be affected). Leave 'General Font' and the general font values you selected will be used."
+msgstr "Выберите шрифт или вставьте имя шрифта Google для заголовков внутри текста (теги H1 - H6). Оставьте 'Шрифт общего назначения' для использования общего шрифта сайта, выбранного выше."
+
+#: admin/settings.php:699
+#: admin/settings.php:740
+#: admin/settings.php:750
+#@ tempera
+msgid "Default"
+msgstr "По умолчанию"
+
+#: admin/settings.php:699
+#: admin/settings.php:993
+#: admin/settings.php:1356
+#@ tempera
+msgid "Left"
+msgstr "По левому краю"
+
+#: admin/settings.php:699
+#: admin/settings.php:993
+#: admin/settings.php:1356
+#@ tempera
+msgid "Right"
+msgstr "По правому краю"
+
+#: admin/settings.php:699
+#@ tempera
+msgid "Justify"
+msgstr "Выровнять"
+
+#: admin/settings.php:699
+#: admin/settings.php:993
+#: admin/settings.php:1356
+#@ tempera
+msgid "Center"
+msgstr "Центрировать"
+
+#: admin/settings.php:701
+#@ tempera
+msgid "This overwrites the text alignment in posts and pages. Leave 'Default' for normal settings (alignment will remain as declared in posts, comments etc.)."
+msgstr "Это переопределяет выравнивание текста в публикациях и страницах. Оставьте значение по умолчанию для обычного значения (выравнивание будет таким, каким оно указано в публикациях, комментариях и т.п.)."
+
+#: admin/settings.php:711
+#@ tempera
+msgid "Choose the indent for your paragraphs."
+msgstr "Выберите отступ для абзацев."
+
+#: admin/settings.php:722
+#@ tempera
+msgid "Disable the default headings indent (left margin)."
+msgstr "Отключить отступ заголовков по умолчанию (отступ слева)."
+
+#: admin/settings.php:732
+#@ tempera
+msgid "Text line height. The height between 2 rows of text."
+msgstr "Межстрочный интервал."
+
+#: admin/settings.php:742
+#@ tempera
+msgid "The space between <i>words</i>. Leave 'Default' for normal settings (size value will be as set in the CSS)."
+msgstr "Расстояние между <i>словами</i>. Оставьте значение по умолчанию для обычного значения (из CSS)."
+
+#: admin/settings.php:752
+#@ tempera
+msgid "The space between <i>letters</i>. Leave 'Default' for normal settings (size value will be as set in the CSS)."
+msgstr "Расстояние между <i>буквами</i>. Оставьте значение по умолчанию для обычного значения (из CSS)."
+
+#: admin/settings.php:760
+#@ tempera
+msgid "Select the spacing between the paragraphs."
+msgstr "Выберите расстояние между абзацами."
+
+#: admin/settings.php:767
+#@ tempera
+msgid "Default (disabled)"
+msgstr "По умолчанию (отключено)"
+
+#: admin/settings.php:769
+#@ tempera
+msgid "Enable uppercase text styling. All text in the site will be uppercase."
+msgstr "Выберите для использования только заглавных букв. Весь текст на сайте будет заглавными буквами."
+
+#: admin/settings.php:777
+#@ tempera
+msgid "Define background image"
+msgstr "Определите фоновое изображение"
+
+#: admin/settings.php:782
+#: admin/settings.php:808
+#: admin/settings.php:833
+#: admin/settings.php:861
+#: admin/settings.php:873
+#@ tempera
+msgid "Background:"
+msgstr "Фоновое изображение:"
+
+#: admin/settings.php:783
+#@ tempera
+msgid "Header Background"
+msgstr "Фон заголовка"
+
+#: admin/settings.php:784
+#@ tempera
+msgid "Main Site Background"
+msgstr "Фон сайта"
+
+#: admin/settings.php:785
+#@ tempera
+msgid "Footer Widgets Area Background"
+msgstr "Фон области виджетов подвала"
+
+#: admin/settings.php:786
+#@ tempera
+msgid "Footer Background"
+msgstr "Фон подвала"
+
+#: admin/settings.php:787
+#: admin/settings.php:810
+#: admin/settings.php:835
+#: admin/settings.php:864
+#: admin/settings.php:876
+#@ tempera
+msgid "Text:"
+msgstr "Текст: "
+
+#: admin/settings.php:788
+#@ tempera
+msgid "General Text"
+msgstr "Общий текст"
+
+#: admin/settings.php:789
+#@ tempera
+msgid "General Lighter Text"
+msgstr "Общий лёгкий текст"
+
+#: admin/settings.php:790
+#@ tempera
+msgid "Footer Text"
+msgstr "Текст подвала"
+
+#: admin/settings.php:791
+#@ tempera
+msgid "The site background features 4 separately coloured areas.<br />The general text colour applies to all text on the website that is not controlled by any other option."
+msgstr "Фон сайта состоит из четырёх цветовых областей.<br />Общий цвет текста применяется ко всему тексту на сайте, не затрагиваемому остальными настройками."
+
+#: admin/settings.php:796
+#@ tempera
+msgid "Accent Color #1"
+msgstr "Цвет акцента #1"
+
+#: admin/settings.php:797
+#@ tempera
+msgid "Accent Color #2"
+msgstr "Цвет акцента #2"
+
+#: admin/settings.php:798
+#@ tempera
+msgid "Accent Color #3"
+msgstr "Цвет акцента #3"
+
+#: admin/settings.php:799
+#@ tempera
+msgid "Accent Color #4"
+msgstr "Цвет акцента #4"
+
+#: admin/settings.php:800
+#@ tempera
+msgid "Accent Color #5"
+msgstr "Цвет акцента #5"
+
+#: admin/settings.php:801
+#@ tempera
+msgid ""
+"Accents #1 and #2 should either be the same as the link colours or be separate from all other colours on the site.<br />\n"
+"     Accent #5 is used for input fields and buttons backgrounds, borders and lines.<br />\n"
+"     Accents #3 and #4 should be the lighter/darker than the content background colour, being used as borders/shades on elements where accent #5 is background colour."
+msgstr "Акценты #1 и #2 должны быть одного цвета с цветом ссылок или отличными от других цветов сайта.<br /> Акцент #5 используется для полей ввода и фонов кнопок, рамок и линий.<br />Акценты #3 и #4 должны быть светлее или темнее чем цвет фона, используемого как рамки/тени элементов для которых Акцент #5 является фоновым."
+
+#: admin/settings.php:809
+#@ tempera
+msgid "Site Description Background"
+msgstr "Фон описания сайта"
+
+#: admin/settings.php:812
+#@ tempera
+msgid "Site Description"
+msgstr "Описание сайта"
+
+#: admin/settings.php:818
+#@ tempera
+msgid "Menu:"
+msgstr "Меню:"
+
+#: admin/settings.php:819
+#@ tempera
+msgid "Menu Background"
+msgstr "Фон меню"
+
+#: admin/settings.php:820
+#@ tempera
+msgid "Menu Text"
+msgstr "Текст меню"
+
+#: admin/settings.php:823
+#@ tempera
+msgid "Submenu:"
+msgstr "Подменю:"
+
+#: admin/settings.php:824
+#@ tempera
+msgid "Submenu Background"
+msgstr "Фон подменю"
+
+#: admin/settings.php:825
+#@ tempera
+msgid "Submenu Text"
+msgstr "Текст подменю"
+
+#: admin/settings.php:826
+#@ tempera
+msgid "Submenu Shadow"
+msgstr "Тень подменю"
+
+#: admin/settings.php:828
+#@ tempera
+msgid "These colours apply to the main site menu (and dropdown elements)."
+msgstr "Эти цвета применяются к главному меню тексту (и выпадающим элементам)."
+
+#: admin/settings.php:834
+#@ tempera
+msgid "Top Bar Background"
+msgstr "Фон верхней полосы"
+
+#: admin/settings.php:836
+#@ tempera
+msgid "Top Bar Menu Link"
+msgstr "Цвет ссылки меню верхней полосы"
+
+#: admin/settings.php:837
+#@ tempera
+msgid "Top Bar Menu Link Hover"
+msgstr "Цвет ссылки при наведении в меню верхней полосы"
+
+#: admin/settings.php:838
+#@ tempera
+msgid "These colours apply to the top bar menu."
+msgstr "Эти цвета применяются к меню верхней полосы."
+
+#: admin/settings.php:843
+#@ tempera
+msgid "Content Background"
+msgstr "Фоновый цвет содержимого"
+
+#: admin/settings.php:844
+#@ tempera
+msgid "Page/Post Title"
+msgstr "Заголовок публикации/страницы"
+
+#: admin/settings.php:845
+#@ tempera
+msgid "Page/Post Title Hover"
+msgstr "Заголовок публикации/страницы при наведении"
+
+#: admin/settings.php:846
+#@ tempera
+msgid "Content Headings"
+msgstr "Заголовки в содержимом (H1-H6)"
+
+#: admin/settings.php:847
+#@ tempera
+msgid "Content colours apply to post and page areas of the site."
+msgstr "Цвет содержимого, применяемый к областям публикаций и страниц сайта."
+
+#: admin/settings.php:852
+#@ tempera
+msgid "Titles Color"
+msgstr "Цвет заголовков"
+
+#: admin/settings.php:853
+#@ tempera
+msgid "Slider Border Color"
+msgstr "Цвет границ слайдера"
+
+#: admin/settings.php:854
+#@ tempera
+msgid "Slider Caption Text Color"
+msgstr "Цвет заголовков слайдов на слайдере"
+
+#: admin/settings.php:855
+#@ tempera
+msgid "Slider Caption Background"
+msgstr "Фон заголовков слайдов на слайдере"
+
+#: admin/settings.php:856
+#@ tempera
+msgid "These colours apply to specific areas of the presentation page."
+msgstr "Эти цвета применяются для областей страницы презентации."
+
+#: admin/settings.php:862
+#@ tempera
+msgid "Sidebars Background"
+msgstr "Фон боковых колонок"
+
+#: admin/settings.php:863
+#@ tempera
+msgid "Sidebars Widget Title Background"
+msgstr "Цвет фона виджетов боковых колонок"
+
+#: admin/settings.php:865
+#@ tempera
+msgid "Sidebars Text"
+msgstr "Текст боковых колонок"
+
+#: admin/settings.php:866
+#@ tempera
+msgid "Sidebars Widget Title Text"
+msgstr "Заголовки виджетов боковых колонок"
+
+#: admin/settings.php:867
+#@ tempera
+msgid "These colours apply to the widgets placed in either sidebar."
+msgstr "Эти цвета применяются к виджетам, располагаемым в боковых колонках"
+
+#: admin/settings.php:874
+#@ tempera
+msgid "Footer Widgets Background"
+msgstr "Фон виджетов подвала"
+
+#: admin/settings.php:875
+#@ tempera
+msgid "Footer Widgets Title Background"
+msgstr "Заголовки виджетов подвала"
+
+#: admin/settings.php:877
+#@ tempera
+msgid "Footer Widget Text"
+msgstr "Текст виджетов подвала"
+
+#: admin/settings.php:878
+#@ tempera
+msgid "Footer Widgets Title Text"
+msgstr "Текст заголовков виджетов подвала"
+
+#: admin/settings.php:879
+#@ tempera
+msgid "These colours apply to the widgets in the footer area."
+msgstr "Эти цвета применяются к виджетом области подвала"
+
+#: admin/settings.php:884
+#@ tempera
+msgid "General:"
+msgstr "Цвета общего назначения:"
+
+#: admin/settings.php:885
+#@ tempera
+msgid "General Links"
+msgstr "Ссылки"
+
+#: admin/settings.php:886
+#@ tempera
+msgid "General Links Hover"
+msgstr "Ссылки при наведении"
+
+#: admin/settings.php:887
+#@ tempera
+msgid "Sidebar Widgets:"
+msgstr "Виджеты боковых колонок:"
+
+#: admin/settings.php:888
+#@ tempera
+msgid "Sidebar Widgets Links"
+msgstr "Ссылки в виджетах боковых колонок"
+
+#: admin/settings.php:889
+#@ tempera
+msgid "Sidebar Widgets Links Hover"
+msgstr "Ссылки в виджетах боковых колонок при наведении"
+
+#: admin/settings.php:890
+#@ tempera
+msgid "Footer Widgets:"
+msgstr "Виджеты подвала:"
+
+#: admin/settings.php:891
+#@ tempera
+msgid "Footer Widgets Links"
+msgstr "Ссылки в виджетах подвала"
+
+#: admin/settings.php:892
+#@ tempera
+msgid "Footer Widgets Links Hover"
+msgstr "Ссылки в виджетах подвала при наведении"
+
+#: admin/settings.php:893
+#@ tempera
+msgid "Footer:"
+msgstr "Подвал:"
+
+#: admin/settings.php:894
+#@ tempera
+msgid "Footer Links"
+msgstr "Ссылки подвала"
+
+#: admin/settings.php:895
+#@ tempera
+msgid "Footer Links Hover"
+msgstr "Ссылки подвала при наведении"
+
+#: admin/settings.php:896
+#@ tempera
+msgid "Footer colours include the footer menu colours."
+msgstr "Цвета подвала включают цвета меню подвала."
+
+#: admin/settings.php:901
+#@ tempera
+msgid "Meta Icons"
+msgstr "Мета-пиктограммы"
+
+#: admin/settings.php:902
+#@ tempera
+msgid "Meta Links"
+msgstr "Мета-ссылки"
+
+#: admin/settings.php:903
+#@ tempera
+msgid "Meta Links Hover"
+msgstr "Мета-ссылки при наведении"
+
+#: admin/settings.php:904
+#@ tempera
+msgid "Colours for your meta area (post information)."
+msgstr "Цвета для мета-области (информация о публикации)."
+
+#: admin/settings.php:909
+#@ tempera
+msgid "Social Icons Background"
+msgstr "Фон пиктограмм соцсетей"
+
+#: admin/settings.php:910
+#@ tempera
+msgid "Social Icons Background Hover"
+msgstr "Фон пиктограмм соцсетей при наведении"
+
+#: admin/settings.php:911
+#@ tempera
+msgid "Background colours for your social icons."
+msgstr "Фоновые цвета для пиктограмм соцсетей."
+
+#: admin/settings.php:917
+#@ tempera
+msgid "Light"
+msgstr "Светлый"
+
+#: admin/settings.php:917
+#@ tempera
+msgid "Dark"
+msgstr "Тёмный"
+
+#: admin/settings.php:917
+#@ tempera
+msgid "Simple"
+msgstr "Простой"
+
+#: admin/settings.php:925
+#@ tempera
+msgid "This setting changes the look of your captions. Images that are not inserted through captions will not be affected."
+msgstr "Эта настройка изменяет вид заголовков. Изображения, вставляемые через заголовки не будут затронуты."
+
+#: admin/settings.php:938
+#@ tempera
+msgid "Normal"
+msgstr "Обычный"
+
+#: admin/settings.php:938
+#@ tempera
+msgid "Fixed"
+msgstr "Фиксированный"
+
+#: admin/settings.php:938
+#: admin/settings.php:1033
+#: admin/settings.php:1050
+#: admin/settings.php:1065
+#: admin/settings.php:1115
+#: admin/settings.php:1164
+#: admin/settings.php:1195
+#@ tempera
+msgid "Hide"
+msgstr "Скрыть"
+
+#: admin/settings.php:948
+#@ tempera
+msgid "Site width"
+msgstr "Ширина сайта"
+
+#: admin/settings.php:948
+#@ tempera
+msgid "Full width"
+msgstr "Полная ширина"
+
+#: admin/settings.php:957
+#@ tempera
+msgid "Show the topbar that can include social icons and the top menu."
+msgstr "Показывать верхнюю полосу, которая может содержать меню и пиктограммы соцсетей."
+
+#: admin/settings.php:972
+#@ tempera
+msgid "Show breadcrumbs at the top of the content area. Breadcrumbs are a form of navigation that keeps track of your location withtin the site."
+msgstr "Показывать путь на сайте (хлебные крошки) внутри области сожержимого. Пути (хлебные крошки) - это форма навигации, показывающая ваше текущее положение внутри сайта."
+
+#: admin/settings.php:987
+#@ tempera
+msgid "Show numbered pagination. Where there is more than one page, instead of the bottom <b>Older Posts</b> and <b>Newer posts</b> links you have a numbered pagination. "
+msgstr "Показывать нумерованную навигацию по страницам. Там, где есть более чем одна страница, вместо нижних ссылок <b>Раньше</b> и <b>Позже</b> будет появляться блок навигации с номерами."
+
+#: admin/settings.php:993
+#@ tempera
+msgid "Right (multiline)"
+msgstr "По правому краю (мультистрока)"
+
+#: admin/settings.php:1001
+#@ tempera
+msgid "Sets the desired menu items alignment."
+msgstr "Устанавливает желаемое выравнивание пунктов меню."
+
+#: admin/settings.php:1007
+#@ tempera
+msgid "Margin top: "
+msgstr "Верхнее поле:"
+
+#: admin/settings.php:1008
+#@ tempera
+msgid "The margin between the content and the menu. It can be set to 0px if you want the content area and menu to join."
+msgstr "Поле между содержимым и меню. Может быть установлено в 0пкс, если вы желаете объединить зону содержимого и меню."
+
+#: admin/settings.php:1010
+#@ tempera
+msgid "Padding left/right: "
+msgstr "Поля слева/справа:"
+
+#: admin/settings.php:1011
+#@ tempera
+msgid "The left/right padding around the content. Should be set to 10px or less for designs without a content color."
+msgstr "Левое/правое поля вокруг содержимого. Должно быть установлено в 10пкс или меньше для дизайна без цвета содержимого."
+
+#: admin/settings.php:1026
+#@ tempera
+msgid "The border style for your images. Only images inserted in your posts and pages will be affected. "
+msgstr "Стиль рамки изображений. Затронуты будут только изображения, загружаемые в публикации или страницы."
+
+#: admin/settings.php:1033
+#: admin/settings.php:1050
+#: admin/settings.php:1065
+#: admin/settings.php:1164
+#: admin/settings.php:1179
+#: admin/settings.php:1195
+#@ tempera
+msgid "Show"
+msgstr "Показать"
+
+#: admin/settings.php:1041
+#@ tempera
+msgid "Hide or show bullets next to lists in your content area (posts, pages etc.)."
+msgstr "Показать или скрыть точки (пиктограммы) в списках в области содержимого (в публикациях, на страницах и т.п.)."
+
+#: admin/settings.php:1058
+#@ tempera
+msgid "Hide or show titles on pages."
+msgstr "Скрыть или показать заголовки на страницах."
+
+#: admin/settings.php:1073
+#@ tempera
+msgid "Hide or show titles on Categories and Archives."
+msgstr "Скрыть или показать заголовки Рубрик и Архивов."
+
+#: admin/settings.php:1088
+#@ tempera
+msgid "Hide table borders and background color."
+msgstr "Скрыть заливку и границы таблиц."
+
+#: admin/settings.php:1104
+#@ tempera
+msgid "Enable the Back to Top button. The button appears after scrolling the page down."
+msgstr "Включить кнопку Наверх. Эта кнопка появляется при проматывании страницы вниз."
+
+#: admin/settings.php:1115
+#@ tempera
+msgid "Top"
+msgstr "Сверху"
+
+#: admin/settings.php:1115
+#@ tempera
+msgid "Bottom"
+msgstr "Снизу"
+
+#: admin/settings.php:1123
+#@ tempera
+msgid "The position of your meta bar (author, date, category, tags and edit button)."
+msgstr "Расположение мета-области (автор, дата, рубрика, теги, кнопка редактирования)."
+
+#: admin/settings.php:1130
+#: admin/settings.php:1146
+#@ tempera
+msgid "Author"
+msgstr "Автор"
+
+#: admin/settings.php:1130
+#: admin/settings.php:1146
+#: includes/theme-loop.php:185
+#@ tempera
+msgid "Date"
+msgstr "Дата"
+
+#: admin/settings.php:1130
+#: admin/settings.php:1146
+#@ tempera
+msgid "Time"
+msgstr "Время"
+
+#: admin/settings.php:1130
+#: admin/settings.php:1146
+#@ tempera
+msgid "Category"
+msgstr "Рубрика"
+
+#: admin/settings.php:1130
+#: admin/settings.php:1146
+#: includes/theme-functions.php:226
+#@ tempera
+msgid "Tag"
+msgstr "Тег"
+
+#: admin/settings.php:1130
+#@ tempera
+msgid "Comments"
+msgstr "Комментарии"
+
+#: admin/settings.php:1139
+#@ tempera
+msgid "Choose the post metas you want to show on multiple post pages (home, blog, category, archive etc.)"
+msgstr "Выберите мета-данные публикации для показа на страницах с многими публикациями (домашняя, блог, рубрика, архив, и т.п.)"
+
+#: admin/settings.php:1146
+#: includes/theme-loop.php:274
+#@ tempera
+msgid "Bookmark"
+msgstr "Закладка"
+
+#: admin/settings.php:1155
+#@ tempera
+msgid "Choose the post metas you want to show on sigle post pages."
+msgstr "Выберите мета-данные для публикации на странице с одной публикацией."
+
+#: admin/settings.php:1172
+#@ tempera
+msgid "Hide the explanatory text under the comments form (starts with  <i>You may use these HTML tags and attributes:...</i>)."
+msgstr "Скрыть объясняющий текст под формой комментариев (начинается с <i>Вы можете использовать следующие HTML-теги и атрибуты:...</i>)."
+
+#: admin/settings.php:1179
+#@ tempera
+msgid "Hide in posts"
+msgstr "Скрыть в публикациях"
+
+#: admin/settings.php:1179
+#@ tempera
+msgid "Hide in pages"
+msgstr "Скрыть в страницах"
+
+#: admin/settings.php:1179
+#@ tempera
+msgid "Hide everywhere"
+msgstr "Скрыть везде"
+
+#: admin/settings.php:1187
+#@ tempera
+msgid "Hide the <b>Comments are closed</b> text that by default shows up on pages or posts with comments disabled."
+msgstr "Скрыть надпись <b>Комментирование запрещено</b>, которая показывается на страницах и публикациях с запрещённым комментированием."
+
+#: admin/settings.php:1203
+#@ tempera
+msgid "Hide the <b>Comments off</b> text next to posts that have comments disabled."
+msgstr "Скрыть надпись <b>Комментирование запрещено</b> напротив публикаций с запрещённым комментированием."
+
+#: admin/settings.php:1215
+#: admin/settings.php:1230
+#: admin/settings.php:1246
+#@ tempera
+msgid "Excerpt"
+msgstr "Отрывок"
+
+#: admin/settings.php:1215
+#: admin/settings.php:1230
+#: admin/settings.php:1246
+#@ tempera
+msgid "Full Post"
+msgstr "Вся публикация"
+
+#: admin/settings.php:1223
+#@ tempera
+msgid "Excerpts on the main page. Only standard posts will be affected. All other post formats (aside, image, chat, quote etc.) have their specific formating."
+msgstr "Отрывки на главной странице. Затронуты будут только стандартные публикации. Все прочие форматы публикаций (сторонние, изображения, чаты, цитаты) имеют своё особенное форматирование."
+
+#: admin/settings.php:1238
+#@ tempera
+msgid "Choose if you want the sticky posts on your home page to be visible in full or just the excerpts. "
+msgstr "Выберите если хотите чтобы прилипшие публикации отображались целиком (а не в виде отрывка)."
+
+#: admin/settings.php:1254
+#@ tempera
+msgid "Excerpts on archive, categroy and search pages. Same as above, only standard posts will be affected."
+msgstr "Отрывки в архивах, рубриках и странице поиска. Так же как и выше, затронуты будут только стандартные публикации."
+
+#: admin/settings.php:1262
+#@ tempera
+msgid "The number of words for excerpts. When that number is reached the post will be interrupted by a <i>Continue reading</i> link that will take the reader to the full post page."
+msgstr "Количество слов в отрывке. При достижении этого ограничения, публикация будет оборвана и появится ссылка <i>Читать далее</i>, ведущая на полный текст публикации."
+
+#: admin/settings.php:1277
+#@ tempera
+msgid "Enable the Magazine Layout. This layout applies to pages with posts and shows 2 posts per row."
+msgstr "Включить журнальную раскладку. Эта раскладка применяется к страницам с публикациями и показывает две публикации в строке."
+
+#: admin/settings.php:1284
+#@ tempera
+msgid "Replaces the three dots ('[...])' that are appended automatically to excerpts."
+msgstr "Заменяет троеточие, которое автоматически добавляется в конце отрывка."
+
+#: admin/settings.php:1291
+#@ tempera
+msgid "Edit the 'Continue Reading' link added to your post excerpts."
+msgstr "Редактировать ссылку 'Читать далее', добавляемую в конце отрывков."
+
+#: admin/settings.php:1306
+#@ tempera
+msgid ""
+"By default WordPress excerpts remove all HTML tags (&lt;pre&gt;, &lt;a&gt;, &lt;b&gt and all others) and only clean text is left in the excerpt.\n"
+"Enabling this option allows HTML tags to remain in excerpts so all your default formating will be kept.<br /> <b>Just a warning: </b>If HTML tags are enabled, you have to make sure\n"
+"they are not left open. So if within your post you have an opened HTML tag but the except ends before that tag closes, the rest of the site will be contained in that HTML tag. -- Leave 'Disable' if unsure -- "
+msgstr "По умолчанию WordPress удаляет из отрывков все теги HTML (&lt;pre&gt;, &lt;a&gt;, &lt;b&gt и все остальные). Включение этой опции позволяет тегам HTML оставаться в отрывках, так что всё форматирование будет сохраняться. <br /><b> Предупреждение: </b>Если включены теги HTML, убедитесь что они корректно закрыты в области, которая попадает в отрывок. Если не уверены - не включайте эту опцию! "
+
+#: admin/settings.php:1332
+#@ tempera
+msgid "Link the thumbnail to the post"
+msgstr "Ссылка на миниатюру в публикации"
+
+#: admin/settings.php:1333
+#@ tempera
+msgid "Show featured images as thumbnails on posts. The images must be selected for each post in the Featured Image section."
+msgstr "Показывать миниатюры продвигаемых изображений публикаций. Изображения должны быть выбраны для каждой публикации в разделе Продвигаемые изображения."
+
+#: admin/settings.php:1348
+#@ tempera
+msgid "Show the first image that you inserted in a post as a thumbnail. If there is a Featured Image selected for that post, it will have priority."
+msgstr "Показать первое встреченное в публикации изображение как миниатюру. Если в публикации есть продвигаемое изображение, оно будет иметь больший приоритет."
+
+#: admin/settings.php:1364
+#@ tempera
+msgid "Thumbnail alignment."
+msgstr "Выравнивание миниатюр."
+
+#: admin/settings.php:1371
+#@ tempera
+msgid "(width)"
+msgstr "(ширина)"
+
+#: admin/settings.php:1372
+#@ tempera
+msgid "(height)"
+msgstr "(высота)"
+
+#: admin/settings.php:1378
+#@ tempera
+msgid "Crop images to exact size."
+msgstr "Обрезать изображения до точного размера."
+
+#: admin/settings.php:1381
+#@ tempera
+msgid "The size (in pixels) for your thumbnails. By default imges will be scaled with aspect ratio kept. Choose to crop the images if you want the exact size."
+msgstr "Размер (в пикселях) ваших миниатюр. По умолчанию изображения будут смасштабированы с сохранением соотношения сторон. Выберите чтобы обрезать изображения для достижения точного размера."
+
+#: admin/settings.php:1397
+#@ tempera
+msgid "Show featured images on headers. The header will be replaced with a featured image if you selected it as a Featured Image in the post and if it is bigger or at least equal to the current header size."
+msgstr "Показывать продвигаемые изображения в заголовках. Заголовок будет заменён продвигаемым изображением если вы выберете его в публикации и если оно больше или как минимум равно текущему размеру заголовка."
+
+#: admin/settings.php:1408
+#@ tempera
+msgid "Select your desired Social network from the left dropdown menu and insert your corresponding address in the right input field. (ex: <i>http://www.facebook.com/yourname</i> )"
+msgstr "Выберите желаемую социальную сеть из левого выпадающего меню и вставьте соответствующий адрес в поле ввода справа (например <i>http://www.facebook.com/yourname</i>)"
+
+#: admin/settings.php:1409
+#@ tempera
+msgid "You can also choose if you want the link to open in a new window and what title to dispaly while hovering over the icon."
+msgstr "Вы также можете выбрать открывать ли ссылку в новом окне и что показывать при наведении на пиктограмму."
+
+#: admin/settings.php:1410
+#@ tempera
+msgid "You can show up to 5 different social icons from over 35 social networks."
+msgstr "Вы можете показать до 5 различных пиктограмм из списка, содержащего 35 социальных сетей."
+
+#: admin/settings.php:1411
+#@ tempera
+msgid "You can leave any number of inputs empty."
+msgstr "Вы можете оставить любое количество полей ввода пустыми."
+
+#: admin/settings.php:1412
+#@ tempera
+msgid "You can change the background for your social colors from the colors settings section."
+msgstr "Вы можете изменить цвет фона для пиктограмм социальных сетей в разделе управления цветами."
+
+#: admin/settings.php:1430
+#@ tempera
+msgid "Social Network Link"
+msgstr "Ссылка социальной сети"
+
+#: admin/settings.php:1435
+#@ tempera
+msgid "Open in new window"
+msgstr "Открывать в новом окне"
+
+#: admin/settings.php:1437
+#@ tempera
+msgid "Social Network Title"
+msgstr "Название ссылки социальной сети"
+
+#: admin/settings.php:1480
+#@ tempera
+msgid "Footer"
+msgstr "Подвал"
+
+#: admin/settings.php:1484
+#@ tempera
+msgid "Left side"
+msgstr "Левая сторона"
+
+#: admin/settings.php:1488
+#@ tempera
+msgid "Right side"
+msgstr "Правая сторона"
+
+#: admin/settings.php:1494
+#: includes/theme-setup.php:210
+#: sidebar-left.php:26
+#@ tempera
+msgid "Left Sidebar"
+msgstr "Левая колонка"
+
+#: admin/settings.php:1498
+#: includes/theme-setup.php:221
+#: sidebar-right.php:26
+#@ tempera
+msgid "Right Sidebar"
+msgstr "Правкая колонка"
+
+#: admin/settings.php:1500
+#@ tempera
+msgid "Choose the <b>areas</b> where to display the social icons."
+msgstr "Выберите <b>области</b>, в которых будут размещаться пиктограммы социальных сетей."
+
+#: admin/settings.php:1513
+#@ tempera
+msgid "Insert custom text or HTML code that will appear in you footer. <br /> You can use HTML to insert links, images and special characters like &copy;."
+msgstr "Вставьте свой текст или код HTML для отображения в подвале. <br /> Вы можете использовать HTML для вставки ссылок, изображений и спецсимволов, например &copy;."
+
+#: admin/settings.php:1521
+#@ tempera
+msgid "Insert your custom CSS here. Any CSS declarations made here will overwrite Tempera's (even the custom options specified right here in the Tempera Settings page). <br /> Your custom CSS will be preserved when updating the theme."
+msgstr "Вставьте здесь свой код CSS. Все блоки CSS отсюда будут иметь приоритет над значениями Tempera (даже над значениями, прописанными в настройках). <br /> Ваш код CSS будет сохранён при обновлении темы."
+
+#: admin/settings.php:1528
+#@ tempera
+msgid "Insert your custom Javascript code here. (Google Analytics and any other forms of Analytic software)."
+msgstr "Вставьте здесь ваш код Javascript (Например, код Google Analytics или любой другой)."
+
+#: admin/settings.php:1542
+#@ tempera
+msgid "Enable extra compatibility tag for older Internet Explorer versions. Turning this option on will trigger W3C validation errors."
+msgstr "Включить дополнительный тег совместимости для старых версий Internet Explorer. Включение этой опции приведёт к срабатыванию проверки синтаксиса HTML валидатором W3C."
+
+#: archive.php:26
+#, php-format
+#@ tempera
+msgid "Daily Archives: %s"
+msgstr "Архивы по дням: %s"
+
+#: archive.php:28
+#, php-format
+#@ tempera
+msgid "Monthly Archives: %s"
+msgstr "Архивы по месяцам: %s"
+
+#: archive.php:28
+#@ tempera
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "F Y"
+
+#: archive.php:30
+#, php-format
+#@ tempera
+msgid "Yearly Archives: %s"
+msgstr "Архивы по годам: %s"
+
+#: archive.php:30
+#@ tempera
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y"
+
+#: archive.php:32
+#@ tempera
+msgid "Blog Archives"
+msgstr "Архивы блога"
+
+#: archive.php:56
+#: author.php:71
+#: category.php:49
+#: content/content-index.php:35
+#: search.php:38
+#: tag.php:50
+#: templates/template-blog.php:34
+#@ tempera
+msgid "Nothing Found"
+msgstr "Ничего не найдено"
+
+#: archive.php:60
+#: author.php:75
+#: category.php:53
+#: content/content-index.php:39
+#: tag.php:54
+#: templates/template-blog.php:38
+#@ tempera
+msgid "Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post."
+msgstr "Извините, но в ответ на ваш запрос в архиве ничего не найдено. Пожалуйста, воспользуйтесь поиском."
+
+#: attachment.php:18
+#, php-format
+#@ tempera
+msgid "Return to %s"
+msgstr "Вернуться к %s"
+
+#. translators: %s - title of parent post
+#: attachment.php:32
+#, php-format
+#@ tempera
+msgid "Full size is %s pixels"
+msgstr "Полный размер: %s пикселей"
+
+#: attachment.php:35
+#@ tempera
+msgid "Link to full-size image"
+msgstr "Ссылка на изображение в полном размере"
+
+#: attachment.php:75
+#: content/content-page.php:23
+#: includes/theme-loop.php:211
+#: single.php:49
+#: templates/template-page-with-intro.php:18
+#@ tempera
+msgid "Edit"
+msgstr "Редактировать"
+
+#: attachment.php:86
+#@ tempera
+msgid "Continue reading"
+msgstr "Продолжить чтение"
+
+#: attachment.php:87
+#: content/content-aside.php:29
+#: content/content-audio.php:24
+#: content/content-chat.php:29
+#: content/content-gallery.php:51
+#: content/content-image.php:23
+#: content/content-link.php:29
+#: content/content-page.php:22
+#: content/content-quote.php:27
+#: content/content-video.php:24
+#: content/content.php:40
+#: content/content.php:56
+#: single.php:27
+#: templates/template-page-with-intro.php:17
+#@ tempera
+msgid "Pages:"
+msgstr "Страниц:"
+
+#: attachment.php:92
+#@ tempera
+msgid "Previous image"
+msgstr "Предыдущее изображение"
+
+#: attachment.php:93
+#@ tempera
+msgid "Next image"
+msgstr "Следующее изображение"
+
+#: author.php:29
+#, php-format
+#@ tempera
+msgid "Author Archives: %s"
+msgstr "Архивы автора: %s"
+
+#: category.php:20
+#, php-format
+#@ tempera
+msgid "Category Archives: %s"
+msgstr "Архивы рубрики: %s"
+
+#: comments.php:25
+#@ tempera
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "Эта публикация защищена паролем. Введите пароль для просмотра комментариев."
+
+#: comments.php:50
+#@ tempera
+msgid "Comments are closed"
+msgstr "Комментирование запрещено"
+
+#: content/content-aside.php:28
+#: content/content-audio.php:23
+#: content/content-chat.php:28
+#: content/content-image.php:22
+#: content/content-link.php:28
+#: content/content-quote.php:26
+#: content/content-status.php:32
+#: content/content-video.php:23
+#@ tempera
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Продолжить чтение <span class=\"meta-nav\">&rarr;</span>"
+
+#: content/content-aside.php:33
+#@ tempera
+msgid "Aside"
+msgstr "В стороне"
+
+#: content/content-audio.php:27
+#@ tempera
+msgid "Audio"
+msgstr "Аудио"
+
+#: content/content-chat.php:33
+#@ tempera
+msgid "Chat"
+msgstr "Чат"
+
+#: content/content-frontpage.php:38
+#@ tempera
+msgid "No Posts to Display"
+msgstr "Нет публикаций для отображения"
+
+#: content/content-frontpage.php:43
+#, php-format
+#@ tempera
+msgid "You currently have no published posts. To hide this message either <a href=\"%s\">add some posts</a> or disable displaying posts on the Presentation Page in <a href=\"%s\">theme settings</a>."
+msgstr "У вас нет опубликованных публикаций. Чтобы скрыть это сообщение или <a href=\"%s\">добавьте публикацию</a>, или выключите отображение публикаций на странице презентации в <a href=\"%s\">настройках</a>."
+
+#: content/content-gallery.php:41
+#, php-format
+#@ tempera
+msgid "This gallery contains <a %1$s>%2$s photo</a>."
+msgid_plural "This gallery contains <a %1$s>%2$s photos</a>."
+msgstr[0] "Эта галерея содержит <a %1$s>%2$s фотографию</a>."
+msgstr[1] "Эта галерея содержит <a %1$s>%2$s фотографии</a>."
+msgstr[2] "Эта галерея содержит <a %1$s>%2$s фотографий</a>."
+
+#: content/content-gallery.php:55
+#@ tempera
+msgid "Gallery"
+msgstr "Галерея"
+
+#: content/content-quote.php:31
+#@ tempera
+msgid "Quote"
+msgstr "Цитата"
+
+#: content/content-status.php:36
+#@ tempera
+msgid "Status"
+msgstr "Статус"
+
+#: content/content-video.php:27
+#@ tempera
+msgid "Video"
+msgstr "Видео"
+
+#: includes/ajax.php:48
+#@ tempera
+msgid "More posts"
+msgstr "Показать еще"
+
+#: includes/theme-comments.php:26
+#@ tempera
+msgid "Pingback: "
+msgstr "Pingback: "
+
+#: includes/theme-comments.php:26
+#: includes/theme-comments.php:41
+#@ tempera
+msgid "(Edit)"
+msgstr "(Редактировать)"
+
+#. translators: 1: date, 2: time
+#: includes/theme-comments.php:41
+#@ tempera
+msgid "at"
+msgstr "в"
+
+#: includes/theme-comments.php:48
+#@ tempera
+msgid "Your comment is awaiting moderation."
+msgstr "Ваш комментарий ожидает одобрения модератором."
+
+#: includes/theme-comments.php:55
+#@ tempera
+msgid "Reply"
+msgstr "Ответить"
+
+#: includes/theme-comments.php:91
+#@ tempera
+msgid "<b>0</b>"
+msgstr "<b>0</b>"
+
+#: includes/theme-comments.php:91
+#@ tempera
+msgid "<b>1</b>"
+msgstr "<b>1</b>"
+
+#: includes/theme-comments.php:91
+#@ tempera
+msgid "<b>%</b>"
+msgstr "<b>%</b>"
+
+#: includes/theme-comments.php:91
+#@ tempera
+msgid "<b>-</b>"
+msgstr "<b>-</b>"
+
+#: includes/theme-comments.php:102
+#, php-format
+#@ tempera
+msgid "One Comment:"
+msgid_plural "%1$s Comments:"
+msgstr[0] "%1$s комментарий:"
+msgstr[1] "%1$s комментария:"
+msgstr[2] "%1$s комментариев:"
+
+#: includes/theme-comments.php:115
+#@ tempera
+msgid "Older Comments"
+msgstr "Старые комментарии"
+
+#: includes/theme-comments.php:116
+#@ tempera
+msgid "Newer Comments"
+msgstr "Новые комментарии"
+
+#: includes/theme-comments.php:144
+#@ tempera
+msgid "Comments are closed."
+msgstr "Комментирование запрещено."
+
+#: includes/theme-comments.php:164
+#: includes/theme-comments.php:165
+#@ tempera
+msgid "Name"
+msgstr "Имя"
+
+#: includes/theme-comments.php:169
+#: includes/theme-comments.php:170
+#@ tempera
+msgid "Email"
+msgstr "Адрес e-mail"
+
+#: includes/theme-comments.php:174
+#: includes/theme-comments.php:175
+#@ tempera
+msgid "Website"
+msgstr "Адрес сайта"
+
+#: includes/theme-comments.php:187
+#: includes/theme-comments.php:188
+#@ tempera
+msgctxt "noun"
+msgid "Comment"
+msgstr "Комментарий"
+
+#: includes/theme-functions.php:310
+#@ tempera
+msgid "Powered by"
+msgstr "Работает на"
+
+#: includes/theme-loop.php:172
+#@ tempera
+msgid "Author "
+msgstr "Автор "
+
+#: includes/theme-loop.php:189
+#@ tempera
+msgid "Categories"
+msgstr "Рубрики"
+
+#: includes/theme-loop.php:209
+#@ tempera
+msgid "Tags"
+msgstr "Теги"
+
+#: includes/theme-loop.php:271
+#@ tempera
+msgid "Tagged"
+msgstr "Тег"
+
+#: includes/theme-loop.php:274
+#@ tempera
+msgid " Bookmark the permalink"
+msgstr " Закладка на постоянную ссылку"
+
+#: includes/theme-loop.php:274
+#@ tempera
+msgid "Permalink to"
+msgstr "Постоянная ссылка на"
+
+#: includes/theme-loop.php:297
+#@ tempera
+msgid "<i class=\"meta-nav-prev\"></i> <span>Older posts</span>"
+msgstr "<i class=\"meta-nav-prev\"></i> <span>Старые публикации</span>"
+
+#: includes/theme-loop.php:298
+#@ tempera
+msgid "<span>Newer posts</span> <i class=\"meta-nav-next\"></i>"
+msgstr "<span>Новые публикации</span> <i class=\"meta-nav-next\"></i>"
+
+#: includes/theme-meta.php:28
+#, php-format
+#@ tempera
+msgid "Page %s"
+msgstr "Страница %s"
+
+#: includes/theme-setup.php:86
+#@ tempera
+msgid "Primary Navigation"
+msgstr "Первичная навигация"
+
+#: includes/theme-setup.php:87
+#@ tempera
+msgid "Top Navigation"
+msgstr "Верхняя навигация"
+
+#: includes/theme-setup.php:88
+#@ tempera
+msgid "Footer Navigation"
+msgstr "Навигация в подвале"
+
+#: includes/theme-setup.php:120
+#@ tempera
+msgid "Tempera Default Header Image"
+msgstr "Изображение заголовка Tempera по умолчанию"
+
+#: includes/theme-setup.php:181
+#@ tempera
+msgid "Skip to content"
+msgstr "Пропустить до содержимого"
+
+#: includes/theme-setup.php:212
+#@ tempera
+msgid "Left sidebar"
+msgstr "Левая колонка"
+
+#: includes/theme-setup.php:223
+#@ tempera
+msgid "Right sidebar"
+msgstr "Правая колонка"
+
+#: includes/theme-setup.php:232
+#@ tempera
+msgid "First Footer Area"
+msgstr "Первая область подвала"
+
+#: includes/theme-setup.php:234
+#@ tempera
+msgid "First footer area"
+msgstr "Первая область подвала"
+
+#: includes/theme-setup.php:243
+#@ tempera
+msgid "Second Footer Area"
+msgstr "Вторая область подвала"
+
+#: includes/theme-setup.php:245
+#@ tempera
+msgid "Second footer area"
+msgstr "Вторая область подвала"
+
+#: includes/theme-setup.php:254
+#@ tempera
+msgid "Third Footer Area"
+msgstr "Третья область подвала"
+
+#: includes/theme-setup.php:256
+#@ tempera
+msgid "The third footer area"
+msgstr "Третья область подвала"
+
+#: includes/theme-setup.php:265
+#@ tempera
+msgid "Fourth Footer Area"
+msgstr "Четвёртая область подвала"
+
+#: includes/theme-setup.php:267
+#@ tempera
+msgid "The fourth footer area"
+msgstr "Четвёртая область подвала"
+
+#: includes/theme-setup.php:276
+#: includes/theme-setup.php:278
+#@ tempera
+msgid "Above Content Area"
+msgstr "Над областью содержимого"
+
+#: includes/theme-setup.php:287
+#: includes/theme-setup.php:289
+#@ tempera
+msgid "Below Content Area"
+msgstr "Под областью содержимого"
+
+#: includes/theme-setup.php:298
+#: includes/theme-setup.php:300
+#@ tempera
+msgid "Header Widgets"
+msgstr "Виджеты заголовка"
+
+#: includes/theme-setup.php:313
+#, php-format
+#@ tempera
+msgid "Only drag [Cryout Column] widgets here. Recommended size for uploaded images: %1$dpx (width) x %2$dpx (height). Go to the Tempera Settings page >> Presentation Page Settings >> Columns to edit sizes and more."
+msgstr "Перетаскивайте сюда только виджеты [Cryout Column]. Рекомендованный размер для загружаемых изображений: %1$dпкс (в ширину) x %2$dпкс (в высоту). Перейдите на страницу настроекTempera Settings >> Настройки страницы презентации >> Колонки для изменений размеров и прочих настроек."
+
+#: search.php:18
+#, php-format
+#@ tempera
+msgid "Search Results for: %s"
+msgstr "Результаты поиска для: %s"
+
+#: search.php:40
+#, php-format
+#@ tempera
+msgid "No search results for: %s."
+msgstr "По запросу %s ничего не найдено."
+
+#: searchform.php:1
+#@ tempera
+msgid "Search"
+msgstr "Поиск"
+
+#: sidebar-left.php:28
+#, php-format
+#@ tempera
+msgid "You currently have no widgets set in the left sidebar. You can add widgets via the <a href=\"%s\">Dasboard</a>."
+msgstr "У вас нет виджетов в левой колонке. Вы можете добавить виджеты с помощью <a href=\"%s\">Панели управления</a>."
+
+#: sidebar-left.php:29
+#: sidebar-right.php:29
+#, php-format
+#@ tempera
+msgid "To hide this sidebar, switch to a different Layout via the <a href=\"%s\">Theme Settings</a>."
+msgstr "Чтобы скрыть эту колонку, переключите Раскладку страницы в <a href=\"%s\">Настройках темы</a>."
+
+#: sidebar-right.php:28
+#, php-format
+#@ tempera
+msgid "You currently have no widgets set in the right sidebar. You can add widgets via the <a href=\"%s\">Dasboard</a>."
+msgstr "У вас нет виджетов в правой колонке. Вы можете добавить виджеты с помощью <a href=\"%s\">Dasboard</a>."
+
+#: single.php:40
+#@ tempera
+msgid "View all posts by "
+msgstr "Просмотреть все публикации "
+
+#: tag.php:21
+#, php-format
+#@ tempera
+msgid "Tag Archives: %s"
+msgstr "Архивы тегов: %s"
+
+#: admin/admin-functions.php:192
+#@ tempera
+msgid ""
+"Are you sure you want to load a new color scheme? \n"
+"All current saved settings under Text and Color Settings will be lost."
+msgstr ""
+
+#: content/content-aside.php:15
+#: content/content-audio.php:15
+#: content/content-chat.php:15
+#: content/content-gallery.php:18
+#: content/content-gallery.php:42
+#: content/content-image.php:14
+#: content/content-link.php:15
+#: content/content-quote.php:13
+#: content/content-status.php:14
+#: content/content-video.php:15
+#: content/content.php:21
+#, php-format
+#@ tempera
+msgid "Permalink to %s"
+msgstr ""
+
+#: includes/theme-functions.php:312
+#@ tempera
+msgid "Semantic Personal Publishing Platform"
+msgstr ""
+
+#: includes/theme-loop.php:174
+#, php-format
+#@ tempera
+msgid "View all posts by %s"
+msgstr ""
+

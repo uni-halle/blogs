@@ -45,7 +45,7 @@
 			 * catchbox_before_footer_menu hook
 			 *
 			 * @hooked catchbox_footer_menu_display - 10
-			 * @hooked catchbox_mobile_footer_nav_anchor 20
+			 * @hooked catchbox_mobile_footer_menu - 20
 			 */
 			do_action( 'catchbox_footer_menu' ); 
 		

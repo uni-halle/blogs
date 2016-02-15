@@ -8,14 +8,13 @@
 body {
 	background-color: #42a2ce;
 }
-#branding ul.menu li,
-#branding #access-secondary ul.menu li {
+#access ul.menu li,
+#access-secondary ul.menu li {
     border-left: 1px solid #1b4266;
 }
-
-#branding #access,
-#colophon #access-footer,
-#branding ul.menu ul a {
+#access,
+#access-footer,
+#access ul.menu ul a {
 	background: #1b4266; /* Show a solid color for older browsers */
 	background: -moz-linear-gradient(#255a8c, #1b4266);
 	background: -o-linear-gradient(#255a8c, #1b4266);
@@ -23,13 +22,15 @@ body {
 	background: -webkit-linear-gradient(#255a8c, #1b4266);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#255a8c', endColorstr='#1b4266'); /* for IE */
 }
-#branding ul.menu ul a {
+#access ul.menu ul a {
 	color: #fff;
 }
-#branding ul.menu li:hover > a,
-#branding ul.menu a:focus,
-#colophon #access-footer ul.menu a:hover,
-#colophon #access-footer ul.menu a:focus {
+#access ul.menu li:hover > a,
+#access ul.menu a:focus,
+#access-secondary ul.menu li:hover > a,
+#access-secondary ul.menu a:focus,
+#access-footer ul.menu a:hover,
+#access-footer ul.menu a:focus {
 	background: #286298; /* Show a solid color for older browsers */
 	background: -moz-linear-gradient(#1b4266, #286298);
 	background: -o-linear-gradient(#1b4266, #286298);
@@ -41,16 +42,15 @@ body {
 #access-secondary {
     background-color: #255a8c;
 }
-#branding #access-secondary ul.menu a {
-    color: #fff;
-}
-#colophon #access-footer ul.menu li {
+#access-footer ul.menu li {
     border-left: 1px solid #1b4266;	
 }
-#branding #access-secondary ul.menu a {
+#access-secondary ul.menu a {
     line-height: 2.6em;
+    color: #fff;
 }
-#branding #access, #colophon #access-footer {
+#access,
+#access-footer {
 	border-bottom: 1px solid #1B4266;
 	margin-bottom: 0;
 }

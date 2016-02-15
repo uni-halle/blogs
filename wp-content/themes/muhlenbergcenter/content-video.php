@@ -6,21 +6,22 @@
 ?>
 
 <li id="post-<?php the_ID(); ?>" class="media">
+    <?php 
+        /*
+           Check if custom field 'Video-ID' is used
+           if true return content
+        */
+        $youtube = get_post_meta(get_the_ID(), 'Video-ID', true);
+        if (!empty($youtube)) :
+    ?>
     <div class="thumbnail">
-        <a href="<?php the_permalink(); ?>"
-           title="<?php sprintf( _e( 'More about ', 'muhlenbergcenter' ), the_title() ); ?>">
-            <?php if ( has_post_thumbnail() ) : ?>
-                <?php the_post_thumbnail( array(285,180) ); ?>
-            <?php else : ?>
-                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/teaser_videos.jpg"
-                     alt="teaser image" />
-            <?php endif; ?>
-        </a>
+        <div class="flex-video">
+            <iframe src="https://www.youtube-nocookie.com/embed/<?php echo $youtube ?>?rel=0"
+                    class="video-player"
+                    allowfullscreen>
+            </iframe>
+        </div>
     </div>
-    <p>
-        <a href="<?php the_permalink(); ?>"
-           title="<?php sprintf( _e( 'More about ', 'muhlenbergcenter' ), the_title() ); ?>">
-            <?php the_title(); ?>
-        </a>
-    </p>
+    <?php endif; ?>
+    <p><?php the_title(); ?></p>
 </li>

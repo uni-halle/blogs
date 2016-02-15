@@ -1,0 +1,1265 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Coni\n"
+"POT-Creation-Date: 2015-10-31 10:56-0300\n"
+"PO-Revision-Date: 2015-10-31 10:54-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: 404.php:16
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: 404.php:20
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+
+#: 404.php:39
+msgid "Most Used Categories"
+msgstr ""
+
+#: 404.php:60
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr ""
+
+#: comments.php:31
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:40 comments.php:61
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:43 comments.php:64
+msgid "Older Comments"
+msgstr ""
+
+#: comments.php:44 comments.php:65
+msgid "Newer Comments"
+msgstr ""
+
+#: comments.php:77
+msgid "Comments are closed."
+msgstr ""
+
+#: comments.php:91
+msgid "Comment"
+msgstr ""
+
+#: comments.php:103
+msgid "Name"
+msgstr ""
+
+#: comments.php:112
+msgid "Email"
+msgstr ""
+
+#: comments.php:121
+msgid "Website"
+msgstr ""
+
+#: footer.php:26
+msgid "Powered by "
+msgstr ""
+
+#: footer.php:26
+msgid "https://wordpress.org/"
+msgstr ""
+
+#: footer.php:26
+msgid "WordPress"
+msgstr ""
+
+#: footer.php:26
+msgid "Coni designed by "
+msgstr ""
+
+#: footer.php:26
+msgid "https://www.quemalabs.com/"
+msgstr ""
+
+#. Author of the plugin/theme
+#: footer.php:26
+msgid "Quema Labs"
+msgstr ""
+
+#: functions.php:58
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:59
+msgid "Front Page Menu"
+msgstr ""
+
+#: functions.php:60
+msgid "Social Menu"
+msgstr ""
+
+#: inc/customizer.php:43
+msgid "Logo"
+msgstr ""
+
+#: inc/customizer.php:49
+#, php-format
+msgid ""
+"Check out the <a href=\"%s\" target=\"_blank\">PRO version</a> to use an "
+"image logo."
+msgstr ""
+
+#: inc/customizer.php:59
+#, php-format
+msgid ""
+"Check out the <a href=\"%s\" target=\"_blank\">PRO version</a> to change "
+"Text, Links and Featured colors."
+msgstr ""
+
+#: inc/customizer.php:70
+msgid "Front Page Sections"
+msgstr ""
+
+#: inc/customizer.php:80
+msgid "Welcome"
+msgstr ""
+
+#: inc/customizer.php:81
+msgid "Display a big image and welcome message."
+msgstr ""
+
+#: inc/customizer.php:86 template-parts/section-welcome.php:13
+#: template-parts/section-welcome.php:15
+msgid "Be the one to stand out in the crowd"
+msgstr ""
+
+#: inc/customizer.php:90
+msgid "Welcome Message"
+msgstr ""
+
+#: inc/customizer.php:93 inc/customizer.php:228 inc/customizer.php:310
+#: template-parts/section-image.php:32 template-parts/section-phone.php:62
+#: template-parts/section-video.php:40 template-parts/section-welcome.php:16
+msgid "Learn More"
+msgstr ""
+
+#: inc/customizer.php:97 inc/customizer.php:232 inc/customizer.php:314
+#: inc/customizer.php:379 inc/widgets/service.php:188
+msgid "Link Title"
+msgstr ""
+
+#: inc/customizer.php:104 inc/customizer.php:239 inc/customizer.php:321
+#: inc/customizer.php:386 inc/widgets/pricing.php:183
+msgid "Link URL"
+msgstr ""
+
+#: inc/customizer.php:109
+msgid "Welcome Image"
+msgstr ""
+
+#: inc/customizer.php:117 inc/customizer.php:140 inc/customizer.php:190
+#: inc/customizer.php:245 inc/customizer.php:271 inc/customizer.php:327
+#: inc/customizer.php:410 inc/customizer.php:454 inc/customizer.php:484
+#: inc/customizer.php:531 inc/customizer.php:572
+msgid "Use this section?"
+msgstr ""
+
+#: inc/customizer.php:125
+msgid "Services"
+msgstr ""
+
+#: inc/customizer.php:126
+msgid "Display services with icons."
+msgstr ""
+
+#: inc/customizer.php:134
+msgid ""
+"To add services go to: <br><a href=\"#\" data-section=\"sidebar-widgets-"
+"services-section\">Customize -> Widgets -> Front Page - Service Section</a>. "
+"<br>Then add the \"<strong>Coni - Service widget</strong>\""
+msgstr ""
+
+#: inc/customizer.php:148 inc/customizer.php:158
+msgid "Quote"
+msgstr ""
+
+#: inc/customizer.php:149
+msgid "Display a quote and an image inside a laptop."
+msgstr ""
+
+#: inc/customizer.php:154 template-parts/section-testimonials.php:36
+msgid ""
+"\"We are an agency passionate about what we do, providing a great service to "
+"small businesses. Fusce dapibus, tellus ac cursus commodo, tortor mauris "
+"condimentum nibh, ut fermentum massa justo sit amet risus.\""
+msgstr ""
+
+#: inc/customizer.php:162 template-parts/section-quote.php:21
+#: template-parts/section-testimonials.php:41
+msgid "John Smith <span>CEO, Coni Inc.</span>"
+msgstr ""
+
+#: inc/customizer.php:166
+msgid "Quote's Author"
+msgstr ""
+
+#: inc/customizer.php:173 inc/customizer.php:281 inc/widgets/client.php:100
+#: inc/widgets/service.php:137
+msgid "Image"
+msgstr ""
+
+#: inc/customizer.php:174
+msgid "Screenshot to be displayed within the laptop."
+msgstr ""
+
+#: inc/customizer.php:183 inc/customizer.php:391 inc/customizer.php:447
+msgid "Background Color"
+msgstr ""
+
+#: inc/customizer.php:198
+msgid "Video"
+msgstr ""
+
+#: inc/customizer.php:199
+msgid "Display a video from YouTube or Vimeo and text aside."
+msgstr ""
+
+#: inc/customizer.php:208
+msgid "Video URL"
+msgstr ""
+
+#: inc/customizer.php:209
+msgid "Must be a YouTube or Vimeo URL"
+msgstr ""
+
+#: inc/customizer.php:213 template-parts/section-video.php:24
+msgid "Praesent commodo cursus magna, vel scelerisque nisl consectetur et"
+msgstr ""
+
+#: inc/customizer.php:217 inc/customizer.php:299 inc/widgets/client.php:123
+#: inc/widgets/pricing.php:129 inc/widgets/service.php:167
+msgid "Title"
+msgstr ""
+
+#: inc/customizer.php:221 template-parts/section-video.php:37
+msgid ""
+"Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis "
+"risus eget urna mollis ornare vel eu leo. Cras justo odio, dapibus ac "
+"facilisis in, egestas eget quam. Praesent commodo cursus magna."
+msgstr ""
+
+#: inc/customizer.php:225 inc/customizer.php:307 inc/widgets/service.php:177
+msgid "Text"
+msgstr ""
+
+#: inc/customizer.php:255
+msgid "Testimonials"
+msgstr ""
+
+#: inc/customizer.php:256
+#, php-format
+msgid ""
+"To create a testimonial go to your <a href=\"%s\">Admin Panel >> "
+"Testimonials >> Add New</a>."
+msgstr ""
+
+#: inc/customizer.php:263
+msgid "Background Image"
+msgstr ""
+
+#: inc/customizer.php:282
+msgid "Display an image and text aside."
+msgstr ""
+
+#: inc/customizer.php:289
+msgid "Featured Image"
+msgstr ""
+
+#: inc/customizer.php:295 template-parts/section-image.php:16
+msgid "Donec id elit non mi porta gravida at eget metus"
+msgstr ""
+
+#: inc/customizer.php:303 template-parts/section-image.php:29
+msgid ""
+"Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor "
+"ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, "
+"nisi erat porttitor ligula, eget lacinia odio sem nec elit. Nulla vitae elit "
+"libero, a pharetra augue. Cum sociis natoque penatibus et magnis dis "
+"parturient montes, nascetur ridiculus mus. Etiam porta sem malesuada magna "
+"mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+msgstr ""
+
+#: inc/customizer.php:335
+msgid "Team"
+msgstr ""
+
+#: inc/customizer.php:336
+msgid "Display your team members."
+msgstr ""
+
+#: inc/customizer.php:344
+#, php-format
+msgid ""
+"Check out the <a href=\"%s\" target=\"_blank\">PRO version</a> to include "
+"team members."
+msgstr ""
+
+#: inc/customizer.php:352
+msgid "Phone"
+msgstr ""
+
+#: inc/customizer.php:353
+msgid "Display a phone screenshot and services."
+msgstr ""
+
+#: inc/customizer.php:361
+msgid "Phone Screen"
+msgstr ""
+
+#: inc/customizer.php:362
+msgid "Screenshot to be displayed within the phone."
+msgstr ""
+
+#: inc/customizer.php:372
+msgid ""
+"To add services go to: <br><a href=\"#\" data-section=\"sidebar-widgets-"
+"phone-section\">Customize -> Widgets -> Front Page - Phone Section</a>. "
+"<br>Then add the \"<strong>Coni - Service widget</strong>\""
+msgstr ""
+
+#: inc/customizer.php:398
+msgid "Phone Color"
+msgstr ""
+
+#: inc/customizer.php:418 inc/customizer.php:428
+msgid "Tagline"
+msgstr ""
+
+#: inc/customizer.php:419
+msgid "Display and link a tagline."
+msgstr ""
+
+#: inc/customizer.php:424 template-parts/section-tagline.php:10
+msgid "Start captivating the attention of your client"
+msgstr ""
+
+#: inc/customizer.php:431 template-parts/section-tagline.php:11
+msgid "Cras justo odio, dapibus ac facilisis in, egestas eget quam"
+msgstr ""
+
+#: inc/customizer.php:435
+msgid "Sub-Text"
+msgstr ""
+
+#: inc/customizer.php:442
+msgid "Tagline Link"
+msgstr ""
+
+#: inc/customizer.php:462
+msgid "Clients"
+msgstr ""
+
+#: inc/customizer.php:463
+msgid "Display client's logos."
+msgstr ""
+
+#: inc/customizer.php:468 template-parts/section-clients.php:6
+msgid "People Who Trust Us"
+msgstr ""
+
+#: inc/customizer.php:472 inc/customizer.php:519 inc/customizer.php:566
+msgid "Section Title"
+msgstr ""
+
+#: inc/customizer.php:478
+msgid ""
+"To add services go to: <br><a href=\"#\" data-section=\"sidebar-widgets-"
+"clients-section\">Customize -> Widgets -> Front Page - Clients Section</a>. "
+"<br>Then add the \"<strong>Coni - Client widget</strong>\""
+msgstr ""
+
+#: inc/customizer.php:492
+msgid "Map"
+msgstr ""
+
+#: inc/customizer.php:493
+msgid "Display a map and your contact information."
+msgstr ""
+
+#: inc/customizer.php:501
+#, php-format
+msgid ""
+"Check out the <a href=\"%s\" target=\"_blank\">PRO version</a> to create a "
+"map and contact info."
+msgstr ""
+
+#: inc/customizer.php:509 inc/customizer.php:515
+#: template-parts/section-pricing.php:6
+msgid "Pricing"
+msgstr ""
+
+#: inc/customizer.php:510
+msgid "Display pricing lists."
+msgstr ""
+
+#: inc/customizer.php:525
+msgid ""
+"To add a list go to: <br><a href=\"#\" data-section=\"sidebar-widgets-"
+"pricing-section\">Customize -> Widgets -> Front Page - Pricing Section</a>. "
+"<br>Then add the \"<strong>Coni - Pricing widget</strong>\""
+msgstr ""
+
+#: inc/customizer.php:539
+msgid "Portfolio"
+msgstr ""
+
+#: inc/customizer.php:540
+msgid "Display portfolio items."
+msgstr ""
+
+#: inc/customizer.php:548
+#, php-format
+msgid ""
+"Check out the <a href=\"%s\" target=\"_blank\">PRO version</a> to create a "
+"portfolio."
+msgstr ""
+
+#: inc/customizer.php:556
+msgid "Blog"
+msgstr ""
+
+#: inc/customizer.php:557
+msgid "Display blog posts."
+msgstr ""
+
+#: inc/customizer.php:562
+msgid "From the blog"
+msgstr ""
+
+#: inc/customizer.php:623
+msgid "View PRO version"
+msgstr ""
+
+#: inc/customizer.php:624
+msgid "Documentation"
+msgstr ""
+
+#: inc/extras.php:87
+msgid "Read more"
+msgstr ""
+
+#: inc/template-tags.php:33
+#, php-format
+msgctxt "post author"
+msgid "by %s"
+msgstr ""
+
+#: inc/template-tags.php:41
+msgid "Leave a comment"
+msgstr ""
+
+#: inc/template-tags.php:41
+msgid "1 Comment"
+msgstr ""
+
+#: inc/template-tags.php:41
+msgid "% Comments"
+msgstr ""
+
+#: inc/template-tags.php:48 inc/template-tags.php:53
+msgid ", "
+msgstr ""
+
+#: inc/template-tags.php:50
+#, php-format
+msgid "Posted in %1$s"
+msgstr ""
+
+#: inc/template-tags.php:55
+#, php-format
+msgid "Tagged %1$s"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:333
+#: inc/theme-functions/ql_tgm_plugin_activation.php:55
+msgid "Install Required Plugins"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:334
+#: inc/theme-functions/ql_tgm_plugin_activation.php:56
+msgid "Install Plugins"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:335
+#: inc/theme-functions/ql_tgm_plugin_activation.php:57
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:336
+#: inc/theme-functions/ql_tgm_plugin_activation.php:58
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:338
+#: inc/theme-functions/ql_tgm_plugin_activation.php:59
+#, php-format
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:343
+#: inc/theme-functions/ql_tgm_plugin_activation.php:60
+#, php-format
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:348
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to install the %1$s "
+"plugin."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to install the %1$s "
+"plugins."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:353
+#: inc/theme-functions/ql_tgm_plugin_activation.php:65
+#, php-format
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:358
+#, php-format
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:363
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to update the %1$s plugin."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to update the %1$s "
+"plugins."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:368
+#: inc/theme-functions/ql_tgm_plugin_activation.php:62
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:373
+#: inc/theme-functions/ql_tgm_plugin_activation.php:63
+#, php-format
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:378
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to activate the %1$s "
+"plugin."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to activate the %1$s "
+"plugins."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:383
+#: inc/theme-functions/ql_tgm_plugin_activation.php:67
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:388
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:393
+#: inc/theme-functions/ql_tgm_plugin_activation.php:68
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:397
+#: inc/theme-functions/ql_tgm_plugin_activation.php:69
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:398
+msgid "Return to the dashboard"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:399
+#: inc/theme-functions/class-tgm-plugin-activation.php:3029
+#: inc/theme-functions/ql_tgm_plugin_activation.php:70
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:400
+#: inc/theme-functions/class-tgm-plugin-activation.php:2832
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:401
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:402
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:403
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:404
+msgid "Dismiss this notice"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:405
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:520
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:521
+msgid "Update Required"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:635
+msgid "Set the parent_slug config variable instead."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:828
+#: inc/theme-functions/class-tgm-plugin-activation.php:3438
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:935
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:935
+#: inc/theme-functions/class-tgm-plugin-activation.php:938
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:938
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:1116
+#: inc/theme-functions/class-tgm-plugin-activation.php:2828
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:1881
+#, php-format
+msgctxt "%s = version number"
+msgid "TGMPA v%s"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2167
+msgid "Required"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2170
+msgid "Recommended"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2186
+msgid "WordPress Repository"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2189
+msgid "External Source"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2192
+msgid "Pre-Packaged"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2209
+msgid "Not Installed"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2213
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2215
+msgid "Active"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2221
+msgid "Required Update not Available"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2224
+msgid "Requires Update"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2227
+msgid "Update recommended"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2235
+#, php-format
+msgctxt "%1$s = install status, %2$s = update status"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2280
+#, php-format
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2283
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2286
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2289
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2371
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2379
+msgid "Installed version:"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2387
+msgid "Minimum required version:"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2399
+msgid "Available version:"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2422
+#, php-format
+msgid ""
+"No plugins to install, update or activate. <a href=\"%1$s\">Return to the "
+"Dashboard</a>"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2436
+msgid "Plugin"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2437
+msgid "Source"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2438
+msgid "Type"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2442
+msgid "Version"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2443
+msgid "Status"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2491
+#, php-format
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Install %2$s"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2495
+#, php-format
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Update %2$s"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2500
+#, php-format
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Activate %2$s"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2570
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2603
+msgid "Install"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2609
+msgid "Update"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2612
+msgid "Activate"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2643
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2645
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2681
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2683
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2788
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:2814
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:3028
+msgid "Plugin activation failed."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:3362
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:3364
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:3365
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:3369
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:3370
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:3370
+#: inc/theme-functions/class-tgm-plugin-activation.php:3376
+msgid "Show Details"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:3370
+#: inc/theme-functions/class-tgm-plugin-activation.php:3376
+msgid "Hide Details"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:3371
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:3372
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:3375
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:3376
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:3377
+msgid "All installations have been completed."
+msgstr ""
+
+#: inc/theme-functions/class-tgm-plugin-activation.php:3378
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/theme-functions/ql_tgm_plugin_activation.php:61
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to install the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"installed."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to install the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/ql_tgm_plugin_activation.php:64
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugin. Contact the administrator of this site for help on getting the "
+"plugin activated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/ql_tgm_plugin_activation.php:66
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to update the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"updated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to update the %s plugins. "
+"Contact the administrator of this site for help on getting the plugins "
+"updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/theme-functions/ql_tgm_plugin_activation.php:71
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: inc/theme-functions/wp_bootstrap_navwalker.php:197
+msgid "Add a menu"
+msgstr ""
+
+#: inc/widget-areas/widget-areas.php:9
+msgid "Sidebar"
+msgstr ""
+
+#: inc/widget-areas/widget-areas.php:24
+msgid "Front Page - Services Section"
+msgstr ""
+
+#: inc/widget-areas/widget-areas.php:26
+msgid ""
+"This is the Services Section in the Front Page. Here Add the \"Coni - "
+"Service widget\""
+msgstr ""
+
+#: inc/widget-areas/widget-areas.php:33
+msgid "Front Page - Team Section"
+msgstr ""
+
+#: inc/widget-areas/widget-areas.php:35
+msgid ""
+"This is the Team Section in the Front Page. Here Add the \"Coni - Team "
+"Member widget\""
+msgstr ""
+
+#: inc/widget-areas/widget-areas.php:42
+msgid "Front Page - Phone Section"
+msgstr ""
+
+#: inc/widget-areas/widget-areas.php:44
+msgid ""
+"This is the Phone Section in the Front Page. Here Add the \"Coni - Service "
+"widget\""
+msgstr ""
+
+#: inc/widget-areas/widget-areas.php:51
+msgid "Front Page - Clients Section"
+msgstr ""
+
+#: inc/widget-areas/widget-areas.php:53
+msgid ""
+"This is the Clients Section in the Front Page. Here Add the \"Coni - Client "
+"widget\""
+msgstr ""
+
+#: inc/widget-areas/widget-areas.php:60
+msgid "Front Page - Pricing Section"
+msgstr ""
+
+#: inc/widget-areas/widget-areas.php:62
+msgid ""
+"This is the Pricing Section in the Front Page. Here Add the \"Coni - Pricing "
+"widget\""
+msgstr ""
+
+#: inc/widgets/client.php:22
+msgid "Coni - Client widget"
+msgstr ""
+
+#: inc/widgets/client.php:24
+msgid "Display a Client's logo."
+msgstr ""
+
+#: inc/widgets/client.php:118 inc/widgets/service.php:159
+msgid "Upload Image"
+msgstr ""
+
+#: inc/widgets/pricing.php:11
+msgid "Coni - Pricing widget"
+msgstr ""
+
+#: inc/widgets/pricing.php:13
+msgid "Display a pricing list."
+msgstr ""
+
+#: inc/widgets/pricing.php:139
+msgid "Currency"
+msgstr ""
+
+#: inc/widgets/pricing.php:139
+msgid "Example: $"
+msgstr ""
+
+#: inc/widgets/pricing.php:147
+msgid "Price"
+msgstr ""
+
+#: inc/widgets/pricing.php:154
+msgid "Duration"
+msgstr ""
+
+#: inc/widgets/pricing.php:154
+msgid "Example: mo"
+msgstr ""
+
+#: inc/widgets/pricing.php:163
+msgid "Features List"
+msgstr ""
+
+#: inc/widgets/pricing.php:177
+msgid "Link title"
+msgstr ""
+
+#: inc/widgets/pricing.php:190
+msgid "Featured?"
+msgstr ""
+
+#: inc/widgets/service.php:22
+msgid "Coni - Service widget"
+msgstr ""
+
+#: inc/widgets/service.php:24
+msgid "Display a Service or Feature description."
+msgstr ""
+
+#: inc/widgets/service.php:195
+msgid "Link"
+msgstr ""
+
+#: search.php:17
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: template-parts/content-none.php:20
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content-none.php:24
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: template-parts/content-none.php:29
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: template-parts/content-page.php:22 template-parts/content-single.php:30
+#: template-parts/content.php:35
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/content-page.php:33
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: template-parts/pagination.php:11
+msgid "Previous page"
+msgstr ""
+
+#: template-parts/pagination.php:12
+msgid "Next page"
+msgstr ""
+
+#: template-parts/section-blog.php:6
+msgid "From The Blog"
+msgstr ""
+
+#: template-parts/section-blog.php:36
+msgid "Read More"
+msgstr ""
+
+#: template-parts/section-pricing.php:19
+msgid "Basic"
+msgstr ""
+
+#: template-parts/section-pricing.php:20 template-parts/section-pricing.php:32
+#: template-parts/section-pricing.php:44
+msgid "$"
+msgstr ""
+
+#: template-parts/section-pricing.php:21
+msgid "15"
+msgstr ""
+
+#: template-parts/section-pricing.php:22 template-parts/section-pricing.php:34
+#: template-parts/section-pricing.php:46
+msgctxt "Month abbreviation"
+msgid "mo"
+msgstr ""
+
+#: template-parts/section-pricing.php:23
+#, php-format
+msgid ""
+"<em>256MB</em> Memory%s<em>1</em> User%s<em>1</em> Website%s<em>1</em> Domain"
+"%s<em>Unlimited</em> Bandwidth%s<em>24/7</em> Support"
+msgstr ""
+
+#: template-parts/section-pricing.php:31
+msgid "Popular"
+msgstr ""
+
+#: template-parts/section-pricing.php:33
+msgid "25"
+msgstr ""
+
+#: template-parts/section-pricing.php:35
+#, php-format
+msgid ""
+"<em>512MB</em> Memory%s<em>3</em> User%s<em>5</em> Website%s<em>7</em> Domain"
+"%s<em>Unlimited</em> Bandwidth%s<em>24/7</em> Support"
+msgstr ""
+
+#: template-parts/section-pricing.php:43
+msgid "Premier"
+msgstr ""
+
+#: template-parts/section-pricing.php:45
+msgid "35"
+msgstr ""
+
+#: template-parts/section-pricing.php:47
+#, php-format
+msgid ""
+"<em>1024MB</em> Memory%s<em>5</em> User%s<em>10</em> Website%s<em>10</em> "
+"Domain%s<em>Unlimited</em> Bandwidth%s<em>24/7</em> Support"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Coni"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://www.quemalabs.com/theme/coni/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Coni is a multipurpose theme, focus on corporate and business. With "
+"responsive and minimalist design. Includes an awesome One Page design for "
+"the front page, with unique section to present your content, like Services, "
+"Features, Team members, Videos, Images, Testimonials, Pricing tables, "
+"Clients, Blog posts and much more. If you need more features you should "
+"check the PRO version, Coni Pro: https://www.quemalabs.com/theme/coni-pro/"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://www.quemalabs.com"
+msgstr ""

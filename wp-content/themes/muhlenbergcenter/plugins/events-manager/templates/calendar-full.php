@@ -84,7 +84,7 @@ $col_max = count($calendar['row_headers']); //each time this collumn number is r
             foreach ($calendar['cells'] as $date => $data): ?>
                 <?php if (count($data['events'])): ?>
                     <?php $dateElements[] = 'date_' . $date; ?>
-                    <div id="date_<?= $date ?>" class="event preview" itemscope itemtype="http://schema.org/Event">
+                    <div id="date_<?= $date ?>" class="event-preview" itemscope itemtype="http://schema.org/Event">
                         <?php
                         /** @var EM_Event $event */
                         foreach ($data['events'] as $event): ?>
@@ -98,34 +98,32 @@ $col_max = count($calendar['row_headers']); //each time this collumn number is r
                                 $event->event_end_date . ' ' . $event->event_end_time
                             );
                             ?>
-                            <p class="meta">
+                            <p class="event-preview__category">
                                 <?php
                                 /** @var EM_Category $category */
                                 $category = $event->get_categories()->get_first();
                                 echo $category->name;
                                 ?>
                             </p>
-                            <h2 class="title">
+                            <h2 class="event-preview__title">
                                 <a href="<?= $event->get_permalink() ?>" itemprop="url">
                                     <span itemprop="name"><?= $event->event_name ?></span>
                                 </a>
-                                <span class="consultant">
+                                <span class="event-preview__consultant">
                                     <?= $event->get_event_meta()['consultant_name'][0] ?>
                                 </span>
                             </h2>
-                            <div class="content">
+                            <div class="event-preview__content">
                                 <h3><?= _e('Event Information', 'muhlenbergcenter') ?></h3>
                                 <ul>
                                     <li>
                                         <span itemprop="startDate" content="<?= $startDate->format('c') ?>">
                                             <?= $fmt->format($startDate) ?>
-                                        </span>
-                                    </li>
-                                    <li>
+                                        </span><br/>
                                         <?= $startDate->format('h:i a') ?> – <?= $endDate->format('h:i a') ?>
                                     </li>
                                     <li>
-                                        <?= $event->location->location_address ?><br>
+                                        <?= $event->location->location_address ?><br/>
                                         <?= $event->location->location_postcode ?>
                                         <?= $event->location->location_town ?>
                                     </li>

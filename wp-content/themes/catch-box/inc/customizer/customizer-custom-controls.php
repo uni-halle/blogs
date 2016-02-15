@@ -35,7 +35,7 @@ class CatchBox_Important_Links extends WP_Customize_Control {
 							),
 						);
 		foreach ( $important_links as $important_link) {
-			echo '<p><a target="_blank" href="' . $important_link['link'] .'" >' . esc_attr( $important_link['text'] ) .' </a></p>';
+			echo '<p><a href="' . $important_link['link'] .'" >' . esc_attr( $important_link['text'] ) .' </a></p>';
 		}
     }
 }

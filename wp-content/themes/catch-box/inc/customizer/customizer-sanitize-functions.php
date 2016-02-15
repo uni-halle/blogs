@@ -173,8 +173,6 @@ function catchbox_reset_all_settings( $input ) {
        
         // Flush out all transients	on reset
         catchbox_themeoption_invalidate_caches();
-
-        return false;
     } 
     else {
         return '';

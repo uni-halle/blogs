@@ -8,14 +8,16 @@
  */
 $options = catchbox_get_theme_options();
 if ( empty( $options['search_display_text'] ) || $options['search_display_text'] == 'Search' ) { 
-	$search_text =  __( 'Search', 'catch-box' );
+	$search_text = esc_attr_x( 'Search', 'placeholder', 'catch-box' );
 }
 else {
 	$search_text = esc_attr( $options['search_display_text'] );
 }
 ?>
-	<form method="get" class="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-        <label for="s" class="assistive-text"><?php echo $search_text; ?></label>
-        <input type="text" class="field" name="s" id="s" placeholder="<?php echo $search_text; ?>" />
-        <input type="submit" class="submit" name="submit" id="searchsubmit" value="<?php echo $search_text; ?>" />
+	<form role="search" method="get" class="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+		<label>
+			<span class="screen-reader-text"><?php echo _x( 'Search for:', 'label', 'catch-box' ); ?></span>
+			<input type="search" class="search-field" placeholder="<?php echo $search_text; ?>" value="<?php echo get_search_query(); ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label', 'catch-box' ); ?>" />
+		</label>
+		<button type="submit" class="search-submit"><span class="screen-reader-text"><?php echo _x( 'Search', 'submit button', 'catch-box' ); ?></span></button>
 	</form>

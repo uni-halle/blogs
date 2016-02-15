@@ -1,0 +1,174 @@
+	/* =Responsive Structure 
+	----------------------------------------------- */ 
+
+@media (max-width: 1920px) { 
+	body.mobile {-webkit-text-size-adjust: 100%;} /* Iphone browser fix*/ 
+	body.mobile #forbottom {min-height:0;}
+	
+	/* Column text and Readmore button visible on mobile devices */
+	body.mobile .column-image {overflow:visible;}	body.mobile .column-image-inside {display:none;}
+	body.mobile .column-text {position:relative;top:0;left:0;-webkit-transform:none;transform:none;-webkit-transition:none;transition:none;color:inherit;padding:10px 0;width:100%;display:table;margin:0 auto;}
+	body.mobile .columnmore {position:relative;bottom:0;}
+	body.mobile .column-image:hover .columnmore {bottom:0;}
+} 
+	
+	
+@media (max-width: 800px) {
+	/* Column text and Readmore button visible on mobile devices */
+	.column-image {overflow:visible;} .column-image-inside {display:none;}
+	.column-text {position:relative;top:0;left:0;-webkit-transform:none;transform:none;-webkit-transition:none;transition:none;color:inherit;padding:10px 0;width:100%;display:table;margin:0 auto;}
+	#forbottom .columnmore {position:relative;bottom:0;}
+	#forbottom .column-image:hover .columnmore {bottom:0;}
+	
+	#header, #access, #branding, #topbar-inner,  #footer-widget-area { width:100%; }
+	.topmenu {float:left;}
+	#header-full, #footer { min-width: 100%; }
+	#wrapper, #colophon,  #main, article.post, #container, #linky {width: auto;}
+	#branding, #bg_image { min-height:100px; }
+	/* Header widget mobile fix */
+	#branding {height:auto;overflow:hidden;}
+	#header-widget-area {position:relative;top:0;left:0;width:100%;}
+	#header-widget-area .yoyo > li {margin-bottom:2px;}
+	
+	#footer2 {margin-bottom:0;}
+	#footer {margin-top:0;}
+	
+	#forbottom, #colophon {margin:0 20px;}
+	.presentation-page .slider-wrapper{margin:0 auto;}
+	.presentation-page #forbottom{margin:0;}
+	.presentation-page #pp-afterslider {margin:0 20px;}
+	#front-text1, #front-text2 {padding:20px 0;} 
+	.nivo-caption {botton:20px;left:0;width:100%;}
+	
+	#bg_image {width:100%;}
+	#header-container > div {height:100%;}
+	
+	a#logo { height:100%; display: block !important; }
+	a#logo img { width:auto; max-width:90%;height:80%; }
+	.safari a#logo img { max-height: 80px;height:auto; }
+	
+	.nivo-caption h2 {margin-bottom:5px;}
+	
+	#slefts, #srights {display:none;}
+	
+	#access .menu-header, div.menu {margin:0 5px;}
+	#container[class*='column'] #primary, #container[class*='column'] #secondary, 
+	#container[class*='column'] #content {width:100%;float:none;margin:0;clear:both;} 
+	#container[class*='column'] #content {margin-bottom:25px !important;}
+	
+	.slider-wrapper {width:100%;}
+	#slider {width:auto;height:auto;}
+	
+	#forbottom #front-columns > div {width:47%;margin-bottom:20px;}
+	#forbottom #front-columns div.column1 {clear:none;}
+	#forbottom #front-columns > div.column3 {margin-right:5%;}
+	#forbottom #front-columns > div:nth-child(2n+2){margin-right:0;}
+	.column-image img {height:auto;}
+	#forbottom #front-columns .column-header-image {text-align:center;margin-bottom:10px;}
+	
+	#content img, #content article.post img, #content article .wp-caption, article embed {
+		max-width:100% !important;
+	}
+	
+	#site-title span a {font-size:35px;line-height: 40px;}
+	#site-description {font-size:15px;line-height: 20px;}
+	
+	#site-title, #site-description { margin-left: 5px; }
+	
+	article.post, article.page {padding:20px 10px 10px;}
+	article.sticky {padding:20px 5px 5px;border-width:5px;}
+	.footertwo .widget-area, .footerthree .widget-area, .footerfour .widget-area {width:100%;}	
+	body {-webkit-text-size-adjust: 100%;} /* Iphone browser fix*/
+}
+
+@media (max-width: 650px) {
+	body, #content, #content p, #content ul, #content ol,#content code, #content pre, #content blockquote {
+		font-size: 13px !important;}
+	#forbottom, #colophon {margin:0 10px;}
+	.presentation-page #forbottom{margin:0;}
+	.presentation-page #pp-afterslider {margin:0 10px;}
+	
+	#branding {	height:auto; }
+	a#logo img {margin-top:-25px;max-height:75%;max-width:90%;width:auto;height:auto;}
+	#header-container > div { margin-top:35px; }
+	
+	#site-title span a {font-size:25px;line-height: 30px;}
+	#site-description {margin-top:3px;font-size:12px;line-height: 15px;}
+	#front-text1 h1, #front-text2 h1 {font-size:2em;line-height:1.3em;}
+	#front-text2 h1{margin-bottom:0px;}
+	#frontpage blockquote { font-size: 1.0em; line-height: 1.6em; padding: 10px 0; }
+	
+	.nivo-caption h2 {font-size:16px;line-height:20px;padding:5px 10px;}
+	
+	article.intro .entry-content {font-size: 12px;}
+	.featured-post .entry-title {font-size: 14px;}
+	.entry-meta a , .entry-meta, .comments-link{
+		font-size: 10px !important;
+	}
+
+	#content .entry-title {font-size:30px !important;}
+	#content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
+		margin-left:0 !important;}
+		
+	.widget-area a:link, .widget-area a:visited { font-size:12px !important; }	
+	.theme-default .nivo-caption { font-size:9px; }	
+	#content p, #content ul, #content ol, .sidey, .sidey a, table, table td { line-height: 1.4em; }
+	
+
+	.nivo-directionNav { display: none; }
+	
+	#header .socials a { width: 20px; height: 20px; }
+	#header .socials a img { width: 20px; height: 20px; }
+	
+	.theme-default .nivoSlider {background-image:none;}
+	.nivo-caption {position:relative;padding:5px 5px 35px;background:transparent;color:inherit;top:0;}
+	.theme-default .nivo-controlNav {-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none;}
+	.slide-text {font-size:12px;}
+	
+	.column-header-image {margin-bottom:0;font-size:20px;}
+	
+	.footermenu {display:table;margin:0 auto;float:none;}
+	
+	#main {margin-top:0px;}	
+	#nav-toggle { display: block; float: left; margin: 0 auto; cursor:pointer;
+				  width: 92%; height: 40px; padding: 2px 4%; }
+	#nav-toggle span { }
+	#nav-toggle span:before { content: "\e820"; font-family: "elusive"; font-size: 16px; height: 40px; line-height: 40px; }
+	#access { display: none; margin-top: 0; padding-bottom: 5px; }
+	#access .menu ul, #access .menu ul li { width: 100%; }
+	#access > .menu li ul { position: inherit; margin-top: 0 !important; }
+	#access > .menu ul ul ul { width: 95%; left: 5%; }
+	#access > .menu > ul > li > a > span { border-width: 0 0 1px 0; border-style: solid; box-shadow: 0 1px 0 rgba(255,255,255,0.5);}	
+	.tempera-menu-center #access > .menu > ul > li > a > span { text-align: left; }
+	#access > .menu ul li > a:not(:only-child) span:after {
+	font-family:"Elusive"; content: '\e80a';
+    position: absolute; right: 5px; top: 10px; z-index: 251;
+	-moz-transition:all .2s ease-in-out; -o-transition:all .2s ease-in-out; 
+	-webkit-transition:all .2s ease-in-out; transition:all .2s ease-in-out; }
+	#access > .menu ul li:hover > a:not(:only-child) span:after { top:20px; opacity:0; }
+	#access > .menu ul li > a:not(:only-child) span { padding-right:18px; }
+	#access > .menu > ul ul > li a:not(:only-child) span:after { transform: rotate(0deg); -ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); }
+}
+
+
+@media (max-width: 480px) {	
+	body, #content, #content p, #content ul, #content ol,#content code, #content pre, #content blockquote {
+		font-size: 12px !important;}
+	
+	#site-title span a{font-size: 18px;line-height:20px;}
+	#site-description {	font-size: 11px;line-height:10px;}
+	
+	
+	.nivo-caption h2 {margin-bottom:0px;font-size:14px;line-height:18px;}
+	/*.nivo-slice {z-index:-1;} */ /* This would remove slider animations if needed */
+	body {padding: 0;}
+	#page {margin-top: 0;}
+	.magazine-layout #content article.post, .magazine-layout .search #content article {margin:5px 0;width:100%;}
+	#forbottom #front-columns > div { width:auto;max-width:98%;float:none;margin:25px auto !important;clear:both;}
+	.column-image img {}
+}
+
+/* used to be 400px */
+@media (max-width: 480px) {	
+
+}

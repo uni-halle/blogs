@@ -209,7 +209,6 @@ function generate_customize_register( $wp_customize ) {
 		array(
 			'title' => __( 'Layout', 'generate' ),
 			'capability' => 'edit_theme_options',
-			'description' => __( 'Allows you to edit your theme\'s layout.', 'generate' ),
 			'priority' => 25
 		)
 	);
@@ -246,21 +245,21 @@ function generate_customize_register( $wp_customize ) {
 		array(
 			'default' => $defaults['header_layout_setting'],
 			'type' => 'option',
-			'sanitize_callback' => 'generate_sanitize_header_layout'
+			'sanitize_callback' => 'generate_sanitize_choices'
 		)
 	);
 	
 	// Add Header Layout control
 	$wp_customize->add_control(
 		// ID
-		'header_layout_control',
+		'generate_settings[header_layout_setting]',
 		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Header Layout', 'generate' ),
+			'label' => __( 'Header Width', 'generate' ),
 			'section' => 'layout_section',
 			'choices' => array(
-				'fluid-header' => __( 'Fluid / Full Width', 'generate' ),
+				'fluid-header' => __( 'Full', 'generate' ),
 				'contained-header' => __( 'Contained', 'generate' )
 			),
 			// This last one must match setting ID from above
@@ -277,14 +276,14 @@ function generate_customize_register( $wp_customize ) {
 		array(
 			'default' => $defaults['header_alignment_setting'],
 			'type' => 'option',
-			'sanitize_callback' => 'generate_sanitize_alignment'
+			'sanitize_callback' => 'generate_sanitize_choices'
 		)
 	);
 	
 	// Add navigation control
 	$wp_customize->add_control(
 		// ID
-		'header_alignment_control',
+		'generate_settings[header_alignment_setting]',
 		// Arguments array
 		array(
 			'type' => 'select',
@@ -309,21 +308,21 @@ function generate_customize_register( $wp_customize ) {
 		array(
 			'default' => $defaults['nav_layout_setting'],
 			'type' => 'option',
-			'sanitize_callback' => 'generate_sanitize_nav_layout'
+			'sanitize_callback' => 'generate_sanitize_choices'
 		)
 	);
 	
 	// Add navigation control
 	$wp_customize->add_control(
 		// ID
-		'nav_layout_control',
+		'generate_settings[nav_layout_setting]',
 		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Navigation Layout', 'generate' ),
+			'label' => __( 'Navigation Width', 'generate' ),
 			'section' => 'layout_section',
 			'choices' => array(
-				'fluid-nav' => __( 'Fluid / Full Width', 'generate' ),
+				'fluid-nav' => __( 'Full', 'generate' ),
 				'contained-nav' => __( 'Contained', 'generate' )
 			),
 			// This last one must match setting ID from above
@@ -340,14 +339,14 @@ function generate_customize_register( $wp_customize ) {
 		array(
 			'default' => $defaults['nav_position_setting'],
 			'type' => 'option',
-			'sanitize_callback' => 'generate_sanitize_nav_position'
+			'sanitize_callback' => 'generate_sanitize_choices'
 		)
 	);
 	
 	// Add navigation control
 	$wp_customize->add_control(
 		// ID
-		'nav_position_control',
+		'generate_settings[nav_position_setting]',
 		// Arguments array
 		array(
 			'type' => 'select',
@@ -376,14 +375,14 @@ function generate_customize_register( $wp_customize ) {
 		array(
 			'default' => $defaults['nav_alignment_setting'],
 			'type' => 'option',
-			'sanitize_callback' => 'generate_sanitize_alignment'
+			'sanitize_callback' => 'generate_sanitize_choices'
 		)
 	);
 	
 	// Add navigation control
 	$wp_customize->add_control(
 		// ID
-		'nav_alignment_control',
+		'generate_settings[nav_alignment_setting]',
 		// Arguments array
 		array(
 			'type' => 'select',
@@ -403,19 +402,51 @@ function generate_customize_register( $wp_customize ) {
 	// Add navigation setting
 	$wp_customize->add_setting(
 		// ID
-		'generate_settings[nav_search]',
+		'generate_settings[nav_dropdown_type]',
 		// Arguments array
 		array(
-			'default' => $defaults['nav_search'],
+			'default' => $defaults['nav_dropdown_type'],
 			'type' => 'option',
-			'sanitize_callback' => 'generate_sanitize_nav_search'
+			'sanitize_callback' => 'generate_sanitize_choices'
 		)
 	);
 	
 	// Add navigation control
 	$wp_customize->add_control(
 		// ID
-		'nav_search_control',
+		'generate_settings[nav_dropdown_type]',
+		// Arguments array
+		array(
+			'type' => 'select',
+			'label' => __( 'Navigation Dropdown', 'generate' ),
+			'section' => 'layout_section',
+			'choices' => array(
+				'hover' => __( 'Hover', 'generate' ),
+				'click' => __( 'Click - Menu Item', 'generate' ),
+				'click-arrow' => __( 'Click - Arrow', 'generate' )
+			),
+			// This last one must match setting ID from above
+			'settings' => 'generate_settings[nav_dropdown_type]',
+			'priority' => 22
+		)
+	);
+	
+	// Add navigation setting
+	$wp_customize->add_setting(
+		// ID
+		'generate_settings[nav_search]',
+		// Arguments array
+		array(
+			'default' => $defaults['nav_search'],
+			'type' => 'option',
+			'sanitize_callback' => 'generate_sanitize_choices'
+		)
+	);
+	
+	// Add navigation control
+	$wp_customize->add_control(
+		// ID
+		'generate_settings[nav_search]',
 		// Arguments array
 		array(
 			'type' => 'select',
@@ -439,14 +470,14 @@ function generate_customize_register( $wp_customize ) {
 		array(
 			'default' => $defaults['content_layout_setting'],
 			'type' => 'option',
-			'sanitize_callback' => 'generate_sanitize_content_layout'
+			'sanitize_callback' => 'generate_sanitize_choices'
 		)
 	);
 	
 	// Add content control
 	$wp_customize->add_control(
 		// ID
-		'content_layout_control',
+		'generate_settings[content_layout_setting]',
 		// Arguments array
 		array(
 			'type' => 'select',
@@ -470,14 +501,14 @@ function generate_customize_register( $wp_customize ) {
 		array(
 			'default' => $defaults['layout_setting'],
 			'type' => 'option',
-			'sanitize_callback' => 'generate_sanitize_sidebar_layout'
+			'sanitize_callback' => 'generate_sanitize_choices'
 		)
 	);
 	
 	// Add Layout control
 	$wp_customize->add_control(
 		// ID
-		'layout_control',
+		'generate_settings[layout_setting]',
 		// Arguments array
 		array(
 			'type' => 'select',
@@ -505,14 +536,14 @@ function generate_customize_register( $wp_customize ) {
 		array(
 			'default' => $defaults['blog_layout_setting'],
 			'type' => 'option',
-			'sanitize_callback' => 'generate_sanitize_sidebar_layout'
+			'sanitize_callback' => 'generate_sanitize_choices'
 		)
 	);
 	
 	// Add Layout control
 	$wp_customize->add_control(
 		// ID
-		'blog_layout_control',
+		'generate_settings[blog_layout_setting]',
 		// Arguments array
 		array(
 			'type' => 'select',
@@ -540,14 +571,14 @@ function generate_customize_register( $wp_customize ) {
 		array(
 			'default' => $defaults['single_layout_setting'],
 			'type' => 'option',
-			'sanitize_callback' => 'generate_sanitize_sidebar_layout'
+			'sanitize_callback' => 'generate_sanitize_choices'
 		)
 	);
 	
 	// Add Layout control
 	$wp_customize->add_control(
 		// ID
-		'single_layout_control',
+		'generate_settings[single_layout_setting]',
 		// Arguments array
 		array(
 			'type' => 'select',
@@ -575,21 +606,21 @@ function generate_customize_register( $wp_customize ) {
 		array(
 			'default' => $defaults['footer_layout_setting'],
 			'type' => 'option',
-			'sanitize_callback' => 'generate_sanitize_footer_layout'
+			'sanitize_callback' => 'generate_sanitize_choices'
 		)
 	);
 	
 	// Add content control
 	$wp_customize->add_control(
 		// ID
-		'footer_layout_control',
+		'generate_settings[footer_layout_setting]',
 		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Footer Layout', 'generate' ),
+			'label' => __( 'Footer Width', 'generate' ),
 			'section' => 'layout_section',
 			'choices' => array(
-				'fluid-footer' => __( 'Fluid / Full Width', 'generate' ),
+				'fluid-footer' => __( 'Full', 'generate' ),
 				'contained-footer' => __( 'Contained', 'generate' )
 			),
 			// This last one must match setting ID from above
@@ -606,14 +637,14 @@ function generate_customize_register( $wp_customize ) {
 		array(
 			'default' => $defaults['footer_widget_setting'],
 			'type' => 'option',
-			'sanitize_callback' => 'generate_sanitize_footer_widgets'
+			'sanitize_callback' => 'generate_sanitize_choices'
 		)
 	);
 	
 	// Add footer widget control
 	$wp_customize->add_control(
 		// ID
-		'footer_widget_control',
+		'generate_settings[footer_widget_setting]',
 		// Arguments array
 		array(
 			'type' => 'select',
@@ -630,6 +661,37 @@ function generate_customize_register( $wp_customize ) {
 			// This last one must match setting ID from above
 			'settings' => 'generate_settings[footer_widget_setting]',
 			'priority' => 45
+		)
+	);
+	
+	// Add back to top setting
+	$wp_customize->add_setting(
+		// ID
+		'generate_settings[back_to_top]',
+		// Arguments array
+		array(
+			'default' => $defaults['back_to_top'],
+			'type' => 'option',
+			'sanitize_callback' => 'generate_sanitize_choices'
+		)
+	);
+	
+	// Add content control
+	$wp_customize->add_control(
+		// ID
+		'generate_settings[back_to_top]',
+		// Arguments array
+		array(
+			'type' => 'select',
+			'label' => __( 'Back to Top Button', 'generate' ),
+			'section' => 'layout_section',
+			'choices' => array(
+				'enable' => __( 'Enabled', 'generate' ),
+				'' => __( 'Disabled', 'generate' )
+			),
+			// This last one must match setting ID from above
+			'settings' => 'generate_settings[back_to_top]',
+			'priority' => 50
 		)
 	);
 	
@@ -778,13 +840,12 @@ add_action('customize_controls_print_styles', 'generate_customize_preview_css');
 function generate_customize_preview_css() {
 	?>
 	<style>
-		#accordion-section-layout_section .accordion-section-content .customize-control {
-			border-bottom: 1px solid #eee;
-			padding-bottom: 10px;
+		.customize-control-line {
+			display: none !important;
 		}
-		#accordion-section-layout_section .accordion-section-content .customize-control:last-child {
-			border-bottom: 0;
-			padding-bottom: 0;
+		#accordion-section-secondary_bg_images_section li.customize-section-description-container {
+			float: none;
+			width: 100%;
 		}
 		#customize-control-blogname,
 		#customize-control-blogdescription {
@@ -806,6 +867,34 @@ function generate_customize_preview_css() {
 		
 		.customize-control-addon {
 			margin-top: 10px;
+		}
+		
+		.slider-input {
+			width: 40px !important;
+			font-size: 12px;
+			padding: 2px;
+			text-align: center;
+		}
+		
+		span.value {
+			float: right;
+		}
+		
+		div.slider {
+			margin-top: 8px;
+		}
+		
+		span.px {
+			background: #FAFAFA;
+			line-height: 18px;
+			display: inline-block;
+			padding: 2px 5px;
+			font-style: normal;
+			font-weight: bold;
+			border-right: 1px solid #DDD;
+			border-top: 1px solid #DDD;
+			border-bottom: 1px solid #DDD;
+			font-size: 12px;
 		}
 		
 	</style>

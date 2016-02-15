@@ -153,7 +153,7 @@ class muhlenbergcenter_Walker_Nav_Menu extends Walker_Nav_Menu {
  */
 function blockgrid_gallery( $string, $attr ){
 
-    $output = '<ul class="medium-block-grid-6  small-block-grid-2  clearing-thumbs" data-clearing>';
+    $output = '<ul class="medium-block-grid-4  small-block-grid-2  clearing-thumbs  thumbnail-gallery" data-clearing>';
     $posts = get_posts( array(
         'include'   => $attr['ids'],
         'post_type' => 'attachment',

@@ -60,7 +60,7 @@ if ( ! class_exists( 'TC_admin_page' ) ) :
       function tc_welcome_panel() {
 
         $is_help        = isset($_GET['help'])  ?  true : false;
-        $_faq_url       = TC___::tc_is_pro() ? esc_url('docs.presscustomizr.com/customizr-pro/faq/') : esc_url('docs.presscustomizr.com/customizr/faq/');
+        $_faq_url       = esc_url('http://docs.presscustomizr.com/category/90-faq-and-common-issues');
         $_support_url   = TC___::tc_is_pro() ? TC_WEBSITE .'support-forums/forum/customizr-pro/' : esc_url('wordpress.org/support/theme/customizr');
         $_theme_name    = TC___::tc_is_pro() ? 'Customizr Pro' : 'Customizr';
 
@@ -228,7 +228,7 @@ if ( ! class_exists( 'TC_admin_page' ) ) :
             is_blog_admin() ? _e( 'Go to Dashboard &rarr; Home','customizr' ) : _e( 'Go to Dashboard','customizr' ); ?></a>
         </div>
 
-      </div><!-- #customizr-admin-panel -->
+      </div><!-- //#customizr-admin-panel -->
       <?php
     }
 
@@ -343,12 +343,14 @@ foreach ( $plugins as $plugin_path ) {
 
   echo $plugin['Name'] . ' :' . $plugin['Version'] ."\n";
 }
-
 endif;
+//GET MYSQL VERSION
+global $wpdb;
+$mysql_ver =  ( ! empty( $wpdb->use_mysqli ) && $wpdb->use_mysqli ) ? @mysqli_get_server_info( $wpdb->dbh ) : @mysql_get_server_info();
 ?>
 
 PHP Version:              <?php echo PHP_VERSION . "\n"; ?>
-MySQL Version:            <?php echo @mysql_get_server_info() . "\n"; ?>
+MySQL Version:            <?php echo $mysql_ver . "\n"; ?>
 Web Server Info:          <?php echo $_SERVER['SERVER_SOFTWARE'] . "\n"; ?>
 
 WordPress Memory Limit:   <?php echo ( $this -> tc_let_to_num( WP_MEMORY_LIMIT )/( 1024 ) )."MB"; ?><?php echo "\n"; ?>

@@ -1,0 +1,1657 @@
+/*
+----------------------------------------------------------------
+TABLE OF CONTENTS
+----------------------------------------------------------------
+1. Header
+2. Home
+2. Blog & Pages
+3. Sidebar
+4. Footer
+5. Comments
+7. Flickity
+8. Pace
+10. WordPress Default
+11. External Plugins
+12. Global Styles
+13. Responsive Styles
+LESS Variables and Mixins
+----------------------------------------------------------------
+*/
+/*
+==========================================
+1. Header
+========================================== 
+*/
+
+.logo_container .logo_desc_wrap {
+	margin-right: 15px;
+	margin-left: auto;
+}
+
+/*-----------------------------*/
+/*
+Nav Menu
+---------------------------------------*/
+
+#ql_nav_btn {
+	left: 20px;
+	right: auto;
+}
+
+#jqueryslidemenu {
+	text-align: left;
+}
+
+/*Top level list items*/
+#jqueryslidemenu ul.nav > li {
+	margin-right: 0;
+	margin-left: auto;
+}
+
+/*Top level menu link items style*/
+
+/* Active item ----------*/
+/*1st sub level menu*/
+
+/* Multi level dropdown -------*/
+
+.dropdown-submenu > .dropdown-menu {
+	right: 100%;
+	margin-right: -1px;
+	left: auto;
+	margin-left: auto;
+}
+
+.dropdown-submenu > a:after {
+	float: left;
+	border-right-color: #cccccc;
+	margin-left: -10px;
+	margin-right: auto;
+}
+
+.dropdown-submenu:hover > a:after {
+	border-right-color: #ffffff;
+}
+
+.dropdown-submenu.pull-right > .dropdown-menu {
+	right: -100%;
+	margin-right: 10px;
+	left: auto;
+	margin-left: auto;
+}
+
+/* Dropdown arrow ------------*/
+
+/*
+Login and Cart Buttons
+---------------------------------------*/
+.login_cart_wrap {
+	text-align: left;
+	padding-right: 0;
+	padding-left: 0;
+}
+
+/* Login ------------*/
+.login_btn_wrap {
+	float: left;
+}
+
+.ql_login-btn {
+	border-left: 1px solid #b3b3b3;
+	border-right: none;
+}
+
+/* Cart ------------*/
+.ql_cart_wrap {
+	float: left;
+}
+
+.ql_cart-btn {
+	padding: 10px 15px 10px 45px;
+	margin-right: 10px;
+	margin-left: auto;
+}
+
+.ql_cart_wrap:hover .ql_cart-btn::before {
+	left: 0;
+	right: 0;
+}
+
+.ql_cart-btn i {
+	left: 5px;
+	right: auto;
+}
+
+.ql_cart-btn i.ql-chevron-down {
+	left: 15px;
+	right: auto;
+}
+
+.ql_adding_tocart .ql_cart-btn i {
+	-webkit-transform-origin: right top;
+	-moz-transform-origin: right top;
+	-ms-transform-origin: right top;
+	transform-origin: right top;
+}
+
+/*
+Nav Button
+---------------------------------------*/
+.ql_nav_btn {
+	right: 20px;
+	left: auto;
+}
+
+.ql_nav_btn i {
+	right: 0;
+	left: 0;
+}
+
+/*
+Nav Sidebar
+---------------------------------------*/
+.nav_sidebar {
+	right: -19.6875em;
+	left: auto;
+}
+
+.nav_sidebar.open {
+	right: 0;
+	left: auto;
+}
+
+.nav_sidebar #jqueryslidemenu ul.nav {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+.nav_sidebar #jqueryslidemenu ul.nav > li {
+	margin-right: 0;
+	margin-left: auto;
+}
+
+/* Author Widget ------------------*/
+
+/* Close button */
+.ql_nav_close {
+	left: -2.22222222em;
+	right: auto;
+}
+
+/*
+Sub Nav Sidebar
+---------------------------------------*/
+
+.sub_nav_header ul {
+	text-align: right;
+}
+
+.sub_nav_header ul li i {
+	margin-left: 8px;
+	margin-right: auto;
+}
+
+/*
+Search
+---------------------------------------*/
+.ql_search_btn {
+	float: left;
+}
+
+.ql_search_btn:hover .input-search {
+	padding-left: 50px;
+	padding-right: 0;
+}
+
+.ql_search_btn i {
+	left: 19px;
+	right: auto;
+}
+
+.ql_search_btn #searchsubmit {
+	left: 0;
+	right: auto;
+}
+
+/*
+==========================================
+2. Home
+========================================== 
+*/
+/*
+Welcome Section
+---------------------------------------*/
+
+.welcome-intro {
+	right: 50%;
+	left: auto;
+}
+
+/*
+Services Section
+---------------------------------------*/
+
+.service .service-icon-wrap {
+	margin-left: 3%;
+	text-align: left;
+	margin-right: auto;
+}
+
+.service .service-btn i {
+	margin-right: 5px;
+	margin-left: auto;
+}
+
+/*
+Quote Section
+---------------------------------------*/
+
+.quote-wrap {
+	padding: 5% 8% 5% 2%;
+}
+
+.quote-cite span {
+	margin-right: 10px;
+	margin-left: auto;
+}
+
+.quote-screen {
+	right: 50%;
+	left: auto;
+}
+
+.quote-background {
+	left: 0;
+	right: auto;
+}
+
+/*
+Video Section
+---------------------------------------*/
+
+.responsive-wrap iframe {
+	right: 0;
+	left: auto;
+}
+
+.video-text-wrap .video-text-title::after {
+	right: 0;
+	left: auto;
+}
+
+/*
+Testimonials Section
+---------------------------------------*/
+
+.testimonials-section::before {
+	right: 0;
+	left: 0;
+}
+
+.testimonial .testimonial-cite span {
+	margin-right: 10px;
+	margin-left: auto;
+}
+
+/*
+Image Section
+---------------------------------------*/
+
+.image-section .image-wrap {
+	right: 0;
+	left: auto;
+}
+
+.image-text {
+	margin-right: 50%;
+	margin-left: auto;
+}
+
+/*
+Team Section
+---------------------------------------*/
+
+.widget_team-member-widget .member-text::after {
+	right: 50%;
+	left: auto;
+}
+
+.widget_team-member-widget .member-social {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+/*
+Phone Section
+---------------------------------------*/
+
+.phone-screen {
+	right: 50%;
+	left: auto;
+}
+
+.phone-services {
+	margin-right: 2%;
+	margin-left: auto;
+}
+
+.phone-services .service {
+	text-align: right;
+}
+
+/*
+Tagline Section
+---------------------------------------*/
+
+/*
+Clients Section
+---------------------------------------*/
+
+/*
+Map Section
+---------------------------------------*/
+
+.map-wrap {
+	right: 0;
+	left: auto;
+}
+
+.map-content {
+	margin-right: 50%;
+	margin-left: auto;
+}
+
+/*
+Pricing Section
+---------------------------------------*/
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+.cd-pricing-list {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.cd-pricing-list > li::after {
+	left: 0;
+	background: -webkit-linear-gradient(left, #FFFFFF, rgba(255, 255, 255, 0));
+	background: linear-gradient(to right, #FFFFFF, rgba(255, 255, 255, 0));
+	right: auto;
+}
+
+@media only screen and (min-width: 768px) {
+
+@media only screen and (min-width: 768px) 
+
+@media only screen and (min-width: 768px) 
+.cd-pricing-list {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.cd-pricing-list > li::after {
+	left: 0;
+	background: -webkit-linear-gradient(left, #FFFFFF, rgba(255, 255, 255, 0));
+	background: linear-gradient(to right, #FFFFFF, rgba(255, 255, 255, 0));
+	right: auto;
+}
+
+}
+
+@media only screen and (min-width: 1500px) {
+
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+.cd-duration::before {
+	margin-left: 2px;
+	margin-right: auto;
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+.cd-pricing-features {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.cd-pricing-features li {
+	float: right;
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+.cd-pricing-footer {
+	right: 0;
+	left: auto;
+}
+
+.cd-pricing-footer::after {
+	left: 1em;
+	right: auto;
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+/*
+Portfolio Section
+---------------------------------------*/
+
+.portfolio-section .portfolio-item {
+	float: right;
+}
+
+.portfolio-section .portfolio-item .portfolio-hover {
+	right: 0;
+	left: 0;
+}
+
+.portfolio-section .portfolio-item .portfolio-hover span {
+	right: 50%;
+	left: auto;
+}
+
+/*
+Blog Section
+---------------------------------------*/
+
+.blog-wrap .blog-item {
+	margin-left: 4%;
+	margin-right: auto;
+}
+
+.blog-wrap .blog-time-date {
+	text-align: left;
+}
+
+/*
+Animation Overflow
+---------------------------------------*/
+
+/*
+==========================================
+3. Blog & Pages
+========================================== 
+*/
+
+/*Post Title 								*/
+/*------------------------------------------*/
+
+.post-title a {
+	text-align: right;
+}
+
+/*Post										*/
+/*------------------------------------------*/
+
+/*More Link									*/
+/*------------------------------------------*/
+
+/*Image Post								*/
+/*------------------------------------------*/
+
+/*Metadata 									*/
+/*------------------------------------------*/
+.metadata {
+	border-left: none;
+	border-right: none;
+}
+
+.metadata ul li {
+	margin-left: 1.78571428571429em;
+	float: right;
+	margin-right: auto;
+}
+
+.metadata ul li i {
+	margin-left: 0.35714285714286em;
+	margin-right: auto;
+}
+
+/* Page Headers															*/
+/*----------------------------------------------------------------------*/
+
+/* Archive and Search													*/
+/*----------------------------------------------------------------------*/
+
+/* 404																	*/
+/*----------------------------------------------------------------------*/
+
+.error404 .search-form .search-submit {
+	padding-right: 12px;
+	padding-left: 0;
+}
+
+/*Pagination															*/
+/*----------------------------------------------------------------------*/
+
+.pagination a,
+.pagination span {
+	float: right;
+	margin-right: -2px;
+	margin-left: auto;
+}
+
+/*
+==========================================
+4. Sidebar
+========================================== 
+*/
+#sidebar {
+	padding-right: 60px;
+	padding-left: 0;
+}
+
+/*
+Widgets
+--------------------------------
+*/
+
+#sidebar.col-md-pull-9 .widget {
+	margin-left: 10px;
+	margin-right: 0;
+}
+
+#sidebar .widget ul,
+#sidebar .widget ol {
+	margin-right: 0px;
+	padding-right: 0;
+	padding-left: 0;
+	margin-left: auto;
+}
+
+#sidebar .widget ul li ul {
+	margin-right: 15px;
+	margin-left: auto;
+}
+
+#sidebar .hasChildren i {
+	left: 5px;
+	right: auto;
+}
+
+#sidebar select {
+	margin-right: 5px;
+	margin-left: auto;
+}
+
+/*
+Recent Comments Widget
+--------------------------------
+*/
+
+#sidebar .widget_recent_comments ul li {
+	padding-right: 35px;
+	padding-left: 0;
+}
+
+#sidebar .widget_recent_comments ul li::before {
+	right: 0;
+	left: auto;
+}
+
+#sidebar .widget_recent_comments ul li i {
+	right: 0;
+	left: auto;
+}
+
+/*
+Recent Posts Widget
+--------------------------------
+*/
+
+/*
+Tag Widget
+--------------------------------
+*/
+
+#sidebar .widget_tag ul li {
+	margin: 0 0 0.90909090909091em 0.90909090909091em;
+	float: right;
+}
+
+/*
+Search Widget
+--------------------------------
+*/
+
+.widget_search #s {
+	padding-left: 30px;
+	padding-right: 0;
+}
+
+.widget_search #searchsubmit {
+	left: 15px;
+	right: auto;
+}
+
+.widget_search i {
+	left: 12px;
+	right: auto;
+}
+
+/*
+==========================================
+5. Footer
+========================================== 
+*/
+/*
+Footer
+------------------------
+*/
+
+#footer select {
+	margin-right: 5px;
+	margin-left: auto;
+}
+
+#footer ul,
+footer ol {
+	margin-right: 0;
+	padding-right: 0;
+	padding-left: 0;
+	margin-left: auto;
+}
+
+#footer ul li,
+footer ol li {
+	margin-left: 2%;
+	margin-right: auto;
+}
+
+#footer ul li > a:after,
+footer ol li > a:after {
+	right: 0;
+	left: auto;
+}
+
+#footer .widget ul li ul {
+	margin-right: 30px;
+	margin-left: auto;
+}
+
+#footer .hasChildren i {
+	left: 5px;
+	right: auto;
+}
+
+/*-----------Contact Info Widget-----------------*/
+
+#footer .widget_contact_info li i {
+	margin-left: 10px;
+	margin-right: auto;
+}
+
+/*----------- Portfolio Widget -----------------*/
+.widget_portfolio .widget-portfolio-wrap .widget-portfolio-item {
+	margin-left: 2%;
+	margin-right: auto;
+}
+
+.widget_portfolio .widget-portfolio-wrap .widget-portfolio-item a:after {
+	right: 0;
+	left: 0;
+}
+
+.widget_portfolio .widget-portfolio-wrap .widget-portfolio-item a:before {
+	right: 50%;
+	left: auto;
+}
+
+/*-----------Recent & Popular Posts Widget-----------------*/
+
+.widget_recent_posts ul li .recent-post-img,
+.widget_popular_posts ul li .recent-post-img {
+	float: right;
+	margin-left: 10px;
+	margin-right: auto;
+}
+
+.widget_recent_posts ul li .recent-post-img span,
+.widget_popular_posts ul li .recent-post-img span {
+	right: 1px;
+	left: auto;
+}
+
+/*-----------Testimonials Widget-----------------*/
+
+footer .widget_testimonials ul li cite {
+	padding-right: 25px;
+	padding-left: 0;
+}
+
+footer .widget_testimonials .testimonials_nav {
+	float: left;
+}
+
+footer .widget_testimonials .testimonials_nav a {
+	float: right;
+	margin-right: 10px;
+	margin-left: auto;
+}
+
+/*-----------Twitter Widget-----------------*/
+footer .twitter_widget ul li {
+	padding-right: 27px!important;
+	padding-left: 0;
+}
+
+footer .twitter_widget ul li i {
+	right: 0;
+	left: auto;
+}
+
+footer .twitter_widget .twitter li a:hover {
+	margin-right: 0!important;
+	margin-left: auto;
+}
+
+/*-----------Social Widget-----------------*/
+footer .social a {
+	margin: 7px 0 7px 7px;
+}
+
+/*Quick Contact													*/
+/*--------------------------------------------------------------*/
+
+footer .quick_contact .form .send {
+	float: left;
+}
+
+footer .name-error,
+footer .email-error,
+footer .comments-error {
+	right: 175px;
+	left: auto;
+}
+
+/*
+==========================================
+Subfooter
+========================================== 
+*/
+
+.sub-footer p {
+	float: right;
+}
+
+/*
+==========================================
+Social Nav
+========================================== 
+*/
+.nav_social {
+	float: left;
+}
+
+.nav_social li {
+	float: right;
+	margin-right: 10px;
+	margin-left: auto;
+}
+
+/*
+==========================================
+Payments Options
+========================================== 
+*/
+.ql_payments_options ul {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.ql_payments_options ul li {
+	margin-right: 0.71428571428571em;
+	margin-left: auto;
+}
+
+/*
+==========================================
+6. Comments
+========================================== 
+*/
+/*===========================================================================*/
+/*Comments																	 */
+/*===========================================================================*/
+
+.comment-list {
+	margin-right: 0;
+	margin-left: auto;
+}
+
+#comments .comment-meta {
+	margin-left: 5%;
+	margin-right: auto;
+}
+
+#comments .comment-meta .comment-author .avatar {
+	margin-left: 15px;
+	margin-right: auto;
+}
+
+#comments .comment-list .comment .comment-body .reply {
+	text-align: left;
+}
+
+/*===========================================================================*/
+/*Comments	Form															 */
+/*===========================================================================*/
+
+#respond .input-wrap {
+	margin: 0px 0 10px 15px;
+	float: right;
+}
+
+#respond input {
+	padding-right: 2.30769230769231em;
+	padding-left: 0;
+}
+
+#respond .controls-wrap i {
+	right: 0.71428571428571em;
+	left: auto;
+}
+
+#respond #submit-respond {
+	padding-right: 12px;
+	padding-left: 0;
+}
+
+/*
+==========================================
+7. Flickity
+========================================== 
+*/
+
+/*
+==========================================
+8. Pace (Loading animation)
+========================================== 
+*/
+
+.pace .pace-progress {
+	right: 0;
+	left: auto;
+}
+
+.pace .pace-progress-inner {
+	left: 0px;
+	right: auto;
+}
+
+.pace .pace-activity {
+	left: 15px;
+	border-right-color: #00b09a;
+	right: auto;
+}
+
+/*
+==========================================
+9. WordPress Default
+========================================== 
+*/
+/* =WordPress Core
+-------------------------------------------------------------- */
+.alignnone {
+	margin: 5px 0 20px 20px;
+}
+
+.alignleft {
+	float: left;
+	margin: 5px 20px 20px 0;
+}
+
+.alignright {
+	float: right;
+	margin: 5px 0 20px 20px;
+}
+
+a img.alignleft {
+	float: left;
+	margin: 5px 20px 20px 0;
+}
+
+a img.alignnone {
+	margin: 5px 0 20px 20px;
+}
+
+a img.alignright {
+	float: right;
+	margin: 5px 0 20px 20px;
+}
+
+a img.aligncenter {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.wp-caption.alignnone {
+	margin: 5px 0 20px 20px;
+}
+
+.wp-caption.alignright {
+	margin: 5px 0 20px 20px;
+}
+
+.wp-caption.alignleft {
+	margin: 5px 20px 20px 0;
+}
+
+/*------------------------------------------------------------
+ Defaul Widgets
+-------------------------------------------------------------- */
+/* Archive List Widget
+-------------------------------------- */
+
+/* Calendar Widget
+-------------------------------------- */
+
+#wp-calendar caption {
+	text-align: left;
+}
+
+#wp-calendar tfoot #next {
+	text-align: left;
+}
+
+/* Categories Widget
+-------------------------------------- */
+
+/* Recent Comments Widget
+-------------------------------------- */
+
+#footer .widget_recent_comments ul li {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+/* Recent Entries Widget
+-------------------------------------- */
+
+/* RSS Widget
+-------------------------------------- */
+
+/* Search Widget
+-------------------------------------- */
+
+.widget_search #s {
+	padding-left: 32px;
+	padding-right: 0;
+}
+
+.widget_search #searchsubmit {
+	left: 15px;
+	right: auto;
+}
+
+.widget_search i {
+	left: 15px;
+	right: auto;
+}
+
+/* Tag Cloud Widget
+-------------------------------------- */
+
+/* Nav Menu Widget
+-------------------------------------- */
+
+.widget_nav_menu .menu-navigation-container .sub-menu {
+	padding-right: 20px;
+	padding-left: 0;
+}
+
+/* Search Form
+-------------------------------------- */
+
+.widget_search .search-submit {
+	left: 0;
+	right: auto;
+}
+
+.search-form label::before {
+	left: 15px;
+	right: auto;
+}
+
+.widget_search i {
+	left: 12px;
+	right: auto;
+}
+
+/* Post Navigation
+-------------------------------------- */
+
+.post-navigation .nav-previous {
+	float: right;
+}
+
+.post-navigation .nav-next {
+	float: left;
+	text-align: left;
+}
+
+.post-navigation .nav-previous a {
+	padding-right: 45px;
+	padding-left: 0;
+}
+
+.post-navigation .nav-next a {
+	padding-left: 45px;
+	padding-right: 0;
+}
+
+.post-navigation .nav-previous a::before {
+	right: 20px;
+	left: auto;
+}
+
+.post-navigation .nav-next a::before {
+	left: 20px;
+	right: auto;
+}
+
+/* Nav Menu
+-------------------------------------- */
+
+/*
+==========================================
+10. External Plugins
+========================================== 
+*/
+/*
+// Contact Form 7
+// ------------------
+*/
+
+.wpcf7 input[type="checkbox"],
+.wpcf7 input[type="radio"] {
+	margin-left: 5px;
+	margin-right: auto;
+}
+
+/*
+// Visual Composer
+// ------------------
+*/
+
+.aio-icon-box.top-icon .align-icon,
+.aio-icon-box.top-icon .aio-icon-header,
+.aio-icon-box.top-icon .aio-icon-description {
+	text-align: right!important;
+}
+
+@media (min-width: 768px) and (max-width: 1345px) {
+
+}
+
+/*
+// Revolution Slider
+// ------------------
+*/
+
+@media (max-width: 767px) {
+
+}
+
+/*
+// Easy MailChimp Forms
+// ------------------
+*/
+
+/*
+==========================================
+11. Global Styles
+========================================== 
+*/
+
+/* Section Title
+-------------------------------------------------- */
+
+.section-title::after {
+	right: 50%;
+	left: auto;
+}
+
+.section-title.alt {
+	text-align: right;
+}
+
+.section-title.alt::after {
+	right: 0;
+	left: auto;
+}
+
+.preloader {
+	right: 0;
+	left: auto;
+}
+
+.preloader i {
+	right: 50%;
+	left: auto;
+}
+
+/* Read More Button
+-------------------------------------------------- */
+
+.read-more i {
+	margin-right: 10px;
+	margin-left: auto;
+}
+
+.read-more:after {
+	right: 0;
+	left: auto;
+}
+
+/* Custom button
+-------------------------------------------------- */
+/* Override base .btn styles */
+/* Apply text and background changes to three key states: default, hover, and active (click). */
+
+/* Apply the custom-colored gradients */
+/* Note: you'll need to include all the appropriate gradients for various browsers and standards. */
+.btn-ql > i {
+	right: 50%;
+	margin-right: -8px;
+	left: auto;
+	margin-left: auto;
+}
+
+/*For special occacions */
+.btn-ql > b.ql_sec_icon {
+	right: 43%;
+	left: auto;
+}
+
+/* Set the hover state */
+/* An easy hover state is just to move the gradient up a small amount. Add other embellishments as you see fit. */
+
+.btn-ql:hover > i {
+	right: 50%;
+	margin-right: -8px;
+	left: auto;
+	margin-left: auto;
+}
+
+/*
+Show the icon
+*/
+
+/*
+Hide the icon
+*/
+
+/*Hero Colors Classes													*/
+/*----------------------------------------------------------------------*/
+
+/* Make Space between sections											*/
+/*----------------------------------------------------------------------*/
+
+/* Hover effect for thumbnails											*/
+/*----------------------------------------------------------------------*/
+
+.ql_thumbnail_hover:before {
+	right: 5px;
+	left: 5px;
+}
+
+.ql_thumbnail_hover:after {
+	right: 50%;
+	left: auto;
+}
+
+/* Font size using REMs													*/
+/*----------------------------------------------------------------------*/
+/* Inputs																*/
+/*----------------------------------------------------------------------*/
+
+/*
+	Header
+	========================================== 
+	*/
+  .logo_container {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+#jqueryslidemenu {
+	text-align: right;
+}
+
+.dropdown-submenu > .dropdown-menu {
+	right: 0;
+	padding-right: 20px;
+	left: auto;
+	padding-left: 0;
+}
+
+/*1st sub level menu*/
+
+/*
+	Home
+	========================================== 
+	*/
+
+/*
+	Quote Section
+	---------------------------------------*/
+  .quote-wrap {
+	padding: 5% 8% 5% 2%;
+}
+
+/*
+	Video Section
+	---------------------------------------*/
+
+/*
+	Testimonials Section
+	---------------------------------------*/
+
+/*
+	Image Section
+	---------------------------------------*/
+  .image-section .image-wrap {
+	right: auto;
+	left: auto;
+}
+
+.image-text {
+	margin-right: 0;
+	margin-left: auto;
+}
+
+/*
+	Team Section
+	---------------------------------------*/
+
+/*
+	Phone Section
+	---------------------------------------*/
+
+.phone-services {
+	margin-right: 0;
+	margin-left: auto;
+}
+
+/*
+	Tagline Section
+	---------------------------------------*/
+
+/*
+==========================================
+12. Responsive Styles
+========================================== 
+*/
+/*
+	// Extra Small Breakpoint
+	// ------------------
+	*/
+@media (max-width: 767px) {
+
+.dropdown-submenu > .dropdown-menu {
+	right: 0;
+	padding-right: 20px;
+	left: auto;
+	padding-left: 0;
+}
+
+/*1st sub level menu*/
+
+/*
+	Home
+	========================================== 
+	*/
+
+/*
+	Quote Section
+	---------------------------------------*/
+  .quote-wrap {
+	padding: 5% 8% 5% 2%;
+}
+
+/*
+	Video Section
+	---------------------------------------*/
+
+/*
+	Testimonials Section
+	---------------------------------------*/
+
+/*
+	Image Section
+	---------------------------------------*/
+  .image-section .image-wrap {
+	right: auto;
+	left: auto;
+}
+
+.image-text {
+	margin-right: 0;
+	margin-left: auto;
+}
+
+/*
+	Team Section
+	---------------------------------------*/
+
+/*
+	Phone Section
+	---------------------------------------*/
+
+.phone-services {
+	margin-right: 0;
+	margin-left: auto;
+}
+
+/*
+	Tagline Section
+	---------------------------------------*/
+
+}
+
+/*
+	Header
+	========================================== 
+	*/
+
+/*
+	Home
+	========================================== 
+	*/
+/*
+	Welcome Section
+	---------------------------------------*/
+
+/*
+	Quote Section
+	---------------------------------------*/
+
+/*
+	Video Section
+	---------------------------------------*/
+
+/*
+	Testimonials Section
+	---------------------------------------*/
+
+/*
+	Image Section
+	---------------------------------------*/
+  .image-section .image-wrap {
+	right: auto;
+	left: auto;
+}
+
+.image-text {
+	margin-right: 0;
+	margin-left: auto;
+}
+
+/*
+	Team Section
+	---------------------------------------*/
+
+/*
+	Phone Section
+	---------------------------------------*/
+
+.phone-services {
+	margin-right: 0;
+	margin-left: auto;
+}
+
+/*
+	Clients Section
+	---------------------------------------*/
+
+/*
+	Clients Section
+	---------------------------------------*/
+
+/*
+	// Small Breakpoint
+	// ------------------
+	*/
+@media (min-width: 768px) and (max-width: 1345px) {
+
+.image-text {
+	margin-right: 0;
+	margin-left: auto;
+}
+
+/*
+	Team Section
+	---------------------------------------*/
+
+/*
+	Phone Section
+	---------------------------------------*/
+
+.phone-services {
+	margin-right: 0;
+	margin-left: auto;
+}
+
+/*
+	Clients Section
+	---------------------------------------*/
+
+/*
+	Clients Section
+	---------------------------------------*/
+
+}
+
+/*
+	Header
+	--------------------------------
+	*/
+
+.ql_cart-btn {
+	padding-right: 10px;
+	margin-right: 5px;
+	padding-left: 0;
+	margin-left: auto;
+}
+
+/*
+	Content
+	========================================== 
+	*/
+
+/*
+	Phone Section
+	---------------------------------------*/
+
+/*
+	Pricing Section
+	---------------------------------------*/
+
+/*
+	Sidebar
+	========================================== 
+	*/
+
+/*
+	// Medium Breakpoint
+	// ------------------
+	*/
+@media (min-width: 1346px) and (max-width: 1509px) {
+
+/*
+	Sidebar
+	========================================== 
+	*/
+
+}
+
+/*
+	// Extra Larga Breakpoint
+	// ------------------
+	*/
+/*
+==========================================
+LESS Variables and Mixins
+========================================== 
+*/
+/*!
+Animate.css - http://daneden.me/animate
+Licensed under the MIT license - http://opensource.org/licenses/MIT
+
+Copyright (c) 2015 Daniel Eden
+*/
+
+100% {
+	-webkit-transform-origin: right bottom;
+	transform-origin: right bottom;
+}
+
+100% {
+	-webkit-transform-origin: right bottom;
+	transform-origin: right bottom;
+}
+
+100% {
+	-webkit-transform-origin: left bottom;
+	transform-origin: left bottom;
+}
+
+100% {
+	-webkit-transform-origin: left bottom;
+	transform-origin: left bottom;
+}
+
+100% {
+	-webkit-transform-origin: right bottom;
+	transform-origin: right bottom;
+}
+
+100% {
+	-webkit-transform-origin: right bottom;
+	transform-origin: right bottom;
+}
+
+100% {
+	-webkit-transform-origin: left bottom;
+	transform-origin: left bottom;
+}
+
+100% {
+	-webkit-transform-origin: left bottom;
+	transform-origin: left bottom;
+}
+
+100% {
+	-webkit-transform-origin: right bottom;
+	transform-origin: right bottom;
+}
+
+100% {
+	-webkit-transform-origin: right bottom;
+	transform-origin: right bottom;
+}
+
+100% {
+	-webkit-transform-origin: left bottom;
+	transform-origin: left bottom;
+}
+
+100% {
+	-webkit-transform-origin: left bottom;
+	transform-origin: left bottom;
+}
+
+100% {
+	-webkit-transform-origin: right bottom;
+	transform-origin: right bottom;
+}
+
+100% {
+	-webkit-transform-origin: right bottom;
+	transform-origin: right bottom;
+}
+
+100% {
+	-webkit-transform-origin: left bottom;
+	transform-origin: left bottom;
+}
+
+100% {
+	-webkit-transform-origin: left bottom;
+	transform-origin: left bottom;
+}
+
+20%,
+  60% {
+	-webkit-transform-origin: top right;
+	transform-origin: top right;
+}
+
+40%,
+  80% {
+	-webkit-transform-origin: top right;
+	transform-origin: top right;
+}
+
+20%,
+  60% {
+	-webkit-transform-origin: top right;
+	transform-origin: top right;
+}
+
+40%,
+  80% {
+	-webkit-transform-origin: top right;
+	transform-origin: top right;
+}
+
+100% {
+	-webkit-transform-origin: right center;
+	transform-origin: right center;
+}
+
+100% {
+	-webkit-transform-origin: right center;
+	transform-origin: right center;
+}
+
+100% {
+	-webkit-transform-origin: left center;
+	transform-origin: left center;
+}
+
+100% {
+	-webkit-transform-origin: left center;
+	transform-origin: left center;
+}
+
+
+/* Generated by the RTLer - http://wordpress.org/extend/plugins/rtler/ */

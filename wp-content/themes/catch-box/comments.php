@@ -72,6 +72,11 @@
 		<p class="nocomments"><?php _e( 'Comments are closed.', 'catch-box' ); ?></p>
 	<?php endif; ?>
 
-	<?php comment_form(); ?>
+	<?php
+		comment_form( array(
+			'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
+			'title_reply_after'  => '</h2>',
+		) );
+	?>
 
 </div><!-- #comments -->

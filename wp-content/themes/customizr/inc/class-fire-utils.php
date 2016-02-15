@@ -133,17 +133,19 @@ if ( ! class_exists( 'TC_utils' ) ) :
       private function tc_regex_callback( $matches ) {
         $_placeholder = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
-        if ( false !== strpos( 'data-src', $matches[0] ) ||
+        if ( false !== strpos( $matches[0], 'data-src' ) ||
             preg_match('/ data-smartload *= *"false" */', $matches[0]) )
           return $matches[0];    
         else
-          return str_replace( 'srcset=', 'data-srcset=',
+          return apply_filters( 'tc_img_smartloaded',
+            str_replace( 'srcset=', 'data-srcset=',
                 sprintf('<img %1$s src="%2$s" data-src="%3$s" %4$s>',
                     $matches[1],
                     $_placeholder,
                     $matches[2],
                     $matches[3]
                 )
+            )
           );
       }
 
@@ -183,7 +185,7 @@ if ( ! class_exists( 'TC_utils' ) ) :
 
       /**
       * Helper
-      * Returns wheter or not the option is a theme/addon option
+      * Returns whether or not the option is a theme/addon option
       *
       * @return bool
       *

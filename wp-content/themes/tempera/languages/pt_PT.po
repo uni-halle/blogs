@@ -1,0 +1,2483 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Tempera v1.2.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-04 17:47+0200\n"
+"PO-Revision-Date: 2015-12-19 16:36+0000\n"
+"Last-Translator: Frederico Ribeiro <freddy.boc@gmail.com>\n"
+"Language-Team: trainmaniac\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_x;_n;esc_attr__;esc_html__;esc_attr_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 1.8.6\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: pt_PT\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:17
+msgid "Not Found"
+msgstr "Não encontrado"
+
+#: 404.php:20
+msgid ""
+"Apologies, but the page you requested could not be found. Perhaps searching "
+"will help."
+msgstr ""
+"As nossass desculpas mas a página solicitada não foi encontrada. Sugerimos "
+"que faça uma pesquisa para encontrar o que procura."
+
+#: archive.php:26
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "Arquivos Diários: %s"
+
+#: archive.php:28
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "Arquivos Mensais: %s"
+
+#: archive.php:28
+msgid "F Y"
+msgstr "F Y"
+
+#: archive.php:30
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "Arquivos Anuais: %s"
+
+#: archive.php:30
+msgid "Y"
+msgstr "Y"
+
+#: archive.php:32
+msgid "Blog Archives"
+msgstr "Arquivo de Artigos"
+
+#: archive.php:56 author.php:71 category.php:49 search.php:38
+msgid "Nothing Found"
+msgstr "Nada foi encontrado"
+
+#: archive.php:60 author.php:75 category.php:53
+msgid ""
+"Apologies, but no results were found for the requested archive. Perhaps "
+"searching will help find a related post."
+msgstr ""
+"As nossass desculpas mas a página solicitada não foi encontrada. Sugerimos "
+"que faça uma pesquisa para encontrar o que procura."
+
+#: attachment.php:18
+#, php-format
+msgid "Return to %s"
+msgstr "Retornar para %s"
+
+#: attachment.php:32
+#, php-format
+msgid "Full size is %s pixels"
+msgstr "O tamanho completo é de %s pixels"
+
+#: attachment.php:35
+msgid "Link to full-size image"
+msgstr "Link para o tamanho completo da imagem"
+
+#: attachment.php:75
+msgid "Edit"
+msgstr "Editar"
+
+#: attachment.php:86
+msgid "Continue reading"
+msgstr "Continuar a leitura"
+
+#: attachment.php:87
+msgid "Pages:"
+msgstr "Páginas:"
+
+#: attachment.php:92
+msgid "Previous image"
+msgstr "Imagem anterior"
+
+#: attachment.php:93
+msgid "Next image"
+msgstr "Próxima imagem"
+
+#: author.php:29
+#, php-format
+msgid "Author Archives: %s"
+msgstr "Arquivo do Autor: %s"
+
+#: category.php:20
+#, php-format
+msgid "Category Archives: %s"
+msgstr "Arquivo da Categoria: %s"
+
+#: comments.php:25
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+"Este artigo é protegido por palavra passe. Digite a palavra passe para ver "
+"quaisquer comentários."
+
+#: comments.php:50
+msgid "Comments are closed"
+msgstr "Os comentários estão fechados"
+
+#: search.php:18
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Pesquisar resultados por: %s"
+
+#: search.php:40
+#, php-format
+msgid "No search results for: %s."
+msgstr "Pesquisa sem resultados para: %s"
+
+#: searchform.php:1
+msgid "Search"
+msgstr "Pesquisar"
+
+#: sidebar-left.php:26
+msgid "Left Sidebar"
+msgstr "Barra lateral esquerda"
+
+#: sidebar-left.php:28
+#, php-format
+msgid ""
+"You currently have no widgets set in the left sidebar. You can add widgets "
+"via the <a href=\"%s\">Dasboard</a>."
+msgstr ""
+"Atualmente não tem os widgets criados na barra lateral esquerda. VPode "
+"adicionar widgets através do <a href=\"%s\"> Dashboard </a>."
+
+#: sidebar-left.php:29
+#, php-format
+msgid ""
+"To hide this sidebar, switch to a different Layout via the <a href=\"%s"
+"\">Theme Settings</a>."
+msgstr ""
+"Para ocultar esta barra lateral, mude para uma disposição diferente de "
+"layout através do <a href=\"%s\"> Configurações de tema </a>."
+
+#: sidebar-right.php:26 admin/settings.php:1527
+msgid "Right Sidebar"
+msgstr "Barra Lateral Direita"
+
+#: sidebar-right.php:28
+#, php-format
+msgid ""
+"You currently have no widgets set in the right sidebar. You can add widgets "
+"via the <a href=\"%s\">Dasboard</a>."
+msgstr ""
+"Atualmente não tem os widgets criados na barra lateral esquerda. Pode "
+"adicionar widgets através do <a href=\"%s\"> Dashboard </a>."
+
+#: single.php:40
+msgid "View all posts by "
+msgstr "Ver todos os posts por"
+
+#: tag.php:21
+#, php-format
+msgid "Tag Archives: %s"
+msgstr "Tag de Arquivos: %s"
+
+#: admin/admin-functions.php:62
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+"Antes que possa fazer upload de seu arquivo de importação, vai precisar "
+"corrigir o seguinte erro:"
+
+#: admin/admin-functions.php:70
+msgid "Import Tempera Theme Options"
+msgstr "Importar Opções do Tema Tempera"
+
+#: admin/admin-functions.php:72
+msgid ""
+"Hi! This is where you import the  Tempera settings.<i> Please remember that "
+"this is still an experimental feature.</i>"
+msgstr ""
+"Olá! Isto é onde importa as configurações Tempera. <I> Por favor, lembre-se "
+"que esta ainda é uma opção experimental. </ I>"
+
+#: admin/admin-functions.php:74
+msgid "Just choose a file from your computer:"
+msgstr "Basta escolher um arquivo do seu computador:"
+
+#: admin/admin-functions.php:76
+#, php-format
+msgid "Maximum size: %s"
+msgstr "Tamanho máximo: %s"
+
+#: admin/admin-functions.php:82
+msgid "And import!"
+msgstr "Faça a importação!"
+
+#: admin/admin-functions.php:148
+msgid "Import Tempera Theme Options "
+msgstr "Importar Opções do Tema Tempera"
+
+#: admin/admin-functions.php:151
+msgid "Great! The options have been imported!"
+msgstr "Fantástico! As opções foram importadas com sucesso!"
+
+#: admin/admin-functions.php:152
+msgid "Go back to the Tempera options page and check them out!"
+msgstr "Volte para a página de opções Tempera e verifique-os!"
+
+#: admin/admin-functions.php:155 admin/admin-functions.php:161
+#: admin/admin-functions.php:167
+msgid "Oops, there's a small problem."
+msgstr "Oops, há um pequeno problema."
+
+#: admin/admin-functions.php:156
+msgid ""
+"The uploaded file does not contain valid Tempera options. Make sure the file "
+"is exported from the Tempera Options page."
+msgstr ""
+"O arquivo enviado não contém opções Tempera válidas. Certifique-se de que o "
+"arquivo é exportado a partir da página Opções Tempera."
+
+#: admin/admin-functions.php:162
+msgid "The uploaded file could not be read."
+msgstr "O arquivo enviado não pôde ser lido."
+
+#: admin/admin-functions.php:168
+msgid ""
+"The uploaded file is not supported. Make sure the file was exported from the "
+"Tempera page and that it is a text file."
+msgstr ""
+"O arquivo enviado não é suportado. Certifique-se de que o arquivo foi "
+"exportado a partir da página Tempera e que é um arquivo de texto."
+
+#: admin/admin-functions.php:177
+msgid ""
+"Oops! The file is empty or there was no file. This error could also be "
+"caused by uploads being disabled in your php.ini or by post_max_size being "
+"defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+"Oops! O arquivo está vazio ou não havia nenhum arquivo. Este erro também "
+"pode ser causado por os uploads estarem desabilitados no seu php.ini ou por "
+"post_max_size sendo definido como menor do que upload_max_filesize em php."
+"ini."
+
+#: admin/admin-functions.php:183
+msgid "ERROR: You are not authorised to perform that operation"
+msgstr "ERRO: Não está autorizado a realizar essa operação."
+
+#: admin/admin-functions.php:192
+msgid ""
+"Are you sure you want to load a new color scheme? \\nAll current saved "
+"settings under Text and Color Settings will be lost."
+msgstr ""
+"Tem certeza de que deseja carregar um novo esquema de cores? \\nTodas as "
+"configurações atuais salvas  em texto e definições de cor serão perdidas."
+
+#: admin/admin-functions.php:197
+msgid ""
+"Select one of the preset color schemes and press the Load button.<br> <b> "
+"CAUTION! </b> When loading a color scheme, the Tempera theme settings under "
+"Text and Color Settings will be overriden. All other settings will remain "
+"intact.<br> <u>SUGGESTION:</u> It's always better to export your current "
+"theme settings before loading a color scheme."
+msgstr ""
+"Escolha um dos esquemas de cores pré-definidos e pressione o botão Load. "
+"<br> <B> CUIDADO! </ b> Ao carregar um esquema de cores, as configurações de "
+"tema Tempera em Texto e Configurações de cores serão anulados. Todas as "
+"outras configurações permanecerão intactas <br> <u> SUGESTÃO:. </ U> É "
+"melhor exportar as suas configurações do tema atual antes de carregar um "
+"esquema de cores."
+
+#: admin/admin-functions.php:221
+msgid "Load Color Scheme"
+msgstr "Carregar Esquema de Cor"
+
+#: admin/admin-functions.php:287
+msgid "No news items."
+msgstr "Sem novos itens."
+
+#: admin/admin-functions.php:291
+msgid "Posted on"
+msgstr "Publicado em"
+
+#: admin/main.php:114
+msgid "Layout Settings"
+msgstr "Configurações de Layout"
+
+#: admin/main.php:115
+msgid "Header Settings"
+msgstr "Configurações do cabeçalho"
+
+#: admin/main.php:116 admin/main.php:173
+msgid "Presentation Page"
+msgstr "Página de Apresentação"
+
+#: admin/main.php:117
+msgid "Text Settings"
+msgstr "Configurações de Texto"
+
+#: admin/main.php:118
+msgid "Color Settings"
+msgstr "Configurações de Cores"
+
+#: admin/main.php:119
+msgid "Graphics Settings"
+msgstr "Configurações gráficas"
+
+#: admin/main.php:120
+msgid "Post Information Settings"
+msgstr "Configurações de Informação do Post"
+
+#: admin/main.php:121
+msgid "Post Excerpt Settings"
+msgstr "Configurações do resumo do Post"
+
+#: admin/main.php:122
+msgid "Featured Image Settings"
+msgstr "Configurações de imagem em destaque"
+
+#: admin/main.php:123
+msgid "Social Media Settings"
+msgstr "Configurações de Redes Sociais"
+
+#: admin/main.php:124
+msgid "Miscellaneous Settings"
+msgstr "Configurações diversas"
+
+#: admin/main.php:127
+msgid "Main Layout"
+msgstr "Layout de página"
+
+#: admin/main.php:128
+msgid "Content / Sidebar Width"
+msgstr "Conteúdo/ Largura Barra Lateral"
+
+#: admin/main.php:129
+msgid "Responsiveness"
+msgstr "Responsividade"
+
+#: admin/main.php:132
+msgid "Enable Presentation Page"
+msgstr "Habilitar Página de Apresentação"
+
+#: admin/main.php:133
+msgid "Show Posts on Presentation Page"
+msgstr "Mostrar Posts na página de Apresentação"
+
+#: admin/main.php:134
+msgid "Slider Settings"
+msgstr "Configurações do Slider"
+
+#: admin/main.php:135
+msgid "Slides"
+msgstr "Slides"
+
+#: admin/main.php:136
+msgid "Presentation Page Columns"
+msgstr "Colunas da página de Apresentação"
+
+#: admin/main.php:137
+msgid "Extras"
+msgstr "Extras"
+
+#: admin/main.php:140
+msgid "Header Height"
+msgstr "Altura do Cabeçalho"
+
+#: admin/main.php:141
+msgid "Header Image"
+msgstr "Imagem do cabeçalho"
+
+#: admin/main.php:142
+msgid "Site Header"
+msgstr "Cabeçalho do Site"
+
+#: admin/main.php:143
+msgid "Custom Logo Upload"
+msgstr "Upload do Logo Customizado"
+
+#: admin/main.php:144
+msgid "Header Content Spacing"
+msgstr "Espaçamento do Conteúdo do Cabeçalho"
+
+#: admin/main.php:145
+msgid "FavIcon Upload"
+msgstr "FavIcon Upload"
+
+#: admin/main.php:146
+msgid "Header Widget Width"
+msgstr "Largura do Widget do Cabeçalho"
+
+#: admin/main.php:149 admin/settings.php:642 admin/settings.php:661
+#: admin/settings.php:679 admin/settings.php:697 admin/settings.php:718
+msgid "General Font"
+msgstr "Fonte Geral"
+
+#: admin/main.php:150
+msgid "Post Title Font "
+msgstr "Fonte Título do Post"
+
+#: admin/main.php:151
+msgid "Widget Title Font"
+msgstr "Fonte do Título do Widget"
+
+#: admin/main.php:152
+msgid "Site Title Font"
+msgstr "Fonte do Título do site"
+
+#: admin/main.php:153
+msgid "Main Menu Font"
+msgstr "Fonte do Menu Principal"
+
+#: admin/main.php:154
+msgid "Headings Font"
+msgstr "Fontes dos Títulos"
+
+#: admin/main.php:155
+msgid "Force Text Align"
+msgstr "Forçar alinhamento do texto"
+
+#: admin/main.php:156
+msgid "Paragraph spacing"
+msgstr "Espaçamento do parágrafo"
+
+#: admin/main.php:157
+msgid "Paragraph Indent"
+msgstr "Indetação do parágrafo"
+
+#: admin/main.php:158
+msgid "Headings Indent"
+msgstr "Identação dos Títulos"
+
+#: admin/main.php:159
+msgid "Line Height"
+msgstr "Altura da linha"
+
+#: admin/main.php:160
+msgid "Word Spacing"
+msgstr "Espaçamento entre palavras"
+
+#: admin/main.php:161
+msgid "Letter Spacing"
+msgstr "Espaçamento da letra"
+
+#: admin/main.php:162
+msgid "Uppercase Text"
+msgstr "Texto "
+
+#: admin/main.php:166
+msgid "Background Image"
+msgstr "Imagem de fundo"
+
+#: admin/main.php:167
+msgid "General"
+msgstr "Geral"
+
+#: admin/main.php:168
+msgid "Accents"
+msgstr "Acentos"
+
+#: admin/main.php:169 admin/settings.php:840
+msgid "Site Title"
+msgstr "Título do site"
+
+#: admin/main.php:170
+msgid "Main Menu"
+msgstr "Menu Principal"
+
+#: admin/main.php:171 admin/main.php:183 admin/settings.php:1505
+msgid "Top Bar"
+msgstr "Barra Superior"
+
+#: admin/main.php:172
+msgid "Content"
+msgstr "Conteúdo"
+
+#: admin/main.php:174
+msgid "Sidebar Widgets"
+msgstr "Widgets da barra Lateral"
+
+#: admin/main.php:175
+msgid "Footer Widgets"
+msgstr "Widgets do Rodapé"
+
+#: admin/main.php:176
+msgid "Links"
+msgstr "Links"
+
+#: admin/main.php:177
+msgid "Post metas"
+msgstr "Post metas"
+
+#: admin/main.php:178
+msgid "Socials"
+msgstr "Sociais"
+
+#: admin/main.php:179
+msgid "Caption type"
+msgstr "Tipo de Caption"
+
+#: admin/main.php:184
+msgid "Breadcrumbs"
+msgstr "Breadcrumbs"
+
+#: admin/main.php:185
+msgid "Pagination"
+msgstr "Paginação"
+
+#: admin/main.php:186
+msgid "Menu Alignment"
+msgstr "Alinhamento do Menu"
+
+#: admin/main.php:187
+msgid "Content Margins"
+msgstr "Conteúdo das margens"
+
+#: admin/main.php:188
+msgid "Post Images Border"
+msgstr "Bordas das imagens dos Posts"
+
+#: admin/main.php:189
+msgid "Content List Bullets"
+msgstr "Conteúdo da lista de marcadores"
+
+#: admin/main.php:190
+msgid "Page Titles"
+msgstr "Títulos da página"
+
+#: admin/main.php:191
+msgid "Category Titles"
+msgstr "Títulos da Categoria"
+
+#: admin/main.php:192
+msgid "Hide Tables"
+msgstr "Esconder Tabelas"
+
+#: admin/main.php:193
+msgid "Back to Top button"
+msgstr "Voltar para o Botão superior"
+
+#: admin/main.php:196
+msgid "Meta Bar Position"
+msgstr "Meta Posição da barra"
+
+#: admin/main.php:197
+msgid "Show on Blog Metas"
+msgstr "Mostrar Metas no Blog"
+
+#: admin/main.php:198
+msgid "Show on Single Pages"
+msgstr "Mostrar em Páginas Individuais"
+
+#: admin/main.php:199
+msgid "Text Under Comments"
+msgstr "Texto Abaixo dos Comentários"
+
+#: admin/main.php:200
+msgid "Comments are closed text"
+msgstr "Os comentários de texto estão fechados"
+
+#: admin/main.php:201
+msgid "Comments off"
+msgstr "Comentários desativados"
+
+#: admin/main.php:204
+msgid "Home Page"
+msgstr "Página Inicial"
+
+#: admin/main.php:205 admin/settings.php:359 admin/settings.php:455
+msgid "Sticky Posts"
+msgstr "Posts fixos"
+
+#: admin/main.php:206
+msgid "Archive and Category Pages"
+msgstr "Arquivos e Página de Categorias"
+
+#: admin/main.php:207
+msgid "Number of Words for Post Excerpts "
+msgstr "Número de Palavras por excerto de Post"
+
+#: admin/main.php:208
+msgid "Magazine Layout"
+msgstr "Layout de revista"
+
+#: admin/main.php:209
+msgid "Excerpt suffix"
+msgstr "Sufixo do excerto"
+
+#: admin/main.php:210
+msgid "Continue reading link text "
+msgstr "Continue a ler o texto do link"
+
+#: admin/main.php:211
+msgid "HTML tags in Excerpts"
+msgstr "Tags HTML nos excertos"
+
+#: admin/main.php:214
+msgid "Featured Images as POST Thumbnails "
+msgstr "Imagens destacadas como miniatura dos Posts"
+
+#: admin/main.php:215
+msgid "Auto Select Images From Posts "
+msgstr "Seleção Automática de imagens dos Posts"
+
+#: admin/main.php:216
+msgid "Thumbnails Alignment "
+msgstr "Alinhamento de miniaturas"
+
+#: admin/main.php:217
+msgid "Thumbnails Size "
+msgstr "Tamanho de Miniaturas"
+
+#: admin/main.php:218
+msgid "Featured Images as HEADER Images "
+msgstr "Imagens destacadas como imagem do cabeçalho"
+
+#: admin/main.php:221
+msgid "Link nr. 1"
+msgstr "Link nr. 1"
+
+#: admin/main.php:222
+msgid "Link nr. 2"
+msgstr "Link nr. 2"
+
+#: admin/main.php:223
+msgid "Link nr. 3"
+msgstr "Link nr. 3"
+
+#: admin/main.php:224
+msgid "Link nr. 4"
+msgstr "Link nr. 4"
+
+#: admin/main.php:225
+msgid "Link nr. 5"
+msgstr "Link nr. 5"
+
+#: admin/main.php:226
+msgid "Socials display"
+msgstr "Mostrar Redes Sociais"
+
+#: admin/main.php:229
+msgid "Internet Explorer Compatibility Tag"
+msgstr "Compatibilidade de Tag do Internet Explorer"
+
+#: admin/main.php:230
+msgid "Custom Footer Text"
+msgstr "Personalizar texto do rodapé"
+
+#: admin/main.php:231
+msgid "Custom CSS"
+msgstr "Personalizar CSS"
+
+#: admin/main.php:232
+msgid "Custom JavaScript"
+msgstr "Personalizar JavaScript"
+
+#: admin/main.php:258
+msgid "Sorry, but you do not have sufficient permissions to access this page."
+msgstr "Desculpe, mas não tem permissão suficiente para aceder esta página."
+
+#: admin/main.php:277
+msgid "Tempera settings updated successfully."
+msgstr "Configurações Tempera atualizadas com sucesso."
+
+#: admin/main.php:293
+msgid "Save Changes"
+msgstr "Salvar Mudanças"
+
+#: admin/main.php:294
+msgid "Reset to Defaults"
+msgstr "Restaurar Padrão"
+
+#: admin/main.php:326
+msgid "Import/Export Settings"
+msgstr "Importar/Exportar Configurações"
+
+#: admin/main.php:331
+msgid "Export Theme options"
+msgstr "Exportar opções do Tema"
+
+#: admin/main.php:332
+msgid ""
+"It's that easy: a mouse click away - the ability to export your Tempera "
+"settings and save them on your computer. Feeling safer? You should!"
+msgstr ""
+"É muito fácil: um clique de distância - a capacidade de exportar suas "
+"configurações Tempera e guardá-los no seu computador. Sente-se mais seguro? "
+"Devia!"
+
+#: admin/main.php:337
+msgid "Import Theme options"
+msgstr "Importar Opções do Tema"
+
+#: admin/main.php:338
+msgid ""
+"Without the import, the export would just be a fool's exercise. Make sure "
+"you have the exported file ready and see you after the mouse click."
+msgstr ""
+"Sem a importação, a exportação seria apenas o exercício do insensato. "
+"Certifique-se de que tem o arquivo exportado pronto e vê-lo após o clique do "
+"mouse."
+
+#: admin/main.php:343
+msgid "Color Schemes"
+msgstr "Esquema de Cores"
+
+#: admin/main.php:344
+msgid ""
+"A collection of preset color schemes to use as the starting point for your "
+"site. Just load one up and see your blog in a different light."
+msgstr ""
+"A coleção de esquemas de cores pré-definidos para usar como ponto de partida "
+"para o seu site. Basta carregar um e ver o seu blog numa cor diferente."
+
+#: admin/main.php:352
+msgid "Tempera Latest News"
+msgstr "Últimas notícias Tempera"
+
+#: admin/main.php:363
+msgid "Reset Tempera Settings to Defaults?"
+msgstr "Restaurar para Padrão Configurações Tempera?"
+
+#: admin/prototypes.php:30
+msgid "or Google font"
+msgstr "ou Fonte Google"
+
+#: admin/settings.php:28
+msgid "One column (no sidebars)"
+msgstr "Uma Coluna(Sem barra Lateral)"
+
+#: admin/settings.php:29
+msgid "Two columns, sidebar on the right"
+msgstr "Duas Colunas, barra lateral na direita"
+
+#: admin/settings.php:30
+msgid "Two columns, sidebar on the left"
+msgstr "Duas Colunas, barra lateral na esquerda"
+
+#: admin/settings.php:31
+msgid "Three columns, sidebars on the right"
+msgstr "Três colunas, barra lateral na direita"
+
+#: admin/settings.php:32
+msgid "Three columns, sidebars on the left"
+msgstr "Três Colunas, barra lateral na esquerda"
+
+#: admin/settings.php:33
+msgid "Three columns, one sidebar on each side"
+msgstr "Três colunas, uma barra lateral em cada lado"
+
+#: admin/settings.php:41
+msgid ""
+"Choose your layout. Possible options are: <br> No sidebar, a single sidebar "
+"on either left of right, two sidebars on either left or right and two "
+"sidebars on each side.<br>This can be overriden in pages by using Page "
+"Templates."
+msgstr ""
+"Escolha o seu layout. As opções possíveis são:. <br> Nenhuma barra lateral, "
+"uma única barra lateral à esquerda ou de direita, duas barras laterais no "
+"lado esquerdo ou direito e duas barras laterais de cada lado <br> Isso pode "
+"ser anulado nas páginas usando Page Templates."
+
+#: admin/settings.php:90
+msgid "Content ="
+msgstr "Conteúdo="
+
+#: admin/settings.php:91
+msgid "Sidebar(s) ="
+msgstr "Barra(s) Lateral(is) ="
+
+#: admin/settings.php:92
+msgid "Total width ="
+msgstr "Largura Total ="
+
+#: admin/settings.php:99
+msgid ""
+"Select the width of your <b>content</b> and <b>sidebar(s)</b>. When using a "
+"3 columns layout (with 2 sidebars) they will each have half the configured "
+"width."
+msgstr ""
+"Selecione  a largura do seu  <b>conteúdo</b> e <b>Barra Lateral(s)</b>. Ao "
+"usar um layout de 3 colunas (com 2 barras laterais), terão metade da largura "
+"configurada."
+
+#: admin/settings.php:108 admin/settings.php:200 admin/settings.php:209
+#: admin/settings.php:749 admin/settings.php:796 admin/settings.php:993
+#: admin/settings.php:1008 admin/settings.php:1109 admin/settings.php:1125
+#: admin/settings.php:1298 admin/settings.php:1327 admin/settings.php:1350
+#: admin/settings.php:1369 admin/settings.php:1418 admin/settings.php:1562
+msgid "Enable"
+msgstr "Ativado"
+
+#: admin/settings.php:108 admin/settings.php:200 admin/settings.php:209
+#: admin/settings.php:749 admin/settings.php:993 admin/settings.php:1008
+#: admin/settings.php:1109 admin/settings.php:1125 admin/settings.php:1298
+#: admin/settings.php:1327 admin/settings.php:1350 admin/settings.php:1369
+#: admin/settings.php:1418 admin/settings.php:1562
+msgid "Disable"
+msgstr "Desativado"
+
+#: admin/settings.php:116
+msgid "Allow zoom"
+msgstr "Permitir Zoom"
+
+#: admin/settings.php:117
+msgid ""
+"Enable to make Tempera fully responsive. The layout and general sizes of "
+"your blog will adjust depending on what device and what resolution it is "
+"viewed in.<br> Do not disable unless you have a good reason to."
+msgstr ""
+"Ative para tornar Tempera totalmente responsivo. O layout e tamanhos gerais "
+"do seu blog serão ajustados dependendo do dispositivo e em que resolução é "
+"visto. <br> Não desative a não ser que tenha uma boa razão para isso."
+
+#: admin/settings.php:129
+msgid ""
+"Select the header's height. After saving the settings go and upload your new "
+"header image. The header's width will be "
+msgstr ""
+"Selecione a altura do cabeçalho. Depois de salvar as configurações, deve "
+"fazer upload da sua imagem de cabeçalho. A largura do cabeçalho estará "
+"ajustada"
+
+#: admin/settings.php:135
+msgid "Define header image"
+msgstr "Definir imagem de cabeçalho"
+
+#: admin/settings.php:136
+msgid "Center the header image horizontally"
+msgstr "Centralize a imagem do cabeçalho horizontalmente"
+
+#: admin/settings.php:138
+msgid "Keep header image aspect ratio."
+msgstr "Mantenha a proporção da imagem do cabeçalho."
+
+#: admin/settings.php:139
+msgid ""
+"By default the header has a minimum height set. This option removes that and "
+"the header becomes fully responsive, scalling to any size.<br> Only enable "
+"this if you're <b>not</b> using a logo or site title and description in the "
+"header. "
+msgstr ""
+"Por padrão, o cabeçalho tem um mínimo de altura. Esta opção remove o "
+"cabeçalho e que se torna totalmente responsivo, adaptável para qualquer "
+"tamanho. <br> Habilitar somente se <b> não </ b>for  usar um  logo ou título "
+"do site e descrição no cabeçalho."
+
+#: admin/settings.php:147
+msgid "Site Title and Description"
+msgstr "Título do Site e Descrição"
+
+#: admin/settings.php:147
+msgid "Custom Logo"
+msgstr "Personalizar Logo"
+
+#: admin/settings.php:147
+msgid "Clickable header image"
+msgstr "Imagem do cabeçalho Clicável"
+
+#: admin/settings.php:147
+msgid "Empty"
+msgstr "Vazio"
+
+#: admin/settings.php:149
+msgid "Choose what to display inside your header area."
+msgstr "Escolha o que mostrar dentro da área do seu cabeçalho"
+
+#: admin/settings.php:157
+msgid ""
+"Custom Logo upload. The logo will appear over the header image if you have "
+"used one."
+msgstr ""
+"Upload logótipo personalizado. O logótipo aparece sobre a imagem do "
+"cabeçalho, se tiver usado um."
+
+#: admin/settings.php:158 admin/settings.php:175 admin/settings.php:430
+msgid "Select / Upload Image"
+msgstr "Selecione / Upload Imagem"
+
+#: admin/settings.php:163
+msgid "top"
+msgstr "Superior"
+
+#: admin/settings.php:164
+msgid "left"
+msgstr "Esquerdo"
+
+#: admin/settings.php:165
+msgid ""
+"Select the top and left spacing for the header content. Use it to better "
+"position your site title and description or custom logo inside the header. "
+msgstr ""
+"Selecione o espaçamento superior e à esquerda para o conteúdo do cabeçalho. "
+"Use-a para posicionar melhor o seu título e descrição do site ou logótipo "
+"personalizado no cabeçalho."
+
+#: admin/settings.php:174
+msgid ""
+"Limitations: It has to be an image. It should be max 64x64 pixels in "
+"dimensions. Recommended file extensions .ico and .png. <br> <strong>Note "
+"that some browsers do not display the changed favicon instantly.</strong>"
+msgstr ""
+"Limitações: Tem que ser uma imagem. Deve ser no máximo de 64x64 pixels de "
+"dimensões. Extensões de arquivo recomendados .ico e .png. <br> <strong> "
+"Observe que alguns navegadores não exibirão o favicon mudado "
+"instantaneamente. </ strong>"
+
+#: admin/settings.php:184
+msgid "60%"
+msgstr "60%"
+
+#: admin/settings.php:184
+msgid "50%"
+msgstr "50%"
+
+#: admin/settings.php:184
+msgid "33%"
+msgstr "33%"
+
+#: admin/settings.php:184
+msgid "25%"
+msgstr "25%"
+
+#: admin/settings.php:186
+msgid ""
+"Limit the header widget area max width as percentage of the entire header "
+"width."
+msgstr ""
+"Limita a área ocupada pelo widget do header como percentagem da dimensão "
+"total do header."
+
+#: admin/settings.php:202
+msgid ""
+"Enable the presentation front-page. This will become your new home page. "
+"<br> If you want another page to hold your latest blog posts, choose 'Blog "
+"Template (Posts Page)' from Page Templates while creating or editing that "
+"page."
+msgstr ""
+"Ativa a apresentação da página inicial. Isto vai ser a sua nova página "
+"inicial. <br> Se quisier outra página para ter os últimos artigos colocados, "
+"escolha 'Blog Template (Posts Page)' de Page Templates ao criar ou editar "
+"essa página."
+
+#: admin/settings.php:211
+msgid ""
+"Enable to display latest posts on the presentation page, below the columns. "
+"Sticky posts are always displayed and not counted."
+msgstr ""
+"Ative para exibir os últimos artigos na página de apresentação, por baixo "
+"das colunas. Os posts fixos são sempre apresentados e não contam para esta "
+"funcionalidade."
+
+#: admin/settings.php:213
+msgid "Show:"
+msgstr "Mostrar:"
+
+#: admin/settings.php:215
+msgid "posts"
+msgstr "Posts"
+
+#: admin/settings.php:216
+msgid ""
+"The number of posts to show on the Presentation Page. The same number of "
+"posts will be loaded with the <em>More Posts</em> button."
+msgstr ""
+"O núermo de posts na página de apresentação. O mesmo número de posts será "
+"carregado com o botão <em>\"Mais Posts</em>."
+
+#: admin/settings.php:219
+msgid "Posts per row:"
+msgstr "Posts por linha:"
+
+#: admin/settings.php:236
+msgid "Slider Dimensions:"
+msgstr "Dimensões do Slide"
+
+#: admin/settings.php:237
+msgid "width"
+msgstr "Largura"
+
+#: admin/settings.php:238
+msgid "height"
+msgstr "Altura"
+
+#: admin/settings.php:239
+msgid ""
+"The dimensions of your slider. Make sure your images are of the same size."
+msgstr ""
+"As dimensões do slider. Certifique-se de que as imagens são do mesmo tamanho."
+
+#: admin/settings.php:241
+msgid "Animation:"
+msgstr "Animação:"
+
+#: admin/settings.php:243
+msgid "Random"
+msgstr "Aleatório"
+
+#: admin/settings.php:243
+msgid "Fold"
+msgstr "Fold"
+
+#: admin/settings.php:243
+msgid "Fade"
+msgstr "Fade"
+
+#: admin/settings.php:243
+msgid "SlideInRight"
+msgstr "SlideInRight"
+
+#: admin/settings.php:243
+msgid "SlideInLeft"
+msgstr "SlideInLeft"
+
+#: admin/settings.php:243
+msgid "SliceDown"
+msgstr "SliceDown"
+
+#: admin/settings.php:243
+msgid "SliceDownLeft"
+msgstr "SliceDownLeft"
+
+#: admin/settings.php:243
+msgid "SliceUp"
+msgstr "SliceUp"
+
+#: admin/settings.php:243
+msgid "SliceUpLeft"
+msgstr "SliceUpLeft"
+
+#: admin/settings.php:243
+msgid "SliceUpDown"
+msgstr "SliceUpDown"
+
+#: admin/settings.php:243
+msgid "SliceUpDownLeft"
+msgstr "SliceUpDownLeft"
+
+#: admin/settings.php:243
+msgid "BoxRandom"
+msgstr "BoxRandom"
+
+#: admin/settings.php:243
+msgid "BoxRain"
+msgstr "BoxRain"
+
+#: admin/settings.php:243
+msgid "BoxRainReverse"
+msgstr "BoxRainReverse"
+
+#: admin/settings.php:243
+msgid "BoxRainGrow"
+msgstr "BoxRainGrow"
+
+#: admin/settings.php:243
+msgid "BoxRainGrowReverse"
+msgstr "BoxRainGrowReverse"
+
+#: admin/settings.php:252
+msgid "The transition effect of your slides."
+msgstr "O efeito de transição dos seus slides."
+
+#: admin/settings.php:254
+msgid "Animation Time:"
+msgstr "Tempo de animação."
+
+#: admin/settings.php:255 admin/settings.php:259
+msgid "milliseconds"
+msgstr "milisegundos"
+
+#: admin/settings.php:256
+msgid "The time in which the transition animation will take place."
+msgstr "O tempo em que a transição da animação ocorrerá."
+
+#: admin/settings.php:258
+msgid "Pause Time:"
+msgstr "Tempo de Pausa:"
+
+#: admin/settings.php:260
+msgid "The time in which a slide will be still and visible."
+msgstr "O tempo em que um slide  ainda será visível."
+
+#: admin/settings.php:262
+msgid "Slider navigation:"
+msgstr "Navegação do Slide"
+
+#: admin/settings.php:264
+msgid "Numbers"
+msgstr "Números"
+
+#: admin/settings.php:264
+msgid "Bullets"
+msgstr "Bullets"
+
+#: admin/settings.php:264
+msgid "None"
+msgstr "Nenhum"
+
+#: admin/settings.php:272
+msgid "Your slider navigation type. Shown under the slider."
+msgstr "O tipo de navegação do slider. Apresentado por baixo do sldier."
+
+#: admin/settings.php:274
+msgid "Slider arrows:"
+msgstr "Setas do slider:"
+
+#: admin/settings.php:276
+msgid "Always Visible"
+msgstr "Sempre visível"
+
+#: admin/settings.php:276
+msgid "Visible on Hover"
+msgstr "Visível no Hover"
+
+#: admin/settings.php:276
+msgid "Hidden"
+msgstr "Escondido"
+
+#: admin/settings.php:284
+msgid "The Left and Right arrows on your slider"
+msgstr "As setas da esquerda e da direita no seu slier."
+
+#: admin/settings.php:286
+msgid "Slider Border Width:"
+msgstr "Largura do contorno do slider."
+
+#: admin/settings.php:287 admin/settings.php:291
+msgid "px"
+msgstr "px"
+
+#: admin/settings.php:288
+msgid ""
+"The slider's border width. You can also edit its color from the Color "
+"Settings. Use a border width when your slider is smaller than the total site "
+"width."
+msgstr ""
+"A largura do contorno do slider. Pode também editar a cor nas Configurações "
+"de Cores. Utilize um contorno quando o slider tem uma largura inferior à do "
+"site."
+
+#: admin/settings.php:290
+msgid "Slider Top Margin:"
+msgstr "Margem superior do Slide"
+
+#: admin/settings.php:292
+msgid ""
+"Add a top margin for the slider. By default this margin is 0 and you will "
+"want to increase this value when the width of the slider is smaller than the "
+"total width of the site."
+msgstr ""
+"Adicionar uma margem superior para o Slide. Por padrão, a margem é 0 e vai "
+"querer aumentar este valor quando a largura da barra é menor do que a "
+"largura total do site."
+
+#: admin/settings.php:359
+msgid "Custom Slides"
+msgstr "Slides personalizados"
+
+#: admin/settings.php:359 admin/settings.php:455
+msgid "Latest Posts"
+msgstr "Últimos Posts"
+
+#: admin/settings.php:359 admin/settings.php:455
+msgid "Random Posts"
+msgstr "Posts Aleatórios"
+
+#: admin/settings.php:359 admin/settings.php:455
+msgid "Latest Posts from Category"
+msgstr "Últimos Posts da Categoria"
+
+#: admin/settings.php:359 admin/settings.php:455
+msgid "Random Posts from Category"
+msgstr "Posts aleatórios da Categoria"
+
+#: admin/settings.php:359 admin/settings.php:455
+msgid "Specific Posts"
+msgstr "Posts Específicos"
+
+#: admin/settings.php:359 admin/settings.php:455
+msgid "Disabled"
+msgstr "Desativado"
+
+#: admin/settings.php:368
+msgid ""
+"Only the slides with a defined image will become active and visible in the "
+"live slider.<br>When using slides from posts, make sure the selected posts "
+"have featured images.<br>Read the FAQs for more info."
+msgstr ""
+"Apenas os slides com uma imagem definida serão ativados e visíveis. "
+"<br>Quando utilizar sliders de posts, tenha a certeza que os posts têm "
+"imagens destacadas.<br> Leia os FAQs para mais informação."
+
+#: admin/settings.php:373
+msgid "Latest posts will be loaded into the slider."
+msgstr "Os últimos posts vão ser apresentados no slider."
+
+#: admin/settings.php:377
+msgid "Random posts will be loaded into the slider."
+msgstr "Os posts aleatórios serão apresentados no slider."
+
+#: admin/settings.php:381
+msgid "Latest posts from the category you choose will be loaded in the slider."
+msgstr ""
+"Os últimos posts da categoria escolhida vão ser apresentados no slider."
+
+#: admin/settings.php:385
+msgid ""
+"Random posts from the category you choose will be loaded into the slider."
+msgstr ""
+"Os posts aleatórios da categoria escolhida serão apresentados no slider."
+
+#: admin/settings.php:389
+msgid "Only sticky posts will be loaded into the slider."
+msgstr "Apenas os  posts fixos serão apresentados no slider."
+
+#: admin/settings.php:393 admin/settings.php:489
+msgid "List the post IDs you want to display (separated by a comma): "
+msgstr "Liste o ID dos posts que quer apresentar (separados por vírgula):"
+
+#: admin/settings.php:398 admin/settings.php:499
+msgid "<br> Choose the category: "
+msgstr "<br> Escolha a Categoria"
+
+#: admin/settings.php:400 admin/settings.php:501
+msgid "Select Category"
+msgstr "Selecione a Categoria"
+
+#: admin/settings.php:414 admin/settings.php:515
+msgid "Number of posts to show:"
+msgstr "Número de Posts para mostrar:"
+
+#: admin/settings.php:425
+msgid "Slide"
+msgstr "Slide"
+
+#: admin/settings.php:427 content/content-image.php:26
+msgid "Image"
+msgstr "Imagem"
+
+#: admin/settings.php:431
+msgid "Title"
+msgstr "Título"
+
+#: admin/settings.php:434
+msgid "Text"
+msgstr "Texto"
+
+#: admin/settings.php:437
+msgid "Link"
+msgstr "Link"
+
+#: admin/settings.php:455
+msgid "Widget Columns"
+msgstr "Colunas do Widget"
+
+#: admin/settings.php:464
+msgid ""
+"Only the columns with a defined image will become active and visible on the "
+"presentation page.<br>When using columns from posts, make sure the selected "
+"posts have featured images.<br>Read the FAQs for more info."
+msgstr ""
+"Apenas as colunas com imagem definida ficarão ativas e apresentadas na "
+"página de apresentação. <br>Quando usar colunas de posts, certifique-se de "
+"que têm imagens destacadas.<br> Leia os FAQs para mais informação."
+
+#: admin/settings.php:469
+msgid "Latest posts will be loaded into the columns."
+msgstr "Últimos posts serão apresentados nas colunas."
+
+#: admin/settings.php:473
+msgid "Random posts will be loaded into the columns."
+msgstr "Posts aleatórios serão apresentados nas colunas."
+
+#: admin/settings.php:477
+msgid ""
+"Latest posts from the category you choose will be loaded in the columns."
+msgstr "Últimos posts da categoria escolhida serão apresentados nas colunas."
+
+#: admin/settings.php:481
+msgid ""
+"Random posts from the category you choose will be loaded into the columns."
+msgstr ""
+"Posts aleatórios da categoria escolhida serão apresentados nas colunas."
+
+#: admin/settings.php:485
+msgid "Only sticky posts will be loaded into the columns."
+msgstr "Apenas os posts fixos serão apresentados nas colunas."
+
+#: admin/settings.php:494
+msgid ""
+"Load your custom Widgets as columns. Go to <a>Appearance >> Widgets</a> and "
+"create your custom columns using the Columns widget. You can use as many as "
+"you want."
+msgstr ""
+"Apresente os custom widgets como colunas. Vá a <a>Apresentação >> Widgets </"
+"a> e crie as suas colunas utilizando o widget apropriado. Pode utilizar "
+"quantas queira."
+
+#: admin/settings.php:523
+msgid "Column Display:"
+msgstr "Mostrar Coluna:"
+
+#: admin/settings.php:525
+msgid "Animated"
+msgstr "Animado"
+
+#: admin/settings.php:525
+msgid "Static on Image"
+msgstr "Estático na imagem"
+
+#: admin/settings.php:525
+msgid "Static under Image"
+msgstr "Estático em baixo da imagem"
+
+#: admin/settings.php:533
+msgid "How to display your Presentation Page Columns."
+msgstr "Como mostrar suas Colunas da Página de Apresentação"
+
+#: admin/settings.php:535
+msgid "Columns per row:"
+msgstr "Colunas por linha:"
+
+#: admin/settings.php:545
+msgid "Image Size:"
+msgstr "Tamanho da imagem:"
+
+#: admin/settings.php:546
+msgid "Height: "
+msgstr "Altura"
+
+#: admin/settings.php:547
+msgid "Width: "
+msgstr "Largura:"
+
+#: admin/settings.php:548
+msgid ""
+"The sizes for your column images. The width is dependent on total site width "
+"and not configurable."
+msgstr ""
+"O tamanho para as imagens das colunas. A largura depende da largura total do "
+"site e não é configurável."
+
+#: admin/settings.php:550
+msgid "Read more text:"
+msgstr "Ler mais:"
+
+#: admin/settings.php:553
+msgid ""
+"The linked text that appears at the bottom of each column. Leave empty to "
+"hide the link."
+msgstr ""
+"O texto linkado que aparece no botão de cada coluna. Deixe em branco para "
+"esconder o link."
+
+#: admin/settings.php:562
+msgid "Extra Text"
+msgstr "Texto Extra"
+
+#: admin/settings.php:564
+msgid "Text for the Presentation Page"
+msgstr "Texto para a página de apresentação"
+
+#: admin/settings.php:565
+msgid ""
+"More text for the Presentation Page. The top title is just below the slider, "
+"the second title is below the columns. A text area supporting HTML tags and "
+"shortcodes below each title<br>It's all optional so leave any input field "
+"empty to not dispaly it."
+msgstr ""
+"Mais texto para a página de apresentação. O título está por baixo do slider, "
+"o segundo título por baixo das colunas. A área de texto suporta HTML tags e "
+"shortcodes por baixo de cada título. <br> É opcional por isso se deixar o "
+"campo de introdução em branco, não vai ser visível."
+
+#: admin/settings.php:568
+msgid "Top Title"
+msgstr "Título superior"
+
+#: admin/settings.php:570
+msgid "Top Text"
+msgstr "Texto Superior"
+
+#: admin/settings.php:573
+msgid "Second Title"
+msgstr "Segundo Título"
+
+#: admin/settings.php:575
+msgid "Second text"
+msgstr "Segundo Texto"
+
+#: admin/settings.php:578
+msgid "Hide areas"
+msgstr "Esconder áreas"
+
+#: admin/settings.php:580
+msgid "Choose the areas to hide on the first page."
+msgstr "Escolha as áreas para esconder na primeira página"
+
+#: admin/settings.php:591
+msgid "Hide the header area (logo/title and/or image/empty area)."
+msgstr "Esconder o hear (logótipo/título e/ou imagem/área vazia)."
+
+#: admin/settings.php:594
+msgid "Hide the main menu and the top menu."
+msgstr "Esconder o menu principal e o menu superior."
+
+#: admin/settings.php:597
+msgid "Hide the footer widgets. "
+msgstr "Esconder os widgets do footer."
+
+#: admin/settings.php:600
+msgid "Hide the footer (copyright area)."
+msgstr "Esconder o footer (área do copyright)"
+
+#: admin/settings.php:625
+msgid ""
+"Select the general font family and size or insert the Google Font name "
+"you'll use in your blog. This will affect all text except the one controlled "
+"by the options below. "
+msgstr ""
+
+#: admin/settings.php:644
+msgid ""
+"Select the font family and size or insert the Google Font name you want for "
+"your titles. It will affect post titles and page titles. Leave 'General "
+"Font' and the general font values you selected will be used."
+msgstr ""
+
+#: admin/settings.php:663
+msgid ""
+"Select the font family and size or insert the Google Font name you want your "
+"widget titles to have. Leave 'General Font' and the general font values you "
+"selected will be used."
+msgstr ""
+
+#: admin/settings.php:681
+msgid ""
+"Select the font family and size or insert the Google Font name you want your "
+"site title and tagline to use. Leave 'General Font' and the general font "
+"values you selected will be used."
+msgstr ""
+
+#: admin/settings.php:699
+msgid ""
+"Select the font family and size or insert the Google Font name you want your "
+"main menu to use. Leave 'General Font' and the general font values you "
+"selected will be used."
+msgstr ""
+
+#: admin/settings.php:720
+msgid ""
+"Select the font family and size or insert the Google Font name you want your "
+"headings to have (h1 - h6 tags will be affected). Leave 'General Font' and "
+"the general font values you selected will be used."
+msgstr ""
+
+#: admin/settings.php:728 admin/settings.php:769 admin/settings.php:779
+msgid "Default"
+msgstr "Defeito"
+
+#: admin/settings.php:728 admin/settings.php:1022 admin/settings.php:1385
+msgid "Left"
+msgstr ""
+
+#: admin/settings.php:728 admin/settings.php:1022 admin/settings.php:1385
+msgid "Right"
+msgstr ""
+
+#: admin/settings.php:728
+msgid "Justify"
+msgstr ""
+
+#: admin/settings.php:728 admin/settings.php:1022 admin/settings.php:1385
+msgid "Center"
+msgstr ""
+
+#: admin/settings.php:730
+msgid ""
+"This overwrites the text alignment in posts and pages. Leave 'Default' for "
+"normal settings (alignment will remain as declared in posts, comments etc.)."
+msgstr ""
+
+#: admin/settings.php:740
+msgid "Choose the indent for your paragraphs."
+msgstr ""
+
+#: admin/settings.php:751
+msgid "Disable the default headings indent (left margin)."
+msgstr ""
+
+#: admin/settings.php:761
+msgid "Text line height. The height between 2 rows of text."
+msgstr ""
+
+#: admin/settings.php:771
+msgid ""
+"The space between <i>words</i>. Leave 'Default' for normal settings (size "
+"value will be as set in the CSS)."
+msgstr ""
+
+#: admin/settings.php:781
+msgid ""
+"The space between <i>letters</i>. Leave 'Default' for normal settings (size "
+"value will be as set in the CSS)."
+msgstr ""
+
+#: admin/settings.php:789
+msgid "Select the spacing between the paragraphs."
+msgstr ""
+
+#: admin/settings.php:796
+msgid "Default (disabled)"
+msgstr ""
+
+#: admin/settings.php:798
+msgid "Enable uppercase text styling. All text in the site will be uppercase."
+msgstr ""
+
+#: admin/settings.php:806
+msgid "Define background image"
+msgstr ""
+
+#: admin/settings.php:811 admin/settings.php:837 admin/settings.php:862
+#: admin/settings.php:890 admin/settings.php:902
+msgid "Background:"
+msgstr ""
+
+#: admin/settings.php:812
+msgid "Header Background"
+msgstr ""
+
+#: admin/settings.php:813
+msgid "Main Site Background"
+msgstr ""
+
+#: admin/settings.php:814
+msgid "Footer Widgets Area Background"
+msgstr ""
+
+#: admin/settings.php:815
+msgid "Footer Background"
+msgstr ""
+
+#: admin/settings.php:816 admin/settings.php:839 admin/settings.php:864
+#: admin/settings.php:893 admin/settings.php:905
+msgid "Text:"
+msgstr ""
+
+#: admin/settings.php:817
+msgid "General Text"
+msgstr ""
+
+#: admin/settings.php:818
+msgid "General Lighter Text"
+msgstr ""
+
+#: admin/settings.php:819
+msgid "Footer Text"
+msgstr ""
+
+#: admin/settings.php:820
+msgid ""
+"The site background features 4 separately coloured areas.<br />The general "
+"text colour applies to all text on the website that is not controlled by any "
+"other option."
+msgstr ""
+
+#: admin/settings.php:825
+msgid "Accent Color #1"
+msgstr ""
+
+#: admin/settings.php:826
+msgid "Accent Color #2"
+msgstr ""
+
+#: admin/settings.php:827
+msgid "Accent Color #3"
+msgstr ""
+
+#: admin/settings.php:828
+msgid "Accent Color #4"
+msgstr ""
+
+#: admin/settings.php:829
+msgid "Accent Color #5"
+msgstr ""
+
+#: admin/settings.php:830
+msgid ""
+"Accents #1 and #2 should either be the same as the link colours or be "
+"separate from all other colours on the site.<br />\n"
+"     Accent #5 is used for input fields and buttons backgrounds, borders and "
+"lines.<br />\n"
+"     Accents #3 and #4 should be the lighter/darker than the content "
+"background colour, being used as borders/shades on elements where accent #5 "
+"is background colour."
+msgstr ""
+
+#: admin/settings.php:838
+msgid "Site Description Background"
+msgstr ""
+
+#: admin/settings.php:841
+msgid "Site Description"
+msgstr "Descrição do Site"
+
+#: admin/settings.php:847
+msgid "Menu:"
+msgstr "Menu:"
+
+#: admin/settings.php:848
+msgid "Menu Background"
+msgstr "Fundo do Menu"
+
+#: admin/settings.php:849
+msgid "Menu Text"
+msgstr "Texto do menu"
+
+#: admin/settings.php:852
+msgid "Submenu:"
+msgstr "Submenu:"
+
+#: admin/settings.php:853
+msgid "Submenu Background"
+msgstr "Fundo do Submenu"
+
+#: admin/settings.php:854
+msgid "Submenu Text"
+msgstr "Texto do SubMenu"
+
+#: admin/settings.php:855
+msgid "Submenu Shadow"
+msgstr ""
+
+#: admin/settings.php:857
+msgid "These colours apply to the main site menu (and dropdown elements)."
+msgstr ""
+
+#: admin/settings.php:863
+msgid "Top Bar Background"
+msgstr "Fundo da barra superior"
+
+#: admin/settings.php:865
+msgid "Top Bar Menu Link"
+msgstr "Link do Menu da Barra superior"
+
+#: admin/settings.php:866
+msgid "Top Bar Menu Link Hover"
+msgstr "Hover do Link do Menu da Barra superior"
+
+#: admin/settings.php:867
+msgid "These colours apply to the top bar menu."
+msgstr ""
+
+#: admin/settings.php:872
+msgid "Content Background"
+msgstr ""
+
+#: admin/settings.php:873
+msgid "Page/Post Title"
+msgstr ""
+
+#: admin/settings.php:874
+msgid "Page/Post Title Hover"
+msgstr ""
+
+#: admin/settings.php:875
+msgid "Content Headings"
+msgstr ""
+
+#: admin/settings.php:876
+msgid "Content colours apply to post and page areas of the site."
+msgstr ""
+
+#: admin/settings.php:881
+msgid "Titles Color"
+msgstr ""
+
+#: admin/settings.php:882
+msgid "Slider Border Color"
+msgstr ""
+
+#: admin/settings.php:883
+msgid "Slider Caption Text Color"
+msgstr ""
+
+#: admin/settings.php:884
+msgid "Slider Caption Background"
+msgstr ""
+
+#: admin/settings.php:885
+msgid "These colours apply to specific areas of the presentation page."
+msgstr ""
+
+#: admin/settings.php:891
+msgid "Sidebars Background"
+msgstr ""
+
+#: admin/settings.php:892
+msgid "Sidebars Widget Title Background"
+msgstr ""
+
+#: admin/settings.php:894
+msgid "Sidebars Text"
+msgstr ""
+
+#: admin/settings.php:895
+msgid "Sidebars Widget Title Text"
+msgstr ""
+
+#: admin/settings.php:896
+msgid "These colours apply to the widgets placed in either sidebar."
+msgstr ""
+
+#: admin/settings.php:903
+msgid "Footer Widgets Background"
+msgstr ""
+
+#: admin/settings.php:904
+msgid "Footer Widgets Title Background"
+msgstr ""
+
+#: admin/settings.php:906
+msgid "Footer Widget Text"
+msgstr ""
+
+#: admin/settings.php:907
+msgid "Footer Widgets Title Text"
+msgstr ""
+
+#: admin/settings.php:908
+msgid "These colours apply to the widgets in the footer area."
+msgstr ""
+
+#: admin/settings.php:913
+msgid "General:"
+msgstr ""
+
+#: admin/settings.php:914
+msgid "General Links"
+msgstr ""
+
+#: admin/settings.php:915
+msgid "General Links Hover"
+msgstr ""
+
+#: admin/settings.php:916
+msgid "Sidebar Widgets:"
+msgstr ""
+
+#: admin/settings.php:917
+msgid "Sidebar Widgets Links"
+msgstr ""
+
+#: admin/settings.php:918
+msgid "Sidebar Widgets Links Hover"
+msgstr ""
+
+#: admin/settings.php:919
+msgid "Footer Widgets:"
+msgstr ""
+
+#: admin/settings.php:920
+msgid "Footer Widgets Links"
+msgstr ""
+
+#: admin/settings.php:921
+msgid "Footer Widgets Links Hover"
+msgstr ""
+
+#: admin/settings.php:922
+msgid "Footer:"
+msgstr ""
+
+#: admin/settings.php:923
+msgid "Footer Links"
+msgstr ""
+
+#: admin/settings.php:924
+msgid "Footer Links Hover"
+msgstr ""
+
+#: admin/settings.php:925
+msgid "Footer colours include the footer menu colours."
+msgstr ""
+
+#: admin/settings.php:930
+msgid "Meta Icons"
+msgstr ""
+
+#: admin/settings.php:931
+msgid "Meta Links"
+msgstr ""
+
+#: admin/settings.php:932
+msgid "Meta Links Hover"
+msgstr ""
+
+#: admin/settings.php:933
+msgid "Colours for your meta area (post information)."
+msgstr ""
+
+#: admin/settings.php:938
+msgid "Social Icons Background"
+msgstr ""
+
+#: admin/settings.php:939
+msgid "Social Icons Background Hover"
+msgstr ""
+
+#: admin/settings.php:940
+msgid "Background colours for your social icons."
+msgstr ""
+
+#: admin/settings.php:946
+msgid "Light"
+msgstr ""
+
+#: admin/settings.php:946
+msgid "Dark"
+msgstr ""
+
+#: admin/settings.php:946
+msgid "Simple"
+msgstr ""
+
+#: admin/settings.php:954
+msgid ""
+"This setting changes the look of your captions. Images that are not inserted "
+"through captions will not be affected."
+msgstr ""
+
+#: admin/settings.php:967
+msgid "Normal"
+msgstr ""
+
+#: admin/settings.php:967
+msgid "Fixed"
+msgstr ""
+
+#: admin/settings.php:967 admin/settings.php:1062 admin/settings.php:1079
+#: admin/settings.php:1094 admin/settings.php:1144 admin/settings.php:1193
+#: admin/settings.php:1224
+msgid "Hide"
+msgstr ""
+
+#: admin/settings.php:977
+msgid "Site width"
+msgstr ""
+
+#: admin/settings.php:977
+msgid "Full width"
+msgstr ""
+
+#: admin/settings.php:986
+msgid "Show the topbar that can include social icons and the top menu."
+msgstr ""
+
+#: admin/settings.php:1001
+msgid ""
+"Show breadcrumbs at the top of the content area. Breadcrumbs are a form of "
+"navigation that keeps track of your location withtin the site."
+msgstr ""
+
+#: admin/settings.php:1016
+msgid ""
+"Show numbered pagination. Where there is more than one page, instead of the "
+"bottom <b>Older Posts</b> and <b>Newer posts</b> links you have a numbered "
+"pagination. "
+msgstr ""
+
+#: admin/settings.php:1022
+msgid "Right (multiline)"
+msgstr ""
+
+#: admin/settings.php:1030
+msgid "Sets the desired menu items alignment."
+msgstr ""
+
+#: admin/settings.php:1036
+msgid "Margin top: "
+msgstr ""
+
+#: admin/settings.php:1037
+msgid ""
+"The margin between the content and the menu. It can be set to 0px if you "
+"want the content area and menu to join."
+msgstr ""
+
+#: admin/settings.php:1039
+msgid "Padding left/right: "
+msgstr ""
+
+#: admin/settings.php:1040
+msgid ""
+"The left/right padding around the content. Should be set to 10px or less for "
+"designs without a content color."
+msgstr ""
+
+#: admin/settings.php:1055
+msgid ""
+"The border style for your images. Only images inserted in your posts and "
+"pages will be affected. "
+msgstr ""
+
+#: admin/settings.php:1062 admin/settings.php:1079 admin/settings.php:1094
+#: admin/settings.php:1193 admin/settings.php:1208 admin/settings.php:1224
+msgid "Show"
+msgstr "Mostrar"
+
+#: admin/settings.php:1070
+msgid ""
+"Hide or show bullets next to lists in your content area (posts, pages etc.)."
+msgstr ""
+
+#: admin/settings.php:1087
+msgid "Hide or show titles on pages."
+msgstr ""
+
+#: admin/settings.php:1102
+msgid "Hide or show titles on Categories and Archives."
+msgstr ""
+
+#: admin/settings.php:1117
+msgid "Hide table borders and background color."
+msgstr ""
+
+#: admin/settings.php:1133
+msgid ""
+"Enable the Back to Top button. The button appears after scrolling the page "
+"down."
+msgstr ""
+
+#: admin/settings.php:1144
+msgid "Top"
+msgstr "Superior"
+
+#: admin/settings.php:1144
+msgid "Bottom"
+msgstr "Inferior"
+
+#: admin/settings.php:1152
+msgid ""
+"The position of your meta bar (author, date, category, tags and edit button)."
+msgstr ""
+
+#: admin/settings.php:1159 admin/settings.php:1175
+msgid "Author"
+msgstr "Autor"
+
+#: admin/settings.php:1159 admin/settings.php:1175
+msgid "Date"
+msgstr "Data"
+
+#: admin/settings.php:1159 admin/settings.php:1175
+msgid "Time"
+msgstr "Hora"
+
+#: admin/settings.php:1159 admin/settings.php:1175
+msgid "Category"
+msgstr "Categoria"
+
+#: admin/settings.php:1159 admin/settings.php:1175
+msgid "Tag"
+msgstr "Tag"
+
+#: admin/settings.php:1159
+msgid "Comments"
+msgstr "Comentários"
+
+#: admin/settings.php:1168
+msgid ""
+"Choose the post metas you want to show on multiple post pages (home, blog, "
+"category, archive etc.)"
+msgstr ""
+
+#: admin/settings.php:1175
+msgid "Bookmark"
+msgstr "Favorito"
+
+#: admin/settings.php:1184
+msgid "Choose the post metas you want to show on sigle post pages."
+msgstr ""
+
+#: admin/settings.php:1201
+msgid ""
+"Hide the explanatory text under the comments form (starts with  <i>You may "
+"use these HTML tags and attributes:...</i>)."
+msgstr ""
+
+#: admin/settings.php:1208
+msgid "Hide in posts"
+msgstr "Esconder em posts"
+
+#: admin/settings.php:1208
+msgid "Hide in pages"
+msgstr "Esconder em páginas"
+
+#: admin/settings.php:1208
+msgid "Hide everywhere"
+msgstr "Esconder  em todos os lugares"
+
+#: admin/settings.php:1216
+msgid ""
+"Hide the <b>Comments are closed</b> text that by default shows up on pages "
+"or posts with comments disabled."
+msgstr ""
+
+#: admin/settings.php:1232
+msgid ""
+"Hide the <b>Comments off</b> text next to posts that have comments disabled."
+msgstr ""
+
+#: admin/settings.php:1244 admin/settings.php:1259 admin/settings.php:1275
+msgid "Excerpt"
+msgstr ""
+
+#: admin/settings.php:1244 admin/settings.php:1259 admin/settings.php:1275
+msgid "Full Post"
+msgstr ""
+
+#: admin/settings.php:1252
+msgid ""
+"Excerpts on the main page. Only standard posts will be affected. All other "
+"post formats (aside, image, chat, quote etc.) have their specific formating."
+msgstr ""
+
+#: admin/settings.php:1267
+msgid ""
+"Choose if you want the sticky posts on your home page to be visible in full "
+"or just the excerpts. "
+msgstr ""
+
+#: admin/settings.php:1283
+msgid ""
+"Excerpts on archive, categroy and search pages. Same as above, only standard "
+"posts will be affected."
+msgstr ""
+
+#: admin/settings.php:1291
+msgid ""
+"The number of words for excerpts. When that number is reached the post will "
+"be interrupted by a <i>Continue reading</i> link that will take the reader "
+"to the full post page."
+msgstr ""
+
+#: admin/settings.php:1306
+msgid ""
+"Enable the Magazine Layout. This layout applies to pages with posts and "
+"shows 2 posts per row."
+msgstr ""
+
+#: admin/settings.php:1313
+msgid ""
+"Replaces the three dots ('[...])' that are appended automatically to "
+"excerpts."
+msgstr ""
+
+#: admin/settings.php:1320
+msgid "Edit the 'Continue Reading' link added to your post excerpts."
+msgstr ""
+
+#: admin/settings.php:1335
+msgid ""
+"By default WordPress excerpts remove all HTML tags (&lt;pre&gt;, &lt;a&gt;, "
+"&lt;b&gt and all others) and only clean text is left in the excerpt.\n"
+"Enabling this option allows HTML tags to remain in excerpts so all your "
+"default formating will be kept.<br /> <b>Just a warning: </b>If HTML tags "
+"are enabled, you have to make sure\n"
+"they are not left open. So if within your post you have an opened HTML tag "
+"but the except ends before that tag closes, the rest of the site will be "
+"contained in that HTML tag. -- Leave 'Disable' if unsure -- "
+msgstr ""
+
+#: admin/settings.php:1361
+msgid "Link the thumbnail to the post"
+msgstr ""
+
+#: admin/settings.php:1362
+msgid ""
+"Show featured images as thumbnails on posts. The images must be selected for "
+"each post in the Featured Image section."
+msgstr ""
+
+#: admin/settings.php:1377
+msgid ""
+"Show the first image that you inserted in a post as a thumbnail. If there is "
+"a Featured Image selected for that post, it will have priority."
+msgstr ""
+
+#: admin/settings.php:1393
+msgid "Thumbnail alignment."
+msgstr ""
+
+#: admin/settings.php:1400
+msgid "(width)"
+msgstr "(largura)"
+
+#: admin/settings.php:1401
+msgid "(height)"
+msgstr "(altura)"
+
+#: admin/settings.php:1407
+msgid "Crop images to exact size."
+msgstr "Cortar imagens para tamanho exato."
+
+#: admin/settings.php:1410
+msgid ""
+"The size (in pixels) for your thumbnails. By default imges will be scaled "
+"with aspect ratio kept. Choose to crop the images if you want the exact size."
+msgstr ""
+
+#: admin/settings.php:1426
+msgid ""
+"Show featured images on headers. The header will be replaced with a featured "
+"image if you selected it as a Featured Image in the post and if it is bigger "
+"or at least equal to the current header size."
+msgstr ""
+
+#: admin/settings.php:1437
+msgid ""
+"Select your desired Social network from the left dropdown menu and insert "
+"your corresponding address in the right input field. (ex: <i>http://www."
+"facebook.com/yourname</i> )"
+msgstr ""
+
+#: admin/settings.php:1438
+msgid ""
+"You can also choose if you want the link to open in a new window and what "
+"title to dispaly while hovering over the icon."
+msgstr ""
+
+#: admin/settings.php:1439
+msgid ""
+"You can show up to 5 different social icons from over 35 social networks."
+msgstr ""
+
+#: admin/settings.php:1440
+msgid "You can leave any number of inputs empty."
+msgstr ""
+
+#: admin/settings.php:1441
+msgid ""
+"You can change the background for your social colors from the colors "
+"settings section."
+msgstr ""
+
+#: admin/settings.php:1459
+msgid "Social Network Link"
+msgstr ""
+
+#: admin/settings.php:1464
+msgid "Open in new window"
+msgstr ""
+
+#: admin/settings.php:1466
+msgid "Social Network Title"
+msgstr ""
+
+#: admin/settings.php:1509
+msgid "Footer"
+msgstr ""
+
+#: admin/settings.php:1513
+msgid "Left side"
+msgstr ""
+
+#: admin/settings.php:1517
+msgid "Right side"
+msgstr ""
+
+#: admin/settings.php:1529
+msgid "Choose the <b>areas</b> where to display the social icons."
+msgstr ""
+
+#: admin/settings.php:1542
+msgid ""
+"Insert custom text or HTML code that will appear in you footer. <br /> You "
+"can use HTML to insert links, images and special characters like &copy;."
+msgstr ""
+
+#: admin/settings.php:1550
+msgid ""
+"Insert your custom CSS here. Any CSS declarations made here will overwrite "
+"Tempera's (even the custom options specified right here in the Tempera "
+"Settings page). <br /> Your custom CSS will be preserved when updating the "
+"theme."
+msgstr ""
+
+#: admin/settings.php:1557
+msgid ""
+"Insert your custom Javascript code here. (Google Analytics and any other "
+"forms of Analytic software)."
+msgstr ""
+
+#: admin/settings.php:1571
+msgid ""
+"Enable extra compatibility tag for older Internet Explorer versions. Turning "
+"this option on will trigger W3C validation errors."
+msgstr ""
+
+#: content/content-aside.php:15 content/content-audio.php:15
+#: content/content-chat.php:15 content/content-gallery.php:18
+#: content/content-gallery.php:42 content/content-image.php:14
+#, php-format
+msgid "Permalink to %s"
+msgstr ""
+
+#: content/content-aside.php:28 content/content-audio.php:23
+#: content/content-chat.php:28 content/content-image.php:22
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: content/content-aside.php:33
+msgid "Aside"
+msgstr ""
+
+#: content/content-audio.php:27
+msgid "Audio"
+msgstr ""
+
+#: content/content-chat.php:33
+msgid "Chat"
+msgstr ""
+
+#: content/content-frontpage.php:38
+msgid "No Posts to Display"
+msgstr ""
+
+#: content/content-frontpage.php:43
+#, php-format
+msgid ""
+"You currently have no published posts. To hide this message either <a href="
+"\"%s\">add some posts</a> or disable displaying posts on the Presentation "
+"Page in <a href=\"%s\">theme settings</a>."
+msgstr ""
+
+#: content/content-gallery.php:41
+#, php-format
+msgid "This gallery contains <a %1$s>%2$s photo</a>."
+msgstr ""
+
+#: content/content-gallery.php:55
+msgid "Gallery"
+msgstr "Galeria"
+
+#: content/content-quote.php:31
+msgid "Quote"
+msgstr "Quote"
+
+#: content/content-status.php:36
+msgid "Status"
+msgstr "Status"
+
+#: content/content-video.php:27
+msgid "Video"
+msgstr "Video"
+
+#: includes/ajax.php:48
+msgid "More posts"
+msgstr "Mais posts"
+
+#: includes/theme-comments.php:26
+msgid "Pingback: "
+msgstr "Pingback: "
+
+#: includes/theme-comments.php:26 includes/theme-comments.php:41
+msgid "(Edit)"
+msgstr "(Editar)"
+
+#: includes/theme-comments.php:41
+msgid "at"
+msgstr "em"
+
+#: includes/theme-comments.php:48
+msgid "Your comment is awaiting moderation."
+msgstr "O seu comentário está aguardando moderação."
+
+#: includes/theme-comments.php:55
+msgid "Reply"
+msgstr "Responder"
+
+#: includes/theme-comments.php:91
+msgid "<b>0</b>"
+msgstr "<b>0</b>"
+
+#: includes/theme-comments.php:91
+msgid "<b>1</b>"
+msgstr "<b>1</b>"
+
+#: includes/theme-comments.php:91
+msgid "<b>%</b>"
+msgstr "<b>%</b>"
+
+#: includes/theme-comments.php:91
+msgid "<b>-</b>"
+msgstr "<b>-</b>"
+
+#: includes/theme-comments.php:102
+msgid "One Comment:"
+msgstr "Um Comentário:"
+
+#: includes/theme-comments.php:115
+msgid "Older Comments"
+msgstr "Comentários mais antigos"
+
+#: includes/theme-comments.php:116
+msgid "Newer Comments"
+msgstr "Comentários recentes"
+
+#: includes/theme-comments.php:144
+msgid "Comments are closed."
+msgstr "Comentários estão fechados."
+
+#: includes/theme-comments.php:164 includes/theme-comments.php:165
+msgid "Name"
+msgstr "Nome"
+
+#: includes/theme-comments.php:169 includes/theme-comments.php:170
+msgid "Email"
+msgstr "Email"
+
+#: includes/theme-comments.php:174 includes/theme-comments.php:175
+msgid "Website"
+msgstr "WebSite"
+
+#: includes/theme-comments.php:187 includes/theme-comments.php:188
+msgid "Comment"
+msgstr "Comentário"
+
+#: includes/theme-functions.php:310
+msgid "Powered by"
+msgstr "Desenvolvidor por"
+
+#: includes/theme-functions.php:312
+msgid "Semantic Personal Publishing Platform"
+msgstr "Plataforma Pessoal de Publicação Semântica"
+
+#: includes/theme-loop.php:172
+msgid "Author "
+msgstr "Autor"
+
+#: includes/theme-loop.php:174
+#, php-format
+msgid "View all posts by %s"
+msgstr "Ver todas os Posts de %s"
+
+#: includes/theme-loop.php:189
+msgid "Categories"
+msgstr "Categorias"
+
+#: includes/theme-loop.php:209
+msgid "Tags"
+msgstr "Tags"
+
+#: includes/theme-loop.php:271
+msgid "Tagged"
+msgstr "Tagged"
+
+#: includes/theme-loop.php:274
+msgid " Bookmark the permalink"
+msgstr "Marcar com favorito o link Permanente"
+
+#: includes/theme-loop.php:274
+msgid "Permalink to"
+msgstr "Link permanente para"
+
+#: includes/theme-loop.php:297
+msgid "<i class=\"meta-nav-prev\"></i> <span>Older posts</span>"
+msgstr "<i class=\"meta-nav-prev\"></i> <span>Posts mais antigos</span>"
+
+#: includes/theme-loop.php:298
+msgid "<span>Newer posts</span> <i class=\"meta-nav-next\"></i>"
+msgstr "<span>Posts recentes</span> <i class=\"meta-nav-next\"></i>"
+
+#: includes/theme-meta.php:28
+#, php-format
+msgid "Page %s"
+msgstr "Página %s"
+
+#: includes/theme-setup.php:86
+msgid "Primary Navigation"
+msgstr "Navegação Primária"
+
+#: includes/theme-setup.php:87
+msgid "Top Navigation"
+msgstr "Navegação superior"
+
+#: includes/theme-setup.php:88
+msgid "Footer Navigation"
+msgstr "Navegação do rodapé"
+
+#: includes/theme-setup.php:120
+msgid "Tempera Default Header Image"
+msgstr "Imagem do Cabeçalho padrão do Tempera"
+
+#: includes/theme-setup.php:181
+msgid "Skip to content"
+msgstr "Ir para o conteúdo"
+
+#: includes/theme-setup.php:212
+msgid "Left sidebar"
+msgstr "Barra Lateral Esquerda"
+
+#: includes/theme-setup.php:223
+msgid "Right sidebar"
+msgstr "Barra Lateral Direita"
+
+#: includes/theme-setup.php:232
+msgid "First Footer Area"
+msgstr "Primeira área do rodapé"
+
+#: includes/theme-setup.php:234
+msgid "First footer area"
+msgstr "Primeira área do rodapé"
+
+#: includes/theme-setup.php:243
+msgid "Second Footer Area"
+msgstr "Segunda área do rodapé"
+
+#: includes/theme-setup.php:245
+msgid "Second footer area"
+msgstr "Segunda área do rodapé"
+
+#: includes/theme-setup.php:254
+msgid "Third Footer Area"
+msgstr "Terceira área do rodapé"
+
+#: includes/theme-setup.php:256
+msgid "The third footer area"
+msgstr "A terceira área de rodapé"
+
+#: includes/theme-setup.php:265
+msgid "Fourth Footer Area"
+msgstr "Quarta área de rodapé"
+
+#: includes/theme-setup.php:267
+msgid "The fourth footer area"
+msgstr "A quarta área de rodapé"
+
+#: includes/theme-setup.php:276 includes/theme-setup.php:278
+msgid "Above Content Area"
+msgstr "Acima de área de conteúdo"
+
+#: includes/theme-setup.php:287 includes/theme-setup.php:289
+msgid "Below Content Area"
+msgstr "Abaixo área de conteúdo"
+
+#: includes/theme-setup.php:298 includes/theme-setup.php:300
+msgid "Header Widgets"
+msgstr "Widgets do Cabeçalho"
+
+#: includes/theme-setup.php:313
+#, php-format
+msgid ""
+"Only drag [Cryout Column] widgets here. Recommended size for uploaded "
+"images: %1$dpx (width) x %2$dpx (height). Go to the Tempera Settings page >> "
+"Presentation Page Settings >> Columns to edit sizes and more."
+msgstr ""
+"Só arrastar [Cryout Coluna] widgets para aqui. O tamanho recomendado para "
+"imagens enviadas: %1$dpx (largura) x%2$dpx (altura). Vá à página "
+"Configurações de Tempera >> Configurações de página de apresentação >> "
+"Colunas para editar tamanhos e muito mais."

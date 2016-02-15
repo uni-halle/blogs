@@ -188,9 +188,18 @@ footer.mlu { text-align: center; }
 	width: auto;
 	padding: 3em 0 3em 4em;
 	/*padding-left: 4em;
-	padding-top: 3em;*7
+	padding-top: 3em;*/
 }
 header .brand h1{
 	text-shadow: 1px 1px 3px #fff;
 
 }
+
+/* remove link border, that came with update */
+.btn:focus, a:focus {
+    outline: #1ab2ff auto 5px;
+    outline: none;
+}
+
+
+

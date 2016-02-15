@@ -1,0 +1,2646 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Kleanthis Manolopoulos\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-04 17:47+0200\n"
+"PO-Revision-Date: 2014-08-29 17:03+0200\n"
+"Last-Translator: Kleanthis Manolopoulos <akis_manolopoulos@hotmail.com>\n"
+"Language-Team:  <akis_manolopoulos@hotmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_x;_n;esc_attr__;esc_html__;esc_attr_e\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: el_GR\n"
+"X-Generator: Poedit 1.6.8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:17
+msgid "Not Found"
+msgstr "Δεν Βρέθηκε"
+
+#: 404.php:20
+msgid ""
+"Apologies, but the page you requested could not be found. Perhaps searching "
+"will help."
+msgstr ""
+"Συγγνώμη, όμως η σελίδα που ζητήσατε δεν μπορεί να βρεθεί. Ίσως η αναζήτηση "
+"σας βοηθήσει."
+
+#: archive.php:26
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "Ημερήσιο Αρχείο: %s"
+
+#: archive.php:28
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "Μηνιαίο Αρχείο: %s"
+
+#: archive.php:28
+msgid "F Y"
+msgstr "F Y"
+
+#: archive.php:30
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "Ετήσιο Αρχείο: %s"
+
+#: archive.php:30
+msgid "Y"
+msgstr "Ε"
+
+#: archive.php:32
+msgid "Blog Archives"
+msgstr "Αρχεία Blog"
+
+#: archive.php:56 author.php:71 category.php:49 search.php:38
+msgid "Nothing Found"
+msgstr "Δεν Βρέθηκε Τίποτα"
+
+#: archive.php:60 author.php:75 category.php:53
+msgid ""
+"Apologies, but no results were found for the requested archive. Perhaps "
+"searching will help find a related post."
+msgstr ""
+"Συγγνώμη, αλλά δεν βρέθηκαν αποτελέσματα για το ζητούμενο αρχείο. Ίσως η "
+"αναζήτηση θα σας βοηθήσει να βρείτε ένα σχετικό άρθρο. "
+
+#: attachment.php:18
+#, php-format
+msgid "Return to %s"
+msgstr "Επιστροφή στο %s"
+
+#: attachment.php:32
+#, php-format
+msgid "Full size is %s pixels"
+msgstr "Το πλήρες μέγεθος είναι %s pixels"
+
+#: attachment.php:35
+msgid "Link to full-size image"
+msgstr "Σύνδεση με την εικόνα πλήρους μεγέθους"
+
+#: attachment.php:75
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: attachment.php:86
+msgid "Continue reading"
+msgstr "Συνέχεια ανάγνωσης"
+
+#: attachment.php:87
+msgid "Pages:"
+msgstr "Σελίδες:"
+
+#: attachment.php:92
+msgid "Previous image"
+msgstr "Προηγούμενη εικόνα"
+
+#: attachment.php:93
+msgid "Next image"
+msgstr "Επόμενη εικόνα"
+
+#: author.php:29
+#, php-format
+msgid "Author Archives: %s"
+msgstr "Αρχείο Συγγραφέα: %s"
+
+#: category.php:20
+#, php-format
+msgid "Category Archives: %s"
+msgstr "Αρχείο Κατηγοριών: %s"
+
+#: comments.php:25
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+"Αυτό το άρθρο είναι προστατευμένο με κωδικό. Εισάγεται τον κωδικό για να "
+"δείτε τα σχόλια."
+
+#: comments.php:50
+msgid "Comments are closed"
+msgstr "Τα σχόλια είναι κλειστά"
+
+#: search.php:18
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Αποτελέσματα Αναζήτησης για: %s"
+
+#: search.php:40
+#, php-format
+msgid "No search results for: %s."
+msgstr "Δεν υπάρχουν αποτελέσματα αναζήτησης για: %s"
+
+#: searchform.php:1
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: sidebar-left.php:26
+msgid "Left Sidebar"
+msgstr "Αριστερή Πλευρική Στήλη"
+
+#: sidebar-left.php:28
+#, php-format
+msgid ""
+"You currently have no widgets set in the left sidebar. You can add widgets "
+"via the <a href=\"%s\">Dasboard</a>."
+msgstr ""
+"Αυτή τη στιγμή δεν έχετε πρόσθετα στην αριστερή πλευρική στήλη. Μπορείτε να "
+"βάλετε πρόσθετα μέσω του <a href=\"%s\">Πίνακα ελέγχου</a>."
+
+#: sidebar-left.php:29
+#, php-format
+msgid ""
+"To hide this sidebar, switch to a different Layout via the <a href=\"%s"
+"\">Theme Settings</a>."
+msgstr ""
+"Για να αποκρύψετε αυτή τη πλευρική στήλη, αλλάξτε μεταξύ διαφορετικών "
+"διατάξεων μέσω του <a href=\"%s\">Ρυθμίσεις Θέματος</a>."
+
+#: sidebar-right.php:26 admin/settings.php:1527
+msgid "Right Sidebar"
+msgstr "Δεξιά Πλευρική Στήλη"
+
+#: sidebar-right.php:28
+#, php-format
+msgid ""
+"You currently have no widgets set in the right sidebar. You can add widgets "
+"via the <a href=\"%s\">Dasboard</a>."
+msgstr ""
+"Αυτή τη στιγμή δεν έχετε πρόσθετα στη δεξιά πλευρική στήλη. Μπορείτε να "
+"βάλετε πρόσθετα μέσω του <a href=\"%s\">Πίνακα ελέγχου</a>."
+
+#: single.php:40
+msgid "View all posts by "
+msgstr "Προβολή όλων των άρθρων από"
+
+#: tag.php:21
+#, php-format
+msgid "Tag Archives: %s"
+msgstr "Αρχείο Ετικετών: %s"
+
+#: admin/admin-functions.php:62
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+"Πριν να μπορέσετε να ανεβάσετε το εισαγόμενο αρχείο, θα χρειαστεί να λύσετε "
+"το ακόλουθο σφάλμα:"
+
+#: admin/admin-functions.php:70
+msgid "Import Tempera Theme Options"
+msgstr "Εισαγωγή Επιλογών Θέματος"
+
+#: admin/admin-functions.php:72
+msgid ""
+"Hi! This is where you import the  Tempera settings.<i> Please remember that "
+"this is still an experimental feature.</i>"
+msgstr ""
+"Γεια σας! Εδώ μπορείτε να εισάγεται τις Ρυθμίσεις Tempera.<i> Παρακαλώ να "
+"θυμάστε ότι αυτή είναι ακόμα μία πειραματική λειτουργία.</i>"
+
+#: admin/admin-functions.php:74
+msgid "Just choose a file from your computer:"
+msgstr "Απλά επιλέξτε ένα αρχείο από τον υπολογιστή σας:"
+
+#: admin/admin-functions.php:76
+#, php-format
+msgid "Maximum size: %s"
+msgstr "Μέγιστο μέγεθος: %s"
+
+#: admin/admin-functions.php:82
+msgid "And import!"
+msgstr "Εισαγωγή!"
+
+#: admin/admin-functions.php:148
+msgid "Import Tempera Theme Options "
+msgstr "Εισαγωγή Επιλογών Θέματος"
+
+#: admin/admin-functions.php:151
+msgid "Great! The options have been imported!"
+msgstr "Περίφημα: Οι επιλογές έχουν εισαχθεί!"
+
+#: admin/admin-functions.php:152
+msgid "Go back to the Tempera options page and check them out!"
+msgstr "Πηγαίνετε πίσω στη σελίδα επιλογών του Tempera και δείτε τα!"
+
+#: admin/admin-functions.php:155 admin/admin-functions.php:161
+#: admin/admin-functions.php:167
+msgid "Oops, there's a small problem."
+msgstr "Ωπ, υπάρχει ένα μικρό πρόβλημα."
+
+#: admin/admin-functions.php:156
+msgid ""
+"The uploaded file does not contain valid Tempera options. Make sure the file "
+"is exported from the Tempera Options page."
+msgstr ""
+"Το ανεβασμένο αρχείο δεν περιέχει έγκυρες ρυθμίσεις Tempera. Σιγουρευτείτε "
+"ότι το αρχείο έχει εξαχθεί από την σελίδα Ρυθμίσεων Tempera."
+
+#: admin/admin-functions.php:162
+msgid "The uploaded file could not be read."
+msgstr "Το ανεβασμένο αρχείο δεν μπορεί να αναγνωστεί."
+
+#: admin/admin-functions.php:168
+msgid ""
+"The uploaded file is not supported. Make sure the file was exported from the "
+"Tempera page and that it is a text file."
+msgstr ""
+"Το ανεβασμένο αρχείο δεν υποστηρίζεται. Σιγουρευτείτε ότι το αρχείο έχει "
+"εξαχθεί από τη σελίδα του Tempera και ότι είναι αρχείο κειμένου. "
+
+#: admin/admin-functions.php:177
+msgid ""
+"Oops! The file is empty or there was no file. This error could also be "
+"caused by uploads being disabled in your php.ini or by post_max_size being "
+"defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+"Ωχ! Το αρχείο είναι άδειο ή δεν υπάρχει κάποιο αρχείο. Αυτό το σφάλμα μπορεί "
+"επίσης να προκληθεί από απενεργοποιημένες φορτώσεις στο αρχείο php.ini ή με "
+"ορισμό του post_max_size μικρότερου από τον ορισμό του upload_max_filesize "
+"στο php.ini."
+
+#: admin/admin-functions.php:183
+msgid "ERROR: You are not authorised to perform that operation"
+msgstr "ΣΦΑΛΜΑ: Δεν έχετε δικαίωμα να εκτελέσετε αυτή την ενέργεια"
+
+#: admin/admin-functions.php:192
+msgid ""
+"Are you sure you want to load a new color scheme? \\nAll current saved "
+"settings under Text and Color Settings will be lost."
+msgstr ""
+"Είστε σίγουροι πως θέλετε να φορτώσετε ένα νέο χρωματικό συνδυασμό;\\nΌλες "
+"οι τρέχουσες αποθηκευμένες Ρυθμίσεις Κειμένου και Χρώματος θα χαθούν. "
+
+#: admin/admin-functions.php:197
+msgid ""
+"Select one of the preset color schemes and press the Load button.<br> <b> "
+"CAUTION! </b> When loading a color scheme, the Tempera theme settings under "
+"Text and Color Settings will be overriden. All other settings will remain "
+"intact.<br> <u>SUGGESTION:</u> It's always better to export your current "
+"theme settings before loading a color scheme."
+msgstr ""
+"Επιλέξτε έναν από τους προκαθορισμένους συνδυασμούς χρωμάτων και πατήστε το "
+"κουμπί Φόρτωση. <br> <b> ΠΡΟΣΟΧΗ! </b> Όταν φορτώνεται ένα συνδυασμό "
+"χρωμάτων, οι ρυθμίσεις του θέματος Tempera στο Κείμενο και στα Χρώματα θα "
+"διαγραφούν. Όλες οι άλλες ρυθμίσεις θα παραμείνουν ανέπαφες <br> <u>ΠΡΟΤΑΣΗ:."
+"</u> Είναι πάντα καλύτερο να εξάγεται τις τρέχουσες ρυθμίσεις του θέματος "
+"πριν από τη φόρτωση ενός συνδυασμού χρωμάτων."
+
+#: admin/admin-functions.php:221
+msgid "Load Color Scheme"
+msgstr "Φόρτωση Χρωματικού Συνδυασμού"
+
+#: admin/admin-functions.php:287
+msgid "No news items."
+msgstr "Όχι νέα αντικείμενα."
+
+#: admin/admin-functions.php:291
+msgid "Posted on"
+msgstr "Δημοσιοποιημένο στο"
+
+#: admin/main.php:114
+msgid "Layout Settings"
+msgstr "Ρυθμίσεις Διάταξης"
+
+#: admin/main.php:115
+msgid "Header Settings"
+msgstr "Ρυθμίσεις Κεφαλίδας"
+
+#: admin/main.php:116 admin/main.php:173
+msgid "Presentation Page"
+msgstr "Σελίδα Παρουσίασης"
+
+#: admin/main.php:117
+msgid "Text Settings"
+msgstr "Ρυθμίσεις Κειμένου"
+
+#: admin/main.php:118
+msgid "Color Settings"
+msgstr "Ρυθμίσεις Χρώματος"
+
+#: admin/main.php:119
+msgid "Graphics Settings"
+msgstr "Ρυθμίσεις Γραφικών"
+
+#: admin/main.php:120
+msgid "Post Information Settings"
+msgstr "Ρυθμίσεις Πληροφοριών Άρθρου"
+
+#: admin/main.php:121
+msgid "Post Excerpt Settings"
+msgstr "Ρυθμίσεις Αποσπασμάτων Άρθρου"
+
+#: admin/main.php:122
+msgid "Featured Image Settings"
+msgstr "Ρυθμίσεις Προτεινόμενης Εικόνας"
+
+#: admin/main.php:123
+msgid "Social Media Settings"
+msgstr "Ρυθμίσεις Κοινωνικών Μέσων"
+
+#: admin/main.php:124
+msgid "Miscellaneous Settings"
+msgstr "Διάφορες Ρυθμίσεις"
+
+#: admin/main.php:127
+msgid "Main Layout"
+msgstr "Κύρια Διάταξη"
+
+#: admin/main.php:128
+msgid "Content / Sidebar Width"
+msgstr "Πλάτος Περιεχομένου/Πλευρικής Στήλης"
+
+#: admin/main.php:129
+msgid "Responsiveness"
+msgstr "Responsiveness"
+
+#: admin/main.php:132
+msgid "Enable Presentation Page"
+msgstr "Ενεργοποίηση Σελίδας Παρουσίασης"
+
+#: admin/main.php:133
+msgid "Show Posts on Presentation Page"
+msgstr "Προβολή Άρθρων στη Σελίδα Παρουσίασης "
+
+#: admin/main.php:134
+msgid "Slider Settings"
+msgstr "Ρυθμίσεις Διαφάνειας"
+
+#: admin/main.php:135
+msgid "Slides"
+msgstr "Διαφάνειες"
+
+#: admin/main.php:136
+msgid "Presentation Page Columns"
+msgstr "Στήλες Σελίδας Παρουσίασης"
+
+#: admin/main.php:137
+msgid "Extras"
+msgstr "Επιπλέον"
+
+#: admin/main.php:140
+msgid "Header Height"
+msgstr "Ύψος Κεφαλίδας"
+
+#: admin/main.php:141
+msgid "Header Image"
+msgstr "Εικόνα Κεφαλίδας"
+
+#: admin/main.php:142
+msgid "Site Header"
+msgstr "Κεφαλίδα Ιστοσελίδας"
+
+#: admin/main.php:143
+msgid "Custom Logo Upload"
+msgstr "Ανέβασμα Προσαρμοσμένου Λογότυπου"
+
+#: admin/main.php:144
+msgid "Header Content Spacing"
+msgstr "Απόσταση Περιεχομένου Κεφαλίδας"
+
+#: admin/main.php:145
+msgid "FavIcon Upload"
+msgstr "Ανέβασμα FavIcon"
+
+#: admin/main.php:146
+msgid "Header Widget Width"
+msgstr "Πλάτος Πρόσθετου Κεφαλίδας"
+
+#: admin/main.php:149 admin/settings.php:642 admin/settings.php:661
+#: admin/settings.php:679 admin/settings.php:697 admin/settings.php:718
+msgid "General Font"
+msgstr "Γενική Γραμματοσειρά"
+
+#: admin/main.php:150
+msgid "Post Title Font "
+msgstr "Γραμματοσειρά Τίτλου Άρθρου"
+
+#: admin/main.php:151
+msgid "Widget Title Font"
+msgstr "Γραμματοσειρά Τίτλου Πρόσθετου"
+
+#: admin/main.php:152
+msgid "Site Title Font"
+msgstr "Γραμματοσειρά Τίτλου Ιστοσελίδας"
+
+#: admin/main.php:153
+msgid "Main Menu Font"
+msgstr "Γραμματοσειρά Κύριου Μενού"
+
+#: admin/main.php:154
+msgid "Headings Font"
+msgstr "Γραμματοσειρά Κεφαλίδων"
+
+#: admin/main.php:155
+msgid "Force Text Align"
+msgstr "Υποχρεωτική Στοίχιση Κειμένου"
+
+#: admin/main.php:156
+msgid "Paragraph spacing"
+msgstr "Απόσταση παραγράφου"
+
+#: admin/main.php:157
+msgid "Paragraph Indent"
+msgstr "Εσοχή Παραγράφου"
+
+#: admin/main.php:158
+msgid "Headings Indent"
+msgstr "Εσοχή Κεφαλίδων"
+
+#: admin/main.php:159
+msgid "Line Height"
+msgstr "Ύψος Γραμμής"
+
+#: admin/main.php:160
+msgid "Word Spacing"
+msgstr "Απόσταση Λέξης"
+
+#: admin/main.php:161
+msgid "Letter Spacing"
+msgstr "Απόσταση Γράμματος"
+
+#: admin/main.php:162
+msgid "Uppercase Text"
+msgstr "Κεφαλαιοποιημένο Κείμενο"
+
+#: admin/main.php:166
+msgid "Background Image"
+msgstr "Εικόνα Φόντου"
+
+#: admin/main.php:167
+msgid "General"
+msgstr "Γενικά"
+
+#: admin/main.php:168
+msgid "Accents"
+msgstr "Εμφάσεις"
+
+#: admin/main.php:169 admin/settings.php:840
+msgid "Site Title"
+msgstr "Τίτλος Ιστοσελίδας"
+
+#: admin/main.php:170
+msgid "Main Menu"
+msgstr "Κυρίως Μενού"
+
+#: admin/main.php:171 admin/main.php:183 admin/settings.php:1505
+msgid "Top Bar"
+msgstr "Επάνω Μπάρα"
+
+#: admin/main.php:172
+msgid "Content"
+msgstr "Περιεχόμενο"
+
+#: admin/main.php:174
+msgid "Sidebar Widgets"
+msgstr "Πρόσθετα Πλευρικής Στήλης"
+
+#: admin/main.php:175
+msgid "Footer Widgets"
+msgstr "Πρόσθετα Υποσέλιδου"
+
+#: admin/main.php:176
+msgid "Links"
+msgstr "Σύνδεσμοι"
+
+#: admin/main.php:177
+msgid "Post metas"
+msgstr "Μεταδεδομένα άρθρου"
+
+#: admin/main.php:178
+msgid "Socials"
+msgstr "Κοινωνικά Μέσα"
+
+#: admin/main.php:179
+msgid "Caption type"
+msgstr "Τύπος λεζάντας"
+
+#: admin/main.php:184
+msgid "Breadcrumbs"
+msgstr "Breadcrumbs"
+
+#: admin/main.php:185
+msgid "Pagination"
+msgstr "Σελιδοποίηση"
+
+#: admin/main.php:186
+msgid "Menu Alignment"
+msgstr "Στοίχιση Μενού"
+
+#: admin/main.php:187
+msgid "Content Margins"
+msgstr "Περιθώρια Περιεχομένου"
+
+#: admin/main.php:188
+msgid "Post Images Border"
+msgstr "Περίγραμμα Εικόνων Άρθρου"
+
+#: admin/main.php:189
+msgid "Content List Bullets"
+msgstr "Κουκίδες Λίστας Περιεχομένου"
+
+#: admin/main.php:190
+msgid "Page Titles"
+msgstr "Τίτλοι Σελίδων"
+
+#: admin/main.php:191
+msgid "Category Titles"
+msgstr "Τίτλοι Κατηγοριών"
+
+#: admin/main.php:192
+msgid "Hide Tables"
+msgstr "Απόκρυψη Πινάκων"
+
+#: admin/main.php:193
+msgid "Back to Top button"
+msgstr "Κουμπί Επιστροφή Επάνω"
+
+#: admin/main.php:196
+msgid "Meta Bar Position"
+msgstr "Θέση Μπάρας Μεταδεδομένων"
+
+#: admin/main.php:197
+msgid "Show on Blog Metas"
+msgstr "Προβολή στα Μεταδεδομένα του Blog"
+
+#: admin/main.php:198
+msgid "Show on Single Pages"
+msgstr "Προβολή στις Απλές Σελίδες"
+
+#: admin/main.php:199
+msgid "Text Under Comments"
+msgstr "Κείμενο κάτω από τα Σχόλια"
+
+#: admin/main.php:200
+msgid "Comments are closed text"
+msgstr "Τα σχόλια είναι κλειστό κείμενο"
+
+#: admin/main.php:201
+msgid "Comments off"
+msgstr "Σχόλια απενεργοποιημένα"
+
+#: admin/main.php:204
+msgid "Home Page"
+msgstr "Αρχική Σελίδα"
+
+#: admin/main.php:205 admin/settings.php:359 admin/settings.php:455
+msgid "Sticky Posts"
+msgstr "Σταθερά Άρθρα"
+
+#: admin/main.php:206
+msgid "Archive and Category Pages"
+msgstr "Σελίδες Αρχείου και Κατηγοριών"
+
+#: admin/main.php:207
+msgid "Number of Words for Post Excerpts "
+msgstr "Αριθμός Λέξεων για Απόσπασμα Άρθρων"
+
+#: admin/main.php:208
+msgid "Magazine Layout"
+msgstr "Διάταξη Περιοδικού"
+
+#: admin/main.php:209
+msgid "Excerpt suffix"
+msgstr "Πρόθεμα αποσπάσματος"
+
+#: admin/main.php:210
+msgid "Continue reading link text "
+msgstr "Κείμενο συνδέσμου συνέχισης ανάγνωσης"
+
+#: admin/main.php:211
+msgid "HTML tags in Excerpts"
+msgstr "Ετικέτες HTML στα Αποσπάσματα"
+
+#: admin/main.php:214
+msgid "Featured Images as POST Thumbnails "
+msgstr "Προτεινόμενες Εικόνες ως Μικρογραφίες ΑΡΘΡΩΝ"
+
+#: admin/main.php:215
+msgid "Auto Select Images From Posts "
+msgstr "Αυτόματη Επιλογή Εικόνων από Άρθρα"
+
+#: admin/main.php:216
+msgid "Thumbnails Alignment "
+msgstr "Στοίχηση Μικρογραφίών"
+
+#: admin/main.php:217
+msgid "Thumbnails Size "
+msgstr "Μέγεθος Μικρογραφίών"
+
+#: admin/main.php:218
+msgid "Featured Images as HEADER Images "
+msgstr "Προτεινόμενες Εικόνες ως Εικόνες ΚΕΦΑΛΙΔΩΝ"
+
+#: admin/main.php:221
+msgid "Link nr. 1"
+msgstr "Σύνδεσμος #1"
+
+#: admin/main.php:222
+msgid "Link nr. 2"
+msgstr "Σύνδεσμος #2"
+
+#: admin/main.php:223
+msgid "Link nr. 3"
+msgstr "Σύνδεσμος #3"
+
+#: admin/main.php:224
+msgid "Link nr. 4"
+msgstr "Σύνδεσμος #4"
+
+#: admin/main.php:225
+msgid "Link nr. 5"
+msgstr "Σύνδεσμος #5"
+
+#: admin/main.php:226
+msgid "Socials display"
+msgstr "Προβολή Κοινωνικών Μέσων"
+
+#: admin/main.php:229
+msgid "Internet Explorer Compatibility Tag"
+msgstr "Ετικέτα Συμβατότητας με Internet Explorer"
+
+#: admin/main.php:230
+msgid "Custom Footer Text"
+msgstr "Προσαρμοσμένο Κείμενο Υποσέλιδου"
+
+#: admin/main.php:231
+msgid "Custom CSS"
+msgstr "Προσαρμοσμένο CSS"
+
+#: admin/main.php:232
+msgid "Custom JavaScript"
+msgstr "Προσαρμοσμένη JavaScript"
+
+#: admin/main.php:258
+msgid "Sorry, but you do not have sufficient permissions to access this page."
+msgstr "Συγγνώμη, αλλά δεν έχετε επαρκή άδεια για πρόσβαση σε αυτή τη σελίδα."
+
+#: admin/main.php:277
+msgid "Tempera settings updated successfully."
+msgstr "Οι ρυθμίσεις του Tempera αναβαθμίστηκαν επιτυχώς."
+
+#: admin/main.php:293
+msgid "Save Changes"
+msgstr "Αποθήκευση Αλλαγών"
+
+#: admin/main.php:294
+msgid "Reset to Defaults"
+msgstr "Επαναφορά Προκαθορισμένων"
+
+#: admin/main.php:326
+msgid "Import/Export Settings"
+msgstr "Εισαγωγή/Εξαγωγή Επιλογών"
+
+#: admin/main.php:331
+msgid "Export Theme options"
+msgstr "Εξαγωγή επιλογών Θέματος"
+
+#: admin/main.php:332
+msgid ""
+"It's that easy: a mouse click away - the ability to export your Tempera "
+"settings and save them on your computer. Feeling safer? You should!"
+msgstr ""
+"Είναι τόσο εύκολο: ένα κλικ μακριά - η δυνατότητα να εξάγετε τις ρυθμίσεις "
+"του Tempera και να τις αποθηκεύσετε στον υπολογιστή σας. Αισθάνεστε πιο "
+"ασφαλείς; Θα πρέπει να αισθάνεστε!"
+
+#: admin/main.php:337
+msgid "Import Theme options"
+msgstr "Εισαγωγή επιλογών Θέματος"
+
+#: admin/main.php:338
+msgid ""
+"Without the import, the export would just be a fool's exercise. Make sure "
+"you have the exported file ready and see you after the mouse click."
+msgstr ""
+"Χωρίς την εισαγωγή, η εξαγωγή θα ήταν μόνο η άσκηση ενός ανόητου. "
+"Βεβαιωθείτε ότι έχετε το εξαγόμενο αρχείο έτοιμο και θα σας δούμε μετά το "
+"κλικ του ποντικιού."
+
+#: admin/main.php:343
+msgid "Color Schemes"
+msgstr "Συνδυασμοί Χρωμάτων"
+
+#: admin/main.php:344
+msgid ""
+"A collection of preset color schemes to use as the starting point for your "
+"site. Just load one up and see your blog in a different light."
+msgstr ""
+"Μια συλλογή από προκαθορισμένους συνδυασμούς χρωμάτων για να χρησιμοποιηθούν "
+"ως σημείο εκκίνησης για την ιστοσελίδα σας. Απλά φορτώστε έναν και δείτε το "
+"blog σας από μία διαφορετική σκοπιά."
+
+#: admin/main.php:352
+msgid "Tempera Latest News"
+msgstr "Τελευταία Νέα Tempera"
+
+#: admin/main.php:363
+msgid "Reset Tempera Settings to Defaults?"
+msgstr "Επαναφορά των Ρυθμίσεων του Tempera στις Προκαθορισμένες;"
+
+#: admin/prototypes.php:30
+msgid "or Google font"
+msgstr "ή γραμματοσειρά Google"
+
+#: admin/settings.php:28
+msgid "One column (no sidebars)"
+msgstr "Μία στήλη (χωρίς πλευρικές στήλες)"
+
+#: admin/settings.php:29
+msgid "Two columns, sidebar on the right"
+msgstr "Δύο στήλες, η πλευρική στήλη στα δεξιά"
+
+#: admin/settings.php:30
+msgid "Two columns, sidebar on the left"
+msgstr "Δύο στήλες, η πλευρική στήλη στα αριστερά"
+
+#: admin/settings.php:31
+msgid "Three columns, sidebars on the right"
+msgstr "Τρεις στήλες, οι πλευρικές στήλες στα δεξιά"
+
+#: admin/settings.php:32
+msgid "Three columns, sidebars on the left"
+msgstr "Τρεις στήλες, οι πλευρικές στήλες στα αριστερά"
+
+#: admin/settings.php:33
+msgid "Three columns, one sidebar on each side"
+msgstr "Τρεις στήλες, μία πλευρική στήλη σε κάθε πλευρά"
+
+#: admin/settings.php:41
+msgid ""
+"Choose your layout. Possible options are: <br> No sidebar, a single sidebar "
+"on either left of right, two sidebars on either left or right and two "
+"sidebars on each side.<br>This can be overriden in pages by using Page "
+"Templates."
+msgstr ""
+"Επιλέξτε τη διάταξή σας. Οι πιθανές επιλογές είναι:. <br> Χωρίς πλευρική "
+"στήλη, μία ενιαία πλευρική στήλη αριστερά ή δεξιά, δύο πλευρικές στήλες και "
+"αριστερά και δεξιά ή και οι δύο πλευρικές στήλες σε μία πλευρά.<br> Αυτή η "
+"ρύθμιση μπορεί να παρακαμφθεί στις σελίδες χρησιμοποιώντας τα Πρότυπα "
+"Σελίδας."
+
+#: admin/settings.php:90
+msgid "Content ="
+msgstr "Περιεχόμενο ="
+
+#: admin/settings.php:91
+msgid "Sidebar(s) ="
+msgstr "Πλευρική(ές) στήλη(ες) = "
+
+#: admin/settings.php:92
+msgid "Total width ="
+msgstr "Συνολικό πλάτος ="
+
+#: admin/settings.php:99
+msgid ""
+"Select the width of your <b>content</b> and <b>sidebar(s)</b>. When using a "
+"3 columns layout (with 2 sidebars) they will each have half the configured "
+"width."
+msgstr ""
+"Επιλέξτε το πλάτος του <b>περιεχομένου σας</b> και της/των <b>πλευρικής(ών) "
+"στήλης(ών)</b>. Όταν χρησιμοποιείτε μια διάταξη 3 στηλών (με 2 πλευρικές "
+"στήλες) θα έχει η καθεμία το μισό του πλάτους που έχει ρυθμιστεί."
+
+#: admin/settings.php:108 admin/settings.php:200 admin/settings.php:209
+#: admin/settings.php:749 admin/settings.php:796 admin/settings.php:993
+#: admin/settings.php:1008 admin/settings.php:1109 admin/settings.php:1125
+#: admin/settings.php:1298 admin/settings.php:1327 admin/settings.php:1350
+#: admin/settings.php:1369 admin/settings.php:1418 admin/settings.php:1562
+msgid "Enable"
+msgstr "Ενεργοποίηση"
+
+#: admin/settings.php:108 admin/settings.php:200 admin/settings.php:209
+#: admin/settings.php:749 admin/settings.php:993 admin/settings.php:1008
+#: admin/settings.php:1109 admin/settings.php:1125 admin/settings.php:1298
+#: admin/settings.php:1327 admin/settings.php:1350 admin/settings.php:1369
+#: admin/settings.php:1418 admin/settings.php:1562
+msgid "Disable"
+msgstr "Απενεργοποίηση"
+
+#: admin/settings.php:116
+msgid "Allow zoom"
+msgstr "Επιτρέψτε μεγέθυνση"
+
+#: admin/settings.php:117
+msgid ""
+"Enable to make Tempera fully responsive. The layout and general sizes of "
+"your blog will adjust depending on what device and what resolution it is "
+"viewed in.<br> Do not disable unless you have a good reason to."
+msgstr ""
+"Ενεργοποιείστε το για να κάνετε το Tempera πλήρως responsive. Η διάταξη και "
+"τα γενικά μεγέθη του blog σας θα προσαρμοστούν ανάλογα με το είδος της "
+"συσκευής και την ανάλυσή της.<br> Μην το απενεργοποιήσετε αν δεν έχετε έναν "
+"καλό λόγο."
+
+#: admin/settings.php:129
+msgid ""
+"Select the header's height. After saving the settings go and upload your new "
+"header image. The header's width will be "
+msgstr ""
+"Επιλέξτε το ύψος της κεφαλίδας. Μετά την αποθήκευση των ρυθμίσεων πηγαίνετε "
+"και ανεβάστε τη νέα εικόνα της κεφαλίδας σας. Το πλάτος της κεφαλίδας θα "
+"είναι"
+
+#: admin/settings.php:135
+msgid "Define header image"
+msgstr "Ορισμός εικόνας κεφαλίδας"
+
+#: admin/settings.php:136
+msgid "Center the header image horizontally"
+msgstr "Οριζόντιο κεντράρισμα της εικόνας κεφαλίδας"
+
+#: admin/settings.php:138
+msgid "Keep header image aspect ratio."
+msgstr "Κρατήστε την αναλογία διαστάσεων της εικόνας κεφαλίδας."
+
+#: admin/settings.php:139
+msgid ""
+"By default the header has a minimum height set. This option removes that and "
+"the header becomes fully responsive, scalling to any size.<br> Only enable "
+"this if you're <b>not</b> using a logo or site title and description in the "
+"header. "
+msgstr ""
+"Εξ ορισμού η κεφαλίδα έχει οριστεί σε ένα ελάχιστο ύψος. Αυτή η επιλογή "
+"απενεργοποιεί αυτή τη ρύθμιση και η κεφαλίδα γίνεται πλήρως responsive, "
+"προσαρμοζόμενη σε κάθε μέγεθος.<br> Ενεργοποιήστε την μόνο αν <b>δεν</b> "
+"χρησιμοποιείται λογότυπο ή τίτλο και περιγραφή ιστοσελίδας στη κεφαλίδα."
+
+#: admin/settings.php:147
+msgid "Site Title and Description"
+msgstr "Τίτλος Ιστοσελίδας και Περιγραφή"
+
+#: admin/settings.php:147
+msgid "Custom Logo"
+msgstr "Προσαρμοσμένο Λογότυπο"
+
+#: admin/settings.php:147
+msgid "Clickable header image"
+msgstr "Εικόνα κεφαλίδας με δυνατότητα κλικ"
+
+#: admin/settings.php:147
+msgid "Empty"
+msgstr "Κενό"
+
+#: admin/settings.php:149
+msgid "Choose what to display inside your header area."
+msgstr "Επιλέξτε τι θα προβάλλεται στην περιοχή της κεφαλίδας σας."
+
+#: admin/settings.php:157
+msgid ""
+"Custom Logo upload. The logo will appear over the header image if you have "
+"used one."
+msgstr ""
+"Ανέβασμα Προσαρμοσμένου Λογότυπου. Το λογότυπο θα εμφανιστεί πάνω από την "
+"εικόνα κεφαλίδας, εάν έχετε χρησιμοποιήσει μία."
+
+#: admin/settings.php:158 admin/settings.php:175 admin/settings.php:430
+msgid "Select / Upload Image"
+msgstr "Επιλογή/Ανέβασμα Εικόνας"
+
+#: admin/settings.php:163
+msgid "top"
+msgstr "επάνω"
+
+#: admin/settings.php:164
+msgid "left"
+msgstr "αριστερά"
+
+#: admin/settings.php:165
+msgid ""
+"Select the top and left spacing for the header content. Use it to better "
+"position your site title and description or custom logo inside the header. "
+msgstr ""
+"Επιλέξτε το πάνω και αριστερό διάστημα για το περιεχόμενο της κεφαλίδας. "
+"Χρησιμοποιήστε το για να τοποθετήσετε καλύτερα τον τίτλο της ιστοσελίδας σας "
+"και την περιγραφή ή το προσαρμοσμένο λογότυπο μέσα στην κεφαλίδα."
+
+#: admin/settings.php:174
+msgid ""
+"Limitations: It has to be an image. It should be max 64x64 pixels in "
+"dimensions. Recommended file extensions .ico and .png. <br> <strong>Note "
+"that some browsers do not display the changed favicon instantly.</strong>"
+msgstr ""
+"Περιορισμοί: Θα πρέπει να είναι μια εικόνα. Θα πρέπει να είναι μέγιστο 64x64 "
+"pixels σε διαστάσεις. Συνιστάμενες επεκτάσεις αρχείων .ico και .png. <br> "
+"<strong> Σημειώστε ότι ορισμένα προγράμματα περιήγησης δεν εμφανίζουν την "
+"αλλαγή του favicon αμέσως. </strong>"
+
+#: admin/settings.php:184
+msgid "60%"
+msgstr "60%"
+
+#: admin/settings.php:184
+msgid "50%"
+msgstr "50%"
+
+#: admin/settings.php:184
+msgid "33%"
+msgstr "33%"
+
+#: admin/settings.php:184
+msgid "25%"
+msgstr "25%"
+
+#: admin/settings.php:186
+msgid ""
+"Limit the header widget area max width as percentage of the entire header "
+"width."
+msgstr ""
+"Περιορίστε το πλάτος της μέγιστης περιοχής του πρόσθετου κεφαλίδας ως "
+"ποσοστό ολόκληρου του πλάτους της κεφαλίδας. "
+
+#: admin/settings.php:202
+msgid ""
+"Enable the presentation front-page. This will become your new home page. "
+"<br> If you want another page to hold your latest blog posts, choose 'Blog "
+"Template (Posts Page)' from Page Templates while creating or editing that "
+"page."
+msgstr ""
+"Ενεργοποιείστε την πρώτη σελίδα παρουσίασης. Αυτή θα γίνει η νέα σας αρχική "
+"σελίδα. <br> Εάν θέλετε μία άλλη σελίδα να έχει τα τελευταία σας άρθρα του "
+"blog, επιλέξτε \"Πρότυπο Blog (Σελίδα Άρθρων)\" από το Πρότυπο Σελίδας, ενώ "
+"δημιουργείται ή επεξεργάζεστε αυτή τη σελίδα."
+
+#: admin/settings.php:211
+msgid ""
+"Enable to display latest posts on the presentation page, below the columns. "
+"Sticky posts are always displayed and not counted."
+msgstr ""
+"Ενεργοποιήστε τη προβολή των τελευταίων άρθρων στη σελίδα παρουσίασης, κάτω "
+"από τις στήλες. Τα σταθερά άρθρα θα προβάλλονται πάντα και δεν μετράνε."
+
+#: admin/settings.php:213
+msgid "Show:"
+msgstr "Προβολή:"
+
+#: admin/settings.php:215
+msgid "posts"
+msgstr "άρθρα"
+
+#: admin/settings.php:216
+msgid ""
+"The number of posts to show on the Presentation Page. The same number of "
+"posts will be loaded with the <em>More Posts</em> button."
+msgstr ""
+"Ο αριθμός των άρθρων που θα προβάλλονται στην Σελίδα Παρουσίασης. Ο ίδιος "
+"αριθμός άρθρων θα φορτωθεί με το κουμπί <em>Περισσότερα Άρθρα</em>."
+
+#: admin/settings.php:219
+msgid "Posts per row:"
+msgstr "Άρθρα ανά γραμμή:"
+
+#: admin/settings.php:236
+msgid "Slider Dimensions:"
+msgstr "Διαστάσεις Διαφάνειας:"
+
+#: admin/settings.php:237
+msgid "width"
+msgstr "πλάτος"
+
+#: admin/settings.php:238
+msgid "height"
+msgstr "ύψος"
+
+#: admin/settings.php:239
+msgid ""
+"The dimensions of your slider. Make sure your images are of the same size."
+msgstr ""
+"Οι διαστάσεις της διαφάνειας. Σιγουρευτείτε ότι οι εικόνες σας έχουν το ίδιο "
+"μέγεθος."
+
+#: admin/settings.php:241
+msgid "Animation:"
+msgstr "Εφέ κίνησης"
+
+#: admin/settings.php:243
+msgid "Random"
+msgstr "Τυχαίο"
+
+#: admin/settings.php:243
+msgid "Fold"
+msgstr "Δίπλωμα"
+
+#: admin/settings.php:243
+msgid "Fade"
+msgstr "Ξεθώριασμα"
+
+#: admin/settings.php:243
+msgid "SlideInRight"
+msgstr "Γλίστρημα Δεξιά"
+
+#: admin/settings.php:243
+msgid "SlideInLeft"
+msgstr "Γλίστρημα Αριστερά"
+
+#: admin/settings.php:243
+msgid "SliceDown"
+msgstr "Κομμάτιασμα Κάτω"
+
+#: admin/settings.php:243
+msgid "SliceDownLeft"
+msgstr "Κομμάτιασμα Κάτω Αριστερά"
+
+#: admin/settings.php:243
+msgid "SliceUp"
+msgstr "Κομμάτιασμα Επάνω"
+
+#: admin/settings.php:243
+msgid "SliceUpLeft"
+msgstr "Κομμάτιασμα Επάνω Αριστερά"
+
+#: admin/settings.php:243
+msgid "SliceUpDown"
+msgstr "Κομμάτιασμα Επάνω Κάτω"
+
+#: admin/settings.php:243
+msgid "SliceUpDownLeft"
+msgstr "Κομμάτιασμα Επάνω Κάτω Αριστερά"
+
+#: admin/settings.php:243
+msgid "BoxRandom"
+msgstr "Τυχαίο Τετράγωνο"
+
+#: admin/settings.php:243
+msgid "BoxRain"
+msgstr "Τετράγωνο Βροχή"
+
+#: admin/settings.php:243
+msgid "BoxRainReverse"
+msgstr "Τετράγωνο Βροχή Αντίστροφα"
+
+#: admin/settings.php:243
+msgid "BoxRainGrow"
+msgstr "Τετράγωνο Βροχή Μεγέθυνση"
+
+#: admin/settings.php:243
+msgid "BoxRainGrowReverse"
+msgstr "Τετράγωνο Βροχή Μεγέθυνση Αντίστροφα"
+
+#: admin/settings.php:252
+msgid "The transition effect of your slides."
+msgstr "Το εφέ μετάβασης για τις διαφάνειές σας."
+
+#: admin/settings.php:254
+msgid "Animation Time:"
+msgstr "Χρόνος Εφέ Κίνησης"
+
+#: admin/settings.php:255 admin/settings.php:259
+msgid "milliseconds"
+msgstr "χιλ. δευτερολέπτου"
+
+#: admin/settings.php:256
+msgid "The time in which the transition animation will take place."
+msgstr "Ο χρόνος κατά τον οποίο το εφέ μετάβασης θα διαρκέσει."
+
+#: admin/settings.php:258
+msgid "Pause Time:"
+msgstr "Χρόνος Παύσης:"
+
+#: admin/settings.php:260
+msgid "The time in which a slide will be still and visible."
+msgstr "Ο χρόνος κατά τον οποίο η διαφάνεια θα προβάλλεται ακίνητη."
+
+#: admin/settings.php:262
+msgid "Slider navigation:"
+msgstr "Πλοήγηση διαφανειών:"
+
+#: admin/settings.php:264
+msgid "Numbers"
+msgstr "Αριθμοί"
+
+#: admin/settings.php:264
+msgid "Bullets"
+msgstr "Κουκίδες"
+
+#: admin/settings.php:264
+msgid "None"
+msgstr "Τίποτα"
+
+#: admin/settings.php:272
+msgid "Your slider navigation type. Shown under the slider."
+msgstr "Ο τύπος πλοήγησης της διαφάνειας. Προβάλλεται κάτω από τη διαφάνεια."
+
+#: admin/settings.php:274
+msgid "Slider arrows:"
+msgstr "Βέλη διαφανειών:"
+
+#: admin/settings.php:276
+msgid "Always Visible"
+msgstr "Πάντα Ορατά"
+
+#: admin/settings.php:276
+msgid "Visible on Hover"
+msgstr "Ορατό όταν το ποντίκι είναι από πάνω"
+
+#: admin/settings.php:276
+msgid "Hidden"
+msgstr "Απόκρυψη"
+
+#: admin/settings.php:284
+msgid "The Left and Right arrows on your slider"
+msgstr "Το Αριστερό και Δεξιό βέλος της διαφάνειάς σας"
+
+#: admin/settings.php:286
+msgid "Slider Border Width:"
+msgstr "Πλάτος Περιγράμματος Διαφάνειας:"
+
+#: admin/settings.php:287 admin/settings.php:291
+msgid "px"
+msgstr "px"
+
+#: admin/settings.php:288
+msgid ""
+"The slider's border width. You can also edit its color from the Color "
+"Settings. Use a border width when your slider is smaller than the total site "
+"width."
+msgstr ""
+"Το πλάτος περιγράμματος της διαφάνειας. Μπορείτε επίσης να επεξεργαστείτε το "
+"χρώμα του από τις Ρυθμίσεις Χρώματος. Χρησιμοποιήστε πλάτος περιγράμματος "
+"όταν η διαφάνειά σας είναι μικρότερη από το συνολικό μέγεθος της ιστοσελίδας."
+
+#: admin/settings.php:290
+msgid "Slider Top Margin:"
+msgstr "Πάνω Περιθώριο Διαφάνειας"
+
+#: admin/settings.php:292
+msgid ""
+"Add a top margin for the slider. By default this margin is 0 and you will "
+"want to increase this value when the width of the slider is smaller than the "
+"total width of the site."
+msgstr ""
+"Προσθέστε ένα άνω περιθώριο για τη διαφάνεια. Εξ ορισμού, αυτό το περιθώριο "
+"είναι 0 και θα θέλετε να αυξήσετε αυτήν την τιμή, όταν το πλάτος της "
+"διαφάνειας είναι μικρότερη από το συνολικό πλάτος της ιστοσελίδας."
+
+#: admin/settings.php:359
+msgid "Custom Slides"
+msgstr "Προσαρμοσμένες Διαφάνειες"
+
+#: admin/settings.php:359 admin/settings.php:455
+msgid "Latest Posts"
+msgstr "Τελευταία Άρθρα"
+
+#: admin/settings.php:359 admin/settings.php:455
+msgid "Random Posts"
+msgstr "Τυχαία Άρθρα"
+
+#: admin/settings.php:359 admin/settings.php:455
+msgid "Latest Posts from Category"
+msgstr "Τελευταία Άρθρα από Κατηγορία"
+
+#: admin/settings.php:359 admin/settings.php:455
+msgid "Random Posts from Category"
+msgstr "Τυχαία Άρθρα από Κατηγορία"
+
+#: admin/settings.php:359 admin/settings.php:455
+msgid "Specific Posts"
+msgstr "Συγκεκριμένα Άρθρα"
+
+#: admin/settings.php:359 admin/settings.php:455
+msgid "Disabled"
+msgstr "Απενεργοποιημένο"
+
+#: admin/settings.php:368
+msgid ""
+"Only the slides with a defined image will become active and visible in the "
+"live slider.<br>When using slides from posts, make sure the selected posts "
+"have featured images.<br>Read the FAQs for more info."
+msgstr ""
+"Μόνο οι διαφάνειες με ορισμένη εικόνα θα ενεργοποιηθούν και θα προβάλλονται "
+"στη διαφάνεια. <br>Όταν χρησιμοποιείται διαφάνειες από άρθρα, σιγουρευτείτε "
+"ότι έχετε επιλέξει άρθρα που έχουν ορισμένες εικόνες. <br>Διαβάστε το FAQs "
+"για περισσότερες πληροφορίες."
+
+#: admin/settings.php:373
+msgid "Latest posts will be loaded into the slider."
+msgstr "Τα τελευταία άρθρα θα φορτωθούν στις διαφάνειες."
+
+#: admin/settings.php:377
+msgid "Random posts will be loaded into the slider."
+msgstr "Τυχαία άρθρα θα φορτωθούν στις διαφάνειες."
+
+#: admin/settings.php:381
+msgid "Latest posts from the category you choose will be loaded in the slider."
+msgstr ""
+"Τα τελευταία άρθρα από την κατηγορία που επιλέξατε θα φορτώνονται στις "
+"διαφάνειες."
+
+#: admin/settings.php:385
+msgid ""
+"Random posts from the category you choose will be loaded into the slider."
+msgstr ""
+"Τυχαία άρθρα από την κατηγορία που επιλέξατε θα φορτώνονται στις διαφάνειες."
+
+#: admin/settings.php:389
+msgid "Only sticky posts will be loaded into the slider."
+msgstr "Μόνο τα σταθερά άρθρα θα φορτωθούν στη διαφάνεια."
+
+#: admin/settings.php:393 admin/settings.php:489
+msgid "List the post IDs you want to display (separated by a comma): "
+msgstr ""
+"Καταγράψτε τις IDs των άρθρων που θέλετε να προβάλλονται (χωρισμένες με "
+"κόμμα):"
+
+#: admin/settings.php:398 admin/settings.php:499
+msgid "<br> Choose the category: "
+msgstr "<br> Επιλέξτε την κατηγορία:"
+
+#: admin/settings.php:400 admin/settings.php:501
+msgid "Select Category"
+msgstr "Επιλογή Κατηγορίας"
+
+#: admin/settings.php:414 admin/settings.php:515
+msgid "Number of posts to show:"
+msgstr "Αριθμός άρθρων προς προβολή:"
+
+#: admin/settings.php:425
+msgid "Slide"
+msgstr "Διαφάνεια"
+
+#: admin/settings.php:427 content/content-image.php:26
+msgid "Image"
+msgstr "Εικόνα"
+
+#: admin/settings.php:431
+msgid "Title"
+msgstr "Τίτλος"
+
+#: admin/settings.php:434
+msgid "Text"
+msgstr "Κείμενο"
+
+#: admin/settings.php:437
+msgid "Link"
+msgstr "Σύνδεσμος"
+
+#: admin/settings.php:455
+msgid "Widget Columns"
+msgstr "Στήλες Πρόσθετου"
+
+#: admin/settings.php:464
+msgid ""
+"Only the columns with a defined image will become active and visible on the "
+"presentation page.<br>When using columns from posts, make sure the selected "
+"posts have featured images.<br>Read the FAQs for more info."
+msgstr ""
+"Μόνο οι στήλες με καθορισμένη εικόνα θα ενεργοποιηθούν και θα είναι ορατές "
+"στη σελίδα παρουσίασης. <br>Όταν χρησιμοποιείται στήλες από άρθρα, "
+"σιγουρευτείτε ότι έχετε επιλέξει άρθρα με καθορισμένες εικόνες. <br> "
+"Διαβάστε το FAQs για περισσότερες πληροφορίες."
+
+#: admin/settings.php:469
+msgid "Latest posts will be loaded into the columns."
+msgstr "Τα τελευταία άρθρα θα φορτωθούν στις στήλες."
+
+#: admin/settings.php:473
+msgid "Random posts will be loaded into the columns."
+msgstr "Τυχαία άρθρα θα φορτωθούν στις στήλες."
+
+#: admin/settings.php:477
+msgid ""
+"Latest posts from the category you choose will be loaded in the columns."
+msgstr ""
+"Τα τελευταία άρθρα από την κατηγορία που επιλέξατε θα φορτώνονται στις "
+"στήλες."
+
+#: admin/settings.php:481
+msgid ""
+"Random posts from the category you choose will be loaded into the columns."
+msgstr ""
+"Τυχαία άρθρα από την κατηγορία που επιλέξατε θα φορτώνονται στις στήλες."
+
+#: admin/settings.php:485
+msgid "Only sticky posts will be loaded into the columns."
+msgstr "Μόνο τα σταθερά άρθρα θα φορτωθούν στις στήλες."
+
+#: admin/settings.php:494
+msgid ""
+"Load your custom Widgets as columns. Go to <a>Appearance >> Widgets</a> and "
+"create your custom columns using the Columns widget. You can use as many as "
+"you want."
+msgstr ""
+"Φορτώστε τα προκαθορισμένα σας Widgets ως στήλες. Πηγαίνετε στο <a>Εμφάνιση "
+">>Μονάδες</a> και δημιουργήστε τις δικές σας στήλες χρησιμοποιώντας τη "
+"μονάδα Στηλών. Μπορείτε να χρησιμοποιήσετε όσες θέλετε.  "
+
+#: admin/settings.php:523
+msgid "Column Display:"
+msgstr "Προβολή Στήλης:"
+
+#: admin/settings.php:525
+msgid "Animated"
+msgstr "Κινούμενο"
+
+#: admin/settings.php:525
+msgid "Static on Image"
+msgstr "Στατικό πάνω στην Εικόνα"
+
+#: admin/settings.php:525
+msgid "Static under Image"
+msgstr "Στατικό κάτω από την Εικόνα"
+
+#: admin/settings.php:533
+msgid "How to display your Presentation Page Columns."
+msgstr "Πως να προβάλλονται οι Στήλες της Σελίδας Παρουσίασης"
+
+#: admin/settings.php:535
+msgid "Columns per row:"
+msgstr "Στήλες ανά γραμμή:"
+
+#: admin/settings.php:545
+msgid "Image Size:"
+msgstr "Μέγεθος Εικόνας:"
+
+#: admin/settings.php:546
+msgid "Height: "
+msgstr "Ύψος:"
+
+#: admin/settings.php:547
+msgid "Width: "
+msgstr "Πλάτος:"
+
+#: admin/settings.php:548
+msgid ""
+"The sizes for your column images. The width is dependent on total site width "
+"and not configurable."
+msgstr ""
+"Το μέγεθος των εικόνων στις στήλες. Το πλάτος εξαρτάται από το συνολικό "
+"μέγεθος της ιστοσελίδας και δεν είναι ρυθμιζόμενο."
+
+#: admin/settings.php:550
+msgid "Read more text:"
+msgstr "Κείμενο ανάγνωσης περισσότερων:"
+
+#: admin/settings.php:553
+msgid ""
+"The linked text that appears at the bottom of each column. Leave empty to "
+"hide the link."
+msgstr ""
+"Το κείμενο συνδέσμου που εμφανίζεται στο κάτω μέρος της κάθε στήλης. Αφήστε "
+"το κενό για να αποκρύψετε τον σύνδεσμο."
+
+#: admin/settings.php:562
+msgid "Extra Text"
+msgstr "Επιπλέον Κείμενο"
+
+#: admin/settings.php:564
+msgid "Text for the Presentation Page"
+msgstr "Κείμενο για την Σελίδα Παρουσίασης"
+
+#: admin/settings.php:565
+msgid ""
+"More text for the Presentation Page. The top title is just below the slider, "
+"the second title is below the columns. A text area supporting HTML tags and "
+"shortcodes below each title<br>It's all optional so leave any input field "
+"empty to not dispaly it."
+msgstr ""
+"Περισσότερο κείμενο για την Σελίδα Παρουσίασης. Ο επάνω τίτλος είναι ακριβώς "
+"κάτω από τη διαφάνεια, ο δευτερεύων τίτλος είναι κάτω από τις στήλες. Η "
+"περιοχή κειμένου υποστηρίζει ετικέτες HTML και shortcodes κάτω από κάθε "
+"τίτλο. <br>Όλα είναι προαιρετικά, για αυτό αφήστε κενό οποιοδήποτε πεδίο "
+"εισαγωγής για να μην το προβάλλεται."
+
+#: admin/settings.php:568
+msgid "Top Title"
+msgstr "Επάνω Τίτλος"
+
+#: admin/settings.php:570
+msgid "Top Text"
+msgstr "Επάνω Κείμενο"
+
+#: admin/settings.php:573
+msgid "Second Title"
+msgstr "Δευτερεύων Τίτλος"
+
+#: admin/settings.php:575
+msgid "Second text"
+msgstr "Δευτερεύον κείμενο"
+
+#: admin/settings.php:578
+msgid "Hide areas"
+msgstr "Απόκρυψη περιοχών"
+
+#: admin/settings.php:580
+msgid "Choose the areas to hide on the first page."
+msgstr "Επιλέξτε τις περιοχές για απόκρυψη στην αρχική σελίδα."
+
+#: admin/settings.php:591
+msgid "Hide the header area (logo/title and/or image/empty area)."
+msgstr ""
+"Απόκρυψη της περιοχής κεφαλίδας (λογότυπο/τίτλος και/ή εικόνα/κενή περιοχή)."
+
+#: admin/settings.php:594
+msgid "Hide the main menu and the top menu."
+msgstr "Απόκρυψη του κύριου μενού και του επάνω μενού."
+
+#: admin/settings.php:597
+msgid "Hide the footer widgets. "
+msgstr "Απόκρυψη των πρόσθετων υποσέλιδου."
+
+#: admin/settings.php:600
+msgid "Hide the footer (copyright area)."
+msgstr "Απόκρυψη υποσέλιδου (περιοχή πνευματικών δικαιωμάτων)."
+
+#: admin/settings.php:625
+msgid ""
+"Select the general font family and size or insert the Google Font name "
+"you'll use in your blog. This will affect all text except the one controlled "
+"by the options below. "
+msgstr ""
+"Επιλέξτε την γενική οικογένεια γραμματοσειράς και το μέγεθός της ή εισάγεται "
+"το όνομα μιας γραμματοσειράς του Google που θα χρησιμοποιήσετε στο blog. "
+"Αυτή η επιλογή θα επηρεάσει όλο το κείμενο εκτός από τις επιλογές που "
+"ελέγχονται από πιο κάτω."
+
+#: admin/settings.php:644
+msgid ""
+"Select the font family and size or insert the Google Font name you want for "
+"your titles. It will affect post titles and page titles. Leave 'General "
+"Font' and the general font values you selected will be used."
+msgstr ""
+"Επιλέξτε την οικογένεια γραμματοσειράς και το μέγεθός της ή εισάγεται το "
+"όνομα μιας γραμματοσειράς του Google που θα χρησιμοποιήσετε για του τίτλους. "
+"Αυτό θα επηρεάσει τους τίτλους άρθρων και τους τίτλους σελίδων. Επιλέξτε "
+"'Γενική Γραμματοσειρά' και οι τιμές της γενικής γραμματοσειράς που έχετε "
+"επιλέξει θα χρησιμοποιηθούν."
+
+#: admin/settings.php:663
+msgid ""
+"Select the font family and size or insert the Google Font name you want your "
+"widget titles to have. Leave 'General Font' and the general font values you "
+"selected will be used."
+msgstr ""
+"Επιλέξτε την οικογένεια γραμματοσειράς και το μέγεθος της ή εισάγεται το "
+"όνομα μιας γραμματοσειράς του Google που θα χρησιμοποιήσετε στους τίτλους "
+"των πρόσθετων. Επιλέξτε 'Γενική Γραμματοσειρά' και οι τιμές της γενικής "
+"γραμματοσειράς που έχετε επιλέξει θα χρησιμοποιηθούν."
+
+#: admin/settings.php:681
+msgid ""
+"Select the font family and size or insert the Google Font name you want your "
+"site title and tagline to use. Leave 'General Font' and the general font "
+"values you selected will be used."
+msgstr ""
+"Επιλέξτε την οικογένεια γραμματοσειράς και το μέγεθος της ή εισάγεται το "
+"όνομα μιας γραμματοσειράς του Google που θα χρησιμοποιήσετε στους τίτλους "
+"της ιστοσελίδας και της γραμμής ετικετών. Επιλέξτε 'Γενική Γραμματοσειρά' "
+"και οι τιμές της γενικής γραμματοσειράς που έχετε επιλέξει θα "
+"χρησιμοποιηθούν."
+
+#: admin/settings.php:699
+msgid ""
+"Select the font family and size or insert the Google Font name you want your "
+"main menu to use. Leave 'General Font' and the general font values you "
+"selected will be used."
+msgstr ""
+"Επιλέξτε την οικογένεια γραμματοσειράς και το μέγεθος της ή εισάγεται το "
+"όνομα μιας γραμματοσειράς του Google που θα χρησιμοποιήσετε στο κύριο μενού. "
+"Επιλέξτε 'Γενική Γραμματοσειρά' και οι τιμές της γενικής γραμματοσειράς που "
+"έχετε επιλέξει θα χρησιμοποιηθούν."
+
+#: admin/settings.php:720
+msgid ""
+"Select the font family and size or insert the Google Font name you want your "
+"headings to have (h1 - h6 tags will be affected). Leave 'General Font' and "
+"the general font values you selected will be used."
+msgstr ""
+"Επιλέξτε την οικογένεια γραμματοσειράς και το μέγεθος της ή εισάγεται το "
+"όνομα μιας γραμματοσειράς του Google που θα χρησιμοποιήσετε στις κεφαλίδες "
+"(οι ετικέτες h1 - h6 θα επηρεαστούν). Επιλέξτε 'Γενική Γραμματοσειρά' και οι "
+"τιμές της γενικής γραμματοσειράς που έχετε επιλέξει θα χρησιμοποιηθούν."
+
+#: admin/settings.php:728 admin/settings.php:769 admin/settings.php:779
+msgid "Default"
+msgstr "Προεπιλογή"
+
+#: admin/settings.php:728 admin/settings.php:1022 admin/settings.php:1385
+msgid "Left"
+msgstr "Αριστερά"
+
+#: admin/settings.php:728 admin/settings.php:1022 admin/settings.php:1385
+msgid "Right"
+msgstr "Δεξιά"
+
+#: admin/settings.php:728
+msgid "Justify"
+msgstr "Πλήρης"
+
+#: admin/settings.php:728 admin/settings.php:1022 admin/settings.php:1385
+msgid "Center"
+msgstr "Κέντρο"
+
+#: admin/settings.php:730
+msgid ""
+"This overwrites the text alignment in posts and pages. Leave 'Default' for "
+"normal settings (alignment will remain as declared in posts, comments etc.)."
+msgstr ""
+"Αυτό αντικαθιστά τη στοίχιση του κειμένου σε άρθρα και σελίδες. Αφήστε το  "
+"ως «Προεπιλογή» για τις κανονικές ρυθμίσεις (η ευθυγράμμιση θα παραμείνει "
+"όπως έχει δηλωθεί στις δημοσιεύσεις, σχόλια κτλ)."
+
+#: admin/settings.php:740
+msgid "Choose the indent for your paragraphs."
+msgstr "Επιλέξτε το εδάφιο για τις παραγράφους σας."
+
+#: admin/settings.php:751
+msgid "Disable the default headings indent (left margin)."
+msgstr "Απενεργοποιήστε το προεπιλεγμένο εδάφιο τίτλου (αριστερό περιθώριο)."
+
+#: admin/settings.php:761
+msgid "Text line height. The height between 2 rows of text."
+msgstr "Ύψος γραμμής κειμένου. Το ύψος μεταξύ 2 γραμμών κειμένου."
+
+#: admin/settings.php:771
+msgid ""
+"The space between <i>words</i>. Leave 'Default' for normal settings (size "
+"value will be as set in the CSS)."
+msgstr ""
+"Το διάστημα μεταξύ των <i>λέξεων</i>. Επιλέξτε 'Προκαθορισμένο' για τις "
+"τυπικές ρυθμίσεις (η τιμή του μεγέθους θα οριστεί όπως είναι στο CSS)."
+
+#: admin/settings.php:781
+msgid ""
+"The space between <i>letters</i>. Leave 'Default' for normal settings (size "
+"value will be as set in the CSS)."
+msgstr ""
+"Το διάστημα μεταξύ των <i>γραμμάτων</i>. Επιλέξτε 'Προκαθορισμένο' για τις "
+"τυπικές ρυθμίσεις (η τιμή του μεγέθους θα οριστεί όπως είναι στο CSS)."
+
+#: admin/settings.php:789
+msgid "Select the spacing between the paragraphs."
+msgstr "Επιλέξτε το διάστημα μεταξύ των παραγράφων."
+
+#: admin/settings.php:796
+msgid "Default (disabled)"
+msgstr "Προεπιλογή (απενεργοποιημένο)"
+
+#: admin/settings.php:798
+msgid "Enable uppercase text styling. All text in the site will be uppercase."
+msgstr ""
+"Ενεργοποίηση του στυλ κεφαλαίων γραμμάτων κειμένου. Όλο το κείμενο στην "
+"ιστοσελίδα θα είναι με κεφαλαία γράμματα."
+
+#: admin/settings.php:806
+msgid "Define background image"
+msgstr "Ορισμός εικόνας φόντου"
+
+#: admin/settings.php:811 admin/settings.php:837 admin/settings.php:862
+#: admin/settings.php:890 admin/settings.php:902
+msgid "Background:"
+msgstr "Φόντο:"
+
+#: admin/settings.php:812
+msgid "Header Background"
+msgstr "Φόντο Κεφαλίδας"
+
+#: admin/settings.php:813
+msgid "Main Site Background"
+msgstr "Φόντο Κύριας Ιστοσελίδας"
+
+#: admin/settings.php:814
+msgid "Footer Widgets Area Background"
+msgstr "Φόντο Περιοχής Πρόσθετων Υποσέλιδων"
+
+#: admin/settings.php:815
+msgid "Footer Background"
+msgstr "Φόντο Υποσέλιδου"
+
+#: admin/settings.php:816 admin/settings.php:839 admin/settings.php:864
+#: admin/settings.php:893 admin/settings.php:905
+msgid "Text:"
+msgstr "Κείμενο:"
+
+#: admin/settings.php:817
+msgid "General Text"
+msgstr "Γενικό Κείμενο"
+
+#: admin/settings.php:818
+msgid "General Lighter Text"
+msgstr "Ανοιχτόχρωμο Γενικό Κείμενο"
+
+#: admin/settings.php:819
+msgid "Footer Text"
+msgstr "Κείμενο Υποσέλιδου"
+
+#: admin/settings.php:820
+msgid ""
+"The site background features 4 separately coloured areas.<br />The general "
+"text colour applies to all text on the website that is not controlled by any "
+"other option."
+msgstr ""
+"Το φόντο της ιστοσελίδας διαθέτει 4 ξεχωριστές χρωματισμένες περιοχές. <br /"
+"> Το γενικό χρώμα κειμένου ισχύει για όλο το κείμενο στην ιστοσελίδα που δεν "
+"ελέγχεται από καμία άλλη επιλογή."
+
+#: admin/settings.php:825
+msgid "Accent Color #1"
+msgstr "Χρωματική Έμφαση #1"
+
+#: admin/settings.php:826
+msgid "Accent Color #2"
+msgstr "Χρωματική Έμφαση #2"
+
+#: admin/settings.php:827
+msgid "Accent Color #3"
+msgstr "Χρωματική Έμφαση #3"
+
+#: admin/settings.php:828
+msgid "Accent Color #4"
+msgstr "Χρωματική Έμφαση #4"
+
+#: admin/settings.php:829
+msgid "Accent Color #5"
+msgstr "Χρωματική Έμφαση #5"
+
+#: admin/settings.php:830
+msgid ""
+"Accents #1 and #2 should either be the same as the link colours or be "
+"separate from all other colours on the site.<br />\n"
+"     Accent #5 is used for input fields and buttons backgrounds, borders and "
+"lines.<br />\n"
+"     Accents #3 and #4 should be the lighter/darker than the content "
+"background colour, being used as borders/shades on elements where accent #5 "
+"is background colour."
+msgstr ""
+"Οι εμφάσεις #1 και #2 θα πρέπει να είναι και οι δύο, το ίδιο με τα χρώματα "
+"συνδέσμου ή θα είναι διαχωρισμένα από όλα τα άλλα χρώματα της ιστοσελίδας."
+"<br />\n"
+"Η έμφαση #5 χρησιμοποιείται για τα πεδία εισαγωγής και το φόντο των "
+"πλήκτρων, για τα περιγράμματα και τις γραμμές.<br />\n"
+"Οι εμφάσεις #3 και #4 θα πρέπει να είναι το ανοιχτόχρωμο ή σκουρόχρωμο χρώμα "
+"σε σχέση με το χρώμα φόντου, που χρησιμοποιείται ως περιγράμματα/σκιές στα "
+"στοιχεία που η έμφαση #5 είναι χρώμα φόντου. "
+
+#: admin/settings.php:838
+msgid "Site Description Background"
+msgstr "Φόντο Περιγραφής Ιστοσελίδας"
+
+#: admin/settings.php:841
+msgid "Site Description"
+msgstr "Περιγραφή Ιστοσελίδας"
+
+#: admin/settings.php:847
+msgid "Menu:"
+msgstr "Μενού:"
+
+#: admin/settings.php:848
+msgid "Menu Background"
+msgstr "Φόντο Μενού"
+
+#: admin/settings.php:849
+msgid "Menu Text"
+msgstr "Κείμενο Μενού"
+
+#: admin/settings.php:852
+msgid "Submenu:"
+msgstr "Υπομενού:"
+
+#: admin/settings.php:853
+msgid "Submenu Background"
+msgstr "Φόντο Υπομενού"
+
+#: admin/settings.php:854
+msgid "Submenu Text"
+msgstr "Κείμενο Υπομενού"
+
+#: admin/settings.php:855
+msgid "Submenu Shadow"
+msgstr "Σκιά Υπομενού"
+
+#: admin/settings.php:857
+msgid "These colours apply to the main site menu (and dropdown elements)."
+msgstr ""
+"Αυτά τα χρώματα εφαρμόζονται στο κύριο μενού της ιστοσελίδας (και στα "
+"στοιχεία του αναπτυσσόμενο μενού)."
+
+#: admin/settings.php:863
+msgid "Top Bar Background"
+msgstr "Φόντο Επάνω Μπάρας"
+
+#: admin/settings.php:865
+msgid "Top Bar Menu Link"
+msgstr "Σύνδεσμος Μενού Επάνω Μπάρας"
+
+#: admin/settings.php:866
+msgid "Top Bar Menu Link Hover"
+msgstr "Σύνδεσμοι Μενού Επάνω Μπάρας όταν το ποντίκι είναι από πάνω"
+
+#: admin/settings.php:867
+msgid "These colours apply to the top bar menu."
+msgstr "Αυτά τα χρώματα εφαρμόζονται στο μενού της επάνω μπάρας."
+
+#: admin/settings.php:872
+msgid "Content Background"
+msgstr "Φόντο Περιεχομένου"
+
+#: admin/settings.php:873
+msgid "Page/Post Title"
+msgstr "Τίτλος Σελίδας/Άρθρου"
+
+#: admin/settings.php:874
+msgid "Page/Post Title Hover"
+msgstr "Τίτλος Σελίδας/Άρθρου όταν το ποντίκι είναι από πάνω"
+
+#: admin/settings.php:875
+msgid "Content Headings"
+msgstr "Κεφαλίδες Περιεχομένου"
+
+#: admin/settings.php:876
+msgid "Content colours apply to post and page areas of the site."
+msgstr ""
+"Τα χρώματα του περιεχομένου εφαρμόζονται στις περιοχές των άρθρων και των "
+"σελίδων της ιστοσελίδας. "
+
+#: admin/settings.php:881
+msgid "Titles Color"
+msgstr "Χρώμα Τίτλων"
+
+#: admin/settings.php:882
+msgid "Slider Border Color"
+msgstr "Χρώμα Περιγράμματος Διαφάνειας"
+
+#: admin/settings.php:883
+msgid "Slider Caption Text Color"
+msgstr "Χρώμα Κειμένου Κεφαλίδας Διαφάνειας"
+
+#: admin/settings.php:884
+msgid "Slider Caption Background"
+msgstr "Φόντο Κεφαλίδας Διαφάνειας"
+
+#: admin/settings.php:885
+msgid "These colours apply to specific areas of the presentation page."
+msgstr ""
+"Αυτά τα χρώματα εφαρμόζονται σε συγκεκριμένες περιοχές της σελίδας "
+"παρουσίασης."
+
+#: admin/settings.php:891
+msgid "Sidebars Background"
+msgstr "Φόντο Πλευρικών Στηλών"
+
+#: admin/settings.php:892
+msgid "Sidebars Widget Title Background"
+msgstr "Φόντο Τίτλου Πρόσθετου Πλευρικών Στηλών"
+
+#: admin/settings.php:894
+msgid "Sidebars Text"
+msgstr "Κείμενο Πλευρικής Στήλης"
+
+#: admin/settings.php:895
+msgid "Sidebars Widget Title Text"
+msgstr "Κείμενο Τίτλου Πρόσθετου Πλευρικών Στηλών"
+
+#: admin/settings.php:896
+msgid "These colours apply to the widgets placed in either sidebar."
+msgstr ""
+"Αυτά τα χρώματα εφαρμόζονται στα τοποθετημένα πρόσθετα σε κάθε πλευρική "
+"στήλη."
+
+#: admin/settings.php:903
+msgid "Footer Widgets Background"
+msgstr "Φόντο Πρόσθετου Υποσέλιδου"
+
+#: admin/settings.php:904
+msgid "Footer Widgets Title Background"
+msgstr "Φόντο Τίτλου Πρόσθετου Υποσέλιδου"
+
+#: admin/settings.php:906
+msgid "Footer Widget Text"
+msgstr "Κείμενο Πρόσθετου Υποσέλιδου"
+
+#: admin/settings.php:907
+msgid "Footer Widgets Title Text"
+msgstr "Κείμενο Τίτλου Πρόσθετου Υποσέλιδου"
+
+#: admin/settings.php:908
+msgid "These colours apply to the widgets in the footer area."
+msgstr "Αυτά τα χρώματα εφαρμόζονται στα πρόσθετα της περιοχής υποσέλιδου."
+
+#: admin/settings.php:913
+msgid "General:"
+msgstr "Γενικά:"
+
+#: admin/settings.php:914
+msgid "General Links"
+msgstr "Γενικοί Σύνδεσμοι"
+
+#: admin/settings.php:915
+msgid "General Links Hover"
+msgstr "Γενικά Σύνδεσμοι όταν το ποντίκι είναι από πάνω"
+
+#: admin/settings.php:916
+msgid "Sidebar Widgets:"
+msgstr "Πρόσθετα Πλευρικής Στήλης:"
+
+#: admin/settings.php:917
+msgid "Sidebar Widgets Links"
+msgstr "Σύνδεσμοι Πρόσθετων Πλευρικής Στήλης"
+
+#: admin/settings.php:918
+msgid "Sidebar Widgets Links Hover"
+msgstr ""
+"Σύνδεσμοι Πρόσθετων της Πλευρικής Στήλης όταν το ποντίκι είναι από πάνω"
+
+#: admin/settings.php:919
+msgid "Footer Widgets:"
+msgstr "Πρόσθετα Υποσέλιδου:"
+
+#: admin/settings.php:920
+msgid "Footer Widgets Links"
+msgstr "Σύνδεσμοι Πρόσθετων Υποσέλιδου"
+
+#: admin/settings.php:921
+msgid "Footer Widgets Links Hover"
+msgstr "Σύνδεσμοι Πρόσθετων Υποσέλιδου όταν το ποντίκι είναι από πάνω"
+
+#: admin/settings.php:922
+msgid "Footer:"
+msgstr "Υποσέλιδο:"
+
+#: admin/settings.php:923
+msgid "Footer Links"
+msgstr "Σύνδεσμοι Υποσέλιδου"
+
+#: admin/settings.php:924
+msgid "Footer Links Hover"
+msgstr "Σύνδεσμοι Υποσέλιδου όταν το ποντίκι είναι από πάνω"
+
+#: admin/settings.php:925
+msgid "Footer colours include the footer menu colours."
+msgstr ""
+"Τα χρώματα υποσέλιδου περιλαμβάνουν και τα χρώματα των μενού υποσέλιδου."
+
+#: admin/settings.php:930
+msgid "Meta Icons"
+msgstr "Εικονίδια Μεταδεδομένων"
+
+#: admin/settings.php:931
+msgid "Meta Links"
+msgstr "Σύνδεσμοι Μεταδεδομένων"
+
+#: admin/settings.php:932
+msgid "Meta Links Hover"
+msgstr "Σύνδεσμοι Μεταδεδομένων όταν το ποντίκι είναι από πάνω"
+
+#: admin/settings.php:933
+msgid "Colours for your meta area (post information)."
+msgstr "Χρώματα για την περιοχή μεταδεδομένων (πληροφορίες άρθρου)."
+
+#: admin/settings.php:938
+msgid "Social Icons Background"
+msgstr "Φόντο Εικονιδίων Κοινωνικών Μέσων"
+
+#: admin/settings.php:939
+msgid "Social Icons Background Hover"
+msgstr "Φόντο Εικονιδίων Κοινωνικών Μέσων όταν το ποντίκι είναι από πάνω."
+
+#: admin/settings.php:940
+msgid "Background colours for your social icons."
+msgstr "Χρώματα φόντου για τα εικονίδια κοινωνικών μέσων."
+
+#: admin/settings.php:946
+msgid "Light"
+msgstr "Ανοιχτόχρωμο"
+
+#: admin/settings.php:946
+msgid "Dark"
+msgstr "Σκουρόχρωμο"
+
+#: admin/settings.php:946
+msgid "Simple"
+msgstr "Απλό"
+
+#: admin/settings.php:954
+msgid ""
+"This setting changes the look of your captions. Images that are not inserted "
+"through captions will not be affected."
+msgstr ""
+"Αυτή η ρύθμιση αλλάζει την εμφάνιση των λεζάντων σας. Εικόνες που δεν έχουν "
+"εισαχθεί μέσω λεζάντων δεν θα επηρεαστούν."
+
+#: admin/settings.php:967
+msgid "Normal"
+msgstr "Κανονική"
+
+#: admin/settings.php:967
+msgid "Fixed"
+msgstr "Σταθερή"
+
+#: admin/settings.php:967 admin/settings.php:1062 admin/settings.php:1079
+#: admin/settings.php:1094 admin/settings.php:1144 admin/settings.php:1193
+#: admin/settings.php:1224
+msgid "Hide"
+msgstr "Απόκρυψη"
+
+#: admin/settings.php:977
+msgid "Site width"
+msgstr "Πλάτος ιστοσελίδας"
+
+#: admin/settings.php:977
+msgid "Full width"
+msgstr "Πλήρες πλάτος"
+
+#: admin/settings.php:986
+msgid "Show the topbar that can include social icons and the top menu."
+msgstr ""
+"Προβολή της επάνω μπάρας που μπορεί να συμπεριλάβει εικονίδια κοινωνικών "
+"μέσων και το επάνω μενού."
+
+#: admin/settings.php:1001
+msgid ""
+"Show breadcrumbs at the top of the content area. Breadcrumbs are a form of "
+"navigation that keeps track of your location withtin the site."
+msgstr ""
+"Εμφάνιση των breadcrumbs στην κορυφή της περιοχής του περιεχομένου. Τα "
+"breadcrumbs είναι μια μορφή πλοήγησης που παρακολουθεί τη θέση σας μέσα στην "
+"ιστοσελίδα."
+
+#: admin/settings.php:1016
+msgid ""
+"Show numbered pagination. Where there is more than one page, instead of the "
+"bottom <b>Older Posts</b> and <b>Newer posts</b> links you have a numbered "
+"pagination. "
+msgstr ""
+"Προβολή αριθμημένης σελιδοποίησης. Σε περίπτωση που υπάρχουν περισσότερες "
+"από μία σελίδα, αντί των συνδέσμων του κάτω μέρους <b> Παλαιότερα Άρθρα </b> "
+"και <b> Νεότερα Άρθρα </ b> θα έχετε μια αριθμημένη σελιδοποίηση."
+
+#: admin/settings.php:1022
+msgid "Right (multiline)"
+msgstr "Δεξιά (πολλές γραμμές)"
+
+#: admin/settings.php:1030
+msgid "Sets the desired menu items alignment."
+msgstr "Ορίζει την επιθυμητή στοίχιση των αντικειμένων του μενού."
+
+#: admin/settings.php:1036
+msgid "Margin top: "
+msgstr "Περιθώριο επάνω:"
+
+#: admin/settings.php:1037
+msgid ""
+"The margin between the content and the menu. It can be set to 0px if you "
+"want the content area and menu to join."
+msgstr ""
+"Το περιθώριο μεταξύ του περιεχομένου και του μενού. Μπορεί να ρυθμιστεί σε "
+"0px, ώστε αν θέλετε η περιοχή του περιεχομένου και το μενού να ενωθούν."
+
+#: admin/settings.php:1039
+msgid "Padding left/right: "
+msgstr "Γέμισμα αριστερά/δεξιά:"
+
+#: admin/settings.php:1040
+msgid ""
+"The left/right padding around the content. Should be set to 10px or less for "
+"designs without a content color."
+msgstr ""
+"Το αριστερό/δεξί γέμισμα γύρω από το περιεχόμενο. Θα πρέπει να οριστεί σε "
+"10px ή λιγότερο για τα σχέδια χωρίς χρώμα περιεχομένου."
+
+#: admin/settings.php:1055
+msgid ""
+"The border style for your images. Only images inserted in your posts and "
+"pages will be affected. "
+msgstr ""
+"Το στυλ περιγράμματος των εικόνων σας. Μόνο οι εικόνες που έχουν εισαχθεί "
+"στα άρθρα και στις σελίδες θα επηρεαστούν."
+
+#: admin/settings.php:1062 admin/settings.php:1079 admin/settings.php:1094
+#: admin/settings.php:1193 admin/settings.php:1208 admin/settings.php:1224
+msgid "Show"
+msgstr "Προβολή"
+
+#: admin/settings.php:1070
+msgid ""
+"Hide or show bullets next to lists in your content area (posts, pages etc.)."
+msgstr ""
+"Απόκρυψη ή προβολή των κουκίδων δίπλα στις λίστες της περιοχής περιεχομένου "
+"(άρθρα, σελίδες κτλ)."
+
+#: admin/settings.php:1087
+msgid "Hide or show titles on pages."
+msgstr "Απόκρυψη ή προβολή των τίτλων στις σελίδες."
+
+#: admin/settings.php:1102
+msgid "Hide or show titles on Categories and Archives."
+msgstr "Απόκρυψη ή προβολή των τίτλων στις Κατηγορίες και στα Αρχεία."
+
+#: admin/settings.php:1117
+msgid "Hide table borders and background color."
+msgstr "Απόκρυψη ή προβολή χρώματος περιγράμματος και φόντου."
+
+#: admin/settings.php:1133
+msgid ""
+"Enable the Back to Top button. The button appears after scrolling the page "
+"down."
+msgstr ""
+"Ενεργοποιείστε το κουμπί Επιστροφή Επάνω. Το κουμπί εμφανίζεται όταν "
+"κυλήσετε την σελίδα προς τα κάτω."
+
+#: admin/settings.php:1144
+msgid "Top"
+msgstr "Επάνω"
+
+#: admin/settings.php:1144
+msgid "Bottom"
+msgstr "Κάτω"
+
+#: admin/settings.php:1152
+msgid ""
+"The position of your meta bar (author, date, category, tags and edit button)."
+msgstr ""
+"Η θέση της μπάρας μεταδεδομένων (συγγραφέας, ημερομηνία, κατηγορία, ετικέτες "
+"και κουμπί επεξεργασίας)."
+
+#: admin/settings.php:1159 admin/settings.php:1175
+msgid "Author"
+msgstr "Συγγραφέας"
+
+#: admin/settings.php:1159 admin/settings.php:1175
+msgid "Date"
+msgstr "Ημερομηνία"
+
+#: admin/settings.php:1159 admin/settings.php:1175
+msgid "Time"
+msgstr "Ώρα"
+
+#: admin/settings.php:1159 admin/settings.php:1175
+msgid "Category"
+msgstr "Κατηγορία"
+
+#: admin/settings.php:1159 admin/settings.php:1175
+msgid "Tag"
+msgstr "Ετικέτα"
+
+#: admin/settings.php:1159
+msgid "Comments"
+msgstr "Σχόλια"
+
+#: admin/settings.php:1168
+msgid ""
+"Choose the post metas you want to show on multiple post pages (home, blog, "
+"category, archive etc.)"
+msgstr ""
+"Επιλέξτε τα μεταδεδομένα των άρθρων που θέλετε να προβάλλονται στις σελίδες "
+"πολλαπλών άρθρων (αρχική, blog, κατηγορία, αρχείο κτλ.)"
+
+#: admin/settings.php:1175
+msgid "Bookmark"
+msgstr "Σελιδοδείκτης"
+
+#: admin/settings.php:1184
+msgid "Choose the post metas you want to show on sigle post pages."
+msgstr ""
+"Επιλέξτε τα μεταδεδομένα των άρθρων που θέλετε να προβάλλονται στις σελίδες "
+"απλού άρθρου."
+
+#: admin/settings.php:1201
+msgid ""
+"Hide the explanatory text under the comments form (starts with  <i>You may "
+"use these HTML tags and attributes:...</i>)."
+msgstr ""
+"Αποκρύψτε το επεξηγηματικό κείμενο κάτω από τη φόρμα σχολίων (ξεκινά με <i> "
+"Επιτρέπονται τα εξής στοιχεία και ιδιότητες HTML:... </i>)."
+
+#: admin/settings.php:1208
+msgid "Hide in posts"
+msgstr "Απόκρυψη στα άρθρα"
+
+#: admin/settings.php:1208
+msgid "Hide in pages"
+msgstr "Απόκρυψη στις σελίδες"
+
+#: admin/settings.php:1208
+msgid "Hide everywhere"
+msgstr "Απόκρυψη παντού"
+
+#: admin/settings.php:1216
+msgid ""
+"Hide the <b>Comments are closed</b> text that by default shows up on pages "
+"or posts with comments disabled."
+msgstr ""
+"Απόκρυψη του κειμένου <b>Σχόλια κλειστά</b> που εξ ορισμού εμφανίζεται στις "
+"σελίδες ή τα άρθρα που έχουν απενεργοποιημένο τον σχολιασμό. "
+
+#: admin/settings.php:1232
+msgid ""
+"Hide the <b>Comments off</b> text next to posts that have comments disabled."
+msgstr ""
+"Απόκρυψη του κειμένου <b>Σχόλια απενεργοποιημένα</b> δίπλα στα άρθρα που "
+"έχουν απενεργοποιημένο τον σχολιασμό. "
+
+#: admin/settings.php:1244 admin/settings.php:1259 admin/settings.php:1275
+msgid "Excerpt"
+msgstr "Απόσπασμα"
+
+#: admin/settings.php:1244 admin/settings.php:1259 admin/settings.php:1275
+msgid "Full Post"
+msgstr "Πλήρες Άρθρο"
+
+#: admin/settings.php:1252
+msgid ""
+"Excerpts on the main page. Only standard posts will be affected. All other "
+"post formats (aside, image, chat, quote etc.) have their specific formating."
+msgstr ""
+"Τα αποσπάσματα στην κύρια σελίδα. Μόνο τα τυποποιημένα άρθρα θα επηρεαστούν. "
+"Όλα τα υπόλοιπα είδη άρθρων (μερικά άρθρα, εικόνες, συνομιλία, αποσπάσματα "
+"κτλ) έχουν τη δική τους συγκεκριμένη μορφοποίηση."
+
+#: admin/settings.php:1267
+msgid ""
+"Choose if you want the sticky posts on your home page to be visible in full "
+"or just the excerpts. "
+msgstr ""
+"Επιλέξτε αν θέλετε τα μόνιμα άρθρα να εμφανίζονται στην αρχική σελίδα "
+"ολόκληρα ή ένα απόσπασμά τους."
+
+#: admin/settings.php:1283
+msgid ""
+"Excerpts on archive, categroy and search pages. Same as above, only standard "
+"posts will be affected."
+msgstr ""
+"Αποσπάσματα στο αρχείο, στις κατηγορίες και στις σελίδες αναζήτησης. Όμοιο "
+"με το παραπάνω, μόνο που τα τυπικά άρθρα θα επηρεαστούν."
+
+#: admin/settings.php:1291
+msgid ""
+"The number of words for excerpts. When that number is reached the post will "
+"be interrupted by a <i>Continue reading</i> link that will take the reader "
+"to the full post page."
+msgstr ""
+"Ο αριθμός των λέξεων για τα αποσπάσματα. Όταν επιτευχθεί αυτός ο αριθμός το "
+"άρθρο θα διακοπεί από ένα σύνδεσμο <i> Συνέχεια ανάγνωσης </i> που θα "
+"μεταφέρει τον αναγνώστη στο πλήρες άρθρο της σελίδας."
+
+#: admin/settings.php:1306
+msgid ""
+"Enable the Magazine Layout. This layout applies to pages with posts and "
+"shows 2 posts per row."
+msgstr ""
+"Ενεργοποιήστε τη Διάταξη Περιοδικού. Αυτή η διάταξη εφαρμόζεται στις σελίδες "
+"με άρθρα και προβάλει 2 άρθρα ανά σειρά."
+
+#: admin/settings.php:1313
+msgid ""
+"Replaces the three dots ('[...])' that are appended automatically to "
+"excerpts."
+msgstr ""
+"Αντικαθιστά τις τρεις τελείες ('[...])', που είναι προσαρτημένες αυτόματα "
+"στα αποσπάσματα."
+
+#: admin/settings.php:1320
+msgid "Edit the 'Continue Reading' link added to your post excerpts."
+msgstr ""
+"Επεξεργασία του συνδέσμου \"Συνέχεια Ανάγνωσης\" που προστέθηκε στα "
+"αποσπάσματα των άρθρων."
+
+#: admin/settings.php:1335
+msgid ""
+"By default WordPress excerpts remove all HTML tags (&lt;pre&gt;, &lt;a&gt;, "
+"&lt;b&gt and all others) and only clean text is left in the excerpt.\n"
+"Enabling this option allows HTML tags to remain in excerpts so all your "
+"default formating will be kept.<br /> <b>Just a warning: </b>If HTML tags "
+"are enabled, you have to make sure\n"
+"they are not left open. So if within your post you have an opened HTML tag "
+"but the except ends before that tag closes, the rest of the site will be "
+"contained in that HTML tag. -- Leave 'Disable' if unsure -- "
+msgstr ""
+"Εξ ορισμού τα αποσπάσματα του WordPress αφαιρούν όλες τις ετικέτες HTML (&lt;"
+"pre&gt;, &lt;a&gt;, &lt;b&gt  και όλα τα άλλα) και μόνο το καθαρό κείμενο "
+"απομένει στο απόσπασμα.\n"
+"Η ενεργοποίηση αυτής της επιλογής επιτρέπει ετικέτες HTML να παραμείνουν στα "
+"αποσπάσματα έτσι ώστε όλη η προεπιλεγμένη μορφοποίησή σας να διατηρείται."
+"<br /> <b>Απλά μια προειδοποίηση: </b> Εάν είναι ενεργοποιημένες οι ετικέτες "
+"HTML, θα πρέπει να βεβαιωθείτε ότι \n"
+"δεν έχουν μείνει ανοιχτά τα αποσπάσματα. Έτσι, αν μέσα στο άρθρο σας έχετε "
+"μία ανοιχτή ετικέτα HTML, αλλά το απόσπασμα τελειώνει πριν κλείσει η "
+"ετικέτα, το υπόλοιπο περιεχόμενο της ιστοσελίδας θα περιλαμβάνεται σε αυτή "
+"την ετικέτα HTML. -- Αφήστε «Απενεργοποίηση» αν δεν είστε σίγουροι --"
+
+#: admin/settings.php:1361
+msgid "Link the thumbnail to the post"
+msgstr "Σύνδεσε την μικρογραφία με το άρθρο"
+
+#: admin/settings.php:1362
+msgid ""
+"Show featured images as thumbnails on posts. The images must be selected for "
+"each post in the Featured Image section."
+msgstr ""
+"Προβολή των προκαθορισμένων εικόνων ως μικρογραφίες στα άρθρα. Οι εικόνες "
+"πρέπει να επιλεγούν για κάθε άρθρο στην ενότητα Προκαθορισμένη Εικόνα."
+
+#: admin/settings.php:1377
+msgid ""
+"Show the first image that you inserted in a post as a thumbnail. If there is "
+"a Featured Image selected for that post, it will have priority."
+msgstr ""
+"Προβολή της πρώτης εικόνας που έχετε εισάγει στο άρθρο σας ως μικρογραφία. "
+"Εάν έχει επιλεχθεί Προκαθορισμένη Εικόνα για αυτό το άρθρο, θα έχει "
+"προτεραιότητα."
+
+#: admin/settings.php:1393
+msgid "Thumbnail alignment."
+msgstr "Στοίχιση μικρογραφιών."
+
+#: admin/settings.php:1400
+msgid "(width)"
+msgstr "(πλάτος)"
+
+#: admin/settings.php:1401
+msgid "(height)"
+msgstr "(ύψος)"
+
+#: admin/settings.php:1407
+msgid "Crop images to exact size."
+msgstr "Περικοπή εικόνων στο ακριβές μέγεθος."
+
+#: admin/settings.php:1410
+msgid ""
+"The size (in pixels) for your thumbnails. By default imges will be scaled "
+"with aspect ratio kept. Choose to crop the images if you want the exact size."
+msgstr ""
+"Το μέγεθος (σε pixels) για τις μικρογραφίες σας. Εξ ορισμού οι εικόνες σας "
+"θα κλιμακωθούν με διατήρηση των αναλογιών τους. Επιλέξτε για να περικόψετε "
+"τις εικόνες εάν θέλετε το ακριβές μέγεθος."
+
+#: admin/settings.php:1426
+msgid ""
+"Show featured images on headers. The header will be replaced with a featured "
+"image if you selected it as a Featured Image in the post and if it is bigger "
+"or at least equal to the current header size."
+msgstr ""
+"Προβολή επιλεγμένων εικόνων στις κεφαλίδες. Η κεφαλίδα θα αντικατασταθεί με "
+"την επιλεγμένη εικόνα αν την έχετε επιλέξει ως Επιλεγμένη Εικόνα στο άρθρο "
+"και αν είναι μεγαλύτερη ή ίση με το τρέχον μέγεθος της κεφαλίδας."
+
+#: admin/settings.php:1437
+msgid ""
+"Select your desired Social network from the left dropdown menu and insert "
+"your corresponding address in the right input field. (ex: <i>http://www."
+"facebook.com/yourname</i> )"
+msgstr ""
+"Επιλέξτε το επιθυμητό Κοινωνικό δίκτυο από το αριστερό μενού και βάλτε την "
+"διεύθυνση ανταπόκρισης στο δεξιό πεδίο εισαγωγής.  (παρ.: <i>http://www."
+"facebook.com/yourname</i> )"
+
+#: admin/settings.php:1438
+msgid ""
+"You can also choose if you want the link to open in a new window and what "
+"title to dispaly while hovering over the icon."
+msgstr ""
+"Μπορείτε επίσης να επιλέξετε αν θέλετε ο σύνδεσμος να ανοίγει σε νέο "
+"παράθυρο και τι θα προβάλλεται όταν το ποντίκι είναι πάνω από το εικονίδιο."
+
+#: admin/settings.php:1439
+msgid ""
+"You can show up to 5 different social icons from over 35 social networks."
+msgstr ""
+"Μπορείτε να εμφανίσετε πάνω από 5 διαφορετικά εικονίδια κοινωνικών μέσων από "
+"35 διαφορετικά κοινωνικά δίκτυα. "
+
+#: admin/settings.php:1440
+msgid "You can leave any number of inputs empty."
+msgstr "Μπορείτε να αφήσετε οποιοδήποτε αριθμό πεδίων κενό."
+
+#: admin/settings.php:1441
+msgid ""
+"You can change the background for your social colors from the colors "
+"settings section."
+msgstr ""
+"Μπορείτε να αλλάξετε το φόντο των εικονιδίων κοινωνικών μέσων από την "
+"ενότητα ρυθμίσεων χρώματος."
+
+#: admin/settings.php:1459
+msgid "Social Network Link"
+msgstr "Σύνδεσμος Κοινωνικού Δικτύου"
+
+#: admin/settings.php:1464
+msgid "Open in new window"
+msgstr "Άνοιγμα σε νέο παράθυρο"
+
+#: admin/settings.php:1466
+msgid "Social Network Title"
+msgstr "Τίτλος Κοινωνικού Δικτύου"
+
+#: admin/settings.php:1509
+msgid "Footer"
+msgstr "Υποσέλιδο"
+
+#: admin/settings.php:1513
+msgid "Left side"
+msgstr "Αριστερή πλευρά"
+
+#: admin/settings.php:1517
+msgid "Right side"
+msgstr "Δεξιά πλευρά"
+
+#: admin/settings.php:1529
+msgid "Choose the <b>areas</b> where to display the social icons."
+msgstr ""
+"Επιλέξτε τις <b>περιοχές</b> όπου θα προβάλλονται τα εικονίδια των "
+"κοινωνικών μέσων."
+
+#: admin/settings.php:1542
+msgid ""
+"Insert custom text or HTML code that will appear in you footer. <br /> You "
+"can use HTML to insert links, images and special characters like &copy;."
+msgstr ""
+"Εισάγετε προσαρμοσμένο κείμενο ή κώδικα HTML που θα εμφανίζεται στο "
+"υποσέλιδό σας. <br /> Μπορείτε να χρησιμοποιήσετε HTML για να εισάγετε "
+"συνδέσμους, εικόνες και ειδικούς χαρακτήρες, όπως &copy;."
+
+#: admin/settings.php:1550
+msgid ""
+"Insert your custom CSS here. Any CSS declarations made here will overwrite "
+"Tempera's (even the custom options specified right here in the Tempera "
+"Settings page). <br /> Your custom CSS will be preserved when updating the "
+"theme."
+msgstr ""
+"Εισάγετε προσαρμοσμένο κώδικα CSS εδώ. Οποιεσδήποτε δηλώσεις CSS που έγιναν "
+"εδώ, θα αντικαταστήσουν τις ρυθμίσεις του Tempera (ακόμα και τις "
+"προσαρμοσμένες επιλογές που ορίζονται εδώ στη σελίδα Ρυθμίσεις). <br /> Ο "
+"προσαρμοσμένος κώδικας CSS θα διατηρηθεί κατά την ενημέρωση του θέματος."
+
+#: admin/settings.php:1557
+msgid ""
+"Insert your custom Javascript code here. (Google Analytics and any other "
+"forms of Analytic software)."
+msgstr ""
+"Εισάγετε τον προσαρμοσμένο κώδικα Javascript εδώ. (Τα Google Analytics και "
+"οποιεσδήποτε άλλες μορφές λογισμικού Ανάλυσης)."
+
+#: admin/settings.php:1571
+msgid ""
+"Enable extra compatibility tag for older Internet Explorer versions. Turning "
+"this option on will trigger W3C validation errors."
+msgstr ""
+"Ενεργοποιήστε την ετικέτα της επιπλέον συμβατότητας για τις παλαιότερες "
+"εκδόσεις του Internet Explorer. Ενεργοποιώντας αυτή την επιλογή θα "
+"προκαλέσετε σφάλματα επικύρωσης W3C."
+
+#: content/content-aside.php:15 content/content-audio.php:15
+#: content/content-chat.php:15 content/content-gallery.php:18
+#: content/content-gallery.php:42 content/content-image.php:14
+#, php-format
+msgid "Permalink to %s"
+msgstr "Μόνιμος Σύνδεσμος σε %s"
+
+#: content/content-aside.php:28 content/content-audio.php:23
+#: content/content-chat.php:28 content/content-image.php:22
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Συνέχεια ανάγνωσης <span class=\"meta-nav\">&rarr;</span>"
+
+#: content/content-aside.php:33
+msgid "Aside"
+msgstr "Εκτός"
+
+#: content/content-audio.php:27
+msgid "Audio"
+msgstr "Ήχος"
+
+#: content/content-chat.php:33
+msgid "Chat"
+msgstr "Συνομιλία"
+
+#: content/content-frontpage.php:38
+msgid "No Posts to Display"
+msgstr "Κανένα Άρθρο για Προβολή"
+
+#: content/content-frontpage.php:43
+#, php-format
+msgid ""
+"You currently have no published posts. To hide this message either <a href="
+"\"%s\">add some posts</a> or disable displaying posts on the Presentation "
+"Page in <a href=\"%s\">theme settings</a>."
+msgstr ""
+"Αυτή τη στιγμή δεν έχετε δημοσιεύσει άρθρα. Για να αποκρύψετε αυτό το μήνυμα "
+"είτε <a href=\"%s\">προσθέστε μερικά άρθρα</a> ή απενεργοποιήστε την προβολή "
+"άρθρων στη Σελίδα Παρουσίασης στις <a href=\"%s\">ρυθμίσεις θέματος</a>."
+
+#: content/content-gallery.php:41
+#, php-format
+msgid "This gallery contains <a %1$s>%2$s photo</a>."
+msgstr "Αυτή η γκαλερί περιέχει <a %1$s>%2$s φωτογραφίες</a>."
+
+#: content/content-gallery.php:55
+msgid "Gallery"
+msgstr "Γκαλερί"
+
+#: content/content-quote.php:31
+msgid "Quote"
+msgstr "Απόσπασμα"
+
+#: content/content-status.php:36
+msgid "Status"
+msgstr "Κατάσταση"
+
+#: content/content-video.php:27
+msgid "Video"
+msgstr "Βίντεο"
+
+#: includes/ajax.php:48
+msgid "More posts"
+msgstr "Περισσότερα άρθρα"
+
+#: includes/theme-comments.php:26
+msgid "Pingback: "
+msgstr "Pingback: "
+
+#: includes/theme-comments.php:26 includes/theme-comments.php:41
+msgid "(Edit)"
+msgstr "(Επεξεργασία)"
+
+#: includes/theme-comments.php:41
+msgid "at"
+msgstr "στο"
+
+#: includes/theme-comments.php:48
+msgid "Your comment is awaiting moderation."
+msgstr "Το σχόλιό σας περιμένει τροποποίηση."
+
+#: includes/theme-comments.php:55
+msgid "Reply"
+msgstr "Απάντηση"
+
+#: includes/theme-comments.php:91
+msgid "<b>0</b>"
+msgstr "<b>0</b>"
+
+#: includes/theme-comments.php:91
+msgid "<b>1</b>"
+msgstr "<b>1</b>"
+
+#: includes/theme-comments.php:91
+msgid "<b>%</b>"
+msgstr "<b>%</b>"
+
+#: includes/theme-comments.php:91
+msgid "<b>-</b>"
+msgstr "<b>-</b>"
+
+#: includes/theme-comments.php:102
+msgid "One Comment:"
+msgstr "Ένα Σχόλιο:"
+
+#: includes/theme-comments.php:115
+msgid "Older Comments"
+msgstr "Παλαιότερα Σχόλια"
+
+#: includes/theme-comments.php:116
+msgid "Newer Comments"
+msgstr "Νεότερα Σχόλια"
+
+#: includes/theme-comments.php:144
+msgid "Comments are closed."
+msgstr "Τα σχόλια είναι κλειστά."
+
+#: includes/theme-comments.php:164 includes/theme-comments.php:165
+msgid "Name"
+msgstr "Όνομα"
+
+#: includes/theme-comments.php:169 includes/theme-comments.php:170
+msgid "Email"
+msgstr "Email"
+
+#: includes/theme-comments.php:174 includes/theme-comments.php:175
+msgid "Website"
+msgstr "Ιστοσελίδα"
+
+#: includes/theme-comments.php:187 includes/theme-comments.php:188
+msgid "Comment"
+msgstr "Σχόλια"
+
+#: includes/theme-functions.php:310
+msgid "Powered by"
+msgstr "Υποστηρίζεται από"
+
+#: includes/theme-functions.php:312
+msgid "Semantic Personal Publishing Platform"
+msgstr "Semantic Personal Publishing Platform"
+
+#: includes/theme-loop.php:172
+msgid "Author "
+msgstr "Συγγραφέας"
+
+#: includes/theme-loop.php:174
+#, php-format
+msgid "View all posts by %s"
+msgstr "Προβολή όλων των άρθρων κατά %s"
+
+#: includes/theme-loop.php:189
+msgid "Categories"
+msgstr "Κατηγορίες"
+
+#: includes/theme-loop.php:209
+msgid "Tags"
+msgstr "Ετικέτες"
+
+#: includes/theme-loop.php:271
+msgid "Tagged"
+msgstr "Ετικετοποιημένα"
+
+#: includes/theme-loop.php:274
+msgid " Bookmark the permalink"
+msgstr "Κάνε σελιδοδείκτη τον μόνιμο σύνδεσμο"
+
+#: includes/theme-loop.php:274
+msgid "Permalink to"
+msgstr "Μόνιμος Σύνδεσμος σε"
+
+#: includes/theme-loop.php:297
+msgid "<i class=\"meta-nav-prev\"></i> <span>Older posts</span>"
+msgstr "<i class=\"meta-nav-prev\"></i> <span>Παλαιότερα άρθρα</span>"
+
+#: includes/theme-loop.php:298
+msgid "<span>Newer posts</span> <i class=\"meta-nav-next\"></i>"
+msgstr "<span>Νεότερα άρθρα</span> <i class=\"meta-nav-next\"></i>"
+
+#: includes/theme-meta.php:28
+#, php-format
+msgid "Page %s"
+msgstr "Σελίδα %s"
+
+#: includes/theme-setup.php:86
+msgid "Primary Navigation"
+msgstr "Κύρια Πλοήγηση"
+
+#: includes/theme-setup.php:87
+msgid "Top Navigation"
+msgstr "Επάνω Πλοήγηση"
+
+#: includes/theme-setup.php:88
+msgid "Footer Navigation"
+msgstr "Πλοήγηση Υποσέλιδου"
+
+#: includes/theme-setup.php:120
+msgid "Tempera Default Header Image"
+msgstr "Προκαθορισμένη Εικόνα Κεφαλίδας Tempera"
+
+#: includes/theme-setup.php:181
+msgid "Skip to content"
+msgstr "Μετάβαση στο περιεχόμενο"
+
+#: includes/theme-setup.php:212
+msgid "Left sidebar"
+msgstr "Αριστερή πλευρική στήλη"
+
+#: includes/theme-setup.php:223
+msgid "Right sidebar"
+msgstr "Δεξιά πλευρική στήλη"
+
+#: includes/theme-setup.php:232
+msgid "First Footer Area"
+msgstr "Πρώτη Περιοχή Υποσέλιδου"
+
+#: includes/theme-setup.php:234
+msgid "First footer area"
+msgstr "Πρώτη περιοχή υποσέλιδου"
+
+#: includes/theme-setup.php:243
+msgid "Second Footer Area"
+msgstr "Δεύτερη Περιοχή Υποσέλιδου"
+
+#: includes/theme-setup.php:245
+msgid "Second footer area"
+msgstr "Δεύτερη περιοχή υποσέλιδου"
+
+#: includes/theme-setup.php:254
+msgid "Third Footer Area"
+msgstr "Τρίτη Περιοχή Υποσέλιδου"
+
+#: includes/theme-setup.php:256
+msgid "The third footer area"
+msgstr "Τρίτη περιοχή υποσέλιδου"
+
+#: includes/theme-setup.php:265
+msgid "Fourth Footer Area"
+msgstr "Τέταρτη Περιοχή Υποσέλιδου"
+
+#: includes/theme-setup.php:267
+msgid "The fourth footer area"
+msgstr "Τέταρτη περιοχή υποσέλιδου"
+
+#: includes/theme-setup.php:276 includes/theme-setup.php:278
+msgid "Above Content Area"
+msgstr "Πάνω από Περιοχή Περιεχόμενου"
+
+#: includes/theme-setup.php:287 includes/theme-setup.php:289
+msgid "Below Content Area"
+msgstr "Κάτω από Περιοχή Περιεχόμενου"
+
+#: includes/theme-setup.php:298 includes/theme-setup.php:300
+msgid "Header Widgets"
+msgstr "Πρόσθετα Κεφαλίδας"
+
+#: includes/theme-setup.php:313
+#, php-format
+msgid ""
+"Only drag [Cryout Column] widgets here. Recommended size for uploaded "
+"images: %1$dpx (width) x %2$dpx (height). Go to the Tempera Settings page >> "
+"Presentation Page Settings >> Columns to edit sizes and more."
+msgstr ""
+"Μεταφέρετε [Στήλη Cryout] μόνο πρόσθετα  εδώ. Προτεινόμενο μέγεθος για της "
+"ανεβασμένες εικόνες: %1$dpx (πλάτος) x %2$dpx (ύψος). Πηγαίνετε στη σελίδα "
+"Ρυθμίσεις Tempera >> Ρυθμίσεις Σελίδας Παρουσίασης >> Επεξεργασία μεγέθους "
+"και περισσότερων για Στήλες."

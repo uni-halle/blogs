@@ -1,0 +1,2685 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Tempera 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-24 17:47+0200\n"
+"PO-Revision-Date: Fri Sep 25 2015 11:48:09 GMT+0300 (GTB Standard Time)\n"
+"Last-Translator: admin <tech@htx.ro>\n"
+"Language-Team: Cryout Creations\n"
+"Language: Hungarian\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Loco-Target-Locale: hu_HU\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: admin/settings.php:373
+msgid "Latest posts will be loaded into the slider."
+msgstr ""
+
+#: admin/settings.php:377
+msgid "Random posts will be loaded into the slider."
+msgstr ""
+
+#: admin/settings.php:431
+msgid "Title"
+msgstr ""
+
+#: admin/settings.php:573
+msgid "Second Title"
+msgstr ""
+
+#: admin/settings.php:625
+msgid ""
+"Select the general font family and size or insert the Google Font name "
+"you'll use in your blog. This will affect all text except the one controlled "
+"by the options below. "
+msgstr ""
+
+#: admin/settings.php:1283
+msgid ""
+"Excerpts on archive, categroy and search pages. Same as above, only standard "
+"posts will be affected."
+msgstr ""
+
+#: admin/settings.php:1291
+msgid ""
+"The number of words for excerpts. When that number is reached the post will "
+"be interrupted by a <i>Continue reading</i> link that will take the reader "
+"to the full post page."
+msgstr ""
+
+#: admin/settings.php:1513
+msgid "Left side"
+msgstr ""
+
+#: includes/theme-comments.php:102
+msgid "One Comment:"
+msgstr ""
+
+#: 404.php:17
+msgid "Not Found"
+msgstr "Nem található"
+
+#: 404.php:20
+msgid ""
+"Apologies, but the page you requested could not be found. Perhaps searching "
+"will help."
+msgstr "Elnézést, de a kért oldal nem található. Talán keresés fog segíteni."
+
+#: archive.php:26
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "Napi Arhívumok: %s"
+
+#: archive.php:28
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "Havi Arhívumok:\" %s"
+
+#: archive.php:28
+msgid "F Y"
+msgstr "F Y"
+
+#: archive.php:30
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "Éves Arhívumok: %s"
+
+#: archive.php:30
+msgid "Y"
+msgstr "Y"
+
+#: archive.php:32
+msgid "Blog Archives"
+msgstr "Blog Arhívumok"
+
+#: archive.php:56
+#: author.php:71
+#: category.php:49
+#: search.php:38
+msgid "Nothing Found"
+msgstr "Nincs Találat"
+
+#: archive.php:60
+#: author.php:75
+#: category.php:53
+msgid ""
+"Apologies, but no results were found for the requested archive. Perhaps "
+"searching will help find a related post."
+msgstr ""
+"Elnézést, de nem hozott eredményt a találat az archívumban. Talán keresés "
+"segít megtalálni egy kapcsolódó hozzászólást."
+
+#: attachment.php:18
+#, php-format
+msgid "Return to %s"
+msgstr "Vissza: %s"
+
+#: attachment.php:32
+#, php-format
+msgid "Full size is %s pixels"
+msgstr "Teljes méret: %s képpont"
+
+#: attachment.php:35
+msgid "Link to full-size image"
+msgstr "Link a teljes méretű képhez"
+
+#: attachment.php:75
+msgid "Edit"
+msgstr "Szerkesztés"
+
+#: attachment.php:86
+msgid "Continue reading"
+msgstr "Olvasás folytatása"
+
+#: attachment.php:87
+msgid "Pages:"
+msgstr "Oldalak:"
+
+#: attachment.php:92
+msgid "Previous image"
+msgstr "Előző kép"
+
+#: attachment.php:93
+msgid "Next image"
+msgstr "Következő kép"
+
+#: author.php:29
+#, php-format
+msgid "Author Archives: %s"
+msgstr "Szerzői Arhivumok: %s"
+
+#: category.php:20
+#, php-format
+msgid "Category Archives: %s"
+msgstr "Kategória Arhívumok: %s"
+
+#: comments.php:25
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+"Ez a bejegyzés jelszóval védett. Írja be a jelszót, hogy megtekinthesse "
+"hozzászólásokat."
+
+#: comments.php:50
+msgid "Comments are closed"
+msgstr "Hozzászólások lezárva."
+
+#: search.php:18
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Keresés eredmények: %s"
+
+#: search.php:40
+#, php-format
+msgid "No search results for: %s."
+msgstr "Nincs találat a: %s."
+
+#: searchform.php:1
+msgid "Search"
+msgstr "Keresés"
+
+#: sidebar-left.php:26
+msgid "Left Sidebar"
+msgstr "Bal Oldalsáv"
+
+#: sidebar-left.php:28
+#, php-format
+msgid ""
+"You currently have no widgets set in the left sidebar. You can add widgets "
+"via the <a href=\"%s\">Dasboard</a>."
+msgstr ""
+"Jelenleg nincs Widget meg a bal oldali sávon. Akkor adjunk hozzá widgeten "
+"keresztül <a href=\"%s\"> Írányítópult</a>."
+
+#: sidebar-left.php:29
+#, php-format
+msgid ""
+"To hide this sidebar, switch to a different Layout via the <a "
+"href=\"%s\">Theme Settings</a>."
+msgstr ""
+"Elrejteni ezt az oldalsávot, váltani egy másik elrendezés keresztül <a "
+"href=\"%s\"> Téma Beállítások </a>."
+
+#: sidebar-right.php:26
+#: admin/settings.php:1527
+msgid "Right Sidebar"
+msgstr "Jobb Oldalsáv"
+
+#: sidebar-right.php:28
+#, php-format
+msgid ""
+"You currently have no widgets set in the right sidebar. You can add widgets "
+"via the <a href=\"%s\">Dasboard</a>."
+msgstr ""
+"Jelenleg nincs Widget a jobb oldali sávon. Akkor adjunk hozzá Widgeten "
+"keresztül <a href=\"%s\"> Írányítópult</a>"
+
+#: single.php:40
+msgid "View all posts by "
+msgstr "Az összes üzenete"
+
+#: tag.php:21
+#, php-format
+msgid "Tag Archives: %s"
+msgstr "Címke Archivumok: %s"
+
+#: admin/admin-functions.php:62
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+"Mielőtt feltöltheti import fájlt, akkor kell rögzíteni, a következő "
+"hibaüzenet jelenik meg:"
+
+#: admin/admin-functions.php:70
+msgid "Import Tempera Theme Options"
+msgstr "Tempera téma beállításának importálása"
+
+#: admin/admin-functions.php:72
+msgid ""
+"Hi! This is where you import the  Tempera settings.<i> Please remember that "
+"this is still an experimental feature.</i>"
+msgstr ""
+"Szevasz! Ez az, ahol importálja a Tempera beállításokat. <I> Ne feledje, "
+"hogy ez még mindig egy kísérleti megoldás. </ I>"
+
+#: admin/admin-functions.php:74
+msgid "Just choose a file from your computer:"
+msgstr "Csak válassz ki egy fájlt a számítógépről:"
+
+#: admin/admin-functions.php:76
+#, php-format
+msgid "Maximum size: %s"
+msgstr "Maximális méret: %s"
+
+#: admin/admin-functions.php:82
+msgid "And import!"
+msgstr "És import!"
+
+#: admin/admin-functions.php:148
+msgid "Import Tempera Theme Options "
+msgstr "Tempera téma opciók importálás "
+
+#: admin/admin-functions.php:151
+msgid "Great! The options have been imported!"
+msgstr "Nagyszerű! Az opciók importálva lettek!"
+
+#: admin/admin-functions.php:152
+msgid "Go back to the Tempera options page and check them out!"
+msgstr "Menj vissza a Tempera opciók oldalra, és nézd meg őket!"
+
+#: admin/admin-functions.php:155
+#: admin/admin-functions.php:161
+#: admin/admin-functions.php:167
+msgid "Oops, there's a small problem."
+msgstr "Hoppá, van egy kis probléma."
+
+#: admin/admin-functions.php:156
+msgid ""
+"The uploaded file does not contain valid Tempera options. Make sure the file "
+"is exported from the Tempera Options page."
+msgstr ""
+"A feltöltött fájl nem tartalmaz érvényes Tempera opciót. Ellenőrizze, hogy a "
+"fájl exportálható a Tempera  opciói oldalról."
+
+#: admin/admin-functions.php:162
+msgid "The uploaded file could not be read."
+msgstr "A feltöltött fájl nem olvasható."
+
+#: admin/admin-functions.php:168
+msgid ""
+"The uploaded file is not supported. Make sure the file was exported from the "
+"Tempera page and that it is a text file."
+msgstr ""
+"A feltöltött fájl nem támogatott. Ellenőrizze, hogy a fájl exportálták a "
+"Tempera oldalon, és azt hogy ez egy szöveges fájl-e."
+
+#: admin/admin-functions.php:177
+msgid ""
+"Oops! The file is empty or there was no file. This error could also be "
+"caused by uploads being disabled in your php.ini or by post_max_size being "
+"defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+"Hoppá! A fájl üres, vagy nem volt fájl. Ez a hibát akkor okozta "
+"feltöltéseknél hogy tiltva a php.ini vagy post_max_size meghatározása pedig "
+"kisebb, mint upload_max_filesize a php.ini-ben."
+
+#: admin/admin-functions.php:183
+msgid "ERROR: You are not authorised to perform that operation"
+msgstr "HIBA: Nem jogosult a művelet elvégzésére"
+
+#: admin/admin-functions.php:192
+msgid ""
+"Are you sure you want to load a new color scheme? \\nAll current saved "
+"settings under Text and Color Settings will be lost."
+msgstr ""
+"Biztos, hogy be kívánja tölteni egy új színösszeállítást? \\ NMinden "
+"jelenlegi mentett beállítások mellett a szöveget és színek beállítása elvész."
+
+#: admin/admin-functions.php:197
+msgid ""
+"Select one of the preset color schemes and press the Load button.<br> <b> "
+"CAUTION! </b> When loading a color scheme, the Tempera theme settings under "
+"Text and Color Settings will be overriden. All other settings will remain "
+"intact.<br> <u>SUGGESTION:</u> It's always better to export your current "
+"theme settings before loading a color scheme."
+msgstr "Válassza ki az egyik előre beállított színek és nyomja meg a Beolvasás gombot"
+
+#: admin/admin-functions.php:221
+msgid "Load Color Scheme"
+msgstr "Színséma betöltés"
+
+#: admin/admin-functions.php:287
+msgid "No news items."
+msgstr "Nincs hír."
+
+#: admin/admin-functions.php:291
+msgid "Posted on"
+msgstr "\"Közzétet"
+
+#: admin/main.php:114
+msgid "Layout Settings"
+msgstr "Az elrendezés beállításai"
+
+#: admin/main.php:115
+msgid "Header Settings"
+msgstr "Fejléc beállításai"
+
+#: admin/main.php:116
+#: admin/main.php:173
+msgid "Presentation Page"
+msgstr "Prezentációs oldal"
+
+#: admin/main.php:117
+msgid "Text Settings"
+msgstr "Szöveg beállítások"
+
+#: admin/main.php:118
+msgid "Color Settings"
+msgstr "Színek beállítása"
+
+#: admin/main.php:119
+msgid "Graphics Settings"
+msgstr "Grafikus beállítások"
+
+#: admin/main.php:120
+msgid "Post Information Settings"
+msgstr "Bejegyzés információinak beállításai"
+
+#: admin/main.php:121
+msgid "Post Excerpt Settings"
+msgstr "Bejegyzés részleteinek beállítása"
+
+#: admin/main.php:122
+msgid "Featured Image Settings"
+msgstr "Kiemelt kép beállításai"
+
+#: admin/main.php:123
+msgid "Social Media Settings"
+msgstr "Közösségi média beállításai"
+
+#: admin/main.php:124
+msgid "Miscellaneous Settings"
+msgstr "Egyéb beállítások"
+
+#: admin/main.php:127
+msgid "Main Layout"
+msgstr "Honlap elrendezése"
+
+#: admin/main.php:128
+msgid "Content / Sidebar Width"
+msgstr "Tartalom / Oldalsáv szélesség"
+
+#: admin/main.php:129
+msgid "Responsiveness"
+msgstr "Reszponzívitás"
+
+#: admin/main.php:132
+msgid "Enable Presentation Page"
+msgstr "Prezentációs oldal engedélyezése"
+
+#: admin/main.php:133
+msgid "Show Posts on Presentation Page"
+msgstr "Bejegyzések megjelenítése a prezentációs oldalon"
+
+#: admin/main.php:134
+msgid "Slider Settings"
+msgstr "Képlapozó beállításai"
+
+#: admin/main.php:135
+msgid "Slides"
+msgstr "Képlapozó"
+
+#: admin/main.php:136
+msgid "Presentation Page Columns"
+msgstr "Prezentációs Oldal Oszlopai"
+
+#: admin/main.php:137
+msgid "Extras"
+msgstr "Extrák"
+
+#: admin/main.php:140
+msgid "Header Height"
+msgstr "Fejléc magasság"
+
+#: admin/main.php:141
+msgid "Header Image"
+msgstr "Fejléc kép"
+
+#: admin/main.php:142
+msgid "Site Header"
+msgstr "Oldal fejléc"
+
+#: admin/main.php:143
+msgid "Custom Logo Upload"
+msgstr "Egéni Logo feltöltése"
+
+#: admin/main.php:144
+msgid "Header Content Spacing"
+msgstr "Fejléc tartalom térköz"
+
+#: admin/main.php:145
+msgid "FavIcon Upload"
+msgstr "FavIcon feltöltése"
+
+#: admin/main.php:146
+msgid "Header Widget Width"
+msgstr "Fejléc Widget szélesség"
+
+#: admin/main.php:149
+#: admin/settings.php:642
+#: admin/settings.php:661
+#: admin/settings.php:679
+#: admin/settings.php:697
+#: admin/settings.php:718
+msgid "General Font"
+msgstr "Általános betűtípus"
+
+#: admin/main.php:150
+msgid "Post Title Font "
+msgstr "Bejegyzés Címkék betűtípusa"
+
+#: admin/main.php:151
+msgid "Widget Title Font"
+msgstr "Widget Címkék Betűtípusa"
+
+#: admin/main.php:152
+msgid "Site Title Font"
+msgstr "Oldal Címkék betűtípusa"
+
+#: admin/main.php:153
+msgid "Main Menu Font"
+msgstr "Főmenü betűtípus"
+
+#: admin/main.php:154
+msgid "Headings Font"
+msgstr "Fejlécek betűtípusa"
+
+#: admin/main.php:155
+msgid "Force Text Align"
+msgstr "Kiemelt szöveg igazítása"
+
+#: admin/main.php:156
+msgid "Paragraph spacing"
+msgstr "Bekezdés térköze"
+
+#: admin/main.php:157
+msgid "Paragraph Indent"
+msgstr "Bekezdés behúzása"
+
+#: admin/main.php:158
+msgid "Headings Indent"
+msgstr "Fejléc behúzása"
+
+#: admin/main.php:159
+msgid "Line Height"
+msgstr "Sor magassága"
+
+#: admin/main.php:160
+msgid "Word Spacing"
+msgstr "Szóköz"
+
+#: admin/main.php:161
+msgid "Letter Spacing"
+msgstr "Betűköz"
+
+#: admin/main.php:162
+msgid "Uppercase Text"
+msgstr "Nagybetűs szöveg"
+
+#: admin/main.php:166
+msgid "Background Image"
+msgstr "Háttérkép"
+
+#: admin/main.php:167
+msgid "General"
+msgstr "Általános"
+
+#: admin/main.php:168
+msgid "Accents"
+msgstr "Ékezetek"
+
+#: admin/main.php:169
+#: admin/settings.php:840
+msgid "Site Title"
+msgstr "Oldal címkék"
+
+#: admin/main.php:170
+msgid "Main Menu"
+msgstr "Főmenü"
+
+#: admin/main.php:171
+#: admin/main.php:183
+#: admin/settings.php:1505
+msgid "Top Bar"
+msgstr "Felső sáv"
+
+#: admin/main.php:172
+msgid "Content"
+msgstr "Tartalom"
+
+#: admin/main.php:174
+msgid "Sidebar Widgets"
+msgstr "Oldalsáv widgetek"
+
+#: admin/main.php:175
+msgid "Footer Widgets"
+msgstr "Lábléc widgetek"
+
+#: admin/main.php:176
+msgid "Links"
+msgstr "Linke"
+
+#: admin/main.php:177
+msgid "Post metas"
+msgstr "Bejegyzés meta adatok"
+
+#: admin/main.php:178
+msgid "Socials"
+msgstr "Közösségi"
+
+#: admin/main.php:179
+msgid "Caption type"
+msgstr "Képaláírás típus"
+
+#: admin/main.php:184
+msgid "Breadcrumbs"
+msgstr "Zsemlemorzsák"
+
+#: admin/main.php:185
+msgid "Pagination"
+msgstr "Oldalszámozás"
+
+#: admin/main.php:186
+msgid "Menu Alignment"
+msgstr "Menü igazítása"
+
+#: admin/main.php:187
+msgid "Content Margins"
+msgstr "Tartalom margói"
+
+#: admin/main.php:188
+msgid "Post Images Border"
+msgstr "Kép keret bejegyzés"
+
+#: admin/main.php:189
+msgid "Content List Bullets"
+msgstr "Tartalom lista felsorolásjel"
+
+#: admin/main.php:190
+msgid "Page Titles"
+msgstr "Az oldal címe"
+
+#: admin/main.php:191
+msgid "Category Titles"
+msgstr "Kategória címkék"
+
+#: admin/main.php:192
+msgid "Hide Tables"
+msgstr "Táblázatok elrejtése"
+
+#: admin/main.php:193
+msgid "Back to Top button"
+msgstr "Ugrás az oldal tetjére gombra"
+
+#: admin/main.php:196
+msgid "Meta Bar Position"
+msgstr "Meta sáv pozíciója"
+
+#: admin/main.php:197
+msgid "Show on Blog Metas"
+msgstr "Mutassa a blog oldalakon"
+
+#: admin/main.php:198
+msgid "Show on Single Pages"
+msgstr "Mutassa az egyedi oldalakon"
+
+#: admin/main.php:199
+msgid "Text Under Comments"
+msgstr "Jelmagyarázat a hozzászólások doboz alatt"
+
+#: admin/main.php:200
+msgid "Comments are closed text"
+msgstr "Hozzászólások lezárva szövege"
+
+#: admin/main.php:201
+msgid "Comments off"
+msgstr "Hozzászólások kikapcsolva"
+
+#: admin/main.php:204
+msgid "Home Page"
+msgstr "Kezdőlap"
+
+#: admin/main.php:205
+#: admin/settings.php:359
+#: admin/settings.php:455
+msgid "Sticky Posts"
+msgstr "Ragadós bejegyzések"
+
+#: admin/main.php:206
+msgid "Archive and Category Pages"
+msgstr "Összes bejegyzés és kategória oldalak"
+
+#: admin/main.php:207
+msgid "Number of Words for Post Excerpts "
+msgstr "Bejegyzés részleteinke hosssza "
+
+#: admin/main.php:208
+msgid "Magazine Layout"
+msgstr "Magazin elrendezés"
+
+#: admin/main.php:209
+msgid "Excerpt suffix"
+msgstr "Részletek utótag"
+
+#: admin/main.php:210
+msgid "Continue reading link text "
+msgstr "Hivatkozás szövegének további olvasása "
+
+#: admin/main.php:211
+msgid "HTML tags in Excerpts"
+msgstr "HTML címkék kivontatai"
+
+#: admin/main.php:214
+msgid "Featured Images as POST Thumbnails "
+msgstr "Kiemelt képek bejegyzés bélyegképnek"
+
+#: admin/main.php:215
+msgid "Auto Select Images From Posts "
+msgstr "Képek automatikus kiválasztása a bejegyzésekből"
+
+#: admin/main.php:216
+msgid "Thumbnails Alignment "
+msgstr "Bélyegképek igazítása"
+
+#: admin/main.php:217
+msgid "Thumbnails Size "
+msgstr "Bélyegképek mérete"
+
+#: admin/main.php:218
+msgid "Featured Images as HEADER Images "
+msgstr "Kiemelt képek fejléc képnek"
+
+#: admin/main.php:221
+msgid "Link nr. 1"
+msgstr "1. HIVATKOZÁS"
+
+#: admin/main.php:222
+msgid "Link nr. 2"
+msgstr "2. HIVATKOZÁS"
+
+#: admin/main.php:223
+msgid "Link nr. 3"
+msgstr "3. HIVATKOZÁS"
+
+#: admin/main.php:224
+msgid "Link nr. 4"
+msgstr "5. HIVATKOZÁS"
+
+#: admin/main.php:225
+msgid "Link nr. 5"
+msgstr "5. HIVATKOZÁS"
+
+#: admin/main.php:226
+msgid "Socials display"
+msgstr "Közösségi ikonok megjelenítése"
+
+#: admin/main.php:229
+msgid "Internet Explorer Compatibility Tag"
+msgstr "Internet Explorer Kompatibilitási címke"
+
+#: admin/main.php:230
+msgid "Custom Footer Text"
+msgstr "Egyéni szöveg lábléc"
+
+#: admin/main.php:231
+msgid "Custom CSS"
+msgstr "Egyéni css"
+
+#: admin/main.php:232
+msgid "Custom JavaScript"
+msgstr "Egyéni JavaScript"
+
+#: admin/main.php:258
+msgid "Sorry, but you do not have sufficient permissions to access this page."
+msgstr "Sajnáljuk, de nem rendelkezik megfelelő jogosultsággal az oldal eléréséhez."
+
+#: admin/main.php:277
+msgid "Tempera settings updated successfully."
+msgstr "Tempera beállítások sikeresen frissültek."
+
+#: admin/main.php:293
+msgid "Save Changes"
+msgstr "Beállítások mentése"
+
+#: admin/main.php:294
+msgid "Reset to Defaults"
+msgstr "Alapértelmezett beállítások visszaállítása"
+
+#: admin/main.php:326
+msgid "Import/Export Settings"
+msgstr "Import/Export Beállítások"
+
+#: admin/main.php:331
+msgid "Export Theme options"
+msgstr "Téma opciók exportálása"
+
+#: admin/main.php:332
+msgid ""
+"It's that easy: a mouse click away - the ability to export your Tempera "
+"settings and save them on your computer. Feeling safer? You should!"
+msgstr ""
+"Ennyire egyszerű: egy kattintásra van attól, hogy exportálja a Nirvana "
+"beállításait, illetve mentse őket esetleg a számítógépére. Érzi mennyire "
+"egyszerű és biztonságos? Pedig kellene! :)"
+
+#: admin/main.php:337
+msgid "Import Theme options"
+msgstr "Téma  Opciók importálása"
+
+#: admin/main.php:338
+msgid ""
+"Without the import, the export would just be a fool's exercise. Make sure "
+"you have the exported file ready and see you after the mouse click."
+msgstr ""
+"Importálás nélkül, az exportálás csak egy bolond gyakorlat. Így most "
+"használjuk ezt is kicsit. Győződjünk meg róla, hogy az exportálandó fájl "
+"elérhető, és látni lehet, miután a fájlt kiválasztotta a következő lépésben."
+
+#: admin/main.php:343
+msgid "Color Schemes"
+msgstr "Színsémák"
+
+#: admin/main.php:344
+msgid ""
+"A collection of preset color schemes to use as the starting point for your "
+"site. Just load one up and see your blog in a different light."
+msgstr ""
+"A gyűjtemény a beállított színsémát használja, mint egy kiindulási pontot a "
+"webhelyen. Csak töltsél egyet, és láthatod a blogod más fényben."
+
+#: admin/main.php:352
+msgid "Tempera Latest News"
+msgstr "Tempera Sablon legfrissebb hírei"
+
+#: admin/main.php:363
+msgid "Reset Tempera Settings to Defaults?"
+msgstr "Újraindítja az alapértelmezett Tempera beállításokat?"
+
+#: admin/prototypes.php:30
+msgid "or Google font"
+msgstr "vagy Google betű"
+
+#: admin/settings.php:28
+msgid "One column (no sidebars)"
+msgstr "Egy oszlop (nincs oldalsáv)"
+
+#: admin/settings.php:29
+msgid "Two columns, sidebar on the right"
+msgstr "Két oszlop, jobb oldalon az oldalsáv"
+
+#: admin/settings.php:30
+msgid "Two columns, sidebar on the left"
+msgstr "Két oszlop, bal oldalon az oldalsáv"
+
+#: admin/settings.php:31
+msgid "Three columns, sidebars on the right"
+msgstr "Három oszlop, jobb oldalon az oldalsáv"
+
+#: admin/settings.php:32
+msgid "Three columns, sidebars on the left"
+msgstr "Három oszlop, bal oldalon az oldalsáv"
+
+#: admin/settings.php:33
+msgid "Three columns, one sidebar on each side"
+msgstr "Három oszlop, mindkét oldalon az oldalsáv"
+
+#: admin/settings.php:41
+msgid ""
+"Choose your layout. Possible options are: <br> No sidebar, a single sidebar "
+"on either left of right, two sidebars on either left or right and two "
+"sidebars on each side.<br>This can be overriden in pages by using Page "
+"Templates."
+msgstr ""
+"Választási lehetőség az oldal elrendezések közül. A lehetséges beállítási "
+"lehetőségek: <br> Nincs oldalsáv, egy oldalsáv vagy balra vagy jobbra, két "
+"oldalsáv balra vagy jobbra és egy oldalsáv mindkét oldal szélén. <br> Ez "
+"felülírja a használt oldal sablonját, így annak kinézete megváltozik."
+
+#: admin/settings.php:90
+msgid "Content ="
+msgstr "Tartalom ="
+
+#: admin/settings.php:91
+msgid "Sidebar(s) ="
+msgstr "Oldalsáv(ok) ="
+
+#: admin/settings.php:92
+msgid "Total width ="
+msgstr "Teljes Szélesség ="
+
+#: admin/settings.php:99
+msgid ""
+"Select the width of your <b>content</b> and <b>sidebar(s)</b>. When using a "
+"3 columns layout (with 2 sidebars) they will each have half the configured "
+"width."
+msgstr ""
+"Választási lehetőség a <b>tartalom</b> és az <b>oldalsáv(ok)</b> "
+"szélességének megadásához. Ha 3 oszlopos elrendezés van kiválasztva (2 "
+"oldalsávval), akkor minden egyes oszlop a fele a beállított szélességnek."
+
+#: admin/settings.php:108
+#: admin/settings.php:200
+#: admin/settings.php:209
+#: admin/settings.php:749
+#: admin/settings.php:796
+#: admin/settings.php:993
+#: admin/settings.php:1008
+#: admin/settings.php:1109
+#: admin/settings.php:1125
+#: admin/settings.php:1298
+#: admin/settings.php:1327
+#: admin/settings.php:1350
+#: admin/settings.php:1369
+#: admin/settings.php:1418
+#: admin/settings.php:1562
+msgid "Enable"
+msgstr "Bekapcsol"
+
+#: admin/settings.php:108
+#: admin/settings.php:200
+#: admin/settings.php:209
+#: admin/settings.php:749
+#: admin/settings.php:993
+#: admin/settings.php:1008
+#: admin/settings.php:1109
+#: admin/settings.php:1125
+#: admin/settings.php:1298
+#: admin/settings.php:1327
+#: admin/settings.php:1350
+#: admin/settings.php:1369
+#: admin/settings.php:1418
+#: admin/settings.php:1562
+msgid "Disable"
+msgstr "Kikapcsol"
+
+#: admin/settings.php:116
+msgid "Allow zoom"
+msgstr "Nagyítás engedélyezése"
+
+#: admin/settings.php:117
+msgid ""
+"Enable to make Tempera fully responsive. The layout and general sizes of "
+"your blog will adjust depending on what device and what resolution it is "
+"viewed in.<br> Do not disable unless you have a good reason to."
+msgstr ""
+"Engedélyezze, hogy a Tempera teljes mértékben reagáljon. Az elrendezés és az "
+"általános méretű blogja fogja igazítani attól függően, hogy milyen eszközzel "
+"és milyen felbontásban is nézzük. <br> Ne tiltsa le, ha van egy jó ok arra."
+
+#: admin/settings.php:129
+msgid ""
+"Select the header's height. After saving the settings go and upload your new "
+"header image. The header's width will be "
+msgstr ""
+"Válassza ki a fejléc magasságát. A beállítások mentése után mehetsz, és "
+"feltöltheted az új fejléc képet. A fejléc szélessége lesz"
+
+#: admin/settings.php:135
+msgid "Define header image"
+msgstr "Kattintható fejléckép"
+
+#: admin/settings.php:136
+msgid "Center the header image horizontally"
+msgstr "Fejlécképet vízszintesen középre"
+
+#: admin/settings.php:138
+msgid "Keep header image aspect ratio."
+msgstr "Tartsa fejléc kép képarányt."
+
+#: admin/settings.php:139
+msgid ""
+"By default the header has a minimum height set. This option removes that and "
+"the header becomes fully responsive, scalling to any size.<br> Only enable "
+"this if you're <b>not</b> using a logo or site title and description in the "
+"header. "
+msgstr ""
+"Alapértelmezésben a fejlécben van egy minimális magassága sor. Ez a "
+"beállítás eltávolítja, hogy a fejléc lesz teljesen reszponzív, és bármilyen "
+"méretben skálázható. <br> Csak engedélyezze ezt, ha <b> nem </ b> egy logó "
+"vagy helyszíni címet és leírást a fejlécben."
+
+#: admin/settings.php:147
+msgid "Site Title and Description"
+msgstr "Honlap címe és leírása"
+
+#: admin/settings.php:147
+msgid "Custom Logo"
+msgstr "Egyéni logo"
+
+#: admin/settings.php:147
+msgid "Clickable header image"
+msgstr "Kattintható fejléckép"
+
+#: admin/settings.php:147
+msgid "Empty"
+msgstr "Üres"
+
+#: admin/settings.php:149
+msgid "Choose what to display inside your header area."
+msgstr "Annak kiválasztása, hogy mi jelenhet meg a fejléc területen."
+
+#: admin/settings.php:157
+msgid ""
+"Custom Logo upload. The logo will appear over the header image if you have "
+"used one."
+msgstr ""
+"Egyéni logo feltöltés. A logo a fejléc kép fölött jelenik meg, ha használunk "
+"ilyet."
+
+#: admin/settings.php:158
+#: admin/settings.php:175
+#: admin/settings.php:430
+msgid "Select / Upload Image"
+msgstr "Kép Kiválasztása / Feltöltése"
+
+#: admin/settings.php:163
+msgid "top"
+msgstr "fentről"
+
+#: admin/settings.php:164
+msgid "left"
+msgstr "balról"
+
+#: admin/settings.php:165
+msgid ""
+"Select the top and left spacing for the header content. Use it to better "
+"position your site title and description or custom logo inside the header. "
+msgstr ""
+"Válasszuk ki a felső és a bal térköz méretét a fejléc tartalmához. Azért, "
+"hogy jobb helyzetbe kerülhessen a webhely címe és leírása, vagy az egyedi "
+"logo a fejléc belsejében. "
+
+#: admin/settings.php:174
+msgid ""
+"Limitations: It has to be an image. It should be max 64x64 pixels in "
+"dimensions. Recommended file extensions .ico and .png. <br> <strong>Note "
+"that some browsers do not display the changed favicon instantly.</strong>"
+msgstr ""
+"Korlátozások: Azt, hogy egy kép. Meg kell max 64x64 pixel méretben. Ajánlott "
+"fájlkiterjesztések Ico és .png. <br> <strong> Ne feledje, hogy egyes "
+"böngészők nem jelenítik meg a megváltozott favicont azonnal. </ strong>"
+
+#: admin/settings.php:184
+msgid "60%"
+msgstr "60%"
+
+#: admin/settings.php:184
+msgid "50%"
+msgstr "50%"
+
+#: admin/settings.php:184
+msgid "33%"
+msgstr "33%"
+
+#: admin/settings.php:184
+msgid "25%"
+msgstr "25%"
+
+#: admin/settings.php:186
+msgid ""
+"Limit the header widget area max width as percentage of the entire header "
+"width."
+msgstr ""
+"Korlátozható a fejléc widget terület maximum szélessége százalékában, az "
+"egész fejléc szélességéhez képest."
+
+#: admin/settings.php:202
+msgid ""
+"Enable the presentation front-page. This will become your new home page. "
+"<br> If you want another page to hold your latest blog posts, choose 'Blog "
+"Template (Posts Page)' from Page Templates while creating or editing that "
+"page."
+msgstr ""
+"Engedélyezi az első oldalas bemutatót. Ez lesz az új honlapon. <br> 		 Ha "
+"szeretne egy másik oldalon, hogy tartsa a legfrissebb blogbejegyzéseket, "
+"akkor válassza a' Blog Template (hozzászólás Oldal)' a lap sablon készítése "
+"közben vagy szerkesztése az oldalon."
+
+#: admin/settings.php:211
+msgid ""
+"Enable to display latest posts on the presentation page, below the columns. "
+"Sticky posts are always displayed and not counted."
+msgstr ""
+"Engedélyezze megjelenítéséhez legújabb hozzászólásokat a bemutató oldal, "
+"lent az oszlopokat. Sticky hozzászólások mindig megjelenik, és nem "
+"számítanak."
+
+#: admin/settings.php:213
+msgid "Show:"
+msgstr "Mutat:"
+
+#: admin/settings.php:215
+msgid "posts"
+msgstr "hozzászólások"
+
+#: admin/settings.php:216
+msgid ""
+"The number of posts to show on the Presentation Page. The same number of "
+"posts will be loaded with the <em>More Posts</em> button."
+msgstr ""
+"Az álláshelyek számát mutatják a bemutató oldalon. Az azonos számú álláshely "
+"betöltésére a <em> több hozzászólás </ em> gomb."
+
+#: admin/settings.php:219
+msgid "Posts per row:"
+msgstr "Hozzászólások soronként:"
+
+#: admin/settings.php:236
+msgid "Slider Dimensions:"
+msgstr "Képlapozó méretei:"
+
+#: admin/settings.php:237
+msgid "width"
+msgstr "szélesség"
+
+#: admin/settings.php:238
+msgid "height"
+msgstr "magasság"
+
+#: admin/settings.php:239
+msgid "The dimensions of your slider. Make sure your images are of the same size."
+msgstr "A méretezi a csúszkát. Győződjön meg róla képek az azonos méretűek."
+
+#: admin/settings.php:241
+msgid "Animation:"
+msgstr "Animáció:"
+
+#: admin/settings.php:243
+msgid "Random"
+msgstr "Véletlen"
+
+#: admin/settings.php:243
+msgid "Fold"
+msgstr "Hajtás"
+
+#: admin/settings.php:243
+msgid "Fade"
+msgstr "Halványulás"
+
+#: admin/settings.php:243
+msgid "SlideInRight"
+msgstr "Csúsztatás jobbra"
+
+#: admin/settings.php:243
+msgid "SlideInLeft"
+msgstr "Csúsztatás balra"
+
+#: admin/settings.php:243
+msgid "SliceDown"
+msgstr "Szeletelés lefelé"
+
+#: admin/settings.php:243
+msgid "SliceDownLeft"
+msgstr "Szeletelés balra"
+
+#: admin/settings.php:243
+msgid "SliceUp"
+msgstr "Szeletelés fel"
+
+#: admin/settings.php:243
+msgid "SliceUpLeft"
+msgstr "Szeletelés felfelé balra"
+
+#: admin/settings.php:243
+msgid "SliceUpDown"
+msgstr "Szeletelés fent és lent"
+
+#: admin/settings.php:243
+msgid "SliceUpDownLeft"
+msgstr "Szeletelés fent és lent balra"
+
+#: admin/settings.php:243
+msgid "BoxRandom"
+msgstr "Véletlenszerű négyzet"
+
+#: admin/settings.php:243
+msgid "BoxRain"
+msgstr "Négyzet eső"
+
+#: admin/settings.php:243
+msgid "BoxRainReverse"
+msgstr "Négyzet eső visszafelé"
+
+#: admin/settings.php:243
+msgid "BoxRainGrow"
+msgstr "Növekvő négyzet eső"
+
+#: admin/settings.php:243
+msgid "BoxRainGrowReverse"
+msgstr "Növekvő négyzet eső visszafelé"
+
+#: admin/settings.php:252
+msgid "The transition effect of your slides."
+msgstr "A dia átmenetek hatása."
+
+#: admin/settings.php:254
+msgid "Animation Time:"
+msgstr "Animációs idő:"
+
+#: admin/settings.php:255
+#: admin/settings.php:259
+msgid "milliseconds"
+msgstr "milliszekundum"
+
+#: admin/settings.php:256
+msgid "The time in which the transition animation will take place."
+msgstr "Az az idő, amelyben az átmenet animációra kerül sor."
+
+#: admin/settings.php:258
+msgid "Pause Time:"
+msgstr "Szünet idő:"
+
+#: admin/settings.php:260
+msgid "The time in which a slide will be still and visible."
+msgstr "Az időt, amely a slide lesz még látható."
+
+#: admin/settings.php:262
+msgid "Slider navigation:"
+msgstr "Képlapozó navigáció:"
+
+#: admin/settings.php:264
+msgid "Numbers"
+msgstr "Számok"
+
+#: admin/settings.php:264
+msgid "Bullets"
+msgstr "Golyók"
+
+#: admin/settings.php:264
+msgid "None"
+msgstr "Semmi"
+
+#: admin/settings.php:272
+msgid "Your slider navigation type. Shown under the slider."
+msgstr "A képlapozó navigációs eszköz típusa. A képlapozó alatt található."
+
+#: admin/settings.php:274
+msgid "Slider arrows:"
+msgstr "\"Képlapozó nyilak:"
+
+#: admin/settings.php:276
+msgid "Always Visible"
+msgstr "Mindig látható"
+
+#: admin/settings.php:276
+msgid "Visible on Hover"
+msgstr "Aktiválásra előtűnik"
+
+#: admin/settings.php:276
+msgid "Hidden"
+msgstr "Rejtett"
+
+#: admin/settings.php:284
+msgid "The Left and Right arrows on your slider"
+msgstr "A bal és jobb oldali nyilak a képlapozóban."
+
+#: admin/settings.php:286
+msgid "Slider Border Width:"
+msgstr "Képlapozó keretének szélessége:"
+
+#: admin/settings.php:287
+#: admin/settings.php:291
+msgid "px"
+msgstr "px"
+
+#: admin/settings.php:288
+msgid ""
+"The slider's border width. You can also edit its color from the Color "
+"Settings. Use a border width when your slider is smaller than the total site "
+"width."
+msgstr ""
+"A csúszka keretvastagságot. Ön is szerkesztheti a színt a Szín Beállításokat."
+" Használjon keretvastagságot amikor a csúszkát kisebb, mint a teljes telek "
+"szélessége."
+
+#: admin/settings.php:290
+msgid "Slider Top Margin:"
+msgstr "Képlapozó fenti margó"
+
+#: admin/settings.php:292
+msgid ""
+"Add a top margin for the slider. By default this margin is 0 and you will "
+"want to increase this value when the width of the slider is smaller than the "
+"total width of the site."
+msgstr ""
+"Hozzáad a felső margóhoz egy képlapozót. Alapértelmezésben ez a margó 0 és "
+"akkor szeretnénk növelni ezt az értéket, ha a szélessége a csúszkát kisebb, "
+"mint a teljes szélessége az oldalnak."
+
+#: admin/settings.php:359
+msgid "Custom Slides"
+msgstr "Egyéni képlapozó"
+
+#: admin/settings.php:359
+#: admin/settings.php:455
+msgid "Latest Posts"
+msgstr "Legfrissebb hozzászólás"
+
+#: admin/settings.php:359
+#: admin/settings.php:455
+msgid "Random Posts"
+msgstr "Véletlen hozzászólás"
+
+#: admin/settings.php:359
+#: admin/settings.php:455
+msgid "Latest Posts from Category"
+msgstr "Legfrisebb hozzászólás a kategóriából"
+
+#: admin/settings.php:359
+#: admin/settings.php:455
+msgid "Random Posts from Category"
+msgstr "Véletlen hozzászólás a kategóriából"
+
+#: admin/settings.php:359
+#: admin/settings.php:455
+msgid "Specific Posts"
+msgstr "Különleges hozzászólás"
+
+#: admin/settings.php:359
+#: admin/settings.php:455
+msgid "Disabled"
+msgstr "Tiltott"
+
+#: admin/settings.php:368
+msgid ""
+"Only the slides with a defined image will become active and visible in the "
+"live slider.<br>When using slides from posts, make sure the selected posts "
+"have featured images.<br>Read the FAQs for more info."
+msgstr ""
+"Csak a diáknál egy meghatározott kép lesz aktív és látható az élő csúszkánál."
+" <br> Amikor használsz hozzászólást a diáknál, akkor a kiválasztott "
+"hozzászólásnál szerepelnek a képek. <br> Olvassa el a GYIK-et további "
+"infóért."
+
+#: admin/settings.php:381
+msgid "Latest posts from the category you choose will be loaded in the slider."
+msgstr "Legutóbbi bejegyzések amelyek betöltődnek a képlapozóban."
+
+#: admin/settings.php:385
+msgid "Random posts from the category you choose will be loaded into the slider."
+msgstr "Véletlenszerű bejegyzések fognak kerülni a képlapozóba."
+
+#: admin/settings.php:389
+msgid "Only sticky posts will be loaded into the slider."
+msgstr "Csak a ragadós bejegyzések fognak kerülni a képlapozóba."
+
+#: admin/settings.php:393
+#: admin/settings.php:489
+msgid "List the post IDs you want to display (separated by a comma): "
+msgstr ""
+"Megjeleníteni kívánt bejegyzések ID azonosítóinak felsorolása (vesszővel "
+"elválasztva):"
+
+#: admin/settings.php:398
+#: admin/settings.php:499
+msgid "<br> Choose the category: "
+msgstr "<br> Kategória választása:"
+
+#: admin/settings.php:400
+#: admin/settings.php:501
+msgid "Select Category"
+msgstr "Kategória kiválasztása"
+
+#: admin/settings.php:414
+#: admin/settings.php:515
+msgid "Number of posts to show:"
+msgstr "A megjelenítendő bejegyzések száma:"
+
+#: admin/settings.php:425
+msgid "Slide"
+msgstr "Diakép"
+
+#: admin/settings.php:427
+#: content/content-image.php:26
+msgid "Image"
+msgstr "Kép"
+
+#: admin/settings.php:434
+msgid "Text"
+msgstr "Címke"
+
+#: admin/settings.php:437
+msgid "Link"
+msgstr "Hivatkozás"
+
+#: admin/settings.php:455
+msgid "Widget Columns"
+msgstr "Widget oszlopok"
+
+#: admin/settings.php:464
+msgid ""
+"Only the columns with a defined image will become active and visible on the "
+"presentation page.<br>When using columns from posts, make sure the selected "
+"posts have featured images.<br>Read the FAQs for more info."
+msgstr ""
+"Csak az oszlopoknál egy meghatározott kép lesz aktív, és látható a bemutató "
+"oldalon. <br> Amikor oszlopoknál hozzászólást használsz, akkor a "
+"kiválasztott hozzászólásoknál szerepelnek a képek. <br> Olvassa el a GYIK-et "
+"további infóért."
+
+#: admin/settings.php:469
+msgid "Latest posts will be loaded into the columns."
+msgstr "Legutóbbi bejegyzések fognak betöltődni az oszlopokba."
+
+#: admin/settings.php:473
+msgid "Random posts will be loaded into the columns."
+msgstr "Véletlen bejegyzések fognak betöltődni az oszlopokba"
+
+#: admin/settings.php:477
+msgid "Latest posts from the category you choose will be loaded in the columns."
+msgstr ""
+"Legutóbbi bejegyzések fognak betöltődni a megadott kategóriából az "
+"oszlopokba."
+
+#: admin/settings.php:481
+msgid "Random posts from the category you choose will be loaded into the columns."
+msgstr ""
+"Véletlenszerű bejegyzések fognak kerülni a megadott kategóriából az "
+"oszlopokba."
+
+#: admin/settings.php:485
+msgid "Only sticky posts will be loaded into the columns."
+msgstr "Csak a ragadós bejegyzések fognak betöltődni az oszlopokba."
+
+#: admin/settings.php:494
+msgid ""
+"Load your custom Widgets as columns. Go to <a>Appearance >> Widgets</a> and "
+"create your custom columns using the Columns widget. You can use as many as "
+"you want."
+msgstr ""
+"Betölteni az egyéni widgeteket mint oszlopokat. Lépj <a> Megjelenés >> "
+"widgetek </a> és létrehozhat egyéni oszlopok segítségével oszlopok widget. "
+"Használhatja annyi, amennyit csak akar."
+
+#: admin/settings.php:523
+msgid "Column Display:"
+msgstr "Oszlop mutatása:"
+
+#: admin/settings.php:525
+msgid "Animated"
+msgstr "Animált"
+
+#: admin/settings.php:525
+msgid "Static on Image"
+msgstr "Statikus kép"
+
+#: admin/settings.php:525
+msgid "Static under Image"
+msgstr "Statikus kép alatt"
+
+#: admin/settings.php:533
+msgid "How to display your Presentation Page Columns."
+msgstr "Hogyan lehet megjeleníteni a bemutató oldal oszlopait."
+
+#: admin/settings.php:535
+msgid "Columns per row:"
+msgstr "Oszlopok soronként:"
+
+#: admin/settings.php:545
+msgid "Image Size:"
+msgstr "Kép méret:"
+
+#: admin/settings.php:546
+msgid "Height: "
+msgstr "Magasság"
+
+#: admin/settings.php:547
+msgid "Width: "
+msgstr "Szélesség:"
+
+#: admin/settings.php:548
+msgid ""
+"The sizes for your column images. The width is dependent on total site width "
+"and not configurable."
+msgstr ""
+"Az oszlop képek méretezése. A szélesség függ a teljes szélességtől és az "
+"oszlopok számától soronként, így ez nem konfigurálható."
+
+#: admin/settings.php:550
+msgid "Read more text:"
+msgstr "Tudjon meg többet erről"
+
+#: admin/settings.php:553
+msgid ""
+"The linked text that appears at the bottom of each column. Leave empty to "
+"hide the link."
+msgstr ""
+"A linkelt megjelenő szöveg alján minden oszlopnál. Hagyja üresen, hogy "
+"elrejtse a kapcsolatot."
+
+#: admin/settings.php:562
+msgid "Extra Text"
+msgstr "Extra szöveg"
+
+#: admin/settings.php:564
+msgid "Text for the Presentation Page"
+msgstr "Bemutató oldal szövegje"
+
+#: admin/settings.php:565
+msgid ""
+"More text for the Presentation Page. The top title is just below the slider, "
+"the second title is below the columns. A text area supporting HTML tags and "
+"shortcodes below each title<br>It's all optional so leave any input field "
+"empty to not dispaly it."
+msgstr ""
+"Több szöveg bemutató oldalnál. A felső címke alatt a diákat, a második címke "
+"alatt az oszlopokat. A szöveges terület támogatása HTML tag-ek és shortcodes "
+"alatti minden cím <br> Ez a szolgáltatás választható, így a beviteli mezőt "
+"üresen nem jeleníti meg."
+
+#: admin/settings.php:568
+msgid "Top Title"
+msgstr "Címke felül"
+
+#: admin/settings.php:570
+msgid "Top Text"
+msgstr "Szöveg felül"
+
+#: admin/settings.php:575
+msgid "Second text"
+msgstr "Második szöveg"
+
+#: admin/settings.php:578
+msgid "Hide areas"
+msgstr "Terület elrejtése"
+
+#: admin/settings.php:580
+msgid "Choose the areas to hide on the first page."
+msgstr "Válassza ki a területeket, hogy elrejtse az nyitó lapon."
+
+#: admin/settings.php:591
+msgid "Hide the header area (logo/title and/or image/empty area)."
+msgstr "Fejléc terület elrejtése (logo/cím és/vagy kép/üres terület)."
+
+#: admin/settings.php:594
+msgid "Hide the main menu and the top menu."
+msgstr "Főmenü és a felső menü elrejtése."
+
+#: admin/settings.php:597
+msgid "Hide the footer widgets. "
+msgstr "Lábléc widgetek elrejtése. "
+
+#: admin/settings.php:600
+msgid "Hide the footer (copyright area)."
+msgstr "Lábléc elrejtése (copyright terület)"
+
+#: admin/settings.php:644
+msgid ""
+"Select the font family and size or insert the Google Font name you want for "
+"your titles. It will affect post titles and page titles. Leave 'General "
+"Font' and the general font values you selected will be used."
+msgstr ""
+"Válassza ki a betűtípust és méretet, vagy helyezze be a Google Betűtípusnév "
+"szeretne a címeket. Ez hatással lesz poszt címek és az oldal címe. Hagyd "
+"'Általános Betűtípust' és az általános font értékeket kiválasztásakor fogjuk "
+"használni."
+
+#: admin/settings.php:663
+msgid ""
+"Select the font family and size or insert the Google Font name you want your "
+"widget titles to have. Leave 'General Font' and the general font values you "
+"selected will be used."
+msgstr ""
+"Válassza ki a betűtípust és méretet, vagy helyezze be a Google betűtípus "
+"kívánt nevet a kütyü, hogy van. Hagyd Általános betűtípus \"és az általános "
+"font értékek kiválasztott fogják használni."
+
+#: admin/settings.php:681
+msgid ""
+"Select the font family and size or insert the Google Font name you want your "
+"site title and tagline to use. Leave 'General Font' and the general font "
+"values you selected will be used."
+msgstr ""
+"Válassza ki a betűtípust és méretet, vagy helyezze be a Google Betűtípusnév "
+"szeretné honlapján cím és szlogent használni. Hagyd Általános betűtípus \"és "
+"az általános font értékek kiválasztott fogják használni."
+
+#: admin/settings.php:699
+msgid ""
+"Select the font family and size or insert the Google Font name you want your "
+"main menu to use. Leave 'General Font' and the general font values you "
+"selected will be used."
+msgstr ""
+"Válassza ki a betűtípust és méretet, vagy helyezze be a Google betűtípus "
+"kívánt nevet a főmenü használni. Hagyd Általános betűtípus \"és az általános "
+"font értékek kiválasztott fogják használni."
+
+#: admin/settings.php:720
+msgid ""
+"Select the font family and size or insert the Google Font name you want your "
+"headings to have (h1 - h6 tags will be affected). Leave 'General Font' and "
+"the general font values you selected will be used."
+msgstr ""
+"Válassza ki a betűtípust és méretet, vagy helyezze be a Google betűtípus "
+"kívánt nevet a fejlécek, hogy (H1 - H6 tag fogja érinteni). Hagyja "
+"\"Általános betűtípus\" és az általános betűméret értékek kiválasztott fogják "
+"használni."
+
+#: admin/settings.php:728
+#: admin/settings.php:769
+#: admin/settings.php:779
+msgid "Default"
+msgstr "Alapértelmezett"
+
+#: admin/settings.php:728
+#: admin/settings.php:1022
+#: admin/settings.php:1385
+msgid "Left"
+msgstr "Balra"
+
+#: admin/settings.php:728
+#: admin/settings.php:1022
+#: admin/settings.php:1385
+msgid "Right"
+msgstr "Jobbra"
+
+#: admin/settings.php:728
+msgid "Justify"
+msgstr "Sorkizárt"
+
+#: admin/settings.php:728
+#: admin/settings.php:1022
+#: admin/settings.php:1385
+msgid "Center"
+msgstr "Középre"
+
+#: admin/settings.php:730
+msgid ""
+"This overwrites the text alignment in posts and pages. Leave 'Default' for "
+"normal settings (alignment will remain as declared in posts, comments etc.)."
+msgstr ""
+"Ez felülírja a szöveg igazítását a hozzászólásokban és oldalaknál. Elhagyja "
+"az \"Alapértelmezett\" normál beállításokat (beállítás marad bejelentett "
+"hozzászólás, és kommentár stb)."
+
+#: admin/settings.php:740
+msgid "Choose the indent for your paragraphs."
+msgstr "Válassza ki a francia a bekezdéseket."
+
+#: admin/settings.php:751
+msgid "Disable the default headings indent (left margin)."
+msgstr "Az alapértelmezett francia fejezetek (bal margó) letiltása."
+
+#: admin/settings.php:761
+msgid "Text line height. The height between 2 rows of text."
+msgstr "Szöveg magassága. A magasság között 2 soros szöveg."
+
+#: admin/settings.php:771
+msgid ""
+"The space between <i>words</i>. Leave 'Default' for normal settings (size "
+"value will be as set in the CSS)."
+msgstr ""
+"A tér között <i> szót </ i>. Hagyd \"Default\" normál beállítások (méret érték "
+"lesz ahogy a CSS)."
+
+#: admin/settings.php:781
+msgid ""
+"The space between <i>letters</i>. Leave 'Default' for normal settings (size "
+"value will be as set in the CSS)."
+msgstr ""
+"A tér között <i> betűk </ i>. Hagyd \"Default\" normál beállítások (méret "
+"érték lesz ahogy a CSS)."
+
+#: admin/settings.php:789
+msgid "Select the spacing between the paragraphs."
+msgstr "Válassza ki a térközt a bekezdések között."
+
+#: admin/settings.php:796
+msgid "Default (disabled)"
+msgstr "Alapértlemezett (tiltva)"
+
+#: admin/settings.php:798
+msgid "Enable uppercase text styling. All text in the site will be uppercase."
+msgstr ""
+"Engedélyezze a nagybetűs szöveg formázását. Minden szöveg az oldalon lesz "
+"nagybetűs."
+
+#: admin/settings.php:806
+msgid "Define background image"
+msgstr "Háttér kép meghatározása"
+
+#: admin/settings.php:811
+#: admin/settings.php:837
+#: admin/settings.php:862
+#: admin/settings.php:890
+#: admin/settings.php:902
+msgid "Background:"
+msgstr "Háttér"
+
+#: admin/settings.php:812
+msgid "Header Background"
+msgstr "Fejléc háttér"
+
+#: admin/settings.php:813
+msgid "Main Site Background"
+msgstr "Fő oldal háttér"
+
+#: admin/settings.php:814
+msgid "Footer Widgets Area Background"
+msgstr "Lábléc területek háttér területe"
+
+#: admin/settings.php:815
+msgid "Footer Background"
+msgstr "Lábléc háttér"
+
+#: admin/settings.php:816
+#: admin/settings.php:839
+#: admin/settings.php:864
+#: admin/settings.php:893
+#: admin/settings.php:905
+msgid "Text:"
+msgstr "Szöveg"
+
+#: admin/settings.php:817
+msgid "General Text"
+msgstr "Általános szöveg"
+
+#: admin/settings.php:818
+msgid "General Lighter Text"
+msgstr "Általános világos szöveg"
+
+#: admin/settings.php:819
+msgid "Footer Text"
+msgstr "Lábléc szöveg"
+
+#: admin/settings.php:820
+msgid ""
+"The site background features 4 separately coloured areas.<br />The general "
+"text colour applies to all text on the website that is not controlled by any "
+"other option."
+msgstr ""
+"A webhely hátterének jellemzői 4 külön színes területeknek. <br /> Az "
+"általános szöveg színét az összes szöveget a honlapon, hogy nem ellenőrzi a "
+"más választott opció."
+
+#: admin/settings.php:825
+msgid "Accent Color #1"
+msgstr "Kiemelőszín # 1"
+
+#: admin/settings.php:826
+msgid "Accent Color #2"
+msgstr "Kiemelőszín # 2"
+
+#: admin/settings.php:827
+msgid "Accent Color #3"
+msgstr "Kiemelőszín # 3"
+
+#: admin/settings.php:828
+msgid "Accent Color #4"
+msgstr "Kiemelőszín # 4"
+
+#: admin/settings.php:829
+msgid "Accent Color #5"
+msgstr "Kiemelőszín # 5"
+
+#: admin/settings.php:830
+msgid ""
+"Accents #1 and #2 should either be the same as the link colours or be "
+"separate from all other colours on the site.<br />\n"
+"     Accent #5 is used for input fields and buttons backgrounds, borders and "
+"lines.<br />\n"
+"     Accents #3 and #4 should be the lighter/darker than the content "
+"background colour, being used as borders/shades on elements where accent #5 "
+"is background colour."
+msgstr ""
+"Ékezetek # 1 és # 2 vagy ki kell egyeznie a linket színek, vagy elkülönül az "
+"összes többi szín az oldalon. <br />  N Accent # 5 használják beviteli mezők "
+"és gombok hátterek, határok és a vonalak. <br />  NAkcentusok # 3 és # 4 "
+"legyen világosabb / sötétebb, mint a tartalmi háttér színét, használják "
+"határok / árnyalatok elemek, ahol akcentussal # 5 háttérszín."
+
+#: admin/settings.php:838
+msgid "Site Description Background"
+msgstr "Honlap leírásának Háttere"
+
+#: admin/settings.php:841
+msgid "Site Description"
+msgstr "Oldal leírása"
+
+#: admin/settings.php:847
+msgid "Menu:"
+msgstr "Menü:"
+
+#: admin/settings.php:848
+msgid "Menu Background"
+msgstr "Menü háttér"
+
+#: admin/settings.php:849
+msgid "Menu Text"
+msgstr "Menü Szöveg"
+
+#: admin/settings.php:852
+msgid "Submenu:"
+msgstr "Almenü:"
+
+#: admin/settings.php:853
+msgid "Submenu Background"
+msgstr "Almenü háttér"
+
+#: admin/settings.php:854
+msgid "Submenu Text"
+msgstr "Almenü szöveg"
+
+#: admin/settings.php:855
+msgid "Submenu Shadow"
+msgstr "Almenü árnyéka"
+
+#: admin/settings.php:857
+msgid "These colours apply to the main site menu (and dropdown elements)."
+msgstr "Ezeket a színek vonatkoznak a főoldal menüjére (és a legördülő elemekre)"
+
+#: admin/settings.php:863
+msgid "Top Bar Background"
+msgstr "Felső sáv háttere"
+
+#: admin/settings.php:865
+msgid "Top Bar Menu Link"
+msgstr "Felső sáv menü hivatkozás"
+
+#: admin/settings.php:866
+msgid "Top Bar Menu Link Hover"
+msgstr "Felső sáv aktivált menü hivatkozás"
+
+#: admin/settings.php:867
+msgid "These colours apply to the top bar menu."
+msgstr "Ezek a színek vonatkoznak a felső menüre is."
+
+#: admin/settings.php:872
+msgid "Content Background"
+msgstr "Tartalom háttere"
+
+#: admin/settings.php:873
+msgid "Page/Post Title"
+msgstr "Bejegyzés/oldal címkéje"
+
+#: admin/settings.php:874
+msgid "Page/Post Title Hover"
+msgstr "Oldal/Bejegyzés aktivált címe"
+
+#: admin/settings.php:875
+msgid "Content Headings"
+msgstr "Fejlécek tartalma"
+
+#: admin/settings.php:876
+msgid "Content colours apply to post and page areas of the site."
+msgstr "Tartalom színeket alkalmazza, állítsa be a bejegyzés és oldal területein."
+
+#: admin/settings.php:881
+msgid "Titles Color"
+msgstr "Címke szín"
+
+#: admin/settings.php:882
+msgid "Slider Border Color"
+msgstr "Képlapozó háttér szín"
+
+#: admin/settings.php:883
+msgid "Slider Caption Text Color"
+msgstr "Képlapozó képaláírás szövegének színe"
+
+#: admin/settings.php:884
+msgid "Slider Caption Background"
+msgstr "Képlapozó keretének színe"
+
+#: admin/settings.php:885
+msgid "These colours apply to specific areas of the presentation page."
+msgstr ""
+"Ezeket a színeket a prezentációs oldal specifikus területekhez lehet "
+"beállítani."
+
+#: admin/settings.php:891
+msgid "Sidebars Background"
+msgstr "Oldalsáv háttere"
+
+#: admin/settings.php:892
+msgid "Sidebars Widget Title Background"
+msgstr "Oldalsáv widget címének háttere"
+
+#: admin/settings.php:894
+msgid "Sidebars Text"
+msgstr "Oldalsáv szövege"
+
+#: admin/settings.php:895
+msgid "Sidebars Widget Title Text"
+msgstr "Oldalsáv widget címének szövege"
+
+#: admin/settings.php:896
+msgid "These colours apply to the widgets placed in either sidebar."
+msgstr "Ezeket a színeket az oldalsáv widget területekhez lehet beállítani."
+
+#: admin/settings.php:903
+msgid "Footer Widgets Background"
+msgstr "Lábléc widgetek háttere"
+
+#: admin/settings.php:904
+msgid "Footer Widgets Title Background"
+msgstr "Lábléc widget címének háttere"
+
+#: admin/settings.php:906
+msgid "Footer Widget Text"
+msgstr "Lábléc widget szövege"
+
+#: admin/settings.php:907
+msgid "Footer Widgets Title Text"
+msgstr "Lábléc widget címének szövege"
+
+#: admin/settings.php:908
+msgid "These colours apply to the widgets in the footer area."
+msgstr "Ezeket a színeket az lábléc widget területek területeihez lehet beállítani."
+
+#: admin/settings.php:913
+msgid "General:"
+msgstr "Általános:"
+
+#: admin/settings.php:914
+msgid "General Links"
+msgstr "Általános Hivatkozások"
+
+#: admin/settings.php:915
+msgid "General Links Hover"
+msgstr "Általános aktivált hivatkozások"
+
+#: admin/settings.php:916
+msgid "Sidebar Widgets:"
+msgstr "Oldalsáv widgetek:"
+
+#: admin/settings.php:917
+msgid "Sidebar Widgets Links"
+msgstr "Oldalsáv widget hivatkozások"
+
+#: admin/settings.php:918
+msgid "Sidebar Widgets Links Hover"
+msgstr "Oldalsáv widgetek aktívált hivatkozásai"
+
+#: admin/settings.php:919
+msgid "Footer Widgets:"
+msgstr "Lábléc widgetek:"
+
+#: admin/settings.php:920
+msgid "Footer Widgets Links"
+msgstr "Lábléc widgetek hivatkozásai"
+
+#: admin/settings.php:921
+msgid "Footer Widgets Links Hover"
+msgstr "Lábléc widgetek aktivált hivatkozásai"
+
+#: admin/settings.php:922
+msgid "Footer:"
+msgstr "Lábléc:"
+
+#: admin/settings.php:923
+msgid "Footer Links"
+msgstr "Lábléc hivatkozások"
+
+#: admin/settings.php:924
+msgid "Footer Links Hover"
+msgstr "Lábléc aktivált hivatkozások"
+
+#: admin/settings.php:925
+msgid "Footer colours include the footer menu colours."
+msgstr "Lábléc színek tartalmazzák a lábléc menü színét is."
+
+#: admin/settings.php:930
+msgid "Meta Icons"
+msgstr "Meta ikonok"
+
+#: admin/settings.php:931
+msgid "Meta Links"
+msgstr "Meta hivatkozások"
+
+#: admin/settings.php:932
+msgid "Meta Links Hover"
+msgstr "Aktivált Meta hivatkozások"
+
+#: admin/settings.php:933
+msgid "Colours for your meta area (post information)."
+msgstr "Meta terület színei (bejegyzés információ)."
+
+#: admin/settings.php:938
+msgid "Social Icons Background"
+msgstr "Közösségi ikonok háttere"
+
+#: admin/settings.php:939
+msgid "Social Icons Background Hover"
+msgstr "Aktivált közösségi ikonok háttere"
+
+#: admin/settings.php:940
+msgid "Background colours for your social icons."
+msgstr "Közösségi ikonok hátterének színei"
+
+#: admin/settings.php:946
+msgid "Light"
+msgstr "Világos"
+
+#: admin/settings.php:946
+msgid "Dark"
+msgstr "Sötét"
+
+#: admin/settings.php:946
+msgid "Simple"
+msgstr "Egyszerű"
+
+#: admin/settings.php:954
+msgid ""
+"This setting changes the look of your captions. Images that are not inserted "
+"through captions will not be affected."
+msgstr ""
+"Ez a beállítás megváltoztatja a kinézetét a feliratokat. Képek, tehát nem "
+"töltötték be a feliratokat és nem fogja érinteni."
+
+#: admin/settings.php:967
+msgid "Normal"
+msgstr "Normális"
+
+#: admin/settings.php:967
+msgid "Fixed"
+msgstr "Rögzített"
+
+#: admin/settings.php:967
+#: admin/settings.php:1062
+#: admin/settings.php:1079
+#: admin/settings.php:1094
+#: admin/settings.php:1144
+#: admin/settings.php:1193
+#: admin/settings.php:1224
+msgid "Hide"
+msgstr "Rejtve"
+
+#: admin/settings.php:977
+msgid "Site width"
+msgstr "Oldal szélességben"
+
+#: admin/settings.php:977
+msgid "Full width"
+msgstr "Teljes szélességben"
+
+#: admin/settings.php:986
+msgid "Show the topbar that can include social icons and the top menu."
+msgstr ""
+"Mutasd a felső eszköztárt, amely magában foglalja a szociális ikonokat és a "
+"felső menüt."
+
+#: admin/settings.php:1001
+msgid ""
+"Show breadcrumbs at the top of the content area. Breadcrumbs are a form of "
+"navigation that keeps track of your location withtin the site."
+msgstr ""
+"Mutasd zsemlemorzsát, a tetején a tartalom területre. Zsemlemorzsát egy "
+"navigációra, hogy nyomon követi a tárolt helyét az oldalon."
+
+#: admin/settings.php:1016
+msgid ""
+"Show numbered pagination. Where there is more than one page, instead of the "
+"bottom <b>Older Posts</b> and <b>Newer posts</b> links you have a numbered "
+"pagination. "
+msgstr ""
+"Mutasd számozott lapszámozást. Ahol több mint egy oldal, ahelyett, hogy az "
+"alsó <b> Régebbi bejegyzések </ b> és <b> Újabb bejegyzés </ b> kapcsolat "
+"van a számozott lapszámozásnál."
+
+#: admin/settings.php:1022
+msgid "Right (multiline)"
+msgstr "Jobb (többsoros)"
+
+#: admin/settings.php:1030
+msgid "Sets the desired menu items alignment."
+msgstr "A kívánt menüpontok beállítását."
+
+#: admin/settings.php:1036
+msgid "Margin top: "
+msgstr "Felső margó:"
+
+#: admin/settings.php:1037
+msgid ""
+"The margin between the content and the menu. It can be set to 0px if you "
+"want the content area and menu to join."
+msgstr ""
+"A margó és a tartalom között a menüt. Azt be lehet állítani, hogy 0px legyen,"
+" ha szeretné, hogy a tartalmi terület és a menüt, hogy kapcsolódjanak."
+
+#: admin/settings.php:1039
+msgid "Padding left/right: "
+msgstr "Belső bal/jobb:"
+
+#: admin/settings.php:1040
+msgid ""
+"The left/right padding around the content. Should be set to 10px or less for "
+"designs without a content color."
+msgstr ""
+"A bal / jobb padding a tartalom alapján. Kell állítani 10px vagy még "
+"kevesebbet tervezés nélkül tartalmak színére."
+
+#: admin/settings.php:1055
+msgid ""
+"The border style for your images. Only images inserted in your posts and "
+"pages will be affected. "
+msgstr ""
+"A képek keretének stílusa. Csak a bejegyzésekbe és oldalakba beillesztett "
+"képekre van hatással. "
+
+#: admin/settings.php:1062
+#: admin/settings.php:1079
+#: admin/settings.php:1094
+#: admin/settings.php:1193
+#: admin/settings.php:1208
+#: admin/settings.php:1224
+msgid "Show"
+msgstr "Mutat"
+
+#: admin/settings.php:1070
+msgid "Hide or show bullets next to lists in your content area (posts, pages etc.)."
+msgstr ""
+"Elrejtése vagy megjelenítése golyók mellett listákat a tartalom területen "
+"(hozzászólás, oldalak stb)."
+
+#: admin/settings.php:1087
+msgid "Hide or show titles on pages."
+msgstr "Elrejti vagy megjeleníti a cimkéket az oldalon."
+
+#: admin/settings.php:1102
+msgid "Hide or show titles on Categories and Archives."
+msgstr "Elrejti vagy megjeleníti a címkéket a kategóriában és archívumokban."
+
+#: admin/settings.php:1117
+msgid "Hide table borders and background color."
+msgstr "Elrejti a tábla keretet és háttér színt."
+
+#: admin/settings.php:1133
+msgid ""
+"Enable the Back to Top button. The button appears after scrolling the page "
+"down."
+msgstr ""
+"Engedélyezi a Vissza a tetejére gombot. Ez a gomb mutatja a görgetés után az "
+"oldal alján."
+
+#: admin/settings.php:1144
+msgid "Top"
+msgstr "Fent"
+
+#: admin/settings.php:1144
+msgid "Bottom"
+msgstr "Lent"
+
+#: admin/settings.php:1152
+msgid "The position of your meta bar (author, date, category, tags and edit button)."
+msgstr ""
+"A meta eszköztár helyzete (szerző, dátum, kategória, címkék és szerkesztés "
+"gomb)"
+
+#: admin/settings.php:1159
+#: admin/settings.php:1175
+msgid "Author"
+msgstr "Szerző"
+
+#: admin/settings.php:1159
+#: admin/settings.php:1175
+msgid "Date"
+msgstr "Dátum"
+
+#: admin/settings.php:1159
+#: admin/settings.php:1175
+msgid "Time"
+msgstr "Idő"
+
+#: admin/settings.php:1159
+#: admin/settings.php:1175
+msgid "Category"
+msgstr "Kategória"
+
+#: admin/settings.php:1159
+#: admin/settings.php:1175
+msgid "Tag"
+msgstr "Címke"
+
+#: admin/settings.php:1159
+msgid "Comments"
+msgstr "Kommentár"
+
+#: admin/settings.php:1168
+msgid ""
+"Choose the post metas you want to show on multiple post pages (home, blog, "
+"category, archive etc.)"
+msgstr ""
+"Válassza ki a poszt METÁT szeretné mutatni több hozzászólás oldalak (otthon, "
+"blog, kategória, archív, stb)"
+
+#: admin/settings.php:1175
+msgid "Bookmark"
+msgstr "Könyvjelző"
+
+#: admin/settings.php:1184
+msgid "Choose the post metas you want to show on single post pages."
+msgstr "Válassza ki a poszt METÁt szeretné mutatni a egyszerű bejegyzés oldalakon."
+
+#: admin/settings.php:1201
+msgid ""
+"Hide the explanatory text under the comments form (starts with  <i>You may "
+"use these HTML tags and attributes:...</i>)."
+msgstr ""
+"Elrejthető a magyarázó szöveg a hozzászólások űrlap alatt (így kezdődik <i> "
+"A következő HTML tag-ek és tulajdonságok használata engedélyezett: ... </i>)."
+
+#: admin/settings.php:1208
+msgid "Hide in posts"
+msgstr "Rejtve a bejegyzésekben"
+
+#: admin/settings.php:1208
+msgid "Hide in pages"
+msgstr "Rejtve az oldalakon"
+
+#: admin/settings.php:1208
+msgid "Hide everywhere"
+msgstr "Rejtve mindenütt"
+
+#: admin/settings.php:1216
+msgid ""
+"Hide the <b>Comments are closed</b> text that by default shows up on pages "
+"or posts with comments disabled."
+msgstr ""
+"Elrejthető a <b>Hozzászólások lezárva</b> szöveg. Alapértelmezés szerint "
+"megjelenik minden olyan bejegyzésnél és oldalnál, ahol a további "
+"hozzászólásokat letiltottuk."
+
+#: admin/settings.php:1232
+msgid "Hide the <b>Comments off</b> text next to posts that have comments disabled."
+msgstr ""
+"Elrejthető a <b>Hozzászólások kikapcsolva</b> szöveg, azoknál a "
+"bejegyzéseknél, ahol a hozzászólást letiltottuk."
+
+#: admin/settings.php:1244
+#: admin/settings.php:1259
+#: admin/settings.php:1275
+msgid "Excerpt"
+msgstr "Részletek"
+
+#: admin/settings.php:1244
+#: admin/settings.php:1259
+#: admin/settings.php:1275
+msgid "Full Post"
+msgstr "Teljes bejegyzés"
+
+#: admin/settings.php:1252
+msgid ""
+"Excerpts on the main page. Only standard posts will be affected. All other "
+"post formats (aside, image, chat, quote etc.) have their specific formating."
+msgstr ""
+"Szemelvények a főoldalon. Csak szabványos hozzászólás hatással lesz. Az "
+"összes többi poszt formátumok (félre, kép, chat, stb idézetek) vannak "
+"speciálisan formázva."
+
+#: admin/settings.php:1267
+msgid ""
+"Choose if you want the sticky posts on your home page to be visible in full "
+"or just the excerpts. "
+msgstr ""
+"Válassza ki, ragadós bejegyzést a honlapon, hogy látható legyen a teljesen, "
+"vagy csak a részletekben."
+
+#: admin/settings.php:1306
+msgid ""
+"Enable the Magazine Layout. This layout applies to pages with posts and "
+"shows 2 posts per row."
+msgstr ""
+"Engedélyezze a Magazin elrendezést. Ez az elrendezés vonatkozik oldalaknál "
+"hozzászólásnál és megmutatja 2 hozzászólást soronként."
+
+#: admin/settings.php:1313
+msgid ""
+"Replaces the three dots ('[...])' that are appended automatically to "
+"excerpts."
+msgstr ""
+"Helyettesíthetjük a három ponttal ('[...])', amelyeket csatol automatikusan "
+"a részletekhez."
+
+#: admin/settings.php:1320
+msgid "Edit the 'Continue Reading' link added to your post excerpts."
+msgstr ""
+"Szerkesszük az  'Olvasás folytatása' hivatkozást hozzáadva a bejegyzés "
+"részleteihez."
+
+#: admin/settings.php:1335
+msgid ""
+"By default WordPress excerpts remove all HTML tags (&lt;pre&gt;, &lt;a&gt;, "
+"&lt;b&gt and all others) and only clean text is left in the excerpt.\n"
+"Enabling this option allows HTML tags to remain in excerpts so all your "
+"default formating will be kept.<br /> <b>Just a warning: </b>If HTML tags "
+"are enabled, you have to make sure\n"
+"they are not left open. So if within your post you have an opened HTML tag "
+"but the except ends before that tag closes, the rest of the site will be "
+"contained in that HTML tag. -- Leave 'Disable' if unsure -- "
+msgstr ""
+"Alapértelmezésben WordPress részletek eltávolítani az összes HTML (& lt; "
+"előtti & gt ;, & lt; a & gt;, & lt; b & gt és az összes többi), és csak "
+"tiszta szövegben maradt a részlet.  N Az opció engedélyezése lehetővé teszi "
+"a HTML kódokat is marad részlet, így minden alapértelmezett alakzatban marad."
+" <br /> <B> Csak egy figyelmeztetés: </ b> Ha HTML tag-ek engedélyezve "
+"vannak, akkor győződjön meg róla,  nhogy ne maradjanak nyitva. Tehát, ha az "
+"Ön poszt van egy megnyitott HTML tag, de a végén csak előtte tag zár, a "
+"többi a helyén fogja tartalmazni, hogy HTML tag. - Hagyd Kikapcsolva\", ha "
+"bizonytalan -"
+
+#: admin/settings.php:1361
+msgid "Link the thumbnail to the post"
+msgstr "Egy bélyegkép hivatkozás a bejegyzéshez"
+
+#: admin/settings.php:1362
+msgid ""
+"Show featured images as thumbnails on posts. The images must be selected for "
+"each post in the Featured Image section."
+msgstr ""
+"Mutassa a kiemelt képeket mint bélyegképeket a bejegyzéseknél. A képeken ki "
+"kell választani mindig a bejegyzésnél a kiemelt képrészletet."
+
+#: admin/settings.php:1377
+msgid ""
+"Show the first image that you inserted in a post as a thumbnail. If there is "
+"a Featured Image selected for that post, it will have priority."
+msgstr ""
+"Mutasd az első képet, amint beszúrsz egy hozzászólást, mint egy körömképet. "
+"Ha van Kiemelt Kép kiválasztjuk  a hozzászólás, akkor lesz elsőbbsége."
+
+#: admin/settings.php:1393
+msgid "Thumbnail alignment."
+msgstr "Bélyegkép igazítás."
+
+#: admin/settings.php:1400
+msgid "(width)"
+msgstr "(szélesség)"
+
+#: admin/settings.php:1401
+msgid "(height)"
+msgstr "(hosszúság)"
+
+#: admin/settings.php:1407
+msgid "Crop images to exact size."
+msgstr "Vágjuk a képeket a pontos méretre."
+
+#: admin/settings.php:1410
+msgid ""
+"The size (in pixels) for your thumbnails. By default imges will be scaled "
+"with aspect ratio kept. Choose to crop the images if you want the exact size."
+msgstr ""
+"A bélyegképek mérete (pixelben). Alapértelmezésben a képek nőni fognak a "
+"képarányt megtartva. Válassza ki, hogy levágja a képet, ha szeretné, a "
+"pontos méretet megtartani."
+
+#: admin/settings.php:1426
+msgid ""
+"Show featured images on headers. The header will be replaced with a featured "
+"image if you selected it as a Featured Image in the post and if it is bigger "
+"or at least equal to the current header size."
+msgstr ""
+"Mutassa a fejléc kép jellemzőit. A fejléc lesz cserélve egy kiemelt képeknél,"
+" ha kiválasztott Képi jellemzők a bejegyzésben nagyobbak, vagy legalább "
+"ugyanakkorák mint a jelenlegi fejléc mérete."
+
+#: admin/settings.php:1437
+msgid ""
+"Select your desired Social network from the left dropdown menu and insert "
+"your corresponding address in the right input field. (ex: <i>http://www."
+"facebook.com/yourname</i> )"
+msgstr ""
+"Válasszuk ki a kívánt közösségi médiát a bal oldali legördülő menüből, és "
+"helyezzük be a megfelelő címet a megfelelő mezőbe.. (Pl: <i>http://www."
+"facebook.com/felhasználóineved</i> )"
+
+#: admin/settings.php:1438
+msgid ""
+"You can also choose if you want the link to open in a new window and what "
+"title to dispaly while hovering over the icon."
+msgstr ""
+"Azt is választhatja, ha szeretné a linket megnyitni egy új ablakban, és a "
+"címet lebegve kijelzi az ikon fölé."
+
+#: admin/settings.php:1439
+msgid "You can show up to 5 different social icons from over 35 social networks."
+msgstr ""
+"Beállíthatunk legfeljebb 5 különböző társadalmi ikont, több mint 35 "
+"társadalmi hálózatból."
+
+#: admin/settings.php:1440
+msgid "You can leave any number of inputs empty."
+msgstr "Tudatában vagyunk, hagy a tetszőleges számú beviteli mező üres."
+
+#: admin/settings.php:1441
+msgid ""
+"You can change the background for your social colors from the colors "
+"settings section."
+msgstr ""
+"Meg lehet változtatni a közösségi médiánk hátterének színeit a színek "
+"beállításai részben."
+
+#: admin/settings.php:1459
+msgid "Social Network Link"
+msgstr "Szociális Hálózat Hivatkozása"
+
+#: admin/settings.php:1464
+msgid "Open in new window"
+msgstr "Új ablakban nyílik meg"
+
+#: admin/settings.php:1466
+msgid "Social Network Title"
+msgstr "Közösségi Hálózat Címke"
+
+#: admin/settings.php:1509
+msgid "Footer"
+msgstr "Lábléc"
+
+#: admin/settings.php:1517
+msgid "Right side"
+msgstr "Bal oldal"
+
+#: admin/settings.php:1529
+msgid "Choose the <b>areas</b> where to display the social icons."
+msgstr "<b>Terület</b> kiválasztása, ahol a társadalmi ikonok megjelenjenek."
+
+#: admin/settings.php:1542
+msgid ""
+"Insert custom text or HTML code that will appear in you footer. <br /> You "
+"can use HTML to insert links, images and special characters like &copy;."
+msgstr ""
+"Egyéni szöveg és HTML kód is elhelyezhető<br />a láblécen. Használható HTML "
+"kód, hivatkozás, kép, és speciális karakter is mint például a &copy;."
+
+#: admin/settings.php:1550
+msgid ""
+"Insert your custom CSS here. Any CSS declarations made here will overwrite "
+"Tempera's (even the custom options specified right here in the Tempera "
+"Settings page). <br /> Your custom CSS will be preserved when updating the "
+"theme."
+msgstr ""
+"Ide helyezhető el az egyéni CSS. Bármely CSS lesz is itt, az felülírja "
+"Tempera beállításait (akár az egyéni lehetőségek beállítása éppen itt, a "
+"Tempera beállítások oldalon van). <br /> Az egyéni CSS megmarad a sablon "
+"frissítése után is."
+
+#: admin/settings.php:1557
+msgid ""
+"Insert your custom Javascript code here. (Google Analytics and any other "
+"forms of Analytic software)."
+msgstr ""
+"Ide helyezheti el az egyéni Javascript kódot. (Google Analytics és bármely "
+"egyéb analitikai szoftver segítségével)."
+
+#: admin/settings.php:1571
+msgid ""
+"Enable extra compatibility tag for older Internet Explorer versions. Turning "
+"this option on will trigger W3C validation errors."
+msgstr ""
+"Engedélyezze az extra kompatibilitás címkét a régebbi Internet Explorerekhez."
+" Ezt az opciót bekapcsolva indít el W3C érvényesítés hibákat."
+
+#: content/content-aside.php:15
+#: content/content-audio.php:15
+#: content/content-chat.php:15
+#: content/content-gallery.php:18
+#: content/content-gallery.php:42
+#: content/content-image.php:14
+#, php-format
+msgid "Permalink to %s"
+msgstr "%s bejegyzéshez közvetlen hivatkozás"
+
+#: content/content-aside.php:28
+#: content/content-audio.php:23
+#: content/content-chat.php:28
+#: content/content-image.php:22
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Olvasás folytatása <span class=\"meta-nav\">&rarr;</span>"
+
+#: content/content-aside.php:33
+msgid "Aside"
+msgstr "Széljegyzet"
+
+#: content/content-audio.php:27
+msgid "Audio"
+msgstr "Hang"
+
+#: content/content-chat.php:33
+msgid "Chat"
+msgstr "Csevegés"
+
+#: content/content-frontpage.php:38
+msgid "No Posts to Display"
+msgstr "Nincs hozzászólás kijelezve"
+
+#: content/content-frontpage.php:43
+#, php-format
+msgid ""
+"You currently have no published posts. To hide this message either <a "
+"href=\"%s\">add some posts</a> or disable displaying posts on the Presentation "
+"Page in <a href=\"%s\">theme settings</a>."
+msgstr ""
+"Jelenleg nincsenek közzétett hozzászólások. Akármelyi üzenetet elrejtene <a "
+"href=\"%s\"> hozzáad néhány hozzászólást </a> vagy tiltsa megjelenítésére "
+"hozzászólás bemutató oldalt <a href=\"%s\"> téma beállításokat </a>."
+
+#: content/content-gallery.php:41
+#, php-format
+msgid "This gallery contains <a %1$s>%2$s photo</a>."
+msgstr "Ez a galéria tartalmaz <a %1$s>%2$s fotó </a>"
+
+#: content/content-gallery.php:55
+msgid "Gallery"
+msgstr "Galéria"
+
+#: content/content-quote.php:31
+msgid "Quote"
+msgstr "Idézet"
+
+#: content/content-status.php:36
+msgid "Status"
+msgstr "Állapot"
+
+#: content/content-video.php:27
+msgid "Video"
+msgstr "Videó"
+
+#: includes/ajax.php:48
+msgid "More posts"
+msgstr "Mégtöbb bejegyzés"
+
+#: includes/theme-comments.php:26
+msgid "Pingback: "
+msgstr "Visszajelzés:"
+
+#: includes/theme-comments.php:26
+#: includes/theme-comments.php:41
+msgid "(Edit)"
+msgstr "(Szerkesztés)"
+
+#: includes/theme-comments.php:41
+msgid "at"
+msgstr "_"
+
+#: includes/theme-comments.php:48
+msgid "Your comment is awaiting moderation."
+msgstr "A hozzászólás rendszer-moderációra várakozik."
+
+#: includes/theme-comments.php:55
+msgid "Reply"
+msgstr "Válasz"
+
+#: includes/theme-comments.php:91
+msgid "<b>0</b>"
+msgstr "<b>0</b>"
+
+#: includes/theme-comments.php:91
+msgid "<b>1</b>"
+msgstr "<b>1</b>"
+
+#: includes/theme-comments.php:91
+msgid "<b>%</b>"
+msgstr "<b>%</b>"
+
+#: includes/theme-comments.php:91
+msgid "<b>-</b>"
+msgstr "<b>-</b>"
+
+#: includes/theme-comments.php:115
+msgid "Older Comments"
+msgstr "Korábbi hozzászólások"
+
+#: includes/theme-comments.php:116
+msgid "Newer Comments"
+msgstr "Újabb hozzászólások"
+
+#: includes/theme-comments.php:144
+msgid "Comments are closed."
+msgstr "Hozzászólások lezárva."
+
+#: includes/theme-comments.php:164
+#: includes/theme-comments.php:165
+msgid "Name"
+msgstr "Név"
+
+#: includes/theme-comments.php:169
+#: includes/theme-comments.php:170
+msgid "Email"
+msgstr "Email"
+
+#: includes/theme-comments.php:174
+#: includes/theme-comments.php:175
+msgid "Website"
+msgstr "Weboldal"
+
+#: includes/theme-comments.php:187
+#: includes/theme-comments.php:188
+msgid "Comment"
+msgstr "Hozzászólás"
+
+#: includes/theme-functions.php:310
+msgid "Powered by"
+msgstr "Az oldal motorja"
+
+#: includes/theme-functions.php:312
+msgid "Semantic Personal Publishing Platform"
+msgstr "Szemantikai Személyes Publikációs Platform"
+
+#: includes/theme-loop.php:172
+msgid "Author "
+msgstr "Szerző"
+
+#: includes/theme-loop.php:174
+#, php-format
+msgid "View all posts by %s"
+msgstr "%s összes bejegyzéseinek megtekintése"
+
+#: includes/theme-loop.php:189
+msgid "Categories"
+msgstr "Kategóriák"
+
+#: includes/theme-loop.php:209
+msgid "Tags"
+msgstr "Letörtési Címke"
+
+#: includes/theme-loop.php:271
+msgid "Tagged"
+msgstr "Címkék"
+
+#: includes/theme-loop.php:274
+msgid " Bookmark the permalink"
+msgstr "Könyvjelző közvetlen hivatkozás"
+
+#: includes/theme-loop.php:274
+msgid "Permalink to"
+msgstr "Közvetlen hivatkozás ide:"
+
+#: includes/theme-loop.php:297
+msgid "<i class=\"meta-nav-prev\"></i> <span>Older posts</span>"
+msgstr "<i class=\"meta-nav-prev\"></i> <span>Régebbi bejegyzések</span>"
+
+#: includes/theme-loop.php:298
+msgid "<span>Newer posts</span> <i class=\"meta-nav-next\"></i>"
+msgstr "<span>Újabb bejegyzések</span> <i class=\"meta-nav-next\"></i>"
+
+#: includes/theme-meta.php:28
+#, php-format
+msgid "Page %s"
+msgstr "%s oldal"
+
+#: includes/theme-setup.php:86
+msgid "Primary Navigation"
+msgstr "Elsődleges navigáció"
+
+#: includes/theme-setup.php:87
+msgid "Top Navigation"
+msgstr "Felső navigáció"
+
+#: includes/theme-setup.php:88
+msgid "Footer Navigation"
+msgstr "Lábléc navigáció"
+
+#: includes/theme-setup.php:120
+msgid "Tempera Default Header Image"
+msgstr "Tempera alapértelmezett fejléc kép"
+
+#: includes/theme-setup.php:181
+msgid "Skip to content"
+msgstr "Tovább a tartalomra"
+
+#: includes/theme-setup.php:212
+msgid "Left sidebar"
+msgstr "Bal oldalsáv"
+
+#: includes/theme-setup.php:223
+msgid "Right sidebar"
+msgstr "Jobb oldalsáv"
+
+#: includes/theme-setup.php:232
+msgid "First Footer Area"
+msgstr "Lábléc 1. zóna"
+
+#: includes/theme-setup.php:234
+msgid "First footer area"
+msgstr "Lábléc 1. zóna"
+
+#: includes/theme-setup.php:243
+msgid "Second Footer Area"
+msgstr "Lábléc 2. zóna"
+
+#: includes/theme-setup.php:245
+msgid "Second footer area"
+msgstr "Lábléc 2. zóna"
+
+#: includes/theme-setup.php:254
+msgid "Third Footer Area"
+msgstr "Lábléc 3. zóna"
+
+#: includes/theme-setup.php:256
+msgid "The third footer area"
+msgstr "Lábléc 3. zóna"
+
+#: includes/theme-setup.php:265
+msgid "Fourth Footer Area"
+msgstr "Lábléc 4. zóna"
+
+#: includes/theme-setup.php:267
+msgid "The fourth footer area"
+msgstr "Lábléc 4. zóna"
+
+#: includes/theme-setup.php:276
+#: includes/theme-setup.php:278
+msgid "Above Content Area"
+msgstr "Felső tartalmi zóna"
+
+#: includes/theme-setup.php:287
+#: includes/theme-setup.php:289
+msgid "Below Content Area"
+msgstr "Alsó tartalmi zóna"
+
+#: includes/theme-setup.php:298
+#: includes/theme-setup.php:300
+msgid "Header Widgets"
+msgstr "Widgetek fejléce"
+
+#: includes/theme-setup.php:313
+#, php-format
+msgid ""
+"Only drag [Cryout Column] widgets here. Recommended size for uploaded images:"
+" %1$dpx (width) x %2$dpx (height). Go to the Tempera Settings page >> "
+"Presentation Page Settings >> Columns to edit sizes and more."
+msgstr ""
+"Csak vonszold [Cryout Oszlop] widgeteket itt. Ajánlott méret a feltöltött "
+"képeket:% 1 $ dpx (szélesség) x %2$dpx (magasság). Menj a Tempera Settings "
+"oldalra >> Prezentációs Oldal Beállításai >> oszlopok méretezése, "
+"szerkesztése, és így tovább."

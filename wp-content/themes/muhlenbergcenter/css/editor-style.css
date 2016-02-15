@@ -24,9 +24,9 @@ body {
     font-family    : sans-serif;
     font-weight    : 400;
     font-size      : 16px;
-    line-height    : 1.5;
-    margin         : 20px 40px;
-    max-width      : 660px;
+    line-height    : 1.4;
+    margin         : 20px;
+    /*max-width      : 595px;*/
     vertical-align : baseline;
 }
 
@@ -40,26 +40,32 @@ h3,
 h4,
 h5,
 h6 {
+    margin      : 32px 0 16px;
     clear       : both;
-    font-weight : 700;
-    margin      : 56px 0 28px;
+    font-weight : normal;
+    color       : #000;
 }
+
 h1 {
     font-size   : 35px;
     line-height : 1.2308;
 }
+
 h2 {
     font-size   : 29px;
     line-height : 1.2069;
 }
+
 h3 {
     font-size   : 24px;
     line-height : 1.1667;
 }
+
 h4 {
     font-size   : 20px;
     line-height : 1.4;
 }
+
 h5,
 h6 {
     font-size      : 17px;
@@ -67,6 +73,7 @@ h6 {
     line-height    : 1.2353;
     text-transform : uppercase;
 }
+
 h1:first-child,
 h2:first-child,
 h3:first-child,
@@ -75,85 +82,39 @@ h5:first-child,
 h6:first-child {
     margin-top : 0;
 }
+
 p {
-    margin : 0 0 28px;
+    margin : 0 0 16px;
 }
+
 b,
 strong {
     font-weight : 700;
 }
+
 dfn,
 cite,
 em,
 i {
     font-style : italic;
 }
-blockquote {
-    border-left  : 4px solid #707070;
-    color        : #707070;
-    font-style   : italic;
-    margin       : 0 0 35px -21px;
-    padding-left : 17px;
-}
-blockquote > blockquote {
-    margin-left : 0;
-}
-blockquote p {
-    margin-bottom : 35px;
-}
-blockquote > p:last-child {
-    margin-bottom : 0;
-}
-blockquote cite,
-blockquote small {
-    color       : #333;
-    font-family : sans-serif;
-    font-size   : 17px;
-    line-height : 1.6471;
-}
-blockquote em,
-blockquote i,
-blockquote cite {
-    font-style : normal;
-}
-blockquote strong,
-blockquote b {
-    font-weight : 400;
-}
+
 address {
     font-style : italic;
     margin     : 0 0 28px;
 }
-code,
-kbd,
-tt,
-var,
-samp,
-pre {
-    font-family : monospace;
-}
-pre {
-    background-color : #fcfcfc;
-    border           : 1px solid #eaeaea;
-    font-size        : 17px;
-    line-height      : 1.2353;
-    margin-bottom    : 28px;
-    max-width        : 100%;
-    overflow         : auto;
-    padding          : 14px;
-    white-space      : pre;
-    white-space      : pre-wrap;
-    word-wrap        : break-word;
-}
+
 abbr[title] {
-    border-bottom : 1px dotted #eaeaea;
+    border-bottom : 1px dotted;
     cursor        : help;
 }
+
 mark,
 ins {
     background-color : #fff9c0;
     text-decoration  : none;
 }
+
 sup,
 sub {
     font-size      : 75%;
@@ -162,15 +123,19 @@ sub {
     position       : relative;
     vertical-align : baseline;
 }
+
 sup {
     bottom : 1ex;
 }
+
 sub {
     top : .5ex;
 }
+
 small {
     font-size : 75%;
 }
+
 big {
     font-size : 125%;
 }
@@ -185,30 +150,38 @@ hr {
     height           : 1px;
     margin-bottom    : 28px;
 }
+
 ul,
 ol {
-    margin  : 0 0 28px 0;
-    padding : 0;
+    margin  : 0 0 16px;
+    padding : 0 0 0 20px;
 }
+
 ul {
     list-style : disc;
 }
+
 ol {
     list-style : decimal;
 }
+
 li > ul,
 li > ol {
     margin : 0 0 0 23px;
 }
+
 dl {
-    margin : 0 0 28px;
+    margin : 0 0 16px;
 }
+
 dt {
-    font-weight : bold;
+    font-weight : 700;
 }
+
 dd {
     margin : 0 0 28px;
 }
+
 table,
 th,
 td,
@@ -217,17 +190,26 @@ td,
 .mce-item-table td {
     border : 1px solid #eaeaea;
 }
+
 table a {
-    color : #333;
+    color : #162981;
 }
+
+table h3 {
+    margin      : 0;
+    font-weight : bold;
+    font-size   : 1em;
+    color       : #162981;
+}
+
 table,
 .mce-item-table {
-    border-collapse : separate;
-    border-spacing  : 0;
+    border-collapse : collapse;
     border-width    : 1px 0 0 1px;
     margin          : 0 0 28px;
     width           : 100%;
 }
+
 table th,
 .mce-item-table th,
 table caption {
@@ -239,6 +221,7 @@ table caption {
     text-align     : left;
     vertical-align : baseline;
 }
+
 table td,
 .mce-item-table td {
     border-width   : 0 1px 1px 0;
@@ -247,24 +230,56 @@ table td,
     padding        : 7px;
     vertical-align : baseline;
 }
+
+.event-program tr td:first-child {
+    width          : 285px;
+    font-weight    : 100;
+    font-size      : 20px;
+    text-transform : uppercase;
+}
+
+.event-program tr td:nth-child(2) {
+    width       : 142px;
+    font-weight : 700;
+    color       : #162981;
+}
+
+.event-contact tr td {
+    width : 33.33%;
+}
+
+table em {
+    font-style  : italic;
+    font-weight : normal;
+    color       : #bfb991;
+}
+
 img {
     border         : 0;
     height         : auto;
     max-width      : 660px;
     vertical-align : middle;
 }
+
 a img {
     display : block;
 }
+
 figure {
     margin : 0;
 }
+
 del {
-    opacity : 0.8;
+    opacity : .8;
 }
+
 a {
-    border-bottom   : 1px solid #333;
-    color           : #333;
+    color           : #162981;
+    text-decoration : underline;
+    cursor          : pointer;
+}
+
+a:hover {
     text-decoration : none;
 }
 
@@ -276,10 +291,12 @@ a {
     float  : left;
     margin : 7px 28px 28px 0;
 }
+
 .alignright {
     float  : right;
     margin : 7px 0 28px 28px;
 }
+
 .aligncenter {
     clear   : both;
     display : block;
@@ -300,15 +317,19 @@ a {
     padding     : 0;
     text-align  : inherit;
 }
+
 .wp-caption.alignleft {
     margin : 7px 28px 21px 0;
 }
+
 .wp-caption.alignright {
     margin : 7px 0 21px 28px;
 }
+
 .wp-caption.aligncenter {
     margin : 7px auto;
 }
+
 .wp-caption .wp-caption-text,
 .wp-caption-dd {
     font-size   : 14px;
@@ -327,30 +348,39 @@ a {
     vertical-align : top;
     width          : 100%;
 }
+
 .gallery-columns-2 .gallery-item {
     max-width : 50%;
 }
+
 .gallery-columns-3 .gallery-item {
     max-width : 33.33%;
 }
+
 .gallery-columns-4 .gallery-item {
     max-width : 25%;
 }
+
 .gallery-columns-5 .gallery-item {
     max-width : 20%;
 }
+
 .gallery-columns-6 .gallery-item {
     max-width : 16.66%;
 }
+
 .gallery-columns-7 .gallery-item {
     max-width : 14.28%;
 }
+
 .gallery-columns-8 .gallery-item {
     max-width : 12.5%;
 }
+
 .gallery-columns-9 .gallery-item {
     max-width : 11.11%;
 }
+
 .gallery .gallery-caption {
     color       : #707070;
     display     : block;
@@ -359,6 +389,7 @@ a {
     line-height : 1.5;
     padding     : 7px 0;
 }
+
 .gallery-columns-6 .gallery-caption,
 .gallery-columns-7 .gallery-caption,
 .gallery-columns-8 .gallery-caption,
@@ -373,6 +404,7 @@ a {
 .mce-content-body .wpview-wrap {
     margin-bottom : 32px;
 }
+
 .mce-content-body .wp-audio-playlist {
     margin : 0;
 }
