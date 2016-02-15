@@ -156,12 +156,25 @@ $hdQuJ("#questionnaire1").submit(function() {
 				if ($hdQuJ( this ).hasClass( "hdHidden" ) && $hdQuJ(this).val() == "1") { 					$hdQuJ(this).closest('.question').children('.imageAnswer.selected').addClass("correct2");}
 				else { $hdQuJ(this).closest('.question').children('.imageAnswer.selected').addClass("wrong2"); }				
 			});
+
+			// search all questions, see if question was answered incorrectly (or not at all), and display the questionContent if there is one
+			$hdQuJ('#questionnaire1 *').filter(".question").each(function(){
+				if ($hdQuJ(this).children(".imageAnswer").hasClass("wrong2")){
+					$hdQuJ(this).closest(".question").children('.questionContent').fadeIn("slow");					
+				}
+				if ($hdQuJ(this).children("label").hasClass("wrong")){					
+					$hdQuJ(this).closest(".question").children('.questionContent').fadeIn("slow");				
+				}
+			});
+
+
+
 		}
 		if (showResults == "yes" && hdQuizShowResultsCorrect == "yes") {			
 			// Test normal questions	
 			$hdQuJ('#questionnaire1 *').filter(":input[type='radio']").each(function(){
 				var id = $hdQuJ(this).attr('id');
-				if ($hdQuJ(this).val() == "1") { $hdQuJ(this).next('label').addClass("correct"); }
+				if ($hdQuJ(this).val() == "1") { $hdQuJ(this).next('label').addClass("correct correctAfter"); }
 			});
 			// Test questions with image answers
 			$hdQuJ('#questionnaire1 *').filter(".imageCorrect").each(function(){

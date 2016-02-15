@@ -77,12 +77,16 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 			if ( !$this->plugin->table_exists('weblinks') ) { // Joomla 3.4
 				return;
 			}
+			if ( $this->plugin->import_stopped() ) {
+				return;
+			}
 
 			// Links categories
 			$cat_count = $this->import_categories();
 			$this->plugin->display_admin_notice(sprintf(_n('%d links category imported', '%d links categories imported', $cat_count, 'fg-joomla-to-wordpress'), $cat_count));
 
 			$links = $this->get_weblinks();
+			$weblinks_count = count($links);
 			foreach ( $links as $link ) {
 
 				// Categories
@@ -107,6 +111,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 					update_option('fgj2wp_last_link_id', $new_link_id);
 				}
 			}
+			$this->plugin->log(sprintf('[COUNT]' . _n('%d web link processed', '%d web links processed', $weblinks_count, 'fg-joomla-to-wordpress'), $weblinks_count));
 		}
 
 		/**
@@ -146,9 +151,12 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 		 * @return int Number of imported categories
 		 */
 		private function import_categories() {
-			$categories = $this->plugin->get_component_categories('com_weblinks'); // Get the web links categories
+			$cat_count = 0;
+			$categories = $this->plugin->get_component_categories('com_weblinks', 'fgj2wp_last_weblink_category_id'); // Get the web links categories
 			
-			$cat_count = $this->plugin->insert_categories($categories, 'link_category');
+			if ( count($categories) > 0 ) {
+				$cat_count = $this->plugin->insert_categories($categories, 'link_category', 'fgj2wp_last_weblink_category_id');
+			}
 			return $cat_count;
 		}
 
@@ -168,18 +176,16 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 		}
 
 		/**
-		 * Add information to the admin page
+		 * Get the WordPress database info
 		 * 
-		 * @param array $data
-		 * @return array
+		 * @return string Database info
 		 */
-		public function process_admin_page($data) {
+		public function get_database_info($database_info) {
 			$links_count = $this->count_links();
-
 			if ( $links_count > 0 ) {
-				$data['database_info'][] = sprintf(_n('%d link', '%d links', $links_count, 'fg-joomla-to-wordpress'), $links_count);
+				$database_info .= sprintf(_n('%d link', '%d links', $links_count, 'fg-joomla-to-wordpress'), $links_count) . "<br />";
 			}
-			return $data;
+			return $database_info;
 		}
 
 	}

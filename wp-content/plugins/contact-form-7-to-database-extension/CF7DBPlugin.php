@@ -1111,19 +1111,37 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
      * @return string URL to download file
      */
     public function getFileUrl($submitTime, $formName, $fieldName) {
-        return sprintf('%s?action=cfdb-file&s=%s&form=%s&field=%s',
-                       admin_url('admin-ajax.php'),
-                       $submitTime,
-                       urlencode($formName),
-                       urlencode($fieldName));
+        return sprintf('%saction=cfdb-file&s=%s&form=%s&field=%s',
+                $this->getAdminUrlPrefix('admin-ajax.php'),
+                $submitTime,
+                urlencode($formName),
+                urlencode($fieldName));
+    }
+
+    /**
+     * Returns admin_url with a trailing "?" or "&" ready for parameters to be appended to it.
+     * It check the output of admin_url() for a "?"
+     * The reason for this method is to deal with installations that have WPML which injects
+     * a "?lang=ca" after the admin/ajax urls
+     *
+     * @param $path string
+     * @return string
+     */
+    public function getAdminUrlPrefix($path) {
+        $url = admin_url($path);
+        if (strpos($url, '?') === false) {
+            return $url . '?';
+        } else {
+            return $url . '&';
+        }
     }
 
     public function getFormFieldsAjaxUrlBase() {
-        return admin_url('admin-ajax.php') . '?action=cfdb-getFormFields&form=';
+        return $this->getAdminUrlPrefix('admin-ajax.php') . 'action=cfdb-getFormFields&form=';
     }
 
     public function getValidateSubmitTimeAjaxUrlBase() {
-        return admin_url('admin-ajax.php') . '?action=cfdb-validate-submit_time&submit_time=';
+        return $this->getAdminUrlPrefix('admin-ajax.php') . 'action=cfdb-validate-submit_time&submit_time=';
     }
 
     /**
@@ -1274,7 +1292,7 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
         if (!$this->isEditorActive()) {
             return;
         }
-        $requiredEditorVersion = '1.4.1';
+        $requiredEditorVersion = '1.4.2';
         $editorData = $this->getEditorPluginData();
         if (isset($editorData['Version'])) {
             if (version_compare($editorData['Version'], $requiredEditorVersion) == -1) {

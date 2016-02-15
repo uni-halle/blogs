@@ -1,50 +1,67 @@
-=== Search and Replace ===
-Contributors: Bueltge, inpsyde
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RHWH8VG798CSC
-Tags: database, mysql, search, replace, admin, security
-Requires at least: 3.0
-Tested up to: 4.2.2
-Stable tag: 2.7.1
-License: GPLv2+
+=== Search & Replace ===
+Contributors: inpsyde, Bueltge, s-hinse, derpixler, Giede
+Tags: search, replace, backup, import, sql, migrate, multisite
+Requires at least: 4.0
+Tested up to: 4.4
+Stable tag: 3.0.1
 
-A simple search for find strings in your database and replace the string.
+Search & Replace data in your database with WordPress admin, replace domains/URLs of your WordPress installation.
 
 == Description ==
-A simple search for find strings in your database and replace the string. You can search in ID, post-content, GUID, titel, excerpt, meta-data, comments, comment-author, comment-e-mail, comment-url, tags/categories and categories-description. It is possible to replace the user-ID in all tables and the user-login.
+- Backs up your database.
+- Searches for strings in your WordPress database and replaces them, also in serialized objects.
+- Generates a backup of database with changed site URL for site migration.
+- Imports a SQL file into your database.
 
-"Search and Replace" Originalplugin ist von [Mark Cunningham](http://thedeadone.net/ "Mark Cunningham") and was advanced (comments and comment-author) by [Gonahkar](http://www.gonahkar.com/ "Gonahkar"). Much more enhanced and maintained by [Frank Bültge](http://bueltge.de) and current version is also maintained by Ron Guerin <ron@vnetworx.net>.
+= Features =
+- Search & replace data in your WordPress database
+- Change domain/URL of WordPress installation
+- Handle serialized data
+- Choose dry run or download SQL file
+- Change table prefix
+- Backup & restore your database
+- WordPress Multisite support
+- localized and ready for your own language
+
+= Crafted by Inpsyde =
+The team at [Inpsyde](http://inpsyde.com) is engineering the web and WordPress since 2006. And yes, we also run that
+[marketplace for premium WordPress plugins and themes](https://marketpress.com).
 
 == Installation ==
 = Requirements =
-* WordPress version 3.0 and later (tested at 3.5-Beta2 and 3.3.2)
-
-= Installation =
-1. Unpack the download-package
-1. Upload search-and-replace folder to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Got to Tools -> Search/Replace
+- WordPress 4.0 (Single and Multisite)
+- PHP 5.4, newer PHP versions will work faster.
 
 == Screenshots ==
-1. Functions in WordPress 2.7 beta
-1. The search for an string in WordPress 3.1-RC2
-
-== Other Notes ==
-= Acknowledgements =
-All existing translation files need to be updated for Search and Replace 2.6.6, please feel free to send me your translation file.
-
-= License =
-Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](http://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
-
-= Translations =
-The plugin comes with various translations, please refer to the [WordPress Codex](http://codex.wordpress.org/Installing_WordPress_in_Your_Language "Installing WordPress in Your Language") for more information about activating the translation. If you want to help to translate the plugin to your language, please have a look at the .pot file which contains all definitions and may be used with a [gettext](http://www.gnu.org/software/gettext/) editor like [Poedit](http://www.poedit.net/) (Windows) or plugin for WordPress [Localization](http://wordpress.org/extend/plugins/codestyling-localization/).
-
+1. Search and Replace
+2. Replace Domain/URL
+3. Restore Database
+4. Backup Database
+5. Result screen after search or search and replace
 
 == Changelog ==
-= v1.7.1 (2015-05-28) =
+= v3.0.1 (2016-02-09) =
+* Add support for Searchpattern with quotes. [#40](https://github.com/inpsyde/search-and-replace/issues/40)
+* Basic travis support for travis was added. [#38](https://github.com/inpsyde/search-and-replace/issues/38)
+* Fix Unittest [#37](https://github.com/inpsyde/search-and-replace/issues/37)
+
+= v3.0.0 (2016-01-29) =
+* Refactor the plugin, new requirements, goal and result.
+* *Thanks to [Sven Hinse](https://github.com/s-hinse/) for help to maintain the plugin*
+* Changeable table prefix on replace site URL tab enhancement
+* Implement database backup & import tab
+* Implement dry Run: Keep for search and replace
+* Prevent self destroy
+* Multisite basic support - show only tables of current site
+* Add special tab for replace the URL
+* Supports serialized data
+* Refactor the whole codebase
+
+= v2.7.1 (2015-05-28) =
 * Fix for changes on database collate since WordPress version 4.2
 * Fix to reduce backslashes in search and replace string
 
-= v1.7.0 (2014-09-14) =
+= v2.7.0 (2014-09-14) =
 * Exclude serialized data from replace function (maybe we reduce the support)
 * Add hint, if is serialized data on the result table
 * Fix to see also the result case sensitive
@@ -81,3 +98,4 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 = v2.5.1 (07/07/2010) =
 * small changes for use in WP 3.0
+Status API Training Shop Blog About Pricing

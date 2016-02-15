@@ -487,10 +487,35 @@ class Osm_OpenLayers
       var FileList_FileField = "";
       var DisplayName = "";
 	  var FileList_FileUrl = document.post.osm_file_list_URL.value;
+      var Controls = "";
+      var ControlField =""; 
+      BorderField = "";
 	  
 	  if (document.post.osm_file_list_map_type.value != "Mapnik"){
         FileList_MapTypeField = " type=\"" + document.post.osm_file_list_map_type.value + "\""; 
       }
+
+      if (document.post.osm_file_border.value != "none"){
+        BorderField = " map_border=\"thin solid "  + document.post.osm_marker_border.value+ "\"";
+     }
+  
+      if (document.post.file_fullscreen.checked){
+        Controls = "fullscreen,";
+     }
+
+    if (document.post.file_scaleline.checked){
+        Controls = Controls + "scaleline,";
+    }
+    if (document.post.file_mouseposition.checked){
+        Controls = Controls + "mouseposition,";
+    }
+    if (Controls != ""){
+      Controls = Controls.substr(0, Controls.length-1);
+      ControlField = " control=\"" + Controls + "\"";
+    }
+    else {
+      ControlField ="";
+    }
 	  
 	  if (document.post.osm_file_list_color.value != "none"){
         FileList_ColorField = " file_color_list=\"" + document.post.osm_file_list_color.value + "\""; 
@@ -500,7 +525,7 @@ class Osm_OpenLayers
 
 
        
-	  GenTxt = "[osm_map_v3 map_center=\"" + Centerlonlat.lat + "," + Centerlonlat.lon + "\" zoom=\"" + zoom + "\" width=\"100%\" height=\"450\" " + FileList_FileField + FileList_MapTypeField + FileList_ColorField + DisplayName + "]";
+	  GenTxt = "[osm_map_v3 map_center=\"" + Centerlonlat.lat + "," + Centerlonlat.lon + "\" zoom=\"" + zoom + "\" width=\"100%\" height=\"450\" " + FileList_FileField + FileList_MapTypeField + FileList_ColorField + DisplayName + ControlField + BorderField + "]";
 
       div = document.getElementById("ShortCode_Div");
       div.innerHTML = GenTxt;

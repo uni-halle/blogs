@@ -6,7 +6,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.2.1
 Tested up to: 4.4.1
-Stable tag: 2.9.13
+Stable tag: 2.9.15
 
 Saves submitted form data to the database. Export the data to a file or use short codes to display it.
 
@@ -17,10 +17,10 @@ Video tutorial on the <a href="http://cfdbplugin.com/">CFDB Plugin Site</a>
 
 By simply installing the plugin, it will automatically begin to capture form submissions from:
 
-* <a href="http://wordpress.org/extend/plugins/contact-form-7/">Contact Form 7 (CF7) plugin</a>
-* <a href="http://wordpress.org/extend/plugins/si-contact-form/">Fast Secure Contact Form (FSCF) plugin</a>
-* <a href="http://wordpress.org/extend/plugins/jetpack/">JetPack Contact Form plugin</a>
-* <a href="https://wordpress.org/plugins/tags/gravity-forms/">Gravity Forms plugin</a>
+* <a href="https://wordpress.org/plugins/contact-form-7/">Contact Form 7 (CF7) plugin</a>
+* <a href="https://wordpress.org/plugins/si-contact-form/">Fast Secure Contact Form (FSCF) plugin</a>
+* <a href="https://wordpress.org/plugins/jetpack/">JetPack Contact Form plugin</a>
+* <a href="http://www.gravityforms.com">Gravity Forms plugin</a>
 * <a href="https://wordpress.org/plugins/wr-contactform/">WR ContactForm plugin</a>
 * <a href="https://wordpress.org/plugins/formidable/">Formidable Forms (BETA)</a>
 * <a href="http://codecanyon.net/item/quform-wordpress-form-builder/706149/">Quform plugin (BETA)</a>
@@ -85,6 +85,10 @@ You can always deactivate the plugin without loosing data.
 1. Admin Panel view of submitted form data
 
 == Changelog ==
+
+= 2.9.15 =
+* Bug Fix: Where WP installations that output debug would add text to ajax return value
+* Bug Fix: When WPML plugin is also installed, export and ajax URLs were incorrect
 
 = 2.9.14 =
 * New: Formidable Forms integration added (BETA)

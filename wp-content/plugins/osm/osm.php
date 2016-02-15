@@ -3,13 +3,13 @@
 Plugin Name: OSM
 Plugin URI: http://wp-osm-plugin.HanBlog.net
 Description: Embeds maps in your blog and adds geo data to your posts.  Find samples and a forum on the <a href="http://wp-osm-plugin.HanBlog.net">OSM plugin page</a>.  
-Version: 3.6.1
+Version: 3.6.2
 Author: MiKa
 Author URI: http://www.HanBlog.net
 Minimum WordPress Version Required: 3.0
 */
 
-/*  (c) Copyright 2016  Michael Kang
+/*  (c) Copyright 2016  MiKa (www.HanBlog.Net)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ Minimum WordPress Version Required: 3.0
 */
 load_plugin_textdomain('OSM-plugin', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
 
-define ("PLUGIN_VER", "V3.6");
+define ("PLUGIN_VER", "V3.6.2");
 
 // modify anything about the marker for tagged posts here
 // instead of the coding.
@@ -408,7 +408,7 @@ class Osm
 if ($pageposts){
   foreach ($pageposts as $post){
      setup_postdata($post); 
-      $Data = get_post_meta($post->ID, 'OSM_geo_data', true);
+      $Data = get_post_meta($post->ID, $CustomFieldName, true);
          // remove space before and after comma
       $Data = preg_replace('/\s*,\s*/', ',',$Data);
       $GeoData_Array = explode( ' ', $Data );

@@ -31,8 +31,8 @@ class CFDBShortcodeExportUrl extends ShortCodeLoader {
     public function handleShortcode($atts, $content = null) {
         $atts = $this->decodeAttributes($atts);
         $params = array();
-        $params[] = admin_url('admin-ajax.php');
-        $params[] = '?action=cfdb-export';
+        $params[] = $this->getAdminUrlPrefix('admin-ajax.php');
+        $params[] = 'action=cfdb-export';
 
         $special = array('urlonly', 'linktext', 'role');
         foreach ($atts as $key => $value) {
@@ -61,4 +61,15 @@ class CFDBShortcodeExportUrl extends ShortCodeLoader {
 
         return sprintf('<a href="%s">%s</a>', $url, $linkText);
     }
+
+    // TODO: this method is duplicated from CFDB7Plugin.php
+    public function getAdminUrlPrefix($path) {
+        $url = admin_url($path);
+        if (strpos($url, '?') === false) {
+            return $url . '?';
+        } else {
+            return $url . '&';
+        }
+    }
+
 }

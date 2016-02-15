@@ -1,26 +1,26 @@
-# Copyright (C) 2015 WPtouch Mobile Plugin
+# Copyright (C) 2016 WPtouch Mobile Plugin
 # This file is distributed under the same license as the WPtouch Mobile Plugin package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPtouch Mobile Plugin 4.0.2\n"
+"Project-Id-Version: WPtouch Mobile Plugin 4.0.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wptouch\n"
-"POT-Creation-Date: 2015-12-29 20:14:53+00:00\n"
+"POT-Creation-Date: 2016-01-19 18:19:23+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: admin/customizer/wptouch-customizer.php:512
+#: admin/customizer/wptouch-customizer.php:556
 msgid "Device + Orientation"
 msgstr ""
 
-#: admin/customizer/wptouch-customizer.php:537
+#: admin/customizer/wptouch-customizer.php:581
 msgid "Switch to Mobile Theme"
 msgstr ""
 
-#: admin/customizer/wptouch-customizer.php:538
+#: admin/customizer/wptouch-customizer.php:582
 msgid "Switch to Desktop Theme"
 msgstr ""
 
@@ -182,7 +182,7 @@ msgstr ""
 msgid "Site License"
 msgstr ""
 
-#: admin/pages/custom/wptouch-admin-license.php:92 core/menu-walkers.php:409
+#: admin/pages/custom/wptouch-admin-license.php:92 core/menu-walkers.php:415
 msgid "Remove"
 msgstr ""
 
@@ -899,7 +899,7 @@ msgstr ""
 
 #: admin/settings/html/extension-browser-item-detail.php:61
 #: admin/settings/html/theme-browser-item-detail.php:79
-#: core/menu-walkers.php:359
+#: core/menu-walkers.php:365
 msgid "Description"
 msgstr ""
 
@@ -1186,9 +1186,8 @@ msgstr ""
 
 #: core/class-wptouch-pro.php:550
 msgid ""
-"Automatic theme migration from uploads/wptouch-data directory failed. Please "
-"manually move these files to wp-content/wptouch-data, or %scontact support%s "
-"to address this issue."
+"Automatic theme migration from wp-content/uploads/wptouch-data directory "
+"failed. Please manually move these folders to wp-content/wptouch-data: %s"
 msgstr ""
 
 #: core/class-wptouch-pro.php:569
@@ -1305,11 +1304,11 @@ msgstr ""
 msgid "%s Changelog"
 msgstr ""
 
-#: core/class-wptouch-pro.php:2868
+#: core/class-wptouch-pro.php:2869
 msgid "Directory Problem"
 msgstr ""
 
-#: core/class-wptouch-pro.php:2869
+#: core/class-wptouch-pro.php:2870
 msgid "One or more required directories could not be created"
 msgstr ""
 
@@ -1330,103 +1329,103 @@ msgid "Auto-detect"
 msgstr ""
 
 #. translators: %s: title of menu item which is invalid
-#: core/menu-walkers.php:264
+#: core/menu-walkers.php:270
 msgid "%s (Invalid)"
 msgstr ""
 
 #. translators: %s: title of menu item in draft status
-#: core/menu-walkers.php:268
+#: core/menu-walkers.php:274
 msgid "%s (Pending)"
 msgstr ""
 
-#: core/menu-walkers.php:281
+#: core/menu-walkers.php:287
 msgid "sub item"
 msgstr ""
 
-#: core/menu-walkers.php:296
+#: core/menu-walkers.php:302
 msgid "Move up"
 msgstr ""
 
-#: core/menu-walkers.php:309
+#: core/menu-walkers.php:315
 msgid "Move down"
 msgstr ""
 
-#: core/menu-walkers.php:311 core/menu-walkers.php:313
+#: core/menu-walkers.php:317 core/menu-walkers.php:319
 msgid "Edit Menu Item"
 msgstr ""
 
-#: core/menu-walkers.php:322
+#: core/menu-walkers.php:328
 msgid "URL"
 msgstr ""
 
-#: core/menu-walkers.php:329
+#: core/menu-walkers.php:335
 msgid "Navigation Label"
 msgstr ""
 
-#: core/menu-walkers.php:335
+#: core/menu-walkers.php:341
 msgid "Title Attribute"
 msgstr ""
 
-#: core/menu-walkers.php:342
+#: core/menu-walkers.php:348
 msgid "Open link in a new window/tab"
 msgstr ""
 
-#: core/menu-walkers.php:347
+#: core/menu-walkers.php:353
 msgid "CSS Classes (optional)"
 msgstr ""
 
-#: core/menu-walkers.php:353
+#: core/menu-walkers.php:359
 msgid "Link Relationship (XFN)"
 msgstr ""
 
-#: core/menu-walkers.php:361
+#: core/menu-walkers.php:367
 msgid ""
 "The description will be displayed in the menu if the current theme supports "
 "it."
 msgstr ""
 
-#: core/menu-walkers.php:371
+#: core/menu-walkers.php:377
 msgid "Mobile Menu Icon"
 msgstr ""
 
-#: core/menu-walkers.php:375
+#: core/menu-walkers.php:381
 msgid "WPtouch Icons"
 msgstr ""
 
-#: core/menu-walkers.php:375
+#: core/menu-walkers.php:381
 msgid "Change Icon"
 msgstr ""
 
-#: core/menu-walkers.php:376
+#: core/menu-walkers.php:382
 msgid "Use Default"
 msgstr ""
 
-#: core/menu-walkers.php:384
+#: core/menu-walkers.php:390
 msgid "Move"
 msgstr ""
 
-#: core/menu-walkers.php:385
+#: core/menu-walkers.php:391
 msgid "Up one"
 msgstr ""
 
-#: core/menu-walkers.php:386
+#: core/menu-walkers.php:392
 msgid "Down one"
 msgstr ""
 
-#: core/menu-walkers.php:389
+#: core/menu-walkers.php:395
 msgid "To the top"
 msgstr ""
 
-#: core/menu-walkers.php:396
+#: core/menu-walkers.php:402
 msgid "Original: %s"
 msgstr ""
 
-#: core/menu-walkers.php:410 themes/bauhaus/default/comments.php:48
+#: core/menu-walkers.php:416 themes/bauhaus/default/comments.php:48
 #: themes/foundation/default/comments.php:48
 msgid "Cancel"
 msgstr ""
 
-#: core/menu-walkers.php:639
+#: core/menu-walkers.php:645
 msgid "Feed for all posts filed under %s"
 msgstr ""
 
@@ -1822,94 +1821,92 @@ msgid ""
 "site."
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:299
+#: themes/foundation/modules/featured/featured.php:302
 msgid "Number of posts in slider"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:312
+#: themes/foundation/modules/featured/featured.php:315
 msgid "Slide automatically "
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:320
+#: themes/foundation/modules/featured/featured.php:323
 msgid "Slides repeat"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:328
+#: themes/foundation/modules/featured/featured.php:331
 msgid "Make images grayscale"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:336
+#: themes/foundation/modules/featured/featured.php:339
 msgid "Slider posts also show in listings"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:344
+#: themes/foundation/modules/featured/featured.php:347
 msgid "Slide transition speed"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:349
+#: themes/foundation/modules/featured/featured.php:352
 msgid "Slow"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:350
+#: themes/foundation/modules/featured/featured.php:353
 msgid "Normal"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:351
+#: themes/foundation/modules/featured/featured.php:354
 msgid "Fast"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:362
+#: themes/foundation/modules/featured/featured.php:365
 msgid "Show latest posts"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:363
+#: themes/foundation/modules/featured/featured.php:366
 msgid "Show posts from a specific tag"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:364
+#: themes/foundation/modules/featured/featured.php:367
 msgid "Show posts from a specific category"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:365
+#: themes/foundation/modules/featured/featured.php:368
 msgid "Show posts from a specific post type"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:366
+#: themes/foundation/modules/featured/featured.php:369
 msgid "Show only specific posts or pages"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:372
-#: themes/foundation/modules/featured/featured.php:380
+#: themes/foundation/modules/featured/featured.php:375
 msgid "Only this tag"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:373
-#: themes/foundation/modules/featured/featured.php:381
-#: themes/foundation/modules/featured/featured.php:390
+#: themes/foundation/modules/featured/featured.php:376
+#: themes/foundation/modules/featured/featured.php:385
 msgid "Enter the tag/category slug name"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:389
+#: themes/foundation/modules/featured/featured.php:384
 msgid "Only this category"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:398
+#: themes/foundation/modules/featured/featured.php:393
 msgid "Comma-separated list of post/page IDs"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:409
+#: themes/foundation/modules/featured/featured.php:404
 msgid "Only this post type"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:419
+#: themes/foundation/modules/featured/featured.php:414
 msgid "Featured Slider"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:426
+#: themes/foundation/modules/featured/featured.php:421
 msgid "Enable featured slider"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:427
+#: themes/foundation/modules/featured/featured.php:422
 msgid "Requires at least 2 entries to contain featured images"
 msgstr ""
 

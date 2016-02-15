@@ -84,6 +84,9 @@ class AAM_Backend_Manager {
         $list = AAM_Core_API::getOption('aam-extension-repository', array());
         $repo = AAM_Core_Repository::getInstance();
         
+        //WP Error Fix bug report
+        $list = (is_array($list) ? $list : array());
+        
         foreach($list as $extension) {
             $status = $repo->extensionStatus($extension->title);
             if ($status == AAM_Core_Repository::STATUS_UPDATE) {

@@ -164,7 +164,7 @@ function wptouch_render_general_page( $page_options ) {
 	);
 
 	$landing_settings = array(
-		wptouch_add_pro_setting(
+		wptouch_add_setting(
 			'list',
 			'homepage_landing',
 			__( 'Mobile front page', 'wptouch-pro' ),
@@ -177,7 +177,7 @@ function wptouch_render_general_page( $page_options ) {
 				'custom' => _x( 'Redirect to a custom URL', 'Refers to a custom landing page', 'wptouch-pro' )
 			)
 		),
-		wptouch_add_pro_setting(
+		wptouch_add_setting(
 			'text',
 			'homepage_redirect_custom_target',
 			__( 'Custom Slug or URL', 'wptouch-pro' ),
@@ -185,7 +185,7 @@ function wptouch_render_general_page( $page_options ) {
 			WPTOUCH_SETTING_BASIC,
 			'3.0'
 		),
-		wptouch_add_pro_setting(
+		wptouch_add_setting(
 			'redirect',
 			'homepage_redirect_wp_target',
 			false,

@@ -45,8 +45,6 @@ define ("Osm_thunderforest_Spinal_Tiles", 'http://{a-c}.tile.thunderforest.com/s
 define ("Osm_thunderforest_Pioneer_Tiles", 'http://{a-c}.tile.thunderforest.com/pioneer/{z}/{x}/{y}.png');
 
 define ("Osm_OpenCycle_Tiles", 'http://{a-c}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png');
-
-
   
 // Stamen
   define ("Osm_Stamen_Tiles_a", 'http://a.tile.stamen.com/');
@@ -61,13 +59,6 @@ define ("Osm_OL_3_CSS", OSM_PLUGIN_URL."js/OL/3.12.1/css/ol.css");
 define ("Osm_OL_3_Ext_LibraryLocation", OSM_PLUGIN_URL."js/osm-v3-plugin-lib.js");
 define ("Osm_OL_3_Ext_CSS", OSM_PLUGIN_URL."css/osm_map_v3.css");
 
-// Google
-if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) {
-  define ("Osm_GOOGLE_LibraryLocation", 'https://maps.google.com/maps/api/js?sensor=false');}
-else{
-//  define ("Osm_GOOGLE_LibraryLocation", 'http://maps.google.com/maps/api/js?sensor=false');
-define ("Osm_GOOGLE_LibraryLocation", 'http://maps.google.com/maps/api/js?v=3&amp;sensor=false');
-}
 // OpenSeaMap scripts
 define ("Osm_harbours_LibraryLocation", OSM_PLUGIN_URL.'js/OSeaM/harbours.js');
 define ("Osm_map_utils_LibraryLocation", OSM_PLUGIN_URL.'js/OSeaM/map_utils.js');

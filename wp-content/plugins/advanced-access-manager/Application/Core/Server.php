@@ -27,7 +27,7 @@ final class AAM_Core_Server {
      * 
      * Fetch the extension list with versions from the server
      * 
-     * @return array|WP_Error
+     * @return array
      * 
      * @access public
      */
@@ -35,13 +35,12 @@ final class AAM_Core_Server {
         $response = self::send(self::SERVER_URL . '/check');
 
         if (!is_wp_error($response)) {
-            if ($response->error === true) {
-                $result = new WP_Error($response->code, $response->message);
-            } else {
+            //WP Error Fix bug report
+            if ($response->error !== true && !empty($response->products)) {
                 $result = $response->products;
             }
         } else {
-            $result = $response;
+            $result = array();
         }
 
         return $result;

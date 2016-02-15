@@ -720,7 +720,7 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                     break;
             }
 
-            var urlBase = '<?php echo admin_url('admin-ajax.php') ?>?action=cfdb-export&';
+            var urlBase = '<?php echo $plugin->getAdminUrlPrefix('admin-ajax.php') ?>action=cfdb-export&';
 
             if (shortcode) {
                 // Output short code text
@@ -766,7 +766,7 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                         exportUrlElements.push("username=" + encodeURI(user));
                         exportUrlElements.push("password=" + encodeURI(pass));
                     }
-                    urlBase = '<?php echo admin_url('admin-ajax.php') ?>?action=cfdb-login&cfdb-action=cfdb-export&';
+                    urlBase = '<?php echo $plugin->getAdminUrlPrefix('admin-ajax.php') ?>action=cfdb-login&cfdb-action=cfdb-export&';
                     exportValidationErrors.push("<?php echo htmlspecialchars(__('Warning: the function includes your WP login information. Avoid sharing it.', 'contact-form-7-to-database-extension')) ?>");
                 }
 
@@ -1024,7 +1024,8 @@ class CFDBViewShortCodeBuilder extends CFDBView {
 
 
     </script>
-    <style type="text/css">
+    <!--suppress CssInvalidPropertyValue -->
+        <style type="text/css">
         div.shortcodeoptions {
             border: #ccccff groove;
             margin-bottom: 10px;

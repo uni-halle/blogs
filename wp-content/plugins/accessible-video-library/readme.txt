@@ -3,9 +3,10 @@ Contributors: joedolson
 Donate link: http://www.joedolson.com/donate.php
 Tags: a11y, video, library, manager, captions, subtitles, transcription, i18n, l10n
 Requires at least: 4.0
-Tested up to: 4.2.2
+Tested up to: 4.4.1
 License: GPLv2 or later
-Stable tag: 1.1.0
+Text domain: accessible-video-library
+Stable tag: 1.1.1
 
 Generates a library for your video information where you can upload caption files, include transcripts, and upload subtitles for other languages.
 
@@ -40,6 +41,11 @@ Translating my plug-ins is always appreciated. Visit <a href="http://translate.j
 
 == Changelog ==
 
+= 1.1.2 =
+
+* Updated tested to
+* Fix textdomains
+
 = 1.1.1 =
 
 * Filter on MEJS settings 'avl_mediaelement_args'
@@ -48,6 +54,7 @@ Translating my plug-ins is always appreciated. Visit <a href="http://translate.j
 * Bug fix: No height on video player in some contexts.
 * Bug fix: Subtitles would only show up if Captions were also added.
 * Updated mediaelementjs init file.
+* Now requiring WP version 4.0
 * Added translations: German, French, Portuguese (Brazil), Polish, Dutch
 
 = 1.1.0 =
@@ -115,5 +122,4 @@ Go to Settings > Permalinks and update your permalinks format -- the issue is th
 
 == Upgrade Notice ==
 
-= 1.1.0 =
-Responsive video, Miscellaneous bug fixes.
+1.1.1: Translations, Miscellaneous bug fixes.

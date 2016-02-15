@@ -69,7 +69,7 @@ class FG_Joomla_to_WordPress {
 	public function __construct() {
 
 		$this->plugin_name = 'fg-joomla-to-wordpress';
-		$this->version = '2.11.1';
+		$this->version = '3.0.3';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -168,7 +168,7 @@ class FG_Joomla_to_WordPress {
 		/**
 		 * The plugin is hooked to the WordPress importer
 		 */
-		if ( !defined('WP_LOAD_IMPORTERS') ) {
+		if ( !defined('WP_LOAD_IMPORTERS') && !defined('DOING_AJAX') ) {
 			return;
 		}
 
@@ -180,6 +180,7 @@ class FG_Joomla_to_WordPress {
 		$this->loader->add_action( 'fgj2wp_pre_import_check', $plugin_admin, 'test_joomla_1_0' );
 		$this->loader->add_action( 'load-importer-fgj2wp', $plugin_admin, 'add_help_tab', 20 );
 		$this->loader->add_action( 'admin_footer', $plugin_admin, 'display_notices', 20 );
+		$this->loader->add_action( 'wp_ajax_fgj2wp_import', $plugin_admin, 'ajax_importer' );
 		
 		/*
 		 * Modules checker
@@ -194,7 +195,7 @@ class FG_Joomla_to_WordPress {
 		$this->loader->add_action( 'fgj2wp_post_empty_database', $plugin_weblinks, 'empty_links' );
 		$this->loader->add_action( 'fgj2wp_post_import', $plugin_weblinks, 'import_links' );
 		$this->loader->add_action( 'fgj2wp_import_notices', $plugin_weblinks, 'display_links_count' );
-		$this->loader->add_action( 'fgj2wp_pre_display_admin_page', $plugin_weblinks, 'process_admin_page', 11, 1 );
+		$this->loader->add_filter( 'fgj2wp_get_database_info', $plugin_weblinks, 'get_database_info' );
 		
 	}
 

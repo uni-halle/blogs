@@ -75,9 +75,7 @@ class AAM_Backend_Capability {
         if ($subject instanceof AAM_Core_Subject_Role) {
             $response['data'] = $this->retrieveAllCaps();
         } else {
-            $role_list = $subject->roles;
-            $role = AAM_Core_API::getRoles()->get_role(array_shift($role_list));
-            foreach (array_keys($role->capabilities) as $cap) {
+            foreach ($this->getCapabilityList($subject) as $cap) {
                 $response['data'][] = array(
                     $cap,
                     $this->getGroup($cap),
@@ -88,6 +86,25 @@ class AAM_Backend_Capability {
         }
 
         return json_encode($response);
+    }
+    
+    /**
+     * 
+     * @param AAM_Core_Subject_User $subject
+     * @return type
+     */
+    protected function getCapabilityList(AAM_Core_Subject_User $subject) {
+        $list = array();
+        
+        foreach($subject->roles as $slug) {
+            $role = AAM_Core_API::getRoles()->get_role($slug);
+            if ($role) {
+                $list = array_keys($role->capabilities);
+                break;
+            }
+        }
+        
+        return $list;
     }
     
     /**

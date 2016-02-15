@@ -46,13 +46,13 @@ echo '<h2>You Scored <span>'.$total.'/'.$total_Questions.' or '.$total_Percent.'
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 if ($total_Percent < $passPerc) { 
-	$captionText = stripslashes($_POST[quFail]); 
-	echo '<h3>'.$captionText.'</h3>';
+	$captionText = $_POST[quFail]; 
+	echo '<h3>'.stripslashes(nl2br($captionText)).'</h3>';
 }
 else {
-	$captionText = stripslashes($_POST[quPass]);
+	$captionText = $_POST[quPass];
 
-	echo '<h3>'.$captionText.'</h3>';
+	echo '<h3>'.stripslashes(nl2br($captionText)).'</h3>';
 }
 ?>
 
@@ -95,7 +95,6 @@ else { ?>
 $hdQuJ("#fbShare").attr("src", pluginURL + "fbshare.png");
 $hdQuJ("#twShare").attr("src", pluginURL + "twshare.png");
 
-
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '<?php echo $fb; ?>',
@@ -112,6 +111,7 @@ $hdQuJ("#twShare").attr("src", pluginURL + "twshare.png");
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
+
 function shareOnFB() {
     var e = {
         method: "feed",
@@ -120,11 +120,7 @@ function shareOnFB() {
         caption: "<?php echo $captionText; ?>",
         description: "<?php echo 'I scored '.$total.'/'.$total_Questions.' or '.$total_Percent.'%. Can you beat me?'; ?>"
     };
-    FB.ui(e, function(t) {
-        if (t["post_id"]) {
-		// save for later. Success on share
-        } 
-    })
+    FB.ui(e, function(t) {})
 }
 
 </script>

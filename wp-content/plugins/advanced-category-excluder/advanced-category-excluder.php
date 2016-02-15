@@ -125,7 +125,7 @@ function ace_where($where,$filter="")
 	    
     if ( !empty($filter) && !empty($cats_to_exclude) && strlen($cats_to_exclude) > 0)
     {
-		$sql_version = substr(mysql_get_server_info(),0,3);
+		//$sql_version = substr(mysql_get_server_info(),0,3);
 		
     	if (empty($wpdb->term_taxonomy)) 
 	    // wordpress version < 2.3

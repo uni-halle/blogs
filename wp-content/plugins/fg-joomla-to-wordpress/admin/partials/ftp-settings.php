@@ -19,5 +19,6 @@
 				</tr>
 				<tr>
 					<th scope="row">&nbsp;</th>
-					<td><?php submit_button( __('Test the FTP connection', 'fg-joomla-to-wordpress'), 'secondary', 'ftp_test' ); ?></td>
+					<td><?php submit_button( __('Test the FTP connection', 'fg-joomla-to-wordpress'), 'secondary', 'test_ftp' ); ?>
+					<span id="ftp_test_message" class="action_message"></span></td>
 				</tr>

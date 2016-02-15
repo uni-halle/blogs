@@ -27,6 +27,7 @@ ________________________________________________________
 .taxonomy-quiz #wpcontent {background: #222}
 .taxonomy-quiz #wpcontent h1 {color:#fff}
 .taxonomy-quiz ul#adminmenu a.wp-has-current-submenu:after {border-right-color: #222 !important;}
+
 /* ------- Fluid Columns
 ________________________________________________________
 -------------------------------------------------------- */
@@ -34,7 +35,7 @@ ________________________________________________________
 .clearboth {clear:both;display:block;font-size:0;height:0;line-height:0;width:100%;}
 
 #hdQuestionnaireContent {max-width:600px; margin: 0 auto;}
-
+#hdQuestionnaireContent #quPass, #hdQuestionnaireContent #quFail {display:none !important;}
 #hdQuestionnaireContent .correct {border-bottom: 3px solid rgba(15, 143, 18, 0.7) !important}
 #hdQuestionnaireContent .wrong {border-bottom: 3px solid rgba(196, 22, 36, 0.7) !important}
 #hdQuestionnaireContent .correct2 {border: 8px solid rgba(15, 143, 18, 0.7) !important }
@@ -77,6 +78,8 @@ a.hdQuTooltip span b {background: #2d2d2d; border-top: 1px solid #2d2d2d; border
 .hdTable .hdQuTooltip, .hdTable a.hdQuTooltip > .hdTable span, .hdTable a.hdQuTooltip span b, .hdTable a.hdQuTooltip > span {background:#fdfdfd; color:#2d2d2d}
 .hdTable a.hdQuTooltip > span {margin-left: -30px;}
 .hdTable a.hdQuTooltip span b {margin-left: 0px;}
+
+#hdQuestionnaireContent .questionContent {display:none; margin-top:12px; padding: 12px; background:#E3E3E3}
 
 #hdQuestionnaireContent input[type="radio"]:checked + label span {background:url(icon.png) -19px top no-repeat !important;}
 #hdQuestionnaireContent label {-webkit-transition: all 650ms ease-in-out !important;-moz-transition: all 650ms ease-in-out !important; -o-transition: all 650ms ease-in-out !important; -ms-transition: all 650ms ease-in-out !important; display:block; padding: 6px 0 }

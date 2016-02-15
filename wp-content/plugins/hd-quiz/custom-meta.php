@@ -152,7 +152,7 @@ function quiz_taxonomy_custom_fields($tag) {
 		<label for ="term_meta[passText]"><?php _e('Quiz pass text'); ?></label>
 	</th>
 	<td>
-			<input class="widefat" type="text"   name="term_meta[passText]" id="term_meta[passText]" value="<?php echo stripslashes($term_meta['passText']) ? stripslashes($term_meta['passText']) : ''; ?>" size="99" />
+		<?php wp_editor( stripslashes($term_meta['passText']), "hd_quiz_term_meta_passText", array('textarea_name' => 'term_meta[passText]','teeny' => true, 'media_buttons' => false, 'textarea_rows' => 1, 'quicktags' => false)); ?>
 <p class ="description small">Customize the text that appears when a user completes the quiz and achieves the pass percentage or higher.</p>
 
 	</td>
@@ -163,7 +163,7 @@ function quiz_taxonomy_custom_fields($tag) {
 		<label for ="term_meta[failText]"><?php _e('Quiz fail text'); ?></label>
 	</th>
 	<td>
-			<input class="widefat" type="text" name="term_meta[failText]" id="term_meta[failText]" value="<?php echo stripslashes($term_meta['failText']) ? stripslashes($term_meta['failText']) : ''; ?>" size="99" />
+			<?php wp_editor( stripslashes($term_meta['failText']), "hd_quiz_term_meta_failText", array('textarea_name' => 'term_meta[failText]','teeny' => true, 'media_buttons' => false, 'textarea_rows' => 1, 'quicktags' => false)); ?>
 <p class ="description small">Customize the text that appears when a user completes the quiz and does not achieve the pass percentage.</p>
 	</td>
 </tr>
@@ -388,6 +388,7 @@ wp_enqueue_script(
 	'1.0',
         true
 ); 
+wp_enqueue_media();
 ?>
 
 
@@ -614,6 +615,14 @@ wp_enqueue_script(
 <label for ="hdQue-post-class12">Tool tip text <br/>
 			<input class="widefatText" name="hdQue-post-class12" id="hdQue-post-class12" value ="<?php echo esc_attr( get_post_meta( $object->ID, 'hdQue_post_class12', true ) ); ?>" /></label>
 
+<br/><br/>
+
+
+<label for ="hdQue-post-class26">Text that appears if answer was wrong<br/>
+<?php wp_editor(htmlspecialchars_decode(nl2br(esc_attr(get_post_meta( $object->ID, 'hdQue_post_class26', true)))), "hdQue-post-class26", array('textarea_name' => 'hdQue-post-class26','teeny' => true, 'media_buttons' => false, 'textarea_rows' => 3, 'quicktags' => false)); ?>
+</label>
+
+
 <?php }
 
 
@@ -631,7 +640,7 @@ $new_meta_value = array();
 $meta_key = array();
 $new_meta_value = array();
 
- for ($i=1; $i<=25; $i++){
+ for ($i=1; $i<=26; $i++){
 
  	$new_meta_value[$i] = $_POST['hdQue-post-class'.$i];
 	$meta_key[$i] = 'hdQue_post_class'.$i;

@@ -265,7 +265,7 @@ function bauhaus_blog_settings( $blog_settings ) {
 		BAUHAUS_SETTING_DOMAIN
 	);
 
-	$blog_settings[] = wptouch_add_pro_setting(
+	$blog_settings[] = wptouch_add_setting(
 		'radiolist',
 		'bauhaus_thumbnail_type',
 		__( 'Thumbnail Type', 'wptouch-pro' ),
@@ -279,7 +279,7 @@ function bauhaus_blog_settings( $blog_settings ) {
 		BAUHAUS_SETTING_DOMAIN
 	);
 
-	$blog_settings[] = wptouch_add_pro_setting(
+	$blog_settings[] = wptouch_add_setting(
 		'text',
 		'bauhaus_thumbnail_custom_field',
 		__( 'Thumbnail custom field name', 'wptouch-pro' ),

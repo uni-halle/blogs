@@ -11,8 +11,19 @@
 	$resultsShare = esc_attr($term_meta['shareResults']);
 	$showResults = esc_attr($term_meta['showResults']);
 	$showResultsCorrect = esc_attr($term_meta['showResultsCorrect']);
-	$passText = esc_attr($term_meta['passText']);
-	$failText = esc_attr($term_meta['failText']);
+	$hdpageID = '';
+	// lots of sanitation to ensure no line breaks occur and that links work correctly
+	// there's almost definitely a better way to do this. Must optimize in future.
+
+	$passText = $term_meta['passText'];
+	$failText = $term_meta['failText'];
+	$passText = nl2br($passText);
+	$failText = nl2br($failText);
+	$passText = strip_tags(stripslashes($passText), '<a><i><em><b><strong><u><br><p>');
+	$failText = strip_tags(stripslashes($failText), '<a><i><em><b><strong><u><br><p>');
+	$passText = trim(preg_replace('/\s+/', ' ', $passText));
+	$failText = trim(preg_replace('/\s+/', ' ', $failText));
+
 	$passPercent = esc_attr($term_meta['passPercent']);
 	$quizTimerS = esc_attr($term_meta['quizTimerS']);
 	if (!$quizTimerS) {$quizTimerS = "0";}
@@ -30,6 +41,8 @@
 	$tw = get_option( 'hd_qu_tw' );
 	$nextText = get_option( 'hd_qu_next' );
 	$finishText = get_option( 'hd_qu_finish' );
+	$questionText = get_option( 'hd_qu_questionName' );
+	if (!$questionText) {$questionText = "Question";}
 	if (!$resultsPos) {$resultsPos = "yes";}
 	if (!$showResults) {$showResults = "yes";}
 	if (!$resultsShare) {$resultsShare = "yes";}
@@ -69,13 +82,9 @@ else {
 <?php if ($resultsPos == "yes") { ?>
 	<div id ="results">
 		<?php
-			if ( has_post_thumbnail($t_id) ) { 
-			    echo '<div class ="hd_qu_featuredImage_wrapper">';
-				$src = wp_get_attachment_image_src( get_post_thumbnail_id($quiz), 'hd_qu_size' );
-				$url = $src[0];
-				echo '<img src ="'.$url.'" class= "hd_qu_featuredImage" alt ="" />';
-			    echo '</div>';
-
+			if ( has_post_thumbnail($hdpageID) ) { 
+			    // save this for when I finish implementing pass/fail featured image
+			    echo '<div class ="hd_qu_featuredImage_wrapper"></div>';
 			}
 		?>
 		<div id ="resultsTotal"></div>
@@ -152,6 +161,7 @@ else {
 			$img8 = esc_attr( get_post_meta( $post->ID, 'hdQue_post_class20', true ) );
 			$img9 = esc_attr( get_post_meta( $post->ID, 'hdQue_post_class21', true ) );
 			$img10 = esc_attr( get_post_meta( $post->ID, 'hdQue_post_class22', true ) );
+			$questionContent = esc_attr( get_post_meta( $post->ID, 'hdQue_post_class26', true ) );
 			$questionAsTitle = esc_attr( get_post_meta( $post->ID, 'hdQue_post_class24', true ) );
 			$jPaginate = esc_attr( get_post_meta( $post->ID, 'hdQue_post_class25', true ) );
 
@@ -172,7 +182,7 @@ else {
 <?php
 	if (!$questionAsTitle || $questionAsTitle != "yes") { ?>
 
-		<h3><?php if ($tooltip) {echo '<a class ="hdQuTooltip">? <span><b></b>'.$tooltip.'</span></a>';} ?>Question #<?php if ($questionNumber >= 1) { echo $questionNumber; $questionNumber++; } else { echo $i;}?>: <?php the_title();?></h3>
+		<h3><?php if ($tooltip) {echo '<a class ="hdQuTooltip">? <span><b></b>'.$tooltip.'</span></a>';} ?><?php echo $questionText; ?> #<?php if ($questionNumber >= 1) { echo $questionNumber; $questionNumber++; } else { echo $i;}?>: <?php the_title();?></h3>
 
 
 <?php
@@ -193,6 +203,10 @@ if ( has_post_thumbnail() ) {
 		<h3><?php if ($tooltip) {echo '<a class ="hdQuTooltip">? <span><b></b>'.$tooltip.'</span></a>';} ?><?php the_title();?></h3>
 	<?php }
 
+		if ($questionContent) {
+			echo '<div class ="questionContent">'.htmlspecialchars_decode($questionContent).'</div>';
+		}
+
 ?>
 			
 		</div>
@@ -208,8 +222,11 @@ if ( has_post_thumbnail() ) {
 
 	?>	
 
-		<input type="hidden" name ="quPass" id ="quPass" value="<?php echo stripslashes($passText); ?>">
-		<input type="hidden" name ="quFail" id ="quFail" value="<?php echo stripslashes($failText); ?>">
+		<div class ="HDhidden" style ="display:none;">
+
+		<textarea name ="quPass" id ="quPass"><?php echo $passText; ?></textarea>
+		<textarea name ="quFail" id ="quFail"><?php echo $failText; ?></textarea>
+
 		<input type="hidden" name ="showResults" id ="showResults" value="<?php echo stripslashes($showResults); ?>">
 		<input type="hidden" name ="quPassPercent" id ="quPassPercent" value="<?php echo esc_attr($passPercent); ?>">
 		<input type="hidden" name ="quQuizTitle" id ="quQuizTitle" value="<?php the_title(); ?>">
@@ -221,6 +238,8 @@ if ( has_post_thumbnail() ) {
 
 		<input type="hidden" name ="maxValue" id ="maxValue" value="<?php if ($prevValue != "NaN") { echo $prevValue + $i; } else {echo $i; } ?>">
 		<input type="hidden" name ="currentScore" id ="currentScore" value="<?php echo $currentScore;?>">
+
+		</div>
 <?php 
 	if ($query->max_num_pages > 1 ||  $quizPaginate != "-1") { 
 		if ($query->max_num_pages != $paged) { ?>
@@ -248,12 +267,8 @@ if ( has_post_thumbnail() ) {
 	<div id ="results">
 		<?php
 			if ( has_post_thumbnail($quiz) ) { 
-			    echo '<div class ="hd_qu_featuredImage_wrapper">';
-				$src = wp_get_attachment_image_src( get_post_thumbnail_id($quiz), 'hd_qu_size' );
-				$url = $src[0];
-				echo '<img src ="'.$url.'" class= "hd_qu_featuredImage" alt ="" />';
-			    echo '</div>';
-
+			    // save this for when I finish implementing pass/fail featured image
+			    echo '<div class ="hd_qu_featuredImage_wrapper"></div>';
 			}
 		?>
 		<div id ="resultsTotal"></div>

@@ -547,7 +547,7 @@ class WPtouchProFour {
 
 	function check_for_critical_notifications() {
 		if ( defined( 'WPTOUCH_MIGRATION_OLD_ISSUE' ) ) {
-			$this->add_critical_notification( sprintf( __( 'Automatic theme migration from uploads/wptouch-data directory failed. Please manually move these files to wp-content/wptouch-data, or %scontact support%s to address this issue.', 'wptouch-pro' ), '<a href="https://support.wptouch.com/">', '</a>' ) );
+			$this->add_critical_notification( sprintf( __( 'Automatic theme migration from wp-content/uploads/wptouch-data directory failed. Please manually move these folders to wp-content/wptouch-data: %s', 'wptouch-pro' ), "<em>'themes', 'icons', 'lang', 'uploads', 'backups'</em>" ) );
 		}
 	}
 
@@ -2442,6 +2442,7 @@ class WPtouchProFour {
 				foreach( (array)$defaults as $name => $value ) {
 					if ( !isset( $settings->$name ) ) {
 						$settings->$name = $value;
+						do_action( 'wptouch_settings_after_merge_default', $domain, $name, $value );
 					}
 				}
 			}

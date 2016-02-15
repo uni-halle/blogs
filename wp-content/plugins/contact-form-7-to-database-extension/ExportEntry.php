@@ -53,8 +53,8 @@ class ExportEntry extends ExportToHtmlTemplate implements CFDBExport {
 
         $javascript = '';
         if ($this->plugin->isEditorActive()) {
-            $cfdbEditUrl = admin_url('admin-ajax.php') . '?action=cfdb-edit';
-            $cfdbGetValueUrl = admin_url('admin-ajax.php') . '?action=cfdb-getvalue';
+            $cfdbEditUrl = $this->plugin->getAdminUrlPrefix('admin-ajax.php') . 'action=cfdb-edit';
+            $cfdbGetValueUrl = $this->plugin->getAdminUrlPrefix('admin-ajax.php') . 'action=cfdb-getvalue';
             $loadImg = plugins_url('/../contact-form-to-database-extension-edit/img/load.gif', __FILE__);
             $javascript = sprintf(
                     '

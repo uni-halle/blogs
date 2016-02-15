@@ -7,7 +7,7 @@
 		<i class="wptouch-tooltip" title="<?php wptouch_admin_the_setting_tooltip(); ?>"></i>
 	<?php } ?>
 
-	<input type="hidden" name="hid-<?php wptouch_admin_the_encoded_setting_name(); ?>" />
+	<input type="hidden" name="hid-<?php wptouch_admin_the_encoded_setting_name(); ?>" value="hide" />
 	<input type="checkbox" class="checkbox" name="<?php wptouch_admin_the_encoded_setting_name(); ?>" id="<?php wptouch_admin_the_setting_name(); ?>"<?php if ( wptouch_admin_is_setting_checked() ) echo " checked"; ?> />
 	<label for="<?php wptouch_admin_the_setting_name(); ?>"></label>
 </div>

@@ -37,9 +37,9 @@ class CFDBViewImportCsv extends CFDBView
         }
 
         $forms = $plugin->getForms();
-        $importUrl = admin_url('admin-ajax.php') . '?action=cfdb-importcsv';
-        $renameUrl = admin_url('admin-ajax.php') . '?action=cfdb-renameform';
-        $clenaupUrl = admin_url('admin-ajax.php') . '?action=cfdb-cleanup';
+        $importUrl = $plugin->getAdminUrlPrefix('admin-ajax.php') . 'action=cfdb-importcsv';
+        $renameUrl = $plugin->getAdminUrlPrefix('admin-ajax.php') . 'action=cfdb-renameform';
+        $clenaupUrl = $plugin->getAdminUrlPrefix('admin-ajax.php') . 'action=cfdb-cleanup';
 
         ?>
         <h2><?php echo htmlspecialchars(__('Import CSV File into Form', 'contact-form-7-to-database-extension')); ?></h2>

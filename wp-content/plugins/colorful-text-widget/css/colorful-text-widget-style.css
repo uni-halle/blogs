@@ -1,0 +1,18 @@
+/* stylesheet for Colorful text widget */
+
+//** Colors **//
+
+.widget_colorful_text_widget {
+	width: 100%;
+	color: black;
+}
+
+.ctw{
+	/*border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	-o-border-radius:10px;*/
+	padding: 15px;
+	color: #000;	
+	text-align:justify;
+}

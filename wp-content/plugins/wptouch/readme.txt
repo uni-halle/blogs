@@ -2,7 +2,7 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 4.0
-Stable tag: 4.0.2
+Stable tag: 4.0.3
 Tested up to: 4.4
 License: GPLv2
 
@@ -32,6 +32,12 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 6. Theme settings
 
 == Changelog ==
+
+= Version 4.0.3 (January 19, 2016) =
+
+* Fixed: Menu icon selection when using relative-protocol media URLs
+* Fixed: Black field on blog index when featured slider is disabled.
+* Changed: Restored homepage redirect setting - thanks for your feedback!
 
 = Version 4.0.2 (December 29, 2015) =
 

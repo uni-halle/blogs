@@ -167,6 +167,12 @@ add_action( 'wp_update_nav_menu_item', 'wptouch_save_menu_icon', 10, 3 );
 function wptouch_save_menu_icon( $menu_id, $menu_item_db_id, $args ) {
 	if ( isset( $_POST[ 'menu-item-icon' ] ) && isset( $_POST[ 'menu-item-icon' ][ $menu_item_db_id ] ) ) {
 		$image_file = str_replace( wptouch_check_url_ssl( site_url() ), '', $_POST[ 'menu-item-icon' ][ $menu_item_db_id ] );
+
+		if ( substr( $image_file, 0, 2 ) == '//' ) {
+			// Fix for sites that implement protocol-relative media URLs, e.g. with Cloudflare plugin
+			$image_file = substr( $image_file, 2 );
+			$image_file = substr( $image_file, strpos( $image_file, '/' ) );
+		}
 		update_post_meta( $menu_item_db_id, '_wptouch_pro_menu_item_icon', $image_file );
 	}
 }

@@ -5,7 +5,7 @@
  * Plugin URI: http://harmonicdesign.ca/hd-quiz/
  * Author: Harmonic Design
  * Author URI: http://harmonicdesign.ca
- * Version: 1.4.0
+ * Version: 1.4.1
 */
 
 
@@ -125,19 +125,21 @@ function register_HD_questionna_admin_callback() {
     $opt_name2 = 'hd_qu_tw';
     $opt_name3 = 'hd_qu_next';
     $opt_name4 = 'hd_qu_finish';
-
+    $opt_name5 = 'hd_qu_questionName';
 
     $hidden_field_name = 'hd_submit_hidden';
     $data_field_name1 = 'hd_qu_fb';
     $data_field_name2 = 'hd_qu_tw';
     $data_field_name3 = 'hd_qu_next';
     $data_field_name4 = 'hd_qu_finish';
+    $data_field_name5 = 'hd__questionName';
 
     // Read in existing option value from database
     $opt_val1 = get_option( $opt_name1 );
     $opt_val2 = get_option( $opt_name2 );
     $opt_val3 = get_option( $opt_name3 );
     $opt_val4 = get_option( $opt_name4 );
+    $opt_val5 = get_option( $opt_name5 );
 
 
     // See if the user has posted us some information
@@ -148,6 +150,7 @@ function register_HD_questionna_admin_callback() {
         $opt_val2 = sanitize_text_field($_POST[ $data_field_name2 ]);
         $opt_val3 = sanitize_text_field($_POST[ $data_field_name3 ]);
         $opt_val4 = sanitize_text_field($_POST[ $data_field_name4 ]);
+        $opt_val5 = sanitize_text_field($_POST[ $data_field_name5 ]);
 
 
         // Save the posted value in the database
@@ -155,6 +158,7 @@ function register_HD_questionna_admin_callback() {
         update_option( $opt_name2, $opt_val2 );
         update_option( $opt_name3, $opt_val3 );
         update_option( $opt_name4, $opt_val4 );
+        update_option( $opt_name5, $opt_val5 );
 
 
 
@@ -271,6 +275,12 @@ wp_enqueue_style( 'style-name', plugin_dir_url( __FILE__ ) . 'admin.css' );
 					<td valign ="top"><a class ="hdQuTooltip">? <span><b></b>The button a user clicks to submit the quiz</span></a>Finish Button Text</td>
 					<td valign ="top">
 						<input type="text" class ="widefat" name="<?php echo $data_field_name4; ?>" id="<?php echo $data_field_name4; ?>1" value="<?php echo stripslashes($opt_val4);?>">
+					</td>
+				</tr>
+				<tr/>
+					<td valign ="top"><a class ="hdQuTooltip">? <span><b></b>Each question is prefixed by the word 'Question' and the question #. Rename 'question' here.</span></a>Rename 'Question'.</td>
+					<td valign ="top">
+						<input type="text" class ="widefat" name="<?php echo $data_field_name5; ?>" id="<?php echo $data_field_name5; ?>1" value="<?php echo stripslashes($opt_val5);?>">
 					</td>
 				</tr>
 				<tr>

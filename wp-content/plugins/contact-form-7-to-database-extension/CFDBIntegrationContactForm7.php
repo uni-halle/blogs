@@ -93,7 +93,7 @@ class CFDBIntegrationContactForm7 {
 
 // No longer generating submit_url because it seems to cause CF7 to think it is
 // a spam submission and it drops it.
-//            $url = get_admin_url() . sprintf('admin.php?page=%s&submit_time=%s',
+//            $url = $this->getAdminUrlPrefix('admin.php') . sprintf('page=%s&submit_time=%s',
 //
 //                    $this->getDBPageSlug(),
 //                    $time);

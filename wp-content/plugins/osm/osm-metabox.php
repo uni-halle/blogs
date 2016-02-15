@@ -93,11 +93,9 @@ function osm_map_create_shortcode_function( $post ) {
       </select><br>
       <br>
       <b>3. <?php _e('map controls','OSM-plugin') ?></b>: 
-      <form name="MapControlform" action="">
         <input type="checkbox" name="fullscreen" value="fullscreen"> <?php _e('fullscreen','OSM-plugin') ?> 
         <input type="checkbox" name="scaleline" value="scaleline"> <?php _e('scaleline','OSM-plugin') ?> 
         <input type="checkbox" name="mouseposition" value="mouseposition"> <?php _e('mouse position','OSM-plugin') ?> <br><br>
-      </form>
       <b>4. <?php $url = 'http://wp-osm-plugin.hanblog.net/'; 
       $link = sprintf( __( 'Adjust the map and click into the map to generate the shortcode!', 'OSM-plugin' ), esc_url( $url ) );
       echo $link; ?></b><br><br>
@@ -110,14 +108,23 @@ function osm_map_create_shortcode_function( $post ) {
       <select name="osm_file_list_map_type">
       <?php include('osm-maptype-select.php'); ?>
       </select>
-      <b>2. <?php _e('Color','OSM-plugin') ?></b>: 
-      <select name="osm_file_list_color">
+      <b>2. <?php _e('map border','OSM-plugin') ?></b>: 
+      <select name="osm_file_border">
       <?php include('osm-color-select.php'); ?>
-      </select><br><br>
-      <b>3. <?php _e('Paste the local URL of file here: ','OSM-plugin') ?></b><br>
+      </select>
+      <br>
+      <b>3. <?php _e('map controls','OSM-plugin') ?></b>: 
+        <input type="checkbox" name="file_fullscreen" value="file_fullscreen"> <?php _e('fullscreen','OSM-plugin') ?> 
+        <input type="checkbox" name="file_scaleline" value="file_scaleline"> <?php _e('scaleline','OSM-plugin') ?> 
+        <input type="checkbox" name="file_mouseposition" value="file_mouseposition"> <?php _e('mouse position','OSM-plugin') ?> <br><br>
+      <b>4. <?php _e('Paste the local URL of file here: ','OSM-plugin') ?></b><br>
       <?php _e('Do not save any of your personal data in the plugins/osm folder but in the upload folder!','OSM-plugin') ?><br>
       <input name="osm_file_list_URL" type="text" size="30" maxlength="200" value="../../../../wp-content/uploads/YOUR-FILE"><br>
-      <b>4. <?php $url = 'http://wp-osm-plugin.hanblog.net/'; 
+      <b>5. <?php _e('Route Color','OSM-plugin') ?></b>: 
+      <select name="osm_file_list_color">
+      <?php include('osm-color-select.php'); ?>
+      </select><br><br>     
+     <b>6. <?php $url = 'http://wp-osm-plugin.hanblog.net/'; 
       $link = sprintf( __( 'Adjust the map and click into the map to generate the shortcode. Find more features  <a href="%s" target="_blank">here</a> !', 'OSM-plugin' ), esc_url( $url ) );
       echo $link;?></b><br><br>
       <?php echo Osm::sc_showMap(array('msg_box'=>'metabox_file_list_sc_gen','lat'=>OSM_default_lat,'long'=>OSM_default_lon,'zoom'=>OSM_default_zoom, 'type'=>'mapnik_ssl', 'width'=>'450','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition,scaleline')); ?>
@@ -284,7 +291,7 @@ function osm_map_create_shortcode_function( $post ) {
        <td><?php _e('Steamtrain','OSM-plugin') ?></td>
        </tr>  
 </table>
-     <br><?php _e('Find them in the icon dropdwon box of the map generators','OSM-plugin') ?>
+     <br><?php _e('Find them in the icon dropdown box of the map generators','OSM-plugin') ?>
     </div> <!-- id="tab_icons" -->
  
  

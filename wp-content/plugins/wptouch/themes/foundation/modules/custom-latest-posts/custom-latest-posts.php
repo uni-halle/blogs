@@ -32,6 +32,9 @@ function wptouch_custom_latest_post_filter( $query_vars ) {
 					'paged' => $paged,
 					'posts_per_page' => $settings->posts_per_page
 				);
+
+				// Since we're modifying the query here, we need to prevent the custom landing page redirect from firing for this request (it'll think it's loading the homepage)
+				add_filter( 'wptouch_redirect_target', 'wptouch_return_false' );
 		    }
 		}
 	}

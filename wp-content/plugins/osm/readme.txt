@@ -1,9 +1,9 @@
 === OSM - OpenStreetMap ===
 Contributors: MiKa
-Tags: map, OpenStreetMap, Google Maps, googlemaps, geo, KML, GPX, geotag, geolocation, geocache, geocaching, OSM, travelogue, OpenLayers, CloudMade, marker, POI, geocode, geotagging, location, Tracks, WMS, OpenWeatherMap, fullscreen, OpenSeaMap, stamen, basemap, exif, meta, widget
+Tags: map, OpenStreetMap, googlemaps, geo, KML, GPX, geotag, geolocation, geocache, geocaching, OSM, travelogue, OpenLayers, CloudMade, marker, POI, geocode, geotagging, location, Tracks, WMS, fullscreen, OpenSeaMap, stamen, basemap, exif, meta, widget, thunderforest
 Requires at least: 3.0
 Tested up to: 4.4.1
-Stable tag: 3.6.1
+Stable tag: 3.6.2
 
 Customize maps in your post, pages and widgets. Add geotag to your blog and site. Use GPX, KML, ... 
 
@@ -36,15 +36,15 @@ Languages - thanks to:
 * French [by Tounoki and Marc]
 * Russian [by Вячеслав Стренадко/Vyacheslav Strenadko]
 * Italian [by Andrea Giacomelli]
+* Spanish [by Colegota]
 
 Licenses of the maps:
 
 * OpenStreetMap: [OpenStreetMap License](http://wiki.openstreetmap.org/wiki/OpenStreetMap_License) 
-* Google Maps: [Google Maps Terms of Service](http://code.google.com/intl/de-DE/apis/maps/terms.html)
-* OpenWeatherMap: [OpenWeatherMap License](http://openweathermap.org/copyright)
 * Stamen Maps: [Stamen License](http://maps.stamen.com)
 * BaseMap:  [BaseMap License](http://basemap.at)
-* Ext Maps: Depends on the map you are including - check it before including it!
+* Thunderforest: [Thunderforest License](http://www.thunderforest.com/terms/)
+* WMS: Depends on the map you are including - check it before including it!
 
 == Installation ==
 

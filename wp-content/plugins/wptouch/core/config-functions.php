@@ -35,7 +35,7 @@ function wptouch_setup_base_content_dir() {
 		//define( 'WPTOUCH_BASE_CONTENT_URL', wptouch_check_url_ssl( $wptouch_upload_dir[ 'baseurl' ] . '/wptouch-data' ) );
 		wptouch_create_directory_if_not_exist( WP_CONTENT_DIR . $desirable_dir );
 
-		$migration_paths = array( 'themes', 'icons', 'lang', 'uploads', 'add-ons', 'backups' );
+		$migration_paths = array( 'themes', 'icons', 'lang', 'uploads', 'backups' );
 		foreach( $migration_paths as $path ) {
 			if ( file_exists( $undesirable_dir . DIRECTORY_SEPARATOR . $path ) ) {
 				if ( !file_exists( WP_CONTENT_DIR . $desirable_dir . DIRECTORY_SEPARATOR . $path ) ) {

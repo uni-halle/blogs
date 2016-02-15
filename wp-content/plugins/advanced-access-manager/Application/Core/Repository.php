@@ -219,6 +219,9 @@ class AAM_Core_Repository {
         if (empty($this->cache)) {
             $list = AAM_Core_API::getOption('aam-extension-repository', array());
             $licenses = AAM_Core_API::getOption('aam-extension-license', array());
+            
+            //WP Error Fix bug report
+            $list = (is_array($list) ? $list : array());
 
             $this->cache = array();
             foreach ($list as $row) {

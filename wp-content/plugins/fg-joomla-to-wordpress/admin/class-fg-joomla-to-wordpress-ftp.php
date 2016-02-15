@@ -88,15 +88,20 @@ if ( !class_exists('FG_Joomla_to_WordPress_FTP', false) ) {
 		 * Test FTP connection
 		 *
 		 */
-		public function test_ftp_connection() {
-			if ( isset($_POST['ftp_test']) ) {
+		public function test_ftp_connection($action) {
+			if ( $action == 'test_ftp' ) {
 
 				// Save database options
 				$this->plugin->save_plugin_options();
 
 				// Test the database connection
 				if ( check_admin_referer( 'parameters_form', 'fgj2wp_nonce' ) ) { // Security check
-					$this->test_connection();
+					if ( $this->test_connection() ) {
+						$result = array('status' => 'OK', 'message' => __('FTP connection successful', 'fg-joomla-to-wordpress'));
+					} else {
+						$result = array('status' => 'Error', 'message' => __('FTP connection failed', 'fg-joomla-to-wordpress'));
+					}
+					echo json_encode($result);
 				}
 			}
 		}

@@ -150,9 +150,11 @@ final class AAM_Core_API {
     public static function maxLevel($caps, $default = 0) {
         $levels = array($default);
         
-        foreach($caps as $cap => $granted) {
-            if ($granted && preg_match('/^level_(10|[0-9])$/i', $cap, $match)) {
-                $levels[] = intval($match[1]);
+        if (is_array($caps)) { //WP Error Fix bug report
+            foreach($caps as $cap => $granted) {
+                if ($granted && preg_match('/^level_(10|[0-9])$/i', $cap, $match)) {
+                    $levels[] = intval($match[1]);
+                }
             }
         }
         

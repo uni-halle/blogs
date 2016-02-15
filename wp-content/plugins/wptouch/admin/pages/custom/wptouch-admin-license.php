@@ -73,7 +73,7 @@
 
 					<input type="text" placeholder="<?php _e( 'Product License Key', 'wptouch-pro' ); ?>" id="license_key" name="<?php echo wptouch_admin_get_manual_encoded_setting_name( 'bncid', 'bncid' ); ?>" value="<?php if ( $settings->wptouch_license_key ) echo $settings->wptouch_license_key; else ''; ?>" />
 
-					<div id="activate-license" style="display:none">
+					<div id="activate-license">
 						<?php if ( wptouch_show_renewal_notice() ) { ?>
 						<a href="http://www.wptouch.com/renew/?utm_campaign=renew-license-page&utm_source=wptouch&utm_medium=web" class="renew button" target="_blank"><?php _e( 'Renew License', 'wptouch-pro' ); ?></a>
 						<?php } else { ?>

@@ -1,5 +1,5 @@
 <?php
-// Load the necessary classes 
+// Load the necessary classes
 use Infogram\InfogramRequest;
 use Infogram\RequestSigningSession;
 
@@ -18,7 +18,7 @@ class Infogram
   private $valid = false;
 
   function __construct($init) {
-    $this->api_key = $init['api_key']; 
+    $this->api_key = $init['api_key'];
     $this->api_secret = $init['api_secret'];
     $this->username = $init['username'];
     if($this->check_settings() === true) {
@@ -28,14 +28,23 @@ class Infogram
 
   function __destruct() {}
 
+  // validate form
+  function is_form_filled() {
+    if ($this->api_key == '' || $this->api_secret == '' || $this->username == '') {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   // check answer from server
   function is_ok($response) {
     if(!$response) {
-      return 'ERROR: Cannot connect to the server';
+      return __('ERROR: Cannot connect to the server', 'infogram');
     }
 
     if(!$response->isOK()) {
-      return 'ERROR: Could not execute request';
+      return __('ERROR: Could not execute request', 'infogram');
     }
 
     return true;
@@ -58,11 +67,15 @@ class Infogram
 
   // get error message
   function plugin_status() {
-    $st = ($this->check_settings() !== true) ?
-      array('error', 'Incorrect settings! Plugin is not active.', $this->check_settings()) :
-      array('updated', 'Plugin is active.', '');
+    if ($this->is_form_filled() !== true) {
+      printf('<div id="setting-error-settings_updated" class="notice notice-warning inline below-h2"><p>%s</p><p><strong></strong></p></div>', __('Warning: Plugin is not active.', 'infogram'), __('Please fill out the form below.', 'infogram'));
+    } else {
+      $st = ($this->check_settings() !== true) ?
+        array('error', __('Incorrect settings! Plugin is not active.', 'infogram'), $this->check_settings()) :
+        array('updated', __('Plugin is active.', 'infogram'), '');
 
-    printf('<div id="setting-error-settings_updated" class="%s settings-error"><p><strong>%s</strong></br><strong>%s</strong></p></div>', $st[0], $st[1], $st[2]);
+      printf('<div id="setting-error-settings_updated" class="%s settings-error"><p><strong>%s</strong></br><strong>%s</strong></p></div>', $st[0], $st[1], $st[2]);
+    }
   }
 
   // get settings status
@@ -80,12 +93,12 @@ class Infogram
   }
 
   // send request to server
-  function get_all_inforgams() {
+  function get_all_inforgaphics() {
     $response = $this->send_request('GET', 'users/'.$this->username.'/infographics');
     if($this->is_ok($response) === true) {
       $infographics = $response->getBody();
       if (empty($infographics)) {
-        return sprintf('<div id="setting-error-settings_updated" class="error settings-error"><p><strong>%s</strong></p></div>', 'There are no public infographics for this user');
+        return sprintf('<div id="setting-error-settings_updated" class="error settings-error"><p><strong>%s</strong></p></div>', __('There are no public infographics for this user', 'infogram'));
       } else {
         return $infographics;
       }

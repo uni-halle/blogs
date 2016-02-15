@@ -13,7 +13,6 @@
  */
 ?>
 <div id="fgj2wp_admin_page" class="wrap">
-	<?php screen_icon(); ?>
 	<h2><?php print $data['title'] ?></h2>
 	
 	<p><?php print $data['description'] ?></p>
@@ -32,6 +31,8 @@
 				<?php do_action('fgj2wp_post_display_settings_options'); ?>
 				<?php require('behavior.php'); ?>
 				<?php require('actions.php'); ?>
+				<?php require('progress-bar.php'); ?>
+				<?php require('logger.php'); ?>
 			</table>
 		</form>
 		

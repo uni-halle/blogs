@@ -32,7 +32,8 @@ function foundation_featured_init() {
 }
 
 function foundation_featured_setup() {
-	if ( !is_admin() ) {
+	$settings = foundation_get_settings();
+	if ( !is_admin() && $settings->featured_enabled ) {
 		if ( function_exists( 'add_theme_support' ) ) {
 			add_theme_support( 'post-thumbnails' );
 			add_image_size( 'foundation-featured-image', 900, 9999, false );
@@ -242,46 +243,48 @@ function foundation_featured_slider( $manual = false, $manual_html = false ) {
 	global $foundation_featured_posts;
 	$args = foundation_featured_get_args();
 
-	if ( $manual == false ) {
+	if ( featured_should_show_slider() ) {
+		if ( $manual == false ) {
 
-		if ( function_exists( 'wptouch_custom_posts_add_to_search' ) ) {
-			$post_types = wptouch_custom_posts_add_to_search( array( 'post', 'page' ) );
+			if ( function_exists( 'wptouch_custom_posts_add_to_search' ) ) {
+				$post_types = wptouch_custom_posts_add_to_search( array( 'post', 'page' ) );
+			} else {
+				$post_types = array( 'post', 'page' );
+			}
+
+			$slides = new WP_Query( array( 'ignore_sticky_posts' => 1, 'post__in' => $foundation_featured_posts, 'post_type' => $post_types ) );
+
+			if ( $slides->post_count > 0 ) {
+				echo $args['before'];
+				echo "<div id='slider' class='" . implode( ' ', foundation_featured_get_slider_classes() ) . "'>\n";
+				echo "<div class='swipe-wrap'>\n";
+				while ( $slides->have_posts() ) {
+					$slides->the_post();
+					$image = foundation_featured_has_image();
+					if ( apply_filters( 'wptouch_has_post_thumbnail', $image ) ) {
+						get_template_part( 'featured-slider' );
+					}
+				}
+				echo "</div>\n";
+				echo "</div>\n";
+				echo $args['after'];
+			}
+
 		} else {
-			$post_types = array( 'post', 'page' );
-		}
-
-		$slides = new WP_Query( array( 'ignore_sticky_posts' => 1, 'post__in' => $foundation_featured_posts, 'post_type' => $post_types ) );
-
-		if ( $slides->post_count > 0 ) {
+			// Private for now, we'll improve manual mode for customer use in 3.2
 			echo $args['before'];
+
 			echo "<div id='slider' class='" . implode( ' ', foundation_featured_get_slider_classes() ) . "'>\n";
 			echo "<div class='swipe-wrap'>\n";
-			while ( $slides->have_posts() ) {
-				$slides->the_post();
-				$image = foundation_featured_has_image();
-				if ( apply_filters( 'wptouch_has_post_thumbnail', $image ) ) {
-					get_template_part( 'featured-slider' );
-				}
-			}
+
+			echo $manual_html;
+
 			echo "</div>\n";
 			echo "</div>\n";
 			echo $args['after'];
 		}
-
-	} else {
-		// Private for now, we'll improve manual mode for customer use in 3.2
-		echo $args['before'];
-
-		echo "<div id='slider' class='" . implode( ' ', foundation_featured_get_slider_classes() ) . "'>\n";
-		echo "<div class='swipe-wrap'>\n";
-
-		echo $manual_html;
-
-		echo "</div>\n";
-		echo "</div>\n";
-		echo $args['after'];
+		wp_reset_query();
 	}
-	wp_reset_query();
 }
 
 function foundation_featured_settings( $page_options ) {
@@ -365,14 +368,6 @@ function foundation_featured_settings( $page_options ) {
 				'post_type' => __( 'Show posts from a specific post type', 'wptouch-pro' ),
 				'posts' => __( 'Show only specific posts or pages', 'wptouch-pro' )
 			)
-		),
-		wptouch_add_setting(
-			'text',
-			'featured_tag',
-			__( 'Only this tag', 'wptouch-pro' ),
-			__( 'Enter the tag/category slug name', 'wptouch-pro' ),
-			WPTOUCH_SETTING_BASIC,
-			'2.0'
 		),
 		wptouch_add_setting(
 			'text',

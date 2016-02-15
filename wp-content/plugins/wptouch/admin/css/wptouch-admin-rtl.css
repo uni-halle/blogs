@@ -1,8 +1,3 @@
-/* @override 
-	http://wptp3.local.com/wp-content/plugins/wptouch-pro/admin/css/wptouch-admin-rtl.css?ver=4.0rc4
-	http://wptp3.local.com/wp-content/plugins/wptouch-pro/admin/css/wptouch-admin-rtl.css?ver=ef6e6bd127f2d30c8e9b0f7ab4870428
-*/
-
 /* WPtouch Admin Styles for RTL languages */
 
 /* @group Global */
@@ -168,6 +163,41 @@ input.checkbox:disabled + label:after {
 }
 
 
+
+/* @end */
+
+/* @group Updates Available */
+
+#section-updates-available button.update-all {
+	left: 0;
+	right: auto;
+}
+
+#section-updates-available .cloud-update-issue {
+	margin-left: auto;
+	margin-right: -45px;
+}
+
+#section-updates-available div img {
+	float: right;
+	margin-right: auto;
+	margin-left: 12px;
+}
+
+#section-updates-available div span.version {
+	display: inline-block;
+	color: #abb3bd;
+	margin-left: auto;
+	margin-right: 5px;
+}
+
+#section-updates-available .update-version {
+	float: left;
+}
+
+.ajax-install a.button {
+	float: left;
+}
 
 /* @end */
 

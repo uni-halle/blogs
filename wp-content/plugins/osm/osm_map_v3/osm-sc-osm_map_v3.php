@@ -195,14 +195,19 @@ $output .= '
 
     $NumOfMarker = count($MarkerArray);
     $Counter = 0;
+    $output .= '
+      var vectorMarkerSource = new ol.source.Vector({});
+	  var vectorMarkerLayer = new ol.layer.Vector({
+        source: vectorMarkerSource
+       });
+    ';
     foreach( $MarkerArray as $Marker ) {
-
       if ($MarkerArray[$Counter]['Marker'] != ""){
         $tagged_icon->setIcon($MarkerArray[$Counter]['Marker']);
       }
       else{
-         $tagged_icon->setIcon($default_icon->getIconName());   
-       }
+        $tagged_icon->setIcon($default_icon->getIconName());   
+      }
  
        $MarkerText = addslashes($MarkerArray[$Counter]['text']);
 
@@ -222,12 +227,6 @@ $output .= '
           name: "'.$MarkerText.'"
         });
 		iconFeature'.$Counter.'.setStyle(iconStyle'.$Counter.');
-        if ('.$Counter.' == 0){
-          var vectorMarkerSource = new ol.source.Vector({});
-		  var vectorMarkerLayer = new ol.layer.Vector({
-		    source: vectorMarkerSource
-		  });
-        }
         vectorMarkerSource.addFeature(iconFeature'.$Counter.');
        ';
        $Counter = $Counter +1;

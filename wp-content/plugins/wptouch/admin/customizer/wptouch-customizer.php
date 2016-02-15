@@ -1,6 +1,7 @@
 <?php
 global $wptouch_pro;
 $current_theme = $wptouch_pro->get_current_theme_info();
+
 if ( $current_theme && !defined( 'WPTOUCH_IS_FREE' ) ) {
 	add_action( 'admin_init', 'wptouch_initialize_customizer' );
 
@@ -9,6 +10,9 @@ if ( $current_theme && !defined( 'WPTOUCH_IS_FREE' ) ) {
 
 	// Executed during the Customizer child window load (preview).
 	add_action( 'customize_controls_enqueue_scripts', 'wptouch_customizer_scripts' );
+
+	// Executed when a new setting is detected and its default value is merged into the settings object
+	add_action( 'wptouch_settings_after_merge_default', 'wptouch_customizer_merge_setting', 10, 3 );
 
 	// Executed after settings backup is loaded, replacing WPtouch settings.
 	add_action( 'wptouch_after_restore_settings', 'wptouch_customizer_restore_settings', 10, 2 );
@@ -36,6 +40,12 @@ if ( $current_theme && !defined( 'WPTOUCH_IS_FREE' ) ) {
 
 		// Prevent the 'custom landing page' setting from being applied.
 		add_filter( 'wptouch_redirect_target', 'wptouch_return_false' );
+
+		// Load the custom landing page instead of the homepage (if set).
+		$settings = $wptouch_pro->get_settings();
+		if ( $settings->homepage_landing == 'select' ) {
+			add_filter( 'request', 'wptouch_customizer_modify_homepage_query' );
+		}
 
 		// Allow settings modified in the customizer to be applied to the preview without save.
 		add_filter( 'wptouch_settings_domain', 'wptouch_customizer_override_settings', 10, 2 );
@@ -131,6 +141,40 @@ function wptouch_customizer_restore_settings( $domain, $settings ) {
 	}
 
 	wptouch_customizer_end_theme_override();
+}
+
+global $merging_setting;
+$merging_setting = false;
+function wptouch_customizer_merge_setting( $domain, $setting, $value ) {
+	require_once( WPTOUCH_DIR . '/core/admin-load.php' );
+
+	global $merging_setting;
+	global $wptouch_pro;
+	global $options_domains;
+
+	if ( !$merging_setting ) {
+		$merging_setting = true;
+		$customizable_settings = wptouch_get_customizable_settings();
+		$current_theme = $wptouch_pro->get_current_theme_info();
+
+		wptouch_customizer_begin_theme_override();
+		if ( isset( $customizable_settings[ $domain ] ) || $domain == $current_theme->base ) {
+			if ( in_array( $domain, $options_domains ) ) {
+				$option_array = get_option( 'wptouch_customizer_options_' . $domain );
+				if ( in_array( $setting, $customizable_settings[ $domain ] ) || strstr( $setting, 'color' )  ) {
+					$setting_use_name = str_replace( '[', '-----', str_replace( ']', '_____', $setting ) );
+					$option_array[ $setting_use_name ] = $value;
+				}
+				update_option( 'wptouch_customizer_options_' . $domain, $option_array );
+			} else {
+				if ( in_array( $setting, $customizable_settings[ $domain ] ) || strstr( $setting, 'color' ) || $domain == $current_theme->base ) {
+					set_theme_mod( 'wptouch_' . $setting, $value );
+				}
+			}
+		}
+		wptouch_customizer_end_theme_override();
+		$merging_setting = false;
+	}
 }
 
 function wptouch_customizer_load_theme_js() {
@@ -754,4 +798,17 @@ function wptouch_sanitize_string_to_array( $values ) {
 	if ( $values == '' ) { return array(); }
 	$multi_values = !is_array( $values ) ? explode( ',', $values ) : $values;
 	return !empty( $multi_values ) ? array_map( 'sanitize_text_field', $multi_values ) : array();
+}
+
+function wptouch_customizer_modify_homepage_query( $query_vars ) {
+	$settings = wptouch_get_settings();
+
+	$dummy_query = new WP_Query();  // the query isn't run if we don't pass any query vars
+	$dummy_query->parse_query( $query_vars );
+
+	if ( count( $query_vars ) == 0 ) { // Front page
+		$query_vars[ 'page_id' ] = $settings->homepage_redirect_wp_target;
+	}
+
+	return $query_vars;
 }

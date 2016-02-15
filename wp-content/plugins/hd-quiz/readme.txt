@@ -2,8 +2,8 @@
 Contributors: HarmonicDesign
 Tags: quiz, quizzes, quizes, questionnaire, questionnaires, questionnairs, questionair, questionaires, hdquiz, hd quiz, test, question and answers, harmonic design
 Requires at least: 3.4.1
-Tested up to: 4.3.1
-Stable tag: 1.4.0
+Tested up to: 4.4.2
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,12 +26,15 @@ HD Quiz is a very easy to use plugin to create an unlimited amount of quizzes or
 * Share Quiz score across Facebook and Twitter
 * NEW: You can now use images as answers
  * Recommended size of 400x400, but the plugin will upscale any image too small
- * View Question 2 of the above Demo Quiz for an example
 * Animated gifs as question featured image, or for any answer
-* NEW: Quiz Timer - set a time limit to complete the quiz
-* NEW: Pagination
-* NEW: Question as title / heading
-* NEW: Ability to rename the Next and Finish buttons (found in the HD Quiz About / Options page)
+* Quiz Timer - set a time limit to complete the quiz
+* Pagination
+* Question as title / heading
+* Ability to rename the Next and Finish buttons (found in the HD Quiz About / Options page)
+* NEW: Add links to quiz results!
+* NEW: Ability to add a small writeup for each question that would be displayed underneath the question on quiz completion (only if user get's the question wrong!).
+
+Please note that as always, new features are marked as experimental - so please let me know if you need any help in getting them to work!
 
 = Individual Quiz Options are: = 
 
@@ -47,7 +50,7 @@ HD Quiz is a very easy to use plugin to create an unlimited amount of quizzes or
 * NEW: Random question order
 * NEW: Random answer order
 
-[view the HD Quiz plugin page](http://harmonicdesign.ca/hd-quiz/ "view the HD Quiz plugin page")
+[view the HD Quiz plugin page](https://harmonicdesign.ca/hd-quiz/ "view the HD Quiz plugin page")
 
 
 >== HOW TO USE | TUTORIAL ==
@@ -77,13 +80,14 @@ HD Quiz is a very easy to use plugin to create an unlimited amount of quizzes or
 I have already taken this plugin farther than I intended, but I'm overwhelmed with joy at how much you are all using and loving HD Quiz!
 Because of this, I have no intentions of stopping or slowing down development! 
 
-If you have any feature requests, then please let me know via the support tab or by leaving a comment on the [HD Quiz plugin page](http://harmonicdesign.ca/hd-quiz/ "HD Quiz plugin page").
+If you have any feature requests, then please let me know via the support tab or by leaving a comment on the [HD Quiz plugin page](https://harmonicdesign.ca/hd-quiz/ "HD Quiz plugin page").
 
 = LIST =
 
-* Add ability to add a small writeup for each question that would be displayed underneath the question on quiz completion.
 * Add option for each quiz to hide the results unless the user submits their email address.
  * This would also include a new admin page for HD Quiz that would display a table of all submitted email addresses.
+* Add ability to set a quiz pass/fail featured image for each quiz.
+* Allow multiple quizzes on a single page.
 * Add option for each quiz to hide the results unless the user shares the quiz on social media first.
 * Quiz option to immediately show if you got the question right or wrong as soon as you select an option
 * Translations
@@ -114,10 +118,10 @@ With that siad, I do, however, have plans to integrate a solution that will work
 
 Unless you are a unique situation, I'd almost always recommend using jQuery Pagination as it provides more control for you and a better experiece for your users. WP Pagination should only be used if you are trying to increase your overall page views for ad revenue or something similar.
 
-Please see [this article](http://harmonicdesign.ca/hd-quiz-pagination/ "HD Quiz Pagination") for a full writeup on what the two features are and how they differ.
+Please see [this article](https://harmonicdesign.ca/hd-quiz-pagination/ "HD Quiz Pagination") for a full writeup on what the two features are and how they differ.
 
 = I have a feature request! =
-Fantastic! I'm one of those cray programmers who loves a good challenge. Please submit your feature request here by using the **support** tab or leave a request of the [official HD Quiz plugin page](http://harmonicdesign.ca/hd-quiz/ "view the HD Quiz plugin page").
+Fantastic! I'm one of those cray programmers who loves a good challenge. Please submit your feature request here by using the **support** tab or leave a request of the [official HD Quiz plugin page](https://harmonicdesign.ca/hd-quiz/ "view the HD Quiz plugin page").
 
 
 
@@ -130,6 +134,12 @@ Fantastic! I'm one of those cray programmers who loves a good challenge. Please 
 5. Questions Page
 
 == Changelog ==
+= 1.4.1 =
+* various bug fixes and compatability increases
+* the word 'question' (that's prefixed before every question) is now translatable in the HD Quiz options page along with 'Next' and 'Finish'.
+* More power over the quiz results pass/fail text. You can now embolded, italicize, and linkify the text.
+* Each question can have a small write up explaining what the right answer is. This would only show if entered and if the user get's the question wrong. You can also add links to this sections if you wish.
+
 = 1.4.0 =
 * Added in the more powerful jQuery pagination feature
 * Added ability to use a question as a title or heading

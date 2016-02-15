@@ -1,0 +1,102 @@
+#main_featured_plugins_page #featured-plugins-list {
+	position:relative;
+	margin:0px auto;
+	width: 95.4%;
+	height:auto;
+	display:table;
+	list-style:none;
+	margin-left: 38px;
+}
+
+#main_featured_plugins_page #featured-plugins-list li {
+	float: left;
+	width: 17%;
+	margin: 20px 0px 0px 25px;
+	background: #FFFFFF;
+	border: 1px solid #B8B8B8;
+	height: 354px;
+}
+
+#main_featured_plugins_page #featured-plugins-list li  .product {
+	position:relative;
+	height:113px;
+	background-color: #F1F1F1 !important;
+	background-position-x: 50% !important;
+	margin: 7px;
+	border: 1px solid #DEDCDC;
+	border-radius: 3px;
+}
+
+#main_featured_plugins_page #featured-plugins-list li  .title {
+	width: 90%;
+	text-align: center;
+	border-bottom: 1px solid #cacaca;
+	margin: 0 auto;
+}
+
+#main_featured_plugins_page #featured-plugins-list  li.form-maker  .product {background:url(images/form.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.events-wd  .product {background:url(images/events_wd.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.instagram-wd  .product {background:url(images/instagram_feed.png) left center no-repeat;     background-size: 43%;}
+#main_featured_plugins_page #featured-plugins-list  li.faq-wd  .product {background:url(images/faq_wd.png) left center no-repeat;     background-size: 43%;}
+#main_featured_plugins_page #featured-plugins-list  li.catalog  .product {background:url(images/catalog.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.contact-maker  .product {background:url(images/contact.maker.png) left center no-repeat;   background-size: 61%;}
+#main_featured_plugins_page #featured-plugins-list  li.contacts  .product {background:url(images/contacts.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.facebook  .product {background:url(images/facebook.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.faq  .product {background:url(images/faq.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.flash-calendar .product {background:url(images/flash.calendar.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.player  .product {background:url(images/player.png) left center no-repeat;  }
+#main_featured_plugins_page #featured-plugins-list  li.spider-calendar  .product {background:url(images/spider.calendar.png) left center no-repeat;}
+
+#main_featured_plugins_page #featured-plugins-list  li.contact_form_bulder .product {background:url(images/contact.builder.png) left center no-repeat;   background-size: 80%;}
+#main_featured_plugins_page #featured-plugins-list  li.random_post  .product {background:url(images/random.post.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.slider_wd  .product {background:url(images/slider.png) left center no-repeat;   background-size: 50%;}
+#main_featured_plugins_page #featured-plugins-list  li.folder_menu  .product {background:url(images/folder.menu.png) left center no-repeat;}
+
+#main_featured_plugins_page #featured-plugins-list  li.zoom .product {background:url(images/zoom.png) left center no-repeat;   background-size: 85%;}
+#main_featured_plugins_page #featured-plugins-list  li.photo-gallery  .product {background:url(images/photo-gallery.png) left center no-repeat #CACACA;
+border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;
+background-position-x: 7px;
+background-size: 95px;
+}
+#main_featured_plugins_page #featured-plugins-list  li.twitter-widget  .product {background:url(images/twittertools.png) left center no-repeat #CACACA;
+background-size: 85px;
+background-position-x: 12px;
+border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;}
+
+#main_featured_plugins_page #featured-plugins-list li  .title  .heading {
+	display:block;
+	position:relative;
+	font-size: 17px;
+	color: #23282C;
+	margin: 13px 0px 13px 0px;
+}
+
+#main_featured_plugins_page #featured-plugins-list li  .title  p {
+	font-size:14px;
+	color:#444;
+	margin-left:20px;
+}
+
+#main_featured_plugins_page #featured-plugins-list li  .description {
+	height: 127px;
+	width: 90%;
+	margin: 0 auto;
+}
+
+#main_featured_plugins_page #featured-plugins-list li  .description  p {
+	text-align: center;
+	width: 100%;
+}
+
+#featured-plugins-list li a.download {
+	display:block;
+	height:32px;
+	text-indent:-9999px;
+	background: url(images/download_plugins.png) center 17px no-repeat;
+	border-top: 1px solid #CACACA;
+	outline: none;
+	width: 90%;
+	margin: 0 auto;
+}

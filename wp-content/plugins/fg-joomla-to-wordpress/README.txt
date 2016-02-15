@@ -1,10 +1,10 @@
 === FG Joomla to WordPress ===
 Contributors: Frédéric GILLES
 Plugin Uri: https://wordpress.org/plugins/fg-joomla-to-wordpress/
-Tags: joomla, mambo, wordpress, importer, convert joomla to wordpress, migrate joomla to wordpress, joomla to wordpress migration, migrator, converter, import, k2, jcomments, joomlacomments, jomcomment, flexicontent, postviews, joomlatags, sh404sef, attachments, rokbox, kunena, phocagallery, phoca, joomsef, opensef, easyblog, zoo, zooitems, joomfish, joom!fish, wpml, joomgallery, jevents, contact directory, docman, virtuemart, woocommerce, jreviews, mosets tree, wpml, simple image gallery
+Tags: joomla, mambo, wordpress, importer, convert joomla to wordpress, migrate joomla to wordpress, joomla to wordpress migration, migrator, converter, import, k2, jcomments, joomlacomments, jomcomment, flexicontent, postviews, joomlatags, sh404sef, attachments, rokbox, kunena, phocagallery, phoca, joomsef, opensef, easyblog, zoo, zooitems, joomfish, joom!fish, wpml, joomgallery, jevents, contact directory, docman, virtuemart, woocommerce, jreviews, mosets tree, wpml, simple image gallery, rsgallery
 Requires at least: 4.4
-Tested up to: 4.4.1
-Stable tag: 2.11.1
+Tested up to: 4.4.2
+Stable tag: 3.0.3
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fred%2egilles%40free%2efr&lc=FR&item_name=fg-joomla-to-wordpress&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
@@ -82,6 +82,7 @@ The Premium version allows the use of add-ons that enhance functionality:
 * User Groups
 * WPML
 * Simple Image Gallery & Simple Image Gallery Pro
+* RSGallery
 
 These modules can be purchased on: http://www.fredericgilles.net/fg-joomla-to-wordpress/
 
@@ -205,6 +206,35 @@ http://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * other can be translated
 
 == Changelog ==
+
+= 3.0.3 =
+* Fixed: Articles got the unassigned category when the category is a duplicate
+
+= 3.0.2 =
+* Fixed: Infinite loop when some categories have duplicate names
+
+= 3.0.1 =
+* Fixed: After a resume, the posts were imported as uncategorized
+* Tested with WordPress 4.4.2
+
+= 3.0.0 =
+* New: Run the import in AJAX
+* New: Add a progress bar
+* New: Add a logger frame to see the logs in real time
+* New: Ability to stop the import
+* New: Compatible with PHP 7
+
+= 2.14.1 =
+* Fixed: Medias with relative paths were not uploaded to the right folder when not using month- and year-based folders
+
+= 2.14.0 =
+* New: For the articles and categories whose alias is a date, the imported slug will be the title and not the alias
+
+= 2.13.0 =
+* New: Keep the Joomla media folder tree when the uploads are not organized into month- and year-based folders
+
+= 2.12.0 =
+* Fixed: Featured image issue
 
 = 2.11.1 =
 * Tested with WordPress 4.4.1
@@ -683,83 +713,18 @@ http://wordpress.org/support/plugin/fg-joomla-to-wordpress
 
 == Upgrade Notice ==
 
-= 2.11.1 =
-Tested with WordPress 4.4.1
+= 3.0.3 =
+Fixed: Articles got the unassigned category when the category is a duplicate
 
-= 2.11.0 =
-Fixed: Categories with null description were not imported
+= 3.0.2 =
+Fixed: Infinite loop when some categories have duplicate names
 
-= 2.10.0 =
-Tweak: Use the WordPress 4.4 term metas: performance improved, nomore need to add a category prefix
-Tweak: Optimize code
-Fixed: The notices and errors were sometimes displayed before the header is sent
-Fixed: Categories with duplicated names were not imported
-Fixed: The cache for the taxonomies different from category was not cleaned
+= 3.0.1 =
+Fixed: After a resume, the posts were imported as uncategorized
 
-= 2.9.2 =
-Tested with WordPress 4.4
-
-= 2.9.0 =
-New: Add SFTP protocol
-New: Import the {audio} tag
-New: Add a link to the FAQ in the connection error message
-
-= 2.8.0 =
-New: Add an Import link on the plugins list page
-
-= 2.7.4 =
-Tweak: Code refactoring for unit tests
-
-= 2.7.3 =
-New: Add the hook 'fgj2wp_get_wp_post_from_joomla_url'
-Tweak: Code refactoring
-
-= 2.7.1 =
-Fixed: Don't display the warning about WPML if JoomFish is used
-
-= 2.6.0 =
-New: Make the platform more accessible to more languages
-Update all the translations
-
-= 2.5.2 =
-New: Check if we need the WPML module
-
-= 2.5.1 =
-Tested with WordPress 4.3.1
-
-= 2.5.0 =
-Fixed some translations
-New add-on: WPML to move the multilingual content
-
-= 2.4.0 =
-New: Add an anti-duplicate test if the user runs another import process again while one is still running
-Fixed: Solve conflicts between FG plugins by limiting the Javascript scope
-
-= 2.3.3 =
-Fixed: Some medias with accents were not imported
-Tested with WordPress 4.3
-
-= 2.3.2 =
-Tested with WordPress 4.2.4
-
-= 2.3.1 =
-Tested with WordPress 4.2.3
-
-= 2.3.0 =
-New: Change the video links {"video"} to WordPress video tags
-
-= 2.2.0 =
-Tested with WordPress 4.2.2
-
-= 2.1.2 =
-Tested with WordPress 4.2.1
-
-= 2.1.1 =
-Tested with WordPress 4.2
-
-= 2.1.0 =
-Tweak: Restructure and optimize the images import functions
-
-= 2.0.0 =
-Restructure the whole code using the BoilerPlate foundation
-FAQ updated
+= 3.0.0 =
+New: Run the import in AJAX
+New: Add a progress bar
+New: Add a logger frame to see the logs in real time
+New: Ability to stop the import
+New: Compatible with PHP 7

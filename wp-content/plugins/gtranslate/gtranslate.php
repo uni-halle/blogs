@@ -1,15 +1,15 @@
 <?php
 /*
 Plugin Name: GTranslate
-Plugin URI: http://gtranslate.net/?xyz=998
+Plugin URI: https://gtranslate.io/?xyz=998
 Description: Makes your website <strong>multilingual</strong> and available to the world using Google Translate. For support visit <a href="http://gtranslate.net/forum/">GTranslate Forum</a>.
-Version: 2.0.5
+Version: 2.0.7
 Author: Edvard Ananyan
-Author URI: http://gtranslate.net
+Author URI: https://gtranslate.io
 
 */
 
-/*  Copyright 2010 - 2015 Edvard Ananyan  (email : edo888@gmail.com)
+/*  Copyright 2010 - 2016 Edvard Ananyan  (email : edo888@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -42,7 +42,7 @@ if(is_admin()) {
 }
 
 class GTranslate extends WP_Widget {
-    function activate() {
+    public static function activate() {
         $data = array(
             'gtranslate_title' => 'Website Translator',
         );
@@ -52,27 +52,27 @@ class GTranslate extends WP_Widget {
         add_option('GTranslate', $data);
     }
 
-    function deactivate() {
+    public static function deactivate() {
         // delete_option('GTranslate');
     }
 
-    function update_message($plugin_data, $r) {
+    public static function update_message($plugin_data, $r) {
         return print '<div style="color:#f33;">It is highly recommended to update to the latest version! <img src="//gtranslate.net/wp-logo.png" style="height:13px;vertical-align:middle;" border="0" title="GTranslate - your window to the world" alt="GTranslate"></div>';
     }
 
-    function control() {
+    public static function control() {
         $data = get_option('GTranslate');
         ?>
         <p><label>Title: <input name="gtranslate_title" type="text" class="widefat" value="<?php echo $data['gtranslate_title']; ?>"/></label></p>
         <p>Please go to Settings -> GTranslate for configuration.</p>
         <?php
         if (isset($_POST['gtranslate_title'])){
-            $data['gtranslate_title'] = attribute_escape($_POST['gtranslate_title']);
+            $data['gtranslate_title'] = esc_attr($_POST['gtranslate_title']);
             update_option('GTranslate', $data);
         }
     }
 
-    function enqueue_scripts() {
+    public static function enqueue_scripts() {
         $data = get_option('GTranslate');
         GTranslate::load_defaults($data);
         $wp_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
@@ -81,7 +81,20 @@ class GTranslate extends WP_Widget {
         wp_enqueue_script('jquery');
     }
 
-    function widget($args) {
+    public function widget($args, $instance) {
+        $data = get_option('GTranslate');
+        GTranslate::load_defaults($data);
+
+        echo $args['before_widget'];
+        echo $args['before_title'] . $data['gtranslate_title'] . $args['after_title'];
+        if(empty($data['widget_code']))
+            echo '<b>Notice:</b> Please configure GTranslate from WP-Admin -> Settings -> GTranslate to see it in action.';
+        else
+            echo $data['widget_code'];
+        echo $args['after_widget'];
+    }
+
+    public static function widget2($args) {
         $data = get_option('GTranslate');
         GTranslate::load_defaults($data);
 
@@ -104,22 +117,22 @@ class GTranslate extends WP_Widget {
             return $data['widget_code'];
     }
 
-    function register() {
-        wp_register_sidebar_widget('gtranslate', 'GTranslate', array('GTranslate', 'widget'), array('description' => __('Google Automatic Translations')));
+    public static function register() {
+        wp_register_sidebar_widget('gtranslate', 'GTranslate', array('GTranslate', 'widget2'), array('description' => __('Google Automatic Translations')));
         wp_register_widget_control('gtranslate', 'GTranslate', array('GTranslate', 'control'));
     }
 
-    function admin_menu() {
+    public static function admin_menu() {
         add_options_page('GTranslate Options', 'GTranslate', 'administrator', 'gtranslate_options', array('GTranslate', 'options'));
     }
 
-    function options() {
+    public static function options() {
         ?>
         <div class="wrap">
         <div id="icon-options-general" class="icon32"><br/></div>
         <h2><img src="//gtranslate.net/wp-logo.png" border="0" title="GTranslate - your window to the world" alt="GTranslate"></h2>
         <?php
-        if($_POST['save'])
+        if(isset($_POST['save']) and $_POST['save'])
             GTranslate::control_options();
         $data = get_option('GTranslate');
         GTranslate::load_defaults($data);
@@ -140,7 +153,7 @@ var languages_map = {en_x: 0, en_y: 0, ar_x: 100, ar_y: 0, bg_x: 200, bg_y: 0, z
 
 function RefreshDoWidgetCode() {
     var new_line = "\\n";
-    var widget_preview = '<!-- GTranslate: http://gtranslate.net/ -->'+new_line;
+    var widget_preview = '<!-- GTranslate: https://gtranslate.io/ -->'+new_line;
     var widget_code = '';
     var translation_method = 'onfly'; //jQuery('#translation_method').val();
     var widget_look = jQuery('#widget_look').val();
@@ -593,12 +606,12 @@ foreach($fincl_langs as $lang)
                         <td><input id="analytics" name="analytics" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
                     </tr>
                     <tr>
-                        <td class="option_name">Operate with Pro version:</td>
-                        <td><input id="pro_version" name="pro_version" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
+                        <td class="option_name">* Sub-directory URL structure:<br><small>http://example.com/<b>ru</b>/</small></td>
+                        <td><input id="pro_version" name="pro_version" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/> <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank">* paid plans only</a></td>
                     </tr>
                     <tr>
-                        <td class="option_name">Operate with Enterprise version:</td>
-                        <td><input id="enterprise_version" name="enterprise_version" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
+                        <td class="option_name">* Sub-domain URL structure:<br><small>http://<b>es</b>.example.com/</small></td>
+                        <td><input id="enterprise_version" name="enterprise_version" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/> <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank">* paid plans only</a></td>
                     </tr>
                     <tr id="new_window_option" style="display:none;">
                         <td class="option_name">Open in new window:</td>
@@ -865,7 +878,7 @@ foreach($fincl_langs as $lang)
                 <div class="postbox">
                     <h3 id="settings">Useful info</h3>
                     <div class="inside">
-                        Upgrade to <a href="http://gtranslate.net/features?p=wp&xyz=998" target="_blank">GTranslate Enterprise</a> to have the following features:
+                        Upgrade to <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank">GTranslate Enterprise</a> to have the following features:
                         <ul style="list-style-type: square;padding-left:40px;">
                             <li>Enable search engine indexing</li>
                             <li>Search engine friendly (SEF) URLs</li>
@@ -877,7 +890,7 @@ foreach($fincl_langs as $lang)
                             <li>SSL support</li>
                         </ul>
 
-                        <a href="http://gtranslate.net/features?p=wp&xyz=998" target="_blank">More Info</a>
+                        <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank">More Info</a>
                     </div>
                 </div>
             </div>
@@ -891,7 +904,7 @@ foreach($fincl_langs as $lang)
             </div>
             <div id="poststuff">
                 <div class="postbox">
-                    <h3 id="settings">GTranslate Enterprise Video</h3>
+                    <h3 id="settings">Translation Delivery Network</h3>
                     <div class="inside">
                         <iframe src="//player.vimeo.com/video/38686858?title=1&amp;byline=0&amp;portrait=0" width="568" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
                     </div>
@@ -919,7 +932,7 @@ foreach($fincl_langs as $lang)
         <?php
     }
 
-    function control_options() {
+    public static function control_options() {
         check_admin_referer('gtranslate-save');
 
         $data = get_option('GTranslate');
@@ -933,7 +946,7 @@ foreach($fincl_langs as $lang)
         //$data['show_dropdown'] = isset($_POST['show_dropdown']) ? $_POST['show_dropdown'] : '';
         //$data['show_flags'] = isset($_POST['show_flags']) ? $_POST['show_flags'] : '';
         $data['default_language'] = $_POST['default_language'];
-        $data['translation_method'] = $_POST['translation_method'];
+        $data['translation_method'] = 'onfly'; //$_POST['translation_method'];
         $data['widget_look'] = $_POST['widget_look'];
         $data['flag_size'] = $_POST['flag_size'];
         $data['widget_code'] = stripslashes($_POST['widget_code']);
@@ -944,7 +957,7 @@ foreach($fincl_langs as $lang)
         update_option('GTranslate', $data);
     }
 
-    function load_defaults(& $data) {
+    public static function load_defaults(& $data) {
         $data['pro_version'] = isset($data['pro_version']) ? $data['pro_version'] : '';
         $data['enterprise_version'] = isset($data['enterprise_version']) ? $data['enterprise_version'] : '';
         $data['new_window'] = isset($data['new_window']) ? $data['new_window'] : '';

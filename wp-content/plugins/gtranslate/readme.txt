@@ -4,7 +4,7 @@ Author: Edvard Ananyan
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator, language translator, google translator, language translate, google language translator, translation, translate, multi language
 Requires at least: 2.8
 Tested up to: 4.4
-Stable tag: 2.0.5
+Stable tag: 2.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.me/EdvardAnanyan/10
@@ -364,7 +364,7 @@ Yes, you need to wrap the text you don't want to be translated with &lt;span cla
 Pro version is a software hosted on your own server while Enterprise is a Translation Delivery Network which doesn't require software to be installed on your server.
 
 = How can I be sure that search engines will index my website? =
-You can check that this website is indexed in Google by searching for site:gtranslate.net.
+You can check that this website is indexed in Google by searching for site:gtranslate.io.
 
 = Will it work with JoomFish, sh404sef or other SEF extensions? =
 Yes, there are no known extensions which have conflicts with Pro version.
@@ -379,6 +379,12 @@ You need to go to the language you want to edit, for instance, French: http://do
 3. Nice dropdown with flags (open)
 
 == Changelog ==
+
+= 2.0.7 =
+* PHP notice and warning messages fixed
+
+= 2.0.6 =
+* Updated option names to be clear
 
 = 2.0.5 =
 * New widget look has been added: Nice dropdown with flags
