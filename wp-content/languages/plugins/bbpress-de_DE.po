@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-07-18 14:08:12+0000\n"
+"PO-Revision-Date: 2016-02-14 08:59:43+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,13 +33,13 @@ msgstr "http://bbpress.org"
 msgid "Recalculate the position of each reply"
 msgstr "Berechne die Position jeder Antwort neu"
 
-#: includes/admin/tools.php:1147
-msgid "Recalculating reply menu order &hellip; %s"
-msgstr "Berechne die Sortierung &hellip; %s des Antwortmenüs neu"
-
 #: includes/admin/tools.php:1148
 msgid "No reply positions to recalculate!"
 msgstr "Keine Antwortpositionen zum neu berechnen!"
+
+#: includes/admin/tools.php:1147
+msgid "Recalculating reply menu order &hellip; %s"
+msgstr "Berechne die Sortierung des Antwortmenüs neu&hellip; %s"
 
 #: includes/common/template.php:2604
 msgctxt "User viewing another users profile"
@@ -174,10 +174,6 @@ msgstr "Lösche Beiträge&hellip; %s"
 msgid "Deleting Post Meta&hellip; %s"
 msgstr "Lösche Metadaten der Beiträge&hellip; %s"
 
-#: includes/admin/tools.php:1336 includes/admin/tools.php:1344
-msgid "Deleting User Meta&hellip; %s"
-msgstr "Lösche Benutzer Metadaten&hellip; %s"
-
 #: templates/default/bbpress/form-user-lost-pass.php:27
 msgid "Reset My Password"
 msgstr "Setze mein Passwort zurück"
@@ -282,10 +278,6 @@ msgstr "Wochen"
 msgid "day"
 msgstr "Tag"
 
-#: includes/common/functions.php:121
-msgid "days"
-msgstr "Tage"
-
 #: includes/common/functions.php:122
 msgid "hour"
 msgstr "Stunde"
@@ -349,12 +341,6 @@ msgid "Viewing %2$s replies (of %4$s total)"
 msgid_plural "Viewing %1$s replies - %2$s through %3$s (of %4$s total)"
 msgstr[0] "Betrachte %2$s Antwort (von insgesamt %4$s)"
 msgstr[1] "Betrachte %1$s Antworten - %2$s bis %3$s (von insgesamt %4$s)"
-
-#: includes/replies/template.php:2366
-msgid "Viewing %2$s post (of %4$s total)"
-msgid_plural "Viewing %1$s posts - %2$s through %3$s (of %4$s total)"
-msgstr[0] "Betrachte %2$s Post (von insgesamt %4$s)"
-msgstr[1] "Betrachte %1$s Posts - %2$s bis %3$s (von insgesamt %4$s)"
 
 #: includes/topics/template.php:2981
 msgid "Viewing topic %2$s (of %4$s total)"
@@ -449,10 +435,6 @@ msgstr "%1$s antwortete zum Thema %2$s im Forum %3$s"
 #: includes/forums/template.php:2007
 msgid "This forum contains %1$s and %2$s."
 msgstr "Dieses Forum enthält %1$s und %2$s."
-
-#: templates/default/bbpress/feedback-logged-in.php:13
-msgid "You are already logged in."
-msgstr "Du bist bereits eingeloggt."
 
 #: templates/default/bbpress/form-topic.php:75
 msgid "Topic Title (Maximum Length: %d):"
@@ -674,12 +656,6 @@ msgstr "Dieser Benutzer hat keine Lieblingsthemen."
 msgid "You currently have no favorite topics."
 msgstr "Du hast momentan keine Favoriten"
 
-#: includes/replies/template.php:2362
-msgid "Viewing %1$s post"
-msgid_plural "Viewing %1$s posts"
-msgstr[0] "Betrachte %1$s Post"
-msgstr[1] "Betrachte %1$s Posts"
-
 #: templates/default/bbpress/user-subscriptions.php:47
 msgid "This user is not currently subscribed to any topics."
 msgstr "Dieser Benutzer hat derzeit keine Themen abonniert."
@@ -719,10 +695,6 @@ msgstr "Benutzername oder E-Mail"
 #: templates/default/bbpress/form-user-lost-pass.php:14
 msgid "Lost Password"
 msgstr "Passwort vergessen"
-
-#: templates/default/bbpress/form-topic-tag.php:101
-msgid "Are you sure you want to delete the \"%s\" tag? This is permanent and cannot be undone."
-msgstr "Bist du sicher, dass du den \"%s\"-Tag löschen möchtest ? Diese Aktion kann nicht rückgängig gemacht werden."
 
 #: templates/default/bbpress/form-topic-merge.php:64
 #: templates/default/bbpress/form-topic-split.php:68
@@ -770,16 +742,6 @@ msgstr "Konto"
 #: templates/default/bbpress/form-user-edit.php:34
 msgid "Nickname"
 msgstr "Spitzname"
-
-#: templates/default/bbpress/form-user-edit.php:49
-#: templates/default/bbpress/form-user-edit.php:52
-msgid "Contact Info"
-msgstr "Kontakt Info"
-
-#: templates/default/bbpress/form-user-edit.php:74
-#: templates/default/bbpress/form-user-edit.php:77
-msgid "About Yourself"
-msgstr "Über Dich"
 
 #: templates/default/bbpress/form-user-edit.php:74
 #: templates/default/bbpress/form-user-edit.php:77
@@ -1075,10 +1037,6 @@ msgstr "Du kannst auf dieses Thema nicht antworten"
 msgid "Tags:"
 msgstr "Stichworte"
 
-#: templates/default/bbpress/form-topic.php:234
-msgid "You must be logged in to create new topics."
-msgstr "Du musst eingeloggt sein, um neue Themen zu erstellen"
-
 #: templates/default/bbpress/form-anonymous.php:27
 msgid "Mail (will not be published) (required):"
 msgstr "Email (wird nicht angezeigt) (erforderlich):"
@@ -1218,10 +1176,6 @@ msgstr "Registrierung geschlossen"
 msgid "Check your e-mail for your new password."
 msgstr "Überprüfe dein Email-Konto für dein neues Passwort"
 
-#: includes/users/template.php:1476
-msgid "Registration complete. Please check your e-mail."
-msgstr "Registrierung komplett. Bitte überprüfe deine Email's"
-
 #: includes/users/functions.php:506
 msgid "<strong>ERROR</strong>: There was a problem removing that topic from favorites!"
 msgstr "<strong>FEHLER</strong>: Es gab ein Problem beim Entfernen dieses Themas aus der Favoritenliste!"
@@ -1273,10 +1227,6 @@ msgstr "(Kein übergeordnetes Forum)"
 #: templates/default/bbpress/form-topic.php:117
 msgid "(No Forum)"
 msgstr "(Kein Forum)"
-
-#: includes/common/functions.php:114
-msgid "%s ago"
-msgstr "Vor %s"
 
 #: includes/admin/tools.php:168
 msgid "Count topics in each forum"
@@ -1385,18 +1335,6 @@ msgstr "<p>Dieses ist eine Auswahl an beliebten Tags im Forum</p>"
 #: includes/admin/topics.php:144
 msgid "You can hide/display columns based on your needs and decide how many topics to list per screen using the Screen Options tab."
 msgstr "Du kannst Spalten nach deinem Bedarf anzeigen/verstecken und durch das Nutzen des Anzeigen-Optionen-Kartenreiters bestimmen, wie viele Themen gelistet werden."
-
-#: includes/admin/tools.php:859
-msgid "Recomputing latest post in every topic and forum&hellip; %s"
-msgstr "Neuberechnug der letzten Beiträge in jedem Thema und Forum %s"
-
-#: includes/admin/tools.php:682
-msgid "Removing trashed topics from user subscriptions&hellip; %s"
-msgstr "Entferne Themen aus dem Papierkorb von Benutzer Abonnements %s"
-
-#: includes/admin/tools.php:620
-msgid "Removing trashed topics from user favorites&hellip; %s"
-msgstr "Entferne Themen aus dem Papierkorb von Benutzer Favoriten %s"
 
 #: includes/topics/functions.php:2158
 msgid "<strong>ERROR</strong>: There was a problem deleting the topic."
@@ -1531,10 +1469,6 @@ msgstr "<strong>ERROR</strong>: Das Forum ist eine Kategorie. Hier können keine
 msgid "<strong>ERROR</strong>: Duplicate topic detected; it looks as though you&#8217;ve already said that!"
 msgstr "<strong>FEHLER</strong>: Dupliziertes Thema entdeckt; es sieht so aus, als ob du das bereits geschrieben hast!"
 
-#: includes/topics/functions.php:245 includes/topics/functions.php:563
-msgid "<strong>ERROR</strong>: This forum is private and you do not have the capability to read or create new topics in it."
-msgstr "<strong>ERROR</strong>: Dieses Forum ist privat und du hast nicht das Recht, es zu lesen oder ein Thema darin zu erstellen."
-
 #: includes/topics/functions.php:239 includes/topics/functions.php:557
 msgid "<strong>ERROR</strong>: This forum has been closed to new topics."
 msgstr "<strong>ERROR</strong>: Dieses Forum wurde gesperrt."
@@ -1566,11 +1500,6 @@ msgstr "<strong>ERROR</strong>: Es gab ein Problem das Thema zu favorisieren."
 #: includes/users/functions.php:455
 msgid "<strong>ERROR</strong>: No topic was found! Which topic are you marking/unmarking as favorite?"
 msgstr "<strong>FEHLER</strong>: Es wurde kein Thema gefunden! Welches Thema de-/markierst du als Favorit?"
-
-#: includes/users/functions.php:463 includes/users/functions.php:1178
-#: includes/users/functions.php:1284
-msgid "<strong>ERROR</strong>: You don't have the permission to edit favorites of that user!"
-msgstr "<strong>ERROR</strong>: Du darfst die Favoriten des Benutzers nihct ändern."
 
 #: includes/users/template.php:1466
 msgid "Check your e-mail for the confirmation link."
@@ -1622,10 +1551,6 @@ msgstr "<strong>ERROR</strong>: Doppelte Antwort entdeckt! Sieht so aus als hät
 #: includes/replies/functions.php:522
 msgid "<strong>ERROR</strong>: The reply you want to edit was not found."
 msgstr "<strong>ERROR</strong>: Die Anwort die Du bearbeiten willst wurde nicht gefunden"
-
-#: includes/replies/functions.php:240 includes/replies/functions.php:581
-msgid "<strong>ERROR</strong>: This forum is private and you do not have the capability to read or create new replies in it."
-msgstr "<strong>FEHLER</strong>: Dieses Forum ist versteckt und du hast keine Berechtigung zum Lesen oder Erstellen neuer Antworten darin"
 
 #: includes/replies/functions.php:246 includes/replies/functions.php:587
 msgid "<strong>ERROR</strong>: This forum is hidden and you do not have the capability to read or create new replies in it."
@@ -1685,10 +1610,6 @@ msgstr "Bist du sicher, dass du den \"%s\" Tag in diesen Tag einfügen willst?"
 msgid "This does not delete your topics. Only the tag itself is deleted."
 msgstr "Dies löscht nicht das Thema. Nur das Tag wird gelöscht."
 
-#: templates/default/bbpress/form-topic-tag.php:94
-msgid "Deleting a tag cannot be undone."
-msgstr "Ein Tag zu löschen kann nicht rückgängig gemacht werden."
-
 #: templates/default/bbpress/form-topic-tag.php:29
 msgid "Changing the slug affects its permalink. Any links to the old slug will stop working."
 msgstr "Den Slug zu ändern beeinträchtigt die permalinks. Alle alten Links werden aufhören zu funktionieren."
@@ -1704,10 +1625,6 @@ msgstr "Tag verwalten: \"%s\""
 #: templates/default/bbpress/form-anonymous.php:17
 msgid "Your information:"
 msgstr "Deine Information:"
-
-#: templates/default/bbpress/form-reply.php:36
-msgid "This topic is marked as closed to new replies, however your posting capabilities still allow you to do so."
-msgstr "Dieses Thema ist geschlossen für neue Antworten, wie auch immer, deine Antworten-Berechtigungen erlauben dir, dennoch zu antworten."
 
 #: includes/common/widgets.php:889 includes/common/widgets.php:1236
 msgid "Show post date:"
@@ -1810,10 +1727,6 @@ msgstr "<strong>ERROR</strong>: Ungültige E-Mail Adresse übertragen!"
 #: includes/common/functions.php:624
 msgid "<strong>ERROR</strong>: Invalid author name submitted!"
 msgstr "<strong>FEHLER</strong>: Ungültiger Autorenname!"
-
-#: templates/default/bbpress/form-reply.php:174
-msgid "You must be logged in to reply to this topic."
-msgstr "Sie müssen eingeloggt sein, um eine Antwort zu schreiben."
 
 #: templates/default/bbpress/user-subscriptions.php:47
 msgid "You are not currently subscribed to any topics."
@@ -1973,10 +1886,6 @@ msgstr "Entfernt gelöschte Forums aus Gebrauchereinschreibungen"
 #: includes/admin/tools.php:743
 msgid "Removing trashed forums from user subscriptions&hellip; %s"
 msgstr "Entferne Foren im Papierkorb aus den Benutzer-Abonnements&hellip; %s"
-
-#: includes/admin/tools.php:1209
-msgid "Revert your forums back to a brand new installation. This process cannot be undone."
-msgstr "Setzt Ihre Forums zurück zu einer komplett neuen Installation. Dieser Prozess kann nicht rückgängig gemacht werden."
 
 #: includes/admin/tools.php:1210
 msgid "Backup your database before proceeding."
@@ -2143,14 +2052,6 @@ msgstr "<strong>ERROR</strong>: Forum ID darf keine negative Zahl sein."
 #: includes/replies/functions.php:213 includes/topics/functions.php:218
 msgid "<strong>ERROR</strong>: Forum does not exist."
 msgstr "<strong>ERROR</strong>: Forum existiert nicht."
-
-#: includes/replies/functions.php:234 includes/replies/functions.php:575
-msgid "<strong>ERROR</strong>: This forum has been closed to new replies."
-msgstr "<strong>ERROR</strong>: Dieses Forum lässt keine neuen Antworten zu."
-
-#: includes/replies/functions.php:227 includes/replies/functions.php:568
-msgid "<strong>ERROR</strong>: This forum is a category. No replies can be created in this forum."
-msgstr "<strong>ERROR</strong>: Dieses Forum ist eine Kategorie. In diesem Forum können keine Antworten erstellt werden."
 
 #: includes/replies/functions.php:318
 msgid "<strong>ERROR</strong>: Topic is closed."
@@ -2408,18 +2309,6 @@ msgstr "Abonnements sind nicht länger aktiv."
 msgid "Please login to subscribe to this topic."
 msgstr "Bitte melde dich an um dieses Thema zu abonnieren."
 
-#: templates/default/bbpress/user-replies-created.php:15
-msgid "Forum Replies Created"
-msgstr "Forum-Antworten erstellt"
-
-#: templates/default/bbpress/user-details.php:48
-msgid "%s's Favorites"
-msgstr "%ss Favoriten"
-
-#: templates/default/bbpress/user-details.php:35
-msgid "%s's Topics Started"
-msgstr "%s's Themen eröffnet"
-
 #: templates/default/bbpress/loop-single-reply.php:21
 msgid "in reply to: "
 msgstr "Antwort auf:"
@@ -2428,10 +2317,6 @@ msgstr "Antwort auf:"
 #: templates/default/bbpress/form-user-edit.php:146
 msgid "User Role"
 msgstr "Benutzerrolle"
-
-#: templates/default/bbpress/user-details.php:41
-msgid "%s's Replies Created"
-msgstr "%s's Antworten erstellt"
 
 #: includes/core/capabilities.php:523
 msgid "Editable forum roles no longer exist."
@@ -2473,10 +2358,6 @@ msgstr "Du hast noch keine Antworten zu Themen erstellt."
 msgid "You cannot create new topics."
 msgstr "Du kannst keine neue Themen erstellen."
 
-#: templates/default/bbpress/user-profile.php:26
-msgid "Replies Created: %s"
-msgstr "Antworten erstellt: %s"
-
 #: templates/default/bbpress/user-details.php:58
 msgid "%s's Subscriptions"
 msgstr "%s Abonnements"
@@ -2517,10 +2398,6 @@ msgstr "Keymaster"
 #: includes/admin/tools.php:316
 msgid "Repairing BuddyPress group-forum relationships&hellip; %s"
 msgstr "Repariere BuddyPress Gruppen-Forum Beziehungen&hellip; %s"
-
-#: includes/admin/tools.php:805
-msgid "Remapping forum role for each user on this site&hellip; %s"
-msgstr "Belege die Foren-Rolle für jeden Benutzer auf dieser Seite&hellip; %s neu"
 
 #: includes/admin/tools.php:843
 msgid "Complete! %s users updated."
@@ -2574,10 +2451,6 @@ msgstr "Du kannst auch mehrere Beiträge auf einmal bearbeiten oder in den Papie
 #: includes/admin/topics.php:134
 msgid "This screen displays the individual topics on your site. You can customize the display of this screen to suit your workflow."
 msgstr "Dieser Bildschirm zeigt die einzelnen Themen Ihrer Seite. Sie können die Anzeige dieses Bildschirms nach Ihrer Arbeitsweise anpassen."
-
-#: includes/admin/tools.php:1022
-msgid "Recalculating forum visibility &hellip; %s"
-msgstr "Neuberechnung der Forum-Sichtbarkeit &hellip; %s"
 
 #: includes/admin/topics.php:173
 msgid "When using Bulk Edit, you can change the metadata (categories, author, etc.) for all selected topics at once. To remove a topic from the grouping, just click the x next to its name in the Bulk Edit area that appears."
@@ -2650,10 +2523,6 @@ msgstr "%1$s um %2$s"
 msgid "Oh bother! No replies were found here!"
 msgstr "Es wurden keine Antworten gefunden!"
 
-#: includes/admin/tools.php:530
-msgid "Counting the number of topics each user has created&hellip; %s"
-msgstr "Zählen der Themen, die jeder Benutzer angelegt hat &hellip; %s"
-
 #: includes/admin/tools.php:173
 msgid "Count topics for each user"
 msgstr "Themen f&uuml;r jeden Benutzer z&auml;hlen"
@@ -2665,10 +2534,6 @@ msgstr "Sprich es ist nicht so!"
 #: includes/admin/tools.php:1352
 msgid "Deleting Conversion Table&hellip; %s"
 msgstr "Lösche Konvertierungstablle&hellip; %s"
-
-#: includes/admin/tools.php:1370
-msgid "Deleting Roles and Capabilities&hellip; %s"
-msgstr "Rollen und Fähigkeiten werden gelöscht&hellip; %s"
 
 #: includes/admin/tools.php:1046
 msgid "Recalculating the forum for each post &hellip; %s"
@@ -2691,10 +2556,6 @@ msgstr "Erstelle ein Diskssuionsforum damit alle Mitglieder dieser Gruppe in ein
 #: includes/forums/functions.php:131
 msgid "<strong>ERROR</strong>: You do not have permission to create new forums."
 msgstr "<strong>FEHLER</strong>: Du hast nicht die nötigen Rechte um ein neues Forum anzulegen."
-
-#: includes/forums/functions.php:198 includes/forums/functions.php:436
-msgid "<strong>ERROR</strong>: This forum is private and you do not have the capability to read or create new forums in it."
-msgstr "<strong>FEHLER</strong>: Dieses Forum ist privat und du hast dort keine Berechtigung zum Lesen oder Erstellen neuer Unterforen."
 
 #: includes/forums/functions.php:203 includes/forums/functions.php:441
 msgid "<strong>ERROR</strong>: This forum is hidden and you do not have the capability to read or create new forums in it."
@@ -2734,10 +2595,6 @@ msgstr "Öffnen"
 msgid "The forum &#8216;%s&#8217; is closed to new content."
 msgstr "Das Forum &#8216;%s&#8217; ist für neuen Inhalt gesperrt."
 
-#: templates/default/bbpress/form-forum.php:169
-msgid "You must be logged in to create new forums."
-msgstr "Du musst eingeloggt sein, um neue Foren anlegen zu können."
-
 #: includes/admin/topics.php:157
 msgid "<strong>Edit</strong> takes you to the editing screen for that topic. You can also reach that screen by clicking on the topic title."
 msgstr "<strong>Bearbeiten</strong> führt zu der Bearbeiten-Anzeige dieses Themas. Du kannst die Anzeige auch durch das Klicken auf den Titel aufrufen."
@@ -2770,6 +2627,10 @@ msgstr "<strong>Themen-Editor</strong> - Trage den Text für dein Thema ein. Es 
 msgid "<strong>Publish</strong> - You can set the terms of publishing your topic in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a topic or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a topic to be published in the future or backdate a topic."
 msgstr "<strong>Veröffentlichen</strong> - Du kannst die Begriffe zum Veröffentlichen deines Themas in der Veröffentlichen-Box einstellen. Für Status, Sichtbarkeit und Veröffentlichen (sofort) klicke auf den Bearbeiten-Link um mehr Optionen anzuzeigen. Sichtbarkeit beinhaltet Optionen um ein Thema mit einem Passwort zu schützen oder um es oben im Blog anzuheften (sticky). Veröffentlichen (sofort) ermöglicht dir Datum und Uhrzeit in der Zukunft oder Vergangenheit zu setzen, so dass du die Veröffentlichung des Themas für die Zukunft oder die Vergangenheit planen kannst. "
 
+#: includes/admin/tools.php:682
+msgid "Removing trashed topics from user subscriptions&hellip; %s"
+msgstr "Entferne Themen aus dem Papierkorb von Benutzer-Abonnements%s"
+
 #: templates/default/bbpress/form-user-edit.php:178
 msgid "Update User"
 msgstr "Benutzer aktualisieren"
@@ -2786,12 +2647,6 @@ msgstr "Suchergebnisse"
 #: templates/default/bbpress/form-topic-merge.php:38
 msgid "Destination"
 msgstr "Ziel"
-
-#: templates/default/bbpress/form-reply-move.php:68
-#: templates/default/bbpress/form-topic-merge.php:89
-#: templates/default/bbpress/form-topic-split.php:93
-msgid "<strong>WARNING:</strong> This process cannot be undone."
-msgstr "<strong>WARNUNG:</strong> Dieser Prozess kann nicht Rückgängig gemacht werden."
 
 #: includes/search/template.php:229
 msgid "Search Results for '%s'"
@@ -2848,6 +2703,151 @@ msgstr "Lösche Einstellungen&hellip; %s"
 #: includes/admin/topics.php:160
 msgid "<strong>Preview</strong> will show you what your draft topic will look like if you publish it. View will take you to your live site to view the topic. Which link is available depends on your topic&#8217;s status."
 msgstr "<strong>Vorschau</strong> zeig Ihnen wie ihr Thema aussehen wird wenn Sie es veröffentlichen. Ihr Thema wird direkt auf Ihrer Seite gezeigt. Welchen Link ihr Thema haben wird hängt von ihrem Themenstatus ab."
+
+#: includes/replies/functions.php:234 includes/replies/functions.php:575
+msgid "<strong>ERROR</strong>: This forum has been closed to new replies."
+msgstr "<strong>ERROR:</strong> Dieses Forum lässt keine neuen Antworten zu."
+
+#: includes/replies/functions.php:227 includes/replies/functions.php:568
+msgid "<strong>ERROR</strong>: This forum is a category. No replies can be created in this forum."
+msgstr "<strong>ERROR:</strong> Dieses Forum ist eine Kategorie. In diesem Forum können keine Antworten erstellt werden."
+
+#: templates/default/bbpress/user-replies-created.php:15
+msgid "Forum Replies Created"
+msgstr "Verfasste Forenbeiträge"
+
+#: includes/common/functions.php:121
+msgid "days"
+msgstr "Tagen"
+
+#: includes/forums/functions.php:198 includes/forums/functions.php:436
+msgid "<strong>ERROR</strong>: This forum is private and you do not have the capability to read or create new forums in it."
+msgstr "<strong>FEHLER:</strong> Dieses Forum ist privat und du hast dort keine Berechtigung zum Lesen oder Erstellen neuer Themen."
+
+#: includes/replies/template.php:2366
+msgid "Viewing %2$s post (of %4$s total)"
+msgid_plural "Viewing %1$s posts - %2$s through %3$s (of %4$s total)"
+msgstr[0] "Betrachte %2$s Beitrag (von insgesamt %4$s)"
+msgstr[1] "Betrachte %1$s Beiträge - %2$s bis %3$s (von insgesamt %4$s)"
+
+#: templates/default/bbpress/form-forum.php:169
+msgid "You must be logged in to create new forums."
+msgstr "Du musst angemeldet sein, um neue Foren anlegen zu können."
+
+#: templates/default/bbpress/feedback-logged-in.php:13
+msgid "You are already logged in."
+msgstr "Du bist bereits angemeldet."
+
+#: includes/common/functions.php:114
+msgid "%s ago"
+msgstr "vor %s"
+
+#: includes/topics/functions.php:245 includes/topics/functions.php:563
+msgid "<strong>ERROR</strong>: This forum is private and you do not have the capability to read or create new topics in it."
+msgstr "<strong>FEHLER:</strong> Dieses Forum ist privat und du hast dort keine Berechtigung zum Lesen oder Erstellen neuer Themen."
+
+#: includes/replies/template.php:2362
+msgid "Viewing %1$s post"
+msgid_plural "Viewing %1$s posts"
+msgstr[0] "Betrachte %1$s Beitrag"
+msgstr[1] "Betrachte %1$s Beiträge"
+
+#: templates/default/bbpress/form-reply.php:36
+msgid "This topic is marked as closed to new replies, however your posting capabilities still allow you to do so."
+msgstr "Dieses Thema ist geschlossen für neue Antworten. Deine Antwort-Berechtigungen gestatten es dir dennoch, zu antworten."
+
+#: includes/replies/functions.php:240 includes/replies/functions.php:581
+msgid "<strong>ERROR</strong>: This forum is private and you do not have the capability to read or create new replies in it."
+msgstr "<strong>FEHLER</strong>: Dieses Forum ist versteckt. Du hast keine Berechtigung zum Lesen oder Erstellen neuer Antworten darin."
+
+#: includes/admin/tools.php:859
+msgid "Recomputing latest post in every topic and forum&hellip; %s"
+msgstr "Berechne letzte Beiträge in allen Themen und Foren neu&hellip; %s"
+
+#: includes/users/functions.php:463 includes/users/functions.php:1178
+#: includes/users/functions.php:1284
+msgid "<strong>ERROR</strong>: You don't have the permission to edit favorites of that user!"
+msgstr "<strong>ERROR</strong>: Du darfst die Favoriten des Benutzers nicht ändern."
+
+#: templates/default/bbpress/form-reply.php:174
+msgid "You must be logged in to reply to this topic."
+msgstr "Du musst angemeldet sein, um eine Antwort zu schreiben."
+
+#: templates/default/bbpress/form-topic.php:234
+msgid "You must be logged in to create new topics."
+msgstr "Du musst angemeldet sein, um neue Themen zu erstellen."
+
+#: includes/admin/tools.php:530
+msgid "Counting the number of topics each user has created&hellip; %s"
+msgstr "Zählen der Themen, die jeder Benutzer angelegt hat&hellip; %s"
+
+#: includes/admin/tools.php:620
+msgid "Removing trashed topics from user favorites&hellip; %s"
+msgstr "Entferne Themen aus dem Papierkorb von Benutzer-Favoriten%s"
+
+#: includes/admin/tools.php:805
+msgid "Remapping forum role for each user on this site&hellip; %s"
+msgstr "Belege die Foren-Rolle für jeden Benutzer auf dieser Seite neu&hellip; %s"
+
+#: includes/admin/tools.php:1022
+msgid "Recalculating forum visibility &hellip; %s"
+msgstr "Neuberechnung der Forum-Sichtbarkeit&hellip; %s"
+
+#: includes/admin/tools.php:1336 includes/admin/tools.php:1344
+msgid "Deleting User Meta&hellip; %s"
+msgstr "Lösche Metadaten der Benutzer&hellip; %s"
+
+#: includes/admin/tools.php:1370
+msgid "Deleting Roles and Capabilities&hellip; %s"
+msgstr "Lösche Rollen und Fähigkeiten&hellip; %s"
+
+#: templates/default/bbpress/user-profile.php:26
+msgid "Replies Created: %s"
+msgstr "Verfasste Beiträge: %s"
+
+#: templates/default/bbpress/form-reply-move.php:68
+#: templates/default/bbpress/form-topic-merge.php:89
+#: templates/default/bbpress/form-topic-split.php:93
+msgid "<strong>WARNING:</strong> This process cannot be undone."
+msgstr "<strong>WARNUNG:</strong> Dieser Vorgang kann nicht rückgängig gemacht werden."
+
+#: templates/default/bbpress/form-topic-tag.php:94
+msgid "Deleting a tag cannot be undone."
+msgstr "Einen Tag zu löschen kann nicht rückgängig gemacht werden."
+
+#: templates/default/bbpress/form-topic-tag.php:101
+msgid "Are you sure you want to delete the \"%s\" tag? This is permanent and cannot be undone."
+msgstr "Bist du sicher, dass du den \"%s\"-Tag löschen möchtest? Diese Aktion kann nicht rückgängig gemacht werden."
+
+#: includes/admin/tools.php:1209
+msgid "Revert your forums back to a brand new installation. This process cannot be undone."
+msgstr "Setzt deine Foren zurück auf eine komplett neue Installation. Dieser Prozess kann nicht rückgängig gemacht werden."
+
+#: includes/users/template.php:1476
+msgid "Registration complete. Please check your e-mail."
+msgstr "Registrierung vollständig. Bitte überprüfe dein E-Mail-Postfach."
+
+#: templates/default/bbpress/form-user-edit.php:74
+#: templates/default/bbpress/form-user-edit.php:77
+msgid "About Yourself"
+msgstr "Über dich"
+
+#: templates/default/bbpress/form-user-edit.php:49
+#: templates/default/bbpress/form-user-edit.php:52
+msgid "Contact Info"
+msgstr "Kontaktdaten"
+
+#: templates/default/bbpress/user-details.php:35
+msgid "%s's Topics Started"
+msgstr "Von %s eröffnete Themen"
+
+#: templates/default/bbpress/user-details.php:41
+msgid "%s's Replies Created"
+msgstr "Von %s verfasste Beiträge"
+
+#: templates/default/bbpress/user-details.php:48
+msgid "%s's Favorites"
+msgstr "Favoriten von %s"
 
 #: includes/admin/admin.php:805
 msgid "Converters"
@@ -2943,12 +2943,6 @@ msgstr "Keine Antworten zu konvertieren"
 #: includes/admin/converter.php:248 includes/admin/converter.php:525
 msgid "Conversion Complete"
 msgstr "Konvertierung beendet"
-
-#: includes/admin/settings.php:354 includes/extend/buddypress/loader.php:196
-#: includes/extend/buddypress/loader.php:269
-#: templates/default/bbpress/user-details.php:35
-msgid "Topics Started"
-msgstr "Thema eröffnet"
 
 #: includes/admin/settings.php:142 includes/extend/buddypress/loader.php:218
 #: templates/default/bbpress/user-details.php:48
@@ -3129,22 +3123,6 @@ msgstr "Webseite"
 #: includes/replies/template.php:2049 includes/topics/template.php:2630
 msgid "Move this item to the Trash"
 msgstr "Lege dieses Objekt in den Papierkorb"
-
-#: includes/admin/settings.php:1688
-#: templates/default/bbpress/loop-forums.php:21
-#: templates/default/bbpress/loop-replies.php:24
-#: templates/default/bbpress/loop-replies.php:66
-#: templates/default/bbpress/loop-topics.php:21
-msgid "Posts"
-msgstr "Artikel"
-
-#: includes/admin/replies.php:572 includes/admin/topics.php:636
-#: templates/default/bbpress/loop-replies.php:18
-#: templates/default/bbpress/loop-replies.php:60
-#: templates/default/bbpress/loop-search.php:18
-#: templates/default/bbpress/loop-search.php:40
-msgid "Author"
-msgstr "Author"
 
 #: bbpress.php:689
 msgid "Topics with no replies"
@@ -3618,10 +3596,6 @@ msgstr "In den Haupteinstellungen hast Du viele Optionen"
 msgid "per page"
 msgstr "pro Seite"
 
-#: includes/admin/settings.php:499
-msgid "Allow guest users without accounts to create topics and replies"
-msgstr "Erlaube Gastbenutzern ohne Konto ein Thema oder antwort zu erstellen"
-
 #: includes/admin/settings.php:1721
 msgid "View base"
 msgstr "Basis ansehen"
@@ -3678,16 +3652,6 @@ msgstr "bbPress Themen"
 msgid "bbPress Replies"
 msgstr "bbPress Antworten"
 
-#: includes/admin/forums.php:414 includes/admin/topics.php:638
-#: templates/default/bbpress/loop-forums.php:22
-#: templates/default/bbpress/loop-topics.php:22
-msgid "Freshness"
-msgstr "Letzte Änderung"
-
-#: includes/admin/settings.php:669
-msgid "Allow topic and reply revision logging"
-msgstr "Das Aufzeichnen der Themen- und Antworten-Überprüfung erlauben."
-
 #: includes/admin/admin.php:630
 msgctxt "admin color scheme"
 msgid "Mint"
@@ -3697,10 +3661,6 @@ msgstr "Minze"
 msgctxt "admin color scheme"
 msgid "Evergreen"
 msgstr "Immergrün"
-
-#: includes/admin/settings.php:581
-msgid "Allow users to subscribe to forums and topics"
-msgstr " Erlaube Benutzern Foren und Themen zu abonnieren  "
 
 #: includes/admin/admin.php:809
 msgid "We&#8217;re all abuzz about the hive of new importers, AEF, Drupal, FluxBB, Kunena Forums for Joomla, MyBB, Phorum, PHPFox, PHPWind, PunBB, SMF, Xenforo and XMB. Existing importers are now sweeter than honey with improved importing stickies, topic tags, forum categories and the sting is now gone if you need to remove imported users."
@@ -3818,10 +3778,6 @@ msgstr "Antwort auf:"
 msgid "Reply To"
 msgstr "Antworten auf"
 
-#: includes/admin/replies.php:223
-msgid "<strong>Reply To</strong> determines the threading of the reply."
-msgstr "<strong>Antworten auf</strong> legt das verschachteln von Antworten fest."
-
 #: includes/admin/settings.php:34
 msgid "Forum Theme Packages"
 msgstr "Forum-Themes Packete"
@@ -3928,10 +3884,6 @@ msgstr "%s - %s"
 msgid "&mdash; No parent &mdash;"
 msgstr "&mdash; Kein übergeordneter Beitrag &mdash;"
 
-#: includes/admin/settings.php:99
-msgid "Throttle posting every"
-msgstr "Detaillierte Benutzerprofile"
-
 #: includes/admin/settings.php:91
 msgid "Disallow editing after"
 msgstr "Bearbeitung verbieten nach"
@@ -3984,19 +3936,9 @@ msgstr "&mdash; Forum-Stammverzeichnis &mdash;"
 msgid "Forums Settings"
 msgstr "Forum-Einstellungen"
 
-#: includes/admin/settings.php:362 includes/extend/buddypress/loader.php:207
-#: includes/extend/buddypress/loader.php:277
-#: templates/default/bbpress/user-details.php:41
-msgid "Replies Created"
-msgstr "Antworten erstellt:"
-
 #: includes/admin/settings.php:1399
 msgid "Some optional parameters to help tune the conversion process."
 msgstr "Einige optionale Parameter um den Konvertierungsprozess einzustellen."
-
-#: includes/admin/settings.php:1473
-msgid "Use this if an import failed and you want to remove that incomplete data."
-msgstr "Benutzen Sie dies, falls ein Import fehlgeschlagen ist und Sie die unvollständigen Daten entfernen möchten."
 
 #: includes/admin/settings.php:1458
 msgid "You should clean old conversion information before starting over."
@@ -4348,10 +4290,6 @@ msgstr "<strong>Forum</strong> Drop-down-Menü bestimmt das Eltern-Forum zu dem 
 msgid "<strong>Topic</strong> determines the parent topic that the reply belongs to."
 msgstr "<strong>Thema</strong> bestimmt das Eltern-Thema zu dem die Antwort gehört."
 
-#: includes/admin/settings.php:565
-msgid "Allow users to mark topics as favorites"
-msgstr "Erlaube Benutzer Themen als Favoriten zu markieren"
-
 #: includes/admin/settings.php:698
 msgid "How your forum content is displayed within your existing theme."
 msgstr "Wie dein Forum in deinem existierenden Theme dargestellt wird."
@@ -4364,21 +4302,9 @@ msgstr "%1$s - %2$s"
 msgid "will serve all bbPress templates"
 msgstr "wird alle bbPress Templates bedienen"
 
-#: includes/admin/settings.php:763
-msgid "How many topics and replies to show per page"
-msgstr "Anzahl der Themen und Antworten die pro Seite angezeigt werden"
-
-#: includes/admin/settings.php:810
-msgid "How many topics and replies to show per RSS page"
-msgstr "Anzahl der Themen und Antworten die pro RSS Seite angezeigt werden"
-
 #: includes/admin/settings.php:1161
 msgid "Forum settings for BuddyPress"
 msgstr "Forumseinstellungen für BuddyPress"
-
-#: includes/admin/settings.php:1177
-msgid "Allow BuddyPress Groups to have their own forums"
-msgstr "BuddyPress Gruppen erlauben, ein eigenes Forum zu haben"
 
 #: includes/admin/settings.php:1202
 msgid "is the parent for all group forums"
@@ -4387,10 +4313,6 @@ msgstr "ist allen Foren übergeordnet."
 #: includes/admin/settings.php:1203
 msgid "Using the Forum Root is not recommended. Changing this does not move existing forums."
 msgstr "Den Foren-Stammverzeichnis zu nutzen wird nicht empfohlen. Eine Änderung verschiebt keine existierenden Foren."
-
-#: includes/admin/settings.php:1235
-msgid "Allow Akismet to actively prevent forum spam."
-msgstr "Akismet erlauben, um das Forum aktiv vor Spam zu schützen."
 
 #: includes/admin/settings.php:1316
 msgid "is the previous forum software"
@@ -4566,3 +4488,81 @@ msgstr "Gründungsentwickler"
 #: includes/admin/admin.php:825
 msgid "User capabilities"
 msgstr "Benutzerrechte"
+
+#: includes/admin/settings.php:581
+msgid "Allow users to subscribe to forums and topics"
+msgstr " Erlaube Benutzern, Foren und Themen zu abonnieren  "
+
+#: includes/admin/replies.php:223
+msgid "<strong>Reply To</strong> determines the threading of the reply."
+msgstr "<strong>Antworten auf</strong> legt das Verschachteln von Antworten fest."
+
+#: includes/admin/settings.php:99
+msgid "Throttle posting every"
+msgstr "Antworten drosseln, Pause mindestens"
+
+#: includes/admin/settings.php:354 includes/extend/buddypress/loader.php:196
+#: includes/extend/buddypress/loader.php:269
+#: templates/default/bbpress/user-details.php:35
+msgid "Topics Started"
+msgstr "Eröffnete Themen"
+
+#: includes/admin/settings.php:565
+msgid "Allow users to mark topics as favorites"
+msgstr "Erlaube Benutzern, Themen als Favoriten zu markieren"
+
+#: includes/admin/settings.php:1177
+msgid "Allow BuddyPress Groups to have their own forums"
+msgstr "Gestatte BuddyPress-Gruppen ein eigenes Forum"
+
+#: includes/admin/settings.php:1235
+msgid "Allow Akismet to actively prevent forum spam."
+msgstr "Akismet erlauben, das Forum aktiv vor Spam zu schützen."
+
+#: includes/admin/settings.php:763
+msgid "How many topics and replies to show per page"
+msgstr "Anzahl der Themen und Antworten, die pro Seite angezeigt werden"
+
+#: includes/admin/settings.php:810
+msgid "How many topics and replies to show per RSS page"
+msgstr "Anzahl der Themen und Antworten, die pro RSS Seite angezeigt werden"
+
+#: includes/admin/settings.php:669
+msgid "Allow topic and reply revision logging"
+msgstr "Das Aufzeichnen der Themen- und Antworten-Bearbeitungen erlauben."
+
+#: includes/admin/settings.php:1688
+#: templates/default/bbpress/loop-forums.php:21
+#: templates/default/bbpress/loop-replies.php:24
+#: templates/default/bbpress/loop-replies.php:66
+#: templates/default/bbpress/loop-topics.php:21
+msgid "Posts"
+msgstr "Beiträge"
+
+#: includes/admin/settings.php:499
+msgid "Allow guest users without accounts to create topics and replies"
+msgstr "Erlaube Gastbenutzern ohne Konto, Themen und Antworten zu erstellen"
+
+#: includes/admin/replies.php:572 includes/admin/topics.php:636
+#: templates/default/bbpress/loop-replies.php:18
+#: templates/default/bbpress/loop-replies.php:60
+#: templates/default/bbpress/loop-search.php:18
+#: templates/default/bbpress/loop-search.php:40
+msgid "Author"
+msgstr "Autor"
+
+#: includes/admin/forums.php:414 includes/admin/topics.php:638
+#: templates/default/bbpress/loop-forums.php:22
+#: templates/default/bbpress/loop-topics.php:22
+msgid "Freshness"
+msgstr "Letzte Aktualisierung"
+
+#: includes/admin/settings.php:362 includes/extend/buddypress/loader.php:207
+#: includes/extend/buddypress/loader.php:277
+#: templates/default/bbpress/user-details.php:41
+msgid "Replies Created"
+msgstr "Verfasste Beiträge"
+
+#: includes/admin/settings.php:1473
+msgid "Use this if an import failed and you want to remove that incomplete data."
+msgstr "Benutze dies, falls ein Import fehlgeschlagen ist und du die unvollständigen Daten entfernen möchtest."

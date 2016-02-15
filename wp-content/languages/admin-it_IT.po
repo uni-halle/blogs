@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-01-10 16:55:52+0000\n"
+"PO-Revision-Date: 2016-01-22 10:33:32+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -317,7 +317,7 @@ msgstr "I file nella directory %s sono eseguiti automaticamente."
 msgid "You are not allowed to manage these items."
 msgstr "Non sei autorizzato a gestire questi elementi. "
 
-#: wp-admin/widgets.php:431
+#: wp-admin/widgets.php:436
 msgid "This will clear all items from the inactive widgets list. You will not be able to restore any customizations."
 msgstr "Questo eliminerà tutti gli elementi dalla lista dei widget inattivi. Non potrai recuperare le personalizzazioni. "
 
@@ -329,7 +329,7 @@ msgstr "Lista degli utenti"
 msgid "One of the selected users is not a member of this site."
 msgstr "Uno degli utenti selezionati non è membro di questo sito."
 
-#: wp-admin/widgets.php:423
+#: wp-admin/widgets.php:426
 msgid "Clear Inactive Widgets"
 msgstr "Elimina i widget inattivi"
 
@@ -464,7 +464,7 @@ msgstr "L'intestazione del plugin %1$s è sconsigliata. Utilizza %2$s invece."
 #. translators: 1: a filename like .htaccess. 2: a file path.
 #: wp-admin/includes/network.php:520 wp-admin/includes/network.php:560
 msgid "Add the following to your %1$s file in %2$s, <strong>replacing</strong> other WordPress rules:"
-msgstr "Aggiungi quanto segue al tuo %1$s file in %2$s, <strong>rsostituendo</strong> le altre regole WordPress:"
+msgstr "Aggiungi quanto segue al tuo %1$s file in %2$s, <strong>sostituendo</strong> le altre regole WordPress:"
 
 #: wp-admin/includes/network.php:456
 msgid "To make your installation more secure, you should also add:"
@@ -2762,7 +2762,7 @@ msgstr "Mostra il tema precedente"
 msgid "Show next theme"
 msgstr "Mostra il tema successivo"
 
-#: wp-admin/widgets.php:498
+#: wp-admin/widgets.php:504
 msgid "Add Widget"
 msgstr "Aggiungi un widget"
 
@@ -4199,13 +4199,13 @@ msgstr "Utente eliminato."
 msgid "Could not copy files. You may have run out of disk space."
 msgstr "Impossibile copiare i file. Si potrebbe aver esaurito lo spazio disco."
 
-#: wp-admin/includes/theme-install.php:102
-msgid "Find a theme based on specific features."
-msgstr "Trovare un tema in base e specifiche funzionalità."
-
 #: wp-admin/includes/theme-install.php:60
 msgid "Search for themes by keyword."
 msgstr "Ricerca temi per parole chiave."
+
+#: wp-admin/includes/theme-install.php:102
+msgid "Find a theme based on specific features."
+msgstr "Trova un tema in base a specifiche funzionalità."
 
 #: wp-admin/setup-config.php:172
 msgid "In all likelihood, these items were supplied to you by your Web Host. If you don&#8217;t have this information, then you will need to contact them before you can continue. If you&#8217;re all ready&hellip;"

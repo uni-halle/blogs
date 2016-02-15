@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-12-13 01:36:53+0000\n"
+"PO-Revision-Date: 2016-01-15 13:41:32+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2042,15 +2042,6 @@ msgstr "お使いのバージョンの WordPress ではテストされていま�
 msgid "You are now logged out everywhere else."
 msgstr "他のすべてでログアウトしました。"
 
-#: wp-admin/includes/class-wp-links-list-table.php:113
-#: wp-admin/includes/class-wp-posts-list-table.php:437
-msgid "Filter by category"
-msgstr "カテゴリーで絞り込む"
-
-#: wp-admin/includes/class-wp-comments-list-table.php:328
-msgid "Filter by comment type"
-msgstr "コメントの種類で絞り込む"
-
 #: wp-admin/includes/class-wp-links-list-table.php:106
 #: wp-admin/includes/class-wp-posts-list-table.php:429
 msgid "All categories"
@@ -2101,6 +2092,15 @@ msgstr "ビジュアルモードでは WYSIWYG エディターが利用できま
 #: wp-admin/edit-form-advanced.php:365
 msgid "<strong>Post editor</strong> &mdash; Enter the text for your post. There are two modes of editing: Visual and Text. Choose the mode by clicking on the appropriate tab."
 msgstr "<strong> 投稿エディター </strong> &mdash; 投稿のテキストを入力します。ビジュアルモードとテキストモード: 編集には2つのモードがあります。タブをクリックしてモードを選択します。"
+
+#: wp-admin/includes/class-wp-links-list-table.php:113
+#: wp-admin/includes/class-wp-posts-list-table.php:437
+msgid "Filter by category"
+msgstr "カテゴリーで絞り込み"
+
+#: wp-admin/includes/class-wp-comments-list-table.php:328
+msgid "Filter by comment type"
+msgstr "コメントの種類で絞り込み"
 
 #: wp-admin/includes/class-wp-screen.php:1046
 msgctxt "Welcome panel"

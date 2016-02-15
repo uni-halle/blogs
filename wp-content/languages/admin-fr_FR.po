@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-01-14 15:02:49+0000\n"
+"PO-Revision-Date: 2016-01-18 14:36:47+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -317,7 +317,7 @@ msgstr "Les fichiers du répertoire %s sont exécutés automatiquement."
 msgid "You are not allowed to manage these items."
 msgstr "Vous n&rsquo;êtes pas autorisé à modifier ces éléments."
 
-#: wp-admin/widgets.php:431
+#: wp-admin/widgets.php:436
 msgid "This will clear all items from the inactive widgets list. You will not be able to restore any customizations."
 msgstr "Cela supprimera tous les éléments de la liste des widgets désactivés. Vous ne pourrez récupérer aucune personnalisation."
 
@@ -333,7 +333,7 @@ msgstr "Un des utilisateurs sélectionnés n&rsquo;est pas un abonné de ce site
 msgid "Users list navigation"
 msgstr "Navigation de la liste des utilisateurs"
 
-#: wp-admin/widgets.php:423
+#: wp-admin/widgets.php:426
 msgid "Clear Inactive Widgets"
 msgstr "Vider les widgets désactivés"
 
@@ -2049,10 +2049,6 @@ msgstr "<strong>Nouvelles de WordPress</strong> - Dernière nouvelles en provena
 msgid "Enable full-height editor and distraction-free functionality."
 msgstr "Activer l'éditeur plein-écran et la fonctionnalité d'écriture sans distraction."
 
-#: wp-admin/includes/dashboard.php:1066
-msgid "https://planet.wordpress.org/feed/"
-msgstr "http://feeds.feedburner.com/feedburner/cjgL"
-
 #: wp-admin/includes/dashboard.php:1057
 msgid "https://planet.wordpress.org/"
 msgstr "http://www.wordpress-fr.net/planet/"
@@ -2060,6 +2056,10 @@ msgstr "http://www.wordpress-fr.net/planet/"
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:549
 msgid "Untested with your version of WordPress"
 msgstr "Non-testé avec votre version de WordPress"
+
+#: wp-admin/includes/dashboard.php:1066
+msgid "https://planet.wordpress.org/feed/"
+msgstr "http://feeds.feedburner.com/wordpress-fr/RaoY"
 
 #: wp-admin/custom-header.php:461
 msgid "You can now manage and live-preview Custom Header in the <a href=\"%1$s\">Customizer</a>."
@@ -2177,10 +2177,6 @@ msgstr "Utilisez les boutons fléchées au-dessus de la fenêtre ou les flèches
 msgid "To delete media items, click the Bulk Select button at the top of the screen. Select any items you wish to delete, then click the Delete Selected button. Clicking the Cancel Selection button takes you back to viewing your media."
 msgstr "Pour supprimer des éléments de la liste des médias, cliquez sur le bouton de Sélection multiple en haut de l&#8217;écran. Sélectionnez tous les éléments à supprimer, puis cliquez sur le bouton Supprimer la sélection. En cliquant sur le bouton Annuler la sélection vous reviendrez sur la vue normale des médias."
 
-#: wp-admin/upload.php:59
-msgid "Clicking an item will display an Attachment Details dialog, which allows you to preview media and make quick edits. Any changes you make to the attachment details will be automatically saved."
-msgstr "Cliquer sur un élément affichera une fenêtre avec les détails du fichier, ce qui vous permettra de prévisualiser le média et réaliser de rapides modifications. Tous les changements que vous ferez dans les détails du média seront automatiquement sauvegardés."
-
 #: wp-admin/upload.php:61
 msgid "You can also delete individual items and access the extended edit screen from the details dialog."
 msgstr "Vous pouvez aussi supprimer les éléments individuellement et accéder à l&#8217;écran de modifications étendues par la fenêtre des détails."
@@ -2188,6 +2184,10 @@ msgstr "Vous pouvez aussi supprimer les éléments individuellement et accéder 
 #: wp-admin/upload.php:51 wp-admin/upload.php:186
 msgid "You can view your media in a simple visual grid or a list with columns. Switch between these views using the icons to the left above the media."
 msgstr "Vous pouvez voir vos médias dans une grille ou dans une liste avec des colonnes. Passez de l&rsquo;un à l&rsquo;autre en utilisant les icônes en haut à gauche des médias."
+
+#: wp-admin/upload.php:59
+msgid "Clicking an item will display an Attachment Details dialog, which allows you to preview media and make quick edits. Any changes you make to the attachment details will be automatically saved."
+msgstr "Cliquer sur un élément affichera une fenêtre avec les détails du fichier, ce qui vous permettra de prévisualiser le média et réaliser de rapides modifications. Toutes les modifications que vous ferez dans les détails du média seront automatiquement enregistrées."
 
 #: wp-admin/plugin-install.php:80
 msgid "If you just want to get an idea of what&#8217;s available, you can browse Featured and Popular plugins by using the links in the upper left of the screen. These sections rotate regularly."
@@ -2680,13 +2680,13 @@ msgstr "Cliquez sur Personnaliser pour le thème actuel ou Prévisualisation pou
 msgid "Tap or hover on any theme then click the Live Preview button to see a live preview of that theme and change theme options in a separate, full-screen view. You can also find a Live Preview button at the bottom of the theme details screen. Any installed theme can be previewed and customized in this way."
 msgstr "Touchez ou survolez n&rsquo;importe quel thème puis cliquez sur le bouton Prévisualisation pour voir une prévisualisation de ce thème et changer les options du thème dans un vie séparée et plein écran. Vous pouvez également trouver un bouton Prévisualisation au bas de l&rsquo;écran de détails du thème. Tout thème installé peut être prévisualisé et personnalisé de cette manière."
 
-#: wp-admin/themes.php:107
-msgid "When previewing on smaller monitors, you can use the collapse icon at the bottom of the left-hand pane. This will hide the pane, giving you more room to preview your site in the new theme. To bring the pane back, click on the collapse icon again."
-msgstr "Lors de la prévisualisation sur de petits écrans, vous pouvez utiliser l&rsquo;icône de réduction en bas à gauche du panneau. Cela cachera le panneau, vous donnant ainsi plus de place pour prévisualiser le site avec le nouveau thème. Pour ramener le panneau, cliquez à nouveau sur l&rsquo;icône de réduction."
-
 #: wp-admin/themes.php:75
 msgid "Click on the theme to see the theme name, version, author, description, tags, and the Delete link"
 msgstr "Cliquez sur le thème pour voir le nom du thème, sa version, son auteur, sa description, ses étiquettes et le bouton Supprimer."
+
+#: wp-admin/themes.php:107
+msgid "When previewing on smaller monitors, you can use the collapse icon at the bottom of the left-hand pane. This will hide the pane, giving you more room to preview your site in the new theme. To bring the pane back, click on the collapse icon again."
+msgstr "Lors de la prévisualisation sur de petits écrans, vous pouvez utiliser l&rsquo;icône de réduction en bas à gauche du panneau. Cela masquera le panneau, vous donnant ainsi plus de place pour prévisualiser le site avec le nouveau thème. Pour ramener le panneau, cliquez à nouveau sur l&rsquo;icône de réduction."
 
 #: wp-admin/widgets.php:390
 msgid "To activate a widget drag it to a sidebar or click on it. To deactivate a widget and delete its settings, drag it back."
@@ -2777,7 +2777,7 @@ msgstr "Affichier le thème précédent"
 msgid "Show next theme"
 msgstr "Afficher le thème suivant"
 
-#: wp-admin/widgets.php:498
+#: wp-admin/widgets.php:504
 msgid "Add Widget"
 msgstr "Ajouter le widget"
 
@@ -3708,10 +3708,6 @@ msgstr "Réglages de publication"
 msgid "To use a background image, simply upload it or choose an image that has already been uploaded to your Media Library by clicking the &#8220;Choose Image&#8221; button. You can display a single instance of your image, or tile it to fill the screen. You can have your background fixed in place, so your site content moves on top of it, or you can have it scroll with your site."
 msgstr "Pour utiliser une image de fond, mettez-la simplement en ligne ou choisissez une image déjà mise en ligne dans votre Bibliothèque de Médias en cliquant sur  le bouton &laquo;&nbsp;Choisir l&rsquo;image&nbsp;&raquo;. Vous pouvez n&rsquo;afficher qu&rsquo;une occurrence de l&rsquo;image, ou la répéter afin de remplir l&rsquo;écran. Vous pouvez choisir de garder le fond en place quand vous faites défiler le contenu, ou au contraire faire que le fond défile en même temps."
 
-#: wp-admin/edit-form-advanced.php:356
-msgid "The title field and the big Post Editing Area are fixed in place, but you can reposition all the other boxes using drag and drop. You can also minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
-msgstr "Le champ du titre et la zone d&rsquo;édition de l&rsquo;article sont inamovibles, mais vous pouvez déplacer toutes les autres blocs par simple glisser/déposer. Vous pouvez également les fermer/ouvrir en cliquant sur la barre de titre de chaque boite. Utilisez l&rsquo;onglet &laquo;&nbsp;Options de l&rsquo;écran&nbsp;&raquo; pour cacher d&rsquo;autres boites (Extrait, Envoyer des rétroliens, Champs personnalisés, Discussion, Identifiant, Auteur) ou pour choisir un affichage sur une ou deux colonnes pour cet écran."
-
 #: wp-admin/widgets.php:69
 msgid "When changing themes, there is often some variation in the number and setup of widget areas/sidebars and sometimes these conflicts make the transition a bit less smooth. If you changed themes and seem to be missing widgets, scroll down on this screen to the Inactive Widgets area, where all of your widgets and their settings will have been saved."
 msgstr "En changeant de thèmes, il y a souvent des variations sur le nombre et l&rsquo;agencement des zones de widgets et des barres latérales, et parfois tout cela entre en conflit, rendant la transition moins aisée. Si vous avec changé de thème et que certains widgets semblent manquer, faites défiler cet écran jusqu&rsquo;en bas pour les retrouver dans la zone des widgets inactifs, où ils ont été conservés avec leurs derniers réglages."
@@ -3719,6 +3715,10 @@ msgstr "En changeant de thèmes, il y a souvent des variations sur le nombre et 
 #: wp-admin/edit-tags.php:256
 msgid "<strong>Parent</strong> &mdash; Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have child categories for Bebop and Big Band. Totally optional. To create a subcategory, just choose another category from the Parent dropdown."
 msgstr "<strong>Parent</strong> &mdash; Les catégories, contrairement aux étiquettes, peuvent avoir une hiérarchie. Vous pouvez avoir une catégorie nommée &laquo;&nbsp;Jazz&nbsp;&raquo;, et à l&rsquo;intérieur, plusieurs catégories comme &laquo;&nbsp;Bebop&nbsp;&raquo; et &laquo;&nbsp;Big Band&nbsp;&raquo;. Le fait d&rsquo;avoir une hiérarchie est totalement facultatif. Pour créer une sous-catégorie, choisissez juste une autre catégorie depuis la liste déroulante &laquo;&nbsp;Parente&nbsp;&raquo;&nbsp;."
+
+#: wp-admin/edit-form-advanced.php:356
+msgid "The title field and the big Post Editing Area are fixed in place, but you can reposition all the other boxes using drag and drop. You can also minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
+msgstr "Le champ du titre et la zone d&rsquo;édition de l&rsquo;article sont inamovibles, mais vous pouvez déplacer toutes les autres blocs par simple glisser/déposer. Vous pouvez également les fermer/ouvrir en cliquant sur la barre de titre de chaque boite. Utilisez l&rsquo;onglet &laquo;&nbsp;Options de l&rsquo;écran&nbsp;&raquo; pour masquer d&rsquo;autres boites (Extrait, Envoyer des rétroliens, Champs personnalisés, Discussion, Identifiant, Auteur) ou pour choisir un affichage sur une ou deux colonnes pour cet écran."
 
 #: wp-admin/includes/media.php:2629
 msgid "You are using the multi-file uploader. Problems? Try the <a href=\"%1$s\" target=\"%2$s\">browser uploader</a> instead."
@@ -3759,7 +3759,7 @@ msgstr "Vous pouvez également choisir une couleur pour ce texte en cliquant sur
 
 #: wp-admin/custom-header.php:121
 msgid "In the Header Text section of this page, you can choose whether to display this text or hide it. You can also choose a color for the text by clicking the Select Color button and either typing in a legitimate HTML hex value, e.g. &#8220;#ff0000&#8221; for red, or by choosing a color using the color picker."
-msgstr "Dans la section &laquo;&nbsp;Texte d&rsquo;en-tête&nbsp;&raquo; de cette page, vous pouvez choisir d&rsquo;afficher ce texte ou de le cacher. Vous pouvez également choisir une couleur pour ce texte en cliquant sur le bouton &laquo;&nbsp;Sélecteur de couleur&nbsp;&raquo; et soit en saisissant une valeur HTML valide (ex.&nbsp;: <code>#ff0000</code> pour du rouge) ou en cliquant sur le sélecteur de couleur."
+msgstr "Dans la section &laquo;&nbsp;Texte d&rsquo;en-tête&nbsp;&raquo; de cette page, vous pouvez choisir d&rsquo;afficher ce texte ou de le masquer. Vous pouvez également choisir une couleur pour ce texte en cliquant sur le bouton &laquo;&nbsp;Sélecteur de couleur&nbsp;&raquo; et soit en saisissant une valeur HTML valide (ex.&nbsp;: <code>#ff0000</code> pour du rouge) ou en cliquant sur le sélecteur de couleur."
 
 #: wp-admin/options-reading.php:32
 msgid "You can choose whether or not your site will be crawled by robots, ping services, and spiders. If you want those services to ignore your site, click the checkbox next to &#8220;Discourage search engines from indexing this site&#8221; and click the Save Changes button at the bottom of the screen. Note that your privacy is not complete; your site is still visible on the web."
@@ -5169,7 +5169,7 @@ msgstr "Cet écran offre plusieurs options pour contrôler la gestion et l&rsquo
 
 #: wp-admin/user-edit.php:40
 msgid "You can change your password, turn on keyboard shortcuts, change the color scheme of your WordPress administration screens, and turn off the WYSIWYG (Visual) editor, among other things. You can hide the Toolbar (formerly called the Admin Bar) from the front end of your site, however it cannot be disabled on the admin screens."
-msgstr "Vous pouvez modifier votre mot de passe, activer les raccourcis clavier, modifier la combinaison de couleurs des écrans de l&rsquo;administration, et désactiver l&rsquo;éditeur visuel (WYSIWYG), entre autres choses. Vous pouvez également cacher la barre d&rsquo;outils (anciennement &laquo;&nbsp;barre d&rsquo;administration&nbsp;&raquo;) sur la partie publique de votre site, mais elle ne peut pas être enlevée des écrans d&rsquo;administration."
+msgstr "Vous pouvez modifier votre mot de passe, activer les raccourcis clavier, modifier la combinaison de couleurs des écrans de l&rsquo;administration, et désactiver l&rsquo;éditeur visuel (WYSIWYG), entre autres choses. Vous pouvez également masquer la barre d&rsquo;outils (anciennement &laquo;&nbsp;barre d&rsquo;administration&nbsp;&raquo;) sur la partie publique de votre site, mais elle ne peut pas être enlevée des écrans d&rsquo;administration."
 
 #: wp-admin/widgets.php:95
 msgid "Inactive Sidebar (not used)"
@@ -5275,10 +5275,6 @@ msgstr "<strong>Aperçu</strong> vous donnera une idée de ce à quoi votre brou
 msgid "Managing Pages"
 msgstr "Gestion de pages"
 
-#: wp-admin/users.php:41
-msgid "You can hide/display columns based on your needs and decide how many users to list per screen using the Screen Options tab."
-msgstr "Vous pouvez cacher/afficher les colonnes en fonction de vos besoins, et décider du nombre d&rsquo;articles à afficher par écran à l&rsquo;aide de l&rsquo;onglet &laquo;&nbsp;Options de l&rsquo;écran&nbsp;&raquo;."
-
 #: wp-admin/users.php:47
 msgid "Hovering over a row in the users list will display action links that allow you to manage users. You can perform the following actions:"
 msgstr "Passer la souris au-dessus d&rsquo;une ligne de la liste des utilisateurs, fera s&rsquo;afficher des liens vous permettant de gérer l&rsquo;utilisateur. Vous pouvez lancer les actions suivantes&nbsp;:"
@@ -5290,6 +5286,10 @@ msgstr "&laquo;&nbsp;Modifier&nbsp;&raquo; vous envoie sur l&rsquo;écran de mod
 #: wp-admin/users.php:43
 msgid "You can view all posts made by a user by clicking on the number under the Posts column."
 msgstr "Vous pouvez afficher tous les articles faits par un même utilisateur en cliquant sur le nombre sous la colonne &laquo;&nbsp;Articles&nbsp;&raquo;."
+
+#: wp-admin/users.php:41
+msgid "You can hide/display columns based on your needs and decide how many users to list per screen using the Screen Options tab."
+msgstr "Vous pouvez masquer/afficher les colonnes en fonction de vos besoins, et décider du nombre d&rsquo;articles à afficher par écran à l&rsquo;aide de l&rsquo;onglet &laquo;&nbsp;Options de l&rsquo;écran&nbsp;&raquo;."
 
 #: wp-admin/user-new.php:171
 msgid "Because this is a multisite installation, you may add accounts that already exist on the Network by specifying a username or email, and defining a role. For more options, such as specifying a password, you have to be a Network Administrator and use the hover link under an existing user&#8217;s name to Edit the user profile under Network Admin > All Users."
@@ -6575,7 +6575,7 @@ msgstr "UTC signifie &laquo;&nbsp;Temps universel coordonné&nbsp;&raquo;."
 
 #: wp-admin/edit-link-form.php:59
 msgid "The boxes for link name, web address, and description have fixed positions, while the others may be repositioned using drag and drop. You can also hide boxes you don&#8217;t use in the Screen Options tab, or minimize boxes by clicking on the title bar of the box."
-msgstr "Les blocs pour le nom, l&rsquo;adresse web et la description sont fixes, tandis que les autres peuvent être repositionnés par glisser/déposer. Vous pouvez également cacher les blocs que vous n&rsquo;utilisez pas via l&rsquo;onglet &laquo;&nbsp;Options de l&rsquo;écran&nbsp;&raquo;, et fermer les blocs en cliquant sur leur barre de titre."
+msgstr "Les blocs pour le nom, l&rsquo;adresse web et la description sont fixes, tandis que les autres peuvent être repositionnés par glisser/déposer. Vous pouvez également masquer les blocs que vous n&rsquo;utilisez pas via l&rsquo;onglet &laquo;&nbsp;Options de l&rsquo;écran&nbsp;&raquo;, et fermer les blocs en cliquant sur leur barre de titre."
 
 #: wp-admin/update-core.php:163
 msgid "You have the latest version of WordPress."
@@ -6711,10 +6711,6 @@ msgstr "Toutes les mises à jour sont terminées."
 msgid "When adding a new category on this screen, you&#8217;ll fill in the following fields:"
 msgstr "Quand vous ajoutez une nouvelle catégorie via cet écran, vous devez remplir les champs suivants&nbsp;:"
 
-#: wp-admin/edit-tags.php:260
-msgid "You can change the display of this screen using the Screen Options tab to set how many items are displayed per screen and to display/hide columns in the table."
-msgstr "Vous pouvez modifier l&rsquo;affichage de cet écran via l&rsquo;onglet &laquo;&nbsp;Options de l&rsquo;écran&nbsp;&raquo;, afin de définir le nombre d&rsquo;éléments à afficher par écran, et afficher/cacher les colonnes du tableau."
-
 #: wp-admin/edit-tags.php:226
 msgid "You can use categories to define sections of your site and group related posts. The default category is &#8220;Uncategorized&#8221; until you change it in your <a href=\"%s\">writing settings</a>."
 msgstr "Vous pouvez utiliser les catégories pour donner des sections à votre site, et grouper les articles connexes. La catégorie par défaut est &laquo;&nbsp;Non classé&nbsp;&raquo;&nbsp;; vous pouvez la modifier dans vos <a href=\"%s\">options d&rsquo;écriture</a>."
@@ -6734,6 +6730,10 @@ msgstr "<strong>Description</strong> &mdash; La description n&rsquo;est pas trè
 #: wp-admin/edit-tags.php:250
 msgid "<strong>Name</strong> &mdash; The name is how it appears on your site."
 msgstr "<strong>Nom</strong> &mdash; Le nom est utilisé un peu partout sur votre site&nbsp;;"
+
+#: wp-admin/edit-tags.php:260
+msgid "You can change the display of this screen using the Screen Options tab to set how many items are displayed per screen and to display/hide columns in the table."
+msgstr "Vous pouvez modifier l&rsquo;affichage de cet écran via l&rsquo;onglet &laquo;&nbsp;Options de l&rsquo;écran&nbsp;&raquo;, afin de définir le nombre d&rsquo;éléments à afficher par écran, et afficher/masquer les colonnes du tableau."
 
 #: wp-admin/upload.php:185
 msgid "You can narrow the list by file type/status using the text link filters at the top of the screen. You also can refine the list by date using the dropdown menu above the media table."
@@ -6839,13 +6839,13 @@ msgstr "Passer la souris au-dessus d&rsquo;une ligne de la liste d&rsquo;article
 msgid "You can filter the list of posts by post status using the text links in the upper left to show All, Published, Draft, or Trashed posts. The default view is to show all posts."
 msgstr "Vous pouvez filtrer la liste des articles par état, à l&rsquo;aide des liens textuels en haut à gauche, afin d&rsquo;afficher tous les articles, ou seulement les articles publiés, les brouillons, etc. Par défaut, tous les articles sont affichés&nbsp;;"
 
-#: wp-admin/edit.php:196
-msgid "You can hide/display columns based on your needs and decide how many posts to list per screen using the Screen Options tab."
-msgstr "Vous pouvez cacher/afficher les colonnes en fonction de vos besoins, et décider du nombre d&rsquo;articles à afficher par écran à l&rsquo;aide de l&rsquo;onglet &laquo;&nbsp;Options de l&rsquo;écran&nbsp;&raquo;&nbsp;;"
-
 #: wp-admin/edit.php:199
 msgid "You can refine the list to show only posts in a specific category or from a specific month by using the dropdown menus above the posts list. Click the Filter button after making your selection. You also can refine the list by clicking on the post author, category or tag in the posts list."
 msgstr "Vous pouvez affiner la liste pour qu&rsquo;elle n&rsquo;affiche que les articles d&rsquo;une catégorie spécifique ou d&rsquo;un mois donné, à l&rsquo;aide du menu déroulant situé au-dessus de la liste. Cliquez sur le bouton &laquo;&nbsp;Filtrer&nbsp;&raquo; après avoir fait votre choix. Vous pouvez également affiner la liste en cliquant sur l&rsquo;auteur d&rsquo;un article, sa catégorie ou une étiquette."
+
+#: wp-admin/edit.php:196
+msgid "You can hide/display columns based on your needs and decide how many posts to list per screen using the Screen Options tab."
+msgstr "Vous pouvez afficher/masquer les colonnes en fonction de vos besoins, et décider du nombre d&rsquo;articles à afficher par écran à l&rsquo;aide de l&rsquo;onglet &laquo;&nbsp;Options de l&rsquo;écran&nbsp;&raquo;&nbsp;;"
 
 #: wp-admin/plugins.php:537
 msgid "Search Installed Plugins"
@@ -7175,7 +7175,7 @@ msgstr "Afficher les détails"
 
 #: wp-admin/includes/class-wp-upgrader-skins.php:289
 msgid "Hide Details"
-msgstr "Cacher les détails"
+msgstr "Masquer les détails"
 
 #: wp-admin/includes/upgrade.php:80
 msgid "Your chosen password."
@@ -10758,10 +10758,6 @@ msgstr "Clé publique&nbsp;:"
 msgid "Private Key:"
 msgstr "Clé privée&nbsp;:"
 
-#: wp-admin/includes/image-edit.php:70
-msgid "Discard any changes and restore the original image."
-msgstr "Abandonner tout changement et rétablir l&rsquo;image originale."
-
 #: wp-admin/includes/image-edit.php:77
 msgid "Restore image"
 msgstr "Rétablir l&rsquo;image"
@@ -10845,6 +10841,10 @@ msgstr "Impossible de se connecter au serveur FTP %s"
 #: wp-admin/includes/class-wp-filesystem-ssh2.php:119
 msgid "Failed to connect to SSH2 Server %s"
 msgstr "Impossible de se connecter au serveur SSH2 %s"
+
+#: wp-admin/includes/image-edit.php:70
+msgid "Discard any changes and restore the original image."
+msgstr "Abandonner toutes modifications et rétablir l&rsquo;image originale."
 
 #: wp-admin/includes/media.php:2429 wp-admin/includes/nav-menu.php:346
 #: wp-admin/includes/nav-menu.php:620
