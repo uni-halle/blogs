@@ -42,6 +42,7 @@ if ( !function_exists('remove_more_anchor') ) {
 
 // Rewrite Content URLs to use https if neccessary
 function mlublogs_ssl($content) {
+  if (is_object($content)) return $content;
   if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
     //$content = ereg_replace("http://" . $_SERVER["SERVER_NAME"], "https://" . $_SERVER["SERVER_NAME"], $content);
     $content = str_replace('http://'.$_SERVER['SERVER_NAME'],'https://'.$_SERVER['SERVER_NAME'],$content);
