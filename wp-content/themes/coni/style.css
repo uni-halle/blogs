@@ -5,7 +5,7 @@ Theme URI: https://www.quemalabs.com/theme/coni/
 Author: Quema Labs
 Author URI: https://www.quemalabs.com
 Description: Coni is a multipurpose theme, focus on corporate and business. With responsive and minimalist design. Includes an awesome One Page design for the front page, with unique section to present your content, like Services, Features, Team members, Videos, Images, Testimonials, Pricing tables, Clients, Blog posts and much more.
-Version: 1.0.11
+Version: 1.0.12
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 Text Domain: coni
@@ -2029,6 +2029,9 @@ Animation Overflow
 }
 .metadata ul li a:hover {
   text-decoration: underline;
+}
+.updated:not(.published) {
+  display: none;
 }
 .metadata hr {
   margin: 0;

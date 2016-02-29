@@ -167,7 +167,7 @@ function coni_customize_register( $wp_customize ) {
 			//'description' => esc_attr__( 'Example: John Smith <span>CEO, Coni Inc.</span>', 'coni' ),
 		) );
 
-		$wp_customize->add_setting( 'coni_quote_image', array( 'default' => '', 'transport' => 'postMessage', 'sanitize_callback' => 'attachment_url_to_postid', ) );
+		$wp_customize->add_setting( 'coni_quote_image', array( 'default' => '', 'transport' => 'postMessage', 'sanitize_callback' => 'coni_sanitize_integer', ) );
 		$wp_customize->add_control( new WP_Customize_Cropped_Image_Control( $wp_customize, 'coni_quote_image', array(
 		    'section'     => 'coni_quote_section',
 		    'label'       => esc_attr__( 'Image' , 'coni' ),
@@ -355,7 +355,7 @@ function coni_customize_register( $wp_customize ) {
 			'priority' => 220,
 		) );
 
-		$wp_customize->add_setting( 'coni_phone_image', array( 'default' => '', 'transport' => 'postMessage', 'sanitize_callback' => 'attachment_url_to_postid', ) );
+		$wp_customize->add_setting( 'coni_phone_image', array( 'default' => '', 'transport' => 'postMessage', 'sanitize_callback' => 'coni_sanitize_integer', ) );
 		$wp_customize->add_control( new WP_Customize_Cropped_Image_Control( $wp_customize, 'coni_phone_image', array(
 		    'section'     => 'coni_phone_section',
 		    'label'       => esc_attr__( 'Phone Screen' , 'coni' ),
@@ -657,6 +657,7 @@ function coni_sanitize_categories( $value ) {
 function coni_sanitize_integer( $value ) {
     return absint( $value );
 }
+
 
 /**
  * Sanitize return pro version text

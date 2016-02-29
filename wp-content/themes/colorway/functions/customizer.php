@@ -1101,8 +1101,11 @@ function inkthemes_registers() {
     wp_enqueue_script('inkthemes_customizer_script');
     wp_localize_script('inkthemes_customizer_script', 'ink_advert', array(
         'pro' => __('View PRO version', 'colorway'),
-        'url' => esc_url('http://www.inkthemes.com/wp-themes/colorway-wp-theme/')
-    ));
+        'url' => esc_url('http://www.inkthemes.com/wp-themes/colorway-wp-theme/'),
+		'support_text' => __('Need Help!','colorway'),
+		'support_url' => esc_url('http://www.inkthemes.com/lets-connect/'),
+    )
+);
 }
 
 add_action('customize_controls_enqueue_scripts', 'inkthemes_registers');

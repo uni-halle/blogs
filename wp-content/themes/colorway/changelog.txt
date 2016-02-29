@@ -2,6 +2,10 @@ Theme Name: ColorWay
 
 ========================
 
+* Version 3.4.1
+***************************************
+1. Support Link Button Added In WordPress Customize
+
 * Version 3.4.0
 ***************************************
 1. Theme option to WordPress customizer API migration.
