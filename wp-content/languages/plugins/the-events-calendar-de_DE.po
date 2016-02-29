@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-01-04 15:32:35+0000\n"
+"PO-Revision-Date: 2016-02-17 22:28:59+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1049,7 +1049,7 @@ msgstr "Verstaltungsansicht Navigation"
 msgid "View As"
 msgstr "Anzeigen als"
 
-#: src/views/modules/meta/details.php:140
+#: src/views/modules/meta/details.php:142
 msgid "%s Tags:"
 msgstr "%s-Tags:"
 
@@ -1084,10 +1084,6 @@ msgstr "Kartenart"
 #: vendor/tickets/src/views/tickets/email.php:340
 msgid "Purchaser"
 msgstr "Käufer"
-
-#: src/views/widgets/list-widget.php:65
-msgid "View All %s"
-msgstr "Alle %s anzeigen"
 
 #: src/views/widgets/list-widget.php:71
 msgid "There are no upcoming %s at this time."
@@ -1236,6 +1232,10 @@ msgstr "Sie %1$skönnen nicht%2$s die gleiche URL wie oben nutzen. Idealerweise 
 #: vendor/tickets/common/src/admin-views/tribe-options-licenses.php:18
 msgid "%1$s Using our plugins in a multisite network? %2$s Please note that your license key will be applied to the entire network, not just this site."
 msgstr "%1$s Nutzen Sie unser Plugin in einem Multisite Netzwerk? %2$s Bitte beachten Sie, dass der Lizenzschlüssel für das gesamte Netzwerk angewendet wird, nicht nur für diese Seite."
+
+#: src/views/widgets/list-widget.php:65
+msgid "View All %s"
+msgstr "Alle %s anzeigen"
 
 #: src/admin-views/events-meta-box.php:121
 msgid "Timezone:"
@@ -1647,7 +1647,7 @@ msgstr "Nach Eintritt"
 
 #: src/admin-views/events-meta-box.php:255
 #: src/functions/advanced-functions/meta_registration.php:48
-#: src/views/modules/meta/details.php:121
+#: src/views/modules/meta/details.php:123
 msgid "Cost:"
 msgstr "Eintritt:"
 
@@ -1667,7 +1667,7 @@ msgstr "%s-Name:"
 #: src/admin-views/venue-meta-box.php:111
 #: src/functions/advanced-functions/meta_registration.php:159
 #: src/functions/advanced-functions/meta_registration.php:238
-#: src/views/modules/meta/organizer.php:41 src/views/modules/meta/venue.php:40
+#: src/views/modules/meta/organizer.php:42 src/views/modules/meta/venue.php:40
 msgid "Phone:"
 msgstr "Telefon:"
 
@@ -1678,15 +1678,15 @@ msgstr "Telefon:"
 #: src/functions/advanced-functions/meta_registration.php:96
 #: src/functions/advanced-functions/meta_registration.php:191
 #: src/functions/advanced-functions/meta_registration.php:270
-#: src/views/modules/meta/details.php:146
-#: src/views/modules/meta/organizer.php:63 src/views/modules/meta/venue.php:45
+#: src/views/modules/meta/details.php:148
+#: src/views/modules/meta/organizer.php:64 src/views/modules/meta/venue.php:45
 msgid "Website:"
 msgstr "Webseite:"
 
 #: src/admin-views/new-organizer-meta-section.php:37
 #: src/admin-views/organizer-meta-box.php:43
 #: src/functions/advanced-functions/meta_registration.php:254
-#: src/views/modules/meta/organizer.php:52
+#: src/views/modules/meta/organizer.php:53
 #: vendor/tickets/src/views/tickets/rsvp.php:94
 msgid "Email:"
 msgstr "E-Mail:"
@@ -3646,11 +3646,11 @@ msgstr "Diese %s hat bereits stattgefunden."
 msgid "No previous %s "
 msgstr "Keine vorherige %s"
 
-#: src/Tribe/Templates.php:609
+#: src/Tribe/Templates.php:610
 msgid "Template overrides should be moved to the correct subdirectory: %s"
 msgstr "Vorlage sollte in das richtige Unterverzeichnis verschoben werden: %s"
 
-#: src/Tribe/Templates.php:651
+#: src/Tribe/Templates.php:652
 msgid "Template overrides should be moved to the correct subdirectory: tribe_get_template_part('%s')"
 msgstr "Template Overrides müssen in das richtige Unterverzeichnis verschoben werden: tribe_get_template_part('%s')"
 
@@ -4288,7 +4288,7 @@ msgstr "Veranstaltungen"
 msgid "Event"
 msgstr "Veranstaltung"
 
-#. #-#-#-#-#  tmp-the-events-calendar.pot (The Events Calendar 4.0.4) 
+#. #-#-#-#-#  tmp-the-events-calendar.pot (The Events Calendar 4.0.6) 
 #. #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: common/src/Tribe/Admin/Help_Page.php:48 src/Tribe/Main.php:629

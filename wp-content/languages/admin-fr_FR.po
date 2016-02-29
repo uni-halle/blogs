@@ -16,79 +16,79 @@ msgstr "Merci d&rsquo;avoir fait la mise à jour&nbsp;! WordPress %s vous donne 
 
 #. translators: 1: WP_Term class name, WP_Comment class name, WP_Network class
 #. name
-#: wp-admin/about.php:185
+#: wp-admin/about.php:189
 msgid "New %1$s, %2$s, and %3$s objects make interacting with terms, comments, and networks more predictable and intuitive in code."
 msgstr "Les nouveaux objets %1$s, %2$s et %3$s rendent la gestion par le code des termes, commentaires et réseaux plus prévisible et intuitive."
 
 #. translators: WP_Comment_Query class name
-#: wp-admin/about.php:178
+#: wp-admin/about.php:182
 msgid "Comment queries now have cache handling to improve performance. New arguments in %s make crafting robust comment queries simpler."
 msgstr "Les requêtes de commentaires disposent désormais d&rsquo;un gestionnaire de cache pour améliorer les performances. Les nouveaux arguments de %s simplifient la mise en place de requêtes de commentaires robustes."
 
-#: wp-admin/about.php:182
+#: wp-admin/about.php:186
 msgid "Term, comment, and network objects"
 msgstr "Objets pour les termes, commentaires et réseaux"
 
-#: wp-admin/about.php:175
+#: wp-admin/about.php:179
 msgid "Comment query improvements"
 msgstr "Amélioration des requêtes de commentaires"
 
 #. translators: 1: add_term_meta() docs link, 2: get_term_meta() docs link, 3:
 #. update_term_meta() docs link
-#: wp-admin/about.php:167
+#: wp-admin/about.php:171
 msgid "Terms now support metadata, just like posts. See %1$s, %2$s, and %3$s for more information."
 msgstr "Les termes disposent désormais de métadonnées, tout comme les articles. Lisez la documentation de %1$s, %2$s et %3$s pour plus d'information."
 
-#: wp-admin/about.php:164
+#: wp-admin/about.php:168
 msgid "Term meta"
 msgstr "Méta des termes"
 
 #. translators: WordPress REST API plugin link
-#: wp-admin/about.php:156
+#: wp-admin/about.php:160
 msgid "Infrastructure is the first part of a multi-stage rollout for the REST API. Inclusion of core endpoints is targeted for an upcoming release. To get a sneak peek of the core endpoints, and for more information on extending the REST API, check out the official %s plugin."
 msgstr "L&rsquo;infrastructure est la première partie d&rsquo;une mise en place en plusieurs étapes de l&rsquo;API REST. L&rsquo;inclusion des points d&rsquo;accès est prévue pour une prochaine version. Pour avoir un aperçu des principaux points d&rsquo;accès, et pour obtenir plus d&rsquo;information sur la manière d&rsquo;étendre l&rsquo;API REST, découvrez l&rsquo;extension officielle %s."
 
-#: wp-admin/about.php:139
+#: wp-admin/about.php:143
 msgid "Infrastructure for the REST API has been integrated into core, marking a new era in developing with WordPress. The REST API serves to provide developers with a path forward for building and extending RESTful APIs on top of WordPress."
 msgstr "L&rsquo;infrastructure de l&rsquo;API REST a été intégrée au cœur de WordPress, ouvrant ainsi une nouvelle ère pour le développement avec le logiciel. L&rsquo;API REST a été conçue pour offrir aux développeurs une manière centrale de construire et d&rsquo;étendre des API RESTful basées sur le socle WordPress."
 
-#: wp-admin/about.php:126
+#: wp-admin/about.php:130
 msgid "In addition to post embeds, WordPress 4.4 also adds support for five new oEmbed providers: Cloudup, Reddit&nbsp;Comments, ReverbNation, Speaker&nbsp;Deck, and VideoPress."
 msgstr "En plus de l&rsquo;insertion de contenu, WordPress 4.4 apporte la reconnaissance de cinq nouveaux fournisseurs oEmbed&nbsp;: Cloudup, Reddit&nbsp;Comments, ReverbNation, Speaker&nbsp;Deck et VideoPress."
 
-#: wp-admin/about.php:137
+#: wp-admin/about.php:141
 msgid "REST API infrastructure"
 msgstr "Infrastructure de l&rsquo;API REST"
 
-#: wp-admin/about.php:112
+#: wp-admin/about.php:116
 msgid "Now you can embed your posts on other sites, even other WordPress sites. Simply drop a post URL into the editor and see an instant embed preview, complete with the title, excerpt, and featured image if you&#8217;ve set one. We&#8217;ll even include your site icon and links for comments and sharing."
 msgstr "Vous pouvez désormais insérer vos articles dans d&rsquo;autres sites, et même dans d&rsquo;autres sites WordPress. Collez simplement l&rsquo;adresse du contenu dans l&rsquo;éditeur, et une prévisualisation s&rsquo;affichera instantanément, avec titre, extrait, et l&rsquo;image de Une si vous avez mise une. Vous y trouverez même l&rsquo;icône de votre site et les liens pour commenter et partager."
 
-#: wp-admin/about.php:125
+#: wp-admin/about.php:129
 msgid "Even more embed providers"
 msgstr "Encore plus de fournisseurs de contenus distants"
 
-#: wp-admin/about.php:111
+#: wp-admin/about.php:115
 msgid "Embed your WordPress content"
 msgstr "Intégrez votre contenu WordPress"
 
-#: wp-admin/about.php:98
+#: wp-admin/about.php:102
 msgid "WordPress now takes a smarter approach to displaying appropriate image sizes on any device, ensuring a perfect fit every time. You don&#8217;t need to do anything to your theme, it just works."
 msgstr "WordPress approche désormais l&rsquo;affichage des images de manière plus intelligente, utilisant à chaque fois la taille d&rsquo;image la plus pertinente en fonction de l&rsquo;appareil utilisé. Vous n&rsquo;avez rien à changer à votre thème&nbsp;: ça fonctionne, c&rsquo;est tout."
 
-#: wp-admin/about.php:97
+#: wp-admin/about.php:101
 msgid "Responsive images"
 msgstr "Images adaptatives"
 
-#: wp-admin/about.php:75
+#: wp-admin/about.php:79
 msgid "Twenty Sixteen was built to look great on any device. A fluid grid design, flexible header, fun color schemes, and more, will make your content shine."
 msgstr "Twenty Sixteen a été conçu pour être superbe sur tous les appareils. Avec son design en grille fluide, son en-tête flexible et ses jeux de couleurs joyeux, il mettra en valeur votre contenu."
 
-#: wp-admin/about.php:74
+#: wp-admin/about.php:78
 msgid "Our newest default theme, Twenty Sixteen, is a modern take on a classic blog design."
 msgstr "Notre nouveau thème par défaut, Twenty Sixteen, est une modernisation d&rsquo;un thème de blog classique."
 
-#: wp-admin/about.php:67
+#: wp-admin/about.php:71
 msgid "Twenty Sixteen"
 msgstr "Twenty Sixteen"
 
@@ -107,7 +107,7 @@ msgid "(Currently set to: %s)"
 msgstr "(Actuellement réglé sur : %s)"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:222
+#: wp-admin/about.php:226
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "La <strong>version %s</strong> a corrigé un problème de sécurité."
 
@@ -129,15 +129,15 @@ msgstr "Vous pouvez changer votre image de profil en passant par <a href=\"%s\">
 msgid "Profile Picture"
 msgstr "Illustration du profil"
 
-#: wp-admin/about.php:216
+#: wp-admin/about.php:220
 msgid "Security Releases"
 msgstr "Mises à jour de sécurité"
 
-#: wp-admin/about.php:213
+#: wp-admin/about.php:217
 msgid "Maintenance Releases"
 msgstr "Mises à jour de maintenance"
 
-#: wp-admin/about.php:219
+#: wp-admin/about.php:223
 msgid "Maintenance and Security Releases"
 msgstr "Mises à jour de maintenance et de sécurité"
 
@@ -1976,7 +1976,7 @@ msgstr "Vous pouvez activer le mode d'écriture sans distraction en cliquant sur
 msgid "Log Out Everywhere"
 msgstr "Déconnexion globale"
 
-#: wp-admin/about.php:73
+#: wp-admin/about.php:77
 msgid "Introducing Twenty Sixteen"
 msgstr "Présentation de Twenty Sixteen"
 
@@ -4953,13 +4953,13 @@ msgid "Show Toolbar when viewing site"
 msgstr "Afficher la barre d&rsquo;outils lorsque vous visitez le site"
 
 #. translators: %s: Codex URL
-#: wp-admin/about.php:55 wp-admin/about.php:239
+#: wp-admin/about.php:55 wp-admin/about.php:59 wp-admin/about.php:243
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Pour plus d&rsquo;informations, consultez les <a href=\"%s\">notes de publication</a>."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:231
+#: wp-admin/about.php:235
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "La <strong>version %1$s</strong> a corrigé un problème de sécurité et %2$s bug."
@@ -4967,14 +4967,14 @@ msgstr[1] "La <strong>version %1$s</strong> a corrigé un problème de sécurit�
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:53 wp-admin/about.php:235
+#: wp-admin/about.php:53 wp-admin/about.php:57 wp-admin/about.php:239
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "La <strong>version %1$s</strong> a corrigé quelques problèmes de sécurité et %2$s bug."
 msgstr[1] "La <strong>version %1$s</strong> a corrigé quelques problèmes de sécurité et %2$s bugs."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:227
+#: wp-admin/about.php:231
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "La <strong>version %1$s</strong> a corrigé %2$s bug."
@@ -4984,15 +4984,15 @@ msgstr[1] "La <strong>version %1$s</strong> a corrigé %2$s bugs."
 msgid "Welcome to your WordPress Dashboard! This is the screen you will see when you log in to your site, and gives you access to all the site management features of WordPress. You can get help for any screen by clicking the Help tab in the upper corner."
 msgstr "Bienvenu dans votre tableau de bord WordPress&nbsp;! Ceci est l&rsquo;écran que vous verrez lorsque vous vous connectez à votre site, et qui vous donne accès à l&rsquo;ensemble des fonctionnalités de gestion de WordPress. Vous pouvez obtenir de l&rsquo;aide dans n&rsquo;importe quel écran en cliquant sur l&rsquo;onglet « Aide » présent en haut à droite de votre navigateur."
 
-#: wp-admin/about.php:212
+#: wp-admin/about.php:216
 msgid "Maintenance Release"
 msgstr "Mise à jour de maintenance"
 
-#: wp-admin/about.php:215
+#: wp-admin/about.php:219
 msgid "Security Release"
 msgstr "Mise à jour de sécurité"
 
-#: wp-admin/about.php:52 wp-admin/about.php:218
+#: wp-admin/about.php:52 wp-admin/about.php:222
 msgid "Maintenance and Security Release"
 msgid_plural "Maintenance and Security Releases"
 msgstr[0] "Mise à jour de maintenance et de sécurité"
@@ -5003,7 +5003,7 @@ msgid "What&#8217;s New"
 msgstr "Nouveautés"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:224
+#: wp-admin/about.php:228
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "La <strong>version %s</strong> a corrigé quelques problèmes de sécurité."
 
@@ -5011,7 +5011,7 @@ msgstr "La <strong>version %s</strong> a corrigé quelques problèmes de sécuri
 msgid "This screen allows you to choose your permalink structure. You can choose from common settings or create custom URL structures."
 msgstr "Cet écran vous permet de choisir la structure de permalien par défaut. Vous pouvez choisir les réglages les plus courants, ou créer votre propre structure de liens."
 
-#: wp-admin/about.php:197
+#: wp-admin/about.php:201
 msgid "Return to Updates"
 msgstr "Retourner aux mises à jour"
 
@@ -5303,11 +5303,11 @@ msgstr "Il semble y avoir une inclusion directe de <code>wp-admin/includes/templ
 msgid "Welcome to WordPress %s"
 msgstr "Bienvenue dans WordPress %s"
 
-#: wp-admin/about.php:197
+#: wp-admin/about.php:201
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "Retourner aux mises à jour"
 
-#: wp-admin/about.php:200
+#: wp-admin/about.php:204
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Aller sur l&rsquo;accueil"
 
@@ -5319,7 +5319,7 @@ msgstr "WordPress est créé par une équipe de personnes passionnées, réparti
 msgid "Core Developers"
 msgstr "Développeurs principaux"
 
-#: wp-admin/about.php:133
+#: wp-admin/about.php:137
 msgid "Under the Hood"
 msgstr "Sous le capot"
 
@@ -7455,7 +7455,7 @@ msgid_plural "Drop-ins <span class=\"count\">(%s)</span>"
 msgstr[0] "Drop-ins <span class=\"count\">(%s)</span>"
 msgstr[1] "Drop-ins <span class=\"count\">(%s)</span>"
 
-#: wp-admin/about.php:200
+#: wp-admin/about.php:204
 msgid "Go to Dashboard"
 msgstr "Aller sur le tableau de bord"
 
