@@ -5,14 +5,14 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" class="row">
+<div id="post-<?php the_ID(); ?>" class="row">
 
     <div class="small-12 columns">
-        <?php if ( ! is_page( 'calendar' ) ) : ?>
-        <h1 class="page-title"><?php the_title( '<span>', '</span>' ); ?></h1>
+        <?php if (!is_page('calendar')) : ?>
+        <h1 class="page-title"><?php the_title('<span>', '</span>'); ?></h1>
         <?php endif; ?>
 
-        <?php if ( is_page( 'media' ) ) : /* conents of the media page */ ?>
+        <?php if (is_page('media')) : /* conents of the media page */ ?>
 
             <div class="row">
                 <?php
@@ -21,10 +21,10 @@
                     'parent'     => 3, /* Live */
                     'hide_empty' => 0
                 );
-                $categories = get_categories( $media_cats );
-                foreach ( $categories as $category ) {
+                $categories = get_categories($media_cats);
+                foreach ($categories as $category) {
                     echo '<div class="[ medium-4  columns ]  media-category">
-                            <a href="' . get_category_link( $category->term_id ) . '" class="' . $category->slug . '">
+                            <a href="' . get_category_link($category->term_id) . '" class="' . $category->slug . '">
                                 <span>' . $category->name . '</span>
                             </a>
                         </div>'
@@ -34,7 +34,7 @@
             <div class="row  latest-uploads">
                 <div class="small-12  columns">
                     <h1 class="page-title">
-                        <span><?php _e( 'Latest Uploads', 'muhlenbergcenter' ); ?></span>
+                        <span><?php _e('Latest Uploads', 'muhlenbergcenter'); ?></span>
                     </h1>
                     <?php
                         $latestconditions = array(
@@ -43,21 +43,21 @@
                             'post_status'    => 'publish',
                             'posts_per_page' => 3
                         );
-                        $latestposts = new WP_Query( $latestconditions );
-                        if ( $latestposts->have_posts() ) : ?>
+                        $latestposts = new WP_Query($latestconditions);
+                        if ($latestposts->have_posts()) : ?>
                             <ul class="medium-block-grid-3">
-                            <?php while( $latestposts->have_posts() ) : $latestposts->the_post(); ?>
+                            <?php while($latestposts->have_posts()) : $latestposts->the_post(); ?>
                                 <li id="post-<?php the_ID(); ?>" class="media">
-                                    <?php if(in_category(array('pictures', 'press'))) : ?>
+                                    <?php if(in_category(['pictures', 'press'])) : ?>
                                         <div class="thumbnail">
                                             <a href="<?php the_permalink(); ?>"
-                                               title="<?php sprintf( _e( 'More about ', 'muhlenbergcenter' ), the_title() ); ?>">
-                                                <?php if( has_post_thumbnail() ) : ?>
-                                                        <?php the_post_thumbnail( array(285,180) ); ?>
+                                               title="<?php sprintf(_e('More about ', 'muhlenbergcenter'), the_title()); ?>">
+                                                <?php if(has_post_thumbnail()) : ?>
+                                                        <?php the_post_thumbnail([285,180]); ?>
                                                 <?php elseif(in_category('press')) : ?>
-                                                        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/teaser_press.jpg" alt="teaser image" />
+                                                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/teaser_press.jpg" alt="teaser image" />
                                                 <?php elseif(in_category('pictures')) : ?>
-                                                        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/teaser_pictures.jpg" alt="teaser image" />
+                                                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/teaser_pictures.jpg" alt="teaser image" />
                                                 <?php endif; ?>
                                             </a>
                                         </div>
@@ -83,8 +83,8 @@
                                     <p class="meta-info">
                                         <span class="meta-info__category">
                                         <?php $categories = get_the_category();
-                                        if ( ! empty( $categories ) ) {
-                                            echo esc_html( $categories[0]->name );   
+                                        if (!empty($categories)) {
+                                            echo esc_html($categories[0]->name);
                                         }
                                         ?>
                                         </span> |
@@ -95,7 +95,7 @@
                                             <?= the_title(); ?>
                                         <?php else : ?>
                                         <a href="<?php the_permalink(); ?>"
-                                           title="<?php sprintf( _e( 'More about ', 'muhlenbergcenter' ), the_title() ); ?>">
+                                           title="<?php sprintf(_e('More about ', 'muhlenbergcenter'), the_title()); ?>">
                                             <?php the_title(); ?>
                                         </a>
                                         <?php endif; ?>
@@ -107,7 +107,7 @@
                 </div>
             </div>
 
-        <?php elseif ( is_page( 'newsletter' ) ) : /* conents of the newsletter page */ ?>
+        <?php elseif (is_page('newsletter')) : /* conents of the newsletter page */ ?>
 
             <div class="content">
                 <?php the_content(); ?>
@@ -126,19 +126,19 @@
                 </form>
             </div>
 
-        <?php elseif ( is_page( 'contact' ) ) : /* contents of the contact page */ ?>
+        <?php elseif (is_page('contact')) : /* contents of the contact page */ ?>
 
             <div class="row">
                 <div class="medium-4  columns">
-                    <?php if ( has_post_thumbnail() ) {
-                        the_post_thumbnail( array(285,180) );
+                    <?php if (has_post_thumbnail()) {
+                        the_post_thumbnail([285,180]);
                     } ?>
                     <div class="contact-info">
                         <h3><?php _e('Address', 'muhlenbergcenter') ?></h3>
                         <ul>
-                            <li><?php bloginfo( 'name' ); ?></li>
-                            <li><?php echo get_post_meta( $post->ID, 'street', true ); ?></li>
-                            <li><?php echo get_post_meta( $post->ID, 'place', true ); ?></li>
+                            <li><?php bloginfo('name'); ?></li>
+                            <li><?php echo get_post_meta($post->ID, 'street', true); ?></li>
+                            <li><?php echo get_post_meta($post->ID, 'place', true); ?></li>
                         </ul>
                     </div>
                 </div>
@@ -148,7 +148,7 @@
                 </div>
             </div>
 
-        <?php elseif ( is_page( 'event-archive' ) ) : /* contents of the event archive */ ?>
+        <?php elseif (is_page('event-archive')) : /* contents of the event archive */ ?>
 
             <div class="row">
                 <div class="small-12  columns">
@@ -192,4 +192,4 @@
         <?php endif; ?>
     </div>
 
-</article>
+</div>
