@@ -172,7 +172,7 @@ footer.mlu { text-align: center; }
 	height: 3em;
 	/*height: ;*/
 	/*height: 10em;*/
-	background: url("startklar-header.png") no-repeat center;
+	background: /*url("startklar-header.png")*/ no-repeat center;
 	background-size: cover;
 }
 .sticky-enabled #header_img {
@@ -202,4 +202,22 @@ header .brand h1{
 }
 
 
+@media (max-device-width: 320px ) {
+    .tc-header { background-image: url('header_320x150.jpg'); }
+}
+@media (min-device-width: 321px) and (max-device-width: 480px) {
+    .tc-header { background-image: url('header_480x200.jpg'); }
+}
+@media (min-device-width: 481px) and (max-device-width: 768px) {
+    .tc-header { background-image: url('header_768x250.jpg'); }
+}
+@media (min-device-width: 769px) and (max-device-width: 980px) {
+    .tc-header { background-image: url('header_980x300.jpg'); }
+}
+@media (min-device-width: 781px) and (max-device-width: 1200px) {
+    .tc-header { background-image: url('header_1200x350.jpg'); }
+}
+@media (min-device-width: 1201px) /*and (max-device-width: 1920px)*/ {
+    .tc-header { background-image: url('header_1920x400.jpg'); }
+}
 
