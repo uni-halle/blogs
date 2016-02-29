@@ -11,11 +11,7 @@
  * @link        https://wordpress.org/themes/desk-mess-mirrored/
  *
  * @author      Edward Caissie <edward.caissie@gmail.com>
- * @copyright   Copyright (c) 2009-2015, Edward Caissie
- *
- * @version     2.0
- * @date        December 11, 2012
- * Rewrote the class assigned to the #author box by adding the author role as a class name.
+ * @copyright   Copyright (c) 2009-2016, Edward Caissie
  *
  * @version     2.1
  * @date        December 3, 2012
@@ -61,7 +57,7 @@ $curauth = ( get_query_var( 'author_name ' ) ) ? get_user_by( 'id', get_query_va
 				}
 
 				/** elseif ( ( $curauth->ID ) == '2' ) { echo ' jellybeen'; } /** sample */
-				/** add user classes by ID following the above samples */?>">
+				/** add user classes by ID following the above samples */ ?>">
 
 					<h2><?php printf( '%1$s %2$s', __( 'About ', 'desk-mess-mirrored' ), $curauth->display_name ); ?></h2>
 
@@ -87,7 +83,7 @@ $curauth = ( get_query_var( 'author_name ' ) ) ? get_user_by( 'id', get_query_va
 
 						<?php if ( ! empty( $curauth->user_description ) ) { ?>
 
-							<li  class="user-description">
+							<li class="user-description">
 								<?php printf( __( 'Biography: %1$s', 'desk-mess-mirrored' ), $curauth->user_description ); ?>
 							</li>
 

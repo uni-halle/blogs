@@ -11,34 +11,25 @@
  * @link        https://wordpress.org/themes/desk-mess-mirrored/
  *
  * @author      Edward Caissie <edward.caissie@gmail.com>
- * @copyright   Copyright (c) 2009-2015, Edward Caissie
+ * @copyright   Copyright (c) 2009-2016, Edward Caissie
  *
- * @version     2.2.1
- * @date        April 21, 2013
- * Expanded use of DMM_HOME_DOMAIN constant
- *
- * @version     2.2.3
- * @date        November 16, 2013
- * Added DMM_SHOW_PAGE_PERMALINK constant
- *
- * @version     2.2.4
- * @date        April 13, 2014
- * Added `dmm_post_meta_link_edit()` function with filter hooks for DRY purposes
- *
- * @version     2.3
- * @date        October 19, 2014
- * Added BNS Login "Compatibility Code" to use dashicons instead of text
- *
- * @version 2.4
- * @date    May 16, 2015
+ * @version     2.4
+ * @date        May 16, 2015
  * Cleaned up i18n implementation - "symbol" characters are a design choice
+ *
+ * @version     2.5
+ * @date        February 21, 2016
+ * Added sanity check for 'DMM_SHOW_PAGE_PERMALINK' being defined
+ * Removed reference to `wip` folder and `extra.css` file
  */
 
 /** Define Desk Mess Mirrored "Home" domain */
 define( 'DMM_HOME_DOMAIN', 'BuyNowShop.com' );
 
 /** Define Show Page Permalink Constant - default: false */
-define( 'DMM_SHOW_PAGE_PERMALINK', false );
+if ( ! defined( 'DMM_SHOW_PAGE_PERMALINK' ) ) {
+	define( 'DMM_SHOW_PAGE_PERMALINK', false );
+}
 
 /**
  * Enqueue Comment Reply Script
@@ -68,30 +59,6 @@ if ( ! function_exists( 'dmm_enqueue_comment_reply' ) ) {
 
 }
 add_action( 'comment_form_before', 'dmm_enqueue_comment_reply' );
-
-
-/**
- * DMM Scripts and Styles
- * Add extra style sheet (to animate menu notes)
- *
- * @package Desk_Mess_Mirrored
- * @since   2.0.3
- *
- * @uses    get_template_directory
- * @uses    wp_get_theme
- * @uses    wp_enqueue_style
- *
- * @version 2.0.4
- * @date    August 21, 2012
- * Changed enqueued version to be dynamically taken from theme version
- */
-function dmm_scripts_and_styles() {
-	wp_enqueue_style( 'DMM-Extra-Style', get_template_directory_uri() . '/wip/extra.css', array(), wp_get_theme()->get( 'Version' ), 'screen' );
-}
-
-/** End function - scripts and styles */
-/** To enable the menu animation uncomment the `add_action` call below. */
-/** add_action( 'wp_enqueue_scripts', 'dmm_scripts_and_styles' ); */
 
 
 if ( ! function_exists( 'dmm_wp_title' ) ) {
@@ -154,9 +121,6 @@ if ( ! function_exists( 'dmm_wp_title' ) ) {
  *
  * @uses    __
  * @uses    register_sidebar
- *
- * @version 2.0
- * Re-define each widget area separately to allow for descriptions to show end-user more details about each area
  *
  * @version 2.3
  * @date    October 13, 2014
@@ -399,36 +363,28 @@ if ( ! function_exists( 'dmm_theme_version' ) ) {
 }
 
 
-/**
- * Desk Mess Mirrored Setup
- *
- * Tell WordPress to run desk_mess_mirrored_setup() when the 'after_setup_theme'
- * hook is run.
- *
- * @package  Desk_Mess_Mirrored
- * @since    1.5
- *
- * @internal "glyphs" do not need to be translated as they are design elements
- *
- * @version  2.0.3
- * @date     July, 5, 2012
- * See additional documentation within function for specific changes
- *
- * @version  2.1
- * @date     December 3, 2012
- * Make 'custom-background' compatible with current WordPress versions (3.4+)
- *
- * @version  2.2.3
- * @date     October 27, 2013
- * Added support for post format 'link'
- *
- * @version  2.4
- * @date     May 15, 2015
- * Added support for the `title` tag
- * Added `dmm-post-formats` filter to extend which post-formats support
- * Moved `$content_width` definition into theme setup function
- */
 if ( ! function_exists( 'desk_mess_mirrored_setup' ) ) {
+	/**
+	 * Desk Mess Mirrored Setup
+	 *
+	 * Tell WordPress to run desk_mess_mirrored_setup() when the 'after_setup_theme'
+	 * hook is run.
+	 *
+	 * @package  Desk_Mess_Mirrored
+	 * @since    1.5
+	 *
+	 * @internal "glyphs" do not need to be translated as they are design elements
+	 *
+	 * @version  2.2.3
+	 * @date     October 27, 2013
+	 * Added support for post format 'link'
+	 *
+	 * @version  2.4
+	 * @date     May 15, 2015
+	 * Added support for the `title` tag
+	 * Added `dmm-post-formats` filter to extend which post-formats support
+	 * Moved `$content_width` definition into theme setup function
+	 */
 	function desk_mess_mirrored_setup() {
 
 		/** This theme uses post thumbnails */
@@ -455,12 +411,14 @@ if ( ! function_exists( 'desk_mess_mirrored_setup' ) ) {
 
 		/** Add post-formats support for aside, link, quote, and status */
 		add_theme_support(
-			'post-formats', apply_filters( 'dmm-post-formats', array(
-				'aside',
-				'link',
-				'quote',
-				'status'
-			) )
+			'post-formats', apply_filters(
+				'dmm-post-formats', array(
+					'aside',
+					'link',
+					'quote',
+					'status'
+				)
+			)
 		);
 
 		/**
@@ -625,6 +583,7 @@ if ( ! function_exists( 'desk_mess_mirrored_setup' ) ) {
 		$locale      = get_locale();
 		$locale_file = get_template_directory() . "/languages/$locale.php";
 		if ( is_readable( $locale_file ) ) {
+			/** @noinspection PhpIncludeInspection */
 			require_once( $locale_file );
 		}
 
@@ -852,6 +811,48 @@ if ( ! function_exists( 'dmm_single_view_author_link' ) ) {
 	}
 
 }
+
+
+/**
+ * Featured Image View
+ *
+ * Displays the featured image based on if it has a portrait or landscape aspect
+ * ratio. If in portrait, the image is aligned to the right of the post while in
+ * lanscape the image is centered above the post.
+ *
+ * @package    Desk_Mess_Mirrored
+ * @since      2.5
+ * @date       February 21, 2016
+ *
+ * @uses       (GLOBAL) $post
+ * @uses       get_post_thumbnail_id
+ * @uses       has_post_thumbnail
+ * @uses       the_post_thumbnail
+ * @uses       wp_get_attachment_metadata
+ */
+if ( ! function_exists( 'dmm_featured_image_view' ) ) {
+	function dmm_featured_image_view() {
+
+		global $post;
+
+		if ( has_post_thumbnail() && ( $post->post_type == 'post' ) ) {
+
+			$featured_image_metadata = wp_get_attachment_metadata( get_post_thumbnail_id() );
+
+			if ( isset( $featured_image_metadata['height'] ) && isset( $featured_image_metadata['width'] ) ) {
+
+				if ( $featured_image_metadata['height'] > $featured_image_metadata['width'] ) {
+					the_post_thumbnail( 'full', array( 'class' => 'alignright' ) );
+				} else {
+					the_post_thumbnail( 'full', array( 'class' => 'aligncenter' ) );
+				}
+
+			}
+
+		}
+	}
+}
+
 
 /** Compatibility Code ------------------------------------------------------ */
 
