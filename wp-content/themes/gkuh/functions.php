@@ -48,7 +48,7 @@ function bones_ahoy() {
   // ie conditional wrapper
     
 // Loads the Superfish JavaScript with jQuery as a dependency
-wp_enqueue_script( 'hoverintent', get_template_directory_uri() . '/library/js/superfish-js/hoverintent.js', array('jquery'), '20151008' );
+wp_enqueue_script( 'hoverintent', get_template_directory_uri() . '/library/js/superfish-js/hoverIntent.js', array('jquery'), '20151008' );
 wp_enqueue_script( 'supersubs', get_template_directory_uri() . '/library/js/superfish-js/supersubs.js', array('jquery'), '20151008' );
 wp_enqueue_script( 'superfish', get_template_directory_uri() . '/library/js/superfish-js/superfish.js', array('jquery'), '20151008' );
 wp_enqueue_script( 'superfish-config', get_template_directory_uri() . '/library/js/superfish-js/superfishconfig.js', array('jquery'), '20151008' );
@@ -233,25 +233,6 @@ function bones_register_sidebars() {
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',
 		'after_title' => '</h4>',
-	));
-
-	/*
-	to add more sidebars or widgetized areas, just copy
-	and edit the above sidebar code. In order to call
-	your new sidebar just use the following code:
-
-	Just change the name to whatever your new
-	sidebar's id is, for example:
-*/
-	register_sidebar(array(
-        'id' => 'sidebar1',
-		'name' => __( 'Extra Sidebar', 'bonestheme' ),
-		'description' => __( 'Hier kann extra Inhalt hinein, wenn gewünscht', 'bonestheme' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h4 class="widgettitle">',
-		'after_title' => '</h4>',
-		
 	));
 
 } // don't remove this bracket!
@@ -484,8 +465,8 @@ function bones_comments( $comment, $args, $depth ) {
         ?>
         <img data-gravatar="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=40" class="load-gravatar avatar avatar-48 photo" height="40" width="40" src="<?php echo get_template_directory_uri(); ?>/library/images/nothing.gif" />
         <?php // end custom gravatar call ?>
-        <?php printf(__( '<cite class="fn">%1$s</cite> %2$s', 'bonestheme' ), get_comment_author_link(), edit_comment_link(__( '(Edit)', 'bonestheme' ),'  ','') ) ?>
-        <time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__( 'F jS, Y', 'bonestheme' )); ?> </a></time>
+        <?php echo '<cite class="fn">' . get_comment_author_link() . '</cite>' ?>
+        <time datetime="<?php echo comment_time(); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf( __('%1$s, %2$s'), get_comment_date(),  get_comment_time()); ?> </a></time>
 
       </header>
       <?php if ($comment->comment_approved == '0') : ?>

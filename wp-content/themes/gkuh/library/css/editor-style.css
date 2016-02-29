@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /******************************************************************
 Site Name:
 Author:
@@ -203,27 +202,19 @@ No one likes a mess.
 ******************************************************************/
   /*********************
 COLORS
-Need help w/ choosing your colors? Try this site out:
-http://0to255.com/ 
 *********************/
   /* 15% black, top nav bgrd */
   /* 50% black, footer nav buttons*/
-  /* nav background */
-  /*#5c6b80*/
   /* background color of menu items */
   /* background color of active menu items */
   /* text color of non-active menu items */
   /* text color of active menu items */
-  /* Lektion 1: Intro */
-  /* Lektion 2: Befund/Diagnose/BM */
-  /* Lektion 3: Gesundheitsschlüssel */
-  /* Lektion 4: Eintragung */
-  /* Lektion 5: Auswertung */
-  /*
-Here's a great tutorial on how to
-use color variables properly:
-http://sachagreif.com/sass-color-variables/
-*/
+  /*********************
+Layout Variables
+*********************/
+  /* Use this variable to set the general width of the content (and also the inner header, footer and breadcrumb box) */
+  /* this is the width of the container for the navigation elements (arrows and circle) in the footer */
+  /* this is the width of the circle */
   /******************************************************************
 Site Name:
 Author:
@@ -732,10 +723,14 @@ Flexbox
     margin-bottom: 1.5em; }
   /* line 167, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/editor-style.scss */
   body#tinymce.wp-editor img {
-    margin: 0 0 1.5em 0;
+    margin: 0 0 2em 0;
     max-width: 100%;
     height: auto; }
-  /* line 177, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/editor-style.scss */
+    /* line 172, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/editor-style.scss */
+    body#tinymce.wp-editor img .wp-more-tag {
+      background-repeat: no-repeat;
+      height: 20px; }
+  /* line 185, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/editor-style.scss */
   body#tinymce.wp-editor .size-auto,
   body#tinymce.wp-editor .size-full,
   body#tinymce.wp-editor .size-large,
@@ -743,7 +738,7 @@ Flexbox
   body#tinymce.wp-editor .size-thumbnail {
     max-width: 100%;
     height: auto; }
-  /* line 182, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/editor-style.scss */
+  /* line 190, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/editor-style.scss */
   body#tinymce.wp-editor pre {
     background: #323944;
     color: #d8d8d8;
@@ -751,24 +746,24 @@ Flexbox
     padding: 1.5em;
     margin: 0 0 1.5em;
     border-radius: 3px; }
-  /* line 191, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/editor-style.scss */
+  /* line 199, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/editor-style.scss */
   body#tinymce.wp-editor ol, body#tinymce.wp-editor ul {
     padding-left: 1.25em; }
   @media only screen and (min-width: 481px) {
     /* line 17, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/editor-style.scss */
     body#tinymce.wp-editor {
       /* at this larger size, we can start to align images */ }
-      /* line 204, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/editor-style.scss */
+      /* line 212, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/editor-style.scss */
       body#tinymce.wp-editor .alignleft, body#tinymce.wp-editor img.alignleft {
         margin-right: 1.5em;
         display: inline;
         float: left; }
-      /* line 209, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/editor-style.scss */
+      /* line 217, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/editor-style.scss */
       body#tinymce.wp-editor .alignright, body#tinymce.wp-editor img.alignright {
         margin-left: 1.5em;
         display: inline;
         float: right; }
-      /* line 214, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/editor-style.scss */
+      /* line 222, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/editor-style.scss */
       body#tinymce.wp-editor .aligncenter, body#tinymce.wp-editor img.aligncenter {
         margin-right: auto;
         margin-left: auto;

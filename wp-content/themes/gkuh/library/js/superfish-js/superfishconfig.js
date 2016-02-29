@@ -16,5 +16,5 @@ jQuery(function($){
 	delay: 200               // 1.2 second delay on mouseout
  }); // call supersubs first, then superfish
      });
-    console.log('superfish works');
+    //console.log('superfish works');
 });

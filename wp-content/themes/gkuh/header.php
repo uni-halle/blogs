@@ -20,7 +20,7 @@
 
 		<?php // icons & favicons (for more: http://www.jonathantneal.com/blog/understand-the-favicon/) ?>
 		<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/library/images/apple-touch-icon.png">
-		<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/favicon.png">
+		<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/library/images/favicon.png">
 		<!--[if IE]>
 			<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
 		<![endif]-->
@@ -68,7 +68,7 @@
             .ccolorbgrd, .themenuebersicht li a:after, .widget .themenuebersicht .sidebar-current-item a:before, .themenuebersicht a:hover:before {background-color: <?php echo $rl_category_color; ?>;}
             
             /* add classes where the border-color property should have category color */
-            .ccolorborder, .themenuebersicht li a:before, .themenuebersicht li a:before {border-color: <?php echo $rl_category_color; ?>;}
+            .ccolorborder, .themenuebersicht li a:before, .themenuebersicht li a:before, .entry-content blockquote {border-color: <?php echo $rl_category_color; ?>;}
             
             /* other classes with category color styles */
             
