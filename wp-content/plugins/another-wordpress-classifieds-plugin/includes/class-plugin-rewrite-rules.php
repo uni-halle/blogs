@@ -19,11 +19,8 @@ class AWPCP_Plugin_Rewrite_Rules {
     }
 
     public function add_rewrite_rules( $rules ) {
-        $pages = awpcp_pages_with_rewrite_rules();
-        $pages_uris = $this->get_pages_uris( $pages );
-
         $this->add_api_rewrite_rules();
-        $this->add_plugin_pages_rewrite_rules( $pages_uris );
+        $this->add_plugin_pages_rewrite_rules();
 
         return $rules;
     }
@@ -34,7 +31,19 @@ class AWPCP_Plugin_Rewrite_Rules {
         foreach ( $pages as $refname ) {
             if ( $id = awpcp_get_page_id_by_ref( $refname ) ) {
                 if ( $page = get_page( $id ) ) {
-                    $uris[ $refname ] = get_page_uri( $page->ID );
+                    $regular_page_uri = get_page_uri( $page->ID );
+
+                    $uppercase_page_uri = preg_replace_callback(
+                        '/%[0-9a-zA-Z]{2}/',
+                        create_function( '$x', 'return strtoupper( $x[0] );' ),
+                        $regular_page_uri
+                    );
+
+                    if ( strcmp( $regular_page_uri, $uppercase_page_uri ) !== 0 ) {
+                        $uris[ $refname ] = array( $regular_page_uri, $uppercase_page_uri );
+                    } else {
+                        $uris[ $refname ] = array( $regular_page_uri );
+                    }
                 }
             }
         }
@@ -68,8 +77,9 @@ class AWPCP_Plugin_Rewrite_Rules {
         );
     }
 
-    private function add_plugin_pages_rewrite_rules( $pages_uris ) {
+    private function add_plugin_pages_rewrite_rules() {
         $pages_rules = $this->get_pages_rewrite_rules_definitions();
+        $pages_uris = $this->get_pages_uris( array_keys( $pages_rules ) );
 
         foreach ( $pages_rules as $page_ref => $rules ) {
             if ( ! isset( $pages_uris[ $page_ref ] ) ) {
@@ -77,8 +87,10 @@ class AWPCP_Plugin_Rewrite_Rules {
             }
 
             foreach ( $rules as $rule ) {
-                $regex = str_replace( '<page-uri>', $pages_uris[ $page_ref ], $rule['regex'] );
-                $this->rewrite_rules_helper->add_page_rewrite_rule( $regex, $rule['redirect'], $rule['position'] );
+                foreach ( $pages_uris[ $page_ref ] as $page_uri ) {
+                    $regex = str_replace( '<page-uri>', $page_uri, $rule['regex'] );
+                    $this->rewrite_rules_helper->add_page_rewrite_rule( $regex, $rule['redirect'], $rule['position'] );
+                }
             }
         }
     }

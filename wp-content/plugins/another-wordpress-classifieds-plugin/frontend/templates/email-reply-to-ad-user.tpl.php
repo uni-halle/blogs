@@ -1,6 +1,6 @@
 <?php // emails are sent in plain text, blank lines in templates and spaces at 
       // the end of the lineare required; ?>
-<?php echo get_awpcp_option('contactformbodymessage'); ?>
+<?php echo $body; ?>
 
 
 <?php _e("Contacting about", 'another-wordpress-classifieds-plugin'); ?>: <?php echo $ad_title; ?> 

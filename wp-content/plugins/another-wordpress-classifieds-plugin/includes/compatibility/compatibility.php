@@ -67,5 +67,8 @@ class AWPCP_Compatibility {
     private function load_plugin_integrations_for_anonymous_users() {
         $integration = awpcp_wp_members_plugin_integration();
         add_filter( 'awpcp-login-form-implementation', array( $integration, 'get_login_form_implementation' ) );
+
+        $integration = awpcp_profile_builder_plugin_integration();
+        add_filter( 'awpcp-login-form-implementation', array( $integration, 'get_login_form_implementation' ) );
     }
 }

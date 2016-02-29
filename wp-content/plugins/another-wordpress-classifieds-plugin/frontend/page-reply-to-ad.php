@@ -97,16 +97,11 @@ class AWPCP_ReplyToAdPage extends AWPCP_Page {
      * @since 3.3
      */
     private function overwrite_sender_information( $posted_data ) {
-        $user_information = awpcp_users_collection()->find_by_id( get_current_user_id() );
+        $user_information = awpcp_users_collection()->find_by_id(
+            get_current_user_id(), array( 'public_name', 'user_email' )
+        );
 
-        if ( isset( $user_information->display_name ) && ! empty( $user_information->display_name ) ) {
-            $posted_data['awpcp_sender_name'] = $user_information->display_name;
-        } else if ( isset( $user_information->user_login ) && ! empty( $user_information->user_login ) ) {
-            $posted_data['awpcp_sender_name'] = $user_information->user_login;
-        } else if ( isset( $user_information->username ) && ! empty( $user_information->username ) ) {
-            $posted_data['awpcp_sender_name'] = $user_information->username;
-        }
-
+        $posted_data['awpcp_sender_name'] = $user_information->public_name;
         $posted_data['awpcp_sender_email'] = $user_information->user_email;
 
         return $posted_data;
@@ -221,6 +216,16 @@ class AWPCP_ReplyToAdPage extends AWPCP_Page {
             $subject = sprintf("%s %s: %s", get_awpcp_option('contactformsubjectline'),
                                             _x('regarding', 'reply email', 'another-wordpress-classifieds-plugin'),
                                             $ad_title);
+
+            // TODO: Update email templates so that 1. placehoders can be used freely
+            //       and 2. modules can define what placeholders are available and when/where.
+            $placeholders = array(
+                'bp_user_profile_url', 'bp_user_listings_url', 'bp_username',
+                'bp_current_user_profile_url', 'bp_current_user_listings_url', 'bp_current_username',
+            );
+
+            $body_template = get_awpcp_option( 'contactformbodymessage' );
+            $body = awpcp_replace_placeholders( $placeholders, $ad, $body_template, 'reply-to-listing' );
 
             ob_start();
                 include(AWPCP_DIR . '/frontend/templates/email-reply-to-ad-user.tpl.php');

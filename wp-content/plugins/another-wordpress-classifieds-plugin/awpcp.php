@@ -4,7 +4,7 @@
  * Plugin Name: Another WordPress Classifieds Plugin (AWPCP)
  * Plugin URI: http://www.awpcp.com
  * Description: AWPCP - A plugin that provides the ability to run a free or paid classified ads service on your WP site. <strong>!!!IMPORTANT!!!</strong> It's always a good idea to do a BACKUP before you upgrade AWPCP!
- * Version: 3.6.3.1
+ * Version: 3.6.4.1
  * Author: D. Rodenbaugh
  * License: GPLv2 or any later version
  * Author URI: http://www.skylineconsult.com
@@ -99,6 +99,8 @@ require_once(AWPCP_DIR . "/includes/compatibility/class-all-in-one-seo-pack-plug
 require( AWPCP_DIR . "/includes/compatibility/class-facebook-button-plugin-integration.php");
 require_once(AWPCP_DIR . "/includes/compatibility/class-facebook-plugin-integration.php");
 require_once( AWPCP_DIR . '/includes/compatibility/class-facebook-all-plugin-integration.php' );
+require( AWPCP_DIR . "/includes/compatibility/class-profile-builder-plugin-integration.php");
+require( AWPCP_DIR . "/includes/compatibility/class-profile-builder-login-form-implementation.php");
 require_once( AWPCP_DIR . "/includes/compatibility/class-yoast-wordpress-seo-plugin-integration.php" );
 require_once( AWPCP_DIR . "/includes/compatibility/class-woocommerce-plugin-integration.php" );
 require( AWPCP_DIR . "/includes/compatibility/class-wp-members-login-form-implementation.php");
@@ -769,7 +771,7 @@ class AWPCP {
                     'url' => 'http://awpcp.com/premium-modules/campaign-manager-module/?ref=panel',
                     'installed' => defined( 'AWPCP_CAMPAIGN_MANAGER_MODULE' ),
                     'version' => 'AWPCP_CAMPAIGN_MANAGER_MODULE_DB_VERSION',
-                    'required' => '3.6',
+                    'required' => '3.6.4',
                 ),
 				'category-icons' => array(
 					'name' => __( 'Category Icons', 'another-wordpress-classifieds-plugin' ),
@@ -1080,6 +1082,7 @@ class AWPCP {
         ) );
 
         if ( $scripts->script_will_be_printed( 'awpcp' ) ) {
+            $this->js->set( 'ajaxurl', awpcp_ajaxurl() );
             $this->js->print_data();
         }
 	}

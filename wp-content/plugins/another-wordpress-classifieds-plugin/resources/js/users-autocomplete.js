@@ -39,7 +39,7 @@ AWPCP.define('awpcp/users-autocomplete', ['jquery', 'awpcp/settings'], function(
             var self = this;
 
             self.hidden.val(user.ID);
-            self.field.val(user.display_name);
+            self.field.val(user.public_name);
             self.previous_value = parseInt(self.hidden.val(), 10);
 
             $.publish('/user/updated', [user, false]);
@@ -49,7 +49,7 @@ AWPCP.define('awpcp/users-autocomplete', ['jquery', 'awpcp/settings'], function(
             var self = this, overwrite;
 
             self.hidden.val(user.ID);
-            self.field.val(user.display_name);
+            self.field.val(user.public_name);
             self.previous_value = parseInt(self.hidden.val(), 10);
 
             overwrite = user.ID !== self.previous_value;

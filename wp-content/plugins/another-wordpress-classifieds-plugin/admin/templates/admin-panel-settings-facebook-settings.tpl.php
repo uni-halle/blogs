@@ -18,7 +18,7 @@
 		<div class="inside">
 			<form  method="post">
 				<?php wp_nonce_field( 'awpcp-facebook-settings' ); ?>
-				If you are having trouble with Facebook integration, click "Diagnostics" to check your settings.
+				<?php echo __( 'If you are having trouble with Facebook integration, click "Diagnostics" to check your settings.', 'another-wordpress-classifieds-plugin' ); ?>
 				<input type="submit" class="button-secondary" name="diagnostics" value="<?php _e( 'Diagnostics', 'another-wordpress-classifieds-plugin' ); ?>" />
 			</form>
 		</div>

@@ -1,5 +1,5 @@
 /* new clearfix */
-.clearfix:after {
+.clearfix:after, .awpcp-clearfix:after {
     visibility: hidden;
     display: block;
     font-size: 0;
@@ -7,8 +7,10 @@
     clear: both;
     height: 0;
 }
-* html .clearfix             { zoom: 1; } /* IE6 */
-*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+* html .clearfix,
+* html .awpcp-clearfix { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix,
+*:first-child+html .awpcp-clearfix { zoom: 1; } /* IE7 */
 
 .align-text-right {
     text-align: right;

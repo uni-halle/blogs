@@ -3,9 +3,9 @@ Contributors: awpcp
 Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified script,classified theme,classifieds theme,wp classifieds,wp classified
 Requires at least: 4.0
-Tested up to: 4.4
-Last Updated: 2015-Dec-29
-Stable tag: tags/3.6.3.1
+Tested up to: 4.4.2
+Last Updated: 2016-Feb-23
+Stable tag: tags/3.6.4.1
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -52,7 +52,7 @@ NEW module(s): [Mark as Sold](http://awpcp.com/premium-modules/mark-as-sold-modu
     4. Admin can (optionally) be notified of expiring ads
  = Payment Features =
     1. Allows for paid or free ads
-    2. Supports PayPal, PayPal Pro, PayFast, Authorize.net and 2Checkout for paid ads
+    2. Supports PayPal, PayPal Pro, Authorize.net and 2Checkout for paid ads
     3. Allow for image posting limits higher than free ads
     4. Multiple fee scales for posting ads (allows you to have longer ad 
        postings with higher fees)
@@ -221,6 +221,33 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 [Plugin documentation](http://www.awpcp.com/documentation/)
 
 == Changelog ==
+
+= Version 3.6.4.1 =
+* Missing metadata column fix for easy manual triggering
+* Updated Slovak translation.
+* Added Romanian translation.
+
+= Version 3.6.4 =
+* Show user's name using the format selected in the settings.
+* Add setting to control the format of the user's name.
+* Add plugin integration for Profile Builder
+* Start using Sandbox endpoints configured with the latest security standards.
+* Fix conflict with Polylang plugin.
+* Allow BuddyPress Listings placeholders to be used in Reply to Ad email message template.
+* Add awpcp_replace_placeholders() to replace arbitrary placeholders.
+* Add awpcp-clearfix CSS class to avoid theme conflicts.
+* Fix conflict with WordPress HTTPS.
+* Fix Category Dropdown script to run on Opera Mini.
+* Fix typo in a comment in Installer class.
+* Update Ad Management panel to remove AWPCP from the page's title.
+* Add missing translations.
+* Create uppercase and lowercase versions of rewrite rules that include escaped octets.
+* Fix problem saving media metadata.
+* Run upgrade task to calculate image dimensions again.
+* Include website's URL in license_check request.
+* Replace usages of get_ad_id() with get_current_listing_id().
+* Make sure utf8mb4 charset is supported before trying to use it.
+* Remove unwanted new line characters from email headers.
 
 = Version 3.6.3.1 =
 * Fixed fatal error when upgrading from 3.5.3.x on upgrade routines that were calling incorrect function

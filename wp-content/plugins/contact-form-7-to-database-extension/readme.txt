@@ -86,6 +86,10 @@ You can always deactivate the plugin without loosing data.
 
 == Changelog ==
 
+= 2.9.16 =
+* Bug Fix: [cfdb-export-link] is now processing filter $_GET, $_POST, $_COOKIE values before creating the URL
+* Bug Fix: To Formidable Forms integration (BETA)
+
 = 2.9.15 =
 * Bug Fix: Where WP installations that output debug would add text to ajax return value
 * Bug Fix: When WPML plugin is also installed, export and ajax URLs were incorrect

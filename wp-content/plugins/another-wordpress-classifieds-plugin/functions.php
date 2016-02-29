@@ -2065,15 +2065,15 @@ function awpcp_admin_email_to() {
 }
 
 function awpcp_moderators_email_to() {
-    $users = get_users( array( 'role' => 'awpcp-moderator' ) );
     $email_addresses = array();
 
-    foreach ( $users as $user ) {
-        $properties = array( 'display_name', 'user_login', 'username' );
-        $user_name = awpcp_get_object_property_from_alternatives( $user->data, $properties );
-        $user_email = $user->data->user_email;
+    $users = awpcp_users_collection()->find( array(
+        'fields' => array( 'public_name', 'user_email' ),
+        'role' => 'awpcp-moderator'
+    ) );
 
-        $email_addresses[] = awpcp_format_email_address( $user_email, $user_name );
+    foreach ( $users as $user ) {
+        $email_addresses[] = awpcp_format_email_address( $user->user_email, $user->public_name );
     }
 
     return $email_addresses;
@@ -2205,28 +2205,44 @@ function awpcp_load_plugin_textdomain( $__file__, $text_domain ) {
 function awpcp_load_text_domain_with_file_prefix( $__file__, $text_domain, $file_prefix ) {
     $basename = dirname( plugin_basename( $__file__ ) );
     $locale = apply_filters( 'plugin_locale', get_locale(), $text_domain );
+    $text_domain_loaded = false;
 
     // Load user translation from wp-content/languages/plugins/$domain-$locale.mo
     $mofile = WP_LANG_DIR . '/plugins/' . $file_prefix . '-' . $locale . '.mo';
-    $text_domain_loaded = load_textdomain( $text_domain, $mofile );
+    if ( file_exists( $mofile ) ) {
+        load_textdomain( $text_domain, $mofile );
+        $text_domain_loaded = awpcp_is_textdomain_loaded( $text_domain );
+    }
 
     // Load user translation from wp-content/languages/another-wordpress-classifieds-plugin/$domain-$locale.mo
     $mofile = WP_LANG_DIR . '/' . $basename . '/' . $file_prefix . '-' . $locale . '.mo';
-    $text_domain_loaded = load_textdomain( $text_domain, $mofile ) || $text_domain_loaded;
+    if ( file_exists( $mofile ) ) {
+        load_textdomain( $text_domain, $mofile );
+        $text_domain_loaded = awpcp_is_textdomain_loaded( $text_domain ) || $text_domain_loaded;
+    }
 
     // Load translation included in plugin's languages directory. Stop if the file is loaded.
     $mofile = WP_PLUGIN_DIR . '/' . $basename . '/languages/' . $file_prefix . '-' . $locale . '.mo';
-    if ( load_textdomain( $text_domain, $mofile ) ) {
-        return true;
+    if ( file_exists( $mofile ) ) {
+        load_textdomain( $text_domain, $mofile );
+        $text_domain_loaded = awpcp_is_textdomain_loaded( $text_domain ) || $text_domain_loaded;
     }
 
     // Try loading the translations from the plugin's root directory.
     $mofile = WP_PLUGIN_DIR . '/' . $basename . '/' . $file_prefix . '-' . $locale . '.mo';
-    if ( load_textdomain( $text_domain, $mofile ) ) {
-        return true;
+    if ( file_exists( $mofile ) ) {
+        load_textdomain( $text_domain, $mofile );
+        $text_domain_loaded = awpcp_is_textdomain_loaded( $text_domain ) || $text_domain_loaded;
     }
 
     return $text_domain_loaded;
+}
+
+/**
+ * @since 3.6.4
+ */
+function awpcp_is_textdomain_loaded( $text_domain ) {
+    return ! is_a( get_translations_for_domain( $text_domain ), 'NOOP_Translations' );
 }
 
 function awpcp_utf8_strlen( $string ) {

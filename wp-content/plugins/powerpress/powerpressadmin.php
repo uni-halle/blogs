@@ -564,7 +564,7 @@ function powerpress_admin_init()
 						$General['episode_box_feature_in_itunes'] = 0;	
 					else
 						$General['episode_box_order'] = 0;
-						
+					
 					if( !isset($General['episode_box_block'] ) )
 						$General['episode_box_block'] = 0;
 					if( !isset($General['episode_box_gp_block'] ) )
@@ -1344,9 +1344,14 @@ function powerpress_admin_init()
 		exit;
 	}
 	
+	add_filter( 'plugin_row_meta', 'powerpress_plugin_row_meta', 10, 2);
+	
 	// Hnadle player settings
 	require_once( POWERPRESS_ABSPATH .'/powerpressadmin-player.php');
 	powerpress_admin_players_init();
+	
+	// Handle notices
+	require_once( POWERPRESS_ABSPATH .'/powerpressadmin-notifications.php');
 }
 
 add_action('admin_init', 'powerpress_admin_init');
@@ -2968,6 +2973,8 @@ function powerpress_admin_page_footer($SaveButton=true, $form=true)
 	if( $SaveButton ) { ?>
 <p class="submit">
 <input type="submit" name="Submit" id="powerpress_save_button" class="button-primary" value="<?php echo __('Save Changes', 'powerpress') ?>" />
+ &nbsp; &mdash; 
+<strong><i><?php echo powerpress_review_message(); ?></i></strong>
 </p>
 <?php } ?>
 <p style="font-size: 85%; text-align: center; padding-bottom: 35px;">
@@ -4303,6 +4310,11 @@ function powerpressadmin_new($style='')
 	return '<sup style="'.$style.'">'. __('new!', 'powerpress') .'</sup>';
 }
 
+function powerpressadmin_updated($updated_message)
+{
+	return '<div style="margin: 5px;"><sup style="color: #CC0000; font-weight: bold; font-size: 85%;">'. $updated_message .'</sup></div>';
+}
+
 function powerpressadmin_notice($updated_message)
 {
 	return '<sup style="color: #CC0000; font-weight: bold; font-size: 105%;">'. htmlspecialchars($updated_message) .'</sup>';
@@ -4477,6 +4489,39 @@ $PowerPressClammr = get_option('powerpress_clammr');
 	}
 }
 
+function powerpress_plugin_row_meta( $links, $file ) {
+	
+	if ( strpos( $file, 'powerpress.php' ) !== false ) {
+	
+		$new_links = array();
+		$new_links[] = powerpress_get_documentation_link();
+		//$new_links[] = '<a href="http://create.blubrry.com/resources/powerpress/powerpress-documentation/" target="_blank">' . __( 'Support', 'powerpress' ) . '</a>';
+		$new_links[] = powerpress_get_review_link();
+		
+		
+		$links = array_merge( $links, $new_links );
+	}
+	
+	return $links;
+}
+
+function powerpress_review_message()
+{
+	return sprintf(__('Fan of PowerPress? Please show your appreciation by <a href="%s" target="_blank">leaving a review</a>.', 'powerpress'), 'https://wordpress.org/support/view/plugin-reviews/powerpress?rate=5#postform');
+}
+
+function powerpress_get_review_link()
+{
+	return '<a href="https://wordpress.org/support/view/plugin-reviews/powerpress?rate=5#postform" target="_blank">' . __( 'Write a review', 'powerpress' ) . '</a>';
+}
+
+function powerpress_get_documentation_link()
+{
+	return '<a href="http://create.blubrry.com/resources/powerpress/powerpress-documentation/" target="_blank">' . __( 'Documentation', 'powerpress' ) . '</a>';
+}
+
+
+
 require_once( POWERPRESS_ABSPATH .'/powerpressadmin-jquery.php');
 // Only include the dashboard when appropriate.
 require_once( POWERPRESS_ABSPATH .'/powerpressadmin-dashboard.php');
@@ -4484,4 +4529,5 @@ require_once( POWERPRESS_ABSPATH .'/powerpressadmin-dashboard.php');
 if( defined('WP_LOAD_IMPORTERS') ) {
 	require_once( POWERPRESS_ABSPATH .'/powerpressadmin-rss-import.php');
 }
+
 

@@ -7,13 +7,8 @@ class AWPCP_JavaScript {
 
     private static $instance = null;
 
-    private $data;
-    private $l10n;
-
-    private function __construct() {
-        $this->data = array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) );
-        $this->l10n = array();
-    }
+    private $data = array();
+    private $l10n = array();
 
     public static function instance() {
         if ( is_null( self::$instance ) ) {

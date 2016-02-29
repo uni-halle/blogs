@@ -132,16 +132,33 @@ function osm_map_create_shortcode_function( $post ) {
      
     <div id="tab_geotag" class="tab">
     <?php _e('Add a map with all geotagged posts / pages of your site. <br>Set geotag to your post at [Set geotag] tab.','OSM-plugin') ?><br><br>
-       <b>1. <?php _e('Map type','OSM-plugin') ?></b>:
+       <b>1. <?php _e('map type','OSM-plugin') ?></b>:
        <select name="osm_geotag_map_type">
        <?php include('osm-maptype-select.php'); ?>
-       </select><br>
-       <b>2. <?php _e('Marker icon','OSM-plugin') ?></b>:
+       </select>
+             </select>
+      <b>2. <?php _e('map border','OSM-plugin') ?></b>: 
+      <select name="osm_geotag_map_border">
+      <?php include('osm-color-select.php'); ?>
+      </select>
+       <br><br>
+        <b>2. <?php _e('marker icon','OSM-plugin') ?></b>:
        <select name="osm_geotag_marker">
        <?php include('osm-marker-select.php'); ?>
        </select> 
        ( <a href="http://wp-osm-plugin.hanblog.net/cc0-license-map-icons-collection/" target="_blank"> icons</a> )
        <br>
+       <b>3. <?php _e('marker style','OSM-plugin') ?></b>: 
+      <select name="osm_geotag_marker_style">
+             <option value="standard"><?php _e('standard','OSM-plugin') ?></option>
+       <option value="cluster"><?php _e('cluster','OSM-plugin') ?></option>
+      
+      </select>
+      <b>4. <?php _e('style color','OSM-plugin') ?></b>: 
+      <select name="osm_geotag_marker_color">
+      <?php include('osm-color-select.php'); ?>
+      </select>
+      <br><br>
        <b>3. <?php _e('post type','OSM-plugin') ?></b>:
        <select name="osm_geotag_posttype">
        <option value="post"><?php _e('post','OSM-plugin') ?></option>

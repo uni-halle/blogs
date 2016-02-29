@@ -18,11 +18,8 @@ class AWPCP_ListingRegionsFormField extends AWPCP_FormField {
         $this->settings = $settings;
     }
 
-    /**
-     * Not used, but implementation is required by AWPCP_FormField.
-     */
     public function get_name() {
-        return 'Regions';
+        return _x( 'Regions', 'listing form field', 'another-wordpress-classifieds-plugin' );
     }
 
     protected function is_read_only() {

@@ -413,7 +413,7 @@ function powerpress_meta_box($object, $box)
 				<textarea id="powerpress_summary_<?php echo $FeedSlug; ?>" name="Powerpress[<?php echo $FeedSlug; ?>][summary]" style="width: 90%; height: 80px; font-size: 90%;"><?php echo esc_textarea($iTunesSummary); ?></textarea>
 			</div>	
 			<div class="powerpress_row_content">
-				<em><?php echo __('Your summary may not contain HTML and cannot exceed 4,000 characters in length. Leave blank to use your blog post.', 'powerpress'); ?></em>
+				<em><?php echo __('Your summary cannot exceed 4,000 characters in length and should not include HTML, except for hyperlinks. Leave blank to use your blog post.', 'powerpress'); ?></em>
 			</div>
 		</div>
 <?php

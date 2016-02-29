@@ -51,7 +51,7 @@ class AWPCP_Email {
 
         $email_headers = '';
         foreach ($headers as $k => $v) {
-            $email_headers .= sprintf("%s: %s\r\n", $k, $v);
+            $email_headers .= sprintf( "%s: %s\r\n", $k, str_replace( "\n", '', $v ) );
         }
 
         return $email_headers;

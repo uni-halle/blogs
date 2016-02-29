@@ -299,7 +299,7 @@ class AWPCP_Admin {
 			$hook = add_submenu_page($parent, __('Import Ad', 'another-wordpress-classifieds-plugin'), __('Import', 'another-wordpress-classifieds-plugin'), $capability, 'awpcp-import', array($this->importer, 'dispatch'));
 			add_action("load-{$hook}", array($this->importer, 'scripts'));
 
-			add_submenu_page($parent, 'Debug', 'Debug', $capability, 'awpcp-debug', array($this->debug, 'dispatch'));
+			add_submenu_page($parent, __( 'Debug', 'another-wordpress-classifieds-plugin' ), __( 'Debug', 'another-wordpress-classifieds-plugin' ), $capability, 'awpcp-debug', array($this->debug, 'dispatch'));
 
 			$parts = array($this->uninstall->title, $this->uninstall->menu, $this->uninstall->page);
 			add_submenu_page($parent, $parts[0], $parts[1], $capability, $parts[2], array($this->uninstall, 'dispatch'));

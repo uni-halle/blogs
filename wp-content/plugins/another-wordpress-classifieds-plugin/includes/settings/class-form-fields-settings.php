@@ -37,6 +37,25 @@ class AWPCP_FormFieldsSettings {
             __( 'If this setting is enabled, when an administrator is editing a listing and he changes the selected value in the User/Owner field, the information in the contact fields (Contact Name, Contact Email and Contact Phone Number) will be updated (overwriting the information already entered in those fields) using the information of the user just selected. The modifications will not be persisted until you click the Continue button.', 'another-wordpress-classifieds-plugin' )
         );
 
+        $settings->add_setting(
+            $key,
+            'user-name-format',
+            __( "User's name format", 'another-wordpress-classifieds-plugin' ),
+            'select',
+            'display_name',
+            __( "The selected format will be used to show a user's name in dropdown fields, text fields and templates.", 'another-wordpress-classifieds-plugin' ),
+            array(
+                'options' => array(
+                    'user_login' => esc_html( "<Username>" ),
+                    'firstname_first' => esc_html( '<First Name> <Last Name>' ),
+                    'lastname_first' => esc_html( '<Last Name> <First Name>' ),
+                    'firstname' => esc_html( '<First Name>' ),
+                    'lastname' => esc_html( '<Last Name>' ),
+                    'display_name' => esc_html( '<Display Name>' ),
+                ),
+            )
+        );
+
         $key = $settings->add_section( $group, __( 'Contact Fields', 'another-wordpress-classifieds-plugin' ), 'contact', 10, array( $settings, 'section' ) );
 
         $settings->add_setting(

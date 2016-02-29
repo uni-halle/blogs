@@ -24,7 +24,7 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
      */
     private function verify_recevied_data_with_curl($postfields='', $cainfo=true, &$errors=array()) {
         if (get_awpcp_option('paylivetestmode') == 1) {
-            $paypal_url = "https://test-ipnpb.sandbox.paypal.com/cgi-bin/webscr";
+            $paypal_url = "https://ipnpb.sandbox.paypal.com/cgi-bin/webscr";
         } else {
             $paypal_url = "https://ipnpb.paypal.com/cgi-bin/webscr";
         }

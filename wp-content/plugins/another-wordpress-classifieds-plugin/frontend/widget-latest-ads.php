@@ -107,9 +107,9 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
         $html_image = $this->render_item_image( $item, $instance );
 
         if ( ! empty( $html_image ) ) {
-            $template = '<li class="awpcp-listings-widget-item %1$s"><div class="awpcplatestbox clearfix"><div class="awpcplatestthumb clearfix">%2$s</div>%3$s %4$s</div></li>';
+            $template = '<li class="awpcp-listings-widget-item %1$s"><div class="awpcplatestbox awpcp-clearfix"><div class="awpcplatestthumb awpcp-clearfix">%2$s</div>%3$s %4$s</div></li>';
         } else {
-            $template = '<li class="awpcp-listings-widget-item %1$s"><div class="awpcplatestbox clearfix">%3$s %4$s</div></li>';
+            $template = '<li class="awpcp-listings-widget-item %1$s"><div class="awpcplatestbox awpcp-clearfix">%3$s %4$s</div></li>';
         }
 
         return sprintf( $template, $html_class, $html_image, $html_title, $html_excerpt );

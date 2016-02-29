@@ -47,6 +47,9 @@ class cOsm_arguments
     private $cntrl_mouseposition = 0;
     private $cntrl_scaleline = 0;      
     private $show_kml_marker_name  = "false";
+    private $tagged_cluster = "false";
+    private $tagged_border_color = "[0, 0, 255, 0.5]";
+    private $tagged_inner_color = "[0, 0, 255, 0.5]";
     
    private function setMarkersize($a_marker_size){
       if ($a_marker_size == "no"){
@@ -54,9 +57,9 @@ class cOsm_arguments
       else{
         $marker_size_array = explode(',', $a_marker_size);
         if(count($marker_size_array) == 3) {
-          $marker_height = $marker_size_array[0];
-          $marker_width = $marker_size_array[1];
-          $marker_focus = $marker_size_array[2];
+          $this->marker_height = $marker_size_array[0];
+          $this->marker_width = $marker_size_array[1];
+          $this->marker_focus = $marker_size_array[2];
         }
         else{
           Osm::traceText(DEBUG_ERROR, "marker_size error!");
@@ -76,16 +79,14 @@ private function setMapSize($a_width,  $a_height){
      $pos = strpos($a_width, "%");
     if ($pos == false) {
       if ($a_width < 1){
-        Osm::traceText(DEBUG_ERROR, "e_map_size");
-        Osm::traceText(DEBUG_INFO, "Error: ($width: ".$a_width.")!");
+        Osm::traceText(DEBUG_ERROR, (sprintf(__(' width =  %s is out of range [pix]!'), $a_width)));
         $a_width = 450;
       }
       $this->width_str = $a_width."px"; // make it 30px
     } else {// it's 30%
       $width_perc = substr($a_width, 0, $pos ); // make it 30 
       if (($width_perc < 1) || ($width_perc >100)){
-        Osm::traceText(DEBUG_ERROR, "e_map_size");
-        Osm::traceText(DEBUG_INFO, "Error: ($width: ".$a_width.")!");
+        Osm::traceText(DEBUG_ERROR, (sprintf(__('width =  %s is out of range [perc]!'), $a_width)));
         $a_width = "100%";
       }
       $this->width_str = substr($a_width, 0, $pos+1 ); // make it 30% 
@@ -94,16 +95,14 @@ private function setMapSize($a_width,  $a_height){
     $pos = strpos($a_height, "%");
     if ($pos == false) {
       if ($a_height < 1){
-        Osm::traceText(DEBUG_ERROR, "e_map_size");
-        Osm::traceText(DEBUG_INFO, "Error: ($height: ".$a_height.")!");
+        Osm::traceText(DEBUG_ERROR, (sprintf(__('height =  %s is out of range [pix]!'), $a_height)));
         $a_height = 300;
       }
       $this->height_str = $a_height."px"; // make it 30px
     } else {// it's 30%
       $height_perc = substr($a_height, 0, $pos ); // make it 30 
       if (($height_perc < 1) || ($height_perc >100)){
-        Osm::traceText(DEBUG_ERROR, "e_map_size");
-        Osm::traceText(DEBUG_INFO, "Error: ($height: ".$a_height.")!");
+        Osm::traceText(DEBUG_ERROR, (sprintf(__('height =  %s is out of range [perc]!'), $a_height)));
         $a_height = "100%";
       }
       $this->height_str = substr($a_height, 0, $pos+1 ); // make it 30% 
@@ -146,11 +145,55 @@ private function setDisplayMarker($a_display_marker_name){
       $this->show_kml_marker_name = "true";
    }
 }
+private function setTaggedParam($a_tagged_param){
+    if ($a_tagged_param == "cluster"){
+      $this->tagged_cluster = "true";
+    }
+}
+
+private function setTaggedColor($a_tagged_color){
+  if ($a_tagged_color == "blue"){
+    $this->tagged_border_color = "[0, 0, 255, 0.5]";
+    $this->tagged_inner_color = "[0, 0, 255, 0.85]";
+   }
+  elseif($a_tagged_color == "red"){
+    $this->tagged_border_color = "[255,0,0, 0.5]";
+    $this->tagged_inner_color = "[255,0,0, 0.85]";
+}
+  elseif($a_tagged_color == "yellow"){
+    $this->tagged_border_color = "[255,255,0, 0.5]";
+    $this->tagged_inner_color = "[255,255,0, 0.85]";
+}
+  elseif($a_tagged_color == "green"){
+    $this->tagged_border_color = "[0,255,0, 0.5]";
+    $this->tagged_inner_color = "[0,255,0, 0.85]";
+}
+  elseif($a_tagged_color == "black"){
+    $this->tagged_border_color = "[0,0,0, 0.5]";
+    $this->tagged_inner_color = "[0,0,0, 0.85]";
+}
+elseif($a_tagged_color == "purple"){
+    $this->tagged_border_color = "[128,0,128, 0.5]";
+    $this->tagged_inner_color = "[128,0,128, 0.85]";
+}
+  elseif(($a_tagged_color == "grey") || ($a_tagged_color == "gray")) {
+    $this->tagged_border_color = "[128,128,128, 0.5]";
+    $this->tagged_inner_color = "[128,128,128, 0.85]";
+}
+  elseif($a_tagged_color == "orange") {
+    $this->tagged_border_color = "[255,128,64, 0.5]";
+    $this->tagged_inner_color = "[255,128,64, 0.85]";
+}
+else {
+  $this->tagged_border_color = "[0, 0, 255, 0.5]";
+  $this->tagged_inner_color = "[0, 0, 255, 0.85]";
+  }
+}
 
 
   function __construct($a_width,  $a_height, $a_map_center,  $zoom,  $file_list, $file_color_list, $a_type, $jsname, $marker_latlon, $map_border, 
     $marker_name, $a_marker_size, $control, $wms_address, $wms_param, $wms_attr_name,  $wms_type, $wms_attr_url, 
-    $tagged_type, $tagged_filter, $mwz, $a_post_markers, $a_display_marker_name){
+    $tagged_type, $tagged_filter, $mwz, $a_post_markers, $a_display_marker_name, $a_tagged_param, $a_tagged_color){
         
     $this->setLatLon($a_map_center) ;
     $this->setMapSize($a_width,  $a_height);
@@ -159,6 +202,8 @@ private function setDisplayMarker($a_display_marker_name){
     $this->setMarkersize($a_marker_size);
     $this->setPostMarkers($a_post_markers);
     $this->setDisplayMarker($a_display_marker_name);
+    $this->setTaggedParam($a_tagged_param);
+    $this->setTaggedColor($a_tagged_color);
 }
 
 public function getPostMarkers(){
@@ -206,6 +251,16 @@ public function issetScaleline(){
 
 public function showKmlMarkerName(){
     return $this->show_kml_marker_name;  
+}
+public function isclustered(){
+    return $this->$tagged_cluster;  
+}
+public function getTaggedBorderColor(){
+    return $this->tagged_border_color;  
+}
+
+public function getTaggedInnerColor(){
+    return $this->tagged_inner_color;  
 }
 
 }

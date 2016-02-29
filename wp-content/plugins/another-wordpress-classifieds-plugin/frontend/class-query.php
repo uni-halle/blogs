@@ -13,7 +13,7 @@ function awpcp_query() {
 class AWPCP_Query {
 
     public function is_single_listing_page() {
-        return $this->is_page_that_has_shortcode( 'AWPCPSHOWAD' );
+        return apply_filters( 'awpcp-is-single-listing-page', $this->is_page_that_has_shortcode( 'AWPCPSHOWAD' ) );
     }
 
     public function is_browse_listings_page() {

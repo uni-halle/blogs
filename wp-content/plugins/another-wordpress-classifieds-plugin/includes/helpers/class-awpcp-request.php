@@ -138,11 +138,18 @@ class AWPCP_Request {
      * @since 3.0.2
      */
     public function get_ad_id() {
-        $ad_id = $this->param( 'adid' );
-        $ad_id = empty( $ad_id ) ? $this->param( 'id' ) : $ad_id;
-        $ad_id = empty( $ad_id ) ? $this->get_query_var( 'id' ) : $ad_id;
+        return $this->get_current_listing_id();
+    }
 
-        return intval( $ad_id );
+    /**
+     * @since 3.6.4
+     */
+    public function get_current_listing_id() {
+        $listing_id = $this->param( 'adid' );
+        $listing_id = empty( $listing_id ) ? $this->param( 'id' ) : $listing_id;
+        $listing_id = empty( $listing_id ) ? $this->get_query_var( 'id' ) : $listing_id;
+
+        return apply_filters( 'awpcp-current-listing-id', intval( $listing_id ) );
     }
 
     /**

@@ -36,52 +36,58 @@ class CFDBIntegrationCFormsII {
     }
 
     public function registerHooks() {
-        if (!function_exists('my_cforms_action')) {
-            function my_cforms_action($cformsdata) {
-
-                ### Extract Data
-                ### Note: $formID = '' (empty) for the first form!
-                $formID = $cformsdata['id'];
-                $data = $cformsdata['data'];
-
-                $cforms_settings = get_option('cforms_settings');
-                $form_name = $cforms_settings["form{$formID}"]["cforms{$formID}_fname"];
-
-                /*
-                $cformsdata['data']:Array
-                (
-                    [$$$1] => New Field
-                    [New Field] => stuff
-                    [$$$2] => Fieldset1
-                    [Fieldset1] => My Fieldset
-                    [$$$3] => Your Name
-                    [Your Name] => Mike
-                    [$$$4] => Email
-                    [Email] => mike@example.com
-                    [$$$5] => Website
-                    [Website] => http://www.example.com
-                    [$$$6] => Message
-                    [Message] => hi there
-                how are you?
-                )
-                */
-                $form_data = array();
-                foreach ($data as $key => $value) {
-                    if (strpos($key, '$$$') !== 0) {
-                        $form_data[$key] = $value;
-                    }
-                }
-
-                $uploaded_files = array(); // todo: handle file uploads
-
-                $cfdb_data = (object)array(
-                        'title' => $form_name,
-                        'posted_data' => $form_data,
-                        'uploaded_files' => $uploaded_files);
-
-                do_action_ref_array('cfdb_submit', array(&$cfdb_data));
-            }
-        }
+        add_action('cforms2_after_processing_action', array(&$this, 'saveFormData'), 10, 1);
     }
 
+    public function saveFormData($trackf) {
+        /*
+    [id] =>
+    [data] => Array
+        (
+            [$$$1] => Fieldset
+            [Fieldset] => My Fieldset
+            [$$$2] => Your Name
+            [Your Name] => Mike
+            [$$$3] => Email
+            [Email] => me@example.com
+            [$$$4] => Website
+            [Website] => http://example.com
+            [$$$5] => Message
+            [Message] => example
+        )
+
+    [title] => Your default form
+    [uploaded_files] => Array
+        (
+        )
+         */
+        //$this->plugin->getErrorLog()->log(print_r($trackf, true) . "\n\n"); // debug
+
+        $form_data = array();
+        foreach ($trackf['data'] as $key => $value) {
+            if (strpos($key, '$$$') !== 0) {
+                $form_data[$key] = $value;
+            }
+        }
+
+        $uploaded_files = array();
+        // TODO
+//        if (is_array($trackf['uploaded_files'])) {
+//            foreach ($trackf['uploaded_files'] as $file) {
+//                $key = 'file'; // todo $key
+//                $posted_data[$key] = $file['name'];
+//                $uploaded_files[$key] = $file['tmp_name'];
+//            }
+//        }
+
+
+        $cfdb_data = (object)array(
+                'title' => $trackf['title'],
+                'posted_data' => $form_data,
+                'uploaded_files' => $uploaded_files);
+
+        do_action_ref_array('cfdb_submit', array(&$cfdb_data));
+
+    }
 }
+

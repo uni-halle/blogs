@@ -1659,6 +1659,7 @@ function powerpressadmin_edit_artwork($FeedSettings, $General)
 <th scope="row">
 <?php echo __('iTunes Image', 'powerpress'); ?> 
 <span class="powerpress-required"><?php echo __('Required', 'powerpress'); ?></span>
+<?php echo powerpressadmin_updated( __('recommended size changed February, 2016', 'powerpress') ); ?>
 </th>
 <td>
 <input type="text" id="itunes_image" name="Feed[itunes_image]" style="width: 60%; margin-top: 10px;" value="<?php echo esc_attr( !empty($FeedSettings['itunes_image'])? $FeedSettings['itunes_image']:''); ?>" maxlength="255" />
@@ -1667,7 +1668,7 @@ function powerpressadmin_edit_artwork($FeedSettings, $General)
 <p><?php echo __('iTunes image must be at least 1400 x 1400 pixels in .jpg or .png format. iTunes image must not exceed 3000 x 3000 pixels and must use RGB color space.', 'powerpress'); ?> <?php echo __('Example', 'powerpress'); ?>: http://example.com/images/itunes.jpg
  </p>
 
-<p><strong><?php echo __('A square 1400 x 1400 pixel image in .jpg format is recommended.', 'powerpress'); ?></strong></p>
+<p><strong><?php echo __('A square 3000 x 3000 pixel image in .jpg format is recommended.', 'powerpress'); ?></strong></p>
 
 <p>
 <?php echo __('This image is for your listing on the iTunes podcast directory and may also be used by other directories like Blubrry. It is not the artwork that is displayed during episode playback. That artwork needs to be saved into the media file in the form of tags (ID3 tags for mp3) following the production of the media file.', 'powerpress'); ?>

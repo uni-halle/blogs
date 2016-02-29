@@ -1,7 +1,10 @@
 <?php
 
 function awpcp_users_dropdown() {
-    return new AWPCP_UsersDropdown( awpcp_users_collection(), awpcp_request() );
+    return new AWPCP_UsersDropdown(
+        awpcp_users_collection(),
+        awpcp_request()
+    );
 }
 
 class AWPCP_UsersDropdown extends AWPCP_UserField {
@@ -10,6 +13,7 @@ class AWPCP_UsersDropdown extends AWPCP_UserField {
 
     public function __construct( $users, $request ) {
         parent::__construct( $request );
+
         $this->users = $users;
     }
 

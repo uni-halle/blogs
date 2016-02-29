@@ -23,7 +23,7 @@ class AWPCP_UsersAutocomplete extends AWPCP_UserField {
         $args['selected'] = $this->find_selected_user( $args );
 
         if ( ! empty( $args['selected'] ) ) {
-            $user_info = $this->users->find_by_id( $args['selected'] );
+            $user_info = $this->users->find_by_id( $args['selected'], array( 'ID', 'public_name' ) );
             $this->javascript->set( 'users-autocomplete-default-user', $user_info );
         }
 

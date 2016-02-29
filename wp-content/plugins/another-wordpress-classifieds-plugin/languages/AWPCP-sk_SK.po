@@ -1,4 +1,4 @@
-# Copyright (C) 2015
+# Copyright (C) 2016
 # This file is distributed under the same license as the  package.
 # Translators:
 # Michal Vittek <miso.par1c@gmail.com>, 2014
@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Another WordPress Classifieds Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/another-wordpress-classifieds-plugin\n"
-"POT-Creation-Date: 2015-11-12 16:01:42+00:00\n"
-"PO-Revision-Date: 2015-11-12 16:16+0000\n"
+"POT-Creation-Date: 2016-01-19 16:56:11+00:00\n"
+"PO-Revision-Date: 2016-01-19 16:58+0000\n"
 "Last-Translator: Willington Vega <wvega@wvega.com>\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/wp-translations/another-wordpress-classifieds-plugin/language/sk_SK/)\n"
 "MIME-Version: 1.0\n"
@@ -146,7 +146,7 @@ msgid "Categories"
 msgstr "Kategorií"
 
 #: admin/admin-panel-fees-table.php:127
-#: admin/templates/admin-sidebar.tpl.php:90 awpcp.php:793
+#: admin/templates/admin-sidebar.tpl.php:103 awpcp.php:803
 msgid "Featured Ads"
 msgstr "Odporúčané inzeráty"
 
@@ -218,7 +218,7 @@ msgstr ""
 
 #: admin/admin-panel-listings-place-ad-page.php:15
 #: admin/templates/admin-panel-listings.tpl.php:5
-#: frontend/page-place-ad.php:1191
+#: frontend/page-place-ad.php:1192
 msgid "Place Ad"
 msgstr "Umiestniť inzerát"
 
@@ -233,7 +233,7 @@ msgid "Showing Ads from %s category."
 msgstr "Zobrazujem inzeráty z kategórie: %s"
 
 #: admin/admin-panel-listings-table.php:174
-#: admin/templates/admin-panel-debug.tpl.php:33
+#: admin/templates/admin-panel-debug.tpl.php:44
 #: frontend/templates/widget-categories-form.tpl.php:2
 #: frontend/templates/widget-latest-ads-form.tpl.php:2
 #: templates/email/listing-is-about-to-expire-notification.plain.tpl.php:5
@@ -482,9 +482,23 @@ msgctxt "Listing bulk operations: <message-ok> and <message-error>."
 msgid "%s and %s."
 msgstr "%s a %s."
 
+#: admin/admin-panel-listings.php:384
+msgid "%d Ad was disabled"
+msgid_plural "%d Ads were disabled"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
 #: admin/admin-panel-listings.php:388
 msgid "there was an error trying to disable %d Ads"
 msgstr "nastala chyba pri pokuse o zakázaní %d inzerátov"
+
+#: admin/admin-panel-listings.php:411
+msgid "%d was enabled"
+msgid_plural "%d Ads were enabled"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: admin/admin-panel-listings.php:415
 msgid "there was an error trying to enable %d Ads"
@@ -502,13 +516,34 @@ msgstr "Inzerát bol označený ako overený."
 msgid "The Ad has been marked as paid."
 msgstr "Inzerát bol označený ako zaplatený."
 
+#: admin/admin-panel-listings.php:467
+msgid "%d Ad were marked as SPAM and removed"
+msgid_plural "%d Ads were marked as SPAM and removed"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
 #: admin/admin-panel-listings.php:471
 msgid "there was an error trying to mark %d Ad as SPAM"
 msgstr "nastala chyba pri pokuse o označenie inzerátu %d ako SPAM"
 
+#: admin/admin-panel-listings.php:487
+msgid "%d Ad was set as fatured"
+msgid_plural "%d Ads were set as featured"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
 #: admin/admin-panel-listings.php:491
 msgid "there was an error trying to set %d Ads as featured"
 msgstr "nastala chyba pri pokuse o nastavenie odporúčaných %d inzerátov ako odporúčaných"
+
+#: admin/admin-panel-listings.php:507
+msgid "%d Ad was set as non-fatured"
+msgid_plural "%d Ads were set as non-featured"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: admin/admin-panel-listings.php:511
 msgid "there was an error trying to set %d Ads as non-featured"
@@ -633,6 +668,37 @@ msgctxt "awpcp admin menu"
 msgid "Classifieds"
 msgstr "Inzeráty"
 
+#: admin/admin-panel.php:148
+msgid ""
+"%1$s has the same name as the %2$s. That will cause %1$s to become "
+"unreachable. Please make sure you don't have duplicate page names."
+msgid_plural ""
+"%1$s have the same name as the %2$s. That will cause %1$s to become "
+"unreachable. Please make sure you don't have duplicate page names."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: admin/admin-panel.php:162
+msgid ""
+"Page %1$s has the same name as the AWPCP %2$s. That will cause WordPress "
+"page %1$s to become unreachable. The %2$s is dynamic; you don't need to "
+"create a real WordPress page to show the list of cateogries, the plugin will"
+" generate it for you. If the WordPress page was created to show the default "
+"list of AWPCP categories, you can delete it and this error message will go "
+"away. Otherwise, please make sure you don't have duplicate page names."
+msgid_plural ""
+"Pages %1$s have the same name as the AWPCP %2$s. That will cause WordPress "
+"pages %1$s to become unreachable. The %2$s is dynamic; you don't need to "
+"create a real WordPress page to show the list of cateogries, the plugin will"
+" generate it for you. If the WordPress pages were created to show the "
+"default list of AWPCP categories, you can delete them and this error message"
+" will go away. Otherwise, please make sure you don't have duplicate page "
+"names."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
 #: admin/admin-panel.php:247 admin/admin-panel.php:248
 msgid "Settings"
 msgstr "Nastavenia"
@@ -651,8 +717,8 @@ msgstr "Spravovať kategórie"
 msgid "Manage Extra Fields"
 msgstr "Spravovať extra polia"
 
-#: admin/admin-panel.php:296 admin/templates/admin-sidebar.tpl.php:95
-#: awpcp.php:786
+#: admin/admin-panel.php:296 admin/templates/admin-sidebar.tpl.php:108
+#: awpcp.php:796
 msgid "Extra Fields"
 msgstr "Extra polia"
 
@@ -664,6 +730,10 @@ msgstr "Importovať inzerát"
 #: admin/templates/admin-panel-csv-importer.tpl.php:173
 msgid "Import"
 msgstr "Import"
+
+#: admin/admin-panel.php:302 admin/templates/admin-panel-debug.tpl.php:3
+msgid "Debug"
+msgstr ""
 
 #: admin/admin-panel.php:472 admin/admin-panel.php:473
 #: admin/admin-panel.php:801
@@ -859,7 +929,7 @@ msgid "The categories have been deleted"
 msgstr "Kategórie boli zmazané"
 
 #: admin/form-fields/class-form-fields-admin-page.php:6
-#: includes/settings/class-form-fields-settings.php:127
+#: includes/settings/class-form-fields-settings.php:146
 msgid "Form Fields"
 msgstr ""
 
@@ -956,7 +1026,7 @@ msgstr "Nastavenia systému kreditov"
 
 #: admin/templates/admin-panel-credit-plans.tpl.php:13
 #: admin/templates/admin-panel-settings.tpl.php:33
-#: admin/templates/admin-panel-settings.tpl.php:47
+#: admin/templates/admin-panel-settings.tpl.php:50
 msgid "Save Changes"
 msgstr "Uložiť zmeny"
 
@@ -1077,6 +1147,10 @@ msgctxt "csv-importer"
 msgid "Assign Ads to a user?"
 msgstr "Priradiť inzeráty používateľovi?"
 
+#: admin/templates/admin-panel-csv-importer.tpl.php:145
+msgid "If checked, the Ads will belong to the user specified below."
+msgstr "Ak je označené, inzeráty budú patriť používateľovi nižšie."
+
 #: admin/templates/admin-panel-csv-importer.tpl.php:151
 msgid "Default user"
 msgstr "Predvolený používateľ"
@@ -1098,11 +1172,31 @@ msgstr "Iná hodnota ako 'use spreadsheet information' (použitie informácie z 
 msgid "Test Import"
 msgstr "Test importu"
 
-#: admin/templates/admin-panel-debug.tpl.php:3
-msgid "Debug"
+#: admin/templates/admin-panel-debug.tpl.php:8
+msgid "Are you seeing 404 Not Found errors?"
 msgstr ""
 
-#: admin/templates/admin-panel-debug.tpl.php:8
+#: admin/templates/admin-panel-debug.tpl.php:10
+msgid ""
+"If you are seeing multiple 404 Not Found errors in your website, it is "
+"possible that some Rewrite Rules are missing or corrupted. Please click the "
+"button bellow to navigate to the <permalinks-settings-link>Permalinks "
+"Settings</a> page. Opening that page in your browser will flush the Rewrite "
+"Rules in your site. WordPress will then ask all installed and active plugins"
+" to register their rules and those 404 Not Found errors should be gone. If "
+"that's not the case, please contact <support-link>customer support</a>."
+msgstr ""
+
+#: admin/templates/admin-panel-debug.tpl.php:15
+msgctxt "debug page"
+msgid "Flush Rewrite Rules"
+msgstr ""
+
+#: admin/templates/admin-panel-debug.tpl.php:17
+msgid "Debug Information"
+msgstr ""
+
+#: admin/templates/admin-panel-debug.tpl.php:19
 msgctxt "debug page"
 msgid ""
 "This information can help AWPCP Developers to debug possible problems. If "
@@ -1113,102 +1207,102 @@ msgid ""
 "your report."
 msgstr "Táto informácia môže pomôcť vývojárom AWPCP pri riešení problémov. Ak odosielate správu o chybe, prosím, stiahnite <strong><a href=\"%s\">Infrmácie pre ladenie chýb</a></strong> a priložte ich. Môžete tiež tieto informácie skopírovať sem <a href=\"http://fpaste.org\" target=\"_blank\">http://fpaste.org</a> a poskytnúť nám URL odkaz."
 
-#: admin/templates/admin-panel-debug.tpl.php:11
+#: admin/templates/admin-panel-debug.tpl.php:22
 msgctxt "debug page"
 msgid "AWPCP Pages"
 msgstr "Stránky AWPCP"
 
-#: admin/templates/admin-panel-debug.tpl.php:12
+#: admin/templates/admin-panel-debug.tpl.php:23
 msgctxt "debug page"
 msgid "PHP Info"
 msgstr "Informácie o PHP"
 
-#: admin/templates/admin-panel-debug.tpl.php:13
+#: admin/templates/admin-panel-debug.tpl.php:24
 msgctxt "debug page"
 msgid "AWPCP Settings"
 msgstr "Nastavenie AWPCP"
 
-#: admin/templates/admin-panel-debug.tpl.php:14
+#: admin/templates/admin-panel-debug.tpl.php:25
 msgctxt "debug page"
 msgid "Rewrite Rules"
 msgstr "Prepísať pravidlá"
 
-#: admin/templates/admin-panel-debug.tpl.php:31
+#: admin/templates/admin-panel-debug.tpl.php:42
 msgid "Stored ID"
 msgstr "Uložené ID"
 
-#: admin/templates/admin-panel-debug.tpl.php:32
+#: admin/templates/admin-panel-debug.tpl.php:43
 msgid "Reference"
 msgstr "Odkaz"
 
-#: admin/templates/admin-panel-debug.tpl.php:42
+#: admin/templates/admin-panel-debug.tpl.php:53
 msgid "Page not found"
 msgstr "Stránka nenájdená"
 
-#: admin/templates/admin-panel-debug.tpl.php:56
+#: admin/templates/admin-panel-debug.tpl.php:67
 msgid "Option Name"
 msgstr "Názov nastavenia"
 
-#: admin/templates/admin-panel-debug.tpl.php:57
+#: admin/templates/admin-panel-debug.tpl.php:68
 msgid "Option Value"
 msgstr "Hodnota nastavenia"
 
-#: admin/templates/admin-panel-debug.tpl.php:80
+#: admin/templates/admin-panel-debug.tpl.php:91
 msgid "Pattern"
 msgstr "Vzor"
 
-#: admin/templates/admin-panel-debug.tpl.php:81
+#: admin/templates/admin-panel-debug.tpl.php:92
 msgid "Replacement"
 msgstr "Nahradiť"
 
-#: admin/templates/admin-panel-debug.tpl.php:102
+#: admin/templates/admin-panel-debug.tpl.php:113
 msgctxt "debug page"
 msgid "PHP Version"
 msgstr "Verzia PHP"
 
-#: admin/templates/admin-panel-debug.tpl.php:106
+#: admin/templates/admin-panel-debug.tpl.php:117
 msgctxt "debug page"
 msgid "cURL"
 msgstr "cURL"
 
-#: admin/templates/admin-panel-debug.tpl.php:107
-#: admin/templates/admin-sidebar.tpl.php:146
-#: admin/templates/admin-sidebar.tpl.php:187
+#: admin/templates/admin-panel-debug.tpl.php:118
+#: admin/templates/admin-sidebar.tpl.php:154
+#: admin/templates/admin-sidebar.tpl.php:195
 msgid "Installed"
 msgstr "Nainštalované"
 
-#: admin/templates/admin-panel-debug.tpl.php:107
-#: admin/templates/admin-sidebar.tpl.php:163
-#: admin/templates/admin-sidebar.tpl.php:204
+#: admin/templates/admin-panel-debug.tpl.php:118
+#: admin/templates/admin-sidebar.tpl.php:171
+#: admin/templates/admin-sidebar.tpl.php:212
 msgid "Not Installed"
 msgstr "Nie je nainštalované"
 
-#: admin/templates/admin-panel-debug.tpl.php:110
+#: admin/templates/admin-panel-debug.tpl.php:121
 msgctxt "debug page"
 msgid "cURL's alternate CA info (cacert.pem)"
 msgstr "Alternatívnie CA informácie o cURL (cacert.pem)"
 
-#: admin/templates/admin-panel-debug.tpl.php:111
+#: admin/templates/admin-panel-debug.tpl.php:122
 msgctxt "alternate CA info for cURL"
 msgid "Exists"
 msgstr "Existuje"
 
-#: admin/templates/admin-panel-debug.tpl.php:111
+#: admin/templates/admin-panel-debug.tpl.php:122
 msgctxt "alternate CA info for cURL"
 msgid "Missing"
 msgstr "Chýba"
 
-#: admin/templates/admin-panel-debug.tpl.php:114
+#: admin/templates/admin-panel-debug.tpl.php:125
 msgctxt "debug page"
 msgid "PayPal Connection"
 msgstr "Prepojenie na PayPal"
 
-#: admin/templates/admin-panel-debug.tpl.php:117
+#: admin/templates/admin-panel-debug.tpl.php:128
 msgctxt "debug page"
 msgid "Working"
 msgstr "Funguje"
 
-#: admin/templates/admin-panel-debug.tpl.php:120
+#: admin/templates/admin-panel-debug.tpl.php:131
 msgctxt "debug page"
 msgid "Not Working"
 msgstr "Nefunguje"
@@ -1437,7 +1531,7 @@ msgid "Manage Listing"
 msgstr "Správa inzerátu"
 
 #: admin/templates/admin-panel-listings.tpl.php:12
-#: frontend/page-search-ads.php:14
+#: frontend/page-search-ads.php:12
 msgid "Search Ads"
 msgstr "Hľadať inzeráty"
 
@@ -1457,6 +1551,12 @@ msgstr "Toto nastavenie vám dovoľuje pridávať príspevky na Facebooku. Musí
 #: admin/templates/admin-panel-settings-facebook-settings.tpl.php:22
 msgid "Diagnostics"
 msgstr "Diagnostika"
+
+#: admin/templates/admin-panel-settings-facebook-settings.tpl.php:21
+msgid ""
+"If you are having trouble with Facebook integration, click \"Diagnostics\" "
+"to check your settings."
+msgstr ""
 
 #: admin/templates/admin-panel-settings-facebook-settings.tpl.php:41
 msgid "1. Application Information"
@@ -1636,6 +1736,10 @@ msgstr ""
 msgid "%s Settings"
 msgstr "Nastavenia %s"
 
+#: admin/templates/admin-panel-settings.tpl.php:48
+msgid "Save Keys and Activate"
+msgstr ""
+
 #: admin/templates/admin-panel-uninstall.tpl.php:6
 msgid ""
 "Thank you for using AWPCP. You have arrived at this page by clicking the "
@@ -1754,126 +1858,126 @@ msgstr "Dajte ostatným vedieť, že funguje s vašim nastavením WordPress"
 msgid "Buy a Premium Module"
 msgstr "Kúpte si platený modul"
 
-#: admin/templates/admin-sidebar.tpl.php:29
+#: admin/templates/admin-sidebar.tpl.php:35
 msgid "Get a Premium Module!"
 msgstr "Získajte platený modul!"
 
-#: admin/templates/admin-sidebar.tpl.php:38 awpcp.php:758
+#: admin/templates/admin-sidebar.tpl.php:46 awpcp.php:768
 msgid "Campaign Manager"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:44 awpcp.php:814
+#: admin/templates/admin-sidebar.tpl.php:52 awpcp.php:825
 msgid "Mark as Sold"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:50 awpcp.php:835
+#: admin/templates/admin-sidebar.tpl.php:58 awpcp.php:846
 msgid "Restricted Categories"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:55 awpcp.php:751
+#: admin/templates/admin-sidebar.tpl.php:63 awpcp.php:761
 msgid "BuddyPress Listings"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:60
+#: admin/templates/admin-sidebar.tpl.php:68
 msgid "Comments/Ratings"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:65 awpcp.php:744
+#: admin/templates/admin-sidebar.tpl.php:73 awpcp.php:747
+msgid "Attachments"
+msgstr "Prílohy"
+
+#: admin/templates/admin-sidebar.tpl.php:78 awpcp.php:754
 msgid "Authorize.Net"
 msgstr "Authorize.Net"
 
-#: admin/templates/admin-sidebar.tpl.php:70 awpcp.php:821
+#: admin/templates/admin-sidebar.tpl.php:83 awpcp.php:832
 msgid "PayPal Pro"
 msgstr "PayPal Pro"
 
-#: admin/templates/admin-sidebar.tpl.php:75
+#: admin/templates/admin-sidebar.tpl.php:88
 msgid "Coupon/Discount"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:80 awpcp.php:849
+#: admin/templates/admin-sidebar.tpl.php:93 awpcp.php:860
 msgid "Subscriptions"
 msgstr "Odbery"
 
-#: admin/templates/admin-sidebar.tpl.php:85
+#: admin/templates/admin-sidebar.tpl.php:98
 msgid "Fee Per Category"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:100 awpcp.php:765
+#: admin/templates/admin-sidebar.tpl.php:113 awpcp.php:775
 msgid "Category Icons"
 msgstr "Ikonky kategórí"
 
-#: admin/templates/admin-sidebar.tpl.php:105 awpcp.php:828
+#: admin/templates/admin-sidebar.tpl.php:118 awpcp.php:839
 msgid "Regions Control"
 msgstr "Správanie regiónov"
 
-#: admin/templates/admin-sidebar.tpl.php:110
-msgid "Google Checkout Payments"
-msgstr ""
-
-#: admin/templates/admin-sidebar.tpl.php:115 awpcp.php:842
+#: admin/templates/admin-sidebar.tpl.php:123 awpcp.php:853
 msgid "RSS"
 msgstr "RSS"
 
-#: admin/templates/admin-sidebar.tpl.php:120
+#: admin/templates/admin-sidebar.tpl.php:128
 msgid "Donate to Support AWPCP"
 msgstr "Darujte peniaze na podporu AWPCP"
 
-#: admin/templates/admin-sidebar.tpl.php:128
+#: admin/templates/admin-sidebar.tpl.php:136
 msgid "Found a bug?"
 msgstr "Našli ste chybu?"
 
-#: admin/templates/admin-sidebar.tpl.php:128
+#: admin/templates/admin-sidebar.tpl.php:136
 msgid "Need Support?"
 msgstr "Potrebujete podporu?"
 
-#: admin/templates/admin-sidebar.tpl.php:132
+#: admin/templates/admin-sidebar.tpl.php:140
 msgid "Quick Start Guide"
 msgstr "Príručka ako na to"
 
-#: admin/templates/admin-sidebar.tpl.php:133
+#: admin/templates/admin-sidebar.tpl.php:141
 msgctxt "Browse the <a>Quick Start Guide</a>"
 msgid "Browse the %s."
 msgstr "Prezerať %s."
 
-#: admin/templates/admin-sidebar.tpl.php:134
+#: admin/templates/admin-sidebar.tpl.php:142
 msgid "Documentation"
 msgstr "Dokumentácia"
 
-#: admin/templates/admin-sidebar.tpl.php:135
+#: admin/templates/admin-sidebar.tpl.php:143
 msgctxt "Read the full <a>Documentation</a>"
 msgid "Read the full %s."
 msgstr "Prečítať celý %s."
 
-#: admin/templates/admin-sidebar.tpl.php:136
+#: admin/templates/admin-sidebar.tpl.php:144
 msgid "visit the forums!"
 msgstr "navštívte fóra!"
 
-#: admin/templates/admin-sidebar.tpl.php:137
+#: admin/templates/admin-sidebar.tpl.php:145
 msgctxt "Report bugs or get more help: <a>visit the forums!</a>"
 msgid "Report bugs or get more help: %s."
 msgstr "Nahlásiť chyby alebo získať podporu: %s."
 
-#: admin/templates/admin-sidebar.tpl.php:143
+#: admin/templates/admin-sidebar.tpl.php:151
 msgid "Premium Modules"
 msgstr "Prémiové moduly"
 
-#: admin/templates/admin-sidebar.tpl.php:150
+#: admin/templates/admin-sidebar.tpl.php:158
 msgid "No premium modules installed."
 msgstr "Nie sú nainštalované prémiové moduly."
 
-#: admin/templates/admin-sidebar.tpl.php:167
+#: admin/templates/admin-sidebar.tpl.php:175
 msgid "All premium modules installed!"
 msgstr "Všetky prémiové moduly nainštalované!"
 
-#: admin/templates/admin-sidebar.tpl.php:183
+#: admin/templates/admin-sidebar.tpl.php:191
 msgid "Other Modules"
 msgstr "Ďaľsie moduly"
 
-#: admin/templates/admin-sidebar.tpl.php:191
+#: admin/templates/admin-sidebar.tpl.php:199
 msgid "No other modules installed"
 msgstr "Žiadne iné moduly"
 
-#: admin/templates/admin-sidebar.tpl.php:208
+#: admin/templates/admin-sidebar.tpl.php:216
 msgid "All other modules installed!"
 msgstr "Všetky iné moduly nainštalované!"
 
@@ -1921,9 +2025,9 @@ msgstr "AWPCP Classifieds Management System - Položky - Umiestniť  inzerát"
 msgid "AWPCP Ad Management Panel - Listings - Renew Ad"
 msgstr "AWPCP Classifieds Management System - Položky - Obnoviť inzerát"
 
-#: admin/user-panel-listings.php:13
-msgid "AWPCP Ad Management Panel - Listings"
-msgstr "AWPCP Classifieds Management System - Položky"
+#: admin/user-panel-listings.php:15
+msgid "<blog-name> User Ad Management Panel - Listings"
+msgstr ""
 
 #: admin/user-panel.php:44
 msgid "%s Ad Management Panel"
@@ -1937,104 +2041,94 @@ msgstr "Správa inzerátov"
 msgid "Manage Ad Listings"
 msgstr "Spravovať inzeráty"
 
-#: awpcp.php:641
+#: awpcp.php:651
 msgid "AWPCP"
 msgstr "AWPCP"
 
-#: awpcp.php:720
+#: awpcp.php:730
 msgid ""
 "AWPCP requires the graphics processing library GD and it is not installed. "
 "Contact your web host to fix this."
 msgstr "AWPCP vyžaduje knižnicu GD, ktorá spracúva grafické operácie. Kontaktujte hosting,pre vyriešenie problému."
 
-#: awpcp.php:721
+#: awpcp.php:731
 #: includes/placeholders/class-placeholders-installation-verifier.php:31
 msgid "Warning"
 msgstr "Varovanie"
 
-#: awpcp.php:737
-msgid "Attachments"
-msgstr "Prílohy"
-
-#: awpcp.php:772
+#: awpcp.php:782
 msgid "Comments & Ratings"
 msgstr "Komentátre a hotnotenia"
 
-#: awpcp.php:779
+#: awpcp.php:789
 msgid "Coupons/Discount"
 msgstr "Kupóny/zľavy"
 
-#: awpcp.php:800
+#: awpcp.php:810
 msgid "Fee per Category"
 msgstr "Poplatok na kategóriu"
 
-#: awpcp.php:807
+#: awpcp.php:817
 msgid "Google Checkout"
 msgstr "Google Checkout"
 
-#: awpcp.php:856 templates/components/media-manager.tpl.php:46
+#: awpcp.php:867 templates/components/media-manager.tpl.php:46
 msgid "Videos"
 msgstr "Videá"
 
-#: awpcp.php:864
+#: awpcp.php:875
 msgid "XML Sitemap"
 msgstr "XML sitemapa"
 
-#: awpcp.php:871
+#: awpcp.php:882
 msgid "ZIP Code Search Module"
 msgstr ""
 
-#: awpcp.php:919
-msgid ""
-"The %1$s module you have installed is outdated and not compatible with this "
-"version of AWPCP. Please get %1$s %2$s or newer."
-msgstr "Modul %1$s je zastaraný a nie je kompatibilný s touto verziou AWPCP. Prosím získajte %1$s %2$s alebo novšiu."
-
-#: awpcp.php:1054
+#: awpcp.php:1039
 msgid "This field is required."
 msgstr "Toto pole je povinné."
 
-#: awpcp.php:1055 frontend/page-edit-ad.php:128 frontend/page-edit-ad.php:433
+#: awpcp.php:1040 frontend/page-edit-ad.php:128 frontend/page-edit-ad.php:433
 #: includes/settings-api.php:214
 msgid "Please enter a valid email address."
 msgstr "Prosím uveďte správnu/funkčnú emailovú adresu."
 
-#: awpcp.php:1056 awpcp.php:1057
+#: awpcp.php:1041 awpcp.php:1042
 msgid "Please enter a valid URL."
 msgstr "Prosím zadajte platnú URL adresu."
 
-#: awpcp.php:1058
+#: awpcp.php:1043
 msgid "Please enter a valid number."
 msgstr "Prosím zadajte platné číslo."
 
-#: awpcp.php:1059
+#: awpcp.php:1044
 msgid "Please enter a valid amount."
 msgstr "Prosím zadajte platnú sumu."
 
-#: awpcp.php:1069
+#: awpcp.php:1054
 msgctxt "[UI Datepicker] Display text for previous month link"
 msgid "&#x3c;Prev"
 msgstr ""
 
-#: awpcp.php:1071
+#: awpcp.php:1056
 msgctxt "[UI Datepicker] Display text for next month link"
 msgid "Next&#x3e;"
 msgstr ""
 
-#: awpcp.php:1086
+#: awpcp.php:1071
 msgctxt "[UI Datepicker] The first day of the week, Sun = 0, Mon = 1, ..."
 msgid "0"
 msgstr "2"
 
-#: awpcp.php:1092
+#: awpcp.php:1077
 msgid "There are files currently being uploaded."
 msgstr ""
 
-#: awpcp.php:1093
+#: awpcp.php:1078
 msgid "There are files pending to be uploaded."
 msgstr ""
 
-#: awpcp.php:1094
+#: awpcp.php:1079
 msgid "You haven't uploaded any images or files."
 msgstr ""
 
@@ -2094,11 +2188,11 @@ msgstr ""
 msgid "Click to enlarge image."
 msgstr "Kliknutím zväčšíte obrázok."
 
-#: frontend/page-browse-ads.php:8
+#: frontend/page-browse-ads.php:10
 msgid "Browse Ads"
 msgstr "Prezerať inzeráty"
 
-#: frontend/page-browse-ads.php:60
+#: frontend/page-browse-ads.php:64
 msgid ""
 "No specific category was selected for browsing so you are viewing listings "
 "from all categories."
@@ -2151,13 +2245,13 @@ msgstr "Správa príloh"
 msgid "Go to the %s section to manage the Images and Attachments for this Ad."
 msgstr "V sekcii %s môžete spravovať prílohy a obrázky inzerátu."
 
-#: frontend/page-edit-ad.php:274 frontend/page-place-ad.php:1073
+#: frontend/page-edit-ad.php:274 frontend/page-place-ad.php:1074
 msgid ""
 "There was an unexpected error trying to save your Ad details. Please try "
 "again or contact an administrator."
 msgstr "Nastala chyba pri ukladaní inzerátu. Prosím skúste uloženie zopakovať alebo kontaktujte administrátora."
 
-#: frontend/page-edit-ad.php:296 frontend/page-place-ad.php:1135
+#: frontend/page-edit-ad.php:296 frontend/page-place-ad.php:1136
 msgid "The specified Ad doesn't exists. No images can be added at this time."
 msgstr "Uvedený inzerát neexistuje. Teraz nemôžete pridať obrázky."
 
@@ -2308,7 +2402,7 @@ msgid ""
 " the form below to login or click the link to register."
 msgstr "Zdravím, pre uverejnenie inzerátu musíte byť registrovaný používateľ. Prosím, použite formulár pre prihlásenie alebo odkaz na registráciu."
 
-#: frontend/page-place-ad.php:359 frontend/page-place-ad.php:694
+#: frontend/page-place-ad.php:359 frontend/page-place-ad.php:695
 #: frontend/page-renew-ad.php:226
 msgid ""
 "You are logged in as an administrator. Any payment steps will be skipped."
@@ -2322,160 +2416,160 @@ msgid ""
 "%s"
 msgstr "Práve nemôžeme spracovať platbu pre túto transakciu. Prosím, kontaktujte administrátora a poskytnite mu ID transakcie:"
 
-#: frontend/page-place-ad.php:692
+#: frontend/page-place-ad.php:693
 msgid ""
 "Your Ad details have been filled out in the form below. Make any changes "
 "needed and then resubmit the Ad to update it."
 msgstr "Podrobnosti inzerátu sú uvedené nižšie. Urobte zmeny a pre odoslanie inzerátu ho znova odošlite."
 
-#: frontend/page-place-ad.php:696
+#: frontend/page-place-ad.php:697
 msgid "Fill out the form below to post your classified Ad."
 msgstr "Pre odoslanie inzerátu, musíte vyplniť formulár umiestnený nižšie."
 
-#: frontend/page-place-ad.php:700
+#: frontend/page-place-ad.php:701
 msgid ""
 "We found errors in the details you submitted. A detailed error message is "
 "shown in front or below each invalid field. Please fix the errors and submit"
 " the form again."
 msgstr "Našli sme chyby v zadaných údajoch. Typ chyby je vypísaný pod každým chybným údajom. Prosím opravte chyby a odošlite formulár znova."
 
-#: frontend/page-place-ad.php:789
+#: frontend/page-place-ad.php:790
 msgid ""
 "Hi, Payment is required for posting Ads in this website and we couldn't find"
 " a Payment Transaction assigned to you. You can't post Ads this time. If you"
 " think this is an error please contact the website Administrator."
 msgstr ""
 
-#: frontend/page-place-ad.php:816
+#: frontend/page-place-ad.php:817
 msgid ""
 "You did not select a Payment Term. Please select a Payment Term for this Ad."
 msgstr "Nevybrali ste platobné podmienky pre váš inzerát. Prosím, vyberte aspoň jednu z podmienok."
 
-#: frontend/page-place-ad.php:821
+#: frontend/page-place-ad.php:822
 msgid "Please enter a start date for the Ad."
 msgstr "Prosím zadajte začiatočný dátum inzerátu."
 
-#: frontend/page-place-ad.php:826
+#: frontend/page-place-ad.php:827
 msgid "Please enter an end date for the Ad."
 msgstr "Prosím zadajte koncový dátum inzerátu."
 
-#: frontend/page-place-ad.php:830
+#: frontend/page-place-ad.php:831
 msgid "The start date must occur before the end date."
 msgstr "Začiatočný dátum musí byť skôr ako koncový."
 
-#: frontend/page-place-ad.php:835
+#: frontend/page-place-ad.php:836
 msgid "You did not enter a title for your Ad"
 msgstr "Nezadali ste názov inzerátu"
 
-#: frontend/page-place-ad.php:840
+#: frontend/page-place-ad.php:841
 msgid ""
 "You did not enter any text for your Ad. Please enter some text for your Ad."
 msgstr "Nezadali ste text inzerátu. Napíšte o ňom niečo."
 
-#: frontend/page-place-ad.php:845
+#: frontend/page-place-ad.php:846
 msgid ""
 "You did not select a category for your Ad. Please select a category for your"
 " Ad."
 msgstr "Prosím zvoľte typ kategórie pre váš inzerát. Prosím, vyberte aspoň jednu z kategórií."
 
-#: frontend/page-place-ad.php:853
+#: frontend/page-place-ad.php:854
 msgid ""
 "You did not enter your website address. Your website address is required."
 msgstr "Nevložili ste webovú adresu. Webová adresa je povinná"
 
-#: frontend/page-place-ad.php:859
+#: frontend/page-place-ad.php:860
 msgid ""
 "Your website address is not properly formatted. Please make sure you have "
 "included the http:// part of your website address"
 msgstr "Vaša webová adresa nie je v správnom formáte. Uistite sa, že obsahuje http:// "
 
-#: frontend/page-place-ad.php:864
+#: frontend/page-place-ad.php:865
 msgid "You did not enter your name. Your name is required."
 msgstr "Nezadali ste vaše meno. Toto pole je povinné."
 
-#: frontend/page-place-ad.php:869
+#: frontend/page-place-ad.php:870
 msgid "You did not enter your email. Your email is required."
 msgstr "Nevložili ste váš email. Email je povinné pole."
 
-#: frontend/page-place-ad.php:874 frontend/page-reply-to-ad.php:123
+#: frontend/page-place-ad.php:875 frontend/page-reply-to-ad.php:118
 msgid ""
 "The email address you entered was not a valid email address. Please check "
 "for errors and try again."
 msgstr "Zadaná e-mailová adresa je zrejme neplatná. Prosím skontrolujte si chyby a skúste pokus opakovať."
 
-#: frontend/page-place-ad.php:876
+#: frontend/page-place-ad.php:877
 msgid ""
 "The email address you entered is not allowed in this website. Please use an "
 "email address from one of the following domains: %s."
 msgstr "Emailová adresa nie je na tejto stránke povolená. Prosím zadajte emailovú adresu od nasledujúcich poskytovateľov: %s."
 
-#: frontend/page-place-ad.php:887
+#: frontend/page-place-ad.php:888
 msgid "You did not enter your phone number. Your phone number is required."
 msgstr "Nevložili ste vaše telefónne číslo. Toto pole je povinné."
 
-#: frontend/page-place-ad.php:905
+#: frontend/page-place-ad.php:906
 #: includes/helpers/widgets/multiple-region-selector.php:126
 msgid "You did not enter your country. Your country is required."
 msgstr "Nezadali ste krajinu. Toto pole je povinné."
 
-#: frontend/page-place-ad.php:914
+#: frontend/page-place-ad.php:915
 #: includes/helpers/widgets/multiple-region-selector.php:127
 msgid "You did not enter your state. Your state is required."
 msgstr "Nezadali ste štát. Toto pole je povinné."
 
-#: frontend/page-place-ad.php:923
+#: frontend/page-place-ad.php:924
 #: includes/helpers/widgets/multiple-region-selector.php:129
 msgid "You did not enter your city. Your city is required."
 msgstr "Nezadali ste vaše mesto. Toto pole je povinné."
 
-#: frontend/page-place-ad.php:932
+#: frontend/page-place-ad.php:933
 #: includes/helpers/widgets/multiple-region-selector.php:128
 msgid ""
 "You did not enter your county/village. Your county/village is required."
 msgstr "Nezadali ste okres/sídlo. Toto pole je povinné."
 
-#: frontend/page-place-ad.php:939
+#: frontend/page-place-ad.php:940
 msgid "You did not enter the price of your item. The item price is required."
 msgstr "Nevložili ste cenu veci. Cena je povinná"
 
-#: frontend/page-place-ad.php:945
+#: frontend/page-place-ad.php:946
 msgid ""
 "You have entered an invalid item price. Make sure your price contains "
 "numbers only. Please do not include currency symbols."
 msgstr "Nevložili ste správnu cenu veci. Uistite sa, že obsahuje len číslice. Prosím, nevkladajte symboly meny."
 
-#: frontend/page-place-ad.php:963
+#: frontend/page-place-ad.php:964
 msgid "You did not accept the terms of service"
 msgstr "Nesúhlasili ste s podmienkami používania"
 
-#: frontend/page-place-ad.php:979
+#: frontend/page-place-ad.php:980
 msgid ""
 "Your Ad was flagged as spam. Please contact the administrator of this site."
 msgstr "Váš inzerát bola označený ako SPAM, prosím kontaktujte administrátora tejto stránky."
 
-#: frontend/page-place-ad.php:1128
+#: frontend/page-place-ad.php:1129
 msgid ""
 "We were unable to find a Payment Transaction assigned to this operation. No "
 "images can be added at this time."
 msgstr "Neboli sme schopní nájsť platbu k tejto transakcii. Teraz nemôžte pridať obrázky."
 
-#: frontend/page-place-ad.php:1189
+#: frontend/page-place-ad.php:1190
 #: frontend/templates/page-place-ad-details-step.tpl.php:115
 msgid "Preview Ad"
 msgstr "Náhľad inzerátu"
 
-#: frontend/page-place-ad.php:1193
+#: frontend/page-place-ad.php:1194
 #: includes/helpers/widgets/class-listing-form-steps-component.php:50
 #: includes/helpers/widgets/class-listing-form-steps-component.php:65
 msgid "Checkout"
 msgstr "Košík"
 
-#: frontend/page-place-ad.php:1212 frontend/page-place-ad.php:1263
+#: frontend/page-place-ad.php:1213 frontend/page-place-ad.php:1264
 msgid ""
 "We were unable to find a Payment Transaction assigned to this operation."
 msgstr "Neboli sme schopní nájsť platbu k tejto transakcii."
 
-#: frontend/page-place-ad.php:1219 frontend/page-place-ad.php:1270
+#: frontend/page-place-ad.php:1220 frontend/page-place-ad.php:1271
 #: frontend/page-renew-ad.php:334
 msgid "The Ad associated with this transaction doesn't exists."
 msgstr "Inzerát patriaci k tejto transakcii neexistuje."
@@ -2522,7 +2616,7 @@ msgstr "Snažíte sa obnoviť inzerát pomocou iných platobných podmienok. Tot
 msgid "Reply to Ad"
 msgstr "Odpovedať na inzerát"
 
-#: frontend/page-reply-to-ad.php:49 frontend/page-reply-to-ad.php:117
+#: frontend/page-reply-to-ad.php:49 frontend/page-reply-to-ad.php:112
 msgid "Please enter your name."
 msgstr "Prosím zadajte vaše meno."
 
@@ -2544,72 +2638,72 @@ msgstr "Odpovedať na inzeráty môžu iba registrovaní používatelia. Ak už 
 msgid "The specified Ad does not exist."
 msgstr "Uvedený inzerát neexistuje."
 
-#: frontend/page-reply-to-ad.php:121
+#: frontend/page-reply-to-ad.php:116
 msgid "Please enter your email."
 msgstr "Prosím zadajte váš email."
 
-#: frontend/page-reply-to-ad.php:127
+#: frontend/page-reply-to-ad.php:122
 msgid "There was no text in your message. Please enter a message."
 msgstr "Vaša správa neobsahovala text. "
 
-#: frontend/page-reply-to-ad.php:134
+#: frontend/page-reply-to-ad.php:129
 msgid ""
 "Your message was flagged as spam. Please contact the administrator of this "
 "site."
 msgstr ""
 
-#: frontend/page-reply-to-ad.php:208
+#: frontend/page-reply-to-ad.php:203
 msgid "Notification about a response regarding Ad: %s"
 msgstr "Oznámenie o odpovedi na inzerát: %s"
 
-#: frontend/page-reply-to-ad.php:222
+#: frontend/page-reply-to-ad.php:217
 msgctxt "reply email"
 msgid "regarding"
 msgstr "podľa"
 
-#: frontend/page-reply-to-ad.php:235
+#: frontend/page-reply-to-ad.php:230
 msgid "Your message has been sent."
 msgstr "Vaša správa bola odoslaná."
 
-#: frontend/page-reply-to-ad.php:238
+#: frontend/page-reply-to-ad.php:233
 msgid ""
 "There was a problem encountered during the attempt to send your message. "
 "Please try again and if the problem persists, please contact the system "
 "administrator."
 msgstr "Nastala chyba pri pokuse o odoslanie správy. Skúste správu odoslať znova. Ak problém pretrváva kontaktujte administrátora."
 
-#: frontend/page-search-ads.php:33 frontend/page-search-ads.php:70
+#: frontend/page-search-ads.php:31 frontend/page-search-ads.php:68
 msgid ""
 "You did not enter a keyword or phrase to search for. You must at the very "
 "least provide a keyword or phrase to search for."
 msgstr "Nezadali ste kľúčové slovo. Musíte zadať kľúčové slovo alebo frázu, ktorú máme vyhľadať."
 
-#: frontend/page-search-ads.php:74
+#: frontend/page-search-ads.php:72
 msgid ""
 "You have entered a keyword that is too short to search on. Search keywords "
 "must be at least 3 letters in length. Please try another term."
 msgstr "Zadali ste kľúčové slovo, ktoré je príliš krátke. Kľúčové slovo musí obsahovať najmenej 3 znaky. Skúste iný výraz."
 
-#: frontend/page-search-ads.php:78
+#: frontend/page-search-ads.php:76
 msgid ""
 "You have entered an invalid minimum price. Make sure your price contains "
 "numbers only. Please do not include currency symbols."
 msgstr "Nevložili ste správnu minimálnu cenu . Uistite sa, že obsahuje len číslice. Prosím, nevkladajte symboly meny."
 
-#: frontend/page-search-ads.php:82
+#: frontend/page-search-ads.php:80
 msgid ""
 "You have entered an invalid maximum price. Make sure your price contains "
 "numbers only. Please do not include currency symbols."
 msgstr "Nevložili ste správnu maximálnu cenu . Uistite sa, že obsahuje len číslice. Prosím, nevkladajte symboly meny."
 
-#: frontend/page-search-ads.php:89
+#: frontend/page-search-ads.php:98
 msgid ""
 "Use the form below to select the fields on which you want to search. Adding "
 "more fields makes for a more specific search. Using fewer fields will make "
 "for a broader search."
 msgstr ""
 
-#: frontend/page-search-ads.php:169
+#: frontend/page-search-ads.php:166
 msgid "Return to Search"
 msgstr "Návrat na vyhľadávanie"
 
@@ -2667,6 +2761,13 @@ msgstr "Predajca"
 msgid "Visit Website"
 msgstr "Navštívte stránku"
 
+#: frontend/placeholders.php:595
+msgid "This Ad has been viewed %d time."
+msgid_plural "This Ad has been viewed %d times."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
 #: frontend/placeholders.php:599
 msgid "Total views: %d"
 msgstr "Prezretí: %d"
@@ -2687,11 +2788,11 @@ msgstr "Odoslať na Twitter"
 msgid "Share on Facebook"
 msgstr "Zdieľať na Facebooku"
 
-#: frontend/shortcode.php:278
+#: frontend/shortcode.php:281
 msgid "Hi admin, you need to go to your dashboard and setup your classifieds."
 msgstr "Zdravím admin, choďte na nástenku a nastavte si inzerciu."
 
-#: frontend/shortcode.php:281
+#: frontend/shortcode.php:284
 msgid "You currently have no classifieds"
 msgstr "Momentálne nemáte žiadnu inzerciu"
 
@@ -3503,7 +3604,7 @@ msgctxt "default blog title"
 msgid "Classifieds Website"
 msgstr "Stránka inzerátov"
 
-#: functions.php:1491
+#: functions.php:1509
 msgid ""
 "The images or files with pale red background have been rejected by an "
 "administrator user. Likewise, files with a pale yellow background are "
@@ -3511,179 +3612,179 @@ msgid ""
 "cannot be shown in the frontend."
 msgstr "Obrázky alebo súbory so slabo červeným pozadím boli zamietnuté administrátorom. Slabo žlté pozadie znamená, že súbory čakajú na schválenie. Zamietnuté súbory a súbory čakajúce na schválenie nie sú zobrazované na stránke."
 
-#: functions.php:1508 includes/helpers/class-modules-manager.php:158
+#: functions.php:1528
 msgid ""
 "This version of AWPCP %1$s module is not compatible with AWPCP version %2$s."
 " Please get AWPCP %1$s %3$s or newer!"
 msgstr "Verzia tohto modulu AWPCP %1$s nie je kompatibilná s verziou AWPCP %2$s. Prosím nainštajute si verziu  %1$s %3$s alebo novšiu"
 
-#: functions.php:1510 includes/helpers/class-modules-manager.php:160
+#: functions.php:1530 includes/helpers/class-modules-manager.php:245
 msgid "Error"
 msgstr "Chyba"
 
-#: functions.php:1738
+#: functions.php:1867
 msgid "No errors."
 msgstr "Žiadne chyby."
 
-#: functions.php:1739
+#: functions.php:1868
 msgid "The file is larger than upload_max_filesize."
 msgstr "Súbor je väčší než (maximálna dovolená veľkosť) upload_max_filesize."
 
-#: functions.php:1740
+#: functions.php:1869
 msgid "The file is larger than form MAX_FILE_SIZE."
 msgstr "Súbor je väčší než (maximálna dovolená veľkosť) MAX_FILE_SIZE."
 
-#: functions.php:1741
+#: functions.php:1870
 msgid "The file was only partially uploaded."
 msgstr "Súbor bol nahraný iba čiastočne."
 
-#: functions.php:1742
+#: functions.php:1871
 msgid "No file was uploaded."
 msgstr "Súbor nebol nahraný."
 
-#: functions.php:1743
+#: functions.php:1872
 msgid "Missing temporary directory."
 msgstr "Chýba dočasný priečinok."
 
-#: functions.php:1744
+#: functions.php:1873
 msgid "Can't write file to disk."
 msgstr "Nie je možné vykonať zápis súboru na disk."
 
-#: functions.php:1745
+#: functions.php:1874
 msgid "The file upload was stopped by extension."
 msgstr "Nahrávanie súboru bolo prerušené kvôli prípone súbora."
 
-#: functions.php:1960
+#: functions.php:2089
 msgid "Your Ad \"%s\" has been approved"
 msgstr "Váš inzerát \"%s\" bol schválený"
 
-#: functions.php:1976
+#: functions.php:2105
 msgid "Your Ad \"%s\" has been successfully updated"
 msgstr "Váš inzerát \"%s\" bol úspešne aktualizovaný"
 
-#: functions.php:1997
+#: functions.php:2126
 msgid "Images on Ad \"%s\" are awaiting approval"
 msgstr "Obrázky inzerátu \"%s\" čakajú na schválenie"
 
-#: functions.php:1999 includes/functions/notifications.php:189
+#: functions.php:2128 includes/functions/notifications.php:189
 msgid ""
 "Images on Ad \"%s\" are awaiting approval. You can approve the images going "
 "to the Manage Images section for that Ad and clicking the \"Enable\" button "
 "below each image. Click here to continue: %s."
 msgstr ""
 
-#: functions.php:2002
+#: functions.php:2131
 msgid "The Ad \"%s\" is awaiting approval"
 msgstr "Inzerát \"%s\" čaká na schválenie"
 
-#: functions.php:2004 includes/functions/notifications.php:194
+#: functions.php:2133 includes/functions/notifications.php:194
 msgid ""
 "The Ad \"%s\" is awaiting approval. You can approve the Ad going to the "
 "Manage Listings section and clicking the \"Enable\" action shown on top. "
 "Click here to continue: %s."
 msgstr "Inzerát \"%s\" čaká na schválenie. Inzerát môžete schváliť v sekcii správa položiek, kliknutím na tlačidlo \"Povoliť\". Kliknite pre pokračovanie: %s."
 
-#: functions.php:2011 includes/functions/notifications.php:201
+#: functions.php:2140 includes/functions/notifications.php:201
 msgid ""
 "Additionally, You can approve the images going to the Manage Images section "
 "for that Ad and clicking the \"Enable\" button below each image. Click here "
 "to continue: %s."
 msgstr ""
 
-#: functions.php:2508
+#: functions.php:2674
 msgid "Email sent %s."
 msgstr "Odoslaný email %s."
 
-#: includes/class-csv-importer.php:118
+#: includes/class-csv-importer.php:121
 msgid "Invalid CSV file."
 msgstr "Neplatný CSV súbor."
 
-#: includes/class-csv-importer.php:136
+#: includes/class-csv-importer.php:142
 msgid "Image file names were found but no ZIP was provided."
 msgstr "Názvy obrázkov boli nájdené ale nebol priložený ZIP súbor."
 
-#: includes/class-csv-importer.php:187
+#: includes/class-csv-importer.php:240
 msgid "The required column %s is missing. Import can't continue."
 msgstr "Chýba požadovaný stĺpec %s. Import nemôže pokračovať."
 
-#: includes/class-csv-importer.php:199
+#: includes/class-csv-importer.php:252
 msgid "Import can't continue. Unknown column(s) specified(s):"
 msgstr "Import nemôže pokračovať.. Neznámy stĺpec/stĺpce:"
 
-#: includes/class-csv-importer.php:275
+#: includes/class-csv-importer.php:327
 msgid "Required value <em>%s</em> missing at row number: %d"
 msgstr "Vyžadovaná hodnota <em>%s</em> chýba v riadku číslo: %d"
 
-#: includes/class-csv-importer.php:418 includes/class-csv-importer.php:489
-msgid "Incompatible ZIP Archive"
-msgstr "Nekompatibilný ZIP archív."
-
-#: includes/class-csv-importer.php:423 includes/class-csv-importer.php:494
-msgid "Empty ZIP Archive"
-msgstr "Prázdny ZIP archív"
-
-#: includes/class-csv-importer.php:440 includes/class-csv-importer.php:521
-msgid "Could not write temporary file %s"
-msgstr "Nebolo možné zapísať dočasný súbor %s"
-
-#: includes/class-csv-importer.php:469
+#: includes/class-csv-importer.php:465
 msgid "File %s does not exists."
 msgstr "Súbor %s neexistuje."
 
-#: includes/class-csv-importer.php:477
+#: includes/class-csv-importer.php:473
 msgid "Import directory %s does not exists."
 msgstr "Adresár pre import \"%s \"neexistuje."
 
-#: includes/class-csv-importer.php:556
+#: includes/class-csv-importer.php:485
+msgid "Incompatible ZIP Archive"
+msgstr "Nekompatibilný ZIP archív."
+
+#: includes/class-csv-importer.php:490
+msgid "Empty ZIP Archive"
+msgstr "Prázdny ZIP archív"
+
+#: includes/class-csv-importer.php:517
+msgid "Could not write temporary file %s"
+msgstr "Nebolo možné zapísať dočasný súbor %s"
+
+#: includes/class-csv-importer.php:557
 msgid "Row %d. %s"
 msgstr "Riadok %d. %s"
 
-#: includes/class-csv-importer.php:593
+#: includes/class-csv-importer.php:594
 msgid "Could not save the information to the database for %s in row %d"
 msgstr "Nie je možné uložiť informáciu do databázy pre %s v riadku %s"
 
-#: includes/class-csv-importer.php:676
+#: includes/class-csv-importer.php:661
 msgid "Item price non numeric at row number %s"
 msgstr "Cena položky nie je číslo. Riadok: %s"
 
-#: includes/class-csv-importer.php:692
+#: includes/class-csv-importer.php:677
 msgid ""
 "Start date missing (alternately you can specify the default start date) at "
 "row number %s"
 msgstr "V riadku %s chýba počiatočný dátum (môžete zvoliť štandardný počiatočný dátum)"
 
-#: includes/class-csv-importer.php:704
+#: includes/class-csv-importer.php:689
 msgid "Invalid End date at row number: %s"
 msgstr "Chybný koncový dátum v riadku: %s"
 
-#: includes/class-csv-importer.php:712
+#: includes/class-csv-importer.php:697
 msgid ""
 "End date missing (alternately you can specify the default end date) at row "
 "number %s"
 msgstr "V riadku %s chýba koncový dátum (môžete zvoliť štandardný koncový dátum)"
 
-#: includes/class-csv-importer.php:823
+#: includes/class-csv-importer.php:808
 msgid ""
 "Extra Field %s's value is not allowed in row %d. Allowed values are: %%s"
 msgstr "Hodnota extra pola %s nie je povolená v riadku %s. Povolené hodnotu sú: %%s"
 
-#: includes/class-csv-importer.php:832
+#: includes/class-csv-importer.php:817
 msgid ""
 "Extra Field %s's value is not allowed in row %d. Allowed value is one of: "
 "%%s"
 msgstr "Hodnota extra pola %s nie je povolená v riadku %s. Povolená hodnota je jedna z: %%s"
 
-#: includes/class-csv-importer.php:960
+#: includes/class-csv-importer.php:945
 msgid ""
 "Username is required in row %s. Please include a username or selected a "
 "default user."
 msgstr ""
 
-#: includes/class-csv-importer.php:963
+#: includes/class-csv-importer.php:948
 msgid "Contact email is required in row %s."
 msgstr " V riadku %s je kontaktný email povinný údaj."
 
-#: includes/class-csv-importer.php:981
+#: includes/class-csv-importer.php:966
 msgid ""
 "A new user '%s' with email address '%s' and password '%s' was created for "
 "row %d."
@@ -3697,6 +3798,18 @@ msgstr ""
 #: includes/class-edit-listing-link-placeholder.php:38
 msgctxt "title attribute for edit listing link"
 msgid "Edit <listing-title>"
+msgstr ""
+
+#: includes/class-exceptions.php:23
+msgid ""
+"The error was: <previous-message>. Contact <support-link>customer "
+"support</a> for further assistance."
+msgstr ""
+
+#: includes/class-exceptions.php:48
+msgid ""
+"Your license for <module-name> is valid, but is already active on another "
+"site. Contact <support-link>customer support</a> for further assistance."
 msgstr ""
 
 #: includes/class-listing-is-about-to-expire-notification.php:38
@@ -3828,6 +3941,11 @@ msgstr "znakov zostáva."
 msgctxt "ad details form"
 msgid "Item Price"
 msgstr "Cena položky"
+
+#: includes/form-fields/class-listing-regions-form-field.php:22
+msgctxt "listing form field"
+msgid "Regions"
+msgstr ""
 
 #: includes/form-fields/class-listing-website-form-field.php:20
 msgctxt "ad details form"
@@ -4079,55 +4197,87 @@ msgctxt "recaptcha-error"
 msgid "The response parameter is invalid or malformed."
 msgstr ""
 
-#: includes/helpers/class-easy-digital-downloads.php:27
+#: includes/helpers/class-easy-digital-downloads.php:38
 msgid ""
-"There was an error trying to retrieve information about your <module-name> "
-"license."
+"There was an error trying to check the license status for <module-name>."
 msgstr ""
 
-#: includes/helpers/class-easy-digital-downloads.php:65
+#: includes/helpers/class-easy-digital-downloads.php:100
 msgid "There was an error trying to activate your <module-name> license."
 msgstr ""
 
-#: includes/helpers/class-easy-digital-downloads.php:83
-msgid "<specific-message> The error was: %s. Please contact customer support."
-msgstr ""
-
-#: includes/helpers/class-easy-digital-downloads.php:93
+#: includes/helpers/class-easy-digital-downloads.php:122
 msgid "There was an error trying to deactivate your <module-name> license."
 msgstr ""
 
-#: includes/helpers/class-modules-manager.php:168
-msgid ""
-"The AWPCP <module-name> module requires a license to be used. All features "
-"will remain disabled until a valid license is entered. Please go to the "
-"<licenses-settings-link>Licenses Settings</a> section to enter or update "
-"your license."
-msgstr ""
-
-#: includes/helpers/class-modules-manager.php:178
-msgid ""
-"The license for AWPCP <module-name> module is inactive. All features will "
-"remain disabled until you activate the license. Please go to the <license-"
-"settings-link>License Settings</a> section to acivate your license."
-msgstr ""
-
-#: includes/helpers/class-modules-manager.php:186
-msgid ""
-"The license for AWPCP <module-name> module expired. The module will continue"
-" to work but you will not receive automatic updates when a new version is "
-"available."
-msgstr ""
-
-#: includes/helpers/class-modules-manager.php:193
+#: includes/helpers/class-modules-manager.php:160
 msgid ""
 "Yikes, there has been a mistake. It looks like you have an outdated version "
-"of AWPCP <module-name> module or you need a newer version of AWPCP to use "
-"that module. Please contact customer support and ask for an update. Please "
-"also include a reference to this error in your message."
+"of AWPCP <module-name>, or you need a newer version of AWPCP to use that "
+"module. Please contact customer support and ask for an update. Please also "
+"include a reference to this error in your message."
+msgid_plural ""
+"Yikes, there has been a mistake. It looks like you have an outdated version "
+"of AWPCP <modules-names>, or you need a newer version of AWPCP to use those "
+"modules. Please contact customer support and ask for an update. Please also "
+"include a reference to this error in your message."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#. translators: example: <Extra Fields, Featured Ads> and <Region Control>
+#: includes/helpers/class-modules-manager.php:194
+msgid "<comma-separated-names> and <single-name>"
 msgstr ""
 
-#: includes/helpers/class-modules-manager.php:201
+#: includes/helpers/class-modules-manager.php:215
+msgid ""
+"The license for AWPCP <module-name> is inactive. All features will remain "
+"disabled until you activate the license. Please go to the <licenses-"
+"settings-link>License Settings</a> section to activate it."
+msgid_plural ""
+"The licenses for AWPCP <modules-names> are inactive. The features for those "
+"modules will remain disabled until you activate their licenses. Please go to"
+" the <licenses-settings-link>License Settings</a> section to activate them."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: includes/helpers/class-modules-manager.php:229
+msgid ""
+"The AWPCP <module-name> requires a license to be used. All features will "
+"remain disabled until a valid license is entered. Please go to the "
+"<licenses-settings-link>Licenses Settings</a> section to enter or update "
+"your license."
+msgid_plural ""
+"The AWPCP <modules-names> require a license to be used. The features on each"
+" of those modules will remain disabled until a valid license is entered. "
+"Please go to the <licenses-settings-link>Licenses Settings</a> section to "
+"enter or update your license."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: includes/helpers/class-modules-manager.php:234
+msgid ""
+"The license for AWPCP <module-name> expired. The module will continue to "
+"work but you will not receive automatic updates when a new version is "
+"available."
+msgid_plural ""
+"The license for AWPCP <modules-names> expired. Those modules will continue "
+"to work but you will not receive automatic updates when a new version is "
+"available."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: includes/helpers/class-modules-manager.php:243
+msgid ""
+"This version of AWPCP %1$s is not compatible with AWPCP version %2$s. Please"
+" get AWPCP %1$s %3$s or newer!"
+msgstr ""
+
+#: includes/helpers/class-modules-manager.php:256
 msgid "The specified module does not exists!."
 msgstr ""
 
@@ -4953,172 +5103,188 @@ msgid "Images/Attachments"
 msgstr ""
 
 #: includes/settings/class-files-settings.php:20
+#: includes/settings/class-general-settings.php:16 installer.php:90
+msgid "General"
+msgstr "Všeobecné"
+
+#: includes/settings/class-files-settings.php:29
+msgid "Show popup if user didn't upload files"
+msgstr ""
+
+#: includes/settings/class-files-settings.php:32
+msgid ""
+"If checked, a popup warning the user about leaving the page without "
+"uploading a file, will be shown when users try to navigate away from the "
+"Upload Files step without uploading at least one image or attachment."
+msgstr ""
+
+#: includes/settings/class-files-settings.php:37
 msgid "Uploads Directory"
 msgstr ""
 
-#: includes/settings/class-files-settings.php:24
+#: includes/settings/class-files-settings.php:41
 msgid "Uploads folder name"
 msgstr "Názov adresára pre nahrávanie"
 
-#: includes/settings/class-files-settings.php:24
+#: includes/settings/class-files-settings.php:41
 msgid ""
 "Upload folder name. (Folder must exist and be located in your wp-content "
 "directory)"
 msgstr "Názov adresára nahrávanie. (Adresár musí existovať a umiestnení vo wp-content)"
 
-#: includes/settings/class-files-settings.php:25
+#: includes/settings/class-files-settings.php:42
 msgid "File permissions for uploads directory"
 msgstr "Oprávnenia súborov v adresári nahrávania"
 
-#: includes/settings/class-files-settings.php:25
+#: includes/settings/class-files-settings.php:42
 msgid ""
 "File permissions applied to the uploads directory and sub-directories so "
 "that the plugin is allowed to write to those directories."
 msgstr "Oprávnenia súborov pre adresár a podadresáre. Modul potom môže do týchto adresárov zapisovať."
 
-#: includes/settings/class-files-settings.php:29
+#: includes/settings/class-files-settings.php:46
 #: templates/components/media-manager.tpl.php:7
 msgid "Images"
 msgstr "Obrázky"
 
-#: includes/settings/class-files-settings.php:45
+#: includes/settings/class-files-settings.php:62
 msgid "Allowed image extensions"
 msgstr ""
 
-#: includes/settings/class-files-settings.php:51
+#: includes/settings/class-files-settings.php:68
 msgid "Hide images until admin approves them"
 msgstr "Schovať obrázky, kým ich administrátor neschváli"
 
-#: includes/settings/class-files-settings.php:52
+#: includes/settings/class-files-settings.php:69
 msgid "Disable AWPCP Lightbox feature"
 msgstr "Zakázať AWPCP Lightbox"
 
-#: includes/settings/class-files-settings.php:52
+#: includes/settings/class-files-settings.php:69
 msgid ""
 "Turn off the lightbox/thickbox element used by AWPCP. Some themes cannot "
 "handle it and a conflict results."
 msgstr "Vypne prvok Lightbox pre AWPCP. Niektoré témy ho nepodporujú a tvoria problémy."
 
-#: includes/settings/class-files-settings.php:53
+#: includes/settings/class-files-settings.php:70
 msgid "Show click to enlarge link?"
 msgstr "Zobraziť odkaz: Kliknutím zväčšíte obrázok?"
 
-#: includes/settings/class-files-settings.php:54
+#: includes/settings/class-files-settings.php:71
 msgid "Number of images allowed if payments are disabled (Free Mode)"
 msgstr ""
 
-#: includes/settings/class-files-settings.php:54
+#: includes/settings/class-files-settings.php:71
 msgid ""
 "If images are allowed and payments are disabled, users will be allowed "
 "upload this amount of images."
 msgstr ""
 
-#: includes/settings/class-files-settings.php:58
+#: includes/settings/class-files-settings.php:75
 msgid "Number of columns of thumbnails to show in Show Ad page."
 msgstr "Počet stĺpcov náhľadov v inzeráte."
 
-#: includes/settings/class-files-settings.php:58
+#: includes/settings/class-files-settings.php:75
 msgid "Zero means there will be as many thumbnails as possible per row."
 msgstr "Nula znamená maximálny počet náhľadov na riadok."
 
-#: includes/settings/class-files-settings.php:62
+#: includes/settings/class-files-settings.php:79
 msgid "Image File Size"
 msgstr ""
 
-#: includes/settings/class-files-settings.php:64
+#: includes/settings/class-files-settings.php:81
 msgid "Maximum file size per image"
 msgstr "Maximálna veľkosť obrázka"
 
-#: includes/settings/class-files-settings.php:64
+#: includes/settings/class-files-settings.php:81
 msgid ""
 "Maximum file size, in bytes, for files user can upload to system. 1 MB = "
 "1000000 bytes. You can google \"x MB to bytes\" to get an accurate "
 "conversion."
 msgstr ""
 
-#: includes/settings/class-files-settings.php:65
+#: includes/settings/class-files-settings.php:82
 msgid "Minimum file size per image"
 msgstr "Minimálna veľkosť obrázka"
 
-#: includes/settings/class-files-settings.php:65
+#: includes/settings/class-files-settings.php:82
 msgid ""
 "Minimum file size, in bytes, for files user can upload to system. 1 MB = "
 "1000000 bytes. You can google \"x MB to bytes\" to get an accurate "
 "conversion."
 msgstr ""
 
-#: includes/settings/class-files-settings.php:66
+#: includes/settings/class-files-settings.php:83
 msgid "Minimum image width"
 msgstr "Minimálna šírka obrázka"
 
-#: includes/settings/class-files-settings.php:66
+#: includes/settings/class-files-settings.php:83
 msgid "Minimum width for images."
 msgstr "Minimálna šírka pre všetky obrázky."
 
-#: includes/settings/class-files-settings.php:67
+#: includes/settings/class-files-settings.php:84
 msgid "Minimum image height"
 msgstr "Minimálna výška obrázka"
 
-#: includes/settings/class-files-settings.php:67
+#: includes/settings/class-files-settings.php:84
 msgid "Minimum height for images."
 msgstr "Minimálna výška pre všetky obrázky."
 
-#: includes/settings/class-files-settings.php:68
+#: includes/settings/class-files-settings.php:85
 msgid "Maximum image width"
 msgstr "Maximálna šírka obrázka"
 
-#: includes/settings/class-files-settings.php:68
+#: includes/settings/class-files-settings.php:85
 msgid ""
 "Maximum width for images. Images wider than settings are automatically "
 "resized upon upload."
 msgstr ""
 
-#: includes/settings/class-files-settings.php:69
+#: includes/settings/class-files-settings.php:86
 msgid "Maximum image height"
 msgstr "Maximálna výška obrázka"
 
-#: includes/settings/class-files-settings.php:69
+#: includes/settings/class-files-settings.php:86
 msgid ""
 "Maximum height for images. Images taller than settings are automatically "
 "resized upon upload."
 msgstr ""
 
-#: includes/settings/class-files-settings.php:73
+#: includes/settings/class-files-settings.php:90
 #: templates/components/media-manager.tpl.php:39
 msgid "Primary Image"
 msgstr ""
 
-#: includes/settings/class-files-settings.php:75
+#: includes/settings/class-files-settings.php:92
 msgid "Thumbnail width (Ad Listings page)"
 msgstr "Šírka náhľadu (stránka inzerátov)"
 
-#: includes/settings/class-files-settings.php:75
+#: includes/settings/class-files-settings.php:92
 msgid ""
 "Width of the thumbnail for the primary image shown in Ad Listings view."
 msgstr "Šírka obrázka pre primárny obrázok inzerátu. Tento obrázok je zobrazený v prehľade inzerátov."
 
-#: includes/settings/class-files-settings.php:76
+#: includes/settings/class-files-settings.php:93
 msgid "Thumbnail width (Primary Image)"
 msgstr "Šírka náhľadu (primárny obrázok)"
 
-#: includes/settings/class-files-settings.php:76
+#: includes/settings/class-files-settings.php:93
 msgid "Width of the thumbnail for the primary image shown in Single Ad view."
 msgstr "Šírka obrázka pre primárny obrázok inzerátu. Tento obrázok je zobrazený v inzeráte."
 
-#: includes/settings/class-files-settings.php:77
+#: includes/settings/class-files-settings.php:94
 msgid "Thumbnail height (Primary Image)"
 msgstr "Výška náhľadu (primárny obrázok)"
 
-#: includes/settings/class-files-settings.php:77
+#: includes/settings/class-files-settings.php:94
 msgid "Height of the thumbnail for the primary image shown in Single Ad view."
 msgstr "Výška obrázka pre primárny obrázok inzerátu. Tento obrázok je zobrazený v inzeráte."
 
-#: includes/settings/class-files-settings.php:78
+#: includes/settings/class-files-settings.php:95
 msgid "Crop primary image thumbnails?"
 msgstr "Orezať náhľad primárneho obrázka? "
 
-#: includes/settings/class-files-settings.php:78
-#: includes/settings/class-files-settings.php:86
+#: includes/settings/class-files-settings.php:95
+#: includes/settings/class-files-settings.php:103
 msgctxt "settings"
 msgid ""
 "If you decide to crop thumbnails, images will match exactly the dimensions "
@@ -5128,37 +5294,37 @@ msgid ""
 "uploaded images, thumbnails may have different heights."
 msgstr "Ak sa rozhodnete orezať náhľady, obrázky budú zodpovedať vami určením rozmerom ale môže časť obrázka chýbať. Ak sa rozhodnete obrázkom zmeniť veľkosť, obrázky budú zmenšené proporčne, budú potom mať rôznu výšku."
 
-#: includes/settings/class-files-settings.php:82
+#: includes/settings/class-files-settings.php:99
 msgid "Thumbnails"
 msgstr ""
 
-#: includes/settings/class-files-settings.php:84
+#: includes/settings/class-files-settings.php:101
 msgid "Thumbnail width"
 msgstr "Šírka náhľadu"
 
-#: includes/settings/class-files-settings.php:84
+#: includes/settings/class-files-settings.php:101
 msgid "Width of the thumbnail images."
 msgstr "Šírka náhľadu inzerátu."
 
-#: includes/settings/class-files-settings.php:85
+#: includes/settings/class-files-settings.php:102
 msgid "Thumbnail height"
 msgstr "Výška náhľadu"
 
-#: includes/settings/class-files-settings.php:85
+#: includes/settings/class-files-settings.php:102
 msgid "Height of the thumbnail images."
 msgstr "Výška náhľadu inzerátu."
 
-#: includes/settings/class-files-settings.php:86
+#: includes/settings/class-files-settings.php:103
 msgid "Crop thumbnail images?"
 msgstr "Orezať náhľady? "
 
-#: includes/settings/class-files-settings.php:90
+#: includes/settings/class-files-settings.php:107
 msgid ""
 "The primary image is the one displayed as the thumbnail in the list view and"
 " the largest one shown when the detail view of the listing is clicked."
 msgstr ""
 
-#: includes/settings/class-files-settings.php:94
+#: includes/settings/class-files-settings.php:111
 msgid ""
 "These are the remaining images that are not primary ones, if you have more "
 "than one image allowed per listing."
@@ -5232,15 +5398,25 @@ msgid ""
 "will not be persisted until you click the Continue button."
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:40
+#: includes/settings/class-form-fields-settings.php:43
+msgid "User's name format"
+msgstr ""
+
+#: includes/settings/class-form-fields-settings.php:46
+msgid ""
+"The selected format will be used to show a user's name in dropdown fields, "
+"text fields and templates."
+msgstr ""
+
+#: includes/settings/class-form-fields-settings.php:59
 msgid "Contact Fields"
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:45
+#: includes/settings/class-form-fields-settings.php:64
 msgid "Allow logged in users to overwrite Contact Name and Contact Email"
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:48
+#: includes/settings/class-form-fields-settings.php:67
 msgid ""
 "Normally registered users who are not administrators are not allowed to "
 "change the email address or contact name. The fields are rendered as read-"
@@ -5249,195 +5425,191 @@ msgid ""
 "fields."
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:53
+#: includes/settings/class-form-fields-settings.php:72
 msgid "Phone Field"
 msgstr "Telefón"
 
-#: includes/settings/class-form-fields-settings.php:55
+#: includes/settings/class-form-fields-settings.php:74
 msgid "Show Phone field"
 msgstr "Zobraziť pole telefón?"
 
-#: includes/settings/class-form-fields-settings.php:55
+#: includes/settings/class-form-fields-settings.php:74
 msgid "Show phone field?"
 msgstr "Zobraziť pole telefón?"
 
-#: includes/settings/class-form-fields-settings.php:56
+#: includes/settings/class-form-fields-settings.php:75
 msgid "Require Phone"
 msgstr "Vyžadovať telefónne číslo"
 
-#: includes/settings/class-form-fields-settings.php:56
+#: includes/settings/class-form-fields-settings.php:75
 msgid "Require phone on Place Ad and Edit Ad forms?"
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:61
+#: includes/settings/class-form-fields-settings.php:80
 msgid "Show Phone Field only to registered users"
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:64
-#: includes/settings/class-form-fields-settings.php:79
-#: includes/settings/class-form-fields-settings.php:94
+#: includes/settings/class-form-fields-settings.php:83
+#: includes/settings/class-form-fields-settings.php:98
+#: includes/settings/class-form-fields-settings.php:113
 msgid ""
 "This setting restricts viewing of this field so that only registered users "
 "that are logged in can see it."
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:69
+#: includes/settings/class-form-fields-settings.php:88
 msgid "Website Field"
 msgstr "URL adresa stráky"
 
-#: includes/settings/class-form-fields-settings.php:70
+#: includes/settings/class-form-fields-settings.php:89
 msgid "Show Website field"
 msgstr "Zobraziť pole adresy stránky"
 
-#: includes/settings/class-form-fields-settings.php:70
+#: includes/settings/class-form-fields-settings.php:89
 msgid "Show website field?"
 msgstr "Zobraziť pole adresy stránky?"
 
-#: includes/settings/class-form-fields-settings.php:71
+#: includes/settings/class-form-fields-settings.php:90
 msgid "Require Website"
 msgstr "Vyžadovať adresu stránky"
 
-#: includes/settings/class-form-fields-settings.php:71
+#: includes/settings/class-form-fields-settings.php:90
 msgid "Require website on Place Ad and Edit Ad forms?"
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:76
+#: includes/settings/class-form-fields-settings.php:95
 msgid "Show Website Field only to registered users"
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:84
+#: includes/settings/class-form-fields-settings.php:103
 msgid "Price Field"
 msgstr "Cena"
 
-#: includes/settings/class-form-fields-settings.php:85
+#: includes/settings/class-form-fields-settings.php:104
 msgid "Show Price field"
 msgstr "Zobraziť pole cena"
 
-#: includes/settings/class-form-fields-settings.php:85
+#: includes/settings/class-form-fields-settings.php:104
 msgid "Show price field?"
 msgstr "Zobraziť pole cena?"
 
-#: includes/settings/class-form-fields-settings.php:86
+#: includes/settings/class-form-fields-settings.php:105
 msgid "Require Price"
 msgstr "Vyžadovať cenu"
 
-#: includes/settings/class-form-fields-settings.php:86
+#: includes/settings/class-form-fields-settings.php:105
 msgid "Require price on Place Ad and Edit Ad forms?"
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:91
+#: includes/settings/class-form-fields-settings.php:110
 msgid "Show Price Field only to registered users"
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:97
+#: includes/settings/class-form-fields-settings.php:116
 msgid "Hide price field if empty or zero"
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:97
+#: includes/settings/class-form-fields-settings.php:116
 msgid ""
 "If checked all price placeholders will be replaced with an empty string when"
 " the price of the Ad is zero or was not set."
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:101
+#: includes/settings/class-form-fields-settings.php:120
 msgid "Country Field"
 msgstr "Pole krajiny?"
 
-#: includes/settings/class-form-fields-settings.php:102
+#: includes/settings/class-form-fields-settings.php:121
 msgid "Show Country field"
 msgstr "Zobraziť pole krajiny"
 
-#: includes/settings/class-form-fields-settings.php:102
+#: includes/settings/class-form-fields-settings.php:121
 msgid "Show country field?"
 msgstr "Zobraziť pole krajiny?"
 
-#: includes/settings/class-form-fields-settings.php:103
+#: includes/settings/class-form-fields-settings.php:122
 msgid "Require Country"
 msgstr "Vyžadovať krajinu"
 
-#: includes/settings/class-form-fields-settings.php:103
+#: includes/settings/class-form-fields-settings.php:122
 msgid "Require country on Place Ad and Edit Ad forms?"
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:107
+#: includes/settings/class-form-fields-settings.php:126
 msgid "State Field"
 msgstr "Pole štát"
 
-#: includes/settings/class-form-fields-settings.php:108
+#: includes/settings/class-form-fields-settings.php:127
 msgid "Show State field"
 msgstr "Zobraziť pole štát"
 
-#: includes/settings/class-form-fields-settings.php:108
+#: includes/settings/class-form-fields-settings.php:127
 msgid "Show state field?"
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:109
+#: includes/settings/class-form-fields-settings.php:128
 msgid "Require State"
 msgstr "Vyžadovať štát"
 
-#: includes/settings/class-form-fields-settings.php:109
+#: includes/settings/class-form-fields-settings.php:128
 msgid "Require state on Place Ad and Edit Ad forms?"
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:113
+#: includes/settings/class-form-fields-settings.php:132
 msgid "County Field"
 msgstr "Pole okres"
 
-#: includes/settings/class-form-fields-settings.php:114
+#: includes/settings/class-form-fields-settings.php:133
 msgid "Show County/Village/other"
 msgstr "Zobraziť krajinu/sídlo/iné"
 
-#: includes/settings/class-form-fields-settings.php:114
+#: includes/settings/class-form-fields-settings.php:133
 msgid "Show County/village/other?"
 msgstr "Zobraziť krajinu/sídlo/iné?"
 
-#: includes/settings/class-form-fields-settings.php:115
+#: includes/settings/class-form-fields-settings.php:134
 msgid "Require County/Village/other"
 msgstr "Vyžadovať krajinu/sídlo/iné"
 
-#: includes/settings/class-form-fields-settings.php:115
+#: includes/settings/class-form-fields-settings.php:134
 msgid "Require county/village/other on Place Ad and Edit Ad forms?"
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:119
+#: includes/settings/class-form-fields-settings.php:138
 msgid "City Field"
 msgstr "Pole mesto"
 
-#: includes/settings/class-form-fields-settings.php:120
+#: includes/settings/class-form-fields-settings.php:139
 msgid "Show City field"
 msgstr "Zobraziť pole mesto"
 
-#: includes/settings/class-form-fields-settings.php:120
+#: includes/settings/class-form-fields-settings.php:139
 msgid "Show city field?"
 msgstr "Zobraziť pole mesta?"
 
-#: includes/settings/class-form-fields-settings.php:121
+#: includes/settings/class-form-fields-settings.php:140
 msgid "Show City field before County field"
 msgstr "Zobraziť mesto pred okresom"
 
-#: includes/settings/class-form-fields-settings.php:121
+#: includes/settings/class-form-fields-settings.php:140
 msgid ""
 "If checked the city field will be shown before the county field. This "
 "setting may be overwritten if Region Control module is installed."
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:122
+#: includes/settings/class-form-fields-settings.php:141
 msgid "Require City"
 msgstr "Vyžadovať mesto"
 
-#: includes/settings/class-form-fields-settings.php:122
+#: includes/settings/class-form-fields-settings.php:141
 msgid "Require city on Place Ad and Edit Ad forms?"
 msgstr ""
 
-#: includes/settings/class-form-fields-settings.php:129
+#: includes/settings/class-form-fields-settings.php:148
 msgid ""
 "Go to the <form-fields-section> admin section to change the order in which "
 "the fields mentioned below are shown to users in the Ad Details form."
 msgstr ""
-
-#: includes/settings/class-general-settings.php:16 installer.php:90
-msgid "General"
-msgstr "Všeobecné"
 
 #: includes/settings/class-general-settings.php:20
 msgid "User Ad Management Panel"
@@ -6218,59 +6390,63 @@ msgid ""
 "An email will be sent to administrator users when a listing is flagged."
 msgstr ""
 
-#: includes/settings/class-window-title-settings.php:15
+#: includes/settings/class-window-title-settings.php:12
+msgid "Window Title"
+msgstr ""
+
+#: includes/settings/class-window-title-settings.php:21
 msgid "Window title separator"
 msgstr "Oddeľovač nadpisov okien"
 
-#: includes/settings/class-window-title-settings.php:18
+#: includes/settings/class-window-title-settings.php:24
 msgid ""
 "The character to use to separate ad details used in browser page title. "
 "Example: | / -"
 msgstr "Znak, ktorý oddeľuje podrobnosti použité v nadpise prehliadača. Príklad: | / -"
 
-#: includes/settings/class-window-title-settings.php:24
+#: includes/settings/class-window-title-settings.php:30
 msgid "Show city in window title"
 msgstr "Zobraziť mesto v nadpise"
 
-#: includes/settings/class-window-title-settings.php:27
+#: includes/settings/class-window-title-settings.php:33
 msgid "Show city in browser page title when viewing individual Ad"
 msgstr "Zobraziť mesto v nadpise pri zobrazení inzerátu"
 
-#: includes/settings/class-window-title-settings.php:33
+#: includes/settings/class-window-title-settings.php:39
 msgid "Show state in window title"
 msgstr "Zobraziť štát v nadpise"
 
-#: includes/settings/class-window-title-settings.php:36
+#: includes/settings/class-window-title-settings.php:42
 msgid "Show state in browser page title when viewing individual Ad"
 msgstr "Zobraziť štát v nadpise pri zobrazení inzerátu"
 
-#: includes/settings/class-window-title-settings.php:42
+#: includes/settings/class-window-title-settings.php:48
 msgid "Show country in window title"
 msgstr "Zobraziť krajinu v nadpise"
 
-#: includes/settings/class-window-title-settings.php:45
+#: includes/settings/class-window-title-settings.php:51
 msgid "Show country in browser page title when viewing individual Ad"
 msgstr "Zobraziť krajinu v nadpise pri zobrazení inzerátu"
 
-#: includes/settings/class-window-title-settings.php:51
+#: includes/settings/class-window-title-settings.php:57
 msgid "Show county/village/other in window title"
 msgstr "Zobraziť krajinu/sídlo/iné v nadpise"
 
-#: includes/settings/class-window-title-settings.php:54
+#: includes/settings/class-window-title-settings.php:60
 msgid ""
 "Show county/village/other setting in browser page title when viewing "
 "individual Ad"
 msgstr "Pri prehliadaní iznerátu, zobraziť krajinu/sídlo/iné v nadpise"
 
-#: includes/settings/class-window-title-settings.php:60
+#: includes/settings/class-window-title-settings.php:66
 msgid "Show category in title"
 msgstr "Zobraziť kategóriu v nadpise inzerátu?"
 
-#: includes/settings/class-window-title-settings.php:63
+#: includes/settings/class-window-title-settings.php:69
 msgid "Show category in browser page title when viewing individual Ad"
 msgstr "Zobrazí kategóriu v názve stránky pri prezeraní inzerátu."
 
-#: includes/settings/class-window-title-settings.php:68
+#: includes/settings/class-window-title-settings.php:74
 msgctxt "window title settings section"
 msgid ""
 "These settings affect the title shown in the title bar of the browser for "
@@ -6508,6 +6684,10 @@ msgid ""
 "formatted as \\$somecodetitle. Changing the code keys will prevent the "
 "elements they represent from displaying."
 msgstr "Upravte rozloženie stránky inzerátu podľa vašej potreby. Kód nechajte formátovaný ako \\$somecodetitle. Zmena kódu zabráni elementom v zobrazení."
+
+#: includes/settings-api.php:141
+msgid "Allow WordPress Shortcodes in Single Ad page layout"
+msgstr ""
 
 #: includes/settings-api.php:144
 msgid ""
@@ -7097,123 +7277,135 @@ msgid ""
 "Please note that disabled Ads cannot be posted to Facebook."
 msgstr ""
 
-#: includes/settings-api.php:558
+#: includes/settings-api.php:563
 msgid "<module-name> License Key"
 msgstr ""
 
-#: includes/settings-api.php:567
+#: includes/settings-api.php:572
 msgid "Licenses"
 msgstr "Licencie"
 
-#: includes/settings-api.php:707
+#: includes/settings-api.php:712
 msgid ""
 "Require Registration setting was enabled automatically because you activated"
 " the User Ad Management panel."
 msgstr "Vyžadovanie registrácie bolo automaticky zapnuté, aktivovali ste používateľský panel inzerátov, ktorý ju vyžaduje."
 
-#: includes/settings-api.php:724
+#: includes/settings-api.php:729
 msgid ""
 "Akismet SPAM control cannot be enabled because Akismet plugin is not "
 "installed or activated."
 msgstr ""
 
-#: includes/settings-api.php:728
+#: includes/settings-api.php:733
 msgid ""
 "Akismet SPAM control cannot be enabled because Akismet is not properly "
 "configured."
 msgstr ""
 
-#: includes/settings-api.php:751
+#: includes/settings-api.php:756
 msgid ""
 "reCAPTCHA can't be used because the public key and private key settings are "
 "required for reCAPTCHA to work properly."
 msgstr "reCAPTCHA nemôže byť použitá pretože pre správnu funkčnosť vyžaduje nastavenie verejného a súkromného kľúča."
 
-#: includes/settings-api.php:753
+#: includes/settings-api.php:758
 msgid ""
 "reCAPTCHA can't be used because the public key setting is required for "
 "reCAPTCHA to work properly."
 msgstr "reCAPTCHA nemôže byť použitá pretože pre správnu funkčnosť vyžaduje nastavenie verejného kľúča."
 
-#: includes/settings-api.php:755
+#: includes/settings-api.php:760
 msgid ""
 "reCAPTCHA can't be used because the private key setting is required for "
 "reCAPTCHA to work properly."
 msgstr "reCAPTCHA nemôže byť použitá pretože pre správnu funkčnosť vyžaduje nastavenie súkromného kľúča."
 
-#: includes/settings-api.php:768
+#: includes/settings-api.php:773
 msgid ""
 "User Ad Management panel was automatically deactivated because you disabled "
 "Require Registration setting."
 msgstr "Vyžadovanie registrácie bolo automaticky vypnuté, vypli ste nastavenie vyžadovania registrácie."
 
-#: includes/settings-api.php:773
+#: includes/settings-api.php:778
 msgid ""
 "Credit System was automatically disabled because you disabled Require "
 "Registration setting."
 msgstr "Systém kreditov bol vypnutý, pretože ste vypli vyžadovanie registrácie."
 
-#: includes/settings-api.php:789
+#: includes/settings-api.php:794
 msgid ""
 "There is a problem with the PayPal Currency Code you have entered. It does "
 "not match any of the codes in our list of curencies supported by PayPal."
 msgstr ""
 
-#: includes/settings-api.php:790
+#: includes/settings-api.php:795
 msgid "The available currency codes are"
 msgstr "Dostupné kódy mien sú"
 
-#: includes/settings-api.php:799
+#: includes/settings-api.php:804
 msgid ""
 "Require Registration setting was enabled automatically because you activated"
 " the Credit System."
 msgstr "Vyžadovanie registrácie bolo automaticky zapnuté, aktivovali ste systém kreditov, ktorý ju vyžaduje."
 
-#: includes/settings-api.php:804
+#: includes/settings-api.php:809
 msgid ""
 "Charge Listing Fee setting was enabled automatically because you activated "
 "the Credit System."
 msgstr "Spoplatnenie inzerátov bolo automaticky zapnuté, aktivovali ste systém kreditov, ktorý ho vyžaduje."
 
-#: includes/settings-api.php:810
+#: includes/settings-api.php:815
 msgid ""
 "Credit System was disabled automatically because you disabled Charge Listing"
 " Fee."
 msgstr "Systém kreditov bol vypnutý, pretože ste vypli spoplatnenie inzerátov."
 
-#: includes/settings-api.php:1042
-msgid "Deactivate License"
-msgstr "Deaktivovať licenciu"
+#: includes/settings-api.php:1047
+msgid "Deactivate"
+msgstr "Deaktivovať"
 
-#: includes/settings-api.php:1043
+#: includes/settings-api.php:1048
 msgid "active"
 msgstr ""
 
-#: includes/settings-api.php:1045
-msgid "Activate License"
+#: includes/settings-api.php:1048 includes/settings-api.php:1051
+#: includes/settings-api.php:1061 includes/settings-api.php:1063
+#: includes/settings-api.php:1065
+msgid "Status: <license-status>"
 msgstr ""
 
-#: includes/settings-api.php:1046
+#: includes/settings-api.php:1050 includes/settings-api.php:1053
+msgid "Activate"
+msgstr "Aktivovať"
+
+#: includes/settings-api.php:1051
 msgid "inactive"
 msgstr ""
 
-#: includes/settings-api.php:1048
-msgid "Check License"
+#: includes/settings-api.php:1056
+msgid ""
+"Click the button above to check the status of your license. Please <contact-"
+"link>contact customer support</a> if you think the reported status is wrong."
 msgstr ""
 
-#: includes/settings-api.php:1049
+#: includes/settings-api.php:1061
 msgid "expired"
 msgstr ""
 
-#: includes/settings-api.php:1051
-msgid "invalid"
+#: includes/settings-api.php:1063
+msgid "disabled"
 msgstr ""
 
-#: includes/settings-api.php:1066
+#: includes/settings-api.php:1065
+msgid "unknown"
+msgstr ""
+
+#: includes/settings-api.php:1081
 msgid "Documentation on date and time formatting"
 msgstr "Dokumentácia k formátovaniu času a dátumu"
 
-#: includes/settings-api.php:1087
+#: includes/settings-api.php:1102
 msgid "Setting <setting-name> not available."
 msgstr ""
 
@@ -7281,6 +7473,13 @@ msgstr ""
 msgid "No Ads were selected"
 msgstr ""
 
+#: includes/views/admin/listings/class-renew-listings-admin-page.php:70
+msgid "%d Ad was renewed"
+msgid_plural "%d Ads were renewed"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
 #: includes/views/admin/listings/class-renew-listings-admin-page.php:72
 msgid "there was an error trying to renew %d Ads"
 msgstr "nastala chyba pri pokuse o obnovenie %s inzerátov"
@@ -7310,9 +7509,23 @@ msgid ""
 "link in step 2 of the settings."
 msgstr ""
 
+#: includes/views/admin/listings/class-send-listing-to-facebook-admin-page.php:98
+msgid "%d Ad was sent to a Facebook Page"
+msgid_plural "%d Ads were sent to a Facebook Page"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
 #: includes/views/admin/listings/class-send-listing-to-facebook-admin-page.php:100
 msgid "there was an error trying to send %d Ads to a Facebook Page"
 msgstr ""
+
+#: includes/views/admin/listings/class-send-listing-to-facebook-admin-page.php:106
+msgid "%d Ad was sent to a Facebook Group"
+msgid_plural "%d Ads were sent to a Facebook Group"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: includes/views/admin/listings/class-send-listing-to-facebook-admin-page.php:108
 msgid "there was an error trying to send %d Ads to a Facebook Group"

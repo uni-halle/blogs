@@ -38,12 +38,14 @@
     'wms_attr_url' => 'wms_attr_url',
     'tagged_type' => 'no',
     'tagged_filter' => 'osm_all',
+    'tagged_param' => 'no',
+    'tagged_color' => 'blue',
     'mwz' => 'false',
     'debug_trc' => 'false',
     'display_marker_name' => 'false'
     ), $atts));
 
-    $sc_args = new cOsm_arguments($width,  $height,  $map_center,  $zoom,  $file_list,  $file_color_list, $type, $jsname, $marker_latlon, $map_border, $marker_name, $marker_size, $control, $wms_address, $wms_param, $wms_attr_name, $wms_type, $wms_attr_url, $tagged_type, $tagged_filter, $mwz,$post_markers, $display_marker_name); 
+    $sc_args = new cOsm_arguments($width,  $height,  $map_center,  $zoom,  $file_list,  $file_color_list, $type, $jsname, $marker_latlon, $map_border, $marker_name, $marker_size, $control, $wms_address, $wms_param, $wms_attr_name, $wms_type, $wms_attr_url, $tagged_type, $tagged_filter, $mwz,$post_markers, $display_marker_name, $tagged_param, $tagged_color); 
  
     $lat = $sc_args->getMapCenterLat();
     $lon = $sc_args->getMapCenterLon();
@@ -80,7 +82,7 @@ if (($mwz != "true") && ($mwz != "false")){
     $MapName = 'map_ol3js_'.$MapCounter;
 
     $output = '
-        <div id="'.$MapName.'" class="OSM_Map_v3" style="width:'.$width_str.'; height:'.$height_str.'; overflow:hidden;border:'.$map_border.';">
+        <div id="'.$MapName.'" class="map" style="width:'.$width_str.'; height:'.$height_str.'; overflow:hidden;border:'.$map_border.';">
           <div id="'.$MapName.'_popup" class="ol-popup" >
             <a href="#" id="'.$MapName.'_popup-closer" class="ol-popup-closer"></a>
             <div id="'.$MapName.'_popup-content"></div>
@@ -161,12 +163,12 @@ $output .= '
       $FileColorListArray = explode( ',', $file_color_list);
       Osm::traceText(DEBUG_INFO, "(NumOfFiles: ".sizeof($FileListArray)." NumOfColours: ".sizeof($FileColorListArray).")!");
       if (($FileColorListArray[0] != "NoColor") && (sizeof($FileColorListArray) != sizeof($FileListArray))){
-        Osm::traceText(DEBUG_ERROR, "e_gpx_list_error");
+         Osm::traceText(DEBUG_ERROR, __('file_color_list does not match to file_list!','OSM-plugin'));
       }
       else{
         for($x=0;$x<sizeof($FileListArray);$x++){
-          $temp = explode(".",$FileListArray[$x]);
-	      $FileType = strtolower($temp[(count($temp)-1)]);
+          $FileName = explode(".",$FileListArray[$x]);
+	      $FileType = strtolower($FileName[(count($FileName)-1)]);
 	      if (($FileType == "gpx")||($FileType == "kml")){
             $showMarkerName = "false";
             if ($FileType == "kml"){
@@ -181,14 +183,102 @@ $output .= '
             else if ($Color == "black"){$gpx_marker_name = "mic_black_pinother_02.png";}
             $output .= Osm_OLJS3::addVectorLayer($MapName, $FileListArray[$x], $Color, $FileType, $x, $gpx_marker_name, $showMarkerName);
           }
-          else {
-            Osm::traceText(DEBUG_ERROR, "e_gpx_type_error");
+          else {        
+             Osm::traceText(DEBUG_ERROR, (sprintf(__('%s hast got wrong file extension (gpx, kml)!'), $FileName)));
           }
         }
         //$output .= 'osm_addPopupClickhandler('.$MapName.',  "'.$MapName.'"); ';
 	  }
     } // $file_list != "NoFile"
-  if (($tagged_type == "post") || ($tagged_type == "page") || ($tagged_type == "any")){
+  if ((($tagged_type == "post") || ($tagged_type == "page") || ($tagged_type == "any")) && ($tagged_param == "cluster")){
+    $tagged_icon = new cOsm_icon($default_icon->getIconName());
+    
+    $MarkerArray = OSM::OL3_createMarkerList('osm_l', $tagged_filter, 'Osm_None', $tagged_type, 'Osm_All', 'none');
+
+    $NumOfMarker = count($MarkerArray);
+    $Counter = 0;
+    $output .= '
+      var vectorMarkerSource = new ol.source.Vector({});
+      
+      ';
+          foreach( $MarkerArray as $Marker ) {
+
+       $MarkerText = addslashes($MarkerArray[$Counter]['text']);
+
+     $output .= '
+        var iconFeature'.$Counter.' = new ol.Feature({
+          geometry: new ol.geom.Point(
+	      ol.proj.transform(['.$MarkerArray[$Counter]['lon'].','.$MarkerArray[$Counter]['lat'].'], "EPSG:4326", "EPSG:3857")),
+          name: "'.$MarkerText.'"
+        });
+        vectorMarkerSource.addFeature(iconFeature'.$Counter.');
+       ';
+       $Counter = $Counter +1;
+    } // foreach(MarkerArray)
+      
+          $taggedborderColor = $sc_args->getTaggedBorderColor();
+          $taggedinnerColor = $sc_args->getTaggedInnerColor();
+          $output .= '
+
+      var clusterSource = new ol.source.Cluster({
+          distance: 30,
+          source: vectorMarkerSource
+       });
+       var styleCache = {};
+	  var vectorMarkerLayer = new ol.layer.Vector({
+        source: clusterSource,
+        style: function(feature, resolution) {
+    var size = feature.get("features").length;
+    var features = feature.get("features");
+    
+    if (size > 1){
+    var style = styleCache[size];
+    if (!style) {
+      style = [new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 12,
+          stroke: new ol.style.Stroke({
+            color: '.$taggedborderColor.',
+            width: 6,
+          }),
+          fill: new ol.style.Fill({
+            color: '.$taggedinnerColor.'
+          })
+        }),
+        text: new ol.style.Text({
+          text: size.toString(),
+          fill: new ol.style.Fill({
+            color: "#fff"
+          })
+        })
+      })];
+      styleCache[size] = style;
+    }
+    return style;
+    } 
+    else {
+          var style = styleCache[size];
+    if (!style) {
+      style = [new ol.style.Style({
+        image: new ol.style.Icon(({
+		    anchor: [('.$tagged_icon->getIconOffsetwidth().'*-1),('.$tagged_icon->getIconOffsetheight().'*-1)],
+		    anchorXUnits: "pixels",
+		    anchorYUnits: "pixels",
+		    opacity: 0.9,
+		    src: "'.$tagged_icon->getIconURL().'"}))
+      })];
+      styleCache[size] = style;
+    }
+    return style;  
+    }
+  }
+       });
+    ';
+    $output .= $MapName.'.addLayer(vectorMarkerLayer);';
+   }
+
+
+if ((($tagged_type == "post") || ($tagged_type == "page") || ($tagged_type == "any")) && ($tagged_param != "cluster")){
     $tagged_icon = new cOsm_icon($default_icon->getIconName());
     
     $MarkerArray = OSM::OL3_createMarkerList('osm_l', $tagged_filter, 'Osm_None', $tagged_type, 'Osm_All', 'none');
@@ -235,6 +325,7 @@ $output .= '
     $output .= $MapName.'.addLayer(vectorMarkerLayer);';
 
    }
+
 
    $temp_popup = '';
    
@@ -316,7 +407,7 @@ if (strtolower($postmarkers) != 'no'){
                     undefinedHTML: "outside",
                     projection: "EPSG:4326",
                     coordinateFormat: function(coordinate) {
-                        return ol.coordinate.format(coordinate, "{x}, {y}", 4);
+                        return ol.coordinate.format(coordinate, "{y}, {x}", 4);
                     }
                 }),
                 new ol.control.OverviewMap({
@@ -340,7 +431,12 @@ if (strtolower($postmarkers) != 'no'){
             if ($sc_args->issetMouseposition()){
               $output .= $MapName.'.addControl(osm_controls[1]);';
             }           
+  if ($tagged_param == "cluster"){
+          $output .= 'osm_addClusterPopupClickhandler('.$MapName.',  "'.$MapName.'"); ';
+  }
+  else{
     $output .= 'osm_addPopupClickhandler('.$MapName.',  "'.$MapName.'"); ';
+}
     $output .= '})(jQuery)';
     $output .= '/* ]]> */';
     $output .= ' </script>';

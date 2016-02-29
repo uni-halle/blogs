@@ -5,7 +5,7 @@
 	<?php include(AWPCP_DIR . '/admin/templates/admin-panel-header.tpl.php') ?>
 <?php endif ?>
 
-		<?php echo awpcp_html_admin_second_level_heading( array( 'content' => __( 'Are you seeng 404 Not Found errors?', 'another-wordpress-classifieds-plugin' ) ) ); ?>
+		<?php echo awpcp_html_admin_second_level_heading( array( 'content' => __( 'Are you seeing 404 Not Found errors?', 'another-wordpress-classifieds-plugin' ) ) ); ?>
 
 		<?php $message = __( "If you are seeing multiple 404 Not Found errors in your website, it is possible that some Rewrite Rules are missing or corrupted. Please click the button bellow to navigate to the <permalinks-settings-link>Permalinks Settings</a> page. Opening that page in your browser will flush the Rewrite Rules in your site. WordPress will then ask all installed and active plugins to register their rules and those 404 Not Found errors should be gone. If that's not the case, please contact <support-link>customer support</a>.", 'another-wordpress-classifieds-plugin' ); ?>
 		<?php $message = str_replace( '<support-link>', '<a href="http://awpcp.com/contact/">', $message ); ?>

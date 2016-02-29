@@ -89,24 +89,22 @@
       $map_spec_zoom_level_max = ZOOM_LEVEL_GOOGLE_MAX;
     }
     if (($zoom < ZOOM_LEVEL_MIN || $zoom > $map_spec_zoom_level_max) && ($zoom != 'auto')){
-      Osm::traceText(DEBUG_ERROR, "e_zoomlevel_range");
-      Osm::traceText(DEBUG_INFO, "Error: (Zoomlevel: ".$zoom.")!");
+      Osm::traceText(DEBUG_ERROR, (sprintf(__(' zoom =  %s is out of range!'), $zoom)));
       $zoom = 0;   
     }
 
     $pos = strpos($width, "%");
     if ($pos == false) {
       if ($width < 1){
-        Osm::traceText(DEBUG_ERROR, "e_map_size");
-        Osm::traceText(DEBUG_INFO, "Error: ($width: ".$width.")!");
+        Osm::traceText(DEBUG_ERROR, (sprintf(__(' width =  %s is out of range [pix]!'), $width)));
         $width = 450;
       }
       $width_str = $width."px"; // make it 30px
-    } else {// it's 30%
+    } 
+    else {// it's 30%
       $width_perc = substr($width, 0, $pos ); // make it 30 
       if (($width_perc < 1) || ($width_perc >100)){
-        Osm::traceText(DEBUG_ERROR, "e_map_size");
-        Osm::traceText(DEBUG_INFO, "Error: ($width: ".$width.")!");
+        Osm::traceText(DEBUG_ERROR, (sprintf(__(' width =  %s is out of range [perc]!'), $width)));
         $width = "100%";
       }
       $width_str = substr($width, 0, $pos+1 ); // make it 30% 
@@ -115,16 +113,14 @@
     $pos = strpos($height, "%");
     if ($pos == false) {
       if ($height < 1){
-        Osm::traceText(DEBUG_ERROR, "e_map_size");
-        Osm::traceText(DEBUG_INFO, "Error: ($height: ".$height.")!");
+        Osm::traceText(DEBUG_ERROR, (sprintf(__(' height =  %s is out of range [pix]!'), $height)));
         $height = 300;
       }
       $height_str = $height."px"; // make it 30px
     } else {// it's 30%
       $height_perc = substr($height, 0, $pos ); // make it 30 
       if (($height_perc < 1) || ($height_perc >100)){
-        Osm::traceText(DEBUG_ERROR, "e_map_size");
-        Osm::traceText(DEBUG_INFO, "Error: ($height: ".$height.")!");
+        Osm::traceText(DEBUG_ERROR, (sprintf(__(' height =  %s is out of range [perc]!'), $height)));
         $height = "100%";
       }
       $height_str = substr($height, 0, $pos+1 ); // make it 30% 
@@ -178,7 +174,7 @@
         $Icon["offset_width"] = round(-$marker_width/2);
       }
       if ($Icon["height"] == 0 || $Icon["width"] == 0){
-        Osm::traceText(DEBUG_ERROR, "e_marker_size"); //<= ToDo
+        Osm::traceText(DEBUG_WARNING, "e_marker_size"); //<= ToDo
         $Icon["height"] = 24;
         $Icon["width"]  = 24;
       }
@@ -317,7 +313,7 @@ box-shadow: none;}';
         }
       }
       else {
-        Osm::traceText(DEBUG_ERROR, "e_gpx_list_error");
+         Osm::traceText(DEBUG_ERROR, __('gpx_colour_list does not match to gpx_file_list!','OSM-plugin'));
       }
     }
     

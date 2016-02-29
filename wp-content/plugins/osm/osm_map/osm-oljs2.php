@@ -496,7 +496,7 @@ class Osm_OpenLayers
       }
 
       if (document.post.osm_file_border.value != "none"){
-        BorderField = " map_border=\"thin solid "  + document.post.osm_marker_border.value+ "\"";
+        BorderField = " map_border=\"thin solid "  + document.post.osm_file_border.value+ "\"";
      }
   
       if (document.post.file_fullscreen.checked){
@@ -613,6 +613,9 @@ class Osm_OpenLayers
       Linefield = "";
       PostTypeField ="";
       var CatFilterField = "";
+      var MapBorderField = "";
+      var MarkerStyleField = "";
+      var StyleColorField = "";
       
       var dropdown = document.getElementById("cat");
 
@@ -630,7 +633,19 @@ class Osm_OpenLayers
       if (document.post.osm_geotag_marker.value != "none"){
         MarkerField = " marker_name=\"" + MarkerName + "\"";  
       }
-      GenTxt = "[osm_map_v3 map_center=\"" + Centerlonlat.lat + "," + Centerlonlat.lon + "\" zoom=\"" + zoom + "\" width=\"100%\" height=\"450\" " + PostTypeField + MarkerField + MapTypeField + CatFilterField + "]"; 
+  
+        if (document.post.osm_geotag_map_border.value != "none"){
+          MapBorderField = " map_border=\"thin solid "  + document.post.osm_geotag_map_border.value+ "\"";
+        }
+        if (document.post.osm_geotag_marker_style.value != "standard"){
+          MarkerStyleField = " tagged_param=\""  + document.post.osm_geotag_marker_style.value+ "\"";
+    }
+      if (document.post.osm_geotag_marker_color.value != "none"){
+          StyleColorField = " tagged_color=\""  + document.post.osm_geotag_marker_color.value+ "\"";
+    }
+    
+  
+      GenTxt = "[osm_map_v3 map_center=\"" + Centerlonlat.lat + "," + Centerlonlat.lon + "\" zoom=\"" + zoom + "\" width=\"100%\" height=\"450\" " + PostTypeField + MarkerField + MapTypeField + CatFilterField + MapBorderField + MarkerStyleField + StyleColorField + "]"; 
 
       div = document.getElementById("ShortCode_Div");
       div.innerHTML = GenTxt;

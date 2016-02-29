@@ -116,6 +116,7 @@ class cOsm_icon
  } 
 
 private function setIconsize($a_IconName, $a_IconHeight = -1, $a_IconWidth = -1, $a_IconFocus = -1){
+   Osm::traceText(DEBUG_INFO, "Name: ". $a_IconName." Height: ".$a_IconHeight."Width: ".$a_IconWidth." Focus: ".$a_IconFocus);
    if ($this->isOsmIcon($a_IconName)){
    if (!strncmp($a_IconName, 'mic_', 4)){
      $this->icon_height = 41;
@@ -222,8 +223,9 @@ private function setIconsize($a_IconName, $a_IconHeight = -1, $a_IconWidth = -1,
     }
 }
 //Osm::traceText(DEBUG_ERROR, "height: ". $a_IconHeight);
+//Osm::traceText(DEBUG_ERROR, "width: ". $a_IconWidth);
 //Osm::traceText(DEBUG_ERROR, "height: ". $this->icon_offset_height);
-//Osm::traceText(DEBUG_ERROR, "height: ". $this->icon_offset_width);
+//Osm::traceText(DEBUG_ERROR, "width: ". $this->icon_offset_width);
 }
 
   public function setIcon($a_IconName = 'mic_blue_pinother_02.png', $a_IconHeight = -1, $a_IconWidth = -1, $a_IconFocus = -1)

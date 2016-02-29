@@ -4,7 +4,7 @@
  * @since 3.6
  */
 function awpcp_rewrite_rules_helper() {
-    return new AWPCP_Rewrite_Rules_Helper(_Helper);
+    return new AWPCP_Rewrite_Rules_Helper();
 }
 
 /**

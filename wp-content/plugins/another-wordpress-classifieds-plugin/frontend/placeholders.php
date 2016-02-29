@@ -220,28 +220,37 @@ function awpcp_content_placeholders() {
  * @since 3.0
  */
 function awpcp_do_placeholders($ad, $content, $context) {
-    $original_content = $content;
+    $placeholders = awpcp_content_placeholders();
+    $placeholders_names = array_keys($placeholders);
 
+    return awpcp_replace_placeholders( $placeholders_names, $ad, $content, $context );
+}
+
+/**
+ * @since 3.6.4
+ */
+function awpcp_replace_placeholders( $placeholders, $listing, $content, $context ) {
+    $original_content = $content;
     // remove old $quers/ placeholders
     $content = str_replace('$quers/', '', $content);
 
-    $placeholders = awpcp_content_placeholders();
-    $placeholders_names = array_keys($placeholders);
-    $pattern = sprintf('\$%s', join('|\$', array_map('preg_quote', $placeholders_names)));
+    $pattern = sprintf('\$%s', join('|\$', array_map('preg_quote', $placeholders)));
 
     preg_match_all("/$pattern/s", $content, $matches);
 
-    $processed = array();
+    $available_placeholders = awpcp_content_placeholders();
+    $processed_placeholders = array();
+
     foreach ($matches[0] as $match) {
-        if (isset($processed[$match])) continue;
+        if (isset($processed_placeholders[$match])) continue;
 
         $placeholder = trim($match, '$');
-        $callback = $placeholders[$placeholder]['callback'];
+        $callback = $available_placeholders[$placeholder]['callback'];
 
         if ( is_callable( $callback ) ) {
-            $replacement = call_user_func($callback, $ad, $placeholder, $context);
+            $replacement = call_user_func($callback, $listing, $placeholder, $context);
             $content = str_replace($match, $replacement, $content);
-            $processed[$match] = true;
+            $processed_placeholders[$match] = true;
         } else {
         }
     }

@@ -119,7 +119,7 @@ AWPCP.run('awpcp/page-place-ads', [
             };
 
             passed = {
-                name: data.display_name,
+                name: data.public_name,
                 email: data.user_email,
                 website: data.user_url,
                 phone: data.phone,

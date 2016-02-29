@@ -1,17 +1,18 @@
-# Copyright (C) 2015
+# Copyright (C) 2016
 # This file is distributed under the same license as the  package.
 # Translators:
 # GREEN301086 <GREEN301086@mail.ru>, 2014
 # GREEN301086 <GREEN301086@mail.ru>, 2014
 # Hartamon <hartamon1@gmail.com>, 2015
 # Pavel Golub <pavlo.golub@gmail.com>, 2015
+# Victor Bychek, 2015
 # Willington Vega <wvega@wvega.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Another WordPress Classifieds Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/another-wordpress-classifieds-plugin\n"
-"POT-Creation-Date: 2015-12-28 17:55:52+00:00\n"
-"PO-Revision-Date: 2015-12-28 17:57+0000\n"
+"POT-Creation-Date: 2016-01-14 17:52:15+00:00\n"
+"PO-Revision-Date: 2016-01-14 17:55+0000\n"
 "Last-Translator: Willington Vega <wvega@wvega.com>\n"
 "Language-Team: Russian (Russia) (http://www.transifex.com/wp-translations/another-wordpress-classifieds-plugin/language/ru_RU/)\n"
 "MIME-Version: 1.0\n"
@@ -221,7 +222,7 @@ msgstr "Управление объявлениями"
 
 #: admin/admin-panel-listings-place-ad-page.php:15
 #: admin/templates/admin-panel-listings.tpl.php:5
-#: frontend/page-place-ad.php:1191
+#: frontend/page-place-ad.php:1192
 msgid "Place Ad"
 msgstr "Разместить объявление"
 
@@ -741,6 +742,10 @@ msgstr "Импорт объявления"
 msgid "Import"
 msgstr "Импорт"
 
+#: admin/admin-panel.php:302 admin/templates/admin-panel-debug.tpl.php:3
+msgid "Debug"
+msgstr "Отладка"
+
 #: admin/admin-panel.php:472 admin/admin-panel.php:473
 #: admin/admin-panel.php:801
 msgid "Manage Category Icon"
@@ -935,7 +940,7 @@ msgid "The categories have been deleted"
 msgstr "Категории были удалены"
 
 #: admin/form-fields/class-form-fields-admin-page.php:6
-#: includes/settings/class-form-fields-settings.php:127
+#: includes/settings/class-form-fields-settings.php:146
 msgid "Form Fields"
 msgstr "Поля форм"
 
@@ -1178,10 +1183,6 @@ msgstr "Любое значение, отличное от 'использова
 msgid "Test Import"
 msgstr "Тестовый Импорт"
 
-#: admin/templates/admin-panel-debug.tpl.php:3
-msgid "Debug"
-msgstr "Отладка"
-
 #: admin/templates/admin-panel-debug.tpl.php:8
 msgid "Are you seeng 404 Not Found errors?"
 msgstr ""
@@ -1204,7 +1205,7 @@ msgstr ""
 
 #: admin/templates/admin-panel-debug.tpl.php:17
 msgid "Debug Information"
-msgstr ""
+msgstr "Отладочная информация"
 
 #: admin/templates/admin-panel-debug.tpl.php:19
 msgctxt "debug page"
@@ -1561,6 +1562,12 @@ msgstr "Эта конфигурация позволяет размещать о
 #: admin/templates/admin-panel-settings-facebook-settings.tpl.php:22
 msgid "Diagnostics"
 msgstr "Диагностика"
+
+#: admin/templates/admin-panel-settings-facebook-settings.tpl.php:21
+msgid ""
+"If you are having trouble with Facebook integration, click \"Diagnostics\" "
+"to check your settings."
+msgstr ""
 
 #: admin/templates/admin-panel-settings-facebook-settings.tpl.php:41
 msgid "1. Application Information"
@@ -2029,9 +2036,9 @@ msgstr "Панель управления - Объявления - Размес�
 msgid "AWPCP Ad Management Panel - Listings - Renew Ad"
 msgstr "Панель управления - Объявления - Обновить объявление"
 
-#: admin/user-panel-listings.php:13
-msgid "AWPCP Ad Management Panel - Listings"
-msgstr "Панель управления - Объявления"
+#: admin/user-panel-listings.php:15
+msgid "<blog-name> User Ad Management Panel - Listings"
+msgstr ""
 
 #: admin/user-panel.php:44
 msgid "%s Ad Management Panel"
@@ -2249,13 +2256,13 @@ msgstr "Управление Вложениями"
 msgid "Go to the %s section to manage the Images and Attachments for this Ad."
 msgstr "Перейдите в раздел %s для управления Изображениями и Вложениями этого Объявления."
 
-#: frontend/page-edit-ad.php:274 frontend/page-place-ad.php:1073
+#: frontend/page-edit-ad.php:274 frontend/page-place-ad.php:1074
 msgid ""
 "There was an unexpected error trying to save your Ad details. Please try "
 "again or contact an administrator."
 msgstr "Произошла непредвиденная ошибка при попытке сохранить детали объявления. Пожалуйста, попробуйте снова или обратитесь к администратору."
 
-#: frontend/page-edit-ad.php:296 frontend/page-place-ad.php:1135
+#: frontend/page-edit-ad.php:296 frontend/page-place-ad.php:1136
 msgid "The specified Ad doesn't exists. No images can be added at this time."
 msgstr "Указанное объявление не существует. На данный момент нет изображений которые могут быть добавлены."
 
@@ -2406,7 +2413,7 @@ msgid ""
 " the form below to login or click the link to register."
 msgstr "Привет, Вы должны быть зарегистрированным пользователем, чтобы добавлять объявления на этом сайте. Пожалуйста, воспользуйтесь формой ниже для входа или нажмите на ссылку, чтобы зарегистрироваться."
 
-#: frontend/page-place-ad.php:359 frontend/page-place-ad.php:694
+#: frontend/page-place-ad.php:359 frontend/page-place-ad.php:695
 #: frontend/page-renew-ad.php:226
 msgid ""
 "You are logged in as an administrator. Any payment steps will be skipped."
@@ -2420,160 +2427,160 @@ msgid ""
 "%s"
 msgstr "В данный момент мы не можем обработать платеж для этого Транзакции. Пожалуйста, обратитесь к администратору сайта и предоставьте следующий ID транзакции: %s"
 
-#: frontend/page-place-ad.php:692
+#: frontend/page-place-ad.php:693
 msgid ""
 "Your Ad details have been filled out in the form below. Make any changes "
 "needed and then resubmit the Ad to update it."
 msgstr "Детали вашего объявления были заполнены из формы ниже. Внесите необходимые изменения, а затем подтвердите их, чтобы обновить объявление."
 
-#: frontend/page-place-ad.php:696
+#: frontend/page-place-ad.php:697
 msgid "Fill out the form below to post your classified Ad."
 msgstr "Заполните форму ниже, чтобы разместить ваше объявление."
 
-#: frontend/page-place-ad.php:700
+#: frontend/page-place-ad.php:701
 msgid ""
 "We found errors in the details you submitted. A detailed error message is "
 "shown in front or below each invalid field. Please fix the errors and submit"
 " the form again."
 msgstr "Мы нашли ошибки в данных, которые вы представили. Подробное сообщение об ошибке отображается возле каждого некорректного поля ввода. Пожалуйста, исправьте ошибки и отправьте форму снова."
 
-#: frontend/page-place-ad.php:789
+#: frontend/page-place-ad.php:790
 msgid ""
 "Hi, Payment is required for posting Ads in this website and we couldn't find"
 " a Payment Transaction assigned to you. You can't post Ads this time. If you"
 " think this is an error please contact the website Administrator."
 msgstr "Привет, для размещения объявлений на этом сайте необходима оплата, а мы не смогли найти платеж сделанный вами. Чтобы исправить эту досадную ошибку, пожалуйста, свяжитесь с администратором сайта."
 
-#: frontend/page-place-ad.php:816
+#: frontend/page-place-ad.php:817
 msgid ""
 "You did not select a Payment Term. Please select a Payment Term for this Ad."
 msgstr "Вы не выбрали срок оплаты. Пожалуйста, выберите срок оплаты данного объявления."
 
-#: frontend/page-place-ad.php:821
+#: frontend/page-place-ad.php:822
 msgid "Please enter a start date for the Ad."
 msgstr "Пожалуйста, введите дату начала объявления."
 
-#: frontend/page-place-ad.php:826
+#: frontend/page-place-ad.php:827
 msgid "Please enter an end date for the Ad."
 msgstr "Пожалуйста, введите дату окончания объявления."
 
-#: frontend/page-place-ad.php:830
+#: frontend/page-place-ad.php:831
 msgid "The start date must occur before the end date."
 msgstr "Дата начала должна быть раньше даты окончания."
 
-#: frontend/page-place-ad.php:835
+#: frontend/page-place-ad.php:836
 msgid "You did not enter a title for your Ad"
 msgstr "Вы не ввели заголовок вашего объявления"
 
-#: frontend/page-place-ad.php:840
+#: frontend/page-place-ad.php:841
 msgid ""
 "You did not enter any text for your Ad. Please enter some text for your Ad."
 msgstr "Вы не ввели текст вашего объявления. Пожалуйста, введите текст вашего объявления."
 
-#: frontend/page-place-ad.php:845
+#: frontend/page-place-ad.php:846
 msgid ""
 "You did not select a category for your Ad. Please select a category for your"
 " Ad."
 msgstr "Вы не выберите категорию вашего объявления. Пожалуйста, выберите категорию вашего объявления."
 
-#: frontend/page-place-ad.php:853
+#: frontend/page-place-ad.php:854
 msgid ""
 "You did not enter your website address. Your website address is required."
 msgstr "Вы не ввели адрес Вашего сайта. Адрес сайта обязателен."
 
-#: frontend/page-place-ad.php:859
+#: frontend/page-place-ad.php:860
 msgid ""
 "Your website address is not properly formatted. Please make sure you have "
 "included the http:// part of your website address"
 msgstr "Адрес сайта имеет неверный формат. Пожалуйста, убедитесь, что вы включили http:// в адрес веб-сайта"
 
-#: frontend/page-place-ad.php:864
+#: frontend/page-place-ad.php:865
 msgid "You did not enter your name. Your name is required."
 msgstr "Вы не ввели ваше имя. Ваше имя является обязательным."
 
-#: frontend/page-place-ad.php:869
+#: frontend/page-place-ad.php:870
 msgid "You did not enter your email. Your email is required."
 msgstr "Вы не указали вашу электронную почту. Ваш электронная почта обязательна."
 
-#: frontend/page-place-ad.php:874 frontend/page-reply-to-ad.php:123
+#: frontend/page-place-ad.php:875 frontend/page-reply-to-ad.php:118
 msgid ""
 "The email address you entered was not a valid email address. Please check "
 "for errors and try again."
 msgstr "Введенный адрес электронной почты является не действительным адресом электронной почты. Пожалуйста, проверьте наличие ошибок и попробуйте еще раз."
 
-#: frontend/page-place-ad.php:876
+#: frontend/page-place-ad.php:877
 msgid ""
 "The email address you entered is not allowed in this website. Please use an "
 "email address from one of the following domains: %s."
 msgstr "Введенный адрес электронной почты не разрешен на этом сайте. Пожалуйста, используйте адрес электронной почты с одного из следующих доменов: %s."
 
-#: frontend/page-place-ad.php:887
+#: frontend/page-place-ad.php:888
 msgid "You did not enter your phone number. Your phone number is required."
 msgstr "Вы не ввели Ваш номер телефона. Ваш номер телефона необходим."
 
-#: frontend/page-place-ad.php:905
+#: frontend/page-place-ad.php:906
 #: includes/helpers/widgets/multiple-region-selector.php:126
 msgid "You did not enter your country. Your country is required."
 msgstr "Вы не указали Вашу страну. Ваша страна обязательна."
 
-#: frontend/page-place-ad.php:914
+#: frontend/page-place-ad.php:915
 #: includes/helpers/widgets/multiple-region-selector.php:127
 msgid "You did not enter your state. Your state is required."
 msgstr "Вы не ввели ваш штат. Ваш штат обязателен."
 
-#: frontend/page-place-ad.php:923
+#: frontend/page-place-ad.php:924
 #: includes/helpers/widgets/multiple-region-selector.php:129
 msgid "You did not enter your city. Your city is required."
 msgstr "Вы не указали Ваш город. Ваш город обязателен."
 
-#: frontend/page-place-ad.php:932
+#: frontend/page-place-ad.php:933
 #: includes/helpers/widgets/multiple-region-selector.php:128
 msgid ""
 "You did not enter your county/village. Your county/village is required."
 msgstr "Вы не указали Вашу страну / деревню. Ваша страна / деревня обязательна."
 
-#: frontend/page-place-ad.php:939
+#: frontend/page-place-ad.php:940
 msgid "You did not enter the price of your item. The item price is required."
 msgstr "Вы не указали цену вашего товара. Цена товара обязательна."
 
-#: frontend/page-place-ad.php:945
+#: frontend/page-place-ad.php:946
 msgid ""
 "You have entered an invalid item price. Make sure your price contains "
 "numbers only. Please do not include currency symbols."
 msgstr "Вы ввели неккоректную цену. Убедитесь, что Ваша цена содержит только цифры. Пожалуйста, Не включайте неё символы."
 
-#: frontend/page-place-ad.php:963
+#: frontend/page-place-ad.php:964
 msgid "You did not accept the terms of service"
 msgstr "Вы не приняли условия обслуживания"
 
-#: frontend/page-place-ad.php:979
+#: frontend/page-place-ad.php:980
 msgid ""
 "Your Ad was flagged as spam. Please contact the administrator of this site."
 msgstr "Ваше объявление было помечено как спам. Пожалуйста, свяжитесь с администратором этого сайта."
 
-#: frontend/page-place-ad.php:1128
+#: frontend/page-place-ad.php:1129
 msgid ""
 "We were unable to find a Payment Transaction assigned to this operation. No "
 "images can be added at this time."
 msgstr "Мы не смогли найти платежной транзакции, присвоенный данной операции. В данный момент изображения не могут быть добавлены."
 
-#: frontend/page-place-ad.php:1189
+#: frontend/page-place-ad.php:1190
 #: frontend/templates/page-place-ad-details-step.tpl.php:115
 msgid "Preview Ad"
 msgstr "Предпросмотр объявления"
 
-#: frontend/page-place-ad.php:1193
+#: frontend/page-place-ad.php:1194
 #: includes/helpers/widgets/class-listing-form-steps-component.php:50
 #: includes/helpers/widgets/class-listing-form-steps-component.php:65
 msgid "Checkout"
 msgstr "На кассу"
 
-#: frontend/page-place-ad.php:1212 frontend/page-place-ad.php:1263
+#: frontend/page-place-ad.php:1213 frontend/page-place-ad.php:1264
 msgid ""
 "We were unable to find a Payment Transaction assigned to this operation."
 msgstr "Мы не смогли найти платежной транзакции, присвоенной данной операции."
 
-#: frontend/page-place-ad.php:1219 frontend/page-place-ad.php:1270
+#: frontend/page-place-ad.php:1220 frontend/page-place-ad.php:1271
 #: frontend/page-renew-ad.php:334
 msgid "The Ad associated with this transaction doesn't exists."
 msgstr "Объявление связаное с этой сделкой не существует."
@@ -2620,7 +2627,7 @@ msgstr "Вы пытаетесь возобновить ваше объявлен
 msgid "Reply to Ad"
 msgstr "Ответить на Объявление"
 
-#: frontend/page-reply-to-ad.php:49 frontend/page-reply-to-ad.php:117
+#: frontend/page-reply-to-ad.php:49 frontend/page-reply-to-ad.php:112
 msgid "Please enter your name."
 msgstr "Пожалуйста, введите ваше имя."
 
@@ -2642,34 +2649,34 @@ msgstr "Только зарегистрированные пользовател
 msgid "The specified Ad does not exist."
 msgstr "Указанное объявление не существует."
 
-#: frontend/page-reply-to-ad.php:121
+#: frontend/page-reply-to-ad.php:116
 msgid "Please enter your email."
 msgstr "Пожалуйста, введите адрес электронной почты."
 
-#: frontend/page-reply-to-ad.php:127
+#: frontend/page-reply-to-ad.php:122
 msgid "There was no text in your message. Please enter a message."
 msgstr "Текст в сообщении отсутствует. Пожалуйста, введите сообщение."
 
-#: frontend/page-reply-to-ad.php:134
+#: frontend/page-reply-to-ad.php:129
 msgid ""
 "Your message was flagged as spam. Please contact the administrator of this "
 "site."
 msgstr "Ваше объявление было помечено как спам. Пожалуйста, свяжитесь с администратором этого сайта."
 
-#: frontend/page-reply-to-ad.php:208
+#: frontend/page-reply-to-ad.php:203
 msgid "Notification about a response regarding Ad: %s"
 msgstr "Уведомление об ответе на объявление: %s"
 
-#: frontend/page-reply-to-ad.php:222
+#: frontend/page-reply-to-ad.php:217
 msgctxt "reply email"
 msgid "regarding"
 msgstr "касательно"
 
-#: frontend/page-reply-to-ad.php:235
+#: frontend/page-reply-to-ad.php:230
 msgid "Your message has been sent."
 msgstr "Ваше сообщение отправлено."
 
-#: frontend/page-reply-to-ad.php:238
+#: frontend/page-reply-to-ad.php:233
 msgid ""
 "There was a problem encountered during the attempt to send your message. "
 "Please try again and if the problem persists, please contact the system "
@@ -3947,6 +3954,11 @@ msgctxt "ad details form"
 msgid "Item Price"
 msgstr "Цена"
 
+#: includes/form-fields/class-listing-regions-form-field.php:22
+msgctxt "listing form field"
+msgid "Regions"
+msgstr "Регионы"
+
 #: includes/form-fields/class-listing-website-form-field.php:20
 msgctxt "ad details form"
 msgid "Website URL"
@@ -4202,11 +4214,11 @@ msgid ""
 "There was an error trying to check the license status for <module-name>."
 msgstr ""
 
-#: includes/helpers/class-easy-digital-downloads.php:103
+#: includes/helpers/class-easy-digital-downloads.php:100
 msgid "There was an error trying to activate your <module-name> license."
 msgstr "Произошла ошибка при активации вашей лицензии для модуля <module-name>."
 
-#: includes/helpers/class-easy-digital-downloads.php:125
+#: includes/helpers/class-easy-digital-downloads.php:122
 msgid "There was an error trying to deactivate your <module-name> license."
 msgstr "Произошла ошибка при деактивации лицензии для вашего модуля <module-name>."
 
@@ -5406,15 +5418,25 @@ msgid ""
 "will not be persisted until you click the Continue button."
 msgstr "Если отмечено и во время редактирования объявления администратор меняет хозяина объявления, то информация для полей \"Контактное лицо\", \"Электронная почта контактного лица\" и \"Телефон контактного лица\" будет обновлена согласно нового владельца. Изменения не вступят в силу до нажатия кнопки Продолжить."
 
-#: includes/settings/class-form-fields-settings.php:40
+#: includes/settings/class-form-fields-settings.php:43
+msgid "User's name format"
+msgstr ""
+
+#: includes/settings/class-form-fields-settings.php:46
+msgid ""
+"The selected format will be used to show a user's name in dropdown fields, "
+"text fields and templates."
+msgstr ""
+
+#: includes/settings/class-form-fields-settings.php:59
 msgid "Contact Fields"
 msgstr "Контактная информация"
 
-#: includes/settings/class-form-fields-settings.php:45
+#: includes/settings/class-form-fields-settings.php:64
 msgid "Allow logged in users to overwrite Contact Name and Contact Email"
 msgstr "Разрешить зарегистрированным пользователям менять поля Контактное лицо и Электронная почта контактного лица"
 
-#: includes/settings/class-form-fields-settings.php:48
+#: includes/settings/class-form-fields-settings.php:67
 msgid ""
 "Normally registered users who are not administrators are not allowed to "
 "change the email address or contact name. The fields are rendered as read-"
@@ -5423,187 +5445,187 @@ msgid ""
 "fields."
 msgstr "Обычно зарегистрированные пользователи не могу менять реквизиты контактного лица. Эти поля отображаются только для чтения и предзаполнены информацией из профиля. Если отмечено, зарегистрированные пользователи смогут перезаписывать эти значения."
 
-#: includes/settings/class-form-fields-settings.php:53
+#: includes/settings/class-form-fields-settings.php:72
 msgid "Phone Field"
 msgstr "Поле Телефон"
 
-#: includes/settings/class-form-fields-settings.php:55
+#: includes/settings/class-form-fields-settings.php:74
 msgid "Show Phone field"
 msgstr "Показывать поле Телефон"
 
-#: includes/settings/class-form-fields-settings.php:55
+#: includes/settings/class-form-fields-settings.php:74
 msgid "Show phone field?"
 msgstr "Показывать поле Телефон?"
 
-#: includes/settings/class-form-fields-settings.php:56
+#: includes/settings/class-form-fields-settings.php:75
 msgid "Require Phone"
 msgstr "Требовать Телефон"
 
-#: includes/settings/class-form-fields-settings.php:56
+#: includes/settings/class-form-fields-settings.php:75
 msgid "Require phone on Place Ad and Edit Ad forms?"
 msgstr "Требовать телефон в формах добавления и редактирования объявлений?"
 
-#: includes/settings/class-form-fields-settings.php:61
+#: includes/settings/class-form-fields-settings.php:80
 msgid "Show Phone Field only to registered users"
 msgstr "Показать телефон только зарегистрированным пользователям"
 
-#: includes/settings/class-form-fields-settings.php:64
-#: includes/settings/class-form-fields-settings.php:79
-#: includes/settings/class-form-fields-settings.php:94
+#: includes/settings/class-form-fields-settings.php:83
+#: includes/settings/class-form-fields-settings.php:98
+#: includes/settings/class-form-fields-settings.php:113
 msgid ""
 "This setting restricts viewing of this field so that only registered users "
 "that are logged in can see it."
 msgstr "Эта опция ограничивает просмотр поля. Только зарегистрированные пользователи смогут увидеть его."
 
-#: includes/settings/class-form-fields-settings.php:69
+#: includes/settings/class-form-fields-settings.php:88
 msgid "Website Field"
 msgstr "Поле Сайт"
 
-#: includes/settings/class-form-fields-settings.php:70
+#: includes/settings/class-form-fields-settings.php:89
 msgid "Show Website field"
 msgstr "Показывать поле Сайт"
 
-#: includes/settings/class-form-fields-settings.php:70
+#: includes/settings/class-form-fields-settings.php:89
 msgid "Show website field?"
 msgstr "Показывать поле Сайт?"
 
-#: includes/settings/class-form-fields-settings.php:71
+#: includes/settings/class-form-fields-settings.php:90
 msgid "Require Website"
 msgstr "Требовать Сайт"
 
-#: includes/settings/class-form-fields-settings.php:71
+#: includes/settings/class-form-fields-settings.php:90
 msgid "Require website on Place Ad and Edit Ad forms?"
 msgstr "Требовать ссылку на сайт в формах добавления и редактирования объявлений?"
 
-#: includes/settings/class-form-fields-settings.php:76
+#: includes/settings/class-form-fields-settings.php:95
 msgid "Show Website Field only to registered users"
 msgstr "Показать поле Вебсайт только зарегистрированным пользователям"
 
-#: includes/settings/class-form-fields-settings.php:84
+#: includes/settings/class-form-fields-settings.php:103
 msgid "Price Field"
 msgstr "Поле Цена"
 
-#: includes/settings/class-form-fields-settings.php:85
+#: includes/settings/class-form-fields-settings.php:104
 msgid "Show Price field"
 msgstr "Показывать поле Цена"
 
-#: includes/settings/class-form-fields-settings.php:85
+#: includes/settings/class-form-fields-settings.php:104
 msgid "Show price field?"
 msgstr "Показывать поле Цена?"
 
-#: includes/settings/class-form-fields-settings.php:86
+#: includes/settings/class-form-fields-settings.php:105
 msgid "Require Price"
 msgstr "Требовать Цену"
 
-#: includes/settings/class-form-fields-settings.php:86
+#: includes/settings/class-form-fields-settings.php:105
 msgid "Require price on Place Ad and Edit Ad forms?"
 msgstr "Требовать цену в формах добавления и редактирования объявлений?"
 
-#: includes/settings/class-form-fields-settings.php:91
+#: includes/settings/class-form-fields-settings.php:110
 msgid "Show Price Field only to registered users"
 msgstr "Показать поле Цена только зарегистрированным пользователям\\v"
 
-#: includes/settings/class-form-fields-settings.php:97
+#: includes/settings/class-form-fields-settings.php:116
 msgid "Hide price field if empty or zero"
 msgstr "Прятать поле с ценой, если пустое или равно нулю"
 
-#: includes/settings/class-form-fields-settings.php:97
+#: includes/settings/class-form-fields-settings.php:116
 msgid ""
 "If checked all price placeholders will be replaced with an empty string when"
 " the price of the Ad is zero or was not set."
 msgstr "Если отмечено, все места, где указывается цена, будут замещены пустой строкой для цен равных нулю или не указанных."
 
-#: includes/settings/class-form-fields-settings.php:101
+#: includes/settings/class-form-fields-settings.php:120
 msgid "Country Field"
 msgstr "Поле Страна"
 
-#: includes/settings/class-form-fields-settings.php:102
+#: includes/settings/class-form-fields-settings.php:121
 msgid "Show Country field"
 msgstr "Показывать поле Страна"
 
-#: includes/settings/class-form-fields-settings.php:102
+#: includes/settings/class-form-fields-settings.php:121
 msgid "Show country field?"
 msgstr "Показывать поле Страна?"
 
-#: includes/settings/class-form-fields-settings.php:103
+#: includes/settings/class-form-fields-settings.php:122
 msgid "Require Country"
 msgstr "Требовать Страну"
 
-#: includes/settings/class-form-fields-settings.php:103
+#: includes/settings/class-form-fields-settings.php:122
 msgid "Require country on Place Ad and Edit Ad forms?"
 msgstr "Требовать страну в формах добавления и редактирования объявлений?"
 
-#: includes/settings/class-form-fields-settings.php:107
+#: includes/settings/class-form-fields-settings.php:126
 msgid "State Field"
 msgstr "Поле Штат"
 
-#: includes/settings/class-form-fields-settings.php:108
+#: includes/settings/class-form-fields-settings.php:127
 msgid "Show State field"
 msgstr "Показывать поле Штат"
 
-#: includes/settings/class-form-fields-settings.php:108
+#: includes/settings/class-form-fields-settings.php:127
 msgid "Show state field?"
 msgstr "Показать поле Область?"
 
-#: includes/settings/class-form-fields-settings.php:109
+#: includes/settings/class-form-fields-settings.php:128
 msgid "Require State"
 msgstr "Требовать Штат"
 
-#: includes/settings/class-form-fields-settings.php:109
+#: includes/settings/class-form-fields-settings.php:128
 msgid "Require state on Place Ad and Edit Ad forms?"
 msgstr "Требовать область в формах добавления и редактирования объявлений?"
 
-#: includes/settings/class-form-fields-settings.php:113
+#: includes/settings/class-form-fields-settings.php:132
 msgid "County Field"
 msgstr "Поле Область"
 
-#: includes/settings/class-form-fields-settings.php:114
+#: includes/settings/class-form-fields-settings.php:133
 msgid "Show County/Village/other"
 msgstr "Показывать Область / Деревня / Другое"
 
-#: includes/settings/class-form-fields-settings.php:114
+#: includes/settings/class-form-fields-settings.php:133
 msgid "Show County/village/other?"
 msgstr "Показывать Область / Деревня / Другое?"
 
-#: includes/settings/class-form-fields-settings.php:115
+#: includes/settings/class-form-fields-settings.php:134
 msgid "Require County/Village/other"
 msgstr "Требовать Область / Деревня / Другое"
 
-#: includes/settings/class-form-fields-settings.php:115
+#: includes/settings/class-form-fields-settings.php:134
 msgid "Require county/village/other on Place Ad and Edit Ad forms?"
 msgstr "Требовать район/населенный пункт/другое в формах добавления и редактирования объявлений?"
 
-#: includes/settings/class-form-fields-settings.php:119
+#: includes/settings/class-form-fields-settings.php:138
 msgid "City Field"
 msgstr "Поле Город"
 
-#: includes/settings/class-form-fields-settings.php:120
+#: includes/settings/class-form-fields-settings.php:139
 msgid "Show City field"
 msgstr "Показывать поле Город"
 
-#: includes/settings/class-form-fields-settings.php:120
+#: includes/settings/class-form-fields-settings.php:139
 msgid "Show city field?"
 msgstr "Показывать поле Город?"
 
-#: includes/settings/class-form-fields-settings.php:121
+#: includes/settings/class-form-fields-settings.php:140
 msgid "Show City field before County field"
 msgstr "Показывать поле Город перед полем Область"
 
-#: includes/settings/class-form-fields-settings.php:121
+#: includes/settings/class-form-fields-settings.php:140
 msgid ""
 "If checked the city field will be shown before the county field. This "
 "setting may be overwritten if Region Control module is installed."
 msgstr "Если флажок установлен, то поле Город будет показано перед полем Область. Этот параметр может быть перезаписан, если установлен модуль Управление Региономами."
 
-#: includes/settings/class-form-fields-settings.php:122
+#: includes/settings/class-form-fields-settings.php:141
 msgid "Require City"
 msgstr "Требовать Город"
 
-#: includes/settings/class-form-fields-settings.php:122
+#: includes/settings/class-form-fields-settings.php:141
 msgid "Require city on Place Ad and Edit Ad forms?"
 msgstr "Требовать город в формах добавления и редактирования объявлений?"
 
-#: includes/settings/class-form-fields-settings.php:129
+#: includes/settings/class-form-fields-settings.php:148
 msgid ""
 "Go to the <form-fields-section> admin section to change the order in which "
 "the fields mentioned below are shown to users in the Ad Details form."
@@ -6390,7 +6412,7 @@ msgstr "Письмо будет отправлено, при подозрени�
 
 #: includes/settings/class-window-title-settings.php:12
 msgid "Window Title"
-msgstr ""
+msgstr "Заголовок окна"
 
 #: includes/settings/class-window-title-settings.php:21
 msgid "Window title separator"
@@ -7371,7 +7393,7 @@ msgstr "активный"
 #: includes/settings-api.php:1061 includes/settings-api.php:1063
 #: includes/settings-api.php:1065
 msgid "Status: <license-status>"
-msgstr ""
+msgstr "Статус: <license-status>"
 
 #: includes/settings-api.php:1050 includes/settings-api.php:1053
 msgid "Activate"

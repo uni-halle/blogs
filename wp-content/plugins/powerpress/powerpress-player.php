@@ -1449,6 +1449,7 @@ function powerpressplayer_build_html5audio($media_url, $EpisodeData=array(), $em
 	{
 		$GeneralSettings = get_option('powerpress_general');
 		$cover_image = powerpress_get_root_url() . 'play_audio.png';
+		$cover_image_default = $cover_image;
 		if( !empty($EpisodeData['custom_play_button']) )
 		{
 			$cover_image = $EpisodeData['custom_play_button'];
@@ -1460,7 +1461,10 @@ function powerpressplayer_build_html5audio($media_url, $EpisodeData=array(), $em
 		
 		$content .= '<div class="powerpress_player" id="powerpress_player_'. $player_id .'">';
 		$content .= '<a href="'. $media_url .'" title="'. htmlspecialchars(POWERPRESS_PLAY_TEXT) .'" onclick="return powerpress_embed_html5a(\''.$player_id.'\',\''.$media_url.'\');" target="_blank">';
-		$content .= '<img src="'. $cover_image .'" title="'. htmlspecialchars(POWERPRESS_PLAY_TEXT) .'" alt="'. htmlspecialchars(POWERPRESS_PLAY_TEXT) .'" style="border:0;" />';
+		if( $cover_image_default == $cover_image )
+			$content .= '<img src="'. $cover_image .'" title="'. htmlspecialchars(POWERPRESS_PLAY_TEXT) .'" alt="'. htmlspecialchars(POWERPRESS_PLAY_TEXT) .'" style="border:0;" width="23px" height="24px" />';
+		else
+			$content .= '<img src="'. $cover_image .'" title="'. htmlspecialchars(POWERPRESS_PLAY_TEXT) .'" alt="'. htmlspecialchars(POWERPRESS_PLAY_TEXT) .'" style="border:0;" />';
 		$content .= '</a>';
 		$content .= "</div>\n";
 		

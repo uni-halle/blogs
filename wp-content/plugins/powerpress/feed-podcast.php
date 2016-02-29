@@ -88,7 +88,7 @@ echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>'; ?>
 		<?php
 		}
 		else // If feed maximizer on
-		{ // itunes does not like CDATA, so we're changing it to the other method...
+		{
 		?>
 		<description><?php echo powerpress_format_itunes_value( powerpress_get_the_excerpt_rss(), 'description' ); ?></description>
 		<?php

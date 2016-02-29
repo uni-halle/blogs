@@ -39,6 +39,7 @@ class PowerPress_RSS_Podcast_Import extends WP_Importer {
 				case 'powerpress-soundcloud-rss-podcast': echo '<h2>'.__('Import Podcast from SoundCloud', 'powerpress').'</h2>'; break;
 				case 'powerpress-libsyn-rss-podcast': echo '<h2>'.__('Import Podcast from LibSyn', 'powerpress').'</h2>'; break;
 				case 'powerpress-podbean-rss-podcast': echo '<h2>'.__('Import Podcast from PodBean', 'powerpress').'</h2>'; break;
+				case 'powerpress-squarespace-rss-podcast': echo '<h2>'.__('Import Podcast from Squarespace', 'powerpress').'</h2>'; break;
 				case 'powerpress-rss-podcast': 
 				default: echo '<h2>'.__('Import Podcast RSS Feed', 'powerpress').'</h2>'; break;
 			}
@@ -73,6 +74,7 @@ class PowerPress_RSS_Podcast_Import extends WP_Importer {
 		case 'powerpress-soundcloud-rss-podcast': $placeholder = 'http://feeds.soundcloud.com/users/soundcloud:users:00000000/sounds.rss'; break;
 		case 'powerpress-libsyn-rss-podcast': $placeholder = 'http://yourshow.libsyn.com/rss'; break;
 		case 'powerpress-podbean-rss-podcast': $placeholder = 'http://yourshow.podbean.com/feed/'; break;
+		case 'powerpress-squarespace-rss-podcast': $placeholder = 'http://example.com/podcast/?format=rss'; break;
 	}
 ?>
 <input type="text" name="podcast_feed_url" id="podcast_feed_url" size="50" class="code" style="width: 90%;" placeholder="<?php echo esc_attr($placeholder); ?>" />
@@ -260,9 +262,19 @@ class PowerPress_RSS_Podcast_Import extends WP_Importer {
 						}
 					}
 					
-					$image_data = wp_remote_fopen($itunes_image);
-					if( !empty($image_data) )
-					{
+					$options = array();
+					$options['user-agent'] = 'Blubrry PowerPress/'.POWERPRESS_VERSION;
+					if( !empty($_GET['import']) && $_GET['import'] == 'powerpress-squarespace-rss-podcast' )
+						$options['user-agent'] = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36';
+					$options['timeout'] = 10;
+					
+					$image_data = '';
+					$response = wp_safe_remote_get($itunes_image, $options);
+					if ( !is_wp_error( $response ) ) {
+						$image_data = wp_remote_retrieve_body( $response );
+					}
+		
+					if( !empty($image_data) ) {
 						file_put_contents($upload_path.$filename, $image_data);
 						$NewSettings['itunes_image'] = $upload_url . $filename;
 						$NewSettings['rss2_image'] = $itunes_image;
@@ -863,12 +875,19 @@ class PowerPress_RSS_Podcast_Import extends WP_Importer {
 			return false;
 		}
 		
-		$content = wp_remote_fopen($_POST['podcast_feed_url']);
-		if( is_wp_error($content) ) {
-			echo '<p>'.	$content->get_error_message() .'<p>';
+		$options = array();
+		$options['user-agent'] = 'Blubrry PowerPress/'.POWERPRESS_VERSION;
+		if( !empty($_GET['import']) && $_GET['import'] == 'powerpress-squarespace-rss-podcast' )
+			$options['user-agent'] = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36';
+		$options['timeout'] = 10;
+		
+		$response = wp_safe_remote_get($_POST['podcast_feed_url'], $options);
+		if ( is_wp_error( $response ) ) {
+			echo '<p>'.	$response->get_error_message() .'<p>';
 			return false;
 		}
-		$this->m_content = $content;
+
+		$this->m_content = wp_remote_retrieve_body( $response );
 		return true;
 	}
 	
@@ -888,6 +907,7 @@ class PowerPress_RSS_Podcast_Import extends WP_Importer {
 	register_importer('powerpress-soundcloud-rss-podcast', __('Podcast from SoundCloud', 'powerpress'), __('Import episdoes from a SoundCloud podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
 	register_importer('powerpress-libsyn-rss-podcast', __('Podcast from LibSyn', 'powerpress'), __('Import episdoes from a LibSyn podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
 	register_importer('powerpress-podbean-rss-podcast', __('Podcast from PodBean ', 'powerpress'), __('Import episdoes from a PodBean podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
+	register_importer('powerpress-squarespace-rss-podcast', __('Podcast from Squarespace', 'powerpress'), __('Import episdoes from a Squarespace podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
 	register_importer('powerpress-rss-podcast', __('Podcast RSS Feed', 'powerpress'), __('Import episdoes from a RSS podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
 	
 }; // end if WP_Importer exists

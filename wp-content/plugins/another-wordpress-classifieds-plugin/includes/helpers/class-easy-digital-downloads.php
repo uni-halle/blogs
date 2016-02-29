@@ -27,7 +27,8 @@ class AWPCP_EasyDigitalDownloads {
         $params = array(
             'edd_action' => 'check_license',
             'item_name' => $module_name,
-            'license' => $license
+            'license' => $license,
+            'url' => home_url(),
         );
 
         try {

@@ -1,9 +1,9 @@
 === Blubrry PowerPress Podcasting plugin ===
 Contributors: amandato, blubrry
-Tags: powerpress, podcasting, podcast, podcaster, itunes, google play music, google play, enclosure, professional, apple, apple tv, ipad, iphone, soundcloud, youtube, viddler, ustream, podcasting, audio, video, rss2, feed, player, media, rss, mp3, music, embed, feedburner, statistics, stats, flv, flash, id3, episodes, blubrry, mp4, m4v, wordpressmu, mu, wordpress mu, multisite, multi site, mediacaster, post, plugin, posts, simple, social, dashboard, TSG, Buzzsprout, MTR, WP-boxCast, CastMyBlog, tgs podcasting,  simple podcasting, seriously simple podcasting, seriously-simple-podcasting, serious, seriously, ssp, podlove, podcast.de, clammr, clammr radio, audio player, stitcher, show, shows, series, docs, documentation, support, free, add-ons, extensions, addons, libsyn, libsyn-podcasting, podbean, podomatic, spreaker
+Tags: powerpress, podcasting, podcast, podcaster, itunes, google play music, google play, enclosure, professional, apple, apple tv, ipad, iphone, soundcloud, squarespace, youtube, viddler, ustream, podcasting, audio, video, rss2, feed, player, media, rss, mp3, music, embed, feedburner, statistics, stats, flv, flash, id3, episodes, blubrry, mp4, m4v, wordpressmu, mu, wordpress mu, multisite, multi site, mediacaster, post, plugin, posts, simple, social, dashboard, TSG, Buzzsprout, MTR, WP-boxCast, CastMyBlog, tgs podcasting,  simple podcasting, seriously simple podcasting, seriously-simple-podcasting, serious, seriously, ssp, podlove, podcast.de, clammr, clammr radio, audio player, stitcher, show, shows, series, docs, documentation, support, free, add-ons, extensions, addons, libsyn, libsyn-podcasting, podbean, podomatic, spreaker
 Requires at least: 3.6
 Tested up to: 4.4.1
-Stable tag: 6.3.1
+Stable tag: 6.3.2
 Donate link: https://www.patreon.com/blubrry?ty=h
 License: GPLv2 or later
 
@@ -28,7 +28,7 @@ When you're ready you can switch to Advanced mode to tap into all the options pr
 - Integrated HTML5 Media Players: Audio/video Web players with embed support from sites such as YouTube.
 - Subscribe tools: Create subscribe page with our exclusive subscribe shortcode embed and subscribe sidebar widget optimized for responsive websites, high-resolution screens and Apple Retina displays.
 - Podcasting SEO: Improve discovery of your podcast on search engines such as Google, and with the iTunes podcast directory.
-- Podcast Importing: Import your podcast from SoundCloud, LibSyn, PodBean, or other podcast RSS feed.
+- Podcast Importing: Import your podcast from SoundCloud, LibSyn, PodBean, Squarespace, or other podcast RSS feed.
 - Migration tools: Quickly migrate from PodPress, TGS Podcasting, Seriously Simple Podcasting, Blogger, or Movable Type without losing episodes.
 - Multi-podcast support: Create separate podcasts by category (Category Podcasting) or by media format (Podcast Channels).
 - Post type and taxonomy podcasting: Create podcasts from custom post types and taxonomies.
@@ -225,6 +225,20 @@ To install Blubrry PowerPress manually, follow these steps:
 
 = Become a PowerPress Patron! =
 Help support your favorite podcasting plugin via Patreon. [Visit Blubrry's Patreon page](https://www.patreon.com/blubrry?ty=h)
+
+= 6.3.2 =
+* Released on 2/21/2016
+* Added import podcast from Squarespace option (thanks Steve for bringing to our attention that importing from Squarespace requires added logic)
+* The itunes:summary tag values can now use CDATA encapsulation. Note updated that `<itunes:summary>` may not contain HTML, except for hyperlinks. (Thanks Apple iTunes team!)
+* Added checkbox to enable wrapping iTunes summary values with `<![CDATA[ ... ]]>` tags. This may become a permanent feature.
+* Added new define option `POWERPRESS_FEED_TEMPLATE`. (Thanks Ron for the suggestion!)
+* Added new define option `POWERPRESS_PREMIUM_GROUPS_PLUGIN`, for premium podcasting with Groups plugin commonly paired with WooCommerce.
+* Removed iTunes explicit 'no' value from `<itunes:explicit>` tag. (iTunes change - February, 2016)
+* Updated iTunes recommended image size to 3000 x 3000 saved in a compressed format such as JPG. (iTunes change - February, 2016)
+* Fixed notice message from appearing when using the playlist player (Thanks chefjoef for bringing to our attention).
+* Added width and height attributes to img tag for the HTML5 audio player image. (Thanks Eduard for the patch and information about the Accelerated Mobile Pages Project!)
+* Fixed tab control styling when other themes or plugins use newer versions of jquery-ui.
+* Added dismissable notification message to alert PowerPress users of the latest iTunes changes.
 
 
 = 6.3.1 =

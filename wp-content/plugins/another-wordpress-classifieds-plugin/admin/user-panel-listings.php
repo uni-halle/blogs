@@ -10,8 +10,13 @@ class AWPCP_UserListings extends AWPCP_Admin_Listings {
 
     public function __construct($page=false, $title=false) {
         $page = $page ? $page : 'awpcp-admin-listings';
-        $title = $title ? $title : __('AWPCP Ad Management Panel - Listings', 'another-wordpress-classifieds-plugin');
-        parent::__construct($page, $title);
+
+        if ( empty( $title ) ) {
+            $title = __( '<blog-name> User Ad Management Panel - Listings', 'another-wordpress-classifieds-plugin' );
+            $title = str_replace( '<blog-name>', get_bloginfo( 'name' ), $title );
+        }
+
+        parent::__construct( $page, $title );
     }
 
     public function show_sidebar() {

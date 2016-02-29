@@ -1014,9 +1014,13 @@ function powerpressadmin_edit_itunes_feed($FeedSettings, $General, $FeedAttribs 
 
 <?php echo __('iTunes Program Summary', 'powerpress'); ?></th>
 <td>
-<p style="margin-top: 5px;"><?php echo __('Your summary may not contain HTML and cannot exceed 4,000 characters in length.', 'powerpress'); ?></p>
+<p style="margin-top: 5px;"><?php echo __('Your summary cannot exceed 4,000 characters in length and should not include HTML, except for hyperlinks', 'powerpress'); ?></p>
 
 <textarea name="Feed[itunes_summary]" rows="5" style="width:80%;" ><?php echo esc_textarea($FeedSettings['itunes_summary']); ?></textarea>
+<div>
+<input type="hidden" name="General[itunes_cdata]" value="0" />
+<input type="checkbox" name="General[itunes_cdata]" value="1" <?php echo ( !empty($General['itunes_cdata'])?'checked ':''); ?>/> <?php echo __('Wrap summary values with &lt;![CDATA[ ... ]]&gt; tags', 'powerpress'); ?>
+</div>
 </td>
 </tr>
 
@@ -1029,7 +1033,7 @@ function powerpressadmin_edit_itunes_feed($FeedSettings, $General, $FeedAttribs 
 
 <?php echo __('iTunes Episode Summary', 'powerpress'); ?></th>
 <td>
-<div><input type="checkbox" name="Feed[enhance_itunes_summary]" value="1" <?php echo ( !empty($FeedSettings['enhance_itunes_summary'])?'checked ':''); ?>/> <?php echo __('Optimize iTunes Summary from Blog Posts', 'powerpress'); ?>
+<div style="margin-top: 15px;"><input type="checkbox" name="Feed[enhance_itunes_summary]" value="1" <?php echo ( !empty($FeedSettings['enhance_itunes_summary'])?'checked ':''); ?>/> <?php echo __('Optimize iTunes Summary from Blog Posts', 'powerpress'); ?>
 </div>
 <p>
 	<?php echo __('Creates a friendlier view of your post/episode content.', 'powerpress'); ?>
@@ -1158,17 +1162,21 @@ reset($Categories);
 <tr valign="top">
 <th scope="row">
 <?php echo __('iTunes Explicit', 'powerpress'); ?> 
+<span class="powerpress-required"><?php echo __('Required', 'powerpress'); ?></span>
 </th>
 <td>
-<select name="Feed[itunes_explicit]" class="bpp_input_med">
+<select name="Feed[itunes_explicit]" style="width: 70%;">
 <?php
-$explicit = array(0=> __('No - display nothing', 'powerpress'), 1=>__('Yes - explicit content', 'powerpress'), 2=>__('Clean - no explicit content', 'powerpress'));
+$explicit = array(0=> __('No option selected', 'powerpress'), 1=>__('Yes - explicit content', 'powerpress'), 2=>__('Clean - no explicit content', 'powerpress'));
 
 while( list($value,$desc) = each($explicit) )
-	echo "\t<option value=\"$value\"". ($FeedSettings['itunes_explicit']==$value?' selected':''). ">$desc</option>\n";
+	echo "\t<option value=\"$value\"". ($FeedSettings['itunes_explicit']==$value?' selected':''). (($FeedSettings['itunes_explicit']!=0&&$value==0)?'disabled':''). ">$desc</option>\n";
 
 ?>
 </select>
+			<p>
+				<em><?php echo __('Note: As of February, 2016, you must select either Yes or Clean.', 'powerpress'); ?></em>
+			</p>
 </td>
 </tr>
 <?php if( !empty($General['advanced_mode_2']) ) { ?>

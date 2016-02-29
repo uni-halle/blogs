@@ -4,16 +4,16 @@ Author: Edvard Ananyan
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator, language translator, google translator, language translate, google language translator, translation, translate, multi language
 Requires at least: 2.8
 Tested up to: 4.4
-Stable tag: 2.0.7
+Stable tag: 2.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.me/EdvardAnanyan/10
 
-GTranslate uses Google Translate power to make your website multilingual and available to more than 98% of internet users.
+GTranslate uses Google Translate power to make your website multilingual and available to more than 99% of internet users.
 
 == Description ==
 
-This module uses Google Translate automatic translation service to translate your web page with Google power. With 92 available languages your site will be available to more than 98% of internet users.
+This module uses Google Translate automatic translation service to translate your web page with Google power. With 103 available languages your site will be available to more than 99% of internet users.
 
 GTranslate is a leading Google Translate provider since 2008 and powers more than 500.000 websites worldwide.
 
@@ -379,6 +379,12 @@ You need to go to the language you want to edit, for instance, French: http://do
 3. Nice dropdown with flags (open)
 
 == Changelog ==
+
+= 2.0.9 =
+* Fixed undefined variable PHP notice
+
+= 2.0.8 =
+* Added 13 new languages: Amharic, Corsican, Frisian, Kyrgyz, Hawaiian, Kurdish (Kurmanji), Luxembourgish, Samoan, Scots Gaelic, Shona, Sindhi, Pashto and Xhosa
 
 = 2.0.7 =
 * PHP notice and warning messages fixed

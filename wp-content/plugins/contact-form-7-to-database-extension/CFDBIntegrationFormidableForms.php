@@ -56,7 +56,7 @@ class CFDBIntegrationFormidableForms {
         }
 
         // Get submission values
-        $sql = "SELECT f.name AS 'key', m.meta_value AS 'value' FROM {$wpdb->prefix}frm_item_metas m, wp_frm_fields f WHERE m.field_id = f.id AND m.item_id = %d";
+        $sql = "SELECT f.name AS 'key', m.meta_value AS 'value' FROM {$wpdb->prefix}frm_item_metas m, {$wpdb->prefix}frm_fields f WHERE m.field_id = f.id AND m.item_id = %d";
         $sql = $wpdb->prepare($sql, $entry_id);
         $results = $wpdb->get_results($sql, ARRAY_A);
         if (!$results) {

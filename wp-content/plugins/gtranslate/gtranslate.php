@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: https://gtranslate.io/?xyz=998
 Description: Makes your website <strong>multilingual</strong> and available to the world using Google Translate. For support visit <a href="http://gtranslate.net/forum/">GTranslate Forum</a>.
-Version: 2.0.7
+Version: 2.0.9
 Author: Edvard Ananyan
 Author URI: https://gtranslate.io
 
@@ -147,8 +147,8 @@ class GTranslate extends WP_Widget {
 
 $script = <<<EOT
 
-var languages = ['Afrikaans','Albanian','Arabic','Armenian','Aurebesh','Azerbaijani','Basque','Belarusian','Bengali','Bosnian','Bulgarian','Burmese','Catalan','Cebuano','Chichewa','Chinese (Simplified)','Chinese (Traditional)','Croatian','Czech','Danish','Dutch','English','Esperanto','Estonian','Filipino','Finnish','French','Galician','Georgian','German','Greek','Gujarati','Haitian Creole','Hausa','Hebrew','Hindi','Hmong','Hungarian','Icelandic','Igbo','Indonesian','Irish','Italian','Japanese','Javanese','Kannada','Kazakh','Khmer','Korean','Lao','Latin','Latvian','Lithuanian','Macedonian','Malagasy','Malay','Malayalam','Maltese','Maori','Marathi','Mongolian','Nepali','Norwegian','Persian','Polish','Portuguese','Punjabi','Romanian','Russian','Serbian','Sesotho','Sinhalese','Slovak','Slovenian','Somali','Spanish','Sundanese','Swahili','Swedish','Tajik','Tamil','Telugu','Thai','Turkish','Ukrainian','Urdu','Uzbek','Vietnamese','Welsh','Yiddish','Yoruba','Zulu'];
-var language_codes = ['af','sq','ar','hy','qab','az','eu','be','bn','bs','bg','my','ca','ceb','ny','zh-CN','zh-TW','hr','cs','da','nl','en','eo','et','tl','fi','fr','gl','ka','de','el','gu','ht','ha','iw','hi','hmn','hu','is','ig','id','ga','it','ja','jw','kn','kk','km','ko','lo','la','lv','lt','mk','mg','ms','ml','mt','mi','mr','mn','ne','no','fa','pl','pt','pa','ro','ru','sr','st','si','sk','sl','so','es','su','sw','sv','tg','ta','te','th','tr','uk','ur','uz','vi','cy','yi','yo','zu'];
+var languages = ['Afrikaans','Albanian','Amharic','Arabic','Armenian','Azerbaijani','Basque','Belarusian','Bengali','Bosnian','Bulgarian','Catalan','Cebuano','Chichewa','Chinese (Simplified)','Chinese (Traditional)','Corsican','Croatian','Czech','Danish','Dutch','English','Esperanto','Estonian','Filipino','Finnish','French','Frisian','Galician','Georgian','German','Greek','Gujarati','Haitian Creole','Hausa','Hawaiian','Hebrew','Hindi','Hmong','Hungarian','Icelandic','Igbo','Indonesian','Irish','Italian','Japanese','Javanese','Kannada','Kazakh','Khmer','Korean','Kurdish (Kurmanji)','Kyrgyz','Lao','Latin','Latvian','Lithuanian','Luxembourgish','Macedonian','Malagasy','Malay','Malayalam','Maltese','Maori','Marathi','Mongolian','Myanmar (Burmese)','Nepali','Norwegian','Pashto','Persian','Polish','Portuguese','Punjabi','Romanian','Russian','Samoan','Scottish Gaelic','Serbian','Sesotho','Shona','Sindhi','Sinhala','Slovak','Slovenian','Somali','Spanish','Sudanese','Swahili','Swedish','Tajik','Tamil','Telugu','Thai','Turkish','Ukrainian','Urdu','Uzbek','Vietnamese','Welsh','Xhosa','Yiddish','Yoruba','Zulu'];
+var language_codes = ['af','sq','am','ar','hy','az','eu','be','bn','bs','bg','ca','ceb','ny','zh-CN','zh-TW','co','hr','cs','da','nl','en','eo','et','tl','fi','fr','fy','gl','ka','de','el','gu','ht','ha','haw','iw','hi','hmn','hu','is','ig','id','ga','it','ja','jw','kn','kk','km','ko','ku','ky','lo','la','lv','lt','lb','mk','mg','ms','ml','mt','mi','mr','mn','my','ne','no','ps','fa','pl','pt','pa','ro','ru','sm','gd','sr','st','sn','sd','si','sk','sl','so','es','su','sw','sv','tg','ta','te','th','tr','uk','ur','uz','vi','cy','xh','yi','yo','zu'];
 var languages_map = {en_x: 0, en_y: 0, ar_x: 100, ar_y: 0, bg_x: 200, bg_y: 0, zhCN_x: 300, zhCN_y: 0, zhTW_x: 400, zhTW_y: 0, hr_x: 500, hr_y: 0, cs_x: 600, cs_y: 0, da_x: 700, da_y: 0, nl_x: 0, nl_y: 100, fi_x: 100, fi_y: 100, fr_x: 200, fr_y: 100, de_x: 300, de_y: 100, el_x: 400, el_y: 100, hi_x: 500, hi_y: 100, it_x: 600, it_y: 100, ja_x: 700, ja_y: 100, ko_x: 0, ko_y: 200, no_x: 100, no_y: 200, pl_x: 200, pl_y: 200, pt_x: 300, pt_y: 200, ro_x: 400, ro_y: 200, ru_x: 500, ru_y: 200, es_x: 600, es_y: 200, sv_x: 700, sv_y: 200, ca_x: 0, ca_y: 300, tl_x: 100, tl_y: 300, iw_x: 200, iw_y: 300, id_x: 300, id_y: 300, lv_x: 400, lv_y: 300, lt_x: 500, lt_y: 300, sr_x: 600, sr_y: 300, sk_x: 700, sk_y: 300, sl_x: 0, sl_y: 400, uk_x: 100, uk_y: 400, vi_x: 200, vi_y: 400, sq_x: 300, sq_y: 400, et_x: 400, et_y: 400, gl_x: 500, gl_y: 400, hu_x: 600, hu_y: 400, mt_x: 700, mt_y: 400, th_x: 0, th_y: 500, tr_x: 100, tr_y: 500, fa_x: 200, fa_y: 500, af_x: 300, af_y: 500, ms_x: 400, ms_y: 500, sw_x: 500, sw_y: 500, ga_x: 600, ga_y: 500, cy_x: 700, cy_y: 500, be_x: 0, be_y: 600, is_x: 100, is_y: 600, mk_x: 200, mk_y: 600, yi_x: 300, yi_y: 600, hy_x: 400, hy_y: 600, az_x: 500, az_y: 600, eu_x: 600, eu_y: 600, ka_x: 700, ka_y: 600, ht_x: 0, ht_y: 700, ur_x: 100, ur_y: 700};
 
 function RefreshDoWidgetCode() {
@@ -420,8 +420,6 @@ jQuery('#new_window').attr('checked', '$new_window'.length > 0);
 jQuery('#analytics').attr('checked', '$analytics'.length > 0);
 jQuery('#load_jquery').attr('checked', '$load_jquery'.length > 0);
 jQuery('#add_new_line').attr('checked', '$add_new_line'.length > 0);
-//jQuery('#show_dropdown').attr('checked', '$show_dropdown'.length > 0);
-//jQuery('#show_flags').attr('checked', '$show_flags'.length > 0);
 
 jQuery('#default_language').val('$default_language');
 //jQuery('#translation_method').val('$translation_method');
@@ -508,21 +506,21 @@ foreach($fincl_langs as $lang)
                             <select id="default_language" name="default_language" onChange="RefreshDoWidgetCode()">
                                 <option value="af">Afrikaans</option>
                                 <option value="sq">Albanian</option>
+                                <option value="am">Amharic</option>
                                 <option value="ar">Arabic</option>
                                 <option value="hy">Armenian</option>
-                                <option value="qab">Aurebesh</option>
                                 <option value="az">Azerbaijani</option>
                                 <option value="eu">Basque</option>
                                 <option value="be">Belarusian</option>
                                 <option value="bn">Bengali</option>
                                 <option value="bs">Bosnian</option>
                                 <option value="bg">Bulgarian</option>
-                                <option value="my">Burmese</option>
                                 <option value="ca">Catalan</option>
                                 <option value="ceb">Cebuano</option>
                                 <option value="ny">Chichewa</option>
                                 <option value="zh-CN">Chinese (Simplified)</option>
                                 <option value="zh-TW">Chinese (Traditional)</option>
+                                <option value="co">Corsican</option>
                                 <option value="hr">Croatian</option>
                                 <option value="cs">Czech</option>
                                 <option value="da">Danish</option>
@@ -533,6 +531,7 @@ foreach($fincl_langs as $lang)
                                 <option value="tl">Filipino</option>
                                 <option value="fi">Finnish</option>
                                 <option value="fr">French</option>
+                                <option value="fy">Frisian</option>
                                 <option value="gl">Galician</option>
                                 <option value="ka">Georgian</option>
                                 <option value="de">German</option>
@@ -540,6 +539,7 @@ foreach($fincl_langs as $lang)
                                 <option value="gu">Gujarati</option>
                                 <option value="ht">Haitian Creole</option>
                                 <option value="ha">Hausa</option>
+                                <option value="haw">Hawaiian</option>
                                 <option value="iw">Hebrew</option>
                                 <option value="hi">Hindi</option>
                                 <option value="hmn">Hmong</option>
@@ -555,10 +555,13 @@ foreach($fincl_langs as $lang)
                                 <option value="kk">Kazakh</option>
                                 <option value="km">Khmer</option>
                                 <option value="ko">Korean</option>
+                                <option value="ku">Kurdish (Kurmanji)</option>
+                                <option value="ky">Kyrgyz</option>
                                 <option value="lo">Lao</option>
                                 <option value="la">Latin</option>
                                 <option value="lv">Latvian</option>
                                 <option value="lt">Lithuanian</option>
+                                <option value="lb">Luxembourgish</option>
                                 <option value="mk">Macedonian</option>
                                 <option value="mg">Malagasy</option>
                                 <option value="ms">Malay</option>
@@ -567,22 +570,28 @@ foreach($fincl_langs as $lang)
                                 <option value="mi">Maori</option>
                                 <option value="mr">Marathi</option>
                                 <option value="mn">Mongolian</option>
+                                <option value="my">Myanmar (Burmese)</option>
                                 <option value="ne">Nepali</option>
                                 <option value="no">Norwegian</option>
+                                <option value="ps">Pashto</option>
                                 <option value="fa">Persian</option>
                                 <option value="pl">Polish</option>
                                 <option value="pt">Portuguese</option>
                                 <option value="pa">Punjabi</option>
                                 <option value="ro">Romanian</option>
                                 <option value="ru">Russian</option>
+                                <option value="sm">Samoan</option>
+                                <option value="gd">Scottish Gaelic</option>
                                 <option value="sr">Serbian</option>
                                 <option value="st">Sesotho</option>
-                                <option value="si">Sinhalese</option>
+                                <option value="sn">Shona</option>
+                                <option value="sd">Sindhi</option>
+                                <option value="si">Sinhala</option>
                                 <option value="sk">Slovak</option>
                                 <option value="sl">Slovenian</option>
                                 <option value="so">Somali</option>
                                 <option value="es">Spanish</option>
-                                <option value="su">Sundanese</option>
+                                <option value="su">Sudanese</option>
                                 <option value="sw">Swahili</option>
                                 <option value="sv">Swedish</option>
                                 <option value="tg">Tajik</option>
@@ -595,6 +604,7 @@ foreach($fincl_langs as $lang)
                                 <option value="uz">Uzbek</option>
                                 <option value="vi">Vietnamese</option>
                                 <option value="cy">Welsh</option>
+                                <option value="xh">Xhosa</option>
                                 <option value="yi">Yiddish</option>
                                 <option value="yo">Yoruba</option>
                                 <option value="zu">Zulu</option>
@@ -720,33 +730,34 @@ foreach($fincl_langs as $lang)
                         <div style="width:25%;float:left;">
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsaf" name="incl_langs[]" value="af" checked><label for="incl_langsaf">Afrikaans</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssq" name="incl_langs[]" value="sq" checked><label for="incl_langssq">Albanian</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsam" name="incl_langs[]" value="am" checked><label for="incl_langsam">Amharic</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsar" name="incl_langs[]" value="ar" checked><label for="incl_langsar">Arabic</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshy" name="incl_langs[]" value="hy" checked><label for="incl_langshy">Armenian</label><br />
-                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsqab" name="incl_langs[]" value="qab" checked><label for="incl_langsqab">Aurebesh</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsaz" name="incl_langs[]" value="az" checked><label for="incl_langsaz">Azerbaijani</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langseu" name="incl_langs[]" value="eu" checked><label for="incl_langseu">Basque</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsbe" name="incl_langs[]" value="be" checked><label for="incl_langsbe">Belarusian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsbn" name="incl_langs[]" value="bn" checked><label for="incl_langsbn">Bengali</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsbs" name="incl_langs[]" value="bs" checked><label for="incl_langsbs">Bosnian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsbg" name="incl_langs[]" value="bg" checked><label for="incl_langsbg">Bulgarian</label><br />
-                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmy" name="incl_langs[]" value="my" checked><label for="incl_langsmy">Burmese</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsca" name="incl_langs[]" value="ca" checked><label for="incl_langsca">Catalan</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsceb" name="incl_langs[]" value="ceb" checked><label for="incl_langsceb">Cebuano</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsny" name="incl_langs[]" value="ny" checked><label for="incl_langsny">Chichewa</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langszh-CN" name="incl_langs[]" value="zh-CN" checked><label for="incl_langszh-CN">Chinese (Simplified)</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langszh-TW" name="incl_langs[]" value="zh-TW" checked><label for="incl_langszh-TW">Chinese (Traditional)</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsco" name="incl_langs[]" value="co" checked><label for="incl_langsco">Corsican</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshr" name="incl_langs[]" value="hr" checked><label for="incl_langshr">Croatian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langscs" name="incl_langs[]" value="cs" checked><label for="incl_langscs">Czech</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsda" name="incl_langs[]" value="da" checked><label for="incl_langsda">Danish</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsnl" name="incl_langs[]" value="nl" checked><label for="incl_langsnl">Dutch</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsen" name="incl_langs[]" value="en" checked><label for="incl_langsen">English</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langseo" name="incl_langs[]" value="eo" checked><label for="incl_langseo">Esperanto</label><br />
-                        </div>
-                        <div style="width:25%;float:left;">
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langset" name="incl_langs[]" value="et" checked><label for="incl_langset">Estonian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langstl" name="incl_langs[]" value="tl" checked><label for="incl_langstl">Filipino</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsfi" name="incl_langs[]" value="fi" checked><label for="incl_langsfi">Finnish</label><br />
+                        </div>
+                        <div style="width:25%;float:left;">
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsfr" name="incl_langs[]" value="fr" checked><label for="incl_langsfr">French</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsfy" name="incl_langs[]" value="fy" checked><label for="incl_langsfy">Frisian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsgl" name="incl_langs[]" value="gl" checked><label for="incl_langsgl">Galician</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langska" name="incl_langs[]" value="ka" checked><label for="incl_langska">Georgian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsde" name="incl_langs[]" value="de" checked><label for="incl_langsde">German</label><br />
@@ -754,6 +765,7 @@ foreach($fincl_langs as $lang)
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsgu" name="incl_langs[]" value="gu" checked><label for="incl_langsgu">Gujarati</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsht" name="incl_langs[]" value="ht" checked><label for="incl_langsht">Haitian Creole</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsha" name="incl_langs[]" value="ha" checked><label for="incl_langsha">Hausa</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshaw" name="incl_langs[]" value="haw" checked><label for="incl_langshaw">Hawaiian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsiw" name="incl_langs[]" value="iw" checked><label for="incl_langsiw">Hebrew</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshi" name="incl_langs[]" value="hi" checked><label for="incl_langshi">Hindi</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshmn" name="incl_langs[]" value="hmn" checked><label for="incl_langshmn">Hmong</label><br />
@@ -766,15 +778,18 @@ foreach($fincl_langs as $lang)
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsja" name="incl_langs[]" value="ja" checked><label for="incl_langsja">Japanese</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsjw" name="incl_langs[]" value="jw" checked><label for="incl_langsjw">Javanese</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langskn" name="incl_langs[]" value="kn" checked><label for="incl_langskn">Kannada</label><br />
-                        </div>
-                        <div style="width:25%;float:left;">
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langskk" name="incl_langs[]" value="kk" checked><label for="incl_langskk">Kazakh</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langskm" name="incl_langs[]" value="km" checked><label for="incl_langskm">Khmer</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsko" name="incl_langs[]" value="ko" checked><label for="incl_langsko">Korean</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsku" name="incl_langs[]" value="ku" checked><label for="incl_langsku">Kurdish (Kurmanji)</label><br />
+                        </div>
+                        <div style="width:25%;float:left;">
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsky" name="incl_langs[]" value="ky" checked><label for="incl_langsky">Kyrgyz</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langslo" name="incl_langs[]" value="lo" checked><label for="incl_langslo">Lao</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsla" name="incl_langs[]" value="la" checked><label for="incl_langsla">Latin</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langslv" name="incl_langs[]" value="lv" checked><label for="incl_langslv">Latvian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langslt" name="incl_langs[]" value="lt" checked><label for="incl_langslt">Lithuanian</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langslb" name="incl_langs[]" value="lb" checked><label for="incl_langslb">Luxembourgish</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmk" name="incl_langs[]" value="mk" checked><label for="incl_langsmk">Macedonian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmg" name="incl_langs[]" value="mg" checked><label for="incl_langsmg">Malagasy</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsms" name="incl_langs[]" value="ms" checked><label for="incl_langsms">Malay</label><br />
@@ -783,24 +798,30 @@ foreach($fincl_langs as $lang)
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmi" name="incl_langs[]" value="mi" checked><label for="incl_langsmi">Maori</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmr" name="incl_langs[]" value="mr" checked><label for="incl_langsmr">Marathi</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmn" name="incl_langs[]" value="mn" checked><label for="incl_langsmn">Mongolian</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmy" name="incl_langs[]" value="my" checked><label for="incl_langsmy">Myanmar (Burmese)</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsne" name="incl_langs[]" value="ne" checked><label for="incl_langsne">Nepali</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsno" name="incl_langs[]" value="no" checked><label for="incl_langsno">Norwegian</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsps" name="incl_langs[]" value="ps" checked><label for="incl_langsps">Pashto</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsfa" name="incl_langs[]" value="fa" checked><label for="incl_langsfa">Persian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langspl" name="incl_langs[]" value="pl" checked><label for="incl_langspl">Polish</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langspt" name="incl_langs[]" value="pt" checked><label for="incl_langspt">Portuguese</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langspa" name="incl_langs[]" value="pa" checked><label for="incl_langspa">Punjabi</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsro" name="incl_langs[]" value="ro" checked><label for="incl_langsro">Romanian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsru" name="incl_langs[]" value="ru" checked><label for="incl_langsru">Russian</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssm" name="incl_langs[]" value="sm" checked><label for="incl_langssm">Samoan</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsgd" name="incl_langs[]" value="gd" checked><label for="incl_langsgd">Scottish Gaelic</label><br />
                         </div>
                         <div style="width:25%;float:left;">
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssr" name="incl_langs[]" value="sr" checked><label for="incl_langssr">Serbian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsst" name="incl_langs[]" value="st" checked><label for="incl_langsst">Sesotho</label><br />
-                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssi" name="incl_langs[]" value="si" checked><label for="incl_langssi">Sinhalese</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssn" name="incl_langs[]" value="sn" checked><label for="incl_langssn">Shona</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssd" name="incl_langs[]" value="sd" checked><label for="incl_langssd">Sindhi</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssi" name="incl_langs[]" value="si" checked><label for="incl_langssi">Sinhala</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssk" name="incl_langs[]" value="sk" checked><label for="incl_langssk">Slovak</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssl" name="incl_langs[]" value="sl" checked><label for="incl_langssl">Slovenian</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsso" name="incl_langs[]" value="so" checked><label for="incl_langsso">Somali</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langses" name="incl_langs[]" value="es" checked><label for="incl_langses">Spanish</label><br />
-                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssu" name="incl_langs[]" value="su" checked><label for="incl_langssu">Sundanese</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssu" name="incl_langs[]" value="su" checked><label for="incl_langssu">Sudanese</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssw" name="incl_langs[]" value="sw" checked><label for="incl_langssw">Swahili</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssv" name="incl_langs[]" value="sv" checked><label for="incl_langssv">Swedish</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langstg" name="incl_langs[]" value="tg" checked><label for="incl_langstg">Tajik</label><br />
@@ -813,6 +834,7 @@ foreach($fincl_langs as $lang)
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsuz" name="incl_langs[]" value="uz" checked><label for="incl_langsuz">Uzbek</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsvi" name="incl_langs[]" value="vi" checked><label for="incl_langsvi">Vietnamese</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langscy" name="incl_langs[]" value="cy" checked><label for="incl_langscy">Welsh</label><br />
+                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsxh" name="incl_langs[]" value="xh" checked><label for="incl_langsxh">Xhosa</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsyi" name="incl_langs[]" value="yi" checked><label for="incl_langsyi">Yiddish</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsyo" name="incl_langs[]" value="yo" checked><label for="incl_langsyo">Yoruba</label><br />
                         <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langszu" name="incl_langs[]" value="zu" checked><label for="incl_langszu">Zulu</label><br />

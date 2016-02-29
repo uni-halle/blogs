@@ -288,7 +288,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
     }
 
     private function listing_action( $callback ) {
-        $listing_id = awpcp_request()->get_ad_id();
+        $listing_id = awpcp_request()->get_current_listing_id();
 
         if ( empty( $listing_id ) ) {
             awpcp_flash( __( 'No Ad ID was specified.', 'another-wordpress-classifieds-plugin' ), 'error' );

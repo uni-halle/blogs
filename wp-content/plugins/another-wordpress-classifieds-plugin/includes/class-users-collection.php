@@ -1,25 +1,30 @@
 <?php
 
 function awpcp_users_collection() {
-    global $wpdb;
-    return new AWPCP_UsersCollection( $wpdb, awpcp_payments_api() );
+    return new AWPCP_UsersCollection( awpcp_payments_api(), awpcp()->settings, $GLOBALS['wpdb'] );
 }
 
 class AWPCP_UsersCollection {
 
-    private $db;
     private $payments;
+    private $settings;
+    private $db;
 
-    public function __construct( $db, $payments ) {
-        $this->db = $db;
+    private $standard_fields = array( 'ID', 'user_login', 'user_email', 'user_url', 'display_name' );
+    private $meta_fields = array( 'public_name', 'first_name', 'last_name', 'nickname', 'awpcp-profile' );
+    private $other_fields = array( 'payment_terms' );
+
+    public function __construct( $payments, $settings, $db ) {
         $this->payments = $payments;
+        $this->settings = $settings;
+        $this->db = $db;
     }
 
     /**
      * @since 3.3.2
      */
-    public function get( $user_id ) {
-        $user = $this->find_by_id( $user_id );
+    public function get( $user_id, $fields ) {
+        $user = $this->find_by_id( $user_id, $fields );
 
         if ( is_null( $user ) ) {
             throw new AWPCP_Exception( sprintf( 'No User was found with ID: %d.', $user_id ) );
@@ -28,106 +33,209 @@ class AWPCP_UsersCollection {
         return $user;
     }
 
-    public function find_by_id( $user_id ) {
-        $query = $this->build_full_user_information_query( array( 'user_id' => $user_id ) );
-        $user_information = $this->db->get_results( $query );
+    public function find( $params ) {
+        $params = wp_parse_args( $params, array(
+            'fields' => $this->standard_fields,
+            'user_id' => null,
+            'role' => null,
+            'like' => null,
+            'limit' => null,
+        ) );
 
-        $users = $this->consolidate_users_information( $user_information );
-
-        return count( $users ) > 0 ? array_shift( $users ) : null;
-    }
-
-    private function build_full_user_information_query( $args = array() ) {
-        $args = wp_parse_args( $args, array( 'user_id' => null, 'search_string' => null, 'limit' => null ) );
-
-        $query = 'SELECT <wp-users>.ID, <wp-users>.user_login, <wp-users>.user_email, <wp-users>.user_url, <wp-users>.display_name, <wp-usermeta>.meta_key, <wp-usermeta>.meta_value ';
-        $query.= 'FROM <wp-users> JOIN <wp-usermeta> ON (<wp-usermeta>.user_id = <wp-users>.ID) ';
-
-        $conditions[] = "<wp-usermeta>.meta_key IN ('first_name', 'last_name', 'nickname', 'awpcp-profile')";
-
-        if ( ! empty( $args['user_id'] ) ) {
-            $conditions[] = $this->db->prepare( '<wp-users>.ID = %d', $args['user_id'] );
-        } else if ( ! empty( $args['search_string'] ) ) {
-            $conditions[] = "(<wp-users>.user_login LIKE '%<term>%' OR <wp-users>.display_name LIkE '%<term>%' OR <wp-usermeta>.meta_value LIKE '%<term>%')";
+        if ( ! in_array( 'ID', $params['fields'] ) ) {
+            array_push( $params['fields'], 'ID' );
         }
 
-        $query.= 'WHERE ' . implode( ' AND ', $conditions ) . ' ';
-        $query.= 'ORDER BY <wp-users>.display_name ASC, <wp-users>.ID ASC ';
-
-        if ( ! empty( $args['limit'] ) ) {
-            $query .= $this->db->prepare( 'LIMIT %d', $args['limit'] );
+        if ( in_array( 'public_name', $params['fields'] ) ) {
+            $params['fields'] = array_merge( $params['fields'], array( 'user_login', 'first_name', 'last_name', 'display_name' ) );
+            $params['fields'] = array_unique( $params['fields'] );
         }
 
-        $query = str_replace( '<wp-users>', $this->db->users, $query );
-        $query = str_replace( '<wp-usermeta>', $this->db->usermeta, $query );
-        $query = str_replace( '<term>', esc_sql( $args['search_string'] ), $query );
+        $params['standard_fields'] = array_intersect( $params['fields'], $this->standard_fields );
+        $params['meta_fields'] = array_intersect( $params['fields'], $this->meta_fields );
+        $params['other_fields'] = array_intersect( $params['fields'], $this->other_fields );
 
-        return $query;
-    }
-
-    private function consolidate_users_information( $users_information ) {
-        $users = array();
-
-        foreach ( $users_information as $information ) {
-            if ( ! isset( $users[ $information->ID ] ) ) {
-                $users[ $information->ID ] = new stdClass();
-                $users[ $information->ID ]->ID = $information->ID;
-                $users[ $information->ID ]->user_login = $information->user_login;
-                $users[ $information->ID ]->user_email = $information->user_email;
-                $users[ $information->ID ]->user_url = $information->user_url;
-                $users[ $information->ID ]->display_name = $information->display_name;
-
-                $users[ $information->ID ]->value = $users[ $information->ID ]->display_name;
-
-                $payment_terms = $this->payments->get_user_payment_terms( $information->ID );
-                $payment_terms_ids = array();
-
-                foreach ( $payment_terms as $type => $terms ) {
-                    foreach ( $terms as $term ) {
-                        $payment_terms_ids[] = "{$term->type}-{$term->id}";
-                    }
-                }
-
-                $users[ $information->ID ]->payment_terms = $payment_terms_ids;
-            }
-
-            if ( $information->meta_key == 'awpcp-profile' ) {
-                $profile_info = maybe_unserialize( $information->meta_value );
-                $users[ $information->ID ]->address = awpcp_array_data( 'address', '', $profile_info );
-                $users[ $information->ID ]->phone = awpcp_array_data( 'phone', '', $profile_info );
-                $users[ $information->ID ]->country = awpcp_array_data( 'country', '', $profile_info );
-                $users[ $information->ID ]->state = awpcp_array_data( 'state', '', $profile_info );
-                $users[ $information->ID ]->city = awpcp_array_data( 'city', '', $profile_info );
-                $users[ $information->ID ]->county = awpcp_array_data( 'county', '', $profile_info );
-            } else {
-                $users[ $information->ID ]->{$information->meta_key} = $information->meta_value;
-            }
+        if ( ! empty( $params['meta_fields'] ) ) {
+            $users = $this->find_users_with_meta_fields( $params );
+        } else {
+            $users = $this->find_users( $params );
         }
 
         return $users;
     }
 
-    public function find_by_search_string( $search_string ) {
-        $query = $this->build_full_user_information_query( array( 'search_string' => $search_string, 'limit' => 100 ) );
-        $users_information = $this->db->get_results( $query );
+    private function find_users_with_meta_fields( $params ) {
+        $sql = $this->build_users_query_with_meta_fields( $params );
 
-        return $this->consolidate_users_information( $users_information );
+        return $this->consolidate_users_information( $params, $this->db->get_results( $sql ) );
     }
 
-    public function get_users_with_full_information() {
-        $query = $this->build_full_user_information_query();
-        $users_information = $this->db->get_results( $query );
+    private function build_users_query_with_meta_fields( $params ) {
+        $query = 'SELECT <wp-users>.' . implode( ', <wp-users>.', $params['standard_fields'] ) . ', <wp-usermeta>.meta_key, <wp-usermeta>.meta_value ';
+        $query.= 'FROM <wp-users> ';
 
-        return $this->consolidate_users_information( $users_information );
+        if ( ! empty( $params['role'] ) ) {
+            $query.= 'JOIN <wp-usermeta> AS user_roles ON (user_roles.user_id = <wp-users>.ID) ';
+            $conditions[] = "user_roles.meta_key = 'wp_capabilities'";
+            $conditions[] = "user_roles.meta_value LIKE '%\"" . $params['role'] . "\"%'";
+        }
+
+        $query.= 'JOIN <wp-usermeta> ON (<wp-usermeta>.user_id = <wp-users>.ID) ';
+
+        if ( ! empty( $params['meta_fields'] ) ) {
+            $conditions[] = "<wp-usermeta>.meta_key IN ('" . implode( "', '", $params['meta_fields'] ) . "')";
+        }
+
+        if ( ! empty( $params['user_id'] ) ) {
+            $conditions[] = $this->db->prepare( '<wp-users>.ID = %d', $params['user_id'] );
+        }
+
+        if ( ! empty( $params['like'] ) ) {
+            $conditions[] = "(<wp-users>.user_login LIKE '%<term>%' OR <wp-users>.display_name LIkE '%<term>%' OR <wp-usermeta>.meta_value LIKE '%<term>%')";
+        }
+
+        if ( isset( $conditions ) && ! empty( $conditions ) ) {
+            $query.= 'WHERE ' . implode( ' AND ', $conditions ) . ' ';
+        }
+
+        $query.= 'ORDER BY <wp-users>.display_name ASC, <wp-users>.ID ASC ';
+
+        if ( ! empty( $params['limit'] ) ) {
+            $query .= $this->db->prepare( 'LIMIT %d', $params['limit'] );
+        }
+
+        $query = str_replace( '<wp-users>', $this->db->users, $query );
+        $query = str_replace( '<wp-usermeta>', $this->db->usermeta, $query );
+        $query = str_replace( '<term>', esc_sql( $params['like'] ), $query );
+
+        return $query;
     }
 
-    public function get_users_with_basic_information() {
-        $query = "SELECT <wp-users>.ID, <wp-users>.user_login, <wp-users>.user_email, <wp-users>.user_url, <wp-users>.display_name ";
+    private function consolidate_users_information( $params, $users_information ) {
+        $users = array();
+
+        $records_count = count( $users_information );
+        $should_include_payment_terms = in_array( 'payment_terms', $params['other_fields'] );
+        $should_include_public_name = in_array( 'public_name', $params['meta_fields'] );
+
+        foreach ( $users_information as $current_user => $user_info ) {
+            if ( ! isset( $users[ $user_info->ID ] ) ) {
+                $user = new stdClass();
+
+                foreach ( $params['standard_fields'] as $field_name ) {
+                    $user->$field_name = $user_info->$field_name;
+                }
+
+                if ( isset( $user_info->display_name ) ) {
+                    $user->value = $user_info->display_name;
+                }
+
+                if ( $should_include_payment_terms ) {
+                    $payment_terms = $this->payments->get_user_payment_terms( $user_info->ID );
+                    $payment_terms_ids = array();
+
+                    foreach ( $payment_terms as $type => $terms ) {
+                        foreach ( $terms as $term ) {
+                            $payment_terms_ids[] = "{$term->type}-{$term->id}";
+                        }
+                    }
+
+                    $user->payment_terms = $payment_terms_ids;
+                }
+
+                $users[ $user_info->ID ] = $user;
+            }
+
+            if ( $user_info->meta_key == 'awpcp-profile' ) {
+                $profile_info = maybe_unserialize( $user_info->meta_value );
+                $users[ $user_info->ID ]->address = awpcp_array_data( 'address', '', $profile_info );
+                $users[ $user_info->ID ]->phone = awpcp_array_data( 'phone', '', $profile_info );
+                $users[ $user_info->ID ]->country = awpcp_array_data( 'country', '', $profile_info );
+                $users[ $user_info->ID ]->state = awpcp_array_data( 'state', '', $profile_info );
+                $users[ $user_info->ID ]->city = awpcp_array_data( 'city', '', $profile_info );
+                $users[ $user_info->ID ]->county = awpcp_array_data( 'county', '', $profile_info );
+            } else {
+                $users[ $user_info->ID ]->{$user_info->meta_key} = $user_info->meta_value;
+            }
+
+            if ( $current_user >= $records_count - 1 ) {
+                $is_the_last_record_for_this_user = true;
+            } else if ( $users_information[ $current_user + 1 ]->ID != $user_info->ID ) {
+                $is_the_last_record_for_this_user = true;
+            } else {
+                $is_the_last_record_for_this_user = false;
+            }
+
+            if ( $should_include_public_name && $is_the_last_record_for_this_user ) {
+                $users[ $last_user_id ]->public_name = $this->get_user_public_name( $users[ $last_user_id ] );
+            }
+
+            $last_user_id = $user_info->ID;
+        }
+
+        return $users;
+    }
+
+    private function get_user_public_name( $user_info ) {
+        $name = $this->get_user_public_name_using_selected_format( $user_info );
+
+        if ( empty( $name ) ) {
+            $name = trim( $user_info->display_name );
+        }
+
+        if ( empty( $name ) ) {
+            $name = trim( $user_info->first_name . ' ' . $user_info->last_name );
+        }
+
+        if ( empty( $name ) ) {
+            $name = trim ( $user_info->user_login );
+        }
+
+        return $name;
+    }
+
+    private function get_user_public_name_using_selected_format( $user_info ) {
+        $format = $this->settings->get_option( 'user-name-format' );
+
+        if ( $format == 'user_login' ) {
+            $name = trim( $user_info->user_login );
+        } else if ( $format == 'firstname_first' ) {
+            $name = trim( $user_info->first_name . ' ' . $user_info->last_name );
+        } else if ( $format == 'lastname_first' ) {
+            $name = trim( $user_info->last_name . ' ' . $user_info->first_name );
+        } else if ( $format == 'firstname' ) {
+            $name = trim( $user_info->first_name );
+        } else if ( $format == 'lastname' ) {
+            $name = trim( $user_info->last_name );
+        } else /*if ( $format == 'display_name' )*/ {
+            $name = trim( $user_info->display_name );
+        }
+
+        return $name;
+    }
+
+    private function find_users( $params ) {
+        $query = 'SELECT <wp-users>.' . implode( ', <wp-users>.', $params['standard_fields'] ) . ' ';
         $query.= 'FROM <wp-users> ';
         $query.= 'ORDER BY <wp-users>.display_name ASC, <wp-users>.ID ASC ';
 
         $query = str_replace( '<wp-users>', $this->db->users, $query );
 
         return $this->db->get_results( $query );
+    }
+
+    public function find_by_id( $user_id, $fields ) {
+        $users = $this->find( array( 'user_id' => $user_id, 'fields' => $fields ) );
+        return !empty( $users ) ? array_shift( $users ) : null;
+    }
+
+    public function get_users_with_full_information() {
+        return $this->find( array(
+            'fields' => array_merge( $this->standard_fields, $this->meta_fields, $this->other_fields ),
+        ) );
+    }
+
+    public function get_users_with_basic_information() {
+        return $this->find( array( 'fields' => array_merge( $this->standard_fields, array( 'public_name' ) ) ) );
     }
 }

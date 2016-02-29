@@ -20,6 +20,7 @@
 */
 
 require_once('ShortCodeLoader.php');
+require_once('DereferenceShortcodeVars.php');
 
 class CFDBShortcodeExportUrl extends ShortCodeLoader {
 
@@ -30,6 +31,7 @@ class CFDBShortcodeExportUrl extends ShortCodeLoader {
      */
     public function handleShortcode($atts, $content = null) {
         $atts = $this->decodeAttributes($atts);
+        $atts = $this->dereferenceShortCodeVars($atts); // special case for this short code
         $params = array();
         $params[] = $this->getAdminUrlPrefix('admin-ajax.php');
         $params[] = 'action=cfdb-export';
@@ -61,6 +63,18 @@ class CFDBShortcodeExportUrl extends ShortCodeLoader {
 
         return sprintf('<a href="%s">%s</a>', $url, $linkText);
     }
+
+    // https://wordpress.org/support/topic/using-a-variable-from-url-in-shortcode?replies=8#post-7940089
+    public function dereferenceShortCodeVars($atts) {
+        $deref = new DereferenceShortcodeVars;
+        if (is_array($atts)) {
+            foreach ($atts as $key => $value) {
+                $atts[$key] = $deref->convert($value);
+            }
+        }
+        return $atts;
+    }
+
 
     // TODO: this method is duplicated from CFDB7Plugin.php
     public function getAdminUrlPrefix($path) {

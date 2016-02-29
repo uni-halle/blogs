@@ -513,10 +513,17 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
 
     protected function get_user_info($user_id=false) {
         $user_id = $user_id === false ? get_current_user_id() : $user_id;
-        $data = awpcp_users_collection()->find_by_id( $user_id );
+
+        $data = awpcp_users_collection()->find_by_id(
+            $user_id,
+            array(
+                'ID', 'user_login', 'user_email', 'user_url', 'display_name',
+                'public_name', 'first_name', 'last_name', 'nickname', 'awpcp-profile'
+            )
+        );
 
         $translations = array(
-            'ad_contact_name' => array('display_name', 'user_login', 'username'),
+            'ad_contact_name' => 'public_name',
             'ad_contact_email' => 'user_email',
             'ad_contact_phone' => 'phone',
             'websiteurl' => 'user_url',
@@ -528,15 +535,9 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
 
         $info = array();
 
-        foreach ($translations as $field => $keys) {
-            if ( ! empty( $info[ $field ] ) ) {
-                continue;
-            }
-
-            $value = awpcp_get_object_property_from_alternatives( $data, $keys );
-
-            if ( ! empty( $value ) ) {
-                $info[ $field ] = $value;
+        foreach ( $translations as $field => $key ) {
+            if ( isset( $data->$key ) && !empty( $data->$key ) ) {
+                $info[ $field ] = $data->$key;
             }
         }
 

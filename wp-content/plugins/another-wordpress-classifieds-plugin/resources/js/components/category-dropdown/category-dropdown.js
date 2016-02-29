@@ -34,12 +34,14 @@ function( $ ) {
 
         // using a single dropdown
         } else {
-            self.dropdown.change(function() {
+            function onDropDownChange() {
                 var category_id = parseInt(self.dropdown.val(), 10);
                 $.publish('/category/updated' , [self.dropdown, isNaN(category_id) ? null : category_id]);
-            });
+            }
 
-            setTimeout( function() { self.dropdown.change(); }, 100 );
+            self.dropdown.change( onDropDownChange );
+
+            setTimeout( onDropDownChange, 100 );
         }
     };
 

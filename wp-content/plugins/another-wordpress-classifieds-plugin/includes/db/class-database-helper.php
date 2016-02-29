@@ -19,10 +19,18 @@ class AWPCP_Database_Helper {
     }
 
     public function get_charset() {
-        return $this->db->charset === 'utf8mb4' ? $this->db->charset : 'utf8';
+        if ( $this->db->charset === 'utf8mb4' && $this->db->has_cap( 'utf8mb4' ) ) {
+            return 'utf8mb4';
+        }
+
+        return 'utf8';
     }
 
     public function get_collate() {
-        return $this->db->charset === 'utf8mb4' ? $this->db->collate : 'utf8_general_ci';
+        if ( $this->db->charset === 'utf8mb4' && $this->db->has_cap( 'utf8mb4' ) ) {
+            return $this->db->collate;
+        }
+
+        return 'utf8_general_ci';
     }
 }

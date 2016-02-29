@@ -339,7 +339,7 @@ function powerpress_playlist_shortcode( $attr ) {
 	if( !empty($post_type) )
 	{
 		$PostTypeSettingsArray = get_option('powerpress_posttype_'.$post_type);
-		if( is_array($PostTypeSettingsArray[ $slug ] ) )
+		if( isset($PostTypeSettingsArray[ $slug ]) && is_array($PostTypeSettingsArray[ $slug ] ) )
 		{
 			$ProgramSettings = $PostTypeSettingsArray[ $slug ];
 		}

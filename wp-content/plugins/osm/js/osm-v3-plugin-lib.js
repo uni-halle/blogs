@@ -4,6 +4,86 @@
   blog:   http://www.HanBlog.net
 */
 
+function osm_addClusterPopupClickhandler(a_MapObj, a_MapStr) {
+
+  var container_div_id = a_MapStr + "_popup";
+  var content_div_id = a_MapStr + "_popup-content";
+  var closer_div_id = a_MapStr + "_popup-closer";
+
+  var container = document.getElementById(container_div_id);
+  var content = document.getElementById(content_div_id);
+  var closer = document.getElementById(closer_div_id);
+
+  var popup = new ol.Overlay(/** @type {olx.OverlayOptions} */ ({
+    element: container,
+    autoPan: true,
+    autoPanAnimation: {
+      duration: 250
+    }
+  }));
+        
+  closer.onclick = function() {
+    popup.setPosition(undefined);
+    closer.blur();
+    return false;
+  };
+            
+  a_MapObj.addOverlay(popup);
+
+  var ClickdisplayFeatureInfo = function(a_evt) {
+    var lonlat = ol.proj.transform(a_evt.coordinate, "EPSG:3857", "EPSG:4326");
+    var lon = lonlat[0];
+    var lat = lonlat[1];
+
+	 pixel = a_evt.pixel;
+		
+    var features = [];
+    var NumOfNamedFeatures = 0;
+    a_MapObj.forEachFeatureAtPixel(pixel, function(feature, layer) {
+      features.push(feature);
+    });
+    if (features.length > 0) {
+      
+      var name_str, desc_str, info = [];
+      var description_str = [];
+      var i, ii;
+      for (i = 0, ii = features.length; i < ii; ++i) {
+        var cluster_features = features[i].get('features');
+        if (cluster_features.length == 1){
+        if (cluster_features[i].get("name")){
+          NumOfNamedFeatures++;
+          name_str = cluster_features[i].get("name");
+          desc_str = cluster_features[i].get("desc");
+          description_str = features[i].get("description");
+          if (desc_str != undefined){
+            name_str = name_str + "<br>" + desc_str;
+          }
+          if (description_str != undefined){
+            name_str = name_str + "<br>" + description_str;
+          }
+          if (cluster_features[i].length > 0) {name_str = name_str + "<br>"}
+        }
+        else{
+
+        }
+        info.push(name_str);
+      }
+      }
+
+        content.innerHTML = info.join("") || "(unknown)";
+        if (NumOfNamedFeatures > 0){
+          popup.setPosition(a_evt.coordinate);
+        }
+         else {
+           popup.setPosition(undefined);
+        }
+      } 
+    };
+    a_MapObj.on("singleclick", function(evt) {ClickdisplayFeatureInfo(evt);}); 
+}
+
+
+
 function osm_addPopupClickhandler(a_MapObj, a_MapStr) {
   var container_div_id = a_MapStr + "_popup";
   var content_div_id = a_MapStr + "_popup-content";

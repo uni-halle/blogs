@@ -1,7 +1,12 @@
 <?php
 
 function awpcp_meta() {
-    return new AWPCP_Meta( awpcp_page_title_builder(), awpcp_meta_tags_generator(), awpcp_request() );
+    return new AWPCP_Meta(
+        awpcp_page_title_builder(),
+        awpcp_meta_tags_generator(),
+        awpcp_query(),
+        awpcp_request()
+    );
 }
 
 
@@ -17,9 +22,10 @@ class AWPCP_Meta {
 
     private $doing_opengraph = false;
 
-    public function __construct( $title_builder, $meta_tags_genertor, $request ) {
+    public function __construct( $title_builder, $meta_tags_genertor, $query, $request ) {
         $this->title_builder = $title_builder;
         $this->meta_tags_genertor = $meta_tags_genertor;
+        $this->query = $query;
         $this->request = $request;
 
         add_action( 'template_redirect', array( $this, 'configure' ) );
@@ -39,7 +45,7 @@ class AWPCP_Meta {
     }
 
     private function find_current_listing() {
-        $this->ad_id = absint( $this->request->get_ad_id() );
+        $this->ad_id = $this->request->get_current_listing_id();
 
         if ( $this->ad_id === 0 ) {
             return null;
@@ -61,7 +67,7 @@ class AWPCP_Meta {
     }
 
     private function configure_opengraph_meta_tags() {
-        if ( ! $this->is_single_listing_page() ) {
+        if ( ! $this->query->is_single_listing_page() ) {
             return;
         }
 
@@ -75,27 +81,8 @@ class AWPCP_Meta {
         }
     }
 
-    private function is_single_listing_page() {
-        // we want't to use the original query but calling wp_reset_query
-        // breaks things for Events Manager and maybe other plugins
-        if ( ! isset( $GLOBALS['wp_the_query'] ) ) {
-            return false;
-        }
-
-        $query = $GLOBALS['wp_the_query'];
-        if ( ! $query->is_page( awpcp_get_page_id_by_ref( 'show-ads-page-name' ) ) ) {
-            return false;
-        }
-
-        if ( is_null( $this->ad ) ) {
-            return false;
-        }
-
-        return true;
-    }
-
     private function configure_title_generation() {
-        if ( ! $this->is_single_listing_page() && ! $this->is_browse_categories_page() ) {
+        if ( ! $this->query->is_single_listing_page() && ! $this->is_browse_categories_page() ) {
             return;
         }
 
@@ -124,8 +111,9 @@ class AWPCP_Meta {
     }
 
     private function configure_page_dates() {
-        if ( ! $this->is_single_listing_page() )
+        if ( ! $this->query->is_single_listing_page() ) {
             return;
+        }
 
         add_filter( 'get_the_date', array( $this, 'get_the_date' ), 10, 2 );
         add_filter( 'get_the_modified_date', array( $this, 'get_the_modified_date' ), 10, 2 );

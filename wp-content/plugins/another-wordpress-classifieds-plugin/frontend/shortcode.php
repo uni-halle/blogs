@@ -423,7 +423,7 @@ function awpcp_get_edit_listing_menu_item() {
     $settings = awpcp()->settings;
 
     try {
-        $listing = $listings->get( $request->get_ad_id() );
+        $listing = $listings->get( $request->get_current_listing_id() );
     } catch( AWPCP_Exception $e ) {
         $listing = null;
     }
