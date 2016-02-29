@@ -34,12 +34,30 @@ The exceptions to this license are as follows:
 * stepper v3.0.5 - 2014-02-06, Copyright 2014 Ben Plum, MIT Licensed
 * Hammer.JS - v2.0.4 - Copyright (c) 2014 Jorik Tangelder, MIT license
 * SmoothScroll - v1.3.8 (Balazs Galambosi), MIT license
-* Icon Set:	Entypo is licensed under SIL Open-Font License
+* Icon Set: Font Awesome is licensed under SIL OFL 1.1 and MIT License
 * The images screenshot.png, inc/assets/img/customizr-theme-customizer.png, inc/assets/img/customizr-theme-responsive.png, inc/admin/img/ are creations of Nicolas Guillaume and licensed under GPL v2+
 * The image slider-loader.gif is released under the WTFPL license (http://www.wtfpl.net/, GPL compatible), generated on http://ajaxload.info/
 
 
 #######################  Changelog ######################
+= 3.4.19 February 16th 2016 =
+* Add : 3 new social icons: VKontakte, Yelp, Xing
+* Imp: woocommerce icon cart now rendered with font-awesome
+* Imp: remove outdated old ie fixes in the head
+* Imp: move front and back icons to Font Awesome set
+* Add: add customizer setting to optionally load font-awesome resources
+* Imp: logo - replace previous upload control in the customizer with cropped images control
+* Updated: translation fr_CA
+* Fix: slider - avoid caption increasing slides height
+* Fix: amend missing comma in the previous commit
+* Fix: better rendering of the social-block in sidebar and colophon when they take up more than one line
+* Fix: amend typo in the new control css
+* Fix: refine compatibility with old customizr versions
+* Fix: make icons in singular post / page contexts skin based
+* Fix: never display edit links in the customizer fixes #361
+* Fix: avoid outline showing up on links click in ff (v44) fixes #538
+* Fix: fix potential warning when using custom skins fixes #540 
+
 = 3.4.18 January 30th 2016 =
 * Updated Italian translation plus a typo
 * Add: new option - display woocommerce cart in the header when sticky fixes #499

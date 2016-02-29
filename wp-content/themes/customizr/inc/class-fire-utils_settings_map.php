@@ -111,7 +111,8 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
         //ADVANCED OPTIONS
         'tc_custom_css_option_map',
         'tc_performance_option_map',
-        'tc_placeholders_notice_map'
+        'tc_placeholders_notice_map',
+        'tc_external_resources_option_map'
       );
 
       foreach ( $_settings_sections as $_section_cb ) {
@@ -143,16 +144,23 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                    LOGO & FAVICON SECTION
     ------------------------------------------------------------------------------------------------------*/
     function tc_logo_favicon_option_map( $get_default = null ) {
+      global $wp_version;
       return array(
               'tc_logo_upload'  => array(
-                                'control'   =>  'TC_Customize_Upload_Control' ,
+                                'control'   =>  version_compare( $wp_version, '4.3', '>=' ) ? 'TC_Customize_Cropped_Image_Control' : 'TC_Customize_Upload_Control',
                                 'label'     =>  __( 'Logo Upload (supported formats : .jpg, .png, .gif, svg, svgz)' , 'customizr' ),
                                 'title'     => __( 'LOGO' , 'customizr'),
-                                'section'   => 'logo_sec' ,
-                                'type'      => 'tc_upload',
-                                'sanitize_callback' => array( $this , 'tc_sanitize_number' )
+                                'section'   => 'logo_sec',
+                                'sanitize_callback' => array( $this , 'tc_sanitize_number' ),
+                        //we can define suggested cropping area and allow it to be flexible (def 150x150 and not flexible)
+                                'width'     => 250,
+                                'height'    => 100,
+                                'flex_width' => true,
+                                'flex_height' => true,
+                                //to keep the selected cropped size
+                                'dst_width'  => false,
+                                'dst_height'  => false
               ),
-
               //force logo resize 250 * 85
               'tc_logo_resize'  => array(
                                 'default'   =>  1,
@@ -163,11 +171,18 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'notice'    => __( "Uncheck this option to keep your original logo dimensions." , 'customizr')
               ),
               'tc_sticky_logo_upload'  => array(
-                                'control'   =>  'TC_Customize_Upload_Control' ,
+                                'control'   =>  version_compare( $wp_version, '4.3', '>=' ) ? 'TC_Customize_Cropped_Image_Control' : 'TC_Customize_Upload_Control',
                                 'label'     =>  __( 'Sticky Logo Upload (supported formats : .jpg, .png, .gif, svg, svgz)' , 'customizr' ),
                                 'section'   =>  'logo_sec' ,
-                                'type'      => 'tc_upload',
                                 'sanitize_callback' => array( $this , 'tc_sanitize_number' ),
+                        //we can define suggested cropping area and allow it to be flexible (def 150x150 and not flexible)
+                                'width'     => 75,
+                                'height'    => 30,
+                                'flex_width' => true,
+                                'flex_height' => true,
+                                //to keep the selected cropped size
+                                'dst_width'  => false,
+                                'dst_height'  => false,
                                 'notice'    => __( "Use this upload control to specify a different logo on sticky header mode." , 'customizr')
               ),
 
@@ -893,6 +908,15 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'type'        => 'dropdown-pages' ,
                                 'priority'      => 1,
               ),
+              'tc_show_post_navigation_home'  =>  array(
+                                'default'       => 1,
+                                'control'     => 'TC_controls' ,
+                                'label'         => __( "Display navigation in your home blog" , "customizr" ),
+                                'section'       => 'frontpage_sec',
+                                'type'          => 'checkbox',
+                                'priority'      => 1,
+                                'transport'     => 'postMessage',
+              ),
               //page for posts
               'tc_blog_restrict_by_cat'       => array(
                                 'default'     => array(),
@@ -1180,6 +1204,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                   POST LISTS SECTION
     ------------------------------------------------------------------------------------------------------*/
     function tc_post_list_option_map( $get_default = null ) {
+      global $wp_version;
       return array(
               'tc_post_list_excerpt_length'  =>  array(
                                 'default'       => 50,
@@ -1210,14 +1235,23 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'type'          => 'checkbox',
                                 'priority'      => 70
               ),
-              'tc_post_list_default_thumb' => array(
-                                'control'       =>  'TC_Customize_Upload_Control',
+
+              'tc_post_list_default_thumb'  => array(
+                                'control'   =>  version_compare( $wp_version, '4.3', '>=' ) ? 'TC_Customize_Cropped_Image_Control' : 'TC_Customize_Upload_Control',
                                 'label'         => __( 'Upload a default thumbnail' , 'customizr' ),
-                                'section'       =>  'post_lists_sec',
-                                'type'          =>  'tc_upload',
-                                'sanitize_callback' => array( $this , 'tc_sanitize_number'),
-                                'priority'      =>  73,
+                                'section'   =>  'post_lists_sec' ,
+                                'sanitize_callback' => array( $this , 'tc_sanitize_number' ),
+                        //we can define suggested cropping area and allow it to be flexible (def 150x150 and not flexible)
+                                'width'         => 570,
+                                'height'        => 350,
+                                'flex_width'    => true,
+                                'flex_height'   => true,
+                                //to keep the selected cropped size
+                                'dst_width'     => false,
+                                'dst_height'    => false,
+                                'priority'      =>  73
               ),
+
 
               'tc_post_list_thumb_shape'  =>  array(
                                 'default'       => 'rounded',
@@ -1908,6 +1942,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'priority'      => 5,
                                 'transport'   => 'postMessage'
               ),
+
               'tc_show_post_navigation_page'  =>  array(
                                 'default'       => 0,
                                 'control'     => 'TC_controls' ,
@@ -2096,10 +2131,10 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
               'tc_minified_skin'  =>  array(
                                 'default'       => 1,
                                 'control'   => 'TC_controls' ,
-                                'label'       => __( "Performance : use the minified CSS stylesheet", 'customizr' ),
+                                'label'       => __( "Performance : use the minified CSS stylesheets", 'customizr' ),
                                 'section'     => 'performances_sec' ,
                                 'type'        => 'checkbox' ,
-                                'notice'    => __( 'Using the minified version of the skin stylesheet will speed up your webpage load time.' , 'customizr' ),
+                                'notice'    => __( 'Using the minified version of the stylesheets will speed up your webpage load time.' , 'customizr' ),
               ),
               'tc_img_smart_load'  =>  array(
                                 'default'       => 0,
@@ -2129,7 +2164,38 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
       );
     }
 
+    /*-----------------------------------------------------------------------------------------------------
+                              FRONT END EXTERNAL RESOURCES SECTION
+    ------------------------------------------------------------------------------------------------------*/
+    function tc_external_resources_option_map( $get_default = null ) {
+      return array(
+              'tc_font_awesome_icons'  =>  array(
+                                'default'       => 1,
+                                'control'   => 'TC_controls',
+                                'label'       => __( "Load Font Awesome set of icons", 'customizr' ),
+                                'section'     => 'extresources_sec',
+                                'type'        => 'checkbox',
+                                'notice'      => sprintf('<strong>%1$s</strong>. %2$s',
+                                    __( 'Use with caution' , 'customizr'),
+                                    __( 'When checked, the Font Awesome icons will be loaded on front end. You might want to load the Font Awesome icons with a custom code, or let a plugin do it for you.', 'customizr' )
+                                )
+              ),
+              'tc_font_awesome_css'  =>  array(
+                                'default'       => 0,
+                                'control'   => 'TC_controls',
+                                'label'       => __( "Load Font Awesome CSS", 'customizr' ),
+                                'section'     => 'extresources_sec',
+                                'type'        => 'checkbox',
+                                'notice'      => sprintf('%1$s </br>%2$s <a href="%3$s" target="_blank">%4$s<span style="font-size: 17px;" class="dashicons dashicons-external"></span></a>.',
+                                    __( "When checked, the additional Font Awesome CSS stylesheet will be loaded. This stylesheet is not loaded by default to save bandwidth but you might need it if you want to use the whole Font Awesome CSS.", 'customizr' ),
+                                    __( "Check out some example of uses", 'customizr'),
+                                    esc_url('http://fontawesome.io/examples/'),
+                                    __('here', 'customizr')
+                                )
+              )
 
+      );
+    }
 
     /***************************************************************
     * POPULATE PANELS
@@ -2472,6 +2538,11 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                             'title'     =>  __( 'Front-end placeholders and help blocks' , 'customizr' ),
                             'priority'    => 30,
                             'panel'   => 'tc-advanced-panel'
+        ),
+        'extresources_sec'    => array(
+                            'title'     =>  __( 'Front-end Icons (Font Awesome)' , 'customizr' ),
+                            'priority'    => 40,
+                            'panel'   => 'tc-advanced-panel'
         )
       );
       return array_merge( $_sections, $_new_sections );
@@ -2722,9 +2793,6 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
       $value = (int) $value; // Force the value into integer type.
         return ( 0 < $value ) ? $value : null;
     }
-
-
-
 
     /**
      * adds sanitization callback funtion : url
