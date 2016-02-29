@@ -2311,7 +2311,7 @@ header {
     top: 30px;
     text-align: center; }
     header .logo img {
-      width: 230px; }
+      width: 300px; }
 
 .mainnav {
   -webkit-font-smoothing: antialiased;
@@ -2576,7 +2576,7 @@ header {
         .stage .controls .slick-dots {
           text-align: center; } }
   .stage.narrow .slide {
-    min-height: 150px; }
+    min-height: 250px; }
   .stage.tiny .slide {
     min-height: 80px; }
   .stage.narrow .overlaycolumn,
@@ -2904,9 +2904,10 @@ footer {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
   footer .logo {
-    padding-top: 10px; }
+    padding-top: 20px;
+    padding-bottom: 10px; }
     footer .logo img {
-      width: 130px; }
+      width: 200px; }
   footer .column {
     margin-bottom: 2em; }
     @media (min-width: 590px) {

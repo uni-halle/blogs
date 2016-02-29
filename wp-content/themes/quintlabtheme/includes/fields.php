@@ -690,6 +690,24 @@ acf_add_local_field_group(array (
                 ),
             ),
         ),
+        array (
+            'key' => 'field_56ab1b0fafb80',
+            'label' => 'Google Map',
+            'name' => 'map_position',
+            'type' => 'google_map',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array (
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'center_lat' => '51.497472',
+            'center_lng' => '11.931878',
+            'zoom' => '',
+            'height' => 200,
+        ),
     ),
     'location' => array (
         array (

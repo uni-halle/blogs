@@ -13,6 +13,7 @@ define('QL_BASE', get_bloginfo('url') . '/wp-content/themes/quintlabtheme/');
 require_once('includes/fields.php');
 require_once('includes/wp_simpleform.php');
 
+
 //compat: missing acf
 //if (!function_exists('the_field')) { function the_field() {} }
 //if (!function_exists('has_sub_field')) { function has_sub_field() {} }
@@ -28,10 +29,12 @@ function ql_init_i18n(){
 //register required resources
 add_action('wp_enqueue_scripts', 'ql_init_resources');
 function ql_init_resources() {
+    wp_enqueue_script('google_maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCxOmQBuLROy7XRtQ8SL5JRAPSDTIEeg80', array());
     wp_enqueue_script('slick-carousel', QL_BASE . 'bower_components/slick-carousel/slick/slick.min.js', array('jquery'));
-    wp_enqueue_script('ql_script', QL_BASE . 'js/quintlab.js', array('jquery', 'slick-carousel'));
+    wp_enqueue_script('ql_script', QL_BASE . 'js/quintlab.js', array('jquery', 'slick-carousel', 'google_maps'));
     wp_localize_script('ql_script', 'ql', array(
         'BASE' => get_bloginfo('url'),
+        'THEME' => QL_BASE,
         'AJAX_URL' => admin_url('admin-ajax.php'),
     ));
     wp_enqueue_style('ql_style', QL_BASE . 'css/quintlab.css');

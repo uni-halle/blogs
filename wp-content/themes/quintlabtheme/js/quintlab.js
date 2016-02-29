@@ -49,6 +49,32 @@
             $('body').removeClass('tiny medium large').addClass($(this).attr('class'));
             return false;
         });
+
+        //maps
+        $('.googlemap').each(function() {
+            var map,
+                marker,
+                $map = $(this),
+                attr = $map.attr('options'),
+                opts = attr ? $.parseJSON(attr) : {},
+                center = {lat: opts.lat, lng: opts.lng};
+
+            map = new google.maps.Map($map[0], {
+                center: center,
+                zoom: opts.zoom
+            });
+
+            marker = new google.maps.Marker({
+                position: center,
+                map: map,
+                icon: {
+                    url: ql.THEME + 'img/icon_mapmarker.png',
+                    size: new google.maps.Size(40, 40),
+                    anchor: new google.maps.Point(20, 20)
+                },
+                title: opts.title
+            })
+        });
     }
 
     $(init);

@@ -31,6 +31,21 @@
                 </figure>
                 <?php
             }
+
+            // map
+            if (get_field('map_position')) {
+                $map_position = get_field('map_position');
+                $options = array(
+                    'lat' => (float)$map_position['lat'],
+                    'lng' => (float)$map_position['lng'],
+                    'title' => 'Quintlab - ' . $map_position['address'],
+                    'zoom' => 16,
+                );
+                ?>
+                <figure class='slide googlemap' options="<?php echo htmlspecialchars(json_encode($options)); ?>"></figure>
+                <?php
+            }
+
             ?>
             <div class='controls'>
                 <div class='container'></div>

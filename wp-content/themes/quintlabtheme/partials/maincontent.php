@@ -21,7 +21,6 @@
         echo "<div class='column'>";
         do_shortcode("[wp_simpleform]");
         echo "</div>";
-
     } else {
 
         switch ($style) {

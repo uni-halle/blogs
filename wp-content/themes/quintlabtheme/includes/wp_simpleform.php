@@ -9,14 +9,11 @@ Author URI: http://www.3dbits.de
 License: custom
 */
 
-define("WPSF_VERSION", "0.0.1");
+define("WPSF_VERSION", "0.0.2");
 
 define("WPSF_BASE", basename(dirname(__FILE__)));
 define("WPSF_URL", WP_PLUGIN_URL . "/" . WPSF_BASE);
 define("WPSF_PATH", WP_PLUGIN_DIR . "/" . WPSF_BASE);
-
-define('WPSF_SENDMAIL', true);
-
 
 
 //autoloading all includes
@@ -34,20 +31,27 @@ class WPSimpleform {
         }
     }
 
-    public function render_form() {
-        $formoptions = apply_filters('wpsf_formoptions', $this->default_options());
+    public function render_form($attrs) {
+        $attrs = shortcode_atts(array("id"=>"1"), $attrs, "wp_simpleform");
+        $formoptions = apply_filters('wpsf_formoptions', $this->default_options(), $attrs["id"]);
         $formfields = isset($formoptions["formfields"]) ? $formoptions["formfields"] : $this->default_formfields();
         $formclass = $formoptions["formclass"];
         $errorclass = $formoptions["errorclass"];
         $messageclass = $formoptions["messageclass"];
-        $errors = $this->is_submission() ? $this->validate($formfields) : null;
-        $success = !$this->is_submission() && isset($_GET["wpsf_success"]) && $_GET["wpsf_success"] == "true";
+
+        if ($this->is_submission()) {
+            $errors = $this->validate($formfields);
+            $success = false;
+        } else {
+            $errors = false;
+            $success = isset($_GET["wpsf_success"]) && $_GET["wpsf_success"] == "true";
+        }
 
         ?>
         <form class='<?php echo $formclass; ?>' method='post'>
             <?php echo $success ? "<div class='$messageclass'>" . $formoptions["successmessage"] . "</div>" : ""; ?>
             <?php foreach ($formfields as $field): ?>
-                <div class='formrow <?php echo $this->has_error($errors, $field) ? $errorclass : ''; ?>'>
+                <div class='formrow <?php echo $field["type"]; ?> <?php echo $this->has_error($errors, $field) ? $errorclass : ''; ?>'>
                     <?php
                     $this->render_field($field);
                     if ($this->has_error($errors, $field)) {
@@ -73,6 +77,8 @@ class WPSimpleform {
             echo "<label class='$labelclass'>$field[label] $captcha[label]</label>";
             echo "<input name='wpsf_captchaid' type='hidden' value='$captcha[id]'>";
             echo "<input class='text' name='$field[name]' type='text'>";
+        } else if (isset($field["type"]) && $field["type"] === "hidden") {
+            echo "<input type='hidden' name='$field[name]' value='$field[value]'>";
         } else if (isset($field["type"]) && $field["type"] === "submit") {
             echo "<button class='main' type='submit'>$field[label]</button>";
         } else {
@@ -113,6 +119,10 @@ class WPSimpleform {
         $formfields = isset($formoptions["formfields"]) ? $formoptions["formfields"] : $this->default_formfields();
 
         if ($this->is_submission()) {
+            if (!wp_verify_nonce($_POST['_wpnonce'], 'wp_simpleform')) {
+                wp_die("Invalid nonce.");
+                exit;
+            }
             $errors = $this->validate($formfields);
             if (empty($errors)) {
                 //send mail or whatever
@@ -165,7 +175,7 @@ class WPSimpleform {
                 "type" => "text",
                 "name" => "wpsf_name",
                 "required" => true,
-                "errormessage" => "Bitte geben Sie eine Name ein.",
+                "errormessage" => "Bitte geben Sie Ihren Namen ein.",
             ),
             array(
                 "label" => "E-Mail-Adresse",
