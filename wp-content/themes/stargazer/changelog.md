@@ -1,5 +1,22 @@
 # Change Log
 
+## [2.1.1] - 2016-02-22
+
+### Fixed
+
+* Wrong path for file check.
+
+## [2.1.0] - 2016-02-22
+
+### Added
+
+* New welcome/info sub-page under Appearance in admin.
+* Partial Russian (`ru_RU`) translation.
+
+### Changed
+
+* Updated Norwegian (`nb_NO`) translation.
+
 ## [2.0.0] - 2016-01-07
 
 ### Added
