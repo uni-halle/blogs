@@ -687,9 +687,98 @@ function wptouchSetupFreeSettings(){
 	}
 }
 
+function wptouchAdminMutisite(){
+	
+	jQuery( '#multisite-select-all' ).on( 'click', function( e ){
+		jQuery( '#multisite-deploy-sites input:not(input:disabled)' ).prop( 'checked', 'checked' );
+		e.preventDefault();
+	});
+	
+	jQuery( '#multisite-select-none' ).on( 'click', function( e ){
+		jQuery( '#multisite-deploy-sites input' ).prop( 'checked', '' );
+		e.preventDefault();
+	});
+	
+	var deployment_modal = jQuery('[data-remodal-id=modal-deployment]').remodal();
+	
+	jQuery( '#multisite-deploy' ).on( 'click', function( e ){
+		e.preventDefault();
+
+		if ( jQuery( '#multisite-deploy-sites input' ).is( ':checked' ) ) {
+			jQuery( '.deploy-to-sites' ).show();
+			jQuery( '.icon-ok-circle, .button-close' ).remove();
+			jQuery( 'p.deploy-text' ).text( jQuery( 'p.deploy-text' ).attr( 'data-text' ) );
+			deployment_modal.open();
+
+		}
+	});
+	
+	jQuery( '#multisite_deployment_source' ).change( function(){
+		// what's the current selected site?
+		var currentSite = jQuery( this ).val();
+		// reset all checkboxes to enabled
+		jQuery( '#multisite-deploy-sites input' ).attr( 'disabled', false );
+		// disabled the selected site's checkbox and uncheck it
+		var destinationSite = jQuery( '#multisite-deploy-sites' ).find( 'input#site-' + currentSite );
+		destinationSite.prop( 'checked', false ).attr( 'disabled', true );
+	}).change();
+
+	jQuery( '.deploy-to-sites' ).on( 'click', function( e ){
+		jQuery( this ).hide();
+		e.preventDefault();
+	
+		var sourceSite = jQuery( '#multisite_deployment_source' ).val();
+		var deployGeneral = jQuery( "#multisite_deploy_general_settings" ).is( ":checked" );
+		var deployCompat = jQuery( "#multisite_deploy_site_compat" ).is( ":checked" );
+		var deployDevices = jQuery( "#multisite_deploy_devices" ).is( ":checked" );
+		var deployMenus = jQuery( "#multisite_deploy_menus" ).is( ":checked" );
+		var deployThemes = jQuery( "#multisite_deploy_themes" ).is( ":checked" );
+		var deployExtensions = jQuery( "#multisite_deploy_extensions" ).is( ":checked" );
+		var deployColors = jQuery( "#multisite_deploy_colors" ).is( ":checked" );
+		var deploySocialMedia = jQuery( "#multisite_deploy_social_media" ).is( ":checked" );
+		var deploySocialSharing = jQuery( "#multisite_deploy_social_sharing" ).is( ":checked" );
+	
+		var sites = [];
+	
+		jQuery( '#multisite-deploy-sites input' ).each( function( index, value ) {
+			if ( jQuery( this ).is( ":checked" ) ) {
+				sites.push( jQuery( this ).attr( 'id' ) );
+			}
+		});
+	
+		var ajaxParams = {
+			source_site: 			sourceSite,
+			deploy_general: 		deployGeneral ? '1' : '0',
+			deploy_compat: 			deployCompat ? '1' : '0',
+			deploy_devices: 		deployDevices ? '1' : '0',
+			deploy_menus: 			deployMenus ? '1' : '0',
+			deploy_themes: 			deployThemes ? '1' : '0',
+			deploy_extensions: 		deployExtensions ? '1' : '0',
+			deploy_colors: 			deployColors ? '1' : '0',
+			deploy_social_media: 	deploySocialMedia ? '1' : '0',
+			deploy_social_sharing: 	deploySocialSharing ? '1' : '0',
+			deploy_sites: 			sites
+		};
+	
+		jQuery( 'p.deploy-text' ).text( jQuery( 'p.deploy-text' ).attr( 'data-deploying-text' ) );
+		
+		wptouchAdminAjax( 'multisite_deploy', ajaxParams, function( result ) {
+			alert( result );
+			setTimeout( function(){
+				jQuery( 'p.deploy-text' )
+				.text( jQuery( 'p.deploy-text' ).attr( 'data-completed-text' ) )
+				.prepend( '<i class="icon-ok-circle"></i>' )
+				.append( '<br /><br /><button class="button button-close" data-remodal-action="cancel">Close</button>' );
+			}, 1000 ); 
+		});
+	});
+
+}
+
+
 function wptouchControlReturn(){
 	// Intercept enter key, which strangely causes the first button in the DOM to be pressed
-	// in our case this results in a backup file download
+	// in our case this might result in a backup file download!
     jQuery( 'input' ).keypress( function ( e ) {
         if ( ( e.which && e.which == 13 ) || ( e.keyCode && e.keyCode == 13 ) ) {
             return false;
@@ -781,7 +870,7 @@ function wptouchAdminSetupSave(){
 
 	if ( wptouchAdminForm.length ) {
 		// Toggles, textareas & selects
-		wptouchAdminForm.on( 'change.ajaxed', 'input[type="checkbox"]:not(#translate_admin):not(#multisite_control), textarea, select:not(#force_locale):not(#force_network_locale)', function(){
+		wptouchAdminForm.on( 'change.ajaxed', 'input[type="checkbox"]:not(#translate_admin):not(#multisite_control):not(#wptouch-addon-deployment input), textarea, select:not(#force_locale):not(#force_network_locale):not(#wptouch-addon-deployment select)', function(){
 			wptouchTriggerSave();
 		});
 
@@ -900,6 +989,8 @@ function wptouchAdminReady() {
 	wptouchThemesExtensionsPanels();
 
 	wptouchHandleResetSettings();
+	
+	wptouchAdminMutisite();
 
 	wptouchControlReturn();
 
@@ -914,6 +1005,7 @@ function wptouchAdminReady() {
 	wptouchThemesAddonsAjaxInstall();
 	
 	wptouchPreviewWindow();
+	
 	wptouchHandlePreviewWindow();
 }
 

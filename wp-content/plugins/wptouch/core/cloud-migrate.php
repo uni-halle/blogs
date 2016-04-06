@@ -36,7 +36,8 @@ function wptouch_active_theme_is_custom() {
 	$settings = wptouch_get_settings();
 
 	$themes = $wptouch_pro->get_available_themes( true );
-	if ( !isset( $themes[ $settings->current_theme_friendly_name ] ) ) {
+
+	if ( !isset( $themes[ $settings->current_theme_friendly_name ] ) || $themes[ $settings->current_theme_friendly_name ]->author != 'BraveNewCode Inc.' ) {
 		return true;
 	} else {
 		return false;

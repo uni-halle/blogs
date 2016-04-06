@@ -7,9 +7,24 @@
 	<button class="update-all" data-loading-text="<?php _e( 'Updating', 'wptouch-pro' ); ?>&hellip;"><?php _e( 'Update All', 'wptouch-pro' ); ?></button>
 <?php } ?>
 
+<?php if ( function_exists( 'wptouch_is_update_available' ) && wptouch_is_update_available() != WPTOUCH_VERSION ) { ?>
+	<div class="updates-plugin">
+		<?php if ( $wptouch_pro->theme_upgrades_available() ) { ?><h3><?php _e( 'Core Plugin Updates', 'wptouch-pro' ); ?></h3><?php } ?>
+		<ul>
+			<li>
+				<h4>WPtouch Pro Plugin</h4>
+				<span class="update-version">
+					<?php echo sprintf( __( 'Upgrade to %s', 'wptouch-pro' ), wptouch_is_update_available() ); ?>
+				</span>
+			</li>
+		</ul>
+	</div>
+<?php } ?>
+
+
 <?php if ( $wptouch_pro->theme_upgrades_available() ) { ?>
 	<div class="updates-themes">
-		<h3><?php _e( 'Themes', 'wptouch-pro' ); ?></h3>
+		<h3><?php _e( 'Theme Updates', 'wptouch-pro' ); ?></h3>
 		<ul>
 			<?php while ( wptouch_has_themes( true ) ) { ?>
 				<?php wptouch_the_theme(); ?>
@@ -37,7 +52,7 @@
 
 <?php if ( $wptouch_pro->extension_upgrades_available() ) { ?>
 	<div class="updates-extensions">
-		<h3><?php _e( 'Extensions', 'wptouch-pro' ); ?></h3>
+		<h3><?php _e( 'Extension Updates', 'wptouch-pro' ); ?></h3>
 		<ul>
 			<?php while ( wptouch_has_addons( true ) ) { ?>
 				<?php  wptouch_the_addon(); ?>

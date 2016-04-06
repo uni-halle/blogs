@@ -3,6 +3,7 @@ add_action( 'init', 'foundation_google_fonts_enable' );
 add_action( 'foundation_module_init_mobile', 'foundation_google_fonts_enable', 5 );
 add_action( 'foundation_module_init_mobile', 'foundation_google_fonts_init' );
 add_action( 'wptouch_admin_page_render_wptouch-admin-theme-settings', 'foundation_admin_panel' );
+add_filter( 'wptouch_amp_get_fonts', 'foundation_build_google_fonts' );
 
 global $google_fonts_enabled;
 
@@ -85,6 +86,7 @@ function foundation_google_fonts_init() {
 		}
 
 		$selected_font_info = foundation_google_fonts_get_selected_info();
+
 		if ( $selected_font_info ) {
 			$family_string = '';
 			$inline_style_data = '';
@@ -97,14 +99,9 @@ function foundation_google_fonts_init() {
 					$selected_font_info = array_slice( $selected_font_info, 0, 2 );
 				}
 
+				$new_families = foundation_build_google_fonts();
+
 				foreach( $selected_font_info as $font_info ) {
-					$font_string = htmlentities( $font_info->name );
-					if ( isset( $font_info->variants ) && is_array( $font_info->variants ) ) {
-						$font_string .=  ':' . implode( ',', $font_info->variants );
-					}
-
-					$new_families[] = $font_string;
-
 					$inline_style_data .= "." . $font_info->selector . "-font" . "{\n";
 					$inline_style_data .= "\t font-family: '" . $font_info->name . "', " . $font_info->fallback . ";\n";
 					$inline_style_data .= "}\n";
@@ -128,6 +125,22 @@ function foundation_google_fonts_init() {
 			}
 		}
 	}
+}
+
+function foundation_build_google_fonts( $fonts = array() ) {
+	$selected_font_info = foundation_google_fonts_get_selected_info();
+	if ( is_array( $selected_font_info ) ) {
+		foreach( $selected_font_info as $font_info ) {
+			$font_string = htmlentities( $font_info->name );
+			if ( isset( $font_info->variants ) && is_array( $font_info->variants ) ) {
+				$font_string .=  ':' . implode( ',', $font_info->variants );
+			}
+
+			$fonts[ $font_info->selector ] = $font_string;
+		}
+	}
+
+	return $fonts;
 }
 
 global $wptouch_google_fonts;

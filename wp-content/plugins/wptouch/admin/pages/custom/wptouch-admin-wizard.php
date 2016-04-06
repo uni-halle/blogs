@@ -2,7 +2,7 @@
 	$settings = array(
 		'bncid' => wptouch_get_settings( 'bncid' ),
 		'foundation' => wptouch_get_settings( 'foundation' ),
-		'wptouch_pro' => wptouch_get_settings( 'wptouch_pro')
+		'wptouch_pro' => wptouch_get_settings( 'wptouch_pro' )
 	);
 
 	global $wptouch_pro;
@@ -90,14 +90,14 @@
 				<?php } ?>
 				<span class="activated" <?php if ( !wptouch_has_license() ) { echo 'style="display:none"'; } ?>>
 					<h2><?php _e( 'License Activation Complete','wptouch-pro' ); ?></h2>
-					<i class="icon-ok-circle animated"></i>
+					<i class="icon-ok-circle animated flipInX"></i>
 					<p><?php echo sprintf( __( 'Thank you for purchasing a %s licence!', 'wptouch-pro' ), 'WPtouch Pro' ); ?></p>
 				</span>
 		</section>
 		<?php if ( is_network_admin() ) { ?>
 			<details>Multisite</details>
 			<section class="multisite-panel">
-				<h2><?php _e( 'Multisite Network Activation','wptouch-pro' ); ?></h2>
+				<h2><?php _e( 'Multisite Network','wptouch-pro' ); ?></h2>
 				<p><?php echo wptouchize_it( __( 'Since you have network activated WPtouch Pro, you can configure the way themes and extensions are controlled in your environment.', 'wptouch-pro' ) ); ?></p>
 				<i class="icon-theme-settings"></i>
 				<p><?php echo wptouchize_it( __( 'By default network activations of WPtouch Pro mean that the Network Admin controls theme and extension downloads and updates. You can also choose to allow sub-sites to behave like independent installations, and control themes and extensions themselves.','wptouch-pro' ) ); ?></p>

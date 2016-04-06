@@ -31,30 +31,35 @@ function wptouch_admin_build_menu( $network_admin = false ) {
 	$available_menus = wptouch_admin_get_predefined_menus( $network_admin );
 
 	// Add the main plugin menu for WPtouch Pro
-	add_menu_page(
-		WPTOUCH_PRODUCT_NAME,
-		WPTOUCH_PRODUCT_NAME,
-		'manage_options',
-		wptouch_admin_get_root_slug( $network_admin ),
-		'',
-		WPTOUCH_ADMIN_URL . '/images/wptouch-admin-icon.png'
-	);
 
-	// Iterate through available menus
-	foreach( $available_menus as $id => $menu ) {
-		add_submenu_page(
-			$available_menus[ wptouch_admin_get_root_slug( $network_admin ) ]->slug,
-			$menu->friendly_name,
-			$menu->friendly_name,
+	if ( !$network_admin || !defined( 'WPTOUCH_IS_FREE' ) ) {
+		add_menu_page(
+			WPTOUCH_PRODUCT_NAME,
+			WPTOUCH_PRODUCT_NAME,
 			'manage_options',
-			$menu->slug,
-			'wptouch_admin_render_menu'
+			wptouch_admin_get_root_slug( $network_admin ),
+			'',
+			WPTOUCH_ADMIN_URL . '/images/wptouch-admin-icon.png'
 		);
+
+		// Iterate through available menus
+		foreach( $available_menus as $id => $menu ) {
+			add_submenu_page(
+				$available_menus[ wptouch_admin_get_root_slug( $network_admin ) ]->slug,
+				$menu->friendly_name,
+				$menu->friendly_name,
+				'manage_options',
+				$menu->slug,
+				'wptouch_admin_render_menu'
+			);
+		}
 	}
 }
 
 function wptouch_admin_build_network_menu() {
-	wptouch_admin_build_menu( true );
+	if ( is_plugin_active_for_network( WPTOUCH_PLUGIN_SLUG ) ) {
+		wptouch_admin_build_menu( true );
+	}
 }
 
 function wptouch_add_sub_page( $sub_page_name, $sub_page_slug, &$options ) {
@@ -69,7 +74,7 @@ function wptouch_add_sub_page( $sub_page_name, $sub_page_slug, &$options ) {
 function wptouch_add_page_section( $sub_page_name, $section_name, $section_slug, $section_settings, &$options, $domain = 'wptouch_pro', $use_customizer = false, $section_description = false, $section_weight = 50 ) {
 	$section = new stdClass;
 
-	$skip_domains = array( ADDON_SETTING_DOMAIN, 'wptouch_pro', 'bncid' );
+	$skip_domains = array( ADDON_SETTING_DOMAIN, 'multisite', 'wptouch_pro', 'bncid' );
 	$skip_pages = array( 'Compatibility', 'Web-App Mode', 'Basic Ads', 'General' );
 
 	if ( defined( 'WPTOUCH_IS_FREE' ) ) {

@@ -1,6 +1,6 @@
 <?php
 
-function wptouch_admin_handle_ajax( $wptouch_pro, $ajax_action ) {
+function wptouch_admin_handle_ajax( &$wptouch_pro, $ajax_action ) {
 	switch( $ajax_action ) {
 		case 'dismiss-warning':
 			$wptouch_pro->check_plugins_for_warnings();
@@ -305,6 +305,175 @@ function wptouch_admin_handle_ajax( $wptouch_pro, $ajax_action ) {
 		case 'go-pro':
 			$result = wptouch_free_go_pro();
 			echo $result;
+			break;
+		case 'multisite_deploy':
+			$source_site = $wptouch_pro->post[ 'source_site' ];
+
+			$current_blog_id = get_current_blog_id();
+
+			// Switch to the source site
+			if ( $current_blog_id != $source_site ) {
+				switch_to_blog( $source_site );
+
+			 	$wptouch_pro->settings_object = array();
+			}
+
+			$main_settings = $wptouch_pro->get_raw_settings( 'wptouch_pro' );
+			$foundation_settings = $wptouch_pro->get_raw_settings( 'foundation' );
+			$compat_settings = $wptouch_pro->get_raw_settings( 'compat' );
+
+			$colors = foundation_get_theme_colors();
+			$color_settings = array();
+
+			// Deploy color settings
+			foreach( $colors as $color ) {
+				if ( !isset( $color_settings[ $color->domain ] ) ) {
+					$new_settings = wptouch_get_settings( $color->domain );
+					$color_settings[ $color->domain ] = $new_settings;
+				}
+			}
+
+			$destination_sites = $wptouch_pro->post[ 'deploy_sites' ];
+			foreach( $destination_sites as $site ) {
+				$update_customizer = false;
+
+				$real_site = str_replace( 'site-', '', $site );
+
+				restore_current_blog();
+
+				switch_to_blog( $real_site );
+
+				$destination_main_settings = $wptouch_pro->get_raw_settings( 'wptouch_pro' );
+				$destination_foundation_settings = $wptouch_pro->get_raw_settings( 'foundation' );
+				$destination_compat_settings = $wptouch_pro->get_raw_settings( 'compat' );
+
+				if ( $wptouch_pro->post[ 'deploy_general' ] ) {
+					// Deploy general settings
+					$destination_main_settings->new_display_mode = $main_settings->new_display_mode;
+					$destination_main_settings->show_switch_link = $main_settings->show_switch_link;
+					$destination_foundation_settings->allow_zoom = $foundation_settings->allow_zoom;
+					$destination_foundation_settings->smart_app_banner = $foundation_settings->smart_app_banner;
+
+					$destination_main_settings->analytics_embed_method = $main_settings->analytics_embed_method;
+					$destination_main_settings->analytics_google_id = $main_settings->analytics_google_id;
+					$destination_main_settings->custom_stats_code= $main_settings->custom_stats_code;
+					$destination_main_settings->show_wptouch_in_footer = $main_settings->show_wptouch_in_footer;
+				}
+
+				if ( $wptouch_pro->post[ 'deploy_compat' ] ) {
+					// Deploy compatiblitiy settings
+					$destination_main_settings->process_desktop_shortcodes = $main_settings->process_desktop_shortcodes;
+					$destination_main_settings->remove_shortcodes = $main_settings->remove_shortcodes;
+
+					$destination_compat_settings->plugin_hooks = $compat_settings->plugin_hooks;
+					$destination_compat_settings->enabled_plugins = $compat_settings->enabled_plugins;
+				}
+
+				if ( $wptouch_pro->post[ 'deploy_devices' ] ) {
+					// Deploy device settings
+					$destination_main_settings->enable_ios_phone = $main_settings->enable_ios_phone;
+					$destination_main_settings->enable_android_phone = $main_settings->enable_android_phone;
+					$destination_main_settings->enable_blackberry_phone = $main_settings->enable_blackberry_phone;
+					$destination_main_settings->enable_firefox_phone = $main_settings->enable_firefox_phone;
+					$destination_main_settings->enable_opera_phone = $main_settings->enable_opera_phone;
+					$destination_main_settings->enable_windows_phone = $main_settings->enable_windows_phone;
+
+					$destination_main_settings->enable_ios_tablet = $main_settings->enable_ios_tablet ;
+					$destination_main_settings->enable_android_tablet = $main_settings->enable_android_tablet;
+					$destination_main_settings->enable_windows_tablet = $main_settings->enable_windows_tablet;
+					$destination_main_settings->enable_kindle_tablet = $main_settings->enable_kindle_tablet;
+					$destination_main_settings->enable_blackberry_tablet = $main_settings->enable_blackberry_tablet;
+					$destination_main_settings->enable_webos_tablet = $main_settings->enable_webos_tablet;
+
+					$destination_main_settings->custom_user_agents = $main_settings->custom_user_agents;
+				}
+
+				if ( $wptouch_pro->post[ 'deploy_menus' ] ) {
+					// Deploy menu settings
+					$destination_main_settings->enable_parent_items = $main_settings->enable_parent_items;
+					$destination_main_settings->enable_menu_icons = $main_settings->enable_menu_icons;
+				}
+
+				if ( $wptouch_pro->post[ 'deploy_themes'] ) {
+					// Deploy theme settings
+					$destination_main_settings->current_theme_friendly_name = $main_settings->current_theme_friendly_name;
+					$destination_main_settings->current_theme_location = $main_settings->current_theme_location;
+					$destination_main_settings->current_theme_name = $main_settings->current_theme_name;
+
+					$update_customizer = true;
+				}
+
+				if ( $wptouch_pro->post[ 'deploy_extensions'] ) {
+					// Deploy extension settings
+					$destination_main_settings->active_addons = $main_settings->active_addons;
+				}
+
+				if ( $wptouch_pro->post[ 'deploy_colors' ] ) {
+					//echo $wptouch_pro->post[ 'deploy_colors' ];
+					// Deploy color settings
+					$destination_color_settings = array();
+
+					foreach( $colors as $color ) {
+						if ( !isset( $destination_color_settings[ $color->domain ] ) ) {
+							$new_settings = wptouch_get_settings( $color->domain );
+							$destination_color_settings[ $color->domain ] = $new_settings;
+						}
+					}
+
+					foreach( $colors as $color ) {
+						$setting_name = $color->setting;
+						$destination_color_settings[ $color->domain ]->$setting_name = $color_settings[ $color->domain ]->$setting_name;
+					}
+
+					foreach( $destination_color_settings as $settings_object ) {
+						$settings_object->save();
+					}
+
+					$update_customizer = true;
+				}
+
+				if ( $wptouch_pro->post[ 'deploy_social_media' ] ) {
+					// Deploy social media settings
+					$destination_foundation_settings->social_facebook_url = $foundation_settings->social_facebook_url;
+					$destination_foundation_settings->social_twitter_url = $foundation_settings->social_twitter_url;
+					$destination_foundation_settings->social_google_url = $foundation_settings->social_google_url;
+					$destination_foundation_settings->social_instagram_url = $foundation_settings->social_instagram_url;
+					$destination_foundation_settings->social_tumblr_url = $foundation_settings->social_tumblr_url;
+					$destination_foundation_settings->social_pinterest_url = $foundation_settings->social_pinterest_url;
+					$destination_foundation_settings->social_vimeo_url = $foundation_settings->social_vimeo_url;
+					$destination_foundation_settings->social_youtube_url = $foundation_settings->social_youtube_url;
+					$destination_foundation_settings->social_linkedin_url = $foundation_settings->social_linkedin_url;
+					$destination_foundation_settings->social_yelp_url = $foundation_settings->social_yelp_url;
+					$destination_foundation_settings->social_email_url = $foundation_settings->social_email_url;
+					$destination_foundation_settings->social_rss_url = $foundation_settings->social_rss_url;
+
+					$update_customizer = true;
+				}
+
+				if ( $wptouch_pro->post[ 'deploy_social_sharing'] ) {
+					// Deploy social sharing icons
+					$destination_foundation_settings->show_share = $foundation_settings->show_share;
+					$destination_foundation_settings->share_on_pages = $foundation_settings->share_on_pages;
+					$destination_foundation_settings->share_location = $foundation_settings->share_location;
+					$destination_foundation_settings->share_colour_scheme = $foundation_settings->share_colour_scheme;
+
+					$update_customizer = true;
+				}
+
+				$destination_foundation_settings->save();
+				$destination_main_settings->save();
+				$destination_compat_settings->save();
+
+				if ( $update_customizer ) {
+					wptouch_initialize_customizer( true );
+				}
+			}
+
+			// Switch to the original site
+			if ( $current_blog_id != $source_site ) {
+				restore_current_blog();
+			}
+
 			break;
 		default:
 			do_action( 'wptouch_admin_ajax_' . $ajax_action, $wptouch_pro );

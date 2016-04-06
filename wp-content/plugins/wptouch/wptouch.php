@@ -2,7 +2,7 @@
 /*
 	Plugin Name: WPtouch Mobile Plugin
 	Plugin URI: http://www.wptouch.com/
-	Version: 4.0.3
+	Version: 4.1
 	Description: Make a beautiful mobile-friendly version of your website with just a few clicks
 	Author: BraveNewCode Inc.
 	Author URI: http://www.bravenewcode.com/
@@ -14,7 +14,7 @@
 
 function wptouch_create_four_object() {
 	if ( !defined( 'WPTOUCH_IS_PRO' ) ) {
-		define( 'WPTOUCH_VERSION', '4.0.3' );
+		define( 'WPTOUCH_VERSION', '4.1' );
 
 		define( 'WPTOUCH_BASE_NAME', basename( __FILE__, '.php' ) . '.php' );
 		define( 'WPTOUCH_DIR', WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . basename( __FILE__, '.php' ) );
@@ -107,4 +107,14 @@ function wptouch_free_order_sections( $page_info, $page_name ) {
 	}
 
 	return $page_info;
+}
+
+add_filter( 'wptouch_theme_title', 'wptouch_bauhaus_pro' );
+function wptouch_bauhaus_pro( $name ) {
+	if ( $name == 'Bauhaus' ) { $name = 'Bauhaus Pro'; }
+	return $name;
+}
+
+function wptouch_is_update_available() {
+	return false;
 }

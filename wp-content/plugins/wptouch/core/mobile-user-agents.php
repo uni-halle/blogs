@@ -32,8 +32,8 @@ if ( $settings->enable_windows_phone ) {
 }
 
 if ( $settings->enable_opera_phone ) {
-	$wptouch_smartphone_list[] = array( 'Opera', 'Mini/9' ); // Opera Mini 9
-	$wptouch_smartphone_list[] = array( 'Opera', 'Mini/7' ); // Opera Mini 7
+	$wptouch_smartphone_list[] = array( 'OPiOS', 'Mobile' ); // Opera Mini iOS
+	$wptouch_smartphone_list[] = array( 'Coast', 'Mobile' ); // Opera Coast iOS
 }
 
 /* Tablets */

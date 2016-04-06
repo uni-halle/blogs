@@ -1,4 +1,4 @@
-<li class="<?php wptouch_the_theme_classes(); ?> <?php if ( wptouch_get_theme_buy_url() ) { echo 'no-license'; } ?>" data-pushview="#<?php echo wptouch_convert_to_class_name( wptouch_get_theme_title() ); ?>-container">
+<li class="<?php wptouch_the_theme_classes(); ?> <?php if ( wptouch_get_theme_buy_url() && !defined( 'WPTOUCH_IS_FREE') ) { echo 'no-license'; } ?>" data-pushview="#<?php echo wptouch_convert_to_class_name( wptouch_get_theme_title() ); ?>-container">
 
 		<div class="item-information">
 			<?php if ( wptouch_get_theme_icon() ) { ?>

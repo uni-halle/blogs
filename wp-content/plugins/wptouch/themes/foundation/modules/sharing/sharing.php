@@ -89,64 +89,66 @@ function foundation_handle_share_links_bottom( $content ) {
 }
 
 function foundation_sharing_settings( $page_options ) {
-	wptouch_add_page_section(
-		FOUNDATION_PAGE_BRANDING,
-		__( 'Social Sharing', 'wptouch-pro' ),
-		'social-sharing',
-		array(
-			wptouch_add_setting(
-				'no-setting-text',
-				'share_info',
-				__( 'Will show Facebook, Twitter, Pinterest and Email buttons.', 'wptouch-pro' ),
-				false,
-				WPTOUCH_SETTING_BASIC,
-				'2.0'
-			),
-			wptouch_add_setting(
-				'checkbox',
-				'show_share',
-				__( 'Show sharing links on posts', 'wptouch-pro' ),
-				false,
-				WPTOUCH_SETTING_BASIC,
-				'2.0'
-			),
-			wptouch_add_setting(
-				'checkbox',
-				'share_on_pages',
-				__( 'Also show on pages', 'wptouch-pro' ),
-				false,
-				WPTOUCH_SETTING_BASIC,
-				'2.0'
-			),
-			wptouch_add_setting(
-				'radiolist',
-				'share_location',
-				__( 'Sharing links location', 'wptouch-pro' ),
-				false,
-				WPTOUCH_SETTING_BASIC,
-				'2.0',
-				array(
-					'top' => __( 'Above post content', 'wptouch-pro' ),
-					'bottom' => __( 'Below post content', 'wptouch-pro' )
+	if ( wptouch_can_show_page( 'social_sharing' ) ) {
+		wptouch_add_page_section(
+			FOUNDATION_PAGE_BRANDING,
+			__( 'Social Sharing', 'wptouch-pro' ),
+			'social-sharing',
+			array(
+				wptouch_add_setting(
+					'no-setting-text',
+					'share_info',
+					__( 'Will show Facebook, Twitter, Pinterest and Email buttons.', 'wptouch-pro' ),
+					false,
+					WPTOUCH_SETTING_BASIC,
+					'2.0'
+				),
+				wptouch_add_setting(
+					'checkbox',
+					'show_share',
+					__( 'Show sharing links on posts', 'wptouch-pro' ),
+					false,
+					WPTOUCH_SETTING_BASIC,
+					'2.0'
+				),
+				wptouch_add_setting(
+					'checkbox',
+					'share_on_pages',
+					__( 'Also show on pages', 'wptouch-pro' ),
+					false,
+					WPTOUCH_SETTING_BASIC,
+					'2.0'
+				),
+				wptouch_add_setting(
+					'radiolist',
+					'share_location',
+					__( 'Sharing links location', 'wptouch-pro' ),
+					false,
+					WPTOUCH_SETTING_BASIC,
+					'2.0',
+					array(
+						'top' => __( 'Above post content', 'wptouch-pro' ),
+						'bottom' => __( 'Below post content', 'wptouch-pro' )
+					)
+				),
+				wptouch_add_setting(
+					'radiolist',
+					'share_colour_scheme',
+					__( 'Color scheme', 'wptouch-pro' ),
+					false,
+					WPTOUCH_SETTING_BASIC,
+					'2.0',
+					array(
+						'default' => __( 'Theme colors', 'wptouch-pro' ),
+						'vibrant' => __( 'Social network colors', 'wptouch-pro' )
+					)
 				)
 			),
-			wptouch_add_setting(
-				'radiolist',
-				'share_colour_scheme',
-				__( 'Color scheme', 'wptouch-pro' ),
-				false,
-				WPTOUCH_SETTING_BASIC,
-				'2.0',
-				array(
-					'default' => __( 'Theme colors', 'wptouch-pro' ),
-					'vibrant' => __( 'Social network colors', 'wptouch-pro' )
-				)
-			)
-		),
-		$page_options,
-		FOUNDATION_SETTING_DOMAIN,
-		true
-	);
+			$page_options,
+			FOUNDATION_SETTING_DOMAIN,
+			true
+		);
+	}
 
 	return $page_options;
 }

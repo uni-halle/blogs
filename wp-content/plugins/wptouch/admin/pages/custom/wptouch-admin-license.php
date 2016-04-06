@@ -89,7 +89,7 @@
 	<?php } else { ?>
 		<tr>
 			<td><?php _e( 'Site License', 'wptouch-pro' ); ?>:</td>
-			<td><?php echo $bncid_info->licensed_site; ?> | <a href="<?php echo add_query_arg( array( 'wptouch_license_action' => 'remove_license', 'wptouch_license_nonce' => wp_create_nonce( 'tsarbomba' ) ), $_SERVER[ 'REQUEST_URI' ] ) ; ?>" class="remove-license"><?php _e( 'Remove', 'wptouch-pro' ); ?></a></td>
+			<td><?php echo $bncid_info->licensed_site; ?> | <a href="<?php echo add_query_arg( array( 'wptouch_license_action' => 'remove_license', 'wptouch_license_nonce' => wp_create_nonce( 'tsarbomba' ) ), $_SERVER[ 'REQUEST_URI' ] ) ; ?>" class="remove-license"><?php _e( 'Deactivate', 'wptouch-pro' ); ?></a></td>
 		</tr>
 		<tr>
 			<td><?php _e( 'Licenses used', 'wptouch-pro' ); ?>:</td>

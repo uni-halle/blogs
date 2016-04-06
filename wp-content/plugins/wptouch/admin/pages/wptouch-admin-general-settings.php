@@ -5,9 +5,7 @@ if ( !defined( 'FOUNDATION_SETTING_DOMAIN' ) ) {
 if ( !wptouch_is_controlled_network() || ( wptouch_is_controlled_network() && is_network_admin() ) ) {
 	add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_updates_page' );
 }
-if ( is_network_admin() ) {
-	add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_multisite_page' );
-}
+
 add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_general_page' );
 add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_compat_page' );
 add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_devices_page' );
@@ -18,49 +16,10 @@ add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch
 add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_addons' );
 add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_addon_settings' );
 
-function wptouch_render_multisite_page( $page_options ) {
-	global $wptouch_pro;
-
-	$settings = wptouch_get_settings();
-
-		wptouch_add_sub_page( WPTOUCH_ADMIN_MULTISITE_SETUP, 'multisite-network-admin', $page_options );
-
-		wptouch_add_page_section(
-			WPTOUCH_ADMIN_MULTISITE_SETUP,
-			__( 'Multisite Setup', 'wptouch-pro' ),
-			'mutisite-setup',
-			array(
-				wptouch_add_setting(
-					'list',
-					'force_network_locale',
-					__( 'Admin Language', 'wptouch-pro' ),
-					false,
-					WPTOUCH_SETTING_BASIC,
-					'3.0',
-					wptouch_admin_get_languages(),
-					'wptouch_pro'
-				),
-				wptouch_add_setting(
-					'checkbox',
-					'multisite_control',
-					__( 'Control themes and extension downloads and updates', 'wptouch-pro' ),
-					__( 'If enabled, sub-sites can only activate/deactivate themes and extensions that have been downloaded in the network admin.', 'wptouch-pro' ),
-					WPTOUCH_SETTING_BASIC,
-					'4.0',
-					false,
-					'bncid'
-				)
-			),
-			$page_options
-		);
-
-	return $page_options;
-}
-
 function wptouch_render_updates_page( $page_options ) {
 	global $wptouch_pro;
 
-	if ( $wptouch_pro->theme_upgrades_available() || $wptouch_pro->extension_upgrades_available() ) {
+	if ( $wptouch_pro->theme_upgrades_available() || $wptouch_pro->extension_upgrades_available() || wptouch_is_update_available() != WPTOUCH_VERSION ) {
 		$settings = wptouch_get_settings();
 
 		wptouch_add_sub_page( WPTOUCH_ADMIN_UPDATES_AVAILABLE, 'updates-available', $page_options );
@@ -455,7 +414,7 @@ function wptouch_render_devices_page( $page_options ) {
 			wptouch_add_setting(
 				'checkbox',
 				'enable_opera_phone',
-				'Opera Mini Browser',
+				'Opera Mobile (Opera on Android/iOS, Opera Mini on iOS, Coast)',
 				false,
 				WPTOUCH_SETTING_BASIC,
 				'4.0'
@@ -592,7 +551,7 @@ function wptouch_render_menu_page( $page_options ) {
 		WPTOUCH_ADMIN_MENU_MANAGE_ICON_SETS,
 		__( 'Menu Options', 'wptouch-pro' ),
 		'setup-menu-parent-items',
-		array(
+		apply_filters( 'wptouch_foundation_menu_options', array(
 			wptouch_add_setting(
 				'checkbox',
 				'enable_parent_items',
@@ -609,7 +568,7 @@ function wptouch_render_menu_page( $page_options ) {
 				WPTOUCH_SETTING_BASIC,
 				'3.0'
 			)
-		),
+		) ),
 		$page_options,
 		'wptouch_pro'
 	);

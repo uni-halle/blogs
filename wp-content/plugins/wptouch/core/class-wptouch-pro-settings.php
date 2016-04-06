@@ -81,7 +81,6 @@ class WPtouchDefaultSettings30 extends WPtouchSettings {
 
 		$this->custom_user_agents = '';
 
-
 		// Default Theme
 		if ( defined( 'WPTOUCH_IS_FREE' ) ) {
 			$this->current_theme_friendly_name = 'Bauhaus';
@@ -100,6 +99,7 @@ class WPtouchDefaultSettings30 extends WPtouchSettings {
 
 		$this->enable_parent_items = true;
 		$this->enable_menu_icons = false;
+		$this->show_login_box = false;
 
 		$this->default_menu_icon = WPTOUCH_DEFAULT_MENU_ICON;
 		$this->disabled_menu_items = array();
@@ -133,6 +133,8 @@ class WPtouchDefaultSettingsBNCID30 extends WPtouchSettings {
 		$this->referral_user_id = false;
 		$this->allow_multisite = true;
 		$this->multisite_control = true;
+
+		$this->license_support_packages = array();
 	}
 };
 
@@ -140,5 +142,21 @@ class WPtouchDefaultSettingsCompat extends WPtouchSettings {
 	function WPtouchDefaultSettingsCompat() {
 		$this->plugin_hooks = '';
 		$this->enabled_plugins = array();
+	}
+};
+
+class WPtouchDefaultSettingsMultisite extends WPtouchSettings {
+	function WPtouchDefaultSettingsMultisite() {
+		$this->multisite_use_master_settings = false;
+		$this->multisite_master_site = 1;
+		$this->multisite_show_general_settings = true;
+		$this->multisite_show_site_compat = true;
+		$this->multisite_show_devices = true;
+		$this->multisite_show_menus = true;
+		$this->multisite_show_themes = true;
+		$this->multisite_show_extensions = true;
+		$this->multisite_show_colors = true;
+		$this->multisite_show_social_media = true;
+		$this->multisite_show_social_sharing = true;
 	}
 };

@@ -1,8 +1,3 @@
-/* @override 
-	http://local.free.com/wordpress/wp-content/plugins/wptouch/admin/css/wptouch-admin-4.css?ver=07078a97d66756f213dbca3e379bf084
-	http://local.free.com/wordpress/wp-content/plugins/wptouch/admin/css/wptouch-admin-4.css?ver=23fb94884a48c87b2205cae4ed48d2a6
-*/
-
 /* @group Clearfix */
 
 .wptouch-clearfix:after {
@@ -370,11 +365,18 @@ a#preview-theme {
 
 /* @group Icons */
 
+#wptouch-admin-menu a.should-hide:before, #wptouch-admin-menu a.active.should-hide:before, #wptouch-admin-menu a.active.should-hide {
+	background: -webkit-linear-gradient(#f29533, #f5696c);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	content: '\e821' !important;
+}
+
 #wptouch-admin-menu ul li a.updates-available:before {
 	content: '\e81d';
 }
 
-#wptouch-admin-menu ul li a.setup-general-general:before {
+#wptouch-admin-menu ul li a.setup-general-general:before, #wptouch-admin-menu ul li a.wptouch-addon-deployment:before {
 	content: '\e805';
 }
 
@@ -440,6 +442,10 @@ a#preview-theme {
 
 #wptouch-admin-menu ul li a.wptouch-addon-advertising:before {
 	content: '\e818';
+}
+
+#wptouch-admin-menu ul li a.wptouch-addon-amp:before {
+	content: '\e822';
 }
 
 /* @end */
@@ -608,6 +614,7 @@ i.wptouch-tooltip:after {
 
 .checkbox-wrap {
 	position: relative;
+	padding-right: 60px;
 }
 
 input.checkbox {
@@ -2280,3 +2287,63 @@ li.no-license:hover:after {
 }
 
 }
+
+/* @group Multisite */
+
+#multisite-deploy-sites {
+	max-height: 500px;
+	overflow: scroll;
+	border: 1px solid #e7eaed;
+	margin-bottom: 30px;
+	border-radius: 3px;
+}
+
+#multisite-deploy-sites p {
+	padding-left: 12px;
+	margin: 0;
+}
+
+#multisite-deploy-sites p label {
+	display: inline-block;
+	width: 90%;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+button#multisite-deploy {
+	background-color: #55c2e8;
+	float: right;
+}
+
+#multisite-deploy-sites p:nth-child(odd) {
+	background-color: #fcfcfc;
+}
+
+#multisite-deploy-sites p input {
+	margin-right: 10px;
+}
+
+#multisite-deploy-sites input[type=checkbox][disabled] + label {
+	font-style: italic;
+	color: #ccc;
+}
+
+p.deploy-text i {
+	color: #8ec159;
+	font-size: 100px;
+	display: block;
+	line-height: 0;
+	margin-bottom: 20px;
+}
+
+p.deploy-text {
+	font-size: 15px;
+}
+
+.remodal-multisite {
+	min-height: 280px;
+}
+
+
+
+/* @end */

@@ -64,7 +64,7 @@ function wptouch_strip_dashes( $str ) {
 }
 
 function wptouch_convert_to_class_name( $class_to_convert ) {
-	return str_replace( array( ' ', '"', '.', '\'', '#' ), array( '-', '', '-', '', '' ), strtolower( $class_to_convert ) );
+	return str_replace( array( ' ', '"', '.', '\'', '#', '(', ')' ), array( '-', '', '-', '', '', '-', '-' ), strtolower( $class_to_convert ) );
 }
 
 function wptouch_do_template( $template_name ) {
@@ -277,6 +277,9 @@ function wptouch_get_bloginfo( $setting_name ) {
 			break;
 		case 'theme_root_url':
 			$setting = $wptouch_pro->get_current_theme_uri();
+			break;
+		case 'theme_parent_url':
+			$setting = $wptouch_pro->change_dir_to_url( $wptouch_pro->get_current_parent_location() );
 			break;
 		case 'site_title':
 			if ( $settings->site_title != '' ) {
@@ -494,7 +497,7 @@ function wptouch_free_upgrade_plugin() {
 
 	$plugin_name = 'wptouch/wptouch.php';
 
-    // Check for WordPress 3.0 function
+	// Check for WordPress 3.0 function
 	if ( function_exists( 'is_super_admin' ) ) {
 		$option = get_site_transient( 'update_plugins' );
 	} else {
@@ -565,4 +568,26 @@ function wptouch_free_upgrade_plugin() {
 	} else {
 		return '0';
 	}
+}
+
+function wptouch_can_show_page( $page_name ) {
+	return apply_filters( 'wptouch_can_show_page', true, $page_name );
+}
+
+function wptouch_hex_to_rgb($hexStr, $returnAsString = false, $seperator = ',') {
+	$hexStr = preg_replace( "/[^0-9A-Fa-f]/", '', $hexStr ); // Gets a proper hex string
+	$rgbArray = array();
+	if ( strlen( $hexStr ) == 6 ) { //If a proper hex code, convert using bitwise operation. No overhead... faster
+		$colorVal = hexdec( $hexStr );
+		$rgbArray[ 'red' ] = 0xFF & ( $colorVal >> 0x10 );
+		$rgbArray[ 'green' ] = 0xFF & ( $colorVal >> 0x8 );
+		$rgbArray[ 'blue' ] = 0xFF & $colorVal;
+	} elseif ( strlen( $hexStr ) == 3 ) { //if shorthand notation, need some string manipulations
+		$rgbArray[ 'red' ] = hexdec( str_repeat( substr( $hexStr, 0, 1 ), 2 ) );
+		$rgbArray[ 'green' ] = hexdec( str_repeat( substr( $hexStr, 1, 1 ), 2 ) );
+		$rgbArray[ 'blue' ] = hexdec( str_repeat( substr( $hexStr, 2, 1 ), 2 ) );
+	} else {
+		return false; //Invalid hex color code
+	}
+	return $returnAsString ? implode( $seperator, $rgbArray ) : $rgbArray; // returns the rgb string or the associative array
 }

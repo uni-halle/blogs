@@ -60,6 +60,10 @@ function wptouch_get_addon_classes( $extra_classes = array() ) {
 	return $classes;
 }
 
+function wptouch_is_multisite_extension() {
+	return wptouch_convert_to_class_name( wptouch_get_addon_title() ) == 'multisite';
+}
+
 function wptouch_has_addon_tags() {
 	global $wptouch_cur_addon;
 
@@ -76,9 +80,13 @@ function wptouch_is_addon_active() {
 	global $wptouch_pro;
 	global $wptouch_cur_addon;
 
-	$settings = $wptouch_pro->get_settings();
-
-	return isset( $settings->active_addons[ $wptouch_cur_addon->name ] );
+	if ( wptouch_is_multisite_extension() ) {
+		$multisite_info = get_site_option( 'wptouch_multisite_active', false, false );
+		return ( is_object( $multisite_info ) );
+	} else {
+		$settings = $wptouch_pro->get_settings();
+		return isset( $settings->active_addons[ $wptouch_cur_addon->name ] );
+	}
 }
 
 function wptouch_the_addon_version() {
@@ -96,19 +104,10 @@ function wptouch_get_addon_version() {
 
 function wptouch_addon_info_url() {
 	global $wptouch_cur_addon;
-	if ( isset( $wptouch_cur_addon->info_url ) ) {
-		$url_parts = explode( '#', $wptouch_cur_addon->info_url );
-		$url = $url_parts[ 0 ] . '?utm_source=' . WPTOUCH_UTM_SOURCE . '&utm_campaign=extension-browser-' . $url_parts[ 1 ] . '&utm_medium=web';
 
-		if ( $url_parts[ 1 ] ) {
-			$url .= '#' . $url_parts[ 1 ];
-		}
+	$url = 'http://wptouch.com/extensions/' . $wptouch_cur_addon->base . '/' . '?utm_source=' . WPTOUCH_UTM_SOURCE . '&utm_campaign=extension-browser-' . $wptouch_cur_addon->base . '&utm_medium=web';
 
-		return $url;
-
-	} else {
-		return false;
-	}
+	return $url;
 }
 
 function wptouch_the_addon_title() {
@@ -275,12 +274,12 @@ function wptouch_the_addon_deactivate_link_url() {
 }
 
 function wptouch_get_addon_deactivate_link_url() {
-	return add_query_arg( array(
+	return esc_url( add_query_arg( array(
 		'admin_command' => 'deactivate_addon',
 		'addon_name' => urlencode( wptouch_get_addon_title() ),
 		'addon_location' => urlencode( wptouch_get_addon_location() ),
 		'admin_menu_nonce' => wptouch_admin_menu_get_nonce()
-	), admin_url( 'admin.php?page=wptouch-admin-general-settings' ) );
+	) ) );
 }
 
 global $wptouch_addon_previews;
@@ -356,4 +355,14 @@ function wptouch_the_addon_long_desc() {
 function wptouch_get_addon_long_desc() {
 	global $wptouch_cur_addon;
 	return $wptouch_cur_addon->long_description;
+}
+
+function wptouch_get_activation_label() {
+	if ( is_network_admin() ) {
+		if ( !wptouch_is_multisite_extension() ) {
+			return __( 'Install', 'wptouch-pro' );
+		} else {
+			return __( 'Site Activate', 'wptouch-pro' );
+		}
+	} else return __( 'Activate', 'wptouch-pro' );
 }

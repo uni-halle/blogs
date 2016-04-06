@@ -54,6 +54,8 @@
 						<?php } ?>
 
 					<?php } ?>
+				<?php } else { ?>
+					<a class="button" href="<?php echo wptouch_theme_info_url(); ?>"><?php _e( 'Learn More', 'wptouch-pro' ); ?></a>
 				<?php } ?>
 			</div>
 		<?php } ?>

@@ -21,6 +21,7 @@ function wptouch_menu_redirects() {
 // All available built-in WPtouch Pro menu items go here
 define( 'WPTOUCH_PRO_ADMIN_WIZARD', 'wptouch-admin-wizard' );
 define( 'WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS', 'wptouch-admin-general-settings' );
+define( 'WPTOUCH_PRO_ADMIN_MULTISITE_SETTINGS', 'wptouch-multisite' );
 define( 'WPTOUCH_PRO_ADMIN_LICENSE', 'wptouch-admin-license' );
 
 function wptouch_admin_create_menu( $id, $friendly_name, $menu_type = WPTOUCH_PRO_ADMIN_SETTINGS_PAGE, $display_name = false ) {
@@ -47,7 +48,7 @@ function wptouch_admin_get_predefined_menus( $network_admin = false ) {
 	$settings_title = __( 'Settings', 'wptouch-pro' );
 	$license_title = sprintf( __( 'License %s Support', 'wptouch-pro' ), '&amp;' );
 	$network_admin = is_network_admin();
-	if ( $network_admin ) {
+	if ( $network_admin && !defined( 'WPTOUCH_IS_FREE' ) ) {
 		if ( $show_network_wizard ) {
 			$available_menus = array(
 				WPTOUCH_PRO_ADMIN_WIZARD => wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_WIZARD, $wizard_title, WPTOUCH_PRO_ADMIN_CUSTOM_PAGE ),
@@ -64,6 +65,7 @@ function wptouch_admin_get_predefined_menus( $network_admin = false ) {
 		}
 
 		if ( !$show_network_wizard ) {
+			$available_menus[ WPTOUCH_PRO_ADMIN_MULTISITE_SETTINGS ] = wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_MULTISITE_SETTINGS, __( 'Multisite Setup', 'wptouch-pro' ) );
 			$available_menus[ WPTOUCH_PRO_ADMIN_LICENSE ] = wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_LICENSE, $license_title, WPTOUCH_PRO_ADMIN_CUSTOM_PAGE );
 		}
 	} else {

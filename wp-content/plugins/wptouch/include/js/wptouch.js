@@ -21,6 +21,9 @@ jQuery( '#footer .back-to-top' ).click( function( e ) {
 });
 
 function doWPtouchReady() {
+	// Parse query vars json
+	wptouchMain.query_vars = jQuery.parseJSON( wptouchMain.query_vars );
+
 	// Shortcode
 	var shortcodeDiv = jQuery( '.wptouch-sc-content' );
 

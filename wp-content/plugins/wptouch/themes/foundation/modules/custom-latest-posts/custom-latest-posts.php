@@ -11,7 +11,7 @@ function wptouch_custom_latest_post_filter( $query_vars ) {
 			$dummy_query = new WP_Query();  // the query isn't run if we don't pass any query vars
 		    $dummy_query->parse_query( $query_vars );
 
-			if ( $dummy_query->is_page && count( $query_vars ) == 0 ) { // Front page
+			if ( $dummy_query->is_page && ( count( $query_vars ) == 0 || ( count( $query_vars == 1 ) && isset( $query_vars[ 'paged' ] ) ) ) ) { // Front page
 				$front_option = get_option( 'show_on_front', false );
 				if ( $front_option == 'page' ) {
 					$front_page = get_option( 'page_on_front' );
@@ -19,7 +19,7 @@ function wptouch_custom_latest_post_filter( $query_vars ) {
 				}
 			}
 
-		    if ( isset( $dummy_query->queried_object_id ) && apply_filters( 'foundation_is_custom_latest_posts_page', ( $settings->latest_posts_page == $dummy_query->queried_object_id ) ) ) {
+		    if ( isset( $dummy_query->queried_object_id ) && apply_filters( 'foundation_is_custom_latest_posts_page', ( $settings->latest_posts_page == $dummy_query->queried_object_id ), $settings->latest_posts_page, $dummy_query->queried_object_id ) ) {
 				if ( isset( $query_vars[ 'paged' ] ) ) {
 					$paged = $query_vars[ 'paged' ];
 				} elseif ( isset( $query_vars[ 'page' ] ) ) {
@@ -68,7 +68,7 @@ function wptouch_fdn_is_custom_latest_posts_page() {
 		wptouch_the_post();
 		rewind_posts();
 
-		return apply_filters( 'foundation_is_custom_latest_posts_page', ( $settings->latest_posts_page == $post->ID ) );
+		return apply_filters( 'foundation_is_custom_latest_posts_page', ( $settings->latest_posts_page == $post->ID ), $settings->latest_posts_page, $post->ID );
 	}
 }
 

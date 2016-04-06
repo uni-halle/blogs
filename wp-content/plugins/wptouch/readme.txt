@@ -2,8 +2,8 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 4.0
-Stable tag: 4.0.3
-Tested up to: 4.4
+Stable tag: 4.1
+Tested up to: 4.5
 License: GPLv2
 
 Make your WordPress website mobile-friendly with just a few clicks.
@@ -32,6 +32,25 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 6. Theme settings
 
 == Changelog ==
+
+= Version 4.1 (March 24, 2016) =
+
+* New: New filters to support AMP extension in WPtouch Pro
+* Changed: Streamlined wizard experience
+* Fixed: Case where featured posts would always be repeated in listing if featured slider was set to show only 1 post
+* Fixed: Error when page was not found
+
+= Version 4.0.4 (February 29, 2016) =
+
+* New: Featured slider settings to control display of # of comments
+* New: Featured slider option for more minimal slider appearance
+* Changed: Added styling for some rarer html elements, and updated others (ol, code, pre etc.)
+* Changed: Minor styling enhancements and fixes
+* Fixed: Load more posts on custom posts page did not load posts in certain configurations
+* Fixed: Retain WPML language parameter when redirecting to mobile landing page
+* Fixed: Minor styling issues
+* Fixed: Toggle fields not saving on some server configurations
+* Updated: Opera users agents to better specify supported opera versions and platforms
 
 = Version 4.0.3 (January 19, 2016) =
 

@@ -101,6 +101,11 @@ h2.logo-title img {
 
 /* @group Checkbox Toggles */
 
+.checkbox-wrap {
+	padding-left: 60px;
+	padding-right: 0;
+}
+
 input.checkbox + label {
 	right: auto;
 	left: 0;

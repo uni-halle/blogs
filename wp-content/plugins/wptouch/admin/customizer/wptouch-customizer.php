@@ -37,6 +37,7 @@ if ( $current_theme && !defined( 'WPTOUCH_IS_FREE' ) ) {
 
 		// Make WordPress aware we're using the mobile theme not the desktop theme (not overriden by WPtouch)
 		add_filter( 'pre_option_stylesheet', 'wptouch_get_current_theme_name' );
+		add_filter( 'pre_option_template', 'wptouch_get_current_theme_friendly_name' );
 
 		// Prevent the 'custom landing page' setting from being applied.
 		add_filter( 'wptouch_redirect_target', 'wptouch_return_false' );
@@ -281,9 +282,9 @@ function wptouch_get_customizable_settings() {
 	}
 }
 
-function wptouch_initialize_customizer() {
+function wptouch_initialize_customizer( $override = false ) {
 	$current_theme = wptouch_get_current_theme_name();
-	if ( !get_option( 'wptouch_customizer_initialized_' . $current_theme ) ) {
+	if ( !get_option( 'wptouch_customizer_initialized_' . $current_theme ) || $override ) {
 		wptouch_customizer_initialize();
 		add_option( 'wptouch_customizer_initialized_' . $current_theme, true );
 	}
@@ -351,32 +352,34 @@ function wptouch_customizer_setup( $wp_customize ) {
 		// Allow other areas of the plugin to perform actions before we get set up. These might be 'first load'-type calls
 		do_action( 'wptouch_customizer_start_setup' );
 
-		// Again, colours are a special case and are handled separately
-		if ( foundation_has_theme_colors() ) {
-			$colors = foundation_get_theme_colors();
+		if ( wptouch_can_show_page( 'colors' ) ) {
+			// Again, colours are a special case and are handled separately
+			if ( foundation_has_theme_colors() ) {
+				$colors = foundation_get_theme_colors();
 
-			foreach( $colors as $color ) {
-				if ( !array_key_exists( $color->domain, $defaults ) ) {
-					$defaults[ $color->domain ] = $wptouch_pro->get_setting_defaults( $color->domain );
+				foreach( $colors as $color ) {
+					if ( !array_key_exists( $color->domain, $defaults ) ) {
+						$defaults[ $color->domain ] = $wptouch_pro->get_setting_defaults( $color->domain );
+					}
+
+					$setting_name = $color->setting;
+
+					$args = array(
+						'default' => $defaults[ $color->domain ]->$setting_name
+					);
+
+					if ( $color->live_preview ) {
+						$args[ 'transport' ] = 'postMessage';
+					}
+
+					// The Customizer constructs things in two parts
+					$wp_customize->add_setting( 'wptouch_' . $setting_name, $args );
+
+					$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'wptouch_' . $setting_name, array(
+						'label'    => __( $color->desc, 'wptouch-pro' ),
+						'section'  => 'colors'
+					) ) );
 				}
-
-				$setting_name = $color->setting;
-
-				$args = array(
-					'default' => $defaults[ $color->domain ]->$setting_name
-				);
-
-				if ( $color->live_preview ) {
-					$args[ 'transport' ] = 'postMessage';
-				}
-
-				// The Customizer constructs things in two parts
-				$wp_customize->add_setting( 'wptouch_' . $setting_name, $args );
-
-				$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'wptouch_' . $setting_name, array(
-					'label'    => __( $color->desc, 'wptouch-pro' ),
-					'section'  => 'colors'
-				) ) );
 			}
 		}
 
@@ -732,6 +735,13 @@ function customizer_user_override( $user_agent ) {
 	return 'iPhone';
 }
 
+function wptouch_get_current_theme_friendly_name( $value=false ) {
+	// Override the value of 'stylesheet' on customizer.
+	global $wptouch_pro;
+	$settings = $wptouch_pro->get_settings();
+	return $settings->current_theme_friendly_name;
+}
+
 function wptouch_get_current_theme_name( $value=false ) {
 	// Override the value of 'stylesheet' on customizer.
 	global $wptouch_pro;
@@ -753,7 +763,7 @@ function wptouch_customizer_port_image( $customizer_setting, $source_setting, $s
 	$settings = wptouch_get_settings( $settings_domain );
 	$upload_dir = wp_upload_dir();
 
-	if ( $source_setting != false && $settings->$source_setting != false ) {
+	if ( $source_setting != false && isset( $settings->$source_setting ) && $settings->$source_setting != false ) {
 
 		if ( in_array( $settings_domain, $options_domains ) ) {
 			$domain_options = get_option( 'wptouch_customizer_options_' . $settings_domain );

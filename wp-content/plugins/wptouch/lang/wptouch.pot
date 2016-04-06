@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WPtouch Mobile Plugin package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPtouch Mobile Plugin 4.0.3\n"
+"Project-Id-Version: WPtouch Mobile Plugin 4.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wptouch\n"
-"POT-Creation-Date: 2016-01-19 18:19:23+00:00\n"
+"POT-Creation-Date: 2016-03-29 19:19:14+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,15 +12,15 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: admin/customizer/wptouch-customizer.php:556
+#: admin/customizer/wptouch-customizer.php:559
 msgid "Device + Orientation"
 msgstr ""
 
-#: admin/customizer/wptouch-customizer.php:581
+#: admin/customizer/wptouch-customizer.php:584
 msgid "Switch to Mobile Theme"
 msgstr ""
 
-#: admin/customizer/wptouch-customizer.php:582
+#: admin/customizer/wptouch-customizer.php:585
 msgid "Switch to Desktop Theme"
 msgstr ""
 
@@ -168,9 +168,9 @@ msgid "Product License Key"
 msgstr ""
 
 #: admin/pages/custom/wptouch-admin-license.php:80
-#: admin/settings/html/extension-browser-item-detail.php:5
 #: admin/settings/html/gopro.php:11
 #: admin/settings/html/theme-browser-item-detail.php:5
+#: core/admin-extensions.php:367
 msgid "Activate"
 msgstr ""
 
@@ -182,8 +182,10 @@ msgstr ""
 msgid "Site License"
 msgstr ""
 
-#: admin/pages/custom/wptouch-admin-license.php:92 core/menu-walkers.php:415
-msgid "Remove"
+#: admin/pages/custom/wptouch-admin-license.php:92
+#: admin/settings/html/extension-browser-item-detail.php:46
+#: admin/settings/html/extension-browser-item-detail.php:75
+msgid "Deactivate"
 msgstr ""
 
 #: admin/pages/custom/wptouch-admin-license.php:95
@@ -335,7 +337,7 @@ msgid "Thank you for purchasing a %s licence!"
 msgstr ""
 
 #: admin/pages/custom/wptouch-admin-wizard.php:100
-msgid "Multisite Network Activation"
+msgid "Multisite Network"
 msgstr ""
 
 #: admin/pages/custom/wptouch-admin-wizard.php:101
@@ -370,10 +372,9 @@ msgstr ""
 
 #: admin/pages/custom/wptouch-admin-wizard.php:128
 #: admin/pages/custom/wptouch-admin-wizard.php:179
-#: admin/settings/html/extension-browser-item-detail.php:47
 #: admin/settings/html/theme-browser-item-detail.php:52
-#: admin/settings/html/updates-available.php:20
-#: admin/settings/html/updates-available.php:56 core/class-wptouch-pro.php:853
+#: admin/settings/html/updates-available.php:35
+#: admin/settings/html/updates-available.php:71 core/class-wptouch-pro.php:918
 msgid "Download"
 msgstr ""
 
@@ -383,7 +384,7 @@ msgstr ""
 #: admin/settings/html/installed_icon_sets_ajax.php:13
 #: admin/settings/html/installed_icon_sets_ajax.php:26
 #: admin/settings/html/theme-browser-item.php:12
-#: core/class-wptouch-pro.php:852
+#: core/class-wptouch-pro.php:917
 msgid "Installed"
 msgstr ""
 
@@ -462,7 +463,7 @@ msgstr ""
 
 #: admin/pages/custom/wptouch-admin-wizard.php:254
 #: admin/pages/custom/wptouch-admin-wizard.php:273
-#: admin/pages/wptouch-admin-general-settings.php:175
+#: admin/pages/wptouch-admin-general-settings.php:134
 #: admin/settings/include/custom-latest-posts.php:11
 msgid "WordPress Reading Settings"
 msgstr ""
@@ -552,290 +553,277 @@ msgstr ""
 msgid "Configure Settings"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:30 core/admin-render.php:75
-#: core/config.php:89
-msgid "Multisite Setup"
-msgstr ""
-
-#: admin/pages/wptouch-admin-general-settings.php:36
-msgid "Admin Language"
-msgstr ""
-
-#: admin/pages/wptouch-admin-general-settings.php:46
-msgid "Control themes and extension downloads and updates"
-msgstr ""
-
-#: admin/pages/wptouch-admin-general-settings.php:47
-msgid ""
-"If enabled, sub-sites can only activate/deactivate themes and extensions "
-"that have been downloaded in the network admin."
-msgstr ""
-
-#: admin/pages/wptouch-admin-general-settings.php:70 core/admin-render.php:59
+#: admin/pages/wptouch-admin-general-settings.php:29 core/admin-render.php:71
 #: core/config.php:88
 msgid "Updates Available"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:96
+#: admin/pages/wptouch-admin-general-settings.php:55
 msgid "Mobile Site Title"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:102
+#: admin/pages/wptouch-admin-general-settings.php:61
 msgid "WPtouch Pro site title"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:115
+#: admin/pages/wptouch-admin-general-settings.php:74
 msgid "If disabled WPtouch Pro will be off for visitors but can be configured."
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:117
+#: admin/pages/wptouch-admin-general-settings.php:76
 msgid ""
 "If disabled WPtouch Pro will be off for visitors but can be configured in "
 "the Customizer."
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:122
+#: admin/pages/wptouch-admin-general-settings.php:81
 msgid "Display"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:128
+#: admin/pages/wptouch-admin-general-settings.php:87
 msgid "Display WPtouch Pro for mobile visitors"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:136
+#: admin/pages/wptouch-admin-general-settings.php:95
 msgid "URL filtering"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:141
+#: admin/pages/wptouch-admin-general-settings.php:100
 msgid "Show WPtouch Pro for all URLs"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:142
+#: admin/pages/wptouch-admin-general-settings.php:101
 msgid "Exclude WPtouch Pro on these URLs"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:143
+#: admin/pages/wptouch-admin-general-settings.php:102
 msgid "Only show WPtouch Pro on these URLs"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:149
+#: admin/pages/wptouch-admin-general-settings.php:108
 msgid "Apply filter to these URLs/Pages"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:157
+#: admin/pages/wptouch-admin-general-settings.php:116
 msgid "Require exact match"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:170
+#: admin/pages/wptouch-admin-general-settings.php:129
 msgid "Mobile front page"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:171
+#: admin/pages/wptouch-admin-general-settings.php:130
 msgid "You can set a different front page for WPtouch Pro visitors."
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:176
+#: admin/pages/wptouch-admin-general-settings.php:135
 msgid "Redirect to a page"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:177
+#: admin/pages/wptouch-admin-general-settings.php:136
 msgctxt "Refers to a custom landing page"
 msgid "Redirect to a custom URL"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:183
+#: admin/pages/wptouch-admin-general-settings.php:142
 msgid "Custom Slug or URL"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:184
+#: admin/pages/wptouch-admin-general-settings.php:143
 msgid "Enter a Slug (i.e. \"/home\") or a full URL path"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:202
+#: admin/pages/wptouch-admin-general-settings.php:161
 msgid "Landing Pages"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:211
+#: admin/pages/wptouch-admin-general-settings.php:170
 msgid "Desktop / Mobile Switching"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:217
+#: admin/pages/wptouch-admin-general-settings.php:176
 msgctxt "switches between desktop and mobile themes"
 msgid "Theme switch toggle"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:226
+#: admin/pages/wptouch-admin-general-settings.php:185
 msgid ""
 "Shows a toggle in both the desktop mobile theme footers allowing users to "
 "switch between them."
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:231
+#: admin/pages/wptouch-admin-general-settings.php:190
 msgid "Page Zoom"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:237
+#: admin/pages/wptouch-admin-general-settings.php:196
 msgid "Allow mobile browser zooming"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:238
+#: admin/pages/wptouch-admin-general-settings.php:197
 msgid "By default WPtouch Pro disables browser zooming."
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:249
+#: admin/pages/wptouch-admin-general-settings.php:208
 msgid "Smart App Banner"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:264
+#: admin/pages/wptouch-admin-general-settings.php:223
 msgid "Find your ID from the %siTunes Link Maker%s."
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:269
+#: admin/pages/wptouch-admin-general-settings.php:228
 msgid "Analytics"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:275
+#: admin/pages/wptouch-admin-general-settings.php:234
 msgid "Analytics Code"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:280
-#: admin/pages/wptouch-admin-general-settings.php:669
+#: admin/pages/wptouch-admin-general-settings.php:239
+#: admin/pages/wptouch-admin-general-settings.php:628
 msgid "None"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:282
+#: admin/pages/wptouch-admin-general-settings.php:241
 msgid "Custom"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:289
+#: admin/pages/wptouch-admin-general-settings.php:248
 msgid "Site ID"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:310
+#: admin/pages/wptouch-admin-general-settings.php:269
 msgid "WPtouch Pro Love"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:316
+#: admin/pages/wptouch-admin-general-settings.php:275
 msgid "Show powered by WPtouch Pro link in theme footer"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:328
+#: admin/pages/wptouch-admin-general-settings.php:287
 msgid "Language"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:334
+#: admin/pages/wptouch-admin-general-settings.php:293
 msgid "Theme Language"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:343
+#: admin/pages/wptouch-admin-general-settings.php:302
 msgid "Also applies to admin"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:362
+#: admin/pages/wptouch-admin-general-settings.php:321
 msgctxt ""
 "shortcodes are pieces of code [like_this] that users can drop into textareas "
 "that will convert to longer pieces of code"
 msgid "Shortcodes"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:368
+#: admin/pages/wptouch-admin-general-settings.php:327
 msgid "Process desktop theme shortcodes"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:376
+#: admin/pages/wptouch-admin-general-settings.php:335
 msgid "Filter out shortcodes"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:377
+#: admin/pages/wptouch-admin-general-settings.php:336
 msgid "Filters out shortcodes from displaying when WPtouch Pro is active."
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:390
+#: admin/pages/wptouch-admin-general-settings.php:349
 msgid "Active Plugins"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:401
+#: admin/pages/wptouch-admin-general-settings.php:360
 msgid ""
 "Attempts to disable plugins for mobile visitors. Some plugins don‘t support "
 "this feature due to the way they load in WordPress."
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:412
+#: admin/pages/wptouch-admin-general-settings.php:371
 msgid "Mobile Devices & Browsers"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:472
+#: admin/pages/wptouch-admin-general-settings.php:431
 msgid "Tablets"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:530
+#: admin/pages/wptouch-admin-general-settings.php:489
 msgid "Tablet Devices & Browsers"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:545
+#: admin/pages/wptouch-admin-general-settings.php:504
 msgid ""
 "If your theme supports tablets, devices and browsers WPtouch Pro can be "
 "enabled for will be listed below."
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:551
+#: admin/pages/wptouch-admin-general-settings.php:510
 msgid "Additional User Agents"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:557
+#: admin/pages/wptouch-admin-general-settings.php:516
 msgid "User agents to add"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:558
+#: admin/pages/wptouch-admin-general-settings.php:517
 msgid "You can enter partial i.e. \"nokia\" or full agent strings"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:575
+#: admin/pages/wptouch-admin-general-settings.php:534
 msgid "Menu Setup"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:593
+#: admin/pages/wptouch-admin-general-settings.php:552
 msgid "Menu Options"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:599
+#: admin/pages/wptouch-admin-general-settings.php:558
 msgid "Enable parent items as links"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:600
+#: admin/pages/wptouch-admin-general-settings.php:559
 msgid "If disabled, parent menu items will only toggle child items."
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:607
+#: admin/pages/wptouch-admin-general-settings.php:566
 msgid "Use menu icons"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:608
+#: admin/pages/wptouch-admin-general-settings.php:567
 msgid "Adds the ability to associate icons with menu items"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:619
+#: admin/pages/wptouch-admin-general-settings.php:578
 msgid "Menu Icon Sets"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:632
+#: admin/pages/wptouch-admin-general-settings.php:591
 #: admin/settings/html/installed_icon_sets_ajax.php:4
-#: core/class-wptouch-pro.php:2020 core/class-wptouch-pro.php:2021
+#: core/class-wptouch-pro.php:2103 core/class-wptouch-pro.php:2104
 #: core/config.php:54
 msgid "Custom Icons"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:663
+#: admin/pages/wptouch-admin-general-settings.php:622
 msgid "WordPress Pages"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:681 core/admin-render.php:88
-#: core/config.php:94
+#: admin/pages/wptouch-admin-general-settings.php:640
+#: core/admin-render.php:109 core/config.php:93
 msgid "Customize Theme"
 msgstr ""
 
-#: admin/pages/wptouch-admin-general-settings.php:701 core/config.php:95
+#: admin/pages/wptouch-admin-general-settings.php:660 core/config.php:94
 msgid "Go Pro"
+msgstr ""
+
+#: admin/settings/html/auto_configure.php:4
+msgid ""
+"This extension doesn’t currently require configuration. All of its settings "
+"are inherited from your WPtouch Pro configuration automatically."
 msgstr ""
 
 #: admin/settings/html/button.php:6 admin/settings/html/checkbox.php:4
@@ -877,34 +865,33 @@ msgstr ""
 msgid "Server Configuration"
 msgstr ""
 
-#: admin/settings/html/extension-browser-item-detail.php:3
-#: admin/settings/html/installed_icon_sets_ajax.php:25
-#: admin/settings/html/theme-browser-item-detail.php:3
-#: core/class-wptouch-pro.php:850
-msgid "Install"
-msgstr ""
-
-#: admin/settings/html/extension-browser-item-detail.php:11
+#: admin/settings/html/extension-browser-item-detail.php:5
 msgid "Back to extensions"
 msgstr ""
 
-#: admin/settings/html/extension-browser-item-detail.php:37
+#: admin/settings/html/extension-browser-item-detail.php:29
+#: admin/settings/html/extension-browser-item-detail.php:54
 #: admin/settings/html/theme-browser-item-detail.php:42
 msgid "Add to License"
 msgstr ""
 
-#: admin/settings/html/extension-browser-item-detail.php:52
-msgid "Deactivate"
+#: admin/settings/html/extension-browser-item-detail.php:60
+msgid "Must be activated from Network Admin"
 msgstr ""
 
-#: admin/settings/html/extension-browser-item-detail.php:61
-#: admin/settings/html/theme-browser-item-detail.php:79
+#: admin/settings/html/extension-browser-item-detail.php:82
+#: admin/settings/html/theme-browser-item-detail.php:58
+msgid "Learn More"
+msgstr ""
+
+#: admin/settings/html/extension-browser-item-detail.php:118
+#: admin/settings/html/theme-browser-item-detail.php:81
 #: core/menu-walkers.php:365
 msgid "Description"
 msgstr ""
 
-#: admin/settings/html/extension-browser-item-detail.php:66
-#: admin/settings/html/theme-browser-item-detail.php:86
+#: admin/settings/html/extension-browser-item-detail.php:123
+#: admin/settings/html/theme-browser-item-detail.php:88
 msgid "Changelog"
 msgstr ""
 
@@ -922,7 +909,7 @@ msgstr ""
 msgid "No extensions available"
 msgstr ""
 
-#: admin/settings/html/image-upload.php:7 core/class-wptouch-pro.php:845
+#: admin/settings/html/image-upload.php:7 core/class-wptouch-pro.php:910
 msgid "Upload Complete!"
 msgstr ""
 
@@ -941,8 +928,14 @@ msgid ""
 msgstr ""
 
 #: admin/settings/html/installed_icon_sets_ajax.php:25
-#: core/class-wptouch-pro.php:851
+#: core/class-wptouch-pro.php:916
 msgid "Installing"
+msgstr ""
+
+#: admin/settings/html/installed_icon_sets_ajax.php:25
+#: admin/settings/html/theme-browser-item-detail.php:3
+#: core/admin-extensions.php:363 core/class-wptouch-pro.php:915
+msgid "Install"
 msgstr ""
 
 #: admin/settings/html/installed_icon_sets_ajax.php:27
@@ -988,7 +981,7 @@ msgstr ""
 msgid "Customize"
 msgstr ""
 
-#: admin/settings/html/theme-browser-item-detail.php:64
+#: admin/settings/html/theme-browser-item-detail.php:66
 msgid "Screenshots"
 msgstr ""
 
@@ -1056,19 +1049,55 @@ msgstr ""
 msgid "Update All"
 msgstr ""
 
-#: admin/settings/html/updates-available.php:12 core/admin-render.php:81
-#: core/admin-render.php:83 core/config.php:96
-msgid "Themes"
+#: admin/settings/html/updates-available.php:12
+msgid "Core Plugin Updates"
 msgstr ""
 
-#: admin/settings/html/updates-available.php:29
-#: admin/settings/html/updates-available.php:52
+#: admin/settings/html/updates-available.php:17
+#: admin/settings/html/updates-available.php:44
+#: admin/settings/html/updates-available.php:67
 msgid "Upgrade to %s"
 msgstr ""
 
-#: admin/settings/html/updates-available.php:40 core/admin-render.php:92
-#: core/admin-render.php:94 core/config.php:97
-msgid "Extensions"
+#: admin/settings/html/updates-available.php:27
+msgid "Theme Updates"
+msgstr ""
+
+#: admin/settings/html/updates-available.php:55
+msgid "Extension Updates"
+msgstr ""
+
+#: admin/settings/include/sites.php:17
+msgid "Select All"
+msgstr ""
+
+#: admin/settings/include/sites.php:18
+msgid "Select None"
+msgstr ""
+
+#: admin/settings/include/sites.php:19
+msgid "Deploy to Sites"
+msgstr ""
+
+#: admin/settings/include/sites.php:28 core/admin-render.php:57
+msgid "Deployment"
+msgstr ""
+
+#: admin/settings/include/sites.php:29
+msgid ""
+"WARNING: Deploying to sub sites will overwrite sub site WPtouch Pro settings."
+msgstr ""
+
+#: admin/settings/include/sites.php:29
+msgid "Your selected options are being deployed to sub sites"
+msgstr ""
+
+#: admin/settings/include/sites.php:29
+msgid "Deploy Complete"
+msgstr ""
+
+#: admin/settings/include/sites.php:30
+msgid "Deploy Now"
 msgstr ""
 
 #: core/addon-theme-installer.php:172
@@ -1109,16 +1138,24 @@ msgid ""
 "settings later."
 msgstr ""
 
-#: core/admin-menu.php:46
+#: core/admin-extensions.php:365
+msgid "Site Activate"
+msgstr ""
+
+#: core/admin-menu.php:47
 msgid "Setup Wizard"
 msgstr ""
 
-#: core/admin-menu.php:47 core/class-wptouch-pro.php:1502
+#: core/admin-menu.php:48 core/class-wptouch-pro.php:1585
 msgid "Settings"
 msgstr ""
 
-#: core/admin-menu.php:48
+#: core/admin-menu.php:49
 msgid "License %s Support"
+msgstr ""
+
+#: core/admin-menu.php:68
+msgid "Multisite Setup"
 msgstr ""
 
 #: core/admin-page-templates.php:17
@@ -1151,168 +1188,194 @@ msgstr ""
 msgid "Preview Theme"
 msgstr ""
 
-#: core/admin-render.php:54
+#: core/admin-render.php:50 core/admin-render.php:66
 msgid "Setup"
 msgstr ""
 
-#: core/admin-render.php:64 core/admin-render.php:70 core/config.php:90
+#: core/admin-render.php:52 core/multisite.php:180
+msgid "General Options"
+msgstr ""
+
+#: core/admin-render.php:55
+msgid "Tools"
+msgstr ""
+
+#: core/admin-render.php:76 core/admin-render.php:83 core/config.php:89
 msgid "General"
 msgstr ""
 
-#: core/admin-render.php:65 core/admin-render.php:72 core/config.php:92
+#: core/admin-render.php:77 core/admin-render.php:91 core/config.php:91
+#: core/multisite.php:267 core/multisite.php:360
 msgid "Devices"
 msgstr ""
 
-#: core/admin-render.php:66 core/admin-render.php:73 core/config.php:93
+#: core/admin-render.php:78 core/admin-render.php:95 core/config.php:92
+#: core/multisite.php:275 core/multisite.php:368
 msgid "Menu Settings"
 msgstr ""
 
-#: core/admin-render.php:67 core/admin-render.php:86
+#: core/admin-render.php:79 core/admin-render.php:107
 #: themes/foundation/root-functions.php:9
 msgid "Theme Settings"
 msgstr ""
 
-#: core/admin-render.php:68
+#: core/admin-render.php:80
 msgid "WPtouch Pro"
 msgstr ""
 
-#: core/admin-render.php:71
+#: core/admin-render.php:87 core/multisite.php:259 core/multisite.php:352
 msgid "Site Compatibility"
 msgstr ""
 
-#: core/admin-render.php:149
+#: core/admin-render.php:102 core/admin-render.php:104
+#: core/admin-render.php:140 core/config.php:95 core/multisite.php:283
+#: core/multisite.php:376
+msgid "Themes"
+msgstr ""
+
+#: core/admin-render.php:115 core/admin-render.php:117
+#: core/admin-render.php:141 core/config.php:96 core/multisite.php:291
+#: core/multisite.php:384
+msgid "Extensions"
+msgstr ""
+
+#: core/admin-render.php:138
+msgid "Available for WPtouch Pro"
+msgstr ""
+
+#: core/admin-render.php:188
 msgid "Reset Settings"
 msgstr ""
 
-#: core/class-wptouch-pro.php:550
+#: core/class-wptouch-pro.php:597
 msgid ""
 "Automatic theme migration from wp-content/uploads/wptouch-data directory "
 "failed. Please manually move these folders to wp-content/wptouch-data: %s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:569
+#: core/class-wptouch-pro.php:616
 msgid ""
 "%sWPtouch: %s was recently disabled, but is still affecting your website and "
 "caching pages.%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:570
+#: core/class-wptouch-pro.php:617
 msgid ""
 "%sPlease reactivate the plugin, disable page caching, then deactivate the "
 "plugin again to correct this issue.%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:571 core/class-wptouch-pro.php:580
+#: core/class-wptouch-pro.php:618 core/class-wptouch-pro.php:627
 msgid ""
 "%sFixing this issue prevents cached desktop pages being served to mobile "
 "devices and vice-versa.%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:572 core/class-wptouch-pro.php:581
+#: core/class-wptouch-pro.php:619 core/class-wptouch-pro.php:628
 msgid ""
 "%sOnce fixed, this message will be dismissed automatically. Until fixed, %"
 "sWPtouch will not be shown%s to mobile visitors, and cannot be previewed.%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:579
+#: core/class-wptouch-pro.php:626
 msgid "%sWPtouch: %s needs to be configured to work correctly with WPtouch.%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:582
+#: core/class-wptouch-pro.php:629
 msgid ""
 "%sTo fix the issue, follow our %sstep-by-step setup guide%s on support."
 "wptouch.com%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:594
+#: core/class-wptouch-pro.php:641
 msgid "WPtouch Repair Required"
 msgstr ""
 
-#: core/class-wptouch-pro.php:601
+#: core/class-wptouch-pro.php:648
 msgid "Your mobile theme was either broken or missing."
 msgstr ""
 
-#: core/class-wptouch-pro.php:602
+#: core/class-wptouch-pro.php:649
 msgid "We downloaded a fresh copy for you."
 msgstr ""
 
-#: core/class-wptouch-pro.php:603 core/class-wptouch-pro.php:613
+#: core/class-wptouch-pro.php:650 core/class-wptouch-pro.php:660
 msgid "OK"
 msgstr ""
 
-#: core/class-wptouch-pro.php:606
+#: core/class-wptouch-pro.php:653
 msgid ""
 "We were unable to install your WPtouch Pro theme from the Cloud. %s Please "
 "visit %sthis article%s for more information."
 msgstr ""
 
-#: core/class-wptouch-pro.php:609
+#: core/class-wptouch-pro.php:656
 msgid "WPtouch Server Issue"
 msgstr ""
 
-#: core/class-wptouch-pro.php:611
+#: core/class-wptouch-pro.php:658
 msgid ""
 "Your server setup is preventing WPtouch Pro from installing from the Cloud. %"
 "s Please visit %sthis article%s for more information on how to fix it."
 msgstr ""
 
-#: core/class-wptouch-pro.php:840
+#: core/class-wptouch-pro.php:905
 msgid ""
 "This will reset all WPtouch Pro settings.\n"
 "Are you sure?"
 msgstr ""
 
-#: core/class-wptouch-pro.php:841
+#: core/class-wptouch-pro.php:906
 msgid ""
 "This will reset all WPtouch Pro settings and delete the wptouch-data "
 "folder.\n"
 "Are you sure?"
 msgstr ""
 
-#: core/class-wptouch-pro.php:842
+#: core/class-wptouch-pro.php:907
 msgid ""
 "This will reset all WPtouch Pro settings, delete the wptouch-data folder, "
 "and deactivate the plugin. Are you sure?"
 msgstr ""
 
-#: core/class-wptouch-pro.php:843
+#: core/class-wptouch-pro.php:908
 msgid "The item failed to download for this reason: %reason%"
 msgstr ""
 
-#: core/class-wptouch-pro.php:844
+#: core/class-wptouch-pro.php:909
 msgid "You are about to reset your license information. Proceed?"
 msgstr ""
 
-#: core/class-wptouch-pro.php:846
+#: core/class-wptouch-pro.php:911
 msgid "Upload Failed: Not a valid image."
 msgstr ""
 
-#: core/class-wptouch-pro.php:847
+#: core/class-wptouch-pro.php:912
 msgid ""
 "WPtouch is saving settings. Please do not refresh the page while saving."
 msgstr ""
 
-#: core/class-wptouch-pro.php:848
+#: core/class-wptouch-pro.php:913
 msgid "Install Themes"
 msgstr ""
 
-#: core/class-wptouch-pro.php:849
+#: core/class-wptouch-pro.php:914
 msgid "Install Extensions"
 msgstr ""
 
-#: core/class-wptouch-pro.php:1539
+#: core/class-wptouch-pro.php:1622
 msgid "%s Changelog"
 msgstr ""
 
-#: core/class-wptouch-pro.php:2869
+#: core/class-wptouch-pro.php:3030
 msgid "Directory Problem"
 msgstr ""
 
-#: core/class-wptouch-pro.php:2870
+#: core/class-wptouch-pro.php:3031
 msgid "One or more required directories could not be created"
 msgstr ""
 
-#: core/config.php:91
+#: core/config.php:90
 msgid "Compatibility"
 msgstr ""
 
@@ -1324,7 +1387,7 @@ msgstr ""
 msgid "tablet"
 msgstr ""
 
-#: core/globals.php:444
+#: core/globals.php:447
 msgid "Auto-detect"
 msgstr ""
 
@@ -1420,6 +1483,10 @@ msgstr ""
 msgid "Original: %s"
 msgstr ""
 
+#: core/menu-walkers.php:415
+msgid "Remove"
+msgstr ""
+
 #: core/menu-walkers.php:416 themes/bauhaus/default/comments.php:48
 #: themes/foundation/default/comments.php:48
 msgid "Cancel"
@@ -1427,6 +1494,74 @@ msgstr ""
 
 #: core/menu-walkers.php:645
 msgid "Feed for all posts filed under %s"
+msgstr ""
+
+#: core/multisite.php:186
+msgid "Admin Language"
+msgstr ""
+
+#: core/multisite.php:196
+msgid "Control themes and extension downloads and updates"
+msgstr ""
+
+#: core/multisite.php:197
+msgid ""
+"If enabled, sub-sites can only activate/deactivate themes and extensions "
+"that have been downloaded in the network admin."
+msgstr ""
+
+#: core/multisite.php:216
+msgid "Network Defaults"
+msgstr ""
+
+#: core/multisite.php:222
+msgid "Use my settings for new sites"
+msgstr ""
+
+#: core/multisite.php:230 core/multisite.php:335
+msgid "Source site"
+msgstr ""
+
+#: core/multisite.php:240
+msgid ""
+"Configure WPtouch to use a site for defaults on new network sites instead of "
+"its defaults"
+msgstr ""
+
+#: core/multisite.php:245
+msgid "Subsite Customizable Settings"
+msgstr ""
+
+#: core/multisite.php:251 core/multisite.php:344
+msgid "General Settings"
+msgstr ""
+
+#: core/multisite.php:299 core/multisite.php:392
+msgid "Colors"
+msgstr ""
+
+#: core/multisite.php:307 core/multisite.php:400
+#: themes/foundation/modules/social-links/social-links.php:9
+msgid "Social Media Links"
+msgstr ""
+
+#: core/multisite.php:315 core/multisite.php:408
+#: themes/foundation/modules/sharing/sharing.php:95
+msgid "Social Sharing"
+msgstr ""
+
+#: core/multisite.php:324
+msgid ""
+"Select which settings sections are available to users in network subsites "
+"(network admins always see settings)."
+msgstr ""
+
+#: core/multisite.php:329
+msgid "Source Site"
+msgstr ""
+
+#: core/multisite.php:420
+msgid "Destination Sites"
 msgstr ""
 
 #: include/html/desktop-switch.php:2
@@ -1531,7 +1666,7 @@ msgstr ""
 
 #: themes/bauhaus/default/comments.php:67
 #: themes/foundation/default/comments.php:67
-#: themes/foundation/modules/social-links/social-links.php:94
+#: themes/foundation/modules/social-links/social-links.php:95
 msgid "E-Mail"
 msgstr ""
 
@@ -1667,107 +1802,107 @@ msgstr ""
 msgid "desktop"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:117
+#: themes/bauhaus/root-functions.php:118
 msgid "Header Menu"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:119
+#: themes/bauhaus/root-functions.php:120
 msgid "Choose a menu"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:120
+#: themes/bauhaus/root-functions.php:121
 msgid "Main menu selection"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:127
+#: themes/bauhaus/root-functions.php:128
 msgid "Theme background"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:128
+#: themes/bauhaus/root-functions.php:129
 msgid "Header & Menu"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:129
+#: themes/bauhaus/root-functions.php:130
 msgid "Links"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:130
+#: themes/bauhaus/root-functions.php:131
 msgid "Post/Page Headers"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:223
+#: themes/bauhaus/root-functions.php:224
 msgid "Menu animation style"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:228
+#: themes/bauhaus/root-functions.php:229
 msgid "Off-canvas"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:229
+#: themes/bauhaus/root-functions.php:230
 msgid "Drop-down"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:237
+#: themes/bauhaus/root-functions.php:238
 msgid "Show search in header"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:254
+#: themes/bauhaus/root-functions.php:255
 msgid "Post thumbnails"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:259
+#: themes/bauhaus/root-functions.php:260
 msgid "No thumbnails"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:260
+#: themes/bauhaus/root-functions.php:261
 msgid "Blog listing only"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:261
+#: themes/bauhaus/root-functions.php:262
 msgid "Blog listing, single posts"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:262
+#: themes/bauhaus/root-functions.php:263
 msgid "Blog listing, single posts & pages"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:263
+#: themes/bauhaus/root-functions.php:264
 msgid "All (blog, single, pages, search & archive)"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:271
+#: themes/bauhaus/root-functions.php:272
 msgid "Thumbnail Type"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:276
+#: themes/bauhaus/root-functions.php:277
 msgid "Post featured images"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:277
+#: themes/bauhaus/root-functions.php:278
 msgid "Post custom field"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:285
+#: themes/bauhaus/root-functions.php:286
 msgid "Thumbnail custom field name"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:296
+#: themes/bauhaus/root-functions.php:297
 msgid "Show post categories and tags"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:307
+#: themes/bauhaus/root-functions.php:308
 msgid "Show post date"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:318
+#: themes/bauhaus/root-functions.php:319
 msgid "Show post author"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:329
+#: themes/bauhaus/root-functions.php:330
 msgid "Show comment bubbles on posts"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:340
+#: themes/bauhaus/root-functions.php:341
 msgid "Use infinite scrolling for blog"
 msgstr ""
 
@@ -1821,108 +1956,124 @@ msgid ""
 "site."
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:302
-msgid "Number of posts in slider"
+#: themes/foundation/modules/featured/featured.php:309
+msgid "Featured slider style"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:314
+msgid "Enhanced"
 msgstr ""
 
 #: themes/foundation/modules/featured/featured.php:315
-msgid "Slide automatically "
+msgid "Streamlined"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:323
+#: themes/foundation/modules/featured/featured.php:327
+msgid "Number of posts in slider"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:340
+msgid "Show # of comments"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:348
+msgid "Slide automatically"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:356
 msgid "Slides repeat"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:331
+#: themes/foundation/modules/featured/featured.php:364
 msgid "Make images grayscale"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:339
+#: themes/foundation/modules/featured/featured.php:372
 msgid "Slider posts also show in listings"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:347
+#: themes/foundation/modules/featured/featured.php:380
 msgid "Slide transition speed"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:352
+#: themes/foundation/modules/featured/featured.php:385
 msgid "Slow"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:353
+#: themes/foundation/modules/featured/featured.php:386
 msgid "Normal"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:354
+#: themes/foundation/modules/featured/featured.php:387
 msgid "Fast"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:365
+#: themes/foundation/modules/featured/featured.php:398
 msgid "Show latest posts"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:366
+#: themes/foundation/modules/featured/featured.php:399
 msgid "Show posts from a specific tag"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:367
+#: themes/foundation/modules/featured/featured.php:400
 msgid "Show posts from a specific category"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:368
+#: themes/foundation/modules/featured/featured.php:401
 msgid "Show posts from a specific post type"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:369
+#: themes/foundation/modules/featured/featured.php:402
 msgid "Show only specific posts or pages"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:375
+#: themes/foundation/modules/featured/featured.php:408
 msgid "Only this tag"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:376
-#: themes/foundation/modules/featured/featured.php:385
+#: themes/foundation/modules/featured/featured.php:409
+#: themes/foundation/modules/featured/featured.php:418
 msgid "Enter the tag/category slug name"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:384
+#: themes/foundation/modules/featured/featured.php:417
 msgid "Only this category"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:393
+#: themes/foundation/modules/featured/featured.php:426
 msgid "Comma-separated list of post/page IDs"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:404
+#: themes/foundation/modules/featured/featured.php:437
 msgid "Only this post type"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:414
+#: themes/foundation/modules/featured/featured.php:447
 msgid "Featured Slider"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:421
+#: themes/foundation/modules/featured/featured.php:454
 msgid "Enable featured slider"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:422
+#: themes/foundation/modules/featured/featured.php:455
 msgid "Requires at least 2 entries to contain featured images"
 msgstr ""
 
-#: themes/foundation/modules/google-fonts/google-fonts.php:20
+#: themes/foundation/modules/google-fonts/google-fonts.php:21
 msgid "Browser Default Fonts"
 msgstr ""
 
-#: themes/foundation/modules/google-fonts/google-fonts.php:28
+#: themes/foundation/modules/google-fonts/google-fonts.php:29
 msgid "Typography"
 msgstr ""
 
-#: themes/foundation/modules/google-fonts/google-fonts.php:34
+#: themes/foundation/modules/google-fonts/google-fonts.php:35
 msgid "Font Pairing"
 msgstr ""
 
-#: themes/foundation/modules/google-fonts/google-fonts.php:35
+#: themes/foundation/modules/google-fonts/google-fonts.php:36
 msgid ""
 "Choose a Google font pairing designed for this theme, or default browser "
 "fonts."
@@ -1948,28 +2099,12 @@ msgstr ""
 msgid "Lost password?"
 msgstr ""
 
-#: themes/foundation/modules/login/login.php:22
-msgid "Account Username"
+#: themes/foundation/modules/login/login.php:10
+msgid "Show login in menu"
 msgstr ""
 
-#: themes/foundation/modules/login/login.php:23
-msgid "Account Password"
-msgstr ""
-
-#: themes/foundation/modules/login/login.php:32
-msgid "Login Form"
-msgstr ""
-
-#: themes/foundation/modules/login/login.php:38
-msgid "Allow Login"
-msgstr ""
-
-#: themes/foundation/modules/login/login.php:39
+#: themes/foundation/modules/login/login.php:11
 msgid "Will add login/out links"
-msgstr ""
-
-#: themes/foundation/modules/login/login.php:46
-msgid "Include \"Sign-up\" and \"Lost Password?\" links"
 msgstr ""
 
 #: themes/foundation/modules/media/media.php:34
@@ -1987,103 +2122,95 @@ msgid ""
 "them with the correct aspect ratio."
 msgstr ""
 
-#: themes/foundation/modules/sharing/sharing.php:94
-msgid "Social Sharing"
-msgstr ""
-
-#: themes/foundation/modules/sharing/sharing.php:100
+#: themes/foundation/modules/sharing/sharing.php:101
 msgid "Will show Facebook, Twitter, Pinterest and Email buttons."
 msgstr ""
 
-#: themes/foundation/modules/sharing/sharing.php:108
+#: themes/foundation/modules/sharing/sharing.php:109
 msgid "Show sharing links on posts"
 msgstr ""
 
-#: themes/foundation/modules/sharing/sharing.php:116
+#: themes/foundation/modules/sharing/sharing.php:117
 msgid "Also show on pages"
 msgstr ""
 
-#: themes/foundation/modules/sharing/sharing.php:124
+#: themes/foundation/modules/sharing/sharing.php:125
 msgid "Sharing links location"
 msgstr ""
 
-#: themes/foundation/modules/sharing/sharing.php:129
+#: themes/foundation/modules/sharing/sharing.php:130
 msgid "Above post content"
 msgstr ""
 
-#: themes/foundation/modules/sharing/sharing.php:130
+#: themes/foundation/modules/sharing/sharing.php:131
 msgid "Below post content"
 msgstr ""
 
-#: themes/foundation/modules/sharing/sharing.php:136
+#: themes/foundation/modules/sharing/sharing.php:137
 msgid "Color scheme"
 msgstr ""
 
-#: themes/foundation/modules/sharing/sharing.php:141
+#: themes/foundation/modules/sharing/sharing.php:142
 msgid "Theme colors"
 msgstr ""
 
-#: themes/foundation/modules/sharing/sharing.php:142
+#: themes/foundation/modules/sharing/sharing.php:143
 msgid "Social network colors"
 msgstr ""
 
-#: themes/foundation/modules/social-links/social-links.php:8
-msgid "Social Media Links"
-msgstr ""
-
-#: themes/foundation/modules/social-links/social-links.php:15
+#: themes/foundation/modules/social-links/social-links.php:16
 msgid "Full URL to your Facebook page"
 msgstr ""
 
-#: themes/foundation/modules/social-links/social-links.php:23
+#: themes/foundation/modules/social-links/social-links.php:24
 msgid "Full URL to your Twitter profile"
 msgstr ""
 
-#: themes/foundation/modules/social-links/social-links.php:31
+#: themes/foundation/modules/social-links/social-links.php:32
 msgid "Full URL to your Google+ profile"
 msgstr ""
 
-#: themes/foundation/modules/social-links/social-links.php:39
+#: themes/foundation/modules/social-links/social-links.php:40
 msgid "Full URL to your Instagram profile"
 msgstr ""
 
-#: themes/foundation/modules/social-links/social-links.php:46
+#: themes/foundation/modules/social-links/social-links.php:47
 msgid "Tumblr"
 msgstr ""
 
-#: themes/foundation/modules/social-links/social-links.php:47
+#: themes/foundation/modules/social-links/social-links.php:48
 msgid "Full URL to your Tumblr profile"
 msgstr ""
 
-#: themes/foundation/modules/social-links/social-links.php:55
+#: themes/foundation/modules/social-links/social-links.php:56
 msgid "Full URL to your Pinterest page"
 msgstr ""
 
-#: themes/foundation/modules/social-links/social-links.php:63
+#: themes/foundation/modules/social-links/social-links.php:64
 msgid "Full URL to your Vimeo page"
 msgstr ""
 
-#: themes/foundation/modules/social-links/social-links.php:71
+#: themes/foundation/modules/social-links/social-links.php:72
 msgid "Full URL to your %s profile"
 msgstr ""
 
-#: themes/foundation/modules/social-links/social-links.php:78
+#: themes/foundation/modules/social-links/social-links.php:79
 msgid "LinkedIn"
 msgstr ""
 
-#: themes/foundation/modules/social-links/social-links.php:79
+#: themes/foundation/modules/social-links/social-links.php:80
 msgid "Full URL to your LinkedIn profile"
 msgstr ""
 
-#: themes/foundation/modules/social-links/social-links.php:87
+#: themes/foundation/modules/social-links/social-links.php:88
 msgid "Full URL to your Yelp profile"
 msgstr ""
 
-#: themes/foundation/modules/social-links/social-links.php:95
+#: themes/foundation/modules/social-links/social-links.php:96
 msgid "E-Mail address"
 msgstr ""
 
-#: themes/foundation/modules/social-links/social-links.php:103
+#: themes/foundation/modules/social-links/social-links.php:104
 msgid "Full URL to your RSS feed"
 msgstr ""
 
@@ -2092,7 +2219,7 @@ msgid "iPad"
 msgstr ""
 
 #: themes/foundation/modules/tablets/tablets.php:64
-#: themes/foundation/root-functions.php:465
+#: themes/foundation/root-functions.php:462
 msgid "%d by %d pixels (PNG)"
 msgstr ""
 
@@ -2116,123 +2243,123 @@ msgstr ""
 msgid "Language: "
 msgstr ""
 
-#: themes/foundation/root-functions.php:389
+#: themes/foundation/root-functions.php:386
 msgid "Theme Colors"
 msgstr ""
 
-#: themes/foundation/root-functions.php:405
+#: themes/foundation/root-functions.php:402
 msgid "Number of posts in post listings"
 msgstr ""
 
-#: themes/foundation/root-functions.php:406
+#: themes/foundation/root-functions.php:403
 msgid ""
 "Overrides the WordPress Reading settings for \"Blog pages show at most\""
 msgstr ""
 
-#: themes/foundation/root-functions.php:418
+#: themes/foundation/root-functions.php:415
 msgid "Excluded categories"
 msgstr ""
 
-#: themes/foundation/root-functions.php:419
+#: themes/foundation/root-functions.php:416
 msgid "Comma separated by category name"
 msgstr ""
 
-#: themes/foundation/root-functions.php:426
+#: themes/foundation/root-functions.php:423
 msgid "Excluded tags"
 msgstr ""
 
-#: themes/foundation/root-functions.php:427
+#: themes/foundation/root-functions.php:424
 msgid "Comma separated by tag name"
 msgstr ""
 
-#: themes/foundation/root-functions.php:438
+#: themes/foundation/root-functions.php:435
 msgid "Blog"
 msgstr ""
 
-#: themes/foundation/root-functions.php:448
-#: themes/foundation/root-functions.php:1215
+#: themes/foundation/root-functions.php:445
+#: themes/foundation/root-functions.php:1212
 msgid "Pages"
 msgstr ""
 
-#: themes/foundation/root-functions.php:459
+#: themes/foundation/root-functions.php:456
 msgid "Site Icon"
 msgstr ""
 
-#: themes/foundation/root-functions.php:483
+#: themes/foundation/root-functions.php:480
 msgid "Site Logo"
 msgstr ""
 
-#: themes/foundation/root-functions.php:495
+#: themes/foundation/root-functions.php:492
 msgid "Header"
 msgstr ""
 
-#: themes/foundation/root-functions.php:507
+#: themes/foundation/root-functions.php:504
 msgid "Footer"
 msgstr ""
 
-#: themes/foundation/root-functions.php:513
+#: themes/foundation/root-functions.php:510
 msgid "Custom footer content (HTML is allowed)"
 msgstr ""
 
-#: themes/foundation/root-functions.php:528
+#: themes/foundation/root-functions.php:525
 msgid "Custom CSS"
 msgstr ""
 
-#: themes/foundation/root-functions.php:534
+#: themes/foundation/root-functions.php:531
 msgid "Custom CSS Declarations"
 msgstr ""
 
-#: themes/foundation/root-functions.php:880
+#: themes/foundation/root-functions.php:877
 msgid "search results for '%s'"
 msgstr ""
 
-#: themes/foundation/root-functions.php:882
+#: themes/foundation/root-functions.php:879
 msgid "%sCategories &rsaquo;%s %s"
 msgstr ""
 
-#: themes/foundation/root-functions.php:884
+#: themes/foundation/root-functions.php:881
 msgid "Tags &rsaquo; %s"
 msgstr ""
 
-#: themes/foundation/root-functions.php:886
-#: themes/foundation/root-functions.php:888
-#: themes/foundation/root-functions.php:890
+#: themes/foundation/root-functions.php:883
+#: themes/foundation/root-functions.php:885
+#: themes/foundation/root-functions.php:887
 msgid "Archives &rsaquo; %s"
 msgstr ""
 
-#: themes/foundation/root-functions.php:905
+#: themes/foundation/root-functions.php:902
 msgid "Load more from this category"
 msgstr ""
 
-#: themes/foundation/root-functions.php:907
+#: themes/foundation/root-functions.php:904
 msgid "Load more tagged like this"
 msgstr ""
 
-#: themes/foundation/root-functions.php:909
+#: themes/foundation/root-functions.php:906
 msgid "Load more from this day"
 msgstr ""
 
-#: themes/foundation/root-functions.php:911
+#: themes/foundation/root-functions.php:908
 msgid "Load more from this month"
 msgstr ""
 
-#: themes/foundation/root-functions.php:913
+#: themes/foundation/root-functions.php:910
 msgid "Load more from this year"
 msgstr ""
 
-#: themes/foundation/root-functions.php:915
+#: themes/foundation/root-functions.php:912
 msgid "Load more in this section"
 msgstr ""
 
-#: themes/foundation/root-functions.php:917
+#: themes/foundation/root-functions.php:914
 msgid "Load more entries"
 msgstr ""
 
-#: themes/foundation/root-functions.php:1164
+#: themes/foundation/root-functions.php:1161
 msgid "Post"
 msgstr ""
 
-#: themes/foundation/root-functions.php:1166
+#: themes/foundation/root-functions.php:1163
 msgid "Page"
 msgstr ""
 

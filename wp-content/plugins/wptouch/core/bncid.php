@@ -80,6 +80,7 @@ function wptouch_check_api( $force_refresh = false ) {
 				$bnc_settings->license_total_sites = 0;
 				$bnc_settings->license_friendly_name = '';
 				$bnc_settings->license_used_sites = 0;
+				$bnc_settings->license_support_packages  = $result[ 'support_packages' ];
 
 				if ( $result[ 'license_expiry_date'] ) {
 					$bnc_settings->license_expiry_date = $result[ 'license_expiry_date'];

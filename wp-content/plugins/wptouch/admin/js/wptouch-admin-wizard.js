@@ -94,7 +94,7 @@ function wptouchDoWizard(){
 						if ( theme_selected ) {
 							jQuery( '.actions li' ).removeClass( 'disabled' );
 							jQuery.cookie( 'jQu3ry_5teps_St@te_wptouch-wizard-container', '4' );
-							wptouchAdminAjax( 'wizard-theme', { 'theme': theme_selected }, wptouchReload );
+							wptouchAdminAjax( 'wizard-theme', { 'theme': theme_selected }, wptouchContinue );
 						} else{
 							jQuery( '.actions li' ).addClass( 'disabled' );
 							return false;
@@ -165,6 +165,16 @@ function wptouchSetupSelects(){
 	});
 }
 
+function wptouchLove(){
+	jQuery( '#wptouch_love' ).on( 'change', function(){
+		if ( !jQuery( this ).prop( 'checked' ) ) {
+			jQuery( 'i.heartbeat' ).removeClass( 'icon-heart' ).addClass( 'icon-heart-broken' );
+		} else {
+			jQuery( 'i.heartbeat' ).addClass( 'icon-heart' ).removeClass( 'icon-heart-broken' );			
+		}
+	});
+}
+
 function wptouchWizardLicense(){
 
 	if ( jQuery( '#activate-license a' ).length ){
@@ -186,19 +196,8 @@ function wptouchWizardLicense(){
 			wptouchAdminAjax( 'activate-license-key', ajaxParams, function( result ) {
 				if ( result == '1' ) {
 					// license success
-					bncHasLicense = 1;
-					jQuery( '.activate-license .unlicensed' ).fadeOut( 'fast', function(){
-						jQuery( '.activate-license .activated' ).show();
-						jQuery( 'i.icon-ok-circle' ).addClass( 'flipInX' );
-						jQuery( '.steps li.current' ).removeClass( 'error' );
-					});
-
-					// Animate Activation icon if it's there
-					if ( jQuery( '#wptouch-wizard-container' ).has( 'i.icon-ok-circle' ) ) {
-						setTimeout( function(){
-						//	wptouchReload();
-						}, 500 );
-					}
+					bncHasLicense = 1;					
+					wptouchReload();
 
 				} else {
 					// rejected license
@@ -209,7 +208,7 @@ function wptouchWizardLicense(){
 						licenseTextDiv.html( 'You have no licenses remaining to activate this site.<br />You can add <a href="http://www.wptouch-com/account">additional licenses</a> to your account and try again.' );
 					} else if( result == '4' ){
 						licenseTextDiv.html( 'The server is having an issue activating your license.<br />Please contact us at <a href="mailto:support@wtouch.com?subject=Cannot%20Reach%20WPtouch%20Server">support@wptouch.com</a> and let us know.' );
-					}else if( result == '5' ){
+					} else if( result == '5' ){
 						licenseTextDiv.html( 'Your license has expired.<br />Please <a href="//www.wptouch.com/renew">renew</a> to activate this site.' );
 					}
 
@@ -322,6 +321,7 @@ function wptouchWizardDownloadUpload(){
 
 jQuery( document ).ready( function(){
 	wptouchDoWizard();
+	wptouchLove();
 	wptouchSetupSelects();
 	wptouchWizardLicense();
 	wptouchWizardThemeSelect();

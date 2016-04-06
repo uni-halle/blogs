@@ -86,7 +86,6 @@ define( 'WPTOUCH_EXCERPT_LENGTH', 24 );
 define( 'WPTOUCH_PRO_README_FILE', 'http://www.wptouch.com/wptouch-pro-4/readme.txt' );
 
 define( 'WPTOUCH_ADMIN_UPDATES_AVAILABLE', __( 'Updates Available', 'wptouch-pro' ) );
-define( 'WPTOUCH_ADMIN_MULTISITE_SETUP', __( 'Multisite Setup', 'wptouch-pro' ) );
 define( 'WPTOUCH_ADMIN_SETUP_GENERAL', __( 'General', 'wptouch-pro' ) );
 define( 'WPTOUCH_ADMIN_SETUP_COMPAT', __( 'Compatibility', 'wptouch-pro' ) );
 define( 'WPTOUCH_ADMIN_SETUP_DEVICES', __( 'Devices', 'wptouch-pro' ) );

@@ -1,72 +1,24 @@
 <?php
 
 // Actions
-add_action( 'wptouch_admin_page_render_wptouch-admin-theme-settings', 'foundation_login_settings' );
-add_action( 'foundation_module_init_mobile', 'foundation_login_init' );
-add_action( 'wptouch_post_footer', 'foundation_add_login_form' );
+add_filter( 'wptouch_foundation_menu_options', 'foundation_login_settings' );
 
-
-function foundation_login_init() {
-	// Load JS
-	if ( wptouch_fdn_show_login() ) {
-		wp_enqueue_script(
-			'foundation_login_jquery',
-			foundation_get_base_module_url() . '/login/wptouch-login.js',
-			array( 'jquery' ),
-			md5( FOUNDATION_VERSION ),
-			true
-		);
-	}
-
-	$fdn_login_strings = array(
-		'username_text' => __( 'Account Username', 'wptouch-pro' ),
-		'password_text' => __( 'Account Password', 'wptouch-pro' )
-	);
-
-	wp_localize_script( 'foundation_login_jquery', 'wptouchFdnLogin', $fdn_login_strings );
-}
-
-function foundation_login_settings( $page_options ) {
-	wptouch_add_page_section(
-		FOUNDATION_PAGE_GENERAL,
-		__( 'Login Form', 'wptouch-pro' ),
-		'login-options',
-		array(
-			wptouch_add_setting(
+function foundation_login_settings( $menu_settings ) {
+	$menu_settings[] = wptouch_add_setting(
 				'checkbox',
 				'show_login_box',
-				__( 'Allow Login', 'wptouch-pro' ),
+				__( 'Show login in menu', 'wptouch-pro' ),
 				__( 'Will add login/out links', 'wptouch-pro' ),
 				WPTOUCH_SETTING_BASIC,
 				'2.0'
-			),
-			wptouch_add_setting(
-				'checkbox',
-				'show_login_links',
-				__( 'Include "Sign-up" and "Lost Password?" links', 'wptouch-pro' ),
-				'',
-				WPTOUCH_SETTING_BASIC,
-				'2.0'
-			)
+			);
 
-		),
-		$page_options,
-		FOUNDATION_SETTING_DOMAIN
-	);
-
-	return $page_options;
-}
-
-function foundation_add_login_form(){
-	if ( wptouch_fdn_show_login() ) {
-		$content = wptouch_capture_include_file( dirname( __FILE__ ) . '/login-html.php' );
-		echo $content;
-	}
+	return $menu_settings;
 }
 
 // Can be used in themes (public)
 function wptouch_fdn_show_login(){
-	$settings = foundation_get_settings();
+	$settings = wptouch_get_settings();
 	if ( $settings->show_login_box ) {
 		return true;
 	} else {

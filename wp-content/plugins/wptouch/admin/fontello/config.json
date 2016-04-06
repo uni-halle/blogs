@@ -325,6 +325,24 @@
       "css": "tablet",
       "code": 59417,
       "src": "modernpics"
+    },
+    {
+      "uid": "862129f833b09f3d34ae39acf8484a7b",
+      "css": "heart-broken",
+      "code": 59424,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "d218294e6f9f7191f6b0b3d1ff6239ff",
+      "css": "eye-off",
+      "code": 59425,
+      "src": "elusive"
+    },
+    {
+      "uid": "pgdm1vsngqxmheo5xkjpbm5o8k81pawd",
+      "css": "flash",
+      "code": 59426,
+      "src": "typicons"
     }
   ]
 }

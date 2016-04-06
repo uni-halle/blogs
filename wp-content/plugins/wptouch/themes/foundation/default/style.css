@@ -33,6 +33,8 @@ ol,ul {
 	padding: 0;
 }
 
+
+
 :focus {
 	outline: 0;
 }
@@ -71,7 +73,7 @@ iframe {
 
 sup {
 	vertical-align: super;
-	font-size: 50%;
+	font-size: 75%;
 	font-variant: small-caps;
 }
 
@@ -91,10 +93,11 @@ hr {
 	margin: 1% 8%;
 }
 
-blockquote {
+blockquote, q {
 	margin-left: 5%;
 	margin-right: 5%;
 	font-style: italic;
+	display: block;
 }
 
 .aligncenter,
@@ -129,13 +132,6 @@ blockquote {
 	direction: rtl;
 }
 
-code, pre {
-	overflow: scroll;
-	padding: 5px;
-	font-family: monospace;
-	background-color: rgba(0,0,0,.1);
-}
-
 #content input {
 	font-size: 100% !important;
 }
@@ -163,6 +159,39 @@ img.wp-smiley {
 
 .post table img, .page table img {
 	margin: 0;
+}
+
+code, kbd, pre, tt {
+	border: 1px solid #ffd478;
+	word-wrap: break-word;
+	background-color: #f2fdc7;
+	padding: 5px;
+}
+
+var {
+	color: red;
+}
+
+pre {
+}
+
+ins {
+	vertical-align: super;
+}
+
+table {
+	text-align: left;
+}
+
+table thead th {
+	border-bottom: 1px solid #ccc;
+}
+
+table tbody tr {
+}
+
+table td:first-of-type {
+	padding: 10px;
 }
 
 /* @group WP Gallery & Captions */

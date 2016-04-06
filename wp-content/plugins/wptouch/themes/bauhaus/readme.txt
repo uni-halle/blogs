@@ -2,7 +2,7 @@ Theme Name: Bauhaus
 Theme URI: http://www.wptouch.com/themes/bauhaus
 Author: BraveNewCode Inc.
 Description: Clean, modern, functional design. Great for all types of WordPress sites.
-Version: 1.6.2
+Version: 1.6.4
 Depends on: 4.0
 Framework: 2.0
 Tags: smartphone
@@ -22,6 +22,19 @@ Bauhaus is one of our more flexible themes, and is designed to easily take on th
 7. http://wptouch-pro-4.s3.amazonaws.com/screenshots/bauhaus/7.jpg
 
 == Changelog ==
+
+= Version 1.6.4 =
+
+* Added: Support for the new AMP extension
+* Added: Featured slider settings to control display of # of comments
+* Added: Featured slider option for more minimal slider appearance
+* Changed: Minor styling enhancements and fixes
+* Fixed: Minor styling issues
+* Fixed: Login link behaviour in Web App Mode
+
+= Version 1.6.3 =
+
+* Changed: Improvements for child theming
 
 = Version 1.6.2 =
 

@@ -1,10 +1,4 @@
-/* @override 
-	http://wptp3.local.com/wp-content/plugins/wptouch-pro/admin/css/wptouch-admin-4-wizard.css?ver=4.0rc3
-	http://multisite.local.com/wordpress/wp-content/plugins/wptouch-pro/admin/css/wptouch-admin-4-wizard.css?ver=4.0rc3
-	http://wptp3.local.com/wp-content/plugins/wptouch-pro/admin/css/wptouch-admin-4-wizard.css?ver=4.0rc4
-	http://wptp3.local.com/wp-content/plugins/wptouch-pro/admin/css/wptouch-admin-4-wizard.css?ver=76e991ef18f00ccead0908dad1e8ca36
-	http://local.free.com/wordpress/wp-content/plugins/wptouch-pro/admin/css/wptouch-admin-4-wizard.css?ver=ef6e6bd127f2d30c8e9b0f7ab4870428
-*/
+/* @override http://wpt.local.com/wp-content/plugins/wptouch-pro/admin/css/wptouch-admin-4-wizard.css?ver=22ed6bf4adf5d9900c597275442749f4 */
 
 /* @group Clearfix */
 
@@ -1311,6 +1305,13 @@ input.checkbox:disabled + label:after {
 .show-love .icon-heart {
 	font-size: 240px;
 	color: #eb5768;
+	line-height: 240px;
+}
+
+.show-love .icon-heart-broken {
+	font-size: 194px;
+	color: #eb5768;
+	line-height: 249px;
 }
 /* @end */
 
