@@ -39,8 +39,13 @@ function responsive_upgrade_bar() {
 					style="border:none; overflow:hidden; width:200px; height:21px;" allowTransparency="true"></iframe>
 			</div>
 		</div>
+		
+	
 	</div>
-
+	<div class="updated">
+		<p><strong><?php _e('<a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> allows you to create Sliders using 13 Dynamic Sources like YouTube, Vimeo, Pinterest and more.
+Upgrade to <a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> Today.','responsive'); ?></strong></p>
+	</div>
 <?php
 }
 
@@ -90,11 +95,6 @@ function responsive_install_plugins() {
 		array(
 			'name'     => 'iFeature Slider', // The plugin name
 			'slug'     => 'ifeature-slider', // The plugin slug (typically the folder name)
-			'required' => false
-		),
-		array(
-			'name'     => 'inSite for WP: Personalization Made Easy', // The plugin name
-			'slug'     => 'insite-for-wp-personalization-made-easy', // The plugin slug (typically the folder name)
 			'required' => false
 		)
 	);

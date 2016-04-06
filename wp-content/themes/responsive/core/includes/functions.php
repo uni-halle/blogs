@@ -375,3 +375,41 @@ if ( !function_exists( 'responsive_post_meta_data' ) ) {
 	}
 
 }
+
+
+/**
+ * Added the footer copyright setting to the theme customizer - starts
+ */
+
+function fetch_copyright(){
+	global $responsive_options;
+	?>
+	<script>
+		jQuery(document).ready(function(){
+		var copyright_text = "<?php if (isset($responsive_options['copyright_textbox'])) { echo $responsive_options['copyright_textbox']; } ?>";
+		var cyberchimps_link = "<?php if (isset($responsive_options['poweredby_link'])) { echo $responsive_options['poweredby_link']; } ?>";
+		var siteurl = "<?php echo site_url(); ?>"; 
+		if(copyright_text == "")
+		{
+			jQuery(".copyright #copyright_link").text(" "+"Default copyright text");
+		}
+		else{ 
+			jQuery(".copyright #copyright_link").text(" "+copyright_text);
+		}
+		jQuery(".copyright #copyright_link").attr('href',siteurl);
+		if(cyberchimps_link == 1)
+		{
+			jQuery(".powered").css("display","block");
+		}
+		else{
+			jQuery(".powered").css("display","none");
+		}
+		});
+	</script>
+<?php
+}
+add_action('wp_head','fetch_copyright');
+
+/**
+ * Added the footer copyright setting to the theme customizer - ends
+ */
