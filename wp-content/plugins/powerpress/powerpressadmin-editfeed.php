@@ -419,6 +419,9 @@ function powerpressadmin_edit_feed_general($FeedSettings, $General)
 <p><?php echo __('These are podcast only feeds suitable for submission podcast directories such as iTunes.', 'powerpress'); ?></p>
 <p class="description"><?php echo __('Note: We do not recommend submitting your main site feed to podcast directories such as iTunes. iTunes and many other podcast directories work best with feeds that do not have regular blog posts mixed in.', 'powerpress');  ?></p>
 
+<input type="hidden" name="General[feed_action_hook]" value="0" />
+<p><label><input type="checkbox" name="General[feed_action_hook]" value="1" <?php if( !empty($General['feed_action_hook']) && $General['feed_action_hook'] == 1 ) echo 'checked '; ?>/> <?php echo __('Do not allow other plugins to modify podcast feeds.', 'powerpress'); ?></label></p>
+
 </td>
 </tr>
 
@@ -426,9 +429,17 @@ function powerpressadmin_edit_feed_general($FeedSettings, $General)
 <th scope="row">
 <?php echo __('Feed Discovery', 'powerpress'); ?></th>
 <td>
-
-<p><label><input type="checkbox" name="General[feed_links]" value="1" <?php if( !empty($General['feed_links']) && $General['feed_links'] == 1 ) echo 'checked '; ?>/> <?php echo __('Include podcast feed links in HTML headers.', 'powerpress'); ?></label></p>
+<p style="margin-top: 10px;"><label><input type="checkbox" name="General[feed_links]" value="1" <?php if( !empty($General['feed_links']) && $General['feed_links'] == 1 ) echo 'checked '; ?>/> <?php echo __('Include podcast feed links in HTML headers.', 'powerpress'); ?></label></p>
 <p><?php echo __('Adds "feed discovery" links to your web site\'s headers allowing web browsers and feed readers to auto-detect your podcast feeds.', 'powerpress'); ?></p>
+</td>
+</tr>
+
+<tr valign="top">
+<th scope="row">
+<?php echo __('RSS2 Image', 'powerpress'); ?></th>
+<td>
+<input type="hidden" name="General[disable_rss_image]" value="1" />
+<p><label><input type="checkbox" name="General[disable_rss_image]" value="0" <?php if( empty($General['disable_rss_image']) ) echo 'checked '; ?>/> <?php echo __('Include RSS Image in feeds.', 'powerpress'); ?></label></p>
 </td>
 </tr>
 

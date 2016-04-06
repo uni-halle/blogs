@@ -23,8 +23,10 @@
 				unset($ha);
 			}
 			
-			if( !isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW']) )
+			if( !isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW']) ) {
 				powerpress_feed_auth_basic( $FeedSettings['title'] );
+				exit;
+			}
 				
 			$user = $_SERVER['PHP_AUTH_USER'];
 			$password = $_SERVER['PHP_AUTH_PW'];
@@ -36,17 +38,29 @@
 				// Check capability...
 				if( $userObj->has_cap( $FeedSettings['premium'] ) )
 					return; // Nice, let us continue...
-				
 				powerpress_feed_auth_basic( $FeedSettings['title'], __('Access Denied', 'powerpress') );
+				exit;
 			}
 			
-			// user authenticated here
-			powerpress_feed_auth_basic( $FeedSettings['title'], __('Authorization Failed', 'powerpress') );
+			// If we made it this far, then there was a wp_authenticate error...
+			powerpress_feed_auth_basic( $FeedSettings['title'], $userObj );
+			exit;
 		}
 	}
 	
 	function powerpress_feed_auth_basic($realm_name, $error = false )
 	{
+		if( !defined('POWERPRESS_FEED_AUTH_PRINT_WP_ERRORS') && is_wp_error($error) ) {
+			$error = __('Unauthorized', 'powerpress');
+		}
+		
+		if( empty($error) ) {
+			$error = __('Unauthorized', 'powerpress');
+		}
+		
+		$error_heading = (is_wp_error($error)? __('Unauthorized', 'powerpress') : $error);
+		$error_message = (is_wp_error($error)?$error->get_error_message(): htmlspecialchars($error) );
+		
 		if( !$error )
 			$error = __('Unauthorized', 'powerpress');
 		header('HTTP/1.0 401 Unauthorized');
@@ -60,15 +74,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 	<meta name="robots" content="noindex" />
-	<title><?php echo htmlspecialchars($error); ?></title>
+	<title><?php echo htmlspecialchars($error_heading); ?></title>
 </head>
 <body>
-	<p><?php echo htmlspecialchars($error); ?></p>
+	<p><?php echo $error_message; ?></p>
 </body>
 </html>
 <?php
 		exit;
 	}
 	
-	
-
+// eof

@@ -22,21 +22,30 @@
 		return apply_filters('the_excerpt_rss', $output);
 	}
  
+ $iTunesOrderNumber = 0;
  $FeaturedPodcastID = 0;
  $iTunesFeatured = get_option('powerpress_itunes_featured');
  $feed_slug = get_query_var('feed');
  if( !empty($iTunesFeatured[ $feed_slug ]) )
  {
-		$FeaturedPodcastID = $iTunesFeatured[ $feed_slug ];
-		$GLOBALS['powerpress_feed']['itunes_feature'] = true; // So any custom order value is not used when looping through the feeds.
+		if( get_post_type() == 'post' )
+		{
+			$FeaturedPodcastID = $iTunesFeatured[ $feed_slug ];
+			$GLOBALS['powerpress_feed']['itunes_feature'] = true; // So any custom order value is not used when looping through the feeds.
+			$iTunesOrderNumber = 2; // One reserved for featured episode
+		}
  }
- $iTunesOrderNumber = 2; // One reserved for featured episode
+
  
 header('Content-Type: ' . feed_content_type('rss-http') . '; charset=' . get_option('blog_charset'), true);
 $more = 1;
 
-echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>'; ?>
-
+$GeneralSettings = get_option('powerpress_general');
+$FeedActionHook = '';
+if( !empty($GeneralSettings['feed_action_hook']) )
+	$FeedActionHook = '_powerpress';
+	
+echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>'."\n"; ?>
 <rss version="2.0"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
 	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
@@ -44,7 +53,7 @@ echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>'; ?>
 	xmlns:atom="http://www.w3.org/2005/Atom"
 	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
 	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
-	<?php do_action('rss2_ns'); ?>
+	<?php do_action('rss2_ns'.$FeedActionHook); ?>
 >
 <channel>
 	<title><?php if( version_compare($GLOBALS['wp_version'], 4.4, '<' ) ) { bloginfo_rss('name'); } wp_title_rss(); ?></title>
@@ -55,7 +64,7 @@ echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>'; ?>
 	<language><?php bloginfo_rss( 'language' ); ?></language>
 	<sy:updatePeriod><?php echo apply_filters( 'rss_update_period', 'hourly' ); ?></sy:updatePeriod>
 	<sy:updateFrequency><?php echo apply_filters( 'rss_update_frequency', '1' ); ?></sy:updateFrequency>
-	<?php do_action('rss2_head'); ?>
+	<?php do_action('rss2_head'.$FeedActionHook); ?>
 <?php
 		
 		$ItemCount = 0;
@@ -95,17 +104,17 @@ echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>'; ?>
 		}
 		?>
 <?php rss_enclosure(); ?>
-	<?php do_action('rss2_item'); ?>
+	<?php do_action('rss2_item'.$FeedActionHook); ?>
 	<?php
-	if( !empty($iTunesFeatured[ $feed_slug ]) )
+	if( $iTunesOrderNumber > 0 )
 	{
 		echo "\t<itunes:order>";
 		if( $FeaturedPodcastID == get_the_ID() )
 		{
-			echo 1;
+			echo '1';
 			$FeaturedPodcastID = 0;
 		}
-		else
+		else // Print of 2, 3, ...
 		{
 			echo $iTunesOrderNumber;
 			$iTunesOrderNumber++;
@@ -141,7 +150,7 @@ echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>'; ?>
 		<guid isPermaLink="false"><?php the_guid(); ?></guid>
 		<description><?php echo powerpress_format_itunes_value( powerpress_get_the_excerpt_rss(), 'description' ); ?></description>
 <?php rss_enclosure(); ?>
-	<?php do_action('rss2_item'); ?>
+	<?php do_action('rss2_item'.$FeedActionHook); ?>
 	<?php
 	echo "\t<itunes:order>";
 	echo 1;

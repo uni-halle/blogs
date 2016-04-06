@@ -252,9 +252,21 @@ body .pp-ssb-widget a.pp-ssb-btn:hover {
 				$ExtraData['taxonomy_term_id'] = $instance['subscribe_term_taxonomy_id'];
 			}; break;
 			case 'category': {
-				if( empty($instance['subscribe_category_id']) || !is_numeric($instance['subscribe_category_id']) )
+			 
+				if( empty($instance['subscribe_category_id']) )
 					return;
-				$ExtraData['cat_id'] = $instance['subscribe_category_id'];
+				
+				if( is_numeric($instance['subscribe_category_id']) )
+				{
+					$ExtraData['cat_id'] = $instance['subscribe_category_id'];
+				}
+				else
+				{
+					$catObj = get_category_by_slug($instance['subscribe_category_id']);
+					if( empty($catObj->term_id) )
+						return;
+					$ExtraData['cat_id'] = $catObj->term_id;
+				}
 			}; break;
 			default: {
 				// Doesn't matter, we'r using the default podcast channel 

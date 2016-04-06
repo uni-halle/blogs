@@ -191,7 +191,7 @@ function powerpress_meta_box($object, $box)
 	}
 ?>
 	<div id="powerpress_podcast_edit_<?php echo $FeedSlug; ?>">
-		<div class="error below-h2" id="powerpress_warning_<?php echo $FeedSlug; ?>" style="display:none;"></div>
+		<div class="warning error below-h2" id="powerpress_warning_<?php echo $FeedSlug; ?>" style="display:none;"></div>
 		<div class="success below-h2" id="powerpress_success_<?php echo $FeedSlug; ?>" style="display:none;"></div>
 		<div class="powerpress_row">
 			<label for="Powerpress[<?php echo $FeedSlug; ?>][url]"><?php echo __('Media URL', 'powerpress'); ?></label>

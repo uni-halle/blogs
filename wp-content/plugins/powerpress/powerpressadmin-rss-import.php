@@ -107,7 +107,7 @@ class PowerPress_RSS_Podcast_Import extends WP_Importer {
 ?>
 </div>
 <div id="powerpress-import-advanced-options-off">
-	<p><a href="#" onclick="document.getElementById('powerpress-import-advanced-options-off').style.display='none'; document.getElementById('powerpress-import-advanced-options-on').style.display='block';  return false;"><?php echo __('Advanced options', 'powerprses'); ?></a>
+	<p><a href="#" onclick="document.getElementById('powerpress-import-advanced-options-off').style.display='none'; document.getElementById('powerpress-import-advanced-options-on').style.display='block';  return false;"><?php echo __('Advanced options', 'powerpress'); ?></a>
 	</p>
 </div>
 <div id="powerpress-import-advanced-options-on" style="display: none;">
@@ -879,6 +879,9 @@ class PowerPress_RSS_Podcast_Import extends WP_Importer {
 		$options['user-agent'] = 'Blubrry PowerPress/'.POWERPRESS_VERSION;
 		if( !empty($_GET['import']) && $_GET['import'] == 'powerpress-squarespace-rss-podcast' )
 			$options['user-agent'] = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36';
+		else if( !empty($_GET['import']) && $_GET['import'] == 'powerpress-podbean-rss-podcast' )
+			$options['user-agent'] = 'iTunes/12.2.2 (Macintosh; OS X 10.10.5) AppleWebKit/600.8.9';  // Common user agent
+		// 'gPodder/3.8.4 (+http://gpodder.org/)';
 		$options['timeout'] = 10;
 		
 		$response = wp_safe_remote_get($_POST['podcast_feed_url'], $options);
@@ -886,7 +889,7 @@ class PowerPress_RSS_Podcast_Import extends WP_Importer {
 			echo '<p>'.	$response->get_error_message() .'<p>';
 			return false;
 		}
-
+		
 		$this->m_content = wp_remote_retrieve_body( $response );
 		return true;
 	}
@@ -904,11 +907,11 @@ class PowerPress_RSS_Podcast_Import extends WP_Importer {
 
 	$powerpress_rss_podcast_import = new PowerPress_RSS_Podcast_Import();
 
-	register_importer('powerpress-soundcloud-rss-podcast', __('Podcast from SoundCloud', 'powerpress'), __('Import episdoes from a SoundCloud podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
-	register_importer('powerpress-libsyn-rss-podcast', __('Podcast from LibSyn', 'powerpress'), __('Import episdoes from a LibSyn podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
-	register_importer('powerpress-podbean-rss-podcast', __('Podcast from PodBean ', 'powerpress'), __('Import episdoes from a PodBean podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
-	register_importer('powerpress-squarespace-rss-podcast', __('Podcast from Squarespace', 'powerpress'), __('Import episdoes from a Squarespace podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
-	register_importer('powerpress-rss-podcast', __('Podcast RSS Feed', 'powerpress'), __('Import episdoes from a RSS podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
+	register_importer('powerpress-soundcloud-rss-podcast', __('Podcast from SoundCloud', 'powerpress'), __('Import episodes from a SoundCloud podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
+	register_importer('powerpress-libsyn-rss-podcast', __('Podcast from LibSyn', 'powerpress'), __('Import episodes from a LibSyn podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
+	register_importer('powerpress-podbean-rss-podcast', __('Podcast from PodBean ', 'powerpress'), __('Import episodes from a PodBean podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
+	register_importer('powerpress-squarespace-rss-podcast', __('Podcast from Squarespace', 'powerpress'), __('Import episodes from a Squarespace podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
+	register_importer('powerpress-rss-podcast', __('Podcast RSS Feed', 'powerpress'), __('Import episodes from a RSS podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
 	
 }; // end if WP_Importer exists
 

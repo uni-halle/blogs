@@ -2,8 +2,8 @@
 Contributors: amandato, blubrry
 Tags: powerpress, podcasting, podcast, podcaster, itunes, google play music, google play, enclosure, professional, apple, apple tv, ipad, iphone, soundcloud, squarespace, youtube, viddler, ustream, podcasting, audio, video, rss2, feed, player, media, rss, mp3, music, embed, feedburner, statistics, stats, flv, flash, id3, episodes, blubrry, mp4, m4v, wordpressmu, mu, wordpress mu, multisite, multi site, mediacaster, post, plugin, posts, simple, social, dashboard, TSG, Buzzsprout, MTR, WP-boxCast, CastMyBlog, tgs podcasting,  simple podcasting, seriously simple podcasting, seriously-simple-podcasting, serious, seriously, ssp, podlove, podcast.de, clammr, clammr radio, audio player, stitcher, show, shows, series, docs, documentation, support, free, add-ons, extensions, addons, libsyn, libsyn-podcasting, podbean, podomatic, spreaker
 Requires at least: 3.6
-Tested up to: 4.4.1
-Stable tag: 6.3.2
+Tested up to: 4.5
+Stable tag: 6.3.3
 Donate link: https://www.patreon.com/blubrry?ty=h
 License: GPLv2 or later
 
@@ -127,7 +127,7 @@ Interested translators please [contact us](https://www.blubrry.com/contact/#tran
 = Need Help? =
 . . . or have some ideas that could improve the plugin?
 
-* Visit the Blubrry [Community Forum](http://forum.blubrry.com/) and [Blubrry Resources](http://create.blubrry.com/resources/) 
+* Visit the Blubrry [PowerPress Forum](https://wordpress.org/support/plugin/powerpress) and [Blubrry Resources](http://create.blubrry.com/resources/) 
 * Use the Blubrry [Contact Us](http://www.blubrry.com/contact.php) form
 * Blubrry [PowerPress Documentation](http://create.blubrry.com/resources/powerpress/)
 * Check out [The Podcasting Manual](http://create.blubrry.com/manual/) - everything you need to know about podcasting
@@ -226,6 +226,22 @@ To install Blubrry PowerPress manually, follow these steps:
 = Become a PowerPress Patron! =
 Help support your favorite podcasting plugin via Patreon. [Visit Blubrry's Patreon page](https://www.patreon.com/blubrry?ty=h)
 
+= 6.3.3 =
+* Released on 4/2/2016
+* Improved feed import for PodBean users (they appear to be blocking user agents like SquareSpace)
+* Adding <br /> to new lines for iTunes summary so new lines appear on iTunes desktop app (Thanks Daniel for input!)
+* Added additional code to handle ajax verify media URL errors.
+* Added Feed setting option `Do not allow other plugins to modify podcast feeds.`.
+* Added Feed setting option `Include RSS Image in feeds.`, default is enabled. For themes that set their own site icon in the feeds.
+* Added logic to handle post type podcast only feeds. (Thanks Alan for helping us debug!)
+* Added logic to prevent featured episode from appearing on custom post type feeds.
+* Fixed bug with post type podcasting channel level feed settings not applying correctly when using slug `podcast`. (Thanks Joe for pointing out the issue)
+* Fixed bug with enhanced itunes summary not displaying in some circumstances. (Thanks Filip for bringing to our attention!)
+* Podcast Subscribe sidebar widget category podcasting option now accepts category slug values (in addition to the category numeric ID)
+* Added define option `POWERPRESS_FEED_AUTH_PRINT_WP_ERRORS` to print `wp_authentication` error message when password protected feed authentication fails. This is useful for debugging purposes.
+* Fixed typos in RSS import page. (Thanks Robin!)
+
+
 = 6.3.2 =
 * Released on 2/21/2016
 * Added import podcast from Squarespace option (thanks Steve for bringing to our attention that importing from Squarespace requires added logic)
@@ -239,6 +255,7 @@ Help support your favorite podcasting plugin via Patreon. [Visit Blubrry's Patre
 * Added width and height attributes to img tag for the HTML5 audio player image. (Thanks Eduard for the patch and information about the Accelerated Mobile Pages Project!)
 * Fixed tab control styling when other themes or plugins use newer versions of jquery-ui.
 * Added dismissable notification message to alert PowerPress users of the latest iTunes changes.
+* Enhanced iTunes summary option now formats new lines with <br /> tag for use on iOS podcasts app.
 
 
 = 6.3.1 =

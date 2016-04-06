@@ -23,8 +23,8 @@
 	<p style="margin-top: 5px;"><strong><a href="http://create.blubrry.com/support/"><?php echo __('Blubrry Support', 'powerpress'); ?></a></strong>
 	- <?php echo __('Get support for your podcast!', 'powerpress'); ?></p>
 	
-	<p style="margin-top: 5px;"><strong><a href="http://forum.blubrry.com/"><?php echo __('Blubrry Forum', 'powerpress'); ?></a></strong>
-	- <?php echo __('Interact with other podcasters, search the archive, or ask questions.', 'powerpress'); ?></p>
+	<p style="margin-top: 5px;"><strong><a href="https://wordpress.org/support/plugin/powerpress"><?php echo __('Blubrry PowerPress Forum', 'powerpress'); ?></a></strong>
+	- <?php echo __('PowerPress support forum on WordPress.org.', 'powerpress'); ?></p>
 </td>
 </tr>
 
