@@ -6,3 +6,5 @@ wp-config.php
 cache
 debug_log.txt
 ~logins
+wp-content/**/*.mp4
+**/.sass-cache/
