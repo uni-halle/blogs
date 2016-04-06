@@ -31,7 +31,7 @@
 	
 
 		WPFB_Output::FileBrowser($content, 0, empty($_GET['wpfb_cat']) ? 0 : intval($_GET['wpfb_cat']));	
-		WPFB_Core::PrintJS();
+		wpfb_call('Output', 'PrintJS');
 		
 ?>
     <div class="wrap filebrowser-admin"> 
@@ -54,7 +54,7 @@
 	function wpfbFBDelete(e) {
 		e.stopPropagation();
 		var t = jQuery(e.currentTarget).parents('li').first();		
-		var d = {action: 'delete'};
+		var d = {wpfb_action: 'delete'};
 		var tid = t.attr('id').split('-');
 		d[tid[tid.length-2]+'_id'] = +tid[tid.length-1];
 		jQuery.ajax({type: 'POST', url: wpfbConf.ajurl, data: d,
