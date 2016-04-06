@@ -1,8 +1,6 @@
 /*
-Use the DMSGuestbook admin interface for change these css settings.
-Don't edit this file direct, your change could be overwrite by the DMSGuestbook admin.
-If dmsguestbook.css is exist and writable, all CSS settings will be read from it.
-Otherwise these settings will be load from the database.
+Um die CSS Einstellungen zu ändern sollte die DMSGuestbook Admin Seite benutzt werden. Das dmsguestbook.css nicht direkt bearbeiten, denn die Einstellungen würden automatisch überschrieben werden.
+Falls dmsguestbook.css vorhanden und beschreibbar ist, werden die CSS Einstellungen aus dmsguestbook.css gelesen.<br />Ansonsten werden die Einstellungen aus der Datenbank geladen. 
 */
 
 
@@ -12,21 +10,21 @@ top:0px;}
 
 .css_guestbook_font_color {color:#000000;}
 
-.css_form_text {font-weight:normal;}
+.css_form_text {text-align:left; font-weight:normal;}
 
-.css_form_namefield {border:1px solid #DEDEDE;
+.css_form_namefield {text-align:left; border:1px solid #DEDEDE;
 width:150px;
 color:#000000;}
 
-.css_form_emailfield {border:1px solid #DEDEDE;
+.css_form_emailfield {text-align:left; border:1px solid #DEDEDE;
 width:150px;
 color:#000000;}
 
-.css_form_urlfield {border:1px solid #DEDEDE;
+.css_form_urlfield {text-align:left; border:1px solid #DEDEDE;
 width:150px;
 color:#000000;}
 
-.css_form_additional_option {border:1px solid #DEDEDE;
+.css_form_additional_option {text-align:left; border:1px solid #DEDEDE;
 width:150px;
 color:#000000;}
 
@@ -34,26 +32,26 @@ color:#000000;}
 padding:5px 0px 0px 0px;
 margin:0px 0px;}
 
-.css_form_messagefield {border:1px solid #DEDEDE;
+.css_form_messagefield {text-align:left;border:1px solid #DEDEDE;
 width:80%;
 height:150px;
 color:#000000;}
 
-.css_form_antispamtext {text-align:center;}
+.css_form_antispamtext {text-align:left;}
 
-.css_form_antispamcontent {border:1px solid #DEDEDE;}
+.css_form_antispamcontent {text-align:left; border:1px solid #DEDEDE;}
 
-.css_form_antispamcontent_position {text-align:center;
+.css_form_antispamcontent_position {text-align:left;
 padding:5px 0px;
 margin:0px 0px;}
 
-.css_form_antispam_inputfield {width:60px;
+.css_form_antispam_inputfield {text-align:left; width:60px;
 border:1px solid #DEDEDE;
 color:#000000;}
 
-.css_form_submit {color:#000000;}
+.css_form_submit {text-align:left; color:#000000;}
 
-.css_form_submit_position {text-align:center;
+.css_form_submit_position {text-align:left; text-align:center;
 padding:20px 0px 10px 0px;}
 
 .css_form_errormessage {color:#bb0000;
@@ -73,12 +71,12 @@ left:0;}
 
 .css_navigation_totalcount {font-size:11px;
 left:0px;
-width:95%;
+width:100%;
 text-align:center;
 padding:0px 0px 5px 10px;}
 
 .css_navigation_overview {left:0px;
-width:95%;
+width:100%;
 text-align:center;
 padding:0px 0px 15px 12px;}
 
@@ -94,7 +92,7 @@ text-decoration:none;
 font-weight:bold;}
 
 .css_navigation_char_position {left:0px;
-width:95%;
+width:100%;
 padding:0px 0px 0px 10px;
 margin:0px 0px 20px 0px;
 text-align:center;}
@@ -121,14 +119,14 @@ border:0px;}
 
 .css_post_separator {border: 1px solid #EEEEEE;
 height:1px;
-width:35%;
+width:50%;
 text-align:left;
 margin:0px 0px 0px 0px;}
 
 .css_post_message {font-size:11px;
 margin:5px 0px 0px 0px;}
 
-.css_form_embedded {width:95%;
+.css_form_embedded {width:100%;
 border:1px solid #AAAAAA;
 font-size:12px;
 text-align:left;
@@ -136,7 +134,7 @@ padding:0px 10px;
 margin:0px 0px 0px 0px;
 line-height:1.4em;}
 
-.css_post_embedded {width:95%;
+.css_post_embedded {width:100%;
 border:1px solid #AAAAAA;
 font-size:12px;
 text-align:left;
