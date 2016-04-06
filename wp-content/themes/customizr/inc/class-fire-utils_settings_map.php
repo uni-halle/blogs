@@ -106,8 +106,6 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
         'tc_sidebars_option_map',
         //FOOTER
         'tc_footer_global_settings_option_map',
-        //WOOCOMMERCE
-        'tc_woocommerce_option_map',
         //ADVANCED OPTIONS
         'tc_custom_css_option_map',
         'tc_performance_option_map',
@@ -152,7 +150,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'title'     => __( 'LOGO' , 'customizr'),
                                 'section'   => 'logo_sec',
                                 'sanitize_callback' => array( $this , 'tc_sanitize_number' ),
-                        //we can define suggested cropping area and allow it to be flexible (def 150x150 and not flexible)
+                                //we can define suggested cropping area and allow it to be flexible (def 150x150 and not flexible)
                                 'width'     => 250,
                                 'height'    => 100,
                                 'flex_width' => true,
@@ -587,6 +585,16 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'priority'      => 15,
                                 'transport'     => 'postMessage'
               ),
+              'tc_woocommerce_header_cart' => array(
+                               'default'   => 1,
+                               'label'     => sprintf('<span class="dashicons dashicons-cart"></span> %s', __( "Display the shopping cart in the header" , "customizr" ) ),
+                               'control'   => 'TC_controls' ,
+                               'section'   => 'header_layout_sec',
+                               'notice'    => __( "WooCommerce: check to display a cart icon showing the number of items in your cart next to your header's tagline.", 'customizr' ),
+                               'type'      => 'checkbox' ,
+                               'priority'  => 18,
+                               'active_callback' => apply_filters( 'tc_woocommerce_options_enabled', '__return_false' )
+              ),
               'tc_social_in_header' =>  array(
                                 'default'       => 1,
                                 'label'       => __( 'Social links in header' , 'customizr' ),
@@ -625,6 +633,17 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'type'          => 'checkbox' ,
                                 'priority'      => 40,
                                 'transport'     => 'postMessage',
+              ),
+              'tc_woocommerce_header_cart_sticky' => array(
+                               'default'   => 1,
+                               'label'     => sprintf('<span class="dashicons dashicons-cart"></span> %s', __( "Sticky header: display the shopping cart" , "customizr" ) ),
+                               'control'   => 'TC_controls' ,
+                               'section'   => 'header_layout_sec',
+                               'type'      => 'checkbox' ,
+                               'priority'  => 45,
+                               'transport' => 'postMessage',
+                               'active_callback' => apply_filters( 'tc_woocommerce_options_enabled', '__return_false' ),
+                               'notice'    => __( 'WooCommerce: if checked, your WooCommerce cart icon will remain visible when scrolling.' , 'customizr' )
               ),
               'tc_sticky_show_title_logo'  =>  array(
                                 'default'       => 1,
@@ -2059,38 +2078,6 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
     }
 
 
-
-    /******************************************************************************************************
-    *******************************************************************************************************
-    * PANEL : WOOCOMMERCE OPTIONS
-    *******************************************************************************************************
-    ******************************************************************************************************/
-    /*-----------------------------------------------------------------------------------------------------
-                                     HEADER CART
-    ------------------------------------------------------------------------------------------------------*/
-    function tc_woocommerce_option_map( $get_default = null ) {
-      return array(
-              'tc_woocommerce_header_cart' => array(
-                               'default'   => 1,
-                               'label'     => __( 'Display the shopping cart in the header' , 'customizr' ),
-                               'control'   => 'TC_controls' ,
-                               'section'   => 'tc_woocommerce_sec',
-                               'notice'    => __( "You can display a cart icon showing the number of items in your cart next to your header's tagline", 'customizr' ),
-                               'type'      => 'checkbox' ,
-                               'priority'  => 10,
-              ),
-              'tc_woocommerce_header_cart_sticky' => array(
-                               'default'   => 1,
-                               'label'     => __( 'Sticky header: display the shopping cart' , 'customizr' ),
-                               'control'   => 'TC_controls' ,
-                               'section'   => 'tc_woocommerce_sec',
-                               'type'      => 'checkbox' ,
-                               'priority'  => 15,
-                               'transport' => 'postMessage'
-              ),
-
-        );
-    }
 
 
 

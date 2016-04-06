@@ -1,5 +1,5 @@
 /*!
- * Customizr v3.4.19
+ * Customizr v3.4.20
  *
  * Licensed under the GNU General Public License v2 or later
  * http://www.gnu.org/licenses/gpl-2.0.html
@@ -455,7 +455,7 @@ h3.assistive-text {
   color: #f3bfdc;
 }
 /* OTHER CUSTOMIZED WP CSS */
-#footer #calendar_wrap table a {
+#footer .calendar_wrap table a {
   color: #e67fb9;
 }
 #wp-calendar th {

@@ -20,6 +20,11 @@
 .accordion-sub-container.control-panel-content {
   left: 440px;
 }
+.in-sub-panel #tc-donate-customizer,
+.in-sub-panel .tc-cta-wrap {
+  left: -450px;
+  height: 0;
+}
 
 /* RTL*/
 .rtl.wp-customizer .wp-full-overlay.expanded {
@@ -43,6 +48,10 @@
 }
 .rtl .accordion-sub-container.control-panel-content {
   right: 440px;
+}
+.rtl .in-sub-panel #tc-donate-customizer,
+.rtl .in-sub-panel .tc-cta-wrap {
+  right: -450px;
 }
 
 
@@ -99,6 +108,34 @@
     right: -380px;
   }
 }
+/* Reponsive buttons + rating footer actions hack 
+* What we do is:
+* a) stretch heigh and width of the footer-actions
+* b) sett an higher bottom vallue for the wp-full-overlay-sidebar-content
+* according with the new footer-actions-height
+* ( the devices buttons are not visibile for window's width below 1025px
+*/
+@media screen and (min-width: 980px) {
+  .wp-customizer .expanded #customize-footer-actions {
+    width: 380px;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .wp-customizer .expanded #customize-footer-actions {
+    height: 85px;
+    background: inherit;
+  }
+  .wp-customizer #customize-controls .wp-full-overlay-sidebar-content {
+    bottom: 85px;
+  }
+}
+@media screen and (min-width: 1401px) {
+  .wp-customizer .expanded #customize-footer-actions {
+    width: 440px;
+  }
+}
+/* end hack */
+
 @media screen and (max-width: 979px) {
   .wp-customizer .wp-full-overlay.expanded {
     margin-left: 300px;
@@ -153,7 +190,48 @@
     right: -300px;
   }
 }
+/* at max-width 640px the wp-full-overlay-sidebar becomes 100% */
+@media screen and (max-width: 640px) {
+  .wp-customizer .wp-full-overlay.expanded {
+    margin-left: 0;
+  }
 
+  .in-sub-panel #customize-info,
+  .in-sub-panel #customize-theme-controls > ul > .accordion-section {
+    left: -100%;
+    width: 100%;
+  }
+
+  .in-sub-panel .tc-cta-wrap,
+  .in-sub-panel #tc-donate-customizer,
+  #customize-theme-controls .control-section.current-panel > h3.accordion-section-title {
+    left: -100%;
+  }
+  .accordion-sub-container.control-panel-content {
+    left: 100%;
+  }
+
+  /* RTL */
+  .rtl.wp-customizer .wp-full-overlay.expanded {
+    margin-right: 0;
+  }
+  
+  .rtl .in-sub-panel #customize-info,
+  .rtl .in-sub-panel #customize-theme-controls > ul > .accordion-section {
+    right: -100%;
+    width: 100%;
+    left: auto;
+  }
+  .rtl .in-sub-panel #tc-donate-customizer,
+  .rtl .in-sub-panel .tc-cta-wrap,
+  .rtl #customize-theme-controls .control-section.current-panel > h3.accordion-section-title {
+    right: -100%;
+    left: auto;
+  }
+  .rtl .accordion-sub-container.control-panel-content {
+    right: 100%;
+  }
+}
 
 /* PANELS AND SECTIONS TITLES */
 .wp-customizer #customize-theme-controls .accordion-section-title {
@@ -242,7 +320,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="color"]:focu
       url('../../assets/css/fonts/fonts/fontawesome-webfont.woff') format('woff'),
       url('../../assets/css/fonts/fonts/fontawesome-webfont.ttf') format('truetype'),
       url('../../assets/css/fonts/fonts/fontawesome-webfont.svg#fontawesomeregular') format('svg');
-} 
+}
 span[class*=tc-icon] {
 	margin-bottom: 5px;
 }
@@ -809,7 +887,7 @@ li#customize-control-tc_theme_options-tc_custom_css textarea {
 
 /* SELECT 2 SPECIFICS */
 body .select2-container {
-	width: 100%
+	width: 100%;
 }
 body .select2-drop {
 	z-index: 999999;
@@ -1018,14 +1096,7 @@ body .select2-results {
   -webkit-box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3);
 }
-.in-sub-panel #tc-donate-customizer,
-.in-sub-panel .tc-cta-wrap {
-  left: -450px;
-}
-.rtl .in-sub-panel #tc-donate-customizer,
-.rtl .in-sub-panel .tc-cta-wrap {
-  right: -450px;
-}
+
 .tc-grid-control-section {
   width: 100%;
   float: left;
@@ -1118,12 +1189,19 @@ body .select2-results {
 .tc-rate-link {
   position: absolute;
   bottom: 0;
-  right: 0;
-  padding: 4px 12px;
+  left: 40px;
+  padding: 4px 12px 4px 0;
   font-size: 10px;
   line-height: 14px;
-  width: 90%;
   text-align: right;
+  right: 0;
+}
+
+.rtl .tc-rate-link {
+  text-align: left;
+  left: auto;
+  right: 40px;
+  padding: 4px 0 4px 12px;
 }
 .wp-full-overlay.collapsed .tc-rate-link {
   display: none;
@@ -1135,7 +1213,7 @@ body .select2-results {
 /* Cropped Image style */
 /* Unified with the default cropped_image CSS */
 .customize-control-tc_cropped_image .upload-button {
-  float: right;    
+  float: right;
 }
 .customize-control-tc_cropped_image .remove-button {
   float: left;
@@ -1161,6 +1239,17 @@ body .select2-results {
   -webkit-border-radius: 2px;
   border-radius: 2px;
 }
+.customize-control-tc_cropped_image .placeholder {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    cursor: default;
+    border: 1px dashed #b4b9be;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    min-height: 40px;
+}
 .customize-control-tc_cropped_image img {
   width: 100%;
   -webkit-border-radius: 2px;
@@ -1168,12 +1257,20 @@ body .select2-results {
 }
 .customize-control-tc_cropped_image .inner {
   line-height: 20px;
-  top: 10px;
+  top: 8px;
+  min-height: 40px;
+  display: block;
+  position: absolute;
+  width: 100%;
+  color: #555;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 /* rtl */
 /* end tc cropped image */
 .rtl .customize-control-tc_cropped_image .upload-button {
-  float: left;    
+  float: left;
 }
 .rtl .customize-control-tc_cropped_image .remove-button {
   float: right;
