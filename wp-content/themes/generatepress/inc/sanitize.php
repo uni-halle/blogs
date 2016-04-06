@@ -118,8 +118,8 @@ function generate_sanitize_text_transform( $input ) {
  */
 function generate_sanitize_blog_excerpt( $input ) {
     $valid = array(
-        'full' => __( 'Show full post', 'generate' ),
-		'excerpt' => __( 'Show excerpt', 'generate' )
+        'full' => __( 'Show full post', 'generatepress' ),
+		'excerpt' => __( 'Show excerpt', 'generatepress' )
     );
  
     if ( array_key_exists( $input, $valid ) ) {

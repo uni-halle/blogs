@@ -26,7 +26,7 @@
 				<?php the_content(); ?>
 				<?php
 				wp_link_pages( array(
-					'before' => '<div class="page-links">' . __( 'Pages:', 'generate' ),
+					'before' => '<div class="page-links">' . __( 'Pages:', 'generatepress' ),
 					'after'  => '</div>',
 				) );
 				?>

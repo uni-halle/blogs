@@ -21,12 +21,12 @@
 			<?php the_content(); ?>
 			<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'generate' ),
+				'before' => '<div class="page-links">' . __( 'Pages:', 'generatepress' ),
 				'after'  => '</div>',
 			) );
 			?>
 		</div><!-- .entry-content -->
 		<?php do_action( 'generate_after_content'); ?>
-		<?php edit_post_link( __( 'Edit', 'generate' ), '<footer class="entry-meta"><span class="edit-link">', '</span></footer>' ); ?>
+		<?php edit_post_link( __( 'Edit', 'generatepress' ), '<footer class="entry-meta"><span class="edit-link">', '</span></footer>' ); ?>
 	</div><!-- .inside-article -->
 </article><!-- #post-## -->

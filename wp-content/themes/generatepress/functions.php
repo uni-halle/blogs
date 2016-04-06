@@ -5,7 +5,7 @@
  * @package GeneratePress
  */
 	
-define( 'GENERATE_VERSION', '1.3.27');
+define( 'GENERATE_VERSION', '1.3.28');
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 
@@ -25,9 +25,9 @@ function generate_setup()
 	 * Make theme available for translation
 	 * Translations can be filed in the /languages/ directory
 	 * If you're building a theme based on Generate, use a find and replace
-	 * to change 'generate' to the name of your theme in all the template files
+	 * to change 'generatepress' to the name of your theme in all the template files
 	 */
-	load_theme_textdomain( 'generate', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'generatepress', get_template_directory() . '/languages' );
 
 	/**
 	 * Add default posts and comments RSS feed links to head
@@ -45,7 +45,7 @@ function generate_setup()
 	 * This theme uses wp_nav_menu() in one location.
 	 */
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'generate' ),
+		'primary' => __( 'Primary Menu', 'generatepress' ),
 	) );
 
 	/**
@@ -127,7 +127,7 @@ function generate_get_defaults()
 add_action( 'widgets_init', 'generate_widgets_init' );
 function generate_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Right Sidebar', 'generate' ),
+		'name'          => __( 'Right Sidebar', 'generatepress' ),
 		'id'            => 'sidebar-1',
 		'before_widget' => '<aside id="%1$s" class="widget inner-padding %2$s">',
 		'after_widget'  => '</aside>',
@@ -135,7 +135,7 @@ function generate_widgets_init() {
 		'after_title'   => apply_filters( 'generate_end_widget_title', '</h4>' ),
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Left Sidebar', 'generate' ),
+		'name'          => __( 'Left Sidebar', 'generatepress' ),
 		'id'            => 'sidebar-2',
 		'before_widget' => '<aside id="%1$s" class="widget inner-padding %2$s">',
 		'after_widget'  => '</aside>',
@@ -143,7 +143,7 @@ function generate_widgets_init() {
 		'after_title'   => apply_filters( 'generate_end_widget_title', '</h4>' ),
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Header', 'generate' ),
+		'name'          => __( 'Header', 'generatepress' ),
 		'id'            => 'header',
 		'before_widget' => '<aside id="%1$s" class="widget inner-padding %2$s">',
 		'after_widget'  => '</aside>',
@@ -151,7 +151,7 @@ function generate_widgets_init() {
 		'after_title'   => apply_filters( 'generate_end_widget_title', '</h4>' ),
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Footer Widget 1', 'generate' ),
+		'name'          => __( 'Footer Widget 1', 'generatepress' ),
 		'id'            => 'footer-1',
 		'before_widget' => '<aside id="%1$s" class="widget inner-padding %2$s">',
 		'after_widget'  => '</aside>',
@@ -159,7 +159,7 @@ function generate_widgets_init() {
 		'after_title'   => apply_filters( 'generate_end_widget_title', '</h4>' ),
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Footer Widget 2', 'generate' ),
+		'name'          => __( 'Footer Widget 2', 'generatepress' ),
 		'id'            => 'footer-2',
 		'before_widget' => '<aside id="%1$s" class="widget inner-padding %2$s">',
 		'after_widget'  => '</aside>',
@@ -167,7 +167,7 @@ function generate_widgets_init() {
 		'after_title'   => apply_filters( 'generate_end_widget_title', '</h4>' ),
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Footer Widget 3', 'generate' ),
+		'name'          => __( 'Footer Widget 3', 'generatepress' ),
 		'id'            => 'footer-3',
 		'before_widget' => '<aside id="%1$s" class="widget inner-padding %2$s">',
 		'after_widget'  => '</aside>',
@@ -175,7 +175,7 @@ function generate_widgets_init() {
 		'after_title'   => apply_filters( 'generate_end_widget_title', '</h4>' ),
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Footer Widget 4', 'generate' ),
+		'name'          => __( 'Footer Widget 4', 'generatepress' ),
 		'id'            => 'footer-4',
 		'before_widget' => '<aside id="%1$s" class="widget inner-padding %2$s">',
 		'after_widget'  => '</aside>',
@@ -183,7 +183,7 @@ function generate_widgets_init() {
 		'after_title'   => apply_filters( 'generate_end_widget_title', '</h4>' ),
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Footer Widget 5', 'generate' ),
+		'name'          => __( 'Footer Widget 5', 'generatepress' ),
 		'id'            => 'footer-5',
 		'before_widget' => '<aside id="%1$s" class="widget inner-padding %2$s">',
 		'after_widget'  => '</aside>',
@@ -398,7 +398,7 @@ add_action('generate_credits','generate_add_footer_info');
 function generate_add_footer_info()
 {
 	?>
-	<span class="copyright"><?php _e('Copyright','generate');?> &copy; <?php echo date('Y'); ?></span> <?php do_action('generate_copyright_line');?>
+	<span class="copyright"><?php _e('Copyright','generatepress');?> &copy; <?php echo date('Y'); ?></span> <?php do_action('generate_copyright_line');?>
 	<?php
 }
 
@@ -406,7 +406,7 @@ add_action('generate_copyright_line','generate_add_login_attribution');
 function generate_add_login_attribution()
 {
 	?>
-	&#x000B7; <a href="<?php echo esc_url('https://generatepress.com');?>" target="_blank" title="<?php _e('GeneratePress','generate');?>" itemprop="url"><?php _e('GeneratePress','generate');?></a>
+	&#x000B7; <a href="<?php echo esc_url('https://generatepress.com');?>" target="_blank" title="GeneratePress" itemprop="url">GeneratePress</a>
 	<?php
 }
 

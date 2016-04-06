@@ -35,7 +35,7 @@ endif;
 					</aside>
 
 					<aside id="archives" class="widget">
-						<h4 class="widget-title"><?php _e( 'Archives', 'generate' ); ?></h4>
+						<h4 class="widget-title"><?php _e( 'Archives', 'generatepress' ); ?></h4>
 						<ul>
 							<?php wp_get_archives( array( 'type' => 'monthly' ) ); ?>
 						</ul>

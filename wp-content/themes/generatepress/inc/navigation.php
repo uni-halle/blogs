@@ -88,7 +88,7 @@ function generate_navigation_position()
 			<?php do_action( 'generate_inside_navigation' ); ?>
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
 				<?php do_action( 'generate_inside_mobile_menu' ); ?>
-				<span class="mobile-menu"><?php echo apply_filters('generate_mobile_menu_label', __( 'Menu', 'generate' ) ); ?></span>
+				<span class="mobile-menu"><?php echo apply_filters('generate_mobile_menu_label', __( 'Menu', 'generatepress' ) ); ?></span>
 			</button>
 			<?php 
 			wp_nav_menu( 
@@ -133,7 +133,7 @@ function generate_menu_fallback( $args )
 			);
 			wp_list_pages( $args );
 			if ( 'enable' == $generate_settings['nav_search'] ) :
-				echo '<li class="search-item" title="' . _x( 'Search', 'submit button', 'generate' ) . '"><a href="#"><i class="fa fa-fw fa-search"></i></a></li>';
+				echo '<li class="search-item" title="' . _x( 'Search', 'submit button', 'generatepress' ) . '"><a href="#"><i class="fa fa-fw fa-search"></i></a></li>';
 			endif;
 			?>
 		</ul>

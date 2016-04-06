@@ -31,7 +31,7 @@ class Generate_Google_Font_Dropdown_Custom_Control extends WP_Customize_Control
                 <label>
                     <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
                     <select <?php $this->link(); ?> class="fonts" data-value="<?php echo $this->value();?>">
-						<optgroup label="<?php _e( 'Default fonts', 'generate' ) ?>" class="default_label">
+						<optgroup label="<?php _e( 'Default fonts', 'generatepress' ) ?>" class="default_label">
 							<?php 
 							printf('<option value="%s" %s>%s</option>', 'inherit', selected($this->value(), 'inherit', false), 'inherit');
 							printf('<option value="%s" %s>%s</option>', 'Arial, Helvetica, sans-serif', selected($this->value(), 'Arial, Helvetica, sans-serif', false), 'Arial');
@@ -50,7 +50,7 @@ class Generate_Google_Font_Dropdown_Custom_Control extends WP_Customize_Control
 							?>
 						</optgroup>
 						
-						<optgroup label="<?php _e( 'Google fonts', 'generate' ) ?>" class="google_label">
+						<optgroup label="<?php _e( 'Google fonts', 'generatepress' ) ?>" class="google_label">
 							<?php
 							foreach ( $fonts as $k => $fam )
 							{
@@ -59,7 +59,7 @@ class Generate_Google_Font_Dropdown_Custom_Control extends WP_Customize_Control
 							?>
 						</optgroup>
                     </select>
-					<p class="description"><?php _e('Font family','generate'); ?></p>
+					<p class="description"><?php _e('Font family','generatepress'); ?></p>
                 </label>
             <?php
         }

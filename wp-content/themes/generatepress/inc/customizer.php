@@ -19,20 +19,37 @@ function generate_customize_register( $wp_customize ) {
 	require_once get_template_directory() . '/inc/controls.php';
 	require_once get_template_directory() . '/inc/sanitize.php';
 	
-	$wp_customize->get_section('title_tagline')->title = __( 'Site Identity', 'generate' );
-	$wp_customize->get_control('blogdescription')->priority = 3;
-	$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
-	$wp_customize->get_control('blogname')->priority = 1;
-	$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
+	if ( $wp_customize->get_section( 'title_tagline' ) ) {
+		$wp_customize->get_section('title_tagline')->title = __( 'Site Identity', 'generatepress' );
+	}
+	
+	if ( $wp_customize->get_control( 'blogdescription' ) ) {
+		$wp_customize->get_control('blogdescription')->priority = 3;
+		$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
+	}
+	
+	if ( $wp_customize->get_control( 'blogname' ) ) {
+		$wp_customize->get_control('blogname')->priority = 1;
+		$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
+	}
 	
 	$static_front_page = wp_list_pages( array( 'echo' => false ) );
-	if ( ! empty( $static_front_page ) ) :
-		$wp_customize->get_section('static_front_page')->title = __( 'Set Front Page', 'generate' );
+	if ( ! empty( $static_front_page ) ) {
+		$wp_customize->get_section('static_front_page')->title = __( 'Set Front Page', 'generatepress' );
 		$wp_customize->get_section('static_front_page')->priority = 10;
-	endif;
+	}
 	
-	$wp_customize->remove_section('background_image');
-	$wp_customize->remove_section('colors');
+	if ( $wp_customize->get_section( 'background_image' ) ) {
+		$wp_customize->remove_section('background_image');
+	}
+	
+	if ( $wp_customize->get_section( 'colors' ) ) {
+		$wp_customize->remove_section('colors');
+	}
+	
+	if ( $wp_customize->get_control( 'header_text' ) ) {
+		$wp_customize->remove_control('header_text');
+	}
 	
 	// Remove title
 	$wp_customize->add_setting( 
@@ -48,7 +65,7 @@ function generate_customize_register( $wp_customize ) {
 		'generate_settings[hide_title]',
 		array(
 			'type' => 'checkbox',
-			'label' => __('Hide site title','generate'),
+			'label' => __('Hide site title','generatepress'),
 			'section' => 'title_tagline',
 			'priority' => 2
 		)
@@ -67,7 +84,7 @@ function generate_customize_register( $wp_customize ) {
 		'generate_settings[hide_tagline]',
 		array(
 			'type' => 'checkbox',
-			'label' => __('Hide site tagline','generate'),
+			'label' => __('Hide site tagline','generatepress'),
 			'section' => 'title_tagline',
 			'priority' => 4
 		)
@@ -87,7 +104,7 @@ function generate_customize_register( $wp_customize ) {
 			$wp_customize,
 			'generate_settings[logo]',
 			array(
-				'label' => __('Logo','generate'),
+				'label' => __('Logo','generatepress'),
 				'section' => 'title_tagline',
 				'settings' => 'generate_settings[logo]'
 			)
@@ -100,59 +117,56 @@ function generate_customize_register( $wp_customize ) {
 				'priority'       => 30,
 				'capability'     => 'edit_theme_options',
 				'theme_supports' => '',
-				'title'          => __( 'Colors','generate' ),
+				'title'          => __( 'Colors','generatepress' ),
 				'description'    => '',
 			) );
 		}
 	endif;
 	
 	$wp_customize->add_section(
-		// ID
 		'body_section',
-		// Arguments array
 		array(
-			'title' => __( 'Base Colors', 'generate' ),
+			'title' => __( 'Base Colors', 'generatepress' ),
 			'capability' => 'edit_theme_options',
 			'priority' => 30,
 			'panel' => 'generate_colors_panel'
 		)
 	);
 	
-		// Add color settings
+	// Add color settings
 	$body_colors = array();
 	$body_colors[] = array(
 		'slug'=>'background_color', 
 		'default' => $defaults['background_color'],
-		'label' => __('Background Color', 'generate'),
+		'label' => __('Background Color', 'generatepress'),
 		'transport' => 'postMessage'
 	);
 	$body_colors[] = array(
 		'slug'=>'text_color', 
 		'default' => $defaults['text_color'],
-		'label' => __('Text Color', 'generate'),
+		'label' => __('Text Color', 'generatepress'),
 		'transport' => 'postMessage'
 	);
 	$body_colors[] = array(
 		'slug'=>'link_color', 
 		'default' => $defaults['link_color'],
-		'label' => __('Link Color', 'generate'),
+		'label' => __('Link Color', 'generatepress'),
 		'transport' => 'postMessage'
 	);
 	$body_colors[] = array(
 		'slug'=>'link_color_hover', 
 		'default' => $defaults['link_color_hover'],
-		'label' => __('Link Color Hover', 'generate'),
+		'label' => __('Link Color Hover', 'generatepress'),
 		'transport' => 'postMessage'
 	);
 	$body_colors[] = array(
 		'slug'=>'link_color_visited', 
 		'default' => $defaults['link_color_visited'],
-		'label' => __('Link Color Visited', 'generate'),
+		'label' => __('Link Color Visited', 'generatepress'),
 		'transport' => 'refresh'
 	);
 
 	foreach( $body_colors as $color ) {
-		// SETTINGS
 		$wp_customize->add_setting(
 			'generate_settings[' . $color['slug'] . ']', array(
 				'default' => $color['default'],
@@ -162,7 +176,6 @@ function generate_customize_register( $wp_customize ) {
 				'transport' => $color['transport']
 			)
 		);
-		// CONTROLS
 		$wp_customize->add_control(
 			new WP_Customize_Color_Control(
 				$wp_customize,
@@ -185,14 +198,14 @@ function generate_customize_register( $wp_customize ) {
 				array(
 					'section'     => 'body_section',
 					'type'        => 'addon',
-					'label'			=> __( 'More Settings','generate' ),
+					'label'			=> __( 'More Settings','generatepress' ),
 					'url' => 'http://www.generatepress.com/downloads/generate-colors/',
 					'description' => sprintf(
-						__( 'Looking to add more color settings?<br /> %s.', 'generate' ),
+						__( 'Looking to add more color settings?<br /> %s.', 'generatepress' ),
 						sprintf(
 							'<a href="%1$s" target="_blank">%2$s</a>',
 							esc_url( 'http://www.generatepress.com/downloads/generate-colors/' ),
-							__( 'Check out Generate Colors', 'generate' )
+							__( 'Check out Generate Colors', 'generatepress' )
 						)
 					),
 					'priority'    => 30
@@ -203,11 +216,9 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add Layout section
 	$wp_customize->add_section(
-		// ID
 		'layout_section',
-		// Arguments array
 		array(
-			'title' => __( 'Layout', 'generate' ),
+			'title' => __( 'Layout', 'generatepress' ),
 			'capability' => 'edit_theme_options',
 			'priority' => 25
 		)
@@ -229,7 +240,7 @@ function generate_customize_register( $wp_customize ) {
 			$wp_customize, 
 			'generate_settings[container_width]', 
 			array(
-				'label' => __('Container Width','generate'),
+				'label' => __('Container Width','generatepress'),
 				'section' => 'layout_section',
 				'settings' => 'generate_settings[container_width]',
 				'priority' => 0
@@ -239,9 +250,7 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add Header Layout setting
 	$wp_customize->add_setting(
-		// ID
 		'generate_settings[header_layout_setting]',
-		// Arguments array
 		array(
 			'default' => $defaults['header_layout_setting'],
 			'type' => 'option',
@@ -251,18 +260,15 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add Header Layout control
 	$wp_customize->add_control(
-		// ID
 		'generate_settings[header_layout_setting]',
-		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Header Width', 'generate' ),
+			'label' => __( 'Header Width', 'generatepress' ),
 			'section' => 'layout_section',
 			'choices' => array(
-				'fluid-header' => __( 'Full', 'generate' ),
-				'contained-header' => __( 'Contained', 'generate' )
+				'fluid-header' => __( 'Full', 'generatepress' ),
+				'contained-header' => __( 'Contained', 'generatepress' )
 			),
-			// This last one must match setting ID from above
 			'settings' => 'generate_settings[header_layout_setting]',
 			'priority' => 5
 		)
@@ -270,9 +276,7 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add navigation setting
 	$wp_customize->add_setting(
-		// ID
 		'generate_settings[header_alignment_setting]',
-		// Arguments array
 		array(
 			'default' => $defaults['header_alignment_setting'],
 			'type' => 'option',
@@ -282,19 +286,16 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add navigation control
 	$wp_customize->add_control(
-		// ID
 		'generate_settings[header_alignment_setting]',
-		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Header Alignment', 'generate' ),
+			'label' => __( 'Header Alignment', 'generatepress' ),
 			'section' => 'layout_section',
 			'choices' => array(
-				'left' => __( 'Left', 'generate' ),
-				'center' => __( 'Center', 'generate' ),
-				'right' => __( 'Right', 'generate' )
+				'left' => __( 'Left', 'generatepress' ),
+				'center' => __( 'Center', 'generatepress' ),
+				'right' => __( 'Right', 'generatepress' )
 			),
-			// This last one must match setting ID from above
 			'settings' => 'generate_settings[header_alignment_setting]',
 			'priority' => 10
 		)
@@ -302,9 +303,7 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add navigation setting
 	$wp_customize->add_setting(
-		// ID
 		'generate_settings[nav_layout_setting]',
-		// Arguments array
 		array(
 			'default' => $defaults['nav_layout_setting'],
 			'type' => 'option',
@@ -314,18 +313,15 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add navigation control
 	$wp_customize->add_control(
-		// ID
 		'generate_settings[nav_layout_setting]',
-		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Navigation Width', 'generate' ),
+			'label' => __( 'Navigation Width', 'generatepress' ),
 			'section' => 'layout_section',
 			'choices' => array(
-				'fluid-nav' => __( 'Full', 'generate' ),
-				'contained-nav' => __( 'Contained', 'generate' )
+				'fluid-nav' => __( 'Full', 'generatepress' ),
+				'contained-nav' => __( 'Contained', 'generatepress' )
 			),
-			// This last one must match setting ID from above
 			'settings' => 'generate_settings[nav_layout_setting]',
 			'priority' => 15
 		)
@@ -333,9 +329,7 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add navigation setting
 	$wp_customize->add_setting(
-		// ID
 		'generate_settings[nav_position_setting]',
-		// Arguments array
 		array(
 			'default' => $defaults['nav_position_setting'],
 			'type' => 'option',
@@ -345,23 +339,20 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add navigation control
 	$wp_customize->add_control(
-		// ID
 		'generate_settings[nav_position_setting]',
-		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Navigation Position', 'generate' ),
+			'label' => __( 'Navigation Position', 'generatepress' ),
 			'section' => 'layout_section',
 			'choices' => array(
-				'nav-below-header' => __( 'Below Header', 'generate' ),
-				'nav-above-header' => __( 'Above Header', 'generate' ),
-				'nav-float-right' => __( 'Float Right', 'generate' ),
-				'nav-float-left' => __( 'Float Left', 'generate' ),
-				'nav-left-sidebar' => __( 'Left Sidebar', 'generate' ),
-				'nav-right-sidebar' => __( 'Right Sidebar', 'generate' ),
-				'' => __( 'No Navigation', 'generate' )
+				'nav-below-header' => __( 'Below Header', 'generatepress' ),
+				'nav-above-header' => __( 'Above Header', 'generatepress' ),
+				'nav-float-right' => __( 'Float Right', 'generatepress' ),
+				'nav-float-left' => __( 'Float Left', 'generatepress' ),
+				'nav-left-sidebar' => __( 'Left Sidebar', 'generatepress' ),
+				'nav-right-sidebar' => __( 'Right Sidebar', 'generatepress' ),
+				'' => __( 'No Navigation', 'generatepress' )
 			),
-			// This last one must match setting ID from above
 			'settings' => 'generate_settings[nav_position_setting]',
 			'priority' => 20
 		)
@@ -369,9 +360,7 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add navigation setting
 	$wp_customize->add_setting(
-		// ID
 		'generate_settings[nav_alignment_setting]',
-		// Arguments array
 		array(
 			'default' => $defaults['nav_alignment_setting'],
 			'type' => 'option',
@@ -381,19 +370,16 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add navigation control
 	$wp_customize->add_control(
-		// ID
 		'generate_settings[nav_alignment_setting]',
-		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Navigation Alignment', 'generate' ),
+			'label' => __( 'Navigation Alignment', 'generatepress' ),
 			'section' => 'layout_section',
 			'choices' => array(
-				'left' => __( 'Left', 'generate' ),
-				'center' => __( 'Center', 'generate' ),
-				'right' => __( 'Right', 'generate' )
+				'left' => __( 'Left', 'generatepress' ),
+				'center' => __( 'Center', 'generatepress' ),
+				'right' => __( 'Right', 'generatepress' )
 			),
-			// This last one must match setting ID from above
 			'settings' => 'generate_settings[nav_alignment_setting]',
 			'priority' => 22
 		)
@@ -401,9 +387,7 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add navigation setting
 	$wp_customize->add_setting(
-		// ID
 		'generate_settings[nav_dropdown_type]',
-		// Arguments array
 		array(
 			'default' => $defaults['nav_dropdown_type'],
 			'type' => 'option',
@@ -413,19 +397,16 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add navigation control
 	$wp_customize->add_control(
-		// ID
 		'generate_settings[nav_dropdown_type]',
-		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Navigation Dropdown', 'generate' ),
+			'label' => __( 'Navigation Dropdown', 'generatepress' ),
 			'section' => 'layout_section',
 			'choices' => array(
-				'hover' => __( 'Hover', 'generate' ),
-				'click' => __( 'Click - Menu Item', 'generate' ),
-				'click-arrow' => __( 'Click - Arrow', 'generate' )
+				'hover' => __( 'Hover', 'generatepress' ),
+				'click' => __( 'Click - Menu Item', 'generatepress' ),
+				'click-arrow' => __( 'Click - Arrow', 'generatepress' )
 			),
-			// This last one must match setting ID from above
 			'settings' => 'generate_settings[nav_dropdown_type]',
 			'priority' => 22
 		)
@@ -433,9 +414,7 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add navigation setting
 	$wp_customize->add_setting(
-		// ID
 		'generate_settings[nav_search]',
-		// Arguments array
 		array(
 			'default' => $defaults['nav_search'],
 			'type' => 'option',
@@ -445,18 +424,15 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add navigation control
 	$wp_customize->add_control(
-		// ID
 		'generate_settings[nav_search]',
-		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Navigation Search', 'generate' ),
+			'label' => __( 'Navigation Search', 'generatepress' ),
 			'section' => 'layout_section',
 			'choices' => array(
-				'enable' => __( 'Enabled', 'generate' ),
-				'disable' => __( 'Disabled', 'generate' )
+				'enable' => __( 'Enabled', 'generatepress' ),
+				'disable' => __( 'Disabled', 'generatepress' )
 			),
-			// This last one must match setting ID from above
 			'settings' => 'generate_settings[nav_search]',
 			'priority' => 23
 		)
@@ -464,9 +440,7 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add content setting
 	$wp_customize->add_setting(
-		// ID
 		'generate_settings[content_layout_setting]',
-		// Arguments array
 		array(
 			'default' => $defaults['content_layout_setting'],
 			'type' => 'option',
@@ -476,18 +450,15 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add content control
 	$wp_customize->add_control(
-		// ID
 		'generate_settings[content_layout_setting]',
-		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Content Layout', 'generate' ),
+			'label' => __( 'Content Layout', 'generatepress' ),
 			'section' => 'layout_section',
 			'choices' => array(
-				'separate-containers' => __( 'Separate Containers', 'generate' ),
-				'one-container' => __( 'One Container', 'generate' )
+				'separate-containers' => __( 'Separate Containers', 'generatepress' ),
+				'one-container' => __( 'One Container', 'generatepress' )
 			),
-			// This last one must match setting ID from above
 			'settings' => 'generate_settings[content_layout_setting]',
 			'priority' => 25
 		)
@@ -495,9 +466,7 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add Layout setting
 	$wp_customize->add_setting(
-		// ID
 		'generate_settings[layout_setting]',
-		// Arguments array
 		array(
 			'default' => $defaults['layout_setting'],
 			'type' => 'option',
@@ -507,22 +476,19 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add Layout control
 	$wp_customize->add_control(
-		// ID
 		'generate_settings[layout_setting]',
-		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Sidebar Layout', 'generate' ),
+			'label' => __( 'Sidebar Layout', 'generatepress' ),
 			'section' => 'layout_section',
 			'choices' => array(
-				'left-sidebar' => __( 'Sidebar / Content', 'generate' ),
-				'right-sidebar' => __( 'Content / Sidebar', 'generate' ),
-				'no-sidebar' => __( 'Content (no sidebars)', 'generate' ),
-				'both-sidebars' => __( 'Sidebar / Content / Sidebar', 'generate' ),
-				'both-left' => __( 'Sidebar / Sidebar / Content', 'generate' ),
-				'both-right' => __( 'Content / Sidebar / Sidebar', 'generate' )
+				'left-sidebar' => __( 'Sidebar / Content', 'generatepress' ),
+				'right-sidebar' => __( 'Content / Sidebar', 'generatepress' ),
+				'no-sidebar' => __( 'Content (no sidebars)', 'generatepress' ),
+				'both-sidebars' => __( 'Sidebar / Content / Sidebar', 'generatepress' ),
+				'both-left' => __( 'Sidebar / Sidebar / Content', 'generatepress' ),
+				'both-right' => __( 'Content / Sidebar / Sidebar', 'generatepress' )
 			),
-			// This last one must match setting ID from above
 			'settings' => 'generate_settings[layout_setting]',
 			'priority' => 30
 		)
@@ -530,9 +496,7 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add Layout setting
 	$wp_customize->add_setting(
-		// ID
 		'generate_settings[blog_layout_setting]',
-		// Arguments array
 		array(
 			'default' => $defaults['blog_layout_setting'],
 			'type' => 'option',
@@ -542,22 +506,19 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add Layout control
 	$wp_customize->add_control(
-		// ID
 		'generate_settings[blog_layout_setting]',
-		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Blog Sidebar Layout', 'generate' ),
+			'label' => __( 'Blog Sidebar Layout', 'generatepress' ),
 			'section' => 'layout_section',
 			'choices' => array(
-				'left-sidebar' => __( 'Sidebar / Content', 'generate' ),
-				'right-sidebar' => __( 'Content / Sidebar', 'generate' ),
-				'no-sidebar' => __( 'Content (no sidebars)', 'generate' ),
-				'both-sidebars' => __( 'Sidebar / Content / Sidebar', 'generate' ),
-				'both-left' => __( 'Sidebar / Sidebar / Content', 'generate' ),
-				'both-right' => __( 'Content / Sidebar / Sidebar', 'generate' )
+				'left-sidebar' => __( 'Sidebar / Content', 'generatepress' ),
+				'right-sidebar' => __( 'Content / Sidebar', 'generatepress' ),
+				'no-sidebar' => __( 'Content (no sidebars)', 'generatepress' ),
+				'both-sidebars' => __( 'Sidebar / Content / Sidebar', 'generatepress' ),
+				'both-left' => __( 'Sidebar / Sidebar / Content', 'generatepress' ),
+				'both-right' => __( 'Content / Sidebar / Sidebar', 'generatepress' )
 			),
-			// This last one must match setting ID from above
 			'settings' => 'generate_settings[blog_layout_setting]',
 			'priority' => 35
 		)
@@ -565,9 +526,7 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add Layout setting
 	$wp_customize->add_setting(
-		// ID
 		'generate_settings[single_layout_setting]',
-		// Arguments array
 		array(
 			'default' => $defaults['single_layout_setting'],
 			'type' => 'option',
@@ -577,22 +536,19 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add Layout control
 	$wp_customize->add_control(
-		// ID
 		'generate_settings[single_layout_setting]',
-		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Single Post Sidebar Layout', 'generate' ),
+			'label' => __( 'Single Post Sidebar Layout', 'generatepress' ),
 			'section' => 'layout_section',
 			'choices' => array(
-				'left-sidebar' => __( 'Sidebar / Content', 'generate' ),
-				'right-sidebar' => __( 'Content / Sidebar', 'generate' ),
-				'no-sidebar' => __( 'Content (no sidebars)', 'generate' ),
-				'both-sidebars' => __( 'Sidebar / Content / Sidebar', 'generate' ),
-				'both-left' => __( 'Sidebar / Sidebar / Content', 'generate' ),
-				'both-right' => __( 'Content / Sidebar / Sidebar', 'generate' )
+				'left-sidebar' => __( 'Sidebar / Content', 'generatepress' ),
+				'right-sidebar' => __( 'Content / Sidebar', 'generatepress' ),
+				'no-sidebar' => __( 'Content (no sidebars)', 'generatepress' ),
+				'both-sidebars' => __( 'Sidebar / Content / Sidebar', 'generatepress' ),
+				'both-left' => __( 'Sidebar / Sidebar / Content', 'generatepress' ),
+				'both-right' => __( 'Content / Sidebar / Sidebar', 'generatepress' )
 			),
-			// This last one must match setting ID from above
 			'settings' => 'generate_settings[single_layout_setting]',
 			'priority' => 36
 		)
@@ -600,9 +556,7 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add footer setting
 	$wp_customize->add_setting(
-		// ID
 		'generate_settings[footer_layout_setting]',
-		// Arguments array
 		array(
 			'default' => $defaults['footer_layout_setting'],
 			'type' => 'option',
@@ -612,18 +566,15 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add content control
 	$wp_customize->add_control(
-		// ID
 		'generate_settings[footer_layout_setting]',
-		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Footer Width', 'generate' ),
+			'label' => __( 'Footer Width', 'generatepress' ),
 			'section' => 'layout_section',
 			'choices' => array(
-				'fluid-footer' => __( 'Full', 'generate' ),
-				'contained-footer' => __( 'Contained', 'generate' )
+				'fluid-footer' => __( 'Full', 'generatepress' ),
+				'contained-footer' => __( 'Contained', 'generatepress' )
 			),
-			// This last one must match setting ID from above
 			'settings' => 'generate_settings[footer_layout_setting]',
 			'priority' => 40
 		)
@@ -631,9 +582,7 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add footer widget setting
 	$wp_customize->add_setting(
-		// ID
 		'generate_settings[footer_widget_setting]',
-		// Arguments array
 		array(
 			'default' => $defaults['footer_widget_setting'],
 			'type' => 'option',
@@ -643,12 +592,10 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add footer widget control
 	$wp_customize->add_control(
-		// ID
 		'generate_settings[footer_widget_setting]',
-		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Footer Widgets', 'generate' ),
+			'label' => __( 'Footer Widgets', 'generatepress' ),
 			'section' => 'layout_section',
 			'choices' => array(
 				'0' => '0',
@@ -658,7 +605,6 @@ function generate_customize_register( $wp_customize ) {
 				'4' => '4',
 				'5' => '5'
 			),
-			// This last one must match setting ID from above
 			'settings' => 'generate_settings[footer_widget_setting]',
 			'priority' => 45
 		)
@@ -666,9 +612,7 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add back to top setting
 	$wp_customize->add_setting(
-		// ID
 		'generate_settings[back_to_top]',
-		// Arguments array
 		array(
 			'default' => $defaults['back_to_top'],
 			'type' => 'option',
@@ -678,18 +622,15 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add content control
 	$wp_customize->add_control(
-		// ID
 		'generate_settings[back_to_top]',
-		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Back to Top Button', 'generate' ),
+			'label' => __( 'Back to Top Button', 'generatepress' ),
 			'section' => 'layout_section',
 			'choices' => array(
-				'enable' => __( 'Enabled', 'generate' ),
-				'' => __( 'Disabled', 'generate' )
+				'enable' => __( 'Enabled', 'generatepress' ),
+				'' => __( 'Disabled', 'generatepress' )
 			),
-			// This last one must match setting ID from above
 			'settings' => 'generate_settings[back_to_top]',
 			'priority' => 50
 		)
@@ -697,11 +638,9 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add Layout section
 	$wp_customize->add_section(
-		// ID
 		'blog_section',
-		// Arguments array
 		array(
-			'title' => __( 'Blog', 'generate' ),
+			'title' => __( 'Blog', 'generatepress' ),
 			'capability' => 'edit_theme_options',
 			'description' => '',
 			'priority' => 100
@@ -710,9 +649,7 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add Layout setting
 	$wp_customize->add_setting(
-		// ID
 		'generate_settings[post_content]',
-		// Arguments array
 		array(
 			'default' => $defaults['post_content'],
 			'type' => 'option',
@@ -722,18 +659,15 @@ function generate_customize_register( $wp_customize ) {
 	
 	// Add Layout control
 	$wp_customize->add_control(
-		// ID
 		'blog_content_control',
-		// Arguments array
 		array(
 			'type' => 'select',
-			'label' => __( 'Blog Post Content', 'generate' ),
+			'label' => __( 'Blog Post Content', 'generatepress' ),
 			'section' => 'blog_section',
 			'choices' => array(
-				'full' => __( 'Show full post', 'generate' ),
-				'excerpt' => __( 'Show excerpt', 'generate' )
+				'full' => __( 'Show full post', 'generatepress' ),
+				'excerpt' => __( 'Show excerpt', 'generatepress' )
 			),
-			// This last one must match setting ID from above
 			'settings' => 'generate_settings[post_content]',
 			'priority' => 10
 		)
@@ -748,14 +682,14 @@ function generate_customize_register( $wp_customize ) {
 				array(
 					'section'     => 'blog_section',
 					'type'        => 'addon',
-					'label'			=> __( 'More Settings','generate' ),
+					'label'			=> __( 'More Settings','generatepress' ),
 					'url' => 'http://www.generatepress.com/downloads/generate-blog/',
 					'description' => sprintf(
-						__( 'Looking to add more blog settings?<br /> %s.', 'generate' ),
+						__( 'Looking to add more blog settings?<br /> %s.', 'generatepress' ),
 						sprintf(
 							'<a href="%1$s" target="_blank">%2$s</a>',
 							esc_url( 'http://www.generatepress.com/downloads/generate-blog/' ),
-							__( 'Check out Generate Blog', 'generate' )
+							__( 'Check out Generate Blog', 'generatepress' )
 						)
 					),
 					'priority'    => 30
@@ -787,7 +721,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
     class GenerateLabelControl extends WP_Customize_Control {
         public $type = 'label';
         public function __construct( $manager, $id, $args = array() ) {
-            $this->statuses = array( '' => __( 'Default', 'generate' ) );
+            $this->statuses = array( '' => __( 'Default', 'generatepress' ) );
             parent::__construct( $manager, $id, $args );
         }
  
@@ -823,7 +757,7 @@ if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'Generate_Customi
 					echo '<span class="get-addon">' . sprintf(
 								'<a href="%1$s" target="_blank">%2$s</a>',
 								esc_url( $this->url ),
-								__('Add-on available','generate')
+								__('Add-on available','generatepress')
 							) . '</span>';
 					echo '<p class="description" style="margin-top:5px;">' . $this->description . '</p>';
 					break;
@@ -908,7 +842,7 @@ function generate_customize_preview_js()
 		return;
 	?>
 	<script>
-		jQuery('#customize-info').append('<span class="get-addon" style="display:block;"><a style="display:block;padding-left: 15px;padding-right:0;" href="<?php echo esc_url('http://generatepress.com/add-ons');?>" target="_blank"><?php _e('Add-ons Available! Take a look','generate');?> &rarr;</a></span>');
+		jQuery('#customize-info').append('<span class="get-addon" style="display:block;"><a style="display:block;padding-left: 15px;padding-right:0;" href="<?php echo esc_url('http://generatepress.com/add-ons');?>" target="_blank"><?php _e('Add-ons Available! Take a look','generatepress');?> &rarr;</a></span>');
 	</script>
 	<?php
 }

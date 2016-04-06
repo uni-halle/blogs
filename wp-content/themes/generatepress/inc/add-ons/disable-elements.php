@@ -56,7 +56,7 @@ function generate_add_de_meta_box()
 		add_meta_box
 		(  
 			'generate_de_meta_box',
-			__('Disable Elements','generate'),
+			__('Disable Elements','generatepress'),
 			'generate_show_de_meta_box',
 			$type,
 			'side',
@@ -78,13 +78,13 @@ function generate_show_de_meta_box( $post )
 	$stored_meta['_generate-disable-headline'][0] = ( isset( $stored_meta['_generate-disable-headline'][0] ) ) ? $stored_meta['_generate-disable-headline'][0] : '';
     ?>
 	<div class="generate_disable_elements">
-		<label for="meta-generate-disable-headline" style="display:block;margin: 1em 0;" title="<?php _e( 'Content Title','generate' );?>">
+		<label for="meta-generate-disable-headline" style="display:block;margin: 1em 0;" title="<?php _e( 'Content Title','generatepress' );?>">
 			<input type="checkbox" name="_generate-disable-headline" id="meta-generate-disable-headline" value="true" <?php checked( $stored_meta['_generate-disable-headline'][0], 'true' ); ?>>
-			<?php _e( 'Content Title','generate' );?>
+			<?php _e( 'Content Title','generatepress' );?>
 		</label>
 		<?php if ( generate_addons_available() ) : ?>
 			<span style="display:block;padding-top:1em;border-top:1px solid #EFEFEF;">
-				<a href="<?php echo esc_url('http://generatepress.com/downloads/generate-disable-elements');?>" target="_blank"><?php _e( 'Add-on available', 'generate' ); ?></a>
+				<a href="<?php echo esc_url('http://generatepress.com/downloads/generate-disable-elements');?>" target="_blank"><?php _e( 'Add-on available', 'generatepress' ); ?></a>
 			</span>
 		<?php endif; ?>
 	</div>

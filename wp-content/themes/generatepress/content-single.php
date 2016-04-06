@@ -22,7 +22,7 @@
 			<?php the_content(); ?>
 			<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'generate' ),
+				'before' => '<div class="page-links">' . __( 'Pages:', 'generatepress' ),
 				'after'  => '</div>',
 			) );
 			?>
@@ -32,7 +32,7 @@
 		<footer class="entry-meta">
 			<?php generate_entry_meta(); ?>
 			<?php generate_content_nav( 'nav-below' ); ?>
-			<?php edit_post_link( __( 'Edit', 'generate' ), '<span class="edit-link">', '</span>' ); ?>
+			<?php edit_post_link( __( 'Edit', 'generatepress' ), '<span class="edit-link">', '</span>' ); ?>
 		</footer><!-- .entry-meta -->
 		<?php do_action( 'generate_after_content'); ?>
 	</div><!-- .inside-article -->

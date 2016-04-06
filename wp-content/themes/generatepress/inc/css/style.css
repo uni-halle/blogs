@@ -4,6 +4,11 @@
 	margin-bottom: 5px;
 }
 
+.addon-metabox a {
+	display: inline-block;
+	padding: 2px;
+}
+
 .generate-metabox textarea {
 	width: 100%;
 	-moz-box-sizing: border-box;
@@ -71,19 +76,6 @@
 	font-weight: bold;
 	font-size:16px;
 	margin-bottom:10px;
-}
-
-.addon-active img {
-	opacity: 1;
-}
-
-.addon-inactive img {
-	opacity: 0.3;
-}
-
-.addon-active img,
-.addon-inactive img {
-	margin:5px;
 }
 
 .wp-list-table.addons tr:nth-child(2n) {

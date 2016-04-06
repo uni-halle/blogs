@@ -17,7 +17,7 @@ function generate_add_layout_meta_box() {
 		add_meta_box
 		(  
 			'generate_layout_meta_box', // $id  
-			__('Sidebar Layout','generate'), // $title   
+			__('Sidebar Layout','generatepress'), // $title   
 			'generate_show_layout_meta_box', // $callback  
 			$type, // $page  
 			'side', // $context  
@@ -52,31 +52,31 @@ function generate_show_layout_meta_box( $post ) {
 		<div class="generate_layouts">
 			<label for="meta-generate-layout-global" style="display:block;margin-bottom:10px;">
 				<input type="radio" name="_generate-sidebar-layout-meta" id="meta-generate-layout-global" value="" <?php echo $checked; ?>>
-				<?php _e('Global Layout Settings','generate');?>
+				<?php _e('Global Layout Settings','generatepress');?>
 			</label>
-			<label for="meta-generate-layout-one" style="display:block;margin-bottom:3px;" title="<?php _e('Right Sidebar','generate');?>">
+			<label for="meta-generate-layout-one" style="display:block;margin-bottom:3px;" title="<?php _e('Right Sidebar','generatepress');?>">
 				<input type="radio" name="_generate-sidebar-layout-meta" id="meta-generate-layout-one" value="right-sidebar" <?php checked( $stored_meta['_generate-sidebar-layout-meta'][0], 'right-sidebar' ); ?>>
-				<?php _e('Content','generate');?> / <strong><?php _e('Sidebar','generate');?></strong>
+				<?php _e('Content','generatepress');?> / <strong><?php _e('Sidebar','generatepress');?></strong>
 			</label>
-			<label for="meta-generate-layout-two" style="display:block;margin-bottom:3px;" title="<?php _e('Left Sidebar','generate');?>">
+			<label for="meta-generate-layout-two" style="display:block;margin-bottom:3px;" title="<?php _e('Left Sidebar','generatepress');?>">
 				<input type="radio" name="_generate-sidebar-layout-meta" id="meta-generate-layout-two" value="left-sidebar" <?php checked( $stored_meta['_generate-sidebar-layout-meta'][0], 'left-sidebar' ); ?>>
-				<strong><?php _e('Sidebar','generate');?></strong> / <?php _e('Content','generate');?>
+				<strong><?php _e('Sidebar','generatepress');?></strong> / <?php _e('Content','generatepress');?>
 			</label>
-			<label for="meta-generate-layout-three" style="display:block;margin-bottom:3px;" title="<?php _e('No Sidebars','generate');?>">
+			<label for="meta-generate-layout-three" style="display:block;margin-bottom:3px;" title="<?php _e('No Sidebars','generatepress');?>">
 				<input type="radio" name="_generate-sidebar-layout-meta" id="meta-generate-layout-three" value="no-sidebar" <?php checked( $stored_meta['_generate-sidebar-layout-meta'][0], 'no-sidebar' ); ?>>
-				<?php _e('Content (no sidebars)','generate');?>
+				<?php _e('Content (no sidebars)','generatepress');?>
 			</label>
-			<label for="meta-generate-layout-four" style="display:block;margin-bottom:3px;" title="<?php _e('Both Sidebars','generate');?>">
+			<label for="meta-generate-layout-four" style="display:block;margin-bottom:3px;" title="<?php _e('Both Sidebars','generatepress');?>">
 				<input type="radio" name="_generate-sidebar-layout-meta" id="meta-generate-layout-four" value="both-sidebars" <?php checked( $stored_meta['_generate-sidebar-layout-meta'][0], 'both-sidebars' ); ?>>
-				<strong><?php _e('Sidebar','generate');?></strong> / <?php _e('Content','generate');?> / <strong><?php _e('Sidebar','generate');?></strong>
+				<strong><?php _e('Sidebar','generatepress');?></strong> / <?php _e('Content','generatepress');?> / <strong><?php _e('Sidebar','generatepress');?></strong>
 			</label>
-			<label for="meta-generate-layout-five" style="display:block;margin-bottom:3px;" title="<?php _e('Both Sidebars on Left','generate');?>">
+			<label for="meta-generate-layout-five" style="display:block;margin-bottom:3px;" title="<?php _e('Both Sidebars on Left','generatepress');?>">
 				<input type="radio" name="_generate-sidebar-layout-meta" id="meta-generate-layout-five" value="both-left" <?php checked( $stored_meta['_generate-sidebar-layout-meta'][0], 'both-left' ); ?>>
-				<strong><?php _e('Sidebar','generate');?></strong> / <strong><?php _e('Sidebar','generate');?></strong> / <?php _e('Content','generate');?>
+				<strong><?php _e('Sidebar','generatepress');?></strong> / <strong><?php _e('Sidebar','generatepress');?></strong> / <?php _e('Content','generatepress');?>
 			</label>
-			<label for="meta-generate-layout-six" style="display:block;margin-bottom:3px;" title="<?php _e('Both Sidebars on Right','generate');?>">
+			<label for="meta-generate-layout-six" style="display:block;margin-bottom:3px;" title="<?php _e('Both Sidebars on Right','generatepress');?>">
 				<input type="radio" name="_generate-sidebar-layout-meta" id="meta-generate-layout-six" value="both-right" <?php checked( $stored_meta['_generate-sidebar-layout-meta'][0], 'both-right' ); ?>>
-				<?php _e('Content','generate');?> / <strong><?php _e('Sidebar','generate');?></strong> / <strong><?php _e('Sidebar','generate');?></strong>
+				<?php _e('Content','generatepress');?> / <strong><?php _e('Sidebar','generatepress');?></strong> / <strong><?php _e('Sidebar','generatepress');?></strong>
 			</label>
 		</div>
 	</p>
@@ -122,7 +122,7 @@ function generate_add_footer_widget_meta_box() {
 		add_meta_box
 		(  
 			'generate_footer_widget_meta_box', // $id  
-			__('Footer Widgets','generate'), // $title   
+			__('Footer Widgets','generatepress'), // $title   
 			'generate_show_footer_widget_meta_box', // $callback  
 			$type, // $page  
 			'side', // $context  
@@ -157,31 +157,31 @@ function generate_show_footer_widget_meta_box( $post ) {
 		<div class="generate_footer_widget">
 			<label for="meta-generate-footer-widget-global" style="display:block;margin-bottom:10px;">
 				<input type="radio" name="_generate-footer-widget-meta" id="meta-generate-footer-widget-global" value="" <?php echo $checked; ?>>
-				<?php _e('Global Footer Widget Settings','generate');?>
+				<?php _e('Global Footer Widget Settings','generatepress');?>
 			</label>
-			<label for="meta-generate-footer-widget-zero" style="display:block;margin-bottom:3px;" title="<?php _e('0 Widgets','generate');?>">
+			<label for="meta-generate-footer-widget-zero" style="display:block;margin-bottom:3px;" title="<?php _e('0 Widgets','generatepress');?>">
 				<input type="radio" name="_generate-footer-widget-meta" id="meta-generate-footer-widget-zero" value="0" <?php checked( $stored_meta['_generate-footer-widget-meta'][0], '0' ); ?>>
-				<?php _e('0 Widgets','generate');?>
+				<?php _e('0 Widgets','generatepress');?>
 			</label>
-			<label for="meta-generate-footer-widget-one" style="display:block;margin-bottom:3px;" title="<?php _e('1 Widget','generate');?>">
+			<label for="meta-generate-footer-widget-one" style="display:block;margin-bottom:3px;" title="<?php _e('1 Widget','generatepress');?>">
 				<input type="radio" name="_generate-footer-widget-meta" id="meta-generate-footer-widget-one" value="1" <?php checked( $stored_meta['_generate-footer-widget-meta'][0], '1' ); ?>>
-				<?php _e('1 Widget','generate');?>
+				<?php _e('1 Widget','generatepress');?>
 			</label>
-			<label for="meta-generate-footer-widget-two" style="display:block;margin-bottom:3px;" title="<?php _e('2 Widgets','generate');?>">
+			<label for="meta-generate-footer-widget-two" style="display:block;margin-bottom:3px;" title="<?php _e('2 Widgets','generatepress');?>">
 				<input type="radio" name="_generate-footer-widget-meta" id="meta-generate-footer-widget-two" value="2" <?php checked( $stored_meta['_generate-footer-widget-meta'][0], '2' ); ?>>
-				<?php _e('2 Widgets','generate');?>
+				<?php _e('2 Widgets','generatepress');?>
 			</label>
-			<label for="meta-generate-footer-widget-three" style="display:block;margin-bottom:3px;" title="<?php _e('3 Widgets','generate');?>">
+			<label for="meta-generate-footer-widget-three" style="display:block;margin-bottom:3px;" title="<?php _e('3 Widgets','generatepress');?>">
 				<input type="radio" name="_generate-footer-widget-meta" id="meta-generate-footer-widget-three" value="3" <?php checked( $stored_meta['_generate-footer-widget-meta'][0], '3' ); ?>>
-				<?php _e('3 Widgets','generate');?>
+				<?php _e('3 Widgets','generatepress');?>
 			</label>
-			<label for="meta-generate-footer-widget-four" style="display:block;margin-bottom:3px;" title="<?php _e('4 Widgets','generate');?>">
+			<label for="meta-generate-footer-widget-four" style="display:block;margin-bottom:3px;" title="<?php _e('4 Widgets','generatepress');?>">
 				<input type="radio" name="_generate-footer-widget-meta" id="meta-generate-footer-widget-four" value="4" <?php checked( $stored_meta['_generate-footer-widget-meta'][0], '4' ); ?>>
-				<?php _e('4 Widgets','generate');?>
+				<?php _e('4 Widgets','generatepress');?>
 			</label>
-			<label for="meta-generate-footer-widget-five" style="display:block;margin-bottom:3px;" title="<?php _e('5 Widgets','generate');?>">
+			<label for="meta-generate-footer-widget-five" style="display:block;margin-bottom:3px;" title="<?php _e('5 Widgets','generatepress');?>">
 				<input type="radio" name="_generate-footer-widget-meta" id="meta-generate-footer-widget-five" value="5" <?php checked( $stored_meta['_generate-footer-widget-meta'][0], '5' ); ?>>
-				<?php _e('5 Widgets','generate');?>
+				<?php _e('5 Widgets','generatepress');?>
 			</label>
 		</div>
 	</p>

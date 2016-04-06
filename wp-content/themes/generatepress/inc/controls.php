@@ -47,8 +47,8 @@ if ( !class_exists('Generate_Upload_Control') ) :
 			?>
 			<div class='generate-upload'>
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-				<a class="button upload" data-title="<?php _e('Select Image','generate');?>" data-button="<?php _e('Use Image','generate');?>"><?php _e('Upload','generate');?></a>
-				<a class="button remove" <?php if ( empty( $value ) ) { ?>style="display:none;"<?php } ?>><?php _e('Remove','generate'); ?></a>
+				<a class="button upload" data-title="<?php _e('Select Image','generatepress');?>" data-button="<?php _e('Use Image','generatepress');?>"><?php _e('Upload','generatepress');?></a>
+				<a class="button remove" <?php if ( empty( $value ) ) { ?>style="display:none;"<?php } ?>><?php _e('Remove','generatepress'); ?></a>
 				<input type='hidden' value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?>/>
 			</div>
 			<?php

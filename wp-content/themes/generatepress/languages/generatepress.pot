@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GeneratePress\n"
-"POT-Creation-Date: 2016-01-28 16:13-0800\n"
+"POT-Creation-Date: 2016-03-09 13:50-0800\n"
 "PO-Revision-Date: 2015-04-04 15:17-0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -35,60 +35,60 @@ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: comments.php:36 comments.php:58
+#: comments.php:38 comments.php:60
 msgid "Comment navigation"
 msgstr ""
 
-#: comments.php:37 comments.php:59
+#: comments.php:39 comments.php:61
 msgid "&larr; Older Comments"
 msgstr ""
 
-#: comments.php:38 comments.php:60
+#: comments.php:40 comments.php:62
 msgid "Newer Comments &rarr;"
 msgstr ""
 
-#: comments.php:70
+#: comments.php:72
 msgid "Comments are closed."
 msgstr ""
 
-#: comments.php:75
+#: comments.php:77
 msgid "Name"
 msgstr ""
 
-#: comments.php:76
+#: comments.php:78
 msgid "Email"
 msgstr ""
 
-#: comments.php:77
+#: comments.php:79
 msgid "Website"
 msgstr ""
 
-#: comments.php:82
+#: comments.php:84
 #, php-format
 msgid "You must be <a href=\"%1$s\">logged in</a> to post a comment."
 msgstr ""
 
-#: comments.php:83
+#: comments.php:85
 #, php-format
 msgid ""
 "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
 "this account\">Log out?</a>"
 msgstr ""
 
-#: comments.php:88
+#: comments.php:90
 msgid "Leave a Comment"
 msgstr ""
 
-#: comments.php:89
+#: comments.php:91
 #, php-format
 msgid "Leave a Reply to %s"
 msgstr ""
 
-#: comments.php:90
+#: comments.php:92
 msgid "Cancel reply"
 msgstr ""
 
-#: comments.php:91
+#: comments.php:93
 msgid "Post Comment"
 msgstr ""
 
@@ -105,12 +105,12 @@ msgstr ""
 msgid "Footer Widget 1"
 msgstr ""
 
-#: footer.php:39
+#: footer.php:39 footer.php:53 footer.php:67 footer.php:81 footer.php:95
 #, php-format
 msgid ""
 "Replace this widget content by going to <a href=\"%1$s"
-"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
-"Footer Area 1."
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into this "
+"widget area."
 msgstr ""
 
 #: footer.php:40 footer.php:54 footer.php:68 footer.php:82 footer.php:96
@@ -124,59 +124,27 @@ msgstr ""
 msgid "Footer Widget 2"
 msgstr ""
 
-#: footer.php:53
-#, php-format
-msgid ""
-"Replace this widget content by going to <a href=\"%1$s"
-"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
-"Footer Area 2."
-msgstr ""
-
 #: footer.php:65 functions.php:170
 msgid "Footer Widget 3"
-msgstr ""
-
-#: footer.php:67
-#, php-format
-msgid ""
-"Replace this widget content by going to <a href=\"%1$s"
-"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
-"Footer Area 3."
 msgstr ""
 
 #: footer.php:79 functions.php:178
 msgid "Footer Widget 4"
 msgstr ""
 
-#: footer.php:81
-#, php-format
-msgid ""
-"Replace this widget content by going to <a href=\"%1$s"
-"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
-"Footer Area 4."
-msgstr ""
-
 #: footer.php:93 functions.php:186
 msgid "Footer Widget 5"
-msgstr ""
-
-#: footer.php:95
-#, php-format
-msgid ""
-"Replace this widget content by going to <a href=\"%1$s"
-"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
-"Footer Area 5."
 msgstr ""
 
 #: functions.php:48
 msgid "Primary Menu"
 msgstr ""
 
-#: functions.php:130 inc/customizer.php:361 inc/metaboxes.php:57
+#: functions.php:130 inc/customizer.php:353 inc/metaboxes.php:57
 msgid "Right Sidebar"
 msgstr ""
 
-#: functions.php:138 inc/customizer.php:360 inc/metaboxes.php:61
+#: functions.php:138 inc/customizer.php:352 inc/metaboxes.php:61
 msgid "Left Sidebar"
 msgstr ""
 
@@ -184,12 +152,8 @@ msgstr ""
 msgid "Header"
 msgstr ""
 
-#: functions.php:401 inc/options.php:174
+#: functions.php:401
 msgid "Copyright"
-msgstr ""
-
-#: functions.php:409 inc/options.php:24 inc/options.php:67
-msgid "GeneratePress"
 msgstr ""
 
 #: header.php:21
@@ -208,7 +172,7 @@ msgstr ""
 msgid "Font family"
 msgstr ""
 
-#: inc/add-ons/disable-elements.php:59 inc/options.php:181
+#: inc/add-ons/disable-elements.php:59
 msgid "Disable Elements"
 msgstr ""
 
@@ -216,11 +180,11 @@ msgstr ""
 msgid "Content Title"
 msgstr ""
 
-#: inc/add-ons/disable-elements.php:87 inc/customizer.php:826
+#: inc/add-ons/disable-elements.php:87 inc/customizer.php:760
 msgid "Add-on available"
 msgstr ""
 
-#: inc/add-ons/typography.php:327 inc/options.php:146
+#: inc/add-ons/typography.php:327
 msgid "Typography"
 msgstr ""
 
@@ -240,7 +204,7 @@ msgstr ""
 msgid "Font size"
 msgstr ""
 
-#: inc/add-ons/typography.php:435 inc/customizer.php:188 inc/customizer.php:751
+#: inc/add-ons/typography.php:435 inc/customizer.php:201 inc/customizer.php:685
 msgid "More Settings"
 msgstr ""
 
@@ -269,250 +233,250 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: inc/customizer.php:22
+#: inc/customizer.php:23
 msgid "Site Identity"
 msgstr ""
 
-#: inc/customizer.php:30
+#: inc/customizer.php:38
 msgid "Set Front Page"
 msgstr ""
 
-#: inc/customizer.php:51
+#: inc/customizer.php:68
 msgid "Hide site title"
 msgstr ""
 
-#: inc/customizer.php:70
+#: inc/customizer.php:87
 msgid "Hide site tagline"
 msgstr ""
 
-#: inc/customizer.php:90
+#: inc/customizer.php:107
 msgid "Logo"
 msgstr ""
 
-#: inc/customizer.php:103 inc/options.php:130
+#: inc/customizer.php:120
 msgid "Colors"
 msgstr ""
 
-#: inc/customizer.php:114
+#: inc/customizer.php:129
 msgid "Base Colors"
 msgstr ""
 
-#: inc/customizer.php:126
+#: inc/customizer.php:141
 msgid "Background Color"
 msgstr ""
 
-#: inc/customizer.php:132
+#: inc/customizer.php:147
 msgid "Text Color"
 msgstr ""
 
-#: inc/customizer.php:138
+#: inc/customizer.php:153
 msgid "Link Color"
 msgstr ""
 
-#: inc/customizer.php:144
+#: inc/customizer.php:159
 msgid "Link Color Hover"
 msgstr ""
 
-#: inc/customizer.php:150
+#: inc/customizer.php:165
 msgid "Link Color Visited"
 msgstr ""
 
-#: inc/customizer.php:191
+#: inc/customizer.php:204
 #, php-format
 msgid "Looking to add more color settings?<br /> %s."
 msgstr ""
 
-#: inc/customizer.php:195
+#: inc/customizer.php:208
 msgid "Check out Generate Colors"
 msgstr ""
 
-#: inc/customizer.php:210
+#: inc/customizer.php:221
 msgid "Layout"
 msgstr ""
 
-#: inc/customizer.php:232
+#: inc/customizer.php:243
 msgid "Container Width"
 msgstr ""
 
-#: inc/customizer.php:259
+#: inc/customizer.php:266
 msgid "Header Width"
 msgstr ""
 
-#: inc/customizer.php:262 inc/customizer.php:325 inc/customizer.php:623
+#: inc/customizer.php:269 inc/customizer.php:322 inc/customizer.php:575
 msgid "Full"
 msgstr ""
 
-#: inc/customizer.php:263 inc/customizer.php:326 inc/customizer.php:624
+#: inc/customizer.php:270 inc/customizer.php:323 inc/customizer.php:576
 msgid "Contained"
 msgstr ""
 
-#: inc/customizer.php:290
+#: inc/customizer.php:292
 msgid "Header Alignment"
 msgstr ""
 
-#: inc/customizer.php:293 inc/customizer.php:392
+#: inc/customizer.php:295 inc/customizer.php:379
 msgid "Left"
 msgstr ""
 
-#: inc/customizer.php:294 inc/customizer.php:393
+#: inc/customizer.php:296 inc/customizer.php:380
 msgid "Center"
 msgstr ""
 
-#: inc/customizer.php:295 inc/customizer.php:394
+#: inc/customizer.php:297 inc/customizer.php:381
 msgid "Right"
 msgstr ""
 
-#: inc/customizer.php:322
+#: inc/customizer.php:319
 msgid "Navigation Width"
 msgstr ""
 
-#: inc/customizer.php:353
+#: inc/customizer.php:345
 msgid "Navigation Position"
 msgstr ""
 
-#: inc/customizer.php:356
+#: inc/customizer.php:348
 msgid "Below Header"
 msgstr ""
 
-#: inc/customizer.php:357
+#: inc/customizer.php:349
 msgid "Above Header"
 msgstr ""
 
-#: inc/customizer.php:358
+#: inc/customizer.php:350
 msgid "Float Right"
 msgstr ""
 
-#: inc/customizer.php:359
+#: inc/customizer.php:351
 msgid "Float Left"
 msgstr ""
 
-#: inc/customizer.php:362
+#: inc/customizer.php:354
 msgid "No Navigation"
 msgstr ""
 
-#: inc/customizer.php:389
+#: inc/customizer.php:376
 msgid "Navigation Alignment"
 msgstr ""
 
-#: inc/customizer.php:421
+#: inc/customizer.php:403
 msgid "Navigation Dropdown"
 msgstr ""
 
-#: inc/customizer.php:424
+#: inc/customizer.php:406
 msgid "Hover"
 msgstr ""
 
-#: inc/customizer.php:425
+#: inc/customizer.php:407
 msgid "Click - Menu Item"
 msgstr ""
 
-#: inc/customizer.php:426
+#: inc/customizer.php:408
 msgid "Click - Arrow"
 msgstr ""
 
-#: inc/customizer.php:453
+#: inc/customizer.php:430
 msgid "Navigation Search"
 msgstr ""
 
-#: inc/customizer.php:456 inc/customizer.php:689
+#: inc/customizer.php:433 inc/customizer.php:631
 msgid "Enabled"
 msgstr ""
 
-#: inc/customizer.php:457 inc/customizer.php:690
+#: inc/customizer.php:434 inc/customizer.php:632
 msgid "Disabled"
 msgstr ""
 
-#: inc/customizer.php:484
+#: inc/customizer.php:456
 msgid "Content Layout"
 msgstr ""
 
-#: inc/customizer.php:487
+#: inc/customizer.php:459
 msgid "Separate Containers"
 msgstr ""
 
-#: inc/customizer.php:488
+#: inc/customizer.php:460
 msgid "One Container"
 msgstr ""
 
-#: inc/customizer.php:515 inc/metaboxes.php:20
+#: inc/customizer.php:482 inc/metaboxes.php:20
 msgid "Sidebar Layout"
 msgstr ""
 
-#: inc/customizer.php:518 inc/customizer.php:553 inc/customizer.php:588
+#: inc/customizer.php:485 inc/customizer.php:515 inc/customizer.php:545
 msgid "Sidebar / Content"
 msgstr ""
 
-#: inc/customizer.php:519 inc/customizer.php:554 inc/customizer.php:589
+#: inc/customizer.php:486 inc/customizer.php:516 inc/customizer.php:546
 msgid "Content / Sidebar"
 msgstr ""
 
-#: inc/customizer.php:520 inc/customizer.php:555 inc/customizer.php:590
+#: inc/customizer.php:487 inc/customizer.php:517 inc/customizer.php:547
 #: inc/metaboxes.php:67
 msgid "Content (no sidebars)"
 msgstr ""
 
-#: inc/customizer.php:521 inc/customizer.php:556 inc/customizer.php:591
+#: inc/customizer.php:488 inc/customizer.php:518 inc/customizer.php:548
 msgid "Sidebar / Content / Sidebar"
 msgstr ""
 
-#: inc/customizer.php:522 inc/customizer.php:557 inc/customizer.php:592
+#: inc/customizer.php:489 inc/customizer.php:519 inc/customizer.php:549
 msgid "Sidebar / Sidebar / Content"
 msgstr ""
 
-#: inc/customizer.php:523 inc/customizer.php:558 inc/customizer.php:593
+#: inc/customizer.php:490 inc/customizer.php:520 inc/customizer.php:550
 msgid "Content / Sidebar / Sidebar"
 msgstr ""
 
-#: inc/customizer.php:550
+#: inc/customizer.php:512
 msgid "Blog Sidebar Layout"
 msgstr ""
 
-#: inc/customizer.php:585
+#: inc/customizer.php:542
 msgid "Single Post Sidebar Layout"
 msgstr ""
 
-#: inc/customizer.php:620
+#: inc/customizer.php:572
 msgid "Footer Width"
 msgstr ""
 
-#: inc/customizer.php:651 inc/metaboxes.php:125
+#: inc/customizer.php:598 inc/metaboxes.php:125
 msgid "Footer Widgets"
 msgstr ""
 
-#: inc/customizer.php:686
+#: inc/customizer.php:628
 msgid "Back to Top Button"
 msgstr ""
 
-#: inc/customizer.php:704 inc/options.php:188
+#: inc/customizer.php:643
 msgid "Blog"
 msgstr ""
 
-#: inc/customizer.php:730
+#: inc/customizer.php:665
 msgid "Blog Post Content"
 msgstr ""
 
-#: inc/customizer.php:733 inc/sanitize.php:121
+#: inc/customizer.php:668 inc/sanitize.php:121
 msgid "Show full post"
 msgstr ""
 
-#: inc/customizer.php:734 inc/sanitize.php:122
+#: inc/customizer.php:669 inc/sanitize.php:122
 msgid "Show excerpt"
 msgstr ""
 
-#: inc/customizer.php:754
+#: inc/customizer.php:688
 #, php-format
 msgid "Looking to add more blog settings?<br /> %s."
 msgstr ""
 
-#: inc/customizer.php:758
+#: inc/customizer.php:692
 msgid "Check out Generate Blog"
 msgstr ""
 
-#: inc/customizer.php:790
+#: inc/customizer.php:724
 msgid "Default"
 msgstr ""
 
-#: inc/customizer.php:911
+#: inc/customizer.php:845
 msgid "Add-ons Available! Take a look"
 msgstr ""
 
@@ -643,38 +607,6 @@ msgstr ""
 
 #: inc/options.php:108
 msgid "Delete Default Customizer Settings"
-msgstr ""
-
-#: inc/options.php:138
-msgid "Sections"
-msgstr ""
-
-#: inc/options.php:153
-msgid "Menu Plus"
-msgstr ""
-
-#: inc/options.php:160
-msgid "Page Header"
-msgstr ""
-
-#: inc/options.php:167
-msgid "Import / Export"
-msgstr ""
-
-#: inc/options.php:195
-msgid "Hooks"
-msgstr ""
-
-#: inc/options.php:202
-msgid "Spacing"
-msgstr ""
-
-#: inc/options.php:209
-msgid "Backgrounds"
-msgstr ""
-
-#: inc/options.php:216
-msgid "Secondary Nav"
 msgstr ""
 
 #: inc/options.php:228 inc/options.php:235

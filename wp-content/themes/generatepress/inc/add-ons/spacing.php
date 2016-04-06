@@ -283,14 +283,6 @@ function generate_additional_spacing()
 			'line-height' => ( isset( $spacing_settings['menu_item_height'] ) ) ? $spacing_settings['menu_item_height'] . 'px' : null,
 		),
 		
-		'.menu-item-has-children .dropdown-menu-toggle' => array(
-			'padding-right' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
-		),
-		
-		'.slideout-navigation .main-nav ul li.menu-item-has-children a' => array(
-			'padding-right' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
-		),
-		
 		'.menu-item-has-children ul .dropdown-menu-toggle' => array (
 			'padding-top' => ( isset( $spacing_settings[ 'sub_menu_item_height' ] ) ) ? $spacing_settings[ 'sub_menu_item_height' ] . 'px' : null,
 			'padding-bottom' => ( isset( $spacing_settings[ 'sub_menu_item_height' ] ) ) ? $spacing_settings[ 'sub_menu_item_height' ] . 'px' : null,

@@ -2,8 +2,6 @@
 /**
  * Custom template tags for this theme.
  *
- * Eventually, some of the functionality here could be replaced by core features
- *
  * @package GeneratePress
  */
 if ( ! function_exists( 'generate_paging_nav' ) ) :
@@ -36,8 +34,8 @@ if ( ! function_exists( 'generate_paging_nav' ) ) :
 			'current'  => $paged,
 			'mid_size' => apply_filters( 'generate_pagination_mid_size', 1 ),
 			'add_args' => array_map( 'urlencode', $query_args ),
-			'prev_text' => __( '&larr; Previous', 'generate' ),
-			'next_text' => __( 'Next &rarr;', 'generate' ),
+			'prev_text' => __( '&larr; Previous', 'generatepress' ),
+			'next_text' => __( 'Next &rarr;', 'generatepress' ),
 		) );
 
 		if ( $links ) :
@@ -74,21 +72,21 @@ function generate_content_nav( $nav_id ) {
 
 	?>
 	<nav id="<?php echo esc_attr( $nav_id ); ?>" class="<?php echo $nav_class; ?>">
-		<h6 class="screen-reader-text"><?php _e( 'Post navigation', 'generate' ); ?></h6>
+		<h6 class="screen-reader-text"><?php _e( 'Post navigation', 'generatepress' ); ?></h6>
 
 	<?php if ( is_single() ) : // navigation links for single posts ?>
 
-		<?php previous_post_link( '<div class="nav-previous"><span class="prev" title="' . __('Previous','generate') . '">%link</span></div>', '%title', $category_specific ); ?>
-		<?php next_post_link( '<div class="nav-next"><span class="next" title="' . __('Next','generate') . '">%link</span></div>', '%title', $category_specific ); ?>
+		<?php previous_post_link( '<div class="nav-previous"><span class="prev" title="' . __('Previous','generatepress') . '">%link</span></div>', '%title', $category_specific ); ?>
+		<?php next_post_link( '<div class="nav-next"><span class="next" title="' . __('Next','generatepress') . '">%link</span></div>', '%title', $category_specific ); ?>
 
 	<?php elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : // navigation links for home, archive, and search pages ?>
 
 		<?php if ( get_next_posts_link() ) : ?>
-		<div class="nav-previous"><span class="prev" title="<?php _e('Previous','generate');?>"><?php next_posts_link( __( 'Older posts', 'generate' ) ); ?></span></div>
+		<div class="nav-previous"><span class="prev" title="<?php _e('Previous','generatepress');?>"><?php next_posts_link( __( 'Older posts', 'generatepress' ) ); ?></span></div>
 		<?php endif; ?>
 
 		<?php if ( get_previous_posts_link() ) : ?>
-		<div class="nav-next"><span class="next" title="<?php _e('Next','generate');?>"><?php previous_posts_link( __( 'Newer posts', 'generate' ) ); ?></span></div>
+		<div class="nav-next"><span class="next" title="<?php _e('Next','generatepress');?>"><?php previous_posts_link( __( 'Newer posts', 'generatepress' ) ); ?></span></div>
 		<?php endif; ?>
 		
 		<?php generate_paging_nav(); ?>
@@ -115,7 +113,7 @@ function generate_comment( $comment, $args, $depth ) {
 
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 		<div class="comment-body">
-			<?php _e( 'Pingback:', 'generate' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'generate' ), '<span class="edit-link">', '</span>' ); ?>
+			<?php _e( 'Pingback:', 'generatepress' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'generatepress' ), '<span class="edit-link">', '</span>' ); ?>
 		</div>
 
 	<?php else : ?>
@@ -132,10 +130,10 @@ function generate_comment( $comment, $args, $depth ) {
 					<div class="entry-meta comment-metadata">
 						<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 							<time datetime="<?php comment_time( 'c' ); ?>">
-								<?php printf( _x( '%1$s at %2$s', '1: date, 2: time', 'generate' ), get_comment_date(), get_comment_time() ); ?>
+								<?php printf( _x( '%1$s at %2$s', '1: date, 2: time', 'generatepress' ), get_comment_date(), get_comment_time() ); ?>
 							</time>
 						</a>
-						<?php edit_comment_link( __( 'Edit', 'generate' ), '<span class="edit-link">| ', '</span>' ); ?>
+						<?php edit_comment_link( __( 'Edit', 'generatepress' ), '<span class="edit-link">| ', '</span>' ); ?>
 						<?php
 						comment_reply_link( array_merge( $args, array(
 							'add_below' => 'div-comment',
@@ -149,7 +147,7 @@ function generate_comment( $comment, $args, $depth ) {
 				</div><!-- .comment-author-info -->
 
 				<?php if ( '0' == $comment->comment_approved ) : ?>
-				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'generate' ); ?></p>
+				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'generatepress' ); ?></p>
 				<?php endif; ?>
 			</footer><!-- .comment-meta -->
 
@@ -203,9 +201,9 @@ function generate_posted_on() {
 	if ( $author ) :
 		printf( ' <span class="byline">%1$s</span>',
 			sprintf( '<span class="author vcard" itemtype="http://schema.org/Person" itemscope="itemscope" itemprop="author">%1$s <a class="url fn n" href="%2$s" title="%3$s" rel="author" itemprop="url"><span class="author-name" itemprop="name">%4$s</span></a></span>',
-				__( 'by','generate'),
+				__( 'by','generatepress'),
 				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-				esc_attr( sprintf( __( 'View all posts by %s', 'generate' ), get_the_author() ) ),
+				esc_attr( sprintf( __( 'View all posts by %s', 'generatepress' ), get_the_author() ) ),
 				esc_html( get_the_author() )
 			)
 		);
@@ -220,7 +218,7 @@ if ( ! function_exists( 'generate_excerpt_more' ) ) :
  */
 	add_filter( 'excerpt_more', 'generate_excerpt_more' );
 	function generate_excerpt_more( $more ) {
-		return ' ... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read more', 'generate') . '</a>';
+		return ' ... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read more', 'generatepress') . '</a>';
 	}
 endif;
 
@@ -231,7 +229,7 @@ if ( ! function_exists( 'generate_content_more' ) ) :
 	add_filter( 'the_content_more_link', 'generate_content_more' );
 	function generate_content_more( $more ) {
 		$more_jump = apply_filters( 'generate_more_jump','#more-' . get_the_ID() );
-		return '<p class="read-more-container"><a class="read-more content-read-more" href="'. get_permalink( get_the_ID() ) . $more_jump . '">' . __('Read more', 'generate') . '</a></p>';
+		return '<p class="read-more-container"><a class="read-more content-read-more" href="'. get_permalink( get_the_ID() ) . $more_jump . '">' . __('Read more', 'generatepress') . '</a></p>';
 	}
 endif;
 
@@ -338,7 +336,7 @@ function generate_navigation_search()
 			
 	?>
 	<form method="get" class="search-form navigation-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-		<input type="search" class="search-field" value="<?php echo esc_attr( get_search_query() ); ?>" name="s" title="<?php _ex( 'Search', 'label', 'generate' ); ?>">
+		<input type="search" class="search-field" value="<?php echo esc_attr( get_search_query() ); ?>" name="s" title="<?php _ex( 'Search', 'label', 'generatepress' ); ?>">
 	</form>
 	<?php
 }
@@ -364,7 +362,7 @@ function generate_menu_search_icon( $nav, $args )
 	
 	// If our primary menu is set, add the search icon
     if( $args->theme_location == 'primary' )
-        return $nav . '<li class="search-item" title="' . _x( 'Search', 'submit button', 'generate' ) . '"><a href="#"><i class="fa fa-fw fa-search"></i></a></li>';
+        return $nav . '<li class="search-item" title="' . _x( 'Search', 'submit button', 'generatepress' ) . '"><a href="#"><i class="fa fa-fw fa-search"></i></a></li>';
 	
 	// Our primary menu isn't set, return the regular nav
 	// In this case, the search icon is added to the generate_menu_fallback() function in navigation.php
@@ -393,7 +391,7 @@ function generate_mobile_menu_search_icon()
 	?>
 	<div class="mobile-bar-items">
 		<?php do_action( 'generate_inside_mobile_menu_bar' ); ?>
-		<span class="search-item" title="<?php _ex( 'Search', 'submit button', 'generate' ); ?>">
+		<span class="search-item" title="<?php _ex( 'Search', 'submit button', 'generatepress' ); ?>">
 			<a href="#"><i class="fa fa-fw fa-search"></i></a>
 		</span>
 	</div><!-- .mobile-bar-items -->
@@ -415,18 +413,18 @@ function generate_entry_meta()
 	
 	if ( 'post' == get_post_type() ) {
 
-		$categories_list = get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'generate' ) );
+		$categories_list = get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'generatepress' ) );
 		if ( $categories_list && $categories ) {
 			printf( '<span class="cat-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
-				_x( 'Categories', 'Used before category names.', 'generate' ),
+				_x( 'Categories', 'Used before category names.', 'generatepress' ),
 				$categories_list
 			);
 		}
 
-		$tags_list = get_the_tag_list( '', _x( ', ', 'Used between list items, there is a space after the comma.', 'generate' ) );
+		$tags_list = get_the_tag_list( '', _x( ', ', 'Used between list items, there is a space after the comma.', 'generatepress' ) );
 		if ( $tags_list && $tags ) {
 			printf( '<span class="tags-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
-				_x( 'Tags', 'Used before tag names.', 'generate' ),
+				_x( 'Tags', 'Used before tag names.', 'generatepress' ),
 				$tags_list
 			);
 		}
@@ -434,7 +432,7 @@ function generate_entry_meta()
 
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) && $comments ) {
 		echo '<span class="comments-link">';
-		comments_popup_link( __( 'Leave a comment', 'generate' ), __( '1 Comment', 'generate' ), __( '% Comments', 'generate' ) );
+		comments_popup_link( __( 'Leave a comment', 'generatepress' ), __( '1 Comment', 'generatepress' ), __( '% Comments', 'generatepress' ) );
 		echo '</span>';
 	}
 }
@@ -512,11 +510,49 @@ if ( ! function_exists( 'generate_header_items' ) ) :
 /**
  * Build the header
  *
- * Wrapping this into a function allows us to customize the order in a child theme
+ * Wrapping this into a function allows us to customize the order
  *
  * @since 1.2.9.7
  */
 function generate_header_items() 
+{
+	// Header widget
+	generate_construct_header_widget();
+	
+	// Site title and tagline
+	generate_construct_site_title();
+	
+	// Site logo
+	generate_construct_logo();
+}
+endif;
+
+if ( ! function_exists( 'generate_construct_logo' ) ) :
+function generate_construct_logo()
+{
+	$generate_settings = wp_parse_args( 
+		get_option( 'generate_settings', array() ), 
+		generate_get_defaults() 
+	);
+	
+	if ( empty( $generate_settings['logo'] ) )
+		return;
+	
+	printf( 
+		'<div class="site-logo">
+			<a href="%1$s" title="%2$s" rel="home">
+				<img class="header-image" src="%3$s" alt="%2$s" title="%2$s" />
+			</a>
+		</div>',
+		apply_filters( 'generate_logo_href' , esc_url( home_url( '/' ) ) ),
+		esc_attr( get_bloginfo( 'name', 'display' ) ),
+		apply_filters( 'generate_logo', esc_url( $generate_settings['logo'] ) )
+	);
+}
+endif;
+
+if ( ! function_exists( 'generate_construct_site_title' ) ) :
+function generate_construct_site_title()
 {
 	$generate_settings = wp_parse_args( 
 		get_option( 'generate_settings', array() ), 
@@ -533,13 +569,6 @@ function generate_header_items()
 	// If the disable tagline checkbox is checked, or the tagline field is empty, return true
 	$disable_tagline = ( '1' == $generate_settings[ 'hide_tagline' ] || '' == $tagline ) ? true : false;
 	
-	// Header widget
-	if ( is_active_sidebar('header') ) : ?>
-		<div class="header-widget">
-			<?php dynamic_sidebar( 'header' ); ?>
-		</div>
-	<?php endif;
-		
 	// Site title and tagline
 	if ( false == $disable_title || false == $disable_tagline ) : ?>
 		<div class="site-branding">
@@ -552,11 +581,15 @@ function generate_header_items()
 			<?php endif; ?>
 		</div>
 	<?php endif;
-	
-	// Site logo
-	if ( ! empty( $generate_settings['logo'] ) ) : ?>
-		<div class="site-logo">
-			<a href="<?php echo apply_filters( 'generate_logo_href' , esc_url( home_url( '/' ) ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img class="header-image" src="<?php echo esc_url( $generate_settings['logo'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" /></a>
+}
+endif;
+
+if ( ! function_exists( 'generate_construct_header_widget' ) ) :
+function generate_construct_header_widget()
+{
+	if ( is_active_sidebar('header') ) : ?>
+		<div class="header-widget">
+			<?php dynamic_sidebar( 'header' ); ?>
 		</div>
 	<?php endif;
 }
@@ -583,7 +616,7 @@ function generate_back_to_top()
 	$scroll_speed = apply_filters( 'generate_back_to_top_scroll_speed', 400 );
 	$start_scroll = apply_filters( 'generate_back_to_top_start_scroll', 300 );
 	?>
-	<a title="<?php _e( 'Scroll back to top','generate' ); ?>" rel="nofollow" href="#" class="generate-back-to-top" style="display:none;" data-scroll-speed="<?php echo $scroll_speed; ?>" data-start-scroll="<?php echo $start_scroll; ?>"><i class="fa <?php echo $icon;?>"></i></a>
+	<a title="<?php _e( 'Scroll back to top','generatepress' ); ?>" rel="nofollow" href="#" class="generate-back-to-top" style="display:none;" data-scroll-speed="<?php echo $scroll_speed; ?>" data-start-scroll="<?php echo $start_scroll; ?>"><i class="fa <?php echo $icon;?>"></i></a>
 	<?php
 }
 endif;
@@ -622,31 +655,31 @@ function generate_archive_title()
 					rewind_posts();
 
 				elseif ( is_day() ) :
-					printf( __( 'Day: %s', 'generate' ), '<span>' . get_the_date() . '</span>' );
+					printf( __( 'Day: %s', 'generatepress' ), '<span>' . get_the_date() . '</span>' );
 
 				elseif ( is_month() ) :
-					printf( __( 'Month: %s', 'generate' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
+					printf( __( 'Month: %s', 'generatepress' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
 
 				elseif ( is_year() ) :
-					printf( __( 'Year: %s', 'generate' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
+					printf( __( 'Year: %s', 'generatepress' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
 
 				elseif ( is_tax( 'post_format', 'post-format-aside' ) ) :
-					_e( 'Asides', 'generate' );
+					_e( 'Asides', 'generatepress' );
 
 				elseif ( is_tax( 'post_format', 'post-format-image' ) ) :
-					_e( 'Images', 'generate');
+					_e( 'Images', 'generatepress');
 
 				elseif ( is_tax( 'post_format', 'post-format-video' ) ) :
-					_e( 'Videos', 'generate' );
+					_e( 'Videos', 'generatepress' );
 
 				elseif ( is_tax( 'post_format', 'post-format-quote' ) ) :
-					_e( 'Quotes', 'generate' );
+					_e( 'Quotes', 'generatepress' );
 
 				elseif ( is_tax( 'post_format', 'post-format-link' ) ) :
-					_e( 'Links', 'generate' );
+					_e( 'Links', 'generatepress' );
 
 				else :
-					_e( 'Archives', 'generate' );
+					_e( 'Archives', 'generatepress' );
 
 				endif;
 			?>

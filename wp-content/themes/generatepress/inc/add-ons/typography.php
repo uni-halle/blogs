@@ -324,7 +324,7 @@ if ( ! function_exists( 'generate_fonts_customize_register' ) ) :
 			'font_section',
 			// Arguments array
 			array(
-				'title' => __( 'Typography', 'generate' ),
+				'title' => __( 'Typography', 'generatepress' ),
 				'capability' => 'edit_theme_options',
 				'description' => '',
 				'priority' => 30
@@ -346,7 +346,7 @@ if ( ! function_exists( 'generate_fonts_customize_register' ) ) :
 				$wp_customize, 
 				'google_font_body_control', 
 				array(
-					'label' => __('Body','generate'),
+					'label' => __('Body','generatepress'),
 					'section' => 'font_section',
 					'settings' => 'generate_settings[font_body]',
 					'priority' => 1
@@ -368,7 +368,7 @@ if ( ! function_exists( 'generate_fonts_customize_register' ) ) :
 				$wp_customize, 
 				'body_font_weight_control', 
 				array(
-					'label' => __('Font weight','generate'),
+					'label' => __('Font weight','generatepress'),
 					'section' => 'font_section',
 					'settings' => 'generate_settings[body_font_weight]',
 					'priority' => 20,
@@ -392,7 +392,7 @@ if ( ! function_exists( 'generate_fonts_customize_register' ) ) :
 				$wp_customize, 
 				'body_font_transform_control', 
 				array(
-					'label' => __('Text transform','generate'),
+					'label' => __('Text transform','generatepress'),
 					'section' => 'font_section',
 					'settings' => 'generate_settings[body_font_transform]',
 					'priority' => 30,
@@ -415,7 +415,7 @@ if ( ! function_exists( 'generate_fonts_customize_register' ) ) :
 				$wp_customize, 
 				'generate_settings[body_font_size]', 
 				array(
-					'label' => __('Font size','generate'),
+					'label' => __('Font size','generatepress'),
 					'section' => 'font_section',
 					'settings' => 'generate_settings[body_font_size]',
 					'priority' => 40
@@ -432,14 +432,14 @@ if ( ! function_exists( 'generate_fonts_customize_register' ) ) :
 					array(
 						'section'     => 'font_section',
 						'type'        => 'addon',
-						'label'			=> __( 'More Settings','generate' ),
+						'label'			=> __( 'More Settings','generatepress' ),
 						'url' => 'http://www.generatepress.com/downloads/generate-typography/',
 						'description' => sprintf(
-							__( 'Looking to add more typography settings?<br /> %s.', 'generate' ),
+							__( 'Looking to add more typography settings?<br /> %s.', 'generatepress' ),
 							sprintf(
 								'<a href="%1$s" target="_blank">%2$s</a>',
 								esc_url( 'http://www.generatepress.com/downloads/generate-typography/' ),
-								__( 'Check out Generate Typography', 'generate' )
+								__( 'Check out Generate Typography', 'generatepress' )
 							)
 						),
 						'priority'    => 50

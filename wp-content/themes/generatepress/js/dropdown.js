@@ -8,7 +8,7 @@
 			close_delay: 300
 		}, options );
 		
-		var $dropdowns, mobile, slideout;
+		var $dropdowns, mobile, slideout, click = true;
 		
 		$dropdowns = $( this );
 		mobile = $( '.menu-toggle' );
@@ -67,59 +67,64 @@
 		$dropdowns.on( 'mouseenter', over ).on( 'mouseleave', out );
 		$dropdowns.on( 'focusin', over ).on( 'focusout', out );
 		
+		if (  document.addEventListener  ) {
+			if ('ontouchstart' in document.documentElement) {
+				if ( mobile.is( ':visible' ) )
+					return;
+				
+				$dropdowns.each(function() {
+					var $this = $(this);
+
+					this.addEventListener('touchstart', function(e) {
+						if (e.touches.length === 1) {
+							// Prevent touch events within dropdown bubbling down to document
+							e.stopPropagation();
+
+							// Toggle hover
+							if (!$this.hasClass('sfHover')) {
+								// Prevent link on first touch
+								if (e.target === this || e.target.parentNode === this) {
+									e.preventDefault();
+								}
+								
+								click = false;
+
+								// Hide other open dropdowns
+								$dropdowns.removeClass('sfHover');
+								$this.addClass('sfHover');
+								$this.children( 'ul' ).css({
+									'display': 'block',
+									'opacity': 1
+								});
+
+								// Hide dropdown on touch outside
+								document.addEventListener('touchstart', closeDropdown = function(e) {
+									e.stopPropagation();
+
+									$this.removeClass('sfHover');
+									$this.children( 'ul' ).css({
+										'display': 'none',
+										'opacity': 0
+									});
+									document.removeEventListener('touchstart', closeDropdown);
+								});
+							}
+						}
+					}, false);
+				});
+			}
+		}
+
 		$( '.dropdown-menu-toggle' ).on( 'click', function() {
 			if ( mobile.is( ':visible' ) || 'visible' == slideout.css( 'visibility' ) ) {
 				return;
 			}
 			var url = $( this ).parent().attr( 'href' );
-			if ( typeof url != 'undefined' ) {
+			if ( typeof url != 'undefined' && click ) {
 				window.location.href = $( this ).parent().attr( 'href' );
 			}
 		});
-		
-		if ('ontouchstart' in document.documentElement) {
-			if ( mobile.is( ':visible' ) )
-				return;
-			
-			$dropdowns.each(function() {
-				var $this = $(this);
 
-				this.addEventListener('touchstart', function(e) {
-					if (e.touches.length === 1) {
-						// Prevent touch events within dropdown bubbling down to document
-						e.stopPropagation();
-
-						// Toggle hover
-						if (!$this.hasClass('sfHover')) {
-							// Prevent link on first touch
-							if (e.target === this || e.target.parentNode === this) {
-								e.preventDefault();
-							}
-
-							// Hide other open dropdowns
-							$dropdowns.removeClass('sfHover');
-							$this.addClass('sfHover');
-							$this.children( 'ul' ).css({
-								'display': 'block',
-								'opacity': 1
-							});
-
-							// Hide dropdown on touch outside
-							document.addEventListener('touchstart', closeDropdown = function(e) {
-								e.stopPropagation();
-
-								$this.removeClass('sfHover');
-								$this.children( 'ul' ).css({
-									'display': 'none',
-									'opacity': 0
-								});
-								document.removeEventListener('touchstart', closeDropdown);
-							});
-						}
-					}
-				}, false);
-			});
-		}
 		
 		$.fn.GenerateDropdownMenu.destroy = function() {
 			$dropdowns.children( 'ul' ).css( 'display','' );
