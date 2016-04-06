@@ -3,7 +3,7 @@
 Plugin Name: WP Favorite Posts
 Plugin URI: https://github.com/hberberoglu/wp-favorite-posts
 Description: Allows users to add favorite posts. This plugin use cookies for saving data so unregistered users can favorite a post. Put <code>&lt;?php wpfp_link(); ?&gt;</code> where ever you want on a single post. Then create a page which includes that text : <code>[wp-favorite-posts]</code> That's it!
-Version: 1.6.3
+Version: 1.6.6
 Author: Huseyin Berberoglu
 Author URI: https://github.com/hberberoglu
 
@@ -169,7 +169,7 @@ function wpfp_link( $return = 0, $action = "", $show_span = 1, $args = array() )
 }
 
 function wpfp_link_html($post_id, $opt, $action) {
-    $link = "<a class='wpfp-link' href='?wpfpaction=".$action."&amp;postid=". $post_id . "' title='". $opt ."' rel='nofollow'>". $opt ."</a>";
+    $link = "<a class='wpfp-link' href='?wpfpaction=".$action."&amp;postid=". esc_attr($post_id) . "' title='". $opt ."' rel='nofollow'>". $opt ."</a>";
     $link = apply_filters( 'wpfp_link_html', $link );
     return $link;
 }
@@ -319,7 +319,7 @@ add_shortcode('wp-favorite-posts', 'wpfp_shortcode_func');
 
 function wpfp_add_js_script() {
 	if (!wpfp_get_option('dont_load_js_file'))
-		wp_enqueue_script( "wp-favroite-posts", WPFP_PATH . "/wpfp.js", array( 'jquery' ) );
+		wp_enqueue_script( "wp-favorite-posts", WPFP_PATH . "/wpfp.js", array( 'jquery' ) );
 }
 add_action('wp_print_scripts', 'wpfp_add_js_script');
 
