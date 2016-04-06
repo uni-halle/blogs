@@ -50,7 +50,7 @@ class ShareaholicCurlMultiShareCount extends ShareaholicShareCount {
       }
 
       if(isset($config[$service]['prepare'])) {
-        $this->$config[$service]['prepare']($this->url, $config);
+        $this->{$config[$service]['prepare']}($this->url, $config);
       }
 
       // Create the curl handle

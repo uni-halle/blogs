@@ -44,7 +44,7 @@ class ShareaholicSeqShareCount extends ShareaholicShareCount {
       }
 
       if(isset($config[$service]['prepare'])) {
-        $this->$config[$service]['prepare']($this->url, $config);
+        $this->{$config[$service]['prepare']}($this->url, $config);
       }
 
       $timeout = isset($config[$service]['timeout']) ? $config[$service]['timeout'] : 1;
