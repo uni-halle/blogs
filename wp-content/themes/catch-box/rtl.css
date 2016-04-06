@@ -517,6 +517,11 @@ section.recent-posts .other-recent-posts .comments-link > span {
 	background-position: right center;
 }
 
+.rtl table th,
+.rtl .mce-item-table th,
+.rtl table caption {
+	text-align: right;
+}
 
 /* =Responsive Structure
 ----------------------------------------------- */

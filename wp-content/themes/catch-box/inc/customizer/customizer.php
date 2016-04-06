@@ -456,8 +456,8 @@ function catchbox_customize_register( $wp_customize ) {
 			'section' 		=> 'predefined_social_icons',
 			'default' 		=> ''
 		),
-		'social_googleplus' => array(
-			'id' 			=> 'social_googleplus',
+		'social_google' => array(
+			'id' 			=> 'social_google',
 			'title' 		=> __( 'Google+', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
@@ -526,8 +526,8 @@ function catchbox_customize_register( $wp_customize ) {
 			'section' 		=> 'predefined_social_icons',
 			'default' 		=> ''
 		),
-		'social_vimeo' => array(
-			'id' 			=> 'social_vimeo',
+		'social_viemo' => array(
+			'id' 			=> 'social_viemo',
 			'title' 		=> __( 'Vimeo', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
@@ -571,7 +571,7 @@ function catchbox_customize_register( $wp_customize ) {
 			'title' 		=> __( 'Flickr', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
-			'sanitize' 		=> 'sanitize_email',
+			'sanitize' 		=> 'esc_url_raw',
 			'panel' 		=> 'social_links',
 			'section' 		=> 'predefined_social_icons',
 			'default' 		=> ''
@@ -588,7 +588,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_instagram' => array(
 			'id' 			=> 'social_instagram',
-			'title' 		=> __( 'Flickr', 'catch-box' ),
+			'title' 		=> __( 'Instagram', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',

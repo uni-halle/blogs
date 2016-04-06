@@ -1,10 +1,29 @@
 == Change log ==
 
+Version 4.3.6
+* Updated: French translation fr_FR.po and fr_FR.mo
+* Updated: Sidr menu script to version 2.1.1.1
+* Updated: Meta viewport for better responsive support
+* Updated: Facebook Social icon
+
+Version 4.3.5
+* Bug Fixed: Undefined index - featured_slider in catchbox_sliders (Reported by kigazw)
+
+Version 4.3.4
+* Bug Fixed: Editor Style
+* Bug Fixed: Table Style
+* Bug Fixed: Social Icons
+ ** Fixed: Not saving for Google+, Flickr and Vimeo
+ ** Fixed: Vimeo CSS class error on output
+ ** Fixed: Flickr label used for Instagram Icon
+* Bug Fixed: Empty slider box showing in customizer
+* Updated: Google plus and youtube Social Icons
+
 Version 4.3.3
 * Bug Fixed: Accessibility
 ** Fixed: Keyboard navigation for Pagination
 ** Fixed: Contrast for calendar widget and comments link
-* Fixed German, Russian, French, Portuguese(Brazil) and Danish translation
+* Updated: German, Russian, French, Portuguese(Brazil) and Danish translation
 
 Version 4.3.2
 * Added accessibility-ready tag
@@ -12,7 +31,7 @@ Version 4.3.2
 ** Fixed: Headings
 ** Fixed: Contrasts
 ** Fixed: Keyboard navigation
-** Fixed: Disallowed by removing `targer="_blank"` 
+** Fixed: Disallowed by removing `target="_blank"`
 * Added: Disable scrollup option
 
 Version 4.3.1
@@ -41,10 +60,10 @@ Version 4.2
 ** Fixed: Images
 ** Checked: Media
 ** Checked: Not Allowed
-** Replaced catchbox_mobile_header_nav_anchor() with catchbox_mobile_header_menu() 
+** Replaced catchbox_mobile_header_nav_anchor() with catchbox_mobile_header_menu()
 ** Replaced catchbox_mobile_footer_nav_anchor() with catchbox_mobile_footer_menu()
-** Moved header mobile menus from catchbox_mobile_menus() to catchbox_mobile_header_menu() 
-** Moved footer mobile menu from catchbox_mobile_menus() to catchbox_mobile_footer_menu() 
+** Moved header mobile menus from catchbox_mobile_menus() to catchbox_mobile_header_menu()
+** Moved footer mobile menu from catchbox_mobile_menus() to catchbox_mobile_footer_menu()
 * Bug Fixed: Slider next and previous anchor issue (Reported by Keith)
 * Bug Fixed: Text in Customizer Label "Slider Effect Options" extra tab
 * Bug Fixed: Image size issue in mobile devices due to padding and border ( Reported by mailhunter )

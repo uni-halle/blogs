@@ -3,21 +3,105 @@ Theme Name: Catch Box
 Description: Used to style the TinyMCE editor.
 */
 
-* {
-	color: inherit;
-	font: 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+/* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
+-------------------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	border: 0;
+	font-family: inherit;
+	font-size: 100%;
 	font-style: inherit;
 	font-weight: inherit;
-	line-height: 1.625;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+:focus {/* remember to define focus styles! */
+	outline: 0;
 }
 body {
-	color: #333;
-	font: 15px "Helvetica Neue", Helvetica, Arial, "Nimbus Sans L", sans-serif;
-	font-weight: 300;
-	line-height: 1.625;
+	background: #fff;
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+table {/* tables still need 'cellspacing="0"' in the markup */
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	font-weight: normal;
+	text-align: left;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+a img {
+	border: 0;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
 }
 
-/* Headings */
+/* General */
+body, input, textarea {
+	color: #373737;
+	font-family:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	font-weight: 300;
+	line-height: 1.62em;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+
+/* =Global
+----------------------------------------------- */
+
+body {
+	margin: 30px;
+	max-width: 644px;
+	vertical-align: baseline;
+}
+body, input, textarea {
+	color: #373737;
+	font-family:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	font-weight: 300;
+	line-height: 1.62em;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+.displayblock {
+	display: block;
+}
+.displaynone {
+	display: none;
+}
+
+
+/* =Headings
+-------------------------------------------------------------- */
+
 h1,h2,h3,h4,h5,h6 {
 	clear: both;
 }
@@ -26,6 +110,11 @@ h1 {
 }
 h2 {
 	 font-size: 24px;
+}
+h1, h2 {
+	color: #000;
+	font-weight: bold;
+	margin: 0 0 .8125em;
 }
 h3 {
     font-size: 22px;
@@ -42,13 +131,17 @@ h5 {
 h6 {
     font-size: 16px;
 }
+
+
+/* =Text elements
+-------------------------------------------------------------- */
+
 hr {
 	background-color: #ccc;
 	border: 0;
 	height: 1px;
 	margin-bottom: 2em;
 }
-
 /* Text elements */
 p, ul, ol, dl {
 	font-weight: 300;
@@ -95,15 +188,15 @@ cite, em, i {
 cite {
 	border: none;
 }
-big {
-	font-size: 131.25%;
-}
 .mceContentBody blockquote,
 .mceContentBody blockquote p {
-	font-family: Georgia, "Bitstream Charter", serif !important;
-	font-style: italic !important;
+	font-family: Georgia, "Bitstream Charter", serif;
+	font-style: italic;
 	font-weight: normal;
-	margin: 0 3em;
+	margin: 0 30px;
+}
+.mceContentBody blockquote p {
+	margin-bottom: 30px;
 }
 .mceContentBody blockquote em,
 .mceContentBody blockquote i,
@@ -121,8 +214,9 @@ pre {
 	background: #f4f4f4;
 	font: 13px "Courier 10 Pitch", Courier, monospace;
 	line-height: 1.5;
-	margin-bottom: 1.625em;
-	padding: 0.75em 1.625em;
+	margin-bottom: 2em;
+	overflow: auto;
+	padding: 0.75em 2em;
 }
 code, kbd, code var {
 	font: 13px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
@@ -133,10 +227,7 @@ abbr, acronym, dfn {
 }
 address {
 	display: block;
-	margin: 0 0 1.625em;
-}
-del {
-	color: #333;
+	margin: 0 0 2em;
 }
 ins {
 	background: #fff9c0;
@@ -158,32 +249,49 @@ sup {
 sub {
 	top: .5ex;
 }
+
+/* Forms */
 input[type=text],
+input[type=email],
+input[type=url],
+input[type=password],
 textarea {
 	background: #fafafa;
 	-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
 	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
 	box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
-	border: 1px solid #ddd;
+	border: 1px solid #ccc;
 	color: #888;
+	max-width: 97%;
 }
 input[type=text]:focus,
+input[type=email]:focus,
+input[type=url]:focus,
 textarea:focus {
-	color: #333;
+	color: #373737;
 }
 textarea {
 	padding-left: 3px;
 	width: 98%;
 }
-input[type=text] {
+input[type=text],
+input[type=email],
+input[type=url] {
 	padding: 3px;
 }
+select {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing:    border-box;
+	box-sizing:         border-box;
+	max-width: 100%;
+}
 
-/* Links */
-a,
-a em,
-a strong {
-	color: #1b8be0;
+
+/* =Links
+-------------------------------------------------------------- */
+
+a {
+	color: #337ab7;
 	text-decoration: none;
 }
 a:focus,
@@ -192,16 +300,19 @@ a:hover {
 	text-decoration: underline;
 }
 
-/* Alignment */
+
+/* =Alignment
+-------------------------------------------------------------- */
+
 .alignleft {
 	display: inline;
 	float: left;
-	margin-right: 1.625em;
+	margin-right: 2em;
 }
 .alignright {
 	display: inline;
 	float: right;
-	margin-left: 1.625em;
+	margin-left: 2em;
 }
 .aligncenter {
 	clear: both;
@@ -210,38 +321,61 @@ a:hover {
 	margin-right: auto;
 }
 
-/* Tables */
-table {
-	border: none !important;
-	border-bottom: 1px solid #ddd !important;
-	border-collapse: collapse;
+
+/* =Tables
+-------------------------------------------------------------- */
+
+table,
+th,
+td,
+.mce-item-table,
+.mce-item-table th,
+.mce-item-table td {
+	border: 1px solid #ccc;
+}
+table,
+.mce-item-table {
+	border-collapse: separate;
 	border-spacing: 0;
-	text-align: left;
-	margin: 0 0 1.625em;
+	border-width: 1px 0 0 1px;
+	margin: 0 0 28px;
 	width: 100%;
 }
-tr th {
-	border: none !important;
-	color: #666;
-	font-size: 10px;
-	font-weight: 500;
-	letter-spacing: 0.1em;
-	line-height: 2.6em;
-	text-transform: uppercase;
+table th,
+.mce-item-table th,
+table caption {
+	border-width: 0 1px 1px 0;
+	font-weight: 700;
+	padding: 7px;
+	text-align: left;
+	vertical-align: baseline;
 }
-td {
-	border: none !important;
-	border-top: 1px solid #ddd !important;
-	padding: 6px 10px 6px 0;
+table td,
+.mce-item-table td {
+	border-width: 0 1px 1px 0;
+	padding: 7px;
+	vertical-align: baseline;
 }
 
-/* Images */
-img[class*="wp-image-"] {
+
+/* =Images
+-------------------------------------------------------------- */
+
+img,
+.editor-attachment {
+	max-width: 100%; /* Fluid images for posts, comments, and widgets */
 	height: auto;
-	max-width: 97.5%;
 }
-img.size-full {
-	width: auto; /* Prevent stretching of full-size images in IE8 */
+img[class*="align"],
+img[class*="wp-image-"],
+img[class*="attachment-"] {
+	height: auto; /* Make sure images with WordPress-added height and width attributes are scaled correctly */
+}
+img.size-full,
+img.size-large,
+img.wp-post-image {
+	max-width: 97.4%;
+	height: auto; /* Make sure images with WordPress-added height and width attributes are scaled correctly */
 }
 img.wp-smiley {
 	border: none;
@@ -249,41 +383,36 @@ img.wp-smiley {
 	margin-top: 0;
 	padding: 0;
 }
+img.alignleft,
+img.alignright,
+img.aligncenter {
+	margin-bottom: 2em;
+}
 p img,
 .wp-caption {
 	margin-top: 0.4em;
 }
-img {
-	border: 1px solid #ddd;
-	padding: 6px;
-}
-img.alignleft,
-img.alignright,
-img.aligncenter {
-	margin-bottom: 1.625em;
-}
 .wp-caption {
 	background: #eee;
-	border: none;
-	margin-bottom: 1.625em;
+	margin-bottom: 2em;
 	max-width: 96%;
 	padding: 9px;
 }
 .wp-caption img {
 	display: block;
-	margin: 5px auto 0 !important;
+	margin: 0 auto;
 	max-width: 98%;
-	border-color: #eee;
 }
 .wp-caption .wp-caption-text,
-.wp-caption-dd {
+.gallery-caption {
 	color: #666;
-	font-family: Georgia, serif !important;
+	font-family: Georgia, serif;
 	font-size: 12px;
-	margin: 0 0 0.6em 0 !important;
-	padding: 0 0 5px 40px;
+}
+.wp-caption .wp-caption-text {
+	margin-bottom: 0.2em;
+	padding: 10px 0 0 40px;
 	position: relative;
-	text-align: left;
 }
 .wp-caption .wp-caption-text:before {
 	color: #666;
@@ -296,15 +425,82 @@ img.aligncenter {
 	left: 10px;
 	top: 7px;
 }
+.gallery {
+	margin: 0 auto 2em;
+}
+.gallery a img {
+	border: none;
+}
+.gallery-item {
+	display: inline-block;
+	margin: 0;
+}
+.gallery-columns-5 .gallery-item {
+    padding: 0 1%;
+    width: 18%;
+}
+.gallery-columns-4 .gallery-item {
+	width: 23%;
+	padding: 0 1%;
+}
+.gallery-columns-5 .gallery-item img,
+.gallery-columns-4 .gallery-item img,
+.gallery-columns-3 .gallery-item img {
+    padding: 6% !important;
+    max-width: 86%;
+}
+.gallery-columns-3 .gallery-item {
+    padding: 0 1%;
+    width: 31.33%;
+}
+.gallery-columns-1 .gallery-item img {
+	max-width: 97%
+}
+.gallery dd.gallery-caption {
+	margin-bottom: 1em;
+}
+/* Image borders */
+img[class*="align"],
+img[class*="wp-image-"],
+#content .gallery .gallery-icon img,
+img.wp-post-image,
+img.attachment-thumbnail{/* Add fancy borders to all WordPress-added images but not things like badges and icons and the like */
+	border: 1px solid #ccc;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	max-width: 100%;
+	padding: 6px;
+}
+.wp-caption img {
+	border-color: #eee;
+	padding: 0;
+}
+a:focus img[class*="align"],
+a:hover img[class*="align"],
+a:active img[class*="align"],
 a:focus img[class*="wp-image-"],
 a:hover img[class*="wp-image-"],
-a:active img[class*="wp-image-"] {
+a:active img[class*="wp-image-"],
+#content .gallery .gallery-icon a:focus img,
+#content .gallery .gallery-icon a:hover img,
+#content .gallery .gallery-icon a:active img,
+a:hover img.wp-post-image,
+a:focus img.wp-post-image,
+.gallery-thumb a:hover img.attachment-thumbnail,
+.gallery-thumb a:focus img.attachment-thumbnail {/* Add some useful style to those fancy borders for linked images ... */
 	background: #eee;
 	border-color: #bbb;
 }
 .wp-caption a:focus img,
 .wp-caption a:active img,
-.wp-caption a:hover img {
+.wp-caption a:hover img {/* ... including captioned images! */
 	background: #fff;
-	border-color: #ddd;
+	border-color: #ccc;
+}
+/* Make sure embeds and iframes fit their containers */
+embed,
+iframe,
+object {
+	max-width: 100%;
 }

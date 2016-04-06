@@ -26,18 +26,20 @@ if ( ! function_exists( 'catchbox_page_menu_active' ) ) :
  * Replacing classes in default wp_page_menu
  *
  * REPLACE "current_page_item" WITH CLASS "current-menu-item"
+ * REPLACE "current_page_ancestor" WITH CLASS "current-menu-ancestor"
  */
 function catchbox_page_menu_active( $text ) {
     $replace = array(
         // List of classes to replace with "active"
-        'current_page_item' => 'current-menu-item'
+        'current_page_item' => 'current-menu-item',
+        'current_page_ancestor' => 'current-menu-ancestor',
     );
     $text = str_replace(array_keys($replace), $replace, $text);
         return $text;
 }
 endif; //catchbox_page_menu_active
 
-add_filter ( 'wp_page_menu', 'catchbox_page_menu_active' );
+add_filter( 'wp_page_menu', 'catchbox_page_menu_active' );
 
 
 if ( ! function_exists( 'catchbox_wp_page_menu' ) ) :

@@ -38,6 +38,63 @@
  * @since Catch Box 1.0
  */
 
+/**
+ * Set the content width based on the theme's design and stylesheet.
+ */
+if ( ! isset( $content_width ) ) {
+	$content_width = 530; /* pixels */
+}
+
+
+if ( ! function_exists( 'catchbox_content_width' ) ) :
+/**
+ * Change the content width based on the Theme Settings and Page/Post Settings
+ */
+function catchbox_content_width() {
+
+	//Getting Ready to load data from Theme Options Panel
+	global $post, $wp_query, $content_width, $catchbox_options_settings;
+   	$options = $catchbox_options_settings;
+	$themeoption_layout = $options['sidebar_layout'];
+
+	// Front page displays in Reading Settings
+	$page_on_front = get_option('page_on_front') ;
+	$page_for_posts = get_option('page_for_posts');
+
+	// Get Page ID outside Loop
+	$page_id = $wp_query->get_queried_object_id();
+
+	// Blog Page setting in Reading Settings
+	if ( $page_id == $page_for_posts ) {
+		$layout = get_post_meta( $page_for_posts, 'catchbox-sidebarlayout', true );
+	}
+	// Settings for page/post/attachment
+	elseif ( $post) {
+ 		if ( is_attachment() ) {
+			$parent = $post->post_parent;
+			$layout = get_post_meta( $parent, 'catchbox-sidebarlayout', true );
+		} else {
+			$layout = get_post_meta( $post->ID, 'catchbox-sidebarlayout', true );
+		}
+	}
+
+	if ( empty( $layout ) || ( !is_page() && !is_single() ) ) {
+		$layout='default';
+	}
+
+	if ( ( $layout == 'no-sidebar-full-width' || ( $layout=='default' && $themeoption_layout == 'no-sidebar-full-width' ) ) ) {
+		$content_width = 880; /* pixels */
+	}
+	elseif ( ( $layout == 'no-sidebar' || ( $layout=='default' && $themeoption_layout == 'no-sidebar' ) ) ) {
+		$content_width = 660; /* pixels */
+	}
+	elseif ( ( $layout == 'no-sidebar-one-column' || ( $layout=='default' && $themeoption_layout == 'no-sidebar-one-column' ) ) ) {
+		$content_width = 620; /* pixels */
+	}
+
+}
+endif; // catchbox_content_width
+
 
 /**
  * Tell WordPress to run catchbox_setup() when the 'after_setup_theme' hook is run.
@@ -65,15 +122,6 @@ if ( ! function_exists( 'catchbox_setup' ) ) :
  * @since Catch Box 1.0
  */
 function catchbox_setup() {
-
-	/**
-	 * Global content width.
-	 *
-	 * Set the content width based on the theme's design and stylesheet.
-	 * making it large as we have template without sidebar which is large
-	 */
-	if ( ! isset( $content_width ) )
-	$content_width = 818;
 
 	/*
 	 * Make theme available for translation.
@@ -779,50 +827,49 @@ function catchbox_sliders() {
 	}
 
 	$postperpage = $options[ 'slider_qty' ];
+	if ( isset( $options[ 'featured_slider' ] ) ) {
+		//In customizer, all values are returned but with empty, this rectifies the issue in customizer
+		$slider_array = array_filter( $options[ 'featured_slider' ] );
 
-	//In customizer, all values are returned but with empty, this rectifies the issue in customizer
-	if( isset( $options[ 'featured_slider' ] ) && !array_filter( $options[ 'featured_slider' ] ) ) {
-	    return;
+		if( ( !$catchbox_sliders = get_transient( 'catchbox_sliders' ) ) && !empty( $slider_array ) ) {
+			echo '<!-- refreshing cache -->';
+
+			$catchbox_sliders = '
+			<div id="slider">
+				<section id="slider-wrap">';
+				$get_featured_posts = new WP_Query( array(
+					'posts_per_page' => $postperpage,
+					'post__in'		 => $options[ 'featured_slider' ],
+					'orderby' 		 => 'post__in',
+					'ignore_sticky_posts' => 1 // ignore sticky posts
+				));
+
+				$i=0; while ( $get_featured_posts->have_posts()) : $get_featured_posts->the_post(); $i++;
+					$title_attribute = esc_attr( apply_filters( 'the_title', get_the_title( $post->ID ) ) );
+
+					if ( $i == 1 ) { $classes = "slides displayblock"; } else { $classes = "slides displaynone"; }
+					$catchbox_sliders .= '
+					<div class="'.$classes.'">
+						<a href="'. esc_url ( get_permalink() ).'" title="'.sprintf( esc_attr__( 'Permalink to %s', 'catch-box' ), the_title_attribute( 'echo=0' ) ).'" rel="bookmark">
+								'.get_the_post_thumbnail( $post->ID, 'featured-slider', array( 'title' => $title_attribute, 'alt' => $title_attribute, 'class'	=> 'pngfix' ) ).'
+						</a>
+						<div class="featured-text">'
+							.the_title( '<span class="slider-title">','</span>', false ).' <span class="sep">:</span>
+							<span class="slider-excerpt">'.get_the_excerpt().'</span>
+						</div><!-- .featured-text -->
+					</div> <!-- .slides -->';
+				endwhile; wp_reset_query();
+			$catchbox_sliders .= '
+				</section> <!-- .slider-wrap -->
+				<nav id="nav-slider">
+					<div class="nav-previous"><img class="pngfix" src="'.get_template_directory_uri().'/images/previous.png" alt="next slide"></div>
+					<div class="nav-next"><img class="pngfix" src="'.get_template_directory_uri().'/images/next.png" alt="next slide"></div>
+				</nav>
+			</div> <!-- #featured-slider -->';
+			set_transient( 'catchbox_sliders', $catchbox_sliders, 86940 );
+		}
+		echo $catchbox_sliders;
 	}
-
-	if( ( !$catchbox_sliders = get_transient( 'catchbox_sliders' ) ) && !empty( $options[ 'featured_slider' ] ) ) {
-		echo '<!-- refreshing cache -->';
-
-		$catchbox_sliders = '
-		<div id="slider">
-			<section id="slider-wrap">';
-			$get_featured_posts = new WP_Query( array(
-				'posts_per_page' => $postperpage,
-				'post__in'		 => $options[ 'featured_slider' ],
-				'orderby' 		 => 'post__in',
-				'ignore_sticky_posts' => 1 // ignore sticky posts
-			));
-
-			$i=0; while ( $get_featured_posts->have_posts()) : $get_featured_posts->the_post(); $i++;
-				$title_attribute = esc_attr( apply_filters( 'the_title', get_the_title( $post->ID ) ) );
-
-				if ( $i == 1 ) { $classes = "slides displayblock"; } else { $classes = "slides displaynone"; }
-				$catchbox_sliders .= '
-				<div class="'.$classes.'">
-					<a href="'. esc_url ( get_permalink() ).'" title="'.sprintf( esc_attr__( 'Permalink to %s', 'catch-box' ), the_title_attribute( 'echo=0' ) ).'" rel="bookmark">
-							'.get_the_post_thumbnail( $post->ID, 'featured-slider', array( 'title' => $title_attribute, 'alt' => $title_attribute, 'class'	=> 'pngfix' ) ).'
-					</a>
-					<div class="featured-text">'
-						.the_title( '<span class="slider-title">','</span>', false ).' <span class="sep">:</span>
-						<span class="slider-excerpt">'.get_the_excerpt().'</span>
-					</div><!-- .featured-text -->
-				</div> <!-- .slides -->';
-			endwhile; wp_reset_query();
-		$catchbox_sliders .= '
-			</section> <!-- .slider-wrap -->
-			<nav id="nav-slider">
-				<div class="nav-previous"><img class="pngfix" src="'.get_template_directory_uri().'/images/previous.png" alt="next slide"></div>
-				<div class="nav-next"><img class="pngfix" src="'.get_template_directory_uri().'/images/next.png" alt="next slide"></div>
-			</nav>
-		</div> <!-- #featured-slider -->';
-		set_transient( 'catchbox_sliders', $catchbox_sliders, 86940 );
-	}
-	echo $catchbox_sliders;
 }
 endif;  // catchbox_sliders
 
@@ -845,7 +892,7 @@ function catchbox_scripts_method() {
 	/**
 	 * Loads up Responsive Menu
 	 */
-	wp_enqueue_script('catchbox-sidr', get_template_directory_uri() . '/js/jquery.sidr.min.js', array( 'jquery' ), '2.1.0', false );
+	wp_enqueue_script( 'catchbox-sidr', get_template_directory_uri() . '/js/jquery.sidr.min.js', array( 'jquery' ), '2.1.1.1', false );
 
 	//Register JQuery circle all and JQuery set up as dependent on Jquery-cycle
 	wp_register_script( 'jquery-cycle', get_template_directory_uri() . '/js/jquery.cycle.all.min.js', array( 'jquery' ), '2.9999.5', true );
@@ -1091,7 +1138,7 @@ function catchbox_socialprofile() {
 
 					//Vimeo
 					if ( !empty( $options['social_viemo'] ) ) {
-						$catchbox_socialprofile .= '<li class="vimeo"><a href="'. esc_url( $options['social_viemo'] ) .'"><span class="screen-reader-text">'. esc_attr__( 'Vimeo', 'catch-box' ) .'</span></a></li>';
+						$catchbox_socialprofile .= '<li class="viemo"><a href="'. esc_url( $options['social_viemo'] ) .'"><span class="screen-reader-text">'. esc_attr__( 'Vimeo', 'catch-box' ) .'</span></a></li>';
 					}
 
 					//Dribbble
