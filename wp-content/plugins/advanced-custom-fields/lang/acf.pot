@@ -1,4 +1,4 @@
-# Copyright (C) 2014 
+# Copyright (C) 2014
 # This file is distributed under the same license as the  package.
 #, fuzzy
 msgid ""
@@ -694,7 +694,7 @@ msgstr ""
 #: core/controllers/field_groups.php:362
 #, php-format
 msgid ""
-"Due to the sizable changes surounding Add-ons, field types and action/"
+"Due to the sizable changes surrounding Add-ons, field types and action/"
 "filters, your website may not operate correctly. It is important that you "
 "read the full %sMigrating from v3 to v4%s guide to view the full list of "
 "changes."
@@ -925,7 +925,7 @@ msgstr ""
 
 #: core/fields/date_picker/date_picker.php:127
 msgid ""
-"This format will determin the value saved to the database and returned via "
+"This format will determine the value saved to the database and returned via "
 "the API"
 msgstr ""
 
@@ -1407,7 +1407,7 @@ msgid "Formatting"
 msgstr ""
 
 #: core/fields/text.php:177 core/fields/textarea.php:165
-msgid "Effects value on front end"
+msgid "Affects value on front end"
 msgstr ""
 
 #: core/fields/text.php:186 core/fields/textarea.php:174
