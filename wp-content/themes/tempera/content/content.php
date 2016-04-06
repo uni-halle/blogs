@@ -7,14 +7,14 @@
  * @since Tempera 1.0
  */
 
-$options= tempera_get_theme_options();
+$options = tempera_get_theme_options();
 foreach ($options as $key => $value) {
      ${"$key"} = $value ;
 } 
 
 ?><?php cryout_before_article_hook(); ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( (( is_sticky() && is_page_template() )?'sticky':'') ); ?>>
 				
 		<header class="entry-header">			
 			<h2 class="entry-title">

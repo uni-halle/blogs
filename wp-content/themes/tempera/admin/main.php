@@ -260,17 +260,7 @@ function tempera_page_fn() {
 
 
 <div class="wrap"><!-- Admin wrap page -->
-
-<div id="lefty"><!-- Left side of page - the options area -->
-<div>
-	<div id="admin_header"><img src="<?php echo get_template_directory_uri() . '/admin/images/tempera-logo.png' ?>" /> </div>
-	<div id="admin_links">
-		<a target="_blank" href="http://www.cryoutcreations.eu/tempera">Tempera Homepage</a>
-		<a target="_blank" href="http://www.cryoutcreations.eu/forum">Support</a>
-		<a target="_blank" href="http://www.cryoutcreations.eu">Cryout Creations</a>
-	</div>
-	<div style="clear: both;"></div>
-</div>
+<h2 id="empty-placeholder-heading-for-wp441-notice-forced-move"></h2>
 <?php
 if ( isset( $_GET['settings-updated'] ) ) {
     echo "<div class='updated fade' style='clear:left;'><p>";
@@ -282,6 +272,17 @@ if ( isset( $_GET['settings-updated'] ) ) {
 The Tempera Settings page cannot function without jQuery. </em></div>
 <?php global $temperas; $tempera_varalert = cryout_maxvarcheck(count($temperas));
 if ($tempera_varalert): ?><div id="varlimitalert"> <?php echo $tempera_varalert; ?> </div><?php endif; ?>
+
+<div id="lefty"><!-- Left side of page - the options area -->
+<div>
+	<div id="admin_header"><img src="<?php echo get_template_directory_uri() . '/admin/images/tempera-logo.png' ?>" /> </div>
+	<div id="admin_links">
+		<a target="_blank" href="http://www.cryoutcreations.eu/tempera">Tempera Homepage</a>
+		<a target="_blank" href="http://www.cryoutcreations.eu/forum">Support</a>
+		<a target="_blank" href="http://www.cryoutcreations.eu">Cryout Creations</a>
+	</div>
+	<div style="clear: both;"></div>
+</div>
 	<div id="main-options">
 		<?php 
 		tempera_theme_settings_placeholder();

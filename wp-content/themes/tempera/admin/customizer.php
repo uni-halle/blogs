@@ -48,7 +48,7 @@ $cryout_customizer = array(
 'advanced_settings' => array(
 	'default' => sprintf('themes.php?page=%1$s-page', _CRYOUT_THEME_NAME),
 	'label' => ucwords(_CRYOUT_THEME_NAME) . ' ' . __(  'Settings', 'cryout' ),
-	'desc' => __('To configure the remaining 200+ theme options, access the dedicated settings page:', 'cryout' ),
+	'desc' => __("To configure the remaining 200+ theme options, access the dedicated settings page.<br><br><em>The settings page is only available when the theme is active. It cannot be previewed in the Customizer.</em>", 'cryout' ),
 	'section' => 'advanced_settings',
 	'priority' => 999,
 ), // advanced_settings
@@ -64,7 +64,7 @@ function cryout_customizer_extras($wp_customize) {
 				if ( !empty( $this->description ) ) { ?>
 					<li class="customize-section-description-container">
 						<div class="description customize-section-description">
-						    <?php echo esc_attr( $this->description ); ?>
+						    <?php echo $this->description; ?>
 						</div>
 					</li>
 				<?php

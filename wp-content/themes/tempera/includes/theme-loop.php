@@ -81,7 +81,7 @@ function tempera_more_link($more_link, $more_link_text) {
 	if (preg_match("/custom=(.*)/",$more_link_text,$m) ) {
 		$new_link_text = $m[1];
 	};
-	$more_link = str_replace($more_link_text, $new_link_text, $more_link);
+	$more_link = str_replace($more_link_text, $new_link_text . '<i class="icon-right-dir"></i>', $more_link);
 	$more_link = str_replace('more-link', 'continue-reading-link', $more_link);
 	return $more_link;
 }

@@ -200,6 +200,9 @@ function cryout_setting_frontpage_fn() {
 		array( __("Enable","tempera"), __("Disable","tempera"))
 	);
 	echo "<div><small>".__("Enable the presentation front-page. This will become your new home page. <br> If you want another page to hold your latest blog posts, choose 'Blog Template (Posts Page)' from Page Templates while creating or editing that page.","tempera")."</small></div>";
+	if ($temperas['tempera_frontpage'] == 'Enable' && get_option('show_on_front') != 'posts') {
+		printf ( '<div class="slmini" style="color:#cb5920;">'.__('WordPress\' <em>Front page displays</em> option is set to use a static page. WordPress guidelines require that the static page option have priority over theme options.<br> Go to %1$s and set the <em>Front page displays</em> option to <em><strong>Your latest posts</strong></em> to enable the Presentation Page.',"tempera").'</div>', '<a href="/wp-admin/options-reading.php" > Settings &raquo; Reading</a>');
+	};
 } // cryout_setting_frontpage_fn()
 
 function cryout_setting_frontposts_fn() {

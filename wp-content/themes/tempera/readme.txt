@@ -4,8 +4,8 @@ Copyright 2013-16 Cryout Creations
 
 Author: Cryout Creations
 Requires at least: 4.0
-Tested up to: 4.4.1
-Stable tag: 1.4.0.1
+Tested up to: 4.4.2
+Stable tag: 1.4.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: http://www.cryoutcreations.eu/donate/
@@ -106,6 +106,17 @@ Spanish - Carlol, HacKan
 
 
 == Changelog ==
+
+= 1.4.1 = 
+
+* Clarified presentation page usage notice when static page is set
+* Fixed screen-reader-text elements placement issue on RTL layout
+* Clarified customizer link info to indicate settings page is only available when theme is active
+* Fixed WordPress 4.4.1+ issue with plugin/theme notifications being moved in the Layout settings section
+* Fixed missing sticky post styling on Blog page template
+* Added missing arrow glyph to continue reading button in more tag
+* Fixed header site title to not use H1 tag when homepage is static
+* Fixed undefined notice related to WP_Widget_Recent_Comments when certain comments plugins are used
 
 = 1.4.0.1 = 
 

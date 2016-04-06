@@ -81,7 +81,7 @@ function tempera_title_and_description() {
 	switch ($tempera_siteheader) {
 		case 'Site Title and Description':
 			echo '<div>';
-			$heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div';
+			$heading_tag = ( ( is_home() || is_front_page() ) && !is_page() ) ? 'h1' : 'div';
 			echo '<'.$heading_tag.' id="site-title">';
 			echo '<span> <a href="'.esc_url( home_url( '/' ) ).'" title="'.esc_attr( get_bloginfo( 'name', 'display' ) ).'" rel="home">'.get_bloginfo( 'name' ).'</a> </span>';
 			echo '</'.$heading_tag.'>';

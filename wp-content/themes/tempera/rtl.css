@@ -28,9 +28,8 @@ ul,ol {
 
 /* Text meant only for screen readers */
 .screen-reader-text {
-	right: 9000px;
+	right: -9000px;
 	left: auto;
-	text-indent:-9000px;
 	overflow:hidden; }
 
 
