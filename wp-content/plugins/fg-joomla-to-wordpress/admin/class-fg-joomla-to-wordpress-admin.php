@@ -40,8 +40,12 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 		private $version;
 
 		public $plugin_options;				// Plug-in options
+		public $progressbar;
 		public $imported_categories = array();
 		public $chunks_size = 10;
+		public $posts_count = 0;			// Number of imported post
+		public $media_count = 0;			// Number of imported medias
+		public $tags_count = 0;				// Number of imported tags
 
 		protected $post_type = 'post';		// post or page
 		protected $faq_url;					// URL of the FAQ page
@@ -49,6 +53,8 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 		
 		private $log_file;
 		private $log_file_url;
+		private $test_antiduplicate = false;
+		private $imported_tags = array();
 
 		/**
 		 * Initialize the class and set its properties.
@@ -65,6 +71,9 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 			$upload_dir = wp_upload_dir();
 			$this->log_file = $upload_dir['basedir'] . '/' . $this->plugin_name . '.log';
 			$this->log_file_url = $upload_dir['baseurl'] . '/' . $this->plugin_name . '.log';
+
+			// Progress bar
+			$this->progressbar = new FG_Joomla_to_WordPress_ProgressBar($this);
 
 		}
 
@@ -111,6 +120,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 			) );
 			wp_localize_script( $this->plugin_name, 'objectPlugin', array(
 				'log_file_url' => $this->log_file_url,
+				'progress_url' => $this->progressbar->get_url(),
 			));
 
 		}
@@ -137,7 +147,16 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 		 * @param string $message
 		 */
 		public function log($message) {
-			file_put_contents($this->log_file, "$message\n", FILE_APPEND);
+			$matches = array();
+			
+			// Don't log the [COUNT] messages, but increment the progress bar
+			//TODO To remove once all the COUNT messages have been replaced by $this->progressbar->increment_current_count
+			if ( preg_match('/^\[COUNT\](\d+)/', $message, $matches) ) {
+				$count = $matches[1];
+				$this->progressbar->increment_current_count($count);
+			} else {
+				file_put_contents($this->log_file, "$message\n", FILE_APPEND);
+			}
 		}
 		
 		/**
@@ -215,6 +234,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 		 * Dispatch the actions
 		 * 
 		 * @param string $action Action
+		 * @return object Result to return to the caller
 		 */
 		public function dispatch($action) {
 			set_time_limit(7200); // Timeout = 2 hours
@@ -236,7 +256,8 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 				'introtext'				=> 'in_content',
 				'archived_posts'		=> 'not_imported',
 				'skip_media'			=> 0,
-				'first_image'			=> 'as_is_and_featured',
+				'featured_image'		=> 'fulltext',
+				'remove_first_image'	=> 0,
 				'import_external'		=> 0,
 				'import_duplicates'		=> 0,
 				'force_media_import'	=> 0,
@@ -628,6 +649,8 @@ SQL;
 
 			$this->optimize_database();
 
+			$this->progressbar->set_total_count(0);
+			
 			$wpdb->hide_errors();
 			return ($result !== false);
 		}
@@ -776,6 +799,29 @@ SQL;
 		}
 
 		/**
+		 * Get the number of Joomla categories
+		 * 
+		 * @param string $component Component name
+		 * @return int Number of categories
+		 */
+		private function get_component_categories_count($component) {
+			$prefix = $this->plugin_options['prefix'];
+			if ( version_compare($this->plugin_options['version'], '1.5', '<=') ) {
+				$extension_field = 'c.section';
+			} else {
+				$extension_field = 'c.extension';
+			}
+			$sql = "
+				SELECT COUNT(*) AS nb
+				FROM ${prefix}categories c
+				WHERE $extension_field = '$component'
+			";
+			$result = $this->joomla_query($sql);
+			$cat_count = isset($result[0]['nb'])? $result[0]['nb'] : 0;
+			return $cat_count;
+		}
+
+		/**
 		 * Get the number of Joomla articles
 		 * 
 		 * @return int Number of articles
@@ -854,7 +900,8 @@ SQL;
 				'introtext'				=> filter_input(INPUT_POST, 'introtext', FILTER_SANITIZE_STRING),
 				'archived_posts'		=> filter_input(INPUT_POST, 'archived_posts', FILTER_SANITIZE_STRING),
 				'skip_media'			=> filter_input(INPUT_POST, 'skip_media', FILTER_VALIDATE_BOOLEAN),
-				'first_image'			=> filter_input(INPUT_POST, 'first_image', FILTER_SANITIZE_STRING),
+				'featured_image'		=> filter_input(INPUT_POST, 'featured_image', FILTER_SANITIZE_STRING),
+				'remove_first_image'	=> filter_input(INPUT_POST, 'remove_first_image', FILTER_VALIDATE_BOOLEAN),
 				'import_external'		=> filter_input(INPUT_POST, 'import_external', FILTER_VALIDATE_BOOLEAN),
 				'import_duplicates'		=> filter_input(INPUT_POST, 'import_duplicates', FILTER_VALIDATE_BOOLEAN),
 				'force_media_import'	=> filter_input(INPUT_POST, 'force_media_import', FILTER_VALIDATE_BOOLEAN),
@@ -885,7 +932,7 @@ SQL;
 				}
 
 				$total_elements_count = $this->get_total_elements_count();
-				$this->display_admin_notice(sprintf('[COUNT-TOTAL]'. __('%d elements to import', 'fg-joomla-to-wordpress'), $total_elements_count));
+				$this->progressbar->set_total_count($total_elements_count);
 				
 				$this->post_type = ($this->plugin_options['import_as_pages'] == 1) ? 'page' : 'post';
 
@@ -903,24 +950,24 @@ SQL;
 				
 				if ( !isset($this->premium_options['skip_articles']) || !$this->premium_options['skip_articles'] ) {
 					// Posts and medias
-					$result = $this->import_posts();
-					if ( $result === false ) { // Anti-duplicate
+					if ( !$this->import_posts() ) { // Anti-duplicate
 						return;
 					}
 					switch ($this->post_type) {
 						case 'page':
-							$this->display_admin_notice(sprintf(_n('%d page imported', '%d pages imported', $result['posts_count'], 'fg-joomla-to-wordpress'), $result['posts_count']));
+							$this->display_admin_notice(sprintf(_n('%d page imported', '%d pages imported', $this->posts_count, 'fg-joomla-to-wordpress'), $this->posts_count));
 							break;
 						case 'post':
 						default:
-							$this->display_admin_notice(sprintf(_n('%d post imported', '%d posts imported', $result['posts_count'], 'fg-joomla-to-wordpress'), $result['posts_count']));
+							$this->display_admin_notice(sprintf(_n('%d post imported', '%d posts imported', $this->posts_count, 'fg-joomla-to-wordpress'), $this->posts_count));
 					}
-					$this->display_admin_notice(sprintf(_n('%d media imported', '%d medias imported', $result['media_count'], 'fg-joomla-to-wordpress'), $result['media_count']));
+					$this->display_admin_notice(sprintf(_n('%d media imported', '%d medias imported', $this->media_count, 'fg-joomla-to-wordpress'), $this->media_count));
 
 					// Tags
 					if ($this->post_type == 'post') {
 						if ( $this->plugin_options['meta_keywords_in_tags'] ) {
-							$this->display_admin_notice(sprintf(_n('%d tag imported', '%d tags imported', $result['tags_count'], 'fg-joomla-to-wordpress'), $result['tags_count']));
+							$tags_count = count($this->imported_tags);
+							$this->display_admin_notice(sprintf(_n('%d tag imported', '%d tags imported', $tags_count, 'fg-joomla-to-wordpress'), $tags_count));
 						}
 					}
 				}
@@ -981,6 +1028,7 @@ SQL;
 			if ( !isset($this->premium_options['skip_weblinks']) || !$this->premium_options['skip_weblinks'] ) {
 				if ( $this->table_exists('weblinks') ) { // Joomla 3.4
 					$count += $this->get_weblinks_count();
+					$count += $this->get_component_categories_count('com_weblinks');
 				}
 			}
 			$count = apply_filters('fgj2wp_get_total_elements_count', $count);
@@ -1000,6 +1048,8 @@ SQL;
 			if ( $this->import_stopped() ) {
 				return 0;
 			}
+			
+			$this->log(__('Importing categories...', 'fg-joomla-to-wordpress'));
 			
 			// Joomla sections (Joomla version ≤ 1.5)
 			if ( version_compare($this->plugin_options['version'], '1.5', '<=') ) {
@@ -1116,9 +1166,9 @@ SQL;
 				// Hook after inserting the category
 				do_action('fgj2wp_post_insert_category', $new_cat_id, $category);
 			}
-
-			$this->log(sprintf('[COUNT]' . _n('%d category processed', '%d categories processed', $processed_cat_count, 'fg-joomla-to-wordpress'), $processed_cat_count));
-
+			
+			$this->progressbar->increment_current_count($processed_cat_count);
+			
 			// Update cache
 			if ( !empty($terms) ) {
 				wp_update_term_count_now($terms, $taxonomy);
@@ -1158,16 +1208,13 @@ SQL;
 		 * Import posts
 		 *
 		 * @param bool $test_mode Test mode active: import only one post
-		 * @return array:
-		 * 		int posts_count: Number of posts imported
-		 * 		int media_count: Number of medias imported
+		 * @return bool Import successful or not
 		 */
 		private function import_posts($test_mode = false) {
-			$posts_count = 0;
-			$media_count = 0;
-			$imported_tags = array();
 			$step = $test_mode? 1 : $this->chunks_size; // to limit the results
 
+			$this->log(__('Importing posts...', 'fg-joomla-to-wordpress'));
+			
 			// Set the WordPress post ID to start the deletion (used when we want to remove only the new imported posts)
 			$start_id = intval(get_option('fgj2wp_start_id'));
 			if ( $start_id == 0) {
@@ -1178,136 +1225,20 @@ SQL;
 			// Hook for doing other actions before the import
 			do_action('fgj2wp_pre_import_posts');
 
-			$test_antiduplicate = false;
-			
 			do {
 				if ( $this->import_stopped() ) {
 					break;
 				}
 				$posts = $this->get_posts($step); // Get the Joomla posts
-				$processed_posts_count = count($posts);
 
 				if ( is_array($posts) ) {
 					foreach ( $posts as $post ) {
-
-						// Anti-duplicate
-						if ( !$test_antiduplicate ) {
-							sleep(2);
-							$test_post_id = $this->get_wp_post_id_from_joomla_id($post['id']);
-							if ( !empty($test_post_id) ) {
-								$this->display_admin_error(__('The import process is still running. Please wait before running it again.', 'fg-joomla-to-wordpress'));
-								return false;
-							}
-							$test_antiduplicate = true;
-						}
-						
-						// Hook for modifying the Joomla post before processing
-						$post = apply_filters('fgj2wp_pre_process_post', $post);
-
-						// If the slug is a date, get the title instead
-						if ( preg_match('/^\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}$/', $post['alias']) ) {
-							$slug = $post['title'];
-						} else {
-							$slug = $post['alias'];
-						}
-
-						// Date
-						$post_date = ($post['date'] != '0000-00-00 00:00:00')? $post['date']: $post['modified'];
-
-						// Featured image
-						$featured_image = '';
-						
-						// Medias
-						if ( !$this->plugin_options['skip_media'] ) {
-							list($featured_image, $post) = apply_filters('fgj2wp_pre_import_media', array($featured_image, $post));
-							// Import media
-							$result = $this->import_media_from_content($featured_image . $post['introtext'] . $post['fulltext'], $post_date);
-							$post_media = $result['media'];
-							$media_count += $result['media_count'];
-						} else {
-							// Skip media
-							$post_media = array();
-						}
-
-						// Categories IDs
-						$categories = array($post['catid']);
-						// Hook for modifying the post categories
-						$categories = apply_filters('fgj2wp_post_categories', $categories, $post);
-						$categories_ids = array();
-						foreach ( $categories as $catid ) {
-							if ( array_key_exists($catid, $this->imported_categories) ) {
-								$categories_ids[] = $this->imported_categories[$catid];
-							}
-						}
-						if ( count($categories_ids) == 0 ) {
-							$categories_ids[] = 1; // default category
-						}
-
-						// Define excerpt and post content
-						list($excerpt, $content) = $this->set_excerpt_content($post);
-
-						// Process content
-						$excerpt = $this->process_content($excerpt, $post_media);
-						$content = $this->process_content($content, $post_media);
-
-						// Status
-						switch ( $post['state'] ) {
-							case 1: // published post
-								$status = 'publish';
-								break;
-							case -1: // archived post
-							case 2: // archived post in Joomla 2.5
-								$status = ($this->plugin_options['archived_posts'] == 'published')? 'publish' : 'draft';
-								break;
-							default:
-								$status = 'draft';
-						}
-
-						// Tags
-						$tags = array();
-						if ( $this->plugin_options['meta_keywords_in_tags'] && !empty($post['metakey']) ) {
-							$tags = explode(',', $post['metakey']);
-							$imported_tags = array_merge($imported_tags, $tags);
-						}
-
-						// Insert the post
-						$new_post = array(
-							'post_category'		=> $categories_ids,
-							'post_content'		=> $content,
-							'post_date'			=> $post_date,
-							'post_excerpt'		=> $excerpt,
-							'post_status'		=> $status,
-							'post_title'		=> $post['title'],
-							'post_name'			=> $slug,
-							'post_type'			=> $this->post_type,
-							'tags_input'		=> $tags,
-							'menu_order'        => $post['ordering'],
-						);
-
-						// Hook for modifying the WordPress post just before the insert
-						$new_post = apply_filters('fgj2wp_pre_insert_post', $new_post, $post);
-
-						$new_post_id = wp_insert_post($new_post);
-
-						if ( $new_post_id ) {
-							// Add links between the post and its medias
-							$set_featured_image = !empty($featured_image) || ($this->plugin_options['first_image'] != 'as_is');
-							$this->add_post_media($new_post_id, $new_post, $post_media, $set_featured_image);
-
-							// Add the Joomla ID as a post meta in order to modify links after
-							add_post_meta($new_post_id, '_fgj2wp_old_id', $post['id'], true);
-
-							// Increment the Joomla last imported post ID
-							update_option('fgj2wp_last_article_id', $post['id']);
-
-							$posts_count++;
-
-							// Hook for doing other actions after inserting the post
-							do_action('fgj2wp_post_insert_post', $new_post_id, $post);
+						if ( $this->import_post($post) === false ) {
+							return false;
 						}
 					}
 				}
-				$this->log(sprintf('[COUNT]' . _n('%d post processed', '%d posts processed', $processed_posts_count, 'fg-joomla-to-wordpress'), $processed_posts_count));
+				$this->progressbar->increment_current_count(count($posts));
 			} while ( ($posts != null) && (count($posts) > 0) && !$test_mode);
 
 			if ( !$this->import_stopped() ) {
@@ -1315,13 +1246,226 @@ SQL;
 				do_action('fgj2wp_post_import_posts');
 			}
 
-			return array(
-				'posts_count'	=> $posts_count,
-				'media_count'	=> $media_count,
-				'tags_count'	=> count(array_unique($imported_tags)),
-			);
+			return true;
 		}
 
+		/**
+		 * Import a post
+		 * 
+		 * @since 3.4.0
+		 * 
+		 * @param array $post Post data
+		 * @param bool $test_mode Test mode active
+		 * @return int new post ID | false | WP_Error
+		 */
+		private function import_post($post, $test_mode = false) {
+			// Anti-duplicate
+			if ( !$test_mode && !$this->test_antiduplicate ) {
+				sleep(2);
+				$test_post_id = $this->get_wp_post_id_from_joomla_id($post['id']);
+				if ( !empty($test_post_id) ) {
+					$this->display_admin_error(__('The import process is still running. Please wait before running it again.', 'fg-joomla-to-wordpress'));
+					return false;
+				}
+				$this->test_antiduplicate = true;
+			}
+
+			// Hook for modifying the Joomla post before processing
+			$post = apply_filters('fgj2wp_pre_process_post', $post);
+
+			// If the slug is a date, get the title instead
+			if ( preg_match('/^\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}$/', $post['alias']) ) {
+				$slug = $post['title'];
+			} else {
+				$slug = $post['alias'];
+			}
+
+			// Date
+			$post_date = ($post['date'] != '0000-00-00 00:00:00')? $post['date']: $post['modified'];
+
+			// Featured image
+			$featured_image_id = '';
+
+			// Medias
+			if ( !$this->plugin_options['skip_media'] ) {
+				// Featured image
+				list($featured_image_id, $post) = $this->get_and_process_featured_image($post);
+				
+				// Import media
+				$result = $this->import_media_from_content($post['introtext'] . $post['fulltext'], $post_date);
+				$post_media = $result['media'];
+				$this->media_count += $result['media_count'];
+			} else {
+				// Skip media
+				$post_media = array();
+			}
+
+			// Categories IDs
+			$categories = array($post['catid']);
+			// Hook for modifying the post categories
+			$categories = apply_filters('fgj2wp_post_categories', $categories, $post);
+			$categories_ids = array();
+			foreach ( $categories as $catid ) {
+				if ( array_key_exists($catid, $this->imported_categories) ) {
+					$categories_ids[] = $this->imported_categories[$catid];
+				}
+			}
+			if ( count($categories_ids) == 0 ) {
+				$categories_ids[] = 1; // default category
+			}
+
+			// Define excerpt and post content
+			list($excerpt, $content) = $this->set_excerpt_content($post);
+
+			// Process content
+			$excerpt = $this->process_content($excerpt, $post_media);
+			$content = $this->process_content($content, $post_media);
+
+			// Status
+			switch ( $post['state'] ) {
+				case 1: // published post
+					$status = 'publish';
+					break;
+				case -1: // archived post
+				case 2: // archived post in Joomla 2.5
+					$status = ($this->plugin_options['archived_posts'] == 'published')? 'publish' : 'draft';
+					break;
+				default:
+					$status = 'draft';
+			}
+
+			// Tags
+			$tags = array();
+			if ( $this->plugin_options['meta_keywords_in_tags'] && !empty($post['metakey']) ) {
+				$tags = explode(',', $post['metakey']);
+				$this->imported_tags = array_merge($this->imported_tags, $tags);
+			}
+
+			// Insert the post
+			$new_post = array(
+				'post_category'		=> $categories_ids,
+				'post_content'		=> $content,
+				'post_date'			=> $post_date,
+				'post_excerpt'		=> $excerpt,
+				'post_status'		=> $status,
+				'post_title'		=> $post['title'],
+				'post_name'			=> $slug,
+				'post_type'			=> $this->post_type,
+				'tags_input'		=> $tags,
+				'menu_order'        => $post['ordering'],
+			);
+
+			// Hook for modifying the WordPress post just before the insert
+			$new_post = apply_filters('fgj2wp_pre_insert_post', $new_post, $post);
+
+			$new_post_id = wp_insert_post($new_post, true);
+
+			if ( is_wp_error($new_post_id) ) {
+				$this->display_admin_error(sprintf(__('Article #%d:', 'fg-joomla-to-wordpress'), $post['id']) . ' ' . $new_post_id->get_error_message());
+			} else {
+				// Add links between the post and its medias
+				$this->add_post_media($new_post_id, $new_post, $post_media, false);
+				
+				// Set the featured image
+				if ( !empty($featured_image_id) ) {
+					set_post_thumbnail($new_post_id, $featured_image_id);
+				}
+
+				// Add the Joomla ID as a post meta in order to modify links after
+				add_post_meta($new_post_id, '_fgj2wp_old_id', $post['id'], true);
+
+				$this->posts_count++;
+
+				// Hook for doing other actions after inserting the post
+				do_action('fgj2wp_post_insert_post', $new_post_id, $post);
+			}
+			
+			// Increment the Joomla last imported post ID
+			update_option('fgj2wp_last_article_id', $post['id']);
+
+			return $new_post_id;
+		}
+
+		/**
+		 * Determine the featured image and modify the post if needed
+		 * 
+		 * @since 3.4.0
+		 * 
+		 * @param array $post Post data
+		 * @return array [Featured image ID, Post]
+		 */
+		public function get_and_process_featured_image($post) {
+			$featured_image = '';
+			$featured_image_id = 0;
+			list($featured_image, $post) = apply_filters('fgj2wp_pre_import_media', array($featured_image, $post));
+			
+			if ( empty($featured_image) && $this->plugin_options['featured_image'] != 'none' ) {
+				$featured_image = $this->get_first_image_from($post['introtext']);
+				if ( empty($featured_image) ) {
+					$featured_image = $this->get_first_image_from($post['fulltext']);
+				}
+				
+				// Remove the featured image from the content
+				if ( !empty($featured_image) && $this->plugin_options['remove_first_image'] ) {
+					$post['introtext'] = $this->remove_image_from_content($featured_image, $post['introtext']);
+					$post['fulltext'] = $this->remove_image_from_content($featured_image, $post['fulltext']);
+				}
+			}
+			
+			// Import the featured image
+			if ( !empty($featured_image) ) {
+				$result = $this->import_media_from_content($featured_image, $post['date']);
+				if ( isset($result['media']) ) {
+					foreach ( $result['media'] as $featured_image_id ) {
+						$this->media_count++;
+						break;
+					}
+				}
+			}
+			return array($featured_image_id, $post);
+		}
+		
+		/**
+		 * Get the first image from a content
+		 * 
+		 * @since 3.4.0
+		 * 
+		 * @param string $content
+		 * @return string Featured image tag
+		 */
+		private function get_first_image_from($content) {
+			$matches = array();
+			$featured_image = '';
+			
+			$img_pattern = '#(<img .*?>)#i';
+			if ( preg_match($img_pattern, $content, $matches) ) {
+				$featured_image = $matches[1];
+			}
+			return $featured_image;
+		}
+		
+		/**
+		 * Remove the image from the content
+		 * 
+		 * @since 3.5.1
+		 * 
+		 * @param string $image Image to remove
+		 * @param string $content Content
+		 * @return string Content
+		 */
+		private function remove_image_from_content($image, $content) {
+			$matches = array();
+			$image_src = '';
+			if ( preg_match('#src=["\'](.*?)["\']#', $image, $matches) ) {
+				$image_src = $matches[1];
+			}
+			if ( !empty($image_src) ) {
+				$img_pattern = '#(<img.*?src=["\']' . preg_quote($image_src) . '["\'].*?>)#i';
+				$content = preg_replace($img_pattern, '', $content, 1);
+			}
+			return $content;
+		}
+		
 		/**
 		 * Stop the import
 		 * 
@@ -1817,15 +1961,7 @@ SQL;
 					$content = preg_replace_callback('#<(img) (.*?)(src)=(.*?)>#i', array($this, 'remove_links'), $content);
 
 					// Process the stored medias links
-					$first_image_removed = false;
 					foreach ($this->post_link as &$link) {
-
-						// Remove the first image from the content
-						if ( ($this->plugin_options['first_image'] == 'as_featured') && !$first_image_removed && preg_match('#^<img#', $link['old_link']) ) {
-							$link['new_link'] = '';
-							$first_image_removed = true;
-							continue;
-						}
 						$new_link = $link['old_link'];
 						$alignment = '';
 						if ( preg_match('/(align="|float: )(left|right)/', $new_link, $matches) ) {
@@ -2035,24 +2171,29 @@ SQL;
 		 * Get a WordPress post that matches a Joomla URL
 		 * 
 		 * @param string $url URL
-		 * @return Post WordPress post | false
+		 * @return WP_Post WordPress post | null
 		 */
 		private function get_wp_post_from_joomla_url($url) {
-			$post = false;
-			$meta_key_value = $this->get_joomla_id_in_link($url);
-			$joomla_id = $meta_key_value['meta_value'];
-			// Can we find an ID in the link ?
-			if ( $joomla_id != 0 ) {
-				// Get the linked post
-				$posts =  get_posts(array(
-					'numberposts'	=> 1,
-					'post_type'		=> 'any',
-					'meta_key'		=> $meta_key_value['meta_key'],
-					'meta_value'	=> $joomla_id,
-				));
-				if ( is_array($posts) && (count($posts) > 0) ) {
-					$post = $posts[0];
-				}
+			$post = null;
+			$post_name = $this->remove_html_extension(basename($url));
+			
+			// Try to find a post by its post name
+			$post_id = $this->get_post_by_name($post_name);
+			
+			// Try to find a post in the redirect table
+			if ( empty($post_id) && class_exists('FG_Joomla_to_WordPress_Redirect') ) {
+				$redirect_obj = new FG_Joomla_to_WordPress_Redirect();
+				$post_id = $redirect_obj->find_url_in_redirect_table($post_name);
+			}
+			
+			// Try to find a post by an ID in the URL
+			if ( empty($post_id) ) {
+				$meta_key_value = $this->get_joomla_id_in_link($url);
+				$post_id = $this->get_wp_post_id_from_meta($meta_key_value['meta_key'], $meta_key_value['meta_value']);
+			}
+			
+			if ( !empty($post_id) ) {
+				$post = get_post($post_id);
 			}
 			if ( !$post ) {
 				$post = apply_filters('fgj2wp_get_wp_post_from_joomla_url', $post, $url);
@@ -2060,6 +2201,31 @@ SQL;
 			return $post;
 		}
 
+		/**
+		 * Remove the file extension .html
+		 * 
+		 * @param string $url URL
+		 * @return string URL
+		 */
+		private function remove_html_extension($url) {
+			$url = preg_replace('/\.html$/', '', $url);
+			return $url;
+		}
+		
+		/**
+		 * Get a post by its name
+		 * 
+		 * @global object $wpdb
+		 * @param string $post_name
+		 * @param string $post_type
+		 * @return int $post_id
+		 */
+		private function get_post_by_name($post_name, $post_type = 'post') {
+			global $wpdb;
+			$post_id = $wpdb->get_var($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_type= %s", $post_name, $post_type));
+			return $post_id;
+		}
+		
 		/**
 		 * Get the Joomla ID in a link
 		 *
@@ -2080,8 +2246,8 @@ SQL;
 					$meta_key_value['meta_value'] = $matches[1];
 				}
 				// With URL rewriting
-				elseif ( preg_match("#(.*)/(\d+)-(.*)#", $link, $matches) ) {
-					$meta_key_value['meta_value'] = $matches[2];
+				elseif ( preg_match("#^((.*)/)?(\d+)-(.*)#", $link, $matches) ) {
+					$meta_key_value['meta_value'] = $matches[3];
 				} else {
 					$meta_key_value = apply_filters('fgj2wp_post_get_joomla_id_in_link', $meta_key_value);
 				}

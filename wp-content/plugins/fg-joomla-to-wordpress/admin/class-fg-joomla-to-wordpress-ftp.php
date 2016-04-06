@@ -20,8 +20,6 @@ if ( !class_exists('FG_Joomla_to_WordPress_FTP', false) ) {
 	 */
 	class FG_Joomla_to_WordPress_FTP {
 
-		public $conn_id = false;
-
 		/**
 		 * Initialize the class and set its properties.
 		 *
@@ -34,10 +32,12 @@ if ( !class_exists('FG_Joomla_to_WordPress_FTP', false) ) {
 			
 			// Default values
 			$this->plugin->ftp_options = array(
-				'ftp_host'		=> '',
-				'ftp_login'		=> '',
-				'ftp_password'	=> '',
-				'ftp_dir'		=> '',
+				'hostname'			=> '',
+				'port'				=> 21,
+				'username'			=> '',
+				'password'			=> '',
+				'connection_type'	=> '',
+				'basedir'			=> '',
 			);
 			$options = get_option('fgj2wp_ftp_options');
 			if ( is_array($options) ) {
@@ -51,9 +51,12 @@ if ( !class_exists('FG_Joomla_to_WordPress_FTP', false) ) {
 		 */
 		function display_ftp_settings() {
 			$data = array();
-			foreach ( $this->plugin->ftp_options as $key => $value ) {
-				$data[$key] = $value;
-			}
+			$data['ftp_host'] = $this->plugin->ftp_options['hostname'];
+			$data['ftp_port'] = $this->plugin->ftp_options['port'];
+			$data['ftp_login'] = $this->plugin->ftp_options['username'];
+			$data['ftp_password'] = $this->plugin->ftp_options['password'];
+			$data['ftp_connection_type'] = $this->plugin->ftp_options['connection_type'];
+			$data['ftp_dir'] = $this->plugin->ftp_options['basedir'];
 			require('partials/ftp-settings.php');
 		}
 
@@ -73,14 +76,18 @@ if ( !class_exists('FG_Joomla_to_WordPress_FTP', false) ) {
 		 */
 		private function validate_form_info() {
 			$ftp_host = filter_input(INPUT_POST, 'ftp_host', FILTER_SANITIZE_STRING);
+			$ftp_port = filter_input(INPUT_POST, 'ftp_port', FILTER_SANITIZE_STRING);
 			$ftp_login = filter_input(INPUT_POST, 'ftp_login', FILTER_SANITIZE_STRING);
 			$ftp_password = filter_input(INPUT_POST, 'ftp_password', FILTER_SANITIZE_STRING);
+			$ftp_connection_type = filter_input(INPUT_POST, 'ftp_connection_type', FILTER_SANITIZE_STRING);
 			$ftp_dir = filter_input(INPUT_POST, 'ftp_dir', FILTER_SANITIZE_STRING);
 			return array(
-				'ftp_host'		=> isset($ftp_host)? $ftp_host : '',
-				'ftp_login'		=> isset($ftp_login)? $ftp_login : '',
-				'ftp_password'	=> isset($ftp_password)? $ftp_password : '',
-				'ftp_dir'		=> isset($ftp_dir)? $ftp_dir : '',
+				'hostname'			=> isset($ftp_host)? $ftp_host : '',
+				'port'				=> isset($ftp_port)? $ftp_port : '',
+				'username'			=> isset($ftp_login)? $ftp_login : '',
+				'password'			=> isset($ftp_password)? $ftp_password : '',
+				'connection_type'	=> (isset($ftp_connection_type) && $ftp_connection_type == 'ftps')? 'ftps' : '',
+				'basedir'			=> isset($ftp_dir)? $ftp_dir : '',
 			);
 		}
 		
@@ -107,96 +114,6 @@ if ( !class_exists('FG_Joomla_to_WordPress_FTP', false) ) {
 		}
 
 		/**
-		 * FTP login
-		 *
-		 * @return bool Login successful or not
-		 */
-		public function login() {
-			$result = false;
-			
-			// Catch the warnings
-			set_error_handler(array($this, 'myErrorHandler'));
-			
-			try {
-				$this->conn_id = $this->connect();
-				if ( $this->conn_id ) {
-					if ( is_a($this->conn_id, 'Net_SFTP') ) {
-						if ( $this->conn_id->login($this->plugin->ftp_options['ftp_login'], $this->plugin->ftp_options['ftp_password']) ) {
-							$result = $this->conn_id->chdir($this->plugin->ftp_options['ftp_dir']);
-						}
-					} else {
-						if ( ftp_login($this->conn_id, $this->plugin->ftp_options['ftp_login'], $this->plugin->ftp_options['ftp_password']) ) {
-							$result = ftp_chdir($this->conn_id, $this->plugin->ftp_options['ftp_dir']);
-						}
-					}
-					if ( !$result ) {
-						$this->plugin->display_admin_error(__('FTP connection failed', 'fg-joomla-to-wordpress'));
-						$this->logout();
-						$this->conn_id = false;
-					}
-				}
-			} catch ( ErrorException $e ) {
-				$this->plugin->display_admin_error(__('FTP connection failed', 'fg-joomla-to-wordpress') . '<br />' . $e->getMessage());
-				$this->conn_id = false;
-				$result = false;
-			}
-			restore_error_handler();
-			return $result;
-		}
-		
-		/**
-		 * Error handler to catch the FTP warnings
-		 * 
-		 * @param int $errno
-		 * @param string $errstr
-		 * @param string $errfile
-		 * @param int $errline
-		 */
-		public function myErrorHandler($errno, $errstr, $errfile, $errline) {
-			// error was suppressed with the @-operator
-			if (0 === error_reporting()) {
-				return false;
-			}
-			throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
-		}
-		
-		/**
-		 * FTP connect
-		 *
-		 * @return resource Connection ID
-		 */
-		private function connect() {
-			$timeout = 2;
-			$host_port = explode(':', $this->plugin->ftp_options['ftp_host']);
-			$host = $host_port[0];
-			// Determine the port
-			if ( isset($host_port[1]) ) {
-				$port = $host_port[1];
-			} else {
-				$port = 21; // Default FTP port
-			}
-			$conn_id = ftp_connect($host, $port, $timeout);
-			if ( !$conn_id ) {
-				// Try to connect through SSH
-				set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '/phpseclib1.0.0');
-				require_once('Net/SFTP.php');
-				$conn_id = new Net_SFTP($host, $port, $timeout);
-			}
-			return $conn_id;
-		}
-
-		/**
-		 * FTP logout
-		 */
-		public function logout() {
-			if ( is_a($this->conn_id, 'Net_SFTP') ) {
-				$this->conn_id->disconnect();
-			} else {
-				ftp_close($this->conn_id);
-			}
-		}
-
-		/**
 		 * Test FTP connection
 		 *
 		 * @return bool Connection successful or not
@@ -205,12 +122,40 @@ if ( !class_exists('FG_Joomla_to_WordPress_FTP', false) ) {
 			$result = false;
 			if ( $this->login()) {
 				$this->plugin->display_admin_notice(__('FTP connection successful', 'fg-joomla-to-wordpress'));
-				$this->logout();
 				$result = true;
 			}
 			return $result;
 		}
 
+		/**
+		 * FTP login
+		 *
+		 * @return bool Login successful or not
+		 */
+		public function login() {
+			$result = false;
+			
+			if ( !defined('FS_CONNECT_TIMEOUT') ) {
+				define('FS_CONNECT_TIMEOUT', 2);
+			}
+			$this->ftp = new WP_Filesystem_FTPext($this->plugin->ftp_options);
+			if ( $this->ftp->connect() && $this->ftp->chdir($this->plugin->ftp_options['basedir']) ) {
+				// Connection successful
+				$result = true;
+			} else {
+				// Connection error
+				$error_message = '';
+				if ( isset($this->ftp->errors->errors) ) {
+					$errors = $this->ftp->errors->errors;
+					foreach ( $errors as $key => $value ) {
+						$error_message = "$key => " . implode("\n", $value) . "\n";
+					}
+				}
+				$this->plugin->display_admin_error(__('FTP connection failed:', 'fg-joomla-to-wordpress') . ' ' . $error_message);
+			}
+			return $result;
+		}
+		
 		/**
 		 * List a FTP directory
 		 *
@@ -220,27 +165,26 @@ if ( !class_exists('FG_Joomla_to_WordPress_FTP', false) ) {
 		public function list_directory($directory) {
 			$files_list = array();
 			
-			// Catch the warnings
-			set_error_handler(array($this, 'myErrorHandler'));
-			
-			try {
-				if ( $this->conn_id ) {
-					$full_dir = trailingslashit($this->plugin->ftp_options['ftp_dir']) . $directory;
-					if ( is_a($this->conn_id, 'Net_SFTP') ) {
-						if ( $this->conn_id->chdir($full_dir) ) {
-							return $this->conn_id->nlist();
-						}
-					} else {
-						if ( ftp_chdir($this->conn_id, $full_dir) ) {
-							$files_list = ftp_nlist($this->conn_id, '');
-						}
-					}
-				}
-			} catch ( ErrorException $e ) {
-				$this->plugin->display_admin_error(__('FTP connection failed', 'fg-joomla-to-wordpress') . '<br />' . $e->getMessage());
+			if ( $this->ftp->link) {
+				$full_directory = trailingslashit($this->plugin->ftp_options['basedir']) . $directory;
+				return array_keys($this->ftp->dirlist($full_directory, false));
 			}
-			restore_error_handler();
 			return $files_list;
+		}
+
+		/**
+		 * Change the current FTP directory
+		 *
+		 * @param string $directory Directory
+		 * @return bool
+		 */
+		public function chdir($directory) {
+			$result = false;
+			if ( $this->ftp->link ) {
+				$full_directory = trailingslashit($this->plugin->ftp_options['basedir']) . $directory;
+				$result = $this->ftp->chdir($full_directory);
+			}
+			return $result;
 		}
 
 		/**
@@ -251,11 +195,15 @@ if ( !class_exists('FG_Joomla_to_WordPress_FTP', false) ) {
 		 * @return bool File downloaded or not
 		 */
 		public function get($source, $destination) {
-			if ( is_a($this->conn_id, 'Net_SFTP') ) {
-				return $this->conn_id->get($source, $destination);
-			} else {
-				return ftp_get($this->conn_id, $destination, $source, FTP_BINARY);
+			$result = false;
+			
+			if ( $this->ftp->link) {
+				$file_content = $this->ftp->get_contents($source);
+				if ( $file_content ) {
+					$result = (file_put_contents($destination, $file_content) !== false);
+				}
 			}
+			return $result;
 		}
 	}
 }

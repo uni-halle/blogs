@@ -4,7 +4,7 @@ Plugin Uri: https://wordpress.org/plugins/fg-joomla-to-wordpress/
 Tags: joomla, mambo, wordpress, importer, convert joomla to wordpress, migrate joomla to wordpress, joomla to wordpress migration, migrator, converter, import, k2, jcomments, joomlacomments, jomcomment, flexicontent, postviews, joomlatags, sh404sef, attachments, rokbox, kunena, phocagallery, phoca, joomsef, opensef, easyblog, zoo, zooitems, joomfish, joom!fish, wpml, joomgallery, jevents, contact directory, docman, virtuemart, woocommerce, jreviews, mosets tree, wpml, simple image gallery, rsgallery
 Requires at least: 4.4
 Tested up to: 4.4.2
-Stable tag: 3.0.3
+Stable tag: 3.5.1
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fred%2egilles%40free%2efr&lc=FR&item_name=fg-joomla-to-wordpress&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
@@ -49,6 +49,8 @@ The **Premium version** includes these extra features:
 * migrates Joomla 1.0 static articles as pages
 * migrates Joomla 2.5+ featured images
 * migrates Joomla 3.1+ tags
+* migrates Mambo data
+* migrates Elxis data (Joomla 1.0 fork)
 
 The Premium version can be purchased on: http://www.fredericgilles.net/fg-joomla-to-wordpress/
 
@@ -203,9 +205,38 @@ http://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * Russian (ru_RU)
 * Polish (pl_PL)
 * Bulgarian (bg_BG)
+* Brazilian (pt_BR)
 * other can be translated
 
 == Changelog ==
+
+= 3.5.1 =
+* Fixed: Import stopped when a post has no title or no content
+* Fixed: The first image was not removed from the content when used both in the intro text and in the full text
+
+= 3.5.0 =
+* Fixed: Notice: Undefined variable: imported_tags
+* Fixed: the progress bar was resetted when resuming the import
+
+= 3.4.0 =
+* New: Modify the first image options
+* Tweak: Code refactoring
+
+= 3.3.1 =
+* Fixed: Error :SQLSTATE[42S22]: Column not found: 1054 Unknown column 'c.extension' in 'where clause'
+
+= 3.3.0 =
+* New: Use the WordPress FTP API instead of the phpseclib library
+* New: Better handle the progress bar
+* New: Don't log the [COUNT] data in the log window
+* Fixed: Browser tab crashed when too much data was displayed in the log window
+
+= 3.2.0 =
+* New: Modify the Joomla SEF links
+
+= 3.1.0 =
+* New: Brazilian translation added
+* Fixed: When choosing "Import first image as featured only", the first image was not removed from content if it was surrounded by a hyperlink
 
 = 3.0.3 =
 * Fixed: Articles got the unassigned category when the category is a duplicate
@@ -712,6 +743,34 @@ http://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * Initial version: Import Joomla 1.5 sections, categories, posts and images
 
 == Upgrade Notice ==
+
+= 3.5.1 =
+Fixed: Import stopped when a post has no title or no content
+Fixed: The first image was not removed from the content when used both in the intro text and in the full text
+
+= 3.5.0 =
+Fixed: Notice: Undefined variable: imported_tags
+Fixed: the progress bar was resetted when resuming the import
+
+= 3.4.0 =
+New: Modify the first image options
+Tweak: Code refactoring
+
+= 3.3.1 =
+Fixed: Error :SQLSTATE[42S22]: Column not found: 1054 Unknown column 'c.extension' in 'where clause'
+
+= 3.3.0 =
+New: Use the WordPress FTP API instead of the phpseclib library
+New: Better handle the progress bar
+New: Don't log the [COUNT] data in the log window
+Fixed: Browser tab crashed when too much data was displayed in the log window
+
+= 3.2.0 =
+New: Modify the Joomla SEF links
+
+= 3.1.0 =
+New: Brazilian translation added
+Fixed: When choosing "Import first image as featured only", the first image was not removed from content if it was surrounded by a hyperlink
 
 = 3.0.3 =
 Fixed: Articles got the unassigned category when the category is a duplicate

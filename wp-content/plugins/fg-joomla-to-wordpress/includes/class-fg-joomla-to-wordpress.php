@@ -69,7 +69,7 @@ class FG_Joomla_to_WordPress {
 	public function __construct() {
 
 		$this->plugin_name = 'fg-joomla-to-wordpress';
-		$this->version = '3.0.3';
+		$this->version = '3.5.1';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -124,6 +124,7 @@ class FG_Joomla_to_WordPress {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-fg-joomla-to-wordpress-compatibility.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-fg-joomla-to-wordpress-modules-check.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-fg-joomla-to-wordpress-weblinks.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-fg-joomla-to-wordpress-progressbar.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -194,7 +195,6 @@ class FG_Joomla_to_WordPress {
 		$plugin_weblinks = new FG_Joomla_to_WordPress_Weblinks( $plugin_admin );
 		$this->loader->add_action( 'fgj2wp_post_empty_database', $plugin_weblinks, 'empty_links' );
 		$this->loader->add_action( 'fgj2wp_post_import', $plugin_weblinks, 'import_links' );
-		$this->loader->add_action( 'fgj2wp_import_notices', $plugin_weblinks, 'display_links_count' );
 		$this->loader->add_filter( 'fgj2wp_get_database_info', $plugin_weblinks, 'get_database_info' );
 		
 	}

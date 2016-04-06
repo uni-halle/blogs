@@ -6,8 +6,6 @@
 	var fgj2wp = {
 	    
 	    plugin_id: 'fgj2wp',
-	    progress_bar_total: 0,   // Total number of items to import
-	    progress_bar_current: 0, // Number of items already imported
 	    fatal_error: '',
 	    
 	    /**
@@ -44,7 +42,7 @@
 	    start_logger: function() {
 		that.stop_logger_triggered = false;
 		clearTimeout(that.timeout);
-		that.timeout = setTimeout(that.display_logs, 1000);
+		that.timeout = setTimeout(that.update_display, 1000);
 	    },
 	    
 	    /**
@@ -54,18 +52,33 @@
 		that.stop_logger_triggered = true;
 	    },
 	    
+	    
+	    /**
+	     * Update the display
+	     */
+	    update_display: function() {
+		that.timeout = setTimeout(that.update_display, 1000);
+		
+		// Actions
+		that.display_logs();
+		that.update_progressbar();
+		that.update_wordpress_info();
+		
+		if ( that.stop_logger_triggered ) {
+		    clearTimeout(that.timeout);
+		}
+	    },
+	    
 	    /**
 	     * Display the logs
 	     */
 	    display_logs: function() {
-		that.timeout = setTimeout(that.display_logs, 1000);
 		$.ajax({
 		    url: objectPlugin.log_file_url,
 		    cache: false
-		}).done(function(data) {
+		}).done(function(result) {
 		    $("#logger").html('');
-		    that.progress_bar_current = 0;
-		    data.split("\n").forEach(function(row) {
+		    result.split("\n").forEach(function(row) {
 			if ( row.substr(0, 7) === '[ERROR]' || row === 'IMPORT STOPPED BY USER') {
 			    row = '<span class="error_msg">' + row + '</span>'; // Mark the errors in red
 			}
@@ -75,34 +88,25 @@
 			    $('#action_message').html(objectL10n.import_complete)
 			    .removeClass('failure').addClass('success');
 			}
-			else {
-			    // Get the total number of items to import
-			    var result = /\[COUNT-TOTAL\](\d+)/.exec(row);
-			    if ( result !== null ) {
-				that.progress_bar_total = Number(result[1]);
-			    }
-			    
-			    // Get the current number of imported items
-			    var result = /\[COUNT\](\d+)/.exec(row);
-			    if ( result !== null ) {
-				that.progress_bar_current = that.progress_bar_current + Number(result[1]);
-			    }
-			}
 			$("#logger").append(row + "<br />\n");
-			
-			// Move the progress bar
-			var progress = that.progress_bar_current / that.progress_bar_total * 100;
-			$('#progressbar').progressbar('option', 'value', progress);
 			
 		    });
 		    $("#logger").append('<span class="error_msg">' + that.fatal_error + '</span>' + "<br />\n");
-		    
-		    // Update the WordPress database info
-		    that.update_wordpress_info();
-		    
-		    if ( that.stop_logger_triggered ) {
-			clearTimeout(that.timeout);
-		    }
+		});
+	    },
+
+	    /**
+	     * Update the progressbar
+	     */
+	    update_progressbar: function() {
+		$.ajax({
+		    url: objectPlugin.progress_url,
+		    cache: false,
+		    dataType: 'json'
+		}).done(function(result) {
+		    // Move the progress bar
+		    var progress = Number(result.current) / Number(result.total) * 100;
+		    $('#progressbar').progressbar('option', 'value', progress);
 		});
 	    },
 
@@ -169,6 +173,10 @@
 			.toggleClass('failure', result.status !== 'OK')
 			.html(result.message);
 		    }
+		}).fail(function(result) {
+		    that.stop_logger();
+		    $('#test_database').removeAttr('disabled'); // Enable the button
+		    that.fatal_error = result.responseText;
 		});
 		return false;
 	    },
@@ -197,6 +205,10 @@
 			.toggleClass('failure', result.status !== 'OK')
 			.html(result.message);
 		    }
+		}).fail(function(result) {
+		    that.stop_logger();
+		    $('#test_ftp').removeAttr('disabled'); // Enable the button
+		    that.fatal_error = result.responseText;
 		});
 		return false;
 	    },
@@ -304,7 +316,10 @@
 		    method: "POST",
 		    url: ajaxurl,
 		    data: data
-		}).done(function() {
+		}).done(function(result) {
+		    if (result) {
+			that.fatal_error = result;
+		    }
 		    that.stop_logger();
 		    $('#modify_links').removeAttr('disabled'); // Enable the button
 		    alert(objectL10n.internal_links_modified);

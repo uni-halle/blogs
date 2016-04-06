@@ -85,6 +85,8 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 			$cat_count = $this->import_categories();
 			$this->plugin->display_admin_notice(sprintf(_n('%d links category imported', '%d links categories imported', $cat_count, 'fg-joomla-to-wordpress'), $cat_count));
 
+			$this->plugin->log(__('Importing web links...', 'fg-joomla-to-wordpress'));
+			
 			$links = $this->get_weblinks();
 			$weblinks_count = count($links);
 			foreach ( $links as $link ) {
@@ -111,7 +113,8 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 					update_option('fgj2wp_last_link_id', $new_link_id);
 				}
 			}
-			$this->plugin->log(sprintf('[COUNT]' . _n('%d web link processed', '%d web links processed', $weblinks_count, 'fg-joomla-to-wordpress'), $weblinks_count));
+			$this->plugin->progressbar->increment_current_count($weblinks_count);
+			$this->plugin->display_admin_notice(sprintf(_n('%d web link imported', '%d web links imported', $this->links_count, 'fg-joomla-to-wordpress'), $this->links_count));
 		}
 
 		/**
@@ -158,21 +161,6 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 				$cat_count = $this->plugin->insert_categories($categories, 'link_category', 'fgj2wp_last_weblink_category_id');
 			}
 			return $cat_count;
-		}
-
-		/**
-		 * Display the number of imported links
-		 * 
-		 */
-		public function display_links_count() {
-			if ( isset($this->plugin->premium_options['skip_weblinks']) && $this->plugin->premium_options['skip_weblinks'] ) {
-				return;
-			}
-			if ( !$this->plugin->table_exists('weblinks') ) { // Joomla 3.4
-				return;
-			}
-
-			$this->plugin->display_admin_notice(sprintf(_n('%d web link imported', '%d web links imported', $this->links_count, 'fg-joomla-to-wordpress'), $this->links_count));
 		}
 
 		/**
