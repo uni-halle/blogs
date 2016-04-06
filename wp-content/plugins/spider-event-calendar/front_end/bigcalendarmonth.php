@@ -6,6 +6,8 @@ function big_calendar_month() {
   $many_sp_calendar = ((isset($_GET['many_sp_calendar']) && is_numeric(esc_html($_GET['many_sp_calendar']))) ? esc_html($_GET['many_sp_calendar']) : 1);
   $calendar_id = (isset($_GET['calendar']) ? (int) $_GET['calendar'] : '');
   $theme_id = (isset($_GET['theme_id']) ? (int) $_GET['theme_id'] : 30);
+  $cat_id = (isset($_GET['cat_id']) ? esc_html($_GET['cat_id']) : '');
+  $cat_ids = (isset($_GET['cat_ids']) ? esc_html($_GET['cat_ids']) : '');
   $date = ((isset($_GET['date']) && IsDate_inputed(esc_html($_GET['date']))) ? esc_html($_GET['date']) : '');
   $view_select = (isset($_GET['select']) ? esc_html($_GET['select']) : 'month,');
   $path_sp_cal = (isset($_GET['cur_page_url']) ? esc_html($_GET['cur_page_url']) : '');
@@ -14,14 +16,6 @@ function big_calendar_month() {
   $site_url = get_admin_url().'admin-ajax.php';
 
   ///////////////////////////////////////////////////////////////////////////////////
-  
-  if(isset($_GET['cat_id']))
-  $cat_id = $_GET['cat_id'];
-  else $cat_id = "";
-  
-  if(isset($_GET['cat_ids']))
-  $cat_ids = $_GET['cat_ids'];
-  else $cat_ids = "";
 
   
 if($cat_ids=='')
@@ -843,7 +837,7 @@ echo '<style>
   $title = $all_calendar_files[0]['title'];
   $ev_ids = $all_calendar_files[0]['ev_ids'];
   $categories=$wpdb->get_results("SELECT * FROM " . $wpdb->prefix . "spidercalendar_event_category WHERE published=1"); 
-  $calendar = (isset($_GET['calendar']) ? $_GET['calendar'] : '');
+  $calendar = (isset($_GET['calendar']) ? (int)$_GET['calendar'] : '');
   
   echo '          <tr id="days"  height="' . $cell_height . '" style="line-height:15px;">';
   for ($i = 1; $i < $weekday_i; $i++) {
@@ -858,7 +852,7 @@ echo '<style>
 {
 
 	global $wpdb;
-	$calendar = (isset($_GET['calendar']) ? $_GET['calendar'] : '');
+	$calendar = (isset($_GET['calendar']) ? (int)$_GET['calendar'] : '');
 
 	$query = $wpdb->prepare ("SELECT " . $wpdb->prefix . "spidercalendar_event_category.color AS color FROM " . $wpdb->prefix . "spidercalendar_event  JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spidercalendar_event_category.id WHERE " . $wpdb->prefix . "spidercalendar_event.calendar=%d AND  " . $wpdb->prefix . "spidercalendar_event.published='1' AND " . $wpdb->prefix . "spidercalendar_event_category.published='1' AND " . $wpdb->prefix . "spidercalendar_event.id=%d",$calendar,$event_id);
 

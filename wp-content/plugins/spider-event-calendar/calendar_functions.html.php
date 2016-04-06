@@ -978,13 +978,13 @@ $row=$wpdb->get_row($wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spiderca
 	}
 
 	
-	function html_upcoming_widget($rows, $pageNav, $sort){
-require_once("spidercalendar_upcoming_events_widget.php");
-	  global $wpdb;
-	 $input_id=$_GET['id_input'];
-	 $w_id = $_GET['w_id'];
+function html_upcoming_widget($rows, $pageNav, $sort){
+	require_once("spidercalendar_upcoming_events_widget.php");
+	 global $wpdb;
+	 $input_id=esc_html($_GET['id_input']);
+	 $w_id = esc_html($_GET['w_id']);
 	 $tbody_id='event'.$w_id;
-	 $calendar_id=$_GET['upcalendar_id'];
+	 $calendar_id=esc_html($_GET['upcalendar_id']);
 	 ?><html>
   <head>
   <link rel="stylesheet" id="thickbox-css" href="<?php echo plugins_url("elements/calendar-jos.css", __FILE__) ?>" type="text/css" media="all">

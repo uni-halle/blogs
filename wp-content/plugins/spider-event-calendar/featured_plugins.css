@@ -132,9 +132,13 @@ border-bottom-left-radius: 5px;}
 	padding: 20px 0;
 }
 .featured_header {
+    background: #11465F;
+    width: 89.4%;
+    margin: 0 auto;
+    border-bottom: 3px solid #E5E5E5;
     position: relative;
-    width: 90%;
-    margin: 15px auto 0px auto;
+    padding: 20px 0;
+	margin-top: 10px;
 }
 
 .featured_header .old_price{
@@ -143,9 +147,21 @@ border-bottom-left-radius: 5px;}
     font-family: Oswald;
 }
 
+.featured_header .try-now{
+	text-align: center;
+}
+
+.featured_header .try-now span{
+	display: inline-block;
+    padding: 7px 16px;
+    background: #F47629;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 23px;
+}
+
 .featured_header h1.get_plugins{
 	color: #FFFFFF;
-	background:url(images/featured_plugins_bg.png) no-repeat;
 	height: 85px;
     margin: 0;
     background-size: 85% 100%;
@@ -156,7 +172,7 @@ border-bottom-left-radius: 5px;}
 .featured_header h1{
 	font-size: 50px;
     text-align: center;
-	color: #F47629;
+	color: #FFFFFF;
 	letter-spacing: 3px;
 	line-height: 10px;
 }

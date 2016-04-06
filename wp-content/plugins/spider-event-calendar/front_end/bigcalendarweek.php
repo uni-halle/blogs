@@ -10,19 +10,10 @@ function big_calendar_week() {
   $view_select = (isset($_GET['select']) ? esc_html($_GET['select']) : 'month,');
   $path_sp_cal = (isset($_GET['cur_page_url']) ? esc_html($_GET['cur_page_url']) : '');
   $months = (isset($_GET['months']) ? esc_html($_GET['months']) : '');
+  $cat_id = (isset($_GET['cat_id']) ? esc_html($_GET['cat_id']) : '');
+  $cat_ids = (isset($_GET['cat_ids']) ? esc_html($_GET['cat_ids']) : '');
   $site_url = get_admin_url().'admin-ajax.php';
   ///////////////////////////////////////////////////////////////////////////////////
-  
-   
-  if(isset($_GET['cat_id']))
-  $cat_id = $_GET['cat_id'];
-  else $cat_id = "";
-  
-  if(isset($_GET['cat_ids']))
-  $cat_ids = $_GET['cat_ids'];
-  else $cat_ids = "";
-
-
   
 if($cat_ids=='')
 $cat_ids .= $cat_id.',';
@@ -861,7 +852,7 @@ position: relative;
   $all_calendar_files = php_getdays_for_three_months($calendar_id, $date, $months, $theme_id, $widget);
 
   $categories=$wpdb->get_results("SELECT * FROM " . $wpdb->prefix . "spidercalendar_event_category WHERE published=1"); 
-  $calendar = (isset($_GET['calendar']) ? $_GET['calendar'] : ''); 
+  $calendar = (isset($_GET['calendar']) ? (int)$_GET['calendar'] : ''); 
   
   $all_array_days = $all_calendar_files[0]['all_array_days'];
   $all_array_days1 = $all_calendar_files[0]['all_array_days1'];

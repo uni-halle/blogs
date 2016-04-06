@@ -1,3 +1,38 @@
+.uninstall_icon {
+    background: url("buttons.png") no-repeat 0% 75%;
+    border: none;
+    height: 42px;
+    width: 37px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.uninstall-banner .logo-title {
+    text-transform: uppercase;
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: middle;
+    width: 255px;
+    margin-left: 10px;
+    line-height: 22px;
+}
+
+.uninstall-banner {
+    background: #fff;
+    display: block;
+    padding: 15px 10px;
+    height: 38px;
+}
+
+.goodbye-text {
+    font-size: 16px;
+    font-weight: bold;
+    background: #fff;
+    padding: 15px;
+    line-height: 22px;
+}
+
+
 /* The main calendar widget.  DIV containing a table. */
 
 div.calendar {

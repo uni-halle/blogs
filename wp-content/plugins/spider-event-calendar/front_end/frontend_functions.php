@@ -58,13 +58,8 @@ function php_getdays($show_numbers_for_events, $calendar, $date, $theme_id, $wid
     $show_time = $theme->show_time;
   }
 
- if(isset($_GET['cat_id']))
-  $cat_id = $_GET['cat_id'];
-  else $cat_id = "";
-  
-  if(isset($_GET['cat_ids']))
-  $cat_ids = $_GET['cat_ids'];
-  else $cat_ids = "";
+  $cat_id = (isset($_GET['cat_id']) ? esc_html($_GET['cat_id']) : '');
+  $cat_ids = (isset($_GET['cat_ids']) ? esc_html($_GET['cat_ids']) : '');
 
 
 if($cat_ids=='')
@@ -550,13 +545,8 @@ function php_getdays_for_three_months($calendar, $date, $months, $theme_id, $wid
     $show_time = $theme->show_time;
   }
 
- if(isset($_GET['cat_id']))
-  $cat_id = $_GET['cat_id'];
-  else $cat_id = "";
-  
-  if(isset($_GET['cat_ids']))
-  $cat_ids = $_GET['cat_ids'];
-  else $cat_ids = "";
+  $cat_id = (isset($_GET['cat_id']) ? esc_html($_GET['cat_id']) : '');
+  $cat_ids = (isset($_GET['cat_ids']) ? esc_html($_GET['cat_ids']) : '');
 
   
 if($cat_ids=='')

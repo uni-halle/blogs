@@ -3,11 +3,11 @@
 Plugin Name: Spider Event Calendar
 Plugin URI: https://web-dorado.com/products/wordpress-calendar.html
 Description: Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. Spider Event Calendar is an extraordinary user friendly extension.
-Version: 1.5.39
+Version: 1.5.40
 Author: https://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
-$wd_spider_calendar_version="1.5.39";
+$wd_spider_calendar_version="1.5.40";
 // LANGUAGE localization.
 function sp_calendar_language_load() {
   load_plugin_textdomain('sp_calendar', FALSE, basename(dirname(__FILE__)) . '/languages');
@@ -291,6 +291,11 @@ html.thickbox_open{
 #views_select .arrow-right{
 	display: none;
 }
+
+#afterbig<?php echo $many_sp_calendar; ?>{
+	display: block !important;
+}
+
 #afterbig<?php echo $many_sp_calendar; ?> li{
 	list-style: none;
 }
@@ -441,7 +446,7 @@ function spider_calendar_quick_edit() {
   }
   global $wpdb;
   if (isset($_POST['calendar_id'])) {
-    $row = $wpdb->get_row($wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar WHERE id='%d'", $_POST['calendar_id']));
+    $row = $wpdb->get_row($wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar WHERE id='%d'", (int) $_POST['calendar_id']));
     ?>
   <td colspan="4" class="colspanchange">
     <fieldset class="inline-edit-col-left">
@@ -957,7 +962,18 @@ function Uninstall_sp_calendar() {
   $base_name = plugin_basename('Spider_Calendar');
   $base_page = 'admin.php?page=' . $base_name;
   $mode = (isset($_GET['mode']) ? trim($_GET['mode']) : '');
-
+  ?>
+	<div class="page-banner uninstall-banner">
+		<div class="uninstall_icon">
+		</div>
+		<div class="logo-title">Uninstall Spider Calendar</div>
+	</div>	
+	<br />
+	<div class="goodbye-text">
+		Before uninstalling the plugin, please Contact our <a href="https://web-dorado.com/support/contact-us.html?source=spidercalendar" target= '_blank'>support team</a>. We'll do our best to help you out with your issue. We value each and every user and value what’s right for our users in everything we do.<br>
+		However, if anyway you have made a decision to uninstall the plugin, please take a minute to <a href="https://web-dorado.com/support/contact-us.html?source=spidercalendar" target= '_blank'>Contact us</a> and tell what you didn't like for our plugins further improvement and development. Thank you !!!
+	</div>	
+  <?php
   if (!empty($_POST['do'])) {
     if ($_POST['do'] == "UNINSTALL Spider Event Calendar") {
       check_admin_referer('Spider_Calendar uninstall');
@@ -1083,19 +1099,21 @@ function calendar_Featured_Plugins_styles() {
 }
 function calendar_Featured_Plugins() { ?>
 <div id="main_featured_plugins_page">
-	<table align="center" width="90%" style="margin-top: 0px;border-bottom: rgb(111, 111, 111) solid 1px;">
+	<table align="center" width="90%" style="margin-top: 0px;">
 		<tr>
-			<td colspan="2" style="height: 40px; padding: 30px 0px 0px 0px;">
-				<h3 style="margin: 0px;font-family:Segoe UI;padding-bottom: 15px;color: rgb(111, 111, 111); font-size:18pt;">Featured Plugins</h3>
+			<td colspan="2" style="height: 40px; padding: 30px 0px 0px 0px; width: 100%;">
+				<h3 style="border-bottom: 2px solid #CECECE; margin: 0px;font-family:Segoe UI;padding-bottom: 15px;color: rgb(111, 111, 111); font-size:18pt;">Featured Plugins</h3>
 			</td>
 			<td  align="right" style="font-size:16px;"></td>
 		</tr>
 	</table>
-	<div class="featured_header">
-		<div>
+		<div class="featured_header">
 			<a href="https://web-dorado.com/wordpress-plugins.html?source=spidercalendar" target="_blank">
 				<h1>GET SPIDER CALENDAR +18 PLUGINS</h1>
 				<h1 class="get_plugins">FOR $100 ONLY <span>- SAVE 70%</span></h1>
+				<div class="try-now">
+					<span>TRY NOW</span>
+				</div>
 			</a>
 		</div>
 	<form method="post">
@@ -1282,7 +1300,7 @@ function calendar_Featured_Plugins() { ?>
 			</li>
 		</ul>
 	</form>
-	</div>
+
 </div>
 <?php }
 
@@ -1293,10 +1311,10 @@ function calendar_Featured_themes_styles() {
 
 function calendar_Featured_themes() { ?>
 <div id="main_featured_themes_page">
-	<table align="center" width="90%" style="margin-top: 0px;border-bottom: rgb(111, 111, 111) solid 1px;">
+	<table align="center" width="90%" style="margin-top: 0px;">
 		<tr>
 			<td colspan="2" style="height: 40px; padding: 30px 0px 0px 0px;">
-				<h3 style="margin: 0px;font-family:Segoe UI;padding-bottom: 15px;color: rgb(111, 111, 111); font-size:18pt;">Featured Themes</h3>
+				<h3 style="border-bottom: 2px solid #CECECE; margin: 0px;font-family:Segoe UI;padding-bottom: 15px;color: rgb(111, 111, 111); font-size:18pt;">Featured Themes</h3>
 			</td>
 			<td align="right" style="font-size:16px;"></td>
 		</tr>
@@ -1306,8 +1324,12 @@ function calendar_Featured_themes() { ?>
 		<a href="https://web-dorado.com/wordpress-themes.html?source=spidercalendar" target="_blank">
 			<h1>WORDPRESS THEMES</h1>
 			<h1 class="get_plugins">ALL FOR $40 ONLY <span>- SAVE 80%</span></h1>
+			<div class="try-now">
+				<span>TRY NOW</span>
+			</div>
 		</a>
 		</div>
+	</div >	
 	<form method="post">
 		<ul id="featured-plugins-list">
 			<li class="portfolio">
@@ -1422,7 +1444,6 @@ function calendar_Featured_themes() { ?>
 			</li>
 		</ul>
 	</form>
-	</div>
 </div >	
 <?php }
 

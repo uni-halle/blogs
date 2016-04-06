@@ -103,15 +103,28 @@
 }
 
 .featured_header > div{
-	background: #FFFFFF;
+	background: #11465F;
     border-right: 3px solid #E5E5E5;
     border-bottom: 3px solid #E5E5E5;
 	padding: 20px 0;
 }
 .featured_header {
     position: relative;
-    width: 90%;
+    width: 89.4%;
     margin: 15px auto 0px auto;
+}
+
+.featured_header .try-now{
+	text-align: center;
+}
+
+.featured_header .try-now span{
+	display: inline-block;
+    padding: 7px 16px;
+    background: #F47629;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 23px;
 }
 
 .featured_header .old_price{
@@ -122,7 +135,6 @@
 
 .featured_header h1.get_plugins{
 	color: #FFFFFF;
-	background:url(images/featured_plugins_bg.png) no-repeat;
 	height: 85px;
     margin: 0;
     background-size: 95% 100%;
@@ -133,7 +145,7 @@
 .featured_header h1{
 	font-size: 45px;
     text-align: center;
-	color: #F47629;
+	color: #FFFFFF;
 	letter-spacing: 3px;
 	line-height: 10px;
 }
