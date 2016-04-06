@@ -3,7 +3,7 @@
 /**
  *  This file is part of wp-Typography.
  *
- *	Copyright 2014-2015 Peter Putzer.
+ *	Copyright 2014-2016 Peter Putzer.
  *	Copyright 2012-2013 Marie Hogebrandt.
  *	Coypright 2009-2011 KINGdesk, LLC.
  *
@@ -100,12 +100,19 @@ class WP_Typography {
 	private $filter_priority = 9999;
 
 	/**
-	 * Sets up a new wpTypography object.
+	 * The singleton instance.
+	 *
+	 * @var WP_Typography
+	 */
+	private static $_instance;
+
+	/**
+	 * Sets up a new WP_Typography object.
 	 *
 	 * @param string $version  The full plugin version string (e.g. "3.0.0-beta.2")
 	 * @param string $basename The result of plugin_basename() for the main plugin file.
 	 */
-	function __construct( $version, $basename = 'wp-typography/wp-typography.php' ) {
+	private function __construct( $version, $basename = 'wp-typography/wp-typography.php' ) {
 		// basic set-up
 		$this->version           = $version;
 		$this->version_hash      = $this->hash_version_string( $version );
@@ -115,6 +122,34 @@ class WP_Typography {
 		// admin handler
 		$this->admin             = new WP_Typography_Admin( $basename, $this );
 		$this->default_settings  = $this->admin->get_default_settings();
+	}
+
+	/**
+	 * Create & retrieve the WP_Typography instance. Should not be called outside of plugin set-up.
+	 *
+	 * @param string $version  The full plugin version string (e.g. "3.0.0-beta.2")
+	 * @param string $basename The result of plugin_basename() for the main plugin file.
+	 */
+	public static function _get_instance( $version, $basename = 'wp-typography/wp-typography.php' ) {
+		if ( ! self::$_instance ) {
+			self::$_instance = new self( $version, $basename );
+		} else {
+			_doing_it_wrong( __FUNCTION__, 'WP_Typography::_get_instance called more than once.', '3.2.0' );
+		}
+
+		return self::$_instance;
+	}
+
+	/**
+	 * Retrieve the plugin instance.
+	 */
+	public static function get_instance() {
+    	if ( ! self::$_instance ) {
+    		_doing_it_wrong( __FUNCTION__, 'WP_Typography::get_instance called without plugin intialization.', '3.2.0' );
+			return self::_get_instance( '0.0.0' ); // fallback with invalid version
+		}
+
+		return self::$_instance;
 	}
 
 	/**
@@ -150,32 +185,56 @@ class WP_Typography {
 			$this->settings[ $key ] = get_option( $key );
 		}
 
-		// Remove default Texturize filter if it conflicts.
+		// disable wptexturize filter if it conflicts with our settings
 		if ( $this->settings['typo_smart_characters'] && ! is_admin() ) {
-			remove_filter( 'category_description', 'wptexturize' ); // TODO: necessary?
-			remove_filter( 'single_post_title',    'wptexturize' ); // TODO: necessary?
-			remove_filter( 'comment_author',       'wptexturize' );
-			remove_filter( 'comment_text',         'wptexturize' );
-			remove_filter( 'the_title',            'wptexturize' );
-			remove_filter( 'the_content',          'wptexturize' );
-			remove_filter( 'the_excerpt',          'wptexturize' );
-			remove_filter( 'widget_text',          'wptexturize' );
-			remove_filter( 'widget_title',         'wptexturize' );
+			add_filter( 'run_wptexturize', '__return_false' );
 		}
 
 		// apply our filters
 		if ( ! is_admin() ) {
+			/**
+			 * Filter the priority used for wp-Typography's text processing filters.
+			 *
+			 * When NextGen Gallery is detected, the priority is set to PHP_INT_MAX.
+			 *
+			 * @since 3.2.0
+			 *
+			 * @param number $priority The filter priority. Default 9999.
+			 */
+			$priority = apply_filters( 'typo_filter_priority', $this->filter_priority );
+
 			// removed because it caused issues for feeds
 			// add_filter( 'bloginfo', array($this, 'processBloginfo'), 9999);
 			// add_filter( 'wp_title', 'strip_tags', 9999);
 			// add_filter( 'single_post_title', 'strip_tags', 9999);
-			add_filter( 'comment_author', array( $this, 'process' ),       $this->filter_priority );
-			add_filter( 'comment_text',   array( $this, 'process' ),       $this->filter_priority );
-			add_filter( 'the_title',      array( $this, 'process_title' ), $this->filter_priority );
-			add_filter( 'the_content',    array( $this, 'process' ),       $this->filter_priority );
-			add_filter( 'the_excerpt',    array( $this, 'process' ),       $this->filter_priority );
-			add_filter( 'widget_text',    array( $this, 'process' ),       $this->filter_priority );
-			add_filter( 'widget_title',   array( $this, 'process_title' ), $this->filter_priority );
+
+			// "full" content
+			add_filter( 'comment_author',    array( $this, 'process' ),       $priority );
+			add_filter( 'comment_text',      array( $this, 'process' ),       $priority );
+			add_filter( 'comment_text',      array( $this, 'process' ),       $priority );
+			add_filter( 'the_content',       array( $this, 'process' ),       $priority );
+			add_filter( 'term_name',         array( $this, 'process' ),       $priority );
+			add_filter( 'term_description',  array( $this, 'process' ),       $priority );
+			add_filter( 'link_name',         array( $this, 'process' ),       $priority );
+			add_filter( 'the_excerpt',       array( $this, 'process' ),       $priority );
+			add_filter( 'the_excerpt_embed', array( $this, 'process' ),       $priority );
+			add_filter( 'widget_text',       array( $this, 'process' ),       $priority );
+
+			// headings
+			add_filter( 'the_title',            array( $this, 'process_title' ), $priority );
+			add_filter( 'single_post_title',    array( $this, 'process_title' ), $priority );
+			add_filter( 'single_cat_title',     array( $this, 'process_title' ), $priority );
+			add_filter( 'single_tag_title',     array( $this, 'process_title' ), $priority );
+			add_filter( 'single_month_title',   array( $this, 'process_title' ), $priority );
+			add_filter( 'single_month_title',   array( $this, 'process_title' ), $priority );
+			add_filter( 'nav_menu_attr_title',  array( $this, 'process_title' ), $priority );
+			add_filter( 'nav_menu_description', array( $this, 'process_title' ), $priority );
+			add_filter( 'widget_title',         array( $this, 'process_title' ), $priority );
+			add_filter( 'list_cats',            array( $this, 'process_title' ), $priority );
+
+			// extra care needs to be taken with the <title> tag
+			add_filter( 'wp_title',             array( $this, 'process_feed' ),        $priority ); // WP < 4.4
+			add_filter( 'document_title_parts', array( $this, 'process_title_parts' ), $priority );
 		}
 
 		// add IE6 zero-width-space removal CSS Hook styling
@@ -184,7 +243,7 @@ class WP_Typography {
 
 
 	/**
-	 * Process title text fragment.
+	 * Process heading text fragment.
 	 *
 	 * Calls `process( $text, true )`.
 	 *
@@ -195,28 +254,73 @@ class WP_Typography {
 	}
 
 	/**
-	 * Process text fragment.
+	 * Process text as feed.
+	 *
+	 * Calls `process( $text, $is_title, true )`.
+	 *
+	 * @since 3.2.4
 	 *
 	 * @param string $text
 	 * @param boolean $is_title Default false.
 	 */
-	function process( $text, $is_title = false ) {
+	function process_feed( $text, $is_title = false ) {
+		return $this->process( $text, $is_title, true );
+	}
+
+	/**
+	 * Process title parts and strip &shy; and zero-width space.
+	 *
+	 * @since 3.2.5
+	 *
+	 * @param array $title_parts An array of strings.
+	 */
+	function process_title_parts( $title_parts ) {
+		/**
+		 * We need a utility function that's not autoloaded.
+		 */
+		require_once dirname( __DIR__ ) . '/php-typography/php-typography-functions.php'; // @codeCoverageIgnore
+
+		foreach ( $title_parts as $index => $part ) {
+			// &shy; and &#8203; after processing title part
+			$title_parts[ $index ] = str_replace( array( \PHP_Typography\uchr(173), \PHP_Typography\uchr(8203) ), '', $this->process( $part, true, true ) );
+		}
+
+		return $title_parts;
+	}
+
+	/**
+	 * Process text fragment.
+	 *
+	 * @param string $text
+	 * @param boolean $is_title Default false.
+	 * @param boolean $force_feed Default false. @since 3.2.4
+	 */
+	function process( $text, $is_title = false, $force_feed = false ) {
 		$typo = $this->get_php_typo();
 		$transient = 'typo_' . base64_encode( md5( $text, true ) . $this->cached_settings_hash );
 
-		if ( is_feed() ) { // feed readers can be pretty stupid
+		/**
+		 * Filter the caching duration for processed text fragments.
+		 *
+		 * @since 3.2.0
+		 *
+		 * @param number $duration The duration in seconds. Defaults to 1 day.
+		 */
+		$duration = apply_filters( 'typo_processed_text_caching_duration', DAY_IN_SECONDS );
+
+		if ( is_feed() || $force_feed ) { // feed readers can be pretty stupid
 			$transient .= 'f' . ( $is_title ? 't' : 's' ) . $this->version_hash;
 
-			if ( ! empty( $this->settings['typo_disable_caching'] ) || false === ( $processed_text = get_transient( $transient ) ) ) {
+			if ( empty( $this->settings['typo_enable_caching'] ) || false === ( $processed_text = get_transient( $transient ) ) ) {
 				$processed_text = $typo->process_feed( $text, $is_title );
-				$this->set_transient( $transient, $processed_text, DAY_IN_SECONDS );
+				$this->set_transient( $transient, $processed_text, $duration );
 			}
 		} else {
 			$transient .= ( $is_title ? 't' : 's' ) . $this->version_hash;
 
-			if ( ! empty( $this->settings['typo_disable_caching'] ) || false === ( $processed_text = get_transient( $transient ) ) ) {
+			if ( empty( $this->settings['typo_enable_caching'] ) || false === ( $processed_text = get_transient( $transient ) ) ) {
 				$processed_text = $typo->process( $text, $is_title );
-				$this->set_transient( $transient, $processed_text, DAY_IN_SECONDS );
+				$this->set_transient( $transient, $processed_text, $duration );
 			}
 		}
 
@@ -233,9 +337,14 @@ class WP_Typography {
 	 * @return boolean True if the transient could be set successfully.
 	 */
 	public function set_transient( $transient, $value, $duration = 1, $force = false ) {
-		if ( ! $force && ! empty( $this->settings['typo_disable_caching'] ) ) {
+		if ( ! $force && empty( $this->settings['typo_enable_caching'] ) ) {
 			// caching is disabled and not forced for this transient, so we bail
 			return false;
+		}
+
+		if ( ! empty( $this->settings['typo_caching_limit'] ) && count( $this->transients ) >= $this->settings['typo_caching_limit'] ) {
+			// too many cached entries - clean up transients
+			$this->clear_cache();
 		}
 
 		$result = false;
@@ -264,8 +373,17 @@ class WP_Typography {
 				// Load our settings into the instance
 				$this->init_php_typo();
 
+				/**
+				 * Filter the caching duration for the PHP_Typography engine state.
+				 *
+				 * @since 3.2.0
+				 *
+				 * @param number $duration The duration in seconds. Defaults to 1 week.
+				 */
+				$duration = apply_filters( 'typo_php_typography_caching_duration', WEEK_IN_SECONDS );
+
 				// Try again next time
-				$this->set_transient( $transient, $this->php_typo->save_state(), WEEK_IN_SECONDS, true );
+				$this->set_transient( $transient, $this->php_typo->save_state(), $duration, true );
 			}
 
 			// Settings won't be touched again, so cache the hash
@@ -320,6 +438,7 @@ class WP_Typography {
 		$this->php_typo->set_dash_spacing( $this->settings['typo_dash_spacing'] );
 		$this->php_typo->set_fraction_spacing( $this->settings['typo_fraction_spacing'] );
 		$this->php_typo->set_unit_spacing( $this->settings['typo_unit_spacing'] );
+		$this->php_typo->set_french_punctuation_spacing( $this->settings['typo_french_punctuation_spacing'] );
 		$this->php_typo->set_units( $this->settings['typo_units'] );
 		$this->php_typo->set_space_collapse( $this->settings['typo_space_collapse'] );
 		$this->php_typo->set_dewidow( $this->settings['typo_prevent_widows'] );
@@ -332,6 +451,7 @@ class WP_Typography {
 		$this->php_typo->set_style_ampersands( $this->settings['typo_style_amps'] );
 		$this->php_typo->set_style_caps( $this->settings['typo_style_caps'] );
 		$this->php_typo->set_style_numbers( $this->settings['typo_style_numbers'] );
+		$this->php_typo->set_style_hanging_punctuation( $this->settings['typo_style_hanging_punctuation'] );
 		$this->php_typo->set_style_initial_quotes( $this->settings['typo_style_initial_quotes'] );
 		$this->php_typo->set_initial_quote_tags( $this->settings['typo_initial_quote_tags'] );
 
@@ -340,6 +460,7 @@ class WP_Typography {
 			$this->php_typo->set_hyphenate_headings( $this->settings['typo_hyphenate_headings'] );
 			$this->php_typo->set_hyphenate_all_caps( $this->settings['typo_hyphenate_caps'] );
 			$this->php_typo->set_hyphenate_title_case( $this->settings['typo_hyphenate_title_case'] );
+			$this->php_typo->set_hyphenate_compounds( $this->settings['typo_hyphenate_compounds'] );
 			$this->php_typo->set_hyphenation_language( $this->settings['typo_hyphenate_languages'] );
 			$this->php_typo->set_min_length_hyphenation( $this->settings['typo_hyphenate_min_length'] );
 			$this->php_typo->set_min_before_hyphenation( $this->settings['typo_hyphenate_min_before'] );
@@ -414,7 +535,7 @@ class WP_Typography {
 		}
 
 		if ( $this->settings['typo_hyphenate_safari_font_workaround'] ) {
-			echo "<style type=\"text/css\">body {-webkit-font-feature-settings: \"liga\", \"dlig\";}</style>\r\n";
+			echo "<style type=\"text/css\">body {-webkit-font-feature-settings: \"liga\";font-feature-settings: \"liga\";}</style>\r\n";
 		}
 	}
 

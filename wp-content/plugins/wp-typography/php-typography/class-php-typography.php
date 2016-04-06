@@ -147,7 +147,7 @@ class PHP_Typography {
 
 		// not sure if this is necessary - but error_log seems to have problems with the strings.
 		// used as the default encoding for mb_* functions
-		$encoding_set = mb_internal_encoding('UTF-8');
+		$encoding_set = mb_internal_encoding( 'UTF-8' );
 
 		if ( 'now' === $init ) {
 			$this->init( $set_defaults );
@@ -217,7 +217,7 @@ class PHP_Typography {
 										+ array( 'li', 'td', 'dt' ) ); // not included as "block tags" in current HTML5-PHP version
 
 		$this->chr['noBreakSpace']            = uchr(160);
-		$this->chr['noBreakNarrowSpace']      = uchr(8239);  // used in unit spacing
+		$this->chr['noBreakNarrowSpace']      = uchr(160);  // used in unit spacing - can be changed to 8239 via set_true_no_break_narrow_space
 		$this->chr['copyright']               = uchr(169);
 		$this->chr['guillemetOpen']           = uchr(171);
 		$this->chr['softHyphen']              = uchr(173);
@@ -344,7 +344,7 @@ class PHP_Typography {
 		$this->set_classes_to_ignore();
 		$this->set_ids_to_ignore();
 
-		//smart characters
+		// smart characters
 		$this->set_smart_quotes();
 		$this->set_smart_quotes_primary();   // added in version 1.15
 		$this->set_smart_quotes_secondary(); // added in version 1.15
@@ -360,10 +360,11 @@ class PHP_Typography {
 		$this->set_smart_fractions();
 		$this->set_smart_exponents();
 
-		//smart spacing
+		// smart spacing
 		$this->set_single_character_word_spacing();
 		$this->set_fraction_spacing();
 		$this->set_unit_spacing();
+		$this->set_french_punctuation_spacing();
 		$this->set_units();
 		$this->set_dash_spacing();
 		$this->set_dewidow();
@@ -374,15 +375,17 @@ class PHP_Typography {
 		$this->set_email_wrap();
 		$this->set_min_after_url_wrap();
 		$this->set_space_collapse();
+		$this->set_true_no_break_narrow_space();
 
-		//character styling
+		// character styling
 		$this->set_style_ampersands();
 		$this->set_style_caps();
 		$this->set_style_initial_quotes();
 		$this->set_style_numbers();
+		$this->set_style_hanging_punctuation();
 		$this->set_initial_quote_tags();
 
-		//hyphenation
+		// hyphenation
 		$this->set_hyphenation();
 		$this->set_hyphenation_language();
 		$this->set_min_length_hyphenation();
@@ -391,6 +394,7 @@ class PHP_Typography {
 		$this->set_hyphenate_headings();
 		$this->set_hyphenate_all_caps();
 		$this->set_hyphenate_title_case();   // added in version 1.5
+		$this->set_hyphenate_compounds();
 		$this->set_hyphenation_exceptions();
 	}
 
@@ -475,6 +479,29 @@ class PHP_Typography {
 			\x{3000}		# ideographic space
 			'; // required modifiers: x (multiline pattern) i (case insensitive) u (utf8)
 		$this->components['normalSpaces'] = ' \f\n\r\t\v'; // equivalent to \s in non-Unicode mode
+
+		// hanging punctuation
+		$this->components['doubleHangingPunctuation'] = "
+			\"
+			{$this->chr['doubleQuoteOpen']}
+			{$this->chr['doubleQuoteClose']}
+			{$this->chr['doubleLow9Quote']}
+			{$this->chr['doublePrime']}
+			{$this->quote_styles['doubleCurled']['open']}
+			{$this->quote_styles['doubleCurled']['close']}
+
+			"; // requires modifiers: x (multiline pattern) u (utf8)
+		$this->components['singleHangingPunctuation'] = "
+			'
+			{$this->chr['singleQuoteOpen']}
+			{$this->chr['singleQuoteClose']}
+			{$this->chr['singleLow9Quote']}
+			{$this->chr['singlePrime']}
+			{$this->quote_styles['singleCurled']['open']}
+			{$this->quote_styles['singleCurled']['close']}
+			{$this->chr['apostrophe']}
+
+			"; // requires modifiers: x (multiline pattern) u (utf8)
 
 		$this->components['unitSpacingStandardUnits'] = '
 			### Temporal units
@@ -628,6 +655,14 @@ class PHP_Typography {
 		$this->components['smartQuotesApostropheExceptionMatches']      = array_keys( $this->components['smartQuotesApostropheExceptions'] );
 		$this->components['smartQuotesApostropheExceptionReplacements'] = array_values( $this->components['smartQuotesApostropheExceptions'] );
 
+		// needs to be updated whenever the quote style changes
+		$this->update_smart_quotes_brackets();
+	}
+
+	/**
+	 * Update smartQuotesBrackets component after quote style change.
+	 */
+	private function update_smart_quotes_brackets() {
 		$this->components['smartQuotesBrackets'] = array(
 			// single quotes
 			"['"  => "[" . $this->chr['singleQuoteOpen'],
@@ -649,7 +684,7 @@ class PHP_Typography {
 			"\"'" => $this->chr['doubleQuoteOpen']  . $this->chr['singleQuoteOpen'],
 			"'\"" => $this->chr['singleQuoteClose'] . $this->chr['doubleQuoteClose'],
 		);
-		$this->components['smartQuotesBracketMatches']      = array_keys( $this->components['smartQuotesBrackets'] );
+		$this->components['smartQuotesBracketMatches']      =   array_keys( $this->components['smartQuotesBrackets'] );
 		$this->components['smartQuotesBracketReplacements'] = array_values( $this->components['smartQuotesBrackets'] );
 	}
 
@@ -1022,8 +1057,13 @@ class PHP_Typography {
 		$this->regex['spaceCollapseOther']        = "/(?:[{$this->components['normalSpaces']}])*({$this->components['htmlSpaces']})(?:[{$this->components['normalSpaces']}]|{$this->components['htmlSpaces']})*/xu";
 		$this->regex['spaceCollapseBlockStart']   = "/\A(?:[{$this->components['normalSpaces']}]|{$this->components['htmlSpaces']})+/xu";
 
+		// unit spacing
 		$this->regex['unitSpacingEscapeSpecialChars'] = "#([\[\\\^\$\.\|\?\*\+\(\)\{\}])#";
 		$this->update_unit_pattern( isset( $this->settings['units'] ) ? $this->settings['units'] : array() );
+
+		// french punctuation spacing
+		$this->regex['frenchPunctuationSpacing']          = '/(\w+)(\s?)([?!:])(\s|\Z)/u';
+		$this->regex['frenchPunctuationSpacingSemicolon'] = '/(\w+)(\s?)((?<!&amp|&gt|&lt);)(\s|\Z)/u';
 
 		// wrap_hard_hyphens
 		$this->regex['wrapHardHyphensRemoveEndingSpace'] = "/({$this->components['hyphens']}){$this->chr['zeroWidthSpace']}\$/";
@@ -1041,6 +1081,12 @@ class PHP_Typography {
 
         // style_numbers
         $this->regex['styleNumbers'] = "/([0-9]+)/u";
+
+        // style hanging punctuation
+        $this->regex['styleHangingPunctuationDouble'] = "/(\s)([{$this->components['doubleHangingPunctuation']}])(\w+)/u";
+        $this->regex['styleHangingPunctuationSingle'] = "/(\s)([{$this->components['singleHangingPunctuation']}])(\w+)/u";
+        $this->regex['styleHangingPunctuationInitialDouble'] = "/(?:\A)([{$this->components['doubleHangingPunctuation']}])(\w+)/u";
+        $this->regex['styleHangingPunctuationInitialSingle'] = "/(?:\A)([{$this->components['singleHangingPunctuation']}])(\w+)/u";
 
         // style_ampersands
         $this->regex['styleAmpersands'] = "/(\&amp\;)/u";
@@ -1080,6 +1126,19 @@ class PHP_Typography {
         }
 	}
 
+	/**
+	 * Enable usage of true "no-break narrow space" (&#8239;) instead of the normal no-break space (&nbsp;).
+	 *
+	 * @param boolean $on Optional. Default false.
+	 */
+	function set_true_no_break_narrow_space( $on = false ) {
+
+		if ( $on ) {
+			$this->chr['noBreakNarrowSpace'] = uchr( 8239 );
+		} else {
+			$this->chr['noBreakNarrowSpace'] = uchr( 160 );
+		}
+	}
 
 	/**
 	 * Sets tags for which the typography of their children will be left untouched.
@@ -1164,6 +1223,9 @@ class PHP_Typography {
 			if ( ! empty( $this->quote_styles[ $style ]['close'] ) ) {
 				$this->chr['doubleQuoteClose'] = $this->quote_styles[ $style ]['close'];
 			}
+
+			// update brackets component
+			$this->update_smart_quotes_brackets();
 		} else {
 			trigger_error( "Invalid quote style $style.", E_USER_WARNING );
 		}
@@ -1199,6 +1261,9 @@ class PHP_Typography {
 			if ( ! empty( $this->quote_styles[ $style ]['close'] ) ) {
 				$this->chr['singleQuoteClose'] = $this->quote_styles[ $style ]['close'];
 			}
+
+			// update brackets component
+			$this->update_smart_quotes_brackets();
 		} else {
 			trigger_error( "Invalid quote style $style.", E_USER_WARNING );
 		}
@@ -1277,9 +1342,9 @@ class PHP_Typography {
 	}
 
 	/**
-	 * Sets the diacritics replacement language. // FIXME
+	 * Set the language used for diacritics replacements.
 	 *
-	 * @param string $lang Defaults to 'en-US'.
+	 * @param string $lang Has to correspond to a filename in 'diacritics'. Optional. Default 'en-US'.
 	 */
 	function set_diacritic_language( $lang = 'en-US' ) {
 		if ( isset($this->settings['diacriticLanguage']) && $this->settings['diacriticLanguage'] === $lang ) {
@@ -1422,7 +1487,7 @@ class PHP_Typography {
 	}
 
 	/**
-	 * Enable/disable FIXME.
+	 * Enable/disable fraction spacing.
 	 *
 	 * @param boolean $on Defaults to true;
 	 */
@@ -1435,8 +1500,17 @@ class PHP_Typography {
 	 *
 	 * @param boolean $on Defaults to true;
 	 */
-	function set_unit_spacing($on = true) {
+	function set_unit_spacing( $on = true ) {
 		$this->settings['unitSpacing'] = $on;
+	}
+
+	/**
+	 * Enable/disable extra whitespace before certain punction marks, as is the French custom.
+	 *
+	 * @param boolean $on Defaults to true;
+	 */
+	function set_french_punctuation_spacing( $on = true ) {
+		$this->settings['frenchPunctuationSpacing'] = $on;
 	}
 
 	/**
@@ -1595,6 +1669,15 @@ class PHP_Typography {
 	}
 
 	/**
+	 * Enable/disable wrapping of punctiation and wide characters in <span class="pull-*">.
+	 *
+	 * @param boolean $on Defaults to true;
+	 */
+	function set_style_hanging_punctuation( $on = true ) {
+		$this->settings['styleHangingPunctuation'] = $on;
+	}
+
+	/**
 	 * Set the list of tags where initial quotes and guillemets should be styled.
 	 *
 	 * @param string|array $units A comma separated list or an array of tag names.
@@ -1619,9 +1702,9 @@ class PHP_Typography {
 	}
 
 	/**
-	 * Set the hyphenation pattern language. //FIXME
+	 * Set the hyphenation pattern language.
 	 *
-	 * @param string $lang Defaults to 'en-US'.
+	 * @param string $lang Has to correspond to a filename in 'lang'. Optional. Default 'en-US'.
 	 */
 	function set_hyphenation_language( $lang = 'en-US' ) {
 		if ( isset( $this->settings['hyphenLanguage'] ) && $this->settings['hyphenLanguage'] === $lang ) {
@@ -1709,6 +1792,15 @@ class PHP_Typography {
 	}
 
 	/**
+	 * Enable/disable hyphenation of compound words (e.g. "editor-in-chief").
+	 *
+	 * @param boolean $on Defaults to true;
+	 */
+	function set_hyphenate_compounds( $on = true ) {
+		$this->settings['hyphenateCompounds'] = $on;
+	}
+
+	/**
 	 * Sets custom word hyphenations.
 	 *
  	 * @param string|array $exceptions An array of words with all hyphenation points marked with a hard hyphen (or a string list of such words).
@@ -1751,9 +1843,8 @@ class PHP_Typography {
 			return $html;
 		}
 
-		// Lazy-load our parsers
+		// Lazy-load our HTML parser
 		$html5_parser = $this->get_html5_parser();
-		$text_parser  = $this->get_text_parser();
 
 		// parse the html
 		$dom = $this->parse_html( $html5_parser, $html );
@@ -1761,7 +1852,7 @@ class PHP_Typography {
 
 		// query some nodes
 		$body_node = $xpath->query( '/html/body' )->item( 0 );
-		$all_textnodes = $xpath->query( '//text()' );
+		$all_textnodes = $xpath->query( '//text()', $body_node );
 		$tags_to_ignore = $this->query_tags_to_ignore( $xpath, $body_node );
 
 		// start processing
@@ -1790,23 +1881,10 @@ class PHP_Typography {
 			$this->single_character_word_spacing( $textnode );
 			$this->dash_spacing( $textnode );
 			$this->unit_spacing( $textnode );
+			$this->french_punctuation_spacing( $textnode );
 
-			// break it down for a bit more granularity
-			$text_parser->load( $textnode->data );
-			$parsed_mixed_words = $text_parser->get_words( 'no-all-letters', 'allow-all-caps' ); // prohibit letter only words, allow caps
-			$parsed_words = $text_parser->get_words( 'require-all-letters',  // require letter only words, caps allowance in setting; mutually exclusive with $parsed_mixed_words
-														   ( ! empty ( $this->settings['hyphenateAllCaps'] ) ) ? 'allow-all-caps' : 'no-all-caps' );
-			$parsed_other = $text_parser->get_other();
-
-			// process individual text parts here
-			$parsed_mixed_words = $this->wrap_hard_hyphens( $parsed_mixed_words );
-			$parsed_words = $this->hyphenate( $parsed_words, $is_title, $textnode );
-			$parsed_other = $this->wrap_urls( $parsed_other );
-			$parsed_other = $this->wrap_emails( $parsed_other );
-
-			// apply updates to unlockedText
-			$text_parser->update( $parsed_mixed_words + $parsed_words + $parsed_other );
-			$textnode->data = $text_parser->unload();
+			// parse and process individual words
+			$this->process_words( $textnode, $is_title );
 
 			// some final space manipulation
 			$this->dewidow( $textnode );
@@ -1814,14 +1892,16 @@ class PHP_Typography {
 
 			// everything that requires HTML injection occurs here (functions above assume tag-free content)
 			// pay careful attention to functions below for tolerance of injected tags
-			$this->smart_ordinal_suffix( $textnode );	// call before "style_numbers" and "smart_fractions"
-			$this->smart_exponents( $textnode ); // call before "style_numbers"
-			$this->smart_fractions( $textnode ); // call before "style_numbers" and after "smart_ordinal_suffix"
+			$this->smart_ordinal_suffix( $textnode ); // call before "style_numbers" and "smart_fractions"
+			$this->smart_exponents( $textnode );      // call before "style_numbers"
+			$this->smart_fractions( $textnode );      // call before "style_numbers" and after "smart_ordinal_suffix"
 			if ( ! has_class( $textnode, 'caps' ) ) {
-				$this->style_caps( $textnode ); // call before "style_numbers"
+				// call before "style_numbers"
+				$this->style_caps( $textnode );
 			}
 			if ( ! has_class( $textnode, 'numbers' ) ) {
-				$this->style_numbers( $textnode ); // call after "smart_ordinal_suffix", "smart_exponents", "smart_fractions", and "style_caps"
+				// call after "smart_ordinal_suffix", "smart_exponents", "smart_fractions", and "style_caps"
+				$this->style_numbers( $textnode );
 			}
 			if ( ! has_class( $textnode, 'amp') ) {
 				$this->style_ampersands( $textnode );
@@ -1829,15 +1909,18 @@ class PHP_Typography {
 			if ( ! has_class( $textnode, array( 'quo', 'dquo' ) ) ) {
 				$this->style_initial_quotes( $textnode, $is_title );
 			}
+			if ( ! has_class( $textnode, array( 'pull-single', 'pull-double',
+												'pull-A', 'pull-C', 'pull-O', 'pull-T', 'pull-V', 'pull-W', 'pull-Y',
+												'pull-c', 'pull-o', 'pull-v', 'pull-w' ) ) ) {
+				$this->style_hanging_punctuation( $textnode );
+			}
 
-			// Until now, we've only been working on a textnode.
-			// HTMLify result
+			// Until now, we've only been working on a single textnode: HTMLify result
 			$this->replace_node_with_html( $textnode, $textnode->data );
 		}
 
 		return $html5_parser->saveHTML( $body_node->childNodes );;
 	}
-
 
 	/**
 	 * Modifies $html according to the defined settings, in a way that is appropriate for RSS feeds
@@ -1861,7 +1944,7 @@ class PHP_Typography {
 
 		// query some nodes in the DOM
 		$body_node = $xpath->query( '/html/body' )->item( 0 );
-		$all_textnodes = $xpath->query( '//text()' );
+		$all_textnodes = $xpath->query( '//text()', $body_node );
 		$tags_to_ignore = $this->query_tags_to_ignore( $xpath, $body_node );
 
 		// start processing
@@ -1890,6 +1973,47 @@ class PHP_Typography {
 		}
 
 		return $html5_parser->saveHTML( $body_node->childNodes );;
+	}
+
+	/**
+	 * Tokenize the content of a textnode and process the individual words separately.
+	 *
+	 * Currently this functions applies the following enhancements:
+	 *   - wrapping hard hyphens
+	 *   - hyphenation
+	 *   - wrapping URLs
+	 *   - wrapping email addresses
+	 *
+	 * @param \DOMText $textnode The textnode to process.
+	 * @param boolean  $is_title If the HTML fragment is a title. Defaults to false.
+	 */
+	function process_words( \DOMText $textnode, $is_title = false ) {
+		// lazy-load text parser
+		$text_parser  = $this->get_text_parser();
+
+		// set up parameters for word categories
+		$mixed_caps       = empty( $this->settings['hyphenateAllCaps'] ) ? 'allow-all-caps' : 'no-all-caps';
+		$letter_caps      = empty( $this->settings['hyphenateAllCaps'] ) ? 'no-all-caps' : 'allow-all-caps';
+		$mixed_compounds  = empty( $this->settings['hyphenateCompounds'] ) ? 'allow-compounds' : 'no-compounds';
+		$letter_compounds = empty( $this->settings['hyphenateCompounds'] ) ? 'no-compounds' : 'allow-compounds';
+
+		// break text down for a bit more granularity
+		$text_parser->load( $textnode->data );
+		$parsed_mixed_words    = $text_parser->get_words( 'no-all-letters', $mixed_caps, $mixed_compounds );  // prohibit letter-only words, allow caps, allow compounds (or not)
+		$parsed_compound_words = ! empty( $this->settings['hyphenateCompounds'] ) ? $text_parser->get_words( 'no-all-letters', $letter_caps, 'require-compounds' ) : array();
+		$parsed_words          = $text_parser->get_words( 'require-all-letters', $letter_caps, $letter_compounds ); // require letter-only words allow/prohibit caps & compounds vice-versa
+		$parsed_other          = $text_parser->get_other();
+
+		// process individual text parts here
+		$parsed_mixed_words    = $this->wrap_hard_hyphens( $parsed_mixed_words );
+		$parsed_compound_words = $this->hyphenate_compounds( $parsed_compound_words, $is_title, $textnode );
+		$parsed_words          = $this->hyphenate( $parsed_words, $is_title, $textnode );
+		$parsed_other          = $this->wrap_urls( $parsed_other );
+		$parsed_other          = $this->wrap_emails( $parsed_other );
+
+		// apply updates to our text
+		$text_parser->update( $parsed_mixed_words + $parsed_compound_words + $parsed_words + $parsed_other );
+		$textnode->data = $text_parser->unload();
 	}
 
 	/**
@@ -2519,6 +2643,26 @@ class PHP_Typography {
 	}
 
 	/**
+	 * Add a narrow no-break space before
+	 * - exclamation mark (!)
+	 * - question mark (?)
+	 * - semicolon (;)
+	 * - colon (:)
+	 *
+	 * If there already is a space there, it is replaced.
+	 *
+	 * @param \DOMText $textnode
+	 */
+	function french_punctuation_spacing( \DOMText $textnode ) {
+		if ( empty( $this->settings['frenchPunctuationSpacing'] ) ) {
+			return;
+		}
+
+		$textnode->data = preg_replace( $this->regex['frenchPunctuationSpacing'],          '$1' . $this->chr['noBreakNarrowSpace'] . '$3$4', $textnode->data );
+		$textnode->data = preg_replace( $this->regex['frenchPunctuationSpacingSemicolon'], '$1' . $this->chr['noBreakNarrowSpace'] . '$3$4', $textnode->data );
+	}
+
+	/**
 	 * Wrap hard hypens with zero-width spaces (if enabled).
 	 *
 	 * @param array $parsed_text_tokens
@@ -2768,6 +2912,40 @@ class PHP_Typography {
 		$textnode->data = preg_replace( $this->regex['styleNumbers'], '<span class="numbers">$1</span>', $textnode->data );
 	}
 
+	function style_hanging_punctuation( \DOMText $textnode ) {
+		if ( empty( $this->settings['styleHangingPunctuation'] ) ) {
+			return;
+		}
+
+		// we need the parent
+		$block = $this->get_block_parent( $textnode );
+		$firstnode = ! empty( $block ) ? $this->get_first_textnode( $block ) : null;
+
+		// need to get context of adjacent characters outside adjacent inline tags or HTML comment
+		// if we have adjacent characters add them to the text
+		$next_character = $this->get_next_chr( $textnode );
+		if ( '' !== $next_character ) {
+			$textnode->data =  $textnode->data.$next_character;
+		}
+
+		$textnode->data = preg_replace( $this->regex['styleHangingPunctuationDouble'], '$1<span class="push-double"></span>' . $this->chr['zeroWidthSpace'] . '<span class="pull-double">$2</span>$3', $textnode->data );
+		$textnode->data = preg_replace( $this->regex['styleHangingPunctuationSingle'], '$1<span class="push-single"></span>' . $this->chr['zeroWidthSpace'] . '<span class="pull-single">$2</span>$3', $textnode->data );
+
+		if ( empty( $block ) || $firstnode === $textnode ) {
+			$textnode->data = preg_replace( $this->regex['styleHangingPunctuationInitialDouble'], '<span class="pull-double">$1</span>$2', $textnode->data );
+			$textnode->data = preg_replace( $this->regex['styleHangingPunctuationInitialSingle'], '<span class="pull-single">$1</span>$2', $textnode->data );
+		} else {
+			$textnode->data = preg_replace( $this->regex['styleHangingPunctuationInitialDouble'], '<span class="push-double"></span>' . $this->chr['zeroWidthSpace'] . '<span class="pull-double">$1</span>$2', $textnode->data );
+			$textnode->data = preg_replace( $this->regex['styleHangingPunctuationInitialSingle'], '<span class="push-single"></span>' . $this->chr['zeroWidthSpace'] . '<span class="pull-single">$1</span>$2', $textnode->data );
+		}
+
+		// remove any added characters;
+		if ( '' !== $next_character ) {
+			$func = $this->str_functions[ mb_detect_encoding( $textnode->data, $this->encodings, true ) ];
+			$textnode->data = $func['substr']( $textnode->data, 0, $func['strlen']( $textnode->data ) - 1 );
+		}
+	}
+
 	/**
 	 * Wraps ampersands in <span class="amp"> (i.e. H&amp;J becomes H<span class="amp">&amp;</span>J),
 	 * if enabled.
@@ -2892,6 +3070,35 @@ class PHP_Typography {
 
 		// call functionality as seperate function so it can be run without test for setting['hyphenation'] - such as with url wrapping
 		return $this->do_hyphenate( $parsed_text_tokens );
+	}
+
+	/**
+	 * Hyphenate hyphenated compound words (if enabled).
+	 *
+	 * Calls hyphenate() on the component words.
+	 *
+	 * @param array    $parsed_text_tokens Filtered to compound words.
+	 * @param boolean  $is_title Flag to indicate title fragments. Optional. Default false.
+	 * @param \DOMText $textnode The textnode corresponding to the $parsed_text_tokens. Optional. Default null.
+	 */
+	function hyphenate_compounds( array $parsed_text_tokens, $is_title = false, \DOMText $textnode = null ) {
+		if ( empty( $this->settings['hyphenateCompounds'] ) ) {
+			return $parsed_text_tokens; // abort
+		}
+
+		// hyphenate compound words
+		foreach ( $parsed_text_tokens as $key => $word_token ) {
+			$component_words = array();
+			foreach ( preg_split( '/(-)/', $word_token['value'], -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE ) as $word_part ) {
+				$component_words[] = array( 'value' => $word_part );
+			}
+
+			$parsed_text_tokens[$key]['value'] = array_reduce( $this->hyphenate( $component_words, $is_title, $textnode ), function( $carry, $item ) {
+				return $carry . $item['value'];
+			});
+		}
+
+		return $parsed_text_tokens;
 	}
 
 	/**
@@ -3020,12 +3227,12 @@ class PHP_Typography {
 	 *
 	 * @param \DOMNode $element The node to get the containing block-level tag.
 	 *
-	 * @return \DOMNode
+	 * @return \DOMElement
 	 */
 	function get_block_parent( \DOMNode $element ) {
 		$parent = $element->parentNode;
 
-		while ( isset( $parent->tagName ) && ! isset( $this->block_tags[ $parent->tagName ] ) && ! empty( $parent->parentNode ) ) {
+		while ( isset( $parent->tagName ) && ! isset( $this->block_tags[ $parent->tagName ] ) && ! empty( $parent->parentNode ) && $parent->parentNode instanceof \DOMElement ) {
 			$parent = $parent->parentNode;
 		}
 

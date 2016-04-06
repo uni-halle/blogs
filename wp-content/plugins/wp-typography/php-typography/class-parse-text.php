@@ -3,7 +3,7 @@
 /**
  *  This file is part of wp-Typography.
  *
- *	Copyright 2014-2015 Peter Putzer.
+ *	Copyright 2014-2016 Peter Putzer.
  *	Copyright 2012-2013 Marie Hogebrandt.
  *	Coypright 2009-2011 KINGdesk, LLC.
  *
@@ -316,6 +316,7 @@ class Parse_Text {
 		$this->regex['punctuation']          = "/\A{$this->components['punctuation']}\Z/Ssxiu";
 		$this->regex['word']                 = "/\A{$this->components['word']}\Z/Sxu";
 		$this->regex['htmlLetterConnectors'] = "/{$this->components['htmlLetterConnectors']}|[0-9\-_&#;\/]/Sxu";
+		$this->regex['maxStringLength']      = '@\w{500}@Ss';
 	}
 
 	/**
@@ -330,7 +331,7 @@ class Parse_Text {
 		}
 
 		// abort if a simple string exceeds 500 characters (security concern)
-		if ( preg_match( '@\w{500}@s', $raw_text ) ) { // FIXME: should be in $this->regex
+		if ( preg_match( $this->regex['maxStringLength'], $raw_text ) ) {
 			return false;
 		}
 
@@ -502,28 +503,40 @@ class Parse_Text {
 	/**
 	 * Retrieve all tokens of the type "word".
 	 *
-	 * @param string $abc Handling of all-letter words. Allowed values 'no-all-letters', 'allow-all-letters', 'require-all-letters'. Optional. Default 'allow-all-letters'.
-	 * @param string $caps Handling of capitalized words (setting does not affect non-letter characters). Allowed values 'no-all-caps', 'allow-all-caps', 'require-all-caps'. Optional. Default 'allow-all-caps'.
+	 * @param string $abc   Handling of all-letter words. Allowed values 'no-all-letters', 'allow-all-letters', 'require-all-letters'. Optional. Default 'allow-all-letters'.
+	 * @param string $caps  Handling of capitalized words (setting does not affect non-letter characters). Allowed values 'no-all-caps', 'allow-all-caps', 'require-all-caps'. Optional. Default 'allow-all-caps'.
+	 * @param string $comps Handling of compound words (setting does not affect all-letter words). Allowed values 'no-compounds', 'allow-compounds', 'require-compounds'. Optional. Default 'no-compounds'.
 	 */
-	function get_words( $abc = 'allow-all-letters', $caps = 'allow-all-caps' ) {
+	function get_words( $abc = 'allow-all-letters', $caps = 'allow-all-caps', $comps = 'allow-compounds' ) {
 		$tokens = array();
 		$strtoupper = $this->current_strtoupper; // cannot call class properties
 
-		$words = $this->get_type( 'word' );
-		foreach( $words as $index => $token ) {
+		// initialize helper variables outside the loop
+		$capped   = '';
+		$lettered = '';
+		$compound = '';
+
+		foreach( $this->get_type( 'word' ) as $index => $token ) {
 			$capped   = $strtoupper( $token['value'] );
 			$lettered = preg_replace( $this->regex['htmlLetterConnectors'], '', $token['value'] );
+			$compound = preg_replace( '/[^\w-]/Su', '', $token['value'] );
 
-			if ( ( 'no-all-letters' === $abc && $lettered !== $token['value'] ) ) {
-				if ( ( 'no-all-caps'      === $caps && $capped !== $token['value'] ) ||
-					 ( 'allow-all-caps'   === $caps ) ||
-					 ( 'require-all-caps' === $caps && $capped === $token['value'] ) ) {
+			if ( 'no-all-letters' === $abc && $lettered !== $token['value'] ) {
+				if ( ( ( 'no-all-caps'       === $caps && $capped !== $token['value'] ) ||
+					   ( 'allow-all-caps'    === $caps ) ||
+					   ( 'require-all-caps'  === $caps && $capped === $token['value'] ) ) &&
+					 ( ( 'no-compounds'      === $comps && $compound !== $token['value'] ) ||
+					   ( 'allow-compounds'   === $comps ) ||
+					   ( 'require-compounds' === $comps && $compound === $token['value'] ) ) ) {
 					$tokens[ $index ] = $token;
 				}
 			} elseif ( 'allow-all-letters' === $abc) {
-				if ( ( 'no-all-caps'      === $caps && $capped !== $token['value'] ) ||
-					 ( 'allow-all-caps'   === $caps ) ||
-					 ( 'require-all-caps' === $caps && $capped === $token['value'] ) ) {
+				if ( ( ( 'no-all-caps'      === $caps && $capped !== $token['value'] ) ||
+					   ( 'allow-all-caps'   === $caps ) ||
+					   ( 'require-all-caps' === $caps && $capped === $token['value'] ) ) &&
+				     ( ( 'no-compounds'      === $comps && $compound !== $token['value'] ) ||
+					   ( 'allow-compounds'   === $comps ) ||
+					   ( 'require-compounds' === $comps && $compound === $token['value'] ) ) ) {
 					$tokens[ $index ] = $token;
 				}
 			} elseif ( 'require-all-letters' === $abc && $lettered === $token['value'] ) {
