@@ -4,7 +4,7 @@ addLoadEvent(function(){
     jQuery('#icl_theme_localization_type :radio[name="icl_theme_localization_type"]').change(iclEditThemeLocalizationType);
     jQuery('#icl_theme_localization_type :checkbox[name="icl_theme_localization_load_td"]').change(iclToggleTextDoomainInput);
     
-    jQuery('.check-column :checkbox').live('change', iclCheckColumn);
+    jQuery(document).delegate('.check-column :checkbox', 'change', iclCheckColumn);
 });
 
 function iclSaveThemeLocalization(){
@@ -16,9 +16,9 @@ function iclSaveThemeLocalization(){
     }
     spl = jQuery(this).serialize().split('&');    
     var parameters = {};
-    for(var i=0; i< spl.length; i++){        
+    for(var i=0; i< spl.length; i++){
         var par = spl[i].split('=');
-        eval('parameters.' + par[0] + ' = par[1]');
+        parameters[par[0]] = par[1];
     }    
     jQuery('#icl_theme_localization_wrap').load(location.href + ' #icl_theme_localization_subwrap', parameters, function(){
         fadeInAjxResp('#icl_ajx_response_fn', icl_ajx_saved);                                                 

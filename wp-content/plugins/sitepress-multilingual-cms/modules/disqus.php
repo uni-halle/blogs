@@ -2,7 +2,7 @@
 
 
     
-class WPML_Disquss_Integration{
+class WPML_Disqus_Integration{
     
     function __construct(){
         add_action('init', array($this, 'init'));
@@ -55,7 +55,7 @@ class WPML_Disquss_Integration{
             ('Lithuanian', 'lt'),
             ('Macedonian', 'mk'),
             ('Malay (Bahasa Melayu)', 'ms'),
-            (u'Norwegian (Bokmål)', 'nb'),
+            (u'Norwegian (Bokmï¿½l)', 'nb'),
             ('Persian', 'fa'),
             ('Polish', 'pl'),
             ('Portuguese (Brazil)', 'pt_BR'),
@@ -82,9 +82,9 @@ class WPML_Disquss_Integration{
             'ar'    => 'ar',
             'bg'    => 'bg',
             'bs'    => '', //
-            'ca'    => '', //
+            'ca'    => 'ca',
             'cs'    => 'cs',
-            'cy'    => '', //
+            'cy'    => 'cy',
             'da'    => 'da',
             'de'    => 'de_formal',
             'el'    => 'el',
@@ -101,7 +101,7 @@ class WPML_Disquss_Integration{
             'hi'    => '',
             'hr'    => 'hr',
             'hu'    => 'hu',
-            'hy'    => '', //
+            'hy'    => 'hy',
             'id'    => 'id',
             'is'    => 'id',
             'it'    => 'it',
@@ -135,7 +135,7 @@ class WPML_Disquss_Integration{
             'th'    => 'th',
             'tr'    => 'tr',
             'uk'    => 'uk',
-            'ur'    => '', //
+            'ur'    => 'ur',
             'uz'    => '', //
             'vi'    => 'vi',
             'yi'    => '', //
@@ -144,15 +144,16 @@ class WPML_Disquss_Integration{
             'zu'    => 'af'
         );
         
-        $map = apply_filters('wpml_disquss_language_map', $map);
-        
-        $lang = isset($map[$sitepress->get_current_language()]) ? $map[$sitepress->get_current_language()] : '';    
+        $map = apply_filters('wpml_disqus_language_map', $map);
+
+		$current_language = $sitepress->get_current_language();
+		$lang = isset($map[ $current_language ]) ? $map[ $current_language ] : '';
             
         return $lang;
     }
     
 }
 
-$WPML_Disquss_Integration = new WPML_Disquss_Integration;
+$WPML_Disqus_Integration = new WPML_Disqus_Integration;
 
 ?>
