@@ -1,6 +1,6 @@
 /*
 ================================================================================
-CommentPress WP FEE Compatibility Javascript
+CommentPress Modern WP FEE Compatibility Javascript
 ================================================================================
 AUTHOR: Christian Wach <needle@haystack.co.uk>
 --------------------------------------------------------------------------------
@@ -275,9 +275,6 @@ jQuery(document).ready( function($) {
 					function( data, textStatus ) {
 
 						var comments;
-
-						//console.log( textStatus );
-						//console.log( data );
 
 						// if success
 						if ( textStatus == 'success' ) {

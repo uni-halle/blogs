@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: commentpress, buddypress, groups, blogs, groupblogs, comments, commenting, debate, collaboration
 Requires at least: 3.4
 Tested up to: 4.4
-Stable tag: 3.8.4
+Stable tag: 3.8.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -90,7 +90,6 @@ Essential Plugins:
 
 1. Install, Network Activate and configure "BuddyPress" (**Please note:** "CommentPress Core" has not been tested with the Forums component)
 2. Download and Network Activate the latest version of "BuddyPress Groupblog" greater than 1.8.3
-4. Install and DO NOT Network Activate "BuddyPress Template Pack"
 
 Optional Plugins:
 
@@ -107,14 +106,6 @@ Okay, we're ready to install "CommentPress Core":
 3. Network Enable the "CommentPress Modern Theme" and/or the "CommentPress Default Theme" UNLESS
 4. You have "CommentPress Core"-compatible child themes you want to use instead:
 5. Network Enable any "CommentPress Core"-compatible child themes you want to use
-
-Go to your main blog's Dashboard:
-
-1. Activate "BuddyPress Template Pack"
-2. Go to the "BP Compatibility" page
-3. Click "Finish"
-4. Tick "Disable BP Template Pack CSS"
-5. Click "Save Settings"
 6. Optionally, activate your chosen "CommentPress Core"-compatible child theme
 
 Go to your "Groupblog Setup" page under "Settings" in "Network Admin":
@@ -148,11 +139,11 @@ To create a "CommentPress Core"-enabled Groupblog:
 6. To go to the groupblog, click "Blog" (or "Workshop" if you have chosen that naming scheme)
 7. Start your group blogging!
 
-**For sites hosted in the European Union, please note:** the "CommentPress Default Theme" makes use of cookies, but for presentational purposes only. If you intend to use the "CommentPress Default Theme" on a public site, you may need to inform visitors of this.
-
 
 
 == Other Notes ==
+
+**For sites hosted in the European Union, please note:** the "CommentPress Default Theme" makes use of cookies, but for presentational purposes only. If you intend to use the "CommentPress Default Theme" on a public site, you may need to inform visitors of this.
 
 Upgrades from previous versions of "CommentPress" are possible. Please follow the following procedures for your context.
 
@@ -161,21 +152,21 @@ Upgrades from previous versions of "CommentPress" are possible. Please follow th
 
 <h4>Upgrade to CommentPress Core</h4>
 
-It is recommended that you upgrade to the latest versions of WordPress as well as the latest versions of the old "Commentpress" plugins and theme before upgrading to "CommentPress Core", but "CommentPress Core" will do its best if this is not possible. A minimum of WordPress 3.3 is required, but upgrades under WordPress 3.4+ work much better. The old "Commentpress" plugins and theme can be found on Github:
+It is recommended that you upgrade to the latest versions of WordPress as well as the latest versions of the old "CommentPress" plugins and theme before upgrading to "CommentPress Core", but "CommentPress Core" will do its best if this is not possible. A minimum of WordPress 3.3 is required, but upgrades under WordPress 3.4+ work much better. The old "CommentPress" plugins and theme can be found on Github:
 
-1. Get the latest [Commentpress Plugin](https://github.com/IFBook/CommentPressPlugin)
-2. Get the latest [Commentpress for Multisite](https://github.com/IFBook/CommentPressMultisite)
-3. Get the latest [Commentpress Ajaxified](https://github.com/IFBook/CommentPressAjaxified)
-4. Get the latest [Commentpress Theme](https://github.com/IFBook/CommentPressTheme)
+1. Get the latest [CommentPress Plugin](https://github.com/IFBook/CommentPressPlugin)
+2. Get the latest [CommentPress for Multisite](https://github.com/IFBook/CommentPressMultisite)
+3. Get the latest [CommentPress Ajaxified](https://github.com/IFBook/CommentPressAjaxified)
+4. Get the latest [CommentPress Theme](https://github.com/IFBook/CommentPressTheme)
 
 
 <h4>Upgrade to CommentPress Core in WordPress Standalone</h4>
 
 1. Activate "CommentPress Core" plugin
-2. "CommentPress Core" will try and deactivate the "Commentpress Ajaxified" plugin. Deactivate it if it is still active.
-3. "CommentPress Core" will try and deactivate the "Commentpress" plugin. Deactivate it if it is still active.
-4. Delete "Commentpress Ajaxified" plugin
-5. Delete "Commentpress" plugin
+2. "CommentPress Core" will try and deactivate the "CommentPress Ajaxified" plugin. Deactivate it if it is still active.
+3. "CommentPress Core" will try and deactivate the "CommentPress" plugin. Deactivate it if it is still active.
+4. Delete "CommentPress Ajaxified" plugin
+5. Delete "CommentPress" plugin
 
 
 <h4>Upgrade to CommentPress Core in WordPress Multisite (NOT network-activated)</h4>
@@ -183,13 +174,13 @@ It is recommended that you upgrade to the latest versions of WordPress as well a
 On each site:
 
 1. Activate "CommentPress Core" plugin
-2. "CommentPress Core" will try and deactivate the "Commentpress Ajaxified" plugin. Deactivate it if it is still active.
-3. "CommentPress Core" will try and deactivate the "Commentpress" plugin. Deactivate it if it is still active.
+2. "CommentPress Core" will try and deactivate the "CommentPress Ajaxified" plugin. Deactivate it if it is still active.
+3. "CommentPress Core" will try and deactivate the "CommentPress" plugin. Deactivate it if it is still active.
 
 When EVERY site has done this, go to Network Admin -> Plugins:
 
-1. Delete "Commentpress Ajaxified" plugin
-2. Delete "Commentpress" plugin
+1. Delete "CommentPress Ajaxified" plugin
+2. Delete "CommentPress" plugin
 
 
 <h4>Upgrade to CommentPress Core (network-activated OR with BuddyPress Groupblogs)</h4>
@@ -197,9 +188,9 @@ When EVERY site has done this, go to Network Admin -> Plugins:
 To upgrade to CommentPress Core.
 
 1. Install, but DO NOT activate OR network-activate CommentPress Core.
-2. Network Deactivate "Commentpress for Multisite Extras", if present
-3. Network Deactivate "Commentpress for Multisite"
-4. Network Disable all old "Commentpress" child themes
+2. Network Deactivate "CommentPress for Multisite Extras", if present
+3. Network Deactivate "CommentPress for Multisite"
+4. Network Disable all old "CommentPress" child themes
 5. Now Network Activate "CommentPress Core"
 
 "CommentPress Core" will now be active on your main site.
@@ -207,20 +198,35 @@ To upgrade to CommentPress Core.
 On each site:
 
 1. Activate "CommentPress Core" plugin
-2. "CommentPress Core" will try and deactivate the "Commentpress Ajaxified" plugin. Deactivate it if it is still active.
-3. "CommentPress Core" will try and deactivate the "Commentpress" plugin. Deactivate it if it is still active.
+2. "CommentPress Core" will try and deactivate the "CommentPress Ajaxified" plugin. Deactivate it if it is still active.
+3. "CommentPress Core" will try and deactivate the "CommentPress" plugin. Deactivate it if it is still active.
 
 When EVERY site has done this, go to "Network Admin" -> "Plugins":
 
-1. Delete "Commentpress Ajaxified" plugin
-2. Delete "Commentpress" plugin (NOT "CommentPress Core"!)
-3. Delete "Commentpress for Multisite Extras", if present
-4. Delete "Commentpress for Multisite"
+1. Delete "CommentPress Ajaxified" plugin
+2. Delete "CommentPress" plugin (NOT "CommentPress Core"!)
+3. Delete "CommentPress for Multisite Extras", if present
+4. Delete "CommentPress for Multisite"
 
 
 
 == Changelog ==
 
+<h4>3.8.7</h4>
+
+* Fix illegal character in BuddyPress stylesheet
+
+<h4>3.8.6</h4>
+
+* Remove BuddyPress templates from Plugin Directory repo
+
+<h4>3.8.5</h4>
+
+* Fix print layout in Chrome
+* Remove BuddyPress templates and provide compatibility via CSS
+* Update Groupblog compatibility
+* Update Multisite compatibility
+* Drop support for IE7 and under
 
 <h4>3.8.4</h4>
 

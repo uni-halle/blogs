@@ -21,7 +21,7 @@ CommentPress.texthighlighter = {};
 
 
 /**
- * Create CommentPress texthighlighter settings class
+ * Create CommentPress Core texthighlighter settings class
  */
 CommentPress.texthighlighter.utilities = new function() {
 
@@ -298,7 +298,7 @@ CommentPress.texthighlighter.utilities = new function() {
 
 
 /**
- * Create CommentPress texthighlighter textblocks class
+ * Create CommentPress Core texthighlighter textblocks class
  */
 CommentPress.texthighlighter.textblocks = new function() {
 
@@ -805,7 +805,7 @@ CommentPress.texthighlighter.textblocks = new function() {
 		}
 
 		// prepend selection
-		tinymce.activeEditor.setContent( '<p><strong>[' + text + ']</strong></p>' + content, {format : 'html'} );
+		tinymce.activeEditor.setContent( '<p><strong>[' + text + ']</strong></p><p></p>' + content, {format : 'html'} );
 
 		// place cursor at the end and focus
 		setTimeout(function () {
@@ -1150,7 +1150,7 @@ CommentPress.texthighlighter.textblocks = new function() {
 
 
 /**
- * Create CommentPress texthighlighter commentform class
+ * Create CommentPress Core texthighlighter commentform class
  */
 CommentPress.texthighlighter.commentform = new function() {
 
@@ -1398,22 +1398,14 @@ CommentPress.texthighlighter.commentform = new function() {
 		// if the event target is not the comment form container
 		if ( !$(event.target).closest( '#respond' ).length ) {
 
-			//console.log( 'the event target is not the comment form' );
-
 			// if the event target is not a comment
 			if ( !$(event.target).closest( '.comment-content' ).length ) {
-
-				//console.log( 'the event target is not a comment' );
 
 				// do we have a current selection?
 				if ( me.current_selection_exists() ) {
 
-					//console.log( 'we have a selection' );
-
 					// do we have any content?
 					if ( me.comment_content_exists() ) {
-
-						//console.log( 'we have comment content' );
 
 						// show modal
 						me.modal();
@@ -1423,16 +1415,12 @@ CommentPress.texthighlighter.commentform = new function() {
 
 					} else {
 
-						//console.log( 'we DO NOT have comment content' );
-
 						// do modal yes
 						me.modal_yes();
 
 					}
 
 				} else {
-
-					//console.log( 'we DO NOT have a selection' );
 
 					// do modal yes
 					me.modal_yes();
@@ -1594,7 +1582,7 @@ CommentPress.texthighlighter.commentform = new function() {
 
 
 /**
- * Create CommentPress texthighlighter comments class
+ * Create CommentPress Core texthighlighter comments class
  */
 CommentPress.texthighlighter.comments = new function() {
 
@@ -1883,7 +1871,6 @@ CommentPress.texthighlighter.comments = new function() {
 
 				// get the item
 				current_comment = $(parent_comments_array[0]);
-				//console.log( current_comment );
 
 				// get current ID
 				current_comment_id = current_comment.prop('id').split('-')[2];
@@ -2223,7 +2210,7 @@ jQuery(document).ready(function($) {
 	);
 
 	/**
-	 * Hook into CommentPress AJAX new comment added and animation finished
+	 * Hook into CommentPress Core AJAX new comment added and animation finished
 	 *
 	 * @param object event The event (unused)
 	 * @param int comment_id The new comment ID
@@ -2240,7 +2227,7 @@ jQuery(document).ready(function($) {
 	);
 
 	/**
-	 * Hook into CommentPress AJAX new comment added
+	 * Hook into CommentPress Core AJAX new comment added
 	 *
 	 * @param object event The event (unused)
 	 * @param int comment_id The new comment ID
@@ -2275,7 +2262,7 @@ jQuery(document).ready(function($) {
 	);
 
 	/**
-	 * Hook into CommentPress clicks on items whose events do not bubble.
+	 * Hook into CommentPress Core clicks on items whose events do not bubble.
 	 *
 	 * We need to receive callbacks from these clicks to clear the active selection
 	 *
@@ -2309,7 +2296,7 @@ jQuery(document).ready(function($) {
 	);
 
 	/**
-	 * Hook into CommentPress clicks on items whose events do not bubble.
+	 * Hook into CommentPress Core clicks on items whose events do not bubble.
 	 *
 	 * We need to receive callbacks from these clicks to clear the active selection
 	 *

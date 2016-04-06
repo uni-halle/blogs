@@ -1,43 +1,31 @@
-<?php /*
-================================================================================
-Class CommentpressCoreWorkflow
-================================================================================
-AUTHOR: Christian Wach <needle@haystack.co.uk>
---------------------------------------------------------------------------------
-NOTES
-=====
+<?php
 
-This class provides "Translation" workflow to CommentPress Core.
-
---------------------------------------------------------------------------------
-*/
-
-
-
-/*
-================================================================================
-Class Name
-================================================================================
-*/
-
-class CommentpressCoreWorkflow {
-
-
+/**
+ * CommentPress Core Workflow Class.
+ *
+ * This class provides "Translation" workflow to CommentPress Core.
+ *
+ * @since 3.0
+ */
+class Commentpress_Core_Workflow {
 
 	/**
-	 * Properties
+	 * Plugin object.
+	 *
+	 * @since 3.0
+	 * @access public
+	 * @var object $parent_obj The plugin object
 	 */
-
-	// parent object reference
 	public $parent_obj;
 
 
 
 	/**
-	 * Initialises this object
+	 * Initialises this object.
+	 *
+	 * @since 3.0
 	 *
 	 * @param object $parent_obj a reference to the parent object
-	 * @return object
 	 */
 	function __construct( $parent_obj = null ) {
 
@@ -50,15 +38,12 @@ class CommentpressCoreWorkflow {
 		// init
 		$this->_init();
 
-		// --<
-		return $this;
-
 	}
 
 
 
 	/**
-	 * Set up all items associated with this object
+	 * Set up all items associated with this object.
 	 *
 	 * @return void
 	 */
@@ -69,7 +54,7 @@ class CommentpressCoreWorkflow {
 
 
 	/**
-	 * If needed, destroys all items associated with this object
+	 * If needed, destroys all items associated with this object.
 	 *
 	 * @return void
 	 */
@@ -92,7 +77,7 @@ class CommentpressCoreWorkflow {
 
 
 	/**
-	 * Enable workflow
+	 * Enable workflow.
 	 *
 	 * @param bool $exists True if "workflow" is enabled, false otherwise
 	 * @return bool $exists True if "workflow" is enabled, false otherwise
@@ -110,7 +95,7 @@ class CommentpressCoreWorkflow {
 
 
 	/**
-	 * Override the name of the workflow checkbox label
+	 * Override the name of the workflow checkbox label.
 	 *
 	 * @param str $name The existing singular name of the label
 	 * @return str $name The modified singular name of the label
@@ -128,7 +113,7 @@ class CommentpressCoreWorkflow {
 
 
 	/**
-	 * Amend the group meta if workflow is enabled
+	 * Amend the group meta if workflow is enabled.
 	 *
 	 * @param str $blog_type The existing numerical type of the blog
 	 * @return str $blog_type The modified numerical type of the blog
@@ -143,18 +128,22 @@ class CommentpressCoreWorkflow {
 
 		}
 
-		// return, but allow overrides
-		return apply_filters(
-			'cp_class_commentpress_workflow_group_blogtype',
-			$blog_type
-		);
+		/**
+		 * Allow plugins to override the blog type - for example if workflow
+		 * is enabled, it might become a new blog type as far as BuddyPress
+		 * is concerned.
+		 *
+		 * @param int $blog_type The numeric blog type
+		 * @param bool $blog_workflow True if workflow enabled, false otherwise
+		 */
+		return apply_filters( 'cp_class_commentpress_workflow_group_blogtype', $blog_type, $blog_workflow );
 
 	}
 
 
 
 	/**
-	 * Add our metabox if workflow is enabled
+	 * Add our metabox if workflow is enabled.
 	 *
 	 * @return void
 	 */
@@ -219,7 +208,7 @@ class CommentpressCoreWorkflow {
 
 
 	/**
-	 * Amend the workflow metabox title
+	 * Amend the workflow metabox title.
 	 *
 	 * @param str $title The existing title of the metabox
 	 * @return str $title The overridden title of the metabox
@@ -237,7 +226,7 @@ class CommentpressCoreWorkflow {
 
 
 	/**
-	 * Save workflow data based on the state of the metabox
+	 * Save workflow data based on the state of the metabox.
 	 *
 	 * @param object $post_obj The WordPress post object
 	 * @return void
@@ -245,25 +234,22 @@ class CommentpressCoreWorkflow {
 	public function workflow_save_post( $post_obj ) {
 
 		// if no post, kick out
-		if ( ! $post_obj ) { return; }
+		if ( ! $post_obj ) return;
 
 		// if not post or page, kick out
 		$types = array( 'post', 'page' );
-		if ( ! in_array( $post_obj->post_type, $types ) ) { return; }
+		if ( ! in_array( $post_obj->post_type, $types ) ) return;
 
 		// authenticate
-		$_nonce = isset( $_POST['commentpress_workflow_nonce'] ) ? $_POST['commentpress_workflow_nonce'] : '';
-		if ( ! wp_verify_nonce( $_nonce, 'commentpress_post_workflow_settings' ) ) { return; }
+		$nonce = isset( $_POST['commentpress_workflow_nonce'] ) ? $_POST['commentpress_workflow_nonce'] : '';
+		if ( ! wp_verify_nonce( $nonce, 'commentpress_post_workflow_settings' ) ) return;
 
 		// is this an auto save routine?
-		if ( defined('DOING_AUTOSAVE') AND DOING_AUTOSAVE ) { return; }
-
-		//print_r( array( 'can' => current_user_can( 'edit_posts' ) ) ); die();
-		//print_r( array( 'can' => current_user_can( 'edit_pages' ) ) ); die();
+		if ( defined('DOING_AUTOSAVE') AND DOING_AUTOSAVE ) return;
 
 		// check permissions
-		if ( $post_obj->post_type == 'post' AND ! current_user_can( 'edit_posts' ) ) { return; }
-		if ( $post_obj->post_type == 'page' AND ! current_user_can( 'edit_pages' ) ) { return; }
+		if ( $post_obj->post_type == 'post' AND ! current_user_can( 'edit_posts' ) ) return;
+		if ( $post_obj->post_type == 'page' AND ! current_user_can( 'edit_pages' ) ) return;
 
 		// OK, we're authenticated
 
@@ -287,15 +273,14 @@ class CommentpressCoreWorkflow {
 
 		// get original text
 		$original = ( isset( $_POST['cporiginaltext'] ) ) ? $_POST['cporiginaltext'] : '';
-		//print_r( $post ); die();
 
 		// set key
 		$key = '_cp_original_text';
 
-		// if the custom field already has a value...
+		// if the custom field already has a value
 		if ( get_post_meta( $post->ID, $key, true ) !== '' ) {
 
-			// if empty string...
+			// if empty string
 			if ( $original === '' ) {
 
 				// delete the meta_key
@@ -326,10 +311,10 @@ class CommentpressCoreWorkflow {
 		// set key
 		$key = '_cp_literal_translation';
 
-		// if the custom field already has a value...
+		// if the custom field already has a value
 		if ( get_post_meta( $post->ID, $key, true ) !== '' ) {
 
-			// if empty string...
+			// if empty string
 			if ( $literal === '' ) {
 
 				// delete the meta_key
@@ -359,7 +344,7 @@ class CommentpressCoreWorkflow {
 
 
 	/**
-	 * Add the workflow content to the new version
+	 * Add the workflow content to the new version.
 	 *
 	 * @param int $new_post_id The numeric ID of the new WordPress post
 	 * @return void
@@ -371,22 +356,21 @@ class CommentpressCoreWorkflow {
 		// ---------------------------------------------------------------------
 
 		// find and save the data
-		$_data = ( isset( $_POST['commentpress_new_post'] ) ) ? $_POST['commentpress_new_post'] : '0';
+		$data = ( isset( $_POST['commentpress_new_post'] ) ) ? $_POST['commentpress_new_post'] : '0';
 
 		// do we want to create a new revision?
-		if ( $_data == '0' ) { return; }
+		if ( $data == '0' ) return;
 
 		// get original text
 		$original = ( isset( $_POST['cporiginaltext'] ) ) ? $_POST['cporiginaltext'] : '';
-		//print_r( $post ); die();
 
 		// set key
 		$key = '_cp_original_text';
 
-		// if the custom field already has a value...
+		// if the custom field already has a value
 		if ( get_post_meta( $new_post_id, $key, true ) !== '' ) {
 
-			// if empty string...
+			// if empty string
 			if ( $original === '' ) {
 
 				// delete the meta_key
@@ -417,10 +401,10 @@ class CommentpressCoreWorkflow {
 		// set key
 		$key = '_cp_literal_translation';
 
-		// if the custom field already has a value...
+		// if the custom field already has a value
 		if ( get_post_meta( $new_post_id, $key, true ) !== '' ) {
 
-			// if empty string...
+			// if empty string
 			if ( $literal === '' ) {
 
 				// delete the meta_key
@@ -462,7 +446,7 @@ class CommentpressCoreWorkflow {
 
 
 	/**
-	 * Object initialisation
+	 * Object initialisation.
 	 *
 	 * @return void
 	 */
@@ -476,7 +460,7 @@ class CommentpressCoreWorkflow {
 
 
 	/**
-	 * Register WordPress hooks
+	 * Register WordPress hooks.
 	 *
 	 * @return void
 	 */

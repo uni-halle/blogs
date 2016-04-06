@@ -11,9 +11,6 @@ NOTES
 
 
 
-
-
-
 /*
 --------------------------------------------------------------------------------
 RESET & BASICS
@@ -662,8 +659,6 @@ Shadows and Transitions
 
 
 
-
-
 /*
 --------------------------------------------------------------------------------
 BASIC LAYOUT
@@ -886,7 +881,6 @@ BASIC LAYOUT
 {
 	background-color: #fdd;
 }
-
 
 
 
@@ -1288,6 +1282,7 @@ ol.children .reply a
 #respond
 {
 	padding: 2%;
+	position: relative;
 }
 
 div#respond > p
@@ -1525,8 +1520,11 @@ div#respond .subscribe_reloaded_insert
 
 
 
-
-
+/*
+--------------------------------------------------------------------------------
+Footer
+--------------------------------------------------------------------------------
+*/
 
 #footer_inner
 {
@@ -1577,6 +1575,31 @@ Search
 	width: 95%;
 }
 
+
+
+
+/*
+--------------------------------------------------------------------------------
+Signup Form Styles
+--------------------------------------------------------------------------------
+*/
+
+/* CommentPress Core theme compatibility */
+body.commentpress_page #cp-multisite-options h3
+{
+	color: #761D19;
+	font-size: 1.2em;
+	margin: 30px 0 5px 0;
+}
+
+body.commentpress_page #content .mu_register #setupform  #cp-multisite-options p,
+body.commentpress_page #content .mu_register #setupform #cp-multisite-options label
+{
+	color: black;
+	font-size: 1em;
+	margin-top: 0;
+	padding-top: 0;
+}
 
 
 
@@ -1693,6 +1716,11 @@ div.search_meta p a
 	position: relative;
 	line-height: 1.6;
 	z-index: 510;
+}
+
+body.single-post .post
+{
+	padding-bottom: 2em;
 }
 
 .post span.para_marker
@@ -1921,16 +1949,17 @@ body.search-results .post p.postmetadata
 	padding-bottom: 0;
 }
 
-.post .entry-category-meta p
+.post .entry-category-meta p,
+body.blogtype-1 #content .post .entry-category-meta p.category-meta,
+body.blogtype-1 #content .post .entry-category-meta p.category-meta,
+body.blogtype-2 #content .post .entry-category-meta p.category-meta,
+body.blogtype-3 #content .post .entry-category-meta p.category-meta,
+body.blogtype-4 #content .post .entry-category-meta p.category-meta
 {
 	display: inline-block;
 	margin: 0;
 	padding: 0;
 }
-
-
-
-
 
 
 
@@ -1949,8 +1978,6 @@ body.search-results .post p.postmetadata
 {
 	margin: 0 0 0.5em 0.5em;
 }
-
-
 
 
 
@@ -2010,10 +2037,6 @@ span.wp-caption
 	margin-top: 0.2em;
 	font-family: sans-serif;
 }
-
-
-
-
 
 
 
@@ -2103,10 +2126,6 @@ div.image_attachment_caption
 
 
 
-
-
-
-
 /*
 --------------------------------------------------------------------------------
 Support for WordPress post formats
@@ -2131,18 +2150,11 @@ Support for WordPress post formats
 
 
 
-
-
-
-
-
 /*
 --------------------------------------------------------------------------------
 SPECIAL PAGES
 --------------------------------------------------------------------------------
 */
-
-
 
 /* comments-by and comments-all pages */
 h3.comments_hl
@@ -2243,8 +2255,6 @@ h3.comments_hl
 
 
 
-
-
 /* blog archive page */
 .archives_search_form
 {
@@ -2319,12 +2329,6 @@ h3.comments_hl
 {
 	margin-left: 2em;
 }
-
-
-
-
-
-
 
 
 
@@ -2409,9 +2413,6 @@ ul#content-tabs li
 
 
 
-
-
-
 /*
 --------------------------------------------------------------------------------
 Post Versioning
@@ -2490,9 +2491,6 @@ Post Versioning
 
 
 
-
-
-
 /*
 --------------------------------------------------------------------------------
 Author Page
@@ -2543,10 +2541,6 @@ ul.author_pages li a
 {
 	font-size: 80% !important;
 }
-
-
-
-
 
 
 
@@ -2613,8 +2607,6 @@ New Look TOC Sidebar for posts
 {
 	border-bottom: 6px solid #ccc;
 }
-
-
 
 
 
@@ -2722,9 +2714,6 @@ html>body #tern_members .tern_wp_members_list li
 
 
 
-
-
-
 /*
 --------------------------------------------------------------------------------
 Compatibility with ZotPress plugin
@@ -2744,9 +2733,6 @@ Compatibility with ZotPress plugin
 	line-height: 1.6;
 	font-size: 80%;
 }
-
-
-
 
 
 
@@ -2846,9 +2832,6 @@ ol.footnotes,
 
 
 
-
-
-
 /*
 --------------------------------------------------------------------------------
 Compatibility with JetPack plugin
@@ -2871,15 +2854,13 @@ p.comment-subscription-form
 
 
 
-
-
-
 /*
 --------------------------------------------------------------------------------
 Compatibility with Featured Comments plugin
 --------------------------------------------------------------------------------
 */
 
+.feature-bury-comments,
 .feature-burry-comments
 {
 	float: right;
@@ -2888,12 +2869,14 @@ Compatibility with Featured Comments plugin
 	margin-left: 2%;
 }
 
+#comments_in_page_wrapper .feature-bury-comments,
 #comments_in_page_wrapper .feature-burry-comments
 {
 	line-height: 0.8;
 	margin-left: 2%;
 }
 
+.feature-bury-comments a.feature-comments,
 .feature-burry-comments a.feature-comments
 {
 	padding: 0;
@@ -2904,12 +2887,11 @@ Compatibility with Featured Comments plugin
 	text-decoration: none;
 }
 
+.feature-bury-comments a.feature-comments:hover,
 .feature-burry-comments a.feature-comments:hover
 {
 	color: #761D19;
 }
-
-
 
 
 
@@ -2971,11 +2953,9 @@ Best used with Simple Taxonomy plugin
 
 
 
-
-
 /*
 --------------------------------------------------------------------------------
-Compatibility with BP Docs plugin
+Compatibility with BuddyPress Docs plugin
 --------------------------------------------------------------------------------
 */
 
@@ -2983,9 +2963,6 @@ Compatibility with BP Docs plugin
 {
 	margin-top: 0;
 }
-
-
-
 
 
 
@@ -2999,9 +2976,6 @@ body > img
 {
 	float: left;
 }
-
-
-
 
 
 
@@ -3064,8 +3038,6 @@ Compatibility with Comment Tagger plugin
 	color: #761D19;
 	text-decoration: none;
 }
-
-
 
 
 
@@ -3207,6 +3179,80 @@ body.group-admin.group-sites .standard-form .bpgsites_group_linkages_pending
 
 
 
+/*
+--------------------------------------------------------------------------------
+Compatibility with CommentPress JSTOR plugin
+--------------------------------------------------------------------------------
+*/
+
+.commentpress_jstor p.commentpress_jstor_trigger
+{
+	padding: 2%;
+	font-size: 70%;
+	text-transform: uppercase;
+	font-family: sans-serif;
+	margin: 0;
+	background-color: #8FB7D3;
+	color: #fff;
+}
+
+.commentpress_jstor p.commentpress_jstor_trigger:hover
+{
+	cursor: pointer;
+	background-color: #97CFEF;
+}
+
+.commentpress_jstor p.commentpress_jstor_triggered:hover
+{
+	cursor: default;
+	background-color: #8FB7D3;
+}
+
+.commentpress_jstor .comment-title a
+{
+	color: #761D19;
+	text-decoration: none;
+	font-family: Lato, 'Trebuchet MS', Helvetica, Arial, sans-serif;
+	font-weight: bold;
+}
+
+.commentpress_jstor .commentpress_jstor_spinner
+{
+	font-size: 70%;
+	margin: 0;
+	padding: 2%;
+	padding-bottom: 1%;
+	background-color: #eee;
+}
+
+.commentpress_jstor ol
+{
+	margin: 0;
+	padding: 0;
+	background-color: #eee;
+}
+
+.commentpress_jstor ol li
+{
+	background-color: #eee;
+	padding: 0;
+}
+
+.commentpress_jstor .comment-content
+{
+	margin-top: 2%;
+}
+
+.commentpress_jstor .comment-not-found
+{
+	padding: 2%;
+	margin: 0;
+	font-size: 80%;
+	color: #ca0000;
+	text-transform: uppercase;
+	font-family: sans-serif;
+	background-color: #eee;
+}
 
 
 
@@ -3239,9 +3285,6 @@ Comment Orphaning
 {
 	background-color: #F5B0A6 !important;
 }
-
-
-
 
 
 
@@ -3287,8 +3330,6 @@ Feature images
 	margin-top: 0;
 	margin-bottom: 0.3em;
 }
-
-
 
 
 
@@ -3572,7 +3613,7 @@ body.fee .metabox_container label
 
 /*
 --------------------------------------------------------------------------------
-Compatibility with CommentPress infinite scroll
+Compatibility with CommentPress Core infinite scroll
 --------------------------------------------------------------------------------
 */
 
@@ -3590,7 +3631,7 @@ Compatibility with CommentPress infinite scroll
 
 /*
 --------------------------------------------------------------------------------
-Compatibility with CommentPress Text Highlighter
+Compatibility with CommentPress Core Text Highlighter
 --------------------------------------------------------------------------------
 */
 
@@ -3880,8 +3921,6 @@ RESPONSIVENESS
 
 
 
-
-
 @media all and (max-width: 1020px) {
 
 	#footer
@@ -3991,8 +4030,6 @@ RESPONSIVENESS
 	}
 
 }
-
-
 
 
 
