@@ -1,0 +1,39 @@
+.entry-content a, .entry-summary a, .taxonomy-description a, .logged-in-as a, .comment-content a, .pingback .comment-body > a, .textwidget a, .entry-footer a:hover, .site-info a:hover
+	box-shadow: none
+
+@media screen and (min-width: 44.375em)
+
+	body:not(.custom-background-image):before, body:not(.custom-background-image):after
+		display: none
+
+	.site-main > article
+		margin-bottom: 3.5em
+
+
+@media screen and (min-width: 56.875em)
+	.main-navigation
+		margin: 0
+		a
+			padding: 0
+
+	.site-footer
+		padding: 0 0 $v-margin-section
+
+
+	.no-sidebar .entry-header, .no-sidebar .entry-content, .no-sidebar .entry-summary, .no-sidebar .entry-footer, .no-sidebar .comments-area, .no-sidebar .image-navigation, .no-sidebar .post-navigation, .no-sidebar .pagination, .no-sidebar .page-header, .no-sidebar .page-content, .no-sidebar .content-bottom-widgets
+		margin-right: 0
+		margin-left: 0
+
+
+
+
+@media screen and (min-width: 61.5625em)
+	.site-header-menu
+		margin: 0
+
+	body.no-sidebar:not(.search-results) article:not(.type-page) .entry-content
+		width: 100%
+		float: none
+
+	.site-main > article
+		margin-bottom: 3.5em

@@ -1,0 +1,104 @@
+#masthead
+	padding: 0
+	margin: 3% 0
+
+#site_description p, .site-header-main
+	max-width: $content-max-width
+	margin: 0 3%
+
+
+
+#site_description
+	width: 100%
+	padding: 15px 0 10px
+	margin-bottom: $v-margin-p
+	text-transform: uppercase
+	font: $garamond
+	border-bottom: 1px solid $blue-light
+
+.site-header-main
+	position: relative
+	padding-bottom: 10px
+	border-bottom: 1px solid $gray-lighter
+
+
+.site-branding
+	padding-right: 1.5em
+	margin: 0.875em auto 0.875em 0
+	.site-title
+		font: $garamond-italic
+		color: $text-blue
+		a
+			color: $text-blue
+			&:hover, &:focus
+				color: $text-blue
+				font-style: normal
+
+//#menu-hauptmenue, #menu-footer-menu
+.primary-menu, .footer-nav
+	li
+		font-size: 0.9em
+		text-transform: uppercase
+		&.current-menu-item, &.current-menu-parent
+			a
+				color: $link
+				font-style: italic
+
+	a
+		color: $gray-light
+		font-weight: 700
+		padding: $v-margin-p / 2.5
+		&:hover, &:focus
+			color: $link
+
+footer.site-footer .footer-nav
+	li
+		font-size: 1em
+		&.current-menu-item, &.current-menu-parent
+			a
+				color: $text
+				font-style: normal
+	a
+		padding: 0
+		&:hover, &:focus
+			color: $text
+
+
+
+#lang_sel_list
+	a, a:visited
+		font-size: $nav-font-size - .2
+		text-transform: uppercase
+		padding-left: 10px
+		&.lang_sel_sel
+			color: $gray-light
+			cursor: default
+		&.lang_sel_other
+			&:hover, &:focus
+				color: $link
+	
+
+.page-header
+	margin: 0 0 $v-margin-section
+	border: none
+	h1
+		font-size: $h1
+
+
+@media only screen and (min-width: 910px)
+
+	.site-header-main
+		padding-bottom: 100px
+
+	#site_branding
+		margin-top: 0
+
+	#lang_sel_list
+		position: absolute
+		right: 0
+		top: 0
+
+	#site-navigation
+		position: absolute
+		right: 0
+		bottom: 5px

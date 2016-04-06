@@ -1,0 +1,269 @@
+body
+	font: $font
+
+hr
+	height: 2px
+	background-color: $gray-lighter
+
+
+#page
+	margin: 0
+
+#content, .center-content
+	margin: 3%
+
+#content, .center-content
+	@extend .cf
+	max-width: $content-max-width
+	padding-top: 0
+	padding-bottom: 0
+	padding-left: 0 !important
+	padding-right: 0 !important
+
+.home .site-main > article
+	margin-bottom: 5px !important
+
+.entry-header, .entry-content
+	margin: 0 !important
+
+.section
+	padding: $v-margin-p 0
+	margin-bottom: $v-margin-section
+
+	&.full-width
+		width: 100%
+		border-bottom: $border
+
+video, iframe
+	max-width: 100%
+	height: auto
+
+//video
+//	cursor: pointer
+
+.archive .entry-title, .entry-content h2
+	font-size: $h3
+	font-weight: 500
+
+#home_articles h3.entry-title
+	font-size: 1.25em !important
+
+.archive
+	article
+		position: relative
+		margin-bottom: $v-margin-p
+		padding: 2em 0 1em
+		border-top: $border
+		//&.category-aktuelles, &.category-news
+		//	height: 240px
+		//&.category-team
+		//	height: 380px
+		&:first-child
+			border-top: none
+		p
+			margin: 0
+		.read-more
+			a
+				display: block
+				padding: $v-margin-p 0 0
+
+	.attachment-post-thumbnail
+		width: 100%
+		display: block
+		margin-bottom: $v-margin-p
+
+#archive_articles .page-header
+	margin-bottom: $v-margin-p
+	padding-top: 0
+
+
+article
+	+hyphens()
+
+
+h1.entry-title
+	margin-bottom: 40px
+	font-size: $h1
+
+
+.single
+	.entry-header
+		max-width: $article-max-width
+
+	.entry-content
+		> p, > hr, #projektinfo
+			max-width: $article-max-width
+
+		ul
+			list-style: none
+			li
+				&:before
+					content: '-'
+					padding-right: .4em
+
+
+.wpb_content_element, .seitenanfang
+	max-width: $article-max-width
+	@extend .cf
+
+
+.wpb_content_element
+
+	&.galerie, &.full-width
+		max-width: 100%
+
+	//&.vorspann.full-width
+	//	max-width: $content-max-width * 7/8
+
+	&.mitglieder p
+		margin-bottom: .75em
+
+
+.galerie
+	margin: $v-margin-section 0
+	figure
+		width: 100% !important
+		padding-bottom: 0.5em
+		border-bottom: $border-thin
+
+.gallery
+	width: 100%
+	max-width: 100%
+	margin: 0
+	padding: $v-margin-section 0
+	border-top: $border
+	border-bottom: $border
+	figure
+		border: none
+		background-color: #000
+		overflow: hidden
+		.gallery-icon
+			height: 0
+			padding-bottom: 75%
+			position: relative
+			visibility: hidden
+			img
+				display: block
+				position: absolute
+				margin: auto
+			&.portrait
+				img
+					height: 100%
+					width: auto
+					margin-left: 22.77%
+			&.landscape
+				img
+					width: 100%
+					height: auto
+
+.gallery-item
+	margin-bottom: 6%
+	padding: 0 !important
+	position: relative
+	&:hover
+		.gallery-caption
+			top: 0
+
+.gallery-columns-4 .gallery-item
+	max-width: 100%
+	margin-right: 3%
+	&:nth-child(4n)
+		margin-right: 0
+
+.gallery-caption
+	color: #ffffff
+	font-size: 0.8em
+	font-style: normal
+	line-height: 1.3
+	text-align: left
+	padding: 7% 5%
+	position: absolute
+	top: 100%
+	bottom: 0
+	background-color: rgba(0,0,0,0.7)
+	transition: top 0.2s
+	cursor: pointer
+
+
+
+.projektinfo
+	font-size: 0.9em
+	hr
+		margin-bottom: $v-margin-section
+	p, li
+		margin: .2em 0
+		line-height: 1.5
+	a, li:before
+		color: $gray-lighter
+
+#projektinfo
+	margin: $v-margin-section 0
+
+
+.col
+	@extend .cf
+	padding-bottom: $v-margin-p
+
+
+.full-width
+	.vc_col-sm-8
+		width: 60%
+
+	.vc_col-sm-4
+		width: 40%
+
+
+
+
+.site-footer
+	background-color: $bg-gray
+	padding: 0 0 $v-margin-section
+	font-size: $nav-font-size
+	font-weight: 700
+	p
+		margin: 0
+	a, #menu-footer-menu a
+		color: $gray-light
+		font-weight: 500
+		&:hover, &:focus
+			color: $link
+
+.footer-navigation
+	ul
+		margin: 0
+		list-style: none
+#menu-footer-menu
+	li
+		margin-bottom: 5px
+	a
+		padding-left: 0
+
+
+#footer_icons
+	@extend .cf
+	figure
+		width: 50%
+		height: 100px
+		float: left
+		text-align: center
+		/* align the inline(-block) elements horizontally
+		font: 0/0 a
+		/* remove the gap between inline(-block) elements
+		&:before
+			/* create a full-height inline block pseudo=element
+			content: ' '
+			display: inline-block
+			vertical-align: middle
+			/* vertical alignment of the inline element
+			height: 100%
+		img
+			margin: auto
+			max-width: 90%
+			display: inline-block
+			vertical-align: middle
+			/* vertical alignment of the inline element
+			//font: $font
+
+
+
+

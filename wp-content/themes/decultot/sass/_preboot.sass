@@ -1,0 +1,107 @@
+//  ***********************
+//    font sizes
+//	***********************
+
+$font-size: 18px
+$line-height: 1.2
+$font-size-mobile: 16px
+$h1: 1.93em
+$h2: 1.53em
+$h3: 1.53em
+$h4: 1.25em
+$nav-font-size: 0.8em
+
+//  ***********************
+//    fonts
+//	***********************
+
+$font-family: 'Merlo', 'Lucida Grande', Helvetica, sans-serif
+$font: normal normal $font-size-mobile/#{$line-height} $font-family
+
+$garamond: normal normal 12px/1 'GaramondPremierW08-Medium', serif
+$garamond-italic: normal normal 32px/1.1 'GaramondPremierW08-Medium-Italic', serif
+
+
+//  ***********************
+//    colors
+//	***********************
+
+$blue: #035292
+$blue-light: #c1d4e4
+$gray: #606060
+$gray-light: #999
+$gray-lighter: lighten($gray-light, 15%)
+$red: #ED1C24
+
+$bg: #FFFFFF
+$bg-gray: #f7f7f7
+$text: $gray
+$text-blue: $blue
+$link: $red
+
+
+//  Layouts
+
+$border: 1px solid $gray-lighter
+$border-thin: 1px solid $gray-lighter
+
+//  ***********************
+//    dimensions
+//	***********************
+
+$content-max-width: 960px
+//$article-max-width: 640px
+$article-max-width: $content-max-width / 3 * 2
+
+$v-margin-section: 50px
+$v-margin-p: 20px
+
+
+//  ***********************
+//    device widths
+//	***********************
+
+$i_port_width: 320px
+$i4_land_width: 480px
+$i5_land_width: 568px
+$i6_port_width: 375px
+$i6_land_width: 667px
+$i6plus_port_width: 414px
+$i6plus_land_width: 736px
+$pad_width: 768px
+$desk_width: 1024px
+
+
+
+
+//  ***********************
+//    helper classes
+//	***********************
+
+
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    contenteditable attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that are clearfixed.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+
+.cf
+	&:before
+		content: " "
+		/* 1
+		display: table
+	/* 2
+	&:after
+		content: " "
+		/* 1
+		display: table
+		/* 2
+		clear: both
+	*zoom: 1
+
+//
+// For IE 6/7 only
+// Include this rule to trigger hasLayout and contain floats.
