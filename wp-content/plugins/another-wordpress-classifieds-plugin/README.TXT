@@ -3,9 +3,9 @@ Contributors: awpcp
 Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified script,classified theme,classifieds theme,wp classifieds,wp classified
 Requires at least: 4.0
-Tested up to: 4.4.2
-Last Updated: 2016-Feb-23
-Stable tag: tags/3.6.4.1
+Tested up to: 4.5
+Last Updated: 2016-Mar-29
+Stable tag: tags/3.6.5
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -221,6 +221,24 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 [Plugin documentation](http://www.awpcp.com/documentation/)
 
 == Changelog ==
+
+= Version 3.6.5 =
+* Add category parameter to Random Listings shortcode.
+* Update integrations with SEO plugins to generate basic meta tags.
+* Add filter to prevent generation of basic meta tags.
+* Add 'days-before-expired-listings-are-deleted' setting.
+* Update name and description of 'autoexpiredisabledelete' setting.
+* Update name and description of 'addurationfreemode' setting.
+* Replace AWPCP with the blog name in Place/Edit Ad user panel pages.
+* Fix image's aspect ratio in Listings Widget.
+* Fix Random Listings shortcode to be more random.
+* Replace usages of get_currentuserinfo() with wp_get_current_user().
+* Fix width of textareas in Settings admin page.
+* Add setting to control whether the mobile menu starts expanded or closed.
+* Fix PHP errors and notices in Billing Form.
+* Fix Search By Payer Email feature.
+* Enqueue plugin scripts and styles in plugin admin pages only.
+* Fix undefined index error in Extra Fields.
 
 = Version 3.6.4.1 =
 * Missing metadata column fix for easy manual triggering

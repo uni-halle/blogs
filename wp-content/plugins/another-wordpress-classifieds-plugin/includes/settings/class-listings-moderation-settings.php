@@ -38,8 +38,41 @@ class AWPCP_ListingsModerationSettings {
         $settings->add_setting( $key, 'noadsinparentcat', __( 'Prevent ads from being posted to top level categories?', 'another-wordpress-classifieds-plugin' ), 'checkbox', 0, '' );
         $settings->add_setting( $key, 'use-multiple-category-dropdowns', __( 'Use multiple dropdowns to choose categories', 'another-wordpress-classifieds-plugin' ), 'checkbox', 0, __( 'If checked, a dropdown with top level categories will be shown. When the user chooses a category, a new dropdown will apper showing the sub-categories of the selected category, if any. Useful if your website supports a high number of categories.', 'another-wordpress-classifieds-plugin' ) );
 
-        $settings->add_setting( $key, 'addurationfreemode', __( 'Free ads deletion threshold', 'another-wordpress-classifieds-plugin' ), 'textfield', 0, __( 'Free listings will be deleted after the number of days entered in this field (0 for no deletion). Use the setting below to disable expired listings instead of deleting them.', 'another-wordpress-classifieds-plugin' ) );
-        $settings->add_setting( $key, 'autoexpiredisabledelete', __( 'Disable expired ads instead of deleting them?', 'another-wordpress-classifieds-plugin' ), 'checkbox', 0, __( 'If checked, listings will be disabled, not deleted, after the number of days set as the deletion threshold have passed.', 'another-wordpress-classifieds-plugin' ) );
+        $settings->add_setting(
+            $key,
+            'addurationfreemode',
+            __( 'Duration of listings in free mode (in days)', 'another-wordpress-classifieds-plugin' ),
+            'textfield',
+            0,
+            __( 'The end date for listings posted in free mode will be calculated using the value in this field. You can enter 0 to keep listings enabled for 10 years.', 'another-wordpress-classifieds-plugin' )
+        );
+
+        $disable_expired_listings_setting_name = __( 'Disable expired listings instead of deleting them?', 'another-wordpress-classifieds-plugin' );
+
+        $settings->add_setting(
+            $key,
+            'autoexpiredisabledelete',
+            $disable_expired_listings_setting_name,
+            'checkbox',
+            0,
+            __( 'If checked, listings will remain in disabled indefinitely after they expire. If not checked, listings will be deleted after the number of days set in the next setting.', 'another-wordpress-classifieds-plugin' )
+        );
+
+        $days_before_expired_listings_are_deleted_description = __( 'If the <setting-name> setting is NOT checked, the listings will be permanently deleted from the system, after the number of days specified in this field have passed since each listing was disabled.', 'another-wordpress-classifieds-plugin' );
+        $days_before_expired_listings_are_deleted_description = str_replace(
+            '<setting-name>',
+            '<strong>' . $disable_expired_listings_setting_name . '</strong>',
+            $days_before_expired_listings_are_deleted_description
+        );
+
+        $settings->add_setting(
+            $key,
+            'days-before-expired-listings-are-deleted',
+            __( 'Number of days before expired listings are deleted', 'another-wordpress-classifieds-plugin' ),
+            'textfield',
+            7,
+            $days_before_expired_listings_are_deleted_description
+        );
     }
 
     public function validate_all_settings( $options, $group ) {

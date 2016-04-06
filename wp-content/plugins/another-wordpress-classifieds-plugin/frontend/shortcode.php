@@ -187,22 +187,16 @@ class AWPCP_Pages {
     public function random_listings_shortcode($attrs) {
         wp_enqueue_script('awpcp');
 
-        $attrs = shortcode_atts(array('menu' => true, 'limit' => 10), $attrs);
+        $attrs = shortcode_atts( array( 'category' => null, 'menu' => true, 'limit' => 10 ), $attrs );
+
+        $categories = array_filter( array_map( 'absint', explode( ',', $attrs['category'] ) ) );
         $show_menu = awpcp_parse_bool($attrs['menu']);
         $limit = absint($attrs['limit']);
 
-        $random_query = array(
-            'context' => 'public-listings',
-            'fields' => 'ad_id',
-            'raw' => true,
-        );
-
-        $random_listings = awpcp_listings_collection()->find_enabled_listings_with_query( $random_query );
-        $random_listings_ids = awpcp_get_properties( $random_listings, 'ad_id' );
-        shuffle( $random_listings_ids );
-
         $query = array(
-            'id' => array_slice( $random_listings_ids, 0, $limit ),
+            'context' => 'public-listings',
+            'category_id' => $categories,
+            'orderby' => 'random',
             'limit' => $limit,
         );
 
@@ -361,12 +355,18 @@ function awpcp_display_the_classifieds_page_body($awpcppagename) {
 function awpcp_menu_items() {
     $menu_items = array_filter( awpcp_get_menu_items(), 'is_array' );
 
-    ob_start();
-        include ( AWPCP_DIR . '/frontend/templates/main-menu.tpl.php' );
-        $output = ob_get_contents();
-    ob_end_clean();
+    $navigation_attributes = array(
+        'class' => array( 'awpcp-navigation', 'awpcp-menu-items-container', 'clearfix' ),
+    );
 
-    return $output;
+    if ( get_awpcp_option( 'show-mobile-menu-expanded' ) ) {
+        $navigation_attributes['class'][] = 'toggle-on';
+    }
+
+    $template = AWPCP_DIR . '/frontend/templates/main-menu.tpl.php';
+    $params = compact( 'menu_items', 'navigation_attributes' );
+
+    return awpcp_render_template( $template, $params );
 }
 
 function awpcp_get_menu_items() {

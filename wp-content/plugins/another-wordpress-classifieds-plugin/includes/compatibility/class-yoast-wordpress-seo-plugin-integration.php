@@ -16,9 +16,29 @@ class AWPCP_YoastWordPressSEOPluginIntegration {
         $this->tag_renderer = $tag_renderer;
     }
 
+    public function should_generate_basic_meta_tags( $should, $meta ) {
+        if ( defined( 'WPSEO_VERSION' ) ) {
+            if ( ! isset( $this->metadata ) ) {
+                $this->metadata = $meta->get_listing_metadata();
+            }
+
+            add_filter( 'wpseo_metadesc', array( $this, 'generate_meta_description' ) );
+
+            return false;
+        }
+
+        return $should;
+    }
+
+    public function generate_meta_description() {
+        return $this->metadata['http://ogp.me/ns#description'];
+    }
+
     public function should_generate_opengraph_tags( $should, AWPCP_Meta $meta ) {
         if ( defined( 'WPSEO_VERSION' ) && class_exists( 'WPSEO_OpenGraph' ) ) {
-            $this->metadata = $meta->get_listing_metadata();
+            if ( ! isset( $this->metadata ) ) {
+                $this->metadata = $meta->get_listing_metadata();
+            }
 
             add_filter( 'wpseo_opengraph_type', array( $this, 'og_type' ) );
             add_filter( 'wpseo_opengraph_title', array( $this, 'og_title' ) );

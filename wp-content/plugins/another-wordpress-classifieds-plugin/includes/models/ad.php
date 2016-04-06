@@ -367,8 +367,8 @@ class AWPCP_Ad {
 	 * Finds out if the Ad identified by $id belongs to the user
 	 * whose information is stored in $user.
 	 *
-	 * @param $id int Ad id
-	 * @param $user array See get_currentuserinfo()
+	 * @param $id int Ad ID
+	 * @param $user_id int User ID
 	 */
 	static function belongs_to_user($id, $user_id) {
 		global $wpdb;

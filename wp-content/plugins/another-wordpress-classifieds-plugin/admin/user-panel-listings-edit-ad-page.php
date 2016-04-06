@@ -7,7 +7,12 @@ class AWPCP_UserListingsEditAd extends AWPCP_AdminListingsEditAd {
 
     public function __construct($page=false, $title=false) {
         $page = $page ? $page : 'awpcp-admin-listings-edit-ad';
-        $title = $title ? $title : __('AWPCP Ad Management Panel - Listings - Edit Ad', 'another-wordpress-classifieds-plugin');
+
+        if ( empty( $title ) ) {
+            $title = __( '<blog-name> User Ad Management Panel - Listings - Edit Ad', 'another-wordpress-classifieds-plugin' );
+            $title = str_replace( '<blog-name>', get_bloginfo( 'name' ), $title );
+        }
+
         parent::__construct($page, $title);
     }
 

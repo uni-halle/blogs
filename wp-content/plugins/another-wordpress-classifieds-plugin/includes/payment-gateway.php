@@ -98,12 +98,13 @@ abstract class AWPCP_PaymentGateway {
     }
 
     protected function get_user_info($user_id=false) {
-        $data = awpcp_users_collection()->find_by_id( $user_id );
+        $fields = array( 'first_name', 'last_name', 'user_email', 'awpcp-profile' );
+        $data = awpcp_users_collection()->find_by_id( $user_id, $fields );
 
         $translations = array(
             'first_name' => 'first_name',
             'last_name' => 'last_name',
-            'email' => 'email',
+            'email' => 'user_email',
             'city' => 'city',
             'address_1' => 'address',
         );

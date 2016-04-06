@@ -156,9 +156,7 @@ class AWPCP_Request {
      * @since 3.3
      */
     public function get_current_user() {
-        global $current_user;
-        get_currentuserinfo();
-        return $current_user;
+        return wp_get_current_user();
     }
 
     public function is_bot() {

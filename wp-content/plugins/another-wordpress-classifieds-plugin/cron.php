@@ -122,7 +122,10 @@ function doadcleanup() {
     // also, get Ads that were disabled more than a week ago, but only if the
     // 'disable instead of delete' flag is not set.
     if (get_awpcp_option('autoexpiredisabledelete') != 1) {
-        $conditions[] = "(disabled=1 AND (disabled_date + INTERVAL 7 DAY) < CURDATE())";
+        $days_before_expired_listings_are_deleted = get_awpcp_option( 'days-before-expired-listings-are-deleted' );
+        $sql = "(disabled=1 AND (disabled_date + INTERVAL %d DAY) < CURDATE())";
+
+        $conditions[] = sprintf( $sql, $days_before_expired_listings_are_deleted );
     }
 
     $ads = AWPCP_Ad::find(join(' OR ', $conditions));

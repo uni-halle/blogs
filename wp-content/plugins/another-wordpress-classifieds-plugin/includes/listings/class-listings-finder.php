@@ -400,7 +400,7 @@ class AWPCP_ListingsFinder {
             $conditions[] = $this->db->prepare( 'listings.`payer_email` = %s', $query['payer_email'] );
         }
 
-        return $conditions;
+        return $this->group_conditions( $conditions, 'AND' );
     }
 
     private function build_dates_condition( $query ) {
@@ -607,7 +607,7 @@ class AWPCP_ListingsFinder {
                 $parts = array( 'user_id %1$s', 'ad_startdate %1$s', 'ad_id %1$s' );
                 break;
             case 'random':
-                $parts = array( 'RAND() %1$s' );
+                $parts = array( 'RAND()' );
                 break;
             default:
                 $parts = array( 'ad_postdate DESC', 'ad_title ASC' );

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Another WordPress Classifieds Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/another-wordpress-classifieds-plugin\n"
-"POT-Creation-Date: 2016-01-14 17:52:15+00:00\n"
-"PO-Revision-Date: 2016-01-14 17:57+0000\n"
+"POT-Creation-Date: 2016-03-21 21:25:31+00:00\n"
+"PO-Revision-Date: 2016-03-21 21:47+0000\n"
 "Last-Translator: Willington Vega <wvega@wvega.com>\n"
 "Language-Team: Spanish (Spain) (http://www.transifex.com/wp-translations/another-wordpress-classifieds-plugin/language/es_ES/)\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr "Créditos"
 #: admin/admin-panel-fees-table.php:120
 #: admin/templates/admin-panel-credit-plans-entry-form.tpl.php:19
 #: admin/templates/admin-panel-fees-entry-form.tpl.php:25
-#: frontend/placeholders.php:434 frontend/templates/page-search-ads.tpl.php:46
+#: frontend/placeholders.php:443 frontend/templates/page-search-ads.tpl.php:46
 #: includes/settings/class-payment-general-settings.php:10
 msgid "Price"
 msgstr "Precio"
@@ -148,7 +148,7 @@ msgid "Categories"
 msgstr "Categorías"
 
 #: admin/admin-panel-fees-table.php:127
-#: admin/templates/admin-sidebar.tpl.php:103 awpcp.php:803
+#: admin/templates/admin-sidebar.tpl.php:103 awpcp.php:805
 msgid "Featured Ads"
 msgstr "Anuncios destacados"
 
@@ -360,7 +360,7 @@ msgid "Keyword"
 msgstr "Palabra clave"
 
 #: admin/admin-panel-listings-table.php:274 frontend/page-show-ad.php:83
-#: frontend/placeholders.php:559
+#: frontend/placeholders.php:568
 msgid "Location"
 msgstr "Ubicación"
 
@@ -713,7 +713,7 @@ msgid "Manage Extra Fields"
 msgstr "Administrar Campos Extras"
 
 #: admin/admin-panel.php:296 admin/templates/admin-sidebar.tpl.php:108
-#: awpcp.php:796
+#: awpcp.php:798
 msgid "Extra Fields"
 msgstr "Campos Extras"
 
@@ -1168,7 +1168,7 @@ msgid "Test Import"
 msgstr "Probar importación"
 
 #: admin/templates/admin-panel-debug.tpl.php:8
-msgid "Are you seeng 404 Not Found errors?"
+msgid "Are you seeing 404 Not Found errors?"
 msgstr "¿Su sitio está mostrando errores 404 Not Found?"
 
 #: admin/templates/admin-panel-debug.tpl.php:10
@@ -1857,19 +1857,19 @@ msgstr "Compre un módulo premium"
 msgid "Get a Premium Module!"
 msgstr "Obtenga un módulo premium!"
 
-#: admin/templates/admin-sidebar.tpl.php:46 awpcp.php:768
+#: admin/templates/admin-sidebar.tpl.php:46 awpcp.php:770
 msgid "Campaign Manager"
 msgstr "Administrador de Campañas"
 
-#: admin/templates/admin-sidebar.tpl.php:52 awpcp.php:825
+#: admin/templates/admin-sidebar.tpl.php:52 awpcp.php:827
 msgid "Mark as Sold"
 msgstr "Marcar como Vendido"
 
-#: admin/templates/admin-sidebar.tpl.php:58 awpcp.php:846
+#: admin/templates/admin-sidebar.tpl.php:58 awpcp.php:848
 msgid "Restricted Categories"
 msgstr "Categorías Restringidas"
 
-#: admin/templates/admin-sidebar.tpl.php:63 awpcp.php:761
+#: admin/templates/admin-sidebar.tpl.php:63 awpcp.php:763
 msgid "BuddyPress Listings"
 msgstr "BuddyPress Anuncios"
 
@@ -1877,15 +1877,15 @@ msgstr "BuddyPress Anuncios"
 msgid "Comments/Ratings"
 msgstr "Comentarios y Calificaciones"
 
-#: admin/templates/admin-sidebar.tpl.php:73 awpcp.php:747
+#: admin/templates/admin-sidebar.tpl.php:73 awpcp.php:749
 msgid "Attachments"
 msgstr "Adjuntos"
 
-#: admin/templates/admin-sidebar.tpl.php:78 awpcp.php:754
+#: admin/templates/admin-sidebar.tpl.php:78 awpcp.php:756
 msgid "Authorize.Net"
 msgstr "Authorize.Net"
 
-#: admin/templates/admin-sidebar.tpl.php:83 awpcp.php:832
+#: admin/templates/admin-sidebar.tpl.php:83 awpcp.php:834
 msgid "PayPal Pro"
 msgstr "PayPal Pro"
 
@@ -1893,7 +1893,7 @@ msgstr "PayPal Pro"
 msgid "Coupon/Discount"
 msgstr "Cupones/Descuentos"
 
-#: admin/templates/admin-sidebar.tpl.php:93 awpcp.php:860
+#: admin/templates/admin-sidebar.tpl.php:93 awpcp.php:862
 msgid "Subscriptions"
 msgstr "Suscripciones"
 
@@ -1901,15 +1901,15 @@ msgstr "Suscripciones"
 msgid "Fee Per Category"
 msgstr "Precio Por Categoría"
 
-#: admin/templates/admin-sidebar.tpl.php:113 awpcp.php:775
+#: admin/templates/admin-sidebar.tpl.php:113 awpcp.php:777
 msgid "Category Icons"
 msgstr "Íconos para Categorías"
 
-#: admin/templates/admin-sidebar.tpl.php:118 awpcp.php:839
+#: admin/templates/admin-sidebar.tpl.php:118 awpcp.php:841
 msgid "Regions Control"
 msgstr "Control de Regiones"
 
-#: admin/templates/admin-sidebar.tpl.php:123 awpcp.php:853
+#: admin/templates/admin-sidebar.tpl.php:123 awpcp.php:855
 msgid "RSS"
 msgstr "RSS"
 
@@ -2008,13 +2008,13 @@ msgid ""
 "add credit when posting a new Ad or using the \"Add Credit\" button below."
 msgstr "El crédito en su cuenta pueden ser usados para pagar para publicar anuncios. Usted puede agregar más crédito cuando esté publicando un nuevo anuncio o haciendo click en el botón \"Agregar Crédito\" que aparece abajo."
 
-#: admin/user-panel-listings-edit-ad-page.php:10
-msgid "AWPCP Ad Management Panel - Listings - Edit Ad"
-msgstr "AWPCP Panel de Administración de Anuncios - Editar Anuncio"
+#: admin/user-panel-listings-edit-ad-page.php:12
+msgid "<blog-name> User Ad Management Panel - Listings - Edit Ad"
+msgstr "Panel de Administración para Usuarios de <blog-name> - Anuncios - Editar Anuncio"
 
-#: admin/user-panel-listings-place-ad-page.php:10
-msgid "AWPCP Ad Management Panel - Listings - Place Ad"
-msgstr "AWPCP Panel de Administración de Anuncios - Publicar Anuncio"
+#: admin/user-panel-listings-place-ad-page.php:12
+msgid "<blog-name> User Ad Management Panel - Listings - Place Ad"
+msgstr "Panel de Administración para Usuarios de <blog-name> - Anuncios - Publicar Anuncio"
 
 #: admin/user-panel-listings-renew-ad-page.php:10
 msgid "AWPCP Ad Management Panel - Listings - Renew Ad"
@@ -2036,94 +2036,94 @@ msgstr "Administrar Anuncios"
 msgid "Manage Ad Listings"
 msgstr "Administrar Anuncios"
 
-#: awpcp.php:651
+#: awpcp.php:653
 msgid "AWPCP"
 msgstr "AWPCP"
 
-#: awpcp.php:730
+#: awpcp.php:732
 msgid ""
 "AWPCP requires the graphics processing library GD and it is not installed. "
 "Contact your web host to fix this."
 msgstr "AWPCP requiere el procesamiento de gráficos de la biblioteca GD y no está instalado. Comuníquese con su proveedor de alojamiento web para solucionar este problema."
 
-#: awpcp.php:731
+#: awpcp.php:733
 #: includes/placeholders/class-placeholders-installation-verifier.php:31
 msgid "Warning"
 msgstr "Adevertencia"
 
-#: awpcp.php:782
+#: awpcp.php:784
 msgid "Comments & Ratings"
 msgstr "Comentarios y Calificaciones"
 
-#: awpcp.php:789
+#: awpcp.php:791
 msgid "Coupons/Discount"
 msgstr "Cupones/Descuentos"
 
-#: awpcp.php:810
+#: awpcp.php:812
 msgid "Fee per Category"
 msgstr "Precio por Categoría"
 
-#: awpcp.php:817
+#: awpcp.php:819
 msgid "Google Checkout"
 msgstr "Google Checkout"
 
-#: awpcp.php:867 templates/components/media-manager.tpl.php:46
+#: awpcp.php:869 templates/components/media-manager.tpl.php:46
 msgid "Videos"
 msgstr "Videos"
 
-#: awpcp.php:875
+#: awpcp.php:877
 msgid "XML Sitemap"
 msgstr "XML Sitemap"
 
-#: awpcp.php:882
+#: awpcp.php:884
 msgid "ZIP Code Search Module"
 msgstr "Módulo de búsqueda por código postal"
 
-#: awpcp.php:1039
+#: awpcp.php:1041
 msgid "This field is required."
 msgstr "Este campo es obligatorio."
 
-#: awpcp.php:1040 frontend/page-edit-ad.php:128 frontend/page-edit-ad.php:433
+#: awpcp.php:1042 frontend/page-edit-ad.php:128 frontend/page-edit-ad.php:433
 #: includes/settings-api.php:214
 msgid "Please enter a valid email address."
 msgstr "Por favor ingrese una dirección de correo electrónico válida."
 
-#: awpcp.php:1041 awpcp.php:1042
+#: awpcp.php:1043 awpcp.php:1044
 msgid "Please enter a valid URL."
 msgstr "Por favor ingrese una URL válida."
 
-#: awpcp.php:1043
+#: awpcp.php:1045
 msgid "Please enter a valid number."
 msgstr "Por favor ingrese un número."
 
-#: awpcp.php:1044
+#: awpcp.php:1046
 msgid "Please enter a valid amount."
 msgstr "Por favor ingresa una cantidad válida."
 
-#: awpcp.php:1054
+#: awpcp.php:1056
 msgctxt "[UI Datepicker] Display text for previous month link"
 msgid "&#x3c;Prev"
 msgstr "&#x3c;Anterior"
 
-#: awpcp.php:1056
+#: awpcp.php:1058
 msgctxt "[UI Datepicker] Display text for next month link"
 msgid "Next&#x3e;"
 msgstr "Siguiente&#x3e;"
 
-#: awpcp.php:1071
+#: awpcp.php:1073
 msgctxt "[UI Datepicker] The first day of the week, Sun = 0, Mon = 1, ..."
 msgid "0"
 msgstr "1"
 
-#: awpcp.php:1077
+#: awpcp.php:1079
 msgid "There are files currently being uploaded."
 msgstr "El sistema aún está cargando algunos archivos."
 
-#: awpcp.php:1078
+#: awpcp.php:1080
 msgid "There are files pending to be uploaded."
 msgstr "Algunos archivos están esperando para ser cargados."
 
-#: awpcp.php:1079
+#: awpcp.php:1081
 msgid "You haven't uploaded any images or files."
 msgstr "Aún no ha subido imágenes o archivos."
 
@@ -2656,11 +2656,11 @@ msgctxt "reply email"
 msgid "regarding"
 msgstr "al respecto"
 
-#: frontend/page-reply-to-ad.php:230
+#: frontend/page-reply-to-ad.php:240
 msgid "Your message has been sent."
 msgstr "Tu mensaje ha sido enviado."
 
-#: frontend/page-reply-to-ad.php:233
+#: frontend/page-reply-to-ad.php:243
 msgid ""
 "There was a problem encountered during the attempt to send your message. "
 "Please try again and if the problem persists, please contact the system "
@@ -2748,45 +2748,45 @@ msgid ""
 "(the author) can see it."
 msgstr "Este anuncio está actualmente deshabilitado hasta que el administrador lo apruebe. Unicamente usted (el autor) y el administrador pueden verlo."
 
-#: frontend/placeholders.php:376
+#: frontend/placeholders.php:385
 msgid "Seller"
 msgstr "Vendedor"
 
-#: frontend/placeholders.php:399
+#: frontend/placeholders.php:408
 msgid "Visit Website"
 msgstr "Visitar el Sitio Web"
 
-#: frontend/placeholders.php:595
+#: frontend/placeholders.php:604
 msgid "This Ad has been viewed %d time."
 msgid_plural "This Ad has been viewed %d times."
 msgstr[0] "Este anuncio ha sido visto %d vez."
 msgstr[1] "Este anuncio ha sido visto %d veces."
 
-#: frontend/placeholders.php:599
+#: frontend/placeholders.php:608
 msgid "Total views: %d"
 msgstr "Vistas totales: %d"
 
-#: frontend/placeholders.php:650
+#: frontend/placeholders.php:659
 msgid "Phone"
 msgstr "Teléfono"
 
-#: frontend/placeholders.php:707
+#: frontend/placeholders.php:716
 msgid "Flag Ad"
 msgstr "Marcar anuncio"
 
-#: frontend/placeholders.php:722
+#: frontend/placeholders.php:731
 msgid "Tweet This"
 msgstr "Twitear esto"
 
-#: frontend/placeholders.php:753
+#: frontend/placeholders.php:762
 msgid "Share on Facebook"
 msgstr "Compartir en Facebook"
 
-#: frontend/shortcode.php:281
+#: frontend/shortcode.php:285
 msgid "Hi admin, you need to go to your dashboard and setup your classifieds."
 msgstr "Hola Administrador, tenés que ir a tu Panel de Control y configurar tus clasificados."
 
-#: frontend/shortcode.php:284
+#: frontend/shortcode.php:288
 msgid "You currently have no classifieds"
 msgstr "No tenés ningún Aviso Clasificado"
 
@@ -3685,7 +3685,7 @@ msgid ""
 "to continue: %s."
 msgstr "Adicionalmente, usted aprobar las imágenes accediendo a la sección Administrar Imágenes para ese anuncio y haciendo click en el botón \"Aprobar\" debajo de cada imagen. Haga click aquí para continuar: %s."
 
-#: functions.php:2674
+#: functions.php:2690
 msgid "Email sent %s."
 msgstr "Correo electrónico enviado %s."
 
@@ -4191,16 +4191,16 @@ msgctxt "recaptcha-error"
 msgid "The response parameter is invalid or malformed."
 msgstr "La respuesta del usuario no es válida o está mal formada."
 
-#: includes/helpers/class-easy-digital-downloads.php:38
+#: includes/helpers/class-easy-digital-downloads.php:39
 msgid ""
 "There was an error trying to check the license status for <module-name>."
 msgstr "Ocurrió un error intentando verificar el estado la licencia para <module-name>."
 
-#: includes/helpers/class-easy-digital-downloads.php:100
+#: includes/helpers/class-easy-digital-downloads.php:101
 msgid "There was an error trying to activate your <module-name> license."
 msgstr "Ocurrió un error tratando de activar la licencia para <module-name>."
 
-#: includes/helpers/class-easy-digital-downloads.php:122
+#: includes/helpers/class-easy-digital-downloads.php:123
 msgid "There was an error trying to deactivate your <module-name> license."
 msgstr "Ocurrió un error tratando de desactivar la licencia para <module-name>."
 
@@ -5698,43 +5698,47 @@ msgid ""
 "should not be visible to your users by default)."
 msgstr "Desmarque esta opción si necesita desactivar el filtro de página de AWPCP que previene que las sub-páginas de la página de clasificados aparezcan en el menu de páginas de WordPress (Es posible que usted necesito esto, si por ejemplo, el filtro está causando problemas con su menu de páginas. En ese caso, usted tendrá que excluir manualmente las sub-páginas. Algunas de las páginas no deberían ser visibles para todos los usuarios por defecto)."
 
-#: includes/settings/class-general-settings.php:42
+#: includes/settings/class-general-settings.php:43
+msgid "Auto-expand the Classifieds Menu for mobile devices?"
+msgstr "Expandir el menú Clasificados automáticamente en dispositivos móviles?"
+
+#: includes/settings/class-general-settings.php:51
 msgctxt "settings"
 msgid "Date & Time Format"
 msgstr "Formato de fecha y hora"
 
-#: includes/settings/class-general-settings.php:48
+#: includes/settings/class-general-settings.php:57
 msgid "American"
 msgstr "Americano"
 
-#: includes/settings/class-general-settings.php:49
+#: includes/settings/class-general-settings.php:58
 msgid "European"
 msgstr "Europeo"
 
-#: includes/settings/class-general-settings.php:50
+#: includes/settings/class-general-settings.php:59
 msgid "Your own."
 msgstr "Uno propio."
 
-#: includes/settings/class-general-settings.php:53
+#: includes/settings/class-general-settings.php:62
 msgid "Date Time Format"
 msgstr "Formato de fecha y hora"
 
-#: includes/settings/class-general-settings.php:54
+#: includes/settings/class-general-settings.php:63
 msgctxt "settings"
 msgid "Date Format"
 msgstr "Formato de fecha"
 
-#: includes/settings/class-general-settings.php:55
+#: includes/settings/class-general-settings.php:64
 msgctxt "settings"
 msgid "Time Format"
 msgstr "Formato de hora"
 
-#: includes/settings/class-general-settings.php:56
+#: includes/settings/class-general-settings.php:65
 msgctxt "settings"
 msgid "Example output"
 msgstr "Ejemplo de salid: %s"
 
-#: includes/settings/class-general-settings.php:57
+#: includes/settings/class-general-settings.php:66
 msgctxt "settings"
 msgid ""
 "Full date/time output with any strings you wish to add. <date> and <time> "
@@ -5742,20 +5746,20 @@ msgid ""
 "the Date Format and Time Format settings above."
 msgstr "Representación completa de la fecha/hora que incluye cualquier cadena que usted desee agregar. <date> y <time> son marcadores de posición para las cadenas de fecha y hora usando los formatos especificados en las opciones Format de fecha y Formato de hora  que aparecen arriba."
 
-#: includes/settings/class-general-settings.php:58
+#: includes/settings/class-general-settings.php:67
 msgctxt "settings"
 msgid "Full Display String"
 msgstr "Representación completa"
 
-#: includes/settings/class-general-settings.php:62
+#: includes/settings/class-general-settings.php:71
 msgid "Currency Format"
 msgstr "Formato de moneda"
 
-#: includes/settings/class-general-settings.php:67
+#: includes/settings/class-general-settings.php:76
 msgid "Currency code"
 msgstr "Código de moneda"
 
-#: includes/settings/class-general-settings.php:70
+#: includes/settings/class-general-settings.php:79
 msgid ""
 "Prices in listings pages and payment pages will be displayed using this "
 "currency. The currency symbol will be generated based on this code, but if "
@@ -5763,11 +5767,11 @@ msgid ""
 "uppercase version of the code itself."
 msgstr "Los precios en las páginas de anuncios y las páginas de pago se mostrarán usando esta moneda. El símbolo de la moneda será generado con base en este código. Si no encontramos un símbolo para el código ingresado, el plugin usará como símbolo una versión en mayúsculas del código."
 
-#: includes/settings/class-general-settings.php:76
+#: includes/settings/class-general-settings.php:85
 msgid "Currency symbol"
 msgstr "Símbolo de la moneda"
 
-#: includes/settings/class-general-settings.php:79
+#: includes/settings/class-general-settings.php:88
 msgid ""
 "Use this setting to overwrite the currency symbol shown in listings pages. "
 "If empty, the plugin will attempt to show one of the standard symbols for "
@@ -5775,116 +5779,116 @@ msgid ""
 "your currency, it will use an uppercase version of the currency code."
 msgstr "Use está opción para sobreescribr el símbolo de la moneda que se muestra en las páginas de anuncios. Si no ingresa ningún valor, el plugin intentará mostrar uno de los símbolos estándar para la moneda seleccionada, pero si encuentra uno apropiado, usará una versión en mayúsculas del código de la moneda."
 
-#: includes/settings/class-general-settings.php:82
+#: includes/settings/class-general-settings.php:91
 msgid "Thousands separator"
 msgstr "Separador de miles"
 
-#: includes/settings/class-general-settings.php:82
+#: includes/settings/class-general-settings.php:91
 msgctxt ""
 "This translation is deprecated. Please go to the Settings section to change "
 "the thousands separator."
 msgid ","
 msgstr ","
 
-#: includes/settings/class-general-settings.php:83
+#: includes/settings/class-general-settings.php:92
 msgid "Separator for the decimal point"
 msgstr "Separator para el punto decimal"
 
-#: includes/settings/class-general-settings.php:83
+#: includes/settings/class-general-settings.php:92
 msgctxt ""
 "This translation is deprecated. Please go to the Settings section to change "
 "the decimal separator."
 msgid "."
 msgstr "."
 
-#: includes/settings/class-general-settings.php:84
+#: includes/settings/class-general-settings.php:93
 msgid "Show decimals in price"
 msgstr "Mostrar decimales en el precio"
 
-#: includes/settings/class-general-settings.php:84
+#: includes/settings/class-general-settings.php:93
 msgctxt "settings"
 msgid "Uncheck to show prices without decimals. The value will be rounded."
 msgstr "Deseleccione para mostrar los precios sin decimales. El valor será redondeado."
 
-#: includes/settings/class-general-settings.php:89
+#: includes/settings/class-general-settings.php:98
 msgid "Show currency symbol"
 msgstr "Mostrar símbolo de la moneda"
 
-#: includes/settings/class-general-settings.php:92
+#: includes/settings/class-general-settings.php:101
 msgid ""
 "The currency symbol can be configured by changing the currency code in the "
 "settings above."
 msgstr "El símbolo de la moneda puede ser configurado cambiando el código de la moneda en las opciones que están más arriba."
 
-#: includes/settings/class-general-settings.php:95
+#: includes/settings/class-general-settings.php:104
 msgid "Show currency symbol on left"
 msgstr "Mostrar símbolo de la moneda a la izquierda"
 
-#: includes/settings/class-general-settings.php:96
+#: includes/settings/class-general-settings.php:105
 msgid "Show currency symbol on right"
 msgstr "Mostrar símbolo de la moneda a la derecha"
 
-#: includes/settings/class-general-settings.php:97
+#: includes/settings/class-general-settings.php:106
 msgid "Don't show currency symbol"
 msgstr "No mostrar el símbolo de la moneda"
 
-#: includes/settings/class-general-settings.php:105
+#: includes/settings/class-general-settings.php:114
 msgid "Include a space between the currency symbol and the amount"
 msgstr "Incluír un espacio entre el símbolo de la moneda y la cantidad"
 
-#: includes/settings/class-general-settings.php:113
-#: includes/settings/class-general-settings.php:116
+#: includes/settings/class-general-settings.php:122
+#: includes/settings/class-general-settings.php:125
 msgid "Terms of Service"
 msgstr "Términos de servicio"
 
-#: includes/settings/class-general-settings.php:115
+#: includes/settings/class-general-settings.php:124
 msgid "Display and require Terms of Service"
 msgstr "Mostrar y hacer obligatorios los términos de servicio"
 
-#: includes/settings/class-general-settings.php:116
+#: includes/settings/class-general-settings.php:125
 msgid "Terms of service go here..."
 msgstr "Los términos de servicio van aquí..."
 
-#: includes/settings/class-general-settings.php:116
+#: includes/settings/class-general-settings.php:125
 msgid ""
 "Terms of Service for posting Ads. Put in text or an URL starting with http. "
 "If you use an URL, the text box will be replaced by a link to the "
 "appropriate Terms of Service page"
 msgstr "Términos de Servicio para publicar anuncios. Ingrese texto o una URL que empieze con http. Si usa una URL, el texto será reemplazado por un enlace la página de servicios correspondiente."
 
-#: includes/settings/class-general-settings.php:120
+#: includes/settings/class-general-settings.php:129
 msgid "Anti-SPAM"
 msgstr "Anit-SPAM"
 
-#: includes/settings/class-general-settings.php:123
+#: includes/settings/class-general-settings.php:132
 msgid "reCAPTCHA (recommended)"
 msgstr "reCAPTCHA (recomendado)"
 
-#: includes/settings/class-general-settings.php:124
+#: includes/settings/class-general-settings.php:133
 msgid "Math"
 msgstr "Aritmético"
 
-#: includes/settings/class-general-settings.php:138
+#: includes/settings/class-general-settings.php:147
 msgid "Use Akismet in Place Ad form"
 msgstr "Usar Akismet in el formulario para publicar anuncios"
 
-#: includes/settings/class-general-settings.php:141
+#: includes/settings/class-general-settings.php:150
 msgid "Use Akismet for Posting Ads (strong anti-spam)."
 msgstr "Usar Akismer cuando se publiquen anuncios (anti-spam fuerte)."
 
-#: includes/settings/class-general-settings.php:147
+#: includes/settings/class-general-settings.php:156
 msgid "Use Akismet in Reply to Ad form"
 msgstr "Usar Akismet en el formulario para contactar al propietario de un anuncio"
 
-#: includes/settings/class-general-settings.php:150
+#: includes/settings/class-general-settings.php:159
 msgid "Use Akismet for Contact Responses (strong anti-spam)."
 msgstr "Usar Akismet cuando se publiquen respuestas a los anuncios (anti-spam fuerte)."
 
-#: includes/settings/class-general-settings.php:158
+#: includes/settings/class-general-settings.php:167
 msgid "Enable CAPTCHA in Place Ad form"
 msgstr "Habilitar CAPTCHA en el formulario para publicar anuncios"
 
-#: includes/settings/class-general-settings.php:161
+#: includes/settings/class-general-settings.php:170
 msgid ""
 "A CAPTCHA is a program to ensure only humans are posting Ads to your "
 "website. Using a CAPTCHA will reduce the SPAM and prevent bots from posting "
@@ -5892,58 +5896,58 @@ msgid ""
 "Place Ad form."
 msgstr "Un CAPTCHA es un programa para garantizar que solo seres humanos están publicando anuncios en su sitio web. Usar un CAPTCHA reducirá el SPAM y evitará que otros programas publiquen anuncios de forma automática. Si esta opción está habilitada, un campo adicional será agregado al formulario para publicar anuncios."
 
-#: includes/settings/class-general-settings.php:167
+#: includes/settings/class-general-settings.php:176
 msgid "Enable CAPTCHA in Reply to Ad form"
 msgstr "Habilitar CAPTCHA en el formulario de contacto para los anuncios"
 
-#: includes/settings/class-general-settings.php:170
+#: includes/settings/class-general-settings.php:179
 msgid ""
 "If checked, an additional form field will be added to the Reply to Ad form."
 msgstr "Si esta opción está seleccionada, un campo adicional será agregado al formulario para contactar al propietario de un anuncio."
 
-#: includes/settings/class-general-settings.php:173
+#: includes/settings/class-general-settings.php:182
 msgid "Type of CAPTCHA"
 msgstr "Tipo de CAPTCHA"
 
-#: includes/settings/class-general-settings.php:173
+#: includes/settings/class-general-settings.php:182
 msgid ""
 "reCAPTCHA: Uses distorted images that only humans should be able to read "
 "(recommended)."
 msgstr "reCAPTCHA: Usa imágenes distorsionadas que solo pueden ser leidas por seres humanos."
 
-#: includes/settings/class-general-settings.php:173
+#: includes/settings/class-general-settings.php:182
 msgid "Math: Asks user to solve a simple arithmetic operation."
 msgstr "Aritmético: Le pide al usuario que resuleva una operación aritmética simple."
 
-#: includes/settings/class-general-settings.php:175
+#: includes/settings/class-general-settings.php:184
 msgid "Max number used in Math CAPTCHA"
 msgstr "Máximo número usado en el CAPTCHA aritmético."
 
-#: includes/settings/class-general-settings.php:175
+#: includes/settings/class-general-settings.php:184
 msgid "Highest number used in aithmetic operation."
 msgstr "Número máximo usado en la operación aritmética."
 
-#: includes/settings/class-general-settings.php:178
+#: includes/settings/class-general-settings.php:187
 msgid "You can get an API key from %s."
 msgstr "Usted puede obtener una clave para la API en  %s."
 
-#: includes/settings/class-general-settings.php:180
+#: includes/settings/class-general-settings.php:189
 msgid "reCAPTCHA Site Key"
 msgstr "Clave del sitio para reCAPTCHA"
 
-#: includes/settings/class-general-settings.php:181
+#: includes/settings/class-general-settings.php:190
 msgid "reCAPTCHA Secret Key"
 msgstr "Clave secreta para reCAPTCHA"
 
-#: includes/settings/class-general-settings.php:185
+#: includes/settings/class-general-settings.php:194
 msgid "SEO Settings"
 msgstr "Configuración SEO"
 
-#: includes/settings/class-general-settings.php:187
+#: includes/settings/class-general-settings.php:196
 msgid "Turn on Search Engine Friendly URLs"
 msgstr "Activar URLs amigables con los motores de búsqueda (SEO URLs)"
 
-#: includes/settings/class-general-settings.php:187
+#: includes/settings/class-general-settings.php:196
 msgid "Turn on Search Engine Friendly URLs? (SEO Mode)"
 msgstr "Activar URLs amigables con los motores de búsqueda (modo SEO) ?"
 
@@ -6121,35 +6125,46 @@ msgid ""
 " a high number of categories."
 msgstr "Si está seleccioando, un desplegable con categorías de primer nivel será mostrado. Cuando el usuario elija una categoría, un nuevo desplegable aparecerá mostrand las sub-categorías de la categoría seleccionada. Util si su sitio web soporta un número alto de categorías."
 
-#: includes/settings/class-listings-moderation-settings.php:41
-msgid "Free ads deletion threshold"
-msgstr "Umbral para eliminar los anuncios gratuitos"
-
-#: includes/settings/class-listings-moderation-settings.php:41
-msgid ""
-"Free listings will be deleted after the number of days entered in this field"
-" (0 for no deletion). Use the setting below to disable expired listings "
-"instead of deleting them."
-msgstr "Los anuncios gratuitos serán eliminados después del número de días ingresados en este campo (ingrese 0 para que no sean eliminados). Use la opción que aparece más abajo para deshabilitar los anuncios que expiran en vez de eliminarlos."
-
-#: includes/settings/class-listings-moderation-settings.php:42
-msgid "Disable expired ads instead of deleting them?"
-msgstr "Deshabilitar los anuncios que hayan expirado, en vez de eliminarlos?"
-
-#: includes/settings/class-listings-moderation-settings.php:42
-msgid ""
-"If checked, listings will be disabled, not deleted, after the number of days"
-" set as the deletion threshold have passed."
-msgstr "Si esta opción está habilitada, los anuncios serán deshabilitados, en vez de eliminados, cuando han pasado el número de días ingresado en la opción del umbral para eliminar los anuncios que han expirado."
+#: includes/settings/class-listings-moderation-settings.php:44
+msgid "Duration of listings in free mode (in days)"
+msgstr "Duración de los anuncios en modo gratuito (número de días)"
 
 #: includes/settings/class-listings-moderation-settings.php:47
+msgid ""
+"The end date for listings posted in free mode will be calculated using the "
+"value in this field. You can enter 0 to keep listings enabled for 10 years."
+msgstr "La fecha de finalización para los anuncios publicados en modo gratuito será calculada usando el valor en este campo. Puede ingresar 0 para mantener los anuncios activos por 10 años."
+
+#: includes/settings/class-listings-moderation-settings.php:50
+msgid "Disable expired listings instead of deleting them?"
+msgstr "Deshabitar los anuncios cuando expiren, en vez de eliminarlos?"
+
+#: includes/settings/class-listings-moderation-settings.php:58
+msgid ""
+"If checked, listings will remain in disabled indefinitely after they expire."
+" If not checked, listings will be deleted after the number of days set in "
+"the next setting."
+msgstr "Si esta opción está seleccionada, los anuncios permanecerán deshabilitados indefinidamente después de que expiren. Si la opción no está seleccionada, los anuncios serán eliminados después de que hayan transcurrido el número de días especificado en la siguiente opción."
+
+#: includes/settings/class-listings-moderation-settings.php:61
+msgid ""
+"If the <setting-name> setting is NOT checked, the listings will be "
+"permanently deleted from the system, after the number of days specified in "
+"this field have passed since each listing was disabled."
+msgstr "Si la opción <setting-name> no está seleccionada, los anuncios serán eliminados permanente del sistema, después de que hayan transcurrido el número de días especificado en este campo a partir de la fecha en la que el anuncio fue deshabilitado."
+
+#: includes/settings/class-listings-moderation-settings.php:71
+msgid "Number of days before expired listings are deleted"
+msgstr "Número de días que deben transcurrir antes de eliminar los anuncios que expiraron"
+
+#: includes/settings/class-listings-moderation-settings.php:80
 msgid ""
 "Email verification was disabled because you enabled Require Registration. "
 "Registered users don't need to verify the email address used for contact "
 "information."
 msgstr "La verificación de la dirección de correo fue deshabilitada porque usted habilitó Requerir Registro. Los usuarios registrados no tienen que verificar la dirección de correo electrónico utilizada en la información de contacto."
 
-#: includes/settings/class-listings-moderation-settings.php:58
+#: includes/settings/class-listings-moderation-settings.php:91
 msgid ""
 "Email verification was not enabled because Require Registration is on. "
 "Registered users don't need to verify the email address used for contact "

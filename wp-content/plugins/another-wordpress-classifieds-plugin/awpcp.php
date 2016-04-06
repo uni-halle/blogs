@@ -4,7 +4,7 @@
  * Plugin Name: Another WordPress Classifieds Plugin (AWPCP)
  * Plugin URI: http://www.awpcp.com
  * Description: AWPCP - A plugin that provides the ability to run a free or paid classified ads service on your WP site. <strong>!!!IMPORTANT!!!</strong> It's always a good idea to do a BACKUP before you upgrade AWPCP!
- * Version: 3.6.4.1
+ * Version: 3.6.5
  * Author: D. Rodenbaugh
  * License: GPLv2 or any later version
  * Author URI: http://www.skylineconsult.com
@@ -1015,21 +1015,19 @@ class AWPCP {
 	}
 
 	public function enqueue_scripts() {
-		if (is_admin()) {
+        if ( is_awpcp_admin_page() ) {
 			wp_enqueue_style('awpcp-admin-style');
 			wp_enqueue_script('awpcp-admin-general');
 			wp_enqueue_script('awpcp-toggle-checkboxes');
-		} else {
+
+            // TODO: migrate the code below to use set_js_data to pass information to AWPCP scripts.
+            $options = array('ajaxurl' => awpcp_ajaxurl());
+            wp_localize_script('awpcp-admin-general', 'AWPCPAjaxOptions', $options);
+        } else if ( ! is_admin() ) {
 			wp_enqueue_style('awpcp-frontend-style');
 			wp_enqueue_style('awpcp-frontend-style-ie-6');
 			wp_enqueue_style('awpcp-frontend-style-lte-ie-7');
 	        wp_enqueue_style('awpcp-custom-css');
-		}
-
-		if (is_admin()) {
-			// TODO: migrate the code below to use set_js_data to pass information to AWPCP scripts.
-			$options = array('ajaxurl' => awpcp_ajaxurl());
-			wp_localize_script('awpcp-admin-general', 'AWPCPAjaxOptions', $options);
 		}
 	}
 

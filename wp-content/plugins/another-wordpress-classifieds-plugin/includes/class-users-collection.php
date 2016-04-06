@@ -224,9 +224,18 @@ class AWPCP_UsersCollection {
         return $this->db->get_results( $query );
     }
 
-    public function find_by_id( $user_id, $fields ) {
-        $users = $this->find( array( 'user_id' => $user_id, 'fields' => $fields ) );
-        return !empty( $users ) ? array_shift( $users ) : null;
+    public function find_by_id( $user_id, $fields = null ) {
+        if ( is_array( $fields ) ) {
+            $users = $this->find( array( 'user_id' => $user_id, 'fields' => $fields ) );
+        } else {
+            $users = $this->find( array( 'user_id' => $user_id ) );
+        }
+
+        if ( empty( $users ) ) {
+            return null;
+        }
+
+        return array_shift( $users );
     }
 
     public function get_users_with_full_information() {

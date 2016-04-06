@@ -37,6 +37,15 @@ class AWPCP_GeneralSettings {
         $settings->add_setting( $key, 'awpcpadminaccesslevel', __( 'Who can access AWPCP Admin Dashboard', 'another-wordpress-classifieds-plugin' ), 'radio', 'admin', __( 'Role of WordPress users who can have admin access to Classifieds.', 'another-wordpress-classifieds-plugin' ), array( 'options' => $options ) );
         $settings->add_setting( $key, 'awpcppagefilterswitch', __( 'Enable page filter', 'another-wordpress-classifieds-plugin' ), 'checkbox', 1, __( 'Uncheck this if you need to turn off the AWPCP page filter that prevents AWPCP classifieds children pages from showing up in your wp pages menu (You might need to do this if for example the AWPCP page filter is messing up your page menu. It means you will have to manually exclude the AWPCP children pages from showing in your page list. Some of the pages really should not be visible to your users by default).', 'another-wordpress-classifieds-plugin') );
 
+        $settings->add_setting(
+            $key,
+            'show-mobile-menu-expanded',
+            __( 'Auto-expand the Classifieds Menu for mobile devices?', 'another-wordpress-classifieds-plugin' ),
+            'checkbox',
+            false,
+            ''
+        );
+
         // Section: General - Date & Time Format
 
         $label = _x( 'Date & Time Format', 'settings', 'another-wordpress-classifieds-plugin' );

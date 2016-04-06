@@ -36,6 +36,7 @@ class AWPCP_Meta {
         $this->find_current_category_id();
 
         $this->configure_rel_canonical();
+        $this->configure_description_meta_tag();
         $this->configure_opengraph_meta_tags();
         $this->configure_title_generation();
         $this->configure_page_dates();
@@ -78,6 +79,21 @@ class AWPCP_Meta {
         if ( apply_filters( 'awpcp-should-generate-opengraph-tags', true, $this ) ) {
             add_action( 'wp_head', array( $this, 'opengraph' ) );
             $this->doing_opengraph = true;
+        }
+    }
+
+    private function configure_description_meta_tag() {
+        if ( ! $this->query->is_single_listing_page() ) {
+            return;
+        }
+
+        if ( is_null( $this->ad ) || is_null( $this->properties ) ) {
+            return;
+        }
+
+        if ( apply_filters( 'awpcp-should-generate-basic-meta-tags', true, $this ) ) {
+            add_action( 'wp_head', array( $this, 'generate_basic_meta_tags' ) );
+            $this->doin_description_meta_tag = true;
         }
     }
 
@@ -148,10 +164,13 @@ class AWPCP_Meta {
         $metadata = $this->get_listing_metadata();
 
         $meta_tags = array_merge(
-            $this->meta_tags_genertor->generate_basic_meta_tags( $metadata ),
             $this->meta_tags_genertor->generate_opengraph_meta_tags( $metadata )
         );
 
+        $this->render_meta_tags( $meta_tags );
+    }
+
+    private function render_meta_tags( $meta_tags ) {
         foreach ( $meta_tags as $tag ) {
             echo $tag . PHP_EOL;
         }
@@ -177,6 +196,13 @@ class AWPCP_Meta {
         }
 
         return $metadata;
+    }
+
+    public function generate_basic_meta_tags() {
+        $metadata = $this->get_listing_metadata();
+        $meta_tags = $this->meta_tags_genertor->generate_basic_meta_tags( $metadata );
+
+        $this->render_meta_tags( $meta_tags );
     }
 
     public function get_the_date( $the_date, $d = '' ) {

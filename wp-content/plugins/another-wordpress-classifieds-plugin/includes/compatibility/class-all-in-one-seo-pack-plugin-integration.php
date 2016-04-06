@@ -7,10 +7,32 @@ class AWPCP_AllInOneSEOPackPluginIntegration {
 
     private $metadata;
 
+    public function should_generate_basic_meta_tags( $should, $meta ) {
+        if ( class_exists( 'All_in_One_SEO_Pack' ) ) {
+            if ( ! isset( $this->metadata ) ) {
+                $this->metadata = $meta->get_listing_metadata();
+            }
+
+            add_filter( 'aioseop_description', array( $this, 'generate_meta_description' ) );
+
+            return false;
+        }
+
+        return $should;
+    }
+
+    public function generate_meta_description() {
+        return $this->metadata['http://ogp.me/ns#description'];
+    }
+
     public function should_generate_opengraph_tags( $should, $meta ) {
         if ( class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
-            $this->metadata = $meta->get_listing_metadata();
+            if ( ! isset( $this->metadata ) ) {
+                $this->metadata = $meta->get_listing_metadata();
+            }
+
             add_filter( 'aiosp_opengraph_meta', array( $this, 'meta_tag_value' ), 10, 3 );
+
             return false;
         }
 

@@ -12,6 +12,28 @@ class AWPCP_AddMetaTagsPluginIntegration {
         $this->meta_tags_generator = $meta_tags_generator;
     }
 
+    public function should_generate_basic_meta_tags( $should, $meta ) {
+        if ( function_exists( 'amt_get_metadata_head' ) ) {
+            if ( ! isset( $this->metadata ) ) {
+                $this->metadata = $meta->get_listing_metadata();
+            }
+
+            add_filter( 'amt_basic_metadata_head', array( $this, 'overwrite_meta_description' ) );
+
+            return false;
+        }
+
+        return $should;
+    }
+
+    public function overwrite_meta_description( $meta_tags ) {
+        $basic_meta_tags = $this->meta_tags_generator->generate_basic_meta_tags( $this->metadata );
+
+        $meta_tags['basic:description'] = $basic_meta_tags['description'];
+
+        return $meta_tags;
+    }
+
     public function should_generate_opengraph_tags( $should, AWPCP_Meta $meta ) {
         if ( ! function_exists( 'amt_get_metadata_head' ) ) {
             return $should;
@@ -20,12 +42,20 @@ class AWPCP_AddMetaTagsPluginIntegration {
         $options = get_option( 'add_meta_tags_opts' );
 
         if ( $options['auto_opengraph'] == '1' ) {
-            $this->metadata = $meta->get_listing_metadata();
+            if ( ! isset( $this->metadata ) ) {
+                $this->metadata = $meta->get_listing_metadata();
+            }
+
             add_filter( 'amt_opengraph_metadata_head', array( $this, 'overwrite_opengraph_metadata' ) );
+
             return false;
         } else if ( ! empty( $options['site_wide_meta'] ) ) {
-            $this->metadata = $meta->get_listing_metadata();
+            if ( ! isset( $this->metadata ) ) {
+                $this->metadata = $meta->get_listing_metadata();
+            }
+
             add_filter( 'amt_basic_metadata_head', array( $this, 'remove_opengraph_metadata' ) );
+
             return $should;
         }
 
