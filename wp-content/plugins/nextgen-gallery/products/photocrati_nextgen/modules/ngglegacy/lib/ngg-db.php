@@ -946,7 +946,7 @@ class nggdb
         $query = array();
         $query[] = "SELECT {$field}, SUBSTR({$field}, %d) AS 'i' FROM {$table}";
         $query[] = "WHERE ({$field} LIKE '{$slug}-%%' AND CONVERT(SUBSTR({$field}, %d), SIGNED) BETWEEN 1 AND %d) OR {$field} = %s";
-        $query[] = "ORDER BY i DESC LIMIT 1";
+        $query[] = "ORDER BY CAST(i AS SIGNED INTEGER) DESC LIMIT 1";
         $query = $wpdb->prepare(implode(" ", $query), strlen("{$slug}-")+1, strlen("{$slug}-")+1, PHP_INT_MAX, $slug);
 
         // If the above query returns a result, it means that the slug is already taken

@@ -153,6 +153,10 @@ class A_MVC_Router extends Mixin
                 $retval = self::$_lookups[$key] = $this->object->join_paths($this->object->get_base_url('root'), str_replace('\\', '/', $path));
             }
         }
+        // For "roots" and others that make use of relative URL
+        if (current_theme_supports('root-relative-urls') && strpos($retval, '/') !== 0) {
+            $retval = '/' . $retval;
+        }
         return $retval;
     }
 }

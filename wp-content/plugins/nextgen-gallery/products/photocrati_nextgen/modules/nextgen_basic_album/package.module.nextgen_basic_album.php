@@ -80,6 +80,7 @@ class A_NextGen_Album_Breadcrumbs extends Mixin
                         $found = $this->find_gallery_parent($gallery_id, $album->sortorder, $found);
                         if ($found) {
                             $found[] = $album;
+                            break;
                         }
                     }
                 }

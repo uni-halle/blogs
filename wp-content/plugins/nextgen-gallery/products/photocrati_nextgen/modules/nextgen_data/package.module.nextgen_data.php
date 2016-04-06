@@ -230,12 +230,12 @@ class Mixin_NextGen_Gallery_Validation
             $this->object->title = M_NextGen_Data::strip_html($this->object->title, TRUE);
             // If no name is present, use the title to generate one
             if (!$this->object->name) {
-                $this->object->name = sanitize_file_name(sanitize_title($this->object->title));
+                $this->object->name = sanitize_file_name($this->object->title);
                 $this->object->name = apply_filters('ngg_gallery_name', $this->object->name);
             }
             // If no slug is set, use the title to generate one
             if (!$this->object->slug) {
-                $this->object->slug = nggdb::get_unique_slug(sanitize_title($this->object->title), 'gallery');
+                $this->object->slug = nggdb::get_unique_slug($this->object->title, 'gallery');
             }
         }
         // Set what will be the path to the gallery

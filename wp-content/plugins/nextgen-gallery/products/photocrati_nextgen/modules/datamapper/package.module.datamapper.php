@@ -360,8 +360,10 @@ class Mixin_CustomPost_DataMapper_Driver extends Mixin
         // final release.
         if ($post_id = @wp_insert_post($post)) {
             $new_entity = $this->object->find($post_id, TRUE);
-            foreach ($new_entity->get_entity() as $key => $value) {
-                $entity->{$key} = $value;
+            if ($new_entity) {
+                foreach ($new_entity->get_entity() as $key => $value) {
+                    $entity->{$key} = $value;
+                }
             }
             // Save properties as post meta
             $this->object->_flush_and_update_postmeta($post_id, $entity instanceof stdClass ? $entity : $entity->get_entity());

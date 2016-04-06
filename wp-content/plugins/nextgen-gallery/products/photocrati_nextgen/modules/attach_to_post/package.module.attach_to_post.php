@@ -204,7 +204,7 @@ class A_Gallery_Storage_Frame_Event extends Mixin
             $event->pid = $image->{$image->id_field};
             $event->id_field = $image->id_field;
             $event->thumb_url = $image->thumb_url;
-            C_Frame_Event_Publisher::get_instance()->add_event(array('event' => 'thumbnail_modified', 'image' => $event));
+            C_Frame_Event_Publisher::get_instance('attach_to_post')->add_event(array('event' => 'thumbnail_modified', 'image' => $event));
         }
         return $retval;
     }

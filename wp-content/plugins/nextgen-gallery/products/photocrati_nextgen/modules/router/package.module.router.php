@@ -286,7 +286,7 @@ class C_Router extends C_Component
     public function initialize()
     {
         parent::initialize();
-        $this->_request_method = $_SERVER['REQUEST_METHOD'];
+        $this->_request_method = !empty($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : null;
     }
     static function &get_instance($context = False)
     {

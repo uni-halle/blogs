@@ -1,18 +1,18 @@
 === NextGEN Gallery ===
-Contributors: photocrati
+Contributors: photocrati, imagely
 Tags: nextgen, nextgen gallery, gallery, galleries, image, images, image gallery, photo, photos, photo gallery, picture, pictures, picture gallery, album, albums, photo albums, image album, media, media gallery, thumbnails, thumbnail gallery, thumbnail galleries, slideshow, slideshows, slideshow gallery, slideshow galleries, fancybox, lightbox, responsive, responsive gallery, responsive galleries, wordpress responsive gallery, nextcellent, wordpress gallery plugin, wordpress photo gallery plugin, wp gallery, wp gallery plugins, best gallery plugin, free photo gallery, singlepic, image captions imagebrowser, watermarks, watermarking, photography, photographer
 Requires at least: 4.0.0
-Stable tag: 2.1.23
-Tested up to: 4.4
+Stable tag: 2.1.26
+Tested up to: 4.4.2
 License: GPLv2
 
-The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 13 million downloads.
+The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 14 million downloads.
 
 == Description ==
 
 = WordPress Gallery Plugin =
 
-NextGEN Gallery is the most popular **WordPress gallery plugin**, and one of the most popular WordPress plugins of all time, with over 13 million downloads.
+NextGEN Gallery is the most popular **WordPress gallery plugin**, and one of the most popular WordPress plugins of all time, with over 14 million downloads.
 
 It provides a powerful engine for uploading and managing galleries of images, with the ability to batch upload, import meta data, add/delete/rearrange/sort images, edit thumbnails, group galleries into albums, and more. It also provides two front-end display styles (slideshows and thumbnail galleries), both of which come with a wide array of options for controlling size, style, timing, transitions, controls, lightbox effects, and more.
 
@@ -198,6 +198,19 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 
 == Changelog ==
+
+= V2.1.26 - 03.15.2016 =
+Fixed:    Removed unnecessary whitespace from "Related images" template that caused issues with some themes
+Fixed:    Detection of parents from grand-child-albums when generating breadcrumbs
+Fixed:    C_Router->initialize() generating warnings with WP-CLI or the WP-CLI-Cron
+Fixed:    Added Roots-theme relative-url support to C_MVC_Router->get_static_url()
+Fixed:    nggdb::get_unique_slug() checking test-1, -2, -3,.. -9, -10, and then rolling back to -1 rather than continuing to -11, -12, etc
+Fixed:    Album breadcrumbs CSS compatibility with certain themes
+Fixed:    Made C_Gallery->validation() not use sanitize_title() on the image name attribute; this allows gallery names with UTF-8 to not generate 404
+Fixed:    NGG's cross-frame-communication cookies from building up (and not being culled) to the point HTTP requests were rejected by the server for having too large of a cookie header
+Fixed:    Updated C_Dynamic_Thumbnails_Manager->get_uri_from_params() with a minor user-submitted patch
+Fixed:    Updated C_CustomPost_DataMapper_Driver->_save_entity() with a minor user-submitted patch
+Fixed:    Cleaned up overview.php's readability and removed some now-long-unused code from legacy's ajax.php
 
 = V2.1.23 - 01.05.2015 =
 * Secured: XSS vulnerabilities in Manage Gallery pages
