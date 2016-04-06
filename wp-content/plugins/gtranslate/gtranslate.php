@@ -2,8 +2,8 @@
 /*
 Plugin Name: GTranslate
 Plugin URI: https://gtranslate.io/?xyz=998
-Description: Makes your website <strong>multilingual</strong> and available to the world using Google Translate. For support visit <a href="http://gtranslate.net/forum/">GTranslate Forum</a>.
-Version: 2.0.9
+Description: Makes your website <strong>multilingual</strong> and available to the world using Google Translate. For support visit <a href="https://gtranslate.io/forum/">GTranslate Forum</a>.
+Version: 2.0.10
 Author: Edvard Ananyan
 Author URI: https://gtranslate.io
 
@@ -411,7 +411,7 @@ function ShowWidgetPreview(widget_preview) {
     jQuery('head').append( jQuery('<link rel="stylesheet" type="text/css" />').attr('href', '$wp_plugin_url/gtranslate-style'+jQuery('#flag_size').val()+'.css') );
     jQuery('#widget_preview').html(widget_preview);
     if(jQuery('#widget_look').val() == 'dropdown_with_flags')
-        jQuery('#widget_preview').prepend('<p style="color:#f44;margin-top:5px;">This look is new, if you are having issues, please post on <a href="http://gtranslate.net/forum/" target="_blank">GTranslate Forum</a></p>');
+        jQuery('#widget_preview').prepend('<p style="color:#f44;margin-top:5px;">This look is new, if you are having issues, please post on <a href="https://gtranslate.io/forum/" target="_blank">GTranslate Forum</a></p>');
 }
 
 jQuery('#pro_version').attr('checked', '$pro_version'.length > 0);

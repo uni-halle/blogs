@@ -1,33 +1,40 @@
 === GTranslate - Google Translate ===
 Contributors: edo888
 Author: Edvard Ananyan
-Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator, language translator, google translator, language translate, google language translator, translation, translate, multi language
+Tags: widget, plugin, sidebar, google, translate, translation, localization, google translate, multilingual, multilanguage
 Requires at least: 2.8
 Tested up to: 4.4
-Stable tag: 2.0.9
+Stable tag: 2.0.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.me/EdvardAnanyan/10
 
-GTranslate uses Google Translate power to make your website multilingual and available to more than 99% of internet users.
+GTranslate uses Google Translate power to make your wordpress site multilingual and available to more than 99% of internet users.
 
 == Description ==
 
-This module uses Google Translate automatic translation service to translate your web page with Google power. With 103 available languages your site will be available to more than 99% of internet users.
+This plugin uses Google Translate automatic translation service to **translate your wordpress website** with Google power. With 103 available languages your site will be available to more than 99% of internet users.
 
 GTranslate is a leading Google Translate provider since 2008 and powers more than 500.000 websites worldwide.
 
-Please `use` [GTranslate Forum](http://gtranslate.net/forum/) for your questions and support requests!
+Please `use` [GTranslate Forum](https://gtranslate.io/forum/) for your questions and support requests!
 
+**Features**
+
+* Google automatic translation
 * Hides "Suggest better translation" pop-up
 * Hides Google top frame after translation
 * Mouse over effect
 * Flags combined in one file to load faster
-* Analytics
-* Option to open translated page in new window
-* Option to translate the page on fly
-* Available styles Dropdown/Flags/flags with dropdown
+* Google Analytics integration
+* Translates the site on the fly
+* Available styles Dropdown/Flags/Flags with dropdown/Nice dropdown with flags
 * Valid XHTML
+* You can manually correct translations (paid)
+* You can have sub-directory (example.com/**es**/) or sub-domain (**es.**example.com) URL structure (paid)
+* URL Translation is possible (example.com/about-us -> example.es/sobre-nosotros) (paid)
+
+[Download GTranslate](https://gtranslate.io/#pricing)
 
 **Watch GTranslate Tour**
 [vimeo http://vimeo.com/30132555]
@@ -268,41 +275,43 @@ Please `use` [GTranslate Forum](http://gtranslate.net/forum/) for your questions
 * Tajik
 * Uzbek
 
+**41st stage (launched February 2016)
+* Amharic
+* Corsican
+* Hawaiian
+* Kurdish (Kurmanji)
+* Kyrgyz
+* Luxembourgish
+* Pashto
+* Samoan
+* Scottish Gaelic
+* Shona
+* Sindhi
+* West Frisian
+* Xhosa
+
 = Languages not yet supported by Google Translate =
 Languages not yet supported by Google Translate, but in process.
 
-* Amharic
 * Assamese
 * Cantonese
 * Cherokee
-* Corsican
 * Dzongkha
-* Frisian
 * Guarani
-* Hawaiian
 * Kinyarwanda
-* Kurdish (Kurmanji)
 * Kurdish (Sorani)
-* Kyrgyz
-* Luxembourgish
 * Odia
-* Pashto
 * Romansh
-* Samoan
-* Scots Gaelic
-* Shona
-* Sindhi
 * Tatar
 * Tibetan
 * Turkmen
-* Uighur
+* Uyghur
 * Wolof
-* Xhosa
 
 == Frequently Asked Questions ==
 
 = It doesn't work, what to do? =
-Please check the [Troubleshooting](http://gtranslate.net/forum/troubleshooting-gtranslate-free-t370.html) and feel free to create a new topic if you cannot find your case.
+Please check [GTranslate Forum](https://gtranslate.io/forum/) and feel free to create a new topic if you cannot find answers.
 
 = Can I exclude some parts from being translated? =
 Yes, you need to wrap the text you don't want to be translated with &lt;span class=&quot;notranslate&quot;&gt;&lt;/span&gt;.
@@ -323,7 +332,7 @@ GTranslate is a multilingual solution for your website.
 It's Google translation, hence Google quality. In the Pro and Enterprise versions you can refine the translations manually and order professional translations directly from your site.
 
 = Which languages are supported? =
-Here is the list: Afrikaans, Albanian, Arabic, Armenian, Azerbaijani, Basque, Belarusian, Bengali, Bosnian, Bulgarian, Catalan, Cebuano, Chinese (Simplified), Chinese (Traditional), Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Galician, Georgian, German, Greek, Gujarati, Haitian Creole, Hausa, Hebrew, Hindi, Hmong, Hungarian, Icelandic, Igbo, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Khmer, Korean, Lao, Latin, Latvian, Lithuanian, Macedonian, Malay, Maltese, Maori, Marathi, Mongolian, Nepali, Norwegian, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Serbian, Slovak, Slovenian, Somali, Spanish, Swahili, Swedish, Tamil, Telugu, Thai, Turkish, Ukrainian, Urdu, Vietnamese, Welsh, Yiddish, Yoruba, Zulu
+Here is the list: Afrikaans, Albanian, Amharic, Arabic, Armenian, Azerbaijani, Basque, Belarusian, Bengali, Bosnian, Bulgarian, Catalan, Cebuano, Chichewa, Chinese (Simplified), Chinese (Traditional), Corsican, Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Frisian, Galician, Georgian, German, Greek, Gujarati, Haitian Creole, Hausa, Hawaiian, Hebrew, Hindi, Hmong, Hungarian, Icelandic, Igbo, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Kazakh, Khmer, Korean, Kurdish (Kurmanji), Kyrgyz, Lao, Latin, Latvian, Lithuanian, Luxembourgish, Macedonian, Malagasy, Malay, Malayalam, Maltese, Maori, Marathi, Mongolian, Myanmar (Burmese), Nepali, Norwegian, Pashto, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Samoan, Scottish Gaelic, Serbian, Sesotho, Shona, Sindhi, Sinhala, Slovak, Slovenian, Somali, Spanish, Sudanese, Swahili, Swedish, Tajik, Tamil, Telugu, Thai, Turkish, Ukrainian, Urdu, Uzbek, Vietnamese, Welsh, Xhosa, Yiddish, Yoruba, Zulu
 
 = Which websites are supported? =
 All the HTML websites are supported. However the contents of media files like images and flash will not be translated.
@@ -366,9 +375,6 @@ Pro version is a software hosted on your own server while Enterprise is a Transl
 = How can I be sure that search engines will index my website? =
 You can check that this website is indexed in Google by searching for site:gtranslate.io.
 
-= Will it work with JoomFish, sh404sef or other SEF extensions? =
-Yes, there are no known extensions which have conflicts with Pro version.
-
 = How I can edit the translations or order professional human translations? =
 You need to go to the language you want to edit, for instance, French: http://domain.com/fr/ and add ?language_edit=1 to the end of the URL: http://domain.com/fr/?language_edit=1 and you will see the Edit and Add to Cart buttons near each text.
 
@@ -379,6 +385,9 @@ You need to go to the language you want to edit, for instance, French: http://do
 3. Nice dropdown with flags (open)
 
 == Changelog ==
+
+= 2.0.10 =
+* Updated links, FAQ and readme
 
 = 2.0.9 =
 * Fixed undefined variable PHP notice
