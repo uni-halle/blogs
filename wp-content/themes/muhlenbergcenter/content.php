@@ -7,15 +7,15 @@
  */
 ?>
 
-<?php if ( is_category( 'press' ) ) : /* Begin: Category Press */ ?>
+<?php if (is_category(['press', 'publications', 'projects', 'networks', 'material-links'])) : /* Begin: Category Press and Research */ ?>
 <li id="post-<?= the_ID(); ?>" class="media">
     <div class="thumbnail">
         <a href="<?= the_permalink(); ?>"
-           title="<?php sprintf( _e( 'More about ', 'muhlenbergcenter' ), the_title() ); ?>">
-            <?php if ( has_post_thumbnail() ) : ?>
-                <?= the_post_thumbnail( array(285,180) ); ?>
+           title="<?php sprintf(_e('More about ', 'muhlenbergcenter'), the_title()); ?>">
+            <?php if (has_post_thumbnail()) : ?>
+                <?= the_post_thumbnail([285,180]); ?>
             <?php else : ?>
-                <img src="<?= esc_url( get_template_directory_uri() ); ?>/img/teaser_press.jpg"
+                <img src="<?= esc_url(get_template_directory_uri()); ?>/img/teaser_press.jpg"
                      alt="teaser image" />
             <?php endif; ?>
         </a>
@@ -73,7 +73,6 @@
                 the_title(sprintf('<h2><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h2>');
             endif;
         ?>
-
 
         <div class="content">
             <?php

@@ -91,7 +91,11 @@
 
 								</footer>
 
-								<?php comments_template(); ?>
+								<?php 
+                                if( is_user_logged_in() ) { 
+                                    comments_template();
+                                }
+                                ?>
                                 
 
 							</article>

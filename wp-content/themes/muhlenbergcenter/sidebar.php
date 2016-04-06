@@ -19,7 +19,8 @@ if ( has_nav_menu( 'primary' ) ) : ?>
         <section class="top-bar-section">
             <ul class="right">
                 <li>
-                    <a href="#" title="<?php _e( 'Visit us at facebook', 'muhlenbergcenter' ); ?>">
+                    <a href="https://www.facebook.com/Muhlenberg-Center-for-American-Studies-233803723632049/"
+                       title="<?php _e( 'Visit us at facebook', 'muhlenbergcenter' ); ?>" target="_blank">
                         <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/icon-facebook.png" alt="Facebook">
                     </a>
                 </li>

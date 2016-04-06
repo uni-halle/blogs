@@ -176,6 +176,20 @@ function blockgrid_gallery($string, $attr){
 add_filter('post_gallery', 'blockgrid_gallery', 10, 2);
 
 /**
+ * Exclude categories from search.
+ */
+function muhlenbergcenter_exclude_categories_from_search($query) {
+  if (is_admin() || ! $query->is_main_query())
+    return;
+
+  if ($query->is_search) {
+    $query->set('cat', '-8, -9, -27, -28, -29, -30, -32');
+  }
+
+}
+add_action('pre_get_posts', 'muhlenbergcenter_exclude_categories_from_search', 1);
+
+/**
  * Enqueue scripts and styles.
  */
 function muhlenbergcenter_scripts() {
@@ -191,7 +205,7 @@ function muhlenbergcenter_scripts() {
     remove_action('wp_enqueue_scripts', ['EM_Scripts_and_Styles', 'localize_script']);
 
     // Load stylesheets to the closing head tag.
-    wp_enqueue_style('main', get_stylesheet_uri(), array(), 'v1.2.0');
+    wp_enqueue_style('main', get_stylesheet_uri(), array(), 'v1.4.3');
 
     // Load js-files to the closing body tag.
     wp_enqueue_script('main', get_template_directory_uri() . '/js/main.min.js', array(), 'v1.0.1', true);

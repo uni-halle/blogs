@@ -2,42 +2,45 @@
 
 			<div id="content">
 
-				<div id="inner-content" class="wrap cf">
+				<div id="inner-content" class="maincontainer">
 
-					<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+						<main id="main" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-						<article id="post-not-found" class="hentry cf">
+							<article class="custom404"> 
+								<header class="article-header">
 
-							<header class="article-header">
+									<h1 class="page-title" itemprop="headline">
+                                    404 - Kuhlossal verlaufen
+                                    </h1>  
 
-								<h1><?php _e( 'Epic 404 - Article Not Found', 'bonestheme' ); ?></h1>
+								</header> 
 
-							</header>
+								<section class="entry-content cf" itemprop="articleBody">
+                                   
+                                       <img alt="Kuh Icon" class="img404" src="<?php echo get_template_directory_uri() ;?>/library/images/404cow.svg">
+                                        
+                                        <h2>Wirlich kuhrios: die gesuchte Seite ist nicht verfügbar. </h2>
+                                        <p>Bestimmt hat Betty sie gegessen. Das tut uns sehr leid. Bitte schauen Sie sich doch mal im Menü oben um, ob sie dort nicht etwas Passendes finden. Auch unsere <a href="<?php echo home_url(); ?>">Startseite</a> ist immer einen Besuch wert.</p>
 
-							<section class="entry-content">
+								</section> 
 
-								<p><?php _e( 'The article you were looking for was not found, but maybe try looking again!', 'bonestheme' ); ?></p>
+								<footer class="article-footer cf">
+                                    <p><small>Icon by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>, licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></small></p>
+								</footer>
 
-							</section>
+								<?php 
+                                if( is_user_logged_in() ) { 
+                                    comments_template();
+                                }
+                                ?>
+                                
 
-							<section class="search">
+							</article>
 
-									<p><?php get_search_form(); ?></p>
-
-							</section>
-
-							<footer class="article-footer">
-
-									<p><?php _e( 'This is the 404.php template.', 'bonestheme' ); ?></p>
-
-							</footer>
-
-						</article>
-
-					</main>
-
+						</main>
+                    
 				</div>
 
 			</div>
 
-<?php get_footer(); ?>
+<?php get_footer( nofooter ); ?>

@@ -22,7 +22,11 @@ get_header(); ?>
         'videos',
         'board-of-directors',
         'board-of-advisors',
-        'staff'
+        'staff',
+        'publications',
+        'projects',
+        'networks',
+        'material-links'
     ])) : ?>
     <div class="row">
         <div class="small-12 columns">
@@ -44,7 +48,11 @@ get_header(); ?>
         'videos',
         'board-of-directors',
         'board-of-advisors',
-        'staff'
+        'staff',
+        'publications',
+        'projects',
+        'networks',
+        'material-links'
     ])) : ?>
             </ul>
         </div>

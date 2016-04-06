@@ -120,7 +120,8 @@ olgajaxhelper();
 	
 
 }); // END function
-$(window).load(function(){
+jQuery(window).load(function(){
+var $=jQuery;
 $('.loop-entry.first-activ a').click();
 $('.flexslider .slides > li').css('display','none');
 });

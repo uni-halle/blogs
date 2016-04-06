@@ -60,6 +60,11 @@ function my_theme_scripts_function() {
 	wp_enqueue_script('flexslider', get_template_directory_uri() . '/js/jquery.flexslider-min.js');
 }
 
+add_action('wp_enqueue_scripts','iww_stay_informed_js');
+function iww_stay_informed_js() {
+	wp_enqueue_script('iww-stay-informed-js','https://www.ich-will-wissen.de/stay-informed/js/');
+}
+
 /* ------------------------------------------------------------------*/
 /* ADD PRETTYPHOTO REL ATTRIBUTE FOR LIGHTBOX */
 /* ------------------------------------------------------------------*/

@@ -9,7 +9,7 @@
 
     <div class="small-12 columns">
         <?php if (!is_page('calendar')) : ?>
-        <h1 class="page-title"><?php the_title('<span>', '</span>'); ?></h1>
+        <h1 class="page-title"><?= the_title('<span>', '</span>'); ?></h1>
         <?php endif; ?>
 
         <?php if (is_page('media')) : /* conents of the media page */ ?>
@@ -34,7 +34,7 @@
             <div class="row  latest-uploads">
                 <div class="small-12  columns">
                     <h1 class="page-title">
-                        <span><?php _e('Latest Uploads', 'muhlenbergcenter'); ?></span>
+                        <span><?= _e('Latest Uploads', 'muhlenbergcenter'); ?></span>
                     </h1>
                     <?php
                         $latestconditions = array(
@@ -72,7 +72,7 @@
                                         ?>
                                         <div class="thumbnail">
                                             <div class="flex-video">
-                                                <iframe src="https://www.youtube-nocookie.com/embed/<?php echo $youtube ?>?rel=0"
+                                                <iframe src="https://www.youtube-nocookie.com/embed/<?= $youtube ?>?rel=0"
                                                         class="video-player"
                                                         allowfullscreen>
                                                 </iframe>
@@ -88,17 +88,13 @@
                                         }
                                         ?>
                                         </span> |
-                                        <span class="meta-info__date"><?php the_date(); ?></span>
+                                        <span class="meta-info__date"><?= the_date(); ?></span>
                                     </p>
                                     <p>
-                                        <?php if(in_category('videos')) : ?>
-                                            <?= the_title(); ?>
-                                        <?php else : ?>
-                                        <a href="<?php the_permalink(); ?>"
+                                        <a href="<?= the_permalink(); ?>"
                                            title="<?php sprintf(_e('More about ', 'muhlenbergcenter'), the_title()); ?>">
-                                            <?php the_title(); ?>
+                                            <?= the_title(); ?>
                                         </a>
-                                        <?php endif; ?>
                                     </p>
                                 </li>
                             <?php endwhile; ?>
@@ -110,17 +106,17 @@
         <?php elseif (is_page('newsletter')) : /* conents of the newsletter page */ ?>
 
             <div class="content">
-                <?php the_content(); ?>
+                <?= the_content(); ?>
 
                 <form method="post" action="http://entwicklung.lenz/muhlenberg-center/wp-content/plugins/newsletter/do/subscribe.php" data-abide>
                     <div class="row">
                         <div class="large-6 columns">
                             <label>
-                                <?php _e('E-Mail-Address', 'muhlenbergcenter') ?>
+                                <?= _e('E-Mail-Address', 'muhlenbergcenter') ?>
                                 <input type="email" name="ne" size="30" required>
                                 <small class="error">Invalid entry</small>
                             </label>
-                            <button type="submit" class="small"><?php _e('Subscribe', 'muhlenbergcenter') ?></button>
+                            <button type="submit" class="small"><?= _e('Subscribe', 'muhlenbergcenter') ?></button>
                         </div>
                     </div>
                 </form>
@@ -134,17 +130,17 @@
                         the_post_thumbnail([285,180]);
                     } ?>
                     <div class="contact-info">
-                        <h3><?php _e('Address', 'muhlenbergcenter') ?></h3>
+                        <h3><?= _e('Address', 'muhlenbergcenter') ?></h3>
                         <ul>
-                            <li><?php bloginfo('name'); ?></li>
-                            <li><?php echo get_post_meta($post->ID, 'street', true); ?></li>
-                            <li><?php echo get_post_meta($post->ID, 'place', true); ?></li>
+                            <li><?= bloginfo('name'); ?></li>
+                            <li><?= get_post_meta($post->ID, 'street', true); ?></li>
+                            <li><?= get_post_meta($post->ID, 'place', true); ?></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="medium-8  columns">
-                    <?php the_content(); ?>
+                    <?= the_content(); ?>
                 </div>
             </div>
 
@@ -186,7 +182,7 @@
         <?php else : /* contents of all other pages */ ?>
 
             <div class="content">
-                <?php the_content(); ?>
+                <?= the_content(); ?>
             </div>
 
         <?php endif; ?>

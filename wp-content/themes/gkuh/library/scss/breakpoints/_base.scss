@@ -15,10 +15,6 @@ and will be used across all viewports.
 GENERAL STYLES
 *********************/
 
-/* Use this variable to set the general width of the content (and also the inner header, footer and breadcrumb box) */
-
-$contentwidth: 90%;
-
 .maincontainer {
     width: $contentwidth;
     margin: 0 auto;
@@ -27,7 +23,7 @@ $contentwidth: 90%;
 body {
 	font-family: $opensans;
 	font-size: 90%;
-	line-height: 1.25;
+	//line-height: 1.25;
 	color: $text-color;
 	background-color: $site-bgrd;
   	-webkit-font-smoothing: antialiased;
@@ -43,37 +39,25 @@ style a page via class
 .home {}                          /* home page */
 .blog {}                          /* blog template page */
 .archive {}                       /* archive page */
-.date {}                          /* date archive page */
-	.date-paged-1 {}                /* replace the number to the corresponding page number */
-.search {}                        /* search page */
-	.search-results {}              /* search result page */
-	.search-no-results {}           /* no results search page */
-	.search-paged-1 {}              /* individual paged search (i.e. body.search-paged-3) */
 .error404 {}                      /* 404 page */
 .single {}                        /* single post page */
-	.postid-1 {}                    /* individual post page by id (i.e. body.postid-73) */
-	.single-paged-1 {}              /* individual paged single (i.e. body.single-paged-3) */
 .attachment {}                    /* attatchment page */
-	.attachmentid-1 {}              /* individual attatchment page (i.e. body.attachmentid-763) */
-	.attachment-mime-type {}        /* style mime type pages */
-.author {}                        /* author page */
-	.author-nicename {}             /* user nicename (i.e. body.author-samueladams) */
-	.author-paged-1 {}              /* paged author archives (i.e. body.author-paged-4) for page 4 */
-.category {}                      /* category page */
-	.category-1 {}                  /* individual category page (i.e. body.category-6) */
-	.category-paged-1 {}            /* replace the number to the corresponding page number */
-.tag {}                           /* tag page */
-	.tag-slug {}                    /* individual tag page (i.e. body.tag-news) */
-	.tag-paged-1 {}                 /* replace the number to the corresponding page number */
-.page-template {}                 /* custom page template page */
-	.page-template-page-php {}      /* individual page template (i.e. body.page-template-contact-php */
-	.page-paged-1 {}                /* replace the number to the corresponding page number */
-	.page-parent {}                 /* parent page template */
-	.page-child {}                  /* child page template */
-	.parent-pageid-1 {}             /* replace the number to the corresponding page number */
-.logged-in {}                     /* if user is logged in */
-.paged {}                         /* paged items like search results or archives */
-	.paged-1 {}                     /* individual paged (i.e. body.paged-3) */
+
+.category-faq {
+        h2 {
+            //text-align: center;
+            font-size: 1.5em;
+            margin-top: 0.5em;
+            padding: 0.5em 0.25em 0.5em 0.5em;
+            background-color: $light-gray;
+        }
+    
+        h3 {
+            font-size: 1.2em;
+            margin-bottom: 0.5em;
+    }
+    
+}
 
 /*********************
 LAYOUT & GRID STYLES
@@ -161,8 +145,6 @@ h5, .h5, h6, .h6 {
 /*********************
 SITE HEADER STYLES
 *********************/
-
-$headerheight: 4em;
 
 .header {
 	background-color: $gkuh;
@@ -319,6 +301,7 @@ and more scalable.
                     font-size:0;
                     border-right-style: solid;
                     border-right-width: 8px;
+                    border-color: #fff;
                     height:100%;
                     position:absolute;
                     right:0;
@@ -385,28 +368,58 @@ and more scalable.
 POSTS & CONTENT STYLES
 *********************/
 
+iframe {
+    max-width: 100%;
+}
+
 #content {
 	margin-top: 1em;
 }
 
 		.hentry {
 			background-color: $white;
-			border-radius: 3px;
+			//border-radius: 3px;
 			margin-bottom: 1.5em;
-
-			header {
+            
+            header {
 				padding: 0; 
+                
+                &.entry-header {
+                    margin: 1.5em 0;
+                }
 			}
 
 			footer {
-				padding: 1.5em;
+				padding: 0;
 
-				p {
-					margin: 0;
-				}
+                &.article-footer {
+                    font-size: 0.9em;
+                    color: $meta-gray;
+                
+                    p { margin: 0; }
+                }
 			}
 
 		} /* end .hentry */
+
+        .blog .post-content .hentry { //only on post page
+            
+            &:after {
+                display: block;
+                content: ' ';
+                width: 60%;
+                border-bottom: 1px solid $light-gray;
+                padding-top: 1.5em;
+                margin: 1.5em auto 0 auto;
+                clear: both;
+            }
+            
+            &:last-of-type {
+                margin-bottom: $footerheight;
+                
+            }
+
+        }
 
 		.single-title,
 		.page-title,
@@ -531,7 +544,8 @@ POSTS & CONTENT STYLES
 			blockquote {
 				margin: 0 0 1.5em 0.75em;
 				padding: 0 0 0 0.75em;
-				border-left: 3px solid $blue;
+				border-left-width: 3px;
+                border-left-style: solid; //color is set as inline style with category color
 				font-style: italic;
 				color: $meta-gray;
 
@@ -592,6 +606,7 @@ POSTS & CONTENT STYLES
 			max-width: 100%;
 			background: #eee;
 			padding: 5px;
+            margin-bottom: 1em;
 
 			/* images inside wp-caption */
 			img {
@@ -603,7 +618,7 @@ POSTS & CONTENT STYLES
 			p.wp-caption-text {
 				font-size: 0.85em;
 				margin: 4px 0 7px;
-				text-align: center;
+				text-align: left;
 			}
 
 		} /* end .wp-caption */
@@ -658,7 +673,7 @@ div #hdQuestionnaireContent {
     width: auto;
 }
 
-/* hide "You scored XYZ" from results (no option to hide or translate at this point) */
+/* hide "You scored XYZ" from results (no option to hide or translate at this point v1.4) */
 #resultsTotal h2:first-child {
     display: none;
 }
@@ -666,8 +681,24 @@ div #hdQuestionnaireContent {
 #resultsTotal h3 {
     font-family: $opensans;
     font-size: 1em;
-    font-weight: 600;
+    font-weight: 700;
 }
+
+#hdQuestionnaireContent .question h3 {
+    font-family: $opensans;
+    font-size: 1em;
+    line-height: 1.3em;
+    font-weight: bold;
+}
+
+#hdQuestionnaireContent .questionContent { //correct answers
+    background: rgba(15, 143, 18, 0.4);
+}
+
+//use if "text for wrong answers" should be shown after quiz for all (wrong and correct) answers
+//#hdQuestionnaireContent .question > .correct ~ .questionContent {
+//    display: block;
+//}
 
 /***************
 List of Child Pages on First Page of a Section (See page.php for php code and list class name
@@ -840,27 +871,44 @@ COMMENT STYLES
 	}
 }
 
+.comment-form textarea {
+    background-color: $light-gray;
+}
 
 .commentlist {
 	margin: 0;
 	list-style-type: none;
 }
 
+#content .comment header {
+        padding: 0;
+    }
+
 .comment {
 	position: relative;
 	clear: both;
 	overflow: hidden;
-	padding: 1.5em;
-	border-bottom: 1px solid $light-gray;
+	//padding: 1.5em;
+    
+    
+    .cf {
+        //margin: 0.5em;
+        //padding: 0;
+    }
 
 	.comment-author {
 		padding: 7px;
 		border: 0;
+        
+        a.comment-edit-link {
+            display: none;
+        }
+        
 	}
 
 	/* vcard */
 	.vcard {
-		margin-left: 50px;
+		//margin-left: 50px;
 
 		cite.fn {
 			font-weight: 700;
@@ -871,12 +919,12 @@ COMMENT STYLES
 		}
 
 		time {
-			display: block;
+			display: inline-block;
 			font-size: 0.9em;
 			font-style: italic;
 
 			a {
-				color: $meta-gray;
+				color: $dark-gray;
 				text-decoration: none;
 
 				&:hover {
@@ -890,9 +938,10 @@ COMMENT STYLES
 		.photo {}
 
 		.avatar {
-			position: absolute;
-			left: 16px;
-			border-radius: 50%;
+			//position: absolute;
+			//left: 16px;
+			//border-radius: 50%;
+            display: none;
 		}
 
 	} /* end .commentlist .vcard */
@@ -924,17 +973,30 @@ COMMENT STYLES
 	}
 
 	&.depth-1 {
-		margin-left: 0;
-		margin-top: 0;
+		margin: 0.5em 0 0 0;
+        border: 1px solid $dark-gray;
+        padding: 0;
+        
+        &>article {
+        background-color: $light-gray;
+        padding: 0.5em;
+        }
 	}
 
 	&:not(.depth-1) {
-		margin-top: 0;
-		margin-left: 7px;
-		padding: 7px;
+		margin: 0.5em 0 0.5em 2em;
+		
+    
+        &>article {
+            border: 1px solid $light-gray;
+            padding: 0.5em;
+        }
+        
 	}
 
-	&.depth-2 {}
+	&.depth-2 {
+        //border-bottom: 1px solid $light-gray;
+    }
 	&.depth-3 {}
 	&.depth-4 {}
 	&.depth-5 {}
@@ -942,10 +1004,10 @@ COMMENT STYLES
 	/* general comment classes */
 	&.alt {}
 	&.odd {
-		background-color: $white;
+        //border: 1px solid $dark-gray;
 	}
 	&.even {
-		background: $light-gray;
+        //border: 1px solid $dark-gray;
 	}
 	&.parent {}
 	&.comment {}
@@ -1014,18 +1076,21 @@ COMMENT FORM STYLES
 
 .comment-respond {
 	@extend .cf;
-	padding: 1.5em;
-	border-top: 1px solid $light-gray;
+	padding: 1em;
+	border: 1px solid $gkuh;
+    margin: 1em;
 }
 
 	#reply-title {
 		margin: 0;
+        color: $gkuh;
 	}
 
 	.logged-in-as {
 		color: $meta-gray;
 		font-style: italic;
 		margin: 0;
+        display: none;
 
 		a {
 			color: $text-color;
@@ -1119,9 +1184,6 @@ SIDEBARS & ASIDES
 FOOTER STYLES
 *********************/
 
-$footerheightvalue:  4;
-$footerheight:  $footerheightvalue * 1em;
-
 /* hide MLU blogfarm footer */
 #global-footer {
     display: none;
@@ -1132,11 +1194,6 @@ $footerheight:  $footerheightvalue * 1em;
     display: none;
 }
 
-/********* just change those valuey for the containers. the other elements are being calculated automatically *********/
-/* this is the width of the container for the navigation elements (arrows and circle) */
-$centerwidthvalue: 40;
-$centerwidth: $centerwidthvalue * 1%;
-
 .footer {
 	clear: both;
     display: block;
@@ -1144,11 +1201,11 @@ $centerwidth: $centerwidthvalue * 1%;
     vertical-align: middle;
     background-color: $dark-gray;
     bottom: -1px;
-    height: $footerheight;
+    height: 60px;
     width: 100%;
     line-height: normal;
     background-color: $dark-gray;
-    z-index: 99999;
+    z-index: 9999;
     box-shadow: 0px 0px 10px 2px #222;
     
     a {
@@ -1164,9 +1221,13 @@ $centerwidth: $centerwidthvalue * 1%;
     width: 95%;
 }
 
+/* flex basis values with 0% are IE fix 
+https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
+*/
+
 .fnavcontainer {
     @include flexbox();
-    display: flex;
+    @include flex(1 0 0%); // % is IE fix (see above)
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -1175,145 +1236,65 @@ $centerwidth: $centerwidthvalue * 1%;
 
 /* centered box with nav buttons and progress circle as a flexbox */
 .fnavcenter {
-    @include flex(1 0 $centerwidth);
+    @include flex(1 0 0%);// % is IE fix (see above)
     @include flexbox();
-    display: flex;
-    -webkit-flex: 1 0 $centerwidth;
+    -webkit-flex: 1 0 0;
     align-items: center;
     align-self: center;
     justify-content: center;
-    height: $footerheight;
-    //border: 1px solid #000;
-    width: $centerwidth;
+    height: 60px;
     text-align: center;
-    background-image: url(../images/justcow.svg);
-    background-size: 12%;
-    background-repeat: no-repeat;
-    background-position: center;
+    max-width: 160px;
+    min-width: 145px;
+    
 }
 
 .prevname, .nextname {
-    @include flex(2 2 auto);
-    width: (100% - $centerwidth) / 2;
-    //border: 1px solid red;
+    @include flex(2 2 0%);
     align-self: center;
     font-size: 0.9em;
-    line-height: 1.1em;
     overflow: hidden;
 }
 
-.prevname {
+.prevname, .prevbtn {
     text-align: right;
 }
 
-.nextname {
+.nextname, .nextbtn {
     text-align: left;
 }
 
-/* this is the width of the circle */
-$centerelementvalue: 40;
-$centerelement: $centerelementvalue * 1%;
-
 .statuscow {
-    @include flex(1 1 $centerelement);
-    //width: $centerelement * 1.1;
-    //height: 0;
+    @include flex(1 1 0%);// % is IE fix (see above)
     align-self: center;
-    //height: $footerheight;
-    //width: 5%;
-    //background-color: $gkuh;
-    //display: inline;
-    //min-width: $footerheight / 1.5;
-    //min-height: $footerheight / 1.5;
-    //max-height: $footerheight / 2.5;
+    width: 50px;
+    height: auto;
     
-    svg {
-        transform: rotate(270deg);
+    #circle {
+        padding: 0 0.15em 0 0.25em;
+        background-image: url(../images/justcow.svg);
+        background-size: 25px 25px;
+        background-repeat: no-repeat;
+        background-position: center;
+        
+        canvas {
+            max-width: 43px;
+            max-height: 43px;
+        }
     }
-    
-    circle {
-        transform: rotate(0.1deg); // to fix Firefox
-        position: relative; // important for scaling fix
-        height: 100%;
-        width: 100%;
-        left: 0;
-        top: 0;
-    }
-    
-    .circle-cover {
-        stroke: $navbutton;
-    }
-}
-
-// inline svg scales difficult in some browsers and needs this container and the padding-top-fix. see https://css-tricks.com/scale-svg/
-.svgscalefix {
-    width: 100%;
-    padding: 0;
-    position: relative; // important
-    padding-top: 10% ; //scaling fix
-}
-
-.svgscalefix-circle {
-    width: 100%;
-    padding: 0;
-    position: relative; // important
-    padding-top: 10% ; //scaling fix
 }
 
 /* Positioning of prev/next triangle svg  */
 .tricontainer {
-    //border: 1px solid green;
-    //width: $footerheight / 1.5;
-    //min-height: $footerheight / 1.5;
-    //max-height: $footerheight / 2.5;
-    @include flex(1 1 $centerelement);
-    //align-self: center;
-    width: $centerelement;
-    //padding-top: 10% ;
-    //margin: 0 auto;
-    //display: inline-block;
+    @include flex(1 0 0%);
+    align-self: center;
 }
 
 .svgbutton {
-    position: relative; //important for scaling fix
-    height: 90%;
-    width: 100%;
-    left: 0;
-    top: 0;
     fill: $navbutton;
 }
 
-
-.prevbtn, .nextbtn {
-    //border: 1px solid #fff;
-    //width: 90%;
-    //display: block;
-}
-
-
-	/*
-	if you checked out the link above:
-	http://www.alistapart.com/articles/organizing-mobile/
-	you'll want to style the footer nav
-	a bit more in-depth. Remember to keep
-	it simple because you'll have to
-	override these styles for the desktop
-	view.
-	*/
-	.footer-links {
-
-		ul {
-
-			li {}
-
-		}
-
-	} /* end .footer-links */
-
-
-	.copyright {}
-
 /* needs to be down here because needs to be declared after footerheight variable. this makes sure that the main content always stays above the footer */
 #main {
-padding-bottom: $footerheight;
+padding-bottom: 70px;
 }

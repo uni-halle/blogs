@@ -19,9 +19,3 @@ $contentwidth: 70%;
     width: $contentwidth;
     max-width: 1000px;
 }
-
-
-$centerwidth: 15%;
-
-.fnavcenter {
-    @include flex(1 0 $centerwidth); }

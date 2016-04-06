@@ -67,7 +67,7 @@ get_header(); ?>
         if (!empty($venue)) :
     ?>
 
-    <section class="row additional-info program">
+    <section class="row additional-info venue">
         <div class="small-12 columns">
             <h2 class="additional-info__title">
                 <span class="additional-info__title-inner"><?= _e('Venue', 'muhlenbergcenter'); ?></span>
@@ -93,8 +93,20 @@ get_header(); ?>
                 if ($venue_content->have_posts()) :
                 while ($venue_content->have_posts()) : $venue_content->the_post();
             ?>
-            <div class="additional-info__content program">
-                <?= the_content(); ?>
+            <div class="row additional-info__content program">
+                <?php if(has_post_thumbnail()) : ?>
+                <div class="medium-4 columns">
+                    <?= the_post_thumbnail(); ?>
+                </div>
+                <div class="medium-8 columns">
+                <?php else : ?>
+                <div class="small-12 columns">
+                <?php endif; ?>
+                    <h3 class="additional-info__subtitle">
+                        <?= the_title(); ?>
+                    </h3>
+                    <?= the_content(); ?>
+                </div>
             </div>
             <?php
                 endwhile;
@@ -147,8 +159,10 @@ get_header(); ?>
                 <div class="medium-4 columns">
                     <?= the_post_thumbnail(); ?>
                 </div>
-                <?php endif; ?>
                 <div class="medium-8 columns">
+                <?php else : ?>
+                <div class="small-12 columns">
+                <?php endif; ?>
                     <h3 class="additional-info__subtitle">
                         <?= the_title(); ?>
                     </h3>
@@ -240,7 +254,7 @@ get_header(); ?>
         if (!empty($contact)) :
     ?>
 
-    <section class="row additional-info directions">
+    <section class="row additional-info contact">
         <div class="small-12 columns">
             <h2 class="additional-info__title">
                 <span class="additional-info__title-inner"><?= _e('Contact', 'muhlenbergcenter'); ?></span>

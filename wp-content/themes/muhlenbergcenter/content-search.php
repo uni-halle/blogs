@@ -2,36 +2,27 @@
 /**
  * The template part for displaying results in search pages
  *
- * Learn more: {@link https://codex.wordpress.org/Template_Hierarchy}
- *
- * @package WordPress
- * @subpackage Twenty_Fifteen
- * @since Twenty Fifteen 1.0
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php twentyfifteen_post_thumbnail(); ?>
+<article class="row  event-item">
 
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-	</header><!-- .entry-header -->
+    <?php if (has_post_thumbnail()) : ?>
+    <div class="medium-4 columns">
+        <?= the_post_thumbnail(); ?>
+    </div>
 
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
+    <div class="medium-8 columns">
+    
+    <?php else : ?>
+    <div class="small-12 columns">
+    <?php endif; ?>
 
-	<?php if ( 'post' == get_post_type() ) : ?>
+        <h2 class="event-item__title">
+            <?php the_title(sprintf('<a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a>'); ?>
+        </h2>
 
-		<footer class="entry-footer">
-			<?php twentyfifteen_entry_meta(); ?>
-			<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
-		</footer><!-- .entry-footer -->
+        <?= the_excerpt(); ?>
+    </div>
 
-	<?php else : ?>
-
-		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer><!-- .entry-footer -->' ); ?>
-
-	<?php endif; ?>
-
-</article><!-- #post-## -->
+</article>

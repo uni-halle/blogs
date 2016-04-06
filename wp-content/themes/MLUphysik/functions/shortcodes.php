@@ -36,7 +36,7 @@ add_filter( 'the_content', 'shortcode_unautop',100 );
 function iww_func( $atts ){
 	$iww_text = "<!-- IWW BOX -->
 		<h2>Stay informed</h2>
-		<p>Es gibt immer wieder Neuigkeiten in Halle: zu den Studieng&auml;ngen, zur Uni und zur Stadt. Unsere Studienbotschafter &ndash; 18 Studentinnen und Studenten verschiedener Fachrichtungen &ndash; informieren zu diesen Themen auf ihrer Webseite <a href='http://www.ich-will-wissen.de' target='_blank'>www.ich-will-wissen.de</a>. Wenn Du hier Deine E-Mail-Adresse einträgst, bekommst Du per E-Mail eine Einladung, Dich auf <a href='http://www.ich-will-wissen.de' target='_blank'>www.ich-will-wissen.de</a> zu registrieren. Wenn Du Dich registrierst, erhältst Du einen pers&ouml;nlichen Bereich, in dem ausschlie&szlig;lich die f&uuml;r Dein Studieninteresse zutreffenden Informationen zusammengestellt werden.</p>";
+		<p>Es gibt immer wieder Neuigkeiten in Halle: zu den Studieng&auml;ngen, zur Uni und zur Stadt. Unsere Studienbotschafter &ndash; 18 Studentinnen und Studenten verschiedener Fachrichtungen &ndash; informieren zu diesen Themen auf ihrer Webseite <a href='https://www.ich-will-wissen.de' target='_blank'>www.ich-will-wissen.de</a>. Wenn Du hier Deine E-Mail-Adresse einträgst, bekommst Du per E-Mail eine Einladung, Dich auf <a href='https://www.ich-will-wissen.de' target='_blank'>www.ich-will-wissen.de</a> zu registrieren. Wenn Du Dich registrierst, erhältst Du einen pers&ouml;nlichen Bereich, in dem ausschlie&szlig;lich die f&uuml;r Dein Studieninteresse zutreffenden Informationen zusammengestellt werden.</p>";
 
 	if(isset($_COOKIE["iwwForm"])) {
 		$iwwformc = "<p>Sie haben sich bereits mit der E-Mail <strong>".urldecode($_COOKIE["iwwForm"])."</strong> eingetragen!</p>";
@@ -60,7 +60,7 @@ function iww_func( $atts ){
 			<!-- /IWW BOX -->";*/
 		$iwwformc = <<<IWWBOX
 <!--stay informed/iww -->
-<form action="http://www.ich-will-wissen.de/stay-informed/" method="post" id="stay-informed">
+<form action="https://www.ich-will-wissen.de/stay-informed/" method="post" id="stay-informed">
 <dl>
 <dt><label for="e-mail">E-Mail-Adresse:</label></dt>
 <dd><input name="e-mail" type="email" required id="e-mail" maxlength="80"></dd>
@@ -71,12 +71,12 @@ function iww_func( $atts ){
 </dl>
 <span class="clear"></span>
 <p>
-<input name="privacy" type="checkbox" value="1" required id="privacy"><label for="privacy">Die <a href="http://www.ich-will-wissen.de/information/datenschutz.html" target="_blank">Datenschutzerklärung</a> habe ich gelesen und stimme diesen zu.</label>
+<input name="privacy" type="checkbox" value="1" required id="privacy"><label for="privacy">Die <a href="https://www.ich-will-wissen.de/information/datenschutz.html" target="_blank">Datenschutzerklärung</a> habe ich gelesen und stimme diesen zu.</label>
 </p>
 <input type="submit" value="Jetzt registrieren">
 </form>
 <br class="clear">
-<script src="http://www.ich-will-wissen.de/stay-informed/js/"></script>
+<!--<script src="https://www.ich-will-wissen.de/stay-informed/js/"></script>-->
 <!-- ende stay informed -->
 IWWBOX;
 	}

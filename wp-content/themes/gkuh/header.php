@@ -39,30 +39,50 @@
 		<?php // drop Google Analytics Here ?>
 		<?php // end analytics ?>
         
-        
-        <?php
-            //@todo attempt to call function to create the important page list and set global variables (not working)
-            //$page_array = page_list_by_main_nav();
-        ?>
-        
-        
-         
-<!-- call function for color categries from functions.php  -->
-        
-         <?php 
-        
-        $category = get_the_category();
-    $the_category_id = $category[0]->cat_ID;
+    <?php         
+// get id of current page        
+    $currentid = get_the_ID();
+    
+    //call pagelist function for further reference
+    $pagelist = page_list_by_main_nav();  
+    
+    //get $currentcat as current topical category
+    foreach($pagelist as $page){
+        if($page['id'] == $currentid) {
+            $currentcat = $page['topical_catid'];
+        }
+    };
+    
+    ?>    
+    
+    <!-- call function for color categories from functions.php  -->
 
+    <?php
     if(function_exists('rl_color')){
-        $rl_category_color = rl_color($the_category_id);
+        if($currentcat!=0){
+            $rl_category_color = rl_color($currentcat);
+        }
+        elseif(is_front_page){
+            $rl_category_color = '#fff';
+        }
+        else $rl_category_color = '#008d9a';
     }
- ?>
+?>
         
 <!-- set the category color classes with the respective color (which is set in the admin area as category setting) -->        
         <style>
             /* add classes where the COLOR property should have category color */
             .ccolor, .sf-with-ul:after, .themenuebersicht li a:before, .themenuebersicht li a:hover:before, .prevname a:hover, .nextname a:hover {color: <?php echo $rl_category_color; ?>;}
+            
+            /* arrow after 'Themen' in Menu */
+            .sf-with-ul:after {color:
+                <?php 
+                    if( is_front_page() ){
+                        echo '#008d9a';
+                    } 
+                    else $rl_category_color; 
+                ?>
+                ;}
             
             /* add classes where the BACKGROUND-COLOR property should have category color */
             .ccolorbgrd, .themenuebersicht li a:after, .widget .themenuebersicht .sidebar-current-item a:before, .themenuebersicht a:hover:before {background-color: <?php echo $rl_category_color; ?>;}
@@ -71,19 +91,10 @@
             .ccolorborder, .themenuebersicht li a:before, .themenuebersicht li a:before, .entry-content blockquote {border-color: <?php echo $rl_category_color; ?>;}
             
             /* other classes with category color styles */
-            
             .svgbutton:hover {fill: <?php echo $rl_category_color; ?>;}
             
             <?php //list all category menu item classes and give color to the marker element defined in _base.scss
-             $topid = get_cat_ID( 'lektion' ); 
-                if($topid){
-                $categories = get_categories('orderby=name&child_of=' . $topid);
-                foreach($categories as $category) {
-                    $catid = $category->cat_ID;
-                    $catcolor = rl_color($catid);
-                    echo '.menu-item-category-' . $category->slug . '::after {border-right: 8px solid ' . $catcolor . ';} ';
-                } 
-        }
+             
 
             ?>
     

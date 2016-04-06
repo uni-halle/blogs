@@ -5,7 +5,7 @@
  */
 ?>
 
-<li id="post-<?php the_ID(); ?>" class="media">
+<li id="post-<?= the_ID(); ?>" class="media">
     <?php 
         /*
            Check if custom field 'Video-ID' is used
@@ -16,12 +16,16 @@
     ?>
     <div class="thumbnail">
         <div class="flex-video">
-            <iframe src="https://www.youtube-nocookie.com/embed/<?php echo $youtube ?>?rel=0"
+            <iframe src="https://www.youtube-nocookie.com/embed/<?= $youtube ?>?rel=0"
                     class="video-player"
                     allowfullscreen>
             </iframe>
         </div>
     </div>
     <?php endif; ?>
-    <p><?php the_title(); ?></p>
+    <p>
+        <a href="<?= the_permalink(); ?>" title="<?php sprintf(_e('More about ', 'muhlenbergcenter'), the_title()); ?>">
+            <?= the_title(); ?>
+        </a>
+    </p>
 </li>

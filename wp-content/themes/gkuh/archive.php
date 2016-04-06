@@ -2,9 +2,11 @@
 
 			<div id="content">
 
-				<div id="inner-content" class="wrap cf">
+				<div id="inner-content" class="maincontainer cf">
 
-						<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+						<main id="main" class="cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+                            
+                             <div class="page-content">
 
 							<?php
 							the_archive_title( '<h1 class="page-title">', '</h1>' );
@@ -62,10 +64,14 @@
 									</article>
 
 							<?php endif; ?>
+                                 
+                            </div>
+                            
+                            <?php get_sidebar(gkuh); ?>
 
 						</main>
 
-					<?php get_sidebar(); ?>
+					
 
 				</div>
 

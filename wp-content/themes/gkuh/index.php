@@ -1,12 +1,12 @@
 <?php get_header(); ?>
 
-			<div id="content" class="row">
-                
-                <div class="col span_1">&nbsp; </div>
+			<div id="content">
 
-				<div id="inner-content" class="col span_10">
+				<div id="inner-content" class="maincontainer">
 
 						<main id="main" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+                            
+                            <div class="post-content">
 
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -15,7 +15,15 @@
 								<header class="article-header">
 
 									<h1 class="h2 entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
-									<p class="byline entry-meta vcard">
+									
+
+								</header>
+                                
+                                
+
+								<section class="entry-content">
+                                    
+                                    <p class="byline entry-meta vcard">
                                                                         <?php printf( __( 'Posted', 'bonestheme' ).' %1$s %2$s',
                        								/* the time the post was published */
                        								'<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
@@ -23,14 +31,14 @@
                        								'<span class="by">'.__( 'by', 'bonestheme').'</span> <span class="entry-author author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
                     							); ?>
 									</p>
-
-								</header>
-
-								<section class="entry-content cf">
+                                    
 									<?php the_content(); ?>
+                                        
+                                    
+                                    
 								</section>
-
-								<footer class="article-footer cf">
+                                    
+                                    <footer class="article-footer cf">
 									<p class="footer-comment-count">
 										<?php comments_number( __( '<span>No</span> Comments', 'bonestheme' ), __( '<span>One</span> Comment', 'bonestheme' ), __( '<span>%</span> Comments', 'bonestheme' ) );?>
 									</p>
@@ -42,10 +50,18 @@
 
 
 								</footer>
+                                    
+                                   
+
+								
 
 							</article>
+                            
+                             
 
 							<?php endwhile; ?>
+                            
+                            
 
 									<?php bones_page_navi(); ?>
 
@@ -64,15 +80,14 @@
 									</article>
 
 							<?php endif; ?>
-
+                            
+                            </div>
+                            
+                            <?php get_sidebar( gkuh ); ?>
 
 						</main>
 
-					<?php get_sidebar(); ?>
-
-				</div>
-                
-                <div class="col span_1">&nbsp;</div>
+                </div>
 
 			</div>
 

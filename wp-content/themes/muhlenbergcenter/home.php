@@ -13,7 +13,7 @@ get_header(); ?>
         <?php
             /* Shortcode: 3 aktuelle Events mit Tag "home" ausgeben */
             echo do_shortcode(
-                '[events_list scope="future" tag="home" limit="3"]
+                '[events_list scope="future" tag="home" limit="3" orderby="event_start_date" order="ASC"]
                     <li data-equalizer-watch>
                         <article class="event-teaser">
                             {has_image}

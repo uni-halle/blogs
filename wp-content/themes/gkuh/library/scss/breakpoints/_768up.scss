@@ -25,6 +25,10 @@ $contentwidth: 80%;
     width: $contentwidth;
 }
 
+#main {
+    padding-bottom: 100px;
+}
+
 /*********************
 LAYOUT & GRID STYLES
 *********************/
@@ -160,22 +164,29 @@ POSTS & CONTENT STYLES
     header {
 				padding: 1.5em 0; 
 			}
+    
+    .post-content header {
+    padding: 1.5em 0 0 0;
+}
+    
 }
 
 $page-content-value: 67;
 
-.entry-content {
+/*.entry-content {
     padding: 0;
-}
+}*/
 
-.page-content { //sidebar width and border
+.page-content, .post-content { //sidebar width and border
     height: 100%;
     width: $page-content-value * 1%;
     float: left;
     border-right: 1px dashed $border-color; /* border to sidebar */
-    padding: 0 2em 0 0;
+    padding: 0 2em 110px 0;
     
 }
+
+
 
 .home .page-content { //front page is without sidebar and therefore should not have sidebar space and border
     width: 100% !important;
@@ -275,32 +286,11 @@ SIDEBARS & ASIDES
                     color: $gkuh;
                 }
             }
-            
-            img.logohidden {
-                display: none;
-                width: 70%;
-                margin: 0;
-            }
-            
-            a#pll1:hover ~ img#pli1,
-            a#pll2:hover ~ img#pli2,
-            a#pll3:hover ~ img#pli3,
-            a#pll4:hover ~ img#pli4,
-            a#pll5:hover ~ img#pli5,
-            a#pll6:hover ~ img#pli6,
-            a#pll7:hover ~ img#pli7, {
-                display: block;
-                margin: 0.5em auto;
-            }
         }
         
-        .hideatshow img {
+        .sponsorlogos img {
                 margin: 0;
             }
-        
-        .partnerlist:hover + div.hideatshow {
-                display: none;
-        }
 	}
 
 
@@ -404,8 +394,8 @@ $breadcrumb-value: 1.75;
 $breadcrumbheight: $breadcrumb-value * 1em;
 
 /*width of center area with buttons */
-$centerwidth-value: 20;
-$centerwidth: $centerwidth-value * 1%;
+//$centerwidth-value: 20;
+//$centerwidth: $centerwidth-value * 1%;
 
 .footer {
     height: $footerheight;
@@ -418,13 +408,14 @@ $centerwidth: $centerwidth-value * 1%;
     background-color: $light-gray;
     color: $breadcrumb;
     font-size: 0.8em;
-    font-weight: 500;
+    font-weight: normal;
     z-index: 99999999999;
     height: $breadcrumbheight;
     line-height: $breadcrumbheight;
     
     a {
         color: $breadcrumb;
+        font-weight: normal;
     }
 }
 
@@ -451,10 +442,12 @@ footer nav {
     height: 100%;
 }
 
-
-
-.fnavcenter {
-    @include flex(1 0 $centerwidth); }
+.statuscow {
+    
+    #circle {
+        background-size: 30px 30px;
+    }
+}
 
 .footer-links {
 	ul {

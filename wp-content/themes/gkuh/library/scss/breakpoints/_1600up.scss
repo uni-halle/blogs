@@ -9,11 +9,6 @@ on very large screens.
 
 ******************************************************************/
 
-$centerwidth: 7%;
-
-.fnavcenter {
-    @include flex(1 0 $centerwidth); }
-
 $footerheight:  7em;
 .footer {
     height: $footerheight;

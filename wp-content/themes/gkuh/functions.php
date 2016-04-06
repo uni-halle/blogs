@@ -2,10 +2,6 @@
 /*
 Author: Eddie Machado
 URL: http://themble.com/bones/
-
-This is where you can drop your custom functions or
-just edit things like thumbnail sizes, header images,
-sidebars, comments, etc.
 */
 
 // LOAD BONES CORE (if you remove this, the theme will break)
@@ -52,6 +48,9 @@ wp_enqueue_script( 'hoverintent', get_template_directory_uri() . '/library/js/su
 wp_enqueue_script( 'supersubs', get_template_directory_uri() . '/library/js/superfish-js/supersubs.js', array('jquery'), '20151008' );
 wp_enqueue_script( 'superfish', get_template_directory_uri() . '/library/js/superfish-js/superfish.js', array('jquery'), '20151008' );
 wp_enqueue_script( 'superfish-config', get_template_directory_uri() . '/library/js/superfish-js/superfishconfig.js', array('jquery'), '20151008' );
+    
+// Loads the Circle Progress JavaScript with jQuery as a dependency
+wp_enqueue_script( 'CircleProgress', get_template_directory_uri() . '/library/js/circle-progress.js', array('jquery'), '20151008' );
 
   // launching this stuff after theme setup
   bones_theme_support();
@@ -121,6 +120,20 @@ function page_list_by_main_nav(){
 		} 
 };
 
+/*
+Filter functions for pagelist
+from: http://stackoverflow.com/questions/6661530/php-multi-dimensional-array-search
+*/
+
+function searchForId($id, $array) {
+   foreach ($array as $key => $val) {
+       if ($val['id'] == $id) {
+           return $key;
+       }
+   }
+   return null;
+}
+
 
 /************* OEMBED SIZE OPTIONS *************/
 
@@ -128,16 +141,26 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 680;
 }
 
+/************* Parameters for Youtube *************/
+
+/**
+ * Filter a few parameters into YouTube oEmbed requests
+ Remove Youtube Logo, no related videos after
+ *
+ * @link http://goo.gl/yl5D3
+ */
+function iweb_modest_youtube_player( $html, $url, $args ) {
+	return str_replace( '?feature=oembed', '?feature=oembed&modestbranding=1&showinfo=0&rel=0', $html );
+}
+add_filter( 'oembed_result', 'iweb_modest_youtube_player', 10, 3 );
+
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
-add_image_size( 'bones-thumb-600', 600, 150, true );
-add_image_size( 'bones-thumb-300', 300, 100, true );
-add_image_size( 'bones-thumb-120', 900, 75, true );
-add_image_size( 'bones-thumb-20-10', 200, 100, true );
-add_image_size( 'bones-thumb-975', 900, 75, true );
-add_image_size( 'bones-thumb-2075', 200, 75, true );
-add_image_size( 'bones-thumb-200', 200, 50, true );
+add_image_size( '200by75', 200, 75, true );
+//add_image_size( 'bones-thumb-600', 600, 150, true );
+//add_image_size( 'bones-thumb-300', 300, 100, true );
+
 
 /*
 to add more sizes, simply copy a line from above
@@ -163,12 +186,10 @@ add_filter( 'image_size_names_choose', 'bones_custom_image_sizes' );
 
 function bones_custom_image_sizes( $sizes ) {
     return array_merge( $sizes, array(
-        'bones-thumb-600' => __('600px by 150px'),
-        'bones-thumb-300' => __('300px by 100px'),
-        'bones-thumb-20-10' => __('200px by 100px'),
-        'bones-thumb-2075' => __('200px by 75px'),
-        'bones-thumb-975' => __('900px by 75px'),
-        'bones-thumb-200' => __('200px by 50px'),
+        '200by75' => __('200px / 75px'),
+        //'bones-thumb-600' => __('600px by 150px'),
+        //'bones-thumb-300' => __('300px by 100px'),
+
     ) );
 }
 
@@ -228,7 +249,7 @@ function bones_register_sidebars() {
 	register_sidebar(array(
         'id' => 'sidebar-gkuh',
 		'name' => __( 'GKUH Sidebar', 'bonestheme' ),
-		'description' => __( 'Dieser Bereich ist nur auf großen Bildschirmen sichtbar und enthält standardmäßig das Widget „GKUHplus Seitenliste“. Weitere Widgets wenn gewünscht einfach dazu holen. ', 'bonestheme' ),
+		'description' => __( 'Dieser Bereich ist nur auf großen Bildschirmen sichtbar und enthält standardmäßig das Widget „GKUHplus Seitenliste“ und „GKUHplus Partnerliste“. Weitere Widgets wenn gewünscht einfach dazu holen. ', 'bonestheme' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',
@@ -253,7 +274,7 @@ class gkuh_partnerlist extends WP_Widget {
 		parent::__construct(
 			'gkuh_partnerlist', // Base ID
 			__( 'GKUHplus Partnerliste', 'text_domain' ), // Name
-			array( 'description' => __( 'Liste der GKUHplus Projektpartner. Bitte als unterstes Widget in der Leiste platzieren.', 'text_domain' ), ) // Args
+			array( 'description' => __( 'Liste der GKUHplus Projektpartner. Liste der Projektpartner.', 'text_domain' ), ) // Args
 		);
 	}
 
@@ -266,6 +287,9 @@ class gkuh_partnerlist extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
+        
+         if (! in_category( array( 'intro','inhalt','quiz' ) )) { //only display partnerlist on pages that don't have the category 'Lektionsinhalt' or 'Quiz' (those have the submenu widget)
+        
 		echo $args['before_widget'];
 		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
@@ -277,26 +301,20 @@ class gkuh_partnerlist extends WP_Widget {
         <a id="pll3" href="http://www.ohg-genetic.de" target="_blank">Osnabrücker Herdbuch e.G.</a>
         <a id="pll4" href="http://ltr.de" target="_blank">Landesverband Thüringer Rinderzüchter Zucht- und Absatzgenossenschaft e.G.</a>
         <a id="pll5" href="http://www.tvlev.de" target="_blank">Thüringer Verband für Leistungs- und Qualitätsprüfungen in der Tierzucht e.V.</a>
-        <a id="pll6" href="http://www.lkv-we.de" target="_blank">Landeskontrollverband Weser Ems</a>
-        <a id="pll7" href="http://www.lkvbw.de" target="_blank">Landesverband Baden-Württemberg für Leistungsprüfungen in der Tierzucht e.V.</a>
-        
-        <img class="logohidden" alt="Logo Martin-Luther-Universität Halle-Wittenberg" id="pli1" src="' . $gkuhlogopath . 'mlu_logo.png' . '">
-        <img class="logohidden" alt="Logo Vereinigte Informationssysteme Tierhaltung w.V." id="pli2" src="' . $gkuhlogopath . 'vit_logo.png' . '">
-        <img class="logohidden" alt="Logo Osnabrücker Herdbuch e.G." id="pli3" src="' . $gkuhlogopath . 'ohg_logo.png' . '">
-        <img class="logohidden" alt="Logo Landesverband Thüringer Rinderzüchter Zucht- und Absatzgenossenschaft e.G." id="pli4" src="' . $gkuhlogopath . 'ltr_logo.png' . '">
-        <img class="logohidden" alt="Logo Thüringer Verband für Leistungs- und Qualitätsprüfungen in der Tierzucht e.V." id="pli5" src="' . $gkuhlogopath . 'tvl_logo.png' . '">
-        <img class="logohidden" alt="Logo Landeskontrollverband Weser Ems" id="pli6" src="' . $gkuhlogopath . 'lkvwe_logo.png' . '">
-        <img class="logohidden" alt="Logo Landesverband Baden-Württemberg für Leistungsprüfungen in der Tierzucht e.V." id="pli7" src="' . $gkuhlogopath . 'lkvbw_logo.png' . '">
+        <a id="pll6" href="http://www.lkv-we.de" target="_blank">Landeskontrollverband Weser-Ems e.V.</a>
+        <a id="pll7" href="http://www.lkvbw.de" target="_blank">Landesverband Baden-Württemberg für Leistungs- und Qualitätsprüfungen in der Tierzucht e.V.</a>
         </div>
-        <div class="hideatshow">
-        <img class="hideatshow" alt="" style="float:right; width:50%;" src="' . $gkuhlogopath . 'ble_logo.png' . '">
+        
+        <div class="sponsorlogos">
+        <img class="sponsorlogos" alt="" style="float:right; width:50%;" src="' . $gkuhlogopath . 'ble_logo.png' . '">
         <img width="50%" alt="" src="' . $gkuhlogopath . 'bmel_logo.png' . '">
         <img width="40%" alt="" src="' . $gkuhlogopath . 'rentenbank_logo.png' . '">
-        </div>
-        ';
+        <img width="40%" alt="" src="' . $gkuhlogopath . 'dip_agrar.png' . '">
+        </div>';
         
 		echo $args['after_widget'];
-	}
+         }//end !in_category
+	} //end function
 
 	/**
 	 * Back-end widget form.
@@ -379,16 +397,16 @@ $title = __( 'New title', 'gkuh_pagelist_widget_domain' );
 
 // Creating widget front-end
 // This is where the action happens
+        
 public function widget( $args, $instance ) {
 $title = apply_filters( 'widget_title', $instance['title'] );
 // before and after widget arguments are defined by themes
+    
+     if ( in_category( array( 'inhalt', 'quiz' ) )) { //only display submenu on pages with category 'Lektionsinhalt' or 'Quiz' 
+    
 echo $args['before_widget'];
 if ( ! empty( $title ) )
 echo $args['before_title'] . $title . $args['after_title'];
-
-    if ( in_category( array( 'inhalt', 'quiz' ) )) { //only display submenu on pages with category 'Lektionsinhalt' oder 'Quiz' 
-        
- echo '<h4 class="widgettitle">In dieser Lektion:</h4>';
     
     $menu_name = 'main-nav';
 
@@ -424,7 +442,7 @@ echo $args['before_title'] . $title . $args['after_title'];
     echo $menu_list;
     
 echo $args['after_widget'];
-}
+}//end in_category
     }
 		
 
@@ -499,49 +517,6 @@ function bones_fonts() {
 add_action('wp_enqueue_scripts', 'bones_fonts');
 
 /*************** GKUH FUNCTIONS *********************/ 
-
-/********************************
-DEBUG LOG FUNCTION @todo (remove)
-********************************/
-    function mebug() {
-  $f=fopen( dirname(__FILE__) . DIRECTORY_SEPARATOR . 'mylog.log', 'a' );
-  foreach (func_get_args() as $obj) {
-    fwrite($f, date('Y-m-d G:i:s')." ");
-    if (is_array($obj) || is_object($obj)) {
-      fwrite($f, print_r($obj,1)."\n");
-    }
-    else {
-      fwrite($f, $obj."\n");
-    }
-  }
-  fclose($f);
-}
-
-/*
-
-if (!function_exists('mebug')) {
-    function mebug ( $log )  {
-        if ( true === WP_DEBUG ) {
-            if ( is_array( $log ) || is_object( $log ) ) {
-                error_log( print_r( $log, true ) );
-            } else {
-                error_log( $log );
-            }
-        }
-    }
-}
-*/
-
-function utf8encodeArray($array) {
-                foreach($array as $key =>  $value) {
-                    if(is_array($value)) {
-                        $array[$key] = utf8encodeArray($value);
-                    }
-                    elseif(!mb_detect_encoding($value, 'UTF-8', true)) {
-                        $array[$key] = utf8_encode($value);
-                    }
-                }
-            }
 
 /**********************
 CATEGORIES FOR PAGES
@@ -726,7 +701,7 @@ class RadLabs_Category_Colors{
 
     }
 
-    // Check if field with $type exists
+    // Check if field with $type exists 
     function has_field( $type ) {
         foreach ( $this->_fields as $field ) {
             if ( $type == $field['type'] ) return true;
@@ -745,6 +720,50 @@ function rl_color($catid){
     return $yt_cat_color;
 }
 
+/************************
+OUTPUT COLORS IN CSS
+************************/
+/* from the pulugin's support thread : https://wordpress.org/support/topic/i-want-css */
+// Function called after every category edit or creation
+function save_category_color_css( $term_id ) {
+	// URL of your css directory
+	$css_dir = get_stylesheet_directory() . '/library/css/'; // Shorten code, save 1 call
+	ob_start(); // Capture all output (output buffering)
+
+	require($css_dir . 'category-color.css.php'); // Generate CSS
+
+	$css = ob_get_clean(); // Get generated CSS (output buffering)
+	file_put_contents($css_dir . 'category-color.css', $css, LOCK_EX); // Save it
+}
+
+function category_color_css_init() {
+	// Require the Category Color plugin
+	if( !function_exists('rl_color') ) return false;
+
+	// Only execute on admin pages
+	if ( !is_admin() )
+		return false;
+
+	// Get a list of all the categories
+	$categories = get_categories(array(
+		'hide_empty'               => 0
+	));
+
+	// attach the save_category_color_css function to each category's edited and created hook
+	foreach ( $categories  as $cat ) {
+		add_action("created_category", 'save_category_color_css', 10, 1);
+		add_action("edited_category", 'save_category_color_css', 10, 1);
+	}
+}
+add_action('admin_init', 'category_color_css_init');
+
+// Enqueue our brand new CSS
+function enqueue_category_color_css() {
+	if( function_exists('rl_color') )
+		wp_enqueue_style( 'category-color', get_template_directory_uri() . '/library/css/category-color.css', array(), '', 'all' );
+}
+add_action('wp_enqueue_scripts', 'enqueue_category_color_css', 999);
+
 
 /**********************
 CATEGORIES TO NAV ITEMS
@@ -757,15 +776,34 @@ function wpa_category_nav_class( $classes, $item ){
         $topid = get_cat_ID( 'lektion' );
         foreach($categories as $category) {
             if (cat_is_ancestor_of($topid, $category)) {
-                $catclass = $category->slug;
+                $catclass = $category->cat_ID;
             }
         }
-        $classes[] = 'menu-item-category-' . $catclass;
+        $classes[] = 'cc-' . $catclass . '-border-af'; 
         $catlist[] = $catclass;
     }
     return $classes;
 }
 add_filter( 'nav_menu_css_class', 'wpa_category_nav_class', 10, 2 );
+
+/***********************
+Readers redirect to home
+*************************/
+
+/* redirect subscribers to home and admins to dashboard after login 
+from: https://tommcfarlin.com/redirect-non-admin/ */
+if( is_array( $user->roles ) ) {
+	if( in_array( 'administrator', $user->roles ) ) {
+		admin_url();
+	} else {
+		site_url();
+	}
+}
+
+function acme_login_redirect( $redirect_to, $request, $user  ) {
+	return ( is_array( $user->roles ) && in_array( 'administrator', $user->roles ) ) ? admin_url() : site_url();
+}
+add_filter( 'login_redirect', 'acme_login_redirect', 10, 3 );
 
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

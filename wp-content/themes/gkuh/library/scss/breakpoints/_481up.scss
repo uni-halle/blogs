@@ -121,22 +121,22 @@ POSTS & CONTENT STYLES
 FOOTER STYLES
 *********************/
 
-$centerwidth: 30%;
-$centerelement: 30%;
+//$centerwidth: 30%;
+//$centerelement: 30%;
 
-.fnavcenter {
-    @include flex(1 0 $centerwidth); }
+//.fnavcenter {
+//    @include flex(1 0 $centerwidth); }
 
-.statuscow {
-    @include flex(1 1 $centerelement);
-    width: $centerelement * 1.1;
-}
+//.statuscow {
+//    @include flex(1 1 $centerelement);
+//    width: $centerelement * 1.1;
+//}
 
 
-.tricontainer {
-    @include flex(1 1 $centerelement);
-    width: $centerelement;
-}
+//.tricontainer {
+//    @include flex(1 1 $centerelement);
+//   width: $centerelement;
+//}
 
 
 /*

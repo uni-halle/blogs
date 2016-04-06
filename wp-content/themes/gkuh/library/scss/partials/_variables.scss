@@ -13,8 +13,6 @@ No one likes a mess.
 
 /*********************
 COLORS
-Need help w/ choosing your colors? Try this site out:
-http://0to255.com/ 
 *********************/
 
 $alert-yellow:      #ebe16f;
@@ -27,8 +25,8 @@ $white:             #ffffff;
 
 $light-gray:        #d8d8d8; /* 15% black, top nav bgrd */ 
 $gray:              #7f7f7f; /* 50% black, footer nav buttons*/
-$dark-gray:         #323232; /* nav background */
-$text-color:        $dark-gray; /*#5c6b80*/
+$dark-gray:         #323232; 
+$text-color:        $dark-gray;
 $meta-gray:         #9fa6b4;
 
 $tan:               #eceee5;
@@ -53,16 +51,26 @@ $breadcrumb:        $dark-gray;
 $border-color:      #ccc;
 $disabled-gray:     #cfcfcf;
 
-$section1:          #947669; /* Lektion 1: Intro */
-$section2:          #ff947b; /* Lektion 2: Befund/Diagnose/BM */
-$section3:          #ffe49a; /* Lektion 3: Gesundheitsschlüssel */
-$section4:          #a5c2a1; /* Lektion 4: Eintragung */
-$section5:          #c28ec6; /* Lektion 5: Auswertung */
 
-/*
-Here's a great tutorial on how to
-use color variables properly:
-http://sachagreif.com/sass-color-variables/
-*/
+/*********************
+Layout Variables
+*********************/
 
+/* Use this variable to set the general width of the content (and also the inner header, footer and breadcrumb box) */
+$contentwidthvalue: 90;
+$contentwidth: $contentwidthvalue *1%;
 
+$headerheightvalue: 4;
+$headerheight: $headerheightvalue * 1em;
+
+$footerheightvalue:  60;
+$footerheight:  $footerheightvalue * 1px;
+
+/* this is the width of the container for the navigation elements (arrows and circle) in the footer */
+$centerwidthvalue: 150;
+$centerwidth: $centerwidthvalue * 1px;
+
+/* this is the width of the circle */
+$centerelementvalue: 30;
+$centerelement: $centerelementvalue * 1%;
+$tributtonwidth: ((100 - $centerelementvalue) / 2) * 1%;

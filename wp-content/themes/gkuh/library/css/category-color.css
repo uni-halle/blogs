@@ -1,0 +1,140 @@
+/* This file is generated automatically if a category is edited in the admin section. Each category that is given a color puts out the code in here. See function save_category_color_css in functions.php and category-color.css.php for the generating functions */
+
+/* if category cannot be determined, the calss will be cc--* */
+
+
+/* 1 Intro */
+.cc-2, .cc-2-hov:hover, .cc-2-af::after, .cc-2-bf::before {
+	color: #947669 !important;
+}
+.cc-2-bgrd, .cc-2-bgrd-hov:hover, .cc-2-bgrd-af::after, .cc-2-bgrd-bf::before {
+	background-color: #947669 !important;
+}
+.cc-2-fill, .cc-2-fill-hov:hover, .cc-2-fill-bf::before, .cc-2-fill-af::after {
+	fill: #947669 !important;
+}
+.cc-2-border, .cc-2-border-hov:hover, .cc-2-border-bf::before, .cc-2-border-af::after {
+	border-color: #947669 !important;
+}
+
+	
+/* 2 Befund / Diagnose / Bestandsmaßnahme */
+.cc-5, .cc-5-hov:hover, .cc-5-af::after, .cc-5-bf::before {
+	color: #ff947b !important;
+}
+.cc-5-bgrd, .cc-5-bgrd-hov:hover, .cc-5-bgrd-af::after, .cc-5-bgrd-bf::before {
+	background-color: #ff947b !important;
+}
+.cc-5-fill, .cc-5-fill-hov:hover, .cc-5-fill-bf::before, .cc-5-fill-af::after {
+	fill: #ff947b !important;
+}
+.cc-5-border, .cc-5-border-hov:hover, .cc-5-border-bf::before, .cc-5-border-af::after {
+	border-color: #ff947b !important;
+}
+
+	
+/* 3 Diagnoseschlüssel */
+.cc-6, .cc-6-hov:hover, .cc-6-af::after, .cc-6-bf::before {
+	color: #ffe49a !important;
+}
+.cc-6-bgrd, .cc-6-bgrd-hov:hover, .cc-6-bgrd-af::after, .cc-6-bgrd-bf::before {
+	background-color: #ffe49a !important;
+}
+.cc-6-fill, .cc-6-fill-hov:hover, .cc-6-fill-bf::before, .cc-6-fill-af::after {
+	fill: #ffe49a !important;
+}
+.cc-6-border, .cc-6-border-hov:hover, .cc-6-border-bf::before, .cc-6-border-af::after {
+	border-color: #ffe49a !important;
+}
+
+	
+/* 4 Eintragung */
+.cc-7, .cc-7-hov:hover, .cc-7-af::after, .cc-7-bf::before {
+	color: #a5c2a1 !important;
+}
+.cc-7-bgrd, .cc-7-bgrd-hov:hover, .cc-7-bgrd-af::after, .cc-7-bgrd-bf::before {
+	background-color: #a5c2a1 !important;
+}
+.cc-7-fill, .cc-7-fill-hov:hover, .cc-7-fill-bf::before, .cc-7-fill-af::after {
+	fill: #a5c2a1 !important;
+}
+.cc-7-border, .cc-7-border-hov:hover, .cc-7-border-bf::before, .cc-7-border-af::after {
+	border-color: #a5c2a1 !important;
+}
+
+	
+/* 5 Auswertung */
+.cc-8, .cc-8-hov:hover, .cc-8-af::after, .cc-8-bf::before {
+	color: #c28ec6 !important;
+}
+.cc-8-bgrd, .cc-8-bgrd-hov:hover, .cc-8-bgrd-af::after, .cc-8-bgrd-bf::before {
+	background-color: #c28ec6 !important;
+}
+.cc-8-fill, .cc-8-fill-hov:hover, .cc-8-fill-bf::before, .cc-8-fill-af::after {
+	fill: #c28ec6 !important;
+}
+.cc-8-border, .cc-8-border-hov:hover, .cc-8-border-bf::before, .cc-8-border-af::after {
+	border-color: #c28ec6 !important;
+}
+
+	
+/* Allgemein */
+.cc-1, .cc-1-hov:hover, .cc-1-af::after, .cc-1-bf::before {
+	color: #008d9a !important;
+}
+.cc-1-bgrd, .cc-1-bgrd-hov:hover, .cc-1-bgrd-af::after, .cc-1-bgrd-bf::before {
+	background-color: #008d9a !important;
+}
+.cc-1-fill, .cc-1-fill-hov:hover, .cc-1-fill-bf::before, .cc-1-fill-af::after {
+	fill: #008d9a !important;
+}
+.cc-1-border, .cc-1-border-hov:hover, .cc-1-border-bf::before, .cc-1-border-af::after {
+	border-color: #008d9a !important;
+}
+
+	
+/* Eintrag-Herde */
+.cc-30, .cc-30-hov:hover, .cc-30-af::after, .cc-30-bf::before {
+	color: #a5c2a1 !important;
+}
+.cc-30-bgrd, .cc-30-bgrd-hov:hover, .cc-30-bgrd-af::after, .cc-30-bgrd-bf::before {
+	background-color: #a5c2a1 !important;
+}
+.cc-30-fill, .cc-30-fill-hov:hover, .cc-30-fill-bf::before, .cc-30-fill-af::after {
+	fill: #a5c2a1 !important;
+}
+.cc-30-border, .cc-30-border-hov:hover, .cc-30-border-bf::before, .cc-30-border-af::after {
+	border-color: #a5c2a1 !important;
+}
+
+	
+/* Eintrag-Netrind */
+.cc-31, .cc-31-hov:hover, .cc-31-af::after, .cc-31-bf::before {
+	color: #a5c2a1 !important;
+}
+.cc-31-bgrd, .cc-31-bgrd-hov:hover, .cc-31-bgrd-af::after, .cc-31-bgrd-bf::before {
+	background-color: #a5c2a1 !important;
+}
+.cc-31-fill, .cc-31-fill-hov:hover, .cc-31-fill-bf::before, .cc-31-fill-af::after {
+	fill: #a5c2a1 !important;
+}
+.cc-31-border, .cc-31-border-hov:hover, .cc-31-border-bf::before, .cc-31-border-af::after {
+	border-color: #a5c2a1 !important;
+}
+
+	
+/* Eintrag-RDV4M */
+.cc-32, .cc-32-hov:hover, .cc-32-af::after, .cc-32-bf::before {
+	color: #a5c2a1 !important;
+}
+.cc-32-bgrd, .cc-32-bgrd-hov:hover, .cc-32-bgrd-af::after, .cc-32-bgrd-bf::before {
+	background-color: #a5c2a1 !important;
+}
+.cc-32-fill, .cc-32-fill-hov:hover, .cc-32-fill-bf::before, .cc-32-fill-af::after {
+	fill: #a5c2a1 !important;
+}
+.cc-32-border, .cc-32-border-hov:hover, .cc-32-border-bf::before, .cc-32-border-af::after {
+	border-color: #a5c2a1 !important;
+}
+
+	
