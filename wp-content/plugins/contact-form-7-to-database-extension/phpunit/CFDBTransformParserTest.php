@@ -66,7 +66,7 @@ class CFDBTransformParserTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals("=", $e[0][1]);
         $this->assertEquals("funct", $e[0][2]);
         $this->assertEquals("first_name", $e[0][3]);
-        $this->assertEquals("last_name", $e[0][4]);
+        $this->assertEquals(" last_name", $e[0][4]);
     }
 
     public function  test_parse_2_4() {
@@ -79,8 +79,8 @@ class CFDBTransformParserTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals("=", $e[0][1]);
         $this->assertEquals("funct", $e[0][2]);
         $this->assertEquals("first_name", $e[0][3]);
-        $this->assertEquals("middle_name", $e[0][4]);
-        $this->assertEquals("last_name", $e[0][5]);
+        $this->assertEquals("   middle_name", $e[0][4]);
+        $this->assertEquals("      last_name", $e[0][5]);
     }
 
     // multiples
@@ -192,13 +192,13 @@ class CFDBTransformParserTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals("=", $e[0][1]);
         $this->assertEquals("funct1", $e[0][2]);
         $this->assertEquals("y1_name", $e[0][3]);
-        $this->assertEquals("y2_name", $e[0][4]);
+        $this->assertEquals("  y2_name", $e[0][4]);
 
         $this->assertEquals("last_name", $e[1][0]);
         $this->assertEquals("=", $e[1][1]);
         $this->assertEquals("funct2", $e[1][2]);
-        $this->assertEquals("x1_name", $e[1][3]);
-        $this->assertEquals("x2_name", $e[1][4]);
+        $this->assertEquals(" x1_name", $e[1][3]);
+        $this->assertEquals("  x2_name", $e[1][4]);
     }
 
     public function test_parse_5_1() {
@@ -237,7 +237,7 @@ class CFDBTransformParserTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals("=",          $e[1][1]);
         $this->assertEquals("funct1",     $e[1][2]);
         $this->assertEquals("y1_name",    $e[1][3]);
-        $this->assertEquals("y2_name",    $e[1][4]);
+        $this->assertEquals("  y2_name",    $e[1][4]);
 
         $this->assertEquals(1,     count($e[2]));
         $this->assertEquals("yyy", $e[2][0]);
@@ -245,8 +245,8 @@ class CFDBTransformParserTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals("last_name", $e[3][0]);
         $this->assertEquals("=",         $e[3][1]);
         $this->assertEquals("funct2",    $e[3][2]);
-        $this->assertEquals("x1_name",   $e[3][3]);
-        $this->assertEquals("x2_name",   $e[3][4]);
+        $this->assertEquals(" x1_name",   $e[3][3]);
+        $this->assertEquals("  x2_name",   $e[3][4]);
     }
 
     public function test_parse_6() {

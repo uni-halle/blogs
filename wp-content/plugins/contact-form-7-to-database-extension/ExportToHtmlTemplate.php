@@ -63,13 +63,14 @@ class ExportToHtmlTemplate extends ExportBase implements CFDBExport {
             return;
         }
 
-        if ($this->isFromShortCode) {
-            ob_start();
-        }
-
         // Get the data
         $submitTimeKeyName = 'Submit_Time_Key';
         $this->setDataIterator($formName, $submitTimeKeyName);
+        //$this->clearOutputBuffer(); // will mess up admin view of single entry
+
+        if ($this->isFromShortCode) {
+            ob_start();
+        }
 
         $options['content'] = $this->modifyContent($options['content']);
 

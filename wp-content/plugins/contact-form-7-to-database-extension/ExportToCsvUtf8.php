@@ -21,27 +21,34 @@
 
 require_once('ExportBase.php');
 require_once('CFDBExport.php');
+require_once('ShiftJisConverter.php');
 
 class ExportToCsvUtf8 extends ExportBase implements CFDBExport {
 
     var $useBom = false;
     var $bak = false;
 
-    // For Japanese
+    /**
+     * boolean For Japanese
+     */
     var $useShiftJIS = false;
-    // The code number of Japanese two-byte character "ãƒ¼" is separated by Japanese encoding types.
-    // Hyphen, Centered dot
-    var $utf_escape_patterns_search =  array('/\xE2\x80\x93/', '/\xE2\x80\xA2/');
-    var $utf_escape_patterns_replace = array("\xE2\x88\x92",   "\xE3\x83\xBB");
+    var $shiftJis;
+
+
+    /**
+     * ExportToCsvUtf8 constructor.
+     */
+    public function __construct() {
+        parent::__construct();
+        $this->shiftJis = new ShiftJisConverter();
+    }
 
     public function setUseBom($use) {
         $this->useBom = $use;
     }
 
     public function setUseShiftJIS($use) {
-        // If mb_convert_encoding function is not enabled (mb_string module is not installed),
-        // then converting cannot be done.
-        if ($use && !function_exists('mb_convert_encoding')) {
+        if (!$this->shiftJis->canConvert()) {
             $this->useShiftJIS = false;
         }
         else {
@@ -76,7 +83,7 @@ class ExportToCsvUtf8 extends ExportBase implements CFDBExport {
         // Headers
         $charSet = 'UTF-8';
         if ($this->useShiftJIS) {
-            $charSet = 'Shift_JIS';
+            $charSet = $this->shiftJis->getContentTypeCharSet();
         }
         $this->echoHeaders(
             array("Content-Type: text/csv; charset=$charSet",
@@ -85,19 +92,6 @@ class ExportToCsvUtf8 extends ExportBase implements CFDBExport {
         $this->echoCsv($formName);
     }
 
-    /**
-     * Convert Shift-JIS (Standard Encoding for Japanese Applications) to UTF-8.
-     * @param $str string
-     * @return string
-     */
-    public function japanese_convert_utf8_to_sjis($str) {
-        return preg_replace(
-                $this->utf_escape_patterns_search,
-                $this->utf_escape_patterns_replace,
-                $str);
-    }
-
-
     public function echoCsv($formName) {
         if ($this->useBom) {
             // File encoding UTF-8 Byte Order Mark (BOM) http://wiki.sdn.sap.com/wiki/display/ABAP/Excel+files+-+CSV+format
@@ -105,10 +99,12 @@ class ExportToCsvUtf8 extends ExportBase implements CFDBExport {
         }
 
         $eol = "\n";
+        $delimiter = isset($this->options['delimiter']) ? $this->options['delimiter'] : ',';
 
         // Query DB for the data for that form
         $submitTimeKeyName = 'Submit_Time_Key';
         $this->setDataIterator($formName, $submitTimeKeyName);
+        $this->clearOutputBuffer();
 
 
         // Column Headers
@@ -121,7 +117,11 @@ class ExportToCsvUtf8 extends ExportBase implements CFDBExport {
                 if ($this->headers && isset($this->headers[$aCol])) {
                     $colDisplayValue = $this->headers[$aCol];
                 }
-                printf('"%s",', str_replace('"', '""', $colDisplayValue));
+                if ($this->useShiftJIS) {
+                    $colDisplayValue = $this->shiftJis->convertUtf8ToSjis($colDisplayValue);
+                }
+                printf('"%s"', str_replace('"', '""', $colDisplayValue));
+                echo $delimiter;
             }
             echo $eol;
         }
@@ -144,11 +144,10 @@ class ExportToCsvUtf8 extends ExportBase implements CFDBExport {
                     $cell = $this->plugin->getFileUrl($this->dataIterator->row[$submitTimeKeyName], $formName, $aCol);
                 }
                 if ($this->useShiftJIS) {
-                    printf('"%s",', str_replace('"', '""', mb_convert_encoding($this->japanese_convert_utf8_to_sjis($cell), "SJIS-win", "utf-8")));
+                    $cell = $this->shiftJis->convertUtf8ToSjis($cell);
                 }
-                else {
-                    printf('"%s",', str_replace('"', '""', $cell));
-                }
+                printf('"%s"', str_replace('"', '""', $cell));
+                echo $delimiter;
             }
             echo $eol;
         }

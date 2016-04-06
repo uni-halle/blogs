@@ -41,6 +41,7 @@ class ExportToRSS extends ExportBase implements CFDBExport {
 
         // Get the data
         $this->setDataIterator($formName);
+        $this->clearOutputBuffer();
 
         if ($this->isFromShortCode) {
             ob_start();

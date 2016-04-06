@@ -34,9 +34,14 @@ class CFDBShortcodeJson extends ShortCodeLoader {
             $atts['content'] = $content;
             $atts['html'] = true;
             $atts['fromshortcode'] = true;
+
+            require_once('DereferenceShortcodeVars.php');
+            $deref = new DereferenceShortcodeVars;
+            $form = $deref->convert($atts['form']);
+
             require_once('ExportToJson.php');
             $export = new ExportToJson();
-            return $export->export($atts['form'], $atts);
+            return $export->export($form, $atts);
         }
         return '';
     }

@@ -132,7 +132,7 @@ class ExportBase {
             foreach (array(
                              'debug', 'permissionmsg', 'unbuffered', 'show', 'hide', 'class', 'style', 'id',
                              'orderby', 'limit', 'tlimit', 'header', 'headers', 'content',
-                             'filter', 'tfilter', 'search', 'tsearch', 'trans')
+                             'filter', 'tfilter', 'search', 'tsearch', 'trans', 'delimiter')
                      as $optionName) {
                 $this->dereferenceOption($optionName);
             }
@@ -515,6 +515,20 @@ class ExportBase {
             // No transform, just query
             $this->dataIterator->query($sql, $this->rowFilter, $queryOptions);
             $this->dataIterator->displayColumns = $this->getColumnsToDisplay($this->dataIterator->columns);
+        }
+    }
+
+    /**
+     * Clear the "ob_" buffer.
+     * Call immediately after setDataIterator() to prevent misc chars
+     * from being printed during export
+     */
+    public function clearOutputBuffer() {
+        if (ob_get_length()) {
+            // Prevents misc crap from being printed during export.
+            // Seen on one customer's site where a newline is injected
+            // causes an empty header row for .csv and corrupting .xlsx file
+            ob_clean();
         }
     }
 

@@ -232,6 +232,7 @@ class CFDBViewShortCodeBuilder extends CFDBView {
             if (exportSelected) {
                 if (exportSelected == 'RSS') {
                     jQuery('#itemtitle_span').show();
+                    jQuery('#csvdelim_span').hide();
                 }
                 else {
                     jQuery('#itemtitle_span').hide();
@@ -249,9 +250,17 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                     else {
                         jQuery('#json_div').hide();
                     }
+
+                    if (['CSVUTF8BOM', 'CSVUTF8', 'CSVSJIS'].indexOf(exportSelected) > -1) {
+                        jQuery('#csvdelim_span').show();
+                    }
+                    else {
+                        jQuery('#csvdelim_span').hide();
+                    }
                 }
             } else {
                 jQuery('#itemtitle_span').hide();
+                jQuery('#csvdelim_span').hide();
                 jQuery('#userpass_span_msg').show();
                 jQuery('#gld_userpass_span_msg').hide();
                 jQuery('#label_gld_script').hide();
@@ -699,9 +708,18 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                     }
                     break;
                 case '[cfdb-export-link]':
-                    val = jQuery('#enc_cntl').val();
-                    scElements.push(getValue('enc', val, scValidationErrors));
-                    scUrlElements.push(getValueUrl('enc', val));
+                    enc = jQuery('#enc_cntl').val();
+                    scElements.push(getValue('enc', enc, scValidationErrors));
+                    scUrlElements.push(getValueUrl('enc', enc));
+
+                    if (['CSVUTF8BOM', 'CSVUTF8', 'CSVSJIS'].indexOf(enc) > -1) {
+                        delim = jQuery('#export_link_csv_delim').val();
+                        if (delim != ',') {
+                            scElements.push(getValue('delimiter', delim, scValidationErrors));
+                            scUrlElements.push(getValueUrl('delimiter', delim));
+                        }
+                    }
+
                     scElements.push(getValue('urlonly', jQuery('#urlonly_cntl').val(), scValidationErrors));
                     scElements.push(getValue('linktext', jQuery('#linktext_cntl').val(), scValidationErrors));
 
@@ -753,6 +771,13 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                     pushNameValue("headers", val, googleScriptElements, googleScriptValidationErrors);
 
                     exportUrlElements.push(getValueUrl('format', jQuery('#format_cntl').val(), scValidationErrors));
+                }
+
+                if (['CSVUTF8BOM', 'CSVUTF8', 'CSVSJIS'].indexOf(exportSelection) > -1) {
+                    delim = jQuery('#csv_delim').val();
+                    if (delim != ',') {
+                        exportUrlElements.push(getValueUrl("delimiter", delim));
+                    }
                 }
 
                 var user = jQuery("#gld_user").val();
@@ -921,6 +946,7 @@ class CFDBViewShortCodeBuilder extends CFDBView {
             // Export File
             jQuery('#export_cntl').val(<?php echo json_encode($postedEnc) ?>);
             jQuery('#add_itemtitle').val(<?php echo json_encode($postedItemtitle) ?>);
+            jQuery('#csv_delim').val(<?php echo json_encode(",") ?>);
 
             // Short Code
             jQuery('#shortcode_ctrl').val(<?php echo json_encode($postedSC) ?>);
@@ -1002,7 +1028,21 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                 addFieldToContent();
                 createShortCodeAndExportLink();
             });
-            jQuery('#enc_cntl').click(createShortCodeAndExportLink);
+
+            var showHideExportLinkDelimiter = function() {
+                var enc = jQuery('#enc_cntl').val();
+                if (['CSVUTF8BOM', 'CSVUTF8', 'CSVSJIS'].indexOf(enc) > -1) {
+                    jQuery('#export_link_csvdelim_span').show();
+                }
+                else {
+                    jQuery('#export_link_csvdelim_span').hide();
+                }
+            };
+            jQuery('#enc_cntl').change(function() {
+                showHideExportLinkDelimiter();
+                createShortCodeAndExportLink();
+            });
+            showHideExportLinkDelimiter();
             jQuery('#urlonly_cntl').click(createShortCodeAndExportLink);
             jQuery('#reset_button').click(reset);
             jQuery('#btn_validate_submit_time').click(validateSubmitTime);
@@ -1014,6 +1054,8 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                 createShortCodeAndExportLink();
             });
             jQuery('#add_itemtitle').change(createShortCodeAndExportLink);
+            jQuery('#csv_delim').keyup(createShortCodeAndExportLink);
+            jQuery('#export_link_csv_delim').keyup(createShortCodeAndExportLink);
             jQuery('#gld_user').change(createShortCodeAndExportLink);
             jQuery('#gld_user').keyup(createShortCodeAndExportLink);
             jQuery('#gld_pass').change(createShortCodeAndExportLink);
@@ -1098,6 +1140,12 @@ class CFDBViewShortCodeBuilder extends CFDBView {
         <label for="export_cntl"><?php echo htmlspecialchars(__('Export File', 'contact-form-7-to-database-extension')); ?></label>
         <select id="export_cntl" name="export_cntl">
             <option value=""></option>
+            <option value="xlsx">
+                <?php echo htmlspecialchars(__('Excel .xlsx', 'contact-form-7-to-database-extension')); ?>
+            </option>
+            <option value="ods">
+                <?php echo htmlspecialchars(__('OpenDocument .ods', 'contact-form-7-to-database-extension')); ?>
+            </option>
             <option value="CSVUTF8BOM">
                 <?php echo htmlspecialchars(__('Excel CSV (UTF8-BOM)', 'contact-form-7-to-database-extension')); ?>
             </option>
@@ -1123,7 +1171,11 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                 <?php echo htmlspecialchars(__('JSON', 'contact-form-7-to-database-extension')); ?>
             </option>
         </select>
-        <span  id="itemtitle_span">
+        <span id="csvdelim_span">
+            <label for="csv_delim"><?php echo htmlspecialchars(__('CSV Delimiter', 'contact-form-7-to-database-extension')); ?></label>
+            <input id="csv_delim" type="text" size="2" value="<?php echo htmlspecialchars(','); ?>"/>
+        </span>
+        <span id="itemtitle_span">
             <label for="add_itemtitle"><?php echo htmlspecialchars(__('Item Title', 'contact-form-7-to-database-extension')); ?></label>
             <select name="add_itemtitle" id="add_itemtitle"></select>
         </span>
@@ -1493,6 +1545,12 @@ class CFDBViewShortCodeBuilder extends CFDBView {
             </div>
             <select id="enc_cntl" name="enc_cntl">
                 <option value=""></option>
+                <option id="xlsx" value="xlsx">
+                    <?php echo htmlspecialchars(__('Excel .xlsx', 'contact-form-7-to-database-extension')); ?>
+                </option>
+                <option id="ods" value="ods">
+                    <?php echo htmlspecialchars(__('OpenDocument .ods', 'contact-form-7-to-database-extension')); ?>
+                </option>
                 <option id="CSVUTF8BOM" value="CSVUTF8BOM">
                     <?php echo htmlspecialchars(__('Excel CSV (UTF8-BOM)', 'contact-form-7-to-database-extension'));; ?>
                 </option>
@@ -1509,6 +1567,10 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                     <?php echo htmlspecialchars(__('Excel Internet Query', 'contact-form-7-to-database-extension')); ?>
                 </option>
             </select>
+            <span id="export_link_csvdelim_span" style="display:none">
+                <label for="export_link_csv_delim"><?php echo htmlspecialchars(__('CSV Delimiter', 'contact-form-7-to-database-extension')); ?></label>
+                <input id="export_link_csv_delim" type="text" size="2" value="<?php echo htmlspecialchars(','); ?>"/>
+            </span>
         </div>
         <div>
             <div class="label_box">

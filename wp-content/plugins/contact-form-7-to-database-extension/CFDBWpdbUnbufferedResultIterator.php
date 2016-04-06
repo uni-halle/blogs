@@ -82,21 +82,23 @@ class CFDBWpdbUnbufferedResultIterator extends CFDBAbstractQueryResultsIterator 
      */
     public function fetchRow() {
         $row = null;
-        if ($this->useMysqli) {
-            if ($this->debug) {
-                // returns array|null
-                $row = mysqli_fetch_assoc($this->mysqlResults);
+        if ($this->mysqlResults) {
+            if ($this->useMysqli) {
+                if ($this->debug) {
+                    // returns array|null
+                    $row = mysqli_fetch_assoc($this->mysqlResults);
+                } else {
+                    // returns array|null
+                    $row = @mysqli_fetch_assoc($this->mysqlResults);
+                }
             } else {
-                // returns array|null
-                $row = @mysqli_fetch_assoc($this->mysqlResults);
-            }
-        } else {
-            if ($this->debug) {
-                // returns array|false
-                $row = mysql_fetch_assoc($this->mysqlResults);
-            } else {
-                // returns array|false
-                $row = @mysql_fetch_assoc($this->mysqlResults);
+                if ($this->debug) {
+                    // returns array|false
+                    $row = mysql_fetch_assoc($this->mysqlResults);
+                } else {
+                    // returns array|false
+                    $row = @mysql_fetch_assoc($this->mysqlResults);
+                }
             }
         }
         return $row;

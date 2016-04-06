@@ -110,16 +110,12 @@ abstract class CFDBParserBase {
             $functionArray = array();
             $functionArray[] = $matches[1]; // function name
             // Parse function parameters
-            $matches[2] = trim($matches[2]);
             if ($matches[2] != '') {
                 $paramMatches = explode(',', $matches[2]);
                 foreach ($paramMatches as $param) {
-                    $param = trim($param);
                     $param = stripslashes($param);
                     $param = $this->unSingleQuoteString($param);
-                    if ($param != '') {
-                        $functionArray[] = $param;
-                    }
+                    $functionArray[] = $param;
                 }
             }
             return $functionArray;

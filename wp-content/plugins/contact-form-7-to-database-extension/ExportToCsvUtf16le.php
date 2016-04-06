@@ -34,6 +34,11 @@ class ExportToCsvUtf16le extends ExportBase implements CFDBExport {
             return;
         }
 
+        // Query DB for the data for that form
+        $submitTimeKeyName = 'Submit_Time_Key';
+        $this->setDataIterator($formName, $submitTimeKeyName);
+        $this->clearOutputBuffer();
+
         // Headers
         $this->echoHeaders(
             array('Content-Type: text/csv; charset=UTF-16LE',
@@ -47,10 +52,6 @@ class ExportToCsvUtf16le extends ExportBase implements CFDBExport {
         echo chr(255) . chr(254);
         $eol = $this->encode(utf8_encode("\n"));
         $delimiter = $this->encode(utf8_encode("\t"));
-
-        // Query DB for the data for that form
-        $submitTimeKeyName = 'Submit_Time_Key';
-        $this->setDataIterator($formName, $submitTimeKeyName);
 
         // Column Headers
         if (isset($this->options['header']) && $this->options['header'] != 'true') {

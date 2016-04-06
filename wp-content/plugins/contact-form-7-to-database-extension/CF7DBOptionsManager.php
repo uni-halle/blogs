@@ -138,7 +138,7 @@ class CF7DBOptionsManager {
         if (!$retVal && $default) {
             $retVal = $default;
             if ($saveDefault) {
-                add_option($optionName, $default);
+                add_option($prefixedOptionName, $default);
             }
         }
         return $retVal;

@@ -88,6 +88,11 @@ class ExportToHtmlTable extends ExportBase implements CFDBExport {
         // Headers
         $this->echoHeaders('Content-Type: text/html; charset=UTF-8');
 
+        // Query DB for the data for that form
+        $submitTimeKeyName = 'Submit_Time_Key';
+        $this->setDataIterator($formName, $submitTimeKeyName);
+        //$this->clearOutputBuffer(); // will mess up the admin table view
+
         if ($this->isFromShortCode) {
             ob_start();
             if ($this->useBom) {
@@ -112,10 +117,6 @@ class ExportToHtmlTable extends ExportBase implements CFDBExport {
                 wp_print_styles(array('jquery-ui.css', 'datatables-demo'));
             }
         }
-
-        // Query DB for the data for that form
-        $submitTimeKeyName = 'Submit_Time_Key';
-        $this->setDataIterator($formName, $submitTimeKeyName);
 
         // Break out sections: Before, Content, After
         $before = '';

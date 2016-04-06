@@ -540,6 +540,23 @@ class TransformsTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('.99999', $stuff[0]->age);
     }
 
+    public function test_str_replace_with_blank() {
+        $options = array();
+        $options['trans'] = 'misc2=str_replace(x,,misc)';
+
+        $exp = new ExportToJson();
+        ob_start();
+        $exp->export('Ages', $options);
+        $text = ob_get_contents();
+        $stuff = json_decode($text);
+        $this->assertTrue(is_array($stuff));
+
+        foreach ($stuff as $entry) {
+            $this->assertEquals(str_replace('x', '', $entry->misc), $entry->misc2);
+        }
+
+    }
+
     // todo: somehow to test random?
 
 

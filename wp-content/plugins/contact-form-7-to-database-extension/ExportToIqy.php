@@ -39,6 +39,11 @@ class ExportToIqy implements CFDBExport {
         }
         $encRedir = urlencode('wp-admin/admin-ajax.php' . $uri);
 
+        if (ob_get_length()) {
+            // Prevents misc chars/newlines from being printed during export.
+            ob_clean();
+        }
+
         // To get this to work right, we have to submit to the same page that the login form does and post
         // the same parameters that the login form does. This includes "log" and "pwd" for the login and
         // also "redirect_to" which is the URL of the page where we want to end up including a "form_name" parameter
