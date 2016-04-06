@@ -3,8 +3,8 @@ Contributors: cryout-creations
 Donate link: http://www.cryoutcreations.eu/donate/
 Tags: theme, admin
 Requires at least: 4.0
-Tested up to: 4.4
-Stable tag: 0.5.5
+Tested up to: 4.4.2
+Stable tag: 0.5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -12,18 +12,19 @@ This plugin is designed to inter-operate with our Mantra, Parabola, Tempera, Nir
 
 == Description ==
 
-This plugin is designed to inter-operate with our [Nirvana](https://wordpress.org/themes/nirvana/), [Tempera](https://wordpress.org/themes/tempera/), [Parabola](https://wordpress.org/themes/parabola/) themes and restore their advanced settings pages which we had to remove due to the Customize-based settings enforcement.
+This plugin is designed to inter-operate with our [Nirvana](https://wordpress.org/themes/nirvana/), [Tempera](https://wordpress.org/themes/tempera/), [Parabola](https://wordpress.org/themes/parabola/), [Mantra](https://wordpress.org/themes/mantra/)themes and restore their advanced settings pages which we had to remove due to the Customize-based settings transition.
 
-Additionally, it returns the themes' settings pages to working condition in Tempera, Parabola and Mantra on WordPress 4.4-RC1 and newer.
+Additionally, it fixes an incompatibility between the older version of listed themes and Wordpress 4.4 and newer.
 
 = Compatibility = 
-The plugin is meant to be used with the following theme releases:
+The plugin is meant to be used with the following theme releases regardless of WordPress version:
 
 * Nirvana version 1.2 and newer
 * Tempera version 1.4 and newer
 * Parabola version 1.6 and newer
+* Mantra version 2.5 and newer
 
-On WordPress 4.4-RC1 or newer it will restore the settings pages to working condition in:
+Additionally, it is needed to correct an incompatibility between WordPress 4.4 and newer and the following theme versions:
 
 * Tempera versions 0.9 - 1.3.3
 * Parabola versions 0.9 - 1.5.1
@@ -48,6 +49,9 @@ You do not need this plugin if you use do not use any of the listed themes.
 3. Navigate to Appearance > [Theme] Settings to access the restored theme settings page. 
 
 == Changelog ==
+
+= 0.5.6 =
+* Added support for Mantra 2.5
 
 = 0.5.5 = 
 * Added support for Parabola 1.6

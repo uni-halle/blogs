@@ -53,13 +53,14 @@
 						
 					<div class="postbox">
 
-						<div class="handlediv" title="Click to toggle"><br></div>
+						<div class="handlediv"><br></div>
 						<h3 class="hndle"><span>About</span></h3>
 
 						<div class="inside">
 							<p>
 							This plugin is designed to inter-operate with our supported themes:
-							<ul><li><a href="http://wordpress.org/themes/nirvana" target="_blank">Nirvana</a> version 1.2 and newer</li>
+							<ul><li><a href="http://wordpress.org/themes/mantra" target="_blank">Mantra</a> version 2.5 and newer</li>
+							<li><a href="http://wordpress.org/themes/nirvana" target="_blank">Nirvana</a> version 1.2 and newer</li>
 							<li><a href="http://wordpress.org/themes/parabola" target="_blank">Parabola</a> version 1.6 and newer</li>
 							<li><a href="http://wordpress.org/themes/tempera" target="_blank">Tempera</a> version 1.4 and newer</li>
 							</ul>

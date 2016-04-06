@@ -3,7 +3,7 @@
     Plugin Name: Cryout Serious Theme Settings
     Plugin URI: http://www.cryoutcreations.eu/serious-theme-settings
     Description: This plugin is designed to restore our theme's settings page functionality after the enforcement of the Customize-based theme settings. It is only compatible with and will only function when one of our themes is active: Nirvana, Parabola or Tempera.
-    Version: 0.5.5
+    Version: 0.5.6
     Author: Cryout Creations
     Author URI: http://www.cryoutcreations.eu
 	License: GPLv3
@@ -11,7 +11,7 @@
 */
 
 class Cryout_Theme_Settings {
-	public $version = "0.5.5";
+	public $version = "0.5.6";
 	public $settings = array();
 	
 	private $status = 0; // 0 = inactive, 1 = active, 2 = good theme, wrong version, 3 = wrong theme, 4 = compatibility for wp4.4
@@ -20,7 +20,7 @@ class Cryout_Theme_Settings {
 		'nirvana' => '1.2',
 		'tempera' => '1.4',
 		'parabola' => '1.6',
-		'mantra' => '3.0',
+		'mantra' => '2.5',
 	);
 	private $compatibility_themes = array(
 		'tempera' => '0.9',
@@ -78,11 +78,6 @@ class Cryout_Theme_Settings {
 			// theme slug does not match supported themes
 			// perform additional checks for theme constants
 		
-			if (defined('_CRYOUT_THEME_NAME')) {
-				if ($current_theme_slug != _CRYOUT_THEME_NAME) $this->renamed_theme = true;
-				$current_theme_slug = _CRYOUT_THEME_NAME;
-				if (defined('_CRYOUT_THEME_VERSION')) $current_theme_version = _CRYOUT_THEME_VERSION;
-			}
 			if (defined('MANTRA_VERSION')) {
 				if ($current_theme_slug != 'mantra') $this->renamed_theme = true;
 				$current_theme_slug = 'mantra';
@@ -103,6 +98,11 @@ class Cryout_Theme_Settings {
 				$current_theme_slug = 'nirvana';
 				$current_theme_version = NIRVANA_VERSION;		
 			}
+			if (defined('_CRYOUT_THEME_NAME')) {
+				if ($current_theme_slug != _CRYOUT_THEME_NAME) $this->renamed_theme = true;
+				$current_theme_slug = _CRYOUT_THEME_NAME;
+				if (defined('_CRYOUT_THEME_VERSION')) $current_theme_version = _CRYOUT_THEME_VERSION;
+			}
 		} // end additional checks
 		
 		$this->current_theme = array(
@@ -112,11 +112,11 @@ class Cryout_Theme_Settings {
 		
 		if (in_array( $current_theme_slug, array_keys( $this->supported_themes) )) {
 			// supported theme, check version
-			if ( version_compare( $current_theme_version, $this->supported_themes[$current_theme_slug] ) >=0 ):
+			if ( version_compare( $current_theme_version, $this->supported_themes[$current_theme_slug], '>=' ) ):
 				// supported version
 				$this->status = 1;
 				return 1;
-			elseif ( (version_compare( $current_theme_version, $this->compatibility_themes[$current_theme_slug] ) >=0 ) && 
+			elseif ( (version_compare( $current_theme_version, $this->compatibility_themes[$current_theme_slug], '>=' ) ) && 
 					(version_compare($wp_version, '4.3.9999') >= 0) ):
 				// compatibility mode
 				$this->status = 4;
