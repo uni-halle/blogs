@@ -196,7 +196,7 @@
 
                         // Tell the modal to show only images.
                         library: {
-                            type: $$.data('library').split(',').map(function(v){ return v.trim() })
+                            type: $$.data('library').split(',').map(function(v){ return v.trim(); })
                         },
 
                         // Customize the submit button.
@@ -351,10 +351,12 @@
                         container.append(icon);
 
                         if( $v.val() === family + '-' + i ) {
-                            if( !icon.hasClass('siteorigin-widget-active') ) {
-                                // This is becoming active, so simulate a click
-                                icon.click();
-                            }
+							// Add selected icon to the button.
+							$b.find('span')
+								.show()
+								.attr( 'data-sow-icon', icon.attr('data-sow-icon') )
+								.attr( 'class', '' )
+								.addClass( 'sow-icon-' + family );
                             icon.addClass('siteorigin-widget-active');
                         }
                     }

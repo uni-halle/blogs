@@ -25,23 +25,31 @@
 					<div class="ow-pt-feature ow-pt-feature-<?php echo $i % 2 == 0 ? 'even' : 'odd' ?>">
 
 						<?php
-						if( !empty($feature['icon_new']) ) {
+						if( !empty($feature['icon_new']) ) { ?>
+						<div class="sow-feature-icon">
+						<?php
 							$icon_styles = array();
 							if(!empty($feature['icon_color'])) $icon_styles[] = 'color: '.$feature['icon_color'];
 							echo siteorigin_widget_get_icon($feature['icon_new'], $icon_styles);
+						?>
+						</div>
+						<?php
 						}
 						?>
-
-						<p data-tooltip-text="<?php echo esc_attr($feature['hover']) ?>">
-							<?php echo wp_kses_post($feature['text']) ?>
-						</p>
+						<div class="sow-feature-text">
+							<p <?php if(!empty( $feature['hover'] ) ) : ?>data-tooltip-text="<?php echo esc_attr($feature['hover']) ?>"<?php endif; ?>>
+								<?php echo wp_kses_post($feature['text']) ?>
+							</p>
+						</div>
 					</div>
 				<?php endforeach; ?>
 			</div>
 
-			<div class="ow-pt-button">
-				<a href='<?php echo sow_esc_url($column['url']) ?>' class="ow-pt-link" <?php if( !empty( $instance['button_new_window'] ) ) echo 'target="_blank"' ?>><?php echo esc_html($column['button']) ?></a>
-			</div>
+			<?php if( !empty($column['button']) ) : ?>
+				<div class="ow-pt-button">
+					<a href='<?php echo sow_esc_url($column['url']) ?>' class="ow-pt-link" <?php if( !empty( $instance['button_new_window'] ) ) echo 'target="_blank"' ?>><?php echo esc_html($column['button']) ?></a>
+				</div>
+			<?php endif; ?>
 		</div>
 	<?php endforeach; ?>
 

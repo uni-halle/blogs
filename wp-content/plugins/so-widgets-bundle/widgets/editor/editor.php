@@ -19,22 +19,26 @@ class SiteOrigin_Widget_Editor_Widget extends SiteOrigin_Widget {
 				'help' => 'https://siteorigin.com/widgets-bundle/editor-widget/'
 			),
 			array(),
-			array(
-				'title' => array(
-					'type' => 'text',
-					'label' => __('Title', 'so-widgets-bundle'),
-				),
-				'text' => array(
-					'type' => 'tinymce',
-					'rows' => 20
-				),
-				'autop' => array(
-					'type' => 'checkbox',
-					'default' => true,
-					'label' => __('Automatically add paragraphs', 'so-widgets-bundle'),
-				),
-			),
+			false,
 			plugin_dir_path(__FILE__)
+		);
+	}
+
+	function initialize_form(){
+		return array(
+			'title' => array(
+				'type' => 'text',
+				'label' => __('Title', 'so-widgets-bundle'),
+			),
+			'text' => array(
+				'type' => 'tinymce',
+				'rows' => 20
+			),
+			'autop' => array(
+				'type' => 'checkbox',
+				'default' => true,
+				'label' => __('Automatically add paragraphs', 'so-widgets-bundle'),
+			),
 		);
 	}
 
@@ -65,7 +69,7 @@ class SiteOrigin_Widget_Editor_Widget extends SiteOrigin_Widget {
 		if( $instance['autop'] ) {
 			$instance['text'] = wpautop( $instance['text'] );
 		}
-		$instance['text'] = do_shortcode( $instance['text'] );
+		$instance['text'] = do_shortcode( shortcode_unautop( $instance['text'] ) );
 
 		return array(
 			'text' => $instance['text'],
