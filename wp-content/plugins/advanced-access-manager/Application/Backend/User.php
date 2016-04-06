@@ -89,9 +89,19 @@ class AAM_Backend_User {
             $actions = array('manage');
 
             $prefix = ($user->ID == get_current_user_id() ? 'no-' : '');
+            
             $actions[] = $prefix . ($user->user_status ? 'unlock' : 'lock');
-
             $actions[] = 'edit';
+        }
+        
+        if (class_exists('user_switching')) {
+            $url = user_switching::maybe_switch_url($user);
+            
+            if (!in_array('edit', $actions) || empty($url)) {
+                $actions[] = 'no-switch';
+            } else {
+                $actions[] = 'switch|' . $url;
+            }
         }
         
         return $actions;

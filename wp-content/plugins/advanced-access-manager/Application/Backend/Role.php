@@ -90,7 +90,7 @@ class AAM_Backend_Role {
      * @access public
      */
     public function add() {
-        $name = trim(AAM_Core_Request::post('name'));
+        $name = sanitize_text_field(AAM_Core_Request::post('name'));
         $roles = new WP_Roles;
         $role_id = strtolower($name);
         //if inherited role is set get capabilities from it

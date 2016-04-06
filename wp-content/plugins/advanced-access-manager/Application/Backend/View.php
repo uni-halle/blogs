@@ -146,8 +146,8 @@ class AAM_Backend_View {
      * @access public
      */
     public function save() {
-        $object = AAM_Core_Request::post('object');
-        $objectId = AAM_Core_Request::post('objectId', 0);
+        $object   = trim(AAM_Core_Request::post('object'));
+        $objectId = intval(AAM_Core_Request::post('objectId', 0));
         
         $param = AAM_Core_Request::post('param');
         $value = filter_var(

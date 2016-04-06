@@ -89,9 +89,11 @@
                                 </p>
 
                                 <div class="aam-info aam-social">
-                                    <a href="http://vasyltech.com" target="_blank"><i class="icon-home"></i></a>
-                                    <a href="http://twitter.com/vasyltech" target="_blank"><i class="icon-twitter"></i></a>
-                                    <a href="https://github.com/VasylTech/advanced-access-manager" target="_blank"><i class="icon-github"></i></a>
+                                    <a target="_blank" href="http://wpaam.com"><i class="icon-home"></i></a>
+                                    <a target="_blank" href="http://twitter.com/vasyltech"><i class="icon-twitter"></i></a>
+                                    <a target="_blank" href="https://github.com/VasylTech/advanced-access-manager"><i class="icon-github"></i></a>
+                                    <a target="_blank" href="https://www.facebook.com/vasyltech"><i class="icon-facebook"></i></a>
+                                    <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/advanced-access-manager"><i class="icon-star"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -221,7 +223,7 @@
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Roles</th>
-                                                    <th width="70%"><?php echo __('Username', AAM_KEY); ?></th>
+                                                    <th width="65%"><?php echo __('Username', AAM_KEY); ?></th>
                                                     <th><?php echo __('Action', AAM_KEY); ?></th>
                                                 </tr>
                                             </thead>
@@ -285,16 +287,30 @@
                         </div>
                     </div>
                     <?php do_action('aam-sidebar-ui-action', 'bottom'); ?>
-                    
+
+                    <!-- Social Links: begin -->
+                    <div class="postbox">
+                        <div class="inside">
+                            <div class="aam-social">
+                                <a target="_blank" href="http://wpaam.com"><i class="icon-home"></i></a>
+                                <a target="_blank" href="http://twitter.com/vasyltech"><i class="icon-twitter"></i></a>
+                                <a target="_blank" href="https://github.com/VasylTech/advanced-access-manager"><i class="icon-github"></i></a>
+                                <a target="_blank" href="https://www.facebook.com/vasyltech"><i class="icon-facebook"></i></a>
+                                <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/advanced-access-manager"><i class="icon-star"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Social Links: end -->
+
                     <!-- Error Fix Promotion: begin -->
                     <div class="postbox hidden" id="errorfix-promotion">
                         <h3 class="hndle">
                             <span>Website Error Fix</span>
-                            <a href="https://wordpress.org/plugins/wp-error-fix/" target="_blank" class="aam-help-menu"><i class="icon-help-circled"></i></a>
+                            <a href="http://phperrorfix.com" target="_blank" class="aam-help-menu"><i class="icon-help-circled"></i></a>
                         </h3>
                         <div class="inside">
-                            <p class="aam-info">Keep your webiste error free with our new plugin <b>WP Error Fix</b>.</p>
-                            <a href="#" class="btn btn-warning btn-lg btn-block" id="errorfix-install-btn">Install WP Error Fix</a>
+                            <p class="aam-info">Keep your website secure &amp; error free with our patent pending <b>WP Error Fix</b>.</p>
+                            <a href="#" class="btn btn-success btn-lg btn-block" id="errorfix-install-btn">Install WP Error Fix</a>
                         </div>
                     </div>
                     <!-- Error Fix Promotion: end -->
@@ -302,55 +318,5 @@
             </div>
         </div>
     </div>
-
-    <div class="aam-welcome-message">
-        <div class="row aam-no-margin aam-notification-container hidden">
-            <div class="col-xs-12">
-                <div class="row aam-notification">
-                    <div class="col-xs-4 col-md-2 aam-notification-icon">
-                        <i class="icon-attention-circled"></i>
-                    </div>
-                    <div class="col-xs-8 col-md-10 aam-notification-content">
-                        <ul class="aam-error-list"></ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <h1><?php echo AAM_Backend_Helper::preparePhrase('Welcome to [Advanced Access Manager] [(aka AAM)]', 'strong', 'small'); ?></h1>
-
-        <p class="aam-info aam-margin-top-xs">
-            <?php echo sprintf(__('Follow us on twitter %s for the latest Advanced Access Manager news.', AAM_KEY), '<strong><a href="https://twitter.com/vasyltech/" target="_blank">@vasyltech</a></strong>'); ?>
-        </p>
-
-        <h2 class="aam-margin-top-xs"><?php echo __('What\'s New', AAM_KEY); ?></h2>
-        <ul>
-            <li><?php echo __('Brand new and much more intuitive user interface.', AAM_KEY); ?></li>
-            <li><?php echo __('Fully responsive design so you can manage access to website even on your smart phone.', AAM_KEY); ?></li>
-            <li><?php echo __('Better, more reliable and faster core functionality.', AAM_KEY); ?></li>
-            <li><?php echo __('Completely new extension handler. In case of any file system failure, you can download an extension for manual installation.', AAM_KEY); ?></li>
-            <li><?php echo __('Added "Manage Access" action to the list of user.', AAM_KEY); ?></li>
-        </ul>
-
-        <h2 class="aam-highlight aam-margin-top-xs"><?php echo __('Please be aware of the latest changes!', AAM_KEY); ?></h2>
-        <ul>
-            <li><?php echo __('"Save" button has been removed. Any changes that you perform are saved automatically.', AAM_KEY); ?></li>
-            <li><?php echo sprintf('With the first release of AAM version 3, not all extensions from AAM version 2 available for download. More extensions are coming soon. Follow us on twitter %s for the latest news.', '<strong><a href="https://twitter.com/vasyltech/" target="_blank">@vasyltech</a></strong>'); ?></li>
-            <li><?php echo __('License key for an extension is valid for one life domain only. All the licenses that were purchased before are still valid but limited to one domain with AAM version 3 (with AAM version 2 it is still unlimited until April 2016).', AAM_KEY); ?></li>
-            <li><?php echo __('Development License is valid for 5 domains with AAM version 3 but is still unlimited with version 2 (only until April 2016).', AAM_KEY); ?></li>
-            <li><?php echo __('Posts &amp; Pages settings from AAM version 2 are not compatible with AAM version 3.', AAM_KEY); ?></li>
-            <li><?php echo __('You are not allowed to delete or lock an "Administrator" role.', AAM_KEY); ?></li>
-            <li><?php echo __('There is no longer a "Super Admin" role.', AAM_KEY); ?></li>
-            <li><?php echo __('You are not longer allowed to delete any user or group or users (but you still can do it within native WordPress interface).', AAM_KEY); ?></li>
-            <li><?php echo __('You are not allowed to delete any capability (even the one that you created manually).', AAM_KEY); ?></li>
-        </ul>
-
-        <h3>Rollback to AAM version 2</h3>
-        <p><?php echo sprintf(__('You can rolleback to the earlier version of AAM by simply downloading any previous version on %sthis page%s. After download, replace the wp-content/plugins/advanced-access-manager directory with the archive\'s content.'), '<a href="https://wordpress.org/plugins/advanced-access-manager/developers/" target="_blank">', '</a>'); ?></p>
-
-        <p class="aam-margin-top-xs text-center">
-            <a href="#" class="btn btn-lg btn-primary" id="confirm-welcome"><i class="icon-check"></i> <?php echo __('Ok, got it', AAM_KEY); ?></a>
-        </p>
-    </div>
-<?php
+    <?php
 }

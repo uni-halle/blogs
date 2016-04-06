@@ -56,7 +56,9 @@ class AAM_Backend_Manager {
         $this->checkCacheStatus();
 
         //register backend hooks and filters
-        AAM_Backend_Filter::register();
+        if (apply_filters('aam-utility-property', 'backend-access-control', true)) {
+            AAM_Backend_Filter::register();
+        }
     }
     
     /**
@@ -179,7 +181,7 @@ class AAM_Backend_Manager {
             $url = admin_url('admin.php?page=aam&user=' . $user->ID);
 
             $actions['aam']  = '<a href="' . $url . '">';
-            $actions['aam'] .= __('Manage Access', AAM_KEY) . '</a>';
+            $actions['aam'] .= __('AAM', AAM_KEY) . '</a>';
         }
         
         return $actions;
@@ -230,7 +232,6 @@ class AAM_Backend_Manager {
                 'name'=> $subject->name,
                 'blog' => get_current_blog_id()
             ),
-            'welcome' => AAM_Core_API::getOption('aam-welcome', 1),
             'translation' => require (dirname(__FILE__) . '/Localization.php')
         ));
     }

@@ -231,8 +231,8 @@ class AAM_Backend_Post {
      * @access public
      */
     public function getAccess() {
-        $type = AAM_Core_Request::post('type');
-        $id = AAM_Core_Request::post('id');
+        $type = trim(AAM_Core_Request::post('type'));
+        $id   = AAM_Core_Request::post('id');
 
         $object = AAM_Backend_View::getSubject()->getObject($type, $id);
 
@@ -262,8 +262,8 @@ class AAM_Backend_Post {
      */
     public function save() {
         if ($this->checkLimit()) {
-            $object = AAM_Core_Request::post('object');
-            $objectId = AAM_Core_Request::post('objectId', 0);
+            $object   = trim(AAM_Core_Request::post('object'));
+            $objectId = AAM_Core_Request::post('objectId', null);
 
             $param = AAM_Core_Request::post('param');
             $value = filter_var(
@@ -295,8 +295,8 @@ class AAM_Backend_Post {
      * @access public
      */
     public function reset() {
-        $type = AAM_Core_Request::post('type');
-        $id = AAM_Core_Request::post('id', 0);
+        $type = trim(AAM_Core_Request::post('type'));
+        $id   = intval(AAM_Core_Request::post('id', 0));
 
         $object = AAM_Backend_View::getSubject()->getObject($type, $id);
         if ($object instanceof AAM_Core_Object) {

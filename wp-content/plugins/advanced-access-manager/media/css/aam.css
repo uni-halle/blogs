@@ -9,6 +9,7 @@
     font-family: 'fontello';
     src: url('../font/fontello.eot?99287648');
     src: url('../font/fontello.eot?99287648#iefix') format('embedded-opentype'),
+        url('../font/fontello.woff2?99287648') format('woff2'),
         url('../font/fontello.woff?99287648') format('woff'),
         url('../font/fontello.ttf?99287648') format('truetype'),
         url('../font/fontello.svg?99287648#fontello') format('svg');
@@ -61,36 +62,38 @@
     /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.icon-spin4:before { content: '\e800'; } /* '' */
-.icon-user-secret:before { content: '\e801'; } /* '' */
-.icon-users:before { content: '\e802'; } /* '' */
-.icon-user:before { content: '\e803'; } /* '' */
-.icon-trash-empty:before { content: '\e804'; } /* '' */
-.icon-cog:before { content: '\e805'; } /* '' */
-.icon-lock:before { content: '\e806'; } /* '' */
-.icon-pencil:before { content: '\e807'; } /* '' */
-.icon-arrows-cw:before { content: '\e808'; } /* '' */
-.icon-lock-open-alt:before { content: '\e809'; } /* '' */
-.icon-plus:before { content: '\e80a'; } /* '' */
-.icon-filter:before { content: '\e80b'; } /* '' */
-.icon-check:before { content: '\e80c'; } /* '' */
-.icon-help-circled:before { content: '\e80d'; } /* '' */
-.icon-box:before { content: '\e80e'; } /* '' */
-.icon-folder:before { content: '\e80f'; } /* '' */
-.icon-check-empty:before { content: '\e810'; } /* '' */
-.icon-doc-text-inv:before { content: '\e811'; } /* '' */
-.icon-home:before { content: '\e812'; } /* '' */
-.icon-angle-double-right:before { content: '\e813'; } /* '' */
-.icon-eye-off:before { content: '\e814'; } /* '' */
-.icon-attention-circled:before { content: '\e815'; } /* '' */
-.icon-eye:before { content: '\e816'; } /* '' */
-.icon-basket:before { content: '\e817'; } /* '' */
-.icon-download-cloud:before { content: '\e818'; } /* '' */
-.icon-github:before { content: '\e819'; } /* '' */
-.icon-twitter:before { content: '\e81a'; } /* '' */
-.icon-sort-down:before { content: '\e81b'; } /* '' */
-.icon-sort-up:before { content: '\e81c'; } /* '' */
-.icon-sort:before { content: '\e81d'; } /* '' */
+.icon-spin4:before { content: '\e800'; } /* 'î ' */
+.icon-eye-off:before { content: '\e801'; } /* 'î ' */
+.icon-attention-circled:before { content: '\e802'; } /* 'î ' */
+.icon-user-secret:before { content: '\e803'; } /* 'î ' */
+.icon-users:before { content: '\e804'; } /* 'î ' */
+.icon-eye:before { content: '\e805'; } /* 'î ' */
+.icon-basket:before { content: '\e806'; } /* 'î ' */
+.icon-user:before { content: '\e807'; } /* 'î ' */
+.icon-trash-empty:before { content: '\e808'; } /* 'î ' */
+.icon-download-cloud:before { content: '\e809'; } /* 'î ' */
+.icon-github:before { content: '\e80a'; } /* 'î ' */
+.icon-cog:before { content: '\e80b'; } /* 'î ' */
+.icon-lock:before { content: '\e80c'; } /* 'î ' */
+.icon-twitter:before { content: '\e80d'; } /* 'î ' */
+.icon-sort-down:before { content: '\e80e'; } /* 'î ' */
+.icon-pencil:before { content: '\e80f'; } /* 'î ' */
+.icon-arrows-cw:before { content: '\e810'; } /* 'î ' */
+.icon-sort-up:before { content: '\e811'; } /* 'î ' */
+.icon-sort:before { content: '\e812'; } /* 'î ' */
+.icon-lock-open-alt:before { content: '\e813'; } /* 'î ' */
+.icon-plus:before { content: '\e814'; } /* 'î ' */
+.icon-filter:before { content: '\e815'; } /* 'î ' */
+.icon-check:before { content: '\e816'; } /* 'î ' */
+.icon-help-circled:before { content: '\e817'; } /* 'î ' */
+.icon-box:before { content: '\e818'; } /* 'î ' */
+.icon-folder:before { content: '\e819'; } /* 'î ' */
+.icon-check-empty:before { content: '\e81a'; } /* 'î ' */
+.icon-doc-text-inv:before { content: '\e81b'; } /* 'î ' */
+.icon-home:before { content: '\e81c'; } /* 'î ' */
+.icon-angle-double-right:before { content: '\e81d'; } /* 'î ' */
+.icon-facebook:before { content: '\e81e'; } /* 'î ' */
+.icon-star:before { content: '\e81f'; } /* 'î ' */
 
 .animate-spin {
     -moz-animation: spin 2s infinite linear;
@@ -539,18 +542,28 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
 }
 
 .aam-sticky-note {
-    position: absolute;
-    top: 10px;
-    right: 0px;
-    border: 1px solid #e5e5e5;
+    position: fixed;
+    top: 32px;
+    left: 160px;
+    width: calc(100% - 160px);
     -webkit-box-shadow: 0px 0px 12px 2px rgba(100,100,100,1);
     -moz-box-shadow: 0px 0px 12px 2px rgba(100,100,100,1);
     box-shadow: 0px 0px 12px 2px rgba(100,100,100,1);
-    font-size: 1.6em;
+    font-size: 1.5em;
     font-weight: 500;
     padding: 15px;
+    text-align: center;
     z-index: 999;
-    background-color: #FFFFFF;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+}
+
+.aam-sticky-note.danger {
+    background-color: #a94442;
+}
+
+.aam-sticky-note.success { 
+    background-color: #5cb85c;
 }
 
 .aam-submenu-item label {
@@ -739,53 +752,6 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
     text-align: justify;
 }
 
-.aam-welcome-message {
-    background-color: #f1f1f1;
-    color: #333333;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 0;
-    opacity: 0;
-    padding: 10px 30px 15px 30px;
-    z-index: 10000;
-    visibility: hidden;
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-    -webkit-transition-delay: 1s;
-    -moz-transition-delay: 1s;
-    -o-transition-delay: 1s;
-    transition-delay: 1s;
-}
-
-.aam-welcome-message.active {
-    width: calc(100% - 15px);
-    width: -moz-calc(100% - 15px);
-    height: auto;
-    opacity: 1;
-    visibility: visible;
-}
-
-.aam-welcome-message h1 {
-    font-size: 2.2em;
-}
-
-.aam-welcome-message ul {
-    list-style: disc;
-    margin-left: 30px;
-    font-size: 1.2em;
-}
-
-.aam-welcome-message .aam-notification-container ul {
-    list-style: none;
-}
-
-.aam-welcome-message p {
-    font-size: 1.2em;
-}
-
 .dataTables_processing {
     border: 1px solid #cccccc;
     color: #337ab7;
@@ -809,4 +775,9 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
 
 .aam-current-subject strong {
     text-transform: capitalize;
+}
+
+.table h4 {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }

@@ -264,20 +264,23 @@ class AAM_Backend_Filter {
      * @access public
      */
     public function checkUserCap($allCaps, $metaCaps, $args) {
-        switch($args[0]) {
-            case 'edit_post':
-                $object = AAM::getUser()->getObject('post', $args[2]);
-                if ($object->has('backend.edit')) {
-                    $allCaps = $this->restrictPostActions($allCaps, $metaCaps);
-                }
-                break;
-            
-            case 'delete_post' :
-                $object = AAM::getUser()->getObject('post', $args[2]);
-                if ($object->has('backend.delete')) {
-                    $allCaps = $this->restrictPostActions($allCaps, $metaCaps);
-                }
-                break;
+        //make sure that $args[2] is actually post ID
+        if (isset($args[2]) && is_scalar($args[2])) { 
+            switch($args[0]) {
+                case 'edit_post':
+                    $object = AAM::getUser()->getObject('post', $args[2]);
+                    if ($object->has('backend.edit')) {
+                        $allCaps = $this->restrictPostActions($allCaps, $metaCaps);
+                    }
+                    break;
+
+                case 'delete_post' :
+                    $object = AAM::getUser()->getObject('post', $args[2]);
+                    if ($object->has('backend.delete')) {
+                        $allCaps = $this->restrictPostActions($allCaps, $metaCaps);
+                    }
+                    break;
+            }
         }
         
         return $allCaps;

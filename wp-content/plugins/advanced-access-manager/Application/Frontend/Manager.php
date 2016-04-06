@@ -32,19 +32,21 @@ class AAM_Frontend_Manager {
      * @access public
      */
     public function __construct() {
-        //control WordPress frontend
-        add_action('wp', array($this, 'wp'), 999);
-        //filter navigation pages & taxonomies
-        add_filter('get_pages', array($this, 'getPages'));
-        add_filter('wp_get_nav_menu_items', array($this, 'getNavigationMenu'));
-        //widget filters
-        add_filter('sidebars_widgets', array($this, 'widgetFilter'), 999);
-        //get control over commenting stuff
-        add_filter('comments_open', array($this, 'commentOpen'), 10, 2);
-        //user login control
-        add_filter('wp_authenticate_user', array($this, 'authenticate'), 1, 2);
-        //add post filter for LIST restriction
-        add_filter('the_posts', array($this, 'thePosts'), 999, 2);
+        if (apply_filters('aam-utility-property', 'frontend-access-control', true)) {
+            //control WordPress frontend
+            add_action('wp', array($this, 'wp'), 999);
+            //filter navigation pages & taxonomies
+            add_filter('get_pages', array($this, 'getPages'));
+            add_filter('wp_get_nav_menu_items', array($this, 'getNavigationMenu'));
+            //widget filters
+            add_filter('sidebars_widgets', array($this, 'widgetFilter'), 999);
+            //get control over commenting stuff
+            add_filter('comments_open', array($this, 'commentOpen'), 10, 2);
+            //user login control
+            add_filter('wp_authenticate_user', array($this, 'authenticate'), 1, 2);
+            //add post filter for LIST restriction
+            add_filter('the_posts', array($this, 'thePosts'), 999, 2);
+        }
     }
 
     /**

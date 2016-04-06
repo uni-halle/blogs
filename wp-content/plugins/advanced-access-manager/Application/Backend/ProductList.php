@@ -9,16 +9,6 @@
 
 return array(
     array(
-        'title' => 'AAM Dev License',
-        'id' => 'AAM Development License',
-        'type' => 'commercial',
-        'cost'  => '$150',
-        'currency' => 'USD',
-        'description' => __('Development license gives you an ability to download all the available extensions and use them to up to 5 life domains.', AAM_KEY),
-        'storeURL' => 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZX9RCWU6BTE52',
-        'status' => AAM_Core_Repository::getInstance()->extensionStatus('AAM Development License')
-    ),
-    array(
         'title' => 'AAM Plus Package',
         'id' => 'AAM Plus Package',
         'type' => 'commercial',
@@ -37,6 +27,16 @@ return array(
         'description' => __('Extension for more advanced user and role administration. Based on user\'s highest level capability, filter list of roles with higher level. Also prevent from editing, promoting or deleting higher level users.', AAM_KEY),
         'storeURL' => 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=G9V4BT3T8WJSN',
         'status' => AAM_Core_Repository::getInstance()->extensionStatus('AAM Role Filter')
+    ),
+    array(
+        'title' => 'AAM Dev License',
+        'id' => 'AAM Development License',
+        'type' => 'commercial',
+        'cost'  => '$150',
+        'currency' => 'USD',
+        'description' => __('Development license gives you an ability to download all the available extensions and use them to up to 5 life domains.', AAM_KEY),
+        'storeURL' => 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZX9RCWU6BTE52',
+        'status' => AAM_Core_Repository::getInstance()->extensionStatus('AAM Development License')
     ),
     array(
         'title' => 'AAM Utilities',
@@ -61,5 +61,20 @@ return array(
         'license'  => 'AAMPOSTFILTER',
         'description' => AAM_Backend_Helper::preparePhrase('[WARNING!] Please use with caution. This is a supportive exension for the post access option [List]. It adds additional post filtering to fix the issue with large amount of post. [Turned on caching] is strongly recommended.', 'strong', 'strong', 'strong'),
         'status' => AAM_Core_Repository::getInstance()->extensionStatus('AAM Post Filter')
+    ),
+    array(
+        'title' => 'AAM Skeleton Extension',
+        'id' => 'AAM Skeleton Extension',
+        'type' => 'GNU',
+        'license' => 'SKELETONEXT',
+        'description' => __('Skeleton for custom AAM extension. Please find all necessary documentation inside the source code.', AAM_KEY),
+        'status' => AAM_Core_Repository::getInstance()->extensionStatus('AAM Skeleton Extension')
+    ),
+    array(
+        'title' => 'User Switching',
+        'id' => 'User Switching',
+        'type' => 'plugin',
+        'description' => __('Instant switching between user accounts in WordPress. ', AAM_KEY),
+        'status' => AAM_Core_Repository::getInstance()->pluginStatus('User Switching')
     )
 );

@@ -544,8 +544,27 @@
                             $('#user-notification-modal').modal('show');
                         }));
                         break;
+                        
+                    case 'no-switch':
+                        $(container).append($('<i/>', {
+                            'class': 'aam-row-action icon-arrows-cw text-muted'
+                        }).bind('click', function () {
+                            $('#user-notification-modal').modal('show');
+                        }));
+                        break;
 
                     default:
+                        var chunks = action.split('|');
+                        if (chunks[0] === 'switch') {
+                            $(container).append($('<i/>', {
+                                'class': 'aam-row-action icon-arrows-cw text-info'
+                            }).bind('click', function () {
+                               location.href = chunks[1].replace(/&amp;/g, '&');
+                            }).attr({
+                                'data-toggle': "tooltip",
+                                'title': aam.__('Switch To User')
+                            }));
+                        }
                         break;
                 }
             });

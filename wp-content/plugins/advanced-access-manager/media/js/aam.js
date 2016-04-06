@@ -77,50 +77,20 @@
         $('.aam-help-menu').each(function() {
             var target = $(this).data('target');
             
-            $(this).bind('click', function() {
-                if ($(this).hasClass('active')) {
-                    $('.aam-help-context', target).removeClass('active');
-                    $('.aam-postbox-inside', target).show();
-                    $(this).removeClass('active');
-                } else {
-                    $('.aam-postbox-inside', target).hide();
-                    $('.aam-help-context', target).addClass('active');
-                    $(this).addClass('active');
-                }
-            });
-        });
-        
-        //welcome message
-        if (parseInt(aamLocal.welcome) === 1) {
-            $('.aam-welcome-message').toggleClass('active');
-            $('.wrap').css('visibility', 'hidden');
-            $('#confirm-welcome').bind('click', function (event) {
-                event.preventDefault();
-                
-                $('i', $(this)).attr('class', 'icon-spin4 animate-spin');
-                
-                $.ajax(aamLocal.ajaxurl, {
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {
-                        action: 'aam',
-                        sub_action: 'confirmWelcome',
-                        _ajax_nonce: aamLocal.nonce
-                    },
-                    beforeSend: function () {
-                        $('.aam-welcome-message').toggleClass('active');
-                        setTimeout(function() {
-                            $('.aam-welcome-message').remove();
-                        }, 1500);
-                    },
-                    complete: function () {
-                        $('.wrap').css('visibility', 'visible');
+            if (target) {
+                $(this).bind('click', function() {
+                    if ($(this).hasClass('active')) {
+                        $('.aam-help-context', target).removeClass('active');
+                        $('.aam-postbox-inside', target).show();
+                        $(this).removeClass('active');
+                    } else {
+                        $('.aam-postbox-inside', target).hide();
+                        $('.aam-help-context', target).addClass('active');
+                        $(this).addClass('active');
                     }
                 });
-            });
-        } else {
-            $('.aam-welcome-message').remove();
-        }
+            }
+        });
         
         //help tooltips
         $('body').delegate('[data-toggle="tooltip"]', 'hover', function (event) {
@@ -209,14 +179,14 @@
      * @returns {undefined}
      */
     AAM.prototype.notification = function (status, message) {
-        var notification = $('<div/>', {'class': 'aam-sticky-note'});
-        notification.append(
-                $('<span/>', {'class': 'text-' + status}).text(message)
-                );
+        var notification = $('<div/>', {'class': 'aam-sticky-note ' + status});
+        
+        notification.append($('<span/>').text(message));
         $('.wrap').append(notification);
+        
         setTimeout(function () {
             $('.aam-sticky-note').remove();
-        }, 5000);
+        }, 9000);
     };
     
     /**
