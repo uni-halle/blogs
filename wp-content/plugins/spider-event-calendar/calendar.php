@@ -3,11 +3,11 @@
 Plugin Name: Spider Event Calendar
 Plugin URI: https://web-dorado.com/products/wordpress-calendar.html
 Description: Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. Spider Event Calendar is an extraordinary user friendly extension.
-Version: 1.5.35
+Version: 1.5.39
 Author: https://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
-$wd_spider_calendar_version="1.5.35";
+$wd_spider_calendar_version="1.5.39";
 // LANGUAGE localization.
 function sp_calendar_language_load() {
   load_plugin_textdomain('sp_calendar', FALSE, basename(dirname(__FILE__)) . '/languages');
@@ -56,12 +56,12 @@ add_action('wp_enqueue_scripts', 'spider_calendar_scripts');
 $many_sp_calendar = 1;
 function spider_calendar_big($atts) {
   if (!isset($atts['default'])) {
-    $atts['theme'] = 13;
+    $atts['theme'] = 30;
     $atts['default'] = 'month';
   }
   extract(shortcode_atts(array(
     'id' => 'no Spider catalog',
-    'theme' => '13',
+    'theme' => '30',
     'default' => 'month',
     'select' => 'month,list,day,week,',
   ), $atts));
@@ -73,7 +73,7 @@ function spider_calendar_big($atts) {
 add_shortcode('Spider_Calendar', 'spider_calendar_big');
 
 function spider_calendar_big_front_end($id, $theme, $default, $select, $widget = 0) {
-  require_once("front_end/frontend_functions.php");
+  require_once("front_end/frontend_functions.php");  
   ob_start();
   global $many_sp_calendar;
   global $wpdb;
@@ -92,7 +92,7 @@ $themes = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spid
     var tb_closeImage = "<?php echo plugins_url('images/tb-close.png', __FILE__) ?>"
 	var randi;
     if (typeof showbigcalendar != 'function') {	
-      function showbigcalendar(id, calendarlink, randi,widget) {
+      function showbigcalendar(id, calendarlink, randi, widget) {
         var xmlHttp;
         try {
           xmlHttp = new XMLHttpRequest();// Firefox, Opera 8.0+, Safari
@@ -132,25 +132,12 @@ $themes = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spid
 	});
 if(widget!=1)
 {
-  if(jQuery(window).width() > 640)
-  {
 	jQuery('drop_down_views').hide();
-		var parent_width = document.getElementById('bigcalendar'+randi).parentNode.clientWidth;
-		var calwidth=  document.getElementById('cal_width'+randi).value;
-		var responsive_width = (calwidth)/parent_width*100;
-		document.getElementById('afterbig'+randi).setAttribute('style','width:'+responsive_width+'%;');
-		jQuery('pop_table').css('height','100%');
-  }
- else if(jQuery('#bigcalendar'+randi).parent().width() > 640)
-  {
-	jQuery('drop_down_views').hide();
-		var parent_width = document.getElementById('bigcalendar'+randi).parentNode.clientWidth;
-		var calwidth=  document.getElementById('cal_width'+randi).value;
-		var responsive_width = (calwidth)/parent_width*100;
-		document.getElementById('afterbig'+randi).setAttribute('style','width:'+responsive_width+'%;');
-		jQuery('pop_table').css('height','100%');
-  }
-	else document.getElementById('afterbig'+randi).setAttribute('style','width:100%;');	
+	var parent_width = document.getElementById('bigcalendar'+randi).parentNode.clientWidth;
+	var calwidth=  document.getElementById('cal_width'+randi).value;
+	var responsive_width = (calwidth)/parent_width*100;
+	document.getElementById('bigcalendar'+randi).setAttribute('style','width:'+responsive_width+'%;');
+	jQuery('pop_table').css('height','100%');
 }
         var thickDims, tbWidth, tbHeight;
         jQuery(document).ready(function ($) {			
@@ -224,7 +211,8 @@ if(widget!=1)
     <?php global $wpdb;
     $calendarr = $wpdb->get_row($wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar WHERE id='%d'", $id));
     $year = ($calendarr->def_year ? $calendarr->def_year : date("Y"));
-    $month = ($calendarr->def_month ? $calendarr->def_month : date("m"));
+    $month = ($calendarr->def_month ? $calendarr->def_month : date("m"));	
+	
     $date = $year . '-' . $month;
     if ($default == 'day') {
       $date .= '-' . date('d');
@@ -297,6 +285,7 @@ html.thickbox_open{
 #TB_title{
 	background: #222;
 }
+
 .screen-reader-text,
 #views_select .arrow-down,
 #views_select .arrow-right{
@@ -354,6 +343,32 @@ html.thickbox_open{
   return $calendar;
 }
 
+function convert_time($calendar_format, $old_time){
+	if($calendar_format==0){	
+		if (strpos($old_time, 'AM') !== false || strpos($old_time, 'PM') !== false) {
+			$row_time_12  = explode('-',$old_time);
+			$row_time_24 = "";
+			for($i=0; $i<count($row_time_12); $i++){
+				$row_time_24 .= date("H:i", strtotime($row_time_12[$i])). "-";
+			}
+			if(substr($row_time_24, -1)=="-") $row_time = rtrim($row_time_24,'-'); 
+		}
+		else $row_time = $old_time; 
+	}
+	else{
+		if (strpos($old_time, 'AM') !== false || strpos($old_time, 'PM') !== false) $row_time = $old_time;
+		else{
+			$row_time_12 = "";
+			$row_time_24  = explode('-',$old_time);
+			for($i=0; $i<count($row_time_24); $i++){
+				$row_time_12 .= date("g:iA", strtotime($row_time_24[$i])). "-";
+			}
+			if(substr($row_time_12, -1)=="-") $row_time = rtrim($row_time_12,'-');
+		} 
+	}
+	return $row_time;
+}
+
 // Quick edit.
 add_action('wp_ajax_spidercalendarinlineedit', 'spider_calendar_quick_edit');
 add_action('wp_ajax_spidercalendarinlineupdate', 'spider_calendar_quick_update');
@@ -378,13 +393,25 @@ function spider_calendar_quick_update() {
         '%s',
       ), array('%d'));
     $row = $wpdb->get_row($wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar WHERE id='%d'", (int) $_POST['calendar_id']));
-    ?>
+	
+	$calendar_format = esc_sql(esc_html(stripslashes($_POST['us_12_format_sp_calendar'])));
+	
+	$all_times = $wpdb->get_col("SELECT time FROM " . $wpdb->prefix . "spidercalendar_event",0);
+	$all_ids = $wpdb->get_col("SELECT id FROM " . $wpdb->prefix . "spidercalendar_event",0);
+	for($i = 0; $i < count($all_times); $i++){
+		if($all_times[$i]!=null){
+			$wpdb->update($wpdb->prefix . 'spidercalendar_event', array(
+			  'time' => convert_time($calendar_format, $all_times[$i])
+			), array('id' => $all_ids[$i]), array(
+			  '%s'
+			)); 
+		}
+	}  
+	?>
   <td><?php echo $row->id; ?></td>
   <td class="post-title page-title column-title">
     <a title="Manage Events" class="row-title" href="admin.php?page=SpiderCalendar&task=show_manage_event&calendar_id=<?php echo $row->id; ?>"><?php echo $row->title; ?></a>
-    <div class="row-actions">
-      <span class="edit">
-        <a href="admin.php?page=SpiderCalendar&task=edit_calendar&id=<?php echo $row->id; ?>" title="Edit This Calendar">Edit</a> | </span>
+    <div class="row-actions"> 
       <span class="inline hide-if-no-js">
         <a href="#" class="editinline" onclick="show_calendar_inline(<?php echo $row->id; ?>)" title="Edit This Calendar Inline">Quick&nbsp;Edit</a> | </span>
       <span class="trash">
@@ -392,6 +419,7 @@ function spider_calendar_quick_update() {
     </div>
   </td>
   <td><a href="admin.php?page=SpiderCalendar&task=show_manage_event&calendar_id=<?php echo $row->id; ?>">Manage events</a></td>
+  <td><a href="admin.php?page=SpiderCalendar&task=edit_calendar&id=<?php echo $row->id; ?>" title="Edit This Calendar">Edit</a></td>
   <td><a <?php if (!$row->published)
     echo 'style="color:#C00"'; ?>
     href="admin.php?page=SpiderCalendar&task=published&id=<?php echo $row->id; ?>"><?php if ($row->published)
@@ -519,12 +547,13 @@ function sp_calendar_options_panel() {
 }
 
 function Spider_calendar_Licensing() {
+	global $wpdb;
   ?>
   <div style="width:95%">
     <p>This plugin is the non-commercial version of the Spider Event Calendar. Use of the calendar is free.<br />
     The only limitation is the use of the themes. If you want to use one of the 11 standard themes or create a new one that
     satisfies the needs of your web site, you are required to purchase a license.<br />
-    Purchasing a license will add 11 standard themes and give possibility to edit the themes of the Spider Event Calendar.
+    Purchasing a license will add 12 standard themes and give possibility to edit the themes of the Spider Event Calendar.
     </p>
     <br /><br />
     <a href="https://web-dorado.com/files/fromSpiderCalendarWP.php" class="button-primary" target="_blank">Purchase a License</a>
@@ -764,6 +793,13 @@ function Manage_Spider_Calendar() {
 	  if (! wp_verify_nonce($nonce_sp_cal, 'nonce_sp_cal') ) 
 	    die("Are you sure you want to do this?");
       remove_spider_event($calendar_id, $id);
+      show_spider_event($calendar_id);
+      break;
+	case 'copy_event':
+	  $nonce_sp_cal = $_REQUEST['_wpnonce'];
+	  if (! wp_verify_nonce($nonce_sp_cal, 'nonce_sp_cal') ) 
+	    die("Are you sure you want to do this?");
+      copy_spider_event($calendar_id, $id);
       show_spider_event($calendar_id);
       break;
     case 'published_event';
@@ -1041,6 +1077,215 @@ function Uninstall_sp_calendar() {
   }
 }
 
+function calendar_Featured_Plugins_styles() {
+  global $wd_spider_calendar_version;
+  wp_enqueue_style("Featured_Plugins", plugins_url("featured_plugins.css", __FILE__), array(), $wd_spider_calendar_version);
+}
+function calendar_Featured_Plugins() { ?>
+<div id="main_featured_plugins_page">
+	<table align="center" width="90%" style="margin-top: 0px;border-bottom: rgb(111, 111, 111) solid 1px;">
+		<tr>
+			<td colspan="2" style="height: 40px; padding: 30px 0px 0px 0px;">
+				<h3 style="margin: 0px;font-family:Segoe UI;padding-bottom: 15px;color: rgb(111, 111, 111); font-size:18pt;">Featured Plugins</h3>
+			</td>
+			<td  align="right" style="font-size:16px;"></td>
+		</tr>
+	</table>
+	<div class="featured_header">
+		<div>
+			<a href="https://web-dorado.com/wordpress-plugins.html?source=spidercalendar" target="_blank">
+				<h1>GET SPIDER CALENDAR +18 PLUGINS</h1>
+				<h1 class="get_plugins">FOR $100 ONLY <span>- SAVE 70%</span></h1>
+			</a>
+		</div>
+	<form method="post">
+		<ul id="featured-plugins-list">
+			<li class="photo-gallery ">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">Photo Gallery</strong>
+				</div>
+				<div class="description">
+					<p>Photo Gallery is a fully responsive WordPress Gallery plugin with advanced functionality. </p>
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-photo-gallery-plugin.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="form-maker">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">Form Maker</strong>
+				</div>
+				<div class="description">
+					<p>Form Maker is a modern and advanced tool for creating WordPress forms easily and fast.</p>
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-form.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="events-wd">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">Event Calendar WD</strong>
+				</div>
+				<div class="description">
+					<p>Organize and publish your events in an easy and elegant way using Event Calendar WD.</p>
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-event-calendar-wd.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="instagram-wd">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">Instagram Feed WD</strong>
+				</div>
+				<div class="description">
+					<p>Instagram Feed WD plugin allows to display image feeds from single or multiple Instagram accounts on a WordPress site.</p>
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-instagram-feed-wd.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="faq-wd">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">FAQ WD</strong>
+				</div>
+				<div class="description">
+					<p>The FAQ WD plugin will help to add categorizes and include questions in each category.</p>
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-faq-wd.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="slider_wd">
+				 <div class="product"></div>
+				 <div class="title">
+					 <strong class="heading">Slider WD</strong>
+				 </div>
+				<div class="description">
+					<p>Create responsive, highly configurable sliders with various effects for your WordPress site. </p>			
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-slider-plugin.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="catalog">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">Spider Catalog</strong>
+				</div>
+				<div class="description">
+					<p>Spider Catalog for WordPress is a convenient tool for organizing the products represented on your website into catalogs.</p>	
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-catalog.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="player">
+				<div class="product"></div>
+				<div class="title">
+						<strong class="heading">Video Player</strong>
+				</div>
+				<div class="description">
+					<p>Spider Video Player for WordPress is a Flash & HTML5 video player plugin that allows you to easily add videos to your website with the possibility</p>
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-player.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="contacts">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">Spider Contacts</strong>
+				</div>
+				<div class="description">
+					<p>Spider Contacts helps you to display information about the group of people more intelligible, effective and convenient.</p>	
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-contacts-plugin.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="facebook">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">Spider Facebook</strong>
+				</div>
+				<div class="description">
+					<p>Spider Facebook is a WordPress integration tool for Facebook.It includes all the available Facebook social plugins and widgets.</p>
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-facebook.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="faq">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">Spider FAQ</strong>
+				</div>
+				<div class="description">
+					<p>The Spider FAQ WordPress plugin is for creating an FAQ (Frequently Asked Questions) section for your website.</p>	
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-faq-plugin.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="zoom">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">Zoom</strong>
+				</div>
+				<div class="description">
+					<p>Zoom enables site users to resize the predefined areas of the web site.</p>	
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-zoom.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="flash-calendar">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">Flash Calendar</strong>
+				</div>
+				<div class="description">
+					<p>Spider Flash Calendar is a highly configurable Flash calendar plugin which allows you to have multiple organized events.</p>	
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-events-calendar.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="contact-maker">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">Contact Form Maker</strong>
+				</div>
+				<div class="description">
+					<p>WordPress Contact Form Maker is an advanced and easy-to-use tool for creating forms.</p>			 
+				 </div>
+				 <a target="_blank" href="https://web-dorado.com/products/wordpress-contact-form-maker-plugin.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="twitter-widget">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">Widget Twitter</strong>
+				</div>
+				<div class="description">
+					<p>The Widget Twitter plugin lets you to fully integrate your WordPress site with your Twitter account.</p>
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-twitter-integration-plugin.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="contact_form_bulder">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">Contact Form Builder</strong>
+				</div>
+				<div class="description">
+					<p>Contact Form Builder is the best tool for quickly arranging a contact form for your clients and visitors. </p>		 
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-contact-form-builder.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="folder_menu">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">Folder Menu</strong>
+				</div>
+				<div class="description">
+					<p>Folder Menu Vertical is a WordPress Flash menu module for your website, designed to meet your needs and preferences. </p>		 
+				</div>
+				<a target="_blank" href="https://web-dorado.com/products/wordpress-menu-vertical.html" class="download">Download plugin &#9658;</a>
+			</li>
+			<li class="random_post">
+				<div class="product"></div>
+				<div class="title">
+					<strong class="heading">Random post</strong>
+				</div>
+				<div class="description">
+					<p>Spider Random Post is a small but very smart solution for your WordPress web site. </p>		 
+			 </div>
+			 <a target="_blank" href="https://web-dorado.com/products/wordpress-random-post.html" class="download">Download plugin &#9658;</a>
+			</li>
+		</ul>
+	</form>
+	</div>
+</div>
+<?php }
+
 function calendar_Featured_themes_styles() {
   global $wd_spider_calendar_version;
   wp_enqueue_style("Featured_themes", plugins_url("featured_themes.css", __FILE__), array(), $wd_spider_calendar_version);
@@ -1056,6 +1301,13 @@ function calendar_Featured_themes() { ?>
 			<td align="right" style="font-size:16px;"></td>
 		</tr>
 	</table>
+	<div class="featured_header">
+		<div>
+		<a href="https://web-dorado.com/wordpress-themes.html?source=spidercalendar" target="_blank">
+			<h1>WORDPRESS THEMES</h1>
+			<h1 class="get_plugins">ALL FOR $40 ONLY <span>- SAVE 80%</span></h1>
+		</a>
+		</div>
 	<form method="post">
 		<ul id="featured-plugins-list">
 			<li class="portfolio">
@@ -1066,7 +1318,7 @@ function calendar_Featured_themes() { ?>
 				<div class="description">
 					<p>Portfolio Gallery helps to display images using various color schemes and layouts combined with elegant fonts and content parts.</p>
 				</div>
-				<a target="_blank" href="https://web-dorado.com/wordpress-themes/portfolio-gallery.html" class="download">Download plugin >></a>
+				<a target="_blank" href="https://web-dorado.com/wordpress-themes/portfolio-gallery.html" class="download">Download theme  &#9658;</a>
 			</li>
 			<li class="business_elite">
 				<div class="product"></div>
@@ -1076,7 +1328,7 @@ function calendar_Featured_themes() { ?>
 				<div class="description">
 					<p>Business Elite is a robust parallax theme for business websites. The theme uses smooth transitions and many functional sections.</p>
 				</div>
-				<a target="_blank" href="https://web-dorado.com/wordpress-themes/business-elite.html" class="download">Download plugin >></a>
+				<a target="_blank" href="https://web-dorado.com/wordpress-themes/business-elite.html" class="download">Download theme  &#9658;</a>
 			</li>
 			<li class="sauron">
 				<div class="product"></div>
@@ -1086,7 +1338,7 @@ function calendar_Featured_themes() { ?>
 				<div class="description">
 					 <p>Sauron is a multipurpose parallax theme, which uses multiple interactive sections designed for the client-engagement.</p>		
 				</div>
-				<a target="_blank" href="https://web-dorado.com/wordpress-themes/sauron.html" class="download">Download</a>
+				<a target="_blank" href="https://web-dorado.com/wordpress-themes/sauron.html" class="download">Download plugin &#9658;</a>
 			</li>
 			<li class="mottomag">
 				<div class="product"></div>
@@ -1096,7 +1348,7 @@ function calendar_Featured_themes() { ?>
 				<div class="description">
 					<p>MottoMag is a vibrant, responsive theme which is a perfect choice for the combination of textual content with videos and images.</p>	
 				</div>
-				<a target="_blank" href="https://web-dorado.com/wordpress-themes/mottomag.html" class="download">Download</a>
+				<a target="_blank" href="https://web-dorado.com/wordpress-themes/mottomag.html" class="download">Download plugin &#9658;</a>
 			</li>
 			<li class="business_world">
 				<div class="product"></div>
@@ -1106,7 +1358,7 @@ function calendar_Featured_themes() { ?>
 				<div class="description">
 					<p>Business World is an innovative WordPress theme great for Business websites.</p>		 
 				</div>
-				<a target="_blank" href="https://web-dorado.com/wordpress-themes/business-world.html" class="download">Download</a>
+				<a target="_blank" href="https://web-dorado.com/wordpress-themes/business-world.html" class="download">Download plugin &#9658;</a>
 			</li>
 			<li class="best_magazine">
 				<div class="product"></div>
@@ -1116,7 +1368,7 @@ function calendar_Featured_themes() { ?>
 				<div class="description">
 					<p>Best Magazine is an ultimate selection when you are dealing with multi-category news websites.</p>
 				</div>
-				<a target="_blank" href="https://web-dorado.com/wordpress-themes/best-magazine.html" class="download">Download</a>
+				<a target="_blank" href="https://web-dorado.com/wordpress-themes/best-magazine.html" class="download">Download plugin &#9658;</a>
 			</li>
 			<li class="wedding_style">
 				<div class="product"></div>
@@ -1126,7 +1378,7 @@ function calendar_Featured_themes() { ?>
 				<div class="description">
 					<p>Wedding style is a responsive theme designed for the organization and maintenance of wedding websites and blogs.</p>
 				</div>
-				<a target="_blank" href="https://web-dorado.com/wordpress-themes/wedding-style.html" class="download">Download</a>
+				<a target="_blank" href="https://web-dorado.com/wordpress-themes/wedding-style.html" class="download">Download plugin &#9658;</a>
 			</li>
 			<li class="magazine">
 				<div class="product"></div>
@@ -1136,7 +1388,7 @@ function calendar_Featured_themes() { ?>
 				<div class="description">
 					<p>Magazine theme is a perfect solution when creating news and informational websites. It comes with a wide range of layout options.</p>	
 				</div>
-				<a target="_blank" href="https://web-dorado.com/wordpress-themes/news-magazine.html" class="download">Download</a>
+				<a target="_blank" href="https://web-dorado.com/wordpress-themes/news-magazine.html" class="download">Download plugin &#9658;</a>
 			</li>
 			<li class="weddings">
 				<div class="product"></div>
@@ -1146,7 +1398,7 @@ function calendar_Featured_themes() { ?>
 				<div class="description">
 					<p>Weddings is an elegant, responsive WordPress theme designed for wedding websites. The theme includes multiple pages, homepage slider and gallery support.</p>
 				</div>
-				<a target="_blank" href="https://web-dorado.com/wordpress-themes/wedding.html" class="download">Download</a>
+				<a target="_blank" href="https://web-dorado.com/wordpress-themes/wedding.html" class="download">Download plugin &#9658;</a>
 			</li>
 			<li class="exclusive">
 				<div class="product"></div>
@@ -1156,7 +1408,7 @@ function calendar_Featured_themes() { ?>
 				<div class="description">
 					<p>Exclusive is a unique theme designed to best fit business style websites. It comes with a large list of customizable features.</p>
 				</div>
-				<a target="_blank" href="https://web-dorado.com/wordpress-themes/exclusive.html" class="download">Download</a>
+				<a target="_blank" href="https://web-dorado.com/wordpress-themes/exclusive.html" class="download">Download plugin &#9658;</a>
 			</li>
 			<li class="expert">
 				<div class="product"></div>
@@ -1166,212 +1418,12 @@ function calendar_Featured_themes() { ?>
 				<div class="description">
 					<p>WordPress Expert is a modern, user-friendly and stylish theme. It has a list of customizable layout, style, colors and fonts.</p>
 				</div>
-				<a target="_blank" href="https://web-dorado.com/wordpress-themes/business-responsive.html" class="download">Download</a>
+				<a target="_blank" href="https://web-dorado.com/wordpress-themes/business-responsive.html" class="download">Download plugin &#9658;</a>
 			</li>
 		</ul>
 	</form>
+	</div>
 </div >	
-<?php }
-
-function calendar_Featured_Plugins_styles() {
-  global $wd_spider_calendar_version;
-  wp_enqueue_style("Featured_Plugins", plugins_url("featured_plugins.css", __FILE__), array(), $wd_spider_calendar_version);
-}
-function calendar_Featured_Plugins() { ?>
-<div id="main_featured_plugins_page">
-	<table align="center" width="90%" style="margin-top: 0px;border-bottom: rgb(111, 111, 111) solid 1px;">
-		<tr>
-			<td colspan="2" style="height: 40px; padding: 30px 0px 0px 0px;">
-				<h3 style="margin: 0px;font-family:Segoe UI;padding-bottom: 15px;color: rgb(111, 111, 111); font-size:18pt;">Featured Plugins</h3>
-			</td>
-			<td  align="right" style="font-size:16px;"></td>
-		</tr>
-	</table>
-	<form method="post">
-		<ul id="featured-plugins-list">
-			<li class="photo-gallery ">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Photo Gallery</strong>
-				</div>
-				<div class="description">
-					<p>Photo Gallery is a fully responsive WordPress Gallery plugin with advanced functionality. </p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-photo-gallery-plugin.html" class="download">Download</a>
-			</li>
-			<li class="form-maker">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Form Maker</strong>
-				</div>
-				<div class="description">
-					<p>Form Maker is a modern and advanced tool for creating WordPress forms easily and fast.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-form.html" class="download">Download</a>
-			</li>
-			<li class="events-wd">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Event Calendar WD</strong>
-				</div>
-				<div class="description">
-					<p>Organize and publish your events in an easy and elegant way using Event Calendar WD.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-event-calendar-wd.html" class="download">Download</a>
-			</li>
-			<li class="instagram-wd">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Instagram Feed WD</strong>
-				</div>
-				<div class="description">
-					<p>Instagram Feed WD plugin allows to display image feeds from single or multiple Instagram accounts on a WordPress site.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-instagram-feed-wd.html" class="download">Download</a>
-			</li>
-			<li class="faq-wd">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">FAQ WD</strong>
-				</div>
-				<div class="description">
-					<p>The FAQ WD plugin will help to add categorizes and include questions in each category.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-faq-wd.html" class="download">Download</a>
-			</li>
-			<li class="slider_wd">
-				 <div class="product"></div>
-				 <div class="title">
-					 <strong class="heading">Slider WD</strong>
-				 </div>
-				<div class="description">
-					<p>Create responsive, highly configurable sliders with various effects for your WordPress site. </p>			
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-slider-plugin.html" class="download">Download</a>
-			</li>
-			<li class="catalog">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Spider Catalog</strong>
-				</div>
-				<div class="description">
-					<p>Spider Catalog for WordPress is a convenient tool for organizing the products represented on your website into catalogs.</p>	
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-catalog.html" class="download">Download</a>
-			</li>
-			<li class="player">
-				<div class="product"></div>
-				<div class="title">
-						<strong class="heading">Video Player</strong>
-				</div>
-				<div class="description">
-					<p>Spider Video Player for WordPress is a Flash & HTML5 video player plugin that allows you to easily add videos to your website with the possibility</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-player.html" class="download">Download</a>
-			</li>
-			<li class="contacts">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Spider Contacts</strong>
-				</div>
-				<div class="description">
-					<p>Spider Contacts helps you to display information about the group of people more intelligible, effective and convenient.</p>	
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-contacts-plugin.html" class="download">Download</a>
-			</li>
-			<li class="facebook">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Spider Facebook</strong>
-				</div>
-				<div class="description">
-					<p>Spider Facebook is a WordPress integration tool for Facebook.It includes all the available Facebook social plugins and widgets.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-facebook.html" class="download">Download</a>
-			</li>
-			<li class="faq">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Spider FAQ</strong>
-				</div>
-				<div class="description">
-					<p>The Spider FAQ WordPress plugin is for creating an FAQ (Frequently Asked Questions) section for your website.</p>	
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-faq-plugin.html" class="download">Download</a>
-			</li>
-			<li class="zoom">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Zoom</strong>
-				</div>
-				<div class="description">
-					<p>Zoom enables site users to resize the predefined areas of the web site.</p>	
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-zoom.html" class="download">Download</a>
-			</li>
-			<li class="flash-calendar">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Flash Calendar</strong>
-				</div>
-				<div class="description">
-					<p>Spider Flash Calendar is a highly configurable Flash calendar plugin which allows you to have multiple organized events.</p>	
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-events-calendar.html" class="download">Download</a>
-			</li>
-			<li class="contact-maker">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Contact Form Maker</strong>
-				</div>
-				<div class="description">
-					<p>WordPress Contact Form Maker is an advanced and easy-to-use tool for creating forms.</p>			 
-				 </div>
-				 <a target="_blank" href="https://web-dorado.com/products/wordpress-contact-form-maker-plugin.html" class="download">Download</a>
-			</li>
-			<li class="twitter-widget">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Widget Twitter</strong>
-				</div>
-				<div class="description">
-					<p>The Widget Twitter plugin lets you to fully integrate your WordPress site with your Twitter account.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-twitter-integration-plugin.html" class="download">Download</a>
-			</li>
-			<li class="contact_form_bulder">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Contact Form Builder</strong>
-				</div>
-				<div class="description">
-					<p>Contact Form Builder is the best tool for quickly arranging a contact form for your clients and visitors. </p>		 
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-contact-form-builder.html" class="download">Download</a>
-			</li>
-			<li class="folder_menu">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Folder Menu</strong>
-				</div>
-				<div class="description">
-					<p>Folder Menu Vertical is a WordPress Flash menu module for your website, designed to meet your needs and preferences. </p>		 
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-menu-vertical.html" class="download">Download</a>
-			</li>
-			<li class="random_post">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Random post</strong>
-				</div>
-				<div class="description">
-					<p>Spider Random Post is a small but very smart solution for your WordPress web site. </p>		 
-			 </div>
-			 <a target="_blank" href="https://web-dorado.com/products/wordpress-random-post.html" class="download">Download</a>
-			</li>
-		</ul>
-	</form>
-</div>
 <?php }
 
 add_action('init', 'spider_calendar_export');

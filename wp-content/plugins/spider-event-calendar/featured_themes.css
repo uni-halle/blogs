@@ -1,20 +1,24 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+
 #main_featured_themes_page #featured-plugins-list {
 	position:relative;
 	margin:0px auto;
-	width: 95.4%;
 	height:auto;
 	display:table;
 	list-style:none;
-	margin-left: 38px;
+	text-align: center;
+	width: 100%;
 }
 
 #main_featured_themes_page #featured-plugins-list li {
-	float: left;
-	width: 17%;
-	margin: 20px 0px 0px 25px;
+	display: inline-table;
+	width: 245px;
+	margin: 20px 10px 0px 10px;
 	background: #FFFFFF;
-	border: 1px solid #B8B8B8;
-	height: 405px;
+    border-right: 3px solid #E5E5E5;
+    height: 405px;
+    border-bottom: 3px solid #E5E5E5;
+    position: relative;
 }
 
 #main_featured_themes_page #featured-plugins-list li  .product {
@@ -27,8 +31,11 @@
 #main_featured_themes_page #featured-plugins-list li  .title {
 	width: 91%;
 	text-align: center;
-	border-bottom: 1px solid #cacaca;
 	margin: 0 auto;
+}
+
+#main_featured_themes_page {
+    font-family: Oswald;
 }
 
 #main_featured_themes_page #featured-plugins-list  li.sauron .product {background:url(images/sauron.png) left center no-repeat;}
@@ -44,11 +51,12 @@
 #main_featured_themes_page #featured-plugins-list  li.expert .product {background:url(images/expert.png) left center no-repeat;   background-size: 80%;}
 
 #main_featured_themes_page #featured-plugins-list li  .title  .heading {
-	display:block;
-	position:relative;
-	font-size: 16px;
-	color: #23282C;
-	margin: 13px 0px 13px 0px;
+	display: block;
+    position: relative;
+    font-size: 17px;
+    color: #767676;
+    margin: 13px 0px 13px 0px;
+    text-transform: uppercase;
 }
 
 #main_featured_themes_page #featured-plugins-list li  .title  p {
@@ -65,16 +73,91 @@
 
 #main_featured_themes_page #featured-plugins-list li  .description  p {
 	text-align: center;
-	width: 100%;
+    width: 100%;
+    color: #9A9A9A;
+    font-family: "Open Sans",sans-serif;
 }
 
 #featured-plugins-list li a.download {
-	display:block;
-	height:32px;
-	text-indent:-9999px;
-	background: url(images/download_themes.png) center 17px no-repeat;
-	border-top: 1px solid #CACACA;
-	outline: none;
-	width: 90%;
-	margin: 0 auto;
+	display: block;
+    border-top: 1px solid #CACACA;
+    outline: none;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 40px;
+    text-decoration: none;
+    font-weight: bolder;
+    text-align: center;
+    color: #134D68;
+    position: absolute;
+    text-transform: uppercase;
+    bottom: 0;
+    left: 10px;
+	font-family: "Open Sans",sans-serif;
+	text-shadow: 1px 0;
+}
+	
+#featured-plugins-list li a.download:hover {
+	color: #F47629;
+}
+
+.featured_header > div{
+	background: #FFFFFF;
+    border-right: 3px solid #E5E5E5;
+    border-bottom: 3px solid #E5E5E5;
+	padding: 20px 0;
+}
+.featured_header {
+    position: relative;
+    width: 90%;
+    margin: 15px auto 0px auto;
+}
+
+.featured_header .old_price{
+	color: rgba(180, 180, 180, 0.3);
+    text-decoration: line-through;
+    font-family: Oswald;
+}
+
+.featured_header h1.get_plugins{
+	color: #FFFFFF;
+	background:url(images/featured_plugins_bg.png) no-repeat;
+	height: 85px;
+    margin: 0;
+    background-size: 95% 100%;
+    background-position: center;
+    line-height: 60px;
+}
+	
+.featured_header h1{
+	font-size: 45px;
+    text-align: center;
+	color: #F47629;
+	letter-spacing: 3px;
+	line-height: 10px;
+}
+
+.featured_header a{
+	text-decoration: none;
+}
+
+@media screen and (max-width: 1035px) {
+    .featured_header h1{
+		font-size: 37px;
+		line-height: 0;
+	}
+}
+
+@media screen and (max-width: 835px) {
+	.get_plugins span{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 435px) {	
+	.featured_header h1 {
+		font-size: 20px;
+		line-height: 17px;
+	}
 }

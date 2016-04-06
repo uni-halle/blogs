@@ -9,7 +9,7 @@ function big_calendar_day_widget() {
   $date = ((isset($_GET['date']) && IsDate_inputed(esc_html($_GET['date']))) ? esc_html($_GET['date']) : '');
   $view_select = (isset($_GET['select']) ? esc_html($_GET['select']) : 'month,');
   $path_sp_cal = (isset($_GET['cur_page_url']) ? esc_html($_GET['cur_page_url']) : '');
-  $site_url = get_option( "home", get_site_url()).'/wp-admin/admin-ajax.php';
+  $site_url = get_admin_url().'admin-ajax.php';
   ///////////////////////////////////////////////////////////////////////////////////
   
  if(isset($_GET['cat_id']))
@@ -108,7 +108,7 @@ $cat_ids = substr($cat_ids, 0,-1);
   $year_font_size = $theme->year_font_size;
   $year_font_color = '#' . str_replace('#','',$theme->year_font_color);
   $year_tabs_bg_color = '#' . str_replace('#','',$theme->year_tabs_bg_color);
-  $show_cat = 1;
+  $show_cat = $theme->show_cat;
   $font_year = $theme->font_year;
   $font_month = $theme->font_month;
   $font_day = $theme->font_day;
@@ -187,6 +187,8 @@ $cat_ids = substr($cat_ids, 0,-1);
     $display = "display:none";
   }
   ?>
+<html>
+  <head>
   <style type='text/css'>
     #calendar_<?php echo $many_sp_calendar; ?> table {
       border-collapse: initial;
@@ -218,7 +220,7 @@ $cat_ids = substr($cat_ids, 0,-1);
     #calendar_<?php echo $many_sp_calendar; ?> .cala_arrow a:link,
     #calendar_<?php echo $many_sp_calendar; ?> .cala_arrow a:visited {
       color: <?php echo $color_arrow; ?>;
-      text-decoration: none;
+      text-decoration: none !important;
       background: none !important;
       font-size: 16px;
     }
@@ -344,6 +346,8 @@ position: relative;
 	display:none;
 }
   </style>
+ </head>
+ <body>
   <div id="calendar_<?php echo $many_sp_calendar; ?>" style="width:<?php echo $calendar_width; ?>px;">
     <table cellpadding="0" cellspacing="0" style="border-spacing:0; width:<?php echo $calendar_width; ?>px; margin:0; padding:0;background-color:<?php echo $calendar_bg; ?> !important">
       <tr style="background-color:#FFFFFF;">
@@ -727,7 +731,10 @@ if (!empty($categories)) {
 
 <?php echo '</ul>';
 }
-}
+} ?>
+  </body>
+</html>
+<?php
   die();
 }
 

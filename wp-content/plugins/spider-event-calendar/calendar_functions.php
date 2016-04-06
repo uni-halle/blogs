@@ -10,6 +10,21 @@ function add_spider_calendar() {
   html_add_spider_calendar();
 }
 
+function copy_spider_event($calendar_id, $id) {
+    global $wpdb;
+	$query = 'INSERT INTO `'.$wpdb->prefix . 'spidercalendar_event`(`calendar`, `date`, `date_end`, `title`, `category`, `time`, `text_for_date`, `userID`, `repeat_method`, `repeat`, `week`, `month`, `month_type`, `monthly_list`, `month_week`, `year_month`, `published`) SELECT `calendar`, `date`, `date_end`, `title`, `category`, `time`, `text_for_date`, `userID`, `repeat_method`, `repeat`, `week`, `month`, `month_type`, `monthly_list`, `month_week`, `year_month`, `published` FROM `'.$wpdb->prefix . 'spidercalendar_event` WHERE `id` = "'.$id.'"';
+	if (!$wpdb->query($query)) {
+    ?>
+    <div id="message" class="error"><p>Event copy was not created.</p></div>
+    <?php
+  }
+  else {
+    ?>
+    <div class="updated"><p><strong>Event successfully copied.</strong></p></div>
+    <?php
+  }
+}
+
 function spider_upcoming(){
 if(isset($_GET['upcalendar_id']))
  $calendar_id=(int)$_GET['upcalendar_id'];
@@ -372,7 +387,6 @@ if(isset($_POST['title'])){
       '%s',
       '%d'
     ));
-  
   }
   if ($save_or_no === FALSE) {
     ?>

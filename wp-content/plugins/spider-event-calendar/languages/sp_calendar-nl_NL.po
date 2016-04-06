@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: spider_calendar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-13 17:44+0400\n"
-"PO-Revision-Date: 2016-01-19 12:20+0400\n"
+"PO-Revision-Date: 2016-03-24 14:43+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -198,7 +198,7 @@ msgstr "November"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:89
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:55
 msgid "December"
-msgstr "Desember"
+msgstr "December"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:379
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:241

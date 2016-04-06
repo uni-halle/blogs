@@ -2045,7 +2045,7 @@ $ev++;
 		margin-left: -101px;
 	 }
 
-	 .wp-picker-container{
+	 .color_for_this .wp-picker-container{
 		position: absolute;
 		left: 5px;
 		top: 0px;

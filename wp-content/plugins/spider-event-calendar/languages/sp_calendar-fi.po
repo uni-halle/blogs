@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: spider_calendar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-13 18:25+0400\n"
-"PO-Revision-Date: 2016-01-18 15:27+0400\n"
+"PO-Revision-Date: 2016-03-17 11:39+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -62,7 +62,7 @@ msgstr "päälle"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:492
 msgid "There Is No Text For This Event"
-msgstr "Mikään teksti tähän tapahtumaan"
+msgstr "Tähän tapahtumaan ei liity tekstiä"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:509
 msgid "Back to event list"
@@ -99,7 +99,7 @@ msgstr "Helmikuu"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:80
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:46
 msgid "March"
-msgstr "Marssia!"
+msgstr "Maaliskuu"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:81
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:46
@@ -121,7 +121,7 @@ msgstr "Huhtikuu"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:82
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:48
 msgid "May"
-msgstr "saattaa"
+msgstr "Toukokuu"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:83
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:48
@@ -240,12 +240,12 @@ msgstr "Kuukausi"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:638
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:458
 msgid "There are no events on this date"
-msgstr "There Is No Tapahtuma tässä päivässä"
+msgstr " Tälle päivälle ei ole tapahtumia"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:536
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:339
 msgid "There are no events for this month"
-msgstr "Ei ole Tapahtuman Tässä kuussa"
+msgstr "Tässä kuussa ei ole tapahtumia"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:398
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:421

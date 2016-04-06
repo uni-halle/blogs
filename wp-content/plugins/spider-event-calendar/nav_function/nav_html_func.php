@@ -83,9 +83,9 @@ function print_html_nav($count_items,$page_number,$serch_fields=""){
 	</span>
 	</div>
   </div >
-    <input type="hidden" id="page_number" name="page_number" value="<?php if (isset($_POST['page_number'])){  echo (int) $_POST['page_number'];} else { echo '1';} ?>"  />
-    
-    <input type="hidden" id="serch_or_not" name="serch_or_not" value="<?php if(isset($_POST["serch_or_not"])){ echo $_POST["serch_or_not"];}  ?>"    />
+  <input type="hidden" id="page_number" name="page_number" value="<?php if (isset($_POST['page_number'])){  echo (int)$_POST['page_number'];} else { echo '1';} ?>"  />
+  
+  <input type="hidden" id="serch_or_not" name="serch_or_not" value="<?php if(isset($_POST["serch_or_not"])){ echo esc_js($_POST["serch_or_not"]);}  ?>"    />
 <?php
 	
 }

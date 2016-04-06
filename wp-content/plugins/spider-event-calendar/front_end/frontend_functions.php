@@ -102,9 +102,8 @@ $cat_ids = substr($cat_ids, 0,-1);
 	 else{
 		$order_by = " ORDER BY STR_TO_DATE( SUBSTRING( time, 1, 7 ) ,  '%h:%i%p' )";
 	 }
-    
-  if($cat_ids!='' and preg_match("/^[0-9\,]+$/", $cat_ids)) {
-  
+	
+  if($cat_ids!='' and preg_match("/^[0-9\,]+$/", $cat_ids)) {  
 			$query = $wpdb->prepare ("SELECT " . $wpdb->prefix . "spidercalendar_event.*," . $wpdb->prefix . "spidercalendar_event_category.color  from " . $wpdb->prefix . "spidercalendar_event JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category = " . $wpdb->prefix . "spidercalendar_event_category.id where " . $wpdb->prefix . "spidercalendar_event_category.published=1 and " . $wpdb->prefix . "spidercalendar_event.category IN (".$cat_ids.") and " . $wpdb->prefix . "spidercalendar_event.published=1 and ( ( (date<=%s or date like %s) and  (date_end>=%s ) or date_end='0000-00-00'  ) or ( date_end is Null and date like %s ) ) and calendar=%d", substr( $date,0,7).'-01',substr( $date,0,7)."%",substr( $date,0,7).'-01',substr( $date,0,7)."%",$calendar);
 			}
    else{
@@ -138,6 +137,7 @@ $cat_ids = substr($cat_ids, 0,-1);
     $date_days = array();
     $weekdays_start = array();
     $weekdays = array();
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////                NO Repeat                /////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -145,8 +145,7 @@ $cat_ids = substr($cat_ids, 0,-1);
       $date_days[] = $date_day;
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////               Repeat   Daily            /////////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////               Repeat   Daily            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if ($rows[$i - 1]->repeat_method == 'daily') {
       $t = php_daysDifference($rows[$i - 1]->date, $rows[$i - 1]->date_end);
       for ($k = 1; $k <= $t / $repeat; $k++) {
@@ -295,6 +294,10 @@ $cat_ids = substr($cat_ids, 0,-1);
     }
     $used = array();
     foreach ($date_days as $date_day) {
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////              Convert am/pm     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/* */
+
       if ($date_month == $month) {
         if (in_array($date_day, $used)) {
           continue;
@@ -309,6 +312,8 @@ $cat_ids = substr($cat_ids, 0,-1);
             $array_days1[$key] = $date_day;
           $c = $title_num[$date_day];
           $list = '<p>' . (($show_numbers_for_events) ? '' . (($show_numbers_for_events) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '') : '');
+		  
+		  
           if ($rows[$i - 1]->time and $show_time != 0) {
             $list .= '&nbsp;' . $rows[$i - 1]->title . '<br>(' . $rows[$i - 1]->time . ')</p>';
           }
@@ -319,12 +324,14 @@ $cat_ids = substr($cat_ids, 0,-1);
           $ev_ids[$date_day] = $ev_ids[$date_day] . $rows[$i - 1]->id . '<br>';
         }
         else {
+		
           $array_days[] = $date_day;
           $key = array_search($date_day, $array_days);
           if ($rows[$i - 1]->text_for_date != "")
             $array_days1[$key] = $date_day;
           $title_num[$date_day] = 1;
           $c = 1;
+		  
           $list = '<p>' . (($show_numbers_for_events) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
           if ($rows[$i - 1]->time and $show_time != 0) {
             $list .= '&nbsp;' . $rows[$i - 1]->title . '<br>(' . $rows[$i - 1]->time . ')</p>';
@@ -634,6 +641,8 @@ $cat_ids = substr($cat_ids, 0,-1);
       $date_days = array();
       $weekdays_start = array();
       $weekdays = array();
+	  
+	  
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       ////////////////////////                NO Repeat                /////////////////////////////////////////////////////////////////////////////////////////////
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1123,6 +1132,13 @@ function php_Month_num_seemore($month_name) {
       return $month_num;
     }
   }
+}
+
+function hex_to_rgb($color, $opacity)
+{
+	$color=str_replace('#','',$color);
+	$bg_color='rgba('.HEXDEC(SUBSTR($color, 0, 2)).','.HEXDEC(SUBSTR($color, 2, 2)).','.HEXDEC(SUBSTR($color, 4, 2)).','.$opacity.')';
+	return $bg_color;
 }
 
 ?>

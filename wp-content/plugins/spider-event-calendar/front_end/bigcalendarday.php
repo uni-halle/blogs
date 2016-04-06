@@ -5,11 +5,11 @@ function big_calendar_day() {
   $widget = ((isset($_GET['widget']) && (int) $_GET['widget']) ? (int) $_GET['widget'] : 0);
   $many_sp_calendar = ((isset($_GET['many_sp_calendar']) && is_numeric(esc_html($_GET['many_sp_calendar']))) ? esc_html($_GET['many_sp_calendar']) : 1);
   $calendar_id = (isset($_GET['calendar']) ? (int) $_GET['calendar'] : '');
-  $theme_id = (isset($_GET['theme_id']) ? (int) $_GET['theme_id'] : 1);
+  $theme_id = (isset($_GET['theme_id']) ? (int) $_GET['theme_id'] : 30);
   $date = ((isset($_GET['date']) && IsDate_inputed(esc_html($_GET['date']))) ? esc_html($_GET['date']) : '');
   $view_select = (isset($_GET['select']) ? esc_html($_GET['select']) : 'month,');
   $path_sp_cal = (isset($_GET['cur_page_url']) ? esc_html($_GET['cur_page_url']) : '');
-  $site_url = get_option( "home", get_site_url()).'/wp-admin/admin-ajax.php';
+  $site_url = get_admin_url().'admin-ajax.php';
   ///////////////////////////////////////////////////////////////////////////////////
   
    
@@ -97,7 +97,7 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
   $text_color_other_months = '#' . str_replace('#','',$theme->text_color_other_months);
   $text_color_this_month_unevented = '#' . str_replace('#','',$theme->text_color_this_month_unevented);
   $evented_color = '#' . str_replace('#','',$theme->text_color_this_month_evented);
-  $evented_color_bg = '#' . str_replace('#','',$theme->bg_color_this_month_evented);
+  $evented_color_bg = (isset($theme->bg_color_this_month_evented) ?'#' . str_replace('#','',$theme->bg_color_this_month_evented) : '');
   $color_arrow_year = '#' . str_replace('#','',$theme->arrow_color_year);
   $color_arrow_month = '#' . str_replace('#','',$theme->arrow_color_month);
   $sun_days = '#' . str_replace('#','',$theme->text_color_sun_days);
@@ -124,7 +124,7 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
   $year_font_size = $theme->year_font_size;
   $month_font_size = $theme->month_font_size;
   $arrow_size = $theme->arrow_size;
-  $arrow_size_hover = $arrow_size + 5;
+  $arrow_size_hover = $arrow_size;
   $next_month_text_color = '#' . str_replace('#','',$theme->next_month_text_color);
   $prev_month_text_color = '#' . str_replace('#','',$theme->prev_month_text_color);
   $next_month_arrow_color = '#' . str_replace('#','',$theme->next_month_arrow_color);
@@ -149,8 +149,8 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
   $views_tabs_bg_color = '#' . str_replace('#','',$theme->views_tabs_bg_color);
   $views_tabs_text_color = '#' . str_replace('#','',$theme->views_tabs_text_color);
   $views_tabs_font_size = $theme->views_tabs_font_size;
-  $show_cat = '1';
-  $header_format = 'w/m/d/y';
+  $show_cat = $theme->show_cat;
+  $header_format = (isset($theme->header_format) ? $theme->header_format : 'w/d/m/y');
 
   $date_bg_color = '#' . str_replace('#','',$theme->date_bg_color);
   $event_bg_color1 = '#' . str_replace('#','',$theme->event_bg_color1);
@@ -226,39 +226,32 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
   }
   
   $activedate = explode('/', $header_format);
-  
-  for ($i = 0; $i < count($activedate); $i++) {
-    if ($activedate[$i] == 'w') {
-      $activedate[$i] = 'l';
-    }
-    if ($activedate[$i] == 'm') {
+  for ($i = 0; $i < 4; $i++) {
+    if (isset($activedate[$i]) && $activedate[$i] == 'w') unset($activedate[$i]);
+    if (isset($activedate[$i]) && $activedate[$i] == 'm') {
       $activedate[$i] = 'F';
     }
-    if ($activedate[$i] == 'y') {
+    if (isset($activedate[$i]) && $activedate[$i] == 'y') {
       $activedate[$i] = 'Y';
     }
   }
   $activedatestr = "";
-  for ($i = 0; $i < count($activedate); $i++) {
-    $activedatestr .= $activedate[$i];
-  }
-   
-  
-  $dateformat_arrays = array("dFY", "dYF", "FYd", "FdY", "YdF", "YFd" );
-  $dates_formats = array($day . ' ' . __($month,'sp_calendar') . ' ' . $year, 
-						 $day  . ' ' . $year . ' ' . __($month,'sp_calendar'), 
-						 __($month,'sp_calendar') . ' ' . $year .' '.$day,
-						 __($month,'sp_calendar').' '.$day  . ', ' . $year,
-						 $year .' '. $day . ' ' . __($month,'sp_calendar'),
-						 $year.' '.__($month,'sp_calendar') .' '. $day
-						 );
-  for ($i = 0; $i < count($dateformat_arrays); $i++) {
-	  if (strpos($activedatestr,$dateformat_arrays[$i]) !== false){
-		 $day_month_year =  $dates_formats[$i];
-	  }
-  }
+  $header_date_format = implode(' ', $activedate);
+  $name_year = date($header_date_format, strtotime($date)); 
+  $exp_name_year = explode(' ', $name_year);
+  $exp_name_year = explode(' ', $name_year); 
+  for($j = 0; $j < count($exp_name_year); $j++){
+	  $activedatestr .= __($exp_name_year[$j], 'sp_calendar') . ' ';
+  } 
   ?>
+<html>
+  <head>
   <style type='text/css'>
+	#afterbig<?php echo $many_sp_calendar; ?> table,
+	#bigcalendar<?php echo $many_sp_calendar; ?> table{
+		font-family: Segoe UI;
+		border: 0;
+	}
 	
 	.day_ev{
 		border-top-left-radius: <?php echo $border_radius2 ?>px !important;
@@ -325,6 +318,7 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
 	
     #bigcalendar<?php echo $many_sp_calendar ?> .cala_arrow a:link, #bigcalendar .cala_arrow a:visited {
       text-decoration: none !important;
+	  box-shadow: none !important;
       background: none !important;
       font-size: <?php echo $arrow_size ?>px !important;
     }
@@ -444,7 +438,7 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
     }
     #bigcalendar<?php echo $many_sp_calendar; ?> .cala_arrow a:link,
     #bigcalendar<?php echo $many_sp_calendar; ?> .cala_arrow a:visited {
-      text-decoration:none;
+      text-decoration:none !important;
       background:none;
       font-size: <?php echo $arrow_size; ?>px;
     }
@@ -530,8 +524,9 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
 		position: relative;
 	}
 
- #bigcalendar<?php echo $many_sp_calendar; ?> .views span{
-		padding: 7px;
+	#afterbig<?php echo $many_sp_calendar; ?> .views span,
+	#bigcalendar<?php echo $many_sp_calendar; ?> .views span{
+		line-height: 30px;
 	}
 
 #drop_down_views
@@ -562,6 +557,8 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
 }
 
   </style>
+ </head>
+ <body>
   <div  id="afterbig<?php echo $many_sp_calendar; ?>" style="<?php echo $display ?>">
   <div style="width:100%;">
     <table  cellpadding="0" cellspacing="0" style="width:100%;">
@@ -598,7 +595,7 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
 				'rand' => $many_sp_calendar,
-                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" ><span style="color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px"><?php echo __('Week', 'sp_calendar'); ?></span>
+                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" ><span style="top: -3px; position: relative; color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px"><?php echo __('Week', 'sp_calendar'); ?></span>
             </div>
             <div class="views" style="<?php if (!in_array('list', $views) AND $defaultview != 'list') echo 'display:none;'; if ($view == 'bigcalendarlist') echo 'background-color:' . $bg_top . ' !important;top:0;'; ?>"
               onclick="showbigcalendar('bigcalendar<?php echo $many_sp_calendar; ?>', '<?php echo add_query_arg(array(
@@ -613,7 +610,7 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
 				'rand' => $many_sp_calendar,
-                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" ><span style="color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px"><?php echo __('List', 'sp_calendar'); ?></span>
+                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" ><span style="top: -3px; position: relative; color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px"><?php echo __('List', 'sp_calendar'); ?></span>
             </div>
             <div class="views" style="<?php if (!in_array('month', $views) AND $defaultview != 'month') echo 'display:none;'; if ($view == 'bigcalendarmonth') echo 'background-color:' . $bg_top . ' !important;top:0;'; ?>"
               onclick="showbigcalendar('bigcalendar<?php echo $many_sp_calendar; ?>', '<?php echo add_query_arg(array(
@@ -628,7 +625,7 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
 				'rand' => $many_sp_calendar,
-                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')"><span style="color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px"><?php echo __('Month', 'sp_calendar'); ?></span>
+                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')"><span style="top: -3px; position: relative; color:<?php echo $views_tabs_text_color ?>;font-size:<?php echo $views_tabs_font_size  ?>px"><?php echo __('Month', 'sp_calendar'); ?></span>
             </div>
           </div>
 		  <div id="views_tabs_select" style="display:none" >
@@ -721,7 +718,7 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
               <td width="100%" style="padding:0; margin:0;">
                 <table cellpadding="0" cellspacing="0" border="0" style="border-spacing:0; font-size:12px; margin:0; padding:0; width:100%;" >
                   <tr style="height:40px; width:100%;">
-                    <td class="top_table" align="center" colspan="7" style="z-index: 5;position: relative;background-image:url('<?php echo plugins_url('/images/Stver.png', __FILE__) ?>');padding:0; margin:0; background-color:<?php echo $bg_top; ?> !important;height:20px; background-repeat: no-repeat;background-size: 100% 100%;">
+                    <td class="top_table" align="center" colspan="7" style="position: relative;padding:0; margin:0; background-color:<?php echo $bg_top; ?> !important;height:20px; background-repeat: no-repeat;background-size: 100% 100%;">
                       <table cellpadding="0" cellspacing="0" border="0" align="center" class="calyear_table" style="margin:0; padding:0; text-align:center; width:99.8%; height:<?php echo $top_height; ?>px;">
                         <tr>
                           <td width="15%">
@@ -737,14 +734,14 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
 								'cat_id' => '',
 								'cat_ids' => $cat_ids,
                                 'widget' => $widget,
-                                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" style="text-align:center; cursor:pointer; width:100%; background-color:#000000; filter:alpha(opacity=30); opacity:0.3;">
+                                ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" style="text-align:center; cursor:pointer; width:100%; background-color: <?php echo hex_to_rgb($views_tabs_bg_color, 0.4) ?>;">
                               <span style="font-size:18px; color:#FFF"><?php echo $year - 1; ?></span>
                             </div>
                           </td>
                           <td style="width:100%;vertical-align:center">
                             <table style="width:100%;">
                               <tr>
-                                <td class="cala_arrow" width="15%"  style="text-align:right;margin:0px;padding:0px">
+                                <td class="cala_arrow" width="11%"  style="text-align:right;margin:0px;padding: 0px 30px 0px 0px !important;">
                                   <a style="text-shadow: 1px 1px 2px black;color:<?php echo $color_arrow_month ?>" href="javascript:showbigcalendar('bigcalendar<?php echo $many_sp_calendar; ?>','<?php  
 								  
                                   if ($day == '01' && Month_num(Month_name(Month_num($month) - 1)) != '12') {
@@ -773,12 +770,12 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
 									'cat_ids' => $cat_ids,
                                     'widget' => $widget,
                                     ), $site_url);
-                                  ?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')"><div class="arrow-left"></div>
+                                  ?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')">&#10096;
                                   </a>
                                 </td>
                                 <td style="text-align:center; margin:0;" width="40%">
                                   <input type="hidden" name="month" readonly="" value="<?php echo $month?>"/>
-                                  <span style="line-height: 30px;font-family:arial; color:<?php echo $text_color_month; ?>; font-size:<?php echo $month_font_size ?>px;text-shadow: 1px 1px  black;"><?php echo $day_month_year; ?></span>
+                                  <span style="line-height: 30px;font-family:arial; color:<?php echo $text_color_month; ?>; font-size:<?php echo $month_font_size ?>px;text-shadow: 1px 1px  black;"><?php echo $activedatestr; ?></span>
                                 </td>
 								<?php
 								if ($day == $month_day_count && Month_num(Month_name(Month_num($month) + 1)) != '1') {
@@ -799,7 +796,7 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
 								
 								?>
 								
-                                <td style="margin:0; padding:0;text-align:left" width="15%" class="cala_arrow">
+                                <td style="margin:0; padding: 0px 0px 0px 30px !important; text-align:left" width="11%" class="cala_arrow">
                                   <a style="text-shadow: 1px 1px 2px black;color:<?php echo $color_arrow_month ?>" href="javascript:showbigcalendar('bigcalendar<?php echo $many_sp_calendar ?>','<?php
                                   
                                   echo add_query_arg(array(
@@ -814,7 +811,7 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
 									'cat_ids' => $cat_ids,
                                     'widget' => $widget,
                                     ), $site_url);
-                                  ?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')"><div class="arrow-right"></div>
+                                  ?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')">&#10097;
                                   </a>
                                 </td>
                                 <td width="15%">
@@ -830,7 +827,7 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
 									  'cat_id' => '',
 									  'cat_ids' => $cat_ids,
                                       'widget' => $widget,
-                                      ), $site_url); ?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" style="text-align:center; cursor:pointer; width:100%; background-color:#000000; filter:alpha(opacity=30); opacity:0.3;">
+                                      ), $site_url); ?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')" style="text-align:center; cursor:pointer; width:100%; background-color: <?php echo hex_to_rgb($views_tabs_bg_color, 0.4) ?>;">
                                     <span style="font-size:18px; color:#FFF"><?php echo $year + 1; ?></span>
                                   </div>
                                 </td>
@@ -998,6 +995,7 @@ $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spide
 		padding: 2px 10px !important;
 		margin: 2px 0 !important;
 		font-size: 14px;
+		font-weight: 600;
 	}
   </style>
   <?php
@@ -1025,7 +1023,7 @@ echo'
 	if($cat_ids=='')
 		$cat_ids='';
 if($show_cat){ 
-echo '<ul id="cats" style="list-style-type:none;">';
+echo '<ul id="cats" style="list-style-type:none; padding: 0;">';
 						
 							
 foreach($categories as $category)
@@ -1065,7 +1063,10 @@ if (!empty($categories)) {
                 ), $site_url);?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>')"><?php echo __('All categories', 'sp_calendar'); ?></p></li>
 <?php echo '</ul>';
 }
-}
+} ?>
+  </body>
+</html>
+<?php
   die();
 }
 
