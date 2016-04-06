@@ -10,6 +10,16 @@ jQuery(document).ready(function ($) {
     		
    		    divContainer.append($('<div></div>', {'class': 'pdfemb-loadingmsg'}).append(document.createTextNode(pdfemb_trans.objectL10n.loading)));
 
+            // Disable right click?
+
+            if (divContainer.data('disablerightclick') == 'on') {
+                divContainer.bind("contextmenu", function(e) {
+                    e.preventDefault();
+                });
+            }
+
+            // Load PDF
+
             var initPdfDoc = function(pdfDoc_, showIsSecure) {
                 divContainer.empty().append(
                     $('<div></div>', {'class': 'pdfemb-inner-div'}).append(
@@ -31,42 +41,88 @@ jQuery(document).ready(function ($) {
                 // React to page jump event
 
                 divContainer.on('pdfembGotopage', function(e, pageNum) {
-                    if (pageNum > divContainer.data('pdfDoc').numPages) {
+                    if (pageNum > divContainer.data('pdfDoc').numPages || pageNum <= 0 || divContainer.data('pagenum') == pageNum) {
                         return;
                     }
 
                     divContainer.data('pagenum', pageNum);
                     $.fn.pdfEmbedder.queueRenderPage(divContainer, pageNum);
+                    pdfembPremiumJumpToTop(divContainer);
 
                 });
 
-                divContainer.on('pdfembGotoHash', function(e, dest) {
+                divContainer.on('pdfembGotoHash', function(e, destobj) {
+                    if (!destobj.dest) {
+                        return;
+                    }
+                    dest = destobj.dest;
 
-                        var destinationPromise;
-                        if (typeof dest === 'string') {
-                            destString = dest;
-                            destinationPromise = divContainer.data('pdfDoc').getDestination(dest);
-                        } else {
-                            destinationPromise = Promise.resolve(dest);
+                    var destinationPromise;
+                    if (typeof dest === 'string') {
+                        destString = dest;
+                        destinationPromise = divContainer.data('pdfDoc').getDestination(dest);
+                    } else {
+                        destinationPromise = Promise.resolve(dest);
+                    }
+                    destinationPromise.then(function(destination) {
+
+                        if (!(destination instanceof Array) || destination.length < 1) {
+                            return; // invalid destination
                         }
-                        destinationPromise.then(function(destination) {
 
-                            if (!(destination instanceof Array) || destination.length < 1) {
-                                return; // invalid destination
+                        divContainer.data('pdfDoc').getPageIndex(destination[0]).then(function (pageIndex) {
+                            var pageNum = pageIndex + 1;
+
+                            if (pageNum > divContainer.data('pdfDoc').numPages || pageNum <= 0 || divContainer.data('pagenum') == pageNum) {
+                                return;
                             }
 
-                            divContainer.data('pdfDoc').getPageIndex(destination[0]).then(function (pageIndex) {
-                                var pageNum = pageIndex + 1;
-
-                                if (pageNum > divContainer.data('pdfDoc').numPages || pageNum <= 0) {
-                                    return;
-                                }
-
-                                divContainer.data('pagenum', pageNum);
-                                $.fn.pdfEmbedder.queueRenderPage(divContainer, pageNum);
-                            });
-
+                            divContainer.data('pagenum', pageNum);
+                            $.fn.pdfEmbedder.queueRenderPage(divContainer, pageNum);
+                            pdfembPremiumJumpToTop(divContainer);
                         });
+
+                    });
+                });
+
+                divContainer.on('pdfembGotoAction', function(e, action) {
+                    var curPage = divContainer.data('pagenum');
+                    var newPage = curPage;
+                    switch (action) {
+                        case 'GoBack':
+                            --newPage;
+                            break;
+
+                        case 'GoForward':
+                            ++newPage;
+                            break;
+
+                        case 'NextPage':
+                            ++newPage;
+                            break;
+
+                        case 'PrevPage':
+                            --newPage;
+                            break;
+
+                        case 'LastPage':
+                            newPage = divContainer.data('pdfDoc').numPages;
+                            break;
+
+                        case 'FirstPage':
+                            newPage = 1;
+                            break;
+
+                        default:
+                            break; // No action according to spec
+                    }
+
+                    if (newPage == curPage || newPage > divContainer.data('pdfDoc').numPages || newPage <= 0) {
+                        return;
+                    }
+
+                    divContainer.data('pagenum', newPage);
+                    $.fn.pdfEmbedder.queueRenderPage(divContainer, newPage);
 
                 });
 
@@ -378,14 +434,17 @@ jQuery(document).ready(function ($) {
                 divContainer.data('pageRendering', false);
 
                 // Update page counters
-                var pageNumDisplay = divContainer.find('div.pdfemb-toolbar .pdfemb-page-num');
-                if (pageNumDisplay.is('span')) {
-                    // Normal span area
-                    pageNumDisplay.text(pageNum);
-                } else {
-                    // User-changeable text
-                    pageNumDisplay.val(pageNum);
-                }
+                divContainer.find('div.pdfemb-toolbar .pdfemb-page-num').each(function(i, pageNumDisplay) {
+                    var jpageNumDisplay = $(pageNumDisplay);
+                    if (jpageNumDisplay.is('span')) {
+                        // Normal span area
+                        jpageNumDisplay.text(pageNum);
+                    } else {
+                        // User-changeable text
+                        jpageNumDisplay.val(pageNum);
+                    }
+                });
+
 
                 if (pageNum < divContainer.data("pageCount")) {
                     divContainer.find('.pdfemb-next').removeAttr('disabled').removeClass('pdfemb-btndisabled');
@@ -406,7 +465,7 @@ jQuery(document).ready(function ($) {
                 var annotationLayer = $.fn.pdfEmbedder.annotationsLayerFactory.createAnnotationsLayerBuilder(divContainer.find('div.pdfemb-inner-div')[0], page);
                 if (annotationLayer != null) {
                     divContainer.find('div.pdfembAnnotationLayer').remove();
-                    annotationLayer.setupAnnotations(viewport);
+                    annotationLayer.setupAnnotations(viewport, divContainer.data('newwindow'));
                 }
 
                 // End annotations layer
@@ -500,6 +559,7 @@ jQuery(document).ready(function ($) {
     	      }
     	    divContainer.data('pagenum', divContainer.data('pagenum')-1);
     	    $.fn.pdfEmbedder.queueRenderPage(divContainer, divContainer.data('pagenum'));
+            pdfembPremiumJumpToTop(divContainer);
     	});
 
     	nextbtn.on('click', function (e){
@@ -508,6 +568,7 @@ jQuery(document).ready(function ($) {
     	      }
     	    divContainer.data('pagenum', divContainer.data('pagenum')+1);
     	    $.fn.pdfEmbedder.queueRenderPage(divContainer, divContainer.data('pagenum'));
+            pdfembPremiumJumpToTop(divContainer);
     	});
 
 		zoominbtn.on('click', function (e){

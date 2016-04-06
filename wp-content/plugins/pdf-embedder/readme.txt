@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: danlester
 Tags: doc, docx, pdf, office, powerpoint, google, document, embed, intranet
-Requires at least: 3.3
+Requires at least: 3.5
 Tested up to: 4.4
-Stable tag: 2.4.1
+Stable tag: 2.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -68,6 +68,15 @@ download or print the original PDF document.
 This means that your PDF is unlikely to be shared outside your site where you have no control over who views, prints, or shares it.
 
 See our website [wp-pdf.com](http://wp-pdf.com/secure/?utm_source=PDF%20Readme%20Secure&utm_medium=freemium&utm_campaign=Freemium) for more details and purchase options.
+
+= PDF Thumbnails =
+
+Our **PDF Thumbnails** plugin provides automatically generates fixed image versions of all PDF files in your Media Library, to use on your site as you wish.
+
+You can use them as featured images in posts containing an embedded version of the PDF, or as a visual clickable link to download the PDF directly.
+It also displays the thumbnail as the ‘icon’ for the PDF in the Media Library, making it easy for authors to locate the PDFs they need to insert in a post.
+
+See our website [wp-pdf.com/thumbnails/](http://wp-pdf.com/thumbnails/?utm_source=PDF%20Readme%20Thumbnails&utm_medium=freemium&utm_campaign=Freemium) for more details and purchase options.
 
 == Screenshots ==
 
@@ -152,6 +161,20 @@ the Plugins section of your Wordpress admin
 1. Follow the instructions from step 4 above
 
 == Changelog ==
+
+= 2.5 =
+
+Uses latest version of pdf.js library for rendering PDFs.
+Options page tidied up.
+
+= 2.4.7 =
+
+Some settings were difficult to change on multisite installs.
+
+= 2.4.3 =
+
+Code placeholders for opening links - available only in premium versions.
+Updated languages.
 
 = 2.4.1 =
 

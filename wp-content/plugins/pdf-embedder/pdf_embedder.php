@@ -4,7 +4,7 @@
  * Plugin Name: PDF Embedder
  * Plugin URI: http://wp-pdf.com/
  * Description: Embed PDFs straight into your posts and pages, with flexible width and height. No third-party services required. 
- * Version: 2.4.1
+ * Version: 2.5
  * Author: Dan Lester
  * Author URI: http://wp-pdf.com/
  * License: GPL3
@@ -15,7 +15,7 @@ require_once( plugin_dir_path(__FILE__).'/core/core_pdf_embedder.php' );
 
 class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
 
-	protected $PLUGIN_VERSION = '2.4.1';
+	protected $PLUGIN_VERSION = '2.5';
 	
 	protected function useminified() {
 		/* using-minified */ return true;
@@ -73,21 +73,35 @@ class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
 		<br class="clear" />
 		<br class="clear" />
 
+		<h2><?php _e('Options only available in Premium versions', 'pdf-embedder'); ?></h2>
+
 		<label for="pdfemb_download" class="textinput"><?php esc_html_e('Download Button', 'pdf-embedder'); ?></label>
 		<span>
-        <label for="pdfemb_download" class="checkbox plain"><?php esc_html_e('Check to provide PDF download button on toolbar - only available in premium versions', 'pdf-embedder'); ?></label>
+        <label for="pdfemb_download" class="checkbox plain"><?php esc_html_e('Provide PDF download button on toolbar', 'pdf-embedder'); ?></label>
         </span>
 
-		<br class="clear" />
 		<br class="clear" />
 
 		<label for="pdfemb_tracking" class="textinput"><?php esc_html_e('Track Views/Downloads', 'pdf-embedder'); ?></label>
 		<span>
-        <label for="pdfemb_tracking" class="checkbox plain"><?php esc_html_e('Check to count number of views and downloads - only available in premium versions', 'pdf-embedder'); ?></label>
+        <label for="pdfemb_tracking" class="checkbox plain"><?php esc_html_e('Count number of views and downloads', 'pdf-embedder'); ?></label>
         </span>
 
-        <br class="clear" />
+		<br class="clear" />
 
+		<label for="pdfemb_newwindow" class="textinput"><?php esc_html_e('External Links', 'pdf-embedder'); ?></label>
+		<span>
+        <label for="pdfemb_newwindow" class="checkbox plain"><?php esc_html_e('Open links in a new browser tab/window', 'pdf-embedder'); ?></label>
+        </span>
+
+		<br class="clear" />
+
+		<label for="pdfemb_scrolltotop" class="textinput"><?php esc_html_e('Scroll to Top', 'pdf-embedder'); ?></label>
+		<span>
+        <label for="pdfemb_scrolltotop" class="checkbox plain"><?php esc_html_e('Scroll to top of page when user clicks next/prev', 'pdf-embedder'); ?></label>
+        </span>
+
+		<br class="clear" />
         <p><?php printf(__('Find out more about <a href="%s" target="_blank">Premium Versions of the plugin on our website</a>.', 'pdf-embedder'),
                 'http://wp-pdf.com/premium/?utm_source=PDF%20Settings%20PremiumFindOut&utm_medium=freemium&utm_campaign=Freemium'); ?></p>
 
@@ -122,7 +136,7 @@ class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
         ?><div id="pdfemb-tableright" class="pdfemb-tablecell">
             <div>
                 <h3>Premium Versions</h3>
-                <p>Visit <a href="https://wp-pdf.com/?utm_source=Premium%20Sidebar&utm_medium=freemium&utm_campaign=Freemium" target="_blank">wp-pdf.com</a> for premium features:</p>
+                <p>Visit <a href="https://wp-pdf.com/?utm_source=Premium%20Sidebar&utm_medium=freemium&utm_campaign=Freemium" target="_blank">wp-pdf.com</a> for premium PDF Embedder features:</p>
                 <ul>
                     <li>Mobile Friendly</li>
                     <li>Download Button</li>
@@ -130,10 +144,23 @@ class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
                     <li>Jump to page number</li>
 					<li>Track views and downloads</li>
                     <li>Remove link to wp-pdf.com</li>
-                    <li>Secure - prevent downloads</li>
+                    <li><i>Secure</i> - prevent downloads</li>
                 </ul>
                 <p>More details and demos are <br/> on <a href="https://wp-pdf.com/?utm_source=Premium%20Sidebar&utm_medium=freemium&utm_campaign=Freemium" target="_blank">our website</a>!</p>
             </div>
+
+		    <div>
+			    <h3>Thumbnails</h3>
+			    <p>Buy our <a href="https://wp-pdf.com/thumbnails/?utm_source=Thumbnails%20Sidebar&utm_medium=freemium&utm_campaign=Freemium" target="_blank">PDF Thumbnails</a> plugin:</p>
+			    <ul>
+				    <li>Generates fixed image versions of PDFs</li>
+				    <li>Use thumbnails as featured images in your posts</li>
+				    <li>Embed thumbnails as link to full PDF</li>
+				    <li>Easier to find your PDFs in the Media Library</li>
+			    </ul>
+			    <p>PDF Thumbnails is the perfect companion to any of our PDF Embedder plugins, or can be used standalone!</p>
+			    <p>More details on <a href="https://wp-pdf.com/thumbnails/?utm_source=Thumbnails%20Sidebar&utm_medium=freemium&utm_campaign=Freemium" target="_blank">our website</a></p>
+		    </div>
         </div>
         <?php
     }

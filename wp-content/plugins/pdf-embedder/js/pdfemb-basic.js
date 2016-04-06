@@ -14,3 +14,6 @@ function pdfembMakeMobile($, wantMobile, innerdiv) {
 
 function pdfembAddMoreToolbar($, toolbar, divContainer) {
 }
+
+function pdfembPremiumJumpToTop(divContainer) {
+}

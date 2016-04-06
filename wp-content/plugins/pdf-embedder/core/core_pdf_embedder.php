@@ -92,10 +92,6 @@ class core_pdf_embedder {
 	protected function modify_pdfurl($url) {
 		return set_url_scheme($url);
 	}
-	
-	/* public function pdfemb_wp_get_attachment_link( $link, $id, $size, $permalink, $icon, $text ) {
-		return $link;
-	}*/
 
 	public function pdfemb_shortcode_display_pdf($atts, $content=null) {
 		if (!isset($atts['url'])) {
@@ -549,9 +545,6 @@ class core_pdf_embedder {
 		
 		add_action( 'wp_enqueue_scripts', array($this, 'pdfemb_wp_enqueue_scripts'), 5, 0 );
 		add_shortcode( 'pdf-embedder', Array($this, 'pdfemb_shortcode_display_pdf') );
-		
-		// When viewing attachment page, embded document instead of link
-		// add_filter( 'wp_get_attachment_link', array($this, 'pdfemb_wp_get_attachment_link'), 20, 6 );
 		
 		if (is_admin()) {
 			add_action( 'admin_init', array($this, 'pdfemb_admin_init'), 5, 0 );
