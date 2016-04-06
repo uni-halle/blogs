@@ -1,1 +1,1 @@
-more-privacy-options/ds_wp3_private_blog.php
+../plugins/more-privacy-options/ds_wp3_private_blog.php

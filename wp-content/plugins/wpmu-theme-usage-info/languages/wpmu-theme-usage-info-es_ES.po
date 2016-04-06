@@ -1,0 +1,189 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Theme Info en español\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-19 12:19+0100\n"
+"PO-Revision-Date: 2013-05-19 12:27+0100\n"
+"Last-Translator: Eduardo Larequi <elarequi@gmail.com>\n"
+"Language-Team: PNTE <blogs@educacion.navarra.es>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_c;esc_html__;esc_html_e;esc_attr__;esc_attr_e;_ex:1,2c\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: Spain\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: cets_theme_info.php:165
+msgid "Used on"
+msgstr "Utilizado en"
+
+#: cets_theme_info.php:167
+msgid "Sites that use this theme"
+msgstr "Sitios que utilizan este tema"
+
+#: cets_theme_info.php:169
+msgid "site"
+msgstr "sitio"
+
+#: cets_theme_info.php:179
+msgid "Activated on the following sites:"
+msgstr "Activado en los siguientes sitios:"
+
+#: cets_theme_info.php:198
+#: cets_theme_info.php:199
+msgid "Theme Usage Info"
+msgstr "Uso de los temas"
+
+#: cets_theme_info.php:212
+msgid "About"
+msgstr "Acerca de"
+
+#: cets_theme_info.php:226
+msgid "Development"
+msgstr "Desarrollo"
+
+#: cets_theme_info.php:235
+#, php-format
+msgid "Requires at least: %s"
+msgstr "Requiere al menos la versión %s"
+
+#: cets_theme_info.php:236
+#, php-format
+msgid "Tested up to: %s"
+msgstr "Probado hasta la versión %s"
+
+#: cets_theme_info.php:239
+msgid "Languages"
+msgstr "Idiomas"
+
+#: cets_theme_info.php:242
+#, php-format
+msgid "Help to translate at %s"
+msgstr "Ayuda a traducirlo en %s"
+
+#: cets_theme_info.php:245
+msgid "License"
+msgstr "Licencia"
+
+#: cets_theme_info.php:260
+#, php-format
+msgid "Theme Usage Information %s This plugin requires at least WordPress version 3.4 - Please upgrade to stay safe and secure."
+msgstr "Theme Usage Information %s Este plugin requiere al menos WordPress 3.4 o superior. Por favor, actualiza tu sitio para estar protegido y seguro."
+
+#: cets_theme_info.php:267
+msgid "Settings saved."
+msgstr "La configuración ha sido guardada."
+
+#: cets_theme_info.php:332
+msgid "Theme Usage Information"
+msgstr "Información sobre el uso de los temas"
+
+#: cets_theme_info.php:345
+msgid "Themes"
+msgstr "Temas"
+
+#: cets_theme_info.php:346
+msgid "Settings"
+msgstr "Configuración"
+
+#: cets_theme_info.php:351
+msgid "Manage User Access"
+msgstr "Gestionar el acceso de los usuarios"
+
+#: cets_theme_info.php:352
+msgid "Users can see usage information for themes in Appearance -> Themes. You can control user access to that information via this toggle."
+msgstr "Los usuarios pueden ver la información sobre el uso de los temas en el menú <em>Apariencia</em> > <em>Temas</em>. Puedes controlar el acceso de los usuarios a dicha información mediante este conmutador."
+
+#: cets_theme_info.php:357
+msgid "Let Users View Theme Usage Information:"
+msgstr "Permitir que los usuarios vean la información sobre el uso de los temas:"
+
+#: cets_theme_info.php:359
+#: cets_theme_info.php:397
+#: cets_theme_info.php:449
+msgid "Yes"
+msgstr "Sí"
+
+#: cets_theme_info.php:360
+#: cets_theme_info.php:399
+#: cets_theme_info.php:452
+msgid "No"
+msgstr "No"
+
+#: cets_theme_info.php:367
+msgid "Save Changes"
+msgstr "Guardar cambios"
+
+#: cets_theme_info.php:378
+#: cets_theme_info.php:426
+msgid "Used Themes"
+msgstr "Temas utilizados"
+
+#: cets_theme_info.php:379
+#: cets_theme_info.php:427
+#: cets_theme_info.php:438
+#: cets_theme_info.php:461
+msgid "Activated Sitewide"
+msgstr "Activado en todo el sitio"
+
+#: cets_theme_info.php:380
+#: cets_theme_info.php:428
+#: cets_theme_info.php:439
+#: cets_theme_info.php:462
+msgid "Total Sites"
+msgstr "Total de sitios"
+
+#: cets_theme_info.php:381
+#: cets_theme_info.php:429
+msgid "Site Titles"
+msgstr "Títulos de los sitios"
+
+#: cets_theme_info.php:402
+msgid "Theme Files Not Found!"
+msgstr "No se han encontrado los ficheros del tema"
+
+#: cets_theme_info.php:406
+msgid "Show/Hide Sites"
+msgstr "Mostrar/Ocultar sitios"
+
+#: cets_theme_info.php:437
+#: cets_theme_info.php:460
+msgid "Unused Themes"
+msgstr "Temas no utilizados"
+
+#~ msgid "Plugin Stats"
+#~ msgstr "Estadísticas de plugins"
+
+#~ msgid "Plugin Commander Settings"
+#~ msgstr "Configuración de Plugin Commander"
+
+#~ msgid "Plugin Manager Settings"
+#~ msgstr "Configuración de Plugin Manager"
+
+#~ msgid "Plugin"
+#~ msgstr "Plugin"
+
+#~ msgid "Auto Activate"
+#~ msgstr "Auto activar"
+
+#~ msgid "User Controlled"
+#~ msgstr "Controlado por el usuario"
+
+#~ msgid "Supporter Controlled"
+#~ msgstr "Controlado por Supporter"
+
+#~ msgid ""
+#~ "This data is not updated as blog users update their plugins. It was last "
+#~ "generated"
+#~ msgstr ""
+#~ "Estos datos no corresponden al estado actual de actualización de los "
+#~ "plugins del sitio. Se generaron por última vez hace"
+
+#~ msgid "less than 1 minute "
+#~ msgstr "menos de un minuto"
+
+#~ msgid "Regenerate"
+#~ msgstr "Regenerar los datos"

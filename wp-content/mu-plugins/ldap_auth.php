@@ -1,1 +1,1 @@
-wpmuldap/ldap_auth.php
+../plugins/wpmuldap/ldap_auth.php

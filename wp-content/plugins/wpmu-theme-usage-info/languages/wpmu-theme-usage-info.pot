@@ -1,0 +1,54 @@
+# Copyright (C) 2015 Christian Foellmann & Jason Lemahieu
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: WPMU Theme Usage Info 2.0.0\n"
+"Report-Msgid-Bugs-To: "
+"https://github.com/wp-repository/wpmu-theme-usage-info/issues\n"
+"POT-Creation-Date: 2015-01-15 19:19:52+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Christian Foellmann <foellmann@foe-services.de>\n"
+"Language-Team: Christian Foellmann <foellmann@foe-services.de>\n"
+"X-Generator: grunt-wp-i18n 0.4.9\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_"
+"x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes\n"
+
+#: wpmu-theme-usage-info.php:157
+msgid "Usage"
+msgstr ""
+
+#: wpmu-theme-usage-info.php:182
+msgid "Not Active on any site"
+msgstr ""
+
+#: wpmu-theme-usage-info.php:185 wpmu-theme-usage-info.php:296
+msgid "Active on %2$s %1$d site %3$s"
+msgid_plural "Active on %2$s %1$d sites %3$s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: wpmu-theme-usage-info.php:334
+msgid ""
+"This plugin only runs on multisite installations. The functionality makes "
+"no sense for WP single sites."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/wpmu-theme-usage-info/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Provides info to network admins and users on the popularity of themes"
+msgstr ""

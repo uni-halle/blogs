@@ -1,1 +1,1 @@
-wordpress-mu-domain-mapping/domain_mapping.php
+../plugins/wordpress-mu-domain-mapping/domain_mapping.php

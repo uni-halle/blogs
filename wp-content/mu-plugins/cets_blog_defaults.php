@@ -1,1 +1,1 @@
-wpmu-new-blog-defaults/cets_blog_defaults.php
+../plugins/wpmu-new-blog-defaults/cets_blog_defaults.php
