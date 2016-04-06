@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Adaption package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-12-19 07:34:53+0000\n"
+"PO-Revision-Date: 2016-03-29 15:22:29+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/1.0-alpha-1100\n"
+"X-Generator: GlotPress/1.1.0-alpha\n"
 "Project-Id-Version: Adaption\n"
 
 #. Theme Name of the plugin/theme
@@ -85,6 +85,18 @@ msgstr "Beitrags-Navigation"
 msgid "Page %s"
 msgstr "Seite %s"
 
+#: functions.php:72
+msgid "Sidebar One"
+msgstr "Seitenleiste 1"
+
+#: functions.php:81
+msgid "Sidebar Two"
+msgstr "Seitenleiste 2"
+
+#: functions.php:90
+msgid "Mobile Widgets"
+msgstr "Mobile Widgets"
+
 #. translators: If there are characters in your language that are not supported
 #. by Arimo, translate this to 'off'. Do not translate into your own
 #. language.
@@ -100,18 +112,6 @@ msgstr "on"
 msgctxt "Arimo: add new subset (cyrillic, greek, vietnamese)"
 msgid "no-subset"
 msgstr "no-subset"
-
-#: functions.php:81
-msgid "Sidebar Two"
-msgstr "Seitenleiste 2"
-
-#: functions.php:72
-msgid "Sidebar One"
-msgstr "Seitenleiste 1"
-
-#: functions.php:90
-msgid "Mobile Widgets"
-msgstr "Mobile Widgets"
 
 #: header.php:38 header.php:93
 msgid "Skip to content"
@@ -153,18 +153,18 @@ msgstr "Alle %s Beiträge"
 msgid " Edit"
 msgstr "Bearbeiten"
 
-#: content-single.php:66 content.php:87
-msgid "%1$s"
-msgstr "%1$s"
-
 #. translators: used between list items, there is a space after the comma
 #: content-single.php:60 content.php:82
 msgid " "
 msgstr " "
 
+#: content-single.php:66 content.php:87
+msgid "%1$s"
+msgstr "%1$s"
+
 #: content.php:22
 msgid "Leave a comment"
-msgstr "Hinterlasse einen Kommentar"
+msgstr "Schreibe einen Kommentar"
 
 #. translators: used between list items, there is a space after the comma
 #: content-single.php:24 content.php:30
@@ -303,7 +303,7 @@ msgstr "Es wurde nichts gefunden. Versuche es mit einem der folgenden Links oder
 
 #: 404.php:15
 msgid "Oops! That page can&rsquo;t be found."
-msgstr "Oops! Die Seite konnte nicht gefunden werden."
+msgstr "Oh! Die Seite konnte nicht gefunden werden."
 
 #. Author URI of the plugin/theme
 msgid "http://themes.wordpress.com/"
