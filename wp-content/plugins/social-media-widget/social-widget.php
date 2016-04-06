@@ -3,19 +3,19 @@
  * Plugin Name: Social Media Widget
  * Plugin URI: http://wordpress.org/extend/plugins/social-media-widget/
  * Description: Adds links to all of your social media and sharing site profiles. Tons of icons come in 3 sizes, 4 icon styles, and 4 animations.
- * Version: 4.0.4
+ * Version: 4.0.5
  * Author: Noah Kagan
  * Author URI: http://sumome.com
  **/
 
-
 /* Check to see if locations are changed in wp-config */
-if ( !defined('WP_CONTENT_URL') ) {
-	define('SMW_PLUGINPATH', site_url('/wp-content/plugins/'.plugin_basename(dirname(__FILE__)).'/'));
-	define('SMW_PLUGINDIR', ABSPATH.'/wp-content/plugins/'.plugin_basename(dirname(__FILE__)).'/');
+define('SMW_PLUGINPATH', plugins_url( '/', __FILE__ ));
+
+if ( ! defined('WP_CONTENT_DIR') ) {
+	define('SMW_PLUGINDIR', ABSPATH . '/wp-content/plugins/' . plugin_basename(dirname(__FILE__)) . '/');
+
 } else {
-	define('SMW_PLUGINPATH',WP_CONTENT_URL.'/plugins/'.plugin_basename(dirname(__FILE__)).'/');
-	define('SMW_PLUGINDIR',WP_CONTENT_DIR.'/plugins/'.plugin_basename(dirname(__FILE__)).'/');
+	define('SMW_PLUGINDIR', WP_CONTENT_DIR . '/plugins/' . plugin_basename(dirname(__FILE__)) . '/');
 }
 
 /* Function for CSS */
@@ -335,16 +335,15 @@ class Social_Widget extends WP_Widget {
 	/* Display the widget  */
 	function widget( $args, $instance ) {
 		extract( $args );
-	
+
 		/* Our variables from the widget settings. */
 		$title = apply_filters('widget_title', $instance['title'] );
 		$text = apply_filters( 'widget_text', $instance['text'], $instance );
 
-		$this->slugorder 	= (array)$instance['slugorder'];
-
-		$this->slugtargets  = (array)$instance['slugtargets'];
-		$this->slugtitles 	= (array)$instance['slugtitles'];
-		$this->slugalts  	= (array)$instance['slugalts'];
+		$this->slugorder 	= array_key_exists('slugorder', $instance) ? (array) $instance['slugorder'] : array();
+		$this->slugtargets  = array_key_exists('slugtargets', $instance) ? (array)$instance['slugtargets'] : array();
+		$this->slugtitles 	= array_key_exists('slugtitles', $instance) ? (array)$instance['slugtitles'] : array();
+		$this->slugalts  	= array_key_exists('slugalts', $instance) ? (array)$instance['slugalts'] : array();
 
 		$this->imgcaption     = $instance['imgcaption'];
 		$this->animation      = $instance['animation'];
@@ -358,12 +357,17 @@ class Social_Widget extends WP_Widget {
 		$icon_pack            = $instance['icon_pack'];
 
 		foreach ($this->networks as $slug => $ndata) {
-			$$slug = $instance[$slug];
-			// ${$slug."_title"} = $instance[$slug."_title"];
+			if (array_key_exists($slug, $instance)) {
+				$$slug = $instance[$slug];
+				// ${$slug."_title"} = $instance[$slug."_title"];
+			}
 		}
+
 		foreach ($this->networks_end as $slug => $ndata) {
-			$$slug = $instance[$slug];
-			// ${$slug."_title"} = $instance[$slug."_title"];
+			if (array_key_exists($slug, $instance)) {
+				$$slug = $instance[$slug];
+				// ${$slug."_title"} = $instance[$slug."_title"];
+			}
 		}
 
 		$customiconsurl = $instance['customiconsurl'];
@@ -439,8 +443,9 @@ class Social_Widget extends WP_Widget {
 		echo "<div class=\"socialmedia-buttons ".$alignment.($this->icons_per_row == 'one' ? ' icons_per_row_1' : '')."\">";
 		/* Display short description */
 		
-		if ( $text )
-			echo "<div class=\"socialmedia-text\>" . $instance['filter'] ? wpautop($text) : $text . '</div>';
+		if ( $text ) {
+			echo "<div class=\"socialmedia-text\">" . $text . '</div>';
+		}
 			
 		/* Display linked images to profiles from widget settings if one was input. */
 		
@@ -756,7 +761,7 @@ class Social_Widget extends WP_Widget {
                             if (strlen($href) > 7 && file_exists($img)) :
                                 ob_start(); 
                                 ?>
-                                <li class="sort-item" style="clear: both; border-top: 1px solid #dfdfdf; height: 82px; background: #f1f1f1; margin:0; padding:0;"> 
+                                <li class="sort-item" style="clear: both; border-top: 1px solid #dfdfdf; height: 100px; background: #f1f1f1; margin:0; padding:0;"> 
                                     <img width="24" height="24" style="float: left; padding: 25px 0px; cursor: move;" src="<?php echo $this->smw_path . '/' . $ndata['image']; ?>" />
                                     <input name="<?php echo "{$oname}[]"; ?>" value="<?php echo esc_attr($slug); ?>" type="hidden" />
                                     <table style="float: right">
