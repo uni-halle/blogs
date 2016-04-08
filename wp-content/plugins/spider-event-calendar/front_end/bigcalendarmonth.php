@@ -880,7 +880,7 @@ function style($title, $color,$ev_height){
 	return $event;
 }
 
-function evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg,$evented_color_bg,$events_count){
+function evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg,$events_count){
 	if($r < $number_of_shown_evetns && $r < $events_count){ $ev_colid = $r; }
 	else $ev_colid = $r - 1;
 
@@ -968,7 +968,7 @@ function evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg,
           }
           $r++;
         }
-		 evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg,$evented_color_bg, $events_count);
+		 evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg, $events_count);
         echo '          </div>
                       </div>
                     </td>';
@@ -1034,7 +1034,7 @@ function evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg,
             }
             $r++;
           }
-		  evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg,$evented_color_bg, $events_count);
+		  evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg, $events_count);
           echo '        </div>
                       </td>';
         }
@@ -1101,7 +1101,7 @@ function evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg,
           }
           $r++;
         }
-		 evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg,$evented_color_bg,$events_count);
+		 evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg,$events_count);
         echo '          </div>
                       </td>';
 			}
@@ -1169,7 +1169,7 @@ function evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg,
           }
           $r++;
         }
-		 evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg,$evented_color_bg, $events_count);
+		 evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg, $events_count);
         echo '            </div>
                         </div>
                       </td>';
@@ -1234,7 +1234,7 @@ function evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg,
               }
               $r++;
             }	
-			evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg,$evented_color_bg, $events_count);			
+			evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg, $events_count);			
             echo '      </div>
                       </td>';
           }
@@ -1302,7 +1302,7 @@ if (in_array($i, $array_days)) {
             }
             $r++;
           }
-		   evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg,$evented_color_bg, $events_count);
+		   evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg, $events_count);
           echo '        </div>
                       </td>';
 			}
