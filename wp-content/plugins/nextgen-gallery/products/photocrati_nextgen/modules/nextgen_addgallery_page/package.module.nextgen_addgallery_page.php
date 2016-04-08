@@ -367,7 +367,7 @@ class A_Upload_Images_Form extends Mixin
         wp_enqueue_script('ngg.plupload.queue');
         $i18n = $this->_find_plupload_i18n();
         if (!empty($i18n)) {
-            wp_enqueue_script('ngg.plupload.i18n', $i18n, array('ngg.plupload.full'));
+            wp_enqueue_script('ngg.plupload.i18n', $i18n, array('ngg.plupload.full'), NGG_SCRIPT_VERSION);
         }
     }
     public function render()

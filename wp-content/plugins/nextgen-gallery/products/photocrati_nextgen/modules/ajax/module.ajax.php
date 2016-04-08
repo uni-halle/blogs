@@ -73,7 +73,7 @@ class M_Ajax extends C_Base_Module
         $settings = C_NextGen_Settings::get_instance();
         $router   = C_Router::get_instance();
 
-        wp_register_script('photocrati_ajax', $router->get_static_url('photocrati-ajax#ajax.min.js'), array('jquery'));
+        wp_register_script('photocrati_ajax', $router->get_static_url('photocrati-ajax#ajax.min.js'), array('jquery'), NGG_SCRIPT_VERSION);
 
         $vars = array(
             'url' => $settings->get('ajax_url'),

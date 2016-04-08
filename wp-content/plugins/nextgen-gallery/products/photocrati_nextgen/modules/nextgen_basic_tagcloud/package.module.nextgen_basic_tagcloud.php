@@ -49,7 +49,7 @@ class A_NextGen_Basic_Tagcloud_Controller extends Mixin
     public function enqueue_frontend_resources($displayed_gallery)
     {
         $this->call_parent('enqueue_frontend_resources', $displayed_gallery);
-        wp_enqueue_style('photocrati-nextgen_basic_tagcloud-style', $this->get_static_url('photocrati-nextgen_basic_tagcloud#nextgen_basic_tagcloud.css'));
+        wp_enqueue_style('photocrati-nextgen_basic_tagcloud-style', $this->get_static_url('photocrati-nextgen_basic_tagcloud#nextgen_basic_tagcloud.css'), FALSE, NGG_SCRIPT_VERSION);
         $this->enqueue_ngg_styles();
     }
 }
@@ -66,7 +66,7 @@ class A_NextGen_Basic_Tagcloud_Form extends Mixin_Display_Type_Form
     public function enqueue_static_resources()
     {
         $path = 'photocrati-nextgen_basic_tagcloud#settings.css';
-        wp_enqueue_style('nextgen_basic_tagcloud_settings-css', $this->get_static_url($path));
+        wp_enqueue_style('nextgen_basic_tagcloud_settings-css', $this->get_static_url($path), FALSE, NGG_SCRIPT_VERSION);
         $atp = C_Attach_Controller::get_instance();
         if (!is_null($atp)) {
             $atp->mark_script($path);

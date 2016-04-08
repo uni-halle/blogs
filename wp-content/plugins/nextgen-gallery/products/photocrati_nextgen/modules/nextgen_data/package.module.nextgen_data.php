@@ -228,14 +228,17 @@ class Mixin_NextGen_Gallery_Validation
         if ($this->object->title) {
             // Strip html
             $this->object->title = M_NextGen_Data::strip_html($this->object->title, TRUE);
+            $sanitized_title = str_replace(' ', '-', $this->object->title);
+            if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                $sanitized_title = remove_accents($sanitized_title);
+            }
             // If no name is present, use the title to generate one
             if (!$this->object->name) {
-                $this->object->name = sanitize_file_name($this->object->title);
-                $this->object->name = apply_filters('ngg_gallery_name', $this->object->name);
+                $this->object->name = apply_filters('ngg_gallery_name', sanitize_file_name($sanitized_title));
             }
             // If no slug is set, use the title to generate one
             if (!$this->object->slug) {
-                $this->object->slug = nggdb::get_unique_slug($this->object->title, 'gallery');
+                $this->object->slug = nggdb::get_unique_slug($sanitized_title, 'gallery');
             }
         }
         // Set what will be the path to the gallery
@@ -356,6 +359,30 @@ class Mixin_Gallery_Mapper extends Mixin
     }
     public function _save_entity($entity)
     {
+        // A bug in NGG 2.1.24 allowed galleries to be created with spaces in the directory name, unreplaced by dashes
+        // This causes a few problems everywhere, so we here allow users a way to fix those galleries by just re-saving
+        if (FALSE !== strpos($entity->path, ' ')) {
+            $storage = C_Gallery_Storage::get_instance();
+            $abspath = $storage->get_gallery_abspath($entity->{$entity->id_field});
+            $pre_path = $entity->path;
+            $entity->path = str_replace(' ', '-', $entity->path);
+            $entity->slug = str_replace(' ', '-', $entity->slug);
+            $new_abspath = str_replace($pre_path, $entity->path, $abspath);
+            // Begin adding -1, -2, etc until we have a safe target: rename() will overwrite existing directories
+            if (@file_exists($new_abspath)) {
+                $max_count = 100;
+                $count = 0;
+                $corrected_abspath = $new_abspath;
+                while (@file_exists($corrected_abspath) && $count <= $max_count) {
+                    $count++;
+                    $corrected_abspath = $new_abspath . '-' . $count;
+                }
+                $new_abspath = $corrected_abspath;
+                $entity->path = $entity->path . '-' . $count;
+            }
+            $entity->slug = nggdb::get_unique_slug($entity->slug, 'gallery');
+            @rename($abspath, $new_abspath);
+        }
         $retval = $this->call_parent('_save_entity', $entity);
         if ($retval) {
             do_action('ngg_created_new_gallery', $entity->{$entity->id_field});
@@ -3094,9 +3121,8 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
             $image_abspath = $this->object->get_image_abspath($image, $size, $check_existance);
         }
         if ($image_abspath) {
-            // encode the filename: because filesystems will let you name things like%@this.jpg
+            // Use multibyte pathinfo() in case of UTF8 gallery or file names
             $parts = M_I18n::mb_pathinfo($image_abspath);
-            $parts['basename'] = rawurlencode($parts['basename']);
             $image_abspath = $parts['dirname'] . DIRECTORY_SEPARATOR . $parts['basename'];
             $doc_root = $fs->get_document_root('gallery');
             if ($doc_root != null) {
@@ -3109,6 +3135,12 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
                 $request_uri = $image_abspath;
             }
             $request_uri = '/' . ltrim(str_replace('\\', '/', $request_uri), '/');
+            // Because like%@this.jpg is a valid directory and filename
+            $request_uri = explode('/', $request_uri);
+            foreach ($request_uri as $ndx => $segment) {
+                $request_uri[$ndx] = rawurlencode($segment);
+            }
+            $request_uri = implode('/', $request_uri);
             $retval = $router->remove_url_segment('/index.php', $router->get_url($request_uri, FALSE, 'gallery'));
         }
         return apply_filters('ngg_get_image_url', $retval, $image, $size);

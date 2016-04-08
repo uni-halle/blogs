@@ -153,8 +153,8 @@ class A_NextGen_Basic_Template_Form extends Mixin
     }
     public function enqueue_static_resources()
     {
-        wp_enqueue_style('ngg_template_settings', $this->get_static_url('photocrati-nextgen_basic_templates#ngg_template_settings.css'));
-        wp_enqueue_script('ngg_template_settings', $this->get_static_url('photocrati-nextgen_basic_templates#ngg_template_settings.js'), array('ngg_select2'), $this->module_version, TRUE);
+        wp_enqueue_style('ngg_template_settings', $this->get_static_url('photocrati-nextgen_basic_templates#ngg_template_settings.css'), FALSE, NGG_SCRIPT_VERSION);
+        wp_enqueue_script('ngg_template_settings', $this->get_static_url('photocrati-nextgen_basic_templates#ngg_template_settings.js'), array('ngg_select2'), NGG_SCRIPT_VERSION, TRUE);
         wp_localize_script('ngg_template_settings', 'ngg_template_settings', array('placeholder_text' => __('No template selected')));
         $atp = C_Attach_Controller::get_instance();
         if ($atp != null) {

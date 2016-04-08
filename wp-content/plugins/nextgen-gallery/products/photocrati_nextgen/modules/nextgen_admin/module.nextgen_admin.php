@@ -118,16 +118,47 @@ class M_NextGen_Admin extends C_Base_Module
     function register_scripts()
     {
         $router = C_Router::get_instance();
-        wp_register_script('gritter', $router->get_static_url('photocrati-nextgen_admin#gritter/gritter.min.js'), array('jquery'));
-        wp_register_style('gritter',  $router->get_static_url('photocrati-nextgen_admin#gritter/css/gritter.css'));
-        wp_register_script('ngg_progressbar', $router->get_static_url('photocrati-nextgen_admin#ngg_progressbar.js'), array('gritter'));
-        wp_register_style('ngg_progressbar', $router->get_static_url('photocrati-nextgen_admin#ngg_progressbar.css'), array('gritter'));
-        wp_register_style('ngg_select2', $router->get_static_url('photocrati-nextgen_admin#select2/select2.css'));
-        wp_register_script('ngg_select2', $router->get_static_url('photocrati-nextgen_admin#select2/select2.modded.js'));
+        wp_register_script(
+	        'gritter',
+	        $router->get_static_url('photocrati-nextgen_admin#gritter/gritter.min.js'),
+	        array('jquery'),
+	        NGG_SCRIPT_VERSION
+        );
+        wp_register_style(
+	        'gritter',
+	        $router->get_static_url('photocrati-nextgen_admin#gritter/css/gritter.css'),
+	        FALSE,
+	        NGG_SCRIPT_VERSION
+        );
+        wp_register_script(
+	        'ngg_progressbar',
+	        $router->get_static_url('photocrati-nextgen_admin#ngg_progressbar.js'),
+	        array('gritter'),
+	        NGG_SCRIPT_VERSION
+        );
+        wp_register_style(
+	        'ngg_progressbar',
+	        $router->get_static_url('photocrati-nextgen_admin#ngg_progressbar.css'),
+	        array('gritter'),
+	        NGG_SCRIPT_VERSION
+        );
+        wp_register_style(
+	        'ngg_select2',
+	        $router->get_static_url('photocrati-nextgen_admin#select2/select2.css'),
+	        FALSE,
+	        NGG_SCRIPT_VERSION
+        );
+        wp_register_script(
+	        'ngg_select2',
+	        $router->get_static_url('photocrati-nextgen_admin#select2/select2.modded.js'),
+	        FALSE,
+	        NGG_SCRIPT_VERSION
+        );
         wp_register_script(
             'jquery.nextgen_radio_toggle',
             $router->get_static_url('photocrati-nextgen_admin#jquery.nextgen_radio_toggle.js'),
-            array('jquery')
+            array('jquery'),
+	        NGG_SCRIPT_VERSION
         );
 
         if (preg_match("#/wp-admin/post(-new)?.php#", $_SERVER['REQUEST_URI']))
@@ -136,7 +167,12 @@ class M_NextGen_Admin extends C_Base_Module
             wp_enqueue_style('ngg_progressbar');
         }
 
-        wp_register_style('ngg-jquery-ui', $router->get_static_url('photocrati-nextgen_admin#jquery-ui/jquery-ui-1.10.4.custom.css'));
+        wp_register_style(
+	        'ngg-jquery-ui',
+	        $router->get_static_url('photocrati-nextgen_admin#jquery-ui/jquery-ui-1.10.4.custom.css'),
+	        FALSE,
+	        NGG_SCRIPT_VERSION
+        );
     }
 
 	/**

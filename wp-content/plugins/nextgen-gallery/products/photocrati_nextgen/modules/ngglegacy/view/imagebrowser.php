@@ -16,7 +16,7 @@ Follow variables are useable :
 ?>
 <?php if (!defined ('ABSPATH')) die ('No direct access allowed'); ?><?php if (!empty ($image)) : ?>
 
-<div class="ngg-imagebrowser" id="<?php echo $image->anchor ?>">
+<div class="ngg-imagebrowser" id="<?php echo $image->anchor ?>" data-nextgen-gallery-id="<?php echo $displayed_gallery->id(); ?>">
 
 	<h3><?php echo $image->alttext ?></h3>
 
@@ -35,3 +35,8 @@ Follow variables are useable :
 </div>	
 
 <?php endif; ?>
+<script type='text/javascript'>
+	jQuery(function($) {
+		new NggPaginatedGallery('<?php echo $displayed_gallery->id() ?>', '.ngg-imagebrowser');
+	});
+</script>

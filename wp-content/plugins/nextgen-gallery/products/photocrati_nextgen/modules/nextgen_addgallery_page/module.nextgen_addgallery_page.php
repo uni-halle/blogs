@@ -85,47 +85,63 @@ class M_NextGen_AddGallery_Page extends C_Base_Module
             $router = C_Router::get_instance();
             wp_register_script(
                 'browserplus',
-                $router->get_static_url('photocrati-nextgen_addgallery_page#browserplus-2.4.21.min.js')
+                $router->get_static_url('photocrati-nextgen_addgallery_page#browserplus-2.4.21.min.js'),
+                FALSE,
+                NGG_SCRIPT_VERSION
             );
             wp_register_script(
                 'ngg.plupload.moxie',
-                $router->get_static_url('photocrati-nextgen_addgallery_page#plupload-2.1.1/moxie.min.js')
+                $router->get_static_url('photocrati-nextgen_addgallery_page#plupload-2.1.1/moxie.min.js'),
+                FALSE,
+                NGG_SCRIPT_VERSION
             );
             wp_register_script(
                 'ngg.plupload.full',
-                $router->get_static_url('photocrati-nextgen_addgallery_page#plupload-2.1.1/plupload.dev.min.js'),
-                array('ngg.plupload.moxie')
+                $router->get_static_url('photocrati-nextgen_addgallery_page#plupload-2.1.1/plupload.dev.js'),
+                array('ngg.plupload.moxie'),
+                NGG_SCRIPT_VERSION
             );
             wp_register_script(
                 'ngg.plupload.queue',
                 $router->get_static_url('photocrati-nextgen_addgallery_page#plupload-2.1.1/jquery.plupload.queue/jquery.plupload.queue.min.js'),
-                array('ngg.plupload.full')
+                array('ngg.plupload.full'),
+                NGG_SCRIPT_VERSION
             );
             wp_register_style(
                 'ngg.plupload.queue',
-                $router->get_static_url('photocrati-nextgen_addgallery_page#plupload-2.1.1/jquery.plupload.queue/css/jquery.plupload.queue.css')
+                $router->get_static_url('photocrati-nextgen_addgallery_page#plupload-2.1.1/jquery.plupload.queue/css/jquery.plupload.queue.css'),
+                FALSE,
+                NGG_SCRIPT_VERSION
             );
             wp_register_style(
                 'nextgen_addgallery_page',
-                $router->get_static_url('photocrati-nextgen_addgallery_page#styles.css')
+                $router->get_static_url('photocrati-nextgen_addgallery_page#styles.css'),
+                FALSE,
+                NGG_SCRIPT_VERSION
             );
             wp_register_script(
                 'jquery.filetree',
                 $router->get_static_url('photocrati-nextgen_addgallery_page#jquery.filetree/jquery.filetree.js'),
-                array('jquery')
+                array('jquery'),
+                NGG_SCRIPT_VERSION
             );
             wp_register_style(
                 'jquery.filetree',
-                $router->get_static_url('photocrati-nextgen_addgallery_page#jquery.filetree/jquery.filetree.css')
+                $router->get_static_url('photocrati-nextgen_addgallery_page#jquery.filetree/jquery.filetree.css'),
+                FALSE,
+                NGG_SCRIPT_VERSION
             );
             wp_register_script(
                 'nextgen_media_library_import-js',
                 $router->get_static_url('photocrati-nextgen_addgallery_page#media-library-import.js'),
-                array('jquery', 'ngg_progressbar')
+                array('jquery', 'ngg_progressbar'),
+                NGG_SCRIPT_VERSION
             );
             wp_register_style(
                 'nextgen_media_library_import-css',
-                $router->get_static_url('photocrati-nextgen_addgallery_page#media-library-import.css')
+                $router->get_static_url('photocrati-nextgen_addgallery_page#media-library-import.css'),
+                FALSE,
+                NGG_SCRIPT_VERSION
             );
         }
     }

@@ -256,7 +256,7 @@ class Mixin_Display_Type_Controller extends Mixin
         // This script provides common JavaScript among all display types
         wp_enqueue_script('ngg_common');
         // Enqueue the display type library
-        wp_enqueue_script($displayed_gallery->display_type, $this->object->_get_js_lib_url($displayed_gallery));
+        wp_enqueue_script($displayed_gallery->display_type, $this->object->_get_js_lib_url($displayed_gallery), FALSE, NGG_SCRIPT_VERSION);
         // Add "galleries = {};"
         $this->object->_add_script_data('ngg_common', 'galleries', new stdClass(), TRUE, FALSE);
         // Add "galleries.gallery_1 = {};"
@@ -271,7 +271,7 @@ class Mixin_Display_Type_Controller extends Mixin
     {
         $settings = C_NextGen_Settings::get_instance();
         if ((!is_multisite() || is_multisite() && $settings->wpmuStyle) && $settings->activateCSS) {
-            wp_enqueue_style('nggallery', C_NextGen_Style_Manager::get_instance()->get_selected_stylesheet_url());
+            wp_enqueue_style('nggallery', C_NextGen_Style_Manager::get_instance()->get_selected_stylesheet_url(), FALSE, NGG_SCRIPT_VERSION);
         }
     }
     public function get_render_mode()

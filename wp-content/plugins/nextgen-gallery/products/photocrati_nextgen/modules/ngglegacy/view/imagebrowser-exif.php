@@ -20,7 +20,7 @@ Please note : A Image resize or watermarking operation will remove all meta info
 ?>
 <?php if (!defined ('ABSPATH')) die ('No direct access allowed'); ?><?php if (!empty ($image)) : ?>
 
-<div class="ngg-imagebrowser" id="<?php echo $image->anchor ?>">
+<div class="ngg-imagebrowser" id="<?php echo $image->anchor ?>" data-nextgen-gallery-id="<?php echo $displayed_gallery->id(); ?>">
 
 	<h3><?php echo $image->alttext ?></h3>
 
@@ -65,3 +65,8 @@ Please note : A Image resize or watermarking operation will remove all meta info
 </div>	
 
 <?php endif; ?>
+<script type='text/javascript'>
+	jQuery(function($) {
+		new NggPaginatedGallery('<?php echo $displayed_gallery->id() ?>', '.ngg-imagebrowser');
+	});
+</script>

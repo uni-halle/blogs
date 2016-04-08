@@ -265,14 +265,17 @@ class M_Attach_To_Post extends C_Base_Module
 		if (preg_match("/\/wp-admin\/(post|post-new)\.php$/", $_SERVER['SCRIPT_NAME'])) {
 			$this->_enqueue_tinymce_resources();
 			wp_enqueue_style(
-				'ngg_attach_to_post_dialog', $router->get_static_url('photocrati-attach_to_post#attach_to_post_dialog.css')
+				'ngg_attach_to_post_dialog',
+				$router->get_static_url('photocrati-attach_to_post#attach_to_post_dialog.css'),
+				FALSE,
+				NGG_SCRIPT_VERSION
 			);
 		}
 
 		elseif (isset($_REQUEST['attach_to_post']) OR
 		  (isset($_REQUEST['page']) && strpos($_REQUEST['page'], 'nggallery') !== FALSE)) {
-			wp_enqueue_script('iframely', $router->get_static_url('photocrati-attach_to_post#iframely.js'));
-			wp_enqueue_style('iframely',  $router->get_static_url('photocrati-attach_to_post#iframely.css'));
+			wp_enqueue_script('iframely', $router->get_static_url('photocrati-attach_to_post#iframely.js'), FALSE, NGG_SCRIPT_VERSION);
+			wp_enqueue_style('iframely',  $router->get_static_url('photocrati-attach_to_post#iframely.css'), FALSE, NGG_SCRIPT_VERSION);
 		}
 	}
 

@@ -1,18 +1,34 @@
 NextGEN Gallery
 by Photocrati Media
 
+= V2.1.31 - 04.05.2016 =
+* NEW:     Added constant NGG_SCRIPT_VERSION that is either the plugin version or rand() should SCRIPT_DEBUG be on
+* NEW:     Added warning when saving galleries and refuse to automatically delete galleries with one or more "../" in their path.
+* Changed: ATP slug field disallow several characters (spaces, ?, |, &, [, ]) by replacing them with dashes as they are typed
+* Changed:     Made get_static_url() look in the WP_CONTENT/ngg/(module_name)/static directory for CSS/JS overrides
+* Fixed:   Bug introduced in 2.1.24 allowing gallery paths & slugs to contain spaces; galleries must be "saved" once to correct them
+* Fixed:   Compatibility with WPML String Translation when uploading images without title or description
+* Fixed:   Made get_image_url() encode gallery directory names 'because%this%is' a valid directory
+* Fixed:   Manage Galleries > Search results not saving when edited
+* Fixed:   Provided imagebrowser legacy templates not using AJAX pagination when enabled
+* Fixed:   Resource manager breaking the layout of the Multisite Plugin Activation page
+* Fixed:   Static url generation when the nextgen-gallery directory is a symlink outside of the WordPress roots
+
+= V2.1.27 - 03.16.2016 =
+* Fixed:    Formatting issues with changelog
+
 = V2.1.26 - 03.15.2016 =
-Fixed:    Removed unnecessary whitespace from "Related images" template that caused issues with some themes
-Fixed:    Detection of parents from grand-child-albums when generating breadcrumbs
-Fixed:    C_Router->initialize() generating warnings with WP-CLI or the WP-CLI-Cron
-Fixed:    Added Roots-theme relative-url support to C_MVC_Router->get_static_url()
-Fixed:    nggdb::get_unique_slug() checking test-1, -2, -3,.. -9, -10, and then rolling back to -1 rather than continuing to -11, -12, etc
-Fixed:    Album breadcrumbs CSS compatibility with certain themes
-Fixed:    Made C_Gallery->validation() not use sanitize_title() on the image name attribute; this allows gallery names with UTF-8 to not generate 404
-Fixed:    NGG's cross-frame-communication cookies from building up (and not being culled) to the point HTTP requests were rejected by the server for having too large of a cookie header
-Fixed:    Updated C_Dynamic_Thumbnails_Manager->get_uri_from_params() with a minor user-submitted patch
-Fixed:    Updated C_CustomPost_DataMapper_Driver->_save_entity() with a minor user-submitted patch
-Fixed:    Cleaned up overview.php's readability and removed some now-long-unused code from legacy's ajax.php
+* Fixed:    Removed unnecessary whitespace from "Related images" template that caused issues with some themes
+* Fixed:    Detection of parents from grand-child-albums when generating breadcrumbs
+* Fixed:    C_Router->initialize() generating warnings with WP-CLI or the WP-CLI-Cron
+* Fixed:    Added Roots-theme relative-url support to C_MVC_Router->get_static_url()
+* Fixed:    nggdb::get_unique_slug() not generating unique slugs
+* Fixed:    Album breadcrumbs CSS compatibility with certain themes
+* Fixed:    C_Gallery->validation() not working properly when sanitizing gallery title using UTF-8
+* Fixed:    NGG's cross-frame-communication cookies not being purged
+* Fixed:    Updated C_Dynamic_Thumbnails_Manager->get_uri_from_params() with user-submitted patch
+* Fixed:    Updated C_CustomPost_DataMapper_Driver->_save_entity() with user-submitted patch
+* Fixed:    Cleaned up overview.php's readability and removed some now-long-unused code from legacy's ajax.php
 
 = V2.1.23 - 01.05.2015 =
 * Secured: XSS vulnerabilities in Manage Gallery pages

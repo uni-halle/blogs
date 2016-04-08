@@ -113,8 +113,10 @@ class M_I18N extends C_Base_Module
             $gallery = C_Gallery_Mapper::get_instance()->find($gallery_id);
             if ($gallery)
             {
-                icl_register_string('plugin_ngg', 'gallery_' . $gallery->{$gallery->id_field} . '_name', $gallery->title, TRUE);
-                icl_register_string('plugin_ngg', 'gallery_' . $gallery->{$gallery->id_field} . '_description', $gallery->galdesc, TRUE);
+                if (isset($gallery->title) && !empty($gallery->title))
+                    icl_register_string('plugin_ngg', 'gallery_' . $gallery->{$gallery->id_field} . '_name', $gallery->title, TRUE);
+                if (isset($gallery->galdesc) && !empty($gallery->galdesc))
+                    icl_register_string('plugin_ngg', 'gallery_' . $gallery->{$gallery->id_field} . '_description', $gallery->galdesc, TRUE);
             }
         }
     }
@@ -128,8 +130,10 @@ class M_I18N extends C_Base_Module
     {
         if (function_exists('icl_register_string'))
         {
-            icl_register_string('plugin_ngg', 'pic_' . $image->{$image->id_field} . '_description', $image->description, TRUE);
-            icl_register_string('plugin_ngg', 'pic_' . $image->{$image->id_field} . '_alttext', $image->alttext, TRUE);
+            if (isset($image->description) && !empty($image->description))
+                icl_register_string('plugin_ngg', 'pic_' . $image->{$image->id_field} . '_description', $image->description, TRUE);
+            if (isset($image->alttext) && !empty($image->alttext))
+                icl_register_string('plugin_ngg', 'pic_' . $image->{$image->id_field} . '_alttext', $image->alttext, TRUE);
         }
     }
 
@@ -142,8 +146,10 @@ class M_I18N extends C_Base_Module
     {
         if (function_exists('icl_register_string'))
         {
-            icl_register_string('plugin_ngg', 'album_' . $album->{$album->id_field} . '_name', $album->name, TRUE);
-            icl_register_string('plugin_ngg', 'album_' . $album->{$album->id_field} . '_description', $album->albumdesc, TRUE);
+            if (isset($album->name) && !empty($album->name))
+                icl_register_string('plugin_ngg', 'album_' . $album->{$album->id_field} . '_name', $album->name, TRUE);
+            if (isset($album->albumdesc) && !empty($album->albumdesc))
+                icl_register_string('plugin_ngg', 'album_' . $album->{$album->id_field} . '_description', $album->albumdesc, TRUE);
         }
     }
 

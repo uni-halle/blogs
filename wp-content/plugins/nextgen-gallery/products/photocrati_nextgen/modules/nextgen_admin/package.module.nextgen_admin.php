@@ -155,7 +155,7 @@ class C_Admin_Notification_Manager
     {
         if ($this->has_displayed_notice()) {
             $router = C_Router::get_instance();
-            wp_enqueue_script('ngg_admin_notices', $router->get_static_url('photocrati-nextgen_admin#admin_notices.js'), array(), FALSE, TRUE);
+            wp_enqueue_script('ngg_admin_notices', $router->get_static_url('photocrati-nextgen_admin#admin_notices.js'), FALSE, NGG_SCRIPT_VERSION, TRUE);
             wp_localize_script('ngg_admin_notices', 'ngg_dismiss_url', $this->_dismiss_url);
         }
     }
@@ -628,12 +628,12 @@ class Mixin_NextGen_Admin_Page_Instance_Methods extends Mixin
         $this->object->enqueue_jquery_ui_theme();
         wp_enqueue_script('photocrati_ajax');
         wp_enqueue_script('jquery-ui-accordion');
-        wp_enqueue_script('nextgen_display_settings_page_placeholder_stub', $this->get_static_url('photocrati-nextgen_admin#jquery.placeholder.min.js'), array('jquery'), '2.0.7', TRUE);
-        wp_register_script('iris', $this->get_router()->get_url('/wp-admin/js/iris.min.js', FALSE, TRUE), array('jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch'));
-        wp_register_script('wp-color-picker', $this->get_router()->get_url('/wp-admin/js/color-picker.js', FALSE, TRUE), array('iris'));
+        wp_enqueue_script('nextgen_display_settings_page_placeholder_stub', $this->get_static_url('photocrati-nextgen_admin#jquery.placeholder.min.js'), array('jquery'), NGG_SCRIPT_VERSION, TRUE);
+        wp_register_script('iris', $this->get_router()->get_url('/wp-admin/js/iris.min.js', FALSE, TRUE), array('jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch'), NGG_SCRIPT_VERSION);
+        wp_register_script('wp-color-picker', $this->get_router()->get_url('/wp-admin/js/color-picker.js', FALSE, TRUE), array('iris'), NGG_SCRIPT_VERSION);
         wp_localize_script('wp-color-picker', 'wpColorPickerL10n', array('clear' => __('Clear', 'nggallery'), 'defaultString' => __('Default', 'nggallery'), 'pick' => __('Select Color', 'nggallery'), 'current' => __('Current Color', 'nggallery')));
-        wp_enqueue_script('nextgen_admin_page', $this->get_static_url('photocrati-nextgen_admin#nextgen_admin_page.js'), array('wp-color-picker'));
-        wp_enqueue_style('nextgen_admin_page', $this->get_static_url('photocrati-nextgen_admin#nextgen_admin_page.css'), array('wp-color-picker'));
+        wp_enqueue_script('nextgen_admin_page', $this->get_static_url('photocrati-nextgen_admin#nextgen_admin_page.js'), array('wp-color-picker'), NGG_SCRIPT_VERSION);
+        wp_enqueue_style('nextgen_admin_page', $this->get_static_url('photocrati-nextgen_admin#nextgen_admin_page.css'), array('wp-color-picker'), NGG_SCRIPT_VERSION);
         // Ensure select2
         wp_enqueue_style('ngg_select2');
         wp_enqueue_script('ngg_select2');
@@ -641,7 +641,7 @@ class Mixin_NextGen_Admin_Page_Instance_Methods extends Mixin
     public function enqueue_jquery_ui_theme()
     {
         $settings = C_NextGen_Settings::get_instance();
-        wp_enqueue_style($settings->jquery_ui_theme, is_ssl() ? str_replace('http:', 'https:', $settings->jquery_ui_theme_url) : $settings->jquery_ui_theme_url, NULL, $settings->jquery_ui_theme_version);
+        wp_enqueue_style($settings->jquery_ui_theme, is_ssl() ? str_replace('http:', 'https:', $settings->jquery_ui_theme_url) : $settings->jquery_ui_theme_url, FALSE, $settings->jquery_ui_theme_version);
     }
     /**
      * Returns the page title

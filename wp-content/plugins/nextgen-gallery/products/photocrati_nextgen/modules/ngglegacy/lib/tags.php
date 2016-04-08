@@ -324,13 +324,17 @@ class nggTags {
 		$term_ids = $wpdb->get_col( $wpdb->prepare("SELECT term_id FROM $wpdb->terms WHERE slug IN ($sluglist) ORDER BY term_id ASC ", NULL));
 		$picids = get_objects_in_term($term_ids, 'ngg_tag');
 
-		//Now lookup in the database
 		if ($mode == 'RAND')
-			$pictures = nggdb::find_images_in_list($picids, true, 'RAND' );
-		else
-			$pictures = nggdb::find_images_in_list($picids, true, 'ASC');
+			shuffle($picids);
 
-		return $pictures;
+		// Now lookup in the database
+		$mapper = C_Image_Mapper::get_instance();
+		$images = array();
+		foreach ($picids as $image_id) {
+			$images[] = $mapper->find($image_id);
+		}
+
+		return $images;
 	}
 
 	/**

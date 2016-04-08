@@ -420,12 +420,12 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
     public function enqueue_frontend_resources($displayed_gallery)
     {
         $this->call_parent('enqueue_frontend_resources', $displayed_gallery);
-        wp_enqueue_style('nextgen_basic_album_style', $this->object->get_static_url('photocrati-nextgen_basic_album#nextgen_basic_album.css'));
-        wp_enqueue_style('nextgen_pagination_style', $this->get_static_url('photocrati-nextgen_pagination#style.css'));
-        wp_enqueue_script('jquery.dotdotdot', $this->object->get_static_url('photocrati-nextgen_basic_album#jquery.dotdotdot-1.5.7-packed.js'), array('jquery'));
+        wp_enqueue_style('nextgen_basic_album_style', $this->object->get_static_url('photocrati-nextgen_basic_album#nextgen_basic_album.css'), FALSE, NGG_SCRIPT_VERSION);
+        wp_enqueue_style('nextgen_pagination_style', $this->get_static_url('photocrati-nextgen_pagination#style.css'), FALSE, NGG_SCRIPT_VERSION);
+        wp_enqueue_script('jquery.dotdotdot', $this->object->get_static_url('photocrati-nextgen_basic_album#jquery.dotdotdot-1.5.7-packed.js'), array('jquery'), NGG_SCRIPT_VERSION);
         $ds = $displayed_gallery->display_settings;
         if (!empty($ds['enable_breadcrumbs']) && $ds['enable_breadcrumbs'] || !empty($ds['original_settings']['enable_breadcrumbs']) && $ds['original_settings']['enable_breadcrumbs']) {
-            wp_enqueue_style('nextgen_basic_album_breadcrumbs_style', $this->object->get_static_url('photocrati-nextgen_basic_album#breadcrumbs.css'));
+            wp_enqueue_style('nextgen_basic_album_breadcrumbs_style', $this->object->get_static_url('photocrati-nextgen_basic_album#breadcrumbs.css'), FALSE, NGG_SCRIPT_VERSION);
         }
         $this->enqueue_ngg_styles();
     }
@@ -574,7 +574,7 @@ class A_NextGen_Basic_Extended_Album_Form extends Mixin_NextGen_Basic_Album_Form
      */
     public function enqueue_static_resources()
     {
-        wp_enqueue_script('nextgen_basic_extended_albums_settings_script', $this->object->get_static_url('photocrati-nextgen_basic_album#extended_settings.js'), array('jquery.nextgen_radio_toggle'));
+        wp_enqueue_script('nextgen_basic_extended_albums_settings_script', $this->object->get_static_url('photocrati-nextgen_basic_album#extended_settings.js'), array('jquery.nextgen_radio_toggle'), NGG_SCRIPT_VERSION);
         $atp = C_Attach_Controller::get_instance();
         if ($atp != null) {
             $atp->mark_script('nextgen_basic_extended_albums_settings_script');
@@ -601,7 +601,7 @@ class A_NextGen_Basic_Compact_Album_Form extends Mixin_NextGen_Basic_Album_Form
      */
     public function enqueue_static_resources()
     {
-        wp_enqueue_script('nextgen_basic_compact_albums_settings_script', $this->object->get_static_url('photocrati-nextgen_basic_album#compact_settings.js'), array('jquery.nextgen_radio_toggle'));
+        wp_enqueue_script('nextgen_basic_compact_albums_settings_script', $this->object->get_static_url('photocrati-nextgen_basic_album#compact_settings.js'), array('jquery.nextgen_radio_toggle'), NGG_SCRIPT_VERSION);
         $atp = C_Attach_Controller::get_instance();
         if ($atp != null) {
             $atp->mark_script('nextgen_basic_compact_albums_settings_script');

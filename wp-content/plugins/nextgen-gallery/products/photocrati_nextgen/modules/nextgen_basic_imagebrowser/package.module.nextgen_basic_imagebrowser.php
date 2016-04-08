@@ -148,7 +148,7 @@ class A_NextGen_Basic_ImageBrowser_Controller extends Mixin
     public function enqueue_frontend_resources($displayed_gallery)
     {
         $this->call_parent('enqueue_frontend_resources', $displayed_gallery);
-        wp_enqueue_style('nextgen_basic_imagebrowser_style', $this->get_static_url('photocrati-nextgen_basic_imagebrowser#style.css'));
+        wp_enqueue_style('nextgen_basic_imagebrowser_style', $this->get_static_url('photocrati-nextgen_basic_imagebrowser#style.css'), FALSE, NGG_SCRIPT_VERSION);
         $this->enqueue_ngg_styles();
     }
 }

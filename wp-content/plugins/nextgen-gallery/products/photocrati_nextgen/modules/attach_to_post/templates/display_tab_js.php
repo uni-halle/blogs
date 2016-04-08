@@ -631,7 +631,19 @@ jQuery(function($){
                 id: 'field_slug'
             });
 
-            input.change(function() {
+            input.on('input', function() {
+                // Do not allow the following characters in the slug
+                $(this).val($(this).val().replace(/\s|\?|\\|\/|&|=|\[|]|#/gm, '-'));
+                self.displayed_gallery.set('slug', $(this).val());
+            });
+
+            // Trim extraneous leading/following dashes from the above sanitation
+            input.on('change', function() {
+                $(this).val(
+                    $(this).val()
+                       .replace(/^-*/gm, '')
+                       .replace(/-*$/gm, '')
+                );
                 self.displayed_gallery.set('slug', $(this).val());
             });
 

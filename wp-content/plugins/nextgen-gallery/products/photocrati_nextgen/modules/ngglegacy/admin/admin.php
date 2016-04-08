@@ -265,7 +265,7 @@ class nggAdminPanel{
         // used to retrieve the uri of some module resources
         $router = C_Router::get_instance();
 
-		wp_register_script('ngg-ajax', NGGALLERY_URLPATH . 'admin/js/ngg.ajax.js', array('jquery'), '1.4.1');
+		wp_register_script('ngg-ajax', NGGALLERY_URLPATH . 'admin/js/ngg.ajax.js', array('jquery'), NGG_SCRIPT_VERSION);
 		wp_localize_script('ngg-ajax', 'nggAjaxSetup', array(
 					'url' => admin_url('admin-ajax.php'),
 					'action' => 'ngg_ajax_operation',
@@ -276,7 +276,7 @@ class nggAdminPanel{
 					'error' => __('Unexpected Error', 'nggallery'),
 					'failure' => __('A failure occurred', 'nggallery')
 		) );
-		wp_register_script('ngg-progressbar', NGGALLERY_URLPATH .'admin/js/ngg.progressbar.js', array('jquery'), '2.0.1');
+		wp_register_script('ngg-progressbar', NGGALLERY_URLPATH .'admin/js/ngg.progressbar.js', array('jquery'), NGG_SCRIPT_VERSION);
 
         // Enqueue the new Gritter-based progress bars
         wp_enqueue_style('ngg_progressbar');
@@ -293,7 +293,7 @@ class nggAdminPanel{
 				wp_enqueue_script( 'ngg-progressbar' );
 				wp_enqueue_script( 'jquery-ui-dialog' );
 				wp_enqueue_script( 'jquery-ui-sortable' );
-    			wp_register_script('shutter', $router->get_static_url('photocrati-lightbox#shutter/shutter.js'), false ,'1.3.2');
+    			wp_register_script('shutter', $router->get_static_url('photocrati-lightbox#shutter/shutter.js'), false, NGG_SCRIPT_VERSION);
     			wp_localize_script('shutter', 'shutterSettings', array(
     						'msgLoading' => __('L O A D I N G', 'nggallery'),
     						'msgClose' => __('Click to Close', 'nggallery'),
@@ -302,7 +302,7 @@ class nggAdminPanel{
     			wp_enqueue_script( 'shutter' );
 
                 // includes tooltip styling
-                wp_enqueue_style('nextgen_admin_page', $router->get_static_url('photocrati-nextgen_admin#nextgen_admin_page.css'));
+                wp_enqueue_style('nextgen_admin_page', $router->get_static_url('photocrati-nextgen_admin#nextgen_admin_page.css'), FALSE, NGG_SCRIPT_VERSION);
 			break;
 			case "nggallery-manage-album" :
                 wp_enqueue_script( 'jquery-ui-dialog' );
@@ -329,9 +329,9 @@ class nggAdminPanel{
 		global $ngg;
 
         // load the icon for the navigation menu
-        wp_enqueue_style( 'nggmenu', NGGALLERY_URLPATH .'admin/css/menu.css', array() );
-		wp_register_style( 'nggadmin', NGGALLERY_URLPATH .'admin/css/nggadmin.css', false, '2.8.1', 'screen' );
-		wp_register_style( 'ngg-jqueryui', NGGALLERY_URLPATH .'admin/css/jquery.ui.css', false, '1.8.5', 'screen' );
+        wp_enqueue_style( 'nggmenu', NGGALLERY_URLPATH .'admin/css/menu.css', false, NGG_SCRIPT_VERSION );
+		wp_register_style( 'nggadmin', NGGALLERY_URLPATH .'admin/css/nggadmin.css', false, NGG_SCRIPT_VERSION, 'screen' );
+		wp_register_style( 'ngg-jqueryui', NGGALLERY_URLPATH .'admin/css/jquery.ui.css', false, NGG_SCRIPT_VERSION, 'screen' );
 
         // no need to go on if it's not a plugin page
 		if( !isset($_GET['page']) )
@@ -351,14 +351,14 @@ class nggAdminPanel{
 			break;
 			case "nggallery-manage-gallery" :
                 wp_enqueue_script('jquery-ui-tooltip');
-                wp_enqueue_style('shutter', $router->get_static_url('photocrati-lightbox#shutter/shutter.css'), false, '1.3.2', 'screen');
+                wp_enqueue_style('shutter', $router->get_static_url('photocrati-lightbox#shutter/shutter.css'), false, NGG_SCRIPT_VERSION, 'screen');
 			case "nggallery-roles" :
 			case "nggallery-manage-album" :
 				$this->enqueue_jquery_ui_theme();
 				wp_enqueue_style( 'nggadmin' );
 			break;
 			case "nggallery-tags" :
-				wp_enqueue_style( 'nggtags', NGGALLERY_URLPATH .'admin/css/tags-admin.css', false, '2.6.1', 'screen' );
+				wp_enqueue_style( 'nggtags', NGGALLERY_URLPATH .'admin/css/tags-admin.css', false, NGG_SCRIPT_VERSION, 'screen' );
 				break;
 		}
 	}

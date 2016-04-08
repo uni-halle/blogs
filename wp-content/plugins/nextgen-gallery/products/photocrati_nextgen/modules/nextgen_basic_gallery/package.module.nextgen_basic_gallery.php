@@ -96,7 +96,7 @@ class A_NextGen_Basic_Gallery_Mapper extends Mixin
         $this->object->_set_default_value($entity, 'settings', 'disable_pagination', 0);
         // Alternative view support
         $this->object->_set_default_value($entity, 'settings', 'show_slideshow_link', $settings->galShowSlide ? 1 : 0);
-        $this->object->_Set_default_value($entity, 'settings', 'slideshow_link_text', $settings->galTextSlide);
+        $this->object->_set_default_value($entity, 'settings', 'slideshow_link_text', $settings->galTextSlide);
         // override thumbnail settings
         $this->object->_set_default_value($entity, 'settings', 'override_thumbnail_settings', 0);
         $this->object->_set_default_value($entity, 'settings', 'thumbnail_quality', '100');
@@ -239,11 +239,10 @@ class A_NextGen_Basic_Slideshow_Controller extends Mixin
      */
     public function enqueue_frontend_resources($displayed_gallery)
     {
-        $resource = defined('SCRIPT_DEBUG') ? 'jquery.cycle.all.min.js' : 'jquery.cycle.all.js';
-        wp_register_script('jquery-cycle', $this->get_static_url("photocrati-nextgen_basic_gallery#slideshow/{$resource}"), array('jquery'));
+        wp_register_script('jquery-cycle', $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/jquery.cycle.all.js'), array('jquery'), NGG_SCRIPT_VERSION);
         wp_enqueue_script('jquery-cycle');
-        wp_enqueue_style('nextgen_basic_slideshow_style', $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/nextgen_basic_slideshow.css'));
-        wp_enqueue_script('waitforimages', $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/jquery.waitforimages.js'), array('jquery'));
+        wp_enqueue_style('nextgen_basic_slideshow_style', $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/nextgen_basic_slideshow.css'), FALSE, NGG_SCRIPT_VERSION);
+        wp_enqueue_script('waitforimages', $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/jquery.waitforimages.js'), array('jquery'), NGG_SCRIPT_VERSION);
         $this->call_parent('enqueue_frontend_resources', $displayed_gallery);
         $this->enqueue_ngg_styles();
     }
@@ -268,7 +267,7 @@ class A_NextGen_Basic_Slideshow_Form extends Mixin_Display_Type_Form
     }
     public function enqueue_static_resources()
     {
-        wp_enqueue_script('nextgen_basic_slideshow_settings-js', $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/nextgen_basic_slideshow_settings.js'), array('jquery.nextgen_radio_toggle'));
+        wp_enqueue_script('nextgen_basic_slideshow_settings-js', $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/nextgen_basic_slideshow_settings.js'), array('jquery.nextgen_radio_toggle'), NGG_SCRIPT_VERSION);
         $atp = C_Attach_Controller::get_instance();
         if ($atp != null) {
             $atp->mark_script('nextgen_basic_slideshow_settings-js');
@@ -325,8 +324,8 @@ class A_NextGen_Basic_Thumbnail_Form extends Mixin_Display_Type_Form
      */
     public function enqueue_static_resources()
     {
-        wp_enqueue_style('nextgen_basic_thumbnails_settings', $this->object->get_static_url('photocrati-nextgen_basic_gallery#thumbnails/nextgen_basic_thumbnails_settings.css'), false);
-        wp_enqueue_script('nextgen_basic_thumbnails_settings', $this->object->get_static_url('photocrati-nextgen_basic_gallery#thumbnails/nextgen_basic_thumbnails_settings.js'), array('jquery.nextgen_radio_toggle'));
+        wp_enqueue_style('nextgen_basic_thumbnails_settings', $this->object->get_static_url('photocrati-nextgen_basic_gallery#thumbnails/nextgen_basic_thumbnails_settings.css'), FALSE, NGG_SCRIPT_VERSION);
+        wp_enqueue_script('nextgen_basic_thumbnails_settings', $this->object->get_static_url('photocrati-nextgen_basic_gallery#thumbnails/nextgen_basic_thumbnails_settings.js'), array('jquery.nextgen_radio_toggle'), NGG_SCRIPT_VERSION);
         $atp = C_Attach_Controller::get_instance();
         if ($atp != null) {
             $atp->mark_script('nextgen_basic_thumbnails_settings');
@@ -534,11 +533,11 @@ class A_NextGen_Basic_Thumbnails_Controller extends Mixin
     public function enqueue_frontend_resources($displayed_gallery)
     {
         $this->call_parent('enqueue_frontend_resources', $displayed_gallery);
-        wp_enqueue_style('nextgen_basic_thumbnails_style', $this->get_static_url('photocrati-nextgen_basic_gallery#thumbnails/nextgen_basic_thumbnails.css'));
+        wp_enqueue_style('nextgen_basic_thumbnails_style', $this->get_static_url('photocrati-nextgen_basic_gallery#thumbnails/nextgen_basic_thumbnails.css'), FALSE, NGG_SCRIPT_VERSION);
         if ($displayed_gallery->display_settings['ajax_pagination']) {
-            wp_enqueue_script('nextgen-basic-thumbnails-ajax-pagination', $this->object->get_static_url('photocrati-nextgen_basic_gallery#thumbnails/ajax_pagination.js'));
+            wp_enqueue_script('nextgen-basic-thumbnails-ajax-pagination', $this->object->get_static_url('photocrati-nextgen_basic_gallery#thumbnails/ajax_pagination.js'), FALSE, NGG_SCRIPT_VERSION);
         }
-        wp_enqueue_style('nextgen_pagination_style', $this->get_static_url('photocrati-nextgen_pagination#style.css'));
+        wp_enqueue_style('nextgen_pagination_style', $this->get_static_url('photocrati-nextgen_pagination#style.css'), FALSE, NGG_SCRIPT_VERSION);
         $this->enqueue_ngg_styles();
     }
     /**

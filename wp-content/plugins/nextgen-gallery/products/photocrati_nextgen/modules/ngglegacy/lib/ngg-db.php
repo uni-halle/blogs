@@ -762,8 +762,9 @@ class nggdb
             return false;
 
         // build the final query
-        $query = "SELECT t.*, tt.* FROM $wpdb->nggallery AS t INNER JOIN $wpdb->nggpictures AS tt ON t.gid = tt.galleryid WHERE 1=1 $search ORDER BY tt.pid ASC $limit_by";
-        $result = $wpdb->get_results($query);
+        $query = "SELECT `tt`.`pid` FROM `{$wpdb->nggallery}` AS `t` INNER JOIN `{$wpdb->nggpictures}` AS `tt` ON `t`.`gid` = `tt`.`galleryid` WHERE 1=1 {$search} ORDER BY `tt`.`pid` ASC {$limit_by}";
+
+        $result = $wpdb->get_col($query);
 
         // TODO: Currently we didn't support a proper pagination
         $this->paged['total_objects'] = $this->paged['objects_per_page'] = intval ( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
@@ -771,8 +772,10 @@ class nggdb
 
         // Return the object from the query result
         if ($result) {
-            foreach ($result as $image) {
-                $images[] = new nggImage( $image );
+            $images = array();
+            $mapper = C_Image_Mapper::get_instance();
+            foreach ($result as $image_id) {
+                $images[] = $mapper->find($image_id);
             }
             return $images;
         }
