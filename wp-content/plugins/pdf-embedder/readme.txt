@@ -2,8 +2,8 @@
 Contributors: danlester
 Tags: doc, docx, pdf, office, powerpoint, google, document, embed, intranet
 Requires at least: 3.5
-Tested up to: 4.4
-Stable tag: 2.5
+Tested up to: 4.5
+Stable tag: 2.5.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -25,6 +25,8 @@ There is no button for users to download the PDF in the free version of the plug
 Hyperlinks in your PDF will only be clickable in the Premium versions.
 
 **Now translation-ready!** Please contribute your translations.
+
+French translation contributed by Thierry Gaillou of [JDFitForme](http://www.jdfitforme.fr/) - Thank you!
 
 = Usage =
 
@@ -161,6 +163,11 @@ the Plugins section of your Wordpress admin
 1. Follow the instructions from step 4 above
 
 == Changelog ==
+
+= 2.5.4 =
+
+Added French translation thanks to Thierry Gaillou of JDFitForme.
+Uses newer version of pdf.js library for rendering PDFs.
 
 = 2.5 =
 

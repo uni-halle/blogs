@@ -3,11 +3,11 @@
 jQuery(document).ready(function ($) {
 	
     $.fn.pdfEmbedder = function() {
-    	
+
     	this.each(function(index, rawDivContainer) {
-    	
+
     		var divContainer = $(rawDivContainer);
-    		
+
    		    divContainer.append($('<div></div>', {'class': 'pdfemb-loadingmsg'}).append(document.createTextNode(pdfemb_trans.objectL10n.loading)));
 
             // Disable right click?
@@ -151,13 +151,19 @@ jQuery(document).ready(function ($) {
 					}, 100);
                 });
             };
-	    	
+
 	    	var callback = function(pdf, showIsSecure) {
-    			
+
 	  	    	  /**
 	  	    	   * Asynchronously downloads PDF.
 	  	    	   */
-	    		
+
+                  if (pdf === null) {
+                      divContainer.empty().append($('<div></div>', {'class': 'pdfemb-errormsg'}).append(msgnode = $('<span></span>').append(
+                          document.createTextNode('Failed to load and decrypt PDF'))));
+                      return;
+                  }
+
 	  	    	  PDFJS.getDocument(pdf).then(
                       function(pdfDoc_) {
                           initPdfDoc(pdfDoc_, showIsSecure)
@@ -172,7 +178,7 @@ jQuery(document).ready(function ($) {
                           divContainer.empty().append($('<div></div>', {'class': 'pdfemb-errormsg'}).append(msgnode));
                       }
                   );
-	  	    	  
+
 	    	};
 
             if (divContainer.data('pdfDoc')) {
@@ -185,7 +191,7 @@ jQuery(document).ready(function ($) {
     	});
 
     	return this;
- 
+
     };
 
 
@@ -610,7 +616,7 @@ jQuery(document).ready(function ($) {
         }
     };
 
-    // Apply plugin to relevant divs/};
+    // Apply plugin to relevant divs
 	
 	PDFJS.workerSrc = pdfemb_trans.worker_src;
 	PDFJS.cMapUrl = pdfemb_trans.cmap_url;
