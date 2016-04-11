@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-01-24 20:29:43+0000\n"
+"PO-Revision-Date: 2016-04-10 09:48:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/1.0-alpha-1100\n"
+"X-Generator: GlotPress/1.1.0-alpha\n"
 "Project-Id-Version: Stable (latest release)\n"
 
 #: widgets/widgets.php:768
@@ -70,6 +70,10 @@ msgstr "Page Builder by SiteOrigin"
 msgid "https://siteorigin.com/page-builder/"
 msgstr "https://siteorigin.com/page-builder/"
 
+#. Description of the plugin/theme
+msgid "A drag and drop, responsive page builder that simplifies building your website."
+msgstr ""
+
 #. Author of the plugin/theme
 msgid "SiteOrigin"
 msgstr "SiteOrigin"
@@ -106,6 +110,10 @@ msgstr "Inline CSS"
 #: widgets/basic.php:13
 msgid "Layout Builder"
 msgstr "Layout Builder"
+
+#: widgets/basic.php:15
+msgid "A complete SiteOrigin Page Builder layout as a widget."
+msgstr "Ein komplettes SiteOrigin Page Builder-Layout als Widget."
 
 #: widgets/basic.php:53
 msgid "Open Builder"
@@ -252,77 +260,9 @@ msgstr "Nur Sticky"
 msgid "Additional "
 msgstr "Zusätzlich "
 
-#: widgets/widgets.php:207
-msgid "Style"
-msgstr "Style"
-
-#: widgets/widgets.php:231
-msgid "%s Style"
-msgstr "%s Style"
-
-#: widgets/widgets.php:631
-msgid "Additional Arguments"
-msgstr "Zusätzliche Argumente"
-
-#: widgets/widgets.php:692
-msgid "Gallery (PB)"
-msgstr "Galerie (PB)"
-
-#: widgets/widgets.php:694
-msgid "Displays a gallery."
-msgstr "Zeigt eine Galerie an."
-
-#: widgets/widgets.php:733
-msgid "Gallery Images"
-msgstr "Galeriebilder"
-
-#: widgets/widgets.php:734
-msgid "edit gallery"
-msgstr "Galerie bearbeiten"
-
-#: widgets/widgets.php:738
-msgid "Comma separated attachment IDs. Defaults to all current page's attachments."
-msgstr "Komma getrennte Anhangs-IDs. Standard für alle aktuellen Seiten-Anhänge."
-
-#: widgets/widgets.php:742
-msgid "Image Size"
-msgstr "Bildgröße"
-
-#: widgets/widgets.php:745
-msgid "Large"
-msgstr "Groß"
-
-#: widgets/widgets.php:746
-msgid "Medium"
-msgstr "Medium"
-
-#: widgets/widgets.php:747
-msgid "Thumbnail"
-msgstr "Vorschaubild"
-
-#: widgets/widgets.php:748
-msgid "Full"
-msgstr "Voll"
-
-#: widgets/widgets.php:756
-msgid "Gallery Type"
-msgstr "Galerie-Typ"
-
-#: widgets/widgets.php:761
-msgid "Columns"
-msgstr "Spalten"
-
-#: widgets/widgets.php:766
-msgid "Link To"
-msgstr "Link zu"
-
-#: widgets/widgets/animated-image/animated-image.php:15 widgets/widgets.php:822
-msgid "Image URL"
-msgstr "Bild URL"
-
-#: widgets/widgets/button/button.php:19 widgets/widgets.php:826
-msgid "Destination URL"
-msgstr "Ziel URL"
+#: widgets/basic.php:477 widgets/widgets.php:635
+msgid "Additional query arguments. See 1{query_posts}."
+msgstr "Zusätzliche Abfrage-Argumente. Siehe 1{query_posts}."
 
 #: widgets/widgets/animated-image/animated-image.php:6
 msgid "Animated Image (PB)"
@@ -331,6 +271,10 @@ msgstr "Animiertes Bild (PB)"
 #: widgets/widgets/animated-image/animated-image.php:8
 msgid "An image that animates in when it enters the screen."
 msgstr "Ein Bild, das animiert wird, sobald es auf dem Bildschirm erscheint."
+
+#: widgets/widgets/animated-image/animated-image.php:15 widgets/widgets.php:822
+msgid "Image URL"
+msgstr "Bild URL"
 
 #: widgets/widgets/animated-image/animated-image.php:19
 msgid "Animation"
@@ -364,6 +308,10 @@ msgstr "Button (PB)"
 #: widgets/widgets/testimonial/testimonial.php:27
 msgid "Text"
 msgstr "Text"
+
+#: widgets/widgets/button/button.php:19 widgets/widgets.php:826
+msgid "Destination URL"
+msgstr "Ziel URL"
 
 #: widgets/widgets/button/button.php:23
 #: widgets/widgets/call-to-action/call-to-action.php:31
@@ -459,6 +407,10 @@ msgstr "Featureliste"
 msgid "Testimonial (PB)"
 msgstr "Testimonial (PB)"
 
+#: widgets/widgets/testimonial/testimonial.php:8
+msgid "Displays a bullet list of points"
+msgstr "Zeigt eine Aufzählung von Punkten als Liste an."
+
 #: widgets/widgets/testimonial/testimonial.php:19
 msgid "Location"
 msgstr "Standort"
@@ -472,17 +424,73 @@ msgstr "Bild"
 msgid "URL"
 msgstr "URL"
 
-#: widgets/basic.php:15
-msgid "A complete SiteOrigin Page Builder layout as a widget."
-msgstr "Ein komplettes SiteOrigin Page Builder-Layout als Widget."
+#: widgets/widgets.php:207
+msgid "Style"
+msgstr "Style"
 
-#: widgets/widgets/testimonial/testimonial.php:8
-msgid "Displays a bullet list of points"
-msgstr "Zeigt eine Aufzählung von Punkten als Liste an."
+#: widgets/widgets.php:231
+msgid "%s Style"
+msgstr "%s Style"
 
-#: widgets/basic.php:477 widgets/widgets.php:635
-msgid "Additional query arguments. See 1{query_posts}."
-msgstr "Zusätzliche Abfrage-Argumente. Siehe 1{query_posts}."
+#: widgets/widgets.php:631
+msgid "Additional Arguments"
+msgstr "Zusätzliche Argumente"
+
+#: widgets/widgets.php:692
+msgid "Gallery (PB)"
+msgstr "Galerie (PB)"
+
+#: widgets/widgets.php:694
+msgid "Displays a gallery."
+msgstr "Zeigt eine Galerie an."
+
+#: widgets/widgets.php:733
+msgid "Gallery Images"
+msgstr "Galeriebilder"
+
+#: widgets/widgets.php:734
+msgid "edit gallery"
+msgstr "Galerie bearbeiten"
+
+#: widgets/widgets.php:738
+msgid "Comma separated attachment IDs. Defaults to all current page's attachments."
+msgstr "Komma getrennte Anhangs-IDs. Standard für alle aktuellen Seiten-Anhänge."
+
+#: widgets/widgets.php:742
+msgid "Image Size"
+msgstr "Bildgröße"
+
+#: widgets/widgets.php:745
+msgid "Large"
+msgstr "Groß"
+
+#: widgets/widgets.php:746
+msgid "Medium"
+msgstr "Medium"
+
+#: widgets/widgets.php:747
+msgid "Thumbnail"
+msgstr "Vorschaubild"
+
+#: widgets/widgets.php:748
+msgid "Full"
+msgstr "Voll"
+
+#: widgets/widgets.php:756
+msgid "Gallery Type"
+msgstr "Galerie-Typ"
+
+#: widgets/widgets.php:761
+msgid "Columns"
+msgstr "Spalten"
+
+#: widgets/widgets.php:766
+msgid "Link To"
+msgstr "Link zu"
+
+#: inc/default-styles.php:132 inc/default-styles.php:201
+msgid "Parallax"
+msgstr ""
 
 #: inc/default-styles.php:134 inc/default-styles.php:203
 msgid "How the background image is displayed."
@@ -572,6 +580,20 @@ msgstr "Entfernen"
 msgid "Enabled"
 msgstr "Aktiviert"
 
+#: inc/widgets-bundle.php:7
+msgid "SiteOrigin Editor"
+msgstr ""
+
+#: inc/widgets-bundle.php:8
+msgid "A rich text editor"
+msgstr ""
+
+#: inc/widgets-bundle.php:11 inc/widgets-bundle.php:23
+#: inc/widgets-bundle.php:35 inc/widgets-bundle.php:47
+#: inc/widgets-bundle.php:59 inc/widgets-bundle.php:71 inc/widgets.php:106
+msgid "SiteOrigin Widgets Bundle"
+msgstr "SiteOrigin Widgets Bundle"
+
 #: inc/widgets-bundle.php:19
 msgid "SiteOrigin Button"
 msgstr "SiteOrigin Button"
@@ -579,12 +601,6 @@ msgstr "SiteOrigin Button"
 #: inc/widgets-bundle.php:20 widgets/widgets/button/button.php:8
 msgid "A simple button"
 msgstr "Ein einfacher Button"
-
-#: inc/widgets-bundle.php:11 inc/widgets-bundle.php:23
-#: inc/widgets-bundle.php:35 inc/widgets-bundle.php:47
-#: inc/widgets-bundle.php:59 inc/widgets-bundle.php:71 inc/widgets.php:106
-msgid "SiteOrigin Widgets Bundle"
-msgstr "SiteOrigin Widgets Bundle"
 
 #: inc/widgets-bundle.php:31
 msgid "SiteOrigin Image"
@@ -622,9 +638,21 @@ msgstr "Stellen Sie Ihre Beiträge als Karussell dar."
 msgid "Widgets Bundle"
 msgstr "Widget-Paket"
 
+#: inc/widgets.php:99
+msgid "Enable more widgets in the 1{Widgets Bundle settings}."
+msgstr "Aktivieren Sie mehr Widgets in den 1{Widget-Paket-Einstellungen}. "
+
+#: inc/widgets.php:107
+msgid "Install the 1{Widgets Bundle} to get extra widgets."
+msgstr "Installieren Sie das 1{Widgets-Paket} um zusätzliche Widgets zu erhalten."
+
 #: inc/widgets.php:112
 msgid "Page Builder Widgets"
 msgstr "Page Builder Widgets"
+
+#: inc/widgets.php:120
+msgid "You can enable the legacy (PB) widgets in the 1{Page Builder settings}."
+msgstr "Sie können die veralteten (PB) Widets in den 1{Page Builder Einstellungen} aktivieren."
 
 #: inc/widgets.php:128
 msgid "WordPress Widgets"
@@ -750,6 +778,10 @@ msgstr "Inhalt kopieren"
 msgid "Copy content from Page Builder to post content."
 msgstr "Inhalte von Page Builder zu Post-Inhalt kopieren."
 
+#: settings/tpl/help.php:6
+msgid "Please read the 1{settings guide} of the Page Builder documentation for help."
+msgstr "Hilfe finden Sie in der 1{Einstellungs-Anleitung} der Page Builder Dokumentation."
+
 #: settings/tpl/settings.php:12
 msgid "Search Settings"
 msgstr "Sucheinstellungen"
@@ -833,6 +865,10 @@ msgstr "Original"
 #: siteorigin-panels.php:334
 msgid "Version restored"
 msgstr "Wiederhergestellte Version"
+
+#: siteorigin-panels.php:335
+msgid "Converted to editor"
+msgstr ""
 
 #. TRANSLATORS: Message displayed in the history when a widget is deleted
 #: siteorigin-panels.php:339
@@ -919,6 +955,30 @@ msgstr "Layout Builder Widget"
 msgid "Are you sure?"
 msgstr "Sind Sie sicher?"
 
+#: siteorigin-panels.php:377
+msgid "Search Results For: "
+msgstr ""
+
+#: siteorigin-panels.php:381
+msgid "Add Widget Below"
+msgstr ""
+
+#: siteorigin-panels.php:382
+msgid "Add Widget to Cell"
+msgstr ""
+
+#: siteorigin-panels.php:383 tpl/js-templates.php:187
+msgid "Search Widgets"
+msgstr "Widgets durchsuchen"
+
+#: siteorigin-panels.php:385 tpl/js-templates.php:17
+msgid "Add Row"
+msgstr "Zeile hinzufügen"
+
+#: siteorigin-panels.php:386
+msgid "Column"
+msgstr ""
+
 #: siteorigin-panels.php:394
 msgid "Page Builder layouts"
 msgstr "Page Builder Layouts"
@@ -931,13 +991,25 @@ msgstr "Fehler beim Upload oder Import der Datei."
 msgid "Untitled Widget"
 msgstr "Titelloses Widget"
 
+#: siteorigin-panels.php:834
+msgid "Read More"
+msgstr "Weiterlesen"
+
 #: siteorigin-panels.php:1207
 msgid "Edit Home Page"
 msgstr "Homepage editieren"
 
+#: siteorigin-panels.php:1299
+msgid "You need to install 1{%1$s} to use the widget 2{%2$s}."
+msgstr "Sie müssen {%1$s} installieren, um das Widget 2{%2$s} verwenden zu können."
+
 #: siteorigin-panels.php:1305
 msgid "Save and reload this page to start using the widget after you've installed it."
 msgstr "Speichern und laden Sie diese Seite erneut, um das Widget nach der Installation zu verwenden."
+
+#: siteorigin-panels.php:1322
+msgid "The widget 1{%1$s} is not available. Please try locate and install the missing plugin. Post on the 2{support forums} if you need help."
+msgstr "Das Widget 1{%1$s} ist nicht verfügbar. Bitte versuchen Sie das fehlende Plugin zu installieren. Besuchen Sie unser 2{Support-Forum}, wenn Sie Hilfe benötigen."
 
 #: siteorigin-panels.php:1389
 msgid "Support Forum"
@@ -959,6 +1031,10 @@ msgstr "Aus"
 msgid "Custom Home Page"
 msgstr "Benutzerdefinierte Homepage"
 
+#: tpl/admin-home-page.php:29
+msgid "Home page updated. 1{View page}."
+msgstr "Homepage aktualisiert. 1{Seite anzeigen}."
+
 #: tpl/admin-home-page.php:46
 msgid "Save Home Page"
 msgstr "Homepage speichern"
@@ -975,13 +1051,13 @@ msgstr "Sie können den SiteOrigin Page Builder verwenden, um Homepages und Unte
 msgid "The page layouts are responsive and fully customizable."
 msgstr "Die Seitenlayouts sind responsiv und voll anpassbar."
 
+#: tpl/help.php:18
+msgid "Read the 1{full documentation} on SiteOrigin. Ask a question on our 2{support forum} if you need help and sign up to 3{our newsletter} to stay up to date with future developments."
+msgstr "Lesen Sie die 1{vollständige Dokumentation} auf SiteOrigin. Stellen Sie eine Frage in unserem 2{Support-Forum}, wenn Sie Hilfe benötigen und melden Sie sich für unseren Newsletter an, um über die zukünftige Entwicklung auf dem Laufenden zu bleiben."
+
 #: tpl/js-templates.php:12
 msgid "Add Widget"
 msgstr "Widget hinzufügen"
-
-#: siteorigin-panels.php:385 tpl/js-templates.php:17
-msgid "Add Row"
-msgstr "Zeile hinzufügen"
 
 #: tpl/js-templates.php:22
 msgid "Prebuilt"
@@ -998,6 +1074,12 @@ msgstr "Live Editor"
 #: tpl/js-templates.php:39
 msgid "Switch to Editor"
 msgstr "Umschalten auf Editor"
+
+#. TRANSLATORS: This message gives suggestions of next steps for the user
+#. x{...} is used to insert links
+#: tpl/js-templates.php:64
+msgid "Add a 1{widget}, 2{row} or 3{prebuilt layout} to get started. Read our 4{documentation} if you need help."
+msgstr "Fügen Sie ein 1{Widget}, 2{Zeile} oder ein 3{vorgefertigtes Layout} ein, um anzufangen. Lesen Sie die 4{Dokumentation}, wenn Sie Hilfe benötigen."
 
 #: tpl/js-templates.php:83 tpl/js-templates.php:256
 msgid "Edit Row"
@@ -1031,10 +1113,6 @@ msgstr "Fertig"
 msgid "Add New Widget %s"
 msgstr "Neues Widget %s hinzufügen"
 
-#: siteorigin-panels.php:383 tpl/js-templates.php:187
-msgid "Search Widgets"
-msgstr "Widgets durchsuchen"
-
 #: tpl/js-templates.php:199
 msgid "Close"
 msgstr "Schließen"
@@ -1050,6 +1128,10 @@ msgstr "Links nach rechts"
 #: tpl/js-templates.php:291
 msgid "Right to Left"
 msgstr "Rechts nach links"
+
+#: tpl/js-templates.php:302
+msgid "1{Set row layout}: %1$s columns with a ratio of %2$s going from %3$s"
+msgstr "1{Zeilen-Layout einstellen}: %1$s Spalten mit einem Verhältnis %2$s von %3$s"
 
 #: tpl/js-templates.php:308
 msgid "Set"
@@ -1075,6 +1157,10 @@ msgstr "Suchen"
 msgid "Theme Defined"
 msgstr "Bestimmtes Theme"
 
+#: tpl/js-templates.php:358
+msgid "Layouts Directory"
+msgstr ""
+
 #: tpl/js-templates.php:359
 msgid "Import/Export"
 msgstr "Import/Export"
@@ -1082,6 +1168,30 @@ msgstr "Import/Export"
 #: tpl/js-templates.php:365
 msgid "Clone: %s"
 msgstr "Kopiere: %s"
+
+#: tpl/js-templates.php:383
+msgid "Do you want to browse the Prebuilt Layouts directory?"
+msgstr ""
+
+#: tpl/js-templates.php:384
+msgid "Enable"
+msgstr ""
+
+#: tpl/js-templates.php:392
+msgid "Newest Layouts"
+msgstr ""
+
+#: tpl/js-templates.php:398
+msgid "Your search didn't return any results"
+msgstr ""
+
+#: tpl/js-templates.php:425
+msgid "Previous"
+msgstr "Vorheriges"
+
+#: tpl/js-templates.php:426
+msgid "Next"
+msgstr "Nächstes"
 
 #: tpl/js-templates.php:436
 msgid "Drop import file here"
@@ -1111,6 +1221,10 @@ msgstr "Version wiederherstellen"
 msgid "Close Live Editor"
 msgstr "Live Editor schließen"
 
+#: tpl/js-templates.php:560
+msgid "No Results"
+msgstr "Kein Ergebnis"
+
 #: tpl/options.php:26
 msgid "Copy content from Page Builder into the standard content editor."
 msgstr "Inhalt vom Page Builder in den Standard-Editor kopieren."
@@ -1122,56 +1236,6 @@ msgstr "Animationen"
 #: tpl/options.php:33
 msgid "Disable animations for improved performance."
 msgstr "Deaktivieren Sie Animationen für eine bessere Leistung."
-
-#: siteorigin-panels.php:1322
-msgid "The widget 1{%1$s} is not available. Please try locate and install the missing plugin. Post on the 2{support forums} if you need help."
-msgstr "Das Widget 1{%1$s} ist nicht verfügbar. Bitte versuchen Sie das fehlende Plugin zu installieren. Besuchen Sie unser 2{Support-Forum}, wenn Sie Hilfe benötigen."
-
-#. TRANSLATORS: This message gives suggestions of next steps for the user
-#. x{...} is used to insert links
-#: tpl/js-templates.php:64
-msgid "Add a 1{widget}, 2{row} or 3{prebuilt layout} to get started. Read our 4{documentation} if you need help."
-msgstr "Fügen Sie ein 1{Widget}, 2{Zeile} oder ein 3{vorgefertigtes Layout} ein, um anzufangen. Lesen Sie die 4{Dokumentation}, wenn Sie Hilfe benötigen."
-
-#: inc/widgets.php:99
-msgid "Enable more widgets in the 1{Widgets Bundle settings}."
-msgstr "Aktivieren Sie mehr Widgets in den 1{Widget-Paket-Einstellungen}. "
-
-#: inc/widgets.php:107
-msgid "Install the 1{Widgets Bundle} to get extra widgets."
-msgstr "Installieren Sie das 1{Widgets-Paket} um zusätzliche Widgets zu erhalten."
-
-#: inc/widgets.php:120
-msgid "You can enable the legacy (PB) widgets in the 1{Page Builder settings}."
-msgstr "Sie können die veralteten (PB) Widets in den 1{Page Builder Einstellungen} aktivieren."
-
-#: siteorigin-panels.php:1299
-msgid "You need to install 1{%1$s} to use the widget 2{%2$s}."
-msgstr "Sie müssen {%1$s} installieren, um das Widget 2{%2$s} verwenden zu können."
-
-#: settings/tpl/help.php:6
-msgid "Please read the 1{settings guide} of the Page Builder documentation for help."
-msgstr "Hilfe finden Sie in der 1{Einstellungs-Anleitung} der Page Builder Dokumentation."
-
-#: tpl/admin-home-page.php:29
-msgid "Home page updated. 1{View page}."
-msgstr "Homepage aktualisiert. 1{Seite anzeigen}."
-
-#: tpl/help.php:18
-msgid "Read the 1{full documentation} on SiteOrigin. Ask a question on our 2{support forum} if you need help and sign up to 3{our newsletter} to stay up to date with future developments."
-msgstr "Lesen Sie die 1{vollständige Dokumentation} auf SiteOrigin. Stellen Sie eine Frage in unserem 2{Support-Forum}, wenn Sie Hilfe benötigen und melden Sie sich für unseren Newsletter an, um über die zukünftige Entwicklung auf dem Laufenden zu bleiben."
-
-#: tpl/js-templates.php:302
-msgid "1{Set row layout}: %1$s columns with a ratio of %2$s going from %3$s"
-msgstr "1{Zeilen-Layout einstellen}: %1$s Spalten mit einem Verhältnis %2$s von %3$s"
-
-#: tpl/js-templates.php:426
-msgid "Next"
-msgstr "Nächstes"
-
-#: tpl/js-templates.php:425
-msgid "Previous"
-msgstr "Vorheriges"
 
 #: inc/admin-actions.php:68
 msgid "No description"

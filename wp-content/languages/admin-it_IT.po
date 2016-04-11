@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-04-05 08:30:38+0000\n"
+"PO-Revision-Date: 2016-04-09 12:17:59+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,7 +41,7 @@ msgstr "<a href=\"https://codex.wordpress.org/Keyboard_Shortcuts\" target=\"_bla
 
 #: wp-admin/user-edit.php:258
 msgid "Show Toolbar when viewing site"
-msgstr "Visualizza la Barra strumenti quando si visualizza il sito"
+msgstr "Visualizza la barra strumenti quando si visualizza il sito"
 
 #: wp-admin/user-edit.php:294
 msgid "Usernames cannot be changed."
@@ -201,12 +201,12 @@ msgid ""
 "Please click the following link to confirm the invite:\n"
 "%4$s"
 msgstr ""
-"Salve,\n"
+"Ciao,\n"
 "\n"
-"Sei stato invitato ad unirti a '%1$s' su\n"
+"sei stato invitato a unirti a '%1$s' su\n"
 "%2$s con il ruolo di %3$s.\n"
 "\n"
-"Fare clic sul link seguente per confermare l'invito:\n"
+"Fai clic sul link seguente per confermare l'invito:\n"
 "%4$s"
 
 #: wp-admin/user-new.php:98
