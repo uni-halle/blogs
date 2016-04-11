@@ -4,7 +4,7 @@ Plugin Uri: https://wordpress.org/plugins/fg-joomla-to-wordpress/
 Tags: joomla, mambo, wordpress, importer, convert joomla to wordpress, migrate joomla to wordpress, joomla to wordpress migration, migrator, converter, import, k2, jcomments, joomlacomments, jomcomment, flexicontent, postviews, joomlatags, sh404sef, attachments, rokbox, kunena, phocagallery, phoca, joomsef, opensef, easyblog, zoo, zooitems, joomfish, joom!fish, wpml, joomgallery, jevents, contact directory, docman, virtuemart, woocommerce, jreviews, mosets tree, wpml, simple image gallery, rsgallery
 Requires at least: 4.4
 Tested up to: 4.4.2
-Stable tag: 3.5.1
+Stable tag: 3.6.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fred%2egilles%40free%2efr&lc=FR&item_name=fg-joomla-to-wordpress&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
@@ -15,7 +15,7 @@ A plugin to migrate categories, posts, tags, images and other medias from Joomla
 
 This plugin migrates sections, categories, posts, images, medias and tags from Joomla to Wordpress.
 
-It has been tested with **Joomla versions 1.5 through 3.4** and **Wordpress 4.4** on huge databases (72 000+ posts). It is compatible with multisite installations.
+It has been tested with **Joomla versions 1.5 through 3.5** and **Wordpress 4.4** on huge databases (72 000+ posts). It is compatible with multisite installations.
 
 Major features include:
 
@@ -209,6 +209,10 @@ http://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * other can be translated
 
 == Changelog ==
+
+= 3.6.0 =
+* New: Compatible with Joomla 3.5
+* Fixed: Images without slashes in their path were not imported
 
 = 3.5.1 =
 * Fixed: Import stopped when a post has no title or no content
@@ -743,6 +747,10 @@ http://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * Initial version: Import Joomla 1.5 sections, categories, posts and images
 
 == Upgrade Notice ==
+
+= 3.6.0 =
+New: Compatible with Joomla 3.5
+Fixed: Images without slashes in their path were not imported
 
 = 3.5.1 =
 Fixed: Import stopped when a post has no title or no content

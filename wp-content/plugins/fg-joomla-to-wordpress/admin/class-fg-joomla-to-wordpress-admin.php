@@ -1736,7 +1736,7 @@ SQL;
 					return false;
 				}
 			} else {
-				if ( strpos($filename, '/') == 0 ) { // Avoid a double slash
+				if ( strpos($filename, '/') === 0 ) { // Avoid a double slash
 					$old_filename = untrailingslashit($this->plugin_options['url']) . $filename;
 				} else {
 					$old_filename = trailingslashit($this->plugin_options['url']) . $filename;
