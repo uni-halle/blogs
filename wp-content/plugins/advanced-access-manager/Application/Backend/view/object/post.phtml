@@ -24,7 +24,7 @@
             <span><a href="#aam-inheritance-modal" data-toggle="modal"><?php echo __('Help', AAM_KEY); ?></a></span>
         </div>
 
-        <div class="aam-post-manager-container">
+        <div class="aam-container">
             <table id="post-list" class="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -38,17 +38,17 @@
                 <tbody></tbody>
             </table>
 
-            <div class="aam-post-manager" data-type="type">
+            <div class="aam-slide-form" data-type="type">
                 <?php echo apply_filters('aam-post-type-ui-filter', AAM_Backend_View::getInstance()->loadPartial('post-type.phtml')); ?>
                 <a href="#" class="btn btn-xs btn-primary post-back">&Lt; <?php echo __('Go Back', AAM_KEY); ?></a>
             </div>
 
-            <div class="aam-post-manager" data-type="term">
+            <div class="aam-slide-form" data-type="term">
                 <?php echo apply_filters('aam-term-type-ui-filter', AAM_Backend_View::getInstance()->loadPartial('term-type.phtml')); ?>
                 <a href="#" class="btn btn-xs btn-primary post-back">&Lt; <?php echo __('Go Back', AAM_KEY); ?></a>
             </div>
 
-            <div class="aam-post-manager" data-type="post">
+            <div class="aam-slide-form" data-type="post">
                 <table class="table table-striped table-bordered">
                     <tbody>
                         <tr>

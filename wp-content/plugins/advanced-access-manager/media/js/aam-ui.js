@@ -1076,7 +1076,7 @@
      */
     function loadAccessForm(object, id, btn) {
         //reset the form first
-        var container = $('.aam-post-manager[data-type="' + object + '"]');
+        var container = $('.aam-slide-form[data-type="' + object + '"]');
 
         $('.aam-row-action', container).each(function () {
             $(this).attr({
@@ -1285,7 +1285,7 @@
                         //visual feedback - show loading icon
                         $('td:eq(0)', row).html(
                                 '<i class="icon-spin4 animate-spin"></i>'
-                                );
+                        );
                         //set filter
                         filter[data[2]] = data[0];
                         //reset the ajax queue
@@ -1345,6 +1345,18 @@
                 var container = $('<div/>', {'class': 'aam-row-actions'});
                 $.each(actions, function (i, action) {
                     switch (action) {
+                        case 'drilldown':
+                            $(container).append($('<i/>', {
+                                'class': 'aam-row-action text-success icon-level-down'
+                            }).bind('click', function () {
+                                $('td:eq(1) a', row).trigger('click');
+                                $(this).tooltip('hide');
+                            }).attr({
+                                'data-toggle': "tooltip",
+                                'title': aam.__('Drill-Down')
+                            }));
+                            break;
+                            
                         case 'manage':
                             $(container).append($('<i/>', {
                                 'class': 'aam-row-action text-info icon-cog'
@@ -1386,7 +1398,7 @@
             filter.type = $(this).data('id');
             $('#post-list').DataTable().ajax.reload();
             $(this).nextAll().remove();
-            $('.aam-post-manager').removeClass('active');
+            $('.aam-slide-form').removeClass('active');
             $('#post-list_wrapper').removeClass('aam-hidden');
             $('#post-overwritten, #post-inherited').addClass('hidden');
         });
@@ -1426,12 +1438,12 @@
         });
 
         //go back button
-        $('.aam-post-manager').delegate('.post-back', 'click', function (event) {
+        $('.aam-slide-form').delegate('.post-back', 'click', function (event) {
             event.preventDefault();
 
             var type = $(this).parent().data('type');
 
-            $('.aam-post-manager[data-type="' + type + '"]').removeClass('active');
+            $('.aam-slide-form[data-type="' + type + '"]').removeClass('active');
             $('#post-list_wrapper').removeClass('aam-hidden');
             $('.aam-post-breadcrumb span:last').remove();
             $('#post-overwritten, #post-inherited').addClass('hidden');

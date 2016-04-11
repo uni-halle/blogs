@@ -54,6 +54,9 @@ class AAM_Backend_Filter {
         
         //some additional filter for user capabilities
         add_filter('user_has_cap', array($this, 'checkUserCap'), 999, 4);
+        
+        //user profile update filter
+        add_action('profile_update', array($this, 'profileUpdate'), 10, 2);
     }
 
     /**
@@ -284,6 +287,22 @@ class AAM_Backend_Filter {
         }
         
         return $allCaps;
+    }
+    
+    /**
+     * Profile update hook
+     * 
+     * Clear user cache if profile updated
+     * 
+     * @param int   $user_id
+     * @param array $old_user_data
+     * 
+     * @return void
+     * 
+     * @access public
+     */
+    public function profileUpdate($user_id, $old_user_data) {
+        do_action('aam-clear-cache-action', new AAM_Core_Subject_User($user_id));
     }
     
     /**

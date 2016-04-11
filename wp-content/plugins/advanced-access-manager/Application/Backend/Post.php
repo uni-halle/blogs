@@ -130,7 +130,7 @@ class AAM_Backend_Post {
                     null,
                     'type',
                     $type->labels->name,
-                    'manage'
+                    'drilldown,manage'
                 );
             }
         }
