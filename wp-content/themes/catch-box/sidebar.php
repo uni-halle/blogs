@@ -8,16 +8,15 @@
  */
 ?>
 
-<?php 
-/** 
+<?php
+/**
  * catchbox_above_secondary hook
  */
 do_action( 'catchbox_above_secondary' );
 
-$options = catchbox_get_theme_options();
-$layout = $options['theme_layout'];
-	
-if ( $layout == 'content-onecolumn' || $layout == 'no-sidebar' || is_page_template( 'page-disable-sidebar.php' ) || is_page_template( 'page-fullwidth.php' ) || is_page_template( 'page-onecolumn.php' ) ) : 
+$layout = catchbox_get_theme_layout();
+
+if ( $layout == 'content-onecolumn' || $layout == 'no-sidebar' || is_page_template( 'page-disable-sidebar.php' ) || is_page_template( 'page-fullwidth.php' ) || is_page_template( 'page-onecolumn.php' ) ) :
 	return false;
 else :
 ?>
@@ -52,7 +51,7 @@ else :
 		</aside><!-- #secondary .widget-area -->
 <?php endif;
 
-/** 
+/**
  * catchbox_below_secondary hook
  */
 do_action( 'catchbox_below_secondary' ); ?>

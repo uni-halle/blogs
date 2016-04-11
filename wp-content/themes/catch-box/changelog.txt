@@ -1,5 +1,19 @@
 == Change log ==
 
+Version 4.4.1
+* Updated: max width of content editor
+* Bug Fixed: Color scheme not changing
+
+Version 4.4
+* Added: Metabox Options For Layout in page and post add/edit pages
+* Updated: Values for Theme Layouts to match wigh Pro Version
+* Updated: Swedish translation sv_SE.po and sv_SE.mo
+* Updated: Content Width Implementation
+* Updated: Theme Layout retrieval via function
+* Updated: Favicon and Web Clip Migration to Site Icon( Core Support )
+* Updated: Logo to Custom Logo( Core Support ) for WP version 4.5
+* Bug Fixed: Infinite Scroll color scheme issue
+
 Version 4.3.6
 * Updated: French translation fr_FR.po and fr_FR.mo
 * Updated: Sidr menu script to version 2.1.1.1
@@ -444,7 +458,7 @@ Version 1.2.3
 
 Version 1.2.2
 * Fixed Responsive Design CSS and Image Size
-* Note if you are upgrading the theme then please use the regenerate thumbnail plugin (http://wordpress.org/extend/plugins/regenerate-thumbnails/) to regenerate the new image size for featured image. It's size is 644px width and 320px height.
+* Note if you are upgrading the theme then please use the regenerate thumbnail plugin (https://wordpress.org/extend/plugins/regenerate-thumbnails/) to regenerate the new image size for featured image. It's size is 644px width and 320px height.
 
 Version 1.2.1
 * Fixed the Featured Image size to match with iPad display

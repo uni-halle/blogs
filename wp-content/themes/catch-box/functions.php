@@ -38,13 +38,6 @@
  * @since Catch Box 1.0
  */
 
-/**
- * Set the content width based on the theme's design and stylesheet.
- */
-if ( ! isset( $content_width ) ) {
-	$content_width = 530; /* pixels */
-}
-
 
 if ( ! function_exists( 'catchbox_content_width' ) ) :
 /**
@@ -52,48 +45,22 @@ if ( ! function_exists( 'catchbox_content_width' ) ) :
  */
 function catchbox_content_width() {
 
-	//Getting Ready to load data from Theme Options Panel
-	global $post, $wp_query, $content_width, $catchbox_options_settings;
-   	$options = $catchbox_options_settings;
-	$themeoption_layout = $options['sidebar_layout'];
+	$layout = catchbox_get_theme_layout();
 
-	// Front page displays in Reading Settings
-	$page_on_front = get_option('page_on_front') ;
-	$page_for_posts = get_option('page_for_posts');
+	$content_width = 530;
 
-	// Get Page ID outside Loop
-	$page_id = $wp_query->get_queried_object_id();
-
-	// Blog Page setting in Reading Settings
-	if ( $page_id == $page_for_posts ) {
-		$layout = get_post_meta( $page_for_posts, 'catchbox-sidebarlayout', true );
-	}
-	// Settings for page/post/attachment
-	elseif ( $post) {
- 		if ( is_attachment() ) {
-			$parent = $post->post_parent;
-			$layout = get_post_meta( $parent, 'catchbox-sidebarlayout', true );
-		} else {
-			$layout = get_post_meta( $post->ID, 'catchbox-sidebarlayout', true );
-		}
-	}
-
-	if ( empty( $layout ) || ( !is_page() && !is_single() ) ) {
-		$layout='default';
-	}
-
-	if ( ( $layout == 'no-sidebar-full-width' || ( $layout=='default' && $themeoption_layout == 'no-sidebar-full-width' ) ) ) {
+	if ( is_page_template( 'page-fullwidth.php' ) ) {
 		$content_width = 880; /* pixels */
 	}
-	elseif ( ( $layout == 'no-sidebar' || ( $layout=='default' && $themeoption_layout == 'no-sidebar' ) ) ) {
+	else if ( is_page_template( 'page-disable-sidebar.php' ) ) {
 		$content_width = 660; /* pixels */
 	}
-	elseif ( ( $layout == 'no-sidebar-one-column' || ( $layout=='default' && $themeoption_layout == 'no-sidebar-one-column' ) ) ) {
+	else if ( $layout == 'content-onecolumn' || is_page_template( 'page-onecolumn.php' ) ) {
 		$content_width = 620; /* pixels */
 	}
-
 }
 endif; // catchbox_content_width
+add_action( 'after_setup_theme', 'catchbox_content_width', 0 );
 
 
 /**
@@ -173,43 +140,46 @@ function catchbox_setup() {
 	//disable old image size for featued posts add_image_size( 'featured-slider', 560, 270, true );
 	add_image_size( 'featured-slider', 644, 320, true ); // Used for featured posts if a large-feature doesn't exist
 
-	// Add support for custom header
-	add_theme_support( 'custom-header', array(
-		// Header image random rotation default
-		'random-default'			=> false,
-		// Header image flex width
-		'flex-width'      			=> true,
-		// Header image flex height
-		'flex-height'				=> true,
-		// Template header style callback
-		'wp-head-callback'			=> 'catchbox_header_style',
-		// Admin header style callback
-		'admin-head-callback'		=> 'catchbox_admin_header_style',
-		// Admin preview style callback
-		'admin-preview-callback'	=> 'catchbox_admin_header_image'
-	) );
+	//@remove Remove if block when WordPress 4.8 is released
+	if( !function_exists( 'has_custom_logo' ) ) {
+		// Add support for custom header
+		add_theme_support( 'custom-header', array(
+			// Header image random rotation default
+			'random-default'			=> false,
+			// Header image flex width
+			'flex-width'      			=> true,
+			// Header image flex height
+			'flex-height'				=> true,
+			// Template header style callback
+			'wp-head-callback'			=> 'catchbox_header_style',
+			// Admin header style callback
+			'admin-head-callback'		=> 'catchbox_admin_header_style',
+			// Admin preview style callback
+			'admin-preview-callback'	=> 'catchbox_admin_header_image'
+		) );
 
-	// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
-	register_default_headers( array(
-		'wheel' => array(
-			'url' => '%s/images/headers/garden.jpg',
-			'thumbnail_url' => '%s/images/headers/garden-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Garden', 'catch-box' )
-		),
-		'shore' => array(
-			'url' => '%s/images/headers/flower.jpg',
-			'thumbnail_url' => '%s/images/headers/flower-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Flower', 'catch-box' )
-		),
-		'trolley' => array(
-			'url' => '%s/images/headers/mountain.jpg',
-			'thumbnail_url' => '%s/images/headers/mountain-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Mountain', 'catch-box' )
-		),
-	) );
+		// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
+		register_default_headers( array(
+			'wheel' => array(
+				'url' => '%s/images/headers/garden.jpg',
+				'thumbnail_url' => '%s/images/headers/garden-thumbnail.jpg',
+				/* translators: header image description */
+				'description' => __( 'Garden', 'catch-box' )
+			),
+			'shore' => array(
+				'url' => '%s/images/headers/flower.jpg',
+				'thumbnail_url' => '%s/images/headers/flower-thumbnail.jpg',
+				/* translators: header image description */
+				'description' => __( 'Flower', 'catch-box' )
+			),
+			'trolley' => array(
+				'url' => '%s/images/headers/mountain.jpg',
+				'thumbnail_url' => '%s/images/headers/mountain-thumbnail.jpg',
+				/* translators: header image description */
+				'description' => __( 'Mountain', 'catch-box' )
+			),
+		) );
+	}
 
 	// Add support for custom backgrounds
 	add_theme_support( 'custom-background' );
@@ -239,11 +209,8 @@ function catchbox_setup() {
 	 */
 	add_editor_style();
 
-	// Load up our theme options page and related code.
-	require( get_template_directory() . '/inc/theme-options.php' );
 
-	// Grab Catch Box's Adspace Widget.
-	require( get_template_directory() . '/inc/widgets.php' );
+
 
 	/**
      * This feature enables Jetpack plugin Infinite Scroll
@@ -255,14 +222,179 @@ function catchbox_setup() {
         'footer'         => 'page',
     ) );
 
+    //@remove Remove check when WordPress 4.8 is released
+	if ( function_exists( 'has_custom_logo' ) ) {
+		/**
+		* Setup Custom Logo Support for theme
+		* Supported from WordPress version 4.5 onwards
+		* More Info: https://make.wordpress.org/core/2016/03/10/custom-logo/
+		*/
+		add_theme_support( 'custom-logo',
+			array(
+		   		'height'      => 300,
+	 			'width'       => 125,
+	 			'flex-height' => true,
+			)
+		);
+	}
+
 }
 endif; // catchbox_setup
 
+
+if ( ! function_exists( 'catchbox_get_theme_layout' ) ) :
+	/**
+	 * Returns Theme Layout prioritizing the meta box layouts
+	 *
+	 * @uses  get_options
+	 *
+	 * @action wp_head
+	 *
+	 * @since Catch Box 4.6
+	 */
+	function catchbox_get_theme_layout() {
+		$id = '';
+
+		global $post, $wp_query;
+
+	    // Front page displays in Reading Settings
+		$page_on_front  = get_option('page_on_front') ;
+		$page_for_posts = get_option('page_for_posts');
+
+		// Get Page ID outside Loop
+		$page_id = $wp_query->get_queried_object_id();
+
+		// Blog Page or Front Page setting in Reading Settings
+		if ( $page_id == $page_for_posts || $page_id == $page_on_front ) {
+	        $id = $page_id;
+	    }
+	    else if ( is_singular() ) {
+	 		if ( is_attachment() ) {
+				$id = $post->post_parent;
+			}
+			else {
+				$id = $post->ID;
+			}
+		}
+
+		//Get appropriate metabox value of layout
+		if ( '' != $id ) {
+			$layout = get_post_meta( $id, 'catchbox-sidebarlayout', true );
+		}
+		else {
+			$layout = 'default';
+		}
+
+		//Load options data
+		$options = catchbox_get_theme_options();
+
+		//check empty and load default
+		if ( empty( $layout ) || 'default' == $layout ) {
+			$layout = $options['theme_layout'];
+		}
+
+		//Condition checks for backward compatibility
+		if ( 'content-sidebar' ==$layout ) {
+			$layout = 'right-sidebar';
+		}
+		else if ( 'sidebar-content' ==$layout ) {
+			$layout = 'left-sidebar';
+		}
+		else if ( 'content-onecolumn' ==$layout ) {
+			$layout = 'no-sidebar-one-column';
+		}
+
+		return $layout;
+	}
+endif; //catchbox_get_theme_layout
+
+
+/**
+ * Migrate Logo to New WordPress core Custom Logo
+ *
+ *
+ * Runs if version number saved in theme_mod "logo_version" doesn't match current theme version.
+ */
+function catchbox_logo_migrate() {
+	$ver = get_theme_mod( 'logo_version', false );
+
+	// Return if update has already been run
+	if ( version_compare( $ver, '3.6' ) >= 0 ) {
+		return;
+	}
+
+	// If a logo has been set previously, update to use logo feature introduced in WordPress 4.5
+	if ( function_exists( 'the_custom_logo' ) ) {
+		$header_image = get_header_image();
+
+		if ( ! empty( $header_image ) ) {
+			// Since previous logo was stored a URL, convert it to an attachment ID
+			$logo = attachment_url_to_postid( $header_image );
+
+			if ( is_int( $logo ) ) {
+				set_theme_mod( 'custom_logo', $logo );
+			}
+		}
+
+  		// Update to match logo_version so that script is not executed continously
+		set_theme_mod( 'logo_version', '3.6' );
+	}
+}
+add_action( 'after_setup_theme', 'catchbox_logo_migrate' );
+
+
+/**
+ * Migrate Custom Favicon to WordPress core Site Icon
+ *
+ * Runs if version number saved in theme_mod "site_icon_version" doesn't match current theme version.
+ */
+function catchbox_site_icon_migrate() {
+	$ver = get_theme_mod( 'site_icon_version', false );
+
+	//Return if update has already been run
+	if ( version_compare( $ver, '3.6' ) >= 0 ) {
+		return;
+	}
+
+	/**
+	 * Get Theme Options Values
+	 */
+	$options = catchbox_get_theme_options();
+
+   	// If a logo has been set previously, update to use logo feature introduced in WordPress 4.5
+	if ( function_exists( 'has_site_icon' ) ) {
+		if( isset( $options['fav_icon'] ) && '' != $options['fav_icon'] ) {
+			// Since previous logo was stored a URL, convert it to an attachment ID
+			$site_icon = attachment_url_to_postid( $options['fav_icon'] );
+
+			if ( is_int( $site_icon ) ) {
+				update_option( 'site_icon', $site_icon );
+			}
+		}
+
+	  	// Update to match site_icon_version so that script is not executed continously
+		set_theme_mod( 'site_icon_version', '3.6' );
+	}
+}
+add_action( 'after_setup_theme', 'catchbox_site_icon_migrate' );
+
+
+// Load up our theme options page and related code.
+require( get_template_directory() . '/inc/theme-options.php' );
+
+// Grab Catch Box's Adspace Widget.
+require( get_template_directory() . '/inc/widgets.php' );
 
 /**
  * Custom Menus
  */
 require get_template_directory() . '/inc/catchbox-menus.php';
+
+
+/**
+ * Custom Metabox
+ */
+require get_template_directory() . '/inc/catchbox-metabox.php';
 
 
 if ( ! function_exists( 'catchbox_header_style' ) ) :
@@ -719,13 +851,16 @@ function catchbox_body_classes( $classes ) {
 	if ( function_exists( 'is_multi_author' ) && !is_multi_author() ) {
 		$classes[] = 'single-author';
 	}
-	if ( $layout == 'content-sidebar' && !is_page_template( 'page-disable-sidebar.php' ) && !is_page_template( 'page-fullwidth.php' )  && !is_page_template( 'page-onecolumn.php' ) ) {
+
+	$layout = catchbox_get_theme_layout();
+
+	if ( $layout == 'right-sidebar' && !is_page_template( 'page-disable-sidebar.php' ) && !is_page_template( 'page-fullwidth.php' )  && !is_page_template( 'page-onecolumn.php' ) ) {
 		$classes[] = 'right-sidebar';
 	}
-	elseif ( $layout == 'sidebar-content' && !is_page_template( 'page-disable-sidebar.php' ) && !is_page_template( 'page-fullwidth.php' )  && !is_page_template( 'page-onecolumn.php' ) ) {
+	elseif ( $layout == 'left-sidebar' && !is_page_template( 'page-disable-sidebar.php' ) && !is_page_template( 'page-fullwidth.php' )  && !is_page_template( 'page-onecolumn.php' ) ) {
 		$classes[] = 'left-sidebar';
 	}
-	elseif ( $layout == 'content-onecolumn' || is_page_template( 'page-onecolumn.php' ) && !is_page_template( 'page-disable-sidebar.php' ) && !is_page_template( 'page-fullwidth.php' ) ) {
+	elseif ( $layout == 'no-sidebar-one-column' || is_page_template( 'page-onecolumn.php' ) && !is_page_template( 'page-disable-sidebar.php' ) && !is_page_template( 'page-fullwidth.php' ) ) {
 		$classes[] = 'no-sidebar one-column';
 	}
 	elseif ( is_page_template( 'page-disable-sidebar.php' ) || is_attachment() ) {
@@ -983,9 +1118,14 @@ add_filter( 'comment_form_default_fields', 'catchbox_comment_form_fields' );
  * @display favicon
  *
  * @uses set_transient and delete_transient
+ *
+ * @remove Remove this function when WordPress 4.8 is released
  */
 function catchbox_favicon() {
-	//delete_transient( 'catchbox_favicon' );
+	if ( function_exists( 'has_site_icon' ) ) {
+		//Bail Early if Core Site Icon Feature is Present
+		return;
+	}
 
 	if ( !$catchbox_favicon = get_transient( 'catchbox_favicon' ) ) {
 
@@ -1018,9 +1158,14 @@ function catchbox_favicon() {
  * @display web clip
  *
  * @uses set_transient and delete_transient
+ *
+ * @remove Remove this function when WordPress 4.8 is released
  */
 function catchbox_webclip() {
-	//delete_transient( 'catchbox_webclip' );
+	if ( function_exists( 'has_site_icon' ) ) {
+		//Bail Early if Core Site Icon Feature is Present
+		return;
+	}
 
 	if ( !$catchbox_webclip = get_transient( 'catchbox_webclip' ) ) {
 
@@ -1244,11 +1389,16 @@ if ( ! function_exists( 'catchbox_header_image' ) ) :
  * @since Catch Box 2.5
  */
 function catchbox_header_image() {
-
 	// Check to see if the header image has been removed
-	global $_wp_default_headers;
 	$header_image = get_header_image();
-	if ( ! empty( $header_image ) ) : ?>
+
+	// Check Logo
+	if ( function_exists( 'has_custom_logo' ) ) {
+		if ( has_custom_logo() ) {
+			echo '<div id="site-logo">'. get_custom_logo() . '</div><!-- #site-logo -->';
+		}
+	}
+	else if ( ! empty( $header_image ) ) : ?>
 
     	<div id="site-logo">
         	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
@@ -1270,9 +1420,17 @@ if ( ! function_exists( 'catchbox_header_details' ) ) :
 function catchbox_header_details() {
 
 	// Check to see if the header image has been removed
-	global $_wp_default_headers;
 	$header_image = get_header_image();
-	if ( ! empty( $header_image ) ) :
+	// Check Logo
+	if ( function_exists( 'has_custom_logo' ) ) {
+		if ( has_custom_logo() ) {
+			echo '<div id="hgroup" class="site-details with-logo">';
+		}
+		else {
+    		echo '<div id="hgroup" class="site-details">';
+    	}
+	}
+	else if ( ! empty( $header_image ) ) :
      	echo '<div id="hgroup" class="site-details with-logo">';
 	else :
     	echo '<div id="hgroup" class="site-details">';

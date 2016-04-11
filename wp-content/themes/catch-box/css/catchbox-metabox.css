@@ -1,0 +1,11 @@
+
+#siderbar-layout td {
+    display: inline-block;
+    max-width: 100px;
+    text-align: left;
+    vertical-align: top;
+}
+#siderbar-layout label img {
+	max-width: 100%;
+	height: auto;
+}

@@ -75,4 +75,4 @@ dark, light, blue, white, black, gray, one-column, two-columns, left-sidebar, ri
 4. Complete all of the required inputs on the Catch Box Options page (in the WP admin panel) and click "Save Changes".
 
 == Changelog ==
-Please refer to changelog.txt file or change log page at http://catchthemes.com/changelogs/catch-box-theme/
+Please refer to changelog.txt file or change log page at https://catchthemes.com/changelogs/catch-box-theme/

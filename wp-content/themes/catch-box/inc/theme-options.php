@@ -58,23 +58,25 @@ function catchbox_theme_options_init() {
 		'theme_options' // Menu slug, used to uniquely identify the page; see catchbox_theme_options_add_page()
 	);
 
-	// Register our individual settings fields
-	add_settings_field(
-		'favicon', // Unique identifier for the field for this section
-		__( 'Favicon URL', 'catch-box' ), // Setting field label
-		'catchbox_settings_field_favicon', // Function that renders the settings field
-		'theme_options', // Menu slug, used to uniquely identify the page; see catchbox_theme_options_add_page()
-		'general' // Settings section. Same as the first argument in the add_settings_section() above
-	);
+	//@remove Remove if block when WordPress 4.8 is released
+    if( !function_exists( 'has_site_icon' ) ) {
+    	add_settings_field(
+			'favicon', // Unique identifier for the field for this section
+			__( 'Favicon URL', 'catch-box' ), // Setting field label
+			'catchbox_settings_field_favicon', // Function that renders the settings field
+			'theme_options', // Menu slug, used to uniquely identify the page; see catchbox_theme_options_add_page()
+			'general' // Settings section. Same as the first argument in the add_settings_section() above
+		);
 
-	// Register our individual settings fields
-	add_settings_field(
-		'webclip', // Unique identifier for the field for this section
-		__( 'Web Clip Icon URL', 'catch-box' ), // Setting field label
-		'catchbox_settings_field_webclip', // Function that renders the settings field
-		'theme_options', // Menu slug, used to uniquely identify the page; see catchbox_theme_options_add_page()
-		'general' // Settings section. Same as the first argument in the add_settings_section() above
-	);
+		// Register our individual settings fields
+		add_settings_field(
+			'webclip', // Unique identifier for the field for this section
+			__( 'Web Clip Icon URL', 'catch-box' ), // Setting field label
+			'catchbox_settings_field_webclip', // Function that renders the settings field
+			'theme_options', // Menu slug, used to uniquely identify the page; see catchbox_theme_options_add_page()
+			'general' // Settings section. Same as the first argument in the add_settings_section() above
+		);
+    }
 
 	// Register our individual settings fields
 	add_settings_field(
@@ -222,6 +224,8 @@ add_action( 'admin_menu', 'catchbox_theme_options_add_page' );
  * Renders the favicon url setting field.
  *
  * @since Catch Box 1.6
+ *
+ * @remove Remove if block when WordPress 4.8 is released
  */
 function catchbox_settings_field_favicon() {
 	$options = catchbox_get_theme_options();
@@ -236,6 +240,8 @@ function catchbox_settings_field_favicon() {
  * Renders the favicon url setting field.
  *
  * @since Catch Box 2.0.3
+ *
+ * @remove Remove if block when WordPress 4.8 is released
  */
 function catchbox_settings_field_webclip() {
 	$options = catchbox_get_theme_options();
@@ -309,17 +315,20 @@ function catchbox_color_schemes() {
 function catchbox_layouts() {
 	$layout_options = array(
 		'content-sidebar' 	=> array(
-			'value' 		=> 'content-sidebar',
+			'old_value'		=> 'content-sidebar',
+			'value' 		=> 'right-sidebar',
 			'label'			=> __( 'Content on left', 'catch-box' ),
 			'thumbnail'		=> get_template_directory_uri() . '/inc/images/content-sidebar.png',
 		),
 		'sidebar-content' 	=> array(
-			'value'			=> 'sidebar-content',
+			'old_value'		=> 'sidebar-content',
+			'value'			=> 'left-sidebar',
 			'label'			=> __( 'Content on right', 'catch-box' ),
 			'thumbnail'		=> get_template_directory_uri() . '/inc/images/sidebar-content.png',
 		),
 		'content-onecolumn'	=> array(
-			'value'			=> 'content-onecolumn',
+			'old_value'		=> 'content-onecolumn',
+			'value'			=> 'no-sidebar-one-column',
 			'label'			=> __( 'One-column, no sidebar', 'catch-box' ),
 			'thumbnail'		=> get_template_directory_uri() . '/inc/images/content.png',
 		)
@@ -362,7 +371,7 @@ function catchbox_get_default_theme_options() {
 		'excerpt_length'		=> 40,
 		'color_scheme'			=> 'light',
 		'link_color'			=> catchbox_get_default_link_color( 'light' ),
-		'theme_layout'			=> 'content-sidebar',
+		'theme_layout'			=> 'right-sidebar',
 		'content_layout'		=> 'excerpt',
 		'site_title_above'		=> '0',
 		'disable_header_search' => '0',
@@ -380,7 +389,7 @@ function catchbox_get_default_theme_options() {
 	);
 
 	if ( is_rtl() )
- 		$default_theme_options['theme_layout'] = 'sidebar-content';
+ 		$default_theme_options['theme_layout'] = 'left-sidebar';
 
 	return apply_filters( 'catchbox_default_theme_options', $default_theme_options );
 }
@@ -583,6 +592,16 @@ function catchbox_settings_field_scroll_up() {
 function catchbox_settings_field_layout() {
 	$options = catchbox_get_theme_options();
 	foreach ( catchbox_layouts() as $layout ) {
+		//Condition checks for backward compatibility
+		if ( 'content-sidebar' == $options['theme_layout'] ) {
+			$options['theme_layout'] = 'right-sidebar';
+		}
+		else if ( 'sidebar-content' == $options['theme_layout'] ) {
+			$options['theme_layout'] = 'left-sidebar';
+		}
+		else if ( 'content-onecolumn' == $options['theme_layout'] ) {
+			$options['theme_layout'] = 'no-sidebar-one-column';
+		}
 		?>
 		<div class="layout image-radio-option theme-layout">
 		<label class="description">
@@ -1169,17 +1188,17 @@ function catchbox_enqueue_color_scheme() {
 	$color_scheme = $options['color_scheme'];
 
 	if ( 'dark' == $color_scheme )
-		wp_enqueue_style( 'dark', get_template_directory_uri() . '/colors/dark.css', array(), null );
+		wp_enqueue_style( 'dark', get_template_directory_uri() . '/colors/dark.css', array( 'catchbox-style' ), null );
 	elseif ( 'blue' == $color_scheme )
-		wp_enqueue_style( 'blue', get_template_directory_uri() . '/colors/blue.css', array(), null );
+		wp_enqueue_style( 'blue', get_template_directory_uri() . '/colors/blue.css', array( 'catchbox-style' ), null );
 	elseif ( 'green' == $color_scheme )
-		wp_enqueue_style( 'green', get_template_directory_uri() . '/colors/green.css', array(), null );
+		wp_enqueue_style( 'green', get_template_directory_uri() . '/colors/green.css', array( 'catchbox-style' ), null );
 	elseif ( 'red' == $color_scheme )
-		wp_enqueue_style( 'red', get_template_directory_uri() . '/colors/red.css', array(), null );
+		wp_enqueue_style( 'red', get_template_directory_uri() . '/colors/red.css', array( 'catchbox-style' ), null );
 	elseif ( 'brown' == $color_scheme )
-		wp_enqueue_style( 'brown', get_template_directory_uri() . '/colors/brown.css', array(), null );
+		wp_enqueue_style( 'brown', get_template_directory_uri() . '/colors/brown.css', array( 'catchbox-style' ), null );
 	elseif ( 'orange' == $color_scheme )
-		wp_enqueue_style( 'orange', get_template_directory_uri() . '/colors/orange.css', array(), null );
+		wp_enqueue_style( 'orange', get_template_directory_uri() . '/colors/orange.css', array( 'catchbox-style' ), null );
 
 	do_action( 'catchbox_enqueue_color_scheme', $color_scheme );
 }

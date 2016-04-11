@@ -54,10 +54,11 @@ body {
 	border-bottom: 1px solid #802602;
 	margin-bottom: 0;
 }
-#content #infinite-handle span {
+#content #infinite-handle span button {
 	background-color: #d83f03;
 }
-#content #infinite-handle span:hover {
+#content #infinite-handle span button:hover,
+#content #infinite-handle span button:focus {
 	background-color: #802602;
 }
 

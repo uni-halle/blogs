@@ -197,30 +197,6 @@ function catchbox_customize_register( $wp_customize ) {
 	}
 
 	$settings_parameters = array(
-		//Favicon
-		'fav_icon' => array(
-			'id' 				=> 'fav_icon',
-			'title' 			=> __( 'Fav Icon', 'catch-box' ),
-			'description'		=> '',
-			'field_type' 		=> 'image',
-			'sanitize' 			=> 'catchbox_sanitize_image',
-			'panel' 			=> 'theme_options',
-			'section' 			=> 'favicon',
-			'default' 			=> '',
-			'active_callback'	=> 'catchbox_is_site_icon_active',
-		),
-		//Web Clip Icon
-		'web_clip' => array(
-			'id' 				=> 'web_clip',
-			'title' 			=> __( 'Web Clip Icon', 'catch-box' ),
-			'description'		=> '',
-			'field_type' 		=> 'image',
-			'sanitize' 			=> 'catchbox_sanitize_image',
-			'panel' 			=> 'theme_options',
-			'section' 			=> 'web_clip_icon_options',
-			'default' 			=> '',
-			'active_callback'	=> 'catchbox_is_site_icon_active',
-		),
 		//Color Scheme
 		'color_scheme' => array(
 			'id' 			=> 'color_scheme',
@@ -671,6 +647,38 @@ function catchbox_customize_register( $wp_customize ) {
 			'default' 		=> ''
 		),
 	);
+
+	//@remove Remove if block when WordPress 4.8 is released
+	if( !function_exists( 'has_site_icon' ) ) {
+		$settings_favicon = array(
+			//Favicon
+			'fav_icon' => array(
+				'id' 				=> 'fav_icon',
+				'title' 			=> __( 'Fav Icon', 'catch-box' ),
+				'description'		=> '',
+				'field_type' 		=> 'image',
+				'sanitize' 			=> 'catchbox_sanitize_image',
+				'panel' 			=> 'theme_options',
+				'section' 			=> 'favicon',
+				'default' 			=> '',
+				'active_callback'	=> 'catchbox_is_site_icon_active',
+			),
+			//Web Clip Icon
+			'web_clip' => array(
+				'id' 				=> 'web_clip',
+				'title' 			=> __( 'Web Clip Icon', 'catch-box' ),
+				'description'		=> '',
+				'field_type' 		=> 'image',
+				'sanitize' 			=> 'catchbox_sanitize_image',
+				'panel' 			=> 'theme_options',
+				'section' 			=> 'web_clip_icon_options',
+				'default' 			=> '',
+				'active_callback'	=> 'catchbox_is_site_icon_active',
+			),
+		);
+
+		$settings_parameters = array_merge( $settings_parameters, $settings_favicon);
+	}
 
 	foreach ( $settings_parameters as $option ) {
 		if( 'image' == $option['field_type'] ) {
