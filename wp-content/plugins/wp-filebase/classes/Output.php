@@ -53,7 +53,7 @@ class WPFB_Output
         echo "\n//]]>\n</script>\n";
     }
 
-    static function ProcessShortCode($args, $content = null, $tag = null)
+    static function ProcessShortCode($args)
     {
         $id = empty($args ['id']) ? -1 : intval($args ['id']);
         if ($id <= 0 && !empty($args['path'])) { // path indentification
@@ -127,6 +127,12 @@ class WPFB_Output
         return array($sort, $desc ? 'DESC' : 'ASC');
     }
 
+    /**
+     * @param  WPFB_File[]    $files
+     * @param string $tpl_tag
+     *
+     * @return string
+     */
     private static function genFileList(&$files, $tpl_tag = null)
     {
         $content = '';
@@ -291,7 +297,7 @@ class WPFB_Output
             WPFB_Core::CurUserCanCreateCat() && (!isset($args['inline_add']) || $args['inline_add']);
 
         $where = " cat_parent = $parent_id ";
-        if ($browser)
+        if ($browser && !$is_admin)
             $where .= " AND cat_exclude_browser <> '1' ";
         $cats = WPFB_Category::GetCats("WHERE $where ORDER BY $sql_sort_cats");
 
@@ -338,12 +344,10 @@ class WPFB_Output
                 $where .= " AND `file_post_id` = 0";
 
 
-            //	$files =  WPFB_File::GetFiles2(WPFB_File::GetSqlCatWhereStr($root_id),  WPFB_Core::$settings->hide_inaccessible, $sql_file_order);
             //$files =  WPFB_File::GetFiles2(WPFB_File::GetSqlCatWhereStr($root_id),  WPFB_Core::$settings->hide_inaccessible, $sql_file_order);
 
-            $files = WPFB_File::GetFiles2(
-                $where,                     (WPFB_Core::$settings->hide_inaccessible && !($filesel && wpfb_call('Core', 'CurUserCanUpload'))), $sql_sort_files
-            );
+            $check_permissions =  (WPFB_Core::$settings->hide_inaccessible && !($filesel && wpfb_call('Core', 'CurUserCanUpload')) && !($is_admin && current_user_can('manage_options')))  ;
+            $files = WPFB_File::GetFiles2( $where, $check_permissions, $sql_sort_files );
 
             foreach ($files as $f)
                 $file_items[$i++] = (object)array(
@@ -454,7 +458,7 @@ class WPFB_Output
         }
         $ft = preg_replace('/\.([^0-9])/', ' $1', $ft);
         $ft = str_replace('_', ' ', $ft);
-        $ft = str_replace('-', ' ', $ft);
+        //$ft = str_replace('-', ' ', $ft);
         $ft = str_replace('%20', ' ', $ft);
         $ft = ucwords($ft);
         return trim($ft);

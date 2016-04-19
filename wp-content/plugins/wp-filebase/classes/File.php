@@ -219,7 +219,7 @@ class WPFB_File extends WPFB_Item
         return $nn;
     }
 
-    static function GetNumFiles2($where, $check_permissions = true)
+    static function GetNumFiles2($where='', $check_permissions = true)
     {
         global $wpdb;
         $n = $wpdb->get_var("SELECT COUNT(`{$wpdb->wpfilebase_files}`.`file_id`) FROM " . self::genSelectSql($where, $check_permissions));
@@ -251,10 +251,10 @@ class WPFB_File extends WPFB_Item
         $this->is_file = true;
     }
 
-    function DBSave()
+    function DBSave($throw_on_error=false)
     { // validate some values before saving (fixes for mysql strict mode)
         if ($this->locked > 0)
-            return $this->TriggerLockedError();
+            return $this->TriggerLockedError($throw_on_error);
         $ints = array('file_category', 'file_post_id', 'file_attach_order', 'file_wpattach_id', 'file_added_by', 'file_update_of', 'file_hits', 'file_ratings', 'file_rating_sum');
         foreach ($ints as $i)
             $this->$i = (int)($this->$i);
@@ -264,7 +264,7 @@ class WPFB_File extends WPFB_Item
         if (empty($this->file_last_dl_time))
             $this->file_last_dl_time = '0000-00-00 00:00:00';
         $this->file_size = 0 + $this->file_size;
-        $r = parent::DBSave();
+        $r = parent::DBSave($throw_on_error);
         return $r;
     }
 
@@ -293,7 +293,7 @@ class WPFB_File extends WPFB_Item
                 $src_image = $this->GetLocalPath();
             elseif ($this->IsRemote()) {
                 // if remote file, download it and use as source
-                $res = wpfb_call('Admin', 'SideloadFile', $this->GetRemoteUri());
+                $res = wpfb_call('Admin', 'SideloadFile', $this);
                 $src_image = $res['file'];
                 $tmp_src = true;
             }
@@ -403,8 +403,8 @@ class WPFB_File extends WPFB_Item
             $this->DBSave();
     }
 
-    // completly removes the file from DB and FS
-    function Remove($bulk = false)
+    // completly removes the file from DB (and FS)
+    function Remove($bulk = false, $dont_delete = false)
     {
         global $wpdb;
 
@@ -422,7 +422,7 @@ class WPFB_File extends WPFB_Item
 
         $this->Lock(true); // prevent Delete() from saving to DB!
 
-        return $this->Delete();
+        return $dont_delete || $this->Delete();
     }
 
     private function getInfoValue($path)
@@ -530,6 +530,8 @@ class WPFB_File extends WPFB_Item
             case 'uid':
                 return self::$tpl_uid;
 
+            case 'is_mobile': return wp_is_mobile();
+
         }
 
         if (strpos($name, 'file_info/') === 0) {
@@ -634,17 +636,30 @@ class WPFB_File extends WPFB_Item
             update_user_option($user_ID, WPFB_OPT_NAME . '_last_dl', time());
         }
 
-        // count download
-        if (!$is_admin || !WPFB_Core::$settings->ignore_admin_dls) {
+        $head_only = ($_SERVER["REQUEST_METHOD"] == "HEAD");
+        list($begin, $end) = WPFB_Download::ParseRangeHeader($this->file_size);
+
+        // count download (only downloads starting at first byte)
+        if ( $begin == 0 && !$head_only &&  (!$is_admin || !WPFB_Core::$settings->ignore_admin_dls) ) {
             $last_dl_time = mysql2date('U', $this->file_last_dl_time, false);
             if (empty($this->file_last_dl_ip) || $this->file_last_dl_ip != $downloader_ip || ((time() - $last_dl_time) > 86400))
-                $wpdb->query("UPDATE " . $wpdb->wpfilebase_files . " SET file_hits = file_hits + 1, file_last_dl_ip = '" . $downloader_ip . "', file_last_dl_time = '" . current_time('mysql') . "' WHERE file_id = " . (int)$this->file_id);
+            {
+                $this->file_hits++;
+                $this->file_last_dl_ip = $downloader_ip;
+                $this->file_last_dl_time = current_time('mysql');
+
+                $wpdb->query("UPDATE " . $wpdb->wpfilebase_files
+                    . " SET file_hits = file_hits + 1, file_last_dl_ip = '"
+                    . $downloader_ip . "', file_last_dl_time = '"
+                    . $this->file_last_dl_time . "' WHERE file_id = "
+                    . (0+$this->file_id));
+            }
         }
 
         // external hooks
         do_action('wpfilebase_file_downloaded', $this->file_id);
 
-        $url = $this->GetRemoteUri();
+        $url = $this->GetRemoteUri(true);
         $is_local_remote = !empty($url) && parse_url($url, PHP_URL_SCHEME) === 'file' && is_readable($url);
 
         // download or redirect		
@@ -659,6 +674,7 @@ class WPFB_File extends WPFB_Item
                 'filename' => empty($this->file_name_original) ? $this->file_name : $this->file_name_original
             ));
         } else {
+            // avoid redirect caching
             //header('HTTP/1.1 301 Moved Permanently');
             header('Cache-Control: no-store, no-cache, must-revalidate');
             header('Expires: Thu, 01 Jan 1970 00:00:00 GMT');
@@ -668,7 +684,7 @@ class WPFB_File extends WPFB_Item
         exit;
     }
 
-    function GetRemoteUri()
+    function GetRemoteUri($die_on_error=false)
     {
         return $this->file_remote_uri;
     }
