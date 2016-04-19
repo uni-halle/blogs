@@ -16,7 +16,7 @@ function add_breadcrumb_nav() {
 add_action('widgets_init', 'add_breadcrumb_nav',11);
 
 function add_accordion(){
-    wp_enqueue_script('usz-accordion',get_stylesheet_directory_uri().'/accordion.js');
+    wp_enqueue_script('usz-accordion',get_stylesheet_directory_uri().'/accordion.js',['jquery']);
 }
 
 add_action('get_header','add_accordion');
