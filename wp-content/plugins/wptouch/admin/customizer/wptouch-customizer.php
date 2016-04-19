@@ -3,6 +3,7 @@ global $wptouch_pro;
 $current_theme = $wptouch_pro->get_current_theme_info();
 
 if ( $current_theme && !defined( 'WPTOUCH_IS_FREE' ) ) {
+
 	add_action( 'admin_init', 'wptouch_initialize_customizer' );
 
 	// Executed during the Customizer parent window load.
@@ -25,6 +26,9 @@ if ( $current_theme && !defined( 'WPTOUCH_IS_FREE' ) ) {
 
 	// If we're in the customizer and we're editing the mobile theme...
 	if ( wptouch_is_customizing_mobile() ) {
+
+		add_filter( 'customize_previewable_devices', '__return_empty_array' );
+
 		add_filter( 'validate_current_theme', 'wptouch_return_false' );
 
 		add_filter( 'wptouch_show_mobile_switch_link', 'wptouch_return_false' );

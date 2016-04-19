@@ -370,6 +370,11 @@ function wptouch_get_bloginfo( $setting_name ) {
 			} else {
 				$setting = get_bloginfo( 'home' );
 			}
+
+			if ( $wptouch_pro->is_previewing_mobile_theme() ) {
+				$setting = $setting . '?wptouch_preview_theme=enabled';
+			}
+
 			break;
 		default:
 			// proxy other values to the original get_bloginfo function

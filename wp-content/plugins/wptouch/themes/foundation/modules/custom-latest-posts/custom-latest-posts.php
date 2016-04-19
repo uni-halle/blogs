@@ -11,7 +11,7 @@ function wptouch_custom_latest_post_filter( $query_vars ) {
 			$dummy_query = new WP_Query();  // the query isn't run if we don't pass any query vars
 		    $dummy_query->parse_query( $query_vars );
 
-			if ( $dummy_query->is_page && ( count( $query_vars ) == 0 || ( count( $query_vars == 1 ) && isset( $query_vars[ 'paged' ] ) ) ) ) { // Front page
+			if ( $dummy_query->is_page && ( count( $query_vars ) == 0 || ( count( $query_vars ) == 1 && isset( $query_vars[ 'paged' ] ) ) ) ) { // Front page
 				$front_option = get_option( 'show_on_front', false );
 				if ( $front_option == 'page' ) {
 					$front_page = get_option( 'page_on_front' );

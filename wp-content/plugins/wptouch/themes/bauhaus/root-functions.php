@@ -1,6 +1,6 @@
 <?php
 
-define( 'BAUHAUS_THEME_VERSION', '1.6.4' );
+define( 'BAUHAUS_THEME_VERSION', '1.6.5' );
 define( 'BAUHAUS_SETTING_DOMAIN', 'bauhaus' );
 define( 'BAUHAUS_DIR', wptouch_get_bloginfo( 'theme_root_directory' ) );
 define( 'BAUHAUS_URL', wptouch_get_bloginfo( 'theme_parent_url' ) );
@@ -53,6 +53,7 @@ function bauhaus_setting_defaults( $settings ) {
 
 	// Bauhaus menu default
 	$settings->bauhaus_menu_style = 'off-canvas';
+	$settings->bauhaus_menu_position = 'left-side';
 
 
 	// Theme colors
@@ -228,6 +229,20 @@ function bauhaus_header_settings( $header_settings ) {
 		array(
 			'off-canvas' => __( 'Off-canvas', 'wptouch-pro' ),
 			'drop-down' => __( 'Drop-down', 'wptouch-pro' )
+		),
+		BAUHAUS_SETTING_DOMAIN
+	);
+
+	$header_settings[] = wptouch_add_setting(
+		'list',
+		'bauhaus_menu_position',
+		__( 'Menu position', 'wptouch-pro' ),
+		false,
+		WPTOUCH_SETTING_BASIC,
+		'1.6.4',
+		array(
+			'left-side' => __( 'Left side', 'wptouch-pro' ),
+			'right-side' => __( 'Right side', 'wptouch-pro' )
 		),
 		BAUHAUS_SETTING_DOMAIN
 	);

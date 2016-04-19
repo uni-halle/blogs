@@ -1,8 +1,8 @@
 === Plugin Name ===
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
-Requires at least: 4.0
-Stable tag: 4.1
+Requires at least: 4.2
+Stable tag: 4.1.1
 Tested up to: 4.5
 License: GPLv2
 
@@ -33,35 +33,46 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 
 == Changelog ==
 
+= Version 4.1.1 (April 12, 2016) =
+
+* Added: Compatibility with WordPress 4.5
+* Added: Setting to control which side the Bauhaus menu is shown on
+* Changed: Adjusted colour conversion for Luma-based colouring, ensuring true value is used
+* Changed: Re-added 'show login' setting for sites that require users to be registered to comment.
+* Fixed: Bug with custom latest posts page when not set to the same as WordPress homepage
+* Fixed: Search forms now allow searching while in preview mode
+* Fixed: Eliminated PHP warnings
+* Fixed: Display of featured slider settings when slider is first enabled
+
 = Version 4.1 (March 24, 2016) =
 
-* New: New filters to support AMP extension in WPtouch Pro
+* Added: New filters to support AMP extension in WPtouch Pro
 * Changed: Streamlined wizard experience
 * Fixed: Case where featured posts would always be repeated in listing if featured slider was set to show only 1 post
 * Fixed: Error when page was not found
 
 = Version 4.0.4 (February 29, 2016) =
 
-* New: Featured slider settings to control display of # of comments
-* New: Featured slider option for more minimal slider appearance
+* Added: Featured slider settings to control display of # of comments
+* Added: Featured slider option for more minimal slider appearance
 * Changed: Added styling for some rarer html elements, and updated others (ol, code, pre etc.)
 * Changed: Minor styling enhancements and fixes
+* Updated: Opera users agents to better specify supported opera versions and platforms
 * Fixed: Load more posts on custom posts page did not load posts in certain configurations
 * Fixed: Retain WPML language parameter when redirecting to mobile landing page
 * Fixed: Minor styling issues
 * Fixed: Toggle fields not saving on some server configurations
-* Updated: Opera users agents to better specify supported opera versions and platforms
 
 = Version 4.0.3 (January 19, 2016) =
 
+* Changed: Restored homepage redirect setting - thanks for your feedback!
 * Fixed: Menu icon selection when using relative-protocol media URLs
 * Fixed: Black field on blog index when featured slider is disabled.
-* Changed: Restored homepage redirect setting - thanks for your feedback!
 
 = Version 4.0.2 (December 29, 2015) =
 
-* Fixed: Custom Latest Posts Page handling
 * Added: On upgrade, migrate sites using the old "WordPress Pages" menu option to a custom WordPress menu
+* Fixed: Custom Latest Posts Page handling
 
 = Version 4.0.1 (December 22, 2015) =
 
@@ -71,10 +82,10 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 = Version 4.0 (December 22, 2015) =
 
 * A whole new WPtouch that makes getting your WordPress website mobile-friendly easier than ever before
-* New: Settings panel has been re-written and simplified into a single page, now much faster
-* New: Settings auto-save— no need to click a settings save button (how 2013 of us)
-* New: Settings types are easier to control, with toggles and elegant drop-downs to switch settings
-* New: Added new options and controls (like controlling the devices WPtouch is active for)
+* Added: Settings panel has been re-written and simplified into a single page, now much faster
+* Added: Settings auto-save— no need to click a settings save button (how 2013 of us)
+* Added: Settings types are easier to control, with toggles and elegant drop-downs to switch settings
+* Added: Added new options and controls (like controlling the devices WPtouch is active for)
 * Changed: Removed visible but inactive Pro settings
 * Changed: Simplified a few settings, you'll probably be mad at us but we really want this plugin to be easy to use for everyone!
 * Changed: Now using the WP color picker

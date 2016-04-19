@@ -35,7 +35,7 @@
 					<a class="button" href="<?php echo admin_url( 'customize.php' ); ?>"><?php _e( 'Customize', 'wptouch-pro' ); ?></a>
 				<?php } ?>
 
-				<?php if ( current_user_can( 'install_plugins' ) && !defined( 'WPTOUCH_IS_FREE' ) ) { ?>
+				<?php if ( ( ( wptouch_is_theme_in_cloud() && current_user_can( 'install_plugins' ) ) || ( !wptouch_is_theme_in_cloud() && current_user_can( 'manage_options' ) ) ) && !defined( 'WPTOUCH_IS_FREE' ) ) { ?>
 					<?php if ( wptouch_get_theme_buy_url() ) { ?>
 						<?php if ( !is_multisite() || is_network_admin() ) { ?>
 							<a class="button buynow" href="<?php wptouch_the_theme_buy_url(); ?>">

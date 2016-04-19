@@ -89,6 +89,10 @@ function wptouch_admin_get_predefined_menus( $network_admin = false ) {
 		}
 	}
 
+	if ( defined( 'WPTOUCH_CLIENT_MODE' ) && WPTOUCH_CLIENT_MODE === true ) {
+		unset( $available_menus[ WPTOUCH_PRO_ADMIN_LICENSE ] );
+	}
+
 	return apply_filters( 'wptouch_available_menus', $available_menus );
 }
 
@@ -108,7 +112,6 @@ function wptouch_admin_get_root_slug( $network_admin = false ) {
 			return $menu[ WPTOUCH_PRO_ADMIN_WIZARD ]->slug;
 		} else {
 			return $menu[ WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS ]->slug;
-			return $menu[ WPTOUCH_PRO_ADMIN_LICENSE ]->slug;
 		}
 	} else {
 		if ( $show_wizard ) {
@@ -118,7 +121,6 @@ function wptouch_admin_get_root_slug( $network_admin = false ) {
 				return $menu[ WPTOUCH_PRO_ADMIN_WIZARD ]->slug;
 			}
 			return $menu[ WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS ]->slug;
-			return $menu[ WPTOUCH_PRO_ADMIN_LICENSE ]->slug;
 		}
 	}
 }

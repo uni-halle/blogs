@@ -446,6 +446,9 @@ a#preview-theme {
 
 #wptouch-admin-menu ul li a.wptouch-addon-amp:before {
 	content: '\e822';
+	display: inline-block;
+	text-align: center;
+	width: 20px;
 }
 
 /* @end */

@@ -81,3 +81,13 @@ function bauhaus_should_show_comment_bubbles(){
 		return false;
 	}
 }
+
+function bauhaus_is_menu_position_default(){
+	$settings = bauhaus_get_settings();
+
+	if ( $settings->bauhaus_menu_position == 'left-side' ) {
+		return true;
+	} else {
+		return false;
+	}
+}

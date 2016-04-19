@@ -76,6 +76,14 @@ header img {
 	position: absolute;
 	bottom: 0;
 	left: 0;
+	right: auto;	
+}
+
+#menu-toggle.menu-right {
+	position: absolute;
+	bottom: 0;
+	left: auto;
+	right: 0;
 }
 
 #menu-toggle:after {
@@ -88,6 +96,14 @@ header img {
 #search-toggle {
 	position: absolute;
 	bottom: 0;
+	left:  0;
+	right: auto;	
+}
+
+#search-toggle.search-right {
+	position: absolute;
+	bottom: 0;
+	left:  auto;
 	right: 0;
 }
 

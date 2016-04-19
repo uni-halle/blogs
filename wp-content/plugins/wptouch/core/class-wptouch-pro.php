@@ -413,16 +413,20 @@ class WPtouchProFour {
 					$content = wptexturize( $content );
 
 					// Enqueue missing scripts
-					foreach ( $shortcode_data->scripts as $script ) {
-						wp_enqueue_script( $script->handle, $script->src, $script->deps, $script->ver );
-						if ( is_array( $script->extra ) && isset( $script->extra[ 'data' ] ) ) {
-							wp_scripts()->add_data( $script->handle, 'data', $script->extra[ 'data' ] );
+					if ( isset( $shortcode_data->scripts ) && count( $shortcode_data->scripts ) > 0 ) {
+						foreach ( $shortcode_data->scripts as $script ) {
+							wp_enqueue_script( $script->handle, $script->src, $script->deps, $script->ver );
+							if ( is_array( $script->extra ) && isset( $script->extra[ 'data' ] ) ) {
+								wp_scripts()->add_data( $script->handle, 'data', $script->extra[ 'data' ] );
+							}
 						}
 					}
 
 					// Enqueue missing styles
-					foreach ( $shortcode_data->styles as $style ) {
-						wp_enqueue_style( $style->handle, $style->src, $style->deps, $style->ver, $style->args );
+					if ( isset( $shortcode_data->scripts ) &&  count( $shortcode_data->styles ) > 0 ) {
+						foreach ( $shortcode_data->styles as $style ) {
+							wp_enqueue_style( $style->handle, $style->src, $style->deps, $style->ver, $style->args );
+						}
 					}
 				}
 			}
@@ -444,7 +448,11 @@ class WPtouchProFour {
 		$starting_assets = get_post_meta( $post_id, 'wptouch_sc_' . $type, true );
 		$queued_assets = $source_object->queue;
 		$registered_assets = $source_object->registered;
-		$missing_assets = array_diff( $queued_assets, $starting_assets );
+		if ( is_array( $starting_assets ) ) {
+			$missing_assets = array_diff( $queued_assets, $starting_assets );
+		} else {
+			$missing_assets = $queued_assets;
+		}
 
 		$return_array = array();
 

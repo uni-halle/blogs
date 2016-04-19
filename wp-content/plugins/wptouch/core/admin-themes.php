@@ -75,11 +75,11 @@ function wptouch_get_theme_classes( $extra_classes = array() ) {
 
 	$classes = $extra_classes;
 
-	if ( !is_network_admin() && wptouch_is_theme_active() ) {
+	if ( !is_network_admin() && wptouch_is_theme_active() && !defined( 'WPTOUCH_IS_FREE' ) ) {
 		$classes[] = 'active';
 	}
 
-	if ( wptouch_is_theme_in_cloud() ) {
+	if ( wptouch_is_theme_in_cloud() || defined( 'WPTOUCH_IS_FREE' ) ) {
 		$classes[] = 'cloud';
 	}
 

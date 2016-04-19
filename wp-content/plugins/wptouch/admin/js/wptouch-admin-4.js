@@ -600,24 +600,25 @@ function wptouchSetupFreeSettings(){
 				sharingCheckbox.nextAll( 'li' ).hide();
 			}
 		}).change();
-	
+
 		// Featured Slider on/off
 		var featuredCheckbox = jQuery( '[id$=featured_enabled]' );
+		var ignoreItems = '#setting-featured_tag, #setting-featured_category, #setting-featured_post_ids';
 		featuredCheckbox.on( 'change', 'input', function(){
 			if ( jQuery( this ).is( ':checked' ) ) {
-				featuredCheckbox.nextAll( 'li' ).show();
+				featuredCheckbox.nextAll( 'li' ).not( ignoreItems ).show();
 			} else {
-				featuredCheckbox.nextAll( 'li' ).hide();
+				featuredCheckbox.nextAll( 'li' ).not( ignoreItems ).hide();
 			}
 		}).change();
-	
+
 		// Featured slider source select
 		jQuery( '[id$="featured_type"]' ).on( 'change', 'select', function() {
 			var tagSetting = jQuery( '[id$=featured_tag]' );
 			var catSetting = jQuery( '[id$=featured_category]' );
 			var posttySetting = jQuery( '[id$=featured_post_type]' );
 			var postSetting = jQuery( '[id$=featured_post_ids]' );
-	
+
 			switch( jQuery( this ).val() ) {
 				case 'tag':
 					tagSetting.show();
@@ -652,7 +653,7 @@ function wptouchSetupFreeSettings(){
 				break;
 			}
 		}).change();
-		
+
 		// Featured Thumbs on/off
 		var featuredThumb = jQuery( '[id$=use_thumbnails]' );
 		featuredThumb.on( 'change', 'select', function(){
@@ -665,7 +666,7 @@ function wptouchSetupFreeSettings(){
 				default:
 					thumbType.show();
 				break;
-				
+
 			}
 		}).change();
 
@@ -681,26 +682,26 @@ function wptouchSetupFreeSettings(){
 				default:
 					thumbCustomType.hide();
 				break;
-				
+
 			}
 		}).change();
 	}
 }
 
 function wptouchAdminMutisite(){
-	
+
 	jQuery( '#multisite-select-all' ).on( 'click', function( e ){
 		jQuery( '#multisite-deploy-sites input:not(input:disabled)' ).prop( 'checked', 'checked' );
 		e.preventDefault();
 	});
-	
+
 	jQuery( '#multisite-select-none' ).on( 'click', function( e ){
 		jQuery( '#multisite-deploy-sites input' ).prop( 'checked', '' );
 		e.preventDefault();
 	});
-	
+
 	var deployment_modal = jQuery('[data-remodal-id=modal-deployment]').remodal();
-	
+
 	jQuery( '#multisite-deploy' ).on( 'click', function( e ){
 		e.preventDefault();
 
@@ -712,7 +713,7 @@ function wptouchAdminMutisite(){
 
 		}
 	});
-	
+
 	jQuery( '#multisite_deployment_source' ).change( function(){
 		// what's the current selected site?
 		var currentSite = jQuery( this ).val();
@@ -726,7 +727,7 @@ function wptouchAdminMutisite(){
 	jQuery( '.deploy-to-sites' ).on( 'click', function( e ){
 		jQuery( this ).hide();
 		e.preventDefault();
-	
+
 		var sourceSite = jQuery( '#multisite_deployment_source' ).val();
 		var deployGeneral = jQuery( "#multisite_deploy_general_settings" ).is( ":checked" );
 		var deployCompat = jQuery( "#multisite_deploy_site_compat" ).is( ":checked" );
@@ -737,15 +738,15 @@ function wptouchAdminMutisite(){
 		var deployColors = jQuery( "#multisite_deploy_colors" ).is( ":checked" );
 		var deploySocialMedia = jQuery( "#multisite_deploy_social_media" ).is( ":checked" );
 		var deploySocialSharing = jQuery( "#multisite_deploy_social_sharing" ).is( ":checked" );
-	
+
 		var sites = [];
-	
+
 		jQuery( '#multisite-deploy-sites input' ).each( function( index, value ) {
 			if ( jQuery( this ).is( ":checked" ) ) {
 				sites.push( jQuery( this ).attr( 'id' ) );
 			}
 		});
-	
+
 		var ajaxParams = {
 			source_site: 			sourceSite,
 			deploy_general: 		deployGeneral ? '1' : '0',
@@ -759,9 +760,9 @@ function wptouchAdminMutisite(){
 			deploy_social_sharing: 	deploySocialSharing ? '1' : '0',
 			deploy_sites: 			sites
 		};
-	
+
 		jQuery( 'p.deploy-text' ).text( jQuery( 'p.deploy-text' ).attr( 'data-deploying-text' ) );
-		
+
 		wptouchAdminAjax( 'multisite_deploy', ajaxParams, function( result ) {
 			alert( result );
 			setTimeout( function(){
@@ -769,7 +770,7 @@ function wptouchAdminMutisite(){
 				.text( jQuery( 'p.deploy-text' ).attr( 'data-completed-text' ) )
 				.prepend( '<i class="icon-ok-circle"></i>' )
 				.append( '<br /><br /><button class="button button-close" data-remodal-action="cancel">Close</button>' );
-			}, 1000 ); 
+			}, 1000 );
 		});
 	});
 
@@ -930,30 +931,40 @@ function wptouchAdminDebounce( func, wait, immediate ) {
 	};
 };
 
-var wptouchPreviewWindow;
+function showPreviewWindow(){
+	var width = '375', height = '667';
+	topPosition = ( screen.height ) ? ( screen.height - height ) / 2:0;
+	leftPosition = ( screen.width ) ? ( screen.width - width ) / 2:0;
+	options = 'scrollbars=no, titlebar=no, status=no, menubar=no';
+	previewUrl = jQuery( 'input#wptouch-preview-theme' ).attr( 'data-url' );
+	wptouchPreviewWindow = window.open( previewUrl, 'preview', 'width=' + width + ', height=' + height + ',' + options + ', top=' + topPosition + ',left=' + leftPosition + '' );
+}
+
+function showCustomizerWindow(){
+	var width = '800', height = '500';
+	topPosition = ( screen.height ) ? ( screen.height - height ) / 2:0;
+	leftPosition = ( screen.width ) ? ( screen.width - width ) / 2:0;
+	options = 'scrollbars=no, titlebar=no, status=no, menubar=no';
+	windowUrl = 'http://wptouch-pro-4.s3.amazonaws.com/free/free-customizer-promo.html';
+	wptouchCustomizerWindow = window.open( windowUrl, 'customizermsg', 'width=' + width + ', height=' + height + ',' + options + ', top=' + topPosition + ',left=' + leftPosition + '' );
+}
+
 
 // The Preview Pop-Up Window
 function wptouchPreviewWindow(){
 
-	var previewEl = jQuery( 'input#wptouch-preview-theme' );
+	jQuery( 'input#wptouch-preview-theme' ).on( 'click', function( e ) {
+		var previewCounter = jQuery.cookie( 'wptouch-preview-count' );
+		previewCounter++;
+		jQuery.cookie( 'wptouch-preview-count', previewCounter );
 
-	previewEl.on( 'click', function( e ) {
-		var width = '375', height = '667';
-		topPosition = ( screen.height ) ? ( screen.height - height ) / 2:0;
-		leftPosition = ( screen.width ) ? ( screen.width - width ) / 2:0;
-		options = 'scrollbars=no, titlebar=no, status=no, menubar=no';
-		previewUrl = jQuery( this ).attr( 'data-url' );
-		window.open( previewUrl, 'preview', 'width=375, height=667,' + options + ', top=' + topPosition + ',left=' + leftPosition + '' );
-		wptouchPreviewWindow = window.open( '', 'preview', '' );
-		jQuery.cookie( 'wptouch-preview-window', 'open' );
+		if ( jQuery.cookie( 'wptouch-preview-count' ) == 5 || jQuery.cookie( 'wptouch-preview-count' ) %25 == 0 ) {
+			showCustomizerWindow();
+		} else {
+			showPreviewWindow();
+		}
 		e.preventDefault();
 	});
-}
-
-function wptouchHandlePreviewWindow(){
-	if ( wptouchPreviewWindow.closed ) {
-		jQuery.cookie( 'wptouch-preview-window', null );
-	}
 }
 
 function wptouchAdminReady() {
@@ -989,13 +1000,13 @@ function wptouchAdminReady() {
 	wptouchThemesExtensionsPanels();
 
 	wptouchHandleResetSettings();
-	
+
 	wptouchAdminMutisite();
 
 	wptouchControlReturn();
 
 	wptouchSetupOldUploaders();
-	
+
 	wptouchSetupFreeSettings();
 
 	wptouchSetupSettingsToggles();
@@ -1003,10 +1014,8 @@ function wptouchAdminReady() {
 	wptouchAdminSetupSave();
 
 	wptouchThemesAddonsAjaxInstall();
-	
+
 	wptouchPreviewWindow();
-	
-	wptouchHandlePreviewWindow();
 }
 
 jQuery( document ).ready( function() {

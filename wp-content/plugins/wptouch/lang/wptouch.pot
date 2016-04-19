@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WPtouch Mobile Plugin package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPtouch Mobile Plugin 4.1\n"
+"Project-Id-Version: WPtouch Mobile Plugin 4.1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wptouch\n"
-"POT-Creation-Date: 2016-03-29 19:19:14+00:00\n"
+"POT-Creation-Date: 2016-04-12 20:01:01+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,15 +12,15 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: admin/customizer/wptouch-customizer.php:559
+#: admin/customizer/wptouch-customizer.php:563
 msgid "Device + Orientation"
 msgstr ""
 
-#: admin/customizer/wptouch-customizer.php:584
+#: admin/customizer/wptouch-customizer.php:588
 msgid "Switch to Mobile Theme"
 msgstr ""
 
-#: admin/customizer/wptouch-customizer.php:585
+#: admin/customizer/wptouch-customizer.php:589
 msgid "Switch to Desktop Theme"
 msgstr ""
 
@@ -374,7 +374,7 @@ msgstr ""
 #: admin/pages/custom/wptouch-admin-wizard.php:179
 #: admin/settings/html/theme-browser-item-detail.php:52
 #: admin/settings/html/updates-available.php:35
-#: admin/settings/html/updates-available.php:71 core/class-wptouch-pro.php:918
+#: admin/settings/html/updates-available.php:71 core/class-wptouch-pro.php:926
 msgid "Download"
 msgstr ""
 
@@ -384,7 +384,7 @@ msgstr ""
 #: admin/settings/html/installed_icon_sets_ajax.php:13
 #: admin/settings/html/installed_icon_sets_ajax.php:26
 #: admin/settings/html/theme-browser-item.php:12
-#: core/class-wptouch-pro.php:917
+#: core/class-wptouch-pro.php:925
 msgid "Installed"
 msgstr ""
 
@@ -802,7 +802,7 @@ msgstr ""
 
 #: admin/pages/wptouch-admin-general-settings.php:591
 #: admin/settings/html/installed_icon_sets_ajax.php:4
-#: core/class-wptouch-pro.php:2103 core/class-wptouch-pro.php:2104
+#: core/class-wptouch-pro.php:2111 core/class-wptouch-pro.php:2112
 #: core/config.php:54
 msgid "Custom Icons"
 msgstr ""
@@ -909,7 +909,7 @@ msgstr ""
 msgid "No extensions available"
 msgstr ""
 
-#: admin/settings/html/image-upload.php:7 core/class-wptouch-pro.php:910
+#: admin/settings/html/image-upload.php:7 core/class-wptouch-pro.php:918
 msgid "Upload Complete!"
 msgstr ""
 
@@ -928,13 +928,13 @@ msgid ""
 msgstr ""
 
 #: admin/settings/html/installed_icon_sets_ajax.php:25
-#: core/class-wptouch-pro.php:916
+#: core/class-wptouch-pro.php:924
 msgid "Installing"
 msgstr ""
 
 #: admin/settings/html/installed_icon_sets_ajax.php:25
 #: admin/settings/html/theme-browser-item-detail.php:3
-#: core/admin-extensions.php:363 core/class-wptouch-pro.php:915
+#: core/admin-extensions.php:363 core/class-wptouch-pro.php:923
 msgid "Install"
 msgstr ""
 
@@ -944,8 +944,8 @@ msgstr ""
 
 #: admin/settings/html/menus_in_menus.php:9
 msgid ""
-"These settings are handled in the WordPress %s %sAppearance -> Menus%s "
-"settings"
+"These settings are handled in the WordPress %s %sAppearance -> Menus%s Menu "
+"Location settings"
 msgstr ""
 
 #: admin/settings/html/menus_in_menus.php:10
@@ -1146,7 +1146,7 @@ msgstr ""
 msgid "Setup Wizard"
 msgstr ""
 
-#: core/admin-menu.php:48 core/class-wptouch-pro.php:1585
+#: core/admin-menu.php:48 core/class-wptouch-pro.php:1593
 msgid "Settings"
 msgstr ""
 
@@ -1247,131 +1247,131 @@ msgstr ""
 msgid "Reset Settings"
 msgstr ""
 
-#: core/class-wptouch-pro.php:597
+#: core/class-wptouch-pro.php:605
 msgid ""
 "Automatic theme migration from wp-content/uploads/wptouch-data directory "
 "failed. Please manually move these folders to wp-content/wptouch-data: %s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:616
+#: core/class-wptouch-pro.php:624
 msgid ""
 "%sWPtouch: %s was recently disabled, but is still affecting your website and "
 "caching pages.%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:617
+#: core/class-wptouch-pro.php:625
 msgid ""
 "%sPlease reactivate the plugin, disable page caching, then deactivate the "
 "plugin again to correct this issue.%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:618 core/class-wptouch-pro.php:627
+#: core/class-wptouch-pro.php:626 core/class-wptouch-pro.php:635
 msgid ""
 "%sFixing this issue prevents cached desktop pages being served to mobile "
 "devices and vice-versa.%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:619 core/class-wptouch-pro.php:628
+#: core/class-wptouch-pro.php:627 core/class-wptouch-pro.php:636
 msgid ""
 "%sOnce fixed, this message will be dismissed automatically. Until fixed, %"
 "sWPtouch will not be shown%s to mobile visitors, and cannot be previewed.%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:626
+#: core/class-wptouch-pro.php:634
 msgid "%sWPtouch: %s needs to be configured to work correctly with WPtouch.%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:629
+#: core/class-wptouch-pro.php:637
 msgid ""
 "%sTo fix the issue, follow our %sstep-by-step setup guide%s on support."
 "wptouch.com%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:641
+#: core/class-wptouch-pro.php:649
 msgid "WPtouch Repair Required"
 msgstr ""
 
-#: core/class-wptouch-pro.php:648
+#: core/class-wptouch-pro.php:656
 msgid "Your mobile theme was either broken or missing."
 msgstr ""
 
-#: core/class-wptouch-pro.php:649
+#: core/class-wptouch-pro.php:657
 msgid "We downloaded a fresh copy for you."
 msgstr ""
 
-#: core/class-wptouch-pro.php:650 core/class-wptouch-pro.php:660
+#: core/class-wptouch-pro.php:658 core/class-wptouch-pro.php:668
 msgid "OK"
 msgstr ""
 
-#: core/class-wptouch-pro.php:653
+#: core/class-wptouch-pro.php:661
 msgid ""
 "We were unable to install your WPtouch Pro theme from the Cloud. %s Please "
 "visit %sthis article%s for more information."
 msgstr ""
 
-#: core/class-wptouch-pro.php:656
+#: core/class-wptouch-pro.php:664
 msgid "WPtouch Server Issue"
 msgstr ""
 
-#: core/class-wptouch-pro.php:658
+#: core/class-wptouch-pro.php:666
 msgid ""
 "Your server setup is preventing WPtouch Pro from installing from the Cloud. %"
 "s Please visit %sthis article%s for more information on how to fix it."
 msgstr ""
 
-#: core/class-wptouch-pro.php:905
+#: core/class-wptouch-pro.php:913
 msgid ""
 "This will reset all WPtouch Pro settings.\n"
 "Are you sure?"
 msgstr ""
 
-#: core/class-wptouch-pro.php:906
+#: core/class-wptouch-pro.php:914
 msgid ""
 "This will reset all WPtouch Pro settings and delete the wptouch-data "
 "folder.\n"
 "Are you sure?"
 msgstr ""
 
-#: core/class-wptouch-pro.php:907
+#: core/class-wptouch-pro.php:915
 msgid ""
 "This will reset all WPtouch Pro settings, delete the wptouch-data folder, "
 "and deactivate the plugin. Are you sure?"
 msgstr ""
 
-#: core/class-wptouch-pro.php:908
+#: core/class-wptouch-pro.php:916
 msgid "The item failed to download for this reason: %reason%"
 msgstr ""
 
-#: core/class-wptouch-pro.php:909
+#: core/class-wptouch-pro.php:917
 msgid "You are about to reset your license information. Proceed?"
 msgstr ""
 
-#: core/class-wptouch-pro.php:911
+#: core/class-wptouch-pro.php:919
 msgid "Upload Failed: Not a valid image."
 msgstr ""
 
-#: core/class-wptouch-pro.php:912
+#: core/class-wptouch-pro.php:920
 msgid ""
 "WPtouch is saving settings. Please do not refresh the page while saving."
 msgstr ""
 
-#: core/class-wptouch-pro.php:913
+#: core/class-wptouch-pro.php:921
 msgid "Install Themes"
 msgstr ""
 
-#: core/class-wptouch-pro.php:914
+#: core/class-wptouch-pro.php:922
 msgid "Install Extensions"
 msgstr ""
 
-#: core/class-wptouch-pro.php:1622
+#: core/class-wptouch-pro.php:1630
 msgid "%s Changelog"
 msgstr ""
 
-#: core/class-wptouch-pro.php:3030
+#: core/class-wptouch-pro.php:3038
 msgid "Directory Problem"
 msgstr ""
 
-#: core/class-wptouch-pro.php:3031
+#: core/class-wptouch-pro.php:3039
 msgid "One or more required directories could not be created"
 msgstr ""
 
@@ -1387,7 +1387,7 @@ msgstr ""
 msgid "tablet"
 msgstr ""
 
-#: core/globals.php:447
+#: core/globals.php:452
 msgid "Auto-detect"
 msgstr ""
 
@@ -1802,107 +1802,119 @@ msgstr ""
 msgid "desktop"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:118
+#: themes/bauhaus/root-functions.php:119
 msgid "Header Menu"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:120
+#: themes/bauhaus/root-functions.php:121
 msgid "Choose a menu"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:121
+#: themes/bauhaus/root-functions.php:122
 msgid "Main menu selection"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:128
+#: themes/bauhaus/root-functions.php:129
 msgid "Theme background"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:129
+#: themes/bauhaus/root-functions.php:130
 msgid "Header & Menu"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:130
+#: themes/bauhaus/root-functions.php:131
 msgid "Links"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:131
+#: themes/bauhaus/root-functions.php:132
 msgid "Post/Page Headers"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:224
+#: themes/bauhaus/root-functions.php:225
 msgid "Menu animation style"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:229
+#: themes/bauhaus/root-functions.php:230
 msgid "Off-canvas"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:230
+#: themes/bauhaus/root-functions.php:231
 msgid "Drop-down"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:238
+#: themes/bauhaus/root-functions.php:239
+msgid "Menu position"
+msgstr ""
+
+#: themes/bauhaus/root-functions.php:244
+msgid "Left side"
+msgstr ""
+
+#: themes/bauhaus/root-functions.php:245
+msgid "Right side"
+msgstr ""
+
+#: themes/bauhaus/root-functions.php:253
 msgid "Show search in header"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:255
+#: themes/bauhaus/root-functions.php:270
 msgid "Post thumbnails"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:260
+#: themes/bauhaus/root-functions.php:275
 msgid "No thumbnails"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:261
+#: themes/bauhaus/root-functions.php:276
 msgid "Blog listing only"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:262
+#: themes/bauhaus/root-functions.php:277
 msgid "Blog listing, single posts"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:263
+#: themes/bauhaus/root-functions.php:278
 msgid "Blog listing, single posts & pages"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:264
+#: themes/bauhaus/root-functions.php:279
 msgid "All (blog, single, pages, search & archive)"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:272
+#: themes/bauhaus/root-functions.php:287
 msgid "Thumbnail Type"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:277
+#: themes/bauhaus/root-functions.php:292
 msgid "Post featured images"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:278
+#: themes/bauhaus/root-functions.php:293
 msgid "Post custom field"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:286
+#: themes/bauhaus/root-functions.php:301
 msgid "Thumbnail custom field name"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:297
+#: themes/bauhaus/root-functions.php:312
 msgid "Show post categories and tags"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:308
+#: themes/bauhaus/root-functions.php:323
 msgid "Show post date"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:319
+#: themes/bauhaus/root-functions.php:334
 msgid "Show post author"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:330
+#: themes/bauhaus/root-functions.php:345
 msgid "Show comment bubbles on posts"
 msgstr ""
 
-#: themes/bauhaus/root-functions.php:341
+#: themes/bauhaus/root-functions.php:356
 msgid "Use infinite scrolling for blog"
 msgstr ""
 

@@ -402,9 +402,9 @@ function wptouch_hex_to_luma( $hex ) {
 		$green_hex = substr( $hex, 2, 2 );
 		$blue_hex = substr( $hex, 4, 2);
 	} else {
-		$red_hex = substr( $hex, 0, 1 ) . '0';
-		$green_hex = substr( $hex, 1, 1 ) . '0';
-		$blue_hex = substr( $hex, 2, 1) . '0';
+		$red_hex = substr( $hex, 0, 1 ) . substr( $hex, 0, 1 );
+		$green_hex = substr( $hex, 1, 1 ) . substr( $hex, 1, 1 );
+		$blue_hex = substr( $hex, 2, 1) . substr( $hex, 2, 1);
 	}
 
 	$red = wptouch_hex_to_num( $red_hex );
