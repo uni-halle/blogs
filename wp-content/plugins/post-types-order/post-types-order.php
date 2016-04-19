@@ -5,7 +5,7 @@ Plugin URI: http://www.nsp-code.com
 Description: Posts Order and Post Types Objects Order using a Drag and Drop Sortable javascript capability
 Author: Nsp Code
 Author URI: http://www.nsp-code.com 
-Version: 1.8.6
+Version: 1.8.7
 Text Domain: post-types-order
 Domain Path: /languages/
 */
@@ -93,6 +93,10 @@ Domain Path: /languages/
             if (isset($_GET['orderby']) && $_GET['orderby'] !=  'menu_order')
                 return $orderBy;
             
+            //check to ignore
+            if(apply_filters('pto/posts_orderby', $orderBy, $query) === FALSE)
+                return $orderBy;
+            
             if (is_admin())
                     {
                         
@@ -109,6 +113,9 @@ Domain Path: /languages/
                                         ||  (defined('DOING_AJAX') && isset($_REQUEST['action']) && strpos($_REQUEST['action'], 'acf/') === 0))
                                     return $orderBy;
                                     
+                                if(isset($_POST['query'])   &&  isset($_POST['query']['post__in'])  &&  is_array($_POST['query']['post__in'])   &&  count($_POST['query']['post__in'])  >   0)
+                                    return $orderBy;   
+                                
                                 $orderBy = "{$wpdb->posts}.menu_order, {$wpdb->posts}.post_date DESC";
                             }
                     }

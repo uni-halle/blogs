@@ -3,8 +3,8 @@ Contributors: nsp-code
 Donate link: http://www.nsp-code.com/donate.php
 Tags: post order, posts order, sort, post sort, posts sort, post type order, custom order, admin posts order
 Requires at least: 2.8
-Tested up to: 4.4.2
-Stable tag: 1.8.6
+Tested up to: 4.5
+Stable tag: 1.8.7
 
 Post Order and custom Post Type Objects (posts, any custom post types) using a Drag and Drop Sortable JavaScript AJAX interface. 
 
@@ -70,7 +70,11 @@ All ideas are welcome and i put them on my list to be implemented into the new v
 
 = Can i make certain queries to ignore the custom sort when Autosort is turned On? =
 
-This can be doe by including the ignore_custom_sort within custom query arguments. An example can be found at http://www.nsp-code.com/advanced-post-types-order-api/sample-usage/
+This can be done by including the ignore_custom_sort within custom query arguments. An example can be found at http://www.nsp-code.com/advanced-post-types-order-api/sample-usage/
+
+= How can i force sort apply for certain queries when Autosort is turned On? =
+
+A filter can be used to achieve that pto/posts_orderby. An example can be found at http://www.nsp-code.com/ignore-sort-apply-for-certain-query-on-post-types-order/
 
 = I still need more features like front sorting interface, shortcodes, filters, conditionals, advanced queries, taxonomy/ category sorting etc =
 
@@ -78,6 +82,10 @@ Consider upgrading to our advanced version of this plugin at a very resonable pr
 
 
 == Change Log ==
+= 1.8.7 =
+  - Admin Post / Page Gallery items order fix
+  - New filter pto/posts_orderby  to ignore sort apply
+
 = 1.8.6 =
   - PHP 7 deprecated nottice fix Deprecated: Methods with the same name as their class will not be constructors in a future version of PHP;  
   - Fix: $_REQUEST['action'] comparison evaluate as Identical instead equal
