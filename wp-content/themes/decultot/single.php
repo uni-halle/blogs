@@ -16,7 +16,19 @@ get_header(); ?>
 		while ( have_posts() ) : the_post();
 
 			// Include the single post content template.
-			get_template_part( 'template-parts/content', 'single' );
+
+			$post_cat = get_the_category();
+			$news_cats = [ 5, 9 ];
+			$is_news = false;
+
+			foreach($post_cat as $cat) {
+				if( in_array($cat->cat_ID, $news_cats)) $is_news = true;
+			}
+
+			if( $is_news ) {
+				get_template_part( 'template-parts/content', 'news-single' );
+			}
+			else get_template_part( 'template-parts/content', 'single' );
 
 			// If comments are open or we have at least one comment, load up the comment template.
 //			if ( comments_open() || get_comments_number() ) {

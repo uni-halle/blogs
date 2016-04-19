@@ -61,9 +61,11 @@
 
 			<div class="single-post-footer">
 				<p class="seitenanfang">
-					<a class="scroll-top-link" href="javascript:void(0);"><?php _e( 'Seitenanfang', 'dct' ); ?></a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="<?php echo
-					$cat_link;
-					?>"><?php echo $cat_name; ?></a>
+					<a class="scroll-top-link" href="javascript:void(0);"><?php _e( 'Seitenanfang', 'dct' ); ?></a>
+					&nbsp;&nbsp;/&nbsp;&nbsp;
+					<a href="<?php echo $cat_link; ?>">
+						<?php echo $cat_name; ?>
+					</a>
 				</p>
 				<p class="seitenanfang">
 					<a href="javascript:void(0);" class="print-link"><?php _e( 'Seite drucken', 'dct' ); ?></a>

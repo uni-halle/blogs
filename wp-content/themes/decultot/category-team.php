@@ -82,6 +82,19 @@ get_header(); ?>
 			endif;
 			?>
 
+			<div id="hilfsmitarbeiter">
+				<?php
+								if (ICL_LANGUAGE_CODE === 'de') $id = 1050; // live
+//				if (ICL_LANGUAGE_CODE === 'de') $id = 734; // development
+				else $id = 2103; // live
+//				else $id = 741; // development
+				$post = get_post($id);
+
+				echo do_shortcode($post->post_content);
+				?>
+			</div>
+
+
 		</main><!-- .site-main -->
 	</div><!-- .content-area -->
 

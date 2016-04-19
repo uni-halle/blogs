@@ -59,11 +59,11 @@ get_header(); ?>
 						<div class="dct-pagenav">
 							<?php
 
-							if ($is_prev) previous_posts_link(__('Neuere Beiträge', 'dct'));
+							if ($is_prev) previous_posts_link(__('Frühere Veranstaltungen', 'dct'));
 
 							if ($is_next && $is_prev) echo '&nbsp;&nbsp;/&nbsp;&nbsp;';
 
-							if ($is_next) next_posts_link(__('Ältere Beiträge', 'dct'));
+							if ($is_next) next_posts_link(__('Ältere Veranstaltungen', 'dct'));
 
 							?>
 						</div>
@@ -77,10 +77,18 @@ get_header(); ?>
 
 			// If no content, include the "No posts found" template.
 			else :
-				get_template_part('template-parts/content', 'none');
+				get_template_part('template-parts/content', 'no-past-events');
 
 			endif;
+
+			$news_page = ICL_LANGUAGE_CODE === 'de' ? 2258 : 2261; // live
+			//			$news_page = ICL_LANGUAGE_CODE === 'de' ? 821 : 826; // development
+
 			?>
+
+			<p class="past-events read-more">
+				<a href="<?php echo get_permalink($news_page); ?>"><?php _e('upcoming events', 'dct'); ?></a>
+			</p>
 
 		</main><!-- .site-main -->
 	</div><!-- .content-area -->

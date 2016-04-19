@@ -26,6 +26,23 @@ function register_footer_menu() {
 }
 add_action( 'init', 'register_footer_menu' );
 
+
+if( ! function_exists('sort_events') ) {
+	function sort_events($query){
+		if( ! is_admin()
+				&& $query->is_main_query()
+				&& is_category( [ 5, 9 ] )
+		){
+
+			$query->set( 'post_status', 'future' );
+			$query->set( 'order', 'ASC' );
+			$query->set( 'posts_per_page', -1 );
+
+		}
+	}
+}
+//add_action( 'pre_get_posts', 'sort_events' );
+
 // endregion ADD ACTIONS
 
 
@@ -85,6 +102,45 @@ function limit_posts_per_page() {
 		return 12; // default: 5 posts per page
 }
 add_filter('pre_option_posts_per_page', 'limit_posts_per_page');
+
+
+/* Show future posts for all categories, post types etc. */
+function show_future_posts($posts)
+{
+	global $wp_query, $wpdb;
+	if(is_single() && $wp_query->post_count == 0)
+	{
+		$posts = $wpdb->get_results($wp_query->request);
+	}
+	return $posts;
+}
+add_filter('the_posts', 'show_future_posts');
+
+
+function future_permalink( $permalink, $post, $leavename, $sample = false ) {
+	/* for filter recursion (infinite loop) */
+	static $recursing = false;
+
+	if ( empty( $post->ID ) ) {
+		return $permalink;
+	}
+
+	if ( !$recursing ) {
+		if ( isset( $post->post_status ) && ( 'future' === $post->post_status ) ) {
+			// set the post status to publish to get the 'publish' permalink
+			$post->post_status = 'publish';
+			$recursing = true;
+			return get_permalink( $post, $leavename ) ;
+		}
+	}
+
+	$recursing = false;
+	return $permalink;
+}
+// post, page post type
+add_filter( 'post_link', 'future_permalink', 10, 3 );
+// custom post types
+add_filter( 'post_type_link', 'future_permalink', 10, 4 );
 
 
 function new_join($pjoin){
