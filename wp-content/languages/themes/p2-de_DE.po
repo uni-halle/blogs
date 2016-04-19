@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the P2 package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-02-04 19:56:35+0000\n"
+"PO-Revision-Date: 2016-04-18 08:29:17+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/1.0-alpha-1100\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
 "Project-Id-Version: P2\n"
 
 #. Theme Name of the plugin/theme
@@ -586,6 +586,10 @@ msgstr "Nicht gefunden"
 #. Author URI of the plugin/theme
 msgid "https://wordpress.com/themes/"
 msgstr "https://wordpress.com/themes/"
+
+#. Theme URI of the plugin/theme
+msgid "https://wordpress.com/themes/p2/"
+msgstr "https://wordpress.com/themes/p2/"
 
 #. Author of the plugin/theme
 msgid "Automattic"
