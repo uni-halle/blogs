@@ -81,16 +81,16 @@ table.dataTable thead .sorting:after,table.dataTable thead .sorting_asc:after,ta
 }
 table.dataTable thead .sorting:after {
     font-family: "fontello";
-    content: "\e81d";
+    content: "\e812";
     opacity: 0.2;
 }
 table.dataTable thead .sorting_asc:after {
     font-family: "fontello";
-    content: "\e81b";
+    content: "\e80e";
 }
 table.dataTable thead .sorting_desc:after {
     font-family: "fontello";
-    content: "\e81c";
+    content: "\e811";
 }
 table.dataTable thead .sorting_asc_disabled:after,table.dataTable thead .sorting_desc_disabled:after {
     color: #eee;

@@ -61,7 +61,7 @@ class AAM_Frontend_Manager {
         global $post;
 
         $user = AAM::getUser();
-        if (is_single() || is_page()) {
+        if ((is_single() || is_page()) && is_object($post)) {
             $object = $user->getObject('post', $post->ID);
             if ($object->has('frontend.read')) {
                 AAM_Core_API::reject();

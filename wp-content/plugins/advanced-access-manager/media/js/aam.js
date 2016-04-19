@@ -225,6 +225,22 @@
         
         return result;
     };
+    
+    /**
+     * 
+     * @param {type} el
+     * @returns {undefined}
+     */
+    AAM.prototype.readMore = function(el) {
+        $(el).append($('<a/>').attr({
+            'href'  : '#',
+            'class' : 'aam-readmore' 
+        }).text('Read More').bind('click', function(event){
+            event.preventDefault();
+            $(this).hide();
+            $(el).append('<span>' + $(el).data('readmore') + '</span>');
+        }));
+    };
 
     /**
      * Initialize UI

@@ -689,7 +689,7 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
     background-color: #F5F5F5;
     padding: 10px;
     position: relative;
-    font-size: 1.2em;
+    font-size: 1em;
     margin-bottom: 20px;
 }
 

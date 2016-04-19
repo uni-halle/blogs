@@ -166,11 +166,10 @@
                             $('#delete-role-btn').data('role', data[0]);
                             var message = $('#delete-role-modal .aam-confirm-message').data('message');
                             $('#delete-role-modal .aam-confirm-message').html(
-                                    message.replace(
-                                            '%s',
-                                            '<strong>' + event.data.role[2] + '</strong>'
-                                            )
-                                    );
+                                message.replace(
+                                    '%s', '<strong>' + event.data.role[2] + '</strong>'
+                                )
+                            );
 
                             $('#delete-role-modal').modal('show');
                         }).attr({
@@ -714,6 +713,8 @@
                 }
             });
         });
+        
+        aam.readMore($('#admin-menu-help'));
     }
 
     aam.addHook('init', initialize);

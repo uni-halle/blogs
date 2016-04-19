@@ -11,8 +11,8 @@
 
         <div class="row">
             <div class="col-xs-12">
-                <p class="aam-info">
-                    <?php echo AAM_Backend_Helper::preparePhrase('If checked, then menu is filtered. [Please notice]! This does not restrict direct access to the page but rather filters it from the menu. In order to completely restrict access to the desired page, un-check the capability that is assigned to the menu [(the capability is shown right next to the menu title)].', 'strong', 'small'); ?>
+                <p class="aam-info" id="admin-menu-help" data-readmore="<?php echo AAM_Backend_Helper::preparePhrase('[Please notice]! This does not restrict direct access to the page but rather filters it from the menu. In order to completely restrict access to the desired page, un-check the capability that is assigned to the menu [(the capability is shown right next to the menu title)].', 'strong', 'small'); ?>">
+                    <?php echo __('If checked, then menu is filtered.', AAM_KEY); ?>
                 </p>
             </div>
         </div>
