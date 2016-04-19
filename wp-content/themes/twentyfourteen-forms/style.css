@@ -34,7 +34,7 @@
 input,
 textarea {
 	color: #2b2b2b;
-	border: 1px solid rgba(0, 0, 0, 0.3);
+	border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 input:focus,
@@ -84,6 +84,7 @@ input[type="email"],
 input[type="text"],
 input[type="url"],
 input[type="file"],
+input[type="tel"],
 .wpcf7,
 form,
 p,
@@ -134,3 +135,16 @@ div#global-footer {
 article form * { max-width: 100%; }
 fieldset { margin: 0; padding: 11px 4px 0; }
 fieldset legend { padding: 3px 10px; font-weight:bold;}
+
+label.required:after {
+	content: " *";
+	color: #005133;
+}
+.wpcf7-validates-as-required {
+	border-color: #005133;
+	font-style: italic;
+}
+
+.wpcf7-form-control-wrap input{
+	margin-bottom: .25em;
+}
