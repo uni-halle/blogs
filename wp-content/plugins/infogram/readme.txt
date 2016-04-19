@@ -3,7 +3,7 @@ Contributors: torbjon
 Tags: infographics, charts
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.3.1
+Stable tag: 1.3.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,6 +16,8 @@ Infogram is the data visualization tool that brings out the best in your data. O
 Infogram is used by journalists, civic leaders and the business community to create visually appealing  data visualizations and embed them for publication on any site. 
 
 We offer a wide range of high-quality template designs and visually-balanced pre-set colors, making data visualization fast and easy, so you can focus on the data while we handle the design.
+
+[youtube https://www.youtube.com/watch?v=JCiXFxBQggM]
 
 The Infogram WordPress plugin:
 
