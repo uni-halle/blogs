@@ -38,94 +38,97 @@
 
 <body <?php body_class(); ?>>
 
-<?php 
-/** 
+<?php
+/**
  * catchbox_before hook
  */
 do_action( 'catchbox_before' ); ?>
 
 <div id="page" class="hfeed site">
 
-	<?php 
-    /** 
+	<?php
+    /**
      * catchbox_before_header hook
      *
      * @hooked catchbox_skiptocontain - 10
      */
-    do_action( 'catchbox_before_header' ); 
-    ?> 
-    
+    do_action( 'catchbox_before_header' );
+    ?>
+
 	<header id="branding" role="banner">
 
-    	<?php 
-		/** 
+    	<?php
+		/**
 		 * catchbox_before_headercontent hook
+         *
+         * @hooked catchbox_main_header_image(if position above) - 10
 		 */
 		do_action( 'catchbox_before_headercontent' ); ?>
-            
+
     	<div id="header-content" class="clearfix">
-        
-			<?php 
-            /** 
+
+			<?php
+            /**
              * catchbox_headercontent hook
-             *
+
              * @hooked catchbox_headerdetails - 10
-			 * @hooked catchbox_header_search - 15
+             * @hooked catchbox_header_search - 20
              */
 			do_action( 'catchbox_headercontent' ); ?>
-            
+
 		</div><!-- #header-content -->
-        
-    	<?php 
-		/** 
+
+    	<?php
+		/**
 		 * catchbox_after_headercontent hook
-		 *
-         * @hooked catchbox_header_menu - 10
-         * @hooked catchbox_mobile_header_menu - 20
+         *
+         * @hooked catchbox_main_header_image (if position below) - 10
+         * @hooked catchbox_header_menu - 20
+         * @hooked catchbox_mobile_header_menu - 30
 		 */
-		do_action( 'catchbox_after_headercontent' ); ?>           
-                
+		do_action( 'catchbox_after_headercontent' ); ?>
+
 	</header><!-- #branding -->
-    
-	<?php 
-    /** 
+
+	<?php
+    /**
      * catchbox_after_header hook
      */
-    do_action( 'catchbox_after_header' ); 
-    ?>    
+    do_action( 'catchbox_after_header' );
+    ?>
 
-	<?php 
-    /** 
+	<?php
+    /**
      * catchbox_before_main hook
      */
-    do_action( 'catchbox_before_main' ); 
+    do_action( 'catchbox_before_main' );
     ?>
-        
+
 	<div id="main" class="clearfix">
 
-		<?php 
-        /** 
+		<?php
+        /**
 		 * catchbox_before_primary hook
 		 *
 		 */
         do_action( 'catchbox_before_primary' ); ?>
-        
+
 		<div id="primary" class="content-area">
-        
-			<?php 
-            /** 
+
+			<?php
+            /**
              * catchbox_before_content hook
              *
              */
             do_action( 'catchbox_before_content' ); ?>
-        
+
 			<div id="content" role="main">
-				<?php 
-                /** 
+				<?php
+                /**
                  * catchbox_content hook
                  *
                  * @hooked catchbox_slider_display - 10
                  * @hooked catchbox_breadcrumb_display - 20
-                 * 
+                 *
                  */
                 do_action( 'catchbox_content' ); ?>

@@ -43,16 +43,6 @@ function catchbox_customize_register( $wp_customize ) {
 					'title' 		=> __( 'Webclip Icon Options', 'catch-box' ),
 					'description' 	=> __( 'Web Clip Icon for Apple devices. Recommended Size - Width 144px and Height 144px height, which will support High Resolution Devices like iPad Retina', 'catch-box' )
 				),
-				'color_scheme' => array(
-					'id' 			=> 'color_scheme',
-					'title' 		=> __( 'Color Scheme', 'catch-box' ),
-					'description' 	=> '',
-				),
-				'link_color' => array(
-					'id' 			=> 'link_color',
-					'title' 		=> __( 'Link Color', 'catch-box' ),
-					'description' 	=> '',
-				),
 				'theme_layout' => array(
 					'id' 			=> 'theme_layout',
 					'title' 		=> __( 'Default Layout', 'catch-box' ),
@@ -73,14 +63,9 @@ function catchbox_customize_register( $wp_customize ) {
 					'title' 		=> __( 'Feed Redirect URL', 'catch-box' ),
 					'description' 	=> '',
 				),
-				'site_title_above' => array(
-					'id' 			=> 'site_title_above',
-					'title' 		=> __( 'Move Site Title and Tagline?', 'catch-box' ),
-					'description' 	=> '',
-				),
 				'search_display_text' => array(
 					'id' 			=> 'search_display_text',
-					'title' 		=> __( 'Default Display Text in Search', 'catch-box' ),
+					'title' 		=> __( 'Search Text Settings', 'catch-box' ),
 					'description' 	=> '',
 				),
 				'disable_header_search' => array(
@@ -124,6 +109,25 @@ function catchbox_customize_register( $wp_customize ) {
 			)
 		),
 
+		'colors' => array(
+			'id' 			=> 'colors',
+			'title' 		=> __( 'Colors', 'catch-box' ),
+			'description' 	=> '',
+			'priority'		=> '10',
+			'sections' 		=> array(
+				'basic_colors' => array(
+					'id' 			=> 'basic_colors',
+					'title' 		=> __( 'Basic Colors', 'catch-box' ),
+					'description' 	=> '',
+				),
+				'custom_colors' => array(
+					'id' 			=> 'custom_colors',
+					'title' 		=> __( 'Custom Color Options', 'catch-box' ),
+					'description' 	=> '',
+				),
+			),
+		),
+
 		'social_links' => array(
 			'id' 			=> 'social_links',
 			'title' 		=> __( 'Social Links', 'catch-box' ),
@@ -152,10 +156,16 @@ function catchbox_customize_register( $wp_customize ) {
 
 	//Add Panels and sections
 	foreach ( $settings_page_tabs as $panel ) {
+		$panel_priority = 200;
+
+		if ( 'colors' === $panel['id'] ) {
+			$panel_priority = 30;
+		}
+
 		$wp_customize->add_panel(
 			$theme_slug . $panel['id'],
 			array(
-				'priority' 		=> 200,
+				'priority' 		=> $panel_priority,
 				'capability' 	=> 'edit_theme_options',
 				'title' 		=> $panel['title'],
 				'description' 	=> $panel['description'],
@@ -196,6 +206,13 @@ function catchbox_customize_register( $wp_customize ) {
 		$catchbox_content_layout[ $option['value'] ] =  $option['label'];
 	}
 
+	//Move default header color and background color under custom section basic_colors
+	$wp_customize->get_control( 'header_textcolor' )->section = $theme_slug . 'basic_colors' ;
+	$wp_customize->get_control( 'header_textcolor' )->priority = 20 ;
+
+	$wp_customize->get_control( 'background_color' )->section = $theme_slug . 'basic_colors' ;
+	$wp_customize->get_control( 'background_color' )->priority = 25 ;
+
 	$settings_parameters = array(
 		//Color Scheme
 		'color_scheme' => array(
@@ -205,7 +222,7 @@ function catchbox_customize_register( $wp_customize ) {
 			'field_type' 	=> 'radio',
 			'sanitize' 		=> 'catchbox_sanitize_select',
 			'panel' 		=> 'theme_options',
-			'section' 		=> 'color_scheme',
+			'section' 		=> 'basic_colors',
 			'default' 		=> $defaults['color_scheme'],
 			'choices'		=> $catchbox_color_schemes,
 		),
@@ -216,7 +233,7 @@ function catchbox_customize_register( $wp_customize ) {
 			'field_type' 	=> 'color',
 			'sanitize' 		=> 'sanitize_hex_color',
 			'panel' 		=> 'theme_options',
-			'section' 		=> 'link_color',
+			'section' 		=> 'custom_colors',
 			'default' 		=> $defaults['link_color']
 		),
 		'theme_layout' => array(
@@ -274,8 +291,7 @@ function catchbox_customize_register( $wp_customize ) {
 			'title' 		=> __( 'Check to move above the Header/Logo Image', 'catch-box' ),
 			'field_type' 	=> 'checkbox',
 			'sanitize' 		=> 'catchbox_sanitize_checkbox',
-			'panel' 		=> 'theme_options',
-			'section' 		=> 'site_title_above',
+			'section' 		=> 'title_tagline',
 			'default' 		=> $defaults['site_title_above']
 		),
 		'search_display_text' => array(
@@ -680,6 +696,28 @@ function catchbox_customize_register( $wp_customize ) {
 		$settings_parameters = array_merge( $settings_parameters, $settings_favicon);
 	}
 
+	if( function_exists( 'has_custom_logo' ) ) {
+		$settings_header_image = array(
+			//Favicon
+			'header_image_position' => array(
+				'id'          => 'header_image_position',
+				'title'       => __( 'Header Image', 'catch-box' ),
+				'description' => '',
+				'field_type'  => 'select',
+				'sanitize'    => 'catchbox_sanitize_select',
+				'section'     => 'header_image',
+				'default'     => $defaults['header_image_position'],
+				'choices'     => array(
+					'above'   => __( 'Above Site Title-Logo', 'catch-box' ),
+					'between' => __( 'Between Site Title-Logo', 'catch-box' ),
+					'below'   => __( 'Below Site Title-Logo', 'catch-box' )
+				)
+			)
+		);
+
+		$settings_parameters = array_merge( $settings_parameters, $settings_header_image);
+	}
+
 	foreach ( $settings_parameters as $option ) {
 		if( 'image' == $option['field_type'] ) {
 			$wp_customize->add_setting(
@@ -720,11 +758,17 @@ function catchbox_customize_register( $wp_customize ) {
 						'label'		=> $option['title'],
 						'settings'  => $theme_slug . 'options[' . $option['id'] . ']',
 						'name'  	=> $theme_slug . 'options[' . $option['id'] . ']',
-						'section'	=> $theme_slug . $option['section']
 					);
 
 			if ( isset( $option['active_callback']  ) ){
 				$params['active_callback'] = $option['active_callback'];
+			}
+
+			if ( 'title_tagline' == $option['section'] ) {
+				$params['section'] = $option['section'];
+			}
+			else {
+				$params['section']	= $theme_slug . $option['section'];
 			}
 
 			$wp_customize->add_control(
@@ -753,7 +797,6 @@ function catchbox_customize_register( $wp_customize ) {
 					'settings'		=> $theme_slug . 'options[' . $option['id'] . ']',
 					'type'			=> $option['field_type'],
 					'description'   => $option['description'],
-					'section'	=> $theme_slug . $option['section']
 				);
 
 			if ( isset( $option['active_callback']  ) ){
@@ -770,6 +813,13 @@ function catchbox_customize_register( $wp_customize ) {
 
 			if ( isset( $option['input_attrs']  ) ){
 				$params['input_attrs'] = $option['input_attrs'];
+			}
+
+			if ( 'header_image' == $option['section'] ) {
+				$params['section'] = $option['section'];
+			}
+			else {
+				$params['section']	= $theme_slug . $option['section'];
 			}
 
 			$wp_customize->add_control(

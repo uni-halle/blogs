@@ -53,7 +53,7 @@ function catchbox_wp_page_menu( $page_markup ) {
         $replace = array('<div class="'.$divclass.'">', '</div>');
         $new_markup = str_replace($replace, '', $page_markup);
         $new_markup = preg_replace('/^<ul>/i', '<ul class="'.$divclass.'">', $new_markup);
-        return $new_markup; 
+        return $new_markup;
 }
 endif; //catchbox_wp_page_menu
 
@@ -70,11 +70,11 @@ function catchbox_header_menu() { ?>
     <nav id="access" class="main-navigation menu-focus" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'catch-box' ); ?>">
         <h3 class="assistive-text"><?php _e( 'Primary menu', 'catch-box' ); ?></h3>
         <?php
-            if ( has_nav_menu( 'primary', 'catch-box' ) ) { 
+            if ( has_nav_menu( 'primary', 'catch-box' ) ) {
                 $args = array(
                     'theme_location'    => 'primary',
-                    'container_class'   => 'menu-header-container', 
-                    'items_wrap'        => '<ul class="menu">%3$s</ul>' 
+                    'container_class'   => 'menu-header-container',
+                    'items_wrap'        => '<ul class="menu">%3$s</ul>'
                 );
                 wp_nav_menu( $args );
             }
@@ -82,10 +82,10 @@ function catchbox_header_menu() { ?>
                 echo '<div class="menu-header-container">';
                     wp_page_menu( array( 'menu_class'  => 'menu' ) );
                 echo '</div>';
-            } ?>        
-               
+            } ?>
+
         </nav><!-- #access -->
-        
+
     <?php if ( has_nav_menu( 'secondary', 'catch-box' ) ) {
         // Check is footer menu is enable or not
         $options = catchbox_get_theme_options();
@@ -100,11 +100,11 @@ function catchbox_header_menu() { ?>
             <?php wp_nav_menu( array( 'theme_location'  => 'secondary', 'container_class' => 'menu-secondary-container' ) );  ?>
         </nav>
     <?php }
-} 
+}
 endif; //catchbox_header_menu
 
-// Load Header Menu in  catchbox_after_headercontent hook 
-add_action( 'catchbox_after_headercontent', 'catchbox_header_menu', 10 ); 
+// Load Header Menu in  catchbox_after_headercontent hook
+add_action( 'catchbox_after_headercontent', 'catchbox_header_menu', 20 );
 
 
 if ( ! function_exists( 'catchbox_footer_menu_display' ) ) :
@@ -113,7 +113,7 @@ if ( ! function_exists( 'catchbox_footer_menu_display' ) ) :
  *
  * @since Catch Box 4.0
  */
-function catchbox_footer_menu_display() { 
+function catchbox_footer_menu_display() {
     if ( has_nav_menu( 'footer', 'catch-box' ) ) {
         // Check is footer menu is enable or not
         $options = catchbox_get_theme_options();
@@ -127,13 +127,13 @@ function catchbox_footer_menu_display() {
             <h3 class="assistive-text"><?php _e( 'Footer menu', 'catch-box' ); ?></h3>
             <?php wp_nav_menu( array( 'theme_location'  => 'footer', 'container_class' => 'menu-footer-container', 'depth' => 1 ) );  ?>
         </nav>
-    <?php 
+    <?php
     }
-} 
+}
 endif; //catchbox_footer_menu_display
 
-// Load Footer Menu in  catchbox_footer_menu hook 
-add_action( 'catchbox_footer_menu', 'catchbox_footer_menu_display', 10 ); 
+// Load Footer Menu in  catchbox_footer_menu hook
+add_action( 'catchbox_footer_menu', 'catchbox_footer_menu_display', 10 );
 
 
 if ( ! function_exists( 'catchbox_mobile_header_menu' ) ) :
@@ -147,12 +147,12 @@ function catchbox_mobile_header_menu() {
     //Getting Ready to load options data
     $options = catchbox_get_theme_options();
 
-    // Header Left Mobile Menu Anchor 
+    // Header Left Mobile Menu Anchor
     if ( has_nav_menu( 'primary' ) ) {
         $classes = "mobile-menu-anchor primary-menu";
     }
     else {
-        $classes = "mobile-menu-anchor page-menu"; 
+        $classes = "mobile-menu-anchor page-menu";
     }
     ?>
     <div class="menu-access-wrap clearfix">
@@ -181,7 +181,7 @@ function catchbox_mobile_header_menu() {
             $classes = "mobile-menu-anchor secondary-menu";
         }
         else {
-            return; 
+            return;
         }
         ?>
         <div id="mobile-header-right-menu" class="<?php echo $classes; ?>">
@@ -198,17 +198,17 @@ function catchbox_mobile_header_menu() {
                         'container'         => false,
                         'items_wrap'        => '<ul id="header-right-nav" class="menu">%3$s</ul>'
                     );
-                    wp_nav_menu( $args ); 
+                    wp_nav_menu( $args );
                 ?>
             </nav><!-- #mobile-header-right-nav -->
         <?php endif; ?>
-    </div><!-- .menu-access-wrap -->   
+    </div><!-- .menu-access-wrap -->
 
-    <?php    
+    <?php
 }
-endif; //catchbox_mobile_header_menu  
-  
-add_action( 'catchbox_after_headercontent', 'catchbox_mobile_header_menu', 20 );
+endif; //catchbox_mobile_header_menu
+
+add_action( 'catchbox_after_headercontent', 'catchbox_mobile_header_menu', 30 );
 
 
 if ( ! function_exists( 'catchbox_mobile_footer_menu' ) ) :
@@ -229,7 +229,7 @@ function catchbox_mobile_footer_menu() {
                     <span class="mobile-menu-text"><?php _e( 'Footer Menu', 'catch-box' );?></span>
                 </a>
             </div><!-- #mobile-footer-menu -->
-            <?php 
+            <?php
                 echo '<nav id="mobile-footer-nav" class="mobile-menu" role="navigation" aria-label="' . esc_attr__( 'Secondary Mobile Menu', 'catch-box' ) . '">';
                     $args = array(
                         'theme_location'    => 'footer',
@@ -239,10 +239,10 @@ function catchbox_mobile_footer_menu() {
                     wp_nav_menu( $args );
                 echo '</nav><!-- #mobile-footer-nav -->';
             ?>
-        </div><!-- .menu-access-wrap -->  
-        <?php  
-    }  
+        </div><!-- .menu-access-wrap -->
+        <?php
+    }
 }
-endif; //catchbox_mobile_footer_menu 
+endif; //catchbox_mobile_footer_menu
 
 add_action( 'catchbox_footer_menu', 'catchbox_mobile_footer_menu', 20 );

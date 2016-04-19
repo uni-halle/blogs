@@ -140,24 +140,27 @@ function catchbox_setup() {
 	//disable old image size for featued posts add_image_size( 'featured-slider', 560, 270, true );
 	add_image_size( 'featured-slider', 644, 320, true ); // Used for featured posts if a large-feature doesn't exist
 
-	//@remove Remove if block when WordPress 4.8 is released
-	if( !function_exists( 'has_custom_logo' ) ) {
-		// Add support for custom header
-		add_theme_support( 'custom-header', array(
-			// Header image random rotation default
-			'random-default'			=> false,
-			// Header image flex width
-			'flex-width'      			=> true,
-			// Header image flex height
-			'flex-height'				=> true,
-			// Template header style callback
-			'wp-head-callback'			=> 'catchbox_header_style',
-			// Admin header style callback
-			'admin-head-callback'		=> 'catchbox_admin_header_style',
-			// Admin preview style callback
-			'admin-preview-callback'	=> 'catchbox_admin_header_image'
-		) );
+	$custom_header_args = array(
+		// Header image random rotation default
+		'random-default'			=> false,
+		// Header image flex width
+		'flex-width'      			=> true,
+		// Header image flex height
+		'flex-height'				=> true,
+		// Template header style callback
+		'wp-head-callback'			=> 'catchbox_header_style'
+	);
 
+	if( !function_exists( 'has_custom_logo' ) ) {
+		$custom_header_args['width'] 	= 1000;
+		$custom_header_args['height'] = 400;
+	}
+
+
+	// Add support for custom header
+	add_theme_support( 'custom-header', $custom_header_args );
+
+	if( !function_exists( 'has_custom_logo' ) ) {
 		// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
 		register_default_headers( array(
 			'wheel' => array(
@@ -210,8 +213,6 @@ function catchbox_setup() {
 	add_editor_style();
 
 
-
-
 	/**
      * This feature enables Jetpack plugin Infinite Scroll
      */
@@ -231,9 +232,10 @@ function catchbox_setup() {
 		*/
 		add_theme_support( 'custom-logo',
 			array(
-		   		'height'      => 300,
-	 			'width'       => 125,
-	 			'flex-height' => true,
+				'height'      => 125,
+				'width'       => 300,
+				'flex-height' => true,
+				'flex-width'  => true,
 			)
 		);
 	}
@@ -438,82 +440,6 @@ function catchbox_header_style() {
 	<?php
 }
 endif; // catchbox_header_style
-
-
-if ( ! function_exists( 'catchbox_admin_header_style' ) ) :
-/**
- * Styles the header image displayed on the Appearance > Header admin panel.
- *
- * @since Catch Box 1.0
- */
-function catchbox_admin_header_style() {
-?>
-	<style type="text/css">
-	.appearance_page_custom-header #headimg {
-		border: none;
-	}
-	#headimg h1,
-	#desc {
-		font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
-	}
-	#headimg h1 {
-		margin: 0;
-	}
-	#headimg h1 a {
-		font-size: 32px;
-		line-height: 36px;
-		text-decoration: none;
-	}
-	#desc {
-		font-size: 14px;
-		line-height: 23px;
-		padding: 0 0 3em;
-	}
-	<?php
-		// If the user has set a custom color for the text use that
-		if ( get_header_textcolor() != HEADER_TEXTCOLOR ) :
-	?>
-		#site-title a,
-		#site-description {
-			color: #<?php echo get_header_textcolor(); ?>;
-		}
-	<?php endif; ?>
-
-	#headimg img {
-		height: auto;
-		max-width: 100%;
-	}
-	</style>
-<?php
-}
-endif; // catchbox_admin_header_style
-
-
-if ( ! function_exists( 'catchbox_admin_header_image' ) ) :
-/**
- * Custom header image markup displayed on the Appearance > Header admin panel.
- *
- * @since Catch Box 1.0
- */
-function catchbox_admin_header_image() { ?>
-	<div id="headimg">
-		<?php
-		$color = get_header_textcolor();
-		$image = get_header_image();
-		if ( $color && $color != 'blank' )
-			$style = ' style="color:#' . $color . '"';
-		else
-			$style = ' style="display:none"';
-		?>
-
-		<h1><a id="name"<?php echo $style; ?> onclick="return false;" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
-		<div id="desc"<?php echo $style; ?>><?php bloginfo( 'description' ); ?></div>
-		<?php if ( $image ) : ?>
-			<img src="<?php echo esc_url( $image ); ?>" alt="" />
-		<?php endif; ?>
-	</div>
-<?php }
-endif; // catchbox_admin_header_image
 
 
 /**
@@ -872,6 +798,13 @@ function catchbox_body_classes( $classes ) {
 
 	if ( empty ( $options ['enable_menus'] ) ) {
 		$classes[] = 'one-menu';
+	}
+
+	$position = isset( $options['header_image_position'] ) ? $options['header_image_position'] : 'above';
+
+
+	if ( 'above' == $position ) {
+		$classes[] = 'header-image-top';
 	}
 
 	return $classes;
@@ -1418,24 +1351,8 @@ if ( ! function_exists( 'catchbox_header_details' ) ) :
  * @since Catch Box 2.5
  */
 function catchbox_header_details() {
-
-	// Check to see if the header image has been removed
-	$header_image = get_header_image();
-	// Check Logo
-	if ( function_exists( 'has_custom_logo' ) ) {
-		if ( has_custom_logo() ) {
-			echo '<div id="hgroup" class="site-details with-logo">';
-		}
-		else {
-    		echo '<div id="hgroup" class="site-details">';
-    	}
-	}
-	else if ( ! empty( $header_image ) ) :
-     	echo '<div id="hgroup" class="site-details with-logo">';
-	else :
-    	echo '<div id="hgroup" class="site-details">';
-	endif; // end check for removed header image  ?>
-
+	?>
+	<div id="hgroup" class="site-details">
    		<h1 id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
        	<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
    	</div><!-- #hgroup -->
@@ -1443,6 +1360,60 @@ function catchbox_header_details() {
 <?php
 }
 endif;
+
+
+if ( ! function_exists( 'catchbox_main_header_image' ) ) :
+/**
+ * Template for Header Image
+ *
+ * To override this in a child theme
+ * simply create your own catchbox_main_header_image(), and that function will be used instead.
+ *
+ * @since Catch Box 4.4.2
+ */
+function catchbox_main_header_image() {
+	// Check Logo
+	if ( !function_exists( 'has_custom_logo' ) ) {
+		//Bail if WP version is less than 4.5 as header image is used as logo in previous options
+		return;
+	}
+
+	$header_image = get_header_image();
+	if ( ! empty( $header_image ) ) : ?>
+    	<div id="site-header-image">
+        	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+                <img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
+            </a><!-- #site-logo -->
+      	</div>
+
+	<?php endif; // end check for removed header image
+}
+endif;
+
+
+if ( ! function_exists( 'catchbox_main_header_image_position' ) ) :
+/**
+ * Set Header Image Position
+ *
+ * To override this in a child theme
+ * simply create your own catchbox_main_header_image_position(), and that function will be used instead.
+ *
+ * @since Catch Box 4.4.2
+ */
+function catchbox_main_header_image_position() {
+	// Getting data from Theme Options
+	$options  = catchbox_get_theme_options();
+	$position = isset( $options['header_image_position'] ) ? $options['header_image_position'] : 'above';
+
+	if ( 'above' == $position ) {
+		add_action( 'catchbox_before_headercontent', 'catchbox_main_header_image', 10 );
+	}
+	else if ( 'below' == $position ) {
+		add_action( 'catchbox_after_headercontent', 'catchbox_main_header_image', 10 );
+	}
+}
+endif;
+add_action( 'wp', 'catchbox_main_header_image_position' );
 
 
 if ( ! function_exists( 'catchbox_headerdetails' ) ) :
@@ -1454,16 +1425,23 @@ if ( ! function_exists( 'catchbox_headerdetails' ) ) :
 function catchbox_headerdetails() {
 
 	// Getting data from Theme Options
-	$options = catchbox_get_theme_options();
+	$options     = catchbox_get_theme_options();
 	$sitedetails = $options['site_title_above'];
+	$position    = isset( $options['header_image_position'] ) ? $options['header_image_position'] : 'above';
 
 	echo '<div class="logo-wrap clearfix">';
 
 	if ( $sitedetails == '0' ) {
 		echo catchbox_header_image();
+		if ( 'between' == $position ) {
+			catchbox_main_header_image();
+		}
 		echo catchbox_header_details();
 	} else {
 		echo catchbox_header_details();
+		if ( 'between' == $position ) {
+			catchbox_main_header_image();
+		}
 		echo catchbox_header_image();
 	}
 
@@ -1495,7 +1473,7 @@ function catchbox_header_search() {
 endif; //catchbox_header_search
 
 // Loads Header Search in catchbox_headercontent hook
-add_action( 'catchbox_headercontent', 'catchbox_header_search', 15 );
+add_action( 'catchbox_headercontent', 'catchbox_header_search', 20 );
 
 
 if ( ! function_exists( 'catchbox_footer_content' ) ) :

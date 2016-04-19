@@ -368,24 +368,25 @@ function catchbox_content_layout() {
  */
 function catchbox_get_default_theme_options() {
 	$default_theme_options = array(
-		'excerpt_length'		=> 40,
-		'color_scheme'			=> 'light',
-		'link_color'			=> catchbox_get_default_link_color( 'light' ),
-		'theme_layout'			=> 'right-sidebar',
-		'content_layout'		=> 'excerpt',
-		'site_title_above'		=> '0',
+		'excerpt_length'        => 40,
+		'color_scheme'          => 'light',
+		'header_image_position' => 'above',
+		'link_color'            => catchbox_get_default_link_color( 'light' ),
+		'theme_layout'          => 'right-sidebar',
+		'content_layout'        => 'excerpt',
+		'site_title_above'      => '0',
 		'disable_header_search' => '0',
-		'enable_menus' 			=> '0',
-		'search_display_text'	=> 'Search',
+		'enable_menus'          => '0',
+		'search_display_text'   => __( 'Search', 'catch-box' ),
 
 		//Feature Slider
-		'exclude_slider_post'	=> '0',
-		'slider_qty'			=> 4,
-		'transition_effect'		=> 'fade',
-		'transition_delay'		=> 4,
-		'transition_duration'	=> 1,
+		'exclude_slider_post'   => '0',
+		'slider_qty'            => 4,
+		'transition_effect'     => 'fade',
+		'transition_delay'      => 4,
+		'transition_duration'   => 1,
 
-		'disable_scrollup'		=> '0',
+		'disable_scrollup'      => '0',
 	);
 
 	if ( is_rtl() )
@@ -591,17 +592,19 @@ function catchbox_settings_field_scroll_up() {
  */
 function catchbox_settings_field_layout() {
 	$options = catchbox_get_theme_options();
+
+	//Condition checks for backward compatibility
+	if ( 'content-sidebar' == $options['theme_layout'] ) {
+		$options['theme_layout'] = 'right-sidebar';
+	}
+	else if ( 'sidebar-content' == $options['theme_layout'] ) {
+		$options['theme_layout'] = 'left-sidebar';
+	}
+	else if ( 'content-onecolumn' == $options['theme_layout'] ) {
+		$options['theme_layout'] = 'no-sidebar-one-column';
+	}
+
 	foreach ( catchbox_layouts() as $layout ) {
-		//Condition checks for backward compatibility
-		if ( 'content-sidebar' == $options['theme_layout'] ) {
-			$options['theme_layout'] = 'right-sidebar';
-		}
-		else if ( 'sidebar-content' == $options['theme_layout'] ) {
-			$options['theme_layout'] = 'left-sidebar';
-		}
-		else if ( 'content-onecolumn' == $options['theme_layout'] ) {
-			$options['theme_layout'] = 'no-sidebar-one-column';
-		}
 		?>
 		<div class="layout image-radio-option theme-layout">
 		<label class="description">
@@ -1008,6 +1011,10 @@ function catchbox_theme_options_validate( $input ) {
 	if ( isset( $input['web_clip'] ) )
 		$options_validated['web_clip'] = esc_url_raw($input['web_clip']);
 
+	// Validate Header Image Position
+	if ( isset( $input['header_image_position'] ) )
+		$options_validated['header_image_position'] = sanitize_key( $input['header_image_position'] );
+
 	// Color scheme must be in our array of color scheme options
 	if ( isset( $input['color_scheme'] ) && array_key_exists( $input['color_scheme'], catchbox_color_schemes() ) )
 		$options_validated['color_scheme'] = $input['color_scheme'];
@@ -1020,8 +1027,9 @@ function catchbox_theme_options_validate( $input ) {
 		$options_validated['link_color'] = '#' . strtolower( ltrim( $input['link_color'], '#' ) );
 
 	// Theme layout must be in our array of theme layout options
-	if ( isset( $input['theme_layout'] ) && array_key_exists( $input['theme_layout'], catchbox_layouts() ) )
-		$options_validated['theme_layout'] = $input['theme_layout'];
+	if ( isset( $input['theme_layout'] ) ) {
+		$options_validated['theme_layout'] = sanitize_key( $input['theme_layout'] );
+	}
 
 	// Theme layout must be in our array of theme layout options
 	if ( isset( $input['content_layout'] ) && array_key_exists( $input['content_layout'], catchbox_content_layout() ) )

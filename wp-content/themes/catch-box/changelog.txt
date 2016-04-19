@@ -1,5 +1,14 @@
 == Change log ==
 
+Version 4.4.3
+* Bug Fixed: Sidebar Showing on no-sidebar layout
+
+Versioin 4.4.2
+* Added: Custom Header Functionality
+* Bug Fixed: Layout Options Not Changing in Customizer and Theme Options
+* Bug Fixed: Made default search text translation-ready
+* Bug Fixed: Relocated customizer options
+
 Version 4.4.1
 * Updated: max width of content editor
 * Bug Fixed: Color scheme not changing
