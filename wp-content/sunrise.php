@@ -34,4 +34,7 @@ if( $domain_mapping_id ) {
 
 	define( 'DOMAIN_MAPPING', 1 );
 }
+
+require ('plugins/sitepress-multilingual-cms/inc/tools/sunrise.php');
+
 ?>
