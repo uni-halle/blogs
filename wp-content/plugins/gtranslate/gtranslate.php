@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: https://gtranslate.io/?xyz=998
 Description: Makes your website <strong>multilingual</strong> and available to the world using Google Translate. For support visit <a href="https://gtranslate.io/forum/">GTranslate Forum</a>.
-Version: 2.0.10
+Version: 2.0.11
 Author: Edvard Ananyan
 Author URI: https://gtranslate.io
 
@@ -904,6 +904,7 @@ foreach($fincl_langs as $lang)
                         <ul style="list-style-type: square;padding-left:40px;">
                             <li>Enable search engine indexing</li>
                             <li>Search engine friendly (SEF) URLs</li>
+                            <li>Increase traffic and AdSense revenue</li>
                             <li>Meta data translation</li>
                             <li>Edit translations manually</li>
                             <li>URL translation</li>
