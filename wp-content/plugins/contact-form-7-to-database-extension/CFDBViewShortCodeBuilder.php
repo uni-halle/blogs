@@ -92,6 +92,7 @@ class CFDBViewShortCodeBuilder extends CFDBView {
         $postedStyle = $this->getRequestParam('style');
         $postedEdit = $this->getRequestParam('edit');
         $postedDtOptions = $this->getRequestParam('dt_options');
+        $postedEditcolumns = $this->getRequestParam('editcolumns');
         $postedVar = $this->getRequestParam('var');
         $postedFormat = $this->getRequestParam('format');
         $postedFunction = $this->getRequestParam('function');
@@ -135,6 +136,7 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                     jQuery('#limitorder_div').show();
                     jQuery('#html_format_div').hide();
                     jQuery('#dt_options_div').hide();
+                    jQuery('#editcolumns_div').hide();
                     jQuery('#json_div').hide();
                     jQuery('#value_div').hide();
                     jQuery('#template_div').show();
@@ -146,6 +148,7 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                     jQuery('#limitorder_div').show();
                     jQuery('#html_format_div').show();
                     jQuery('#dt_options_div').hide();
+                    jQuery('#editcolumns_div').hide();
                     jQuery('#json_div').hide();
                     jQuery('#value_div').hide();
                     jQuery('#template_div').hide();
@@ -162,6 +165,7 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                     }
                     ?>
                     jQuery('#dt_options_div').show();
+                    jQuery('#editcolumns_div').show();
                     jQuery('#json_div').hide();
                     jQuery('#value_div').hide();
                     jQuery('#template_div').hide();
@@ -173,6 +177,7 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                     jQuery('#limitorder_div').show();
                     jQuery('#html_format_div').hide();
                     jQuery('#dt_options_div').hide();
+                    jQuery('#editcolumns_div').hide();
                     jQuery('#json_div').hide();
                     jQuery('#value_div').show();
                     jQuery('#template_div').hide();
@@ -184,6 +189,7 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                     jQuery('#limitorder_div').hide();
                     jQuery('#html_format_div').hide();
                     jQuery('#dt_options_div').hide();
+                    jQuery('#editcolumns_div').hide();
                     jQuery('#json_div').hide();
                     jQuery('#value_div').hide();
                     jQuery('#template_div').hide();
@@ -195,6 +201,7 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                     jQuery('#limitorder_div').show();
                     jQuery('#html_format_div').hide();
                     jQuery('#dt_options_div').hide();
+                    jQuery('#editcolumns_div').hide();
                     jQuery('#json_div').show();
                     jQuery('#value_div').hide();
                     jQuery('#template_div').hide();
@@ -206,6 +213,7 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                     jQuery('#limitorder_div').show();
                     jQuery('#html_format_div').hide();
                     jQuery('#dt_options_div').hide();
+                    jQuery('#editcolumns_div').hide();
                     jQuery('#json_div').hide();
                     jQuery('#value_div').hide();
                     jQuery('#template_div').hide();
@@ -217,6 +225,7 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                     jQuery('#limitorder_div').show();
                     jQuery('#html_format_div').hide();
                     jQuery('#dt_options_div').hide();
+                    jQuery('#editcolumns_div').hide();
                     jQuery('#json_div').hide();
                     jQuery('#value_div').hide();
                     jQuery('#template_div').hide();
@@ -603,6 +612,10 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                     scElements.push(getValue('dt_options', val, scValidationErrors));
                     scUrlElements.push(getValueUrl('dt_options', val));
 
+                    val = jQuery('#editcolumns_cntl').val();
+                    scElements.push(getValue('editcolumns', val, scValidationErrors));
+                    scUrlElements.push(getValueUrl('editcolumns', val));
+
                     var contentBefore = jQuery('#before_cntl').val();
                     var contentAfter = jQuery('#after_cntl').val();
                     var content = '';
@@ -972,6 +985,7 @@ class CFDBViewShortCodeBuilder extends CFDBView {
             jQuery('#style_cntl').val(<?php echo json_encode($postedStyle) ?>);
             jQuery('#edit_mode_cntl').val(<?php echo json_encode($postedEdit) ?>);
             jQuery('#dt_options_cntl').val(<?php echo json_encode($postedDtOptions) ?>);
+            jQuery('#editcolumns_cntl').val(<?php echo json_encode($postedEditcolumns) ?>);
             jQuery('#var_cntl').val(<?php echo json_encode($postedVar) ?>);
             jQuery('#format_cntl').val(<?php echo json_encode($postedFormat) ?>);
             jQuery('#function_cntl').val(<?php echo json_encode($postedFunction) ?>);
@@ -1027,6 +1041,9 @@ class CFDBViewShortCodeBuilder extends CFDBView {
             jQuery('#btn_content').click(function() {
                 addFieldToContent();
                 createShortCodeAndExportLink();
+            });
+            jQuery('#btn_editcolumns').click(function () {
+                addFieldToOrderBy('editcolumns');
             });
 
             var showHideExportLinkDelimiter = function() {
@@ -1435,6 +1452,14 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                 <option value="true"><?php echo htmlspecialchars(__('true', 'contact-form-7-to-database-extension')); ?></option>
                 <option value="cells"><?php echo htmlspecialchars(__('cells', 'contact-form-7-to-database-extension')); ?></option>
             </select>
+        </div>
+        <div>
+            <div class="label_box" id="editcolumns">
+                <label for="editcolumns_cntl"><?php echo htmlspecialchars(__('editcolumns', 'contact-form-7-to-database-extension')) ?></label>
+                <a target="_docs" href="http://cfdbplugin.com/?page_id=91#editcolumns"><img alt="?" src="<?php echo $infoImg ?>"/></a>
+            </div>
+            <select name="add_editcolumns" id="add_editcolumns"></select><button id="btn_editcolumns" placeholder="<?php echo htmlspecialchars(__('field', 'contact-form-7-to-database-extension')) ?>">&raquo;</button>
+            <input name="editcolumns_cntl" id="editcolumns_cntl" type="text" size="100" placeholder="<?php echo htmlspecialchars(__('field1,field2,field3', 'contact-form-7-to-database-extension')) ?>"/>
         </div>
         <div>
             <div class="label_box">

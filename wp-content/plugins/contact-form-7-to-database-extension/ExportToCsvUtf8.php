@@ -80,31 +80,41 @@ class ExportToCsvUtf8 extends ExportBase implements CFDBExport {
             }
         }
 
+        $this->echoCsv($formName);
+    }
+
+    public function echoCsv($formName) {
+
+        $eol = "\n";
+        $delimiter = null;
+        if (isset($this->options['delimiter'])) {
+            $delimiter = $this->options['delimiter'];
+        } else if ($this->hasGoogleSpreadsheetHeader()) {
+            // Google Spreadsheet uses comma as a delimiter
+            $delimiter = ',';
+        } else {
+            // Pick a delimiter based on regional settings
+            $delimiter = $this->get_csv_delimiter(get_locale());
+        }
+        
+        // Query DB for the data for that form
+        $submitTimeKeyName = 'Submit_Time_Key';
+        $this->setDataIterator($formName, $submitTimeKeyName);
+        $this->clearAllOutputBuffers();
+
         // Headers
         $charSet = 'UTF-8';
         if ($this->useShiftJIS) {
             $charSet = $this->shiftJis->getContentTypeCharSet();
         }
         $this->echoHeaders(
-            array("Content-Type: text/csv; charset=$charSet",
-                 "Content-Disposition: attachment; filename=\"$formName.csv\""));
+                array("Content-Type: text/csv; charset=$charSet",
+                        "Content-Disposition: attachment; filename=\"$formName.csv\""));
 
-        $this->echoCsv($formName);
-    }
-
-    public function echoCsv($formName) {
         if ($this->useBom) {
             // File encoding UTF-8 Byte Order Mark (BOM) http://wiki.sdn.sap.com/wiki/display/ABAP/Excel+files+-+CSV+format
             echo chr(239) . chr(187) . chr(191);
         }
-
-        $eol = "\n";
-        $delimiter = isset($this->options['delimiter']) ? $this->options['delimiter'] : ',';
-
-        // Query DB for the data for that form
-        $submitTimeKeyName = 'Submit_Time_Key';
-        $this->setDataIterator($formName, $submitTimeKeyName);
-        $this->clearOutputBuffer();
 
 
         // Column Headers
@@ -151,6 +161,22 @@ class ExportToCsvUtf8 extends ExportBase implements CFDBExport {
             }
             echo $eol;
         }
+    }
+
+
+    public function hasGoogleSpreadsheetHeader() {
+        if (function_exists('getallheaders')) {
+            $clientHeaders = getallheaders();
+            if (!empty($clientHeaders) && isset($clientHeaders['User-Agent'])) {
+                if (strpos($clientHeaders['User-Agent'], 'GoogleDocs') !== false) {
+                    return true;
+                }
+                if (strpos($clientHeaders['User-Agent'], 'docs.google.com') !== false) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 

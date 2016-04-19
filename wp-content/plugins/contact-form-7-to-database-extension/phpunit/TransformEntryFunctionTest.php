@@ -6,8 +6,9 @@ include_once(dirname(dirname(__FILE__)) . '/ExportToJson.php');
 include_once('MockQueryResultIterator.php');
 include_once('WP_Mock_Functions.php');
 include_once('WPDB_Mock.php');
+include_once('SquashOutputUnitTest.php');
 
-class TransformEntryFunctionTest extends PHPUnit_Framework_TestCase {
+class TransformEntryFunctionTest extends SquashOutputUnitTest {
 
 
     public function tearDown() {
@@ -18,9 +19,11 @@ class TransformEntryFunctionTest extends PHPUnit_Framework_TestCase {
             ob_end_clean();
         } catch (Exception $e) {
         }
+        parent::tearDown();
     }
 
     public function setUp() {
+        parent::setup();
         date_default_timezone_set('America/New_York');
 
         $str = file_get_contents('TransformEntryFunctionTest.json');

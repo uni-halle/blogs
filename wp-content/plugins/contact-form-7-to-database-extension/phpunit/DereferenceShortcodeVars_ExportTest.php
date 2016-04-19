@@ -3,12 +3,14 @@
 include_once(dirname(dirname(__FILE__)) . '/DereferenceShortcodeVars.php');
 include_once(dirname(dirname(__FILE__)) . '/ExportBase.php');
 include_once('WP_Mock_Functions.php');
+include_once('SquashOutputUnitTest.php');
 
 $_POST = null;
 
-class DereferenceShortcodeVars_ExportTest extends PHPUnit_Framework_TestCase {
+class DereferenceShortcodeVars_ExportTest extends SquashOutputUnitTest {
 
     public function setUp() {
+        parent::setup();
         global $_POST;
         $_POST = array();
     }

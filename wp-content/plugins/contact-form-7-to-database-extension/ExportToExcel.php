@@ -64,7 +64,7 @@ class ExportToExcel extends ExportBase implements CFDBExport {
         // Query DB for the data for that form
         $submitTimeKeyName = 'Submit_Time_Key';
         $this->setDataIterator($formName, $submitTimeKeyName);
-        $this->clearOutputBuffer();
+        $this->clearAllOutputBuffers();
 
         $type = Type::XLSX;
         $suffix = 'xlsx';
@@ -133,7 +133,8 @@ class ExportToExcel extends ExportBase implements CFDBExport {
                     if ($type == Type::ODS) {
                         $cell = "=HYPERLINK(\"$url\"; \"$cell\")";
                     } else {
-                        $cell = "=HYPERLINK(\"$url\", \"$cell\")";
+                        $delimiter = $this->get_csv_delimiter(get_locale());
+                        $cell = "=HYPERLINK(\"$url\"$delimiter\"$cell\")";
                     }
                 }
                 $dataRow[] = $cell;

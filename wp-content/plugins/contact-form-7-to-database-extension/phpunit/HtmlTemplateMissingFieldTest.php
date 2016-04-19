@@ -4,8 +4,9 @@ include_once(dirname(dirname(__FILE__)) . '/ExportToHtmlTemplate.php');
 include_once('MockQueryResultIterator.php');
 include_once('WP_Mock_Functions.php');
 include_once('WPDB_Mock.php');
+include_once('SquashOutputUnitTest.php');
 
-class HtmlTemplateMissingFieldTest extends PHPUnit_Framework_TestCase {
+class HtmlTemplateMissingFieldTest extends SquashOutputUnitTest {
 
     public function setUp() {
         date_default_timezone_set('America/New_York');

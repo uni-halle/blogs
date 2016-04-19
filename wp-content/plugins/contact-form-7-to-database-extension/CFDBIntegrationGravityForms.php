@@ -77,36 +77,10 @@ class CFDBIntegrationGravityForms {
                 $field = (array)$field;
             }
 
+            $fieldId = $field['id'];
             $fieldName = $field['label'];
-
-            if (!empty($field['inputs']) && is_array($field['inputs'])) {
-                if ($field['type'] == 'checkbox') {
-                    // This is a multi-input field
-                    if (!isset($postedData[$fieldName]) || $postedData[$fieldName] === '') { // handle duplicate empty hidden fields
-                        $values = array();
-                        foreach ($field['inputs'] as $input) {
-                            $inputId = strval($input['id']); // Need string value of number like '1.3'
-                            if (!empty($entry[$inputId])) {
-                                $values[] = $entry[$inputId];
-                            }
-                        }
-                        $postedData[$fieldName] = implode(',', $values);
-                    }
-                } else {
-                    foreach ($field['inputs'] as $input) {
-                        $inputId = strval($input['id']); // Need string value of number like '1.3'
-                        $label = $input['label']; // Assumption: all inputs have diff labels
-                        $effectiveFieldName = $fieldName;
-                        if (!empty($label)) {
-                            $effectiveFieldName = $fieldName . ' ' . $label;
-                        }
-                        if (!isset($postedData[$effectiveFieldName]) || $postedData[$effectiveFieldName] === '') {  // handle duplicate empty hidden fields
-                            $postedData[$effectiveFieldName] = $entry[$inputId];
-                        }
-                    }
-                }
-            } else {
-                $fieldId = $field['id'];
+            
+            if (isset($entry[$fieldId])) {
                 switch ($field['type']) {
                     case 'list' :
                         $list = unserialize($entry[$fieldId]);
@@ -175,7 +149,38 @@ class CFDBIntegrationGravityForms {
                         }
                         break;
                 }
-
+            } else {
+                if (!empty($field['inputs']) && is_array($field['inputs'])) {
+                    if ($field['type'] == 'checkbox') {
+                        // This is a multi-input field
+                        if (!isset($postedData[$fieldName]) || $postedData[$fieldName] === '') { // handle duplicate empty hidden fields
+                            $values = array();
+                            foreach ($field['inputs'] as $input) {
+                                $inputId = strval($input['id']); // Need string value of number like '1.3'
+                                if (!empty($entry[$inputId])) {
+                                    $values[] = $entry[$inputId];
+                                }
+                            }
+                            $postedData[$fieldName] = implode(',', $values);
+                        }
+                    } else {
+                        foreach ($field['inputs'] as $input) {
+                            $inputId = strval($input['id']); // Need string value of number like '1.3'
+                            $label = $input['label']; // Assumption: all inputs have diff labels
+                            $effectiveFieldName = $fieldName;
+                            if (!empty($label)) {
+                                $effectiveFieldName = $fieldName . ' ' . $label;
+                            }
+                            if (!isset($postedData[$effectiveFieldName]) || $postedData[$effectiveFieldName] === '') {  // handle duplicate empty hidden fields
+                                if (isset($entry[$inputId])) {
+                                    $postedData[$effectiveFieldName] = $entry[$inputId];
+                                } else if (isset($entry[$fieldId])) {
+                                    $postedData[$effectiveFieldName] = $entry[$fieldId];
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 

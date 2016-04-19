@@ -8,11 +8,12 @@ include_once(dirname(dirname(__FILE__)) . '/BaseTransform.php');
 include_once('MockQueryResultIterator.php');
 include_once('WP_Mock_Functions.php');
 include_once('WPDB_Mock.php');
+include_once('SquashOutputUnitTest.php');
 
 
 $wpdb = null; // mock global
 
-class TransformsTest extends PHPUnit_Framework_TestCase {
+class TransformsTest extends SquashOutputUnitTest {
 
     public function tearDown() {
         CFDBQueryResultIteratorFactory::getInstance()->clearMock();
@@ -22,9 +23,11 @@ class TransformsTest extends PHPUnit_Framework_TestCase {
             ob_end_clean();
         } catch (Exception $e) {
         }
+        parent::tearDown();
     }
 
     public function setUp() {
+        parent::setup();
         date_default_timezone_set('America/New_York');
         $str = file_get_contents('TransformsTest.json');
         $data = json_decode($str, true);

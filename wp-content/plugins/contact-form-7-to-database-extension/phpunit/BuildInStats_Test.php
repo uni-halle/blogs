@@ -5,12 +5,14 @@ include_once(dirname(dirname(__FILE__)) . '/SumField.php');
 include_once(dirname(dirname(__FILE__)) . '/MaxField.php');
 include_once(dirname(dirname(__FILE__)) . '/MinField.php');
 include_once(dirname(dirname(__FILE__)) . '/AverageField.php');
+include_once('SquashOutputUnitTest.php');
 
-class BuildInStats_Test extends PHPUnit_Framework_TestCase {
+class BuildInStats_Test extends SquashOutputUnitTest {
 
     var $data;
 
     public function setUp() {
+        parent::setup();
         date_default_timezone_set('America/New_York');
         $str = file_get_contents('scores.json');
         $this->data = json_decode($str, true);

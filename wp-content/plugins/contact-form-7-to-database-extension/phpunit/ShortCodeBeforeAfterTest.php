@@ -8,8 +8,10 @@ include_once(dirname(dirname(__FILE__)) . '/ExportToValue.php');
 include_once('MockQueryResultIterator.php');
 include_once('WP_Mock_Functions.php');
 include_once('WPDB_Mock.php');
+include_once('SquashOutputUnitTest.php');
 
-class ShortCodeBeforeAfterTest extends PHPUnit_Framework_TestCase {
+
+class ShortCodeBeforeAfterTest extends SquashOutputUnitTest {
 
     var $bufferOutput = false;
 
@@ -19,6 +21,9 @@ class ShortCodeBeforeAfterTest extends PHPUnit_Framework_TestCase {
             ob_end_clean();
             $this->bufferOutput = false;
         }
+        parent::tearDown();
+        ob_end_clean();
+        ob_end_clean(); // not sure why we need to call twice to suppress output
     }
 
     public function exportSetup($data) {

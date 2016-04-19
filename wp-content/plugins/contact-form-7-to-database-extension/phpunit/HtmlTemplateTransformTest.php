@@ -5,8 +5,9 @@ include_once(dirname(dirname(__FILE__)) . '/CFDBPermittedFunctions.php');
 include_once('MockQueryResultIterator.php');
 include_once('WP_Mock_Functions.php');
 include_once('WPDB_Mock.php');
+include_once('SquashOutputUnitTest.php');
 
-class HtmlTemplateTransformTest extends PHPUnit_Framework_TestCase {
+class HtmlTemplateTransformTest extends SquashOutputUnitTest {
 
     public function setUp() {
         date_default_timezone_set('America/New_York');

@@ -1,7 +1,7 @@
 <?php
 
 /*
-    "Contact Form to Database" Copyright (C) 2011-2015 Michael Simpson  (email : michael.d.simpson@gmail.com)
+    "Contact Form to Database" Copyright (C) 2011-2016 Michael Simpson  (email : michael.d.simpson@gmail.com)
 
     This file is part of Contact Form to Database.
 
@@ -46,7 +46,11 @@ class CFDBErrorLog {
             if ($this->isEmailAddress($destination)) {
                 $this->emailAddress = $destination;
             } else {
-                $this->outputFilePath = $destination;
+                if (strpos($destination, DIRECTORY_SEPARATOR) === 0) {
+                    $this->outputFilePath = $destination;
+                } else {
+                    $this->outputFilePath = ABSPATH . $destination;
+                }
             }
         }
     }

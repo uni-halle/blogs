@@ -3,8 +3,9 @@
 include_once(dirname(dirname(__FILE__)) . '/CFDBFilterParser.php');
 include_once(dirname(dirname(__FILE__)) . '/CFDBValueConverter.php');
 include_once(dirname(dirname(__FILE__)) . '/DereferenceShortcodeVars.php');
+include_once('SquashOutputUnitTest.php');
 
-class CFDBFilterParserTest extends PHPUnit_Framework_TestCase {
+class CFDBFilterParserTest extends SquashOutputUnitTest {
 
 
     public function test1() {
@@ -12,7 +13,7 @@ class CFDBFilterParserTest extends PHPUnit_Framework_TestCase {
         $filters = preg_split('/&&|\|\|/', $filterText, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
 
         $this->assertEquals($filterText, $filters[0]);
-        //print_r($filters);
+        print_r($filters);
     }
 
     public function test2() {
@@ -22,7 +23,7 @@ class CFDBFilterParserTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('aaa=bbb', $filters[0]);
         $this->assertEquals('ccc=ddd', $filters[1]);
         $this->assertEquals('eee<>fff', $filters[2]);
-        //print_r($filters);
+        print_r($filters);
     }
 
     public function test3() {
@@ -32,7 +33,7 @@ class CFDBFilterParserTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('aaa=bbb', $filters[0]);
         $this->assertEquals('ccc=ddd', $filters[1]);
         $this->assertEquals('eee<>fff', $filters[2]);
-        //print_r($filters);
+        print_r($filters);
     }
 
     public function test4() {
@@ -44,7 +45,7 @@ class CFDBFilterParserTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('ccc=ddd', $filters[2]);
         $this->assertEquals('&&', $filters[3]);
         $this->assertEquals('eee<>fff', $filters[4]);
-        //print_r($filters);
+        print_r($filters);
     }
 
     public function test5() {

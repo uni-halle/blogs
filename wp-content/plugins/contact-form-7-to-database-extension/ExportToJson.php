@@ -55,7 +55,7 @@ class ExportToJson extends ExportBase implements CFDBExport {
 
         // Get the data
         $this->setDataIterator($formName);
-        //$this->clearOutputBuffer();
+        //$this->clearAllOutputBuffers();
 
         if ($this->isFromShortCode) {
             ob_start();

@@ -6,7 +6,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.2.1
 Tested up to: 4.5
-Stable tag: 2.10.4
+Stable tag: 2.10.8
 
 Saves submitted form data to the database. Export the data to a file or use short codes to display it.
 
@@ -86,6 +86,22 @@ You can always deactivate the plugin without loosing data.
 1. Admin Panel view of submitted form data
 
 == Changelog ==
+
+= 2.10.9 =
+* Bug Fix: Google Spreadsheet Live data: bug was introduced in 2.10.6 where data fetched by IMPORTDATA() could return with wrong delimiter (semicolon instead of comma) based on regional settings for CSV delimiter.
+This would cause Google Spreadsheet to be unable to parse data into columns
+
+= 2.10.8 =
+* Improvement: Links to exports and file downloads now redirect to login page when user is not logged in
+
+= 2.10.7 =
+* Bug Fix: Gravity Form integration was not capturing certain date fields
+
+= 2.10.6 =
+* Improvement: UTF8 CSV and Excel export now smarter about choosing "," or ";" for field and function delimiters respectively.
+* Improvement: Dashboard single-record view now has download links on files which was missing
+* Improvement: CFDB Option Error Output File - no longer need to specify full path. Just put in a file name and it will put in the top level WP install directory
+* Note: If you have CFDB Editor installed, you will need to update that to version 1.4.3 to work properly with this update
 
 = 2.10.5 =
 * New: Now captures form submission from FormCraft Premium (BETA)

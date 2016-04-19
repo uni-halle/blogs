@@ -111,10 +111,12 @@ class CF7DBOptionsManagerSubClass extends CF7DBOptionsManager {
         return $text;
     }
 }
+include_once('SquashOutputUnitTest.php');
 
-class CF7DBOptionsManagerTest extends PHPUnit_Framework_TestCase {
+class CF7DBOptionsManagerTest extends SquashOutputUnitTest {
 
     function setUp() {
+        parent::setup();
         global $alt_get_options;
         $alt_get_options = 'CF7DBOptionsManagerTest_get_option';
     }
@@ -122,6 +124,7 @@ class CF7DBOptionsManagerTest extends PHPUnit_Framework_TestCase {
     function tearDown() {
         global $alt_get_options;
         unset($alt_get_options);
+        parent::tearDown();
     }
 
     function test_getOptionMetaData() {

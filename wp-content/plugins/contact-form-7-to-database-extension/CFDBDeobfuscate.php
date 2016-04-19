@@ -1,6 +1,6 @@
 <?php
 /*
-    "Contact Form to Database" Copyright (C) 2011-2014 Michael Simpson  (email : michael.d.simpson@gmail.com)
+    "Contact Form to Database" Copyright (C) 2011-2016 Michael Simpson  (email : michael.d.simpson@gmail.com)
 
     This file is part of Contact Form to Database.
 
@@ -31,12 +31,18 @@ class CFDBDeobfuscate {
     }
 
     static function deobfuscateHexString($hex, $key) {
-        return CFDBDeobfuscate::deobfuscateString(CFDBDeobfuscate::hexToStr($hex), $key);
+        $hexString = CFDBDeobfuscate::hexToStr($hex);
+        return CFDBDeobfuscate::deobfuscateString($hexString, $key);
     }
 
     static function deobfuscateString($string, $key) {
-        return mcrypt_decrypt(MCRYPT_3DES, $key, $string, 'ecb');
+        if (function_exists('mcrypt_decrypt')) {
+            // Although php5-mycrypt may be installed, it may not be listed in
+            // php.ini file (like below), thus the function is not defined
+            // extension=/usr/lib/php5/20121212/mcrypt.so
+            return mcrypt_decrypt(MCRYPT_3DES, $key, $string, 'ecb');
+        }
+        return '';
     }
 
-
-} 
+}

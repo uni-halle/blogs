@@ -519,12 +519,12 @@ class ExportBase {
     }
 
     /**
-     * Clear the "ob_" buffer.
+     * Clear the "ob_" buffer (all of them in the stack)
      * Call immediately after setDataIterator() to prevent misc chars
      * from being printed during export
      */
-    public function clearOutputBuffer() {
-        if (ob_get_length()) {
+    public function clearAllOutputBuffers() {
+        while (ob_get_length()) {
             // Prevents misc crap from being printed during export.
             // Seen on one customer's site where a newline is injected
             // causes an empty header row for .csv and corrupting .xlsx file
@@ -777,5 +777,16 @@ class ExportBase {
         }
         return array($ascOrDesc, $anOrderBy);
     }
+
+    // http://stackoverflow.com/questions/14678281/get-list-separator-character-for-any-locale
+    public function get_csv_delimiter($locale) {
+        $locales_with_colon_delimiter =
+            'az_AZ be_BY bg_BG bs_BA ca_ES crh_UA cs_CZ da_DK de_AT de_BE de_DE de_LU el_CY el_GR es_AR es_BO es_CL es_CO es_CR es_EC es_ES es_PY es_UY es_VE et_EE eu_ES eu_ES@euro ff_SN fi_FI fr_BE fr_CA fr_FR fr_LU gl_ES hr_HR ht_HT hu_HU id_ID is_IS it_IT ka_GE kk_KZ ky_KG lt_LT lv_LV mg_MG mk_MK mn_MN nb_NO nl_AW nl_NL nn_NO pap_AN pl_PL pt_BR pt_PT ro_RO ru_RU ru_UA rw_RW se_NO sk_SK sl_SI sq_AL sq_MK sr_ME sr_RS sr_RS@latin sv_SE tg_TJ tr_TR tt_RU@iqtelif uk_UA vi_VN wo_SN';
+        if (stripos($locales_with_colon_delimiter, $locale) !== false) {
+            return ';';
+        }
+        return ',';
+    }
+
 
 }

@@ -91,7 +91,7 @@ class ExportToHtmlTable extends ExportBase implements CFDBExport {
         // Query DB for the data for that form
         $submitTimeKeyName = 'Submit_Time_Key';
         $this->setDataIterator($formName, $submitTimeKeyName);
-        //$this->clearOutputBuffer(); // will mess up the admin table view
+        //$this->clearAllOutputBuffers(); // will mess up the admin table view
 
         if ($this->isFromShortCode) {
             ob_start();
@@ -150,8 +150,16 @@ class ExportToHtmlTable extends ExportBase implements CFDBExport {
                     jQuery('#<?php echo $this->htmlTableId ?>').dataTable({
                         <?php
                             echo $dtJsOptions;
+                            $editColumns = null;
                             if ($editMode) {
-                                do_action_ref_array('cfdb_edit_fnDrawCallbackJsonForSC', array($this->htmlTableId, $this->options['edit']));
+                                if (isset($this->options['editcolumns'])) {
+                                    $editColumns = explode(',', $this->options['editcolumns']);
+                                }
+                                do_action_ref_array(
+                                        'cfdb_edit_fnDrawCallbackJsonForSC', 
+                                        array($this->htmlTableId, 
+                                                $this->options['edit'],
+                                                $editColumns));
                             }
                         ?> })
                 });

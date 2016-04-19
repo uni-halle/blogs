@@ -114,7 +114,7 @@ class CF7DBOptionsManager {
      * @param  $name string
      * @return string $optionName without the prefix.
      */
-    public function &unPrefix($name) {
+    public function unPrefix($name) {
         $optionNamePrefix = $this->getOptionNamePrefix();
         if (strpos($name, $optionNamePrefix) === 0) {
             return substr($name, strlen($optionNamePrefix));

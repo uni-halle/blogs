@@ -77,3 +77,7 @@ function wp_get_current_user() {
 function do_shortcode($content) {
     return $content;
 }
+
+function get_locale() {
+    return 'en-US';
+}

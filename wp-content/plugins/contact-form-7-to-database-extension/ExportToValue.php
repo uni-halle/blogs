@@ -84,7 +84,7 @@ class ExportToValue extends ExportBase implements CFDBExport {
 
         // Get the data
         $this->setDataIterator($formName);
-        //$this->clearOutputBuffer();
+        //$this->clearAllOutputBuffers();
 
         // count function or coming from cfdb-count shortcode
         if (count($this->showColumns) == 0 &&
