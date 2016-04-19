@@ -29,7 +29,7 @@
 			
 			
 			// find input
-			this.$input = this.$el.find('.value');
+			this.$input = this.$el.find('.input-address');
 			
 			
 			// get options
@@ -456,6 +456,14 @@
 				
 		}
 		
+		
+		// google exists
+		$fields.each(function(){
+					
+			acf.fields.google_map.set({ $el : $(this) }).init();
+			
+		});
+
 		
 		// return
 		return true;

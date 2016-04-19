@@ -1889,7 +1889,7 @@ var acf = {
 			
 			
 			// find input
-			this.$input = this.$el.find('.value');
+			this.$input = this.$el.find('.input-address');
 			
 			
 			// get options
@@ -2316,6 +2316,14 @@ var acf = {
 				
 		}
 		
+		
+		// google exists
+		$fields.each(function(){
+					
+			acf.fields.google_map.set({ $el : $(this) }).init();
+			
+		});
+
 		
 		// return
 		return true;
@@ -3110,17 +3118,17 @@ var acf = {
 			
 			
 			// template
-			var data = {
-					post_id		:	$a.attr('data-post_id'),
-					title		:	$a.html(),
-					name		:	this.$input.attr('name')
-				},
-				tmpl = _.template(acf.l10n.relationship.tmpl_li, data);
-			
+			var html = [
+				'<li>',
+					'<a href="#" data-post_id="' + $a.attr('data-post_id') + '">',
+						$a.html() + '<span class="acf-button-remove"></span>',
+					'</a>',
+					'<input type="hidden" name="' + this.$input.attr('name') + '[]" value="' + $a.attr('data-post_id') + '" />',
+				'</li>'].join('');
 			
 	
 			// add new li
-			this.$right.find('.relationship_list').append( tmpl )
+			this.$right.find('.relationship_list').append( html )
 			
 			
 			// trigger change on new_li
