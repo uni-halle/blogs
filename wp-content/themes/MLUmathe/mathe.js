@@ -1,4 +1,5 @@
-$(document).ready(function(){
+jQuery(function($){
+/*$(document).ready(function(){*/
 	
 	$('.tile').on('hover', '.linkzukontakt', function(){
 	//console.info($(this));

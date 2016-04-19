@@ -1,4 +1,5 @@
-$(document).ready(function(){
+jQuery(function($) {
+/*$(document).ready(function(){
 /*
 if (!Modernizr.svg) { 
     $('.chemie .tile.olglogo a').css({'background':'#A00000 url(/wp-content/themes//MLUchemie/bg.png)','zoom':'1'});
