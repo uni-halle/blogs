@@ -1,6 +1,6 @@
 /**
  *     Anything Popup
- *     Copyright (C) 2011 - 2015 www.gopiplus.com
+ *     Copyright (C) 2011 - 2016 www.gopiplus.com
  *     http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
  * 
  *     This program is free software: you can redistribute it and/or modify
@@ -53,7 +53,6 @@ function AnythingPopup_HideForm(AnythingPopup_BoxContainer_Id,AnythingPopup_BoxC
     var bgdiv = document.getElementById(AnythingPopup_BoxContainerFooter_Id);
     bgdiv.style.display="none";
 }
-
 
 function AnythingPopup_Move(div_obj)
 {

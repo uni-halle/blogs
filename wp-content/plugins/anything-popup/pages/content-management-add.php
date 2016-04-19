@@ -25,62 +25,78 @@ if (isset($_POST['pop_form_submit']) && $_POST['pop_form_submit'] == 'yes')
 	//	Just security thingy that wordpress offers us
 	check_admin_referer('pop_form_add');
 	
-	$form['pop_width'] = isset($_POST['pop_width']) ? $_POST['pop_width'] : '';
+	$form['pop_width'] = isset($_POST['pop_width']) ? sanitize_text_field($_POST['pop_width']) : '';
 	if ($form['pop_width'] == '')
 	{
 		$pop_errors[] = __('Please enter the popup window width, only number.', 'anything-popup');
 		$pop_error_found = TRUE;
 	}
+	if(!is_numeric($form['pop_width'])) { $form['pop_width'] = 300; }
 
-	$form['pop_height'] = isset($_POST['pop_height']) ? $_POST['pop_height'] : '';
+	$form['pop_height'] = isset($_POST['pop_height']) ? sanitize_text_field($_POST['pop_height']) : '';
 	if ($form['pop_height'] == '')
 	{
 		$pop_errors[] = __('Please enter the popup window height, only number.', 'anything-popup');
 		$pop_error_found = TRUE;
 	}
+	if(!is_numeric($form['pop_height'])) { $form['pop_height'] = 250; }
 	
-	$form['pop_headercolor'] = isset($_POST['pop_headercolor']) ? $_POST['pop_headercolor'] : '';
+	$form['pop_headercolor'] = isset($_POST['pop_headercolor']) ? sanitize_text_field($_POST['pop_headercolor']) : '';
 	if ($form['pop_headercolor'] == '')
 	{
 		$pop_errors[] = __('Please enter the header color.', 'anything-popup');
 		$pop_error_found = TRUE;
 	}
+	if(!preg_match('/^#[a-f0-9]{6}$/i',$form['pop_headercolor']))
+	{
+		$pop_errors[] = __('Please enter valid header color.', 'anything-popup');
+		$pop_error_found = TRUE;
+	} 
 	
-	$form['pop_bordercolor'] = isset($_POST['pop_bordercolor']) ? $_POST['pop_bordercolor'] : '';
+	$form['pop_bordercolor'] = isset($_POST['pop_bordercolor']) ? sanitize_text_field($_POST['pop_bordercolor']) : '';
 	if ($form['pop_headercolor'] == '')
 	{
 		$pop_errors[] = __('Please enter the border color.', 'anything-popup');
 		$pop_error_found = TRUE;
 	}
+	if(!preg_match('/^#[a-f0-9]{6}$/i',$form['pop_bordercolor']))
+	{
+		$pop_errors[] = __('Please enter valid border color.', 'anything-popup');
+		$pop_error_found = TRUE;
+	}
 	
-	$form['pop_header_fontcolor'] = isset($_POST['pop_header_fontcolor']) ? $_POST['pop_header_fontcolor'] : '';
+	$form['pop_header_fontcolor'] = isset($_POST['pop_header_fontcolor']) ? sanitize_text_field($_POST['pop_header_fontcolor']) : '';
 	if ($form['pop_header_fontcolor'] == '')
 	{
 		$pop_errors[] = __('Please enter the heder font color.', 'anything-popup');
 		$pop_error_found = TRUE;
 	}
+	if(!preg_match('/^#[a-f0-9]{6}$/i',$form['pop_header_fontcolor']))
+	{
+		$pop_errors[] = __('Please enter valid heder font color.', 'anything-popup');
+		$pop_error_found = TRUE;
+	}
 	
-	$form['pop_title'] = isset($_POST['pop_title']) ? $_POST['pop_title'] : '';
+	$form['pop_title'] = isset($_POST['pop_title']) ? sanitize_text_field($_POST['pop_title']) : '';
 	if ($form['pop_title'] == '')
 	{
 		$pop_errors[] = __('Please enter the popup title.', 'anything-popup');
 		$pop_error_found = TRUE;
 	}
 	
-	$form['pop_content'] = isset($_POST['pop_content']) ? $_POST['pop_content'] : '';
+	$form['pop_content'] = isset($_POST['pop_content']) ? wp_filter_post_kses($_POST['pop_content']) : '';
 	if ($form['pop_content'] == '')
 	{
 		$pop_errors[] = __('Please enter the popup link text/image.', 'anything-popup');
 		$pop_error_found = TRUE;
 	}
 	
-	$form['pop_caption'] = isset($_POST['pop_caption']) ? $_POST['pop_caption'] : '';
+	$form['pop_caption'] = isset($_POST['pop_caption']) ? wp_filter_post_kses($_POST['pop_caption']) : '';
 	if ($form['pop_caption'] == '')
 	{
 		$pop_errors[] = __('Please enter the popup content.', 'anything-popup');
 		$pop_error_found = TRUE;
 	}
-	
 
 	//	No errors found, we can add this Group to the table
 	if ($pop_error_found == FALSE)
@@ -119,15 +135,16 @@ if ($pop_error_found == TRUE && isset($pop_errors[0]) == TRUE)
 	</div>
 	<?php
 }
+
 if ($pop_error_found == FALSE && strlen($pop_success) > 0)
 {
 	?>
-	  <div class="updated fade">
+	<div class="updated fade">
 		<p><strong><?php echo $pop_success; ?> 
 		<a href="<?php echo ANYTHGPOPUP_ADMIN_URL; ?>"><?php _e('Click here to view the details', 'anything-popup'); ?></a></strong></p>
-	  </div>
-	  <?php
-	}
+	</div>
+	<?php
+}
 ?>
 <script language="JavaScript" src="<?php echo ANYTHGPOPUP_PLUGIN_URL; ?>/pages/setting.js"></script>
 <script language="JavaScript" src="<?php echo ANYTHGPOPUP_PLUGIN_URL; ?>/pages/color/jscolor.js"></script>

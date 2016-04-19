@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anyth
 Plugin URI: http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
 Tags: popup, contact
 Requires at least: 3.4
-Tested up to: 4.4
-Stable tag: 5.9
+Tested up to: 4.5
+Stable tag: 6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,14 @@ Popup windows are generally new web browser windows to display the content. but 
 * Drag and drop the widget
 * Paste the php code to your desired template location
 * Short code for pages and posts
+
+= Short code =
+
+`[AnythingPopup id="1"]`
+
+= PHP code =
+
+`<?php AnythingPopup( $pop_id = "1" ); ?>`
 
 = Translators =
 
@@ -136,6 +144,11 @@ Support short code in the popup (i.e You can add other plugin short code inside 
 
 1. Tested up to 4.4
 
+= 6.0 =
+
+1. Tested up to 4.5
+2. Sanitization added for all input value.
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -208,3 +221,8 @@ Support short code in the popup (i.e You can add other plugin short code inside 
 = 5.9 =
 
 1. Tested up to 4.4
+
+= 6.0 =
+
+1. Tested up to 4.5
+2. Sanitization added for all input value.

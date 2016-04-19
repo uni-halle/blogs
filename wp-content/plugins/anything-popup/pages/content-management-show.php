@@ -4,7 +4,7 @@
 // Form submitted, check the data
 if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
 {
-	$did = isset($_GET['did']) ? $_GET['did'] : '0';
+	$did = isset($_GET['did']) ? sanitize_text_field($_GET['did']) : '0';
 	if(!is_numeric($did)) { die('<p>Are you sure you want to do this?</p>'); }
 	
 	$pop_success = '';
@@ -65,7 +65,7 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
         <thead>
           <tr>
 			<th scope="col"><?php _e('Id', 'anything-popup'); ?></th>
-			<th scope="col"><?php _e('Short code code', 'anything-popup'); ?></th>
+			<th scope="col"><?php _e('Short code', 'anything-popup'); ?></th>
             <th scope="col"><?php _e('Popup title', 'anything-popup'); ?></th>
 			<th scope="col"><?php _e('Width', 'anything-popup'); ?></th>
 			<th scope="col"><?php _e('Height', 'anything-popup'); ?></th>
@@ -77,7 +77,7 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
 		<tfoot>
           <tr>
 			<th scope="col"><?php _e('Id', 'anything-popup'); ?></th>
-			<th scope="col"><?php _e('Short code code', 'anything-popup'); ?></th>
+			<th scope="col"><?php _e('Short code', 'anything-popup'); ?></th>
             <th scope="col"><?php _e('Popup title', 'anything-popup'); ?></th>
 			<th scope="col"><?php _e('Width', 'anything-popup'); ?></th>
 			<th scope="col"><?php _e('Height', 'anything-popup'); ?></th>
