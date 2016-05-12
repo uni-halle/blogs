@@ -2,17 +2,42 @@
 # This file is distributed under the same license as the Responsive package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-11-10 16:32:13+0000\n"
+"PO-Revision-Date: 2016-05-08 16:26:02+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/1.0-alpha-1100\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
 "Project-Id-Version: Responsive\n"
 
 #. Theme Name of the plugin/theme
 msgid "Responsive"
-msgstr "Adaptiv"
+msgstr "Responsive"
+
+#: core/includes/theme-options/theme-options.php:224
+msgid "Default Copyright Text"
+msgstr "Standard Copyright-Text"
+
+#: core/includes/theme-options/theme-options.php:218
+msgid "Copyright Text"
+msgstr "Copyright Text"
+
+#: core/includes/customizer.php:337
+#: core/includes/theme-options/theme-options.php:227
+msgid "Display Powered By WordPress Link"
+msgstr "\"Powered by WordPress\"-Link anzeigen"
+
+#: core/includes/customizer.php:323
+msgid "Footer Settings"
+msgstr "\"Footer\"-Einstellungen"
+
+#: core/includes/customizer.php:326
+msgid "Default copyright text"
+msgstr "Standard Copyright-Text"
+
+#: core/includes/customizer.php:329
+msgid "Copyright text"
+msgstr "Copyright Text"
 
 #. Template Name of the plugin/theme
 msgid "Blog Excerpt (summary)"
@@ -46,13 +71,9 @@ msgstr "Aktuelle Beiträge"
 msgid "Categories"
 msgstr "Kategorien"
 
-#: single.php:48
-msgid "About"
-msgstr "Über"
-
 #: sidebar-home.php:33
 msgid "This is your first home widget box. To edit please go to Appearance > Widgets and choose 6th widget from the top in area 6 called Home Widget 1. Title is also manageable from widgets as well."
-msgstr "Dies ist dein erstes Startseite Widget-Kästchen. Um diesen Text zu bearbeiten, gehe zu Designs > Widgets > Startseite Widget 1. Benutze ein Text-Widget. Titel ist auch Einstellbar."
+msgstr "Dies ist dein erstes Startseite Widget-Kästchen. Um diesen Text zu bearbeiten, gehe zu Designs > Widgets > Startseite Widget 1. Benutze ein Text-Widget. Titel ist auch einstellbar."
 
 #: sidebar-home.php:49
 msgid "This is your second home widget box. To edit please go to Appearance > Widgets and choose 7th widget from the top in area 7 called Home Widget 2. Title is also manageable from widgets as well."
@@ -61,6 +82,10 @@ msgstr "Dies ist dein zweites Startseite Widget-Kästchen. Um diesen Text zu bea
 #: sidebar-home.php:65
 msgid "This is your third home widget box. To edit please go to Appearance > Widgets and choose 8th widget from the top in area 8 called Home Widget 3. Title is also manageable from widgets as well."
 msgstr "Dies ist dein drittes Startseite Widget-Kästchen. Um diesen Text zu bearbeiten, gehe zu Designs > Widgets > Startseite Widget 3. Benutze ein Text-Widget. Titel ist auch Einstellbar."
+
+#: single.php:48
+msgid "About"
+msgstr "Über"
 
 #: sidebar-gallery.php:73
 msgid "Camera:"
@@ -105,7 +130,7 @@ msgstr "Los"
 
 #: searchform.php:25
 msgid "search here &hellip;"
-msgstr "Hier suchen..."
+msgstr "Hier suchen&nbsp;&hellip;"
 
 #: searchform.php:24
 msgid "Search for:"
@@ -177,13 +202,13 @@ msgstr "Keine Kommentare &darr;"
 msgid "1 Comment &darr;"
 msgstr "1 Kommentar &darr;"
 
-#: image.php:36
-msgid "&#8249; Return to"
-msgstr "&#8249; Zurück zu"
-
 #: header.php:54
 msgid "&darr; Skip to Main Content"
 msgstr "&darr; Zum zentralen Inhalt"
+
+#: image.php:36
+msgid "&#8249; Return to"
+msgstr "&#8249; Zurück zu"
 
 #: footer.php:73
 msgid "WordPress"
@@ -193,149 +218,149 @@ msgstr "WordPress"
 msgid "&uarr;"
 msgstr "↑"
 
-#: footer.php:73
-msgid "powered by"
-msgstr "Powered by"
-
 #: footer.php:71
 msgid "Responsive Theme"
 msgstr "Responsive Theme"
+
+#: footer.php:73
+msgid "powered by"
+msgstr "Powered by"
 
 #: footer.php:68
 msgid "scroll to top"
 msgstr "Nach oben scrollen"
 
-#: core/includes/theme-options/theme-options.php:459
+#: core/includes/theme-options/theme-options.php:477
 msgid "Enter your custom header script."
-msgstr "Dein individuelles Kopfzeilen Skript eingeben"
+msgstr "Individuelles \"Header\"-Skript eingeben."
 
-#: core/includes/theme-options/theme-options.php:465
+#: core/includes/theme-options/theme-options.php:483
 msgid "Embeds to footer.php &darr;"
 msgstr "In footer.php einbetten &darr;"
 
-#: core/includes/theme-options/theme-options.php:468
+#: core/includes/theme-options/theme-options.php:486
 msgid "Enter your custom footer script."
-msgstr "Dein individuelles Fußzeilen Skript eingeben"
-
-#: footer.php:63
-msgid "&copy;"
-msgstr "&copy; "
+msgstr "Individuelles \"Footer\"-Skript eingeben."
 
 #: core/includes/upsell/theme-upsell.php:64
 msgid "Themes You Can Trust"
 msgstr "Themes, denen Sie vertrauen können."
 
-#: core/includes/theme-options/theme-options.php:454
+#: footer.php:63
+msgid "&copy;"
+msgstr "&copy; "
+
+#: core/includes/theme-options/theme-options.php:472
 msgid "Custom Scripts for Header and Footer"
-msgstr "Individuelle Skripts für Kopf- und Fußzeilen"
+msgstr "Individuelle Skripts für \"Header\" und \"Footer\""
 
-#: core/includes/theme-options/theme-options.php:456
-msgid "Embeds to header.php &darr;"
-msgstr "In header.php einbetten &darr;"
-
-#: core/includes/theme-options/theme-options.php:455
+#: core/includes/theme-options/theme-options.php:473
 msgid "Quick Tutorial"
 msgstr "Kurze Anleitung"
 
-#: core/includes/theme-options/theme-options.php:448
+#: core/includes/theme-options/theme-options.php:474
+msgid "Embeds to header.php &darr;"
+msgstr "In header.php einbetten &darr;"
+
+#: core/includes/theme-options/theme-options.php:466
 msgid "Enter your custom CSS styles."
 msgstr "Eigene CSS-Stile definieren."
 
-#: core/includes/theme-options/theme-options.php:436
+#: core/includes/theme-options/theme-options.php:454
 msgid "Enter your foursquare URL"
 msgstr "Deine foursquare URL eingeben"
 
-#: core/includes/theme-options/theme-options.php:444
+#: core/includes/theme-options/theme-options.php:462
 msgid "CSS Tutorial"
 msgstr "CSS-Tutorial"
 
-#: core/includes/theme-options/theme-options.php:418
+#: core/includes/theme-options/theme-options.php:436
 msgid "Enter your Yelp! URL"
-msgstr "Deine Yelp! URL eingeben"
+msgstr "Yelp! URL eingeben"
+
+#: core/includes/theme-options/theme-options.php:445
+msgid "Enter your Vimeo URL"
+msgstr "Vimeo URL eingeben"
 
 #: core/includes/theme-options/theme-options.php:427
-msgid "Enter your Vimeo URL"
-msgstr "Deine Vimeo URL eingeben"
-
-#: core/includes/theme-options/theme-options.php:409
 msgid "Enter your Pinterest URL"
 msgstr "Pinterest URL eingeben"
 
-#: core/includes/theme-options/theme-options.php:400
+#: core/includes/theme-options/theme-options.php:418
 msgid "Enter your Instagram URL"
 msgstr "Instagram URL eingeben"
 
-#: core/includes/theme-options/theme-options.php:382
+#: core/includes/theme-options/theme-options.php:400
 msgid "Enter your RSS Feed URL"
 msgstr "RSS Feed URL eingeben"
 
-#: core/includes/theme-options/theme-options.php:391
+#: core/includes/theme-options/theme-options.php:409
 msgid "Enter your Google+ URL"
 msgstr "Google+ URL eingeben"
 
-#: core/includes/theme-options/theme-options.php:373
+#: core/includes/theme-options/theme-options.php:391
 msgid "Enter your StumbleUpon URL"
 msgstr "StumbleUpon URL eingeben"
 
-#: core/includes/theme-options/theme-options.php:364
+#: core/includes/theme-options/theme-options.php:382
 msgid "Enter your YouTube URL"
 msgstr "YouTube URL eingeben"
 
-#: core/includes/theme-options/theme-options.php:355
+#: core/includes/theme-options/theme-options.php:373
 msgid "Enter your LinkedIn URL"
 msgstr "LinkedIn URL eingeben"
 
-#: core/includes/theme-options/theme-options.php:346
+#: core/includes/theme-options/theme-options.php:364
 msgid "Enter your Facebook URL"
 msgstr "Facebook URL eingeben"
 
-#: core/includes/theme-options/theme-options.php:264
+#: core/includes/theme-options/theme-options.php:273
+msgid "Enter your subheadline"
+msgstr "Die Unterschlagzeile eingeben"
+
+#: core/includes/theme-options/theme-options.php:282
 msgid "Enter your content"
-msgstr "Dein Inhalt eingeben"
+msgstr "Den Inhalt eingeben"
 
-#: core/includes/theme-options/theme-options.php:337
-msgid "Enter your Twitter URL"
-msgstr "Twitter URL eingeben"
+#: core/includes/theme-options/theme-options.php:291
+msgid "Enter your call to action URL"
+msgstr "Die Call to Action-URL eingeben"
 
-#: core/includes/theme-options/theme-options.php:283
+#: core/includes/theme-options/theme-options.php:300
+msgid "Enter your call to action text"
+msgstr "Den Call to Action-Text eingeben"
+
+#: core/includes/theme-options/theme-options.php:301
 #: template-parts/featured-area.php:57
 msgid "Call to Action"
 msgstr "Call-to-Action"
 
-#: core/includes/theme-options/theme-options.php:255
-msgid "Enter your subheadline"
-msgstr "Deine Unterschlagzeile eingeben"
-
-#: core/includes/theme-options/theme-options.php:273
-msgid "Enter your call to action URL"
-msgstr "Deine Call-to-Action URL eingeben"
-
-#: core/includes/theme-options/theme-options.php:282
-msgid "Enter your call to action text"
-msgstr "Dein Call-to-Action Text eingeben"
-
-#: core/includes/theme-options/theme-options.php:287
-#: core/includes/theme-options/theme-options.php:288
+#: core/includes/theme-options/theme-options.php:305
+#: core/includes/theme-options/theme-options.php:306
 msgid "See Docs"
-msgstr "Siehe Dokumente"
+msgstr "Siehe Dokumentation"
 
-#: core/includes/theme-options/theme-options.php:225
+#: core/includes/theme-options/theme-options.php:355
+msgid "Enter your Twitter URL"
+msgstr "Twitter URL eingeben"
+
+#: core/includes/theme-options/theme-options.php:243
 msgid "Need to replace or remove default logo?"
 msgstr "Standardlogo ersetzen oder entfernen?"
 
-#: core/includes/theme-options/theme-options.php:237
-msgid "Overrides the WordPress %1sfront page option%2s"
-msgstr "Überschreibt die WordPress %1Startseite Option%2"
-
-#: core/includes/theme-options/theme-options.php:246
-msgid "Enter your headline"
-msgstr "Deine Schlagzeile eingeben"
-
-#: core/includes/theme-options/theme-options.php:225
+#: core/includes/theme-options/theme-options.php:243
 msgid "Click here"
 msgstr "Hier klicken"
 
-#: core/includes/theme-options/theme-options.php:220
+#: core/includes/theme-options/theme-options.php:255
+msgid "Overrides the WordPress %1sfront page option%2s"
+msgstr "Überschreibt die WordPress %1Startseite Option%2"
+
+#: core/includes/theme-options/theme-options.php:264
+msgid "Enter your headline"
+msgstr "Deine Schlagzeile eingeben"
+
+#: core/includes/theme-options/theme-options.php:238
 msgid "Custom Header"
 msgstr "Header anpassen"
 
@@ -371,31 +396,35 @@ msgstr "Layout"
 
 #: core/includes/functions.php:161
 msgid "Footer Menu"
-msgstr "Seitenfuß-Menü"
+msgstr "Footer-Menü"
 
 #: core/includes/functions.php:160
 msgid "Sub-Header Menu"
-msgstr "Unterkopfzeilenmenü"
+msgstr "Sub-Header Menü"
 
 #: core/includes/functions.php:159
 msgid "Header Menu"
-msgstr "Kopfzeile Menü"
+msgstr "Header-Menü"
+
+#: core/includes/functions-sidebar.php:118
+msgid "Area 10 - sidebar-colophon.php, 100% width Footer widgets"
+msgstr "Bereich 10 - Seitenleiste-colophon.php, 100 % Breite Footer-widgets"
 
 #: core/includes/functions-sidebar.php:127
 msgid "Top Widget"
 msgstr "Top Widget"
 
-#: core/includes/functions.php:158
-msgid "Top Menu"
-msgstr "Top Menu"
-
-#: core/includes/functions-sidebar.php:138
-msgid "Area 12 - sidebar-footer.php - Maximum of 3 widgets per row"
-msgstr "Seitenfusszeile.php - Maximal 3 Widgets pro Reihe"
+#: core/includes/functions-sidebar.php:128
+msgid "Area 11 - sidebar-top.php - Displays on the right of the header"
+msgstr "Bereich 11 - sidebar-top.php - wird rechts des Headers angezeigt"
 
 #: core/includes/functions-sidebar.php:137
 msgid "Footer Widget"
-msgstr "Fusszeile"
+msgstr "Footer-Widget"
+
+#: core/includes/functions-sidebar.php:138
+msgid "Area 12 - sidebar-footer.php - Maximum of 3 widgets per row"
+msgstr "Bereich 12 - sidebar-footer.php - maximal 3 Widgets pro Reihe"
 
 #. Translators: This is a big update. Please read the blog post before
 #. updating.
@@ -403,85 +432,85 @@ msgstr "Fusszeile"
 msgid "<strong>WARNING:</strong> There is a big <strong>Responsive Theme</strong> update available. Please read the %1$s before updating."
 msgstr "<strong>WARNUNG:</strong> Es ist ein großes <strong>Responsive Theme</strong> Update verfuegbar. Lies bitte die %1$s bevor du mit dem Update beginnst."
 
-#: core/includes/functions-sidebar.php:118
-msgid "Area 10 - sidebar-colophon.php, 100% width Footer widgets"
-msgstr "Bereich 10 - Seitenleiste-colophon.php, 100 % Breite Footer-widgets"
+#: core/includes/functions-update.php:110
+msgid "update page"
+msgstr "Seite aktualisieren"
 
-#: core/includes/functions-sidebar.php:128
-msgid "Area 11 - sidebar-top.php - Displays on the right of the header"
-msgstr "Bereich 11-Seitenleiste top.php - zeigt auf der rechten Seite der Kopfzeile"
+#: core/includes/functions.php:158
+msgid "Top Menu"
+msgstr "Top Menu"
+
+#: core/includes/functions-sidebar.php:98
+msgid "Area 8 - sidebar-home.php - Displays on the Home Page"
+msgstr "Bereich 8 - sidebar-home.php - wird auf der Startseite angezeigt"
 
 #: core/includes/functions-sidebar.php:107
 msgid "Gallery Sidebar"
-msgstr "Sidebargalerie"
+msgstr "Sidebar-Galerie"
+
+#: core/includes/functions-sidebar.php:108
+msgid "Area 9 - sidebar-gallery.php - Displays on the page after an image has been clicked in a Gallery"
+msgstr "Bereich 9 - sidebar-gallery.php - wird auf der Seite angezeigt, nachdem auf ein Bild in einer Galerie geklickt wurde"
 
 #: core/includes/functions-sidebar.php:117
 msgid "Colophon Widget"
 msgstr "Kolophon Widget"
 
-#: core/includes/functions-sidebar.php:98
-msgid "Area 8 - sidebar-home.php - Displays on the Home Page"
-msgstr "Bereich 8-Seitenleiste home.php - zeigt auf der Startseite"
-
-#: core/includes/functions-sidebar.php:108
-msgid "Area 9 - sidebar-gallery.php - Displays on the page after an image has been clicked in a Gallery"
-msgstr "Bereich 9-Seitenleiste gallery.php - auf der Seite angezeigt, nachdem Sie ein Bild in einer Galerie geklickt wurde"
+#: core/includes/functions-sidebar.php:78
+msgid "Area 6 - sidebar-home.php - Displays on the Home Page"
+msgstr "Bereich 6 - sidebar-home.php - wird auf der Startseite angezeigt"
 
 #: core/includes/functions-sidebar.php:87 sidebar-home.php:47
 msgid "Home Widget 2"
 msgstr "Startseite Widget 2"
 
+#: core/includes/functions-sidebar.php:88
+msgid "Area 7 - sidebar-home.php - Displays on the Home Page"
+msgstr "Bereich 7 - sidebar-home.php - wird auf der Startseite angezeigt"
+
 #: core/includes/functions-sidebar.php:97 sidebar-home.php:63
 msgid "Home Widget 3"
 msgstr "Startseite Widget 3"
 
-#: core/includes/functions-sidebar.php:78
-msgid "Area 6 - sidebar-home.php - Displays on the Home Page"
-msgstr "Bereich 6 - Seitenleiste-home.php - Displays auf der Homepage"
-
-#: core/includes/functions-sidebar.php:88
-msgid "Area 7 - sidebar-home.php - Displays on the Home Page"
-msgstr "Bereich 7-Sidebar home.php - zeigt auf der Startseite"
+#: core/includes/functions-sidebar.php:48
+msgid "Area 3 - sidebar-left.php - Displays on Sidebar/Content page templates"
+msgstr "Bereich 3 - sidebar-left.php - wird auf Sidebar/Inhalt Seiten-Vorlagen angezeigt"
 
 #: core/includes/functions-sidebar.php:57
 msgid "Left Sidebar Half Page"
-msgstr "Linke Sidebar Halbe Seite"
+msgstr "Linke Sidebar, Halbe Seite"
+
+#: core/includes/functions-sidebar.php:58
+msgid "Area 4 - sidebar-left-half.php - Displays on Sidebar Half Page/Content page templates"
+msgstr "Bereich 4 - sidebar-left-half.php - wird auf auf Sidebar Halbe-Seite/Inhalt Vorlagen angezeigt"
 
 #: core/includes/functions-sidebar.php:67
 msgid "Right Sidebar Half Page"
 msgstr "Rechte Sidebar Halbe Seite"
 
+#: core/includes/functions-sidebar.php:68
+msgid "Area 5 - sidebar-right-half.php - Displays on Content/Sidebar Half Page page templates"
+msgstr "Bereich 5 - sidebar-right-half.php - wird auf auf Inhalt/Sidebar Halbe-Seite Vorlagen angezeigt"
+
 #: core/includes/functions-sidebar.php:77 sidebar-home.php:31
 msgid "Home Widget 1"
 msgstr "Startseite Widget 1"
 
-#: core/includes/functions-sidebar.php:48
-msgid "Area 3 - sidebar-left.php - Displays on Sidebar/Content page templates"
-msgstr "Bereich 3 - Seitenleiste-left.php - Displays auf Sidebar/Content-Seitenvorlagen"
-
-#: core/includes/functions-sidebar.php:58
-msgid "Area 4 - sidebar-left-half.php - Displays on Sidebar Half Page/Content page templates"
-msgstr "Bereich 4 - Sidebar-Links-half.php - Displays auf Sidebar-halbe/Seiteninhalt Seitenvorlagen"
-
-#: core/includes/functions-sidebar.php:68
-msgid "Area 5 - sidebar-right-half.php - Displays on Content/Sidebar Half Page page templates"
-msgstr "Bereich 5 - Seitenleiste-rechts-half.php - Displays auf Inhalte/Sidebar halbe Seite Seitenvorlagen"
+#: core/includes/functions-sidebar.php:38
+msgid "Area 2 - sidebar-right.php - Displays on Content/Sidebar page templates"
+msgstr "Bereich 2 - sidebar-right.php - wird auf Inhalt/Sidebar Vorlagen angezeigt"
 
 #: core/includes/functions-sidebar.php:47
 msgid "Left Sidebar"
 msgstr "Sidebar links"
 
-#: core/includes/functions-sidebar.php:38
-msgid "Area 2 - sidebar-right.php - Displays on Content/Sidebar page templates"
-msgstr "Bereich 2 - Seitenleiste-right.php - Displays auf Inhalte/Sidebar Seitenvorlagen"
+#: core/includes/functions-sidebar.php:28
+msgid "Area 1 - sidebar.php - Displays on Default, Blog, Blog Excerpt page templates"
+msgstr "Bereich 1 - sidebar.php - zeigt auf Standard, Blog, Blog-Auszug Seitenvorlagen"
 
 #: core/includes/functions-sidebar.php:37
 msgid "Right Sidebar"
 msgstr "Sidebar rechts"
-
-#: core/includes/functions-sidebar.php:28
-msgid "Area 1 - sidebar.php - Displays on Default, Blog, Blog Excerpt page templates"
-msgstr "Bereich 1 - sidebar.php - zeigt auf Standard, Blog, Blog-Auszug Seitenvorlagen"
 
 #: core/includes/functions-sidebar.php:27
 msgid "Main Sidebar"
@@ -493,10 +522,6 @@ msgstr "Haupt-Seitenleiste"
 msgid "Theme Options"
 msgstr "Theme-Einstellungen"
 
-#: core/includes/functions-install.php:35
-msgid "Visit site"
-msgstr "Zur Seite"
-
 #: core/includes/functions-install.php:31
 msgid "Settings saved and %s activated successfully."
 msgstr "Einstellungen gespeichert und %s erfolgreich aktiviert."
@@ -505,18 +530,22 @@ msgstr "Einstellungen gespeichert und %s erfolgreich aktiviert."
 msgid "%s activated successfully."
 msgstr "%s erfolgreich aktiviert."
 
+#: core/includes/functions-install.php:35
+msgid "Visit site"
+msgstr "Zur Seite"
+
 #: core/includes/functions-extentions.php:332
-#: core/includes/theme-options/theme-options.php:413
+#: core/includes/theme-options/theme-options.php:431
 msgid "Yelp!"
 msgstr "Yelp!"
 
 #: core/includes/functions-extentions.php:334
-#: core/includes/theme-options/theme-options.php:431
+#: core/includes/theme-options/theme-options.php:449
 msgid "foursquare"
 msgstr "FourSquare"
 
 #: core/includes/functions-extentions.php:326
-#: core/includes/theme-options/theme-options.php:359
+#: core/includes/theme-options/theme-options.php:377
 msgid "YouTube"
 msgstr "YouTube"
 
@@ -545,44 +574,49 @@ msgstr "Suchergebnisse für: %s"
 msgid "Archive for %s"
 msgstr "Archiv für %s"
 
+#: core/includes/functions-admin.php:163
+msgid "The Custom Front Page is enabled. You can disable it in the <a href=\"%1$s\">theme settings</a>."
+msgstr "Der Custom-Titelseite ist aktiviert. Sie können es in den <a href=\"%1$s\"> Design-Einstellungen</a> deaktivieren."
+
+#: core/includes/functions-admin.php:165
+msgid "The Custom Front Page is disabled. You can enable it in the <a href=\"%1$s\">theme settings</a>."
+msgstr "Der Custom-Titelseite ist deaktiviert. Sie können es in den <a href=\"%1$s\"> Design-Einstellungen</a> aktivieren."
+
 #: core/includes/functions-extentions.php:44 loop-no-posts.php:37
 msgid "Home"
 msgstr "Home"
 
-#: core/includes/functions-admin.php:168
-msgid "The Custom Front Page is enabled. You can disable it in the <a href=\"%1$s\">theme settings</a>."
-msgstr "Der Custom-Titelseite ist aktiviert. Sie können es in den <a href=\"%1$s\"> Design-Einstellungen</a> deaktivieren."
-
-#: core/includes/functions-admin.php:170
-msgid "The Custom Front Page is disabled. You can enable it in the <a href=\"%1$s\">theme settings</a>."
-msgstr "Der Custom-Titelseite ist deaktiviert. Sie können es in den <a href=\"%1$s\"> Design-Einstellungen</a> aktivieren."
-
-#: core/includes/functions-admin.php:144
+#: core/includes/functions-admin.php:139
 msgid "All plugins installed and activated successfully. %s"
 msgstr "Ein Plugin wurde erfolgreich installiert und aktiviert. %s"
 
-#: core/includes/functions-admin.php:131
-msgid "Something went wrong with the plugin API."
-msgstr "Etwas ging mit dem Plugin API falsch."
-
-#: core/includes/functions-admin.php:129
+#: core/includes/functions-admin.php:124
 msgid "Activate Add Ons"
 msgstr "Add-Ons aktivieren"
 
-#: core/includes/functions-admin.php:70 core/includes/functions-admin.php:71
+#: core/includes/functions-admin.php:126
+msgid "Something went wrong with the plugin API."
+msgstr "Etwas ging mit dem Plugin API falsch."
+
+#: core/includes/functions-admin.php:75 core/includes/functions-admin.php:76
 msgid "More Themes"
 msgstr "Weitere Themes"
 
-#: core/includes/functions-admin.php:67 core/includes/functions-admin.php:68
-msgid "Showcase"
-msgstr "Showcase"
-
-#: core/includes/functions-admin.php:64 core/includes/functions-admin.php:65
+#: core/includes/functions-admin.php:69 core/includes/functions-admin.php:70
 msgid "Translate"
 msgstr "Übersetzen"
 
+#: core/includes/functions-admin.php:72 core/includes/functions-admin.php:73
+msgid "Showcase"
+msgstr "Showcase"
+
+#: core/includes/customizer.php:283
+#: core/includes/theme-options/theme-options.php:145
+msgid "CSS Styles"
+msgstr "Individuelles Stylesheet"
+
 #: core/includes/customizer.php:288
-#: core/includes/theme-options/theme-options.php:443
+#: core/includes/theme-options/theme-options.php:461
 msgid "Custom CSS Styles"
 msgstr "Benutzerdefinierte CSS-Stile"
 
@@ -591,59 +625,54 @@ msgstr "Benutzerdefinierte CSS-Stile"
 msgid "Scripts"
 msgstr "Skripte"
 
-#: core/includes/functions-admin.php:61 core/includes/functions-admin.php:62
-#: core/includes/functions-install.php:39
-msgid "Help"
-msgstr "Hilfe"
-
-#: core/includes/functions-admin.php:58 core/includes/functions-admin.php:59
-msgid "Instructions"
-msgstr "Anleitung"
-
 #: core/includes/functions-admin.php:16
 msgid "Welcome to %1$s! Upgrade to %2$s today."
 msgstr "Willkommen bei %1$s! Upgrade auf %2$s heute."
 
-#: core/includes/customizer.php:283
-#: core/includes/theme-options/theme-options.php:145
-msgid "CSS Styles"
-msgstr "Individuelles Stylesheet"
+#: core/includes/functions-admin.php:63 core/includes/functions-admin.php:64
+msgid "Instructions"
+msgstr "Anleitung"
 
-#: core/includes/customizer.php:273
-msgid "Foursquare"
-msgstr "FourSquare"
+#: core/includes/functions-admin.php:66 core/includes/functions-admin.php:67
+#: core/includes/functions-install.php:39
+msgid "Help"
+msgstr "Hilfe"
 
 #: core/includes/customizer.php:264
 msgid "Yelp"
 msgstr "Yelp"
 
+#: core/includes/customizer.php:273
+msgid "Foursquare"
+msgstr "FourSquare"
+
 #: core/includes/customizer.php:255 core/includes/functions-extentions.php:333
-#: core/includes/theme-options/theme-options.php:422
+#: core/includes/theme-options/theme-options.php:440
 msgid "Vimeo"
 msgstr "Vimeo"
 
 #: core/includes/customizer.php:246 core/includes/functions-extentions.php:327
-#: core/includes/theme-options/theme-options.php:368
+#: core/includes/theme-options/theme-options.php:386
 msgid "StumbleUpon"
 msgstr "StumbleUpon"
 
 #: core/includes/customizer.php:237 core/includes/functions-extentions.php:331
-#: core/includes/theme-options/theme-options.php:404
+#: core/includes/theme-options/theme-options.php:422
 msgid "Pinterest"
 msgstr "Pinterest"
 
 #: core/includes/customizer.php:228 core/includes/functions-extentions.php:330
-#: core/includes/theme-options/theme-options.php:395
+#: core/includes/theme-options/theme-options.php:413
 msgid "Instagram"
 msgstr "Instagram"
 
 #: core/includes/customizer.php:219 core/includes/functions-extentions.php:328
-#: core/includes/theme-options/theme-options.php:377
+#: core/includes/theme-options/theme-options.php:395
 msgid "RSS Feed"
 msgstr "RSS-Feed"
 
 #: core/includes/customizer.php:210 core/includes/functions-extentions.php:329
-#: core/includes/theme-options/theme-options.php:386
+#: core/includes/theme-options/theme-options.php:404
 msgid "Google+"
 msgstr "Google+"
 
@@ -652,32 +681,32 @@ msgid "Tumblr"
 msgstr "Tumblr"
 
 #: core/includes/customizer.php:192 core/includes/functions-extentions.php:325
-#: core/includes/theme-options/theme-options.php:350
+#: core/includes/theme-options/theme-options.php:368
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
 #: core/includes/customizer.php:183 core/includes/functions-extentions.php:324
-#: core/includes/theme-options/theme-options.php:341
+#: core/includes/theme-options/theme-options.php:359
 msgid "Facebook"
 msgstr "Facebook"
 
 #: core/includes/customizer.php:174 core/includes/functions-extentions.php:323
-#: core/includes/theme-options/theme-options.php:332
+#: core/includes/theme-options/theme-options.php:350
 msgid "Twitter"
 msgstr "Twitter"
 
 #: core/includes/customizer.php:137
-#: core/includes/theme-options/theme-options.php:299
+#: core/includes/theme-options/theme-options.php:317
 msgid "Default Static Page Layout"
 msgstr "Standard Statische Seitenlayout"
 
 #: core/includes/customizer.php:145
-#: core/includes/theme-options/theme-options.php:309
+#: core/includes/theme-options/theme-options.php:327
 msgid "Default Single Blog Post Layout"
 msgstr "Standard Einzel Blogbeitragslayout"
 
 #: core/includes/customizer.php:153
-#: core/includes/theme-options/theme-options.php:319
+#: core/includes/theme-options/theme-options.php:337
 msgid "Default Blog Posts Index Layout"
 msgstr "Standard Blogbeiträge Übersichtslayout"
 
@@ -687,7 +716,7 @@ msgid "Social Icons"
 msgstr "Social Icons"
 
 #: core/includes/customizer.php:123
-#: core/includes/theme-options/theme-options.php:292
+#: core/includes/theme-options/theme-options.php:310
 msgid "Paste your shortcode, video or image source"
 msgstr "Dein Shortcode,Video- oder Bildquelle einfügen"
 
@@ -696,56 +725,56 @@ msgstr "Dein Shortcode,Video- oder Bildquelle einfügen"
 msgid "Default Layouts"
 msgstr "Standard Layouts"
 
-#: core/includes/customizer.php:96
-#: core/includes/theme-options/theme-options.php:259
-msgid "Content Area"
-msgstr "Inhaltsbereich"
-
-#: core/includes/customizer.php:119
-#: core/includes/theme-options/theme-options.php:286
-msgid "Featured Content"
-msgstr "Hervorgehobener Inhalt"
-
 #: core/includes/customizer.php:87
-#: core/includes/theme-options/theme-options.php:256
+#: core/includes/theme-options/theme-options.php:274
 #: template-parts/featured-area.php:36
 msgid "Your H2 subheadline here"
 msgstr "Deine Unterschlagzeile hier"
 
+#: core/includes/customizer.php:89
+#: core/includes/theme-options/theme-options.php:268
+msgid "Subheadline"
+msgstr "Unterschlagzeile"
+
 #: core/includes/customizer.php:94
-#: core/includes/theme-options/theme-options.php:265
+#: core/includes/theme-options/theme-options.php:283
 #: template-parts/featured-area.php:44
 msgid "Your title, subtitle and this very content is editable from Theme Option. Call to Action button and its destination link as well. Image on your right can be an image or even YouTube video if you like."
 msgstr "Dein Titel, Untertitel und auch dieser Inhalt ist von den Theme-Options aus änderbar. Der Call-to-Action Knopf und sein Ziel-link auch. Das Element auf der rechten Seite kann auch ein Bild oder YouTube-Video sein falls du möchtest."
 
-#: core/includes/customizer.php:89
-#: core/includes/theme-options/theme-options.php:250
-msgid "Subheadline"
-msgstr "Unterschlagzeile"
+#: core/includes/customizer.php:96
+#: core/includes/theme-options/theme-options.php:277
+msgid "Content Area"
+msgstr "Inhaltsbereich"
 
 #: core/includes/customizer.php:103
-#: core/includes/theme-options/theme-options.php:268
+#: core/includes/theme-options/theme-options.php:286
 msgid "Call to Action (URL)"
 msgstr "Call-to-Action (URL)"
 
 #: core/includes/customizer.php:111
-#: core/includes/theme-options/theme-options.php:277
+#: core/includes/theme-options/theme-options.php:295
 msgid "Call to Action (Text)"
 msgstr "Call-to-Action (Text)"
 
+#: core/includes/customizer.php:119
+#: core/includes/theme-options/theme-options.php:304
+msgid "Featured Content"
+msgstr "Hervorgehobener Inhalt"
+
 #: core/includes/customizer.php:74
-#: core/includes/theme-options/theme-options.php:232
+#: core/includes/theme-options/theme-options.php:250
 msgid "Enable Custom Front Page"
 msgstr "Benutzerdefinierten Startseite aktivieren"
 
 #: core/includes/customizer.php:80
-#: core/includes/theme-options/theme-options.php:247
+#: core/includes/theme-options/theme-options.php:265
 #: template-parts/featured-area.php:26
 msgid "Hello, World!"
 msgstr "Hallo Welt!!"
 
 #: core/includes/customizer.php:82
-#: core/includes/theme-options/theme-options.php:241
+#: core/includes/theme-options/theme-options.php:259
 msgid "Headline"
 msgstr "Kopfzeile"
 
@@ -753,6 +782,16 @@ msgstr "Kopfzeile"
 #: core/includes/theme-options/theme-options.php:123
 msgid "Theme Elements"
 msgstr "Elemente des Theme"
+
+#: core/includes/customizer.php:28
+#: core/includes/theme-options/theme-options.php:174
+msgid "Disable breadcrumb list?"
+msgstr "Brotkrümel-Navigation deaktivieren?"
+
+#: core/includes/customizer.php:35
+#: core/includes/theme-options/theme-options.php:183
+msgid "Disable Call to Action Button?"
+msgstr "Call-to-Action Knopf deaktivieren?"
 
 #: core/includes/customizer.php:57
 #: core/includes/theme-options/theme-options.php:209
@@ -763,16 +802,6 @@ msgstr "Titeltext"
 #: core/includes/theme-options/theme-options.php:132
 msgid "Home Page"
 msgstr "Startseite"
-
-#: core/includes/customizer.php:35
-#: core/includes/theme-options/theme-options.php:183
-msgid "Disable Call to Action Button?"
-msgstr "Call-to-Action Knopf deaktivieren?"
-
-#: core/includes/customizer.php:28
-#: core/includes/theme-options/theme-options.php:174
-msgid "Disable breadcrumb list?"
-msgstr "Brotkrümel-Navigation deaktivieren?"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:2148
 msgid "Return to the Dashboard"
@@ -931,7 +960,7 @@ msgstr "Das folgende Plugin wurde erfolgreich aktiviert:"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:171
 #: core/includes/classes/class-tgm-plugin-activation.php:1931
-#: core/includes/functions-admin.php:143
+#: core/includes/functions-admin.php:138
 msgid "Plugin activated successfully."
 msgstr "Plugin erfolgreich aktiviert."
 
@@ -940,75 +969,75 @@ msgid "Return to the dashboard"
 msgstr "Zurück zum Dashboard"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:169
-#: core/includes/functions-admin.php:142
+#: core/includes/functions-admin.php:137
 msgid "Return to Required Plugins Installer"
 msgstr "Zurück zur Erforderliche Plugins Installer"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:168
-#: core/includes/functions-admin.php:141
+#: core/includes/functions-admin.php:136
 msgid "Activate installed plugin"
 msgid_plural "Activate installed plugins"
 msgstr[0] "Aktiviere installiertes Plugin"
 msgstr[1] "Aktiviere installierte Plugins"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:167
-#: core/includes/functions-admin.php:140
+#: core/includes/functions-admin.php:135
 msgid "Begin installing plugin"
 msgid_plural "Begin installing plugins"
 msgstr[0] "Starten Sie die Installation des plugin"
 msgstr[1] "Starten Sie die Installation von plugins"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:166
-#: core/includes/functions-admin.php:139
+#: core/includes/functions-admin.php:134
 msgid "Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated."
 msgid_plural "Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated."
 msgstr[0] "Leider reichen die Zugriffsrechte nicht aus, um das %s Plugin zu aktualisieren. Bitte wende dich an den Administrator der Site."
 msgstr[1] "Leider reichen die Zugriffsrechte nicht aus, um die %s Plugins zu aktualisieren. Bitte wende dich an den Administrator der Site."
 
 #: core/includes/classes/class-tgm-plugin-activation.php:165
-#: core/includes/functions-admin.php:138
+#: core/includes/functions-admin.php:133
 msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
 msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
 msgstr[0] "Das folgende Plugin muss auf seine neueste Version maximale Kompatibilität mit diesem Thema aktualisiert werden: %1$s."
 msgstr[1] "Die folgenden Plugins müssen aktualisiert werden, um ihre neueste Version um maximale Kompatibilität mit diesem Thema zu gewährleisten: %1$s."
 
 #: core/includes/classes/class-tgm-plugin-activation.php:164
-#: core/includes/functions-admin.php:137
+#: core/includes/functions-admin.php:132
 msgid "Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated."
 msgid_plural "Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated."
 msgstr[0] "Leider reichen die Zugriffsrechte nicht aus, um das %s Plugin zu aktivieren. Bitte wende dich an den Administrator der Site."
 msgstr[1] "Leider reichen die Zugriffsrechte nicht aus, um die %s Plugins zu aktivieren. Bitte wende dich an den Administrator der Site."
 
 #: core/includes/classes/class-tgm-plugin-activation.php:163
-#: core/includes/functions-admin.php:136
+#: core/includes/functions-admin.php:131
 msgid "The following recommended plugin is currently inactive: %1$s."
 msgid_plural "The following recommended plugins are currently inactive: %1$s."
 msgstr[0] "Folgendes empfohlen Plugin ist derzeit inaktiv: %1$s."
 msgstr[1] "Die folgenden empfohlenen Plugins sind derzeit inaktiv: %1$s."
 
 #: core/includes/classes/class-tgm-plugin-activation.php:162
-#: core/includes/functions-admin.php:135
+#: core/includes/functions-admin.php:130
 msgid "The following required plugin is currently inactive: %1$s."
 msgid_plural "The following required plugins are currently inactive: %1$s."
 msgstr[0] "Folgende erforderliche Plugin ist derzeit inaktiv: %1$s."
 msgstr[1] "Die folgenden erforderlichen Plugins sind derzeit inaktiv: %1$s."
 
 #: core/includes/classes/class-tgm-plugin-activation.php:161
-#: core/includes/functions-admin.php:134
+#: core/includes/functions-admin.php:129
 msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
 msgid_plural "Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed."
 msgstr[0] "Leider reichen die Zugriffsrechte nicht aus, um das %s Plugin zu installieren. Bitte wende dich an den Administrator der Site."
 msgstr[1] "Leider reichen die Zugriffsrechte nicht aus, um die %s Plugins zu installieren. Bitte wende dich an den Administrator der Site."
 
 #: core/includes/classes/class-tgm-plugin-activation.php:160
-#: core/includes/functions-admin.php:133
+#: core/includes/functions-admin.php:128
 msgid "This theme recommends the following plugin: %1$s."
 msgid_plural "This theme recommends the following plugins: %1$s."
 msgstr[0] "Bei diesem Theme wird die Verwendung des folgenden Plugins empfohlen: %1$s."
 msgstr[1] "Bei diesem Theme wird die Verwendung der folgenden Plugins empfohlen: %1$s."
 
 #: core/includes/classes/class-tgm-plugin-activation.php:159
-#: core/includes/functions-admin.php:132
+#: core/includes/functions-admin.php:127
 msgid "This theme requires the following plugin: %1$s."
 msgid_plural "This theme requires the following plugins: %1$s."
 msgstr[0] "Das Thema erfordert das folgende Plugin: %1$s."
@@ -1019,7 +1048,7 @@ msgid "Something went wrong."
 msgstr "Irgendetwas ist schiefgegangen."
 
 #: core/includes/classes/class-tgm-plugin-activation.php:157
-#: core/includes/functions-admin.php:130
+#: core/includes/functions-admin.php:125
 msgid "Installing Plugin: %s"
 msgstr "Installiere Plugin: %s"
 
@@ -1027,28 +1056,28 @@ msgstr "Installiere Plugin: %s"
 msgid "Install Plugins"
 msgstr "Plugins installieren"
 
-#. #-#-#-#-#  responsive.pot (Responsive 1.9.7.7)  #-#-#-#-#
+#. #-#-#-#-#  responsive.pot (Responsive 1.9.8.2)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: core/includes/classes/Responsive_Options.php:257
 #: core/includes/post-custom-meta.php:167
 msgid "Sidebar/Content"
 msgstr "Sidebar/Inhalt"
 
-#. #-#-#-#-#  responsive.pot (Responsive 1.9.7.7)  #-#-#-#-#
+#. #-#-#-#-#  responsive.pot (Responsive 1.9.8.2)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: core/includes/classes/Responsive_Options.php:258
 #: core/includes/post-custom-meta.php:168
 msgid "Content/Sidebar Half Page"
 msgstr "Inhalt/Sidebar Halbe Siete"
 
-#. #-#-#-#-#  responsive.pot (Responsive 1.9.7.7)  #-#-#-#-#
+#. #-#-#-#-#  responsive.pot (Responsive 1.9.8.2)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: core/includes/classes/Responsive_Options.php:259
 #: core/includes/post-custom-meta.php:169
 msgid "Sidebar/Content Half Page"
 msgstr "Sidebar/Inhalt Halbe Seite"
 
-#. #-#-#-#-#  responsive.pot (Responsive 1.9.7.7)  #-#-#-#-#
+#. #-#-#-#-#  responsive.pot (Responsive 1.9.8.2)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: core/includes/classes/Responsive_Options.php:260
 #: core/includes/post-custom-meta.php:170
@@ -1059,7 +1088,7 @@ msgstr "Volle Breite Seite (kein Sidebar)"
 msgid "Install Required Plugins"
 msgstr "Installieren Sie die erforderlichen Plugins"
 
-#. #-#-#-#-#  responsive.pot (Responsive 1.9.7.7)  #-#-#-#-#
+#. #-#-#-#-#  responsive.pot (Responsive 1.9.8.2)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: core/includes/classes/Responsive_Options.php:256
 #: core/includes/post-custom-meta.php:166
@@ -1079,9 +1108,10 @@ msgstr "Upgrade"
 msgid "Restore Defaults"
 msgstr "Standard wiederherstellen"
 
-#: core/includes/classes/Responsive_Options.php:240
-msgid "Save Options"
-msgstr "Einstellungen speichern"
+#: core/includes/classes/Responsive_Options.php:38
+#: core/includes/theme-options/theme-options.php:99
+msgid "Do you want to restore?"
+msgstr "Möchten Sie das zurücksetzen?"
 
 #: core/includes/classes/Responsive_Options.php:38
 #: core/includes/theme-options/theme-options.php:99
@@ -1093,10 +1123,9 @@ msgstr "Alle Theme-Einstellungen gehen verloren!"
 msgid "Click OK to Restore."
 msgstr "Klick OK zum Zurücksetzen."
 
-#: core/includes/classes/Responsive_Options.php:38
-#: core/includes/theme-options/theme-options.php:99
-msgid "Do you want to restore?"
-msgstr "Möchten Sie das zurücksetzen?"
+#: core/includes/classes/Responsive_Options.php:240
+msgid "Save Options"
+msgstr "Einstellungen speichern"
 
 #: comments.php:86
 msgid "Website"
@@ -1160,6 +1189,10 @@ msgstr "&#8249; Ältere Beiträge"
 msgid "Pages:"
 msgstr "Seiten:"
 
+#. Theme URI of the plugin/theme
+msgid "http://cyberchimps.com/responsive-theme/"
+msgstr "http://cyberchimps.com/responsive-theme/"
+
 #. Author of the plugin/theme
 msgid "CyberChimps.com"
 msgstr "CyberChimps.com"
@@ -1167,7 +1200,3 @@ msgstr "CyberChimps.com"
 #. Author URI of the plugin/theme
 msgid "http://cyberchimps.com"
 msgstr "http://cyberchimps.com"
-
-#. Theme URI of the plugin/theme
-msgid "http://cyberchimps.com/responsive-theme/"
-msgstr "http://cyberchimps.com/responsive-theme/"

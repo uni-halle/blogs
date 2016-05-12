@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-04-18 12:49:22+0000\n"
+"PO-Revision-Date: 2016-04-25 12:52:44+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,21 +10,9 @@ msgstr ""
 "X-Generator: GlotPress/2.1.0-alpha\n"
 "Project-Id-Version: Development (trunk)\n"
 
-#: hidden.php:314
-msgid "Name"
-msgstr "Name"
-
-#: hidden.php:324
-msgid "Value"
-msgstr "Wert"
-
 #: hidden.php:304
 msgid "Generate a form tag for a hidden field. For more details, see %s."
-msgstr "Generiere einen Formular-Tag für ein verstecktes Feld. Weitere Einzelheiten siehe %s."
-
-#: hidden.php:319
-msgid "ID attribute"
-msgstr "ID Eigenschaft"
+msgstr "Generiere ein Formular-Tag für ein verborgenes Feld. Weitere Einzelheiten siehe %s."
 
 #: hidden.php:305
 msgid "https://wordpress.org/plugins/contact-form-7-modules/"
@@ -34,9 +22,21 @@ msgstr "https://wordpress.org/plugins/contact-form-7-modules/"
 msgid "the plugin page on WordPress.org"
 msgstr "Pluginseite auf WordPress.org"
 
+#: hidden.php:314
+msgid "Name"
+msgstr "Name"
+
+#: hidden.php:319
+msgid "ID attribute"
+msgstr "ID Eigenschaft"
+
 #: hidden.php:319
 msgid "optional"
 msgstr "optional"
+
+#: hidden.php:324
+msgid "Value"
+msgstr "Wert"
 
 #: hidden.php:329
 msgid "Use this text as watermark?"
@@ -70,6 +70,14 @@ msgstr "<code>post_date</code>: Das Erstellungsdatum des Beitrags/der Seite"
 msgid "<code>post_author</code>: The name of the author of the post/page"
 msgstr "<code>post_author</code>: Der Name des Autors des Beitrags/der Seite"
 
+#: hidden.php:347
+msgid "The following values will be replaced if an user is logged in:"
+msgstr "Die folgenden Werte werden ersetzt, wenn ein Benutzer angemeldet ist:"
+
+#: hidden.php:349
+msgid "<code>user_name</code>: User Login"
+msgstr "<code>user_name</code>: Benutzername"
+
 #: hidden.php:350
 msgid "<code>user_id</code>: User ID"
 msgstr "<code>user_id</code>: ID des Benutzers"
@@ -82,18 +90,6 @@ msgstr "<code>user_email</code>: E-Mail-Adresse des Benutzers"
 msgid "<code>user_display_name</code>: Display Name (Generally the first and last name of the user)"
 msgstr "<code>user_display_name</code>: Öffentlicher Name (üblicherweise der Vor- und Nachname des Benutzers)"
 
-#. Plugin Name of the plugin/theme
-msgid "Contact Form 7 Modules: Hidden Fields"
-msgstr "Contact Form 7 Modules: Hidden Fields"
-
-#. Plugin URI of the plugin/theme
-msgid "https://katz.co/contact-form-7-hidden-fields/"
-msgstr "https://katz.co/contact-form-7-hidden-fields/"
-
-#: hidden.php:349
-msgid "<code>user_name</code>: User Login"
-msgstr "<code>user_name</code>: Benutzername"
-
 #: hidden.php:364
 msgid "Insert Tag"
 msgstr "Tag einfügen"
@@ -102,6 +98,18 @@ msgstr "Tag einfügen"
 msgid "To use the value input through this field in a mail field, you need to insert the corresponding mail-tag (%s) into the field on the Mail tab."
 msgstr "Um die Werteingabe dieses Feldes in einem Feld des Register-Tabs E-Mail zu verwenden, musst du das zugehörige E-Mail-Tag (%s) in diesem Feld hinzufügen."
 
+#. Plugin Name of the plugin/theme
+msgid "Contact Form 7 Modules: Hidden Fields"
+msgstr "Contact Form 7 Modules: Hidden Fields"
+
+#. Plugin URI of the plugin/theme
+msgid "https://katz.co/contact-form-7-hidden-fields/"
+msgstr "https://katz.co/contact-form-7-hidden-fields/"
+
+#. Description of the plugin/theme
+msgid "Add hidden fields to the popular Contact Form 7 plugin."
+msgstr "Ergänze verborgene Felder beim beliebten Plugin Contact Form 7."
+
 #. Author of the plugin/theme
 msgid "Katz Web Services, Inc."
 msgstr "Katz Web Services, Inc."
@@ -109,14 +117,6 @@ msgstr "Katz Web Services, Inc."
 #. Author URI of the plugin/theme
 msgid "http://www.katzwebservices.com"
 msgstr "http://www.katzwebservices.com"
-
-#: hidden.php:347
-msgid "The following values will be replaced if an user is logged in:"
-msgstr "Die folgenden Werte werden ersetzt, wenn ein Benutzer angemeldeten ist:"
-
-#. Description of the plugin/theme
-msgid "Add hidden fields to the popular Contact Form 7 plugin."
-msgstr "Füge zum beliebten Plugin Contact Form 7 versteckte Felder hinzu."
 
 #: hidden.php:295
 msgid "hidden"
