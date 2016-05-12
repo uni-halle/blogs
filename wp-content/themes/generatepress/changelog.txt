@@ -1,5 +1,24 @@
 === changelog ===
 
+= (4/30/2016) - 1.3.29 =
+* Adjust metaboxes to not save empty postmeta
+* Only make container full width with Beaver Builder when no sidebars is set
+* Remove decrease in main title size on mobile to make way for new mobile typography options
+* Minify style.css
+* New hook: generate_before_entry_title
+* New hook: generate_after_entry_title
+* Move post meta to a function so it can be hooked into before the title to after the title
+* Change comments icon to: http://fontawesome.io/icon/comments/
+* Make WooCommerce product full width on mobile
+* Fix spacing to the right of the dropdown menu toggle
+* Minify HTML5 Shiv
+* Adjust child comment spacing on mobile
+* Update to Font Awesome 4.6.1
+* Remove edit link at the bottom of the page when logged in
+* Switch the site logo option to use the new custom logo feature in WordPress 4.5
+* Change metabox capability to edit_theme_options from activate_plugins
+* Add new filter to strip Font Awesome down to the essentials (+1 performance): generate_fontawesome_essentials
+
 = (3/11/2016) - 1.3.28 =
 * New hook: generate_inside_comments
 * New hook: generate_below_comments_title
@@ -19,7 +38,6 @@
 * Clean up generate_header_items function
 * Float dropdown arrow to the right when navigation is in a sidebar
 * Remove language files to allow WordPress.org language packs to take effect: https://translate.wordpress.org/projects/wp-themes/generatepress
-* Spanish (Argentina) translation added - thank you Facundo!
 
 = (2/1/2016) - 1.3.27
 * Fix arrow alignment on mobile menu

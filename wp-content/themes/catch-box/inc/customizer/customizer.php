@@ -701,7 +701,7 @@ function catchbox_customize_register( $wp_customize ) {
 			//Favicon
 			'header_image_position' => array(
 				'id'          => 'header_image_position',
-				'title'       => __( 'Header Image', 'catch-box' ),
+				'title'       => __( 'Header Image Location', 'catch-box' ),
 				'description' => '',
 				'field_type'  => 'select',
 				'sanitize'    => 'catchbox_sanitize_select',

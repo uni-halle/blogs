@@ -6,7 +6,7 @@
 function generate_add_layout_meta_box() { 
 	
 	// Set user role - make filterable
-	$allowed = apply_filters( 'generate_metabox_capability', 'activate_plugins' );
+	$allowed = apply_filters( 'generate_metabox_capability', 'edit_theme_options' );
 	
 	// If not an administrator, don't show the metabox
 	if ( ! current_user_can( $allowed ) )
@@ -34,18 +34,8 @@ function generate_show_layout_meta_box( $post ) {
 
     wp_nonce_field( basename( __FILE__ ), 'generate_layout_nonce' );
     $stored_meta = get_post_meta( $post->ID );
-	
-	if ( isset($stored_meta['_generate-sidebar-layout-meta'][0]) ) :
-		$stored_meta['_generate-sidebar-layout-meta'][0] = $stored_meta['_generate-sidebar-layout-meta'][0];
-	else :
-		$stored_meta['_generate-sidebar-layout-meta'][0] = '';
-	endif;
-	
-	if ( isset($stored_meta['_generate-sidebar-layout-meta'][0]) && '' == $stored_meta['_generate-sidebar-layout-meta'][0] ) :
-		$checked = 'checked="checked"';
-	else :
-		$checked = '';
-	endif;
+	$stored_meta['_generate-sidebar-layout-meta'][0] = ( isset( $stored_meta['_generate-sidebar-layout-meta'][0] ) ) ? $stored_meta['_generate-sidebar-layout-meta'][0] : '';
+	$checked = ( isset($stored_meta['_generate-sidebar-layout-meta'][0]) && '' == $stored_meta['_generate-sidebar-layout-meta'][0] ) ? 'checked="checked"' : '';
     ?>
  
     <p>
@@ -89,18 +79,21 @@ function generate_save_layout_meta($post_id) {
 	// Checks save status
     $is_autosave = wp_is_post_autosave( $post_id );
     $is_revision = wp_is_post_revision( $post_id );
-    $is_valid_nonce = ( isset( $_POST[ 'generate_layout_nonce' ] ) && wp_verify_nonce( $_POST[ 'generate_layout_nonce' ], basename( __FILE__ ) ) ) ? 'true' : 'false';
+    $is_valid_nonce = ( isset( $_POST[ 'generate_layout_nonce' ] ) && wp_verify_nonce( $_POST[ 'generate_layout_nonce' ], basename( __FILE__ ) ) ) ? true : false;
  
     // Exits script depending on save status
-    if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
+    if ( $is_autosave || $is_revision || ! $is_valid_nonce ) {
         return;
     }
  
-    // Checks for input and sanitizes/saves if needed
-    // Checks for input and saves if needed
-	if( isset( $_POST[ '_generate-sidebar-layout-meta' ] ) ) {
-		update_post_meta( $post_id, '_generate-sidebar-layout-meta', $_POST[ '_generate-sidebar-layout-meta' ] );
-	}
+	$key   = '_generate-sidebar-layout-meta';
+	$value = filter_input( INPUT_POST, $key, FILTER_SANITIZE_STRING );
+
+	if ( $value )
+		update_post_meta( $post_id, $key, $value );
+	else
+		delete_post_meta( $post_id, $key );
+	
 }  
 add_action('save_post', 'generate_save_layout_meta');
 
@@ -111,7 +104,7 @@ add_action('save_post', 'generate_save_layout_meta');
 function generate_add_footer_widget_meta_box() {  
 
 	// Set user role - make filterable
-	$allowed = apply_filters( 'generate_metabox_capability', 'activate_plugins' );
+	$allowed = apply_filters( 'generate_metabox_capability', 'edit_theme_options' );
 	
 	// If not an administrator, don't show the metabox
 	if ( ! current_user_can( $allowed ) )
@@ -139,18 +132,8 @@ function generate_show_footer_widget_meta_box( $post ) {
 
     wp_nonce_field( basename( __FILE__ ), 'generate_footer_widget_nonce' );
     $stored_meta = get_post_meta( $post->ID );
-	
-	if ( isset($stored_meta['_generate-footer-widget-meta'][0]) ) :
-		$stored_meta['_generate-footer-widget-meta'][0] = $stored_meta['_generate-footer-widget-meta'][0];
-	else :
-		$stored_meta['_generate-footer-widget-meta'][0] = '';
-	endif;
-	
-	if ( '' == $stored_meta['_generate-footer-widget-meta'][0] ) :
-		$checked = 'checked="checked"';
-	else :
-		$checked = '';
-	endif;
+	$stored_meta['_generate-footer-widget-meta'][0] = ( isset( $stored_meta['_generate-footer-widget-meta'][0] ) ) ? $stored_meta['_generate-footer-widget-meta'][0] : '';
+	$checked = ( '' == $stored_meta['_generate-footer-widget-meta'][0] ) ? 'checked="checked"' : '';
     ?>
  
     <p>
@@ -194,17 +177,19 @@ function generate_save_footer_widget_meta($post_id) {
 	// Checks save status
     $is_autosave = wp_is_post_autosave( $post_id );
     $is_revision = wp_is_post_revision( $post_id );
-    $is_valid_nonce = ( isset( $_POST[ 'generate_footer_widget_nonce' ] ) && wp_verify_nonce( $_POST[ 'generate_footer_widget_nonce' ], basename( __FILE__ ) ) ) ? 'true' : 'false';
+    $is_valid_nonce = ( isset( $_POST[ 'generate_footer_widget_nonce' ] ) && wp_verify_nonce( $_POST[ 'generate_footer_widget_nonce' ], basename( __FILE__ ) ) ) ? true : false;
  
     // Exits script depending on save status
-    if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
+    if ( $is_autosave || $is_revision || ! $is_valid_nonce ) {
         return;
     }
- 
-    // Checks for input and sanitizes/saves if needed
-    // Checks for input and saves if needed
-	if( isset( $_POST[ '_generate-footer-widget-meta' ] ) ) {
-		update_post_meta( $post_id, '_generate-footer-widget-meta', $_POST[ '_generate-footer-widget-meta' ] );
-	}
+	
+	$key   = '_generate-footer-widget-meta';
+	$value = filter_input( INPUT_POST, $key, FILTER_SANITIZE_STRING );
+
+	if ( $value )
+		update_post_meta( $post_id, $key, $value );
+	else
+		delete_post_meta( $post_id, $key );
 }  
 add_action('save_post', 'generate_save_footer_widget_meta');

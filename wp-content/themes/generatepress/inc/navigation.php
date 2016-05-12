@@ -123,7 +123,7 @@ function generate_menu_fallback( $args )
 		generate_get_defaults() 
 	);
 	?>
-	<div class="main-nav">
+	<div id="primary-menu" class="main-nav">
 		<ul <?php generate_menu_class(); ?>>
 			<?php 
 			$args = array(

@@ -39,6 +39,11 @@ body {
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3e6107', endColorstr='#53810a'); /* for IE */
 	color: #fff;
 }
+.mobile-menu-anchor a.genericon-menu:hover,
+.mobile-menu-anchor a.genericon-menu:focus {
+	background-color: #3e6107;
+	color: #fff;
+}
 #access-secondary {
     background-color: #53810a;
 }

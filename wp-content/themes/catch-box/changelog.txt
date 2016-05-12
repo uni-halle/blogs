@@ -1,4 +1,26 @@
-== Change log ==
+== Change Log ==
+
+Version 4.4.8
+* Bug Fixed: Missing closing div for menu-access-wrap
+* Removed: Unnecessary hgroup element
+* Updated: French translation fr_FR.po and fr_FR.mo
+
+Version 4.4.7
+* Added Header Image Options to theme options page
+
+Version 4.4.6
+* Bug Fixed: Renamed Header Image to Header Image Location
+* Bug Fixed: Featured Slider Not loading issue
+
+Version 4.4.5
+* Bug Fixed: Change mobile menu color as per menu color options
+* Replaced: default header image as per new header image size 1000x400
+* Updated: Added Default Custom Header Sizes for all WordPress versions
+* Updated: Functions organization in separate files
+
+Version 4.4.4
+* Bug Fixed: Remove Header Image after Migration it to logo
+* Bug Fixed: Search bar issue in Safari
 
 Version 4.4.3
 * Bug Fixed: Sidebar Showing on no-sidebar layout

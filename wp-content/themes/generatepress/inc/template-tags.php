@@ -528,6 +528,11 @@ function generate_header_items()
 endif;
 
 if ( ! function_exists( 'generate_construct_logo' ) ) :
+/**
+ * Build the logo
+ *
+ * @since 1.3.28
+ */
 function generate_construct_logo()
 {
 	$generate_settings = wp_parse_args( 
@@ -535,9 +540,17 @@ function generate_construct_logo()
 		generate_get_defaults() 
 	);
 	
-	if ( empty( $generate_settings['logo'] ) )
+	// Get our logo URL if we're using the custom logo
+	$logo_url = ( function_exists( 'the_custom_logo' ) && get_theme_mod( 'custom_logo' ) ) ? wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' ) : false;
+	
+	// Get our logo from the custom logo or our GP setting
+	$logo = ( $logo_url ) ? $logo_url[0] : $generate_settings['logo'];
+	
+	// If we don't have a logo, bail
+	if ( empty( $logo ) )
 		return;
 	
+	// Print our HTML
 	printf( 
 		'<div class="site-logo">
 			<a href="%1$s" title="%2$s" rel="home">
@@ -545,13 +558,18 @@ function generate_construct_logo()
 			</a>
 		</div>',
 		apply_filters( 'generate_logo_href' , esc_url( home_url( '/' ) ) ),
-		esc_attr( get_bloginfo( 'name', 'display' ) ),
-		apply_filters( 'generate_logo', esc_url( $generate_settings['logo'] ) )
+		apply_filters( 'generate_logo_title', esc_attr( get_bloginfo( 'name', 'display' ) ) ),
+		apply_filters( 'generate_logo', esc_url( $logo ) )
 	);
 }
 endif;
 
 if ( ! function_exists( 'generate_construct_site_title' ) ) :
+/**
+ * Build the site title and tagline
+ *
+ * @since 1.3.28
+ */
 function generate_construct_site_title()
 {
 	$generate_settings = wp_parse_args( 
@@ -585,6 +603,11 @@ function generate_construct_site_title()
 endif;
 
 if ( ! function_exists( 'generate_construct_header_widget' ) ) :
+/**
+ * Build the header widget
+ *
+ * @since 1.3.28
+ */
 function generate_construct_header_widget()
 {
 	if ( is_active_sidebar('header') ) : ?>
@@ -699,5 +722,22 @@ function generate_archive_title()
 		<?php do_action( 'generate_after_archive_description' ); ?>
 	</header><!-- .page-header -->
 	<?php
+}
+endif;
+
+if ( ! function_exists( 'generate_post_meta' ) ) :
+/**
+ * Build the post meta
+ *
+ * @since 1.3.29
+ */
+add_action( 'generate_after_entry_title', 'generate_post_meta' );
+function generate_post_meta()
+{
+	if ( 'post' == get_post_type() ) : ?>
+		<div class="entry-meta">
+			<?php generate_posted_on(); ?>
+		</div><!-- .entry-meta -->
+	<?php endif;
 }
 endif;

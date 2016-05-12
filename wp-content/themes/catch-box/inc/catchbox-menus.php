@@ -81,7 +81,7 @@ function catchbox_header_menu() { ?>
             else {
                 echo '<div class="menu-header-container">';
                     wp_page_menu( array( 'menu_class'  => 'menu' ) );
-                echo '</div>';
+                echo '</div><!-- .menu-header-container -->';
             } ?>
 
         </nav><!-- #access -->
@@ -98,7 +98,7 @@ function catchbox_header_menu() { ?>
         <nav id="access-secondary" class="<?php echo $menuclass; ?>"  role="navigation" aria-label="<?php esc_attr_e( 'Secondary Menu', 'catch-box' ); ?>">
             <h3 class="assistive-text"><?php _e( 'Secondary menu', 'catch-box' ); ?></h3>
             <?php wp_nav_menu( array( 'theme_location'  => 'secondary', 'container_class' => 'menu-secondary-container' ) );  ?>
-        </nav>
+        </nav><!-- #access-secondary -->
     <?php }
 }
 endif; //catchbox_header_menu
@@ -160,7 +160,7 @@ function catchbox_mobile_header_menu() {
             <a href="#mobile-header-left-nav" id="header-left-menu" class="genericon genericon-menu">
                 <span class="mobile-menu-text"><?php _e( 'Menu', 'catch-box' );?></span>
             </a>
-        </div><!-- #mobile-header-menu -->
+        </div><!-- #mobile-header-left-menu -->
 
         <nav id="mobile-header-left-nav" class="mobile-menu"  role="navigation" aria-label="<?php esc_attr_e( 'Primary Mobile Menu', 'catch-box' ); ?>">
             <?php if ( has_nav_menu( 'primary' ) ) :
@@ -181,6 +181,7 @@ function catchbox_mobile_header_menu() {
             $classes = "mobile-menu-anchor secondary-menu";
         }
         else {
+            echo '</div><!-- .menu-access-wrap -->';
             return;
         }
         ?>
@@ -188,7 +189,7 @@ function catchbox_mobile_header_menu() {
             <a href="#mobile-header-right-nav" id="header-right-menu" class="genericon genericon-menu">
                 <span class="mobile-menu-text"><?php _e( 'Secondary Menu', 'catch-box' );?></span>
             </a>
-        </div><!-- #mobile-header-menu -->
+        </div><!-- #mobile-header-right-menu -->
 
         <?php if ( ( !empty ( $options ['enable_menus'] ) &&  has_nav_menu( 'secondary' ) ) ) : ?>
             <nav id="mobile-header-right-nav" class="mobile-menu"  role="navigation" aria-label="<?php esc_attr_e( 'Secondary Mobile Menu', 'catch-box' ); ?>">

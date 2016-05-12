@@ -9,8 +9,61 @@
  * @since Catch Box 1.0
  */
 
+if ( ! function_exists( 'catchbox_widgets_init' ) ):
+/**
+ * Register our sidebars and widgetized areas.
+ *
+ * @since Catch Box 1.0
+ */
+function catchbox_widgets_init() {
+
+	register_widget( 'catchbox_adwidget' );
+
+	register_sidebar( array(
+		'name' => __( 'Main Sidebar', 'catch-box' ),
+		'id' => 'sidebar-1',
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget' => "</section>",
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
+	) );
+
+	register_sidebar( array(
+		'name' => __( 'Footer Area One', 'catch-box' ),
+		'id' => 'sidebar-2',
+		'description' => __( 'An optional widget area for your site footer', 'catch-box' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
+	register_sidebar( array(
+		'name' => __( 'Footer Area Two', 'catch-box' ),
+		'id' => 'sidebar-3',
+		'description' => __( 'An optional widget area for your site footer', 'catch-box' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
+	register_sidebar( array(
+		'name' => __( 'Footer Area Three', 'catch-box' ),
+		'id' => 'sidebar-4',
+		'description' => __( 'An optional widget area for your site footer', 'catch-box' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+}
+endif; // catchbox_widgets_init
+add_action( 'widgets_init', 'catchbox_widgets_init' );
+
+
 class catchbox_adwidget extends WP_Widget {
-	
+
 	/**
 	 * Register widget with WordPress.
 	 */
@@ -21,7 +74,7 @@ class catchbox_adwidget extends WP_Widget {
 			array( 'description' => __( 'Use this widget to add any type of Ad as a widget. ', 'catch-box' ) ) // Args
 		);
 	}
-	
+
 
 	/**
 	 * Creates the form for the widget in the back-end which includes the Title , adcode, image, alt
@@ -29,7 +82,7 @@ class catchbox_adwidget extends WP_Widget {
 	 */
 	function form($instance) {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'adcode' => '', 'image' => '', 'href' => '', 'alt' => '' ) );
-		$title = esc_attr( $instance[ 'title' ] ); 
+		$title = esc_attr( $instance[ 'title' ] );
 		$adcode = esc_textarea( $instance[ 'adcode' ] );
 		$image = esc_url( $instance[ 'image' ] );
 		$href = esc_url( $instance[ 'href' ] );
@@ -60,10 +113,10 @@ class catchbox_adwidget extends WP_Widget {
         </p>
         <?php
 	}
-	
+
 	/**
-	 * update the particular instant  
-	 * 
+	 * update the particular instant
+	 *
 	 * This function should check that $new_instance is set correctly.
 	 * The newly calculated value of $instance should be returned.
 	 * If "false" is returned, the instance won't be saved/updated.
@@ -79,13 +132,13 @@ class catchbox_adwidget extends WP_Widget {
 		$instance['image'] = esc_url_raw($new_instance['image']);
 		$instance['href'] = esc_url_raw($new_instance['href']);
 		$instance['alt'] = sanitize_text_field($new_instance['alt']);
-		
+
 		return $instance;
-	}	
-	
+	}
+
 	/**
 	 * Displays the Widget in the front-end.
-	 * 
+	 *
 	 * $args Display arguments including before_title, after_title, before_widget, and after_widget.
 	 * $instance The settings for the particular instance of the widget
 	 */
@@ -98,7 +151,7 @@ class catchbox_adwidget extends WP_Widget {
 		$href = !empty( $instance['href'] ) ? $instance[ 'href' ] : '';
 		$alt = !empty( $instance['alt'] ) ? $instance[ 'alt' ] : '';
 
-			
+
 		echo $before_widget;
 		if ( $title != '' ) {
 			echo $before_title . apply_filters( 'widget_title', $title, $instance, $this->id_base ) . $after_title;
@@ -114,4 +167,4 @@ class catchbox_adwidget extends WP_Widget {
 		echo $after_widget;
 	}
 
-} 
+}

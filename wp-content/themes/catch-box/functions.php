@@ -38,7 +38,6 @@
  * @since Catch Box 1.0
  */
 
-
 if ( ! function_exists( 'catchbox_content_width' ) ) :
 /**
  * Change the content width based on the Theme Settings and Page/Post Settings
@@ -116,73 +115,10 @@ function catchbox_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-	// The next four constants set how Catch Box supports custom headers.
+	//featued posts
+	add_image_size( 'featured-slider-larger', 980, 400, true );
 
-	// The default header text color
-	define( 'HEADER_TEXTCOLOR', '000' );
-
-	// By leaving empty, we allow for random image rotation.
-	define( 'HEADER_IMAGE', '' );
-
-	// The height and width of your custom header used for site logo.
-	// Add a filter to catchbox_header_image_width and catchbox_header_image_height to change these values.
-	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'catchbox_header_image_width', 300 ) );
-	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'catchbox_header_image_height', 125 ) );
-
-	// We'll be using post thumbnails for custom header images for logos.
-	// We want them to be the size of the header image that we just defined
-	// Larger images will be auto-cropped to fit, smaller ones will be ignored. See header.php.
-	set_post_thumbnail_size( HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
-
-	// Add Catch Box's custom image sizes
-	add_image_size( 'featured-header', HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true ); // Used for logo (header) images
-
-	//disable old image size for featued posts add_image_size( 'featured-slider', 560, 270, true );
-	add_image_size( 'featured-slider', 644, 320, true ); // Used for featured posts if a large-feature doesn't exist
-
-	$custom_header_args = array(
-		// Header image random rotation default
-		'random-default'			=> false,
-		// Header image flex width
-		'flex-width'      			=> true,
-		// Header image flex height
-		'flex-height'				=> true,
-		// Template header style callback
-		'wp-head-callback'			=> 'catchbox_header_style'
-	);
-
-	if( !function_exists( 'has_custom_logo' ) ) {
-		$custom_header_args['width'] 	= 1000;
-		$custom_header_args['height'] = 400;
-	}
-
-
-	// Add support for custom header
-	add_theme_support( 'custom-header', $custom_header_args );
-
-	if( !function_exists( 'has_custom_logo' ) ) {
-		// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
-		register_default_headers( array(
-			'wheel' => array(
-				'url' => '%s/images/headers/garden.jpg',
-				'thumbnail_url' => '%s/images/headers/garden-thumbnail.jpg',
-				/* translators: header image description */
-				'description' => __( 'Garden', 'catch-box' )
-			),
-			'shore' => array(
-				'url' => '%s/images/headers/flower.jpg',
-				'thumbnail_url' => '%s/images/headers/flower-thumbnail.jpg',
-				/* translators: header image description */
-				'description' => __( 'Flower', 'catch-box' )
-			),
-			'trolley' => array(
-				'url' => '%s/images/headers/mountain.jpg',
-				'thumbnail_url' => '%s/images/headers/mountain-thumbnail.jpg',
-				/* translators: header image description */
-				'description' => __( 'Mountain', 'catch-box' )
-			),
-		) );
-	}
+	add_image_size( 'featured-slider', 640, 318, true ); // Used for featured posts if a large-feature doesn't exist
 
 	// Add support for custom backgrounds
 	add_theme_support( 'custom-background' );
@@ -338,6 +274,11 @@ function catchbox_logo_migrate() {
 			}
 		}
 
+		//Remove header image previously set as logo
+		set_theme_mod( 'header_image', '' );
+
+		set_theme_mod( 'header_image_data', array() );
+
   		// Update to match logo_version so that script is not executed continously
 		set_theme_mod( 'logo_version', '3.6' );
 	}
@@ -379,67 +320,6 @@ function catchbox_site_icon_migrate() {
 	}
 }
 add_action( 'after_setup_theme', 'catchbox_site_icon_migrate' );
-
-
-// Load up our theme options page and related code.
-require( get_template_directory() . '/inc/theme-options.php' );
-
-// Grab Catch Box's Adspace Widget.
-require( get_template_directory() . '/inc/widgets.php' );
-
-/**
- * Custom Menus
- */
-require get_template_directory() . '/inc/catchbox-menus.php';
-
-
-/**
- * Custom Metabox
- */
-require get_template_directory() . '/inc/catchbox-metabox.php';
-
-
-if ( ! function_exists( 'catchbox_header_style' ) ) :
-/**
- * Styles the header image and text displayed on the blog
- *
- * @since Catch Box 1.0
- */
-function catchbox_header_style() {
-
-	$text_color = get_header_textcolor();
-
-	// If no custom options for text are set, let's bail.
-	if ( $text_color == HEADER_TEXTCOLOR )
-		return;
-
-	// If we get this far, we have custom styles. Let's do this.
-	?>
-	<style type="text/css">
-	<?php
-		// Has the text been hidden?
-		if ( 'blank' == $text_color ) :
-	?>
-		#site-title,
-		#site-description {
-			position: absolute !important;
-			clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-			clip: rect(1px, 1px, 1px, 1px);
-		}
-	<?php
-
-		// If the user has set a custom color for the text use that
-		else :
-	?>
-		#site-title a,
-		#site-description {
-			color: #<?php echo get_header_textcolor(); ?>;
-		}
-	<?php endif; ?>
-	</style>
-	<?php
-}
-endif; // catchbox_header_style
 
 
 /**
@@ -498,60 +378,6 @@ function catchbox_custom_excerpt_more( $output ) {
 	return $output;
 }
 add_filter( 'get_the_excerpt', 'catchbox_custom_excerpt_more' );
-
-
-if ( ! function_exists( 'catchbox_widgets_init' ) ):
-/**
- * Register our sidebars and widgetized areas.
- *
- * @since Catch Box 1.0
- */
-function catchbox_widgets_init() {
-
-	register_widget( 'catchbox_adwidget' );
-
-	register_sidebar( array(
-		'name' => __( 'Main Sidebar', 'catch-box' ),
-		'id' => 'sidebar-1',
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget' => "</section>",
-		'before_title' => '<h2 class="widget-title">',
-		'after_title' => '</h2>',
-	) );
-
-	register_sidebar( array(
-		'name' => __( 'Footer Area One', 'catch-box' ),
-		'id' => 'sidebar-2',
-		'description' => __( 'An optional widget area for your site footer', 'catch-box' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name' => __( 'Footer Area Two', 'catch-box' ),
-		'id' => 'sidebar-3',
-		'description' => __( 'An optional widget area for your site footer', 'catch-box' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name' => __( 'Footer Area Three', 'catch-box' ),
-		'id' => 'sidebar-4',
-		'description' => __( 'An optional widget area for your site footer', 'catch-box' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-}
-endif; // catchbox_widgets_init
-
-add_action( 'widgets_init', 'catchbox_widgets_init' );
 
 
 if ( ! function_exists( 'catchbox_content_nav' ) ) :
@@ -839,107 +665,6 @@ function catchbox_posts_id_column_css() {
 	echo '<style type="text/css">#postid { width: 50px; }</style>';
 }
 add_action( 'admin_head-edit.php', 'catchbox_posts_id_column_css' );
-
-
-/**
- * Function to pass the variables for php to js file.
- * This funcition passes the slider effect variables.
- */
-function catchbox_pass_slider_value() {
-	$options = catchbox_get_theme_options();
-	if( !isset( $options[ 'transition_effect' ] ) ) {
-		$options[ 'transition_effect' ] = "fade";
-	}
-	if( !isset( $options[ 'transition_delay' ] ) ) {
-		$options[ 'transition_delay' ] = 4;
-	}
-	if( !isset( $options[ 'transition_duration' ] ) ) {
-		$options[ 'transition_duration' ] = 1;
-	}
-	$transition_effect = $options[ 'transition_effect' ];
-	$transition_delay = $options[ 'transition_delay' ] * 1000;
-	$transition_duration = $options[ 'transition_duration' ] * 1000;
-	wp_localize_script(
-		'catchbox_slider',
-		'js_value',
-		array(
-			'transition_effect' => $transition_effect,
-			'transition_delay' => $transition_delay,
-			'transition_duration' => $transition_duration
-		)
-	);
-}//catchbox_pass_slider_value
-
-
-if ( ! function_exists( 'catchbox_sliders' ) ) :
-/**
- * This function to display featured posts on index.php
- *
- * @get the data value from theme options
- * @displays on the index
- *
- * @useage Featured Image, Title and Content of Post
- *
- * @uses set_transient and delete_transient
- */
-function catchbox_sliders() {
-	global $post;
-
-	//delete_transient( 'catchbox_sliders' );
-
-	// get data value from catchbox_options_slider through theme options
-	$options = catchbox_get_theme_options();
-	// get slider_qty from theme options
-	if( !isset( $options['slider_qty'] ) || !is_numeric( $options['slider_qty'] ) ) {
-		$options[ 'slider_qty' ] = 4;
-	}
-
-	$postperpage = $options[ 'slider_qty' ];
-	if ( isset( $options[ 'featured_slider' ] ) ) {
-		//In customizer, all values are returned but with empty, this rectifies the issue in customizer
-		$slider_array = array_filter( $options[ 'featured_slider' ] );
-
-		if( ( !$catchbox_sliders = get_transient( 'catchbox_sliders' ) ) && !empty( $slider_array ) ) {
-			echo '<!-- refreshing cache -->';
-
-			$catchbox_sliders = '
-			<div id="slider">
-				<section id="slider-wrap">';
-				$get_featured_posts = new WP_Query( array(
-					'posts_per_page' => $postperpage,
-					'post__in'		 => $options[ 'featured_slider' ],
-					'orderby' 		 => 'post__in',
-					'ignore_sticky_posts' => 1 // ignore sticky posts
-				));
-
-				$i=0; while ( $get_featured_posts->have_posts()) : $get_featured_posts->the_post(); $i++;
-					$title_attribute = esc_attr( apply_filters( 'the_title', get_the_title( $post->ID ) ) );
-
-					if ( $i == 1 ) { $classes = "slides displayblock"; } else { $classes = "slides displaynone"; }
-					$catchbox_sliders .= '
-					<div class="'.$classes.'">
-						<a href="'. esc_url ( get_permalink() ).'" title="'.sprintf( esc_attr__( 'Permalink to %s', 'catch-box' ), the_title_attribute( 'echo=0' ) ).'" rel="bookmark">
-								'.get_the_post_thumbnail( $post->ID, 'featured-slider', array( 'title' => $title_attribute, 'alt' => $title_attribute, 'class'	=> 'pngfix' ) ).'
-						</a>
-						<div class="featured-text">'
-							.the_title( '<span class="slider-title">','</span>', false ).' <span class="sep">:</span>
-							<span class="slider-excerpt">'.get_the_excerpt().'</span>
-						</div><!-- .featured-text -->
-					</div> <!-- .slides -->';
-				endwhile; wp_reset_query();
-			$catchbox_sliders .= '
-				</section> <!-- .slider-wrap -->
-				<nav id="nav-slider">
-					<div class="nav-previous"><img class="pngfix" src="'.get_template_directory_uri().'/images/previous.png" alt="next slide"></div>
-					<div class="nav-next"><img class="pngfix" src="'.get_template_directory_uri().'/images/next.png" alt="next slide"></div>
-				</nav>
-			</div> <!-- #featured-slider -->';
-			set_transient( 'catchbox_sliders', $catchbox_sliders, 86940 );
-		}
-		echo $catchbox_sliders;
-	}
-}
-endif;  // catchbox_sliders
 
 
 if ( ! function_exists( 'catchbox_scripts_method' ) ):
@@ -1312,165 +1037,9 @@ endif; //catchbox_slider_display
 add_action('catchbox_content', 'catchbox_slider_display', 10);
 
 
-if ( ! function_exists( 'catchbox_header_image' ) ) :
-/**
- * Template for Header Image
- *
- * To override this in a child theme
- * simply create your own catchbox_header_image(), and that function will be used instead.
- *
- * @since Catch Box 2.5
- */
-function catchbox_header_image() {
-	// Check to see if the header image has been removed
-	$header_image = get_header_image();
-
-	// Check Logo
-	if ( function_exists( 'has_custom_logo' ) ) {
-		if ( has_custom_logo() ) {
-			echo '<div id="site-logo">'. get_custom_logo() . '</div><!-- #site-logo -->';
-		}
-	}
-	else if ( ! empty( $header_image ) ) : ?>
-
-    	<div id="site-logo">
-        	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-                <img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
-            </a>
-      	</div>
-
-	<?php endif; // end check for removed header image
-}
-endif;
-
-
-if ( ! function_exists( 'catchbox_header_details' ) ) :
-/**
- * Template for Header Details
- *
- * @since Catch Box 2.5
- */
-function catchbox_header_details() {
-	?>
-	<div id="hgroup" class="site-details">
-   		<h1 id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-       	<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-   	</div><!-- #hgroup -->
-
-<?php
-}
-endif;
-
-
-if ( ! function_exists( 'catchbox_main_header_image' ) ) :
-/**
- * Template for Header Image
- *
- * To override this in a child theme
- * simply create your own catchbox_main_header_image(), and that function will be used instead.
- *
- * @since Catch Box 4.4.2
- */
-function catchbox_main_header_image() {
-	// Check Logo
-	if ( !function_exists( 'has_custom_logo' ) ) {
-		//Bail if WP version is less than 4.5 as header image is used as logo in previous options
-		return;
-	}
-
-	$header_image = get_header_image();
-	if ( ! empty( $header_image ) ) : ?>
-    	<div id="site-header-image">
-        	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-                <img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
-            </a><!-- #site-logo -->
-      	</div>
-
-	<?php endif; // end check for removed header image
-}
-endif;
-
-
-if ( ! function_exists( 'catchbox_main_header_image_position' ) ) :
-/**
- * Set Header Image Position
- *
- * To override this in a child theme
- * simply create your own catchbox_main_header_image_position(), and that function will be used instead.
- *
- * @since Catch Box 4.4.2
- */
-function catchbox_main_header_image_position() {
-	// Getting data from Theme Options
-	$options  = catchbox_get_theme_options();
-	$position = isset( $options['header_image_position'] ) ? $options['header_image_position'] : 'above';
-
-	if ( 'above' == $position ) {
-		add_action( 'catchbox_before_headercontent', 'catchbox_main_header_image', 10 );
-	}
-	else if ( 'below' == $position ) {
-		add_action( 'catchbox_after_headercontent', 'catchbox_main_header_image', 10 );
-	}
-}
-endif;
-add_action( 'wp', 'catchbox_main_header_image_position' );
-
-
-if ( ! function_exists( 'catchbox_headerdetails' ) ) :
-/**
- * Header Details including Site Logo, Title and Description
- *
- * @since Catch Box 2.5
- */
-function catchbox_headerdetails() {
-
-	// Getting data from Theme Options
-	$options     = catchbox_get_theme_options();
-	$sitedetails = $options['site_title_above'];
-	$position    = isset( $options['header_image_position'] ) ? $options['header_image_position'] : 'above';
-
-	echo '<div class="logo-wrap clearfix">';
-
-	if ( $sitedetails == '0' ) {
-		echo catchbox_header_image();
-		if ( 'between' == $position ) {
-			catchbox_main_header_image();
-		}
-		echo catchbox_header_details();
-	} else {
-		echo catchbox_header_details();
-		if ( 'between' == $position ) {
-			catchbox_main_header_image();
-		}
-		echo catchbox_header_image();
-	}
-
-	echo '</div><!-- .logo-wrap -->';
-
-}
-endif; //catchbox_headerdetails
-
 // Loads Header Details in catchbox_headercontent hook
 add_action( 'catchbox_headercontent', 'catchbox_headerdetails', 10 );
 
-
-if ( ! function_exists( 'catchbox_header_search' ) ) :
-/**
- * Header Search Box
- *
- * @since Catch Box 2.5
- */
-function catchbox_header_search() {
-
-	// Getting data from Theme Options
-	$options = catchbox_get_theme_options();
-
-	if ( $options ['disable_header_search'] == 0 ) :
-    	get_search_form();
-    endif;
-
-}
-endif; //catchbox_header_search
 
 // Loads Header Search in catchbox_headercontent hook
 add_action( 'catchbox_headercontent', 'catchbox_header_search', 20 );
@@ -1546,8 +1115,154 @@ if ( ! function_exists( 'catchbox_skiptocontain' ) ) :
 endif; // catchbox_breadcrumb_display
 add_action( 'catchbox_before_header', 'catchbox_skiptocontain', 10 );
 
+/**
+ * Enqueue the styles for the current color scheme.
+ *
+ * @since Catch Box 1.0
+ */
+function catchbox_enqueue_color_scheme() {
+	$options = catchbox_get_theme_options();
+	$color_scheme = $options['color_scheme'];
+
+	if ( 'dark' == $color_scheme )
+		wp_enqueue_style( 'dark', get_template_directory_uri() . '/colors/dark.css', array( 'catchbox-style' ), null );
+	elseif ( 'blue' == $color_scheme )
+		wp_enqueue_style( 'blue', get_template_directory_uri() . '/colors/blue.css', array( 'catchbox-style' ), null );
+	elseif ( 'green' == $color_scheme )
+		wp_enqueue_style( 'green', get_template_directory_uri() . '/colors/green.css', array( 'catchbox-style' ), null );
+	elseif ( 'red' == $color_scheme )
+		wp_enqueue_style( 'red', get_template_directory_uri() . '/colors/red.css', array( 'catchbox-style' ), null );
+	elseif ( 'brown' == $color_scheme )
+		wp_enqueue_style( 'brown', get_template_directory_uri() . '/colors/brown.css', array( 'catchbox-style' ), null );
+	elseif ( 'orange' == $color_scheme )
+		wp_enqueue_style( 'orange', get_template_directory_uri() . '/colors/orange.css', array( 'catchbox-style' ), null );
+
+	do_action( 'catchbox_enqueue_color_scheme', $color_scheme );
+}
+add_action( 'wp_enqueue_scripts', 'catchbox_enqueue_color_scheme' );
 
 /**
- * Customizer Options
+ * Hooks the css to head section
+ *
+ * @since Catch Box 1.0
  */
-require( get_template_directory() . '/inc/customizer/customizer.php' );
+function catchbox_inline_css() {
+    $options = catchbox_get_theme_options();
+	if ( !empty( $options['custom_css'] ) ) {
+		echo '<!-- '.get_bloginfo('name').' Custom CSS Styles -->' . "\n";
+        echo '<style type="text/css" media="screen">' . "\n";
+		echo $options['custom_css'] . "\n";
+		echo '</style>' . "\n";
+	}
+}
+add_action('wp_head', 'catchbox_inline_css');
+
+/**
+ * Site Verification codes are hooked to wp_head if any value exists
+ */
+
+function catchbox_verification() {
+    $options = catchbox_get_theme_options();
+	//google
+    if (!empty( $options[ 'google_verification' ] ) ) {
+		echo '<meta name="google-site-verification" content="' . $options['google_verification'] . '" />' . "\n";
+	}
+
+	//bing
+	if (!empty( $options[ 'bing_verification' ] ) ) {
+        echo '<meta name="msvalidate.01" content="' . $options['bing_verification'] . '" />' . "\n";
+	}
+
+	//yahoo
+	if (!empty( $options[ 'yahoo_verification' ] ) ) {
+        echo '<meta name="y_key" content="' . $options['yahoo_verification'] . '" />' . "\n";
+	}
+
+	//site stats, analytics code
+	if (!empty( $options[ 'tracker_header' ] ) ) {
+        echo $options['tracker_header'];
+	}
+}
+
+add_action('wp_head', 'catchbox_verification');
+
+/**
+ * Analytic, site stat code hooked in footer
+ * @uses wp_footer
+ */
+function catchbox_site_stats() {
+    $options = catchbox_get_theme_options();
+    if (!empty( $options[ 'tracker_footer' ] ) ) {
+        echo $options['tracker_footer'];
+	}
+}
+
+add_action('wp_footer', 'catchbox_site_stats');
+
+/**
+ * Add a style block to the theme for the current link color.
+ *
+ * This function is attached to the wp_head action hook.
+ *
+ * @since Catch Box 1.0
+ */
+function catchbox_print_link_color_style() {
+	$options = catchbox_get_theme_options();
+	$link_color = $options['link_color'];
+
+	$default_options = catchbox_get_default_theme_options();
+
+	// Don't do anything if the current link color is the default.
+	if ( $default_options['link_color'] == $link_color )
+		return;
+?>
+	<style>
+		/* Link color */
+		a,
+		#site-title a:focus,
+		#site-title a:hover,
+		#site-title a:active,
+		.entry-title a:hover,
+		.entry-title a:focus,
+		.entry-title a:active,
+		.widget_catchbox_ephemera .comments-link a:hover,
+		section.recent-posts .other-recent-posts a[rel="bookmark"]:hover,
+		section.recent-posts .other-recent-posts .comments-link a:hover,
+		.format-image footer.entry-meta a:hover,
+		#site-generator a:hover {
+			color: <?php echo $link_color; ?>;
+		}
+		section.recent-posts .other-recent-posts .comments-link a:hover {
+			border-color: <?php echo $link_color; ?>;
+		}
+	</style>
+<?php
+}
+add_action( 'wp_head', 'catchbox_print_link_color_style' );
+
+// Load up our theme default options and related codes.
+require get_template_directory() . '/inc/default-options.php';
+
+// Load transients/cache fliushing functions
+require get_template_directory() . '/inc/invalidate-caches.php';
+
+// Load up our theme options page and related code.
+require get_template_directory() . '/inc/theme-options.php';
+
+//Custom Header
+require get_template_directory() . '/inc/custom-header.php';
+
+//Custom Menus
+require get_template_directory() . '/inc/catchbox-menus.php';
+
+//Custom Metabox
+require get_template_directory() . '/inc/catchbox-metabox.php';
+
+//Customizer Options
+require get_template_directory() . '/inc/customizer/customizer.php' ;
+
+// Load up Widgets and Sidebars
+require get_template_directory() . '/inc/widgets.php';
+
+// Load Catch Box Sliders
+require get_template_directory() . '/inc/catchbox-sliders.php';

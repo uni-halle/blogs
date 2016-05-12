@@ -9,12 +9,11 @@
 		<?php do_action( 'generate_before_content'); ?>
 		
 		<header class="entry-header">
+			<?php do_action( 'generate_before_entry_title'); ?>
 			<?php if ( generate_show_title() ) : ?>
 				<?php the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' ); ?>
 			<?php endif; ?>
-			<div class="entry-meta">
-				<?php generate_posted_on(); ?>
-			</div><!-- .entry-meta -->
+			<?php do_action( 'generate_after_entry_title'); ?>
 		</header><!-- .entry-header -->
 		
 		<?php do_action( 'generate_after_entry_header'); ?>
@@ -32,7 +31,6 @@
 		<footer class="entry-meta">
 			<?php generate_entry_meta(); ?>
 			<?php generate_content_nav( 'nav-below' ); ?>
-			<?php edit_post_link( __( 'Edit', 'generatepress' ), '<span class="edit-link">', '</span>' ); ?>
 		</footer><!-- .entry-meta -->
 		<?php do_action( 'generate_after_content'); ?>
 	</div><!-- .inside-article -->

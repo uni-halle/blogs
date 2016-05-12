@@ -10,7 +10,7 @@ Unless otherwise specified, all the theme files, scripts and images are licensed
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Catch Box WordPress Theme, Copyright 2012-2015 Catchthemes.com
+Catch Box WordPress Theme, Copyright 2012-2016 Catchthemes.com
 Catch Box is distributed under the terms of the GNU General Public License v3 
 
 Catch Box is a derivative of the Twenty Eleven theme by the WordPress team:
@@ -38,7 +38,7 @@ Added Translation for Brazilian Portuguese by Valdir Trombini ( Email: valdir.tr
 Added Translation for Spanish by César Gómez ( Email: cesar@temperatio.com )
 Added Translation for Danish by Kris Thomsen ( Email: mail@kristhomsen.dk )
 Added Translation for German by Heinz Peter Brinkmann
-Added Translation for French by  D'CLIC (Email: contact@dclic.info), Athéna G (Email: webmaster@athena.georgakelos.net) and Capronnier luc (Emil: lcapronnier@yahoo.com)
+Added Translation for French by  D'CLIC (Email: contact@dclic.info), Athéna G (Email: webmaster@athena.georgakelos.net) and Capronnier luc (Email: lcapronnier@yahoo.com)
 Added Translation for Polish by Piotr (Email: fansitepoprostugry@gmail.com)
 Added Translation for Czech by Marek Přidal (Email: m.pridal29@gmail.com)
 Added Translation for Croatian by Sanjin Barac (Email: rapid24income@gmail.com)

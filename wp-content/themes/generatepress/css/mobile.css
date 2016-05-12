@@ -21,14 +21,7 @@
 		right: 0;
 	}
 	
-	.main-title a {
-		font-size: 80%;
-	}
-	
-	.main-title {
-		line-height: 1em;
-	}
-	
+	/* Mobile navigation */
 	.menu-toggle,
 	.main-navigation.toggled .main-nav > ul {
 		display: block;
@@ -108,19 +101,6 @@
 		padding-right: 20px;
 	}
 	
-	.site-main {
-		margin-left: 0 !important;
-		margin-right: 0 !important;
-	}
-	
-	body:not(.no-sidebar) .site-main {
-		margin-bottom: 0 !important;
-	}
-	
-	.fluid-header .inside-header {
-		text-align: center;
-	}
-	
 	.menu-toggle {
 		text-align: center;
 	}
@@ -154,12 +134,6 @@
 		float: right;
 	}
 	
-	.header-widget {
-		float: none;
-		max-width: 100%;
-		text-align: center;
-	}
-	
 	.main-navigation {
 		text-align:left;
 	}
@@ -168,6 +142,32 @@
 	.navigation-search input {
 		width: 100%;
 		max-width: 100%;
+	}
+	
+	.sf-menu > li.menu-item-float-right {
+		float: none !important;
+		display: inline-block;
+	}
+	
+	/* end mobile navigation */
+	
+	.site-main {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+	
+	body:not(.no-sidebar) .site-main {
+		margin-bottom: 0 !important;
+	}
+	
+	.fluid-header .inside-header {
+		text-align: center;
+	}
+	
+	.header-widget {
+		float: none;
+		max-width: 100%;
+		text-align: center;
 	}
 	
 	.alignleft,
@@ -190,6 +190,11 @@
 		padding-right: 10px;
 	}
 	
+	.comment .children {
+		padding-left: 10px;
+		margin-left: 0;
+	}
+	
 	.edd_download {
 		display: block;
 		float: none !important;
@@ -208,7 +213,8 @@
 	
 	.woocommerce ul.products li.product, 
 	.woocommerce-page ul.products li.product {
-		width: 45%;
+		width: 100%;
+		float: none;
 	}
 	
 	/* Backwards compatibility until Slideout is updated */

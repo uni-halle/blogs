@@ -95,5 +95,4 @@ get_header(); ?>
     do_action( 'catchbox_after_primary' ); ?>    
 
 <?php get_sidebar(); ?>
-
 <?php get_footer(); ?>

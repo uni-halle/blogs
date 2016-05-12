@@ -31,6 +31,7 @@ if ( !function_exists('generate_get_default_fonts') && !function_exists('generat
 			'site_title_font_weight' => 'bold',
 			'site_title_font_transform' => 'none',
 			'site_title_font_size' => '45',
+			'mobile_site_title_font_size' => '30',
 			'font_site_tagline' => 'inherit',
 			'site_tagline_font_weight' => 'normal',
 			'site_tagline_font_transform' => 'none',
@@ -48,10 +49,12 @@ if ( !function_exists('generate_get_default_fonts') && !function_exists('generat
 			'heading_1_weight' => '300',
 			'heading_1_transform' => 'none',
 			'heading_1_font_size' => '40',
+			'mobile_heading_1_font_size' => '30',
 			'font_heading_2' => 'inherit',
 			'heading_2_weight' => '300',
 			'heading_2_transform' => 'none',
 			'heading_2_font_size' => '30',
+			'mobile_heading_2_font_size' => '25',
 			'font_heading_3' => 'inherit',
 			'heading_3_weight' => 'normal',
 			'heading_3_transform' => 'none',
@@ -195,7 +198,24 @@ if ( !function_exists('generate_get_default_fonts') && !function_exists('generat
 			if($elements_added > 0)
 				$output .= $temporary_output;
 		}
-
+		
+		$mobile = apply_filters( 'generate_mobile_breakpoint', '768px' );
+		$mobile_site_title = ( isset( $generate_settings[ 'mobile_site_title_font_size' ] ) ) ? $generate_settings[ 'mobile_site_title_font_size' ] : '30';
+		$mobile_h1 = ( isset( $generate_settings[ 'mobile_heading_1_font_size' ] ) ) ? $generate_settings[ 'mobile_heading_1_font_size' ] : '30';
+		$mobile_h2 = ( isset( $generate_settings[ 'mobile_heading_2_font_size' ] ) ) ? $generate_settings[ 'mobile_heading_2_font_size' ] : '25';
+		$output .= '@media (max-width:' . $mobile . ') {
+			.main-title {
+				font-size: ' . $mobile_site_title . 'px;
+			}
+			h1 {
+				font-size: ' . $mobile_h1 . 'px;
+			}
+			
+			h2 {
+				font-size: ' . $mobile_h2 . 'px;
+			}
+		}';
+		$output = str_replace(array("\r", "\n", "\t"), '', $output);
 		return $output;
 	}
 	

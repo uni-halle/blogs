@@ -84,7 +84,7 @@ function generate_show_de_meta_box( $post )
 		</label>
 		<?php if ( generate_addons_available() ) : ?>
 			<span style="display:block;padding-top:1em;border-top:1px solid #EFEFEF;">
-				<a href="<?php echo esc_url('http://generatepress.com/downloads/generate-disable-elements');?>" target="_blank"><?php _e( 'Add-on available', 'generatepress' ); ?></a>
+				<a href="<?php echo esc_url('https://generatepress.com/downloads/generate-disable-elements');?>" target="_blank"><?php _e( 'Add-on available', 'generatepress' ); ?></a>
 			</span>
 		<?php endif; ?>
 	</div>
@@ -106,16 +106,17 @@ function generate_save_de_meta( $post_id )
     $is_valid_nonce = ( isset( $_POST[ 'generate_de_nonce' ] ) && wp_verify_nonce( $_POST[ 'generate_de_nonce' ], basename( __FILE__ ) ) ) ? true : false;
  
     // Exits script depending on save status
-    if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
+    if ( $is_autosave || $is_revision || ! $is_valid_nonce ) {
         return;
     }
- 
-    // Checks for input and sanitizes/saves if needed
-	if( isset( $_POST[ '_generate-disable-headline' ] ) ) {
-		update_post_meta( $post_id, '_generate-disable-headline', 'true' );
-	} else {
-		update_post_meta( $post_id, '_generate-disable-headline', '' );
-	}
+	
+	$key   = '_generate-disable-headline';
+	$value = filter_input( INPUT_POST, $key, FILTER_SANITIZE_STRING );
+
+	if ( $value )
+		update_post_meta( $post_id, $key, $value );
+	else
+		delete_post_meta( $post_id, $key );
 }  
 endif;
 
@@ -134,7 +135,7 @@ function generate_disable_title()
 	$disable_headline = ( isset( $post ) ) ? get_post_meta( $post->ID, '_generate-disable-headline', true ) : '';
 	
 	// If our option is set, disable the title
-	if ( !empty( $disable_headline ) && false !== $disable_headline ) :
+	if ( ! empty( $disable_headline ) && false !== $disable_headline ) :
 		return false;
 	endif;
 	

@@ -90,26 +90,29 @@ function generate_customize_register( $wp_customize ) {
 		)
 	);
 	
-	$wp_customize->add_setting( 
-		'generate_settings[logo]', 
-		array(
-			'default' => $defaults['logo'],
-			'type' => 'option',
-			'sanitize_callback' => 'esc_url_raw'
-		)
-	);
- 
-	$wp_customize->add_control(
-		new WP_Customize_Image_Control(
-			$wp_customize,
-			'generate_settings[logo]',
+	// Only show this option if we're not using WordPress 4.5
+	if ( ! function_exists( 'the_custom_logo' ) ) {
+		$wp_customize->add_setting( 
+			'generate_settings[logo]', 
 			array(
-				'label' => __('Logo','generatepress'),
-				'section' => 'title_tagline',
-				'settings' => 'generate_settings[logo]'
+				'default' => $defaults['logo'],
+				'type' => 'option',
+				'sanitize_callback' => 'esc_url_raw'
 			)
-		)
-	);
+		);
+	 
+		$wp_customize->add_control(
+			new WP_Customize_Image_Control(
+				$wp_customize,
+				'generate_settings[logo]',
+				array(
+					'label' => __('Logo','generatepress'),
+					'section' => 'title_tagline',
+					'settings' => 'generate_settings[logo]'
+				)
+			)
+		);
+	}
 	
 	if ( class_exists( 'WP_Customize_Panel' ) ) :
 		if ( ! $wp_customize->get_panel( 'generate_colors_panel' ) ) {
