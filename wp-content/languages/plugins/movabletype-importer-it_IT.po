@@ -1,0 +1,126 @@
+# Translation of Stable (latest release) in Italian
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-08-01 21:16:15+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#. Author of the plugin/theme
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"
+
+#: movabletype-importer.php:481
+msgid "All done. <a href=\"%s\">Have fun!</a>"
+msgstr "Tutto fatto. <a href=\"%s\">Divertiti!</a>"
+
+#: movabletype-importer.php:209
+msgid "Below, you can see the names of the authors of the Movable Type posts in <em>italics</em>. For each of these names, you can either pick an author in your WordPress installation from the menu, or enter a name for the author in the textbox."
+msgstr "Qui sotto è possibile vedere i nomi degli autori degli articoli Movable Type in <em>corsivo</em>. Per ciascuno di questi nomi, è possibile scegliere un autore nella prpria installazione di WordPress dal menu oppure inserire un nome per l'autore nella casella di testo."
+
+#: movabletype-importer.php:55
+msgid "Howdy! We are about to begin importing all of your Movable Type or TypePad entries into WordPress. To begin, either choose a file to upload and click &#8220;Upload file and import&#8221;, or use FTP to upload your MT export file as <code>mt-export.txt</code> in your <code>/wp-content/</code> directory and then click &#8220;Import mt-export.txt&#8221;."
+msgstr "Stiamo per iniziare ad importare tutte le voci di Movable Type o TypePad dentro WordPress. Per iniziare, è possibile selezionare un file da caricare e fare clic &#8220;Carica file&#8221; oppure utilizzare FTP per caricare il proprio file di esportazione di MT tipo <code>mt-export.txt </code> nella propria directory <code>/wp-content/ </code> e quindi fare clic su &#8220;Importa mt-export.txt&#8221;."
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/movabletype-importer/"
+msgstr "http://wordpress.org/extend/plugins/movabletype-importer/"
+
+#. Plugin Name of the plugin/theme
+msgid "Movable Type and TypePad Importer"
+msgstr "Importatore Movable Type e TypePad"
+
+#: movabletype-importer.php:281
+msgid "Adding tags <em>%s</em>..."
+msgstr "Aggiunta tag <em>%s</em>..."
+
+#: movabletype-importer.php:242
+msgid "Sorry, there has been an error"
+msgstr "Si è verificato un errore"
+
+#: movabletype-importer.php:300
+msgid "(%s comment)"
+msgid_plural "(%s comments)"
+msgstr[0] "(%s commento)"
+msgstr[1] "(%s commenti)"
+
+#: movabletype-importer.php:317
+msgid "(%s ping)"
+msgid_plural "(%s pings)"
+msgstr[0] "(%s ping)"
+msgstr[1] "(%s ping)"
+
+#: movabletype-importer.php:527
+msgid "Movable Type and TypePad"
+msgstr "Movable Type e TypePad"
+
+#. #-#-#-#-#  tmp-movabletype-importer.pot (Movable Type and TypePad Importer
+#. 0.4)  #-#-#-#-#
+#. Description of the plugin/theme
+#: movabletype-importer.php:527
+msgid "Import posts and comments from a Movable Type or TypePad blog."
+msgstr "Importa articoli e commenti da un blog Movable Type o TypePad."
+
+#: movabletype-importer.php:77
+msgid "&mdash; Select &mdash;"
+msgstr "&mdash; Seleziona &mdash;"
+
+#: movabletype-importer.php:210
+msgid "If a new user is created by WordPress, a password will be randomly generated. Manually change the user&#8217;s details if necessary."
+msgstr "Se viene creato un nuovo utente in WordPress, verrà generata una password casuale. Se necessario cambiare i dettagli utente manualmente."
+
+#: movabletype-importer.php:221
+msgid "Current author:"
+msgstr "Autore corrente:"
+
+#: movabletype-importer.php:221
+msgid "Create user %1$s or map to existing"
+msgstr "Creazione utente %1$s o collegamento a un utente esistente"
+
+#: movabletype-importer.php:226
+msgid "Submit"
+msgstr "Invia"
+
+#: movabletype-importer.php:236
+msgid "<code>mt-export.txt</code> does not exist"
+msgstr "<code>mt-export.txt</code> non esiste"
+
+#: movabletype-importer.php:207
+msgid "Assign Authors"
+msgstr "Assegna autori"
+
+#: movabletype-importer.php:208
+msgid "To make it easier for you to edit and save the imported posts and drafts, you may want to change the name of the author of the posts. For example, you may want to import all the entries as admin&#8217;s entries."
+msgstr "Per facilitare la modifica e il salvataggio degli articoli e delle bozze importate, si potrebbe voler cambiare il nome dell'autore degli articoli. Ad esempio, si potrebbe voler importare tutti gli articoli come articoli di proprietà dell&#8217amministratore (admin)."
+
+#: movabletype-importer.php:68
+msgid "The importer is smart enough not to import duplicates, so you can run this multiple times without worry if&#8212;for whatever reason&#8212;it doesn&#8217;t finish. If you get an <strong>out of memory</strong> error try splitting up the import file into pieces."
+msgstr "L'utilità di importazione riesce non importare eventuali duplicati, in tal modo è possibile eseguirla più volte senza preoccupazioni se per qualsiasi motivo la prima volta non dovesse arrivare al termine. Se si verifica un errore <strong>out of memory</strong>, provare a suddividere il file da importare in più parti."
+
+#: movabletype-importer.php:65
+msgid "Import mt-export.txt"
+msgstr "Importa mt-export.txt"
+
+#: movabletype-importer.php:63
+msgid "Or use <code>mt-export.txt</code> in your <code>/wp-content/</code> directory"
+msgstr "Oppure utilizzare il file <code>mt-export.txt</code> presente nella directory <code>/wp-content/</code>"
+
+#: movabletype-importer.php:44
+msgid "Import Movable Type or TypePad"
+msgstr "Importa da Movable Type o TypePad"
+
+#: movabletype-importer.php:260
+msgid "Post <em>%s</em> already exists."
+msgstr "L'articolo <em>%s</em> è già esistente."
+
+#: movabletype-importer.php:263
+msgid "Importing post <em>%s</em>..."
+msgstr "Importazione dell'articolo <em>%s</em>..."

@@ -1,0 +1,318 @@
+# Translation of Adaption in German
+# This file is distributed under the same license as the Adaption package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-03-30 07:59:28+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/1.1.0-alpha\n"
+"Project-Id-Version: Adaption\n"
+
+#. Theme Name of the plugin/theme
+msgid "Adaption"
+msgstr "Adaption"
+
+#. Description of the plugin/theme
+msgid "A theme that adapts to your content, making sure it looks good on any device. Full width featured images make your content stand out. This theme adapts as add widgets with a 3rd column added to the layout."
+msgstr "Ein Theme, das sich an Ihren Inhalt so anpasst, dass er auf jedem Endgerät gut aussieht. Durch Beitragsbilder in voller Breite hebt sich Ihr Inhalt von anderen ab. Zusätzlich können Sie das Layout durch eine dritte Spalte anpassen, die Platz für Widgets bietet."
+
+#: inc/template-tags.php:158
+msgid "<span class=\"posted-on\">Posted on %1$s</span>"
+msgstr "<span class=\"posted-on\">Veröffentlicht am %1$s</span> "
+
+#: search.php:16
+msgid "Search Results for: %s"
+msgstr "Suchergebnisse für: %s"
+
+#: inc/template-tags.php:102
+msgid "%s "
+msgstr "%s "
+
+#: inc/template-tags.php:106
+msgctxt "1: date, 2: time"
+msgid ", %1$s at %2$s"
+msgstr ", %1$s um %2$s "
+
+#: inc/template-tags.php:109
+msgid " (Edit)"
+msgstr "(Bearbeiten)"
+
+#: inc/template-tags.php:147
+msgid "<span class=\"posted-on\">Posted on %1$s</span><span class=\"byline\"> by %2$s</span>"
+msgstr "<span class=\"posted-on\">Veröffentlicht am %1$s</span><span class=\"byline\"> von %2$s</span>"
+
+#: inc/template-tags.php:99
+msgid "Your comment is awaiting moderation."
+msgstr "Ihr Kommentar wartet auf Freischaltung."
+
+#: inc/template-tags.php:82
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: inc/template-tags.php:60
+msgctxt "Next post link"
+msgid "%title <span class=\"meta-nav\">&rarr;</span>"
+msgstr "%title <span class=\"meta-nav\">&rarr;</span>"
+
+#: inc/template-tags.php:59
+msgctxt "Previous post link"
+msgid "<span class=\"meta-nav\">&larr;</span> %title"
+msgstr "<span class=\"meta-nav\">&larr;</span> %title"
+
+#: inc/template-tags.php:56
+msgid "Post navigation"
+msgstr "Beitrags-Navigation"
+
+#: inc/template-tags.php:31
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Neuere Beiträge <span class=\"meta-nav\">&rarr;</span>"
+
+#: inc/template-tags.php:27
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Ältere Beiträge"
+
+#: inc/extras.php:116
+msgid "Read more <span class=\"screen-reader-text\">%1s</span>"
+msgstr "Weiterlesen <span class=\"screen-reader-text\">%1s</span>"
+
+#: inc/template-tags.php:23
+msgid "Posts navigation"
+msgstr "Beitrags-Navigation"
+
+#: inc/extras.php:66
+msgid "Page %s"
+msgstr "Seite %s"
+
+#: functions.php:72
+msgid "Sidebar One"
+msgstr "Seitenleiste 1 "
+
+#: functions.php:81
+msgid "Sidebar Two"
+msgstr "Seitenleiste 2"
+
+#: functions.php:90
+msgid "Mobile Widgets"
+msgstr "Mobile Widgets"
+
+#. translators: If there are characters in your language that are not supported
+#. by Arimo, translate this to 'off'. Do not translate into your own
+#. language.
+#: functions.php:113
+msgctxt "Arimo sans-serif font: on or off"
+msgid "on"
+msgstr "on"
+
+#. translators: To add an additional Armio character subsets, translate this to
+#. 'greek', 'cyrillic' or 'vietnamese'. Do not translate these strings into
+#. your own langauge.
+#: functions.php:121
+msgctxt "Arimo: add new subset (cyrillic, greek, vietnamese)"
+msgid "no-subset"
+msgstr "no-subset"
+
+#: header.php:38 header.php:93
+msgid "Skip to content"
+msgstr "Zum Inhalt springen"
+
+#: functions.php:44
+msgid "Social Links Menu"
+msgstr "Social-Links-Menü"
+
+#: footer.php:18
+msgid "Theme: %1$s by %2$s."
+msgstr "Theme: %1$s von %2$s."
+
+#: functions.php:43
+msgid "Primary Menu"
+msgstr "Primäres Menü"
+
+#: footer.php:16
+msgid "Proudly powered by %s"
+msgstr "Stolz präsentiert von %s"
+
+#: content.php:69
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Weiterlesen <span class=\"meta-nav\">&rarr;</span>"
+
+#: content.php:22
+msgid "% Comments"
+msgstr "% Kommentare"
+
+#: content.php:22
+msgid "1 Comment"
+msgstr "1 Kommentar"
+
+#: content-single.php:32 content.php:40
+msgid "All %s posts"
+msgstr "Alle %s Beiträge"
+
+#: content-single.php:38
+msgid " Edit"
+msgstr "Bearbeiten"
+
+#. translators: used between list items, there is a space after the comma
+#: content-single.php:60 content.php:82
+msgid " "
+msgstr " "
+
+#: content-single.php:66 content.php:87
+msgid "%1$s"
+msgstr "%1$s"
+
+#: content.php:22
+msgid "Leave a comment"
+msgstr "Schreiben Sie einen Kommentar"
+
+#. translators: used between list items, there is a space after the comma
+#: content-single.php:24 content.php:30
+msgid ", "
+msgstr ", "
+
+#: content-single.php:13 content.php:13
+msgid "Permalink to %s"
+msgstr "Permanentlink zu %s"
+
+#: content-page.php:23 inc/template-tags.php:82
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: content-page.php:18 content-single.php:52 content.php:72
+msgid "Pages:"
+msgstr "Seiten:"
+
+#: content-none.php:28
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Es sieht so aus, als ob wir nicht das finden konnten, wonach Sie gesucht haben. Möglicherweise hilft die Suchfunktion."
+
+#: content-none.php:23
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Entschuldigung, aber zu Ihren Suchbegriffen wurde nichts passendes gefunden. Bitte versuchen Sie es mit anderen Stichworten noch einmal."
+
+#: content-none.php:19
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Bereit, um Ihren ersten Beitrag zu veröffentlichen? <a href=\"%1$s\">Starten Sie hier </a>."
+
+#: content-none.php:13
+msgid "Nothing Found"
+msgstr "Es konnte nichts gefunden werden."
+
+#: comments.php:63
+msgid "Comments are closed."
+msgstr "Kommentare sind geschlossen."
+
+#: comments.php:39 comments.php:53
+msgid "Newer Comments &rarr;"
+msgstr "Neuere Kommentare &rarr;"
+
+#: comments.php:38 comments.php:52
+msgid "&larr; Older Comments"
+msgstr "&larr; Ältere Kommentare"
+
+#: comments.php:37 comments.php:51
+msgid "Comment navigation"
+msgstr "Kommentar-Navigation"
+
+#: comments.php:30
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "Ein Gedanke zu &bdquo;%2$s&ldquo;"
+msgstr[1] "%1$s Gedanken zu &bdquo;%2$s&ldquo;"
+
+#: archive.php:66
+msgid "Archives"
+msgstr "Archive"
+
+#: archive.php:63
+msgid "Chats"
+msgstr "Unterhaltungen"
+
+#: archive.php:60
+msgid "Audios"
+msgstr "Audios"
+
+#: archive.php:57
+msgid "Statuses"
+msgstr "Status"
+
+#: archive.php:54
+msgid "Links"
+msgstr "Links"
+
+#: archive.php:51
+msgid "Quotes"
+msgstr "Zitate"
+
+#: archive.php:48
+msgid "Videos"
+msgstr "Videos"
+
+#: archive.php:45
+msgid "Images"
+msgstr "Bilder"
+
+#: archive.php:42
+msgid "Galleries"
+msgstr "Galerien"
+
+#: archive.php:39
+msgid "Asides"
+msgstr "Kurzmitteilungen"
+
+#: archive.php:36
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y"
+
+#: archive.php:36
+msgid "Year: %s"
+msgstr "Jahr: %s"
+
+#: archive.php:33
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "F Y"
+
+#: archive.php:33
+msgid "Month: %s"
+msgstr "Monat: %s"
+
+#: archive.php:30
+msgid "Day: %s"
+msgstr "Tag: %s"
+
+#: archive.php:27
+msgid "Author: %s"
+msgstr "Autor: %s"
+
+#. translators: %1$s: smiley
+#: 404.php:44
+msgid "Try looking in the monthly archives. %1$s"
+msgstr "Versuchen Sie es mit einem Blick in die monatlichen Archive. %1$s"
+
+#: 404.php:27
+msgid "Most Used Categories"
+msgstr "Oft verwendete Kategorien"
+
+#: 404.php:19
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr "Es sieht so aus, als ob wir nicht das finden konnten, wonach Sie gesucht haben. Möglicherweise hilft Ihnen die Suchfunktion. "
+
+#: 404.php:15
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Diese Seite konnte leider nicht gefunden werden."
+
+#. Author URI of the plugin/theme
+msgid "http://themes.wordpress.com/"
+msgstr "http://themes.wordpress.com/"
+
+#. Theme URI of the plugin/theme
+msgid "https://wordpress.com/themes/adaption/"
+msgstr "https://wordpress.com/themes/adaption/"
+
+#. Author of the plugin/theme
+msgid "Automattic"
+msgstr "Automattic"

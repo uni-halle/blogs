@@ -1,0 +1,3391 @@
+# Translation of Stable (latest release) in Italian
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-09-16 09:22:01+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#: inc/options/class-wpseo-option-xml.php:166
+msgid "\"Max entries per sitemap page\" should be a positive number, which %s is not. Please correct."
+msgstr "\"Numero massimo di voci per pagina di sitemap\" dovrebbe essere un numero positivo, mentre %s non lo è. Per favore correggere."
+
+#. translators: %1$s expands to the option name and %2$sexpands to Yoast SEO
+#: inc/options/class-wpseo-option-ms.php:153
+msgid "%1$s is not a valid choice for who should be allowed access to the %2$s settings. Value reset to the default."
+msgstr "%1$snon è una scelta valida per chi dovrebbe essere autorizzato ad accedere alle impostazioni  di %2$s. Valori ripristinati al default."
+
+#: inc/options/class-wpseo-option-titles.php:212
+msgid "%s Archive"
+msgstr "Archivi %s"
+
+#: vendor/yoast/license-manager/class-theme-license-manager.php:34
+#: vendor/yoast/license-manager/samples/sample-plugin.php:53
+msgid "%s License"
+msgstr "Licenza %s"
+
+#: inc/options/class-wpseo-option.php:296
+msgid "%s does not seem to be a valid %s verification string. Please correct."
+msgstr "%s non sembra essere una string di verifica valida %s. Per favore correggere."
+
+#: inc/options/class-wpseo-option-social.php:240
+msgid "%s does not seem to be a valid Twitter user-id. Please correct."
+msgstr "%s non sembra essere uno user-id valido di Twitter. Per favore correggere."
+
+#: inc/options/class-wpseo-option.php:331
+msgid "%s does not seem to be a valid url. Please correct."
+msgstr "%s non sembra essere una url valida. Per favore correggere."
+
+#: vendor/yoast/license-manager/class-update-manager.php:83
+msgid "%s failed to check for updates because of the following error: <em>%s</em>"
+msgstr "%s ha fallito il controllo sugli aggiornamenti a causa del seguente errore: <em>%s</em>"
+
+#: vendor/yoast/license-manager/class-plugin-license-manager.php:75
+msgid "%s is network activated, please contact your site administrator to manage the license."
+msgstr "%s è attivato come network, contatta l'amministratore del sito per gestire la licenza."
+
+#: vendor/yoast/license-manager/class-plugin-license-manager.php:73
+msgid "%s is network activated, you can manage your license in the <a href=\"%s\">network admin license page</a>."
+msgstr "%s è attivato per un network, puoi gestire la tua licenza nella <a href=\"%s\">pagina gestione licenza network</a>."
+
+#: inc/options/class-wpseo-option-titles.php:178
+msgid "%s, Author at %s"
+msgstr "%s, Autore a %s"
+
+#: vendor/yoast/license-manager/class-license-manager.php:430
+msgid "%s: License Settings"
+msgstr "%s: impostazioni licenza"
+
+#: vendor/yoast/license-manager/views/form.php:84
+msgid "%sRenew your license now%s."
+msgstr "%sRinnova la tua licenza adesso%s."
+
+#: vendor/yoast/license-manager/views/form.php:46
+msgid "(deactivate your license so you can activate it on another WordPress site)"
+msgstr "(disattiva la tua licenza così potrai riattivarla in un altro sito Wordpress)"
+
+#: vendor/yoast/license-manager/class-license-manager.php:190
+msgid "<a href=\"%s\">Did you know you can upgrade your license?</a>"
+msgstr "<a href=\"%s\">Sapevi che è possibile fare un upgrade della tua licenza?</a>"
+
+#: vendor/yoast/license-manager/class-license-manager.php:194
+msgid "<a href=\"%s\">Your license is expiring in %d days, would you like to extend it?</a>"
+msgstr "<a href=\"%s\">La tua licenza scadrà fra %d giorni, desideri estenderla?</a>"
+
+#: vendor/yoast/license-manager/class-license-manager.php:138
+msgid "<b>Warning!</b> You're blocking external requests which means you won't be able to get %s updates. Please add %s to %s."
+msgstr "<b>Attenzione!</b> stai bloccando le richieste esterne il che significa che non potrai ottenere gli aggiornamenti %s. Aggiungi %s a %s."
+
+#: vendor/yoast/license-manager/class-theme-update-manager.php:101
+msgid "<strong>%s version %s</strong> is available. <a href=\"%s\" class=\"thickbox\" title=\"%s\">Check out what's new</a> or <a href=\"%s\" %s>update now</a>."
+msgstr "<strong>La %s versione %s</strong> è disponibile. <a href=\"%s\" class=\"thickbox\" title=\"%s\">Controlla che c'è di nuovo</a> oppure <a href=\"%s\" %s>aggiorna adesso</a>."
+
+#: vendor/yoast/license-manager/views/form.php:50
+msgid "Activate License"
+msgstr "Attiva Licenza"
+
+#: wp-seo-main.php:424
+msgid "Activation failed:"
+msgstr "Attivazione non riuscita:"
+
+#: inc/wpseo-non-ajax-functions.php:273
+msgid "AdWords External"
+msgstr "AdWords External"
+
+#: inc/wpseo-non-ajax-functions.php:571
+msgid "All-In-One-SEO has been deactivated"
+msgstr "All-In-One-SEO è stato disabilitato"
+
+#: inc/wpseo-non-ajax-functions.php:299
+msgid "Analyze this page"
+msgstr "Analizza questa pagina"
+
+#: inc/options/class-wpseo-option-internallinks.php:69
+msgid "Archives for"
+msgstr "Archivi per"
+
+#: vendor/yoast/i18n-module/i18n-module.php:170
+msgid "As you can see, there is a translation of this plugin in %1$s. This translation is currently %3$d%% complete. We need your help to make it complete and to fix any errors. Please register at %4$s to help complete the translation to %1$s!"
+msgstr "Come potete vedere, c'è una traduzione di questo plugin in %1$s. Questa traduzione è attualmente completa al %3$d%%. Abbiamo bisogno del vostro aiuto per completarla e per correggere eventuali errori. Registratevi presso %4$s per aiutare a completare la traduzione in %1$s!"
+
+#: inc/class-wpseo-utils.php:223
+msgid "Bad"
+msgstr "Pessimo"
+
+#: inc/wpseo-non-ajax-functions.php:361
+msgid "CSS Validator"
+msgstr "Validazione CSS"
+
+#: inc/wpseo-non-ajax-functions.php:319
+msgid "Check Google Cache"
+msgstr "Controlla la Cache di Google"
+
+#: inc/wpseo-non-ajax-functions.php:326
+msgid "Check Headers"
+msgstr "Controlla gli headers"
+
+#: inc/wpseo-non-ajax-functions.php:305
+msgid "Check Inlinks (OSE)"
+msgstr "Controlla i backlinks (OSE)"
+
+#: inc/wpseo-non-ajax-functions.php:312
+msgid "Check Keyword Density"
+msgstr "Controlla densit&agrave; di parole chiave"
+
+#: inc/wpseo-non-ajax-functions.php:333
+msgid "Check Rich Snippets"
+msgstr "Spunta Rich Snippets"
+
+#: vendor/yoast/license-manager/views/form.php:45
+msgid "Deactivate License"
+msgstr "Disattiva Licenza"
+
+#: inc/options/class-wpseo-option-internallinks.php:68
+msgid "Error 404: Page not found"
+msgstr "Errore 404: Pagina non trovata"
+
+#: inc/wpseo-non-ajax-functions.php:340
+msgid "Facebook Debugger"
+msgstr "Debugger Facebook"
+
+#: vendor/yoast/license-manager/class-license-manager.php:209
+msgid "Failed to activate your license, your license key seems to be invalid."
+msgstr "Fallita l'attivazione della tua licenza, sembra che la chiave della licenza sia invalida."
+
+#: vendor/yoast/license-manager/class-license-manager.php:235
+msgid "Failed to deactivate your %s license."
+msgstr "Fallita la disattivazione della tua licenza %s."
+
+#: inc/class-wpseo-utils.php:219
+msgid "Good"
+msgstr "Buono"
+
+#: inc/wpseo-non-ajax-functions.php:280
+msgid "Google Insights"
+msgstr "Google Insights"
+
+#: inc/wpseo-non-ajax-functions.php:368
+msgid "Google Page Speed Test"
+msgstr "Test Google Page Speed"
+
+#: inc/wpseo-non-ajax-functions.php:354
+msgid "HTML Validator"
+msgstr "Validazione HTML"
+
+#: inc/options/class-wpseo-option-internallinks.php:70
+msgid "Home"
+msgstr "Home"
+
+#: inc/wpseo-non-ajax-functions.php:267
+msgid "Keyword Research"
+msgstr "Ricerca Parole chiave"
+
+#: vendor/yoast/license-manager/views/form.php:60
+msgid "License Key"
+msgstr "Chiave Licenza"
+
+#: vendor/yoast/license-manager/views/form.php:31
+msgid "License status"
+msgstr "Stato della licenza"
+
+#: inc/wpseo-non-ajax-functions.php:382
+msgid "Mobile-Friendly Test"
+msgstr "Test Mobile-Friendly"
+
+#: inc/wpseo-non-ajax-functions.php:375
+msgid "Modern IE Site Scan"
+msgstr "Sito Modern IE "
+
+#: inc/class-wpseo-utils.php:203
+msgid "N/A"
+msgstr "N/D"
+
+#: inc/options/class-wpseo-option-ms.php:183
+msgid "No numeric value was received."
+msgstr "Nessun valore numerico inserito."
+
+#: vendor/yoast/license-manager/views/form.php:62
+msgid "Paste your %s license key here.."
+msgstr "Incolla qui il codice licenza %s."
+
+#: inc/wpseo-non-ajax-functions.php:347
+msgid "Pinterest Rich Pins Validator"
+msgstr "Validatore dei Pin Dettagliati di Pinterest"
+
+#: vendor/yoast/license-manager/views/form.php:52
+msgid "Please enter a license key in the field below first."
+msgstr "Prego inserire un codice licenza nel campo sottostante."
+
+#: inc/options/class-wpseo-option-internallinks.php:204
+msgid "Please select a valid post type for taxonomy \"%s\""
+msgstr "Prego selezionare un tipo valido di articolo per la tassonomia \"%s\""
+
+#: inc/options/class-wpseo-option-internallinks.php:165
+msgid "Please select a valid taxonomy for post type \"%s\""
+msgstr "Per favore selezionare una tassonomia valida per i post di tipo \"%s\""
+
+#: inc/class-wpseo-utils.php:208
+msgid "Poor"
+msgstr "Scarso"
+
+#: vendor/yoast/i18n-module/i18n-module.php:199
+msgid "Register now &raquo;"
+msgstr "Registrati ora &raquo;"
+
+#: vendor/yoast/license-manager/class-license-manager.php:271
+msgid "Request error: \"%s\" (%scommon license notices%s)"
+msgstr "Errore nella richiesta: \"%s\" (%scommon license notices%s)"
+
+#: inc/wpseo-non-ajax-functions.php:590
+msgid "Robots-Meta has been deactivated"
+msgstr "Robots-Meta è stato disabilitato"
+
+#: inc/wpseo-non-ajax-functions.php:287
+msgid "SEO Book"
+msgstr "SEO Book"
+
+#: inc/wpseo-non-ajax-functions.php:401
+msgid "SEO Settings"
+msgstr "Impostazioni SEO"
+
+#: inc/options/class-wpseo-option-social.php:103
+msgid "Summary"
+msgstr "Sommario"
+
+#: inc/options/class-wpseo-option-social.php:104
+msgid "Summary with large image"
+msgstr "Sommario con immagini grandi"
+
+#. Author of the plugin/theme
+msgid "Team Yoast"
+msgstr "Team Yoast"
+
+#. translators: %1$s expands to Yoast SEO, %2$s / %3$s: links to the
+#. installation manual in the Readme for the Yoast SEO code repository on
+#. GitHub
+#: wp-seo-main.php:390
+msgid "The %1$s plugin installation is incomplete. Please refer to %2$sinstallation instructions%3$s."
+msgstr "L'installazione del plugin  %1$s è incompleta. Fare riferimento alle  %2$sistruzioni per l'installazione%3$s."
+
+#: wp-seo-main.php:368
+msgid "The Standard PHP Library (SPL) extension seem to be unavailable. Please ask your web host to enable it."
+msgstr "L'estensione Standard PHP Library (SPL) non pare disponibile. Richiedi al tuo host di abilitarla."
+
+#: inc/options/class-wpseo-option-ms.php:173
+#: inc/options/class-wpseo-option-ms.php:183
+msgid "The default blog setting must be the numeric blog id of the blog you want to use as default."
+msgstr "L'impostazione di default del blog deve essere l'id numerico del blog che vuoi usare come default."
+
+#: wp-seo-main.php:414
+msgid "The filter extension seem to be unavailable. Please ask your web host to enable it."
+msgstr "L'estensione del filtro sembra non essere disponibile. Suggeriamo di richiedere l'abilitazione al proprio gestore hosting."
+
+#. Description of the plugin/theme
+msgid "The first true all-in-one SEO solution for WordPress, including on-page content analysis, XML sitemaps and much more."
+msgstr "La prima vera soluzione SEO tutto-in-uno per WordPress, comprendente una singola pagina di analisi dei contenuti, sitemap XML e molto altro."
+
+#: inc/wpseo-non-ajax-functions.php:562
+msgid "The plugin All-In-One-SEO has been detected. Do you want to %simport its settings%s?"
+msgstr "È stato rilevato il plugin All-In-One-SEO. Desideri %simport le sue impostazioni%s?"
+
+#: inc/wpseo-non-ajax-functions.php:581
+msgid "The plugin Robots-Meta has been detected. Do you want to %simport its settings%s."
+msgstr "Il plugin Robots-Meta è stato rilevato. Vuoi %simportare le impostazioni%s."
+
+#: inc/options/class-wpseo-option-rss.php:47
+msgid "The post %s appeared first on %s."
+msgstr "L'articolo %s sembra essere il primo su %s."
+
+#: vendor/yoast/license-manager/class-theme-license-manager.php:34
+msgid "Theme License"
+msgstr "Licenza del tema"
+
+#: inc/options/class-wpseo-option-ms.php:173
+msgid "This must be an existing blog. Blog %s does not exist or has been marked as deleted."
+msgstr "Questo deve essere un blog esistente. Il blog %s non esiste o è stato segnato come cancellato."
+
+#: vendor/yoast/license-manager/class-update-manager.php:153
+msgid "This site has not been activated properly on yoast.com and thus cannot check for future updates. Please activate your site with a valid license key."
+msgstr "Il sito non è stato attivato correttamente su yoast.com è ciò non permette la verifica di aggiornamenti futuri. Attiva il tuo sito con una chiave di licenza valida."
+
+#: vendor/yoast/license-manager/views/form.php:41
+msgid "Toggle license status"
+msgstr "Cambia stato della licenza"
+
+#: vendor/yoast/i18n-module/i18n-module.php:194
+msgid "Translation of %s"
+msgstr "Traduzione di %s"
+
+#: vendor/yoast/license-manager/class-theme-update-manager.php:96
+msgid "Updating this theme will lose any customizations you have made. 'Cancel' to stop, 'OK' to update."
+msgstr "Aggiornando questo tema perderai ogni personalizzazione che hai fatto. Scegli 'Cancella' per interrompere, 'OK' per aggiornare."
+
+#: vendor/yoast/license-manager/views/form.php:15
+msgid "We couldn't create a connection to our API to verify your license key(s). Please ask your hosting company to allow outgoing connections from your server to %s."
+msgstr "Non siamo riusciti a creare una connessione alle nostre API per verificare il codice (o codici) di licenza. Si prega di chiedere al vostro hoster di consentire le connessioni in uscita dal vostro server verso %s."
+
+#. Plugin Name of the plugin/theme
+msgid "Yoast SEO"
+msgstr "Yoast SEO"
+
+#: vendor/yoast/license-manager/views/form.php:64
+msgid "You defined your license key using the %s PHP constant."
+msgstr "Hai definito il tuo codice licenza usando la costante PHP %s."
+
+#: vendor/yoast/license-manager/class-license-manager.php:183
+msgid "You have an unlimited license. "
+msgstr "Hai una licenza illimitata."
+
+#: vendor/yoast/license-manager/class-license-manager.php:185
+msgid "You have used %d/%d activations. "
+msgstr "Hai usato %d/%d attivazioni."
+
+#: inc/options/class-wpseo-option-internallinks.php:71
+msgid "You searched for"
+msgstr "Hai cercato"
+
+#: inc/options/class-wpseo-option-titles.php:179
+msgid "You searched for %s"
+msgstr "Si è cercato %s"
+
+#: vendor/yoast/i18n-module/i18n-module.php:172
+msgid "You're using WordPress in %1$s. While %2$s has been translated to %1$s for %3$d%%, it's not been shipped with the plugin yet. You can help! Register at %4$s to help complete the translation to %1$s!"
+msgstr "Stai usando WordPress in %1$s. Finch&egrave; %2$s non sar&agrave; tradotto in %1$s al %3$d%%, non sar&agrave; distribuito con il plugin. &Egrave; possibile contribuire! Registrati a %4$s per aiutare a completare la traduzione al %1$s!"
+
+#: vendor/yoast/i18n-module/i18n-module.php:174
+msgid "You're using WordPress in a language we don't support yet. We'd love for %2$s to be translated in that language too, but unfortunately, it isn't right now. You can change that! Register at %4$s to help translate it!"
+msgstr "Stai usando Wordpress in un linguaggio che ancora non è supportato. Ci piacerebbe davvero %2$s che venisse fosse tradotto anche in quel linguaggio, ma sfortunatamente, non lo è ancora. Tu puoi cambiare tutto questo! Registrati a %4$s per aiutare a tradurlo!"
+
+#: vendor/yoast/license-manager/class-license-manager.php:203
+msgid "You've reached your activation limit. You must <a href=\"%s\">upgrade your license</a> to use it on this site."
+msgstr "Hai raggiunto il tuo limite di attivazioni. Devi <a href=\"%s\">fare un upgrade della tua licenza</a> per usarla in questo sito."
+
+#: vendor/yoast/license-manager/class-license-manager.php:179
+msgid "Your %s license has been activated. "
+msgstr "La tua licenza %s è stata attivata."
+
+#: vendor/yoast/license-manager/class-license-manager.php:233
+msgid "Your %s license has been deactivated."
+msgstr "La tua licenza %s è stata disattivata."
+
+#: vendor/yoast/license-manager/views/form.php:81
+msgid "Your %s license will expire on %s."
+msgstr "La tua licenza %s scadrà il %s."
+
+#: vendor/yoast/license-manager/class-license-manager.php:206
+msgid "Your license has expired. You must <a href=\"%s\">extend your license</a> in order to use it again."
+msgstr "La tua licenza è scaduta. Puoi <a href=\"%s\">estendere la tua licenza</a> per continuare ad utilizzarlo."
+
+#: vendor/yoast/license-manager/views/form.php:19
+msgid "Your server has an outdated version of the PHP module cURL (Version: %s). Please ask your hosting company to update this to a recent version of cURL. You can read more about that in our %sKnowledge base%s."
+msgstr "Il vostra server dispone di una versione non aggiornata del modulo PHP cURL  (versione: %s). Si prega di chiedere alla vostra societ&agrave; di hosting di aggiornare cURL ad una versione pi&ugrave; recente. &Egrave; possibile leggere altro a riguardo sul nostro %sKnowledge base%s."
+
+#. Author URI of the plugin/theme
+msgid "https://yoast.com/"
+msgstr "https://yoast.com/"
+
+#. Plugin URI of the plugin/theme
+msgid "https://yoast.com/wordpress/plugins/seo/#utm_source=wpadmin&utm_medium=plugin&utm_campaign=wpseoplugin"
+msgstr "https://yoast.com/wordpress/plugins/seo/#utm_source=wpadmin&utm_medium=plugin&utm_campaign=wpseoplugin"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/tools.php:37
+msgid "%1$s comes with some very powerful built-in tools:"
+msgstr "%1$s viene fornito con alcuni strumenti integrati molto potenti:"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/user-profile.php:10
+msgid "%1$s settings"
+msgstr "%1$s impostazioni"
+
+#. translators: %1$s expands to Yoast SEO, %2$s and %3$s to the anchor tags to
+#. the translate.yoast.com link, %4$d to the number of translations, %5$d to
+#. the number of translations,
+#: admin/views/about.php:164
+msgid "%1$s ships, at time of release, with %4$d translations, of which %5$d are complete. That's a huge improvement from last time, and we're improving every week. Join us at %2$stranslate.yoast.com%3$s!"
+msgstr "%1$s  include, al momento del rilascio, %4$d traduzioni, di cui  %5$d complete. Questo &egrave; un enorme miglioramento rispetto all'ultima volta, e stiamo migliorando settimanalmente. Unitevi a noi su %2$stranslate.yoast.com%3$s!"
+
+#: frontend/class-frontend.php:514 frontend/class-frontend.php:517
+#: frontend/class-frontend.php:520 frontend/class-frontend.php:535
+#: frontend/class-frontend.php:538 frontend/class-frontend.php:541
+#: inc/options/class-wpseo-option-titles.php:228
+msgid "%s Archives"
+msgstr "%s Archivi"
+
+#: admin/pages/tools.php:52
+msgid "&laquo; Back to Tools page"
+msgstr "&laquo; Torna alla pagina degli strumenti"
+
+#: admin/views/tool-file-editor.php:114
+msgid ".htaccess file"
+msgstr "file .htaccess"
+
+#: admin/views/tab-rss.php:29
+msgid "A link to the archive for the post author, with the authors name as anchor text."
+msgstr "Un link all'archivio dell'autore dell'articolo, con il nome dell'autore come testo di ancoraggio."
+
+#: admin/views/tab-rss.php:33
+msgid "A link to the post, with the title as anchor text."
+msgstr "Un link all'articolo, con il titolo come testo di ancoraggio."
+
+#: admin/views/tab-rss.php:41
+msgid "A link to your site, with your site's name and description as anchor text."
+msgstr "Un link al tuo sito, con il nome e la descrizione del tuo sito come testo di ancoraggio."
+
+#: admin/views/tab-rss.php:37
+msgid "A link to your site, with your site's name as anchor text."
+msgstr "Un link al tuo sito, con il nome del tuo sito come testo di ancoraggio."
+
+#: inc/class-wpseo-replace-vars.php:109
+msgid "A replacement variable can not start with \"%%cf_\" or \"%%ct_\" as these are reserved for the WPSEO standard variable variables for custom fields and custom taxonomies. Try making your variable name unique."
+msgstr "Una variabile di sostituzione non può iniziare con \"%%cf_\" o \"%%ct_\" perchè sono riservate per le variabili di variabili standard di WPSEO per i campi personalizzati e per le tassonomie personalizzate. Prova a rendere il nome di questa variabile univoco."
+
+#: inc/class-wpseo-replace-vars.php:106
+msgid "A replacement variable can only contain alphanumeric characters, an underscore or a dash. Try renaming your variable."
+msgstr "Una variabile di sostituzione può contenere solo caratteri alfanumerici, il carattere di sottolineatura o il trattino. Prova a rinoinare la tua variabile."
+
+#: inc/class-wpseo-replace-vars.php:118
+msgid "A replacement variable with the same name has already been registered. Try making your variable name more unique."
+msgstr "Una variabile di sostituzione con questo nome è già stata registrata. Prova a rendere il nome di questa variabile ancora più univoco."
+
+#: admin/pages/social.php:118
+msgid "Add Google+ specific post meta data"
+msgstr "Aggiungi i meta data specifici di Google+"
+
+#: admin/pages/social.php:53
+msgid "Add Open Graph meta data"
+msgstr "Aggiungi meta dati Open Graph"
+
+#. translators: %s expands to <code>&lt;head&gt;</code>
+#: admin/pages/social.php:50
+msgid "Add Open Graph meta data to your site's %s section, Facebook and other social networks use this data when your pages are shared."
+msgstr "Aggiungi i meta data Open Graph alla sezione %s del sito, Facebook e altri social network useranno questi dati quando le tue pagine saranno condivise."
+
+#: admin/pages/social.php:90
+msgid "Add Twitter card meta data"
+msgstr "Aggiungere i metadati per la scheda di Twitter"
+
+#. translators: %s expands to <code>&lt;head&gt;</code>
+#: admin/pages/social.php:86
+msgid "Add Twitter card meta data to your site's %s section."
+msgstr "Aggiungi i meta data delle Twitter card alla sezione %s del tuo sito."
+
+#: frontend/class-frontend.php:1245
+msgid "Admin only notice: this page doesn't show a meta description because it doesn't have one, either write it for this page specifically or go into the SEO -> Titles menu and set up a template."
+msgstr "Avviso per l'amministratore: questa pagina non mostra una meta descrizione perché non ne ha una, è necessario scriverla per questa pagina o andare in SEO -> Menu titoli e impostare un modello."
+
+#: admin/views/tab-breadcrumbs.php:22
+msgid "Anchor text for the Homepage"
+msgstr "Testo d'ancoraggio per la Home Page"
+
+#: inc/class-wpseo-replace-vars.php:1123
+msgid "Attachment caption"
+msgstr "Didascalia Allegato"
+
+#: admin/views/tab-permalinks.php:18
+msgid "Attachments to posts are stored in the database as posts, this means they're accessible under their own URL's if you do not redirect them, enabling this will redirect them to the post they were attached to."
+msgstr "Gli allegati di un articolo sono registrati nel database come post, ciò significa che sono accessibili attraverso il loro URL univoco se non li ridirezioni. Attivando questa opzione verranno ridirezionati all'articolo a cui sono stati associati."
+
+#: admin/views/dashboard-widget.php:16
+msgid "Below are your published posts&#8217; SEO scores. Now is as good a time as any to start improving some of your posts!"
+msgstr "Di seguito ci sono i punteggi SEO dei tuoi articoli pubblicati. Ora è un momento buono come un altro per cominciare a migliorare alcuni dei tuoi post!"
+
+#: admin/views/tab-breadcrumbs.php:59
+msgid "Blog"
+msgstr "Blog"
+
+#: admin/views/tab-breadcrumbs.php:31
+msgid "Bold the last page in the breadcrumb"
+msgstr "Mettere in grassetto la pagina nel breadcrumb"
+
+#: admin/views/tab-breadcrumbs.php:26
+msgid "Breadcrumb for 404 Page"
+msgstr "Breadcrumb per la pagina 404"
+
+#: admin/pages/tools.php:21
+msgid "Bulk editor"
+msgstr "Editor di massa"
+
+#: admin/views/tab-permalinks.php:15
+msgid "Change URLs"
+msgstr "Cambia URLs"
+
+#: admin/pages/xml-sitemaps.php:29
+msgid "Check this box to enable XML sitemap functionality."
+msgstr "Spunta questa casella per abilitare la funzionalità sitemap XML."
+
+#: admin/views/tab-permalinks.php:21
+msgid "Clean up permalinks"
+msgstr "Pulisci permalinks"
+
+#: admin/views/tab-permalinks.php:48
+msgid "Clean up the %s"
+msgstr "Pulisci i %s"
+
+#: admin/views/tab-rss.php:22
+msgid "Content to put after each post in the feed"
+msgstr "Contenuto da inserire dopo qualsiasi post nel feed"
+
+#: admin/views/tab-rss.php:21
+msgid "Content to put before each post in the feed"
+msgstr "Contenuto da inserire prima di ogni post nel feed"
+
+#: admin/views/about.php:245
+msgid "Contributing Developers"
+msgstr "Sviluppatori che contribuiscono"
+
+#: admin/views/about.php:269
+msgid "Contributors to this release"
+msgstr "Contributori a questa versione"
+
+#: admin/pages/social.php:67
+msgid "Copy home meta description"
+msgstr "Copia la meta description della home"
+
+#: admin/views/tool-file-editor.php:84
+msgid "Create robots.txt file"
+msgstr "Crea il file robots.txt"
+
+#: admin/views/about.php:46
+msgid "Credits"
+msgstr "Crediti"
+
+#: admin/pages/social.php:71
+msgid "Default settings"
+msgstr "Impostazioni standard"
+
+#: admin/views/tool-import-export.php:152
+msgid "Delete the old data after import? (recommended)"
+msgstr "Eliminare i vecchi dati dopo l'importazione? (raccomandato)"
+
+#: admin/pages/social.php:62 admin/views/tool-bulk-editor.php:35
+msgid "Description"
+msgstr "Descrizione"
+
+#: admin/views/about.php:251 admin/views/about.php:256
+#: admin/views/about.php:261
+msgid "Developer"
+msgstr "Sviluppatore"
+
+#: admin/pages/xml-sitemaps.php:78
+msgid "Disable all users with zero posts"
+msgstr "Disabilita tutti gli utenti con zero articoli"
+
+#: admin/pages/xml-sitemaps.php:74
+msgid "Disable author/user sitemap"
+msgstr "Disabilita sitemap autore/utente"
+
+#: admin/views/tool-file-editor.php:131
+msgid "Edit the content of your .htaccess:"
+msgstr "Modifica il contenuto del tuo .htaccess:"
+
+#: admin/views/tool-file-editor.php:107
+msgid "Edit the content of your robots.txt:"
+msgstr "Modifica il contenuto del tuo file robots.txt"
+
+#: admin/views/tab-breadcrumbs.php:17
+msgid "Enable Breadcrumbs"
+msgstr "Abilita i Breadcrumbs"
+
+#: admin/views/tab-permalinks.php:30
+msgid "Enforce a trailing slash on all category and tag URL's"
+msgstr "Applica lo slash finale sugli URL di tutte le categorie e tag"
+
+#: admin/pages/xml-sitemaps.php:63
+msgid "Entries per page"
+msgstr "Voci per pagina"
+
+#: admin/views/user-profile.php:48
+msgid "Exclude user from Author-sitemap"
+msgstr "Escludi l'utente dalla sitemap degli autori"
+
+#: admin/pages/xml-sitemaps.php:82
+msgid "Exclude user roles"
+msgstr "Escludi ruoli utente"
+
+#: admin/pages/xml-sitemaps.php:77
+msgid "Exclude users without posts"
+msgstr "Escludi utenti senza articoli"
+
+#: admin/pages/xml-sitemaps.php:41
+msgid "Excluded Posts"
+msgstr "Articoli esclusi"
+
+#: admin/views/tool-import-export.php:93
+msgid "Export"
+msgstr "Esporta"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tool-import-export.php:129
+msgid "Export your %1$s settings"
+msgstr "Esporta le tue %1$s impostazioni"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tool-import-export.php:124
+msgid "Export your %1$s settings here, to import them again later or to import them on another site."
+msgstr "Esporta le tue impostazioni di %1$s qui, per reimportarle successivamente o per importarle in un altro sito."
+
+#: admin/pages/social.php:33
+msgid "Facebook Page URL"
+msgstr "URL pagina Facebook"
+
+#: admin/pages/tools.php:31
+msgid "File editor"
+msgstr "Modifica file"
+
+#: admin/pages/social.php:30
+msgid "For each, pick the main account associated with this site and please enter them below:"
+msgstr "Per ciascuno, scegliere l'account principale associato a questo sito e vi preghiamo di inserirlo qui di seguito:"
+
+#: admin/pages/social.php:57
+msgid "Frontpage settings"
+msgstr "Impostazioni della pagina iniziale"
+
+#: admin/views/about.php:172
+msgid "Go to The General settings page →"
+msgstr "Vai alla pagina delle Impostazioni generali →"
+
+#: admin/pages/social.php:123
+msgid "Google Publisher Page"
+msgstr "Pagina Publisher su Google+"
+
+#: admin/views/tab-permalinks.php:36
+msgid "Google Site Search URL's look weird, and ugly, but if you're using Google Site Search, you probably do not want them cleaned out."
+msgstr "Gli URL di Google Site Search sono strani e lunghi, ma se si sta utilizzando Google Site Search, probabilmente non li vuoi ripulire."
+
+#: admin/pages/social.php:40
+msgid "Google+ URL"
+msgstr "Google+ URL"
+
+#: admin/views/tab-permalinks.php:49
+msgid "Hide RSD Links"
+msgstr "Nascondere i link RSD"
+
+#: admin/views/tab-permalinks.php:52
+msgid "Hide RSS Links"
+msgstr "Nascondere i link RSS"
+
+#: admin/views/tab-permalinks.php:51
+msgid "Hide Shortlink for posts"
+msgstr "Nascondere i link brevi degli articoli"
+
+#: admin/views/tab-permalinks.php:50
+msgid "Hide WLW Manifest Links"
+msgstr "Nascondere i link  WLW Manifest"
+
+#: admin/views/tab-breadcrumbs.php:79
+msgid "How to insert breadcrumbs in your theme"
+msgstr "Come inserire i breadcrumbs nel tuo tema"
+
+#: admin/views/tab-permalinks.php:29
+msgid "If you choose a permalink for your posts with %1$s, or anything else but a %2$s at the end, this will force WordPress to add a trailing slash to non-post pages nonetheless."
+msgstr "Se scegli un permalink per i tuoi articoli con %1$s o qualsiasi altra cosa che non sia una %2$s alla fine, costringerai WordPress ad aggiungere la barra finale anche a tutte le pagine che non sono articoli."
+
+#: admin/views/tool-file-editor.php:138
+msgid "If you had a .htaccess file and it was editable, you could edit it from here."
+msgstr "Se avessi un .htaccess e questo fosse modificabile, potresti farlo da qui."
+
+#: admin/views/tool-file-editor.php:88
+msgid "If you had a robots.txt file and it was editable, you could edit it from here."
+msgstr "Se avessi un file robot.txt e questo fosse modificabile, potresti farlo da qui."
+
+#: admin/pages/social.php:121
+msgid "If you have a Google+ page for your business, add that URL here and link it on your Google+ page's about page."
+msgstr "Se si dispone di una pagina Google+ per il vostro business, aggiungere l'URL qui e collegarlo sulla tua pagina about di Google+."
+
+#: admin/views/tab-permalinks.php:40
+msgid "If you use Google Analytics campaign parameters starting with %s, check this box. However, you're advised not to use these. Instead, use the version with a hash."
+msgstr "Se utilizzi i parametri della campagna di Google Analytics che iniziano con %s, seleziona questa casella. Tuttavia,  ti suggeriamo di non utilizzarli. Invece, utilizza la versione con un hash."
+
+#: admin/views/tool-import-export.php:163
+msgid "If you want to import data from (by now ancient) Yoast plugins, you can do so here:"
+msgstr "Se desideri importare dati da plugin (ormai vecchi) di Yoast, puoi farlo qui:"
+
+#: admin/views/tool-import-export.php:139
+msgid "If you've used another SEO plugin, try the %sSEO Data Transporter%s plugin to move your data into this plugin, it rocks!"
+msgstr "Se hai usato un'altro plugin SEO, prova il plugin:%sSEO Data Transporter%s per spostare i tuoi dati in questo plugin, funziona!"
+
+#: admin/views/tool-file-editor.php:125
+msgid "If your .htaccess were writable, you could edit it from here."
+msgstr "Se il vostro .htaccess è modificabile, potete modificarlo da qui."
+
+#: admin/views/tool-file-editor.php:101
+msgid "If your robots.txt were writable, you could edit it from here."
+msgstr "Se il tuo robots.txt fosse scrivibile, potresti modificarlo da qui."
+
+#: admin/pages/social.php:60 admin/pages/social.php:72
+msgid "Image URL"
+msgstr "URL Immagine"
+
+#: admin/views/tool-import-export.php:92 admin/views/tool-import-export.php:156
+#: admin/views/tool-import-export.php:182
+msgid "Import"
+msgstr "Importa"
+
+#: admin/pages/tools.php:25
+msgid "Import and Export"
+msgstr "Importa ed esporta"
+
+#: admin/views/tool-import-export.php:147
+msgid "Import from All-in-One SEO?"
+msgstr "Importare da All-in-One SEO?"
+
+#: admin/views/tool-import-export.php:146
+msgid "Import from HeadSpace2?"
+msgstr "Importare da HeadSpace2?"
+
+#: admin/views/tool-import-export.php:171
+msgid "Import from RSS Footer (by Yoast)?"
+msgstr "Importare da RSS Footer (by Yoast)?"
+
+#: admin/views/tool-import-export.php:170
+msgid "Import from Robots Meta (by Yoast)?"
+msgstr "Importare da Robots Meta(by Yoast)?"
+
+#: admin/views/tool-import-export.php:148
+msgid "Import from WooThemes SEO framework?"
+msgstr "Importare dal framework SEO di WooThemes?"
+
+#: admin/views/tool-import-export.php:172
+msgid "Import from Yoast Breadcrumbs?"
+msgstr "Importare da Yoast Breadcrumbs?"
+
+#: admin/views/tool-import-export.php:95
+msgid "Import from other SEO plugins"
+msgstr "Importa da altri plugin SEO"
+
+#: admin/views/tool-import-export.php:97
+msgid "Import from other plugins"
+msgstr "Importa da altri plugin"
+
+#: admin/views/tool-import-export.php:117
+msgid "Import settings"
+msgstr "Importa le impostazioni"
+
+#: admin/views/tool-import-export.php:107
+msgid "Import settings by locating <em>settings.zip</em> and clicking \"Import settings\""
+msgstr "Importa i tuoi settaggi selezionando il file <em>settings.zip</em> e cliccando su \"Importa settaggi\""
+
+#: admin/pages/tools.php:26
+msgid "Import settings from other SEO plugins and export your settings for re-use on (another) blog."
+msgstr "Importa le impostazioni da altri plugin per il SEO ed esportale per il riutilizzo su un altro blog."
+
+#: admin/views/tool-import-export.php:126
+msgid "Include Taxonomy Metadata"
+msgstr "Includi Taxonomy Metadata"
+
+#: admin/pages/social.php:35
+msgid "Instagram URL"
+msgstr "Instagram URL"
+
+#: admin/views/about.php:198 admin/views/about.php:203
+msgid "Lead Developer"
+msgstr "Sviluppatore capo"
+
+#: admin/pages/social.php:36
+msgid "LinkedIn URL"
+msgstr "LinkedIn URL"
+
+#: admin/pages/xml-sitemaps.php:68
+msgid "Max entries per sitemap"
+msgstr "Numero di elementi massimi per sitemap"
+
+#: admin/views/user-profile.php:25
+msgid "Meta description to use for Author page"
+msgstr "Meta descrizione da usare per la pagina autore "
+
+#: admin/views/user-profile.php:36
+msgid "Meta keywords to use for Author page"
+msgstr "Meta keywords da usare per la pagina autore "
+
+#: admin/views/about.php:159
+msgid "More Translations"
+msgstr "Più traduzioni"
+
+#: admin/pages/social.php:37
+msgid "MySpace URL"
+msgstr "MySpace URL"
+
+#: admin/views/tool-import-export.php:137
+msgid "No doubt you've used an SEO plugin before if this site isn't new. Let's make it easy on you, you can import the data below. If you want, you can import first, check if it was imported correctly, and then import &amp; delete. No duplicate data will be imported."
+msgstr "Nessun dubbio che hai usato un plugin SEO prima se questo sito non è completamente nuovo. Provo a renderti la vita più facile, puoi importare le informazioni elencate sotto. Se vuoi, puoi prima importarle, controllare se è stato importato tutto correttamente e poi importare e cancellare. Nessun duplicato verrà importato."
+
+#: admin/views/tab-permalinks.php:44
+msgid "Other variables not to clean"
+msgstr "Altre variabili da non ripulire"
+
+#: inc/class-wpseo-replace-vars.php:897
+msgid "Page %1$d of %2$d"
+msgstr "Pagina %1$d di %2$d"
+
+#: frontend/class-frontend.php:554
+#: inc/options/class-wpseo-option-titles.php:180
+msgid "Page not found"
+msgstr "Pagina non trovata"
+
+#: admin/views/tab-permalinks.php:32
+msgid "People make mistakes in their links towards you sometimes, or unwanted parameters are added to the end of your URLs, this allows you to redirect them all away. Please note that while this is a feature that is actively maintained, it is known to break several plugins, and should for that reason be the first feature you disable when you encounter issues after installing this plugin."
+msgstr "Le persone a volte commettono errori quando scrivono link, oppure parametri indesiderati vengono aggiunti alla fine dell'URL: questo permette di reindirizzarli. Si prega di notare che, mentre questa è una caratteristica che è mantenuta attivamente, è noto che interferisce con diversi plugin, e dovrebbe per questo essere la prima caratteristica a essere disattiva quando si verificano problemi dopo l'installazione di questo plugin."
+
+#: admin/pages/social.php:38
+msgid "Pinterest URL"
+msgstr "Pinterest URL"
+
+#: admin/pages/social.php:100
+msgid "Pinterest uses Open Graph metadata just like Facebook, so be sure to keep the Open Graph checkbox on the Facebook tab checked if you want to optimize your site for Pinterest."
+msgstr "Pinterest usa i metadata Open Graph come Facebook, per questo assicurati di aver spuntato la casella di verifica sulla scheda Facebook se vuoi ottimizzare il tuo sito per Pinterest."
+
+#: admin/pages/social.php:109
+msgid "Pinterest verification"
+msgstr "Codice di verifica Pinterest"
+
+#: admin/pages/xml-sitemaps.php:96
+msgid "Please check the appropriate box below if there's a post type that you do <strong>NOT</strong> want to include in your sitemap:"
+msgstr "Per favore spunta una delle caselle qui in basso se c'è un tipo di articolo che <strong>NON</strong> vuoi inserire nella tua sitemap:"
+
+#: admin/pages/xml-sitemaps.php:119
+msgid "Please check the appropriate box below if there's a taxonomy that you do <strong>NOT</strong> want to include in your sitemap:"
+msgstr "Per favore spunta una delle caselle qui in basso se c'è una tassonomia che <strong>NON</strong> vuoi inserire nella tua sitemap: "
+
+#: admin/pages/xml-sitemaps.php:83
+msgid "Please check the appropriate box below if there's a user role that you do <strong>NOT</strong> want to include in your sitemap:"
+msgstr "Per favore, controlla se c'è un gruppo di utenti che <strong>NON</strong> vuoi che siano inclusi nella tua sitemap:"
+
+#: admin/pages/xml-sitemaps.php:64
+msgid "Please enter the maximum number of entries per sitemap page (defaults to %s, you might want to lower this to prevent memory issues on some installs):"
+msgstr "Per favore inserire il numero massimo di voci per pagina di sitemap (il default è %s, potresti ridurlo al fine di evitare problemi di occupazione di memoria in qualche installazione):"
+
+#: admin/views/tab-breadcrumbs.php:55
+msgid "Post type archive to show in breadcrumbs for taxonomies"
+msgstr "Mostra l'archivio degli articoli per tassonomia nei breadcrumbs"
+
+#: admin/pages/xml-sitemaps.php:110
+msgid "Posts to exclude"
+msgstr "Articoli da escludere"
+
+#: admin/views/tab-breadcrumbs.php:24
+msgid "Prefix for Archive breadcrumbs"
+msgstr "Prefisso per gli archivi dei Breadcrumbs"
+
+#: admin/views/tab-breadcrumbs.php:25
+msgid "Prefix for Search Page breadcrumbs"
+msgstr "Prefisso nel breadcrumbs delle pagina di ricerca"
+
+#: admin/views/tab-breadcrumbs.php:23
+msgid "Prefix for the breadcrumb path"
+msgstr "Prefisso per il percorso dei Breadcrumbs"
+
+#: admin/views/tab-permalinks.php:41
+msgid "Prevent cleaning out Google Analytics Campaign & Google AdWords Parameters."
+msgstr "Evita di cancellare le Campagne Google Analytics ed i Parametri Google AdWords."
+
+#: admin/views/tab-permalinks.php:37
+msgid "Prevent cleaning out Google Site Search URL's."
+msgstr "Previene la pulizia degli url di Google Site Search."
+
+#: admin/views/about.php:193
+msgid "Project Lead"
+msgstr "Capo del progetto"
+
+#: admin/views/about.php:187
+msgid "Project Leaders"
+msgstr "Capi Progetto"
+
+#: admin/views/about.php:208
+msgid "QA & Translations Manager"
+msgstr "Responsabile traduzioni Domande e Risposte"
+
+#: admin/views/about.php:216
+msgid "Recent Rockstars"
+msgstr "Rockstar recenti"
+
+#: admin/views/tab-permalinks.php:19
+msgid "Redirect attachment URL's to parent post URL."
+msgstr "Ridireziona l'URL degli allegati all'URL del post genitore."
+
+#: admin/views/tab-permalinks.php:33
+msgid "Redirect ugly URL's to clean permalinks. (Not recommended in many cases!)"
+msgstr "Ridireziona gli URL grezzi a permalink puliti. (Non raccomandato in molti casi!)"
+
+#: admin/views/tab-breadcrumbs.php:29
+msgid "Remove Blog page from Breadcrumbs"
+msgstr "Rimuovi la pagina del Blog dai Breadcrumbs"
+
+#: admin/views/tab-permalinks.php:23
+msgid "Remove stop words from slugs."
+msgstr "Rimuovere le stop word dagli slugs."
+
+#: admin/views/tab-permalinks.php:26
+msgid "Remove the <code>?replytocom</code> variables."
+msgstr "Rimuove le variabili <code>?replytocom</code>."
+
+#: inc/class-wpseo-replace-vars.php:1128
+msgid "Replaced with a custom taxonomies description"
+msgstr "Sostituito con la descrizione di una tassonomia custom"
+
+#: inc/class-wpseo-replace-vars.php:1126
+msgid "Replaced with a posts custom field value"
+msgstr "Sostituita con un valore di un campo personalizzato"
+
+#: inc/class-wpseo-replace-vars.php:1127
+msgid "Replaced with a posts custom taxonomies, comma separated."
+msgstr "Sostituito con una tassonomia personalizzata per gli articoli, separata da virgole."
+
+#: inc/class-wpseo-replace-vars.php:1094
+msgid "Replaced with the category description"
+msgstr "Sostituito dalla descrizione della categoria"
+
+#: inc/class-wpseo-replace-vars.php:1116
+msgid "Replaced with the current date"
+msgstr "Sostituito con la data corrente"
+
+#: inc/class-wpseo-replace-vars.php:1117
+msgid "Replaced with the current day"
+msgstr "Sostituito con la giornata in corso"
+
+#: inc/class-wpseo-replace-vars.php:1118
+msgid "Replaced with the current month"
+msgstr "Sostituito con il mese corrente"
+
+#: inc/class-wpseo-replace-vars.php:1122
+msgid "Replaced with the current page number"
+msgstr "Sostituito con il numero di pagina corrente"
+
+#: inc/class-wpseo-replace-vars.php:1120
+msgid "Replaced with the current page number with context (i.e. page 2 of 4)"
+msgstr "Sostituito con il numero di pagina corrente e relativo contesto(es. pagina 2 di 4)"
+
+#: inc/class-wpseo-replace-vars.php:1121
+msgid "Replaced with the current page total"
+msgstr "Sostituito con il numero di pagine totale"
+
+#: inc/class-wpseo-replace-vars.php:1098
+msgid "Replaced with the current search phrase"
+msgstr "Sostituito con la frase di ricerca corrente"
+
+#: inc/class-wpseo-replace-vars.php:1092
+msgid "Replaced with the current tag/tags"
+msgstr "Rimpiazzato dagli attuali tag"
+
+#: inc/class-wpseo-replace-vars.php:1115
+msgid "Replaced with the current time"
+msgstr "Sostituito con l'ora corrente"
+
+#: inc/class-wpseo-replace-vars.php:1119
+msgid "Replaced with the current year"
+msgstr "Sostituito con l'anno in corso"
+
+#: inc/class-wpseo-replace-vars.php:1085
+msgid "Replaced with the date of the post/page"
+msgstr "Rimpiazzato dalla data articolo/pagina"
+
+#: inc/class-wpseo-replace-vars.php:1093
+msgid "Replaced with the post categories (comma separated)"
+msgstr "Sostituito dalle categorie dell'articolo (separate da una virgola)"
+
+#: inc/class-wpseo-replace-vars.php:1109
+msgid "Replaced with the post type plural label"
+msgstr "Sostituito con l'etichetta plurima per il tipo di articolo"
+
+#: inc/class-wpseo-replace-vars.php:1108
+msgid "Replaced with the post type single label"
+msgstr "Sostituito con l'etichetta singola del tipo di articolo"
+
+#: inc/class-wpseo-replace-vars.php:1111
+msgid "Replaced with the post/page ID"
+msgstr "Sostituito con l'ID del post/pagina"
+
+#: inc/class-wpseo-replace-vars.php:1113
+msgid "Replaced with the post/page author's 'Biographical Info'"
+msgstr "Rimpiazzato con \"Informazioni biografiche\" dell'autore del post/pagina."
+
+#: inc/class-wpseo-replace-vars.php:1112
+msgid "Replaced with the post/page author's 'nicename'"
+msgstr "Sostituito con il 'nicename' dell'autore del post/pagina"
+
+#: inc/class-wpseo-replace-vars.php:1114
+msgid "Replaced with the post/page author's userid"
+msgstr "Sostituito con l'userid dell'autore del post/pagina"
+
+#: inc/class-wpseo-replace-vars.php:1090
+msgid "Replaced with the post/page excerpt (or auto-generated if it does not exist)"
+msgstr "Sostituito dal riassunto articolo/pagina (autogenerato se non esiste)"
+
+#: inc/class-wpseo-replace-vars.php:1091
+msgid "Replaced with the post/page excerpt (without auto-generation)"
+msgstr "Sostituito dal riassunto articolo/pagina (senza autogenerazione)"
+
+#: inc/class-wpseo-replace-vars.php:1110
+msgid "Replaced with the post/page modified time"
+msgstr "Sostituito con l'ora di modifica del post/pagina "
+
+#: inc/class-wpseo-replace-vars.php:1124
+msgid "Replaced with the posts focus keyword"
+msgstr "Rimpiazzato dalla parola chiave principale dell'articolo"
+
+#: inc/class-wpseo-replace-vars.php:1125
+msgid "Replaced with the slug which caused the 404"
+msgstr "Sostituito con l'abbreviazione che ha causato l'errore 404"
+
+#: inc/class-wpseo-replace-vars.php:1095
+msgid "Replaced with the tag description"
+msgstr "Sostituito dalla descrizione del tag"
+
+#: inc/class-wpseo-replace-vars.php:1096
+msgid "Replaced with the term description"
+msgstr "Sostituito dalla descrizione del termine"
+
+#: inc/class-wpseo-replace-vars.php:1097
+msgid "Replaced with the term name"
+msgstr "Sostituito dal nome del termine"
+
+#: inc/class-wpseo-replace-vars.php:1087
+msgid "Replaced with the title of the parent page of the current page"
+msgstr "Sostituito con il titolo della pagina padre della pagina corrente"
+
+#: inc/class-wpseo-replace-vars.php:1086
+msgid "Replaced with the title of the post/page"
+msgstr "Sostituito dal titolo del post/pagina"
+
+#: admin/views/tool-file-editor.php:77
+msgid "Robots.txt"
+msgstr "Robots.txt"
+
+#: admin/views/tool-file-editor.php:133
+msgid "Save changes to .htaccess"
+msgstr "Salva i cambiamenti in .htaccess"
+
+#: admin/views/tool-file-editor.php:109
+msgid "Save changes to Robots.txt"
+msgstr "Salva i cambiamenti in Robots.txt"
+
+#: admin/pages/xml-sitemaps.php:58
+msgid "Save your settings to activate XML Sitemaps."
+msgstr "Salve le impostazioni per attivare la Sitemap XML."
+
+#: frontend/class-frontend.php:455
+msgid "Search for \"%s\""
+msgstr "Ricerca per \"%s\""
+
+#: admin/views/tab-breadcrumbs.php:21
+msgid "Separator between breadcrumbs"
+msgstr "Separatore tra i breadcrumbs"
+
+#: admin/views/tab-permalinks.php:16
+msgid "Strip the category base (usually <code>/category/</code>) from the category URL."
+msgstr "Elimina la parola categoria (di solito <code>/categoria/</code>) dall'URL della categoria"
+
+#: admin/views/tab-breadcrumbs.php:36
+msgid "Taxonomy to show in breadcrumbs for post types"
+msgstr "Tassonomia da mostrare nei breadcrumbs per i post types"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/about.php:32
+msgid "Thank you for updating %1$s!"
+msgstr "Grazie di aver aggiornato %1$s!"
+
+#: admin/pages/social.php:93
+msgid "The default card type to use"
+msgstr "Il tipo di card di default da usare"
+
+#: admin/views/tool-import-export.php:80
+msgid "The old data of the imported plugin was deleted successfully."
+msgstr "I vecchi dati del plugin importato sono stati eliminati."
+
+#: inc/class-wpseo-replace-vars.php:1099
+msgid "The separator defined in your theme's <code>wp_title()</code> tag."
+msgstr "Il separatore definito nel codice del tag <code>wp_title()</code> del proprio tema."
+
+#: inc/class-wpseo-replace-vars.php:1088
+msgid "The site's name"
+msgstr "Il nome del sito"
+
+#: inc/class-wpseo-replace-vars.php:1089
+msgid "The site's tag line / description"
+msgstr "Il motto/descrizione di questo sito"
+
+#: admin/pages/social.php:58
+msgid "These are the title, description and image used in the Open Graph meta tags on the front page of your site."
+msgstr "Questi sono il titolo la descrizione e l'immagine utilizzata nei meta tag Open Graph nella pagina principale del tuo sito.."
+
+#: admin/views/tab-rss.php:15
+msgid "This feature is used to automatically add content to your RSS, more specifically, it's meant to add links back to your blog and your blog posts, so dumb scrapers will automatically add these links too, helping search engines identify you as the original source of the content."
+msgstr "Questa opzione e' utilizzata per aggiungere automaticamente contenuti al tuo RSS. Più nello specifico, è progettata per aggiungere links che rimandino al tuo blog e ai tuoi articoli, in modo che gli stupidi scrapers aggiungeranno a loro volta automaticamente questi links, aiutando i motori di ricerca ad identificarti come la fonte originale dei contenuti."
+
+#: admin/views/tab-permalinks.php:22
+msgid "This helps you to create cleaner URLs by automatically removing the stopwords from them."
+msgstr "Questo ti aiuta a creare URL più pulite, rimuovendo in automatico le stopword."
+
+#: admin/pages/social.php:74
+msgid "This image is used if the post/page being shared does not contain any images."
+msgstr "Questa immagine viene utilizzata se un/a articolo/pagina che vengono condivisi non contengono alcuna immagine."
+
+#: admin/views/tab-permalinks.php:25
+msgid "This prevents threaded replies from working when the user has JavaScript disabled, but on a large site can mean a <em>huge</em> improvement in crawl efficiency for search engines when you have a lot of comments."
+msgstr "Questa impostazione previene il funzionamento delle repliche annidate quando un utente ha JavaScript disabilitato ma, su grossi siti, può anche significare un <em>grande</em> miglioramento dell indicizzazione da parte dei motori di ricerca quando si hanno moltissimi commenti."
+
+#: admin/pages/tools.php:32
+msgid "This tool allows you to quickly change important files for your SEO, like your robots.txt and, if you have one, your .htaccess file."
+msgstr "Questo strumento consente di modificare rapidamente file importanti per il SEO, come il vostro robots.txt e, se ne avete uno, il file .htaccess."
+
+#: admin/pages/tools.php:22
+msgid "This tool allows you to quickly change titles and descriptions of your posts and pages without having to go into the editor for each page."
+msgstr "Questo strumento permette di cambiare rapidamente i titoli e le descrizioni dei tuoi post e pagine senza dover andare nell'editor per ognuno di essi."
+
+#: admin/views/user-profile.php:16
+msgid "Title to use for Author page"
+msgstr "Titolo da usare per la pagina autore"
+
+#. translators: %1$s / %2$s expands to a link to pinterest.com's help page.
+#: admin/pages/social.php:105
+msgid "To %1$sverify your site with Pinterest%2$s, add the meta tag here:"
+msgstr "Per %1$sverificare il tuo sito con Pinterest%2$s, aggiungi il meta tag qui"
+
+#: admin/pages/social.php:29
+msgid "To inform Google about your social profiles, we need to know their URLs."
+msgstr "Per informare Google dei tuoi profili social, dobbiamo conoscere i rispettivi URL."
+
+#: admin/pages/social.php:34
+msgid "Twitter Username"
+msgstr "Nome utente Twitter"
+
+#: admin/views/tool-file-editor.php:44
+msgid "Updated Robots.txt"
+msgstr "Aggiorna Robots.txt"
+
+#. translators: %1$s / %2$s: links to the breadcrumbs implementation page on
+#. the Yoast knowledgebase
+#: admin/views/tab-breadcrumbs.php:83
+msgid "Usage of this breadcrumbs feature is explained in %1$sour knowledge-base article on breadcrumbs implementation%2$s."
+msgstr "L'utilizzo della funzione breadcrumbs è spiegata nel %1$snostro articolo nelle knowledge-base sull'implementazione dei breadcrumbs%2$s."
+
+#: admin/pages/xml-sitemaps.php:38
+msgid "User sitemap"
+msgstr "Sitemap utenti"
+
+#: admin/views/about.php:183
+msgid "Want to help us develop? Read our %1$scontribution guidelines%2$s!"
+msgstr "Vuoi aiutarci a sviluppare? Leggi le nostre %1$scontribution guidelines%2$s!"
+
+#. translators: %s: '2.3' version number
+#: admin/views/about.php:43
+msgid "What’s new in %s"
+msgstr "Novità nella %s"
+
+#. translators: %1$s and %2$s expands to anchor tags, %3$s expands to Yoast SEO
+#: admin/views/about.php:181
+msgid "While most of the development team is at %1$sYoast%2$s in the Netherlands, %3$s is created by a worldwide team."
+msgstr "Mentre la maggior parte del team di sviluppo si trova a %1$sYoast%2$s, in Olanda, %3$s viene creato da un team da tutto il mondo."
+
+#. Translators: %1$s: expands to '<code>1,2,99,100</code>'
+#: admin/pages/xml-sitemaps.php:109
+msgid "You can exclude posts from the sitemap by entering a comma separated string with the Post ID's. The format will become something like: %1$s."
+msgstr "È possibile escludere articoli dalla sitemap inserendo una stringa separata da virgole contenente gli ID degli articoli. Il formato sarà qualcosa di simile: %1$s."
+
+#: admin/pages/xml-sitemaps.php:51
+msgid "You can find your XML Sitemap here: %sXML Sitemap%s"
+msgstr "Potete trovare la vostra Sitemap qui: %sXML Sitemap%s"
+
+#: admin/views/tab-rss.php:25
+msgid "You can use the following variables within the content, they will be replaced by the value on the right."
+msgstr "È possibile utilizzare le seguenti variabili all'interno del contenuto, verranno sostituite dal valore mostrato qui a destra."
+
+#: admin/views/tool-file-editor.php:17
+msgid "You cannot create a robots.txt file."
+msgstr "Non puoi creare il file robots.txt"
+
+#: admin/views/tool-file-editor.php:51
+msgid "You cannot edit the .htaccess file."
+msgstr "Non puoi modificare il file .htaccess"
+
+#: admin/views/tool-file-editor.php:33
+msgid "You cannot edit the robots.txt file."
+msgstr "Non puoi modificare il file robots.txt"
+
+#: inc/class-wpseo-replace-vars.php:122
+msgid "You cannot overrule a WPSEO standard variable replacement by registering a variable with the same name. Use the \"wpseo_replacements\" filter instead to adjust the replacement value."
+msgstr "Non puoi sovrascrivere una variabile di sostituzione standard di WPSEO registrando una variabile con lo stesso nome. Utilizza piuttosto il filtro \"wpseo_replacements\" per aggiustare il valore di sostituzione."
+
+#: admin/pages/xml-sitemaps.php:54
+msgid "You do <strong>not</strong> need to generate the XML sitemap, nor will it take up time to generate after publishing a post."
+msgstr "<strong>NON</strong> devi creare la XML sitemap, verra' impiegato tempo per generarla dopo la pubblicazione di un articolo."
+
+#: admin/views/tool-file-editor.php:83
+msgid "You don't have a robots.txt file, create one here:"
+msgstr "Non hai il file robots.txt, creane uno qui."
+
+#: admin/views/tab-permalinks.php:43
+msgid "You might have extra variables you want to prevent from cleaning out, add them here, comma separated."
+msgstr "Se hai delle variabili aggiuntive che vorresti evitare di ripulire, aggiungile qui separandole da una virgola."
+
+#: admin/pages/social.php:39
+msgid "YouTube URL"
+msgstr "YouTube URL"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/licenses.php:73
+msgid "%1$s Extensions"
+msgstr "%1$s Estensioni"
+
+#: admin/pages/metas.php:105 admin/pages/metas.php:165
+msgid "%1$s Meta Box"
+msgstr "%1$s Meta Box"
+
+#. translators: %1$s expands to Yoast SEO, %2$s expands to Google Analytics by
+#. Yoast
+#: admin/google_search_console/class-gsc-service.php:146
+msgid "%1$s detected you’re using a version of %2$s which is not compatible with %1$s. Please update %2$s to the latest version to use this feature."
+msgstr "%1$s ha scoperto che stai utilizzando la versione %2$s che non è compatibile con %1$s. Aggiorna %2$s all'ultima versione per per utilizzare questa funzionalità. "
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/metas.php:39
+msgid "%1$s has auto-detected whether it needs to force rewrite the titles for your pages, if you think it's wrong and you know what you're doing, you can change the setting here."
+msgstr "%1$S determina automaticamente quando è necessario forzare la riscrittura dei titoli delle pagine, se pensate sia sbagliato e sapete quello che state facendo potete cambiare le impostazioni da qui."
+
+#: admin/pages/network.php:35
+msgid "%s restored to default SEO settings."
+msgstr "%s ripristinato ai valori di default SEO."
+
+#: admin/pages/metas.php:214
+msgid "404 pages"
+msgstr "Pagine 404"
+
+#: admin/pages/social.php:20
+msgid "Accounts"
+msgstr "Account"
+
+#. translators: %s expands to <code>noodp</code>
+#. translators: %s expands to <code>noydir</code>
+#: admin/pages/metas.php:232 admin/pages/metas.php:236
+msgid "Add %s meta robots tag sitewide"
+msgstr "Aggiungi %s tag meta robots a tutto il sito"
+
+#. translators: %s expands to <code>noindex, follow</code>
+#: admin/pages/metas.php:197
+msgid "Add %s to the author archives"
+msgstr "Aggiungi %s all'archivio autori"
+
+#. translators: %s expands to <code>noindex, follow</code>
+#: admin/pages/metas.php:203
+msgid "Add %s to the date-based archives"
+msgstr "Aggiungi %s agli archivi per data"
+
+#: admin/pages/dashboard.php:233
+msgid "Alexa Verification ID"
+msgstr "ID di verifica di Alexa"
+
+#: admin/pages/dashboard.php:202
+msgid "Alternate name"
+msgstr "Nome alternativo"
+
+#: admin/pages/licenses.php:30
+msgid "Are you in Google News? Increase your traffic from Google News by optimizing for it!"
+msgstr "Sei su Google News? Aumenta il tuo traffico da Google News ottimizzandoti per esso!"
+
+#: admin/pages/dashboard.php:190
+msgid "Are you sure you want to reset your SEO settings?"
+msgstr "Sei sicuro di voler azzerare le impostazioni SEO?"
+
+#: admin/pages/metas.php:93
+msgid "As you are redirecting attachment URLs to parent post URLs, these settings will currently only have an effect on <strong>unattached</strong> media items!"
+msgstr "Siccome stai reindirizzando le URL degli allegati alle URL degli articoli padre, queste impostazioni avranno effetto solo sugli elementi media <strong>non allegati</strong>!"
+
+#: admin/google_search_console/views/gsc-display.php:40
+msgid "Authenticate"
+msgstr "Autenticati"
+
+#: admin/pages/metas.php:176
+msgid "Author Archives"
+msgstr "Archivi autori"
+
+#: admin/pages/dashboard.php:234
+msgid "Bing Webmaster Tools"
+msgstr "Bing Webmaster Tools"
+
+#: admin/pages/network.php:38
+msgid "Blog %s not found."
+msgstr "Blog %s non trovato."
+
+#: admin/pages/network.php:136
+msgid "Blog ID"
+msgstr "ID del blog"
+
+#: admin/pages/advanced.php:16
+msgid "Breadcrumbs"
+msgstr "Breadcrumbs"
+
+#: admin/pages/network.php:109
+msgid "Choose the site whose settings you want to use as default for all sites that are added to your network. If you choose 'None', the normal plugin defaults will be used."
+msgstr "Scegli il sito le cui impostazioni verranno utilizzate come standard per tutti i siti che verranno aggiunti al network. Se scegli 'Nessuno', verranno utilizzati i valori standard del plugin."
+
+#: admin/pages/metas.php:50
+msgid "Choose the symbol to use as your title separator. This will display, for instance, between your post title and site name."
+msgstr "Scegli un simbolo da utilizzare come separatore del titolo. Verrà visualizzato, per esempio, fra il titolo dell'articolo e il nome del sito."
+
+#: admin/pages/dashboard.php:213
+msgid "Choose whether you're a company or person"
+msgstr "Scegliete se siete un'azienda o una persona"
+
+#: admin/pages/dashboard.php:214 admin/pages/dashboard.php:219
+msgid "Company"
+msgstr "Azienda"
+
+#: admin/pages/dashboard.php:147
+msgid "Company Info"
+msgstr "Dati societari"
+
+#: admin/pages/dashboard.php:222
+msgid "Company Logo"
+msgstr "Logo aziendale"
+
+#: admin/pages/dashboard.php:221
+msgid "Company Name"
+msgstr "Nome dell'Azienda"
+
+#: admin/pages/dashboard.php:204 admin/pages/dashboard.php:212
+msgid "Company or person"
+msgstr "Azienda o persona"
+
+#: admin/google_search_console/class-gsc.php:121
+msgid "Crawl errors per page"
+msgstr "Errori di scansione per pagina"
+
+#: admin/google_search_console/class-gsc-table.php:206
+msgid "Create a redirect"
+msgstr "Crea un redirect"
+
+#: admin/google_search_console/class-gsc-table.php:206
+#: admin/google_search_console/views/gsc-create-redirect.php:40
+msgid "Create redirect"
+msgstr "Crea un Redirect"
+
+#. Translators: %s: expands to Yoast SEO Premium
+#: admin/google_search_console/views/gsc-create-redirect.php:60
+msgid "Creating redirects is a %s feature"
+msgstr "Creare redirect è una caratteristica di %s"
+
+#: admin/google_search_console/views/gsc-create-redirect.php:24
+msgid "Current URL:"
+msgstr "URL attuale:"
+
+#: admin/google_search_console/views/gsc-display.php:45
+#: admin/google_search_console/views/gsc-display.php:48
+msgid "Current profile"
+msgstr "Profilo corrente"
+
+#: admin/pages/metas.php:127
+msgid "Custom Post Type Archives"
+msgstr "Archivio dei Custom Post Type"
+
+#: admin/pages/metas.php:183
+msgid "Date Archives"
+msgstr "Archivio per data"
+
+#: admin/pages/metas.php:103
+msgid "Date in Snippet Preview"
+msgstr "Data nello snippet di anteprima"
+
+#: admin/pages/metas.php:200
+msgid "Date-based archives could in some cases also be seen as duplicate content."
+msgstr "Gli archivi per data potrebbero in alcuni casi essere rilevati come contenuti duplicati."
+
+#: admin/google_search_console/class-gsc-platform-tabs.php:43
+#: admin/google_search_console/class-gsc.php:274
+msgid "Desktop"
+msgstr "Scrivania"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/dashboard.php:243
+msgid "Disable the Advanced part of the %1$s meta box"
+msgstr "Disabilita la parte avanzata del meta box  %1$s"
+
+#: admin/pages/metas.php:198
+msgid "Disable the author archives"
+msgstr "Disabilita gli archivi per autore"
+
+#: admin/pages/metas.php:204
+msgid "Disable the date-based archives"
+msgstr "Disabilita gli archivi per data"
+
+#: admin/google_search_console/class-gsc.php:72
+msgid "Don't miss your crawl errors: %1$sconnect with Google Search Console here%2$s."
+msgstr "Non perderti gli errori del crawl: %1$scollegati con la  Google Search Console qui%2$s."
+
+#: admin/pages/metas.php:188
+msgid "Duplicate content prevention"
+msgstr "Previeni contenuti duplicati"
+
+#: admin/pages/dashboard.php:72
+msgid "Earlier found meta description was not found in file. Renewed the description test data."
+msgstr "La meta descrizione trovata in precedenza non è più presenta. Rigenerati i dati di test della descrizione."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/dashboard.php:112
+msgid "Either delete them (this can be done with the \"Fix it\" button) or disable %1$s XML sitemaps."
+msgstr "Puoi cancellarli (puoi farlo premendo il bottone \"Risolvi il problema\") o puoi disabilitare %1$s XML sitemaps."
+
+#: admin/pages/metas.php:37
+msgid "Enable force rewrite titles"
+msgstr "Abilita la riscrittura forzata dei titoli"
+
+#: admin/pages/network.php:113
+msgid "Enter the %sSite ID%s for the site whose settings you want to use as default for all sites that are added to your network. Leave empty for none (i.e. the normal plugin defaults will be used)."
+msgstr "Inserisci lo %sID del sito%s come sito dal quale ricavare le impostazioni che desideri utilizzare come standard per tutti i siti già aggiunti al network. Lascia vuoto per nessun sito (verranno utilizzati i valori standard del plugin)."
+
+#: admin/google_search_console/views/gsc-create-redirect.php:46
+msgid "Error: a redirect for this URL already exists"
+msgstr "Errore: esiste già un redirect per questa URL"
+
+#: admin/google_search_console/class-gsc.php:275
+msgid "Errors that occurred only when your site was crawled by Googlebot-Mobile (errors didn't appear for desktop)."
+msgstr "Errori che si sono verificati quando il tuo sito era scansito da Googlebot (gli errori non sono comparsi per desktop)."
+
+#: admin/google_search_console/class-gsc.php:274
+msgid "Errors that occurred when your site was crawled by Googlebot."
+msgstr "Errori che si sono verificati quando il tuo sito è stato scansionato da Googlebot."
+
+#: admin/google_search_console/class-gsc.php:276
+msgid "Errors that only occurred when your site was crawled by Googlebot for feature phones (errors didn't appear for desktop)."
+msgstr "Errori che si sono verificati quando il tuo sito era scansito da Googlebot per feature phone (gli errori non sono comparsi per desktop)."
+
+#: admin/pages/dashboard.php:65
+msgid "Failed to remove hardcoded meta description."
+msgstr "Fallimento nella rimozione della meta descrizione cablata."
+
+#: admin/google_search_console/class-gsc-platform-tabs.php:45
+#: admin/google_search_console/class-gsc.php:276
+msgid "Feature phone"
+msgstr "Feature phone"
+
+#: admin/google_search_console/class-gsc-table.php:109
+msgid "First detected"
+msgstr "Scoperto per la prima volta"
+
+#: admin/pages/dashboard.php:104 admin/pages/dashboard.php:119
+#: admin/pages/dashboard.php:130 admin/pages/dashboard.php:137
+msgid "Fix it."
+msgstr "Aggiustalo."
+
+#: admin/pages/metas.php:33
+msgid "Force rewrite titles"
+msgstr "Forza la riscrittura dei titoli"
+
+#: admin/google_search_console/views/gsc-display.php:34
+msgid "Get Google Authorization Code"
+msgstr "Ricevi Codice di Autorizzazione di Google."
+
+#: admin/pages/licenses.php:99
+msgid "Get this extension"
+msgstr "Ottieni questa estensione"
+
+#: admin/pages/dashboard.php:197
+msgid "Google shows your website's name in the search results, we will default to your site name but you can adapt it here. You can also provide an alternate website name you want Google to consider."
+msgstr "Google mostra il nome del tuo sito nei risultati di ricerca, se vuoi puoi modificare il nome da visualizzare qui. Puoi anche fornire un nome alternativo che vuoi mostrare su Google."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/metas.php:105 admin/pages/metas.php:165
+msgid "Hide"
+msgstr "Nascondi"
+
+#: admin/pages/metas.php:21 admin/pages/metas.php:59
+msgid "Homepage"
+msgstr "Homepage"
+
+#: admin/pages/metas.php:68
+msgid "Homepage &amp; Front page"
+msgstr "Homepage & prima pagina"
+
+#: admin/pages/metas.php:227
+msgid "I don't know why you'd want to use meta keywords, but if you want to, check this box."
+msgstr "Non so perché si desidera utilizzare le parole chiave, ma se lo si desidera davvero spuntare questa casella."
+
+#. translators: %s expands to <code>noindex, follow</code>
+#: admin/pages/metas.php:194
+msgid "If this is the case on your site, you can choose to either disable it (which makes it redirect to the homepage), or to add %s to it so it doesn't show up in the search results."
+msgstr "Se questo è il caso sul tuo sito, è possibile disabilitarlo  (questo lo reindirizza alla home page), o aggiungergli %s in modo da non mostrarlo nei risultati della ricerca."
+
+#: admin/pages/metas.php:224
+msgid "If you want to prevent /page/2/ and further of any archive to show up in the search results, enable this."
+msgstr "Abilitare questa opzione se si desidera prevenire la visualizzazione delle /page/2/ e successive di ogni archivio."
+
+#. translators: %s expands to Yoast SEO
+#: admin/pages/dashboard.php:185
+msgid "If you want to restore a site to the default %s settings, press this button."
+msgstr "Se vuoi ripristinare un sito alle impostazioni predefinite di %s, premi questo pulsante."
+
+#. translators: %1$s / %2$s: links to an article about duplicate content on
+#. yoast.com
+#: admin/pages/metas.php:191
+msgid "If you're running a one author blog, the author archive will be exactly the same as your homepage. This is what's called a %1$sduplicate content problem%2$s."
+msgstr "Se il tuo blog è curato solo da un autore l'archivio autori sarà esattamente uguale alla tua homepage. Questo è ciò che si intende quando si parla di %1$scontenuti duplicati%2$s."
+
+#: admin/pages/dashboard.php:131 admin/pages/dashboard.php:138
+msgid "Ignore."
+msgstr "Ignora."
+
+#: admin/google_search_console/class-gsc.php:216
+msgid "Incorrect Google Authorization Code."
+msgstr "Google Authorization Code Errato."
+
+#: admin/pages/dashboard.php:156
+msgid "Introduction Tour"
+msgstr "Tour introduttivo"
+
+#: admin/google_search_console/class-gsc.php:273
+msgid "Issue categories"
+msgstr "Categorie di problemi"
+
+#: admin/google_search_console/class-gsc-table.php:108
+msgid "Last crawled"
+msgstr "Ultimo scansionato"
+
+#: admin/pages/dashboard.php:168
+msgid "Latest Changes"
+msgstr "Le ultime modifiche"
+
+#: admin/google_search_console/class-gsc-table.php:139
+#: admin/google_search_console/class-gsc-table.php:210
+msgid "Mark as fixed"
+msgstr "Segna come risolto"
+
+#: admin/google_search_console/views/gsc-create-redirect.php:32
+msgid "Mark as fixed:"
+msgstr "Segna come risolto:"
+
+#. Translators: %1$s: expands to 'Google Search Console'.
+#: admin/google_search_console/views/gsc-create-redirect.php:36
+msgid "Mark this issue as fixed in %1$s."
+msgstr "Marca questo problema come risolto in %1$s."
+
+#: admin/pages/metas.php:102 admin/pages/metas.php:142
+#: admin/pages/metas.php:163
+msgid "Meta Robots"
+msgstr "Metadati Robot"
+
+#: admin/pages/metas.php:61 admin/pages/metas.php:98 admin/pages/metas.php:159
+#: admin/pages/metas.php:178 admin/pages/metas.php:185
+msgid "Meta description template"
+msgstr "Template del Meta description"
+
+#: admin/pages/metas.php:63 admin/pages/metas.php:100 admin/pages/metas.php:161
+#: admin/pages/metas.php:180
+msgid "Meta keywords template"
+msgstr "Template della Meta keywords"
+
+#: admin/google_search_console/views/gsc-create-redirect.php:28
+msgid "New URL:"
+msgstr "Nuova URL:"
+
+#: admin/pages/network.php:105 admin/pages/network.php:112
+msgid "New sites in the network inherit their SEO settings from this site"
+msgstr "I nuovi siti del network erediteranno le impostazioni SEO da questo sito"
+
+#: admin/pages/metas.php:225
+msgid "Noindex subpages of archives"
+msgstr "Non indicizzare le sottopagine degli archivi"
+
+#: admin/pages/metas.php:128
+msgid "Note: instead of templates these are the actual titles and meta descriptions for these custom post type archive pages."
+msgstr "Nota: invece dei modelli, questi sono gli attuali titoli e meta descrizioni per le pagine archivio degli articoli di tipo custom."
+
+#: admin/pages/licenses.php:24
+msgid "Optimize your videos to show them off in search results and get more clicks!"
+msgstr "Ottimizza i tuoi video per visualizzarli nei risultati di ricerca ed avere più click!"
+
+#: admin/pages/dashboard.php:139
+msgid "Paging comments is enabled, this is not needed in 999 out of 1000 cases, so the suggestion is to disable it, to do that, simply uncheck the box before \"Break comments into pages...\""
+msgstr "L'impaginazione dei commenti è attiva, ma in 999 casi su 1000 non è necessaria, perciò ti suggeriamo di disabilitarla e, per farlo, deseleziona la voce \"Suddividi i commenti nelle pagine...\""
+
+#: admin/pages/advanced.php:20
+msgid "Permalinks"
+msgstr "Permalinks"
+
+#: admin/pages/dashboard.php:215 admin/pages/dashboard.php:226
+msgid "Person"
+msgstr "Persona"
+
+#: admin/google_search_console/views/gsc-display.php:36
+msgid "Please enter the Google Authorization Code in the field below and press the Authenticate button."
+msgstr "Inserisci il Codice di Autorizzazione di Google nel campo sottostante e premi il pulsante Autentica."
+
+#: admin/pages/metas.php:22 admin/pages/xml-sitemaps.php:40
+msgid "Post Types"
+msgstr "Tipi articolo"
+
+#: admin/pages/metas.php:230
+msgid "Prevents search engines from using the DMOZ description for pages from this site in the search results."
+msgstr "Previene i motori di ricerca dall'usare la descrizione delle pagine di questo sito presenti su DMOZ"
+
+#: admin/pages/metas.php:234
+msgid "Prevents search engines from using the Yahoo! directory description for pages from this site in the search results."
+msgstr "Previene i motori di ricerca dall'usare la descrizione delle pagine di questo sito presenti su Yahoo! directory"
+
+#: admin/pages/network.php:115
+msgid "Privacy sensitive (FB admins and such), theme specific (title rewrite) and a few very site specific settings will not be imported to new blogs."
+msgstr "Dati sensibili alla privacy (amministratori FB e similari), specifici per il tema (riscrittura titolo) ed alcuni altre impostazioni specifiche per un sito non verranno importate nei nuovi blog."
+
+#: admin/google_search_console/views/gsc-display.php:67
+#: admin/google_search_console/views/gsc-display.php:71
+msgid "Profile"
+msgstr "Profilo"
+
+#: admin/pages/advanced.php:24
+msgid "RSS"
+msgstr "RSS"
+
+#: admin/pages/licenses.php:36
+msgid "Rank better locally and in Google Maps, without breaking a sweat!"
+msgstr "Migliora il posizionamento locale e su Google Maps, senza fare nessuno sforzo!"
+
+#: admin/pages/dashboard.php:120
+msgid "Re-check theme."
+msgstr "Ricontrolla il tema."
+
+#: admin/google_search_console/views/gsc-display.php:44
+msgid "Reauthenticate with Google "
+msgstr "Riautenticati con Google"
+
+#: admin/google_search_console/views/gsc-create-redirect.php:21
+msgid "Redirect this broken URL and fix the error"
+msgstr "Fai il redirect di questa URL rotta e correggi l'errore"
+
+#: admin/google_search_console/views/gsc-display.php:16
+msgid "Reload crawl issues"
+msgstr "Ricarica i problemi di indicizzazione"
+
+#: admin/pages/dashboard.php:59
+msgid "Removed hardcoded meta description."
+msgstr "Rimossa la meta descrizione cablata nel codice."
+
+#: admin/google_search_console/class-gsc-category-filters.php:120
+msgid "Request timed out or site is blocking Google."
+msgstr "La richiesta è scaduta o il sito sta bloccando Google."
+
+#: admin/google_search_console/class-gsc-table.php:110
+msgid "Response code"
+msgstr "Codice di risposta"
+
+#: admin/pages/dashboard.php:182 admin/pages/dashboard.php:190
+msgid "Restore Default Settings"
+msgstr "Ripristina impostazioni iniziali"
+
+#: admin/pages/network.php:121
+msgid "Restore site to default settings"
+msgstr "Reimposta il sito ai valori predefiniti"
+
+#: admin/pages/network.php:139
+msgid "Restore site to defaults"
+msgstr "Reimposta il sito"
+
+#: admin/pages/network.php:118
+msgid "Save MultiSite Settings"
+msgstr "Salva le impostazioni multisito"
+
+#: admin/google_search_console/views/gsc-display.php:80
+msgid "Save Profile"
+msgstr "Salva profilo"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/licenses.php:43
+msgid "Seamlessly integrate WooCommerce with %1$s and get extra features!"
+msgstr "Integra naturalmente WooCommerce con %1$s ed ottieni funzionalità extra!"
+
+#: admin/google_search_console/class-gsc.php:111
+msgid "Search"
+msgstr "Ricerca"
+
+#: admin/pages/metas.php:211
+msgid "Search pages"
+msgstr "Ricerca pagine"
+
+#: admin/pages/dashboard.php:150
+msgid "Security"
+msgstr "Sicurezza"
+
+#: admin/google_search_console/class-gsc-category-filters.php:120
+msgid "Server Error"
+msgstr "Errore del server"
+
+#: admin/pages/network.php:24
+msgid "Settings Updated."
+msgstr "Impostazioni aggiornate."
+
+#: admin/pages/metas.php:103
+msgid "Show date in snippet preview?"
+msgstr "Visualizzare la data nello snippet di anteprima?"
+
+#: admin/pages/network.php:96
+msgid "Site Admins (default)"
+msgstr "Amministratori del sito (predefinito)"
+
+#: admin/pages/network.php:130
+msgid "Site ID"
+msgstr "ID Sito"
+
+#: admin/pages/metas.php:221
+msgid "Sitewide meta settings"
+msgstr "Impostazioni meta del sito"
+
+#: admin/google_search_console/class-gsc-platform-tabs.php:44
+#: admin/google_search_console/class-gsc.php:275
+msgid "Smartphone"
+msgstr "Smartphone"
+
+#: admin/pages/metas.php:94
+msgid "So remember: If you change the %sattachment redirection setting%s in the future, the below settings will take effect for *all* media items."
+msgstr "Quindi ricorda: se in futuro cambierai %sle impostazioni di reindirizzamento degli allegati%s, le impostazioni seguenti avranno effetto per *tutti* gli elementi dei media."
+
+#: admin/google_search_console/class-gsc-category-filters.php:121
+msgid "Soft 404"
+msgstr "Soft 404"
+
+#: admin/pages/metas.php:208
+msgid "Special Pages"
+msgstr "Pagine speciali"
+
+#: admin/pages/network.php:97
+msgid "Super Admins only"
+msgstr "Solo super amministratori"
+
+#: admin/pages/metas.php:50
+msgid "Symbols are shown in the size they'll appear in in search results."
+msgstr "I simboli sono visualizzati nella dimensione con cui appariranno nei risultati di ricerca."
+
+#: admin/pages/metas.php:91 admin/pages/network.php:115
+msgid "Take note:"
+msgstr "Prendi nota:"
+
+#: admin/pages/dashboard.php:157
+msgid "Take this tour to quickly learn about the use of this plugin."
+msgstr "Seguire questa panoramica per imparare velocemente l'utilizzo di questo plugin."
+
+#: admin/pages/metas.php:23 admin/pages/xml-sitemaps.php:43
+msgid "Taxonomies"
+msgstr "Tassonomie"
+
+#. Translators: %1$s: expands to Google Search Console.
+#: admin/google_search_console/class-gsc.php:172
+msgid "The %1$s data has been removed. You will have to reauthenticate if you want to retrieve the data again."
+msgstr "I dati di %1$s sono stato rimossi. Sarà necessario ripetere l'autenticazione se si desidera recuperare i dati nuovamente."
+
+#: admin/pages/dashboard.php:105
+msgid "The following file(s) is/are blocking your XML sitemaps from working properly:"
+msgstr "Il/i seguente/i file(s) impedisce/ono alla tua XML sitemap di funzionare correttamente"
+
+#: admin/google_search_console/class-gsc.php:185
+msgid "The issues have been successfully reloaded!"
+msgstr "I problemi sono stati ricaricati con successo!"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/licenses.php:18
+msgid "The premium version of %1$s with more features & support."
+msgstr "La versione premium di  %1$s con molte altre funzionalità e l'assistenza."
+
+#: admin/google_search_console/class-gsc-category-filters.php:121
+msgid "The target URL doesn't exist, but your server is not returning a 404 (file not found) error."
+msgstr "L'URL di destinazione non esiste, ma il server non restituisce un errore 404 (file non trovato)."
+
+#: admin/google_search_console/views/gsc-display.php:72
+msgid "There were no profiles found"
+msgstr "Nessun profilo trovato"
+
+#. translators: %s expands to <code>noindex, follow</code>
+#: admin/pages/metas.php:210
+msgid "These pages will be %s by default, so they will never show up in search results."
+msgstr "Queste pagine saranno %s di default, quindi non appariranno mai nei risultati delle ricerche."
+
+#: admin/pages/dashboard.php:208
+msgid "This data is shown as metadata in your site. It is intended to appear in Google's Knowledge Graph. You can be either a company, or a person, choose either:"
+msgstr "Questo dato viene riportato come metadata nel tuo sito. &Egrave; destinato a comparire nel Knowledge Graph di Google. Puoi scegliete se essere una societ&agrave; o una persona:"
+
+#: admin/pages/licenses.php:117
+msgid "This is where you would enter the license keys for one of our premium plugins, should you activate one."
+msgstr "Questo è dove è necessario immettere le chiavi di licenza per uno dei nostri plugin premium, si dovrebbe attivare."
+
+#: admin/pages/metas.php:134 admin/pages/social.php:61
+#: admin/views/tool-bulk-editor.php:33
+msgid "Title"
+msgstr "Titolo"
+
+#: admin/pages/metas.php:45
+msgid "Title Separator"
+msgstr "Separatore del titolo"
+
+#: admin/pages/metas.php:60 admin/pages/metas.php:97 admin/pages/metas.php:158
+#: admin/pages/metas.php:177 admin/pages/metas.php:184
+#: admin/pages/metas.php:212 admin/pages/metas.php:215
+msgid "Title template"
+msgstr "Titolo del template"
+
+#. Translators: %1$s: expands to 'Yoast SEO', %2$s expands to Google Search
+#. Console.
+#: admin/google_search_console/views/gsc-display.php:31
+msgid "To allow %1$s to fetch your %2$s information, please enter your Google Authorization Code."
+msgstr "Per consentire %1$s di recuperare le proprie %2$s informazioni, inserisci il tuo Codice di Autorizzazione di Google."
+
+#. Translators: %1$s: expands to 'Yoast SEO Premium', %2$s: links to Yoast SEO
+#. Premium plugin page.
+#: admin/google_search_console/views/gsc-create-redirect.php:64
+msgid "To be able to create a redirect and fix this issue, you need %1$s. You can buy the plugin, including one year support and updates, on %2$s."
+msgstr "Per essere in grado di creare un redirect e risolvere questo problema, avete bisogno di %1$s. È possibile acquistare il plugin, compreso un anno di assistenza e aggiornamenti, su %2$s."
+
+#: admin/google_search_console/class-gsc-table.php:107
+msgid "URL"
+msgstr "URL"
+
+#: admin/pages/dashboard.php:241
+msgid "Unchecking this box allows authors and editors to redirect posts, noindex them and do other things you might not want if you don't trust your authors."
+msgstr "Togliendo il segno di spunta a questa casella si permette ad autori ed editori di reindirizzare gli articoli, renderli non indicizzati e diverse altre cose che non si desidererebbero se non si ha assoluta fiducia nei propri autori:"
+
+#: admin/pages/metas.php:228
+msgid "Use meta keywords tag?"
+msgstr "Usare i tag meta keywords?"
+
+#: admin/pages/network.php:124
+msgid "Using this form you can reset a site to the default SEO settings."
+msgstr "Usando questo modulo sarà possibile impostare il sito con i valori predefiniti di SEO."
+
+#: admin/pages/dashboard.php:176
+msgid "View Changes"
+msgstr "Visualizza le modifiche"
+
+#. translators: %s expands to Yoast SEO
+#: admin/pages/dashboard.php:171
+msgid "We've summarized the most recent changes in %s."
+msgstr "Abbiamo creato un sommario delle modifiche più recenti in %s."
+
+#: admin/pages/dashboard.php:149
+msgid "Webmaster Tools"
+msgstr "Strumenti per Webmaster"
+
+#: admin/pages/dashboard.php:194 admin/pages/dashboard.php:201
+msgid "Website name"
+msgstr "Nome sito web"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/network.php:94
+msgid "Who should have access to the %1$s settings"
+msgstr "Chi dovrebbe avere accesso alle impostazioni di %1$s"
+
+#: admin/pages/dashboard.php:236
+msgid "Yandex Webmaster Tools"
+msgstr "Yandex Webmaster Tools"
+
+#: admin/google_search_console/class-gsc-service.php:137
+msgid "Yoast plugins share some code between them to make your site faster. As a result of that, we need all Yoast plugins to be up to date. We've detected this isn't the case, so please update the Yoast plugins that aren't up to date yet."
+msgstr "I plugin di Yoast condividono parte del codice tra di loro per rendere il sito più veloce. Per questo motivo abbiamo bisogno che tutti i plugin di Yoast siano aggiornati. Abbiamo rilevato che in questo caso non è così, quindi si prega di aggiornare i plugin di Yoast che non sono ancora aggiornati."
+
+#: admin/pages/metas.php:72
+msgid "You can determine the title and description for the blog page by %sediting the blog page itself &raquo;%s"
+msgstr "Puoi impostare il titolo e la descrizione della pagina blog %sdalla pagina stessa &raquo;%s"
+
+#: admin/pages/metas.php:69
+msgid "You can determine the title and description for the front page by %sediting the front page itself &raquo;%s"
+msgstr "Puoi impostare il titolo e la descrizione per la prima pagina %sediting direttamente la prima pagina&raquo;%s"
+
+#: admin/pages/dashboard.php:232
+msgid "You can use the boxes below to verify with the different Webmaster Tools, if your site is already verified, you can just forget about these. Enter the verify meta values for:"
+msgstr "Puoi usare il riquadro sottostante per verificare i differenti strumenti per webmaster, se il tuo sito è già verificato, non devi fare altro. Inserisci i codici di verifica:"
+
+#. Translators: %1$s: expands to the current url and %2$s expands to url the
+#. redirects points to.
+#: admin/google_search_console/views/gsc-create-redirect.php:51
+msgid "You do not have to create a redirect for URL %1$s because a redirect already exists. The existing redirect points to %2$s. If this is fine you can mark this issue as fixed. If not, please go to the redirects page and change the target URL."
+msgstr "Non devi creare un redirect per l'URL %1$s perché esiste già un redirect. Il redirect esistente punta a %2$s. Se questo va bene è possibile contrassegnare questo problema come risolto. In caso contrario, vai alla pagina di redirect e modifica l'URL di destinazione."
+
+#: admin/pages/dashboard.php:132
+msgid "You do not have your postname in the URL of your posts and pages, it is highly recommended that you do. Consider setting your permalink structure to <strong>/%postname%/</strong>."
+msgstr "Non appare il titolo dell'articolo nella URL dei tuoi articoli e pagine, si consiglia di inserirlo. Imposta la struttura del tuo permalink con <strong>/%postname%/</strong>."
+
+#: admin/pages/dashboard.php:147
+msgid "Your Info"
+msgstr "I tuoi dati"
+
+#: admin/pages/dashboard.php:227
+msgid "Your name"
+msgstr "Il vostro nome"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/dashboard.php:122
+msgid "Your theme contains a meta description, which blocks %1$s from working properly, please delete the following line, or press fix it:"
+msgstr "Il tema contiene una descrizione meta, che impedisce a %1$s di funzionare correttamente, si prega di eliminare la riga seguente, oppure premi correggilo:"
+
+#: admin/pages/network.php:64
+msgid "archived"
+msgstr "archiviato"
+
+#: admin/pages/network.php:67
+msgid "mature"
+msgstr "maturo"
+
+#: admin/google_search_console/views/gsc-display.php:80
+msgid "or"
+msgstr "o"
+
+#: admin/pages/network.php:61
+msgid "public"
+msgstr "pubblico"
+
+#: admin/pages/network.php:70
+msgid "spam"
+msgstr "spam"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-taxonomy.php:185
+msgid "%1$s Settings"
+msgstr "Impostazioni %1$s"
+
+#: admin/class-opengraph-admin.php:62
+msgid "%s Description"
+msgstr "%s Descrizione"
+
+#: admin/class-opengraph-admin.php:65
+msgid "%s Image"
+msgstr "%s Immagine"
+
+#. translators: %s is the plugin name
+#: admin/class-yoast-dashboard-widget.php:41
+msgid "%s Posts Overview"
+msgstr "Panoramica degli articoli %s"
+
+#: admin/class-opengraph-admin.php:59
+msgid "%s Title"
+msgstr "%s Titolo"
+
+#: admin/class-pointers.php:311
+msgid "A Sitemap is an XML file that lists the URLs for a site. It allows webmasters to include additional information about each URL: when it was last updated, how often it changes, and how important it is in relation to other URLs in the site. This allows search engines to crawl the site more intelligently."
+msgstr "Una Sitemap è costituita da un file XML che elenca tutte gli indirizzi URL di un sito. Permette ai webmaster di aggiungere informazioni aggiuntive per ogni URL: quando è stato aggiornato l'ultima volta, quando viene modificato e quanto è importante rispetto agli altri indirizzi URL del sito. Questo permette ai motori di ricerca di indicizzare meglio il tuo sito."
+
+#: admin/class-metabox.php:2024
+msgid "A meta description has been specified, but it does not contain the target keyword / phrase."
+msgstr "È stata fornita una meta description, ma non contiene la parola chiave / frase di riferimento."
+
+#: admin/google_search_console/class-gsc-category-filters.php:113
+msgid "Access denied"
+msgstr "Accesso negato"
+
+#: admin/class-social-facebook.php:355
+msgid "Add Another Facebook Admin"
+msgstr "Aggiungi un nuovo Amministratore Facebook"
+
+#: admin/class-social-facebook.php:335 admin/class-social-facebook.php:349
+msgid "Add Facebook admin"
+msgstr "Aggiungi amministratore Facebook"
+
+#: admin/class-pointers.php:242
+msgid "Add some info here needed for Google's Knowledge Graph."
+msgstr "Aggiungi alcune informazioni richieste da Google per Knowledge Graph."
+
+#: admin/class-social-facebook.php:330
+msgid "Admin's Facebook user ID:"
+msgstr "ID utente amministratore di Facebook:"
+
+#: admin/class-social-facebook.php:326
+msgid "Admin's name:"
+msgstr "Nome Amministratore:"
+
+#: admin/class-pointers.php:327
+msgid "Advanced Settings"
+msgstr "Impostazioni avanzate"
+
+#: admin/class-metabox.php:956
+msgid "All SEO Scores"
+msgstr "Tutti i punteggi SEO"
+
+#: admin/class-pointers.php:327
+msgid "All of the options on these tabs are for advanced users only, if you don&#8217;t know whether you should check any, don&#8217;t touch them."
+msgstr "Tutte le opzioni di questa linguetta sono solo per utenti esperti. Se non sapete quali selezioni effettuare, non toccate nulla."
+
+#: admin/class-taxonomy.php:81
+msgid "Always include"
+msgstr "Includi sempre"
+
+#: admin/class-taxonomy.php:77
+msgid "Always index"
+msgstr "Indicizza sempre"
+
+#: admin/class-taxonomy.php:78
+msgid "Always noindex"
+msgstr "Non indicizzare mai"
+
+#: admin/class-pointers.php:277 admin/pages/metas.php:24
+#: frontend/class-frontend.php:523 frontend/class-frontend.php:544
+msgid "Archives"
+msgstr "Archivi"
+
+#: admin/class-taxonomy.php:80
+msgid "Auto detect"
+msgstr "Rileva automaticamente"
+
+#. Translators: %1$s: expands to '<code>robots.txt</code>'.
+#: admin/google_search_console/class-gsc-category-filters.php:119
+msgid "Blocked"
+msgstr "Bloccato"
+
+#. translators: %1$s expands to Yoast SEO, %2$s: 'Google XML Sitemaps' plugin
+#. name of possibly conflicting plugin with regard to the creation of sitemaps
+#: admin/class-plugin-conflict.php:135
+msgid "Both %1$s and %2$s can create XML sitemaps. Having two XML sitemaps is not beneficial for search engines, yet might slow down your site."
+msgstr "Sia  %1$s che  %2$s generano una mappa del sito XML, avere due file XML non porta benefici per i motori di ricerca e potrebbe rallentare il sito."
+
+#. translators: %1$s expands to Yoast SEO, %2%s: 'Facebook' plugin name of
+#. possibly conflicting plugin with regard to creating OpenGraph output
+#: admin/class-plugin-conflict.php:128
+msgid "Both %1$s and %2$s create OpenGraph output, which might make Facebook, Twitter, LinkedIn and other social networks use the wrong texts and images when your pages are being shared."
+msgstr "Sia  %1$s che  %2$s generano dei meta tag OpenGraph, che potrebbero causare un'aspetto indesiderato dei vostri contenuti qualora fossero condivisi su Facebook, Twitter, LinkedIn ed altri social."
+
+#: admin/class-taxonomy.php:198 admin/pages/metas.php:140
+msgid "Breadcrumbs title"
+msgstr "Titoli Breadcrumbs"
+
+#: admin/class-taxonomy.php:195
+msgid "Canonical"
+msgstr "Canonical"
+
+#: admin/class-social-facebook.php:455
+msgid "Clear all Facebook Data"
+msgstr "Cancella tutti i dati Facebook"
+
+#: admin/class-pointers.php:121
+msgid "Close"
+msgstr "Chiudi"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-plugin-conflict.php:132
+msgid "Configure %1$s's OpenGraph settings"
+msgstr "Configura le impostazioni OpenGraph di %1$s"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-plugin-conflict.php:139
+msgid "Configure %1$s's XML Sitemap settings"
+msgstr "Configura le impostazione sitemap  XMLdi %1$s's XML"
+
+#: admin/class-pointers.php:183
+msgid "Congratulations!"
+msgstr "Congratulazioni!"
+
+#: admin/class-yoast-form.php:132
+msgid "Current option:"
+msgstr "Opzione corrente:"
+
+#: admin/class-social-facebook.php:360
+msgid "Currently connected Facebook admins:"
+msgstr "Amministratori Facebook attualmente connessi"
+
+#. translators: %s: 'Facebook' plugin name of possibly conflicting plugin
+#: admin/class-yoast-plugin-conflict.php:172
+msgid "Deactivate %s"
+msgstr "Disattivare %s"
+
+#: admin/class-yoast-form.php:130
+msgid "Debug Information"
+msgstr "Informazioni di debug"
+
+#: admin/class-pointers.php:244
+msgid "Determine who has access to the plugins advanced settings on the post edit screen."
+msgstr "Stabilisci chi ha accesso alle impostazioni avanzate del plugin dalla schermata di modifica degli articoli."
+
+#: admin/class-pointers.php:257
+msgid "Email"
+msgstr "Email"
+
+#: admin/class-pointers.php:340
+msgid "Extensions and Licenses"
+msgstr "Estensioni e licenze"
+
+#: admin/class-opengraph-admin.php:41 admin/class-pointers.php:292
+#: admin/pages/social.php:21
+msgid "Facebook"
+msgstr "Facebook"
+
+#: admin/class-social-facebook.php:387
+msgid "Facebook App ID"
+msgstr "Facebook App ID"
+
+#: admin/class-social-facebook.php:292
+msgid "Facebook Insights and Admins"
+msgstr "Facebook Insights e Amministratori"
+
+#: admin/google_search_console/class-gsc-category-filters.php:114
+msgid "Faulty redirects"
+msgstr "Redirect difettosi"
+
+#: admin/class-metabox.php:2088
+msgid "Flesch Reading Ease"
+msgstr "Coefficiente di lettura di Flesch"
+
+#: admin/class-metabox.php:985
+msgid "Focus KW"
+msgstr "Focus KW"
+
+#: admin/class-metabox.php:1018
+msgid "Focus keyword not set."
+msgstr "Parole chiave non impostate."
+
+#: admin/class-pointers.php:239
+msgid "General settings"
+msgstr "Impostazioni generali"
+
+#: admin/google_search_console/class-gsc-category-filters.php:117
+msgid "Google was unable to crawl this URL due to an undetermined issue."
+msgstr "Google non è stato in grado di controllare questo URL a causa di un problema sconosciuto."
+
+#: admin/google_search_console/class-gsc-category-filters.php:119
+msgid "Googlebot could access your site, but certain URLs are blocked for Googlebot in your %1$s file. This block could either be for all Googlebots or even specifically for Googlebot-mobile."
+msgstr "Googlebot può accedere al tuo sito, ma alcuni URL sono bloccati per il Googlebot nel tuo file %1$s. Questo blocco potrebbe essere sia per tutti i Googlebots o anche specifico per Googlebot-mobile."
+
+#. translators: %1$s and %2$s expand to a link to the Yoast Knowledge Base
+#: admin/class-social-facebook.php:323
+msgid "If you don't know where to find the needed ID, see %1$sthis knowledge base article%2$s."
+msgstr "se non sai dove trovare l'ID necessario, leggi %1$squest'articolo dal knowledge base%2$s"
+
+#. translators: %s expands to the social network's name
+#: admin/class-opengraph-admin.php:32
+msgid "If you don't want to use the meta description for sharing the post on %s but want another description there, write it here."
+msgstr "Se non vuoi usare la descrizione meta per la condivisione dell'articolo su %s, e vuoi usare un'altra descrizione, inseriscila qui."
+
+#. translators: %s expands to the social network's name
+#: admin/class-opengraph-admin.php:30
+msgid "If you don't want to use the post title for sharing the post on %s but instead want another title there, write it here."
+msgstr "Se non vuoi utilizzare il titolo del post nella condivisione su %s, ma desideri un altro titolo, scrivilo qui."
+
+#: admin/class-pointers.php:313
+msgid "If you want to exclude certain post types and/or taxonomies, you can also set that on this page."
+msgstr "Se vuoi escludere determinati post type e/o tassonomie puoi farlo in questa pagina."
+
+#. translators: %s expands to the social network's name
+#: admin/class-opengraph-admin.php:34
+msgid "If you want to override the image used on %s for this post, upload / choose an image or add the URL here."
+msgstr "Se vuoi sovrascrivere l'immagine usata su %s per questo post, carica / scegli un immagine o aggiungi un URL qui."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-pointers.php:254
+msgid "If you would like us to keep you up-to-date regarding %1$s and other plugins by Yoast, subscribe to our newsletter:"
+msgstr "Se vuoi esssere tenuto aggiornato sulle novità di %1$s e deglia altri plugin di Yoast, iscriviti alla nostra newsletter"
+
+#: admin/class-metabox.php:2019
+msgid "In the specified meta description, consider: How does it compare to the competition? Could it be made more appealing?"
+msgstr "Nella meta description fornita, tieni presente: come si rapporta alla concorrenza? Può essere migliorata?"
+
+#: admin/class-taxonomy.php:218
+msgid "Include in sitemap?"
+msgstr "Includere nella sitemap?"
+
+#: admin/class-pointers.php:314
+msgid "Is your webserver low on memory? Decrease the entries per sitemap (default: 1000) to reduce load."
+msgstr "Il tuo server ha poca memoria? Diminuisci i valori per sitemap (default: 1000) per ridurre il carico."
+
+#: admin/class-metabox.php:1957
+msgid "Keyword / keyphrase appears in %s (out of %s) subheadings in the copy. While not a major ranking factor, this is beneficial."
+msgstr "La parola chiave/frase chiave appare in %s (su %s) sottotestate nel documento. Sebbene non sia un fattore principale di posizionamento, è certamente di aiuto."
+
+#: admin/class-pointers.php:345 admin/pages/licenses.php:78
+msgid "Licenses"
+msgstr "Licenze"
+
+#: admin/class-pointers.php:349
+msgid "Like this plugin?"
+msgstr "Ti piace questo plugin?"
+
+#: admin/class-metabox.php:984
+msgid "Meta Desc."
+msgstr "Desc. meta"
+
+#: admin/class-taxonomy.php:192
+msgid "Meta keywords used on the archive page for this term."
+msgstr "Meta keywords usate dalla pagina archivio per questo termine."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-pointers.php:247
+msgid "More %1$s"
+msgstr "Più %1$s"
+
+#. translators: %1$s and %2$s expand to a link to the Yoast Knowledge Base
+#: admin/class-social-facebook.php:302
+msgid "More info can be found %1$son our knowledge base%2$s."
+msgstr "Maggiori informazioni si possono trovare %1$sdentro la nostra knowledge base%2$s."
+
+#: admin/class-taxonomy.php:82
+msgid "Never include"
+msgstr "Non includere mai"
+
+#: admin/class-pointers.php:217
+msgid "Next"
+msgstr "Successivo"
+
+#: admin/class-metabox.php:1370
+msgid "No focus keyword was set for this %s. If you do not set a focus keyword, no score can be calculated."
+msgstr "Non è stata impostata alcuna  parola chiave specifica per questo %s. Se non si imposta una parola chiave specificanon è possibile calcolare alcun punteggio."
+
+#: admin/class-metabox.php:1871
+msgid "No images appear in this page, consider adding some as appropriate."
+msgstr "In questa pagina non appare alcuna immagine, considera di aggiungerne alcune rilevanti."
+
+#: admin/class-metabox.php:2022
+msgid "No meta description has been specified, search engines will display copy from the page instead."
+msgstr "Non è stata fornita alcuna meta description, i motori di ricerca mostreranno quindi sezioni di testo della pagina."
+
+#: admin/class-metabox.php:1750
+msgid "No outbound links appear in this page, consider adding some as appropriate."
+msgstr "In questa pagina non c'è alcun link in uscita, considera di aggiungerne alcuni rilevanti."
+
+#: admin/class-metabox.php:1365
+msgid "No post content to analyse."
+msgstr "Nessun contenuto da analizzare nell'articolo"
+
+#: admin/class-metabox.php:1956
+msgid "No subheading tags (like an H2) appear in the copy."
+msgstr "Nessuna marcatore di sottotestata (come ad esempio gli H2) appare nel testo."
+
+#: admin/class-taxonomy.php:214
+msgid "Noindex this %s"
+msgstr "Noindex questa %s"
+
+#: admin/google_search_console/class-gsc-category-filters.php:115
+msgid "Not followed"
+msgstr "Non seguito"
+
+#: admin/google_search_console/class-gsc-category-filters.php:116
+msgid "Not found"
+msgstr "Non trovato"
+
+#: admin/class-pointers.php:276
+msgid "Now click on the &#8216;%1$sPost Types%2$s&#8217;-tab, as this will be our example."
+msgstr "Ora fai click sul tab &#8216;%1$sPost Types%2$s&#8217; che rappresenterà il nostro esempio"
+
+#: admin/class-metabox.php:2175 inc/class-wpseo-utils.php:213
+msgid "OK"
+msgstr "OK"
+
+#: admin/class-pointers.php:278
+msgid "On the Other tab you can change sitewide meta settings, like enable meta keywords."
+msgstr "Nel Tab \"Altri\" puoi cambiare le impostazioni meta valide per tutto il sito, come abilitare le meta keywords."
+
+#: admin/class-pointers.php:277
+msgid "On the archives tab you can set templates for specific pages like author archives, search results and more."
+msgstr "Una delle tab degli archivi può settare il teamplate per specifica pagina come autore, archivi, risultati di ricerca e molto altro."
+
+#: admin/class-pointers.php:292
+msgid "On this tab you can enable the %1$sFacebook Open Graph%2$s functionality from this plugin, as well as assign a Facebook user or Application to be the admin of your site, so you can view the Facebook insights."
+msgstr "In questa scheda è possibile attivare dal plugin la funzionalità %1$sOpen Graph di Facebook%2$s, assegnare un utente Facebook o settare l'applicazione come amministratore del vostro sito, in modo da poter visualizzare gli insight di Facebook. "
+
+#: admin/class-pointers.php:297
+msgid "On this tab you can enter some more of your social accounts, mostly used for Google's Knowledge Graph."
+msgstr "In questa tab puoi inserire alcuni dei tuoi account social, principalmente utilizzati per il Knowledge Graph di Google."
+
+#: admin/class-pointers.php:295
+msgid "On this tab you can verify your site with Pinterest and enter your Pinterest account."
+msgstr "in questa tab puoi verificare il tuo sito con Pinterest e inserire il tuo account Pinterest"
+
+#. translators: %1$s expands to Yoast SEO Premium
+#: admin/class-pointers.php:347
+msgid "Once you&#8217;ve purchased %1$s or any other premium Yoast plugin, you&#8217;ll have to enter a license key. You can do so on the Licenses-tab. Once you&#8217;ve activated your premium plugin, you can use all its powerful features."
+msgstr "Quando acquisti %1$s o qualsiasi altro plugin premium di Yoast, devi inserire il codice della licenza. Puoi inserire la licenza nel tab \"Licenze\". Dopo aver attivato il tuo plugin premium, potrai utilizzare tutte le sue potenti funzionalità."
+
+#: admin/class-pointers.php:278 admin/class-pointers.php:297
+#: admin/google_search_console/class-gsc-category-filters.php:117
+#: admin/pages/metas.php:25
+msgid "Other"
+msgstr "Altro"
+
+#: admin/class-metabox.php:590 admin/class-metabox.php:609
+msgid "Page Analysis"
+msgstr "Analisi della pagina"
+
+#: admin/class-metabox.php:1377
+msgid "Page Analysis has been disabled."
+msgstr "L'analisi della pagina è stata disabilitata."
+
+#: admin/class-pointers.php:295 admin/pages/social.php:23
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: admin/class-metabox.php:1697
+msgid "Please create a page title."
+msgstr "Si prega di creare un titolo di pagina."
+
+#: admin/class-social-facebook.php:113
+msgid "Please make sure both fields are filled."
+msgstr "Perpiacere assicurati che entrambi i campi siano compilati."
+
+#. translators: %s expands to <code>noindex</code>
+#: admin/class-yoast-dashboard-widget.php:147
+msgid "Posts that are set to %s"
+msgstr "Articoli che sono impostati a %s"
+
+#: admin/class-yoast-dashboard-widget.php:122
+msgid "Posts with OK SEO score"
+msgstr "Articoli con punteggio SEO OK"
+
+#: admin/class-yoast-dashboard-widget.php:134
+msgid "Posts with bad SEO score"
+msgstr "Articoli con basso punteggio SEO"
+
+#: admin/class-yoast-dashboard-widget.php:116
+msgid "Posts with good SEO score"
+msgstr "Articoli con un buon punteggio SEO"
+
+#: admin/class-yoast-dashboard-widget.php:128
+msgid "Posts with poor SEO score"
+msgstr "Articoli con basso punteggio SEO"
+
+#: admin/class-yoast-dashboard-widget.php:140
+msgid "Posts without focus keyword"
+msgstr "Articoli senza focus keyword"
+
+#: admin/class-pointers.php:223
+msgid "Previous"
+msgstr "Precedente"
+
+#: admin/class-yoast-plugin-conflict.php:165
+msgid "Recommended solution"
+msgstr "Soluzione consigliata"
+
+#: admin/class-yoast-form.php:227
+msgid "Remove these ads?"
+msgstr "Rimuovi queste pubblicità?"
+
+#: admin/class-taxonomy.php:189
+msgid "SEO Description"
+msgstr "Descrizione SEO"
+
+#: admin/class-metabox.php:947
+msgid "SEO: Bad"
+msgstr "SEO: Pessimo"
+
+#: admin/class-metabox.php:950
+msgid "SEO: Good"
+msgstr "SEO: Buono"
+
+#: admin/class-metabox.php:946
+msgid "SEO: No Focus Keyword"
+msgstr "SEO: Parola chiave principale mancante"
+
+#: admin/class-metabox.php:949
+msgid "SEO: OK"
+msgstr "SEO: OK"
+
+#: admin/class-metabox.php:948
+msgid "SEO: Poor"
+msgstr "SEO: Scarso"
+
+#: admin/class-metabox.php:951
+msgid "SEO: Post Noindexed"
+msgstr "SEO: Articolo in noindex"
+
+#: admin/google_search_console/class-gsc-category-filters.php:113
+msgid "Server requires authentication or is blocking Googlebot from accessing the site."
+msgstr "Il server richiede una autenticazione o sta bloccando l'accesso al sito del googlebot."
+
+#: admin/class-pointers.php:275
+msgid "Sitewide settings"
+msgstr "Impostazioni globali"
+
+#: admin/class-pointers.php:349
+msgid "So, we&#8217;ve come to the end of the tour. If you like the plugin, please %srate it 5 stars on WordPress.org%s!"
+msgstr "Siamo arrivati alla fine del tour. Se ti è piaciuto il plugin, %srate votaci con 5 stelle su Wordpress.org%s!"
+
+#: admin/class-pointers.php:291
+msgid "Social settings"
+msgstr "Impostazioni Social"
+
+#: admin/class-pointers.php:191 admin/pages/dashboard.php:161
+msgid "Start Tour"
+msgstr "Inizia il tour"
+
+#: admin/class-pointers.php:259
+msgid "Subscribe"
+msgstr "Iscriviti"
+
+#: admin/class-pointers.php:252
+msgid "Subscribe to our Newsletter"
+msgstr "Iscriviti alla nostra newsletter"
+
+#: admin/class-social-facebook.php:178
+msgid "Successfully cleared all Facebook Data"
+msgstr "Eliminati con successo tutti i dati Facebook"
+
+#: admin/class-social-facebook.php:155
+msgid "Successfully removed admin %s"
+msgstr "Rimosso amministratore %s"
+
+#: admin/class-pointers.php:244
+msgid "Tab: Security"
+msgstr "Scheda: Sicurezza"
+
+#: admin/class-pointers.php:243
+msgid "Tab: Webmaster Tools"
+msgstr "Scheda: Strumenti Webmaster"
+
+#: admin/class-pointers.php:242
+msgid "Tab: Your Info / Company Info"
+msgstr "Scheda: I tuoi dati / Dati societari"
+
+#: admin/class-pointers.php:276
+msgid "Templates and settings"
+msgstr " Template e impostazioni"
+
+#: admin/class-pointers.php:350
+msgid "Thank you for using our plugin and good luck with your SEO!<br/><br/>Best,<br/>Team Yoast - %1$sYoast.com%2$s"
+msgstr "Grazie per usare il nostro plugin e buona fortuna per il tuo SEO!<br/><br/>Con i migliori auguri,<br/>Team Yoast - %1$sYoast.com%2$s"
+
+#. translators: %1$s: 'Facebook & Open Graph' plugin name(s) of possibly
+#. conflicting plugin(s), %2$s to Yoast SEO
+#: admin/class-yoast-plugin-conflict.php:163
+msgid "The %1$s plugin(s) might cause issues when used in conjunction with %2$s."
+msgstr "I plugin %1$s potrebbero causare problemi quando utilizzati in combinazione con %2$s."
+
+#: admin/class-taxonomy.php:198
+msgid "The Breadcrumbs title is used in the breadcrumbs where this %s appears."
+msgstr "Sarà utilizzato il titolo impostato nei Breadcrumbs dove appare \"%s\"."
+
+#: admin/class-taxonomy.php:189
+msgid "The SEO description is used for the meta description on the archive page for this term."
+msgstr "La descrizione SEO è usata come meta descrizione nelle pagine archivio per questo termine."
+
+#: admin/class-taxonomy.php:188
+msgid "The SEO title is used on the archive page for this term."
+msgstr "Il titolo SEO è utilizzato per questo termine nella pagina di archivio."
+
+#: admin/class-metabox.php:2028
+msgid "The available space is shorter than the usual 155 characters because Google will also include the publication date in the snippet."
+msgstr "Lo spazio disponibile è minore dei classici 155 caratteri perchè Google includerà nel riassunto anche la data di pubblicazione."
+
+#: admin/class-taxonomy.php:195
+msgid "The canonical link is shown on the archive page for this term."
+msgstr "Il link alla URL canonical è mostrato nella pagina archivio per questo termine."
+
+#: admin/class-metabox.php:2089
+msgid "The copy scores %s in the %s test, which is considered %s to read. %s"
+msgstr "Il testo ha un valore di %s nel test %s, che è considerato %s da leggere. %s"
+
+#: admin/class-metabox.php:555
+msgid "The featured image should be at least 200x200 pixels to be picked up by Facebook and other social media sites."
+msgstr "L'immagine in evidenza deve avere una dimensione di almeno 200x200 pixel per poter essere utilizzata da facebook e altri social media."
+
+#: admin/class-pointers.php:275
+msgid "The first tab will show you site-wide settings for titles, normally you'll only need to change the Title Separator."
+msgstr "La prima linguetta mostrerà le impostazioni per i titoli su tutto il sito, normalmente dovreste solo cambiare il Separatore del Titolo"
+
+#: admin/class-pointers.php:293
+msgid "The frontpage settings allow you to set meta-data for your homepage, whereas the default settings allow you to set a fallback for all posts/pages without images. "
+msgstr "Le impostazioni della frontpage ti permettono di inserire i meta-data per la tua homepage, laddove le impostazioni di default ti permettono di impostare tali dati per tutti i post/pagine senza immagini."
+
+#: admin/class-metabox.php:1872
+msgid "The images on this page are missing alt tags."
+msgstr "Le immagini in questa pagina non presentano i tag alt."
+
+#: admin/class-metabox.php:1873
+msgid "The images on this page contain alt tags with the target keyword / phrase."
+msgstr "Le immagini in questa pagina contengono tag alt con la parola chiave / frase di riferimento."
+
+#: admin/class-metabox.php:1874
+msgid "The images on this page do not have alt tags containing your keyword / phrase."
+msgstr "Le immagini in questa pagina non presentano tag alt contenenti la tua la parola chiave / frase."
+
+#: admin/class-metabox.php:1701
+msgid "The keyword / phrase %s does not appear in the page title."
+msgstr "La parola chiave / frase %s non appare nel titolo della pagina."
+
+#: admin/class-metabox.php:1659
+msgid "The keyword / phrase appears in the URL for this page."
+msgstr "La parola chiave / frase appare nell'URL di questa pagina."
+
+#: admin/class-metabox.php:1660
+msgid "The keyword / phrase does not appear in the URL for this page. If you decide to rename the URL be sure to check the old URL 301 redirects to the new one!"
+msgstr "La parola chiave/frase non appare nella URL di questa pagina. Se decidi di rinominare l'URL assicurati di controllare che la vecchia URL rediriga con un 301 a quella nuova!"
+
+#: admin/class-metabox.php:2086
+msgid "The keyword appears in the first paragraph of the copy."
+msgstr "La parola chiave appare nel primo paragrafo del testo."
+
+#: admin/class-metabox.php:2081
+msgid "The keyword density is %s%%, which is a bit low, the keyword was found %s times."
+msgstr "La ricorrenza della parola chiave è %s%%, è un po' bassa, la parola chiave è stata trovata %s volte. "
+
+#: admin/class-metabox.php:2083
+msgid "The keyword density is %s%%, which is great, the keyword was found %s times."
+msgstr "La ricorrenza della parola chiave è %s%%, è un bene, la parola chiave è stata trovata %s volte."
+
+#: admin/class-metabox.php:2082
+msgid "The keyword density is %s%%, which is over the advised 4.5%% maximum, the keyword was found %s times."
+msgstr "La densità della parola chiave è %s%%, che è sopra il massimo valore consigliato di 4.5%%, la parola chiave è stata trovata %s volte."
+
+#: admin/class-metabox.php:2085
+msgid "The keyword doesn't appear in the first paragraph of the copy, make sure the topic is clear immediately."
+msgstr "La parola chiave non appare nel primo paragrafo del testo, assicurati che l'argomento sia chiaro da subito."
+
+#: admin/class-metabox.php:1645
+msgid "The keyword for this page contains one or more %sstop words%s, consider removing them. Found '%s'."
+msgstr "La keyword per questa pagina contiene una o più %sstop words%s, consiglio di rimuoverle. Rilevate:'%s'."
+
+#: admin/class-metabox.php:2023
+msgid "The meta description contains the primary keyword / phrase."
+msgstr "La meta description contiene la parola chiave / frase principale."
+
+#: admin/class-metabox.php:2020
+msgid "The meta description is under 120 characters, however up to %s characters are available. %s"
+msgstr "La meta description è inferiore a 120 caratteri, sono ancora disponibili %s caratteri. %s"
+
+#: admin/class-metabox.php:1699
+msgid "The page title contains %d characters, which is less than the recommended minimum of 40 characters. Use the space to add keyword variations or create compelling call-to-action copy."
+msgstr "Il titolo di pagina contiene %d caratteri, che è inferiore alla lunghezza raccomandata di 40 caratteri. Usa questo spazio per aggiungere variazioni di parole chiave o per creare una descrizione persuasiva. "
+
+#: admin/class-metabox.php:1700
+msgid "The page title contains %d characters, which is more than the viewable limit of 70 characters; some words will not be visible to users in your listing."
+msgstr "Il titolo di pagina contiene  %d caratteri, che è maggiore del limite visibile di 70 caratteri; alcune parole non saranno visibili agli utenti nel listing."
+
+#: admin/class-metabox.php:1702
+msgid "The page title contains keyword / phrase, at the beginning which is considered to improve rankings."
+msgstr "Il titolo di pagina che contiene parole / frasi all'inizio, è considerato più rilevante per i posizionamenti. "
+
+#: admin/class-metabox.php:1703
+msgid "The page title contains keyword / phrase, but it does not appear at the beginning; try and move it to the beginning."
+msgstr "Il titolo di pagina contiene la parola chiave / frase, ma questa non appare all'inizio; prova a spostarla all'inizio."
+
+#: admin/class-metabox.php:1698
+msgid "The page title is more than 40 characters and less than the recommended 70 character limit."
+msgstr "Il titolo di pagina supera i 40 caratteri e rimane nel limite dei 70 caratteri raccomandati."
+
+#. translators: %1$s expands to Yoast SEO, %2$s to Yoast SEO Premium, %3$s and
+#. %4$s to an anchor with link about our premium plugins
+#: admin/class-pointers.php:343
+msgid "The powerful functions of %1$s can be extended with %3$sYoast premium plugins%4$s. These premium plugins require the installation of %1$s or %2$s and add specific functionality. You can read all about the Yoast Premium Plugins %3$shere%4$s."
+msgstr "Le potenti funzioni di %1$s possono essere estese con i %3$splugin premium di Yoast%4$s. Questi plugin premium richiedono l'installazione di %1$s o %2$s e aggiungono specifiche funzionalità. Puoi leggere tutto sui plugin premium di Yoast  %3$squi%4$s."
+
+#. translators: %1$s expands to the social network, %2$s to the recommended
+#. image size
+#: admin/class-opengraph-admin.php:36
+msgid "The recommended image size for %1$s is %2$spx."
+msgstr "La dimensione dell'immagine consigliata per %1$s è %2$spx."
+
+#: admin/class-metabox.php:1661
+msgid "The slug for this page contains one or more <a href=\"http://en.wikipedia.org/wiki/Stop_words\">stop words</a>, consider removing them."
+msgstr "L'abbreviazione di questa pagina contiene una o più <a href=\"http://en.wikipedia.org/wiki/Stop_words\">stop word</a>, si suggerisce di rimuoverle. "
+
+#: admin/class-metabox.php:1662
+msgid "The slug for this page is a bit long, consider shortening it."
+msgstr "L'abbreviazione di questa pagina è troppo lunga, prova ad abbreviarla."
+
+#: admin/class-metabox.php:2021
+msgid "The specified meta description is over %s characters, reducing it will ensure the entire description is visible. %s"
+msgstr "La meta description specificata super i %s caratteri, ridurla assicurerà la completa visibilità della descrizione. %s"
+
+#: admin/class-pointers.php:276
+msgid "The templates are built using variables. You can find all these variables in the help tab (in the top-right corner of the page). The settings allow you to set specific behavior for the post types."
+msgstr "I Template sono costruiti utilizzando le variabili. Potete trovare tutte queste variabili nella scheda di aiuto (in alto a destra della pagina). Le impostazioni consentono di definire un comportamento specifico per i post types."
+
+#: admin/class-metabox.php:2077
+msgid "There are %d words contained in the body copy, this is below the %d word recommended minimum. Add more useful content on this topic for readers."
+msgstr "Ci sono %d parole contenute nel testo del documento, sono leggermente al di sotto del minimo raccomandato di %d parole. Aggiungi altro contenuto rilevante per i lettori."
+
+#: admin/class-metabox.php:2076
+msgid "There are %d words contained in the body copy, this is more than the %d word recommended minimum."
+msgstr "Ci sono %d parole contenute nel testo del documento, sono più del minimo raccomandato di %d parole."
+
+#: admin/class-metabox.php:2078
+msgid "There are %d words contained in the body copy, this is slightly below the %d word recommended minimum, add a bit more copy."
+msgstr "Ci sono %d parole contenute nel testo del documento, sono leggermente al di sotto del minimo raccomandato di %d parole, aggiungi ancora del testo."
+
+#: admin/class-metabox.php:2079
+msgid "There are %d words contained in the body copy. This is far too low and should be increased."
+msgstr "Ci sono %d parole contenute nel testo. Sono troppo poche e devono essere aumentate."
+
+#: admin/class-pointers.php:250
+msgid "There&#8217;s more to learn about WordPress &amp; SEO than just using this plugin. A great start is our article %1$sthe definitive guide to WordPress SEO%2$s."
+msgstr "Per conoscere WordPress SEO c'è molto altro da imparare oltre al semplice utilizzo di questo plugin. Un ottimo aiuto per iniziare te lo da il nostro articolo %1$sthe definitive guide to WordPress SEO%2$s."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-pointers.php:241
+msgid "These are the General settings for %1$s, here you can restart this tour or revert the %1$s settings to default."
+msgstr "Queste sono le impostazioni generali di %1$s, qui puoi ricominciare questo tour o reimpostare le impostazioni iniziali di %1$s."
+
+#: admin/class-taxonomy.php:209
+msgid "This %s follows the indexation rules set under Metas and Titles, you can override it here."
+msgstr "Questo/a %s segue le regole di indicizzazione impostate in Titoli e Metadati, da qui è possibile cambiarne il comportamento."
+
+#: admin/class-social-facebook.php:119
+msgid "This Facebook user has already been added as an admin."
+msgstr "Questo utente Facebook è già stato aggiunto come amministratore."
+
+#: admin/class-pointers.php:274
+msgid "This is where you\tset the titles and meta-information for all your post types, taxonomies, archives, special pages and for your homepage. The page is divided into different tabs. Make sure you check &#8217;em all out!"
+msgstr "Qui puoi impostare →\ti titoli e le meta-informazioni per tutti i tipi di post, tassonomie, archivi, pagine speciali e per la vostra homepage.  La pagina è divisa in diverse schede. Assicurati di controllarle entrambe."
+
+#: admin/class-metabox.php:1754
+msgid "This page has %s nofollowed link(s) and %s normal outbound link(s)."
+msgstr "Questa pagina ha in uscita %s link nofollow e %s link normali."
+
+#: admin/class-metabox.php:1753
+msgid "This page has %s outbound link(s), all nofollowed."
+msgstr "Questa pagina ha %s link in uscita, tutti nofollow."
+
+#: admin/class-metabox.php:1752
+msgid "This page has %s outbound link(s)."
+msgstr "Questa pagina ha %s link in uscita."
+
+#: admin/class-pointers.php:312
+msgid "This plugin adds XML sitemaps to your site. The sitemaps are automatically updated when you publish a new post, page or custom post and Google and Bing will be automatically notified."
+msgstr "Questo plugin aggiunge le sitemap xml al tuo sito. Le sitemap sono aggiornate automaticamente quando pubblichi un nuovo articolo, pagina o custom post e la notifica verrà inviata automaticamente a Google e Bing."
+
+#: admin/class-pointers.php:296
+msgid "This tab allows you to add specific post meta data for Google+. And if you have a Google+ page for your business, add that URL here and link it on your %1$sGoogle+%2$s page&#8217;s about page."
+msgstr "Questa tab ti permette di aggiungere meta data specifici per Google+. E se hai una pagina Google+ per la tua attività aggiungi l'URL qui e collegalo alla sezione about della tua pagina %1$sGoogle+%2$."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-yoast-plugin-conflict.php:176
+msgid "This warning is generated by %1$s."
+msgstr "Questo avviso è generato da %1$s."
+
+#: admin/class-pointers.php:273
+msgid "Title &amp; Metas settings"
+msgstr "Impostazioni titoli & metadati"
+
+#. translators: %1$s and %2$s expand to a link to Facebook Insights
+#: admin/class-social-facebook.php:319
+msgid "To be able to access %1$sFacebook Insights%2$s, you need to add a user here. The name is used for reference only, the ID is used for verification."
+msgstr "Per accedere a %1$sFacebook Insights%2$s, devi aggiungere qui un utente. Il nome verrà utilizzato solo come riferimento, l'ID verrà usato come verifica."
+
+#: admin/class-social-facebook.php:294
+msgid "To be able to access %sFacebook Insights%s for your site, you need to specify a Facebook Admin. This can be a user. If you have an app for your site, you could use that as well."
+msgstr "Per essere in grado di accedere al  %sFacebook Insights%s del tuo sito, hai bisogno di specificare un amministratore Facebook. Può essere un utente ma se hai una app per il tuo sito, potresti usare quella. Per la maggior parte delle persone, un utente è tuttavia sufficiente."
+
+#: admin/class-metabox.php:1359
+msgid "To enjoy all the benefits of the page analysis feature, you'll need to (get your host to) install it."
+msgstr "Per godere dei benefici dell'estensione dell'analisi della pagina, tu o il tuo provider dovete installarla."
+
+#: admin/class-metabox.php:1335
+msgid "To update this page analysis, save as draft or update and check this tab again"
+msgstr "Per aggiornare questa pagina di analisi salvare come bozza o aggiornare e verificare nuovamente questa linguetta"
+
+#: admin/class-metabox.php:2180
+msgid "Try to make shorter sentences to improve readability."
+msgstr "Prova a creare frasi più brevi per migliorare la leggibilità."
+
+#: admin/class-metabox.php:2185 admin/class-metabox.php:2190
+msgid "Try to make shorter sentences, using less difficult words to improve readability."
+msgstr "Prova a creare frasi più brevi, usa parole meno difficili per migliorare la leggibilità. "
+
+#: admin/class-opengraph-admin.php:42 admin/class-pointers.php:294
+#: admin/pages/social.php:22
+msgid "Twitter"
+msgstr "Twitter"
+
+#: admin/google_search_console/class-gsc-category-filters.php:116
+msgid "URL points to a non-existent page."
+msgstr "URL punta a una pagina che non esiste"
+
+#. translators: %1$s expands to Yoast SEO Premium
+#: admin/class-yoast-form.php:230
+msgid "Upgrade to %1$s &raquo;"
+msgstr "Fai l'upgrade a %1$s &raquo;"
+
+#: admin/class-yoast-form.php:424
+msgid "Upload Image"
+msgstr "Carica immagine"
+
+#: admin/class-taxonomy.php:76
+msgid "Use %s default (Currently: %s)"
+msgstr "Utilizzare %s come predefinito (Attualmente: %s)"
+
+#: admin/class-yoast-plugin-conflict.php:160
+msgid "Warning!"
+msgstr "Attenzione!"
+
+#. translators: %1$s: 'Facebook & Open Graph' plugin name(s) of possibly
+#. conflicting plugin(s). %2$s to Yoast SEO
+#: admin/class-yoast-plugin-conflict.php:168
+msgid "We recommend you deactivate %1$s and have another look at your %2$s configuration using the button above."
+msgstr "Si consiglia di disattivare  %1$s e controllare la corretta configurazione di  %2$s mediante il pulsante sopra."
+
+#: admin/class-pointers.php:311
+msgid "What are XML sitemaps?"
+msgstr "Cosa sono le Sitemaps XML?"
+
+#: admin/class-pointers.php:312
+msgid "What does the plugin do with XML Sitemaps?"
+msgstr "Cosa fa il plugin con le Sitemap XML?"
+
+#: admin/class-pointers.php:294
+msgid "With %1$sTwitter Cards%2$s, you can attach rich photos, videos and media experience to tweets that drive traffic to your website. Simply check the box, sign up for the service, and users who Tweet links to your content will have a &#8220;Card&#8221; added to the tweet that&#8217;s visible to all of their followers."
+msgstr "Con la %1$sTwitter Cards%2$s, puoi allegare foto, video ed altre esperienze multimediali nei tweet che creeranno traffico verso il tuo sito. Seleziona il box, iscriviti al servizio e gli utenti che sono collegati ai tuoi contenuti su Twitter riceveranno una &#8220;Card&#8221; collegata al tweet che &#8217;s sarà visibile a tutti i loro followers."
+
+#: admin/class-pointers.php:243
+msgid "You can add the verification codes for the different Webmaster Tools programs here. We highly encourage you to check out both Google and Bing&#8217;s Webmaster Tools."
+msgstr "Qui puoi aggiungere i codici di verifica dei diversi servizi di strumenti per webmaster. Ti consigliamo caldamente di inserire i codici per Google e Bing."
+
+#: admin/class-metabox.php:1958
+msgid "You have not used your keyword / keyphrase in any subheading (such as an H2) in your copy."
+msgstr "All'interno del testo non è stata utilizzata alcuna parola/frase chiave in nessuna delle sottotestate  (come ad esempio una H2)."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-pointers.php:185
+msgid "You&#8217;ve just installed %1$s! Click &#8220;Start Tour&#8221; to view a quick introduction of this plugin&#8217;s core functionality."
+msgstr "Hai appena installato %1$s! Fai clic su \"Inizia tour\" per una introduzione rapida sulle funzionalità del core di questo plugin."
+
+#: admin/class-metabox.php:1751
+msgid "You're linking to another page with the keyword you want this page to rank for, consider changing that if you truly want this page to rank."
+msgstr "Stai rimandando ad un'altra pagina attraverso la parola chiave con cui vorresti indicizzare questa pagina, considera di modificarla se vuoi che questa pagina venga indicizzata."
+
+#: admin/class-metabox.php:1614
+msgid "You've never used this focus keyword before, very good."
+msgstr "Non hai mai usato questa parola chiave prima d'ora, molto bene."
+
+#: admin/class-metabox.php:1617
+msgid "You've used this focus keyword %1$sonce before%2$s, be sure to make very clear which URL on your site is the most important for this keyword."
+msgstr "Hai già usato questa parola chiave %1$sun'altra volta%2$s, fai attenzione ad evidenziare l'URL più importante per questa parola chiave all'interno del tuo sito."
+
+#: admin/class-metabox.php:1626
+msgid "You've used this focus keyword %3$s%4$d times before%2$s, it's probably a good idea to read %1$sthis post on cornerstone content%2$s and improve your keyword strategy."
+msgstr "Hai già usato questa parola chiave %3$s%4$d volte %2$s prima d'ora, ti suggerisco di leggere %1$s questo articolo %2$s e migliorare la tua strategia di scelta delle parole chiave."
+
+#: admin/class-metabox.php:1359
+msgid "Your hosting environment does not support PHP's %sDocument Object Model%s."
+msgstr "Il vostro ambiente di hosting non supporta il PHP %sDocument Object Model%s."
+
+#: admin/class-social-facebook.php:116
+msgid "Your input contains invalid characters. Please make sure both fields are filled in correctly."
+msgstr "Il testo inserito contiene caratteri non validi. Assicurati che entrambi i campi siano riempiti in modo corretto."
+
+#: admin/class-metabox.php:2120
+msgid "Your keyphrase is over 10 words, a keyphrase should be shorter and there can be only one keyphrase."
+msgstr "La tua frase chiave è di oltre 10 parole, una frase chiave dovrebbe essere più breve e unica."
+
+#: admin/class-metabox.php:2184
+msgid "difficult"
+msgstr "difficile"
+
+#: admin/class-metabox.php:2167
+msgid "easy"
+msgstr "facile"
+
+#: admin/class-metabox.php:2179
+msgid "fairly difficult"
+msgstr "abbastanza difficile"
+
+#: admin/class-metabox.php:2171
+msgid "fairly easy"
+msgstr "abbastanza facile"
+
+#: admin/class-metabox.php:2189
+msgid "very difficult"
+msgstr "molto difficile"
+
+#: admin/class-metabox.php:2163
+msgid "very easy"
+msgstr "molto facile"
+
+#: admin/class-metabox.php:494
+msgid " (because of date display)"
+msgstr "(a causa della visualizzazione della data)"
+
+#. translators: %1$s expands to Yoast SEO, %2$s expands to 5.4.3, %3$s expands
+#. to Google Analytics by Yoast
+#: admin/class-admin-init.php:157
+msgid "%1$s detected you are using version %2$s of %3$s, please update to the latest version to prevent compatibility issues."
+msgstr "%1$s ha scoperto che stai utilizzando la versione %2$s di %3$s, aggiorna all'ultima versione per evitare problemi di compatibilità."
+
+#. translators: %1$s expands to Yoast SEO, $2%s to the version number, %3$s and
+#. %4$s to anchor tags with link to intro page
+#: admin/class-admin-init.php:71
+msgid "%1$s has been updated to version %2$s. %3$sClick here%4$s to find out what's new!"
+msgstr "%1$s è stato aggiornato alla versione %2$s. %3$sFai clic qui%4$s per scoprire cosa c'è di nuovo!"
+
+#. translators: %s is the name of the plugin
+#: admin/class-customizer.php:52
+msgid "%s Breadcrumbs"
+msgstr "%s Breadcrumb"
+
+#: admin/class-metabox.php:554
+msgid "(no parent)"
+msgstr "(nessun genitore)"
+
+#: admin/class-metabox.php:82
+msgid "301 Redirect"
+msgstr "Redirect 301"
+
+#: admin/class-bulk-editor-list-table.php:929
+msgid "Action"
+msgstr "Azione"
+
+#: admin/class-admin.php:144 admin/class-metabox.php:594
+#: admin/class-metabox.php:617 inc/wpseo-non-ajax-functions.php:430
+msgid "Advanced"
+msgstr "Avanzato"
+
+#: admin/class-metabox.php:67
+msgid "Advanced <code>meta</code> robots settings for this page."
+msgstr "Impostazioni Avanzate <code>meta</code> robots per questa pagina."
+
+#: admin/class-admin.php:238 admin/class-admin.php:239
+msgid "Advanced Variables"
+msgstr "Variabile Avanzate"
+
+#: admin/class-customizer.php:146
+msgid "Anchor text for the homepage:"
+msgstr "Anchor text per la homepage:"
+
+#: admin/class-metabox.php:542
+msgid "Article Heading: "
+msgstr "Intestazione articolo:"
+
+#: admin/class-admin.php:230 admin/class-admin.php:231
+msgid "Basic Variables"
+msgstr "Variabili di base"
+
+#: admin/class-customizer.php:246
+msgid "Breadcrumb for 404 pages:"
+msgstr "Breadcrumb per le pagine 404:"
+
+#: admin/class-metabox.php:76
+msgid "Breadcrumbs Title"
+msgstr "Titolo Breadcrumbs"
+
+#: admin/class-customizer.php:121
+msgid "Breadcrumbs separator:"
+msgstr "Separatore dei Breadcrumb:"
+
+#: admin/class-metabox.php:79
+msgid "Canonical URL"
+msgstr "Canonical URL"
+
+#: admin/class-metabox.php:453
+msgid "Check"
+msgstr "Controlla"
+
+#: admin/class-metabox.php:545
+msgid "Content: "
+msgstr "Contenuto:"
+
+#: admin/class-export.php:102
+msgid "Could not write settings to file."
+msgstr "Non è stato possibile scrivere i settaggi su file."
+
+#: admin/class-export.php:97
+msgid "Could not zip settings-file."
+msgstr "Non è possibile zippare il setting-file."
+
+#: admin/class-metabox.php:58
+msgid "Default for post type, currently: %s"
+msgstr "Valore predefinito per i tipi di articoli, attualmente: %s"
+
+#: admin/class-bulk-editor-list-table.php:748
+msgid "Edit"
+msgstr "Modifica"
+
+#: admin/class-admin.php:257
+msgid "Edit Files"
+msgstr "Modifica Files"
+
+#: admin/class-bulk-editor-list-table.php:748
+msgid "Edit this item"
+msgstr "Modifica questo elemento"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-export.php:71
+msgid "Error creating %1$s export: "
+msgstr "Errore nella creazione dell'export di %1$s: "
+
+#: admin/class-import-external.php:120
+msgid "Error: no Robots Meta data found to import."
+msgstr "Errore: nessun Robot metadata trovato da importare."
+
+#: admin/class-bulk-description-editor-list-table.php:43
+msgid "Existing Yoast Meta Description"
+msgstr "Meta descrizione Yoast esistente"
+
+#: admin/class-bulk-title-editor-list-table.php:45
+msgid "Existing Yoast SEO Title"
+msgstr "Titolo SEO Yoast esistente"
+
+#: admin/class-export.php:66
+msgid "Export created: %1$sdownload your export file here%2$s."
+msgstr "Export creato: %1$sscarica il tuo file di esportazione qui%2$s."
+
+#: admin/class-admin.php:174 admin/class-admin.php:264
+#: admin/class-pointers.php:341 admin/pages/licenses.php:77
+#: inc/wpseo-non-ajax-functions.php:436
+msgid "Extensions"
+msgstr "Estensioni"
+
+#: admin/class-admin.php:443
+msgid "FAQ"
+msgstr "FAQ"
+
+#: admin/class-admin.php:473
+msgid "Facebook profile URL"
+msgstr "URL profilo Facebook"
+
+#: admin/class-bulk-editor-list-table.php:387
+msgid "Filter"
+msgstr "Filtro"
+
+#: admin/class-metabox.php:39
+msgid "Focus Keyword"
+msgstr "Parola Chiave Principale"
+
+#: admin/class-metabox.php:541
+msgid "Focus keyword usage"
+msgstr "Focalizzare uso delle parole chiave"
+
+#: admin/class-metabox.php:63
+msgid "Follow"
+msgstr "Segui"
+
+#: admin/class-admin.php:213
+msgid "For more information:"
+msgstr "Per altre informazioni:"
+
+#: admin/class-admin.php:202 admin/class-metabox.php:588
+#: admin/class-metabox.php:607 admin/pages/dashboard.php:145
+#: admin/pages/metas.php:20 admin/pages/xml-sitemaps.php:36
+#: inc/wpseo-non-ajax-functions.php:406
+msgid "General"
+msgstr "Generale"
+
+#: admin/class-admin.php:100
+msgid "General Settings"
+msgstr "Impostazioni generali"
+
+#: admin/class-admin.php:469 admin/class-opengraph-admin.php:43
+#: admin/class-pointers.php:296 admin/pages/social.php:24
+msgid "Google+"
+msgstr "Google+"
+
+#: admin/class-import-external.php:108
+msgid "HeadSpace2 data successfully imported"
+msgstr "I dati di HeadSpace2 sono stati importati con successo"
+
+#: admin/class-admin.php:373
+msgid "Huge SEO Issue: You're blocking access to robots."
+msgstr "Grande problema SEO: stai bloccando l'accesso ai robot."
+
+#: admin/class-admin.php:376 admin/class-admin.php:411
+msgid "I know, don't bug me."
+msgstr "Lo so, non mi disturbare."
+
+#: admin/class-metabox.php:51
+msgid "If you type something above it will override your %smeta keywords template%s."
+msgstr "Se digiti qualcosa sovrascriverai il tuo %smeta keywords template%s."
+
+#: admin/class-admin-init.php:136
+msgid "Just another WordPress site"
+msgstr "Solo un altro sito WordPress"
+
+#: admin/class-metabox.php:66
+msgid "Meta Robots Advanced"
+msgstr "Meta Robots Avanzato"
+
+#: admin/class-metabox.php:62
+msgid "Meta Robots Follow"
+msgstr "Meta Robots Follow"
+
+#: admin/class-metabox.php:54
+msgid "Meta Robots Index"
+msgstr "Meta Robots Index"
+
+#: admin/class-metabox.php:46 admin/pages/metas.php:135
+msgid "Meta description"
+msgstr "Meta descrizione"
+
+#: admin/class-metabox.php:546
+msgid "Meta description: "
+msgstr "Meta descrizione:"
+
+#: admin/class-metabox.php:50 admin/class-taxonomy.php:192
+#: admin/pages/metas.php:137
+msgid "Meta keywords"
+msgstr "Meta keyword"
+
+#: admin/class-admin.php:251 admin/pages/network.php:86
+msgid "MultiSite Settings"
+msgstr "Impostazioni multisito"
+
+#: admin/class-metabox.php:70
+msgid "NO ODP"
+msgstr "NO ODP"
+
+#: admin/class-metabox.php:71
+msgid "NO YDIR"
+msgstr "NO YDIR"
+
+#: admin/class-bulk-description-editor-list-table.php:44
+msgid "New Yoast Meta Description"
+msgstr "Nuova meta descrizione Yoast"
+
+#: admin/class-bulk-title-editor-list-table.php:46
+msgid "New Yoast SEO Title"
+msgstr "Nuovo titolo SEO Yoast"
+
+#: admin/class-metabox.php:73
+msgid "No Archive"
+msgstr "Nessun Archivio"
+
+#: admin/class-metabox.php:72
+msgid "No Image Index"
+msgstr "Nessuna immagine indice"
+
+#: admin/class-metabox.php:74
+msgid "No Snippet"
+msgstr "Nessuno Snippet"
+
+#: admin/class-metabox.php:431
+msgid "No focus keyword set."
+msgstr "Nessuna parola chiave"
+
+#: admin/class-import.php:151
+msgid "No settings found in file."
+msgstr "Nessuna impostazione trovata nel file."
+
+#: admin/class-export.php:181
+msgid "No taxonomy metadata found"
+msgstr "Non è stata trovata nessuna tassonomia dei metadata"
+
+#: admin/class-metabox.php:64
+msgid "Nofollow"
+msgstr "Non seguire"
+
+#: admin/class-metabox.php:69 admin/pages/network.php:53
+#: admin/views/tab-breadcrumbs.php:40 admin/views/tab-breadcrumbs.php:57
+#: inc/class-wpseo-meta.php:397
+msgid "None"
+msgstr "Nessuno"
+
+#: admin/class-admin.php:223
+msgid "Note that not all variables can be used in every template."
+msgstr "Non tutte le variabili possono essere usate in tutti i temi."
+
+#: admin/class-bulk-editor-list-table.php:924
+msgid "Page URL/Slug"
+msgstr "URL/Abbreviazione pagina"
+
+#: admin/class-metabox.php:544
+msgid "Page URL: "
+msgstr "URL pagina:"
+
+#: admin/class-metabox.php:543
+msgid "Page title: "
+msgstr "Titolo pagina:"
+
+#: admin/class-metabox.php:40
+msgid "Pick the main keyword or keyphrase that this post/page is about.<br/><br/>Read %sthis post%s for more info."
+msgstr "Scegliere la parola chiave o frase chiave principale di cui questo post/pagina parla.<br/><br/> Leggi %sthis post%s per maggiori informazioni."
+
+#: admin/class-bulk-editor-list-table.php:922
+msgid "Post Status"
+msgstr "Stato articolo"
+
+#: admin/class-bulk-editor-list-table.php:921
+msgid "Post Type"
+msgstr "Tipo articolo"
+
+#: admin/ajax.php:215
+msgid "Post doesn't exist."
+msgstr "L'articolo non esiste."
+
+#: admin/ajax.php:224
+msgid "Post has an invalid Post Type: %s."
+msgstr "L'articolo ha impostato un tipo invalido: %s."
+
+#: admin/class-metabox.php:417 admin/class-metabox.php:1004
+msgid "Post is set to noindex."
+msgstr "Articolo impostato come da non indicizzare"
+
+#: admin/class-admin.php:330
+msgid "Posts"
+msgstr "Articoli"
+
+#: admin/class-customizer.php:196
+msgid "Prefix for archive pages:"
+msgstr "Prefisso per le pagine archivio:"
+
+#: admin/class-customizer.php:171
+msgid "Prefix for breadcrumbs:"
+msgstr "Prefisso per i breadcrumb:"
+
+#: admin/class-customizer.php:221
+msgid "Prefix for search result pages:"
+msgstr "Prefisso per le pagine dei risultati della ricerca:"
+
+#: admin/class-admin.php:439
+msgid "Premium Support"
+msgstr "Supporto Premium"
+
+#: admin/class-bulk-editor-list-table.php:754
+msgid "Preview"
+msgstr "Anteprima"
+
+#: admin/class-bulk-editor-list-table.php:754
+msgid "Preview &#8220;%s&#8221;"
+msgstr "Anteprima &#8220;%s&#8221;"
+
+#: admin/class-bulk-editor-list-table.php:923
+msgid "Publication date"
+msgstr "Data di pubblicazione"
+
+#: admin/class-import-external.php:168
+msgid "RSS Footer options imported successfully."
+msgstr "Opzioni RSS Footer importate con successo. "
+
+#: admin/class-customizer.php:86
+msgid "Remove blog page from breadcrumbs"
+msgstr "Rimuovi la pagina del blog dai breadcrumb"
+
+#: admin/class-admin.php:100 admin/class-admin.php:251
+#: admin/class-metabox.php:982 inc/wpseo-non-ajax-functions.php:261
+msgid "SEO"
+msgstr "SEO"
+
+#: admin/class-admin.php:407
+msgid "SEO Issue:"
+msgstr "Problema SEO:"
+
+#: admin/class-metabox.php:42 admin/class-metabox.php:983
+#: admin/class-taxonomy.php:188
+msgid "SEO Title"
+msgstr "Titolo SEO"
+
+#: admin/class-metabox.php:451
+msgid "SEO:"
+msgstr "SEO:"
+
+#: admin/class-admin.php:162
+msgid "Search Console"
+msgstr "Console di ricerca"
+
+#: admin/class-config.php:109
+msgid "See the help tab for more info."
+msgstr "Consulta il tab Aiuto per maggiori informazioni."
+
+#: admin/class-import.php:173
+msgid "Setting \"%s\" is no longer used and has been discarded."
+msgstr "L'impostazione \"%s\" non è più in uso ed è stata scartata."
+
+#: admin/class-admin.php:427
+#: admin/google_search_console/class-gsc-platform-tabs.php:40
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: admin/class-import.php:76 admin/class-import.php:82
+#: admin/class-import.php:88 admin/class-import.php:120
+#: admin/class-import.php:127 admin/class-import.php:151
+msgid "Settings could not be imported:"
+msgstr "Le impostazioni non possono essere importate:"
+
+#: admin/class-import.php:148
+msgid "Settings successfully imported."
+msgstr "Impostazioni importate con successo."
+
+#: admin/class-metabox.php:68
+msgid "Site-wide default: %s"
+msgstr "Default di sistema: %s"
+
+#: admin/class-metabox.php:36
+msgid "Snippet Preview"
+msgstr "Anteprima Snippet"
+
+#: admin/class-admin.php:126 admin/class-opengraph-admin.php:75
+#: admin/class-opengraph-admin.php:86 inc/wpseo-non-ajax-functions.php:418
+msgid "Social"
+msgstr "Social"
+
+#: admin/ajax.php:119
+msgid "Some files could not be removed. Please remove them via FTP."
+msgstr "Alcuni files non possono essere rimossi. Per favore rimuovili via FTP."
+
+#: admin/class-admin.php:221
+msgid "Template explanation"
+msgstr "Spiegazione del modello"
+
+#: admin/class-metabox.php:47
+msgid "The <code>meta</code> description will be limited to %s chars%s, %s chars left."
+msgstr "La <code>meta</code> description sarà limitata %s chars%s, %s caratteri rimasti."
+
+#: admin/class-metabox.php:44
+msgid "The SEO title defaults to what is generated based on this sites title template for this posttype."
+msgstr "Le impostazioni predefinite del Titolo SEO sono generate in base al template di questo formato di articolo."
+
+#: admin/class-metabox.php:83
+msgid "The URL that this page should redirect to."
+msgstr "La URL alla quale questa pagina deve reindirizzare."
+
+#: admin/class-metabox.php:80
+msgid "The canonical URL that this page should point to, leave empty to default to permalink. %sCross domain canonical%s supported too."
+msgstr "La URL canonica a cui questa pagina dovrebbe puntare; lasciare in bianco per utilizzare il permalink di default. Supportati anche i %scross domain canonici%s."
+
+#: admin/class-metabox.php:48
+msgid "The meta description is often shown as the black text under the title in a search result. For this to work it has to contain the keyword that was searched for.<br/><br/>Read %sthis post%s for more info."
+msgstr "La meta descrizione nei risultati di ricerca viene spesso visualizzata come un testo in neretto sotto il titolo. Perché ciò funzioni essa deve contenere la parola chiave utilizzata nella ricerca.<br/><br/>SI legga %squesto articolo%s per maggiori informazioni."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-admin.php:223
+msgid "The title &amp; metas settings for %1$s are made up of variables that are replaced by specific values from the page when the page is displayed. The tabs on the left explain the available variables."
+msgstr "Le impostazioni di titolo &amp; meta per %1$s sono composte da variabili che sono sostituite da valori specifici della pagina quando quest'ultima è visualizzata. I tab sulla sinistra illustrano le variabili disponibili."
+
+#: admin/class-export.php:114
+msgid "This export includes taxonomy metadata"
+msgstr "Questa esportazione include la tassonomia dei metadata"
+
+#: admin/class-metabox.php:37
+msgid "This is a rendering of what this post might look like in Google's search results.<br/><br/>Read %sthis post%s for more info."
+msgstr "Questa è una anteprima di come questo articolo dovrebbe apparire nei risultati della ricerca di Google.<br/><br/>Leggi %squesto articolo%s per avere maggiori dettagli."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-export.php:112
+msgid "This is a settings export file for the %1$s plugin by Yoast.com"
+msgstr "File di esportazione delle impostazioni del plugin %1$s di Yoast.com"
+
+#: admin/class-metabox.php:43
+msgid "Title display in Google is limited to a fixed width, yours is too long."
+msgstr "La visualizzazione del titolo in Google è limitata ad una larghezza fissa, la tua è troppo lunga."
+
+#: admin/class-admin.php:214
+msgid "Title optimization"
+msgstr "Ottimizzazione del titolo"
+
+#: admin/class-metabox.php:77
+msgid "Title to use for this page in breadcrumb paths"
+msgstr "Titolo da usare nel percorso del breadcrumb in questa pagina"
+
+#: admin/class-admin.php:117 inc/wpseo-non-ajax-functions.php:412
+msgid "Titles &amp; Metas"
+msgstr "Titoli &amp; Metadati"
+
+#: admin/class-admin.php:153
+msgid "Tools"
+msgstr "Strumenti"
+
+#: admin/class-admin.php:471
+msgid "Twitter username (without @)"
+msgstr "Username Twitter (senza @)"
+
+#: admin/class-import.php:127
+msgid "Unzipping failed - file settings.ini not found."
+msgstr "Scompattamento fallito - il file settings.ini non è stato trovato."
+
+#: admin/class-import.php:120
+msgid "Unzipping failed with error \"%s\"."
+msgstr "Scompattamento fallito con errore \"%s\"."
+
+#: admin/class-import.php:88
+msgid "Upload failed."
+msgstr "Caricamento fallito."
+
+#: admin/class-config.php:95 admin/class-metabox.php:547
+#: admin/class-metabox.php:931
+msgid "Use Image"
+msgstr "Usa immagine"
+
+#: admin/class-bulk-editor-list-table.php:758
+#: admin/google_search_console/class-gsc-table.php:209
+msgid "View"
+msgstr "Visualizzazione"
+
+#: admin/class-bulk-editor-list-table.php:758
+msgid "View &#8220;%s&#8221;"
+msgstr "Visualizzazione &#8220;%s&#8221;"
+
+#: admin/class-bulk-editor-list-table.php:920
+msgid "WP Page Title"
+msgstr "Titolo pagina WP"
+
+#: admin/class-metabox.php:43
+msgid "Warning:"
+msgstr "Attenzione:"
+
+#: admin/class-metabox.php:56 admin/class-taxonomy.php:211
+msgid "Warning: even though you can set the meta robots setting here, the entire site is set to noindex in the sitewide privacy settings, so these settings won't have an effect."
+msgstr "Attenzione: anche se da qui puoi impostare i valori meta per le impostazioni per i robot, l'intero sito è impostato come da non indicizzare nelle impostazioni generali di privacy, quindi queste impostazioni non avranno alcun effetto."
+
+#. translators: %s: '%%term_title%%' variable used in titles and meta's
+#. template that's not compatible with the given template
+#: admin/class-config.php:109
+msgid "Warning: the variable %s cannot be used in this template."
+msgstr "Attenzione: la variabile %s non pu&ograve; essere utilizzata in questo template"
+
+#: admin/class-admin.php:215
+msgid "Why Google won't display the right page title"
+msgstr "Perché Google non mostrerà il titolo corretto delle pagine"
+
+#: admin/class-import-woothemes-seo.php:29
+msgid "WooThemes SEO framework settings &amp; data successfully imported."
+msgstr "I dati e le impostazioni del framework SEO di WooThemes sono stati importati con successo."
+
+#: admin/class-admin.php:135 admin/class-pointers.php:310
+#: inc/wpseo-non-ajax-functions.php:424
+msgid "XML Sitemaps"
+msgstr "Sitemaps XML"
+
+#: admin/class-import-external.php:192
+msgid "Yoast Breadcrumbs options could not be found"
+msgstr "Non sono state trovate le impostazioni di Yoast Breadcrumbs"
+
+#: admin/class-import-external.php:189
+msgid "Yoast Breadcrumbs options imported successfully."
+msgstr "le opzioni di Yoast Breadcrumbs sono state importate con successo."
+
+#: admin/class-bulk-editor-list-table.php:133
+msgid "You are not allowed to access this page."
+msgstr "Non hai il permesso di accedere a questa pagina."
+
+#: admin/ajax.php:240
+msgid "You can't edit %s that aren't yours."
+msgstr "Non puoi modificare i %s che non sono tuoi."
+
+#: admin/ajax.php:232
+msgid "You can't edit %s."
+msgstr "Non puoi modificare %s."
+
+#: admin/ajax.php:248
+msgid "You have used HTML in your value which is not allowed."
+msgstr "Non è consentito utilizzare HTML."
+
+#: admin/class-admin.php:374
+msgid "You must %sgo to your Reading Settings%s and uncheck the box for Search Engine Visibility."
+msgstr "Devi %sandare sulle tue Impostazioni Lettura%s e rimuovere la casella di spunta per la Visibilità ai motori di ricerca."
+
+#: admin/class-admin-init.php:115
+msgid "You still have the default WordPress tagline, even an empty one is probably better. %1$sYou can fix this in the customizer%2$s."
+msgstr "Hai ancora il motto standard di WordPress, persino un motto vuoto è probabilmente migliore. %1$sPuoi correggerlo in personalizza%2$s."
+
+#: admin/class-metabox.php:541
+msgid "Your focus keyword was found in:"
+msgstr "La tua parola chiave focus è stata trovata in:"
+
+#. translators: %1$s expands to Yoast SEO, %2$s to opening anchor and %3$s the
+#. anchor closing tag
+#: admin/class-admin.php:409
+msgid "Your theme contains a meta description, which blocks %1$s from working properly. Please visit the %2$sSEO Dashboard%3$s to fix this."
+msgstr "Il tuo tema contiene una meta descrizione che impedisce a %1$s di funzionare correttamente. Per favore, vai alla %2$sBacheca SEO%3$s per correggerlo."
+
+#. translators: this should be an array of stopwords for your language,
+#. separated by comma's.
+#: admin/class-admin.php:528
+msgid "a,about,above,after,again,against,all,am,an,and,any,are,as,at,be,because,been,before,being,below,between,both,but,by,could,did,do,does,doing,down,during,each,few,for,from,further,had,has,have,having,he,he'd,he'll,he's,her,here,here's,hers,herself,him,himself,his,how,how's,i,i'd,i'll,i'm,i've,if,in,into,is,it,it's,its,itself,let's,me,more,most,my,myself,nor,of,on,once,only,or,other,ought,our,ours,ourselves,out,over,own,same,she,she'd,she'll,she's,should,so,some,such,than,that,that's,the,their,theirs,them,themselves,then,there,there's,these,they,they'd,they'll,they're,they've,this,those,through,to,too,under,until,up,very,was,we,we'd,we'll,we're,we've,were,what,what's,when,when's,where,where's,which,while,who,who's,whom,why,why's,with,would,you,you'd,you'll,you're,you've,your,yours,yourself,yourselves"
+msgstr "a,su,sopra,dopo,nuovo,contro,tutto,am,una,e,qualsiasi,sono,come,a,essere,perché,stato,prima,essendo,di seguito,tra,entrambi,ma,da,potrebbe,fatto,fare,fa,facendo,giù,durante,ogni,pochi,per,da,inoltre,aveva,ha,avere,avendo,lui,aveva,che sarà lui,lui è,lei,qui,ecco,lei,lei stessa,lui,egli stesso,la sua,come,how,i,avevo,io,io sono,ho,se,in,in,è,esso,è,la sua,stesso,andiamo,me,di più,più,il mio,io stesso,né,di,on,una volta,soltanto,o,altre,dovrebbe,la nostra,il nostro,noi stessi,fuori,sopra,proprio,stesso,lei,aveva,si farà,lei è,dovrebbe,così,alcuni,tale,che,che,che è,il,loro,loro,loro,stessi,poi,là,c'è,questi,essi,avevano,faranno,sono,hanno,questo,quelli,attraverso,a,troppo,sotto,fino,up,molto,era,noi,saremmo,faremo,siamo,abbiamo,erano,che cosa,ciò che è,quando,quando di,dove,dov'è,che,mentre,che,che è,chi,perché,perché di,con,sarebbe,voi,faresti,potrai,sei,hai,il tuo,tuo,te,voi"
+
+#: admin/class-metabox.php:59
+msgid "index"
+msgstr "index"
+
+#: admin/class-metabox.php:60
+msgid "noindex"
+msgstr "noindex"
+
+#: admin/class-bulk-editor-list-table.php:294
+msgctxt "posts"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] "Tutto <span class=\"count\">(%s)</span>"
+msgstr[1] "Tutto <span class=\"count\">(%s)</span>"
+
+#: admin/class-bulk-editor-list-table.php:337
+msgctxt "posts"
+msgid "Trash <span class=\"count\">(%s)</span>"
+msgid_plural "Trash <span class=\"count\">(%s)</span>"
+msgstr[0] "Cestinato <span class=\"count\">(%s)</span>"
+msgstr[1] "Cestinati <span class=\"count\">(%s)</span>"

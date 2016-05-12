@@ -1,0 +1,1237 @@
+# Translation of Responsive in Japanese
+# This file is distributed under the same license as the Responsive package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-04-25 01:54:49+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Responsive\n"
+
+#. Description of the plugin/theme
+msgid "Responsive Theme is a flexible foundation with fluid grid system that adapts your website to mobile devices and the desktop or any other viewing environment. Theme features 9 Page Templates, 11 Widget Areas, 6 Template Layouts, 4 Menu Positions and more. Powerful but simple Theme Options for full CMS control with easy Logo Upload and Social Networking. Responsive is WooCommerce Compatible, Multilingual Ready (WPML), RTL-Language Support, Retina-Ready, Search Engine Friendly, W3C Markup Validated and currently translated into over 45 languages. Cross-Browser compatible. <a href=\"http://cyberchimps.com/forum/free/responsive/\">Official support forum</a> (http://cyberchimps.com/forum/free/responsive/)"
+msgstr "Responsive は可変グリッドシステムを備えた柔軟な土台のテーマで、サイトをモバイルデバイス、デスクトップ、その他どんな表示環境にも適応させることができます。テーマには9個のページテンプレート、11個のウィジェットエリア、6つのテンプレートレイアウト、4箇所のメニュー位置などが含まれます。フル CMS 向けのパワフルかつシンプルなテーマ設定で、簡単ロゴアップロードや SNS アイコン表示などをコントロールできます。Responsive は WooCommerce、MPML マルチリンガルプラグイン、RTL 言語、Retina / 高解像度などに対応しており、検索エンジンフレンドリーで W3C マークアップバリデーションにもパスしています。現在45位上の言語に翻訳されており、クロスブラウザー互換性も持ち合わせています。<a href=“http://cyberchimps.com/forum/free/responsive/“>公式サポートフォーラム</a> (http://cyberchimps.com/forum/free/responsive/)"
+
+#. Theme Name of the plugin/theme
+msgid "Responsive"
+msgstr "Responsive"
+
+#: core/includes/functions-admin.php:46
+msgid ""
+"<a href=\"http://cyberchimps.com/store/responsivepro/\" target=\"_blank\" title=\"Responsive Pro\">Responsive Pro</a> allows you to create Sliders using 13 Dynamic Sources like YouTube, Vimeo, Pinterest and more.\n"
+"Upgrade to <a href=\"http://cyberchimps.com/store/responsivepro/\" target=\"_blank\" title=\"Responsive Pro\">Responsive Pro</a> Today."
+msgstr ""
+"<a href=\"http://cyberchimps.com/store/responsivepro/\" target=\"_blank\" title=\"Responsive Pro\">Responsive Pro</a> では YouTube, Vimeo, Pinterest など13種類のサービスからの素材でスライダーを作成可能です。\n"
+"<a href=\"http://cyberchimps.com/store/responsivepro/\" target=\"_blank\" title=\"Responsive Pro\">Responsive Pro</a> にアップグレードしましょう。"
+
+#: core/includes/theme-options/theme-options.php:224
+msgid "Default Copyright Text"
+msgstr "標準の著作権表示"
+
+#: core/includes/theme-options/theme-options.php:218
+msgid "Copyright Text"
+msgstr "著作権テキスト"
+
+#: core/includes/customizer.php:337
+#: core/includes/theme-options/theme-options.php:227
+msgid "Display Powered By WordPress Link"
+msgstr "Powered By WordPress リンク表示"
+
+#: core/includes/customizer.php:323
+msgid "Footer Settings"
+msgstr "フッター設定"
+
+#: core/includes/customizer.php:326
+msgid "Default copyright text"
+msgstr "標準の著作権表示"
+
+#: core/includes/customizer.php:329
+msgid "Copyright text"
+msgstr "著作権テキスト"
+
+#. Template Name of the plugin/theme
+msgid "Blog Excerpt (summary)"
+msgstr "ブログ抜粋"
+
+#. Template Name of the plugin/theme
+msgid "Blog (full posts)"
+msgstr "ブログ (全文)"
+
+#. Template Name of the plugin/theme
+msgid "Landing Page (no menu)"
+msgstr "ランディングページ (メニューなし)"
+
+#. Template Name of the plugin/theme
+msgid "Sitemap"
+msgstr "サイトマップ"
+
+#: sitemap.php:57
+msgid "Pages"
+msgstr "固定ページ"
+
+#: sitemap.php:50
+msgid "Permanent Link to %s"
+msgstr "%s へのパーマリンク"
+
+#: sitemap.php:46
+msgid "Latest Posts"
+msgstr "最新の記事"
+
+#: sitemap.php:41
+msgid "Categories"
+msgstr "カテゴリー"
+
+#: sidebar-home.php:33
+msgid "This is your first home widget box. To edit please go to Appearance > Widgets and choose 6th widget from the top in area 6 called Home Widget 1. Title is also manageable from widgets as well."
+msgstr "1つ目のホームウィジェットボックスです。編集するには、「外観 > ウィジェット」画面で上から6つめにある「ホームウィジェット 1」（エリア 6）を選んでください。このウィジェット内でタイトルも指定できます。"
+
+#: sidebar-home.php:49
+msgid "This is your second home widget box. To edit please go to Appearance > Widgets and choose 7th widget from the top in area 7 called Home Widget 2. Title is also manageable from widgets as well."
+msgstr "2つ目のホームウィジェットボックスです。編集するには、「外観 > ウィジェット」画面で上から7つめにある「ホームウィジェット 2」（エリア 7）を選んでください。このウィジェット内でタイトルも指定できます。"
+
+#: sidebar-home.php:65
+msgid "This is your third home widget box. To edit please go to Appearance > Widgets and choose 8th widget from the top in area 8 called Home Widget 3. Title is also manageable from widgets as well."
+msgstr "3つ目のホームウィジェットボックスです。編集するには、「外観 > ウィジェット」画面で上から8つめにある「ホームウィジェット 3」（エリア 8）を選んでください。このウィジェット内でタイトルも指定できます。"
+
+#: single.php:48
+msgid "About"
+msgstr "紹介"
+
+#: sidebar-gallery.php:59 sidebar-gallery.php:62 sidebar-gallery.php:66
+msgid "sec"
+msgstr "秒"
+
+#: sidebar-gallery.php:73
+msgid "Camera:"
+msgstr "カメラ:"
+
+#: sidebar-half-left.php:30 sidebar-left-half.php:30 sidebar-left.php:30
+#: sidebar-right-half.php:30 sidebar-right.php:30 sidebar.php:56
+msgid "In Archive"
+msgstr "アーカイブ"
+
+#: sidebar-gallery.php:46
+msgid "mm"
+msgstr "mm"
+
+#: sidebar-gallery.php:50
+msgid "ISO:"
+msgstr "ISO:"
+
+#: sidebar-gallery.php:54
+msgid "Shutter:"
+msgstr "シャッター:"
+
+#: sidebar-gallery.php:41
+msgid "Aperture: f&#47;"
+msgstr "絞り: f&#47;"
+
+#: sidebar-gallery.php:46
+msgid "Focal Length:"
+msgstr "焦点距離:"
+
+#: sidebar-gallery.php:28
+msgid "Image Information"
+msgstr "画像情報"
+
+#: sidebar-gallery.php:35
+msgid "Full Size:"
+msgstr "フルサイズ:"
+
+#: searchform.php:26
+msgid "Go"
+msgstr "Go"
+
+#: searchform.php:25
+msgid "search here &hellip;"
+msgstr "検索&hellip;"
+
+#: searchform.php:24
+msgid "Search for:"
+msgstr "検索:"
+
+#: loop-no-posts.php:34
+msgid "You can return %s or search for the page you were looking for."
+msgstr "%sに戻るか、探していたページを検索してみましょう"
+
+#: loop-no-posts.php:38
+msgid "&larr; Home"
+msgstr "&larr; ホーム"
+
+#: loop-no-posts.php:26
+msgid "Your search for %s did not match any entries."
+msgstr "「%s」に一致する検索結果が見つかりませんでした。"
+
+#: loop-no-posts.php:26
+msgid "404 &#8212; Fancy meeting you here!"
+msgstr "404 &#8212; お探しのページが見つかりません。"
+
+#: loop-no-posts.php:31
+msgid "Don&#39;t panic, we&#39;ll get through this together. Let&#39;s explore our options here."
+msgstr "落ち着いてください、大丈夫です。他のオプションを一緒に考えてみましょう。"
+
+#: loop-header.php:41
+msgid "Blog Archives"
+msgstr "ブログアーカイブ"
+
+#: loop-header.php:39
+msgid "Yearly Archives: %s"
+msgstr "年別アーカイブ: %s"
+
+#: loop-header.php:37
+msgid "Monthly Archives: %s"
+msgstr "月別アーカイブ: %s"
+
+#: loop-header.php:35
+msgid "Daily Archives: %s"
+msgstr "日別アーカイブ: %s"
+
+#: image.php:74 post-data.php:32 sidebar-content-half-page.php:66
+#: sidebar-content-page.php:66 sitemap.php:65
+msgid "Edit"
+msgstr "編集"
+
+#: image.php:70 post-data.php:26 sidebar-content-half-page.php:62
+#: sidebar-content-page.php:62
+msgid "Posted in %s"
+msgstr "カテゴリー: %s"
+
+#: image.php:45 post-meta-page.php:32 post-meta.php:35
+#: sidebar-content-half-page.php:47 sidebar-content-page.php:47
+msgid "% Comments &darr;"
+msgstr "%件のコメント &darr;"
+
+#: image.php:69 post-data.php:27 sidebar-content-half-page.php:61
+#: sidebar-content-page.php:61
+msgid "Tagged with:"
+msgstr "タグ:"
+
+#: image.php:45 post-meta-page.php:32 post-meta.php:35
+#: sidebar-content-half-page.php:47 sidebar-content-page.php:47
+msgid "No Comments &darr;"
+msgstr "コメントはありません &darr;"
+
+#: image.php:45 post-meta-page.php:32 post-meta.php:35
+#: sidebar-content-half-page.php:47 sidebar-content-page.php:47
+msgid "1 Comment &darr;"
+msgstr "1件のコメント &darr;"
+
+#: header.php:54
+msgid "&darr; Skip to Main Content"
+msgstr "&darr; メインコンテンツへスキップ"
+
+#: image.php:36
+msgid "&#8249; Return to"
+msgstr "&#8249; 戻る:"
+
+#: footer.php:73
+msgid "WordPress"
+msgstr "WordPress"
+
+#: footer.php:68
+msgid "&uarr;"
+msgstr "&uarr;"
+
+#: footer.php:71
+msgid "Responsive Theme"
+msgstr "Responsive テーマ"
+
+#: footer.php:73
+msgid "powered by"
+msgstr "Powered by "
+
+#: footer.php:68
+msgid "scroll to top"
+msgstr "トップへ戻る"
+
+#: core/includes/theme-options/theme-options.php:477
+msgid "Enter your custom header script."
+msgstr "カスタムヘッダースクリプトを入力してください。"
+
+#: core/includes/theme-options/theme-options.php:483
+msgid "Embeds to footer.php &darr;"
+msgstr "footer.php への埋め込み ↓"
+
+#: core/includes/theme-options/theme-options.php:486
+msgid "Enter your custom footer script."
+msgstr "カスタムフッタースクリプトを入力してください。"
+
+#: core/includes/upsell/theme-upsell.php:64
+msgid "Themes You Can Trust"
+msgstr "信頼できるテーマ"
+
+#: footer.php:63
+msgid "&copy;"
+msgstr "&copy;"
+
+#: core/includes/theme-options/theme-options.php:472
+msgid "Custom Scripts for Header and Footer"
+msgstr "ヘッダー・フッター用のカスタムスクリプト"
+
+#: core/includes/theme-options/theme-options.php:473
+msgid "Quick Tutorial"
+msgstr "クイックチュートリアル"
+
+#: core/includes/theme-options/theme-options.php:474
+msgid "Embeds to header.php &darr;"
+msgstr "header.php への埋め込み ↓"
+
+#: core/includes/theme-options/theme-options.php:466
+msgid "Enter your custom CSS styles."
+msgstr "カスタムCSSを入力してください。"
+
+#: core/includes/theme-options/theme-options.php:454
+msgid "Enter your foursquare URL"
+msgstr "Vimeo URL を入力"
+
+#: core/includes/theme-options/theme-options.php:462
+msgid "CSS Tutorial"
+msgstr "CSS チュートリアル"
+
+#: core/includes/theme-options/theme-options.php:436
+msgid "Enter your Yelp! URL"
+msgstr "Yelp! URL を入力"
+
+#: core/includes/theme-options/theme-options.php:445
+msgid "Enter your Vimeo URL"
+msgstr "Vimeo URL を入力"
+
+#: core/includes/theme-options/theme-options.php:427
+msgid "Enter your Pinterest URL"
+msgstr "Pinterest URL を入力"
+
+#: core/includes/theme-options/theme-options.php:418
+msgid "Enter your Instagram URL"
+msgstr "Instagram URL を入力"
+
+#: core/includes/theme-options/theme-options.php:400
+msgid "Enter your RSS Feed URL"
+msgstr "RSS フィードの URL を入力"
+
+#: core/includes/theme-options/theme-options.php:409
+msgid "Enter your Google+ URL"
+msgstr "Google+ URL を入力"
+
+#: core/includes/theme-options/theme-options.php:391
+msgid "Enter your StumbleUpon URL"
+msgstr "StumbleUpon URL を入力"
+
+#: core/includes/theme-options/theme-options.php:382
+msgid "Enter your YouTube URL"
+msgstr "YouTube URL を入力"
+
+#: core/includes/theme-options/theme-options.php:373
+msgid "Enter your LinkedIn URL"
+msgstr "LinkedIn URL を入力"
+
+#: core/includes/theme-options/theme-options.php:364
+msgid "Enter your Facebook URL"
+msgstr "Facebook URL を入力"
+
+#: core/includes/theme-options/theme-options.php:273
+msgid "Enter your subheadline"
+msgstr "サブヘッドラインを入力"
+
+#: core/includes/theme-options/theme-options.php:282
+msgid "Enter your content"
+msgstr "コンテンツを入力"
+
+#: core/includes/theme-options/theme-options.php:291
+msgid "Enter your call to action URL"
+msgstr "アクション喚起ボタンのリンク先 URL を入力"
+
+#: core/includes/theme-options/theme-options.php:300
+msgid "Enter your call to action text"
+msgstr "アクション喚起ボタンのテキストを入力"
+
+#: core/includes/theme-options/theme-options.php:301
+#: template-parts/featured-area.php:57
+msgid "Call to Action"
+msgstr "いますぐ登録！"
+
+#: core/includes/theme-options/theme-options.php:305
+#: core/includes/theme-options/theme-options.php:306
+msgid "See Docs"
+msgstr "ドキュメンテーションを見る"
+
+#: core/includes/theme-options/theme-options.php:355
+msgid "Enter your Twitter URL"
+msgstr "Twitter URL を入力"
+
+#: core/includes/theme-options/theme-options.php:243
+msgid "Need to replace or remove default logo?"
+msgstr "デフォルトのロゴを差し替えまたは削除しますか ?"
+
+#: core/includes/theme-options/theme-options.php:243
+msgid "Click here"
+msgstr "ここをクリック"
+
+#: core/includes/theme-options/theme-options.php:255
+msgid "Overrides the WordPress %1sfront page option%2s"
+msgstr "WordPress の%1sフロントページオプション%2sを上書きします"
+
+#: core/includes/theme-options/theme-options.php:264
+msgid "Enter your headline"
+msgstr "ヘッドラインを入力"
+
+#: core/includes/theme-options/theme-options.php:238
+msgid "Custom Header"
+msgstr "カスタムヘッダー"
+
+#: core/includes/theme-options/theme-options.php:197
+#: core/includes/theme-options/theme-options.php:206
+msgid "check to enable"
+msgstr "チェックすると有効化"
+
+#: core/includes/theme-options/theme-options.php:215
+msgid "Blog"
+msgstr "ブログ"
+
+#: core/includes/theme-options/theme-options.php:179
+#: core/includes/theme-options/theme-options.php:188
+msgid "check to disable"
+msgstr "チェックすると無効化"
+
+#: core/includes/theme-options/theme-options.php:128
+msgid "Logo Upload"
+msgstr "ロゴのアップロード"
+
+#: core/includes/theme-options/theme-options.php:108
+msgid "Options Saved"
+msgstr "設定を保存しました"
+
+#: core/includes/functions.php:360
+msgid "<span class=\"%1$s\">Posted on </span>%2$s<span class=\"%3$s\"> by </span>%4$s"
+msgstr "<span class=\"%1$s\">投稿日: </span>%2$s<span class=\"%3$s\"> 作成者: </span>%4$s"
+
+#: core/includes/post-custom-meta.php:190
+msgid "Layout"
+msgstr "レイアウト"
+
+#: core/includes/functions.php:161
+msgid "Footer Menu"
+msgstr "フッターメニュー"
+
+#: core/includes/functions.php:160
+msgid "Sub-Header Menu"
+msgstr "サブヘッダーメニュー"
+
+#: core/includes/functions.php:159
+msgid "Header Menu"
+msgstr "ヘッダーメニュー"
+
+#: core/includes/functions-sidebar.php:118
+msgid "Area 10 - sidebar-colophon.php, 100% width Footer widgets"
+msgstr "えリア10: sidebar-colophon.php、幅100%のフッターウィジェット"
+
+#: core/includes/functions-sidebar.php:127
+msgid "Top Widget"
+msgstr "トップウィジェット"
+
+#: core/includes/functions-sidebar.php:128
+msgid "Area 11 - sidebar-top.php - Displays on the right of the header"
+msgstr "エリア11 - sidebar-top.php - ヘッダーの右側に表示"
+
+#: core/includes/functions-sidebar.php:137
+msgid "Footer Widget"
+msgstr "フッターウィジェット"
+
+#: core/includes/functions-sidebar.php:138
+msgid "Area 12 - sidebar-footer.php - Maximum of 3 widgets per row"
+msgstr "エリア12 - sidebar-footer.php - 行ごとに最大3ウィジェット"
+
+#. Translators: This is a big update. Please read the blog post before
+#. updating.
+#: core/includes/functions-update.php:109
+msgid "<strong>WARNING:</strong> There is a big <strong>Responsive Theme</strong> update available. Please read the %1$s before updating."
+msgstr "<strong>警告:</strong> 利用可能な <strong>Responsive テーマ</strong>の大幅な更新があります。更新する前に %1$s をお読みください。"
+
+#: core/includes/functions-update.php:110
+msgid "update page"
+msgstr "ページを更新"
+
+#: core/includes/functions.php:158
+msgid "Top Menu"
+msgstr "トップメニュー"
+
+#: core/includes/functions-sidebar.php:98
+msgid "Area 8 - sidebar-home.php - Displays on the Home Page"
+msgstr "エリア8  - サイドバー -  home.php  - ホーム画面に表示"
+
+#: core/includes/functions-sidebar.php:107
+msgid "Gallery Sidebar"
+msgstr "ギャラリーサイドバー"
+
+#: core/includes/functions-sidebar.php:108
+msgid "Area 9 - sidebar-gallery.php - Displays on the page after an image has been clicked in a Gallery"
+msgstr "エリア9 - sidebar-gallery.php - ギャラリー内の画像をクリックした際に移動するページに表示"
+
+#: core/includes/functions-sidebar.php:117
+msgid "Colophon Widget"
+msgstr "サイト情報ウィジェット"
+
+#: core/includes/functions-sidebar.php:78
+msgid "Area 6 - sidebar-home.php - Displays on the Home Page"
+msgstr "エリア6  - sidebar-home.php  - ホーム画面に表示"
+
+#: core/includes/functions-sidebar.php:87 sidebar-home.php:47
+msgid "Home Widget 2"
+msgstr "ホームウィジェット 2"
+
+#: core/includes/functions-sidebar.php:88
+msgid "Area 7 - sidebar-home.php - Displays on the Home Page"
+msgstr "エリア7  - sidebar-home.php  - ホーム画面に表示"
+
+#: core/includes/functions-sidebar.php:97 sidebar-home.php:63
+msgid "Home Widget 3"
+msgstr "ホームウィジェット 3"
+
+#: core/includes/functions-sidebar.php:48
+msgid "Area 3 - sidebar-left.php - Displays on Sidebar/Content page templates"
+msgstr "エリア3  - sidebar-left.php  - サイドバー / コンテンツページテンプレートに表示"
+
+#: core/includes/functions-sidebar.php:57
+msgid "Left Sidebar Half Page"
+msgstr "左サイドバー半ページ"
+
+#: core/includes/functions-sidebar.php:58
+msgid "Area 4 - sidebar-left-half.php - Displays on Sidebar Half Page/Content page templates"
+msgstr "エリア4 - sidebar-left-half.php - サイドバーハーフページ / コンテンツページテンプレートに表示"
+
+#: core/includes/functions-sidebar.php:67
+msgid "Right Sidebar Half Page"
+msgstr "右サイドバー半ページ"
+
+#: core/includes/functions-sidebar.php:68
+msgid "Area 5 - sidebar-right-half.php - Displays on Content/Sidebar Half Page page templates"
+msgstr "エリア5 - sidebar-right-half.php - コンテンツ / サイドバーハーフページテンプレートに表示"
+
+#: core/includes/functions-sidebar.php:77 sidebar-home.php:31
+msgid "Home Widget 1"
+msgstr "ホームウィジェット 1"
+
+#: core/includes/functions-sidebar.php:38
+msgid "Area 2 - sidebar-right.php - Displays on Content/Sidebar page templates"
+msgstr "エリア2 - sidebar-right.php - コンテンツ / サイドバーページテンプレートに表示"
+
+#: core/includes/functions-sidebar.php:47
+msgid "Left Sidebar"
+msgstr "左サイドバー"
+
+#: core/includes/functions-sidebar.php:28
+msgid "Area 1 - sidebar.php - Displays on Default, Blog, Blog Excerpt page templates"
+msgstr "エリア1 - sidebar.php - デフォルト・ブログ・ブログ抜粋ページテンプレートに表示"
+
+#: core/includes/functions-sidebar.php:37
+msgid "Right Sidebar"
+msgstr "右サイドバー"
+
+#: core/includes/functions-sidebar.php:27
+msgid "Main Sidebar"
+msgstr "メインサイドバー"
+
+#: core/includes/functions-install.php:38
+#: core/includes/theme-options/theme-options.php:52
+#: core/includes/theme-options/theme-options.php:104
+msgid "Theme Options"
+msgstr "テーマオプション"
+
+#: core/includes/functions-install.php:31
+msgid "Settings saved and %s activated successfully."
+msgstr "設定を保存し、%s を有効化しました。"
+
+#: core/includes/functions-install.php:33
+msgid "%s activated successfully."
+msgstr "%s を有効化しました。"
+
+#: core/includes/functions-install.php:35
+msgid "Visit site"
+msgstr "サイトを表示"
+
+#: core/includes/functions-extentions.php:332
+#: core/includes/theme-options/theme-options.php:431
+msgid "Yelp!"
+msgstr "Yelp!"
+
+#: core/includes/functions-extentions.php:334
+#: core/includes/theme-options/theme-options.php:449
+msgid "foursquare"
+msgstr "FourSquare"
+
+#: core/includes/functions-extentions.php:326
+#: core/includes/theme-options/theme-options.php:377
+msgid "YouTube"
+msgstr "Youtube"
+
+#: core/includes/functions-extentions.php:193
+#: core/includes/functions-extras.php:169
+msgid "Page %s"
+msgstr "ページ %s"
+
+#: core/includes/functions-extentions.php:49
+msgid "Error 404"
+msgstr "404 エラー"
+
+#: core/includes/functions-extentions.php:47
+msgid "Posts tagged %s"
+msgstr "タグのついた記事 %s"
+
+#: core/includes/functions-extentions.php:48 core/includes/functions.php:371
+msgid "View all posts by %s"
+msgstr "%s の投稿をすべて表示"
+
+#: core/includes/functions-extentions.php:46 loop-header.php:59
+msgid "Search results for: %s"
+msgstr "検索結果: %s"
+
+#: core/includes/functions-extentions.php:45
+msgid "Archive for %s"
+msgstr "%s のアーカイブ"
+
+#: core/includes/functions-admin.php:163
+msgid "The Custom Front Page is enabled. You can disable it in the <a href=\"%1$s\">theme settings</a>."
+msgstr "カスタムフロントページが有効化されています。<a href=\"%1$s\">テーマ設定</a>で無効化できます。"
+
+#: core/includes/functions-admin.php:165
+msgid "The Custom Front Page is disabled. You can enable it in the <a href=\"%1$s\">theme settings</a>."
+msgstr "カスタムフロントページが無効化されています。<a href=\"%1$s\">テーマ設定</a>で有効化できます。"
+
+#: core/includes/functions-extentions.php:44 loop-no-posts.php:37
+msgid "Home"
+msgstr "ホーム"
+
+#: core/includes/functions-admin.php:139
+msgid "All plugins installed and activated successfully. %s"
+msgstr "全てのプラグインのインストール・有効化が完了しました：%s"
+
+#: core/includes/functions-admin.php:123
+msgid "Responsive Add Features"
+msgstr "Responsive 追加機能"
+
+#: core/includes/functions-admin.php:124
+msgid "Activate Add Ons"
+msgstr "アドオンを有効化"
+
+#: core/includes/functions-admin.php:126
+msgid "Something went wrong with the plugin API."
+msgstr "plugin API　で問題が発生しました"
+
+#: core/includes/functions-admin.php:75 core/includes/functions-admin.php:76
+msgid "More Themes"
+msgstr "テーマをもっと見る"
+
+#: core/includes/functions-admin.php:69 core/includes/functions-admin.php:70
+msgid "Translate"
+msgstr "翻訳"
+
+#: core/includes/functions-admin.php:72 core/includes/functions-admin.php:73
+msgid "Showcase"
+msgstr "ショーケース"
+
+#: core/includes/customizer.php:283
+#: core/includes/theme-options/theme-options.php:145
+msgid "CSS Styles"
+msgstr "CSS スタイル"
+
+#: core/includes/customizer.php:288
+#: core/includes/theme-options/theme-options.php:461
+msgid "Custom CSS Styles"
+msgstr "カスタム CSS スタイル"
+
+#: core/includes/customizer.php:299
+#: core/includes/theme-options/theme-options.php:149
+msgid "Scripts"
+msgstr "スクリプト"
+
+#: core/includes/customizer.php:304
+msgid "Embeds to header.php"
+msgstr "header.php への埋め込み"
+
+#: core/includes/customizer.php:312
+msgid "Embeds to footer.php"
+msgstr "footer.php への埋め込み"
+
+#: core/includes/functions-admin.php:16
+msgid "Welcome to %1$s! Upgrade to %2$s today."
+msgstr "%1$s へようこそ。%2$s にアップグレードしませんか。"
+
+#: core/includes/functions-admin.php:63 core/includes/functions-admin.php:64
+msgid "Instructions"
+msgstr "手順"
+
+#: core/includes/functions-admin.php:66 core/includes/functions-admin.php:67
+#: core/includes/functions-install.php:39
+msgid "Help"
+msgstr "ヘルプ"
+
+#: core/includes/customizer.php:264
+msgid "Yelp"
+msgstr "Yelp"
+
+#: core/includes/customizer.php:273
+msgid "Foursquare"
+msgstr "FourSquare"
+
+#: core/includes/customizer.php:255 core/includes/functions-extentions.php:333
+#: core/includes/theme-options/theme-options.php:440
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#: core/includes/customizer.php:246 core/includes/functions-extentions.php:327
+#: core/includes/theme-options/theme-options.php:386
+msgid "StumbleUpon"
+msgstr "StumbleUpon"
+
+#: core/includes/customizer.php:237 core/includes/functions-extentions.php:331
+#: core/includes/theme-options/theme-options.php:422
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: core/includes/customizer.php:228 core/includes/functions-extentions.php:330
+#: core/includes/theme-options/theme-options.php:413
+msgid "Instagram"
+msgstr "Instagram"
+
+#: core/includes/customizer.php:219 core/includes/functions-extentions.php:328
+#: core/includes/theme-options/theme-options.php:395
+msgid "RSS Feed"
+msgstr "RSS"
+
+#: core/includes/customizer.php:210 core/includes/functions-extentions.php:329
+#: core/includes/theme-options/theme-options.php:404
+msgid "Google+"
+msgstr "Google+"
+
+#: core/includes/customizer.php:201
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: core/includes/customizer.php:192 core/includes/functions-extentions.php:325
+#: core/includes/theme-options/theme-options.php:368
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: core/includes/customizer.php:183 core/includes/functions-extentions.php:324
+#: core/includes/theme-options/theme-options.php:359
+msgid "Facebook"
+msgstr "Facebook"
+
+#: core/includes/customizer.php:167
+msgid "Enter the URL to your account for each service for the icon to appear in the header."
+msgstr "ヘッダーに表示されるアイコンの各サービスに対するアカウント URL を入力してください。"
+
+#: core/includes/customizer.php:174 core/includes/functions-extentions.php:323
+#: core/includes/theme-options/theme-options.php:350
+msgid "Twitter"
+msgstr "Twitter"
+
+#: core/includes/customizer.php:137
+#: core/includes/theme-options/theme-options.php:317
+msgid "Default Static Page Layout"
+msgstr "デフォルト固定ページレイアウト"
+
+#: core/includes/customizer.php:145
+#: core/includes/theme-options/theme-options.php:327
+msgid "Default Single Blog Post Layout"
+msgstr "デフォルト個別ブログ投稿レイアウト"
+
+#: core/includes/customizer.php:153
+#: core/includes/theme-options/theme-options.php:337
+msgid "Default Blog Posts Index Layout"
+msgstr "デフォルトブログ投稿一覧ページレイアウト"
+
+#: core/includes/customizer.php:165
+#: core/includes/theme-options/theme-options.php:141
+msgid "Social Icons"
+msgstr "ソーシャルアイコン"
+
+#: core/includes/customizer.php:123
+#: core/includes/theme-options/theme-options.php:310
+msgid "Paste your shortcode, video or image source"
+msgstr "ショートコード、動画または画像のソース URL を入力してください。"
+
+#: core/includes/customizer.php:132
+#: core/includes/theme-options/theme-options.php:137
+msgid "Default Layouts"
+msgstr "デフォルトレイアウト"
+
+#: core/includes/customizer.php:87
+#: core/includes/theme-options/theme-options.php:274
+#: template-parts/featured-area.php:36
+msgid "Your H2 subheadline here"
+msgstr "H2 サブヘッドラインがここに表示されます"
+
+#: core/includes/customizer.php:89
+#: core/includes/theme-options/theme-options.php:268
+msgid "Subheadline"
+msgstr "サブヘッドライン"
+
+#: core/includes/customizer.php:94
+#: core/includes/theme-options/theme-options.php:283
+#: template-parts/featured-area.php:44
+msgid "Your title, subtitle and this very content is editable from Theme Option. Call to Action button and its destination link as well. Image on your right can be an image or even YouTube video if you like."
+msgstr "タイトル、サブタイトル、このコンテンツはテーマ設定から編集できます。アクション喚起ボタンとリンク先も同様です。右側の画像は、お好みの画像や YouTube などの動画を指定できます。"
+
+#: core/includes/customizer.php:96
+#: core/includes/theme-options/theme-options.php:277
+msgid "Content Area"
+msgstr "コンテンツエリア"
+
+#: core/includes/customizer.php:103
+#: core/includes/theme-options/theme-options.php:286
+msgid "Call to Action (URL)"
+msgstr "アクション喚起ボタン (URL)"
+
+#: core/includes/customizer.php:111
+#: core/includes/theme-options/theme-options.php:295
+msgid "Call to Action (Text)"
+msgstr "アクション喚起ボタン (テキスト)"
+
+#: core/includes/customizer.php:119
+#: core/includes/theme-options/theme-options.php:304
+msgid "Featured Content"
+msgstr "おすすめコンテンツ"
+
+#: core/includes/customizer.php:74
+#: core/includes/theme-options/theme-options.php:250
+msgid "Enable Custom Front Page"
+msgstr "カスタムフロントページを有効化"
+
+#: core/includes/customizer.php:78
+msgid "Overrides the WordPress front page option"
+msgstr "WordPress のフロントページ設定を上書き"
+
+#: core/includes/customizer.php:80
+#: core/includes/theme-options/theme-options.php:265
+#: template-parts/featured-area.php:26
+msgid "Hello, World!"
+msgstr "Hello, World!"
+
+#: core/includes/customizer.php:82
+#: core/includes/theme-options/theme-options.php:259
+msgid "Headline"
+msgstr "Headline"
+
+#: core/includes/customizer.php:23
+#: core/includes/theme-options/theme-options.php:123
+msgid "Theme Elements"
+msgstr "テーマ要素"
+
+#: core/includes/customizer.php:28
+#: core/includes/theme-options/theme-options.php:174
+msgid "Disable breadcrumb list?"
+msgstr "パンくずリストを無効化しますか ?"
+
+#: core/includes/customizer.php:35
+#: core/includes/theme-options/theme-options.php:183
+msgid "Disable Call to Action Button?"
+msgstr "アクション喚起ボタンを非表示にしますか ?"
+
+#: core/includes/customizer.php:42
+#: core/includes/theme-options/theme-options.php:192
+msgid "Enable minified css?"
+msgstr "CSS Minify を有効化しますか ?"
+
+#: core/includes/customizer.php:49
+#: core/includes/theme-options/theme-options.php:201
+msgid "Enable Blog Title"
+msgstr "ブログタイトルを有効化"
+
+#: core/includes/customizer.php:57
+#: core/includes/theme-options/theme-options.php:209
+msgid "Title Text"
+msgstr "タイトルテキスト"
+
+#: core/includes/customizer.php:69
+#: core/includes/theme-options/theme-options.php:132
+msgid "Home Page"
+msgstr "ホームページ"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:2148
+msgid "Return to the Dashboard"
+msgstr "ダッシュボードに戻る"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:2055
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr "プラグをインインストールしています %1$s (%2$d/%3$d)"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:2054
+msgid "All installations have been completed."
+msgstr "すべてのインストールが完了しました。"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:2053
+msgid "%1$s installed successfully."
+msgstr "%1$s が正常にインストールされました。"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:2052
+msgid "The installation of %1$s failed."
+msgstr "%1$s のインストールに失敗しました。"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:2051
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr "<strong>%2$s</strong>%1$s のインストール中にエラーが発生しました。"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:2050
+msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr "更新プロセスを開始しています。サーバーによっては少し時間がかかるかもしれません。しばらくお待ちください。"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:2046
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr "プラグインをインストール、有効化しています %1$s (%2$d/%3$d)"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:2045
+msgid "All installations and activations have been completed."
+msgstr "すべてのインストールと有効化が完了しました。"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:2044
+#: core/includes/classes/class-tgm-plugin-activation.php:2053
+msgid "Hide Details"
+msgstr "詳細を非表示"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:2044
+#: core/includes/classes/class-tgm-plugin-activation.php:2053
+msgid "Show Details"
+msgstr "詳細を表示"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:2044
+msgid "%1$s installed and activated successfully."
+msgstr "%1$s が正常にインストールされ、有効化されました。"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:2043
+msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr "インストールと有効化プロセスを開始しています。サーバーによっては少し時間がかかるかもしれません。しばらくお待ちください。"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1930
+msgid "Plugin activation failed."
+msgstr "プラグインの有効化に失敗しました。"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1919
+msgid "Plugin installed successfully."
+msgstr "プラグインのインストールが完了しました。"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1918
+msgid "Plugin install failed."
+msgstr "プラグインのインストールに失敗しました。"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1917
+msgid "Installing the plugin&#8230;"
+msgstr "プラグインをインストールしています…"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1916
+msgid "Unpacking the package&#8230;"
+msgstr "パッケージを展開しています…"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1915
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr "<span class=\"code\">%s</span> からインストールパッケージをダウンロードしています…"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1914
+msgid "Install package not available."
+msgstr "インストールパッケージがありません。"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1370
+msgid "Activate"
+msgstr "有効化"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1369
+msgid "Install"
+msgstr "インストール"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1351
+msgid "Status"
+msgstr "ステータス"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1350
+msgid "Type"
+msgstr "Type"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1349
+msgid "Source"
+msgstr "ソース"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1348
+msgid "Plugin"
+msgstr "プラグイン"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1332
+msgid "No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the Dashboard\">Return to the Dashboard</a>"
+msgstr "インストールまたは有効化すべきプラグインはありません。 <a href=\"%1$s\" title=\"Return to the Dashboard\">ダッシュボードに戻る</a>"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1151
+msgid "Installed But Not Activated"
+msgstr "停止中"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1148
+msgid "Not Installed"
+msgstr "インストールされていません"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1145
+msgid "Recommended"
+msgstr "推奨"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1145
+msgid "Required"
+msgstr "必須"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1142
+msgid "WordPress Repository"
+msgstr "WordPress公式レポジトリ"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1137
+msgid "Pre-Packaged"
+msgstr "プレパッケージされた"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1133
+msgid "Private Repository"
+msgstr "プライベート リポジトリ"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:1128
+msgid "External Link"
+msgstr "外部サービス"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:174
+msgid "Dismiss this notice"
+msgstr "無視する"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:173
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr "すべてのプラグインが正常にインストール、有効化されました。 %1$s"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:172
+#: core/includes/classes/class-tgm-plugin-activation.php:1614
+msgid "The following plugin was activated successfully:"
+msgstr "以下のプラグインは有効化されました："
+
+#: core/includes/classes/class-tgm-plugin-activation.php:171
+#: core/includes/classes/class-tgm-plugin-activation.php:1931
+#: core/includes/functions-admin.php:138
+msgid "Plugin activated successfully."
+msgstr "プラグインは有効化されました。"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:170
+msgid "Return to the dashboard"
+msgstr "ダッシュボードに戻る"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:169
+#: core/includes/functions-admin.php:137
+msgid "Return to Required Plugins Installer"
+msgstr "必要なプラグインインストーラに戻る"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:168
+#: core/includes/functions-admin.php:136
+msgid "Activate installed plugin"
+msgid_plural "Activate installed plugins"
+msgstr[0] "インストール済みプラグインを有効化"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:167
+#: core/includes/functions-admin.php:135
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] "プラグインのインストールを開始"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:166
+#: core/includes/functions-admin.php:134
+msgid "Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated."
+msgid_plural "Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated."
+msgstr[0] "申し訳ありませんが　あなたの権限では、%s  プラグインのアップデートをすることが出来ません。サイト管理者に連絡を取り、助言を求めてください"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:165
+#: core/includes/functions-admin.php:133
+msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
+msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
+msgstr[0] "%1$s プラグインは、このテーマとの互換性を最大限に確保するために、最新バージョンにアップデートする必要があります"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:164
+#: core/includes/functions-admin.php:132
+msgid "Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated."
+msgid_plural "Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated."
+msgstr[0] "申し訳ありませんが　あなたの権限では、%s  プラグインのアクティブ設定をすることが出来ません。サイト管理者に連絡を取り、助言を求めてください"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:163
+#: core/includes/functions-admin.php:131
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] "おすすめの %1$s プラグインは、アクティブに設定されていません"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:162
+#: core/includes/functions-admin.php:130
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] "テーマに必要なプラグイン　%1$s　が　アクティブに設定されていません"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:161
+#: core/includes/functions-admin.php:129
+msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
+msgid_plural "Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed."
+msgstr[0] "申し訳ありませんが　あなたの権限では、%s  プラグインのインストールをすることが出来ません。サイト管理者に連絡を取り、助言を求めてください"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:160
+#: core/includes/functions-admin.php:128
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] "このテーマは、%1$s　プラグイン利用をおすすめします"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:159
+#: core/includes/functions-admin.php:127
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] "このテーマは、%1$s　プラグインが必要です"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:158
+msgid "Something went wrong."
+msgstr "問題が発生しました。"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:157
+#: core/includes/functions-admin.php:125
+msgid "Installing Plugin: %s"
+msgstr "インストールしているプラグイン: %s"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:156
+msgid "Install Plugins"
+msgstr "プラグインのインストール"
+
+#. #-#-#-#-#  responsive.pot (Responsive 1.9.8.2)  #-#-#-#-#
+#. Template Name of the plugin/theme
+#: core/includes/classes/Responsive_Options.php:257
+#: core/includes/post-custom-meta.php:167
+msgid "Sidebar/Content"
+msgstr "サイドバー/コンテンツ"
+
+#. #-#-#-#-#  responsive.pot (Responsive 1.9.8.2)  #-#-#-#-#
+#. Template Name of the plugin/theme
+#: core/includes/classes/Responsive_Options.php:258
+#: core/includes/post-custom-meta.php:168
+msgid "Content/Sidebar Half Page"
+msgstr "コンテンツ/サイドバー半ページ"
+
+#. #-#-#-#-#  responsive.pot (Responsive 1.9.8.2)  #-#-#-#-#
+#. Template Name of the plugin/theme
+#: core/includes/classes/Responsive_Options.php:259
+#: core/includes/post-custom-meta.php:169
+msgid "Sidebar/Content Half Page"
+msgstr "サイドバー/コンテンツ半ページ"
+
+#. #-#-#-#-#  responsive.pot (Responsive 1.9.8.2)  #-#-#-#-#
+#. Template Name of the plugin/theme
+#: core/includes/classes/Responsive_Options.php:260
+#: core/includes/post-custom-meta.php:170
+msgid "Full Width Page (no sidebar)"
+msgstr "全幅ページ (サイドバーなし)"
+
+#: core/includes/classes/class-tgm-plugin-activation.php:155
+msgid "Install Required Plugins"
+msgstr "必要なプラグインをインストールする"
+
+#. #-#-#-#-#  responsive.pot (Responsive 1.9.8.2)  #-#-#-#-#
+#. Template Name of the plugin/theme
+#: core/includes/classes/Responsive_Options.php:256
+#: core/includes/post-custom-meta.php:166
+msgid "Content/Sidebar"
+msgstr "コンテンツ/サイドバー"
+
+#: core/includes/classes/Responsive_Options.php:255
+#: core/includes/post-custom-meta.php:165
+msgid "Default"
+msgstr "デフォルト"
+
+#: core/includes/classes/Responsive_Options.php:242
+msgid "Upgrade"
+msgstr "アップグレード"
+
+#: core/includes/classes/Responsive_Options.php:241
+msgid "Restore Defaults"
+msgstr "デフォルトに戻す"
+
+#: core/includes/classes/Responsive_Options.php:38
+#: core/includes/theme-options/theme-options.php:99
+msgid "Do you want to restore?"
+msgstr "復元しますか ?"
+
+#: core/includes/classes/Responsive_Options.php:38
+#: core/includes/theme-options/theme-options.php:99
+msgid "All theme settings will be lost!"
+msgstr "すべてのサイト設定が消去されます。"
+
+#: core/includes/classes/Responsive_Options.php:38
+#: core/includes/theme-options/theme-options.php:99
+msgid "Click OK to Restore."
+msgstr "復元するには OK をクリックしてください。"
+
+#: core/includes/classes/Responsive_Options.php:240
+msgid "Save Options"
+msgstr "設定を保存"
+
+#: comments.php:86
+msgid "Website"
+msgstr "ウェブサイト"
+
+#: comments.php:84
+msgid "E-mail"
+msgstr "メールアドレス"
+
+#: comments.php:82
+msgid "Name"
+msgstr "名前"
+
+#: comments.php:69
+msgid "%1$d %2$s for \"%3$s\""
+msgstr "%1$d %2$s のために  \"%3$s\""
+
+#: comments.php:66
+msgid "Pings&#47;Trackbacks"
+msgstr "Ping&#47;トラックバック"
+
+#: comments.php:41 comments.php:54
+msgid "Newer comments &#8250;"
+msgstr "新しいコメント &#8250;"
+
+#: comments.php:39 comments.php:52
+msgid "&#8249; Older comments"
+msgstr "&#8249; 古いコメント "
+
+#: comments.php:32
+msgid "One comment on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s comments on &ldquo;%2$s&rdquo;"
+msgstr[0] "&ldquo;%2$s&rdquo; への1件のコメント"
+
+#: blog-excerpt.php:80 blog.php:82 loop-nav.php:30
+msgid "Newer posts &#8250;"
+msgstr "新しい投稿 &#8250;"
+
+#: blog.php:65 content-sidebar-half-page.php:41 content-sidebar-page.php:41
+#: core/includes/functions-extras.php:96 full-width-page.php:41 home.php:53
+#: image.php:56 index.php:43 landing-page.php:39 page.php:40
+#: sidebar-content-half-page.php:54 sidebar-content-page.php:54 single.php:40
+msgid "Read more &#8250;"
+msgstr "続きを読む &#8250;"
+
+#: comments.php:24
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "この投稿はパスワードで保護されています。コメントを表示するにはパスワードを入力してください。"
+
+#: blog-excerpt.php:79 blog.php:81 loop-nav.php:29
+msgid "&#8249; Older posts"
+msgstr "&#8249; 古い投稿"
+
+#: archive.php:46 blog-excerpt.php:64 blog.php:66
+#: content-sidebar-half-page.php:42 content-sidebar-page.php:42
+#: full-width-page.php:42 home.php:54 image.php:57 index.php:44
+#: landing-page.php:40 page.php:41 search.php:41
+#: sidebar-content-half-page.php:55 sidebar-content-page.php:55 single.php:54
+#: sitemap.php:62
+msgid "Pages:"
+msgstr "ページ:"
+
+#. Theme URI of the plugin/theme
+msgid "http://cyberchimps.com/responsive-theme/"
+msgstr "http://cyberchimps.com/responsive-theme/"
+
+#. Author of the plugin/theme
+msgid "CyberChimps.com"
+msgstr "CyberChimps.com"
+
+#. Author URI of the plugin/theme
+msgid "http://cyberchimps.com"
+msgstr "http://cyberchimps.com"

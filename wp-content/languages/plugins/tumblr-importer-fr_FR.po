@@ -1,0 +1,213 @@
+# Translation of Stable (latest release) in French (France)
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-04-26 13:42:04+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#. Author of the plugin/theme
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"
+
+#. Author URI of the plugin/theme
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#. Plugin Name of the plugin/theme
+msgid "Tumblr Importer"
+msgstr "Tumblr Importer"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/tumblr-importer/"
+msgstr "http://wordpress.org/extend/plugins/tumblr-importer/"
+
+#: tumblr-importer.php:942
+msgid "Source:"
+msgstr "Sourcenbsp;:"
+
+#: tumblr-importer.php:712
+msgid "Tumblr says that the the app is not authorized. Please check the settings and try to connect again."
+msgstr "Tumblr a dit que cette application n&rsquo;est pas autorisée. Veuillez vérifier vos réglages et essayer à nouveau de vous connecter."
+
+#: tumblr-importer.php:716 tumblr-importer.php:773
+msgid "Tumblr replied with an error: %s"
+msgstr "Tumblr a répondu avec une erreurnbsp;: %s"
+
+#: tumblr-importer.php:393 tumblr-importer.php:465 tumblr-importer.php:510
+msgid "Problem communicating with Tumblr, retrying later"
+msgstr "Problème de communication avec Tumblr, essayez plus tard."
+
+#: tumblr-importer.php:320
+msgid "This blog is currently being imported."
+msgstr "Ce blog est actuellement en cours d&rsquo;import."
+
+#: tumblr-importer.php:315
+msgid "The specified blog cannot be found."
+msgstr "Le blog spécifié ne peut pas être trouvé."
+
+#: tumblr-importer.php:305
+msgid "Importing your Tumblr blog can take a while so the importing process happens in the background and you may not see immediate results here. Come back to this page later to check on the importer's progress."
+msgstr "L&rsquo;import de votre blog Tumblr peut prendre un moment, le processus d&rsquo;import se fait en tâche de fond et vous pourrez ne pas voir immédiatement le résultat ici. Revenez plus tard sur cette page pour vérifier la progression de l&rsquo;import."
+
+#: tumblr-importer.php:266
+msgid "Custom Domain"
+msgstr "Domaine personnalisé"
+
+#: tumblr-importer.php:302
+msgid "As one or more of your Tumblr blogs has a Custom Domain mapped to it. If you would like to import one of these sites you will need to temporarily remove the custom domain mapping and clear the account information from the importer to import. Once the import is completed you can re-enable the custom domain for your site."
+msgstr "Comme un ou plusieurs de vos blogs Tumblr ont un domaine personnalisé, si vous voulez importer un de ces sites vous devez temporairement retirer le domaine personnalisé et vider l&rsquo;information de compte de l&rsquo;importateur à importer. Une fois l&rsquo;import terminé vous pouvez réactiver le domaine personnalisé pour votre site."
+
+#: tumblr-importer.php:253
+msgid "Import this blog"
+msgstr "Importer ce blog"
+
+#: tumblr-importer.php:255
+msgid "Finished!"
+msgstr "Terminénbsp;!"
+
+#: tumblr-importer.php:257
+msgid "In Progress"
+msgstr "En cours"
+
+#: tumblr-importer.php:266
+msgid "Tumblr Blogs with Custom Domains activated cannot be imported, please disable the custom domain first."
+msgstr "Les blogs Tumblr avec des domaines personnalisés activés ne peuvent pas être importés, veuillez désactiver le domaine personnalisé en premier."
+
+#: tumblr-importer.php:228
+msgid "Drafts Imported"
+msgstr "Brouillons importés"
+
+#: tumblr-importer.php:229
+msgid "Queued Imported"
+msgstr "Mise en attente importée"
+
+#: tumblr-importer.php:230
+msgid "Pages Imported"
+msgstr "Pages importées"
+
+#: tumblr-importer.php:231
+msgid "Author"
+msgstr "Auteur"
+
+#: tumblr-importer.php:232
+msgid "Action/Status"
+msgstr "Action / Statuts"
+
+#: tumblr-importer.php:225
+msgid "Tumblr Blog"
+msgstr "Blog Tumblr"
+
+#: tumblr-importer.php:226
+msgid "URL"
+msgstr "URL"
+
+#: tumblr-importer.php:227
+msgid "Posts Imported"
+msgstr "Articles importés"
+
+#: tumblr-importer.php:221
+msgid "As Tumblr does not expose the \"author\", even from multi-author blogs you will need to select which WordPress user will be listed as the author of the imported posts."
+msgstr "Comme Tumblr n&rsquo;expose pas l&rsquo;&laquo;Auteur&raquo;, même pour des blogs à auteurs multiples vous devrez choisir quel utilisateur WordPress sera affiché comme auteur des articles importés."
+
+#: tumblr-importer.php:218
+msgid "Please select the Tumblr blog you would like to import into your WordPress site and then click on the \"Import this Blog\" button to continue."
+msgstr "Veuillez sélectionner le blog Tumblr que vous voulez importer dans votre site WordPress puis cliquez sur le bouton &laquo;Importer ce blog&raquo; pour continuer."
+
+#: tumblr-importer.php:219
+msgid "If your import gets stuck for a long time or you would like to import from a different Tumblr account instead then click on the \"Clear account information\" button below to reset the importer."
+msgstr "Si votre import est bloqué pendant une longue période ou vous souhaitez importer à partir d&rsquo;un autre compte Tumblr alors cliquez sur le bouton &laquo;Effacer les informations de compte&raquo; ci-dessous pour réinitialiser l'importateur."
+
+#: tumblr-importer.php:146
+msgid "Authorize the Application"
+msgstr "Autoriser l'application"
+
+#: tumblr-importer.php:156 tumblr-importer.php:191
+msgid "Tumblr returned an error: "
+msgstr "Tumblr a renvoyé une erreurnbsp;:"
+
+#: tumblr-importer.php:137
+msgid "Connect to Tumblr"
+msgstr "Connexion à Tumblr"
+
+#: tumblr-importer.php:143
+msgid "Everything seems to be in order, so now you need to tell Tumblr to allow the plugin to access your account."
+msgstr "Tout semble en ordre, vous devez dire à Tumblr d'autoriser l&rsquo;extension à accéder à votre compte."
+
+#: tumblr-importer.php:144
+msgid "To do this, click the Authorize link below. You will be redirected back to this page when you've granted the permission."
+msgstr "Pour cela, cliquez sur le lien Autoriser ci-dessous. Vous serez redirigé vers cette page quand vous aurez accordé la permission."
+
+#: tumblr-importer.php:128
+msgid "OAuth Consumer Key:"
+msgstr "Clé consumer OAuthnbsp;:"
+
+#: tumblr-importer.php:132
+msgid "Secret Key:"
+msgstr "Clé secrètenbsp;:"
+
+#: tumblr-importer.php:93
+msgid "Note: This will stop any import currently in progress."
+msgstr "Notenbsp;: Ceci va stopper tout import actuellement en cours."
+
+#: tumblr-importer.php:96
+msgid "Clear account information"
+msgstr "Effacer les informations du compte"
+
+#: tumblr-importer.php:110 tumblr-importer.php:217
+msgid "Import Tumblr"
+msgstr "Import Tumblr"
+
+#: tumblr-importer.php:112
+msgid "Howdy! This importer allows you to import posts from your Tumblr account into your WordPress site."
+msgstr "Salutationsnbsp;! Cet importateur vous permet d&rsquo;importer les articles de votre compte Tumblr dans votre site WordPress."
+
+#: tumblr-importer.php:113
+msgid "First, you will need to create an 'app' on Tumblr. The app provides a connection point between your blog and Tumblr's servers."
+msgstr "Tout d&rsquo;abord, vous devez créer une &rsquo;app&rsquo; sur Tumblr. Elle vous fournira un point de connexion entre votre blog et les serveurs Tumblr."
+
+#: tumblr-importer.php:123
+msgid "After creating the application, copy and paste the \"OAuth Consumer Key\" and \"Secret Key\" into the given fields below."
+msgstr "Après avoir crée l'application, copiez / collez la &laquo;Clé consumer OAuth&raquo; et la &laquo;Clé secrète&raquo; dans les champs ci-dessous."
+
+#: tumblr-importer.php:119
+msgid "For the \"Application Website\" and \"Default Callback URL\" fields, please put in this URL: "
+msgstr "Pour les champs &raquo;Application Website&raquo; et &laquo;Default Callback URL&raquo;, collez cette URLnbsp;:"
+
+#: tumblr-importer.php:120
+msgid "Note: It is important that you put in that URL <em>exactly as given</em>."
+msgstr "Notenbsp;:Il est important que vous colliez l&rsquo;URL <em>exacte</em>"
+
+#: tumblr-importer.php:115
+msgid "To create an app, visit this page:"
+msgstr "Pour créer une app, visitez cette pagenbsp;:"
+
+#: tumblr-importer.php:118
+msgid "You need to fill in the \"Application Name\", \"Application Website\", and \"Default Callback URL\" fields. All the rest can be left blank."
+msgstr "Vous devez remplir les champs &laquo;Application Name&raquo; &laquo;Application Website&raquo; et &laquo;Default Callback URL&raquo;. Tout le reste peut être vide."
+
+#: tumblr-importer.php:117
+msgid "Click the large green \"Register Application\" button."
+msgstr "Cliquez sur le gros bouton vert &laquo;Register Application&raquo;."
+
+#: class-wp-importer-cron.php:51
+msgid "Every Minute"
+msgstr "Chaque minute"
+
+#: tumblr-importer.php:33
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#. #-#-#-#-#  tmp-tumblr-importer.pot (Tumblr Importer 0.8)  #-#-#-#-#
+#. Description of the plugin/theme
+#: tumblr-importer.php:33
+msgid "Import posts from a Tumblr blog."
+msgstr "Import des articles d&rsquo;un blog Tumblr"
+
+#: tumblr-importer.php:92
+msgid "We have saved some information about your Tumblr account in your WordPress database. Clearing this information will allow you to start over. Restarting will not affect any posts you have already imported. If you attempt to re-import a blog, duplicate posts will be skipped."
+msgstr "Nous avons enregistré certaines informations concernant votre compte Tumblr dans votre base de données WordPress. Nettoyer ces informations pour autorisera à recommencer. Ceci n&rsquo;affectera aucun article précédemment importé. Si vous tentez d&rsquo;importer à nouveau un blog, les articles dupliqués seront ignorés."

@@ -1,0 +1,89 @@
+# Translation of Development (trunk) in French (France)
+# This file is distributed under the same license as the Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2010-06-09 15:43:56+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: Development (trunk)\n"
+
+#: opml-importer.php:47 opml-importer.php:99
+msgid "Cheatin&#8217; uh?"
+msgstr "Alors, on triche&nbsp;?"
+
+#: opml-importer.php:103
+msgid "Importing..."
+msgstr "Importation en cours&hellip;"
+
+#: opml-importer.php:28
+msgid "Import Blogroll"
+msgstr "Importer une liste de liens (blogroll)"
+
+#: opml-importer.php:54
+msgid "Import your blogroll from another system"
+msgstr "Importer une liste de liens (blogroll) depuis un autre système"
+
+#: opml-importer.php:58
+msgid "If a program or website you use allows you to export your links or subscriptions as OPML you may import them here."
+msgstr "Si un programme ou un site que vous utilisez vous autorise à exporter vos liens au format OPML, vous pouvez les importer ici."
+
+#: opml-importer.php:63
+msgid "Specify an OPML URL:"
+msgstr "Indiquez une adresse web d&rsquo;OPML&nbsp;:"
+
+#: opml-importer.php:68
+msgid "Or choose from your local disk:"
+msgstr "&hellip;ou choisissez un fichier local sur votre disque dur&nbsp;:"
+
+#: opml-importer.php:74
+msgid "Now select a category you want to put these links in."
+msgstr "Sélectionnez maintenant la catégorie dans laquelle vous voulez mettre ces liens."
+
+#: opml-importer.php:75
+msgid "Category:"
+msgstr "Catégorie&nbsp;:"
+
+#: opml-importer.php:86
+msgid "Import OPML File"
+msgstr "Importer le fichier OPML"
+
+#: opml-importer.php:144
+msgid "Inserted <strong>%s</strong>"
+msgstr "<strong>%s</strong> inséré"
+
+#: opml-importer.php:148
+msgid "Inserted %1$d links into category %2$s. All done! Go <a href=\"%3$s\">manage those links</a>."
+msgstr "Insertion de %1$d liens dans la catégorie %2$s. Terminé&nbsp;! Allez <a href=\"%3$s\">gérer ces liens</a>."
+
+#: opml-importer.php:154
+msgid "You need to supply your OPML url. Press back on your browser and try again"
+msgstr "Vous devez donner l&rsquo;adresse web de votre fichier OPML. Cliquez sur le bouton de retour de votre navigateur et réessayez."
+
+#: opml-importer.php:173
+msgid "Blogroll"
+msgstr "Liens"
+
+#. #-#-#-#-#  tmp-opml-importer.pot (OPML Importer 0.2)  #-#-#-#-#
+#. Description of the plugin/theme
+#: opml-importer.php:173
+msgid "Import links in OPML format."
+msgstr "Importation de liens au format OPML"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/opml-importer/"
+msgstr "http://wordpress.org/extend/plugins/opml-importer/"
+
+#. Plugin Name of the plugin/theme
+msgid "OPML Importer"
+msgstr "Importateur OPML"
+
+#. Author URI of the plugin/theme
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#. Author of the plugin/theme
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"

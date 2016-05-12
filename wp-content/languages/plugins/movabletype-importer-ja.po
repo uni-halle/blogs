@@ -1,0 +1,124 @@
+# Translation of Stable (latest release) in Japanese
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-08-01 21:16:24+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#: movabletype-importer.php:209
+msgid "Below, you can see the names of the authors of the Movable Type posts in <em>italics</em>. For each of these names, you can either pick an author in your WordPress installation from the menu, or enter a name for the author in the textbox."
+msgstr "以下に Movable Type の投稿者が<em>イタリック体</em>で表示されます。それぞれの名前に対し、この WordPress のユーザーをメニューから選択するか、その投稿者の名前をテキストボックスに入力できます。"
+
+#. Author of the plugin/theme
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"
+
+#: movabletype-importer.php:481
+msgid "All done. <a href=\"%s\">Have fun!</a>"
+msgstr "すべて完了しました。<a href=\"%s\">ではお楽しみください ! </a>"
+
+#: movabletype-importer.php:260
+msgid "Post <em>%s</em> already exists."
+msgstr "投稿 <em>%s</em> はすでに存在しています。"
+
+#: movabletype-importer.php:263
+msgid "Importing post <em>%s</em>..."
+msgstr "投稿 <em>%s</em> のインポート中..."
+
+#: movabletype-importer.php:44
+msgid "Import Movable Type or TypePad"
+msgstr "Movable Type もしくは Typepad のインポート"
+
+#: movabletype-importer.php:63
+msgid "Or use <code>mt-export.txt</code> in your <code>/wp-content/</code> directory"
+msgstr "もしくは <code>/wp-content/</code> ディレクトリの <code>mt-export.txt</code> をお使いください。"
+
+#: movabletype-importer.php:65
+msgid "Import mt-export.txt"
+msgstr "mt-export.txt のインポート"
+
+#: movabletype-importer.php:68
+msgid "The importer is smart enough not to import duplicates, so you can run this multiple times without worry if&#8212;for whatever reason&#8212;it doesn&#8217;t finish. If you get an <strong>out of memory</strong> error try splitting up the import file into pieces."
+msgstr "このインポーターは優秀なので重複したファイルはインポートしません。したがって何らかの理由でインポート作業が終了できなくても、安心してこのインポーターを何度でも実行することができます。もし <strong>out of memory</strong> (メモリー不足) エラーが発生した場合はインポートするファイルをいくつかに分けてください。"
+
+#: movabletype-importer.php:207
+msgid "Assign Authors"
+msgstr "投稿者の割り当て"
+
+#: movabletype-importer.php:208
+msgid "To make it easier for you to edit and save the imported posts and drafts, you may want to change the name of the author of the posts. For example, you may want to import all the entries as admin&#8217;s entries."
+msgstr "インポートした投稿や下書きの編集と保存を簡単にするために投稿者名を変更することができます。例えば、すべてのエントリーを <code>admin</code> のエントリーとしてインポートすることができます。"
+
+#: movabletype-importer.php:210
+msgid "If a new user is created by WordPress, a password will be randomly generated. Manually change the user&#8217;s details if necessary."
+msgstr "WordPress によって新しいユーザーが作成されると、パスワードはランダムに生成されます。必要があれば後で変更してください。"
+
+#: movabletype-importer.php:221
+msgid "Current author:"
+msgstr "現在の投稿者:"
+
+#: movabletype-importer.php:221
+msgid "Create user %1$s or map to existing"
+msgstr "ユーザー %1$s を作成もしくは既存のユーザーに割り当て"
+
+#: movabletype-importer.php:226
+msgid "Submit"
+msgstr "実行"
+
+#: movabletype-importer.php:236
+msgid "<code>mt-export.txt</code> does not exist"
+msgstr "<code>mt-export.txt</code> がありません"
+
+#: movabletype-importer.php:242
+msgid "Sorry, there has been an error"
+msgstr "エラーが発生しました。"
+
+#: movabletype-importer.php:300
+msgid "(%s comment)"
+msgid_plural "(%s comments)"
+msgstr[0] "(%s件のコメント)"
+
+#: movabletype-importer.php:317
+msgid "(%s ping)"
+msgid_plural "(%s pings)"
+msgstr[0] "(%s件のトラックバック/ピンバック)"
+
+#: movabletype-importer.php:527
+msgid "Movable Type and TypePad"
+msgstr "Movable Type と TypePad"
+
+#. #-#-#-#-#  tmp-movabletype-importer.pot (Movable Type and TypePad Importer
+#. 0.4)  #-#-#-#-#
+#. Description of the plugin/theme
+#: movabletype-importer.php:527
+msgid "Import posts and comments from a Movable Type or TypePad blog."
+msgstr "Movable Type もしくは TypePad から投稿とコメントをインポートします。"
+
+#. Author URI of the plugin/theme
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#: movabletype-importer.php:281
+msgid "Adding tags <em>%s</em>..."
+msgstr "タグ「%s」を追加しています..."
+
+#: movabletype-importer.php:77
+msgid "&mdash; Select &mdash;"
+msgstr "&mdash; 選択 &mdash;"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/movabletype-importer/"
+msgstr "http://wordpress.org/extend/plugins/movabletype-importer/"
+
+#: movabletype-importer.php:55
+msgid "Howdy! We are about to begin importing all of your Movable Type or TypePad entries into WordPress. To begin, either choose a file to upload and click &#8220;Upload file and import&#8221;, or use FTP to upload your MT export file as <code>mt-export.txt</code> in your <code>/wp-content/</code> directory and then click &#8220;Import mt-export.txt&#8221;."
+msgstr "Movable Type または TypePad の投稿をすべて WordPress にインポートする作業を開始します。まずはアップロードするファイルを選び、「ファイルをアップロードしてインポート」をクリックするか、FTP を使って <code>mt-export.txt</code> というファイル名でMT エクスポートファイルを <code>/wp-content/</code> ディレクトリに配置します。その後、「mt-export.txt をインポート」をクリックします。"
+
+#. Plugin Name of the plugin/theme
+msgid "Movable Type and TypePad Importer"
+msgstr "Movable Type・TypePad インポートツール"

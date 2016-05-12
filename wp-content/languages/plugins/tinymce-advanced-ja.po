@@ -1,0 +1,243 @@
+# Translation of Stable (latest release) in Japanese
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-04-24 09:15:58+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#: tadv_admin.php:476
+msgid "Create CSS classes menu"
+msgstr "CSS クラスメニューの作成"
+
+#: tadv_admin.php:488
+msgid "Keep paragraph tags"
+msgstr "段落タグの保持"
+
+#: tadv_admin.php:510
+msgid "Settings import and export"
+msgstr "設定のインポートとエクスポート"
+
+#: tadv_admin.php:517
+msgid "Enable the editor enhancements for:"
+msgstr "次のエディター拡張の有効化:"
+
+#: tadv_admin.php:520
+msgid "The main editor (Add New and Edit posts and pages)"
+msgstr "メインエディター (投稿と固定ページの新規追加と編集)"
+
+#: tadv_admin.php:524
+msgid "Other editors in wp-admin"
+msgstr "wp-admin の他のエディター"
+
+#: tadv_admin.php:528
+msgid "Editors on the front end of the site"
+msgstr "サイトのフロントエンドのエディター"
+
+#: tinymce-advanced.php:702
+msgid "Settings"
+msgstr "設定項目"
+
+#: tadv_admin.php:439
+msgid "Enable more list options: upper or lower case letters for ordered lists, disk or square for unordered lists, etc."
+msgstr "追加リストオプションの有効化: 順序付きリストの先頭記号に英大文字、小文字の使用、順序なしリストの先頭記号に黒丸、四角など。"
+
+#: tadv_admin.php:446
+msgid "Replace the browser context (right-click) menu."
+msgstr "ブラウザーのコンテキストメニュー (右クリックメニュー) を置換"
+
+#: tadv_admin.php:451
+msgid "Alternative link dialog"
+msgstr "代替リンクダイアログ"
+
+#: tadv_admin.php:453
+msgid "Open the TinyMCE link dialog when using the link button on the toolbar or the link menu item."
+msgstr "ツールバーのリンクボタンまたはリンクメニュー項目のクリックで TinyMCE リンクダイアログを開く"
+
+#: tadv_admin.php:458
+msgid "Font sizes"
+msgstr "フォントサイズ"
+
+#: tadv_admin.php:434
+msgid "Options"
+msgstr "設定"
+
+#: tadv_admin.php:140
+msgid "Default settings restored."
+msgstr "既定の設定が復元されました。"
+
+#: tadv_admin.php:152
+msgid "TinyMCE Advanced Settings Export"
+msgstr "TinyMCE Advanced 設定のエクスポート"
+
+#: tadv_admin.php:156
+msgid "The settings are exported as a JSON encoded string."
+msgstr "設定を JSON エンコード文字列としてエクスポートしました。"
+
+#: tadv_admin.php:157
+msgid "Please copy the content and save it in a <b>text</b> (.txt) file, using a plain text editor like Notepad."
+msgstr "コンテンツをコピーして、メモ帳などのプレーンテキストエディターを使用して<b>テキスト</b> (.txt) ファイルに保存してください。"
+
+#: tadv_admin.php:158
+msgid "It is important that the export is not changed in any way, no spaces, line breaks, etc."
+msgstr "エクスポートされたファイルは、空白や改行を含め内容を変更しないでください。"
+
+#: tadv_admin.php:163
+msgid "Select All"
+msgstr "すべて選択"
+
+#: tadv_admin.php:165 tadv_admin.php:191
+msgid "Back to Editor Settings"
+msgstr "エディター設定に戻る"
+
+#: tadv_admin.php:177
+msgid "TinyMCE Advanced Settings Import"
+msgstr "TinyMCE Advanced の設定のインポート"
+
+#: tadv_admin.php:180
+msgid "The settings are imported from a JSON encoded string. Please paste the exported string in the text area below."
+msgstr "設定を JSON エンコード文字列からインポートしました。エクスポートした文字列を以下のテキスト領域に貼り付けてください。"
+
+#: tadv_admin.php:185
+msgid "Verify"
+msgstr "検証"
+
+#: tadv_admin.php:186
+msgid "Import"
+msgstr "インポート"
+
+#: tadv_admin.php:216
+msgid "Importing of settings failed."
+msgstr "設定のインポートに失敗しました。"
+
+#: tadv_admin.php:242
+msgid "ERROR: All toolbars are empty. Default settings loaded."
+msgstr "エラー: すべてのツールバーが空です。 既定の設定が読み込まれました。"
+
+#: tadv_admin.php:254
+msgid "Editor Settings"
+msgstr "エディター設定"
+
+#: tadv_admin.php:261
+msgid "Settings saved."
+msgstr "設定を保存しました。"
+
+#: tadv_admin.php:270 tadv_admin.php:540
+msgid "Save Changes"
+msgstr "変更を保存"
+
+#: tadv_admin.php:277
+msgid "Enable the editor menu."
+msgstr "エディターメニューを有効化する。"
+
+#: tadv_admin.php:389
+msgid "Drag buttons from the unused buttons below and drop them in the toolbars above, or drag the buttons in the toolbars to rearrange them."
+msgstr "下の「使用しないボタン」からボタンをドラッグし、上部のツールバーにドロップするか、ツールバーのボタンをドラッグして並べ替えてください。"
+
+#: tadv_admin.php:392
+msgid "Unused Buttons"
+msgstr "使用しないボタン"
+
+#: tadv_admin.php:437
+msgid "List Style Options"
+msgstr "リストスタイルオプション"
+
+#: tadv_admin.php:444
+msgid "Context Menu"
+msgstr "コンテキストメニュー"
+
+#: tadv_admin.php:467
+msgid "Advanced Options"
+msgstr "高度なオプション"
+
+#: tadv_admin.php:478
+msgid "Load the CSS classes used in editor-style.css and replace the Formats button and sub-menu."
+msgstr "editor-style.css で使用される CSS クラスを読み込み「フォーマット」ボタンとサブメニューを置き換えます。"
+
+#: tadv_admin.php:490
+msgid "Stop removing the &lt;p&gt; and &lt;br /&gt; tags when saving and show them in the Text editor."
+msgstr "保存時に &lt;p&gt; と &lt;br /&gt; タグを削除せず、テキストエディタ上に表示する"
+
+#: tadv_admin.php:491
+msgid "This will make it possible to use more advanced coding in the Text editor without the back-end filtering affecting it much."
+msgstr "テキストエディターの自動補完を停止し、より高度なコーディングが可能です。"
+
+#: tadv_admin.php:492
+msgid "However it may behave unexpectedly in rare cases, so test it thoroughly before enabling it permanently."
+msgstr "しかしながら、まれに予想外の振る舞いをすることがあるため、常用前に十分テストを行ってください。"
+
+#: tadv_admin.php:493
+msgid "Line breaks in the Text editor would still affect the output, in particular do not use empty lines, line breaks inside HTML tags or multiple &lt;br /&gt; tags."
+msgstr "なおテキストエディター内での改行は出力に含まれます。このため空の行や HTML タグ内の改行、複数の &lt;br /&gt; タグは使用しないでください。"
+
+#: tadv_admin.php:459
+msgid "Replace the size setting available for fonts with: 8px 10px 12px 14px 16px 20px 24px 28px 32px 36px 48px 60px."
+msgstr "利用できるフォントのサイズ設定を以下で置き換える: 8px 10px 12px 14px 16px 20px 24px 28px 32px 36px 48px 60px"
+
+#: tadv_admin.php:498
+msgid "Enable pasting of image source"
+msgstr "画像元の貼り付けを有効にする"
+
+#: tadv_admin.php:500
+msgid "Works only in Firefox and Safari. These browsers support pasting of images directly in the editor and convert them to base64 encoded text."
+msgstr "Firefox と Safari のみサポート。画像は直接エディターに貼り付けることができ、base64 エンコード文字列に変換されます。"
+
+#: tadv_admin.php:501
+msgid "This is not acceptable for larger images like photos or graphics, but may be useful in some cases for very small images like icons, not larger than 2-3KB."
+msgstr "写真などの大きな画像には好ましくありませんが、アイコンや 2～3KB の非常に小さな画像には役立つこともあるはずです。"
+
+#: tadv_admin.php:502
+msgid "These images will not be available in the Media Library."
+msgstr "これらの画像のメディアライブラリーでの使用はできません。"
+
+#: tadv_admin.php:508
+msgid "Administration"
+msgstr "管理"
+
+#: tadv_admin.php:512
+msgid "Export Settings"
+msgstr "設定のエクスポート"
+
+#: tadv_admin.php:513
+msgid "Import Settings"
+msgstr "インポート設定"
+
+#: tadv_admin.php:539
+msgid "Restore Default Settings"
+msgstr "デフォルトの設定を復元"
+
+#: tadv_admin.php:545
+msgid "The [Toolbar toggle] button shows or hides the second, third, and forth button rows. It will only work when it is in the first row and there are buttons in the second row."
+msgstr "「ツールバー切り替え」ボタンで2番目から4番目までのボタン列の表示切り替えを行います。 このボタンは1番目の列に配置され、なおかつ2番目の列にボタンが存在するときのみ機能します。"
+
+#: tinymce-advanced.php:220
+msgid "TinyMCE Advanced requires WordPress version %1$s or newer. It appears that you are running %2$s. This can make the editor unstable."
+msgstr "TynyMCE Advanced には、WordPress %1$sより新しいバージョンが必要です。現在は%2$sをお使いのようです。 エディターが不安定になる可能性があります。"
+
+#: tinymce-advanced.php:227
+msgid "Please upgrade your WordPress installation or download an <a href=\"%s\">older version of the plugin</a>."
+msgstr "WordPress を新しいバージョンにアップグレードするか、<a href=\"%s\">古いバージョンのプラグイン</a>をダウンロードしてください。"
+
+#. Plugin Name of the plugin/theme
+msgid "TinyMCE Advanced"
+msgstr "TinyMCE Advanced"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.laptoptips.ca/projects/tinymce-advanced/"
+msgstr "http://www.laptoptips.ca/projects/tinymce-advanced/"
+
+#. Description of the plugin/theme
+msgid "Enables advanced features and plugins in TinyMCE, the visual editor in WordPress."
+msgstr "WordPress ビジュアルエディター TinyMCE の高度な機能とプラグインを有効化します。"
+
+#. Author of the plugin/theme
+msgid "Andrew Ozz"
+msgstr "Andrew Ozz"
+
+#. Author URI of the plugin/theme
+msgid "http://www.laptoptips.ca/"
+msgstr "http://www.laptoptips.ca/"

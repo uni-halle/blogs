@@ -1,0 +1,119 @@
+# Translation of Stable (latest release) in Japanese
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-04-24 10:09:17+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#: display-widgets.php:311
+msgid "Show Widget for:"
+msgstr "ウィジェットを表示:"
+
+#: display-widgets.php:313
+msgid "Everyone"
+msgstr "全員"
+
+#: display-widgets.php:314
+msgid "Logged-out users"
+msgstr "ログアウト中のユーザー"
+
+#: display-widgets.php:315
+msgid "Logged-in users"
+msgstr "ログイン中のユーザー"
+
+#: display-widgets.php:321
+msgid "Hide on checked pages"
+msgstr "チェックしたページで非表示"
+
+#: display-widgets.php:322
+msgid "Show on checked pages"
+msgstr "チェックしたページで表示"
+
+#: display-widgets.php:327
+msgid "Miscellaneous"
+msgstr "その他"
+
+#: display-widgets.php:339
+msgid "Pages"
+msgstr "ページ"
+
+#: display-widgets.php:356
+msgid "Custom Post Types"
+msgstr "カスタム投稿タイプ"
+
+#: display-widgets.php:369
+msgid "Custom Post Type Archives"
+msgstr "カスタム投稿タイプアーカイブ"
+
+#: display-widgets.php:380
+msgid "Archive"
+msgstr "アーカイブ"
+
+#: display-widgets.php:385
+msgid "Categories"
+msgstr "カテゴリ"
+
+#: display-widgets.php:389
+msgid "All Categories"
+msgstr "カテゴリー一覧"
+
+#: display-widgets.php:403
+msgid "Taxonomies"
+msgstr "タクソノミー"
+
+#: display-widgets.php:419
+msgid "Languages"
+msgstr "言語"
+
+#: display-widgets.php:436
+msgid "Comma Separated list of IDs of posts not listed above"
+msgstr "上記リストにない記事のIDをコンマ区切りで指定する"
+
+#: display-widgets.php:603
+msgid "Front"
+msgstr "フロント"
+
+#: display-widgets.php:604
+msgid "Blog"
+msgstr "ブログ"
+
+#: display-widgets.php:605
+msgid "Archives"
+msgstr "アーカイブ"
+
+#: display-widgets.php:606
+msgid "Single Post"
+msgstr "個別記事"
+
+#: display-widgets.php:608
+msgid "Search"
+msgstr "検索"
+
+#: display-widgets.php:733
+msgid "#%d (no title)"
+msgstr "#%d (タイトル無し)"
+
+#. Plugin Name of the plugin/theme
+msgid "Display Widgets"
+msgstr "ウィジェットを表示"
+
+#. Plugin URI of the plugin/theme
+msgid "http://strategy11.com/display-widgets/"
+msgstr "http://strategy11.com/display-widgets/"
+
+#. Description of the plugin/theme
+msgid "Adds checkboxes to each widget to show or hide on site pages."
+msgstr "サイトのページで表示・非表示にするチェックボックスを各ウィジェットに追加します。"
+
+#. Author of the plugin/theme
+msgid "Strategy11"
+msgstr "Strategy11"
+
+#. Author URI of the plugin/theme
+msgid "http://strategy11.com"
+msgstr "http://strategy11.com"

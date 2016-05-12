@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/1.0-alpha-1100\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
 "Project-Id-Version: Continents & Cities\n"
 
 #: wp-admin/includes/continents-cities.php:140
@@ -237,6 +237,10 @@ msgstr "Ittoqqortoormiit"
 #: wp-admin/includes/continents-cities.php:196
 msgid "Shiprock"
 msgstr "Shiprock"
+
+#: wp-admin/includes/continents-cities.php:197
+msgid "St Barthelemy"
+msgstr "Sankt Bartholomäus"
 
 #: wp-admin/includes/continents-cities.php:198
 msgid "St Johns"
@@ -1441,10 +1445,6 @@ msgstr "Uvea"
 #: wp-admin/includes/continents-cities.php:498
 msgid "Yap"
 msgstr "Yap"
-
-#: wp-admin/includes/continents-cities.php:197
-msgid "St Barthelemy"
-msgstr "Sankt Bartholomäus"
 
 #: wp-admin/includes/continents-cities.php:41
 msgid "Kigali"

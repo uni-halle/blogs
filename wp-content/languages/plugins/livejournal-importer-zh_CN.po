@@ -1,0 +1,247 @@
+# Translation of Stable (latest release) in Chinese (China)
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-08-01 21:08:36+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#. Author of the plugin/theme
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"
+
+#. Author URI of the plugin/theme
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#: livejournal-importer.php:210
+msgid "Import LiveJournal"
+msgstr "导入 LiveJournal"
+
+#: livejournal-importer.php:224
+msgid "It looks like you attempted to import your LiveJournal posts previously and got interrupted."
+msgstr "您似乎尝试导入已经导入过的 LiveJournal 日志并中断了。"
+
+#: livejournal-importer.php:226
+msgid "Continue previous import"
+msgstr "继续之前的导入操作"
+
+#: livejournal-importer.php:228
+msgid "Cancel &amp; start a new import"
+msgstr "取消并开始导入新内容"
+
+#: livejournal-importer.php:233
+msgid "Howdy! This importer allows you to connect directly to LiveJournal and download all your entries and comments"
+msgstr "您好！该导入器可以直接连接到 LiveJournal 并下载您全部的文章和评论"
+
+#: livejournal-importer.php:234
+msgid "Enter your LiveJournal username and password below so we can connect to your account:"
+msgstr "在下面输入您的 LiveJournal 的用户名和密码，我们才可以连接到您的帐户："
+
+#: livejournal-importer.php:239
+msgid "LiveJournal Username"
+msgstr "LiveJournal 用户名"
+
+#: livejournal-importer.php:244
+msgid "LiveJournal Password"
+msgstr "LiveJournal 密码"
+
+#: livejournal-importer.php:250
+msgid "If you have any entries on LiveJournal which are marked as private, they will be password-protected when they are imported so that only people who know the password can see them."
+msgstr "如果您在 LiveJournal 上有标记为私人的文章，导入的时候将对其进行密码保护。所以只有那些知道密码的人才可以看到它们。"
+
+#: livejournal-importer.php:251
+msgid "If you don&#8217;t enter a password, ALL ENTRIES from your LiveJournal will be imported as public posts in WordPress."
+msgstr "如果您没有输入密码，所有来自您 LiveJournal 的内容将以公开日志的形式导入到 WordPress 中。"
+
+#: livejournal-importer.php:252
+msgid "Enter the password you would like to use for all protected entries here:"
+msgstr "在这里输入受保护文章的密码："
+
+#: livejournal-importer.php:256
+msgid "Protected Post Password"
+msgstr "加密日志密码"
+
+#: livejournal-importer.php:262
+msgid "<strong>WARNING:</strong> This can take a really long time if you have a lot of entries in your LiveJournal, or a lot of comments. Ideally, you should only start this process if you can leave your computer alone while it finishes the import."
+msgstr "<strong>警告：</strong>如果您在 LiveJournal 中有很多文章或评论，这将花费很长时间。比较理想的做法是您可以离开电脑一会儿让它完成该操作。"
+
+#: livejournal-importer.php:265
+msgid "Connect to LiveJournal and Import"
+msgstr "连接到 LiveJournal 并导入"
+
+#: livejournal-importer.php:268
+msgid "<strong>NOTE:</strong> If the import process is interrupted for <em>any</em> reason, come back to this page and it will continue from where it stopped automatically."
+msgstr "<strong>注意：</strong>当导入器遇到<strong>任何</strong>问题而中断时，再次访问该页面都可以自动从停止的地方重新开始导入。"
+
+#: livejournal-importer.php:271
+msgid "<strong>NOTE:</strong> You appear to have JavaScript disabled, so you will need to manually click through each step of this importer. If you enable JavaScript, it will step through automatically."
+msgstr "<strong>注意：</strong>您似乎禁用了 JavaScript，所以您需要在导入器中手动点击每一步。如果您开启了 JavaScript，它将自动进行每一步。"
+
+#: livejournal-importer.php:316
+msgid "Post metadata has been downloaded, proceeding with posts..."
+msgstr "日志数据已经下载，正在处理日志……"
+
+#: livejournal-importer.php:418
+msgid "Post <strong>%s</strong> already exists."
+msgstr "日志 <strong>%s</strong> 已存在。"
+
+#: livejournal-importer.php:420
+msgid "Imported post <strong>%s</strong>..."
+msgstr "已经导入日志 <strong>%s</strong>……"
+
+#: livejournal-importer.php:429
+msgid "Couldn&#8217;t get post ID (creating post failed!)"
+msgstr "无法获取日志 ID（创建日志失败！）"
+
+#: livejournal-importer.php:431
+msgid "Failed to create post."
+msgstr "创建日志失败。"
+
+#: livejournal-importer.php:476
+msgid "Could not get a cookie from LiveJournal. Please try again soon."
+msgstr "无法从 LiveJournal 获取 Cookie，请稍候重试。"
+
+#: livejournal-importer.php:497
+msgid "Failed to retrieve comment meta information from LiveJournal. Please try again soon."
+msgstr "从 LiveJournal 获取评论数据失败。请稍候重试。"
+
+#: livejournal-importer.php:505
+msgid "You have no comments to import!"
+msgstr "没有可供导入的评论！"
+
+#: livejournal-importer.php:532
+msgid "Comment metadata downloaded successfully, proceeding with comment bodies..."
+msgstr "评论信息下载成功，正在处理评论内容……"
+
+#: livejournal-importer.php:557
+msgid "Failed to retrieve comment bodies from LiveJournal. Please try again soon."
+msgstr "从 LiveJournal 获取评论内容失败，请稍候重试。"
+
+#: livejournal-importer.php:648 livejournal-importer.php:656
+msgid "Anonymous"
+msgstr "匿名"
+
+#: livejournal-importer.php:708
+msgid "LiveJournal is not responding to authentication requests. Please wait a while and then try again."
+msgstr "LiveJournal 没有响应验证请求。请稍候重试。"
+
+#: livejournal-importer.php:718
+msgid "XML-RPC Request Failed -- "
+msgstr "XML-RPC 请求失败 ——"
+
+#: livejournal-importer.php:778
+msgid "Please enter your LiveJournal username <em>and</em> password so we can download your posts and comments."
+msgstr "请输入您在 LiveJournal 的用户名<strong>和</strong>密码，我们才可以下载您的日志和评论。"
+
+#: livejournal-importer.php:779 livejournal-importer.php:791
+msgid "Start again"
+msgstr "再次开始"
+
+#: livejournal-importer.php:790
+msgid "Logging in to LiveJournal failed. Check your username and password and try again."
+msgstr "登录 LiveJournal 失败。请检查您的用户名和密码后重试。"
+
+#: livejournal-importer.php:836
+msgid "Importing Posts"
+msgstr "正在导入日志"
+
+#: livejournal-importer.php:837
+msgid "We&#8217;re downloading and importing your LiveJournal posts..."
+msgstr "我们正在下载并导入您在 LiveJournal 上的日志……"
+
+#: livejournal-importer.php:841
+msgid "Imported post batch %d of <strong>approximately</strong> %d"
+msgstr "导入第 %d 批评论,共<strong>约</strong> %d 批"
+
+#: livejournal-importer.php:859
+msgid "Uh oh &ndash; LiveJournal has disconnected us because we made too many requests to their servers too quickly."
+msgstr "啊哦！LiveJournal 断开了我们的链接。因为我们在短时间那发出的请求太多。"
+
+#: livejournal-importer.php:860
+msgid "We&#8217;ve saved where you were up to though, so if you come back to this importer in about 30 minutes, you should be able to continue from where you were."
+msgstr "我们已经记录了您的操作，如果您在 30 分钟内回到该导入页面，您可以在继续进行导入。"
+
+#: livejournal-importer.php:862 livejournal-importer.php:999
+msgid "Try Again"
+msgstr "重试"
+
+#: livejournal-importer.php:875 livejournal-importer.php:929
+msgid "Import the next batch"
+msgstr "导入下一批"
+
+#: livejournal-importer.php:880
+msgid "Your posts have all been imported, but wait &#8211; there&#8217;s more! Now we need to download &amp; import your comments."
+msgstr "您的日志已经全部导入，但等等 &#8211; 还有些内容！现在我们需要下载并导入您的评论。"
+
+#: livejournal-importer.php:881
+msgid "Download my comments &raquo;"
+msgstr "下载我的评论 &raquo;"
+
+#: livejournal-importer.php:899
+msgid "Downloading Comments&#8230;"
+msgstr "正在下载评论 &#8230;"
+
+#: livejournal-importer.php:900
+msgid "Now we will download your comments so we can import them (this could take a <strong>long</strong> time if you have lots of comments)..."
+msgstr "现在我们已经下载了您的评论，所以我们可以导入它们了（如果您有很多评论，这将花费<strong>很长</strong>时间）……"
+
+#: livejournal-importer.php:926
+msgid "Imported comment batch %d of <strong>approximately</strong> %d"
+msgstr "导入第 %d 批评论,共<strong>约</strong> %d 批。"
+
+#: livejournal-importer.php:934
+msgid "Your comments have all been imported now, but we still need to rebuild your conversation threads."
+msgstr "您的评论已全部导入，但我们仍然需要重建相关的嵌套关系。"
+
+#: livejournal-importer.php:935
+msgid "Rebuild my comment threads &raquo;"
+msgstr "重建我的评论的嵌套关系 &raquo;"
+
+#: livejournal-importer.php:951
+msgid "Threading Comments&#8230;"
+msgstr "正在嵌套评论 &#8230;"
+
+#: livejournal-importer.php:952
+msgid "We are now re-building the threading of your comments (this can also take a while if you have lots of comments)..."
+msgstr "我们正在重建评论的嵌套关系（如果您的评论比较多，这将需要一段时间）……"
+
+#: livejournal-importer.php:989
+msgid "Successfully re-threaded %s comments."
+msgstr "成功重新嵌套 %s 条评论。"
+
+#: livejournal-importer.php:991
+msgid "All done. <a href=\"%s\">Have fun!</a>"
+msgstr "操作完成。<a href=\"%s\">好好享受！</a>"
+
+#: livejournal-importer.php:1024 livejournal-importer.php:1052
+msgid "Continuing in %d&#8230;"
+msgstr "继续 %d&#8230;"
+
+#: livejournal-importer.php:1029
+msgid "Continuing&#8230;"
+msgstr "继续&#8230;"
+
+#: livejournal-importer.php:1058
+msgid "Processing next batch."
+msgstr "正在处理下一批。"
+
+#: livejournal-importer.php:1126
+msgid "LiveJournal"
+msgstr "LiveJournal"
+
+#: livejournal-importer.php:1126
+msgid "Import posts from LiveJournal using their API."
+msgstr "使用 LiveJournal 的 API 导入日志。"
+
+#. Plugin Name of the plugin/theme
+msgid "LiveJournal Importer"
+msgstr "LiveJournal 导入工具"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/livejournal-importer/"
+msgstr "http://wordpress.org/extend/plugins/livejournal-importer/"

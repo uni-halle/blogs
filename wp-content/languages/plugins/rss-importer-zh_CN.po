@@ -1,0 +1,62 @@
+# Translation of Development (trunk) in Chinese (China)
+# This file is distributed under the same license as the Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2010-10-25 06:33:59+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Development (trunk)\n"
+
+msgid "http://wordpress.org/extend/plugins/rss-importer/"
+msgstr "http://wordpress.org/extend/plugins/rss-importer/"
+
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"
+
+msgid "Import posts from an RSS feed. This plugin depends on the WP_Importer base class."
+msgstr "从 RSS 订阅源中导入日志。该插件依附于 WP_Importer 基础类。"
+
+msgid "RSS Importer"
+msgstr "RSS 导入工具"
+
+#: rss-importer.php:219
+msgid "Import posts from an RSS feed."
+msgstr "从 RSS 订阅源中导入日志。"
+
+#: rss-importer.php:219
+msgid "RSS"
+msgstr "RSS"
+
+#: rss-importer.php:185
+msgid "All done. <a href=\"%s\">Have fun!</a>"
+msgstr "操作完成。<a href=\"%s\">好好享受！</a>"
+
+#: rss-importer.php:160
+msgid "Done!"
+msgstr "完成！"
+
+#: rss-importer.php:154
+msgid "Couldn&#8217;t get post ID"
+msgstr "无法获取日志 ID"
+
+#: rss-importer.php:148
+msgid "Post already imported"
+msgstr "日志已经被导入过"
+
+#: rss-importer.php:143
+msgid "Importing post..."
+msgstr "导入日志中..."
+
+#: rss-importer.php:59
+msgid "Howdy! This importer allows you to extract posts from an RSS 2.0 file into your WordPress site. This is useful if you want to import your posts from a system that is not handled by a custom import tool. Pick an RSS file to upload and click Import."
+msgstr "您好！这个导入工具可以帮您从任何 RSS 2.0 文件中解析出日志并导入您的站点。这个工具适用于您想从一个没有专门的导入工具的系统里导入日志。选择您要导入的 RSS 文件，点击导入按钮。"
+
+#: rss-importer.php:50
+msgid "Import RSS"
+msgstr "导入 RSS"

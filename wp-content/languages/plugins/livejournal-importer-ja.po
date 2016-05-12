@@ -1,0 +1,251 @@
+# Translation of Stable (latest release) in Japanese
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-08-01 21:07:25+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.0.0\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#. Description of the plugin/theme
+msgid "Import posts and comments from LiveJournal."
+msgstr "LiveJournal から投稿をインポートします。"
+
+#. Author of the plugin/theme
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/livejournal-importer/"
+msgstr "http://wordpress.org/extend/plugins/livejournal-importer/"
+
+#. Plugin Name of the plugin/theme
+msgid "LiveJournal Importer"
+msgstr "LiveJournal インポートツール"
+
+#: livejournal-importer.php:1126
+msgid "LiveJournal"
+msgstr "LiveJournal"
+
+#: livejournal-importer.php:1126
+msgid "Import posts from LiveJournal using their API."
+msgstr "LiveJournal から API を利用して投稿をインポートします。"
+
+#: livejournal-importer.php:1058
+msgid "Processing next batch."
+msgstr "次の処理を実行中。"
+
+#: livejournal-importer.php:1024 livejournal-importer.php:1052
+msgid "Continuing in %d&#8230;"
+msgstr "%dしたら再開します…"
+
+#: livejournal-importer.php:1029
+msgid "Continuing&#8230;"
+msgstr "再開中…"
+
+#: livejournal-importer.php:991
+msgid "All done. <a href=\"%s\">Have fun!</a>"
+msgstr "すべて完了しました。<a href=\"%s\">ではお楽しみください ! </a>"
+
+#: livejournal-importer.php:952
+msgid "We are now re-building the threading of your comments (this can also take a while if you have lots of comments)..."
+msgstr "コメントのスレッドを再構築しています (コメントがたくさんある場合は時間がかかるかもしれません)…"
+
+#: livejournal-importer.php:989
+msgid "Successfully re-threaded %s comments."
+msgstr "%s個のコメントの再スレッド化に成功しました。"
+
+#: livejournal-importer.php:951
+msgid "Threading Comments&#8230;"
+msgstr "コメントをスレッド化中…"
+
+#: livejournal-importer.php:935
+msgid "Rebuild my comment threads &raquo;"
+msgstr "コメントスレッドの再構築 &raquo;"
+
+#: livejournal-importer.php:934
+msgid "Your comments have all been imported now, but we still need to rebuild your conversation threads."
+msgstr "コメントはすべてインポートされましたが、コメントのスレッドを再構築する必要があります。"
+
+#: livejournal-importer.php:926
+msgid "Imported comment batch %d of <strong>approximately</strong> %d"
+msgstr "%d / <strong>(おおよそ)</strong> %d のコメントをインポートしました"
+
+#: livejournal-importer.php:899
+msgid "Downloading Comments&#8230;"
+msgstr "コメントをダウンロード中…"
+
+#: livejournal-importer.php:900
+msgid "Now we will download your comments so we can import them (this could take a <strong>long</strong> time if you have lots of comments)..."
+msgstr "ではコメントをダウンロードしてインポートしましょう (コメントがたくさんあると<strong>時間がかかる</strong>かもしれません)…"
+
+#: livejournal-importer.php:881
+msgid "Download my comments &raquo;"
+msgstr "コメントをダウンロード &raquo;"
+
+#: livejournal-importer.php:880
+msgid "Your posts have all been imported, but wait &#8211; there&#8217;s more! Now we need to download &amp; import your comments."
+msgstr "投稿はすべてインポートされましたが、まだすることがあります ! 今度はコメントをダウンロードしてインポートしましょう。"
+
+#: livejournal-importer.php:875 livejournal-importer.php:929
+msgid "Import the next batch"
+msgstr "次のバッチをインポート"
+
+#: livejournal-importer.php:862 livejournal-importer.php:999
+msgid "Try Again"
+msgstr "もう一度お試しください。"
+
+#: livejournal-importer.php:860
+msgid "We&#8217;ve saved where you were up to though, so if you come back to this importer in about 30 minutes, you should be able to continue from where you were."
+msgstr "どこまで処理が進んだのか保存しているので、30分以内にこのインポーターに戻ってくれば、残りの処理を続けることができます。"
+
+#: livejournal-importer.php:859
+msgid "Uh oh &ndash; LiveJournal has disconnected us because we made too many requests to their servers too quickly."
+msgstr "うーん、あまりに短時間に多すぎるリクエストをサーバーに送ったために、LiveJournal が回線を切断したようです。"
+
+#: livejournal-importer.php:841
+msgid "Imported post batch %d of <strong>approximately</strong> %d"
+msgstr "%d / <strong>(おおよそ)</strong> %d の投稿をインポートしました"
+
+#: livejournal-importer.php:836
+msgid "Importing Posts"
+msgstr "投稿のインポート中"
+
+#: livejournal-importer.php:837
+msgid "We&#8217;re downloading and importing your LiveJournal posts..."
+msgstr "LiveJournal の投稿をダウンロードしてインポートしています…"
+
+#: livejournal-importer.php:790
+msgid "Logging in to LiveJournal failed. Check your username and password and try again."
+msgstr "LiveJournal へのログインに失敗しました。ユーザー名とパスワードを確認して再度お試しください。"
+
+#: livejournal-importer.php:779 livejournal-importer.php:791
+msgid "Start again"
+msgstr "再実行"
+
+#: livejournal-importer.php:778
+msgid "Please enter your LiveJournal username <em>and</em> password so we can download your posts and comments."
+msgstr "LiveJournal のユーザー名<em>と</em>パスワードを入力してください。投稿とコメントをダウンロードします。"
+
+#: livejournal-importer.php:718
+msgid "XML-RPC Request Failed -- "
+msgstr "XML-RPC リクエストに失敗 --"
+
+#: livejournal-importer.php:708
+msgid "LiveJournal is not responding to authentication requests. Please wait a while and then try again."
+msgstr "LiveJournal が認証リクエストに反応しません。しばらくお待ちになり、再度お試しください。"
+
+#: livejournal-importer.php:557
+msgid "Failed to retrieve comment bodies from LiveJournal. Please try again soon."
+msgstr "LiveJournal からのコメント本文の取得に失敗しました。再度お試しください。"
+
+#: livejournal-importer.php:648 livejournal-importer.php:656
+msgid "Anonymous"
+msgstr "匿名"
+
+#: livejournal-importer.php:532
+msgid "Comment metadata downloaded successfully, proceeding with comment bodies..."
+msgstr "コメントメタデータのダウンロードに成功しました。コメント本文へ進みます…"
+
+#: livejournal-importer.php:505
+msgid "You have no comments to import!"
+msgstr "インポートするコメントはありません !"
+
+#: livejournal-importer.php:497
+msgid "Failed to retrieve comment meta information from LiveJournal. Please try again soon."
+msgstr "LiveJournal からのコメントメタ情報の取得に失敗しました。再度お試しください。"
+
+#: livejournal-importer.php:476
+msgid "Could not get a cookie from LiveJournal. Please try again soon."
+msgstr "LiveJournal からの cookie を取得できませんでした。再度お試しください。"
+
+#: livejournal-importer.php:431
+msgid "Failed to create post."
+msgstr "投稿の作成に失敗しました。"
+
+#: livejournal-importer.php:429
+msgid "Couldn&#8217;t get post ID (creating post failed!)"
+msgstr "post ID を取得できませんでした (投稿の作成に失敗しました !)"
+
+#: livejournal-importer.php:418
+msgid "Post <strong>%s</strong> already exists."
+msgstr "投稿 <strong>%s</strong> はすでに存在しています。"
+
+#: livejournal-importer.php:420
+msgid "Imported post <strong>%s</strong>..."
+msgstr "インポートした投稿 <strong>%s</strong>…"
+
+#: livejournal-importer.php:316
+msgid "Post metadata has been downloaded, proceeding with posts..."
+msgstr "投稿メタデータをダウンロードしました。投稿の処理を続けます…"
+
+#: livejournal-importer.php:271
+msgid "<strong>NOTE:</strong> You appear to have JavaScript disabled, so you will need to manually click through each step of this importer. If you enable JavaScript, it will step through automatically."
+msgstr "<strong>メモ:</strong> JavaScript が無効になっているようなので、このインポーターの各ステップを手動でクリックする必要があります。JavaScript が有効になっている場合、このステップは自動で実行されます。"
+
+#: livejournal-importer.php:268
+msgid "<strong>NOTE:</strong> If the import process is interrupted for <em>any</em> reason, come back to this page and it will continue from where it stopped automatically."
+msgstr "<strong>メモ:</strong> インポート処理が<em>なんらかの</em>理由で中断された場合、このページに戻れば自動的に中断された箇所から処理を続けます。"
+
+#: livejournal-importer.php:265
+msgid "Connect to LiveJournal and Import"
+msgstr "LiveJournal に接続してインポート"
+
+#: livejournal-importer.php:262
+msgid "<strong>WARNING:</strong> This can take a really long time if you have a lot of entries in your LiveJournal, or a lot of comments. Ideally, you should only start this process if you can leave your computer alone while it finishes the import."
+msgstr "<strong>注意:</strong> LiveJournal のエントリーやコメントがたくさんある場合、この処理には長い時間がかかるかもしれません。できれば、インポートが終了するまでご自分のコンピューターを放置できる場合だけこの処理をスタートさせてください。"
+
+#: livejournal-importer.php:256
+msgid "Protected Post Password"
+msgstr "保護された投稿のパスワード"
+
+#: livejournal-importer.php:252
+msgid "Enter the password you would like to use for all protected entries here:"
+msgstr "保護されたすべてのエントリーに使用するパスワードをこちらに入力してください:"
+
+#: livejournal-importer.php:251
+msgid "If you don&#8217;t enter a password, ALL ENTRIES from your LiveJournal will be imported as public posts in WordPress."
+msgstr "パスワードを入力しないと LiveJournal からのすべてのエントリーが一般に公開された状態として WordPress にインポートされます。"
+
+#: livejournal-importer.php:250
+msgid "If you have any entries on LiveJournal which are marked as private, they will be password-protected when they are imported so that only people who know the password can see them."
+msgstr "LiveJournal にプライベートとしてマークされたエントリーがある場合、それらのエントリーはインポート時にパスワードで保護され、そのパスワードを知っている人のみが閲覧できるようになります。"
+
+#: livejournal-importer.php:244
+msgid "LiveJournal Password"
+msgstr "LiveJournal パスワード"
+
+#: livejournal-importer.php:239
+msgid "LiveJournal Username"
+msgstr "LiveJournal ユーザー名"
+
+#: livejournal-importer.php:234
+msgid "Enter your LiveJournal username and password below so we can connect to your account:"
+msgstr "あなたのアカウントに接続するために、LiveJournal のユーザー名とパスワードを入力してください:"
+
+#: livejournal-importer.php:233
+msgid "Howdy! This importer allows you to connect directly to LiveJournal and download all your entries and comments"
+msgstr "こんにちは ! このインポーターは LiveJournal に直接接続し、すべてのエントリーとコメントをダウンロードします。"
+
+#: livejournal-importer.php:228
+msgid "Cancel &amp; start a new import"
+msgstr "キャンセルして新たにインポートする"
+
+#: livejournal-importer.php:226
+msgid "Continue previous import"
+msgstr "前回のインポートを続けます"
+
+#: livejournal-importer.php:224
+msgid "It looks like you attempted to import your LiveJournal posts previously and got interrupted."
+msgstr "LiveJournal の投稿を以前にインポートしようとして中断しているようです。"
+
+#: livejournal-importer.php:210
+msgid "Import LiveJournal"
+msgstr "LiveJournal のインポート"

@@ -1,0 +1,83 @@
+# Translation of Development (trunk) in Italian
+# This file is distributed under the same license as the Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2011-03-09 19:45:06+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Development (trunk)\n"
+
+msgid "http://wordpress.org/extend/plugins/opml-importer/"
+msgstr "http://wordpress.org/extend/plugins/opml-importer/"
+
+#: opml-importer.php:47 opml-importer.php:99
+msgid "Cheatin&#8217; uh?"
+msgstr "Si tenta di fare i furbi, eh?"
+
+#: opml-importer.php:154
+msgid "You need to supply your OPML url. Press back on your browser and try again"
+msgstr "Occorre inserire l'URL del file OPML. Tornare indietro con il browser e riprovare."
+
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"
+
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#: opml-importer.php:148
+msgid "Inserted %1$d links into category %2$s. All done! Go <a href=\"%3$s\">manage those links</a>."
+msgstr "Inserito link %1$d nella categoria %2$s. Tutto a posto! <a href=\"%3$s\">Gestisci questi link</a>."
+
+#: opml-importer.php:144
+msgid "Inserted <strong>%s</strong>"
+msgstr "Inserito <strong>%s</strong>"
+
+msgid "OPML Importer"
+msgstr "Importatore OPML"
+
+#: opml-importer.php:173
+msgid "Import links in OPML format."
+msgstr "Importa link in formato OPML"
+
+#: opml-importer.php:173
+msgid "Blogroll"
+msgstr "Blogroll"
+
+#: opml-importer.php:68
+msgid "Or choose from your local disk:"
+msgstr "Oppure selezionarlo dal proprio disco locale."
+
+#: opml-importer.php:63
+msgid "Specify an OPML URL:"
+msgstr "Indicare un URL OPML:"
+
+#: opml-importer.php:58
+msgid "If a program or website you use allows you to export your links or subscriptions as OPML you may import them here."
+msgstr "Se un programma o un sito web permette di esportare i propri link o le proprie sottoscrizioni in formato OPML è possibile importarli da qui."
+
+#: opml-importer.php:54
+msgid "Import your blogroll from another system"
+msgstr "Importa un blogroll da un altro sistema"
+
+#: opml-importer.php:103
+msgid "Importing..."
+msgstr "Sto importando..."
+
+#: opml-importer.php:86
+msgid "Import OPML File"
+msgstr "Importa file OPML"
+
+#: opml-importer.php:75
+msgid "Category:"
+msgstr "Categoria:"
+
+#: opml-importer.php:74
+msgid "Now select a category you want to put these links in."
+msgstr "Selezionare una categoria nella quale inserire questi link."
+
+#: opml-importer.php:28
+msgid "Import Blogroll"
+msgstr "Importa da blogroll"

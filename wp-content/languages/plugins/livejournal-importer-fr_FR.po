@@ -1,0 +1,251 @@
+# Translation of Stable (latest release) in French (France)
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-05-20 18:01:24+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/2.0.0\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#. Description of the plugin/theme
+msgid "Import posts and comments from LiveJournal."
+msgstr "Importez des articles et commentaires depuis Livejournal."
+
+#. Author of the plugin/theme
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/livejournal-importer/"
+msgstr "http://wordpress.org/extend/plugins/livejournal-importer/"
+
+#. Plugin Name of the plugin/theme
+msgid "LiveJournal Importer"
+msgstr "Importateur LiveJournal"
+
+#: livejournal-importer.php:1126
+msgid "LiveJournal"
+msgstr "LiveJournal"
+
+#: livejournal-importer.php:1126
+msgid "Import posts from LiveJournal using their API."
+msgstr "Importation d&rsquo;articles depuis LiveJournal en utilisant leur API."
+
+#: livejournal-importer.php:1058
+msgid "Processing next batch."
+msgstr "Traiter le lot suivant."
+
+#: livejournal-importer.php:1024 livejournal-importer.php:1052
+msgid "Continuing in %d&#8230;"
+msgstr "On continue dans %d&#8230;"
+
+#: livejournal-importer.php:1029
+msgid "Continuing&#8230;"
+msgstr "On continue&#8230;"
+
+#: livejournal-importer.php:991
+msgid "All done. <a href=\"%s\">Have fun!</a>"
+msgstr "Terminé&nbsp;! (<a href=\"%s\">Amusez-vous bien&nbsp;!</a>)"
+
+#: livejournal-importer.php:952
+msgid "We are now re-building the threading of your comments (this can also take a while if you have lots of comments)..."
+msgstr "Nous sommes maintenant en train de reconstruire la hiérarchie de vos commentaires (cela prendre du temps si vous avez beaucoup de commentaires)..."
+
+#: livejournal-importer.php:989
+msgid "Successfully re-threaded %s comments."
+msgstr "%s commentaires hiérarchisés avec succès."
+
+#: livejournal-importer.php:951
+msgid "Threading Comments&#8230;"
+msgstr "Commentaires hiérarchises&#8230;"
+
+#: livejournal-importer.php:935
+msgid "Rebuild my comment threads &raquo;"
+msgstr "Reconstruire le fil de mes commentaires &raquo;"
+
+#: livejournal-importer.php:934
+msgid "Your comments have all been imported now, but we still need to rebuild your conversation threads."
+msgstr "Vos commentaires ont maintenant tous été importés, mais nous allons devons encore reconstruire le fil de vos conversations."
+
+#: livejournal-importer.php:926
+msgid "Imported comment batch %d of <strong>approximately</strong> %d"
+msgstr "Importé le lot de commentaires %d sur approximativement %d"
+
+#: livejournal-importer.php:899
+msgid "Downloading Comments&#8230;"
+msgstr "Téléchargement des commentaires&#8230;"
+
+#: livejournal-importer.php:900
+msgid "Now we will download your comments so we can import them (this could take a <strong>long</strong> time if you have lots of comments)..."
+msgstr "Maintenant, nous allons télécharger vos commentaires pour les importer (cela peut durer <strong>longtemps</strong> si vous avez beaucoup de commentaires)..."
+
+#: livejournal-importer.php:881
+msgid "Download my comments &raquo;"
+msgstr "Télécharger mes commentaires &raquo;"
+
+#: livejournal-importer.php:880
+msgid "Your posts have all been imported, but wait &#8211; there&#8217;s more! Now we need to download &amp; import your comments."
+msgstr "Tous vos articles ont été importés. Mais attendez, ce n&rsquo;est pas terminé ! Maintenant nous allons procéder à l&rsquo;importation de vos commentaires."
+
+#: livejournal-importer.php:875 livejournal-importer.php:929
+msgid "Import the next batch"
+msgstr "Importer le lot suivant"
+
+#: livejournal-importer.php:862 livejournal-importer.php:999
+msgid "Try Again"
+msgstr "Recommencez"
+
+#: livejournal-importer.php:860
+msgid "We&#8217;ve saved where you were up to though, so if you come back to this importer in about 30 minutes, you should be able to continue from where you were."
+msgstr "Nous avons cependant enregistré où vous en étiez, donc si vous revenez à cet importateur dans environ 30 minutes, vous devriez être capables de continuer d&rsquo;où vous étiez."
+
+#: livejournal-importer.php:859
+msgid "Uh oh &ndash; LiveJournal has disconnected us because we made too many requests to their servers too quickly."
+msgstr "Hé ho &ndash; LiveJournal vous a déconnecté de leurs serveurs, car vous avez effectué trop de requêtes sur un court laps de temps."
+
+#: livejournal-importer.php:841
+msgid "Imported post batch %d of <strong>approximately</strong> %d"
+msgstr "Importé le lot d&rsquo;articles %d sur approximativement %d"
+
+#: livejournal-importer.php:836
+msgid "Importing Posts"
+msgstr "Importation des articles"
+
+#: livejournal-importer.php:837
+msgid "We&#8217;re downloading and importing your LiveJournal posts..."
+msgstr "Nous sommes en train de télécharger et importer vos articles LiveJournal..."
+
+#: livejournal-importer.php:790
+msgid "Logging in to LiveJournal failed. Check your username and password and try again."
+msgstr "La connexion à LiveJournal a échoué. Merci de vérifier votre identifiant et votre mot de passe et réessayez."
+
+#: livejournal-importer.php:779 livejournal-importer.php:791
+msgid "Start again"
+msgstr "Recommencer"
+
+#: livejournal-importer.php:778
+msgid "Please enter your LiveJournal username <em>and</em> password so we can download your posts and comments."
+msgstr "Merci de saisir votre identifiant LiveJournal <em>et</em> votre mot de passe si vous souhaitez télécharger vos articles et vos commentaires."
+
+#: livejournal-importer.php:718
+msgid "XML-RPC Request Failed -- "
+msgstr "La requête XML-RPC a échoué - "
+
+#: livejournal-importer.php:708
+msgid "LiveJournal is not responding to authentication requests. Please wait a while and then try again."
+msgstr "LiveJournal ne répond actuellement pas aux demandes d&rsquo;authentification. Veuillez patienter quelque temps, puis relancer l&rsquo;importateur."
+
+#: livejournal-importer.php:557
+msgid "Failed to retrieve comment bodies from LiveJournal. Please try again soon."
+msgstr "Échec lors de la récupération du contenu des commentaires depuis LiveJournal. Merci de réessayer ultérieurement."
+
+#: livejournal-importer.php:648 livejournal-importer.php:656
+msgid "Anonymous"
+msgstr "Anonyme"
+
+#: livejournal-importer.php:532
+msgid "Comment metadata downloaded successfully, proceeding with comment bodies..."
+msgstr "Les métadonnées des commentaires ont bien été téléchargées, on passe au contenu des commentaires..."
+
+#: livejournal-importer.php:505
+msgid "You have no comments to import!"
+msgstr "Vous n&rsquo;avez aucun commentaire à importer&nbsp;!"
+
+#: livejournal-importer.php:497
+msgid "Failed to retrieve comment meta information from LiveJournal. Please try again soon."
+msgstr "Échec lors de la récupération des informations métas des commentaires depuis LiveJournal. Merci de réessayer ultérieurement."
+
+#: livejournal-importer.php:476
+msgid "Could not get a cookie from LiveJournal. Please try again soon."
+msgstr "Échec lors de la récupération du cookie depuis LiveJournal. Merci de réessayer ultérieurement."
+
+#: livejournal-importer.php:431
+msgid "Failed to create post."
+msgstr "La création de l&rsquo;article a échoué."
+
+#: livejournal-importer.php:429
+msgid "Couldn&#8217;t get post ID (creating post failed!)"
+msgstr "Impossible d&rsquo;obtenir l&rsquo;ID de l&rsquo;article (la création de l&rsquo;article a échoué !)"
+
+#: livejournal-importer.php:418
+msgid "Post <strong>%s</strong> already exists."
+msgstr "L&rsquo;article <strong>%s</strong> existe déjà."
+
+#: livejournal-importer.php:420
+msgid "Imported post <strong>%s</strong>..."
+msgstr "Article <strong>%s</strong> importé... "
+
+#: livejournal-importer.php:316
+msgid "Post metadata has been downloaded, proceeding with posts..."
+msgstr "Les métadonnées des articles ont été téléchargées, passons aux articles."
+
+#: livejournal-importer.php:271
+msgid "<strong>NOTE:</strong> You appear to have JavaScript disabled, so you will need to manually click through each step of this importer. If you enable JavaScript, it will step through automatically."
+msgstr "<strong>NOTE&nbsp;:</strong> il semble que JavaScript est désactivé dans votre navigateur. Il vous faudra alors progresser manuellement entre les étapes de l&rsquo;importateur. Si vous activez JavaScript, l&rsquo;importateur progressera automatiquement."
+
+#: livejournal-importer.php:268
+msgid "<strong>NOTE:</strong> If the import process is interrupted for <em>any</em> reason, come back to this page and it will continue from where it stopped automatically."
+msgstr "<strong>Note :</strong> si le processus d&rsquo;importation est interrompu pour <em>n&rsquo;importe quelle</em> raison, revenez sur la page précédente et le script reprendra automatiquement là où il s&rsquo;est arrêté."
+
+#: livejournal-importer.php:265
+msgid "Connect to LiveJournal and Import"
+msgstr "Se connecter à LiveJournal et importer le contenu"
+
+#: livejournal-importer.php:262
+msgid "<strong>WARNING:</strong> This can take a really long time if you have a lot of entries in your LiveJournal, or a lot of comments. Ideally, you should only start this process if you can leave your computer alone while it finishes the import."
+msgstr "<strong>Attention:</strong> cette étape peut prendre un certain temps si vous possédez beaucoup d&rsquo;articles dans votre LiveJournal, ou beaucoup de commentaires. Idéalement, vous pouvez lancer ce processus d&rsquo;importation et laissez votre ordinateur travailler jusqu&rsquo;à la fin de l&rsquo;importation."
+
+#: livejournal-importer.php:256
+msgid "Protected Post Password"
+msgstr "Article protégé par un mot de passe"
+
+#: livejournal-importer.php:252
+msgid "Enter the password you would like to use for all protected entries here:"
+msgstr "Saisir le mot de passe que vous voulez utiliser pour tous les articles protégés ici :"
+
+#: livejournal-importer.php:251
+msgid "If you don&#8217;t enter a password, ALL ENTRIES from your LiveJournal will be imported as public posts in WordPress."
+msgstr "Si vous ne saisissez pas de mot de passe, tous les articles de LiveJournal seront insérés comme des articles publics dans WordPress."
+
+#: livejournal-importer.php:250
+msgid "If you have any entries on LiveJournal which are marked as private, they will be password-protected when they are imported so that only people who know the password can see them."
+msgstr "Si vous avez des articles sur LiveJournal marqué comme privé, ils seront protégés par un mot de passe lors de l&rsquo;importation si bien que seules les personnes connaissant les mots de passe pourront les voir."
+
+#: livejournal-importer.php:244
+msgid "LiveJournal Password"
+msgstr "Mot de passe de LiveJournal"
+
+#: livejournal-importer.php:239
+msgid "LiveJournal Username"
+msgstr "Identifiant de LiveJournal"
+
+#: livejournal-importer.php:234
+msgid "Enter your LiveJournal username and password below so we can connect to your account:"
+msgstr "Saisir votre identifiant LiveJournal et votre mot de passe ci-dessous afin de vous connecter à votre compte :"
+
+#: livejournal-importer.php:233
+msgid "Howdy! This importer allows you to connect directly to LiveJournal and download all your entries and comments"
+msgstr "Salutations, cet importateur vous permet de vous connecter directement à LiveJournal et télécharger tous vos articles et commentaires."
+
+#: livejournal-importer.php:228
+msgid "Cancel &amp; start a new import"
+msgstr "Annuler &amp; Commencer une nouvelle importation"
+
+#: livejournal-importer.php:226
+msgid "Continue previous import"
+msgstr "Continuer l&rsquo;importation commencée précédemment"
+
+#: livejournal-importer.php:224
+msgid "It looks like you attempted to import your LiveJournal posts previously and got interrupted."
+msgstr "Apparemment vous avez essayé d&rsquo;importer vos articles LiveJournal précédemment et vous avez été interrompu."
+
+#: livejournal-importer.php:210
+msgid "Import LiveJournal"
+msgstr "Importation depuis LiveJournal"

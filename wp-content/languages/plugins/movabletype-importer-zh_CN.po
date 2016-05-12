@@ -1,0 +1,124 @@
+# Translation of Stable (latest release) in Chinese (China)
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-08-01 21:17:27+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#. Author of the plugin/theme
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"
+
+#. Author URI of the plugin/theme
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#: movabletype-importer.php:481
+msgid "All done. <a href=\"%s\">Have fun!</a>"
+msgstr "操作完成。<a href=\"%s\">好好享受！</a>"
+
+#: movabletype-importer.php:209
+msgid "Below, you can see the names of the authors of the Movable Type posts in <em>italics</em>. For each of these names, you can either pick an author in your WordPress installation from the menu, or enter a name for the author in the textbox."
+msgstr "在下面，您可以看到所有 MovableType 日志中的作者被用<strong>粗体</strong>列出。对于它们中的每一个，您可以选择您在 WordPress 中的作者或者重新输入一个新的名字。"
+
+#: movabletype-importer.php:44
+msgid "Import Movable Type or TypePad"
+msgstr "导入 Moveable Type 或 Typepad"
+
+#: movabletype-importer.php:55
+msgid "Howdy! We are about to begin importing all of your Movable Type or TypePad entries into WordPress. To begin, either choose a file to upload and click &#8220;Upload file and import&#8221;, or use FTP to upload your MT export file as <code>mt-export.txt</code> in your <code>/wp-content/</code> directory and then click &#8220;Import mt-export.txt&#8221;."
+msgstr "您好！我们可以把 Movable Type 或者 Typepad 中的所有内容导入到 WordPress 中。请选择要导入的文件，然后点击 &#8220;上传并导入&#8221; 按钮，或者通过 FTP 上传您的 MT 导出文件 <code>mt-export.txt</code> 到您的 <code>/wp-content/</code> 目录，然后点击 &#8220;导入 mt-export.txt&#8221;。"
+
+#: movabletype-importer.php:63
+msgid "Or use <code>mt-export.txt</code> in your <code>/wp-content/</code> directory"
+msgstr "使用 <code>/wp-content/</code> 下的 <code>mt-export.txt</code>"
+
+#: movabletype-importer.php:65
+msgid "Import mt-export.txt"
+msgstr "导入 mt-export.txt"
+
+#: movabletype-importer.php:68
+msgid "The importer is smart enough not to import duplicates, so you can run this multiple times without worry if&#8212;for whatever reason&#8212;it doesn&#8217;t finish. If you get an <strong>out of memory</strong> error try splitting up the import file into pieces."
+msgstr "这个导入工具可以分辨重复的条目，所以您不必担心因为未完成的导入而造成的混乱。如果您收到<strong>内存不足</strong>的错误，请尝试把导入文件分解成更小的部分。"
+
+#: movabletype-importer.php:77
+msgid "&mdash; Select &mdash;"
+msgstr "&mdash; 选择 &mdash;"
+
+#: movabletype-importer.php:207
+msgid "Assign Authors"
+msgstr "指定作者"
+
+#: movabletype-importer.php:208
+msgid "To make it easier for you to edit and save the imported posts and drafts, you may want to change the name of the author of the posts. For example, you may want to import all the entries as admin&#8217;s entries."
+msgstr "为了更好地编辑、储存导入的日志和草稿，你可以修改这些日志的作者。例如，你可能希望 admin 作为所有导入的日志的作者。"
+
+#: movabletype-importer.php:210
+msgid "If a new user is created by WordPress, a password will be randomly generated. Manually change the user&#8217;s details if necessary."
+msgstr "如果在 WordPress 中创建一个新用户，会随机生成一个用户密码。如果必要的话，请手动更改用户信息。"
+
+#: movabletype-importer.php:221
+msgid "Current author:"
+msgstr "当前作者："
+
+#: movabletype-importer.php:221
+msgid "Create user %1$s or map to existing"
+msgstr "建立用户 %1$s 或者映射成已存在的用户"
+
+#: movabletype-importer.php:226
+msgid "Submit"
+msgstr "提交"
+
+#: movabletype-importer.php:236
+msgid "<code>mt-export.txt</code> does not exist"
+msgstr "<code>mt-export.txt</code> 不存在"
+
+#: movabletype-importer.php:242
+msgid "Sorry, there has been an error"
+msgstr "抱歉，有错误发生"
+
+#: movabletype-importer.php:260
+msgid "Post <em>%s</em> already exists."
+msgstr "日志 <strong>%s</strong> 已存在。"
+
+#: movabletype-importer.php:263
+msgid "Importing post <em>%s</em>..."
+msgstr "正在导入日志 <strong>%s</strong>……"
+
+#: movabletype-importer.php:281
+msgid "Adding tags <em>%s</em>..."
+msgstr "正在添加标签 <strong>%s</strong>……"
+
+#: movabletype-importer.php:300
+msgid "(%s comment)"
+msgid_plural "(%s comments)"
+msgstr[0] "（%s 条评论）"
+
+#: movabletype-importer.php:317
+msgid "(%s ping)"
+msgid_plural "(%s pings)"
+msgstr[0] "（%s 条TB）"
+
+#: movabletype-importer.php:527
+msgid "Movable Type and TypePad"
+msgstr "Movable Type 和 Typepad"
+
+#. #-#-#-#-#  tmp-movabletype-importer.pot (Movable Type and TypePad Importer
+#. 0.4)  #-#-#-#-#
+#. Description of the plugin/theme
+#: movabletype-importer.php:527
+msgid "Import posts and comments from a Movable Type or TypePad blog."
+msgstr "从 Movable Type 或 Typepad 中导入日志和评论。"
+
+#. Plugin Name of the plugin/theme
+msgid "Movable Type and TypePad Importer"
+msgstr " Moveable Type 和 Typepad 导入工具"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/movabletype-importer/"
+msgstr "http://wordpress.org/extend/plugins/movabletype-importer/"

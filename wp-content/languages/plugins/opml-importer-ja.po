@@ -1,0 +1,83 @@
+# Translation of Development (trunk) in Japanese
+# This file is distributed under the same license as the Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2010-06-18 12:30:09+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Development (trunk)\n"
+
+msgid "http://wordpress.org/extend/plugins/opml-importer/"
+msgstr "http://wordpress.org/extend/plugins/opml-importer/"
+
+#: opml-importer.php:47 opml-importer.php:99
+msgid "Cheatin&#8217; uh?"
+msgstr "間違えましたか ?"
+
+#: opml-importer.php:154
+msgid "You need to supply your OPML url. Press back on your browser and try again"
+msgstr "OPML URL を入力する必要があります。ブラウザの「戻る」ボタンを押してやり直してください。"
+
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"
+
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#: opml-importer.php:148
+msgid "Inserted %1$d links into category %2$s. All done! Go <a href=\"%3$s\">manage those links</a>."
+msgstr "%1$d個のリンクをカテゴリー %2$s にインポートしました ! <a href=\"%3$s\">リンクの管理に移動</a>"
+
+#: opml-importer.php:144
+msgid "Inserted <strong>%s</strong>"
+msgstr "<strong>%s</strong>を挿入しました。"
+
+msgid "OPML Importer"
+msgstr "OPML インポートツール"
+
+#: opml-importer.php:173
+msgid "Import links in OPML format."
+msgstr "リンクを OPML 形式でインポートする。"
+
+#: opml-importer.php:173
+msgid "Blogroll"
+msgstr "ブログロール"
+
+#: opml-importer.php:68
+msgid "Or choose from your local disk:"
+msgstr "もしくはローカルディスクから選択:"
+
+#: opml-importer.php:63
+msgid "Specify an OPML URL:"
+msgstr "OPML URL の指定:"
+
+#: opml-importer.php:58
+msgid "If a program or website you use allows you to export your links or subscriptions as OPML you may import them here."
+msgstr "お使いのプログラムやサイトがリンク集や購読情報を OPML 形式でエクスポートできるなら、このページでインポートすることができます。"
+
+#: opml-importer.php:54
+msgid "Import your blogroll from another system"
+msgstr "別システムからのリンクのインポート"
+
+#: opml-importer.php:103
+msgid "Importing..."
+msgstr "インポート中..."
+
+#: opml-importer.php:86
+msgid "Import OPML File"
+msgstr "OPML をインポート"
+
+#: opml-importer.php:75
+msgid "Category:"
+msgstr "カテゴリー:"
+
+#: opml-importer.php:74
+msgid "Now select a category you want to put these links in."
+msgstr "取り込むリンクのカテゴリーを選択してください。"
+
+#: opml-importer.php:28
+msgid "Import Blogroll"
+msgstr "リンクのインポート"

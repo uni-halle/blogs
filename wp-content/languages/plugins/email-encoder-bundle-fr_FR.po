@@ -1,0 +1,370 @@
+# Translation of Stable (latest release) in French (France)
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-03-06 10:47:34+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/1.1.0-alpha\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#: includes/class-eeb-admin.php:78
+msgid "JS Rot13"
+msgstr "JS Rot13"
+
+#: includes/class-eeb-admin.php:79
+msgid "Recommended, the savest method using a rot13 method in JavaScript."
+msgstr "Recommandé, la méthode la plus sûre en utilisant une méthode rot13 en JavaScript."
+
+#: includes/class-eeb-admin.php:82
+msgid "JS Escape"
+msgstr "JS Escape"
+
+#: includes/class-eeb-admin.php:83
+msgid "Pretty save method using JavaScipt's escape function."
+msgstr "Belle méthode sécurisée utilisant la fonction d’échappement JavaScript."
+
+#: includes/class-eeb-admin.php:86
+msgid "Html Encode"
+msgstr "Html Encode"
+
+#: includes/class-eeb-admin.php:87
+msgid "Not recommended, equal to <a href=\"http://codex.wordpress.org/Function_Reference/antispambot\" target=\"_blank\"><code>antispambot()</code></a> function of WordPress."
+msgstr "Non recommandé, égal à la fonction <a href=\"http://codex.wordpress.org/Function_Reference/antispambot\" target=\"_blank\"><code>antispambot()</code></a> de WordPress."
+
+#: includes/class-eeb-admin.php:196 includes/class-eeb-admin.php:478
+#: includes/class-eeb-admin.php:534 includes/class-eeb-admin.php:547
+msgid "Settings"
+msgstr "Réglages"
+
+#: includes/class-eeb-admin.php:210 includes/class-eeb-admin.php:215
+msgid "Email Encoder Bundle"
+msgstr "Bundle d’encodage d’e-mail"
+
+#: includes/class-eeb-admin.php:251
+msgid "Main Settings"
+msgstr "Réglages principaux"
+
+#: includes/class-eeb-admin.php:252
+msgid "Additional Settings"
+msgstr "Réglages additionnels"
+
+#: includes/class-eeb-admin.php:253
+msgid "RSS Settings"
+msgstr "Réglages RSS"
+
+#: includes/class-eeb-admin.php:254
+msgid "Admin Settings"
+msgstr "Réglages d’admin"
+
+#: includes/class-eeb-admin.php:255
+msgid "Email Encoder Form"
+msgstr "Formulaire d’encodage d’e-mail"
+
+#: includes/class-eeb-admin.php:256
+msgid "Support"
+msgstr "Support"
+
+#: includes/class-eeb-admin.php:257
+msgid "Other Plugins"
+msgstr "Autres extensions"
+
+#: includes/class-eeb-admin.php:268
+msgid "Protect Email Addresses"
+msgstr "Protéger les adresses de messagerie"
+
+#: includes/class-eeb-admin.php:272
+msgid "Settings saved."
+msgstr "Réglages enregistrés."
+
+#: includes/class-eeb-admin.php:318
+msgid "Warning: \"WP Mailto Links\"-plugin is also activated, which could cause conflicts."
+msgstr "Attention : l’extension « WP Mailto Links » est également activée, ce qui pourrait provoquer des conflits."
+
+#: includes/class-eeb-admin.php:323
+msgid "Choose what to protect"
+msgstr "Choisissez ce que vous souhaitez protéger"
+
+#: includes/class-eeb-admin.php:326
+msgid "Protect mailto links, like f.e. <code>&lt;a href=\"info@myemail.com\"&gt;My Email&lt;/a&gt;</code>"
+msgstr "Protéger les liens mailto, comme p.e. <code>&lt;a href=\"info@myemail.com\"&gt;Mon e-mail&lt;/a&gt;</code>"
+
+#: includes/class-eeb-admin.php:328
+msgid "Replace plain email addresses to protected mailto links."
+msgstr "Remplacer les adresses électroniques simples pour protéger les liens mailto."
+
+#: includes/class-eeb-admin.php:329
+msgid "Notice: be carefull with this option when using email addresses on form fields, please <a href=\"http://wordpress.org/extend/plugins/email-encoder-bundle/faq/\" target=\"_blank\">check the FAQ</a> for more info."
+msgstr "Remarque : soyez prudent avec cette option lors de l’utilisation des adresses électroniques sur les champs de formulaire, s’il vous plaît <a href=\"http://wordpress.org/extend/plugins/email-encoder-bundle/faq/\" target=\"_blank\">consulter la FAQ</a> pour plus d’informations."
+
+#: includes/class-eeb-admin.php:332
+msgid "Replace prefilled email addresses in input fields."
+msgstr "Remplacer les adresses électroniques préremplies dans les champs de saisie."
+
+#: includes/class-eeb-admin.php:333
+msgid " - Recommended!"
+msgstr " - Recommandé !"
+
+#: includes/class-eeb-admin.php:339
+msgid "Apply on..."
+msgstr "Appliquer sur&hellip;"
+
+#: includes/class-eeb-admin.php:342
+msgid "All posts and pages"
+msgstr "Tous les articles et pages"
+
+#: includes/class-eeb-admin.php:345
+msgid "All comments"
+msgstr "Tous les commentaires"
+
+#: includes/class-eeb-admin.php:347
+msgid "All widgets (uses the <code>widget_content</code> filter of the Widget Logic plugin)"
+msgstr "Tous les widgets (utilisant le filtre<code>widget_content</code> de lkextension Widget Logic)"
+
+#: includes/class-eeb-admin.php:347 includes/class-eeb-admin.php:444
+msgid "All text widgets"
+msgstr "Tous les widgets de texte"
+
+#: includes/class-eeb-admin.php:351
+msgid "Add class to protected mailto links"
+msgstr "Ajouter une classe pour protéger les liens mailto"
+
+#: includes/class-eeb-admin.php:353
+msgid "All protected mailto links will get these class(es). Optional, else keep blank."
+msgstr "Tous les liens mailto protégés recevront ces classes. En option, sinon laisser vide."
+
+#: includes/class-eeb-admin.php:359 includes/class-eeb-admin.php:391
+#: includes/class-eeb-admin.php:458 includes/class-eeb-admin.php:486
+#: includes/class-eeb-admin.php:516
+msgid "Save Changes"
+msgstr "Enregistrer les modifications"
+
+#: includes/class-eeb-admin.php:369
+msgid "Protect emails in RSS feeds"
+msgstr "Protéger les e-mails dans les flux RSS."
+
+#: includes/class-eeb-admin.php:371
+msgid "Replace emails in RSS feeds."
+msgstr "Remplacer les adresses électroniques dans les flux RSS."
+
+#: includes/class-eeb-admin.php:375
+msgid "Remove shortcodes from RSS feeds"
+msgstr "Retirer les codes courts des flux RSS"
+
+#: includes/class-eeb-admin.php:377
+msgid "Remove all shortcodes from the RSS feeds."
+msgstr "Supprimer tous les codes courts des flux RSS."
+
+#: includes/class-eeb-admin.php:381
+msgid "Set protection text in RSS feeds"
+msgstr "Ensemble de protection du texte dans les flux RSS"
+
+#: includes/class-eeb-admin.php:383
+msgid "Used as replacement for email addresses in RSS feeds."
+msgstr "Utilisé comme remplacement pour les adresses de messagerie dans les flux RSS."
+
+#: includes/class-eeb-admin.php:400
+msgid "Choose protection method"
+msgstr "Choisissez la méthode de protection"
+
+#: includes/class-eeb-admin.php:413
+msgid "Set <code>&lt;noscript&gt;</code> text"
+msgstr "Définir <code>&lt;noscript&gt;</code> texte"
+
+#: includes/class-eeb-admin.php:415
+msgid "For encoded emails:"
+msgstr "Pour les e-mails codés :"
+
+#: includes/class-eeb-admin.php:421
+msgid "For other encoded content:"
+msgstr "Pour tout autre contenu codé :"
+
+#: includes/class-eeb-admin.php:425
+msgid "Used as <code>&lt;noscript&gt;</code> fallback for JavaScrip methods."
+msgstr "Utilisé comme <code>&lt;noscript&gt;</code> repli pour les méthodes JavaScript."
+
+#: includes/class-eeb-admin.php:429
+msgid "Exclude posts"
+msgstr "Exclure les messages"
+
+#: includes/class-eeb-admin.php:432
+msgid "Do <strong>not</strong> apply protection on posts or pages with the folllowing ID:"
+msgstr "Ne <strong>pas</strong> appliquer une protection sur des articles ou des pages avec l’ID suivante :"
+
+#: includes/class-eeb-admin.php:434
+msgid "Seperate Id's by comma, f.e.: 2, 7, 13, 32."
+msgstr "Ids séparés par une virgule, p.e : 2, 7, 13, 32."
+
+#: includes/class-eeb-admin.php:435
+msgid "Notice: shortcodes still work on these posts."
+msgstr "Indication : les codes courts continuent à fonctionner sur ces articles."
+
+#: includes/class-eeb-admin.php:440
+msgid "Use shortcodes in widgets"
+msgstr "Utilisez des codes couts dans les widgets"
+
+#: includes/class-eeb-admin.php:443
+msgid "Also use shortcodes in widgets."
+msgstr "Utiliser également les codes courts dans les widgets."
+
+#: includes/class-eeb-admin.php:444
+msgid "Notice: only works for text widgets!"
+msgstr "Remarque : ne fonctionne que pour les widgets de texte !"
+
+#: includes/class-eeb-admin.php:449
+msgid "Use deprecated names"
+msgstr "Utilisez des noms dépréciées"
+
+#: includes/class-eeb-admin.php:451
+msgid "Keep supporting the old names for action, shortcodes and template functions."
+msgstr "Continuer de supporter les anciens noms des actions, codes courts et fonctions de modèle."
+
+#: includes/class-eeb-admin.php:467
+msgid "Check \"succesfully encoded\""
+msgstr "Vérifiez les « codé avec succès »"
+
+#: includes/class-eeb-admin.php:469
+msgid "Show \"successfully encoded\" text for all encoded content, only when logged in as admin user."
+msgstr "Affiche le texte « codé avec succès » pour tout le contenu codé, uniquement lorsque l’utilisateur connecté est un administrateur."
+
+#: includes/class-eeb-admin.php:470
+msgid "This way you can check if emails are really encoded on your site."
+msgstr "De cette façon, vous pouvez vérifier si les e-mails sont vraiment encodés sur votre site."
+
+#: includes/class-eeb-admin.php:475
+msgid "Choose admin menu position"
+msgstr "Choisissez la position du menu d’administration"
+
+#: includes/class-eeb-admin.php:477
+msgid "Show as main menu item."
+msgstr "Afficher comme élément du menu principal."
+
+#: includes/class-eeb-admin.php:493
+msgid "If you like you can also create you own secure mailto links manually with this form. Just copy the generated code and put it on your post, page or template."
+msgstr "Si vous voulez, vous pouvez également créer manuellement votre propre lien sécuriser mailto à l’aide de ce formulaire. Il suffit de copier le code généré et le mettre dans votre article, page ou modèle."
+
+#: includes/class-eeb-admin.php:501
+msgid "You can also put the encoder form on your site by using the shortcode <code>[eeb_form]</code> or the template function <code>eeb_form()</code>."
+msgstr "Vous pouvez aussi mettre le formulaire de l’encodeur sur votre site en utilisant le code court <code>[eeb_form]</code> ou la fonction de modèle <code>eeb_form()</code>."
+
+#: includes/class-eeb-admin.php:506
+msgid "Show \"powered by\""
+msgstr "Afficher « créé par »"
+
+#: includes/class-eeb-admin.php:508
+msgid "Show the \"powered by\"-link on bottom of the encoder form"
+msgstr "Afficher le lien « créé par » en bas du formulaire de l’encodeur"
+
+#: includes/class-eeb-admin.php:524
+msgid "Documentation"
+msgstr "Documentation"
+
+#: includes/class-eeb-admin.php:525
+msgid "Report a problem"
+msgstr "Signaler un problème"
+
+#: includes/class-eeb-admin.php:528
+msgid "Please rate this plugin!"
+msgstr "Merci de noter cette extension !"
+
+#: includes/class-eeb-admin.php:536 includes/class-eeb-admin.php:549
+msgid "Activate"
+msgstr "Activer"
+
+#: includes/class-eeb-admin.php:538 includes/class-eeb-admin.php:551
+msgid "Get this plugin"
+msgstr "Obtenez cette extension"
+
+#: includes/class-eeb-admin.php:541
+msgid "Manage external links on your site: open in new window/tab, set icon, add \"external\", add \"nofollow\" and more."
+msgstr "Gérer les liens externes sur votre site : Ouvrir dans une nouvelle fenêtre / onglet, définir l’icône, ajouter « external », ajouter « nofollow » et plus encore."
+
+#: includes/class-eeb-admin.php:554
+msgid "Manage mailto links on your site and protect emails from spambots, set mail icon and more."
+msgstr "Gérer les liens mailto sur votre site et protéger les e-mails des robots collecteurs d’e-mails, définir l’icône d’e-mail et plus encore."
+
+#: includes/class-eeb-admin.php:579
+msgid "Quick Start"
+msgstr "Démarrage rapide"
+
+#: includes/class-eeb-admin.php:584
+msgid "Shortcodes"
+msgstr "Codes courts"
+
+#: includes/class-eeb-admin.php:589
+msgid "Template Functions"
+msgstr "Les fonctions de modèle"
+
+#: includes/class-eeb-admin.php:594
+msgid "Action Hook"
+msgstr "Crochets d’action"
+
+#: includes/class-eeb-admin.php:599
+msgid "Filter Hooks"
+msgstr "Crochets de filtre"
+
+#: includes/class-eeb-admin.php:604
+msgid "FAQ"
+msgstr "FAQ"
+
+#: includes/class-eeb-admin.php:754
+msgid "Powered by"
+msgstr "Créé par"
+
+#: includes/class-eeb-admin.php:758
+msgid "Email Address:"
+msgstr "Adresse e-mail :"
+
+#: includes/class-eeb-admin.php:759
+msgid "Display Text:"
+msgstr "Affichage du texte :"
+
+#: includes/class-eeb-admin.php:760
+msgid "Mailto Link:"
+msgstr "Lien mailto :"
+
+#: includes/class-eeb-admin.php:761
+msgid "Encoding Method:"
+msgstr "Méthode de codage :"
+
+#: includes/class-eeb-admin.php:762
+msgid "Create Protected Mail Link &gt;&gt;"
+msgstr "Créer un lien protégé pour l’e-mail &gt;&gt;"
+
+#: includes/class-eeb-admin.php:763
+msgid "Protected Mail Link (code):"
+msgstr "Lien e-mail protégé (code):"
+
+#: includes/class-eeb-site.php:429
+msgid "Successfully Encoded (this is a check and only visible when logged in as admin)"
+msgstr "Encodé avec succès (ceci est un contrôle et visible uniquement lorsque vous êtes connecté en tant qu’administrateur)"
+
+#: includes/class-eeb-site.php:431
+msgid "Encoded"
+msgstr "Encodé"
+
+#: includes/class-eeb-site.php:432
+msgid "Successfully Encoded"
+msgstr "Encodé avec succès"
+
+#. Plugin Name of the plugin/theme
+msgid "Email Encoder Bundle - Protect Email Address"
+msgstr "Email Encoder Bundle - Protect Email Address"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.freelancephp.net/email-encoder-php-class-wp-plugin/"
+msgstr "http://www.freelancephp.net/email-encoder-php-class-wp-plugin/"
+
+#. Description of the plugin/theme
+msgid "Protect email addresses on your site and hide them from spambots by using an encoding method. Easy to use, flexible ."
+msgstr "Protégez les adresses électroniques sur votre site et cachez-les des robots collecteurs d’e-mails en utilisant une méthode de chiffrement. Simple et pratique à utiliser."
+
+#. Author of the plugin/theme
+msgid "Victor Villaverde Laan"
+msgstr "Victor Villaverde Laan"
+
+#. Author URI of the plugin/theme
+msgid "http://www.freelancephp.net"
+msgstr "http://www.freelancephp.net"
