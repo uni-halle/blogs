@@ -11,7 +11,7 @@ security check
 */
 
 if (!defined( 'WP_UNINSTALL_PLUGIN'))
-	wp_die(__('Cheatin&#8217; uh?'), '', array('response' => 403));
+	wp_die(__('You are not allowed to uninstall plugins on this site.'), '', array('response' => 403));
 
 if (!current_user_can('manage_options'))
 	wp_die(__('You do not have sufficient permissions to manage options for this site.'), '', array('response' => 403));

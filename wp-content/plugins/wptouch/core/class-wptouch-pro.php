@@ -206,6 +206,13 @@ class WPtouchProFour {
 
 		if ( defined( 'WPTOUCH_IS_FREE' ) ) {
 			add_filter( 'wptouch_settings_override_defaults', array( &$this, 'handle_free_migration' ), 10, 2 );
+
+			// Ensure we're using free Bauhaus
+			$settings = $wptouch_pro->get_settings();
+			$settings->current_theme_name = 'bauhaus';
+			$settings->current_theme_location = '/plugins/' . WPTOUCH_ROOT_NAME . '/themes';
+			$settings->current_theme_friendly_name = 'Bauhaus';
+			$settings->save();
 		}
 
 		// Only check directories when admin is showing

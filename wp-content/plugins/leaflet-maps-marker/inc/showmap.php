@@ -941,14 +941,16 @@ if (typeof jQuery.mobile != 'undefined') {
 	$lmmjs_out .= "}".PHP_EOL;
 	$lmmjs_out .= "});".PHP_EOL;
 }
-	//info: fix for loading maps in woocommmerce tabs
+	//info: fix for loading maps in woocommmerce tabs / setTimeout needed
 	if (is_plugin_active('woocommerce/woocommerce.php') ) {
 	$lmmjs_out .= "
 		if (typeof jQuery != 'undefined') {
 			jQuery(document).ready(function($) {
 				".$mapname_js.".invalidateSize();
-				jQuery('.woocommerce-tabs ul.tabs li a').click(function(){
-					".$mapname_js.".invalidateSize();
+				jQuery('.wc-tabs ul.tabs li a, .woocommerce-tabs ul.tabs li a, ul.wc-tabs li a').click(function(){
+					setTimeout(function(){
+						".$mapname_js.".invalidateSize();
+					}, 1);
 				});
 			});
 		}

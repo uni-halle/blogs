@@ -232,6 +232,7 @@ class WW_Widget_PostType {
       
       // let the widget update itself
       $classname = $_POST['ww-data']['clone']['clone-class'];
+      $classname = implode("\\", array_filter( explode( "\\", $classname )));
       if (class_exists($classname)) {
         $wp_widget = new $classname;
         $instance = $wp_widget->update($instance, $old_instance);
@@ -256,6 +257,7 @@ class WW_Widget_PostType {
     global $wp_widget_factory;
     if (isset($posted['ww-data']['clone'])) {
       $clone_class = $posted['ww-data']['clone']['clone-class'];
+      $clone_class = implode("\\", array_filter( explode( "\\", $clone_class )));
       $option_name = "widget-".$wp_widget_factory->widgets[$clone_class]->control_options['id_base'];
       $instance = array();
     
@@ -467,7 +469,7 @@ class WW_Widget_PostType {
           </div>
         </div>
 
-        <?php if ($this->ww->_check_license()) { ?>
+        <?php if ($this->ww->settings['override_elements_enabled']) { ?>
           <hr />
           <h4><?php _e("Override HTML Output", 'widgetwrangler'); ?></h4>
           <p class="description"><?php _e("Alter the html output of a templated widget.  Doesn't apply to advanced parsing unless templating is selected.", 'widgetwrangler'); ?></p>
@@ -507,7 +509,7 @@ class WW_Widget_PostType {
               <p><input type="text" size="30" name="ww-data[ww-html-content-classes]" value="<?php print $fields['ww-html-content-classes']['value']; ?>"/></p>
             </div>
           </div>
-        <?php } ?>
+        <?php  } ?>
       </div>
     <?php
   }
@@ -610,7 +612,6 @@ class WW_Widget_PostType {
             <?php
               if (isset($suggestions)) { ?>
               
-                <?php if ($this->ww->_check_license()){ ?>
                   <h4><?php _e("Custom template suggestion", 'widgetwrangler'); ?></h4>
                   <ul class="ww-custom-template-suggestion">
                     <li><?php _e("Define a custom template name for this widget.", 'widgetwrangler'); ?></li>
@@ -619,8 +620,7 @@ class WW_Widget_PostType {
                     <li><?php _e("Uppercase characters will be converted to lowercase.", 'widgetwrangler'); ?></li>
                     <li><?php _e("If defined, the custom suggestion will take precedence.", 'widgetwrangler'); ?></li>
                   </ul>
-                <?php } ?>
-                
+
                 <h4><?php _e("Template Suggestions", 'widgetwrangler'); ?></h4>
                 <p class="description"><?php _e("Corral specific templates will not be detected here unless you set the 'Preview Corral Context' in the preview pane.", 'widgetwrangler'); ?></p>
                 <ul><?php print $suggestions; ?></ul>

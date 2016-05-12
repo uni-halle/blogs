@@ -1,9 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AAM\n"
-"POT-Creation-Date: 2016-03-06 19:12-0500\n"
+"POT-Creation-Date: 2016-04-23 16:56-0400\n"
 "PO-Revision-Date: \n"
+"Last-Translator: \n"
 "Language-Team: WP AAM <vasyl@vasyltech.com>\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,56 +14,54 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __\n"
 "X-Poedit-Basepath: ..\n"
-"Last-Translator: \n"
-"Language: en_US\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: media/js/aam-ui.js:43 media/js/aam-ui.js:1317
+#: media/js/aam-ui.js:43 media/js/aam-ui.js:1338
 #: Application/Backend/Localization.php:23
 msgid "Loading..."
 msgstr ""
 
 #: media/js/aam-ui.js:48 Application/Backend/Localization.php:24
-#: Application/Backend/view/index.phtml:149
+#: Application/Backend/view/index.phtml:151
 msgid "Select Role"
 msgstr ""
 
-#: media/js/aam-ui.js:81 Application/Backend/Localization.php:25
+#: media/js/aam-ui.js:82 Application/Backend/Localization.php:25
 msgid "Search Role"
 msgstr ""
 
-#: media/js/aam-ui.js:82 Application/Backend/Localization.php:26
+#: media/js/aam-ui.js:83 Application/Backend/Localization.php:26
 msgid "_TOTAL_ role(s)"
 msgstr ""
 
-#: media/js/aam-ui.js:89 media/js/aam-ui.js:442
+#: media/js/aam-ui.js:90 media/js/aam-ui.js:442
 #: Application/Backend/Localization.php:27
 #: Application/Backend/view/object/capability.phtml:23
 msgid "Create"
 msgstr ""
 
-#: media/js/aam-ui.js:114 Application/Backend/Localization.php:28
-#: Application/Backend/view/index.phtml:115
+#: media/js/aam-ui.js:115 Application/Backend/Localization.php:28
+#: Application/Backend/view/index.phtml:117
 msgid "Users"
 msgstr ""
 
-#: media/js/aam-ui.js:142 Application/Backend/Localization.php:45
+#: media/js/aam-ui.js:143 Application/Backend/Localization.php:45
 msgid "Manage Role"
 msgstr ""
 
-#: media/js/aam-ui.js:157 Application/Backend/Localization.php:46
+#: media/js/aam-ui.js:158 Application/Backend/Localization.php:46
 msgid "Edit Role Name"
 msgstr ""
 
 #: media/js/aam-ui.js:177 media/js/aam-ui.js:317
 #: Application/Backend/Localization.php:35
 #: Application/Backend/Localization.php:47
-#: Application/Backend/view/index.phtml:187
-#: Application/Backend/view/index.phtml:193
+#: Application/Backend/view/index.phtml:189
+#: Application/Backend/view/index.phtml:195
 msgid "Delete Role"
 msgstr ""
 
-#: media/js/aam-ui.js:220 media/js/aam-ui.js:264 media/js/aam-ui.js:965
+#: media/js/aam-ui.js:220 media/js/aam-ui.js:264 media/js/aam-ui.js:986
 #: Application/Backend/Localization.php:13
 msgid "Saving..."
 msgstr ""
@@ -71,15 +71,15 @@ msgid "Failed to add new role"
 msgstr ""
 
 #: media/js/aam-ui.js:233 media/js/aam-ui.js:276 media/js/aam-ui.js:313
-#: media/js/aam-ui.js:407 media/js/aam-ui.js:734 media/js/aam-ui.js:771
-#: media/js/aam-ui.js:978 media/js/aam-ui.js:1146 media/js/aam-ui.js:1187
-#: media/js/aam-ui.js:1463 media/js/aam.js:231
+#: media/js/aam-ui.js:407 media/js/aam-ui.js:755 media/js/aam-ui.js:792
+#: media/js/aam-ui.js:999 media/js/aam-ui.js:1167 media/js/aam-ui.js:1208
+#: media/js/aam-ui.js:1496 media/js/aam.js:222
 #: Application/Backend/Localization.php:15
 msgid "Application error"
 msgstr ""
 
 #: media/js/aam-ui.js:236 Application/Backend/Localization.php:30
-#: Application/Backend/view/index.phtml:154
+#: Application/Backend/view/index.phtml:156
 msgid "Add Role"
 msgstr ""
 
@@ -123,7 +123,7 @@ msgid "_TOTAL_ user(s)"
 msgstr ""
 
 #: media/js/aam-ui.js:459 Application/Backend/Localization.php:39
-#: Application/Backend/view/index.phtml:127
+#: Application/Backend/view/index.phtml:129
 msgid "Role"
 msgstr ""
 
@@ -135,111 +135,118 @@ msgstr ""
 msgid "Edit User"
 msgstr ""
 
-#: media/js/aam-ui.js:592 Application/Backend/Localization.php:40
+#: media/js/aam-ui.js:564
+msgid "Switch To User"
+msgstr ""
+
+#: media/js/aam-ui.js:611 Application/Backend/Localization.php:40
 msgid "Anonymous"
 msgstr ""
 
-#: media/js/aam-ui.js:641 Application/Backend/Localization.php:17
+#: media/js/aam-ui.js:660 Application/Backend/Localization.php:17
 #: Application/Backend/view/object/menu.phtml:54
 msgid "Show Menu"
 msgstr ""
 
-#: media/js/aam-ui.js:656 Application/Backend/Localization.php:18
+#: media/js/aam-ui.js:675 Application/Backend/Localization.php:18
 #: Application/Backend/view/object/menu.phtml:58
 msgid "Hide Menu"
 msgstr ""
 
-#: media/js/aam-ui.js:766 Application/Backend/Localization.php:19
+#: media/js/aam-ui.js:787 Application/Backend/Localization.php:19
 msgid "Failed to retrieve mataboxes"
 msgstr ""
 
-#: media/js/aam-ui.js:850 Application/Backend/Localization.php:53
+#: media/js/aam-ui.js:871 Application/Backend/Localization.php:53
 msgid "Failed to grand capability - WordPress policy"
 msgstr ""
 
-#: media/js/aam-ui.js:885 Application/Backend/Localization.php:11
+#: media/js/aam-ui.js:906 Application/Backend/Localization.php:11
 msgid "Search Capability"
 msgstr ""
 
-#: media/js/aam-ui.js:886 Application/Backend/Localization.php:12
+#: media/js/aam-ui.js:907 Application/Backend/Localization.php:12
 msgid "_TOTAL_ capability(s)"
 msgstr ""
 
-#: media/js/aam-ui.js:973 Application/Backend/Localization.php:14
+#: media/js/aam-ui.js:994 Application/Backend/Localization.php:14
 msgid "Failed to add new capability"
 msgstr ""
 
-#: media/js/aam-ui.js:981 Application/Backend/Localization.php:16
+#: media/js/aam-ui.js:1002 Application/Backend/Localization.php:16
 #: Application/Backend/view/object/capability.phtml:52
 msgid "Add Capability"
 msgstr ""
 
-#: media/js/aam-ui.js:1131
+#: media/js/aam-ui.js:1152
 msgid "parent role"
 msgstr ""
 
-#: media/js/aam-ui.js:1133
+#: media/js/aam-ui.js:1154
 msgid "default settings"
 msgstr ""
 
-#: media/js/aam-ui.js:1135
+#: media/js/aam-ui.js:1156
 msgid "parent category"
 msgstr ""
 
-#: media/js/aam-ui.js:1227 Application/Backend/Localization.php:20
+#: media/js/aam-ui.js:1248 Application/Backend/Localization.php:20
 msgid "Search"
 msgstr ""
 
-#: media/js/aam-ui.js:1228 Application/Backend/Localization.php:21
+#: media/js/aam-ui.js:1249 Application/Backend/Localization.php:21
 msgid "_TOTAL_ object(s)"
 msgstr ""
 
-#: media/js/aam-ui.js:1306 Application/Backend/Localization.php:22
+#: media/js/aam-ui.js:1327 Application/Backend/Localization.php:22
 msgid "Failed"
 msgstr ""
 
-#: media/js/aam-ui.js:1336 Application/Backend/Localization.php:43
-#: Application/Backend/Manager.php:177
+#: media/js/aam-ui.js:1357
+msgid "Drill-Down"
+msgstr ""
+
+#: media/js/aam-ui.js:1369 Application/Backend/Localization.php:43
 msgid "Manage Access"
 msgstr ""
 
-#: media/js/aam-ui.js:1347 Application/Backend/Localization.php:44
-#: Application/Backend/view/object/post.phtml:125
+#: media/js/aam-ui.js:1380 Application/Backend/Localization.php:44
+#: Application/Backend/view/object/post.phtml:126
 msgid "Edit"
 msgstr ""
 
-#: media/js/aam.js:139 Application/Backend/Localization.php:52
+#: media/js/aam.js:109 Application/Backend/Localization.php:52
 msgid ""
 "Javascript error detected during the page load. AAM may not function "
 "properly."
 msgstr ""
 
-#: media/js/aam.js:170
+#: media/js/aam.js:161
 msgid "Current "
 msgstr ""
 
-#: Application/Backend/Capability.php:141
-#: Application/Backend/Capability.php:180
+#: Application/Backend/Capability.php:164
+#: Application/Backend/Capability.php:203
 msgid "System"
 msgstr ""
 
-#: Application/Backend/Capability.php:142
-#: Application/Backend/Capability.php:182 Application/Backend/Post.php:348
+#: Application/Backend/Capability.php:165
+#: Application/Backend/Capability.php:205 Application/Backend/Post.php:348
 msgid "Posts & Pages"
 msgstr ""
 
-#: Application/Backend/Capability.php:143
-#: Application/Backend/Capability.php:184
-#: Application/Backend/view/object/post.phtml:104
+#: Application/Backend/Capability.php:166
+#: Application/Backend/Capability.php:207
+#: Application/Backend/view/object/post.phtml:105
 msgid "Backend"
 msgstr ""
 
-#: Application/Backend/Capability.php:144
-#: Application/Backend/Capability.php:186
+#: Application/Backend/Capability.php:167
+#: Application/Backend/Capability.php:209
 msgid "Miscellaneous"
 msgstr ""
 
-#: Application/Backend/Capability.php:205
+#: Application/Backend/Capability.php:228
 #: Application/Backend/view/index.phtml:77
 msgid "Capabilities"
 msgstr ""
@@ -253,7 +260,7 @@ msgstr ""
 msgid "Extensions"
 msgstr ""
 
-#: Application/Backend/Filter.php:193 Application/Core/API.php:180
+#: Application/Backend/Filter.php:196 Application/Core/API.php:182
 msgid "Access Denied"
 msgstr ""
 
@@ -265,20 +272,21 @@ msgstr ""
 msgid "Current role"
 msgstr ""
 
-#: Application/Backend/Manager.php:92
+#: Application/Backend/Manager.php:97
 #, php-format
 msgid "Extension %s has new update available for download."
 msgstr ""
 
-#: Application/Backend/Manager.php:136
+#: Application/Backend/Manager.php:143
 msgid "AAM caching is off. To speed-up the website turn it on."
 msgstr ""
 
-#: Application/Backend/Manager.php:139
+#: Application/Backend/Manager.php:146
 msgid "Read more."
 msgstr ""
 
-#: Application/Backend/Manager.php:293 Application/Backend/Manager.php:294
+#: Application/Backend/Manager.php:184 Application/Backend/Manager.php:299
+#: Application/Backend/Manager.php:300
 msgid "AAM"
 msgstr ""
 
@@ -300,12 +308,6 @@ msgstr ""
 
 #: Application/Backend/ProductList.php:17
 msgid ""
-"Development license gives you an ability to download all the available "
-"extensions and use them to up to 5 life domains."
-msgstr ""
-
-#: Application/Backend/ProductList.php:27
-msgid ""
 "Unlock limitations related to Posts and Pages feature. Extend basic AAM "
 "functionality with Page Categories and ability to manage access to your "
 "comments (AAM Plus Package adds new capabilities to the default list of "
@@ -313,11 +315,17 @@ msgid ""
 "etc.)"
 msgstr ""
 
-#: Application/Backend/ProductList.php:37
+#: Application/Backend/ProductList.php:27
 msgid ""
 "Extension for more advanced user and role administration. Based on user's "
 "highest level capability, filter list of roles with higher level. Also "
 "prevent from editing, promoting or deleting higher level users."
+msgstr ""
+
+#: Application/Backend/ProductList.php:37
+msgid ""
+"Development license gives you an ability to download all the available "
+"extensions and use them to up to 5 life domains."
 msgstr ""
 
 #: Application/Backend/ProductList.php:46
@@ -331,21 +339,31 @@ msgid ""
 "switch between different sites."
 msgstr ""
 
-#: Application/Core/Repository.php:234
+#: Application/Backend/ProductList.php:70
+msgid ""
+"Skeleton for custom AAM extension. Please find all necessary documentation "
+"inside the source code."
+msgstr ""
+
+#: Application/Backend/ProductList.php:77
+msgid "Instant switching between user accounts in WordPress. "
+msgstr ""
+
+#: Application/Core/Repository.php:254
 #, php-format
 msgid "Failed to create %s"
 msgstr ""
 
-#: Application/Core/Repository.php:238
+#: Application/Core/Repository.php:258
 #, php-format
 msgid "Directory %s is not writable"
 msgstr ""
 
-#: aam.php:152
+#: aam.php:155
 msgid "PHP 5.2 or higher is required."
 msgstr ""
 
-#: aam.php:154
+#: aam.php:157
 msgid "WP 3.8 or higher is required."
 msgstr ""
 
@@ -358,6 +376,7 @@ msgid "License Key"
 msgstr ""
 
 #: Application/Backend/view/extension.phtml:19
+#: Application/Backend/view/extension.phtml:48
 msgid "Install"
 msgstr ""
 
@@ -366,8 +385,8 @@ msgid "Extension"
 msgstr ""
 
 #: Application/Backend/view/extension.phtml:27
-#: Application/Backend/view/index.phtml:128
-#: Application/Backend/view/index.phtml:225
+#: Application/Backend/view/index.phtml:130
+#: Application/Backend/view/index.phtml:227
 msgid "Action"
 msgstr ""
 
@@ -376,6 +395,7 @@ msgid "Free"
 msgstr ""
 
 #: Application/Backend/view/extension.phtml:41
+#: Application/Backend/view/extension.phtml:50
 msgid "Installed"
 msgstr ""
 
@@ -383,54 +403,54 @@ msgstr ""
 msgid "Purchase"
 msgstr ""
 
-#: Application/Backend/view/extension.phtml:47
-#: Application/Backend/view/extension.phtml:83
+#: Application/Backend/view/extension.phtml:53
+#: Application/Backend/view/extension.phtml:89
 msgid "Download"
 msgstr ""
 
-#: Application/Backend/view/extension.phtml:56
+#: Application/Backend/view/extension.phtml:62
 msgid "All extensions are installed and up to date."
 msgstr ""
 
-#: Application/Backend/view/extension.phtml:67
-#: Application/Backend/view/extension.phtml:94
-#: Application/Backend/view/extension.phtml:103
+#: Application/Backend/view/extension.phtml:73
+#: Application/Backend/view/extension.phtml:100
+#: Application/Backend/view/extension.phtml:109
 #: Application/Backend/view/index.phtml:24
-#: Application/Backend/view/index.phtml:138
-#: Application/Backend/view/index.phtml:155
-#: Application/Backend/view/index.phtml:165
-#: Application/Backend/view/index.phtml:176
-#: Application/Backend/view/index.phtml:186
-#: Application/Backend/view/index.phtml:194
-#: Application/Backend/view/index.phtml:204
-#: Application/Backend/view/index.phtml:235
+#: Application/Backend/view/index.phtml:140
+#: Application/Backend/view/index.phtml:157
+#: Application/Backend/view/index.phtml:167
+#: Application/Backend/view/index.phtml:178
+#: Application/Backend/view/index.phtml:188
+#: Application/Backend/view/index.phtml:196
+#: Application/Backend/view/index.phtml:206
+#: Application/Backend/view/index.phtml:237
 #: Application/Backend/view/object/capability.phtml:42
 #: Application/Backend/view/object/capability.phtml:53
-#: Application/Backend/view/object/post.phtml:160
-#: Application/Backend/view/object/post.phtml:189
+#: Application/Backend/view/object/post.phtml:162
+#: Application/Backend/view/object/post.phtml:191
 msgid "Close"
 msgstr ""
 
-#: Application/Backend/view/extension.phtml:68
-#: Application/Backend/view/index.phtml:205
-#: Application/Backend/view/index.phtml:236
+#: Application/Backend/view/extension.phtml:74
+#: Application/Backend/view/index.phtml:207
+#: Application/Backend/view/index.phtml:238
 msgid "Notification"
 msgstr ""
 
-#: Application/Backend/view/extension.phtml:72
+#: Application/Backend/view/extension.phtml:78
 msgid ""
 "Extension requires manual installation. Please follow few simple steps below."
 msgstr ""
 
-#: Application/Backend/view/extension.phtml:84
+#: Application/Backend/view/extension.phtml:90
 msgid "Cancel"
 msgstr ""
 
-#: Application/Backend/view/extension.phtml:95
+#: Application/Backend/view/extension.phtml:101
 msgid "Install Extension Info"
 msgstr ""
 
-#: Application/Backend/view/extension.phtml:99
+#: Application/Backend/view/extension.phtml:105
 msgid ""
 "In order to install the extension, please use license number that you "
 "recieved after the payment was completed successfully (it might take up to 2 "
@@ -452,10 +472,10 @@ msgid ""
 msgstr ""
 
 #: Application/Backend/view/index.phtml:35
-#: Application/Backend/view/index.phtml:211
-#: Application/Backend/view/index.phtml:242
-#: Application/Backend/view/object/post.phtml:179
-#: Application/Backend/view/object/post.phtml:196
+#: Application/Backend/view/index.phtml:213
+#: Application/Backend/view/index.phtml:244
+#: Application/Backend/view/object/post.phtml:181
+#: Application/Backend/view/object/post.phtml:198
 msgid "OK"
 msgstr ""
 
@@ -552,199 +572,104 @@ msgid ""
 "within next 3 business days."
 msgstr ""
 
-#: Application/Backend/view/index.phtml:108
+#: Application/Backend/view/index.phtml:110
 msgid "User/Role Manager"
 msgstr ""
 
-#: Application/Backend/view/index.phtml:114
+#: Application/Backend/view/index.phtml:116
 msgid "Roles"
 msgstr ""
 
-#: Application/Backend/view/index.phtml:117
+#: Application/Backend/view/index.phtml:119
 msgid "Visitor"
 msgstr ""
 
-#: Application/Backend/view/index.phtml:139
+#: Application/Backend/view/index.phtml:141
 msgid "Add New Role"
 msgstr ""
 
-#: Application/Backend/view/index.phtml:143
-#: Application/Backend/view/index.phtml:170
+#: Application/Backend/view/index.phtml:145
+#: Application/Backend/view/index.phtml:172
 msgid "Role Name"
 msgstr ""
 
-#: Application/Backend/view/index.phtml:144
-#: Application/Backend/view/index.phtml:171
+#: Application/Backend/view/index.phtml:146
+#: Application/Backend/view/index.phtml:173
 msgid "Enter Role Name"
 msgstr ""
 
-#: Application/Backend/view/index.phtml:147
+#: Application/Backend/view/index.phtml:149
 msgid "Inherit Capabilities"
 msgstr ""
 
-#: Application/Backend/view/index.phtml:166
+#: Application/Backend/view/index.phtml:168
 msgid "Edit Role"
 msgstr ""
 
-#: Application/Backend/view/index.phtml:175
+#: Application/Backend/view/index.phtml:177
 msgid "Update Role"
 msgstr ""
 
-#: Application/Backend/view/index.phtml:190
+#: Application/Backend/view/index.phtml:192
 #, php-format
 msgid "Are you sure that you want to delete %s role?"
 msgstr ""
 
-#: Application/Backend/view/index.phtml:208
+#: Application/Backend/view/index.phtml:210
 msgid ""
 "You are not allowed to delete this role because either you do not have a "
 "capability to \"Delete Users\" or there is at least one user assigned to it."
 msgstr ""
 
-#: Application/Backend/view/index.phtml:224
+#: Application/Backend/view/index.phtml:226
 msgid "Username"
 msgstr ""
 
-#: Application/Backend/view/index.phtml:239
+#: Application/Backend/view/index.phtml:241
 msgid "You are not allowed to perform this action."
 msgstr ""
 
-#: Application/Backend/view/index.phtml:252
+#: Application/Backend/view/index.phtml:254
 msgid ""
 "Manage access to your website for visitors (any user that is not "
 "authenticated)"
 msgstr ""
 
-#: Application/Backend/view/index.phtml:253
+#: Application/Backend/view/index.phtml:255
 msgid "Manage Visitor"
 msgstr ""
 
-#: Application/Backend/view/index.phtml:265
+#: Application/Backend/view/index.phtml:267
 msgid "Role Manager"
 msgstr ""
 
-#: Application/Backend/view/index.phtml:266
+#: Application/Backend/view/index.phtml:268
 msgid ""
 "With role manager you can manage access for any defined role, edit role's "
 "name, create new role or even delete existing (but only when there is no "
 "users assigned to it). You are not allowed to delete Administrator role."
 msgstr ""
 
-#: Application/Backend/view/index.phtml:270
+#: Application/Backend/view/index.phtml:272
 msgid "User Manager"
 msgstr ""
 
-#: Application/Backend/view/index.phtml:271
+#: Application/Backend/view/index.phtml:273
 msgid ""
 "Manage access for any user. As a bonus feature, you can block user. It means "
 "that user will be not able to login to your website anymore. Create or edit "
 "user actions link to the native WordPress create/edit user interface."
 msgstr ""
 
-#: Application/Backend/view/index.phtml:275
+#: Application/Backend/view/index.phtml:277
 msgid "Visitor Manager"
 msgstr ""
 
-#: Application/Backend/view/index.phtml:276
+#: Application/Backend/view/index.phtml:278
 msgid ""
 "Visitor is any user that is not authenticated to your website. Considering "
 "the fact that visitors do not have any access to backend, any features that "
 "ara backend related are disabled."
-msgstr ""
-
-#: Application/Backend/view/index.phtml:310
-#, php-format
-msgid "Follow us on twitter %s for the latest Advanced Access Manager news."
-msgstr ""
-
-#: Application/Backend/view/index.phtml:313
-msgid "What's New"
-msgstr ""
-
-#: Application/Backend/view/index.phtml:315
-msgid "Brand new and much more intuitive user interface."
-msgstr ""
-
-#: Application/Backend/view/index.phtml:316
-msgid ""
-"Fully responsive design so you can manage access to website even on your "
-"smart phone."
-msgstr ""
-
-#: Application/Backend/view/index.phtml:317
-msgid "Better, more reliable and faster core functionality."
-msgstr ""
-
-#: Application/Backend/view/index.phtml:318
-msgid ""
-"Completely new extension handler. In case of any file system failure, you "
-"can download an extension for manual installation."
-msgstr ""
-
-#: Application/Backend/view/index.phtml:319
-msgid "Added \"Manage Access\" action to the list of user."
-msgstr ""
-
-#: Application/Backend/view/index.phtml:322
-msgid "Please be aware of the latest changes!"
-msgstr ""
-
-#: Application/Backend/view/index.phtml:324
-msgid ""
-"\"Save\" button has been removed. Any changes that you perform are saved "
-"automatically."
-msgstr ""
-
-#: Application/Backend/view/index.phtml:326
-msgid ""
-"License key for an extension is valid for one life domain only. All the "
-"licenses that were purchased before are still valid but limited to one "
-"domain with AAM version 3 (with AAM version 2 it is still unlimited until "
-"April 2016)."
-msgstr ""
-
-#: Application/Backend/view/index.phtml:327
-msgid ""
-"Development License is valid for 5 domains with AAM version 3 but is still "
-"unlimited with version 2 (only until April 2016)."
-msgstr ""
-
-#: Application/Backend/view/index.phtml:328
-msgid ""
-"Posts &amp; Pages settings from AAM version 2 are not compatible with AAM "
-"version 3."
-msgstr ""
-
-#: Application/Backend/view/index.phtml:329
-msgid "You are not allowed to delete or lock an \"Administrator\" role."
-msgstr ""
-
-#: Application/Backend/view/index.phtml:330
-msgid "There is no longer a \"Super Admin\" role."
-msgstr ""
-
-#: Application/Backend/view/index.phtml:331
-msgid ""
-"You are not longer allowed to delete any user or group or users (but you "
-"still can do it within native WordPress interface)."
-msgstr ""
-
-#: Application/Backend/view/index.phtml:332
-msgid ""
-"You are not allowed to delete any capability (even the one that you created "
-"manually)."
-msgstr ""
-
-#: Application/Backend/view/index.phtml:336
-#, php-format
-msgid ""
-"You can rolleback to the earlier version of AAM by simply downloading any "
-"previous version on %sthis page%s. After download, replace the wp-content/"
-"plugins/advanced-access-manager directory with the archive's content."
-msgstr ""
-
-#: Application/Backend/view/index.phtml:339
-msgid "Ok, got it"
 msgstr ""
 
 #: Application/Backend/view/object/capability.phtml:13
@@ -792,6 +717,10 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
+#: Application/Backend/view/object/menu.phtml:15
+msgid "If checked, then menu is filtered."
+msgstr ""
+
 #: Application/Backend/view/object/metabox.phtml:13
 msgid "Refresh"
 msgstr ""
@@ -829,7 +758,7 @@ msgstr ""
 
 #: Application/Backend/view/object/post.phtml:43
 #: Application/Backend/view/object/post.phtml:48
-#: Application/Backend/view/object/post.phtml:152
+#: Application/Backend/view/object/post.phtml:154
 msgid "Go Back"
 msgstr ""
 
@@ -838,7 +767,7 @@ msgid "Frontend"
 msgstr ""
 
 #: Application/Backend/view/object/post.phtml:62
-#: Application/Backend/view/object/post.phtml:110
+#: Application/Backend/view/object/post.phtml:111
 msgid "List"
 msgstr ""
 
@@ -847,7 +776,7 @@ msgid "Filter (exclude) post from any list on your website frontend."
 msgstr ""
 
 #: Application/Backend/view/object/post.phtml:65
-#: Application/Backend/view/object/post.phtml:113
+#: Application/Backend/view/object/post.phtml:114
 msgid "Warning!"
 msgstr ""
 
@@ -876,69 +805,69 @@ msgid ""
 "Restrict access to comment on a post (if commenting feature is activated)."
 msgstr ""
 
-#: Application/Backend/view/object/post.phtml:112
+#: Application/Backend/view/object/post.phtml:113
 msgid "Filter (exclude) post from any list on your website backend."
 msgstr ""
 
-#: Application/Backend/view/object/post.phtml:114
+#: Application/Backend/view/object/post.phtml:115
 msgid ""
 "If checked, this property may slowdown your backend with large amount of "
 "posts."
 msgstr ""
 
-#: Application/Backend/view/object/post.phtml:127
+#: Application/Backend/view/object/post.phtml:128
 msgid ""
 "Restrict access to edit a post (also the link \"Edit\" and \"Quick Edit\" "
 "will be removed below the post title)."
 msgstr ""
 
-#: Application/Backend/view/object/post.phtml:138
+#: Application/Backend/view/object/post.phtml:139
 msgid "Delete"
 msgstr ""
 
-#: Application/Backend/view/object/post.phtml:140
+#: Application/Backend/view/object/post.phtml:141
 msgid ""
 "Restrict access to trash or permanently delete a post (also the link \"Trash"
 "\" or \"Delete Permanently\" will be removed for a post)."
 msgstr ""
 
-#: Application/Backend/view/object/post.phtml:161
+#: Application/Backend/view/object/post.phtml:163
 msgid "Inheritance"
 msgstr ""
 
-#: Application/Backend/view/object/post.phtml:164
+#: Application/Backend/view/object/post.phtml:166
 msgid ""
 "If no access settings defined for post* or category* AAM triggers the "
 "inheritance mechanism in order listed below. The inheritance process "
 "terminates when the first defined set of settings is found."
 msgstr ""
 
-#: Application/Backend/view/object/post.phtml:166
+#: Application/Backend/view/object/post.phtml:168
 msgid "If caching is on, read the cached settings"
 msgstr ""
 
-#: Application/Backend/view/object/post.phtml:167
+#: Application/Backend/view/object/post.phtml:169
 msgid "Read post's or category's settings"
 msgstr ""
 
-#: Application/Backend/view/object/post.phtml:168
+#: Application/Backend/view/object/post.phtml:170
 msgid ""
 "If AAM Plus Package installed, iterate through the tree of parent categories "
 "and read settings"
 msgstr ""
 
-#: Application/Backend/view/object/post.phtml:169
+#: Application/Backend/view/object/post.phtml:171
 msgid ""
 "If AAM Plus Package installed, read the default access settings for posts or "
 "categories"
 msgstr ""
 
-#: Application/Backend/view/object/post.phtml:170
+#: Application/Backend/view/object/post.phtml:172
 msgid ""
 "If user, read settings from the parent role and repeat the same sequence of "
 "steps"
 msgstr ""
 
-#: Application/Backend/view/object/post.phtml:190
+#: Application/Backend/view/object/post.phtml:192
 msgid "Reset Information"
 msgstr ""

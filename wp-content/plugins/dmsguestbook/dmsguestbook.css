@@ -10,21 +10,21 @@ top:0px;}
 
 .css_guestbook_font_color {color:#000000;}
 
-.css_form_text {text-align:left; font-weight:normal;}
+.css_form_text {font-weight:normal;}
 
-.css_form_namefield {text-align:left; border:1px solid #DEDEDE;
+.css_form_namefield {border:1px solid #0088cc;
 width:150px;
 color:#000000;}
 
-.css_form_emailfield {text-align:left; border:1px solid #DEDEDE;
+.css_form_emailfield {border:1px solid #0088cc;
 width:150px;
 color:#000000;}
 
-.css_form_urlfield {text-align:left; border:1px solid #DEDEDE;
+.css_form_urlfield {border:1px solid #0088cc;
 width:150px;
 color:#000000;}
 
-.css_form_additional_option {text-align:left; border:1px solid #DEDEDE;
+.css_form_additional_option {border:1px solid #0088cc;
 width:150px;
 color:#000000;}
 
@@ -32,26 +32,26 @@ color:#000000;}
 padding:5px 0px 0px 0px;
 margin:0px 0px;}
 
-.css_form_messagefield {text-align:left;border:1px solid #DEDEDE;
+.css_form_messagefield {border:1px solid #0088cc;
 width:80%;
 height:150px;
 color:#000000;}
 
-.css_form_antispamtext {text-align:left;}
+.css_form_antispamtext {text-align:center;}
 
-.css_form_antispamcontent {text-align:left; border:1px solid #DEDEDE;}
+.css_form_antispamcontent {border:1px solid #0088cc;}
 
-.css_form_antispamcontent_position {text-align:left;
+.css_form_antispamcontent_position {text-align:center;
 padding:5px 0px;
 margin:0px 0px;}
 
-.css_form_antispam_inputfield {text-align:left; width:60px;
-border:1px solid #DEDEDE;
+.css_form_antispam_inputfield {width:60px;
+border:1px solid #0088cc;
 color:#000000;}
 
-.css_form_submit {text-align:left; color:#000000;}
+.css_form_submit {color:#000000;}
 
-.css_form_submit_position {text-align:left; text-align:center;
+.css_form_submit_position {text-align:center;
 padding:20px 0px 10px 0px;}
 
 .css_form_errormessage {color:#bb0000;
@@ -71,12 +71,12 @@ left:0;}
 
 .css_navigation_totalcount {font-size:11px;
 left:0px;
-width:100%;
+width:95%;
 text-align:center;
 padding:0px 0px 5px 10px;}
 
 .css_navigation_overview {left:0px;
-width:100%;
+width:95%;
 text-align:center;
 padding:0px 0px 15px 12px;}
 
@@ -92,7 +92,7 @@ text-decoration:none;
 font-weight:bold;}
 
 .css_navigation_char_position {left:0px;
-width:100%;
+width:95%;
 padding:0px 0px 0px 10px;
 margin:0px 0px 20px 0px;
 text-align:center;}
@@ -117,25 +117,25 @@ border:0px;}
 width:15px;
 border:0px;}
 
-.css_post_separator {border: 1px solid #EEEEEE;
+.css_post_separator {border: 1px solid #0088cc;
 height:1px;
-width:50%;
+width:35%;
 text-align:left;
 margin:0px 0px 0px 0px;}
 
 .css_post_message {font-size:11px;
 margin:5px 0px 0px 0px;}
 
-.css_form_embedded {width:100%;
-border:1px solid #AAAAAA;
+.css_form_embedded {width:95%;
+border:1px solid #0088cc;
 font-size:12px;
 text-align:left;
 padding:0px 10px;
 margin:0px 0px 0px 0px;
 line-height:1.4em;}
 
-.css_post_embedded {width:100%;
-border:1px solid #AAAAAA;
+.css_post_embedded {width:95%;
+border:1px solid #0088cc;
 font-size:12px;
 text-align:left;
 padding:10px 10px;

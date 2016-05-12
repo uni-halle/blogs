@@ -45,6 +45,11 @@ function wpseo_set_option() {
 add_action( 'wp_ajax_wpseo_set_option', 'wpseo_set_option' );
 
 /**
+ * Since 3.2 Notifications are dismissed in the Notification Center.
+ */
+add_action( 'wp_ajax_yoast_dismiss_notification', array( 'Yoast_Notification_Center', 'ajax_dismiss_notification' ) );
+
+/**
  * Function used to remove the admin notices for several purposes, dies on exit.
  */
 function wpseo_set_ignore() {
@@ -92,23 +97,35 @@ function wpseo_kill_blocking_files() {
 
 	check_ajax_referer( 'wpseo-blocking-files' );
 
-	$message = 'There were no files to delete.';
+	$message = 'success';
+	$errors  = array();
+
+	// Todo: Use WP_Filesystem, but not so easy to use in AJAX with credentials form still internal.
 	$options = get_option( 'wpseo' );
 	if ( is_array( $options['blocking_files'] ) && $options['blocking_files'] !== array() ) {
-		$message       = 'success';
-		$files_removed = 0;
-		foreach ( $options['blocking_files'] as $k => $file ) {
-			if ( ! @unlink( $file ) ) {
-				$message = __( 'Some files could not be removed. Please remove them via FTP.', 'wordpress-seo' );
+		foreach ( $options['blocking_files'] as $file ) {
+			if ( is_file( $file ) ) {
+				if ( ! @unlink( $file ) ) {
+					$errors[] = __(
+						sprintf( 'The file "%s" could not be removed. Please remove it via FTP.', $file ),
+						'wordpress-seo'
+					);
+				}
 			}
-			else {
-				unset( $options['blocking_files'][ $k ] );
-				$files_removed ++;
+
+			if ( is_dir( $file ) ) {
+				if ( ! @ rmdir( $file ) ) {
+					$errors[] = __(
+						sprintf( 'The directory "%s" could not be removed. Please remove it via FTP.', $file ),
+						'wordpress-seo'
+					);
+				}
 			}
 		}
-		if ( $files_removed > 0 ) {
-			update_option( 'wpseo', $options );
-		}
+	}
+
+	if ( $errors ) {
+		$message = implode( '<br />', $errors );
 	}
 
 	die( $message );
@@ -305,6 +322,9 @@ function wpseo_upsert_new( $what, $post_id, $new, $original ) {
  * Create an export and return the URL
  */
 function wpseo_get_export() {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		die( '-1' );
+	}
 
 	$include_taxonomy = ( filter_input( INPUT_POST, 'include_taxonomy' ) === 'true' );
 	$export           = new WPSEO_Export( $include_taxonomy );
@@ -338,6 +358,10 @@ function ajax_get_keyword_usage() {
 	$post_id = filter_input( INPUT_POST, 'post_id' );
 	$keyword = filter_input( INPUT_POST, 'keyword' );
 
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		die( '-1' );
+	}
+
 	wp_die(
 		WPSEO_Utils::json_encode( WPSEO_Meta::keyword_usage( $keyword, $post_id ) )
 	);
@@ -353,8 +377,17 @@ function ajax_get_term_keyword_usage() {
 	$keyword = filter_input( INPUT_POST, 'keyword' );
 	$taxonomy = filter_input( INPUT_POST, 'taxonomy' );
 
+	if ( ! current_user_can( 'edit_terms' ) ) {
+		die( '-1' );
+	}
+
+	$usage = WPSEO_Taxonomy_Meta::get_keyword_usage( $keyword, $post_id, $taxonomy );
+
+	// Normalize the result so it it the same as the post keyword usage AJAX request.
+	$usage = $usage[ $keyword ];
+
 	wp_die(
-		WPSEO_Utils::json_encode( WPSEO_Taxonomy_Meta::get_keyword_usage( $keyword, $post_id, $taxonomy ) )
+		WPSEO_Utils::json_encode( $usage )
 	);
 }
 

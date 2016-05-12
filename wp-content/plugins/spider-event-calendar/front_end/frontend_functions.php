@@ -52,10 +52,12 @@ function php_getdays($show_numbers_for_events, $calendar, $date, $theme_id, $wid
   $month = substr($date, 5, 2);
   if ($widget) {
     $show_time = 0;
+	$day_start = 0;
   }
   else {
     $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_theme WHERE id=%d', $theme_id));
     $show_time = $theme->show_time;
+	$day_start = $theme->day_start;
   }
 
   $cat_id = (isset($_GET['cat_id']) ? esc_html($_GET['cat_id']) : '');
@@ -306,7 +308,7 @@ $cat_ids = substr($cat_ids, 0,-1);
           if ($rows[$i - 1]->text_for_date != "")
             $array_days1[$key] = $date_day;
           $c = $title_num[$date_day];
-          $list = '<p>' . (($show_numbers_for_events) ? '' . (($show_numbers_for_events) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '') : '');
+          $list = '<p>' . (($show_numbers_for_events and $day_start) ? '' . (($show_numbers_for_events) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '') : '');
 		  
 		  
           if ($rows[$i - 1]->time and $show_time != 0) {
@@ -327,7 +329,7 @@ $cat_ids = substr($cat_ids, 0,-1);
           $title_num[$date_day] = 1;
           $c = 1;
 		  
-          $list = '<p>' . (($show_numbers_for_events) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
+          $list = '<p>' . (($show_numbers_for_events and $day_start) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
           if ($rows[$i - 1]->time and $show_time != 0) {
             $list .= '&nbsp;' . $rows[$i - 1]->title . '<br>(' . $rows[$i - 1]->time . ')</p>';
           }
@@ -353,7 +355,7 @@ $cat_ids = substr($cat_ids, 0,-1);
               $array_days1[$key] = $j;
             }
             $c = $title_num[$j];
-            $list = '<p>' . (($show_numbers_for_events) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
+            $list = '<p>' . (($show_numbers_for_events and $day_start) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
             if ($rows[$i - 1]->time and $show_time != 0) {
               $list .= '&nbsp;' . $rows[$i - 1]->title . '<br>(' . $rows[$i - 1]->time . ')</p>';
             }
@@ -371,7 +373,7 @@ $cat_ids = substr($cat_ids, 0,-1);
             }
             $title_num[$j] = 1;
             $c = 1;
-            $list = '<p>' . (($show_numbers_for_events) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
+            $list = '<p>' . (($show_numbers_for_events and $day_start) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
             if ($rows[$i - 1]->time and $show_time != 0) {
               $list .= '&nbsp;' . $rows[$i - 1]->title . '<br>(' . $rows[$i - 1]->time . ')</p>';
             }
@@ -397,7 +399,7 @@ $cat_ids = substr($cat_ids, 0,-1);
               $array_days1[$key] = $j;
             }
             $c = $title_num[$j];
-            $list = '<p>' . (($show_numbers_for_events) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
+            $list = '<p>' . (($show_numbers_for_events and $day_start) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
             if ($rows[$i - 1]->time and $show_time != 0) {
               $list .= '&nbsp;' . $rows[$i - 1]->title . '<br>(' . $rows[$i - 1]->time . ')</p>';
             }
@@ -415,7 +417,7 @@ $cat_ids = substr($cat_ids, 0,-1);
             }
             $title_num[$j] = 1;
             $c = 1;
-            $list = '<p>' . (($show_numbers_for_events) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
+            $list = '<p>' . (($show_numbers_for_events and $day_start) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
             if ($rows[$i - 1]->time and $show_time != 0) {
               $list .= '&nbsp;' . $rows[$i - 1]->title . '<br>(' . $rows[$i - 1]->time . ')</p>';
             }
@@ -441,7 +443,7 @@ $cat_ids = substr($cat_ids, 0,-1);
               $array_days1[$key] = $j;
             }
             $c = $title_num[$j];
-            $list = '<p>' . (($show_numbers_for_events) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
+            $list = '<p>' . (($show_numbers_for_events and $day_start) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
             if ($rows[$i - 1]->time and $show_time != 0) {
               $list .= '&nbsp;' . $rows[$i - 1]->title . '<br>(' . $rows[$i - 1]->time . ')</p>';
             }
@@ -459,7 +461,7 @@ $cat_ids = substr($cat_ids, 0,-1);
             }
             $title_num[$j] = 1;
             $c = 1;
-            $list = '<p>' . (($show_numbers_for_events) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
+            $list = '<p>' . (($show_numbers_for_events and $day_start) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
             if ($rows[$i - 1]->time and $show_time != 0) {
               $list .= '&nbsp;' . $rows[$i - 1]->title . '<br>(' . $rows[$i - 1]->time . ')</p>';
             }
@@ -484,7 +486,7 @@ $cat_ids = substr($cat_ids, 0,-1);
             if ($rows[$i - 1]->text_for_date != "")
               $array_days1[$key] = $j;
             $c = $title_num[$j];
-            $list = '<p>' . (($show_numbers_for_events) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
+            $list = '<p>' . (($show_numbers_for_events and $day_start) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
             if ($rows[$i - 1]->time and $show_time != 0) {
               $list .= '&nbsp;' . $rows[$i - 1]->title . '<br>(' . $rows[$i - 1]->time . ')</p>';
             }
@@ -502,7 +504,7 @@ $cat_ids = substr($cat_ids, 0,-1);
             }
             $title_num[$j] = 1;
             $c = 1;
-            $list = '<p>' . (($show_numbers_for_events) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
+            $list = '<p>' . (($show_numbers_for_events and $day_start) ? '<b>' . $c . '.</b>&nbsp;&nbsp;' : '');
             if ($rows[$i - 1]->time and $show_time != 0) {
               $list .= '&nbsp;' . $rows[$i - 1]->title . '<br>(' . $rows[$i - 1]->time . ')</p>';
             }

@@ -10,7 +10,7 @@ function wptouchAdminAjaxEnableSpinner( enable ) {
 	if ( enable ) {
 		jQuery( '#admin-spinner' ).animate({
 			opacity: 1
-		}, 500);
+		}, 500 );
 		wptouchTotalAjaxEnabled = wptouchTotalAjaxEnabled + 1;
 	} else {
 		wptouchTotalAjaxEnabled = wptouchTotalAjaxEnabled - 1;
@@ -19,7 +19,7 @@ function wptouchAdminAjaxEnableSpinner( enable ) {
 	if ( wptouchTotalAjaxEnabled == 0 ) {
 		jQuery( '#admin-spinner' ).animate({
 			opacity: 0
-		}, 500);
+		}, 500 );
 	}
 }
 

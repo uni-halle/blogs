@@ -4,12 +4,12 @@ Author: Edvard Ananyan
 Tags: widget, plugin, sidebar, google, translate, translation, localization, google translate, multilingual, multilanguage
 Requires at least: 2.8
 Tested up to: 4.5
-Stable tag: 2.0.11
+Stable tag: 2.0.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
 
-GTranslate uses Google Translate power to make your wordpress site multilingual and available to more than 99% of internet users.
+GTranslate - Google Translate for WordPress will make your website multilingual and available to more than 99% of internet users.
 
 == Description ==
 
@@ -36,8 +36,14 @@ Please `use` [GTranslate Forum](https://gtranslate.io/forum/) for your questions
 
 [Download GTranslate](https://gtranslate.io/#pricing)
 
+**GTranslate Wordpress Demo**
+https://www.youtube.com/watch?v=9mtC3LFBErY
+
 **Watch GTranslate Tour**
 [vimeo http://vimeo.com/30132555]
+
+**Edit Translations Demo (paid)**
+https://www.youtube.com/watch?v=YwSy3VtQx3I
 
 == Installation ==
 
@@ -385,6 +391,13 @@ You need to go to the language you want to edit, for instance, French: http://do
 3. Nice dropdown with flags (open)
 
 == Changelog ==
+
+= 2.0.13 =
+* Notifications added
+
+= 2.0.12 =
+* Readme updated, demo videos added
+* Fixed issue in Nice dropdown look
 
 = 2.0.11 =
 * Fixed issue with default language in Nice dropdown look

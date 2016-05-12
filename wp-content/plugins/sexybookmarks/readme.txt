@@ -3,7 +3,7 @@ Contributors: shareaholic
 Tags: shareaholic, shareholic, sexybookmarks, recommendations, related content, cookie consent, share buttons, email button, social sharing, social bookmarking, share image, image sharing, follow buttons, floated share buttons, floating share buttons, analytics, social media, social plugin, facebook, twitter, google plus, google bookmarks, gmail, linkedin, pinterest, reddit, tumblr, evernote, digg, delicious, stumbleupon, printfriendly, fancy, amazon, xing, vk, yahoo, mister wong, viadeo, odnoklassniki box.net, diigo, yammer, ycombinator, hotmail, instapaper, mixi, arto, whatsapp, hootsuite, inbound.org, plurk, aim, buffer, meneame, pinboard.in, stumpedia, bitly, blogger, yummly, izeby, kaboodle, weibo, instagram, tinyurl,  typepad, weheartit, flipboard, pocket, wanelo, fark, wykop, symphony, kindle, houzz, youtube, sms, onenote, google classroom, disqus, spotify, zillow, feedly, kik, line, livejournal, baidu
 Requires at least: 3.0
 Tested up to: 4.5
-Stable tag: 7.8.0.2
+Stable tag: 7.8.0.3
 
 World's leading all-in-one Content Amplification Platform that helps grow your site traffic, engagement, conversions & monetization for FREE.
 
@@ -193,12 +193,14 @@ Please see here: [Shareaholic Helpdesk](http://support.shareaholic.com/hc/en-us)
 Please see here: [Usage & Installation Instructions](http://support.shareaholic.com/hc/en-us/categories/200101476-WordPress-Plugin)
 
 == Changelog ==
+= 7.8.0.3 =
+* Bugfix: Fix for Cloudflare compatible
 
 = 7.8.0.2 =
-* Bugfix: updating social counts lib to be php7 compatible
+* Bugfix: Updated Social Counts library to be PHP7 compatible
 
 = 7.8.0.1 =
-* Bugfix: removed call to the Delicious count API in the server-side connectivity check
+* Bugfix: Removed call to the Delicious count API in the server-side connectivity check
 
 = 7.8.0.0 =
 * Various language localization updates
@@ -1023,8 +1025,11 @@ Please see here: [Usage & Installation Instructions](http://support.shareaholic.
 
 == Upgrade Notice ==
 
+= 7.8.0.3 =
+* Bugfix: Fix for Cloudflare compatible
+
 = 7.8.0.2 =
-* Bugfix: updating social counts lib to be php7 compatible
+* Bugfix: Updated Social Counts library to be PHP7 compatible
 
 = 7.8.0.1 =
 * Bugfix: removed call to the Delicious count API in the server-side connectivity check

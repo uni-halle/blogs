@@ -38,8 +38,6 @@ function example_settings_items($settings){
     'tab' => 'settings/some_tab',
     // (optional)
     'description' => '',
-    // (optional) - defaults to false
-    'require_license' => false,
     // (optional) - something like 0 or array() when needed, defaults to empty string
     'empty_value' => '',
     // (optional) - these are keys of values you plan to save to the ww->settings array
@@ -164,11 +162,6 @@ class WW_Settings_Admin  {
       'description' => __('Actions that will modify Widget Wrangler data.', 'widgetwrangler'),
       'form_action' => array( $this, '_settings_tools_form' ),
       );
-    $tabs['settings/license'] = array(
-      'title' => __('Pro License', 'widgetwrangler'),
-      'description' => __('Widget Wrangler Pro provides new features for site developers that can drastically increase efficiency in widget management for complex sites or needs.', 'widgetwrangler'),
-      'form_action' => array( $this, '_settings_tools_form' ),
-      );
     return $tabs;
   }
   
@@ -187,28 +180,12 @@ class WW_Settings_Admin  {
       'title' => __('Taxonomies', 'widgetwrangler'),
       'description' => __('Select which taxonomies can control widgets individually.', 'widgetwrangler'),
       'empty_value' => $this->ww->settings['taxonomies'],
-      'require_license' => true,
       'form_action' => array( $this, '_default_settings_form_action' ),
       'execute_action' => array( $this, '_default_settings_execute_action' ),
       );
     $settings['theme_compat'] = array(
       'title' => __('Theme Compatibility', 'widgetwrangler'),
       'empty_value' => 0,
-      'form_action' => array( $this, '_default_settings_form_action' ),
-      'execute_action' => array( $this, '_default_settings_execute_action' ),
-      );
-    $settings['shortcode_tinymce'] = array(
-      'title' => __('tinyMCE Shortcode Button', 'widgetwrangler'),
-      'empty_value' => 0,
-      'require_license' => true,
-      'form_action' => array( $this, '_default_settings_form_action' ),
-      'execute_action' => array( $this, '_default_settings_execute_action' ),
-      );
-    $settings['override_elements'] = array(
-      'title' => __('HTML Override Elements', 'widgetwrangler'),
-      'description' => __('Allowed elements for override a widget\'s html output.  Place one element per line.', 'widgetwrangler'),
-      'empty_value' => $this->ww->settings['override_elements'],
-      'require_license' => true,
       'form_action' => array( $this, '_default_settings_form_action' ),
       'execute_action' => array( $this, '_default_settings_execute_action' ),
       );
@@ -226,7 +203,43 @@ class WW_Settings_Admin  {
       'form_action' => array( $this, '_default_settings_form_action' ),
       'execute_action' => array( $this, '_default_settings_execute_action' ),
       );
-    
+
+    // deprecated
+    // only allow people currently using this feature to see it.
+    if ( $this->ww->settings['previously_pro'] ||  $this->ww->settings['override_elements_enabled']){
+      $settings['override_elements_enabled'] = array(
+        'title' => __('Deprecated: Enable overriding widget HTML from the Post UI.', 'widgetwrangler'),
+        'description' => __( 'This is a deprecated feature that is only here for legacy systems.' ).
+          '<h3><strong>'.__('Not Recommended, this feature is not available for new installs of Widget Wrangler. ').'</strong></h3>
+          <p>Instead, create a reusable template in your theme and set that template in the Custom Template section for a widget.</p>',
+        'empty_value' => 0,
+        'form_action' => array( $this, '_default_settings_form_action' ),
+        'execute_action' => array( $this, '_default_settings_execute_action' ),
+        );
+      $settings['override_elements'] = array(
+          'title' => __('Deprecated: HTML Override Elements', 'widgetwrangler'),
+          'description' => __('Allowed elements for override a widget\'s html output.  Place one element per line.', 'widgetwrangler'),
+          'empty_value' => $this->ww->settings['override_elements'],
+          'form_action' => array( $this, '_default_settings_form_action' ),
+          'execute_action' => array( $this, '_default_settings_execute_action' ),
+      );
+    }
+
+    // deprecated
+    // only allow people currently using shortcode tinymce to see this old feature
+    if ( $this->ww->settings['previously_pro'] || $this->ww->settings['shortcode_tinymce'] ) {
+      $settings['shortcode_tinymce'] = array(
+          'title' => __('Deprecated: tinyMCE Shortcode Button', 'widgetwrangler'),
+          'description' => __( 'This is a deprecated feature that is only here for legacy systems.' ).
+                           '<h3><strong>'.__('Not Recommended, this feature is not available for new installs of Widget Wrangler. ').'</strong></h3>
+                           <p>Instead, try this plugin to insert shortcodes into an editor.
+                           <a href="https://wordpress.org/plugins/shortcode-ui/">Shortcode UI</a></p>',
+          'empty_value' => 0,
+          'form_action' => array( $this, '_default_settings_form_action' ),
+          'execute_action' => array( $this, '_default_settings_execute_action' ),
+      );
+    }
+
     // widget settings
     $settings['capabilities'] = array(
       'title' => __('Capabilities', 'widgetwrangler'),
@@ -247,7 +260,6 @@ class WW_Settings_Admin  {
     $settings['widget_advanced'] = array(
       'title' => __('Advanced', 'widgetwrangler'),
       'tab' => 'settings/widget',
-      'require_license' => true,
       'description' => __('Only change these if you know what you\'re doing.', 'widgetwrangler'),
       'value_keys' => array('rewrite_slug', 'query_var'),
       'form_action' => array( $this, '_default_settings_form_action' ),
@@ -280,16 +292,7 @@ class WW_Settings_Admin  {
       'form_action' => array( $this, '_default_settings_form_action' ),
       'execute_action' => array( $this, '_default_settings_execute_action' ),
       );
-    
-    // license
-    $settings['license_key'] = array(
-      'title' => __('License Key', 'widgetwrangler'),
-      'tab' => 'settings/license',
-      'execute_key' => 'license',
-      'description' => __('Enter your license key below.', 'widgetwrangler'),
-      'form_action' => array( $this, '_default_settings_form_action' ),
-      'execute_action' => array( $this, '_default_settings_execute_action' ),
-      );
+
     return $settings;
   }
   
@@ -333,7 +336,6 @@ class WW_Settings_Admin  {
       
       // default setting values
       if (!isset($setting['tab'])) $setting['tab'] = 'settings';
-      if (!isset($setting['require_license'])) $setting['require_license'] = false;
       if (!isset($setting['execute_key'])) $setting['execute_key'] = 'save';
       if (!isset($setting['value_keys'])) $setting['value_keys'] = array($setting_key);
       if (!isset($setting['empty_value'])) $setting['empty_value'] = '';
@@ -403,10 +405,6 @@ class WW_Settings_Admin  {
       
       case 'theme_setup':
         $this->_setup_theme();
-        break;
-      
-      case 'license':
-        $this->_handle_license();
         break;
     }
   }
@@ -501,6 +499,15 @@ class WW_Settings_Admin  {
           </label>
         <?php
         break;
+
+      case 'override_elements_enabled':
+        $checked = (!empty($setting['form_values']['override_elements_enabled'])) ? "checked='checked'" : "";
+        ?>
+          <label class="ww-checkbox">
+            <input name="settings[<?php print $setting_key; ?>]" type="checkbox" <?php print $checked; ?> value="1" /> - <?php _e('Enable Overriding Widget HTML from the Post UI. Not recommended.', 'widgetwrangler'); ?>
+          </label>
+        <?php
+        break;
       
       // widget settings
       case 'capabilities':
@@ -576,39 +583,7 @@ class WW_Settings_Admin  {
           </form>
         <?php
         break;
-      
-      // license
-      case 'license_key':    
-        $license 	= get_option( 'ww_pro_license_key' );
-        $status 	= get_option( 'ww_pro_license_status' );
-        $valid = $this->ww->license_status ? true : false;
-        $status_indicator = ( $valid ) ? "<small style='color: green;'>".__('active', 'widgetwrangler') . "</small>": "<small style='color: red;'>".__('inactive', 'widgetwrangler') . "</small>";
-        
-        $action_title = __("Activate License", 'widgetwrangler');
-        $button_name = "ww_pro_license_activate";
-        if( $valid ){
-          $action_title = __("Deactivate License", 'widgetwrangler');
-          $button_name = "ww_pro_license_deactivate";
-        }
-        ?>
-          <form method="post" action="<?php print $this->current_settings_form_tab['tab_url']; ?>&ww_action=license&noheader=true">  
-              <p>
-                <input id="ww_pro_license_key" name="ww_pro_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license ); ?>" />
-                <?php print $status_indicator; ?>
-              </p>
-              <p>
-                <input type="submit" class="button-secondary" name="<?php print $button_name; ?>" value="<?php print $action_title; ?>"/>
-              </p>
-          </form>
-          
-          <h2><?php _e('About Widget Wrangler Pro', 'widgetwrangler'); ?></h2>
-          <p>
-            <?php _e('Widget Wrangler Pro offers new features for a whole new level of control over your widgets.  Manage the widgets on archive (category) pages, create as many presets as you want, and many more!'); ?>
-            <a target="_blank" href="http://wranglerplugins.com/plugins/widget-wrangler/#compare"><?php _e('View Pro Features', 'widgetwrangler'); ?></a>
-          </p>
-        <?php
-        break;
-      
+
       case 'override_elements':
         $rows = count($setting['form_values']['override_elements']) + 1;
         if ($rows < 5){
@@ -673,14 +648,10 @@ class WW_Settings_Admin  {
       
       <div class="ww-admin-tab">
         <?php
+          if ( isset($_GET['debug']) ) { $this->ww->__d($this->ww->settings); }
           foreach ($this->settings_form_items as $setting_key => $setting){
             // only settings on this tab
             if ($setting['tab'] == $this->current_settings_form_tab['tab_key']){
-              // skip settings that require a license if license invalid
-              if ($setting['require_license'] && !$this->ww->license_status){
-                continue;
-              }
-              
               $this->_theme_settings_form_item($setting);
             }
           }
@@ -752,81 +723,7 @@ class WW_Settings_Admin  {
     update_option('ww_settings', $settings);
     $this->ww->settings = $settings;    
   }
-    
-  //
-  // check license
-  //
-  function _handle_license() {
-    // run a quick security check 
-    //if( ! check_admin_referer( 'ww_nonce', 'ww_nonce' ) ) 	{
-      //return; // get out if we didn't click the Activate button
-    //}
-    
-    if ( isset( $_POST['ww_pro_license_activate'] ) ) {
-      $new = trim($_POST['ww_pro_license_key']);
-      $old = trim( get_option( 'ww_pro_license_key' ) );
-      
-      if($old != $new ) {
-        update_option( 'ww_pro_license_key', $new);
-        delete_option( 'ww_pro_license_status' ); // new license has been entered, so must reactivate
-      }
-      
-      // retrieve the license from the database
-      $license = get_option( 'ww_pro_license_key' );
-        
-      // data to send in our API request
-      $api_params = array( 
-        'edd_action'=> 'activate_license', 
-        'license' 	=> $license, 
-        'item_name' => urlencode( WW_PRO_NAME ) // the name of our product in EDD
-      );
-      
-      // Call the custom API.
-      $response = wp_remote_get( add_query_arg( $api_params, WW_PRO_URL ), array( 'timeout' => 15, 'sslverify' => false ) );
-  
-      // make sure the response came back okay
-      if ( is_wp_error( $response ) ){
-        return false;
-      }
-  
-      // decode the license data
-      $license_data = json_decode( wp_remote_retrieve_body( $response ) );
-      
-      // $license_data->license will be either "valid" or "invalid"
-      update_option( 'ww_pro_license_status', $license_data );
-    }
-  
-    // listen for our activate button to be clicked
-    else if( isset( $_POST['ww_pro_license_deactivate'] ) )
-    {
-      // retrieve the license from the database
-      $license = get_option( 'ww_pro_license_key' );
-        
-      // data to send in our API request
-      $api_params = array( 
-        'edd_action'=> 'deactivate_license', 
-        'license' 	=> $license, 
-        'item_name' => urlencode( WW_PRO_NAME ) // the name of our product in EDD
-      );
-      
-      // Call the custom API.
-      $response = wp_remote_get( add_query_arg( $api_params, WW_PRO_URL ), array( 'timeout' => 15, 'sslverify' => false ) );
-  
-      // make sure the response came back okay
-      if ( is_wp_error( $response ) ){
-        return false;
-      }
-  
-      // decode the license data
-      $license_data = json_decode( wp_remote_retrieve_body( $response ) );
-      
-      // $license_data->license will be either "deactivated" or "failed"
-      if( $license_data->license == 'deactivated' ){
-        delete_option( 'ww_pro_license_status' );
-      }
-    }
-  }
-  
+
   //
   // Empty wp sidebars,
   //  - create a corral for each wp sidebar,

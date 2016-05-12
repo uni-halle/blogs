@@ -86,3 +86,6 @@
 .failure {
     color: #f00;
 }
+#label_logger_autorefresh {
+    float: right;
+}

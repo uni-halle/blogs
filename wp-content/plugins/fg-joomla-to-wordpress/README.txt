@@ -3,8 +3,8 @@ Contributors: Frédéric GILLES
 Plugin Uri: https://wordpress.org/plugins/fg-joomla-to-wordpress/
 Tags: joomla, mambo, wordpress, importer, convert joomla to wordpress, migrate joomla to wordpress, joomla to wordpress migration, migrator, converter, import, k2, jcomments, joomlacomments, jomcomment, flexicontent, postviews, joomlatags, sh404sef, attachments, rokbox, kunena, phocagallery, phoca, joomsef, opensef, easyblog, zoo, zooitems, joomfish, joom!fish, wpml, joomgallery, jevents, contact directory, docman, virtuemart, woocommerce, jreviews, mosets tree, wpml, simple image gallery, rsgallery
 Requires at least: 4.4
-Tested up to: 4.5
-Stable tag: 3.6.1
+Tested up to: 4.5.2
+Stable tag: 3.9.1
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fred%2egilles%40free%2efr&lc=FR&item_name=fg-joomla-to-wordpress&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
@@ -189,6 +189,9 @@ And the messages will be logged to wp-content/debug.log.
 
 * The plugin imports the Joomla web links to WordPress links managed by the Link Manager plugin: https://wordpress.org/plugins/link-manager/
 
+= My screen hangs because of a lot of errors in the log window =
+* You can stop the log auto-refresh by unselecting the log auto-refresh checkbox
+
 
 Don't hesitate to let a comment on the forum or to report bugs if you found some.
 http://wordpress.org/support/plugin/fg-joomla-to-wordpress
@@ -209,6 +212,20 @@ http://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * other can be translated
 
 == Changelog ==
+
+= 3.9.1 =
+* Fixed: Images with line breaks inside the tag were not imported
+* Tested with WordPress 4.5.2
+
+= 3.9.0 =
+* New: Allow image filenames starting with //
+
+= 3.8.0 =
+* Tweak: Add functions useful for add-ons
+* Tested with WordPress 4.5.1
+
+= 3.7.0 =
+* New: Ability to stop the log window auto-refresh
 
 = 3.6.1 =
 * Tested with WordPress 4.5
@@ -750,6 +767,19 @@ http://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * Initial version: Import Joomla 1.5 sections, categories, posts and images
 
 == Upgrade Notice ==
+
+= 3.9.1 =
+Fixed: Images with line breaks inside the tag were not imported
+Tested with WordPress 4.5.2
+
+= 3.9.0 =
+New: Allow image filenames starting with //
+
+= 3.8.0 =
+Tested with WordPress 4.5.1
+
+= 3.7.0 =
+New: Ability to stop the log window auto-refresh
 
 = 3.6.1 =
 Tested with WordPress 4.5

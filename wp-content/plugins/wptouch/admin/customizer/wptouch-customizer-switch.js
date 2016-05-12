@@ -18,7 +18,7 @@
 	jQuery( '#switch_to' ).click( function( e ) {
 		e.preventDefault();
 		e.stopImmediatePropagation();
-		jQuery.cookie( 'wptouch_customizer_use', next, { expires: 0, path: '/' } );
+		jQuery.cookie( 'wptouch_customizer_use', next, { expires: false, path: '/' } );
 		window.location.reload();
 	});
 

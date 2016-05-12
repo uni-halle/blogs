@@ -216,11 +216,12 @@ if (!empty($action)) {
 	<li>- <a href="#bulk-update-layers" style="text-decoration:none;">' . sprintf( esc_attr__('Bulk updates for all %1$s existing layer maps','lmm'), $layercount_all) . '</a></li>
 	<li>- <a href="#change-marker-id" style="text-decoration:none;">' . __('Change marker ID','lmm') . '</a></li>
 	<li>- <a href="#change-layer-id" style="text-decoration:none;">' . __('Change layer ID','lmm') . '</a></li>
-	<li>- <a href="#api-url-generator" style="text-decoration:none;">' . __('API URL generator','lmm') . '</a></li>
-	<li>- <a href="#api-url-tester" style="text-decoration:none;">' . __('API URL tester','lmm') . '</a></li>
+	<li>- <a href="#api-url-generator" style="text-decoration:none;">' . __('Web API URL generator','lmm') . '</a></li>
+	<li>- <a href="#api-url-tester" style="text-decoration:none;">' . __('Web API URL tester','lmm') . '</a></li>
 	<li>- <a href="#clear-qr-cache" style="text-decoration:none;">' . __('Clear QR code images cache','lmm') . '</a></li>
 	<li>- <a href="#delete-selected-markers" style="text-decoration:none;">' . __('Delete all markers from a layer','lmm') . '</a></li>
 	<li>- <a href="#delete-all-markers" style="text-decoration:none;">' . sprintf( esc_attr__('Delete all %1$s markers from all %2$s layers','lmm'), $markercount_all, $layercount_all) . '</a></li>
+	<li>- <a href="#marker-validity-check" style="text-decoration:none;">' . __('Marker validity check for layer assignements','lmm') . '</a></li>
 	</ul>';
 	?>
 	<a name="backup-restore"></a>
@@ -1002,7 +1003,7 @@ if (!empty($action)) {
 	<br/><br/>
 	<table class="widefat fixed" style="width:auto;">
 		<tr style="background-color:#d6d5d5;">
-			<td colspan="2"><strong><?php _e('API URL generator','lmm') ?></strong> <?php echo '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-section9">(' . __('MapsMarker API settings','lmm') . ')</a>'; ?></td>
+			<td colspan="2"><strong><?php _e('Web API URL generator','lmm') ?></strong> <?php echo '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-section9">(' . __('MapsMarker API settings','lmm') . ')</a>'; ?></td>
 		</tr>
 		<tr>
 			<td style="vertical-align:middle;">
@@ -1087,7 +1088,7 @@ if (!empty($action)) {
 	<br/><br/>
 	<table class="widefat fixed" style="width:auto;">
 		<tr style="background-color:#d6d5d5;">
-			<td colspan="2"><strong><?php _e('API URL tester','lmm') ?></strong> <?php echo '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-section9">(' . __('MapsMarker API settings','lmm') . ')</a>'; ?></td>
+			<td colspan="2"><strong><?php _e('Web API URL tester','lmm') ?></strong> <?php echo '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-section9">(' . __('MapsMarker API settings','lmm') . ')</a>'; ?></td>
 		</tr>
 		<tr>
 			<td style="vertical-align:middle;">
@@ -1237,6 +1238,27 @@ if (!empty($action)) {
 			</td>
 			<td>
 				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="mass_delete_all_markers" value="<?php _e('delete all markers from all layers','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to delete all markers from all layers? (cannot be undone)','lmm') ?>')" />
+			</td>
+		</tr>
+	</table>
+	</form>
+	<p><a href="#top" style="text-decoration:none;"><?php _e('back to top','lmm'); ?></a></p>
+	
+	<a name="marker-validity-check"></a>
+	<br/><br/>
+	<?php $nonce= wp_create_nonce('tool-nonce'); ?>
+	<form method="post">
+	<input type="hidden" name="action" value="marker_validity_check" />
+	<?php wp_nonce_field('tool-nonce'); ?>
+	<table class="widefat fixed" style="width:auto;">
+		<tr style="background-color:#d6d5d5;">
+			<td colspan="2"><strong><?php echo __('Marker validity check for layer assignements','lmm'); ?></strong> <a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/help-pro-feature.png" /></a></td>
+		</tr>
+		<tr>
+			<td>
+				<?php _e('Check if any markers exist that are assigned to layers that do not exist (anymore). This can happen if you deleted a layer but did not update the assignement of the related markers.','lmm'); ?><br/>
+
+			<?php echo '<div style="margin:10px 0;"><strong><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a></strong></div>'; ?>
 			</td>
 		</tr>
 	</table>

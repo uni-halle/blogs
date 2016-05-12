@@ -3,12 +3,12 @@
 Plugin Name: Search Everything
 Plugin URI: http://wordpress.org/plugins/search-everything/
 Description: Adds search functionality without modifying any template pages: Activate, Configure and Search. Options Include: search highlight, search pages, excerpts, attachments, drafts, comments, tags and custom fields (metadata). Also offers the ability to exclude specific pages and posts. Does not search password-protected content.
-Version: 8.1.4
+Version: 8.1.5
 Author: Zemanta
 Author URI: http://www.zemanta.com
 */
 
-define('SE_VERSION', '8.1.4');
+define('SE_VERSION', '8.1.5');
 
 if (!defined('SE_PLUGIN_FILE'))
 	define('SE_PLUGIN_FILE', plugin_basename(__FILE__));
@@ -48,7 +48,7 @@ add_action('wp_loaded','se_initialize_plugin');
 
 function se_initialize_plugin() {
 	$SE = new SearchEverything();
-	
+
 	//add filters based upon option settings
 	//include_once(SE_PLUGIN_DIR . '/zemanta/zemanta.php');
 	//$se_zemanta = new SEZemanta();
@@ -76,7 +76,7 @@ function se_global_notice() {
 	if (!current_user_can('manage_options')) {
 		return;
 	}
-	
+
 	$se_meta = se_get_meta();
 
 	$close_url = admin_url( 'options-general.php' );
@@ -86,7 +86,7 @@ function se_global_notice() {
 	), $close_url );
 
 	$notice = $se_meta['se_global_notice'];
-	
+
 	if ($notice && in_array($pagenow, $se_global_notice_pages)) {
 		include(se_get_view('global_notice'));
 	}
@@ -103,7 +103,7 @@ class SearchEverything {
 	var $ajax_request;
 	private $query_instance;
 
-	function SearchEverything($ajax_query=false) {
+	function __construct($ajax_query=false) {
 		global $wp_version;
 		$this->wp_ver23 = ( $wp_version >= '2.3' );
 		$this->wp_ver25 = ( $wp_version >= '2.5' );
@@ -116,7 +116,7 @@ class SearchEverything {
 		}
 		else {
 			$this->init();
-		}		
+		}
 	}
 
 	function init_ajax($query) {
@@ -146,7 +146,7 @@ class SearchEverything {
 
 	function search_hooks() {
 		//add filters based upon option settings
-		
+
 		if ( $this->options['se_use_tag_search'] || $this->options['se_use_category_search'] || $this->options['se_use_tax_search'] ) {
 			add_filter( 'posts_join', array( &$this, 'se_terms_join' ) );
 			if ( $this->options['se_use_tag_search'] ) {
@@ -288,7 +288,7 @@ class SearchEverything {
 	// search for terms in default locations like title and content
 	// replacing the old search terms seems to be the best way to
 	// avoid issue with multiple terms
-	function se_search_default(){ 
+	function se_search_default(){
 
 		global $wpdb;
 
@@ -309,7 +309,7 @@ class SearchEverything {
 
 			$like_title = "($wpdb->posts.post_title LIKE '$esc_term')";
 			$like_post = "($wpdb->posts.post_content LIKE '$esc_term')";
-			
+
 			$search_sql_query .= "($like_title OR $like_post)";
 
 			$seperator = ' AND ';
@@ -391,7 +391,7 @@ class SearchEverything {
 	function se_build_search_excerpt() {
 		global $wpdb;
 		$vars = $this->query_instance->query_vars;
-		
+
 		$s = $vars['s'];
 		$search_terms = $this->se_get_search_terms();
 		$exact = isset( $vars['exact'] ) ? $vars['exact'] : '';
@@ -457,7 +457,7 @@ class SearchEverything {
 	function se_build_search_comments() {
 		global $wpdb;
 		$vars = $this->query_instance->query_vars;
-		
+
 		$s = $vars['s'];
 		$search_terms = $this->se_get_search_terms();
 		$exact = isset( $vars['exact'] ) ? $vars['exact'] : '';
@@ -627,7 +627,7 @@ class SearchEverything {
 	function se_build_search_categories() {
 		global $wpdb;
 		$vars = $this->query_instance->query_vars;
-		
+
 		$s = $vars['s'];
 		$search_terms = $this->se_get_search_terms();
 		$exact = isset( $vars['exact'] ) ? $vars['exact'] : '';
@@ -817,7 +817,7 @@ class SearchEverything {
 		global $wpdb;
 		$s =  isset( $this->query_instance->query_vars['s'] ) ? $this->query_instance->query_vars['s'] : '';
 		// highlighting
-		if ( is_search() && $s != '' ) {
+		if ( !is_admin() && is_search() && $s != '' ) {
 			$highlight_color = $this->options['se_highlight_color'];
 			$highlight_style = $this->options['se_highlight_style'];
 			$search_terms = $this->se_get_search_terms();
@@ -884,7 +884,7 @@ function search_everything_callback() {
 			$result['external'] = json_decode($zemanta_response['body'])->articles;
 		}
 
-		
+
 		$SE = new SearchEverything(true);
 
 		if (!empty($_GET['exact'])) {
@@ -899,7 +899,7 @@ function search_everything_callback() {
 			$result['own'][] = get_post();
 		}
 		$post_query->reset_postdata();
-		
+
 	}
 	print json_encode($result);
 	die();

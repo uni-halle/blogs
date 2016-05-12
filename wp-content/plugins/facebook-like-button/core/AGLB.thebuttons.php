@@ -15,7 +15,7 @@ class theButtons{
 		if($wrapped)
 			$button .= "<div ".($customClass !== false ? "class='$customClass'" : "").">";
 			
-		$button .= '<div class="fb-like" data-href="'.$url.'" data-colorscheme="'.get_option("AGPressGraph_like_color", "light").'" data-width="'.get_option("AGPressGraph_like_type", "40px").'" data-kid-directed-site="'.get_option("AGPressGraph_like_kid_restricted", "false").'" data-layout="'.get_option("AGPressGraph_like_type", "standard").'" data-action="'.get_option("AGPressGraph_like_verb", "like").'" data-show-faces="'.get_option("AGPressGraph_like_face", "false").'" data-share="'.get_option("AGPressGraph_like_include_share", "false").'" ></div>';
+		$button .= '<div class="fb-like" data-href="'.$url.'" data-colorscheme="'.get_option("AGPressGraph_like_color", "light").'" data-width="'.get_option("AGPressGraph_like_width", "40px").'" data-kid-directed-site="'.get_option("AGPressGraph_like_kid_restricted", "false").'" data-layout="'.get_option("AGPressGraph_like_type", "standard").'" data-action="'.get_option("AGPressGraph_like_verb", "like").'" data-show-faces="'.get_option("AGPressGraph_like_face", "false").'" data-share="'.get_option("AGPressGraph_like_include_share", "false").'" ></div>';
 		
 		if($wrapped)
 			$button .= "</div>";

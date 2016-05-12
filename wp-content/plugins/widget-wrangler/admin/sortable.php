@@ -216,7 +216,9 @@ class WW_Admin_Sortable {
 				<select id="ww-add-new-widget-widget">
 					<option value="0">-- <?php _e('Select a Widget', 'widgetwrangler'); ?> --</option>
 					<?php foreach ( $this->all_widgets as $widget ){ ?>
+						<?php if ( ! $widget->hide_from_wrangler ) : ?>
 						<option value="<?php print esc_attr( $widget->ID ); ?>"><?php print $widget->post_title; ?></option>
+						<?php endif; ?>
 					<?php } ?>
 				</select>
 				<select id="ww-add-new-widget-corral">

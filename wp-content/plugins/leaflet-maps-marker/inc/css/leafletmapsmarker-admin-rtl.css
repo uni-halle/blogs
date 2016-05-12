@@ -684,3 +684,28 @@ a.pro-upgrade-external-links:hover {
 		border: none !important; 
 	}
 }
+.lmm-mlm-layers-table thead th {
+	background: #eee;
+}
+@media screen and ( max-width: 782px ) {
+	.lmm-mlm-layers-table{
+		width:56%!important
+	}
+	.lmm-mlm-layers-table td{
+		width: 100% !important;
+	}
+	.lmm-mlm-layers-table tbody td{
+		text-align: left !important;
+	}
+	.lmm-mlm-layers-table tbody td select{
+		width: 100% !important;
+		height: 26px !important;
+		font-size: 14px !important;
+	}
+	.lmm-mlm-layers-table tbody td.column-primary{
+		border: none !important;
+	}
+	.lmm-mlm-layers-table .check-column{
+		padding: 4px 3px 0px !important;
+	}
+}

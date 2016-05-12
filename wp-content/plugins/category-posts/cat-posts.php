@@ -4,7 +4,7 @@ Plugin Name: Category Posts Widget
 Plugin URI: http://mkrdip.me/category-posts-widget
 Description: Adds a widget that shows the most recent posts from a single category.
 Author: Mrinal Kanti Roy
-Version: 4.1.7
+Version: 4.1.9
 Author URI: http://mkrdip.me
 */
 
@@ -116,6 +116,130 @@ function category_posts_widget_styles() {
 	}
 }
 
+/*
+ *	Initialize select2
+ */	
+function category_posts_widget_load_select2_scripts_footer() {
+?>
+	<script type="text/javascript">
+		<?php if (!is_customize_preview()) { // only for widgets page ?>
+		jQuery(document).ready(function () {
+			jQuery(".cphtml").select2({
+				width:'100%',
+				placeholder:'<?php _e('Select many HTML elements','categorypostspro')?>',
+				DropdownAdapter:'DropdownSearch'
+			});
+			jQuery('#widget-list .cphtml').select2('destroy');
+
+			jQuery(document).on('widget-added widget-updated', function(event,widget){
+				widget.find('.cphtml').select2({
+					width:'100%',
+					placeholder:'<?php _e('Select as many as needed','categoryposts')?>',
+					DropdownAdapter:'DropdownSearch'
+				});	
+			});	
+            jQuery(".cpwpany").on("select2:select", function (e) {
+                if (e.params.data.id == '0') { // any was selected remove rest
+                    jQuery(this).val(['0']).trigger("change");
+                } else {
+                    var v = jQuery(this).val();
+                    var i = v.indexOf('0');
+                    if (i > -1) {
+                        v.splice(i,1);
+                        jQuery(this).val(v).trigger("change");
+                    }
+                }
+            });
+            jQuery(".cpwpany").on("select2:unselect", function (e) {
+                var v = jQuery(this).val();
+                if (v == null) {
+                    jQuery(this).val(['0']).trigger("change");
+                }
+            });
+		});
+		<?php } else { // for customizer ?>
+		jQuery(document).on('expanded widget-added', function(){
+			jQuery(this).find('.widget-rendered.expanded .cphtml').select2({
+				width:'100%',
+				placeholder:'<?php _e('Select as many as needed','categoryposts')?>',
+				DropdownAdapter:'DropdownSearch'
+			});	
+		});
+        jQuery(".cpwpany").on("select2:select", function (e) {
+            if (e.params.data.id == '0') { // any was selected remove rest
+                jQuery(this).val(['0']).trigger("change");
+            } else {
+                var v = jQuery(this).val();
+                var i = v.indexOf('0');
+                if (i > -1) {
+                    v.splice(i,1);
+                    jQuery(this).val(v).trigger("change");
+                }
+            }
+        });
+        jQuery(".cpwpany").on("select2:unselect", function (e) {
+            var v = jQuery(this).val();
+            if (v == null) {
+                jQuery(this).val(['0']).trigger("change");
+            }
+        });
+		<?php } ?>
+	</script>
+
+	<style>
+		<?php if (isset($GLOBALS['wp_customize'])) { // this abomination need only for customizer ?> 
+		.select2-container 
+		{
+			z-index:500001;
+		}
+		<?php } ?>
+		.cphtml 
+		{
+			width:58% !important;
+		}
+		.select2-search-field
+		{
+			width: 30px;
+		}
+		.select2-container li.select2-search
+		{
+			float: initial !important;
+			margin: 0;
+		}
+		.select2-container input
+		{
+			width: 100% !important
+		}
+	</style>
+<?php
+}
+
+/*
+	Enqueue select2 related JS and CSS for widget manipulation on the widget admin screen and costumizer
+	but due to customizer bugs only for 4.4 and above for the customizer
+*/	
+function category_posts_widget_admin_scripts($hook) {
+ 
+	if ($hook == 'widgets.php') { // enqueue only for widget admin and customizer
+		if (version_compare( $GLOBALS['wp_version'], '4.4', '>=' ) || !isset($GLOBALS['wp_customize'])) {
+			
+			// select2
+			wp_enqueue_script( 'select2-css', plugins_url( 'js/select2-4.0.1/js/select2.min.js' , __FILE__ ), array( 'jquery' ),'4.0.1' );
+			wp_enqueue_style( 'select2-js', plugins_url( 'js/select2-4.0.1/css/select2.min.css' , __FILE__ ) );
+			
+			add_action('admin_print_scripts','category_posts_widget_load_select2_scripts_footer',100);
+
+		}
+		
+		// control open and close the widget section
+        wp_register_script( 'category-posts-widget-admin-js', CAT_POST_PLUGINURL.'/js/admin/category-posts-widget.js',array('jquery'),'0.9',true );
+        wp_enqueue_script( 'category-posts-widget-admin-js' );	
+	}	
+}
+
+add_action('admin_enqueue_scripts', 'category_posts_widget_admin_scripts'); // "called on widgets.php and costumizer since 3.9
+
+
 /**
  * Load plugin textdomain.
  *
@@ -170,29 +294,15 @@ function category_posts_admin_styles() {
 	-moz-transform: rotate(180deg);
 	transform: rotate(180deg);
 }	
-.category-widget-cont div {
+.category-widget-cont > div {
 	display:none;
 	overflow: hidden;
 }	
-.category-widget-cont div.open {
+.category-widget-cont > div.open {
 	display:block;
 }	
 </style>
 <?php
-}
-
-/**
- * Add JS to control open and close the widget section
- *
- */
-add_action( 'admin_enqueue_scripts', 'category_posts_admin_scripts', 10,1 );
- 
-function category_posts_admin_scripts($hook) {
-	// widget script
-	if ($hook == 'widgets.php') { // enqueue only for widget admin and customizer
-		wp_register_script( 'category-posts-admin-js', CAT_POST_PLUGINURL . 'js/admin/category-posts-widget.js',array('jquery'),CAT_POST_VERSION,true );
-		wp_enqueue_script( 'category-posts-admin-js' );
-	}
 }
 
 /**
@@ -330,7 +440,27 @@ class CategoryPosts extends WP_Widget {
 			$text = apply_filters('the_content', $text);
 			$text = str_replace('\]\]\>', ']]&gt;', $text);
 			$text = preg_replace('@<script[^>]*?>.*?</script>@si', '', $text);
-			$text = strip_tags($text, '<a>');
+			$cphtml = array(
+				'&lt;a&gt;',
+				'&lt;br&gt;',
+				'&lt;em&gt;',
+				'&lt;i&gt;',
+				'&lt;ul&gt;',
+				'&lt;ol&gt;',
+				'&lt;li&gt;',
+				'&lt;p&gt;',
+				'&lt;img&gt;',
+				'&lt;script&gt;',
+				'&lt;style&gt;',								
+				'&lt;video&gt;',
+				'&lt;audio&gt;'
+			);
+			$allowed_HTML = "";
+			foreach ($cphtml as $index => $name) {
+				if (in_array((string)($index),$this->instance['excerpt_allowed_elements'],true))
+					$allowed_HTML .= $cphtml[$index];
+			}			
+			$text = strip_tags($text, htmlspecialchars_decode($allowed_HTML));
 			$excerpt_length = $new_excerpt_length;		
 
 			if( !empty($this->instance["excerpt_more_text"]) ) {
@@ -383,13 +513,15 @@ class CategoryPosts extends WP_Widget {
 		$this->instance = $instance;
 
 		// If not title, use the name of the category.
-		if( !$instance["title"] ) {
+		if(isset($instance["title"]) && !$instance["title"]) {
+			if(!isset($instance["cat"]))
+				breake;
 			$category_info = get_category($instance["cat"]);
 			$instance["title"] = $category_info->name;
 		}
 
 		$valid_sort_orders = array('date', 'title', 'comment_count', 'rand');
-		if ( in_array($instance['sort_by'], $valid_sort_orders) ) {
+		if ( isset($instance['sort_by']) && in_array($instance['sort_by'],$valid_sort_orders) ) {
 			$sort_by = $instance['sort_by'];
 			$sort_order = (bool) isset( $instance['asc_sort_order'] ) ? 'ASC' : 'DESC';
 		} else {
@@ -404,8 +536,8 @@ class CategoryPosts extends WP_Widget {
 
 		// Get array of post info.
 		$args = array(
-			'showposts' => $instance["num"],
-			'cat' => $instance["cat"],
+			'showposts' => isset($instance["num"])?$instance["num"]:0,
+			'cat' => isset($instance["cat"])?$instance["cat"]:0,
 			'post__not_in' => array( $exclude_current_post ),
 			'orderby' => $sort_by,
 			'order' => $sort_order
@@ -428,9 +560,9 @@ class CategoryPosts extends WP_Widget {
 			/**
 			 * Excerpt length filter
 			 */
-			$new_excerpt_length = create_function('$length', "return " . $instance["excerpt_length"] . ";");
-			if ( $instance["excerpt_length"] > 0 ) {
-				add_filter('excerpt_length', $new_excerpt_length);
+ 			if ( isset($instance["excerpt_length"]) && $instance["excerpt_length"] > 0 ) {
+				$new_excerpt_length = create_function('$length', "return " . $instance["excerpt_length"] . ";");
+ 				add_filter('excerpt_length', $new_excerpt_length);
 			}
 			
 			if( isset($instance["excerpt_more_text"]) && ltrim($instance["excerpt_more_text"]) != '' )
@@ -454,7 +586,8 @@ class CategoryPosts extends WP_Widget {
 				if( isset ( $instance["title_link"] ) ) {
 					echo '<a href="' . get_category_link($instance["cat"]) . '">' . apply_filters( 'widget_title', $instance["title"] ) . '</a>';
 				} else {
-					echo apply_filters( 'widget_title', $instance["title"] );
+					if(isset($instance["title"]))
+						echo apply_filters( 'widget_title', $instance["title"] );
 				}
 				echo $after_title;
 			}
@@ -535,7 +668,8 @@ class CategoryPosts extends WP_Widget {
 
 			echo $after_widget;
 
-			remove_filter('excerpt_length', $new_excerpt_length);
+			if ( isset($instance["excerpt_length"]) && $instance["excerpt_length"] > 0 )
+				remove_filter('excerpt_length', $new_excerpt_length);
 			remove_filter('excerpt_more', array($this,'excerpt_more_filter'));
 			add_filter('get_the_excerpt', 'wp_trim_excerpt');
 			remove_filter('the_excerpt', array($this,'allow_html_excerpt'));
@@ -554,7 +688,7 @@ class CategoryPosts extends WP_Widget {
 	 * @return array
 	 */
 	function update($new_instance, $old_instance) {
-				
+
 		return $new_instance;
 	}
 
@@ -579,6 +713,7 @@ class CategoryPosts extends WP_Widget {
 			'excerpt'              => '',
 			'excerpt_length'       => 55,
 			'excerpt_allow_html'   => '',
+			'excerpt_allowed_elements' => array('0'),
 			'excerpt_more_text'    => '',
 			'comment_num'          => '',
 			'author'               => '',
@@ -609,6 +744,7 @@ class CategoryPosts extends WP_Widget {
 		$excerpt              = $instance['excerpt'];
 		$excerpt_length       = $instance['excerpt_length'];
 		$excerpt_allow_html   = $instance['excerpt_allow_html'];
+		$excerpt_allowed_elements = $instance['excerpt_allowed_elements'];
 		$excerpt_more_text    = $instance['excerpt_more_text'];
 		$comment_num          = $instance['comment_num'];
 		$author               = $instance['author'];
@@ -627,7 +763,7 @@ class CategoryPosts extends WP_Widget {
 
 		?>
 		<div class="category-widget-cont">
-            <p><a target="_blank" href="http://tiptoppress.com/terms-tags-and-categories-posts-widget/">Get the Pro Version</a></p>
+            <p><a target="_blank" href="http://tiptoppress.com/term-and-category-based-posts-widget/">Get the Pro Version</a></p>
             <p><a target="_blank" href="http://tiptoppress.com/category-posts-widget/documentation/">Documentation</a></p>
 			<h4><?php _e('Title','categoryposts')?></h4>
 			<div>
@@ -727,7 +863,7 @@ class CategoryPosts extends WP_Widget {
 					<p>
 						<label for="<?php echo $this->get_field_id("use_css_cropping"); ?>">
 							<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("use_css_cropping"); ?>" name="<?php echo $this->get_field_name("use_css_cropping"); ?>"<?php checked( (bool) $instance["use_css_cropping"], true ); ?> />
-							<?php _e( 'Crop bigger thumbnails around the center ','categoryposts' ); ?>
+							<?php _e( 'Crop to setted size','categoryposts' ); ?>
 						</label>
 					</p>					
 					<p>
@@ -739,6 +875,7 @@ class CategoryPosts extends WP_Widget {
 							<option value="dark" <?php selected($thumb_hover, 'dark')?>><?php _e( 'Darker', 'categorypostspro' ); ?></option>
 							<option value="white" <?php selected($thumb_hover, 'white')?>><?php _e( 'Brighter', 'categorypostspro' ); ?></option>
 							<option value="scale" <?php selected($thumb_hover, 'scale')?>><?php _e( 'Zoom in', 'categorypostspro' ); ?></option>
+							<option value="blur" <?php selected($thumb_hover, 'blur')?>><?php _e( 'Blur', 'categorypostspro' ); ?></option>
 						</select>
 					</p>
 				</div>
@@ -766,7 +903,41 @@ class CategoryPosts extends WP_Widget {
 				<p>
 					<label for="<?php echo $this->get_field_id("excerpt_allow_html"); ?>">
 						<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("excerpt_allow_html"); ?>" name="<?php echo $this->get_field_name("excerpt_allow_html"); ?>"<?php checked( (bool) $instance["excerpt_allow_html"], true ); ?> />
-						<?php _e( 'Allow links in excerpt','categoryposts' ); ?>
+						<?php _e( 'Allow HTML in excerpt:','categoryposts' ); ?>
+					
+
+						<select class="cphtml cpwpany" multiple name="<?php echo $this->get_field_name('excerpt_allowed_elements'); ?>[]" id="<?php echo $this->get_field_id('excerpt_allowed_elements'); ?>">
+						<?php									
+						if (isset($instance['excerpt_allowed_elements']))
+							$selected = $instance['excerpt_allowed_elements'];
+
+						if (in_array('0',$selected,true))
+							echo '<option value="0" selected="selected">&lt;a&gt;</option>';
+						else
+							echo '<option value="0">&lt;a&gt;</option>';		
+							
+						$cphtml = array(
+								'&lt;br&gt;',
+								'&lt;em&gt;',
+								'&lt;i&gt;',
+								'&lt;ul&gt;',
+								'&lt;ol&gt;',
+								'&lt;li&gt;',
+								'&lt;p&gt;',
+								'&lt;img&gt;',
+								'&lt;script&gt;',
+								'&lt;style&gt;',								
+								'&lt;video&gt;',
+								'&lt;audio&gt;'
+						);
+						foreach ($cphtml as $index => $name) {
+							$sel = '';
+							if (in_array((string)($index+1),$selected,true))
+								$sel = 'selected="selected"';
+							echo '<option value="'.($index+1).'"'.$sel.'>'.$name.'</option>';
+						}
+						?>
+						</select>
 					</label>
 				</p>
 				<p>

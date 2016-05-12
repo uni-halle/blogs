@@ -4,7 +4,7 @@ Plugin Name: Widget Wrangler
 Plugin URI: http://www.wranglerplugins.com
 Description: Widget Wrangler gives the WordPress admin a clean interface for managing widgets on a page by page basis. It also provides widgets as a post type, the ability to clone existing WordPress widgets, and granular control over widget templates.
 Author: Jonathan Daggerhart
-Version: 2.2.3
+Version: 2.2.4
 Author URI: http://daggerhart.com
 Text Domain: widgetwrangler
 Domain Path: /languages
@@ -24,10 +24,8 @@ License: GPL2
 */
 
 // versioning for now
-define('WW_VERSION', 2);
-define('WW_SCRIPT_VERSION', '2.2.2');
-define('WW_PRO_NAME', 'Widget Wrangler Pro' );
-define('WW_PRO_URL', 'http://wranglerplugins.com' ); 
+define('WW_VERSION', '2.2.4');
+define('WW_SCRIPT_VERSION', '2.2.4');
 
 define('WW_PLUGIN_FILE', __FILE__);
 define('WW_PLUGIN_DIR', dirname(WW_PLUGIN_FILE));
@@ -67,9 +65,6 @@ class Widget_Wrangler {
   // all corrals
   var $corrals = array();
   
-  // licensing
-  var $license_status = FALSE;
-  
   // altered sidebars
   var $altered_sidebars = array();
   
@@ -86,9 +81,15 @@ class Widget_Wrangler {
         ),
         'taxonomies' => array(),
         'override_elements' => array(
-          'div', 'h2', 'h3', 'aside', 'strong', 'span', 
+          'div', 'h2', 'h3', 'aside', 'strong', 'span',
         ),
         'legacy_template_suggestions' => 0,
+
+        // begin the weaning of features that will be removed
+        // dead end features:  override html elements, shortcode tinymce
+        'previously_pro' => 0,
+        'override_elements_enabled' => 0,
+        'shortcode_tinymce' => 0,
       );
 
   /*
@@ -112,7 +113,6 @@ class Widget_Wrangler {
     // initialize core
     $this->_get_settings();
     $this->_get_corrals();
-    $this->_check_license();
     
     // early wp hooks
     register_activation_hook(WW_PLUGIN_FILE, array( $this, 'register_activation_hook' ));
@@ -285,7 +285,10 @@ class Widget_Wrangler {
     if (empty($settings['override_elements'])){
       $settings['override_elements'] = $this->default_settings['override_elements'];
     }
-    
+
+    // debug
+    //$settings['previously_pro'] = 1;
+
     $this->settings = $settings;
     return $this->settings;
   }
@@ -396,12 +399,15 @@ class Widget_Wrangler {
   /*
    * Simple check
    *
-   * @return (bool) - Whether or not the license is valid
+   * @return (bool) - Whether or not WW was previously_pro
    */
-  function _check_license() {    
-    $status = get_option('ww_pro_license_status');
-    $this->license_status = (isset($status->license) && $status->license === "valid") ? TRUE : FALSE;
-    return $this->license_status;
+  function _check_previously_pro() {
+    $status = get_option('ww_pro_license_status', false );
+    if ( ! $status ){
+      return false;
+    }
+
+    return (isset($status->license) && $status->license === "valid") ? TRUE : FALSE;
   }
   
   /*
@@ -584,11 +590,16 @@ class Widget_Wrangler {
   function register_activation_hook(){
     // upgrade, if an old version exists
     if ($old_version = get_option('ww_version', FALSE)){
-      if ((float) $old_version < WW_VERSION){
+      if ( version_compare( $old_version, WW_VERSION, '<') ){
         
         // upgrade from 1x to 2x
-        if ((float) $old_version < 2){
+        if ( version_compare( $old_version, 2, '<' ) ){
           $this->_upgrade_from_1x_to_2x();
+        }
+
+        // abandonment of pro
+        if ( get_option('ww_pro_license_status', false ) ){
+          $this->_upgrade_from_freemium_to_free();
         }
         
         $this->_upgrade_core();
@@ -660,6 +671,28 @@ class Widget_Wrangler {
     } else {
       update_option('ww_previous_main_version', 1);
     }    
+  }
+
+  /*
+   * Migration after abandonment of "Pro" version
+   */
+  function _upgrade_from_freemium_to_free(){
+
+    // only modifications are for versions that used to be PRO
+    if ( $this->_check_previously_pro() ){
+      $settings = get_option( 'ww_settings', array() );
+
+      // this site used to be a paid-for WW Pro version
+      $settings['previously_pro'] = 1;
+
+      // enable the override html legacy feature
+      $settings['override_elements_enabled'] = 1;
+
+      update_option('ww_settings', $settings );
+      $this->_get_settings();
+    }
+
+    delete_option('ww_pro_license_status');
   }
   
   /*

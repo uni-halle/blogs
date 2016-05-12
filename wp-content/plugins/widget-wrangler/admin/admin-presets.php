@@ -328,35 +328,29 @@ class WW_Presets_Admin  {
                 }
               ?>
             </ul>
-            
-            <?php
-              if ($this->ww->license_status)
-              { ?>
-                <div id="presets-add-new">
-                  <h2 class="ww-setting-title">Create New</h2>
-                  <div class="ww-setting-content">
-                    <p>
-                      <select name="create[variety]">
-                      <?php
-                        foreach($this->ww->presets->preset_varieties as $key => $pstype)
-                        {
-                          if ($key != 'core')
-                          { ?>
-                            <option value="<?php print $key; ?>"><?php print $pstype['title']; ?></option>
-                            <?php
-                          }
-                        }
-                      ?>
-                      </select>
-                    </p>
-                    <p>
-                      <input type="submit" name="action[create]" class="button button-primary button-large" value="<?php _e("Create New Preset", 'widgetwrangler'); ?>" />
-                    </p>
-                  </div>
-                </div>
-                <?php
-              }
-            ?>
+
+            <div id="presets-add-new">
+              <h2 class="ww-setting-title">Create New</h2>
+              <div class="ww-setting-content">
+                <p>
+                  <select name="create[variety]">
+                  <?php
+                    foreach($this->ww->presets->preset_varieties as $key => $pstype)
+                    {
+                      if ($key != 'core')
+                      { ?>
+                        <option value="<?php print $key; ?>"><?php print $pstype['title']; ?></option>
+                        <?php
+                      }
+                    }
+                  ?>
+                  </select>
+                </p>
+                <p>
+                  <input type="submit" name="action[create]" class="button button-primary button-large" value="<?php _e("Create New Preset", 'widgetwrangler'); ?>" />
+                </p>
+              </div>
+            </div>
           </div>
         
           <div class="ww-admin-tab postbox">		

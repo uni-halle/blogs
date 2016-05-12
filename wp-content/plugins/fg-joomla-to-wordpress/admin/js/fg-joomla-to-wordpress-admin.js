@@ -60,7 +60,9 @@
 		that.timeout = setTimeout(that.update_display, 1000);
 		
 		// Actions
-		that.display_logs();
+		if ( $("#logger_autorefresh").is(":checked") ) {
+		    that.display_logs();
+		}
 		that.update_progressbar();
 		that.update_wordpress_info();
 		
@@ -370,6 +372,9 @@
 	    
 	    // Modify links button
 	    $('#modify_links').click(that.modify_links);
+	    
+	    // Display the logs
+	    $('#logger_autorefresh').click(that.display_logs);
 	});
 
 	/**

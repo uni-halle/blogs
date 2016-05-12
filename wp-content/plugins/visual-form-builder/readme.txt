@@ -3,8 +3,8 @@ Contributors: mmuro
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=G87A9UN9CLPH4&lc=US&item_name=Visual%20Form%20Builder&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 Tags: form, forms, contact form, contact forms, form, forms, form to email, email form, email, input, validation, jquery, shortcode, form builder, contact form builder, form manager, form creator
 Requires at least: 4.3
-Tested up to: 4.3
-Stable tag: 2.8.7
+Tested up to: 4.5.1
+Stable tag: 2.8.8
 License: GPLv2 or later
 
 Build beautiful, fully functional contact forms in only a few minutes without writing PHP, CSS, or HTML.
@@ -236,6 +236,11 @@ function my_scripts_method() {
 4. Rendered form on a page
 
 == Changelog ==
+
+**Version 2.8.8 - Apr 28, 2016**
+
+* Fix bug with Export
+* Update French translations
 
 **Version 2.8.7 - Mar 30, 2016**
 
@@ -677,6 +682,9 @@ function my_scripts_method() {
 * Plugin launch!
 
 == Upgrade Notice ==
+
+= 2.8.8 =
+Fix critical bug with Export
 
 = 2.8.7 =
 This version requires at least WordPress 4.3 or higher due to previous use of deprecated functions

@@ -4,9 +4,7 @@
     _SHR_SETTINGS = <?php echo json_encode($base_settings); ?>;
   //]]>
 </script>
-<script type='text/javascript'
+<script type='text/javascript' data-cfasync='false'
         src='<?php echo ShareaholicUtilities::asset_url('assets/pub/shareaholic.js') ?>'
-        data-shr-siteid='<?php echo $api_key; ?>'
-        data-cfasync='false'
-        async='async' <?php echo $overrides ?>>
+        data-shr-siteid='<?php echo $api_key; ?>' async='async' <?php echo $overrides ?>>
 </script>

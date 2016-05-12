@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: https://gtranslate.io/?xyz=998
 Description: Makes your website <strong>multilingual</strong> and available to the world using Google Translate. For support visit <a href="https://gtranslate.io/forum/">GTranslate Forum</a>.
-Version: 2.0.11
+Version: 2.0.13
 Author: Edvard Ananyan
 Author URI: https://gtranslate.io
 
@@ -36,9 +36,11 @@ add_shortcode('gtranslate', array('GTranslate', 'get_widget_code'));
 
 if(is_admin()) {
     global $pagenow;
-    if('plugins.php' === $pagenow) {
+    if('plugins.php' === $pagenow)
         add_action('in_plugin_update_message-' . basename(dirname( __FILE__ )) . '/' . basename(__FILE__), array('GTranslate', 'update_message'), 20, 2);
-    }
+
+    if(!defined('DOING_AJAX') or !DOING_AJAX)
+        new GTranslate_Notices();
 }
 
 class GTranslate extends WP_Widget {
@@ -91,6 +93,11 @@ class GTranslate extends WP_Widget {
             echo '<b>Notice:</b> Please configure GTranslate from WP-Admin -> Settings -> GTranslate to see it in action.';
         else
             echo $data['widget_code'];
+
+        if(isset($_SERVER['HTTP_X_GT_LANG'])) {
+	        echo '<script>jQuery(document).ready(function() {jQuery(\'.switcher div.selected a\').html(jQuery(".switcher div.option a[onclick*=\'|'.$_SERVER['HTTP_X_GT_LANG'].'\']").html())});</script>';
+	    }
+
         echo $args['after_widget'];
     }
 
@@ -104,6 +111,11 @@ class GTranslate extends WP_Widget {
             echo '<b>Notice:</b> Please configure GTranslate from WP-Admin -> Settings -> GTranslate to see it in action.';
         else
             echo $data['widget_code'];
+
+        if(isset($_SERVER['HTTP_X_GT_LANG'])) {
+	        echo '<script>jQuery(document).ready(function() {jQuery(\'.switcher div.selected a\').html(jQuery(".switcher div.option a[onclick*=\'|'.$_SERVER['HTTP_X_GT_LANG'].'\']").html())});</script>';
+	    }
+
         echo $args['after_widget'];
     }
 
@@ -113,8 +125,12 @@ class GTranslate extends WP_Widget {
 
         if(empty($data['widget_code']))
             return '<b>Notice:</b> Please configure GTranslate from WP-Admin -> Settings -> GTranslate to see it in action.';
-        else
-            return $data['widget_code'];
+        else {
+	        if(isset($_SERVER['HTTP_X_GT_LANG'])) {
+	            return $data['widget_code'] . '<script>jQuery(document).ready(function() {jQuery(\'.switcher div.selected a\').html(jQuery(".switcher div.option a[onclick*=\'|'.$_SERVER['HTTP_X_GT_LANG'].'\']").html())});</script>';
+	        } else
+            	return $data['widget_code'];
+        }
     }
 
     public static function register() {
@@ -410,8 +426,6 @@ function ShowWidgetPreview(widget_preview) {
 
     jQuery('head').append( jQuery('<link rel="stylesheet" type="text/css" />').attr('href', '$wp_plugin_url/gtranslate-style'+jQuery('#flag_size').val()+'.css') );
     jQuery('#widget_preview').html(widget_preview);
-    if(jQuery('#widget_look').val() == 'dropdown_with_flags')
-        jQuery('#widget_preview').prepend('<p style="color:#f44;margin-top:5px;">This look is new, if you are having issues, please post on <a href="https://gtranslate.io/forum/" target="_blank">GTranslate Forum</a></p>');
 }
 
 jQuery('#pro_version').attr('checked', '$pro_version'.length > 0);
@@ -998,4 +1012,282 @@ foreach($fincl_langs as $lang)
         $data['incl_langs'] = isset($data['incl_langs']) ? $data['incl_langs'] : array();
         $data['fincl_langs'] = isset($data['fincl_langs']) ? $data['fincl_langs'] : array();
     }
+}
+
+class GTranslate_Notices {
+    protected $prefix = 'gtranslate';
+	public $notice_spam = 0;
+	public $notice_spam_max = 1;
+
+	// Basic actions to run
+	public function __construct() {
+		// Runs the admin notice ignore function incase a dismiss button has been clicked
+		add_action('admin_init', array($this, 'admin_notice_ignore'));
+		// Runs the admin notice temp ignore function incase a temp dismiss link has been clicked
+		add_action('admin_init', array($this, 'admin_notice_temp_ignore'));
+
+		// Adding notices
+		add_action('admin_notices', array($this, 'gt_admin_notices'));
+	}
+
+	// Checks to ensure notices aren't disabled and the user has the correct permissions.
+	public function gt_admin_notice() {
+
+		$gt_settings = get_option($this->prefix . '_admin_notice');
+		if (!isset($gt_settings['disable_admin_notices']) || (isset($gt_settings['disable_admin_notices']) && $gt_settings['disable_admin_notices'] == 0)) {
+			if (current_user_can('manage_options')) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	// Primary notice function that can be called from an outside function sending necessary variables
+	public function admin_notice($admin_notices) {
+
+		// Check options
+		if (!$this->gt_admin_notice()) {
+			return false;
+		}
+
+		foreach ($admin_notices as $slug => $admin_notice) {
+			// Call for spam protection
+
+			if ($this->anti_notice_spam()) {
+				return false;
+			}
+
+			// Check for proper page to display on
+			if (isset( $admin_notices[$slug]['pages']) and is_array( $admin_notices[$slug]['pages'])) {
+
+				if (!$this->admin_notice_pages($admin_notices[$slug]['pages'])) {
+					return false;
+				}
+
+			}
+
+			// Check for required fields
+			if (!$this->required_fields($admin_notices[$slug])) {
+
+				// Get the current date then set start date to either passed value or current date value and add interval
+				$current_date = current_time("n/j/Y");
+				$start = (isset($admin_notices[$slug]['start']) ? $admin_notices[$slug]['start'] : $current_date);
+				$start = date("n/j/Y", strtotime($start));
+				$end = ( isset( $admin_notices[ $slug ]['end'] ) ? $admin_notices[ $slug ]['end'] : $start );
+ 	            $end = date( "n/j/Y", strtotime( $end ) );
+				$date_array = explode('/', $start);
+				$interval = (isset($admin_notices[$slug]['int']) ? $admin_notices[$slug]['int'] : 0);
+				$date_array[1] += $interval;
+				$start = date("n/j/Y", mktime(0, 0, 0, $date_array[0], $date_array[1], $date_array[2]));
+				// This is the main notices storage option
+				$admin_notices_option = get_option($this->prefix . '_admin_notice', array());
+				// Check if the message is already stored and if so just grab the key otherwise store the message and its associated date information
+				if (!array_key_exists( $slug, $admin_notices_option)) {
+					$admin_notices_option[$slug]['start'] = $start;
+					$admin_notices_option[$slug]['int'] = $interval;
+					update_option($this->prefix . '_admin_notice', $admin_notices_option);
+				}
+
+				// Sanity check to ensure we have accurate information
+				// New date information will not overwrite old date information
+				$admin_display_check = (isset($admin_notices_option[$slug]['dismissed']) ? $admin_notices_option[$slug]['dismissed'] : 0);
+				$admin_display_start = (isset($admin_notices_option[$slug]['start']) ? $admin_notices_option[$slug]['start'] : $start);
+				$admin_display_interval = (isset($admin_notices_option[$slug]['int']) ? $admin_notices_option[$slug]['int'] : $interval);
+				$admin_display_msg = (isset($admin_notices[$slug]['msg']) ? $admin_notices[$slug]['msg'] : '');
+				$admin_display_title = (isset($admin_notices[$slug]['title']) ? $admin_notices[$slug]['title'] : '');
+				$admin_display_link = (isset($admin_notices[$slug]['link']) ? $admin_notices[$slug]['link'] : '');
+				$output_css = false;
+
+				// Ensure the notice hasn't been hidden and that the current date is after the start date
+                if ($admin_display_check == 0 and strtotime($admin_display_start) <= strtotime($current_date)) {
+					// Get remaining query string
+					$query_str = esc_url(add_query_arg($this->prefix . '_admin_notice_ignore', $slug));
+
+					// Admin notice display output
+                    echo '<div class="update-nag gt-admin-notice">';
+                    echo '<div class="gt-notice-logo"></div>';
+                    echo ' <p class="gt-notice-title">';
+                    echo $admin_display_title;
+                    echo ' </p>';
+                    echo ' <p class="gt-notice-body">';
+                    echo $admin_display_msg;
+                    echo ' </p>';
+                    echo '<ul class="gt-notice-body gt-red">
+                          ' . $admin_display_link . '
+                        </ul>';
+                    echo '<a href="' . $query_str . '" class="dashicons dashicons-dismiss"></a>';
+                    echo '</div>';
+
+					$this->notice_spam += 1;
+					$output_css = true;
+				}
+
+				if ($output_css) {
+					wp_enqueue_style($this->prefix . '-admin-notices', plugins_url(plugin_basename(dirname(__FILE__))) . '/gtranslate-notices.css', array());
+				}
+			}
+
+		}
+	}
+
+	// Spam protection check
+	public function anti_notice_spam() {
+		if ($this->notice_spam >= $this->notice_spam_max) {
+			return true;
+		}
+		return false;
+	}
+
+	// Ignore function that gets ran at admin init to ensure any messages that were dismissed get marked
+	public function admin_notice_ignore() {
+		// If user clicks to ignore the notice, update the option to not show it again
+		if (isset($_GET[$this->prefix . '_admin_notice_ignore'])) {
+			$admin_notices_option = get_option($this->prefix . '_admin_notice', array());
+			$admin_notices_option[$_GET[$this->prefix . '_admin_notice_ignore']]['dismissed'] = 1;
+			update_option($this->prefix . '_admin_notice', $admin_notices_option);
+			$query_str = remove_query_arg($this->prefix . '_admin_notice_ignore');
+			wp_redirect($query_str);
+			exit;
+		}
+	}
+
+	// Temp Ignore function that gets ran at admin init to ensure any messages that were temp dismissed get their start date changed
+	public function admin_notice_temp_ignore() {
+		// If user clicks to temp ignore the notice, update the option to change the start date - default interval of 14 days
+		if (isset($_GET[$this->prefix . '_admin_notice_temp_ignore'])) {
+			$admin_notices_option = get_option($this->prefix . '_admin_notice', array());
+			$current_date = current_time("n/j/Y");
+			$date_array   = explode('/', $current_date);
+			$interval     = (isset($_GET['gt_int']) ? $_GET['gt_int'] : 14);
+			$date_array[1] += $interval;
+			$new_start = date("n/j/Y", mktime(0, 0, 0, $date_array[0], $date_array[1], $date_array[2]));
+
+			$admin_notices_option[$_GET[$this->prefix . '_admin_notice_temp_ignore']]['start'] = $new_start;
+			$admin_notices_option[$_GET[$this->prefix . '_admin_notice_temp_ignore']]['dismissed'] = 0;
+			update_option($this->prefix . '_admin_notice', $admin_notices_option);
+			$query_str = remove_query_arg(array($this->prefix . '_admin_notice_temp_ignore', 'gt_int'));
+			wp_redirect( $query_str );
+			exit;
+		}
+	}
+
+	public function admin_notice_pages($pages) {
+		foreach ($pages as $key => $page) {
+			if (is_array($page)) {
+				if (isset($_GET['page']) and $_GET['page'] == $page[0] and isset($_GET['tab']) and $_GET['tab'] == $page[1]) {
+					return true;
+				}
+			} else {
+				if ($page == 'all') {
+					return true;
+				}
+				if (get_current_screen()->id === $page) {
+					return true;
+				}
+
+				if (isset($_GET['page']) and $_GET['page'] == $page) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	// Required fields check
+	public function required_fields( $fields ) {
+		if (!isset( $fields['msg']) or (isset($fields['msg']) and empty($fields['msg']))) {
+			return true;
+		}
+		if (!isset( $fields['title']) or (isset($fields['title']) and empty($fields['title']))) {
+			return true;
+		}
+		return false;
+	}
+
+	// Special parameters function that is to be used in any extension of this class
+	public function special_parameters($admin_notices) {
+		// Intentionally left blank
+	}
+
+    public function gt_admin_notices() {
+	  	$two_week_review_ignore = esc_url(add_query_arg(array($this->prefix . '_admin_notice_ignore' => 'two_week_review')));
+	    $two_week_review_temp = esc_url(add_query_arg(array($this->prefix . '_admin_notice_temp_ignore' => 'two_week_review', 'gt_int' => 14)));
+
+	    $notices['two_week_review'] = array(
+	        'title' => 'Leave a review?',
+	        'msg' => 'We hope you have enjoyed using GTranslate! Would you consider leaving us a review on WordPress.org?',
+	        'link' => '<li><span class="dashicons dashicons-external"></span><a href="https://wordpress.org/support/view/plugin-reviews/gtranslate?filter=5" target="_blank">Sure! I would love to!</a></li>' .
+	                  '<li><span class="dashicons dashicons-smiley"></span><a href="' . $two_week_review_ignore . '">I have already left a review</a></li>' .
+	                  '<li><span class="dashicons dashicons-calendar-alt"></span><a href="' . $two_week_review_temp . '">Maybe later</a></li>' .
+	                  '<li><span class="dashicons dashicons-dismiss"></span><a href="' . $two_week_review_ignore . '">Never show again</a></li>',
+	        'later_link' => $two_week_review_temp,
+	        'int' => 3
+	    );
+
+	    $data = get_option('GTranslate');
+        GTranslate::load_defaults($data);
+
+        $upgrade_tips_ignore = esc_url(add_query_arg(array($this->prefix . '_admin_notice_ignore' => 'upgrade_tips')));
+	    $upgrade_tips_temp = esc_url(add_query_arg(array($this->prefix . '_admin_notice_temp_ignore' => 'upgrade_tips', 'gt_int' => 5)));
+
+	    if($data['pro_version'] != '1' and $data['enterprise_version'] != '1') {
+		    $notices['upgrade_tips'][] = array(
+		    	'title' => 'Did you know?',
+		        'msg' => 'You can <b>increase</b> your international <b>traffic</b> by upgrading your GTranslate.',
+		        'link' => '<li><span class="dashicons dashicons-external"></span><a href="https://gtranslate.io/?xyz=998#pricing" target="_blank">Learn more</a></li>' .
+		                  '<li><span class="dashicons dashicons-calendar-alt"></span><a href="' . $upgrade_tips_temp . '">Maybe later</a></li>' .
+		                  '<li><span class="dashicons dashicons-dismiss"></span><a href="' . $upgrade_tips_ignore . '">Never show again</a></li>',
+		        'later_link' => $upgrade_tips_temp,
+		        'int' => 1
+		    );
+
+		    $notices['upgrade_tips'][] = array(
+		    	'title' => 'Did you know?',
+		        'msg' => 'You can have your <b>translated pages indexed</b> in search engines by upgrading your GTranslate.',
+		        'link' => '<li><span class="dashicons dashicons-external"></span><a href="https://gtranslate.io/?xyz=998#pricing" target="_blank">Learn more</a></li>' .
+		                  '<li><span class="dashicons dashicons-calendar-alt"></span><a href="' . $upgrade_tips_temp . '">Maybe later</a></li>' .
+		                  '<li><span class="dashicons dashicons-dismiss"></span><a href="' . $upgrade_tips_ignore . '">Never show again</a></li>',
+		        'later_link' => $upgrade_tips_temp,
+		        'int' => 1
+		    );
+
+		    $notices['upgrade_tips'][] = array(
+		    	'title' => 'Did you know?',
+		        'msg' => 'You can <b>increase</b> your <b>AdSense revenue</b> by upgrading your GTranslate.',
+		        'link' => '<li><span class="dashicons dashicons-external"></span><a href="https://gtranslate.io/?xyz=998#pricing" target="_blank">Learn more</a></li>' .
+		                  '<li><span class="dashicons dashicons-calendar-alt"></span><a href="' . $upgrade_tips_temp . '">Maybe later</a></li>' .
+		                  '<li><span class="dashicons dashicons-dismiss"></span><a href="' . $upgrade_tips_ignore . '">Never show again</a></li>',
+		        'later_link' => $upgrade_tips_temp,
+		        'int' => 1
+		    );
+
+		    $notices['upgrade_tips'][] = array(
+		    	'title' => 'Did you know?',
+		        'msg' => 'You can <b>edit translations</b> by upgrading your GTranslate.',
+		        'link' => '<li><span class="dashicons dashicons-external"></span><a href="https://gtranslate.io/?xyz=998#pricing" target="_blank">Learn more</a></li>' .
+		                  '<li><span class="dashicons dashicons-calendar-alt"></span><a href="' . $upgrade_tips_temp . '">Maybe later</a></li>' .
+		                  '<li><span class="dashicons dashicons-dismiss"></span><a href="' . $upgrade_tips_ignore . '">Never show again</a></li>',
+		        'later_link' => $upgrade_tips_temp,
+		        'int' => 1
+		    );
+
+		    $notices['upgrade_tips'][] = array(
+		    	'title' => 'Did you know?',
+		        'msg' => 'You can use our <b>Live Chat</b> or <b>Support Forum</b> if you have any questions.',
+		        'link' => '<li><span class="dashicons dashicons-external"></span><a href="https://gtranslate.io/?xyz=998#contact" target="_blank">Live Chat</a></li>' .
+		        		  '<li><span class="dashicons dashicons-external"></span><a href="https://gtranslate.io/forum/" target="_blank">Support Forum</a></li>' .
+		                  '<li><span class="dashicons dashicons-calendar-alt"></span><a href="' . $upgrade_tips_temp . '">Maybe later</a></li>' .
+		                  '<li><span class="dashicons dashicons-dismiss"></span><a href="' . $upgrade_tips_ignore . '">Never show again</a></li>',
+		        'later_link' => $upgrade_tips_temp,
+		        'int' => 1
+		    );
+
+		    shuffle($notices['upgrade_tips']);
+		    $notices['upgrade_tips'] = $notices['upgrade_tips'][0];
+        }
+
+	    $this->admin_notice($notices);
+	}
+
 }

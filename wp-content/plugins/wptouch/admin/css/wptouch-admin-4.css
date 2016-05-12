@@ -217,6 +217,16 @@ a#preview-theme {
 	display: none;
 }
 
+#wptouch-settings-area .wptouch-setting.setting-no-setting-warning {
+	text-align: center;
+}
+	#wptouch-settings-area .wptouch-setting.setting-no-setting-warning i {
+		color: #af4454;
+		display: block;
+		font-size: 72px;
+		margin-bottom: 10px;
+	}
+
 /* @end */
 
 /* @group Sections */
@@ -586,10 +596,6 @@ i.wptouch-tooltip:after {
 }
 
 }
-
-
-
-
 
 
 /* :not(:required) hides this rule from IE9 and below */

@@ -56,6 +56,7 @@ class AAM_Backend_View {
         AAM_Backend_Capability::register();
         AAM_Backend_Post::register();
         AAM_Backend_Extension::register();
+        AAM_Backend_Contact::register();
         //feature registration hook
         do_action('aam-feature-registration');
     }

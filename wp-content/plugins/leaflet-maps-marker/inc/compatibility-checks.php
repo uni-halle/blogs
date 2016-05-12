@@ -18,7 +18,7 @@ if (( (($lmm_options['standard_basemap'] == 'bingaerial') || ($lmm_options['stan
 }
 //info: plugin JavaScript to Footer
 if (is_plugin_active('footer-javascript/footer-javascript.php') ) {
-	echo '<p><div class="error" style="padding:10px;"><strong>' . __('Warning: you are using the plugin Javascript to Footer which is incompatible with Leaflet Maps Marker and causing maps to break. Please deactivate this plugin in order to be able to use Leaflet Maps Marker.','lmm') . '</strong></div></p>';
+	echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin %1$s which is causing maps created with %2$s to break! Please deactivate that plugin so that maps can be displayed properly.','lmm'), '"Javascript to Footer"', '"Leaflet Maps Marker"' ) . '</div></p>';
 }
 //info: plugin jQuery Colorbox
 if (is_plugin_active('jquery-colorbox/jquery-colorbox.php') ) {
@@ -80,11 +80,11 @@ if (is_plugin_active('w3-total-cache/w3-total-cache.php') ) {
 }
 //info: plugin Root Relative URLs
 if (is_plugin_active('root-relative-urls/sb_root_relative_urls.php') ) {
-	echo '<p><div class="error" style="padding:10px;"><strong>' . sprintf(__('Warning: the plugin %1$s is active and causing maps to break - please deactivate that plugin!','lmm'), '"Root Relative URLs"	') . '</strong></div></p>';
+	echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin %1$s which is causing maps created with %2$s to break! Please deactivate that plugin so that maps can be displayed properly.','lmm'), '"Root Relative URLs"', '"Leaflet Maps Marker"' ) . '</div></p>';
 }
 //info: plugin WP Deferred JavaScripts
 if (is_plugin_active('wp-deferred-javascripts/wp-deferred-javascripts.php') ) {
-	echo '<p><div class="error" style="padding:10px;"><strong>' . sprintf(__('Warning: the plugin %1$s is active and causing maps to break - please deactivate that plugin!','lmm'), '"WP Deferred JavaScripts"	') . '</strong></div></p>';
+	echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin %1$s which is causing maps created with %2$s to break! Please deactivate that plugin so that maps can be displayed properly.','lmm'), '"WP Deferred JavaScripts"', '"Leaflet Maps Marker"' ) . '</div></p>';
 }
 //info: Page Builder by SiteOrigin plugin incompatibility
 if (is_plugin_active('siteorigin-panels/siteorigin-panels.php') ) {

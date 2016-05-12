@@ -67,6 +67,7 @@ class Class_leaflet_options {
 		$this->sections['mapdefaults-section18']	= esc_attr__('Marker clustering settings','lmm');
 		$this->sections['mapdefaults-section19']	= esc_attr__('GPX tracks settings','lmm');
 		$this->sections['mapdefaults-section20']	= esc_attr__('Geolocate settings','lmm');
+		$this->sections['mapdefaults-section21']	= esc_attr__('Filter settings for multi-layer-maps','lmm');
 
 		$this->sections['basemaps-section1']		= esc_attr__('MapBox 1 settings','lmm');
 		$this->sections['basemaps-section2']		= esc_attr__('MapBox 2 settings','lmm');
@@ -96,9 +97,7 @@ class Class_leaflet_options {
 		$this->sections['google-section1']			= esc_attr__('Google Maps API','lmm');
 		$this->sections['google-section2']			= esc_attr__('Google language localization','lmm');
 		$this->sections['google-section3']			= esc_attr__('Google Maps base domain','lmm');
-		$this->sections['google-section4']			= esc_attr__('Google Places Autocomplete API','lmm');
-		$this->sections['google-section5']			= esc_attr__('Google Adsense settings','lmm');
-		$this->sections['google-section6']			= esc_attr__('Google Maps styling','lmm');
+		$this->sections['google-section4']			= esc_attr__('Google Maps styling','lmm');
 
 		$this->sections['bing-section1']			= esc_attr__('Bing Maps API Key','lmm');
 		$this->sections['bing-section2']			= esc_attr__('Bing Culture Parameter','lmm');
@@ -118,7 +117,7 @@ class Class_leaflet_options {
 		$this->sections['misc-section6']			= esc_attr__('Available columns for layer listing page','lmm');
 		$this->sections['misc-section7']			= esc_attr__('Sort order for layer listing page','lmm');
 		$this->sections['misc-section8']			= esc_attr__('QR code settings','lmm');
-		$this->sections['misc-section9']			= esc_attr__('MapsMarker API settings','lmm');
+		$this->sections['misc-section9']			= esc_attr__('Web API settings','lmm');
 		$this->sections['misc-section10']			= esc_attr__('Permission settings','lmm');
 		$this->sections['misc-section11']			= esc_attr__('XML sitemaps integration','lmm');
 
@@ -176,7 +175,7 @@ class Class_leaflet_options {
 
 		include(LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'admin-header.php');
 		if ( isset( $_GET['settings-updated'] ) )
-			echo '<div style="margin:15px 0 0 0;" class="updated"><p>' . __( 'Plugin options updated.','lmm' ) . '</p></div>';
+			echo '<div style="margin:15px 0 0 0;" class="updated"><p>' . __( 'Settings have been successfully updated!','lmm' ) . '</p></div>';
 		
 		echo '<h2 style="margin:0.83em 0 0 0;float:left;">'.__('Settings','lmm').'</h2><div class="wrap lmmsettings" style="clear:both;">';
 		echo '<form action="options.php" method="post">';
@@ -1534,6 +1533,19 @@ class Class_leaflet_options {
 			'std'     => '5',
 			'type'    => 'text'
 		);
+		$this->_settings['defaults_marker_popups_center_map'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section6',
+			'title'   => __('center map on popup','lmm') . $pro_button_link,
+			'desc'    => __('If set to true, the map centers on the popup center instead of the marker when a popup is opened','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'true',
+			'choices' => array(
+				'true' => __('true','lmm'),
+				'false' => __('false','lmm')
+			)
+		);
 		/*
 		* Default values for markers added directly
 		*/
@@ -2068,6 +2080,21 @@ class Class_leaflet_options {
 			'type'    => 'checkbox',
 			'std'     => 0
 		);
+		// defaults_layer - filter controlbox
+		$this->_settings['defaults_layer_mlm_filter_controlbox'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section8',
+			'title'   => __('Controlbox for multi-layer-map filter','lmm') . $pro_button_link,
+			'desc'    => '',
+			'type'    => 'radio-pro',
+			'std'     => '1',
+			'choices' => array(
+				'0' => __('hidden','lmm'),
+				'1' => __('collapsed','lmm'),
+				'2' => __('expanded','lmm')
+			)
+		);
 		/*
 		* List of markers settings
 		*/
@@ -2077,7 +2104,7 @@ class Class_leaflet_options {
 			'section' => 'mapdefaults-section9',
 			'std'     => '',
 			'title'   => '',
-			'desc'    => '<img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-list-markers.png" width="400" height="199" />',
+			'desc'    => '<img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-list-markers.png" width="601" height="360" />',
 			'type'    => 'helptext'
 		);
 		$this->_settings['defaults_layer_listmarkers'] = array(
@@ -2130,13 +2157,26 @@ class Class_leaflet_options {
 			'std'     => 1
 		);
 		$this->_settings['defaults_layer_listmarkers_show_distance'] = array(
-			'version' => 'p2.6',
+			'version' => 'p2.7',
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-section9',
 			'title'   => '',
-			'desc'    => sprintf(__('distance (will only be displayed if option %1$s is set to %2$s!)','lmm'), '"' . __('Order list of markers by','lmm') . '"', '"' . __('distance from layer center','lmm') . '"') . $pro_button_link_inline,
+			'desc'    => __('Distance','lmm')  . $pro_button_link_inline . '<br/><span class="description">' . __('The actual distance value is only shown if sort by "distance from layer center" or "distance from current position" is selected','lmm') . '</span>',
 			'type'    => 'checkbox-pro',
-			'std'     => 0
+			'std'     => 1
+		);
+		$this->_settings['defaults_layer_listmarkers_show_distance_unit'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => __('Distance unit in list','lmm') . $pro_button_link,
+			'desc'    => '',
+			'type'    => 'radio-pro',
+			'std'     => 'km',
+			'choices' => array(
+				'km' => __('metric (km)','lmm'),
+				'mile' => __('imperial (miles)','lmm')
+			)
 		);
 		$this->_settings['defaults_layer_listmarkers_show_distance_precision'] = array(
 			'version' => 'p2.6',
@@ -2152,11 +2192,11 @@ class Class_leaflet_options {
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-section9',
 			'title'   => __('Order list of markers by','lmm'),
-			'desc'    => __('The option "order by distance from layer center" is only available in the pro version!','lmm') . $pro_button_link_inline,
+			'desc'    => __('The options "order by distance from current position" and "order by distance from layer center" are only available in the pro version!','lmm') . $pro_button_link_inline,
 			'type'    => 'radio',
 			'std'     => 'm.id',
 			'choices' => array(
-				'm.id' => 'ID',
+				'm.id' => __('marker ID','lmm'),
 				'm.markername' => __('marker name','lmm'),
 				'm.popuptext' => __('popuptext','lmm'),
 				'm.icon' => __('icon','lmm'),
@@ -2188,7 +2228,7 @@ class Class_leaflet_options {
 			'section' => 'mapdefaults-section9',
 			'title'   => __( 'Limit', 'lmm' ),
 			'desc'    => __( 'maximum number of markers to display in the list', 'lmm' ),
-			'std'     => '100',
+			'std'     => '10',
 			'type'    => 'text'
 		);
 		// defaults_layer - active API links in markers list
@@ -2269,7 +2309,178 @@ class Class_leaflet_options {
 				'disabled' => __('no action (and hide links)','lmm')
 			)
 		);
-		/*
+		$this->_settings['defaults_layer_listmarkers_link_action_zoom'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => __('Zoom level to use for centering marker','lmm') . $pro_button_link,
+			'desc'    => __('If the marker name or icon in the list of markers is clicked, the specified zoom level will be used','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'marker-zoom',
+			'choices' => array(
+				'layer-zoom' => __('use layer zoom level for all markers','lmm'),
+				'marker-zoom' => __('use distinct marker zoom levels','lmm')
+			)
+		);
+		$this->_settings['defaults_layer_listmarkers_helptext2'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'std'     => '',
+			'title'   => '<h3 class="h3-lmm-settings">' . __('Action bar settings','lmm') . '</h3>',
+			'desc'    => __('Option to add a search field and sort order feature for the list of markers','lmm') . ':<br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-list-markers-action-bar.png" width="500" height="60" />',
+			'type'    => 'helptext'
+		);
+		$this->_settings['defaults_layer_listmarkers_action_bar'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => __('Action bar visibility','lmm') . $pro_button_link,
+			'desc'    => '',
+			'type'    => 'radio-pro',
+			'std'     => 'show-full',
+			'choices' => array(
+				'show-full' => __('show full action bar','lmm'),
+				'show-search-field-only' => __('show search field only','lmm'),
+				'show-sort-order-selection-only' => __('show sort order selection only','lmm'),
+				'hide' => __('hide action bar','lmm')
+			)
+		);
+		$this->_settings['defaults_layer_listmarkers_searchtext'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => __( 'Custom text for search field', 'lmm' ) . $pro_button_link,
+			'desc'    => __('leave empty to use default search text (Search markers)','lmm'),
+			'std'     => '',
+			'type'    => 'text-pro'
+		);
+		$this->_settings['defaults_layer_listmarkers_searchtext_hover'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => __( 'Custom hover text for search field', 'lmm' ) . $pro_button_link,
+			'desc'    => __('leave empty to use default search hover text (start typing to find marker entries based on markername or popuptext)','lmm'),
+			'std'     => '',
+			'type'    => 'text-pro'
+		);
+		$this->_settings['defaults_layer_listmarkers_sort_id'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => __('Available sort orders in action bar dropdown field','lmm') . $pro_button_link,
+			'desc'    => __('marker ID','lmm'),
+			'type'    => 'checkbox-pro',
+			'std'     => 0
+		);
+		$this->_settings['defaults_layer_listmarkers_sort_markername'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => '',
+			'desc'    => __('marker name','lmm'),
+			'type'    => 'checkbox-pro',
+			'std'     => 1
+		);
+		$this->_settings['defaults_layer_listmarkers_sort_popuptext'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => '',
+			'desc'    => __('popuptext','lmm'),
+			'type'    => 'checkbox-pro',
+			'std'     => 0
+		);
+		$this->_settings['defaults_layer_listmarkers_sort_icon'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => '',
+			'desc'    => __('icon','lmm'),
+			'type'    => 'checkbox-pro',
+			'std'     => 0
+		);
+		$this->_settings['defaults_layer_listmarkers_sort_created_by'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => '',
+			'desc'    => __('created by','lmm'),
+			'type'    => 'checkbox-pro',
+			'std'     => 0
+		);
+		$this->_settings['defaults_layer_listmarkers_sort_created_on'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => '',
+			'desc'    => __('created on','lmm'),
+			'type'    => 'checkbox-pro',
+			'std'     => 1
+		);
+		$this->_settings['defaults_layer_listmarkers_sort_updated_by'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => '',
+			'desc'    => __('updated by','lmm'),
+			'type'    => 'checkbox-pro',
+			'std'     => 0
+		);
+		$this->_settings['defaults_layer_listmarkers_sort_updated_on'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => '',
+			'desc'    => __('updated on','lmm'),
+			'type'    => 'checkbox-pro',
+			'std'     => 0
+		);
+		$this->_settings['defaults_layer_listmarkers_sort_layer_id'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => '',
+			'desc'    => __('layer ID','lmm'),
+			'type'    => 'checkbox-pro',
+			'std'     => 0
+		);
+		$this->_settings['defaults_layer_listmarkers_sort_address'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => '',
+			'desc'    => __('address','lmm'),
+			'type'    => 'checkbox-pro',
+			'std'     => 0
+		);
+		$this->_settings['defaults_layer_listmarkers_sort_kml_timestamp'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => '',
+			'desc'    => __('KML timestamp','lmm'),
+			'type'    => 'checkbox-pro',
+			'std'     => 0
+		);
+		$this->_settings['defaults_layer_listmarkers_sort_distance_layer_center'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => '',
+			'desc'    => __('distance from layer center','lmm'),
+			'type'    => 'checkbox-pro',
+			'std'     => 0
+		);
+		$this->_settings['defaults_layer_listmarkers_sort_distance_current_pos'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => '',
+			'desc'    => __('distance from current position','lmm'),
+			'type'    => 'checkbox-pro',
+			'std'     => 1
+		);		/*
 		* Interaction options
 		* formerly "General map settings" and moved to "Basemaps" from "Misc" tab
 		*/
@@ -2424,6 +2635,41 @@ class Class_leaflet_options {
 			'choices' => array(
 				'enabled' => __('enabled','lmm'),
 				'disabled' => __('disabled','lmm')
+			)
+		);
+		$this->_settings['map_interaction_options_tap'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section10',
+			'title'   => 'tap' . $pro_button_link,
+			'desc'    => __('Enables mobile hacks for supporting instant taps (fixing 200ms click delay on iOS/Android) and touch holds (fired as contextmenu events).','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'true',
+			'choices' => array(
+				'true' => __('true','lmm'),
+				'false' => __('false','lmm')
+			)
+		);
+		$this->_settings['map_interaction_options_taptolerance'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section10',
+			'title'   => 'tapTolerance' . $pro_button_link,
+			'desc'    => __('The max number of pixels a user can shift his finger during touch for it to be considered a valid tap.','lmm'),
+			'std'     => '15',
+			'type'    => 'text-pro'
+		);
+		$this->_settings['map_interaction_options_bounceatzoomlimits'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section10',
+			'title'   => 'bounceAtZoomLimits' . $pro_button_link,
+			'desc'    => __('Set it to false if you do not want the map to zoom beyond min/max zoom and then bounce back when pinch-zooming.','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'true',
+			'choices' => array(
+				'true' => __('true','lmm'),
+				'false' => __('false','lmm')
 			)
 		);
 		/*
@@ -2583,14 +2829,34 @@ class Class_leaflet_options {
 				'topleft' => __('Top left of the map','lmm')
 			)
 		);
-		$this->_settings['map_control_options_helptext2'] = array(
-			'version' => '2.7.1',
+		$this->_settings['map_home_button'] = array(
+			'version' => 'p2.7',
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-section13',
-			'std'     => '',
-			'title'   => '',
-			'desc'    => '<div style="height:130px;"></div>',
-			'type'    => 'helptext'
+			'title'   => __('Home button','lmm') . $pro_button_link,
+			'desc'    => __('Whether to add a home button to reset map view','lmm') . '<br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-home-button.png" width="52" height="45" />',
+			'type'    => 'radio-pro',
+			'std'     => 'true-ondemand',
+			'choices' => array(
+				'true-always' => __('true','lmm'),
+				'true-ondemand' => __('true (only add on demand if map view is changed)','lmm'),
+				'false' => __('false','lmm'),
+			)
+		);
+		$this->_settings['map_home_button_position'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section13',
+			'title'   => __('Home button position','lmm') . $pro_button_link,
+			'desc'    => __('The position of the home button (one of the map corners).','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'topleft',
+			'choices' => array(
+				'bottomleft' => __('Bottom left of the map','lmm'),
+				'bottomright' => __('Bottom right of the map','lmm'),
+				'topright' => __('Top right of the map','lmm'),
+				'topleft' => __('Top left of the map','lmm')
+			)
 		);
 		/*
 		* Scale control options
@@ -3873,6 +4139,116 @@ $this->_settings['clustering_helptext2'] = array(
 			'desc'    => sprintf(__('define additional location options e.g enableHighAccuracy: true, maxZoom: 10<br/>reference: %1$s','lmm'), '<a href="http://leafletjs.com/reference.html#map-locate-options" target="_blank">http://leafletjs.com/reference.html#map-locate-options</a>'),
 			'std'     => 'watch: true',
 			'type'    => 'text-pro'
+		);
+		/*
+		* Filter settings for multi-layer-maps
+		*/
+		$this->_settings['mlm_filter_helptext'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section21',
+			'std'     => '',
+			'title'   => '',
+			'desc'    => '<a style="background:#f99755;display:block;padding:3px;text-decoration:none;color:#2702c6;width:635px;margin:10px 0;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a>' . __('Add a geolocate button to all maps which allows to show and follow your current location:','lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-mlm-filter.jpg" width="400" height="222" />',
+			'type'    => 'helptext'
+		);
+		$this->_settings['mlm_filter_controlbox_position'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section21',
+			'title'   => __('Filter controlbox position','lmm') . $pro_button_link,
+			'desc'    => __('The position of the filter controlbox for all maps.','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'topright',
+			'choices' => array(
+				'topleft' => __('Top left of the map','lmm'),
+				'topright' => __('Top right of the map','lmm'),
+				'bottomleft' => __('Bottom left of the map','lmm'),
+				'bottomright' => __('Bottom right of the map','lmm')
+			)
+		);
+		// mlm_filter - controlbox attributes
+		$this->_settings['mlm_filter_controlbox_name'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section21',
+			'title'    => __('Attributes to display for each layer in controlbox','lmm') . $pro_button_link,
+			'desc'    => __('Layer name','lmm'),
+			'type'    => 'checkbox-pro',
+			'std'     => 1
+		);
+		$this->_settings['mlm_filter_controlbox_icon'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section21',
+			'title'   => '',
+			'desc'    => __('Icon','lmm'),
+			'type'    => 'checkbox-pro',
+			'std'     => 1
+		);
+		$this->_settings['mlm_filter_controlbox_markercount'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section21',
+			'title'   => '',
+			'desc'    => __('Marker count','lmm'),
+			'type'    => 'checkbox-pro',
+			'std'     => 1
+		);
+		// mlm_filter sort options
+		$this->_settings['mlm_filter_active_orderby'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section21',
+			'title'   => __('Order active layers in controlbox by','lmm') . $pro_button_link,
+			'desc'    => '',
+			'type'    => 'radio-pro',
+			'std'     => 'markercount',
+			'choices' => array(
+				'id' => __('ID','lmm'),
+				'name' => __('Layer name','lmm'),
+				'markercount' => __('marker count')
+			)
+		);
+		$this->_settings['mlm_filter_active_sort_order'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section21',
+			'title'   => __('Sort order for active layers in controlbox','lmm') . $pro_button_link,
+			'desc'    => '',
+			'type'    => 'radio-pro',
+			'std'     => 'DESC',
+			'choices' => array(
+				'ASC' => __('ascending','lmm'),
+				'DESC' => __('descending','lmm')
+			)
+		);
+		$this->_settings['mlm_filter_inactive_orderby'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section21',
+			'title'   => __('Order inactive layers in controlbox by','lmm') . $pro_button_link,
+			'desc'    => '',
+			'type'    => 'radio-pro',
+			'std'     => 'markercount',
+			'choices' => array(
+				'id' => __('ID','lmm'),
+				'name' => __('Layer name','lmm'),
+				'markercount' => __('marker count')
+			)
+		);
+		$this->_settings['mlm_filter_inactive_sort_order'] = array(
+			'version' => 'p2.7',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section21',
+			'title'   => __('Sort order for inactive layers in controlbox','lmm') . $pro_button_link,
+			'desc'    => '',
+			'type'    => 'radio-pro',
+			'std'     => 'DESC',
+			'choices' => array(
+				'ASC' => __('ascending','lmm'),
+				'DESC' => __('descending','lmm')
+			)
 		);
 
 		/*===========================================
@@ -7243,6 +7619,19 @@ $this->_settings['clustering_helptext2'] = array(
 				'disabled' => __('disabled','lmm')
 			)
 		);
+		$this->_settings['google_places_status'] = array(
+			'version' => 'p1.8',
+			'pane'    => 'google',
+			'section' => 'google-section1',
+			'title'   => __('Google Places status','lmm') . $pro_button_link,
+			'desc'    => __('Disabling Google Places will also stop all Google API calls on backend and is only recommended if e.g. access to Google API services is blocked in your country!','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'enabled',
+			'choices' => array(
+				'enabled' => __('enabled','lmm'),
+				'disabled' => __('disabled','lmm')
+			)
+		);		
 		/*
 		* Google language localization
 		* https://spreadsheets.google.com/spreadsheet/pub?key=0Ah0xU81penP1cDlwZHdzYWkyaERNc0xrWHNvTTA1S1E&gid=1
@@ -7382,261 +7771,12 @@ $this->_settings['clustering_helptext2'] = array(
 			'type'    => 'text'
 		);
 		/*
-		* Google Places Bounds
-		*/
-		$this->_settings['google_places_bounds_helptext2'] = array(
-			'version' => '1.0',
-			'pane'    => 'google',
-			'section' => 'google-section4',
-			'std'     => '',
-			'title'   => '',
-			'desc'    => __( 'The integration of the <a href="https://developers.google.com/places/documentation/autocomplete" target="_blank">Google Places Autocomplete API</a> on backend allows you to easily find coordinates for places or addresses:', 'lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-google-places-preview.png" width="640" height="126" style="border:1px solid #ccc;" />',
-			'type'    => 'helptext'
-		);
-		$this->_settings['google_places_status'] = array(
-			'version' => 'p1.8',
-			'pane'    => 'google',
-			'section' => 'google-section4',
-			'title'   => __('Google Places status','lmm') . $pro_button_link,
-			'desc'    => __('Disabling Google Places will also stop all Google API calls on backend and is only recommended if e.g. access to Google API services is blocked in your country!','lmm'),
-			'type'    => 'radio-pro',
-			'std'     => 'enabled',
-			'choices' => array(
-				'enabled' => __('enabled','lmm'),
-				'disabled' => __('disabled','lmm')
-			)
-		);		
-		$this->_settings['google_places_bounds_status'] = array(
-			'version' => '1.0',
-			'pane'    => 'google',
-			'section' => 'google-section4',
-			'title'   => __('Google Places bounds','lmm'),
-			'desc'    => __( 'You can get better search results if you enable the bounds feature. This allows you to specify the area in which to primarily search for places or addresses. Please note: the results are biased towards, but not restricted to places or addresses contained within these bounds.', 'lmm') . __( 'If enabled, please enter longitude and latitude values below for the corner points of the prefered search area. Below you find an example for Vienna/Austria:', 'lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-google-places-bounds.jpg" width="425" height="334" />',
-			'type'    => 'radio',
-			'std'     => 'disabled',
-			'choices' => array(
-				'enabled' => __('enabled','lmm'),
-				'disabled' => __('disabled','lmm')
-			)
-		);
-		$this->_settings['google_places_bounds_lat1'] = array(
-			'version' => '1.0',
-			'pane'    => 'google',
-			'section' => 'google-section4',
-			'title'   => __( 'Latitude', 'lmm' ) . ' 1',
-			'desc'    => __( 'Please use a dot instead of a coma as decimal delimiter!', 'lmm' ),
-			'std'     => '48.326583',
-			'type'    => 'text'
-		);
-		$this->_settings['google_places_bounds_lon1'] = array(
-			'version' => '1.0',
-			'pane'    => 'google',
-			'section' => 'google-section4',
-			'title'   => __( 'Longitude', 'lmm' ) . ' 1',
-			'desc'    => __( 'Please use a dot instead of a coma as decimal delimiter!', 'lmm' ),
-			'std'     => '16.55056',
-			'type'    => 'text'
-		);
-		$this->_settings['google_places_bounds_lat2'] = array(
-			'version' => '1.0',
-			'pane'    => 'google',
-			'section' => 'google-section4',
-			'title'   => __( 'Latitude', 'lmm' ) . ' 2',
-			'desc'    => __( 'Please use a dot instead of a coma as decimal delimiter!', 'lmm' ),
-			'std'     => '48.114308',
-			'type'    => 'text'
-		);
-		$this->_settings['google_places_bounds_lon2'] = array(
-			'version' => '1.0',
-			'pane'    => 'google',
-			'section' => 'google-section4',
-			'title'   => __( 'Longitude', 'lmm' ) . ' 2',
-			'desc'    => __( 'Please use a dot instead of a coma as decimal delimiter!', 'lmm' ),
-			'std'     => '16.187325',
-			'type'    => 'text'
-		);
-		/*
-		* Google Places Search Prefix
-		*/
-		$this->_settings['google_places_search_prefix_helptext1'] = array(
-			'version' => '1.0',
-			'pane'    => 'google',
-			'section' => 'google-section4',
-			'std'     => '',
-			'title'   => '',
-			'desc'    => __( 'You can also select a search prefix, which automatically gets added to search form when creating a new marker or layer.', 'lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-google-places-prefix.png" width="630" height="55" style="border:1px solid #ccc;" />',
-			'type'    => 'helptext'
-		);
-		$this->_settings['google_places_search_prefix_status'] = array(
-			'version' => '1.0',
-			'pane'    => 'google',
-			'section' => 'google-section4',
-			'title'   => __('Google Places search prefix','lmm'),
-			'desc'    => '',
-			'type'    => 'radio',
-			'std'     => 'disabled',
-			'choices' => array(
-				'disabled' => __('disabled','lmm'),
-				'enabled' => __('enabled','lmm')
-			)
-		);
-		$this->_settings['google_places_search_prefix'] = array(
-			'version' => '1.0',
-			'pane'    => 'google',
-			'section' => 'google-section4',
-			'title'   => __( 'Prefix to use', 'lmm' ),
-			'desc'    => '',
-			'std'     => 'Wien, ',
-			'type'    => 'text'
-		);
-		/*
-		* Google Adsense Settings
-		*/
-		$this->_settings['google_adsense_helptext1'] = array(
-			'version' => 'p1.0',
-			'pane'    => 'google',
-			'section' => 'google-section5',
-			'std'     => '',
-			'title'   => '',
-			'desc'    => __( 'Use the settings below to customize the display of ads on Google basemaps.', 'lmm') . '<br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-adsense.jpg" width="625" height="67" /><br/><br/><a style="background:#f99755;display:block;padding:3px;text-decoration:none;color:#2702c6;width:635px;margin:10px 0;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a><br/><span style="font-weight:bold;color:red;">' . sprintf(__( 'Attention: please be aware that although the plugin has been designed to meet the <a href="%1s" target="_blank">Google AdSense programme policies</a>, finally it is your responsibility to verify that your maps meet the Adsense requirements (as this is heavily depended on how you have configured your maps). For example it is advised to double check the position of the ads in order that they are not being overlayed by map controls (which is not allowed by Google and could result in sanctions like the cancellation of your Adsense publisher account)!', 'lmm'), 'https://support.google.com/adsense/answer/48182') . '</span>',
-			'type'    => 'helptext'
-		);
-		$this->_settings['google_adsense_status'] = array(
-			'version' => 'p1.0',
-			'pane'    => 'google',
-			'section' => 'google-section5',
-			'title'   => 'Google Adsense<br/><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-pro-option.png" width="65" height="15" /></a>',
-			'desc'    => __('Please set to disabled if you do not want to display ads on Google basemaps','lmm'),
-			'type'    => 'radio-pro',
-			'std'     => 'disabled',
-			'choices' => array(
-				'enabled' => __('enabled','lmm'),
-				'disabled' => __('disabled','lmm')
-			)
-		);
-		$this->_settings['google_adsense_publisherId'] = array(
-			'version' => 'p1.0',
-			'pane'    => 'google',
-			'section' => 'google-section5',
-			'title'   => 'publisherId<br/><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-pro-option.png" width="65" height="15" /></a>',
-			'desc'    => sprintf(__('Adding display ads to your map requires that you have an AdSense account enabled for AdSense for Content. If you do not yet have an AdSense account, <a href="%1s" target="_blank">sign up for one</a>. Once you have done so (or if you already have an account) make sure you have also enabled the account with <a href="%2s" target="_blank">AdSense for Content</a>. Once you have an Adsense for Content account, you will have received an AdSense for Content (AFC) publisher ID. This publisher ID is used within your code to link any advertising shown to your AdSense account, allowing you to share in advertising revenue when a user clicks on one of the ads shown on your map.','lmm'), 'https://www.google.com/adsense/support/bin/answer.py?answer=10162', 'https://www.google.com/adsense/support/bin/answer.py?hl=en&answer=17470'),
-			'std'     => '',
-			'type'    => 'text-pro'
-		);
-		$this->_settings['google_adsense_format'] = array(
-			'version' => 'p1.0',
-			'pane'    => 'google',
-			'section' => 'google-section5',
-			'title'   => __('Format','lmm') . $pro_button_link,
-			'desc'    => sprintf(__('Display formats of type google.maps.adsense.AdFormat, both text ads and link units are supported. Please see %1s for more details and examples','lmm'),'<a href="https://support.google.com/adsense/bin/answer.py?hl=de&utm_medium=link&utm_campaign=ww-ww-et-asfe_&utm_source=aso&answer=185665" target="_blank">https://support.google.com/adsense/...</a>'),
-			'type'    => 'radio-pro',
-			'std'     => 'HALF_BANNER',
-			'choices' => array(
-				'LEADERBOARD' => 'LEADERBOARD',
-				'BANNER' => 'BANNER',
-				'HALF_BANNER' => 'HALF_BANNER',
-				'SKYSCRAPER' => 'SKYSCRAPER',
-				'WIDE_SKYSCRAPER' => 'WIDE_SKYSCRAPER',
-				'VERTICAL_BANNER' => 'VERTICAL_BANNER',
-				'BUTTON' => 'BUTTON',
-				'SMALL_SQUARE' => 'SMALL_SQUARE',
-				'SQUARE' => 'SQUARE',
-				'SMALL_RECTANGLE' => 'SMALL_RECTANGLE',
-				'MEDIUM_RECTANGLE' => 'MEDIUM_RECTANGLE',
-				'LARGE_RECTANGLE' => 'LARGE_RECTANGLE',
-				'SMALL_VERTICAL_LINK_UNIT' => 'SMALL_VERTICAL_LINK_UNIT',
-				'MEDIUM_VERTICAL_LINK_UNIT' => 'MEDIUM_VERTICAL_LINK_UNIT',
-				'LARGE_VERTICAL_LINK_UNIT' => 'LARGE_VERTICAL_LINK_UNIT',
-				'X_LARGE_VERTICAL_LINK_UNIT' => 'X_LARGE_VERTICAL_LINK_UNIT',
-				'SMALL_HORIZONTAL_LINK_UNIT' => 'SMALL_HORIZONTAL_LINK_UNIT',
-				'LARGE_HORIZONTAL_LINK_UNIT' => 'LARGE_HORIZONTAL_LINK_UNIT'
-			)
-		);
-		$this->_settings['google_adsense_position'] = array(
-			'version' => 'p1.0',
-			'pane'    => 'google',
-			'section' => 'google-section5',
-			'title'   => __('Position','lmm') . $pro_button_link,
-			'desc'    => sprintf(__('<a href="%1s" target="_blank">click here for more information on ad positions which might cause conflicts with Google AdSense programme policies</a>','lmm'), 'https://www.mapsmarker.com/docs/pro-version-docs/how-to-configure-google-adsense-in-order-not-to-violate-google-adsense-programme-policies/') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-google-adsense-positions.jpg" width="640" height="480" />',
-			'type'    => 'radio-pro',
-			'std'     => 'TOP_CENTER',
-			'choices' => array(
-				'TOP_CENTER' => 'TOP_CENTER',
-				'TOP_LEFT' => 'TOP_LEFT' . ' <span style="font-weight:bold;color:red;">(' . __('likely to violate Google AdSense programme policies with default configuration!','lmm') . ')</span>',
-				'TOP_RIGHT' => 'TOP_RIGHT' . ' <span style="font-weight:bold;color:red;">(' . __('likely to violate Google AdSense programme policies with default configuration!','lmm') . ')</span>',
-				'LEFT_TOP' => 'LEFT_TOP' . ' <span style="font-weight:bold;color:red;">(' . __('likely to violate Google AdSense programme policies with default configuration!','lmm') . ')</span>',
-				'RIGHT_TOP' => 'RIGHT_TOP' . ' <span style="font-weight:bold;color:red;">(' . __('likely to violate Google AdSense programme policies with default configuration!','lmm') . ')</span>',
-				'LEFT_CENTER' => 'LEFT_CENTER',
-				'RIGHT_CENTER' => 'RIGHT_CENTER',
-				'LEFT_BOTTOM' => 'LEFT_BOTTOM',
-				'RIGHT_BOTTOM' => 'RIGHT_BOTTOM' . ' <span style="font-weight:bold;color:red;">(' . __('likely to violate Google AdSense programme policies with default configuration!','lmm') . ')</span>',
-				'BOTTOM_LEFT' => 'BOTTOM_LEFT' . ' <span style="font-weight:bold;color:red;">(' . __('likely to violate Google AdSense programme policies with default configuration!','lmm') . ')</span>',
-				'BOTTOM_CENTER' => 'BOTTOM_CENTER',
-				'BOTTOM_RIGHT' => 'BOTTOM_RIGHT' . ' <span style="font-weight:bold;color:red;">(' . __('likely to violate Google AdSense programme policies with default configuration!','lmm') . ')</span>'
-			)
-		);
-		$this->_settings['google_adsense_backgroundColor'] = array(
-			'version' => 'p1.0',
-			'pane'    => 'google',
-			'section' => 'google-section5',
-			'title'   => 'backgroundColor<br/><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-pro-option.png" width="65" height="15" /></a>',
-			'desc'    => __('Ad unit background color','lmm'),
-			'std'     => '#c4d4f3',
-			'type'    => 'text-pro'
-		);
-		$this->_settings['google_adsense_borderColor'] = array(
-			'version' => 'p1.0',
-			'pane'    => 'google',
-			'section' => 'google-section5',
-			'title'   => 'borderColor<br/><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-pro-option.png" width="65" height="15" /></a>',
-			'desc'    => __('Ad unit border color','lmm'),
-			'std'     => '#e5ecf9',
-			'type'    => 'text-pro'
-		);
-		$this->_settings['google_adsense_titleColor'] = array(
-			'version' => 'p1.0',
-			'pane'    => 'google',
-			'section' => 'google-section5',
-			'title'   => 'titleColor<br/><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-pro-option.png" width="65" height="15" /></a>',
-			'desc'    => __('Ad title link color','lmm'),
-			'std'     => '#0000cc',
-			'type'    => 'text-pro'
-		);
-		$this->_settings['google_adsense_textColor'] = array(
-			'version' => 'p1.0',
-
-			'pane'    => 'google',
-			'section' => 'google-section5',
-			'title'   => 'textColor<br/><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-pro-option.png" width="65" height="15" /></a>',
-			'desc'    => __('Ad creative text color','lmm'),
-			'std'     => '#000000',
-			'type'    => 'text-pro'
-		);
-		$this->_settings['google_adsense_urlColor'] = array(
-			'version' => 'p1.0',
-			'pane'    => 'google',
-			'section' => 'google-section5',
-			'title'   => 'urlColor<br/><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-pro-option.png" width="65" height="15" /></a>',
-			'desc'    => __('Ad attribution URL link color','lmm'),
-			'std'     => '#009900',
-			'type'    => 'text-pro'
-		);
-		$this->_settings['google_adsense_channelNumber'] = array(
-			'version' => 'p1.0',
-			'pane'    => 'google',
-			'section' => 'google-section5',
-			'title'   => 'channelNumber<br/><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-pro-option.png" width="65" height="15" /></a>',
-			'desc'    => __('The AdSense For Content channel number for tracking the performance of this AdUnit. It must be stored as a string as it will typically be a large UINT64.','lmm'),
-			'std'     => '',
-			'type'    => 'text-pro'
-		);
-		/*
 		* Google Maps styling
 		*/
 		$this->_settings['google_styling_helptext1'] = array(
 			'version' => 'p1.0',
 			'pane'    => 'google',
-			'section' => 'google-section6',
+			'section' => 'google-section4',
 			'std'     => '',
 			'title'   => '',
 			'desc'    => __( 'Styled maps allow you to customize the presentation of the standard Google base maps, changing the visual display of such elements as roads, parks, and built-up areas.', 'lmm') . '<br/><a href="http://gmaps-samples-v3.googlecode.com/svn/trunk/styledmaps/examplestyles.html" target="_blank" title="' . esc_attr__('show examples','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-google-styling-preview.jpg" width="650" height="401" /></a><a style="background:#f99755;display:block;padding:3px;text-decoration:none;color:#2702c6;width:635px;margin:10px 0;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a>',
@@ -7645,7 +7785,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['google_styling_json'] = array(
 			'version' => 'p1.0',
 			'pane'    => 'google',
-			'section' => 'google-section6',
+			'section' => 'google-section4',
 			'title'   => 'JSON<br/><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-pro-option.png" width="65" height="15" /></a>',
 			'desc'    => sprintf(__('Please enter the custom JSON array to style your Google maps (you can use the <a href="%1s" target="_blank">Google Styled Maps Wizard</a> to create custom styles easily). Example for hiding roads:','lmm'), 'http://gmaps-samples-v3.googlecode.com/svn/trunk/styledmaps/wizard/index.html') . ' <br/><strong>[ { &#39;featureType&#39;: &#39;road.highway&#39;, &#39;elementType&#39;: &#39;geometry&#39;, &#39;stylers&#39;: [ { &#39;visibility&#39;: &#39;off&#39; } ] },{ &#39;featureType&#39;: &#39;road.arterial&#39;, &#39;stylers&#39;: [ { &#39;visibility&#39;: &#39;off&#39; } ] },{ &#39;featureType&#39;: &#39;road.local&#39;, &#39;stylers&#39;: [ { &#39;visibility&#39;: &#39;off&#39; } ] } ]</strong>',
 			'std'     => '',
@@ -9366,7 +9506,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'type'    => 'text'
 		);
 		/*
-		* MapsMarker API settings
+		* Web API settings
 		*/
 		$this->_settings['api_helptext'] = array(
 			'version' => '3.6',
@@ -9374,7 +9514,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'section' => 'misc-section9',
 			'std'     => '',
 			'title'   => '',
-			'desc'    => __('The MapsMarker API provides developers with a future-proof way to access some of the common core functionality in Maps Marker Pro.','lmm') . '<br/><br/>' . __('There are two ways to access the API:','lmm') . '<br/><br/><strong>1. ' . __('API functions in the MMPAPI class','lmm') . '</strong><br/>'. __('Use the API functions to access the Maps Marker Pro install on the same server as your code, for example, if you are developing an add-on for Maps Marker Pro.','lmm') . '<br/><br/><strong>2. ' . __('Via HTTP using the Web API','lmm') . '</strong><br/>' . __('Use the Web API to access a Maps Marker Pro install either from JavaScript in a plugin or theme, or from an external client such as a desktop, mobile or web app.','lmm') . '<br/><br/>' . sprintf(__('For more information on how to use the MapsMarker API, <a href="%1s" target="_blank">please visit the API docs on mapsmarker.com</a>','lmm'), 'https://www.mapsmarker.com/mapsmarker-api') . '<br/><br/><hr noshade size="1"/><br/><span style="font-size:150%">' . __('MMPAPI class options','lmm') . '</span><br/><a style="background:#f99755;display:block;padding:3px;text-decoration:none;color:#2702c6;width:635px;margin:10px 0;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a>' . sprintf(__('No options available, for full docs and examples <a href="%1$s" target="_blank">please click here</a>','lmm'), 'https://www.mapsmarker.com/mmpapi') . '<br/><br/><hr noshade size="1"/><br/><span style="font-size:150%">' . __('Web API options','lmm') . '</span><br/><br/><strong>' . __('API endpoint','lmm') . ':</strong> ' . LEAFLET_PLUGIN_URL . 'leaflet-api.php<br/>',
+			'desc'    => __('Use the Web API to access a Maps Marker Pro install either from JavaScript in a plugin or theme, or from an external client such as a desktop, mobile or web app.','lmm') . '<br/>' . sprintf(__('For more information on how to use the MapsMarker API, <a href="%1s" target="_blank">please visit the API docs on mapsmarker.com</a>','lmm'), 'https://www.mapsmarker.com/mapsmarker-api') . '<br/><br/>' . sprintf(__('For more information on all available APIs in Maps Marker Pro <a href="%1$s">please click here</a>.','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_apis'),
 			'type'    => 'helptext'
 		);
 		$this->_settings['api_status'] = array(
@@ -10272,7 +10412,7 @@ $this->_settings['clustering_helptext2'] = array(
 		}
 		/* template for plugin updates
 		//info:  set defaults for options introduced in v3.11
-		if (version_compare(get_option('leafletmapsmarker_version'),'3.10.3','='))
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.10.4','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )

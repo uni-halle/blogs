@@ -264,6 +264,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 				'meta_keywords_in_tags'	=> 0,
 				'import_as_pages'		=> 0,
 				'timeout'				=> 5,
+				'logger_autorefresh'	=> 1,
 			);
 			$options = get_option('fgj2wp_options');
 			if ( is_array($options) ) {
@@ -908,6 +909,7 @@ SQL;
 				'meta_keywords_in_tags'	=> filter_input(INPUT_POST, 'meta_keywords_in_tags', FILTER_VALIDATE_BOOLEAN),
 				'import_as_pages'		=> filter_input(INPUT_POST, 'import_as_pages', FILTER_VALIDATE_BOOLEAN),
 				'timeout'				=> filter_input(INPUT_POST, 'timeout', FILTER_SANITIZE_NUMBER_INT),
+				'logger_autorefresh'	=> filter_input(INPUT_POST, 'logger_autorefresh', FILTER_VALIDATE_BOOLEAN),
 			);
 		}
 
@@ -1680,7 +1682,7 @@ SQL;
 			$matches = array();
 			$alt_matches = array();
 			
-			if ( preg_match_all('#<(img|a)(.*?)(src|href)="(.*?)"(.*?)>#', $content, $matches, PREG_SET_ORDER) > 0 ) {
+			if ( preg_match_all('#<(img|a)(.*?)(src|href)="(.*?)"(.*?)>#s', $content, $matches, PREG_SET_ORDER) > 0 ) {
 				if ( is_array($matches) ) {
 					foreach ($matches as $match ) {
 						$filename = $match[4];
@@ -1720,6 +1722,10 @@ SQL;
 			$import_external = ($this->plugin_options['import_external'] == 1) || (isset($options['force_external']) && $options['force_external'] );
 			
 			$filename = urldecode($filename); // for filenames with spaces or accents
+			// Filenames starting with //
+			if ( preg_match('#^//#', $filename) ) {
+				$filename = 'http:' . $filename;
+			}
 			
 			$filetype = wp_check_filetype($filename);
 			if ( empty($filetype['type']) || ($filetype['type'] == 'text/html') ) { // Unrecognized file type
@@ -2163,7 +2169,7 @@ SQL;
 		 */
 		private function is_internal_link($link) {
 			$result = (preg_match("#^".$this->plugin_options['url']."#", $link) > 0) ||
-				(preg_match("#^http#", $link) == 0);
+				(preg_match("#^(http|//)#", $link) == 0);
 			return $result;
 		}
 		
@@ -2417,16 +2423,44 @@ SQL;
 		/**
 		 * Returns the imported posts mapped with their Joomla ID
 		 *
+		 * @param string $meta_key Meta key (default = _fgj2wp_old_id)
 		 * @return array of post IDs [joomla_article_id => wordpress_post_id]
 		 */
-		public function get_imported_joomla_posts() {
+		public function get_imported_joomla_posts($meta_key = '_fgj2wp_old_id') {
 			global $wpdb;
 			$posts = array();
 
-			$sql = "SELECT post_id, meta_value FROM {$wpdb->postmeta} WHERE meta_key = '_fgj2wp_old_id'";
+			$sql = "SELECT post_id, meta_value FROM {$wpdb->postmeta} WHERE meta_key = '$meta_key'";
 			$results = $wpdb->get_results($sql);
 			foreach ( $results as $result ) {
 				$posts[$result->meta_value] = $result->post_id;
+			}
+			ksort($posts);
+			return $posts;
+		}
+
+		/**
+		 * Returns the imported posts (including their post type) mapped with their Joomla ID
+		 *
+		 * @param string $meta_key Meta key (default = _fgj2wp_old_id)
+		 * @return array of post IDs [joomla_article_id => [wordpress_post_id, wordpress_post_type]]
+		 */
+		public function get_imported_joomla_posts_with_post_type($meta_key = '_fgj2wp_old_id') {
+			global $wpdb;
+			$posts = array();
+
+			$sql = "
+				SELECT pm.post_id, pm.meta_value, p.post_type
+				FROM {$wpdb->postmeta} pm
+				INNER JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+				WHERE pm.meta_key = '$meta_key'
+			";
+			$results = $wpdb->get_results($sql);
+			foreach ( $results as $result ) {
+				$posts[$result->meta_value] = array(
+					'post_id' => $result->post_id,
+					'post_type' => $result->post_type,
+				);
 			}
 			ksort($posts);
 			return $posts;

@@ -55,8 +55,8 @@ class AAM_Backend_Filter {
         //some additional filter for user capabilities
         add_filter('user_has_cap', array($this, 'checkUserCap'), 999, 4);
         
-        //user profile update filter
-        add_action('profile_update', array($this, 'profileUpdate'), 10, 2);
+        //user profile update action
+        add_action('profile_update', array($this, 'profileUpdate'));
     }
 
     /**
@@ -241,7 +241,10 @@ class AAM_Backend_Filter {
         } else {
             foreach ($posts as $post) {
                 $object = AAM::getUser()->getObject('post', $post->ID);
-                if (!$object->has('backend.list')) {
+                $list   = $object->has('backend.list');
+                $others = $object->has('backend.list_others');
+                
+                if (!$list && (!$others || $this->isAuthor($post))) {
                     $filtered[] = $post;
                 }
             }
@@ -295,13 +298,12 @@ class AAM_Backend_Filter {
      * Clear user cache if profile updated
      * 
      * @param int   $user_id
-     * @param array $old_user_data
      * 
      * @return void
      * 
      * @access public
      */
-    public function profileUpdate($user_id, $old_user_data) {
+    public function profileUpdate($user_id) {
         do_action('aam-clear-cache-action', new AAM_Core_Subject_User($user_id));
     }
     
@@ -325,6 +327,19 @@ class AAM_Backend_Filter {
         }
         
         return $allCaps;
+    }
+    
+    /**
+     * Check if user is post author
+     * 
+     * @param WP_Post $post
+     * 
+     * @return boolean
+     * 
+     * @access protected
+     */
+    protected function isAuthor($post) {
+        return ($post->post_author == get_current_user_id());
     }
 
     /**

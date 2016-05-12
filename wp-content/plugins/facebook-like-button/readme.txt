@@ -2,8 +2,8 @@
 Contributors: AhmedGeek
 Tags: facebook, like, button, recommendations, opengraph, seo, recommend, sharing, social, pressgraph
 Requires at least: 2.5
-Tested up to: 4.2.2
-Stable tag: 6.0.4
+Tested up to: 4.5.1
+Stable tag: 6.0.6
 License: GPL2
 
 Plugin that helps you add the Facebook Like button to your website, without any coding required.
@@ -44,6 +44,9 @@ You can customize the shortcode (button) using the following attributes:
 
 
 == Changelog ==
+
+= 6.0.6 =
+* Fixing button disappearing issue.
 
 = 6.0.5 =
 * Selling Notice
@@ -410,3 +413,6 @@ Bugs Fixed.
 
 = 6.0.5 =
 * Selling Notice
+
+= 6.0.6 =
+* Fixing button disappearing issue.

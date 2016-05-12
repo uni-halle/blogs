@@ -4,11 +4,13 @@ Plugin Name: Lightbox Gallery
 Plugin URI: http://wpgogo.com/development/lightbox-gallery.html
 Description: The Lightbox Gallery plugin changes the view of galleries to the lightbox.
 Author: Hiroaki Miyashita
-Version: 0.8.2
 Author URI: http://wpgogo.com/
+Version: 0.8.3
+Text Domain: lightbox-gallery
+Domain Path: /
 */
 
-/*  Copyright 2009 -2015 Hiroaki Miyashita
+/*  Copyright 2009 -2016 Hiroaki Miyashita
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -25,6 +27,7 @@ Author URI: http://wpgogo.com/
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+add_action( 'plugins_loaded', 'lightbox_gallery_plugins_loaded' );
 add_action( 'init', 'lightbox_gallery_init' );
 add_action( 'wp_head', 'lightbox_gallery_wp_head' );
 add_action( 'wp_print_scripts', 'lightbox_gallery_wp_print_scripts' );
@@ -35,15 +38,11 @@ add_action( 'admin_menu', 'lightbox_gallery_admin_menu' );
 add_filter( 'media_send_to_editor', 'lightbox_gallery_media_send_to_editor', 11 );
 add_shortcode( 'gallery', 'lightbox_gallery' );
 
-function lightbox_gallery_init() {
-	if ( function_exists('load_plugin_textdomain') ) {
-		if ( !defined('WP_PLUGIN_DIR') ) {
-			load_plugin_textdomain('lightbox-gallery', str_replace( ABSPATH, '', dirname(__FILE__) ) );
-		} else {
-			load_plugin_textdomain('lightbox-gallery', false, dirname( plugin_basename(__FILE__) ) );
-		}
-	}
+function lightbox_gallery_plugins_loaded() {
+	load_plugin_textdomain('lightbox-gallery', false, plugin_basename( dirname( __FILE__ ) ) );
+}
 
+function lightbox_gallery_init() {
 	if ( !defined('WP_PLUGIN_DIR') )
 		$plugin_dir = str_replace( ABSPATH, '', dirname(__FILE__) );
 	else
@@ -116,7 +115,7 @@ function lightbox_gallery_wp_print_scripts() {
 	global $wp_query;
 	$options = get_option('lightbox_gallery_data');
 	
-	if ( $options['global_settings']['lightbox_gallery_script_loading_point'] == 'footer' ) $in_footer = true;
+	if ( isset($options['global_settings']['lightbox_gallery_script_loading_point']) && $options['global_settings']['lightbox_gallery_script_loading_point'] == 'footer' ) $in_footer = true;
 	else $in_footer = false;
 	
 	if ( !defined('WP_PLUGIN_DIR') )
@@ -191,7 +190,7 @@ function lightbox_gallery_wp_print_scripts() {
 
 function lightbox_gallery_print_path_header() {
 	$options = get_option('lightbox_gallery_data');
-	if ( $options['global_settings']['lightbox_gallery_script_loading_point'] == 'footer' ) return;
+	if ( isset($options['global_settings']['lightbox_gallery_script_loading_point']) && $options['global_settings']['lightbox_gallery_script_loading_point'] == 'footer' ) return;
 	$path = parse_url(get_option('siteurl'));
 	$url = $path['scheme'].'://'.$path['host'];
 	if ( get_option('home') != get_option('siteurl') || ($url != get_option('siteurl') && !is_multisite()) ) :
@@ -251,6 +250,7 @@ function lightbox_gallery_admin_menu() {
 
 function lightbox_gallery_admin() {
 	global $wp_version;
+	$locale = get_locale();
 	
 	$options = get_option('lightbox_gallery_data');
 	if( !empty($_POST["lightbox_gallery_global_settings_submit"]) ) :
@@ -287,6 +287,12 @@ function lightbox_gallery_admin() {
 	else
 		$plugin_dir = dirname( plugin_basename(__FILE__) );
 ?>
+<style type="text/css">
+.js .meta-box-sortables .postbox .handlediv:before { font: normal 20px/1 'dashicons'; display: inline-block; padding: 8px 10px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-decoration: none !important; }
+.js .meta-box-sortables .postbox .handlediv:before { content: '\f142'; }
+.js .meta-box-sortables .postbox.closed .handlediv:before { content: '\f140'; }
+#poststuff h3 { font-size: 14px; line-height: 1.4; margin: 0; padding: 8px 12px; }
+</style>
 <?php if ( !empty($message) ) : ?>
 <div id="message" class="updated"><p><?php echo $message; ?></p></div>
 <?php endif; ?>
@@ -381,8 +387,8 @@ function lightbox_gallery_admin() {
 	if ( !isset($options['global_settings']['lightbox_gallery_script_loading_point']) ) $options['global_settings']['lightbox_gallery_script_loading_point'] = 'header';
 ?>
 <p><label for="lightbox_gallery_script_loading_point"><?php _e('Choose the script loading point', 'lightbox-gallery'); ?></label>:<br />
-<input type="radio" name="lightbox_gallery_script_loading_point" id="lightbox_gallery_script_loading_point" value="header"<?php checked('header', $options['global_settings']['lightbox_gallery_script_loading_point']); ?> /> <?php _e('Header', 'lightbox-gallery'); ?><br />
-<input type="radio" name="lightbox_gallery_script_loading_point" id="lightbox_gallery_script_loading_point" value="footer"<?php checked('footer', $options['global_settings']['lightbox_gallery_script_loading_point']); ?> /> <?php _e('Footer', 'lightbox-gallery'); ?></p>
+<label><input type="radio" name="lightbox_gallery_script_loading_point" id="lightbox_gallery_script_loading_point" value="header"<?php checked('header', $options['global_settings']['lightbox_gallery_script_loading_point']); ?> /> <?php _e('Header', 'lightbox-gallery'); ?></label><br />
+<label><input type="radio" name="lightbox_gallery_script_loading_point" id="lightbox_gallery_script_loading_point" value="footer"<?php checked('footer', $options['global_settings']['lightbox_gallery_script_loading_point']); ?> /> <?php _e('Footer', 'lightbox-gallery'); ?></label></p>
 </td></tr>
 <tr><td>
 <p><input type="submit" name="lightbox_gallery_global_settings_submit" value="<?php _e('Update Options &raquo;', 'lightbox-gallery'); ?>" class="button-primary" /></p>
@@ -441,7 +447,7 @@ function lightbox_gallery_admin() {
 </div>
 
 <?php
-	if ( WPLANG == 'ja' ) :
+	if ( $locale == 'ja' ) :
 ?>
 <div class="postbox" style="min-width:200px;">
 <div class="handlediv" title="<?php _e('Click to toggle', 'lightbox-gallery'); ?>"><br /></div>

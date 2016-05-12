@@ -47,7 +47,7 @@ class WW_Clone_Admin  {
       // TODO - move to file
       add_action( "admin_print_footer_scripts", array( $this, 'wp_admin_print_footer_scripts' ) );
       add_action( "admin_head", array( $this->ww->admin, '_admin_css' ) );
-      
+
       $this->_clone_form();
     }
   }
@@ -58,13 +58,14 @@ class WW_Clone_Admin  {
   function _clone_insert($posted)
   {
     global $wpdb,$wp_widget_factory;
-    
+
     //Start our outputs
     $this_class_name = '';
     $instance = array();
-    
-    if(isset($posted[$posted['ww-keyname']])){
-      $this_class_name = $posted['ww-classname'];
+
+    if(isset($posted[$posted['ww-keyname']])) {
+			// Sanitize namespace characters that are improperly encoded from input
+      $this_class_name = implode("\\", array_filter( explode( "\\", $posted['ww-classname'] )));
       foreach($posted[$posted['ww-keyname']] as $i => $settings){
         foreach($settings as $key => $value){
           $instance[$key] = $value;
@@ -73,10 +74,10 @@ class WW_Clone_Admin  {
     }
 
     $user = wp_get_current_user();
-    
+
     $wp_widget = new $this_class_name;
-    $instance = $wp_widget->update($instance, array());  
-    
+    $instance = $wp_widget->update($instance, array());
+
     // prep new widget info for saving
     $new_widget = array();
     $new_widget['post_author']    = $user->ID;
@@ -91,20 +92,20 @@ class WW_Clone_Admin  {
     $new_widget['to_ping']        = '';
     $new_widget['pinged']         = '';
     $new_widget['post_content_filtered'] = '';
-    
+
     // insert new widget into db
     $new_post_id = wp_insert_post($new_widget);
     $instance['ID'] = $new_post_id;
     $instance['hide_title'] = '';
-    
+
     // post as meta values
     add_post_meta($new_post_id,'ww-widget-type', 'clone');
-    add_post_meta($new_post_id,'ww-clone-classname', $this_class_name);
+    add_post_meta($new_post_id,'ww-clone-classname', \wp_slash($this_class_name));
     add_post_meta($new_post_id,'ww-clone-instance', $instance);
-    
+
     return $new_post_id;
   }
-  
+
   /*
    * Display widgets available for cloning.
    */
@@ -113,7 +114,7 @@ class WW_Clone_Admin  {
     global $wp_widget_factory;
     $total_widgets = count($wp_widget_factory->widgets);
     $half = round($total_widgets/2);
-    $i = 0; 
+    $i = 0;
     ?>
     <div class='wrap'>
       <h2><?php _e("Copy a Widget", 'widgetwrangler'); ?></h2>
@@ -131,7 +132,7 @@ class WW_Clone_Admin  {
             </ul><ul class='ww-clone-widgets'>
             <?php
           }
-          
+
           ob_start();
             $wp_widget = new $classname;
             $wp_widget->form(array());
@@ -147,7 +148,7 @@ class WW_Clone_Admin  {
                     <h4><?php print $widget->name; ?></h4>
                   </div>
                 </div>
-                <div class='widget-inside'>            
+                <div class='widget-inside'>
                   <form action='edit.php?post_type=widget&page=clone&ww_action=insert&noheader=true' method='post'>
                     <input type='hidden' name='ww-classname' value='<?php print $classname; ?>' />
                     <input type='hidden' name='ww-keyname' value='<?php print $posted_array_key; ?>' />
@@ -179,5 +180,5 @@ class WW_Clone_Admin  {
     </script>
     <?php
   }
-    
+
 }

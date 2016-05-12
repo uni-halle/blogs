@@ -136,7 +136,14 @@ jQuery(document).ready(function ($) {
 
                 divContainer.data('showIsSecure', showIsSecure);
                 divContainer.data('pageNumPending', null);
-                divContainer.data('zoom', 100);
+
+                var startZoom = parseInt(divContainer.data('startzoom'));
+                if (isNaN(startZoom) || startZoom < 20 || startZoom > 500) { startZoom = 100;}
+                divContainer.data('zoom', startZoom);
+                if (startZoom != 100) {
+                    divContainer.find('span.pdfemb-zoom').text(startZoom + '%');
+                }
+
                 $.fn.pdfEmbedder.renderPage(divContainer, divContainer.data('pagenum'));
 
                 divContainer.find('span.pdfemb-page-count').text( pdfDoc_.numPages );

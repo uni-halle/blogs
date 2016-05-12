@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WPtouch Mobile Plugin package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPtouch Mobile Plugin 4.1.1\n"
+"Project-Id-Version: WPtouch Mobile Plugin 4.1.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wptouch\n"
-"POT-Creation-Date: 2016-04-12 20:01:01+00:00\n"
+"POT-Creation-Date: 2016-05-06 13:55:52+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -374,7 +374,7 @@ msgstr ""
 #: admin/pages/custom/wptouch-admin-wizard.php:179
 #: admin/settings/html/theme-browser-item-detail.php:52
 #: admin/settings/html/updates-available.php:35
-#: admin/settings/html/updates-available.php:71 core/class-wptouch-pro.php:926
+#: admin/settings/html/updates-available.php:71 core/class-wptouch-pro.php:933
 msgid "Download"
 msgstr ""
 
@@ -384,7 +384,7 @@ msgstr ""
 #: admin/settings/html/installed_icon_sets_ajax.php:13
 #: admin/settings/html/installed_icon_sets_ajax.php:26
 #: admin/settings/html/theme-browser-item.php:12
-#: core/class-wptouch-pro.php:925
+#: core/class-wptouch-pro.php:932
 msgid "Installed"
 msgstr ""
 
@@ -802,7 +802,7 @@ msgstr ""
 
 #: admin/pages/wptouch-admin-general-settings.php:591
 #: admin/settings/html/installed_icon_sets_ajax.php:4
-#: core/class-wptouch-pro.php:2111 core/class-wptouch-pro.php:2112
+#: core/class-wptouch-pro.php:2118 core/class-wptouch-pro.php:2119
 #: core/config.php:54
 msgid "Custom Icons"
 msgstr ""
@@ -909,7 +909,7 @@ msgstr ""
 msgid "No extensions available"
 msgstr ""
 
-#: admin/settings/html/image-upload.php:7 core/class-wptouch-pro.php:918
+#: admin/settings/html/image-upload.php:7 core/class-wptouch-pro.php:925
 msgid "Upload Complete!"
 msgstr ""
 
@@ -928,13 +928,13 @@ msgid ""
 msgstr ""
 
 #: admin/settings/html/installed_icon_sets_ajax.php:25
-#: core/class-wptouch-pro.php:924
+#: core/class-wptouch-pro.php:931
 msgid "Installing"
 msgstr ""
 
 #: admin/settings/html/installed_icon_sets_ajax.php:25
 #: admin/settings/html/theme-browser-item-detail.php:3
-#: core/admin-extensions.php:363 core/class-wptouch-pro.php:923
+#: core/admin-extensions.php:363 core/class-wptouch-pro.php:930
 msgid "Install"
 msgstr ""
 
@@ -1146,7 +1146,7 @@ msgstr ""
 msgid "Setup Wizard"
 msgstr ""
 
-#: core/admin-menu.php:48 core/class-wptouch-pro.php:1593
+#: core/admin-menu.php:48 core/class-wptouch-pro.php:1600
 msgid "Settings"
 msgstr ""
 
@@ -1247,131 +1247,131 @@ msgstr ""
 msgid "Reset Settings"
 msgstr ""
 
-#: core/class-wptouch-pro.php:605
+#: core/class-wptouch-pro.php:612
 msgid ""
 "Automatic theme migration from wp-content/uploads/wptouch-data directory "
 "failed. Please manually move these folders to wp-content/wptouch-data: %s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:624
+#: core/class-wptouch-pro.php:631
 msgid ""
 "%sWPtouch: %s was recently disabled, but is still affecting your website and "
 "caching pages.%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:625
+#: core/class-wptouch-pro.php:632
 msgid ""
 "%sPlease reactivate the plugin, disable page caching, then deactivate the "
 "plugin again to correct this issue.%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:626 core/class-wptouch-pro.php:635
+#: core/class-wptouch-pro.php:633 core/class-wptouch-pro.php:642
 msgid ""
 "%sFixing this issue prevents cached desktop pages being served to mobile "
 "devices and vice-versa.%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:627 core/class-wptouch-pro.php:636
+#: core/class-wptouch-pro.php:634 core/class-wptouch-pro.php:643
 msgid ""
 "%sOnce fixed, this message will be dismissed automatically. Until fixed, %"
 "sWPtouch will not be shown%s to mobile visitors, and cannot be previewed.%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:634
+#: core/class-wptouch-pro.php:641
 msgid "%sWPtouch: %s needs to be configured to work correctly with WPtouch.%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:637
+#: core/class-wptouch-pro.php:644
 msgid ""
 "%sTo fix the issue, follow our %sstep-by-step setup guide%s on support."
 "wptouch.com%s"
 msgstr ""
 
-#: core/class-wptouch-pro.php:649
+#: core/class-wptouch-pro.php:656
 msgid "WPtouch Repair Required"
 msgstr ""
 
-#: core/class-wptouch-pro.php:656
+#: core/class-wptouch-pro.php:663
 msgid "Your mobile theme was either broken or missing."
 msgstr ""
 
-#: core/class-wptouch-pro.php:657
+#: core/class-wptouch-pro.php:664
 msgid "We downloaded a fresh copy for you."
 msgstr ""
 
-#: core/class-wptouch-pro.php:658 core/class-wptouch-pro.php:668
+#: core/class-wptouch-pro.php:665 core/class-wptouch-pro.php:675
 msgid "OK"
 msgstr ""
 
-#: core/class-wptouch-pro.php:661
+#: core/class-wptouch-pro.php:668
 msgid ""
 "We were unable to install your WPtouch Pro theme from the Cloud. %s Please "
 "visit %sthis article%s for more information."
 msgstr ""
 
-#: core/class-wptouch-pro.php:664
+#: core/class-wptouch-pro.php:671
 msgid "WPtouch Server Issue"
 msgstr ""
 
-#: core/class-wptouch-pro.php:666
+#: core/class-wptouch-pro.php:673
 msgid ""
 "Your server setup is preventing WPtouch Pro from installing from the Cloud. %"
 "s Please visit %sthis article%s for more information on how to fix it."
 msgstr ""
 
-#: core/class-wptouch-pro.php:913
+#: core/class-wptouch-pro.php:920
 msgid ""
 "This will reset all WPtouch Pro settings.\n"
 "Are you sure?"
 msgstr ""
 
-#: core/class-wptouch-pro.php:914
+#: core/class-wptouch-pro.php:921
 msgid ""
 "This will reset all WPtouch Pro settings and delete the wptouch-data "
 "folder.\n"
 "Are you sure?"
 msgstr ""
 
-#: core/class-wptouch-pro.php:915
+#: core/class-wptouch-pro.php:922
 msgid ""
 "This will reset all WPtouch Pro settings, delete the wptouch-data folder, "
 "and deactivate the plugin. Are you sure?"
 msgstr ""
 
-#: core/class-wptouch-pro.php:916
+#: core/class-wptouch-pro.php:923
 msgid "The item failed to download for this reason: %reason%"
 msgstr ""
 
-#: core/class-wptouch-pro.php:917
+#: core/class-wptouch-pro.php:924
 msgid "You are about to reset your license information. Proceed?"
 msgstr ""
 
-#: core/class-wptouch-pro.php:919
+#: core/class-wptouch-pro.php:926
 msgid "Upload Failed: Not a valid image."
 msgstr ""
 
-#: core/class-wptouch-pro.php:920
+#: core/class-wptouch-pro.php:927
 msgid ""
 "WPtouch is saving settings. Please do not refresh the page while saving."
 msgstr ""
 
-#: core/class-wptouch-pro.php:921
+#: core/class-wptouch-pro.php:928
 msgid "Install Themes"
 msgstr ""
 
-#: core/class-wptouch-pro.php:922
+#: core/class-wptouch-pro.php:929
 msgid "Install Extensions"
 msgstr ""
 
-#: core/class-wptouch-pro.php:1630
+#: core/class-wptouch-pro.php:1637
 msgid "%s Changelog"
 msgstr ""
 
-#: core/class-wptouch-pro.php:3038
+#: core/class-wptouch-pro.php:3045
 msgid "Directory Problem"
 msgstr ""
 
-#: core/class-wptouch-pro.php:3039
+#: core/class-wptouch-pro.php:3046
 msgid "One or more required directories could not be created"
 msgstr ""
 

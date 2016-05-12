@@ -63,7 +63,10 @@ class AAM_Frontend_Manager {
         $user = AAM::getUser();
         if ((is_single() || is_page()) && is_object($post)) {
             $object = $user->getObject('post', $post->ID);
-            if ($object->has('frontend.read')) {
+            $read   = $object->has('frontend.read');
+            $others = $object->has('frontend.read_others');
+            
+            if ($read || ($others && !$this->isAuthor($post))) {
                 AAM_Core_API::reject();
             }
             //trigger any action that is listeting 
@@ -84,7 +87,10 @@ class AAM_Frontend_Manager {
         if (is_array($pages)) {
             foreach ($pages as $i => $page) {
                 $object = AAM::getUser()->getObject('post', $page->ID);
-                if ($object->has('frontend.list')) {
+                $list   = $object->has('frontend.list');
+                $others = $object->has('frontend.list_others');
+                
+                if ($list || ($others && !$this->isAuthor($page))) {
                     unset($pages[$i]);
                 }
             }
@@ -106,16 +112,14 @@ class AAM_Frontend_Manager {
         if (is_array($pages)) {
             $user = AAM::getUser();
             foreach ($pages as $i => $page) {
-                $filter = false;
-                
                 if ($page->type == 'post_type') {
-                    $filter = $user->getObject('post', $page->object_id)->has(
-                            'frontend.list'
-                    );
-                }
-
-                if ($filter) {
-                    unset($pages[$i]);
+                    $object = $user->getObject('post', $page->object_id);
+                    $list   = $object->has('frontend.list');
+                    $others = $object->has('frontend.list_others');
+                    
+                    if ($list || ($others && !$this->isAuthor($page))) {
+                        unset($pages[$i]);
+                    }
                 }
             }
         }
@@ -193,14 +197,34 @@ class AAM_Frontend_Manager {
     public function thePosts($posts) {
         $filtered = array();
 
-        foreach ($posts as $post) {
-            $object = AAM::getUser()->getObject('post', $post->ID);
-            if (!$object->has('frontend.list')) {
-                $filtered[] = $post;
+        if (is_array($posts)) {
+            foreach ($posts as $post) {
+                $object = AAM::getUser()->getObject('post', $post->ID);
+                $list   = $object->has('frontend.list');
+                $others = $object->has('frontend.list_others');
+                
+                if (!$list && (!$others || $this->isAuthor($post))) {
+                    $filtered[] = $post;
+                }
             }
+        } else {
+            $filtered = $posts;
         }
 
         return $filtered;
+    }
+    
+    /**
+     * Check if user is post author
+     * 
+     * @param WP_Post $post
+     * 
+     * @return boolean
+     * 
+     * @access protected
+     */
+    protected function isAuthor($post) {
+        return ($post->post_author == get_current_user_id());
     }
 
     /**

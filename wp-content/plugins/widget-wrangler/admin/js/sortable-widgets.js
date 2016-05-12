@@ -65,8 +65,7 @@ WidgetWrangler.sortable.refresh_all = function() {
       WidgetWrangler.sortable.toggle_no_widgets();
       WidgetWrangler.sortable.update_widget_weights();
       WidgetWrangler.sortable.message();
-    })
-    .disableSelection();
+    });
 	
 
 

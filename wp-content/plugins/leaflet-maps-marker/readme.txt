@@ -1,13 +1,13 @@
 === Leaflet Maps Marker (Google Maps, OpenStreetMap, Bing Maps) ===
-Contributors:      harmr
+Contributors:      harmr, waseem_senjer
 Plugin Name:       Leaflet Maps Marker
 Plugin URI:        https://www.mapsmarker.com
-Tags:              Google Maps, OpenStreetMap, OSM, bing maps, googlemaps, google earth, map, maps, kml, gpx, location, augmented-reality
+Tags:              Google Maps, googlemaps, OpenStreetMap, bing, map, maps, mapping, gpx, route, location, store locator, placemarker
 Author URI:        https://www.mapsmarker.com
 Author:            MapsMarker.com e.U.
 Requires at least: 3.4
-Tested up to:      4.4-RC1
-Stable tag:        3.10.3
+Tested up to:      4.5.2
+Stable tag:        3.10.4
 License:           GPLv2
 
 The most comprehensive & user-friendly mapping solution for WordPress
@@ -22,13 +22,12 @@ With Leaflet Maps Marker, you can
 
 * pin your favorites places with **markers**,
 * show **directions** for your locations,
-* use integrated **address search** for quick results,
 * choose from over **1000 free, customizable icons** from [Maps Icons Collection](https://mapicons.mapsmarker.com),
 * add **popup description text or images** for each marker,
 * organize your markers in **layers**,
 * choose an **individual basemap, size and zoom level** for each marker and layer map
 * display your maps by just adding a **shortcode** - e.g. [mapsmarker marker="1"] - to posts, pages, widgets and templates
-* on the basemap of your choice: **Google Maps** (road, satellite, hybrid, terrain), **Open Street Map**, **Bing** (aerial, aerials + labels, road), **Mapbox** (road, satellite) and any **custom WMTS-map**
+* on the basemap of your choice: **Open Street Map**, **Google Maps** (road, satellite, hybrid, terrain), **Bing** (aerial, aerials + labels, road), **Mapbox** (road, satellite) and any **custom WMTS-map**
 * and even in **augmented-reality** browsers like Wikitude!
 
 This plugin is built by a team with a vision. We follow a moral code and value the plugin’s security, your privacy and the documentation of our work. Read our [mission statement](https://www.mapsmarker.com/our-vision-and-mission-statement/) here. 
@@ -37,7 +36,7 @@ This plugin is built by a team with a vision. We follow a moral code and value t
 
 **Frontend**
 
-* show directions for your locations using Google Maps, [yournavigation.org](http://www.yournavigation.org), [openrouteservice.org](http://www.openrouteservice.org) or [map.project-osrm.org](map.project-osrm.org)
+* show directions for your locations using Google Maps, [yournavigation.org](http://www.yournavigation.org) or [openrouteservice.org](http://www.openrouteservice.org)
 * configure up to 10 WMS servers to display additional information from [external geo data providers](https://www.mapsmarker.com/wms) (like the European Environment Agency) on your maps
 * export your markers as KML file for displaying in Google Earth ([view screenshot](https://demo.mapsmarker.com/features/google-earth-integration/)) or Google Maps ([view screenshot](https://demo.mapsmarker.com/features/google-maps-import/))
 * export your markers as GeoJSON for embedding in external websites or apps
@@ -80,7 +79,7 @@ This plugin is built by a team with a vision. We follow a moral code and value t
 * full support for responsive designs (automatic resizing of maps if viewport is wider than map width)
 * full RTL (Right-to-Left) language support
 * full UTF8-support for cyrillic, chinese or other alphabets on marker/layername and marker popup text
-* support for 36 languages – please check out our [translations platform](https://translate.mapsmarker.com/projects/lmm) if you want to contribute
+* support for 46 languages – please check out our [translations platform](https://translate.mapsmarker.com/projects/lmm) if you want to contribute
 * support for Retina displays to display maps in a higher resolution
 * GeoJSON feeds for every marker and layer with [JSONP support](https://www.mapsmarker.com/docs/how-to-use-jsonp-for-integration-of-markers-or-layers-on-external-sites/)
 * option to select plugin default language in settings for backend and frontend
@@ -115,7 +114,7 @@ Maps Marker makes it easy to switch between languages. Thanks to over 100 transl
 * Croatian (hr) thanks to Neven Pausic, Alan Benic and Marijan Rajic
 * Czech (cs_CZ) thanks to Viktor Kleiner and Vlad Kuzba
 * Danish (da_DK) thanks to Mads Dyrmann Larsen and Peter Erfurt
-* Dutch (nl_NL) thanks to Marijke Metz and Patrick Ruers
+* Dutch (nl_NL) thanks to Marijke Metz, Patrick Ruers and Fokko van der Leest
 * English (en_US)
 * Finnish (fi_FI) thanks to Jessi Bjoerk
 * French (fr_FR) thanks to Vincèn Pujol and Rodolphe Quiedeville, Fx Benard, cazal cédric, Fabien Hurelle and Thomas Guignard
@@ -133,7 +132,7 @@ Maps Marker makes it easy to switch between languages. Thanks to over 100 transl
 * Lithuanian (lt_LT) thanks to Donatas Liaudaitis
 * Malawy (ms_MY) thanks to Mohd Zulkifli
 * Norwegian/Bokmal (nb_NO) thanks to Inge Tang
-* Polish (pl_PL) translation thanks to Pawel Wyszynski, Tomasz Rudnicki and Robert Pawlak
+* Polish (pl_PL) translation thanks to Pawel Wyszynski, Tomasz Rudnicki, Robert Pawlak and Daniel
 * Portuguese (pt_BR) thanks to Andre Santos and Antonio Hammerl
 * Portuguese (pt_PT) translation thanks to Joao Campos
 * Romanian (ro_RO) translation thanks to Arian, Daniel Codrea and Flo Bejgu, http://www.inboxtranslation.com
@@ -142,7 +141,7 @@ Maps Marker makes it easy to switch between languages. Thanks to over 100 transl
 * Slovenian (sl_SL) thanks to Anna Dukan
 * Spanish (es_ES) thanks to David Ramirez, Alvaro Lara, Ricardo Viteri and Juan Valdes
 * Spanish (es_MX) thanks to Victor Guevara and Eze Lazcano
-* Swedish (sv_SE) thanks to Swedish translation thanks to Olof Odier, Tedy Warsitha, Dan Paulsson, Elger Lindgren and Anton Andreasson
+* Swedish (sv_SE) thanks to Swedish translation thanks to Olof Odier, Tedy Warsitha, Dan Paulsson, Elger Lindgren, Anton Andreasson and Tony Lygnersjö
 * Thai (th) thanks to Makarapong Chathamma and Panupong Siriwichayakul
 * Turkish (tr_TR) thanks to Emre Erkan and Mahir Tosun
 * Uighur (ug) thanks to Yidayet Begzad
@@ -156,12 +155,14 @@ For full credits of each translations please visit [https://www.mapsmarker.com/l
 
 * **latest [leaflet.js](http://www.leafletjs.com) version** for higher performance & usability
 * animated [marker clustering](https://www.mapsmarker.com/pro-feature-clustering)
+* [organize your markers in categories and to toggle their visibility on frontend](https://www.mapsmarker.com/v2.7p)
+* [dynamic list of markers supporting paging, searching and sorting - including distance from current position](https://www.mapsmarker.com/v2.7p)
+* [home button allowing your visitors to reset the map to its original state](https://www.mapsmarker.com/v2.7p)
 * display [GPX tracks](https://www.mapsmarker.com/pro-feature-gpx)
 * [mobile optimized maps] (no jQuery needed) (https://www.mapsmarker.com/pro-feature-nojquery)
 * [mobile web app support and optimized mobile viewport](https://www.mapsmarker.com/pro-feature-webapp)
 * [geolocation](https://www.mapsmarker.com/v1.9p) - show-and-follow with real-time updates
 * support for [CSV/XLS/XLSX/ODS import and export](https://www.mapsmarker.com/pro-feature-import) for bulk additions and bulk updates of markers
-* [Google Adsense for maps integration](https://www.mapsmarker.com/pro-feature-adsense)
 * [HTML5 fullscreen maps](https://www.mapsmarker.com/pro-feature-html-fullscreen-maps)
 * [minimaps](https://www.mapsmarker.com/pro-feature-minimaps)
 * [custom Google Maps styling](https://www.mapsmarker.com/pro-feature-google-styling)
@@ -199,6 +200,10 @@ For full credits of each translations please visit [https://www.mapsmarker.com/l
 * [XML sitemaps integration: improved local SEO value by automatically adding links to KML maps to your XML sitemaps (if plugin "Google XML Sitemaps" is active)](https://www.mapsmarker.com/v2.6p)
 * [support for sorting list of markers below layer maps by distance from layer center](https://www.mapsmarker.com/v2.6p)
 * [improved backend usability by listing all contents (posts, pages, CPTs, widgets) where each shortcode is used](https://www.mapsmarker.com/v2.6p)
+* [Marker validity check for layer assignements](https://www.mapsmarker.com/v2.7p)
+* [RESTful API allowing you to access some of the common core functionalities](https://www.mapsmarker.com/restapi)
+* [Javascript Events API for LeafletJS to to attach events handlers to markers and layers](https://www.mapsmarker.com/jseventsapi)
+* [support for filters and actions](https://www.mapsmarker.com/filters-actions)
 * **frequent updates**
 * **dedicated and priority support** from the plugin author
 * non-expiring license keys
@@ -293,13 +298,14 @@ For demo maps please visit [https://www.mapsmarker.com/demo](https://www.mapsmar
 21. Pro preview: mobile web app support for fullscreen maps and optimized mobile viewport
 22. Pro preview: custom Google Maps styling
 23. Pro preview: QR codes with custom backgrounds
-24. Pro preview: Google Adsense for maps integration
-25. Pro preview: upload icon button & custom icon directory
-26. Pro preview: backup and restore of settings
-27. Pro preview: advanced recent marker widget
-28. Pro preview: MapsMarker API
-29. Pro preview: whitelabel backend admin pages
-30. Pro preview: advanced permission settings
+24. Pro preview: upload icon button & custom icon directory
+25. Pro preview: backup and restore of settings
+26. Pro preview: advanced recent marker widget
+27. Pro preview: MapsMarker API
+28. Pro preview: whitelabel backend admin pages
+29. Pro preview: advanced permission settings
+30. Pro preview: filter maps on frontend
+31. Pro preview: dynamic list of markers
 
 == Other Notes ==
 
@@ -332,13 +338,13 @@ This program is free software; you can redistribute it and/or modify it under th
 
 = Trademark and copyright =
 MapsMarker &reg;
-Copyright 2011-2015, MapsMarker.com e.U., All Rights Reserved
+Copyright 2011-2016, MapsMarker.com e.U., All Rights Reserved
 
 == Upgrade Notice ==
-= v3.10.3 =
-secure loading of Google Maps API and map tiles via https, admin notice bugfix - see https://www.mapsmarker.com/v3.10.3 for more details
+= v3.10.4 =
+compatibility and bugfix release - see https://www.mapsmarker.com/v3.10.4 for more details
 
 == Changelog ==
-[blog post with details about v3.10.3](https://www.mapsmarker.com/v3.10.3)
+[blog post with details about v3.10.4](https://www.mapsmarker.com/v3.10.4)
 
 [changelog for all versions](https://www.mapsmarker.com/changelog)

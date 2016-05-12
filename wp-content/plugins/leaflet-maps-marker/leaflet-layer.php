@@ -23,7 +23,6 @@ if ( $lmm_options['defaults_marker_icon_shadow_url_status'] == 'default' ) {
 $current_editor = get_option( 'leafletmapsmarker_editor' );
 $new_editor = isset($_GET['new_editor']) ? $_GET['new_editor'] : '';
 $current_editor_css = ($current_editor == 'simplified') ? 'display:none;' : '';
-$markercount_toggle = isset($_GET['markercount_toggle']) ? $_GET['markercount_toggle'] : '';
 //info: workaround - select shortcode on input focus doesnt work on iOS
 global $wp_version;
 if ( version_compare( $wp_version, '3.4', '>=' ) ) {
@@ -47,7 +46,7 @@ if (!empty($action)) {
   if ($action == 'add') {
   if ( ($lat_check != NULL) && ($lon_check != NULL) ) {
 		global $current_user;
-		get_currentuserinfo();
+		wp_get_current_user();
 		//info: set values for wms checkboxes status
 		$wms_checkbox = isset($_POST['wms']) ? '1' : '0';
 		$wms2_checkbox = isset($_POST['wms2']) ? '1' : '0';
@@ -90,7 +89,7 @@ if (!empty($action)) {
   elseif ($action == 'edit') {
   if ( ($lat_check != NULL) && ($lon_check != NULL) ) {
 		global $current_user;
-		get_currentuserinfo();
+		wp_get_current_user();
 		//info: set values for wms checkboxes status
 		$wms_checkbox = isset($_POST['wms']) ? '1' : '0';
 		$wms2_checkbox = isset($_POST['wms2']) ? '1' : '0';
@@ -166,7 +165,7 @@ if (!empty($action)) {
 }
 else {
   global $current_user;
-  get_currentuserinfo();
+  wp_get_current_user();
   $id = '';
   $name = '';
   $basemap = $lmm_options[ 'standard_basemap' ];
@@ -429,8 +428,8 @@ if ( $edit_status == 'updated') {
 				<td class="lmm-border"><input <?php if (get_option('leafletmapsmarker_update_info') == 'hide') { echo 'autofocus'; } ?> style="width: 640px;" maxlenght="255" type="text" id="layername" name="name" value="<?php echo stripslashes($name) ?>" /></td>
 			</tr>
 			<tr>
-				<td class="lmm-border"><label for="address"><strong><?php _e('Location','lmm') ?></strong></label><br/><a tabindex="111" href="https://developers.google.com/places/documentation/autocomplete" target="_blank"><img style="padding-top:9px;" src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/powered-by-google.png" width="104" height="16" /></a></td>
-				<td class="lmm-border"><label for="address"><?php _e('Please select a place or an address','lmm') ?></label> <?php if (current_user_can('activate_plugins')) { echo '<span style="' . $current_editor_css . '"><a tabindex="112" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-google-section4">(' . __('Settings','lmm') . ')</a></span>'; } ?><br/>
+				<td class="lmm-border"><label for="address"><strong><?php _e('Location','lmm') ?></strong></label></td>
+				<td class="lmm-border"><label for="address"><?php _e('Please select a place or an address','lmm') ?></label><br/>
 					<input style="width:640px;height:25px;" type="text" id="address" name="address" value="<?php echo stripslashes(htmlspecialchars($laddress)); ?>" disabled="disabled" />
 					<div style="clear:both;margin-top:5px;<?php echo $current_editor_css; ?>">
 					<?php _e('or paste coordinates here','lmm') ?> -
@@ -676,6 +675,18 @@ if ( $edit_status == 'updated') {
 				<td class="lmm-border"><p><strong><label for="multi_layer_map"><?php _e('Multi Layer Map','lmm') ?></label></strong>&nbsp;
 					<input type="checkbox" name="multi_layer_map" id="multi_layer_map" <?php checked($multi_layer_map, 1 ); ?>><br/>
 					<small><?php _e('Show markers from other layers on this map','lmm') ?></small></p>
+					<p>
+				<strong><?php _e('Filter controlbox:','lmm'); ?></strong><br/>
+				<input style="margin-top:1px;" id="controlbox_mlm_filter_hidden" type="radio" name="controlbox_mlm_filter" value="0" disabled="disabled"><label for="controlbox_mlm_filter_hidden"><?php _e('hidden','lmm') ?></label><br/>
+				<input style="margin-top:1px;" id="controlbox_mlm_filter_collapsed" type="radio" name="controlbox_mlm_filter" value="1" checked="checked" disabled="disabled"><label for="controlbox_mlm_filter_collapsed"><?php _e('collapsed','lmm') ?></label><br/>
+				<input style="margin-top:1px;" id="controlbox_mlm_filter_expanded" type="radio" name="controlbox_mlm_filter" value="2" disabled="disabled"><label for="controlbox_mlm_filter_expanded"><?php _e('expanded','lmm') ?></label><br/>
+				<small><?php _e('Allows you to toggle marker display on frontend','lmm') ?>
+				<?php if (current_user_can('activate_plugins')) {
+				echo '<span id="toggle-mlm-filters-settings">(<a tabindex="125" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#mapdefaults-section21">' . __('Settings','lmm') . '</a>)</span>';
+			} ?>
+				<a href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm'); ?>"><?php _e('Feature available in pro version only','lmm'); ?></a>
+				</small>
+				</p>
 				</td>
 				<td class="lmm-border">
 					<?php
@@ -686,30 +697,61 @@ if ( $edit_status == 'updated') {
 					__('Please do not change an existing layer map with assigned markers into a multi layer map, as those assigned markers will not be displayed on the multi layer map!','lmm').PHP_EOL;
 					$mlm_checked_all = ( in_array('all', $multi_layer_map_list_exploded) ) ? ' checked="checked"' : '';
 					echo '<br/><br/><input id="mlm-all" type="checkbox" id="mlm-all" name="mlm-all" ' . $mlm_checked_all . '> <label for="mlm-all">' . __('display all markers','lmm') . '</label><br/><br/><strong>' . __('Display markers from selected layers only','lmm') . '</strong><br/>';
+
+					$pro_feature_banner_inline = ' <a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/pro-feature-banner.png" width="75" height="15" style="display:inline;" /></a>';					
+					echo '<table  cellspacing="0" id="list-markers" class="wp-list-table widefat lmm-mlm-layers-table" style="width:100%;margin-top:5px;">
+							<thead>
+								<tr>
+									<th class="manage-column column-cb check-column" scope="col"></th>
+									<th class="manage-column before_primary column-id" scope="col"><strong>ID</strong></th>
+									<th class="manage-column column-primary column-layername" scope="col"><strong>' . __('layer name','lmm') . '</strong></th>
+									<th class="manage-column column-markercount" scope="col" style="text-align:center;"><strong>' . __('marker count','lmm') . '</strong></th>
+									<th class="manage-column column-addtocontrolbox" scope="col"><strong>' . __('add layer to filter controlbox?','lmm') . '</strong>' . $pro_feature_banner_inline . '</th>
+									<th class="manage-column column-icon" scope="col"><strong>' . __('icon url for filter controlbox','lmm') . '</strong>' . $pro_feature_banner_inline . '</th>
+									<th class="manage-column column-filtername" scope="col"><strong>' . __('name for filter controlbox','lmm') . '</strong>' . $pro_feature_banner_inline . '</th>
+								</tr>
+							</thead>
+							<tbody id="the-list">';
+					
 					foreach ($layerlist as $mlmrow){
-						if ($markercount_toggle == 'show') { //info: to prevent to many mysql queries
-							$mlm_markercount = $wpdb->get_var('SELECT count(*) FROM `'.$table_name_layers.'` as l INNER JOIN '.$table_name_markers.' AS m ON l.id=m.layer WHERE l.id='.$mlmrow['lid']);
-						} else { 
-							$mlm_markercount = 'hide';
-						}
+						$mlm_markercount = $wpdb->get_var('SELECT count(*) FROM `'.$table_name_layers.'` as l INNER JOIN '.$table_name_markers.' AS m ON l.id=m.layer WHERE l.id='.$mlmrow['lid']);
 						if ( in_array($mlmrow['lid'], $multi_layer_map_list_exploded) ) {
 							$mlm_checked{$mlmrow['lid']} = ' checked="checked"';
 						} else {
 							$mlm_checked{$mlmrow['lid']} = '';
 						}
 						if ( ($id != $mlmrow['lid']) || ($mlm_markercount != 0) ) { //info: make current layer selectable for MLM if has markers only
-							if ($markercount_toggle == 'show') { 
-								echo '<input type="checkbox" id="mlm-'.$mlmrow['lid'].'" name="mlm-'.$mlmrow['lid'].'" ' . $mlm_checked{$mlmrow['lid']} . '> <label for="mlm-'.$mlmrow['lid'].'">' . stripslashes(htmlspecialchars($mlmrow['lname'])) . ' (' . $mlm_markercount . ' ' .  __('marker','lmm') . ', ID ' . $mlmrow['lid'] . ' - <a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_layer&id='.$mlmrow['lid'].'" title="' . esc_attr__('show map','lmm') . '" target="_blank">' . __('show map','lmm') . '</a>)</label><br/>';
-							} else {
-								if ($isedit) {
-									$show_markercount_link = LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_layer&id=' . $id . '&markercount_toggle=show';
-								} else {
-									$show_markercount_link = LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_layer&markercount_toggle=show';
-								}
-								echo '<input type="checkbox" id="mlm-'.$mlmrow['lid'].'" name="mlm-'.$mlmrow['lid'].'" ' . $mlm_checked{$mlmrow['lid']} . '> <label for="mlm-'.$mlmrow['lid'].'">' . stripslashes(htmlspecialchars($mlmrow['lname'])) . ' (<a href="' . $show_markercount_link . '" title="' . esc_attr__('hidden by default for a better performance','lmm') . '">' .  __('show marker count','lmm') . '</a>), ID ' . $mlmrow['lid'] . ' - <a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_layer&id='.$mlmrow['lid'].'" title="' . esc_attr__('show map','lmm') . '" target="_blank">' . __('show map','lmm') . '</a></label><br/>';
-							}
+							echo '<tr valign="middle" class="alternate">
+							<th class="check-column" scope="row">
+							<input type="checkbox" id="mlm-'.$mlmrow['lid'].'" name="mlm-'.$mlmrow['lid'].'" ' . $mlm_checked{$mlmrow['lid']} . '> <label for="mlm-'.$mlmrow['lid'].'" />
+							</th>
+							<td class="before_primary" style="padding-left:0px;padding-right:0px;" data-colname="ID">
+								<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_layer&id='.$mlmrow['lid'].'" title="' . esc_attr__('show map','lmm') . '" target="_blank">' . $mlmrow['lid'] . '</a>
+							</td>
+							<td class="column-primary has-row-actions" data-colname="'.__('layer name', 'lmm').'">
+								' . stripslashes(htmlspecialchars($mlmrow['lname'])) . ' <button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button>
+							</td>
+							<td style="text-align:center;" data-colname="'.__('marker count', 'lmm').'">
+								' . $mlm_markercount . '
+							</td>
+							<td data-colname="'.__('add layer to filter controlbox?', 'lmm').'">
+								<select id="mlm_filter_status_' . $mlmrow['lid'] . '" class="mlm_filter_status" data-layerid="'. $mlmrow['lid'] .'"  name="mlm_filter_status_' . $mlmrow['lid'] . '">
+									<option value="pro" disabled="disabled" selected="selected">' . esc_attr__('Feature available in pro version only','lmm') . '</option>
+									<option value="0" disabled="disabled">' . esc_attr__('no','lmm') . '</option>
+									<option value="1" disabled="disabled">' . esc_attr__('yes (checked)','lmm') . '</option>
+									<option value="2" disabled="disabled">' . esc_attr__('yes (unchecked)','lmm') . '</option>
+								</select>
+							</td>
+							<td data-colname="'.__('icon url for filter controlbox', 'lmm').'">
+								<input style="height:25px; width:100%;" id="mlm_filter_icon_' . $mlmrow['lid'] . '" type="url" value="" placeholder="' . esc_attr__('Feature available in pro version only','lmm') . '" disabled="disabled"/>
+							</td>
+							<td data-colname="'.__('name for filter controlbox', 'lmm').'">
+								<input style="height:25px; width:100%;" id="mlm_filter_name_' . $mlmrow['lid'] . '" type="text" value="" placeholder="'.esc_attr__('Feature available in pro version only','lmm').'" disabled="disabled"/>
+							</td>
+							</tr>';
 						}
 					};
+					echo '</tbody></table>';
 					echo '</div>'.PHP_EOL;
 					?>
 				</td>
@@ -1497,17 +1539,7 @@ var markers = {};
 gLoader = function(){
 	function initAutocomplete() {
 		var input = document.getElementById('address');
-		<?php if ($lmm_options[ 'google_places_bounds_status' ] == 'enabled') { ?>
-		var defaultBounds = new google.maps.LatLngBounds(
-			new google.maps.LatLng(<?php echo floatval($lmm_options[ 'google_places_bounds_lat1' ]) ?>, <?php echo floatval($lmm_options[ 'google_places_bounds_lon1' ]) ?>),
-			new google.maps.LatLng(<?php echo floatval($lmm_options[ 'google_places_bounds_lat2' ]) ?>, <?php echo floatval($lmm_options[ 'google_places_bounds_lon2' ]) ?>));
-		<?php }?>
-		var autocomplete = new google.maps.places.Autocomplete(input<?php if ($lmm_options[ 'google_places_bounds_status' ] == 'enabled') { echo ', {bounds: defaultBounds}'; } ?>);
-		input.onfocus = function(){
-			<?php if ($lmm_options[ 'google_places_search_prefix_status' ] == 'enabled' ) { ?>
-			input.value = "<?php echo htmlspecialchars(addslashes($lmm_options[ 'google_places_search_prefix' ])); ?>";
-			<?php } ?>
-		};
+		var autocomplete = new google.maps.places.Autocomplete(input);
 		google.maps.event.addListener(autocomplete, 'place_changed', function() {
 			var place = autocomplete.getPlace();
 			var map = selectlayer;

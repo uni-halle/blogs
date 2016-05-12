@@ -21,9 +21,8 @@ class WW_Shortcode_Tinymce_Admin  {
    */
   function wp_admin_init(){
     // shortcode inserter
-    if (!empty($this->ww->settings['shortcode_tinymce']) &&
-        $this->ww->admin->_is_editing_enabled_post_type() &&
-        $this->ww->_check_license())
+    if ($this->ww->settings['shortcode_tinymce'] &&
+        $this->ww->admin->_is_editing_enabled_post_type())
     {
       add_action('admin_head', array($this, 'wp_admin_head'));
 

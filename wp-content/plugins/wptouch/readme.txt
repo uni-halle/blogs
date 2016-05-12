@@ -2,7 +2,7 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 4.2
-Stable tag: 4.1.1
+Stable tag: 4.1.3
 Tested up to: 4.5
 License: GPLv2
 
@@ -32,6 +32,19 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 6. Theme settings
 
 == Changelog ==
+
+= Version 4.1.3 (May 6, 2016) =
+
+* Fixed: Auto-upgrade from WPtouch to WPtouch Pro when license is activated
+* Updated: Hebrew translation (partial)
+
+= Version 4.1.2 (May 3, 2016) =
+
+* Fixed: Auto-disable free plugin when WPtouch Pro is active
+* Fixed: Ensure correct theme is active when downgrading from WPtouch Pro
+* Fixed: Pinterest sharing link
+* Fixed: Search forms now allow searching while in preview mode
+* Updated: Translations for Arabic, French, Indonesian, Japanese, Portuguese
 
 = Version 4.1.1 (April 12, 2016) =
 

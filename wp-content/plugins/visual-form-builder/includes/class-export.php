@@ -574,13 +574,13 @@ class VisualFormBuilder_Export {
 	public function ajax_entries_count() {
 		global $wpdb, $export;
 
-		if ( !isset( $_POST['action'] ) )
+		if ( !isset( $_GET['action'] ) )
 			return;
 
-		if ( $_POST['action'] !== 'visual_form_builder_export_entries_count' )
+		if ( $_GET['action'] !== 'visual_form_builder_export_entries_count' )
 			return;
 
-		$form_id = absint( $_POST['id'] );
+		$form_id = absint( $_GET['id'] );
 
 		echo $export->count_entries( $form_id );
 
