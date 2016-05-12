@@ -12,7 +12,7 @@
 	<?php
 		if ( has_post_thumbnail() ) : ?>
 			<figure>
-				<?php the_post_thumbnail(); ?>
+				<?php the_post_thumbnail('medium'); ?>
 			</figure>
 	<?php endif; ?>
 

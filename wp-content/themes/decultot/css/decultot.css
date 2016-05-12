@@ -150,7 +150,7 @@ video, iframe { max-width: 100%; height: auto; }
 .archive article:first-child { border-top: none; }
 .archive article p { margin: 0; }
 .archive article .read-more a { display: block; padding: 20px 0 0; }
-.archive .attachment-post-thumbnail { width: 100%; display: block; margin-bottom: 20px; }
+.archive .attachment-post-thumbnail, .archive .attachment-medium { width: 100%; display: block; margin-bottom: 20px; }
 
 #archive_articles .page-header { margin-bottom: 20px; padding-top: 0; }
 
