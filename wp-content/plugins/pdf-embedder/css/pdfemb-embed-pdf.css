@@ -153,6 +153,7 @@ div.pdfemb-toolbar button, div.pdfemb-toolbar button[disabled] {
 
 	min-width: 16px;
 	padding: 2px 6px 0;
+	width: auto;
 
 	border-radius: 2px;
 	color: hsla(0,0%,100%,.8);
@@ -326,6 +327,7 @@ input.pdfemb-page-num {
 .pdfembAnnotationLayer .linkAnnotation > a /* -ms-a */  {
 	background: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") 0 0 repeat;
     border: none;
+	opacity: 0;
 }
 
 .pdfembAnnotationLayer .linkAnnotation > a:hover {
