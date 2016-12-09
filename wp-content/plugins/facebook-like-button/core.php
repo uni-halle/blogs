@@ -4,7 +4,7 @@
 Plugin Name: Facebook Like (PressGraph)
 Plugin URI: http://www.ahmedgeek.com/facebook-like-v6
 Description: Plugin that helps you add the Facebook Like button to your website, no coding required.
-Version: 6.0.6
+Version: 6.0.9
 Author: AhmedGeek
 Author URI: http://www.ahmedgeek.com
 License: GPL2

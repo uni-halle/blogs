@@ -131,6 +131,7 @@ class manipulator{
 					<meta property="og:type" content="article" />
 					<meta property="og:url" content="<?php echo get_permalink(get_the_id()); ?>" />
 					<meta property="og:image" content="<?php echo $ogImage; ?>" />
+					<meta property="og:image:url" content="<?php echo $ogImage; ?>" />
 					<meta property="og:description" content="<?php echo strip_tags(the_excerpt()); ?>" />
 					<!-- PressGraph Post Meta Tags -->
 		
@@ -144,6 +145,7 @@ class manipulator{
 				<meta property="og:type" content="article" />
 				<meta property="og:url" content="<?php echo bloginfo("url"); ?>" />
 				<meta property="og:image" content="<?php echo $defaultImage; ?>" />
+				<meta property="og:image:url" content="<?php echo $defaultImage; ?>" />
 				<meta property="og:description" content="<?php echo bloginfo("description"); ?>" />
 				<!-- PressGraph Post Meta Tags -->
 	
