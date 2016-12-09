@@ -9,7 +9,7 @@ function tempera_theme_settings_placeholder() {
 ?>
    <div id="tempera-settings-placeholder">
 		<h3>Where are the theme settings?</h3>
-		<p>According to the <a href="https://make.wordpress.org/themes/2015/04/21/this-weeks-meeting-important-information-regarding-theme-options/" target="_blank">Wordpress Theme Review Guidelines</a>, starting with tempera v1.2 we had to remove the settings page from the theme and transfer all the settings to the <a href="http://codex.wordpress.org/Appearance_Customize_Screen" target="_blank">Customizer</a> interface.</p>
+		<p>According to the <a href="https://make.wordpress.org/themes/2015/04/21/this-weeks-meeting-important-information-regarding-theme-options/" target="_blank">Wordpress Theme Review Guidelines</a>, starting with Tempera v1.2 we had to remove the settings page from the theme and transfer all the settings to the <a href="http://codex.wordpress.org/Appearance_Customize_Screen" target="_blank">Customizer</a> interface.</p>
 		<p>However, we feel that the Customizer interface does not provide the right medium (in space of terms and usability) for our existing theme options. We've created our settings with a certain layout that is not really compatible with the Customizer interface.</p>
 		<p>As an alternative solution that allows us to keep updating and improving our theme we have moved the settings functionality to the separate <a href="https://wordpress.org/plugins/cryout-theme-settings/" target="_blank">Cryout Serious Theme Settings</a> plugin. To restore the theme settings page to previous functionality, all you need to do is install this free plugin with a couple of clicks.</p>
 		<h3>How do I restore the settings?</h3>
@@ -299,7 +299,7 @@ function tempera_dynamic_styles_callback(){
 }
 
 function cryout_fetch_feed() {
-	$tempera_news = fetch_feed( array( 'http://www.cryoutcreations.eu/cat/tempera/feed/') );
+	$tempera_news = fetch_feed( array( 'http://www.cryoutcreations.eu/cat/wordpress-themes/tempera/feed/') );
 	$maxitems = 0;
 	if ( ! is_wp_error( $tempera_news ) ) {
 			$maxitems = $tempera_news->get_item_quantity( 10 );

@@ -11,6 +11,7 @@
 function tempera_register_styles() {
 	wp_register_style( 'tempera-style', get_stylesheet_uri(), NULL, _CRYOUT_THEME_VERSION );
 	wp_register_style( 'tempera-fonts', get_template_directory_uri() . '/fonts/fontfaces.css', NULL, _CRYOUT_THEME_VERSION );
+	if (is_rtl()) wp_enqueue_style( 'parabola-rtl', get_template_directory_uri() . '/styles/rtl.css', NULL, _CRYOUT_THEME_VERSION );
 }
 
 add_action('init', 'tempera_register_styles' );
@@ -19,9 +20,9 @@ add_action('init', 'tempera_register_styles' );
 function tempera_enqueue_styles() {
 	global $temperas;
 	foreach ($temperas as $key => $value) { ${"$key"} = $value ;}
-	
+
 	$gfonts = array();
-	
+
 	if($tempera_mobile=="Enable") { wp_register_style( 'tempera-mobile', get_template_directory_uri() . '/styles/style-mobile.css', NULL, _CRYOUT_THEME_VERSION ); }
 	if($tempera_frontpage=="Enable" ) { wp_register_style( 'tempera-frontpage', get_template_directory_uri() . '/styles/style-frontpage.css', NULL, _CRYOUT_THEME_VERSION ); }
 
@@ -31,25 +32,25 @@ function tempera_enqueue_styles() {
 	if($tempera_headingsgooglefont) $gfonts[] = esc_attr(preg_replace( '/\s+/', '+',$tempera_headingsgooglefont ));
 	if($tempera_sitetitlegooglefont) $gfonts[] = esc_attr(preg_replace( '/\s+/', '+',$tempera_sitetitlegooglefont ));
 	if($tempera_menugooglefont) $gfonts[] = esc_attr(preg_replace( '/\s+/', '+',$tempera_menugooglefont ));
-	
+
 	wp_enqueue_style( 'tempera-fonts');
-	
+
 	// enqueue fonts with subsets separately
 	foreach($gfonts as $i=>$gfont):
 		if (strpos($gfont,"&") === false):
 		   // do nothing
 		else:
-			wp_enqueue_style( 'tempera-googlefont_'.$i, '//fonts.googleapis.com/css?family=' . $gfont );	
+			wp_enqueue_style( 'tempera-googlefont_'.$i, '//fonts.googleapis.com/css?family=' . $gfont );
 			unset($gfonts[$i]);
-		endif;		
+		endif;
 	endforeach;
-	
+
 	// merged fonts
 	if ( count($gfonts)>0 ):
 		wp_enqueue_style( 'tempera-googlefonts', '//fonts.googleapis.com/css?family=' . implode( "|" , array_unique($gfonts) ), array(), null, 'screen' );
 	endif;
 	wp_enqueue_style( 'tempera-style' );
-	
+
 	// presentation page styling enqueued in frontpage.php
 	if (($tempera_frontpage=="Enable") && is_front_page() && 'posts' == get_option( 'show_on_front' )) { wp_enqueue_style( 'tempera-frontpage' ); }
 

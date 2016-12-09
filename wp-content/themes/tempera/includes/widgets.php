@@ -98,7 +98,6 @@ add_action ('admin_print_scripts-widgets.php','tempera_widget_scripts');
 if ( ! function_exists('tempera_singlecolumn_output') ):
 function tempera_singlecolumn_output($data){
 	foreach ($data as $key => $value) { ${"$key"} = $value; }
-	$counter = 0;
 	?>
 		<div class="column<?php echo $colno; ?>">
 			<?php if (!empty($image)) {	?>
@@ -109,7 +108,7 @@ function tempera_singlecolumn_output($data){
 				<div class="column-image">
 					<div class="column-image-inside">  </div>
 						<a href="<?php echo $link; ?>" <?php echo $blank; ?> class="clickable-column">
-							<img src="<?php echo esc_url($image) ?>" id="columnImage<?php echo $counter; ?>" alt="<?php echo (!empty($title)?wp_kses($title,array()):''); ?>" />
+							<img src="<?php echo esc_url($image) ?>" alt="<?php echo (!empty($title)?wp_kses($title,array()):''); ?>" />
 						</a>
 					
 					<?php if (!empty($text)) { ?>		

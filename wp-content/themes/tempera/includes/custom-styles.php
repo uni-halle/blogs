@@ -6,27 +6,39 @@ function tempera_body_classes($classes) {
 	$classes[] = $temperas['tempera_image_style'];
 	$classes[] = $temperas['tempera_caption'];
 
-	if ($temperas['tempera_magazinelayout'] == "Enable" || (is_front_page() && $temperas['tempera_frontpage'] == "Enable" && $temperas['tempera_frontpostsperrow'] == '2') ) { $classes[] = 'magazine-layout'; }
+	$magazine_layout = FALSE;
+	if ($temperas['tempera_magazinelayout'] == "Enable") {
+		if (is_front_page()) {
+			if ( ($temperas['tempera_frontpage'] == "Enable") && (intval($temperas['tempera_frontpostsperrow']) == 1) ) { /* no magazine layout */ }
+																											 else { $magazine_layout = TRUE; }
+		} else {
+			$magazine_layout = TRUE;
+		}
+	}
+	if ( is_front_page() && ($temperas['tempera_frontpage'] == "Enable") && (intval($temperas['tempera_frontpostsperrow']) == 2) ) { $magazine_layout = TRUE; }
+
+	if ($magazine_layout) $classes[] = 'magazine-layout';
+
 	if ( is_front_page() && $temperas['tempera_frontpage'] == "Enable" && (get_option('show_on_front') == 'posts') ) {
 		$classes[] = 'presentation-page';
-		$classes[] = 'coldisplay'.$temperas['tempera_coldisplay']; 
+		$classes[] = 'coldisplay'.$temperas['tempera_coldisplay'];
 	}
 
 	switch ($temperas['tempera_menualign']):
-		case "center": 
-			$classes[] = 'tempera-menu-center';
-			break;
-		case "right": 
-			$classes[] = 'tempera-menu-right';
-			break;
-		case "rightmulti": 
-			$classes[] = 'tempera-menu-rightmulti';
-			break;
-		default: 
-			$classes[] = 'tempera-menu-left';
-			break;
-	  endswitch;	
-	
+		case "center": 		$classes[] = 'tempera-menu-center'; break;
+		case "right":  		$classes[] = 'tempera-menu-right'; break;
+		case "rightmulti": 	$classes[] = 'tempera-menu-rightmulti'; break;
+		default: 			$classes[] = 'tempera-menu-left'; break;
+	  endswitch;
+
+	switch ($temperas['tempera_topbar']):
+		case "Fixed": 		$classes[] = 'tempera-topbarfixed'; break;
+		case "Hide":  		$classes[] = 'tempera-topbarhide'; break;
+		case "Normal": default: break;
+	endswitch;
+
+	if ($temperas['tempera_topbarwidth'] == 'Full width') $classes[] = 'tempera-topbarfull';
+
 	return $classes;
 }
 add_filter('body_class','tempera_body_classes');
@@ -58,8 +70,8 @@ $contentSize = $contentSize - 60;
 #container.two-columns-right #content { width:calc(100% - <?php echo $sidebarSize+$colPadding; ?>px); float:left; }
 #container.two-columns-left #primary { width:<?php echo $sidebarSize; ?>px; float:left; }
 #container.two-columns-left #content { width:<?php echo $contentSize-$colPadding; ?>px; float:right; } /*fallback*/
-#container.two-columns-left #content { 	width:-moz-calc(100% - <?php echo $sidebarSize+$colPadding; ?>px); float:right; 
-										width:-webkit-calc(100% - <?php echo $sidebarSize+$colPadding; ?>px); 
+#container.two-columns-left #content { 	width:-moz-calc(100% - <?php echo $sidebarSize+$colPadding; ?>px); float:right;
+										width:-webkit-calc(100% - <?php echo $sidebarSize+$colPadding; ?>px);
 										width:calc(100% - <?php echo $sidebarSize+$colPadding; ?>px); }
 
 #container.three-columns-right .sidey { width:<?php echo $sidebarSize/2; ?>px; float:left; }
@@ -68,7 +80,7 @@ $contentSize = $contentSize - 60;
 #container.three-columns-right #content { 	width:-moz-calc(100% - <?php echo $sidebarSize+$colPadding*2; ?>px); float:left;
 											width:-webkit-calc(100% - <?php echo $sidebarSize+$colPadding*2; ?>px);
 											width:calc(100% - <?php echo $sidebarSize+$colPadding*2; ?>px);}
-											
+
 #container.three-columns-left .sidey { width:<?php echo $sidebarSize/2; ?>px; float:left; }
 #container.three-columns-left #secondary {margin-left:<?php echo $colPadding; ?>px; margin-right:<?php echo $colPadding; ?>px; }
 #container.three-columns-left #content { width:<?php echo $contentSize-$colPadding*2; ?>px; float:right;} /*fallback*/
@@ -115,14 +127,14 @@ a:hover,.entry-meta span a:hover, .comments-link a:hover { color: <?php echo $te
 #site-title span a { color:<?php echo $tempera_titlecolor; ?>; }
 #site-description { color:<?php echo $tempera_descriptioncolor; ?>; <?php if(cryout_hex2rgb($tempera_descriptionbg)): ?>background-color: rgba(<?php echo cryout_hex2rgb($tempera_descriptionbg); ?>,0.3); padding-left: 6px; <?php endif; ?>}
 
-.socials a { background-color: <?php echo $tempera_socialcolorbg; ?>; } 
+.socials a { background-color: <?php echo $tempera_socialcolorbg; ?>; }
 .socials-hover { background-color: <?php echo $tempera_socialcolorbghover; ?>; }
 /* Main menu top level */
 #access a, #nav-toggle span { color: <?php echo $tempera_menucolortxtdefault; ?>; }
 #access, #nav-toggle {background-color: <?php echo $tempera_menucolorbgdefault; ?>; }
-#access > .menu > ul > li > a > span { border-color: <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>; 
--moz-box-shadow: 1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>; 
--webkit-box-shadow: 1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>; 
+#access > .menu > ul > li > a > span { border-color: <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>;
+-moz-box-shadow: 1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>;
+-webkit-box-shadow: 1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>;
 box-shadow: 1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>; }
 #access a:hover {background-color: <?php echo cryout_hexadder($tempera_menucolorbgdefault,'13');?>; }
 #access ul li.current_page_item > a, #access ul li.current-menu-item > a,
@@ -144,21 +156,13 @@ background-color:<?php echo cryout_hexadder($tempera_submenucolorbgdefault,'14')
 <?php if (cryout_hex2rgb($tempera_submenucolorshadow)): ?>#access ul ul { box-shadow: 3px 3px 0 rgba(<?php echo cryout_hex2rgb($tempera_submenucolorshadow); ?>,0.3); }<?php endif; ?>
 
 #topbar {
-<?php if ($tempera_topbar == 'Hide'){ ?> display:none; <?php } 
-else { ?>
 	background-color:  <?php echo $tempera_topbarcolorbg; ?>;border-bottom-color:<?php echo cryout_hexadder($tempera_topbarcolorbg,'40');?>;
-	box-shadow:3px 0 3px <?php echo cryout_hexadder($tempera_topbarcolorbg,'-40');?>; 
-	<?php if ($tempera_topbar == 'Fixed'): ?>
-		position:fixed;top:0;z-index:252;opacity:0.8;
-	<?php endif; 
-}?>
+	box-shadow:3px 0 3px <?php echo cryout_hexadder($tempera_topbarcolorbg,'-40');?>;
 }
-<?php if ($tempera_topbar == 'Fixed') {?> #header-full {margin-top:30px;} <?php } ?>
-<?php if ($tempera_topbarwidth == 'Full width'){ ?> #topbar-inner {max-width:95%;} <?php } ?>
 .topmenu ul li a { color: <?php echo $tempera_topmenucolortxt; ?>; }
 .topmenu ul li a:hover { color: <?php echo $tempera_topmenucolortxthover; ?>; border-bottom-color: <?php echo $tempera_accentcolora; ?>; }
 
-#main { background-color: <?php echo $tempera_contentcolorbg; ?>; }	
+#main { background-color: <?php echo $tempera_contentcolorbg; ?>; }
 #author-info, #entry-author-info, .page-title { border-color: <?php echo $tempera_accentcolora; ?>; background: <?php echo $tempera_accentcolore; ?>; }
 #entry-author-info #author-avatar, #author-info #author-avatar { border-color: <?php echo $tempera_accentcolorc; ?>; }
 
@@ -192,18 +196,18 @@ a.continue-reading-link:hover i.icon-right-dir {color:<?php echo $tempera_accent
 .columnmore a {background:<?php echo $tempera_accentcolorb;?>;color:<?php echo $tempera_accentcolore; ?>}
 .columnmore a:hover {background:<?php echo $tempera_accentcolora;?>;}
 
-.file, .button, #respond .form-submit input#submit, input[type=submit], input[type=reset] {
+.button, #respond .form-submit input#submit, input[type=submit], input[type=reset] {
 	background-color: <?php echo $tempera_contentcolorbg; ?>;
 	border-color: <?php echo $tempera_accentcolord; ?>;
     box-shadow: 0 -10px 10px 0 <?php echo $tempera_accentcolore; ?> inset; }
-.file:hover, .button:hover, #respond .form-submit input#submit:hover {
+.button:hover, #respond .form-submit input#submit:hover {
 	background-color: <?php echo $tempera_accentcolore; ?>; }
 .entry-content tr th, .entry-content thead th {
 	color: <?php echo $tempera_contentcolortxtheadings; ?>; }
 .entry-content fieldset, #content tr td,#content tr th, #content thead th { border-color: <?php echo $tempera_accentcolord; ?>; }
  #content tr.even td { background-color: <?php echo $tempera_accentcolore; ?> !important; }
 hr { background-color: <?php echo $tempera_accentcolord; ?>; }
-input[type="text"], input[type="password"], input[type="email"], input[type="file"], textarea, select,
+input[type="text"], input[type="password"], input[type="email"], textarea, select,
 input[type="color"],input[type="date"],input[type="datetime"],input[type="datetime-local"],input[type="month"],input[type="number"],input[type="range"],
 input[type="search"],input[type="tel"],input[type="time"],input[type="url"],input[type="week"] {
 	background-color: <?php echo $tempera_accentcolore; ?>;
@@ -239,7 +243,7 @@ abbr, acronym { border-color: <?php echo $tempera_contentcolortxt; ?>; }
 .nav-previous a:hover {
 }
 .pagination { border-color:<?php echo cryout_hexadder($tempera_accentcolore,'-10');?>;}
-.pagination span, .pagination a { 
+.pagination span, .pagination a {
 	background:<?php echo $tempera_accentcolore;?>;
 	border-left-color:<?php echo cryout_hexadder($tempera_accentcolore,'-26'); ?>;
 	border-right-color:<?php echo cryout_hexadder($tempera_accentcolore,'16'); ?>;
@@ -253,21 +257,21 @@ abbr, acronym { border-color: <?php echo $tempera_contentcolortxt; ?>; }
 
 .tempera-image-one .entry-content img[class*='align'],.tempera-image-one .entry-summary img[class*='align'],
 .tempera-image-two .entry-content img[class*='align'],.tempera-image-two .entry-summary img[class*='align'] {
-	border-color:<?php echo $tempera_accentcolora; ?>;} 
+	border-color:<?php echo $tempera_accentcolora; ?>;}
 <?php
 ////////// LAYOUT //////////
 ?>
 #content p, #content ul, #content ol, #content, #frontpage blockquote { text-align:<?php echo $tempera_textalign;  ?> ; }
-#content p, #content ul, #content ol, .widget-area, .widget-area a, table, table td {
+#content p, #content ul, #content ol, #content dl, .widget-area, .widget-area a, table, table td {
                                 font-size:<?php echo $tempera_fontsize ?>;
 								word-spacing:<?php echo $tempera_wordspace ?>; letter-spacing:<?php echo $tempera_letterspace ?>; }
-#content p, #content ul, #content ol, .widget-area, .widget-area a { line-height:<?php echo $tempera_lineheight ?>; } 
+#content p, #content ul, #content ol, content dl, .widget-area, .widget-area a { line-height:<?php echo $tempera_lineheight ?>; }
 <?php if ($tempera_uppercasetext==1): ?> #site-title a, #site-description, #access a, .topmenu ul li a, .footermenu a, .entry-meta span a, .entry-utility span a, #content h3.entry-format,
 span.edit-link, h3#comments-title, h3#reply-title, .comment-author cite, .reply a, .widget-title, #site-info a, .nivo-caption h2, a.continue-reading-link,
 .column-image h3, #front-columns h3.column-header-noimage, .tinynav , .entry-title, .breadcrumbs, .page-link{ text-transform: uppercase; }<?php endif; ?>
 <?php if ($tempera_hcenter): ?> #bg_image {display:block;margin:0 auto;} <?php endif; ?>
 #content h1.entry-title, #content h2.entry-title { font-size:<?php echo $tempera_headfontsize; ?> ;}
-.widget-title, .widget-title a { font-size:<?php echo $tempera_sidefontsize; ?> ;} 
+.widget-title, .widget-title a { font-size:<?php echo $tempera_sidefontsize; ?> ;}
 <?php $font_root = 36;
 for($i=1;$i<=6;$i++):
 	echo "#content .entry-content h$i { font-size: ";
@@ -300,32 +304,33 @@ endfor; ?>
 #content p, #content ul, #content ol, #content dd, #content pre, #content hr { margin-bottom: <?php echo $tempera_paragraphspace;?>; }
 <?php if ($tempera_parindent != "0px") { ?> #content p { text-indent:<?php echo $tempera_parindent;?>;} <?php } ?>
 
-<?php if ($tempera_metapos == 'Top') { ?> footer.entry-meta {background-image:none !important;padding-top:0;} <?php } ?>
-	
-<?php switch ($tempera_menualign): 
-		case "center": ?> #access > .menu > ul { border-left: 1px solid <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>; 
-										-moz-box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>; 
-										-webkit-box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>; 
-										box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>; } <?php 
+<?php if ( ($tempera_metapos == 'Top' || $tempera_metapos == 'Hide') && ! is_single() ) { ?> footer.entry-meta { display: none; } <?php } ?>
+<?php if ( ($tempera_metapos == 'Bottom' || $tempera_metapos == 'Hide') && ! is_single() ) { ?> header.entry-header > .entry-meta { display: none; } <?php } ?>
+
+<?php switch ($tempera_menualign):
+		case "center": ?> #access > .menu > ul { border-left: 1px solid <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>;
+										-moz-box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>;
+										-webkit-box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>;
+										box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>; } <?php
 		break;
-		case "right": ?> #access > .menu > ul > li > a > span { border-left:1px solid <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>; 
-							-moz-box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>; 
-							-webkit-box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>; 
-							box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>; 
+		case "right": ?> #access > .menu > ul > li > a > span { border-left:1px solid <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>;
+							-moz-box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>;
+							-webkit-box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>;
+							box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>;
 							border-right: 0; } <?php
 		break;
-		case "rightmulti": ?> #access > .menu > ul > li > a > span { border-left:1px solid <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>; 
-							-moz-box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>; 
-							-webkit-box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>; 
+		case "rightmulti": ?> #access > .menu > ul > li > a > span { border-left:1px solid <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>;
+							-moz-box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>;
+							-webkit-box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>;
 							box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>;
-							border-right:0;	} <?php 
+							border-right:0;	} <?php
 		break;
-		default: 
-		break; 
+		default:
+		break;
 	  endswitch; ?>
-#toTop {background:<?php echo $tempera_contentcolorbg; ?>;margin-left:<?php echo $totalwidth+150 ?>px;} 		  
-<?php if (is_rtl() ) { ?> #toTop {margin-right:<?php echo $totalwidth+150 ?>px;-moz-border-radius:10px 0 0 10px;-webkit-border-radius:10px 0 0 10px;border-radius:10px 0 0 10px;}		<?php } ?>	
-#toTop:hover .icon-back2top:before {color:<?php echo $tempera_accentcolorb;?>;}  
+#toTop {background:<?php echo $tempera_contentcolorbg; ?>;margin-left:<?php echo $totalwidth+150 ?>px;}
+<?php if (is_rtl() ) { ?> #toTop {margin-right:<?php echo $totalwidth+150 ?>px;-moz-border-radius:10px 0 0 10px;-webkit-border-radius:10px 0 0 10px;border-radius:10px 0 0 10px;}		<?php } ?>
+#toTop:hover .icon-back2top:before {color:<?php echo $tempera_accentcolorb;?>;}
 
 #main {margin-top:<?php echo $tempera_contentmargintop;?>px; }
 #forbottom {margin-left: <?php echo $tempera_contentpadding;?>px; margin-right: <?php echo $tempera_contentpadding;?>px;}

@@ -101,6 +101,21 @@ function cryout_setting_sidewidth_fn() {
 
 <?php } // cryout_setting_sidewidth_fn()
 
+//CHECKBOX - Name: tempera_settings[magazinelayout]
+function cryout_setting_magazinelayout_fn() {
+	global $temperas;
+	$items = array ("Enable" , "Disable");
+	$itemsare = array( __("Enable","tempera"), __("Disable","tempera"));
+	echo "<select id='tempera_magazinelayout' name='tempera_settings[tempera_magazinelayout]'>";
+	foreach($items as $id=>$item) {
+		echo "<option value='$item'";
+		selected($temperas['tempera_magazinelayout'],$item);
+		echo ">$itemsare[$id]</option>";
+	}
+	echo "</select>";
+	echo "<div><small>".__("Enable the Magazine Layout. This layout applies to pages with posts and shows 2 posts per row.","tempera")."</small></div>";
+}
+
 //CHECKBOX - Name: ma_options[mobile]
 function cryout_setting_mobile_fn() {
 	global $temperas;
@@ -227,8 +242,12 @@ function cryout_setting_frontposts_fn() {
 		selected($temperas['tempera_frontpostsperrow'],$item);
 		echo ">$item</option>";
 	}
-	echo "</select></div>";
-	
+	echo "</select></div>"; ?>
+	<div class='slmini'><b><?php _e("More Posts text:","tempera");?></b>
+		<input id='tempera_frontmoreposts' name='tempera_settings[tempera_frontmoreposts]' size='30' type='text' value='<?php echo esc_attr( $temperas['tempera_frontmoreposts'] ) ?>' />
+		<small><?php _e("The label of the 'More Posts' button at the bottom of the Presentation Page.","tempera") ?></small></div>
+    </div> 
+	<?php	
 	
 } // cryout_setting_frontpage_fn()
 
@@ -758,8 +777,8 @@ function cryout_setting_headingsindent_fn() {
 function  cryout_setting_lineheight_fn() {
 	global $temperas;
 	cryout_proto_field( $temperas, "select", "tempera_lineheight",
-		array("0.8em" , "0.9em", "1.0em" , "1.1em" , "1.2em" , "1.3em", "1.4em" , "1.5em" , "1.6em" , "1.7em" , "1.8em" , "1.9em" , "2.0em"),
-		array( "0.8em" , "0.9em", "1.0em" , "1.1em" , "1.2em" , "1.3em", "1.4em" , "1.5em" , "1.6em" , "1.7em" , "1.8em" , "1.9em" , "2.0em")
+		array("0.8em" , "0.9em", "1.0em" , "1.1em" , "1.2em" , "1.3em", "1.4em" , "1.5em" , "1.6em" , "1.7em" , "1.8em" , "1.9em" , "2.0em", "2.1em", "2.2em", "2.3em", "2.4em", "2.5em", "2.6em", "2.7em", "2.8em"),
+		array( "0.8em" , "0.9em", "1.0em" , "1.1em" , "1.2em" , "1.3em", "1.4em" , "1.5em" , "1.6em" , "1.7em" , "1.8em" , "1.9em" , "2.0em", "2.1em", "2.2em", "2.3em", "2.4em", "2.5em", "2.6em", "2.7em", "2.8em")
 	);
 	echo "<div><small>".__("Text line height. The height between 2 rows of text.","tempera")."</small></div>";
 }
@@ -1152,7 +1171,7 @@ function cryout_setting_metapos_fn() {
      	echo ">$itemsare[$id]</option>";
      endforeach;
 	echo "</select>";
-	echo "<div><small>".__("The position of your meta bar (author, date, category, tags and edit button).","tempera")."</small></div>";
+	echo "<div><small>".__("The position of your meta bar (author, date, category, tags and edit button) on category and other posts list sections.","tempera")."</small></div>";
 }
 
 // TEXTBOX - Name: tempera_settings[socialsdisplay]
@@ -1292,21 +1311,6 @@ function cryout_setting_excerptwords_fn() {
 	global $temperas;
 	echo "<input id='tempera_excerptwords' name='tempera_settings[tempera_excerptwords]' size='6' type='text' value='".esc_attr( $temperas['tempera_excerptwords'] )."'  />";
 	echo "<div><small>".__("The number of words for excerpts. When that number is reached the post will be interrupted by a <i>Continue reading</i> link that will take the reader to the full post page.","tempera")."</small></div>";
-}
-
-//CHECKBOX - Name: tempera_settings[magazinelayout]
-function cryout_setting_magazinelayout_fn() {
-	global $temperas;
-	$items = array ("Enable" , "Disable");
-	$itemsare = array( __("Enable","tempera"), __("Disable","tempera"));
-	echo "<select id='tempera_magazinelayout' name='tempera_settings[tempera_magazinelayout]'>";
-foreach($items as $id=>$item) {
-	echo "<option value='$item'";
-	selected($temperas['tempera_magazinelayout'],$item);
-	echo ">$itemsare[$id]</option>";
-}
-	echo "</select>";
-	echo "<div><small>".__("Enable the Magazine Layout. This layout applies to pages with posts and shows 2 posts per row.","tempera")."</small></div>";
 }
 
 // TEXTBOX - Name: tempera_settings[excerptdots]

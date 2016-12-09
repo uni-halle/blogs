@@ -11,7 +11,7 @@
 
 function tempera_excerpt_length_slider( $length ) {
 	$temperas = tempera_get_theme_options();
-	return ceil($temperas['tempera_excerptwords']/2);
+	return ceil( $temperas['tempera_excerptwords']/2 );
 }
 
 function tempera_excerpt_more_slider( $more ) {
@@ -29,11 +29,11 @@ function tempera_excerpt_more_slider( $more ) {
        	animSpeed: <?php echo $tempera_fpslidertime; ?>,
 		<?php if($tempera_fpsliderarrows=="Hidden"): ?>directionNav: false,<?php endif;
    		      if($tempera_fpsliderarrows=="Always Visible"): ?>directionNavHide: false,<?php endif; ?>
-		//controlNavThumbs: true, 
+		//controlNavThumbs: true,
 		pauseTime: <?php echo $tempera_fpsliderpause; ?>
      });
 	});
-</script> 
+</script>
 
 <div id="frontpage">
 <?php
@@ -42,7 +42,7 @@ function tempera_excerpt_more_slider( $more ) {
      // Initiating query
      $custom_query = new WP_query();
      $slides = array();
-	 
+
 	 if($tempera_slideNumber>0):
 
      // Switch for Query type
@@ -73,7 +73,7 @@ function tempera_excerpt_more_slider( $more ) {
 		  case 'Disabled':
 			   break;
      }//switch
-	 
+
 	 endif; // slidenumber>0
 
 	 add_filter( 'excerpt_length', 'tempera_excerpt_length_slider', 999 );
@@ -95,12 +95,12 @@ function tempera_excerpt_more_slider( $more ) {
                endfor;
                break;
           default:
-			   if($tempera_slideNumber>0):	
+			   if($tempera_slideNumber>0):
                if ( $custom_query->have_posts() ) while ($custom_query->have_posts()) :
                     $custom_query->the_post();
-                         $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),'slider');
-                	$slide['image'] = $img[0];
-                	$slide['link'] = get_permalink();
+                	$img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),'slider');
+                	$slide['image'] = esc_url( $img[0] );
+                	$slide['link'] = esc_url( get_permalink() );
                 	$slide['title'] = get_the_title();
                 	$slide['text'] = get_the_excerpt();
                 	$slides[] = $slide;
@@ -118,7 +118,7 @@ if (count($slides)>0):
 	<?php foreach($slides as $id=>$slide):
             if($slide['image']): ?>
             <a href='<?php echo ($slide['link']?$slide['link']:'#'); ?>'>
-                 <img src='<?php echo $slide['image']; ?>' data-thumb='<?php echo $slide['image']; ?>' alt="<?php echo ($slide['title']?wp_kses($slide['title'],array()):''); ?>" <?php if ($slide['title'] || $slide['text']): ?> title="#caption<?php echo $id;?>" <?php endif; ?> />
+                 <img src='<?php echo $slide['image']; ?>' data-thumb='<?php echo $slide['image']; ?>' alt="<?php echo ($slide['title']?esc_attr( $slide['title'] ) : ''); ?>" <?php if ($slide['title'] || $slide['text']): ?> title="#caption<?php echo $id;?>" <?php endif; ?> />
             </a><?php endif; ?>
      <?php endforeach; ?>
      </div>
@@ -129,7 +129,7 @@ if (count($slides)>0):
             </div>
 	<?php endforeach; ?>
      </div>
-<?php endif; ?> 
+<?php endif; ?>
 <div class="slider-shadow"></div>
 <div id="pp-afterslider">
 <?php
@@ -141,7 +141,7 @@ if($tempera_fronttext3) {?><div id="front-text3"> <blockquote><?php echo do_shor
      // Initiating query
      $custom_query2 = new WP_query();
      $columns = array();
-	 
+
 	 if($tempera_columnNumber>0):
      // Switch for Query type
      switch ($tempera_columnType) {
@@ -166,22 +166,22 @@ if($tempera_fronttext3) {?><div id="front-text3"> <blockquote><?php echo do_shor
                $custom_query2->query(array( 'post_type' => 'any', 'post__in' => $pieces_array, 'ignore_sticky_posts' => 1,'orderby' => 'post__in' ));
                break;
           case 'Widget Columns':
-		  
+
 			   break;
 		  case 'Disabled':
 
                break;
      }//switch
-	 
+
 	 endif; // columnNumber>0
-	 
-	 
+
+
 	    // switch for reading/creating the columns
      switch ($tempera_columnType) {
 		  case 'Disabled':
 			   break;
           case 'Widget Columns':
-		       // if widgets loaded 
+		       // if widgets loaded
                if (is_active_sidebar('presentation-page-columns-area')) {
 					echo "<div id='front-columns'>";
 					dynamic_sidebar( 'presentation-page-columns-area' );
@@ -190,17 +190,17 @@ if($tempera_fronttext3) {?><div id="front-text3"> <blockquote><?php echo do_shor
 				// if no widgets loaded use the defaults
 			   else {
 					global $tempera_column_defaults;
-					tempera_columns($tempera_column_defaults,$tempera_nrcolumns, $tempera_columnreadmore); 
+					tempera_columns($tempera_column_defaults,$tempera_nrcolumns, $tempera_columnreadmore);
 				}
                break;
-          default: 
+          default:
 			   if($tempera_columnNumber>0):
-               if ( $custom_query2->have_posts() ) 
+               if ( $custom_query2->have_posts() )
 					while ($custom_query2->have_posts()) :
 						$custom_query2->the_post();
                         $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),'columns');
-						$column['image'] = $img[0];
-						$column['link'] = get_permalink();
+						$column['image'] = esc_url( $img[0] );
+						$column['link'] = esc_url( get_permalink() );
 						$column['text'] = get_the_excerpt();
 						$column['title'] = get_the_title();
 						$columns[] = $column;
@@ -209,13 +209,13 @@ if($tempera_fronttext3) {?><div id="front-text3"> <blockquote><?php echo do_shor
 			   endif; // columnNumber>0
                break;
      }; // switch
-	
+
 function tempera_columns($columns,$nr_columns,$readmore){
 	$counter=0;
 	$temperas = tempera_get_theme_options();
     foreach ($temperas as $key => $value) { ${"$key"} = $value; }
 	?>
- <div id="front-columns"> 
+ <div id="front-columns">
  <?php
 	foreach($columns as $column):
 		if($column['image']) :
@@ -224,8 +224,8 @@ function tempera_columns($columns,$nr_columns,$readmore){
 			$coldata = array(
 				'colno' => (($counter%$nr_columns)?$counter%$nr_columns:$nr_columns),
 				'counter' => $counter,
-				'image' => esc_url($column['image']),
-				'link' => esc_url($column['link']),
+				'image' => esc_url( $column['image'] ),
+				'link' => esc_url( $column['link'] ),
 				'blank' => ($column['blank']?'target="_blank"':''),
 				'title' =>  wp_kses_data($column['title']),
 				'text' => wp_kses_data($column['text']),

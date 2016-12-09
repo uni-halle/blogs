@@ -106,6 +106,8 @@ function tempera_admin_scripts() {
 function tempera_init_fn(){
 
 	register_setting('tempera_settings', 'tempera_settings', 'tempera_settings_validate');
+	
+	do_action('tempera_pre_settings_fields');
 
 /**************
    sections
@@ -126,6 +128,7 @@ function tempera_init_fn(){
 /*** layout ***/
 	add_settings_field('tempera_side', __('Main Layout','tempera') , 'cryout_setting_side_fn', 'tempera-page', 'layout_section');
 	add_settings_field('tempera_sidewidth', __('Content / Sidebar Width','tempera') , 'cryout_setting_sidewidth_fn', 'tempera-page', 'layout_section');
+	add_settings_field('tempera_magazinelayout', __('Magazine Layout','tempera') , 'cryout_setting_magazinelayout_fn', 'tempera-page', 'layout_section');
 	add_settings_field('tempera_mobile', __('Responsiveness','tempera') , 'cryout_setting_mobile_fn', 'tempera-page', 'layout_section');
 
 /*** presentation ***/
@@ -205,7 +208,6 @@ function tempera_init_fn(){
 	add_settings_field('tempera_excerptsticky', __('Sticky Posts','tempera') , 'cryout_setting_excerptsticky_fn', 'tempera-page', 'excerpt_section');
 	add_settings_field('tempera_excerptarchive', __('Archive and Category Pages','tempera') , 'cryout_setting_excerptarchive_fn', 'tempera-page', 'excerpt_section');
 	add_settings_field('tempera_excerptwords', __('Number of Words for Post Excerpts ','tempera') , 'cryout_setting_excerptwords_fn', 'tempera-page', 'excerpt_section');
-	add_settings_field('tempera_magazinelayout', __('Magazine Layout','tempera') , 'cryout_setting_magazinelayout_fn', 'tempera-page', 'excerpt_section');
 	add_settings_field('tempera_excerptdots', __('Excerpt suffix','tempera') , 'cryout_setting_excerptdots_fn', 'tempera-page', 'excerpt_section');
 	add_settings_field('tempera_excerptcont', __('Continue reading link text ','tempera') , 'cryout_setting_excerptcont_fn', 'tempera-page', 'excerpt_section');
 	add_settings_field('tempera_excerpttags', __('HTML tags in Excerpts','tempera') , 'cryout_setting_excerpttags_fn', 'tempera-page', 'excerpt_section');
@@ -230,6 +232,8 @@ function tempera_init_fn(){
 	add_settings_field('tempera_copyright', __('Custom Footer Text','tempera') , 'cryout_setting_copyright_fn', 'tempera-page', 'misc_section');
 	add_settings_field('tempera_customcss', __('Custom CSS','tempera') , 'cryout_setting_customcss_fn', 'tempera-page', 'misc_section');
 	add_settings_field('tempera_customjs', __('Custom JavaScript','tempera') , 'cryout_setting_customjs_fn', 'tempera-page', 'misc_section');
+	
+	do_action('tempera_post_settings_fields');
 
 }
 
@@ -277,9 +281,9 @@ if ($tempera_varalert): ?><div id="varlimitalert"> <?php echo $tempera_varalert;
 <div>
 	<div id="admin_header"><img src="<?php echo get_template_directory_uri() . '/admin/images/tempera-logo.png' ?>" /> </div>
 	<div id="admin_links">
-		<a target="_blank" href="http://www.cryoutcreations.eu/tempera">Tempera Homepage</a>
-		<a target="_blank" href="http://www.cryoutcreations.eu/forum">Support</a>
-		<a target="_blank" href="http://www.cryoutcreations.eu">Cryout Creations</a>
+		<a target="_blank" href="https://www.cryoutcreations.eu/wordpress-themes/tempera">Tempera Homepage</a>
+		<a target="_blank" href="https://www.cryoutcreations.eu/forum">Support</a>
+		<a target="_blank" href="https://www.cryoutcreations.eu">Cryout Creations</a>
 	</div>
 	<div style="clear: both;"></div>
 </div>
@@ -289,7 +293,7 @@ if ($tempera_varalert): ?><div id="varlimitalert"> <?php echo $tempera_varalert;
 		$tempera_theme_data = get_transient( 'tempera_theme_info');  
 		?>
 		<span id="version">
-		Tempera v<?php echo _CRYOUT_THEME_VERSION; ?> by <a href="http://www.cryoutcreations.eu" target="_blank">Cryout Creations</a>
+		Tempera v<?php echo _CRYOUT_THEME_VERSION; ?> by <a href="https://www.cryoutcreations.eu" target="_blank">Cryout Creations</a>
 		</span>
 	</div><!-- main-options -->
 </div><!--lefty -->

@@ -17,6 +17,7 @@ $tempera_defaults = array(
 "tempera_frontposts"	=> "Enable",
 "tempera_frontpostscount" 		=> get_option('posts_per_page'), 
 "tempera_frontpostsperrow" 		=> "2", 
+"tempera_frontmoreposts"		=> "More Posts",
 "tempera_fpsliderwidth"			=> "1150",
 "tempera_fpsliderheight"		=> "400",
 "tempera_fpslideranim"	=> "random",

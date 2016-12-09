@@ -1,10 +1,10 @@
 <?php /*
- * Comments related functions - comments.php 
+ * Comments related functions - comments.php
  *
  * @package tempera
  * @subpackage Functions
  */
- 
+
 if ( ! function_exists( 'tempera_comment' ) ) :
 /**
  * Template for comments and pingbacks.
@@ -27,7 +27,7 @@ function tempera_comment( $comment, $args, $depth ) {
 	<?php
 		break;
 		case '' :
-		default : 
+		default :
 	?>
 	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 		<div id="comment-<?php comment_ID(); ?>">
@@ -43,7 +43,7 @@ function tempera_comment( $comment, $args, $depth ) {
 				</div><!-- .comment-meta .commentmetadata -->
 			</div> <!-- .comment-details -->
 		</div><!-- .comment-author .vcard -->
-		
+
 		<?php if ( $comment->comment_approved == '0' ) : ?>
 			<span class="comment-await"><em><?php _e( 'Your comment is awaiting moderation.', 'tempera' ); ?></em></span>
 			<br />
@@ -87,11 +87,20 @@ if ( ! function_exists( 'tempera_comments_on' ) ) :
  */
 function tempera_comments_on() {
 global $temperas;
-foreach ($temperas as $key => $value) { ${"$key"} = $value; }	
+foreach ($temperas as $key => $value) { ${"$key"} = $value; }
 	if ( comments_open() && ! post_password_required() && $tempera_blog_show['comments'] && ! is_single()) :
-		print '<span class="comments-link"><i class="icon-comments icon-metas" title="' . __('Comments', 'tempera') . '"></i>';
-		printf ( comments_popup_link( __( '<b>0</b>', 'tempera' ), __( '<b>1</b>', 'tempera' ), __( '<b>%</b>', 'tempera' ),(''),__('<b>-</b>','tempera') ));
-		print '</span>';
+        echo '<span class="comments-link">';
+        comments_popup_link(
+            '<i class="icon-comments icon-metas" title="' . __('Leave a comment', 'tempera') . '"></i><b>0</b>',
+            '<i class="icon-comments icon-metas" title="' .
+                sprintf( _n( 'One Comment', '%1$s Comments', get_comments_number(), 'tempera' ), number_format_i18n( get_comments_number() )) .
+             '"></i><b>1</b>',
+            '<i class="icon-comments icon-metas" title="' .
+                sprintf( _n( 'One Comment', '%1$s Comments', get_comments_number(), 'tempera' ), number_format_i18n( get_comments_number() )) .
+            '"></i><b>%</b>',
+            '',
+            '' );
+        echo '</span>';
 	endif;
 }
 endif;
@@ -117,7 +126,7 @@ if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are t
 				<div class="nav-previous"><?php previous_comments_link( '<i class="icon-reply"></i>'.__('Older Comments', 'tempera' ) ); ?></div>
 				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments', 'tempera' ).'<i class="icon-forward"></i>' ); ?></div>
 			</div> <!-- .navigation -->
-<?php endif; // check for comment navigation 
+<?php endif; // check for comment navigation
 }
 
 //add_action('cryout_before_comments_hook','tempera_comments_navigation');
@@ -125,26 +134,26 @@ add_action('cryout_after_comments_hook','tempera_comments_navigation');
 
 /*
 * Listing the actual comments
-* 
+*
 * Loop through and list the comments. Tell wp_list_comments()
 * to use tempera_comment() to format the comments.
 * If you want to overload this in a child theme then you can
 * define tempera_comment() and that will be used instead.
 * See tempera_comment() in tempera/functions.php for more.
  */
-function tempera_list_comments() {	
+function tempera_list_comments() {
 					wp_list_comments( array( 'callback' => 'tempera_comment' ) );
 			}
 
-add_action('cryout_comments_hook','tempera_list_comments');	
+add_action('cryout_comments_hook','tempera_list_comments');
 
 /*
  * If there are no comments and comments are closed
  */
-function tempera_comments_off() { 
+function tempera_comments_off() {
 if ( ! comments_open() ) : ?>
 	<p class="nocomments"><?php _e( 'Comments are closed.', 'tempera' ); ?></p>
-<?php endif; // end ! comments_open() 
+<?php endif; // end ! comments_open()
 }
 
 
@@ -153,8 +162,8 @@ add_action('cryout_nocomments_hook','tempera_comments_off');
 /*
  * Edit comments form
  * Removing labels and adding them as placeholders
- */ 
-  
+ */
+
 function tempera_comments_form($arg) {
 $commenter = wp_get_current_commenter();
 $req = get_option( 'require_name_email' );
@@ -185,13 +194,13 @@ add_filter('comment_form_default_fields', 'tempera_comments_form');
 
 
 function tempera_comments_form_textarea($arg) {
- $arg = 
+ $arg =
     '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun', 'tempera' ) .
     '</label><textarea placeholder="'. _x( 'Comment', 'noun', 'tempera' ) .'" id="comment" name="comment" cols="45" rows="8" aria-required="true">' .
     '</textarea></p>';
 return $arg;
 }
-	
+
 add_filter('comment_form_field_comment', 'tempera_comments_form_textarea');
 
 ?>

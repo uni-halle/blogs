@@ -4,15 +4,15 @@ Copyright 2013-16 Cryout Creations
 
 Author: Cryout Creations
 Requires at least: 4.0
-Tested up to: 4.4.2
-Stable tag: 1.4.1
+Tested up to: 4.6
+Stable tag: 1.4.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
-Donate link: http://www.cryoutcreations.eu/donate/
+Donate link: https://www.cryoutcreations.eu/donate/
 
 We had to follow a very strict recipe to get Tempera just right. We started with a very solid framework of over 200 settings, added a very light user interface, threw in a couple of mobiles and tablets to give it that responsive elasticity, added over 50 fonts, weren't satisfied so we poured all the Google fonts into the mix, then scattered 12 widget areas for consistency, dissolved a slider and unlimited columns into a customizable Presentation Page then mixed it in as well.
 
-We then sprinkled all post formats, 8 layouts including magazine and blog, powdered 40+ social icons and even blended in a customizable top bar for extra density. We also made it translation ready and gave it RTL language support for some cultural diversity. The secret ingredient was love and we might've spilled too much of that. 
+We then sprinkled all post formats, 8 layouts including magazine and blog, powdered 40+ social icons and even blended in a customizable top bar for extra density. We also made it translation ready and gave it RTL language support for some cultural diversity. The secret ingredient was love and we might've spilled too much of that.
 
 But now Tempera has just the right feel and the right texture and is exactly what your empty WordPress canvas needs. NEW! Tempera now comes in 16 different flavors with preset color schemes!
 
@@ -37,12 +37,12 @@ along with this program. If not, see http://www.gnu.org/copyleft/gpl.html
 
 Tempera WordPress Theme bundles the following third-party resources:
 
-Nivo Slider, Copyright 2010 Gilbert Pellegrom 
-Nivo Slider is licensed under the terms of the MIT license 
+Nivo Slider, Copyright 2010 Gilbert Pellegrom
+Nivo Slider is licensed under the terms of the MIT license
 Source: http://dev7studios.com/nivo-slider
 
 FitVids, Copyright 2011 Chris Coyier - http://css-tricks.com + Dave Rupert - http://daverupert.com
-FitVids is licensed under the terms of the WTFPLlicense 
+FitVids is licensed under the terms of the WTFPLlicense
 Source: http://fitvidsjs.com/
 
 TGM Plugin Activation, Copyright Thomas Griffin
@@ -89,17 +89,17 @@ Source: http://fortawesome.github.io/Font-Awesome/
 All other images bundled with the theme (used in the demo presentation page and admin section, as well as the social icons) are created by Cryout Creations and released with the theme under GPLv3 as well.
 
 
-== Translations ==
+== Initial Translations ==
 
-French - Schubertbach 
+French - Schubertbach
 German - Elina McC
 Greek - Kleanthis Manolopoulos
-Hungarian - Tamás 
+Hungarian - Tamás
 Italian - tinysoulstar, Mirko Milani
 Japanese - Yuka Kachi
 Persian - Sefid par
 Polish - Andrzej
-Portuguese (Brazil) - Frederico Ribeiro 
+Portuguese (Brazil) - Frederico Ribeiro
 Portuguese (Portugal) - trainmaniac
 Russian - Alexander, Mikhail Rodionov
 Spanish - Carlol, HacKan
@@ -107,8 +107,55 @@ Spanish - Carlol, HacKan
 
 == Changelog ==
 
-= 1.4.1 = 
+= 1.4.6 =
+* Escaped all theme options output
+* Escaped all URLs in theme with esc_url()
+* Escaped all get_bloginfo() instances
+* Updated code to use the_title_attribute() inside HTML attributes
 
+= 1.4.5 =
+* Cleaned up CSS ‘!important’ usage
+* Improved comments display function to take languages with multiple plural forms into account
+* Updated translations
+
+= 1.4.4 =
+* Updated TGM-PA
+* Removed input[type="file"] styling
+* Fixed RTL stylesheet missing in child themes
+* Added implicit label and HTML5 'button' input to search in searchform.php (accessibility)
+* Fixed search aspect on Safari
+* Added screen reader text for breadcrumbs home icon (accessibility)
+
+= 1.4.3 =
+* Improved widgets styling to be easier to override with custom styling
+* Fixed topbar overlapped by admin bar when static; converted custom styling to rely on body classes; disabled fixed position on <600px (like the WP admin bar)
+* Moved Magazine Layout option under Layout section for better consistency
+* Fixed magazine layout option overlapping presentation page posts per columns option
+* Changed More Posts button label from theme text to configurable option in the settings page (and included in wpml-config.xml list of strings)
+* Added "nirvana_columnreadmore" field to wpml-config.xml
+* Added values above 2em for the Line Height option (to support eastern scripts better)
+* Fixed meta bar position option applying to single posts (and hiding the Edit button)
+* Updated theme URL for new site
+* Updated theme news feed URL for new site structure
+* Removed bundled es_ES, it_IT, ru_RU, de_DE, fr_FR, ja translations in favour of WordPress Translate ones
+
+= 1.4.2 =
+* Added author role meta to improve microformats
+* Added time updated and published meta to improve microformats
+* Added new WordPress.org theme tags (and removed deprecated ones)
+* Removed alt attribute from post thumbnail links and removed unused third parameter $post_image_id from nirvana_thumbnail_link()
+* Removed hidden leftover meta separator
+* Fixed #content dl font size and line height
+* Optimized CSS layout and fixed several typos
+* Removed id="columnImageId0" from column images; always 0 because $counter not in loop - it was unnecessary anyway
+* Added theme translation domain in style.css
+* Updated all instances of the search form (searchform.php, menu hooks) and replaced IDs with classes
+* Improved breadcrumbs function, added post formats support
+* Fixed topbar overlapped by admin bar when static; converted custom styling to rely on body classes
+* Added site title value to as header logo alt/title attributes
+* Fixed meta bar borders still visible when meta bar was hidden
+
+= 1.4.1 =
 * Clarified presentation page usage notice when static page is set
 * Fixed screen-reader-text elements placement issue on RTL layout
 * Clarified customizer link info to indicate settings page is only available when theme is active
@@ -118,14 +165,12 @@ Spanish - Carlol, HacKan
 * Fixed header site title to not use H1 tag when homepage is static
 * Fixed undefined notice related to WP_Widget_Recent_Comments when certain comments plugins are used
 
-= 1.4.0.1 = 
-
+= 1.4.0.1 =
 * Fixed menu center align issues with multi-line menus
-* Fixed presentation page overriding static frontpage (and malfunctioning as a result) 
+* Fixed presentation page overriding static frontpage (and malfunctioning as a result)
 * Changed social icon links to no longer be nofollow
 
 = 1.4.0 =
-
 * REMOVED THE THEME SETTINGS AND ADDED SUPPORT FOR THE SEPARATE THEME SETTINGS PLUGIN
 * Integrated TGM to recommend and auto-install the theme settings plugin
 * Fixed settings page to handle changed H3 to H2 headings in WordPress 4.4
@@ -141,7 +186,6 @@ Spanish - Carlol, HacKan
 * Rewrote readme file and merged changelog into readme
 
 = 1.3.3 =
-
 * fixed centred multi-line menu change in 1.3.1 breaking submenu alignment
 * added arrow indicators for sub-elements on submenu items
 * fixed magazine layout alignment on RTL
@@ -155,7 +199,6 @@ Spanish - Carlol, HacKan
 * added theme information and settings page link in the customizer
 
 = 1.3.2 =
-
 * added failsafe to add_theme_support('title-tag') for WP < 4.1
 * fixed search double slash causing issues on some servers
 * fixed PHP notice caused by unset top/main/footer menu search
@@ -164,12 +207,10 @@ Spanish - Carlol, HacKan
 * fixed PHP notice about old widget constructors being deprecated in WP 4.3
 
 = 1.3.1 =
-
 * fixed ternary operator usage for php <5.3 (introduced in 1.3.0)
 * fixed centred main menu alignment functionality for multi-line menus
 
 = 1.3.0 =
-
 * added title-tag theme support (for WordPress 4.1)
 * fixed header widget overlapping logo/title when no header image is used
 * fixed sup/sub styling resets
@@ -182,7 +223,6 @@ Spanish - Carlol, HacKan
 * updated Spanish translation
 
 = 1.2.8 =
-
 * fixed responsive styling regression introduced in 1.2.3 affecting the presentation page columns width
 * improved headings font size option to apply to presentation page titles as well
 * fixed PHP notice in settings page when theme news are not available
@@ -192,10 +232,9 @@ Spanish - Carlol, HacKan
 * theme now remembers the settings subsection you were on after saving (for easier navigation)
 
 = 1.2.7 =
-
 * improved two somewhat untranslatable strings (that used esc_attr__() )
 * removed baseline vertical alignment from styling reset to correct some weird alignment layouts
-* fixed Google fonts merging issue when subsets are used 
+* fixed Google fonts merging issue when subsets are used
 * fixed an untranslatable string (thanks to seemannKP)
 * fixed max-width leftovers in editor-style.css (among other things making large images appear distorted in the editor)
 * fixed ol double digits numbering not fitting into view
@@ -207,15 +246,12 @@ Spanish - Carlol, HacKan
 * (absolutely positively definitely) fixed Ajax "Load More" posts button (hopefully...)
 
 = 1.2.6 =
-
 * fixed "array to string conversion" notices (on PHP 5.5)
 
 = 1.2.5 =
-
 * fixed "More Posts" button on presentation page affecting blog pages
 
 = 1.2.4 =
-
 * optimized Google font calls
 * added link to the theme's settings page in the customizer
 * made all CSS minify-able (should now support all caching plugins that perform resource minification)
@@ -225,7 +261,6 @@ Spanish - Carlol, HacKan
 * fixed undefined notices on options save
 
 = 1.2.3 =
-
 * various menu fixes
 * finally fixed presentation page "More Posts" button
 * fixed a weird save issue affecting only some servers caused by an apostrophe in the sample in custom footer text (thank to Gordon and Bembis for helping us with the test environment)
@@ -237,7 +272,6 @@ Spanish - Carlol, HacKan
 * replaced get_bloginfo('url') with home_url()
 
 = 1.2.2 =
-
 * improved responsiveness (a bit more) for the whole theme and specifically the header area
 * the header widget position is now responsive
 * added option to remove hover effect on presentation page columns
@@ -246,7 +280,6 @@ Spanish - Carlol, HacKan
 * updated translation files
 
 = 1.2.1 =
-
 * fixed breadcrumbs not handling tag pages correctly
 * updated Italian translation
 * updated Russian translation
@@ -257,7 +290,6 @@ Spanish - Carlol, HacKan
 * improved custom widgets support in presentation page columns
 
 = 1.2 =
-
 * added a brand new mobile menu
 * added "Contact" social icon (same icon as Email) – can be used to link to the contact page/section/form
 * added "Phone" social icon for callable phone number links on touch-enabled devices
@@ -276,15 +308,12 @@ Spanish - Carlol, HacKan
 * improved custom comments compatibility (thanks to phpcodemonkey)
 
 = 1.1 =
- 
 * -skipped to avoid numbering confusion-
 
 = 1.0.1.1 =
-
 * undid force footer to window bottom
 
 = 1.0.1 =
-
 * removed arbitrary max-width  (html .mceContentBody) from Dashboard editor CSS (as it created confusion on the width and alignment of content)
 * moved slider caption to bottom 20% instead of top for mobile devices
 * added option to disable latest news in the theme settings page
@@ -295,7 +324,6 @@ Spanish - Carlol, HacKan
 * forced footer to window bottom *** this caused issues and 1.0.1.1 was created to undo
 
 = 1.0 =
-
 * added 16 preset color schemes (all color schemes from Parabola plus 2 new ones!)
 * added an option for editing the space between the menu and content and another option for editing the content's left-right padding; you'll find both options under the Graphics Settings
 * further enhanced the Presentation Page responsiveness (mostly the columns)
@@ -306,9 +334,8 @@ Spanish - Carlol, HacKan
 * fixed HTML5 inputs display issues
 * fixed Google fonts not working when extended sets were declared
 * added Persian translation
-	
-= 0.9.9 = 
 
+= 0.9.9 =
 * Full frontend responsiveness
 * Full presentation page responsiveness – column images keep aspect ratio when scaling
 * Full admin responsiveness – you can easily and intuitively use the theme settings page from any device now
@@ -316,8 +343,7 @@ Spanish - Carlol, HacKan
 * Added 'Disable' options for presentation page slider and columns
 * Fixed menu borders when menu alignment changes
 
-= 0.9.8 = 
-
+= 0.9.8 =
 * Replaced Presentation Page pagination with Ajax 'More Posts' button
 * Fixed 'Continue reading' button on all browsers
 * Added support for HTML and shortcodes inside the Presentation Page columns
@@ -327,8 +353,7 @@ Spanish - Carlol, HacKan
 * Fixed giant smileys in captions :)
 * Added Italian and Polish languages
 
-= 0.9.7 = 
-
+= 0.9.7 =
 * the 'Continue reading' button always starts in a new line now
 * added shortcode support  in the Presentation Page titles
 * fixed main menu submenus going behind the slider navigation
@@ -338,8 +363,7 @@ Spanish - Carlol, HacKan
 * added Russian language
 * added a new hi-res screenshot (880x660px)
 
-= 0.9.6 = 
-
+= 0.9.6 =
 * fixed bug in post information metas on single pages
 * CSS styling now affects all HTML5 input types
 * fixed caption alignment issues
@@ -347,7 +371,6 @@ Spanish - Carlol, HacKan
 * fixed click-able area on the header that was only half width due to header widget
 
 = 0.9.5 =
-
 * removed hardcoded fonts from the Presentation Page (they’re assigned the font set in the Headings Font setting)
 * the header widget is no longer behind the header image
 * the empty sidebar placeholders now show up properly
@@ -357,8 +380,7 @@ Spanish - Carlol, HacKan
 * added an alert for variable limit reached
 * added French language
 
-= 0.9.4.1 = 
-
+= 0.9.4.1 =
 * approved in the repository
 * Presentation page columns now show text on mobile browsers
 * Fixed columns responsiveness when using data from posts
@@ -367,28 +389,24 @@ Spanish - Carlol, HacKan
 * Fixed logo and header upload inputs saving the same data in the theme settings
 * Added recommended size information for the column images inside the Columns widget area
 
-= 0.9.3 = 
-
+= 0.9.3 =
 * improved presentation page columns sizing
 * fixed XSS vulnerability in frontend.js
 * checked and corrected WordPress 3.8 readyness (admin styling and theme tags)
 
-= 0.9.2 = 
-
+= 0.9.2 =
 * Fixed excessive pagination in custom category pages
 * Replaced query_posts with WP_Query in page-with-intro and blog-page templates
 * Removed the focus to the search form in 404 pages
 * Fixed search input on Google Chrome
 
 = 0.9.1 =
-
 * All external links in the Tempera Settings page now open in a new tab
 * All info boxes in the Tempera Settings page can now be hidden
 * Added pagination to the Presentation Page if Show Posts is enabled
 * Removed leftover default.mo from the theme directory
 * The ​http:// protocol has been removed when enqueuing Google fonts
-* Fixed back to top button not changing to the color of the content 
+* Fixed back to top button not changing to the color of the content
 
-= 0.9 = 
-
+= 0.9 =
 * Initial theme release

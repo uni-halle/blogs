@@ -3,6 +3,7 @@
         <key name="tempera_settings">
 			<key name="tempera_logoupload" />
 			<key name="tempera_favicon" />
+			<key name="tempera_frontmoreposts" />
 		
             <key name="tempera_sliderimg1" />
             <key name="tempera_slidertitle1" />
@@ -34,6 +35,7 @@
             <key name="tempera_fronttext5" />
             <key name="tempera_fronttext6" />
 			
+			<key name="tempera_columnreadmore" />
             <key name="tempera_excerptcont" />
 			
             <key name="tempera_social2" />
@@ -48,7 +50,6 @@
             <key name="tempera_social_title9" />
 
             <key name="tempera_copyright" />			
-			
         </key>
     </admin-texts>  
 </wpml-config>

@@ -66,14 +66,14 @@ function tempera_title_and_description() {
 	// Check if this is a post or page, if it has a thumbnail, and if it's a big one
 	global $post;
 
-	if (get_header_image() != '') { $himgsrc=get_header_image(); }
+	if ( get_header_image() != '' ) { $himgsrc = get_header_image(); }
 	if ( is_singular() && has_post_thumbnail( $post->ID ) && $tempera_fheader == "Enable" &&
 		( $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'header' ) ) &&
-		$image[1] >= HEADER_IMAGE_WIDTH ) : $himgsrc= $image[0];
+		$image[1] >= HEADER_IMAGE_WIDTH ) : $himgsrc= esc_url( $image[0] );
 	endif;
 
 
-	if (isset($himgsrc) && ($himgsrc != '')) : echo '<img id="bg_image" alt="" title="" src="'.$himgsrc.'"  />';  endif;
+	if ( isset( $himgsrc ) && ( $himgsrc != '' ) ) : echo '<img id="bg_image" alt="" title="" src="' . esc_url( $himgsrc ) . '"  />';  endif;
 ?>
 <div id="header-container">
 <?php
@@ -83,18 +83,19 @@ function tempera_title_and_description() {
 			echo '<div>';
 			$heading_tag = ( ( is_home() || is_front_page() ) && !is_page() ) ? 'h1' : 'div';
 			echo '<'.$heading_tag.' id="site-title">';
-			echo '<span> <a href="'.esc_url( home_url( '/' ) ).'" title="'.esc_attr( get_bloginfo( 'name', 'display' ) ).'" rel="home">'.get_bloginfo( 'name' ).'</a> </span>';
+			echo '<span> <a href="' . esc_url ( home_url( '/' ) ) . '" title="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '" rel="home">' . get_bloginfo( 'name' ) . '</a> </span>';
 			echo '</'.$heading_tag.'>';
-			echo '<div id="site-description" >'.get_bloginfo( 'description' ).'</div></div>';
+			echo '<div id="site-description" >' . get_bloginfo( 'description' ) . '</div></div>';
 		break;
 
 		case 'Clickable header image' :
-			echo '<a href="'.esc_url( home_url( '/' ) ).'" id="linky"></a>' ;
+			echo '<a href="' . esc_url( home_url( '/' ) ) . '" id="linky"></a>' ;
 		break;
 
 		case 'Custom Logo' :
 			if (isset($tempera_logoupload) && ($tempera_logoupload != '')) :
-				echo '<div><a id="logo" href="'.esc_url( home_url( '/' ) ).'" ><img title="" alt="" src="'.$tempera_logoupload.'" /></a></div>';
+				echo '<div><a id="logo" href="' . esc_url( home_url( '/' ) ) . '" ><img title="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '" alt="' .
+                    esc_attr( get_bloginfo( 'name', 'display' ) ) . '" src="' . esc_url( $tempera_logoupload ) . '" /></a></div>';
 			endif;
 		break;
 
@@ -104,7 +105,7 @@ function tempera_title_and_description() {
 	echo '</div>';
 } // tempera_title_and_description()
 
-add_action ('cryout_branding_hook','tempera_title_and_description');
+add_action ( 'cryout_branding_hook', 'tempera_title_and_description' );
 
 
  /**
@@ -155,8 +156,8 @@ function tempera_set_social_icons($idd) {
 		${"$key"} = $value ;
 	}
 	echo '<div class="socials" id="'.$idd.'">';
-	for ($i=1; $i<=9; $i+=2) {
-		$j=$i+1;
+	for ($i = 1; $i <= 9; $i+=2) {
+		$j = $i + 1;
 		if ( ${"tempera_social$j"} ) {
 			if (in_array(${"tempera_social$i"},$cryout_special_keys)) :
 				$cryout_current_social = esc_html( ${"tempera_social$j"} );
@@ -164,7 +165,7 @@ function tempera_set_social_icons($idd) {
 				$cryout_current_social = esc_url( ${"tempera_social$j"} );
 			endif;	?>
 
-			<a <?php if ($temperas['tempera_social_target'.$i]) {echo ' target="_blank" ';} ?> href="<?php echo $cryout_current_social; ?>"
+			<a <?php if ($temperas['tempera_social_target'.$i]) {echo ' target="_blank" ';} ?> href="<?php echo esc_url( $cryout_current_social ); ?>"
 			class="socialicons social-<?php echo esc_attr(${"tempera_social$i"}); ?>" title="<?php echo ${"tempera_social_title$i"} !="" ? esc_attr(${"tempera_social_title$i"}) : esc_attr(${"tempera_social$i"}); ?>">
 				<img alt="<?php echo esc_attr(${"tempera_social$i"}); ?>" src="<?php echo get_template_directory_uri().'/images/socials/'.${"tempera_social$i"}.'.png'; ?>" />
 			</a><?php
@@ -179,9 +180,11 @@ endif;
  * Tempera back to top button
  * Creates div for js
 */
+if ( ! function_exists( 'tempera_back_top' ) ) :
 function tempera_back_top() {
 	echo '<div id="toTop"><i class="icon-back2top"></i> </div>';
 } // tempera_back_top()
+endif;
 
 if ($tempera_backtop=="Enable") add_action ('cryout_main_hook','tempera_back_top');
 
@@ -189,59 +192,125 @@ if ($tempera_backtop=="Enable") add_action ('cryout_main_hook','tempera_back_top
  /**
  * Creates breadcrumns with page sublevels and category sublevels.
  */
+if ( ! function_exists( 'tempera_breadcrumbs' ) ) :
 function tempera_breadcrumbs() {
-	$temperas= tempera_get_theme_options();
+
+	$temperas = tempera_get_theme_options();
 	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
+
+	$showOnHome = 0; 									// 1 - show breadcrumbs on the homepage, 0 - don't show
+	$separator = '<i class="icon-angle-right"></i>'; 	// separator between crumbs
+	$home = '<a href="' . esc_url( home_url() ) . '"><i class="icon-homebread"></i><span class="screen-reader-text">' . __("Home", "tempera") . '</span></a>'; // text for the 'Home' link
+	$showCurrent = 1; 									// 1 - show current post/page title in breadcrumbs, 0 - don't show
+	$before = '<span class="current">'; 				// tag before the current crumb
+	$after = '</span>'; 								// tag after the current crumb
+
 	global $post;
-	$separator = "<i class='icon-angle-right'></i> ";
-	if (is_page() && !is_front_page() || is_single() || is_category() || is_archive()) {
-		echo '<div class="breadcrumbs">';
-        echo '<a href="'.home_url().'"><i class="icon-homebread"></i></a>'.$separator ;
+	$homeLink = esc_url( home_url() );
+	if (is_front_page() && $tempera_frontpage=="Enable") { return; }
+	if (is_home() && $tempera_frontpage!="Enable") {
 
-        if (is_page()) {
+		if ($showOnHome == 1) echo '<div class="breadcrumbs"><a href="' . $homeLink . '"><i class="icon-homebread"></i>' .  __('Home Page','tempera') . '</a></div>';
 
-			$ancestors = get_post_ancestors($post);
-            if ($ancestors) {
+	} else {
 
-				$ancestors = array_reverse($ancestors);
-                foreach ($ancestors as $crumb) {
-                    echo '<a href="'.get_permalink($crumb).'">'.get_the_title($crumb).$separator.'</a>';
-                }
-            }
-        }
+		echo '<div class="breadcrumbs">' . $home . $separator . ' ';
 
-        if (is_single()) {
-			if (has_category()) {
-				$category = get_the_category();
-				echo '<a href="'.get_category_link($category[0]->cat_ID).'">'.$category[0]->cat_name.$separator.'</a>';
+		if ( is_category() ) {
+			// category
+			$thisCat = get_category(get_query_var('cat'), false);
+			if ( $thisCat->parent != 0 ) echo get_category_parents( $thisCat->parent, TRUE, ' ' . $separator . ' ' );
+			echo $before . __('Archive by category','tempera').' "' . single_cat_title('', false) . '"' . $after;
+		} elseif ( is_search() ) {
+			// search
+			echo $before . __('Search results for','tempera').' "' . get_search_query() . '"' . $after;
+		} elseif ( is_day() ) {
+			// daily archive
+			echo '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a> ' . $separator . ' ';
+			echo '<a href="' . get_month_link(get_the_time('Y'),get_the_time('m')) . '">' . get_the_time('F') . '</a> ' . $separator . ' ';
+			echo $before . get_the_time('d') . $after;
+		} elseif ( is_month() ) {
+			// monthly archive
+			echo '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a> ' . $separator . ' ';
+			echo $before . get_the_time('F') . $after;
+		} elseif ( is_year() ) {
+			// yearly archive
+			echo $before . get_the_time('Y') . $after;
+		} elseif ( is_single() && !is_attachment() ) {
+			// single post
+			if ( get_post_type() != 'post' ) {
+				$post_type = get_post_type_object(get_post_type());
+				$slug = $post_type->rewrite;
+				echo '<a href="' . $homeLink . '/' . $slug['slug'] . '/">' . $post_type->labels->singular_name . '</a>';
+				if ( $showCurrent == 1 ) echo ' ' . $separator . ' ' . $before . get_the_title() . $after;
+			} else {
+				$cat = get_the_category();
+				if ( !empty($cat[0]) ) { $cat = $cat[0]; } else { $cat = false; };
+				if ( $cat ) { $cats = get_category_parents($cat, TRUE, ' ' . $separator . ' '); } else { $cats=false; };
+				if ( $showCurrent == 0 && $cats ) $cats = preg_replace("#^(.+)\s$separator\s$#", "$1", $cats);
+				echo $cats;
+				if ( $showCurrent == 1 ) echo $before . get_the_title() . $after;
 			}
-        }
+		} elseif ( !is_single() && !is_page() && get_post_type() != 'post' && !is_404() ) {
+			// some other item
+			$post_type = get_post_type_object(get_post_type());
+			echo $before . $post_type->labels->singular_name . $after;
+		} elseif ( is_attachment() ) {
+			// attachment
+			$parent = get_post($post->post_parent);
+			$cat = get_the_category($parent->ID);
+			if ( !empty($cat[0]) ) { $cat = $cat[0]; } else { $cat=false; }
+			if ( $cat ) echo get_category_parents($cat, TRUE, ' ' . $separator . ' ');
+			echo '<a href="' . esc_url( get_permalink($parent) ) . '">' . $parent->post_title . '</a>';
+			if ( $showCurrent == 1 ) echo ' ' . $separator . ' ' . $before . get_the_title() . $after;
+		} elseif ( is_page() && !$post->post_parent ) {
+			// parent page
+			if ($showCurrent == 1) echo $before . get_the_title() . $after;
+		} elseif ( is_page() && $post->post_parent ) {
+			// child page
+			$parent_id  = $post->post_parent;
+			$breadcrumbs = array();
+			while ($parent_id) {
+				$page = get_page($parent_id);
+				$breadcrumbs[] = '<a href="' . esc_url( get_permalink($page->ID) ) . '">' . get_the_title($page->ID) . '</a>';
+				$parent_id  = $page->post_parent;
+			}
+			$breadcrumbs = array_reverse($breadcrumbs);
+			for ( $i = 0; $i < count($breadcrumbs); $i++ ) {
+				echo $breadcrumbs[$i];
+				if ($i != count($breadcrumbs)-1) echo ' ' . $separator . ' ';
+			}
+			if ( $showCurrent == 1 ) echo ' ' . $separator . ' ' . $before . get_the_title() . $after;
+		} elseif ( is_tag() ) {
+			// tag archive
+			echo $before . __('Posts tagged','tempera').' "' . single_tag_title('', false) . '"' . $after;
 
-        if (is_category()) {
-            $category = get_the_category();
-            echo ''.$category[0]->cat_name.'';
-        }
-		
-		if (is_tag()) {
-			echo ''.__('Tag','tempera').''.$separator.single_tag_title('', false);
-		} 
+		} elseif ( is_author() ) {
+			// author archive
+			global $author;
+			$userdata = get_userdata($author);
+			echo $before . __('Articles posted by','tempera'). ' ' . $userdata->display_name . $after;
+		} elseif ( is_404() ) {
+			// 404 archive
+			echo $before . __('Error 404','tempera') . $after;
+		}
+		elseif ( get_post_format() ) {
+			// post format
+			echo $before . '"' . ucwords( get_post_format() ) . '" ' . __( 'Post format', 'tempera' ) . $after;
+		}
 
-        // Current page
-        if (is_page() || is_single()) {
-            echo ''.get_the_title().'';
-        }
-       echo '</div>';
-    }
-	elseif (is_home() && $tempera_frontpage!="Enable" ) {
-        // Front page
-        echo '<div class="breadcrumbs">';
-        echo '<a href="'.home_url().'"><i class="icon-homebread"></i></a> '.$separator;
-        _e('Home Page','tempera');
-        echo '</div>';
-    }
+		if ( get_query_var('paged') ) {
+			if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ' (';
+			echo __('Page','tempera') . ' ' . get_query_var('paged');
+			if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ')';
+		}
 
-} // tempera_breadcrumbs()
+		echo '</div>';
 
+	}
+
+}// breadcrumbs
+endif;
 
 if($tempera_breadcrumbs=="Enable")  add_action ('cryout_before_content_hook','tempera_breadcrumbs');
 
@@ -308,14 +377,14 @@ function tempera_site_info() {
 	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }	?>
 	<span style="display:block;float:right;text-align:right;padding:5px 20px 5px;text-transform:uppercase;font-size:11px;">
 	<?php _e('Powered by','tempera')?> <a target="_blank" href="<?php echo 'http://www.cryoutcreations.eu';?>" title="<?php echo 'Tempera Theme by '.
-			'Cryout Creations';?>"><?php echo 'Tempera' ?></a> &amp; <a target="_blank" href="<?php echo esc_url('http://wordpress.org/' ); ?>"
-			title="<?php esc_attr_e('Semantic Personal Publishing Platform', 'tempera'); ?>"> <?php printf(' %s.', 'WordPress' ); ?>
+			'Cryout Creations';?>"><?php echo 'Tempera' ?></a> &amp; <a target="_blank" href="<?php echo 'http://wordpress.org/'; ?>"
+			title="<?php _e('Semantic Personal Publishing Platform', 'tempera'); ?>"> <?php printf(' %s.', 'WordPress' ); ?>
 		</a>
 	</span><!-- #site-info -->
 	<?php
 } // tempera_site_info()
 
-add_action('cryout_footer_hook','tempera_site_info',99);
+add_action('cryout_footer_hook', 'tempera_site_info',99);
 
 
 /**
@@ -324,7 +393,7 @@ add_action('cryout_footer_hook','tempera_site_info',99);
 function tempera_copyright() {
 	$temperas = tempera_get_theme_options();
 	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
-	echo '<div id="site-copyright">'.$tempera_copyright.'</div>';
+	echo '<div id="site-copyright">' .  wp_kses_post( $tempera_copyright ) . '</div>';
 } // tempera_copyright()
 
 
@@ -364,11 +433,11 @@ if ( ! function_exists( 'tempera_ajax_get_latest_posts' ) ) :
 function tempera_ajax_get_latest_posts($count,$categName){
 	$testVar='';
 	// The Query
-	$the_query = new WP_Query( 'category_name='.$categName);
+	$the_query = new WP_Query( 'category_name=' . $categName);
 	// The Loop
 	if ( $the_query->have_posts() ) :
 		while ( $the_query->have_posts() ) : $the_query->the_post();
-			$testVar .=the_title("<option>","</option>",0);
+			$testVar .= the_title("<option>","</option>",0);
 		endwhile;
 	endif;
 	return $testVar;
@@ -417,56 +486,56 @@ function tempera_get_layout_class() {
 endif;
 
 
-/** 
-* Retrieves the IDs for images in a gallery. 
-* @since tempera 1.0.3 
-* @return array List of image IDs from the post gallery. 
-*/ 
-function tempera_get_gallery_images() { 
-       $images = array(); 
+/**
+* Retrieves the IDs for images in a gallery.
+* @since tempera 1.0.3
+* @return array List of image IDs from the post gallery.
+*/
+function tempera_get_gallery_images() {
+       $images = array();
 
-       if ( function_exists( 'get_post_galleries' ) ) { 
-               $galleries = get_post_galleries( get_the_ID(), false ); 
-               if ( isset( $galleries[0]['ids'] ) ) 
-                       $images = explode( ',', $galleries[0]['ids'] ); 
-       } else { 
-               $pattern = get_shortcode_regex(); 
-               preg_match( "/$pattern/s", get_the_content(), $match ); 
-               $atts = shortcode_parse_atts( $match[3] ); 
-               if ( isset( $atts['ids'] ) ) 
-                       $images = explode( ',', $atts['ids'] ); 
-       } 
+       if ( function_exists( 'get_post_galleries' ) ) {
+               $galleries = get_post_galleries( get_the_ID(), false );
+               if ( isset( $galleries[0]['ids'] ) )
+                       $images = explode( ',', $galleries[0]['ids'] );
+       } else {
+               $pattern = get_shortcode_regex();
+               preg_match( "/$pattern/s", get_the_content(), $match );
+               $atts = shortcode_parse_atts( $match[3] );
+               if ( isset( $atts['ids'] ) )
+                       $images = explode( ',', $atts['ids'] );
+       }
 
-       if ( ! $images ) { 
-               $images = get_posts( array( 
-                       'fields'         => 'ids', 
-                       'numberposts'    => 999, 
-                       'order'          => 'ASC', 
-                       'orderby'        => 'none', 
-                       'post_mime_type' => 'image', 
-                       'post_parent'    => get_the_ID(), 
-                       'post_type'      => 'attachment', 
-               ) ); 
-       } 
+       if ( ! $images ) {
+               $images = get_posts( array(
+                       'fields'         => 'ids',
+                       'numberposts'    => 999,
+                       'order'          => 'ASC',
+                       'orderby'        => 'none',
+                       'post_mime_type' => 'image',
+                       'post_parent'    => get_the_ID(),
+                       'post_type'      => 'attachment',
+               ) );
+       }
 
-       return $images; 
+       return $images;
 } // tempera_get_gallery_images()
 
 
-/** 
-* Checks the browser agent string for mobile ids and adds "mobile" class to body if true 
-* @return array list of classes. 
-*/ 
-function tempera_mobile_body_class($classes){ 
-	$temperas = tempera_get_theme_options(); 
-	if ($temperas['tempera_mobile']=="Enable"): 
-		$browser = (isset($_SERVER['HTTP_USER_AGENT'])?$_SERVER['HTTP_USER_AGENT']:''); 
-		$keys = 'mobile|android|mobi|tablet|ipad|opera mini|series 60|s60|blackberry'; 
-		if (preg_match("/($keys)/i",$browser)): $classes[] = 'mobile'; endif; // mobile browser detected 
-	endif; 
-	return $classes; 
-} 
- 
+/**
+* Checks the browser agent string for mobile ids and adds "mobile" class to body if true
+* @return array list of classes.
+*/
+function tempera_mobile_body_class($classes){
+	$temperas = tempera_get_theme_options();
+	if ($temperas['tempera_mobile']=="Enable"):
+		$browser = (isset($_SERVER['HTTP_USER_AGENT'])?$_SERVER['HTTP_USER_AGENT']:'');
+		$keys = 'mobile|android|mobi|tablet|ipad|opera mini|series 60|s60|blackberry';
+		if (preg_match("/($keys)/i",$browser)): $classes[] = 'mobile'; endif; // mobile browser detected
+	endif;
+	return $classes;
+}
+
 add_filter('body_class', 'tempera_mobile_body_class');
 
 ////////// HELPER FUNCTIONS //////////
@@ -507,13 +576,13 @@ function cryout_hexadder($hex,$inc) {
            $g = hexdec(substr($hex,2,2));
            $b = hexdec(substr($hex,4,2));
         }
-		
+
 		$rgb_array = array($r,$g,$b);
 		$newhex="#";
 		foreach ($rgb_array as $el) {
 			$el+=$inc;
-			if ($el<=0) { $el='00'; } 
-			elseif ($el>=255) {$el='ff';} 
+			if ($el<=0) { $el='00'; }
+			elseif ($el>=255) {$el='ff';}
 			else {$el=dechex($el);}
 			if(strlen($el)==1)  {$el='0'.$el;}
 			$newhex.=$el;

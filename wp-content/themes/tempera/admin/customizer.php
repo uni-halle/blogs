@@ -22,13 +22,13 @@ $cryout_customizer = array(
 	'support_link1' => array(
 		'default' => 'http://www.cryoutcreations.eu/' . _CRYOUT_THEME_NAME . '/' . _CRYOUT_THEME_NAME .'-faqs',
 		'label' => __( 'Read the FAQs', 'cryout' ),
-		'desc' => __( '', 'cryout' ),
+		'desc' => '',
 		'section' => 'support',
 	),
 	'support_link2' => array(
 		'default' => 'http://www.cryoutcreations.eu/forums/f/wordpress/' . _CRYOUT_THEME_NAME ,
 		'label' => __( 'Browse the Forum', 'cryout' ),
-		'desc' => __( '', 'cryout' ),
+		'desc' => '',
 		'section' => 'support',
 	),
 	'premium_support_link' => array(
@@ -40,7 +40,7 @@ $cryout_customizer = array(
 	'rating_url' => array(
 		'default' => 'https://wordpress.org/support/view/theme-reviews/'. _CRYOUT_THEME_NAME .'#postform',
 		'label' => sprintf( __( 'Rate %s on Wordpress.org', 'cryout' ) , ucwords(_CRYOUT_THEME_NAME) ),
-		'desc' => __( '', 'cryout' ),
+		'desc' => '',
 		'section' => 'rating',
 	),
 ), // info_settings
@@ -60,7 +60,7 @@ function cryout_customizer_extras($wp_customize) {
 
 	class Cryout_Customize_Link_Control extends WP_Customize_Control {
 			public $type = 'link';
-			public function render_content() { 
+			public function render_content() {
 				if ( !empty( $this->description ) ) { ?>
 					<li class="customize-section-description-container">
 						<div class="description customize-section-description">
@@ -72,26 +72,26 @@ function cryout_customizer_extras($wp_customize) {
 				echo '<a href="' . esc_url( $this->value() ) . '" target="_blank">' . esc_attr( $this->label ) .'</a>';
 			}
 	} // class Cryout_Customize_Link_Control
-	
+
 	class Cryout_Customize_Blank_Control extends WP_Customize_Control {
 			public $type = 'blank';
-			public function render_content() { 
+			public function render_content() {
 				echo '&nbsp;';
 			}
 	} // class Cryout_Customize_Link_Control
-	
+
 } // cryout_customizer_extras()
 
 function cryout_customizer_sanitize_blank(){
-	// dummy function that does nothing, since the sanitized add_section 
+	// dummy function that does nothing, since the sanitized add_section
 	// calling it does not add any user-editable field
 } // cryout_customizer_sanitize_blank()
- 
+
 class Cryout_Customizer {
 
-   public static function register( $wp_customize ) {	
+   public static function register( $wp_customize ) {
 		global $cryout_customizer;
-   
+
 		// add about theme panel and sections
 		if (!empty($cryout_customizer['info_sections'])):
 		$wp_customize->add_panel( 'about', array(
@@ -100,7 +100,7 @@ class Cryout_Customizer {
 			'description'    => ucwords(_CRYOUT_THEME_NAME) . __( ' by ', 'cryout' ) . 'Cryout Creations',
 		) );
 		$section_priority = 10;
-		
+
 		foreach ($cryout_customizer['info_sections'] as $iid=>$info):
 			$wp_customize->add_section( $iid, array(
 				'title'          => $info['title'],
@@ -110,7 +110,7 @@ class Cryout_Customizer {
 			) );
 		endforeach;
 		endif; //!empty
-		
+
 		foreach ($cryout_customizer['info_settings'] as $iid => $info):
 			$wp_customize->add_setting( $iid, array(
 				'default'        => $info['default'],
@@ -123,10 +123,10 @@ class Cryout_Customizer {
 				'section' 		=> $info['section'],
 				'settings'   	=> $iid,
 				'priority'   	=> 10,
-			) ) );				
-		endforeach;		
+			) ) );
+		endforeach;
 		// end about panel
-		
+
 		// add settings page panel and section
 		if (!empty($cryout_customizer['advanced_settings'])):
 		$adv = $cryout_customizer['advanced_settings'];
@@ -135,14 +135,14 @@ class Cryout_Customizer {
 			'title'          => $adv['label'],
 			'description'    => $adv['desc'],
 		) );*/
-		
+
 		$wp_customize->add_section( $adv['section'], array(
 			'title'          => $adv['label'],
 			'description'    => '',
 			'priority'       => $adv['priority'],
 			//'panel'  => $opt['section'],
 			) );
-		
+
 		$wp_customize->add_setting( $adv['section'], array(
 			'default'        => $adv['default'],
 			'capability'     => 'edit_theme_options',
@@ -154,13 +154,13 @@ class Cryout_Customizer {
 			'section' => $adv['section'],
 			'settings'   => $adv['section'],
 			'priority'   => $adv['priority'],
-		) ) );				
+		) ) );
 		endif;
 		// end settings panel
 
-   
+
    } // register()
- 
+
 } // class Cryout_Customizer
 
 // Setup the Theme Customizer settings and controls...

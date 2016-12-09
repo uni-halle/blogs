@@ -9,7 +9,7 @@
 
 // variable for theme version
 define ('_CRYOUT_THEME_NAME','tempera');
-define ('_CRYOUT_THEME_VERSION','1.4.1');
+define ('_CRYOUT_THEME_VERSION','1.4.6');
 
 require_once(get_template_directory() . "/admin/main.php"); 			  // Load necessary admin files
 
@@ -25,4 +25,3 @@ require_once(get_template_directory() . "/includes/theme-hooks.php");     // Hoo
 require_once(get_template_directory() . "/includes/widgets.php");     	  // Theme Widgets
 require_once(get_template_directory() . "/includes/ajax.php");     	      // Ajax
 require_once(get_template_directory() . "/includes/tgm.php");             // TGM Plugin Activation
-

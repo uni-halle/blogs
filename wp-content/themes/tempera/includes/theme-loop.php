@@ -17,7 +17,7 @@
  */
 function tempera_excerpt_length( $length ) {
 	global $tempera_excerptwords;
-	return $tempera_excerptwords;
+	return absint( $tempera_excerptwords );
 }
 add_filter( 'excerpt_length', 'tempera_excerpt_length' );
 
@@ -29,7 +29,7 @@ add_filter( 'excerpt_length', 'tempera_excerpt_length' );
  */
 function tempera_continue_reading_link() {
 	global $tempera_excerptcont;
-	return '<p> <a class="continue-reading-link" href="'. get_permalink() . '">' .$tempera_excerptcont.'<i class="icon-right-dir"></i></a></p>';
+	return '<p> <a class="continue-reading-link" href="'. esc_url( get_permalink() ) . '">' . wp_kses_post( $tempera_excerptcont ) . '<i class="icon-right-dir"></i></a></p>';
 }
 
 /**
@@ -43,7 +43,7 @@ function tempera_continue_reading_link() {
  */
 function tempera_auto_excerpt_more( $more ) {
 	global $tempera_excerptdots;
-	return $tempera_excerptdots. tempera_continue_reading_link();
+	return wp_kses_post( $tempera_excerptdots ) . tempera_continue_reading_link();
 }
 add_filter( 'excerpt_more', 'tempera_auto_excerpt_more' );
 
@@ -77,7 +77,7 @@ add_filter( 'get_the_excerpt', 'tempera_custom_excerpt_more' );
  */
 function tempera_more_link($more_link, $more_link_text) {
 	global $tempera_excerptcont;
-	$new_link_text = $tempera_excerptcont;
+	$new_link_text = wp_kses_post( $tempera_excerptcont );
 	if (preg_match("/custom=(.*)/",$more_link_text,$m) ) {
 		$new_link_text = $m[1];
 	};
@@ -98,6 +98,10 @@ function tempera_trim_excerpt($text) {
      global $tempera_excerptwords;
      global $tempera_excerptcont;
      global $tempera_excerptdots;
+     $tempera_excerptwords = absint( $tempera_excerptwords );
+     $tempera_excerptcont = wp_kses_post( $tempera_excerptcont );
+     $tempera_excerptdots = wp_kses_post( $tempera_excerptdots );
+
      $raw_excerpt = $text;
      if ( '' == $text ) {
          //Retrieve the post content.
@@ -116,7 +120,7 @@ function tempera_trim_excerpt($text) {
          if ( count($words) > $tempera_excerptwords ) {
              array_pop($words);
              $text = implode(' ', $words);
-             $text = $text .' '.$tempera_excerptdots. ' <a class="continue-reading-link" href="'. get_permalink() . '">' .$tempera_excerptcont.' <span class="meta-nav">&rarr; </span>' . '</a>';
+             $text = $text .' '.$tempera_excerptdots. ' <a class="continue-reading-link" href="'. esc_url( get_permalink() ) . '">' . $tempera_excerptcont . ' <span class="meta-nav">&rarr; </span>' . '</a>';
          } else {
              $text = implode(' ', $words);
          }
@@ -145,8 +149,8 @@ add_filter( 'gallery_style', 'tempera_remove_gallery_css' );
 
 function tempera_author_on() {
 	global $post;
-	if (is_single() && get_the_author_meta('user_url',$post->post_author)) {
-		echo '<link rel="author" href="'.get_the_author_meta('user_url',$post->post_author).'">';
+	if ( is_single() && get_the_author_meta( 'user_url', $post->post_author ) ) {
+		echo '<link rel="author" href="' . esc_url( get_the_author_meta( 'user_url', $post->post_author) ) . '">';
 	}
 }
 
@@ -161,35 +165,56 @@ if ( ! function_exists( 'tempera_posted_on' ) ) :
  */
 function tempera_posted_on() {
      global $temperas;
-     foreach ($temperas as $key => $value) { ${"$key"} = $value; }	
-	 
+     foreach ( $temperas as $key => $value ) {
+		${"$key"} = $value;
+	}
+
 	 // If single page take appropiate settings
-	 if (is_single()) {$tempera_blog_show = $tempera_single_show;}
+	 if ( is_single() ) {
+		$tempera_blog_show = $tempera_single_show;
+	}
 
 	// Post Author
-	$output="";
-	 if ($tempera_blog_show['author']) {
-     $output .= sprintf( '<span class="author vcard" ><i class="icon-author icon-metas" title="'.__( 'Author ','tempera'). '"></i>  <a class="url fn n" href="%1$s" title="%2$s">%3$s</a> <span class="bl_sep">&#8226;</span></span>',
-     		get_author_posts_url( get_the_author_meta( 'ID' ) ),
-			sprintf( esc_attr ( __( 'View all posts by %s', 'tempera' ) ), get_the_author() ),
-			get_the_author()
-				);
+	$output = "";
+	 if ( $tempera_blog_show['author'] ) {
+		$output .= sprintf( '<span class="author vcard" ><i class="icon-author icon-metas" title="' . __( 'Author ','tempera'). '"></i>
+					<a class="url fn n" rel="author" href="%1$s" title="%2$s">%3$s</a></span>',
+					esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+					sprintf( esc_attr ( __( 'View all posts by %s', 'tempera' ) ), get_the_author() ),
+					get_the_author()
+					);
 	}
 
-     // Post date/time 
-	 if ($tempera_blog_show['date'] || $tempera_blog_show['time'] ) { 
-		$separator="";$date="";$time ="";
-		if ( $tempera_blog_show['date'] && $tempera_blog_show['time'] ) {$separator = " - ";}
-		if ($tempera_blog_show['date']) { $date = get_the_date(); }
-		if ($tempera_blog_show['time']) { $time = esc_attr( get_the_time() ); }
-		$output.='<span class="onDate date updated"><i class="icon-time icon-metas" title="'.__("Date", "tempera").'"></i><a href="'.get_permalink().'" rel="bookmark">'.$date.$separator.$time.'</a></span>';
+     // Post date/time
+	 if ( $tempera_blog_show['date'] || $tempera_blog_show['time'] ) {
+		$separator = "";
+		$date = "";
+		$time = "";
+
+		if ( $tempera_blog_show['date'] && $tempera_blog_show['time'] ) {
+			$separator = " - ";
+		}
+		if ( $tempera_blog_show['date'] ) {
+			$date = get_the_date();
+		}
+		if ( $tempera_blog_show['time'] ) {
+			$time = esc_attr( get_the_time() );
+		}
+
+		$output.=	'<span>
+						<i class="icon-time icon-metas" title="' . __( "Date", "tempera" ) . '"></i>
+						<time class="onDate date published" datetime="' . get_the_time( 'c' ) . '">
+							<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $date . $separator . $time . '</a>
+						</time>
+					</span>'.
+					'<time class="updated"  datetime="' . get_the_modified_date( 'c' ) . '">' . get_the_modified_date() . '</time>';
 	}
 	// Post categories
-     if ($tempera_blog_show['category'] &&  get_the_category_list()) { 
-			$output .= '<span class="bl_categ"><i class="icon-folder-open icon-metas" title="'.__("Categories", "tempera").'"></i>'.get_the_category_list( ', ' ).'</span> ' ;
+     if ( $tempera_blog_show['category'] &&  get_the_category_list() ) {
+			$output .= '<span class="bl_categ"><i class="icon-folder-open icon-metas" title="' . __( "Categories", "tempera" ).'"></i>' . get_the_category_list( ', ' ) . '</span> ' ;
 		}
 		echo $output;
-	
+
 }; // tempera_posted_on()
 endif;
 
@@ -200,9 +225,9 @@ if ( ! function_exists( 'tempera_posted_after' ) ) :
  *
  * @since tempera 0.9
  */
-function tempera_posted_after() { 
+function tempera_posted_after() {
 	global $temperas;
-    foreach ($temperas as $key => $value) { ${"$key"} = $value; }	
+    foreach ($temperas as $key => $value) { ${"$key"} = $value; }
 
 	$tag_list = get_the_tag_list( '', ', ' );
      if ( $tag_list && ($tempera_blog_show['tag']) ) { ?>
@@ -216,28 +241,26 @@ endif;
 
 function tempera_meta_infos() {
 	global $temperas;
-    foreach ($temperas as $key => $value) { ${"$key"} = $value; }	
-	switch($tempera_metapos):
+	switch($temperas['tempera_metapos']):
 
 		case "Bottom":
 			add_action('cryout_post_after_content_hook','tempera_posted_on',10);
 			add_action('cryout_post_after_content_hook','tempera_posted_after',11);
 			add_action('cryout_post_after_content_hook','tempera_comments_on',12);
 		break;
-		
+
 		case "Top":
-		if( !is_single()) { 
+		if( !is_single()) {
 			add_action('cryout_post_meta_hook','tempera_posted_on',10);
 			add_action('cryout_post_meta_hook','tempera_posted_after',11);
 			add_action('cryout_post_meta_hook','tempera_comments_on',12);
 		}
 		break;
-		
+
 		default:
 		break;
-		
-	endswitch;
 
+	endswitch;
 }
 
 add_action('wp_head','tempera_meta_infos');
@@ -261,15 +284,15 @@ if ( ! function_exists( 'tempera_posted_in' ) ) :
  */
 function tempera_posted_in() {
 	global $temperas;
-    foreach ($temperas as $key => $value) { ${"$key"} = $value; }	
-	
+    foreach ($temperas as $key => $value) { ${"$key"} = $value; }
+
 	if ($tempera_single_show['tag'] || $tempera_single_show['bookmark']) :
 		// Retrieves tag list of current post, separated by commas.
 		$posted_in="";
 		$tag_list = get_the_tag_list( '', ', ' );
 		if ( $tag_list && $tempera_single_show['tag'] ) {
 			$posted_in .=  '<span class="footer-tags"><i class="icon-tag icon-metas" title="'.__( 'Tagged','tempera').'"></i>&nbsp; %2$s.</span>';
-		} 
+		}
 		if ($tempera_single_show['bookmark'] ) {
 			$posted_in .= '<span class="bl_bookmark"><i class="icon-bookmark icon-metas" title="'.__(' Bookmark the permalink','tempera').'"></i> <a href="%3$s" title="'.__('Permalink to','tempera').' %4$s" rel="bookmark"> '.__('Bookmark','tempera').'</a>.</span>';
 		}
@@ -279,7 +302,7 @@ function tempera_posted_in() {
 			$posted_in,
 			get_the_category_list( ', ' ),
 			$tag_list,
-			get_permalink(),
+			esc_url( get_permalink() ),
 			the_title_attribute( 'echo=0' )
 		);
 	endif;
@@ -306,15 +329,14 @@ if ($tempera_fcrop) add_image_size( 'custom', $tempera_fwidth, $tempera_fheight,
                 else add_image_size( 'custom', $tempera_fwidth, $tempera_fheight );
 
 
-function cryout_echo_first_image ($postID)
-{
+function cryout_echo_first_image ($postID) {
 	$args = array(
-	'numberposts' => 1,
-	'orderby'=> 'none',
-	'post_mime_type' => 'image',
-	'post_parent' => $postID,
-	'post_status' => 'any',
-	'post_type' => 'any'
+    	'numberposts' => 1,
+    	'orderby'=> 'none',
+    	'post_mime_type' => 'image',
+    	'post_parent' => $postID,
+    	'post_status' => 'any',
+    	'post_type' => 'any'
 	);
 
 	$attachments = get_children( $args );
@@ -324,37 +346,40 @@ function cryout_echo_first_image ($postID)
 		foreach($attachments as $attachment) {
 			$image_attributes = wp_get_attachment_image_src( $attachment->ID, 'custom' )  ? wp_get_attachment_image_src( $attachment->ID, 'custom' ) : wp_get_attachment_image_src( $attachment->ID, 'custom' );
 
-			return $image_attributes[0];
+			return esc_url( $image_attributes[0] );
 
 		}
 	}
-}; // echo_first_image()
+}; // cryout_echo_first_image()
 
 if ( ! function_exists( 'tempera_set_featured_thumb' ) ) :
 /**
  * Adds a post thumbnail and if one doesn't exist the first image from the post is used.
  */
 function tempera_set_featured_thumb() {
+    global $post;
 	global $temperas;
 	foreach ($temperas as $key => $value) { ${"$key"} = $value; }
-     global $post;
 
      $image_src = cryout_echo_first_image($post->ID);
      if ( function_exists("has_post_thumbnail") && has_post_thumbnail() && $tempera_fpost=='Enable')
 			the_post_thumbnail( 'custom', array("class" => "align".strtolower($tempera_falign)." post_thumbnail" ) );
-	else if ($tempera_fpost=='Enable' && $tempera_fauto=="Enable" && $image_src )
-			echo '<a title="'.the_title_attribute('echo=0').'" href="'.get_permalink().'" ><img width="'.$tempera_fwidth.'" title="" alt="" class="align'.strtolower($tempera_falign).' post_thumbnail" src="'.$image_src.'"></a>' ;
+
+     else if ($tempera_fpost=='Enable' && $tempera_fauto=="Enable" && $image_src )
+			echo '<a title="' . the_title_attribute('echo=0') . '" href="' . esc_url( get_permalink() ) . '" >
+                    <img width="' . $tempera_fwidth.'" title="" alt="" class="align' . strtolower( $tempera_falign ) . ' post_thumbnail" src="' . $image_src . '">
+                </a>' ;
 
 };
 endif; // tempera_set_featured_thumb
 
-if ($tempera_fpost=='Enable' && $tempera_fpostlink) add_filter( 'post_thumbnail_html', 'tempera_thumbnail_link', 10, 3 );
+if ($tempera_fpost=='Enable' && $tempera_fpostlink) add_filter( 'post_thumbnail_html', 'tempera_thumbnail_link', 10, 2 );
 
 /**
  * The thumbnail gets a link to the post's page
  */
-function tempera_thumbnail_link( $html, $post_id, $post_image_id ) {
-     $html = '<a href="' . get_permalink( $post_id ) . '" title="' . esc_attr( get_post_field( 'post_title', $post_id ) ) . '" alt="' . esc_attr( get_post_field( 'post_title', $post_id ) ) . '">' . $html . '</a>';
+function tempera_thumbnail_link( $html, $post_id ) {
+     $html = '<a href="' . esc_url( get_permalink( $post_id ) ) . '" title="' . esc_attr( get_post_field( 'post_title', $post_id ) ) . '">' . $html . '</a>';
      return $html;
 }; // tempera_thumbnail_link()
 
