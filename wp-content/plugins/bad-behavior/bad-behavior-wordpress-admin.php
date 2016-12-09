@@ -243,6 +243,7 @@ function bb2_whitelist()
 	if (!$request_uri) $request_uri = $_SERVER['SCRIPT_NAME'];	# IIS
 
 	if ($_POST) {
+		check_admin_referer('bad-behavior-whitelist');
 		$_POST = array_map('stripslashes_deep', $_POST);
 		if ($_POST['ip']) {
 			$whitelists['ip'] = array_filter(preg_split("/\s+/m", $_POST['ip']));
@@ -277,18 +278,20 @@ function bb2_whitelist()
 
 	<h3><?php _e('IP Address'); ?></h3>
 	<table class="form-table">
-	<tr><td><label>IP address or CIDR format address ranges to be whitelisted (one per line)<br/><textarea cols="24" rows="6" name="ip"><?php echo implode("\n", $whitelists['ip']); ?></textarea></td></tr>
+	<tr><td><label>IP address or CIDR format address ranges to be whitelisted (one per line)<br/><textarea cols="24" rows="6" name="ip"><?php echo esc_textarea(implode("\n", $whitelists['ip'])); ?></textarea></td></tr>
 	</table>
 
 	<h3><?php _e('URL'); ?></h3>
 	<table class="form-table">
-	<tr><td><label>URL fragments beginning with the / after your web site hostname (one per line)<br/><textarea cols="48" rows="6" name="url"><?php echo implode("\n", $whitelists['url']); ?></textarea></td></tr>
+	<tr><td><label>URL fragments beginning with the / after your web site hostname (one per line)<br/><textarea cols="48" rows="6" name="url"><?php echo esc_textarea(implode("\n", $whitelists['url'])); ?></textarea></td></tr>
 	</table>
 
 	<h3><?php _e('User Agent'); ?></h3>
 	<table class="form-table">
-	<tr><td><label>User agent strings to be whitelisted (one per line)<br/><textarea cols="48" rows="6" name="useragent"><?php echo implode("\n", $whitelists['useragent']); ?></textarea></td></tr>
+	<tr><td><label>User agent strings to be whitelisted (one per line)<br/><textarea cols="48" rows="6" name="useragent"><?php echo esc_textarea(implode("\n", $whitelists['useragent'])); ?></textarea></td></tr>
 	</table>
+
+<?php wp_nonce_field('bad-behavior-whitelist'); ?>
 
 	<p class="submit"><input class="button" type="submit" name="submit" value="<?php _e('Update &raquo;'); ?>" /></p>
 	</form>
@@ -304,6 +307,7 @@ function bb2_options()
 	if (!$request_uri) $request_uri = $_SERVER['SCRIPT_NAME'];	# IIS
 
 	if ($_POST) {
+		check_admin_referer('bad-behavior-options');
 		$_POST = array_map('stripslashes_deep', $_POST);
 		if ($_POST['display_stats']) {
 			$settings['display_stats'] = true;
@@ -437,6 +441,8 @@ function bb2_options()
 	<tr><td><label><input type="text" size="32" name="reverse_proxy_header" value="<?php echo sanitize_text_field($settings['reverse_proxy_header']); ?>" /> Header containing Internet clients' IP address</label></td></tr>
 	<tr><td><label>IP address or CIDR format address ranges for your proxy servers (one per line)<br/><textarea cols="24" rows="6" name="reverse_proxy_addresses"><?php echo esc_textarea(implode("\n", $settings['reverse_proxy_addresses'])); ?></textarea></td></tr>
 	</table>
+
+<?php wp_nonce_field('bad-behavior-options'); ?>
 
 	<p class="submit"><input class="button" type="submit" name="submit" value="<?php _e('Update &raquo;'); ?>" /></p>
 	</form>
