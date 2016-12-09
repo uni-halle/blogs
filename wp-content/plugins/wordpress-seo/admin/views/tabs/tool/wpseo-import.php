@@ -17,9 +17,10 @@ if ( ! defined( 'WPSEO_VERSION' ) ) {
 	method="post" enctype="multipart/form-data"
 	accept-charset="<?php echo esc_attr( get_bloginfo( 'charset' ) ); ?>">
 	<?php wp_nonce_field( 'wpseo-import-file', '_wpnonce', true, true ); ?>
-	<input type="file" name="settings_import_file"
+	<label class="screen-reader-text" for="settings-import-file"><?php _e( 'Choose your settings.zip file', 'wordpress-seo' ); ?></label>
+	<input type="file" name="settings_import_file" id="settings-import-file"
 	       accept="application/x-zip,application/x-zip-compressed,application/zip"/>
 	<input type="hidden" name="action" value="wp_handle_upload"/><br/>
 	<br/>
-	<input type="submit" class="button-primary" value="<?php _e( 'Import settings', 'wordpress-seo' ); ?>"/>
+	<input type="submit" class="button button-primary" value="<?php _e( 'Import settings', 'wordpress-seo' ); ?>"/>
 </form>

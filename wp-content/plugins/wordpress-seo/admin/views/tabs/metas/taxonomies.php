@@ -13,11 +13,11 @@ $taxonomies = get_taxonomies( array( 'public' => true ), 'objects' );
 if ( is_array( $taxonomies ) && $taxonomies !== array() ) {
 	foreach ( $taxonomies as $tax ) {
 		// Explicitly hide all the core taxonomies we never want to do stuff for.
-		if ( in_array( $tax->name, array( 'link_category', 'nav_menu', 'post_format' ) ) ) {
+		if ( in_array( $tax->name, array( 'link_category', 'nav_menu' ) ) ) {
 			continue;
 		}
 
-		echo '<h4>' . esc_html( ucfirst( $tax->labels->name ) ) . '</h4>';
+		echo '<h2>' . esc_html( ucfirst( $tax->labels->name ) ) . '</h2>';
 		if ( $tax->name === 'post_format' ) {
 			$yform->light_switch(
 				'disable-post_format',
@@ -42,6 +42,13 @@ if ( is_array( $taxonomies ) && $taxonomies !== array() ) {
 					/* translators: %1$s expands to Yoast SEO */
 				), sprintf( __( '%1$s Meta Box', 'wordpress-seo' ), 'Yoast SEO' ) );
 		}
+		/**
+		 * Allow adding custom checkboxes to the admin meta page - Taxonomies tab
+		 *
+		 * @api  WPSEO_Admin_Pages  $yform  The WPSEO_Admin_Pages object
+		 * @api  Object             $tax    The taxonomy
+		 */
+		do_action( 'wpseo_admin_page_meta_taxonomies', $yform, $tax );
 		echo '<br/><br/>';
 		echo '</div>';
 	}

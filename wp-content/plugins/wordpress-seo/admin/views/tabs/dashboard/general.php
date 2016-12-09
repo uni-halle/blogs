@@ -9,38 +9,42 @@ if ( ! defined( 'WPSEO_VERSION' ) ) {
 	exit();
 }
 
-if ( get_user_meta( get_current_user_id(), 'wpseo_ignore_tour' ) ) :
+if ( WPSEO_Utils::is_api_available() ) :
+	echo '<h2>' . esc_html__( 'Configuration wizard', 'wordpress-seo' ) . '</h2>';
 	?>
 	<p>
-		<strong><?php _e( 'Introduction Tour', 'wordpress-seo' ); ?></strong><br/>
-		<?php _e( 'Take this tour to quickly learn about the use of this plugin.', 'wordpress-seo' ); ?>
+		<?php
+			/* translators: %1$s expands to Yoast SEO */
+			printf( __( 'Configure %1$s step-by-step.', 'wordpress-seo' ), 'Yoast SEO' );
+		?>
 	</p>
-	<p>
-		<a class="button-secondary"
-		   href="<?php echo esc_url( admin_url( 'admin.php?page=wpseo_dashboard&wpseo_restart_tour=1' ) ); ?>"><?php _e( 'Start Tour', 'wordpress-seo' ); ?></a>
-	</p>
+<p>
+	<a class="button"
+	   href="<?php echo esc_url( admin_url( 'admin.php?page=' . WPSEO_Configuration_Page::PAGE_IDENTIFIER ) ); ?>"><?php _e( 'Open the configuration wizard', 'wordpress-seo' ); ?></a>
+</p>
 
 	<br/>
-	<?php
+<?php
 endif;
-?>
 
+echo '<h2>' . esc_html__( 'Credits', 'wordpress-seo' ) . '</h2>';
+?>
 <p>
-	<strong><?php _e( 'Latest Changes', 'wordpress-seo' ); ?></strong><br/>
 	<?php
-	/* translators: %s expands to Yoast SEO */
-	printf( __( 'We\'ve summarized the most recent changes in %s.', 'wordpress-seo' ), 'Yoast SEO' );
+		/* translators: %1$s expands to Yoast SEO */
+		printf( __( 'Take a look at the people that create %1$s.', 'wordpress-seo' ), 'Yoast SEO' );
 	?>
 </p>
+
 <p>
-	<a class="button-secondary"
-	   href="<?php echo esc_url( admin_url( 'admin.php?page=wpseo_dashboard&intro=1' ) ); ?>"><?php _e( 'View Changes', 'wordpress-seo' ); ?></a>
+	<a class="button"
+	   href="<?php echo esc_url( admin_url( 'admin.php?page=' . WPSEO_Admin::PAGE_IDENTIFIER . '&intro=1' ) ); ?>"><?php _e( 'View Credits', 'wordpress-seo' ); ?></a>
 </p>
-
 <br/>
-
+<?php
+echo '<h2>' . esc_html__( 'Restore default settings', 'wordpress-seo' ) . '</h2>';
+?>
 <p>
-	<strong><?php _e( 'Restore Default Settings', 'wordpress-seo' ); ?></strong><br/>
 	<?php
 	/* translators: %s expands to Yoast SEO */
 	printf( __( 'If you want to restore a site to the default %s settings, press this button.', 'wordpress-seo' ), 'Yoast SEO' );
@@ -50,5 +54,5 @@ endif;
 <p>
 	<a onclick="if ( !confirm( '<?php _e( 'Are you sure you want to reset your SEO settings?', 'wordpress-seo' ); ?>' ) ) return false;"
 	   class="button"
-	   href="<?php echo esc_url( add_query_arg( array( 'nonce' => wp_create_nonce( 'wpseo_reset_defaults' ) ), admin_url( 'admin.php?page=wpseo_dashboard&wpseo_reset_defaults=1' ) ) ); ?>"><?php _e( 'Restore Default Settings', 'wordpress-seo' ); ?></a>
+	   href="<?php echo esc_url( add_query_arg( array( 'nonce' => wp_create_nonce( 'wpseo_reset_defaults' ) ), admin_url( 'admin.php?page=' . WPSEO_Admin::PAGE_IDENTIFIER . '&wpseo_reset_defaults=1' ) ) ); ?>"><?php _e( 'Restore Default Settings', 'wordpress-seo' ); ?></a>
 </p>

@@ -9,6 +9,13 @@ if ( ! defined( 'WPSEO_VERSION' ) ) {
 	exit();
 }
 
+echo '<h2>' . esc_html__( 'Post types sitemap settings', 'wordpress-seo' ) . '</h2>';
+
+$switch_values = array(
+	'off' => __( 'In sitemap', 'wordpress-seo' ),
+	'on'  => __( 'Not in sitemap', 'wordpress-seo' ),
+);
+
 /**
  * Filter the post types to present in interface for exclusion.
  *
@@ -22,6 +29,12 @@ if ( is_array( $post_types ) && $post_types !== array() ) {
 			$switch_values,
 			$pt->labels->name . ' (<code>' . $pt->name . '</code>)'
 		);
+		/**
+		 * Allow adding custom checkboxes to the admin sitemap page - Post Types tab
+		 *
+		 * @api  Yoast_Form  $yform  The Yoast_Form object
+		 * @api  Object      $pt     The post type
+		 */
+		do_action( 'wpseo_admin_page_sitemap_post_types', $yform, $pt );
 	}
 }
-

@@ -43,9 +43,9 @@ class WPSEO_GSC_Table extends WP_List_Table {
 	 * @var array
 	 */
 	private $modal_heights = array(
-		'create'         => 350,
-		'no_premium'     => 125,
-		'already_exists' => 150,
+		'create'         => 300,
+		'no_premium'     => 140,
+		'already_exists' => 160,
 	);
 
 	/**
@@ -203,10 +203,10 @@ class WPSEO_GSC_Table extends WP_List_Table {
 			 */
 			$modal_height = $this->modal_box( $item['url'] );
 
-			$actions['create_redirect'] = '<a title="' . __( 'Create a redirect', 'wordpress-seo' ) . '" href="#TB_inline?width=600&height=' . $this->modal_heights[ $modal_height ] . '&inlineId=redirect-' . md5( $item['url'] ) . '" class="thickbox">' . __( 'Create redirect', 'wordpress-seo' ) . '</a>';
+			$actions['create_redirect'] = '<a href="#TB_inline?width=600&height=' . $this->modal_heights[ $modal_height ] . '&inlineId=redirect-' . md5( $item['url'] ) . '" class="thickbox wpseo-open-gsc-redirect-modal aria-button-if-js">' . __( 'Create redirect', 'wordpress-seo' ) . '</a>';
 		}
 
-		$actions['view']        = '<a href="' . $item['url'] . '" target="_blank">' . __( 'View', 'wordpress-seo' ) . '</a>';
+		$actions['view']        = '<a href="' . home_url( $item['url'] ) . '" target="_blank">' . __( 'View', 'wordpress-seo' ) . '</a>';
 		$actions['markasfixed'] = '<a href="javascript:wpseo_mark_as_fixed(\'' . urlencode( $item['url'] ) . '\');">' . __( 'Mark as fixed', 'wordpress-seo' ) . '</a>';
 
 		return sprintf(

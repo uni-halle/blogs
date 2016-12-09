@@ -24,8 +24,6 @@ class WPSEO_Upgrade {
 
 		WPSEO_Options::maybe_set_multisite_defaults( false );
 
-		$this->init();
-
 		if ( version_compare( $this->options['version'], '1.5.0', '<' ) ) {
 			$this->upgrade_15( $this->options['version'] );
 		}
@@ -50,6 +48,21 @@ class WPSEO_Upgrade {
 			$this->upgrade_30();
 		}
 
+		if ( version_compare( $this->options['version'], '3.3', '<' ) ) {
+			$this->upgrade_33();
+		}
+
+		if ( version_compare( $this->options['version'], '3.6', '<' ) ) {
+			$this->upgrade_36();
+		}
+
+		// Since 3.7.
+		$features = new WPSEO_Features();
+		if ( ! $features->is_premium() ) {
+			$upsell_notice = new WPSEO_Product_Upsell_Notice();
+			$upsell_notice->set_upgrade_notice();
+		}
+
 		/**
 		 * Filter: 'wpseo_run_upgrade' - Runs the upgrade hook which are dependent on Yoast SEO
 		 *
@@ -60,19 +73,6 @@ class WPSEO_Upgrade {
 		do_action( 'wpseo_run_upgrade', $this->options['version'] );
 
 		$this->finish_up();
-	}
-
-	/**
-	 * Run some functions that run when we first run or when we upgrade Yoast SEO from < 1.4.13
-	 */
-	private function init() {
-		if ( $this->options['version'] === '' || version_compare( $this->options['version'], '1.4.13', '<' ) ) {
-			/* Make sure title_test and description_test functions are available */
-			require_once( WPSEO_PATH . 'inc/wpseo-non-ajax-functions.php' );
-
-			// Run description test once theme has loaded.
-			add_action( 'init', 'wpseo_description_test' );
-		}
 	}
 
 	/**
@@ -180,6 +180,24 @@ class WPSEO_Upgrade {
 	private function upgrade_30() {
 		// Remove the meta fields for sitemap prio.
 		delete_post_meta_by_key( '_yoast_wpseo_sitemap-prio' );
+	}
+
+	/**
+	 * Performs upgrade functions to Yoast SEO 3.3
+	 */
+	private function upgrade_33() {
+		// Notification dismissals have been moved to User Meta instead of global option.
+		delete_option( Yoast_Notification_Center::STORAGE_KEY );
+	}
+
+	/**
+	 * Performs upgrade functions to Yoast SEO 3.6
+	 */
+	private function upgrade_36() {
+		global $wpdb;
+
+		// Between 3.2 and 3.4 the sitemap options were saved with autoloading enabled.
+		$wpdb->query( 'DELETE FROM ' . $wpdb->options . ' WHERE option_name LIKE "wpseo_sitemap_%" AND autoload = "yes"' );
 	}
 
 	/**

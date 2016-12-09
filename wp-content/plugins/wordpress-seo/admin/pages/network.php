@@ -47,7 +47,14 @@ if ( get_blog_count() > 100 ) {
 	$use_dropdown = false;
 }
 else {
-	$sites = wp_get_sites( array( 'deleted' => 0 ) );
+
+	if ( function_exists( 'get_sites' ) ) { // WP 4.6+.
+		$sites = array_map( 'get_object_vars', get_sites( array( 'deleted' => 0 ) ) );
+	}
+	else {
+		$sites = wp_get_sites( array( 'deleted' => 0 ) );
+	}
+
 	if ( is_array( $sites ) && $sites !== array() ) {
 		$dropdown_input = array(
 			'-' => __( 'None', 'wordpress-seo' ),
@@ -115,7 +122,7 @@ else {
 	echo '<p><strong>' . __( 'Take note:', 'wordpress-seo' ) . '</strong> ' . __( 'Privacy sensitive (FB admins and such), theme specific (title rewrite) and a few very site specific settings will not be imported to new blogs.', 'wordpress-seo' ) . '</p>';
 
 
-echo '<input type="submit" name="wpseo_submit" class="button-primary" value="' . __( 'Save MultiSite Settings', 'wordpress-seo' ) . '"/>';
+echo '<input type="submit" name="wpseo_submit" class="button button-primary" value="' . __( 'Save MultiSite Settings', 'wordpress-seo' ) . '"/>';
 echo '</form>';
 
 echo '<h2>' . __( 'Restore site to default settings', 'wordpress-seo' ) . '</h2>';
