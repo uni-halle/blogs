@@ -24,15 +24,19 @@ call_user_func(function($l){
 #$ds_more_privacy_options->ds_users_authenticator();
 #die();
 
+header('x-files-auth: start');
 $check=false;
 switch ($current_blog->public) {
 	case -1:$check='users'; break;
 	case -2:$check='members'; break;
 	case -3:$check='admins'; break;
 }
+#header ('content-type: text/plain');
 if($check) {
 	$m="ds_{$check}_authenticator";
-	$ds_more_privacy_options->$m();
+	header("chk_priv: $m");
+	$res=call_user_func([new DS_More_Privacy_Options(),$m]);
+	//$ds_more_privacy_options->$m();
 }
 
 require_once 'wp-includes/ms-files.php';

@@ -7,7 +7,7 @@
  * @package WordPress
  * @subpackage Multisite
  */
-
+header('x-ms-files: start');
 define( 'SHORTINIT', true );
 require_once( dirname( dirname( __FILE__ ) ) . '/wp-load.php' );
 
@@ -42,6 +42,9 @@ header( 'Content-Type: ' . $mimetype ); // always send this
 if ( false === strpos( $_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS' ) )
 	header( 'Content-Length: ' . filesize( $file ) );
 
+header("x-ms-files: found $file");
+header('x-ms-files-headers:'.(headers_sent($File,$Line)?"$File:$Line":"available"));
+
 // Optional support for X-Sendfile and X-Accel-Redirect
 if ( WPMU_ACCEL_REDIRECT ) {
 	header( 'X-Accel-Redirect: ' . str_replace( WP_CONTENT_DIR, '', $file ) );
@@ -50,6 +53,7 @@ if ( WPMU_ACCEL_REDIRECT ) {
 	header( 'X-Sendfile: ' . $file );
 	exit;
 }
+
 
 $last_modified = gmdate( 'D, d M Y H:i:s', filemtime( $file ) );
 $etag = '"' . md5( $last_modified ) . '"';
@@ -74,9 +78,10 @@ if ( ( $client_last_modified && $client_etag )
 	? ( ( $client_modified_timestamp >= $modified_timestamp) && ( $client_etag == $etag ) )
 	: ( ( $client_modified_timestamp >= $modified_timestamp) || ( $client_etag == $etag ) )
 	) {
+	header('x-ms-files: no mod');
 	status_header( 304 );
 	exit;
 }
-
+header("x-ms-files: send $file");
 // If we made it this far, just serve the file
 readfile( $file );
