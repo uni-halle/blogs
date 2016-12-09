@@ -122,32 +122,7 @@ function omega_footer_markup_close() {
  * Dynamic element to wrap the site title and site description. 
  */
 function omega_branding() {
-	echo '<div class="' . omega_apply_atomic( 'title_area_class', 'title-area') .'">';
-
-	/* Get the site title.  If it's not empty, wrap it with the appropriate HTML. */	
-	if ( $title = get_bloginfo( 'name' ) ) {		
-		if ( $logo = get_theme_mod( 'custom_logo' ) ) {
-			$title = sprintf( '<div itemscope itemtype="http://schema.org/Organization" class="site-title"><a itemprop="url" href="%1$s" title="%2$s" rel="home"><img itemprop="logo" alt="%3$s" src="%4$s"/></a></div>', home_url(), esc_attr( $title ), esc_attr( $title ), $logo );		
-		} else {
-			if (is_home()) {
-				$title = sprintf( '<h1 class="site-title" itemprop="headline"><a href="%1$s" title="%2$s" rel="home">%3$s</a></h1>', home_url(), esc_attr( $title ), $title );		
-			} else {
-				$title = sprintf( '<h2 class="site-title" itemprop="headline"><a href="%1$s" title="%2$s" rel="home">%3$s</a></h2>', home_url(), esc_attr( $title ), $title );		
-			}
-		}
-	}
-
-	/* Display the site title and apply filters for developers to overwrite. */
-	echo omega_apply_atomic( 'site_title', $title );
-
-	/* Get the site description.  If it's not empty, wrap it with the appropriate HTML. */
-	if ( $desc = get_bloginfo( 'description' ) )
-		$desc = sprintf( '<h3 class="site-description"><span>%1$s</span></h3>', $desc );
-
-	/* Display the site description and apply filters for developers to overwrite. */
-	echo omega_apply_atomic( 'site_description', $desc );
-
-	echo '</div>';
+	get_template_part( 'partials/title', 'area' );	
 }
 
 /**
@@ -202,67 +177,19 @@ function omega_primary_sidebar() {
 	get_sidebar();
 }
 
-
 /**
  * Display the default entry header.
  */
 function omega_entry_header() {
-
-	echo '<header class="entry-header">';
-
-	get_template_part( 'partials/entry', 'title' ); 
-
-	if ( 'post' == get_post_type() ) : 
-		get_template_part( 'partials/entry', 'byline' ); 
-	endif; 
-	echo '</header><!-- .entry-header -->';
-	
+	get_template_part( 'partials/entry', 'header' );	
 }
 
 /**
  * Display the default entry metadata.
  */
 function omega_entry() {
-
-	if ( is_home() || is_archive() || is_search() ) {
-	?>	
-		<div <?php omega_attr( 'entry-summary' ); ?>>
-	<?php 		
-		if( get_theme_mod( 'post_thumbnail', 1 ) && has_post_thumbnail()) {
-
-			if ( ! class_exists( 'Get_The_Image' ) ) {
-				apply_filters ( 'omega_featured_image' , printf( '<a href="%s" title="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_post_thumbnail(get_the_ID(), get_theme_mod( 'image_size' ), array('class' => get_theme_mod( 'image_size' )) ) ));
-			} else {
-				get_the_image( array( 'size' => get_theme_mod( 'image_size' ) ) );		
-			}	
-		}
-
-		if ( 'excerpts' === get_theme_mod( 'post_excerpt', 'excerpts' ) ) {
-			if ( get_theme_mod( 'excerpt_chars_limit', 0 ) ) {
-				the_content_limit( (int) get_theme_mod( 'excerpt_chars_limit' ), get_theme_mod( 'more_text', '[Read more...]' ) );
-			} else {
-				the_excerpt();
-			}
-		}
-		else {
-			the_content( get_theme_mod( 'more_text' ) );
-		}
-	?>	
-		</div>
-	<?php 	
-	} else {
-	?>	
-		<div <?php omega_attr( 'entry-content' ); ?>>
-	<?php 	
-		the_content();
-		wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'omega' ) . '</span>', 'after' => '</p>' ) );
-	?>	
-		</div>
-	<?php 	
-	}
-
+	get_template_part( 'partials/entry' );	
 }
-
 
 function omega_excerpt_more( $more ) {
 	return ' ... <span class="more"><a class="more-link" href="'. get_permalink( get_the_ID() ) . '">' . get_theme_mod( 'more_text', '[Read more...]' ) . '</a></span>';
@@ -273,9 +200,7 @@ add_filter('excerpt_more', 'omega_excerpt_more');
  * Display the default entry footer.
  */
 function omega_entry_footer() {
-
-	if ( 'post' == get_post_type() ) get_template_part( 'partials/entry', 'footer' ); 	
-		
+	if ( 'post' == get_post_type() ) get_template_part( 'partials/entry', 'footer' );
 }
 
 /**
@@ -294,6 +219,46 @@ function omega_styles() {
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 	<![endif]-->
 <?php 
+}
+
+/**
+ * Display navigation to next/previous pages when applicable
+ */
+function omega_content_nav() {
+	global $wp_query, $post;
+
+	// Don't print empty markup on single pages if there's nowhere to navigate.
+	if ( is_single() ) {
+		$previous = ( is_attachment() ) ? get_post( $post->post_parent ) : get_adjacent_post( false, '', true );
+		$next = get_adjacent_post( false, '', false );
+
+		if ( (!$next && !$previous) )
+			return;
+	}
+
+	if ( is_singular() && !get_theme_mod( 'single_nav', 0 ) ) {
+		return;
+	}
+
+	// Don't print empty markup in archives if there's only one page.
+	if ( $wp_query->max_num_pages < 2 && ( is_home() || is_archive() || is_search() ) )
+		return;
+
+	$nav_class = ( is_single() ) ? 'post-navigation' : 'paging-navigation';
+	
+	?>
+	<nav role="navigation" id="nav-below" class="navigation  <?php echo $nav_class; ?>">
+
+	<?php 
+	if ( is_single() && get_theme_mod( 'single_nav', 0 ) ) : // navigation links for single posts 
+		get_template_part( 'partials/single', 'nav' );
+   	elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : // navigation links for home, archive, and search pages 
+		loop_pagination();
+	endif; 
+	?>
+
+	</nav><!-- #nav-below -->
+	<?php
 }
 
 function omega_archive_title() {
@@ -353,20 +318,7 @@ function omega_archive_title() {
 }
 
 function omega_content() {
-	if ( have_posts() ) : 		
-
-		do_action( 'omega_before_loop');	
-
-		/* Start the Loop */ 
-		while ( have_posts() ) : the_post(); 
-				get_template_part( 'partials/content' );
-		endwhile; 
-		
-		do_action( 'omega_after_loop');			
-
-	else : 
-			get_template_part( 'partials/no-results', 'archive' ); 
-	endif;	
+	get_template_part( 'partials/content' );	
 }
 
 function omega_custom_comment_form($fields) {

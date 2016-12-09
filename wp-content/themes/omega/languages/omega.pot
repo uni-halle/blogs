@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Omega\n"
-"POT-Creation-Date: 2015-11-13 12:15+0700\n"
+"POT-Creation-Date: 2016-07-20 00:12+0700\n"
 "PO-Revision-Date: 2015-08-26 12:19+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -666,17 +666,17 @@ msgstr ""
 
 #: lib/extensions/omega-child-page.php:10
 #: lib/extensions/omega-child-page.php:11
-#: lib/extensions/omega-child-page.php:64
-#: lib/extensions/omega-child-page.php:115
+#: lib/extensions/omega-child-page.php:83
+#: lib/extensions/omega-child-page.php:136
 msgid "Omega Child Themes"
 msgstr ""
 
-#: lib/extensions/omega-child-page.php:68
+#: lib/extensions/omega-child-page.php:89
 msgid ""
-"Personalize your Omega powered site with one of Omega child themes below"
+"Personalize your Omega powered site using one of Omega child themes below"
 msgstr ""
 
-#: lib/extensions/omega-child-page.php:95
+#: lib/extensions/omega-child-page.php:116
 msgid "Child Themes"
 msgstr ""
 
@@ -710,44 +710,40 @@ msgid ""
 "page based on the chosen layout."
 msgstr ""
 
-#: lib/functions/hooks.php:160 lib/functions/hooks.php:162
+#: lib/functions/hooks.php:135 lib/functions/hooks.php:137
 msgid "Copyright &#169; "
 msgstr ""
 
-#: lib/functions/hooks.php:160 lib/functions/hooks.php:162
+#: lib/functions/hooks.php:135 lib/functions/hooks.php:137
 msgid " WordPress Theme by "
 msgstr ""
 
-#: lib/functions/hooks.php:258
-msgid "Pages:"
-msgstr ""
-
-#: lib/functions/hooks.php:310
+#: lib/functions/hooks.php:275
 #, php-format
 msgid "Search Results for: %s"
 msgstr ""
 
-#: lib/functions/hooks.php:320
+#: lib/functions/hooks.php:285
 #, php-format
 msgid "Author: %s"
 msgstr ""
 
-#: lib/functions/hooks.php:328
+#: lib/functions/hooks.php:293
 #, php-format
 msgid "Day: %s"
 msgstr ""
 
-#: lib/functions/hooks.php:331
+#: lib/functions/hooks.php:296
 #, php-format
 msgid "Month: %s"
 msgstr ""
 
-#: lib/functions/hooks.php:334
+#: lib/functions/hooks.php:299
 #, php-format
 msgid "Year: %s"
 msgstr ""
 
-#: lib/functions/hooks.php:337 lib/functions/template-general.php:293
+#: lib/functions/hooks.php:302 lib/functions/template-general.php:293
 msgid "Archives"
 msgstr ""
 
@@ -865,16 +861,6 @@ msgstr ""
 msgid "Leave a Comment"
 msgstr ""
 
-#: lib/functions/template-tags.php:41
-msgctxt "Previous post link"
-msgid "&larr;"
-msgstr ""
-
-#: lib/functions/template-tags.php:42
-msgctxt "Next post link"
-msgid "&rarr;"
-msgstr ""
-
 #: lib/functions/utility.php:79
 msgid "(Untitled)"
 msgstr ""
@@ -908,7 +894,7 @@ msgid "One Comment"
 msgstr ""
 
 #: partials/entry-byline.php:3
-msgid "by "
+msgid "by"
 msgstr ""
 
 #: partials/entry-byline.php:5
@@ -923,6 +909,10 @@ msgstr ""
 #: partials/entry-footer.php:3
 #, php-format
 msgid "Tagged: %s"
+msgstr ""
+
+#: partials/entry.php:33
+msgid "Pages:"
 msgstr ""
 
 #: partials/no-results.php:11
@@ -945,6 +935,16 @@ msgstr ""
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
+msgstr ""
+
+#: partials/single-nav.php:1
+msgctxt "Previous post link"
+msgid "&larr;"
+msgstr ""
+
+#: partials/single-nav.php:2
+msgctxt "Next post link"
+msgid "&rarr;"
 msgstr ""
 
 #: searchform.php:9

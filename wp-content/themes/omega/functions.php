@@ -55,6 +55,8 @@ function omega_theme_setup() {
 	/* Enable child themes page */
 	add_theme_support( 'omega-child-page' );
 
+	add_theme_support( 'woocommerce' );
+
 	/* Handle content width for embeds and images. */
 	omega_set_content_width( 700 );
 

@@ -19,44 +19,63 @@ if ( is_admin() ) {
 	function omega_child_themes_list() {
 
 		$omegachilds = array(
+			 	array( 'name' => 'Composer Pro',
+			 		   'url' => 'https://themehall.com/product/composer-pro',
+			 			'class' => 'composer-pro'),
 			 	array( 'name' => 'Church+',
-			 		   'url' => 'http://themehall.com/product/churchplus'),
-			 	array( 'name' => 'Composer+',
-			 		   'url' => 'https://themehall.com/product/composer-plus'),
+			 		   'url' => 'https://themehall.com/product/churchplus',
+			 			'class' => 'churchplus'),
 			 	array( 'name' => 'Custom Footer',
-			 		   'url' => 'https://themehall.com/product/omega-custom-footer-plugin'),
+			 		   'url' => 'https://themehall.com/product/omega-custom-footer-plugin',
+			 			'class' => 'custom-footer'),
 			 	array( 'name' => 'Superstore',
-			 		   'url' => 'https://wordpress.org/themes/superstore/'),
+			 		   'url' => 'https://wordpress.org/themes/superstore/',
+			 			'p' => ''),
 			 	array( 'name' => 'Delicious',
-			 		   'url' => 'https://wordpress.org/themes/delicious/'),
+			 		   'url' => 'https://wordpress.org/themes/delicious/',
+			 			'p' => ''),
 			 	array( 'name' => 'Lifestyle',
-			 		   'url' => 'https://wordpress.org/themes/lifestyle/'),
+			 		   'url' => 'https://wordpress.org/themes/lifestyle/',
+			 			'p' => ''),
 			 	array( 'name' => 'Me',
-			 		   'url' => 'https://themehall.com/me-omega-child-theme'),
+			 		   'url' => 'https://themehall.com/me-omega-child-theme',
+			 			'p' => ''),
 			 	array( 'name' => 'Composer',
-			 		   'url' => 'https://themehall.com/composer-one-column-omega-child-theme'),
+			 		   'url' => 'https://themehall.com/composer-one-column-omega-child-theme',
+			 			'p' => ''),
 			 	array( 'name' => 'Alpha',
-			 		   'url' => 'https://themehall.com/alpha-first-omega-child-theme'),
+			 		   'url' => 'https://themehall.com/alpha-first-omega-child-theme',
+			 			'p' => ''),
 			 	array( 'name' => 'Beta',
-			 		   'url' => 'https://themehall.com/beta-second-omega-child-theme'),
+			 		   'url' => 'https://themehall.com/beta-second-omega-child-theme',
+			 			'p' => ''),
 			 	array( 'name' => 'Omega Child',
-			 		   'url' => 'https://themehall.com/product/omega-child'),
+			 		   'url' => 'https://themehall.com/product/omega-child',
+			 			'p' => ''),
 			 	array( 'name' => 'Custom',
-			 		   'url' => 'https://themehall.com/custom-free-omega-child-theme-wordpress'),
+			 		   'url' => 'https://themehall.com/custom-free-omega-child-theme-wordpress',
+			 			'p' => ''),
 			 	array( 'name' => 'Mobile',
-			 		   'url' => 'https://themehall.com/mobile-theme-mobile-friendly-start'),
+			 		   'url' => 'https://themehall.com/mobile-theme-mobile-friendly-start',
+			 			'p' => ''),
 			 	array( 'name' => 'Magazine',
-			 		   'url' => 'https://themehall.com/responsive-magazine-theme'),
+			 		   'url' => 'https://themehall.com/responsive-magazine-theme',
+			 			'p' => ''),
 			 	array( 'name' => 'Shopping',
-			 		   'url' => 'https://themehall.com/shopping-ecommerce-wordpress-theme'),
+			 		   'url' => 'https://themehall.com/shopping-ecommerce-wordpress-theme',
+			 			'p' => ''),
 			 	array( 'name' => 'Family',
-			 		   'url' => 'https://themehall.com/free-responsive-family-wordpress-theme'),
+			 		   'url' => 'https://themehall.com/free-responsive-family-wordpress-theme',
+			 			'p' => ''),
 			 	array( 'name' => 'Hotel',
-			 		   'url' => 'https://themehall.com/hotel-wordpress-theme'),
+			 		   'url' => 'https://themehall.com/hotel-wordpress-theme',
+			 			'p' => ''),
 			 	array( 'name' => 'Sans-serif',
-			 		   'url' => 'https://wordpress.org/themes/sans-serif'),
+			 		   'url' => 'https://wordpress.org/themes/sans-serif',
+			 			'p' => ''),
 			 	array( 'name' => 'Sumo',
-			 		   'url' => 'https://wordpress.org/themes/sumo')			 	
+			 		   'url' => 'https://wordpress.org/themes/sumo',
+			 			'p' => '')			 	
 			 );
 		?>
 	 	<div class="wrap">
@@ -64,8 +83,10 @@ if ( is_admin() ) {
 				<?php printf( __( 'Omega Child Themes', 'omega' ) ); ?>
 			</h2>
 
+			<?php do_action( 'omega_child_page' ); ?>
+
 			<p>
-				<?php printf( __( 'Personalize your Omega powered site with one of Omega child themes below', 'omega' ) ); ?>
+				<?php printf( __( 'Personalize your Omega powered site using one of Omega child themes below', 'omega' ) ); ?>
 			</p>
 
 			<div id="availablethemes">
@@ -73,7 +94,7 @@ if ( is_admin() ) {
 			$currenttheme = wp_get_theme();
 
 			foreach ( $omegachilds as $omegachild) {
-				echo '<div class="available-theme">
+				echo '<div class="available-theme ' . $omegachild['class'] .'">
 					<a class="screenshot" target="_blank" href="' . $omegachild['url'] .'" title="'.$omegachild['name'].'">
 						'.$omegachild['name'].'
 					</a>

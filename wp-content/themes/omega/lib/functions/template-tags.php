@@ -7,54 +7,6 @@
  * @package Omega
  */
 
-if ( ! function_exists( 'omega_content_nav' ) ) :
-/**
- * Display navigation to next/previous pages when applicable
- */
-function omega_content_nav() {
-	global $wp_query, $post;
-
-	// Don't print empty markup on single pages if there's nowhere to navigate.
-	if ( is_single() ) {
-		$previous = ( is_attachment() ) ? get_post( $post->post_parent ) : get_adjacent_post( false, '', true );
-		$next = get_adjacent_post( false, '', false );
-
-		if ( (!$next && !$previous) )
-			return;
-	}
-
-	if ( is_singular() && !get_theme_mod( 'single_nav', 0 ) ) {
-		return;
-	}
-
-	// Don't print empty markup in archives if there's only one page.
-	if ( $wp_query->max_num_pages < 2 && ( is_home() || is_archive() || is_search() ) )
-		return;
-
-	$nav_class = ( is_single() ) ? 'post-navigation' : 'paging-navigation';
-	
-	?>
-	<nav role="navigation" id="nav-below" class="navigation  <?php echo $nav_class; ?>">
-
-	<?php if ( is_single() && get_theme_mod( 'single_nav', 0 ) ) : // navigation links for single posts ?>
-
-		<?php previous_post_link( '<div class="nav-previous alignleft">%link</div>', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'omega' ) . '</span> %title' ); ?>
-		<?php next_post_link( '<div class="nav-next alignright">%link</div>', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'omega' ) . '</span>' ); ?>
-
-	<?php elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : // navigation links for home, archive, and search pages ?>
-
-		<?php
-		loop_pagination();
-		?>
-
-	<?php endif; ?>
-
-	</nav><!-- #nav-below -->
-	<?php
-}
-endif; // omega_content_nav
-
-
 /**
  * Returns true if a blog has more than 1 category
  */

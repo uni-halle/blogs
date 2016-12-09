@@ -37,6 +37,9 @@ Hybrid Core is distributed under the terms of the GNU GPL
 Omega WordPress Theme incorporates code from Underscores WordPress Theme, Copyright 2013 Automattic, Inc.
 Underscores WordPress Theme is distributed under the terms of the GNU GPL
 
+Grace WordPress Theme incorporates code from, Genesis Framework, Copyright Copyblogger Media LLC
+Genesis Framework is distributed under the terms of the GNU General Public License, version 2 or later (GPL).
+
 Omega WordPress Theme bundles the following third-party resources:
 
 HTML5 Shiv v3.6 stable, Copyright @afarkas @jdalton @jon_neal @rem
@@ -59,6 +62,15 @@ Baseline Reset (normalize.css 2.1.2) is a project by Nicolas Gallagher, co-creat
 
 Changelog
 ---------
+
+1.3.0   2016-7-20
+ - add more template parts
+ - add woocommerce support
+
+1.2.10   2016-6-6
+ - Update child theme child theme
+ - update tags
+
 1.2.8   2016-4-15
  - update entry byline
 
