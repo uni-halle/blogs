@@ -1,0 +1,115 @@
+# Translation of Stable (latest release) in Japanese
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-05-23 17:45:29+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#: widget_logic.php:18
+msgid "when plugin starts (default)"
+msgstr "プラグインが読み込まれた時 (デフォルト) "
+
+#: widget_logic.php:19
+msgid "after theme loads"
+msgstr "テーマが読み込まれた後"
+
+#: widget_logic.php:20
+msgid "when all PHP loaded"
+msgstr "PHP がすべて読み込まれた時"
+
+#: widget_logic.php:21
+msgid "during page header"
+msgstr "ページヘッダーの読み込み中"
+
+#: widget_logic.php:96
+msgid "Success! Options file imported"
+msgstr "設定ファイルをインポートしました。"
+
+#: widget_logic.php:99
+msgid "Invalid options file"
+msgstr "無効な設定ファイル"
+
+#: widget_logic.php:104
+msgid "No options file provided"
+msgstr "設定ファイルがありません。"
+
+#: widget_logic.php:173
+msgid "Widget Logic options"
+msgstr "Widget Logic 設定"
+
+#: widget_logic.php:176
+msgid "Adds a new WP filter you can use in your own code. Not needed for main Widget Logic functionality."
+msgstr "独自コード内で使える新規 WordPress フィルターを追加します。メインの Widget Logic 機能には必須ではありません。"
+
+#: widget_logic.php:178
+msgid "Add 'widget_content' filter"
+msgstr "'widget_content' フィルターを追加"
+
+#: widget_logic.php:181
+msgid "Resets a theme's custom queries before your Widget Logic is checked"
+msgstr "Widget Logic がチェックされる前にテーマのカスタムクエリーをリセット"
+
+#: widget_logic.php:183
+msgid "Use 'wp_reset_query' fix"
+msgstr "'wp_reset_query' 修正を使用"
+
+#: widget_logic.php:186
+msgid "Delays widget logic code being evaluated til various points in the WP loading process"
+msgstr "WordPress 読み込み処理のさまざまな地点に到達するまで Widget Logic のコードの評価を遅らせます。"
+
+#: widget_logic.php:186
+msgid "Load logic"
+msgstr "読み込みロジック"
+
+#: widget_logic.php:199
+msgid "Save WL options"
+msgstr "Widget Logic の設定を保存"
+
+#: widget_logic.php:203
+msgid "Save all WL options to a plain text config file"
+msgstr "プレーンテキスト設定ファイルに Widget Logic のすべての設定を保存する"
+
+#: widget_logic.php:203
+msgid "Export options"
+msgstr "エクスポート設定"
+
+#: widget_logic.php:204
+msgid "Import options"
+msgstr "インポート設定"
+
+#: widget_logic.php:204
+msgid "Load all WL options from a plain text config file"
+msgstr "プレーンテキスト設定ファイルから Widget Logic のすべての設定を読み込む"
+
+#: widget_logic.php:205
+msgid "Select file for importing"
+msgstr "インポートするファイルを選択"
+
+#: widget_logic.php:241
+msgid "Widget logic:"
+msgstr "ウィジェットのロジック:"
+
+#. Plugin Name of the plugin/theme
+msgid "Widget Logic"
+msgstr "ウィジェットのロジック"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/widget-logic/"
+msgstr "http://wordpress.org/extend/plugins/widget-logic/"
+
+#. Description of the plugin/theme
+msgid "Control widgets with WP's conditional tags is_home etc"
+msgstr "WordPress の is_home 条件分岐タグでウィジェットをコントロールする"
+
+#. Author of the plugin/theme
+msgid "Alan Trewartha"
+msgstr "Alan Trewartha"
+
+#. Author URI of the plugin/theme
+msgid "http://freakytrigger.co.uk/author/alan/"
+msgstr "http://freakytrigger.co.uk/author/alan/"

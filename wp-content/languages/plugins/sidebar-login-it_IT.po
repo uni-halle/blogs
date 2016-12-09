@@ -1,0 +1,152 @@
+# Translation of Stable (latest release) in Italian
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-09-03 14:45:26+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "http://mikejolley.com"
+msgstr "http://mikejolley.com"
+
+#: includes/class-sidebar-login-widget.php:20
+msgid "Displays a login area in the sidebar."
+msgstr "Mostra una area di login nella barra laterale."
+
+#. #-#-#-#-#  tmp-sidebar-login.pot (Sidebar Login 2.7.3)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: includes/class-sidebar-login-widget.php:23
+msgid "Sidebar Login"
+msgstr "Sidebar Login"
+
+#: includes/class-sidebar-login-widget.php:33
+msgid "Logged-out title"
+msgstr "Titolo per i non loggati"
+
+#: includes/class-sidebar-login-widget.php:34
+#: includes/class-sidebar-login-widget.php:249
+msgid "Login"
+msgstr "Login"
+
+#: includes/class-sidebar-login-widget.php:38
+#: includes/class-sidebar-login-widget.php:73
+msgid "Links"
+msgstr "Links"
+
+#: includes/class-sidebar-login-widget.php:38
+msgid "Text | HREF"
+msgstr "Testo | HREF"
+
+#: includes/class-sidebar-login-widget.php:43
+msgid "Show lost password link"
+msgstr "Mostra link password persa"
+
+#: includes/class-sidebar-login-widget.php:48
+msgid "Show register link"
+msgstr "Mostra link registrazione"
+
+#: includes/class-sidebar-login-widget.php:50
+msgid "<a href=\"%s\">Anyone can register</a> must be enabled."
+msgstr "<a href=\"%s\">Chiunque può registrarsi</a> deve essere attivato."
+
+#: includes/class-sidebar-login-widget.php:54
+msgid "Show \"Remember me\" checkbox"
+msgstr "Mostra casella \"Ricordami\""
+
+#: includes/class-sidebar-login-widget.php:59
+msgid "Login Redirect URL"
+msgstr "URL reindirizzamento login"
+
+#: includes/class-sidebar-login-widget.php:62
+#: includes/class-sidebar-login-widget.php:87
+msgid "Current page URL"
+msgstr "URL pagina corrente:"
+
+#: includes/class-sidebar-login-widget.php:68
+msgid "Logged-in title"
+msgstr "Titolo per i loggati"
+
+#: includes/class-sidebar-login-widget.php:69
+#: includes/class-sidebar-login-widget.php:248
+msgid "Welcome %username%"
+msgstr "Benvenuto %username%"
+
+#: includes/class-sidebar-login-widget.php:73
+msgid "Text | HREF | Capability"
+msgstr "testo | HREF | Permesso"
+
+#: includes/class-sidebar-login-widget.php:74
+msgid "<a href=\"%s\">Capability</a> (optional) refers to the type of user who can view the link."
+msgstr "<a href=\"%s\">Permesso</a> (opzionale) si riferisce al tipo di utente che può vedere il link."
+
+#: includes/class-sidebar-login-widget.php:75
+msgid ""
+"Dashboard | %admin_url%\n"
+"Profile | %admin_url%/profile.php\n"
+"Logout | %logout_url%"
+msgstr ""
+"Bacheca | %admin_url%\n"
+"Profilo | %admin_url%/profile.php\n"
+"Esci | %logout_url%"
+
+#: includes/class-sidebar-login-widget.php:79
+msgid "Show logged-in user avatar"
+msgstr "Mostra avatar dell'utente loggato"
+
+#: includes/class-sidebar-login-widget.php:84
+msgid "Logout Redirect URL"
+msgstr "URL reindirizzamento logout"
+
+#: includes/class-sidebar-login-widget.php:187
+#: includes/class-sidebar-login-widget.php:194
+msgid "Register"
+msgstr "Registrati"
+
+#: includes/class-sidebar-login-widget.php:204
+msgid "Lost Password"
+msgstr "Password persa"
+
+#: includes/class-sidebar-login-widget.php:299
+msgid "Username"
+msgstr "Nome utente"
+
+#: includes/class-sidebar-login-widget.php:300
+msgid "Password"
+msgstr "Password"
+
+#: includes/class-sidebar-login-widget.php:301
+msgid "Remember Me"
+msgstr "Ricordami"
+
+#: includes/class-sidebar-login-widget.php:302
+msgid "Login &rarr;"
+msgstr "Login &rarr;"
+
+#: sidebar-login.php:80
+msgid "Please enter your username"
+msgstr "Prego, inserisci il nome utente"
+
+#: sidebar-login.php:81
+msgid "Please enter your password"
+msgstr "Prego, inserisci la password"
+
+#: sidebar-login.php:179
+msgid "Please enter your username and password to login."
+msgstr "Prego, inserisci nome utente e password per effettuare il login."
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/sidebar-login/"
+msgstr "http://wordpress.org/extend/plugins/sidebar-login/"
+
+#. Description of the plugin/theme
+msgid "Allows you to easily add an ajax-enhanced login widget to the sidebar on your WordPress site."
+msgstr "Consente di aggiungere facilmente un widget dl login ajax-avanzato nella sidebar del vostro sito WordPress."
+
+#. Author of the plugin/theme
+msgid "Mike Jolley"
+msgstr "Mike Jolley"

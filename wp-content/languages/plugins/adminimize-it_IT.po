@@ -2,13 +2,17 @@
 # This file is distributed under the same license as the Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-05-11 07:37:31+0000\n"
+"PO-Revision-Date: 2016-05-24 15:05:49+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: GlotPress/2.1.0-alpha\n"
 "Project-Id-Version: Stable (latest release)\n"
+
+#: inc-options/menu_options.php:315
+msgid "Possible nomination for the slug. Separate multiple nominations through a carriage return."
+msgstr "Possibile nome per lo slug. Si possono inserire più nomi diversi andando a capo."
 
 #: inc-options/menu_options.php:295
 msgid "Custom Slug"

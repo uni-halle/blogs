@@ -1,0 +1,826 @@
+# Translation of Stable (latest release) in Japanese
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-02-25 10:14:38+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#: lib/access/class-groups-access-meta-boxes.php:96
+#: lib/access/class-groups-access-meta-boxes.php:106
+#: lib/access/class-groups-access-meta-boxes.php:120
+#: lib/access/class-groups-access-meta-boxes.php:123
+#: lib/access/class-groups-access-meta-boxes.php:602
+msgid "Access restrictions"
+msgstr "アクセス制限"
+
+#: lib/access/class-groups-access-meta-boxes.php:126
+msgid "Use the <em>Access restrictions</em> box to limit the visibility of posts, pages and other post types."
+msgstr "<em>アクセス制限</em> ボックスを使って投稿、ページや投稿タイプの表示を制限します。"
+
+#: lib/access/class-groups-access-meta-boxes.php:129
+msgid "You can select one or more capabilities that are enabled for access restriction."
+msgstr "アクセス制限が可能な権限を1つ以上選択します。"
+
+#: lib/access/class-groups-access-meta-boxes.php:131
+msgid "Note that you must be a member of a group that has such a capability assigned."
+msgstr "このような権限が割り当てられたグループのメンバーでなければならないことにご注意ください。"
+
+#: lib/access/class-groups-access-meta-boxes.php:134
+msgid "Example:"
+msgstr "例："
+
+#: lib/access/class-groups-access-meta-boxes.php:136
+msgid "Let's assume that you want to limit the visibility of a post to members of the <em>Premium</em> group."
+msgstr "例えば、<em>特別な</em>のグループのメンバーに投稿の閲覧を制限したいとします。"
+
+#: lib/access/class-groups-access-meta-boxes.php:138
+msgid "The quick way:"
+msgstr "簡単な方法:"
+
+#: lib/access/class-groups-access-meta-boxes.php:140
+msgid "Using the quick-create field"
+msgstr "クイック作成フィールドを使用する"
+
+#: lib/access/class-groups-access-meta-boxes.php:142
+msgid "Enter <em>Premium</em> in the quick-create field located in the Access restrictions panel and save or update the post (or hit Enter)."
+msgstr "アクセス制限パネル内のクイック作成フィールドで<em>特別な</em>入力をし、投稿を保存または更新してください（または Enter をヒット）。"
+
+#: lib/access/class-groups-access-meta-boxes.php:145
+msgid "Using the quick-create field, you can create a new group and capability. The capability will be assigned to the group and enabled to enforce read access. Group names are case-sensitive, the name of the capability is the lower-case version of the name of the group. If the group already exists, a new capability is created and assigned to the existing group. If the capability already exists, it will be assigned to the group. If both already exist, the capability is enabled to enforce read access. In order to be able to use the capability, your user account will be assigned to the group."
+msgstr "クイック作成フィールドを使用して、新しいグループと権限を作成します。権限はグループに割り当てられ、閲覧を強制的に有効にします。グループ名は大文字と小文字を区別し、権限名はグループ名の小文字バージョンです。グループがすでに存在する場合、新しい権限を作成して既存のグループに割り当てます。権限がすでに存在する場合、グループに割り当てられます。両方がすでに存在する場合は、権限が閲覧許可を強制的に有効化します。権限を有効にするために、ユーザーアカウントがグループに割り当てられます。"
+
+#: lib/access/class-groups-access-meta-boxes.php:147
+msgid "The manual way:"
+msgstr "手動:"
+
+#: lib/access/class-groups-access-meta-boxes.php:149
+msgid "Adding the group and capability manually and enabling it for access restriction"
+msgstr "グループ権限を手動で追加してアクセス制限を有効にする"
+
+#: lib/access/class-groups-access-meta-boxes.php:152
+msgid "Try the quick-create field first. Unless you need a more complex setup, there is no reason to go this way instead."
+msgstr "まずクイック作成フィールドをお試しください。複雑な設定が必要なければ、この方法で十分です。"
+
+#: lib/access/class-groups-access-meta-boxes.php:155
+msgid "Go to <strong>Groups > Groups</strong> and add the <em>Premium</em> group."
+msgstr "<strong>グループ > グループ</strong>から<em>特別な</em>グループを追加してください。"
+
+#: lib/access/class-groups-access-meta-boxes.php:156
+msgid "Go to <strong>Groups > Capabilities</strong> and add the <em>premium</em> capability."
+msgstr "<strong>グループ > 権限</strong>から<em>特別な</em>権限を追加します。"
+
+#: lib/access/class-groups-access-meta-boxes.php:157
+msgid "Go to <strong>Groups > Groups</strong> and assign the <em>premium</em> capability to the <em>Premium</em> group."
+msgstr "<strong>グループ > グループ</strong>から<em>特別な</em>権限を<em>特別な</em>グループに割り当てます。"
+
+#: lib/access/class-groups-access-meta-boxes.php:158
+msgid "Go to <strong>Groups > Options</strong> and enable the <em>premium</em> capability to restrict access."
+msgstr "<strong>グループ > 設定</strong>から<em>特別な</em>権限にアクセス制限を有効にします。"
+
+#: lib/access/class-groups-access-meta-boxes.php:159
+msgid "Become a member of the <em>Premium</em> group - this is required so you can choose the <em>premium</em> capability to restrict access to a post."
+msgstr "<em>特別な</em>グループのメンバーになる - 投稿のアクセス制限をするために<em>特別な</em>権限を選択する必要があります。"
+
+#: lib/access/class-groups-access-meta-boxes.php:160
+msgid "Edit the post for which you want to restrict access and choose<sup>*</sup> the <em>premium</em> capability."
+msgstr "アクセス制限をしたい投稿を編集し、<sup>*</sup><em>特別な</em>権限を選びます。"
+
+#: lib/access/class-groups-access-meta-boxes.php:163
+msgid "<sup>*</sup> For each capability, the groups that have the capability assigned are shown within parenthesis. You can choose a capability by typing part of the group's or the capability's name."
+msgstr "<sup>*</sup>各権限において、権限が割り当てられたグループの候補を表示します。グループまたは権限名の一部を入力して権限を選択してください。"
+
+#: lib/access/class-groups-access-meta-boxes.php:188
+msgid "Post"
+msgstr "投稿"
+
+#: lib/access/class-groups-access-meta-boxes.php:203
+#: lib/access/class-groups-access-meta-boxes.php:515
+msgid "Enforce read access"
+msgstr "閲覧権限の付与"
+
+#: lib/access/class-groups-access-meta-boxes.php:211
+#: lib/access/class-groups-access-meta-boxes.php:212
+#: lib/access/class-groups-access-meta-boxes.php:550
+msgid "Type and choose &hellip;"
+msgstr "種類と選択 &hellip;"
+
+#: lib/access/class-groups-access-meta-boxes.php:229
+#: lib/access/class-groups-access-meta-boxes.php:567
+msgid "Members of the %1$s group can access this %2$s through this capability."
+msgid_plural "Members of the %1$s groups can access this %2$s through this capability."
+msgstr[0] "%1$s グループのメンバーは %2$s を表示する権限があります。"
+
+#: lib/access/class-groups-access-meta-boxes.php:239
+#: lib/access/class-groups-access-meta-boxes.php:577
+msgid "No groups grant access through this capability. To grant access to group members using this capability, you should assign it to a group and enable the capability for access restriction."
+msgstr "この権限でアクセスできるグループがありません。グループのメンバーがこの権限でアクセスするには、グループへの割り当てを行い、アクセス制御できるようにします。"
+
+#: lib/access/class-groups-access-meta-boxes.php:271
+#: lib/access/class-groups-access-meta-boxes.php:598
+msgid "Only groups or users that have one of the selected capabilities are allowed to read this %s."
+msgstr "%s の閲覧は、選択した権限を持つグループまたはユーザーにのみ許可されています。"
+
+#: lib/access/class-groups-access-meta-boxes.php:278
+msgid "Show groups"
+msgstr "グループを表示"
+
+#: lib/access/class-groups-access-meta-boxes.php:291
+msgid "You cannot set any access restrictions."
+msgstr "追加できるアクセス制限がありません。"
+
+#: lib/access/class-groups-access-meta-boxes.php:297
+msgid "You must be in a group that has at least one capability enabled to enforce read access."
+msgstr "閲覧を強制的に許可する権限が1つ以上あるグループに所属する必要があります。"
+
+#: lib/access/class-groups-access-meta-boxes.php:309
+msgid "Quick-create group &amp; capability"
+msgstr "グループ &amp; 権限のクイック作成"
+
+#: lib/access/class-groups-access-meta-boxes.php:513
+msgid "Media"
+msgstr "メディア"
+
+#: lib/access/class-groups-post-access.php:58
+msgid "Read Post"
+msgstr "記事を読む"
+
+#: lib/admin/class-groups-admin-post-columns.php:76
+msgid "<span title=\"%s\">Access Restrictions</span>"
+msgstr "<span title=\"%s\">アクセス制限</span>"
+
+#: lib/admin/class-groups-admin-post-columns.php:77
+msgid "One or more capabilities required to read the entry."
+msgstr "投稿を読むには一つ以上の権限が必要です。"
+
+#: lib/admin/class-groups-admin-posts.php:124
+#: lib/admin/class-groups-admin-posts.php:125
+msgid "Access restrictions &hellip;"
+msgstr "アクセス制限 &hellip;"
+
+#: lib/admin/class-groups-admin-posts.php:136
+msgid "(only unrestricted)"
+msgstr "(制限なしのみ)"
+
+#: lib/admin/class-groups-admin-posts.php:181
+msgid "Access Restrictions"
+msgstr "アクセス制限"
+
+#: lib/admin/class-groups-admin-posts.php:184
+msgid "&mdash; No Change &mdash;"
+msgstr "&mdash; 変更なし &mdash;"
+
+#: lib/admin/class-groups-admin-posts.php:185
+msgid "Add restriction"
+msgstr "制限を追加"
+
+#: lib/admin/class-groups-admin-posts.php:186
+msgid "Remove restriction"
+msgstr "制限を削除"
+
+#: lib/admin/class-groups-admin-posts.php:195
+#: lib/admin/class-groups-admin-posts.php:196
+msgid "Choose access restrictions &hellip;"
+msgstr "アクセス制限を選択 &hellip;"
+
+#. #-#-#-#-#  tmp-groups.pot (Groups 1.7.2)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: lib/admin/class-groups-admin-user-profile.php:66
+#: lib/admin/class-groups-admin-user-profile.php:90
+#: lib/admin/class-groups-admin-users.php:302
+#: lib/admin/class-groups-admin.php:230 lib/admin/class-groups-admin.php:231
+#: lib/admin/class-groups-admin.php:260 lib/core/class-groups-help.php:61
+#: lib/core/class-groups-help.php:66 lib/core/class-groups-help.php:67
+msgid "Groups"
+msgstr "グループ"
+
+#: lib/admin/class-groups-admin-user-profile.php:100
+#: lib/admin/class-groups-admin-user-profile.php:101
+#: lib/admin/class-groups-admin-users.php:164
+#: lib/admin/class-groups-admin-users.php:165
+msgid "Choose groups &hellip;"
+msgstr "グループを選択 &hellip;"
+
+#: lib/admin/class-groups-admin-user-profile.php:109
+msgid "The user is a member of the chosen groups."
+msgstr "ユーザーは選択したグループのメンバーです。"
+
+#: lib/admin/class-groups-admin-users.php:181
+msgid "Group Actions"
+msgstr "グループの操作"
+
+#: lib/admin/class-groups-admin-users.php:182
+msgid "Add to group"
+msgstr "グループに追加"
+
+#: lib/admin/class-groups-admin-users.php:183
+msgid "Remove from group"
+msgstr "グループから除外"
+
+#: lib/admin/class-groups-admin-users.php:185
+#: lib/admin/groups-admin-capabilities.php:309
+#: lib/admin/groups-admin-capabilities.php:335
+#: lib/admin/groups-admin-capabilities.php:349
+#: lib/admin/groups-admin-groups.php:316 lib/admin/groups-admin-groups.php:342
+#: lib/admin/groups-admin-groups.php:378
+msgid "Apply"
+msgstr "適用"
+
+#: lib/admin/class-groups-admin-users.php:329
+msgid "--"
+msgstr "--"
+
+#: lib/admin/class-groups-admin.php:140
+msgctxt "menu item title"
+msgid "Groups"
+msgstr "グループ"
+
+#: lib/admin/class-groups-admin.php:157 lib/admin/groups-admin-groups.php:200
+msgctxt "page-title"
+msgid "Groups"
+msgstr "グループ"
+
+#: lib/admin/class-groups-admin.php:179 lib/admin/class-groups-admin.php:180
+msgid "Tree"
+msgstr "ツリー"
+
+#: lib/admin/class-groups-admin.php:193
+msgid "Groups Capabilities"
+msgstr "グループ権限"
+
+#: lib/admin/class-groups-admin.php:194
+#: lib/admin/groups-admin-capabilities.php:193
+#: lib/admin/groups-admin-groups-add.php:99
+#: lib/admin/groups-admin-groups-edit.php:119
+#: lib/admin/groups-admin-groups.php:297 lib/admin/groups-admin-options.php:251
+#: lib/core/class-groups-help.php:69
+msgid "Capabilities"
+msgstr "権限"
+
+#: lib/admin/class-groups-admin.php:206 lib/admin/groups-admin-options.php:133
+msgid "Groups options"
+msgstr "Groups プラグイン設定"
+
+#: lib/admin/class-groups-admin.php:207 lib/admin/class-groups-admin.php:254
+#: lib/core/class-groups-help.php:68
+msgid "Options"
+msgstr "設定"
+
+#: lib/admin/groups-admin-capabilities-add.php:34
+#: lib/admin/groups-admin-capabilities-add.php:92
+#: lib/admin/groups-admin-capabilities-add.php:96
+#: lib/admin/groups-admin-capabilities-edit.php:35
+#: lib/admin/groups-admin-capabilities-edit.php:100
+#: lib/admin/groups-admin-capabilities-edit.php:104
+#: lib/admin/groups-admin-capabilities-remove.php:35
+#: lib/admin/groups-admin-capabilities-remove.php:87
+#: lib/admin/groups-admin-capabilities-remove.php:91
+#: lib/admin/groups-admin-capabilities-remove.php:114
+#: lib/admin/groups-admin-capabilities-remove.php:183
+#: lib/admin/groups-admin-capabilities-remove.php:187
+#: lib/admin/groups-admin-capabilities.php:48
+#: lib/admin/groups-admin-capabilities.php:141
+#: lib/admin/groups-admin-capabilities.php:172
+#: lib/admin/groups-admin-capabilities.php:178
+#: lib/admin/groups-admin-groups-add.php:36
+#: lib/admin/groups-admin-groups-add.php:141
+#: lib/admin/groups-admin-groups-add.php:145
+#: lib/admin/groups-admin-groups-edit.php:37
+#: lib/admin/groups-admin-groups-edit.php:178
+#: lib/admin/groups-admin-groups-edit.php:182
+#: lib/admin/groups-admin-groups-remove.php:35
+#: lib/admin/groups-admin-groups-remove.php:87
+#: lib/admin/groups-admin-groups-remove.php:91
+#: lib/admin/groups-admin-groups-remove.php:114
+#: lib/admin/groups-admin-groups-remove.php:185
+#: lib/admin/groups-admin-groups-remove.php:189
+#: lib/admin/groups-admin-groups.php:49 lib/admin/groups-admin-groups.php:148
+#: lib/admin/groups-admin-groups.php:179 lib/admin/groups-admin-groups.php:185
+#: lib/admin/groups-admin-options.php:39 lib/admin/groups-admin-options.php:329
+#: lib/admin/groups-admin-tree-view.php:37 lib/test/groups-tests.php:385
+#: lib/test/groups-tests.php:391
+msgid "Access denied."
+msgstr "接続が拒否されました。"
+
+#: lib/admin/groups-admin-capabilities-add.php:51
+msgid "Add a new capability"
+msgstr "新しい権限を追加"
+
+#: lib/admin/groups-admin-capabilities-add.php:59
+#: lib/admin/groups-admin-capabilities-edit.php:68
+#: lib/admin/groups-admin-capabilities.php:289
+#: lib/admin/groups-admin-capabilities.php:304
+msgid "Capability"
+msgstr "権限"
+
+#: lib/admin/groups-admin-capabilities-add.php:64
+#: lib/admin/groups-admin-capabilities-edit.php:73
+#: lib/admin/groups-admin-capabilities.php:290
+#: lib/admin/groups-admin-groups-add.php:85
+#: lib/admin/groups-admin-groups-edit.php:95
+#: lib/admin/groups-admin-groups.php:296
+msgid "Description"
+msgstr "説明"
+
+#: lib/admin/groups-admin-capabilities-add.php:70
+#: lib/admin/groups-admin-capabilities.php:201
+#: lib/admin/groups-admin-groups-add.php:119
+#: lib/admin/groups-admin-groups.php:208
+msgid "Add"
+msgstr "追加"
+
+#: lib/admin/groups-admin-capabilities-add.php:72
+#: lib/admin/groups-admin-capabilities-edit.php:81
+#: lib/admin/groups-admin-capabilities-remove.php:66
+#: lib/admin/groups-admin-capabilities-remove.php:156
+#: lib/admin/groups-admin-groups-add.php:121
+#: lib/admin/groups-admin-groups-edit.php:160
+#: lib/admin/groups-admin-groups-remove.php:66
+#: lib/admin/groups-admin-groups-remove.php:160
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: lib/admin/groups-admin-capabilities-add.php:105
+#: lib/admin/groups-admin-capabilities-edit.php:134
+msgid "The <em>Capability</em> must not be empty."
+msgstr "<em>権限</em>は必須です。"
+
+#: lib/admin/groups-admin-capabilities-add.php:107
+msgid "The <em>%s</em> capability already exists."
+msgstr "権限 <em>%s</em> はすでに存在します。"
+
+#: lib/admin/groups-admin-capabilities-edit.php:41
+#: lib/admin/groups-admin-capabilities-remove.php:41
+msgid "No such capability."
+msgstr "その権限は存在しません。"
+
+#: lib/admin/groups-admin-capabilities-edit.php:57
+msgid "Edit a capability"
+msgstr "権限を編集"
+
+#: lib/admin/groups-admin-capabilities-edit.php:79
+#: lib/admin/groups-admin-groups-edit.php:158
+#: lib/admin/groups-admin-options.php:205
+#: lib/admin/groups-admin-options.php:317
+#: lib/admin/groups-admin-options.php:367
+msgid "Save"
+msgstr "保存"
+
+#: lib/admin/groups-admin-capabilities-edit.php:120
+msgid "The <em>%s</em> capability already exists and cannot be assigned to this one."
+msgstr "権限 <em>%s</em> はすでに存在しますが、このユーザーには割り当てられません。"
+
+#: lib/admin/groups-admin-capabilities-edit.php:130
+msgid "The <em>%s</em> capability could not be updated."
+msgstr "権限 <em>%s</em> を更新できませんでした。"
+
+#: lib/admin/groups-admin-capabilities-remove.php:54
+msgid "Remove a capability"
+msgstr "権限を削除"
+
+#: lib/admin/groups-admin-capabilities-remove.php:61
+msgid "Capability : %s"
+msgstr "権限: %s"
+
+#: lib/admin/groups-admin-capabilities-remove.php:64
+#: lib/admin/groups-admin-capabilities-remove.php:155
+#: lib/admin/groups-admin-capabilities.php:292
+#: lib/admin/groups-admin-capabilities.php:347
+#: lib/admin/groups-admin-capabilities.php:408
+#: lib/admin/groups-admin-groups-remove.php:64
+#: lib/admin/groups-admin-groups-remove.php:159
+#: lib/admin/groups-admin-groups.php:299 lib/admin/groups-admin-groups.php:462
+msgid "Remove"
+msgstr "削除"
+
+#: lib/admin/groups-admin-capabilities-remove.php:120
+msgid "No such capabilities."
+msgstr "その権限は存在しません。"
+
+#: lib/admin/groups-admin-capabilities-remove.php:138
+msgid "Remove capabilities"
+msgstr "権限を削除"
+
+#: lib/admin/groups-admin-capabilities-remove.php:145
+msgid "Please confirm to remove the following capabilities. This action cannot be undone."
+msgstr "以下の権限を本当に削除してよろしいですか。この動作は取り消せません。"
+
+#: lib/admin/groups-admin-capabilities-remove.php:151
+#: lib/admin/groups-admin-groups-remove.php:155
+msgid "<strong>%s</strong>"
+msgstr "<strong>%s</strong>"
+
+#: lib/admin/groups-admin-capabilities.php:62
+msgid "The <em>%s</em> capability has been created."
+msgstr "権限 <em>%s</em> が作成されました。"
+
+#: lib/admin/groups-admin-capabilities.php:70
+msgid "The <em>%s</em> capability has been updated."
+msgstr "権限 <em>%s</em> を更新しました。"
+
+#: lib/admin/groups-admin-capabilities.php:75
+msgid "The capability has been deleted."
+msgstr "権限を削除しました。"
+
+#: lib/admin/groups-admin-capabilities.php:121
+msgid "One capability has been added."
+msgid_plural "%d capabilities have been added."
+msgstr[0] "%d 個の権限を追加しました。"
+
+#: lib/admin/groups-admin-capabilities.php:123
+msgid "No new capabilities have been found."
+msgstr "新しい権限は見つかりませんでした。"
+
+#: lib/admin/groups-admin-capabilities.php:126
+msgid "A Duck!"
+msgstr "A Duck!"
+
+#: lib/admin/groups-admin-capabilities.php:201
+msgid "Click to add a new capability"
+msgstr "クリックで新しい権限を追加"
+
+#: lib/admin/groups-admin-capabilities.php:201
+msgid "New Capability"
+msgstr "新規権限"
+
+#: lib/admin/groups-admin-capabilities.php:202
+msgid "Click to refresh capabilities"
+msgstr "クリックで権限を更新"
+
+#: lib/admin/groups-admin-capabilities.php:202
+msgid "Refresh"
+msgstr "再読み込み"
+
+#: lib/admin/groups-admin-capabilities.php:288
+#: lib/admin/groups-admin-groups.php:294
+msgid "Id"
+msgstr "ID"
+
+#: lib/admin/groups-admin-capabilities.php:291
+#: lib/admin/groups-admin-capabilities.php:403
+#: lib/admin/groups-admin-groups.php:298 lib/admin/groups-admin-groups.php:457
+msgid "Edit"
+msgstr "編集"
+
+#: lib/admin/groups-admin-capabilities.php:299
+#: lib/admin/groups-admin-groups.php:306
+msgid "Filters"
+msgstr "フィルター"
+
+#: lib/admin/groups-admin-capabilities.php:302
+msgid "Capability Id"
+msgstr "権限 ID"
+
+#: lib/admin/groups-admin-capabilities.php:310
+#: lib/admin/groups-admin-groups.php:317
+msgid "Clear"
+msgstr "クリア"
+
+#: lib/admin/groups-admin-capabilities.php:332
+#: lib/admin/groups-admin-groups.php:339
+msgid "Results per page"
+msgstr "1ページあたりの件数"
+
+#: lib/admin/groups-admin-capabilities.php:346
+#: lib/admin/groups-admin-groups.php:373
+msgid "Bulk Actions"
+msgstr "一括操作"
+
+#: lib/admin/groups-admin-capabilities.php:415
+#: lib/admin/groups-admin-groups.php:469
+msgid "There are no results."
+msgstr "見つかりませんでした。"
+
+#: lib/admin/groups-admin-groups-add.php:60
+msgid "Add a new group"
+msgstr "新しいグループを追加"
+
+#: lib/admin/groups-admin-groups-add.php:71
+#: lib/admin/groups-admin-groups-edit.php:81
+msgid "Name"
+msgstr "名称"
+
+#: lib/admin/groups-admin-groups-add.php:78
+#: lib/admin/groups-admin-groups-edit.php:88
+msgid "Parent"
+msgstr "親"
+
+#: lib/admin/groups-admin-groups-add.php:102
+#: lib/admin/groups-admin-groups-edit.php:122
+msgid "Choose capabilities &hellip;"
+msgstr "権限を選択 &hellip;"
+
+#: lib/admin/groups-admin-groups-add.php:111
+msgid "These capabilities will be assigned to the group."
+msgstr "以下の権限をグループに割り当てます。"
+
+#: lib/admin/groups-admin-groups-add.php:165
+msgid "The name must not be empty."
+msgstr "名前は必須項目です。"
+
+#: lib/admin/groups-admin-groups-add.php:167
+msgid "The <em>%s</em> group already exists."
+msgstr "<em>%s</em> グループはすでに存在します。"
+
+#: lib/admin/groups-admin-groups-edit.php:43
+#: lib/admin/groups-admin-groups-remove.php:41
+msgid "No such group."
+msgstr "グループは存在しません。"
+
+#: lib/admin/groups-admin-groups-edit.php:69
+msgid "Edit a group"
+msgstr "グループを編集"
+
+#: lib/admin/groups-admin-groups-edit.php:132
+msgid "The chosen capabilities are assigned to the group."
+msgstr "選択した権限はグループに割り当てられています。"
+
+#: lib/admin/groups-admin-groups-edit.php:143
+msgid "Inherited capabilities:"
+msgstr "継承された権限: "
+
+#: lib/admin/groups-admin-groups-edit.php:198
+msgid "The <em>Name</em> must not be empty."
+msgstr "<em>名前</em>は必須項目です。"
+
+#: lib/admin/groups-admin-groups-edit.php:206
+msgid "The <em>%s</em> group already exists and cannot be used to name this one."
+msgstr "<em>%s</em> グループはすでに存在し、この名前は使えません。"
+
+#: lib/admin/groups-admin-groups-remove.php:54
+msgid "Remove a group"
+msgstr "グループを削除"
+
+#: lib/admin/groups-admin-groups-remove.php:61
+msgid "Group Name : %s"
+msgstr "グループ名: %s"
+
+#: lib/admin/groups-admin-groups-remove.php:120
+msgid "No such groups."
+msgstr "グループがありません。"
+
+#: lib/admin/groups-admin-groups-remove.php:140
+msgid "Remove groups"
+msgstr "グループを削除"
+
+#: lib/admin/groups-admin-groups-remove.php:148
+msgid "Please confirm removal of the following groups. This action cannot be undone."
+msgstr "以下のグループを削除してもよろしいですか。この動作は取り消せません。"
+
+#: lib/admin/groups-admin-groups.php:63
+msgid "The <em>%s</em> group has been created."
+msgstr "<em>%s</em> グループが作成されました。"
+
+#: lib/admin/groups-admin-groups.php:71
+msgid "The <em>%s</em> group has been updated."
+msgstr "<em>%s</em> グループが更新されました。"
+
+#: lib/admin/groups-admin-groups.php:76
+msgid "The group has been deleted."
+msgstr "グループを削除しました。"
+
+#: lib/admin/groups-admin-groups.php:208
+msgid "Click to add a new group"
+msgstr "クリックで新しいグループを追加"
+
+#: lib/admin/groups-admin-groups.php:208
+msgid "New Group"
+msgstr "新しいグループ"
+
+#: lib/admin/groups-admin-groups.php:295
+msgid "Group"
+msgstr "グループ"
+
+#: lib/admin/groups-admin-groups.php:309
+msgid "Group Id"
+msgstr "グループ ID"
+
+#: lib/admin/groups-admin-groups.php:311
+msgid "Group Name"
+msgstr "グループ名"
+
+#: lib/admin/groups-admin-groups.php:354 lib/admin/groups-admin-groups.php:355
+msgid "Capabilities &hellip;"
+msgstr "権限 &hellip;"
+
+#: lib/admin/groups-admin-groups.php:374
+msgid "Remove group"
+msgstr "グループを削除"
+
+#: lib/admin/groups-admin-groups.php:375
+msgid "Add capability"
+msgstr "権限を追加"
+
+#: lib/admin/groups-admin-groups.php:376
+msgid "Remove capability"
+msgstr "権限を削除"
+
+#: lib/admin/groups-admin-groups.php:452
+msgid "This group has no capabilities."
+msgstr "このグループには権限がありません。"
+
+#: lib/admin/groups-admin-options.php:50
+msgid "Access Groups"
+msgstr "グループの表示"
+
+#: lib/admin/groups-admin-options.php:51
+msgid "Administer Groups"
+msgstr "Groups プラグインの管理者"
+
+#: lib/admin/groups-admin-options.php:52
+msgid "Administer Groups plugin options"
+msgstr "Groups プラグイン管理者設定"
+
+#: lib/admin/groups-admin-options.php:125
+msgid "Options saved."
+msgstr "設定を保存しました。"
+
+#: lib/admin/groups-admin-options.php:148
+msgid "Role"
+msgstr "権限グループ"
+
+#: lib/admin/groups-admin-options.php:193
+msgid "Enhanced functionality is available via official <a href=\"http://www.itthinx.com/plugins/groups/\">Extensions</a> for Groups."
+msgstr "追加機能はグループの公式<a href=\"http://www.itthinx.com/plugins/groups/\">エクステンション</a>から利用可能です。"
+
+#: lib/admin/groups-admin-options.php:210
+msgid "Administrator Access Override"
+msgstr "管理者アクセスの上書き"
+
+#: lib/admin/groups-admin-options.php:214
+msgid "Administrators override all access permissions derived from Groups capabilities."
+msgstr "管理者は、全てのグループ権限に基づくアクセス制限を上書きする。"
+
+#: lib/admin/groups-admin-options.php:218
+msgid "Access restricions"
+msgstr "アクセス制限"
+
+#: lib/admin/groups-admin-options.php:220
+msgid "Post types"
+msgstr "投稿タイプ"
+
+#: lib/admin/groups-admin-options.php:223
+msgid "Show access restrictions for these post types."
+msgstr "投稿タイプのアクセス制限を表示。"
+
+#: lib/admin/groups-admin-options.php:246
+msgid "This determines for which post types access restriction settings are offered."
+msgstr "どの投稿タイプに対してアクセス制限をかけるか決定します。"
+
+#: lib/admin/groups-admin-options.php:247
+msgid "Disabling this setting for a post type does not remove existing access restrictions on individual posts of that type."
+msgstr "投稿タイプに対してこの設定を無効にしても、各投稿で設定済みのアクセス制限は削除されません。"
+
+#: lib/admin/groups-admin-options.php:275
+msgid "User profiles"
+msgstr "ユーザープロフィール"
+
+#: lib/admin/groups-admin-options.php:279
+msgid "Show groups in user profiles."
+msgstr "ユーザープロフィールにグループを表示。"
+
+#: lib/admin/groups-admin-options.php:284
+msgid "Tree view"
+msgstr "ツリービュー"
+
+#: lib/admin/groups-admin-options.php:288
+msgid "Show the Groups tree view."
+msgstr "グループをツリービューで表示。"
+
+#: lib/admin/groups-admin-options.php:293
+msgid "Permissions"
+msgstr "許可"
+
+#: lib/admin/groups-admin-options.php:294
+msgid "These permissions apply to Groups management. They do not apply to access permissions derived from Groups capabilities."
+msgstr "この許可はグループ管理に適用されます。グループ権限に基づくアクセス許可に適用されるものではありません。"
+
+#: lib/admin/groups-admin-options.php:297
+msgid "A minimum set of permissions will be preserved."
+msgstr "最小限の許可は保持されます。"
+
+#: lib/admin/groups-admin-options.php:299
+msgid "If you lock yourself out, please ask an administrator to help."
+msgstr "自分を閉めだしてしまったら、管理者に助けを求めてください。"
+
+#: lib/admin/groups-admin-options.php:303
+msgid "Deactivation and data persistence"
+msgstr "無効化とデータの保存"
+
+#: lib/admin/groups-admin-options.php:307
+msgid "Delete all Groups plugin data on deactivation"
+msgstr "無効化時、全てのプラグインデータを削除する"
+
+#: lib/admin/groups-admin-options.php:311
+msgid "CAUTION: If this option is active while the plugin is deactivated, ALL plugin settings and data will be DELETED. If you are going to use this option, now would be a good time to make a backup. By enabling this option you agree to be solely responsible for any loss of data or any other consequences thereof."
+msgstr "注意：このオプションを有効にしてプラグインを無効化すると、すべてのプラグインの設定とデータを削除します。このオプションを使用する場合は、今すぐバックアップを作成しておいたほうがよいでしょう。このオプションを有効にすることにより、いかなるデータの損失や他のいかなる結果において自己責任であると同意するものとします。"
+
+#: lib/admin/groups-admin-options.php:335
+msgid "Groups network options"
+msgstr "グループネットワーク設定"
+
+#: lib/admin/groups-admin-options.php:357
+msgid "Network deactivation and data persistence"
+msgstr "ネットワークの無効化とデータの保存"
+
+#: lib/admin/groups-admin-options.php:360
+msgid "Delete all Groups plugin data for ALL sites on network deactivation"
+msgstr "ネットワークの無効化時、全てのプラグインデータを全てのサイトから削除する"
+
+#: lib/admin/groups-admin-options.php:363
+msgid "CAUTION: If this option is active while the plugin is deactivated, ALL plugin settings and data will be DELETED for <strong>all sites</strong>. If you are going to use this option, now would be a good time to make a backup. By enabling this option you agree to be solely responsible for any loss of data or any other consequences thereof."
+msgstr "警告：このオプションを有効にしてプラグインを無効化すると、<strong>すべてのサイト</strong>において、すべてのプラグインの設定とデータを削除します。このオプションを使用する場合は、今すぐバックアップを作成しておいたほうがよいでしょう。このオプションを有効にすることにより、いかなるデータの損失や他のいかなる結果において自己責任であると同意するものとします。"
+
+#: lib/admin/groups-admin-tree-view.php:43
+msgid "Tree of Groups"
+msgstr "グループのツリー"
+
+#: lib/auto/class-groups-registered.php:73
+msgid "Registered"
+msgstr "登録済み"
+
+#: lib/core/class-groups-help.php:85
+msgid "The complete documentation is available on the <a href=\"http://docs.itthinx.com/document/groups\">Documentation</a> pages for Groups."
+msgstr "グループの<a href=\"http://docs.itthinx.com/document/groups\">ドキュメンテーション</a>ページで完全なドキュメンテーションが利用可能です。"
+
+#: lib/core/class-groups-help.php:90
+msgid "Here you can <strong>add</strong>, <strong>edit</strong> and <strong>remove</strong> groups."
+msgstr "グループを<strong>追加</strong>、<strong>編集</strong>、<strong>削除</strong>します。"
+
+#: lib/core/class-groups-help.php:115
+msgid "Thank you for using <a href=\"http://www.itthinx.com/plugins/groups\" target=\"_blank\">Groups</a> by <a href=\"http://www.itthinx.com\" target=\"_blank\">itthinx</a>."
+msgstr "<a href=\"http://www.itthinx.com\" target=\"_blank\">itthinx</a> の <a href=\"http://www.itthinx.com/plugins/groups\" target=\"_blank\">グループ</a>プラグインをご利用いただきありがとうございます。"
+
+#: lib/core/class-groups-pagination.php:96
+msgid "1 item"
+msgid_plural "%s items"
+msgstr[0] "%s 件"
+
+#: lib/core/class-groups-pagination.php:117
+msgid "Go to the first page"
+msgstr "最初のページに戻る"
+
+#: lib/core/class-groups-pagination.php:124
+msgid "Go to the previous page"
+msgstr "前のページに戻る"
+
+#: lib/core/class-groups-pagination.php:133
+msgid "Current page"
+msgstr "現在のページ"
+
+#: lib/core/class-groups-pagination.php:140
+msgctxt "paging"
+msgid "%1$s of %2$s"
+msgstr "%2$s中%1$s"
+
+#: lib/core/class-groups-pagination.php:144
+msgid "Go to the next page"
+msgstr "次のページに進む"
+
+#: lib/core/class-groups-pagination.php:151
+msgid "Go to the last page"
+msgstr "最後のページに移動"
+
+#: lib/views/class-groups-shortcodes.php:121
+msgid "Log out"
+msgstr "ログアウト"
+
+#: lib/views/class-groups-shortcodes.php:469
+msgid "Join the %s group"
+msgstr "%s グループに参加"
+
+#: lib/views/class-groups-shortcodes.php:522
+msgid "You have joined the %s group."
+msgstr "%s グループに参加しました。"
+
+#: lib/views/class-groups-shortcodes.php:527
+msgid "You are a member of the %s group."
+msgstr "あなたは %s グループのメンバーです。"
+
+#: lib/views/class-groups-shortcodes.php:553
+msgid "Leave the %s group"
+msgstr "%s グループを退会"
+
+#: lib/views/class-groups-shortcodes.php:598
+msgid "You have left the %s group."
+msgstr "%s グループを退会しました。"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.itthinx.com/plugins/groups"
+msgstr "http://www.itthinx.com/plugins/groups"
+
+#. Description of the plugin/theme
+msgid "Groups provides group-based user membership management, group-based capabilities and content access control."
+msgstr "グループごとのユーザーメンバーシップ管理、グループごとの権限とコンテンツ閲覧制御を提供します。"
+
+#. Author of the plugin/theme
+msgid "itthinx"
+msgstr "itthinx"
+
+#. Author URI of the plugin/theme
+msgid "http://www.itthinx.com"
+msgstr "http://www.itthinx.com"

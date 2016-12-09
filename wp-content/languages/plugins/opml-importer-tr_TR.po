@@ -1,0 +1,83 @@
+# Translation of Development (trunk) in Turkish
+# This file is distributed under the same license as the Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2010-06-10 06:34:59+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Development (trunk)\n"
+
+msgid "http://wordpress.org/extend/plugins/opml-importer/"
+msgstr "http://wordpress.org/extend/plugins/opml-importer/"
+
+#: opml-importer.php:47 opml-importer.php:99
+msgid "Cheatin&#8217; uh?"
+msgstr "Kopya çekme?"
+
+#: opml-importer.php:154
+msgid "You need to supply your OPML url. Press back on your browser and try again"
+msgstr "OPML adresinizi sağlamak zorundasınız. Tarayıcınızın geri düğmesini kulanarak geri dönüp tekrar deneyin"
+
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"
+
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#: opml-importer.php:148
+msgid "Inserted %1$d links into category %2$s. All done! Go <a href=\"%3$s\">manage those links</a>."
+msgstr "%2$s nolu kategoriye %1$d bağlantı eklendi. İşlem tamam! <a href=\"%3$s\">Bağlantıları yönetin</a>."
+
+#: opml-importer.php:144
+msgid "Inserted <strong>%s</strong>"
+msgstr "<strong>%s</strong> eklendi"
+
+msgid "OPML Importer"
+msgstr "OPML aktarıcısı"
+
+#: opml-importer.php:173
+msgid "Import links in OPML format."
+msgstr "Bağlantıları OPML biçiminde içeri aktar."
+
+#: opml-importer.php:173
+msgid "Blogroll"
+msgstr "Bağlantılar"
+
+#: opml-importer.php:68
+msgid "Or choose from your local disk:"
+msgstr "Ya da yerel diskinizden seçebilirsiniz:"
+
+#: opml-importer.php:63
+msgid "Specify an OPML URL:"
+msgstr "OPML URL&#8217;si belirtin:"
+
+#: opml-importer.php:58
+msgid "If a program or website you use allows you to export your links or subscriptions as OPML you may import them here."
+msgstr "Eğer kullandığınız bir program veya internet sitesi bağlantılarınızı ya da aboneliklerinizi OPML biçiminde aktarmanıza izin veriyorsa onları buradan içe aktarabilirsiniz."
+
+#: opml-importer.php:54
+msgid "Import your blogroll from another system"
+msgstr "Başka bir sistemden bağlantı aktarın"
+
+#: opml-importer.php:103
+msgid "Importing..."
+msgstr "İçe aktarılıyor..."
+
+#: opml-importer.php:86
+msgid "Import OPML File"
+msgstr "OPML Dosyasını İçe Aktar"
+
+#: opml-importer.php:75
+msgid "Category:"
+msgstr "Kategori"
+
+#: opml-importer.php:74
+msgid "Now select a category you want to put these links in."
+msgstr "Şimdi bu bağlantıları koymak istediğiniz bir kategori seçin."
+
+#: opml-importer.php:28
+msgid "Import Blogroll"
+msgstr "İçe Bağlantı Aktar"

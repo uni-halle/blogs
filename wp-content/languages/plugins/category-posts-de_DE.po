@@ -1,0 +1,244 @@
+# Translation of Plugins - Category Posts Widget - Stable (latest release) in German
+# This file is distributed under the same license as the Plugins - Category Posts Widget - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-11-19 10:26:01+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: de\n"
+"Project-Id-Version: Plugins - Category Posts Widget - Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "http://mkrdip.me"
+msgstr "http://mkrdip.me"
+
+#. Author of the plugin/theme
+msgid "Mrinal Kanti Roy"
+msgstr "Mrinal Kanti Roy"
+
+#. Description of the plugin/theme
+msgid "Adds a widget that shows the most recent posts from a single category."
+msgstr "Ein Widget, das aktuellste Beiträge aus einer Kategorie anzeigt."
+
+#. Plugin URI of the plugin/theme
+msgid "http://mkrdip.me/category-posts-widget"
+msgstr "http://mkrdip.me/category-posts-widget"
+
+#. Plugin Name of the plugin/theme
+msgid "Category Posts Widget"
+msgstr "Category Posts Widget"
+
+#: cat-posts.php:1413
+msgid "Layout"
+msgstr "Gestaltung"
+
+#: cat-posts.php:1380
+msgid "Category Posts Shortcode"
+msgstr "Category Posts Shortcode"
+
+#: cat-posts.php:1187
+msgid "Get the Pro version"
+msgstr "Premium Version herunterladen"
+
+#: cat-posts.php:1161
+msgid "Auto close panels"
+msgstr "Fenster automatisch schließen"
+
+#: cat-posts.php:1156
+msgid "My settings"
+msgstr "Meine Einstellungen"
+
+#: cat-posts.php:1152
+msgid "... more by this topic"
+msgstr "... mehr zu diesem Thema"
+
+#: cat-posts.php:1151
+msgid "Footer link text"
+msgstr "Fußzeilen Link-Text"
+
+#: cat-posts.php:1147
+msgid "Footer"
+msgstr "Fußzeile"
+
+#: cat-posts.php:1143
+msgid "Hide social buttons in widget output"
+msgstr "Soziale Buttons in der Widget-Ausgabe ausblenden"
+
+#: cat-posts.php:1137
+msgid "Hide widget if there are no matching posts"
+msgstr "Verberge das Widget, wenn es keine passenden Beiträge gibt."
+
+#: cat-posts.php:1131
+msgid "Disable the built-in CSS for this widget"
+msgstr "Mitgeliefertes CSS für diese Widget deaktivieren"
+
+#: cat-posts.php:1126
+msgid "General"
+msgstr "Allgemein"
+
+#: cat-posts.php:1122
+msgid "Show post author"
+msgstr "Beitragsautor anzeigen"
+
+#: cat-posts.php:1116
+msgid "Show number of comments"
+msgstr "Anzahl der Kommentare anzeigen"
+
+#: cat-posts.php:1110
+msgid "Make widget date link"
+msgstr "Datum anzeigen als Link zum Beitrag"
+
+#: cat-posts.php:1103
+msgid "Date format:"
+msgstr "Datumsformatierung:"
+
+#: cat-posts.php:1098
+msgid "Show post date"
+msgstr "Beitragsdatum anzeigen"
+
+#: cat-posts.php:1093
+msgid "... more"
+msgstr "... mehr"
+
+#: cat-posts.php:1091
+msgid "Excerpt 'more' text:"
+msgstr "„Weiterlesen“-Text für Auszug:"
+
+#: cat-posts.php:1085
+msgid "Excerpt length (in words):"
+msgstr "Auszugslänge (in Worten):"
+
+#: cat-posts.php:1080
+msgid "Show post excerpt"
+msgstr "Auszugstext anzeigen"
+
+#: cat-posts.php:1074
+msgid "Hide post titles"
+msgstr "Beitragstitel verbergen"
+
+#: cat-posts.php:1069
+msgid "Post details"
+msgstr "Beitragsdetails"
+
+#: cat-posts.php:1015
+msgid "Blur"
+msgstr "Verwischen"
+
+#: cat-posts.php:1014
+msgid "Zoom in"
+msgstr "Hineinzoomen"
+
+#: cat-posts.php:1013
+msgid "Brighter"
+msgstr "Heller"
+
+#: cat-posts.php:1012
+msgid "Darker"
+msgstr "Dunkler"
+
+#: cat-posts.php:1011
+msgid "None"
+msgstr "Kein(er)"
+
+#: cat-posts.php:1008
+msgid "Animation on mouse hover:"
+msgstr "Animation beim Überfahren mit der Maus:"
+
+#: cat-posts.php:1003
+msgid "CSS crop to requested size "
+msgstr "Auf die gewünschte Größe zuschneiden"
+
+#: cat-posts.php:996
+msgid "Height:"
+msgstr "Höhe:"
+
+#: cat-posts.php:992
+msgid "Width:"
+msgstr "Breite:"
+
+#: cat-posts.php:990
+msgid "Thumbnail dimensions (in pixels)"
+msgstr "Vorschaubildabmessungen (in Pixel)"
+
+#: cat-posts.php:985
+msgid "Show thumbnails above text"
+msgstr "Vorschaubild über dem Text platzieren"
+
+#: cat-posts.php:979
+msgid "Show post thumbnail"
+msgstr "Vorschaubild anzeigen"
+
+#: cat-posts.php:974
+msgid "Thumbnails"
+msgstr "Vorschaubilder"
+
+#: cat-posts.php:943
+msgid "Exclude posts which have no thumbnail"
+msgstr "Beiträge ohne Vorschaubild nicht anzeigen"
+
+#: cat-posts.php:937
+msgid "Exclude current post"
+msgstr "Aktuellen Beitrag nicht mitanzeigen"
+
+#: cat-posts.php:931
+msgid "Reverse sort order (ascending)"
+msgstr "Reihenfolge umdrehen (aufsteigend)"
+
+#: cat-posts.php:924
+msgid "Random"
+msgstr "Zufällig"
+
+#: cat-posts.php:923
+msgid "Number of comments"
+msgstr "Anzahl der Kommentare mitanzeigen"
+
+#: cat-posts.php:921
+msgid "Date"
+msgstr "Datum"
+
+#: cat-posts.php:919
+msgid "Sort by"
+msgstr "Sortierung"
+
+#: cat-posts.php:913
+msgid "Number of posts to show"
+msgstr "Anzahl anzuzeigender Beiträge"
+
+#: cat-posts.php:907
+msgid "Category"
+msgstr "Kategorie"
+
+#: cat-posts.php:903
+msgid "Filter"
+msgstr "Filter"
+
+#: cat-posts.php:872
+msgid "Hide title"
+msgstr "Titel verbergen"
+
+#: cat-posts.php:866
+msgid "Make widget title link"
+msgstr "Widget-Titel als Link ausgeben"
+
+#: cat-posts.php:855 cat-posts.php:859 cat-posts.php:922
+msgid "Title"
+msgstr "Titel"
+
+#: cat-posts.php:704
+msgid "Posts by %s"
+msgstr "Beiträge von %s"
+
+#: cat-posts.php:293
+msgid "Category Posts"
+msgstr "Category Posts"
+
+#: cat-posts.php:292
+msgid "List single category posts"
+msgstr "Eine Liste mit neusten Beiträge aus einer bestimmten Kategorie anzeigen."
+
+#: cat-posts.php:117
+msgid "Customize"
+msgstr "Customizer"

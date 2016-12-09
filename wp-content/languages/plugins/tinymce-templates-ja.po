@@ -1,0 +1,97 @@
+# Translation of Plugins - TinyMCE Templates - Stable (latest release) in Japanese
+# This file is distributed under the same license as the Plugins - TinyMCE Templates - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-11-29 00:20:21+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: ja_JP\n"
+"Project-Id-Version: Plugins - TinyMCE Templates - Stable (latest release)\n"
+
+#: tinymce-templates.php:212 tinymce-templates.php:215
+#: tinymce-templates.php:527 tinymce-templates.php:536
+msgid "Insert Template"
+msgstr "テンプレートを挿入"
+
+#: tinymce-templates.php:264 tinymce-templates.php:282
+#: tinymce-templates.php:299
+msgid "Copy to a new template"
+msgstr "新規テンプレートにコピー"
+
+#: tinymce-templates.php:352 tinymce-templates.php:354
+msgid "Templates"
+msgstr "テンプレート"
+
+#: tinymce-templates.php:355
+msgid "Add New Template"
+msgstr "テンプレートの新規登録"
+
+#: tinymce-templates.php:356
+msgid "Edit Template"
+msgstr "テンプレートを編集"
+
+#: tinymce-templates.php:357
+msgid "Add New"
+msgstr "新規追加"
+
+#: tinymce-templates.php:358
+msgid "New Template"
+msgstr "新しいテンプレート"
+
+#: tinymce-templates.php:359
+msgid "View Template"
+msgstr "テンプレートを表示"
+
+#: tinymce-templates.php:360
+msgid "No templatess found."
+msgstr "テンプレートが見つかりませんでした。"
+
+#: tinymce-templates.php:361
+msgid "No templates found in Trash."
+msgstr "ゴミ箱内にテンプレートが見つかりませんでした。"
+
+#: tinymce-templates.php:365
+msgid "Search Templates"
+msgstr "テンプレートを検索"
+
+#: tinymce-templates.php:398
+msgid "Insert as Shortcode"
+msgstr "ショートコードとして挿入"
+
+#: tinymce-templates.php:407
+msgid "Translators"
+msgstr "翻訳者"
+
+#: tinymce-templates.php:535
+msgid "Note: The template will be inserted as shortcode."
+msgstr "備考: このテンプレートはショートコードとして挿入されます。"
+
+#. Plugin Name of the plugin/theme
+msgid "TinyMCE Templates"
+msgstr "TinyMCE テンプレート"
+
+#. Description of the plugin/theme
+msgid "TinyMCE Templates plugin will enable to use HTML template on WordPress Visual Editor."
+msgstr "WordPressのビジュアルエディターでテンプレートを利用できるようにするためのプラグインです。"
+
+#. Author of the plugin/theme
+msgid "Takayuki Miyauchi"
+msgstr "Takayuki Miyauchi"
+
+#. #-#-#-#-#  tmp-tinymce-templates.pot (TinyMCE Templates 4.4.0)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  tmp-tinymce-templates.pot (TinyMCE Templates 4.4.0)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "http://miya0001.github.io/tinymce-templates/"
+msgstr "http://miya0001.github.io/tinymce-templates/"
+
+#: tinymce-templates.php:426 tinymce-templates.php:429
+msgid "Yes"
+msgstr "はい"
+
+#: tinymce-templates.php:427 tinymce-templates.php:430
+msgid "No"
+msgstr "いいえ"

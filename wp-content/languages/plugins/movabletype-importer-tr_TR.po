@@ -1,0 +1,126 @@
+# Translation of Stable (latest release) in Turkish
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-08-01 21:17:16+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#. Author of the plugin/theme
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"
+
+#. Author URI of the plugin/theme
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#: movabletype-importer.php:481
+msgid "All done. <a href=\"%s\">Have fun!</a>"
+msgstr "İşlem tamamlandı. <a href=\"%s\">İyi eğlenceler!</a>"
+
+#: movabletype-importer.php:209
+msgid "Below, you can see the names of the authors of the Movable Type posts in <em>italics</em>. For each of these names, you can either pick an author in your WordPress installation from the menu, or enter a name for the author in the textbox."
+msgstr "Aşağıda Movable Type yazılarınızın yazarlarını <em>italik</em> yazılmış olarak görebilirsiniz. Bu isimlerin her biri için, isterseniz WordPress yazarlarından birini seçin, isterseniz bir isim girin."
+
+#: movabletype-importer.php:55
+msgid "Howdy! We are about to begin importing all of your Movable Type or TypePad entries into WordPress. To begin, either choose a file to upload and click &#8220;Upload file and import&#8221;, or use FTP to upload your MT export file as <code>mt-export.txt</code> in your <code>/wp-content/</code> directory and then click &#8220;Import mt-export.txt&#8221;."
+msgstr "Merhaba! Movable Type veya Typepad girişlerinizin hepsini WordPress&#8217;e aktarma işlemine başlamak üzereyiz. Başlamak için, bir dosya seçin ve &#8220;Dosya yükle ve içe aktar&#8221; düğmesine tıklayın veya, MT aktarım dosyanızı  FTP'den <code>mt-export.txt</code> olarak <code>/wp-content/</code> dizininize yükleyin. Sonra &#8220;mt-export.txt&#8217;i içe aktar&#8221; düğmesine tıklayarak aktarma işlemini başlatabilirsiniz."
+
+#: movabletype-importer.php:260
+msgid "Post <em>%s</em> already exists."
+msgstr "<em>%s</em> yazısı zaten var."
+
+#: movabletype-importer.php:263
+msgid "Importing post <em>%s</em>..."
+msgstr "Yazı içe aktarılıyor <em>%s</em>..."
+
+#: movabletype-importer.php:44
+msgid "Import Movable Type or TypePad"
+msgstr "Movable Type veya TypePad&#8217;den İçe Aktar"
+
+#: movabletype-importer.php:63
+msgid "Or use <code>mt-export.txt</code> in your <code>/wp-content/</code> directory"
+msgstr "Veya <code>mt-export.txt</code> dosyasını <code>/wp-content/</code> dizininize yükleyin."
+
+#: movabletype-importer.php:65
+msgid "Import mt-export.txt"
+msgstr "mt-export.txt dosyasından içe aktar"
+
+#: movabletype-importer.php:68
+msgid "The importer is smart enough not to import duplicates, so you can run this multiple times without worry if&#8212;for whatever reason&#8212;it doesn&#8217;t finish. If you get an <strong>out of memory</strong> error try splitting up the import file into pieces."
+msgstr "Aktarıcı birbirinin aynı yazıları aktarmama konusunda oldukça beceriklidir, yani bu aktarıcıyı istediğiniz kadar çalıştırabilirsiniz. Eğer <strong>bellek dolu</strong> hatası alırsanız, aktarma dosyasını parçalara bölmeyi deneyin."
+
+#: movabletype-importer.php:77
+msgid "&mdash; Select &mdash;"
+msgstr "&mdash; Seç &mdash;"
+
+#: movabletype-importer.php:207
+msgid "Assign Authors"
+msgstr "Yazar Atayın"
+
+#: movabletype-importer.php:208
+msgid "To make it easier for you to edit and save the imported posts and drafts, you may want to change the name of the author of the posts. For example, you may want to import all the entries as admin&#8217;s entries."
+msgstr "İçe aktarılan yazı ve taslakları düzenleyip kaydetmeyi kolaylaştırmak için, yazıların yazar isimlerini değiştirmek isteyebilirsiniz. Mesela, tüm girişleri yönetici kullanıcısının girişleri olarak içe aktarabilirsiniz."
+
+#: movabletype-importer.php:210
+msgid "If a new user is created by WordPress, a password will be randomly generated. Manually change the user&#8217;s details if necessary."
+msgstr "WordPress tarafından yeni bir kullanıcı oluşturulursa, beraberinde rastgele bir parola da yaratılacaktır. Gerekiyorsa kullanıcı detaylarından parolasını değiştirin."
+
+#: movabletype-importer.php:221
+msgid "Current author:"
+msgstr "Şimdiki yazar:"
+
+#: movabletype-importer.php:221
+msgid "Create user %1$s or map to existing"
+msgstr "Kullanıcı oluştur %1$s veya varolan birini seç"
+
+#: movabletype-importer.php:226
+msgid "Submit"
+msgstr "Onayla"
+
+#: movabletype-importer.php:236
+msgid "<code>mt-export.txt</code> does not exist"
+msgstr "<code>mt-export.txt</code> mevcut değil"
+
+#: movabletype-importer.php:242
+msgid "Sorry, there has been an error"
+msgstr "Üzgünüz, bir hata oluştu"
+
+#: movabletype-importer.php:281
+msgid "Adding tags <em>%s</em>..."
+msgstr "Etiketler ekleniyor <em>%s</em>..."
+
+#: movabletype-importer.php:300
+msgid "(%s comment)"
+msgid_plural "(%s comments)"
+msgstr[0] "%s yorum"
+msgstr[1] ""
+
+#: movabletype-importer.php:317
+msgid "(%s ping)"
+msgid_plural "(%s pings)"
+msgstr[0] "(%s ping)"
+msgstr[1] ""
+
+#: movabletype-importer.php:527
+msgid "Movable Type and TypePad"
+msgstr "Movable Type ve TypePad"
+
+#. #-#-#-#-#  tmp-movabletype-importer.pot (Movable Type and TypePad Importer
+#. 0.4)  #-#-#-#-#
+#. Description of the plugin/theme
+#: movabletype-importer.php:527
+msgid "Import posts and comments from a Movable Type or TypePad blog."
+msgstr "Movable Type veya Typepad blogdan yazıları ve yorumları içe aktarın."
+
+#. Plugin Name of the plugin/theme
+msgid "Movable Type and TypePad Importer"
+msgstr "Movable Type ve TypePad aktarıcısı"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/movabletype-importer/"
+msgstr "http://wordpress.org/extend/plugins/movabletype-importer/"

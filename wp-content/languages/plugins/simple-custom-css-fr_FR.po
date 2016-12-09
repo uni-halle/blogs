@@ -1,0 +1,61 @@
+# Translation of Development (trunk) in French (France)
+# This file is distributed under the same license as the Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-09-28 13:31:10+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Development (trunk)\n"
+
+#: includes/admin.php:21
+msgid "Add CSS"
+msgstr "Ajouter votre CSS"
+
+#: includes/admin.php:98
+msgid "/* Enter Your Custom CSS Here */"
+msgstr "/* Saisissez votre CSS personnalisé ci-dessous */"
+
+#. #-#-#-#-#  tmp-simple-custom-css.pot (Simple Custom CSS 3.3)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: includes/admin.php:74 includes/admin.php:104
+msgid "Simple Custom CSS"
+msgstr "Simple Custom CSS"
+
+#: includes/admin.php:74
+msgid "Custom CSS"
+msgstr "CSS personnalisée"
+
+#: includes/admin.php:101
+msgid "Custom CSS updated successfully."
+msgstr "Votre CSS personnalisé a bien été mis à jour."
+
+#: includes/admin.php:109
+msgid "Simple Custom CSS allows you to add your own styles or override the default CSS of a plugin or theme."
+msgstr "Simple Custom CSS vous permet d’ajouter vos propres styles ou de prendre le pas sur les styles CSS d’une extension ou d’un thème."
+
+#: includes/admin.php:110
+msgid "To use, enter your custom CSS, then click \"Update Custom CSS\".  It's that simple!"
+msgstr "Pour utiliser cette fonction saisissez votre CSS personnalisé puis cliquez sur « Mettre à jour le CSS personnalisé ». Pas plus compliqué !"
+
+#: includes/admin.php:111 includes/admin.php:121
+msgid "Update Custom CSS"
+msgstr "Mettre à jour le CSS personnalisé"
+
+#. Plugin URI of the plugin/theme
+msgid "http://johnregan3.github.io/simple-custom-css"
+msgstr "http://johnregan3.github.io/simple-custom-css"
+
+#. Description of the plugin/theme
+msgid "The simple, solid way to add custom CSS to your WordPress website. Simple Custom CSS allows you to add your own styles or override the default CSS of a plugin or theme."
+msgstr "Une méthode simple et fiable pour ajouter votre CSS personnalisé à votre site WordPress. Simple Custom CSS vous permet d’ajouter vos propres styles ou de prendre le pas sur les styles CSS d’une extension ou d’un thème."
+
+#. Author of the plugin/theme
+msgid "John Regan, Danny Van Kooten"
+msgstr "John Regan, Danny Van Kooten"
+
+#. Author URI of the plugin/theme
+msgid "http://johnregan3.me"
+msgstr "http://johnregan3.me"

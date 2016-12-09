@@ -1,0 +1,81 @@
+# Translation of Stable (latest release) in Turkish
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-04-08 19:34:54+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#: classes/PodsInit.php:952
+msgid "Uploaded to this %s"
+msgstr "%s yüklendi"
+
+#: classes/PodsInit.php:950
+msgid "%s Archives"
+msgstr "%s Arşivler"
+
+#: classes/PodsInit.php:951
+msgid "Insert into %s"
+msgstr "%s içine ekle"
+
+#: classes/PodsInit.php:949 ui/admin/setup-edit.php:394
+msgid "Use as featured image"
+msgstr "Öne çıkarılmış görsel olarak kullan"
+
+#: classes/PodsInit.php:947 ui/admin/setup-edit.php:386
+msgid "Set featured image"
+msgstr "Özellik Görseli Ayarlama"
+
+#: classes/PodsInit.php:948 ui/admin/setup-edit.php:390
+msgid "Remove featured image"
+msgstr "Özellik Görseli Kaldırma"
+
+#: classes/PodsAdmin.php:2741
+msgid "Full"
+msgstr "Tamamı"
+
+#: components/Templates/includes/auto-template/Pods_Templates_Auto_Template_Settings.php:174
+msgid "Taxonomy Template"
+msgstr "Kategori şablonu"
+
+#: classes/fields/pick.php:478 components/Roles/Roles.php:94
+#: ui/admin/setup-add.php:241
+msgid "Users"
+msgstr "Kullanıcılar"
+
+#: classes/fields/pick.php:2227
+msgid "Puerto Rico"
+msgstr "Porto Riko"
+
+#: classes/PodsUI.php:3029 classes/PodsUI.php:3061 classes/PodsUI.php:3096
+#: classes/PodsUI.php:3121 ui/fields/color.php:8
+msgid "Clear"
+msgstr "Temizle"
+
+#: classes/PodsUI.php:2645
+msgid "Bulk Actions"
+msgstr "Toplu eylemler"
+
+#: classes/PodsUI.php:2661 classes/PodsUI.php:3752
+msgid "Apply"
+msgstr "Uygula"
+
+#: classes/PodsInit.php:940 classes/PodsInit.php:960
+msgid "All %s"
+msgstr "Tümü %s"
+
+#: classes/PodsAdmin.php:247 classes/PodsAdmin.php:267
+#: classes/PodsAdmin.php:268 classes/PodsAdmin.php:302
+#: classes/PodsAdmin.php:316 classes/PodsAdmin.php:434
+#: classes/PodsAdmin.php:1518 classes/PodsInit.php:933 classes/PodsUI.php:927
+#: classes/PodsUI.php:948 ui/admin/setup-edit.php:338
+msgid "Add New"
+msgstr "Yeni ekle"
+
+#: classes/PodsAdmin.php:439
+msgid "Components"
+msgstr "Bileşenler"

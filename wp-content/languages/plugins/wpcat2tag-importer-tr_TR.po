@@ -1,0 +1,149 @@
+# Translation of Development (trunk) in Turkish
+# This file is distributed under the same license as the Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2010-06-10 06:33:36+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Development (trunk)\n"
+
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#: wpcat2tag-importer.php:43
+msgid "Cheatin&#8217; uh?"
+msgstr "Kopya çekme?"
+
+#: wpcat2tag-importer.php:46
+msgid "Categories to Tags"
+msgstr "Kategorilerden Etiketlere"
+
+#: wpcat2tag-importer.php:47
+msgid "Tags to Categories"
+msgstr "Etiketlerden Kategorilere"
+
+#: wpcat2tag-importer.php:83
+msgid "Convert Category to Tag."
+msgid_plural "Convert Categories (%d) to Tags."
+msgstr[0] "Kategorileri Etiketlere (%d) Dönüştür"
+msgstr[1] ""
+
+#: wpcat2tag-importer.php:85
+msgid "Hey there. Here you can selectively convert existing categories to tags. To get started, check the categories you wish to be converted, then click the Convert button."
+msgstr "Merhaba! Bu dönüştürücü, seçtiğiniz kategorileri etiketlere dönüştürmenizi sağlar. Başlamak için, dönüştürmek istediğiniz kategorileri seçin, sonra Dönüştür düğmesine tıklayın."
+
+#: wpcat2tag-importer.php:86
+msgid "Keep in mind that if you convert a category with child categories, the children become top-level orphans."
+msgstr "Aklınızda bulunsun, alt kategorilere sahip bir kategoriyi dönüştürürseniz, alt kategoriler en üst seviye öksüz kategorilere dönüşürler."
+
+#: wpcat2tag-importer.php:90
+msgid "You have no categories to convert!"
+msgstr "Dönüştürülecek hiç kategoriniz yok!"
+
+#: wpcat2tag-importer.php:107 wpcat2tag-importer.php:183
+msgid "Uncheck All"
+msgstr "Seçimi temizle"
+
+#: wpcat2tag-importer.php:114 wpcat2tag-importer.php:121
+#: wpcat2tag-importer.php:190 wpcat2tag-importer.php:197
+msgid "Check All"
+msgstr "Hepsini seç"
+
+#: wpcat2tag-importer.php:144
+msgid "* This category is also a tag. Converting it will add that tag to all posts that are currently in the category."
+msgstr "* Bu kategori aynı zamanda bir etiket. Bu kategoriyi dönüştürmek, kategoriye bağlı olan tüm yazılara otomatik olarak bu etiketi ekleyecek."
+
+#: wpcat2tag-importer.php:146
+msgid "Convert Categories to Tags"
+msgstr "Kategorileri Etiketlere Dönüştür"
+
+#: wpcat2tag-importer.php:159
+msgid "Convert Tag to Category."
+msgid_plural "Convert Tags (%d) to Categories."
+msgstr[0] "Etiketleri Kategorilere (%d) Dönüştür"
+msgstr[1] ""
+
+#: wpcat2tag-importer.php:161
+msgid "Here you can selectively convert existing tags to categories. To get started, check the tags you wish to be converted, then click the Convert button."
+msgstr "Buradan seçtiğiniz etiketleri kategorilere dönüştürebilirsiniz. Başlamak için, dönüştürmek istediğiniz etiketleri seçin, sonra Dönüştür düğmesine tıklayın."
+
+#: wpcat2tag-importer.php:162
+msgid "The newly created categories will still be associated with the same posts."
+msgstr "Yeni yaratılacak kategoriler daha önce ilişkili oldukları yazılarla ilişkilendirilecek."
+
+#: wpcat2tag-importer.php:166
+msgid "You have no tags to convert!"
+msgstr "Dönüştürülecek hiç etiketiniz yok!"
+
+#: wpcat2tag-importer.php:208
+msgid "* This tag is also a category. When converted, all posts associated with the tag will also be in the category."
+msgstr "* Bu etiket aynı zamanda bir kategori. Etiketi dönüştürdüğünüzde bu etikete sahip olan tüm yazılar otomatik olarak bu kategorinin altında yer alacak."
+
+#: wpcat2tag-importer.php:210
+msgid "Convert Tags to Categories"
+msgstr "Etiketleri Kategorilere Dönüştür"
+
+#: wpcat2tag-importer.php:248 wpcat2tag-importer.php:368
+msgid "Uh, oh. Something didn&#8217;t work. Please <a href=\"%s\">try again</a>."
+msgstr "Amanın. Bir şeyler ters gitti. Lütfen <a href=\"%s\">tekrar deneyin</a>."
+
+#: wpcat2tag-importer.php:267
+msgid "Category %s doesn&#8217;t exist!"
+msgstr "%s kategorisi mevcut değil!"
+
+#: wpcat2tag-importer.php:270
+msgid "Converting category <strong>%s</strong> ... "
+msgstr "<strong>%s</strong> kategorisi dönüştürülüyor..."
+
+#: wpcat2tag-importer.php:298 wpcat2tag-importer.php:341
+#: wpcat2tag-importer.php:427
+msgid "Converted successfully."
+msgstr "Başarılı bir şekilde dönüştürüldü."
+
+#: wpcat2tag-importer.php:317
+msgid "Tag added to all posts in this category."
+msgstr "Etiket bu kategorideki tüm yazılara eklendi."
+
+#: wpcat2tag-importer.php:359
+msgid "* This category is also a tag. The converter has added that tag to all posts currently in the category. If you want to remove it, please confirm that all tags were added successfully, then delete it from the <a href=\"%s\">Manage Categories</a> page."
+msgstr "* Bu kategori aynı zamanda bir etiket. Dönüştürücü şu anda bu kategorideki tüm yazılara bu etiketi ekledi. Eğer silmek isterseniz, lütfen tüm etiketlerin başarıyla eklendiğinden emin olduktan sonra <a href=\"%s\">Kategorileri yönet</a> sayfasından silme işlemini gerçekleştiriniz."
+
+#: wpcat2tag-importer.php:360 wpcat2tag-importer.php:449
+msgid "We&#8217;re all done here, but you can always <a href=\"%s\">convert more</a>."
+msgstr "Her şey tamam, ama isterseniz her zaman daha fazlasını  <a href=\"%s\">dönüştürebilirsiniz</a>."
+
+#: wpcat2tag-importer.php:385
+msgid "Converting tag <strong>%s</strong> ... "
+msgstr "<strong>%s</strong> etiketi dönüştürülüyor..."
+
+#: wpcat2tag-importer.php:409
+msgid "All posts were added to the category with the same name."
+msgstr "Tüm yazılar aynı kategori ismine sahip kategoriye atandılar."
+
+#: wpcat2tag-importer.php:430
+msgid "Tag #%s doesn&#8217;t exist!"
+msgstr "#%s etiketi mevcut değil!"
+
+#: wpcat2tag-importer.php:448
+msgid "* This tag is also a category. The converter has added all posts from it to the category. If you want to remove it, please confirm that all posts were added successfully, then delete it from the <a href=\"%s\">Manage Tags</a> page."
+msgstr "* Bu etiket aynı zamanda bir kategori. Dönüştürücü şu anda bu etikete sahip tüm yazıları bu kategoriye ekledi. Eğer silmek isterseniz, lütfen tüm yazıların eklendiğinden emin olduktan sonra <a href=\"%s\">Etiketleri yönet</a> sayfasından silme işlemini gerçekleştiriniz."
+
+#: wpcat2tag-importer.php:491
+msgid "Categories and Tags Converter"
+msgstr "Kategori ve Etiket dönüştürücü"
+
+#: wpcat2tag-importer.php:491
+msgid "Convert existing categories to tags or tags to categories, selectively."
+msgstr "Tercihinize bağlı olarak mevcut kategorileri etiketlere ya da etiketleri kategorilere dönüştürür."
+
+msgid "Categories to Tags Converter Importer"
+msgstr "Kategorileri etiketlere dönüştürme aktarıcısı"
+
+msgid "http://wordpress.org/extend/plugins/wpcat2tag-importer/"
+msgstr "http://wordpress.org/extend/plugins/wpcat2tag-importer/"
+
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"

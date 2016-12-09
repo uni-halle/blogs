@@ -1,0 +1,3334 @@
+# Translation of Stable (latest release) in Turkish
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-04-24 14:07:46+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#: admin/views/tabs/social/pinterest.php:19
+msgid "Pinterest confirmation"
+msgstr "Pinterest onayı"
+
+#: inc/class-wpseo-replace-vars.php:1097
+msgid "Replaced with the primary category of the post/page"
+msgstr "Yazı/sayfa ana kategorisi ile değiştirildi."
+
+#: admin/views/tabs/dashboard/webmaster-tools.php:12
+msgid "Webmaster Tools verification"
+msgstr "Web Yöneticisi Araçları doğrulaması"
+
+#. translators: %s expands to <code>noodp</code>
+#: admin/views/tabs/metas/other.php:23
+msgid "Prevents search engines from using the DMOZ description in the search results for all pages on this site. Note: If you set a custom description for a page or post, it will have the %s tag regardless of this setting."
+msgstr "Bu sitedeki tüm sayfalar için arama sonuçlarında DMOZ  açıklamasının kullanılmasını engeller. Eğer bir sayfa ya da yazı için özel açıklama girerseniz %s etiketinden bağımsız olarak girdiğiniz kullanılır."
+
+#: admin/views/tabs/metas/taxonomies.php:24
+msgid "Format-based archives"
+msgstr "Biçim tabanlı arşivler"
+
+#: admin/views/tabs/sitemaps/user-sitemap.php:18
+msgid "The user sitemap contains the author archive URLs for every user on your site."
+msgstr "Kullanıcı site haritası sitenizdeki tüm kullanıcı arşivleri için adresler içerir."
+
+#: admin/views/tabs/sitemaps/user-sitemap.php:26
+msgid "Users without posts"
+msgstr "Yazısı olmayan kullanıcılar"
+
+#: admin/views/tabs/sitemaps/user-sitemap.php:28
+msgid "You can choose to not include users without posts."
+msgstr "Yazısı olmayan kullanıcıları hariç tutmayı seçebilirsiniz."
+
+#: admin/views/tabs/social/pinterest.php:13
+msgid "If you have already confirmed your website with Pinterest, you can skip the step below."
+msgstr "Halihazırda Pinterest için doğrulama yaptıysanız alttaki adımı atlayabilirsiniz."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-bulk-title-editor-list-table.php:47
+msgid "Existing %1$s Title"
+msgstr "Mevcut %1$s başlık"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-bulk-title-editor-list-table.php:49
+msgid "New %1$s Title"
+msgstr "Yeni %1$s başlık"
+
+#: admin/class-option-tabs-formatter.php:82
+#: admin/views/partial-settings-tab-video.php:19
+msgid "Help center"
+msgstr "Yardım merkezi"
+
+#: admin/class-pointers.php:287
+msgid "If you have a Google+ page for your business, add that URL here and link it on your %1$sGoogle+%2$s page&#8217;s about page."
+msgstr "Eğer işletmeniz için bir Google+ sayfanız varsa %1$sGoogle+%2$s hakkında sayfanızın adresini buraya ekleyin."
+
+#: admin/google_search_console/class-gsc-category-filters.php:113
+msgid "Show information about errors in category 'Access Denied'"
+msgstr "\"Erişim Engellendi\" kategorisindeki hatalar hakkında bilgi göster"
+
+#: admin/google_search_console/class-gsc-category-filters.php:116
+msgid "Show information about errors in category 'Not Found'"
+msgstr "\"Bulunamadı\" kategorisindeki hatalar hakkında bilgi göster "
+
+#: admin/google_search_console/class-gsc-category-filters.php:117
+msgid "Show information about errors in category 'Other'"
+msgstr "\"Diğer\" kategorisindeki hatalar hakkında bilgi göster "
+
+#: admin/google_search_console/class-gsc-category-filters.php:119
+msgid "Show information about errors in category 'Blocked'"
+msgstr "\"Engellenmiş\" kategorisindeki hatalar hakkında bilgi göster"
+
+#: admin/google_search_console/class-gsc-category-filters.php:120
+msgid "Show information about errors in category 'Server'"
+msgstr "\"Server-Sunucu\" kategorisindeki hatalar hakkında bilgi göster "
+
+#: admin/google_search_console/class-gsc-category-filters.php:121
+msgid "Show information about errors in category 'Soft 404'"
+msgstr "\"Soft 404\" kategorisindeki hatalar hakkında bilgi göster "
+
+#. translators: %s expands to Yoast SEO Premium
+#: admin/metabox/class-metabox-add-keyword-tab.php:41
+msgid "Buy %s"
+msgstr "%s satın al"
+
+#: admin/metabox/class-metabox.php:52
+msgid "Show information about the snippet editor"
+msgstr "Kırpıntı düzenleyici hakkında bilgi göster"
+
+#: admin/metabox/class-metabox.php:56
+msgid "Show information about the content analysis"
+msgstr "İçerik analizi hakkında bilgi göster"
+
+#: admin/metabox/class-metabox.php:60
+msgid "Show information about the focus keyword"
+msgstr "Odak anahtar kelime hakkında bilgi göster"
+
+#: admin/taxonomy/class-taxonomy-content-fields.php:23
+msgid "Snippet Editor Help"
+msgstr "Kod parçacığı düzenleme yardımı"
+
+#: admin/taxonomy/class-taxonomy-content-fields.php:31
+msgid "Focus Keyword Help"
+msgstr "Odak kelime yardımı"
+
+#: admin/taxonomy/class-taxonomy-content-fields.php:39
+msgid "Content Analysis Help"
+msgstr "İçerik analizi yardımı"
+
+#: admin/views/partial-help-center-video.php:27
+msgid "Need more help?"
+msgstr "Daha fazla yardıma mı ihtiyacınız var?"
+
+#. translators: %s expands to Yoast SEO Premium
+#: admin/views/partial-help-center-video.php:29
+msgid "If you buy %s you'll get access to our support team and bonus features!"
+msgstr "Eğer %s satın alırsanız destek ekibimize ve ek özelliklere erişim sağlayabilirsiniz."
+
+#. translators: %s expands to Yoast SEO
+#: admin/views/partial-help-center-video.php:40
+msgid "Want to be a %s Expert?"
+msgstr "%s Uzmanı olmak ister misiniz?"
+
+#. translators: %$1s expands to Yoast SEO
+#: admin/views/partial-help-center-video.php:42
+msgid "Follow our %1$s for WordPress training and become a certified %1$s Expert!"
+msgstr "Wordpress için %1$s eğitimini takip edin ve sertifikalı %1$s uzmanı olun!"
+
+#. translators: %s expands to Yoast SEO for WordPress
+#: admin/views/partial-help-center-video.php:45
+msgid "Enroll in the %s training &raquo;"
+msgstr "%s eğitimine kayıt ol &raquo;"
+
+#: admin/views/tabs/advanced/permalinks.php:31
+msgid "No redirect"
+msgstr "Yönlendirme yok"
+
+#: admin/views/tabs/advanced/permalinks.php:31
+msgid "Redirect"
+msgstr "Yönlendirme"
+
+#: admin/views/tabs/advanced/permalinks.php:46
+msgid "Note: this feature has been deprecated, as the SEO value is close to 0 these days. If you disable it you will not be able to put it back on."
+msgstr "Not: Bu özellik SEO değeri bugünlerde sıfıra yaklaştığı için devreden çıktı. Eğer etkisizleştirirseniz tekrar devreye alamayacaksınız."
+
+#: inc/sitemaps/class-sitemaps-cache-validator.php:91
+msgid "Trying to build the sitemap cache key, but the postfix and prefix combination leaves too little room to do this. You are probably requesting a page that is way out of the expected range."
+msgstr "Güvenli bir site haritası bellek anahtarı yapılandırılmaya çalışılıyor, ama son ek ve ön ek kombinasyonu bunun için çok az alan bırakıyor. Muhtemelen belirlenen aralığın dışında bir sayfa istiyorsunuz."
+
+#: inc/sitemaps/class-sitemaps-cache-validator.php:267
+msgid "Expected an integer as input."
+msgstr "Girdi olarak sayısal bir değer bekleniyor."
+
+#: admin/views/tabs/advanced/breadcrumbs.php:40
+msgid "Regular"
+msgstr "Normal"
+
+#: admin/views/tabs/advanced/breadcrumbs.php:41
+msgid "Bold the last page"
+msgstr "Son sayfayı kalın yap"
+
+#: admin/views/tabs/advanced/permalinks.php:22
+msgid "Keep"
+msgstr "Tut"
+
+#: admin/views/tabs/advanced/permalinks.php:22
+msgid "Remove"
+msgstr "Kaldır"
+
+#: admin/views/tabs/metas/archives.php:13
+#: admin/views/tabs/metas/archives.php:30
+#: admin/views/tabs/metas/archives.php:34
+msgid "Author archives"
+msgstr "Yazar arşivleri"
+
+#: admin/views/tabs/metas/archives.php:43
+#: admin/views/tabs/metas/archives.php:47
+msgid "Date-based archives"
+msgstr "Tarih bazlı arşivler"
+
+#: admin/views/tabs/metas/other.php:14
+msgid "Subpages of archives"
+msgstr "Arşivlerin alt sayfaları"
+
+#: admin/pages/xml-sitemaps.php:27
+msgid "XML sitemap functionality"
+msgstr "XML site hartası becerisi"
+
+#: admin/views/tabs/sitemaps/user-sitemap.php:15
+msgid "Author / user sitemap"
+msgstr "Yazar / kullanıcı site haritası"
+
+#: admin/views/tabs/sitemaps/user-sitemap.php:23
+msgid "In sitemap"
+msgstr "Site haritası içinde"
+
+#: admin/views/tabs/sitemaps/user-sitemap.php:24
+msgid "Not in sitemap"
+msgstr "Site haritasında değil"
+
+#: admin/views/tabs/sitemaps/user-sitemap.php:32
+msgid "Filter specific user roles"
+msgstr "Belirli kullanıcı rollerini filtrele"
+
+#: admin/taxonomy/class-taxonomy-columns.php:99
+msgid "Term is set to noindex."
+msgstr "Terim indekslenmesin olarak işaretli."
+
+#: admin/views/about.php:51
+msgid "Integrations"
+msgstr "Birleştirmeler"
+
+#: admin/views/about.php:263 admin/views/about.php:268
+msgid "Tester / Developer"
+msgstr "Test eden / Geliştirici"
+
+#. translators: %1$s expands to the term title, %2$s to the taxonomy title.
+#. Both are only shown to screenreaders.
+#: admin/views/js-templates-primary-term.php:26
+msgid "Make %1$s primary %2$s"
+msgstr "%1$s için %2$s birincil yap"
+
+#: admin/views/js-templates-primary-term.php:32
+msgid "Primary"
+msgstr "Birincil"
+
+#. translators: %s is the taxonomy title. This will be shown to screenreaders
+#: admin/views/js-templates-primary-term.php:39
+msgid "Primary %s"
+msgstr "Birincil %s"
+
+#: admin/views/tabs/advanced/breadcrumbs.php:36
+msgid "Show Blog page"
+msgstr "Blog sayfasını göster"
+
+#: admin/views/tabs/advanced/breadcrumbs.php:39
+msgid "Bold"
+msgstr "Kalın"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/dashboard/security.php:20
+msgid "The advanced section of the %1$s meta box allows a user to noindex posts or change the canonical. These are things you might not want if you don't trust your authors, so by default, only administrators can do this. Enabling the advanced box allows all users to change these settings."
+msgstr "%1$s meta kutusunun gelişmiş bölümünde yazıların takip edilmemesi ayarı ya da eş adres tanımlaması yapabilirsiniz. Eğer yazarlarınıza güvenmiyorsanız bu ayarları değiştirememelerini istersiniz, bu yüzden sadece yöneticiler kullanabilir. Bu ayarı etkinleştirirseniz tüm kullanıcılar gelişmiş ayarlar bölümünü kullanabilir."
+
+#. translators: %1$s expands to OnPage.org
+#: admin/views/tabs/dashboard/webmaster-tools.php:23
+msgid "%1$s indexability check"
+msgstr "%1$s indekslenebilirlik kontrolü"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/advanced/breadcrumbs.php:34
+#: admin/views/tabs/metas/post-types.php:40
+#: admin/views/tabs/metas/post-types.php:44
+#: admin/views/tabs/metas/taxonomies.php:40
+msgid "Show"
+msgstr "Göster"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/dashboard/security.php:16
+msgid "Advanced part of the %1$s meta box"
+msgstr "%1$s meta kutusunun gelişmiş bölümü"
+
+#: admin/class-yoast-form.php:327 admin/views/tabs/dashboard/security.php:14
+#: admin/views/tabs/metas/archives.php:32
+#: admin/views/tabs/metas/archives.php:45
+#: admin/views/tabs/metas/taxonomies.php:25
+#: admin/views/tabs/sitemaps/user-sitemap.php:14
+msgid "Enabled"
+msgstr "Etkin"
+
+#: admin/class-yoast-form.php:327 admin/views/tabs/dashboard/security.php:14
+#: admin/views/tabs/metas/archives.php:33
+#: admin/views/tabs/metas/archives.php:46
+#: admin/views/tabs/metas/taxonomies.php:25
+#: admin/views/tabs/sitemaps/user-sitemap.php:14
+msgid "Disabled"
+msgstr "Etkisiz"
+
+#. translators: 1: opens a link to a related knowledge base article. 2: closes
+#. the link
+#: admin/views/dashboard-widget.php:83
+msgid "Yoast SEO has %1$snot fetched your site’s indexability status%2$s yet from OnPage.org"
+msgstr "Yoast SEO OnPage.org üzerinden %1$ssitenizin indekslenebilme durumunu henüz çekmedi%2$s"
+
+#. translators: %1$s expands to the taxonomy name
+#: admin/taxonomy/class-taxonomy-settings-fields.php:65
+msgid "Include %1$s in sitemap?"
+msgstr "Site haritasına %1$s eklensin mi?"
+
+#. translators: %s$s expands to the taxonomy name and %2$s to the current index
+#. value
+#: admin/taxonomy/class-taxonomy-settings-fields.php:86
+msgid "Use %1$s default (Currently: %2$s)"
+msgstr "Varsayılan olarak %1$s kullan (Mevcut: %2$s)"
+
+#. translators: %1$s expands to the social network name
+#: admin/taxonomy/class-taxonomy-social-fields.php:46
+msgid "If you don't want to use the title for sharing on %1$s but instead want another title there, write it here."
+msgstr "Eğer bu yazıyı %1$s üzerinde farklı bir başlık ile paylaşmak istiyorsanız, yeni başlığı buraya yazınız. \t"
+
+#. translators: %1$s expands to the social network name
+#: admin/taxonomy/class-taxonomy-social-fields.php:54
+msgid "If you don't want to use the meta description for sharing on %1$s but want another description there, write it here."
+msgstr "%1$s üzerinde paylaşırken farklı bir meta açıklaması kullanmak istiyosanız, buraya yazabilirsiniz.."
+
+#. translators: %1$s expands to the social network name
+#: admin/taxonomy/class-taxonomy-social-fields.php:61
+msgid "If you want to use an image for sharing on %1$s, you can upload / choose an image or add the image URL here."
+msgstr "Eğer %1$s için paylaşım görseli kullanmak istiyorsanız, resim yükleyebilir / seçebilir ya da görsel adresini ekleyebilirsiniz."
+
+#: admin/views/about.php:204
+msgid "Lead Architect"
+msgstr "Lider mimar"
+
+#: admin/views/about.php:209
+msgid "Architect"
+msgstr "Mimar"
+
+#. translators: 1: expands to OnPage.org
+#: admin/views/dashboard-widget.php:45
+msgid "Indexability check by %1$s"
+msgstr "%1$s tarafından indekslenebilme kontrolü"
+
+#: admin/views/dashboard-widget.php:58
+msgid "Your homepage can be indexed by search engines."
+msgstr "Ana sayfanız arama motorları tarafından indekslenebilir."
+
+#. translators: 1: opens a link to a related knowledge base article. 2: closes
+#. the link
+#: admin/views/dashboard-widget.php:74
+msgid "Yoast SEO has %1$snot been able to fetch your site’s indexability status%2$s from OnPage.org"
+msgstr "Yoast SEO %1$ssitenizin indekslenebilme durumunu%2$s üzerinden çekemedi"
+
+#: admin/views/dashboard-widget.php:93
+msgid "Fetch the current status"
+msgstr "Güncel durumu kontrol et"
+
+#: admin/views/dashboard-widget.php:97
+msgid "Analyze entire site"
+msgstr "Tüm siteyi analiz et"
+
+#. translators: %s expands to <code>/category/</code>
+#: admin/views/tabs/advanced/permalinks.php:26
+msgid "Strip the category base (usually %s) from the category URL."
+msgstr "Kategori linker için varsayılan uzantıyı kaldır (normal değer: %s) "
+
+#. translators: %s expands to <code>?replytocom</code>
+#: admin/views/tabs/advanced/permalinks.php:40
+msgid "Remove the %s variables."
+msgstr "%s değişkenlerini kaldırır."
+
+#: admin/views/tabs/tool/import-seo.php:25
+msgid "Import from wpSEO"
+msgstr "wpSEO eklentisinden içeri aktar"
+
+#: inc/class-wpseo-rank.php:102
+msgid "No index"
+msgstr "İndeks yok"
+
+#. translators: %s: wp_title() function
+#: inc/class-wpseo-replace-vars.php:1105
+msgid "The separator defined in your theme's %s tag."
+msgstr "Temanızın %s etiketinde tanımlanan ayraç."
+
+#: admin/metabox/class-metabox.php:372
+msgid "Add-ons"
+msgstr "Eklentiler"
+
+#: admin/onpage/class-onpage.php:56
+msgid "Once Weekly"
+msgstr "Haftada bir"
+
+#. translators: 1: opens a link to a related knowledge base article. 2: closes
+#. the link
+#: admin/onpage/class-onpage.php:103 admin/views/dashboard-widget.php:65
+msgid "%1$sYour homepage cannot be indexed by search engines%2$s. This is very bad for SEO and should be fixed."
+msgstr "%1$sAna sayfanız arama motorları tarafından indekslenemiyor%2$s. Bu SEO için çok kötü bir durum ve mutlaka düzeltmelisiniz."
+
+#: admin/pages/tools.php:39
+msgid "Recalculate SEO scores"
+msgstr "SEO puanlarını baştan hesapla"
+
+#: admin/pages/tools.php:40
+msgid "Recalculate SEO scores for all pieces of content with a focus keyword."
+msgstr "Bir anahtar kelime ile içeriğin SEO skorunu yeniden hesaplayın."
+
+#: admin/taxonomy/class-taxonomy-metabox.php:153
+msgid "Facebook / Opengraph metadata"
+msgstr "Facebook / Opengraph meta verisi"
+
+#. translators: 1: is a link to 'admin_url /
+#. admin.php?page=wpseo_tools&recalculate=1' 2: closing link tag
+#: admin/class-admin-init.php:244
+msgid "We've updated our SEO score algorithm. %1$sClick here to recalculate the SEO scores%2$s for all posts and pages."
+msgstr "SEO puanı algoritmamızı güncelledik. %1$sBuraya tıklayarak%2$s tüm yazılar ve sayfaların SEO puanlarını yeniden hesaplatın."
+
+#: admin/class-admin-init.php:432
+msgid "%s filter/action"
+msgstr "%s filtresi/eylemi"
+
+#. translators: 1: expands to a <span> containing the number of posts
+#. recalculated. 2: expands to a <strong> containing the total number of posts.
+#: admin/class-recalculate-scores.php:38
+msgid "%1$s of %2$s done."
+msgstr "%1$s / %2$s bitti."
+
+#: admin/class-recalculate-scores.php:45
+msgid "Recalculating SEO scores for all pieces of content with a focus keyword."
+msgstr "Odak anahtar kelime ile tüm içeriğin SEO puanı yeniden hesaplanıyor."
+
+#: admin/class-social-admin.php:85
+msgid "Facebook / Open Graph metadata"
+msgstr "Facebook / Open Graph meta verisi"
+
+#: admin/class-social-admin.php:96
+#: admin/taxonomy/class-taxonomy-metabox.php:166
+msgid "Twitter metadata"
+msgstr "Twitter meta verisi"
+
+#: admin/import/class-import-wpseo-hooks.php:28
+msgid "The plugin wpSEO has been detected. Do you want to %simport its settings%s?"
+msgstr "wpSEO eklentisi saptandı. Ayarlarını %siçer aktarmak%s ister misin?"
+
+#: admin/import/class-import-wpseo-hooks.php:37
+msgid "wpSEO has been deactivated"
+msgstr "wpSEO etkisizleştirildi"
+
+#: admin/metabox/class-metabox-add-keyword-tab.php:22
+msgid "Add keyword"
+msgstr "Anahtar kelime ekle"
+
+#: admin/metabox/class-metabox-add-keyword-tab.php:29
+msgid "Multiple focus keywords is a %s feature"
+msgstr "Birden fazla odak anahtar kelime ekleme %s özelliğidir"
+
+#. Translators: %1$s: expands to 'Yoast SEO Premium', %2$s: links to Yoast SEO
+#. Premium plugin page.
+#: admin/metabox/class-metabox-add-keyword-tab.php:34
+msgid "To be able to add and analyze multiple keywords for a post or page you need %1$s. You can buy the plugin, including one year of support, updates and upgrades, on %2$s."
+msgstr "Bir yazı ya da sayfa için, birden çok anahtar kelime ekleyip analiz etmek için %1$s eklentisine ihtiyacınız var. %2$s üzerinden bir yıllık destek ve güncelleme ile eklentiyi satın alabilirsiniz."
+
+#. translators: %s expands to Yoast SEO Premium
+#: admin/views/partial-help-center-video.php:32
+msgid "Get %s &raquo;"
+msgstr "%s edinin &raquo;"
+
+#: admin/metabox/class-metabox.php:50
+#: admin/taxonomy/class-taxonomy-content-fields.php:19
+msgid "Snippet Editor"
+msgstr "Aparat düzenleyici"
+
+#: admin/metabox/class-metabox.php:54
+#: admin/taxonomy/class-taxonomy-content-fields.php:35
+msgid "Content Analysis"
+msgstr "İçerik analizi"
+
+#: admin/metabox/class-metabox.php:55
+#: admin/taxonomy/class-taxonomy-content-fields.php:36
+msgid "This is the content analysis, a collection of content checks that analyze the content of your page. Read %sthis post%s for more info."
+msgstr "Burası içerik analiz merkezi, sayfalarınızın içeriğini analiz eden kontrollerin bir koleksiyonu. Daha fazlası için %sbu gönderiyi%s inceleyin."
+
+#: admin/metabox/class-metabox.php:171
+msgid "SEO score"
+msgstr "SEO puanı"
+
+#: admin/metabox/class-metabox.php:318 admin/metabox/class-metabox.php:331
+#: admin/taxonomy/class-taxonomy-metabox.php:94
+#: admin/taxonomy/class-taxonomy-metabox.php:105
+msgid "Content"
+msgstr "İçerik"
+
+#: inc/class-wpseo-rank.php:101
+msgid "N/A"
+msgstr "Belirsiz"
+
+#: inc/class-wpseo-rank.php:105
+msgid "Good"
+msgstr "İyi"
+
+#: inc/class-wpseo-rank.php:103
+msgid "Bad"
+msgstr "Kötü"
+
+#: inc/options/class-wpseo-option-internallinks.php:68
+msgid "Error 404: Page not found"
+msgstr "Hata 404: Sayfa bulunamadı"
+
+#: inc/options/class-wpseo-option-internallinks.php:69
+msgid "Archives for"
+msgstr "Arşiv"
+
+#: inc/options/class-wpseo-option-internallinks.php:70
+msgid "Home"
+msgstr "Ana sayfa"
+
+#: inc/options/class-wpseo-option-internallinks.php:71
+msgid "You searched for"
+msgstr "Şunu aradınız"
+
+#: inc/options/class-wpseo-option-internallinks.php:165
+msgid "Please select a valid taxonomy for post type \"%s\""
+msgstr "\"%s\" yazı tipi için geçerli bir etiket seçin"
+
+#: inc/options/class-wpseo-option-internallinks.php:204
+msgid "Please select a valid post type for taxonomy \"%s\""
+msgstr "\"%s\" kategorisi için geçerli bir yazı tipi seçin."
+
+#. translators: %1$s expands to the option name and %2$sexpands to Yoast SEO
+#: inc/options/class-wpseo-option-ms.php:153
+msgid "%1$s is not a valid choice for who should be allowed access to the %2$s settings. Value reset to the default."
+msgstr "%2$s %1$s ayarlarında izin verilen seçeneklerden biri değil. Değer varsayılana döndürüldü."
+
+#: inc/options/class-wpseo-option-ms.php:173
+#: inc/options/class-wpseo-option-ms.php:183
+msgid "The default blog setting must be the numeric blog id of the blog you want to use as default."
+msgstr "Varsayılan blog ayarı kullanmak istediğiniz varsayılan blogun sayısal tanımlayıcı değeri olmalıdır."
+
+#: inc/options/class-wpseo-option-ms.php:173
+msgid "This must be an existing blog. Blog %s does not exist or has been marked as deleted."
+msgstr "Var olan bir blog olmalıdır. %s bulunamadı ya da silinmek üzere işaretlenmiş."
+
+#: inc/options/class-wpseo-option-ms.php:183
+msgid "No numeric value was received."
+msgstr "Sayısal bir değer gönderilmedi."
+
+#: inc/options/class-wpseo-option-rss.php:47
+msgid "The post %s appeared first on %s."
+msgstr "%s yazısı ilk önce %s üzerinde ortaya çıktı."
+
+#: inc/options/class-wpseo-option-social.php:102
+msgid "Summary"
+msgstr "Özet"
+
+#: inc/options/class-wpseo-option-social.php:103
+msgid "Summary with large image"
+msgstr "Büyük görselli özet"
+
+#: inc/options/class-wpseo-option-social.php:240
+msgid "%s does not seem to be a valid Twitter user-id. Please correct."
+msgstr "%s geçerli bir Twitter kullanıcı tanımlayıcısı değil. Lütfen düzeltin."
+
+#: inc/options/class-wpseo-option-titles.php:177
+msgid "%s, Author at %s"
+msgstr "%s, Yazar: %s"
+
+#: inc/options/class-wpseo-option-titles.php:178
+msgid "You searched for %s"
+msgstr "%s için arama yaptınız"
+
+#: inc/options/class-wpseo-option-titles.php:211
+msgid "%s Archive"
+msgstr "%s Arşiv"
+
+#: inc/options/class-wpseo-option-xml.php:166
+msgid "\"Max entries per sitemap page\" should be a positive number, which %s is not. Please correct."
+msgstr "\"Site haritası sayfasında gösterilecek en fazla öge sayısı\" pozitif bir sayı olmalı, ki %s pozitif bir sayı değil. Lütfen düzeltin."
+
+#: inc/options/class-wpseo-option.php:300
+msgid "%s does not seem to be a valid %s verification string. Please correct."
+msgstr "%s geçerli bir %s doğrulama metnine sahip değil. Lütfen düzeltin."
+
+#: inc/options/class-wpseo-option.php:333
+msgid "%s does not seem to be a valid url. Please correct."
+msgstr "% geçerli bir web adresi değil. Lütfen düzeltin."
+
+#: inc/wpseo-non-ajax-functions.php:264
+msgid "Keyword Research"
+msgstr "Kelime araştırma"
+
+#: inc/wpseo-non-ajax-functions.php:270
+msgid "AdWords External"
+msgstr "AdWords harici"
+
+#: inc/wpseo-non-ajax-functions.php:277
+msgid "Google Insights"
+msgstr "Google trendleri"
+
+#: inc/wpseo-non-ajax-functions.php:284
+msgid "SEO Book"
+msgstr "SEO kitabı"
+
+#: inc/wpseo-non-ajax-functions.php:296
+msgid "Analyze this page"
+msgstr "Bu sayfayı analiz et"
+
+#: inc/wpseo-non-ajax-functions.php:302
+msgid "Check Inlinks (OSE)"
+msgstr "(OSE) Gelen bağlantıları kontrol et"
+
+#: inc/wpseo-non-ajax-functions.php:309
+msgid "Check Keyword Density"
+msgstr "Kelime yoğunluğunu kontrol et"
+
+#: inc/wpseo-non-ajax-functions.php:316
+msgid "Check Google Cache"
+msgstr "Google önbelleğini kontrol et"
+
+#: inc/wpseo-non-ajax-functions.php:323
+msgid "Check Headers"
+msgstr "Başlıkları kontrol et"
+
+#: inc/wpseo-non-ajax-functions.php:330
+msgid "Check Rich Snippets"
+msgstr "Zengin parçacıkları konrol et"
+
+#: inc/wpseo-non-ajax-functions.php:337
+msgid "Facebook Debugger"
+msgstr "Facebook hata ayıklama"
+
+#: inc/wpseo-non-ajax-functions.php:344
+msgid "Pinterest Rich Pins Validator"
+msgstr "Pinterest zengin Pin doğrulayıcı"
+
+#: inc/wpseo-non-ajax-functions.php:351
+msgid "HTML Validator"
+msgstr "HTML doğrulayıcı"
+
+#: inc/wpseo-non-ajax-functions.php:358
+msgid "CSS Validator"
+msgstr "CSS doğrulayıcı"
+
+#: inc/wpseo-non-ajax-functions.php:365
+msgid "Google Page Speed Test"
+msgstr "Google sayfa hız testi"
+
+#: inc/wpseo-non-ajax-functions.php:372
+msgid "Modern IE Site Scan"
+msgstr "Modern IE site taraması"
+
+#: inc/wpseo-non-ajax-functions.php:379
+msgid "Mobile-Friendly Test"
+msgstr "Mobil uyumluluk testi"
+
+#: inc/wpseo-non-ajax-functions.php:398
+msgid "SEO Settings"
+msgstr "SEO ayarları"
+
+#: admin/import/class-import-aioseo-hooks.php:28
+msgid "The plugin All-In-One-SEO has been detected. Do you want to %simport its settings%s?"
+msgstr "All-In-One-SEO eklentisi tespit edildi. %sAyarlarını içeri aktarmak%s ister misiniz?"
+
+#: admin/import/class-import-aioseo-hooks.php:37
+msgid "All-In-One-SEO has been deactivated"
+msgstr "All-In-One-SEO etkisizleştirildi"
+
+#: vendor/yoast/i18n-module/i18n-module.php:170
+msgid "As you can see, there is a translation of this plugin in %1$s. This translation is currently %3$d%% complete. We need your help to make it complete and to fix any errors. Please register at %4$s to help complete the translation to %1$s!"
+msgstr "Göreceğiniz üzere bu eklentinin %1$s dilinde çevirisi mevcut. Bu çeviri %3$d%% tamamlanmış durumda. Tamamlanması ve hataların giderilmesi için yardımınıza ihtiyacımız var. Sizden %1$s çeviriyi tamamlayabilmemiz için %4$s adresinden kayıt olarak yardımcı olmanızı rica ediyoruz!"
+
+#: vendor/yoast/i18n-module/i18n-module.php:172
+msgid "You're using WordPress in %1$s. While %2$s has been translated to %1$s for %3$d%%, it's not been shipped with the plugin yet. You can help! Register at %4$s to help complete the translation to %1$s!"
+msgstr "WordPress %1$s kullanıyorsunuz. %1$s sürümü için %2$s halen çevriliyor olsa da (%%%3$d çevrilmiş) eklenti ile beraber henüz dağıtılmıyor. Siz de yardım edebilirsiniz! %4$s adresinden kayıt olup %1$s çevirisine yardım edin!"
+
+#: vendor/yoast/i18n-module/i18n-module.php:174
+msgid "You're using WordPress in a language we don't support yet. We'd love for %2$s to be translated in that language too, but unfortunately, it isn't right now. You can change that! Register at %4$s to help translate it!"
+msgstr "Wordpress'i Yoast için Henüz desteklenmeyen bir dil ile kullanıyorsunuz.  (%2$s) dilinde yayın yapmayı çok istiyoruz. Eğer bize yardımcı olmak isterseniz çeviri ekibimize katılabilir ve bizlere yardımcı olabilirsiniz. (%4$s)"
+
+#: vendor/yoast/i18n-module/i18n-module.php:194
+msgid "Translation of %s"
+msgstr "%s çevirisi"
+
+#: vendor/yoast/i18n-module/i18n-module.php:199
+msgid "Register now &raquo;"
+msgstr "Hemen kaydol &raquo;"
+
+#: vendor/yoast/license-manager/class-license-manager.php:138
+msgid "<b>Warning!</b> You're blocking external requests which means you won't be able to get %s updates. Please add %s to %s."
+msgstr "<b>Uyarı!</b> Dışardan gelen istekleri engelliyorsunuz, yani %s güncellemelerini alamayacaksınız. Lütfen %s ögesini %s bölümüne ekleyin."
+
+#: vendor/yoast/license-manager/class-license-manager.php:179
+msgid "Your %s license has been activated. "
+msgstr "%s lisansınız etkinleştirilmiştir."
+
+#: vendor/yoast/license-manager/class-license-manager.php:183
+msgid "You have an unlimited license. "
+msgstr "Sınırsız lisansınız bulunmaktadır."
+
+#: vendor/yoast/license-manager/class-license-manager.php:185
+msgid "You have used %d/%d activations. "
+msgstr "%d/%d tane etkinleştirme kullandınız."
+
+#: vendor/yoast/license-manager/class-license-manager.php:190
+msgid "<a href=\"%s\">Did you know you can upgrade your license?</a>"
+msgstr "<a href=\"%s\">Lisansınızı yükseltebileceğinizi biliyor muydunuz?</a>"
+
+#: vendor/yoast/license-manager/class-license-manager.php:194
+msgid "<a href=\"%s\">Your license is expiring in %d days, would you like to extend it?</a>"
+msgstr "<a href=\"%s\">Lisansınızı %d gün içinde sonlanacak, uzatmak ister misiniz?</a>"
+
+#: vendor/yoast/license-manager/class-license-manager.php:203
+msgid "You've reached your activation limit. You must <a href=\"%s\">upgrade your license</a> to use it on this site."
+msgstr "Etkinleştirme sınırına ulaştınız. Kullanmak için <a href=\"%s\">lisansınızı yükseltmelisiniz</a>."
+
+#: vendor/yoast/license-manager/class-license-manager.php:206
+msgid "Your license has expired. You must <a href=\"%s\">extend your license</a> in order to use it again."
+msgstr "Lisansınızın süresi dolmuş. Tekrar kullanabilmek için <a href=\"%s\">lisansınızın süresini uzatmanız</a> gerekiyor."
+
+#: vendor/yoast/license-manager/class-license-manager.php:209
+msgid "Failed to activate your license, your license key seems to be invalid."
+msgstr "Lisansınız etkinleştirilemedi, lisans anahtarı geçersiz."
+
+#: vendor/yoast/license-manager/class-license-manager.php:233
+msgid "Your %s license has been deactivated."
+msgstr "%s lisansınız etkisizleştirildi."
+
+#: vendor/yoast/license-manager/class-license-manager.php:235
+msgid "Failed to deactivate your %s license."
+msgstr "%s lisansı etkisizleştirilemedi."
+
+#: vendor/yoast/license-manager/class-license-manager.php:271
+msgid "Request error: \"%s\" (%scommon license notices%s)"
+msgstr "İstek hatası: \"%s\" (%sgenel lisans uyarıları%s)"
+
+#: vendor/yoast/license-manager/class-license-manager.php:430
+msgid "%s: License Settings"
+msgstr "%s: Lisans ayarları"
+
+#: vendor/yoast/license-manager/class-plugin-license-manager.php:73
+msgid "%s is network activated, you can manage your license in the <a href=\"%s\">network admin license page</a>."
+msgstr "%s için ağ etkinleştirilmiş, <a href=\"%s\">ağ yönetimi lisans sayfası</a>ndan lisanslarınızı yönetebilirsiniz."
+
+#: vendor/yoast/license-manager/class-plugin-license-manager.php:75
+msgid "%s is network activated, please contact your site administrator to manage the license."
+msgstr "%s için ağ etkinleştirilmiş, lütfen lisans yönetimi için site yöneticiniz ile iletişim kurun."
+
+#: vendor/yoast/license-manager/class-theme-license-manager.php:34
+#: vendor/yoast/license-manager/samples/sample-plugin.php:53
+msgid "%s License"
+msgstr "%s Lisansı"
+
+#: vendor/yoast/license-manager/class-theme-license-manager.php:34
+msgid "Theme License"
+msgstr "Tema lisansı"
+
+#: vendor/yoast/license-manager/class-theme-update-manager.php:96
+msgid "Updating this theme will lose any customizations you have made. 'Cancel' to stop, 'OK' to update."
+msgstr "Bu temayı güncellemek yapılmış olan özel değişikliklerin kaybolması demektir. Durmak için 'İptal', güncellemek için 'Tamam'"
+
+#: vendor/yoast/license-manager/class-theme-update-manager.php:101
+msgid "<strong>%s version %s</strong> is available. <a href=\"%s\" class=\"thickbox\" title=\"%s\">Check out what's new</a> or <a href=\"%s\" %s>update now</a>."
+msgstr "<strong>%s sürüm %s</strong> mevcuttur. <a href=\"%s\" class=\"thickbox\" title=\"%s\">Yeni ne var, göz atın</a> veya <a href=\"%s\"%s>şimdi güncelleyin</a>."
+
+#: vendor/yoast/license-manager/class-update-manager.php:83
+msgid "%s failed to check for updates because of the following error: <em>%s</em>"
+msgstr "%s aşağıdaki hatadan dolayı güncelleme kontrol edemiyor: <em>%s</em>"
+
+#: vendor/yoast/license-manager/class-update-manager.php:153
+msgid "This site has not been activated properly on yoast.com and thus cannot check for future updates. Please activate your site with a valid license key."
+msgstr "Bu site yoast.com üzerinde düzgün bir şekilde etkinleştirilmemiş, bu yüzden gelecek güncellemelerden habersiz. Lütfen sitenizi geçerli bir lisans anahtarı ile etkinleştirin."
+
+#: vendor/yoast/license-manager/views/form.php:15
+msgid "We couldn't create a connection to our API to verify your license key(s). Please ask your hosting company to allow outgoing connections from your server to %s."
+msgstr "Lisans anahtarlarınızı doğrulamak için API ile bir bağlantı oluşturamadık. Lütfen sunucunuzdan %s sunucusuna doğru iletişimin sağlanıp sağlanamadığını servis sağlayıcınıza danışın."
+
+#: vendor/yoast/license-manager/views/form.php:19
+msgid "Your server has an outdated version of the PHP module cURL (Version: %s). Please ask your hosting company to update this to a recent version of cURL. You can read more about that in our %sKnowledge base%s."
+msgstr "Sunucunuzda PHP modüllerinden cURL modülünün eski bir sürümü yüklü (sürüm %s). Lütfen servis sağlayacınızdan cURL modülünü güncelleştirmelerini isteyin. Bu konuyla ilgili daha fazla bilgiye %sBilgi merkezi%s üzerinden ulaşabilirsiniz."
+
+#: vendor/yoast/license-manager/views/form.php:31
+msgid "License status"
+msgstr "Lisans durumu"
+
+#: vendor/yoast/license-manager/views/form.php:41
+msgid "Toggle license status"
+msgstr "Lisans durumunu değiştir"
+
+#: vendor/yoast/license-manager/views/form.php:45
+msgid "Deactivate License"
+msgstr "Lisansı etkisizleştir"
+
+#: vendor/yoast/license-manager/views/form.php:46
+msgid "(deactivate your license so you can activate it on another WordPress site)"
+msgstr "(Bir başka WordPress sitenizde kullanabilmek için lisansınızı etkisizleştirin)"
+
+#: vendor/yoast/license-manager/views/form.php:50
+msgid "Activate License"
+msgstr "Lisansı etkinleştir"
+
+#: vendor/yoast/license-manager/views/form.php:52
+msgid "Please enter a license key in the field below first."
+msgstr "Önce aşağıdaki alana lisans anahtarını girin."
+
+#: vendor/yoast/license-manager/views/form.php:60
+msgid "License Key"
+msgstr "Lisans anahtarı"
+
+#: vendor/yoast/license-manager/views/form.php:62
+msgid "Paste your %s license key here.."
+msgstr "%s lisans anahtarınızı buraya yapıştırın.."
+
+#: vendor/yoast/license-manager/views/form.php:64
+msgid "You defined your license key using the %s PHP constant."
+msgstr "Lisans anahtarınızı %s PHP sabiti ile tanımlamışsınız."
+
+#: vendor/yoast/license-manager/views/form.php:81
+msgid "Your %s license will expire on %s."
+msgstr "%s lisansınız %s tarihinde sonlanacak."
+
+#: vendor/yoast/license-manager/views/form.php:84
+msgid "%sRenew your license now%s."
+msgstr "%sLisansınızı yenileyin%s."
+
+#: wp-seo-main.php:397
+msgid "The Standard PHP Library (SPL) extension seem to be unavailable. Please ask your web host to enable it."
+msgstr "Standart PHP kütüphanesi (SPL) eklentisi kurulu gözükmüyor. Lütfen servis sağlayıcınızdan etkinleştirmelerini isteyin."
+
+#. translators: %1$s expands to Yoast SEO, %2$s / %3$s: links to the
+#. installation manual in the Readme for the Yoast SEO code repository on
+#. GitHub
+#: wp-seo-main.php:419
+msgid "The %1$s plugin installation is incomplete. Please refer to %2$sinstallation instructions%3$s."
+msgstr "%1$s eklentisinin kurulumu tamamlandı. Lütfen %2$syükleme kılavuzuna%3$s göz atın."
+
+#: wp-seo-main.php:443
+msgid "The filter extension seem to be unavailable. Please ask your web host to enable it."
+msgstr "Filtre eklentisi kullanılabilir değil. Servis sağlayıcınızdan etkinleştirmesini isteyin."
+
+#: wp-seo-main.php:453
+msgid "Activation failed:"
+msgstr "Etkinleştirme başarısız:"
+
+#. Plugin Name of the plugin/theme
+msgid "Yoast SEO"
+msgstr "Yoast SEO"
+
+#. Plugin URI of the plugin/theme
+msgid "https://yoast.com/wordpress/plugins/seo/#utm_source=wpadmin&utm_medium=plugin&utm_campaign=wpseoplugin"
+msgstr "https://yoast.com/wordpress/plugins/seo/#utm_source=wpadmin&utm_medium=plugin&utm_campaign=wpseoplugin"
+
+#. Description of the plugin/theme
+msgid "The first true all-in-one SEO solution for WordPress, including on-page content analysis, XML sitemaps and much more."
+msgstr "WordPress için ilk gerçek hepsi bir arada AMO çözümü, sayfa üzerine içerik analizi, XML site haritaları ve çok daha fazlası."
+
+#. Author of the plugin/theme
+msgid "Team Yoast"
+msgstr "Yoast ekibi"
+
+#. Author URI of the plugin/theme
+msgid "https://yoast.com/"
+msgstr "https://yoast.com/"
+
+#: admin/views/tabs/social/accounts.php:13
+msgid "To inform Google about your social profiles, we need to know their URLs."
+msgstr "Sosyal profilleriniz konusunda Google tarafını bilgilendirebilmek için adreslerini bilmemiz gerekiyor."
+
+#: admin/views/tabs/social/accounts.php:14
+msgid "For each, pick the main account associated with this site and please enter them below:"
+msgstr "Her biri için bir tane ana hesap seçin aşağıdaki alana yazın:"
+
+#: admin/views/tabs/social/accounts.php:17
+msgid "Facebook Page URL"
+msgstr "Facebook sayfa adresi"
+
+#: admin/views/tabs/social/accounts.php:18
+msgid "Twitter Username"
+msgstr "Twitter kullanıcı adı"
+
+#: admin/views/tabs/social/accounts.php:19
+msgid "Instagram URL"
+msgstr "Instagram adresi"
+
+#: admin/views/tabs/social/accounts.php:20
+msgid "LinkedIn URL"
+msgstr "LinkedIn adresi"
+
+#: admin/views/tabs/social/accounts.php:21
+msgid "MySpace URL"
+msgstr "MySpace adresi"
+
+#: admin/views/tabs/social/accounts.php:22
+msgid "Pinterest URL"
+msgstr "Pinterest adresi"
+
+#: admin/views/tabs/social/accounts.php:23
+msgid "YouTube URL"
+msgstr "YouTube adresi"
+
+#: admin/views/tabs/social/accounts.php:24
+msgid "Google+ URL"
+msgstr "Google+ adresi"
+
+#. translators: %s expands to <code>&lt;head&gt;</code>
+#: admin/views/tabs/social/facebook.php:18
+msgid "Add Open Graph meta data to your site's %s section, Facebook and other social networks use this data when your pages are shared."
+msgstr "Sitenizin %s bölümüne Open Graph meta verisi ekleyin. Facebook ve diğer sosyal ağlar sayfalarınız paylaşıldığında bu bilgiyi kullanıyorlar."
+
+#: admin/views/tabs/social/facebook.php:12
+msgid "Add Open Graph meta data"
+msgstr "Open Graph Meta verisi ekle"
+
+#: admin/views/tabs/social/facebook.php:24
+msgid "Frontpage settings"
+msgstr "Ana sayfa ayarları"
+
+#: admin/views/tabs/social/facebook.php:25
+msgid "These are the title, description and image used in the Open Graph meta tags on the front page of your site."
+msgstr "Bunlar sitenizin ana sayfasında Open Graph için kullanılan başlık, açıklama ve görsel bilgileridir."
+
+#: admin/views/tabs/social/facebook.php:27
+#: admin/views/tabs/social/facebook.php:39
+msgid "Image URL"
+msgstr "Görsel adresi"
+
+#: admin/views/tabs/social/facebook.php:29 admin/views/tool-bulk-editor.php:35
+msgid "Description"
+msgstr "Açıklama"
+
+#: admin/views/tabs/social/facebook.php:34
+msgid "Copy home meta description"
+msgstr "Ana sayfa meta açıklamasını kopyala"
+
+#: admin/views/tabs/social/facebook.php:38
+msgid "Default settings"
+msgstr "Varsayılan ayarlar"
+
+#: admin/views/tabs/social/facebook.php:41
+msgid "This image is used if the post/page being shared does not contain any images."
+msgstr "Paylaşılan yazı/sayfa herhangi bir görüntü içermiyorsa bu görsel kullanılır."
+
+#. translators: %s expands to <code>&lt;head&gt;</code>
+#: admin/views/tabs/social/twitterbox.php:15
+msgid "Add Twitter card meta data to your site's %s section."
+msgstr "Sitenizin %s bölümüne Twitter kart meta verisi ekleyin."
+
+#: admin/views/tabs/social/twitterbox.php:12
+msgid "Add Twitter card meta data"
+msgstr "Twitter kartı meta verisi ekleme"
+
+#: admin/views/tabs/social/twitterbox.php:20
+msgid "The default card type to use"
+msgstr "Kullanılacak varsayılan kart tipi"
+
+#: admin/views/tabs/social/pinterest.php:12
+msgid "Pinterest uses Open Graph metadata just like Facebook, so be sure to keep the Open Graph checkbox on the Facebook tab checked if you want to optimize your site for Pinterest."
+msgstr "Pinterest aynı Facebook gibi Open Graph verileri kullanır, bu yüzden sitenizin Pinterest altyapısına hazır olabilmesi için Facebook sekmesindeki Open Graph kutusunun işaretli olduğundan emin olun."
+
+#. translators: %1$s / %2$s expands to a link to pinterest.com's help page.
+#: admin/views/tabs/social/pinterest.php:16
+msgid "To %1$sconfirm your site with Pinterest%2$s, add the meta tag here:"
+msgstr "%1$sPinterest ile sitenizi doğrulamak için%2$s meta etiketini buraya ekleyin:"
+
+#: admin/views/tabs/social/google.php:12
+msgid "If you have a Google+ page for your business, add that URL here and link it on your Google+ page's about page."
+msgstr "Eğer işiniz için bir Google+ sayfanız varsa, adresini buraya girin ve Google+ sayfasındaki hakkında sayfasına bağlantı kurun. "
+
+#: admin/views/tabs/social/google.php:14
+msgid "Google Publisher Page"
+msgstr "Google yayıncı sayfası"
+
+#: admin/pages/tools.php:21
+msgid "Bulk editor"
+msgstr "Toplu düzenleyici"
+
+#: admin/pages/tools.php:22
+msgid "This tool allows you to quickly change titles and descriptions of your posts and pages without having to go into the editor for each page."
+msgstr "Bu araç her bir yazının ya da sayfanın detayına girmeden kolayca başlık ve açıklamaları değiştirebilmenize olanak sağlar."
+
+#: admin/pages/tools.php:25
+msgid "Import and Export"
+msgstr "İçeri Al / Dışarı Aktar"
+
+#: admin/pages/tools.php:26
+msgid "Import settings from other SEO plugins and export your settings for re-use on (another) blog."
+msgstr "Diğer AMO eklentilerinden ayarları içeri aktarın ve daha sonra kullanmak üzere kendi ayarlarınızı dışarı aktarın."
+
+#: admin/pages/tools.php:31
+msgid "File editor"
+msgstr "Dosya düzenleyicisi"
+
+#: admin/pages/tools.php:32
+msgid "This tool allows you to quickly change important files for your SEO, like your robots.txt and, if you have one, your .htaccess file."
+msgstr "Bu araç AMO için önemli olan dosyalarınızı, örneğin robots.txt ve varsa .htaccess gibi, hızlıca değiştirebilmenize olanak sağlar."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/tools.php:48
+msgid "%1$s comes with some very powerful built-in tools:"
+msgstr "%1$s çok güçlü dahili araçlarla beraber gelir:"
+
+#: admin/pages/tools.php:71
+msgid "&laquo; Back to Tools page"
+msgstr "&laquo; Araçlar sayfasına dön"
+
+#: admin/pages/xml-sitemaps.php:31
+msgid "User sitemap"
+msgstr "Kullanıcı site haritası"
+
+#: admin/pages/xml-sitemaps.php:33
+msgid "Excluded Posts"
+msgstr "Hariç tutulan yazılar"
+
+#: admin/views/tabs/sitemaps/general.php:14
+msgid "You can find your XML Sitemap here: %sXML Sitemap%s"
+msgstr "XML site haritanızı burada bulabilirsiniz: %sXML site haritası%s"
+
+#: admin/views/tabs/sitemaps/general.php:17
+msgid "You do <strong>not</strong> need to generate the XML sitemap, nor will it take up time to generate after publishing a post."
+msgstr "XML site haritanızı oluşturmanız <strong>gerekmiyor</strong>, ya da yazı yayınladıktan sonra zaman almayacak."
+
+#: admin/views/tabs/sitemaps/general.php:21
+msgid "Save your settings to activate XML Sitemaps."
+msgstr "XML site haritalarını etkinleştirmek için ayarlarınızı kaydedin."
+
+#: admin/views/tabs/sitemaps/general.php:26
+msgid "Entries per page"
+msgstr "Sayfa başına yazı sayısı"
+
+#: admin/views/tabs/sitemaps/general.php:27
+msgid "Please enter the maximum number of entries per sitemap page (defaults to %s, you might want to lower this to prevent memory issues on some installs):"
+msgstr "Her bir site haritası sayfasında gözükecek elemanların sayısını belirleyin (Varsayılan %s, bazı kurulumlarda bellek kullanımını azaltmak için bu değeri düşük tutmak gerekebilir):"
+
+#: admin/views/tabs/sitemaps/general.php:31
+msgid "Max entries per sitemap"
+msgstr "Site haritası başına en fazla girdi"
+
+#. Translators: %1$s: expands to '<code>1,2,99,100</code>'
+#: admin/views/tabs/sitemaps/exclude-post.php:13
+msgid "You can exclude posts from the sitemap by entering a comma separated string with the Post ID's. The format will become something like: %1$s."
+msgstr "Site haritasının dışında tutmak için yazıların numaralarını virgül ile ayırarak girebilirsiniz. Biçim yaklaşık şu şekilde olacaktır: %1$s."
+
+#: admin/views/tabs/sitemaps/exclude-post.php:14
+msgid "Posts to exclude"
+msgstr "Hariç tutulacak yazılar"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/about.php:32
+msgid "Thank you for updating %1$s!"
+msgstr "%1$s güncellemesi için teşekkürler!"
+
+#. translators: %s: '3.2' version number
+#: admin/views/about.php:47
+msgid "What’s new in %s"
+msgstr "%s sürümünde neler yeni"
+
+#: admin/views/about.php:52
+msgid "Credits"
+msgstr "Katkıda bulunanlar"
+
+#: admin/views/about.php:143
+msgid "Go to the General settings page →"
+msgstr "Genel ayarlar sayfasına git →"
+
+#. translators: %1$s and %2$s expands to anchor tags, %3$s expands to Yoast SEO
+#: admin/views/about.php:187
+msgid "While most of the development team is at %1$sYoast%2$s in the Netherlands, %3$s is created by a worldwide team."
+msgstr "Geliştirici ekibin çoğunluğu Hollanda&#8217;da %1$sYoast%2$s merkezinde olsa da %3$s dünya genelinde bir ekip tarafından geliştirilmiştir."
+
+#: admin/views/about.php:189
+msgid "Want to help us develop? Read our %1$scontribution guidelines%2$s!"
+msgstr "Geliştirmeye yardım etmek ister misiniz? %1$sKatılım rehberi%2$sne göz atın!"
+
+#: admin/views/about.php:193
+msgid "Project Leaders"
+msgstr "Proje liderleri"
+
+#: admin/views/about.php:199
+msgid "Project Lead"
+msgstr "Proje lideri"
+
+#: admin/views/about.php:214
+msgid "QA & Translations Manager"
+msgstr "Soru, Cevap ve çeviri yöneticisi"
+
+#: admin/views/about.php:222
+msgid "Contributing Developers"
+msgstr "Katkıda bulunan geliştiriciler"
+
+#: admin/views/about.php:228 admin/views/about.php:233
+#: admin/views/about.php:238 admin/views/about.php:243
+#: admin/views/about.php:248 admin/views/about.php:253
+#: admin/views/about.php:258
+msgid "Developer"
+msgstr "Geliştirici"
+
+#: admin/views/about.php:276
+msgid "Contributors to this release"
+msgstr "Bu dağıtıma katkıda bulunanlar"
+
+#: admin/views/dashboard-widget.php:16
+msgid "Below are your published posts&#8217; SEO scores. Now is as good a time as any to start improving some of your posts!"
+msgstr "Aşağıda yayınlanan yazılarınızın SEO puanları var. Yazılarınızın puanlarını iyileştirmek için iyi bir zaman!"
+
+#: admin/views/tabs/advanced/breadcrumbs.php:21
+msgid "Enable Breadcrumbs"
+msgstr "Dolaşım menüsünü etkinleştir"
+
+#: admin/views/tabs/advanced/breadcrumbs.php:25
+msgid "Separator between breadcrumbs"
+msgstr "Dolaşım bağlantıları arasındaki ayraç"
+
+#: admin/views/tabs/advanced/breadcrumbs.php:26
+msgid "Anchor text for the Homepage"
+msgstr "Ana sayfa için bağlantı metni"
+
+#: admin/views/tabs/advanced/breadcrumbs.php:27
+msgid "Prefix for the breadcrumb path"
+msgstr "Dolaşım yolları için ön ek"
+
+#: admin/views/tabs/advanced/breadcrumbs.php:28
+msgid "Prefix for Archive breadcrumbs"
+msgstr "Arşiv dolaşım menüleri için ön ek"
+
+#: admin/views/tabs/advanced/breadcrumbs.php:29
+msgid "Prefix for Search Page breadcrumbs"
+msgstr "Arama dolaşım menüleri için ön ek"
+
+#: admin/views/tabs/advanced/breadcrumbs.php:30
+msgid "Breadcrumb for 404 Page"
+msgstr "404 sayfası için dolaşım menüsü"
+
+#: admin/views/tabs/advanced/breadcrumbs.php:46
+msgid "Taxonomy to show in breadcrumbs for post types"
+msgstr "Yazı tiplerinde görüntülenecek dolaşım kategorileri"
+
+#: admin/views/tabs/advanced/breadcrumbs.php:65
+msgid "Post type archive to show in breadcrumbs for taxonomies"
+msgstr "Kategori dolaşımlarında görüntülenecek yazı tip arşivi"
+
+#: admin/views/tabs/advanced/breadcrumbs.php:69
+msgid "Blog"
+msgstr "Blog"
+
+#: admin/views/tabs/advanced/breadcrumbs.php:89
+msgid "How to insert breadcrumbs in your theme"
+msgstr "Temanıza nasıl dolaşım menüsü eklersiniz"
+
+#. translators: %1$s / %2$s: links to the breadcrumbs implementation page on
+#. the Yoast knowledgebase
+#: admin/views/tabs/advanced/breadcrumbs.php:93
+msgid "Usage of this breadcrumbs feature is explained in %1$sour knowledge-base article on breadcrumbs implementation%2$s."
+msgstr "Bu dolaşım özelliğinin kullanımı ile ilegili %1$sdolaşım entegrasyonu ile ilgili bilgi bankası makalemize%2$s göz atabilirsiniz."
+
+#: admin/views/tabs/advanced/permalinks.php:20
+msgid "Change URLs"
+msgstr "Adresleri değiştir"
+
+#: admin/views/tabs/advanced/permalinks.php:33
+msgid "Attachments to posts are stored in the database as posts, this means they're accessible under their own URL's if you do not redirect them, enabling this will redirect them to the post they were attached to."
+msgstr "Dosya ekleri veritabanında yazı gibi saklanırlar, bu da demektir ki kendilerine ait adresleri var. Eğer yönlendirme yapmazsanız bu seçenek bağlı bulundukları yazılara yönlenmelerini sağlayacaktır."
+
+#: admin/views/tabs/advanced/permalinks.php:32
+msgid "Redirect attachment URL's to parent post URL."
+msgstr "Ekli dosya adresleri için ebeveyn yazının adresine yönlendirme yap."
+
+#: admin/views/tabs/advanced/permalinks.php:35
+msgid "Clean up permalinks"
+msgstr "Kalıcı bağlantıları temizle"
+
+#: admin/views/tabs/advanced/permalinks.php:37
+msgid "This helps you to create cleaner URLs by automatically removing the stopwords from them."
+msgstr "Engelleyici kelimeleri hariç tutarak otomatik olarak daha temiz URL oluşturmanıza yardım eder."
+
+#: admin/views/tabs/advanced/permalinks.php:36
+msgid "Remove stop words from slugs."
+msgstr "Engelleyici kelimeleri yazı kısa isminden temizle."
+
+#: admin/views/tabs/advanced/permalinks.php:41
+msgid "This prevents threaded replies from working when the user has JavaScript disabled, but on a large site can mean a <em>huge</em> improvement in crawl efficiency for search engines when you have a lot of comments."
+msgstr "Kullanıcıların JavaScript özelliği etkin değilken, cevaplı yorum özelliğinin çalışmamasına sebep olur, diğer taraftan büyük bir sitede arama motorlarının tarama etkinliğinde <em>hatırı sayılır</em> bir performans artısı vardır."
+
+#. translators: %1$s expands to <code>.html</code>, %2$s expands to
+#. <code>/</code>
+#: admin/views/tabs/advanced/permalinks.php:48
+msgid "If you choose a permalink for your posts with %1$s, or anything else but a %2$s at the end, this will force WordPress to add a trailing slash to non-post pages nonetheless."
+msgstr "Eğer yazılarınız için %1$s kalıcı bağlantıları seçmek isterseniz ya da sonunda %2$s harici bir şey kullanmak isterseniz WordPress otomatik olarak sonuna bir / ekleyecektir."
+
+#: admin/views/tabs/advanced/permalinks.php:45
+msgid "Enforce a trailing slash on all category and tag URL's"
+msgstr "Tüm kategori ve etiket adreslerinde sonda slaş kullan"
+
+#: admin/views/tabs/advanced/permalinks.php:52
+msgid "People make mistakes in their links towards you sometimes, or unwanted parameters are added to the end of your URLs, this allows you to redirect them all away. Please note that while this is a feature that is actively maintained, it is known to break several plugins, and should for that reason be the first feature you disable when you encounter issues after installing this plugin."
+msgstr "Bazen insanlar hata yaparlar ve size bağlantı verirler, ya da bazen adreslerinizin sonuna istenmeyen ekler gelir. Bu ayar tüm bunları engeller. Şunu unutmayın ki bu özelllik aktifken bir çok eklenti düzgün çalışmayabilir. Bu eklentiyi yükledikten sonra sorunlarla karşılaşırsanız bu özelliği kapatın."
+
+#: admin/views/tabs/advanced/permalinks.php:51
+msgid "Redirect ugly URL's to clean permalinks. (Not recommended in many cases!)"
+msgstr "Çirkin adresleri temiz kalıcı bağlantılara çevir. (Bir çok durumda tavsiye edilmez!)"
+
+#: admin/views/tabs/advanced/permalinks.php:56
+msgid "Google Site Search URL's look weird, and ugly, but if you're using Google Site Search, you probably do not want them cleaned out."
+msgstr "Google Site Arama adresleri garip ve çirkin gözükürler fakat eğer Google Site arama kullanıyorsanız büyük ihtimalle temizlenmelerini istemezsiniz."
+
+#: admin/views/tabs/advanced/permalinks.php:55
+msgid "Prevent cleaning out Google Site Search URL's."
+msgstr "Google Site arama adreslerini temizlemeyi engelle."
+
+#. translators: %s expands to <code>?utm_</code>
+#: admin/views/tabs/advanced/permalinks.php:60
+msgid "If you use Google Analytics campaign parameters starting with %s, check this box. However, you're advised not to use these. Instead, use the version with a hash."
+msgstr "Eğer %s ile başlayan Google Analytics kampanya parametreleri kullanıyorsanız bu kutuyu işaretleyin. Yine de bu şekilde kullanımı tavsiye etmeyiz. Bunun yerine başında diyez olan sürüm kullanın."
+
+#: admin/views/tabs/advanced/permalinks.php:58
+msgid "Prevent cleaning out Google Analytics Campaign & Google AdWords Parameters."
+msgstr "Google Analytics Kampanyaları ve Google Adwords Parametrelerinin temizlenmesini engelle."
+
+#: admin/views/tabs/advanced/permalinks.php:63
+msgid "You might have extra variables you want to prevent from cleaning out, add them here, comma separated."
+msgstr "Temizlenmesini istemediğiniz ek değişkenler varsa, virgül ile ayırarak burada belirtebilirsiniz."
+
+#: admin/views/tabs/advanced/permalinks.php:62
+msgid "Other variables not to clean"
+msgstr "Temizlenmeyecek diğer değişkenler"
+
+#: admin/views/tabs/advanced/rss.php:20
+msgid "This feature is used to automatically add content to your RSS, more specifically, it's meant to add links back to your blog and your blog posts, so dumb scrapers will automatically add these links too, helping search engines identify you as the original source of the content."
+msgstr "Bu özellik, otomatik olarak RSS beslemelerinize içerik eklemek için kullanılır, daha detaya girmek gerekirse, bu, blogunuza yazılarınıza bağlantılar ekleyerek, aptal aşırıcı robotları otomatik olarak bağlantı vermelerini sağlar. Bu sayede arama motorları gerçek içeriğin orijinal kaynağını daha iyi tespit edebilirler."
+
+#: admin/views/tabs/advanced/rss.php:26
+msgid "Content to put before each post in the feed"
+msgstr "Beslemedeki her yazıdan önce eklenecek içerik"
+
+#: admin/views/tabs/advanced/rss.php:27
+msgid "Content to put after each post in the feed"
+msgstr "Besleme içindeki her içerikten sonra eklencek metin"
+
+#: admin/views/tabs/advanced/rss.php:30
+msgid "You can use the following variables within the content, they will be replaced by the value on the right."
+msgstr "İçeriğin içinde şu değişkenleri kullanabilirsiniz, kullandığınızda sağdaki değerler ile değiştirileceklerdir."
+
+#: admin/views/tabs/advanced/rss.php:34
+msgid "A link to the archive for the post author, with the authors name as anchor text."
+msgstr "Yazarın isminin bağlantı metni olarak kullanıldığı, arşiv sayfasına bir bağlantı."
+
+#: admin/views/tabs/advanced/rss.php:38
+msgid "A link to the post, with the title as anchor text."
+msgstr "Başlığın bağlantı metni olarak kullanıldığı, yazı sayfasına bir bağlantı."
+
+#: admin/views/tabs/advanced/rss.php:42
+msgid "A link to your site, with your site's name as anchor text."
+msgstr "Site isminin bağlantı metni olarak kullanıldığı, sitenize giden bir bağlantı."
+
+#: admin/views/tabs/advanced/rss.php:46
+msgid "A link to your site, with your site's name and description as anchor text."
+msgstr "Site isminin ve açıklamasının bağlantı metni olarak kullanıldığı, sitenize giden bir bağlantı. "
+
+#: admin/views/tool-file-editor.php:17
+msgid "You cannot create a robots.txt file."
+msgstr "robots.txt dosyası oluşturamazsınız."
+
+#: admin/views/tool-file-editor.php:33
+msgid "You cannot edit the robots.txt file."
+msgstr "Bu robots.txt dosyasını düzenleyemezsiniz."
+
+#: admin/views/tool-file-editor.php:44
+msgid "Updated Robots.txt"
+msgstr "Güncellenmiş Robot.txt"
+
+#: admin/views/tool-file-editor.php:51
+msgid "You cannot edit the .htaccess file."
+msgstr ".htaccess dosyasını düzenleyemezsiniz."
+
+#: admin/views/tool-file-editor.php:83
+msgid "Robots.txt"
+msgstr "Robots.txt"
+
+#: admin/views/tool-file-editor.php:90
+msgid "You don't have a robots.txt file, create one here:"
+msgstr "Bir robots.txt dosyanız bulunmuyor, burada bir tane oluşturun:"
+
+#: admin/views/tool-file-editor.php:91
+msgid "Create robots.txt file"
+msgstr "robots.txt dosyası oluştur"
+
+#: admin/views/tool-file-editor.php:95
+msgid "If you had a robots.txt file and it was editable, you could edit it from here."
+msgstr "Eğer bir robots.txt dosyasına sahip olsaydınız ve düzenlenebilir olsaydı, buradan düzenleyebilirdiniz."
+
+#: admin/views/tool-file-editor.php:108
+msgid "If your robots.txt were writable, you could edit it from here."
+msgstr "Robots.txt yazılabilir olsaydı, buradan düzenleyebilecektiniz."
+
+#: admin/views/tool-file-editor.php:114
+msgid "Edit the content of your robots.txt:"
+msgstr "Robots.txt içeriğini düzenle:"
+
+#: admin/views/tool-file-editor.php:116
+msgid "Save changes to Robots.txt"
+msgstr "Değişiklikleri Robots.txt dosyasına kaydet"
+
+#: admin/views/tool-file-editor.php:122
+msgid ".htaccess file"
+msgstr ".htaccess dosyası"
+
+#: admin/views/tool-file-editor.php:134
+msgid "If your .htaccess were writable, you could edit it from here."
+msgstr ".htaccess dosyanız yazılabilir olsaydı, buradan düzenleyebilecektiniz."
+
+#: admin/views/tool-file-editor.php:140
+msgid "Edit the content of your .htaccess:"
+msgstr ".htaccess dosyanızın içeriğini düzenleyin:"
+
+#: admin/views/tool-file-editor.php:142
+msgid "Save changes to .htaccess"
+msgstr "Değişiklikleri .htaccess dosyasına kaydet"
+
+#: admin/views/tool-file-editor.php:147
+msgid "If you had a .htaccess file and it was editable, you could edit it from here."
+msgstr "Eğer bir .htaccess dosyasına sahip olsaydınız ve düzenlenebilir olsaydı, buradan düzenleyebilirdiniz."
+
+#: admin/views/tool-import-export.php:75
+msgid "The old data of the imported plugin was deleted successfully."
+msgstr "İçe aktarılan eklentinin eski verileri başarıyla silindi."
+
+#: admin/views/tabs/tool/import-seo.php:33
+#: admin/views/tool-import-export.php:85
+msgid "Import"
+msgstr "İçeri aktar"
+
+#: admin/views/tool-import-export.php:89
+msgid "Export"
+msgstr "Dışarı aktar"
+
+#: admin/views/tool-import-export.php:93
+msgid "Import from other SEO plugins"
+msgstr "Diğer AMO eklentilerinden içeri aktar"
+
+#: admin/views/tabs/tool/wpseo-import.php:13
+msgid "Import settings by locating <em>settings.zip</em> and clicking \"Import settings\""
+msgstr "<em>settings.zip</em> dosyasını seçip \"Ayarları içeri aktar\" tuşuna basın"
+
+#: admin/views/tabs/tool/wpseo-import.php:24
+msgid "Import settings"
+msgstr "İçeri aktarma ayarları"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/tool/wpseo-export.php:14
+msgid "Export your %1$s settings here, to import them again later or to import them on another site."
+msgstr "%1$s ayalarını buradan dışarı aktarabilirsiniz, böylece daha sonra tekrar içeri aktarabilir ya da başka bir sitede kullanabilirsiniz."
+
+#: admin/views/tabs/tool/wpseo-export.php:16
+msgid "Include Taxonomy Metadata"
+msgstr "Etiketleme meta verisini dahil et"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/tool/wpseo-export.php:19
+msgid "Export your %1$s settings"
+msgstr "%1$s ayarlarınızı dışarı aktarın"
+
+#: admin/views/tabs/tool/import-seo.php:13
+msgid "No doubt you've used an SEO plugin before if this site isn't new. Let's make it easy on you, you can import the data below. If you want, you can import first, check if it was imported correctly, and then import &amp; delete. No duplicate data will be imported."
+msgstr "Hiç şüphe yok ki bu site yeni değilse daha önce bir SEO eklentisi kullandınız. İşinizi kolaylaştıralım, aşağıdan içeri veri aktarabilirsiniz. Eğer isterseniz önce içeri aktarır, kontrol eder daha sonra aktarıp silebilirsiniz. Tekrar eden veri aktarılmaz."
+
+#: admin/views/tabs/tool/import-seo.php:15
+msgid "If you've used another SEO plugin, try the %sSEO Data Transporter%s plugin to move your data into this plugin, it rocks!"
+msgstr "Eğer başka bir AMO eklentisi kullandıysanız verilerinizi aktarmak için %sSEO veri aktarıcı%s eklentisini deneyin, mükemmeldir!"
+
+#: admin/views/tabs/tool/import-seo.php:22
+msgid "Import from HeadSpace2?"
+msgstr "HeadSpace2'den içe aktar?"
+
+#: admin/views/tabs/tool/import-seo.php:23
+msgid "Import from All-in-One SEO?"
+msgstr "All-in-one SEO'dan içe aktarılsın mı?"
+
+#: admin/views/tabs/tool/import-seo.php:24
+msgid "Import from WooThemes SEO framework?"
+msgstr "WooThemes SEO framework'ten içe aktar ?"
+
+#: admin/views/tabs/tool/import-seo.php:29
+msgid "Delete the old data after import? (recommended)"
+msgstr "İçe aktarımdan sonra eski veriyi sil? (önerilen)"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/user-profile.php:10
+msgid "%1$s settings"
+msgstr "%1$s ayarlarınız"
+
+#: admin/views/user-profile.php:16
+msgid "Title to use for Author page"
+msgstr "Yazar sayfalarında kullanılacak başlık"
+
+#: admin/views/user-profile.php:25
+msgid "Meta description to use for Author page"
+msgstr "Yazar sayfasında kullanılacak meta açıklaması"
+
+#: admin/views/user-profile.php:36
+msgid "Meta keywords to use for Author page"
+msgstr "Yazar sayfasında kullanılacak meta anahtar kelimeler"
+
+#: admin/views/user-profile.php:48
+msgid "Exclude user from Author-sitemap"
+msgstr "Kullanıcıyı yazar site haritasından hariç tut"
+
+#: frontend/class-frontend.php:465
+msgid "Search for \"%s\""
+msgstr "\"%s\" için arama"
+
+#: frontend/class-frontend.php:524 frontend/class-frontend.php:527
+#: frontend/class-frontend.php:530
+#: inc/options/class-wpseo-option-titles.php:227
+msgid "%s Archives"
+msgstr "%s arşivleri"
+
+#: frontend/class-frontend.php:545
+#: inc/options/class-wpseo-option-titles.php:179
+msgid "Page not found"
+msgstr "Sayfa bulunamadı"
+
+#: frontend/class-frontend.php:1235
+msgid "Admin only notice: this page doesn't show a meta description because it doesn't have one, either write it for this page specifically or go into the SEO -> Titles menu and set up a template."
+msgstr "Yöneticiye bildirim: Bu sayfa, meta açıklaması olmadığı için bir meta açıklaması göstermiyor. Ya bu sayfa için özel olarak yazın ya da SEO -> Başlıklar menüsüne gidin ve bir şablon oluşturun."
+
+#: inc/class-wpseo-replace-vars.php:106
+msgid "A replacement variable can only contain alphanumeric characters, an underscore or a dash. Try renaming your variable."
+msgstr "Bir muadil değişken sadece harfler, alt çizgi ya da tire içerebilir. Değişkeninizin ismini değiştirmeyi deneyin."
+
+#: inc/class-wpseo-replace-vars.php:109
+msgid "A replacement variable can not start with \"%%cf_\" or \"%%ct_\" as these are reserved for the WPSEO standard variable variables for custom fields and custom taxonomies. Try making your variable name unique."
+msgstr "Bir değiştirme karakteri \"%%cf_\" ya da \"%%ct_\" ile başlayamaz, bu karakterler WPSEO değişkenleri, özel alanlar ve özel kategoriler için kullanılmaktadır. Değişken isminizi eşsiz yapmaya çalışın."
+
+#: inc/class-wpseo-replace-vars.php:118
+msgid "A replacement variable with the same name has already been registered. Try making your variable name more unique."
+msgstr "Aynı isme sahip bir değiştirme değişkeni zaten mevcut. Değişkeninizi daha eşsiz yapmaya çalışın."
+
+#: inc/class-wpseo-replace-vars.php:122
+msgid "You cannot overrule a WPSEO standard variable replacement by registering a variable with the same name. Use the \"wpseo_replacements\" filter instead to adjust the replacement value."
+msgstr "Aynı isimli bir değişken tanımlayarak WPSEO standart değişkenlerinin üstüne yazamazsınız. \"wpseo_replacements\" filtresini kullanarak değiştirme değerini ayarlayın."
+
+#: inc/class-wpseo-replace-vars.php:900
+msgid "Page %1$d of %2$d"
+msgstr "Sayfa %1$d / %2$d"
+
+#: inc/class-wpseo-replace-vars.php:1088
+msgid "Replaced with the date of the post/page"
+msgstr "Yazının/sayfanın tarihi ile değiştirilecek"
+
+#: inc/class-wpseo-replace-vars.php:1089
+msgid "Replaced with the title of the post/page"
+msgstr "Yazının/sayfanın başlığı ile değiştirilecek"
+
+#: inc/class-wpseo-replace-vars.php:1090
+msgid "Replaced with the title of the parent page of the current page"
+msgstr "Bu sayfanın ebeveyn sayfasının başlığı ile değiştirilecek"
+
+#: inc/class-wpseo-replace-vars.php:1091
+msgid "The site's name"
+msgstr "Sitenin adı"
+
+#: inc/class-wpseo-replace-vars.php:1092
+msgid "The site's tag line / description"
+msgstr "Sitenin sloganı / açıklaması"
+
+#: inc/class-wpseo-replace-vars.php:1093
+msgid "Replaced with the post/page excerpt (or auto-generated if it does not exist)"
+msgstr "Yazının/sayfanın özeti ile değiştirilecek (ya da özet yoksa otomatik oluşturulacak)"
+
+#: inc/class-wpseo-replace-vars.php:1094
+msgid "Replaced with the post/page excerpt (without auto-generation)"
+msgstr "Yazının/sayfanın özeti ile değiştirilecek (otomatik oluşturma olmadan)"
+
+#: inc/class-wpseo-replace-vars.php:1095
+msgid "Replaced with the current tag/tags"
+msgstr "Mevcut etiket(ler) ile değiştirilecek"
+
+#: inc/class-wpseo-replace-vars.php:1096
+msgid "Replaced with the post categories (comma separated)"
+msgstr "Yazı kategorileri ile değiştirilecek (virgül ile ayrılmış)"
+
+#: inc/class-wpseo-replace-vars.php:1098
+msgid "Replaced with the category description"
+msgstr "Kategori açıklamasıyla değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1099
+msgid "Replaced with the tag description"
+msgstr "Etiket açıklaması ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1100
+msgid "Replaced with the term description"
+msgstr "Terim açıklaması ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1101
+msgid "Replaced with the term name"
+msgstr "Terim adı ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1102
+msgid "Replaced with the current search phrase"
+msgstr "Mevcut arama ifadesi ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1116
+msgid "Replaced with the post type single label"
+msgstr "Yazı tipi tekil etiket ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1117
+msgid "Replaced with the post type plural label"
+msgstr "Yazı tipi çoğul etiket ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1118
+msgid "Replaced with the post/page modified time"
+msgstr "Yazı/sayfa değişiklik zamanı ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1119
+msgid "Replaced with the post/page ID"
+msgstr "Yazı/Sayfa no ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1120
+msgid "Replaced with the post/page author's 'nicename'"
+msgstr "Yazının/sayfanın yazarının 'güzel ismi' ile değiştirilecek"
+
+#: inc/class-wpseo-replace-vars.php:1121
+msgid "Replaced with the post/page author's 'Biographical Info'"
+msgstr "Yazının/sayfanın yazarının 'Biyografik bilgi'si ile değiştirilecek"
+
+#: inc/class-wpseo-replace-vars.php:1122
+msgid "Replaced with the post/page author's userid"
+msgstr "Yazının/sayfanın yazarının tanımlayıcı numarası ile değiştirilecek"
+
+#: inc/class-wpseo-replace-vars.php:1123
+msgid "Replaced with the current time"
+msgstr "Şimdiki zaman ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1124
+msgid "Replaced with the current date"
+msgstr "Geçerli tarih ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1125
+msgid "Replaced with the current day"
+msgstr "Geçerli gün ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1126
+msgid "Replaced with the current month"
+msgstr "Mevcut ay ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1127
+msgid "Replaced with the current year"
+msgstr "Mevcut yıl ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1128
+msgid "Replaced with the current page number with context (i.e. page 2 of 4)"
+msgstr "Mevcut sayfa numarası ile değiştirilecek (örneğin 2 / 4)"
+
+#: inc/class-wpseo-replace-vars.php:1129
+msgid "Replaced with the current page total"
+msgstr "Geçerli toplam sayfa sayısı ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1130
+msgid "Replaced with the current page number"
+msgstr "Geçerli sayfa numarası ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1131
+msgid "Attachment caption"
+msgstr "Eklenti alt metni"
+
+#: inc/class-wpseo-replace-vars.php:1132
+msgid "Replaced with the posts focus keyword"
+msgstr "Yazı odak anahtar kelimeleri ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1133
+msgid "Replaced with the slug which caused the 404"
+msgstr "404 sayfasına neden olan kısa isim ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1134
+msgid "Replaced with a posts custom field value"
+msgstr "Yazı özel alan değeri ile değiştirilir"
+
+#: inc/class-wpseo-replace-vars.php:1135
+msgid "Replaced with a posts custom taxonomies, comma separated."
+msgstr "Virgülle ayrılmış olarak yazı özel etiketleri ile değiştirilir."
+
+#: inc/class-wpseo-replace-vars.php:1136
+msgid "Replaced with a custom taxonomies description"
+msgstr "Özel etiket açıklaması ile değiştirilir"
+
+#: admin/google_search_console/class-gsc-category-filters.php:120
+msgid "Server Error"
+msgstr "Sunucu hatası"
+
+#: admin/google_search_console/class-gsc-category-filters.php:120
+msgid "Request timed out or site is blocking Google."
+msgstr "İstek zaman aşımına uğradı ya da Google engelleniyor."
+
+#: admin/google_search_console/class-gsc-category-filters.php:121
+msgid "Soft 404"
+msgstr "Hafif 404"
+
+#: admin/google_search_console/class-gsc-category-filters.php:121
+msgid "The target URL doesn't exist, but your server is not returning a 404 (file not found) error."
+msgstr "Hedef adres mevcut değil ama sunucunuz bir 404 (bulunamadı) hatası dönmüyor."
+
+#: admin/google_search_console/class-gsc-platform-tabs.php:43
+#: admin/google_search_console/class-gsc.php:280
+msgid "Desktop"
+msgstr "Masaüstü"
+
+#: admin/google_search_console/class-gsc-platform-tabs.php:44
+#: admin/google_search_console/class-gsc.php:281
+msgid "Smartphone"
+msgstr "Akıllı telefon"
+
+#: admin/google_search_console/class-gsc-platform-tabs.php:45
+#: admin/google_search_console/class-gsc.php:282
+msgid "Feature phone"
+msgstr "Özellikli telefon"
+
+#: admin/google_search_console/class-gsc-service.php:137
+msgid "Yoast plugins share some code between them to make your site faster. As a result of that, we need all Yoast plugins to be up to date. We've detected this isn't the case, so please update the Yoast plugins that aren't up to date yet."
+msgstr "Yoast eklentileri sitenizi daha hızlı kılmak için birbirleri arasında bazı kodları paylaşırlar. Bunun sonucu olarak tüm Yoast eklentilerinizin güncel olması gereklidir. Fark ettik ki bazı eklentiler güncel değil, lütfen tüm Yoast eklentilerini güncelleyin."
+
+#. translators: %1$s expands to Yoast SEO, %2$s expands to Google Analytics by
+#. Yoast
+#: admin/google_search_console/class-gsc-service.php:146
+msgid "%1$s detected you’re using a version of %2$s which is not compatible with %1$s. Please update %2$s to the latest version to use this feature."
+msgstr "%1$s %2$s eklentisinin %1$s ile uyumsuz bir sürümünü kullandığınızı tespit etti. Lütfen %2$s eklentisini güncelleyin."
+
+#: admin/google_search_console/class-gsc-table.php:107
+msgid "URL"
+msgstr "URL"
+
+#: admin/google_search_console/class-gsc-table.php:108
+msgid "Last crawled"
+msgstr "En son tarananlar"
+
+#: admin/google_search_console/class-gsc-table.php:109
+msgid "First detected"
+msgstr "İlk tespit edilen"
+
+#: admin/google_search_console/class-gsc-table.php:110
+msgid "Response code"
+msgstr "Dönüş kodu"
+
+#: admin/google_search_console/class-gsc-table.php:139
+#: admin/google_search_console/class-gsc-table.php:210
+msgid "Mark as fixed"
+msgstr "Çözüldü olarak işaretle"
+
+#: admin/google_search_console/class-gsc-table.php:206
+msgid "Create a redirect"
+msgstr "Bir yönlendirme oluştur"
+
+#: admin/google_search_console/class-gsc-table.php:206
+#: admin/google_search_console/views/gsc-create-redirect.php:40
+msgid "Create redirect"
+msgstr "Yönlendirme oluştur"
+
+#: admin/google_search_console/class-gsc.php:79
+msgid "Don't miss your crawl errors: %1$sconnect with Google Search Console here%2$s."
+msgstr "Tarama hatalarını gözden kaçırmayın: %1$sGoogle Arama Konsolu ile bağlantı kurun%2$s."
+
+#: admin/google_search_console/class-gsc.php:118
+msgid "Search"
+msgstr "Arama"
+
+#: admin/google_search_console/class-gsc.php:131
+msgid "Crawl errors per page"
+msgstr "Sayfa başına tarama hataları"
+
+#. Translators: %1$s: expands to Google Search Console.
+#: admin/google_search_console/class-gsc.php:178
+msgid "The %1$s data has been removed. You will have to reauthenticate if you want to retrieve the data again."
+msgstr "%1$s verisi kaldırıldı. Eğer bu veriyi tekrar edinmek isterseniz yeniden doğrulama yapmalısınız."
+
+#: admin/google_search_console/class-gsc.php:191
+msgid "The issues have been successfully reloaded!"
+msgstr "Problemler başarıyla yenilendi!"
+
+#: admin/google_search_console/class-gsc.php:222
+msgid "Incorrect Google Authorization Code."
+msgstr "Geçersiz Google doğrulama kodu."
+
+#: admin/google_search_console/class-gsc.php:279
+msgid "Issue categories"
+msgstr "Sorun kategorileri"
+
+#: admin/google_search_console/class-gsc.php:280
+msgid "Errors that occurred when your site was crawled by Googlebot."
+msgstr "Googlebot sitenizi tararken ortaya çıkan hatalar."
+
+#: admin/google_search_console/class-gsc.php:281
+msgid "Errors that occurred only when your site was crawled by Googlebot-Mobile (errors didn't appear for desktop)."
+msgstr "Sadece Googlebot-Mobil sitenizi tararken ortaya çıkan hatalar (masaüstünde hatalar ortaya çıkmıyor)."
+
+#: admin/google_search_console/class-gsc.php:282
+msgid "Errors that only occurred when your site was crawled by Googlebot for feature phones (errors didn't appear for desktop)."
+msgstr "Sadece Googlebot sitenizi akıllı telefonlar için tararken ortaya çıkan hatalar (masaüstünde hatalar ortaya çıkmıyor)."
+
+#: admin/google_search_console/views/gsc-create-redirect.php:21
+msgid "Redirect this broken URL and fix the error"
+msgstr "Bu kırık adresi yönlendir ve hatayı düzelt"
+
+#: admin/google_search_console/views/gsc-create-redirect.php:24
+msgid "Current URL:"
+msgstr "Mevcut adres:"
+
+#: admin/google_search_console/views/gsc-create-redirect.php:28
+msgid "New URL:"
+msgstr "Yeni adres:"
+
+#: admin/google_search_console/views/gsc-create-redirect.php:32
+msgid "Mark as fixed:"
+msgstr "Düzeltildi olarak işaretle:"
+
+#. Translators: %1$s: expands to 'Google Search Console'.
+#: admin/google_search_console/views/gsc-create-redirect.php:36
+msgid "Mark this issue as fixed in %1$s."
+msgstr "%1$s içinde problemi düzeltildi olarak işaretle."
+
+#: admin/google_search_console/views/gsc-create-redirect.php:46
+msgid "Error: a redirect for this URL already exists"
+msgstr "Hata: bu adres için bir yönlendirme zaten var"
+
+#. Translators: %1$s: expands to the current URL and %2$s expands to URL the
+#. redirects points to.
+#: admin/google_search_console/views/gsc-create-redirect.php:51
+msgid "You do not have to create a redirect for URL %1$s because a redirect already exists. The existing redirect points to %2$s. If this is fine you can mark this issue as fixed. If not, please go to the redirects page and change the target URL."
+msgstr "%1$s için bir yönlendirme oluşturmanıza gerek yok çünkü bu yönlendirme zaten mevcut. Mevcut yönlendirme %2$s adresini işaret ediyor. Eğer bu doğruysa bu problemi çözüldü olarak işaretleyebilirsiniz. Değilse lütfen yönlendirmeler sayfasına gidip hedef adresi değiştirin."
+
+#. Translators: %s: expands to Yoast SEO Premium
+#: admin/google_search_console/views/gsc-create-redirect.php:60
+msgid "Creating redirects is a %s feature"
+msgstr "Yönlendirme oluşturmek bir %s özelliği"
+
+#. Translators: %1$s: expands to 'Yoast SEO Premium', %2$s: links to Yoast SEO
+#. Premium plugin page.
+#: admin/google_search_console/views/gsc-create-redirect.php:64
+msgid "To be able to create a redirect and fix this issue, you need %1$s. You can buy the plugin, including one year of support and updates, on %2$s."
+msgstr "Bir yönlendirme oluşturmak ve bu problemi gidermek için %1$s gerekiyor. Bu eklentiyi ve bir yıllık destek ve güncellemeyi %2$s adresinden satın alabilirsiniz."
+
+#: admin/google_search_console/views/gsc-display.php:16
+msgid "Reload crawl issues"
+msgstr "Tarama sorunlarını tazele"
+
+#. Translators: %1$s: expands to 'Yoast SEO', %2$s expands to Google Search
+#. Console.
+#: admin/google_search_console/views/gsc-display.php:39
+msgid "To allow %1$s to fetch your %2$s information, please enter your Google Authorization Code."
+msgstr "%1$s sizin için %2$s bilgisini çeksin istiyorsanız lütfen Google doğrulama kodunu girin."
+
+#: admin/google_search_console/views/gsc-display.php:42
+msgid "Get Google Authorization Code"
+msgstr "Google doğrulama kodu edinin"
+
+#: admin/google_search_console/views/gsc-display.php:44
+msgid "Please enter the Google Authorization Code in the field below and press the Authenticate button."
+msgstr "Lütfen aşağıya Google doğrulama kodunu girin ve Doğrula tuşuna basın."
+
+#: admin/google_search_console/views/gsc-display.php:48
+msgid "Authenticate"
+msgstr "Yetkilendir"
+
+#: admin/google_search_console/views/gsc-display.php:52
+msgid "Reauthenticate with Google "
+msgstr "Google ile tekrar doğrulama yap"
+
+#: admin/google_search_console/views/gsc-display.php:53
+#: admin/google_search_console/views/gsc-display.php:56
+msgid "Current profile"
+msgstr "Şu anki profil"
+
+#: admin/google_search_console/views/gsc-display.php:75
+#: admin/google_search_console/views/gsc-display.php:79
+msgid "Profile"
+msgstr "Profil"
+
+#: admin/google_search_console/views/gsc-display.php:80
+msgid "There were no profiles found"
+msgstr "Profil bulunamadı"
+
+#: admin/google_search_console/views/gsc-display.php:88
+msgid "Save Profile"
+msgstr "Profili kaydet"
+
+#: admin/google_search_console/views/gsc-display.php:88
+msgid "or"
+msgstr "ya da"
+
+#: admin/pages/advanced.php:18
+msgid "Breadcrumbs"
+msgstr "Yol haritası"
+
+#: admin/pages/advanced.php:28
+msgid "Permalinks"
+msgstr "Kalıcı bağlantılar"
+
+#: admin/pages/advanced.php:38
+msgid "RSS"
+msgstr "RSS"
+
+#: admin/pages/dashboard.php:60
+msgid "Removed hardcoded meta description."
+msgstr "Kodlara eklenmiş meta açıklaması kaldırıldı."
+
+#: admin/pages/dashboard.php:66
+msgid "Failed to remove hardcoded meta description."
+msgstr "Koda yazılmış meta açıklaması temizlenemedi."
+
+#: admin/pages/dashboard.php:73
+msgid "Earlier found meta description was not found in file. Renewed the description test data."
+msgstr "Daha önceden bulunan meta açıklaması dosyada bulunamadı. Açıklama test verisi yenilendi."
+
+#: admin/pages/dashboard.php:105 admin/pages/dashboard.php:119
+#: admin/pages/dashboard.php:130 admin/pages/dashboard.php:137
+msgid "Fix it."
+msgstr "Onar."
+
+#: admin/pages/dashboard.php:106
+msgid "The following file(s) is/are blocking your XML sitemaps from working properly:"
+msgstr "Aşağıdaki dosya(lar)  XML site haritalarının düzgün çalışmasını engelliyor:"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/dashboard.php:113
+msgid "Either delete them (this can be done with the \"Fix it\" button) or disable %1$s XML sitemaps."
+msgstr "Ya bunları silin (bu \"Fix\" düğmesi ile yapılabilir) ya da %1$s XML site haritaları devre dışı bırakın."
+
+#: admin/pages/dashboard.php:120
+msgid "Re-check theme."
+msgstr "Temayı tekrar kontrol et."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/dashboard.php:122
+msgid "Your theme contains a meta description, which blocks %1$s from working properly, please delete the following line, or press fix it:"
+msgstr "Tema düzgün çalışmasını %1$s engelleyen bir meta açıklaması, içeren, aşağıdaki satırı silin veya düzeltmek tuşuna basın:"
+
+#: admin/pages/dashboard.php:131 admin/pages/dashboard.php:138
+msgid "Ignore."
+msgstr "Göz ardı et."
+
+#: admin/pages/dashboard.php:132
+msgid "You do not have your postname in the URL of your posts and pages, it is highly recommended that you do. Consider setting your permalink structure to <strong>/%postname%/</strong>."
+msgstr "Yazınızın başlığı yazılarınızda ve sayfalarınızda geçmiyor, bu çok önerilen bir uygulamadır. Kalıcı bağlantı ayarlarınızı <strong>/%postname%/</strong> olarak uygulamayı düşünün."
+
+#: admin/pages/dashboard.php:139
+msgid "Paging comments is enabled, this is not needed in 999 out of 1000 cases, so the suggestion is to disable it, to do that, simply uncheck the box before \"Break comments into pages...\""
+msgstr "Yorum sayfalaması etkin, bu 1000 durumun 999 için gerekli değildir. Bu nedenle devre dışı bırakılması önerilir. Bunun için \"Yorumları sayfalara böl...\" kutusundaki işareti kaldırın"
+
+#: admin/pages/dashboard.php:148
+msgid "Company Info"
+msgstr "Firma bilgileri"
+
+#: admin/pages/dashboard.php:148
+msgid "Your Info"
+msgstr "Sizin bilgileriniz"
+
+#: admin/pages/dashboard.php:152
+msgid "Webmaster Tools"
+msgstr "Web yöneticisi araçları"
+
+#: admin/pages/dashboard.php:156
+msgid "Security"
+msgstr "Güvenlik"
+
+#: admin/views/tabs/dashboard/general.php:15
+msgid "Introduction Tour"
+msgstr "Tanıtım turu"
+
+#: admin/views/tabs/dashboard/general.php:16
+msgid "Take this tour to quickly learn about the use of this plugin."
+msgstr "Hızlı bir şekilde bu eklentinin kullanımı hakkında bilgi edinmek için tur atın."
+
+#: admin/views/tabs/dashboard/general.php:29
+msgid "Latest Changes"
+msgstr "Son değişiklikler"
+
+#. translators: %s expands to Yoast SEO
+#: admin/views/tabs/dashboard/general.php:32
+msgid "We've summarized the most recent changes in %s."
+msgstr "%s için en güncel değişiklikleri özetledik."
+
+#: admin/views/tabs/dashboard/general.php:37
+msgid "View Changes"
+msgstr "Değişiklikleri görüntüle"
+
+#: admin/views/tabs/dashboard/general.php:43
+#: admin/views/tabs/dashboard/general.php:53
+msgid "Restore Default Settings"
+msgstr "Varsayılan ayarlara geri dön"
+
+#. translators: %s expands to Yoast SEO
+#: admin/views/tabs/dashboard/general.php:46
+msgid "If you want to restore a site to the default %s settings, press this button."
+msgstr "Eğer bir siteyi %s varsayılan ayarına döndürmek isterseniz bu tuşa basın."
+
+#: admin/views/tabs/dashboard/general.php:51
+msgid "Are you sure you want to reset your SEO settings?"
+msgstr "SEO ayarlarınızı sıfırlamak istediğinize emin misiniz?"
+
+#: admin/views/tabs/dashboard/knowledge-graph.php:12
+#: admin/views/tabs/dashboard/knowledge-graph.php:19
+msgid "Website name"
+msgstr "Web sitesi ismi"
+
+#: admin/views/tabs/dashboard/knowledge-graph.php:15
+msgid "Google shows your website's name in the search results, we will default to your site name but you can adapt it here. You can also provide an alternate website name you want Google to consider."
+msgstr "Google web sitenizin ismini arama sonuçlarında gösterir, varsayılan olarak site isminizi kullanırız ama isterseniz buradan değiştirebilirsiniz. Ayrıca Google tarafından dikkate alınması için farklı bir isim de kullanabilirsiniz."
+
+#: admin/views/tabs/dashboard/knowledge-graph.php:20
+msgid "Alternate name"
+msgstr "Alternatif isim"
+
+#: admin/views/tabs/dashboard/knowledge-graph.php:22
+#: admin/views/tabs/dashboard/knowledge-graph.php:30
+msgid "Company or person"
+msgstr "Firma ya da kişi"
+
+#: admin/views/tabs/dashboard/knowledge-graph.php:26
+msgid "This data is shown as metadata in your site. It is intended to appear in Google's Knowledge Graph. You can be either a company, or a person, choose either:"
+msgstr "Bu veri sitenizde meta veri olarak kullanılıyor. Google bilgi grafiğinde gözükmesi amaçlandı. Bir firma, kişi olabilir ya da ikisi de olmayabilirsiniz:"
+
+#: admin/views/tabs/dashboard/knowledge-graph.php:31
+msgid "Choose whether you're a company or person"
+msgstr "Firma ya da kişi iseniz ilgili seçimi yapınız"
+
+#: admin/views/tabs/dashboard/knowledge-graph.php:32
+#: admin/views/tabs/dashboard/knowledge-graph.php:38
+msgid "Company"
+msgstr "Firma"
+
+#: admin/views/tabs/dashboard/knowledge-graph.php:33
+#: admin/views/tabs/dashboard/knowledge-graph.php:46
+msgid "Person"
+msgstr "Kişi"
+
+#: admin/views/tabs/dashboard/knowledge-graph.php:40
+msgid "Company Name"
+msgstr "Firma ismi"
+
+#: admin/views/tabs/dashboard/knowledge-graph.php:41
+msgid "Company Logo"
+msgstr "Firma logosu"
+
+#: admin/views/tabs/dashboard/knowledge-graph.php:47
+msgid "Your name"
+msgstr "İsminiz"
+
+#: admin/views/tabs/dashboard/webmaster-tools.php:13
+msgid "You can use the boxes below to verify with the different Webmaster Tools, if your site is already verified, you can just forget about these. Enter the verify meta values for:"
+msgstr "Aşağıdaki kutuları kullanarak farklı webmaster araçları için doğrulama yapabilirsiniz. Eğer siteniz zaten doğrulandıysa bunları unutun. Sadece ilgili meta değerini girin:"
+
+#: admin/views/tabs/dashboard/webmaster-tools.php:15
+msgid "Alexa Verification ID"
+msgstr "Alexa doğrulama kimliği"
+
+#: admin/views/tabs/dashboard/webmaster-tools.php:16
+msgid "Bing Webmaster Tools"
+msgstr "Bing Webmaster Araçları"
+
+#: admin/views/tabs/dashboard/webmaster-tools.php:18
+msgid "Yandex Webmaster Tools"
+msgstr "Yandex Webmaster Araçları"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/licenses.php:18
+msgid "The premium version of %1$s with more features & support."
+msgstr "%1$s eklentisinin bir çok yeni özelliğe ve desteğe sahip sürümü."
+
+#: admin/pages/licenses.php:24
+msgid "Optimize your videos to show them off in search results and get more clicks!"
+msgstr "Videolarınızı optimize ederek arama sonuçlarında çıkmalarını sağlayın ve böylece daha çok tıklama kazanın!"
+
+#: admin/pages/licenses.php:30
+msgid "Are you in Google News? Increase your traffic from Google News by optimizing for it!"
+msgstr "Google Haberlerde yer alıyor musunuz? Gerekli optimizasyonları yaparak trafiğinizi artırabilirsiniz!"
+
+#: admin/pages/licenses.php:36
+msgid "Rank better locally and in Google Maps, without breaking a sweat!"
+msgstr "Hiç ter dökmeden Google Maps aramalarında daha iyi sonuç elde edin!"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/licenses.php:43
+msgid "Seamlessly integrate WooCommerce with %1$s and get extra features!"
+msgstr "Sorunsuz bir şekilde %1$s ile WooCommerce entegrasyonunu yapabilirsiniz!"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/licenses.php:73
+msgid "%1$s Extensions"
+msgstr "%1$s eklenti"
+
+#: admin/pages/licenses.php:99
+msgid "Get this extension"
+msgstr "Bu eklentiyi edin."
+
+#: admin/pages/licenses.php:117
+msgid "This is where you would enter the license keys for one of our premium plugins, should you activate one."
+msgstr "Burada etkinleştirmek istediğiniz özel eklentilerimizin lisansını girerek etkinleştirebilirsiniz"
+
+#: admin/pages/metas.php:27 admin/views/tabs/metas/home.php:14
+msgid "Homepage"
+msgstr "Ana sayfa"
+
+#: admin/pages/metas.php:28 admin/pages/xml-sitemaps.php:32
+msgid "Post Types"
+msgstr "Yazı tipleri"
+
+#: admin/pages/metas.php:29 admin/pages/xml-sitemaps.php:34
+msgid "Taxonomies"
+msgstr "Kategoriler"
+
+#: admin/views/tabs/metas/general.php:13
+msgid "Force rewrite titles"
+msgstr "Başlıkları yeniden yazmaya zorla"
+
+#: admin/views/tabs/metas/general.php:14
+msgid "%1$s has auto-detected whether it needs to force rewrite the titles for your pages, if you think it's wrong and you know what you're doing, you can change the setting here."
+msgstr "%1$s, bu sayfalar için başlıkları yeniden zorlamak gerekmediğini otomatik algıladı, eğer bunun yanlış olduğunu düşünüyor ve siz ne yaptığınızı biliyorsanız, buradan ayarı değiştirebilirsiniz."
+
+#: admin/views/tabs/metas/general.php:20
+msgid "Title Separator"
+msgstr "Başlık ayracı"
+
+#: admin/views/tabs/metas/general.php:25
+msgid "Choose the symbol to use as your title separator. This will display, for instance, between your post title and site name."
+msgstr "Başlık ayracı olarak kullanmak istediğiniz sembolü seçin. Bu sembol yazının başlığı ve site ismi arasında görüntülenecek."
+
+#: admin/views/tabs/metas/general.php:25
+msgid "Symbols are shown in the size they'll appear in in search results."
+msgstr "Semboller arama sonuçlarında görünecekleri boyutlarda gösterilmektedir."
+
+#: admin/views/tabs/metas/archives.php:14
+#: admin/views/tabs/metas/archives.php:23
+#: admin/views/tabs/metas/archives.php:61
+#: admin/views/tabs/metas/archives.php:64 admin/views/tabs/metas/home.php:15
+#: admin/views/tabs/metas/post-types.php:33
+#: admin/views/tabs/metas/taxonomies.php:30
+msgid "Title template"
+msgstr "Başlık şablonu"
+
+#: admin/views/tabs/metas/archives.php:15
+#: admin/views/tabs/metas/archives.php:24 admin/views/tabs/metas/home.php:16
+#: admin/views/tabs/metas/post-types.php:34
+#: admin/views/tabs/metas/taxonomies.php:31
+msgid "Meta description template"
+msgstr "Meta açıklama şablonu"
+
+#: admin/views/tabs/metas/archives.php:17 admin/views/tabs/metas/home.php:18
+#: admin/views/tabs/metas/post-types.php:36
+#: admin/views/tabs/metas/taxonomies.php:33
+msgid "Meta keywords template"
+msgstr "Meta anahtar kelime şablonu"
+
+#: admin/views/tabs/metas/home.php:24
+msgid "Homepage &amp; Front page"
+msgstr "Ana sayfa &amp; ön sayfa"
+
+#: admin/views/tabs/metas/home.php:25
+msgid "You can determine the title and description for the front page by %sediting the front page itself &raquo;%s"
+msgstr "%Anasayfanın kendisini düzenleyerek%s ön sayfa başlık ve açıklamasını belirleyebilirsiniz. &raquo;"
+
+#: admin/views/tabs/metas/home.php:28
+msgid "You can determine the title and description for the blog page by %sediting the blog page itself &raquo;%s"
+msgstr "%Blog sayfasını kendisini düzenleyerek%s blog sayfasının başlık ve açıklamasını belirleyebilirsiniz. &raquo;"
+
+#: admin/pages/network.php:115 admin/views/tabs/metas/post-types.php:29
+msgid "Take note:"
+msgstr "Not al:"
+
+#: admin/views/tabs/metas/post-types.php:30
+msgid "As you are redirecting attachment URLs to parent post URLs, these settings will currently only have an effect on <strong>unattached</strong> media items!"
+msgstr "Ekli dosya adreslerini ebeveyn yazı adreslerine yönlendirdiğiniz için bu ayarlar sadece <strong>bağsız</strong> ortam dosyalarında etkilidir!"
+
+#: admin/views/tabs/metas/post-types.php:31
+msgid "So remember: If you change the %sattachment redirection setting%s in the future, the below settings will take effect for *all* media items."
+msgstr "Unutmayın: Eğer gelecekte %sekli dosya yönlendirme ayarlarını%s değiştirirseniz, aşağıdaki ayarlar *tüm* ortam dosyaları için geçerli olacaklar."
+
+#: admin/views/tabs/metas/archives.php:35
+#: admin/views/tabs/metas/archives.php:48
+#: admin/views/tabs/metas/post-types.php:38
+#: admin/views/tabs/metas/post-types.php:81
+#: admin/views/tabs/metas/taxonomies.php:35
+msgid "Meta Robots"
+msgstr "Meta Robots"
+
+#: admin/views/tabs/metas/post-types.php:42
+msgid "Date in Snippet Preview"
+msgstr "Kod parçacığı ön izlemesindeki tarih"
+
+#: admin/views/tabs/advanced/breadcrumbs.php:35
+#: admin/views/tabs/metas/post-types.php:41
+#: admin/views/tabs/metas/post-types.php:45
+#: admin/views/tabs/metas/taxonomies.php:41
+msgid "Hide"
+msgstr "Gizle"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/metas/post-types.php:47
+#: admin/views/tabs/metas/taxonomies.php:43
+msgid "%1$s Meta Box"
+msgstr "%1$s meta kutusu"
+
+#: admin/views/tabs/metas/post-types.php:68
+msgid "Custom Post Type Archives"
+msgstr "Özel yazı tipi arşivleri"
+
+#: admin/views/tabs/metas/post-types.php:69
+msgid "Note: instead of templates these are the actual titles and meta descriptions for these custom post type archive pages."
+msgstr "Not: Şablonlar yerine bunlar özel yazı tipi arşiv sayfalarının gerçek başlık ve açıklamalarıdır."
+
+#: admin/views/tabs/metas/post-types.php:73
+#: admin/views/tabs/social/facebook.php:28 admin/views/tool-bulk-editor.php:33
+msgid "Title"
+msgstr "Başlık"
+
+#: admin/views/tabs/metas/archives.php:22
+msgid "Date archives"
+msgstr "Tarih arşivi"
+
+#. translators: %1$s / %2$s: links to an article about duplicate content on
+#. yoast.com
+#: admin/views/tabs/metas/archives.php:38
+msgid "If you're running a one author blog, the author archive will be exactly the same as your homepage. This is what's called a %1$sduplicate content problem%2$s."
+msgstr "Eğer tek bir yazarak sahip bir blog işletiyorsanız, yazar arşivi ana sayfayla aynı olacaktır. Buna %1$stekrarlanan içerik problemi%2$s denir."
+
+#. translators: %s expands to <code>noindex, follow</code>
+#: admin/views/tabs/metas/archives.php:41
+msgid "If this is the case on your site, you can choose to either disable it (which makes it redirect to the homepage), or to add %s to it so it doesn't show up in the search results."
+msgstr "Bu durum sizin siteniz için geçerliyse ya bunu etkisizleştirebilir (ki bu ana sayfaya yönlendirecektir) ya da %s ekleyin ki arama sonuçlarında gözükmesin."
+
+#: admin/views/tabs/metas/archives.php:50
+msgid "Date-based archives could in some cases also be seen as duplicate content."
+msgstr "Tarih tabanlı arşivler kimi zaman tekrar eden içerik olarak ele alınabiliyor."
+
+#: admin/views/tabs/metas/archives.php:57
+msgid "Special Pages"
+msgstr "Özel sayfalar"
+
+#. translators: %s expands to <code>noindex, follow</code>
+#: admin/views/tabs/metas/archives.php:59
+msgid "These pages will be %s by default, so they will never show up in search results."
+msgstr "Bu sayfalar varsayılan olarak%s olarak işaretlenmiştir, böylece arama sonuçlarında görüntülenmezler."
+
+#: admin/views/tabs/metas/archives.php:60
+msgid "Search pages"
+msgstr "Sayfalarda ara"
+
+#: admin/views/tabs/metas/archives.php:63
+msgid "404 pages"
+msgstr "404 sayfaları"
+
+#: admin/views/tabs/metas/other.php:12
+msgid "Sitewide meta settings"
+msgstr "Site genelinde meta ayarları"
+
+#: admin/views/tabs/metas/other.php:15
+msgid "If you want to prevent /page/2/ and further of any archive to show up in the search results, set this to \"noindex\"."
+msgstr "Eğer /page/2/ vb arşiv sayfalarnın arama sonuçlarında gözükmesini istemiyorsanız bunu \"noindex\" olarak belirleyin."
+
+#: admin/views/tabs/metas/other.php:18
+msgid "I don't know why you'd want to use meta keywords, but if you want to, enable this."
+msgstr "Neden meta anahtar kelimeler kullanmak istediğinizi bilemiyoruz fakat yine de istiyorsanız bunu etkinleştirin."
+
+#: admin/views/tabs/metas/other.php:17
+msgid "Use meta keywords tag?"
+msgstr "Meta anahtar kelime etiketleri kullanılsın mı?"
+
+#. translators: %s expands to <code>noodp</code>
+#: admin/views/tabs/metas/other.php:21
+msgid "Force %s meta robots tag sitewide"
+msgstr "Site genelinde %s meta robots etiketini zorla"
+
+#: admin/pages/network.php:24
+msgid "Settings Updated."
+msgstr "Ayarlar güncellendi."
+
+#: admin/pages/network.php:35
+msgid "%s restored to default SEO settings."
+msgstr "%s varsayılan AMO ayarlarına döndürüldü."
+
+#: admin/pages/network.php:38
+msgid "Blog %s not found."
+msgstr "%s blogu bulunamadı."
+
+#: admin/pages/network.php:61
+msgid "public"
+msgstr "herkese açık"
+
+#: admin/pages/network.php:64
+msgid "archived"
+msgstr "arşiv"
+
+#: admin/pages/network.php:67
+msgid "mature"
+msgstr "yetişkin"
+
+#: admin/pages/network.php:70
+msgid "spam"
+msgstr "istenmeyen"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/network.php:94
+msgid "Who should have access to the %1$s settings"
+msgstr "%1$s ayarlarına kimler erişebilir"
+
+#: admin/pages/network.php:96
+msgid "Site Admins (default)"
+msgstr "Site yöneticileri (varsayılan)"
+
+#: admin/pages/network.php:97
+msgid "Super Admins only"
+msgstr "Sadece süper yöneticiler"
+
+#: admin/pages/network.php:105 admin/pages/network.php:112
+msgid "New sites in the network inherit their SEO settings from this site"
+msgstr "Ağdaki yeni siteler SEO ayarlarını bu siteden devralır."
+
+#: admin/pages/network.php:109
+msgid "Choose the site whose settings you want to use as default for all sites that are added to your network. If you choose 'None', the normal plugin defaults will be used."
+msgstr "Ağınıza ekli olan siteler içinde bir siteyi seçerek, ayarlarını varsayılan olarak kullanabilirsiniz. Eğer 'Hiçbiri' seçeneğini seçerseniz eklentinin varsayılan ayarları kullanılacaktır."
+
+#: admin/pages/network.php:113
+msgid "Enter the %sSite ID%s for the site whose settings you want to use as default for all sites that are added to your network. Leave empty for none (i.e. the normal plugin defaults will be used)."
+msgstr "İlgili site için %sSite No%s girerek, o sitenin ayarlarını varsayılan olarak kullanabilirsiniz. Hiçbiri için boş bırakın. (O zaman eklentinin varsayılan ayarları kullanılacaktır)"
+
+#: admin/pages/network.php:115
+msgid "Privacy sensitive (FB admins and such), theme specific (title rewrite) and a few very site specific settings will not be imported to new blogs."
+msgstr "Gizlilik duyarlı (FB yöneticileri vb), temaya özel (başlık yeniden yazma) ve bir kaç özel ayar yeni aktarılan bloglarda içeri aktarılmayacaktır."
+
+#: admin/pages/network.php:118
+msgid "Save MultiSite Settings"
+msgstr "Çoklu site ayarlarını kaydet"
+
+#: admin/pages/network.php:121
+msgid "Restore site to default settings"
+msgstr "Siteyi varsayılan ayarlara geri döndür"
+
+#: admin/pages/network.php:124
+msgid "Using this form you can reset a site to the default SEO settings."
+msgstr "Bu formu kullanarak bir siteyi varsayılan SEO ayarlarına döndürebilirsiniz."
+
+#: admin/pages/network.php:130
+msgid "Site ID"
+msgstr "Site no"
+
+#: admin/pages/network.php:136
+msgid "Blog ID"
+msgstr "Blog No"
+
+#: admin/pages/network.php:139
+msgid "Restore site to defaults"
+msgstr "Site ayarlarını varsayılanlara döndür"
+
+#: admin/pages/social.php:16
+msgid "Accounts"
+msgstr "Hesaplar"
+
+#: admin/metabox/class-metabox.php:669
+msgid "The featured image should be at least 200x200 pixels to be picked up by Facebook and other social media sites."
+msgstr "Öne çıkarılan görsel en az 200x200 piksel boyutlarında olmalıdır. Facebook ve diğer sosyal medya siteleri tarafından kullanılacaktır."
+
+#: inc/class-wpseo-rank.php:118
+msgid "SEO: No Focus Keyword"
+msgstr "SEO: Odak anahtar kelime yok"
+
+#: inc/class-wpseo-rank.php:119
+msgid "SEO: Bad"
+msgstr "SEO: Kötü"
+
+#: inc/class-wpseo-rank.php:120
+msgid "SEO: OK"
+msgstr "SEO: Uygun"
+
+#: inc/class-wpseo-rank.php:121
+msgid "SEO: Good"
+msgstr "SEO: İyi"
+
+#: inc/class-wpseo-rank.php:122
+msgid "SEO: Post Noindexed"
+msgstr "SEO: Yazı indekslenmemiş"
+
+#: admin/class-meta-columns.php:137
+msgid "All SEO Scores"
+msgstr "Tüm SEO puanları"
+
+#: admin/class-meta-columns.php:45
+msgid "Meta Desc."
+msgstr "Meta Açık."
+
+#: admin/class-meta-columns.php:46
+msgid "Focus KW"
+msgstr "Odak AK"
+
+#: admin/class-meta-columns.php:340
+#: admin/taxonomy/class-taxonomy-columns.php:114
+msgid "Focus keyword not set."
+msgstr "Odak anahtar kelime ayarlanmamış."
+
+#: inc/class-wpseo-rank.php:104
+msgid "OK"
+msgstr "Tamam"
+
+#. translators: %s expands to the social network's name
+#: admin/class-social-admin.php:34
+msgid "If you don't want to use the post title for sharing the post on %s but instead want another title there, write it here."
+msgstr "Eğer yazıyı %s üzerinde paylaşırken bu yazı başlığını kullanmak istemiyorsanız, istediğiniz yeni başlığı buraya yazabilirsiniz."
+
+#. translators: %s expands to the social network's name
+#: admin/class-social-admin.php:36
+msgid "If you don't want to use the meta description for sharing the post on %s but want another description there, write it here."
+msgstr "Eğer %s üzerinde paylaşım yaparken meta açıklaması kullanmayıp farklı bir açıklama girmek isterseniz, buraya yazabilirsiniz."
+
+#. translators: %s expands to the social network's name
+#: admin/class-social-admin.php:38
+msgid "If you want to override the image used on %s for this post, upload / choose an image or add the URL here."
+msgstr "Bu yazının %s de kullanılan resmi silerek değiştirmek istiyorsanız , buraya bir resim yükleyin/seçin veya adres ekleyin."
+
+#. translators: %1$s expands to the social network, %2$s to the recommended
+#. image size
+#. translators: %1$s expands to the social network name, %2$s expands to the
+#. image size
+#: admin/class-social-admin.php:40
+#: admin/taxonomy/class-taxonomy-social-fields.php:63
+msgid "The recommended image size for %1$s is %2$spx."
+msgstr "%1$s için önerilen görsel boyutu %2$spx."
+
+#: admin/class-pointers.php:283 admin/class-social-admin.php:45
+#: admin/pages/social.php:17 admin/taxonomy/class-taxonomy-social-fields.php:93
+msgid "Facebook"
+msgstr "Facebook"
+
+#: admin/class-pointers.php:285 admin/class-social-admin.php:46
+#: admin/pages/social.php:18 admin/taxonomy/class-taxonomy-social-fields.php:94
+msgid "Twitter"
+msgstr "Twiiter"
+
+#. translators: %s expands to the social network name
+#: admin/class-social-admin.php:58
+#: admin/taxonomy/class-taxonomy-social-fields.php:44
+msgid "%s Title"
+msgstr "%s Başlık"
+
+#. translators: %s expands to the social network name
+#: admin/class-social-admin.php:61
+#: admin/taxonomy/class-taxonomy-social-fields.php:52
+msgid "%s Description"
+msgstr "%s Açıklama"
+
+#. translators: %s expands to the social network name
+#: admin/class-social-admin.php:64
+#: admin/taxonomy/class-taxonomy-social-fields.php:59
+msgid "%s Image"
+msgstr "%s Resim"
+
+#. translators: %1$s expands to Yoast SEO, %2%s: 'Facebook' plugin name of
+#. possibly conflicting plugin with regard to creating OpenGraph output
+#: admin/class-plugin-conflict.php:132
+msgid "Both %1$s and %2$s create OpenGraph output, which might make Facebook, Twitter, LinkedIn and other social networks use the wrong texts and images when your pages are being shared."
+msgstr "Hem %1$s hem de %2$s OpenGraph çıktısı üretir. Bu çıktılar Facebook, Twitter, LinkedIn ve diğer sosyal ağlar tarafından, sitenizdeki içerik paylaşıldığı zaman gösterilecek metin ve görsellerdir."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-plugin-conflict.php:136
+msgid "Configure %1$s's OpenGraph settings"
+msgstr "%1$s OpenGraph ayarlarını düzenle"
+
+#. translators: %1$s expands to Yoast SEO, %2$s: 'Google XML Sitemaps' plugin
+#. name of possibly conflicting plugin with regard to the creation of sitemaps
+#: admin/class-plugin-conflict.php:139
+msgid "Both %1$s and %2$s can create XML sitemaps. Having two XML sitemaps is not beneficial for search engines, yet might slow down your site."
+msgstr "Hem %1$s hem de %2$s XML site haritası oluşturuyor. İki XML site haritası oluşturmak arama motorları için faydasızdır, diğer taraftan sitenizi yavaşlatabilir."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-plugin-conflict.php:143
+msgid "Configure %1$s's XML Sitemap settings"
+msgstr "%1$s XML site haritası ayarlarını düzenle"
+
+#: admin/class-pointers.php:111
+msgid "Close"
+msgstr "Kapat"
+
+#: admin/class-pointers.php:174
+msgid "Congratulations!"
+msgstr "Tebrikler!"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-pointers.php:176
+msgid "You&#8217;ve just installed %1$s! Click &#8220;Start Tour&#8221; to view a quick introduction of this plugin&#8217;s core functionality."
+msgstr "%1$s kurulumunu tamamladınız! &#8220;Tura başla&#8221; tuşuna basarak eklentinin temel özellikleri ile ilgili kısa bir tur yapabilirsiniz."
+
+#: admin/class-pointers.php:182 admin/views/tabs/dashboard/general.php:20
+msgid "Start Tour"
+msgstr "Tura başla"
+
+#: admin/class-pointers.php:208
+msgid "Next"
+msgstr "Sonraki"
+
+#: admin/class-pointers.php:214
+msgid "Previous"
+msgstr "Önceki"
+
+#: admin/class-pointers.php:230
+msgid "General settings"
+msgstr "Genel ayarlar"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-pointers.php:232
+msgid "These are the General settings for %1$s, here you can restart this tour or revert the %1$s settings to default."
+msgstr "Bunlar %1$s için genel ayarlardır, bu turu baştan başlatarak %1$s ayarlarını varsayılanlara çevirebilirsiniz."
+
+#: admin/class-pointers.php:233
+msgid "Tab: Your Info / Company Info"
+msgstr "Sekme: Sizin bilgileriniz / Firma bilgileri"
+
+#: admin/class-pointers.php:233
+msgid "Add some info here needed for Google's Knowledge Graph."
+msgstr "Burada Google'ın Bilgi Grafiği için gerekli bilgileri ekleyin."
+
+#: admin/class-pointers.php:234
+msgid "Tab: Webmaster Tools"
+msgstr "Sekme: Webmaster araçları"
+
+#: admin/class-pointers.php:234
+msgid "You can add the verification codes for the different Webmaster Tools programs here. We highly encourage you to check out both Google and Bing&#8217;s Webmaster Tools."
+msgstr "Farklı Webmaster araçları programları için doğrulama kodlarını buradan ekleyebilirsiniz. Biz hem Google hem Bing Webmaster araçlarını eklemenizi öneririz."
+
+#: admin/class-pointers.php:235
+msgid "Tab: Security"
+msgstr "Sekme: Güvenlik"
+
+#: admin/class-pointers.php:235
+msgid "Determine who has access to the plugins advanced settings on the post edit screen."
+msgstr "Yazı düzenleme ekranında kimlerin gelişmiş eklenti ayarlarına erişebileceğini belirleyin."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-pointers.php:238
+msgid "More %1$s"
+msgstr "Daha çok %1$s"
+
+#: admin/class-pointers.php:241
+msgid "There&#8217;s more to learn about WordPress &amp; SEO than just using this plugin. A great start is our article %1$sthe definitive guide to WordPress SEO%2$s."
+msgstr "WordPress ve SEO hakkında bu eklentiyi kullanmaktan daha fazlasını öğrenebilirsiniz. İyi bir başlangıç için %1$sWordPress SEO için rehber%2$se bakabilirsiniz."
+
+#: admin/class-pointers.php:243
+msgid "Subscribe to our Newsletter"
+msgstr "Bültenimize abone olun."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-pointers.php:245
+msgid "If you would like us to keep you up-to-date regarding %1$s and other plugins by Yoast, subscribe to our newsletter:"
+msgstr "%1$s ve Yoast'ın diğer eklentileri hakkında güncel haberleri almak istiyorsanız , haber bültenimize üye olunuz:"
+
+#: admin/class-pointers.php:248
+msgid "Email"
+msgstr "E-posta"
+
+#: admin/class-pointers.php:250
+msgid "Subscribe"
+msgstr "Abone ol"
+
+#: admin/class-pointers.php:264
+msgid "Title &amp; Metas settings"
+msgstr "Başlık ve Meta ayarları"
+
+#: admin/class-pointers.php:265
+msgid "This is where you\tset the titles and meta-information for all your post types, taxonomies, archives, special pages and for your homepage. The page is divided into different tabs. Make sure you check &#8217;em all out!"
+msgstr "Burası tüm yazı tipleriniz, etiketleriniz, arşivleriniz, özel sayfalarınız ve ana sayfanız için başlık ve meta bilgilerini girdiğiniz yerdir. Bu sayfa birden çok sekmeye bölünmüştür. Her bir sekmeye göz attığınızdan emin olun!"
+
+#: admin/class-pointers.php:266
+msgid "Sitewide settings"
+msgstr "Site geneli ayarları"
+
+#: admin/class-pointers.php:266
+msgid "The first tab will show you site-wide settings for titles, normally you'll only need to change the Title Separator."
+msgstr "İlk sekme site genelindeki başlık ayarlarını gösterir. Normalde burada sadece başlık ayracını değiştirmeniz gerekir."
+
+#: admin/class-pointers.php:267
+msgid "Templates and settings"
+msgstr "Şablonlar ve ayarlar"
+
+#: admin/class-pointers.php:267
+msgid "Now click on the &#8216;%1$sPost Types%2$s&#8217;-tab, as this will be our example."
+msgstr "Şimdi &#8216;%1$sYazı tipleri%2$s&#8217; sekmesine tıklayın, ilk örneğimiz bu olacak."
+
+#: admin/class-pointers.php:267
+msgid "The templates are built using variables. You can find all these variables in the help tab (in the top-right corner of the page). The settings allow you to set specific behavior for the post types."
+msgstr "Şablonlar değişkenler kullanılarak yapılabilir. Bu değişkenlerin tamamını yardım sekmesinde (sayfanın sağ üst köşesinde) bulabilirsiniz. Yazı tipleri için özel durumlar ayarlayabilirsiniz."
+
+#: admin/class-pointers.php:268 admin/pages/metas.php:30
+#: frontend/class-frontend.php:533
+msgid "Archives"
+msgstr "Arşivler"
+
+#: admin/class-pointers.php:268
+msgid "On the archives tab you can set templates for specific pages like author archives, search results and more."
+msgstr "Arşiv sekmesinde yazar arşivi, arama sonuçları ve daha fazlası için şablon belirleyebilirsiniz."
+
+#: admin/class-pointers.php:269
+#: admin/google_search_console/class-gsc-category-filters.php:117
+#: admin/pages/metas.php:31
+msgid "Other"
+msgstr "Diğer"
+
+#: admin/class-pointers.php:269
+msgid "On the Other tab you can change sitewide meta settings, like enable meta keywords."
+msgstr "Diğer sekmesinde site genelindeki meta ayarlarını değiştirebilirsiniz"
+
+#: admin/class-pointers.php:282
+msgid "Social settings"
+msgstr "Sosyal ayarlar"
+
+#: admin/class-pointers.php:283
+msgid "On this tab you can enable the %1$sFacebook Open Graph%2$s functionality from this plugin, as well as assign a Facebook user or Application to be the admin of your site, so you can view the Facebook insights."
+msgstr "Bu sekmede %1$sFacebook Open Graph%2$s özelliklerini etkinleştirebilirsiniz. Ayrıca siteniz için bir Facebook kullanıcısını yönetici olarak belirleyip, Facebook Insights verilerine ulaşmasını sağlayabilirsiniz."
+
+#: admin/class-pointers.php:284
+msgid "The frontpage settings allow you to set meta-data for your homepage, whereas the default settings allow you to set a fallback for all posts/pages without images. "
+msgstr "Ön sayfa ayarları, sitenizin ana sayfası için meta verilerini ayarlamanızı sağlar, ayrıca tüm yazılarınız/sayfalarınız için de bir nevi destek görevi de görür."
+
+#: admin/class-pointers.php:285
+msgid "With %1$sTwitter Cards%2$s, you can attach rich photos, videos and media experience to tweets that drive traffic to your website. Simply check the box, sign up for the service, and users who Tweet links to your content will have a &#8220;Card&#8221; added to the tweet that&#8217;s visible to all of their followers."
+msgstr "%1$sTwitter Kartları%2$s ile twitlerinize zengin fotoğraf, video ve ortam deneyimleri ekleyerek, sitenize daha fazla ziyaretçi çekebilirsiniz. Kutuyu işaretleyin, servise abone olun ve içeriğinizi twitleyen kullanıcıların twitlerinde kartlarınız otomatik olarak görüntülensin."
+
+#: admin/class-pointers.php:286 admin/pages/social.php:19
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: admin/class-pointers.php:286
+msgid "On this tab you can verify your site with Pinterest and enter your Pinterest account."
+msgstr "Bu sekmede Pinterest doğrulaması yapabilir ve Pinterest hesabınızı girebilirsiniz."
+
+#: admin/class-pointers.php:301
+msgid "What are XML sitemaps?"
+msgstr "XML site haritaları nedir?"
+
+#: admin/class-pointers.php:301
+msgid "A Sitemap is an XML file that lists the URLs for a site. It allows webmasters to include additional information about each URL: when it was last updated, how often it changes, and how important it is in relation to other URLs in the site. This allows search engines to crawl the site more intelligently."
+msgstr "Bir site haritası sitenizdeki adresleri içerek XML dosyasıdır. Webmasterların sitenizdeki adresler ile ilgili ekstra bilgiler verebilmelerine olanak sağlar. Örneğin, ne zaman güncellendi, ne kadar sıklıkla güncelleniyor, ne kadar öneme sahip vb. Bu da arama motorlarının sayfalarınızı daha akıllıca taramalarına olanak sağlıyor."
+
+#: admin/class-pointers.php:302
+msgid "What does the plugin do with XML Sitemaps?"
+msgstr "Bu eklenti XML site haritaları ile ne yapıyor?"
+
+#: admin/class-pointers.php:302
+msgid "This plugin adds XML sitemaps to your site. The sitemaps are automatically updated when you publish a new post, page or custom post and Google and Bing will be automatically notified."
+msgstr "Bu eklenti sitenize XML site haritaları ekler. Site haritaları yeni bir yazı, sayfa ya da özel yazı tipinde bir yazı yayınladığınızda otomatik oluşturulur ve Google, Bing gibi servislere otomatik olarak servis edilir."
+
+#: admin/class-pointers.php:303
+msgid "If you want to exclude certain post types and/or taxonomies, you can also set that on this page."
+msgstr "Eğer belirli yazı ve/veya sayfaların arama sonuçlarında çıkmasını istemiyorsanız bu sayfadan ayarlama yapabilirsiniz."
+
+#: admin/class-pointers.php:304
+msgid "Is your webserver low on memory? Decrease the entries per sitemap (default: 1000) to reduce load."
+msgstr "Web sunucunuzun belleği mi yetmiyor? Site haritanızdaki girdilerin sayısını azaltabilirsiniz (varsayılan: 1000)."
+
+#: admin/class-pointers.php:317
+msgid "Advanced Settings"
+msgstr "Gelişmiş ayarlar"
+
+#: admin/class-pointers.php:317
+msgid "All of the options on these tabs are for advanced users only, if you don&#8217;t know whether you should check any, don&#8217;t touch them."
+msgstr "Bu sekmelerdeki tüm seçenekler gelişmiş kullanıcılar içindir. Eğer işaretleyip işaretlemeyeceğinizi bilmiyorsanız dokunmayın."
+
+#: admin/class-pointers.php:330
+msgid "Extensions and Licenses"
+msgstr "Eklentiler ve lisanslar"
+
+#. translators: %1$s expands to Yoast SEO, %2$s to Yoast SEO Premium, %3$s and
+#. %4$s to an anchor with link about our premium plugins
+#: admin/class-pointers.php:333
+msgid "The powerful functions of %1$s can be extended with %3$sYoast premium plugins%4$s. These premium plugins require the installation of %1$s or %2$s and add specific functionality. You can read all about the Yoast Premium Plugins %3$shere%4$s."
+msgstr "Güçlü %1$s özellikleri %3$sYoast özel eklentileri%4$s ile daha da geliştirilebilir. Bu özel eklentiler %1$s kurulumu ya da %2$s kurulumu gerektirir. Yoast özek eklentiler ile ilgili daha fazlasını %3$sburadan%4$s öğrenebilirsiniz."
+
+#: admin/class-pointers.php:335 admin/pages/licenses.php:78
+msgid "Licenses"
+msgstr "Lisanslar"
+
+#. translators: %1$s expands to Yoast SEO Premium
+#: admin/class-pointers.php:337
+msgid "Once you&#8217;ve purchased %1$s or any other premium Yoast plugin, you&#8217;ll have to enter a license key. You can do so on the Licenses-tab. Once you&#8217;ve activated your premium plugin, you can use all its powerful features."
+msgstr "%1$s ya da herhangi bir premium Yoast eklentisi satın aldığınızda lisans anahtarını girmeniz gerekir. Bunu lisanslar sekmesinden yapabilirsiniz. Lisansı etkinleştirdiğinizde eklentinin tüm becerilerini sonuna kadar kullanabilirsiniz."
+
+#: admin/class-pointers.php:339
+msgid "Like this plugin?"
+msgstr "Eklentiyi beğendiniz mi?"
+
+#: admin/class-pointers.php:339
+msgid "So, we&#8217;ve come to the end of the tour. If you like the plugin, please %srate it 5 stars on WordPress.org%s!"
+msgstr "Turumuzun sonuna geldik. Eğer eklentimizi beğendiyseniz lütfen %sWordPress.org da bize 5 yıldız%s verin!"
+
+#: admin/class-pointers.php:340
+msgid "Thank you for using our plugin and good luck with your SEO!<br/><br/>Best,<br/>Team Yoast - %1$sYoast.com%2$s"
+msgstr "Eklentimizi kullandığınız için teşekkürler ve AMO konusunda iyi şanslar!<br/><br/>Sevgiler,<br/>Yoast ekibi - %1$sYoast.com%2$s"
+
+#: admin/class-social-facebook.php:113
+msgid "Please make sure both fields are filled."
+msgstr "Lütfen her iki alanın da dolu olduğundan emin olun."
+
+#: admin/class-social-facebook.php:116
+msgid "Your input contains invalid characters. Please make sure both fields are filled in correctly."
+msgstr "Girdiniz geçersiz karakterler içermektedir. Lütfen tüm alanların doğru bir şekilde dolu olduğundan emin olun."
+
+#: admin/class-social-facebook.php:119
+msgid "This Facebook user has already been added as an admin."
+msgstr "Bu Facebook kullanıcısı hali hazırda yönetici olarak eklenmiş."
+
+#: admin/class-social-facebook.php:155
+msgid "Successfully removed admin %s"
+msgstr "Yönetici %s başarıyla kaldırıldı"
+
+#: admin/class-social-facebook.php:178
+msgid "Successfully cleared all Facebook Data"
+msgstr "Facebook verileri başarıyla temizlendi"
+
+#: admin/class-social-facebook.php:291
+msgid "Facebook Insights and Admins"
+msgstr "Facebook ınsights ve yöneticileri"
+
+#. translators: %1$s and %2$s expand to a link to Facebook Insights
+#: admin/class-social-facebook.php:294
+msgid "To be able to access %1$sFacebook Insights%2$s for your site, you need to specify a Facebook Admin. This can be a user. If you have an app for your site, you could use that as well."
+msgstr "Sitenizin %1$sFacebook Insights%2$s verilerine ulaşabilmek için bir Facebook yöneticisi belirtmelisiniz. Bu bir kullanıcı olabilir. Eğer siteniz için bir uygulamanız varsa, onu da kullanabilirsiniz."
+
+#. translators: %1$s and %2$s expand to a link to the Yoast Knowledge Base
+#: admin/class-social-facebook.php:300
+msgid "More info can be found %1$son our knowledge base%2$s."
+msgstr "%1$sBilgi bankamızda%2$s bu konu ile ilgili daha fazla bilgi bulabilirsiniz."
+
+#. translators: %1$s and %2$s expand to a link to Facebook Insights
+#: admin/class-social-facebook.php:317
+msgid "To be able to access %1$sFacebook Insights%2$s, you need to add a user here. The name is used for reference only, the ID is used for verification."
+msgstr "%1$sFacebook Insights%2$s özelliğine erişebilmek için buradan bir kullanıcı eklemeniz gerekiyor. İsim referans için kullanılıyor, asıl ID doğrulama için gereklidir."
+
+#. translators: %1$s and %2$s expand to a link to the Yoast Knowledge Base
+#: admin/class-social-facebook.php:321
+msgid "If you don't know where to find the needed ID, see %1$sthis knowledge base article%2$s."
+msgstr "Eğer gerekli ID bilgisinin nerede olduğunu bilmiyorsanız %1$sbu bilgi bankası makalesine%2$s bakın."
+
+#: admin/class-social-facebook.php:324
+msgid "Admin's name:"
+msgstr "Yönetici ismi:"
+
+#: admin/class-social-facebook.php:328
+msgid "Admin's Facebook user ID:"
+msgstr "Yöneticinin Facebook kullanıcı numarası:"
+
+#: admin/class-social-facebook.php:333 admin/class-social-facebook.php:347
+msgid "Add Facebook admin"
+msgstr "Facebook yöneticisi ekle"
+
+#: admin/class-social-facebook.php:353
+msgid "Add Another Facebook Admin"
+msgstr "Başka bir Facebook yöneticisi ekle"
+
+#: admin/class-social-facebook.php:358
+msgid "Currently connected Facebook admins:"
+msgstr "Şu an hesabı bağlı Facebook yöneticileri:"
+
+#: admin/class-social-facebook.php:385
+msgid "Facebook App ID"
+msgstr "Facebook uygulama no"
+
+#: admin/class-social-facebook.php:453
+msgid "Clear all Facebook Data"
+msgstr "Tüm Facebook verilerini temizle"
+
+#: admin/taxonomy/class-taxonomy-settings-fields.php:87
+msgid "Always index"
+msgstr "Her zaman indeksle"
+
+#: admin/taxonomy/class-taxonomy-settings-fields.php:88
+msgid "Always noindex"
+msgstr "Her zaman indekslenmesin"
+
+#: admin/taxonomy/class-taxonomy-settings-fields.php:90
+msgid "Auto detect"
+msgstr "Otomatik tespit"
+
+#: admin/taxonomy/class-taxonomy-settings-fields.php:91
+msgid "Always include"
+msgstr "Her zaman dahil et"
+
+#: admin/taxonomy/class-taxonomy-settings-fields.php:92
+msgid "Never include"
+msgstr "Asla dahil etme"
+
+#: admin/taxonomy/class-taxonomy-settings-fields.php:38
+msgid "Meta keywords used on the archive page for this term."
+msgstr "Bu terim için arşiv sayfalarında kullanılan meta anahtar kelimeler."
+
+#: admin/taxonomy/class-taxonomy-settings-fields.php:45
+msgid "The canonical link is shown on the archive page for this term."
+msgstr "Aynı bağlantı bu terim için arşiv sayfasında gösterilir."
+
+#: admin/taxonomy/class-taxonomy-settings-fields.php:48
+#: admin/views/tabs/metas/post-types.php:79
+msgid "Breadcrumbs title"
+msgstr "Dolaşım başlığı"
+
+#. translators: %s expands to the taxonomy name
+#: admin/taxonomy/class-taxonomy-settings-fields.php:50
+msgid "The Breadcrumbs title is used in the breadcrumbs where this %s appears."
+msgstr "Dolaşım başlığı %s görüntülendiği her yerde kullanılıyor."
+
+#. translators: %s expands to taxonomy name
+#: admin/taxonomy/class-taxonomy-settings-fields.php:59
+msgid "This %s follows the indexation rules set under Metas and Titles, you can override it here."
+msgstr "Bu %s metalar ve başlıklar için indeksleme kurallarını takip eder, buradan yeni kurallar belirleyebilirsiniz."
+
+#. translators: %s expands to taxonomy name
+#: admin/taxonomy/class-taxonomy-settings-fields.php:57
+msgid "Noindex this %s"
+msgstr "%s için indeksleme yapma"
+
+#. translators: %s is the plugin name
+#: admin/class-yoast-dashboard-widget.php:41
+msgid "%s Posts Overview"
+msgstr "%s yazıya genel bakış"
+
+#: admin/class-yoast-dashboard-widget.php:159
+msgid "Posts with good SEO score"
+msgstr "İyi AMO puanına sahip yazılar"
+
+#: admin/class-yoast-dashboard-widget.php:158
+msgid "Posts with OK SEO score"
+msgstr "Ortalama AMO puanına sahip yazılar"
+
+#: admin/class-yoast-dashboard-widget.php:157
+msgid "Posts with bad SEO score"
+msgstr "Kötü AMO puanına sahip yazılar"
+
+#: admin/class-yoast-dashboard-widget.php:156
+msgid "Posts without focus keyword"
+msgstr "Odak anahtar kelimesi olmayan yazılar"
+
+#. translators: %s expands to <code>noindex</code>
+#: admin/class-yoast-dashboard-widget.php:161
+msgid "Posts that are set to %s"
+msgstr "%s olarak belirlenmiş yazılar"
+
+#: admin/class-yoast-form.php:131
+msgid "Debug Information"
+msgstr "Hata ayıklama bilgisi"
+
+#: admin/class-yoast-form.php:133
+msgid "Current option:"
+msgstr "Mevcut seçenekler:"
+
+#: admin/class-yoast-form.php:238
+msgid "Remove these ads?"
+msgstr "Reklamları kaldırmak ister misin?"
+
+#. translators: %1$s expands to Yoast SEO Premium
+#: admin/class-yoast-form.php:241
+msgid "Upgrade to %1$s &raquo;"
+msgstr "%1$s sürümüne yükselt &raquo;"
+
+#: admin/class-yoast-form.php:476
+#: admin/taxonomy/class-taxonomy-fields-presenter.php:89
+msgid "Upload Image"
+msgstr "Görsel yükle"
+
+#: admin/class-yoast-plugin-conflict.php:160
+msgid "Warning!"
+msgstr "Uyarı!"
+
+#. translators: %1$s: 'Facebook & Open Graph' plugin name(s) of possibly
+#. conflicting plugin(s), %2$s to Yoast SEO
+#: admin/class-yoast-plugin-conflict.php:163
+msgid "The %1$s plugin(s) might cause issues when used in conjunction with %2$s."
+msgstr "%1$s eklentisi/eklentileri %2$s ile çakışıp problemlere neden oluyorlar."
+
+#: admin/class-yoast-plugin-conflict.php:165
+msgid "Recommended solution"
+msgstr "Önerilen çözüm"
+
+#. translators: %1$s: 'Facebook & Open Graph' plugin name(s) of possibly
+#. conflicting plugin(s). %2$s to Yoast SEO
+#: admin/class-yoast-plugin-conflict.php:168
+msgid "We recommend you deactivate %1$s and have another look at your %2$s configuration using the button above."
+msgstr "Tavsiyemiz %1$s eklentisini etkisizleştirip, aşağıdaki tuş yardımıyla %2$s ayarlarını gözden geçirmeniz yönünde olacaktır."
+
+#. translators: %s: 'Facebook' plugin name of possibly conflicting plugin
+#: admin/class-yoast-plugin-conflict.php:172
+msgid "Deactivate %s"
+msgstr "Devre dışı bırak: %s"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-yoast-plugin-conflict.php:176
+msgid "This warning is generated by %1$s."
+msgstr "Uyarı %1$s tarafından oluşturuldu."
+
+#: admin/google_search_console/class-gsc-category-filters.php:113
+msgid "Access denied"
+msgstr "Erişim reddedildi"
+
+#: admin/google_search_console/class-gsc-category-filters.php:113
+msgid "Server requires authentication or is blocking Googlebot from accessing the site."
+msgstr "Sunucu doğrulama gerektiriyor ya da Googlebot erişimi engelleniyor."
+
+#: admin/google_search_console/class-gsc-category-filters.php:114
+msgid "Faulty redirects"
+msgstr "Hatalı yönlendirmeler"
+
+#: admin/google_search_console/class-gsc-category-filters.php:115
+msgid "Not followed"
+msgstr "Takip edilmedi"
+
+#: admin/google_search_console/class-gsc-category-filters.php:116
+msgid "Not found"
+msgstr "Bulunamadı"
+
+#: admin/google_search_console/class-gsc-category-filters.php:116
+msgid "URL points to a non-existent page."
+msgstr "Adres var olmayan bir sayfayı gösteriyor."
+
+#: admin/google_search_console/class-gsc-category-filters.php:117
+msgid "Google was unable to crawl this URL due to an undetermined issue."
+msgstr "Bilinmeyen bir problemden ötürü Google bu adresi tarayamadı."
+
+#. Translators: %1$s: expands to '<code>robots.txt</code>'.
+#: admin/google_search_console/class-gsc-category-filters.php:119
+msgid "Blocked"
+msgstr "Engellenmiş"
+
+#: admin/google_search_console/class-gsc-category-filters.php:119
+msgid "Googlebot could access your site, but certain URLs are blocked for Googlebot in your %1$s file. This block could either be for all Googlebots or even specifically for Googlebot-mobile."
+msgstr "Googlebot sitenize ulaşabiliyor fakat bazı adresler %1$s dosyasında Googlebot için engellenmiş. Bu engelleme tüm Googlebotlar için ya da özellikle Googlebot-mobiller için olabilir."
+
+#: admin/ajax.php:218
+msgid "Post doesn't exist."
+msgstr "Yazı bulunamadı."
+
+#: admin/ajax.php:227
+msgid "Post has an invalid Post Type: %s."
+msgstr "Yazının geçersiz bir yazı tipi var: %s."
+
+#: admin/ajax.php:235
+msgid "You can't edit %s."
+msgstr "Bunu düzenleyemezsiniz: %s."
+
+#: admin/ajax.php:243
+msgid "You can't edit %s that aren't yours."
+msgstr "%s ögesini düzenleyemezsiniz çünkü sizin değil."
+
+#: admin/ajax.php:251
+msgid "You have used HTML in your value which is not allowed."
+msgstr "Değerlerinizde kabul edilmeyen bir HTML kodu kullandınız"
+
+#. translators: %1$s expands to Yoast SEO, $2%s to the version number, %3$s and
+#. %4$s to anchor tags with link to intro page
+#: admin/class-admin-init.php:114
+msgid "%1$s has been updated to version %2$s. %3$sClick here%4$s to find out what's new!"
+msgstr "%1$s %2$s sürümüne yükseltildi. %3$sburaya tıklayarak%4$s neler yeni öğrenin!"
+
+#: admin/class-admin-init.php:165
+msgid "You still have the default WordPress tagline, even an empty one is probably better. %1$sYou can fix this in the customizer%2$s."
+msgstr "Varsayılan WordPress sloganını kullanabilirsiniz, hatta boş bir tane daha bile iyidir. %1$sÖzelleştirici ile bunu düzeltebilirsiniz%2$s."
+
+#: admin/class-admin-init.php:186
+msgid "Just another WordPress site"
+msgstr "Bir başka WordPress sitesi"
+
+#. translators: %1$s expands to Yoast SEO, %2$s expands to 5.4.3, %3$s expands
+#. to Google Analytics by Yoast
+#: admin/class-admin-init.php:212
+msgid "%1$s detected you are using version %2$s of %3$s, please update to the latest version to prevent compatibility issues."
+msgstr "%1$s %3$s eklentisinin %2$s sürümünü kullandığınızı tespit etti. Lütfen uyumsuzluk problemlerinin önüne geçmek için son sürüme güncelleyin."
+
+#: admin/class-admin.php:134
+msgid "General Settings"
+msgstr "Genel ayarlar"
+
+#: admin/class-admin.php:134 admin/class-admin.php:291
+#: admin/class-meta-columns.php:43 admin/taxonomy/class-taxonomy-columns.php:43
+#: inc/wpseo-non-ajax-functions.php:258
+msgid "SEO"
+msgstr "SEO"
+
+#: admin/class-admin.php:144 inc/wpseo-non-ajax-functions.php:409
+msgid "Titles &amp; Metas"
+msgstr "Başlıklar &amp; metalar"
+
+#: admin/class-admin.php:152 admin/class-social-admin.php:106
+#: admin/taxonomy/class-taxonomy-metabox.php:176
+#: inc/wpseo-non-ajax-functions.php:415
+msgid "Social"
+msgstr "Sosyal"
+
+#: admin/class-admin.php:161 admin/class-pointers.php:300
+#: inc/wpseo-non-ajax-functions.php:421
+msgid "XML Sitemaps"
+msgstr "XML site haritaları"
+
+#: admin/class-admin.php:170 admin/metabox/class-metabox.php:347
+#: admin/metabox/class-metabox.php:355 inc/wpseo-non-ajax-functions.php:427
+msgid "Advanced"
+msgstr "Gelişmiş"
+
+#: admin/class-admin.php:179 inc/wpseo-non-ajax-functions.php:433
+msgid "Tools"
+msgstr "Araçlar"
+
+#: admin/class-admin.php:188 inc/wpseo-non-ajax-functions.php:439
+msgid "Search Console"
+msgstr "Arama konsolu"
+
+#: admin/class-admin.php:197 admin/class-admin.php:304
+#: admin/class-pointers.php:331 admin/pages/licenses.php:77
+#: inc/wpseo-non-ajax-functions.php:445
+msgid "Extensions"
+msgstr "Eklentiler"
+
+#: admin/class-admin.php:226 admin/pages/dashboard.php:144
+#: admin/pages/metas.php:26 admin/pages/xml-sitemaps.php:30
+#: inc/wpseo-non-ajax-functions.php:403
+msgid "General"
+msgstr "Genel"
+
+#: admin/class-admin.php:253
+msgid "For more information:"
+msgstr "Daha fazla bilgi için:"
+
+#: admin/class-admin.php:254
+msgid "Title optimization"
+msgstr "Başlık iyileştirmesi"
+
+#: admin/class-admin.php:255
+msgid "Why Google won't display the right page title"
+msgstr "Google niçin doğru sayfa başlığını göstermiyor"
+
+#: admin/class-admin.php:261 admin/pages/metas.php:46
+msgid "Template explanation"
+msgstr "Şablon açıklaması"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-admin.php:263 admin/pages/metas.php:48
+msgid "The title &amp; metas settings for %1$s are made up of variables that are replaced by specific values from the page when the page is displayed. The tabs on the left explain the available variables."
+msgstr "%1$s için başlık ve meta ayarları gösterildiği sayfaya bağlı olarak bir çok özel değer ile değiştirilirler. Soldaki sekme olası değişkenleri açıklar."
+
+#: admin/class-admin.php:263 admin/pages/metas.php:48
+msgid "Note that not all variables can be used in every template."
+msgstr "Lütfen her değişkenin her şablonda kullanılamayacağına dikkat edin."
+
+#: admin/class-admin.php:270 admin/class-admin.php:271 admin/pages/metas.php:54
+#: admin/pages/metas.php:56
+msgid "Basic Variables"
+msgstr "Temel değişkenler"
+
+#: admin/class-admin.php:278 admin/class-admin.php:279 admin/pages/metas.php:62
+#: admin/pages/metas.php:64
+msgid "Advanced Variables"
+msgstr "Gelişmiş değişkenler"
+
+#: admin/class-admin.php:291 admin/pages/network.php:86
+msgid "MultiSite Settings"
+msgstr "Çoklu site ayarları"
+
+#: admin/class-admin.php:297
+msgid "Edit Files"
+msgstr "Dosyaları düzenle"
+
+#: admin/class-admin.php:374
+msgid "Posts"
+msgstr "Yazılar"
+
+#: admin/class-admin.php:421
+msgid "Huge SEO Issue: You're blocking access to robots."
+msgstr "Büyük SEO Sorunu: Robotların erişimini engelliyorsunuz."
+
+#: admin/class-admin.php:422
+msgid "You must %sgo to your Reading Settings%s and uncheck the box for Search Engine Visibility."
+msgstr "%sOkuma ayarları%s sayfasına giderek, Arama motoru görünürlüğü seçeneğindeki işareti kaldırmalısınız."
+
+#: admin/class-admin.php:424 admin/class-admin.php:459
+msgid "I know, don't bug me."
+msgstr "Biliyorum, önemseme."
+
+#: admin/class-admin.php:455
+msgid "SEO Issue:"
+msgstr "SEO problemi:"
+
+#. translators: %1$s expands to Yoast SEO, %2$s to opening anchor and %3$s the
+#. anchor closing tag
+#: admin/class-admin.php:457
+msgid "Your theme contains a meta description, which blocks %1$s from working properly. Please visit the %2$sSEO Dashboard%3$s to fix this."
+msgstr "Temanız bir meta açıklama alanına sahip, ki bu da %1$s eklentisinin düzgün çalışmasını engelliyor. %2$sSEO paneli%3$sni ziyaret ederek düzeltin."
+
+#: admin/class-admin.php:475
+#: admin/google_search_console/class-gsc-platform-tabs.php:40
+#: admin/taxonomy/class-taxonomy-metabox.php:122
+#: admin/taxonomy/class-taxonomy-metabox.php:130
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: admin/class-admin.php:487
+msgid "Premium Support"
+msgstr "Özel destek"
+
+#: admin/class-admin.php:491
+msgid "FAQ"
+msgstr "S.S.S."
+
+#: admin/class-admin.php:520 admin/class-pointers.php:287
+#: admin/pages/social.php:20
+msgid "Google+"
+msgstr "Google+"
+
+#: admin/class-admin.php:522
+msgid "Twitter username (without @)"
+msgstr "Twitter kullancı adı (@ işareti olmadan)"
+
+#: admin/class-admin.php:524
+msgid "Facebook profile URL"
+msgstr "Facebook profil adresi"
+
+#. translators: this should be an array of stop words for your language,
+#. separated by comma's.
+#: admin/class-stop-words.php:39
+msgid "a,about,above,after,again,against,all,am,an,and,any,are,as,at,be,because,been,before,being,below,between,both,but,by,could,did,do,does,doing,down,during,each,few,for,from,further,had,has,have,having,he,he'd,he'll,he's,her,here,here's,hers,herself,him,himself,his,how,how's,i,i'd,i'll,i'm,i've,if,in,into,is,it,it's,its,itself,let's,me,more,most,my,myself,nor,of,on,once,only,or,other,ought,our,ours,ourselves,out,over,own,same,she,she'd,she'll,she's,should,so,some,such,than,that,that's,the,their,theirs,them,themselves,then,there,there's,these,they,they'd,they'll,they're,they've,this,those,through,to,too,under,until,up,very,was,we,we'd,we'll,we're,we've,were,what,what's,when,when's,where,where's,which,while,who,who's,whom,why,why's,with,would,you,you'd,you'll,you're,you've,your,yours,yourself,yourselves"
+msgstr "hakkında,yukarda,aşağıda,tümü,ve,herşey,hiç biri,çünkü,arasında,o,bu,şu,nasıl,nerede,nerde,neden,onun,bunun,şunun,bizim,aramızda,arasında"
+
+#: admin/class-bulk-description-editor-list-table.php:44
+msgid "Existing Yoast Meta Description"
+msgstr "Var olan Yoast meta açıklaması"
+
+#: admin/class-bulk-description-editor-list-table.php:45
+msgid "New Yoast Meta Description"
+msgstr "Yeni Yoast meta açıklaması"
+
+#: admin/class-bulk-editor-list-table.php:133
+msgid "You are not allowed to access this page."
+msgstr "Bu sayfaya erişim izniniz yok."
+
+#: admin/class-bulk-editor-list-table.php:294
+msgctxt "posts"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] "Tümü <span class=\"count\">(%s)</span>"
+msgstr[1] "Tümü <span class=\"count\">(%s)</span>"
+
+#: admin/class-bulk-editor-list-table.php:337
+msgctxt "posts"
+msgid "Trash <span class=\"count\">(%s)</span>"
+msgid_plural "Trash <span class=\"count\">(%s)</span>"
+msgstr[0] "Çöp <span class=\"count\">(%s)</span>"
+msgstr[1] "Çöp <span class=\"count\">(%s)</span>"
+
+#: admin/class-bulk-editor-list-table.php:387
+msgid "Filter"
+msgstr "Filtre"
+
+#: admin/class-bulk-editor-list-table.php:748
+msgid "Edit this item"
+msgstr "Bu ögeyi düzenle"
+
+#: admin/class-bulk-editor-list-table.php:748
+msgid "Edit"
+msgstr "Düzenle"
+
+#: admin/class-bulk-editor-list-table.php:754
+msgid "Preview &#8220;%s&#8221;"
+msgstr "Önizleme &#8220;%s&#8221;"
+
+#: admin/class-bulk-editor-list-table.php:754
+msgid "Preview"
+msgstr "Önizleme"
+
+#: admin/class-bulk-editor-list-table.php:758
+msgid "View &#8220;%s&#8221;"
+msgstr "Görüntüle &#8220;%s&#8221;"
+
+#: admin/class-bulk-editor-list-table.php:758
+#: admin/google_search_console/class-gsc-table.php:209
+msgid "View"
+msgstr "Görüntüle"
+
+#: admin/class-bulk-editor-list-table.php:920
+msgid "WP Page Title"
+msgstr "WP sayfa başlığı"
+
+#: admin/class-bulk-editor-list-table.php:921
+msgid "Post Type"
+msgstr "Yazı tipi"
+
+#: admin/class-bulk-editor-list-table.php:922
+msgid "Post Status"
+msgstr "Yazı durumu"
+
+#: admin/class-bulk-editor-list-table.php:923
+msgid "Publication date"
+msgstr "Yayın tarihi"
+
+#: admin/class-bulk-editor-list-table.php:924
+msgid "Page URL/Slug"
+msgstr "Sayfa adresi/kısa ismi"
+
+#: admin/class-bulk-editor-list-table.php:929
+msgid "Action"
+msgstr "Eylem"
+
+#: admin/class-config.php:110 admin/metabox/class-metabox.php:682
+#: admin/taxonomy/class-taxonomy.php:97
+msgid "Use Image"
+msgstr "Resim kullan"
+
+#. translators: %s: '%%term_title%%' variable used in titles and meta's
+#. template that's not compatible with the given template
+#: admin/class-config.php:124
+msgid "Warning: the variable %s cannot be used in this template."
+msgstr "Uyarı: %s değişkeni bu şablonda kullanılamaz."
+
+#: admin/class-config.php:124
+msgid "See the help tab for more info."
+msgstr "Ayrıntılı bilgi için yardım sekmesini inceleyin."
+
+#. translators: %s is the name of the plugin
+#: admin/class-customizer.php:52
+msgid "%s Breadcrumbs"
+msgstr "%s dolaşımı"
+
+#: admin/class-customizer.php:86
+msgid "Remove blog page from breadcrumbs"
+msgstr "Blog sayfasını dolaşımdan kaldır"
+
+#: admin/class-customizer.php:121
+msgid "Breadcrumbs separator:"
+msgstr "Dolaşım ayracı:"
+
+#: admin/class-customizer.php:146
+msgid "Anchor text for the homepage:"
+msgstr "Ana sayfa için bağlantı metni:"
+
+#: admin/class-customizer.php:171
+msgid "Prefix for breadcrumbs:"
+msgstr "Dolaşım için ön ek:"
+
+#: admin/class-customizer.php:196
+msgid "Prefix for archive pages:"
+msgstr "Arşiv sayfaları için ön ek:"
+
+#: admin/class-customizer.php:221
+msgid "Prefix for search result pages:"
+msgstr "Arama sonuçları için ön ek:"
+
+#: admin/class-customizer.php:246
+msgid "Breadcrumb for 404 pages:"
+msgstr "404 sayfası için dolaşım:"
+
+#: admin/class-export.php:66
+msgid "Export created: %1$sdownload your export file here%2$s."
+msgstr "Dışarı aktarım oluşturuldu: %1$saktarım dosyanızı buradan indirin.%2$s"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-export.php:71
+msgid "Error creating %1$s export: "
+msgstr "%1$s dışarı aktarımı oluşturulurken hata:"
+
+#: admin/class-export.php:97
+msgid "Could not zip settings-file."
+msgstr "Ayarlar dosyası sıkıştırılamadı."
+
+#: admin/class-export.php:102
+msgid "Could not write settings to file."
+msgstr "Ayarlar dosyasına yazılamıyor."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-export.php:112
+msgid "This is a settings export file for the %1$s plugin by Yoast.com"
+msgstr "Yoast.com %1$s eklentisi için bir ayar verme dosyasına"
+
+#: admin/class-export.php:114
+msgid "This export includes taxonomy metadata"
+msgstr "Bu aktarım dosyası kategori meta verilerini de içeriyor"
+
+#: admin/class-export.php:181
+msgid "No taxonomy metadata found"
+msgstr "Kategori meta verisi bulunamadı"
+
+#: admin/class-import-external.php:106
+msgid "HeadSpace2 data successfully imported"
+msgstr "HeadSpace2 verisi başarıyla içe aktarıldı."
+
+#: admin/class-import-woothemes-seo.php:29
+msgid "WooThemes SEO framework settings &amp; data successfully imported."
+msgstr "WooThemes SEO framework ayarları &amp; verileri başarıyla içe aktarıldı."
+
+#: admin/class-import.php:76 admin/class-import.php:82
+#: admin/class-import.php:88 admin/class-import.php:120
+#: admin/class-import.php:127 admin/class-import.php:151
+msgid "Settings could not be imported:"
+msgstr "Ayarlar içe aktarılamadı:"
+
+#: admin/class-import.php:88
+msgid "Upload failed."
+msgstr "Yükleme başarısız."
+
+#: admin/class-import.php:120
+msgid "Unzipping failed with error \"%s\"."
+msgstr "Paketten çıkarma \"%s\" hatası ile başarısız oldu."
+
+#: admin/class-import.php:127
+msgid "Unzipping failed - file settings.ini not found."
+msgstr "Paketten çıkarma başarısız - settings.ini dosyası bulunamadı."
+
+#: admin/class-import.php:148
+msgid "Settings successfully imported."
+msgstr "Ayarlar başarıyla içe aktarıldı."
+
+#: admin/class-import.php:151
+msgid "No settings found in file."
+msgstr "Dosyada ayar bulunamadı."
+
+#: admin/class-import.php:173
+msgid "Setting \"%s\" is no longer used and has been discarded."
+msgstr "\"%s\" ayarı artık kullanılmıyor ve bu yüzden kapatıldı"
+
+#: admin/metabox/class-metabox.php:51
+#: admin/taxonomy/class-taxonomy-content-fields.php:20
+msgid "This is a rendering of what this post might look like in Google's search results. Read %sthis post%s for more info."
+msgstr "Bu yazının Google arama sonuçlarında nasıl gözükeceğinin bir önizlemesidir. Daha fazla bilgi için %sbu yazıyı%s okuyun."
+
+#: admin/metabox/class-metabox.php:58
+#: admin/taxonomy/class-taxonomy-content-fields.php:27
+msgid "Focus Keyword"
+msgstr "Odak anahtar kelime"
+
+#: admin/metabox/class-metabox.php:59
+#: admin/taxonomy/class-taxonomy-content-fields.php:28
+msgid "Pick the main keyword or keyphrase that this post/page is about. Read %sthis post%s for more info."
+msgstr "Bu yazının/sayfanın ne hakkında olduğu ile ilgili temel anahtar kelimeyi seçin. Daha fazla bilgi için %sbu yazıyı%s okuyun."
+
+#: admin/class-meta-columns.php:44 admin/metabox/class-metabox.php:62
+msgid "SEO Title"
+msgstr "SEO başlığı"
+
+#: admin/metabox/class-metabox.php:64 admin/views/tabs/metas/post-types.php:74
+msgid "Meta description"
+msgstr "Meta açıklaması"
+
+#: admin/metabox/class-metabox.php:66
+#: admin/taxonomy/class-taxonomy-settings-fields.php:37
+#: admin/views/tabs/metas/post-types.php:76
+msgid "Meta keywords"
+msgstr "Meta anahtar kelimeler"
+
+#: admin/metabox/class-metabox.php:67
+msgid "If you type something above it will override your %smeta keywords template%s."
+msgstr "Eğer yukarıya birşey yazarsanız %smeta anahtar kelime şablonunun%s üzerine yazacaktır."
+
+#: admin/metabox/class-metabox.php:70
+msgid "Meta Robots Index"
+msgstr "Meta robots indeksi"
+
+#: admin/metabox/class-metabox.php:72
+#: admin/taxonomy/class-taxonomy-settings-fields.php:105
+msgid "Warning: even though you can set the meta robots setting here, the entire site is set to noindex in the sitewide privacy settings, so these settings won't have an effect."
+msgstr "Uyarı: meta robot ayarlarını burada girebiliyor olsanız da, sitenin genel ayarlarında bu site indekslenmesin diye ayarlanmış. Yani robot ayarlarının bir etkisi olmayacaktır."
+
+#: admin/metabox/class-metabox.php:74
+msgid "Default for post type, currently: %s"
+msgstr "Varsayılan yazı tipi, şu anda: %s"
+
+#: admin/metabox/class-metabox.php:78
+msgid "Meta Robots Follow"
+msgstr "Meta robots takibi"
+
+#: admin/metabox/class-metabox.php:82
+msgid "Meta Robots Advanced"
+msgstr "Meta robots gelişmiş"
+
+#: admin/metabox/class-metabox.php:83
+msgid "Advanced <code>meta</code> robots settings for this page."
+msgstr "Bu sayfa için gelişmiş <code>meta</code> robots ayarları."
+
+#: admin/metabox/class-metabox.php:84
+msgid "Site-wide default: %s"
+msgstr "Site genelinde varsayılan: %s"
+
+#: admin/metabox/class-metabox.php:85 admin/pages/network.php:53
+#: admin/views/tabs/advanced/breadcrumbs.php:50
+#: admin/views/tabs/advanced/breadcrumbs.php:67 inc/class-wpseo-meta.php:410
+msgid "None"
+msgstr "Hiç biri"
+
+#: admin/metabox/class-metabox.php:86
+msgid "NO ODP"
+msgstr "ODP yok"
+
+#: admin/metabox/class-metabox.php:87
+msgid "No Image Index"
+msgstr "Görsel indeksi yok"
+
+#: admin/metabox/class-metabox.php:88
+msgid "No Archive"
+msgstr "Arşiv yok"
+
+#: admin/metabox/class-metabox.php:89
+msgid "No Snippet"
+msgstr "Kod parçacığı yok"
+
+#: admin/metabox/class-metabox.php:91
+msgid "Breadcrumbs Title"
+msgstr "Dolaşım menüsü başlığı"
+
+#: admin/metabox/class-metabox.php:92
+msgid "Title to use for this page in breadcrumb paths"
+msgstr "Dolaşım yollarında bu sayfa için kullanılacak başlık"
+
+#: admin/metabox/class-metabox.php:94
+#: admin/taxonomy/class-taxonomy-settings-fields.php:44
+msgid "Canonical URL"
+msgstr "Aynı adres"
+
+#: admin/metabox/class-metabox.php:95
+msgid "The canonical URL that this page should point to, leave empty to default to permalink. %sCross domain canonical%s supported too."
+msgstr "Bu sayfa için canonical adresin göstereceği adres, kalıcı bağlantı için boş bırakın. %sÇapraz alan adı canonical%s da destekleniyor."
+
+#: admin/metabox/class-metabox.php:97
+msgid "301 Redirect"
+msgstr "301 yönlendirme"
+
+#: admin/metabox/class-metabox.php:98
+msgid "The URL that this page should redirect to."
+msgstr "Bu sayfanın yönlenmesi gereken adres."
+
+#: admin/class-meta-columns.php:335 admin/metabox/class-metabox.php:148
+msgid "Post is set to noindex."
+msgstr "Yazı indekslenmesin olarak ayarlanmış."
+
+#: admin/metabox/class-metabox.php:155
+msgid "No focus keyword set."
+msgstr "Odak anahtar kelime ayarlanmadı."
+
+#: admin/metabox/class-metabox.php:173
+msgid "SEO:"
+msgstr "AMO (SEO):"
+
+#: admin/metabox/class-metabox.php:175
+msgid "Check"
+msgstr "Kontrol"
+
+#: admin/formatter/class-metabox-formatter.php:47
+msgid "Content:"
+msgstr "İçerik:"
+
+#: admin/metabox/class-metabox.php:228 admin/taxonomy/class-taxonomy.php:178
+msgid "(no parent)"
+msgstr "(ebeveyn yok)"

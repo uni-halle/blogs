@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-10-01 02:23:24+0000\n"
+"PO-Revision-Date: 2016-07-10 02:21:44+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/1.0-alpha-1100\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
 "Project-Id-Version: Development (trunk)\n"
 
 #: inc/functions.php:168 inc/functions.php:185
@@ -354,6 +354,26 @@ msgstr "Jiddisch (transkribiert)"
 msgid "Yiddish - unicode"
 msgstr "iddisch (unicode)"
 
+#. Plugin Name of the plugin/theme
+msgid "Weather Underground"
+msgstr "Weather Underground"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/katzwebservices/Wunderground#setting-up-the-plugin"
+msgstr "https://github.com/katzwebservices/Wunderground#setting-up-the-plugin"
+
+#. Description of the plugin/theme
+msgid "Get accurate and beautiful weather forecasts powered by Wunderground.com for your content or your sidebar."
+msgstr "Erhalte korrekte und gutaussehende Wettervorhersagen von Wunderground.com für deine Inhalte oder deine Seitenleiste."
+
+#. Author of the plugin/theme
+msgid "Katz Web Services, Inc."
+msgstr "Katz Web Services, Inc."
+
+#. Author URI of the plugin/theme
+msgid "https://katz.co"
+msgstr "https://katz.co"
+
 #: inc/class-template.php:67
 msgid "Statement as of %s"
 msgstr "Stand %s"
@@ -400,35 +420,35 @@ msgctxt "Weather alert expires date/time"
 msgid "Expires:"
 msgstr "Ablauf:"
 
-#: inc/class-template.php:149
+#: inc/class-template.php:158
 msgid "Current Conditions"
 msgstr "Aktuelle Bedingungen"
 
-#: inc/class-template.php:150
+#: inc/class-template.php:159
 msgid "Simple display of the current conditions."
 msgstr "Einfache Anzeige der aktuellen Bedingungen"
 
-#: inc/class-template.php:155
+#: inc/class-template.php:164
 msgid "Grid Forecast"
 msgstr "Gitter Vorhersage"
 
-#: inc/class-template.php:156
+#: inc/class-template.php:165
 msgid "Scales to any screen size."
 msgstr "Skaliert an jede Bildschirmgröße"
 
-#: inc/class-template.php:161
+#: inc/class-template.php:170
 msgid "Details Table"
 msgstr "Details Tabelle"
 
-#: inc/class-template.php:162
+#: inc/class-template.php:171
 msgid "Display the forecast in a table with rows. Great for in-depth forecast display."
 msgstr "Zeigt die Vorhersage als Tabelle mit Zeilen. Gut für die ausführliche Anzeige"
 
-#: inc/class-template.php:167
+#: inc/class-template.php:176
 msgid "Horizontal Table"
 msgstr "Horizontale Tabelle"
 
-#: inc/class-template.php:168
+#: inc/class-template.php:177
 msgid "Display the forecast in a table with columns. Great for forecast summaries."
 msgstr "Zeigt die Vorhersage als Tabelle mit Spalten. Gut für Zusammenfassungen."
 
@@ -439,6 +459,10 @@ msgstr "Addiere eine Wunderground.com Vorhersage"
 #: inc/class-widget.php:48 inc/functions.php:176
 msgid "Wunderground"
 msgstr "Wunderground"
+
+#: inc/class-widget.php:132
+msgid "There was an error fetching the forecast: %s"
+msgstr "Ein Fehler ist aufgetreten beim Abruf der Vorhersage für: %s"
 
 #: inc/class-widget.php:169
 msgid "Title"
@@ -583,6 +607,10 @@ msgstr "Zeigt eine Beschreibung der Vorhersage, üblicherweise in Satzform."
 #: inc/class-widget.php:289
 msgid "Weather Alerts &amp; Warnings"
 msgstr "Wetter Hinweise &amp; Warnungen"
+
+#: inc/class-widget.php:290
+msgid "Display Severe Weather alerts and warnings."
+msgstr "Zeige (Unwetter-)Warnungen."
 
 #: inc/class-widget.php:306
 msgid "Forecast Language"

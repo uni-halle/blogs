@@ -1,18 +1,15 @@
-# Translation of Omega in Japanese
-# This file is distributed under the same license as the Omega package.
+# Translation of Themes - Omega in Japanese
+# This file is distributed under the same license as the Themes - Omega package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-04-24 09:40:11+0000\n"
+"PO-Revision-Date: 2016-10-17 11:36:45+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/2.1.0-alpha\n"
-"Project-Id-Version: Omega\n"
-
-#. Theme Name of the plugin/theme
-msgid "Omega"
-msgstr "Omega"
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: ja_JP\n"
+"Project-Id-Version: Themes - Omega\n"
 
 #. Description of the plugin/theme
 msgid "Omega theme is a responsive WordPress theme framework, serving as a robust WordPress Parent Theme. Omega theme supports HTML5 and schema.org code, the semantic foundation for SEO best practices. Omega theme is designed to be simple, yet powerful, flexible to create any site you want via omega child theme. The framework allows theme designers to build child themes quickly without having to code complex functionality for features. Omega framework does these things for theme developers / designers to enable them get back to what matters the most: save time designing and developing beautiful WordPress theme. WordPress child theme handle all the markup, style, and scripts while the framework handles the logic. Simplify your website with Omega theme for WordPress"
@@ -20,6 +17,10 @@ msgstr ""
 "Omega テーマはレスポンシブ Webデザインに対応した 堅牢なWordPress の親テーマのフレームワークです。Omega テーマは SEO ベストプラクティスのためにHTML5 と schema.org のコードを基盤としています。Omega テーマは子テーマを使ってお好きなサイトを柔軟に作成するためにシンプル且つ強力な設計をされています。フレームワークを使うことによってテーマ設計者は機能のために複雑なコーディングをする必要なく、すぐに子テーマを構築することができます。Omega フレームワークはテーマ開発者／テーマデザイナーに最も重要なことを取り戻させます：美しい WordPress テーマを構築していて、開発している時間を節約できます。\n"
 "フレームワークのすべてのマークアップ、スタイル、スクリプトを子テーマは取り扱います。\n"
 "Omega テーマはあなたのウェブサイトを簡易に構築できるようにします。"
+
+#. Theme Name of the plugin/theme
+msgid "Omega"
+msgstr "Omega"
 
 #: partials/entry-byline.php:3
 msgid "by"
@@ -31,14 +32,14 @@ msgid "Search"
 msgstr "検索"
 
 #: searchform.php:9
-msgctxt "placeholder"
-msgid "Search ..."
-msgstr "検索 ..."
-
-#: searchform.php:9
 msgctxt "label"
 msgid "Search for:"
 msgstr "検索:"
+
+#: searchform.php:9
+msgctxt "placeholder"
+msgid "Search ..."
+msgstr "検索 ..."
 
 #: partials/no-results.php:19
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
@@ -52,17 +53,17 @@ msgstr "検索キーワードに一致するものが見つかりませんでし
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr "最初の投稿を公開する準備はできましたか？<a href=\"%1$s\">ここから始めましょう</a>。"
 
-#: partials/entry-footer.php:2
-msgid "Posted in: %s"
-msgstr "カテゴリー: %s"
+#: partials/no-results.php:11
+msgid "Nothing Found"
+msgstr "見つかりませんでした"
 
 #: partials/entry-footer.php:3
 msgid "Tagged: %s"
 msgstr "タグ: %s"
 
-#: partials/no-results.php:11
-msgid "Nothing Found"
-msgstr "見つかりませんでした"
+#: partials/entry-footer.php:2
+msgid "Posted in: %s"
+msgstr "カテゴリー: %s"
 
 #: partials/entry-byline.php:5
 msgid "Edit"
@@ -72,51 +73,51 @@ msgstr "編集"
 msgid "One Comment"
 msgstr "コメント"
 
-#: partials/comments-loop-nav.php:4
-msgid "Page %1$s of %2$s"
-msgstr "%2$sページ中の%1$sページ"
-
 #: partials/comments-loop-nav.php:5
 msgid "Next &rarr;"
 msgstr "次へ &rarr;"
+
+#: partials/comments-loop-nav.php:4
+msgid "Page %1$s of %2$s"
+msgstr "%2$sページ中の%1$sページ"
 
 #: partials/comments-loop-nav.php:3
 msgid "&larr; Previous"
 msgstr "&larr; 前へ"
 
-#: lib/functions/utility.php:79
-msgid "(Untitled)"
-msgstr "（無題）"
+#: partials/comments-loop-error.php:4
+msgid "Comments are closed."
+msgstr "コメントは停止中です。"
 
 #: partials/comments-loop-error.php:2
 msgid "Comments are closed, but <a href=\"%s\" title=\"Trackback URL for this post\">trackbacks</a> and pingbacks are open."
 msgstr "コメントは停止中ですが、<a href=\"%s\" title=\"この投稿のトラックバック URL\">トラックバック</a>とピンバックは受け付けています。"
 
-#: partials/comments-loop-error.php:4
-msgid "Comments are closed."
-msgstr "コメントは停止中です。"
+#: lib/functions/utility.php:79
+msgid "(Untitled)"
+msgstr "（無題）"
 
-#: lib/functions/template-tags.php:42
+#: partials/single-nav.php:2
 msgctxt "Next post link"
 msgid "&rarr;"
 msgstr "&rarr;"
 
-#: lib/functions/template-tags.php:41
+#: partials/single-nav.php:1
 msgctxt "Previous post link"
 msgid "&larr;"
 msgstr "&larr;"
 
 #: lib/functions/template-post.php:128
 msgid "Leave a Comment"
-msgstr "コメントをどうぞ"
+msgstr "コメントする"
 
 #: lib/functions/template-post.php:127
 msgid "1 Comment"
 msgstr "1件のコメント"
 
-#: lib/functions/template-general.php:461
-msgid "ago"
-msgstr "前"
+#: lib/functions/template-post.php:126 partials/comments-loop.php:2
+msgid "% Comments"
+msgstr "%件のコメント"
 
 #. Translators: Separates tags, categories, etc. when displaying a post.
 #: lib/functions/template-post.php:85
@@ -124,29 +125,9 @@ msgctxt "taxonomy terms separator"
 msgid ", "
 msgstr ", "
 
-#: lib/functions/template-post.php:126 partials/comments-loop.php:2
-msgid "% Comments"
-msgstr "%件のコメント"
-
-#: lib/functions/template-general.php:370
-msgctxt "hour archives time format"
-msgid "g a"
-msgstr "g a"
-
-#. Translators: Minute archive title. %s is the minute time format.
-#: lib/functions/template-general.php:390
-msgid "Minute %s"
-msgstr "%s分"
-
-#: lib/functions/template-general.php:390
-msgctxt "minute archives time format"
-msgid "i"
-msgstr "i"
-
-#: lib/functions/template-general.php:409
-msgctxt "minute and hour archives time format"
-msgid "g:i a"
-msgstr "g:i a"
+#: lib/functions/template-general.php:461
+msgid "ago"
+msgstr "前"
 
 #. Translators: %s is the search query. The HTML entities are opening and
 #. closing curly quotes.
@@ -154,34 +135,40 @@ msgstr "g:i a"
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "&#8220;%s&#8221; の検索結果"
 
-#. Translators: 1 is the week number and 2 is the year.
-#: lib/functions/template-general.php:332
-msgid "Week %1$s of %2$s"
-msgstr "%2$s年%1$s週目"
+#: lib/functions/template-general.php:409
+msgctxt "minute and hour archives time format"
+msgid "g:i a"
+msgstr "g:i a"
 
-#: lib/functions/template-general.php:332
-msgctxt "weekly archives date format"
-msgid "W"
-msgstr "W"
+#: lib/functions/template-general.php:390
+msgctxt "minute archives time format"
+msgid "i"
+msgstr "i"
+
+#. Translators: Minute archive title. %s is the minute time format.
+#: lib/functions/template-general.php:390
+msgid "Minute %s"
+msgstr "%s分"
+
+#: lib/functions/template-general.php:370
+msgctxt "hour archives time format"
+msgid "g a"
+msgstr "g a"
 
 #: lib/functions/template-general.php:351
 msgctxt "daily archives date format"
 msgid "F j, Y"
 msgstr "Y年n月j日"
 
-#: lib/functions/template-general.php:265
-msgid "You are browsing the site archives by time."
-msgstr "時間別アーカイブを表示中です。"
+#: lib/functions/template-general.php:332
+msgctxt "weekly archives date format"
+msgid "W"
+msgstr "W"
 
-#: lib/functions/template-general.php:268
-#: lib/functions/template-general.php:271
-#: lib/functions/template-general.php:274
-msgid "You are browsing the site archives for %s."
-msgstr "「%s」サイトのアーカイブを表示中です。"
-
-#: lib/functions/template-general.php:277
-msgid "You are browsing the site archives."
-msgstr "アーカイブを表示中です。"
+#. Translators: 1 is the week number and 2 is the year.
+#: lib/functions/template-general.php:332
+msgid "Week %1$s of %2$s"
+msgstr "%2$s年%1$s週目"
 
 #: lib/functions/template-general.php:312
 #: lib/functions/template-general.php:332
@@ -189,102 +176,99 @@ msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y年"
 
-#. Translators: Theme name.
-#: lib/functions/template-general.php:74 lib/functions/template-general.php:129
-msgid "%s WordPress Theme"
-msgstr "%s WordPress テーマ"
+#: lib/functions/template-general.php:277
+msgid "You are browsing the site archives."
+msgstr "アーカイブを表示中です。"
+
+#: lib/functions/template-general.php:268
+#: lib/functions/template-general.php:271
+#: lib/functions/template-general.php:274
+msgid "You are browsing the site archives for %s."
+msgstr "「%s」サイトのアーカイブを表示中です。"
+
+#: lib/functions/template-general.php:265
+msgid "You are browsing the site archives by time."
+msgstr "時間別アーカイブを表示中です。"
+
+#: lib/functions/template-general.php:259
+msgid "You are browsing the search results for &#8220;%s&#8221;"
+msgstr "「%s」の検索結果を表示中です。"
 
 #. Translators: Theme name.
 #: lib/functions/template-general.php:92
 msgid "%s"
 msgstr "%s"
 
-#: lib/functions/template-general.php:259
-msgid "You are browsing the search results for &#8220;%s&#8221;"
-msgstr "「%s」の検索結果を表示中です。"
-
-#: lib/functions/template-general.php:47
-msgid "State-of-the-art semantic personal publishing platform"
-msgstr "最先端のセマンティックなパーソナルパブリッシングプラットフォーム"
+#. Translators: Theme name.
+#: lib/functions/template-general.php:74 lib/functions/template-general.php:129
+msgid "%s WordPress Theme"
+msgstr "%s WordPress テーマ"
 
 #: lib/functions/template-general.php:47
 msgid "WordPress"
 msgstr "WordPress"
 
+#: lib/functions/template-general.php:47
+msgid "State-of-the-art semantic personal publishing platform"
+msgstr "最先端のセマンティックなパーソナルパブリッシングプラットフォーム"
+
 #: lib/functions/media.php:33
 msgid "Post Thumbnail"
 msgstr "投稿サムネイル"
 
-#: lib/functions/hooks.php:337 lib/functions/template-general.php:293
+#: lib/functions/hooks.php:302 lib/functions/template-general.php:293
 msgid "Archives"
 msgstr "アーカイブ"
 
-#: lib/functions/hooks.php:334
+#: lib/functions/hooks.php:299
 msgid "Year: %s"
 msgstr "年別: %s"
 
-#: lib/functions/hooks.php:331
+#: lib/functions/hooks.php:296
 msgid "Month: %s"
 msgstr "月別: %s"
 
-#: lib/functions/hooks.php:328
+#: lib/functions/hooks.php:293
 msgid "Day: %s"
 msgstr "日別: %s"
 
-#: lib/functions/hooks.php:320
+#: lib/functions/hooks.php:285
 msgid "Author: %s"
 msgstr "作者別: %s"
 
-#: lib/functions/hooks.php:310
+#: lib/functions/hooks.php:275
 msgid "Search Results for: %s"
 msgstr "「%s」の検索結果"
+
+#: partials/entry.php:33
+msgid "Pages:"
+msgstr "固定ページ:"
+
+#: lib/functions/hooks.php:135 lib/functions/hooks.php:137
+msgid " WordPress Theme by "
+msgstr " WordPress Theme by "
+
+#: lib/functions/hooks.php:135 lib/functions/hooks.php:137
+msgid "Copyright &#169; "
+msgstr "Copyright &#169; "
+
+#: lib/functions/hooks.php:72
+msgid "The main sidebar. It is displayed on either the left or right side of the page based on the chosen layout."
+msgstr "メインサイドバー。選択したレイアウトによって、ページの左または右に表示されます。"
 
 #: lib/functions/hooks.php:71
 msgctxt "sidebar"
 msgid "Primary"
 msgstr "メインサイドバー"
 
-#: lib/functions/hooks.php:72
-msgid "The main sidebar. It is displayed on either the left or right side of the page based on the chosen layout."
-msgstr "メインサイドバー。選択したレイアウトによって、ページの左または右に表示されます。"
-
-#: lib/functions/hooks.php:160 lib/functions/hooks.php:162
-msgid "Copyright &#169; "
-msgstr "Copyright &#169; "
-
-#: lib/functions/hooks.php:160 lib/functions/hooks.php:162
-msgid " WordPress Theme by "
-msgstr " WordPress Theme by "
-
-#: lib/functions/hooks.php:258
-msgid "Pages:"
-msgstr "固定ページ:"
-
 #: lib/functions/hooks.php:56
 msgctxt "nav menu location"
 msgid "Primary"
 msgstr "メインナビゲーション"
 
-#: lib/extensions/omega-child-page.php:10
-#: lib/extensions/omega-child-page.php:11
-#: lib/extensions/omega-child-page.php:64
-#: lib/extensions/omega-child-page.php:115
-msgid "Omega Child Themes"
-msgstr "Omega 子テーマ"
-
-#: lib/extensions/omega-child-page.php:68
-msgid "Personalize your Omega powered site with one of Omega child themes below"
-msgstr "以下の子テーマで Omega サイトをより自分らしくカスタマイズしましょう"
-
-#: lib/extensions/omega-child-page.php:95
-msgid "Child Themes"
-msgstr "子テーマ"
-
-#. Translators: Post date/time "title" attribute.
-#: lib/functions/attr.php:421
-msgctxt "post time format"
-msgid "l, F j, Y, g:i a"
-msgstr "Y年n月j日g:i a"
+#: lib/functions/extras.php:106
+msgid "Home"
+msgstr "ホーム"
 
 #. Translators: Comment date/time "title" attribute.
 #: lib/functions/attr.php:545
@@ -292,133 +276,150 @@ msgctxt "comment time format"
 msgid "l, F j, Y, g:i a"
 msgstr "Y年n月j日g:i a"
 
-#: lib/functions/extras.php:106
-msgid "Home"
-msgstr "ホーム"
+#. Translators: Post date/time "title" attribute.
+#: lib/functions/attr.php:421
+msgctxt "post time format"
+msgid "l, F j, Y, g:i a"
+msgstr "Y年n月j日g:i a"
 
-#: lib/extensions/custom-post.php:72
-msgid "More Link Page Scroll"
-msgstr "追加リンクページスクロール"
+#: lib/extensions/omega-child-page.php:116
+msgid "Child Themes"
+msgstr "子テーマ"
 
-#: lib/extensions/custom-post.php:75
-msgid "By default, clicking the .more-link anchor opens and scrolls the page to section of the document containing the named anchor. This section is where you put the <!--more--> tag within a post type."
-msgstr "デフォルトでは、 .more-link アンカーをクリックすると、その名前のアンカーを持つ文書のセクションに、ページが開いてスクロールします。このセクションではポストタイプの <!--more--> タグを置いたところです。"
+#: lib/extensions/omega-child-page.php:89
+msgid "Personalize your Omega powered site using one of Omega child themes below"
+msgstr "以下の子テーマで Omega サイトをより自分らしくカスタマイズしましょう"
 
-#: lib/extensions/custom-post.php:98
-msgid "Limit content to"
-msgstr "コンテンツを制限:"
-
-#: lib/extensions/custom-post.php:101
-msgid "Select \"Display post excerpts\" will limit the text and strip all formatting from the text displayed. Set 0 characters will display the first 55 words (default)"
-msgstr "「投稿抜粋を表示」を選択すると、テキストを制限し、フォーマットを取り除いて表示します。0文字に設定すると、最初の55単語を表示します (デフォルト)"
-
-#: lib/extensions/custom-post.php:123
-msgid "More Text"
-msgstr "詳細のテキスト"
-
-#: lib/extensions/custom-post.php:146
-msgid "Include the Featured Image?"
-msgstr "アイキャッチ画像を含めますか ?"
-
-#: lib/extensions/custom-post.php:175
-msgid "Image size"
-msgstr "画像サイズ"
-
-#: lib/extensions/custom-post.php:198
-msgid "Enable single post Prev Next navigation links?"
-msgstr "投稿の個別表示ページで前後の投稿に移動するナビゲーションリンクを有効にしますか ?"
-
-#: lib/extensions/footer-widgets.php:30
-msgid "Footer %d"
-msgstr "フッター %d"
+#: lib/extensions/omega-child-page.php:10
+#: lib/extensions/omega-child-page.php:11
+#: lib/extensions/omega-child-page.php:83
+#: lib/extensions/omega-child-page.php:136
+msgid "Omega Child Themes"
+msgstr "Omega 子テーマ"
 
 #: lib/extensions/footer-widgets.php:31
 msgid "Footer %d widget area."
 msgstr "フッター %d ウィジェットエリア。"
 
-#: lib/extensions/custom-logo.php:73
-msgid "Favicon"
-msgstr "Favicon"
+#: lib/extensions/footer-widgets.php:30
+msgid "Footer %d"
+msgstr "フッター %d"
+
+#: lib/extensions/custom-post.php:198
+msgid "Enable single post Prev Next navigation links?"
+msgstr "投稿の個別表示ページで前後の投稿に移動するナビゲーションリンクを有効にしますか ?"
+
+#: lib/extensions/custom-post.php:175
+msgid "Image size"
+msgstr "画像サイズ"
+
+#: lib/extensions/custom-post.php:146
+msgid "Include the Featured Image?"
+msgstr "アイキャッチ画像を含めますか ?"
+
+#: lib/extensions/custom-post.php:123
+msgid "More Text"
+msgstr "詳細のテキスト"
+
+#: lib/extensions/custom-post.php:101
+msgid "Select \"Display post excerpts\" will limit the text and strip all formatting from the text displayed. Set 0 characters will display the first 55 words (default)"
+msgstr "「投稿抜粋を表示」を選択すると、テキストを制限し、フォーマットを取り除いて表示します。0文字に設定すると、最初の55単語を表示します (デフォルト)"
+
+#: lib/extensions/custom-post.php:98
+msgid "Limit content to"
+msgstr "コンテンツを制限:"
+
+#: lib/extensions/custom-post.php:75
+msgid "By default, clicking the .more-link anchor opens and scrolls the page to section of the document containing the named anchor. This section is where you put the <!--more--> tag within a post type."
+msgstr "デフォルトでは、 .more-link アンカーをクリックすると、その名前のアンカーを持つ文書のセクションに、ページが開いてスクロールします。このセクションではポストタイプの <!--more--> タグを置いたところです。"
+
+#: lib/extensions/custom-post.php:72
+msgid "More Link Page Scroll"
+msgstr "追加リンクページスクロール"
 
 #: lib/extensions/custom-post.php:20
 msgid "Posts"
 msgstr "投稿"
 
-#: lib/extensions/custom-logo.php:20
-msgid "Branding"
-msgstr "ブランディング"
+#: lib/extensions/custom-logo.php:73
+msgid "Favicon"
+msgstr "Favicon"
 
 #: lib/extensions/custom-logo.php:45
 msgid "Logo"
 msgstr "ロゴ"
 
-#: lib/extensions/custom-comment.php:45
-msgid "Enable comments on pages "
-msgstr "固定ページでコメントを有効にする "
-
-#: lib/extensions/custom-comment.php:48
-msgid "This option will enable comments on pages. Comments can also be disabled per page basis when creating/editing pages."
-msgstr "このオプションは固定ページのコメントを有効化します。固定ページを新規作成や編集する際に個別にコメントを無効化することもできます。"
-
-#: lib/extensions/custom-css.php:58
-msgid "CSS"
-msgstr "CSS"
+#: lib/extensions/custom-logo.php:20
+msgid "Branding"
+msgstr "ブランディング"
 
 #: lib/extensions/custom-footer.php:65
 msgid "Footer"
 msgstr "フッター"
 
-#: lib/extensions/class-tgm-plugin-activation.php:3647
-msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
-msgid_plural "Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed."
-msgstr[0] "申し訳ありませんが　あなたの権限では、%s  プラグインのインストールをすることが出来ません。サイト管理者に連絡を取り、助言を求めてください"
+#: lib/extensions/custom-css.php:58
+msgid "CSS"
+msgstr "CSS"
 
-#: lib/extensions/class-tgm-plugin-activation.php:3650
-msgid "Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated."
-msgid_plural "Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated."
-msgstr[0] "申し訳ありませんが　あなたの権限では、%s  プラグインのアクティブ設定をすることが出来ません。サイト管理者に連絡を取り、助言を求めてください"
+#: lib/extensions/custom-comment.php:48
+msgid "This option will enable comments on pages. Comments can also be disabled per page basis when creating/editing pages."
+msgstr "このオプションは固定ページのコメントを有効化します。固定ページを新規作成や編集する際に個別にコメントを無効化することもできます。"
 
-#: lib/extensions/class-tgm-plugin-activation.php:3652
-msgid "Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated."
-msgid_plural "Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated."
-msgstr[0] "申し訳ありませんが　あなたの権限では、%s  プラグインのアップデートをすることが出来ません。サイト管理者に連絡を取り、助言を求めてください"
+#: lib/extensions/custom-comment.php:45
+msgid "Enable comments on pages "
+msgstr "固定ページでコメントを有効にする "
+
+#: lib/extensions/custom-comment.php:20
+msgid "Comments"
+msgstr "コメント"
+
+#: lib/extensions/class-tgm-plugin-activation.php:3657
+msgid "All plugins installed and activated successfully. %s"
+msgstr "全てのプラグインのインストール・有効化が完了しました：%s"
 
 #: lib/extensions/class-tgm-plugin-activation.php:3654
 msgid "Activate installed plugin"
 msgid_plural "Activate installed plugins"
 msgstr[0] "インストール済みプラグインを有効化"
 
-#: lib/extensions/class-tgm-plugin-activation.php:3657
-msgid "All plugins installed and activated successfully. %s"
-msgstr "全てのプラグインのインストール・有効化が完了しました：%s"
+#: lib/extensions/class-tgm-plugin-activation.php:3652
+msgid "Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated."
+msgid_plural "Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated."
+msgstr[0] "申し訳ありませんが　あなたの権限では、%s  プラグインのアップデートをすることが出来ません。サイト管理者に連絡を取り、助言を求めてください"
 
-#: lib/extensions/custom-comment.php:20
-msgid "Comments"
-msgstr "コメント"
+#: lib/extensions/class-tgm-plugin-activation.php:3650
+msgid "Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated."
+msgid_plural "Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated."
+msgstr[0] "申し訳ありませんが　あなたの権限では、%s  プラグインのアクティブ設定をすることが出来ません。サイト管理者に連絡を取り、助言を求めてください"
 
-#: lib/extensions/class-tgm-plugin-activation.php:3377
-msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
-msgstr "更新プロセスを開始しています。サーバーによっては少し時間がかかるかもしれません。しばらくお待ちください。"
-
-#: lib/extensions/class-tgm-plugin-activation.php:3378
-msgid "%1$s installed successfully."
-msgstr "%1$s が正常にインストールされました。"
-
-#: lib/extensions/class-tgm-plugin-activation.php:3379
-msgid "All installations have been completed."
-msgstr "すべてのインストールが完了しました。"
+#: lib/extensions/class-tgm-plugin-activation.php:3647
+msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
+msgid_plural "Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed."
+msgstr[0] "申し訳ありませんが　あなたの権限では、%s  プラグインのインストールをすることが出来ません。サイト管理者に連絡を取り、助言を求めてください"
 
 #: lib/extensions/class-tgm-plugin-activation.php:3380
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr "プラグをインインストールしています %1$s (%2$d/%3$d)"
 
-#: lib/extensions/class-tgm-plugin-activation.php:3373
-msgid "All installations and activations have been completed."
-msgstr "すべてのインストールと有効化が完了しました。"
+#: lib/extensions/class-tgm-plugin-activation.php:3379
+msgid "All installations have been completed."
+msgstr "すべてのインストールが完了しました。"
+
+#: lib/extensions/class-tgm-plugin-activation.php:3378
+msgid "%1$s installed successfully."
+msgstr "%1$s が正常にインストールされました。"
+
+#: lib/extensions/class-tgm-plugin-activation.php:3377
+msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr "更新プロセスを開始しています。サーバーによっては少し時間がかかるかもしれません。しばらくお待ちください。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:3374
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
 msgstr "プラグインをインストール、有効化しています %1$s (%2$d/%3$d)"
+
+#: lib/extensions/class-tgm-plugin-activation.php:3373
+msgid "All installations and activations have been completed."
+msgstr "すべてのインストールと有効化が完了しました。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:3372
 #: lib/extensions/class-tgm-plugin-activation.php:3378
@@ -430,17 +431,17 @@ msgstr "詳細を非表示"
 msgid "Show Details"
 msgstr "詳細を表示"
 
-#: lib/extensions/class-tgm-plugin-activation.php:3367
-msgid "The installation of %1$s failed."
-msgstr "%1$s のインストールに失敗しました。"
+#: lib/extensions/class-tgm-plugin-activation.php:3372
+msgid "%1$s installed and activated successfully."
+msgstr "%1$s が正常にインストールされ、有効化されました。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:3371
 msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
 msgstr "インストールと有効化プロセスを開始しています。サーバーによっては少し時間がかかるかもしれません。しばらくお待ちください。"
 
-#: lib/extensions/class-tgm-plugin-activation.php:3372
-msgid "%1$s installed and activated successfully."
-msgstr "%1$s が正常にインストールされ、有効化されました。"
+#: lib/extensions/class-tgm-plugin-activation.php:3367
+msgid "The installation of %1$s failed."
+msgstr "%1$s のインストールに失敗しました。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:3366
 msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
@@ -450,33 +451,33 @@ msgstr "<strong>%2$s</strong>%1$s のインストール中にエラーが発生�
 msgid "Updating Plugin %1$s (%2$d/%3$d)"
 msgstr "プラグインの更新: %1$s (%2$d/%3$d)"
 
-#: lib/extensions/class-tgm-plugin-activation.php:2645
-msgid "No plugins were selected to be installed. No action taken."
-msgstr "インストールするプラグインが選択されていません。何も実行しませんでした。"
-
-#: lib/extensions/class-tgm-plugin-activation.php:2647
-msgid "No plugins were selected to be updated. No action taken."
-msgstr "更新するプラグインが選択されていません。何も実行しませんでした。"
-
-#: lib/extensions/class-tgm-plugin-activation.php:2683
-msgid "No plugins are available to be installed at this time."
-msgstr "現時点でインストールできるプラグインはありません。"
-
-#: lib/extensions/class-tgm-plugin-activation.php:2685
-msgid "No plugins are available to be updated at this time."
-msgstr "現在更新できるプラグインはありません。"
-
-#: lib/extensions/class-tgm-plugin-activation.php:2790
-msgid "No plugins were selected to be activated. No action taken."
-msgstr "有効化するプラグインが選択されていません。何も実行しませんでした。"
+#: lib/extensions/class-tgm-plugin-activation.php:3030
+msgid "Plugin activation failed."
+msgstr "プラグインの有効化に失敗しました。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2816
 msgid "No plugins are available to be activated at this time."
 msgstr "現時点で有効化できるプラグインはありません。"
 
-#: lib/extensions/class-tgm-plugin-activation.php:3030
-msgid "Plugin activation failed."
-msgstr "プラグインの有効化に失敗しました。"
+#: lib/extensions/class-tgm-plugin-activation.php:2790
+msgid "No plugins were selected to be activated. No action taken."
+msgstr "有効化するプラグインが選択されていません。何も実行しませんでした。"
+
+#: lib/extensions/class-tgm-plugin-activation.php:2685
+msgid "No plugins are available to be updated at this time."
+msgstr "現在更新できるプラグインはありません。"
+
+#: lib/extensions/class-tgm-plugin-activation.php:2683
+msgid "No plugins are available to be installed at this time."
+msgstr "現時点でインストールできるプラグインはありません。"
+
+#: lib/extensions/class-tgm-plugin-activation.php:2647
+msgid "No plugins were selected to be updated. No action taken."
+msgstr "更新するプラグインが選択されていません。何も実行しませんでした。"
+
+#: lib/extensions/class-tgm-plugin-activation.php:2645
+msgid "No plugins were selected to be installed. No action taken."
+msgstr "インストールするプラグインが選択されていません。何も実行しませんでした。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2614
 msgid "Activate"
@@ -486,28 +487,28 @@ msgstr "使用する"
 msgid "Update"
 msgstr "更新"
 
-#: lib/extensions/class-tgm-plugin-activation.php:2493
-msgctxt "%2$s = plugin name in screen reader markup"
-msgid "Install %2$s"
-msgstr "インストール %2$s"
+#: lib/extensions/class-tgm-plugin-activation.php:2605
+msgid "Install"
+msgstr "インストール"
 
-#: lib/extensions/class-tgm-plugin-activation.php:2497
-msgctxt "%2$s = plugin name in screen reader markup"
-msgid "Update %2$s"
-msgstr "%2$s を更新"
+#: lib/extensions/class-tgm-plugin-activation.php:2572
+msgid "Upgrade message from the plugin author:"
+msgstr "プラグイン作者からの更新メッセージ:"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2502
 msgctxt "%2$s = plugin name in screen reader markup"
 msgid "Activate %2$s"
 msgstr "有効化 %2$s"
 
-#: lib/extensions/class-tgm-plugin-activation.php:2572
-msgid "Upgrade message from the plugin author:"
-msgstr "プラグイン作者からの更新メッセージ:"
+#: lib/extensions/class-tgm-plugin-activation.php:2497
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Update %2$s"
+msgstr "%2$s を更新"
 
-#: lib/extensions/class-tgm-plugin-activation.php:2605
-msgid "Install"
-msgstr "インストール"
+#: lib/extensions/class-tgm-plugin-activation.php:2493
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Install %2$s"
+msgstr "インストール %2$s"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2445
 msgid "Status"
@@ -519,68 +520,51 @@ msgstr "バージョン"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2440
 msgid "Type"
-msgstr "種類"
+msgstr "タイプ"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2439
 msgid "Source"
 msgstr "ソース"
 
-#: lib/extensions/class-tgm-plugin-activation.php:2285
-msgid "To Install <span class=\"count\">(%s)</span>"
-msgid_plural "To Install <span class=\"count\">(%s)</span>"
-msgstr[0] "未インストール <span class=\"count\">(%s)</span>"
+#: lib/extensions/class-tgm-plugin-activation.php:2438
+msgid "Plugin"
+msgstr "プラグイン"
 
-#: lib/extensions/class-tgm-plugin-activation.php:2288
-msgid "Update Available <span class=\"count\">(%s)</span>"
-msgid_plural "Update Available <span class=\"count\">(%s)</span>"
-msgstr[0] "利用可能な更新 <span class=\"count\">(%s)</span>"
+#: lib/extensions/class-tgm-plugin-activation.php:2424
+msgid "No plugins to install, update or activate. <a href=\"%1$s\">Return to the Dashboard</a>"
+msgstr "インストール・更新・有効化するべきプラグインはありません。<a href=\"%1$s\">ダッシュボードに戻る</a>"
 
-#: lib/extensions/class-tgm-plugin-activation.php:2291
-msgid "To Activate <span class=\"count\">(%s)</span>"
-msgid_plural "To Activate <span class=\"count\">(%s)</span>"
-msgstr[0] "使用中 <span class=\"count\">(%s)</span>"
+#: lib/extensions/class-tgm-plugin-activation.php:2401
+msgid "Available version:"
+msgstr "利用可能なバージョン:"
+
+#: lib/extensions/class-tgm-plugin-activation.php:2389
+msgid "Minimum required version:"
+msgstr "最低要求バージョン:"
+
+#: lib/extensions/class-tgm-plugin-activation.php:2381
+msgid "Installed version:"
+msgstr "Version : "
 
 #: lib/extensions/class-tgm-plugin-activation.php:2373
 msgctxt "as in: \"version nr unknown\""
 msgid "unknown"
 msgstr "不明"
 
-#: lib/extensions/class-tgm-plugin-activation.php:2381
-msgid "Installed version:"
-msgstr "Version : "
+#: lib/extensions/class-tgm-plugin-activation.php:2291
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] "使用中 <span class=\"count\">(%s)</span>"
 
-#: lib/extensions/class-tgm-plugin-activation.php:2389
-msgid "Minimum required version:"
-msgstr "最低要求バージョン:"
+#: lib/extensions/class-tgm-plugin-activation.php:2288
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] "利用可能な更新 <span class=\"count\">(%s)</span>"
 
-#: lib/extensions/class-tgm-plugin-activation.php:2401
-msgid "Available version:"
-msgstr "利用可能なバージョン:"
-
-#: lib/extensions/class-tgm-plugin-activation.php:2424
-msgid "No plugins to install, update or activate. <a href=\"%1$s\">Return to the Dashboard</a>"
-msgstr "インストール・更新・有効化するべきプラグインはありません。<a href=\"%1$s\">ダッシュボードに戻る</a>"
-
-#: lib/extensions/class-tgm-plugin-activation.php:2438
-msgid "Plugin"
-msgstr "プラグイン"
-
-#: lib/extensions/class-tgm-plugin-activation.php:2223
-msgid "Required Update not Available"
-msgstr "必要な更新が利用できません"
-
-#: lib/extensions/class-tgm-plugin-activation.php:2226
-msgid "Requires Update"
-msgstr "要更新"
-
-#: lib/extensions/class-tgm-plugin-activation.php:2229
-msgid "Update recommended"
-msgstr "更新を推奨"
-
-#: lib/extensions/class-tgm-plugin-activation.php:2237
-msgctxt "%1$s = install status, %2$s = update status"
-msgid "%1$s, %2$s"
-msgstr "%1$s、%2$s"
+#: lib/extensions/class-tgm-plugin-activation.php:2285
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] "未インストール <span class=\"count\">(%s)</span>"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2282
 msgctxt "plugins"
@@ -588,67 +572,59 @@ msgid "All <span class=\"count\">(%s)</span>"
 msgid_plural "All <span class=\"count\">(%s)</span>"
 msgstr[0] "すべて <span class=\"count\">(%s)</span>"
 
-#: lib/extensions/class-tgm-plugin-activation.php:2215
-msgid "Installed But Not Activated"
-msgstr "停止中"
+#: lib/extensions/class-tgm-plugin-activation.php:2237
+msgctxt "%1$s = install status, %2$s = update status"
+msgid "%1$s, %2$s"
+msgstr "%1$s、%2$s"
+
+#: lib/extensions/class-tgm-plugin-activation.php:2229
+msgid "Update recommended"
+msgstr "更新を推奨"
+
+#: lib/extensions/class-tgm-plugin-activation.php:2226
+msgid "Requires Update"
+msgstr "要更新"
+
+#: lib/extensions/class-tgm-plugin-activation.php:2223
+msgid "Required Update not Available"
+msgstr "必要な更新が利用できません"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2217
 msgid "Active"
 msgstr "有効"
 
-#: lib/extensions/class-tgm-plugin-activation.php:2191
-msgid "External Source"
-msgstr "外部ソース"
-
-#: lib/extensions/class-tgm-plugin-activation.php:2194
-msgid "Pre-Packaged"
-msgstr "プレパッケージされた"
+#: lib/extensions/class-tgm-plugin-activation.php:2215
+msgid "Installed But Not Activated"
+msgstr "停止中"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2211
 msgid "Not Installed"
 msgstr "インストールされていません"
 
-#: lib/extensions/class-tgm-plugin-activation.php:2172
-msgid "Recommended"
-msgstr "推奨"
+#: lib/extensions/class-tgm-plugin-activation.php:2194
+msgid "Pre-Packaged"
+msgstr "プレパッケージされた"
+
+#: lib/extensions/class-tgm-plugin-activation.php:2191
+msgid "External Source"
+msgstr "外部ソース"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2188
 msgid "WordPress Repository"
 msgstr "WordPress公式レポジトリ"
 
-#: lib/extensions/class-tgm-plugin-activation.php:405
-msgid "Please contact the administrator of this site for help."
-msgstr "ヘルプが必要な場合はこのサイトの管理者にお問い合わせください。"
+#: lib/extensions/class-tgm-plugin-activation.php:2172
+msgid "Recommended"
+msgstr "推奨"
 
-#: lib/extensions/class-tgm-plugin-activation.php:524
-msgid "This plugin needs to be updated to be compatible with your theme."
-msgstr "使用中のテーマとの互換性を保つため、このプラグインを更新する必要があります。"
+#: lib/extensions/class-tgm-plugin-activation.php:2169
+msgid "Required"
+msgstr "必須"
 
-#: lib/extensions/class-tgm-plugin-activation.php:525
-msgid "Update Required"
-msgstr "更新する必要があります"
-
-#: lib/extensions/class-tgm-plugin-activation.php:639
-msgid "Set the parent_slug config variable instead."
-msgstr "代わりに parent_slug の設定変数を設定してください。"
-
-#: lib/extensions/class-tgm-plugin-activation.php:830
-#: lib/extensions/class-tgm-plugin-activation.php:3440
-msgid "Return to the Dashboard"
-msgstr "ダッシュボードに戻る"
-
-#: lib/extensions/class-tgm-plugin-activation.php:937
-msgid "The remote plugin package does not contain a folder with the desired slug and renaming did not work."
-msgstr "リモートプラグインのパッケージが必要なスラッグのフォルダーを含んでおらず、改名することもできませんでした。"
-
-#: lib/extensions/class-tgm-plugin-activation.php:937
-#: lib/extensions/class-tgm-plugin-activation.php:940
-msgid "Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines."
-msgstr "プラグイン開発者に連絡し、WordPress のガイドラインに従ってプラグインをパッケージ化するように依頼してください。"
-
-#: lib/extensions/class-tgm-plugin-activation.php:940
-msgid "The remote plugin package consists of more than one file, but the files are not packaged in a folder."
-msgstr "リモートプラグインのパッケージが複数のファイルから構成されていますが、それらのファイルが単一のフォルダーにパッケージされていません。"
+#: lib/extensions/class-tgm-plugin-activation.php:1883
+msgctxt "%s = version number"
+msgid "TGMPA v%s"
+msgstr "TGMPA v%s"
 
 #: lib/extensions/class-tgm-plugin-activation.php:1118
 #: lib/extensions/class-tgm-plugin-activation.php:2830
@@ -656,39 +632,60 @@ msgctxt "plugin A *and* plugin B"
 msgid "and"
 msgstr "と"
 
-#: lib/extensions/class-tgm-plugin-activation.php:1883
-msgctxt "%s = version number"
-msgid "TGMPA v%s"
-msgstr "TGMPA v%s"
+#: lib/extensions/class-tgm-plugin-activation.php:940
+msgid "The remote plugin package consists of more than one file, but the files are not packaged in a folder."
+msgstr "リモートプラグインのパッケージが複数のファイルから構成されていますが、それらのファイルが単一のフォルダーにパッケージされていません。"
 
-#: lib/extensions/class-tgm-plugin-activation.php:2169
-msgid "Required"
-msgstr "必須"
+#: lib/extensions/class-tgm-plugin-activation.php:937
+#: lib/extensions/class-tgm-plugin-activation.php:940
+msgid "Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines."
+msgstr "プラグイン開発者に連絡し、WordPress のガイドラインに従ってプラグインをパッケージ化するように依頼してください。"
 
-#: lib/extensions/class-tgm-plugin-activation.php:400
-#: lib/extensions/class-tgm-plugin-activation.php:2834
-msgid "The following plugin was activated successfully:"
-msgstr "以下のプラグインは有効化されました："
+#: lib/extensions/class-tgm-plugin-activation.php:937
+msgid "The remote plugin package does not contain a folder with the desired slug and renaming did not work."
+msgstr "リモートプラグインのパッケージが必要なスラッグのフォルダーを含んでおらず、改名することもできませんでした。"
 
-#: lib/extensions/class-tgm-plugin-activation.php:401
-msgid "No action taken. Plugin %1$s was already active."
-msgstr "操作を実行しませんでした。プラグイン %1$s はすでに有効化されています。"
+#: lib/extensions/class-tgm-plugin-activation.php:830
+#: lib/extensions/class-tgm-plugin-activation.php:3440
+msgid "Return to the Dashboard"
+msgstr "ダッシュボードに戻る"
 
-#: lib/extensions/class-tgm-plugin-activation.php:402
-msgid "Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin."
-msgstr "プラグインを有効化できませんでした。このテーマには新しいバージョンの %s が必要です。プラグインを更新してください。"
+#: lib/extensions/class-tgm-plugin-activation.php:639
+msgid "Set the parent_slug config variable instead."
+msgstr "代わりに parent_slug の設定変数を設定してください。"
 
-#: lib/extensions/class-tgm-plugin-activation.php:403
-msgid "All plugins installed and activated successfully. %1$s"
-msgstr "すべてのプラグインが正常にインストール、有効化されました。 %1$s"
+#: lib/extensions/class-tgm-plugin-activation.php:525
+msgid "Update Required"
+msgstr "更新する必要があります"
+
+#: lib/extensions/class-tgm-plugin-activation.php:524
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr "使用中のテーマとの互換性を保つため、このプラグインを更新する必要があります。"
+
+#: lib/extensions/class-tgm-plugin-activation.php:405
+msgid "Please contact the administrator of this site for help."
+msgstr "ヘルプが必要な場合はこのサイトの管理者にお問い合わせください。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:404
 msgid "Dismiss this notice"
 msgstr "無視する"
 
-#: lib/extensions/class-tgm-plugin-activation.php:398
-msgid "Return to the dashboard"
-msgstr "ダッシュボードに戻る"
+#: lib/extensions/class-tgm-plugin-activation.php:403
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr "すべてのプラグインが正常にインストール、有効化されました。 %1$s"
+
+#: lib/extensions/class-tgm-plugin-activation.php:402
+msgid "Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin."
+msgstr "プラグインを有効化できませんでした。このテーマには新しいバージョンの %s が必要です。プラグインを更新してください。"
+
+#: lib/extensions/class-tgm-plugin-activation.php:401
+msgid "No action taken. Plugin %1$s was already active."
+msgstr "操作を実行しませんでした。プラグイン %1$s はすでに有効化されています。"
+
+#: lib/extensions/class-tgm-plugin-activation.php:400
+#: lib/extensions/class-tgm-plugin-activation.php:2834
+msgid "The following plugin was activated successfully:"
+msgstr "以下のプラグインは有効化されました："
 
 #: lib/extensions/class-tgm-plugin-activation.php:399
 #: lib/extensions/class-tgm-plugin-activation.php:3031
@@ -696,16 +693,24 @@ msgstr "ダッシュボードに戻る"
 msgid "Plugin activated successfully."
 msgstr "プラグインは有効化されました。"
 
-#: lib/extensions/class-tgm-plugin-activation.php:372
-#: lib/extensions/class-tgm-plugin-activation.php:3649
-msgid "The following recommended plugin is currently inactive: %1$s."
-msgid_plural "The following recommended plugins are currently inactive: %1$s."
-msgstr[0] "おすすめの %1$s プラグインは、アクティブに設定されていません"
+#: lib/extensions/class-tgm-plugin-activation.php:398
+msgid "Return to the dashboard"
+msgstr "ダッシュボードに戻る"
 
-#: lib/extensions/class-tgm-plugin-activation.php:377
-msgid "Sorry, but you do not have the correct permissions to activate the %1$s plugin."
-msgid_plural "Sorry, but you do not have the correct permissions to activate the %1$s plugins."
-msgstr[0] "%1$s プラグインを有効化する権限がありません。"
+#: lib/extensions/class-tgm-plugin-activation.php:397
+#: lib/extensions/class-tgm-plugin-activation.php:3655
+msgid "Return to Required Plugins Installer"
+msgstr "必要なプラグインインストーラに戻る"
+
+#: lib/extensions/class-tgm-plugin-activation.php:392
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] "プラグインのアクティブ化を開始"
+
+#: lib/extensions/class-tgm-plugin-activation.php:387
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] "プラグインの更新を開始する"
 
 #: lib/extensions/class-tgm-plugin-activation.php:382
 #: lib/extensions/class-tgm-plugin-activation.php:3653
@@ -713,37 +718,32 @@ msgid "Begin installing plugin"
 msgid_plural "Begin installing plugins"
 msgstr[0] "プラグインのインストールを開始"
 
-#: lib/extensions/class-tgm-plugin-activation.php:387
-msgid "Begin updating plugin"
-msgid_plural "Begin updating plugins"
-msgstr[0] "プラグインの更新を開始する"
+#: lib/extensions/class-tgm-plugin-activation.php:377
+msgid "Sorry, but you do not have the correct permissions to activate the %1$s plugin."
+msgid_plural "Sorry, but you do not have the correct permissions to activate the %1$s plugins."
+msgstr[0] "%1$s プラグインを有効化する権限がありません。"
 
-#: lib/extensions/class-tgm-plugin-activation.php:392
-msgid "Begin activating plugin"
-msgid_plural "Begin activating plugins"
-msgstr[0] "プラグインのアクティブ化を開始"
+#: lib/extensions/class-tgm-plugin-activation.php:372
+#: lib/extensions/class-tgm-plugin-activation.php:3649
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] "おすすめの %1$s プラグインは、アクティブに設定されていません"
 
-#: lib/extensions/class-tgm-plugin-activation.php:397
-#: lib/extensions/class-tgm-plugin-activation.php:3655
-msgid "Return to Required Plugins Installer"
-msgstr "必要なプラグインインストーラに戻る"
+#: lib/extensions/class-tgm-plugin-activation.php:367
+#: lib/extensions/class-tgm-plugin-activation.php:3648
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] "テーマに必要なプラグイン　%1$s　が　アクティブに設定されていません"
 
-#: lib/extensions/class-tgm-plugin-activation.php:337
-#: lib/extensions/class-tgm-plugin-activation.php:3645
-msgid "This theme requires the following plugin: %1$s."
-msgid_plural "This theme requires the following plugins: %1$s."
-msgstr[0] "このテーマは、%1$s　プラグインが必要です"
+#: lib/extensions/class-tgm-plugin-activation.php:362
+msgid "Sorry, but you do not have the correct permissions to update the %1$s plugin."
+msgid_plural "Sorry, but you do not have the correct permissions to update the %1$s plugins."
+msgstr[0] "%1$s プラグインを更新する権限がありません。"
 
-#: lib/extensions/class-tgm-plugin-activation.php:342
-#: lib/extensions/class-tgm-plugin-activation.php:3646
-msgid "This theme recommends the following plugin: %1$s."
-msgid_plural "This theme recommends the following plugins: %1$s."
-msgstr[0] "このテーマは、%1$s　プラグイン利用をおすすめします"
-
-#: lib/extensions/class-tgm-plugin-activation.php:347
-msgid "Sorry, but you do not have the correct permissions to install the %1$s plugin."
-msgid_plural "Sorry, but you do not have the correct permissions to install the %1$s plugins."
-msgstr[0] "%1$s プラグインをインストールする権限がありません。"
+#: lib/extensions/class-tgm-plugin-activation.php:357
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] "プラグインの更新が利用可能です (%1$s) 。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:352
 #: lib/extensions/class-tgm-plugin-activation.php:3651
@@ -751,21 +751,22 @@ msgid "The following plugin needs to be updated to its latest version to ensure 
 msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
 msgstr[0] "%1$s プラグインは、このテーマとの互換性を最大限に確保するために、最新バージョンにアップデートする必要があります"
 
-#: lib/extensions/class-tgm-plugin-activation.php:357
-msgid "There is an update available for: %1$s."
-msgid_plural "There are updates available for the following plugins: %1$s."
-msgstr[0] "プラグインの更新が利用可能です (%1$s) 。"
+#: lib/extensions/class-tgm-plugin-activation.php:347
+msgid "Sorry, but you do not have the correct permissions to install the %1$s plugin."
+msgid_plural "Sorry, but you do not have the correct permissions to install the %1$s plugins."
+msgstr[0] "%1$s プラグインをインストールする権限がありません。"
 
-#: lib/extensions/class-tgm-plugin-activation.php:362
-msgid "Sorry, but you do not have the correct permissions to update the %1$s plugin."
-msgid_plural "Sorry, but you do not have the correct permissions to update the %1$s plugins."
-msgstr[0] "%1$s プラグインを更新する権限がありません。"
+#: lib/extensions/class-tgm-plugin-activation.php:342
+#: lib/extensions/class-tgm-plugin-activation.php:3646
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] "このテーマは、%1$s　プラグイン利用をおすすめします"
 
-#: lib/extensions/class-tgm-plugin-activation.php:367
-#: lib/extensions/class-tgm-plugin-activation.php:3648
-msgid "The following required plugin is currently inactive: %1$s."
-msgid_plural "The following required plugins are currently inactive: %1$s."
-msgstr[0] "テーマに必要なプラグイン　%1$s　が　アクティブに設定されていません"
+#: lib/extensions/class-tgm-plugin-activation.php:337
+#: lib/extensions/class-tgm-plugin-activation.php:3645
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] "このテーマは、%1$s　プラグインが必要です"
 
 #: lib/extensions/class-tgm-plugin-activation.php:336
 #: lib/extensions/class-tgm-plugin-activation.php:3644
@@ -787,48 +788,48 @@ msgstr "プラグインのインストール"
 msgid "Install Required Plugins"
 msgstr "必要なプラグインをインストールする"
 
-#: lib/admin/omega-upgrade.php:57 lib/admin/omega-upgrade.php:74
-msgid "Thanks for updating Omega Theme.  Please <a href=\"%1$s\" target=\"_blank\">read about important changes</a> in this version and give your site a quick check. <a href=\"%2$s\">Dismiss notice</a>"
-msgstr "Omega テーマの更新をありがとうございます。このバージョンの<a href=\"%1$s\" target=\"_blank\">重要な更新について</a>ご覧ください。<a href=\"%2$s\">通知を非表示</a>"
+#. Translators: Media dimensions - 1 is width and 2 is height.
+#: lib/functions/template-media.php:94
+msgid "%1$s &#215; %2$s"
+msgstr "%1$s &#215; %2$s"
 
 #: lib/classes/customize-control-background-image.php:37
 msgctxt "theme customizer tab"
 msgid "Default"
 msgstr "デフォルト"
 
-#. Translators: Media dimensions - 1 is width and 2 is height.
-#: lib/functions/template-media.php:94
-msgid "%1$s &#215; %2$s"
-msgstr "%1$s &#215; %2$s"
+#: lib/admin/omega-upgrade.php:57 lib/admin/omega-upgrade.php:74
+msgid "Thanks for updating Omega Theme.  Please <a href=\"%1$s\" target=\"_blank\">read about important changes</a> in this version and give your site a quick check. <a href=\"%2$s\">Dismiss notice</a>"
+msgstr "Omega テーマの更新をありがとうございます。このバージョンの<a href=\"%1$s\" target=\"_blank\">重要な更新について</a>ご覧ください。<a href=\"%2$s\">通知を非表示</a>"
 
 #: comment.php:20
 msgid "(Edit)"
 msgstr "(編集)"
 
-#: 404.php:15
-msgid "It looks like nothing was found at this location. Perhaps you can return back to the site's <a href=\"%s\">homepage</a> and see if you can find what you are looking for. Or, you can try finding it by using the search form below."
-msgstr "ここには何も見当たらないようです。サイトに<a href=\"%s\">ホームページ</a>に戻ってお探しのものが見つかるかどうか試してみてください。または、以下のフォームから検索してみることもできます。"
+#: comment.php:19
+msgid "%1$s at %2$s"
+msgstr "%1$s %2$s"
 
 #: comment.php:16
 msgid "<cite class=\"fn\">%s</cite>"
 msgstr "<cite class=\"fn\">%s</cite>"
 
-#: comment.php:19
-msgid "%1$s at %2$s"
-msgstr "%1$s %2$s"
+#: 404.php:15
+msgid "It looks like nothing was found at this location. Perhaps you can return back to the site's <a href=\"%s\">homepage</a> and see if you can find what you are looking for. Or, you can try finding it by using the search form below."
+msgstr "ここには何も見当たらないようです。サイトに<a href=\"%s\">ホームページ</a>に戻ってお探しのものが見つかるかどうか試してみてください。または、以下のフォームから検索してみることもできます。"
 
 #: 404.php:12
 msgid "Oops! That page can&rsquo;t be found."
 msgstr "﻿ページが見つかりません。"
 
-#. Theme URI of the plugin/theme
-msgid "https://themehall.com/omega"
-msgstr "https://themehall.com/omega"
+#. Author URI of the plugin/theme
+msgid "https://themehall.com"
+msgstr "https://themehall.com"
 
 #. Author of the plugin/theme
 msgid "ThemeHall"
 msgstr "ThemeHall"
 
-#. Author URI of the plugin/theme
-msgid "https://themehall.com"
-msgstr "https://themehall.com"
+#. Theme URI of the plugin/theme
+msgid "https://themehall.com/omega"
+msgstr "https://themehall.com/omega"

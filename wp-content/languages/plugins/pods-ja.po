@@ -1,0 +1,1937 @@
+# Translation of Stable (latest release) in Japanese
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-05-09 01:38:45+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#: classes/PodsInit.php:952
+msgid "Uploaded to this %s"
+msgstr "%sのアップロードが完了しました。"
+
+#: classes/PodsInit.php:970
+msgid "No %s"
+msgstr "%sなし"
+
+#: classes/PodsInit.php:950
+msgid "%s Archives"
+msgstr "%s のアーカイブ"
+
+#: classes/PodsInit.php:951
+msgid "Insert into %s"
+msgstr "%sに挿入"
+
+#: classes/PodsInit.php:949 ui/admin/setup-edit.php:394
+msgid "Use as featured image"
+msgstr "アイキャッチ画像として使用"
+
+#: classes/PodsInit.php:947 ui/admin/setup-edit.php:386
+msgid "Set featured image"
+msgstr "アイキャッチ画像を設定"
+
+#: classes/PodsInit.php:948 ui/admin/setup-edit.php:390
+msgid "Remove featured image"
+msgstr "アイキャッチ画像を削除"
+
+#: classes/PodsAdmin.php:2748
+msgid "Depth"
+msgstr "深さ"
+
+#: classes/PodsAdmin.php:2741
+msgid "Full"
+msgstr "フルサイズ"
+
+#: ui/admin/setup-edit-field-fluid.php:100
+msgid "Options"
+msgstr "オプション"
+
+#: ui/admin/setup-edit-field-fluid.php:106
+msgid "Required"
+msgstr "必須"
+
+#: ui/admin/setup-edit.php:374
+msgid "Search <span class=\"pods-slugged\" data-sluggable=\"label\">Items</span>"
+msgstr "<span class=\"pods-slugged\" data-sluggable=\"label\">アイテム</span>を検索"
+
+#: ui/admin/upgrade/upgrade_2_0_0.php:181
+msgid "1.x Updates"
+msgstr "1.x Aktualisierungen"
+
+#: ui/admin/setup-edit.php:487 ui/admin/widgets/field.php:15
+#: ui/admin/widgets/form.php:15 ui/admin/widgets/list.php:17
+#: ui/admin/widgets/single.php:17 ui/admin/widgets/view.php:15
+msgid "Title"
+msgstr "タイトル"
+
+#: ui/admin/setup-edit.php:50 ui/admin/setup-edit.php:51
+#: ui/admin/setup-edit.php:53
+msgid "Other"
+msgstr "その他"
+
+#: ui/admin/setup-add.php:314 ui/admin/setup-edit.php:846
+msgid "Taxonomy"
+msgstr "タクソノミー"
+
+#: ui/admin/setup-add.php:155
+msgid "Menu Label"
+msgstr "メニューラベル"
+
+#: ui/admin/setup-edit-field-fluid.php:190 ui/admin/setup-edit.php:242
+#: ui/admin/setup-edit.php:315
+msgid "Add Field"
+msgstr "フィールドの追加"
+
+#: ui/admin/setup-edit-field-fluid.php:74
+msgid "Field Type"
+msgstr "フィール形式"
+
+#: ui/admin/setup-edit-field-fluid.php:8 ui/admin/setup-edit-field.php:48
+msgid "Move"
+msgstr "移動"
+
+#: ui/fields/color.php:9
+msgid "Default"
+msgstr "デフォルト"
+
+#: ui/admin/setup-edit.php:497
+msgid "Author"
+msgstr "登録者"
+
+#: ui/admin/upgrade/upgrade_2_0_0.php:148
+#: ui/admin/upgrade/upgrade_2_0_0.php:264
+msgid "Content"
+msgstr "コンテンツ"
+
+#: ui/admin/upgrade/upgrade_2_0_0.php:18 ui/admin/upgrade/upgrade_2_1_0.php:18
+msgid "Getting Started"
+msgstr "はじめに"
+
+#: classes/PodsInit.php:946 ui/admin/setup-edit.php:382
+#: ui/admin/setup-edit.php:502
+msgid "Featured Image"
+msgstr "アイキャッチ画像"
+
+#: ui/admin/upgrade/backup.php:9
+msgid "Coupon Code"
+msgstr "クーポンコード"
+
+#: ui/admin/setup-edit.php:532
+msgid "Page Attributes"
+msgstr "ページ属性"
+
+#: ui/admin/setup-edit.php:507
+msgid "Excerpt"
+msgstr "抜粋"
+
+#: ui/admin/setup-edit.php:517
+msgid "Custom Fields"
+msgstr "カスタムフィールド"
+
+#: ui/admin/setup-edit.php:527
+msgid "Revisions"
+msgstr "リビジョン"
+
+#: ui/admin/setup-edit.php:512
+msgid "Trackbacks"
+msgstr "トラックバック"
+
+#: ui/admin/setup-add.php:141
+msgid "Plural Label"
+msgstr "複数形のラベル"
+
+#: ui/fields/color.php:10
+msgid "Select Color"
+msgstr "色を選択"
+
+#: ui/fields/color.php:11
+msgid "Current Color"
+msgstr "現在の色"
+
+#: ui/admin/form.php:213 ui/admin/view.php:47
+msgid "Created on"
+msgstr "作成日時"
+
+#: ui/admin/form.php:222 ui/admin/view.php:56
+msgid "Last Modified"
+msgstr "更新日時"
+
+#: includes/data.php:1708
+msgid "and"
+msgstr "および"
+
+#: includes/general.php:1006 includes/general.php:1025
+#: includes/general.php:1045
+msgid "NOTICE"
+msgstr "お知らせ"
+
+#: ui/admin/form.php:76 ui/admin/form.php:104 ui/admin/setup-edit.php:223
+msgid "duplicated"
+msgstr "複製されました"
+
+#: ui/admin/form-settings.php:55 ui/admin/form.php:87
+msgid "<strong>Error:</strong> %s %s successfully."
+msgstr "<strong>エラー:</strong> %s %s successfully."
+
+#: ui/admin/setup-add.php:23 ui/admin/setup-edit.php:806
+msgid "Back to Manage"
+msgstr "一覧へ戻る"
+
+#: ui/admin/setup-add.php:57
+msgid "Create New"
+msgstr "新規作成"
+
+#: ui/admin/setup-add.php:79
+msgid "Create a New Content Type"
+msgstr "新規コンテンツタイプの作成"
+
+#: ui/admin/setup-add.php:84 ui/admin/setup-add.php:235
+msgid "Content Type"
+msgstr "コンテンツタイプ"
+
+#: ui/admin/setup-add.php:87
+msgid "Custom Post Type (like Posts or Pages)"
+msgstr "カスタム投稿タイプ (投稿あるいは固定ページと類似)"
+
+#: ui/admin/setup-add.php:88
+msgid "Custom Taxonomy (like Categories or Tags)"
+msgstr "カスタムタクソノミー(カテゴリーあるいはタグと類似)"
+
+#: components/Pages.php:346
+msgid "-- Page Template --"
+msgstr "-- ページテンプレート --"
+
+#: components/Roles/Roles.php:68 components/Roles/Roles.php:213
+msgid "%s User"
+msgid_plural "%s Users"
+msgstr[0] "%s ユーザー"
+
+#: components/Roles/ui/edit.php:47 ui/admin/form-settings.php:79
+#: ui/admin/form.php:120
+msgid "Save"
+msgstr "保存"
+
+#: components/Migrate-Packages/ui/wizard.php:56
+msgid "Import"
+msgstr "インポート"
+
+#: ui/admin/setup-add.php:39
+msgid "Configure"
+msgstr "設定"
+
+#: components/Pages.php:396
+msgid "Page"
+msgstr "ページ"
+
+#: components/Pages.php:390
+msgid "Page Template"
+msgstr "ページテンプレート"
+
+#: components/Templates/includes/auto-template/Pods_Templates_Auto_Template_Settings.php:218
+msgid "Replace"
+msgstr "置換"
+
+#: components/Templates/includes/auto-template/Pods_Templates_Auto_Template_Settings.php:216
+msgid "After"
+msgstr "更新後 "
+
+#: components/Roles/Roles.php:92 components/Roles/ui/add.php:26
+msgid "Capabilities"
+msgstr "権限"
+
+#: components/Templates/includes/auto-template/Pods_Templates_Auto_Template_Settings.php:174
+msgid "Taxonomy Template"
+msgstr "タクソノミーテンプレート"
+
+#: includes/general.php:434 ui/admin/setup-edit.php:790
+msgid "Find out more"
+msgstr "もっと見る"
+
+#: components/Advanced-Relationships.php:55
+msgid "Themes"
+msgstr "テーマ"
+
+#: components/Advanced-Content-Types.php:40
+msgid "Advanced Content Type (separate from WP, blank slate, in its own table)"
+msgstr "拡張コンテンツタイプ (Wordpressとは別のテーブル使用)"
+
+#: components/Migrate-CPTUI/ui/wizard.php:146
+#: components/Migrate-Packages/ui/wizard.php:279
+#: components/Roles/ui/add.php:122 ui/admin/setup-add.php:380
+msgid "Processing"
+msgstr "処理中"
+
+#: components/Migrate-CPTUI/ui/wizard.php:23
+msgid "Setup"
+msgstr "設定"
+
+#: classes/widgets/PodsWidgetForm.php:43 classes/widgets/PodsWidgetForm.php:59
+#: classes/widgets/PodsWidgetForm.php:70
+#: components/Builder/modules/form/PodsBuilderModuleForm.php:41
+#: components/Builder/modules/form/PodsBuilderModuleForm.php:133
+msgid "Submit"
+msgstr "送信"
+
+#: classes/fields/pick.php:2254
+msgid "South Georgia and the South Sandwich Islands"
+msgstr "サウスジョージア・サウスサンドウィッチ諸島"
+
+#: classes/fields/pick.php:2297
+msgid "Wallis and Futuna"
+msgstr "ウォリス・フツナ"
+
+#: classes/fields/pick.php:2239
+msgid "Saint Vincent and the Grenadines"
+msgstr "セントビンセント・グレナディーン"
+
+#: classes/fields/pick.php:2287
+msgid "United Kingdom"
+msgstr "イギリス"
+
+#: classes/fields/pick.php:2295
+msgid "Vietnam"
+msgstr "ベトナム"
+
+#: classes/fields/pick.php:2301
+msgid "Zimbabwe"
+msgstr "ジンバブエ"
+
+#: classes/fields/pick.php:2300
+msgid "Zambia"
+msgstr "ザンビア"
+
+#: classes/fields/pick.php:2299
+msgid "Yemen"
+msgstr "イエメン"
+
+#: classes/fields/pick.php:2294
+msgid "Venezuela"
+msgstr "ベネズエラ"
+
+#: classes/fields/pick.php:2291
+msgid "Uzbekistan"
+msgstr "ウズベキスタン"
+
+#: classes/fields/pick.php:2277
+msgid "Turkmenistan"
+msgstr "トルクメニスタン"
+
+#: classes/fields/pick.php:2284
+msgid "Ukraine"
+msgstr "ウクライナ"
+
+#: classes/fields/pick.php:2273
+msgid "Tonga"
+msgstr "トンガ"
+
+#: classes/fields/pick.php:2269
+msgid "Thailand"
+msgstr "タイ"
+
+#: classes/fields/pick.php:2290
+msgid "Uruguay"
+msgstr "ウルグアイ"
+
+#: classes/fields/pick.php:2283
+msgid "Uganda"
+msgstr "ウガンダ"
+
+#: classes/fields/pick.php:2267
+msgid "Tajikistan"
+msgstr "タジキスタン"
+
+#: classes/fields/pick.php:2268
+msgid "Tanzania"
+msgstr "タンザニア"
+
+#: classes/fields/pick.php:2275
+msgid "Tunisia"
+msgstr "チュニジア"
+
+#: classes/fields/pick.php:2271
+msgid "Togo"
+msgstr "トーゴ"
+
+#: classes/fields/pick.php:2262
+msgid "Sweden"
+msgstr "スウェーデン"
+
+#: classes/fields/pick.php:2263
+msgid "Switzerland"
+msgstr "スイス"
+
+#: classes/fields/pick.php:2264
+msgid "Syria"
+msgstr "シリア"
+
+#: classes/fields/pick.php:2276
+msgid "Turkey"
+msgstr "トルコ"
+
+#: classes/fields/pick.php:2279
+msgid "Tuvalu"
+msgstr "ツバル"
+
+#: classes/fields/pick.php:2292
+msgid "Vanuatu"
+msgstr "バヌアツ"
+
+#: classes/fields/pick.php:2298
+msgid "Western Sahara"
+msgstr "西サハラ"
+
+#: classes/fields/pick.php:2272
+msgid "Tokelau"
+msgstr "トケラウ"
+
+#: classes/fields/pick.php:2266
+msgid "Taiwan"
+msgstr "台湾"
+
+#: classes/fields/pick.php:2261
+msgid "Swaziland"
+msgstr "スワジランド"
+
+#: classes/fields/pick.php:2234
+msgid "Saint Helena"
+msgstr "セントヘレナ"
+
+#: classes/fields/pick.php:2240
+msgid "Samoa"
+msgstr "サモア"
+
+#: classes/fields/pick.php:2246
+msgid "Seychelles"
+msgstr "セーシェル"
+
+#: classes/fields/pick.php:2248
+msgid "Singapore"
+msgstr "シンガポール"
+
+#: classes/fields/pick.php:2252
+msgid "Somalia"
+msgstr "ソマリア"
+
+#: classes/fields/pick.php:2251
+msgid "Solomon Islands"
+msgstr "ソロモン諸島"
+
+#: classes/fields/pick.php:2257
+msgid "Sri Lanka"
+msgstr "スリランカ"
+
+#: classes/fields/pick.php:2256
+msgid "Spain"
+msgstr "スペイン"
+
+#: classes/fields/pick.php:2259
+msgid "Suriname"
+msgstr "スリナム"
+
+#: classes/fields/pick.php:2258
+msgid "Sudan"
+msgstr "スーダン"
+
+#: classes/fields/pick.php:2253
+msgid "South Africa"
+msgstr "南アフリカ"
+
+#: classes/fields/pick.php:2249
+msgid "Slovakia"
+msgstr "スロバキア"
+
+#: classes/fields/pick.php:2250
+msgid "Slovenia"
+msgstr "スロベニア"
+
+#: classes/fields/pick.php:2236
+msgid "Saint Lucia"
+msgstr "セントルシア"
+
+#: classes/fields/pick.php:2241
+msgid "San Marino"
+msgstr "サンマリノ"
+
+#: classes/fields/pick.php:2238
+msgid "Saint Pierre and Miquelon"
+msgstr "サンピエール島・ミクロン島"
+
+#: classes/fields/pick.php:2247
+msgid "Sierra Leone"
+msgstr "シエラレオネ"
+
+#: classes/fields/pick.php:2243
+msgid "Senegal"
+msgstr "セネガル"
+
+#: classes/fields/pick.php:2242
+msgid "Saudi Arabia"
+msgstr "サウジアラビア"
+
+#: classes/fields/pick.php:2244
+msgid "Serbia"
+msgstr "セルビア"
+
+#: classes/fields/pick.php:2270
+msgid "Timor-Leste"
+msgstr "東ティモール"
+
+#: classes/fields/pick.php:2286
+msgid "United Arab Emirates"
+msgstr "アラブ首長国連邦"
+
+#: classes/fields/pick.php:2323
+msgid "Alabama"
+msgstr "アラバマ"
+
+#: classes/fields/pick.php:2324
+msgid "Alaska"
+msgstr "アラスカ"
+
+#: classes/fields/pick.php:2325
+msgid "Arizona"
+msgstr "アリゾナ"
+
+#: classes/fields/pick.php:2326
+msgid "Arkansas"
+msgstr "アーカンソー"
+
+#: classes/fields/pick.php:2327
+msgid "California"
+msgstr "カルフォルニア"
+
+#: classes/fields/pick.php:2328
+msgid "Colorado"
+msgstr "コロラド"
+
+#: classes/fields/pick.php:2329
+msgid "Connecticut"
+msgstr "コネチカット"
+
+#: classes/fields/pick.php:2330
+msgid "Delaware"
+msgstr "デラウェア"
+
+#: classes/fields/pick.php:2332
+msgid "Florida"
+msgstr "フロリダ"
+
+#: classes/fields/pick.php:2334
+msgid "Hawaii"
+msgstr "ハワイ"
+
+#: classes/fields/pick.php:2335
+msgid "Idaho"
+msgstr "アイダホ"
+
+#: classes/fields/pick.php:2336
+msgid "Illinois"
+msgstr "イリノイ"
+
+#: classes/fields/pick.php:2337
+msgid "Indiana"
+msgstr "インディアナ"
+
+#: classes/fields/pick.php:2338
+msgid "Iowa"
+msgstr "アイオワ"
+
+#: classes/fields/pick.php:2339
+msgid "Kansas"
+msgstr "カンザス"
+
+#: classes/fields/pick.php:2340
+msgid "Kentucky"
+msgstr "ケンタッキー"
+
+#: classes/fields/pick.php:2341
+msgid "Louisiana"
+msgstr "ルイジアナ"
+
+#: classes/fields/pick.php:2342
+msgid "Maine"
+msgstr "メイン"
+
+#: classes/fields/pick.php:2343
+msgid "Maryland"
+msgstr "メリーランド"
+
+#: classes/fields/pick.php:2344
+msgid "Massachusetts"
+msgstr "マサチューセッツ"
+
+#: classes/fields/pick.php:2345
+msgid "Michigan"
+msgstr "ミシガン"
+
+#: classes/fields/pick.php:2346
+msgid "Minnesota"
+msgstr "ミネソタ"
+
+#: classes/fields/pick.php:2347
+msgid "Mississippi"
+msgstr "ミシシッピ"
+
+#: classes/fields/pick.php:2348
+msgid "Missouri"
+msgstr "ミズーリ"
+
+#: classes/fields/pick.php:2349
+msgid "Montana"
+msgstr "モンタナ"
+
+#: classes/fields/pick.php:2350
+msgid "Nebraska"
+msgstr "ネブラスカ"
+
+#: classes/fields/pick.php:2351
+msgid "Nevada"
+msgstr "ネバダ"
+
+#: classes/fields/pick.php:2352
+msgid "New Hampshire"
+msgstr "ニューハンプシャー"
+
+#: classes/fields/pick.php:2353
+msgid "New Jersey"
+msgstr "ニュージャージー"
+
+#: classes/fields/pick.php:2354
+msgid "New Mexico"
+msgstr "ニューメキシコ"
+
+#: classes/fields/pick.php:2355
+msgid "New York"
+msgstr "ニューヨーク"
+
+#: classes/fields/pick.php:2356
+msgid "North Carolina"
+msgstr "ノースカロライナ"
+
+#: classes/fields/pick.php:2357
+msgid "North Dakota"
+msgstr "ノースダコタ"
+
+#: classes/fields/pick.php:2358
+msgid "Ohio"
+msgstr "オハイオ"
+
+#: classes/fields/pick.php:2359
+msgid "Oklahoma"
+msgstr "オクラホマ"
+
+#: classes/fields/pick.php:2360
+msgid "Oregon"
+msgstr "オレゴン"
+
+#: classes/fields/pick.php:2361
+msgid "Pennsylvania"
+msgstr "ペンシルバニア"
+
+#: classes/fields/pick.php:2362
+msgid "Rhode Island"
+msgstr "ロードアイランド"
+
+#: classes/fields/pick.php:2363
+msgid "South Carolina"
+msgstr "サウスカロライナ"
+
+#: classes/fields/pick.php:2364
+msgid "South Dakota"
+msgstr "サウスダコタ"
+
+#: classes/fields/pick.php:2365
+msgid "Tennessee"
+msgstr "テネシー"
+
+#: classes/fields/pick.php:2366
+msgid "Texas"
+msgstr "テキサス"
+
+#: classes/fields/pick.php:2367
+msgid "Utah"
+msgstr "ユタ"
+
+#: classes/fields/pick.php:2368
+msgid "Vermont"
+msgstr "バーモント"
+
+#: classes/fields/pick.php:2369
+msgid "Virginia"
+msgstr "バージニア"
+
+#: classes/fields/pick.php:2370
+msgid "Washington"
+msgstr "ワシントン"
+
+#: classes/fields/pick.php:2371
+msgid "West Virginia"
+msgstr "ウェストバージニア"
+
+#: classes/fields/pick.php:2372
+msgid "Wisconsin"
+msgstr "ウィスコンシン"
+
+#: classes/fields/pick.php:2373
+msgid "Wyoming"
+msgstr "ワイオミング"
+
+#: components/Builder/modules/list/PodsBuilderModuleList.php:145
+#: ui/admin/shortcode.php:424 ui/admin/widgets/list.php:94
+msgid "Limit"
+msgstr "上限"
+
+#: components/Builder/modules/list/PodsBuilderModuleList.php:108
+#: components/Builder/modules/list/PodsBuilderModuleList.php:125
+#: components/Builder/modules/single/PodsBuilderModuleSingle.php:112
+#: components/Builder/modules/single/PodsBuilderModuleSingle.php:129
+#: components/Templates/class-pods_templates.php:201 ui/admin/shortcode.php:368
+#: ui/admin/shortcode.php:385 ui/admin/widgets/list.php:51
+#: ui/admin/widgets/list.php:67 ui/admin/widgets/single.php:67
+#: ui/admin/widgets/single.php:83
+msgid "Template"
+msgstr "テンプレート"
+
+#: classes/fields/wysiwyg.php:67 ui/admin/setup-edit.php:492
+msgid "Editor"
+msgstr "エディター"
+
+#: classes/fields/pick.php:2255
+msgid "South Korea"
+msgstr "韓国"
+
+#: classes/fields/pick.php:2288
+msgid "United States"
+msgstr "アメリカ合衆国"
+
+#: classes/fields/pick.php:2278
+msgid "Turks and Caicos Islands"
+msgstr "タークス・カイコス諸島"
+
+#: classes/fields/pick.php:2274
+msgid "Trinidad and Tobago"
+msgstr "トリニダード・トバゴ"
+
+#: classes/fields/pick.php:2235
+msgid "Saint Kitts and Nevis"
+msgstr "セントクリストファー・ネイビス"
+
+#: classes/fields/pick.php:2296
+msgid "Wake Island"
+msgstr "ウェーク島"
+
+#: classes/fields/pick.php:510
+msgid "Image Sizes"
+msgstr "画像サイズ"
+
+#: classes/fields/pick.php:471 ui/admin/setup-edit.php:594
+#: ui/admin/setup-edit.php:846
+msgid "Taxonomies"
+msgstr "タクソノミー"
+
+#: classes/fields/pick.php:381
+msgid "Custom"
+msgstr "カスタム"
+
+#: classes/fields/pick.php:436 ui/admin/setup-edit.php:625
+#: ui/admin/setup-edit.php:845
+msgid "Post Types"
+msgstr "投稿タイプ"
+
+#: classes/fields/pick.php:2130
+msgid "Guadeloupe"
+msgstr "グアドループ"
+
+#: classes/fields/pick.php:2071
+msgid "British Virgin Islands"
+msgstr "イギリス領ヴァージン諸島"
+
+#: classes/fields/pick.php:2179
+msgid "Martinique"
+msgstr "マルティニーク"
+
+#: classes/fields/pick.php:2211
+msgid "Norway"
+msgstr "ノルウェー"
+
+#: classes/fields/pick.php:2205
+msgid "Nigeria"
+msgstr "ナイジェリア"
+
+#: classes/fields/pick.php:2203
+msgid "Nicaragua"
+msgstr "ニカラグア"
+
+#: classes/fields/pick.php:2204
+msgid "Niger"
+msgstr "ニジェール"
+
+#: classes/fields/pick.php:2195
+msgid "Namibia"
+msgstr "ナミビア"
+
+#: classes/fields/pick.php:2197
+msgid "Nepal"
+msgstr "ネパール"
+
+#: classes/fields/pick.php:2198
+msgid "Netherlands"
+msgstr "オランダ"
+
+#: classes/fields/pick.php:2202
+msgid "New Zealand"
+msgstr "ニュージーランド"
+
+#: classes/fields/pick.php:2192
+msgid "Morocco"
+msgstr "モロッコ"
+
+#: classes/fields/pick.php:2193
+msgid "Mozambique"
+msgstr "モザンビーク"
+
+#: classes/fields/pick.php:2184
+msgid "Mexico"
+msgstr "メキシコ"
+
+#: classes/fields/pick.php:2189
+msgid "Mongolia"
+msgstr "モンゴル"
+
+#: classes/fields/pick.php:2191
+msgid "Montserrat"
+msgstr "モントセラト"
+
+#: classes/fields/pick.php:2053
+msgid "Azerbaijan"
+msgstr "アゼルバイジャン"
+
+#: classes/fields/pick.php:2054
+msgid "Bahamas"
+msgstr "バハマ"
+
+#: classes/fields/pick.php:2230
+msgid "Russia"
+msgstr "ロシア"
+
+#: classes/fields/pick.php:2231
+msgid "Rwanda"
+msgstr "ルワンダ"
+
+#: classes/fields/pick.php:2229
+msgid "Romania"
+msgstr "ルーマニア"
+
+#: classes/fields/pick.php:2215
+msgid "Palau"
+msgstr "パラオ"
+
+#: classes/fields/pick.php:2043
+msgid "Andorra"
+msgstr "アンドラ"
+
+#: classes/fields/pick.php:2044
+msgid "Angola"
+msgstr "アンゴラ"
+
+#: classes/fields/pick.php:2048
+msgid "Argentina"
+msgstr "アルゼンチン"
+
+#: classes/fields/pick.php:2049
+msgid "Armenia"
+msgstr "アルメニア"
+
+#: classes/fields/pick.php:2051
+msgid "Australia"
+msgstr "オーストラリア"
+
+#: classes/fields/pick.php:2052
+msgid "Austria"
+msgstr "オーストリア"
+
+#: classes/fields/pick.php:2055
+msgid "Bahrain"
+msgstr "バーレーン"
+
+#: classes/fields/pick.php:2181
+msgid "Mauritius"
+msgstr "モーリシャス"
+
+#: classes/fields/pick.php:2187
+msgid "Moldova"
+msgstr "モルドバ"
+
+#: classes/fields/pick.php:2196
+msgid "Nauru"
+msgstr "ナウル"
+
+#: classes/fields/pick.php:2207
+msgid "Norfolk Island"
+msgstr "ノーフォーク島"
+
+#: classes/fields/pick.php:2219
+msgid "Papua New Guinea"
+msgstr "パプアニューギニア"
+
+#: classes/fields/pick.php:2222
+msgid "Peru"
+msgstr "ペルー"
+
+#: classes/fields/pick.php:2223
+msgid "Philippines"
+msgstr "フィリピン"
+
+#: classes/fields/pick.php:2225
+msgid "Poland"
+msgstr "ポーランド"
+
+#: classes/fields/pick.php:2226
+msgid "Portugal"
+msgstr "ポルトガル"
+
+#: classes/fields/pick.php:2050
+msgid "Aruba"
+msgstr "アルバ"
+
+#: classes/fields/pick.php:2101
+msgid "Dominica"
+msgstr "ドミニカ国"
+
+#: classes/fields/pick.php:2108
+msgid "Equatorial Guinea"
+msgstr "赤道ギニア"
+
+#: classes/fields/pick.php:2119
+msgid "French Southern Territories"
+msgstr "フランス領南方・南極地域"
+
+#: classes/fields/pick.php:2099
+msgid "Denmark"
+msgstr "デンマーク"
+
+#: classes/fields/pick.php:2139
+msgid "Honduras"
+msgstr "ホンジュラス"
+
+#: classes/fields/pick.php:2132
+msgid "Guatemala"
+msgstr "グアテマラ"
+
+#: classes/fields/pick.php:2081
+msgid "Cayman Islands"
+msgstr "ケイマン諸島"
+
+#: classes/fields/pick.php:2083
+msgid "Chad"
+msgstr "チャド"
+
+#: classes/fields/pick.php:2084
+msgid "Chile"
+msgstr "チリ"
+
+#: classes/fields/pick.php:2085
+msgid "China"
+msgstr "中国"
+
+#: classes/fields/pick.php:2086
+msgid "Christmas Island"
+msgstr "クリスマス島"
+
+#: classes/fields/pick.php:2092
+msgid "Cook Islands"
+msgstr "クック諸島"
+
+#: classes/fields/pick.php:2100
+msgid "Djibouti"
+msgstr "ジブチ"
+
+#: classes/fields/pick.php:2112
+msgid "Falkland Islands"
+msgstr "フォークランド諸島"
+
+#: classes/fields/pick.php:2115
+msgid "Finland"
+msgstr "フィンランド"
+
+#: classes/fields/pick.php:2122
+msgid "Gambia"
+msgstr "ガンビア"
+
+#: classes/fields/pick.php:2128
+msgid "Greenland"
+msgstr "グリーンランド"
+
+#: classes/fields/pick.php:2134
+msgid "Guinea"
+msgstr "ギニア"
+
+#: classes/fields/pick.php:2137
+msgid "Haiti"
+msgstr "ハイチ"
+
+#: classes/fields/pick.php:2060
+msgid "Belize"
+msgstr "ベリーズ"
+
+#: classes/fields/pick.php:2062
+msgid "Bermuda"
+msgstr "バミューダ"
+
+#: classes/fields/pick.php:2082
+msgid "Central African Republic"
+msgstr "中央アフリカ共和国"
+
+#: classes/fields/pick.php:2102
+msgid "Dominican Republic"
+msgstr "ドミニカ共和国"
+
+#: classes/fields/pick.php:2121
+msgid "Gabon"
+msgstr "ガボン"
+
+#: classes/fields/pick.php:2129
+msgid "Grenada"
+msgstr "グレナダ"
+
+#: classes/fields/pick.php:2136
+msgid "Guyana"
+msgstr "ガイアナ"
+
+#: classes/fields/pick.php:2155
+msgid "Jordan"
+msgstr "ヨルダン"
+
+#: classes/fields/pick.php:2180
+msgid "Mauritania"
+msgstr "モーリタニア"
+
+#: classes/fields/pick.php:2174
+msgid "Malaysia"
+msgstr "マレーシア"
+
+#: classes/fields/pick.php:2171
+msgid "Macedonia"
+msgstr "マケドニア"
+
+#: classes/fields/pick.php:2172
+msgid "Madagascar"
+msgstr "マダガスカル"
+
+#: classes/fields/pick.php:2165
+msgid "Liberia"
+msgstr "リベリア"
+
+#: classes/fields/pick.php:2167
+msgid "Liechtenstein"
+msgstr "リヒテンシュタイン"
+
+#: classes/fields/pick.php:2168
+msgid "Lithuania"
+msgstr "リトアニア"
+
+#: classes/fields/pick.php:2161
+msgid "Laos"
+msgstr "ラオス"
+
+#: classes/fields/pick.php:2162
+msgid "Latvia"
+msgstr "ラトビア"
+
+#: classes/fields/pick.php:2163
+msgid "Lebanon"
+msgstr "レバノン"
+
+#: classes/fields/pick.php:2157
+msgid "Kenya"
+msgstr "ケニア"
+
+#: classes/fields/pick.php:2159
+msgid "Kuwait"
+msgstr "クウェート"
+
+#: classes/fields/pick.php:2160
+msgid "Kyrgyzstan"
+msgstr "キルギスタン"
+
+#: classes/fields/pick.php:2152
+msgid "Japan"
+msgstr "日本"
+
+#: classes/fields/pick.php:2151
+msgid "Jamaica"
+msgstr "ジャマイカ"
+
+#: classes/fields/pick.php:2156
+msgid "Kazakhstan"
+msgstr "カザフスタン"
+
+#: classes/fields/pick.php:2146
+msgid "Iraq"
+msgstr "イラク"
+
+#: classes/fields/pick.php:2150
+msgid "Italy"
+msgstr "イタリア"
+
+#: classes/fields/pick.php:2145
+msgid "Iran"
+msgstr "イラン"
+
+#: classes/fields/pick.php:2143
+msgid "India"
+msgstr "インド"
+
+#: classes/fields/pick.php:2144
+msgid "Indonesia"
+msgstr "インドネシア"
+
+#: classes/fields/pick.php:2142
+msgid "Iceland"
+msgstr "アイスランド"
+
+#: classes/fields/pick.php:2141
+msgid "Hungary"
+msgstr "ハンガリー"
+
+#: classes/fields/pick.php:2166
+msgid "Libya"
+msgstr "リビア"
+
+#: classes/fields/pick.php:2047
+msgid "Antigua and Barbuda"
+msgstr "アンティグア・バーブーダ"
+
+#: classes/fields/pick.php:2045
+msgid "Anguilla"
+msgstr "アンギラ"
+
+#: classes/fields/pick.php:2182
+msgid "Mayotte"
+msgstr "マヨット"
+
+#: classes/fields/pick.php:2210
+msgid "Northern Mariana Islands"
+msgstr "北マリアナ諸島"
+
+#: classes/fields/pick.php:2227
+msgid "Puerto Rico"
+msgstr "プエルトリコ"
+
+#: classes/fields/pick.php:2228
+msgid "Qatar"
+msgstr "カタール"
+
+#: classes/fields/pick.php:2217
+msgid "Panama"
+msgstr "パナマ"
+
+#: classes/fields/pick.php:2220
+msgid "Paraguay"
+msgstr "パラグアイ"
+
+#: classes/fields/pick.php:2214
+msgid "Pakistan"
+msgstr "パキスタン"
+
+#: classes/fields/pick.php:2212
+msgid "Oman"
+msgstr "オマーン"
+
+#: classes/fields/pick.php:2127
+msgid "Greece"
+msgstr "ギリシャ"
+
+#: classes/fields/pick.php:2124
+msgid "Germany"
+msgstr "ドイツ"
+
+#: classes/fields/pick.php:2125
+msgid "Ghana"
+msgstr "ガーナ"
+
+#: classes/fields/pick.php:2126
+msgid "Gibraltar"
+msgstr "ジブラルタル"
+
+#: classes/fields/pick.php:2116
+msgid "France"
+msgstr "フランス"
+
+#: classes/fields/pick.php:2113
+msgid "Faroe Islands"
+msgstr "フェロー諸島"
+
+#: classes/fields/pick.php:2111
+msgid "Ethiopia"
+msgstr "エチオピア"
+
+#: classes/fields/pick.php:2109
+msgid "Eritrea"
+msgstr "エリトリア"
+
+#: classes/fields/pick.php:2110
+msgid "Estonia"
+msgstr "エストニア"
+
+#: classes/fields/pick.php:2106
+msgid "Egypt"
+msgstr "エジプト"
+
+#: classes/fields/pick.php:2107
+msgid "El Salvador"
+msgstr "エルサルバドル"
+
+#: classes/fields/pick.php:2105
+msgid "Ecuador"
+msgstr "エクアドル"
+
+#: classes/fields/pick.php:2096
+msgid "Cyprus"
+msgstr "キプロス"
+
+#: classes/fields/pick.php:2094
+msgid "Croatia"
+msgstr "クロアチア"
+
+#: classes/fields/pick.php:2095
+msgid "Cuba"
+msgstr "キューバ"
+
+#: classes/fields/pick.php:2093
+msgid "Costa Rica"
+msgstr "コスタリカ"
+
+#: classes/fields/pick.php:2088
+msgid "Colombia"
+msgstr "コロンビア"
+
+#: classes/fields/pick.php:2089
+msgid "Comoros"
+msgstr "コモロ"
+
+#: classes/fields/pick.php:2077
+msgid "Cameroon"
+msgstr "カメルーン"
+
+#: classes/fields/pick.php:2078
+msgid "Canada"
+msgstr "カナダ"
+
+#: classes/fields/pick.php:2076
+msgid "Cambodia"
+msgstr "カンボジア"
+
+#: classes/fields/pick.php:2080
+msgid "Cape Verde"
+msgstr "カーボベルデ"
+
+#: classes/fields/pick.php:2073
+msgid "Bulgaria"
+msgstr "ブルガリア"
+
+#: classes/fields/pick.php:2074
+msgid "Burkina Faso"
+msgstr "ブルキナファソ"
+
+#: classes/fields/pick.php:2064
+msgid "Bolivia"
+msgstr "ボリビア"
+
+#: classes/fields/pick.php:2066
+msgid "Botswana"
+msgstr "ボツワナ"
+
+#: classes/fields/pick.php:2068
+msgid "Brazil"
+msgstr "ブラジル"
+
+#: classes/fields/pick.php:2059
+msgid "Belgium"
+msgstr "ベルギー"
+
+#: classes/fields/pick.php:2061
+msgid "Benin"
+msgstr "ベナン"
+
+#: classes/fields/pick.php:2056
+msgid "Bangladesh"
+msgstr "バングラデシュ"
+
+#: classes/fields/pick.php:2057
+msgid "Barbados"
+msgstr "バルバドス"
+
+#: classes/fields/pick.php:2058
+msgid "Belarus"
+msgstr "ベラルーシ"
+
+#: classes/fields/pick.php:2063
+msgid "Bhutan"
+msgstr "ブータン"
+
+#: classes/fields/pick.php:2075
+msgid "Burundi"
+msgstr "ブルンジ"
+
+#: classes/fields/pick.php:2147
+msgid "Ireland"
+msgstr "アイルランド"
+
+#: classes/fields/pick.php:2149
+msgid "Israel"
+msgstr "イスラエル"
+
+#: classes/fields/pick.php:2164
+msgid "Lesotho"
+msgstr "レソト"
+
+#: classes/fields/pick.php:2169
+msgid "Luxembourg"
+msgstr "ルクセンブルク"
+
+#: classes/fields/pick.php:2173
+msgid "Malawi"
+msgstr "マラウィ"
+
+#: classes/fields/pick.php:2175
+msgid "Maldives"
+msgstr "モルディブ"
+
+#: classes/fields/pick.php:2176
+msgid "Mali"
+msgstr "マリ"
+
+#: classes/fields/pick.php:2178
+msgid "Marshall Islands"
+msgstr "マーシャル諸島"
+
+#: classes/fields/pick.php:2190
+msgid "Montenegro"
+msgstr "モンテネグロ"
+
+#: classes/fields/pick.php:498 ui/admin/setup-add.php:240
+msgid "Media"
+msgstr "メディア"
+
+#: classes/fields/pick.php:522 ui/admin/setup-edit.php:537
+msgid "Post Formats"
+msgstr "投稿フォーマット"
+
+#: classes/fields/pick.php:504 ui/admin/setup-add.php:242
+#: ui/admin/setup-edit.php:522
+msgid "Comments"
+msgstr "コメント"
+
+#: classes/fields/pick.php:2131
+msgid "Guam"
+msgstr "グアム"
+
+#: classes/fields/pick.php:2135
+msgid "Guinea-Bissau"
+msgstr "ギニアビサウ"
+
+#: classes/fields/pick.php:2067
+msgid "Bouvet Island"
+msgstr "ブーベ島"
+
+#: classes/fields/pick.php:2133
+msgid "Guernsey"
+msgstr "ガーンジー"
+
+#: classes/fields/pick.php:2040
+msgid "Albania"
+msgstr "アルバニア"
+
+#: classes/fields/pick.php:2041
+msgid "Algeria"
+msgstr "アルジェリア"
+
+#: classes/fields/pick.php:2039
+msgid "Afghanistan"
+msgstr "アフガニスタン"
+
+#: classes/fields/pick.php:2072
+msgid "Brunei"
+msgstr "ブルネイ"
+
+#: classes/fields/pick.php:2097
+msgid "Czech Republic"
+msgstr "チェコ共和国"
+
+#: classes/fields/pick.php:2153
+msgid "Jersey"
+msgstr "ジャージー"
+
+#: classes/fields/pick.php:2114
+msgid "Fiji"
+msgstr "フィジー"
+
+#: classes/fields/pick.php:2208
+msgid "North Korea"
+msgstr "北朝鮮"
+
+#: classes/fields/pick.php:2206
+msgid "Niue"
+msgstr "ニウエ"
+
+#: classes/fields/pick.php:2201
+msgid "New Caledonia"
+msgstr "ニューカレドニア"
+
+#: classes/fields/pick.php:2177
+msgid "Malta"
+msgstr "マルタ"
+
+#: classes/fields/pick.php:2158
+msgid "Kiribati"
+msgstr "キリバス"
+
+#: classes/fields/pick.php:2188
+msgid "Monaco"
+msgstr "モナコ"
+
+#: classes/fields/pick.php:2199
+msgid "Netherlands Antilles"
+msgstr "オランダ領アンティル諸島"
+
+#: classes/fields/pick.php:2042
+msgid "American Samoa"
+msgstr "米サモア"
+
+#: classes/fields/pick.php:2046
+msgid "Antarctica"
+msgstr "南極"
+
+#: classes/fields/pick.php:2070
+msgid "British Indian Ocean Territory"
+msgstr "イギリス領インド洋地域"
+
+#: classes/fields/pick.php:2117
+msgid "French Guiana"
+msgstr "仏領ギアナ"
+
+#: classes/fields/pick.php:2118
+msgid "French Polynesia"
+msgstr "仏領ポリネシア"
+
+#: classes/fields/pick.php:2123 classes/fields/pick.php:2333
+msgid "Georgia"
+msgstr "ジョージア"
+
+#: classes/fields/pick.php:2185
+msgid "Micronesia"
+msgstr "ミクロネシア"
+
+#: classes/fields/pick.php:2148
+msgid "Isle of Man"
+msgstr "マン島"
+
+#: classes/fields/pick.php:2065
+msgid "Bosnia and Herzegovina"
+msgstr "ボスニア・ヘルツェゴビナ"
+
+#: classes/PodsAdmin.php:2086 classes/PodsAdmin.php:2123
+msgid "Category"
+msgstr "カテゴリー"
+
+#: classes/PodsAdmin.php:2115
+msgid "Field Types"
+msgstr "フィールドの種類"
+
+#: classes/PodsAdmin.php:2117
+msgid "Integration"
+msgstr "インテグレーション"
+
+#: classes/PodsAdmin.php:2118
+msgid "Migration"
+msgstr "移行"
+
+#: classes/PodsUI.php:937
+msgid "Manage %s"
+msgstr "%s 一覧"
+
+#: classes/PodsUI.php:940
+msgid "Duplicate %s"
+msgstr "%s を複製"
+
+#: classes/PodsUI.php:942 classes/PodsUI.php:953
+msgid "Reorder %s"
+msgstr "%s を並べ替え"
+
+#: classes/PodsUI.php:947 classes/PodsUI.php:950
+msgid "Save New %s"
+msgstr "%s を保存"
+
+#: classes/PodsUI.php:949
+msgid "Save %s"
+msgstr "%s を保存"
+
+#: classes/PodsUI.php:951
+msgid "Delete this %s"
+msgstr "この %s を削除する"
+
+#: classes/PodsUI.php:1434 classes/PodsUI.php:1482 classes/PodsUI.php:1762
+#: classes/PodsUI.php:2379
+msgid "Back to %s"
+msgstr "%s に戻る"
+
+#: classes/PodsUI.php:1372 classes/PodsUI.php:1527
+msgid "<strong>Error:</strong> You do not have access to this %s."
+msgstr "<strong>エラー</strong>  %s へのアクセス権限がありません"
+
+#: classes/fields/avatar.php:96 classes/fields/file.php:184
+msgid "Add Button Text"
+msgstr "追加ボタンの文言"
+
+#: classes/fields/avatar.php:101 classes/fields/file.php:189
+msgid "Modal Title"
+msgstr "ポップアップのタイトル"
+
+#: classes/fields/avatar.php:103 classes/fields/file.php:191
+#: ui/fields/media.php:158
+msgid "Attach a file"
+msgstr "ファイルを添付"
+
+#: classes/fields/avatar.php:107 classes/fields/file.php:195
+msgid "Modal Add Button Text"
+msgstr "ポップアップ内の追加ボタンの文言"
+
+#: classes/fields/code.php:59 classes/fields/color.php:49
+#: classes/fields/currency.php:91 classes/fields/date.php:58
+#: classes/fields/datetime.php:58 classes/fields/email.php:58
+#: classes/fields/number.php:58 classes/fields/paragraph.php:58
+#: classes/fields/phone.php:58 classes/fields/text.php:58
+#: classes/fields/time.php:57 classes/fields/website.php:58
+#: classes/fields/wysiwyg.php:58
+msgid "Repeatable Field"
+msgstr "繰り返しフィールド"
+
+#: classes/PodsUI.php:1791
+msgid "<strong>Success!</strong> %s reordered successfully."
+msgstr "<strong>並べ替え完了</strong> %s の並べ替えが完了"
+
+#: classes/PodsUI.php:1809 components/Roles/ui/edit.php:19
+#: ui/admin/form-settings.php:48 ui/admin/form-settings.php:67
+#: ui/admin/form.php:71 ui/admin/form.php:99 ui/admin/setup-edit.php:218
+msgid "saved"
+msgstr "保存"
+
+#: classes/PodsUI.php:2620
+msgid "Reset Filters"
+msgstr "検索条件をリセット"
+
+#: classes/PodsUI.php:2715
+msgid "Please use the search filter(s) above to display data"
+msgstr "データを表示するには検索フィルターを使用してください"
+
+#: classes/PodsUI.php:3140
+msgid "Search Text"
+msgstr "検索語"
+
+#: classes/PodsUI.php:3200
+msgid "No %s found"
+msgstr "%s が見つかりません"
+
+#: classes/PodsAdmin.php:2655 classes/PodsUI.php:3549
+msgid "Enable"
+msgstr "有効化"
+
+#: classes/PodsUI.php:3852
+msgid "Go to the first page"
+msgstr "はじめのページヘ"
+
+#: classes/PodsUI.php:3853
+msgid "Go to the previous page"
+msgstr "前のページヘ"
+
+#: classes/PodsUI.php:3857
+msgid "Current page"
+msgstr "現在のページ"
+
+#: classes/PodsAdmin.php:2116 ui/admin/settings.php:11
+msgid "Tools"
+msgstr "ツール"
+
+#: classes/fields/boolean.php:56
+msgid "Checkbox"
+msgstr "チェックボックス"
+
+#: classes/fields/boolean.php:57 classes/fields/pick.php:145
+msgid "Radio Buttons"
+msgstr "ラジオボタン"
+
+#: classes/fields/boolean.php:63
+msgid "Yes Label"
+msgstr "Yes の表示"
+
+#: classes/PodsUI.php:2560 classes/PodsUI.php:2899 classes/PodsUI.php:3086
+#: classes/fields/boolean.php:64 classes/fields/boolean.php:243
+#: classes/fields/boolean.php:267
+msgid "Yes"
+msgstr "はい"
+
+#: classes/fields/boolean.php:68
+msgid "No Label"
+msgstr "Noの表示"
+
+#: classes/PodsUI.php:2561 classes/PodsUI.php:2900 classes/PodsUI.php:3087
+#: classes/fields/boolean.php:69 classes/fields/boolean.php:245
+#: classes/fields/boolean.php:268
+msgid "No"
+msgstr "いいえ"
+
+#: classes/fields/code.php:79 classes/fields/currency.php:185
+#: classes/fields/email.php:67 classes/fields/number.php:113
+#: classes/fields/paragraph.php:131 classes/fields/password.php:59
+#: classes/fields/phone.php:92 classes/fields/text.php:90
+#: classes/fields/website.php:92
+msgid "Maximum Length"
+msgstr "最大長"
+
+#: classes/fields/color.php:163 classes/fields/password.php:152
+#: classes/fields/text.php:204
+msgid "This field is required."
+msgstr "必須入力フィールドです"
+
+#: classes/PodsUI.php:1881 components/Roles/ui/edit.php:24
+#: ui/admin/form-settings.php:54 ui/admin/form-settings.php:69
+#: ui/admin/form.php:82 ui/admin/form.php:106 ui/admin/setup-edit.php:225
+msgid "<strong>Success!</strong> %s %s successfully."
+msgstr "<strong>完了</strong> %s %s を完了しました"
+
+#: classes/PodsInit.php:935
+msgid "New %s"
+msgstr "新規 %s"
+
+#: classes/PodsInit.php:937 classes/PodsInit.php:963 classes/PodsInit.php:1462
+#: classes/PodsUI.php:939
+msgid "Edit %s"
+msgstr "%s の編集"
+
+#: classes/PodsInit.php:938 classes/PodsInit.php:939 classes/PodsUI.php:941
+#: classes/PodsUI.php:952 ui/admin/form.php:85 ui/admin/form.php:109
+#: ui/admin/form.php:196 ui/admin/view.php:30
+msgid "View %s"
+msgstr "%s 表示"
+
+#: classes/PodsInit.php:940 classes/PodsInit.php:960
+msgid "All %s"
+msgstr "%s一覧"
+
+#: classes/PodsInit.php:941 classes/PodsInit.php:958 classes/PodsUI.php:943
+msgid "Search %s"
+msgstr "%s を検索"
+
+#: classes/PodsInit.php:944 classes/PodsInit.php:961
+msgid "Parent %s"
+msgstr "親 %s"
+
+#: classes/PodsInit.php:945
+msgid "Parent %s:"
+msgstr "親 %s:"
+
+#: classes/PodsInit.php:959
+msgid "Popular %s"
+msgstr "人気の %s"
+
+#: classes/PodsAdmin.php:1957
+msgid "Pod deleted successfully."
+msgstr "Pod が削除されました"
+
+#: classes/PodsAdmin.php:1910
+msgid "Pod reset successfully."
+msgstr "Pod はリセットされました"
+
+#: classes/PodsAdmin.php:2037
+msgid "by %s"
+msgstr "%s による"
+
+#: classes/PodsInit.php:883 classes/PodsInit.php:895 components/Helpers.php:115
+#: components/Helpers.php:136 components/Pages.php:164 components/Pages.php:185
+#: components/Templates/Templates.php:135
+#: components/Templates/Templates.php:156
+msgid "%s updated."
+msgstr "%s は更新されました"
+
+#: classes/PodsInit.php:887 components/Helpers.php:119 components/Pages.php:168
+#: components/Templates/Templates.php:139
+msgid "%s saved."
+msgstr "%s は保存されました"
+
+#: classes/PodsInit.php:896 components/Helpers.php:137 components/Pages.php:186
+#: components/Templates/Templates.php:157
+msgid "%s published."
+msgstr "%s 公開されました"
+
+#: classes/PodsInit.php:897 components/Helpers.php:138 components/Pages.php:187
+#: components/Templates/Templates.php:158
+msgid "%s submitted."
+msgstr "%s  が送信されました"
+
+#: classes/PodsInit.php:900 components/Helpers.php:144 components/Pages.php:193
+#: components/Templates/Templates.php:164
+msgid "%s draft updated."
+msgstr "%s の下書きが更新されました"
+
+#: classes/PodsInit.php:923 classes/PodsUI.php:915
+msgid "Items"
+msgstr "アイテム"
+
+#: classes/PodsInit.php:924 classes/PodsUI.php:914
+msgid "Item"
+msgstr "アイテム"
+
+#: classes/PodsInit.php:934 classes/PodsInit.php:965 classes/PodsUI.php:938
+msgid "Add New %s"
+msgstr "%s の新規作成"
+
+#: classes/PodsAdmin.php:2094 ui/admin/setup-edit-field-fluid.php:70
+msgid "Description"
+msgstr "説明"
+
+#: classes/PodsUI.php:2682 ui/admin/setup-edit-field-fluid.php:190
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: classes/PodsUI.php:2817
+msgid "Reset"
+msgstr "リセット"
+
+#: classes/fields/date.php:67 classes/fields/datetime.php:67
+msgid "Date Format"
+msgstr "日付フォーマット"
+
+#: classes/PodsUI.php:3883
+msgid "Go to the next page"
+msgstr "次のページに進む"
+
+#: classes/PodsUI.php:3884
+msgid "Go to the last page"
+msgstr "最後のページに移動"
+
+#: classes/PodsUI.php:930 classes/PodsUI.php:933 classes/PodsUI.php:3511
+#: ui/admin/setup-edit.php:362
+msgid "View"
+msgstr "表示"
+
+#: classes/PodsUI.php:2661 classes/PodsUI.php:3752
+msgid "Apply"
+msgstr "適用"
+
+#: classes/PodsUI.php:3029 classes/PodsUI.php:3061 classes/PodsUI.php:3096
+#: classes/PodsUI.php:3121 ui/fields/color.php:8
+msgid "Clear"
+msgstr "クリア"
+
+#: classes/PodsUI.php:2645
+msgid "Bulk Actions"
+msgstr "一括操作"
+
+#: classes/PodsUI.php:3857 classes/PodsUI.php:3879
+msgid "of"
+msgstr "の"
+
+#: classes/fields/pick.php:161
+msgid "Multi Select"
+msgstr "複数選択"
+
+#: classes/fields/avatar.php:85 classes/fields/avatar.php:120
+#: classes/fields/file.php:106 classes/fields/file.php:209
+msgid "Upload File"
+msgstr "ファイルをアップロード"
+
+#: classes/PodsInit.php:881 components/Helpers.php:113 components/Pages.php:162
+#: components/Templates/Templates.php:133
+msgid "Custom field updated."
+msgstr "カスタムフィールドを更新しました。"
+
+#: classes/PodsInit.php:882 components/Helpers.php:114 components/Pages.php:163
+#: components/Templates/Templates.php:134
+msgid "Custom field deleted."
+msgstr "カスタムフィールドを削除しました。"
+
+#: classes/fields/datetime.php:95 classes/fields/datetime.php:114
+#: classes/fields/time.php:76 classes/fields/time.php:94
+msgid "Time Format"
+msgstr "時刻形式"
+
+#: classes/PodsUI.php:3550
+msgid "Disable"
+msgstr "無効化"
+
+#: classes/PodsAPI.php:775
+msgid "Setting data is required but is either invalid or empty"
+msgstr "設定データがないか、正しくありません"
+
+#: classes/PodsAPI.php:4073
+msgid "Pod not allowed to be duplicated"
+msgstr "Podの複製は許可されていません"
+
+#: classes/PodsAdmin.php:734 ui/admin/setup-add.php:89
+msgid "Custom Settings Page"
+msgstr "カスタム設定ページ"
+
+#: classes/PodsAdmin.php:744 classes/PodsAdmin.php:855
+msgid "Type"
+msgstr "種類"
+
+#: classes/PodsAdmin.php:1544
+msgid "Search Filters"
+msgstr "検索フィルター"
+
+#: classes/PodsAdmin.php:1719
+msgid "Visibility"
+msgstr "表示されるかどうか"
+
+#: classes/PodsAdmin.php:1057
+msgid "Exclude from Search"
+msgstr "検索対象としない"
+
+#: classes/PodsAdmin.php:1520 classes/PodsUI.php:929 classes/PodsUI.php:3529
+#: ui/admin/setup-edit-field-fluid.php:20 ui/admin/setup-edit-field.php:70
+msgid "Duplicate"
+msgstr "複製"
+
+#: classes/PodsAdmin.php:1522 classes/PodsUI.php:931
+msgid "Reorder"
+msgstr "並べ替え"
+
+#: classes/Pods.php:3208 classes/PodsUI.php:932 classes/PodsUI.php:2598
+#: classes/PodsUI.php:2823
+msgid "Search"
+msgstr "検索"
+
+#: classes/Pods.php:3461
+msgid "Form submitted successfully"
+msgstr "フォームの送信が完了しました"
+
+#: classes/PodsAPI.php:6846
+msgid "%s is empty"
+msgstr "%s が空欄です"
+
+#: classes/PodsAPI.php:6862 classes/fields/email.php:190
+msgid "%s is required"
+msgstr "%s は必須項目です"
+
+#: classes/PodsAPI.php:6889
+msgid "%s needs to be unique"
+msgstr "%s はユニークでなければいけません"
+
+#: classes/PodsAdmin.php:241 classes/PodsAdmin.php:853
+#: classes/PodsAdmin.php:2113
+msgid "All"
+msgstr "一覧:"
+
+#: classes/PodsAdmin.php:245 classes/PodsAdmin.php:300
+#: classes/PodsAdmin.php:1519 classes/PodsInit.php:936 classes/PodsUI.php:928
+#: classes/PodsUI.php:3520 ui/admin/setup-edit-field-fluid.php:17
+#: ui/admin/setup-edit-field.php:67 ui/admin/setup-edit.php:350
+msgid "Edit"
+msgstr "編集"
+
+#: classes/PodsAdmin.php:247 classes/PodsAdmin.php:267
+#: classes/PodsAdmin.php:268 classes/PodsAdmin.php:302
+#: classes/PodsAdmin.php:316 classes/PodsAdmin.php:434
+#: classes/PodsAdmin.php:1518 classes/PodsInit.php:933 classes/PodsUI.php:927
+#: classes/PodsUI.php:948 ui/admin/setup-edit.php:338
+msgid "Add New"
+msgstr "新規作成"
+
+#: classes/PodsAdmin.php:296 classes/PodsAdmin.php:317 classes/PodsUI.php:926
+#: components/Roles/ui/edit.php:39 ui/admin/form.php:183 ui/admin/view.php:17
+msgid "Manage"
+msgstr "一覧"
+
+#: classes/PodsAdmin.php:429
+msgid "Edit Pods"
+msgstr "Pods を編集"
+
+#: classes/PodsAdmin.php:444 classes/PodsAdmin.php:467
+#: ui/admin/components-admin.php:10 ui/admin/upgrade/upgrade_2_0_0.php:221
+msgid "Settings"
+msgstr "設定"
+
+#: classes/PodsAdmin.php:449 classes/PodsAdmin.php:472
+msgid "Help"
+msgstr "ヘルプ"
+
+#: classes/Pods.php:3733
+msgid "ID"
+msgstr "ID"
+
+#: classes/Pods.php:3828 classes/PodsAdmin.php:1521 classes/PodsUI.php:3539
+#: ui/admin/form.php:260 ui/admin/setup-edit-field-fluid.php:23
+#: ui/admin/setup-edit-field.php:73 ui/admin/setup-edit.php:812
+#: ui/admin/view.php:76
+msgid "Delete"
+msgstr "削除"
+
+#: classes/PodsAdmin.php:733
+msgid "Advanced Content Type"
+msgstr "拡張コンテンツタイプ"
+
+#: classes/PodsAdmin.php:742 components/Roles/Roles.php:90
+#: components/Roles/ui/add.php:43 ui/admin/setup-edit-field-fluid.php:62
+#: ui/admin/setup-edit.php:330
+msgid "Label"
+msgstr "表示ラベル"
+
+#: classes/PodsAdmin.php:743 classes/PodsAdmin.php:2078
+#: classes/PodsAdmin.php:2743 classes/PodsUI.php:958
+#: components/Roles/Roles.php:91 components/Roles/ui/add.php:50
+#: ui/admin/setup-edit-field-fluid.php:66
+msgid "Name"
+msgstr "名前"
+
+#: classes/PodsAdmin.php:746 ui/admin/setup-add.php:207
+#: ui/admin/setup-add.php:358
+msgid "Storage Type"
+msgstr "ストレージの種類"
+
+#: classes/Pods.php:3443 classes/PodsAdmin.php:631 classes/PodsForm.php:319
+#: ui/admin/components-admin.php:99
+msgid "Save Changes"
+msgstr "変更を保存"
+
+#: classes/PodsAdmin.php:1523 classes/PodsUI.php:2689
+#: components/Migrate-Packages/ui/wizard.php:69
+msgid "Export"
+msgstr "書き出し"
+
+#: classes/PodsAdmin.php:925
+msgid "Labels"
+msgstr "ラベル"
+
+#: classes/PodsAdmin.php:931
+msgid "Advanced Options"
+msgstr "高度なオプション"
+
+#: classes/PodsAdmin.php:1043 classes/PodsAdmin.php:1288
+msgid "Public"
+msgstr "公開"
+
+#: classes/PodsAdmin.php:1615 classes/PodsAdmin.php:2119
+#: ui/admin/setup-add.php:175 ui/admin/setup-add.php:353
+msgid "Advanced"
+msgstr "詳細"
+
+#: classes/PodsAdmin.php:462 ui/admin/upgrade/upgrade_2_1_0.php:26
+msgid "Upgrade"
+msgstr "アップグレード"
+
+#: classes/PodsAdmin.php:1127 classes/PodsAdmin.php:1324
+msgid "Rewrite"
+msgstr "リライト"
+
+#: classes/PodsAdmin.php:1019
+msgid "Menu Icon"
+msgstr "メニューアイコン"
+
+#: classes/PodsAdmin.php:1706
+msgid "Default Value"
+msgstr "既定値"

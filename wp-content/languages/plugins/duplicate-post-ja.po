@@ -1,179 +1,257 @@
-# Translation of Stable (latest release) in Japanese
-# This file is distributed under the same license as the Stable (latest release) package.
+# Translation of Plugins - Duplicate Post - Stable (latest release) in Japanese
+# This file is distributed under the same license as the Plugins - Duplicate Post - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-09-15 21:05:42+0000\n"
+"PO-Revision-Date: 2016-10-09 19:24:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/1.0-alpha-1100\n"
-"Project-Id-Version: Stable (latest release)\n"
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: ja_JP\n"
+"Project-Id-Version: Plugins - Duplicate Post - Stable (latest release)\n"
 
-#: duplicate-post-options.php:202
-msgid "Admin bar"
-msgstr "管理バー"
+#: duplicate-post-options.php:346
+msgid "You can also use the template tag duplicate_post_clone_post_link( $link, $before, $after, $id ). More info <a href=\"%s\">here</a>"
+msgstr "テンプレートタグ duplicate_post_clone_post_link( $link, $before, $after, $id ) を使うこともできます。詳細は<a href=\"%s\">こちら</a>"
 
-#: duplicate-post-admin.php:116
-msgid "Clone"
-msgstr "複製"
+#: duplicate-post-options.php:324 duplicate-post-options.php:345
+msgid "Whether the links are displayed for custom post types registered by themes or plugins depends on their use of standard WordPress UI elements"
+msgstr "テーマまたはプラグインによって登録されたカスタム投稿タイプのリンクが表示されるかどうかは、それらが標準の WordPress UI 要素を使っているかどうかによります"
 
-#. Description of the plugin/theme
-msgid "Clone posts and pages."
-msgstr "投稿やページを複製します"
+#: duplicate-post-options.php:323
+msgid "Select the post types you want the plugin to be enabled"
+msgstr "プラグインを有効化したい投稿タイプを選択"
 
-#: duplicate-post-admin.php:115
-msgid "Clone this item"
-msgstr "この項目を複製"
+#: duplicate-post-options.php:314
+msgid "Enable for these post types"
+msgstr "これらの投稿タイプに対して有効化"
 
-#: duplicate-post-options.php:132
-msgid "Comma-separated list of meta fields that must not be copied"
-msgstr "コピーしないカスタムフィールドをコンマ区切りで入力してください"
+#: duplicate-post-options.php:308
+msgid "Passwords and contents of password-protected posts may become visible to undesired users and visitors"
+msgstr "望ましくないユーザーや訪問者に対し、パスワード保護された投稿のパスワードとコンテンツが閲覧可能になる可能性があります"
 
-#: duplicate-post-options.php:110
-msgid "Copy attachments"
-msgstr "メディアファイルをコピー"
+#: duplicate-post-options.php:274
+msgid "Show/hide private taxonomies"
+msgstr "タクソノミーの表示/非表示を切り替える"
 
-#: duplicate-post-options.php:119
-msgid "Copy children"
-msgstr "子ページをコピー"
+#: duplicate-post-options.php:267
+msgid "Add <code>_thumbnail_id</code> to prevent featured images to be copied"
+msgstr "アイキャッチ画像の複製を防止するには <code>_thumbnail_id</code> を追加してください"
 
-#: duplicate-post-admin.php:185
-msgid "Copy creation failed, could not find original:"
-msgstr "複製の作成に失敗しました。複製元が見つかりません:"
+#: duplicate-post-options.php:256
+msgid "Add this number to the original menu order (blank or zero to retain the value)"
+msgstr "元のメニューの順序にこの数字を追加 (同じ値にする場合は空または0を入力)"
 
-#: duplicate-post-options.php:101
-msgid "Copy excerpt"
-msgstr "抜粋をコピー"
+#: duplicate-post-options.php:251
+msgid "Increase menu order by"
+msgstr "メニュー順を増加する数"
 
-#: duplicate-post-options.php:84
-msgid "Copy post/page date also"
-msgstr "投稿日もコピーする"
+#: duplicate-post-options.php:226
+msgid "except pingbacks and trackbacks"
+msgstr "ピンバックとトラックバック以外"
 
-#: duplicate-post-options.php:92
-msgid "Copy post/page status"
-msgstr "ステータスをコピーする"
+#: duplicate-post-options.php:226
+msgid "Comments"
+msgstr "コメント"
 
-#: duplicate-post-options.php:114
-msgid "Copy the attachments from the original post/page"
-msgstr "複製元のメディアファイルをコピーする"
+#: duplicate-post-options.php:223
+msgid "Children"
+msgstr "子要素"
 
-#: duplicate-post-options.php:123
-msgid "Copy the children from the original post/page"
-msgstr "複製元の子ページをコピーする"
+#: duplicate-post-options.php:220
+msgid "Attachments"
+msgstr "添付ファイル"
 
-#: duplicate-post-options.php:105
-msgid "Copy the excerpt from the original post/page"
-msgstr "複製元の抜粋をコピーする"
+#: duplicate-post-options.php:217
+msgid "Password"
+msgstr "パスワード"
 
-#: duplicate-post-options.php:96
-msgid "Copy the original post status (draft, published, pending) when cloning from the post list."
-msgstr "投稿一覧から複製する時に、複製元の投稿ステータス (下書き、公開済み、レビュー待ち) をコピーする"
+#: duplicate-post-options.php:214
+msgid "Content"
+msgstr "コンテンツ"
 
-#: duplicate-post-admin.php:118 duplicate-post-admin.php:136
-#: duplicate-post-common.php:66 duplicate-post-common.php:70
-#: duplicate-post-common.php:103
-msgid "Copy to a new draft"
-msgstr "新規下書きとしてコピー"
-
-#: duplicate-post-options.php:128
-msgid "Do not copy these fields"
-msgstr "コピーしないカスタムフィールド"
-
-#: duplicate-post-options.php:137
-msgid "Do not copy these taxonomies"
-msgstr "コピーしない分類"
-
-#: duplicate-post-admin.php:349 duplicate-post-options.php:69
-msgid "Donate"
-msgstr "寄付"
-
-#. #-#-#-#-#  tmp-duplicate-post.pot (Duplicate Post 2.6)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#: duplicate-post-options.php:28
-msgid "Duplicate Post"
-msgstr "Duplicate Post"
-
-#: duplicate-post-options.php:28 duplicate-post-options.php:62
-msgid "Duplicate Post Options"
-msgstr "Duplicate Post 設定"
-
-#: duplicate-post-options.php:199
-msgid "Edit screen"
-msgstr "編集画面"
-
-#. Author of the plugin/theme
-msgid "Enrico Battocchi"
-msgstr "Enrico Battocchi"
-
-#: duplicate-post-admin.php:119
-msgid "New Draft"
-msgstr "新規下書き"
-
-#: duplicate-post-admin.php:163
-msgid "No post to duplicate has been supplied!"
-msgstr "複製元の投稿が指定されていません !"
-
-#: duplicate-post-options.php:87
-msgid "Normally, the new copy has its publication date set to current time: check the box to copy the original post/page date"
-msgstr "複製元の投稿時間をコピーする場合にはチェックをつけてください。通常、新規コピーの投稿時間には現在時刻が設定されます。"
-
-#: duplicate-post-options.php:196
-msgid "Post list"
-msgstr "投稿一覧"
-
-#: duplicate-post-options.php:160
-msgid "Prefix to be added before the original title, e.g. \"Copy of\" (blank for no prefix)"
-msgstr "複製元のタイトルの前に追加する接頭辞 例: \"複製した記事\" (空欄の場合、接頭辞は付きません)"
-
-#: duplicate-post-options.php:174
-msgid "Roles allowed to copy"
-msgstr "複製可能な権限"
+#: duplicate-post-options.php:211
+msgid "Excerpt"
+msgstr "抜粋"
 
 #: duplicate-post-options.php:208
-msgid "Save Changes"
-msgstr "変更を保存"
+msgid "Slug"
+msgstr "スラッグ"
 
-#: duplicate-post-options.php:151
-msgid "Select the taxonomies you don't want to be copied"
-msgstr "コピーしない分類を選択してください"
+#: duplicate-post-options.php:205
+msgid "Status"
+msgstr "状態"
 
-#: duplicate-post.php:44
-msgid "Settings"
-msgstr "設定"
+#: duplicate-post-options.php:202
+msgid "Date"
+msgstr "日付"
 
-#: duplicate-post-options.php:192
-msgid "Show links in"
-msgstr "リンクを表示する場所"
+#: duplicate-post-options.php:199
+msgid "Title"
+msgstr "タイトル"
 
-#: duplicate-post-options.php:169
-msgid "Suffix to be added after the original title, e.g. \"(dup)\" (blank for no suffix)"
-msgstr "複製元のタイトルの後に追加する接尾辞 例: \"複製した記事\" (空欄の場合、接尾辞は付きません)"
-
-#: duplicate-post-options.php:156
-msgid "Title prefix"
-msgstr "タイトルの接頭辞"
-
-#: duplicate-post-options.php:165
-msgid "Title suffix"
-msgstr "タイトルの接尾辞"
-
-#: duplicate-post-admin.php:350 duplicate-post-options.php:68
-msgid "Translate"
-msgstr "翻訳"
-
-#: duplicate-post-options.php:67
-msgid "Visit plugin site"
-msgstr "プラグインのサイトを表示"
+#: duplicate-post-options.php:195
+msgid "Post/page elements to copy"
+msgstr "複製する投稿/ページ"
 
 #: duplicate-post-options.php:187
-msgid "Warning: users will be able to copy all posts, even those of other users"
-msgstr "注意: 設定した権限のユーザーは、すべて投稿 (他のユーザーの投稿を含む) を複製可能になります"
+msgid "Display"
+msgstr "表示"
+
+#: duplicate-post-options.php:185
+msgid "Permissions"
+msgstr "権限"
+
+#: duplicate-post-options.php:183
+msgid "What to copy"
+msgstr "複製元"
+
+#: duplicate-post-options.php:80
+msgid "FAQ"
+msgstr "FAQ"
+
+#: duplicate-post-admin.php:453
+msgid "Untitled"
+msgstr "無題"
+
+#: duplicate-post-admin.php:436
+msgid "Copy features for this post type are not enabled in options page"
+msgstr "この投稿タイプに対する複製機能が設定ページで有効化されていません"
+
+#: duplicate-post-admin.php:135
+msgid "Dismiss this notice."
+msgstr "この通知を非表示にする。"
+
+#: duplicate-post-admin.php:133
+msgid "<strong>Duplicate Post has been greatly redesigned in its options page.</strong> Please <a href=\"%s\">review the settings</a> to make sure it works as you expect."
+msgstr "<strong>Duplicate Post の設定画面が大幅に刷新されました</strong>。<a href=\"%s\">設定画面を確認</a>して期待したとおりに動作しているか確認してください。"
 
 #. Author URI of the plugin/theme
 msgid "http://lopo.it"
 msgstr "http://lopo.it"
 
+#. Author of the plugin/theme
+msgid "Enrico Battocchi"
+msgstr "Enrico Battocchi"
+
+#. Description of the plugin/theme
+msgid "Clone posts and pages."
+msgstr "投稿やページを複製します"
+
 #. Plugin URI of the plugin/theme
 msgid "http://lopo.it/duplicate-post-plugin/"
 msgstr "http://lopo.it/duplicate-post-plugin/"
+
+#: duplicate-post.php:49
+msgid "Settings"
+msgstr "設定"
+
+#: duplicate-post-options.php:354
+msgid "Save Changes"
+msgstr "変更を保存"
+
+#: duplicate-post-options.php:341
+msgid "Admin bar"
+msgstr "管理バー"
+
+#: duplicate-post-options.php:339
+msgid "Edit screen"
+msgstr "編集画面"
+
+#: duplicate-post-options.php:337
+msgid "Post list"
+msgstr "投稿一覧"
+
+#: duplicate-post-options.php:333
+msgid "Show links in"
+msgstr "リンクを表示する場所"
+
+#: duplicate-post-options.php:307
+msgid "Warning: users will be able to copy all posts, even those of other users"
+msgstr "注意: 設定した権限のユーザーは、すべて投稿 (他のユーザーの投稿を含む) を複製可能になります"
+
+#: duplicate-post-options.php:297
+msgid "Roles allowed to copy"
+msgstr "複製可能な権限"
+
+#: duplicate-post-options.php:246
+msgid "Suffix to be added after the title, e.g. \"(dup)\" (blank for no suffix)"
+msgstr "タイトルの後に追加するテキスト 例: \"(複製) \" (何も付けたくない場合は空欄)"
+
+#: duplicate-post-options.php:241
+msgid "Title suffix"
+msgstr "タイトルの接尾辞"
+
+#: duplicate-post-options.php:236
+msgid "Prefix to be added before the title, e.g. \"Copy of\" (blank for no prefix)"
+msgstr "タイトルの前に追加するテキスト 例: \"複製: \" (何も付けたくない場合は空欄)"
+
+#: duplicate-post-options.php:231
+msgid "Title prefix"
+msgstr "タイトルの接頭辞"
+
+#: duplicate-post-options.php:287
+msgid "Select the taxonomies you don't want to be copied"
+msgstr "複製しないタクソノミーを選択"
+
+#: duplicate-post-options.php:272
+msgid "Do not copy these taxonomies"
+msgstr "複製しないタクソノミー"
+
+#: duplicate-post-options.php:266
+msgid "Comma-separated list of meta fields that must not be copied"
+msgstr "複製しないカスタムフィールドをコンマ区切りで入力してください"
+
+#: duplicate-post-options.php:261
+msgid "Do not copy these fields"
+msgstr "複製しないカスタムフィールド"
+
+#: duplicate-post-options.php:77
+msgid "Visit plugin site"
+msgstr "プラグインのサイトを表示"
+
+#. #-#-#-#-#  tmp-duplicate-post.pot (Duplicate Post 3.0.1)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: duplicate-post-options.php:39
+msgid "Duplicate Post"
+msgstr "Duplicate Post"
+
+#: duplicate-post-options.php:39 duplicate-post-options.php:72
+msgid "Duplicate Post Options"
+msgstr "Duplicate Post 設定"
+
+#: duplicate-post-admin.php:524 duplicate-post-options.php:79
+msgid "Translate"
+msgstr "翻訳"
+
+#: duplicate-post-admin.php:135 duplicate-post-admin.php:523
+#: duplicate-post-options.php:81
+msgid "Donate"
+msgstr "寄付"
+
+#: duplicate-post-admin.php:249
+msgid "Copy creation failed, could not find original:"
+msgstr "複製の作成に失敗しました。複製元が見つかりません:"
+
+#: duplicate-post-admin.php:227
+msgid "No post to duplicate has been supplied!"
+msgstr "複製元の投稿が指定されていません !"
+
+#: duplicate-post-admin.php:179
+msgid "New Draft"
+msgstr "新規下書き"
+
+#: duplicate-post-admin.php:178 duplicate-post-admin.php:199
+#: duplicate-post-common.php:77 duplicate-post-common.php:81
+#: duplicate-post-common.php:115
+msgid "Copy to a new draft"
+msgstr "新規下書きとして複製"
+
+#: duplicate-post-admin.php:176
+msgid "Clone"
+msgstr "複製"
+
+#: duplicate-post-admin.php:175
+msgid "Clone this item"
+msgstr "この項目を複製"

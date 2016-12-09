@@ -1,0 +1,184 @@
+# Translation of Plugins - Post Types Order - Stable (latest release) in German
+# This file is distributed under the same license as the Plugins - Post Types Order - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-09-07 15:15:03+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: de\n"
+"Project-Id-Version: Plugins - Post Types Order - Stable (latest release)\n"
+
+#: include/options.php:117
+msgid "Allow sortable drag & drop functionality within default WordPress post type archive. Admin Sort need to be active."
+msgstr "Erlaubt sortierbare Drag & Drop-Funktionalität innerhalb der Standard-WordPress-Beitragstyp-Archive. Admin-Sortierung muss dafür aktiv sein."
+
+#: include/options.php:113
+msgid "Archive Drag&Drop "
+msgstr "Archive Drag & Drop"
+
+#. Author of the plugin/theme
+msgid "Nsp Code"
+msgstr "Nsp Code"
+
+#. #-#-#-#-#  tmp-post-types-order.pot (Post Types Order 1.8.9.2)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  tmp-post-types-order.pot (Post Types Order 1.8.9.2)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "http://www.nsp-code.com"
+msgstr "http://www.nsp-code.com"
+
+#. Plugin Name of the plugin/theme
+msgid "Post Types Order"
+msgstr "Post Types Order"
+
+#: post-types-order.php:243 post-types-order.php:322
+msgid "Use commas instead of %s to separate excluded terms."
+msgstr "Benutze Kommas statt %s, um ausgeschlossene Begriffe zu trennen."
+
+#: post-types-order.php:150
+msgid "make the configuration and save"
+msgstr "Bitte Konfigurieren und speichern"
+
+#: post-types-order.php:150
+msgid "Settings Page"
+msgstr "Einstellungen"
+
+#: post-types-order.php:150
+msgid "Post Types Order must be configured. Please go to"
+msgstr "Post Types Order muss konfiguriert werden. Gehen Sie zu"
+
+#: include/options.php:135
+msgid "Save Settings"
+msgstr "Einstellungen speichern"
+
+#: include/options.php:126
+msgid "code"
+msgstr "Code"
+
+#: include/options.php:126
+msgid "This can also be controlled through"
+msgstr "Dies kann auch gesteuert werden durch"
+
+#: include/options.php:126
+msgid "Apply the sort on Next / Previous site-wide navigation."
+msgstr "Die Sortierung auf die gesamte Nächste / Vorherige Navigation anwenden."
+
+#: include/options.php:122
+msgid "Next / Previous Apply"
+msgstr "Nächste / Vorherige anwenden"
+
+#: include/options.php:108
+msgid "To affect the admin interface, to see the post types per your new sort, this need to be checked"
+msgstr "Damit die Einträge in der Standard-Listenansicht nach gesetzter Reihenfolge angezeigt werdenmuss dieser Haken gesetzt werden"
+
+#: include/options.php:104
+msgid "Admin Sort"
+msgstr "Admin-Sortierung"
+
+#: include/options.php:97
+msgid "Additional Description and Examples"
+msgstr "Zusätzliche Beschreibung und Beispiele"
+
+#: include/options.php:95
+msgid "If only certain queries need to use the custom sort, keep this unchecked and include 'orderby' => 'menu_order' into query parameters"
+msgstr "Falls nur bestimmte Anfragen die individuelle Sortierung benutzen sollen, wähle dies nicht und füge den Anfragen 'orderby' => 'menu_order' als Parameter hinzu."
+
+#: include/options.php:94
+msgid "If checked, the plug-in automatically update the WordPress queries to use the new order (<b>No code update is necessarily</b>)"
+msgstr "Wenn gewählt, aktualisiert das Plugin automatisch die WordPress-Anfragen, um die neue Ordnung zu benutzen (<b>Keine Code-Aktualisierung nötig</b>)"
+
+#: include/options.php:92
+msgid "Auto Sort"
+msgstr "Automatisches Sortieren"
+
+#: include/options.php:86
+msgid "Administrator"
+msgstr "Administrator"
+
+#: include/options.php:85
+msgid "Editor"
+msgstr "Redakteur"
+
+#: include/options.php:84
+msgid "Author"
+msgstr "Autor"
+
+#: include/options.php:83
+msgid "Contributor"
+msgstr "Mitarbeiter"
+
+#: include/options.php:82
+msgid "Subscriber"
+msgstr "Abonnent"
+
+#: include/options.php:79
+msgid "Minimum Level to use this plugin"
+msgstr "Minimum Level um dieses Plugin zu nutzen"
+
+#: include/options.php:72
+msgid "Hide"
+msgstr "Ausblenden"
+
+#: include/options.php:71
+msgid "Show"
+msgstr "Zeigen"
+
+#: include/options.php:44
+msgid "Show / Hide re-order interface"
+msgstr "Zeigen / Ausblenden des Neu-Sortierung-Oberfläche"
+
+#: include/options.php:40
+msgid "General"
+msgstr "Allgemein"
+
+#: include/options.php:34
+msgid "General Settings"
+msgstr "Allgemeine Einstellungen"
+
+#: include/options.php:22
+msgid "Settings Saved"
+msgstr "Einstellungen gespeichert"
+
+#: include/functions.php:108
+msgid "plugin which allow to custom sort categories and custom taxonomies terms"
+msgstr "Plugin, welches erlaubt custom-categories und taxonomies terms zu sortieren"
+
+#: include/functions.php:108
+msgid "Check our"
+msgstr "Probieren Sie unser"
+
+#: include/functions.php:107
+msgid "Read more"
+msgstr "mehr lesen"
+
+#: include/functions.php:107
+msgid "Did you know there is available an Advanced version of this plug-in?"
+msgstr "Wussten Sie dass es eine Pro-Version von diesem Plugin gibt?"
+
+#: include/functions.php:106
+msgid "Did you find this plugin useful? Please support our work with a donation or write an article about this plugin in your blog with a link to our site"
+msgstr "Finden Sie das Plugin nützlich? Bitte unterstützen Sie unsere Arbeit mit einer Spende oderschreiben in Ihrem Blog einen Artikel über dieses Plugin mit einem Link zu unserer Webseite"
+
+#: include/cpto-class.php:319
+msgid "Pages"
+msgstr "Seiten"
+
+#: include/cpto-class.php:300
+msgid "Items Order Updated"
+msgstr "Reihenfolge der Einträge aktualisiert"
+
+#: include/cpto-class.php:281
+msgid "Update"
+msgstr "Aktualisieren"
+
+#: include/cpto-class.php:268
+msgid "This plugin can't work without javascript, because it's use drag and drop and AJAX."
+msgstr "Dieses Plugin funktioniert nicht ohne Javascript, da es Drag & Drop und AJAX benutzt."
+
+#: include/cpto-class.php:244 include/cpto-class.php:246
+#: include/cpto-class.php:249 include/cpto-class.php:260
+msgid "Re-Order"
+msgstr "Sortieren"

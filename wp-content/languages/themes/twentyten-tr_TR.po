@@ -1,0 +1,383 @@
+# Translation of Themes - Twenty Ten in Turkish
+# This file is distributed under the same license as the Themes - Twenty Ten package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-11-13 23:50:58+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: tr\n"
+"Project-Id-Version: Themes - Twenty Ten\n"
+
+#. Description of the plugin/theme
+msgid "The 2010 theme for WordPress is stylish, customizable, simple, and readable -- make it yours with a custom menu, header image, and background. Twenty Ten supports six widgetized areas (two in the sidebar, four in the footer) and featured images (thumbnails for gallery posts and custom header images for posts and pages). It includes stylesheets for print and the admin Visual Editor, special styles for posts in the \"Asides\" and \"Gallery\" categories, and has an optional one-column page template that removes the sidebar."
+msgstr "WordPress 2010 teması, şık, basit, özelleştirilebilir ve okunabilir bir şekilde hazırlanmıştır. Menü, başlık görseli ve arka plan özelleştirilebilir. Twenty Ten altı adet bileşen alanına (iki tanesi yan sütunda, dört tanesi dip alanda olmak üzere) ve öne çıkarılan görsellere (galeri yazıları için küçük resimler, yazılar ve sayfalar için özel başlık görselleri) sahiptir. Yazıcı ve yönetici görsel editörü için stil dosyalarının yanı sıra, \"Yan\" ve \"Galeri\" kategorileri için özel stiller ve son olarak yan sütunu kaldıran, seçime bağlı tek sütunlu bir sayfa şablonuna sahiptir."
+
+#. Theme Name of the plugin/theme
+msgid "Twenty Ten"
+msgstr "Twenty Ten"
+
+#. Template Name of the plugin/theme
+msgid "One column, no sidebar"
+msgstr "Bir kolon, yan sütun yok"
+
+#: tag.php:16
+msgid "Tag Archives: %s"
+msgstr "Etiket arşivi: %s"
+
+#: sidebar.php:35
+msgid "Meta"
+msgstr "Meta"
+
+#: sidebar.php:28
+msgid "Archives"
+msgstr "Arşiv"
+
+#: search.php:29
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr "Üzgünüm, arama kriterlerinizle örtüşen sonuç bulunamadı. Farklı anahtar kelimelerle tekrar deneyin."
+
+#: search.php:27
+msgid "Nothing Found"
+msgstr "Bulunamadı"
+
+#: search.php:16
+msgid "Search Results for: %s"
+msgstr "Arama sonuçları: %s"
+
+#: loop.php:161
+msgid "<span class=\"%1$s\">Tagged</span> %2$s"
+msgstr "%2$s <span class=\"%1$s\">ile etiketlendi</span>"
+
+#: loop.php:152
+msgid "<span class=\"%1$s\">Posted in</span> %2$s"
+msgstr "%2$s <span class=\"%1$s\">kategorisine gönderildi</span>"
+
+#: loop.php:107
+msgctxt "asides category slug"
+msgid "asides"
+msgstr "asides"
+
+#: loop.php:100 loop.php:123 loop.php:165
+msgid "% Comments"
+msgstr "% Yorum"
+
+#: loop.php:100 loop.php:123 loop.php:165
+msgid "1 Comment"
+msgstr "1 Yorum"
+
+#: loop.php:100 loop.php:123 loop.php:165
+msgid "Leave a comment"
+msgstr "Yorum yapın"
+
+#: loop.php:97
+msgid "View posts in the Gallery category"
+msgstr "Galeri kategorisindeki yazılara göz atın"
+
+#: loop.php:94 loop.php:97
+msgid "More Galleries"
+msgstr "Daha çok galeri"
+
+#: loop.php:94
+msgid "View Galleries"
+msgstr "Galerilere bak"
+
+#: loop.php:84
+msgid "Permalink to %s"
+msgstr "%s için kalıcı bağlantı"
+
+#: loop.php:83
+msgid "This gallery contains <a %1$s>%2$s photo</a>."
+msgid_plural "This gallery contains <a %1$s>%2$s photos</a>."
+msgstr[0] "Bu galeri <a %1$s>%2$s fotoğraf</a> içeriyor."
+msgstr[1] "Bu galeri <a %1$s>%2$s fotoğraf</a> içeriyor."
+
+#: loop.php:62 loop.php:96
+msgctxt "gallery category slug"
+msgid "gallery"
+msgstr "galeri"
+
+#: loop.php:35
+msgid "Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post."
+msgstr "Üzgünüz, istekte bulunulan arşiv için sonuç dönmedi. Belki arama yaparak ilişkili bir yazıya ulaşabilirsiniz."
+
+#: loop.php:26 loop.php:180
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Yeni yazılar <span class=\"meta-nav\">&rarr;</span>"
+
+#: loop.php:25 loop.php:179
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Eski yazılar"
+
+#: loop-single.php:50
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "%s tarafından yazılan yazılar <span class=\"meta-nav\">&rarr;</span>"
+
+#: loop-single.php:22 loop-single.php:65
+msgctxt "Next post link"
+msgid "&rarr;"
+msgstr "&rarr;"
+
+#: loop-single.php:21 loop-single.php:64
+msgctxt "Previous post link"
+msgid "&larr;"
+msgstr "&larr;"
+
+#: loop-attachment.php:120 loop-page.php:29 loop-single.php:34 loop.php:145
+msgid "Pages:"
+msgstr "Sayfalar:"
+
+#: loop-attachment.php:63 loop-attachment.php:126 loop-page.php:30
+#: loop-single.php:59 loop.php:101 loop.php:124 loop.php:166
+msgid "Edit"
+msgstr "Düzenle"
+
+#: loop-attachment.php:56
+msgid "Link to full-size image"
+msgstr "Tam boy görsele bağlantı"
+
+#: loop-attachment.php:53
+msgid "Full size is %s pixels"
+msgstr "Tam boyut %s piksel"
+
+#: loop-attachment.php:43
+msgid "<span class=\"%1$s\">Published</span> %2$s"
+msgstr "%2$s <span class=\"%1$s\">yayınlandı</span>"
+
+#: loop-attachment.php:32
+msgid "<span class=\"%1$s\">By</span> %2$s"
+msgstr "%2$s <span class=\"%1$s\">tarafından</span>"
+
+#. translators: %s - title of parent post
+#: loop-attachment.php:23
+msgid "<span class=\"meta-nav\">&larr;</span> %s"
+msgstr "<span class=\"meta-nav\">&larr;</span> %s"
+
+#: loop-attachment.php:21
+msgid "Return to %s"
+msgstr "%s içeriğine geri dön"
+
+#: header.php:105
+msgid "Skip to content"
+msgstr "İçeriğe atla"
+
+#: header.php:33
+msgid "Page %s"
+msgstr "Sayfa %s"
+
+#: functions.php:544
+msgid "Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "<a href=\"%3$s\" title=\"%4$s için kalıcı bağlantı\" rel=\"bookmark\">Yer imlerinize</a> ekleyin."
+
+#: functions.php:542
+msgid "This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Bu yazı %1$s kategorisine gönderilmiş. <a href=\"%3$s\" title=\"%4$s için kalıcı bağlantı\" rel=\"bookmark\">Kalıcı bağlantıyı</a> yer imlerinize ekleyin."
+
+#: functions.php:540
+msgid "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Bu yazı %1$s kategorisine gönderilmiş ve %2$s ile etiketlenmiş. <a href=\"%3$s\" title=\"%4$s için kalıcı bağlantı\" rel=\"bookmark\">Kalıcı bağlantıyı</a> yer imlerinize ekleyin."
+
+#: functions.php:523 loop-attachment.php:36
+msgid "View all posts by %s"
+msgstr "%s tarafından yazılmış tüm yazıları görüntüle"
+
+#: functions.php:514
+msgid "<span class=\"%1$s\">Posted on</span> %2$s <span class=\"meta-sep\">by</span> %3$s"
+msgstr "%3$s <span class=\"meta-sep\">tarafından</span> %2$s <span class=\"%1$s\">tarihinde gönderildi</span>"
+
+#: functions.php:478
+msgid "Fourth Footer Widget Area"
+msgstr "Dördüncü taban bileşen alanı"
+
+#: functions.php:467
+msgid "Third Footer Widget Area"
+msgstr "Üçüncü taban bileşen alanı"
+
+#: functions.php:456
+msgid "Second Footer Widget Area"
+msgstr "İkinci taban bileşen alanı"
+
+#: functions.php:447 functions.php:458 functions.php:469 functions.php:480
+msgid "An optional widget area for your site footer."
+msgstr "Sitenizin alt kısmı için seçime bağlı bir bileşen alanı."
+
+#: functions.php:445
+msgid "First Footer Widget Area"
+msgstr "Birinci taban bileşen alanı"
+
+#: functions.php:436
+msgid "An optional secondary widget area, displays below the primary widget area in your sidebar."
+msgstr "Seçime bağlı ikinci bir bileşen alanı, yan sütunda ilk bileşen alanının hemen altında görüntülenir."
+
+#: functions.php:434
+msgid "Secondary Widget Area"
+msgstr "İkincil bileşen alanı"
+
+#: functions.php:425
+msgid "Add widgets here to appear in your sidebar."
+msgstr "Yan sütunda görüntülenmek üzere buraya bileşenlerinizi koyabilirsiniz."
+
+#: functions.php:423
+msgid "Primary Widget Area"
+msgstr "Birincil bileşen alanı"
+
+#: functions.php:403
+msgid "Pingback:"
+msgstr "Geri izleme:"
+
+#: functions.php:386 functions.php:403
+msgid "(Edit)"
+msgstr "(Düzenle)"
+
+#. translators: 1: date, 2: time
+#: functions.php:386
+msgid "%1$s at %2$s"
+msgstr "%1$s, %2$s"
+
+#: functions.php:379
+msgid "Your comment is awaiting moderation."
+msgstr "Yorumunuz denetim için bekliyor."
+
+#: functions.php:376
+msgid "%s <span class=\"says\">says:</span>"
+msgstr "%s <span class=\"says\">der ki:</span>"
+
+#: functions.php:280 loop-attachment.php:119 loop.php:116 loop.php:144
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Okumaya devam et <span class=\"meta-nav\">&rarr;</span>"
+
+#. translators: header image description
+#: functions.php:207
+msgid "Sunset"
+msgstr "Gün batımı"
+
+#. translators: header image description
+#: functions.php:201
+msgid "Path"
+msgstr "Yol"
+
+#. translators: header image description
+#: functions.php:195
+msgid "Inkwell"
+msgstr "Hokka"
+
+#. translators: header image description
+#: functions.php:189
+msgid "Forest Floor"
+msgstr "Orman zemini"
+
+#. translators: header image description
+#: functions.php:183
+msgid "Fern"
+msgstr "Çit"
+
+#. translators: header image description
+#: functions.php:177
+msgid "Concave"
+msgstr "Mercek"
+
+#. translators: header image description
+#: functions.php:171
+msgid "Cherry Blossoms"
+msgstr "Kiraz çiçekleri"
+
+#. translators: header image description
+#: functions.php:165
+msgid "Berries"
+msgstr "Çilekler"
+
+#: functions.php:95
+msgid "Primary Navigation"
+msgstr "Birincil dolaşım"
+
+#: footer.php:40
+msgid "Proudly powered by %s."
+msgstr "%s ile güçlendirilmiştir."
+
+#: footer.php:40
+msgid "Semantic Personal Publishing Platform"
+msgstr "Anlamlı kişisel yayınlama platformu"
+
+#: comments.php:73
+msgid "Comments are closed."
+msgstr "Yorumlar kapalı."
+
+#: comments.php:43 comments.php:63
+msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Daha yeni yorumlar <span class=\"meta-nav\">&rarr;</span>"
+
+#: comments.php:42 comments.php:62
+msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
+msgstr "<span class=\"meta-nav\">&larr;</span> Daha eski yorumlar"
+
+#: comments.php:36
+msgid "One Response to %2$s"
+msgid_plural "%1$s Responses to %2$s"
+msgstr[0] "%2$s için %1$s cevap"
+msgstr[1] "%2$s için %1$s cevap"
+
+#: comments.php:18
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "Bu yazı parola korumalı. Yorumları görmek için parola girin."
+
+#: category.php:16
+msgid "Category Archives: %s"
+msgstr "Kategori arşivi: %s"
+
+#: author.php:47 loop-single.php:46
+msgid "About %s"
+msgstr "%s hakkında"
+
+#: author.php:28
+msgid "Author Archives: %s"
+msgstr "Yazar arşivleri: %s"
+
+#: archive.php:40
+msgid "Blog Archives"
+msgstr "Blog arşivi"
+
+#: archive.php:38
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y"
+
+#: archive.php:38
+msgid "Yearly Archives: <span>%s</span>"
+msgstr "Yıllık arşiv: <span>%s</span>"
+
+#: archive.php:36
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "F Y"
+
+#: archive.php:36
+msgid "Monthly Archives: <span>%s</span>"
+msgstr "Aylık arşiv: <span>%s</span>"
+
+#: archive.php:34
+msgid "Daily Archives: <span>%s</span>"
+msgstr "Günlük arşiv: <span>%s</span>"
+
+#: 404.php:18
+msgid "Apologies, but the page you requested could not be found. Perhaps searching will help."
+msgstr "Üzgünüm, aradığınız sayfa bulunamadı. Belki aramak yardımcı olabilir."
+
+#: 404.php:16 loop.php:33
+msgid "Not Found"
+msgstr "Bulunamadı"
+
+#. #-#-#-#-#  twentyten.pot (Twenty Ten 2.2)  #-#-#-#-#
+#. Author URI of the plugin/theme
+#: footer.php:40
+msgid "https://wordpress.org/"
+msgstr "https://wordpress.org/"
+
+#. Author of the plugin/theme
+msgid "the WordPress team"
+msgstr "WordPress ekibi"
+
+#. Theme URI of the plugin/theme
+msgid "https://wordpress.org/themes/twentyten/"
+msgstr "https://wordpress.org/themes/twentyten/"

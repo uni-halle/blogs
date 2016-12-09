@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-04-24 16:05:12+0000\n"
+"PO-Revision-Date: 2016-07-14 20:23:56+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -150,7 +150,7 @@ msgstr "Viel Spaß beim Optimieren"
 
 #: views/back/premium.php:37
 msgid "See your top newsletters, top subscribers, top links, top lists, and top domains on one screen. Can you beat your past newsletters?"
-msgstr "Deine Top-Newsletter, Top-Abonnenten, Top Links, Top-Listen und Top-Domains auf einem einzigen Bildschirm. Kann dein altes Newsletterprogramm das auch?"
+msgstr "Ihre Top-Newsletter, Top-Abonnenten, Top Links, Top-Listen und Top-Domains auf einem einzigen Bildschirm. Kann Ihr altes Newsletterprogramm das auch?"
 
 #: views/back/premium.php:41
 msgid "Increase your subscribers"
@@ -174,7 +174,7 @@ msgstr "Erreiche ihre Postfächer"
 
 #: views/back/premium.php:59
 msgid "Get your spam score in 1 click while you're designing your newsletter thanks to [link]mail-tester[/link], our own popular in-house tool."
-msgstr "Hol dir deinen Spam-Score in einem Klick mit unserem beliebten Tool [link]Mail-tester[/link] während du deine Newsletter entwirfst."
+msgstr "Holen Sie sich Ihren Spam-Score in einem Klick mit unserem beliebten Tool [link]Mail-tester[/link], während Sie Ihre Newsletter entwerfen."
 
 #: views/back/premium.php:61
 msgid "Spam filters love DKIM"
@@ -299,7 +299,7 @@ msgstr "Die Mailingliste automatisch leeren."
 
 #: views/back/premium.php:211
 msgid "Send like a PRO and keep your server's sending reputation HIGH. Thanks to our advanced list cleaning tool, you can finally avoid sending to old or invalid email addresses. [link]Keep your list clean with Premium.[/link]"
-msgstr "Wie ein PROFI versenden und dabei die Reputation Ihres Servers schützen. Dank unseres anspruchsvollen Reinigungstools für Listen vermeiden Sie es, an veraltete oder ungültige E-Mail-Adressen zu verschicken. [link]Haltn Sie Ihre Liste sauber – mit der Premium-Version.[/link]"
+msgstr "Wie ein PROFI versenden und dabei die Reputation Ihres Servers schützen. Dank unseres anspruchsvollen Reinigungstools für Listen vermeiden Sie es, an veraltete oder ungültige E-Mail-Adressen zu verschicken. [link]Halten Sie Ihre Liste sauber – mit der Premium-Version.[/link]"
 
 #: views/back/premium.php:217
 msgid "Send at a higher frequency"
@@ -478,7 +478,7 @@ msgstr "Bestätigungs-E-Mail erneut versenden"
 
 #: views/back/subscribers.php:211
 msgid "View all lists"
-msgstr "Zeige alle Listen"
+msgstr "Zeigen Sie alle Listen"
 
 #: views/back/subscribers.php:219
 msgid "Subscribers in no list"
@@ -510,7 +510,7 @@ msgstr "Auswahl aufheben"
 
 #: views/back/subscribers.php:356
 msgid "Lists to which the subscriber was subscribed."
-msgstr "Listen in die der Abonnent eingetragen war."
+msgstr "Listen, in die der Abonnent eingetragen war."
 
 #: views/back/subscribers.php:396
 msgid "Pick a list"
@@ -638,11 +638,11 @@ msgstr "Datum stimmt nicht überein."
 
 #: views/back/subscribers.php:1172
 msgid "Pick one or many lists"
-msgstr "Wähle eine oder mehrere Listen"
+msgstr "Wählen Sie eine oder mehrere Listen"
 
 #: views/back/subscribers.php:1173
 msgid "Pick the lists you want to import those subscribers to."
-msgstr "Wähle die Listen, in welche diese Abonnenten importiert werden sollen."
+msgstr "Wählen Sie die Listen, in welche diese Abonnenten importiert werden sollen."
 
 #: views/back/subscribers.php:1181
 msgid "New list"
@@ -694,7 +694,7 @@ msgstr "Hinzufügen"
 
 #: views/front/confirm.php:107
 msgid "Your lists"
-msgstr "Deine Listen"
+msgstr "Ihre Listen"
 
 #: views/front/widget_nl.php:90 widgets/wysija_nl.php:41
 #: widgets/wysija_nl.php:55
@@ -703,7 +703,7 @@ msgstr "MailPoet Anmeldeformular"
 
 #: widgets/wysija_nl.php:42 widgets/wysija_nl.php:56
 msgid "Subscription form for your newsletters."
-msgstr "Anmeldeformular für deine Newsletter"
+msgstr "Anmeldeformular für Ihre Newsletter"
 
 #: widgets/wysija_nl.php:67
 msgid "Check your inbox now to confirm your subscription."
@@ -723,7 +723,7 @@ msgstr "Um unseren Newsletter zu abonnieren, trag einfach deine E-Mail-Adresse i
 
 #: widgets/wysija_nl.php:92
 msgid "Let subscribers select their lists:"
-msgstr "Lass deine Abonnenten die Listen selbst auswählen:"
+msgstr "Lassen Sie Ihre Abonnenten die Listen selbst auswählen:"
 
 #: widgets/wysija_nl.php:97
 msgid "Ask for:"
@@ -853,7 +853,7 @@ msgstr "Passwort"
 
 #: views/back/config.php:951 views/back/config.php:1554
 msgid "Activate if your SMTP ports are blocked."
-msgstr "Aktivieren, falls deine SMTP-Ports blockiert sind."
+msgstr "Aktivieren, falls Ihre SMTP-Ports blockiert sind."
 
 #: views/back/config.php:973 views/back/config.php:1576
 msgid "SMTP port"

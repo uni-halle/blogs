@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Graphene package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-04-28 06:58:50+0000\n"
+"PO-Revision-Date: 2016-08-29 11:47:05+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,6 +13,10 @@ msgstr ""
 #. Theme Name of the plugin/theme
 msgid "Graphene"
 msgstr "Graphene"
+
+#. Description of the plugin/theme
+msgid "We believe that every theme should facilitate creative writing, not hinder it. We also believe that each site should have the opportunity to be unique. Since the theme's inception, we have received countless suggestions and requests on features that really matter. We listened, and we delivered. Here's a theme that's packed full of features that you need, yet far from being overwhelming. Here's a theme that's easy to use for beginners, yet well documented and powerful enough to be endlessly customisable to users with even only moderate technical skills. Here's a theme that's available in more than  30 languages and is backed with active community support, where questions, ideas and suggestions are always welcomed. And best of all, here's a theme that's completely free. Here's a theme that's yours to make it special. PS: Mobile-optimised option is available."
+msgstr "Nous croyons que chaque thème devrait faciliter l’écriture créative et non la freiner. Nous croyons aussi que chaque site devrait avoir la possibilité d’être unique. Depuis la création du thème, nous avons reçu d’innombrables suggestions et demandes sur les caractéristiques indispensables. Nous avons écouté et nous avons répondu. Voici un thème rempli des fonctionnalités que vous voulez, sans être écrasant. Voici un thème qui est facile à utiliser pour les débutants, mais bien documenté et suffisamment puissant pour être personnalisable pour les utilisateurs, même avec des compétences techniques modérées. Voici un thème qui est disponible dans plus de 30 langues et qui est soutenue activement par la communauté, où les questions, idées et suggestions sont toujours les bienvenues. Et pour couronner le tout, voici un thème totalement gratuit. Il ne tient qu’à vous de le rendre spécial. P. S. : l’option optimisé pour mobiles est disponible."
 
 #. #-#-#-#-#  graphene.pot (Graphene 1.9.4.2)  #-#-#-#-#
 #. translators: For RTL languages, translate "left" as "right"
@@ -54,7 +58,7 @@ msgstr "Deux colonnes, barre latérale à droite"
 
 #: tag.php:13
 msgid "Tag Archive: <span>%s</span>"
-msgstr "Archives du mot-clé : <span>%s</span>"
+msgstr "Archives de l’étiquette : <span>%s</span>"
 
 #. translators: %1$s will be replaced by the taxonomy singular name, %2$s will
 #. be replaced by the term title
@@ -70,7 +74,7 @@ msgstr "Une colonne, pas de colonne latérale"
 
 #: loop-single.php:129 loop.php:156
 msgid "This post has no tag"
-msgstr "Cet article n'a pas de mots-clés"
+msgstr "Cet article n'a pas d’étiquette"
 
 #: loop-single.php:148
 msgid "About the author"
@@ -108,7 +112,7 @@ msgstr "Recherche"
 
 #: loop-single.php:129 loop.php:156
 msgid "Tags:"
-msgstr "Mots-clés : "
+msgstr "Étiquettes : "
 
 #. translators: this is for the author byline, such as 'by John Doe'
 #: loop-single.php:95 loop.php:96
@@ -137,7 +141,7 @@ msgstr "Commentaires fermés"
 
 #: loop-post-formats.php:43
 msgid "Edit post"
-msgstr "Modifier l&rsquo;article"
+msgstr "Modifier l’article"
 
 #. translators: This is the PHP date formatting string for the status post
 #. format. See http:php.net/manual/en/function.date.php for more details.
@@ -151,11 +155,11 @@ msgstr "G \\h i \\m\\i\\n"
 
 #: loop-post-formats.php:19
 msgid "Post format"
-msgstr "Format d&rsquo;article"
+msgstr "Format d’article"
 
 #: loop-post-formats.php:18
 msgid "Video"
-msgstr "Vidéos"
+msgstr "Vidéo"
 
 #: loop-post-formats.php:17
 msgid "Image"
@@ -274,7 +278,7 @@ msgstr "(pas de titre)"
 
 #: includes/theme-setup.php:158
 msgid "Header image by Syahir Hakim"
-msgstr "Bannière par Syahir Hakim"
+msgstr "Image d’en-tête par Syahir Hakim"
 
 #: includes/theme-setup.php:162
 msgid "This is the default Graphene theme header image, cropped from image by Quantin Houyoux at sxc.hu"
@@ -314,13 +318,21 @@ msgstr "Menu du bas de page"
 msgid "Secondary Menu"
 msgstr "Menu secondaire"
 
+#: includes/theme-scripts.php:118 includes/theme-scripts.php:122
+msgid "Fetching %1$s more item from %2$s left ..."
+msgstr "Récupérer %1$s éléments de plus sur %2$s restants..."
+
 #: includes/theme-scripts.php:127
 msgid "No more items to fetch"
-msgstr "Pas d'autres éléments à voir"
+msgstr "Aucun autre élément à voir"
+
+#: includes/theme-scripts.php:131 includes/theme-scripts.php:135
+msgid "Fetching %1$s more top level comment from %2$s left ..."
+msgstr "Récupérer %1$s commentaires de haut niveau de pus sur %2$s restants... "
 
 #: includes/theme-scripts.php:140
 msgid "No more comments to fetch"
-msgstr "Pas d'autres commentaires à voir"
+msgstr "Aucun autre commentaire à voir"
 
 #: includes/theme-setup.php:114
 msgid "Header Menu"
@@ -343,11 +355,11 @@ msgstr "Accueil"
 
 #: includes/theme-loop.php:162
 msgid "Fetch more items"
-msgstr "Voir plus d'éléments"
+msgstr "Voir plus d’éléments"
 
 #: includes/theme-loop.php:473 includes/theme-loop.php:474
 msgid "Print this %s"
-msgstr "Imprimer ceci %s"
+msgstr "Imprimer ce %s"
 
 #: includes/theme-loop.php:514
 msgid "Return to %s"
@@ -368,11 +380,11 @@ msgstr "Visiter la page de %1$s sur %2$s"
 
 #: includes/theme-functions.php:301
 msgid "You haven't placed any widget into this widget area. Go to %1$s and place some widgets in the widget area called %2$s."
-msgstr "Vous n'avez placé aucun widget dans ce domaine widget. Aller à %1$s  et placer des widgets dans le domaine de widget appelé %2$s."
+msgstr "Vous n’avez placé aucun widget dans ce domaine widget. Aller à %1$s et placer des widgets dans la zone de widget intitulée %2$s."
 
 #: includes/theme-functions.php:301
 msgid "WP Admin > Appearance > Widgets"
-msgstr "Admin WP> Apparence> Widgets"
+msgstr "Admin WP > Apparence> Widgets"
 
 #: includes/theme-functions.php:302
 msgid "This notice will not be displayed to your site's visitors."
@@ -380,19 +392,19 @@ msgstr "Cet avis ne sera pas affiché aux visiteurs de votre site."
 
 #: includes/theme-loop.php:85
 msgid "Continue reading &raquo;"
-msgstr "Continuer à lire &raquo;"
+msgstr "Continuer à lire »"
 
 #: includes/theme-loop.php:152
 msgid "Older posts &laquo;"
-msgstr "Articles plus anciens &laquo;"
+msgstr "Articles plus anciens «"
 
 #: includes/theme-loop.php:153
 msgid "&raquo; Newer posts"
-msgstr "&raquo; Articles plus récents"
+msgstr "« Articles plus récents"
 
 #: includes/theme-loop.php:155
 msgid "Next page &raquo;"
-msgstr "Page suivante &raquo;"
+msgstr "Page suivante »"
 
 #: includes/theme-comments.php:222
 msgid "Spam"
@@ -420,7 +432,7 @@ msgstr "Email"
 
 #: includes/theme-comments.php:80
 msgid "Name:"
-msgstr "Nom&nbsp;:"
+msgstr "Nom :"
 
 #: includes/theme-comments.php:51
 msgid "Your comment is awaiting moderation."
@@ -540,7 +552,7 @@ msgstr "<strong>Attention!</strong> La désinstallation du thème supprimera tou
 
 #: admin/options.php:302
 msgid "If you just want to try another theme, there is no need to uninstall this theme. Simply activate the other theme in the Appearance &gt; Themes admin page."
-msgstr "Si vous désirez simplement essayer un autre thème, il est inutile de désinstaller Graphene. Activez simplement le nouveau thème dans Apparence &gt;"
+msgstr "Si vous désirez simplement essayer un autre thème, il est inutile de désinstaller Graphene. Activez simplement le nouveau thème dans Apparence."
 
 #: admin/options.php:303
 msgid "Note that uninstalling this theme <strong>does not remove</strong> the theme's files. To delete the files after you have uninstalled this theme, go to Appearance &gt; Themes and delete the theme from there."
@@ -556,26 +568,26 @@ msgstr "Information de Profil d'utilisateur spécifique de Graphene"
 
 #: admin/user.php:8
 msgid "The settings defined here are used only with the Graphene theme."
-msgstr "Les paramètres définis ici seront utilisés uniquement dans le thème Graphene."
+msgstr "Les réglages définis ici seront utilisés uniquement dans le thème Graphene."
 
 #: admin/user.php:12
 msgid "Author profile image URL"
-msgstr "URL de l'image du profil pour l'auteur"
+msgstr "URL de l’image du profil pour l’auteur"
 
 #. translators: %s will be replaced by a link to the Gravatar website
 #. (http:www.gravatar.com)
 #: admin/user.php:14
 msgid "You can specify the image to be displayed as the author's profile image in the Author's page. If no URL is defined here, the author's %s will be used."
-msgstr "Vous pouvez spécifier l'image affichée comme image de profil de l'auteur dans la page auteur. S'il n'y a pas d'URL définie ici, le %s de l'auteur sera utilisé."
+msgstr "Vous pouvez spécifier l’image affichée comme image de profil de l’auteur dans la page auteur. S’il n’y a pas d’URL définie ici, le %s de l’auteur sera utilisé."
 
 #. translators: %s will be replaced by 'http:' wrapped in <code> tags
 #: admin/user.php:19
 msgid "Please enter the full URL (including %s) to your profile image."
-msgstr "Entrez l'URL complète (incluant %s) pour l'image de votre profil svp."
+msgstr "Veuillez saisir l’URL complète (incluant %s) pour l’image de votre profil."
 
 #: admin/user.php:19
 msgid "<strong>Important: </strong>Image width must be less than or equal to <strong>150px</strong>."
-msgstr "<strong>Important : </strong> L'image doit être inférieure ou égale à <strong>150 pixels</strong>."
+msgstr "<strong>Important&nbsp;: </strong>L’image doit être inférieure ou égale à <strong>150 pixels</strong>."
 
 #: archive.php:24
 msgid "Daily Archive: %s"
@@ -611,13 +623,9 @@ msgstr "Activé(e)"
 msgid "Reset settings"
 msgstr "Réinitialisation"
 
-#: admin/options.php:260
-msgid "Reset all of the theme's settings to their default values. Only settings accessible via Graphene Theme Options are affected, including any custom colour presets you might have. Custom Header, Custom Menus, and other WordPress settings won't be affected."
-msgstr "Reset all of the theme's settings to their default values. Only settings accessible via Graphene Theme Options are affected, including any custom colour presets you might have. Custom Header, Custom Menus, and other WordPress settings won't be affected."
-
 #: admin/options.php:261
 msgid "<strong>WARNING:</strong> This action is not reversible."
-msgstr "<strong>Attention :</strong> Cette action est irréversible."
+msgstr "<strong>Avertissement :</strong> cette action est irréversible."
 
 #: admin/options.php:276
 msgid "Import/export theme options"
@@ -635,10 +643,6 @@ msgstr "Extensions mobiles développées spécifiquement pour un affichage optim
 msgid "Plugins"
 msgstr "Extensions"
 
-#: admin/options.php:194
-msgid "The new premium mobile theme that fuses elegant design with premium features. It's a match of pixel-perfection and code-devilry."
-msgstr "The new premium mobile theme that fuses elegant design with premium features. It's a match of pixel-perfection and code-devilry."
-
 #: admin/options.php:199
 msgid "Learn more"
 msgstr "En savoir plus"
@@ -649,7 +653,7 @@ msgstr "Non installé(e)"
 
 #: admin/options.php:126
 msgid "Need help?"
-msgstr "Besoin d'aide?"
+msgstr "Besoin d’aide&nbsp;?"
 
 #: admin/options.php:130
 msgid "Documentation Wiki"
@@ -717,7 +721,7 @@ msgstr "Général"
 
 #: admin/options-presets.php:18
 msgid "Settings have been reset."
-msgstr "Paramètres Remis à Zéro."
+msgstr "Les réglages ont été réinitialisés."
 
 #: admin/options-validator.php:27
 msgid "ERROR: Invalid category to show in slider."
@@ -846,10 +850,6 @@ msgstr "ERREUR : La largeur du sous-menu doit être un chiffre sans virgule."
 #: admin/options-validator.php:316
 msgid "ERROR: Bad URL entered for the favicon URL."
 msgstr "ERREUR : Mauvaise URL pour le favicon."
-
-#: admin/options-validator.php:341
-msgid "ERROR: Invalid action hook selected widget action hooks."
-msgstr "ERROR: Invalid action hook selected widget action hooks."
 
 #: admin/options.php:60 admin/uninstall.php:23
 msgid "Uninstall Graphene"
@@ -1224,7 +1224,7 @@ msgstr "Désactiver complètement"
 
 #: admin/options-general.php:365
 msgid "Note: this setting overrides the global WordPress Discussion Setting called \"Allow people to post comments on new articles\" and also the \"Allow comments\" option for individual posts/pages."
-msgstr "Note : Ce paramètre outrepasse les paramètres de discussion de WordPress nommés \"Autoriser les visiteurs à publier des commentaires sur les derniers articles\" ainsi que \"Autoriser commentaires \" pour les articles et pages."
+msgstr "Note : ce réglage outrepasse ceux des discussions de WordPress nommés « Autoriser les visiteurs à publier des commentaires sur les derniers articles » et « Autoriser les commentaires » pour les articles et pages."
 
 #: admin/options-general.php:380
 msgid "Child Page Options"
@@ -1493,7 +1493,7 @@ msgstr "Choisissez une catégorie ou entrez une recherche"
 
 #: admin/options-general.php:75
 msgid "All posts within the categories selected here will be displayed on the slider. Usage example: create a new category \"Featured\" and assign all posts to be displayed on the slider to that category, and then select that category here."
-msgstr "Tous les articles au sein des catégories sélectionnées seront affichées dans le diaporama. Exemple d'utilisation: créer une nouvelle catégorie  \"vedette \" et affecter tous les articles à afficher sur le diaporama pour cette catégorie, puis sélectionnez la catégorie ici."
+msgstr "Tous les articles au sein des catégories sélectionnées seront affichées dans le diaporama. Exemple d’utilisation&nbsp;: créer une nouvelle catégorie « à la une » et affecter tous les articles à afficher sur le diaporama pour cette catégorie, puis sélectionnez la catégorie ici."
 
 #: admin/options-general.php:80
 msgid "Exclude the categories from posts listing"
@@ -1501,7 +1501,7 @@ msgstr "Exclure les catégories de la liste d'articles"
 
 #: admin/options-general.php:84
 msgid "Disabled"
-msgstr "Handicapé"
+msgstr "Désactivé"
 
 #: admin/options-general.php:85
 msgid "Home Page"
@@ -1677,7 +1677,7 @@ msgstr "Entrez la chaîne de \"Google Webfont famille de polices\" dans le forma
 
 #: admin/options-display.php:430
 msgid "Example:"
-msgstr "exemple&nbsp;:"
+msgstr "Exemple :"
 
 #: admin/options-display.php:435
 msgid "The following options are CSS properties, so any valid CSS values for each particular property can be used."
@@ -1709,7 +1709,7 @@ msgstr "Décoration de texte"
 
 #: admin/options-display.php:460
 msgid "Header Text"
-msgstr "Texte de l&rsquo;en-tête"
+msgstr "Texte de l’en-tête"
 
 #: admin/options-display.php:293
 msgid "Posts Display Options"
@@ -2369,6 +2369,14 @@ msgstr "Cette option vous permet de déposer pratiquement n'importe quel contenu
 msgid "All action hooks available in the Graphene Theme are listed below. Click on the filename to display all the action hooks available in that file. Then, tick the checkbox next to an action hook to make a widget area available for that action hook."
 msgstr "Toutes les boucles (hooks) disponibles dans le thème Graphene sont énumérés ci-dessous. Cliquez sur le nom du fichier pour afficher toutes les actions disponibles dans ce fichier. Ensuite, cochez la case située à côté d'une boucle pour faire une zone de widgets disponibles pour celui-ci."
 
+#: admin/options-advanced.php:49
+msgid "To see a visual map showing where each action hook in Graphene is located, visit this page: %s"
+msgstr "Pour voir une carte qui montre où est situé chaque hook d’action dans Graphene, visitez cette page : %s"
+
+#: admin/options-advanced.php:49
+msgid "Graphene Action Hooks Map"
+msgstr "Carte des hooks d’action de Graphene"
+
 #: admin/options-advanced.php:58
 msgid "Click to show/hide the action hooks for this file"
 msgstr "Cliquez pour afficher/masquer toutes les boucles pour ce fichier"
@@ -2483,7 +2491,7 @@ msgstr "Ma suggestion est simplement d'installer l'extension et de tester. Si vo
 
 #: admin/feature-pointers.php:9
 msgid "Where are all the options?!"
-msgstr "Où sont toutes les options?!"
+msgstr "Où sont toutes les options ?"
 
 #: admin/feature-pointers.php:10
 msgid "We've decided to clean things up!"

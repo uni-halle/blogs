@@ -2,24 +2,37 @@
 # This file is distributed under the same license as the Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-03-20 08:19:02+0000\n"
+"PO-Revision-Date: 2016-08-12 17:06:28+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/1.1.0-alpha\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
 "Project-Id-Version: Stable (latest release)\n"
 
-#: class.bcn_admin.php:419 class.bcn_network_admin.php:490
+#: class.bcn_admin.php:500 class.bcn_network_admin.php:572
+msgid "Post Hierarchy Referer Influence"
+msgstr "投稿階層表示におけるリファラーページの考慮"
+
+#: class.bcn_admin.php:500 class.bcn_admin.php:578
+#: class.bcn_network_admin.php:572 class.bcn_network_admin.php:650
+msgid "Allow the refereing page to influence the taxonomy selected for the hierarchy."
+msgstr "投稿階層表示に使うタクソノミーを選択する際、リファラーページを考慮して選択します。"
+
+#: class.bcn_admin.php:578 class.bcn_network_admin.php:650
+msgid "%s Hierarchy Referer Influence"
+msgstr "%s階層表示におけるリファラーページの考慮"
+
+#: class.bcn_admin.php:458 class.bcn_network_admin.php:530
 msgctxt "Paged as in when on an archive or post that is split into multiple pages"
 msgid "Paged Breadcrumb"
 msgstr "分割ページパンくず"
 
-#: class.bcn_admin.php:419 class.bcn_network_admin.php:490
+#: class.bcn_admin.php:458 class.bcn_network_admin.php:530
 msgid "Place the page number breadcrumb in the trail."
 msgstr "ページ番号のパンくずを最後に配置する。"
 
-#: class.bcn_admin.php:420 class.bcn_network_admin.php:491
+#: class.bcn_admin.php:459 class.bcn_network_admin.php:531
 msgctxt "Paged as in when on an archive or post that is split into multiple pages"
 msgid "Paged Template"
 msgstr "分割ページテンプレート"
@@ -28,33 +41,33 @@ msgstr "分割ページテンプレート"
 msgid "<span property=\"itemListElement\" typeof=\"ListItem\"><span property=\"name\">Page %htitle%</span><meta property=\"position\" content=\"%position%\"></span>"
 msgstr "<span property=\"itemListElement\" typeof=\"ListItem\"><span property=\"name\">%htitle%頁目</span><meta property=\"position\" content=\"%position%\"></span>"
 
-#: class.bcn_breadcrumb_trail.php:103
+#: class.bcn_breadcrumb_trail.php:105
 msgid "<span property=\"itemListElement\" typeof=\"ListItem\"><span property=\"name\">Search results for &#39;<a property=\"item\" typeof=\"WebPage\" title=\"Go to the first page of search results for %title%.\" href=\"%link%\" class=\"%type%\">%htitle%</a>&#39;</span><meta property=\"position\" content=\"%position%\"></span>"
 msgstr "<span property=\"itemListElement\" typeof=\"ListItem\"><span property=\"name\">&#39;<a property=\"item\" typeof=\"WebPage\" title=\"%title%の検索結果の先頭頁へ移動\" href=\"%link%\" class=\"%type%\">%htitle%</a>&#39;の検索結果</span><meta property=\"position\" content=\"%position%\"></span>"
 
-#: class.bcn_breadcrumb_trail.php:105
+#: class.bcn_breadcrumb_trail.php:107
 msgid "<span property=\"itemListElement\" typeof=\"ListItem\"><span property=\"name\">Search results for &#39;%htitle%&#39;</span><meta property=\"position\" content=\"%position%\"></span>"
 msgstr "<span property=\"itemListElement\" typeof=\"ListItem\"><span property=\"name\"> &#39;%htitle%&#39;の検索結果</span><meta property=\"position\" content=\"%position%\"></span>"
 
-#: class.bcn_breadcrumb_trail.php:118
+#: class.bcn_breadcrumb_trail.php:120
 msgid "<span property=\"itemListElement\" typeof=\"ListItem\"><span property=\"name\">Articles by: <a title=\"Go to the first page of posts by %title%.\" href=\"%link%\" class=\"%type%\">%htitle%</a>"
 msgstr "<span property=\"itemListElement\" typeof=\"ListItem\"><span property=\"name\"><a title=\"%title%の記事の先頭頁へ移動\" href=\"%link%\" class=\"%type%\">%htitle%</a>の記事"
 
-#: class.bcn_breadcrumb_trail.php:120
+#: class.bcn_breadcrumb_trail.php:122
 msgid "<span property=\"itemListElement\" typeof=\"ListItem\"><span property=\"name\">Articles by: %htitle%</span><meta property=\"position\" content=\"%position%\"></span>"
 msgstr "<span property=\"itemListElement\" typeof=\"ListItem\"><span property=\"name\">%htitle%の記事</span><meta property=\"position\" content=\"%position%\"></span>"
 
-#: class.bcn_breadcrumb_trail.php:489
+#: class.bcn_breadcrumb_trail.php:563
 msgctxt "day archive breadcrumb date format"
 msgid "d"
 msgstr "j日"
 
-#: class.bcn_breadcrumb_trail.php:509
+#: class.bcn_breadcrumb_trail.php:583
 msgctxt "month archive breadcrumb date format"
 msgid "F"
 msgstr "n月"
 
-#: class.bcn_breadcrumb_trail.php:526
+#: class.bcn_breadcrumb_trail.php:600
 msgctxt "year archive breadcrumb date format"
 msgid "Y"
 msgstr "Y年"
@@ -75,7 +88,7 @@ msgstr "今すぐ移行の差し戻しを試みる。"
 msgid "One or more of your plugin settings are invalid."
 msgstr "プラグインの設定に間違っているものがあります。"
 
-#: class.bcn_admin.php:263 class.bcn_network_admin.php:333
+#: class.bcn_admin.php:302 class.bcn_network_admin.php:373
 msgid "%sTranslate%s: Is your language not available? Visit the Breadcrumb NavXT translation project on WordPress.org to start translating."
 msgstr "%s翻訳%s: お使いの言語が利用できませんか ? WordPress.org の Breadcrumb NavXT 翻訳プロジェクトへ移動し、翻訳を始めましょう。"
 
@@ -83,29 +96,29 @@ msgstr "%s翻訳%s: お使いの言語が利用できませんか ? WordPress.or
 msgid "<span property=\"itemListElement\" typeof=\"ListItem\"><a property=\"item\" typeof=\"WebPage\" title=\"Go to %title%.\" href=\"%link%\" class=\"%type%\"><span property=\"name\">%htitle%</span></a><meta property=\"position\" content=\"%position%\"></span>"
 msgstr "<span property=\"itemListElement\" typeof=\"ListItem\"><a property=\"item\" typeof=\"WebPage\" title=\"%title%へ移動\" href=\"%link%\" class=\"%type%\"><span property=\"name\">%htitle%</span></a><meta property=\"position\" content=\"%position%\"></span>"
 
-#: class.bcn_breadcrumb_trail.php:108
+#: class.bcn_breadcrumb_trail.php:110
 msgid "<span property=\"itemListElement\" typeof=\"ListItem\"><a property=\"item\" typeof=\"WebPage\" title=\"Go to the %title% tag archives.\" href=\"%link%\" class=\"%type%\"><span property=\"name\">%htitle%</span></a><meta property=\"position\" content=\"%position%\"></span>"
 msgstr "<span property=\"itemListElement\" typeof=\"ListItem\"><a property=\"item\" typeof=\"WebPage\" title=\"%title%のタグアーカイブへ移動\" href=\"%link%\" class=\"%type%\"><span property=\"name\">%htitle%</span></a><meta property=\"position\" content=\"%position%\"></span>"
 
-#: class.bcn_breadcrumb_trail.php:113 class.bcn_breadcrumb_trail.php:129
+#: class.bcn_breadcrumb_trail.php:115 class.bcn_breadcrumb_trail.php:131
 msgid "<span property=\"itemListElement\" typeof=\"ListItem\"><a property=\"item\" typeof=\"WebPage\" title=\"Go to the %title% archives.\" href=\"%link%\" class=\"%type%\"><span property=\"name\">%htitle%</span></a><meta property=\"position\" content=\"%position%\"></span>"
 msgstr "<span property=\"itemListElement\" typeof=\"ListItem\"><a property=\"item\" typeof=\"WebPage\" title=\"%title%のアーカイブへ移動\" href=\"%link%\" class=\"%type%\"><span property=\"name\">%htitle%</span></a><meta property=\"position\" content=\"%position%\"></span>"
 
-#: class.bcn_breadcrumb_trail.php:125
+#: class.bcn_breadcrumb_trail.php:127
 msgid "<span property=\"itemListElement\" typeof=\"ListItem\"><a property=\"item\" typeof=\"WebPage\" title=\"Go to the %title% category archives.\" href=\"%link%\" class=\"%type%\"><span property=\"name\">%htitle%</span></a><meta property=\"position\" content=\"%position%\"></span>"
 msgstr "<span property=\"itemListElement\" typeof=\"ListItem\"><a property=\"item\" typeof=\"WebPage\" title=\"%title%のカテゴリーアーカイブへ移動\" href=\"%link%\" class=\"%type%\"><span property=\"name\">%htitle%</span></a><meta property=\"position\" content=\"%position%\"></span>"
 
-#: class.bcn_breadcrumb_trail.php:391
+#: class.bcn_breadcrumb_trail.php:465
 msgid "$post global is not of type WP_Post"
 msgstr "グローバル変数 $post の型が WP_Post ではありません"
 
-#: class.bcn_network_admin.php:418 class.bcn_network_admin.php:436
+#: class.bcn_network_admin.php:458 class.bcn_network_admin.php:476
 msgid "Warning: Individual site settings will override any settings set in this page."
-msgstr "警告: 各サイト別の設定は、このページで行われた設定をすべて上書きします。"
+msgstr "警告: 各サイト別の設定は、このページの設定より常に優先されます。"
 
-#: class.bcn_network_admin.php:426 class.bcn_network_admin.php:430
+#: class.bcn_network_admin.php:466 class.bcn_network_admin.php:470
 msgid "Warning: Individual site settings may override any settings set in this page."
-msgstr "警告: 各サイト別の設定は、このページで行われた設定をすべて上書きする可能性があります。"
+msgstr "警告: 各サイト別の設定は、このページの設定より優先されることがあります。"
 
 #: class.bcn_network_admin.php:63
 msgid "Breadcrumb NavXT Network Settings"
@@ -298,121 +311,121 @@ msgstr "お使いの PHP バージョンが古すぎますので、新しいバ�
 msgid "Insufficient privileges to proceed."
 msgstr "続行に必要な権限がありません。"
 
-#: class.bcn_admin.php:256 class.bcn_network_admin.php:326
+#: class.bcn_admin.php:295 class.bcn_network_admin.php:366
 msgid "Tips for the settings are located below select options."
 msgstr "設定のヒントは選択オプションの下にあります。"
 
-#: class.bcn_admin.php:257 class.bcn_network_admin.php:327
+#: class.bcn_admin.php:296 class.bcn_network_admin.php:367
 msgid "Resources"
 msgstr "リソース"
 
-#: class.bcn_admin.php:258 class.bcn_network_admin.php:328
+#: class.bcn_admin.php:297 class.bcn_network_admin.php:368
 msgid "%sTutorials and How Tos%s: There are several guides, tutorials, and how tos available on the author's website."
 msgstr "%sチュートリアルとハウツー%s: 作者のウェブサイトには使い方ガイド、チュートリアル、ハウツーが複数あります。"
 
-#: class.bcn_admin.php:258 class.bcn_network_admin.php:328
+#: class.bcn_admin.php:297 class.bcn_network_admin.php:368
 msgid "Go to the Breadcrumb NavXT tag archive."
 msgstr "Breadcumb NavXT のタグアーカイブへ移動する。"
 
-#: class.bcn_admin.php:259 class.bcn_network_admin.php:329
+#: class.bcn_admin.php:298 class.bcn_network_admin.php:369
 msgid "%sOnline Documentation%s: Check out the documentation for more indepth technical information."
 msgstr "%sオンラインドキュメンテーション%s: さらに詳細な技術情報を知りたい方はドキュメンテーションをご覧ください。"
 
-#: class.bcn_admin.php:259 class.bcn_network_admin.php:329
+#: class.bcn_admin.php:298 class.bcn_network_admin.php:369
 msgid "Go to the Breadcrumb NavXT online documentation"
 msgstr "Breadcrumb NavXT のオンラインドキュメンテーションを表示"
 
-#: class.bcn_admin.php:260 class.bcn_network_admin.php:330
+#: class.bcn_admin.php:299 class.bcn_network_admin.php:370
 msgid "%sReport a Bug%s: If you think you have found a bug, please include your WordPress version and details on how to reproduce the bug."
 msgstr "%sバグレポート%s: もしバグを発見したと思った場合は、お使いの WordPress のバージョンとバグを再現する方法の詳細を含めてください。"
 
-#: class.bcn_admin.php:260 class.bcn_network_admin.php:330
+#: class.bcn_admin.php:299 class.bcn_network_admin.php:370
 msgid "Go to the Breadcrumb NavXT support post for your version."
 msgstr "このバージョン用の Breadcrumb NavXT サポートフォーラムへ移動する。"
 
-#: class.bcn_admin.php:261 class.bcn_network_admin.php:331
+#: class.bcn_admin.php:300 class.bcn_network_admin.php:371
 msgid "Giving Back"
 msgstr "後援"
 
-#: class.bcn_admin.php:262 class.bcn_network_admin.php:332
+#: class.bcn_admin.php:301 class.bcn_network_admin.php:372
 msgid "%sDonate%s: Love Breadcrumb NavXT and want to help development? Consider buying the author a beer."
 msgstr "%s寄付%s: Breadcrumb NavXT が気に入り、開発を援助したいと思われた場合は、作者にビールをおごってみませんか。"
 
-#: class.bcn_admin.php:262 class.bcn_network_admin.php:332
+#: class.bcn_admin.php:301 class.bcn_network_admin.php:372
 msgid "Go to PayPal to give a donation to Breadcrumb NavXT."
 msgstr "PayPal で Breadcrumb NavXT へ寄付する。"
 
-#: class.bcn_admin.php:263 class.bcn_network_admin.php:333
+#: class.bcn_admin.php:302 class.bcn_network_admin.php:373
 msgid "Go to the Breadcrumb NavXT translation project."
 msgstr "Breadcrumb NavXT の翻訳プロジェクトへ移動する。"
 
-#: class.bcn_admin.php:268 class.bcn_admin.php:407 class.bcn_admin.php:408
-#: class.bcn_network_admin.php:338 class.bcn_network_admin.php:478
-#: class.bcn_network_admin.php:479
+#: class.bcn_admin.php:307 class.bcn_admin.php:446 class.bcn_admin.php:447
+#: class.bcn_network_admin.php:378 class.bcn_network_admin.php:518
+#: class.bcn_network_admin.php:519
 msgid "General"
 msgstr "一般"
 
-#: class.bcn_admin.php:271 class.bcn_network_admin.php:341
+#: class.bcn_admin.php:310 class.bcn_network_admin.php:381
 msgid "For the settings on this page to take effect, you must either use the included Breadcrumb NavXT widget, or place either of the code sections below into your theme."
-msgstr "このページの設定を有効にするためには、Breadcrumb NavXTウィジェットを有効にするか、お使いのテーマに下のコードを書き加えてください。"
+msgstr "このページの設定を反映するには、Breadcrumb NavXTウィジェットを設置するか、以下のコードのどちらかの設置が必要です。"
 
-#: class.bcn_admin.php:272 class.bcn_network_admin.php:342
+#: class.bcn_admin.php:311 class.bcn_network_admin.php:382
 msgid "Breadcrumb trail with separators"
 msgstr "パンくずを区切り文字で区切る"
 
-#: class.bcn_admin.php:278 class.bcn_network_admin.php:348
+#: class.bcn_admin.php:317 class.bcn_network_admin.php:388
 msgid "Breadcrumb trail in list form"
 msgstr "パンくずをリスト形式にする"
 
-#: class.bcn_admin.php:287 class.bcn_network_admin.php:357
+#: class.bcn_admin.php:326 class.bcn_network_admin.php:397
 msgid "Quick Start"
 msgstr "クイックスタート"
 
-#: class.bcn_admin.php:290 class.bcn_network_admin.php:360
+#: class.bcn_admin.php:329 class.bcn_network_admin.php:400
 msgid "Using the code from the Quick Start section above, the following CSS can be used as base for styling your breadcrumb trail."
 msgstr "上記のクイックスタートのセクションを使ったら、以下のCSSをパンくずリストのスタイル付けの基礎として利用できます。"
 
-#: class.bcn_admin.php:302 class.bcn_network_admin.php:372
+#: class.bcn_admin.php:341 class.bcn_network_admin.php:412
 msgid "Styling"
 msgstr "スタイル"
 
-#: class.bcn_admin.php:308 class.bcn_network_admin.php:378
+#: class.bcn_admin.php:347 class.bcn_network_admin.php:418
 msgid "Import/Export/Reset"
 msgstr "インポート/エクスポート/リセット"
 
-#: class.bcn_admin.php:332 class.bcn_network_admin.php:402
+#: class.bcn_admin.php:371 class.bcn_network_admin.php:442
 #: includes/class.mtekk_adminkit.php:841
 msgid "Import"
 msgstr "インポート"
 
-#: class.bcn_admin.php:333 class.bcn_network_admin.php:403
+#: class.bcn_admin.php:372 class.bcn_network_admin.php:443
 #: includes/class.mtekk_adminkit.php:842
 msgid "Export"
 msgstr "書き出し"
 
-#: class.bcn_admin.php:334 class.bcn_network_admin.php:404
+#: class.bcn_admin.php:373 class.bcn_network_admin.php:444
 #: includes/class.mtekk_adminkit.php:843
 msgid "Reset"
 msgstr "リセット"
 
-#: class.bcn_admin.php:352
+#: class.bcn_admin.php:391
 msgid "Warning: Your network settings will override any settings set in this page."
 msgstr "警告: お使いのネットワーク設定は、このページで行われた設定をすべて上書きします。"
 
-#: class.bcn_admin.php:356 class.bcn_admin.php:360
+#: class.bcn_admin.php:395 class.bcn_admin.php:399
 msgid "Warning: Your network settings may override any settings set in this page."
-msgstr "警告: お使いのネットワーク設定は、このページで行われた設定をすべて上書きする可能性があります。"
+msgstr "警告: お使いのネットワーク設定が、このページで行われた設定をすべて上書きする可能性があります。"
 
-#: class.bcn_admin.php:365 class.bcn_network_admin.php:435
+#: class.bcn_admin.php:404 class.bcn_network_admin.php:475
 msgid "Warning: No BCN_SETTINGS_* define statement found, defaulting to BCN_SETTINGS_USE_LOCAL."
 msgstr "警告: BCN_SETTINGS_* の定義が見つかりません。BCN_SETTINGS_USE_LOCAL を使用します。"
 
-#: class.bcn_admin.php:377 class.bcn_network_admin.php:448
+#: class.bcn_admin.php:416 class.bcn_network_admin.php:488
 msgid "Warning: Your are using a deprecated setting \"Title Length\" (see Miscellaneous &gt; Deprecated), please %1$suse CSS instead%2$s."
-msgstr "警告: 非推奨の設定項目である「タイトル文字数の上限」をお使いです。(「その他」タブ &gt; 「非推奨」の項をご覧ください)。%1$s CSS で代替してくださいますよう%2$sお願いします。"
+msgstr "警告: 非推奨の設定項目である「タイトル文字数の上限」をお使いです (「その他 &gt; 非推奨」参照) 。%1$s代わりにCSS をお使いください%2$s。"
 
-#: class.bcn_admin.php:377 class.bcn_admin.php:663
-#: class.bcn_network_admin.php:448 class.bcn_network_admin.php:734
+#: class.bcn_admin.php:416 class.bcn_admin.php:704
+#: class.bcn_network_admin.php:488 class.bcn_network_admin.php:776
 msgid "Go to the guide on trimming breadcrumb title lengths with CSS"
 msgstr "パンくずタイトルの長さをCSSでトリミングする方法のガイドへ移動する。"
 
@@ -420,434 +433,434 @@ msgstr "パンくずタイトルの長さをCSSでトリミングする方法の
 msgid "Breadcrumb NavXT Settings"
 msgstr "Breadcrumb NavXT 設定"
 
-#: class.bcn_admin.php:407 class.bcn_network_admin.php:478
+#: class.bcn_admin.php:446 class.bcn_network_admin.php:518
 msgid "A collection of settings most likely to be modified are located under this tab."
 msgstr "よく変更される項目の設定を行うタブです。"
 
-#: class.bcn_admin.php:411 class.bcn_network_admin.php:482
+#: class.bcn_admin.php:450 class.bcn_network_admin.php:522
 msgid "Breadcrumb Separator"
 msgstr "パンくずの区切り"
 
-#: class.bcn_admin.php:411 class.bcn_network_admin.php:482
+#: class.bcn_admin.php:450 class.bcn_network_admin.php:522
 msgid "Placed in between each breadcrumb."
 msgstr "各パンくずの間に配置されます。"
 
-#: class.bcn_admin.php:415 class.bcn_network_admin.php:486
+#: class.bcn_admin.php:454 class.bcn_network_admin.php:526
 msgid "Current Item"
 msgstr "現在の項目"
 
-#: class.bcn_admin.php:418 class.bcn_network_admin.php:489
+#: class.bcn_admin.php:457 class.bcn_network_admin.php:529
 msgid "Link Current Item"
 msgstr "現在の項目にリンク"
 
-#: class.bcn_admin.php:418 class.bcn_network_admin.php:489
+#: class.bcn_admin.php:457 class.bcn_network_admin.php:529
 msgid "Yes"
 msgstr "はい"
 
-#: class.bcn_admin.php:419 class.bcn_network_admin.php:490
+#: class.bcn_admin.php:458 class.bcn_network_admin.php:530
 msgid "Indicates that the user is on a page other than the first of a paginated archive or post."
 msgstr "複数ページにわたる投稿一覧やアーカイブ記事一覧の2ページ目以降を閲覧中であることを示します。"
 
-#: class.bcn_admin.php:420 class.bcn_network_admin.php:491
+#: class.bcn_admin.php:459 class.bcn_network_admin.php:531
 msgid "The template for paged breadcrumbs."
 msgstr "分割ページパンくず用のテンプレート。"
 
-#: class.bcn_admin.php:424 class.bcn_admin.php:427
-#: class.bcn_network_admin.php:495 class.bcn_network_admin.php:498
+#: class.bcn_admin.php:463 class.bcn_admin.php:466
+#: class.bcn_network_admin.php:535 class.bcn_network_admin.php:538
 msgid "Home Breadcrumb"
 msgstr "ホームページパンくず"
 
-#: class.bcn_admin.php:427 class.bcn_network_admin.php:498
+#: class.bcn_admin.php:466 class.bcn_network_admin.php:538
 msgid "Place the home breadcrumb in the trail."
 msgstr "パンくずにホームページを含める。"
 
-#: class.bcn_admin.php:428 class.bcn_network_admin.php:499
+#: class.bcn_admin.php:467 class.bcn_network_admin.php:539
 msgid "Home Template"
 msgstr "ホームページテンプレート"
 
-#: class.bcn_admin.php:428 class.bcn_network_admin.php:499
+#: class.bcn_admin.php:467 class.bcn_network_admin.php:539
 msgid "The template for the home breadcrumb."
-msgstr "ホームを示すパンくず用テンプレートです。"
+msgstr "ホームを示すパンくず用テンプレート。"
 
-#: class.bcn_admin.php:429 class.bcn_network_admin.php:500
+#: class.bcn_admin.php:468 class.bcn_network_admin.php:540
 msgid "Home Template (Unlinked)"
 msgstr "ホームページテンプレート (リンクなし)"
 
-#: class.bcn_admin.php:429 class.bcn_network_admin.php:500
+#: class.bcn_admin.php:468 class.bcn_network_admin.php:540
 msgid "The template for the home breadcrumb, used when the breadcrumb is not linked."
-msgstr "ホームを示すパンくず用テンプレートです。パンくずがリンクになっていない場合にのみ使われます。"
+msgstr "ホームを示すパンくず用テンプレートです。パンくずがリンクになっていないときだけ使われます。"
 
-#: class.bcn_admin.php:433 class.bcn_admin.php:436
-#: class.bcn_network_admin.php:504 class.bcn_network_admin.php:507
+#: class.bcn_admin.php:472 class.bcn_admin.php:475
+#: class.bcn_network_admin.php:544 class.bcn_network_admin.php:547
 msgid "Blog Breadcrumb"
 msgstr "ブログを示すパンくず"
 
-#: class.bcn_admin.php:436 class.bcn_network_admin.php:507
+#: class.bcn_admin.php:475 class.bcn_network_admin.php:547
 msgid "Place the blog breadcrumb in the trail."
 msgstr "ブログを示すパンくずをパンくずリストに含めます。"
 
-#: class.bcn_admin.php:437 class.bcn_network_admin.php:508
+#: class.bcn_admin.php:476 class.bcn_network_admin.php:548
 msgid "Blog Template"
-msgstr "ブログテンプレート"
+msgstr "ブログ用テンプレート"
 
-#: class.bcn_admin.php:437 class.bcn_network_admin.php:508
+#: class.bcn_admin.php:476 class.bcn_network_admin.php:548
 msgid "The template for the blog breadcrumb, used only in static front page environments."
 msgstr "ブログのパンくず用のテンプレートです。固定フロントページ環境でのみ使われます。"
 
-#: class.bcn_admin.php:438 class.bcn_network_admin.php:509
+#: class.bcn_admin.php:477 class.bcn_network_admin.php:549
 msgid "Blog Template (Unlinked)"
 msgstr "ブログテンプレート (リンクなし)"
 
-#: class.bcn_admin.php:438 class.bcn_network_admin.php:509
+#: class.bcn_admin.php:477 class.bcn_network_admin.php:549
 msgid "The template for the blog breadcrumb, used only in static front page environments and when the breadcrumb is not linked."
 msgstr "ブログのパンくず用のテンプレートです。固定フロントページ環境で、パンくずがリンクになっていない場合にのみ使われます。"
 
-#: class.bcn_admin.php:442 class.bcn_network_admin.php:513
+#: class.bcn_admin.php:481 class.bcn_network_admin.php:553
 msgid "Mainsite Breadcrumb"
 msgstr "メインサイトのパンくず"
 
-#: class.bcn_admin.php:445 class.bcn_network_admin.php:516
+#: class.bcn_admin.php:484 class.bcn_network_admin.php:556
 msgid "Main Site Breadcrumb"
 msgstr "メインサイトのパンくず"
 
-#: class.bcn_admin.php:445 class.bcn_network_admin.php:516
+#: class.bcn_admin.php:484 class.bcn_network_admin.php:556
 msgid "Place the main site home breadcrumb in the trail in an multisite setup."
 msgstr "マルチサイトで運用するとき、パンくずにメインサイトのホームを含めます。"
 
-#: class.bcn_admin.php:446 class.bcn_network_admin.php:517
+#: class.bcn_admin.php:485 class.bcn_network_admin.php:557
 msgid "Main Site Home Template"
 msgstr "メインサイトのホームページテンプレート"
 
-#: class.bcn_admin.php:446 class.bcn_network_admin.php:517
+#: class.bcn_admin.php:485 class.bcn_network_admin.php:557
 msgid "The template for the main site home breadcrumb, used only in multisite environments."
 msgstr "メインサイトのホームページパンくず用のテンプレートです。マルチサイトの環境でのみ使われます。"
 
-#: class.bcn_admin.php:447 class.bcn_network_admin.php:518
+#: class.bcn_admin.php:486 class.bcn_network_admin.php:558
 msgid "Main Site Home Template (Unlinked)"
-msgstr "メインサイトのホームページテンプレート (リンクなし)"
+msgstr "メインサイトホームテンプレート (リンクなし)"
 
-#: class.bcn_admin.php:447 class.bcn_network_admin.php:518
+#: class.bcn_admin.php:486 class.bcn_network_admin.php:558
 msgid "The template for the main site home breadcrumb, used only in multisite environments and when the breadcrumb is not linked."
-msgstr "メインサイトのホームページパンくず用のテンプレートです。マルチサイト環境でパンくずがリンクになっていない場合にのみ使われます。"
+msgstr "メインサイトのホームページパンくず用のテンプレートです。マルチサイトの環境でパンくずがリンクになっていない場合にのみ使われます。"
 
-#: class.bcn_admin.php:454 class.bcn_network_admin.php:525
+#: class.bcn_admin.php:493 class.bcn_network_admin.php:565
 msgid "The settings for all post types (Posts, Pages, and Custom Post Types) are located under this tab."
-msgstr "各投稿タイプ(投稿、固定ページ、カスタム投稿タイプ)の設定を行うタブです。"
+msgstr "各投稿タイプ (投稿、固定ページ、カスタム投稿タイプ) の設定を行うタブです。"
 
-#: class.bcn_admin.php:454 class.bcn_network_admin.php:525
+#: class.bcn_admin.php:493 class.bcn_network_admin.php:565
 msgid "Post Types"
 msgstr "投稿タイプ"
 
-#: class.bcn_admin.php:455 class.bcn_network_admin.php:526
+#: class.bcn_admin.php:494 class.bcn_network_admin.php:566
 msgid "Posts"
 msgstr "投稿"
 
-#: class.bcn_admin.php:458 class.bcn_network_admin.php:529
+#: class.bcn_admin.php:497 class.bcn_network_admin.php:569
 msgid "Post Template"
 msgstr "投稿テンプレート"
 
-#: class.bcn_admin.php:458 class.bcn_network_admin.php:529
+#: class.bcn_admin.php:497 class.bcn_network_admin.php:569
 msgid "The template for post breadcrumbs."
 msgstr "投稿パンくずのテンプレート。"
 
-#: class.bcn_admin.php:459 class.bcn_network_admin.php:530
+#: class.bcn_admin.php:498 class.bcn_network_admin.php:570
 msgid "Post Template (Unlinked)"
 msgstr "投稿テンプレート (リンクなし)"
 
-#: class.bcn_admin.php:459 class.bcn_network_admin.php:530
+#: class.bcn_admin.php:498 class.bcn_network_admin.php:570
 msgid "The template for post breadcrumbs, used only when the breadcrumb is not linked."
-msgstr "投稿パンくずのテンプレートです。パンくずがリンクになっていない場合にのみ使われます。"
+msgstr "投稿パンくずのテンプレートです。パンくずにリンクされていない場合のみ使われます。"
 
-#: class.bcn_admin.php:460 class.bcn_network_admin.php:531
+#: class.bcn_admin.php:499 class.bcn_network_admin.php:571
 msgid "Post Hierarchy Display"
 msgstr "投稿階層表示"
 
-#: class.bcn_admin.php:460 class.bcn_network_admin.php:531
+#: class.bcn_admin.php:499 class.bcn_network_admin.php:571
 msgid "Show the hierarchy (specified below) leading to a post in the breadcrumb trail."
 msgstr "パンくずリストで、投稿を、下記の設定に基づいて階層化して表示します。"
 
-#: class.bcn_admin.php:464 class.bcn_network_admin.php:535
+#: class.bcn_admin.php:504 class.bcn_network_admin.php:576
 msgid "Post Hierarchy"
 msgstr "投稿階層"
 
-#: class.bcn_admin.php:468 class.bcn_admin.php:586
-#: class.bcn_network_admin.php:539 class.bcn_network_admin.php:657
+#: class.bcn_admin.php:508 class.bcn_admin.php:627
+#: class.bcn_network_admin.php:580 class.bcn_network_admin.php:699
 msgid "Categories"
 msgstr "カテゴリー"
 
-#: class.bcn_admin.php:469 class.bcn_admin.php:547
-#: class.bcn_network_admin.php:540 class.bcn_network_admin.php:618
+#: class.bcn_admin.php:509 class.bcn_admin.php:588
+#: class.bcn_network_admin.php:581 class.bcn_network_admin.php:660
 msgid "Dates"
 msgstr "日付"
 
-#: class.bcn_admin.php:470 class.bcn_admin.php:593
-#: class.bcn_network_admin.php:541 class.bcn_network_admin.php:664
+#: class.bcn_admin.php:510 class.bcn_admin.php:634
+#: class.bcn_network_admin.php:582 class.bcn_network_admin.php:706
 msgid "Tags"
 msgstr "タグ"
 
-#: class.bcn_admin.php:472 class.bcn_admin.php:546
-#: class.bcn_network_admin.php:543 class.bcn_network_admin.php:617
+#: class.bcn_admin.php:512 class.bcn_admin.php:587
+#: class.bcn_network_admin.php:584 class.bcn_network_admin.php:659
 msgid "Post Parent"
 msgstr "親投稿"
 
-#: class.bcn_admin.php:488 class.bcn_admin.php:571
-#: class.bcn_network_admin.php:559 class.bcn_network_admin.php:642
+#: class.bcn_admin.php:528 class.bcn_admin.php:612
+#: class.bcn_network_admin.php:600 class.bcn_network_admin.php:684
 msgid "The hierarchy which the breadcrumb trail will show. Note that the \"Post Parent\" option may require an additional plugin to behave as expected since this is a non-hierarchical post type."
 msgstr "パンくずリストを階層表示するとき階層化の基準として使われるものを上記から選択します。\"親投稿\"オプションを使用するには追加のプラグインが必要です。追加のプラグインをインストールしていない通常の状態では、\"投稿\"は階層性を持たないからです。"
 
-#: class.bcn_admin.php:492 class.bcn_network_admin.php:563
+#: class.bcn_admin.php:532 class.bcn_network_admin.php:604
 msgid "Pages"
 msgstr "固定ページ"
 
-#: class.bcn_admin.php:495 class.bcn_network_admin.php:566
+#: class.bcn_admin.php:535 class.bcn_network_admin.php:607
 msgid "Page Template"
-msgstr "固定ページテンプレート"
+msgstr "ページテンプレート"
 
-#: class.bcn_admin.php:495 class.bcn_network_admin.php:566
+#: class.bcn_admin.php:535 class.bcn_network_admin.php:607
 msgid "The template for page breadcrumbs."
 msgstr "固定ページのパンくず用テンプレートです。"
 
-#: class.bcn_admin.php:496 class.bcn_network_admin.php:567
+#: class.bcn_admin.php:536 class.bcn_network_admin.php:608
 msgid "Page Template (Unlinked)"
-msgstr "固定ページテンプレート (リンクなし)"
+msgstr "ページテンプレート (リンクなし)"
 
-#: class.bcn_admin.php:496 class.bcn_network_admin.php:567
+#: class.bcn_admin.php:536 class.bcn_network_admin.php:608
 msgid "The template for page breadcrumbs, used only when the breadcrumb is not linked."
-msgstr "固定ページのパンくず用テンプレートです。パンくずがリンクになっていない場合にのみ使われます。"
+msgstr "固定ページのパンくず用テンプレートです。パンくずがリンクになっていない場合だけ使われます。"
 
-#: class.bcn_admin.php:499 class.bcn_network_admin.php:570
+#: class.bcn_admin.php:539 class.bcn_network_admin.php:611
 msgid "Attachments"
 msgstr "添付ファイル"
 
-#: class.bcn_admin.php:502 class.bcn_network_admin.php:573
+#: class.bcn_admin.php:542 class.bcn_network_admin.php:614
 msgid "Attachment Template"
 msgstr "添付ファイルテンプレート"
 
-#: class.bcn_admin.php:502 class.bcn_network_admin.php:573
+#: class.bcn_admin.php:542 class.bcn_network_admin.php:614
 msgid "The template for attachment breadcrumbs."
 msgstr "添付ファイルパンくず用のテンプレートです。"
 
-#: class.bcn_admin.php:503 class.bcn_network_admin.php:574
+#: class.bcn_admin.php:543 class.bcn_network_admin.php:615
 msgid "Attachment Template (Unlinked)"
 msgstr "添付ファイルテンプレート (リンクなし)"
 
-#: class.bcn_admin.php:503 class.bcn_network_admin.php:574
+#: class.bcn_admin.php:543 class.bcn_network_admin.php:615
 msgid "The template for attachment breadcrumbs, used only when the breadcrumb is not linked."
 msgstr "添付ファイルパンくず用のテンプレートです。パンくずがリンクになっていない場合だけ使われます。"
 
-#: class.bcn_admin.php:523 class.bcn_admin.php:624
-#: class.bcn_network_admin.php:594 class.bcn_network_admin.php:695
+#: class.bcn_admin.php:563 class.bcn_admin.php:665
+#: class.bcn_network_admin.php:635 class.bcn_network_admin.php:737
 msgid "%s Template"
 msgstr "%sテンプレート"
 
-#: class.bcn_admin.php:523 class.bcn_admin.php:624
-#: class.bcn_network_admin.php:594 class.bcn_network_admin.php:695
+#: class.bcn_admin.php:563 class.bcn_admin.php:665
+#: class.bcn_network_admin.php:635 class.bcn_network_admin.php:737
 msgid "The template for %s breadcrumbs."
 msgstr "%sパンくず用のテンプレートです。"
 
-#: class.bcn_admin.php:524 class.bcn_admin.php:625
-#: class.bcn_network_admin.php:595 class.bcn_network_admin.php:696
+#: class.bcn_admin.php:564 class.bcn_admin.php:666
+#: class.bcn_network_admin.php:636 class.bcn_network_admin.php:738
 msgid "%s Template (Unlinked)"
 msgstr "%sテンプレート(リンクなし)"
 
-#: class.bcn_admin.php:524 class.bcn_admin.php:625
-#: class.bcn_network_admin.php:595 class.bcn_network_admin.php:696
+#: class.bcn_admin.php:564 class.bcn_admin.php:666
+#: class.bcn_network_admin.php:636 class.bcn_network_admin.php:738
 msgid "The template for %s breadcrumbs, used only when the breadcrumb is not linked."
 msgstr "%sパンくず用テンプレートです。パンくずがリンクになっていない場合だけ使われます。"
 
-#: class.bcn_admin.php:529 class.bcn_network_admin.php:600
+#: class.bcn_admin.php:569 class.bcn_network_admin.php:641
 msgid "%s Root Page"
 msgstr "%sルートページ"
 
-#: class.bcn_admin.php:532 class.bcn_network_admin.php:603
+#: class.bcn_admin.php:572 class.bcn_network_admin.php:644
 msgid "&mdash; Select &mdash;"
 msgstr "&mdash; 選択 &mdash;"
 
-#: class.bcn_admin.php:536 class.bcn_network_admin.php:607
+#: class.bcn_admin.php:576 class.bcn_network_admin.php:648
 msgid "%s Archive Display"
 msgstr "%sアーカイブ表示"
 
-#: class.bcn_admin.php:536 class.bcn_network_admin.php:607
+#: class.bcn_admin.php:576 class.bcn_network_admin.php:648
 msgid "Show the breadcrumb for the %s post type archives in the breadcrumb trail."
 msgstr "パンくずリストに、%sアーカイブのパンくずを表示します。"
 
-#: class.bcn_admin.php:537 class.bcn_network_admin.php:608
+#: class.bcn_admin.php:577 class.bcn_network_admin.php:649
 msgid "%s Hierarchy Display"
 msgstr "%s階層表示"
 
-#: class.bcn_admin.php:537 class.bcn_network_admin.php:608
+#: class.bcn_admin.php:577 class.bcn_network_admin.php:649
 msgid "Show the hierarchy (specified below) leading to a %s in the breadcrumb trail."
 msgstr "パンくずリストで、%sを、下記の設定に基づいて階層化して表示します。"
 
-#: class.bcn_admin.php:541 class.bcn_network_admin.php:612
+#: class.bcn_admin.php:582 class.bcn_network_admin.php:654
 msgid "%s Hierarchy"
 msgstr "%s階層"
 
-#: class.bcn_admin.php:567 class.bcn_network_admin.php:638
+#: class.bcn_admin.php:608 class.bcn_network_admin.php:680
 msgid "The hierarchy which the breadcrumb trail will show."
 msgstr "パンくずリストが表示する階層です。"
 
-#: class.bcn_admin.php:585 class.bcn_network_admin.php:656
+#: class.bcn_admin.php:626 class.bcn_network_admin.php:698
 msgid "The settings for all taxonomies (including Categories, Tags, and custom taxonomies) are located under this tab."
-msgstr "各タクソノミー(カテゴリー、タグ、カスタムタクソノミー)の設定を行うタブです。"
+msgstr "各タクソノミー (カテゴリー、タグ、カスタムタクソノミー) の設定を行うタブです。"
 
-#: class.bcn_admin.php:585 class.bcn_network_admin.php:656
+#: class.bcn_admin.php:626 class.bcn_network_admin.php:698
 msgid "Taxonomies"
 msgstr "タクソノミー"
 
-#: class.bcn_admin.php:589 class.bcn_network_admin.php:660
+#: class.bcn_admin.php:630 class.bcn_network_admin.php:702
 msgid "Category Template"
 msgstr "カテゴリーテンプレート"
 
-#: class.bcn_admin.php:589 class.bcn_network_admin.php:660
+#: class.bcn_admin.php:630 class.bcn_network_admin.php:702
 msgid "The template for category breadcrumbs."
 msgstr "カテゴリーパンくず用のテンプレートです。"
 
-#: class.bcn_admin.php:590 class.bcn_network_admin.php:661
+#: class.bcn_admin.php:631 class.bcn_network_admin.php:703
 msgid "Category Template (Unlinked)"
 msgstr "カテゴリーテンプレート (リンクなし)"
 
-#: class.bcn_admin.php:590 class.bcn_network_admin.php:661
+#: class.bcn_admin.php:631 class.bcn_network_admin.php:703
 msgid "The template for category breadcrumbs, used only when the breadcrumb is not linked."
 msgstr "カテゴリーパンくず用のテンプレートです。パンくずがリンクになっていないときにだけ使われます。"
 
-#: class.bcn_admin.php:596 class.bcn_network_admin.php:667
+#: class.bcn_admin.php:637 class.bcn_network_admin.php:709
 msgid "Tag Template"
 msgstr "タグテンプレート"
 
-#: class.bcn_admin.php:596 class.bcn_network_admin.php:667
+#: class.bcn_admin.php:637 class.bcn_network_admin.php:709
 msgid "The template for tag breadcrumbs."
 msgstr "タグのパンくず用テンプレート。"
 
-#: class.bcn_admin.php:597 class.bcn_network_admin.php:668
+#: class.bcn_admin.php:638 class.bcn_network_admin.php:710
 msgid "Tag Template (Unlinked)"
 msgstr "タグテンプレート (リンクなし)"
 
-#: class.bcn_admin.php:597 class.bcn_network_admin.php:668
+#: class.bcn_admin.php:638 class.bcn_network_admin.php:710
 msgid "The template for tag breadcrumbs, used only when the breadcrumb is not linked."
 msgstr "タグのパンくず用テンプレートです。パンくずがリンクになっていない場合にのみ使われます。"
 
-#: class.bcn_admin.php:600 class.bcn_network_admin.php:671
+#: class.bcn_admin.php:641 class.bcn_network_admin.php:713
 msgid "Post Formats"
 msgstr "投稿フォーマット"
 
-#: class.bcn_admin.php:603 class.bcn_network_admin.php:674
+#: class.bcn_admin.php:644 class.bcn_network_admin.php:716
 msgid "Post Format Template"
 msgstr "投稿フォーマットテンプレート"
 
-#: class.bcn_admin.php:603 class.bcn_network_admin.php:674
+#: class.bcn_admin.php:644 class.bcn_network_admin.php:716
 msgid "The template for post format breadcrumbs."
 msgstr "投稿フォーマットのパンくず用テンプレート。"
 
-#: class.bcn_admin.php:604 class.bcn_network_admin.php:675
+#: class.bcn_admin.php:645 class.bcn_network_admin.php:717
 msgid "Post Format Template (Unlinked)"
 msgstr "投稿フォーマットテンプレート (リンクなし)"
 
-#: class.bcn_admin.php:604 class.bcn_network_admin.php:675
+#: class.bcn_admin.php:645 class.bcn_network_admin.php:717
 msgid "The template for post_format breadcrumbs, used only when the breadcrumb is not linked."
 msgstr "投稿フォーマットのパンくず用テンプレートです。パンくずがリンクになっていない場合にのみ使われます。"
 
-#: class.bcn_admin.php:634 class.bcn_network_admin.php:705
+#: class.bcn_admin.php:675 class.bcn_network_admin.php:747
 msgid "The settings for author and date archives, searches, and 404 pages are located under this tab."
 msgstr "投稿者アーカイブ、日付アーカイブ、検索結果ページ、404ページ、その他もろもろの設定を行うタブです。"
 
-#: class.bcn_admin.php:634 class.bcn_admin.php:643
-#: class.bcn_network_admin.php:705 class.bcn_network_admin.php:714
+#: class.bcn_admin.php:675 class.bcn_admin.php:684
+#: class.bcn_network_admin.php:747 class.bcn_network_admin.php:756
 msgid "Miscellaneous"
 msgstr "その他"
 
-#: class.bcn_admin.php:635 class.bcn_network_admin.php:706
+#: class.bcn_admin.php:676 class.bcn_network_admin.php:748
 msgid "Author Archives"
 msgstr "投稿者アーカイブ"
 
-#: class.bcn_admin.php:638 class.bcn_network_admin.php:709
+#: class.bcn_admin.php:679 class.bcn_network_admin.php:751
 msgid "Author Template"
 msgstr "投稿者テンプレート"
 
-#: class.bcn_admin.php:638 class.bcn_network_admin.php:709
+#: class.bcn_admin.php:679 class.bcn_network_admin.php:751
 msgid "The template for author breadcrumbs."
 msgstr "投稿者パンくずのテンプレートです。"
 
-#: class.bcn_admin.php:639 class.bcn_network_admin.php:710
+#: class.bcn_admin.php:680 class.bcn_network_admin.php:752
 msgid "Author Template (Unlinked)"
 msgstr "投稿者テンプレート (リンクなし)"
 
-#: class.bcn_admin.php:639 class.bcn_network_admin.php:710
+#: class.bcn_admin.php:680 class.bcn_network_admin.php:752
 msgid "The template for author breadcrumbs, used only when the breadcrumb is not linked."
 msgstr "投稿者パンくずのテンプレートです。パンくずがリンクになっていないときだけ使われます。"
 
-#: class.bcn_admin.php:640 class.bcn_network_admin.php:711
+#: class.bcn_admin.php:681 class.bcn_network_admin.php:753
 msgid "Author Display Format"
 msgstr "投稿者表示フォーマット"
 
-#: class.bcn_admin.php:640 class.bcn_network_admin.php:711
+#: class.bcn_admin.php:681 class.bcn_network_admin.php:753
 msgid "display_name uses the name specified in \"Display name publicly as\" under the user profile the others correspond to options in the user profile."
 msgstr "display_nameを選ぶと、投稿者を示す文字列として、プロフィール設定で「ブログ上の表示名」に指定されている内容を使います。nick_nameを選ぶと、「ニックネーム」で指定されている内容を使います。first_nameを選ぶと、「名」で指定されている内容を使います。「last_name」を選ぶと、「姓」に指定されている内容を使います。"
 
-#: class.bcn_admin.php:646 class.bcn_network_admin.php:717
+#: class.bcn_admin.php:687 class.bcn_network_admin.php:759
 msgid "Date Template"
 msgstr "日付テンプレート"
 
-#: class.bcn_admin.php:646 class.bcn_network_admin.php:717
+#: class.bcn_admin.php:687 class.bcn_network_admin.php:759
 msgid "The template for date breadcrumbs."
 msgstr "日付パンくず用のテンプレート。"
 
-#: class.bcn_admin.php:647 class.bcn_network_admin.php:718
+#: class.bcn_admin.php:688 class.bcn_network_admin.php:760
 msgid "Date Template (Unlinked)"
 msgstr "日付テンプレート (リンクなし)"
 
-#: class.bcn_admin.php:647 class.bcn_network_admin.php:718
+#: class.bcn_admin.php:688 class.bcn_network_admin.php:760
 msgid "The template for date breadcrumbs, used only when the breadcrumb is not linked."
 msgstr "日付パンくずのテンプレートです。パンくずがリンクになっていない場合にのみ使われます。"
 
-#: class.bcn_admin.php:648 class.bcn_network_admin.php:719
+#: class.bcn_admin.php:689 class.bcn_network_admin.php:761
 msgid "Search Template"
 msgstr "検索テンプレート"
 
-#: class.bcn_admin.php:648 class.bcn_network_admin.php:719
+#: class.bcn_admin.php:689 class.bcn_network_admin.php:761
 msgid "The anchor template for search breadcrumbs, used only when the search results span several pages."
 msgstr "検索パンくずのアンカー用テンプレートです。検索結果が複数ページに渡るときにだけ使われます。"
 
-#: class.bcn_admin.php:649 class.bcn_network_admin.php:720
+#: class.bcn_admin.php:690 class.bcn_network_admin.php:762
 msgid "Search Template (Unlinked)"
 msgstr "検索テンプレート (リンクなし)"
 
-#: class.bcn_admin.php:649 class.bcn_network_admin.php:720
+#: class.bcn_admin.php:690 class.bcn_network_admin.php:762
 msgid "The anchor template for search breadcrumbs, used only when the search results span several pages and the breadcrumb is not linked."
 msgstr "検索パンくずのアンカー用テンプレートです。検索結果が複数ページに渡り、リンクになっていないときだけ使われます。"
 
-#: class.bcn_admin.php:650 class.bcn_network_admin.php:721
+#: class.bcn_admin.php:691 class.bcn_network_admin.php:763
 msgid "404 Title"
 msgstr "404 タイトル"
 
-#: class.bcn_admin.php:651 class.bcn_network_admin.php:722
+#: class.bcn_admin.php:692 class.bcn_network_admin.php:764
 msgid "404 Template"
 msgstr "404テンプレート"
 
-#: class.bcn_admin.php:651 class.bcn_network_admin.php:722
+#: class.bcn_admin.php:692 class.bcn_network_admin.php:764
 msgid "The template for 404 breadcrumbs."
 msgstr "404 パンくずのテンプレートです。"
 
-#: class.bcn_admin.php:654 class.bcn_network_admin.php:725
+#: class.bcn_admin.php:695 class.bcn_network_admin.php:767
 msgid "Deprecated"
 msgstr "非推奨"
 
-#: class.bcn_admin.php:658 class.bcn_network_admin.php:729
+#: class.bcn_admin.php:699 class.bcn_network_admin.php:771
 msgid "Title Length"
 msgstr "タイトルの長さ"
 
-#: class.bcn_admin.php:663 class.bcn_network_admin.php:734
+#: class.bcn_admin.php:704 class.bcn_network_admin.php:776
 msgid "Limit the length of the breadcrumb title. (Deprecated, %suse CSS instead%s)"
 msgstr "パンくずタイトルの長さをタイトル文字数の上限以下に制限する(非推奨の機能です。%s代わりにCSSを使ってください。%s)。"
 
-#: class.bcn_admin.php:668 class.bcn_network_admin.php:739
+#: class.bcn_admin.php:709 class.bcn_network_admin.php:781
 msgid "Max Title Length: "
 msgstr "タイトル文字数の上限:"
 
-#: class.bcn_admin.php:680 class.bcn_network_admin.php:751
+#: class.bcn_admin.php:721 class.bcn_network_admin.php:793
 msgid "Save Changes"
 msgstr "変更を保存"
 
-#: class.bcn_breadcrumb_trail.php:100
+#: class.bcn_breadcrumb_trail.php:102
 msgid "404"
 msgstr "404"

@@ -1,0 +1,62 @@
+# Translation of Development (trunk) in Turkish
+# This file is distributed under the same license as the Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2010-06-10 06:35:41+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Development (trunk)\n"
+
+msgid "http://wordpress.org/extend/plugins/rss-importer/"
+msgstr "http://wordpress.org/extend/plugins/rss-importer/"
+
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"
+
+msgid "Import posts from an RSS feed. This plugin depends on the WP_Importer base class."
+msgstr "Bir RSS beslemesinden yazıları içeri aktarır. Bu eklenti WP_Importer taban sınıfına bağımlıdır."
+
+msgid "RSS Importer"
+msgstr "RSS aktarıcısı"
+
+#: rss-importer.php:219
+msgid "Import posts from an RSS feed."
+msgstr "RSS beslemesinden yazıları içe aktarın."
+
+#: rss-importer.php:219
+msgid "RSS"
+msgstr "RSS"
+
+#: rss-importer.php:185
+msgid "All done. <a href=\"%s\">Have fun!</a>"
+msgstr "İşlem tamamlandı. <a href=\"%s\">İyi eğlenceler!</a>"
+
+#: rss-importer.php:160
+msgid "Done!"
+msgstr "Tamamlandı!"
+
+#: rss-importer.php:154
+msgid "Couldn&#8217;t get post ID"
+msgstr "Yazı numarası alınamadı"
+
+#: rss-importer.php:148
+msgid "Post already imported"
+msgstr "Yazı zaten içe aktarıldı."
+
+#: rss-importer.php:143
+msgid "Importing post..."
+msgstr "Yazı içe aktarılıyor..."
+
+#: rss-importer.php:59
+msgid "Howdy! This importer allows you to extract posts from an RSS 2.0 file into your WordPress site. This is useful if you want to import your posts from a system that is not handled by a custom import tool. Pick an RSS file to upload and click Import."
+msgstr "Merhaba! Bu aktarıcı herhangi bir RSS 2.0 dosyasından yazıları aktarmanıza imkan sağlar. Bu, özel bir aktarma aracı olmayan bir sistemden yazı aktarımı için kullanışlıdır. Yüklemek için bir RSS dosyası seçin ve İçe Aktar&#8217;a tıklayın."
+
+#: rss-importer.php:50
+msgid "Import RSS"
+msgstr "RSS İçe Aktar"

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-05-02 13:10:29+0000\n"
+"PO-Revision-Date: 2016-09-26 13:37:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,11 +14,11 @@ msgstr ""
 msgid "The bbPress Community"
 msgstr "La communauté bbPress"
 
-#. #-#-#-#-#  tmp-bbpress.pot (bbPress 2.5.9)  #-#-#-#-#
+#. #-#-#-#-#  tmp-bbpress.pot (bbPress 2.5.10)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  tmp-bbpress.pot (bbPress 2.5.9)  #-#-#-#-#
+#. #-#-#-#-#  tmp-bbpress.pot (bbPress 2.5.10)  #-#-#-#-#
 #. Author URI of the plugin/theme
-msgid "http://bbpress.org"
+msgid "https://bbpress.org"
 msgstr "http://bbpress.org"
 
 #. Description of the plugin/theme
@@ -660,7 +660,7 @@ msgstr " et"
 
 #: includes/common/functions.php:512 includes/common/functions.php:544
 msgid "Private: %s"
-msgstr "Priv&eacute;: %s"
+msgstr "Privé : %s"
 
 #: includes/common/functions.php:513 includes/common/functions.php:545
 msgid "Spammed: %s"
@@ -676,7 +676,7 @@ msgstr "<strong>ERREUR:</strong> Nom de l&#39;auteur invalide!"
 
 #: includes/common/functions.php:628
 msgid "<strong>ERROR</strong>: Invalid email address submitted!"
-msgstr "<strong>ERREUR</strong>: Adresse mail invalide!"
+msgstr "<strong>ERREUR</strong> : Adresse e-mail invalide !"
 
 #: includes/common/functions.php:1099
 msgid ""
@@ -1258,7 +1258,7 @@ msgstr "<strong>ERREUR</strong>: Ce forum a &eacute;t&eacute; ferm&eacute; aux n
 
 #: includes/forums/functions.php:198 includes/forums/functions.php:436
 msgid "<strong>ERROR</strong>: This forum is private and you do not have the capability to read or create new forums in it."
-msgstr "<strong>ERREUR</strong>: Ce forum est priv&eacute; et vous ne pouvez pas lire ou cr&eacute;er de nouveaux forums dedans."
+msgstr "<strong>ERREUR</strong> : Ce forum est priv&eacute; et vous ne pouvez pas lire ou y créer de nouveaux forums."
 
 #: includes/forums/functions.php:203 includes/forums/functions.php:441
 msgid "<strong>ERROR</strong>: This forum is hidden and you do not have the capability to read or create new forums in it."
@@ -1545,7 +1545,7 @@ msgstr "<strong>ERREUR:</strong> Vous n&#39;avez pas la permission de modifier l
 #: includes/topics/functions.php:1294 includes/topics/functions.php:1652
 #: templates/default/bbpress/form-reply.php:29
 msgid "Reply To: %s"
-msgstr "R&eacute;pondre &agrave;: %s"
+msgstr "Répondre à : %s"
 
 #: includes/replies/functions.php:1344 includes/topics/functions.php:1533
 msgid "<strong>ERROR</strong>: There was a problem converting the reply into the topic. Please try again."
@@ -1597,11 +1597,11 @@ msgstr "Cr&eacute;er une nouvelle R&eacute;ponse"
 
 #: includes/replies/template.php:54
 msgid "Edit Reply"
-msgstr "Modifier la R&eacute;ponse"
+msgstr "Modifier la r&eacute;ponse"
 
 #: includes/replies/template.php:56 includes/replies/template.php:57
 msgid "View Reply"
-msgstr "Visualiser la R&eacute;ponse"
+msgstr "Voir la réponse"
 
 #: includes/replies/template.php:58
 msgid "Search Replies"
@@ -2000,8 +2000,8 @@ msgstr[1] "Affichage de %1$s sujets"
 #: includes/topics/template.php:2981
 msgid "Viewing topic %2$s (of %4$s total)"
 msgid_plural "Viewing %1$s topics - %2$s through %3$s (of %4$s total)"
-msgstr[0] "%2$s sujet (sur n total de %4$s)"
-msgstr[1] "%1$s sujets de %2$s sur %3$s (sur un total de %4$s)"
+msgstr[0] "%2$s sujet (sur un total de %4$s)"
+msgstr[1] "%1$s sujets de %2$s à %3$s (sur un total de %4$s)"
 
 #: includes/topics/template.php:3041
 msgid "This topic is marked as spam."
@@ -2217,7 +2217,7 @@ msgstr "Nom (obligatoire):"
 
 #: templates/default/bbpress/form-anonymous.php:27
 msgid "Mail (will not be published) (required):"
-msgstr "Mail (ne sera pas publi&eacute;) (obligatoire):"
+msgstr "E-mail (ne sera pas publié) (obligatoire) :"
 
 #: templates/default/bbpress/form-forum.php:35
 #: templates/default/bbpress/form-topic.php:41
@@ -2246,7 +2246,7 @@ msgstr "Nom du forum (Longueur maximum: %d):"
 #: templates/default/bbpress/form-reply.php:64
 #: templates/default/bbpress/form-topic.php:90
 msgid "You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags and attributes:"
-msgstr "Vous pouvez utiliser ces balises et attributs <abbr title=\"HyperText Markup Language\">HTML</abbr>:"
+msgstr "Vous pouvez utiliser ces balises et attributs <abbr title=\"HyperText Markup Language\">HTML</abbr> :"
 
 #: templates/default/bbpress/form-forum.php:91
 msgid "Forum Type:"
@@ -2300,7 +2300,7 @@ msgstr "M&eacute;thode de d&eacute;placement"
 #: templates/default/bbpress/form-reply-move.php:41
 #: templates/default/bbpress/form-topic-split.php:41
 msgid "New topic in <strong>%s</strong> titled:"
-msgstr "Nouveau sujet dans <strong>%s</strong> intitulé:"
+msgstr "Nouveau sujet dans <strong>%s</strong> intitulé :"
 
 #: templates/default/bbpress/form-reply-move.php:42
 msgid "Moved: %s"
@@ -2309,7 +2309,7 @@ msgstr "D&eacute;plac&eacute;: %s"
 #: templates/default/bbpress/form-reply-move.php:49
 #: templates/default/bbpress/form-topic-split.php:49
 msgid "Use an existing topic in this forum:"
-msgstr "Utilisez un sujet existant dans ce forum:"
+msgstr "Utilisez un sujet existant dans ce forum :"
 
 #: templates/default/bbpress/form-reply-move.php:68
 #: templates/default/bbpress/form-topic-merge.php:89
@@ -2336,17 +2336,17 @@ msgstr "Mots-clés :"
 #: templates/default/bbpress/form-reply.php:93
 #: templates/default/bbpress/form-topic.php:164
 msgid "Notify the author of follow-up replies via email"
-msgstr "Informer l'auteur des suivies de r&eacute;ponses par e-mail"
+msgstr "Informer l’auteur des suivies de r&eacute;ponses par e-mail"
 
 #: templates/default/bbpress/form-reply.php:97
 #: templates/default/bbpress/form-topic.php:168
 msgid "Notify me of follow-up replies via email"
-msgstr "Abonnement &agrave; ce sujet avec envoi d'un mail en cas de r&eacute;ponse"
+msgstr "Me prévenir des réponses par e-mail."
 
 #: templates/default/bbpress/form-reply.php:114
 #: templates/default/bbpress/form-topic.php:184
 msgid "Keep a log of this edit:"
-msgstr "Journaliser cette modification:"
+msgstr "Journaliser cette modification :"
 
 #: templates/default/bbpress/form-reply.php:118
 #: templates/default/bbpress/form-topic.php:188
@@ -2587,7 +2587,7 @@ msgstr "Compte"
 
 #: templates/default/bbpress/form-user-edit.php:115
 msgid "There is a pending email address change to <code>%1$s</code>. <a href=\"%2$s\">Cancel</a>"
-msgstr "Il y a un changement d’adresse email en attente d’ <code>%1$s</code>. <a href=\"%2$s\">Annuler</a>"
+msgstr "Il y a un changement d’adresse e-mail en attente d’ <code>%1$s</code>. <a href=\"%2$s\">Annuler</a>"
 
 #: templates/default/bbpress/form-user-edit.php:124
 msgid "New Password"
@@ -2632,7 +2632,7 @@ msgstr "Rester connect&eacute;"
 
 #: templates/default/bbpress/form-user-lost-pass.php:18
 msgid "Username or Email"
-msgstr "Nom d&#39;utilisateur ou Email"
+msgstr "Nom d&#39;utilisateur ou e-mail"
 
 #: templates/default/bbpress/form-user-lost-pass.php:27
 msgid "Reset My Password"
@@ -2664,7 +2664,7 @@ msgstr "Forum :"
 
 #: templates/default/bbpress/loop-search-reply.php:24
 msgid "In reply to: "
-msgstr "En réponse à:"
+msgstr "En réponse à :"
 
 #: templates/default/bbpress/loop-search-topic.php:26
 msgid "Topic: "
@@ -2685,7 +2685,7 @@ msgstr "Résultats de la recherche"
 
 #: templates/default/bbpress/loop-single-reply.php:21
 msgid "in reply to: "
-msgstr "en r&eacute;ponse &agrave; :"
+msgstr "en réponse à :"
 
 #: templates/default/bbpress/loop-single-topic.php:60
 msgid "Started by: %1$s"
@@ -3521,7 +3521,7 @@ msgstr "Date"
 #: templates/default/bbpress/loop-forums.php:22
 #: templates/default/bbpress/loop-topics.php:22
 msgid "Freshness"
-msgstr "Fraîcheur"
+msgstr "Dernier message"
 
 #: includes/admin/forums.php:463 includes/forums/template.php:601
 msgid "No Topics"
@@ -3714,7 +3714,7 @@ msgstr "Nom"
 
 #: includes/admin/metaboxes.php:502
 msgid "Email:"
-msgstr "Email"
+msgstr "E-mail :"
 
 #: includes/admin/metaboxes.php:503
 #: templates/default/bbpress/form-user-edit.php:103
@@ -3912,7 +3912,7 @@ msgstr "Non spam"
 
 #: includes/admin/replies.php:738
 msgid "Mark this reply as spam"
-msgstr "Marquer cette r&eacute;ponse comme spam"
+msgstr "Marquer cette réponse comme indésirable"
 
 #: includes/admin/replies.php:738 includes/admin/topics.php:809
 #: includes/replies/template.php:2105 includes/topics/template.php:2872
@@ -3950,7 +3950,7 @@ msgstr "Supprimer définitivement"
 
 #: includes/admin/replies.php:779 includes/admin/topics.php:849
 msgid "Empty Spam"
-msgstr "Spam vide"
+msgstr "Supprimer les indésirables"
 
 #: includes/admin/replies.php:789 includes/admin/topics.php:859
 msgid "In all forums"
@@ -4529,7 +4529,7 @@ msgstr "bbPress garde un suivi des relations entre forums, sujets, r&eacute;pons
 
 #: includes/admin/tools.php:37
 msgid "Some of these tools create substantial database overhead. Avoid running more than 1 repair job at a time."
-msgstr "Certains de ces outils créent une base de données substantielle en en-tête. évitez de lancer plus d’une réparation à la fois."
+msgstr "Certains de ces outils créent une base de données substantielle en en-tête. Evitez de lancer plus d’une réparation à la fois."
 
 #: includes/admin/tools.php:43
 msgid "Relationships to Repair:"
@@ -4553,7 +4553,7 @@ msgstr "Recalculer le forum parent pour chaque message"
 
 #: includes/admin/tools.php:163
 msgid "Recalculate private and hidden forums"
-msgstr "Recalculer les forums priv&eacute;s et cach&eacute;s"
+msgstr "Recalculer les forums privés et cachés"
 
 #: includes/admin/tools.php:164
 msgid "Recalculate last activity in each topic and forum"

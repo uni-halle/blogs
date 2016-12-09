@@ -2,13 +2,21 @@
 # This file is distributed under the same license as the Graphene package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-07-20 01:08:41+0000\n"
+"PO-Revision-Date: 2016-06-09 15:51:45+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/1.0-alpha-1100\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
 "Project-Id-Version: Graphene\n"
+
+#. Theme Name of the plugin/theme
+msgid "Graphene"
+msgstr "Graphene"
+
+#. Description of the plugin/theme
+msgid "We believe that every theme should facilitate creative writing, not hinder it. We also believe that each site should have the opportunity to be unique. Since the theme's inception, we have received countless suggestions and requests on features that really matter. We listened, and we delivered. Here's a theme that's packed full of features that you need, yet far from being overwhelming. Here's a theme that's easy to use for beginners, yet well documented and powerful enough to be endlessly customisable to users with even only moderate technical skills. Here's a theme that's available in more than  30 languages and is backed with active community support, where questions, ideas and suggestions are always welcomed. And best of all, here's a theme that's completely free. Here's a theme that's yours to make it special. PS: Mobile-optimised option is available."
+msgstr "Wir glauben, dass jedes Theme kreatives Schreiben fördern, und nicht erschweren sollte. Wir glauben auch, dass jede Website die Möglichkeit haben sollte, einzigartig zu sein. Seit Veröffentlichung des Themes haben wir unzählige Empfehlungen und Anforderungen für Funktionen bekommen, die die Nutzer wirklich interessieren. Wir haben zugehört, uns wir haben geliefert. Hier ist ein Theme, das mit benötigten Funktionen gespickt ist, ohne dabei überladen zu sein.Hier ist ein Theme, das auch für Anfänger einfach zu verwenden ist, gut dokumentiert und mächtig genug, um auch von Benutzern mit nur geringen technischen Kenntnissen individuell angepasst zu werden. Hier ist ein Theme, das in mehr als 30 Sprachen verfügbar ist und von einer aktiven Community unterstützt wird, in der Fragen, Ideen und Vorschläger jederzeit willkommen sind. Und das Beste: dieses Theme ist komplett frei. Es ist an Dir, es zu etwas Besonderen zu machen. PS: Mobile Optionen sind ebenfalls verfügbar."
 
 #. #-#-#-#-#  graphene.pot (Graphene 1.9.4.2)  #-#-#-#-#
 #. translators: For RTL languages, translate "left" as "right"
@@ -321,6 +329,14 @@ msgstr "Keine weiteren Einträge zum Abrufen vorhanden"
 #: includes/theme-scripts.php:140
 msgid "No more comments to fetch"
 msgstr "Keine weiteren Kommentare vorhanden"
+
+#: includes/theme-scripts.php:118 includes/theme-scripts.php:122
+msgid "Fetching %1$s more item from %2$s left ..."
+msgstr "Abrufen von %1$s mehr Element von %2$s verbleibend..."
+
+#: includes/theme-scripts.php:131 includes/theme-scripts.php:135
+msgid "Fetching %1$s more top level comment from %2$s left ..."
+msgstr "Abrufen von %1$s weiteren Kommentar der obersten Ebene von %2$s verbleibend..."
 
 #: includes/theme-panes.php:107
 msgid "Read more"
@@ -2637,3 +2653,15 @@ msgstr "Suche nach den Begriffen <strong>%s</strong> ..."
 #: admin/ajax-handler.php:9 admin/ajax-handler.php:36
 msgid "Sorry, but you don't have the necessary permission to modify theme options."
 msgstr "Entschuldigung, aber Sie haben nicht die notwendige Erlaubnis, um die Theme-Einstellungen zu verändern."
+
+#. Theme URI of the plugin/theme
+msgid "http://www.graphene-theme.com/"
+msgstr "http://www.graphene-theme.com/"
+
+#. Author of the plugin/theme
+msgid "Syahir Hakim"
+msgstr "Syahir Hakim"
+
+#. Author URI of the plugin/theme
+msgid "http://www.khairul-syahir.com/"
+msgstr "http://www.khairul-syahir.com/"

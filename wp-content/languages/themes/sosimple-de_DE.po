@@ -1,0 +1,292 @@
+# Translation of SoSimple in German
+# This file is distributed under the same license as the SoSimple package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-09-11 15:57:35+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: SoSimple\n"
+
+#. Theme Name of the plugin/theme
+msgid "SoSimple"
+msgstr "SoSimple"
+
+#. Description of the plugin/theme
+msgid "A clean, responsive simple theme for simple websites."
+msgstr "Ein sauberes, responsives und einfaches Theme für einfache Websites."
+
+#: inc/customizer.php:193
+msgid "Fonts"
+msgstr "Schriften"
+
+#: inc/customizer.php:206
+msgid "Header Font"
+msgstr "Schriftart für Überschriften"
+
+#: inc/customizer.php:222
+msgid "Body Font"
+msgstr "Grundschrift"
+
+#. Template Name of the plugin/theme
+msgid "Full Width Page"
+msgstr "Seite in voller Breite"
+
+#: template-parts/content-page.php:23 template-parts/content-single.php:27
+#: template-parts/content.php:64
+msgid "Pages:"
+msgstr "Seiten:"
+
+#: template-parts/content-none.php:29
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Es scheint, dass wir dir nicht weiterhelfen können. Möglicherweise hilft die Suche."
+
+#: template-parts/content-none.php:24
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Es gibt keine passenden Suchergebnisse. Bitte versuche es mit anderen Suchbegriffen."
+
+#: template-parts/content-none.php:20
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Bist du bereit deinen ersten Beitrag zu veröffentlichen? <a href=\"%1$s\">Hier geht es los</a>."
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr "Nichts gefunden"
+
+#: search.php:16
+msgid "Search Results for: %s"
+msgstr "Suchresultat für: %s"
+
+#: inc/template-tags.php:181
+msgid "Archives"
+msgstr "Archiv"
+
+#. translators: 1: Taxonomy singular name, 2: Current taxonomy term
+#: inc/template-tags.php:179
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
+
+#: inc/template-tags.php:175
+msgid "Archives: %s"
+msgstr "Archive: %s"
+
+#: inc/template-tags.php:172
+msgctxt "post format archive title"
+msgid "Chats"
+msgstr "Chats"
+
+#: inc/template-tags.php:170
+msgctxt "post format archive title"
+msgid "Audio"
+msgstr "Audio"
+
+#: inc/template-tags.php:168
+msgctxt "post format archive title"
+msgid "Statuses"
+msgstr "Status"
+
+#: inc/template-tags.php:166
+msgctxt "post format archive title"
+msgid "Links"
+msgstr "Links"
+
+#: inc/template-tags.php:164
+msgctxt "post format archive title"
+msgid "Quotes"
+msgstr "Zitate"
+
+#: inc/template-tags.php:162
+msgctxt "post format archive title"
+msgid "Videos"
+msgstr "Videos"
+
+#: inc/template-tags.php:160
+msgctxt "post format archive title"
+msgid "Images"
+msgstr "Bilder"
+
+#: inc/template-tags.php:158
+msgctxt "post format archive title"
+msgid "Galleries"
+msgstr "Galerien"
+
+#: inc/template-tags.php:156
+msgctxt "post format archive title"
+msgid "Asides"
+msgstr "Kurzmitteilungen"
+
+#: inc/template-tags.php:153
+msgctxt "daily archives date format"
+msgid "F j, Y"
+msgstr "j. F Y"
+
+#: inc/template-tags.php:153
+msgid "Day: %s"
+msgstr "Tag: %s"
+
+#: inc/template-tags.php:151
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "F Y"
+
+#: inc/template-tags.php:151
+msgid "Month: %s"
+msgstr "Monat: %s"
+
+#: inc/template-tags.php:149
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y"
+
+#: inc/template-tags.php:149
+msgid "Year: %s"
+msgstr "Jahr: %s"
+
+#: inc/template-tags.php:147
+msgid "Author: %s"
+msgstr "Autor: %s"
+
+#: inc/template-tags.php:145
+msgid "Tag: %s"
+msgstr "Schlagwort: %s"
+
+#: inc/template-tags.php:143
+msgid "Category: %s"
+msgstr "Kategorie: %s"
+
+#: inc/template-tags.php:126 template-parts/content-page.php:30
+msgid "Edit"
+msgstr "edit"
+
+#: inc/template-tags.php:122
+msgid " % Comments"
+msgstr "% Kommentare"
+
+#: inc/template-tags.php:122
+msgid " 1 Comment"
+msgstr "1 Kommentar"
+
+#: inc/template-tags.php:122
+msgid "Leave a comment"
+msgstr "Schreibe einen Kommentar"
+
+#: inc/template-tags.php:116
+msgid "Tagged %1$s"
+msgstr "Markiert mit %1$s"
+
+#: inc/template-tags.php:110
+msgid "Posted in %1$s"
+msgstr "Veröffentlicht in %1$s"
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:108 inc/template-tags.php:114
+msgid ", "
+msgstr ", "
+
+#: inc/template-tags.php:86
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr "Geschrieben am %s"
+
+#: inc/template-tags.php:91
+msgctxt "post author"
+msgid "by %s"
+msgstr "von %s"
+
+#: inc/template-tags.php:56
+msgid "Post navigation"
+msgstr "Beitragsnavigation"
+
+#: inc/template-tags.php:31
+msgid "Newer posts"
+msgstr "Neuere Beiträge"
+
+#: inc/template-tags.php:27
+msgid "Older posts"
+msgstr "Ältere Beiträge"
+
+#: inc/template-tags.php:23
+msgid "Posts navigation"
+msgstr "Beitragsnavigation"
+
+#: inc/extras.php:52
+msgid "Page %s"
+msgstr "Seite %s"
+
+#: header.php:23
+msgid "Skip to content"
+msgstr "Zum Inhalt springen"
+
+#: functions.php:105
+msgid "Sidebar"
+msgstr "Seitenleiste"
+
+#: functions.php:48 header.php:43
+msgid "Primary Menu"
+msgstr "Hauptmenü"
+
+#: footer.php:19
+msgid "Theme: %1$s by %2$s."
+msgstr "Theme: %1$s von %2$s."
+
+#: footer.php:16
+msgid "Proudly powered by %s"
+msgstr "Stolz präsentiert von %s"
+
+#: footer.php:16
+msgid "http://wordpress.org/"
+msgstr "https://wordpress.org/"
+
+#: comments.php:75
+msgid "Comments are closed."
+msgstr "Kommentarfunktion geschlossen"
+
+#: comments.php:42 comments.php:63
+msgid "Newer Comments"
+msgstr "Neuere Kommentare"
+
+#: comments.php:41 comments.php:62
+msgid "Older Comments"
+msgstr "Ältere Kommentare"
+
+#: comments.php:38 comments.php:59
+msgid "Comment navigation"
+msgstr "Kommentarnavigation"
+
+#: comments.php:29
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "Ein Gedanke zu &bdquo;%2$s&ldquo;"
+msgstr[1] "%1$s Gedanken zu &bdquo;%2$s&ldquo;"
+
+#. translators: %1$s: smiley
+#: 404.php:44
+msgid "Try looking in the monthly archives. %1$s"
+msgstr "Versuche es in der monatlichen Archivübersicht. %1$s"
+
+#: 404.php:27
+msgid "Most Used Categories"
+msgstr "Am meisten verwendetete Kategorien"
+
+#: 404.php:19
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr "Es wurde nichts gefunden. Versuche es mit einem der folgenden Links oder der Suche."
+
+#: 404.php:15
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Diese Seite konnte leider nicht gefunden werden."
+
+#. Theme URI of the plugin/theme
+msgid "https://wordpress.org/themes/sosimple/"
+msgstr "https://wordpress.org/themes/sosimple/"
+
+#. Author of the plugin/theme
+msgid "fernando villamor jr"
+msgstr "fernando villamor jr"
+
+#. Author URI of the plugin/theme
+msgid "http://fernandovillamorjr.com"
+msgstr "http://fernandovillamorjr.com"

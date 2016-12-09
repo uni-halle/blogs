@@ -1,0 +1,61 @@
+# Translation of Development (trunk) in Japanese
+# This file is distributed under the same license as the Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-05-26 02:55:33+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Development (trunk)\n"
+
+#: includes/admin.php:21
+msgid "Add CSS"
+msgstr "CSS の追加"
+
+#: includes/admin.php:98
+msgid "/* Enter Your Custom CSS Here */"
+msgstr "/* カスタム CSS をここに入力してください */"
+
+#. #-#-#-#-#  tmp-simple-custom-css.pot (Simple Custom CSS 3.3)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: includes/admin.php:74 includes/admin.php:104
+msgid "Simple Custom CSS"
+msgstr "Simple Custom CSS"
+
+#: includes/admin.php:74
+msgid "Custom CSS"
+msgstr "カスタム CSS"
+
+#: includes/admin.php:101
+msgid "Custom CSS updated successfully."
+msgstr "カスタム CSS の更新に成功しました。"
+
+#: includes/admin.php:109
+msgid "Simple Custom CSS allows you to add your own styles or override the default CSS of a plugin or theme."
+msgstr "Simple Custom CSS を使えば、プラグインやテーマのデフォルト CSS に独自のスタイルを追加したり、デフォルト CSS を上書きしたりできます。"
+
+#: includes/admin.php:110
+msgid "To use, enter your custom CSS, then click \"Update Custom CSS\".  It's that simple!"
+msgstr "使うには、カスタム CSS を入力し「カスタム CSS の更新」をクリックするだけ。簡単です !"
+
+#: includes/admin.php:111 includes/admin.php:121
+msgid "Update Custom CSS"
+msgstr "カスタム CSS の更新"
+
+#. Plugin URI of the plugin/theme
+msgid "http://johnregan3.github.io/simple-custom-css"
+msgstr "http://johnregan3.github.io/simple-custom-css"
+
+#. Description of the plugin/theme
+msgid "The simple, solid way to add custom CSS to your WordPress website. Simple Custom CSS allows you to add your own styles or override the default CSS of a plugin or theme."
+msgstr "WordPress サイトにカスタム CSS を追加する、簡単で安定した方法です。Simple Custom CSS を使えば、プラグインやテーマのデフォルト CSS に独自のスタイルを追加したり、デフォルト CSS を上書きしたりできます。"
+
+#. Author of the plugin/theme
+msgid "John Regan, Danny Van Kooten"
+msgstr "John Regan, Danny Van Kooten"
+
+#. Author URI of the plugin/theme
+msgid "http://johnregan3.me"
+msgstr "http://johnregan3.me"

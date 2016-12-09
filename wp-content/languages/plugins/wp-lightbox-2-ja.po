@@ -1,0 +1,139 @@
+# Translation of Development (trunk) in Japanese
+# This file is distributed under the same license as the Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-06-01 02:50:08+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Development (trunk)\n"
+
+#: includes/install_database.php:67
+msgid "next image"
+msgstr "次の画像"
+
+#: includes/install_database.php:68
+msgid "previous image"
+msgstr "前の画像"
+
+#: includes/install_database.php:74
+msgid "close image gallery"
+msgstr "画像ギャラリーを閉じる"
+
+#: wp-lightbox-2.php:52
+msgid "Settings"
+msgstr "設定"
+
+#: wp-lightbox-2.php:130
+msgid "&laquo; Previous"
+msgstr "&laquo; 前へ"
+
+#: wp-lightbox-2.php:131
+msgid "Next &raquo;"
+msgstr "次へ &raquo;"
+
+#: wp-lightbox-2.php:133
+msgid "Image "
+msgstr "画像"
+
+#: wp-lightbox-2.php:134
+msgid " of "
+msgstr " / "
+
+#: wp-lightbox-2.php:135
+msgid "Download"
+msgstr "ダウンロード"
+
+#: wp-lightbox-2.php:186
+msgid "Cheatin&#8217; uh?"
+msgstr "間違えましたか ?"
+
+#: wp-lightbox-2.php:201
+msgid "Let the plugin add necessary html to image links"
+msgstr "画像リンクに必要な HTML をプラグインに追加させる"
+
+#: wp-lightbox-2.php:201
+msgid "Auto-lightbox image links"
+msgstr "ライトボックス画像への自動リンク"
+
+#: wp-lightbox-2.php:208
+msgid "Note: this will disable the nofollow-attribute of comment links, that otherwise interfere with the lightbox."
+msgstr "注: ライトボックスと干渉するコメントリンクの nofollow 属性を無効にします。"
+
+#: wp-lightbox-2.php:208
+msgid "Enable lightbox in comments (disables <a href=\"http://codex.wordpress.org/Nofollow\">the nofollow attribute!</a>)"
+msgstr "コメントでライトボックスを有効化 (<a href=\"http://codex.wordpress.org/Nofollow\">nofollow 属性</a>が無効化されます)"
+
+#: wp-lightbox-2.php:215
+msgid "Show download link"
+msgstr "ダウンロードリンクを表示"
+
+#: wp-lightbox-2.php:219
+msgid ""
+"_blank: open the image in a new window or tabr\n"
+"_self: open the image in the same frame as it was clicked (default)r\n"
+"_parent: open the image in the parent framesetr\n"
+"_top: open the image in the full body of the window"
+msgstr ""
+"_blank: 新しいウィンドウまたはタブで画像を開く\n"
+"_self: クリックされたのと同じフレームで画像を開く (デフォルト)\n"
+"_parent: 親フレームセットで画像を開く\n"
+"_top: ウィンドウのフルボディで画像を開く"
+
+#: wp-lightbox-2.php:222
+msgid "Target for download link:"
+msgstr "ダウンロードリンクのターゲット:"
+
+#: wp-lightbox-2.php:236
+msgid "Show image info on top"
+msgstr "上に画像情報を表示"
+
+#: wp-lightbox-2.php:244
+msgid "Shrink large images to fit smaller screens"
+msgstr "小さい画面に合うように大きい画像を縮小する"
+
+#: wp-lightbox-2.php:249
+msgid "Keep a distance between the image and the screen edges."
+msgstr "画像と画面の端の間の距離を保持する。"
+
+#: wp-lightbox-2.php:249
+msgid "Minimum margin to screen edge (default: 0)"
+msgstr "画面端余白の最小値 (デフォルト: 0)"
+
+#: wp-lightbox-2.php:256
+msgid "Animation duration (in milliseconds) "
+msgstr "アニメーション速度 (ミリ秒) "
+
+#: wp-lightbox-2.php:262
+msgid "Help text (default: none) "
+msgstr "ヘルプテキスト (デフォルト: なし)"
+
+#: wp-lightbox-2.php:266
+msgid "Browse images with your keyboard: Arrows or P(revious)/N(ext) and X/C/ESC for close."
+msgstr "キーボードで画像を表示: 矢印または P(revious)/N(ext)、X/C/ESC で閉じる。"
+
+#: wp-lightbox-2.php:268
+msgid "Save Changes"
+msgstr "変更を保存"
+
+#. Plugin Name of the plugin/theme
+msgid "WP Lightbox 2"
+msgstr "WP Lightbox 2"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wpdevart.com/wordpress-lightbox-plugin"
+msgstr "http://wpdevart.com/wordpress-lightbox-plugin"
+
+#. Description of the plugin/theme
+msgid "WP Lightbox 2 is awesome tool for adding responsive lightbox (overlay) effect for images and also create lightbox for photo albums/galleries on your WordPress blog. WordPress Lightbox is one of the most useful plugins for your website."
+msgstr "WP Lightbox 2 は、WordPress ブログで画像にレスポンシブ・ライトボックス (オーバーレイ) 効果を追加するためのツールです。また、フォトアルバム/ギャラリーのライトボックスも作成できます。WordPress Lightbox はサイトで使えるプラグインのうち、最も便利なもののひとつです。"
+
+#. Author of the plugin/theme
+msgid "Syed Balkhi"
+msgstr "Syed Balkhi"
+
+#. Author URI of the plugin/theme
+msgid "http://syedbalkhi.com"
+msgstr "http://syedbalkhi.com"
