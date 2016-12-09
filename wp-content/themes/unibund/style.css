@@ -1,0 +1,494 @@
+/*
+ Theme Name:   Unibund
+ Description:  Unibund basierend auf twentysixteen
+ Author:       Fa. Timespin; Gunther Schöbinger
+ Author URI:   http://timespin.de
+ Template:     twentysixteen
+*/
+
+
+
+/***********************
+ *
+ *
+ * 		FONT
+ *
+ *
+ */
+
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(apps/materialicons/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(apps/materialicons/MaterialIcons-Regular.woff2) format('woff2'),
+    url(apps/materialicons/MaterialIcons-Regular.woff) format('woff'),
+    url(apps/materialicons/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+.text-icons {
+    height: 18px;
+    margin-top: 0px;
+    display: inline-block;
+    /*position: absolute;*/
+    /*padding: 0 4px;*/
+}
+a .text-icons {
+    color: #666;
+}
+
+
+/***********************
+ *
+ *
+ * 		RESET
+ *
+ *
+ */
+
+
+/* -- page -- */
+body:not(.custom-background-image):before,
+body:not(.custom-background-image):after {
+    display: none;
+}
+a {
+    color: #333;
+}
+
+/* -- header -- */
+.site-header {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.no-sidebar .entry-header {
+    margin-left: 0;
+    margin-right: 0;
+}
+.no-sidebar .post-thumbnail img {
+    margin: 0;
+}
+.site-main {
+    margin-bottom: 0;
+}
+
+
+/***********************
+ *
+ *
+ * 		MAIN
+ *
+ *
+ */
+
+
+body {
+    font-family: 'Rubik', sans-serif;
+}
+body.page-template-page-start {
+    background: url('img/bg_body.png') top center no-repeat fixed;
+}
+
+
+.site {
+    margin-top: 16px;
+    background: none;
+}
+
+h1, h1.entry-title {
+    color: #3259a5;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 1em;
+    margin-bottom: .4em;
+}
+h2 {
+    font-size: 24px;
+    font-weight: 300;
+}
+
+h2.entry-title {
+    font-size: 24px;
+    font-weight: 300;
+}
+
+section {
+    width: 100%;
+    clear: both;
+}
+
+.clearfix {
+    clear: both;
+    width: 100%;
+}
+
+.entry-title a:hover, .entry-title a:focus {
+    color: #666;
+}
+
+
+/***********************
+ *
+ *
+ * 		HEADER
+ *
+ *
+ */
+
+#masthead {
+    padding-bottom: 75px;
+}
+
+
+.site-branding, .site-header-menu, .header-image {
+    margin-top: 1.00em;
+    margin-bottom: 1.00em;
+}
+
+.site-header-main {
+    clear: both;
+}
+.language-chooser {
+    margin: 0;
+    padding: 0;
+}
+.header-widget-2 {
+    float: right;
+}
+
+.custom-logo {
+    margin-top: -25px;
+}
+.site-branding {
+    overflow: visible;
+}
+.search-form input {
+    padding: 5px 0.4375em;
+    font-weight: normal;
+    font-size: 14px;
+}
+.search-submit {
+    background: #fff;
+    color: #000;
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+    border-right: 1px solid #efefef;
+}
+.search-submit:hover {
+    background: #efefef;
+}
+.search-submit:before {
+    font-size: 18px;
+    line-height: 30px;
+}
+::-webkit-input-placeholder {
+    color: #000;
+}
+::-moz-placeholder {
+    color: #000;
+}
+:-ms-input-placeholder {
+    color: #000;
+}
+:-moz-placeholder {
+    color: #000;
+}
+input[type="search"].search-field {
+    border-top: 1px solid #efefef;
+    border-left: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+    border-right: none;
+    background: #fff;
+}
+
+
+
+/***********************
+ *
+ *
+ * 		CONTENT
+ *
+ *
+ */
+
+.site-main {
+    padding-left: 30%;
+}
+.site-text {
+    text-shadow: 0px 0px 12px rgba(0, 0, 0, 1);
+}
+
+/***********************
+ *
+ *
+ * 		LIST-STYLES
+ *
+ *
+ */
+
+.p-list-box {
+    width: 33%;
+    padding: 0 25px;
+    float: left;
+}
+.p-list-box .post-thumbnail {
+    margin-bottom: 1em;
+}
+.p-list-box img {
+    width: 300px;
+    border-radius: 50%;
+}
+.p-list-box h2 {
+    font-size: 18px;
+    text-align: center;
+}
+.p-list-box h2 a {
+    color: #666;
+}
+
+/***********************
+ *
+ *
+ * 		SINGLE-PAGE
+ *
+ *
+ */
+.single-page {
+    margin-left: -30%;
+}
+
+
+/* single image + headline */
+.single-table {
+    display: table;
+}
+.single-table-row {
+    display: table-row;
+}
+.single-table .sp-image {
+    display: table-cell;
+    width: 27%;
+    padding: 0;
+    padding: 0;
+}
+.single-table .sp-headline {
+    display: table-cell;
+    text-align: left;
+    vertical-align: bottom;
+    width: 66%;
+}
+.sp-image {
+    padding: 0;
+}
+.sp-image .post-thumbnail {
+    margin: 0;
+}
+.single-page .post-thumbnail img {
+    border-radius: 50%;
+}
+.single-page .sp-headline {
+    overflow: hidden;
+    padding-left: 3%;
+}
+
+.single-page .sp-headline h1.entry-title {
+    hyphens: auto;
+    display: inline-block;
+    color: #666;
+    line-height: 1.2em;
+}
+.single-page .entry-header {
+    display: table-cell;
+    vertical-align: bottom;
+}
+.single-content {
+    margin-top: 30px;
+    margin-left: 22%;
+}
+.single-content h2 {
+    color: #3259a5;
+}
+.single-content p img {
+    border-radius: 50%;
+}
+
+/*-- quick facts --*/
+.quickfact {
+    float: left;
+    width: 200px;
+    height: 200px;
+    background: #f2f2f2;
+    border-radius: 50%;
+    text-align: center;
+    list-style-type: none;
+    padding-top: 55px;
+    font-weight: 500;
+}
+.quickfact li.qf-header {
+    color: #666;
+}
+.quickfact li.qf-content {
+    font-size: 30px;
+    color: #3259a5;
+}
+
+/*-- list elements --*/
+.contenttable {
+    border: 0;
+}
+.contenttable td {
+    border: 0;
+    border-bottom: 1px solid #009cb4;
+}
+.contenttable a {
+    color: #a5c412;
+}
+.contenttable img {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/***********************
+ *
+ *
+ * 		NEWS-PAGE
+ *
+ *
+ */
+
+.page-template-page-news .news-box .news-image {
+    width: 15%;
+}
+
+
+/***********************
+ *
+ *
+ * 		FOOTER
+ *
+ *
+ */
+
+.bottom1 {
+    padding:  25px 0;
+    background: #ccc;
+}
+.bottom1 .logo {
+    float: left;
+    width: 33%;
+}
+.bottom2 {
+    padding: 30px 0 120px 0;
+    background: #7f7f7f url('img/bg_footer.png') top center no-repeat;
+}
+
+
+
+/**************************
+*
+*       RESPONSIVE
+*
+**************************/
+
+
+
+/*------------ general mobile ----------------*/
+@media (max-width: 1110px) {
+
+    #site-header-menu {
+        margin-right: 0;
+    }
+    .header-widget-container {
+        width: 100%;
+    }
+    .header-widget-1 {
+        width: 30%;
+        min-width: 140px;
+        float: right;
+    }
+}
+
+/*------------ level 3 ----------------*/
+@media (min-width: 910px) and (max-width: 1110px) {
+
+
+}
+
+/*------------ level 2 ----------------*/
+@media (min-width: 769px) and (max-width: 909px) {
+
+
+
+}
+
+
+/*------------ level 1 ----------------*/
+@media (max-width: 768px) {
+
+    body.page-template-page-start {
+        background: none;
+    }
+    #masthead {
+        padding-bottom: 40px;
+    }
+    .content-area h1,.content-area h1.entry-title {
+        font-size: 24px;
+    }
+    .content-area .p-list-box img {
+        width: 60%;
+    }
+
+    .bottom1, .bottom2 {
+        padding: 25px 7.6923%;
+    }
+    .bottom2 {
+        display: none;
+    }
+    .content-area {
+        padding: 0 7.6923%;
+    }
+    .p-list-box {
+        width: 100%;
+    }
+    .page-template-page-news .news-box .news-image {
+        width: 100%;
+    }
+    .p-list-box {
+        border-bottom: 1px solid #999;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+
+}
+
+
