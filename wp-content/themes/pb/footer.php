@@ -1,34 +1,39 @@
-			<footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+  </div>
+  <!-- /.content-wrapper -->
 
-				<div id="inner-footer" class="wrap cf">
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="pull-right hidden-xs">
+      Projektdatenbank des <a href="http://llz.uni-halle.de" target="extern">Zentrums für multimediales Lehren und Lernen</a>.
+    </div>
+    <!-- Default to the left -->
+    &nbsp;
+  </footer>
 
-					<nav role="navigation">
-						<?php wp_nav_menu(array(
-    					'container' => 'div',                           // enter '' to remove nav container (just make sure .footer-links in _base.scss isn't wrapping)
-    					'container_class' => 'footer-links cf',         // class of container (should you choose to use it)
-    					'menu' => __( 'Footer Links', 'bonestheme' ),   // nav name
-    					'menu_class' => 'nav footer-nav cf',            // adding custom nav class
-    					'theme_location' => 'footer-links',             // where it's located in the theme
-    					'before' => '',                                 // before the menu
-    					'after' => '',                                  // after the menu
-    					'link_before' => '',                            // before each link
-    					'link_after' => '',                             // after each link
-    					'depth' => 0,                                   // limit the depth of the nav
-    					'fallback_cb' => 'bones_footer_links_fallback'  // fallback function
-						)); ?>
-					</nav>
+  <?php // get_sidebar(); ?>
 
-					<p class="source-org copyright">&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>.</p>
+  </div>
+  <!-- ./wrapper -->
 
-				</div>
+  <!-- REQUIRED JS SCRIPTS -->
 
-			</footer>
+  <!-- jQuery 2.2.0 -->
+  <script src="<?php bloginfo('template_url'); ?>/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <!-- Bootstrap 3.3.6 -->
+  <script src="<?php bloginfo('template_url'); ?>/bootstrap/js/bootstrap.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="<?php bloginfo('template_url'); ?>/dist/js/app.min.js"></script>
 
-		</div>
+  <script src="<?php bloginfo('template_url'); ?>/addon/chart-2.1.6.min.js"></script>
 
-		<?php // all js scripts are loaded in library/bones.php ?>
-		<?php wp_footer(); ?>
+  <script src="<?php bloginfo('template_url'); ?>/addon/randomColor.js"></script>
 
-	</body>
-
-</html> <!-- end of site. what a ride! -->
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+   Both of these plugins are recommended to enhance the
+   user experience. Slimscroll is required when using the
+   fixed layout. -->
+  
+</body>
+</html>
