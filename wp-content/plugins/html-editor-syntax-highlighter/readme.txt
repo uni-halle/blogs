@@ -1,27 +1,31 @@
 === HTML Editor Syntax Highlighter ===
-Contributors: nixdns
+Contributors: nixdns, arniebradfo, rraub, collinprice,
 Donate link: https://www.paypal.me/mukhortov/5
-Tags: html editor, syntax highlighter, plugin editor, syntax, highlighting, syntax highlighting, text editor, editor, text editor syntax, editor, editor syntax
-Requires at least: 3.3
-Tested up to: 4.3.1
-Stable tag: 1.6.9
+Tags: editor, html editor, text editor, post editor, syntax, highlighting, highlighter, syntax highlighting, syntax highlighter, codemirror, code, code highlighter, code coloring
+Requires at least: 4.0.11
+Tested up to: 4.5.2
+Stable tag: 1.7.2
+License: GPL-2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Add syntax highlighting to the HTML editor.
+Add syntax highlighting to the HTML editor using Codemirror.js
 
 == Description ==
 
- Add syntax highlighting to the Post/Page HTML editor.
+Add syntax highlighting in the WordPress Post & Page HTML/text editor using Codemirror.js
 
 = Features =
 
 * Syntax highlighting in the Post/Page HTML editor
+* _NEW:_ Syntax highlighting for WordPress shortcodes
 * Save your posts and pages pressing Ctrl+S (Cmd+S on Mac)
 * Restore cursor position after page is reloaded
-* Light and Dark editor colour themes
-* New fullscreen mode.
-* Toggle fullscreen mode with F11/Esc hotkeys
+* _NEW:_ Huge Selection of themes
+* Fullscreen mode: toggle with F11/Esc hotkeys
 
 If you like the plugin, please [donate](https://www.paypal.me/mukhortov/5) and leave a review :)
+
+If you would like to contribute to this plugin, view the [github repo](https://github.com/mukhortov/HESH-WordPress-Plugin).
 
 == Installation ==
 
@@ -29,6 +33,35 @@ If you like the plugin, please [donate](https://www.paypal.me/mukhortov/5) and l
 2. Activate the plugin on the 'Plugins' page
 
 == Changelog ==
+
+= 1.7.2 =
+* fixed bug: code mirror not initializing properly when new user tries to edit post for the first time
+* fixed bug: CodeMirror no longer trying to load on "All Post" and "All Pages"
+* fixed bug: Font and theme were reset to default when switching to the visual editor and back
+
+= 1.7.1 =
+* fixed bug: return key would create two new lines and ignore indent
+* fixed bug: wp native "Add Media" button was not working
+* added version string to .css and .js resources for cache-busting purposes
+
+= 1.7.0 =
+* Ctrl-S / Cmd-S saving will now select "Save Draft" if the post has not been published yet
+* Switched to an [npm](https://www.npmjs.com/) and [grunt.js](http://gruntjs.com/) based build so new versions of CodeMirror can be applied easier
+* Updated CodeMirror to its latest version
+* Fixed FireFox bug: `<select>` dropdown would not display due to `::active` state `transform` property
+* Fixed bug: toolbar covering text at small screen width
+* Fixed bug: `switchEditors is undefined`
+* Updated Css for wp 4.5
+* Added all available CodeMirror themes
+* Added syntax highlighting:
+	- for WordPress shortcodes
+	- for `<!--more-->` tags and their variants
+	- _NEW_ CodeMirror modes: `shortcode.js` & `wordpresspost.js`
+* Now calling `hesh.js` in an anonymous wrapper so it won't pollute the global namespace
+* Now initializing `hesh.js` in an async compliant way
+* Refactored php to enqueue javascript in the WordPress friendly way
+* Tested with WordPress 4.5.2
+* Tested in all modern desktop browsers on OSX and Windows 10
 
 = 1.6.9 =
 * Fixed issues with switching editor modes in WP 4.3
@@ -58,11 +91,11 @@ If you like the plugin, please [donate](https://www.paypal.me/mukhortov/5) and l
 = 1.6.0 =
 * You can change font size in the editor
 * Fixed issue with restoring cursor position
-* Updated CodeMirror library 
+* Updated CodeMirror library
 * Some minor improvements
 
 = 1.5.0 =
-* Updated CodeMirror library 
+* Updated CodeMirror library
 * Some minor improvements
 
 = 1.4.8 =
@@ -98,11 +131,11 @@ If you like the plugin, please [donate](https://www.paypal.me/mukhortov/5) and l
 = 1.4.0 =
 * New fullscreen mode
 * Remembers tab state
-* Editor resize handler 
+* Editor resize handler
 * Code refactoring and minification for better loading performance
 
 = 1.3.2 =
-* Updated CodeMirror library 
+* Updated CodeMirror library
 * Increased loading performance
 * Match brackets
 
