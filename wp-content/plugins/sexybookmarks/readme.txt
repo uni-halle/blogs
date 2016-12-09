@@ -2,8 +2,8 @@
 Contributors: shareaholic
 Tags: shareaholic, shareholic, sexybookmarks, recommendations, related content, cookie consent, share buttons, email button, social sharing, social bookmarking, share image, image sharing, follow buttons, floated share buttons, floating share buttons, analytics, social media, social plugin, facebook, twitter, google plus, google bookmarks, gmail, linkedin, pinterest, reddit, tumblr, evernote, digg, delicious, stumbleupon, printfriendly, fancy, amazon, xing, vk, yahoo, mister wong, viadeo, odnoklassniki box.net, diigo, yammer, ycombinator, hotmail, instapaper, mixi, arto, whatsapp, hootsuite, inbound.org, plurk, aim, buffer, meneame, pinboard.in, stumpedia, bitly, blogger, yummly, izeby, kaboodle, weibo, instagram, tinyurl,  typepad, weheartit, flipboard, pocket, wanelo, fark, wykop, symphony, kindle, houzz, youtube, sms, onenote, google classroom, disqus, spotify, zillow, feedly, kik, line, livejournal, baidu
 Requires at least: 3.0
-Tested up to: 4.5
-Stable tag: 7.8.0.3
+Tested up to: 4.6
+Stable tag: 7.8.0.4
 
 World's leading all-in-one Content Amplification Platform that helps grow your site traffic, engagement, conversions & monetization for FREE.
 
@@ -193,8 +193,13 @@ Please see here: [Shareaholic Helpdesk](http://support.shareaholic.com/hc/en-us)
 Please see here: [Usage & Installation Instructions](http://support.shareaholic.com/hc/en-us/categories/200101476-WordPress-Plugin)
 
 == Changelog ==
+
+= 7.8.0.4 =
+* Bugfix: We fixed the code which displays the Facebook share count to accommodate Facebook's new data structure.
+* Bugfix: Fixed server side share counts for Odnoklassniki
+
 = 7.8.0.3 =
-* Bugfix: Fix for Cloudflare compatible
+* Bugfix: Fix for Cloudflare compatibility
 
 = 7.8.0.2 =
 * Bugfix: Updated Social Counts library to be PHP7 compatible
@@ -1025,6 +1030,9 @@ Please see here: [Usage & Installation Instructions](http://support.shareaholic.
 
 == Upgrade Notice ==
 
+= 7.8.0.4 =
+Various Share Count updates
+
 = 7.8.0.3 =
 * Bugfix: Fix for Cloudflare compatible
 
@@ -1181,90 +1189,3 @@ Miscellaneous performance enhancements for Share Counts
 = 7.4.0.0 =
 
 Optional and all new server side Share Counts API for share counts for Google+, StumbleUpon, etc! You can toggle this option under the "Advanced Settings" section.
-  
-= 7.3.0.1 =
-Miscellaneous bug fixes and performance enhancements
- 
-= 7.3.0.0 =
-Lots of new features - including Floating Share Buttons and Shareable Images!
-
-= 7.2.2.0 =
-New / updated translations for French (by Rozenn Dagorn), German (by Oliver Heinrich), Dutch (by Patrick Ruers) and Greek (by Takis Bouyouris)
-
-= 7.2.1.0 =
-The Admin Bar is now configurable and we also fixed the Related Content data processing status indicator. Also includes miscellaneous plugin  performance enhancements.
-
-= 7.2.0.0 =
-New Admin Bar options + miscellaneous bug fixes and performance enhancements to Related Content
-
-= 7.1.0.0 =
-Shareaholic API's now use endpoints with static IP's. [Instruction on allowing Shareaholic to work with your firewall](https://blog.shareaholic.com/shareaholic-hosting-faq/).
-
-= 7.0.9.0 =
-Confirmed that Shareaholic works well with WordPress 3.8. Upgrade away!
-
-= 7.0.8.0 =
-Miscellaneous bug fixes and performance enhancements
-
-= 7.0.7.0 =
-Deleted posts are now automatically removed from your Shareaholic Content Index within an hour!
-
-= 7.0.6.0 =
-Shareaholic Apps are now included on static front page displays
-
-= 7.0.5.1 =
-Bug fixes
-
-= 7.0.5.0 =
-New or modified posts are now automatically updated in your Shareaholic Content Index within an hour!
-
-= 7.0.4.9 =
-Bugfixes and confirmed that everything is humming along with WordPress 3.7.1!
-
-= 7.0.4.8 =
-Related Content now excludes attachments automatically. You can now also exclude *any* of your posts from Related Content via post and page metabox options.
-
-= 7.0.4.7 =
-Support for additional Shareaholic content meta tags! More improvements for Related Content.
-
-= 7.0.4.6 =
-Significant upgrade to keyword generation for Related Content. Additional fixes for those using Cloudflare.
-
-= 7.0.4.5 =
-Enforce Internet Explorer compatibility mode to latest version available; fixes a lot of general issues with Internet Explorer. Recommended update.
-
-= 7.0.4.3 =
-Added support for shareaholic:keywords meta tag for better Recommendations and Related Content matches
-
-= 7.0.4.2 =
-Better debug prompts
-
-= 7.0.4.1 =
-New "Server Connectivity" section added under "Advanced Settings"
-
-= 7.0.3.6 =
-New "Vertical" theme for Related Content! Organized the "Advanced Settings" page and Shareaholic shortcode now support title, link and summary parameters.
-
-= 7.0.3.5 =
-Language localizations and bugfixes.
-
-= 7.0.3.4 =
-Fix for security vulnerability. Upgrade immediately.
-
-= 7.0.3.3 =
-This is a highly recommended upgrade. Fixes issues of API timeouts and data-summary not being encoding correctly.
-
-= 7.0.3.2 =
-This is a highly recommended upgrade. Fixes issues affecting users on smaller screens and includes performance improvements.
-
-= 7.0.3.1 =
-This is a highly recommended upgrade. Should fix most, if not all, lingering issues related to share buttons and related content apps not showing on webpages.
-
-= 7.0.3.0 =
-Lots of new features! You can now center, left and right align your share buttons, use custom headers, toggle the "more options" button, various bug fixes, performance improvements and more.
-
-= 7.0.2.0 =
-As always, we're listening and working in all your feedback. This release represents a slew of updates based on a lot of user feedback. For Facebook sharing, sharers are now taken directly to Facebook, now access Share Button and Related Content settings without an (free) account, and much much more.
-
-= 7.0.1.0 =
-* Huge update! Completely re-written from the ground up to be faster and with a new simple interface! Includes brand new Share button themes (including vertical share buttons!) and Related posts themes. Related Posts now come mobile optimized and responsive out of the box - Shareaholic automagically determines how many Related Posts to show given how much screen width it is given. You can now even customize your "You may also like" text and exclude URLs.

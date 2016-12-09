@@ -85,11 +85,12 @@ abstract class ShareaholicShareCount {
         'callback' => 'vk_count_callback',
       ),
       'odnoklassniki' => array(
-        'url' => 'http://ok.ru/dk?st.cmd=extLike&uid=odklcnt0&ref=%s',
+        'url' => 'https://connect.ok.ru/dk?st.cmd=extLike&uid=odklcnt0&ref=%s',
         'method' => 'GET',
         'timeout' => 1,
         'callback' => 'odnoklassniki_count_callback',
       ),
+
       'fancy' => array(
         'url' => 'http://fancy.com/fancyit/count?ItemURL=%s',
         'method' => 'GET',
@@ -176,7 +177,7 @@ abstract class ShareaholicShareCount {
       return false;
     }
     $body = json_decode($response['body'], true);
-    return isset($body['shares']) ? intval($body['shares']) : false;
+    return isset($body['share']['share_count']) ? intval($body['share']['share_count']) : false;
   }
 
 
