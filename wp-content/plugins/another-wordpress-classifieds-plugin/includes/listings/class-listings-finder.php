@@ -145,6 +145,7 @@ class AWPCP_ListingsFinder {
             $this->build_category_condition( $query ),
             $this->build_user_condition( $query ),
             $this->build_contact_condition( $query ),
+            $this->build_contact_phone_condition( $query ),
             $this->build_price_condition( $query ),
             $this->build_regions_condition( $query ),
             $this->build_payment_condition( $query ),
@@ -329,6 +330,19 @@ class AWPCP_ListingsFinder {
 
         if ( ! empty( $query['contact_name'] ) ) {
             $conditions[] = $this->db->prepare( 'listings.`ad_contact_name` = %s', $query['contact_name'] );
+        }
+
+        return $conditions;
+    }
+
+    private function build_contact_phone_condition( $query ) {
+        $conditions = array();
+
+        if ( ! empty( $query['phone'] ) ) {
+            $conditions[] = $this->db->prepare(
+                "listings.`phone_number_digits` LIKE '%%%s%%'",
+                awpcp_get_digits_from_string( $query['phone'] )
+            );
         }
 
         return $conditions;

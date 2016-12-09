@@ -9,7 +9,7 @@
                     <select class="multiple-region" data-bind="attr: { id: id }, options: options, optionsText: 'name', optionsValue: 'id', optionsCaption: caption, value: selectedOption, visible: showSelectField, disable: $root.options.disabled">
                     </select>
 
-                    <input class="multiple-region inputbox" type="text" data-bind="attr: { id: id }, value: selectedText, visible: showTextField, disable: $root.options.disabled" />
+                    <input class="multiple-region awpcp-textfield inputbox" type="text" data-bind="attr: { id: id }, value: selectedText, visible: showTextField, disable: $root.options.disabled" />
 
                     <span class="loading-message" data-bind="visible: loading"><?php echo esc_html( _x( 'loading...', 'loading region options', 'another-wordpress-classifieds-plugin' ) ); ?></span>
 

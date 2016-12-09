@@ -150,34 +150,78 @@ class AWPCP_Installer {
         $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_MEDIA );
         $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_PAGES );
         $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_PAYMENTS );
+        $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_TASKS );
+        $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_PAGENAME );
 
-        // TODO: implement uninstall methods in other modules
         $tables = array(
             $wpdb->prefix . 'awpcp_comments',
+            $wpdb->prefix . 'awpcp_user_ratings',
             $wpdb->prefix . "awpcp_extra_fields",
             $wpdb->prefix . 'awpcp_subscriptions',
             $wpdb->prefix . 'awpcp_subscription_plans',
             $wpdb->prefix . 'awpcp_subscription_ads',
+            $wpdb->prefix . 'awpcp_advertisement_positions',
+            $wpdb->prefix . 'awpcp_campaigns',
+            $wpdb->prefix . 'awpcp_campaign_positions',
+            $wpdb->prefix . 'awpcp_campaign_sections',
+            $wpdb->prefix . 'awpcp_campaign_section_positions',
+            $wpdb->prefix . 'awpcp_categories_prices',
+            $wpdb->prefix . 'awpcp_coupons',
+            $wpdb->prefix . 'awpcp_listing_zip_codes',
+            $wpdb->prefix . 'awpcp_zip_codes',
+            $wpdb->prefix . 'awpcp_regions',
         );
 
         foreach ($tables as $table) {
             $wpdb->query("DROP TABLE IF EXISTS " . $table);
         }
 
-        // remove AWPCP options from options table
-        array_map('delete_option', array(
+        $options_to_delete = array(
+            $awpcp->settings->setting_name,
+            'awpcp-activated',
+            'awpcp-flush-rewrite-rules',
+            'awpcp-form-fields-order',
+            'awpcp-legacy-categories',
             'awpcp-pending-manual-upgrade',
+            'awpcp-plugin-pages',
+            'awpcp-debug',
+            'awpcp-regions-children',
+            'awpcp-regions-type-hierarchy',
+            'awpcp_db_version',
             'awpcp_installationcomplete',
+            'awpcp_listing_category_children',
             'awpcp_pagename_warning',
             'widget_awpcplatestads',
-            'awpcp_db_version',
-            $awpcp->settings->setting_name,
-        ));
+        );
 
-        // delete payment transactions
-        $sql = 'SELECT option_name FROM ' . $wpdb->options . ' ';
-        $sql.= "WHERE option_name LIKE 'awpcp-payment-transaction-%%'";
-        array_map('delete_option', $wpdb->get_col($sql));
+        $option_names = $wpdb->get_col( "SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE '%awpcp%'" );
+
+        foreach ( $option_names as $option_name ) {
+            if ( preg_match( '/^awpcp-category-icon/', $option_name ) ) {
+                $options_to_delete[] = $option_name;
+            } else if ( preg_match( '/^awpcp-fee-categories-prices/', $option_name ) ) {
+                $options_to_delete[] = $option_name;
+            } else if ( preg_match( '/^awpcp.*(installed|db)[_-]version$/', $option_name ) ) {
+                $options_to_delete[] = $option_name;
+            } else if ( preg_match( '/^awpcp-.*-id$/', $option_name ) ) {
+                $options_to_delete[] = $option_name;
+            } else if ( preg_match( '/^awpcp-messages/', $option_name ) ) {
+                $options_to_delete[] = $option_name;
+            } else if ( preg_match( '/^awpcp-payment-transaction-/', $option_name ) ) {
+                $options_to_delete[] = $option_name;
+            } else if ( preg_match( '/awpcp-categories-list-cache/', $option_name ) !== false ) {
+                $options_to_delete[] = $option_name;
+            } else if ( preg_match( '/awpcp-license-status-check/', $option_name ) !== false ) {
+                $options_to_delete[] = $option_name;
+            } else if ( preg_match( '/awpcp-region-control-duplicated-regions/', $option_name ) !== false ) {
+                $options_to_delete[] = $option_name;
+            }
+        }
+
+        // remove AWPCP options from options table
+        array_map( 'delete_option',  $options_to_delete );
+
+        $wpdb->query( "DELETE FROM {$wpdb->usermeta} WHERE meta_key LIKE 'awpcp-%'" );
 
         // remove widgets
         awpcp_unregister_widget_if_exists( 'AWPCP_LatestAdsWidget' );
@@ -236,6 +280,10 @@ class AWPCP_Installer {
                 'create_description_column_in_fees_table',
                 'try_to_convert_tables_to_utf8mb4',
                 'allow_null_values_in_user_id_column_in_payments_table',
+            ),
+            '3.7.1' => array(
+                'create_phone_number_digits_column',
+                'enable_upgrade_task_to_store_phone_number_digits',
             ),
         );
 
@@ -1039,6 +1087,21 @@ class AWPCP_Installer {
         if ( awpcp_column_exists( AWPCP_TABLE_PAYMENTS, 'user_id' ) ) {
             $wpdb->query(  'ALTER TABLE ' . AWPCP_TABLE_PAYMENTS . ' CHANGE user_id user_id INT( 10 ) NULL'  );
         }
+    }
+
+    private function create_phone_number_digits_column( $oldversion ) {
+        $this->columns->create(
+            AWPCP_TABLE_ADS,
+            'phone_number_digits',
+            $this->database_helper->replace_charset_and_collate(
+                "VARCHAR(25) CHARACTER SET <charset> COLLATE <collate> NOT NULL DEFAULT '' AFTER `ad_contact_phone`"
+            )
+        );
+    }
+
+    private function enable_upgrade_task_to_store_phone_number_digits() {
+        delete_option( 'awpcp-spnd-last-file-id' );
+        awpcp()->manual_upgrades->enable_upgrade_task( 'awpcp-store-phone-number-digits' );
     }
 }
 

@@ -208,13 +208,13 @@ class AWPCP_Pages {
     }
 
     public function category_shortcode( $attrs ) {
-        static $output = null;
+        $cache_key = crc32( maybe_serialize( $attrs ) );
 
-        if ( is_null( $output ) ) {
-            $output = awpcp_category_shortcode()->render( $attrs );
+        if ( ! isset( $this->output[ $cache_key ] ) ) {
+            $this->output[ $cache_key ] = awpcp_category_shortcode()->render( $attrs );
         }
 
-        return $output;
+        return $this->output[ $cache_key ];
     }
 
     /* Ajax handlers */

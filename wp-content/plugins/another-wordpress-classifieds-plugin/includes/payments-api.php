@@ -575,14 +575,14 @@ class AWPCP_PaymentsAPI {
 
     public function render_payment_methods($transaction) {
         $payment_methods = $this->get_payment_methods();
-        $payment_method = $transaction->get('payment-method');
+        $selected_payment_method = $transaction->get( 'payment-method' );
 
         if ( count( $payment_methods ) === 1 ) {
-            $payment_method = reset( $payment_methods )->slug;
+            $selected_payment_method = reset( $payment_methods )->slug;
         }
 
         ob_start();
-            include(AWPCP_DIR . '/frontend/templates/payments-payment-methods-table.tpl.php');
+            include(AWPCP_DIR . '/templates/components/payment-methods-list.tpl.php');
             $html = ob_get_contents();
         ob_end_clean();
 

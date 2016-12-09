@@ -1,11 +1,11 @@
-=== Another WordPress Classifieds Plugin ===
+=== AWPCP - Classifieds Plugin ===
 Contributors: awpcp
 Donate link: http://awpcp.com/donate
-Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified script,classified theme,classifieds theme,wp classifieds,wp classified
-Requires at least: 4.0
-Tested up to: 4.5
-Last Updated: 2016-Mar-29
-Stable tag: tags/3.6.5
+Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified theme,classifieds theme
+Requires at least: 4.1
+Tested up to: 4.6
+Last Updated: 2016-Aug-16
+Stable tag: tags/3.7.1
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -24,26 +24,26 @@ NEW module(s): [Mark as Sold](http://awpcp.com/premium-modules/mark-as-sold-modu
 
 = Features =
  = Ad Features =
-    1. Search ads by city, state, country, username, or keyword
+    1. Search classifieds by city, state, country, username, or keyword
     2. Allow AdSense ads to be displayed
-    3. Control over HTML use in ads
+    3. Control over HTML use in classifieds
     4. Limit the text size of ad postings
     5. Standard form fields can be enabled or disabled, 
        depending on your needs (title, website, name, country, etc)
     6. Allow or disallow image posting with ads
     7. Automatic expiration of ads (free or paid)
     8. Configurable ad display for AdSense placement
-    9. Ads can have a "Tweet This" button in their layout
-    10. Ads can have a "Share on Facebook" button in their layout
-    11. Ads can be flagged by community for bad/offensive content
-    12. Ads can imported via CSV files
-    13. Ads now support embedded videos
-    14. Ads can have character limits, supported by plans (different plans can have different limits)
-    15. Ads can be displayed on any page for a single category using shortcodes
+    9. Classified ads can have a "Tweet This" button in their layout
+    10. Classified ads can have a "Share on Facebook" button in their layout
+    11. Classified ads can be flagged by community for bad/offensive content
+    12. Classified ads can imported via CSV files
+    13. Classified ads now support embedded videos
+    14. Classified ads can have character limits, supported by plans (different plans can have different limits)
+    15. Classified ads can be displayed on any page for a single category using shortcodes
     16. Auto-verify ads with email links to post immediately upon click
-    17. Now allows ads to be 'Sent to Facebook' inside of ad management
+    17. Classified ads can be 'Sent to Facebook' inside of ad management
     18. Support for displaying ad events in BuddyPress activity stream with [BuddyPress module](http://awpcp.com/premium-modules/buddypress-module?ref=wp)
-    19. Ads can be edited via front end, back end with or without registration (depending on settings)
+    19. Classified ads can be edited via front end, back end with or without registration (depending on settings)
  = Notification Features =
     1. Allow posters to be notified of expiring ads, renewals, and approvals of ads
     2. Allow admin to be notified when new ads are posted, ads are edited and much more
@@ -51,7 +51,7 @@ NEW module(s): [Mark as Sold](http://awpcp.com/premium-modules/mark-as-sold-modu
        the poster's email (blind email system, similar to Craigslist)
     4. Admin can (optionally) be notified of expiring ads
  = Payment Features =
-    1. Allows for paid or free ads
+    1. Allows for paid or free classifieds
     2. Supports PayPal, PayPal Pro, Authorize.net and 2Checkout for paid ads
     3. Allow for image posting limits higher than free ads
     4. Multiple fee scales for posting ads (allows you to have longer ad 
@@ -64,7 +64,7 @@ NEW module(s): [Mark as Sold](http://awpcp.com/premium-modules/mark-as-sold-modu
  = Ad Posting Controls =
     1. Allow admin to approve ads prior to posting
     2. Allow admin to approve images prior to posting
-    3. Users can edit or delete their own ads
+    3. Users can edit or delete their own classifieds
     4. Admin can edit or delete all ads in the system
     5. Secure system gives users a unique editing key to administer 
        their own ads
@@ -221,6 +221,51 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 [Plugin documentation](http://www.awpcp.com/documentation/)
 
 == Changelog ==
+
+= Version 3.7.1 =
+* Add support for Custom Login URL.
+* Add support for import listings in batches.
+* Rename AWPCP*.\[mo,po\] to another-wordpress-classifieds-plugin*.\[mo,po\].
+* Remove oEmbed support for BrainShark.
+* Add translation for Portuguese (Brazil) * pt_BR.
+* Remove unused jQuery UI files.
+* Make using the name of the recipient in email address optional.
+* Return '404 Listing not found' for deleted listings.
+* Fix plugin uninstaller to cleanly remove all tables.
+* Show most specific region first in listing's location.
+* Fix bug that moved listings to Awating Approval by mistake.
+* Fix bug in Search by Phone feature.
+* Improve appearance of Post Listing screens on mobile devices.
+
+= Version 3.7 =
+* Show return to listing link after Reply to Ad form is submitted.
+* Add placeholder to show elapsed time since listing creation.
+* Add settings for updating subject & body of ad verification email.
+* Add Settings link to plugin entry in Plugins page.
+* Hide **Number of days before expired listings are deleted** setting if not used.
+* Add French translation for Mark as Sold.
+* Add settings to hide and override the 'No Image' image.
+* Update translation for French languge in main plugin.
+* Add a global Hide empty categories from dropdowns option.
+* Disable the Classifieds > Fees area if payments are disabled.
+* Update plugin's JS to work without jQuery Migrate.
+* Fix Fatal error caused by trying to access a private property.
+* Fix missing constructor parameter notice.
+* Fix premium upgrades for websites with local blocks.
+* Fixed character count when quotes are added to ad details text.
+* Fix problem with image Open Graph metatag.
+* Allow multiple AWPCPSHOWCAT shortcodes in the same page.
+* Fix PHP Warning in Task Queue.
+* Fix pagination issue.
+* Fix translation problem in 3.6.5.
+* Media Uploader: replace href="javascript;" with href="#".
+* Fix alignment of labels on Edit Ad page in admin.
+* Fix appearance of comments & ratings in admin.
+* Update awpcp_ajaxurl() to match current request's scheme.
+* Fix description of Listing's URL settings.
+* Add workaround for mime_content_type bug.
+* Fix width of textfields in smaller screens.
+* Reduce number of HTTP requests to EDD store.
 
 = Version 3.6.5 =
 * Add category parameter to Random Listings shortcode.

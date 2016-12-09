@@ -25,8 +25,6 @@ function awpcp_modules_updater() {
 class AWPCP_ModulesUpdater {
 
     private $modules = array();
-    private $modules_information = array();
-    private $up_to_date_modules = array();
 
     private $edd;
 
@@ -59,10 +57,6 @@ class AWPCP_ModulesUpdater {
             return $plugins_information;
         }
 
-        if ( isset( $this->up_to_date_modules[ $module['instance']->slug ] ) ) {
-            return $plugins_information;
-        }
-
         try {
             $information = $this->get_information_for_module( $module );
         } catch ( AWPCP_Easy_Digital_Downloads_Exception $e ) {
@@ -76,24 +70,32 @@ class AWPCP_ModulesUpdater {
 
         if ( version_compare( $module['instance']->version , $information->new_version, '<' ) ) {
             $plugins_information->response[ $module['basename'] ] = $information;
-        } else {
-            $this->up_to_date_modules[ $module['instance']->slug ] = true;
         }
+
+        $plugins_information->last_checked = time();
+        $plugins_information->checked[ $module['basename'] ] = $module['instance']->version;
 
         return $plugins_information;
     }
 
-    private function get_information_for_module( $module ) {;
-        if ( isset( $this->modules_information[ $module['basename'] ] ) ) {
-            $information = $this->modules_information[ $module['basename'] ];
-        } else {
-            $module_name = $module['instance']->name;
-            $module_slug = $module['instance']->slug;
-            $license = $module['license'];
+    private function get_information_for_module( $module ) {
+        $instance = $module['instance'];
 
-            $information = $this->edd->get_version( $module_name, $module_slug, 'D. Rodenbaugh', $license );
-            $this->modules_information[ $module['basename'] ] = $information;
+        $transient_key = md5( 'awpcp_module_' . sanitize_key( $instance->name ) . '_version_info' );
+        $information = get_site_transient( $transient_key );
+
+        if ( false !== $information ) {
+            return $information;
         }
+
+        $information = $this->edd->get_version(
+            $instance->name,
+            $instance->slug,
+            'D. Rodenbaugh',
+            $module['license']
+        );
+
+        set_site_transient( $transient_key, $information, DAY_IN_SECONDS );
 
         return $information;
     }
@@ -113,10 +115,19 @@ class AWPCP_ModulesUpdater {
         return $information;
     }
 
+	public function setup_http_request_args_filter( $bail, $package, $upgrader ) {
+		if ( strpos( $package, 'edd-sl/package_download' ) !== false ) {
+			add_filter( 'http_request_args', array( $this, 'filter_http_request_args' ), 10, 2 );
+		}
+
+		return $bail;
+	}
+
     public function filter_http_request_args( $args, $url ) {
-        if ( strpos( $url, 'https://' ) !== false && strpos( $url, 'edd_action=package_download' ) ) {
-            $args['sslverify'] = false;
-        }
+		remove_filter( 'http_request_args', array( $this, 'filter_http_request_args' ), 10, 2 );
+
+		$args['user-agent'] = awpcp_user_agent_header();
+		$args['sslverify'] = false;
 
         return $args;
     }

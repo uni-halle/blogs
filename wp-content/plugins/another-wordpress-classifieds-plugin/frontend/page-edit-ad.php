@@ -252,6 +252,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         $ad->ad_details = $this->prepare_ad_details($data['ad_details'], $characters['characters_allowed']);
         $ad->ad_contact_name = $data['ad_contact_name'];
         $ad->ad_contact_phone = $data['ad_contact_phone'];
+        $ad->phone_number_digits = awpcp_get_digits_from_string( $data['ad_contact_phone'] );
         $ad->ad_contact_email = $data['ad_contact_email'];
         $ad->websiteurl = $data['websiteurl'];
         $ad->ad_item_price = $data['ad_item_price'] * 100;
@@ -467,7 +468,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
     public function send_access_keys($ads, &$errors=array()) {
         $ad = reset( $ads );
 
-        $recipient = "{$ad->ad_contact_name} <{$ad->ad_contact_email}>";
+        $recipient = awpcp_format_recipient_address( $ad->ad_contact_email, $ad->ad_contact_name );
         $template = AWPCP_DIR . '/frontend/templates/email-send-all-ad-access-keys.tpl.php';
 
         $message = new AWPCP_Email;

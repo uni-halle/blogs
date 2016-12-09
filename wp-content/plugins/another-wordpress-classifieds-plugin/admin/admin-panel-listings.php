@@ -533,7 +533,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
 
         $ad = AWPCP_Ad::find_by_id($this->id);
 
-        $recipient = "{$ad->ad_contact_name} <{$ad->ad_contact_email}>";
+        $recipient = awpcp_format_recipient_address( $ad->ad_contact_email, $ad->ad_contact_name );
         $template = AWPCP_DIR . '/frontend/templates/email-send-ad-access-key.tpl.php';
 
         $message = new AWPCP_Email;

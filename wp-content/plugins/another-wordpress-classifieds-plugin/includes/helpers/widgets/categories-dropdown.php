@@ -10,6 +10,8 @@ function awpcp_categories_dropdown() {
 class AWPCP_CategoriesDropdown {
 
     public function render($params) {
+
+        $hide_empty = awpcp_get_option( 'hide-empty-categories-dropdown' ) == '1' ? true : false;
         extract( $params = wp_parse_args( $params, array(
             'context' => 'default',
             'name' => 'category',
@@ -17,6 +19,7 @@ class AWPCP_CategoriesDropdown {
             'required' => true,
             'selected' => null,
             'placeholders' => array(),
+            'hide_empty' => $hide_empty
         ) ) );
 
         if ( $context == 'search' ) {
@@ -38,7 +41,7 @@ class AWPCP_CategoriesDropdown {
         }
 
         $categories = awpcp_categories_collection()->get_all();
-        $categories_hierarchy = awpcp_build_categories_hierarchy( $categories );
+        $categories_hierarchy = awpcp_build_categories_hierarchy( $categories, $hide_empty );
         $chain = $this->get_category_parents( $selected, $categories );
 
         $use_multiple_dropdowns = get_awpcp_option( 'use-multiple-category-dropdowns' );

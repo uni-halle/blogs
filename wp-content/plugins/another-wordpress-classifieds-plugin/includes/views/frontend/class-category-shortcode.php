@@ -34,7 +34,7 @@ class AWPCP_CategoryShortcode {
         $attrs = shortcode_atts( array(
             'id' => 0,
             'children' => true,
-            'items_per_page' => 10,
+            'items_per_page' => get_awpcp_option( 'adresultsperpage', 10 ),
             'show_categories_list' => true,
         ), $attrs );
 
@@ -71,6 +71,7 @@ class AWPCP_CategoryShortcode {
             'offset' => absint( $this->request->param( 'offset', 0 ) ),
             'orderby' => get_awpcp_option( 'groupbrowseadsby' ),
         );
+
 
         // required so awpcp_display_ads shows the name of the current category
         if ( count( $attrs['id'] ) === 1 ) {

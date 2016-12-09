@@ -59,3 +59,42 @@
     list-style-type: none;
     padding: 0;
 }
+
+@box-background-color: #FAFAFA;
+@box-border-color: #D2D2D2;
+@box-border-radius: 2px;
+
+.awpcp-box {
+    background: @box-background-color;
+    padding: 10px;
+}
+
+.awpcp-rounded-box {
+    border-radius: @box-border-radius;
+}
+
+.awpcp-bordered-box {
+    border: 1px solid @box-border-color;
+}
+
+.awpcp-button {
+    .awpcp-bordered-box;
+    .awpcp-rounded-box;
+
+    background: #FDFDFD;
+    border-color: #CCC;
+    cursor: pointer;
+    display: block;
+    padding: 4px 8px 6px;
+
+    &:hover {
+        background: #fff;
+        border-color: #d0d0d0;
+    }
+
+    &:active {
+        background: #BBB;
+        border-color: #999;
+        color: #FFF;
+    }
+}

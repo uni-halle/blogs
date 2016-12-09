@@ -16,7 +16,13 @@ if (typeof jQuery !== 'undefined') {
 
             self.form.submit(function(event) {
                 event.preventDefault();
-                $(this).find(':submit').attr('disabled', true);
+
+                if ( $.fn.prop ) {
+                    $( this ).find( ':submit' ).prop( 'disabled', true );
+                } else {
+                    $( this ).find( ':submit' ).attr( 'disabled', 'disabled' );
+                }
+
                 self.update();
             });
         };

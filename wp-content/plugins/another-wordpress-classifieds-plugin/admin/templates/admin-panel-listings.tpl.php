@@ -8,8 +8,8 @@
     <?php echo $table->views() ?>
 
     <div class="awpcp-search-container clearfix">
-    <?php echo $table->get_search_by_box() ?>
     <?php echo $table->search_box(__('Search Ads', 'another-wordpress-classifieds-plugin'), 'ads') ?>
+    <?php echo $table->get_search_by_box() ?>
     </div>
 
     <?php echo $table->display() ?>

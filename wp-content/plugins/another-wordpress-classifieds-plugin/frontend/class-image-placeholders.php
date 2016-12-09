@@ -148,22 +148,30 @@ class AWPCP_Image_Placeholders {
         }
 
         // fallback thumbnail
-        if ( awpcp_are_images_allowed() && empty( $placeholders['awpcp_image_name_srccode'] ) ) {
-            $thumbnail = sprintf('%s/adhasnoimage.png', $awpcp_imagesurl);
+		if ( awpcp_are_images_allowed() && empty( $placeholders['awpcp_image_name_srccode'] ) && ! get_awpcp_option( 'hide-noimage-placeholder', 1 ) ) {
 
-            $image_attributes = array(
-                'attributes' => array(
-                    'alt' => awpcp_esc_attr( $ad->ad_title ),
-                    'src' => esc_attr( $thumbnail ),
-                    'width' => esc_attr( $thumbnail_width ),
-                )
-            );
+			// check if user has enabled override for no image placeholder
+			if ( get_awpcp_option( 'override-noimage-placeholder', 1 ) ) {
+				// get saved no image placeholer url
+				$thumbnail = get_awpcp_option( 'noimage-placeholder-url' );
 
-            $content = '<a class="awpcp-listing-primary-image-listing-link" href="%s">%s</a>';
-            $content = sprintf($content, $url, awpcp_html_image( $image_attributes ) );
+			}else {
+				$thumbnail = sprintf( '%s/adhasnoimage.png', $awpcp_imagesurl );
+			}
 
-            $placeholders['awpcp_image_name_srccode'] = $content;
-        }
+			$image_attributes = array(
+				'attributes' => array(
+					'alt' => awpcp_esc_attr( $ad->ad_title ),
+					'src' => esc_attr( $thumbnail ),
+					'width' => esc_attr( $thumbnail_width ),
+				)
+			);
+
+			$content = '<a class="awpcp-listing-primary-image-listing-link" href="%s">%s</a>';
+			$content = sprintf( $content, $url, awpcp_html_image( $image_attributes ) );
+
+			$placeholders['awpcp_image_name_srccode'] = $content;
+		}
 
         $placeholders['featureimg'] = apply_filters( 'awpcp-featured-image-placeholder', $placeholders['featureimg'], 'single', $ad );
         $placeholders['awpcp_image_name_srccode'] = apply_filters( 'awpcp-featured-image-placeholder', $placeholders['awpcp_image_name_srccode'], 'listings', $ad );

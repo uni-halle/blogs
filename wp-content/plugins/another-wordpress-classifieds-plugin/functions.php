@@ -235,8 +235,10 @@ function awpcp_datetime( $format='mysql', $date=null ) {
 			return date( 'Y-m-d H:i:s', $timestamp );
 		case 'timestamp':
 			return $timestamp;
+		case 'time-elapsed':
+			return sprintf( __( '%s ago' ), human_time_diff( strtotime( $date ) ) );
 		case 'awpcp':
-			return date_i18n( awpcp_get_datetime_format(), $timestamp) ;
+			return date_i18n( awpcp_get_datetime_format(), $timestamp ) ;
 		case 'awpcp-date':
 			return date_i18n( awpcp_get_date_format(), $timestamp );
 		case 'awpcp-time':
@@ -245,7 +247,6 @@ function awpcp_datetime( $format='mysql', $date=null ) {
 			return date_i18n( $format, $timestamp );
 	}
 }
-
 
 function awpcp_set_datetime_date( $datetime, $date ) {
     $base_timestamp = strtotime( $datetime );
@@ -332,8 +333,8 @@ function awpcp_get_grid_item_css_class($classes, $pos, $columns, $rows) {
  */
 function awpcp_pagination($config, $url) {
 
-	$blacklist = array('page_id',
-					   'offset',
+    $blacklist = array(
+        'offset',
 					   'results',
 					   'PHPSESSID',
 					   'aeaction',
@@ -1382,16 +1383,15 @@ function awpcp_parse_money($value, $decimal_separator=false, $thousands_separato
  * @since 2.1.4
  */
 function awpcp_get_flash_messages() {
-	if (is_user_logged_in()) {
-		if ($messages = get_user_option('awpcp-messages', get_current_user_id())) {
-			return $messages;
-		}
-		return array();
-	} else if (isset($_COOKIE['awpcp-messages'])) {
-		return get_option('awpcp-messages-' . $_COOKIE['awpcp-messages'], array());
-	} else {
-		return array();
-	}
+	if ( ! is_user_logged_in() ) {
+        return array();
+    }
+
+    if ( $messages = get_user_option( 'awpcp-messages', get_current_user_id() ) ) {
+        return $messages;
+    }
+
+    return array();
 }
 
 /**
@@ -1401,9 +1401,7 @@ function awpcp_update_flash_messages($messages) {
 	if (is_user_logged_in()) {
 		return update_user_option(get_current_user_id(), 'awpcp-messages', $messages);
 	} else {
-		if (!isset($_COOKIE['awpcp-messages']))
-			$_COOKIE['awpcp-messages'] = uniqid();
-		return update_option('awpcp-messages-' . $_COOKIE['awpcp-messages'], $messages);
+        return true;
 	}
 }
 
@@ -1411,12 +1409,11 @@ function awpcp_update_flash_messages($messages) {
  * @since 2.1.4
  */
 function awpcp_clear_flash_messages() {
-	if (is_user_logged_in()) {
-		return delete_user_option(get_current_user_id(), 'awpcp-messages');
-	} else if (isset($_COOKIE['awpcp-messages'])) {
-		return delete_option('awpcp-messages-' . $_COOKIE['awpcp-messages']);
-	}
-	return true;
+    if ( ! is_user_logged_in() ) {
+        return true;
+    }
+
+    return delete_user_option( get_current_user_id(), 'awpcp-messages' );
 }
 
 function awpcp_flash( $message, $class = array( 'awpcp-updated', 'updated') ) {
@@ -1993,6 +1990,17 @@ function awpcp_format_email_address($address, $name) {
 }
 
 /**
+ * @since 3.7.1
+ */
+function awpcp_format_recipient_address( $email_address, $name = false ) {
+    if ( $name && get_awpcp_option( 'include-recipient-name-in-email-address' ) ) {
+        return awpcp_format_email_address( $email_address, $name );
+    }
+
+    return $email_address;
+}
+
+/**
  * Return the email address that should receive the notifications intented for
  * administrator users.
  *
@@ -2061,7 +2069,7 @@ function awpcp_admin_email_from() {
  * @return	string	name <email@address>
  */
 function awpcp_admin_email_to() {
-	return awpcp_format_email_address( awpcp_admin_recipient_email_address(), awpcp_get_blog_name() );
+	return awpcp_format_recipient_address( awpcp_admin_recipient_email_address(), awpcp_get_blog_name() );
 }
 
 function awpcp_moderators_email_to() {
@@ -2073,7 +2081,7 @@ function awpcp_moderators_email_to() {
     ) );
 
     foreach ( $users as $user ) {
-        $email_addresses[] = awpcp_format_email_address( $user->user_email, $user->public_name );
+        $email_addresses[] = awpcp_format_recipient_address( $user->user_email, $user->public_name );
     }
 
     return $email_addresses;
@@ -2085,7 +2093,7 @@ function awpcp_moderators_email_to() {
 function awpcp_ad_enabled_email($ad) {
 	// user email
 	$mail = new AWPCP_Email;
-	$mail->to[] = awpcp_format_email_address( $ad->ad_contact_email, $ad->ad_contact_name );
+	$mail->to[] = awpcp_format_recipient_address( $ad->ad_contact_email, $ad->ad_contact_name );
 	$mail->subject = sprintf(__('Your Ad "%s" has been approved', 'another-wordpress-classifieds-plugin'), $ad->get_title());
 
 	$template = AWPCP_DIR . '/frontend/templates/email-ad-enabled-user.tpl.php';
@@ -2101,7 +2109,7 @@ function awpcp_ad_updated_user_email( $ad, $message ) {
 	$admin_email = awpcp_admin_recipient_email_address();
 
 	$mail = new AWPCP_Email;
-	$mail->to[] = awpcp_format_email_address( $ad->ad_contact_email, $ad->ad_contact_name );
+	$mail->to[] = awpcp_format_recipient_address( $ad->ad_contact_email, $ad->ad_contact_name );
 	$mail->subject = sprintf(__('Your Ad "%s" has been successfully updated', 'another-wordpress-classifieds-plugin'), $ad->get_title());
 
 	$template = AWPCP_DIR . '/frontend/templates/email-ad-updated-user.tpl.php';
@@ -2271,6 +2279,28 @@ function awpcp_utf8_substr_pcre( $string, $start, $length=null ) {
 	} else {
 		return '';
 	}
+}
+
+function awpcp_remove_utf8_non_characters( $content ) {
+    //remove EFBFBD (Replacement Character)
+    $content = trim( str_replace( "\xEF\xBF\xBD", '', $content ) );
+    // remove BOM character
+    $content = trim( str_replace( "\xEF\xBB\xBF", '', $content ) );
+    $content = trim( str_replace( "\xEF\xBF\xBE", '', $content ) );
+
+    return $content;
+}
+
+function awpcp_maybe_convert_to_utf8( $content ) {
+    $encoding = awpcp_detect_encoding( $content );
+
+    if ( 'UTF-8' != $encoding ) {
+        $converted_content = iconv( $encoding, 'UTF-8', $content );
+    } else {
+        $converted_content = $content;
+    }
+
+    return $converted_content;
 }
 
 /**
@@ -2772,7 +2802,10 @@ function awpcp_get_ad_share_info($id) {
     $info['published-time'] = awpcp_datetime( 'Y-m-d', $ad->ad_postdate );
     $info['modified-time'] = awpcp_datetime( 'Y-m-d', $ad->ad_last_updated );
 
-    $images = awpcp_media_api()->find_by_ad_id( $ad->ad_id, array( 'enabled' => true ) );
+    $images = awpcp_media_api()->find_by_ad_id( $ad->ad_id, array(
+        'enabled' => true,
+        'status' => AWPCP_Media::STATUS_APPROVED,
+    ) );
 
     foreach ( $images as $image ) {
         $info[ 'images' ][] = $image->get_url( 'large' );
@@ -2831,4 +2864,13 @@ function awpcp_send_email($from,$to,$subject,$message, $html=false, $attachments
     //  $headers=unix2dos($headers);
     $sentok=@mail($to,$subject,$message,$headers,"-f$from");
     return $sentok;
+}
+
+/**
+ * @since 3.6.6
+ */
+function awpcp_user_agent_header() {
+    $user_agent = "WordPress %s / Another WordPress Classifieds Plugin %s";
+    $user_agent = sprintf( $user_agent, get_bloginfo( 'version' ), $GLOBALS['awpcp_db_version'] );
+    return $user_agent;
 }

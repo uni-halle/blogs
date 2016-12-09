@@ -13,6 +13,7 @@ class AWPCP_FilesSettings {
     }
 
     public function register_settings( $settings ) {
+        global $awpcp_imagesurl;
         $group = $settings->add_group( _x( 'Images/Attachments', 'name of Files settings section', 'another-wordpress-classifieds-plugin' ), 'attachments-settings', 50 );
 
         $key = $settings->add_section(
@@ -73,6 +74,14 @@ class AWPCP_FilesSettings {
         $options = array(0 => 0, 1 => 1, 2 => 2, 3 => 3, 4 => 4);
 
         $settings->add_setting( $key, 'display-thumbnails-in-columns', __( 'Number of columns of thumbnails to show in Show Ad page.', 'another-wordpress-classifieds-plugin' ), 'select', 0, __( 'Zero means there will be as many thumbnails as possible per row.', 'another-wordpress-classifieds-plugin' ), array( 'options' => $options ) );
+
+        $settings->add_setting( $key, 'hide-noimage-placeholder', __( 'Hide No Image placeholder', 'another-wordpress-classifieds-plugin' ), 'checkbox', 0, '' );
+        $settings->add_setting( $key, 'override-noimage-placeholder', __( 'Override the No Image placeholder image with my own', 'another-wordpress-classifieds-plugin' ), 'checkbox', 0, '' );
+        $settings->add_setting( $key, 'noimage-placeholder-url', __( 'No Image Placeholder URL', 'another-wordpress-classifieds-plugin' ), 'textfield', sprintf( '%s/adhasnoimage.png', $awpcp_imagesurl ), __( 'Put the URL of an existing image on your site to use.  The size of this image should match the thumbnail size settings on this tab', 'another-wordpress-classifieds-plugin' ) );
+
+        $settings->add_behavior( $key, 'override-noimage-placeholder', 'shownUnless', 'hide-noimage-placeholder' );
+        $settings->add_behavior( $key, 'noimage-placeholder-url', 'shownUnless', 'hide-noimage-placeholder' );
+        $settings->add_behavior( $key, 'noimage-placeholder-url', 'enabledIf', 'override-noimage-placeholder' );
 
         // Section: Image File Size Settings
 

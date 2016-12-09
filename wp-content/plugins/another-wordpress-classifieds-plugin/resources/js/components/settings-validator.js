@@ -91,11 +91,33 @@ AWPCP.define( 'awpcp/settings-validator', [
 
             dependencies.change( function() {
                 if ( dependencies.is(':checked') ) {
-                    field.removeAttr( 'disabled' );
+                    if ( $.fn.prop ) {
+                        field.prop( 'disabled', false );
+                    } else {
+                        field.removeAttr( 'disabled' );
+                    }
                 } else {
-                    field.attr( 'disabled', 'disabled' );
+                    if ( $.fn.prop ) {
+                        field.prop( 'disabled', true );
+                    } else {
+                        field.attr( 'disabled', 'disabled' );
+                    }
                 }
             } );
+
+            dependencies.change();
+        },
+
+        shownUnless: function( field, element ) {
+            var dependencies = $( this.getEscapedSelector( element ) );
+
+            dependencies.change( function() {
+                if ( dependencies.is( ':checked' ) ) {
+                    field.closest('tr').fadeOut( 400 );
+                } else {
+                    field.closest('tr').fadeIn( 400 );
+                }
+            } )
 
             dependencies.change();
         }

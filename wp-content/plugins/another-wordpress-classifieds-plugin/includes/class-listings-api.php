@@ -107,12 +107,14 @@ class AWPCP_ListingsAPI {
      * @since 3.0.2
      */
     public function consolidate_existing_ad( $ad ) {
+        $should_disable_listing = awpcp_should_disable_existing_listing( $ad );
+
         // if Ad is enabled and should be disabled, then disable it, otherwise
         // do not alter the Ad disabled status.
-        if ( ! $ad->disabled && awpcp_should_disable_existing_listing( $ad ) ) {
+        if ( $should_disable_listing && ! $ad->disabled ) {
             $ad->disable();
             $ad->clear_disabled_date();
-        } else if ( $ad->disabled ) {
+        } else if ( $should_disable_listing ) {
             $ad->clear_disabled_date();
         }
 
@@ -234,17 +236,20 @@ class AWPCP_ListingsAPI {
      */
     public function send_verification_email( $ad ) {
         $mail = new AWPCP_Email;
-        $mail->to[] = awpcp_format_email_address( $ad->ad_contact_email, $ad->ad_contact_name );
-        $mail->subject = sprintf( __( 'Verify the email address used for Ad "%s"', 'another-wordpress-classifieds-plugin' ), $ad->get_title() );
+        $mail->to[] = awpcp_format_recipient_address( $ad->ad_contact_email, $ad->ad_contact_name );
+        $subject = get_awpcp_option( 'verifyemailsubjectline' );
+        $message = get_awpcp_option( 'verifyemailbodymessage' );
+        $mail->subject = str_replace( '$title', $ad->get_title(), $subject );
 
         $verification_link = awpcp_get_email_verification_url( $ad->ad_id );
 
-        $template = AWPCP_DIR . '/frontend/templates/email-ad-awaiting-verification.tpl.php';
-        $mail->prepare( $template, array(
-            'contact_name' => $ad->ad_contact_name,
-            'ad_title' => $ad->get_title(),
-            'verification_link' => $verification_link
-        ) );
+        $message = str_replace( '$title', $ad->get_title(), $message );
+        $message = str_replace( '$author_name', $ad->ad_contact_name, $message );
+        $message = str_replace( '$verification_link', $verification_link, $message );
+        $message = str_replace( '$website_name', awpcp_get_blog_name(), $message );
+        $message = str_replace( '$website_url', home_url(), $message );
+
+        $mail->body = $message;
 
         if ( $mail->send() ) {
             $emails_sent = intval( awpcp_get_ad_meta( $ad->ad_id, 'verification_emails_sent', true ) );

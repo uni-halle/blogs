@@ -135,7 +135,7 @@ function awpcp_should_enable_existing_listing( $listing ) {
  */
 function awpcp_ad_renewed_user_email( $ad ) {
 	$mail = new AWPCP_Email;
-	$mail->to[] = awpcp_format_email_address( $ad->ad_contact_email, $ad->ad_contact_name );
+	$mail->to[] = awpcp_format_recipient_address( $ad->ad_contact_email, $ad->ad_contact_name );
 	$mail->subject = sprintf( get_awpcp_option( 'ad-renewed-email-subject' ), $ad->get_title() );
 
 	$introduction = get_awpcp_option( 'ad-renewed-email-body' );
@@ -305,7 +305,7 @@ function awpcp_ad_posted_user_email( $ad, $transaction = null, $message='' ) {
 	);
 
 	$email = new AWPCP_Email;
-	$email->to[] = "{$ad->ad_contact_name} <{$ad->ad_contact_email}>";
+	$email->to[] = awpcp_format_recipient_address( $ad->ad_contact_email, $ad->ad_contact_name );
 	$email->subject = get_awpcp_option('listingaddedsubject');
 	$email->prepare( AWPCP_DIR . '/frontend/templates/email-place-ad-success-user.tpl.php', $params );
 

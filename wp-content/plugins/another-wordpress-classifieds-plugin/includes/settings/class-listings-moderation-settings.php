@@ -35,8 +35,6 @@ class AWPCP_ListingsModerationSettings {
 
         $settings->add_setting( $key, 'ad-poster-email-address-whitelist', __( 'Allowed domains in Ad poster email', 'another-wordpress-classifieds-plugin' ), 'textarea', '', __( 'Only email addresses with a domain in the list above will be allowed. *.foo.com will match a.foo.com, b.foo.com, etc. but foo.com will match foo.com only. Please type a domain per line.', 'another-wordpress-classifieds-plugin' ) );
 
-        $settings->add_setting( $key, 'noadsinparentcat', __( 'Prevent ads from being posted to top level categories?', 'another-wordpress-classifieds-plugin' ), 'checkbox', 0, '' );
-        $settings->add_setting( $key, 'use-multiple-category-dropdowns', __( 'Use multiple dropdowns to choose categories', 'another-wordpress-classifieds-plugin' ), 'checkbox', 0, __( 'If checked, a dropdown with top level categories will be shown. When the user chooses a category, a new dropdown will apper showing the sub-categories of the selected category, if any. Useful if your website supports a high number of categories.', 'another-wordpress-classifieds-plugin' ) );
 
         $settings->add_setting(
             $key,
@@ -73,6 +71,7 @@ class AWPCP_ListingsModerationSettings {
             7,
             $days_before_expired_listings_are_deleted_description
         );
+        $settings->add_behavior( $key, 'days-before-expired-listings-are-deleted', 'shownUnless', 'autoexpiredisabledelete' );
     }
 
     public function validate_all_settings( $options, $group ) {

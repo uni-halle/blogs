@@ -139,7 +139,7 @@ class AWPCP_MultipleRegionSelector {
 
                 $regions[$i][$type] = $field;
                 $regions[$i][$type]['options'] = $this->get_region_field_options( $context, $type, $selected, $hierarchy );
-                $regions[$i][$type]['selected'] = awpcp_array_data( $type, null, $region );
+                $regions[$i][$type]['selected'] = $selected;
                 $regions[$i][$type]['required'] = ( 'search' == $context ) ? false : $field['required'];
 
                 if ( isset( $translations[ $type ] ) ) {

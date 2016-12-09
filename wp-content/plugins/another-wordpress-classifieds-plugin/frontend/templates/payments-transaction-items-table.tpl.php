@@ -10,11 +10,11 @@
     <?php foreach ($transaction->get_items() as $item): ?>
 
         <tr>
-            <td class="item">
+            <td class="item" data-title="<?php echo _x( 'Item', 'transaction items', 'another-wordpress-classifieds-plugin' ); ?>">
                 <?php echo $item->name; ?><br>
                 <?php echo $item->description; ?>
             </td>
-            <td class="amount">
+            <td class="amount" data-title="<?php echo _x( 'Amount', 'transaction items', 'another-wordpress-classifieds-plugin' ); ?>">
             <?php if ( $item->payment_type === AWPCP_Payment_Transaction::PAYMENT_TYPE_MONEY ): ?>
                 <?php echo esc_html( awpcp_format_money( $item->amount ) ); ?>
             <?php else: ?>

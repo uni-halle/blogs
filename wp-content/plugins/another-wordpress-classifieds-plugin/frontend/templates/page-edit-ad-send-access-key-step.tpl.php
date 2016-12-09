@@ -20,7 +20,7 @@
 
         <p class="awpcp-form-spacer">
             <label for="ad-email"><?php echo esc_html( __( 'Enter your email address', 'another-wordpress-classifieds-plugin' ) ); ?></label>
-            <input class="inputbox" id="ad-email" type="text" size="50" name="ad_email" value="<?php echo awpcp_esc_attr( $form['ad_email'] ); ?>" />
+            <input class="awpcp-textfield inputbox" id="ad-email" type="text" size="50" name="ad_email" value="<?php echo awpcp_esc_attr( $form['ad_email'] ); ?>" />
             <?php echo awpcp_form_error( 'ad_email', $errors ); ?>
         </p>
 

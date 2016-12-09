@@ -73,7 +73,7 @@ AWPCP.run('awpcp/page-place-ads', [
             enabled = self.terms.not(disabled.get());
             if (enabled.find(':radio:checked').length === 0) {
                 radio = enabled.eq(0).find(':radio');
-                if (radio.prop) {
+                if ( $.fn.prop ) {
                     radio.prop('checked', true);
                 } else {
                     radio.attr('checked', 'checked');

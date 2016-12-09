@@ -1,6 +1,12 @@
 /*global AWPCP*/
 
-AWPCP.define('awpcp/asynchronous-tasks', ['jquery', 'knockout', 'moment', 'awpcp/settings'],
+AWPCP.define('awpcp/asynchronous-tasks', [
+    'jquery',
+    'knockout',
+    'moment',
+    'awpcp/settings',
+    'awpcp/knockout-progress'
+],
 function($, ko, moment, settings) {
 
     function AsynchronousTask(data) {
@@ -115,17 +121,6 @@ function($, ko, moment, settings) {
             return progress + '%';
         }, this).extend({ throttle: 1 });
     }
-
-    ko.bindingHandlers.progress = {
-        init: function(element, accessor) {
-            var observable = accessor();
-            $(element).animate({width: observable()});
-        },
-        update: function(element, accessor) {
-            var observable = accessor();
-            $(element).animate({width: observable()});
-        }
-    };
 
     $.extend(AsynchronousTasks.prototype, {
         render: function(element) {

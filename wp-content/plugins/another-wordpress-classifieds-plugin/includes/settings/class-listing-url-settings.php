@@ -67,7 +67,7 @@ class AWPCP_ListingsURLSettings {
     public function render_section_header() {
         $introduction = _x( 'These settings affect the URL path shown for the listing. You can include or remove certain elements for SEO purposes', 'listing url settings section', 'another-wordpress-classifieds-plugin' );
 
-        $example_path = '<code>/awpcp/state/city/listing-title</code>';
+        $example_path = '<code>/awpcp/listings/id/listing-title/city/state/category</code>';
         $example_text = _x( 'Example: <example-path>.', 'listing url settings section', 'another-wordpress-classifieds-plugin' );
         $example_text = str_replace( '<example-path>', $example_path, $example_text );
 

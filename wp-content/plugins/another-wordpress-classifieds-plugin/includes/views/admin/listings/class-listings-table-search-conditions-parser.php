@@ -7,6 +7,7 @@ function awpcp_listings_table_search_by_condition_parser() {
         new AWPCP_ListingsTableSearchByLocationCondition(),
         new AWPCP_ListingsTableSearchByTitleCondition(),
         new AWPCP_ListingsTableSearchByUserCondition(),
+        new AWPCP_ListingsTableSearchByPhoneCondition(),
     );
 
     if ( awpcp_current_user_is_moderator() ) {

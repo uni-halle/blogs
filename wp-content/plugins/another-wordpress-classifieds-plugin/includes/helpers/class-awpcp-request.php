@@ -40,6 +40,13 @@ class AWPCP_Request {
     }
 
     /**
+     * @since 3.6.6
+     */
+    public function scheme() {
+        return is_ssl() ? 'https' : 'http';
+    }
+
+    /**
      * Returns the domain used in the current request, optionally replacing
      * the www part of the domain with $www_prefix_replacement.
      *

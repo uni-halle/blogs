@@ -12,8 +12,16 @@ function awpcp_query() {
  */
 class AWPCP_Query {
 
+    public function is_post_listings_page() {
+        return $this->is_page_that_has_shortcode( 'AWPCPPLACEAD' );
+    }
+
     public function is_single_listing_page() {
         return apply_filters( 'awpcp-is-single-listing-page', $this->is_page_that_has_shortcode( 'AWPCPSHOWAD' ) );
+    }
+
+    public function is_reply_to_listing_page() {
+        return $this->is_page_that_has_shortcode( 'AWPCPREPLYTOAD' );
     }
 
     public function is_browse_listings_page() {

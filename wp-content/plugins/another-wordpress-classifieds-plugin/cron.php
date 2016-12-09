@@ -9,6 +9,7 @@ function awpcp_schedule_activation() {
         'awpcp-clean-up-payment-transactions' => 'daily',
         'awpcp-clean-up-non-verified-ads' => 'daily',
         'awpcp-task-queue-cron' => 'hourly',
+        'awpcp-check-license-status' => 'daily',
     );
 
     foreach ( $cron_jobs as $cron_job => $frequency ) {
@@ -22,6 +23,7 @@ function awpcp_schedule_activation() {
     add_action('awpcp_ad_renewal_email_hook', 'awpcp_ad_renewal_email');
     add_action('awpcp-clean-up-payment-transactions', 'awpcp_clean_up_payment_transactions');
     add_action( 'awpcp-clean-up-payment-transactions', 'awpcp_clean_up_non_verified_ads_handler' );
+    add_action( 'awpcp-check-license-status', 'awpcp_check_license_status' );
 
     // if ( awpcp_current_user_is_admin() ) {
     //     wp_clear_scheduled_hook( 'doadexpirations_hook' );
@@ -47,6 +49,24 @@ function awpcp_schedule_activation() {
     // }
 }
 
+/**
+ * @since 3.6.6
+ */
+function awpcp_check_license_status() {
+    $license_status_check = get_site_transient( 'awpcp-license-status-check' );
+
+    if ( ! empty( $license_status_check ) ) {
+        return;
+    }
+
+    $licenses_manager = awpcp_licenses_manager();
+
+    foreach ( awpcp_modules_manager()->get_modules() as $module ) {
+        $licenses_manager->check_license_status( $module->name, $module->slug );
+    }
+
+    set_site_transient( 'awpcp-license-status-check', current_time( 'mysql' ), WEEK_IN_SECONDS );
+}
 
 /*
  * Function to disable ads run hourly
@@ -97,7 +117,7 @@ function doadexpirations() {
         $body.= "\n\n";
 
         if ( $notify_expiring ) {
-            $user_email = get_adposteremail( $ad->ad_id );
+            $user_email = awpcp_format_recipient_address( get_adposteremail( $ad->ad_id ) );
             if ( ! empty( $user_email ) ) {
                 awpcp_process_mail( $admin_sender_email, $user_email, $subject, $body, $nameofsite, $admin_recipient_email );
             }
@@ -161,7 +181,7 @@ function awpcp_ad_renewal_email() {
         $email = new AWPCP_Email();
 
         $email->from = $admin_sender_email;
-        $email->to = $listing->ad_contact_email;
+        $email->to = awpcp_format_recipient_address( $listing->ad_contact_email );
         $email->subject = $notification->render_subject( $listing );
         $email->body = $notification->render_body( $listing );
 

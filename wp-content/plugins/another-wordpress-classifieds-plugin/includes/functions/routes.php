@@ -654,9 +654,13 @@ function awpcp_ajaxurl($overwrite=false) {
     static $ajaxurl = false;
 
     if ($overwrite || $ajaxurl === false) {
-        $url = admin_url('admin-ajax.php');
-        $parts = parse_url($url);
-        $ajaxurl = str_replace($parts['host'], awpcp_request()->domain(), $url);
+        $request = awpcp_request();
+
+        $ajaxurl = admin_url( 'admin-ajax.php' );
+        $parts = parse_url( $ajaxurl );
+
+        $ajaxurl = str_replace( $parts['host'], $request->domain(), $ajaxurl );
+        $ajaxurl = str_replace( $parts['scheme'], $request->scheme(), $ajaxurl );
     }
 
     return $ajaxurl;

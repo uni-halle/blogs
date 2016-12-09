@@ -1,7 +1,14 @@
 <?php
 
 function awpcp_send_listing_to_facebook_helper() {
-    return new AWPCP_SendListingToFacebookHelper( AWPCP_Facebook::instance(), awpcp_send_to_facebook_helper(), awpcp_listings_collection(), awpcp_listings_metadata(), awpcp()->settings );
+    return new AWPCP_SendListingToFacebookHelper(
+        AWPCP_Facebook::instance(),
+        awpcp_send_to_facebook_helper(),
+        awpcp_listings_collection(),
+        awpcp_listings_metadata(),
+        awpcp()->settings,
+        awpcp_wordpress()
+    );
 }
 
 class AWPCP_SendListingToFacebookHelper {
@@ -11,13 +18,15 @@ class AWPCP_SendListingToFacebookHelper {
     private $listings_collection;
     private $listings_metadata;
     private $settings;
+    private $wordpress;
 
-    public function __construct( $facebook_config, $facebook_helper, $listings_collection, $listings_metadata, $settings ) {
+    public function __construct( $facebook_config, $facebook_helper, $listings_collection, $listings_metadata, $settings, $wordpress ) {
         $this->facebook_config = $facebook_config;
         $this->facebook_helper = $facebook_helper;
         $this->listings_collection = $listings_collection;
         $this->listings_metadata = $listings_metadata;
         $this->settings = $settings;
+        $this->wordpress = $wordpress;
     }
 
     public function schedule_listing_if_necessary( $listing ) {
@@ -47,7 +56,11 @@ class AWPCP_SendListingToFacebookHelper {
     }
 
     private function schedule_send_to_facebook_action( $listing ) {
-        wp_schedule_single_event( time() + 10, 'awpcp-send-listing-to-facebook', array( $listing->ad_id, current_time( 'timestamp' ) ) );
+        $this->wordpress->schedule_single_event(
+            time() + 10,
+            'awpcp-send-listing-to-facebook',
+            array( $listing->ad_id, $this->wordpress->current_time( 'timestamp' ) )
+        );
     }
 
     public function send_listing_to_facebook( $listing_id ) {

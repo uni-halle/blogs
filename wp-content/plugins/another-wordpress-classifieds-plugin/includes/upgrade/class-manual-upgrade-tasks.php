@@ -48,6 +48,12 @@ class AWPCP_Manual_Upgrade_Tasks {
             __( 'Calculate image dimensions', 'another-wordpress-classifieds-plugin' ),
             'awpcp_calculate_image_dimensions_upgrade_task_handler'
         );
+
+        $this->upgrade_tasks->register_upgrade_task(
+            'awpcp-store-phone-number-digits',
+            __( 'Store phone number digits', 'another-wordpress-classifieds-plugin' ),
+            'awpcp_store_phone_number_digits_upgrade_task_handler'
+        );
     }
 
     public function register_upgrade_task_handlers() {

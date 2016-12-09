@@ -61,3 +61,11 @@ function awpcp_admin_page_title() {
     $sections = array_merge( func_get_args(), array( __( 'Classifieds Management System', 'another-wordpress-classifieds-plugin' ) ) );
     return implode( ' &ndash; ', $sections );
 }
+
+function awpcp_get_digits_from_string( $string ) {
+    if ( ! preg_match_all( '/\d+/', $string, $matches ) ) {
+        return '';
+    }
+
+    return implode( '', $matches[0] );
+}

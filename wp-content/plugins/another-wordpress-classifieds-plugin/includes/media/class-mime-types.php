@@ -20,6 +20,10 @@ class AWPCP_MimeTypes {
         }
 
         if ( empty( $mime_type ) ) {
+            $mime_type = $this->get_file_mime_type_from_wp_check_filetype( $filepath );
+        }
+
+        if ( empty( $mime_type ) ) {
             $mime_type = $this->get_file_mime_type_from_array( $filepath );
         }
 
@@ -36,7 +40,21 @@ class AWPCP_MimeTypes {
     }
 
     private function get_file_mime_type_with_mime_content_type( $filepath ) {
-        return mime_content_type( $filepath );
+        $mime_type = mime_content_type( $filepath );
+
+        // We don't trust mime_content_type when it returns 'text/plain', because that
+        // function is known to return that value for PNG, GIF or even any file.
+        // https://github.com/drodenbaugh/awpcp/issues/1653
+        if ( 'text/plain' == $mime_type ) {
+            return false;
+        }
+
+        return $mime_type;
+    }
+
+    private function get_file_mime_type_from_wp_check_filetype( $filepath ) {
+        $type_and_ext = wp_check_filetype_and_ext( $filepath, awpcp_utf8_basename( $filepath ) );
+        return $type_and_ext['type'];
     }
 
     private function get_file_mime_type_from_array( $filepath ) {

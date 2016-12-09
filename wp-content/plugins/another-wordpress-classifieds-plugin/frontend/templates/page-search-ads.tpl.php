@@ -17,7 +17,7 @@
 
     <p class='awpcp-form-spacer'>
         <label for="query"><?php _e("Search for Ads containing this word or phrase", 'another-wordpress-classifieds-plugin'); ?>:</label>
-        <input type="text" id="query" class="inputbox" size="50" name="keywordphrase" value="<?php echo esc_attr($form['query']); ?>" />
+        <input type="text" id="query" class="awpcp-textfield inputbox" size="50" name="keywordphrase" value="<?php echo esc_attr($form['query']); ?>" />
         <?php echo awpcp_form_error('query', $errors); ?>
     </p>
 
@@ -46,9 +46,9 @@
         <label for="min-price"><?php _e( 'Price', 'another-wordpress-classifieds-plugin' ); ?></label>
         <span class="awpcp-range-search">
             <label for="min-price"><?php _e( "Min", 'another-wordpress-classifieds-plugin' ); ?></label>
-            <input id="min-price" class="inputbox money" type="text" name="searchpricemin" value="<?php echo esc_attr( $form['min_price'] ); ?>">
+            <input id="min-price" class="awpcp-textfield inputbox money" type="text" name="searchpricemin" value="<?php echo esc_attr( $form['min_price'] ); ?>">
             <label for="max-price"><?php _e( "Max", 'another-wordpress-classifieds-plugin' ); ?></label>
-            <input id="max-price" class="inputbox money" type="text" name="searchpricemax" value="<?php echo esc_attr( $form['max_price'] ); ?>">
+            <input id="max-price" class="awpcp-textfield inputbox money" type="text" name="searchpricemax" value="<?php echo esc_attr( $form['max_price'] ); ?>">
         </label>
         <?php echo awpcp_form_error('min_price', $errors); ?>
         <?php echo awpcp_form_error('max_price', $errors); ?>

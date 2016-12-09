@@ -998,7 +998,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         $allow_html = (bool) get_awpcp_option('allowhtmlinadtext');
 
         if (!$allow_html) {
-            $details = esc_html( $details );
+            $details = wp_strip_all_tags( $details );
         } else {
             $details = wp_kses_post( $details );
         }
@@ -1009,6 +1009,8 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
 
         if ($allow_html) {
             $details = force_balance_tags($details);
+        }else{
+        	$details = esc_html( $details );
         }
 
         return $details;
@@ -1061,6 +1063,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             $ad->ad_details = $this->prepare_ad_details($data['ad_details'], $characters['characters_allowed']);
             $ad->ad_contact_name = $data['ad_contact_name'];
             $ad->ad_contact_phone = $data['ad_contact_phone'];
+            $ad->phone_number_digits = awpcp_get_digits_from_string( $data['ad_contact_phone'] );
             $ad->ad_contact_email = $data['ad_contact_email'];
             $ad->websiteurl = $data['websiteurl'];
             $ad->ad_item_price = $data['ad_item_price'] * 100;

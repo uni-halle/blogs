@@ -133,7 +133,7 @@ function awpcp_payment_failed_email($transaction, $message='') {
     // user email
 
     $mail = new AWPCP_Email;
-    $mail->to[] = "{$user->display_name} <{$user->user_email}>";
+    $mail->to[] = awpcp_format_recipient_address( $user->user_email, $user->display_name );
     $mail->subject = get_awpcp_option('paymentabortedsubjectline');
 
     $template = AWPCP_DIR . '/frontend/templates/email-abort-payment-user.tpl.php';

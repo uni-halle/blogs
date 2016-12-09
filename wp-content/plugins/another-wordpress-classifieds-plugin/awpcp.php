@@ -4,7 +4,7 @@
  * Plugin Name: Another WordPress Classifieds Plugin (AWPCP)
  * Plugin URI: http://www.awpcp.com
  * Description: AWPCP - A plugin that provides the ability to run a free or paid classified ads service on your WP site. <strong>!!!IMPORTANT!!!</strong> It's always a good idea to do a BACKUP before you upgrade AWPCP!
- * Version: 3.6.5
+ * Version: 3.7.1
  * Author: D. Rodenbaugh
  * License: GPLv2 or any later version
  * Author URI: http://www.skylineconsult.com
@@ -271,6 +271,7 @@ require_once( AWPCP_DIR . "/includes/upgrade/class-fix-empty-media-mime-type-upg
 require_once( AWPCP_DIR . "/includes/upgrade/class-manual-upgrade-tasks-manager.php" );
 require_once( AWPCP_DIR . "/includes/upgrade/class-manual-upgrade-tasks.php" );
 require_once( AWPCP_DIR . "/includes/upgrade/class-sanitize-media-filenames-upgrade-task-handler.php" );
+require( AWPCP_DIR . '/includes/upgrade/class-store-phone-number-digits-upgrade-task-handler.php' );
 require_once( AWPCP_DIR . "/includes/upgrade/class-upgrade-task-ajax-handler-factory.php" );
 require_once( AWPCP_DIR . "/includes/upgrade/class-upgrade-task-ajax-handler.php" );
 
@@ -280,9 +281,9 @@ require_once( AWPCP_DIR . "/includes/upgrade/class-migrate-regions-information-t
 require_once( AWPCP_DIR . "/includes/upgrade/class-update-media-status-task-handler.php" );
 
 require_once( AWPCP_DIR . "/includes/wordpress/class-wordpress-scripts.php" );
+require_once( AWPCP_DIR . "/includes/wordpress/class-wordpress.php" );
 
-require( AWPCP_DIR . '/includes/class-csv-importer.php' );
-
+require( AWPCP_DIR . '/includes/class-authentication-redirection-handler.php' );
 require_once( AWPCP_DIR . '/includes/class-edit-listing-url-placeholder.php' );
 require_once( AWPCP_DIR . '/includes/class-edit-listing-link-placeholder.php' );
 
@@ -336,6 +337,16 @@ require_once( AWPCP_DIR . '/admin/form-fields/class-form-fields-admin-page.php' 
 require_once( AWPCP_DIR . '/admin/form-fields/class-form-fields-table-factory.php' );
 require_once( AWPCP_DIR . '/admin/form-fields/class-form-fields-table.php' );
 require_once( AWPCP_DIR . '/admin/form-fields/class-update-form-fields-order-ajax-handler.php' );
+require_once( AWPCP_DIR . '/admin/import/class-csv-import-session.php' );
+require_once( AWPCP_DIR . '/admin/import/class-csv-import-sessions-manager.php' );
+require_once( AWPCP_DIR . '/admin/import/class-csv-importer.php' );
+require_once( AWPCP_DIR . '/admin/import/class-csv-importer-factory.php' );
+require_once( AWPCP_DIR . '/admin/import/class-csv-importer-delegate.php' );
+require_once( AWPCP_DIR . '/admin/import/class-csv-importer-delegate-factory.php' );
+require_once( AWPCP_DIR . '/admin/import/class-csv-reader-factory.php' );
+require_once( AWPCP_DIR . '/admin/import/class-csv-reader.php' );
+require_once( AWPCP_DIR . '/admin/import/class-import-listings-ajax-handler.php' );
+require( AWPCP_DIR . '/admin/listings/class-listings-table-search-by-phone-condition.php' );
 
 // frontend functions
 require_once(AWPCP_DIR . "/frontend/placeholders.php");
@@ -350,6 +361,7 @@ require_once(AWPCP_DIR . "/frontend/widget-search.php");
 require_once(AWPCP_DIR . "/frontend/widget-latest-ads.php");
 require_once(AWPCP_DIR . "/frontend/widget-random-ad.php");
 require_once(AWPCP_DIR . "/frontend/widget-categories.php");
+require( AWPCP_DIR . '/frontend/class-wordpress-status-header-filter.php' );
 
 
 class AWPCP {
@@ -493,7 +505,7 @@ class AWPCP {
 
         add_filter( 'pre_set_site_transient_update_plugins', array( $this->modules_updater, 'filter_plugins_version_information' ) );
         add_filter( 'plugins_api', array( $this->modules_updater, 'filter_detailed_plugin_information' ), 10, 3 );
-        add_filter( 'http_request_args', array( $this->modules_updater, 'filter_http_request_args' ), 10, 2 );
+        add_filter( 'upgrader_pre_download', array( $this->modules_updater, 'setup_http_request_args_filter' ), 10, 3 );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 1000 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ), 1000 );
@@ -641,6 +653,11 @@ class AWPCP {
         } else {
             // load resources required in frontend screens only.
             add_action( 'template_redirect', array( awpcp_secure_url_redirection_handler(), 'dispatch' ) );
+
+            add_action( 'template_redirect', array( awpcp_authentication_redirection_handler(), 'maybe_redirect' ) );
+
+            $filter = awpcp_wordpress_status_header_filter();
+            add_filter( 'status_header', array( $filter, 'filter_status_header' ), 10, 4 );
         }
 
         add_filter( 'awpcp-content-placeholders', array( $this, 'register_content_placeholders' ) );
@@ -716,6 +733,9 @@ class AWPCP {
         $handler = awpcp_drip_autoresponder_ajax_handler();
         add_action( 'wp_ajax_awpcp-autoresponder-user-subscribed', array( $handler, 'ajax' ) );
         add_action( 'wp_ajax_awpcp-autoresponder-dismissed', array( $handler, 'ajax' ) );
+
+        $handler = awpcp_import_listings_ajax_handler();
+        add_action( 'wp_ajax_awpcp-import-listings', array( $handler, 'ajax' ) );
     }
 
 	public function admin_notices() {
@@ -940,6 +960,22 @@ class AWPCP {
         wp_register_script( 'awpcp-momentjs-with-locales', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js', array(), '2.10.6', true );
         wp_register_script( 'awpcp-jquery-breakpoints', "{$js}/jquery-breakpoints/jquery-breakpoints.min.js", array('jquery'), $awpcp_db_version, true );
 
+        wp_register_script(
+            'awpcp-jquery-usableform',
+            "{$js}/jquery-usableform/jquery-usableform.min.js",
+            array( 'jquery' ),
+            $awpcp_db_version,
+            true
+        );
+
+        wp_register_script(
+            'awpcp-knockout-progress',
+            "{$js}/knockout-progress/knockout-progress.min.js",
+            array( 'awpcp' ),
+            $awpcp_db_version,
+            true
+        );
+
 		/* helpers */
 
 		wp_register_script(
@@ -973,9 +1009,34 @@ class AWPCP {
 		wp_register_script( 'awpcp-admin-listings', "{$js}/admin-listings.js", array( 'awpcp', 'awpcp-admin-wp-table-ajax', 'plupload-all' ), $awpcp_db_version, true );
 		wp_register_script('awpcp-admin-users', "{$js}/admin-users.js", array('awpcp-admin-wp-table-ajax'), $awpcp_db_version, true);
 		wp_register_script( 'awpcp-admin-attachments', "{$js}/admin-attachments.js", array( 'awpcp' ), $awpcp_db_version, true );
-		wp_register_script( 'awpcp-admin-import', "{$js}/admin-import.js", array( 'awpcp', 'jquery-ui-datepicker', 'jquery-ui-autocomplete' ), $awpcp_db_version, true );
+
+        wp_register_script(
+            'awpcp-admin-import',
+            "{$js}/admin-import.js",
+            array(
+                'awpcp',
+                'awpcp-jquery-usableform',
+                'awpcp-knockout-progress',
+                'jquery-ui-datepicker',
+                'jquery-ui-autocomplete',
+            ),
+            $awpcp_db_version,
+            true
+        );
+
         wp_register_script( 'awpcp-admin-form-fields', "{$js}/admin-form-fields.js", array( 'awpcp', 'jquery-ui-sortable', 'jquery-effects-highlight', 'jquery-effects-core' ), $awpcp_db_version, true );
-        wp_register_script( 'awpcp-admin-manual-upgrade', "{$js}/admin-manual-upgrade.js", array( 'awpcp', 'awpcp-momentjs-with-locales' ), $awpcp_db_version, true );
+
+        wp_register_script(
+            'awpcp-admin-manual-upgrade',
+            "{$js}/admin-manual-upgrade.js",
+            array(
+                'awpcp',
+                'awpcp-knockout-progress',
+                'awpcp-momentjs-with-locales'
+            ),
+            $awpcp_db_version,
+            true
+        );
 
         wp_register_script(
             'awpcp-admin-pointers',

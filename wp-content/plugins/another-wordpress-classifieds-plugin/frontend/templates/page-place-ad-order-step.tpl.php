@@ -29,8 +29,8 @@
 
     <p class="awpcp-form-spacer">
         <?php $dropdown = new AWPCP_CategoriesDropdown(); ?>
-        <?php echo $dropdown->render( array( 'selected' => awpcp_array_data('category', '', $form), 'name' => 'category' ) ); ?>
-        <?php echo awpcp_form_error('category', $form_errors); ?>
+        <?php echo $dropdown->render( array( 'selected' => awpcp_array_data( 'category', '', $form ), 'name' => 'category', 'hide_empty' => false ) ); ?>
+        <?php echo awpcp_form_error( 'category', $form_errors ); ?>
     </p>
 
     <?php if (awpcp_current_user_is_moderator()): ?>

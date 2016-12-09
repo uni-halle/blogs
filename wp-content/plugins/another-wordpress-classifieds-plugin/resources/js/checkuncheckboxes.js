@@ -54,10 +54,18 @@ if (typeof jQuery !== 'undefined') {
 
             checkboxes = table.find('tbody tr > :nth-child(' + index + ') :checkbox');
 
-            if (element.attr('checked') !== 'checked') {
-                checkboxes.attr('checked', 'checked');
+            if ( element[ $.fn.prop ? 'prop' : 'attr' ]('checked') ) {
+                if ( $.fn.prop ) {
+                    checkboxes.prop( 'checked', true );
+                } else {
+                    checkboxes.attr( 'checked', 'checked' );
+                }
             } else {
-                checkboxes.removeAttr('checked');
+                if ( $.fn.prop ) {
+                    checkboxes.prop( 'checked', false );
+                } else {
+                    checkboxes.removeAttr('checked');
+                }
             }
         };
     })(jQuery);

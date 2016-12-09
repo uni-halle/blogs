@@ -1,7 +1,13 @@
 <?php
 
 function awpcp_licenses_manager() {
-    return new AWPCP_LicensesManager( awpcp_easy_digital_downloads(), awpcp()->settings );
+    static $instance = null;
+
+    if ( is_null( $instance ) ) {
+        $instance = new AWPCP_LicensesManager( awpcp_easy_digital_downloads(), awpcp()->settings );
+    }
+
+    return $instance;
 }
 
 class AWPCP_LicensesManager {
@@ -41,45 +47,21 @@ class AWPCP_LicensesManager {
     }
 
     public function get_license_status( $module_name, $module_slug ) {
-        static $cache = array();
-
-        if ( ! isset( $cache[ $module_slug ] ) ) {
-            $cache[ $module_slug ] = $this->get_and_update_license_status( $module_name, $module_slug );
-        }
-
-        return $cache[ $module_slug ];
+        return $this->settings->get_option( "{$module_slug}-license-status", self::LICENSE_STATUS_UNKNOWN );
     }
 
-    private function get_and_update_license_status( $module_name, $module_slug ) {
-        $license_status = get_site_transient( $this->get_license_status_transient_key( $module_slug ) );
-
-        if ( $license_status !== false ) {
-            return $license_status;
-        }
-
+    public function check_license_status( $module_name, $module_slug ) {
         try {
             $license_status = $this->get_license_status_from_store( $module_name, $module_slug );
-        } catch ( AWPCP_Infinite_Loop_Detected_Exception $e ) {
-            $license_status = null;
-            awpcp_flash( $e->getMessage() );
         } catch ( AWPCP_Easy_Digital_Downloads_Exception $e ) {
             $license_status = self::LICENSE_STATUS_UNKNOWN;
             awpcp_flash( $e->getMessage() );
+        } catch ( AWPCP_Infinite_Loop_Detected_Exception $e ) {
+            awpcp_flash( $e->getMessage() );
+            return;
         }
 
-        if ( ! is_null( $license_status ) ) {
-            $this->update_license_status( $module_slug, $license_status );
-        } else {
-            $license_status = self::LICENSE_STATUS_UNKNOWN;
-        }
-
-        return $license_status;
-    }
-
-    private function get_license_status_transient_key( $module_slug ) {
-        // using abbreviations (ls: license-status) because transient keys
-        // should be 40 characters long or less.
-        return "{$module_slug}-ls";
+        $this->update_license_status( $module_slug, $license_status );
     }
 
     private function get_license_status_from_store( $module_name, $module_slug ) {
@@ -96,7 +78,6 @@ class AWPCP_LicensesManager {
     }
 
     private function update_license_status( $module_slug, $license_status ) {
-        set_site_transient( $this->get_license_status_transient_key( $module_slug ), $license_status, DAY_IN_SECONDS );
         $this->settings->set_or_update_option( "{$module_slug}-license-status", $license_status );
     }
 
@@ -139,7 +120,6 @@ class AWPCP_LicensesManager {
     }
 
     public function drop_license_status( $module_slug ) {
-        delete_site_transient( $this->get_license_status_transient_key( $module_slug ) );
         $this->settings->set_or_update_option( "{$module_slug}-license-status", false );
     }
 

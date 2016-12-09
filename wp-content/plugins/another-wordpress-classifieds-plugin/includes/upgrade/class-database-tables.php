@@ -38,6 +38,7 @@ class AWPCP_Database_Tables {
             `ad_details` TEXT CHARACTER SET <charset> COLLATE <collate> NOT NULL,
             `ad_contact_name` VARCHAR(255) CHARACTER SET <charset> COLLATE <collate> NOT NULL DEFAULT '',
             `ad_contact_phone` VARCHAR(255) CHARACTER SET <charset> COLLATE <collate> NOT NULL DEFAULT '',
+            `phone_number_digits` VARCHAR(25) CHARACTER SET <charset> COLLATE <collate> NOT NULL DEFAULT '',
             `ad_contact_email` VARCHAR(255) CHARACTER SET <charset> COLLATE <collate> NOT NULL DEFAULT '',
             `websiteurl` VARCHAR( 375 ) CHARACTER SET <charset> COLLATE <collate> NOT NULL,
             `ad_city` VARCHAR(255) CHARACTER SET <charset> COLLATE <collate> NOT NULL DEFAULT '',

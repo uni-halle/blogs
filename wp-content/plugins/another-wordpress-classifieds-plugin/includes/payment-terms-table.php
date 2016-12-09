@@ -174,10 +174,12 @@ class AWPCP_PaymentTermsTable {
         if ($value == $selected)
             $attrs['checked'] = 'checked';
 
-        $html = sprintf( '<input %s>', awpcp_html_attributes( $attrs ) );
-        $html.= sprintf( '&nbsp;<label for="%s">%s</label>', esc_attr( $value ), esc_html( $amount ) );
-
-        return $html;
+        return sprintf(
+            '<label class="awpcp-payment-terms-table-payment-term-price for="%s">%s%s</label>',
+            esc_attr( $value ),
+            sprintf( '<input %s>', awpcp_html_attributes( $attrs ) ),
+            '<span>' . esc_html( $amount ) . '</span>'
+        );
     }
 
     public function render() {

@@ -88,7 +88,15 @@ class AWPCP_TaskQueue {
         $lockfile = $this->get_lock_file();
 
         if ( ! file_exists( $lockfile ) ) {
-            return touch( $lockfile );
+            if ( file_exists( dirname( $lockfile ) ) ) {
+                return touch( $lockfile );
+            }
+
+            if ( mkdir( dirname( $lockfile ), awpcp_directory_permissions(), true ) ) {
+                return touch( $lockfile );
+            }
+
+            return false;
         } else if ( time() - filectime( $lockfile ) > 30 * 60 ) {
             unlink( $lockfile );
             return touch( $lockfile );
