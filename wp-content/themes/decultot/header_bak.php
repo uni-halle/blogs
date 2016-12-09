@@ -31,26 +31,21 @@
 			if ( $description || is_customize_preview() ) : ?>
 			<div id="site_description" class="site-description"><p><?php echo $description; ?></p></div>
 		<?php endif; ?>
-
 		<div class="site-header-main">
-
 			<div id="site_branding" class="site-branding">
 
 				<?php if ( is_front_page() ) : ?>
 					<h1 class="site-title">
-						Lehrstuhl für Neuzeitliche Schriftkultur<br>und europäischen Wissenstransfer
-						<span class="site-title-name">Prof. Dr. Elisabeth Décultot</span>
+						Neuzeitliche Schriftkultur<br>und europäischer Wissenstransfer
 					</h1>
 				<?php else : ?>
-					<p class="site-title">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-							Lehrstuhl für Neuzeitliche Schriftkultur<br>und europäischen Wissenstransfer
-						</a>
-						<span class="site-title-name">Prof. Dr. Elisabeth Décultot</span>
-					</p>
+					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">Neuzeitliche
+							Schriftkultur<br>und europäischer Wissenstransfer</a></p>
 				<?php endif; ?>
 
 			</div><!-- .site-branding -->
+
+
 
 			<?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) ) : ?>
 				<button id="menu-toggle" class="menu-toggle"><?php _e( 'Menu', 'twentysixteen' ); ?></button>

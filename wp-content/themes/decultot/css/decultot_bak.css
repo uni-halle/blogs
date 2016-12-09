@@ -100,8 +100,6 @@ ul { list-style: none; }
 .site-branding .site-title a { color: #035292; }
 .site-branding .site-title a:hover, .site-branding .site-title a:focus { color: #035292; font-style: normal; }
 
-.site-title-name { display: block; font-size: 0.64em; margin-top: 0.5em; }
-
 .primary-menu li, .footer-nav li { font-size: 0.9em; text-transform: uppercase; }
 .primary-menu li.current-menu-item a, .primary-menu li.current-menu-parent a, .footer-nav li.current-menu-item a, .footer-nav li.current-menu-parent a { color: #ED1C24; font-style: italic; }
 .primary-menu a, .footer-nav a { color: #999; font-weight: 700; padding: 8px; }
@@ -119,7 +117,7 @@ footer.site-footer .footer-nav a:hover, footer.site-footer .footer-nav a:focus {
 .page-header { margin: 0 0 50px; border: none; }
 .page-header h1 { font-size: 1.93em; }
 
-@media only screen and (min-width: 910px) { .site-header-main { padding-bottom: 70px; }
+@media only screen and (min-width: 910px) { .site-header-main { padding-bottom: 100px; }
   #site_branding { margin-top: 0; }
   #lang_sel_list { position: absolute; right: 0; top: 0; }
   #site-navigation { position: absolute; right: 0; bottom: 5px; } }
