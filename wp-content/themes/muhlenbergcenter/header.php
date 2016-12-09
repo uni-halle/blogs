@@ -11,6 +11,7 @@
         <meta charset="<?php bloginfo( 'charset' ); ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="profile" href="http://gmpg.org/xfn/11">
+	<meta name="google-site-verification" content="elrtEoTXRMmaEBb4o7wMP0gM0B1XsTS_q515cKXOsl0">
         <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
         <?php wp_head(); ?>
         <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/vendor/modernizr.min.js"></script>
