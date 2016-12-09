@@ -1,0 +1,25 @@
+@media only screen and (max-width : 640px) { 
+ 
+#views_tabs ,#drop_down_views
+{
+	display:none;
+}
+
+#views_tabs_select
+{
+	display:block !important;
+}
+
+
+ 
+}
+
+@media only screen and (max-width : 968px) { 
+#cats >li
+{
+	float:none;
+}
+
+
+
+}

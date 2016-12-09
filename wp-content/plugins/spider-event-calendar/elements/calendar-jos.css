@@ -238,3 +238,9 @@ div.calendar {
   font-weight: bold;
   
 }
+
+.wp-picker-container input[type=text].color_input.wp-color-picker {
+    position: absolute;
+    left: 31px;
+	top: 0px;
+}

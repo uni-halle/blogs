@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: spider_calendar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-13 17:37+0400\n"
-"PO-Revision-Date: 2016-01-18 15:31+0400\n"
+"PO-Revision-Date: 2016-09-22 16:04+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.9\n"
 "X-Poedit-SearchPath-0: C:/wamp/www/wordpress3.5/wp-content/plugins/"
 "spider-event-calendar\n"
 
@@ -39,30 +39,30 @@ msgstr "Repetir todos"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:387
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:235
 msgid "Day"
-msgstr "DIA 3 - Cigarros fumados"
+msgstr "Dia"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:461
 msgid "Week(s) on"
-msgstr "Semana (s) em"
+msgstr "Semana(s) em"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:475
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:478
 msgid "Month(s) on the"
-msgstr "Dia (s) sobre o"
+msgstr "Mes(es) em"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:481
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:484
 msgid "Year(s) in"
-msgstr "Ano (s) em"
+msgstr "Ano(s) em"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:481
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:484
 msgid "on the"
-msgstr "no"
+msgstr "em"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:492
 msgid "There Is No Text For This Event"
-msgstr "Não há nenhum texto para este evento"
+msgstr "Não há Texto para este Evento"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:509
 msgid "Back to event list"
@@ -240,12 +240,12 @@ msgstr "Mês"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:638
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:458
 msgid "There are no events on this date"
-msgstr "Não há nenhum evento In This Day"
+msgstr "Não há nenhum evento nesta data"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:536
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:339
 msgid "There are no events for this month"
-msgstr "Não há nenhum evento Este Mês"
+msgstr "Não há nenhum evento este mês"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:398
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:421
@@ -267,22 +267,22 @@ msgstr "Ter"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:408
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:315
 msgid "We"
-msgstr "Nós"
+msgstr "Qua"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:411
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:318
 msgid "Th"
-msgstr "Th."
+msgstr "Qui"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:414
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:321
 msgid "Fr"
-msgstr "Sexta ou a partir de "
+msgstr "Sxt"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:417
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:324
 msgid "Sa"
-msgstr "Sa"
+msgstr "Sab"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:508
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:558

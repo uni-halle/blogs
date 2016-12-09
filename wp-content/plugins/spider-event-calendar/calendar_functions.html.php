@@ -918,7 +918,7 @@ $row=$wpdb->get_row($wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spiderca
 
           
               <tr>
-                <td class="key" ><label for="message"><?php echo 'Category title'; ?>:</label>  </td>
+                <td class="key" ><label for="message"><?php echo 'Title'; ?>:</label>  </td>
                <td> 
 			   
 			   <input   type="text" name="title" value="<?php if(isset($row->title)) echo htmlspecialchars($row->title); 
@@ -927,7 +927,7 @@ $row=$wpdb->get_row($wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spiderca
                </tr>
                
 				 <tr>
-			   <td class="key" ><label for="message"><?php echo 'Category Color'; ?>:</label>  </td>
+			   <td class="key" ><label for="message"><?php echo 'Color'; ?>:</label>  </td>
              
                <td>
 				<div class="color_for_this" style="background-color: #<?php if(isset($row->color)) echo htmlspecialchars($row->color); ?>">
@@ -1789,10 +1789,10 @@ ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spide
                   </td>
                   <?php } if ($calendar->time_format == 0) { ?>
                   <td>
-                    <input type="text" id="selhour_from" name="selhour_from" size="1" style="text-align:right" onKeyPress="return checkhour('selhour_from',event)" value="" title="from" onBlur="add_0('selhour_from')"/> <b>:</b>
+                    <input type="text" id="selhour_from" name="selhour_from" size="1" style="text-align:right" onKeyPress="return checkhour('selhour_from',event)" value="" title="from" /> <b>:</b>
                     <input type="text" id="selminute_from" name="selminute_from" size="1" style="text-align:right" onKeyPress="return checkminute('selminute_from',event)" value="" title="from" onBlur="add_0('selminute_from')"/>
                     <span style="font-size:12px">&nbsp;-&nbsp;</span>
-                    <input type="text" id="selhour_to" name="selhour_to" size="1" style="text-align:right" onKeyPress="return checkhour('selhour_to',event)" value="" title="to" onBlur="add_0('selhour_to')"/> <b>:</b>
+                    <input type="text" id="selhour_to" name="selhour_to" size="1" style="text-align:right" onKeyPress="return checkhour('selhour_to',event)" value="" title="to" /> <b>:</b>
                     <input type="text" id="selminute_to" name="selminute_to" size="1" style="text-align:right" onKeyPress="return checkminute('selminute_to',event)" value="" title="to" onBlur="add_0('selminute_to')"/>
                   </td>
                   <?php }?>
@@ -2267,14 +2267,12 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
                     ?>
                     <?php if ($calendar->time_format == 0) { ?>
                     <input type="text" id="selhour_from" name="selhour_from" size="1" style="text-align:right"
-                           onkeypress="return checkhour('selhour_from',event)" value="<?php echo $from[0]; ?>" title="from"
-                           onblur="add_0('selhour_from')"/> <b>:</b>
+                           onkeypress="return checkhour('selhour_from',event)" value="<?php echo $from[0]; ?>" title="from" /> <b>:</b>
                     <input type="text" id="selminute_from" name="selminute_from" size="1" style="text-align:right"
                            onkeypress="return checkminute('selminute_from',event)" value="<?php echo substr($from[1], 0, 2); ?>"
                            title="from" onBlur="add_0('selminute_from')"/> <span style="font-size:12px">&nbsp;-&nbsp;</span>
                     <input type="text" id="selhour_to" name="selhour_to" size="1" style="text-align:right"
-                           onkeypress="return checkhour('selhour_to',event)" value="<?php echo $to[0]; ?>" title="to"
-                           onblur="add_0('selhour_to')"/> <b>:</b>
+                           onkeypress="return checkhour('selhour_to',event)" value="<?php echo $to[0]; ?>" title="to" /> <b>:</b>
                     <input type="text" id="selminute_to" name="selminute_to" size="1" style="text-align:right"
                            onkeypress="return checkminute('selminute_to',event)" value="<?php echo substr($to[1], 0, 2); ?>"
                            title="to" onBlur="add_0('selminute_to')"/>
@@ -2282,7 +2280,7 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
 					if ($calendar->time_format == 1) { ?>
                     <input type="text" id="selhour_from" name="selhour_from" size="1" style="text-align:right"
                            onkeypress="return check12hour('selhour_from',event)" value="<?php echo $from[0]; ?>" title="from"
-                           onblur="add_0('selhour_from')"/> <b>:</b>
+                           /> <b>:</b>
                     <input type="text" id="selminute_from" name="selminute_from" size="1" style="text-align:right"
                            onkeypress="return checkminute('selminute_from',event)" value="<?php echo substr($from[1], 0, 2); ?>"
                            title="from" onBlur="add_0('selminute_from')"/>
@@ -2297,7 +2295,7 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
                     <span style="font-size:12px">&nbsp;-&nbsp;</span>
                     <input type="text" id="selhour_to" name="selhour_to" size="1" style="text-align:right"
                            onkeypress="return check12hour('selhour_to',event)" value="<?php echo $to[0]; ?>" title="to"
-                           onblur="add_0('selhour_to')"/> <b>:</b>
+                           /> <b>:</b>
                     <input type="text" id="selminute_to" name="selminute_to" size="1" style="text-align:right"
                            onkeypress="return checkminute('selminute_to',event)" value="<?php echo substr($to[1], 0, 2); ?>"
                            title="to" onBlur="add_0('selminute_to')"/>

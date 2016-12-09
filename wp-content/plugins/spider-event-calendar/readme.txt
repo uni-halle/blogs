@@ -1,15 +1,15 @@
-=== WordPress Event Calendar ===  
+=== Calendar Event  ===  
 Contributors: webdorado  
 Donate link: https://web-dorado.com/products/wordpress-calendar.html  
-Tags: calendar, calendars, event, event calendar, event manager, events calendar,calendar widget,  event registration, event management,events, Kalender, agenda, calendario, availability calendar,online calendar, holiday calendar, scheduling, free calendar, Calender, upcoming events, event widget , event list, calendar localization, Organizer, editorial calendar, Interactive Calendar, news calendar, meeting, appointment, event tracking, event organizer, upcoming events widget, event page, event bookings, recurring, recurring events, conference, date, dates, schedule, times, venue, AJAX, responsive, shortcode, seminar, summit, reservation, booking calendar
+Tags: calendar, date, event, event calendar, events, events calendar, meeting, organizer, recurring, reservation, responsive, schedule
 Requires at least: 3.4  
-Tested up to: 4.5   
-Stable tag: 1.5.42 
+Tested up to: 4.6   
+Stable tag: 1.5.46
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
+Calendar Event plugin is a highly configurable product which allows you to have multiple organized events.
 
-Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. 
 == Description ==    
 WordPress event calendar is a FREE user-friendly responsive plugin to manage multiple recurring events and with various options.  
     
@@ -141,6 +141,18 @@ Vietnamese (vi)
 
 
 == Changelog ==
+
+= 1.5.46 =
+Fixed: Translations       
+
+= 1.5.45 =
+Changed: Featured themes page    
+
+= 1.5.44 =
+Fixed: Minor bug   
+
+= 1.5.43 =
+Changed: Category color picker     
 
 = 1.5.42 =
 Fixed: Minor bug   

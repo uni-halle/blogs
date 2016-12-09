@@ -168,28 +168,33 @@ $cat_ids = substr($cat_ids, 0,-1);
         $start_date = substr($rows[$i - 1]->date, 0, 8) . $weekdays_start[$p];
         $t = php_daysDifference($rows[$i - 1]->date, $rows[$i - 1]->date_end);
         $r = 0;
+
         for ($k = 1; $k < $t / $repeat; $k++) {
           $start_date_array[] = $start_date;
-          $next_date = php_GetNextDate($start_date, $repeat * 7);
+		  
+		  if($date_month == (int)$month) $next_date = date('n/j/Y', strtotime($start_date));
+		  else $next_date = php_GetNextDate($start_date, $repeat * 7);
+
           $next_date_array = explode('/', $next_date);
-		 
-		 
+		
 		 if ((int)$month == $date_month && (int)substr($date_year_month, 0, 4) == (int)$year)
                 $date_days[0] = $weekdays_start[$p];
+
+			
           if (($next_date_array[2] . '-' . add_0($next_date_array[0]) . '-' . add_0($next_date_array[1]) > $rows[$i - 1]->date_end) || ($next_date_array[0] > (int)$month && $next_date_array[2] == (int)$year) || ($next_date_array[2] > (int)$year))
             break;
+		
+		
           if ((int)$month == $date_month && (int)substr($date_year_month, 0, 4) == (int)$year)
             $date_days[0] = $weekdays_start[$p];
           if ((int)$month == $next_date_array[0] && (int)$year == $next_date_array[2])
-            if ((int)$year > (int)substr($date_year_month, 0, 4)) {
+		
               $weekdays[] = $next_date_array[1];
-            }
-            else {
-              $weekdays[] = $next_date_array[1];
-            }
-          $start_date = date("Y-m-d", mktime(0, 0, 0, $next_date_array[0], $next_date_array[1], $next_date_array[2]));
-          // if ($next_date_array[2] > (int)substr($rows[$i - 1]->date_end, 0, 4))
-            // break;
+         
+
+		 $start_date = date("Y-m-d", mktime(0, 0, 0, $next_date_array[0], $next_date_array[1], $next_date_array[2]));
+         
+
         }
         $date_days = array_merge($weekdays, $date_days);
       }
@@ -675,7 +680,10 @@ $cat_ids = substr($cat_ids, 0,-1);
           if (($t / ($repeat * 7) - 1) > 1) {
             for ($k = 1; $k < $t / ($repeat * 7) - 1; $k++) {
               $start_date_array[] = $start_date;
-              $next_date = php_GetNextDate($start_date, $repeat * 7);
+			  
+			  if($date_month == (int)$month) $next_date = date('n/j/Y', strtotime($start_date));
+			  else $next_date = php_GetNextDate($start_date, $repeat * 7);
+			  
               $next_date_array = explode('/', $next_date);
               if ((int)$month == $date_month && (int)substr($date_year_month, 0, 4) == (int)$year)
                 $date_days[0] = $weekdays_start[$p];

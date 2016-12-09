@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: spider_calendar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-13 18:43+0400\n"
-"PO-Revision-Date: 2016-03-26 12:19+0100\n"
+"PO-Revision-Date: 2016-01-18 15:27+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-SearchPath-0: C:/wamp/www/wordpress3.5/wp-content/plugins/"
 "spider-event-calendar\n"
 
@@ -27,7 +27,7 @@ msgstr "Datum"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:481
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:484
 msgid "Repeat Every"
-msgstr "Opakovat každý"
+msgstr "Opakujte každý"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:458
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:366
@@ -39,30 +39,30 @@ msgstr "Opakovat každý"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:387
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:235
 msgid "Day"
-msgstr "den"
+msgstr "Den"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:461
 msgid "Week(s) on"
-msgstr "týden v"
+msgstr "Týden (y) na"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:475
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:478
 msgid "Month(s) on the"
-msgstr "měsíc v"
+msgstr "Měsíc (y) na"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:481
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:484
 msgid "Year(s) in"
-msgstr "rok v"
+msgstr "Rok (y) v"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:481
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:484
 msgid "on the"
-msgstr "v"
+msgstr "na"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:492
 msgid "There Is No Text For This Event"
-msgstr "Událost neobsahuje žádné další podrobnosti"
+msgstr "Není tam žádná Text pro tuto událost"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:509
 msgid "Back to event list"
@@ -77,7 +77,7 @@ msgstr "Zpět na seznam událostí"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:78
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:44
 msgid "January"
-msgstr "leden"
+msgstr "Leden"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:79
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:44
@@ -88,7 +88,7 @@ msgstr "leden"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:79
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:45
 msgid "February"
-msgstr "únor"
+msgstr "Únor"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:80
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:45
@@ -99,7 +99,7 @@ msgstr "únor"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:80
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:46
 msgid "March"
-msgstr "březen"
+msgstr "Březen"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:81
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:46
@@ -110,7 +110,7 @@ msgstr "březen"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:81
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:47
 msgid "April"
-msgstr "duben"
+msgstr "Duben"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:82
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:47
@@ -132,7 +132,7 @@ msgstr "květen"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:83
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:49
 msgid "June"
-msgstr "červen"
+msgstr "Červen"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:84
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:49
@@ -143,7 +143,7 @@ msgstr "červen"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:84
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:50
 msgid "July"
-msgstr "červenec"
+msgstr "Červenec"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:85
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:50
@@ -154,7 +154,7 @@ msgstr "červenec"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:85
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:51
 msgid "August"
-msgstr "srpen"
+msgstr "Srpen"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:86
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:51
@@ -165,7 +165,7 @@ msgstr "srpen"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:86
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:52
 msgid "September"
-msgstr "září"
+msgstr "Září"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:87
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:52
@@ -176,7 +176,7 @@ msgstr "září"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:87
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:53
 msgid "October"
-msgstr "říjen"
+msgstr "Říjen"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:88
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:53
@@ -187,7 +187,7 @@ msgstr "říjen"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:88
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:54
 msgid "November"
-msgstr "listopad"
+msgstr "Listopad"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:89
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:54
@@ -198,7 +198,7 @@ msgstr "listopad"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:89
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:55
 msgid "December"
-msgstr "prosinec"
+msgstr "Prosinec"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:379
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:241
@@ -211,7 +211,7 @@ msgstr "prosinec"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:248
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:310
 msgid "Week"
-msgstr "týden"
+msgstr "Týden"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:391
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:253
@@ -240,12 +240,12 @@ msgstr "Měsíc"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:638
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:458
 msgid "There are no events on this date"
-msgstr "žádná událost"
+msgstr "Není tam žádná akce v tento den"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:536
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:339
 msgid "There are no events for this month"
-msgstr "Tento měsíc nejsou žádné události"
+msgstr "Není tam žádná událost v tomto měsíci"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:398
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:421
@@ -262,12 +262,12 @@ msgstr "Po"
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:405
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:312
 msgid "Tu"
-msgstr "Út"
+msgstr "Vú"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:408
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:315
 msgid "We"
-msgstr "St"
+msgstr "Stostě"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:411
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:318
@@ -296,51 +296,51 @@ msgstr "Více ..."
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:927
 msgid "First"
-msgstr "první"
+msgstr "Za prvé"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:930
 msgid "Second"
-msgstr "druhý"
+msgstr "Vteřina"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:933
 msgid "Third"
-msgstr "třetí"
+msgstr "Za třetí"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:936
 msgid "Fourth"
-msgstr "čtvrtý"
+msgstr "Čtyřka."
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:939
 msgid "Last"
-msgstr "poslední"
+msgstr "Poslední"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:945
 msgid "Monday"
-msgstr "pondělí"
+msgstr "Pondělí"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:948
 msgid "Tuesday"
-msgstr "úterý"
+msgstr "Vúterý"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:951
 msgid "Wednesday"
-msgstr "středa"
+msgstr "Středa"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:954
 msgid "Thursday"
-msgstr "čtvrtek"
+msgstr "Čtvrtek"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:957
 msgid "Friday"
-msgstr "pátek"
+msgstr "Pátek"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:960
 msgid "Saturday"
-msgstr "sobota"
+msgstr "Sobota"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:963
 msgid "Sunday"
-msgstr "neděle"
+msgstr "Neděle"
 
 #: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/views.php:760
 msgid "All categories"
