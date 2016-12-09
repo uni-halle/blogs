@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: IntenseDebate
-Plugin URI: http://intensedebate.com/wordpress
-Description: <a href="http://www.intensedebate.com">IntenseDebate Comments</a> enhance and encourage conversation on your blog or website. Full comment sync between IntenseDebate and WordPress ensures that you will always have your comments. Custom integration with your WordPress admin panel makes moderation a piece of cake. Featuring comment threading, reply-by-email, user accounts and reputations, plus comment voting.
-Version: 2.9.6
+Plugin URI: https://www.intensedebate.com/wordpress
+Description: <a href="https://www.intensedebate.com">IntenseDebate Comments</a> enhance and encourage conversation on your blog or website. Full comment sync between IntenseDebate and WordPress ensures that you will always have your comments. Custom integration with your WordPress admin panel makes moderation a piece of cake. Featuring comment threading, reply-by-email, user accounts and reputations, plus comment voting.
+Version: 2.9.7
 Author: IntenseDebate & Automattic
-Author URI: http://intensedebate.com
+Author URI: https://www.intensedebate.com
 */
 
 // CONSTANTS
@@ -14,7 +14,7 @@ Author URI: http://intensedebate.com
 	define( 'ID_PLUGIN_VERSION', '2.9.6' );
 
 	// API Endpoints
-	define( 'ID_BASEURL', ( is_ssl() ? 'https' : 'http' ) . '://intensedebate.com' );
+	define( 'ID_BASEURL', 'https://intensedebate.com' );
 	define( 'ID_SERVICE', ID_BASEURL . '/services/v1/operations/postOperations.php' );
 	define( 'ID_USER_LOOKUP_SERVICE', ID_BASEURL . '/services/v1/users' );
 	define( 'ID_BLOG_LOOKUP_SERVICE', ID_BASEURL . '/services/v1/sites' );
@@ -188,13 +188,14 @@ Author URI: http://intensedebate.com
 			global $menu;
 
 			unset( $menu[25] );
-			add_object_page(
+			add_menu_page(
 				__( 'Comments', 'intensedebate' ),
 				__( 'Comments', 'intensedebate' ),
 				'moderate_comments',
 				'intensedebate',
 				'id_moderate_comments',
-				WP_CONTENT_URL . '/plugins/intensedebate/comments.png'
+				WP_CONTENT_URL . '/plugins/intensedebate/comments.png',
+				25
 			);
 		}
 		add_options_page(
@@ -1809,7 +1810,7 @@ Author URI: http://intensedebate.com
 					id_save_option( 'id_signup_step', 1 );
 				else if ( id_param( 'new_status' ) && id_param( 'new_status' ) == "importcomplete" )
 					id_save_option( 'id_signup_step', 3 );
-				else if ( id_param( 'hideSettingsTop' ) && id_param( 'hideSettingsTop' ) == "true" )
+				else if ( id_param( 'hideSettingsTop' ) && id_param( 'hideSettingsTop' ) == "true" && check_admin_referer( 'hide_settings_top', '_idnonce' ) )
 					id_save_option( 'id_hideSettingsTop', 1 );
 
 				if ( !id_is_active() || get_option( 'id_hideSettingsTop' ) == 0) : ?>
@@ -2039,6 +2040,7 @@ Author URI: http://intensedebate.com
 							<p <?php if ( !id_param( 'login_msg' ) ) echo 'style="display:none"'; ?> class="idwp-message_error"><span class="idwp-message_error-symbol"></span> Login failed. Please check your credentials and try again.</p>
 							<?php $username = id_param( 'username' ); ?>
 							<form id="id_user_login" action="options-general.php?page=id_settings" method="POST">
+								<?php wp_nonce_field( 'user_login', '_idnonce' ); ?>
 								<input type="hidden" name="id_settings_action" value="user_login" />
 								<div class="idwp-install-form_elements form-table">
 									<h4><label for="txtType"><?php _e( 'Log in using...', 'intensedebate' ); ?></label></h4>
@@ -2072,12 +2074,14 @@ Author URI: http://intensedebate.com
 								<p><strong><?php _e( 'Note:', 'intensedebate' ); ?></strong> <?php _e( "Until your comments are imported they will not show up in the IntenseDebate comment system.  Don't worry though, your comments are still safe and will be ready as soon as the import completes.", 'intensedebate' ); ?></p>
 							</div>
 							<form id="id_user_login" action="options-general.php?page=id_settings" method="POST">
+								<?php wp_nonce_field( 'start_import', '_idnonce' ); ?>
 								<input type="hidden" name="id_settings_action" value="start_import" />
 								<p><input type="checkbox" name="use_id_moderation_strings" id="use_id_moderation_strings" value="1" checked="checked" /> <label for="use_id_moderation_strings"><?php _e( "Use IntenseDebate's default moderation settings (recommended)" ); ?></label> <span style="cursor:pointer;" onclick="jQuery('#explain_id_moderation_strings').slideToggle();"><img src="<?php echo ID_BASEURL ?>/images1/wp-info.png" /></span></p>
 								<p id="explain_id_moderation_strings" style="display: none;" class="idwp-shortline"><?php _e( "By enabling this option, IntenseDebate will add commonly-abused keywords and phrases to your moderation settings, so that you can avoid spam in your comments. You can always edit/delete these values later if you don't want them any more." ); ?></p>
 								<input type="submit" value="<?php _e( 'Start Importing Comments', 'intensedebate' ); ?>" class="idwp-bigbutton" /> <a href="javascript: document.getElementById('id_skip_import').submit();" class="idwp-secondary"><?php _e( 'Skip Import', 'intensedebate' ); ?></a>
 							</form>
 							<form id="id_skip_import" action="options-general.php?page=id_settings" method="POST">
+								<?php wp_nonce_field( 'skip_import', '_idnonce' ); ?>
 								<input type="hidden" name="id_settings_action" value="skip_import" />
 							</form>
 						<?php elseif ( get_option( 'id_signup_step' ) == 2 ) : //third step (import in progress) ?>
@@ -2102,6 +2106,7 @@ Author URI: http://intensedebate.com
 								<li><a href="<?php echo ID_BASEURL ?>/extras-widgets" target="_blank"><?php _e( 'Grab some comment widgets for your blog.', 'intensedebate' ); ?></a></li>
 							</ul>
 							<form id="id_close_box" action="options-general.php?page=id_settings&hideSettingsTop=true" method="POST">
+								<?php wp_nonce_field( 'hide_settings_top', '_idnonce' ); ?>
 							</form>
 							<p style="margin: 20px 0 0;"><a href="javascript: document.getElementById('id_close_box').submit();"><?php _e( 'Close this box', 'intensedebate' ); ?></a></p>
 						<?php endif; ?>
@@ -2187,6 +2192,7 @@ Author URI: http://intensedebate.com
 		if ( get_option( 'id_signup_step' ) > 0 ) :
 		?>
 		<form id="id_plugin_reset" action="options-general.php?page=id_settings" method="POST">
+			<?php wp_nonce_field( 'settings_reset', '_idnonce' ); ?>
 			<input type="hidden" name="id_settings_action" value="settings_reset" />
 			<p><?php _e( 'Click the button below to remove/reset all IntenseDebate settings.', 'intensedebate' ); ?></p>
 			<p class="submit" style="border: 0; padding: 0 0 10px;">
@@ -2231,6 +2237,7 @@ Author URI: http://intensedebate.com
 	}
 
 	function id_SETTINGS_settings_reset() {
+		check_admin_referer( 'settings_reset', '_idnonce' );
 		id_clear_blog_settings();
 
 		global $wpdb;
@@ -2251,6 +2258,7 @@ Author URI: http://intensedebate.com
 
 	// Skip import
 	function id_SETTINGS_skip_import() {
+		check_admin_referer( 'skip_import', '_idnonce' );
 		id_save_option( 'id_signup_step', 3 );
 
 		$goback = remove_query_arg( 'updated', $_SERVER['REQUEST_URI'] );
@@ -2260,6 +2268,7 @@ Author URI: http://intensedebate.com
 
 	// Start import
 	function id_SETTINGS_start_import() {
+		check_admin_referer( 'start_import', '_idnonce' );
 		id_REST_reset_import();
 
 		// Send request to start importing comments
@@ -2297,6 +2306,7 @@ Author URI: http://intensedebate.com
 
 	// login form post-back
 	function id_SETTINGS_user_login() {
+		check_admin_referer( 'user_login', '_idnonce' );
 		global $userdata;
 
 		$goback = remove_query_arg( 'updated', $_SERVER['REQUEST_URI'] );
@@ -2517,7 +2527,7 @@ Author URI: http://intensedebate.com
 	function widget_id_blog_stats($args) {
 		extract($args);
 		echo $before_widget;
-		echo "<script type='text/javascript' src='http://www.intensedebate.com/widgets/blogStats/" . get_option( "id_blogID" ) . "'></script>";
+		echo "<script type='text/javascript' src='https://www.intensedebate.com/widgets/blogStats/" . get_option( "id_blogID" ) . "'></script>";
 		echo $after_widget;
 	}
 
@@ -2534,7 +2544,7 @@ Author URI: http://intensedebate.com
 		$count = intval( get_option( 'id_recent_comments_count' ) );
 		if ( $count <= 0 )
 			$count = 5;
-		echo "<script type='text/javascript' src='http://www.intensedebate.com/widgets/acctComment/" . get_option( "id_blogID" ) . "/$count'></script>";
+		echo "<script type='text/javascript' src='https://www.intensedebate.com/widgets/acctComment/" . get_option( "id_blogID" ) . "/$count'></script>";
 		echo $after_widget;
 	}
 
@@ -2572,7 +2582,7 @@ Author URI: http://intensedebate.com
 		$count = intval( get_option( 'id_top_commenters_count' ) );
 		if ( $count <= 0 )
 			$count = 10;
-		echo "<script type='text/javascript' src='http://www.intensedebate.com/widgets/topCommenters/" . get_option( "id_blogID" ) . "/$count'></script>";
+		echo "<script type='text/javascript' src='https://www.intensedebate.com/widgets/topCommenters/" . get_option( "id_blogID" ) . "/$count'></script>";
 		echo $after_widget;
 	}
 
@@ -2610,7 +2620,7 @@ Author URI: http://intensedebate.com
 		$count = intval( get_option( 'id_most_commented_posts_count' ) );
 		if ( $count <= 0 )
 			$count = 10;
-		echo "<script type='text/javascript' src='http://www.intensedebate.com/widgets/mostComments/" . get_option( "id_blogID" ) . "/$count'></script>";
+		echo "<script type='text/javascript' src='https://www.intensedebate.com/widgets/mostComments/" . get_option( "id_blogID" ) . "/$count'></script>";
 		echo $after_widget;
 	}
 

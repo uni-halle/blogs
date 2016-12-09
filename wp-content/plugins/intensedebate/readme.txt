@@ -2,8 +2,8 @@
 Contributors: IntenseDebate, automattic, beaulebens
 Tags: widget, profile, community, avatars, spam, notification, email, threaded, comments, intense debate, intensedebate, intense, debate, comment system, moderation
 Requires at least: 3.0
-Tested up to: 4.2.2
-Stable tag: 2.9.6
+Tested up to: 4.6.0
+Stable tag: 2.9.7
 
 IntenseDebate comments enhance and encourage conversation on your blog.  Build your reader community, increase your comments, & boost pageviews.
 
@@ -53,6 +53,11 @@ Your comments may take several hours to import. The time of your import is depen
 6. Final step of the registration process - a few helpful links to get you started getting the most out of your new IntenseDebate comment system.
 
 == Changelog ==
+= 2.9.7 =
+* Change deprecated function calls to more up-to-date alternatives.
+* Convert urls to IntenseDebate.com to https
+* Added security hardening
+
 = 2.9.6 =
 * Clean up warnings in WP_DEBUG mode
 * Minor cosmetic tweaks to better align with modern wp-admin
