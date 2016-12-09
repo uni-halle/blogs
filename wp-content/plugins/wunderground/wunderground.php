@@ -3,7 +3,7 @@
 * Plugin Name: Weather Underground
 * Plugin URI: https://github.com/katzwebservices/Wunderground#setting-up-the-plugin
 * Description: Get accurate and beautiful weather forecasts powered by Wunderground.com for your content or your sidebar.
-* Version: 2.1.1
+* Version: 2.1.3
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Author: Katz Web Services, Inc.
@@ -18,20 +18,36 @@ class Wunderground_Plugin {
 	 * Version used to prime style and script caches
 	 * @var string
 	 */
-	const version = '2.1.1';
+	const version = '2.1.3';
 
-	var $logger;
-	var $is_debug = false;
-
+	/**
+	 * @var string The full path and filename of the main plugin file
+	 */
 	static $file;
 
+	/**
+	 * @var string Filesystem path to main plugin file, with trailing slash
+	 */
 	static $dir_path;
+
+	/**
+	 * Filter the Weather Underground API key used by the plugin
+	 * Modify using the `wunderground_api_key` filter
+	 * @since 2.1.2
+	 */
+	static $api_key = '3ffab52910ec1a0e';
 
 	function __construct() {
 
 		self::$file = __FILE__;
 
 		self::$dir_path = plugin_dir_path( __FILE__ );
+
+		/**
+		 * Filter the Weather Underground API key used by the plugin
+		 * @since 2.1.2
+		 */
+		self::$api_key = $this->get_api_key();
 
 		// Fire AJAX requests immediately
 		include_once self::$dir_path.'inc/class-ajax.php';
@@ -45,6 +61,32 @@ class Wunderground_Plugin {
 		add_action( 'wunderground_log_debug', array( 'Wunderground_Plugin', 'log_debug'), 10, 2 );
 	}
 
+	/**
+	 * Get the Weather Underground API key used by the plugin
+	 *
+	 * You can define your own Weather Underground API key using the `WUNDERGROUND_API_KEY` constant in wp-config.php,
+	 * or you can filter the key using the `wunderground_api_key` filter.
+	 *
+	 * @since 2.1.2
+	 *
+	 * @return string The Weather Underground API key. Default: the plugin key ("3ffab52910ec1a0e")
+	 */
+	private function get_api_key() {
+
+		$api_key = self::$api_key;
+
+		if( defined( 'WUNDERGROUND_API_KEY' ) ) {
+			$api_key = WUNDERGROUND_API_KEY;
+		}
+
+		$api_key = apply_filters( 'wunderground_api_key', $api_key );
+
+		return $api_key;
+	}
+
+	/**
+	 * Load the textdomain, add the [wunderground] and [forecast] shortcodes, add do_shortcode() to widgets
+	 */
 	function init() {
 
 		// Add translation support
