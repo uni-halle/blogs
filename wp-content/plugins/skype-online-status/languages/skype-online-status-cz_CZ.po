@@ -1,0 +1,778 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Skype Online Status/2.8\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-09 13:34+0300\n"
+"PO-Revision-Date: 2016-09-22 15:33+0300\n"
+"Last-Translator: \n"
+"Language-Team: Skype Online Status - Languages\n"
+"Language: cz_CZ\n"
+"Plural-Forms: nplurals=2; plural=n!=1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Source-Locale: cz_CZ\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.8.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Loco-Parser: loco_parse_po\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../skype-admin.php:10
+msgid "Post content"
+msgstr "obsah zprávy"
+
+#: ../skype-admin.php:11
+#, php-format
+msgid ""
+"When writing posts you can insert a Skype button with a simple quicktag %1$s "
+"or %2$s but to make life even easier, a small button on the WYSIWYG editor "
+"can do it for you. Check this option to show %3$s or uncheck to hide it. You "
+"may still insert the quicktag  in the HTML code of your post or page content "
+"manually."
+msgstr ""
+"Při psaní příspěvků můžete vložit tlačítko Skype s jednoduchým quicktag %1$s "
+"nebo %2$s, ale aby se život ještě jednodušší, malé tlačítko na WYSIWYG "
+"editoru může to pro vás. Zkontrolujte, zda tuto možnost zobrazovat %3$s nebo "
+"zrušte ji schovat. Stále můžete vložit quicktag v kódu HTML svého příspěvku "
+"nebo obsahu stránky ručně."
+
+#: ../skype-admin.php:11 ../skype-admin.php:195 ../skype-admin.php:263
+#: ../skype-admin.php:328 ../skype-admin.php:363 ../skype-admin.php:365
+#: ../skype-admin.php:367 ../skype-admin.php:481 ../skype-classes.php:575
+#: ../skype-quickguide-notes.php:114 ../skype-quickguide-notes.php:123
+msgid "Skype Legacy Buttons"
+msgstr "Skype Legacy Buttons"
+
+#: ../skype-admin.php:12
+msgid "Use <strong>Skype shortcode button</strong> in the RTE for posts."
+msgstr "Použití <strong> tlačítko Skype zkrácený </ strong> v RTE příspěvky."
+
+#: ../skype-admin.php:16 ../skype-admin.php:182 ../skype-admin.php:502
+msgid "Display &amp; Function"
+msgstr "Zobrazit &amp; Funkce"
+
+#: ../skype-admin.php:17
+msgid ""
+"These settings define which options should be used to replace their "
+"respective tag (if present) in the selected template file. If unchecked, the "
+"tags will be blanked out."
+msgstr ""
+"Tato nastavení definují, jaké možnosti by měly být použity k nahrazení "
+"jejich příslušné značky (pokud existuje) ve vybraném souboru šablony. V "
+"případě odškrtnutí značky budou vymazány."
+
+#: ../skype-admin.php:18
+#, php-format
+msgid ""
+"Use %1$s in dropdown button. Leave unchecked if you do not have %2$s or %3$s."
+msgstr ""
+"Použijte %1$s v rozbalovací tlačítko. Ponechte nezaškrtnuté, pokud nemáte "
+"%2$s nebo %3$s."
+
+#: ../skype-admin.php:18 ../skype-classes.php:315
+msgid "Leave me voicemail"
+msgstr "Nechte mi hlasové schránky"
+
+#: ../skype-admin.php:18 ../skype-admin.php:307 ../skype-classes.php:114
+msgid "SkypeIn"
+msgstr "V Skype"
+
+#: ../skype-admin.php:18 ../skype-admin.php:308 ../skype-classes.php:114
+msgid "Skype Voicemail"
+msgstr "Skype hlasová zpráva"
+
+#: ../skype-admin.php:21
+#, php-format
+msgid "Use %1$s (define below) for %2$s tags."
+msgstr "Použijte %1$s as (definované níže) pro %2$s tags ."
+
+#: ../skype-admin.php:21
+msgid "Action text"
+msgstr "text akce"
+
+#: ../skype-admin.php:23
+msgid "Use local images instead of the ones hosted on the Skype servers."
+msgstr "Používat místní obrázků namísto těch hostovaných na serverech Skype."
+
+#: ../skype-admin.php:25
+msgid "Use schemeless URLs / protocol relative paths for TLS compatibility."
+msgstr ""
+"Použijte schéma méně URL / protokol relativní cesty pro kompatibilitu TLS."
+
+#: ../skype-admin.php:61
+#, php-format
+msgid "Use %s link."
+msgstr "Použijte %s odkaz."
+
+#: ../skype-admin.php:61
+msgid "Download Skype now!"
+msgstr "Stáhněte si Skype teď!"
+
+#: ../skype-admin.php:62
+msgid "Place link on a new line."
+msgstr "Umístěte odkaz na nový řádek."
+
+#: ../skype-admin.php:63
+msgid "Link text"
+msgstr "textový odkaz"
+
+#: ../skype-admin.php:63 ../skype-admin.php:64 ../skype-admin.php:175
+#: ../skype-admin.php:182 ../skype-admin.php:195 ../skype-admin.php:306
+#: ../skype-admin.php:307 ../skype-admin.php:308 ../skype-admin.php:493
+#: ../skype-admin.php:496 ../skype-admin.php:499 ../skype-classes.php:94
+#: ../skype-classes.php:97 ../skype-classes.php:100 ../skype-classes.php:103
+#: ../skype-classes.php:106
+msgid ": "
+msgstr ": "
+
+#: ../skype-admin.php:64
+msgid "Link URL"
+msgstr "Odkaz URL"
+
+#: ../skype-admin.php:66
+msgid "Default affiliate link"
+msgstr "Výchozí partnerský odkaz"
+
+#: ../skype-admin.php:67
+msgid "Skype main page"
+msgstr "Hlavní strana Skype"
+
+#: ../skype-admin.php:68
+msgid "Skype download page"
+msgstr "download stranku Skype"
+
+#: ../skype-admin.php:69 ../skype-admin.php:71 ../skype-admin.php:175
+#: ../skype-admin.php:177 ../skype-admin.php:182 ../skype-admin.php:252
+#: ../skype-admin.php:499 ../skype-admin.php:500 ../skype-admin.php:501
+msgid "Custom..."
+msgstr "jedinečný..."
+
+#: ../skype-admin.php:71
+msgid ""
+"Leave to Default if you are generous and think downloads should create some "
+"small possible revenue for the developer of this plugin. Or you could donate "
+"with the PayPal button on this page. -- Thanks! :)"
+msgstr ""
+"Nechat na výchozí, pokud jste velkorysý a myslím, že stahování by měly "
+"vytvořit nějakou malou možný příjem pro vývojáře tohoto pluginu. Nebo byste "
+"mohli darovat pomocí tlačítka PayPal na této stránce. - Díky! :)"
+
+#: ../skype-admin.php:71
+#, php-format
+msgid ""
+"If you want to create your own link to get possible revenue from downloads "
+"yourself, select %1$s and paste the link code in the textarea under %2$s "
+"below."
+msgstr ""
+"Chcete-li vytvořit svůj vlastní odkaz získat co příjmy z stažení sami, "
+"zvolte %1$s a vložte spojovací kód do textového pole pod %2$s níže."
+
+#: ../skype-admin.php:71 ../skype-admin.php:182 ../skype-admin.php:500
+#: ../skype-admin.php:501 ../skype-admin.php:502 ../skype-classes.php:628
+msgid "Advanced Options"
+msgstr "Pokročilé možnosti"
+
+#: ../skype-admin.php:71 ../skype-admin.php:181
+msgid "Custom Download Link"
+msgstr "jedinečný odkaz ke stažení"
+
+#: ../skype-admin.php:117
+msgid "Tag texts"
+msgstr "Tag textů"
+
+#: ../skype-admin.php:118
+msgid ""
+"Define texts to replace their respective template tags relating to the Skype "
+"button action."
+msgstr ""
+"Definovat texty nahradit jejich příslušné šablony značky spojené s akční "
+"tlačítko Skype."
+
+#: ../skype-admin.php:121
+msgid "Action"
+msgstr "Akce"
+
+#: ../skype-admin.php:122 ../skype-admin.php:152
+msgid "Tag"
+msgstr "Tag"
+
+#: ../skype-admin.php:123 ../skype-admin.php:153
+msgid "Text"
+msgstr "Text"
+
+#: ../skype-admin.php:151
+msgid "Other"
+msgstr "Ostatní"
+
+#: ../skype-admin.php:156
+msgid "Separator"
+msgstr "oddělovač"
+
+#: ../skype-admin.php:174 ../skype-admin.php:500 ../skype-admin.php:501
+msgid "Custom Template"
+msgstr "Unikátní vzor"
+
+#: ../skype-admin.php:175
+#, php-format
+msgid ""
+"The currently selected template has been loaded into the database. You can "
+"edit it here if you like, but be sure to select %1$s under %2$s or your "
+"changes will be lost."
+msgstr ""
+"Aktuálně vybraná šablona byl vložen do databáze. Můžete jej upravit zde, "
+"pokud chcete, ale nezapomeňte vybrat %1$s v %2$s nebo změny budou ztraceny."
+
+#: ../skype-admin.php:175 ../skype-admin.php:177 ../skype-admin.php:480
+#: ../skype-admin.php:499 ../skype-classes.php:103
+msgid "Theme"
+msgstr "Téma"
+
+#: ../skype-admin.php:175 ../skype-admin.php:500
+msgid "Customize currently loaded template"
+msgstr "Nastavení šablony aktuálně naložený"
+
+#: ../skype-admin.php:177
+msgid "Available tags:"
+msgstr "Dostupné tagy:"
+
+#: ../skype-admin.php:177
+msgid "Available markers:"
+msgstr "Dostupné znaky:"
+
+#: ../skype-admin.php:177
+#, php-format
+msgid "See %s for more instructions."
+msgstr "Podívejte %s se na další pokyny."
+
+#: ../skype-admin.php:177 ../skype-admin.php:215 ../skype-admin.php:352
+#: ../skype-admin.php:484 ../skype-admin.php:503
+#: ../skype-quickguide-notes.php:6
+msgid "Quick Guide"
+msgstr "Rychlý průvodce"
+
+#: ../skype-admin.php:177
+#, php-format
+msgid ""
+"Oh, and did I mention this? Changes to the template will only be loaded when "
+"the option %1$s under %2$s is selected!"
+msgstr ""
+"Ano, a to říkám? Změny šablony se načte pouze tehdy, když je vybrána možnost "
+"%1$s do %2$s!"
+
+#: ../skype-admin.php:182
+#, php-format
+msgid ""
+"If you are a <a href=\"%1$s\">Skype Affiliate</a> select %2$s at %3$s "
+"(above) and paste your link/banner code (HTML/Javascript) here."
+msgstr ""
+"Pokud jste <a href=\"%1$s\"> Skype Partnerský </a> vybrat %2$s z %3$s "
+"(nahoře) a vložit odkaz / banner kód (HTML / Javascript) zde."
+
+#: ../skype-admin.php:182
+msgid "Link/Banner Code"
+msgstr "Odkaz/Banner kód "
+
+#: ../skype-admin.php:186 ../skype-admin.php:235
+msgid "Save Changes"
+msgstr "Uložit změny"
+
+#: ../skype-admin.php:189 ../skype-quickguide-notes.php:13
+#: ../skype-quickguide-notes.php:28 ../skype-quickguide-notes.php:46
+#: ../skype-quickguide-notes.php:93 ../skype-quickguide-notes.php:107
+#: ../skype-quickguide-notes.php:120 ../skype-quickguide-notes.php:129
+#: ../skype-quickguide-notes.php:134 ../skype-quickguide-notes.php:138
+msgid "Top"
+msgstr "Top"
+
+#: ../skype-admin.php:195 ../skype-admin.php:263
+#: ../skype-quickguide-notes.php:114 ../skype-quickguide-notes.php:123
+msgid "WordPress Support"
+msgstr "WordPress Podpora"
+
+#: ../skype-admin.php:199
+msgid "More..."
+msgstr "Více..."
+
+#: ../skype-admin.php:218 ../skype-admin.php:484
+msgid "Notes"
+msgstr "Poznámky"
+
+#: ../skype-admin.php:239
+msgid "WARNING !"
+msgstr "VAROVÁNÍ !"
+
+#: ../skype-admin.php:252
+msgid " (edit under advanced options)"
+msgstr "(Editovat pod pokročilé možnosti)"
+
+#: ../skype-admin.php:257 ../skype-admin.php:483 ../skype-admin.php:494
+msgid "Note:"
+msgstr "Poznámka:"
+
+#: ../skype-admin.php:257
+msgid ""
+"The preview button uses the Skype Test Call service to allow testing its "
+"function."
+msgstr ""
+"Tlačítko Náhled používá službu Skype zkušební volání umožní testovat svou "
+"funkci."
+
+#: ../skype-admin.php:263
+msgid "For all support questions and suggestions, please go to"
+msgstr "Pro všechny otázky týkající se podpory a návrhy, přejděte na"
+
+#: ../skype-admin.php:264
+#, php-format
+msgid ""
+"For <strong>feature requests</strong> or general help with "
+"<strong>WordPress</strong> or <strong>hosting</strong>, please contact "
+"<em>RavanH</em> via e-mail %s or Skype chat:"
+msgstr ""
+"Pro <strong> funkce požaduje </ strong> nebo obecně pomoci s <strong> "
+"WordPress </ strong> nebo <strong> hostování </ strong>, obraťte se na <mi> "
+"RavanH</ em> pomocí e-mailu %s nebo Skype povídat si:"
+
+#: ../skype-admin.php:273
+msgid "Translations"
+msgstr "Překlady"
+
+#: ../skype-admin.php:274
+msgid ""
+"Translation contributions are highly appreciated. Authors of new "
+"translations or updates will be mentioned here."
+msgstr ""
+"Příspěvky na překlady jsou vysoce ceněn. Zde bude uvedeno Autoři nové "
+"překlady nebo aktualizace."
+
+#: ../skype-admin.php:278
+msgid ""
+"Want to make your own translation too? Read the <a href=\"http://svn.wp-"
+"plugins.org/skype-online-status/trunk/languages/language-support.txt"
+"\">translation instructions</a> included with this plugin to get started."
+msgstr ""
+"Chcete si vytvořit svůj vlastní překlad taky? Přečtěte si <a href=\"http://"
+"svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt"
+"\"> návod k překladu </a> součástí, abyste mohli začít tento plugin."
+
+#: ../skype-admin.php:280
+msgid "Donations"
+msgstr "Dary"
+
+#: ../skype-admin.php:281
+msgid ""
+"All donations are much appreciated and will (without objection) be mentioned "
+"here as a way of expressing my gratitude."
+msgstr ""
+"Všechny dary jsou velmi oceňovány a budou (bez námitek) se zde zmíněn jako "
+"způsob, jak vyjádřit svou vděčnost."
+
+#: ../skype-admin.php:285
+msgid ""
+"Please <strong>rate this plugin</strong> at <a href=\"https://wordpress.org/"
+"plugins/skype-online-status/\">WordPress</a>"
+msgstr ""
+"Prosím, <strong> Míra tento plugin </ strong> <a href=\"https://wordpress."
+"org/plugins/skype-online-status/\"> WordPress </a>"
+
+#: ../skype-admin.php:286
+msgid ""
+"Do you want your name and/or link up there too? Or just appreciate my work?"
+msgstr ""
+"Přejete si své jméno a / nebo spojit se tam taky? Nebo jen ocenit moji práci?"
+
+#: ../skype-admin.php:287
+msgid "Donate with PayPal - it's fast, free and secure!"
+msgstr "Darovat přes PayPal - je to rychlé, zdarma a bezpečné!"
+
+#: ../skype-admin.php:288
+msgid "Thanks!"
+msgstr "Díky!"
+
+#: ../skype-admin.php:303 ../skype-classes.php:575
+msgid "Skype Buttons"
+msgstr "Skype Tlačítka"
+
+#: ../skype-admin.php:305
+msgid "Edit Privacy Options in your Skype client"
+msgstr "Úprava Možnosti ochrany osobních údajů ve svém klientovi Skype"
+
+#: ../skype-admin.php:306 ../skype-admin.php:494
+msgid "SkypeOut"
+msgstr "SkypeVýkon"
+
+#: ../skype-admin.php:306
+msgid "Call any phone directly from Skype."
+msgstr "Zavolat jakýkoli telefon přímo od společnosti Skype."
+
+#: ../skype-admin.php:307
+msgid "Your personal online number."
+msgstr "Vaše osobní on-line číslo."
+
+#: ../skype-admin.php:308
+msgid "Never miss a call!"
+msgstr "Nikdy nezmeškáte hovor!"
+
+#: ../skype-admin.php:309
+msgid "Group Video calling"
+msgstr "Skupina Videohovory"
+
+#: ../skype-admin.php:336
+msgid ""
+"Your Skype Legacy Buttons database settings have been cleared from the "
+"database for removal of this plugin!"
+msgstr ""
+"Vaše preference databáze Skype Legacy Buttons zastaralých byly odstraněny z "
+"databáze smazat tento plugin!"
+
+#: ../skype-admin.php:336
+msgid ""
+"You can still resave the old settings shown below to (partly) undo this "
+"action but custom widget settings will be reverted to default."
+msgstr ""
+"Můžete stále přijímat staré nastavení uvedené níže (částečně) zrušit tuto "
+"akci, ale zvyk budou vráceny udělátka nastavení na výchozí."
+
+#: ../skype-admin.php:336
+msgid "Are you sure?"
+msgstr "Jsi si jistá?"
+
+#: ../skype-admin.php:338
+msgid "Deactivate this plugin"
+msgstr "Deaktivovat tento plugin"
+
+#: ../skype-admin.php:338
+msgid "Deactivate"
+msgstr "Deaktivovat"
+
+#: ../skype-admin.php:340
+msgid "Go to the <a href=\"plugins.php\">Plugins page</a> and deactivate it."
+msgstr "Přejděte na <a href=\"plugins.php\"> Plugins </a> a deaktivovat."
+
+#: ../skype-admin.php:345
+msgid "Skype Legacy Buttons plugin has been upgraded to version "
+msgstr "Skype Legacy Buttons plugin byl aktualizován na verzi"
+
+#: ../skype-admin.php:345
+msgid "Please, verify your settings now."
+msgstr "Prosím, zkontrolujte nastavení nyní."
+
+#: ../skype-admin.php:345
+msgid "What's new?"
+msgstr "Co je nového?"
+
+#: ../skype-admin.php:350
+#, php-format
+msgid "Skype Legacy Buttons plugin version %s has been installed!"
+msgstr "Skype Legacy Buttons plugin verze %s byl nainstalován!"
+
+#: ../skype-admin.php:351
+msgid ""
+"Please, adapt the default settings to your personal preference so you can "
+"start using Skype buttons anywhere on your site."
+msgstr ""
+"Prosím, přizpůsobit výchozí nastavení podle svých osobních preferencí, takže "
+"můžete začít pomocí tlačítek Skype kdekoliv na svých stránkách."
+
+#: ../skype-admin.php:352
+#, php-format
+msgid "Read the %s section for more instructions."
+msgstr "Přečtěte si %s sekci pro další pokyny."
+
+#: ../skype-admin.php:363
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a href=\"%2$s\">Download version "
+"%3$s here</a>."
+msgstr ""
+"K dispozici je nová verze %1$s k dispozici. <a href=\"%2$s\"> Ke stažení "
+"verze %3$s </a> zde."
+
+#: ../skype-admin.php:365
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a href=\"%2$s\">Download version "
+"%3$s here</a> <em>automatic upgrade unavailable for this plugin</em>."
+msgstr ""
+"K dispozici je nová verze %1$s k dispozici. <a href=\"%2$s\"> Ke stažení "
+"verze %3$s zde </a> <em> automatická aktualizace k dispozici pro tento "
+"plugin </ em>."
+
+#: ../skype-admin.php:367
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a href=\"%2$s\">Download version "
+"%3$s here</a> or <a href=\"%4$s\">upgrade automatically</a>."
+msgstr ""
+"K dispozici je nová verze %1$s k dispozici. <a href=\"%2$s\"> Ke stažení "
+"verze tady %3$s </a> nebo <a href=\"%4$s\"> aktualizovat automaticky </a>."
+
+#: ../skype-admin.php:433
+msgid "Options updated!"
+msgstr "Parametry jsou aktualizovány!"
+
+#: ../skype-admin.php:439
+msgid "Options reset!"
+msgstr "Možnosti resetování!"
+
+#: ../skype-admin.php:445 ../skype-classes.php:240
+msgid "Skype Test Call"
+msgstr "Skype Call Test"
+
+#: ../skype-admin.php:479
+msgid "Define all your <em>default</em> Skype settings here."
+msgstr "Definovat všechny své <em> výchozí </ em> Nastavení Skype zde."
+
+#: ../skype-admin.php:480
+#, php-format
+msgid ""
+"Start simply by setting the basics like %1$s, %2$s and the button %3$s you "
+"want to show on your blog."
+msgstr ""
+"Začněte jednoduše nastavením základy jako %1$s, %2$s a tlačítko %3$s chcete "
+"zobrazit na svém blogu."
+
+#: ../skype-admin.php:480 ../skype-admin.php:493 ../skype-classes.php:94
+msgid "Skype ID"
+msgstr "Skype ID"
+
+#: ../skype-admin.php:480 ../skype-admin.php:496 ../skype-classes.php:97
+msgid "Full Name"
+msgstr "Celé jméno"
+
+#: ../skype-admin.php:481
+#, php-format
+msgid ""
+"Then activate a Skype Button widget on your <a href=\"widgets.php\">Widgets</"
+"a> page or use the Skype shortcode button %s in the WYSIWYG editor (TinyMCE) "
+"to place a Skype legacy button in any post or page."
+msgstr ""
+"Pak aktivovat Skype Button widget na <a href=\"widgets.php\"> widgety </a> "
+"stránku, nebo pomocí Skype zkrácený tlačítko% s ve WYSIWYG editoru (TinyMCE) "
+"umístitSkype legacy button v každém příspěvku nebo stránky ,"
+
+#: ../skype-admin.php:482
+msgid ""
+"Later on, you can fine-tune everything until it fits just perfectly on you "
+"pages."
+msgstr ""
+"Později můžete doladit vše, dokud se vejde jen perfektně na vás stránkách."
+
+#: ../skype-admin.php:483
+msgid ""
+"Some basic settings may be overridden per Widget settings or when calling "
+"the Skype button with a template function."
+msgstr ""
+"Některé základní nastavení mohou být přepsána podle nastavení Widget nebo "
+"při volání na tlačítko Skype s funkcí šablony."
+
+#: ../skype-admin.php:484
+#, php-format
+msgid ""
+"Read more about configuring this plugin and more ways to trigger Skype "
+"buttons on your blog in the %1$s section. If you have any remaining "
+"questions, see the %2$s page to get help."
+msgstr ""
+"Více informací o konfiguraci tento plugin a více způsobů, jak vyvolávají "
+"tlačítka Skype na svém blogu v sekci %1$s. Máte-li další otázky naleznete na "
+"straně jednotlivých %2$s se dostat pomoc."
+
+#: ../skype-admin.php:494
+#, php-format
+msgid ""
+"Simply enter your Skype ID. Or... If you want the button to invoke a Skype "
+"multichat or conference call, enter more then one Skype ID seperated with a "
+"semi-colon (<strong>;</strong>). You may also enter a regular phone number "
+"(starting with a <strong>+</strong> followed by country code; note that "
+"callers need to have %s to call). It just all depends on what you want to "
+"achieve!"
+msgstr ""
+"Jednoduše zadejte své ID Skype. Nebo ... Chcete-li tlačítko pro vyvolání "
+"multichat nebo konferenční hovor Skype, zadat více než jeden Skype ID "
+"odděleny s středníkem (<strong>; </ strong>). Můžete také zadat běžné "
+"telefonní číslo (začínající na <strong> + </ strong> následovaný kódem země, "
+"na vědomí, že volající musí mít %s volání). Prostě to vše závisí na tom, co "
+"chcete dosáhnout!"
+
+#: ../skype-admin.php:497
+msgid ""
+"Your full name as you want it to appear in Skype links, link-titles and "
+"image alt-texts on your blog."
+msgstr ""
+"Vaše celé jméno tak, jak chcete, aby se objeví v Skype odkazy, link-tituly a "
+"obrazových Alt-textů na svém blogu."
+
+#: ../skype-admin.php:500
+#, php-format
+msgid ""
+"When %1$s is selected, you can edit the template to your liking below at "
+"%2$s under %3$s. When you make changes to that field but select another "
+"theme template here, those changes will be overwriten by the new template!"
+msgstr ""
+"Je-li zvolena %1$s, můžete upravit šablonu níže svých představ u %2$s v "
+"%3$s. Při provádění změn v této oblasti, ale vybrat jinou šablonu motivu zde "
+"budou tyto změny budou overwriten podle nové šablony!"
+
+#: ../skype-admin.php:501
+#, php-format
+msgid ""
+"Start with <strong>selecting one of the predefined theme templates</strong> "
+"to load into the database. Change the options to see a preview. You might "
+"later select %1$s to edit the template in the text field under %2$s."
+msgstr ""
+"Začněte s <strong> výběrem jedné z předdefinovaných tematických šablon </ "
+"strong> načíst do databáze. Změňte možnosti zobrazit náhled. Dalo by se "
+"později výběr %1$s šablonu upravit do textového pole pod %2$s."
+
+#: ../skype-admin.php:502
+#, php-format
+msgid ""
+"If you cannot find a suitable theme, check out <a href=\"http://www.skype."
+"com/en/features/skype-buttons/\" target=\"_blank\">http://www.skype.com/en/"
+"features/skype-buttons/</a>. Select your options there and copy/paste the "
+"output into the textarea under %s."
+msgstr ""
+"Pokud nemůžete najít vhodný motiv, podívejte se na <a href=\"http://www."
+"skype.com/en/features/skype-buttons/\" target=\"_blank\"> http://www.skype."
+"com/~~HEAD=dobj cz / funkce / Skype tlačítka / </a>. Vyberte možnosti tam a "
+"kopírovat / vložit výstup do textového pole pod %s."
+
+#: ../skype-admin.php:503
+#, php-format
+msgid ""
+"If you have your basic settings correct and there is a Skype button visible "
+"on blog, you can fine-tune it's appearance and function with the advanced "
+"settings. Each option is annotated but you can read more in the %s section."
+msgstr ""
+"Máte-li základní nastavení správné a je k dispozici tlačítko Skype viditelné "
+"na blogu, můžete vyladit je to vzhled a funkce s pokročilým nastavením. "
+"Každá volba není uvedena poznámka, ale můžete přečíst více v sekci %s."
+
+#: ../skype-classes.php:13 ../skype-classes.php:73
+msgid "Skype Button"
+msgstr "Tlačítko skype"
+
+#: ../skype-classes.php:16
+msgid "Add a Skype legacy button"
+msgstr "Přidání Skype legacy button"
+
+#: ../skype-classes.php:91
+msgid "Title:"
+msgstr "Titul:"
+
+#: ../skype-classes.php:100
+msgid "Text before button"
+msgstr "Text před stisknutím tlačítka"
+
+#: ../skype-classes.php:104 ../skype-classes.php:110
+msgid "Default"
+msgstr "Standardní"
+
+#: ../skype-classes.php:106
+msgid "Text after button"
+msgstr "Text po tlačítku"
+
+#: ../skype-classes.php:109
+msgid "Use Voicemail?"
+msgstr "Používat hlasovou poštu?"
+
+#: ../skype-classes.php:110
+msgid "Yes"
+msgstr "Ano"
+
+#: ../skype-classes.php:110 ../skype-classes.php:114
+msgid "No"
+msgstr "Ne"
+
+#: ../skype-classes.php:112
+msgid ""
+"Leave blank to use the default options as you defined on the <a href="
+"\"options-general.php?page=skype-status.php\">Skype Settings</a> page."
+msgstr ""
+"Ponechte prázdné použít výchozí možnosti, jak je definováno na stránku <a "
+"href=\"options-general.php?page=skype-status.php\"> Skype Settings </a>."
+
+#: ../skype-classes.php:113
+msgid "You can use some basic HTML here like &lt;br /&gt; for new line."
+msgstr ""
+"Můžete použít některé základní HTML tady líbí & lt; br / & gt; pro nový "
+"řádek."
+
+#: ../skype-classes.php:114
+#, php-format
+msgid "Set to %1$s if you do not have %2$s or %3$s."
+msgstr "Nastavena na hodnotu %1$s, pokud nemáte %2$s nebo %3$s."
+
+#: ../skype-classes.php:257
+msgid " - "
+msgstr " - "
+
+#: ../skype-classes.php:268
+msgid "&raquo; Get Skype, call free!"
+msgstr "&raquo; Získejte Skype, volat zdarma!"
+
+#: ../skype-classes.php:311
+msgid "Call me!"
+msgstr "Zavolej mi!"
+
+#: ../skype-classes.php:312
+msgid "Add me to Skype"
+msgstr "Přidejte si mě do Skype"
+
+#: ../skype-classes.php:313
+msgid "Chat with me"
+msgstr "Chatuj se mnou"
+
+#: ../skype-classes.php:314
+msgid "View my profile"
+msgstr "Zobrazit můj profil"
+
+#: ../skype-classes.php:316
+msgid "Send me a file"
+msgstr "Pošlete mi soubor"
+
+#: ../skype-classes.php:362
+msgid "Skype button disabled:"
+msgstr "Tlačítko Skype zakázáno:"
+
+#: ../skype-classes.php:362
+msgid "Missing Skype ID."
+msgstr "Chybějící ID Skype."
+
+#: ../skype-classes.php:587
+msgid "Sections"
+msgstr "Oddíly"
+
+#: ../skype-classes.php:588
+msgid "Preview"
+msgstr "Náhled"
+
+#: ../skype-classes.php:589 ../skype-quickguide-notes.php:102
+#: ../skype-quickguide-notes.php:122
+msgid "Support"
+msgstr "Podpora"
+
+#: ../skype-classes.php:590
+msgid "Get more from Skype"
+msgstr "Získejte více ze Skype"
+
+#: ../skype-classes.php:591
+msgid "Resources"
+msgstr "Zdroje"
+
+#: ../skype-classes.php:610
+msgid "Settings"
+msgstr "Nastavení"
+
+#: ../skype-classes.php:629
+msgid "Discussion"
+msgstr "Diskuse"
+
+#: ../skype-classes.php:630 ../skype-quickguide-notes.php:103
+msgid "Credits"
+msgstr "Kredit"
+
+#: ../skype-quickguide-notes.php:99
+msgid "Notes &amp; Live Support"
+msgstr "Poznámky &amp; Aktuální Podpora"

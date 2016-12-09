@@ -3,8 +3,8 @@ Contributors: RavanH
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ravanhagen%40gmail%2ecom&item_name=Skype%20Legacy%20Buttons&item_number=2%2e8&no_shipping=0&tax=0&bn=PP%2dDonationsBF&charset=UTF%2d8&lc=us
 Tags: skype, skype button, call, support, widget, widgets, post, posts, quicktag, tinymce, tinymce3, im, skype-button
 Requires at least: 3.2
-Tested up to: 4.3
-Stable tag: 3.0.2
+Tested up to: 4.6
+Stable tag: 3.0.3
 
 Unlimited, highly customizable and accessible (!) Skype buttons through widgets, post shortcode/quicktag and template tags.
 
@@ -24,6 +24,7 @@ Since version 2.6.4.0, Skype Online Status is ready for internationalization. An
 - **Belorussian** * M. Comfi http://www.comfi.com/ (version 2.7)
 - **Bulgarian** * Nikolay Nikolov http://en.chat4o.com/ (version 2.8.2)
 - **Croatian** * Saša http://lasersko-graviranje.bisa.hr (version 2.9.4)
+- **Czech** * Cathy Freyberg https://www.cathydoesloans.com/ (version 3.0)
 - **Danish** * Georg S. Adamsen http://wordpress.blogos.dk/2009/03/18/skype-online-status/ (version 2.8.2)
 - **Dutch** * R.A. van Hagen http://status301.net/ (version 3.0)
 - **Estonian** * Iflexion Design http://iflexion.com/ (version 2.7)
@@ -33,14 +34,15 @@ Since version 2.6.4.0, Skype Online Status is ready for internationalization. An
 - **Hindi** * Outshine Solutions http://outshinesolutions.com (version 2.8.2)
 - **Indonesian** * Nasrulhaq Muiz http://al-badar.net (version 2.8.4)
 - **Italian** * Gianni Diurno http://gidibao.net/index.php/portfolio/ (version 2.6.9)
-- **Japanese** * Ryuei Sasaki http://ryueisasaki.com/ (version 2.8.2)
+- **Japanese** * Ryuei Sasaki (version 2.8.2)
 - **Lithuanian** * Vincent G http://www.host1free.com (version 2.8.2)
 - **Portuguese** * Miguel Angelo Patricio http://www.miguelpatricio.com/ (version 2.8.2)
 - **Russian** * Leonid Jack http://studio-xl.com/ (version 2.7)
 - **Serbian** * Ognjen Djuraskovic http://firstsiteguide.com (version 2.9.3)
 - **Spanish** * Rodolfo Castro & Rocio Moreno http://www.ars-legalconsulting.es/blog/ (version 2.7)
 - **Turkish** * Hakan Er http://hakanertr.wordpress.com/ (version 2.8.8)
-- **Ukrainian** * Michael Svystun http://emarketingblog.com.ua/ (version 2.7)
+- **Ukrainian (uk_UA)** * Michael Svystun http://emarketingblog.com.ua/ (version 2.7)
+- **Ukrainian (uk)** * Ivanka from Everycloudtech http://everycloudtech.com/ (version 3.0.2)
 
 New translations and their Authors will be mentioned here.
 
@@ -149,10 +151,13 @@ When reporting bugs, please describe as carefully as possible and provide inform
 
 == Upgrade Notice ==
 
-= 3.0.2 =
-Deprecating PHP4 style constructor
+= 3.0.3 =
+Czech translation
 
 == Changelog ==
+
+= 3.0.3 =
+* NEW: Czech translation
 
 = 3.0.2 =
 * Deprecating PHP4 style constructor
