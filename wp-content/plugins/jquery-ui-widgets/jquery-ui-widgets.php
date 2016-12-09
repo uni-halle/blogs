@@ -3,13 +3,13 @@
 Plugin Name: jQuery UI Widgets
 Plugin URI: http://wordpress.org/plugins/jquery-ui-widgets/
 Description: Simple, clean, and flexible way to add jQuery UI widgets to your site pages.
-Version: 0.34
+Version: 0.38
 Author: David Gwyer
-Author URI: http://www.wpgothemes.com
+Author URI: http://www.wpgoplugins.com
 License: GPLv2
 */
 
-/*  Copyright 2009 David Gwyer (email : david@wpgothemes.com)
+/*  Copyright 2009 David Gwyer (email : david@wpgoplugins.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -26,16 +26,7 @@ License: GPLv2
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-// @todo 0.4:
-//
-// - The Size and Puff effects do not seem to be included with WP yet. Keep checking with every release.
-// - Add text box to exclude for certain pages ID's.
-// - Have options to enqueue scripts on front end and back end? Maybe in a future version when admin jQuery styles have been added to core.
-// - Have a 'Select All' and 'Select None' buttons for each checkbox group to select/deselect all checkboxes.
-// - Remove all inline styles.
-// - Don't show the custom theme textbox by default. Have radio buttons to selectively show theme elements by default.
-
-// Note: jquiw_ prefix is derived from [jq]uery [ui] [d]emo
+// Note: jquiw_ prefix is derived from [jq]uery [ui] [w]idgets
 define( "JQUIW_PLUGIN_URL", WP_PLUGIN_URL . '/' . plugin_basename( dirname( __FILE__ ) ) );
 
 // --------------------
@@ -47,9 +38,34 @@ add_action( 'wp_enqueue_scripts', 'jquiw_enqueue_scripts' );
 register_activation_hook( __FILE__, 'jquiw_add_defaults' );
 register_uninstall_hook( __FILE__, 'jquiw_delete_plugin_options' );
 add_action( 'admin_init', 'jquiw_init' );
+add_action( 'plugins_loaded', 'jquiw_localize_plugin' );
 add_action( 'admin_menu', 'jquiw_add_options_page' );
-add_filter( 'plugin_action_links', 'jquiw_plugin_action_links', 10, 2 );
+add_filter( 'plugin_row_meta', 'jquiw_plugin_action_links', 10, 2 );
+add_filter( 'plugin_action_links', 'jquiw_plugin_settings_link', 10, 2 );
+add_action( 'admin_notices', 'jquiw_admin_notice' );
+register_activation_hook( __FILE__, 'jquiw_admin_notice_set_transient' );
 
+/* Runs only when the plugin is activated. */
+function jquiw_admin_notice_set_transient() {
+
+	/* Create transient data */
+	set_transient( 'jquiw-admin-notice', true, 5 );
+}
+
+/* Admin Notice on Activation. */
+function jquiw_admin_notice(){
+
+	/* Check transient, if available display notice */
+	if( get_transient( 'jquiw-admin-notice' ) ){
+		?>
+		<div class="updated notice is-dismissible">
+			<p><a href="https://wpgoplugins.com/plugins/jquery-ui-widgets-pro/" target="_blank"><strong>jQuery UI Widgets PRO</strong></a> is now available! Access great new features. <b>Try risk free today with our 100% money back guarantee! <span class="dashicons dashicons-smiley"></span></b></p>
+		</div>
+		<?php
+		/* Delete transient, only display this notice once. */
+		delete_transient( 'jquiw-admin-notice' );
+	}
+}
 // --------------------------------------
 // --  DEFINE DEFAULT OPTION SETTINGS  --
 // --------------------------------------
@@ -157,7 +173,7 @@ function jquiw_enqueue_scripts() {
 
 	$options         = get_option( 'jquiw_options' );
 	$jquery_theme    = empty( $options['drp_jquery_theme'] ) ? 'smoothness' : $options['drp_jquery_theme'];
-	$jquery_css_base = '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/' . $jquery_theme . '/jquery-ui.css';
+	$jquery_css_base = '//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/' . $jquery_theme . '/jquery-ui.css';
 
 	/* Register jQuery scripts if selected in Plugin options. */
 	if ( isset( $options['chk_inc_accordion'] ) && $options['chk_inc_accordion'] ) {
@@ -306,7 +322,11 @@ function jquiw_delete_plugin_options() {
 function jquiw_render_form() {
 	?>
 	<div class="wrap">
-		<h2>jQuery UI Widgets Options</h2>
+		<h2><?php _e( 'jQuery UI Widgets Options', 'jquery-ui-widgets' ); ?></h2>
+
+		<div class="notice" style="border: 2px #DAA520 solid;margin: 20px 0;">
+			<p><a href="https://wpgoplugins.com/plugins/jquery-ui-widgets-pro/" target="_blank"><strong>jQuery UI Widgets PRO</strong></a> is now available! Access great new features. <b>Try risk free today with our 100% money back guarantee! <span class="dashicons dashicons-smiley"></span></b></p>
+		</div>
 
 		<form method="post" action="options.php">
 			<?php settings_fields( 'jquiw_plugin_options' ); ?>
@@ -322,185 +342,198 @@ function jquiw_render_form() {
 			</style>
 			<table class="form-table">
 				<tr valign="top">
-					<th scope="row">Custom jQuery Code</th>
+					<th scope="row"><?php _e( 'Custom jQuery Code', 'jquery-ui-widgets' ); ?></th>
 					<td colspan="3">
 						<?php $res_jquery = jquiw_get_textarea_rows( $options['txtar_jquery_code'], $min = 5, $max = 30 ); ?>
-						<textarea class="widefat" style="font-family: Lucida Console;" name="jquiw_options[txtar_jquery_code]" rows="<?php echo $res_jquery['rows']; ?>" type='textarea'><?php if ( isset( $options['txtar_jquery_code'] ) ) {
+						<textarea placeholder="e.g. jQuery(document).ready(function($) { // Add jQuery code here... });" class="widefat" style="font-family: Lucida Console;" name="jquiw_options[txtar_jquery_code]" rows="<?php echo $res_jquery['rows']; ?>" type='textarea'><?php if ( isset( $options['txtar_jquery_code'] ) ) {
 								echo $options['txtar_jquery_code'];
-							} ?></textarea><br />
+							} ?></textarea><br>
 
-						<p style="margin:5px 0 0 0;">Add custom jQuery code above, e.g.
-							<code>$( "#accordion" ).accordion();</code> and it will be added automatically to your site.
-							<b>Don't forget to add your jQuery inside the proper wrapper</b> e.g.
-							<code>jQuery(document).ready(function($) { // Add jQuery code here... });</code></p>
+						<p style="margin:5px 0 0 0;">
+						<?php
+						printf( __('Add custom jQuery code above, e.g. %1$s and it will be added automatically to your site. %2$sDon\'t forget to add your jQuery inside the proper wrapper.%3$s', 'jquery-ui-widgets'),
+							'<code>$( "#accordion" ).accordion();</code>',
+							'<b>',
+							'</b>'
+						);
+						?>
+						</p>
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row">Use These jQuery UI Scripts</th>
+					<th scope="row"><?php _e( 'Use These jQuery UI Scripts', 'jquery-ui-widgets' ); ?></th>
 					<td width="200">
 						<label><input name="jquiw_options[chk_inc_accordion]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_accordion'] ) ) {
 								checked( '1', $options['chk_inc_accordion'] );
-							} ?> /> Accordion</label><a href="http://api.jqueryui.com/accordion/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Accordion', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/accordion/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_autocomplete]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_autocomplete'] ) ) {
 								checked( '1', $options['chk_inc_autocomplete'] );
-							} ?> /> Autocomplete</label><a href="http://api.jqueryui.com/autocomplete/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Autocomplete', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/autocomplete/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_button]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_button'] ) ) {
 								checked( '1', $options['chk_inc_button'] );
-							} ?> /> Button</label><a href="http://api.jqueryui.com/button/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Button', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/button/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_uicore]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_uicore'] ) ) {
 								checked( '1', $options['chk_inc_uicore'] );
-							} ?> /> UI Core</label><a href="http://api.jqueryui.com/category/ui-core/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'UI Core', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/category/ui-core/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_datepicker]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_datepicker'] ) ) {
 								checked( '1', $options['chk_inc_datepicker'] );
-							} ?> /> Datepicker</label><a href="http://api.jqueryui.com/datepicker/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Datepicker', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/datepicker/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_dialog]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_dialog'] ) ) {
 								checked( '1', $options['chk_inc_dialog'] );
-							} ?> /> Dialog</label><a href="http://api.jqueryui.com/dialog/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Dialog', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/dialog/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_draggable]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_draggable'] ) ) {
 								checked( '1', $options['chk_inc_draggable'] );
-							} ?> /> Draggable</label><a href="http://api.jqueryui.com/draggable/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Draggable', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/draggable/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 					</td>
 					<td width="200">
 						<label><input name="jquiw_options[chk_inc_droppable]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_droppable'] ) ) {
 								checked( '1', $options['chk_inc_droppable'] );
-							} ?> /> Droppable</label><a href="http://api.jqueryui.com/droppable/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Droppable', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/droppable/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_menu]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_menu'] ) ) {
 								checked( '1', $options['chk_inc_menu'] );
-							} ?> /> Menu</label><a href="http://api.jqueryui.com/menu/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Menu', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/menu/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_mouse]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_mouse'] ) ) {
 								checked( '1', $options['chk_inc_mouse'] );
-							} ?> /> Mouse</label><a href="http://api.jqueryui.com/mouse/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Mouse', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/mouse/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_position]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_position'] ) ) {
 								checked( '1', $options['chk_inc_position'] );
-							} ?> /> Position</label><a href="http://api.jqueryui.com/position/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Position', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/position/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_progressbar]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_progressbar'] ) ) {
 								checked( '1', $options['chk_inc_progressbar'] );
-							} ?> /> Progress Bar</label><a href="http://api.jqueryui.com/progressbar/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Progress Bar', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/progressbar/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_resizable]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_resizable'] ) ) {
 								checked( '1', $options['chk_inc_resizable'] );
-							} ?> /> Resizable</label><a href="http://api.jqueryui.com/resizable/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Resizable', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/resizable/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_selectable]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_selectable'] ) ) {
 								checked( '1', $options['chk_inc_selectable'] );
-							} ?> /> Selectable</label><a href="http://api.jqueryui.com/selectable/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Selectable', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/selectable/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 					</td>
 					<td>
 						<label><input name="jquiw_options[chk_inc_slider]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_slider'] ) ) {
 								checked( '1', $options['chk_inc_slider'] );
-							} ?> /> Slider</label><a href="http://api.jqueryui.com/slider/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Slider', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/slider/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_spinner]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_spinner'] ) ) {
 								checked( '1', $options['chk_inc_spinner'] );
-							} ?> /> Spinner</label><a href="http://api.jqueryui.com/spinner/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Spinner', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/spinner/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_sortable]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_sortable'] ) ) {
 								checked( '1', $options['chk_inc_sortable'] );
-							} ?> /> Sortable</label><a href="http://api.jqueryui.com/sortable/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Sortable', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/sortable/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_tabs]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_tabs'] ) ) {
 								checked( '1', $options['chk_inc_tabs'] );
-							} ?> /> Tabs</label><a href="http://api.jqueryui.com/tabs/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Tabs', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/tabs/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_tooltip]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_tooltip'] ) ) {
 								checked( '1', $options['chk_inc_tooltip'] );
-							} ?> /> Tooltip</label><a href="http://api.jqueryui.com/tooltip/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Tooltip', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/tooltip/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_widget]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_widget'] ) ) {
 								checked( '1', $options['chk_inc_widget'] );
-							} ?> /> Widget Factory</label><a href="http://api.jqueryui.com/jQuery.widget/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Widget Factory', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/jQuery.widget/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 					</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row">&nbsp;</th>
-					<td colspan="3">Note: Scripts such as UI Core, Mouse, Position etc. are included by default with other widget scripts.</td>
+					<td colspan="3"><?php _e( 'Note: Scripts such as UI Core, Mouse, Position etc. are included by default with other widget scripts.', 'jquery-ui-widgets' ); ?></td>
 				</tr>
 				<tr valign="top">
-					<th scope="row">Use These jQuery Effect Scripts</th>
+					<th scope="row"><?php _e( 'Use These jQuery Effect Scripts', 'jquery-ui-widgets' ); ?></th>
 					<td width="200">
 						<label><input name="jquiw_options[chk_inc_blind]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_blind'] ) ) {
 								checked( '1', $options['chk_inc_blind'] );
-							} ?> /> Blind</label><a href="http://api.jqueryui.com/blind-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Blind', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/blind-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_bounce]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_bounce'] ) ) {
 								checked( '1', $options['chk_inc_bounce'] );
-							} ?> /> Bounce</label><a href="http://api.jqueryui.com/bounce-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Bounce', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/bounce-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_clip]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_clip'] ) ) {
 								checked( '1', $options['chk_inc_clip'] );
-							} ?> /> Clip</label><a href="http://api.jqueryui.com/clip-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Clip', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/clip-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_coreeffects]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_coreeffects'] ) ) {
 								checked( '1', $options['chk_inc_coreeffects'] );
-							} ?> /> Core Effects</label><a href="http://api.jqueryui.com/category/effects-core/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Core Effects', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/category/effects-core/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_drop]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_drop'] ) ) {
 								checked( '1', $options['chk_inc_drop'] );
-							} ?> /> Drop</label><a href="http://api.jqueryui.com/drop-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Drop', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/drop-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 					</td>
 					<td width="200">
 						<label><input name="jquiw_options[chk_inc_explode]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_explode'] ) ) {
 								checked( '1', $options['chk_inc_explode'] );
-							} ?> /> Explode</label><a href="http://api.jqueryui.com/explode-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Explode', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/explode-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_fade]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_fade'] ) ) {
 								checked( '1', $options['chk_inc_fade'] );
-							} ?> /> Fade</label><a href="http://api.jqueryui.com/fade-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Fade', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/fade-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_fold]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_fold'] ) ) {
 								checked( '1', $options['chk_inc_fold'] );
-							} ?> /> Fold</label><a href="http://api.jqueryui.com/fold-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Fold', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/fold-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_highlight]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_highlight'] ) ) {
 								checked( '1', $options['chk_inc_highlight'] );
-							} ?> /> Highlight</label><a href="http://api.jqueryui.com/highlight-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Highlight', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/highlight-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_pulsate]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_pulsate'] ) ) {
 								checked( '1', $options['chk_inc_pulsate'] );
-							} ?> /> Pulsate</label><a href="http://api.jqueryui.com/pulsate-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Pulsate', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/pulsate-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 					</td>
 					<td>
 						<label><input name="jquiw_options[chk_inc_scale]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_scale'] ) ) {
 								checked( '1', $options['chk_inc_scale'] );
-							} ?> /> Scale</label><a href="http://api.jqueryui.com/scale-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Scale', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/scale-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_shake]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_shake'] ) ) {
 								checked( '1', $options['chk_inc_shake'] );
-							} ?> /> Shake</label><a href="http://api.jqueryui.com/shake-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Shake', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/shake-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_slide]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_slide'] ) ) {
 								checked( '1', $options['chk_inc_slide'] );
-							} ?> /> Slide</label><a href="http://api.jqueryui.com/slide-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Slide', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/slide-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_transfer]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_transfer'] ) ) {
 								checked( '1', $options['chk_inc_transfer'] );
-							} ?> /> Transfer</label><a href="http://api.jqueryui.com/transfer-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image" /></a><br />
+							} ?>> <?php _e( 'Transfer', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/transfer-effect/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 					</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row">&nbsp;</th>
-					<td colspan="3">Note: The Core Effects script is included by default with other effect scripts.</td>
+					<td colspan="3"><?php _e( 'Note: The Core Effects script is included by default with other effect scripts.', 'jquery-ui-widgets' ); ?></td>
 				</tr>
 				<tr valign="top">
-					<th scope="row">Select jQuery UI Theme</th>
+					<th scope="row"><?php _e( 'Select jQuery UI Theme', 'jquery-ui-widgets' ); ?></th>
 					<td colspan="3">
 						<select name='jquiw_options[drp_jquery_theme]'>
-							<option value='black-tie' <?php selected( 'black-tie', $options['drp_jquery_theme'] ); ?>>Black Tie</option>
-							<option value='blitzer' <?php selected( 'blitzer', $options['drp_jquery_theme'] ); ?>>Blitzer</option>
-							<option value='cupertino' <?php selected( 'cupertino', $options['drp_jquery_theme'] ); ?>>Cupertino</option>
-							<option value='dark-hive' <?php selected( 'dark-hive', $options['drp_jquery_theme'] ); ?>>Dark Hive</option>
-							<option value='dot-luv' <?php selected( 'dot-luv', $options['drp_jquery_theme'] ); ?>>Dot Luv</option>
-							<option value='eggplant' <?php selected( 'eggplant', $options['drp_jquery_theme'] ); ?>>Eggplant</option>
-							<option value='excite-bike' <?php selected( 'excite-bike', $options['drp_jquery_theme'] ); ?>>Excite Bike</option>
-							<option value='flick' <?php selected( 'flick', $options['drp_jquery_theme'] ); ?>>Flick</option>
-							<option value='hot-sneaks' <?php selected( 'hot-sneaks', $options['drp_jquery_theme'] ); ?>>Hot Sneaks</option>
-							<option value='humanity' <?php selected( 'humanity', $options['drp_jquery_theme'] ); ?>>Humanity</option>
-							<option value='le-frog' <?php selected( 'le-frog', $options['drp_jquery_theme'] ); ?>>Le Frog</option>
-							<option value='mint-choc' <?php selected( 'mint-choc', $options['drp_jquery_theme'] ); ?>>Mint Choc</option>
-							<option value='overcast' <?php selected( 'overcast', $options['drp_jquery_theme'] ); ?>>Overcast</option>
-							<option value='pepper-grinder' <?php selected( 'pepper-grinder', $options['drp_jquery_theme'] ); ?>>Pepper Grinder</option>
-							<option value='redmond' <?php selected( 'redmond', $options['drp_jquery_theme'] ); ?>>Redmond</option>
-							<option value='smoothness' <?php selected( 'smoothness', $options['drp_jquery_theme'] ); ?>>Smoothness</option>
-							<option value='south-street' <?php selected( 'south-street', $options['drp_jquery_theme'] ); ?>>South Street</option>
-							<option value='start' <?php selected( 'start', $options['drp_jquery_theme'] ); ?>>Start</option>
-							<option value='sunny' <?php selected( 'sunny', $options['drp_jquery_theme'] ); ?>>Sunny</option>
-							<option value='swanky-purse' <?php selected( 'swanky-purse', $options['drp_jquery_theme'] ); ?>>Swanky Purse</option>
-							<option value='trontastic' <?php selected( 'trontastic', $options['drp_jquery_theme'] ); ?>>Trontastic</option>
-							<option value='ui-darkness' <?php selected( 'ui-darkness', $options['drp_jquery_theme'] ); ?>>UI Darkness</option>
-							<option value='ui-lightness' <?php selected( 'ui-lightness', $options['drp_jquery_theme'] ); ?>>UI Lightness</option>
-							<option value='vader' <?php selected( 'vader', $options['drp_jquery_theme'] ); ?>>Vader</option>
-						</select><br />
-						Choose a standard jQuery UI theme to render widgets. Preview these themes on the jQuery UI
-						<a href="http://jqueryui.com/themeroller/#themeGallery" target="_blank">ThemeRoller page</a>.<br /><br />
-						<input class="widefat" type="text" size="57" name="jquiw_options[txt_custom_theme]" value="<?php echo $options['txt_custom_theme']; ?>" /><br />
+							<option value='black-tie' <?php selected( 'black-tie', $options['drp_jquery_theme'] ); ?>><?php _e( 'Black Tie', 'jquery-ui-widgets' ); ?></option>
+							<option value='blitzer' <?php selected( 'blitzer', $options['drp_jquery_theme'] ); ?>><?php _e( 'Blitzer', 'jquery-ui-widgets' ); ?></option>
+							<option value='cupertino' <?php selected( 'cupertino', $options['drp_jquery_theme'] ); ?>><?php _e( 'Cupertino', 'jquery-ui-widgets' ); ?></option>
+							<option value='dark-hive' <?php selected( 'dark-hive', $options['drp_jquery_theme'] ); ?>><?php _e( 'Dark Hive', 'jquery-ui-widgets' ); ?></option>
+							<option value='dot-luv' <?php selected( 'dot-luv', $options['drp_jquery_theme'] ); ?>><?php _e( 'Dot Luv', 'jquery-ui-widgets' ); ?></option>
+							<option value='eggplant' <?php selected( 'eggplant', $options['drp_jquery_theme'] ); ?>><?php _e( 'Eggplant', 'jquery-ui-widgets' ); ?></option>
+							<option value='excite-bike' <?php selected( 'excite-bike', $options['drp_jquery_theme'] ); ?>><?php _e( 'Excite Bike', 'jquery-ui-widgets' ); ?></option>
+							<option value='flick' <?php selected( 'flick', $options['drp_jquery_theme'] ); ?>><?php _e( 'Flick', 'jquery-ui-widgets' ); ?></option>
+							<option value='hot-sneaks' <?php selected( 'hot-sneaks', $options['drp_jquery_theme'] ); ?>><?php _e( 'Hot Sneaks', 'jquery-ui-widgets' ); ?></option>
+							<option value='humanity' <?php selected( 'humanity', $options['drp_jquery_theme'] ); ?>><?php _e( 'Humanity', 'jquery-ui-widgets' ); ?></option>
+							<option value='le-frog' <?php selected( 'le-frog', $options['drp_jquery_theme'] ); ?>><?php _e( 'Le Frog', 'jquery-ui-widgets' ); ?></option>
+							<option value='mint-choc' <?php selected( 'mint-choc', $options['drp_jquery_theme'] ); ?>><?php _e( 'Mint Choc', 'jquery-ui-widgets' ); ?></option>
+							<option value='overcast' <?php selected( 'overcast', $options['drp_jquery_theme'] ); ?>><?php _e( 'Overcast', 'jquery-ui-widgets' ); ?></option>
+							<option value='pepper-grinder' <?php selected( 'pepper-grinder', $options['drp_jquery_theme'] ); ?>><?php _e( 'Pepper Grinder', 'jquery-ui-widgets' ); ?></option>
+							<option value='redmond' <?php selected( 'redmond', $options['drp_jquery_theme'] ); ?>><?php _e( 'Redmond', 'jquery-ui-widgets' ); ?></option>
+							<option value='smoothness' <?php selected( 'smoothness', $options['drp_jquery_theme'] ); ?>><?php _e( 'Smoothness', 'jquery-ui-widgets' ); ?></option>
+							<option value='south-street' <?php selected( 'south-street', $options['drp_jquery_theme'] ); ?>><?php _e( 'South Street', 'jquery-ui-widgets' ); ?></option>
+							<option value='start' <?php selected( 'start', $options['drp_jquery_theme'] ); ?>><?php _e( 'Start', 'jquery-ui-widgets' ); ?></option>
+							<option value='sunny' <?php selected( 'sunny', $options['drp_jquery_theme'] ); ?>><?php _e( 'Sunny', 'jquery-ui-widgets' ); ?></option>
+							<option value='swanky-purse' <?php selected( 'swanky-purse', $options['drp_jquery_theme'] ); ?>><?php _e( 'Swanky Purse', 'jquery-ui-widgets' ); ?></option>
+							<option value='trontastic' <?php selected( 'trontastic', $options['drp_jquery_theme'] ); ?>><?php _e( 'Trontastic', 'jquery-ui-widgets' ); ?></option>
+							<option value='ui-darkness' <?php selected( 'ui-darkness', $options['drp_jquery_theme'] ); ?>><?php _e( 'UI Darkness', 'jquery-ui-widgets' ); ?></option>
+							<option value='ui-lightness' <?php selected( 'ui-lightness', $options['drp_jquery_theme'] ); ?>><?php _e( 'UI Lightness', 'jquery-ui-widgets' ); ?></option>
+							<option value='vader' <?php selected( 'vader', $options['drp_jquery_theme'] ); ?>><?php _e( 'Vader', 'jquery-ui-widgets' ); ?></option>
+						</select><br>
+						<?php _e( 'Choose a standard jQuery UI theme to render widgets. Preview these themes on the jQuery UI', 'jquery-ui-widgets' ); ?>
+						<a href="http://jqueryui.com/themeroller/#themeGallery" target="_blank"><?php _e( 'ThemeRoller page', 'jquery-ui-widgets' ); ?></a>.<br><br>
+						<input class="widefat" type="text" size="57" name="jquiw_options[txt_custom_theme]" value="<?php echo $options['txt_custom_theme']; ?>"><br>
 						<?php $upload_dir = wp_upload_dir(); ?>
 
-						Create a
-						<a href="http://jqueryui.com/themeroller/" target="_blank">custom theme</a> to override the standard theme. Upload to
-						<code style="font-style:normal;"><?php echo $upload_dir['baseurl']; ?>/</code> and enter the path/name of the custom stylesheet above, relative to this folder. See the Plugin
-						<a href="http://wordpress.org/extend/plugins/jquery-ui-widgets/faq/" target="_blank">FAQ</a> for detailed instructions on using custom themes.<br />
+						<?php
+						printf( __('Create a %1$scustom theme%2$s to override the standard theme. Upload to %3$s%4$s%5$s and enter the path/name of the custom stylesheet above, relative to this folder. See the Plugin %6$sFAQ%7$s for detailed instructions on using custom themes.', 'jquery-ui-widgets'),
+							'<a href="http://jqueryui.com/themeroller/" target="_blank">',
+							'</a>',
+							'<code style="font-style:normal;">',
+							$upload_dir['baseurl'].'/',
+							'</code>',
+							'<a href="http://wordpress.org/extend/plugins/jquery-ui-widgets/faq/" target="_blank">',
+							'</a>'
+						);
+						?>
+						<br>
 						<?php
 						/* Enqueue custom theme rolled styles. */
 						$upload_dir = wp_upload_dir();
@@ -508,16 +541,22 @@ function jquiw_render_form() {
 						$full_path_url = trailingslashit( $upload_dir['baseurl'] ) . $relative_path;
 						$full_path_dir = trailingslashit( $upload_dir['basedir'] ) . $relative_path;
 						if ( ! file_exists( $full_path_dir ) ) {
-							echo "<div class=\"error inline\">Cannot find the file: <code style=\"background-color: #ffebe8;\">" . $full_path_url . "</code>. Reverting to the standard theme. Please enter a valid custom stylesheet path.</div>";
+							printf( __('%1$Cannot find the file: %2$%3$%4$. Reverting to the standard theme. Please enter a valid custom stylesheet path.%5$', 'jquery-ui-widgets'),
+								'<div class="error inline">',
+								'<code style="background-color: #ffebe8;">',
+								$full_path_url,
+								'</code>',
+								'</div>'
+							);
 						}
 						?>
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row">Override jQuery UI Theme Styles</th>
+					<th scope="row"><?php _e( 'Override jQuery UI Theme Styles', 'jquery-ui-widgets' ); ?></th>
 					<td colspan="3">
 						<?php $res_css = jquiw_get_textarea_rows( $options['txtar_override_css'], $min = 5, $max = 20 ); ?>
-						<textarea class="widefat" style="font-family: Lucida Console;" name="jquiw_options[txtar_override_css]" rows="<?php echo $res_css['rows']; ?>" type='textarea'><?php echo $options['txtar_override_css']; ?></textarea><br />Edit the custom CSS rules above to override the current jQuery UI theme (whether a standard or custom theme). This is a great place to tweak the theme styles.
+						<textarea class="widefat" style="font-family: Lucida Console;" name="jquiw_options[txtar_override_css]" rows="<?php echo $res_css['rows']; ?>" type='textarea'><?php echo $options['txtar_override_css']; ?></textarea><br><?php _e( 'Edit the custom CSS rules above to override the current jQuery UI theme (whether a standard or custom theme). This is a great place to tweak the theme styles.', 'jquery-ui-widgets' ); ?>
 					</td>
 				</tr>
 				<tr>
@@ -526,17 +565,17 @@ function jquiw_render_form() {
 					</td>
 				</tr>
 				<tr valign="top" style="border-top:#dddddd 1px solid;">
-					<th scope="row">Database Options</th>
+					<th scope="row"><?php _e( 'Database Options', 'jquery-ui-widgets' ); ?></th>
 					<td colspan="3">
 						<label><input name="jquiw_options[chk_default_options_db]" type="checkbox" value="1" <?php if ( isset( $options['chk_default_options_db'] ) ) {
 								checked( '1', $options['chk_default_options_db'] );
-							} ?> /> Restore defaults upon Plugin deactivation/reactivation</label>
-						<br /><span class="description">Only check this if you want to reset Plugin settings upon reactivation.</span>
+							} ?>> <?php _e( 'Restore defaults upon Plugin deactivation/reactivation', 'jquery-ui-widgets' ); ?></label>
+						<br><span class="description"><?php _e( 'Only check this if you want to reset Plugin settings upon reactivation.', 'jquery-ui-widgets' ); ?></span>
 					</td>
 				</tr>
 			</table>
 			<p class="submit">
-				<input type="submit" class="button-primary" value="<?php _e( 'Save Changes' ) ?>" />
+				<input type="submit" class="button-primary" value="<?php _e( 'Save Changes', 'jquery-ui-widgets' ) ?>">
 			</p>
 		</form>
 
@@ -546,14 +585,14 @@ function jquiw_render_form() {
 		if( strtotime($discount_date) > strtotime('now') ) {
 			echo '<p style="background: #eee;border: 1px dashed #ccc;font-size: 13px;margin: 0 0 10px 0;padding: 5px 0 5px 8px;">For a limited time only! <strong>Get 50% OFF</strong> the price of our brand new mobile ready, fully responsive <a href="http://www.wpgothemes.com/themes/minn/" target="_blank"><strong>Minn WordPress theme</strong></a>. Simply enter the following code at checkout: <code>MINN50OFF</code></p>';
 		} else {
-			echo '<p style="background: #eee;border: 1px dashed #ccc;font-size: 13px;margin: 0 0 10px 0;padding: 5px 0 5px 8px;">As a user of our free plugins here\'s a bonus just for you! <strong>Get 30% OFF</strong> the price of our brand new mobile ready, fully responsive <a href="http://www.wpgothemes.com/themes/minn/" target="_blank"><strong>Minn WordPress theme</strong></a>. Simply enter the following code at checkout: <code>WPGO30OFF</code></p>';
+			echo '<p style="background: #eee;border: 1px dashed #ccc;font-size: 13px;margin: 0 0 10px 0;padding: 5px 0 5px 8px;">Checkout our other plugins!w mobile ready, fully responsive <a href="http://www.wpgothemes.com/themes/minn/" target="_blank"><strong>Minn WordPress theme</strong></a>. Simply enter the following code at checkout: <code>WPGO30OFF</code></p>';
 		}
 
 		?>
 
 		<div style="clear:both;">
 			<p>
-				<a href="http://www.twitter.com/dgwyer" title="Follow me Twitter!" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/twitter.png" /></a>&nbsp;&nbsp;
+				<a href="http://www.twitter.com/wpgothemes" title="Follow us on Twitter!" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/twitter.png"></a>&nbsp;&nbsp;
 				<input class="button" style="vertical-align:12px;" type="button" value="Visit Our NEW Site!" onClick="window.open('http://www.wpgothemes.com')">
 				<input class="button" style="vertical-align:12px;" type="button" value="Minn, Our Latest Theme" onClick="window.open('http://www.wpgothemes.com/themes/minn')">
 			</p>
@@ -569,8 +608,19 @@ function jquiw_render_form() {
 
 function jquiw_plugin_action_links( $links, $file ) {
 
+	//if ( $file == plugin_basename( __FILE__ ) ) {
+		// add a link to pro plugin
+		//$links[] = '<a style="color:limegreen;" href="https://wpgoplugins.com/plugins/jquery-ui-widgets-pro/" target="_blank" title="Try out the Pro version today. Risk FREE - 100% money back guarantee!"><span class="dashicons dashicons-awards"></span></a>';
+	//}
+
+	return $links;
+}
+
+function jquiw_plugin_settings_link( $links, $file ) {
+
 	if ( $file == plugin_basename( __FILE__ ) ) {
-		$posk_links = '<a href="' . get_admin_url() . 'options-general.php?page=jquery-ui-widgets/jquery-ui-widgets.php">' . __( 'Settings' ) . '</a>';
+		$posk_links = '<a style="color:limegreen;" href="https://wpgoplugins.com/plugins/jquery-ui-widgets-pro/" target="_blank" title="Upgrade to Pro - 100% money back guarantee"><span class="dashicons dashicons-awards"></span></a> | ';
+		$posk_links .= '<a href="' . get_admin_url() . 'options-general.php?page=jquery-ui-widgets/jquery-ui-widgets.php">' . __( 'Settings' ) . '</a>';
 		/* Make the 'Settings' link appear first. */
 		array_unshift( $links, $posk_links );
 	}
@@ -599,4 +649,10 @@ function jquiw_get_textarea_rows( $content = null, $min = 3, $max = 25, $default
 	return $res;
 }
 
-?>
+/**
+ * Add Plugin localization support.
+ */
+function jquiw_localize_plugin() {
+
+	load_plugin_textdomain( 'jquery-ui-widgets', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}

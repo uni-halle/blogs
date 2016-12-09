@@ -1,9 +1,9 @@
 === jQuery UI Widgets ===
 Contributors: dgwyer
-Tags: jquery, tabs, accordion, dialog, ui, admin, enqueue, themeroller, styles, themes
+Tags: jQuery UI, jQuery, tabs, accordion, dialog, UI, admin, enqueue, themeroller, styles, themes, widgets, effects, interactions, custom code, customization
 Requires at least: 3.5
-Tested up to: 4.0
-Stable tag: 0.34
+Tested up to: 4.5.2
+Stable tag: 0.38
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,13 +11,11 @@ Simple, flexible, and powerful way to add jQuery UI widgets to your site posts, 
 
 == Description ==
 
-Now updated to work with WordPress 3.7!
-
 So, just how easy is it?
 
 1. Install and activate the Plugin.
 2. Add your jQuery code to the 'Custom jQuery Code' text box in Plugin settings.
-3. On your post, page, or text widget, add the corresponding HTML markup.
+3. Add the corresponding HTML markup to a post, page, or or text widget,
 4. That's it!!
 
 You can easily tweak further settings such as the jQuery UI theme used to render the jQuery widgets, choose which scripts are added to your site, and overriding default CSS.
@@ -28,7 +26,17 @@ No need to mess about with cryptic shortcodes! Just enter clean, valid, HTML mar
 
 Note: This Plugin uses the Google CDN to load the CSS for the official jQuery UI themes.
 
-Please rate/review this Plugin if you find it useful. And see our <a href="http://www.wpgothemes.com" target="_blank">WordPress development site</a> for more Plugins and themes.
+Please <a href="https://wordpress.org/support/view/plugin-reviews/jquery-ui-widgets"><strong>rate</strong></a> this Plugin if you find it useful. It only takes a moment but it's very much appreciated. :)
+
+><strong>We're proud to announce that <a href="https://wpgoplugins.com/plugins/jquery-ui-widgets-pro/">jQuery UI Widgets Pro</a> is now available!</strong>
+>
+>Upgrade today for great features such as syntax highlighted code editors and dozens of pre-made jQuery UI templates ready to use!
+>
+>Also, you can now add jQuery UI (and custom JavaScript and CSS code) to specific pages for the first time via the page/post editor. Take complete control over which pages have jQuery UI scripts added. You can choose to add to ALL pages or ONLY to the ones you want. It's so simple!
+>
+>Checkout the <a href="https://wordpress.org/plugins/jquery-ui-widgets/screenshots/">screenshots</a>, or click <a href="https://wpgoplugins.com/plugins/jquery-ui-widgets-pro/">here</a> for more details.
+>
+>See our <a href="https://www.wpgoplugins.com" target="_blank">WordPress plugin site</a> for more top plugins!
 
 == Frequently Asked Questions ==
 
@@ -41,7 +49,7 @@ There are plenty of examples for each jQuery widget on the official <a href="htt
 The Plugin supports themes created with the <a href="http://jqueryui.com/themeroller/" target="_blank">jQuery interactive ThemeRoller</a> which means you can very easily create a custom jQuery theme to match your WordPress theme perfectly.
 
 1. Create your custom theme using the ThemeRoller online tool. When you have finished your masterpiece, click the 'Download theme' button.
-2. On the 'Build Your Download' page make sure ALL check boxes are seletected (this is important).
+2. On the 'Build Your Download' page make sure ALL check boxes are selected (this is important).
 3. Click the 'Advanced Theme Settings' button on the right hand side of the page and a couple of text boxes will come into view. Add a name for your custom theme in the 'Theme Folder Name' text box. Make sure that any words are separated by a dashes NOT spaces.
 4. Finally, before downloading your custom theme, make sure the version radio button selected is 1.9.xx.
 5. Now, you can click 'Download' to download your custom theme to your computer. It will be saved as a zip file.
@@ -50,7 +58,7 @@ The Plugin supports themes created with the <a href="http://jqueryui.com/themero
 8. Open the 'css' folder and inside will be a single folder containing your theme, which has the name you specified above. Inside this folder will be an images folder and a single stylesheet. Make a note of the stylesheet name, you will need it later on.
 9. You need to now upload this custom theme folder to your site, so the Plugin can read the custom styles.
 10. If you take a look at the Plugin settings page you will see the folder name that you should upload to. Usually this will be something like http://www.mysite.com/wp-content/uploads/. If you are running a WordPress multisite this will be something different. Using FTP upload your custom jQuery theme to this folder.
-11. Finally, you just need to paste in the name of your custom theme stylsheet in Plugin settings, in the textbox provided.
+11. Finally, you just need to paste in the name of your custom theme stylesheet in Plugin settings, in the textbox provided.
 12. So, if your custom theme folder is named 'mytheme' and your custom stylesheet is called 'jquery-ui-1.9.2.custom.css' then you would need to paste in something like 'mytheme/jquery-ui-1.9.2.custom.css' into the textbox.
 13. If you wanted to try out multiple custom themes I would recommend adding a 'jquery-ui-themes' folder (or whatever name you wanted) and uploading all of your custom themes to this folder.
 14. The path to your stylesheet would then become 'jquery-ui-themes/mytheme/jquery-ui-1.9.2.custom.css'.
@@ -89,8 +97,34 @@ Usage:
 3. jQuery UI theme example.
 4. jQuery UI theme example.
 5. jQuery UI theme example.
+6. Totally revamped plugin options page. (Pro only)
+7. Add scripts on specific pages via a fully featured meta box on the page/post editor. (Pro only)
+8. Beautiful syntax highlighted JavaScript and CSS editors to help customize output. (Pro only)
+9. JavaScript editor even includes a built-in debugger! (Pro only)
+10. Choose from dozens of pre-made jQuery UI templates. (Pro only)
+11. Add license key to receive automatic plugin updates. (Pro only)
 
 == Changelog ==
+
+*0.38*
+
+* Updated plugins settings links.
+
+*0.37*
+
+* Fixed some description errors.
+
+*0.36*
+
+* Information about the NEW jQuery UI Widgets Pro plugin added.
+* UI Updated.
+* Screenshots updated.
+
+*0.35*
+
+* Plugin is now translatable!
+* In the 'Custom jQuery Code' plugin options section the example jQuery wrapper code is now added as placeholder text rather than as a description underneath.
+* Updated jQuery UI CSS to v1.11.2.
 
 *0.34*
 
