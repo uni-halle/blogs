@@ -3,12 +3,12 @@
 Plugin Name: Search Everything
 Plugin URI: http://wordpress.org/plugins/search-everything/
 Description: Adds search functionality without modifying any template pages: Activate, Configure and Search. Options Include: search highlight, search pages, excerpts, attachments, drafts, comments, tags and custom fields (metadata). Also offers the ability to exclude specific pages and posts. Does not search password-protected content.
-Version: 8.1.5
+Version: 8.1.6
 Author: Zemanta
 Author URI: http://www.zemanta.com
 */
 
-define('SE_VERSION', '8.1.5');
+define('SE_VERSION', '8.1.6');
 
 if (!defined('SE_PLUGIN_FILE'))
 	define('SE_PLUGIN_FILE', plugin_basename(__FILE__));
@@ -235,9 +235,10 @@ class SearchEverything {
 				$search_terms = array( $s );
 			} else {
 				preg_match_all( '/".*?("|$)|((?<=[\\s",+])|^)[^\\s",+]+/', $s, $matches );
-				$search_terms = array_map( create_function( '$a', 'return trim($a, "\\"\'\\n\\r ");' ), $matches[0] );
+				$search_terms = array_filter(array_map( create_function( '$a', 'return trim($a, "\\"\'\\n\\r ");' ), $matches[0] ));
 			}
 		}
+
 		return $search_terms;
 	}
 
@@ -299,6 +300,7 @@ class SearchEverything {
 
 		// if it's not a sentance add other terms
 		$search_sql_query .= '(';
+
 		foreach ( $terms as $term ) {
 			$search_sql_query .= $seperator;
 
