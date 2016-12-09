@@ -13,9 +13,9 @@ class M_NextGen_Pagination extends C_Base_Module
             "Pagination",
             "Provides pagination for display types",
             '0.3',
-            "http://www.nextgen-gallery.com",
+            "https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/",
             "Photocrati Media",
-            "http://www.photocrati.com"
+            "https://www.imagely.com"
         );
     }
 

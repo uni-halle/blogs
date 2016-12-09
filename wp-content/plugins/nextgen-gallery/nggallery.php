@@ -2,12 +2,12 @@
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
 /**
- * Plugin Name: NextGEN Gallery by Photocrati
- * Description: The most popular gallery plugin for WordPress and one of the most popular plugins of all time with over 14 million downloads.
- * Version: 2.1.31
- * Author: Photocrati Media
- * Plugin URI: http://www.nextgen-gallery.com
- * Author URI: http://www.photocrati.com
+ * Plugin Name: NextGEN Gallery
+ * Description: The most popular gallery plugin for WordPress and one of the most popular plugins of all time with over 15 million downloads.
+ * Version: 2.1.50
+ * Author: Imagely
+ * Plugin URI: https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/
+ * Author URI: https://www.imagely.com
  * License: GPLv2
  * Text Domain: nggallery
  * Domain Path: /products/photocrati_nextgen/modules/i18n/lang
@@ -161,13 +161,20 @@ class C_NextGEN_Bootstrap
 	function is_activating()
 	{
 		$retval =  strpos($_SERVER['REQUEST_URI'], 'plugins.php') !== FALSE && isset($_REQUEST['action']) && $_REQUEST['action'] == 'activate';
+		
 		if (!$retval && strpos($_SERVER['REQUEST_URI'], 'update.php') !== FALSE && isset($_REQUEST['action']) && $_REQUEST['action'] == 'install-plugin' && isset($_REQUEST['plugin']) && strpos($_REQUEST['plugin'], 'nextgen-gallery') === 0) {
 			$retval = TRUE;
 		}
+		
 		if (!$retval && strpos($_SERVER['REQUEST_URI'], 'update.php') !== FALSE && isset($_REQUEST['action']) && $_REQUEST['action'] == 'activate-plugin' && isset($_REQUEST['plugin']) && strpos($_REQUEST['plugin'], 'nextgen-gallery') === 0) {
 			$retval = TRUE;
 		}
 
+        // Omitted for now; this was merged at the wrong time
+		/* if (!$retval && isset($_REQUEST['tgmpa-activate']) && $_REQUEST['tgmpa-activate'] == 'activate-plugin' && isset($_REQUEST['plugin']) && strtolower($_REQUEST['plugin']) == 'nextgen-gallery') {
+			$retval = TRUE;
+		} */
+		
 		return $retval;
 	}
 
@@ -578,7 +585,6 @@ class C_NextGEN_Bootstrap
 	 */
 	function _define_constants()
 	{
-		// NextGEN by Photocrati Constants
 		define('NGG_PLUGIN', basename($this->directory_path()));
 		define('NGG_PLUGIN_BASENAME', plugin_basename(__FILE__));
 		define('NGG_PLUGIN_DIR', $this->directory_path());
@@ -589,7 +595,7 @@ class C_NextGEN_Bootstrap
 		define('NGG_PRODUCT_URL', path_join(str_replace("\\", '/', NGG_PLUGIN_URL), 'products'));
 		define('NGG_MODULE_URL', path_join(str_replace("\\", '/', NGG_PRODUCT_URL), 'photocrati_nextgen/modules'));
 		define('NGG_PLUGIN_STARTED_AT', microtime());
-		define('NGG_PLUGIN_VERSION', '2.1.31');
+		define('NGG_PLUGIN_VERSION', '2.1.50');
 
 		if (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG)
 			define('NGG_SCRIPT_VERSION', (string)mt_rand(0, mt_getrandmax()));
@@ -819,5 +825,138 @@ class C_NextGEN_Bootstrap
 		return $this->path($file_name);
 	}
 }
+
+#region Freemius
+
+/**
+ * Customize the opt-in message.
+ *
+ * @author Vova Feldman (@svovaf)
+ * @since 2.1.32
+ *
+ * @param string $message
+ * @param string $user_first_name
+ * @param string $plugin_title
+ * @param string $user_login
+ * @param string $site_link
+ * @param string $freemius_link
+ *
+ * @return string
+ */
+function ngg_fs_custom_connect_message(
+	$message,
+	$user_first_name,
+	$plugin_title,
+	$user_login,
+	$site_link,
+	$freemius_link
+) {
+	return sprintf(
+		__fs( 'hey-x' ) . '<br>' .
+		__( 'Allow %6$s to collect some usage data with %5$s to make the plugin even more awesome. If you skip this, that\'s okay! %2$s will still work just fine.', 'nggallery' ),
+		$user_first_name,
+		'<b>' . __('NextGEN Gallery', 'nggallery') . '</b>',
+		'<b>' . $user_login . '</b>',
+		$site_link,
+		$freemius_link,
+		'<b>' . __('Imagely', 'nggallery') . '</b>'
+	);
+}
+
+/**
+ * Uninstall cleanup script.
+ */
+function ngg_fs_uninstall() {
+	// Your cleanup script.
+}
+
+/**
+ * Create a helper function for easy SDK access.
+ *
+ * @author Vova Feldman (@svovaf)
+ * @since 2.1.32
+ *
+ * @return \Freemius
+ */
+function ngg_fs() {
+	global $ngg_fs;
+
+	$ngg_options = get_option( 'ngg_options' );
+	$ngg_run_freemius = get_option('ngg_run_freemius', NULL);
+
+	if ( false === $ngg_options ) {
+		// New plugin installation.
+
+		if ( defined('WP_FS__DEV_MODE') && WP_FS__DEV_MODE ) {
+			// Always run Freemius in development mode for new plugin installs.
+			$run_freemius = true;
+		} else {
+			// Run Freemius code on 20% of the new installations.
+			// $random = rand( 1, 10 );
+			// $run_freemius = ( 1 <= $random && $random <= 2 );
+            // Update 2016-08: run on all new instances
+            $run_freemius = TRUE;
+		}
+
+		update_option('ngg_run_freemius', $run_freemius);
+
+	// Compare both bool or string 0/1 because get_option() may give us either
+	} else if ((is_bool($ngg_run_freemius) && $ngg_run_freemius) || '1' === $ngg_run_freemius) {
+		// If runFreemius was set, use the value.
+		$run_freemius = $ngg_run_freemius;
+	} else {
+		// Don't run Freemius for plugin updates.
+		$run_freemius = false;
+		if (is_null($ngg_run_freemius))
+			update_option('ngg_run_freemius', FALSE);
+	}
+
+	if ( ! $run_freemius ) {
+		return false;
+	}
+
+	if ( ! isset( $ngg_fs ) ) {
+		// Include Freemius SDK.
+		require_once dirname( __FILE__ ) . '/freemius/start.php';
+
+		$ngg_fs = fs_dynamic_init( array(
+			'id'             => '266',
+			'slug'           => 'nextgen-gallery',
+			'public_key'     => 'pk_009356711cd548837f074e1ef60a4',
+			'is_premium'     => false,
+			'has_addons'     => false,
+			'has_paid_plans' => false,
+			'menu'           => array(
+				'slug'    => 'nextgen-gallery',
+				'account' => false,
+				'contact' => false,
+				'support' => false,
+			),
+			'permissions'    => array(
+				'newsletter' => true,
+			),
+		) );
+	}
+
+	/*
+	// Optional button override.
+	if ( function_exists( 'fs_override_i18n' ) ) {
+		fs_override_i18n( array(
+			'opt-in-connect' => __('OK - I\'m in!', 'nggallery'),
+		), 'nextgen-gallery' );
+	}
+	*/
+
+	// Hook to the custom message filter.
+	$ngg_fs->add_filter( 'connect_message', 'ngg_fs_custom_connect_message', 10, 6 );
+	$ngg_fs->add_action( 'after_uninstall', 'ngg_fs_uninstall' );
+
+	return $ngg_fs;
+}
+
+// Init Freemius.
+ngg_fs();
+
+#endregion Freemius
 
 new C_NextGEN_Bootstrap();

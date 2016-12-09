@@ -99,6 +99,7 @@ class A_NextGen_AddGallery_Ajax extends Mixin
             // Upload the image to the gallery
             if (!$error) {
                 $retval['gallery_id'] = $gallery_id;
+                $settings = C_NextGen_Settings::get_instance();
                 $storage = C_Gallery_Storage::get_instance();
                 try {
                     if ($storage->is_zip()) {
@@ -109,6 +110,21 @@ class A_NextGen_AddGallery_Ajax extends Mixin
                         }
                     } elseif ($image = $storage->upload_image($gallery_id)) {
                         $retval['image_ids'] = array($image->id());
+                        $retval['image_errors'] = array();
+                        // check if image was resized correctly
+                        if ($settings->imgAutoResize) {
+                            $image_path = $storage->get_full_abspath($image);
+                            $image_thumb = new C_NggLegacy_Thumbnail($image_path, true);
+                            if ($image_thumb->error) {
+                                $retval['image_errors'][] = array('id' => $image->id(), 'error' => sprintf(__('Automatic image resizing failed [%1$s].', 'nggallery'), $image_thumb->errmsg));
+                                $image_thumb = null;
+                            }
+                        }
+                        // check if thumb was generated correctly
+                        $thumb_path = $storage->get_thumb_abspath($image);
+                        if (!file_exists($thumb_path)) {
+                            $retval['image_errors'][] = array('id' => $image->id(), 'error' => __('Thumbnail generation failed.', 'nggallery'));
+                        }
                     } else {
                         $retval['error'] = __('Image generation failed', 'nggallery');
                         $error = TRUE;
@@ -334,6 +350,10 @@ class A_Upload_Images_Form extends Mixin
     {
         return __('Upload Images', 'nggallery');
     }
+    public function get_i18n_strings()
+    {
+        return array('no_image_uploaded' => __('No images were uploaded successfully.', 'nggallery'), 'one_image_uploaded' => __('1 image was uploaded successfully.', 'nggallery'), 'x_images_uploaded' => __('{count} images were uploaded successfully.', 'nggallery'), 'image_errors' => __('The following errors occured:', 'nggallery'), 'manage_gallery' => __('Manage gallery', 'nggallery'));
+    }
     /**
      * Plupload stores its i18n JS *mostly* as "en.js" or "ar.js" - but some as zh_CN.js so we must check both if the
      * first does not match.
@@ -365,6 +385,7 @@ class A_Upload_Images_Form extends Mixin
         wp_enqueue_style('ngg.plupload.queue');
         wp_enqueue_script('browserplus');
         wp_enqueue_script('ngg.plupload.queue');
+        wp_localize_script('ngg.plupload.queue', 'NggUploadImages_i18n', $this->object->get_i18n_strings());
         $i18n = $this->_find_plupload_i18n();
         if (!empty($i18n)) {
             wp_enqueue_script('ngg.plupload.i18n', $i18n, array('ngg.plupload.full'), NGG_SCRIPT_VERSION);

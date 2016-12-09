@@ -139,7 +139,7 @@ class nggMediaRss {
 	 * Get the XML <generator> node
 	 */
 	function get_generator_mrss_node($indent = "\t\t") {	
-		return $indent . "<generator><![CDATA[NextGEN Gallery [http://nextgen-gallery.com]]]></generator>\n";
+		return $indent . "<generator><![CDATA[NextGEN Gallery [https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/]]]></generator>\n";
 	}	
 	
 	/**

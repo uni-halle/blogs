@@ -21,7 +21,7 @@ class NextGEN_shortcodes {
 
 
         // convert the old shortcode
-        add_filter('the_content', array(&$this, 'convert_shortcode'));
+        add_filter('the_content', array('NextGEN_shortcodes', 'convert_shortcode'));
 
 		// ngglegacy display types use globals. These globals need to be reset
 		// at the start of every loop
@@ -42,7 +42,7 @@ class NextGEN_shortcodes {
        * @param string $content Content to search for shortcodes
        * @return string Content with new shortcodes.
        */
-    function convert_shortcode($content) {
+    static function convert_shortcode($content) {
 
         $ngg_options = nggGallery::get_option('ngg_options');
 

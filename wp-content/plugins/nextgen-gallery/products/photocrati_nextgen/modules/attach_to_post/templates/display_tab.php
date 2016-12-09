@@ -6,6 +6,6 @@
 	<?php echo $tab ?>
 <?php endforeach ?>
 </div>
-<p>
-	<input type="button" id="save_displayed_gallery" value="<?php _e('Save', 'nggallery'); ?>"/>
+<p class="wp-core-ui">
+	<input type="button" class="button button-primary button-large" id="save_displayed_gallery" value="<?php if ($displayed_gallery->id()) { _e('Save Changes', 'nggallery'); } else { _e('Insert Displayed Gallery', 'nggallery'); } ?>"/>
 </p>

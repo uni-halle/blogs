@@ -15,9 +15,9 @@ class M_Third_Party_Compat extends C_Base_Module
             'Third Party Compatibility',
             "Adds Third party compatibility hacks, adjustments, and modifications",
             '0.4',
-            'http://www.nextgen-gallery.com',
+            'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
             'Photocrati Media',
-            'http://www.photocrati.com'
+            'https://www.imagely.com'
         );
 
         // the following constants were renamed for 2.0.41; keep them declared for compatibility sake until

@@ -22,10 +22,10 @@ class M_NggLegacy extends C_Base_Module
 			'photocrati-nextgen-legacy',
 			'NextGEN Legacy',
 			'Embeds the original version of NextGEN 1.9.3 by Alex Rabe',
-			'0.14',
-			'http://www.nextgen-gallery.com',
+			'0.16',
+			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
 			'Photocrati Media',
-			'http://www.photocrati.com'
+			'https://www.imagely.com'
 		);
 
 		C_Photocrati_Installer::add_handler($this->module_id, 'C_NggLegacy_Installer');

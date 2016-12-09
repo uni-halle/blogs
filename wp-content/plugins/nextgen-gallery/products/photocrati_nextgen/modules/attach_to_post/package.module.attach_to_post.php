@@ -145,8 +145,6 @@ class A_Attach_To_Post_Ajax extends Mixin
                 // Get the thumbnail
                 $entity->thumb_url = $storage->get_image_url($image, 'thumb', TRUE);
                 $entity->thumb_html = $storage->get_image_html($image, 'thumb');
-                $entity->max_width = $settings->thumbwidth;
-                $entity->max_height = $settings->thumbheight;
             }
         } else {
             $response['error'] = __('Missing parameters', 'nggallery');
@@ -223,7 +221,7 @@ class C_Attach_Controller extends C_NextGen_Admin_Page_Controller
         }
         return self::$_instances[$context];
     }
-    public function define($context)
+    public function define($context = FALSE)
     {
         if (!is_array($context)) {
             $context = array($context);
@@ -316,6 +314,7 @@ class Mixin_Attach_To_Post extends Mixin
         $this->object->mark_script('jquery-ui-sortable');
         $this->object->mark_script('jquery-ui-tooltip');
         $this->object->mark_script('ngg_tabs');
+        wp_enqueue_style('buttons');
         // Ensure select2
         wp_enqueue_style('ngg_select2');
         wp_enqueue_script('ngg_select2');
@@ -372,7 +371,8 @@ class Mixin_Attach_To_Post extends Mixin
         $image_mapper = C_Image_Mapper::get_instance();
         // Get the first entity from the displayed gallery. We will use this
         // for a preview pic
-        $entity = array_pop($this->object->_displayed_gallery->get_included_entities(1));
+        $results = $this->object->_displayed_gallery->get_included_entities(1);
+        $entity = array_pop($results);
         $image = FALSE;
         if ($entity) {
             // This is an album or gallery
@@ -389,8 +389,10 @@ class Mixin_Attach_To_Post extends Mixin
             }
         }
         // Were we able to find a preview pic? If so, then render it
-        $image_size = $dyn_thumbs->get_size_name(array('width' => 200, 'height' => 200, 'quality' => 90, 'type' => 'jpg'));
+        $image_size = $dyn_thumbs->get_size_name(array('width' => 300, 'height' => 200, 'quality' => 90, 'type' => 'jpg', 'watermark' => FALSE, 'crop' => TRUE));
+        add_filter('ngg_before_save_thumbnail', array(&$this, 'set_igw_placeholder_text'));
         $found_preview_pic = $storage->render_image($image, $image_size, TRUE);
+        remove_filter('ngg_before_save_thumbnail', array(&$this, 'set_igw_placeholder_text'));
         // Render invalid image if no preview pic is found
         if (!$found_preview_pic) {
             $filename = $this->object->get_static_abspath('photocrati-attach_to_post#invalid_image.png');
@@ -398,6 +400,27 @@ class Mixin_Attach_To_Post extends Mixin
             readfile($filename);
             $this->render();
         }
+    }
+    /**
+     * Filter for ngg_before_save_thumbnail
+     */
+    public function set_igw_placeholder_text($thumbnail)
+    {
+        $settings = C_NextGen_Settings::get_instance();
+        $thumbnail->applyFilter(IMG_FILTER_BRIGHTNESS, -25);
+        $watermark_settings = apply_filters('ngg_igw_placeholder_line_1_settings', array('text' => __('NextGEN Gallery', 'nggallery'), 'font_color' => 'ffffff', 'font' => 'YanoneKaffeesatz-Bold.ttf', 'font_size' => 32));
+        if ($watermark_settings) {
+            $thumbnail->watermarkText = $watermark_settings['text'];
+            $thumbnail->watermarkCreateText($watermark_settings['font_color'], $watermark_settings['font'], $watermark_settings['font_size'], 100);
+            $thumbnail->watermarkImage('topCenter', 0, 72);
+        }
+        $watermark_settings = apply_filters('ngg_igw_placeholder_line_2_settings', array('text' => __('Click to edit', 'nggallery'), 'font_color' => 'ffffff', 'font' => 'YanoneKaffeesatz-Bold.ttf', 'font_size' => 15));
+        if ($watermark_settings) {
+            $thumbnail->watermarkText = $watermark_settings['text'];
+            $thumbnail->watermarkCreateText($watermark_settings['font_color'], $watermark_settings['font'], $watermark_settings['font_size'], 100);
+            $thumbnail->watermarkImage('topCenter', 0, 108);
+        }
+        return $thumbnail;
     }
     /**
      * Returns the page title of the Attach to Post interface
@@ -455,7 +478,7 @@ class Mixin_Attach_To_Post extends Mixin
      */
     public function _render_display_tab()
     {
-        return $this->object->render_partial('photocrati-attach_to_post#display_tab', array('messages' => array(), 'tabs' => $this->object->_get_display_tabs()), TRUE);
+        return $this->object->render_partial('photocrati-attach_to_post#display_tab', array('messages' => array(), 'displayed_gallery' => $this->object->_displayed_gallery, 'tabs' => $this->object->_get_display_tabs()), TRUE);
     }
     /**
      * Renders the tab used primarily for Gallery and Image creation

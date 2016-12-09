@@ -180,7 +180,7 @@ function nggallery_manage_gallery_main() {
 			<input type="submit" value="<?php _e( 'Search Images', 'nggallery' ); ?>" class="button" />
 		</p>
 		</form>
-		<form id="editgalleries" class="nggform" method="POST" action="<?php echo $ngg->manage_page->base_page . '&amp;paged=' . esc_attr($_GET['paged']); ?>" accept-charset="utf-8">
+		<form id="editgalleries" class="nggform" method="POST" action="<?php echo nextgen_esc_url($ngg->manage_page->base_page . '&orderby=' . $orderby . '&order=' . $order . '&paged=' . $_GET['paged']); ?>" accept-charset="utf-8">
 		<?php wp_nonce_field('ngg_bulkgallery') ?>
 		<input type="hidden" name="page" value="manage-galleries" />
 

@@ -19,9 +19,9 @@
 		getInfo: function() {
 			return {
 				longname:	'NextGEN Gallery',
-				author:		'Photocrati Media',
-				authorurl:	'http://www.photocrati.com',
-				infourl:	'http://www.nextgen-gallery.com',
+				author:		'Imagely',
+				authorurl:	'https://www.imagely.com',
+				infourl:	'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
 				version:	'0.1'
 			};
 		},

@@ -17,9 +17,9 @@ class M_Simple_Html_Dom extends C_Base_Module
             'Simple HTML Dom',
             'Provides the simple_html_dom utility for other modules to use',
             '1.5',
-            'http://www.photocrati.com',
+            'https://www.imagely.com',
             'Photocrati Media',
-            'http://www.photocrati.com'
+            'https://www.imagely.com'
         );
     }
 

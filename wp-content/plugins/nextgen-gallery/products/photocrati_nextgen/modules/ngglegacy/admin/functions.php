@@ -28,7 +28,7 @@ class nggAdmin{
         $storage  = C_Gallery_Storage::get_instance();
 
         // get the current user ID
-        get_currentuserinfo();
+        wp_get_current_user();
 
         //cleanup pathname
         $name = sanitize_file_name( sanitize_title($title)  );
@@ -115,14 +115,14 @@ class nggAdmin{
         if ($output == false)
             return $galleryID;
 
-        if ($galleryID != false) {
+        if ($galleryID != false && !isset($_REQUEST['attach_to_post'])) {
             $message  = __('Gallery ID %1$s successfully created. You can show this gallery in your post or page with the shortcode %2$s.<br/>','nggallery');
             $message  = sprintf($message, $galleryID, '<strong>[nggallery id=' . $galleryID . ']</strong>');
             $message .= '<a href="' . admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid=' . $galleryID . '" >';
             $message .= __('Edit gallery','nggallery');
             $message .= '</a>';
 
-            if ($output) nggGallery::show_message($message);
+            if ($output) nggGallery::show_message($message, 'gallery_created_msg');
         }
         return true;
     }
@@ -581,7 +581,7 @@ class nggAdmin{
         global $wpdb, $user_ID;
 
         // get the current user ID
-        get_currentuserinfo();
+        wp_get_current_user();
 
         $created_msg = '';
 
@@ -690,7 +690,7 @@ class nggAdmin{
 
         if ( !current_user_can('NextGEN Manage others gallery') ) {
             // get the current user ID
-            get_currentuserinfo();
+            wp_get_current_user();
 
             if ( $user_ID != $check_ID)
                 return false;

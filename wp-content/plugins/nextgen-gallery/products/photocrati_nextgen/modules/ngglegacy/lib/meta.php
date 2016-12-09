@@ -121,7 +121,7 @@ class nggMeta{
 
             $meta= array();
 
-	        $exif = isset($this->exif_array['EXIF']) ? $this->exif_array['EXIF'] : array();
+	        $exif = isset($this->exif_data['EXIF']) ? $this->exif_data['EXIF'] : array();
 	        if (count($exif)) {
 
                 if (!empty($exif['FNumber']))

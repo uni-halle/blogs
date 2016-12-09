@@ -29,6 +29,19 @@
 	width:24px;
 }
 
+#gallerydiv h3 {
+	margin-left: 10px;
+}
+
+#gallerydiv span.toggle-indicator {
+	font-size: 2em;
+	line-height: 2em;
+}
+
+#gallerydiv span.toggle-indicator:hover {
+	cursor: pointer;
+}
+
 .warning {
     color: #9F6000;
     background-color: #FEEFB3;
@@ -536,4 +549,8 @@ DIV that shows the image as you drag it
 #ngg-manage-images-items-per-page {
 	float: right;
 	margin-right: 5px;
+}
+
+#adminmenu .wp-submenu a[href*=ngg_pro_upgrade] {
+	color: #76a934;
 }

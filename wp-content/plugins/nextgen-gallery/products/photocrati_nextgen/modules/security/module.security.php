@@ -15,9 +15,9 @@ class M_Security extends C_Base_Module
 			'Security',
 			'Provides utilities to check for credentials and security',
 			'0.2',
-			'http://www.nextgen-gallery.com',
+			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
 			'Photocrati Media',
-			'http://www.photocrati.com'
+			'https://www.imagely.com'
 		);
 
 		if (isset($GLOBALS['_COOKIE_NG_COPY'])) {

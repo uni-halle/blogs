@@ -14,10 +14,10 @@ class M_DataMapper extends C_Base_Module
 			'photocrati-datamapper',
 			'DataMapper',
 			'Provides a database abstraction layer following the DataMapper pattern',
-			'0.9',
-			'http://www.photocrati.com',
+			'0.10',
+			'https://www.imagely.com',
 			'Photocrati Media',
-			'http://www.photocrati.com'
+			'https://www.imagely.com'
 		);
 
 		C_Photocrati_Installer::add_handler($this->module_id, 'C_Datamapper_Installer');

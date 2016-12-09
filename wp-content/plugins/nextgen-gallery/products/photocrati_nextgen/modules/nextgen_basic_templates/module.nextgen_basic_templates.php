@@ -15,10 +15,10 @@ class M_NextGen_Basic_Templates extends C_Base_Module
 			'photocrati-nextgen_basic_templates',
 			'NextGen Basic Templates',
 			'Provides a NextGen-Legacy compatible thumbnail gallery for NextGEN Gallery',
-			'0.5',
-			'http://www.photocrati.com',
+			'0.6',
+			'https://www.imagely.com',
 			'Photocrati Media',
-			'http://www.photocrati.com'
+			'https://www.imagely.com'
 		);
 	}
 

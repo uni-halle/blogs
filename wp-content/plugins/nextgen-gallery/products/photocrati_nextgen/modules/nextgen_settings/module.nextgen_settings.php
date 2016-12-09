@@ -18,9 +18,9 @@ class M_NextGen_Settings extends C_Base_Module
 			'NextGEN Gallery Settings',
 			'Provides central management for NextGEN Gallery settings',
 			'0.9',
-			'http://www.nextgen-gallery.com',
+			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
 			'Photocrati Media',
-			'http://www.photocrati.com'
+			'https://www.imagely.com'
 		);
 
 		C_Photocrati_Installer::add_handler($this->module_id, 'C_NextGen_Settings_Installer');
@@ -112,7 +112,7 @@ class C_NextGen_Settings_Installer
 			'wmPos'    => 'botRight',             // Postion
 			'wmXpos'   => 5,                      // X Pos
 			'wmYpos'   => 5,                      // Y Pos
-			'wmType'   => 0,                      // Type : 'image' / 'text'
+			'wmType'   => 'image',                // Type : 'image' / 'text'
 			'wmPath'   => '',                     // Path to image
 			'wmFont'   => 'arial.ttf',            // Font type
 			'wmSize'   => 10,                     // Font Size

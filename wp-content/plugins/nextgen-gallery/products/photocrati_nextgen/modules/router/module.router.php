@@ -14,9 +14,9 @@ class M_Router extends C_Base_Module
 			'Router for Pope',
 			'Provides routing capabilities for Pope modules',
 			'0.7',
-			'http://www.photocrati.com',
+			'https://www.imagely.com',
 			'Photocrati Media',
-			'http://www.photocrati.com'
+			'https://www.imagely.com'
 		);
 
 		C_Photocrati_Installer::add_handler($this->module_id, 'C_Router_Installer');

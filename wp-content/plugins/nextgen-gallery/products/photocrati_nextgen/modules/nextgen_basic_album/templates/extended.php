@@ -7,7 +7,33 @@
             </div>
             <div class="ngg-albumcontent">
                 <div class="ngg-thumbnail">
-                    <a class="gallery_link" href="<?php echo nextgen_esc_url($gallery->pagelink); ?>"><img class="Thumb" alt="<?php echo esc_attr($gallery->title); ?>" src="<?php echo nextgen_esc_url($gallery->previewurl); ?>"/></a>
+                <?php if ($open_gallery_in_lightbox AND $gallery->entity_type == 'gallery'): ?>
+                    <a
+                        <?php echo $gallery->displayed_gallery->effect_code ?>
+                        href="<?php echo esc_attr($gallery->previewpic_fullsized_url)?>"
+                        data-fullsize="<?php echo esc_attr($gallery->previewpic_fullsized_url) ?>"
+                        data-src="http://sandbox.dev/wp-content/gallery/wood-cutting/DSC_0236.JPG"
+                        data-thumbnail="<?php echo esc_attr($gallery->previewurl)?>"
+                        data-title="<?php echo esc_attr($gallery->previewpic_image->alttext)?>"
+                        data-description="<?php echo esc_attr(stripslashes($gallery->previewpic_image->description))?>"
+                        data-image-id="<?php echo esc_attr($gallery->previewpic)?>"
+                    >
+                        <img class="Thumb"
+                             alt="<?php echo esc_attr($gallery->title); ?>"
+                             src="<?php echo nextgen_esc_url($gallery->previewurl); ?>"/>
+                    </a>
+                <?php else: ?>
+                        <a
+                            class="gallery_link"
+                            href="<?php echo nextgen_esc_url($gallery->pagelink); ?>"
+                        >
+                            <img
+                                class="Thumb"
+                                alt="<?php echo esc_attr($gallery->title); ?>"
+                                src="<?php echo nextgen_esc_url($gallery->previewurl); ?>"
+                            />
+                        </a>
+                <?php endif ?>
                 </div>
                 <div class="ngg-description">
                     <p><?php echo_safe_html($gallery->galdesc); ?></p>

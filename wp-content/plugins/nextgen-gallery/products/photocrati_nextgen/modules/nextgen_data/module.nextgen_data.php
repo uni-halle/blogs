@@ -15,10 +15,10 @@ class M_NextGen_Data extends C_Base_Module
             'photocrati-nextgen-data',
             'NextGEN Data Tier',
             "Provides a data tier for NextGEN gallery based on the DataMapper module",
-            '0.10',
-            'http://www.photocrati.com',
+            '0.12',
+            'https://www.imagely.com',
             'Photocrati Media',
-            'http://www.photocrati.com'
+            'https://www.imagely.com'
         );
 
 		C_Photocrati_Installer::add_handler($this->module_id, 'C_NextGen_Data_Installer');

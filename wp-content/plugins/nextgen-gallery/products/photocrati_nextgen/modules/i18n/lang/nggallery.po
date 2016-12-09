@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: NextGEN Gallery\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/nextgen-gallery\n"
 "POT-Creation-Date: 2014-02-20 19:45-0800\n"
-"PO-Revision-Date: 2015-01-15 15:04+08\n"
-"Last-Translator: Photocrati Media\n"
-"Language-Team: Photocrati Media\n"
+"PO-Revision-Date: 2016-05-03 11:18+47\n"
+"Last-Translator: Imagely\n"
+"Language-Team: Imagely\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1557,11 +1557,11 @@ msgid "A failure occurred"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/admin.php:379
-msgid "<a href=\"http://www.nextgen-gallery.com\" target=\"_blank\">Introduction</a>"
+msgid "<a href=\"https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/\" target=\"_blank\">Introduction</a>"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/admin.php:382
-msgid "<a href=\"http://www.nextgen-gallery.com/languages\" target=\"_blank\">Languages</a>"
+msgid "<a href=\"https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery//languages\" target=\"_blank\">Languages</a>"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/admin.php:387
@@ -2422,7 +2422,7 @@ msgid "NextGEN Gallery is one of the most popular WordPress plugins of all time 
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:97
-msgid "It is developed and supported by Photocrati Media. We'd like to offer a special thanks to Alex Rabe, who first developed the plugin and maintained it through 2011."
+msgid "It is developed and supported by Imagely. We'd like to offer a special thanks to Alex Rabe, who first developed the plugin and maintained it through 2011."
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:98
@@ -2430,12 +2430,12 @@ msgid "<strong>NEED  HELP?</strong> If you need help or assistance please visit 
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:99
-msgid "<strong>EXTENDING NEXTGEN?</strong> There are many third party plugins that add displays and functionality for NextGEN Gallery. See our <a href='http://www.nextgen-gallery.com/nextgen-gallery-extension-plugins/'>Complete List of NextGEN Extension  Plugins</a>."
+msgid "<strong>EXTENDING NEXTGEN?</strong> There are many third party plugins that add displays and functionality for NextGEN Gallery. See our <a href='https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery//nextgen-gallery-extension-plugins/'>Complete List of NextGEN Extension  Plugins</a>."
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:107
 #, php-format
-msgid "This plugin is primarily developed, maintained, supported and documented by <a href=\"%s\" target=\"_blank\">Photocrati Media</a> with a lot of love & effort. Any kind of contribution would be highly appreciated. Thanks!"
+msgid "This plugin is primarily developed, maintained, supported and documented by <a href=\"%s\" target=\"_blank\">Imagely</a> with a lot of love & effort. Any kind of contribution would be highly appreciated. Thanks!"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:112
@@ -3021,7 +3021,7 @@ msgid "%s slug(s) edited."
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/nggallery.php:60
-msgid "<strong>Translation by : </strong><a target=\"_blank\" href=\"http://www.nextgen-gallery.com/languages/\">See here</a>"
+msgid "<strong>Translation by : </strong><a target=\"_blank\" href=\"https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery//languages/\">See here</a>"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/nggallery.php:122
@@ -3195,11 +3195,11 @@ msgid "Limit"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-msgid "NextGEN Gallery by Photocrati"
+msgid "NextGEN Gallery"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://www.nextgen-gallery.com"
+msgid "https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -3207,10 +3207,9 @@ msgid "The most popular gallery plugin for WordPress and one of the most popular
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Photocrati Media"
+msgid "Imagely"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://www.photocrati.com"
+msgid "https://www.imagely.com"
 msgstr ""
-

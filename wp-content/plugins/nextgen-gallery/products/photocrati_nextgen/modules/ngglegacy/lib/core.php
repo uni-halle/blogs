@@ -18,8 +18,8 @@ class nggGallery {
 	/**
 	* Show a system messages
 	*/
-	static function show_message($message) {
-		echo '<div class="wrap"><h2></h2><div class="updated fade" id="message"><p>' . $message . '</p></div></div>' . "\n";
+	static function show_message($message, $message_id=NULL) {
+		echo '<div class="wrap"><h2></h2><div class="updated fade '.$message_id.'" id="message"><p>' . $message . '</p></div></div>' . "\n";
 	}
 
 	/**

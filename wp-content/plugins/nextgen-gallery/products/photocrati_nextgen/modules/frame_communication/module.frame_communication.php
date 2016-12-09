@@ -16,9 +16,9 @@ class M_Frame_Communication extends C_Base_Module
 			'Frame/iFrame Inter-Communication',
 			'Provides a means for HTML frames to share server-side events with each other',
 			'0.4',
-			'http://www.nextgen-gallery.com',
+			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
 			'Photocrati Media',
-			'http://www.photocrati.com',
+			'https://www.imagely.com',
 			$context
 		);
 

@@ -792,7 +792,7 @@ class C_Component_Registry
 		$abspath = str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, $abspath);
 		$contents = @scandir($abspath);
 		if ($contents) foreach ($contents as $filename) {
-			if ($filename == '.' || $filename == '..') continue;
+			if ($filename == '.' || $filename == '..' || $filename == 'error_log') continue;
 			$filename_abspath = $abspath.DIRECTORY_SEPARATOR.$filename;
 
 			// Is this a subdirectory?

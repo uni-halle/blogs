@@ -89,12 +89,12 @@ class P_Photocrati_NextGen extends C_Base_Product
 	{
 		parent::define(
 			'photocrati-nextgen',
-			'Photocrati NextGEN',
-			'Photocrati NextGEN',
+			'NextGen Gallery',
+			'NextGen Gallery',
             NGG_PLUGIN_VERSION,
-			'http://www.nextgen-gallery.com',
+			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
 			'Photocrati Media',
-			'http://www.photocrati.com'
+			'https://www.imagely.com'
 		);
 
 		$module_path = implode(DIRECTORY_SEPARATOR, array(dirname(__FILE__), 'modules'));

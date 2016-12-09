@@ -284,8 +284,7 @@ class nggAdminPanel{
 
 		switch ($_GET['page']) {
 			case NGGFOLDER :
-				wp_enqueue_script( 'postbox' );
-				add_thickbox();
+				wp_enqueue_script( 'ngg_overview', $router->get_static_url('photocrati-nextgen-legacy#overview.js'), array('jquery'), NGG_SCRIPT_VERSION);
 			break;
 			case "nggallery-manage-gallery" :
 				wp_enqueue_script( 'postbox' );
@@ -342,7 +341,7 @@ class nggAdminPanel{
 
 		switch ($_GET['page']) {
 			case NGGFOLDER :
-				wp_enqueue_style( 'thickbox' );
+				wp_add_inline_style( 'nggadmin', file_get_contents(C_Fs::get_instance()->find_static_abspath('photocrati-nextgen-legacy#overview.css') ) );			
 			case "nggallery-about" :
 				wp_enqueue_style( 'nggadmin' );
                 //TODO:Remove after WP 3.3 release
@@ -375,10 +374,10 @@ class nggAdminPanel{
 
 		switch ($screen) {
 			case 'toplevel_page_' . NGGFOLDER :
-				$link  = __('<a href="http://www.nextgen-gallery.com" target="_blank">Introduction</a>', 'nggallery');
+				$link  = __('<a href="https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/" target="_blank">Introduction</a>', 'nggallery');
 			break;
 			case "{$i18n}_page_nggallery-about" :
-				$link  = __('<a href="http://www.nextgen-gallery.com/languages" target="_blank">Languages</a>', 'nggallery');
+				$link  = __('<a href="https://www.imagely.com/languages/" target="_blank">Languages</a>', 'nggallery');
 			break;
 		}
 
@@ -392,7 +391,7 @@ class nggAdminPanel{
 			$help .= __('<a href="http://wordpress.org/tags/nextgen-gallery?forum_id=10" target="_blank">Support Forums</a>', 'nggallery');
 			$help .= ' | <a href="http://www.nextgen-gallery.com/faq/" target="_blank">' . __('FAQ', 'nggallery') . '</a>';
 			$help .= ' | <a href="https://bitbucket.org/photocrati/nextgen-gallery/issues" target="_blank">' . __('Feature request', 'nggallery') . '</a>';
-			$help .= ' | <a href="http://www.nextgen-gallery.com/languages" target="_blank">' . __('Get your language pack', 'nggallery') . '</a>';
+			$help .= ' | <a href="https://www.imagely.com/languages/" target="_blank">' . __('Get your language pack', 'nggallery') . '</a>';
 			$help .= ' | <a href="https://bitbucket.org/photocrati/nextgen-gallery" target="_blank">' . __('Contribute development', 'nggallery') . '</a>';
 			$help .= ' | <a href="http://wordpress.org/extend/plugins/nextgen-gallery" target="_blank">' . __('Download latest version', 'nggallery') . '</a>';
 			$help .= "</div>\n";

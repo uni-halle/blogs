@@ -238,7 +238,8 @@ class Mixin_NextGen_Gallery_Validation
             }
             // If no slug is set, use the title to generate one
             if (!$this->object->slug) {
-                $this->object->slug = nggdb::get_unique_slug($sanitized_title, 'gallery');
+                $this->object->slug = preg_replace('|[^a-z0-9 \\-~+_.#=!&;,/:%@$\\|*\'()\\x80-\\xff]|i', '', $sanitized_title);
+                $this->object->slug = nggdb::get_unique_slug($this->object->slug, 'gallery');
             }
         }
         // Set what will be the path to the gallery
@@ -267,7 +268,7 @@ class C_Gallery extends C_DataMapper_Model
      * Defines the interfaces and methods (through extensions and hooks)
      * that this class provides
      */
-    public function define($properties, $mapper = FALSE, $context = FALSE)
+    public function define($properties = array(), $mapper = FALSE, $context = FALSE)
     {
         parent::define($mapper, $properties, $context);
         $this->add_mixin('Mixin_NextGen_Gallery_Validation');
@@ -321,7 +322,7 @@ class C_Gallery_Mapper extends C_CustomTable_DataMapper_Driver
         // Define the columns
         $this->define_column('gid', 'BIGINT', 0);
         $this->define_column('name', 'VARCHAR(255)');
-        $this->define_column('slug', 'VARCHAR(255');
+        $this->define_column('slug', 'VARCHAR(255)');
         $this->define_column('path', 'TEXT');
         $this->define_column('title', 'TEXT');
         $this->define_column('pageid', 'INT', 0);
@@ -366,7 +367,6 @@ class Mixin_Gallery_Mapper extends Mixin
             $abspath = $storage->get_gallery_abspath($entity->{$entity->id_field});
             $pre_path = $entity->path;
             $entity->path = str_replace(' ', '-', $entity->path);
-            $entity->slug = str_replace(' ', '-', $entity->slug);
             $new_abspath = str_replace($pre_path, $entity->path, $abspath);
             // Begin adding -1, -2, etc until we have a safe target: rename() will overwrite existing directories
             if (@file_exists($new_abspath)) {
@@ -380,8 +380,15 @@ class Mixin_Gallery_Mapper extends Mixin
                 $new_abspath = $corrected_abspath;
                 $entity->path = $entity->path . '-' . $count;
             }
-            $entity->slug = nggdb::get_unique_slug($entity->slug, 'gallery');
             @rename($abspath, $new_abspath);
+        }
+        $slug = $entity->slug;
+        $entity->slug = str_replace(' ', '-', $entity->slug);
+        // Note: we do the following to mimic the behaviour of esc_url so that slugs are always valid in URLs after escaping
+        $entity->slug = preg_replace('|[^a-z0-9 \\-~+_.#=!&;,/:%@$\\|*\'()\\x80-\\xff]|i', '', $entity->slug);
+        if ($slug != $entity->slug) {
+            // creating new slug for the gallery
+            $entity->slug = nggdb::get_unique_slug($entity->slug, 'gallery');
         }
         $retval = $this->call_parent('_save_entity', $entity);
         if ($retval) {
@@ -512,11 +519,11 @@ class C_GalleryStorage_Base extends C_Component
 class C_Gallery_Storage extends C_GalleryStorage_Base
 {
     public static $_instances = array();
-    public function define($object_name, $context = FALSE)
+    public function define($context = FALSE)
     {
         parent::define($context);
         $this->add_mixin('Mixin_GalleryStorage');
-        $this->wrap('I_GalleryStorage_Driver', array(&$this, '_get_driver'), array($object_name, $context));
+        $this->wrap('I_GalleryStorage_Driver', array(&$this, '_get_driver'), $context);
         $this->implement('I_Gallery_Storage');
     }
     static function get_instance($context = False)
@@ -531,13 +538,11 @@ class C_Gallery_Storage extends C_GalleryStorage_Base
      * @param array $args
      * @return mixed
      */
-    public function _get_driver($args)
+    public function _get_driver($context)
     {
-        $object_name = $args[0];
-        $context = $args[1];
         $factory_method = $this->_get_driver_factory_method($context);
         $factory = C_Component_Factory::get_instance();
-        return $factory->create($factory_method, $object_name, $context);
+        return $factory->create($factory_method, FALSE, $context);
     }
 }
 class E_UploadException extends E_NggErrorException
@@ -1144,7 +1149,9 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
             $image = NULL;
             if ($image_id) {
                 $image = $this->object->_image_mapper->find($image_id, TRUE);
-                unset($image->meta_data['saved']);
+                if ($image) {
+                    unset($image->meta_data['saved']);
+                }
             }
             if (!$image) {
                 $image = $this->object->_image_mapper->create();
@@ -1597,7 +1604,7 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
         $thumbnail = NULL;
         $result = $this->object->calculate_image_clone_result($image_path, $clone_path, $params);
         // XXX this should maybe be removed and extra settings go into $params?
-        $settings = C_NextGen_Settings::get_instance();
+        $settings = apply_filters('ngg_settings_during_image_generation', C_NextGen_Settings::get_instance()->to_array());
         // Ensure we have a valid image
         if ($image_path && @file_exists($image_path) && $result != null && !isset($result['error'])) {
             $image_dir = dirname($image_path);
@@ -1670,6 +1677,10 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
                 }
                 if (is_null($thumbnail)) {
                     $thumbnail = new C_NggLegacy_Thumbnail($destpath, true);
+                    if ($thumbnail->error) {
+                        $thumbnail = null;
+                        return null;
+                    }
                 } else {
                     $thumbnail->fileName = $destpath;
                 }
@@ -1679,8 +1690,8 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
                     $watermark = null;
                 }
                 if ($watermark == 1 || $watermark === true) {
-                    if (in_array(strval($settings->wmType), array('image', 'text'))) {
-                        $watermark = $settings->wmType;
+                    if (in_array(strval($settings['wmType']), array('image', 'text'))) {
+                        $watermark = $settings['wmType'];
                     } else {
                         $watermark = 'text';
                     }
@@ -1712,6 +1723,7 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
                     // Force format
                     $thumbnail->format = strtoupper($format_list[$clone_format]);
                 }
+                $thumbnail = apply_filters('ngg_before_save_thumbnail', $thumbnail);
                 $thumbnail->save($destpath, $quality);
                 // IF the original contained IPTC metadata we should attempt to copy it
                 if (isset($detailed_size['APP13']) && function_exists('iptcembed')) {
@@ -1728,7 +1740,7 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
 class C_GalleryStorage_Driver_Base extends C_GalleryStorage_Base
 {
     public static $_instances = array();
-    public function define($context)
+    public function define($context = FALSE)
     {
         parent::define($context);
         $this->add_mixin('Mixin_GalleryStorage_Driver_Base');
@@ -1993,9 +2005,11 @@ class Mixin_Gallery_Image_Mapper extends Mixin
                     $gallery_id = $gallery->{$key};
                 }
             }
+        } elseif (is_numeric($gallery)) {
+            $gallery_id = $gallery;
         }
         if ($gallery_id) {
-            $retval = $this->object->select()->where(array('galleryid = %s'), $gallery_id)->run_query(FALSE, $model);
+            $retval = $this->object->select()->where(array('galleryid = %s', $gallery_id))->run_query(FALSE, $model);
         }
         return $retval;
     }
@@ -3012,7 +3026,7 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
             } elseif (isset($gallery->slug)) {
                 $fs = C_Fs::get_instance();
                 $basepath = C_NextGen_Settings::get_instance()->gallerypath;
-                $retval = $fs->join_paths($basepath, $gallery->slug);
+                $retval = $fs->join_paths($basepath, sanitize_file_name(sanitize_title($gallery->slug)));
             }
         }
         $root_type = defined('NGG_GALLERY_ROOT_TYPE') ? NGG_GALLERY_ROOT_TYPE : 'site';
@@ -3354,6 +3368,7 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
                     $image->meta_data['height'] = $size_meta['height'];
                 }
                 $retval = $this->object->_image_mapper->save($image);
+                do_action('ngg_generated_image', $image, $size, $params);
                 if ($retval == 0) {
                     $retval = false;
                 }
@@ -3444,6 +3459,8 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
             $image = $this->object->_image_mapper->find($image);
         }
         if ($image) {
+            $image_id = $image->{$image->id_field};
+            do_action('ngg_delete_image', $image_id, $size);
             // Delete only a particular image size
             if ($size) {
                 $abspath = $this->object->get_image_abspath($image, $size);
@@ -3602,6 +3619,8 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
             echo sprintf(__('Unable to write to directory %s. Is this directory writable by the server?', 'nggallery'), esc_html($gallery_abspath));
             return $new_image_pids;
         }
+        $old_gallery_ids = array();
+        $image_pid_map = array();
         foreach ($images as $image) {
             if ($this->object->is_current_user_over_quota()) {
                 throw new E_NoSpaceAvailableException(__('Sorry, you have used your space allocation. Please delete some files to upload more files.', 'nggallery'));
@@ -3610,6 +3629,7 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
             if (is_numeric($image)) {
                 $image = $this->object->_image_mapper->find($image);
             }
+            $old_gallery_ids[] = $image->galleryid;
             $old_pid = $image->{$image_key};
             // update the DB if requested
             $new_image = clone $image;
@@ -3679,6 +3699,13 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
                 }
             }
             $new_image_pids[] = $new_pid;
+            $image_pid_map[$old_pid] = $new_pid;
+        }
+        $old_gallery_ids = array_unique($old_gallery_ids);
+        if ($move) {
+            do_action('ngg_moved_images', $images, $old_gallery_ids, $gallery_id);
+        } else {
+            do_action('ngg_copied_images', $image_pid_map, $old_gallery_ids, $gallery_id);
         }
         $title = '<a href="' . admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid=' . $gallery_id . '" >';
         $title .= $gallery->title;
@@ -3712,6 +3739,7 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
                             }
                             $this->object->generate_image_clone($backup_abspath, $this->object->get_image_abspath($image, $named_size), $this->object->get_image_size_params($image, $named_size));
                         }
+                        do_action('ngg_recovered_image', $image);
                         // Reimport all metadata
                         $retval = $this->object->_image_mapper->reimport_metadata($image);
                     }
@@ -3898,19 +3926,35 @@ class C_NggLegacy_Thumbnail
         }
         //initialize resources if no errors
         if ($this->error == false) {
+            $img_err = null;
             switch ($this->format) {
                 case 'GIF':
-                    $this->oldImage = @ImageCreateFromGif($this->fileName);
+                    if (function_exists('ImageCreateFromGif')) {
+                        $this->oldImage = @ImageCreateFromGif($this->fileName);
+                    } else {
+                        $img_err = __('Support for GIF format is missing.', 'nggallery');
+                    }
                     break;
                 case 'JPG':
-                    $this->oldImage = @ImageCreateFromJpeg($this->fileName);
+                    if (function_exists('ImageCreateFromJpeg')) {
+                        $this->oldImage = @ImageCreateFromJpeg($this->fileName);
+                    } else {
+                        $img_err = __('Support for JPEG format is missing.', 'nggallery');
+                    }
                     break;
                 case 'PNG':
-                    $this->oldImage = @ImageCreateFromPng($this->fileName);
+                    if (function_exists('ImageCreateFromPng')) {
+                        $this->oldImage = @ImageCreateFromPng($this->fileName);
+                    } else {
+                        $img_err = __('Support for PNG format is missing.', 'nggallery');
+                    }
                     break;
             }
             if (!$this->oldImage) {
-                $this->errmsg = 'Create Image failed. Check memory limit';
+                if ($img_err == null) {
+                    $img_err = __('Check memory limit', 'nggallery');
+                }
+                $this->errmsg = sprintf(__('Create Image failed. %1$s', 'nggallery'), $img_err);
                 $this->error = true;
             } else {
                 $size = GetImageSize($this->fileName);
@@ -4480,7 +4524,7 @@ class C_NggLegacy_Thumbnail
         // attempt adding a new word until the width is too large; then start a new line and start again
         foreach ($words as $word) {
             // sanitize the text being input; imagettftext() can be sensitive
-            $TextSize = $this->ImageTTFBBoxDimensions($wmSize, 0, $wmFontPath, $line . preg_replace('~^(&([a-zA-Z0-9]);)~', htmlentities('${1}'), mb_convert_encoding($word, 'HTML-ENTITIES', 'UTF-8')));
+            $TextSize = $this->ImageTTFBBoxDimensions($wmSize, 0, $this->correct_gd_unc_path($wmFontPath), $line . preg_replace('~^(&([a-zA-Z0-9]);)~', htmlentities('${1}'), mb_convert_encoding($word, 'HTML-ENTITIES', 'UTF-8')));
             if ($watermark_image_width == 0) {
                 $watermark_image_width = $TextSize['width'];
             }
@@ -4496,7 +4540,7 @@ class C_NggLegacy_Thumbnail
         }
         $lines[] = trim($line);
         // use this string to determine our largest possible line height
-        $line_dimensions = $this->ImageTTFBBoxDimensions($wmSize, 0, $wmFontPath, 'MXQJALYmxqjabdfghjklpqry019`@$^&*(,!132');
+        $line_dimensions = $this->ImageTTFBBoxDimensions($wmSize, 0, $this->correct_gd_unc_path($wmFontPath), 'MXQJALYmxqjabdfghjklpqry019`@$^&*(,!132');
         $line_height = $line_dimensions['height'] * 1.05;
         // Create an image to apply our text to
         $this->workingImage = ImageCreateTrueColor($watermark_image_width, count($lines) * $line_height);
@@ -4510,11 +4554,27 @@ class C_NggLegacy_Thumbnail
         // Put text on the image, line-by-line
         $y_pos = $wmSize;
         foreach ($lines as $line) {
-            imagettftext($this->workingImage, $wmSize, 0, 0, $y_pos, $TextColor, $wmFontPath, $line);
+            imagettftext($this->workingImage, $wmSize, 0, 0, $y_pos, $TextColor, $this->correct_gd_unc_path($wmFontPath), $line);
             $y_pos += $line_height;
         }
         $this->watermarkImgPath = $this->workingImage;
         return;
+    }
+    /**
+     * Returns a path that can be used with imagettftext() and ImageTTFBBox()
+     *
+     * imagettftext() and ImageTTFBBox() cannot load resources from Windows UNC paths
+     * and require they be mangled to be like //server\filename instead of \\server\filename
+     * @param string $path Absolute file path
+     * @return string $path Mangled absolute file path
+     */
+    public function correct_gd_unc_path($path)
+    {
+        if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN' && substr($path, 0, 2) === '\\\\') {
+            $path = ltrim($path, '\\\\');
+            $path = '//' . $path;
+        }
+        return $path;
     }
     /**
      * Calculates the width & height dimensions of ImageTTFBBox().
@@ -4528,12 +4588,18 @@ class C_NggLegacy_Thumbnail
      */
     public function ImageTTFBBoxDimensions($wmSize, $fontAngle, $wmFontPath, $text)
     {
-        $box = @ImageTTFBBox($wmSize, $fontAngle, $wmFontPath, $text) or die;
+        $box = @ImageTTFBBox($wmSize, $fontAngle, $this->correct_gd_unc_path($wmFontPath), $text);
         $max_x = max(array($box[0], $box[2], $box[4], $box[6]));
         $max_y = max(array($box[1], $box[3], $box[5], $box[7]));
         $min_x = min(array($box[0], $box[2], $box[4], $box[6]));
         $min_y = min(array($box[1], $box[3], $box[5], $box[7]));
         return array('width' => $max_x - $min_x, 'height' => $max_y - $min_y);
+    }
+    public function applyFilter($filterType)
+    {
+        $args = func_get_args();
+        array_unshift($args, $this->newImage);
+        return call_user_func_array('imagefilter', $args);
     }
     /**
      * Modfied Watermark function by Steve Peart 

@@ -368,6 +368,8 @@ class Mixin_CustomPost_DataMapper_Driver extends Mixin
             // Save properties as post meta
             $this->object->_flush_and_update_postmeta($post_id, $entity instanceof stdClass ? $entity : $entity->get_entity());
             $entity->{$primary_key} = $post_id;
+            // Clean cache
+            $this->object->_cache = array();
         }
         $entity->id_field = $primary_key;
         return $post_id;
@@ -462,6 +464,8 @@ class Mixin_CustomPost_DataMapper_Driver extends Mixin
         if ($query->get('datamapper')) {
             $query->query_vars = $this->object->_query_args;
         }
+        $filter = isset($query->query_vars['suppress_filters']) ? $query->query_vars['suppress_filters'] : FALSE;
+        $query->query_vars['suppress_filters'] = apply_filters('wpml_suppress_filters', $filter);
     }
     /**
      * Fetches the last row
@@ -901,6 +905,10 @@ class C_CustomTable_DataMapper_Driver_Mixin extends Mixin
             }
         }
         $entity->id_field = $primary_key;
+        // Clean cache
+        if ($retval) {
+            $this->object->_cache = array();
+        }
         return $retval;
     }
     /**
@@ -1404,34 +1412,37 @@ class Mixin_DataMapper_Driver_Base extends Mixin
         }
         return $stdObject;
     }
-    public function strip_slashes($stdObject)
+    public function strip_slashes($stdObject_or_array_or_string)
     {
-        foreach (get_object_vars($stdObject) as $key => $value) {
-            if (is_string($value)) {
-                $stdObject->{$key} = str_replace('\\\'', '\'', str_replace('\\"', '"', str_replace('\\\\', '\\', $value)));
-            } elseif (is_object($value)) {
-                $stdObject->{$key} = $this->strip_slashes_deep($value);
-            } elseif (is_array($value)) {
-                $stdObject->{$key} = $this->strip_slashes_deep($value);
+        /**
+         * Some objects have properties that are recursive objects. To avoid this we have to keep track
+         * of what objects we've already processed when we're running this method recursively
+         */
+        static $level = 0;
+        static $processed_objects = array();
+        $level++;
+        $processed_objects[] = $stdObject_or_array_or_string;
+        if (is_string($stdObject_or_array_or_string)) {
+            $stdObject_or_array_or_string = str_replace('\\\'', '\'', str_replace('\\"', '"', str_replace('\\\\', '\\', $stdObject_or_array_or_string)));
+        } elseif (is_object($stdObject_or_array_or_string) && !in_array($stdObject_or_array_or_string, $processed_objects)) {
+            foreach (get_object_vars($stdObject_or_array_or_string) as $key => $val) {
+                if ($val != $stdObject_or_array_or_string && $key != '_mapper') {
+                    $stdObject_or_array_or_string->{$key} = $this->strip_slashes($val);
+                }
+            }
+            $processed_objects[] = $stdObject_or_array_or_string;
+        } elseif (is_array($stdObject_or_array_or_string)) {
+            foreach ($stdObject_or_array_or_string as $key => $val) {
+                if ($key != '_mixins') {
+                    $stdObject_or_array_or_string[$key] = $this->strip_slashes($val);
+                }
             }
         }
-        return $stdObject;
-    }
-    public function strip_slashes_deep($input)
-    {
-        $retval = $input;
-        if (is_object($input)) {
-            foreach (get_object_vars($input) as $key => $value) {
-                $retval->{$key} = $this->strip_slashes_deep($value);
-            }
-        } elseif (is_array($input)) {
-            foreach ($input as $key => $value) {
-                $retval[$key] = $this->strip_slashes_deep($value);
-            }
-        } elseif (is_string($input)) {
-            $retval = str_replace('\\\'', '\'', str_replace('\\"', '"', str_replace('\\\\', '\\', $input)));
+        $level--;
+        if ($level == 0) {
+            $processed_objects = array();
         }
-        return $retval;
+        return $stdObject_or_array_or_string;
     }
     /**
      * Converts a stdObject entity to a model

@@ -20,10 +20,10 @@ class M_MVC extends C_Base_Module
             "photocrati-mvc",
             "MVC Framework",
             "Provides an MVC architecture for the plugin to use",
-            "0.5",
-            "http://www.photocrati.com",
+            "0.7",
+            "https://www.imagely.com",
             "Photocrati Media",
-            "http://www.photocrati.com"
+            "https://www.imagely.com"
         );
 
 		C_NextGen_Settings::get_instance()->add_option_handler('C_Mvc_Option_Handler', array(

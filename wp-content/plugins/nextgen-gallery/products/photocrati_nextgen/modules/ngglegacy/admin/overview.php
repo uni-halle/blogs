@@ -2,262 +2,69 @@
 
 if (preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
-/**
- * nggallery_admin_overview()
- *
- * Add the admin overview the dashboard style
- * @return mixed content
- */
-function nggallery_admin_overview()
-{
-    ?>
-    <div class="wrap ngg-wrap">
-        <?php screen_icon('nextgen-gallery'); ?>
-        <h2><?php _e('NextGEN Gallery Overview', 'nggallery'); ?></h2>
-        <div id="dashboard-widgets-container" class="ngg-overview">
-            <div id="dashboard-widgets" class="metabox-holder">
-                <div id="post-body">
-                    <div id="dashboard-widgets-main-content">
-                        <div class="postbox-container" id="main-container" style="width:75%;">
-                            <?php do_meta_boxes('ngg_overview', 'left', ''); ?>
-                        </div>
-                        <div class="postbox-container" id="side-container" style="width:24%;">
-                            <?php do_meta_boxes('ngg_overview', 'right', ''); ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            postboxes.add_postbox_toggles('ngg-overview');
-        });
-    </script>
-<?php
-}
-
 class C_NGG_Admin_Overview
 {
-    public function __construct()
-    {
-        /**
-         * Load the meta boxes
-         *
-         */
-        add_meta_box(
-            'dashboard_right_now',
-            __('Welcome to NextGEN Gallery !', 'nggallery'),
-            array($this, 'overview_metabox'),
-            'ngg_overview',
-            'left',
-            'core'
-        );
-
-        add_meta_box(
-            'ngg_meta_box',
-            __('Do you like this Plugin?', 'nggallery'),
-            array($this, 'sharing_metabox'),
-            'ngg_overview',
-            'right',
-            'core'
-        );
-
-        add_meta_box(
-            'ngg_about_meta_box',
-            __('About', 'nggallery'),
-            array($this, 'about_metabox'),
-            'ngg_overview',
-            'left',
-            'core'
-        );
-
-        if (!is_multisite() || is_super_admin())
-        {
-            add_meta_box(
-                'ngg_server',
-                __('Server Settings', 'nggallery'),
-                array($this, 'server_metabox'),
-                'ngg_overview',
-                'right',
-                'core'
-            );
-        }
-    }
-    
-    public function sharing_metabox()
-    {
-        echo '<p>';
-        echo sprintf(__('This plugin is primarily developed, maintained, supported and documented by <a href="%s" target="_blank">Photocrati Media</a> with a lot of love & effort. Any kind of contribution would be highly appreciated. Thanks!', 'nggallery'), 'http://www.photocrati.com/');
-        echo '</p><ul>';
-
-        $url = 'http://wordpress.org/plugins/nextgen-gallery/' ;
-        echo "<li style='padding-left: 38px; background:transparent url(" . NGGALLERY_URLPATH . "admin/images/icon-rating.png ) no-repeat scroll center left; background-position: 16px 50%; text-decoration: none;'><a href='{$url}' target='_blank'>";
-        _e('Please click "Works" on WordPress.org', 'nggallery');
-        echo "</a></li>";
-
-        $url = 'http://wordpress.org/plugins/nextgen-gallery/' ;
-        echo "<li style='padding-left: 38px; background:transparent url(" . NGGALLERY_URLPATH . "admin/images/icon-rating.png ) no-repeat scroll center left; background-position: 16px 50%; text-decoration: none;'><a href='{$url}' target='_blank'>";
-        _e('Give it a good rating on WordPress.org', 'nggallery');
-        echo "</a></li>";
-
-        $url = 'http://www.nextgen-gallery.com';
-        echo "<li style='padding-left: 38px; background:transparent url(" . NGGALLERY_URLPATH . "admin/images/nextgen.png ) no-repeat scroll center left; background-position: 16px 50%; text-decoration: none;'><a href='{$url}' target='_blank'>";
-        _e("Visit the plugin homepage", 'nggallery');
-        echo "</a></li>";
-
-        $url = 'http://www.nextgen-gallery.com/languages/';
-        echo "<li style='padding-left: 38px; background:transparent url(" . NGGALLERY_URLPATH . "admin/images/icon-translate.png ) no-repeat scroll center left; background-position: 16px 50%; text-decoration: none;'><a href='{$url}' target='_blank'>";
-        _e("Help translating it", 'nggallery');
-        echo "</a></li>";
-
-        echo '</ul>';
-
-        echo '
-    <div class="social" style="text-align:center;margin:15px 0 10px 0;"><span class="social" style="margin-right:5px;"><a target="_blank" href="http://twitter.com/NextGENGallery"><img title="Follow NextGEN on Twitter" alt="Twitter" src="' . NGGALLERY_URLPATH . 'admin/images/twitter.png"></a></span><span class="social" style="margin-right:5px;"><a target="_blank" href="http://www.facebook.com/NextGENGallery"><img title="Like NextGEN on Facebook" alt="Facebook" src="' . NGGALLERY_URLPATH . 'admin/images/facebook.png"></a></span><span class="social"><a target="_blank" href="http://plus.google.com/101643895780935290171"><img title="Add NextGEN to your circles" alt="GooglePlus" src="' . NGGALLERY_URLPATH . 'admin/images/googleplus.png"></a></span></div>';
-    }
 
     /**
-     * Show a summary of the used images
-     *
-     * @return void
-     */
-    public function overview_metabox()
-    {
-        global $wpdb;
-        $images    = intval( $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggpictures") );
-        $galleries = intval( $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggallery") );
-        $albums    = intval( $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggalbum") );
-        ?>
-        <style type='text/css'>
-            #ngg_overview_right_now p {
-                padding: 0 0 6px 10px;
-                margin: 0;
-            }
-            #ngg_overview_right_now table {
-                margin-left: 10px;
-            }
-            #ngg_overview_right_now td {
-                padding: 4px;
-            }
-            #ngg_overview_right_now td:first-child {
-                font-size: 16px;
-            }
-        </style>
-        <div class="table table_content" id='ngg_overview_right_now'>
-            <p><?php _e('At a Glance', 'nggallery'); ?></p>
-            <table>
-                <tbody>
-                <tr class="first">
-                    <td class="first b"><a href="admin.php?page=ngg_addgallery"><?php echo $images; ?></a></td>
-                    <td class="t"><a href="admin.php?page=ngg_addgallery"><?php echo _n( 'Image', 'Images', $images, 'nggallery' ); ?></a></td>
-                    <td class="b"></td>
-                    <td class="last"></td>
-                </tr>
-                <tr>
-                    <td class="first b"><a href="admin.php?page=nggallery-manage-gallery"><?php echo $galleries; ?></a></td>
-                    <td class="t"><a href="admin.php?page=nggallery-manage-gallery"><?php echo _n( 'Gallery', 'Galleries', $galleries, 'nggallery' ); ?></a></td>
-                    <td class="b"></td>
-                    <td class="last"></td>
-                </tr>
-                <tr>
-                    <td class="first b"><a href="admin.php?page=nggallery-manage-album"><?php echo $albums; ?></a></td>
-                    <td class="t"><a href="admin.php?page=nggallery-manage-album"><?php echo _n( 'Album', 'Albums', $albums, 'nggallery' ); ?></a></td>
-                    <td class="b"></td>
-                    <td class="last"></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="versions" style="padding-top:14px">
-            <br class="clear" />
-        </div>
-        <?php
-        if (is_multisite())
-            $this->dashboard_quota();
-    }
-
-    public function about_metabox()
-    {
-        ?>
-        <div id="poststuff">
-            <p><?php _e("NextGEN Gallery is one of the most popular WordPress plugins of all time with over 14 million downloads.", 'nggallery'); _e("It is developed and supported by Photocrati Media. We'd like to offer a special thanks to Alex Rabe, who first developed the plugin and maintained it through 2011.", 'nggallery'); ?></p>
-            <p><?php _e("<strong>NEED  HELP?</strong> If you need help or assistance please visit the <a href='http://wordpress.org/support/plugin/nextgen-gallery'>NextGEN Gallery forums on WordPress.org</a>. Please note that we actively monitor and  participate in the forums, but given that NextGEN Gallery is a free  product, we don't guarantee replies to support queries.", 'nggallery'); ?></p>
-            <p><?php _e("<strong>EXTENDING NEXTGEN?</strong> There are many third party plugins that add displays and functionality for NextGEN Gallery. See our <a href='http://www.nextgen-gallery.com/nextgen-gallery-extension-plugins/'>Complete List of NextGEN Extension  Plugins</a>.", 'nggallery'); ?></p>
-        </div>
-        <?php
-    }
-
-    /**
-     * Show the server settings in a dashboard widget
-     *
-     * @return void
-     */
-    public function server_metabox()
-    {
-        ?>
-        <div id="dashboard_server_settings" class="dashboard-widget-holder wp_dashboard_empty">
-            <div class="ngg-dashboard-widget">
-                <div class="dashboard-widget-content">
-                    <ul class="settings">
-                        <?php $this->server_info(); ?>
-                    </ul>
-                    <p><strong><?php _e('Graphic Library', 'nggallery'); ?></strong></p>
-                    <ul class="settings">
-                        <?php $this->gd_info(); ?>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <?php
-    }
-
-    /**
-     * Show up some server infor's
+     * Shows important server configuration details. 
      * @author GamerZ (http://www.lesterchan.net)
      *
      * @return void
      */
+
     public function server_info()
     {
         global $wpdb, $ngg;
+        
         // Get MYSQL Version
         $sqlversion = $wpdb->get_var("SELECT VERSION() AS version");
+        
         // GET SQL Mode
         $mysqlinfo = $wpdb->get_results("SHOW VARIABLES LIKE 'sql_mode'");
         if (is_array($mysqlinfo)) $sql_mode = $mysqlinfo[0]->Value;
         if (empty($sql_mode)) $sql_mode = __('Not set', 'nggallery');
+        
         // Get PHP Safe Mode
         if(ini_get('safe_mode')) $safe_mode = __('On', 'nggallery');
         else $safe_mode = __('Off', 'nggallery');
+        
         // Get PHP allow_url_fopen
         if(ini_get('allow_url_fopen')) $allow_url_fopen = __('On', 'nggallery');
         else $allow_url_fopen = __('Off', 'nggallery');
+        
         // Get PHP Max Upload Size
-        if (function_exists('wp_max_upload_size')) $upload_max = strval(round( (int) wp_max_upload_size() / (1024 * 1024) )) . 'M';
+        if (function_exists('wp_max_upload_size')) $upload_max = strval(round((int) wp_max_upload_size() / (1024 * 1024))) . 'M';
         else if(ini_get('upload_max_filesize')) $upload_max = ini_get('upload_max_filesize');
         else $upload_max = __('N/A', 'nggallery');
+        
         // Get PHP Output buffer Size
         if(ini_get('pcre.backtrack_limit')) $backtrack_limit = ini_get('pcre.backtrack_limit');
         else $backtrack_limit = __('N/A', 'nggallery');
+        
         // Get PHP Max Post Size
         if(ini_get('post_max_size')) $post_max = ini_get('post_max_size');
         else $post_max = __('N/A', 'nggallery');
+        
         // Get PHP Max execution time
         if(ini_get('max_execution_time')) $max_execute = ini_get('max_execution_time');
         else $max_execute = __('N/A', 'nggallery');
+        
         // Get PHP Memory Limit
         if(ini_get('memory_limit')) $memory_limit = $ngg->memory_limit;
         else $memory_limit = __('N/A', 'nggallery');
+        
         // Get actual memory_get_usage
         if (function_exists('memory_get_usage')) $memory_usage = round(memory_get_usage() / 1024 / 1024, 2) . __(' MByte', 'nggallery');
         else $memory_usage = __('N/A', 'nggallery');
+        
         // required for EXIF read
-        if (is_callable('exif_read_data')) $exif = __('Yes', 'nggallery'). " ( V" . substr(phpversion('exif'),0,4) . ")" ;
+        if (is_callable('exif_read_data')) $exif = __('Yes', 'nggallery'). " (V" . substr(phpversion('exif'),0,4) . ")" ;
         else $exif = __('No', 'nggallery');
+        
         // required for meta data
         if (is_callable('iptcparse')) $iptc = __('Yes', 'nggallery');
         else $iptc = __('No', 'nggallery');
+        
         // required for meta data
         if (is_callable('xml_parser_create')) $xml = __('Yes', 'nggallery');
         else $xml = __('No', 'nggallery');
@@ -293,11 +100,11 @@ class C_NGG_Admin_Overview
         {
             $info = gd_info();
             $keys = array_keys($info);
-            for($i=0; $i<count($keys); $i++) {
-                if(is_bool($info[$keys[$i]]))
-                    echo "<li> " . $keys[$i] ." : <span>" . ($info[$keys[$i]] ? __('Yes', 'nggallery') : __('No', 'nggallery')) . "</span></li>\n";
+            for ($i = 0; $i < count($keys); $i++) {
+                if (is_bool($info[$keys[$i]]))
+                    echo "<li> " . $keys[$i] . " : <span>" . ($info[$keys[$i]] ? __('Yes', 'nggallery') : __('No', 'nggallery')) . "</span></li>\n";
                 else
-                    echo "<li> " . $keys[$i] ." : <span>" . $info[$keys[$i]] . "</span></li>\n";
+                    echo "<li> " . $keys[$i] . " : <span>" . $info[$keys[$i]] . "</span></li>\n";
             }
         }
         else {
@@ -308,10 +115,10 @@ class C_NGG_Admin_Overview
     // Display File upload quota on dashboard
     function dashboard_quota()
     {
-        if ( get_site_option( 'upload_space_check_disabled' ) )
+        if (get_site_option('upload_space_check_disabled'))
             return;
 
-        if ( !wpmu_enable_function('wpmuQuotaCheck') )
+        if (!wpmu_enable_function('wpmuQuotaCheck'))
             return;
 
         $settings = C_NextGen_Settings::get_instance();
@@ -319,37 +126,278 @@ class C_NGG_Admin_Overview
         $dir = $fs->join_paths($fs->get_document_root('content'), $settings->gallerypath);
 
         $quota = get_space_allowed();
-        $used = get_dirsize( $dir ) / 1024 / 1024;
+        $used = get_dirsize($dir) / 1024 / 1024;
 
-        if ( $used > $quota )
+        if ($used > $quota)
             $percentused = '100';
         else
-            $percentused = ( $used / $quota ) * 100;
-        $used_color = ( $percentused < 70 ) ? ( ( $percentused >= 40 ) ? 'waiting' : 'approved' ) : 'spam';
-        $used = round( $used, 2 );
-        $percentused = number_format( $percentused );
+            $percentused = ($used / $quota) * 100;
+        
+        $used_color = ($percentused < 70) ? (($percentused >= 40) ? 'yellow' : 'green') : 'red';
+        $used = round($used, 2);
+        $percentused = number_format($percentused);
 
         ?>
-        <p class="sub musub" style="position:static" ><?php _e( 'Storage Space' ); ?></p>
-        <div class="table table_content musubtable">
-            <table>
-                <tr class="first">
-                    <td class="first b b-posts"><?php printf( __( '<a href="%1$s" title="Manage Uploads" class="musublink">%2$sMB</a>' ), nextgen_esc_url( admin_url( 'admin.php?page=nggallery-manage-gallery' ) ), $quota ); ?></td>
-                    <td class="t posts"><?php _e( 'Space Allowed' ); ?></td>
-                </tr>
-            </table>
-        </div>
-        <div class="table table_discussion musubtable">
-            <table>
-                <tr class="first">
-                    <td class="b b-comments"><?php printf( __( '<a href="%1$s" title="Manage Uploads" class="musublink">%2$sMB (%3$s%%)</a>' ), nextgen_esc_url( admin_url( 'admin.php?page=nggallery-manage-gallery' ) ), $used, $percentused ); ?></td>
-                    <td class="last t comments <?php echo $used_color;?>"><?php _e( 'Space Used' );?></td>
-                </tr>
-            </table>
-        </div>
-        <br class="clear" />
+        <p><?php print __('Storage Space'); ?></p>
+        <ul>
+            <li><?php printf(__('%1$sMB Allowed', 'nggallery'), $quota); ?></li>
+            <li class="<?php print $used_color; ?>"><?php printf(__('%1$sMB (%2$s%%) Used', 'nggallery'), $used, $percentused); ?></li>
+        </ul>
         <?php
     }
+
 }
 
-$NGG_Admin_Overview = new C_NGG_Admin_Overview();
+/**
+ * nggallery_admin_overview()
+ *
+ * Add the admin overview the dashboard style
+ * @return mixed content
+ */
+function nggallery_admin_overview()
+{
+    $NGG_Admin_Overview = new C_NGG_Admin_Overview();
+
+    global $wpdb;
+    $images    = intval($wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggpictures"));
+    $galleries = intval($wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggallery"));
+    $albums    = intval($wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggalbum"));
+
+    ?>
+
+    <div class="wrap about-wrap">
+        <h1><?php _e( 'Welcome to NextGEN Gallery', 'nggallery' ); ?></h1>
+
+        <div class="about-text"><?php printf( __( "Congrats! You're now running the most popular WordPress gallery plugin of all time. So far you've added %s images, %s galleries, and %s albums." ), $images, $galleries, $albums); ?></div>
+        <div class="wp-badge"></div>
+
+        <h2 class="nav-tab-wrapper wp-clearfix" id="ngg-tabs-wrapper">
+            <a href="#top#welcome" class="nav-tab nav-tab-active" id="welcome-link"><?php _e( 'Welcome', 'nggallery' ); ?></a>
+            <a href="#top#videos" class="nav-tab" id="videos-link"><?php _e( 'More Videos' ); ?></a>
+            <a href="#top#pro" class="nav-tab" id="pro-link"><?php _e( 'NextGEN Pro' ); ?></a>
+            <a href="#top#genesis" class="nav-tab" id="genesis-link"><?php _e( 'Genesis Themes' ); ?></a>
+            <?php if (!is_multisite() || is_super_admin()) { ?>
+                <a href="#top#details" class="nav-tab" id="details-link"><?php _e( 'Site Details' ); ?></a>
+            <?php } ?>
+            <a href="#top#freedoms" class="nav-tab" id="freedoms-link"><?php _e( 'Freedoms' ); ?></a>
+        </h2>
+
+        <div id="welcome" class="ngg-tab">
+
+            <div class="headline-feature feature-video">
+                <iframe width="1050" height="590" src="https://www.youtube.com/embed/qwNr5ZNGavo?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <hr>
+
+            <div class="feature-section three-col">
+                <h2><?php _e( 'Meet the Imagely Product Ambassadors', 'nggallery' ); ?></h2>
+                <p class="about-text centered"><?php _e( "NextGEN Gallery and other Imagely products are used by some of the best photographers in the world. Meet some of the Imagely Ambassadors who are putting Imagely and NextGEN Gallery to work professionally.", 'nggallery' ); ?>
+                </p>
+                <div class="col">
+                    <a href="https://www.imagely.com/team-member/the-youngrens/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/theyoungrens-ngg.jpg" alt="The Youngrens"/></a>
+                    <h3><?php _e( 'The Youngrens' ); ?></h3>
+                    <p><?php _e( 'Jeff and Erin are a luxury husband and wife photography team who deeply love each other and their photography clients. They shoot weddings and engagements all over the U.S. and beyond. With three photography businesses that serve different clientele, they have unique insights into business strategies and are passionate about improving the day to day lives of other photographers.', 'nggallery' ); ?></p>
+                </div>
+                <div class="col">
+                    <a href="https://www.imagely.com/team-member/tamara-lackey/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/TamaraLackey-ngg.jpg" alt="Tamara Lackey" /></a>
+                    <h3><?php _e( 'Tamara Lackey' ); ?></h3>
+                    <p><?php _e( 'Tamara Lackey is a renowned professional photographer, speaker, and author. Her authentic lifestyle photography, from children’s portraits to celebrity portraits, is praised within her industry and published internationally. She is a Nikon USA Ambassador, the host of The reDefine Show web series, and the co-founder of the non-profit charitable organization, Beautiful Together, in support of children waiting for families.', 'nggallery' ); ?></p>
+                </div>
+                <div class="col">
+                    <a href="https://www.imagely.com/team-member/colby-brown/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/colby-brown-ngg.jpg" alt="Colby Brown" /></a>
+                    <h3><?php _e( 'Colby Brown' ); ?></h3>
+                    <p><?php _e( 'Colby is a photographer, photo educator, and author specializing in landscape, travel and humanitarian photography. With an audience reaching millions, Colby partners on social influencer marketing campaigns with some of the biggest companies and destinations in the world, including Sony, Samsung, Toshiba, Iceland Naturally, Jordan Tourism Board, Australia.com, Visit California and more.', 'nggallery' ); ?></p>
+                </div>
+            </div>
+
+            <div class="feature-section three-col">
+                <div class="col">
+                    <a href="https://www.imagely.com/team-member/jared-platt/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/jared-platt-ngg.jpg" alt="Jared Platt" /></a>
+                    <h3><?php _e( 'Jared Platt' ); ?></h3>
+                    <p><?php _e( 'Jared is a professional wedding and lifestyle photographer. He also travels the world giving lectures and workshops on photography, lighting, and post-production efficiency and workflow. His interactive style, and attention to detail and craft make him an entertaining and demanding photography instructor.', 'nggallery' ); ?></p>
+                </div>
+                <div class="col">
+                    <a href="https://www.imagely.com/team-member/brian-matiash/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/brian-matiash-ngg.jpeg" alt="" /></a>
+                    <h3><?php _e( 'Brian Matiash' ); ?></h3>
+                    <p><?php _e( 'Brian is a professional photographer, author, and educator. He fuses landscape & travel photography with experiential storytelling and practical instructing to help others grow creatively. He is also a Sony Artisan of Imagery, a Zeiss Lens Ambassador, a Formatt-Hitech Featured Photographer, and a member of G-Technology’s G-Team.', 'nggallery' ); ?></p>
+                </div>
+                <div class="col">
+                    <a href="https://www.imagely.com/team-member/christine-tremoulet/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/Christine-Tremoulet-ngg.jpg" alt="" /></a>
+                    <h3><?php _e( 'Christine Tremoulet' ); ?></h3>
+                    <p><?php _e( 'Christine famously coined the term WordPress. She is an author, speaker, business coach, and story strategist who specializes in helping creatives celebrate their story online through blogging and social media. When not offering actionable know-how to businesses, she can be found taking long road trips across North America in her Mini Cooper.', 'nggallery' ); ?></p>
+                </div>
+            </div>
+
+            <div class="feature-section three-col">
+                <div class="col">
+                    <a href="https://www.imagely.com/team-member/david-beckstead/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/david-beckstead-ngg.jpg" alt="David Beckstead" /></a>
+                    <h3><?php _e( 'David Beckstead' ); ?></h3>
+                    <p><?php _e( 'Named one of the Top 10 Wedding Photographers in the World by American Photo magazine, David is a celebrated photographer and educator. He is also a mountain man with a enviable lifestyle: from his base in rural Washington, he travels all over the world teaching workshops, while sharing lessons with 16,000 photographers in the Abstract Canvas Facebook group.', 'nggallery' ); ?></p>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div id="videos" class="ngg-tab">
+
+            <p class="about-text centered"><?php printf( __( 'We have a growing list of video tutorials to get you started. Watch some below or head over to <a href="%s" target="_blank">NextGEN Gallery University on YouTube</a> to see all available vidoes.', 'nggallery' ), esc_url( 'https://www.youtube.com/playlist?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM' ) ); ?>
+            </p>
+
+            <div class="headline-feature feature-video">
+                <iframe width="1280" height="720" src="https://www.youtube.com/embed/c664fvAZ1nI?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <hr>
+
+            <div class="feature-section two-col">
+                <h2><?php _e( 'More Video Tutorials' ); ?></h2>
+                <div class="col">
+                    <div class="headline-feature feature-video">
+                        <iframe width="1280" height="720" src="https://www.youtube.com/embed/h_HrKpkI90w?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="headline-feature feature-video">
+                        <iframe width="1280" height="720" src="https://www.youtube.com/embed/58u9AjMJqJM?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-section two-col">
+                <div class="col">
+                    <div class="headline-feature feature-video">
+                        <iframe width="1280" height="720" src="https://www.youtube.com/embed/OfxWM59fb_Y?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="headline-feature feature-video">
+                        <iframe width="1280" height="720" src="https://www.youtube.com/embed/BiFjDYIaZZw?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <p class="about-text centered"><?php printf( __( 'Want more? Head over to <a href="%s" target="_blank">NextGEN Gallery University on YouTube</a>.', 'nggallery' ), esc_url( 'https://www.youtube.com/playlist?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM' ) ); ?>
+            </p>
+
+        </div>
+        
+        <div id="pro" class="ngg-tab">
+
+            <h2><?php _e( 'Upgrade to NextGEN Pro!' ); ?></h2>
+            <p class="about-text centered"><?php _e( 'Gorgeous new gallery displays, image protection, full screen lightbox, commenting and social sharing for individual images, proofing, ecommerce, digital downloads, and more. Take your galleries to the next level with the Plus and Pro extensions for NextGEN Gallery. ', 'nggallery' ); ?></p>
+            <h3 class="about-text centered"><?php _e( 'CLICK TO LEARN MORE:', 'nggallery' ); ?></h3>
+            <div class="feature-section two-col">
+                    <div class="col">
+                        <a href="https://www.imagely.com/wordpress-gallery-plugin/nextgen-plus/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/nextgen-plus-ngg.jpg"></a>
+                    </div>
+                    <div class="col">
+                        <a href="https://www.imagely.com/wordpress-gallery-plugin/nextgen-pro/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/nextgen-pro-ngg.jpg"></a>
+                    </div>
+            </div>
+
+        </div>
+
+        <div id="genesis" class="ngg-tab">
+
+            <h2><?php _e( 'Genesis Child Themes for Photographers' ); ?></h2>
+            <p class="about-text centered"><?php _e( 'Meet the new series of Genesis child themes by Imagely: gorgeous, responsive image-centric themes for photographers or anyone with visually rich websites.', 'nggallery' ); ?></p>
+            <h3 class="about-text centered"><?php _e( 'CLICK TO LEARN MORE:', 'nggallery' ); ?></h3>
+            <div class="feature-section two-col">
+                    <div class="col">
+                        <a href="https://www.imagely.com/wordpress-photography-themes/ansel/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/ansel-ngg.jpg" class="ngg-theme-image"></a>
+                    </div>
+                    <div class="col">
+                        <a href="https://www.imagely.com/wordpress-photography-themes/fearless/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/fearless-ngg.jpg" class="ngg-theme-image"></a>
+                    </div>
+            </div>
+            <div class="feature-section two-col">
+                    <div class="col">
+                        <a href="https://www.imagely.com/wordpress-photography-themes/blush/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/blush-ngg.jpg" class="ngg-theme-image"></a>
+                    </div>
+                    <div class="col">
+                        <a href="https://www.imagely.com/wordpress-photography-themes/free-spirit/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/free-spirit-ngg.jpg" class="ngg-theme-image"></a>
+                    </div>
+            </div>
+            <div class="feature-section two-col">
+                    <div class="col">
+                        <a href="https://www.imagely.com/wordpress-photography-themes/reportage/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/reportage-ngg.jpg" class="ngg-theme-image"></a>
+                    </div>
+                    <div class="col">
+                        <a href="https://www.imagely.com/wordpress-photography-themes/lightly/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/lightly-ngg.jpg" class="ngg-theme-image"></a>
+                    </div>
+            </div>
+            <div class="feature-section two-col">
+                    <div class="col">
+                        <a href="https://www.imagely.com/wordpress-photography-themes/rebel/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/rebel-ngg.jpg" class="ngg-theme-image"></a>
+                    </div>
+                    <div class="col">
+                        <a href="https://www.imagely.com/wordpress-photography-themes/summerly/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/summerly-ngg.jpg" class="ngg-theme-image"></a>
+                    </div>
+            </div>
+            <div class="feature-section two-col">
+                    <div class="col">
+                        <a href="https://www.imagely.com/wordpress-photography-themes/expedition/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/expedition-ngg.jpg" class="ngg-theme-image"></a>
+                    </div>
+                    <div class="col">
+                        <a href="https://www.imagely.com/wordpress-photography-themes/punk-bride/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/punk-bride-ngg.jpg" class="ngg-theme-image"></a>
+                    </div>
+            </div>
+            <div class="feature-section two-col">
+                    <div class="col">
+                        <a href="https://www.imagely.com/wordpress-photography-themes/journal/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/journal-ngg.jpg" class="ngg-theme-image"></a>
+                    </div>
+                    <div class="col">
+                        <a href="https://www.imagely.com/wordpress-photography-themes/simplicity/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/simplicity-ngg.jpg" class="ngg-theme-image"></a>
+                    </div>
+            </div>
+            
+        </div>
+
+        <?php if (!is_multisite() || is_super_admin()) { ?>
+            <div id="details" class="ngg-tab">
+                <h2><?php _e( 'Site Details' ); ?></h2>
+                <p class="about-text centered"><?php _e( 'When contacting support, consider copying and pasting this information in your support request. It helps us troubleshoot more quickly.', 'nggallery' ); ?>
+                </p>
+                <div class="two-col">
+                    <div class="col">
+                        <?php if (is_multisite()) $NGG_Admin_Overview->dashboard_quota(); ?>
+                    </div>
+                    <div class="col">
+                        <p><strong><?php print __('Server Settings', 'nggallery'); ?></strong></p>
+                        <ul>
+                            <?php $NGG_Admin_Overview->server_info(); ?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="two-col">
+                    <div class="col">
+                            <p><strong><?php print __('Graphic Library', 'nggallery'); ?></strong></p>
+                            <ul>
+                                <?php $NGG_Admin_Overview->gd_info(); ?>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+        
+        <div id="freedoms" class="ngg-tab">
+
+            <p class="about-description"><?php printf( __( 'NextGEN Gallery is Free and open source software, built by a small but dedicated team as well as community code contributions. It comes with awesome rights courtesy of its <a href="%s" target="_blank">license</a>, the GPL.' ), 'https://wordpress.org/about/license/' ); ?></p>
+
+            <ol start="0">
+                <li><p><?php _e( 'You have the freedom to run the program, for any purpose.' ); ?></p></li>
+                <li><p><?php _e( 'You have access to the source code, the freedom to study how the program works, and the freedom to change it to make it do what you wish.' ); ?></p></li>
+                <li><p><?php _e( 'You have the freedom to redistribute copies of the original program so you can help your neighbor.' ); ?></p></li>
+                <li><p><?php _e( 'You have the freedom to distribute copies of your modified versions to others. By doing this you can give the whole community a chance to benefit from your changes.' ); ?></p></li>
+            </ol>
+
+            <p><?php _e( 'NextGEN Gallery grows because people like you tell your friends and website visitors about it. We thank you for doing so.' ); ?></p>
+
+        </div>
+
+    </div>
+
+    <?php
+}

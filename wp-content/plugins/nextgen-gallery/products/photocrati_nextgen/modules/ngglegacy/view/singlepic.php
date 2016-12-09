@@ -27,5 +27,5 @@ Please note : A Image resize or watermarking operation will remove all meta info
          alt="<?php echo esc_attr($image->alttext); ?>"
          title="<?php echo esc_attr($image->alttext); ?>"/>
 </a>
-<?php if (!empty ($image->caption)) : ?><span><?php echo $image->caption ?></span><?php endif; ?>
+<?php if (!empty ($image->description)) : ?><span><?php echo $image->description ?></span><?php endif; ?>
 <?php endif; ?>

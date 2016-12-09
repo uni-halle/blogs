@@ -55,7 +55,7 @@ $this->start_element('nextgen_gallery.gallery_container', 'container', $displaye
                     src="<?php echo esc_attr($storage->get_image_url($image, $thumbnail_size_name, TRUE))?>"
                     width="<?php echo esc_attr($thumb_size['width'])?>"
                     height="<?php echo esc_attr($thumb_size['height'])?>"
-                    style="max-width:none;"
+                    style="max-width:100%;"
                 />
             </a>
         </div>

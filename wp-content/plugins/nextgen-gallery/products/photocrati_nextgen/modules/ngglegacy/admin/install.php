@@ -110,9 +110,9 @@ function ngg_remove_capability($capability){
 	$check_order = array("subscriber", "contributor", "author", "editor", "administrator");
 
 	foreach ($check_order as $role) {
-
 		$role = get_role($role);
-		$role->remove_cap($capability) ;
+		if (!is_null($role))
+			$role->remove_cap($capability) ;
 	}
 
 }

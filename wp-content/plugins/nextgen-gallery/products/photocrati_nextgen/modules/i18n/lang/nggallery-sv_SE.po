@@ -1572,12 +1572,12 @@ msgid "A failure occurred"
 msgstr "Ett fel inträffade"
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/admin.php:379
-msgid "<a href=\"http://www.nextgen-gallery.com\" target=\"_blank\">Introduction</a>"
-msgstr "<a href=\"http://www.nextgen-gallery.com\" target=\"_blank\">Introduktion</a>"
+msgid "<a href=\"https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/\" target=\"_blank\">Introduction</a>"
+msgstr "<a href=\"https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/\" target=\"_blank\">Introduktion</a>"
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/admin.php:382
-msgid "<a href=\"http://www.nextgen-gallery.com/languages\" target=\"_blank\">Languages</a>"
-msgstr "<a href=\"http://www.nextgen-gallery.com/languages\" target=\"_blank\">Språk</a>"
+msgid "<a href=\"https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery//languages\" target=\"_blank\">Languages</a>"
+msgstr "<a href=\"https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery//languages\" target=\"_blank\">Språk</a>"
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/admin.php:387
 msgid "Get help with NextGEN Gallery"
@@ -2359,10 +2359,6 @@ msgstr "Gå till nästa sida"
 msgid "Go to the last page"
 msgstr "Gå till sista sidan"
 
-#: products/photocrati_nextgen/modules/ngglegacy/admin/media-upload.php:11
-msgid "NextGEN Gallery"
-msgstr "NextGEN Gallery"
-
 #: products/photocrati_nextgen/modules/ngglegacy/admin/media-upload.php:186
 msgid "No gallery"
 msgstr "Inget galleri"
@@ -2444,8 +2440,8 @@ msgstr "NextGEN Gallery är en av de mest populära WordPress-tilläggen genom t
 
 # Missed by NextGEN, translated string is displayed.
 #: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:97
-msgid "It is developed and supported by Photocrati Media. We'd like to offer a special thanks to Alex Rabe, who first developed the plugin and maintained it through 2011."
-msgstr "Det utvecklas och stöds av Photocrati Media. Vi vill framföra ett särskilt tack till Alex Rabe, som först utvecklade tillägget och underhöll det till och med 2011."
+msgid "It is developed and supported by Imagely. We'd like to offer a special thanks to Alex Rabe, who first developed the plugin and maintained it through 2011."
+msgstr "Det utvecklas och stöds av Imagely. Vi vill framföra ett särskilt tack till Alex Rabe, som först utvecklade tillägget och underhöll det till och med 2011."
 
 # Missed by NextGEN, translated string is displayed.
 #: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:98
@@ -2453,13 +2449,13 @@ msgid "<strong>NEED  HELP?</strong> If you need help or assistance please visit 
 msgstr "<strong>Behöver du hjälp?</strong> Behöver du hjälp eller assistans, besök <a href='http://wordpress.org/support/plugin/nextgen-gallery'>NextGEN Gallery-forum på WordPress.org</a>. Observera att vi aktivt övervakar och deltar i forumen, men eftersom NextGEN Gallery är en gratisprodukt, kan vi inte garantera svar på alla supportfrågor."
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:99
-msgid "<strong>EXTENDING NEXTGEN?</strong> There are many third party plugins that add displays and functionality for NextGEN Gallery. See our <a href='http://www.nextgen-gallery.com/nextgen-gallery-extension-plugins/'>Complete List of NextGEN Extension  Plugins</a>."
-msgstr "<strong>Utöka NextGEN?</strong> Det finns många tredjepart-tillägg som lägger till visningar och funktionalitet för NextGEN Gallery. Se <a href='http://www.nextgen-gallery.com/nextgen-gallery-extension-plugins/'>komplett lista av utökningstillägg till NextGEN</a>."
+msgid "<strong>EXTENDING NEXTGEN?</strong> There are many third party plugins that add displays and functionality for NextGEN Gallery. See our <a href='https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery//nextgen-gallery-extension-plugins/'>Complete List of NextGEN Extension  Plugins</a>."
+msgstr "<strong>Utöka NextGEN?</strong> Det finns många tredjepart-tillägg som lägger till visningar och funktionalitet för NextGEN Gallery. Se <a href='https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery//nextgen-gallery-extension-plugins/'>komplett lista av utökningstillägg till NextGEN</a>."
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:107
 #, php-format
-msgid "This plugin is primarily developed, maintained, supported and documented by <a href=\"%s\" target=\"_blank\">Photocrati Media</a> with a lot of love & effort. Any kind of contribution would be highly appreciated. Thanks!"
-msgstr "Detta tillägg utvecklas, underhålls, stöds och dokumenteras främst av <a href=\"%s\" target=\"_blank\">Photocrati Media</a> med en massa kärlek och insats. Någon form av bidrag skulle verkligen uppskattas. Tack!"
+msgid "This plugin is primarily developed, maintained, supported and documented by <a href=\"%s\" target=\"_blank\">Imagely</a> with a lot of love & effort. Any kind of contribution would be highly appreciated. Thanks!"
+msgstr "Detta tillägg utvecklas, underhålls, stöds och dokumenteras främst av <a href=\"%s\" target=\"_blank\">Imagely</a> med en massa kärlek och insats. Någon form av bidrag skulle verkligen uppskattas. Tack!"
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:112
 msgid "Please click \"Works\" on WordPress.org"
@@ -3048,8 +3044,8 @@ msgid "%s slug(s) edited."
 msgstr "%s permalänkar ändrade."
 
 #: products/photocrati_nextgen/modules/ngglegacy/nggallery.php:60
-msgid "<strong>Translation by : </strong><a target=\"_blank\" href=\"http://www.nextgen-gallery.com/languages/\">See here</a>"
-msgstr "<strong>Översättning av:</strong> <a target=\"_blank\" href=\"http://www.nextgen-gallery.com/languages/\">Se här</a>"
+msgid "<strong>Translation by : </strong><a target=\"_blank\" href=\"https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery//languages/\">See here</a>"
+msgstr "<strong>Översättning av:</strong> <a target=\"_blank\" href=\"https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery//languages/\">Se här</a>"
 
 #: products/photocrati_nextgen/modules/ngglegacy/nggallery.php:122
 msgid "Sorry, NextGEN Gallery works only with a Memory Limit of 16 MB or higher"
@@ -3222,21 +3218,21 @@ msgid "Limit"
 msgstr "Gränsvärde"
 
 #. Plugin Name of the plugin/theme
-msgid "NextGEN Gallery by Photocrati"
-msgstr "NextGEN Gallery från Photocrati"
+msgid "NextGEN Gallery"
+msgstr "NextGEN Gallery"
 
 #. Plugin URI of the plugin/theme
-msgid "http://www.nextgen-gallery.com"
-msgstr "http://www.nextgen-gallery.com"
+msgid "https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/"
+msgstr "https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/"
 
 #. Description of the plugin/theme
 msgid "The most popular gallery plugin for WordPress and one of the most popular plugins of all time with over 12 million downloads."
 msgstr "Det mest populära galleri-tillägget för WordPress och ett av de mest populära tillägg genom tiderna med över 12 miljoner nedladdningar."
 
 #. Author of the plugin/theme
-msgid "Photocrati Media"
-msgstr "Photocrati Media"
+msgid "Imagely"
+msgstr "Imagely"
 
 #. Author URI of the plugin/theme
-msgid "http://www.photocrati.com"
-msgstr "http://www.photocrati.com"
+msgid "https://www.imagely.com"
+msgstr "https://www.imagely.com"

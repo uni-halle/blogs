@@ -113,7 +113,7 @@ class A_NextGen_Basic_ImageBrowser_Controller extends Mixin
         if (!empty($_POST['ajax_referrer'])) {
             $displayed_gallery->display_settings['ngg_triggers_display'] = 'never';
         }
-        if (!empty($display_settings['template'])) {
+        if (!empty($display_settings['template']) && $display_settings['template'] != 'default') {
             $this->object->add_mixin('Mixin_NextGen_Basic_Templates');
             $picture->href_link = $picture->get_href_link();
             $picture->previous_image_link = $prev_image_link;

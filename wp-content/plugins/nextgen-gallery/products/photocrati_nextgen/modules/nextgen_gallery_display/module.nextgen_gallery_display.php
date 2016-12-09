@@ -22,10 +22,10 @@ class M_Gallery_Display extends C_Base_Module
 			'photocrati-nextgen_gallery_display',
 			'Gallery Display',
 			'Provides the ability to display gallery of images',
-			'0.13',
-			'http://www.photocrati.com',
+			'0.14',
+			'https://www.imagely.com',
 			'Photocrati Media',
-			'http://www.photocrati.com'
+			'https://www.imagely.com'
 		);
 
 		C_Photocrati_Installer::add_handler($this->module_id, 'C_Display_Type_Installer');
@@ -176,16 +176,21 @@ class M_Gallery_Display extends C_Base_Module
     }
 
     /**
-     * Deletes any displayed galleries that are no longer associated with
-     * a post/page
+     * Deletes any displayed galleries that are no longer associated with a post/page
+     *
      * @global array $displayed_galleries_to_cleanup
      * @param int $post_id
      */
     function cleanup_displayed_galleries($post_id)
     {
+	    if (!apply_filters('ngg_cleanup_displayed_galleries', true, $post_id))
+		    return;
+
         global $displayed_galleries_to_cleanup;
         $mapper = C_Displayed_Gallery_Mapper::get_instance();
-        foreach ($displayed_galleries_to_cleanup as $id) $mapper->destroy($id);
+        foreach ($displayed_galleries_to_cleanup as $id) {
+	        $mapper->destroy($id);
+        }
     }
 
     /**

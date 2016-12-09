@@ -16,10 +16,10 @@ class M_Lightbox extends C_Base_Module
             'photocrati-lightbox',
             'Lightbox',
             "Provides integration with several JavaScript lightbox effect libraries",
-            '0.14',
+            '0.16',
             'http://leandrovieira.com/projects/jquery/lightbox/',
             'Photocrati Media',
-            'http://www.photocrati.com'
+            'https://www.imagely.com'
         );
     }
 
@@ -49,7 +49,8 @@ class M_Lightbox extends C_Base_Module
     {
         return array(
             'C_Lightbox_Installer'       => 'class.lightbox_legacy_installer.php',
-            'C_Lightbox_Library_Manager' => 'class.lightbox_library_manager.php'
+            'C_Lightbox_Library_Manager' => 'class.lightbox_library_manager.php',
+            'C_NGG_Lightbox'             => 'class.ngg_lightbox.php'
         );
     }
 }

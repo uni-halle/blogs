@@ -501,7 +501,7 @@ class A_NextGen_Basic_Thumbnails_Controller extends Mixin
                 $effect_code = $this->object->get_effect_code($displayed_gallery);
             }
             // The render functions require different processing
-            if (!empty($display_settings['template'])) {
+            if (!empty($display_settings['template']) && $display_settings['template'] != 'default') {
                 $this->object->add_mixin('A_NextGen_Basic_Template_Form');
                 $this->object->add_mixin('Mixin_NextGen_Basic_Templates');
                 $params = $this->object->prepare_legacy_parameters($images, $displayed_gallery, array('next' => empty($pagination_next) ? FALSE : $pagination_next, 'prev' => empty($pagination_prev) ? FALSE : $pagination_prev, 'pagination' => $pagination, 'slideshow_link' => $slideshow_link, 'effect_code' => $effect_code));

@@ -16,9 +16,9 @@ class M_Widget extends C_Base_Module
             'Widget',
             'Handles clearing of NextGen Widgets',
             '0.5',
-            'http://www.nextgen-gallery.com',
+            'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
             'Photocrati Media',
-            'http://www.photocrati.com'
+            'https://www.imagely.com'
         );
     }
 

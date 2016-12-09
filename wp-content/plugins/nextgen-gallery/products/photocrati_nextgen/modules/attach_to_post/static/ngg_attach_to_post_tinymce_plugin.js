@@ -20,9 +20,9 @@
 		getInfo: function() {
 			return {
 				longname: 'NextGEN Gallery',
-				author: 'Photocrati Media',
-				authorurl: 'http://www.photocrati.com',
-				infourl: 'http://www.nextgen-gallery.com',
+				author: 'Imagely',
+				authorurl: 'https://www.imagely.com',
+				infourl: 'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
 				version: '0.1'
 			};
 		},
@@ -141,4 +141,15 @@
 
 	// Register plugin
 	tinymce.PluginManager.add('NextGEN_AttachToPost', tinymce.plugins.NextGEN_AttachToPost);
+
+	// Hide this button by default
+	var $button = jQuery('#ngg-media-button');
+	$button.css('display', 'inline-block');
+	jQuery('#content-html').on('click', function() {
+		$button.hide();
+	});
+	jQuery('#content-tmce').on('click', function() {
+		$button.css('display', 'inline-block');
+	});
+
 })(photocrati_ajax.wp_site_url);

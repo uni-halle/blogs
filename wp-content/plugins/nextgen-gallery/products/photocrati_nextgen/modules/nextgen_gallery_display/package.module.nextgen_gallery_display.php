@@ -313,6 +313,26 @@ class Mixin_Display_Type_Controller extends Mixin
     {
         return NULL;
     }
+    public function does_lightbox_support_displayed_gallery($displayed_gallery, $lightbox = NULL)
+    {
+        if (!$lightbox) {
+            $lightbox = C_Lightbox_Library_Manager::get_instance()->get_selected();
+        }
+        $retval = FALSE;
+        if ($lightbox) {
+            // HANDLE COMPATIBILITY BREAK
+            // In NGG 2.1.48 and earlier, lightboxes were stdClass objects, and it was assumed
+            // that they only supported galleries that contained images, not albums that contained galleries.
+            // After NGG 2.1.48, lightboxes are now C_NGG_Lightbox instances which have a 'is_supported()' method
+            // to test if the lightbox can work with the displayed gallery settings
+            if (get_class($lightbox) == 'stdClass') {
+                $retval = !in_array($displayed_gallery->source, array('album', 'albums'));
+            } else {
+                $retval = $lightbox->is_supported($displayed_gallery);
+            }
+        }
+        return $retval;
+    }
     /**
      * Returns the effect HTML code for the displayed gallery
      * @param type $displayed_gallery
@@ -321,12 +341,14 @@ class Mixin_Display_Type_Controller extends Mixin
     {
         $retval = '';
         if ($lightbox = C_Lightbox_Library_Manager::get_instance()->get_selected()) {
-            $retval = $lightbox->code;
-            $retval = str_replace('%GALLERY_ID%', $displayed_gallery->id(), $retval);
-            $retval = str_replace('%GALLERY_NAME%', $displayed_gallery->id(), $retval);
-            global $post;
-            if ($post && isset($post->ID) && $post->ID) {
-                $retval = str_replace('%PAGE_ID%', $post->ID, $retval);
+            if ($this->does_lightbox_support_displayed_gallery($displayed_gallery, $lightbox)) {
+                $retval = $lightbox->code;
+                $retval = str_replace('%GALLERY_ID%', $displayed_gallery->id(), $retval);
+                $retval = str_replace('%GALLERY_NAME%', $displayed_gallery->id(), $retval);
+                global $post;
+                if ($post && isset($post->ID) && $post->ID) {
+                    $retval = str_replace('%PAGE_ID%', $post->ID, $retval);
+                }
             }
         }
         // allow for customization

@@ -18,10 +18,10 @@ class M_NextGen_Basic_Album extends C_Base_Module
             'photocrati-nextgen_basic_album',
             'NextGEN Basic Album',
             "Provides support for NextGEN's Basic Album",
-            '0.10',
-            'http://nextgen-gallery.com',
+            '0.13',
+            'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
             'Photocrati Media',
-            'http://www.photocrati.com'
+            'https://www.imagely.com'
         );
 
 		C_Photocrati_Installer::add_handler($this->module_id, 'C_NextGen_Basic_Album_Installer');
@@ -73,6 +73,7 @@ class M_NextGen_Basic_Album extends C_Base_Module
             );
 
             $this->get_registry()->add_adapter('I_MVC_View', 'A_NextGen_Album_Breadcrumbs');
+            $this->get_registry()->add_adapter('I_MVC_View', 'A_NextGen_Album_Descriptions');
         }
 
 
@@ -166,6 +167,7 @@ class M_NextGen_Basic_Album extends C_Base_Module
     {
         return array(
             'A_NextGen_Album_Breadcrumbs' => 'adapter.nextgen_album_breadcrumbs.php',
+            'A_NextGen_Album_Descriptions' => 'adapter.nextgen_album_descriptions.php',
             'A_Nextgen_Basic_Album' => 'adapter.nextgen_basic_album.php',
             'A_Nextgen_Basic_Album_Controller' => 'adapter.nextgen_basic_album_controller.php',
             'A_Nextgen_Basic_Album_Mapper' => 'adapter.nextgen_basic_album_mapper.php',

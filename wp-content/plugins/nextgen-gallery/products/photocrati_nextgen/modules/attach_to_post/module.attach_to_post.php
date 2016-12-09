@@ -24,10 +24,10 @@ class M_Attach_To_Post extends C_Base_Module
 			'photocrati-attach_to_post',
 			'Attach To Post',
 			'Provides the "Attach to Post" interface for displaying galleries and albums',
-			'0.11',
-			'http://www.nextgen-gallery.com',
+			'0.14',
+			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
 			'Photocrati Media',
-			'http://www.photocrati.com',
+			'https://www.imagely.com',
 		    $context
 		);
 
@@ -115,6 +115,8 @@ class M_Attach_To_Post extends C_Base_Module
         add_action('admin_init',                array(&$this, 'fix_ie11'), PHP_INT_MAX-1);
         add_action('admin_enqueue_scripts',     array(&$this, 'fix_ie11'), 1);
         add_action('admin_enqueue_scripts',     array(&$this, 'fix_ie11'), PHP_INT_MAX-1);
+		add_filter('wpseo_pre_analysis_post_content', array(&$this, 'remove_preview_images_from_yoast_opengraph'));
+		add_filter('wpseo_sitemap_urlimages', 	array(&$this, 'remove_preview_images_from_yoast_sitemap'), NULL, 2);
 
         // Emit frame communication events
 		if ($this->does_request_require_frame_communication()) {
@@ -124,7 +126,7 @@ class M_Attach_To_Post extends C_Base_Module
 			add_action('ngg_manage_tags',           array(&$this, 'manage_tags_event'));
 		}
 
-        // Admin-only hooks
+		// Admin-only hooks
 		if (is_admin()) {
 			add_action(
 				'admin_enqueue_scripts',
@@ -132,20 +134,79 @@ class M_Attach_To_Post extends C_Base_Module
 				1
 			);
 
-            add_action('admin_init', array(&$this, 'route_insert_gallery_window'));
+			add_action('admin_init', array(&$this, 'route_insert_gallery_window'));
 
 			// TODO: In 2.0.69, we're going to change the ATP placeholder urls
 			if (FALSE) {
-				add_filter('the_editor_content', array(&$this, 'fix_preview_images'));
+				add_filter('the_editor_content', array($this, 'fix_preview_images'));
 			}
-
+			
+			add_action('media_buttons', array($this, 'add_media_button'), 15);
 		}
 
-        // Frontend-only hooks
-        if (!is_admin()) {
-            // Add hook to subsitute displayed gallery placeholders
-            add_filter('the_content', array(&$this, 'substitute_placeholder_imgs'), PHP_INT_MAX, 1);
-        }
+		// Frontend-only hooks
+		if (!is_admin()) {
+		// Add hook to subsitute displayed gallery placeholders
+			add_filter('the_content', array(&$this, 'substitute_placeholder_imgs'), PHP_INT_MAX, 1);
+		}
+	}
+
+	/**
+	 * Removes IGW preview/placeholder images from Yoast OpenGraph analysis
+	 * @param $content
+	 * @return mixed
+	 */
+	function remove_preview_images_from_yoast_opengraph($content)
+	{
+		$content = $this->fix_preview_images($content);
+		$content = preg_replace('/http(s)?:\/\/(.*?)'.NGG_ATTACH_TO_POST_SLUG.'\/preview\/id--\d+/', "", $content);
+		$content = preg_replace('/http(s)?:\/\/(.*?)'.NGG_ATTACH_TO_POST_SLUG.'\/preview\/id\/\d+/', "", $content);
+		return $content;
+	}
+
+	/**
+	 * Removes IGW preview/placeholder images from Yoast's sitemap
+	 * @param $images
+	 * @param $post_id
+	 * @return array
+	 */
+	function remove_preview_images_from_yoast_sitemap($images, $post_id)
+	{
+		$retval = array();
+
+		foreach ($images as $image) {
+			if (strpos($image['src'], NGG_ATTACH_TO_POST_SLUG) === FALSE) {
+				$retval[] = $image;
+			}
+			else {
+				// Lookup images for the displayed gallery
+				if (preg_match('/(\d+)$/', $image['src'], $match)) {
+					$displayed_gallery_id = $match[1];
+					$mapper = C_Displayed_Gallery_Mapper::get_instance();
+					$displayed_gallery = $mapper->find($displayed_gallery_id, TRUE);
+					if ($displayed_gallery) {
+						$gallery_storage = C_Gallery_Storage::get_instance();
+						$settings		 = C_NextGen_Settings::get_instance();
+						$source_obj = $displayed_gallery->get_source();
+						if (in_array('image', $source_obj->returns)) {
+							foreach ($displayed_gallery->get_entities() as $image) {
+								$named_image_size = $settings->imgAutoResize ? 'full' : 'thumb';
+
+								$sitemap_image = array(
+									'src'	=>	$gallery_storage->get_image_url($image, $named_image_size),
+									'alt'	=>	$image->alttext,
+									'title'	=>	$image->description ? $image->description: $image->alttext
+								);
+								$retval[] = $sitemap_image;
+							}
+						}
+					}
+
+				}
+			}
+		}
+
+		return $retval;
 	}
 
 	/**
@@ -171,11 +232,18 @@ class M_Attach_To_Post extends C_Base_Module
 
 		return $content;
 	}
+	
+	function add_media_button()
+	{
+		$router = C_Router::get_instance();
 
-    /**
-     * Route the IGW requests using wp-admin
-     * @throws E_Clean_Exit
-     */
+		echo '<a href="#" data-editor="content" class="button ngg-add-gallery" id="ngg-media-button" class="button" onclick="tinymce.EditorManager.execCommand(\'ngg_attach_to_post\'); return false;"><img src="' . $router->get_static_url('photocrati-attach_to_post#atp_button.png') . '" style="padding:0; margin-top:-3px;"> ' . __('Add Gallery', 'nggallery') . '</a>';
+	}
+
+	/**
+	* Route the IGW requests using wp-admin
+	* @throws E_Clean_Exit
+	*/
     function route_insert_gallery_window()
     {
         if (isset($_REQUEST[NGG_ATTACH_TO_POST_SLUG])) {

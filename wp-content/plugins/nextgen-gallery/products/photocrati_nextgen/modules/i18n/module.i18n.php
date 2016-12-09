@@ -14,9 +14,9 @@ class M_I18N extends C_Base_Module
             'Internationalization',
             "Adds I18N resources and methods",
             '0.1',
-            'http://www.nextgen-gallery.com/languages/',
+            'https://www.imagely.com/languages/',
             'Photocrati Media',
-            'http://www.photocrati.com'
+            'https://www.imagely.com'
         );
     }
 
@@ -51,16 +51,23 @@ class M_I18N extends C_Base_Module
         load_plugin_textdomain('nggallery', false, $dir);
 
         // Hooks to register image, gallery, and album name & description with WPML
-        add_action('ngg_image_updated', array(&$this, 'register_image_strings'));
-        add_action('ngg_album_updated', array(&$this, 'register_album_strings'));
-        add_action('ngg_created_new_gallery', array(&$this, 'register_gallery_strings'));
+        add_action('ngg_image_updated', array($this, 'register_image_strings'));
+        add_action('ngg_album_updated', array($this, 'register_album_strings'));
+        add_action('ngg_created_new_gallery', array($this, 'register_gallery_strings'));
 
         // do not let WPML translate posts we use as a document store
-        add_filter('get_translatable_documents', array(&$this, 'wpml_translatable_documents'));
+        add_filter('get_translatable_documents', array($this, 'wpml_translatable_documents'));
+
+        if (class_exists('SitePress'))
+        {
+            // Copy AttachToPost entries when duplicating posts to another language
+            add_action('icl_make_duplicate', array($this, 'wpml_adjust_gallery_id'), 10, 4);
+            add_action('save_post', array($this, 'wpml_set_gallery_language_on_save_post'), 101, 1);
+        }
 
         // see function comments
-        add_filter('ngg_displayed_gallery_cache_params', array(&$this, 'set_qtranslate_cache_parameters'));
-        add_filter('ngg_displayed_gallery_cache_params', array(&$this, 'set_wpml_cache_parameters'));
+        add_filter('ngg_displayed_gallery_cache_params', array($this, 'set_qtranslate_cache_parameters'));
+        add_filter('ngg_displayed_gallery_cache_params', array($this, 'set_wpml_cache_parameters'));
     }
 
     /**
@@ -165,7 +172,6 @@ class M_I18N extends C_Base_Module
             'ngg_album',
             'ngg_gallery',
             'ngg_pictures',
-            'displayed_gallery',
             'display_type',
             'gal_display_source',
             'lightbox_library',
@@ -176,6 +182,85 @@ class M_I18N extends C_Base_Module
                 unset($icl_post_types[$ndx]);
         }
         return $icl_post_types;
+    }
+
+	function wpml_adjust_gallery_id($master_post_id, $lang, $post_array, $id)
+    {
+        if (!isset($post_array['post_type']) || $post_array['post_type'] == "displayed_gallery")
+            return;
+
+        $re = "|preview/id--(\d+)|mi";
+        if (preg_match_all($re, $post_array['post_content'], $gallery_ids))
+        {
+            foreach($gallery_ids[1] as $index => $gallery_id) {
+                $translated_gallery_id = apply_filters('wpml_object_id', (int)$gallery_id, "displayed_gallery", true, $lang);
+                $search[$index] = "preview/id--" . $gallery_id;
+                $replace[$index] = "preview/id--" . $translated_gallery_id;
+            }
+
+            $post_array['post_content'] = str_replace($search, $replace, $post_array['post_content']);
+
+            $to_save = array(
+                'ID' => $id,
+                'post_content' => $post_array['post_content']
+            );
+
+            add_filter('ngg_cleanup_displayed_galleries', '__return_false', 10, 1);
+            wp_update_post($to_save);
+            add_filter('ngg_cleanup_displayed_galleries', '__return_true', 11, 1);
+        }
+    }
+
+    function wpml_set_gallery_language_on_save_post($post_id)
+    {
+        if (wp_is_post_revision($post_id))
+            return;
+
+        if (isset($_POST['icl_ajx_action']) && $_POST['icl_ajx_action'] == 'make_duplicates')
+            return;
+
+        $post = get_post($post_id);
+
+        if ($post->post_type == 'displayed_gallery')
+            return;
+
+        if (preg_match_all("#<img.*http(s)?://(.*)?" . NGG_ATTACH_TO_POST_SLUG . "(=|/)preview(/|&|&amp;)id(=|--)(\\d+).*?>#mi", $post->post_content, $matches, PREG_SET_ORDER))
+        {
+            $mapper = C_Displayed_Gallery_Mapper::get_instance();
+            foreach ($matches as $match) {
+                // Find the displayed gallery
+                $displayed_gallery_id = $match[6];
+                add_filter('wpml_suppress_filters', '__return_true', 10, 1);
+                $displayed_gallery = $mapper->find($displayed_gallery_id, TRUE);
+                add_filter('wpml_suppress_filters', '__return_false', 11, 1);
+                if ($displayed_gallery)
+                {
+                    $displayed_gallery_type = apply_filters('wpml_element_type', 'displayed_gallery');
+
+                    // set language of this gallery
+                    $displayed_gallery_lang = apply_filters('wpml_post_language_details', null, $displayed_gallery->ID);
+                    $post_language = apply_filters('wpml_post_language_details', null, $post_id);
+
+                    if (!$displayed_gallery_lang || $displayed_gallery_lang['language_code'] != $post_language['language_code'])
+                    {
+                        if ($post_language)
+                        {
+                            $args = array(
+                                'element_id' => $displayed_gallery->ID,
+                                'element_type' => $displayed_gallery_type,
+                                'language_code' => $post_language['language_code']
+                            );
+                            do_action('wpml_set_element_language_details', $args);
+                        }
+                    }
+
+                    // duplicate gallery to other languages
+                    $is_translated = apply_filters('wpml_element_has_translations', '', $displayed_gallery->ID, $displayed_gallery_type);
+                    if (!$is_translated)
+                        do_action('wpml_admin_make_post_duplicates', $displayed_gallery->ID);
+                }
+            }
+        }
     }
 
     static function translate($in, $name = null)

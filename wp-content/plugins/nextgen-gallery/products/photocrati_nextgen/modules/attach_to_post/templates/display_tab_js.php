@@ -1193,6 +1193,7 @@ jQuery(function($){
 				_.each(this.options, function(value, key){
 					this[key] = value;
 				}, this);
+				this.initTime = new Date().getTime();
 				this.model.on('change', this.render, this);
 				if (this.model.get('sortorder') == 0) {
 					this.model.set('sortorder', -1, {silent: true});
@@ -1208,27 +1209,27 @@ jQuery(function($){
 
 			render: function(){
 				this.$el.empty();
+				var preview_item = $('<div/>').addClass('preview_item');
 				var image_container = $('<div/>').addClass('image_container');
 				var alt_text = this.model.alttext().replace(/\\&/g, '&').replace(/\\'/g, "'");
-				var timestamp = new Date().getTime();
+				var timestamp = this.initTime;
 				image_container.attr({
 					title: alt_text,
 					style: "background-image: url('"+this.model.get('thumb_url')+"?timestamp"+timestamp+"')"
-				}).css({
-					width:			this.model.get('max_width'),
-					height:			this.model.get('max_height'),
-					'max-width':	this.model.get('max_width'),
-					'max-height':	this.model.get('max_height')
 				});
 
-				this.$el.append(image_container).addClass('ui-state-default');
+				this.$el.append(preview_item).addClass('ui-state-default');
+				
+				preview_item.append(image_container);
 
 				// Add exclude checkbox
 				var exclude_container = $('<div/>').addClass('exclude_container');
-				exclude_container.append('Exclude?');
+				var exclude_label = $('<label/>');
+				exclude_label.append('<?php _e('Exclude?', 'nggallery'); ?>');
 				var exclude_checkbox = new this.ExcludeCheckbox({model: this.model});
-				exclude_container.append(exclude_checkbox.render().el);
-				image_container.append(exclude_container);
+				exclude_label.append(exclude_checkbox.render().el);
+				exclude_container.append(exclude_label);
+				preview_item.append(exclude_container);
 				return this;
 			},
 

@@ -77,13 +77,13 @@ class nggManageGallery {
 			check_admin_referer('ngg_delpicture');
 			$image = $nggdb->find_image( $this->pid );
 			if ($image) {
+				do_action('ngg_delete_picture', $this->pid, $image);
 				if ($ngg->options['deleteImg']) {
                     $storage = $storage  = C_Gallery_Storage::get_instance();
                     $storage->delete_image($this->pid);
 				}
 				$mapper = C_Image_Mapper::get_instance();
 				$result = $mapper->destroy($this->pid);
-				do_action('ngg_delete_picture', $this->pid);
 
                 if ($result)
                     nggGallery::show_message( __('Picture','nggallery').' \''.$this->pid.'\' '.__('deleted successfully','nggallery') );
@@ -680,11 +680,11 @@ class nggManageGallery {
 						foreach ( $_POST['doaction'] as $imageID ) {
 							$image = $nggdb->find_image( $imageID );
 							if ($image) {
+								do_action('ngg_delete_picture', $image->pid, $image);
 								if ($ngg->options['deleteImg']) {
                                     $storage = C_Gallery_Storage::get_instance();
                                     $storage->delete_image($image->pid);
 								}
-                                do_action('ngg_delete_picture', $image->pid);
 								$delete_pic = C_Image_Mapper::get_instance()->destroy($image->pid);
 							}
 						}

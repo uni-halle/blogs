@@ -274,6 +274,10 @@ class Mixin_Fs_Instance_Methods extends Mixin
         if (strpos($retval, $this->get_document_root()) !== 0 && strtoupper(substr(PHP_OS, 0, 3)) != 'WIN') {
             $retval = DIRECTORY_SEPARATOR . trim($retval, '/\\');
         }
+        // Check for and adjust Windows UNC paths (\\server\share\) for network mounted sites
+        if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN' && substr($this->get_document_root(), 0, 2) === '\\\\') {
+            $retval = '\\\\' . $retval;
+        }
         return $retval;
     }
     public function _flatten_array($obj, &$arr)

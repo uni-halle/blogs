@@ -340,11 +340,11 @@ class Mixin_Routing_App extends Mixin
         $patterns = $this->object->_rewrite_patterns;
         // Assign rewrite definition
         $definition = array('dst' => $dst, 'redirect' => $redirect, 'stop' => $stop);
-        // We treat wildcards much differently then normal rewrites
+        // We treat wildcards much differently than normal rewrites
         if (preg_match('/\\{[\\.\\\\*]/', $src)) {
             $pattern = str_replace('{*}', '(.*?)', $src);
             $pattern = str_replace('{.*}', '(.*?)', $pattern);
-            $pattern = str_replace('{\\w}', '([\\w-_]*)', $pattern);
+            $pattern = str_replace('{\\w}', '([^/]*)', $pattern);
             $pattern = str_replace('{\\d}', '(\\d*)', $pattern);
             $src = '#' . (strpos($src, '/') === 0 ? '^' : '') . $pattern . '/?$#';
             $definition['wildcards'] = TRUE;
@@ -446,9 +446,11 @@ class Mixin_Routing_App extends Mixin
     {
         $redirect = FALSE;
         static $stop_processing = FALSE;
-        // Get the request uri if not provided
+        // Get the request uri if not provided, if provided decode it
         if (!$request_uri) {
             $request_uri = $this->object->get_app_request_uri();
+        } else {
+            $request_uri = urldecode($request_uri);
         }
         // ensure that rewrite patterns array exists
         if (!is_array($this->object->_rewrite_patterns)) {

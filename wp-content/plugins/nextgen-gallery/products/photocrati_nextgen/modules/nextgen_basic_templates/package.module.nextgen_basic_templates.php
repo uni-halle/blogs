@@ -37,6 +37,8 @@ class A_NextGen_Basic_Template_Form extends Mixin
         if (!isset($templates[$display_type->settings['template']])) {
             $templates[$display_type->settings['template']] = $display_type->settings['template'];
         }
+        // add <default> template that acts the same way as having no template specified
+        $templates['default'] = __('Default', 'nggallery');
         return $this->object->render_partial('photocrati-nextgen_basic_templates#nextgen_basic_templates_settings_template', array('display_type_name' => $display_type->name, 'template_label' => __('Template', 'nggallery'), 'template_text' => __('Use a legacy template when rendering (not recommended).', 'nggallery'), 'chosen_file' => $display_type->settings['template'], 'templates' => $templates), True);
     }
     /**
@@ -147,8 +149,16 @@ class A_NextGen_Basic_Template_Form extends Mixin
         } else {
             $return['pagination'] = NULL;
         }
-        $return['next'] = $params['next'];
-        $return['prev'] = $params['prev'];
+        if (!empty($params['next'])) {
+            $return['next'] = $params['next'];
+        } else {
+            $return['next'] = FALSE;
+        }
+        if (!empty($params['prev'])) {
+            $return['prev'] = $params['prev'];
+        } else {
+            $return['prev'] = FALSE;
+        }
         return $return;
     }
     public function enqueue_static_resources()

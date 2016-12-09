@@ -389,7 +389,7 @@ class ExtensibleObject extends PopeHelpers
      * @param string $property
      * @return mixed
      */
-    function &__get($property)
+    function __get($property)
     {
 		$retval = NULL;
 
@@ -440,7 +440,7 @@ class ExtensibleObject extends PopeHelpers
      * @param mixed $value
      * @return mixed
      */
-    function &__set($property, $value)
+    function __set($property, $value)
     {
 		$retval = NULL;
 

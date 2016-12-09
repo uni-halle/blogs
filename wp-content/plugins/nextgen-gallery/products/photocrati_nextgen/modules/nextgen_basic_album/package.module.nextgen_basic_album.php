@@ -47,7 +47,11 @@ class A_NextGen_Album_Breadcrumbs extends Mixin
         $ds = $displayed_gallery->display_settings;
         if (!empty($entities) && !empty($ds['template']) && $this->are_breadcrumbs_enabled($ds)) {
             if ($gallery_id) {
-                $ids = array($gallery_id);
+                if (is_array($gallery_id)) {
+                    $ids = $gallery_id;
+                } else {
+                    $ids = array($gallery_id);
+                }
             } elseif (!empty($ds['original_album_id'])) {
                 $ids = $ds['original_album_id'];
             } else {
@@ -95,6 +99,9 @@ class A_NextGen_Album_Breadcrumbs extends Mixin
         $app = $router->get_routed_app();
         if (is_array($gallery_id)) {
             $gallery_id = array_shift($gallery_id);
+        }
+        if (is_array($gallery_id)) {
+            $gallery_id = $gallery_id[0];
         }
         foreach ($entities as $ndx => $entity) {
             $tmpid = (isset($entity->albumdesc) ? 'a' : '') . $entity->{$entity->id_field};
@@ -175,6 +182,85 @@ class A_NextGen_Album_Breadcrumbs extends Mixin
         return $view->render(TRUE);
     }
 }
+class A_NextGen_Album_Descriptions extends Mixin
+{
+    // When viewing a child gallery the album controller's add_description_to_legacy_templates() method will be
+    // called for the gallery and then again for the root album; we only want to run once
+    public static $_description_added_once = FALSE;
+    public function are_descriptions_enabled($display_settings)
+    {
+        $retval = FALSE;
+        if (isset($display_settings['enable_descriptions']) && $display_settings['enable_descriptions']) {
+            $retval = TRUE;
+        } elseif (isset($display_settings['original_settings']) && $this->are_descriptions_enabled($display_settings['original_settings'])) {
+            $retval = TRUE;
+        }
+        return $retval;
+    }
+    public function render_object()
+    {
+        $root_element = $this->call_parent('render_object');
+        if ($displayed_gallery = $this->object->get_param('displayed_gallery')) {
+            $ds = $displayed_gallery->display_settings;
+            if ($this->are_descriptions_enabled($ds)) {
+                $description = $this->object->generate_description($displayed_gallery);
+                foreach ($root_element->find('nextgen_gallery.gallery_container', TRUE) as $container) {
+                    // Determine where (to be compatible with breadcrumbs) in the container to insert
+                    $pos = 0;
+                    foreach ($container->_list as $ndx => $item) {
+                        if (is_string($item)) {
+                            $pos = $ndx;
+                        } else {
+                            break;
+                        }
+                    }
+                    $container->insert($description, $pos);
+                }
+            }
+        }
+        return $root_element;
+    }
+    public function render_legacy_template_description($displayed_gallery)
+    {
+        if (!empty($displayed_gallery->display_settings['template']) && $this->are_descriptions_enabled($displayed_gallery->display_settings)) {
+            return $this->object->generate_description($displayed_gallery);
+        } else {
+            return '';
+        }
+    }
+    public function generate_description($displayed_gallery)
+    {
+        if (self::$_description_added_once) {
+            return '';
+        }
+        self::$_description_added_once = TRUE;
+        $description = $this->get_description($displayed_gallery);
+        $view = new C_MVC_View('photocrati-nextgen_basic_album#descriptions', array('description' => $description));
+        return $view->render(TRUE);
+    }
+    public function get_description($displayed_gallery)
+    {
+        $description = '';
+        // Important: do not array_shift() $displayed_gallery->container_ids as it will affect breadcrumbs
+        $container_ids = $displayed_gallery->container_ids;
+        if ($displayed_gallery->source == 'galleries') {
+            $gallery_id = array_shift($container_ids);
+            $gallery = C_Gallery_Mapper::get_instance()->find($gallery_id);
+            if ($gallery && !empty($gallery->galdesc)) {
+                $description = $gallery->galdesc;
+            }
+        } else {
+            if ($displayed_gallery->source == 'albums') {
+                $album_id = array_shift($container_ids);
+                $album = C_Album_Mapper::get_instance()->find($album_id);
+                if ($album && !empty($album->albumdesc)) {
+                    $description = $album->albumdesc;
+                }
+            }
+        }
+        return $description;
+    }
+}
 /**
  * Provides validation for NextGen Basic Albums
  */
@@ -205,6 +291,10 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
      */
     public function index_action($displayed_gallery, $return = FALSE)
     {
+        // Ensure that the open_gallery_in_lightbox setting is present
+        if (!array_key_exists('open_gallery_in_lightbox', $displayed_gallery->display_settings)) {
+            $displayed_gallery->display_settings['open_gallery_in_lightbox'] = 0;
+        }
         $display_settings = $displayed_gallery->display_settings;
         // We need to fetch the album containers selected in the Attach
         // to Post interface. We need to do this, because once we fetch the
@@ -224,7 +314,9 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
             // Try finding the gallery by slug first. If nothing is found, we assume that
             // the user passed in a gallery id instead
             $mapper = C_Gallery_Mapper::get_instance();
-            $result = reset($mapper->select()->where(array('slug = %s', $gallery))->limit(1)->run_query());
+            $tmp = $mapper->select()->where(array('slug = %s', $gallery))->limit(1)->run_query();
+            $result = reset($tmp);
+            unset($tmp);
             if ($result) {
                 $gallery = $result->{$result->id_field};
             }
@@ -233,14 +325,17 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
             if (!empty($display_settings['gallery_display_template'])) {
                 $gallery_params['template'] = $display_settings['gallery_display_template'];
             }
-            add_filter('ngg_displayed_gallery_rendering', array($this, 'add_breadcrumbs_to_legacy_templates'), 10, 2);
+            add_filter('ngg_displayed_gallery_rendering', array($this, 'add_description_to_legacy_templates'), 8, 2);
+            add_filter('ngg_displayed_gallery_rendering', array($this, 'add_breadcrumbs_to_legacy_templates'), 9, 2);
             $output = $renderer->display_images($gallery_params, $return);
             remove_filter('ngg_displayed_gallery_rendering', array($this, 'add_breadcrumbs_to_legacy_templates'));
+            remove_filter('ngg_displayed_gallery_rendering', array($this, 'add_description_to_legacy_templates'));
             return $output;
         } else {
             if ($album = $this->param('album')) {
                 $mapper = C_Album_Mapper::get_instance();
-                $result = array_pop($mapper->select()->where(array('slug = %s', $album))->limit(1)->run_query());
+                $result = $mapper->select()->where(array('slug = %s', $album))->limit(1)->run_query();
+                $result = array_pop($result);
                 $album_sub = $result ? $result->{$result->id_field} : null;
                 if ($album_sub != null) {
                     $album = $album_sub;
@@ -262,7 +357,7 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
         // If there are entities to be displayed
         if ($entities) {
             $pagination_result = $this->object->create_pagination($current_page, $displayed_gallery->get_entity_count(), $display_settings['galleries_per_page'], urldecode($this->object->param('ajax_pagination_referrer')));
-            if (!empty($display_settings['template'])) {
+            if (!empty($display_settings['template']) && $display_settings['template'] != 'default') {
                 // Add additional parameters
                 $this->object->remove_param('ajax_pagination_referrer');
                 $display_settings['current_page'] = $current_page;
@@ -270,12 +365,18 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
                 $display_settings['pagination_prev'] = $pagination_result['prev'];
                 $display_settings['pagination_next'] = $pagination_result['next'];
                 $display_settings['pagination'] = $pagination_result['output'];
+                // Legacy templates lack a good way of injecting content at the right time
                 $this->object->add_mixin('A_NextGen_Album_Breadcrumbs');
+                $this->object->add_mixin('A_NextGen_Album_Descriptions');
                 $breadcrumbs = $this->object->render_legacy_template_breadcrumbs($displayed_gallery, $entities);
+                $description = $this->object->render_legacy_template_description($displayed_gallery);
                 // Render legacy template
                 $this->object->add_mixin('Mixin_NextGen_Basic_Templates');
                 $display_settings = $this->prepare_legacy_album_params($displayed_gallery->get_entity(), $display_settings);
                 $retval = $this->object->legacy_render($display_settings['template'], $display_settings, $return, 'album');
+                if (!empty($description)) {
+                    $retval = $description . $retval;
+                }
                 if (!empty($breadcrumbs)) {
                     $retval = $breadcrumbs . $retval;
                 }
@@ -286,6 +387,27 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
                 $params['pagination'] = $pagination_result['output'];
                 $params['image_gen_params'] = $albums['image_gen_params'];
                 $params['galleries'] = $albums['galleries'];
+                foreach ($params['galleries'] as &$gallery) {
+                    $gallery->entity_type = isset($gallery->is_gallery) && intval($gallery->is_gallery) ? 'gallery' : 'album';
+                    // If we're to open a gallery in a lightbox, we need to expose it to the lightbox
+                    // as a displayed gallery
+                    if (isset($params['open_gallery_in_lightbox']) && $gallery->entity_type == 'gallery') {
+                        $gallery->displayed_gallery = new C_Displayed_Gallery();
+                        $gallery->displayed_gallery->container_ids = array($gallery->{$gallery->id_field});
+                        $gallery->displayed_gallery->display_settings = $displayed_gallery->display_settings;
+                        $gallery->displayed_gallery->returns = 'included';
+                        $gallery->displayed_gallery->source = 'galleries';
+                        $gallery->displayed_gallery->images_list_count = $gallery->displayed_gallery->get_entity_count();
+                        $gallery->displayed_gallery->is_album_gallery = TRUE;
+                        $gallery->displayed_gallery->to_transient();
+                        if ($this->does_lightbox_support_displayed_gallery($displayed_gallery)) {
+                            $gallery->displayed_gallery->effect_code = $this->object->get_effect_code($gallery->displayed_gallery);
+                        }
+                        // Add "galleries.gallery_1 = {};"
+                        $this->object->_add_script_data('ngg_common', 'galleries.gallery_' . $gallery->displayed_gallery->id(), (array) $gallery->displayed_gallery->get_entity(), FALSE);
+                        $this->object->_add_script_data('ngg_common', 'galleries.gallery_' . $gallery->displayed_gallery->id() . '.wordpress_page_root', get_permalink(), FALSE);
+                    }
+                }
                 $params['displayed_gallery'] = $displayed_gallery;
                 $params = $this->object->prepare_display_parameters($displayed_gallery, $params);
                 switch ($displayed_gallery->display_type) {
@@ -311,9 +433,18 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
         } elseif (isset($displayed_gallery->display_settings['original_settings']) && isset($displayed_gallery->display_settings['original_settings']['original_album_entities'])) {
             $original_album_entities = $displayed_gallery->display_settings['original_settings']['original_album_entities'];
         }
-        $breadcrumbs = $this->object->render_legacy_template_breadcrumbs($displayed_gallery, $original_album_entities, $displayed_gallery->conatiner_ids);
+        $breadcrumbs = $this->object->render_legacy_template_breadcrumbs($displayed_gallery, $original_album_entities, $displayed_gallery->container_ids);
         if (!empty($breadcrumbs)) {
             $html = $breadcrumbs . $html;
+        }
+        return $html;
+    }
+    public function add_description_to_legacy_templates($html, $displayed_gallery)
+    {
+        $this->object->add_mixin('A_NextGen_Album_Descriptions');
+        $description = $this->object->render_legacy_template_description($displayed_gallery);
+        if (!empty($description)) {
+            $html = $description . $html;
         }
         return $html;
     }
@@ -355,6 +486,8 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
             $gallery->previewurl = '';
             if ($gallery->previewpic && $gallery->previewpic > 0) {
                 if ($image = $image_mapper->find(intval($gallery->previewpic))) {
+                    $gallery->previewpic_image = $image;
+                    $gallery->previewpic_fullsized_url = $storage->get_image_url($image, 'full');
                     $gallery->previewurl = $storage->get_image_url($image, $image_gen->get_size_name($image_gen_params), TRUE);
                     $gallery->previewname = $gallery->name;
                 }
@@ -441,7 +574,9 @@ class A_NextGen_Basic_Album_Mapper extends Mixin
             $this->object->_set_default_value($entity, 'settings', 'galleries_per_page', $settings->galPagedGalleries);
             $this->object->_set_default_value($entity, 'settings', 'enable_breadcrumbs', 1);
             $this->object->_set_default_value($entity, 'settings', 'disable_pagination', 0);
+            $this->object->_set_default_value($entity, 'settings', 'enable_descriptions', 0);
             $this->object->_set_default_value($entity, 'settings', 'template', '');
+            $this->object->_set_default_value($entity, 'settings', 'open_gallery_in_lightbox', 0);
             // Thumbnail dimensions -- only used by extended albums
             if ($entity->name == NGG_BASIC_EXTENDED_ALBUM) {
                 $this->_set_default_value($entity, 'settings', 'override_thumbnail_settings', 0);
@@ -530,7 +665,7 @@ class Mixin_NextGen_Basic_Album_Form extends Mixin_Display_Type_Form
 {
     public function _get_field_names()
     {
-        return array('nextgen_basic_album_gallery_display_type', 'nextgen_basic_album_galleries_per_page', 'nextgen_basic_album_enable_breadcrumbs', 'nextgen_basic_templates_template');
+        return array('nextgen_basic_album_gallery_display_type', 'nextgen_basic_album_galleries_per_page', 'nextgen_basic_album_enable_breadcrumbs', 'nextgen_basic_templates_template', 'nextgen_basic_album_enable_descriptions');
     }
     /**
      * Renders the Gallery Display Type field
@@ -552,6 +687,10 @@ class Mixin_NextGen_Basic_Album_Form extends Mixin_Display_Type_Form
     public function _render_nextgen_basic_album_enable_breadcrumbs_field($display_type)
     {
         return $this->_render_radio_field($display_type, 'enable_breadcrumbs', __('Enable breadcrumbs', 'nggallery'), isset($display_type->settings['enable_breadcrumbs']) ? $display_type->settings['enable_breadcrumbs'] : FALSE);
+    }
+    public function _render_nextgen_basic_album_enable_descriptions_field($display_type)
+    {
+        return $this->_render_radio_field($display_type, 'enable_descriptions', __('Display descriptions', 'nggallery'), $display_type->settings['enable_descriptions']);
     }
 }
 class A_NextGen_Basic_Extended_Album_Form extends Mixin_NextGen_Basic_Album_Form

@@ -62,6 +62,28 @@ class A_NextGen_Admin_Default_Pages extends Mixin
         return $this->call_parent('setup');
     }
 }
+class C_Admin_Notification_Wrapper
+{
+    public $_name;
+    public $_data;
+    public function __construct($name, $data)
+    {
+        $this->_name = $name;
+        $this->_data = $data;
+    }
+    public function is_renderable()
+    {
+        return true;
+    }
+    public function is_dismissable()
+    {
+        return true;
+    }
+    public function render()
+    {
+        return $this->_data['message'];
+    }
+}
 class C_Admin_Notification_Manager
 {
     public $_notifications = array();
@@ -144,8 +166,13 @@ class C_Admin_Notification_Manager
     public function get_handler_instance($name)
     {
         $retval = NULL;
-        if (isset($this->_notifications[$name]) && ($handler = $this->_notifications[$name])) {
-            if (class_exists($handler)) {
+        if (isset($this->_notifications[$name])) {
+            $handler = $this->_notifications[$name];
+            if (is_object($handler)) {
+                $retval = $handler;
+            } elseif (is_array($handler)) {
+                $retval = new C_Admin_Notification_Wrapper($name, $handler);
+            } elseif (class_exists($handler)) {
                 $retval = call_user_func(array($handler, 'get_instance'), $name);
             }
         }
@@ -211,7 +238,7 @@ class C_Form extends C_MVC_Controller
      * Defines the form
      * @param string $context
      */
-    public function define($context)
+    public function define($context = FALSE)
     {
         parent::define($context);
         $this->add_mixin('Mixin_Form_Instance_Methods');

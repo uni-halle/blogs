@@ -72,6 +72,7 @@
                     var $gallery_name = $('#gallery_name').show();
                     var $gallery_selection = $('#gallery_selection').detach();
                     window.uploaded_image_ids = [];
+                    window.uploaded_image_errors = [];
 
                     plupload.addFileFilter('xss_protection', function(enabled, file, cb){
                         var retval = true;
@@ -164,19 +165,36 @@
 
                             // Determine appropriate message to display
                             var upload_count = window.uploaded_image_ids.length;
+                            var errors = window.uploaded_image_errors;
                             var msg = '';
-
-                            <?php $url = admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid={gid}'; ?>
+                            var gallery_url = '<?php echo admin_url("/admin.php?page=nggallery-manage-gallery&mode=edit&gid=")?>' + $gallery_id.val();
 
                             if (upload_count == 0) {
-                                msg = "<?php _e('0 images were uploaded', 'nggallery'); ?>";
-                            } else {
-                                msg = '<?php printf(__('{count} images were uploaded successfully. <a href="%s" target="_blank">Manage gallery</a>', 'nggallery'), $url); ?>';
-                                if (upload_count == 1) {
-                                    msg = '<?php printf(__('1 image was uploaded successfully. <a href="%s" target="_blank">Manage gallery</a>', 'nggallery'), $url); ?>';
-                                }
-                                msg = msg.replace('{gid}', $gallery_id.val());
+                                msg = NggUploadImages_i18n.no_images_uploaded;
+                            }
+                            else {
+                                msg = upload_count == 1 ? NggUploadImages_i18n.one_image_uploaded : NggUploadImages_i18n.x_images_uploaded;
                                 msg = msg.replace('{count}', upload_count);
+                                
+                                if (errors.length > 0) {
+                                	msg = msg + '<br/>' + NggUploadImages_i18n.image_errors;
+                                	
+                                	for (var i = 0; i < errors.length; i++) {
+                                		msg = msg + '<br/>' + errors[i];
+                                	}
+                                	
+                                	msg = msg + '<br/>';
+                                }
+
+                                // If we're outside of the IGW, we will then display a link to manage the gallery
+                                if ($('#iframely').length == 0) {
+                                    var $link = $('<a/>').attr({
+                                        href: gallery_url,
+                                        target: '_blank'
+                                    });
+                                    $link.text(NggUploadImages_i18n.manage_gallery);
+                                    msg = msg + ' ' + $link[0].outerHTML;
+                                }
                             }
 
                             // Display message/notification
@@ -230,7 +248,15 @@
 							else {
 								window.uploaded_image_ids = window.uploaded_image_ids.concat(response.image_ids);
 								up.settings.url = window.set_plupload_url(response.gallery_id, $gallery_name.val());
-
+								
+								if (response.image_errors) {
+									for (var i = 0; i < response.image_errors.length; i++) {
+										var errMsg = response.image_errors[i].error;
+										if (window.uploaded_image_errors.indexOf(errMsg) == -1)
+											window.uploaded_image_errors.push(errMsg);
+									}
+								}
+								
 								// If we created a new gallery, ensure it's now in the drop-down list, and select it
 								if ($gallery_id.find('option[value="'+response.gallery_id+'"]').length == 0) {
 									var option = $('<option/>').attr('value', response.gallery_id).html(response.gallery_name);

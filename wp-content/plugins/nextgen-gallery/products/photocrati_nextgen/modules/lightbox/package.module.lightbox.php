@@ -14,16 +14,9 @@ class C_Lightbox_Installer
     }
     public function install_lightbox($name, $title, $code, $stylesheet_paths = array(), $script_paths = array(), $values = array(), $i18n = array())
     {
-        $lightbox = new stdClass();
-        $lightbox->name = $name;
-        $lightbox->title = $title;
-        $lightbox->code = $code;
-        $lightbox->values = $values;
-        $lightbox->i18n = $i18n;
-        $lightbox->styles = implode('
-', $stylesheet_paths);
-        $lightbox->scripts = implode('
-', $script_paths);
+        $lightbox = new C_NGG_Lightbox($name, array('title' => $title, 'code' => $code, 'styles' => is_array($stylesheet_paths) ? implode('
+', $stylesheet_paths) : $stylesheet_paths, 'scripts' => is_array($script_paths) ? implode('
+', $script_paths) : $script_paths, 'values' => $values, 'i18n' => $i18n));
         C_Lightbox_Library_Manager::get_instance()->register($name, $lightbox);
     }
 }
@@ -49,18 +42,18 @@ class C_Lightbox_Library_Manager
         $fs = C_Fs::get_instance();
         $router = C_Router::get_instance();
         // Add none as an option
-        $none = new stdClass();
+        $none = new C_NGG_Lightbox('none');
         $none->title = __('None', 'nggallery');
         $this->register('none', $none);
         // Add Fancybox
-        $fancybox = new stdClass();
+        $fancybox = new C_NGG_Lightbox('fancybox');
         $fancybox->title = __('Fancybox', 'nggallery');
         $fancybox->code = 'class="ngg-fancybox" rel="%GALLERY_NAME%"';
         $fancybox->styles = array('photocrati-lightbox#fancybox/jquery.fancybox-1.3.4.css');
         $fancybox->scripts = array('photocrati-lightbox#fancybox/jquery.easing-1.3.pack.js', 'photocrati-lightbox#fancybox/jquery.fancybox-1.3.4.pack.js', 'photocrati-lightbox#fancybox/nextgen_fancybox_init.js');
         $this->register('fancybox', $fancybox);
         // Add Shutter
-        $shutter = new stdClass();
+        $shutter = new C_NGG_Lightbox('shutter');
         $shutter->title = __('Shutter', 'nggallery');
         $shutter->code = 'class="shutterset_%GALLERY_NAME%"';
         $shutter->styles = array('photocrati-lightbox#shutter/shutter.css');
@@ -68,7 +61,7 @@ class C_Lightbox_Library_Manager
         $shutter->values = array('nextgen_shutter_i18n' => array('msgLoading' => __('L O A D I N G', 'nggallery'), 'msgClose' => __('Click to Close', 'nggallery')));
         $this->register('shutter', $shutter);
         // Add shutter reloaded
-        $shutter2 = new stdClass();
+        $shutter2 = new C_NGG_Lightbox('shutter2');
         $shutter2->title = __('Shutter Reloaded', 'nggallery');
         $shutter2->code = 'class="shutterset_%GALLERY_NAME%"';
         $shutter2->styles = array('photocrati-lightbox#shutter_reloaded/shutter.css');
@@ -76,7 +69,7 @@ class C_Lightbox_Library_Manager
         $shutter2->values = array('nextgen_shutter2_i18n' => array(__('Previous', 'nggallery'), __('Next', 'nggallery'), __('Close', 'nggallery'), __('Full Size', 'nggallery'), __('Fit to Screen', 'nggallery'), __('Image', 'nggallery'), __('of', 'nggallery'), __('Loading...', 'nggallery')));
         $this->register('shutter2', $shutter2);
         // Add Thickbox
-        $thickbox = new stdClass();
+        $thickbox = new C_NGG_Lightbox('thickbox');
         $thickbox->title = __('Thickbox', 'nggallery');
         $thickbox->code = 'class=\'thickbox\' rel=\'%GALLERY_NAME%\'';
         $thickbox->styles = array('wordpress#thickbox');
@@ -86,7 +79,7 @@ class C_Lightbox_Library_Manager
         // Allow third parties to integrate
         do_action('ngg_registered_default_lightboxes');
         // Add custom option
-        $custom = new stdClass();
+        $custom = new C_NGG_Lightbox('custom');
         $custom->title = __('Custom', 'nggallery');
         $custom->code = $settings->thumbEffectCode;
         $custom->styles = $settings->thumbEffectStyles;
@@ -195,11 +188,21 @@ class C_Lightbox_Library_Manager
         $this->_add_script_data('ngg_common', 'nextgen_lightbox_settings', array('static_path' => $router->get_static_url('', 'photocrati-lightbox'), 'context' => $thumbEffectContext), TRUE, TRUE);
         // Enqueue lightbox resources, only if we have a configured lightbox
         if ($lightbox) {
+            // Add lightbox script data
+            if (isset($lightbox->values)) {
+                foreach ($lightbox->values as $name => $value) {
+                    if (empty($value)) {
+                        continue;
+                    }
+                    $this->_add_script_data('ngg_lightbox_context', $name, $value, TRUE);
+                }
+            }
             // Enqueue stylesheets
             for ($i = 0; $i < count($lightbox->styles); $i++) {
                 $src = $lightbox->styles[$i];
                 if (strpos($src, 'wordpress#') === 0) {
-                    wp_enqueue_style(@array_pop(explode('wordpress#', $src)));
+                    $parts = explode('wordpress#', $src);
+                    wp_enqueue_style(array_pop($parts));
                 } else {
                     if (!empty($src)) {
                         wp_enqueue_style($lightbox->name . "-{$i}", $this->_handle_url($src), FALSE, NGG_SCRIPT_VERSION);
@@ -211,19 +214,11 @@ class C_Lightbox_Library_Manager
                 $src = $lightbox->scripts[$i];
                 $handle = $lightbox->name . "-{$i}";
                 if (strpos($src, 'wordpress#') === 0) {
-                    $handle = @array_pop(explode('wordpress#', $src));
-                    wp_enqueue_script($handle);
+                    $parts = explode('wordpress#', $src);
+                    wp_enqueue_script(array_pop($parts));
                 } else {
                     if (!empty($src)) {
                         wp_enqueue_script($handle, $this->_handle_url($src), array('ngg_lightbox_context'), NGG_SCRIPT_VERSION, TRUE);
-                    }
-                }
-                if ($i == 0 and isset($lightbox->values)) {
-                    foreach ($lightbox->values as $name => $value) {
-                        if (empty($value)) {
-                            continue;
-                        }
-                        $this->_add_script_data($handle, $name, $value, FALSE);
                     }
                 }
             }
@@ -294,5 +289,42 @@ class C_Lightbox_Library_Manager
     {
         $this->_lightboxes = array();
         $this->_registered_defaults = FALSE;
+    }
+}
+/**
+ * Represents a lightbox available in NextGEN Gallery
+ * Class C_NGG_Lightbox
+ */
+class C_NGG_Lightbox extends C_Component
+{
+    public function define($context = FALSE, $properties = array())
+    {
+        parent::define($context);
+        $this->add_mixin('Mixin_NGG_Lightbox_Instance_Methods');
+        $this->implement('I_Lightbox');
+    }
+    public function initialize($name = '', $properties = array())
+    {
+        parent::initialize($name);
+        $properties['name'] = $name;
+        foreach ($properties as $k => $v) {
+            $this->{$k} = $v;
+        }
+    }
+}
+class Mixin_NGG_Lightbox_Instance_Methods extends Mixin
+{
+    /**
+     * Returns true/false whether or not the lightbox supports displaying entities from the displayed gallery object
+     * @param $displayed_gallery. By default, lightboxes don't support albums
+     * @return bool
+     */
+    public function is_supported($displayed_gallery)
+    {
+        $retval = TRUE;
+        if (in_array($displayed_gallery->source, array('album', 'albums')) && !isset($displayed_gallery->display_settings['open_gallery_in_lightbox'])) {
+            $retval = FALSE;
+        }
+        return $retval;
     }
 }

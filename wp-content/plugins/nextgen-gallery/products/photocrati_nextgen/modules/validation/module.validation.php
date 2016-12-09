@@ -15,9 +15,9 @@ class M_Validation extends C_Base_Module
 			'Validation',
 			'Provides validation support for objects',
 			'0.1',
-			'http://www.nextgen-gallery.com',
+			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
 			'Photocrati Media',
-			'http://www.photocrati.com'
+			'https://www.imagely.com'
 		);
 	}
 
