@@ -6,8 +6,8 @@ Tags:              Google Maps, googlemaps, OpenStreetMap, bing, map, maps, mapp
 Author URI:        https://www.mapsmarker.com
 Author:            MapsMarker.com e.U.
 Requires at least: 3.4
-Tested up to:      4.5.2
-Stable tag:        3.10.4
+Tested up to:      4.5.3
+Stable tag:        3.10.6
 License:           GPLv2
 
 The most comprehensive & user-friendly mapping solution for WordPress
@@ -108,7 +108,7 @@ Maps Marker makes it easy to switch between languages. Thanks to over 100 transl
 * Bengali (ba_BD) thanks to Nur Hasan
 * Bosnian (bs_BA) thanks to Kenan Dervišević
 * Bulgarian (bg_BG) thanks to Andon Ivanov
-* Catalan (ca) thanks to Vicent Cubells and Efraim Bayarri
+* Catalan (ca) thanks to Vicent Cubells, Efraim Bayarri and Marta Espinalt
 * Chinese (zh_CN) thanks to John Shen and ck
 * Chinese (zh_TW) thanks to jamesho Ho
 * Croatian (hr) thanks to Neven Pausic, Alan Benic and Marijan Rajic
@@ -139,7 +139,7 @@ Maps Marker makes it easy to switch between languages. Thanks to over 100 transl
 * Russian (ru_RU) thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies) and Vyacheslav Strenadko
 * Slovak (sk_SK) thanks to Zdenko Podobny
 * Slovenian (sl_SL) thanks to Anna Dukan
-* Spanish (es_ES) thanks to David Ramirez, Alvaro Lara, Ricardo Viteri and Juan Valdes
+* Spanish (es_ES) thanks to David Ramirez, Alvaro Lara, Ricardo Viteri, Juan Valdes and Marta Espinalt
 * Spanish (es_MX) thanks to Victor Guevara and Eze Lazcano
 * Swedish (sv_SE) thanks to Swedish translation thanks to Olof Odier, Tedy Warsitha, Dan Paulsson, Elger Lindgren, Anton Andreasson and Tony Lygnersjö
 * Thai (th) thanks to Makarapong Chathamma and Panupong Siriwichayakul
@@ -341,10 +341,10 @@ MapsMarker &reg;
 Copyright 2011-2016, MapsMarker.com e.U., All Rights Reserved
 
 == Upgrade Notice ==
-= v3.10.4 =
-compatibility and bugfix release - see https://www.mapsmarker.com/v3.10.4 for more details
+= v3.10.6 =
+enhanced Google Maps API key support which is mandatory since June 22nd - see https://www.mapsmarker.com/v3.10.6 for more details
 
 == Changelog ==
-[blog post with details about v3.10.4](https://www.mapsmarker.com/v3.10.4)
+[blog post with details about v3.10.6](https://www.mapsmarker.com/v3.10.6)
 
 [changelog for all versions](https://www.mapsmarker.com/changelog)

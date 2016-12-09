@@ -97,20 +97,28 @@ if (is_plugin_active('siteorigin-panels/siteorigin-panels.php') ) {
 }
 //info: plugin WP External Links
 if (is_plugin_active('wp-external-links/wp-external-links.php') ) {
-	$plugin_options = get_option('wp_external_links-main');
-	if (!strpos($plugin_options['ignore'], 'mapsmarker.com')) { $ignore_list .= 'mapsmarker.com<br/>'; }
-	if (!strpos($plugin_options['ignore'], 'leafletjs.com')) { $ignore_list .= 'leafletjs.com<br/>'; }
-	if (!strpos($plugin_options['ignore'], 'mapicons.mapsmarker.com')) { $ignore_list .= 'mapicons.mapsmarker.com<br/>'; }
-	if (!strpos($plugin_options['ignore'], 'visualead.com')) { $ignore_list .= 'visualead.com<br/>'; }
-	if (!strpos($plugin_options['ignore'], 'openstreetmap.org')) { $ignore_list .= 'openstreetmap.org<br/>'; }
-	if (!strpos($plugin_options['ignore'], 'mapquest.com')) { $ignore_list .= 'mapquest.com<br/>'; }
-	if (!strpos($plugin_options['ignore'], 'data.wien.gv.at')) { $ignore_list .= 'data.wien.gv.at<br/>'; }
-	if (!strpos($plugin_options['ignore'], 'stamen.com')) { $ignore_list .= 'stamen.com<br/>'; }
-	if (!strpos($plugin_options['ignore'], 'creativecommons.org')) { $ignore_list .= 'creativecommons.org<br/>'; }
-	if (!strpos($plugin_options['ignore'], 'mapbox.com')) { $ignore_list .= 'mapbox.com<br/>'; }
-	if (!strpos($plugin_options['ignore'], 'thunderforest.com')) { $ignore_list .= 'thunderforest.com'; }
+	$wp_external_links_metadata = get_plugin_data(WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'wp-external-links' . DIRECTORY_SEPARATOR . 'wp-external-links.php');
+	if (version_compare($wp_external_links_metadata['Version'],"2.0.0",">=")){
+		$plugin_options = get_option('wpel-exceptions-settings');
+		$plugin_options_exclude = $plugin_options['exclude_urls'];
+	} else {
+		$plugin_options = get_option('wp_external_links-main');
+		$plugin_options_exclude = $plugin_options['ignore'];
+	}
+	$ignore_list = '';
+	if (strpos($plugin_options_exclude, 'mapsmarker.com') === false) { $ignore_list .= 'mapsmarker.com<br/>'; }
+	if (strpos($plugin_options_exclude, 'leafletjs.com') === false) { $ignore_list .= 'leafletjs.com<br/>'; }
+	if (strpos($plugin_options_exclude, 'mapicons.mapsmarker.com') === false) { $ignore_list .= 'mapicons.mapsmarker.com<br/>'; }
+	if (strpos($plugin_options_exclude, 'visualead.com') === false) { $ignore_list .= 'visualead.com<br/>'; }
+	if (strpos($plugin_options_exclude, 'openstreetmap.org') === false) { $ignore_list .= 'openstreetmap.org<br/>'; }
+	if (strpos($plugin_options_exclude, 'mapquest.com') === false) { $ignore_list .= 'mapquest.com<br/>'; }
+	if (strpos($plugin_options_exclude, 'data.wien.gv.at') === false) { $ignore_list .= 'data.wien.gv.at<br/>'; }
+	if (strpos($plugin_options_exclude, 'stamen.com') === false) { $ignore_list .= 'stamen.com<br/>'; }
+	if (strpos($plugin_options_exclude, 'creativecommons.org') === false) { $ignore_list .= 'creativecommons.org<br/>'; }
+	if (strpos($plugin_options_exclude, 'mapbox.com') === false) { $ignore_list .= 'mapbox.com<br/>'; }
+	if (strpos($plugin_options_exclude, 'thunderforest.com') === false) { $ignore_list .= 'thunderforest.com<br/>'; }
 	if ($ignore_list != NULL) {
-		echo '<p><div class="error" style="padding:10px;"><strong>' . sprintf(__('Warning: you are using the plugin "WP External Links" which is currently causing maps to break! Please navigate to "External Links" and add the following links to the option "Ignore links (URL) containing...": %1$s','lmm'), '</strong><br/>' . $ignore_list) . '</div></p>';
+		echo '<p><div class="notice notice-error" style="padding:10px;"><strong>' . sprintf(__('Warning: you are using the plugin "WP External Links" which is currently causing maps to break! Please navigate to "External Links" and add the following links to the option "Ignore links (URL) containing...": %1$s','lmm'), '</strong><br/>' . $ignore_list) . '</div></p>';
 	}
 }
 //info: Sucuri Security (active "restrict wp-content access" breaks maps)
@@ -141,13 +149,40 @@ if ( ($lmm_options[ 'mapbox_user' ] != 'mapbox') || ($lmm_options[ 'mapbox2_user
 }
 //info: plugin Autoptimize
 if (is_plugin_active('autoptimize/autoptimize.php') ) {
-	if ( (get_option( 'autoptimize_js_forcehead' ) != 'on') || (strpos(get_option( 'autoptimize_js_exclude'), 'mapsmarkerjs') === false) || (strpos(get_option( 'autoptimize_js_exclude'), 'leaflet') === false)) {
-		echo '<p><div class="error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin "Autoptimize" which is currently causing maps to break!<br/>To fix this, please navigate to <a href="%1$s">Autoptimize settings</a>, tick the checkbox "Force JavaScript in <head>?" and add the following to the end the option "Exclude scripts from Autoptimize:": %2$s','lmm'), LEAFLET_WP_ADMIN_URL . 'options-general.php?page=autoptimize', '<strong>,leaflet,mapsmarkerjs</strong>') . '</div></p>';
+	if (class_exists('autoptimizeConfig')) {
+		$conf = autoptimizeConfig::instance();
+		if ( ($conf->get('autoptimize_js') == 'on') && (strpos($conf->get('autoptimize_js_exclude'), 'leaflet.js') === false) ) { 
+			echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin "Autoptimize" which is currently causing maps to break!<br/>To fix this, please navigate to <a href="%1$s">Autoptimize settings</a>, click on button "Show advanced settings" and add the following to the end the option "Exclude scripts from Autoptimize:": %2$s','lmm'), LEAFLET_WP_ADMIN_URL . 'options-general.php?page=autoptimize', '<strong>,leaflet.js</strong>') . '</div></p>';
+		}
+	} else {
+		echo '<p><div class="notice notice-info" style="padding:10px;">' . __('Warning: you seem to be using an old version of the plugin "Autoptimize" which can currently cause maps to break!<br/>Please update this plugin to the latest version to prevent potential issues.','lmm') . '</div></p>';	
 	}
 }
 //info: check if plugin directory has not been renamed (=broken GeoJSON)
 $plugin_basename = explode("/", plugin_basename( __FILE__ ));
 if ($plugin_basename[0] != 'leaflet-maps-marker') {
 	echo '<p><div class="error" style="padding:10px;">' . sprintf(__('Warning: you are using the custom directory name %1$s for the plugin %2$s which causes layer maps to break!<br/>To fix this, please disable the plugin temporarily, rename the current plugin folder located at %3$s to %4$s and re-enable the plugin.','lmm'), '<strong>' . $plugin_basename[0] . '</strong>', '<strong>Leaflet Maps Marker</strong>', WP_PLUGIN_DIR, '<strong>leaflet-maps-marker</strong>') . '</div></p>';
+}
+//info: compatibility check for Page Builder by SiteOrigin plugin incompatibility + Yoast SEO incompatibility
+if ( (is_plugin_active('siteorigin-panels/siteorigin-panels.php')) && (is_plugin_active('wordpress-seo/wp-seo.php')) ) {
+	$social_options = get_option( 'wpseo_social' );
+	if ($social_options['opengraph'] == 1) {
+		echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin %1$s together with %2$s and the current settings can cause maps to break if a %3$s shortcode is added to a %1$s widget!<br/>To fix this, please navigate to <a href="%4$s">SEO / Social / Facebook</a> and disable the option "Add Open Graph meta data".<br/>If you explicitly need a Facebook Open Graph integration though, we recommend to additionally activate the following plugin for that purpose only: %5$s','lmm'), '"Page Builder by SiteOrigin"', '"Yoast SEO"', 'Maps Marker Pro', LEAFLET_WP_ADMIN_URL . 'admin.php?page=wpseo_social#top#facebook', '<a href="https://wordpress.org/support/plugin/wp-facebook-open-graph-protocol" target="_blank">WP Facebook Open Graph protocol</a>' ) . '</div></p>';
+	}
+}
+//info: check if Google Maps API is loaded by other plugins/themes
+if ( $lmm_options['google_api_deregister_scripts'] == 'disabled') {
+	global $wp_scripts;
+	$scripts_found = '';
+	if (isset($wp_scripts->registered) && is_array($wp_scripts->registered)) {
+		foreach ( $wp_scripts->registered as $script) {    
+			if (strpos($script->src, 'maps.google.com/maps/api/js') !== false) {
+				$scripts_found .= $script->handle;
+			}
+		}
+	}
+	if ($scripts_found != '') {
+		echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('<b>Warning: an active plugin or theme is also embedding the Google Maps API (script handle: %1$s) - this can break (Google) maps and address search on backend for %2$s!</b><br/>To fix this, please either remove that additional Google Maps API call manually or enable the compatibility option "<a href="%3$s">Deregister Google Maps API scripts enqueued by third parties</a>"','lmm'), $scripts_found, 'Leaflet Maps Marker', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-google') . '</div></p>';
+	}
 }
 ?>

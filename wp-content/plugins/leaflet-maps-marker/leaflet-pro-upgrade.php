@@ -368,7 +368,6 @@ if ( $action == NULL ) {
 				' . __('We are working hard on delivering the best mapping solution available for WordPress - helping you to share your favorite spots. Therefore we are commited to constantly improving Maps Marker Pro. Below you find some highlights from our development roadmap - if an important one is missing for you, let us know and we will check if we can include it in a future release:','lmm') . '
 				</p>
 				<ul style="list-style-type:disc;margin-left:15px;">
-					<li>' . __('filtering markers on frontend','lmm') . '</li>
 					<li>' . __('support for displaying KML files','lmm') . '</li>
 					<li>' . __('adding markers from frontend','lmm') . '</li>
 					<li>' . __('support for Google Street View','lmm') . '</li>

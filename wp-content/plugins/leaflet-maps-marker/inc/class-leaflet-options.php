@@ -7581,21 +7581,8 @@ $this->_settings['clustering_helptext2'] = array(
 			'section' => 'google-section1',
 			'std'     => '',
 			'title'   => '',
-			'desc'    => __( 'The usage of Google Maps is free for non-commercial users. Since 01/2012, commercial users have a current usage limit of 25.000 free requests a day - with additional usage cost of 0.5$/1000 requests. In order to comply with the <a href="https://developers.google.com/maps/faq" target="_blank">Google Maps terms of services</a>, commercial users have to <a href="https://developers.google.com/maps/documentation/javascript/tutorial#api_key">register for a free API key</a>. This API key can also be used by non-commercial users in order to monitor their Google Maps API usage.', 'lmm'),
+			'desc'    => sprintf(__( 'Since June 22nd 2016 <a href="%1$s" target="_blank">Google requires a Google Maps API key</a> when using any Google Map service on your website.','lmm'), 'https://googlegeodevelopers.blogspot.co.at/2016/06/building-for-scale-updates-to-google.html') . '<br/>' . sprintf(__('Your personal API key can be obtained from the <a href="%1$s" target="_blank">Google API Console</a>.', 'lmm'), 'https://console.developers.google.com/apis/') . '<br/>' . sprintf(__('For a tutorial including screenshots on how to register a Google API key <a href="%1$s" target="_blank">please click here</a>.', 'lmm'), 'https://mapsmarker.com/google-maps-api-key'),
 			'type'    => 'helptext'
-		);
-		$this->_settings['google_maps_api_status'] = array(
-			'version' => 'p1.6',
-			'pane'    => 'google',
-			'section' => 'google-section1',
-			'title'   => __('Google Maps API status','lmm') . $pro_button_link,
-			'desc'    => __('Disabling the Google Maps API will prevent loading scripts from google.com on frontend and will result in higher performance if alternative basemaps are going to be used only. Existing maps using Google basemaps will switch to OpenStreetMap automatically if this setting is disabled!','lmm'),
-			'type'    => 'radio-pro',
-			'std'     => 'enabled',
-			'choices' => array(
-				'enabled' => __('enabled','lmm'),
-				'disabled' => __('disabled','lmm')
-			)
 		);
 		$this->_settings['google_maps_api_key'] = array(
 			'version' => '2.6',
@@ -7606,6 +7593,19 @@ $this->_settings['clustering_helptext2'] = array(
 			'std'     => '',
 			'type'    => 'text'
 		);
+		$this->_settings['google_api_deregister_scripts'] = array(
+			'version' => '3.10.6',
+			'pane'    => 'google',
+			'section' => 'google-section1',
+			'title'   => __('Deregister Google Maps API scripts enqueued by third parties','lmm'),
+			'desc'    => __('Only enable this compatibility option if you see the admin notice that another plugin or theme also embedds the Google Maps API (which can cause maps and address search to break if that implementation does not properly send the Google API key which is mandatory since June 22nd 2016 or also does not load the Google Places API which is needed for address search to work properly!)','lmm'),
+			'type'    => 'radio',
+			'std'     => 'disabled',
+			'choices' => array(
+				'enabled' => __('enabled','lmm'),
+				'disabled' => __('disabled','lmm')
+			)
+		);
 		$this->_settings['google_maps_api_deferred_loading'] = array(
 			'version' => 'p2.6.2',
 			'pane'    => 'google',
@@ -7613,7 +7613,20 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'   => __('Deferred loading','lmm') . $pro_button_link,
 			'desc'    => __('If enabled, Google Maps API scripts will only be loaded on demand as this significantly decreases the loadtime for all OpenStreetMap based maps. Disabling this feature is only recommended if you are experiencing compatibility issues with other plugins or themes.','lmm'),
 			'type'    => 'radio-pro',
-			'std'     => 'disabled',
+			'std'     => 'enabled',
+			'choices' => array(
+				'enabled' => __('enabled','lmm'),
+				'disabled' => __('disabled','lmm')
+			)
+		);
+		$this->_settings['google_maps_api_status'] = array(
+			'version' => 'p1.6',
+			'pane'    => 'google',
+			'section' => 'google-section1',
+			'title'   => __('Google Maps API status','lmm') . $pro_button_link,
+			'desc'    => __('Disabling the Google Maps API will prevent loading scripts from google.com on frontend and will result in higher performance if alternative basemaps are going to be used only. Existing maps using Google basemaps will switch to OpenStreetMap automatically if this setting is disabled!','lmm') . ' ' . __('Disabling the Google Maps API will also result in Google Places address search being disabled on backend!','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'enabled',
 			'choices' => array(
 				'enabled' => __('enabled','lmm'),
 				'disabled' => __('disabled','lmm')
@@ -8637,6 +8650,19 @@ $this->_settings['clustering_helptext2'] = array(
 				'enabled' => __('enabled','lmm')
 			)
 		);
+		$this->_settings['misc_tab_hidden_div_compatibility'] = array(
+			'version' => 'p2.7.2',
+			'pane'    => 'misc',
+			'section' => 'misc-section1',
+			'title'   => __('Tab/hidden div compatibility','lmm') . $pro_button_link,
+			'desc'    => __('Please enable this setting only if you are experiencing issues with maps in proprietary tab solutions or hidden divs which are displayed on demand.','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'disabled',
+			'choices' => array(
+				'disabled' => __('disabled','lmm'),
+				'enabled' => __('enabled','lmm')
+			)
+		);		
 		/*
 		* Language Settings
 		*/
@@ -10410,9 +10436,24 @@ $this->_settings['clustering_helptext2'] = array(
 		$options_new = array_merge($options_current, $new_options_defaults);
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
+		//info:  set defaults for options introduced in v3.10.6
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.10.5','='))
+		{
+			$new_options_defaults = array();
+			foreach ( $this->settings as $id => $setting )
+			{
+				if ( $setting['type'] != 'heading' && $setting['type'] != 'helptext' && $setting['type'] != 'helptext-twocolumn' && $setting['type'] != 'checkbox-pro' && $setting['type'] != 'select-pro' && $setting['type'] != 'radio-pro' && $setting['type'] != 'radio-reverse-pro' && $setting['type'] != 'textarea-pro' && $setting['type'] != 'text-pro' && $setting['type'] != 'text-reverse-pro' && $setting['version'] == '3.10.6')
+				{
+				$new_options_defaults[$id] = $setting['std'];
+				}
+			}
+		$options_current = get_option( 'leafletmapsmarker_options' );
+		$options_new = array_merge($options_current, $new_options_defaults);
+		update_option( 'leafletmapsmarker_options', $options_new );
+		}
 		/* template for plugin updates
 		//info:  set defaults for options introduced in v3.11
-		if (version_compare(get_option('leafletmapsmarker_version'),'3.10.4','='))
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.10.6','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )

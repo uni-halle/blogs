@@ -242,7 +242,7 @@ if ($mcount > intval($lmm_options[ 'markers_per_page' ])) {
     foreach ($marklist as $row)
 	{
 		if (current_user_can( $lmm_options[ 'capabilities_delete' ])) {
-			$delete_link_marker = '<div style="float:right;"><a onclick="if ( confirm( \'' . __('Do you really want to delete this marker?', 'lmm') . ' (' . $row['markername'] . ' - ID ' . $row['id'] . ')\' ) ) { return true;}return false;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_marker&action=delete&id=' . $row['id'] . '&_wpnonce=' . $markernonce . '" class="submitdelete">' . __('delete','lmm') . '</a></div>';
+			$delete_link_marker = '<div style="float:right;"><a onclick="if ( confirm( \'' . esc_attr__('Do you really want to delete this marker?', 'lmm') . ' (' . $row['markername'] . ' - ID ' . $row['id'] . ')\' ) ) { return true;}return false;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_marker&action=delete&id=' . $row['id'] . '&_wpnonce=' . $markernonce . '" class="submitdelete">' . __('delete','lmm') . '</a></div>';
 		} else {
 			$delete_link_marker = '';
 		}

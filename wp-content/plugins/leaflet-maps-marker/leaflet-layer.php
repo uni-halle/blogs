@@ -447,16 +447,16 @@ if ( $edit_status == 'updated') {
 				<input id="mapwidthunit_percent" type="radio" name="mapwidthunit" value="%" <?php checked($mapwidthunit, '%'); ?>><label for="mapwidthunit_percent">%</label><br/>
 				<label for="mapheight"><?php _e('Height','lmm') ?>:</label>
 				<input size="3" maxlength="4" type="text" id="mapheight" name="mapheight" value="<?php echo $mapheight ?>" style="height:24px;" /> <span title="<?php esc_attr_e('pixel','lmm'); ?>">px</span>
-				
+
 				<hr style="border:none;color:#edecec;background:#edecec;height:1px;">
-				
+
 				<label for="layerzoom"><strong><?php _e('Zoom','lmm') ?></strong> <img src="<?php echo LEAFLET_PLUGIN_URL; ?>inc/img/icon-question-mark.png" title="<?php esc_attr_e('You can also change zoom level by clicking on + or - on preview map or using your mouse wheel'); ?>" width="12" height="12" border="0"/></label>&nbsp;<input id="layerzoom" style="width: 40px;" type="text" id="layerzoom" name="layerzoom" value="<?php echo $layerzoom ?>" />
-				<?php 
-				echo ' <span style="' . $current_editor_css . '"><br/><small>' . __('Global maximum zoom level','lmm') . ': <a title="' . esc_attr__('If the native maximum zoom level of a basemap is lower, tiles will be upscaled automatically.','lmm') . '" tabindex="111" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('pro version only','lmm') . '</a></small></span>'; 
+				<?php
+				echo ' <span style="' . $current_editor_css . '"><br/><small>' . __('Global maximum zoom level','lmm') . ': <a title="' . esc_attr__('If the native maximum zoom level of a basemap is lower, tiles will be upscaled automatically.','lmm') . '" tabindex="111" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('pro version only','lmm') . '</a></small></span>';
 				?>
-				
+
 				<hr style="border:none;color:#edecec;background:#edecec;height:1px;">
-				
+
 				<strong><label for="listmarkers"><?php _e('Show list of markers below map','lmm') ?></label></strong>&nbsp;<input type="checkbox" name="listmarkers" id="listmarkers" <?php checked($llistmarkers, 1 ); ?>><br/>
 				<?php
 						echo '<small>';
@@ -467,9 +467,9 @@ if ( $edit_status == 'updated') {
 						}
 						echo '</small>';
 				?>
-				
+
 				<hr style="border:none;color:#edecec;background:#edecec;height:1px;">
-				
+
 				<label for="clustering"><strong><?php _e('Marker clustering','lmm') ?></strong></label>&nbsp;&nbsp;<input type="checkbox" name="clustering" id="clustering" disabled="disabled" />
 				<?php if (current_user_can('activate_plugins')) {
 					echo '&nbsp;&nbsp;<small>(<a tabindex="115" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#mapdefaults-section18">' . __('Settings','lmm') . '</a>)</small>';
@@ -477,9 +477,9 @@ if ( $edit_status == 'updated') {
 				<br/><small>
 				<a href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm'); ?>"><?php _e('Feature available in pro version only','lmm'); ?></a>
 				</small>
-				
+
 				<hr style="border:none;color:#edecec;background:#edecec;height:1px;">
-				
+
 				<div style="float:right;"><label for="gpx_panel"><?php _e('display panel','lmm') ?></label>&nbsp;&nbsp;<input style="margin-top:1px;" type="checkbox" name="gpx_panel" id="gpx_panel" disabled="disabled"></div>
 				<label for="gpx_url"><strong><?php _e('URL to GPX track','lmm') ?></strong></label><br/>
 				<input style="width:229px;" type="text" id="gpx_url" name="gpx_url" value="<?php echo __(' Feature available in pro version only','lmm'); ?>" disabled="disabled" /><br/>
@@ -492,9 +492,9 @@ if ( $edit_status == 'updated') {
 				<input style="margin-top:1px;" id="controlbox_hidden" type="radio" name="controlbox" value="0" <?php checked($lcontrolbox, 0); ?>><label for="controlbox_hidden"><?php _e('hidden','lmm') ?></label><br/>
 				<input style="margin-top:1px;" id="controlbox_collapsed" type="radio" name="controlbox" value="1" <?php checked($lcontrolbox, 1); ?>><label for="controlbox_collapsed"><?php _e('collapsed','lmm') ?></label><br/>
 				<input style="margin-top:1px;" id="controlbox_expanded" type="radio" name="controlbox" value="2" <?php checked($lcontrolbox, 2); ?>><label for="controlbox_expanded"><?php _e('expanded','lmm') ?></label>
-				
+
 				<hr style="border:none;color:#edecec;background:#edecec;height:1px;">
-				
+
 				<strong><label for="panel"><?php _e('Display panel','lmm') ?></label></strong>&nbsp;&nbsp;<input style="margin-top:1px;" type="checkbox" name="panel" id="panel" <?php checked($panel, 1 ); ?>><br/>
 				<small><?php _e('If checked, panel on top of map is displayed','lmm') ?></small>
 				</div>
@@ -692,13 +692,13 @@ if ( $edit_status == 'updated') {
 					<?php
 					$multi_layer_map_state = ($multi_layer_map == 1) ? 'block' : 'none';
 					echo '<div id="lmm-multi_layer_map" style="display:' . $multi_layer_map_state . ';">'.PHP_EOL;
-					echo __('Please select the layers, whose markers you would like to display on this multi layer map.','lmm') . ' ' . 		
-					__('The following features are not supported for multi layer maps: adding markers directly and dynamic preview on backend.','lmm') . ' ' . 
+					echo __('Please select the layers, whose markers you would like to display on this multi layer map.','lmm') . ' ' .
+					__('The following features are not supported for multi layer maps: adding markers directly and dynamic preview on backend.','lmm') . ' ' .
 					__('Please do not change an existing layer map with assigned markers into a multi layer map, as those assigned markers will not be displayed on the multi layer map!','lmm').PHP_EOL;
 					$mlm_checked_all = ( in_array('all', $multi_layer_map_list_exploded) ) ? ' checked="checked"' : '';
 					echo '<br/><br/><input id="mlm-all" type="checkbox" id="mlm-all" name="mlm-all" ' . $mlm_checked_all . '> <label for="mlm-all">' . __('display all markers','lmm') . '</label><br/><br/><strong>' . __('Display markers from selected layers only','lmm') . '</strong><br/>';
 
-					$pro_feature_banner_inline = ' <a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/pro-feature-banner.png" width="75" height="15" style="display:inline;" /></a>';					
+					$pro_feature_banner_inline = ' <a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/pro-feature-banner.png" width="75" height="15" style="display:inline;" /></a>';
 					echo '<table  cellspacing="0" id="list-markers" class="wp-list-table widefat lmm-mlm-layers-table" style="width:100%;margin-top:5px;">
 							<thead>
 								<tr>
@@ -712,7 +712,7 @@ if ( $edit_status == 'updated') {
 								</tr>
 							</thead>
 							<tbody id="the-list">';
-					
+
 					foreach ($layerlist as $mlmrow){
 						$mlm_markercount = $wpdb->get_var('SELECT count(*) FROM `'.$table_name_layers.'` as l INNER JOIN '.$table_name_markers.' AS m ON l.id=m.layer WHERE l.id='.$mlmrow['lid']);
 						if ( in_array($mlmrow['lid'], $multi_layer_map_list_exploded) ) {
@@ -818,12 +818,12 @@ if ( $edit_status == 'updated') {
 				</div>
 				<label for="hide-backlinks"><strong style="font-size:98%"><?php _e('Hide MapsMarker.com backlinks','lmm') ?></strong></label>
 					&nbsp;&nbsp;<input type="checkbox" name="hide-backlinks" id="hide-backlinks" disabled="disabled" /> <a href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm'); ?>"><?php _e('Feature available in pro version only','lmm'); ?></a>
-					
+
 					<hr style="border:none;color:#edecec;background:#edecec;height:1px;">
 					<strong><?php _e('Minimap settings','lmm'); ?></strong> <a tabindex="110" href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_settings#mapdefaults-section17"><?php _e('Please visit Settings / Maps / Minimap settings','lmm'); ?></a>
 					<hr style="border:none;color:#edecec;background:#edecec;height:1px;">
 					<strong><?php _e('Geolocate settings','lmm'); ?> </strong>
-					<a tabindex="111" href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_settings#mapdefaults-section20"><?php _e('Please visit Settings / Maps / Geolocate settings','lmm'); ?></a>					
+					<a tabindex="111" href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_settings#mapdefaults-section20"><?php _e('Please visit Settings / Maps / Geolocate settings','lmm'); ?></a>
 				</td>
 			</tr>
 			<?php if ($lcreatedby != NULL) {?>
@@ -1091,7 +1091,7 @@ var markers = {};
 		$attrib_custom_basemap3 = __("Map",'lmm').': ' . addslashes(wp_kses($lmm_options[ 'custom_basemap3_attribution' ], $allowedtags));
 	?>
 	selectlayer.attributionControl.setPrefix("<?php echo $attrib_prefix; ?>");
-	<?php 
+	<?php
 		if (substr($locale, 0, 2) != 'zh') { //info: conditional ssl loading (performance issues in China)
 			$protocol_handler = 'https';
 			$mapquest_ssl = '-s';
@@ -1101,7 +1101,7 @@ var markers = {};
 		}
 	?>
 	osm_mapnik = new L.TileLayer("<?php echo $protocol_handler; ?>://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {mmid: 'osm_mapnik', maxZoom: 18, minZoom: 1, errorTileUrl: "<?php echo LEAFLET_PLUGIN_URL ?>inc/img/error-tile-image.png", attribution: "<?php echo $attrib_osm_mapnik; ?>", detectRetina: <?php echo $lmm_options['map_retina_detection'] ?>});
-	mapquest_osm = new L.TileLayer("<?php echo $protocol_handler; ?>://{s}<?php echo $mapquest_ssl; ?>.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {mmid: 'mapquest_osm', maxZoom: 18, minZoom: 1, errorTileUrl: "<?php echo LEAFLET_PLUGIN_URL ?>inc/img/error-tile-image.png", attribution: "<?php echo $attrib_mapquest_osm; ?>", subdomains: ['otile1','otile2','otile3','otile4'], detectRetina: <?php echo $lmm_options['map_retina_detection'] ?>});
+	mapquest_osm = new L.TileLayer("<?php echo $protocol_handler; ?>://{s}<?php echo $mapquest_ssl; ?>.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {mmid: 'mapquest_osm', maxZoom: 17, minZoom: 1, errorTileUrl: "<?php echo LEAFLET_PLUGIN_URL ?>inc/img/error-tile-image.png", attribution: "<?php echo $attrib_mapquest_osm; ?>", subdomains: ['otile1','otile2','otile3','otile4'], detectRetina: <?php echo $lmm_options['map_retina_detection'] ?>});
 	mapquest_aerial = new L.TileLayer("<?php echo $protocol_handler; ?>://{s}<?php echo $mapquest_ssl; ?>.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.png", {mmid: 'mapquest_aerial', maxZoom: 18, minZoom: 1, errorTileUrl: "<?php echo LEAFLET_PLUGIN_URL ?>inc/img/error-tile-image.png", attribution: "<?php echo $attrib_mapquest_aerial; ?>", subdomains: ['otile1','otile2','otile3','otile4'], detectRetina: <?php echo $lmm_options['map_retina_detection'] ?>});
 	googleLayer_roadmap = new L.Google("ROADMAP", {mmid: 'googleLayer_roadmap', detectRetina: <?php echo $lmm_options['map_retina_detection'] ?>});
 	googleLayer_satellite = new L.Google("SATELLITE", {mmid: 'googleLayer_satellite', detectRetina: <?php echo $lmm_options['map_retina_detection'] ?>});
@@ -1304,9 +1304,9 @@ var markers = {};
   var layers = {};
   var geojsonObj, mapIcon, marker_clickable, marker_title;
 
-  <?php 
+  <?php
   if ($id != NULL) { //info: dont load geojson.php on new layer maps to save mysql queries+http requests
-	  if ($multi_layer_map == 0) { $id_for_geojson_url = $id; } else { $id_for_geojson_url = $multi_layer_map_list; } 
+	  if ($multi_layer_map == 0) { $id_for_geojson_url = $id; } else { $id_for_geojson_url = $multi_layer_map_list; }
 		echo 'var xhReq = new XMLHttpRequest();'.PHP_EOL;
 		echo 'xhReq.open("GET", "' . LEAFLET_PLUGIN_URL . 'leaflet-geojson.php?layer=' . $id_for_geojson_url . '", true);'.PHP_EOL;
 		echo 'xhReq.onreadystatechange = function (e) { if (xhReq.readyState === 4) { if (xhReq.status === 200) {'.PHP_EOL; ?> //info: async 1/2
@@ -1325,7 +1325,7 @@ var markers = {};
 								console.log("Error - invalid GeoJSON object: "+e.message);
 					}
 			}
-		
+
 			L.geoJson(geojsonObj, {
 				onEachFeature: function(feature, marker) {
 					if (feature.properties.text != '') {
@@ -1358,14 +1358,14 @@ var markers = {};
 				}
 			}).addTo(selectlayer);
 		} else { if (window.console) { console.error(xhReq.statusText); } } } }; xhReq.onerror = function (e) { if (window.console) { console.error(xhReq.statusText); } }; xhReq.send(null); //info: async 2/2
-  <?php } //info: end if ($id != NULL) ?>	
-	
+  <?php } //info: end if ($id != NULL) ?>
+
   <?php
   //info: set controlbox visibility 2/2
-  if ($lcontrolbox == '0') { 
-	echo "$('.leaflet-control-layers').hide();"; 
-  } else if ($lcontrolbox == '2') { 
-	echo "layersControl._expand();"; 
+  if ($lcontrolbox == '0') {
+	echo "$('.leaflet-control-layers').hide();";
+  } else if ($lcontrolbox == '2') {
+	echo "layersControl._expand();";
   }?>
   //info: load wms layer when checkbox gets checked
 	$('#advanced-settings input:checkbox').click(function(el) {
@@ -1524,7 +1524,7 @@ var markers = {};
 	$('#submit_top, #submit_bottom, #delete, #delete_layer_and_markers').click(function() {
 		unsaved = false;
 	});
-	function unloadPage(){ 
+	function unloadPage(){
 		if(unsaved){
 			return "<?php esc_attr_e('You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?','lmm'); ?>";
 		}
@@ -1567,6 +1567,24 @@ gLoader = function(){
 	}
 }();
 gLoader.autocomplete();
+//info: detect if google api returns an error
+if(window.console){
+	console.error = function(message){
+		if(message.indexOf('Google') != -1){ //info: only execute on Google console errors
+			var message_stripped = message.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
+			jQuery('#address').css('background-image', 'none');
+			jQuery('#address').removeClass('gm-err-autocomplete');
+			jQuery('#address').css('background', '#dc3232');
+			jQuery('#address').css('color', 'white');
+			jQuery('#address').css('font-weight', 'bold');
+			jQuery('#address').val('<?php esc_attr_e('An error occured - please see admin notice above for more details','lmm'); ?>');
+			jQuery('#google-api-error-admin-header').html('<strong>'+message_stripped+'</strong> (<a href="https://developers.google.com/maps/documentation/javascript/error-messages#no-api-keys" target="_blank"><?php esc_attr_e('error message details on google.com','lmm'); ?></a>)<br/>');
+			jQuery('#google-api-error-admin-header').append('<?php echo '<hr noshade size="1"/><strong>' . __('Background','lmm') . '</strong>: '; echo sprintf(__( 'Since June 22nd 2016 <a href="%1$s" target="_blank">Google requires a Google Maps API key</a> when using any Google Map service on your website.','lmm'), 'https://googlegeodevelopers.blogspot.co.at/2016/06/building-for-scale-updates-to-google.html') . ' ' . sprintf(__('Your personal API key can be obtained from the <a href="%1$s" target="_blank">Google API Console</a>.', 'lmm'), 'https://console.developers.google.com/apis/') . '<br/>' . sprintf(__('For a tutorial including screenshots on how to register a Google Maps API key <a href="%1$s" target="_blank">please click here</a>.', 'lmm'), 'https://mapsmarker.com/google-maps-api-key'); ?><br/>');
+			jQuery('#google-api-error-admin-header').append('<?php echo '<hr noshade size="1"/><strong>' . __('Solution','lmm') . '</strong>: ';echo sprintf(__('please add or verify your Google Maps API key at <a href="%1$s">Settings / Google Maps / Google Maps API</a>','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-google');?>');
+			jQuery('#google-api-error-admin-header').css('display', 'block');
+		}
+	}
+}
 /* //]]> */
 </script>
 <?php //info: check if marker exists - part 2

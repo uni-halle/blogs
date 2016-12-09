@@ -200,6 +200,9 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 	}
 	?>
 	<?php if ($first_run == 'true') { $menu_visibility = 'style="display:none;"'; } else { $menu_visibility = ''; } ?>
+	
+	<div id="google-api-error-admin-header" class="notice notice-error" style="padding:10px;margin:10px 0;display:none;"><!--placeholder--></div>
+	
 	<table cellpadding="5" cellspacing="0" class="widefat fixed" <?php echo $menu_visibility; ?>>
 	  <tr>
 		<td><div class="logo-rtl"><a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php _e('Upgrade to pro version for even more features - click here to find out how you can start a free 30-day-trial easily','lmm'); ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/logo-mapsmarker.png" width="65" height="65" alt="Leaflet Maps Marker Plugin Logo by Julia Loew, www.weiderand.net" /></a></div>
@@ -233,8 +236,8 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 		$lmm_version_old = get_option( 'leafletmapsmarker_version_before_update' );
 		$lmm_version_new = get_option( 'leafletmapsmarker_version' );
 		echo '<div style="border-radius:3px;border-color:#E6DB55;background-color:#FFFFE0;margin:10px 0 5px;padding:0 0.6em;border-style:solid;border-width:1px;">';
-		if (version_compare(phpversion(),"5.5","<")){
-			echo '<p><div style="border:2px solid red;background-color:#ffde00;padding:5px;">' . sprintf(__('Warning: your server uses the outdated PHP version %1$s, which is not updated anymore and potentially insecure!<br/>PHP version %2$s is now the recommended version for WordPress (but it does not hurt to get updated to PHP %3$s or higher already).<br/>Read more information about how you can update at %4$s','lmm'), phpversion(), '5.6', '5.6', '<a href="http://www.wpupdatephp.com/update/" target="_blank" style="text-decoration:none;">http://www.wpupdatephp.com/</a>') . '</div></p>';
+		if (version_compare(phpversion(),"5.6","<")){
+			echo '<p><div style="border:2px solid red;background-color:#ffde00;padding:5px;">' . sprintf(__('Warning: your server uses the outdated PHP version %1$s, which is not updated anymore and potentially insecure!<br/>PHP version %2$s is now the recommended version for WordPress (but it does not hurt to get updated to PHP %3$s or higher already).<br/>Read more information about how you can update at %4$s','lmm'), phpversion(), '5.6', '7.0', '<a href="http://www.wpupdatephp.com/update/" target="_blank" style="text-decoration:none;">http://www.wpupdatephp.com/</a>') . '</div></p>';
 		}
 		if ($lmm_version_old == 0) {
 			echo '<p><span style="font-weight:bold;font-size:125%;">' . sprintf(__('Leaflet Maps Marker has been successfully updated to version %1s!','lmm'), $lmm_version_new) . '</span></p>';

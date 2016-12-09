@@ -186,6 +186,10 @@ td.lmm-listmarkers-icon {
 	width: 0;
 	height: 0;
 	}
+.leaflet-overlay-pane svg {
+	-moz-user-select: none;
+	pointer-events:none; /*RH to make ToS links clickable */
+	}
 /* Leaflet controls */
 .leaflet-control {
 	position: relative;
@@ -487,3 +491,9 @@ td.lmm-listmarkers-icon {
 	font: 12px/1.4 "Helvetica Neue", Arial, Helvetica, sans-serif;
 	color:#000000 !important;
 	}
+.lmm-widget-icon {
+	border:none;
+	box-shadow:unset !important;
+	border-radius:0;
+	display:inline;
+}

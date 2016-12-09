@@ -22,11 +22,14 @@ function lmm_getLatLng($address) {
 	global $locale;
 	$protocol_handler = (substr($locale, 0, 2) == 'zh') ? 'http' : 'https'; //info: conditional ssl loading for Google js (performance issues in China)
 	$address_to_geocode = lmm_accent_folding($address);
-	$url = $protocol_handler . '://maps.googleapis.com/maps/api/geocode/xml?address=' . urlencode($address_to_geocode);
+	$google_api_key = (isset($lmm_options['google_maps_api_key']) && $lmm_options['google_maps_api_key']!='')?'&key=' . trim($lmm_options['google_maps_api_key']):'';
+	$url = $protocol_handler . '://maps.googleapis.com/maps/api/geocode/xml?address=' . urlencode($address_to_geocode) . $google_api_key;
 	$xml_raw = wp_remote_get( $url, array( 'sslverify' => false, 'timeout' => 10 ) );	
 	$xml = simplexml_load_string($xml_raw['body']);
 	$response = array();
 	$statusCode = $xml->status;
+	$error_message = $xml->error_message;
+	
 	if ( ($statusCode != false) && ($statusCode != NULL) ) {
 		if ($statusCode == 'OK') {
 			$latDom = $xml->result[0]->geometry->location->lat;
@@ -48,6 +51,7 @@ function lmm_getLatLng($address) {
 			
 			$response = array();
 			$statusCode = $xml->status;
+			$error_message = $xml->error_message;
 			
 			if ( ($statusCode != false) && ($statusCode != NULL) ) {
 				if ($statusCode == 'OK') {
@@ -65,11 +69,61 @@ function lmm_getLatLng($address) {
 					}
 				}
 			}
-		}
+		}else if($statusCode == 'REQUEST_DENIED'){ //info: if the API Key has restricted referers, try again without API key
+			$url = $protocol_handler . '://maps.googleapis.com/maps/api/geocode/xml?address=' . urlencode($address_to_geocode);
+			$xml_raw = wp_remote_get( $url, array( 'sslverify' => false, 'timeout' => 10 ) );
+			$xml = simplexml_load_string($xml_raw['body']);
+
+			$response = array();
+			$statusCode = $xml->status;
+			$error_message = $xml->error_message;
+
+			if ( ($statusCode != false) && ($statusCode != NULL) ) {
+				if ($statusCode == 'OK') {
+					$latDom = $xml->result[0]->geometry->location->lat;
+					$lonDom = $xml->result[0]->geometry->location->lng;
+					$addressDom = $xml->result[0]->formatted_address;
+					if ($latDom != NULL) {
+						$response = array (
+							'success' 	=> true,
+							'lat' 		=> $latDom,
+							'lon' 		=> $lonDom,
+							'address'	=> $addressDom
+						);
+						return $response;
+					}
+				} else if ($statusCode == 'OVER_QUERY_LIMIT') { //info: if the API Key has restricted referers, wait 1.5sec and try again once - without Google Maps API key added
+					usleep(1500000);
+					$xml_raw = wp_remote_get( $url, array( 'sslverify' => false, 'timeout' => 10 ) );
+					$xml = simplexml_load_string($xml_raw['body']);
+					
+					$response = array();
+					$statusCode = $xml->status;
+					$error_message = $xml->error_message;
+
+					if ( ($statusCode != false) && ($statusCode != NULL) ) {
+						if ($statusCode == 'OK') {
+							$latDom = $xml->result[0]->geometry->location->lat;
+							$lonDom = $xml->result[0]->geometry->location->lng;
+							$addressDom = $xml->result[0]->formatted_address;
+							if ($latDom != NULL) {
+								$response = array (
+									'success' 	=> true,
+									'lat' 		=> $latDom,
+									'lon' 		=> $lonDom,
+									'address'	=> $addressDom
+								);
+								return $response;
+							}
+						}
+					}					
+				}
+			}
+		} 
 	}
 	$response = array (
 		'success' => false,
-		'message' => $statusCode
+		'message' => $statusCode . ' - ' . $error_message
 	);
 	return $response;
 }
