@@ -5,13 +5,13 @@
 Plugin Name:  Viper's Video Quicktags
 Plugin URI:   http://www.viper007bond.com/wordpress-plugins/vipers-video-quicktags/
 Description:  Easily embed videos from various video websites such as YouTube, DailyMotion, and Vimeo into your posts.
-Version:      6.5.2
+Version:      6.6.0
 Author:       Viper007Bond
 Author URI:   http://www.viper007bond.com/
 
 **************************************************************************
 
-Copyright (C) 2006-2012 Viper007Bond
+Copyright (C) 2006-2016 Viper007Bond
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **************************************************************************/
 
 class VipersVideoQuicktags {
-	var $version = '6.5.2';
+	var $version = '6.6.0';
 	var $settings = array();
 	var $defaultsettings = array();
 	var $swfobjects = array();
@@ -62,7 +62,7 @@ class VipersVideoQuicktags {
 				}
 				update_option('active_plugins', $current);
 
-				add_action( 'admin_notices', array(&$this, 'WPVersionTooOld') );
+				add_action( 'admin_notices', array($this, 'WPVersionTooOld') );
 
 				return;
 			}
@@ -275,58 +275,59 @@ class VipersVideoQuicktags {
 		}
 
 		// Register general hooks
-		add_action( 'admin_menu', array(&$this, 'RegisterSettingsPage') );
-		add_filter( 'plugin_action_links', array(&$this, 'AddPluginActionLink'), 10, 2 );
-		add_action( 'admin_post_vvqsettings', array(&$this, 'POSTHandler') );
-		add_action( 'wp_head', array(&$this, 'Head') );
-		add_action( 'admin_head', array(&$this, 'Head') );
-		add_action( 'wp_print_footer_scripts', array(&$this, 'maybe_enqueue_swfobject'), 5 );
-		add_action( 'wp_footer', array(&$this, 'SWFObjectCalls'), 50 );
+		add_action( 'all_admin_notices', array( $this, 'all_admin_notices_discontinued_plugin' ) );
+		add_action( 'admin_menu', array($this, 'RegisterSettingsPage') );
+		add_filter( 'plugin_action_links', array($this, 'AddPluginActionLink'), 10, 2 );
+		add_action( 'admin_post_vvqsettings', array($this, 'POSTHandler') );
+		add_action( 'wp_head', array($this, 'Head') );
+		add_action( 'admin_head', array($this, 'Head') );
+		add_action( 'wp_print_footer_scripts', array($this, 'maybe_enqueue_swfobject'), 5 );
+		add_action( 'wp_footer', array($this, 'SWFObjectCalls'), 50 );
 		add_filter( 'widget_text', 'do_shortcode', 11 ); // Videos in the text widget
 
 		// Hide the donate button on WPMU installs as admins probably don't want it there
-		if ( !empty($wpmu_version) ) add_filter( 'vvq_donatebutton', array(&$this, 'ReturnFalse'), 5 );
+		if ( !empty($wpmu_version) ) add_filter( 'vvq_donatebutton', array($this, 'ReturnFalse'), 5 );
 
 		// Register shortcodes
-		add_shortcode( 'youtube', array(&$this, 'shortcode_youtube') );
-		add_shortcode( 'googlevideo', array(&$this, 'shortcode_googlevideo') );
-		add_shortcode( 'gvideo', array(&$this, 'shortcode_googlevideo') ); // Not the preferred format
-		add_shortcode( 'dailymotion', array(&$this, 'shortcode_dailymotion') );
-		add_shortcode( 'vimeo', array(&$this, 'shortcode_vimeo') );
-		add_shortcode( 'veoh', array(&$this, 'shortcode_veoh') );
-		add_shortcode( 'viddler', array(&$this, 'shortcode_viddler') );
-		add_shortcode( 'metacafe', array(&$this, 'shortcode_metacafe') );
-		add_shortcode( 'blip.tv', array(&$this, 'shortcode_bliptv') );
-		add_shortcode( 'bliptv', array(&$this, 'shortcode_bliptv') ); // Not the preferred format
-		add_shortcode( 'flickr video', array(&$this, 'shortcode_flickrvideo') ); // WordPress.com
-		add_shortcode( 'flickrvideo', array(&$this, 'shortcode_flickrvideo') ); // Normal format
-		add_shortcode( 'ifilm', array(&$this, 'shortcode_ifilm') );
-		add_shortcode( 'spike', array(&$this, 'shortcode_ifilm') );
-		add_shortcode( 'myspace', array(&$this, 'shortcode_myspace') );
-		add_shortcode( 'stage6', array(&$this, 'shortcode_stage6') ); // Stage6 = dead, but we still need to handle it
-		add_shortcode( 'flv', array(&$this, 'shortcode_flv') );
-		add_shortcode( 'quicktime', array(&$this, 'shortcode_quicktime') );
-		add_shortcode( 'flash', array(&$this, 'shortcode_flash') );
-		add_shortcode( 'videofile', array(&$this, 'shortcode_videofile') );
-		add_shortcode( 'video', array(&$this, 'shortcode_videofile') ); // Legacy
-		add_shortcode( 'avi', array(&$this, 'shortcode_videofile') ); // Legacy
-		add_shortcode( 'mpeg', array(&$this, 'shortcode_videofile') ); // Legacy
-		add_shortcode( 'wmv', array(&$this, 'shortcode_videofile') ); // Legacy
+		add_shortcode( 'youtube', array($this, 'shortcode_youtube') );
+		add_shortcode( 'googlevideo', array($this, 'shortcode_googlevideo') );
+		add_shortcode( 'gvideo', array($this, 'shortcode_googlevideo') ); // Not the preferred format
+		add_shortcode( 'dailymotion', array($this, 'shortcode_dailymotion') );
+		add_shortcode( 'vimeo', array($this, 'shortcode_vimeo') );
+		add_shortcode( 'veoh', array($this, 'shortcode_veoh') );
+		add_shortcode( 'viddler', array($this, 'shortcode_viddler') );
+		add_shortcode( 'metacafe', array($this, 'shortcode_metacafe') );
+		add_shortcode( 'blip.tv', array($this, 'shortcode_bliptv') );
+		add_shortcode( 'bliptv', array($this, 'shortcode_bliptv') ); // Not the preferred format
+		//add_shortcode( 'flickr video', array($this, 'shortcode_flickrvideo') ); // WordPress.com
+		add_shortcode( 'flickrvideo', array($this, 'shortcode_flickrvideo') ); // Normal format
+		add_shortcode( 'ifilm', array($this, 'shortcode_ifilm') );
+		add_shortcode( 'spike', array($this, 'shortcode_ifilm') );
+		add_shortcode( 'myspace', array($this, 'shortcode_myspace') );
+		add_shortcode( 'stage6', array($this, 'shortcode_stage6') ); // Stage6 = dead, but we still need to handle it
+		add_shortcode( 'flv', array($this, 'shortcode_flv') );
+		add_shortcode( 'quicktime', array($this, 'shortcode_quicktime') );
+		add_shortcode( 'flash', array($this, 'shortcode_flash') );
+		add_shortcode( 'videofile', array($this, 'shortcode_videofile') );
+		add_shortcode( 'video', array($this, 'shortcode_videofile') ); // Legacy
+		add_shortcode( 'avi', array($this, 'shortcode_videofile') ); // Legacy
+		add_shortcode( 'mpeg', array($this, 'shortcode_videofile') ); // Legacy
+		add_shortcode( 'wmv', array($this, 'shortcode_videofile') ); // Legacy
 
 		// Anarchy Media Plugin / Kimili Flash Embed support but only if those plugins aren't enabled
 		if ( !class_exists('KimiliFlashEmbed') && !function_exists('kml_flashembed') && !isset($shortcode_tags['kml_flashembed']) )
-			add_shortcode( 'kml_flashembed', array(&$this, 'shortcode_flash') );
+			add_shortcode( 'kml_flashembed', array($this, 'shortcode_flash') );
 
 		// VideoPress support but only if the official plugin isn't installed
 		if ( !function_exists('videopress_shortcode') && !isset($shortcode_tags['wpvideo']) )
-			add_shortcode( 'wpvideo', array(&$this, 'shortcode_videopress') );
+			add_shortcode( 'wpvideo', array($this, 'shortcode_videopress') );
 
 		// Register other scripts and styles
 		wp_register_script( 'qtobject', plugins_url( 'resources/qtobject.js', __FILE__ ), array(), '1.0.2' );
 		if ( is_admin() ) {
 			// Settings page only
 			if ( isset($_GET['page']) && 'vipers-video-quicktags' == $_GET['page'] ) {
-				add_action( 'admin_head', array(&$this, 'StyleTweaks' ) );
+				add_action( 'admin_head', array($this, 'StyleTweaks' ) );
 
 				wp_enqueue_script( 'swfobject' );
 
@@ -336,36 +337,36 @@ class VipersVideoQuicktags {
 
 			// Editor pages only
 			if ( in_array( basename($_SERVER['PHP_SELF']), apply_filters( 'vvq_editor_pages', array('post-new.php', 'page-new.php', 'post.php', 'page.php') ) ) ) {
-				add_action( 'admin_footer', array(&$this, 'OutputjQueryDialogDiv') );
+				add_action( 'admin_footer', array($this, 'OutputjQueryDialogDiv') );
 
 				wp_enqueue_script( 'jquery-ui-dialog' );
 				wp_enqueue_style( 'wp-jquery-ui-dialog' );
 
 				// Register editor button hooks
-				add_filter( 'tiny_mce_version', array(&$this, 'tiny_mce_version') );
-				add_filter( 'mce_external_plugins', array(&$this, 'mce_external_plugins') );
-				add_action( 'edit_form_advanced', array(&$this, 'AddQuicktagsAndFunctions') );
-				add_action( 'edit_page_form', array(&$this, 'AddQuicktagsAndFunctions') );
+				add_filter( 'tiny_mce_version', array($this, 'tiny_mce_version') );
+				add_filter( 'mce_external_plugins', array($this, 'mce_external_plugins') );
+				add_action( 'edit_form_advanced', array($this, 'AddQuicktagsAndFunctions') );
+				add_action( 'edit_page_form', array($this, 'AddQuicktagsAndFunctions') );
 				if ( 1 == $this->settings['tinymceline'] ) {
-					add_filter( 'mce_buttons', array(&$this, 'mce_buttons') );
+					add_filter( 'mce_buttons', array($this, 'mce_buttons') );
 				} else {
-					add_filter( 'mce_buttons_' . $this->settings['tinymceline'], array(&$this, 'mce_buttons') );
+					add_filter( 'mce_buttons_' . $this->settings['tinymceline'], array($this, 'mce_buttons') );
 				}
 
 				// Adding buttons to the HTML editor in WordPress 3.3+
 				if ( version_compare( $wp_version, '3.3', '>=' ) ) {
-					add_action( 'admin_footer-post.php', array( &$this, 'quicktag_buttons' ) );
-					add_action( 'admin_footer-post-new.php', array( &$this, 'quicktag_buttons' ) );
+					add_action( 'admin_footer-post.php', array( $this, 'quicktag_buttons' ) );
+					add_action( 'admin_footer-post-new.php', array( $this, 'quicktag_buttons' ) );
 				}
 			}
 
 			// Display a warning if FLV button is showing but player isn't installed
 			if ( 1 == $this->settings['flv']['button'] && current_user_can( 'manage_options' ) && ! $this->is_jw_flv_player_installed() ) {
-				add_action( 'admin_notices', array( &$this, 'admin_notices_install_jw_player_warning' ) );
+				add_action( 'admin_notices', array( $this, 'admin_notices_install_jw_player_warning' ) );
 			}
 		}
 		if ( 1 == $this->settings['quicktime']['dynamicload'] )
-			add_action( 'wp_head', array(&$this, 'MaybeEnqueueQuicktimeJavascript'), 1 );
+			add_action( 'wp_head', array($this, 'MaybeEnqueueQuicktimeJavascript'), 1 );
 		else
 			wp_enqueue_script( 'qtobject' );
 
@@ -424,6 +425,44 @@ class VipersVideoQuicktags {
 	}
 
 
+	/**
+	 * This plugin has been discontinued.
+	 *
+	 * If the current user can install plugins, display a message on all admin pages.
+	 * If they can't, only display a message on the plugin management screen and the VVQ settings page.
+	 */
+	public function all_admin_notices_discontinued_plugin() {
+		global $hook_suffix;
+
+		if ( current_user_can( 'install_plugins' ) ) {
+			echo '<div class="notice notice-warning"><p>';
+			printf(
+				__( '<strong>A message from the developer of Viper\'s Video Quicktags:</strong> My plugin, the one you are using, has been <strong>discontinued</strong>. It is recommended that you install <a href="%1$s">the migration plugin</a> which will allow you to disable and remove Viper\'s Video Quicktags without embeds in old posts breaking. For further details, please see <a href="%2$s">this post on my blog</a>.', 'vipers-video-quicktags' ),
+				add_query_arg(
+					array_map( 'urlencode', array(
+						's'    => "Viper's Video Quicktags Migrator",
+						'tab'  => 'search',
+						'type' => 'term',
+					) ),
+					admin_url( 'plugin-install.php' )
+				),
+				'http://www.viper007bond.com/2016/07/04/vipers-video-quicktags-wordpress-plugin-discontinued/'
+			);
+			echo "</p></div>\n";
+		}
+
+		// This is mostly for multisite since normally anyone who could view these pages could also install plugins
+		elseif ( in_array( $hook_suffix, array( 'settings_page_vipers-video-quicktags', 'plugins.php' ) ) ) {
+			echo '<div class="notice notice-warning"><p>';
+			printf(
+				__( '<strong>A message from the developer of Viper\'s Video Quicktags:</strong> My plugin, the one you are using, has been <strong>discontinued</strong>. Please contact the person that manages this website and direct them to <a href="%s">this post on my blog</a>.', 'vipers-video-quicktags' ),
+				'http://www.viper007bond.com/2016/07/04/vipers-video-quicktags-wordpress-plugin-discontinued/'
+			);
+			echo "</p></div>\n";
+		}
+	}
+
+
 	// This function gets called when the minimum WordPress version isn't met
 	function WPVersionTooOld() {
 		echo '<div class="error"><p>' . sprintf( __( '<strong>Viper\'s Video Quicktags</strong> requires WordPress 2.8 or newer. Please <a href="%1$s">upgrade</a>! By not upgrading, your blog is <a href="%2$s">likely to be hacked</a>.', 'vipers-video-quicktags' ), 'http://codex.wordpress.org/Upgrading_WordPress', 'http://wordpress.org/development/2009/09/keep-wordpress-secure/' ) . "</p></div>\n";
@@ -432,7 +471,7 @@ class VipersVideoQuicktags {
 
 	// Register the settings page that allows plugin configuration
 	function RegisterSettingsPage() {
-		add_options_page( __("Viper's Video Quicktags Configuration", 'vipers-video-quicktags'), __('Video Quicktags', 'vipers-video-quicktags'), 'manage_options', 'vipers-video-quicktags', array(&$this, 'SettingsPage') );
+		add_options_page( __("Viper's Video Quicktags Configuration", 'vipers-video-quicktags'), __('Video Quicktags', 'vipers-video-quicktags'), 'manage_options', 'vipers-video-quicktags', array($this, 'SettingsPage') );
 	}
 
 
