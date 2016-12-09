@@ -1,0 +1,366 @@
+/*
+Theme Name: BV Accessible
+Description: Basiert auf Accessible Twenty Ten. http://accessible.sprungmarker.de/2011/01/accessible-1-0/
+Author: Julian Hirt
+Template: twentyten
+Version: 2.1
+Tags: editor-style, rtl-language-support, microformats, translation-ready, sticky-post, threaded-comments, custom-background, custom-header, white, blue, black
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU 
+General Public License version 2, as published by the Free Software Foundation.  You may NOT assume 
+that you can use any other version of the GPL.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
+even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+You should have received a copy of the GNU General Public License along with this program; if not, write 
+to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+*/
+
+@import url("../twentyten/style.css");
+
+/*********************************/
+/* Accessible Colors WCAG AAA + Accessible Link Focus */
+/* .focus is missing in Twenty Ten */
+/* .hover and .active is missing now and then */
+/*********************************/
+
+body,
+#site-generator a,
+.page-title a:link,
+.page-title a:visited,
+.navigation,
+.navigation a:link,
+.navigation a:visited,
+.entry-meta,
+.entry-meta a:link,
+.entry-utility,
+.entry-utility a,
+.comment-meta a:link,
+.comment-meta a:visited,
+.reply a:link,
+a.comment-edit-link:link,
+textarea, input,
+#respond label,
+#respond .form-allowed-tags,
+.entry-content label,
+#content thead th,
+#content .wp-caption p.wp-caption-text,
+#content .gallery .gallery-caption,
+#comments .pingback p {
+    color: #575757;
+}
+
+a:link {
+    color: #0052A4;
+}
+a:visited {
+    color: #552273;
+}
+
+.sticky .entry-content a:link {
+    color: #23438A;
+}
+
+.sticky .entry-meta,
+.sticky .entry-meta a:link,
+.sticky .entry-utility,
+.sticky .entry-utility a:link,
+.widget_search #s {
+    color: #4F4F4F;
+}
+
+a:hover,
+.page-title a:hover,
+.page-link a:hover,
+.navigation a:hover,
+.entry-meta a:hover,
+.entry-utility a:hover,
+.entry-title a:hover,
+.comment-meta a:hover,
+.reply a:hover,
+a.comment-edit-link:hover {
+    background: #fff;
+    color: #B1002C;
+    text-decoration: underline;
+}
+
+a:focus,
+a:active,
+#site-generator a:focus,
+#site-generator a:active,
+#site-info a:focus,
+#site-info a:active,
+.page-title a:focus,
+.page-title a:active,
+.page-link a:focus,
+.page-link a:active,
+#access .menu a:focus,
+#access .menu a:active,
+.navigation a:focus,
+.navigation a:active,
+.entry-meta a:focus,
+.entry-meta a:active,
+.entry-utility a:focus,
+.entry-utility a:active,
+.entry-title a:focus, 
+.entry-title a:active,
+.sticky .entry-content a:focus,
+.sticky .entry-content a:active,
+.sticky .entry-meta a:focus,
+.sticky .entry-meta a:active,
+.sticky .entry-utility a:focus,
+.sticky .entry-utility a:active,
+.comment-meta a:focus,
+.comment-meta a:active,
+.reply a:focus,
+.reply a:active,
+a.comment-edit-link:focus,
+a.comment-edit-link:active,
+.widget-area a:focus,
+.widget-area a:active {
+    background: #575757;
+    color: #fff;
+    text-decoration: underline;
+}
+
+#site-title a:focus,
+#site-title a:hover,
+#site-title a:active {
+    background: #fff;
+    color: #000;
+    text-decoration: underline;
+}
+
+#site-info a:hover,
+#access .menu a:focus,
+#access .menu a:hover,
+#access .menu a:active,
+#wp-calendar a,
+.current_page_item a,
+.widget-area .current_page_item a,
+#access .current_page_item a,
+#access .current-menu-item a {
+    text-decoration: underline;
+}
+
+#wp-calendar tbody td {
+    background: #F9F9F9;
+    color: #333;
+}
+
+input[type=text]:focus,
+textarea:focus {
+    background: #F2F7FC;
+}
+
+#respond .required {
+	color: #B1002C;
+	font-weight: bold;
+}
+
+/* Update */
+
+#content .wp-caption {
+    background:#f9f9f9;
+}
+
+/* Sticky Links - Paging */
+.home .sticky .page-link a {
+    background: #D9E8F7 none;
+}
+.sticky .entry-content a:link,
+.sticky .entry-content a:visited,
+.sticky .entry-content a:hover,
+.sticky .entry-content a:active{
+    color: #14274F;
+}
+
+.sticky .entry-content a:focus {
+    color: #000;
+    background: #14274F;
+}
+/* Nav Menue more levels */
+#access ul ul a {
+    background: #000;
+}
+
+/* Tables: Head */
+#content tr th {
+    color: #575757;
+}
+
+/* Author Info: Link */
+#author-link a {
+    color: #004F9F;
+}
+
+#author-link a:active,
+#author-link a:focus{
+    color: #fff;
+}
+
+/* Errors */
+.entry-content .page-link {
+    clear: both; 
+}
+
+/*********************************/
+/* Skip link visible on keyboard focus
+* Additional skip links back to top after content and footer
+*/
+/*********************************/
+
+/* correction of screen-reader-text (hidden elements) */
+.screen-reader-text {
+    display:inline;
+    left: -9999px;
+    position:absolute;
+    top:auto;
+}
+
+/* skip link header */
+#access .skip-link {
+    position: static;
+}
+
+#access .skip-link a {
+    left:-99999px;
+    position:absolute;
+    top:auto;
+}
+
+#access .skip-link a:focus,
+#access .skip-link a:active {
+    background: #575757;
+    color: #fff;
+    line-height: 140%;
+    padding: 4px 4px 4px 22px;
+    position: static;
+    text-decoration: underline;
+    font-family: "Helvetica Neue",Arial,Helvetica,"Nimbus Sans L",sans-serif;
+}
+
+/* adding skip links below content and footer */
+
+/* layout correction for skip link after content */
+#nav-below {
+    margin-top: 0;
+}
+
+#site-generator .skip-bottom:focus,
+#site-generator .skip-bottom:active,
+.skip-content:focus,
+.skip-content:active {
+    background: #575757;
+    color: #fff;
+    float:right;
+    font-family: "Helvetica Neue",Arial,Helvetica,"Nimbus Sans L",sans-serif;
+    font-size: 75%;
+    font-style: normal;
+    padding-left: 0;
+    position: static;
+    text-decoration: underline;
+    line-height: 140%;
+}
+
+.skip-content:focus,
+.skip-content:active {
+    margin-bottom: 8px;
+}
+
+#site-generator .skip-bottom:focus,
+#site-generator .skip-bottom:active {
+    font-size: 100%;
+}
+
+/*********************************/
+/* Smaller things as correction header img for IE 9 */
+/*********************************/
+#branding img {
+    float: left;
+}
+
+/*********************************/
+/* Zooming Features: only text and page zoom */
+/*********************************/
+
+#access {background:#575757}
+#branding img {border-top:#575757}
+#colophon {
+    border-top: 0px solid #575757;
+    margin-top: -4px;
+    overflow: hidden;
+    padding: 18px 0;
+}
+#site-generator a {background:none}
+
+#site-generator > a:nth-child(2){color:#FFFFFF}
+
+#access a {
+    color: #FFFFFF;
+    display: block;
+    line-height: 38px;
+    padding: 0 10px;
+    text-decoration: none;
+}
+#content .entry-title {
+    color: #B1002C;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1.3em;
+    margin-bottom: 0;
+}
+
+#site-title {
+    float: left;
+    font-size: 30px;
+    line-height: 36px;
+    margin: 0 0 18px 0;
+    width: 700px;
+}
+h3#comments-title, h3#reply-title, #access .menu, #access div.menu ul, #cancel-comment-reply-link, .form-allowed-tags, #site-info, #site-title, #wp-calendar, .comment-meta, .comment-body tr th, .comment-body thead th, .entry-content label, .entry-content tr th, .entry-content thead th, .entry-meta, .entry-title, .entry-utility, #respond label, .navigation, .page-title, .pingback p, .reply, .widget-title, .wp-caption-text {
+    font-family: "Verdana", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+}
+a:link {
+    color: #B1002C; 
+}
+a:visited {
+    color: #B1002C;
+}
+#access ul ul a {
+    background: #575757;
+}
+#branding img {
+    
+    border-bottom: 0px solid #000;
+    display: block;
+    float: left;
+}
+
+#access .menu-header, div.menu {
+    font-size: 14px;
+    margin-left: 12px;
+    width: 928px;
+}
+<div id="footer" role="contentinfo">
+		<div id="colophon">
+
+<h2 class="screen-reader-text">More informations</h2>
+
+			<div id="site-info">
+				<a href="https://bewegung-verbindet.de/" title="Bewegung verbindet" rel="home">
+					Bewegung verbindet				</a>
+			</div><!-- #site-info -->
+
+			<div id="site-generator">
+				<a href="#wrapper" class="skip-bottom screen-reader-text">Nach oben</a>				<a href="https://wordpress.org/" title="Semantic Personal Publishing Platform">Proudly powered by WordPress.</a>
+			</div><!-- #site-generator -->
+
+		</div><!-- #colophon -->
+	</div>
+
+

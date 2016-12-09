@@ -1,0 +1,367 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: sprungmarker <info@sprungmarker.de>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+
+#. Text in function
+#: twentyten_accessible/loop.php:159
+msgid "% Comments"
+msgstr "% Kommentare"
+
+#. Text in function
+#: twentyten_accessible/functions.php:316
+msgid "%1$s at %2$s"
+msgstr "%1$s um %2$s"
+
+#. Text in function
+#: twentyten_accessible/functions.php:308
+msgid "%s <span class=\"says\">says:</span>"
+msgstr "%s <span class=\"says\">sagt:</span>"
+
+#. Text in function
+#: twentyten_accessible/functions.php:318
+#: twentyten_accessible/functions.php:335
+msgid "(Edit)"
+msgstr "(bearbeiten)"
+
+#. Text in function
+#: twentyten_accessible/loop.php:159
+msgid "1 Comment"
+msgstr "1 Kommentar"
+
+#. Text in function
+#: twentyten_accessible/attachment.php:39
+msgid "<span class=\"%1$s\">By</span> %2$s"
+msgstr "<span class=\"%1$s\">Von</span> %2$s"
+
+#. Text in function
+#: twentyten_accessible/loop.php:146
+msgid "<span class=\"%1$s\">Posted in</span> %2$s"
+msgstr "<span class=\"%1$s\">Veröffentlicht unter</span> %2$s"
+
+#. Text in function
+#: twentyten_accessible/attachment.php:39
+msgid "<span class=\"%1$s\">Published</span> %2$s"
+msgstr "<span class=\"%1$s\">Publiziert</span> %2$s"
+
+#. Text in function
+#: twentyten_accessible/loop.php:155
+msgid "<span class=\"%1$s\">Tagged</span> %2$s"
+msgstr "<span class=\"%1$s\">Verschlagwortet mit</span> %2$s"
+
+#. Text in function
+#: twentyten_accessible/attachment.php:18
+msgid "<span class=\"meta-nav\">&larr;</span> %s"
+msgstr "<span class=\"meta-nav\">&larr;</span> %s"
+
+#. Text in function
+#: twentyten_accessible/comments.php:60
+msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
+msgstr "<span class=\"meta-nav\">&larr;</span> Ältere Kommentare"
+
+#. Text in function
+#: twentyten_accessible/loop.php:25
+#: twentyten_accessible/loop.php:173
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Ältere Beiträge"
+
+#. Text in function
+#: twentyten_accessible/single.php:40
+#: twentyten_accessible/author.php:37
+msgid "About %s"
+msgstr "Über %s"
+
+#. Text in echo
+#: twentyten_accessible/loop.php:35
+msgid "Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post."
+msgstr "Entschuldige bitte, aber in diesem Archiv wurden keine Ergebnisse gefunden. Vielleicht hift die Suchfunktion ein Ergebniss zu finden."
+
+#. Text in echo
+#: twentyten_accessible/404.php:18
+msgid "Apologies, but the page you requested could not be found. Perhaps searching will help."
+msgstr "Entschuldige bitte, aber die Seite konnte nicht gefunden werden. Vielleicht hilft die Suchfunktion ein Ergebnis zu finden."
+
+#. Text in echo
+#: twentyten_accessible/sidebar.php:28
+msgid "Archives"
+msgstr "Archive"
+
+#. Text in function
+#: twentyten_accessible/author.php:27
+msgid "Author Archives: %s"
+msgstr "Archiv des Autors: %s"
+
+#. Text in function
+#: twentyten_accessible/functions.php:202
+msgid "Berries"
+msgstr "Beeren"
+
+#. Text in echo
+#: twentyten_accessible/archive.php:39
+msgid "Blog Archives"
+msgstr "Blog-Archive"
+
+#. Text in function
+#: twentyten_accessible/category.php:15
+msgid "Category Archives: %s"
+msgstr "Archiv der Kategorie: %s"
+
+#. Text in function
+#: twentyten_accessible/functions.php:202
+msgid "Cherry Blossoms"
+msgstr "Kirschblüten"
+
+#. Text in echo
+#: twentyten_accessible/comments.php:72
+msgid "Comments are closed."
+msgstr "Die Kommentarfunktion ist geschlossen."
+
+#. Text in function
+#: twentyten_accessible/functions.php:202
+msgid "Concave"
+msgstr "Konkav"
+
+#. Text in function
+#: twentyten_accessible/attachment.php:100
+#: twentyten_accessible/loop.php:138
+#: twentyten_accessible/functions.php:202
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Weiterlesen <span class=\"meta-nav\">&rarr;</span>"
+
+#. Text in function
+#: twentyten_accessible/archive.php:33
+msgid "Daily Archives: <span>%s</span>"
+msgstr "Tages-Archive: <span>%s</span>"
+
+#. Text in function
+#: twentyten_accessible/attachment.php:60
+#: twentyten_accessible/attachment.php:107
+#: twentyten_accessible/single.php:53
+#: twentyten_accessible/onecolumn-page.php:27
+#: twentyten_accessible/page.php:28
+#: twentyten_accessible/loop.php:160
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#. Text in function
+#: twentyten_accessible/functions.php:202
+msgid "Fern"
+msgstr "Farn"
+
+#. Text in function
+#: twentyten_accessible/functions.php:202
+msgid "Forest Floor"
+msgstr "Waldboden"
+
+#. Text in function
+#: twentyten_accessible/attachment.php:39
+msgid "Full size is %s pixels"
+msgstr "Die gesamte Größe beträgt %s Pixel"
+
+#. Text in echo
+#: twentyten_accessible/header.php:66
+msgid "Home"
+msgstr "Startseite"
+
+#. Text in function
+#: twentyten_accessible/functions.php:202
+msgid "Inkwell"
+msgstr "Tintenfass"
+
+#. Text in function
+#: twentyten_accessible/loop.php:159
+msgid "Leave a comment"
+msgstr "Hinterlasse einen Kommentar"
+
+#. Text in function
+#: twentyten_accessible/attachment.php:39
+msgid "Link to full-size image"
+msgstr "Link zum Bild in voller Grösse"
+
+#. Text in echo
+#: twentyten_accessible/sidebar.php:35
+msgid "Meta"
+msgstr "Meta"
+
+#. Text in function
+#: twentyten_accessible/archive.php:35
+msgid "Monthly Archives: <span>%s</span>"
+msgstr "Monats-Archive: <span>%s</span>"
+
+#. Text in echo
+#: twentyten_accessible/loop.php:92
+msgid "More Galleries"
+msgstr "Weitere Gallerien"
+
+#. Text in function
+#: twentyten_accessible/comments.php:61
+msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Neuere Kommentare <span class=\"meta-nav\">&rarr;</span>"
+
+#. Text in function
+#: twentyten_accessible/loop.php:26
+#: twentyten_accessible/loop.php:174
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Neuere Beiträge <span class=\"meta-nav\">&rarr;</span>"
+
+#. Text in echo
+#: twentyten_accessible/404.php:16
+#: twentyten_accessible/loop.php:33
+msgid "Not Found"
+msgstr "Nichts gefunden"
+
+#. Text in echo
+#: twentyten_accessible/search.php:26
+msgid "Nothing Found"
+msgstr "Es konnte nichts gefunden werden."
+
+#. Text in function
+#: twentyten_accessible/header.php:15
+msgid "Page %s"
+msgstr "Seite %s"
+
+#. Text in function
+#: twentyten_accessible/attachment.php:101
+#: twentyten_accessible/single.php:31
+#: twentyten_accessible/onecolumn-page.php:26
+#: twentyten_accessible/page.php:27
+#: twentyten_accessible/loop.php:139
+msgid "Pages:"
+msgstr "Seiten:"
+
+#. Text in function
+#: twentyten_accessible/functions.php:202
+msgid "Path"
+msgstr "Pfad"
+
+#. Text in function
+#: twentyten_accessible/loop.php:62
+#: twentyten_accessible/loop.php:82
+#: twentyten_accessible/loop.php:126
+msgid "Permalink to %s"
+msgstr "Permalink zu %s"
+
+#. Text in echo
+#: twentyten_accessible/functions.php:335
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#. Text in function
+#: twentyten_accessible/functions.php:202
+msgid "Primary Navigation"
+msgstr "Primäre Navigation"
+
+#. Text in function
+#: twentyten_accessible/footer.php:35
+msgid "Proudly powered by %s."
+msgstr "Proudly powered by %s."
+
+#. Text in function
+#: twentyten_accessible/attachment.php:18
+msgid "Return to %s"
+msgstr "Zurück zu %s"
+
+#. Text in function
+#: twentyten_accessible/search.php:16
+msgid "Search Results for: %s"
+msgstr "Suchergebnisse für: %s"
+
+#. Text in echo
+#: twentyten_accessible/footer.php:34
+msgid "Semantic Personal Publishing Platform"
+msgstr "Semantic Personal Publishing Platform"
+
+#. Text in echo
+#: twentyten_accessible/sidebar.php:12
+#: twentyten_accessible/sidebar.php:52
+msgid "Skip"
+msgstr "Überspringen"
+
+#. Text in echo
+#: twentyten_accessible/header.php:58
+msgid "Skip to content"
+msgstr "Direkt zum Inhalt"
+
+#. Text in echo
+#: twentyten_accessible/header.php:58
+msgid "Skip to navigation"
+msgstr "Direkt zur Navigation"
+
+#. Text in echo
+#: twentyten_accessible/index.php:28
+#: twentyten_accessible/footer.php:43
+#: twentyten_accessible/attachment.php:114
+#: twentyten_accessible/single.php:65
+#: twentyten_accessible/onecolumn-page.php:34
+#: twentyten_accessible/search.php:33
+#: twentyten_accessible/archive.php:56
+#: twentyten_accessible/404.php:22
+#: twentyten_accessible/category.php:29
+#: twentyten_accessible/tag.php:26
+#: twentyten_accessible/page.php:35
+#: twentyten_accessible/author.php:56
+#: twentyten_accessible/sidebar-footer.php:25
+msgid "Skip to top"
+msgstr "Nach oben"
+
+#. Text in echo
+#: twentyten_accessible/search.php:28
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr "Entschuldige, aber es konnte nichts gefunden werden. Versuche es mit anderen Schlüsselwörtern erneut."
+
+#. Text in function
+#: twentyten_accessible/functions.php:202
+msgid "Sunset"
+msgstr "Sonnenuntergang"
+
+#. Text in function
+#: twentyten_accessible/tag.php:15
+msgid "Tag Archives: %s"
+msgstr "Schlagwort-Archive: %s"
+
+#. Text in function
+#: twentyten_accessible/loop.php:82
+msgid "This gallery contains <a %1$s>%2$s photos</a>."
+msgstr "Die Gallerie enthält <a %1$s>%2$s Photos</a>."
+
+#. Text in echo
+#: twentyten_accessible/comments.php:18
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "Dieser Beitrag ist passwortgeschützt. Um Kommentare anschauen zu können musst du das Passwort angeben."
+
+#. Text in function
+#: twentyten_accessible/attachment.php:39
+msgid "View all posts by %s"
+msgstr "Zeige alle Beiträge von %s"
+
+#. Text in function
+#: twentyten_accessible/single.php:44
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Zeige alle Beiträge von %s <span class=\"meta-nav\">&rarr;</span>"
+
+#. Text in echo
+#: twentyten_accessible/loop.php:92
+msgid "View posts in the Gallery category"
+msgstr "Zeige Beiträge aus der Gallerie-Kategorie"
+
+#. Text in function
+#: twentyten_accessible/archive.php:37
+msgid "Yearly Archives: <span>%s</span>"
+msgstr "Jahres-Archive: <span>%s</span>"
+
+#. Text in echo
+#: twentyten_accessible/functions.php:311
+msgid "Your comment is awaiting moderation."
+msgstr "Dein Kommentar muss noch moderiert werden."
+
+#. Text in function
+#: twentyten_accessible/footer.php:33
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+

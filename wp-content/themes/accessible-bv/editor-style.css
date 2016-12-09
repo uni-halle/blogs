@@ -1,0 +1,33 @@
+/*
+Theme Name: Accessible
+Theme URI: http://sprungmarker.de/
+Description: Accessible child for the Wordpress 2010 default theme.
+Author: Sylvia Egger
+Author URI: http://sprungmarker.de/
+Template: twentyten
+Version: 1.0
+Tags: child-theme, twentyten, accessible, wcag, wcag 2.0, bitv
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU 
+General Public License version 2, as published by the Free Software Foundation.  You may NOT assume 
+that you can use any other version of the GPL.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
+even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+You should have received a copy of the GNU General Public License along with this program; if not, write 
+to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+*/
+
+/* Styles for the TinyMCE plugin MCE Accessible Language Change to make the language change visible.
+  If you have no editor-style.css the plugin will provide the styles */
+
+span[lang],
+.lang {
+    background: #f8f8f8;
+    border: 1px solid #d2d0ce;
+    padding: 2px;
+}
