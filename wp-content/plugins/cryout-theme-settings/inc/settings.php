@@ -17,6 +17,12 @@
 			<div class="error"><p>
 			<?php
 				switch ($this->status):
+					case 5: 
+					// theme requires update ?>
+						Current active (or parent) theme is: <strong><?php echo ucwords($this->current_theme['slug']); ?></strong>.<br>
+						This plugin cannot work with this version of the theme. Please update the theme first. <br>
+						The plugin is <strong style="color: #800000;">INACTIVE</strong>. <?php
+					break;
 					case 3: 
 					// unsupported theme ?>
 						Current active (or parent) theme is: <strong><?php echo ucwords($this->current_theme['slug']); ?></strong>.<br>

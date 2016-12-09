@@ -1,20 +1,20 @@
 <?php
 /*
     Plugin Name: Cryout Serious Theme Settings
-    Plugin URI: http://www.cryoutcreations.eu/serious-theme-settings
+    Plugin URI: https://www.cryoutcreations.eu/serious-theme-settings
     Description: This plugin is designed to restore our theme's settings page functionality after the enforcement of the Customize-based theme settings. It is only compatible with and will only function when one of our themes is active: Nirvana, Parabola or Tempera.
-    Version: 0.5.6
+    Version: 0.5.7
     Author: Cryout Creations
-    Author URI: http://www.cryoutcreations.eu
+    Author URI: https://www.cryoutcreations.eu
 	License: GPLv3
 	License URI: http://www.gnu.org/licenses/gpl.html
 */
 
 class Cryout_Theme_Settings {
-	public $version = "0.5.6";
+	public $version = "0.5.7";
 	public $settings = array();
 	
-	private $status = 0; // 0 = inactive, 1 = active, 2 = good theme, wrong version, 3 = wrong theme, 4 = compatibility for wp4.4
+	private $status = 0; // 0 = inactive, 1 = active, 2 = good theme, wrong version, 3 = wrong theme, 4 = compatibility for wp4.4, 5 = theme requires update
 	
 	private $supported_themes = array(
 		'nirvana' => '1.2',
@@ -26,6 +26,9 @@ class Cryout_Theme_Settings {
 		'tempera' => '0.9',
 		'parabola' => '0.9',
 		'mantra' => '2.0',
+	);
+	private $requires_update = array(
+		'nirvana' => '0.9',
 	);
 	private $slug = 'cryout-theme-settings';
 	private $title = '';
@@ -116,11 +119,15 @@ class Cryout_Theme_Settings {
 				// supported version
 				$this->status = 1;
 				return 1;
-			elseif ( (version_compare( $current_theme_version, $this->compatibility_themes[$current_theme_slug], '>=' ) ) && 
+			elseif ( isset($this->compatibility_themes[$current_theme_slug]) && (version_compare( $current_theme_version, $this->compatibility_themes[$current_theme_slug], '>=' ) ) && 
 					(version_compare($wp_version, '4.3.9999') >= 0) ):
 				// compatibility mode
 				$this->status = 4;
 				return 4;
+			elseif ( isset($this->requires_update[$current_theme_slug])):
+				// theme requires update to be supported
+				$this->status = 5;
+				return 0;
 			else:
 				// unsupported version
 				$this->status = 2;
@@ -165,21 +172,6 @@ class Cryout_Theme_Settings {
 	public function settings_page() {
 		require_once( plugin_dir_path( __FILE__ ) . 'inc/settings.php' );
 	}	
-	
-	/* for future use
-	function get_settings() {
-		
-		$setting_defaults = array(
-			'id' => 'value',
-		);
-
-		$options = get_option('cryout_theme_settings_options');
-		$options = array_merge($setting_defaults,(array)$options);
-		
-		return $options;
-	} // get_settings() 
-	*/
-
  
 } // class Cryout_Theme_Settings
 

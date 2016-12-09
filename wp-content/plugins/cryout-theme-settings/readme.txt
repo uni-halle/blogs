@@ -1,10 +1,10 @@
 === Plugin Name ===
-Contributors: cryout-creations
-Donate link: http://www.cryoutcreations.eu/donate/
+Contributors: Cryout Creations, cryout-creations
+Donate link: https://www.cryoutcreations.eu/donate/
 Tags: theme, admin
 Requires at least: 4.0
-Tested up to: 4.4.2
-Stable tag: 0.5.6
+Tested up to: 4.6
+Stable tag: 0.5.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -12,7 +12,7 @@ This plugin is designed to inter-operate with our Mantra, Parabola, Tempera, Nir
 
 == Description ==
 
-This plugin is designed to inter-operate with our [Nirvana](https://wordpress.org/themes/nirvana/), [Tempera](https://wordpress.org/themes/tempera/), [Parabola](https://wordpress.org/themes/parabola/), [Mantra](https://wordpress.org/themes/mantra/)themes and restore their advanced settings pages which we had to remove due to the Customize-based settings transition.
+This plugin is designed to inter-operate with our [Nirvana](https://wordpress.org/themes/nirvana/), [Tempera](https://wordpress.org/themes/tempera/), [Parabola](https://wordpress.org/themes/parabola/), [Mantra](https://wordpress.org/themes/mantra/) themes and restore their advanced settings pages which we had to remove due to the Customize-based settings transition.
 
 Additionally, it fixes an incompatibility between the older version of listed themes and Wordpress 4.4 and newer.
 
@@ -49,6 +49,9 @@ You do not need this plugin if you use do not use any of the listed themes.
 3. Navigate to Appearance > [Theme] Settings to access the restored theme settings page. 
 
 == Changelog ==
+
+= 0.5.7 =
+* Fixed incorrect status for Nirvana versions before 1.2
 
 = 0.5.6 =
 * Added support for Mantra 2.5
