@@ -265,12 +265,12 @@ if ( ! function_exists( 'aesop_shortcodes' ) ) {
 						'type'  => 'select',
 						'values' => array(
 							array(
-								'value' => 'on',
-								'name' => __( 'On', 'aesop-core' )
-							),
-							array(
 								'value' => 'off',
 								'name' => __( 'Off', 'aesop-core' )
+							),
+							array(
+								'value' => 'on',
+								'name' => __( 'On', 'aesop-core' )
 							)
 						),
 						'default'  => 'off',
@@ -403,7 +403,7 @@ if ( ! function_exists( 'aesop_shortcodes' ) ) {
 						'type'  => 'text_area',
 						'default'  => '',
 						'desc'   => __( 'Floater Element Content', 'aesop-core' ),
-						'tip'  => __( 'You can use text and images here. To use an image, use the full HTML tag without quotes around the image path.', 'aesop-core' )
+						'tip'  => __( 'You can use text and images here. To use an image, use the full HTML tag without quotes around the image path. Example: <code><span class="dashicons dashicons-arrow-left-alt2"></span>img src=image.jpg<span class="dashicons dashicons-arrow-right-alt2"></span></code> You can also use tags like <code><span class="dashicons dashicons-arrow-left-alt2"></span>h2<span class="dashicons dashicons-arrow-right-alt2"></span>Text<span class="dashicons dashicons-arrow-left-alt2"></span>/h2<span class="dashicons dashicons-arrow-right-alt2"></span></code>', 'aesop-core' )
 					),
 					'floaterposition' => array(
 						'type'  => 'select',
@@ -508,9 +508,15 @@ if ( ! function_exists( 'aesop_shortcodes' ) ) {
 					),
 					'img'    => array(
 						'type'  => 'media_upload',
-						'default'  => ' ',
+						'default'  => '',
 						'desc'   => __( 'Chapter Image or Video URL', 'aesop-core' ),
 						'tip'  => __( 'URL for the image or video background as set above. Click <em>Select Media</em> to open the WordPress Media Library.', 'aesop-core' )
+					),
+					'alternate_img'    => array(
+						'type'  => 'media_upload',
+						'default'  => '',
+						'desc'   => __( 'Alternate Image for Mobile', 'aesop-core' ),
+						'tip'  => __( 'Used only on a mobile device and if the Background Type is set to Video.', 'aesop-core' )
 					),
 					'bgcolor'    => array(
 						'type'  => 'color',
@@ -531,20 +537,21 @@ if ( ! function_exists( 'aesop_shortcodes' ) ) {
 				'name'     => __( 'Parallax Image', 'aesop-core' ),
 				'type'     => 'single',
 				'atts'     => array(
-					/*
+					
 					'height' 		=> array(
 						'type'		=> 'text_small',
-						'default' 	=> '500',
+						'default' 	=> '',
 						'desc' 		=> __('Height of Image Area', 'aesop-core' ),
-						'tip'		=> __('The height of the viewable image area. Enter a value such as <code>500px</code>. Avoid using percentages with this option.','aesop-core')
+						'tip'		=> __('The height of the viewable image area. Enter a value such as <code>500px</code>. Avoid using percentages with this option. Leave blank for the default value.','aesop-core')
 					),
-					*/
+					
 					'img'    => array(
 						'type'  => 'media_upload',
 						'default'  => '',
 						'desc'   => __( 'Parallax Image', 'aesop-core' ),
 						'tip'  => __( 'URL for the image. Click <em>Select Media</em> to open the WordPress Media Library.', 'aesop-core' )
 					),
+					
 					'parallaxbg'  => array(
 						'type'  => 'select',
 						'values'  => array(
@@ -555,11 +562,15 @@ if ( ! function_exists( 'aesop_shortcodes' ) ) {
 							array(
 								'value' => 'off',
 								'name' => __( 'Off', 'aesop-core' )
+							),
+							array(
+								'value' => 'fixed',
+								'name' => __( 'Fixed', 'aesop-core' )
 							)
 						),
 						'default'  => 'on',
 						'desc'   => __( 'Image Movement', 'aesop-core' ),
-						'tip'  => __( 'If set to <em>on</em>, the image will move slightly as you scroll down the page.', 'aesop-core' )
+						'tip'  => __( 'If set to <em>On</em>, the image will move slightly as you scroll down the page. If set to <em>Fixed</em> the background image will stay at fixed position as you scroll.', 'aesop-core' )
 					),
 					'parallaxspeed' 		=> array(
 						'type'		=> 'text_small',
@@ -601,12 +612,12 @@ if ( ! function_exists( 'aesop_shortcodes' ) ) {
 						'type'  => 'select',
 						'values'  => array(
 							array(
-								'value' => 'on',
-								'name' => __( 'On', 'aesop-core' )
-							),
-							array(
 								'value' => 'off',
 								'name' => __( 'Off', 'aesop-core' )
+							),
+							array(
+								'value' => 'on',
+								'name' => __( 'On', 'aesop-core' )
 							)
 						),
 						'default'  => 'off',
@@ -633,7 +644,7 @@ if ( ! function_exists( 'aesop_shortcodes' ) ) {
 						'type'  => 'text',
 						'default'  => '',
 						'desc'   => __( 'Floater Element Content', 'aesop-core' ),
-						'tip'  => __( 'You can use text and images here. To use an image, use the full HTML tag without quotes around the image path.', 'aesop-core' )
+						'tip'  => __( 'You can use text and images here with tags. Example: <code><span class="dashicons dashicons-arrow-left-alt2"></span>img src="image.jpg"<span class="dashicons dashicons-arrow-right-alt2"></span></code> You can also use classes and styles in tags.', 'aesop-core' )
 					),
 					'floaterposition' => array(
 						'type'  => 'select',
@@ -659,6 +670,10 @@ if ( ! function_exists( 'aesop_shortcodes' ) ) {
 						'type'  => 'select',
 						'values'  => array(
 							array(
+								'value' => 'none',
+								'name' => __( 'None', 'aesop-core' )
+							),
+							array(
 								'value' => 'up',
 								'name' => __( 'Up', 'aesop-core' )
 							),
@@ -675,16 +690,16 @@ if ( ! function_exists( 'aesop_shortcodes' ) ) {
 								'name' => __( 'Right', 'aesop-core' )
 							)
 						),
-						'default'  => 'up',
+						'default'  => 'none',
 						'desc'   => __( 'Movement Direction of Floater Element', 'aesop-core' ),
 						'tip'  => __( 'What direction should the floater media travel in?', 'aesop-core' )
-					)/*,
-					'floaterspeed' 		=> array(
+					),
+					'floaterdistance' 		=> array(
 						'type'		=> 'text_small',
-						'default' 	=> '1',
-						'desc' 		=> __('Floater Speed', 'aesop-core' ),
-						'tip'		=> __('The minimum and default value is 1. The maximum value is 10.','aesop-core')
-					),*/
+						'default' 	=> '',
+						'desc' 		=> __('Floater Distance', 'aesop-core' ),
+						'tip'		=> __('The distance the floater travels. You can specift 50%, 200px etc. The default is 33% of width or height.','aesop-core')
+					),
 				),
 				'content'    => __( 'Optional Caption', 'ba-shortcodes' ),
 				'desc'     => __( 'Parallax styled image component with caption and optional lightbox.', 'aesop-core' )
@@ -865,6 +880,28 @@ if ( ! function_exists( 'aesop_shortcodes' ) ) {
 						'desc'   => __( 'Video URL (only if using <em>self</em> as video source)', 'aesop-core' ),
 						'tip'  => __( 'This is only used if you are hosting the video yourself and have set the Video Source (above) to <em>self</em>. Click <em>Select Media</em> to open the WordPress Media Library.', 'aesop-core' )
 					),
+					'disable_for_mobile'    => array(
+						'type'  => 'select',
+						'values'  => array(
+							array(
+								'value' => 'on',
+								'name' => __( 'On', 'aesop-core' )
+							),
+							array(
+								'value' => 'off',
+								'name' => __( 'Off', 'aesop-core' )
+							)
+						),
+						'default'  => 'on',
+						'desc'   => __( 'Disable video on Mobile Devices.  (only if using <em>self</em> as video source)', 'aesop-core' ),
+						'tip'  => __( 'Disable video on Mobile Devices. Will display the Poster Frame if it is set.', 'aesop-core' )
+					),
+					'poster_frame'  => array(
+						'type'  => 'media_upload',
+						'default'  => '',
+						'desc'   => __( 'Poster Frame (only if using <em>self</em> as video source)', 'aesop-core' ),
+						'tip'  => __( 'Image to display before the video plays. Click <em>Select Media</em> to open the WordPress Media Library.', 'aesop-core' )
+					),
 					'loop'    => array(
 						'type'  => 'select',
 						'values'  => array(
@@ -944,13 +981,8 @@ if ( ! function_exists( 'aesop_shortcodes' ) ) {
 						'default'  => 'off',
 						'desc'   => __( 'Stop Video When Out of View (only if using <em>self</em> as video source)', 'aesop-core' ),
 						'tip'  => __( 'Used together with the option above, this option when set to <em>on</em> will stop the video player from playing once scrolled out of view.', 'aesop-core' )
-					),
-					'poster_frame'  => array(
-						'type'  => 'media_upload',
-						'default'  => '',
-						'desc'   => __( 'Poster Frame (only if using <em>self</em> as video source)', 'aesop-core' ),
-						'tip'  => __( 'Image to display before the video plays. Click <em>Select Media</em> to open the WordPress Media Library.', 'aesop-core' )
 					)
+					
 				),
 				'desc'     => __( 'Responsive video component with alignment and optional caption.', 'aesop-core' ),
 			),
@@ -1086,17 +1118,49 @@ if ( ! function_exists( 'aesop_shortcodes' ) ) {
 						'type'  => 'select',
 						'values'  => array(
 							array(
+								'value' => 'off',
+								'name' => __( 'Off', 'aesop-core' )
+							),
+							array(
 								'value' => 'on',
 								'name' => __( 'On', 'aesop-core' )
 							),
-							array(
-								'value' => 'off',
-								'name' => __( 'Off', 'aesop-core' )
-							)
 						),
 						'default'  => 'off',
 						'desc'   => __( 'Splash Mode', 'aesop-core' ),
 						'tip'  => __( 'Setting this to on will display only the actual category titles (without images).', 'aesop-core' )
+					),
+					'order'    => array(
+						'type'  => 'select',
+						'values'  => array(
+							array(
+								'value' => 'default',
+								'name' => __( 'Default', 'aesop-core' )
+							),
+							array(
+								'value' => 'reverse',
+								'name' => __( 'Reverse', 'aesop-core' )
+							),
+						),
+						'default'  => 'off',
+						'desc'   => __( 'Post Order', 'aesop-core' ),
+						'tip'  => __( 'Choose Default to show the newest post first.', 'aesop-core' )
+					),
+					'loadmore'    => array(
+						'type'  => 'select',
+						'values'  => array(
+							array(
+								'value' => 'off',
+								'name' => __( 'Off', 'aesop-core' )
+							),
+							array(
+								'value' => 'on',
+								'name' => __( 'On', 'aesop-core' )
+							),
+						),
+						'default'  => 'off',
+						'desc'   => __( 'Load More', 'aesop-core' ),
+						'tip'  => __( 'Setting this to on will display Load More link to load more posts.', 'aesop-core' )
 					)
 				),
 				'desc'     => __( 'Show a collection of stories. Typically used on a page like the home page.', 'aesop-core' )
