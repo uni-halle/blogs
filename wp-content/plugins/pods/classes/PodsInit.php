@@ -142,7 +142,8 @@ class PodsInit {
 			define( 'PODS_TABLELESS', false );
 		}
 
-		load_plugin_textdomain( 'pods', false, dirname( plugin_basename( PODS_DIR . 'init.php' ) ) . '/languages/' );
+		load_plugin_textdomain( 'pods' );
+
 	}
 
 	/**
@@ -648,6 +649,26 @@ class PodsInit {
 					$ct_rewrite = $ct_rewrite_array;
 				}
 
+				/**
+				 * Default tax capabilities
+				 * @see https://codex.wordpress.org/Function_Reference/register_taxonomy
+				 */
+				$capability_type = pods_var( 'capability_type', $taxonomy, 'default' );
+				$tax_capabilities = array();
+
+				if ( 'custom' == $capability_type ) {
+					$capability_type = pods_var( 'capability_type_custom', $taxonomy, 'default' );
+					if ( ! empty( $capability_type ) && 'default' != $capability_type ) {
+						$capability_type .=  '_terms';
+						$tax_capabilities = array(
+							'manage_terms' => 'manage_' . $capability_type,
+							'edit_terms'   => 'edit_' . $capability_type,
+							'delete_terms' => 'delete_' . $capability_type,
+							'assign_terms' => 'assign_' . $capability_type,
+						);
+					}
+				}
+
 				// Register Taxonomy
 				$pods_taxonomies[ $taxonomy_name ] = array(
 					'label'                 => $ct_label,
@@ -657,6 +678,9 @@ class PodsInit {
 					'show_ui'               => (boolean) pods_var( 'show_ui', $taxonomy, (boolean) pods_var( 'public', $taxonomy, true ) ),
 					'show_tagcloud'         => (boolean) pods_var( 'show_tagcloud', $taxonomy, (boolean) pods_var( 'show_ui', $taxonomy, (boolean) pods_var( 'public', $taxonomy, true ) ) ),
 					'hierarchical'          => (boolean) pods_var( 'hierarchical', $taxonomy, false ),
+					//'capability_type'       => $capability_type,
+					'capabilities'          => $tax_capabilities,
+					//'map_meta_cap'          => (boolean) pods_var( 'capability_type_extra', $taxonomy, true ),
 					'update_count_callback' => pods_var( 'update_count_callback', $taxonomy, null, null, true ),
 					'query_var'             => ( false !== (boolean) pods_var( 'query_var', $taxonomy, true ) ? pods_var( 'query_var_string', $taxonomy, $taxonomy_name, null, true ) : false ),
 					'rewrite'               => $ct_rewrite,
@@ -1144,7 +1168,7 @@ class PodsInit {
 
 		$api = pods_api();
 
-		$pods = $api->load_pods( array( 'names_ids' => true ) );
+		$pods = $api->load_pods( array( 'names_ids' => true, 'table_info' => false ) );
 
 		foreach ( $pods as $pod_id => $pod_label ) {
 			$api->delete_pod( array( 'id' => $pod_id ) );
@@ -1405,7 +1429,7 @@ class PodsInit {
 			return;
 		}
 
-		$all_pods = pods_api()->load_pods( array( 'type' => 'pod', 'fields' => false ) );
+		$all_pods = pods_api()->load_pods( array( 'type' => 'pod', 'fields' => false, 'table_info' => false ) );
 
 		// Add New item links for all pods
 		foreach ( $all_pods as $pod ) {
@@ -1469,7 +1493,7 @@ class PodsInit {
 		$rest_bases = pods_transient_get( 'pods_rest_bases' );
 
 		if ( empty( $rest_bases ) ) {
-			$pods = pods_api()->load_pods();
+	        $pods = pods_api()->load_pods( array( 'type' => array( 'post_type', 'taxonomy', 'user', 'media', 'comment' ), 'fields' => false, 'table_info' => false ) );
 
 			$rest_bases = array();
 
@@ -1477,7 +1501,7 @@ class PodsInit {
 				foreach ( $pods as $pod ) {
 					$type = $pod['type'];
 
-					if ( in_array( $type, array( 'post_type', 'taxonomy' ) ) ) {
+					if ( in_array( $type, array( 'post_type', 'taxonomy', 'user', 'media', 'comment' ) ) ) {
 						if ( $pod && PodsRESTHandlers::pod_extends_core_route( $pod ) ) {
 							$rest_bases[ $pod['name'] ] = array(
 								'type' => $type,

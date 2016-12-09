@@ -1264,7 +1264,7 @@ function pods_by_title ( $title, $output = OBJECT, $type = 'page', $status = nul
     $page = $wpdb->get_var( $wpdb->prepare( "SELECT `ID` FROM `{$wpdb->posts}` WHERE `post_title` = %s AND `post_type` = %s" . $status_sql . $orderby_sql, $prepared ) );
 
     if ( $page )
-        return get_post( $page, $output );
+        return get_post( pods_v( $page, 'post_id' ), $output );
 
     return null;
 }
@@ -1800,6 +1800,9 @@ function pods_no_conflict_check ( $object_type = 'post' ) {
     elseif ( 'term' == $object_type )
         $object_type = 'taxonomy';
 
+    if ( ! class_exists( 'PodsInit' ) ) 
+        pods_init();
+
     if ( !empty( PodsInit::$no_conflict ) && isset( PodsInit::$no_conflict[ $object_type ] ) && !empty( PodsInit::$no_conflict[ $object_type ] ) )
         return true;
 
@@ -1822,6 +1825,9 @@ function pods_no_conflict_on ( $object_type = 'post', $object = null ) {
         $object_type = 'post';
     elseif ( 'term' == $object_type )
         $object_type = 'taxonomy';
+
+    if ( ! class_exists( 'PodsInit' ) ) 
+        pods_init();
 
     if ( !empty( PodsInit::$no_conflict ) && isset( PodsInit::$no_conflict[ $object_type ] ) && !empty( PodsInit::$no_conflict[ $object_type ] ) )
         return true;
@@ -2009,6 +2015,9 @@ function pods_no_conflict_off ( $object_type = 'post' ) {
         $object_type = 'post';
     elseif ( 'term' == $object_type )
         $object_type = 'taxonomy';
+
+    if ( ! class_exists( 'PodsInit' ) ) 
+        pods_init();
 
     if ( empty( PodsInit::$no_conflict ) || !isset( PodsInit::$no_conflict[ $object_type ] ) || empty( PodsInit::$no_conflict[ $object_type ] ) )
         return false;
