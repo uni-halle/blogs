@@ -8,6 +8,42 @@ Changelog Legend:
 [x] = Deleted
 [!] = Bugs
 
+(08/26/16) - Improvements - Version 1.9.8.9
+
+[*] - Corrected aspect ratio of screenshot
+
+(08/19/16) - Improvements - Version 1.9.8.8
+
+[+] - Added author gravtar for post pages
+
+(08/19/16) - Improvements - Version 1.9.8.7
+
+[*] - Improved default settings
+
+
+(08/10/16) - Improvements - Version 1.9.8.6
+
+[!] - Fixed social icon label
+
+----
+
+(07/21/16) - Improvements - Version 1.9.8.5
+
+[*] - Improved Admin Dashboard appearance.
+[!] - Fixed warning;
+----
+(06/07/16) - Improvements - Version 1.9.8.4
+
+[!] - Minor fix for the link display on single pages.
+
+----
+
+(05/27/16) - Improvements - Version 1.9.8.3
+
+[!] - Fixed link display for pages on search page.
+
+----
+
 (04/15/16) - Improvements - Version 1.9.8.2
 
 [!] - Fixed scroll-top jquery conflict with WordPress 4.5 version

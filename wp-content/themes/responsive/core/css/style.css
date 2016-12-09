@@ -75,7 +75,7 @@ html {
 body {
 	-moz-font-smoothing: antialiased;
 	-webkit-font-smoothing: antialiased;
-	background: #efefef;
+	background: #fff;
 	color: #555555;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
@@ -2793,4 +2793,8 @@ BDO[DIR="rtl"] {
 	ul, ol, dl {
 		page-break-before: avoid;
 	}
+}
+
+.author-gravtar img{
+border-radius: 50%;
 }
