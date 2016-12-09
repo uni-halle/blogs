@@ -36,6 +36,7 @@ function powerpress_meta_box($object, $box)
 	$Height = false;
 	$WebMSrc = false;
 	$FeedTitle = '';
+	$PodcastCategory = '';
 	$GeneralSettings = get_option('powerpress_general');
 	if( !isset($GeneralSettings['set_size']) )
 		$GeneralSettings['set_size'] = 0;
@@ -268,7 +269,7 @@ function powerpress_meta_box($object, $box)
 			</div>
 			<?php if( !empty($GeneralSettings['seo_itunes']) ) { ?>
 			<div class="powerpress_row_content">
-				<em><?php echo __('SEO Suggestion: Use the blog post title for search engine optimization and use this title for iTunes search.', 'powerpress'); ?></em>
+				<em><?php echo __('Podcasting SEO Suggestion: Use the blog post title for search engine optimization and use this title for iTunes search.', 'powerpress'); ?></em>
 			</div>
 			<?php } ?>
 		</div>
@@ -397,7 +398,7 @@ function powerpress_meta_box($object, $box)
 			</div>
 			<?php if( !empty($GeneralSettings['seo_itunes']) ) { ?>
 			<div class="powerpress_row_content">
-				<em><?php echo __('SEO Suggestion: Write something concise and compelling that includes keywords not mentioned in the episode title.', 'powerpress'); ?></em>
+				<em><?php echo __('Podcasting SEO Suggestion: Write something concise and compelling that includes keywords not mentioned in the episode title.', 'powerpress'); ?></em>
 			</div>
 			<?php } ?>
 		</div>
@@ -419,7 +420,7 @@ function powerpress_meta_box($object, $box)
 <?php
 		}
 		
-		if( !empty($GeneralSettings['episode_box_gp_desc']) || !empty($GeneralSettings['seo_itunes']) || $GooglePlayDesc )
+		if( !empty($GeneralSettings['episode_box_gp_desc']) || $GooglePlayDesc )
 		{
 ?>
 		<div class="powerpress_row">
@@ -429,9 +430,6 @@ function powerpress_meta_box($object, $box)
 			</div>	
 			<div class="powerpress_row_content">
 				<em><?php echo __('Your summary cannot exceed 4,000 characters in length. Leave blank to use your blog post.', 'powerpress'); ?></em>
-				<?php if( !empty($GeneralSettings['seo_itunes']) ) { ?>
-				<em><?php echo __('SEO: This content may be indexed by google in Google Play Music Search. (unconfirmed)', 'powerpress'); ?></em>
-				<?php } ?>
 			</div>
 		</div>
 <?php
@@ -450,7 +448,7 @@ function powerpress_meta_box($object, $box)
 			</div>
 			<?php if( !empty($GeneralSettings['seo_itunes']) ) { ?>
 			<div class="powerpress_row_content">
-				<em><?php echo __('SEO Suggestion: Include talent names and slogans not mentioned in the episode title.', 'powerpress'); ?></em>
+				<em><?php echo __('Podcasting SEO Suggestion: Include talent names and nicknames not mentioned in the episode title.', 'powerpress'); ?></em>
 			</div><?php } ?>
 		</div>
 <?php
@@ -603,6 +601,43 @@ unset($block_array);
 			</div>
 		</div>
 <?php
+		}
+
+		if( !empty($GeneralSettings['cat_casting_strict']) && !empty($GeneralSettings['custom_cat_feeds']) )
+		{
+			// Get Podcast Categories...
+			$cur_cat_id = intval(!empty($ExtraData['category'])?$ExtraData['category']:0);
+			if( count($GeneralSettings['custom_cat_feeds']) == 1 ) // Lets auto select the category
+			{
+				
+				list($null, $cur_cat_id) = each($GeneralSettings['custom_cat_feeds']);
+				reset($GeneralSettings['custom_cat_feeds']);
+			}
+			
+		?>
+		<div class="powerpress_row">
+			<label for="Powerpress[<?php echo $FeedSlug; ?>][category]"><?php echo __('Category', 'powerpress'); ?></label>
+			<div class="powerpress_row_content"><?php
+				echo '<select id="powerpress_category_'. $FeedSlug . '" name="Powerpress['. $FeedSlug .'][category]" style="width: 70%;">';
+				echo '<option value="0"';
+				echo '>' . esc_html( __('Select category', 'powerpress') ) . '</option>' . "\n";
+				
+				while( list($null, $cat_id) = each($GeneralSettings['custom_cat_feeds']) ) {
+					$catObj = get_category( $cat_id );
+					if( empty($catObj->name ) )
+						continue; // Do not allow empty categories forward
+					
+					$label = $catObj->name; // TODO: Get the category title
+					echo '<option value="' . esc_attr( $cat_id ) . '"';
+					if ( $cat_id == $cur_cat_id )
+						echo ' selected="selected"';
+					echo '>' . esc_html( $label ) . '</option>' . "\n";
+				}
+			echo '</select>';
+			?>
+				</div>
+		</div>
+		<?php
 		}
 		
 		// Added filter for other plugins to add fields on a per podcast feed slug basis

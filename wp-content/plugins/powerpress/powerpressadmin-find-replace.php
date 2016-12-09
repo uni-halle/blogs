@@ -294,11 +294,11 @@ dt {
 
 <?php if( $FindReplace['step'] == 1 ) { ?>
 <p class="submit">
-	<input type="submit" name="Submit" id="powerpress_save_button" class="button-primary" value="<?php echo __('Find and Preview Changes', 'powerpress'); ?>" onclick="jQuery('#replace_step').val('2');" />
+	<input type="submit" name="Submit" id="powerpress_save_button" class="button-primary button-blubrry" value="<?php echo __('Find and Preview Changes', 'powerpress'); ?>" onclick="jQuery('#replace_step').val('2');" />
 </p>
 <?php } else if( $FindReplace['step'] == 2 && count($FindReplaceResults) > 0 ) { ?>
 <p class="submit">
-	<input type="submit" name="Submit" id="powerpress_save_button" class="button-primary" value="<?php echo __('Commit Changes', 'powerpress'); ?>" onclick="return ConfirmReplace()" />
+	<input type="submit" name="Submit" id="powerpress_save_button" class="button-primary button-blubrry" value="<?php echo __('Commit Changes', 'powerpress'); ?>" onclick="return ConfirmReplace()" />
 	&nbsp;
 	<input type="checkbox" name="FindReplace[verify]" value="1" <?php if( !empty($FindReplace['verify']) ) echo 'checked'; ?> onchange="return VerifyCheck(this)" />
 	<strong><?php echo __('Verify URLs', 'powerpress'); ?></strong>

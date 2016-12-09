@@ -21,7 +21,7 @@ div.powerpress-error,
 /*	background-color: #ffebe8; /* red */
 }
 #powerpress_settings {
-	background-image:url(//images.blubrry.com/powerpress/blubrry_logo5.png);
+	background-image:url(//images.blubrry.com/powerpress/blubrry_logo7.png);
 	background-repeat: no-repeat;
 	background-position: bottom right;
 }
@@ -36,12 +36,22 @@ div.powerpress-error,
 #powerpress_settings label {
 /*	font-size: 110%;  */
 }
+#powerpress_settings td {
+	padding-top: 12px;
+}
+#powerpress_settings td p {
+	padding-bottom: 10px;
+}
 .bpp_input_sm {
 	width: 120px;
 }
 .bpp_input_med {
 	width: 250px;
 }
+.bpp-input-normal {
+	width: 80%;
+}
+
 .powerpress_color_box {
 	float: left;
 	width: 16px;
@@ -378,4 +388,65 @@ padding-bottom: 15px;
 	border-width: 1px;
 	border-color: #DFDFDF;
 	border-color: #B3B3B3;
+}
+
+
+/* sections */
+.pp-section {
+	clear: both;
+	padding: 0px;
+	margin: 0px;
+}
+.pp-section dt {
+	font-weight: bold;
+}
+
+.pp-expand-section {
+	text-decoration: none;
+}
+a.pp-expand-section,
+a.pp-expand-section:hover,
+a.pp-expand-section:focus,
+a.pp-expand-section:visited {
+	color: #1976D2;
+}
+.pp-expand-section:before,
+.pp-expand-section-expanded:before {
+	background-color: #1976D2;
+	border: 1px solid #1976D2;
+	border-radius: 3px;
+	font-weight: bold;
+	color: #ffffff;
+	height: 20px;
+	width: 20px;
+	display: inline-block;
+	margin-right: 10px;
+	text-align: center;
+	font-size: 20px;
+}
+.pp-expand-section:before {
+	content: ' \25C4'; /*	&#9668; */
+	content: '+';
+}
+.pp-expand-section-expanded:before {
+	content: ' \25BC';
+	content: '-';
+}
+
+/* buttons */
+.wp-core-ui  .button-blubrry {
+	background: #1976D2;
+	border-color: #1976D2;
+	color: #FFFFFF;
+}
+.wp-core-ui .button-blubrry-gray {
+	background: #f7f7f7;
+	border-color: #ccc;
+	color: #555;
+}
+.wp-core-ui  .button-blubrry:hover,
+.wp-core-ui  .button-blubrry:focus {
+	background: #0D87E9;
+	border-color: #0D87E9;
+	color: #FFFFFF;
 }

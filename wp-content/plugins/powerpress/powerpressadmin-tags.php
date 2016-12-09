@@ -18,7 +18,7 @@ function ToggleID3Tags(Obj)
 
 <p><?PHP echo __('Blubrry Hosting users can configure how to have the service write their MP3 ID3 Tags before publishing episodes.', 'powerpress'); ?></p>
 
-<p style="margin-bottomd: 0;">
+<p style="margin-bottom: 0;">
 <?php
 		echo __('ID3 tags contain useful information (title, artist, album, year, etc...) about your podcast as well as an image for display during playback in most media players.', 'powerpress');
 		echo ' ';

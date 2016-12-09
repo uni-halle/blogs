@@ -103,6 +103,55 @@
 		{
 			return $this->m_RedirectCount;
 		}
+		
+		
+		/*
+		Get the ID3 headers by first downloading the first 10 bytes, then download the rest based on what's left
+		*/
+		function DownloadID3Headers($url) // Mp3 only
+		{
+			$CurrentLimit = $this->m_DownloadBytesLimit;
+			$this->m_DownloadBytesLimit = 10; // Get the first 10 bytes
+			// Do download
+			$success = $this->Download($url);
+			$this->m_DownloadBytesLimit = $CurrentLimit;
+			
+			if( empty($success) )
+				return false;
+			
+			if( file_exists($success) )
+			{
+				$id3header = file_get_contents($success);
+				unlink($success); // Clean up after ourselves
+				
+				if( substr($id3header, 0, 3) == 'ID3' && strlen($id3header) == 10)
+				{
+					$this->_load_id3lib();
+					$getid3 = new getID3; // So we can use the getid3_lib static function
+					
+					$headerlength = getid3_lib::BigEndian2Int(substr($id3header, 6, 4), 1)+10;
+					
+					// Awesome, now we need to download the file based on this size...
+					$this->m_DownloadBytesLimit = $headerlength +100000; // Add 100k to find valid MPEG synch
+					$success = $this->Download($url);
+					$this->m_DownloadBytesLimit = $CurrentLimit;
+					
+					if( empty($success) )
+						return false;
+					
+					return $success;
+				}
+				else // no ID3 v2 headers, lets fallback to the previous logic...
+				{
+					//$this->SetError('No ID3v2 headers found');
+					//return false;
+					return $this->Download($url);
+				}
+			}
+			
+			$this->SetError('Temporary file was empty.');
+			return false;
+		}
 
 		/*
 		Start the download and get the headers, handles the redirect if there are any
@@ -294,6 +343,9 @@
 			curl_setopt($curl, CURLOPT_USERAGENT, $this->m_UserAgent );
 			curl_setopt($curl, CURLOPT_URL, $url);
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			if( defined('MEPR_PLUGIN_NAME') ) {
+				curl_setopt($curl, CURLOPT_COOKIEFILE, ""); // For MemberPress
+			}
 			curl_setopt($curl, CURLOPT_HEADER, true); // header will be at output
 			curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'HEAD'); // HTTP request 
 			curl_setopt($curl, CURLOPT_NOBODY, true );
@@ -494,11 +546,13 @@
 		function GetMp3Info($File, $file_size_only = false)
 		{
 			$this->m_file_size_only = $file_size_only;
-			
 			$DeleteFile = false;
-			if( preg_match('/^https?:\/\//i', $File) !== false )
+			$LocalFile = false;
+			
+			// If the URL starts with a http:// or https:// and ends with an mp3, then lets try the smart id3 method...
+			if( defined('POWERPRESS_GETID3_EXPERIMENTAL') && preg_match('/^https?:\/\/.*\.mp3$/i', $File) !== false )
 			{
-				$LocalFile = $this->Download($File);
+				$LocalFile = $this->DownloadID3Headers($File);
 				if( $LocalFile === false )
 					return false;
 					
@@ -507,48 +561,33 @@
 					
 				$DeleteFile = true;
 			}
-			else
-			{
-				if( $this->m_file_size_only )
-				{
-					if( file_exists($File) )
-					{
-						$this->m_ContentLength = filesize($File);
-						return true;
-					}
-					return false;
-				}
-				$LocalFile = $File;
-			}
 			
-			if( class_exists('getID3') && !defined('POWERPRESS_GETID3_LOADED') )
-			{
-				$pre_msg = __('PowerPress is unable to detect media information.', 'powerpress') .'<br />';
-				$getID3 = new getID3;
-				if( defined('GETID3_INCLUDEPATH') ) {
-					$plugin_title = '';
-					$plugins_path = dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR;
-					$path = substr(GETID3_INCLUDEPATH, strlen($plugins_path));
-					if( preg_match('/^([^\\/\\\\]*)/i', $path, $matches) )
-					{
-						$plugin_folder = $matches[1];
-						$current_plugins = get_option('active_plugins');
-						while( list($null,$plugin_local_path) = each($current_plugins) )
-						{
-							if( substr($plugin_local_path, 0, strpos($plugin_local_path, '/') ) != $plugin_folder )
-								continue;
-							$plugin_data = get_plugin_data( rtrim(WP_PLUGIN_DIR, '/\\'). '/'. rtrim($plugin_local_path, '\\/'), false, false ); //Do not apply markup/translate as it'll be cached.
-							$plugin_title = $plugin_data['Title'];
-						}
-					}
-					if( $plugin_title )
-						$this->SetError( $pre_msg. sprintf(__('Plugin \'%s\' has included a different version of the GetID3 library located in %s', 'powerpress'), $plugin_title, $path) );
-					else
-						$this->SetError( $pre_msg. sprintf(__('Another plugin has included a different version of the GetID3 library located in %s', 'powerpress'), $path) );
-				} else {
-					$this->SetError( $pre_msg. __('Another plugin has included a different version of the GetID3 library.', 'powerpress') );
+			// Try old method
+			if( false == $LocalFile ) {
+				if( false !== preg_match('/^https?:\/\//i', $File) )
+				{
+					$LocalFile = $this->Download($File);
+					if( $LocalFile === false )
+						return false;
+						
+					if( $this->m_file_size_only )
+						return true;
+						
+					$DeleteFile = true;
 				}
-				return false;
+				else
+				{
+					if( $this->m_file_size_only )
+					{
+						if( file_exists($File) )
+						{
+							$this->m_ContentLength = filesize($File);
+							return true;
+						}
+						return false;
+					}
+					$LocalFile = $File;
+				}
 			}
 			
 			if( !is_file($LocalFile) )
@@ -577,26 +616,26 @@
 			//	$this->SetError( sprintf(__('URL is reporting incorrect content type: %s', 'powerpress'), $this->GetContentType()) );
 			//	return false;
 			//}
-			
-			// Hack so this works in Windows, helper apps are not necessary for what we're doing anyway
-			define('GETID3_HELPERAPPSDIR', true);
-			if( function_exists('get_temp_dir') ) // If wordpress function is available, lets use it
-			{
-				$temp_dir = get_temp_dir(); //  WordPress temp folder
-				if( is_dir($temp_dir) )
-					define('GETID3_TEMP_DIR', $temp_dir);
-			}
-			
-			require_once(POWERPRESS_ABSPATH.'/getid3/getid3.php');
-			define('POWERPRESS_GETID3_LOADED', true);
-			
+			$this->_load_id3lib();
 			$getID3 = new getID3;
-			$FileInfo = $getID3->analyze( $LocalFile, $this->m_ContentLength );
+			$FileInfo = $getID3->analyze( $LocalFile, $this->m_ContentLength, $File );
 			if( $DeleteFile )
 				@unlink($LocalFile);
 				
 			if( $FileInfo )
 			{
+				{
+					$temp = $FileInfo;
+					unset($temp['audio']);
+					if( isset($temp['id3v2']) )
+						unset($temp['id3v2']);
+					if( isset($temp['id3v1']) )
+						unset($temp['id3v1']);
+						
+					if( isset($temp['comments']['picture'][0]['data']) )
+						unset($temp['comments']['picture'][0]['data']);
+				}
+				
 				if( isset($FileInfo['error']) )
 				{
 					// Speical case, if the content type does not include audio or video, report that as possible error...
@@ -669,6 +708,62 @@
 			}
 			
 			return false;
+		}
+		
+		private function _load_id3lib()
+		{
+			if( defined('POWERPRESS_GETID3_LOADED') )
+				return true; // Rock and roll
+				
+			if( class_exists('getID3') && !defined('POWERPRESS_GETID3_LOADED') )
+			{
+				$pre_msg = __('PowerPress is unable to detect media information.', 'powerpress') .'<br />';
+				$getID3 = new getID3;
+				if( defined('GETID3_INCLUDEPATH') ) {
+					$plugin_title = '';
+					$plugins_path = dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR;
+					$path = substr(GETID3_INCLUDEPATH, strlen($plugins_path));
+					if( preg_match('/^([^\\/\\\\]*)/i', $path, $matches) )
+					{
+						$plugin_folder = $matches[1];
+						$current_plugins = get_option('active_plugins');
+						while( list($null,$plugin_local_path) = each($current_plugins) )
+						{
+							if( substr($plugin_local_path, 0, strpos($plugin_local_path, '/') ) != $plugin_folder )
+								continue;
+							$plugin_data = get_plugin_data( rtrim(WP_PLUGIN_DIR, '/\\'). '/'. rtrim($plugin_local_path, '\\/'), false, false ); //Do not apply markup/translate as it'll be cached.
+							$plugin_title = $plugin_data['Title'];
+						}
+					}
+					if( $plugin_title )
+						$this->SetError( $pre_msg. sprintf(__('Plugin \'%s\' has included a different version of the GetID3 library located in %s', 'powerpress'), $plugin_title, $path) );
+					else
+						$this->SetError( $pre_msg. sprintf(__('Another plugin has included a different version of the GetID3 library located in %s', 'powerpress'), $path) );
+				} else {
+					$this->SetError( $pre_msg. __('Another plugin has included a different version of the GetID3 library.', 'powerpress') );
+				}
+				return false;
+			}
+			
+			// Hack so this works in Windows, helper apps are not necessary for what we're doing anyway
+			if( !defined('GETID3_HELPERAPPSDIR') ) {
+				define('GETID3_HELPERAPPSDIR', false );
+			}
+			
+			if( !defined('GETID3_TEMP_DIR') && function_exists('get_temp_dir') ) // If wordpress function is available, lets use it
+			{
+				$temp_dir = get_temp_dir(); //  WordPress temp folder
+				if( is_dir($temp_dir) )
+					define('GETID3_TEMP_DIR', $temp_dir);
+			}
+			
+			if( defined('POWERPRESS_GETID3_LIBRARY') && is_file(POWERPRESS_GETID3_LIBRARY) )
+				require_once(POWERPRESS_GETID3_LIBRARY);
+			else
+				require_once(POWERPRESS_ABSPATH.'/getid3/getid3.php');
+				
+			define('POWERPRESS_GETID3_LOADED', true);
+			return true;
 		}
 		
 		function remoteread_curl_writefunc($curl, $data)

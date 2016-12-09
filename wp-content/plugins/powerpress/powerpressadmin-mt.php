@@ -776,7 +776,7 @@ else
 	}
 ?>
 <p class="submit">
-<input type="submit" name="Submit" id="powerpress_import_button" class="button-primary" value="Import Episodes" onclick="return confirm('Import selected episodes, are you sure?');" />
+<input type="submit" name="Submit" id="powerpress_import_button" class="button-primary button-blubrry" value="Import Episodes" onclick="return confirm('Import selected episodes, are you sure?');" />
  &nbsp; <input type="checkbox" name="DetectDuration" value="1" /> <?php echo __('Detect duration for mp3 media. (expect script to take a while with this option)', 'powerpress'); ?></p>
 </p>
 </form>
@@ -790,7 +790,7 @@ else
 <label>&nbsp;</label><?php echo __('Specify the file extensions to include separated by commas (e.g. mp3, m4v).', 'powerpress'); ?>
 </p>
 <p class="submit">
-<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Filter Episodes', 'powerpress'); ?>" />
+<input type="submit" name="Submit" class="button-primary button-blubrry" value="<?php echo __('Filter Episodes', 'powerpress'); ?>" />
 </p>
 	<!-- start footer -->
 <?php

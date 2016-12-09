@@ -28,34 +28,7 @@
 </td>
 </tr>
 
-<tr valign="top">
-<th scope="row"><?php echo __('Import Settings', 'powerpress'); ?></th> 
-<td>
-	<p style="margin-top: 5px;"><strong>
-		<a href="<?php echo admin_url() . wp_nonce_url("admin.php?page=powerpress/powerpressadmin_tools.php&amp;action=powerpress-podpress-settings", 'powerpress-podpress-settings'); ?>" 
-			onclick="return confirm('<?php echo __('Import PodPress settings, are you sure?\n\nExisting PowerPress settings will be overwritten.', 'powerpress'); ?>');"><?php echo __('Import PodPress Settings', 'powerpress'); ?></a></strong></p>
-	<p><?php echo __('Import settings from PodPress into PowerPress.', 'powerpress'); ?></p>
-	
-	<p style="margin-top: 5px;"><strong>
-		<a href="<?php echo admin_url() . wp_nonce_url("admin.php?page=powerpress/powerpressadmin_tools.php&amp;action=powerpress-podcasting-settings", 'powerpress-podcasting-settings'); ?>" 
-			onclick="return confirm('<?php echo __('Import Podcasting plugin settings, are you sure?', 'powerpress') .'\n\n'. __('Existing PowerPress settings will be overwritten.', 'powerpress'); ?>');"><?php echo htmlspecialchars(__('Import TSG\'s Podcasting Plugin Settings', 'powerpress')); ?></a></strong></p>
-	<p><?php echo htmlspecialchars(__('Import settings from the plugin "Podcasting Plugin by TSG" into PowerPress.', 'powerpress')); ?></p>
-	<p><?php echo htmlspecialchars(__('Note: Episodes created using the plugin "Podcasting Plugin by TSG" do not require importing.', 'powerpress')); ?></p>
-</td>
-</tr>
 
-<tr valign="top">
-<th scope="row"><?php echo __('Import Episodes', 'powerpress'); ?></th> 
-<td>
-	
-	<p style="margin-top: 5px;"><strong><a href="<?php echo admin_url("admin.php?page=powerpress/powerpressadmin_tools.php&amp;action=powerpress-podpress-epiosdes"); ?>"><?php echo __('Import PodPress Episodes', 'powerpress'); ?></a></strong> </p>
-	<p><?php echo __('Import PodPress created episodes to PowerPress.', 'powerpress'); ?></p>
-	
-	<p style="margin-top: 5px;"><strong><a href="<?php echo admin_url("admin.php?page=powerpress/powerpressadmin_tools.php&amp;action=powerpress-mt-epiosdes"); ?>"><?php echo __('Import from other Blogging Platform', 'powerpress'); ?></a></strong> <?php echo __('(media linked in blog posts)', 'powerpress'); ?></p>
-	<p><?php echo __('Import from podcast episodes from blogging platforms such as Movable Type/Blogger/Joomla/TypePad (and most other blogging systems) to PowerPress.', 'powerpress'); ?></p>
-	
-</td>
-</tr>
 
 <!--  ping_sites -->
 <tr valign="top">

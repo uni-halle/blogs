@@ -13,6 +13,7 @@
 		$powerpress_diags['detecting_media']['allow_url_fopen'] = (ini_get( 'allow_url_fopen' ) != false); // fopen
 		$powerpress_diags['detecting_media']['curl'] = function_exists( 'curl_init' ); // cURL
 		$powerpress_diags['detecting_media']['message2'] = ''; // if ( !ini_get('safe_mode') && !ini_get('open_basedir') )
+		$powerpress_diags['detecting_media']['message3'] = ''; // ssl checks
 		
 		// Testing:
 		//$powerpress_diags['detecting_media']['allow_url_fopen'] = false;
@@ -50,44 +51,24 @@
 			$powerpress_diags['detecting_media']['message'] = __('Your server must either have the php.ini setting \'allow_url_fopen\' enabled or have the PHP cURL library installed in order to detect media information.', 'powerpress');
 		}
 		
-		// Second, see if we can ping itunes, OpenSSL is required
-		$powerpress_diags['pinging_itunes'] = array();
-		$powerpress_diags['pinging_itunes']['success'] = true;
-		$powerpress_diags['pinging_itunes']['openssl'] = extension_loaded('openssl');
-		$powerpress_diags['pinging_itunes']['curl_ssl'] = false;
+		// OpenSSL or curl SSL is required
+		$powerpress_diags['detecting_media']['openssl'] = extension_loaded('openssl');
+		$powerpress_diags['detecting_media']['curl_ssl'] = false;
 		if( function_exists('curl_version') )
 		{
 			$curl_info = curl_version();
-			$powerpress_diags['pinging_itunes']['curl_ssl'] = ($curl_info['features'] & CURL_VERSION_SSL );
+			$powerpress_diags['detecting_media']['curl_ssl'] = ($curl_info['features'] & CURL_VERSION_SSL );
+		}
+		
+		if( $powerpress_diags['detecting_media']['openssl'] == false && $powerpress_diags['detecting_media']['curl_ssl'] == false ) {
+			$powerpress_diags['detecting_media']['warning'] = true;
+			$powerpress_diags['detecting_media']['message3'] = __('WARNING: Your server should support SSL either openssl or curl_ssl.', 'powerpress');
 		}
 		
 		// testing:
 		//$powerpress_diags['pinging_itunes']['openssl'] = false;
 		//$powerpress_diags['pinging_itunes']['curl_ssl'] = false;
 		
-		if( $powerpress_diags['detecting_media']['success'] == false )
-		{
-			$powerpress_diags['pinging_itunes']['success'] = false;
-			$powerpress_diags['pinging_itunes']['message'] = __('The problem with \'Detecting Media Information\' above needs to be resolved for this test to continue.', 'powerpress');
-		}
-		else if( $powerpress_diags['detecting_media']['curl'] && $powerpress_diags['pinging_itunes']['curl_ssl'] )
-		{
-			$powerpress_diags['pinging_itunes']['message'] = __('Your web server supports secure HTTPS connections.', 'powerpress');
-		}
-		else if( $powerpress_diags['detecting_media']['curl'] )
-		{
-			$powerpress_diags['pinging_itunes']['success'] = false;
-			$powerpress_diags['pinging_itunes']['message'] = __('Your web server\'s cURL library does not support secure HTTPS connections.', 'powerpress');
-		}
-		else if( $powerpress_diags['pinging_itunes']['openssl'] && $powerpress_diags['detecting_media']['allow_url_fopen'] )
-		{
-			$powerpress_diags['pinging_itunes']['message'] = __('Your web server supports secure HTTPS connections.', 'powerpress');
-		}
-		else
-		{
-			$powerpress_diags['pinging_itunes']['success'] = false;
-			$powerpress_diags['pinging_itunes']['message'] = __('Pinging iTunes requires the PHP OpenSSL library to be installed.', 'powerpress');
-		}
 		
 		// Third, see if the uploads/powerpress folder is writable
 		$UploadArray = wp_upload_dir();
@@ -278,8 +259,11 @@
 		$message .= " &nbsp; \t &nbsp; ". __('warning:', 'powerpress') .' '. ($powerpress_diags['detecting_media']['warning']?'true':'false') ."<br />\n";
 		$message .= " &nbsp; \t &nbsp; ". __('allow_url_fopen:', 'powerpress') .' '. ($powerpress_diags['detecting_media']['allow_url_fopen']?'true':'false') ."<br />\n";
 		$message .= " &nbsp; \t &nbsp; ". __('curl:', 'powerpress') .' '. ($powerpress_diags['detecting_media']['curl']?'true':'false') ."<br />\n";
+		$message .= " &nbsp; \t &nbsp; ". __('curl_ssl:', 'powerpress') .' '. ($powerpress_diags['detecting_media']['curl_ssl']?'true':'false') ."<br />\n";
+		$message .= " &nbsp; \t &nbsp; ". __('openssl:', 'powerpress') .' '. ($powerpress_diags['detecting_media']['openssl']?'true':'false') ."<br />\n";
 		$message .= " &nbsp; \t &nbsp; ". __('message:', 'powerpress') .' '. $powerpress_diags['detecting_media']['message'] ."<br />\n";
 		$message .= " &nbsp; \t &nbsp; ". __('message 2:', 'powerpress') .' '. $powerpress_diags['detecting_media']['message2'] ."<br />\n";
+		$message .= " &nbsp; \t &nbsp; ". __('message 3:', 'powerpress') .' '. $powerpress_diags['detecting_media']['message3'] ."<br />\n";
 		
 		// Pinging iTunes
 		//$message .= "<br />\n";
@@ -423,32 +407,22 @@
 	<p><?php echo htmlspecialchars($powerpress_diags['detecting_media']['message']); ?></p>
 <?php if( $powerpress_diags['detecting_media']['message2'] ) { ?>
 	<p><?php echo htmlspecialchars($powerpress_diags['detecting_media']['message2']); ?></p><?php } ?>
+<?php if( $powerpress_diags['detecting_media']['message3'] ) { ?>
+	<p><?php echo htmlspecialchars($powerpress_diags['detecting_media']['message3']); ?></p><?php } ?>
 <?php if( $powerpress_diags['detecting_media']['success'] ) { ?>
 	<p><?php echo __('If you are still having problems detecting media information, check with your web hosting provider if there is a firewall blocking your server.', 'powerpress'); ?></p>
 <?php } else { ?>
 	<p><?php echo __('Contact your web hosting provider with the information above.', 'powerpress'); ?></p>
 <?php } ?>
+	<ul><li><ul>
+		<li><?php echo __('allow_url_fopen:', 'powerpress') .' '. ($powerpress_diags['detecting_media']['allow_url_fopen']?'true':'false'); ?></li>
+		<li><?php echo __('curl:', 'powerpress') .' '. ($powerpress_diags['detecting_media']['curl']?'true':'false'); ?></li>
+		<li><?php echo __('curl_ssl:', 'powerpress') .' '. ($powerpress_diags['detecting_media']['curl_ssl']?'true':'false'); ?></li>
+		<li><?php echo __('openssl:', 'powerpress') .' '. ($powerpress_diags['detecting_media']['openssl']?'true':'false'); ?></li>
+	</ul></li></ul>
 </td>
 </tr>
 </table>
-
-<!--
-<h3 style="margin-bottom: 0;"><?php echo __('Pinging iTunes', 'powerpress'); ?></h3>
-<p style="margin: 0;"><?php echo __('The following test checks to see that your web server can make connections with Apple\'s secure ping server.', 'powerpress'); ?></p>
-<table class="form-table">
-<tr valign="top">
-<th scope="row">
-	<?php powerpressadmin_diagnostics_status($powerpress_diags['pinging_itunes']['success']); ?>
-</th> 
-<td>
-	<p><?php echo htmlspecialchars($powerpress_diags['pinging_itunes']['message']); ?></p>
-<?php if( $powerpress_diags['pinging_itunes']['success'] == false ) { ?>
-	<p><?php echo __('Contact your web hosting provider with the information above.', 'powerpress'); ?></p>
-<?php } ?>
-</td>
-</tr>
-</table>
--->
 
 <h3 style="margin-bottom: 0;"><?php echo __('Uploading Artwork', 'powerpress'); ?></h3>
 <p style="margin: 0;"><?php echo __('The following test checks to see that you can upload and store files on your web server.', 'powerpress'); ?></p>
@@ -503,7 +477,7 @@
 <td>
 	<div style="margin-top: 5px;">
 		<input type="text" name="Email" value="" style="width: 50%;" />
-		<input type="submit" name="Submit" id="powerpress_save_button" class="button-primary" value="Send Results" />
+		<input type="submit" name="Submit" id="powerpress_save_button" class="button-primary button-blubrry" value="Send Results" />
 	</div>
 	<div>
 		<input type="checkbox" name="CC" value="1" style="vertical-align: text-top;" checked /> CC: <?php $user_info = wp_get_current_user(); echo "&quot;{$user_info->user_nicename}&quot; &lt;{$user_info->user_email}&gt;"; ?>

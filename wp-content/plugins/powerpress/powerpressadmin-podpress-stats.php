@@ -48,12 +48,12 @@ function powerpress_admin_podpress_stats()
 	</tbody>
 	</table>
 	<div style="width: 100px; float: left;">
-		<a href="<?php echo admin_url("admin.php?page=powerpress/powerpressadmin_podpress-stats.php&amp;start=0"); ?>"><?php echo __('first', 'powerpress'); ?></a> |
-		<a href="<?php echo admin_url("admin.php?page=powerpress/powerpressadmin_podpress-stats.php&amp;start=") . ($start-$limit); ?>"><?php echo __('prev', 'powerpress'); ?></a>
+		<a href="<?php echo admin_url("admin.php?page=". powerpress_admin_get_page() ."&amp;start=0"); ?>"><?php echo __('first', 'powerpress'); ?></a> |
+		<a href="<?php echo admin_url("admin.php?page=". powerpress_admin_get_page() ."&amp;start=") . ($start-$limit); ?>"><?php echo __('prev', 'powerpress'); ?></a>
 	</div>
 	<div style="width: 100px; float: right; text-align: right;">
-		<a href="<?php echo admin_url("admin.php?page=powerpress/powerpressadmin_podpress-stats.php&amp;start=") . ($start+$limit); ?>"><?php echo __('next', 'powerpress'); ?></a> |
-		<a href="<?php echo admin_url("admin.php?page=powerpress/powerpressadmin_podpress-stats.php&amp;start=") . ($total%$limit==0? $total - $limit : floor($total/$limit)*$limit ); ?>"><?php echo __('last', 'powerpress'); ?></a>
+		<a href="<?php echo admin_url("admin.php?page=". powerpress_admin_get_page() ."&amp;start=") . ($start+$limit); ?>"><?php echo __('next', 'powerpress'); ?></a> |
+		<a href="<?php echo admin_url("admin.php?page=". powerpress_admin_get_page() ."&amp;start=") . ($total%$limit==0? $total - $limit : floor($total/$limit)*$limit ); ?>"><?php echo __('last', 'powerpress'); ?></a>
 	</div>
 	<div class="clear"></div>
 <?php 

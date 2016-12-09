@@ -117,7 +117,8 @@ function powerpress_playlist_episodes($args)
 		'category'=>'',
 		'taxonomy'=>'',
 		'tax_term'=>'',
-		'term_taxonomy_id'=>''
+		'term_taxonomy_id'=>'',
+		'ids'=>''
 	);
 	$args = wp_parse_args( $args, $defaults );
 	
@@ -155,8 +156,28 @@ function powerpress_playlist_episodes($args)
 	$query .= "WHERE (pm.meta_key = %s) ";
 	$query .= "AND p.post_type = %s ";
 	$query .= "AND p.post_status = 'publish' ";
-	if( !empty($TaxonomyObj->term_taxonomy_id) )
+	if( !empty($TaxonomyObj->term_taxonomy_id) ) {
 		$query .= "AND tr.term_taxonomy_id = '". $TaxonomyObj->term_taxonomy_id ."' ";
+	}
+	
+	if( !empty( $args['ids'] ) ) {
+		// First santity check make sure we are only working with numbers....
+		if( preg_match('/^[0-9,\s]*$/', $args['ids']) ) {
+			$ids	= explode(',', preg_replace('/(\s)/', '', $args['ids']) );
+			$for_query = '';
+			while( list($index,$id) = each($ids) ) {
+				if( empty($id) )	
+					continue;
+				if( !empty($for_query) )
+					$for_query .= ', ';
+				$for_query .= $id;
+			}
+			
+			if( !empty($for_query) ) {
+				$query .= "AND p.ID IN ($for_query) ";
+			}
+		}	
+	}
 	
 	$query .= "GROUP BY p.ID ";
 	$query .= "ORDER BY p.post_date DESC ";
@@ -293,7 +314,8 @@ function powerpress_playlist_shortcode( $attr ) {
 		'feed' => '', // Used for PowerPress Playlist
 		'channel'=>'', // Used for PowerPress Playlist
 		'post_type' => 'post', // Used for PowerPress Playlist
-		'limit'=>10 // Used for PowerPress Playlist
+		'limit'=>10, // Used for PowerPress Playlist
+		'ids'=>'' // Used to specify specific post ids to assemble a player with specific episodes
 	), $attr, 'powerpressplaylist' ) );
 	
 			
@@ -325,7 +347,8 @@ function powerpress_playlist_shortcode( $attr ) {
 		'category'=>$category,
 		'term_id'=>'',
 		'taxonomy'=>'',
-		'term_taxonomy_id'=>$term_taxonomy_id
+		'term_taxonomy_id'=>$term_taxonomy_id,
+		'ids'=>$ids
 	);
 	
 	$episodes = powerpress_playlist_episodes( $args );

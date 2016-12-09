@@ -93,7 +93,7 @@
 	<?php echo __('You can manually add ping services by going to the to the "Update Services" section found in the <b>WordPress Settings</b> &gt; <b>Writing</b> page.', 'powerpress'); ?>
 </p>
 <p class="submit">
-	<input type="submit" name="Submit" id="powerpress_save_button" class="button-primary" value="<?php echo __('Add Selected Update Services', 'powerpress'); ?>" />
+	<input type="submit" name="Submit" id="powerpress_save_button" class="button-primary button-blubrry" value="<?php echo __('Add Selected Update Services', 'powerpress'); ?>" />
 </p>
 
 	<!-- start footer -->

@@ -164,9 +164,10 @@ function powerpressadmin_notifications_appropriate()
 }
 
 if( powerpressadmin_notifications_appropriate() ) {
-	$PowerPressNotificationManager = new PowerPress_Notification_Manager();
+	//$PowerPressNotificationManager = new PowerPress_Notification_Manager(); // Uncomment when we have notices to display
 
 	// e.g. usage
+	/*
 	if( !$PowerPressNotificationManager->dismissed_status('apple-201602') ) {
 
 		$message = '';
@@ -191,6 +192,7 @@ if( powerpressadmin_notifications_appropriate() ) {
 		
 		$PowerPressNotificationManager->add('apple-201602', $message);
 	}
+	*/
 }
 
 // eof

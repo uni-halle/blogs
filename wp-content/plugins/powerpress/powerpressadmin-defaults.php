@@ -1,7 +1,7 @@
 <?php
 
 
-function powerpressadmin_default_steps($Step = 0, $Heading = true)
+function powerpressadmin_default_steps($Step = 0, $Heading = true, $ThisPage=true)
 {
 	if( isset($_GET['pp-step']) )
 		$Step = $_GET['pp-step'];
@@ -10,7 +10,11 @@ function powerpressadmin_default_steps($Step = 0, $Heading = true)
 	<?php echo ($Heading?'<h2>'. __('Start your podcast in 3 easy steps...', 'powerpress') .'</h2>':''); ?>
 	<link rel="stylesheet" type="text/css" href="<?php echo powerpress_get_root_url(); ?>css/steps.css">
 	<ul id="powerpress-steps">
+	<?php if( $ThisPage ) { ?>
 		<li class="pp-step-1<?php echo ($Step >= 0? ' pp-step-active':''); ?>"><h3 class="<?php echo ($Step >= 1? 'pp-step-h-completed':''); ?>"><?php echo __('Fill out the settings on this page', 'powerpress'); ?></h3></li>
+	<?php } else { ?>
+		<li class="pp-step-1<?php echo ($Step >= 0? ' pp-step-active':''); ?>"><a href=""><h3 class="<?php echo ($Step >= 1? 'pp-step-h-completed':''); ?>"><?php echo __('Fill out the podcast settings', 'powerpress'); ?></a></h3></li>
+	<?php } ?>
 		<li class="pp-step-2<?php echo ($Step >= 1? ' pp-step-active':''); ?>">
 			<h3 class="<?php echo ($Step >= 2? 'pp-step-h-completed':''); ?>"><a href="<?php echo admin_url( 'post-new.php' ); ?>"><?php echo __('Create a blog post with an episode', 'powerpress'); ?></a></h3>
 			<p><a href="http://create.blubrry.com/resources/powerpress/using-powerpress/creating-your-first-episode-with-powerpress/" target="_blank"><?php echo __('Need help?', 'powerpress'); ?></a>
@@ -79,7 +83,7 @@ jQuery(document).ready(function($) {
 <div id="powerpress_admin_header">
 <h2><?php echo __('Blubrry PowerPress Settings', 'powerpress'); ?></h2> 
 <span class="powerpress-mode"><?php echo __('Simple Mode', 'powerpress'); ?>
-	&nbsp; <a href="<?php echo admin_url("admin.php?page=powerpress/powerpressadmin_basic.php&amp;mode=advanced"); ?>" id="powerpress_advanced_mode_button" class="button-primary"><?php echo __('Switch to Advanced Mode', 'powerpress'); ?></a>
+	&nbsp; <a href="<?php echo admin_url("admin.php?page=powerpress/powerpressadmin_basic.php&amp;mode=advanced"); ?>" id="powerpress_advanced_mode_button" class="button-primary  button-blubrry"><?php echo __('Switch to Advanced Mode', 'powerpress'); ?></a>
 </span>
 </div>
 
@@ -110,8 +114,9 @@ jQuery(document).ready(function($) {
 </tr>
 </table>
 <?php
-	if( $Step > 1 ) // Only display if we have episdoes in the feed!
-		powerpressadmin_edit_itunes_general($FeedSettings, $General, $FeedAttribs);
+	if( $Step > 1 ) { // Only display if we have episdoes in the feed!
+		// TODO: Need to include the settings_tab_destinations.php but only the iTunes option to keep things simple
+	}
 	// iTunes settings (in simple mode of course)
 	powerpressadmin_edit_itunes_feed($FeedSettings, $General, $FeedAttribs);
 	

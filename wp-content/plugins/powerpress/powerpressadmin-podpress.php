@@ -740,7 +740,7 @@ function select_all(index,value)
 			{
 ?>
 <p class="submit">
-<input type="submit" name="Submit" id="powerpress_import_button" class="button-primary" value="<?php echo __('Import Episodes', 'powerpress'); ?>" />
+<input type="submit" name="Submit" id="powerpress_import_button" class="button-primary button-blubrry" value="<?php echo __('Import Episodes', 'powerpress'); ?>" />
 </p>
 <?php
 			}
@@ -748,7 +748,7 @@ function select_all(index,value)
 			{
 ?>
 <p class="submit">
-<input type="button" name="Submit" id="powerpress_import_button" class="button-primary" value="<?php echo __('Import Episodes', 'powerpress'); ?>" onclick="alert('<?php echo __('There are no PodPress episodes found to import.', 'powerpress'); ?>');" />
+<input type="button" name="Submit" id="powerpress_import_button" class="button-primary button-blubrry" value="<?php echo __('Import Episodes', 'powerpress'); ?>" onclick="alert('<?php echo __('There are no PodPress episodes found to import.', 'powerpress'); ?>');" />
 </p>
 <?php
 			}
@@ -809,7 +809,7 @@ function select_all(index,value)
 
 </p>
 <p class="submit">
-<input type="button" name="Submit" id="powerpress_import_button" class="button-primary" value="<?php echo __('Import Episodes', 'powerpress'); ?>" onclick="alert('<?php
+<input type="button" name="Submit" id="powerpress_import_button" class="button-primary button-blubrry" value="<?php echo __('Import Episodes', 'powerpress'); ?>" onclick="alert('<?php
 	echo __('We found blog posts that have %d media files.', 'powerpress');
 	echo '\n\n';
 	echo sprintf( __('You will need to create %d additional Podcast Channels in order to continue.', 'powerpress').
@@ -831,7 +831,7 @@ function select_all(index,value)
 <label>&nbsp;</label><?php echo __('specify the file extensions to include separated by commas (e.g. mp3, m4v).', 'powerpress'); ?>
 </p>
 <p class="submit">
-<input type="submit" name="Submit" class="button-primary" value="Filter Episodes" />
+<input type="submit" name="Submit" class="button-primary button-blubrry" value="Filter Episodes" />
 </p>
 <!-- start footer -->
 <?php

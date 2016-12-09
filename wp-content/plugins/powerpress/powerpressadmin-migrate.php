@@ -150,12 +150,13 @@ function powerpress_admin_migrate_get_status()
 	
 	if( !$json_data )
 	{
+		$error = '';
 		if( !empty($GLOBALS['g_powerpress_remote_errorno']) && $GLOBALS['g_powerpress_remote_errorno'] == 401 )
-			$error .=  __('Incorrect sign-in email address or password.', 'powerpress') .' '. __('Verify your account settings then try again.', 'powerpress');
+			$error =  __('Incorrect sign-in email address or password.', 'powerpress') .' '. __('Verify your account settings then try again.', 'powerpress');
 		else if( !empty($GLOBALS['g_powerpress_remote_error']) )
-			$error .= $GLOBALS['g_powerpress_remote_error'];
+			$error = $GLOBALS['g_powerpress_remote_error'];
 		else
-			$error .= __('Authentication failed.', 'powerpress');
+			$error = __('Authentication failed.', 'powerpress');
 		powerpress_page_message_add_error($error);
 		return false;
 	}
@@ -288,8 +289,8 @@ function powerpress_admin_migrate_request()
 							$CompletedResults['completed_count'] = 0;
 						if( empty($CompletedResults['error_count']) )
 							$CompletedResults['error_count'] = 0;
-						if( empty($GLOBALS['g_powerprss_verify_failed_count']) )
-							$GLOBALS['g_powerprss_verify_failed_count'] = 0;
+						if( empty($GLOBALS['g_powerpress_verify_failed_count']) )
+							$GLOBALS['g_powerpress_verify_failed_count'] = 0;
 						if( empty($GLOBALS['g_powerpress_already_migrated']) )
 							$GLOBALS['g_powerpress_already_migrated'] = 0;
 						if( empty($GLOBALS['g_powerpress_total_files_found']) )
@@ -351,7 +352,7 @@ function powerpress_admin_migrate_request()
 										if( !empty($verified['error']) )
 										{
 											// TODO: Handle the error here...
-											$GLOBALS['g_powerprss_verify_failed_count']++;
+											$GLOBALS['g_powerpress_verify_failed_count']++;
 											continue;
 										}
 									}
@@ -573,7 +574,7 @@ function powerpress_admin_migrate_step1()
 </ul>
 <?php
 	if( count($GLOBALS['powerpress_migrate_stats']) )
-		?><p class="submit"><input type="submit" class="button-primary" name="Submit" value="<?php echo __('Request Migration', 'powerpress'); ?>" /></p><?php
+		?><p class="submit"><input type="submit" class="button-primary button-blubrry" name="Submit" value="<?php echo __('Request Migration', 'powerpress'); ?>" /></p><?php
 ?>
 
 </form>
@@ -727,13 +728,13 @@ function powerpress_admin_migrate_step3($MigrateStatus, $CompletedResults)
 
 <?php if( !empty($MigrateStatus['completed']) ) { ?><p><?php echo sprintf( __('%d migrated files available', 'powerpress'), $MigrateStatus['completed']); ?></p><?php } ?>
 <?php if( !empty($CompletedResults['completed_count']) ) { ?><p><?php echo sprintf( __('%d episodes updated', 'powerpress'), $CompletedResults['completed_count']); ?></p><?php } ?>
-<p><?php echo __('', 'powerprss'); ?></p>
+<p><?php echo __('', 'powerpress'); ?></p>
 
-<p style="margin: 30px 0;"><?php echo sprintf( __('We recommend using the %s plugin to backup your database before proceeding.', 'powerpress'), '<a href="http://wordpress.org/extend/plugins/wp-db-backup/" target="_blank">'. __('WP-DB-Backup', 'powerpress') .'</a>' ); ?></p>
+<p style="margin: 30px 0;"><?php echo __('We recommend backing up your database before proceeding.', 'powerpress'); ?></p>
 
 
 <p class="submit">
-	<input type="submit" name="Submit" id="powerpress_save_button" class="button-primary" value="<?php echo __('Update Episodes', 'powerpress'); ?>" onclick="" />
+	<input type="submit" name="Submit" id="powerpress_save_button" class="button-primary button-blubrry" value="<?php echo __('Update Episodes', 'powerpress'); ?>" onclick="" />
 	&nbsp;
 	<input type="checkbox" name="PowerPressVerifyURLs" value="1" checked />
 	<strong><?php echo __('Verify URLs', 'powerpress'); ?></strong>
@@ -749,6 +750,7 @@ function powerpress_admin_migrate_step3($MigrateStatus, $CompletedResults)
 
 function powerpress_admin_migrate()
 {
+	$General = powerpress_get_settings('powerpress_general');
 	$files = powerpress_admin_migrate_get_files();
 	
 	if( !empty($_REQUEST['migrate_step']) && $_REQUEST['migrate_step'] == 1 )
@@ -767,11 +769,12 @@ function powerpress_admin_migrate()
 	if( is_array($QueuedResults) )
 	{
 		$RequestedCount = count($QueuedResults);
-		$Step = 1;
+		if( $RequestedCount  > 0 )
+			$Step = 1;
 	}
 	
 	$MigrateStatus = false;
-	if( $Step >= 1 )
+	if( $Step >= 1 || !empty($_GET['refresh_migrate_status']) )
 	{
 		$MigrateStatus = get_option('powerpress_migrate_status');
 		if( empty($MigrateStatus) || $MigrateStatus['updated_timestamp'] < current_time('timestamp')-(60*30) || !empty($_GET['refresh_migrate_status']) ) // Check every 30 minutes
@@ -833,10 +836,10 @@ function powerpress_admin_migrate()
 ?>
 <?php powerpress_page_message_print(); ?>
 <?php
-	if( !empty($GLOBALS['g_powerprss_verify_failed_count']) )
+	if( !empty($GLOBALS['g_powerpress_verify_failed_count']) )
 	{
 		echo '<p>';
-		echo sprintf(__('%d urls failed verification.', 'powerpress'), $GLOBALS['g_powerprss_verify_failed_count']);
+		echo sprintf(__('%d urls failed verification.', 'powerpress'), $GLOBALS['g_powerpress_verify_failed_count']);
 		echo '</p>';
 	}
 						
@@ -865,9 +868,15 @@ function powerpress_admin_migrate()
 <h2><?php echo __('Migrate Media to your Blubrry Podcast Media Hosting Account', 'powerpress'); ?></h2>
 
 <p><?php echo __('Migrate all of your media to Blubrry with only a few clicks.', 'powerpress'); ?></p>
-
+<?php
+	
+	// If not hosting
+	if( empty($General['blubrry_hosting']) || $General['blubrry_hosting'] === 'false' ) {
+?>
 <p><a title="<?php echo esc_attr(__('Blubrry Podcast Hosting', 'powerpress')); ?>" href="<?php echo admin_url('admin.php'); ?>?action=powerpress-jquery-hosting&amp;KeepThis=true&amp;TB_iframe=true&amp;modal=false&amp;width=800&amp;height=400" target="_blank" class="thickbox"><?php echo __('Don\'t have a blubrry podcast hosting account?', 'powerpress'); ?></a></p>
-
+<?php
+	}
+?>
 
 
 <div id="powerpress_steps">
@@ -893,7 +902,7 @@ function powerpress_admin_migrate()
 	<?php if( $FailedCount ) { ?><p class="normal"><?php echo sprintf( __('%d files failed', 'powerpress'), $FailedCount); ?></p><?php } ?>
 	<?php if( $SkippedCount ) { ?><p class="normal"><?php echo sprintf( __('%d files skipped', 'powerpress'), $SkippedCount); ?></p><?php } ?>
 	
-	<p  class="normal"><a href="<?php echo admin_url("admin.php?page=powerpress/powerpressadmin_migrate.php&amp;action=powerpress-migrate-media&amp;refresh_migrate_status=1"); ?>"><?php echo __('Refresh', 'powerprss'); ?></a></p>
+	<p  class="normal"><a href="<?php echo admin_url("admin.php?page=powerpress/powerpressadmin_migrate.php&amp;action=powerpress-migrate-media&amp;refresh_migrate_status=1"); ?>"><?php echo __('Refresh', 'powerpress'); ?></a></p>
 	<?php  ?>
 	</div>
 	<div class="powerpress-step<?php echo ($Step >= 2? ' active-step':''); ?>">

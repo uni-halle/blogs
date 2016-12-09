@@ -88,12 +88,15 @@
 }
 #powerpress-steps h3.pp-step-h-completed:before
 {
-	content: '\2713';   
+	content: url(../images/check.svg); /*'\2713';*/
+	color: #54A954;
+	width: 24px;
+	height: 24px;
+	padding-right: 5px;
 	font-weight: 400;
 	font-size: 32px;
 	position: absolute;
-	left: -25px;
-	top: -5px;
+	left: -30px;
 }
 
 @media screen and (max-width: 400px) {

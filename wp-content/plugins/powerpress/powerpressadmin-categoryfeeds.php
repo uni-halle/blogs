@@ -22,10 +22,7 @@ function powerpress_admin_categoryfeeds()
 <p>
 	<?php echo __('Category Podcasting adds custom podcast settings to specific blog category feeds, allowing you to organize episodes by topic.', 'powerpress'); ?>
 </p>
-<p>
-	<?php echo sprintf( __('If you are looking to organize episodes by file or format, please use %s.', 'powerpress'),
-		'<a href="'. admin_url('admin.php?page=powerpress/powerpressadmin_customfeeds.php') .'" title="'. __('Custom Podcast Channels') .'">'. __('Custom Podcast Channels') .'</a>'); ?>
-</p><style type="text/css">
+<style type="text/css">
 .column-url {
 	width: 40%;
 }
@@ -79,8 +76,6 @@ function powerpress_admin_categoryfeeds()
 			// $cat_ID does not existing
 			continue;
 		}
-		//var_dump($category);
-		
 		
 		$columns = powerpress_admin_customfeeds_columns();
 		$hidden = array();
@@ -90,10 +85,15 @@ function powerpress_admin_categoryfeeds()
 		else
 			echo '<tr valign="middle">';
 			
-		$edit_link = admin_url('admin.php?page=powerpress/powerpressadmin_categoryfeeds.php&amp;action=powerpress-editcategoryfeed&amp;cat=') . $cat_ID;
+		$edit_link = admin_url('admin.php?page='. powerpress_admin_get_page() .'&amp;action=powerpress-editcategoryfeed&amp;cat=') . $cat_ID;
 		
 		$feed_title = $category->name;
-		$url = get_category_feed_link($cat_ID);
+		
+		if( !empty($General['cat_casting_podcast_feeds']) )
+			$url = get_category_feed_link($cat_ID, 'podcast');
+		else
+			$url = get_category_feed_link($cat_ID);
+		
 		$short_url = str_replace('http://', '', $url);
 		$short_url = str_replace('www.', '', $short_url);
 		if (strlen($short_url) > 35)
@@ -118,7 +118,7 @@ function powerpress_admin_categoryfeeds()
 					echo '<td '.$class.'><strong><a class="row-title" href="'.$edit_link.'" title="' . esc_attr(sprintf(__('Edit "%s"', 'powerpress'), $feed_title)) . '">'. esc_html($feed_title) .'</a></strong><br />';
 					$actions = array();
 					$actions['edit'] = '<a href="' . $edit_link . '">' . __('Edit', 'powerpress') . '</a>';
-					$actions['remove'] = "<a class='submitdelete' href='". admin_url() . wp_nonce_url("admin.php?page=powerpress/powerpressadmin_categoryfeeds.php&amp;action=powerpress-delete-category-feed&amp;cat=$cat_ID", 'powerpress-delete-category-feed-' . $cat_ID) . "' onclick=\"if ( confirm('" . esc_js(sprintf( __("You are about to remove podcast settings for category feed '%s'\n  'Cancel' to stop, 'OK' to delete.", 'powerpress'), esc_html($feed_title) )) . "') ) { return true;}return false;\">" . __('Remove', 'powerpress') . "</a>";
+					$actions['remove'] = "<a class='submitdelete' href='". admin_url() . wp_nonce_url("admin.php?page=". powerpress_admin_get_page() ."&amp;action=powerpress-delete-category-feed&amp;cat=$cat_ID", 'powerpress-delete-category-feed-' . $cat_ID) . "' onclick=\"if ( confirm('" . esc_js(sprintf( __("You are about to remove podcast settings for category feed '%s'\n  'Cancel' to stop, 'OK' to delete.", 'powerpress'), esc_html($feed_title) )) . "') ) { return true;}return false;\">" . __('Remove', 'powerpress') . "</a>";
 					$action_count = count($actions);
 					$i = 0;
 					echo '<div class="row-actions">';
@@ -199,7 +199,35 @@ function powerpress_admin_categoryfeeds()
 <p>
 	<?php echo __('Example 2: You want to use categories to keep episodes separate from each other. Each category can be used to distribute separate podcasts with the main podcast feed combining all categories to provide a network feed.', 'powerpress'); ?>
 </p>
+</form>
+<br />
 
+<form enctype="multipart/form-data" method="post" action="<?php echo admin_url( 'admin.php?page='. powerpress_admin_get_page() ) ?>">
+<input type="hidden" name="action" value="powerpress-category-settings" />
+<?php wp_nonce_field('powerpress-category-settings'); ?>
+<h3><?php echo __('Category Podcasting Settings', 'powerpress'); ?></h3>
+<table class="form-table">
+<tr valign="top">
+<th scope="row">
+<?php echo __('Strict Categories', 'powerpress'); ?></th> 
+<td>
+	<p><input type="hidden" name="cat_casting_strict" value="0" />
+		<label><input type="checkbox" name="cat_casting_strict" value="1" <?php echo ( !empty($General['cat_casting_strict']) ?'checked ':''); ?>/>
+		<?php echo __('Select a specific category to each episode for statistics tracking and subscription links.', 'powerpress'); ?></label></p>
+</td>
+</tr>
+<tr valign="top">
+<th scope="row">
+<?php echo __('Podcast Only Feeds', 'powerpress'); ?></th> 
+<td>
+		<p><input type="hidden" name="cat_casting_podcast_feeds" value="0" />
+		<label><input type="checkbox" name="cat_casting_podcast_feeds" value="1" <?php echo ( !empty($General['cat_casting_podcast_feeds']) ?'checked ':''); ?>/>
+		<?php echo __('Enable to separate blog posts from podcast episodes.', 'powerpress'); ?></label></p>
+</td>
+</tr>
+</table>
+<p class="submit"><input type="submit" class="button" name="submit" value="<?php echo __('Save Settings', 'powerpress'); ?>" /></p>
 <?php
 	}
-?>
+	
+// eof

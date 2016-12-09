@@ -147,9 +147,6 @@ jQuery(document).ready(function() {
 				<?php echo __('Enables iTunes Subtitle field', 'powerpress'); ?>
 			</li>
 			<li>
-				<?php echo __('Enables Google Play Music Description field', 'powerpress'); ?>
-			</li>
-			<li>
 				<?php echo __('Enables iTunes Author field', 'powerpress'); ?>
 			</li>
 			<li>

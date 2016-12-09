@@ -24,10 +24,6 @@ function powerpress_admin_customfeeds()
 <p>
 	<?php echo __('Custom podcast Channels allow you to associate multiple media files and/or formats to one blog post.', 'powerpress'); ?>
 </p>
-<p>
-	<?php echo sprintf( __('If you are looking to organize episodes by topic, please use %s.', 'powerpress'),
-		'<a href="'. admin_url('admin.php?page=powerpress/powerpressadmin_categoryfeeds.php') .'" title="'. __('Category Podcast Feeds', 'powerpress') .'">'. __('Category Podcast Feeds', 'powerpress') .'</a>'); ?>
-</p>
 
 <style type="text/css">
 
@@ -92,7 +88,7 @@ function powerpress_admin_customfeeds()
 		foreach($columns as $column_name=>$column_display_name) {
 			$class = "class=\"column-$column_name\"";
 			
-			$edit_link = admin_url('admin.php?page=powerpress/powerpressadmin_customfeeds.php&amp;action=powerpress-editfeed&amp;feed_slug=') . $feed_slug;
+			$edit_link = admin_url('admin.php?page='. powerpress_admin_get_page() .'&amp;action=powerpress-editfeed&amp;feed_slug=') . $feed_slug;
 			
 			$url = get_feed_link($feed_slug);
 			$short_url = str_replace('http://', '', $url);
@@ -116,7 +112,7 @@ function powerpress_admin_customfeeds()
 					echo '<td '.$class.'><strong><a class="row-title" href="'.$edit_link.'" title="' . esc_attr(sprintf(__('Edit "%s"', 'powerpress'), $feed_title)) . '">'. esc_html($feed_title) .'</a></strong>'. ( $feed_slug == 'podcast' ?' ('. __('default channel', 'powerpress') .')':'').'<br />';
 					$actions = array();
 					$actions['edit'] = '<a href="' . $edit_link . '">' . __('Edit', 'powerpress') . '</a>';
-					$actions['delete'] = "<a class='submitdelete' href='". admin_url() . wp_nonce_url("admin.php?page=powerpress/powerpressadmin_customfeeds.php&amp;action=powerpress-delete-feed&amp;feed_slug=$feed_slug", 'powerpress-delete-feed-' . $feed_slug) . "' onclick=\"if ( confirm('" . esc_js(sprintf( __("You are about to delete feed '%s'\n  'Cancel' to stop, 'OK' to delete.", 'powerpress'), esc_attr($feed_title) )) . "') ) { return true;}return false;\">" . __('Delete', 'powerpress') . "</a>";
+					$actions['delete'] = "<a class='submitdelete' href='". admin_url() . wp_nonce_url("admin.php?page=". powerpress_admin_get_page() ."&amp;action=powerpress-delete-feed&amp;feed_slug=$feed_slug", 'powerpress-delete-feed-' . $feed_slug) . "' onclick=\"if ( confirm('" . esc_js(sprintf( __("You are about to delete feed '%s'\n  'Cancel' to stop, 'OK' to delete.", 'powerpress'), esc_attr($feed_title) )) . "') ) { return true;}return false;\">" . __('Delete', 'powerpress') . "</a>";
 					if( !isset($General['custom_feeds'][ $feed_slug ]) )
 					{
 						unset($actions['delete']);
@@ -165,7 +161,7 @@ function powerpress_admin_customfeeds()
 </table>
 <?php if( !isset($General['custom_feeds'][ $feed_slug ]) ) { ?>
 <p><?php echo sprintf( __('Note: The default channel "Podcast" is currently using global PowerPress settings. Click %s to customize the default "Podcast" channel.', 'powerpress'), 
-	'<a href="'. admin_url('admin.php?page=powerpress/powerpressadmin_customfeeds.php&amp;action=powerpress-editfeed&amp;feed_slug=podcast') .'">'. __('Edit', 'powerpress') .'</a>'); ?></p>
+	'<a href="'. admin_url('admin.php?page='. powerpress_admin_get_page() .'&amp;action=powerpress-editfeed&amp;feed_slug=podcast') .'">'. __('Edit', 'powerpress') .'</a>'); ?></p>
 <?php } ?>
 </div> <!-- col-right -->
 
