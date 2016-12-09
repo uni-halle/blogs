@@ -27,6 +27,7 @@
   font-size: 18px;
   font-weight: bold;
 }
+
 .module-export .pro-layer a:hover, .module-export .pro-layer a:focus, .module-export .pro-layer a:active {
   background: #1E8CBE;
   color: #FFF;
@@ -151,26 +152,35 @@
   width: 100%;
 }
 
-.widget-liquid-right {
-  position: fixed;
-  background: #E4E4E4;
-  right: 0;
-  top: 0;
-  height: auto;
-  padding: 32px 0 0;
-  z-index: 9999;
-  /* https://app.asana.com/0/11388810124414/15265827322055 */
+.widgets-php .widget-liquid-right {
+  padding: 0 0 75px 0;
+  margin: -10px -214% 0 0;
+  width: 210%;
+  background: #e4e4e4;
   /* https://app.asana.com/0/11388810124414/15066782299785 */
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
+.widgets-php .widget-liquid-right #widgets-right {
+  margin: 20px;
+}
 
-.widgets-php #wpcontent,
-.widgets-php #wpfooter {
-  margin-right: 59%;
+.widgets-php #wpcontent {
   position: relative;
+}
+.widgets-php #wpcontent .wrap {
+  margin-right: 68%;
+  position: relative;
+}
+.widgets-php #wpcontent #screen-meta-links {
+  position: relative;
+  z-index: 10;
+}
+.widgets-php #wpcontent #screen-meta {
+  position: relative;
+  z-index: 10;
 }
 
 .widgets-php #widgets-left {
@@ -187,42 +197,6 @@
   margin-bottom: 10px;
 }
 
-.widget-liquid-right .scrollbar {
-  position: relative;
-  float: right;
-  width: 10px;
-  z-index: 10;
-}
-
-.widget-liquid-right .track {
-  height: 100%;
-  width: 10px;
-  position: relative;
-  padding: 0 1px;
-}
-
-.widget-liquid-right .thumb {
-  height: 20px;
-  width: 10px;
-  cursor: pointer;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  background-color: #666;
-  margin-top: 10px;
-}
-
-.widget-liquid-right .thumb .end {
-  overflow: hidden;
-  height: 5px;
-  width: 13px;
-}
-
-.widget-liquid-right .viewport {
-  position: relative;
-  margin-right: 20px;
-}
-
 .widget-liquid-right .overview {
   list-style: none;
   position: absolute;
@@ -232,11 +206,6 @@
   right: 0;
   padding-left: 20px;
   border-left: 1px solid #DDD;
-}
-
-.disable .thumb {
-  cursor: default;
-  background: #ccc;
 }
 
 #cs-options .cs-action {
@@ -343,7 +312,7 @@ body.appearance_page_customsidebars #poststuff h2 {
 #cs-title-options {
   zoom: 1;
   background: #E8E8E8;
-  margin: 0 -20px 0 -20px;
+  margin: -20px -20px 0 -20px;
   padding: 10px 20px 20px;
   border-bottom: 1px solid #DDD;
 }
@@ -575,9 +544,6 @@ body.appearance_page_customsidebars #poststuff h2 {
   opacity: .75;
   line-height: 26px;
   margin-right: 5px;
-  -webkit-transition: opacity .2s;
-  -moz-transition: opacity .2s;
-  -o-transition: opacity .2s;
   transition: opacity .2s;
 }
 
@@ -619,15 +585,6 @@ body.appearance_page_customsidebars #poststuff h2 {
   margin-right: 5px;
 }
 
-.rtl .widget-liquid-right .viewport {
-  margin-right: 5px;
-  margin-left: 14px;
-}
-
-.rtl .widget-liquid-right .scrollbar {
-  float: left;
-}
-
 .rtl .cs-options {
   text-align: left;
 }
@@ -656,7 +613,6 @@ body.appearance_page_customsidebars #poststuff h2 {
 .csb-export-head th {
   vertical-align: top;
   text-align: right;
-  /*background: #F9FAFB;*/
   color: #679;
   width: 150px;
 }
@@ -774,8 +730,12 @@ h2 .show-infos {
  * =============================================================================
  */
 #wpbody-content .wp-list-table .column-cs_replacement {
-  width: 300px;
-  overflow: hidden;
+  width: 30%;
+}
+@media screen and (max-width: 782px) {
+  #wpbody-content .wp-list-table.fixed .column-cs_replacement {
+    display: none;
+  }
 }
 #wpbody-content .wp-list-table td.cs_replacement {
   /* do not display sidebars that are not replaced */
@@ -784,6 +744,8 @@ h2 .show-infos {
 #wpbody-content .wp-list-table td.cs_replacement .cust {
   opacity: .8;
   cursor: default;
+  position: relative;
+  padding-left: 110px;
 }
 #wpbody-content .wp-list-table td.cs_replacement .def:after,
 #wpbody-content .wp-list-table td.cs_replacement .cust:after {
@@ -804,15 +766,15 @@ h2 .show-infos {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  float: left;
 }
 #wpbody-content .wp-list-table td.cs_replacement .cs-key {
-  width: 100px;
-  padding-right: 10px;
+  max-width: 100px;
   color: #666;
+  position: absolute;
+  left: 0;
 }
 #wpbody-content .wp-list-table td.cs_replacement .cs-val {
-  width: 190px;
+  display: block;
 }
 #wpbody-content .wp-list-table .inline-edit-row fieldset.cs-quickedit {
   border-top: 1px solid #EEE;

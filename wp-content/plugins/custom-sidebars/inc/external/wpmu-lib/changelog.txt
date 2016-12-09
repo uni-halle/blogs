@@ -4,6 +4,91 @@ Author:      Philipp Stracker
 Change Log:
 ----------------------------------------------------------------------
 
+3.0.0
+----------------------------------------------------------------------
+PHP
+- Improve performance of initial module loading
+- Change library function from `lib2()` to `lib3()`
+- Add a P3P header so IE stores session data
+- Remove deprecated function `lib3()->translate_plugin()`
+- Remove deprecated function `lib3()->html->message()`
+- Add convenience function `lib3()->is_false()`
+- Rename `lib3()->html->plugin_list()` to `addon_list()`
+- Hide the "Details" link for disabled add-ons in the addon-list
+
+JS
+- Big improvements to the `wpmUi.popup()` function (templates, custom css, ...)
+- Add WordPress-like hook integration `wpmUi.add_action()`, `wpmUi.do_action()`, ...
+- Update select2 library from v3.5 to v4.0
+- Remove tiny-scrollbar JS library
+
+CSS
+- Update fontawesome library from v4.2 to v4.4
+- Update jQuery UI CSS from v1.10.4 to v1.11.4
+- Add animate.css library v3.4
+
+Migration notes
+- Rename `lib2()` to `lib3()`
+- Remove `->ui->add('scrollbar')`, add custom solution via CSS
+- Remove `->translate_plugin` with direct locationzation code
+- Replace `->html->message` with `->ui->admin_message`
+- Replace `->html->plugin_list` with `->html->addon_list`
+
+= v 3.0 ==============================================================
+
+2.0.2
+----------------------------------------------------------------------
+- Fix bug with wpmui.popup contents
+
+2.0.2
+----------------------------------------------------------------------
+- Fix javascript collision with ACF Pro plugin
+- New js element wpmuUi.progressbar()
+- New function lib2()->convert()
+- lib2()->ui->admin_message() has new styles and discardable mode
+- lib2()->html->element() regards class for hidden fields
+- lib2()->html->element() can handle new HTML5 input types: number, url, email, time, search
+- lib2()->html->element() radio-slider element can get special class 'reverse'
+- lib2()->html->element() has a new attribute called 'wrapper_class'
+- lib2()->html->plugin_list() only displays the Details link if details are present
+- lib2()->debug has many small improvements
+
+2.0.1
+----------------------------------------------------------------------
+- Fix errors when running side by side with older version
+- Add new function handlers to the JS popup: wpmUi.popup().on() and .off()
+
+2.0.0
+----------------------------------------------------------------------
+- Massive refactoring of the file and code structure
+- Added new functions
+- Much better documentation of the library
+- Great improvements in the debugger output
+
+= v 2.0 ==============================================================
+
+1.1.3
+----------------------------------------------------------------------
+- Improve the wpmUi.popup() object
+
+1.1.2
+----------------------------------------------------------------------
+- Fix issue where js/css files were not loaded in front-end
+- Several small code improvements
+
+1.1.1
+----------------------------------------------------------------------
+- Fix a PHP warning in html plugin_list
+- Improve the way javascripts and script-data is loaded in pages
+- Integrate new UI collections: 'fontawesome', 'jquery-ui'
+
+1.1.0
+----------------------------------------------------------------------
+- Add new HTML helper component: WDev()->html
+- Add new HTML function: WDev()->html->plugin_list()
+- Add new function to download files: WDev()->file_download()
+- Internal improvements
+
 1.0.17
 ----------------------------------------------------------------------
 - Fix issue where scripts were not loaded in some cases

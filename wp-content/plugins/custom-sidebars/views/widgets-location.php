@@ -20,14 +20,14 @@ $sidebars = CustomSidebars::get_sidebars( 'theme' );
 function _show_replaceable( $sidebar, $prefix, $cat_name, $class = '' ) {
 	$base_id = 'cs-' . $prefix;
 	$inp_id = $base_id . '-' . $sidebar['id'];
-	$inp_name = 'cs[' . $prefix . '][' . $sidebar['id'] . ']';
+	$inp_name = '___cs___' . $prefix . '___' . $sidebar['id'];
 	$sb_id = $sidebar['id'];
 	$class = (empty( $class ) ? '' : ' ' . $class);
 
 	?>
 	<div
 		class="cs-replaceable <?php echo esc_attr( $sb_id . $class ); ?>"
-		data-lbl-used="<?php _e( 'Replaced by another sidebar:', CSB_LANG ); ?>"
+		data-lbl-used="<?php _e( 'Replaced by another sidebar:', 'custom-sidebars' ); ?>"
 		>
 		<label for="<?php echo esc_attr( $inp_id ); ?>">
 			<input type="checkbox"
@@ -35,7 +35,7 @@ function _show_replaceable( $sidebar, $prefix, $cat_name, $class = '' ) {
 				class="detail-toggle"
 				/>
 			<?php printf(
-				__( 'As <strong>%1$s</strong> for selected %2$s', CSB_LANG ),
+				__( 'As <strong>%1$s</strong> for selected %2$s', 'custom-sidebars' ),
 				$sidebar['name'],
 				$cat_name
 			); ?>
@@ -47,7 +47,7 @@ function _show_replaceable( $sidebar, $prefix, $cat_name, $class = '' ) {
 				multiple="multiple"
 				placeholder="<?php echo esc_attr(
 					sprintf(
-						__( 'Click here to pick available %1$s', CSB_LANG ),
+						__( 'Click here to pick available %1$s', 'custom-sidebars' ),
 						$cat_name
 					)
 				); ?>"
@@ -56,7 +56,6 @@ function _show_replaceable( $sidebar, $prefix, $cat_name, $class = '' ) {
 		</div>
 	</div>
 	<?php
-
 }
 
 ?>
@@ -72,15 +71,17 @@ function _show_replaceable( $sidebar, $prefix, $cat_name, $class = '' ) {
 	</div>
 	<p>
 		<i class="dashicons dashicons-info light"></i>
-		<?php printf(
+		<?php
+		printf(
 			__(
-			'To attach this sidebar to a unique Post or Page please visit ' .
-			'that <a href="%1$s">Post</a> or <a href="%2$s">Page</a> & set it ' .
-			'up via the sidebars metabox.', CSB_LANG
+				'To attach this sidebar to a unique Post or Page please visit ' .
+				'that <a href="%1$s">Post</a> or <a href="%2$s">Page</a> & set it ' .
+				'up via the sidebars metabox.', 'custom-sidebars'
 			),
 			admin_url( 'edit.php' ),
 			admin_url( 'edit.php?post_type=page' )
-		); ?>
+		);
+		?>
 	</p>
 
 	<?php
@@ -92,10 +93,10 @@ function _show_replaceable( $sidebar, $prefix, $cat_name, $class = '' ) {
 	<div class="wpmui-box">
 		<h3>
 			<a href="#" class="toggle" title="<?php _e( 'Click to toggle' ); /* This is a Wordpress default language */ ?>"><br></a>
-			<span><?php _e( 'For all Single Entries matching selected criteria', CSB_LANG ); ?></span>
+			<span><?php _e( 'For all Single Entries matching selected criteria', 'custom-sidebars' ); ?></span>
 		</h3>
 		<div class="inside">
-			<p><?php _e( 'These replacements will be applied to every single post that matches a certain post type or category.', CSB_LANG ); ?>
+			<p><?php _e( 'These replacements will be applied to every single post that matches a certain post type or category.', 'custom-sidebars' ); ?>
 
 			<div class="cs-half">
 			<?php
@@ -103,7 +104,7 @@ function _show_replaceable( $sidebar, $prefix, $cat_name, $class = '' ) {
 			 * ========== SINGLE -- Categories ========== *
 			 */
 			foreach ( $sidebars as $sb_id => $details ) {
-				$cat_name = __( 'categories', CSB_LANG );
+				$cat_name = __( 'categories', 'custom-sidebars' );
 				_show_replaceable( $details, 'cat', $cat_name );
 			}
 			?>
@@ -115,7 +116,7 @@ function _show_replaceable( $sidebar, $prefix, $cat_name, $class = '' ) {
 			 * ========== SINGLE -- Post-Type ========== *
 			 */
 			foreach ( $sidebars as $sb_id => $details ) {
-				$cat_name = __( 'Post Types', CSB_LANG );
+				$cat_name = __( 'Post Types', 'custom-sidebars' );
 				_show_replaceable( $details, 'pt', $cat_name );
 			}
 			?>
@@ -133,15 +134,15 @@ function _show_replaceable( $sidebar, $prefix, $cat_name, $class = '' ) {
 	<div class="wpmui-box closed">
 		<h3>
 			<a href="#" class="toggle" title="<?php _e( 'Click to toggle' ); /* This is a Wordpress default language */ ?>"><br></a>
-			<span><?php _e( 'For Archives', CSB_LANG ); ?></span>
+			<span><?php _e( 'For Archives', 'custom-sidebars' ); ?></span>
 		</h3>
 		<div class="inside">
-			<p><?php _e( 'These replacements will be applied to Archive Type posts and pages.', CSB_LANG ); ?>
+			<p><?php _e( 'These replacements will be applied to Archive Type posts and pages.', 'custom-sidebars' ); ?>
 
 			<h3 class="wpmui-tabs">
-				<a href="#tab-arch" class="tab active"><?php _e( 'Archive Types', CSB_LANG ); ?></a>
-				<a href="#tab-catg" class="tab"><?php _e( 'Category Archives', CSB_LANG ); ?></a>
-				<a href="#tab-aut" class="tab"><?php _e( 'Authors', CSB_LANG ); ?></a>
+				<a href="#tab-arch" class="tab active"><?php _e( 'Archive Types', 'custom-sidebars' ); ?></a>
+				<a href="#tab-catg" class="tab"><?php _e( 'Category Archives', 'custom-sidebars' ); ?></a>
+				<a href="#tab-aut" class="tab"><?php _e( 'Authors', 'custom-sidebars' ); ?></a>
 			</h3>
 			<div class="wpmui-tab-contents">
 				<div id="tab-arch" class="tab active">
@@ -150,7 +151,7 @@ function _show_replaceable( $sidebar, $prefix, $cat_name, $class = '' ) {
 					 * ========== ARCHIVE -- Special ========== *
 					 */
 					foreach ( $sidebars as $sb_id => $details ) {
-						$cat_name = __( 'Archive Types', CSB_LANG );
+						$cat_name = __( 'Archive Types', 'custom-sidebars' );
 						_show_replaceable( $details, 'arc', $cat_name );
 					}
 					?>
@@ -161,7 +162,7 @@ function _show_replaceable( $sidebar, $prefix, $cat_name, $class = '' ) {
 					 * ========== ARCHIVE -- Category ========== *
 					 */
 					foreach ( $sidebars as $sb_id => $details ) {
-						$cat_name = __( 'Category Archives', CSB_LANG );
+						$cat_name = __( 'Category Archives', 'custom-sidebars' );
 						_show_replaceable( $details, 'arc-cat', $cat_name );
 					}
 					?>
@@ -171,24 +172,18 @@ function _show_replaceable( $sidebar, $prefix, $cat_name, $class = '' ) {
 					/**
 					 * ========== ARCHIVE -- Author ========== *
 					 */
+					foreach ( $sidebars as $sb_id => $details ) {
+						$cat_name = __( 'Author Archives', 'custom-sidebars' );
+						_show_replaceable( $details, 'arc-aut', $cat_name );
+					}
 					?>
-					<div class="pro-layer">
-						<?php printf(
-							__(
-								'Specific Author-Archives can be changed <br />' .
-								'in the <b>PRO</b> version of this plugin.<br />' .
-								'<a href="%1$s" target="_blank">Learn more</a>', CSB_LANG
-								),
-								CustomSidebars::$pro_url
-						); ?>
-					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="buttons">
-		<button type="button" class="button-link btn-cancel"><?php _e( 'Cancel', CSB_LANG ); ?></button>
-		<button type="button" class="button-primary btn-save"><?php _e( 'Save Changes', CSB_LANG ); ?></button>
+		<button type="button" class="button-link btn-cancel"><?php _e( 'Cancel', 'custom-sidebars' ); ?></button>
+		<button type="button" class="button-primary btn-save"><?php _e( 'Save Changes', 'custom-sidebars' ); ?></button>
 	</div>
 </form>

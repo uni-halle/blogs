@@ -1,0 +1,603 @@
+# Copyright (C) 2016 WPMU DEV
+# This file is distributed under the same license as the Custom Sidebars Pro package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Custom Sidebars Pro 2.1.0.8\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/customsidebars\n"
+"POT-Creation-Date: 2016-06-22 19:25:23+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.3\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+
+#: inc/class-custom-sidebars-cloning.php:202 inc/class-custom-sidebars.php:737
+msgid "Clone"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:123
+#: inc/class-custom-sidebars-export.php:97
+msgid "You do not have permission for this"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:198
+msgid "Sidebar-name cannot be empty"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:222
+#: inc/class-custom-sidebars-editor.php:307
+msgid "The sidebar does not exist"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:253
+msgid "Created new sidebar <strong>%1$s</strong>"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:261
+msgid "Updated sidebar <strong>%1$s</strong>"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:272
+#: inc/class-custom-sidebars-editor.php:327
+msgid "The sidebar was not found"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:316
+msgid "Deleted sidebar <strong>%1$s</strong>"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:385
+msgid "Front Page"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:386
+msgid "Search Results"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:387
+msgid "Not found (404)"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:388
+msgid "Any Author Archive"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:389
+msgid "Tag Archives"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:390
+msgid "Date Archives"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:433
+msgid "Post Index"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:437
+msgid "%1$s Archives"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:621
+msgid "Updated sidebar <strong>%1$s</strong> settings."
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:657 views/widgets.php:17
+msgid "Sidebars"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:918 views/import.php:127
+#: views/widgets.php:47
+msgid "Custom Sidebars"
+msgstr ""
+
+#: inc/class-custom-sidebars-export.php:61 views/widgets.php:46
+msgid "Import / Export Sidebars"
+msgstr ""
+
+#: inc/class-custom-sidebars-export.php:293
+#: inc/class-custom-sidebars-export.php:335
+msgid "No file was uploaded"
+msgstr ""
+
+#: inc/class-custom-sidebars-export.php:300
+msgid "Import file is too big"
+msgstr ""
+
+#: inc/class-custom-sidebars-export.php:306
+msgid "Something went wrong"
+msgstr ""
+
+#: inc/class-custom-sidebars-export.php:329
+msgid "Unexpected import format"
+msgstr ""
+
+#: inc/class-custom-sidebars-export.php:600
+msgid "Imported %d custom sidebar(s)!"
+msgstr ""
+
+#: inc/class-custom-sidebars-export.php:609
+msgid "Plugin options were imported!"
+msgstr ""
+
+#: inc/class-custom-sidebars-export.php:659
+msgid "Imported %d widget(s)!"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:185
+#: inc/class-custom-sidebars.php:738
+msgid "Visibility"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:194
+msgid "<b>Show</b> widget if:"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:195
+msgid "<b>Hide</b> widget if:"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:199
+msgid "Filters"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:203
+msgid "Date"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:208
+msgid "Guests"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:213
+msgid "Roles"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:218
+msgid "Membership"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:224
+msgid "Membership2"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:230 views/import.php:303
+msgid "Special pages"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:235
+msgid "For posttype"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:237
+msgid "Taxonomy"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:254
+msgid "Always"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:279
+#: inc/class-custom-sidebars-visibility.php:284
+#: inc/class-custom-sidebars-visibility.php:293
+#: inc/class-custom-sidebars-visibility.php:312
+#: inc/class-custom-sidebars-visibility.php:332
+#: inc/class-custom-sidebars-visibility.php:351
+#: inc/class-custom-sidebars-visibility.php:370
+#: inc/class-custom-sidebars-visibility.php:461
+msgid "AND"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:280
+msgid "User is not logged-in (Guest)"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:285
+msgid "User is logged-in (Member)"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:294
+msgid "User has role"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:313
+msgid "User has Membership Level"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:321
+#: inc/class-custom-sidebars-visibility.php:341
+msgid "(inactive)"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:333
+msgid "User has Membership"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:352
+msgid "On these special pages"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:371
+msgid "On any page of these types"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:389
+msgid "Only for specific %s"
+msgstr ""
+
+#: inc/class-custom-sidebars-visibility.php:390
+msgid "Only these %s:"
+msgstr ""
+
+#: inc/class-custom-sidebars.php:110
+msgid ""
+"<strong>Accessibility mode is not supported by the\n"
+"\t\t\t\t\t\t%1$s plugin.</strong><br /><a href=\"%2$s\">Click here</a>\n"
+"\t\t\t\t\t\tto disable accessibility mode and use the %1$s plugin!"
+msgstr ""
+
+#: inc/class-custom-sidebars.php:741
+msgid "Pro Version Features"
+msgstr ""
+
+#: views/col-sidebars.php:19
+msgid "(Not available for Home-Page)"
+msgstr ""
+
+#: views/col-sidebars.php:21
+msgid "(Not available for Blog-Page)"
+msgstr ""
+
+#: views/import.php:63 views/widgets-export.php:33
+msgid "Import"
+msgstr ""
+
+#: views/import.php:70
+msgid "Filename"
+msgstr ""
+
+#: views/import.php:74
+msgid "Exported on"
+msgstr ""
+
+#: views/import.php:80
+msgid "WordPress settings"
+msgstr ""
+
+#: views/import.php:91
+msgid "WordPress version"
+msgstr ""
+
+#: views/import.php:96
+msgid "Plugin version"
+msgstr ""
+
+#: views/import.php:101
+msgid "Theme"
+msgstr ""
+
+#: views/import.php:129
+msgid "Mark the sidebars that you want to import."
+msgstr ""
+
+#: views/import.php:134
+msgid "Also import all widgets of the selected sidebars."
+msgstr ""
+
+#: views/import.php:141 views/widgets-editor.php:15
+msgid "Name"
+msgstr ""
+
+#: views/import.php:142 views/widgets-editor.php:20
+msgid "Description"
+msgstr ""
+
+#: views/import.php:143
+msgid "Note"
+msgstr ""
+
+#: views/import.php:144
+msgid "Widgets"
+msgstr ""
+
+#: views/import.php:152
+msgid "Existing sidebar will be replaced!"
+msgstr ""
+
+#: views/import.php:154
+msgid "New sidebar will be created"
+msgstr ""
+
+#: views/import.php:208
+msgid "(Theme sidebar)"
+msgstr ""
+
+#: views/import.php:234
+msgid "Configuration"
+msgstr ""
+
+#: views/import.php:238
+msgid "Replaceable sidebars"
+msgstr ""
+
+#: views/import.php:241
+msgid "Replaceable Sidebars"
+msgstr ""
+
+#: views/import.php:251
+msgid "By post type"
+msgstr ""
+
+#: views/import.php:264
+msgid "Post-type archives"
+msgstr ""
+
+#: views/import.php:277
+msgid "By category"
+msgstr ""
+
+#: views/import.php:290
+msgid "Category archives"
+msgstr ""
+
+#: views/import.php:306
+msgid "Main blog page"
+msgstr ""
+
+#: views/import.php:307
+msgid "Date archives"
+msgstr ""
+
+#: views/import.php:308
+msgid "Author archives"
+msgstr ""
+
+#: views/import.php:309
+msgid "Tag archives"
+msgstr ""
+
+#: views/import.php:310
+msgid "Search results page"
+msgstr ""
+
+#: views/import.php:320
+msgid "Replace the current plugin configuration with the imported configuration."
+msgstr ""
+
+#: views/widgets-delete.php:11
+msgid ""
+"Please confirm that you want to delete the sidebar <strong "
+"class=\"name\"></strong>."
+msgstr ""
+
+#: views/widgets-delete.php:16 views/widgets-editor.php:63
+#: views/widgets-location.php:186
+msgid "Cancel"
+msgstr ""
+
+#: views/widgets-delete.php:17
+msgid "Yes, delete it"
+msgstr ""
+
+#: views/widgets-editor.php:16
+msgid "Sidebar name here..."
+msgstr ""
+
+#: views/widgets-editor.php:17
+msgid "The name must be unique."
+msgstr ""
+
+#: views/widgets-editor.php:21
+msgid "Sidebar description here..."
+msgstr ""
+
+#: views/widgets-editor.php:27
+msgid "Caution:"
+msgstr ""
+
+#: views/widgets-editor.php:39
+msgid "Before Title"
+msgstr ""
+
+#: views/widgets-editor.php:43
+msgid "After Title"
+msgstr ""
+
+#: views/widgets-editor.php:49
+msgid "Before Widget"
+msgstr ""
+
+#: views/widgets-editor.php:53
+msgid "After Widget"
+msgstr ""
+
+#: views/widgets-editor.php:60
+msgid "Advanced - Edit custom wrapper code"
+msgstr ""
+
+#: views/widgets-editor.php:64 views/widgets.php:43
+msgid "Create Sidebar"
+msgstr ""
+
+#: views/widgets-export.php:10 views/widgets-export.php:28
+msgid "Export"
+msgstr ""
+
+#: views/widgets-export.php:23
+msgid "Optional description for the export file:"
+msgstr ""
+
+#: views/widgets-export.php:37
+msgid "Export file"
+msgstr ""
+
+#: views/widgets-export.php:42
+msgid "Preview"
+msgstr ""
+
+#: views/widgets-location.php:30
+msgid "Replaced by another sidebar:"
+msgstr ""
+
+#: views/widgets-location.php:38
+msgid "As <strong>%1$s</strong> for selected %2$s"
+msgstr ""
+
+#: views/widgets-location.php:50
+msgid "Click here to pick available %1$s"
+msgstr ""
+
+#: views/widgets-location.php:95 views/widgets-location.php:136
+msgid "Click to toggle"
+msgstr ""
+
+#: views/widgets-location.php:96
+msgid "For all Single Entries matching selected criteria"
+msgstr ""
+
+#: views/widgets-location.php:99
+msgid ""
+"These replacements will be applied to every single post that matches a "
+"certain post type or category."
+msgstr ""
+
+#: views/widgets-location.php:107
+msgid "categories"
+msgstr ""
+
+#: views/widgets-location.php:119
+msgid "Post Types"
+msgstr ""
+
+#: views/widgets-location.php:137
+msgid "For Archives"
+msgstr ""
+
+#: views/widgets-location.php:140
+msgid "These replacements will be applied to Archive Type posts and pages."
+msgstr ""
+
+#: views/widgets-location.php:143 views/widgets-location.php:154
+msgid "Archive Types"
+msgstr ""
+
+#: views/widgets-location.php:144 views/widgets-location.php:165
+msgid "Category Archives"
+msgstr ""
+
+#: views/widgets-location.php:145
+msgid "Authors"
+msgstr ""
+
+#: views/widgets-location.php:176
+msgid "Author Archives"
+msgstr ""
+
+#: views/widgets-location.php:187 views/widgets.php:42
+msgid "Save Changes"
+msgstr ""
+
+#: views/widgets.php:21
+msgid "Create a new sidebar"
+msgstr ""
+
+#: views/widgets.php:40
+msgid "Edit [Sidebar]"
+msgstr ""
+
+#: views/widgets.php:41
+msgid "New Custom Sidebar"
+msgstr ""
+
+#: views/widgets.php:44
+msgid "Delete Sidebar"
+msgstr ""
+
+#: views/widgets.php:45
+msgid "Define where you want this sidebar to appear."
+msgstr ""
+
+#: views/widgets.php:48
+msgid "Theme Sidebars"
+msgstr ""
+
+#: views/widgets.php:49
+msgid "Couldn't load data from WordPress..."
+msgstr ""
+
+#: views/widgets.php:50 views/widgets.php:104
+msgid "This sidebar can be replaced on certain pages"
+msgstr ""
+
+#: views/widgets.php:51
+msgid ""
+"Activate this option to replace the sidebar with one of your custom "
+"sidebars."
+msgstr ""
+
+#: views/widgets.php:52
+msgid "Filter..."
+msgstr ""
+
+#: views/widgets.php:68
+msgid "Delete this sidebar."
+msgstr ""
+
+#: views/widgets.php:77
+msgid "Edit this sidebar."
+msgstr ""
+
+#: views/widgets.php:79
+msgid "Edit"
+msgstr ""
+
+#: views/widgets.php:86 views/widgets.php:123
+msgid "Where do you want to show the sidebar?"
+msgstr ""
+
+#: views/widgets.php:88 views/widgets.php:125
+msgid "Sidebar Location"
+msgstr ""
+
+#: views/widgets.php:105
+msgid "This sidebar will always be same on all pages"
+msgstr ""
+
+#: views/widgets.php:114
+msgid "Allow this sidebar to be replaced"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Custom Sidebars Pro"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://premium.wpmudev.org/project/custom-sidebars/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Allows you to create widgetized areas and custom sidebars. Replace whole "
+"sidebars or single widgets for specific posts and pages."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "WPMU DEV"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://premium.wpmudev.org/"
+msgstr ""

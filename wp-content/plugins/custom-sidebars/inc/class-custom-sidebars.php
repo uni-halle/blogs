@@ -4,6 +4,7 @@
 require_once CSB_INC_DIR . 'class-custom-sidebars-widgets.php';
 require_once CSB_INC_DIR . 'class-custom-sidebars-editor.php';
 require_once CSB_INC_DIR . 'class-custom-sidebars-replacer.php';
+
 require_once CSB_INC_DIR . 'class-custom-sidebars-explain.php';
 
 
@@ -50,7 +51,7 @@ class CustomSidebars {
 		static $Inst = null;
 
 		// We can initialize the plugin once we know the current user:
-		// The WDev()->pointer() notification is based on current user...
+		// The lib3()->html->pointer() notification is based on current user...
 		if ( ! did_action( 'set_current_user' ) ) {
 			add_action( 'set_current_user', array( __CLASS__, 'instance' ) );
 			return null;
@@ -68,6 +69,9 @@ class CustomSidebars {
 	 * We directly initialize sidebar options when class is created.
 	 */
 	private function __construct() {
+		$plugin_title = 'Custom Sidebars';
+		
+
 		/**
 		 * ID of the WP-Pointer used to introduce the plugin upon activation
 		 *
@@ -78,14 +82,14 @@ class CustomSidebars {
 		 *  Description:  Create and edit custom sidebars in your widget screen!
 		 * -------------------------------------------------------------------------
 		 */
-		WDev()->pointer(
+		lib3()->html->pointer(
 			'wpmudcs1',                               // Internal Pointer-ID
 			'#menu-appearance',                       // Point at
-			__( 'Custom Sidebars', CSB_LANG ),    // Title
+			$plugin_title,
 			sprintf(
 				__(
 					'Now you can create and edit custom sidebars in your ' .
-					'<a href="%1$s">Widgets screen</a>!', CSB_LANG
+					'<a href="%1$s">Widgets screen</a>!', 'custom-sidebars'
 				),
 				admin_url( 'widgets.php' )
 			)                                         // Body
@@ -97,15 +101,15 @@ class CustomSidebars {
 
 		// We don't support accessibility mode. Display a note to the user.
 		if ( true === self::$accessibility_mode ) {
-			WDev()->message(
+			lib3()->ui->admin_message(
 				sprintf(
 					__(
 						'<strong>Accessibility mode is not supported by the
 						%1$s plugin.</strong><br /><a href="%2$s">Click here</a>
 						to disable accessibility mode and use the %1$s plugin!',
-						CSB_LANG
+						'custom-sidebars'
 					),
-					'Custom Sidebars',
+					$plugin_title,
 					admin_url( 'widgets.php?widgets-access=off' )
 				),
 				'err',
@@ -113,11 +117,11 @@ class CustomSidebars {
 			);
 		} else {
 			// Load javascripts/css files
-			WDev()->add_ui( 'core', 'widgets.php' );
-			WDev()->add_ui( 'scrollbar', 'widgets.php' );
-			WDev()->add_ui( 'select', 'widgets.php' );
-			WDev()->add_ui( CSB_JS_URL . 'cs.min.js', 'widgets.php' );
-			WDev()->add_ui( CSB_CSS_URL . 'cs.css', 'widgets.php' );
+			lib3()->ui->add( 'core', 'widgets.php' );
+			lib3()->ui->add( 'select', 'widgets.php' );
+			lib3()->ui->add( CSB_JS_URL . 'cs.min.js', 'widgets.php' );
+			lib3()->ui->add( CSB_CSS_URL . 'cs.css', 'widgets.php' );
+			lib3()->ui->add( CSB_CSS_URL . 'cs.css', 'edit.php' );
 
 			// AJAX actions
 			add_action( 'wp_ajax_cs-ajax', array( $this, 'ajax_handler' ) );
@@ -140,12 +144,15 @@ class CustomSidebars {
 				$msg = wp_kses( $msg, $kses_args );
 
 				if ( ! empty( $msg ) ) {
-					WDev()->message( $msg );
+					lib3()->ui->admin_message( $msg );
 				}
 			}
 
-			// Free version only
-			add_action( 'in_widget_form', array( $this, 'in_widget_form' ), 10, 1 );
+			add_action(
+				'in_widget_form',
+				array( $this, 'in_widget_form' ),
+				10, 1
+			);
 		}
 	}
 
@@ -245,7 +252,7 @@ class CustomSidebars {
 	static public function get_array( $val1, $val2 = array() ) {
 		if ( is_array( $val1 ) ) {
 			return $val1;
-		} else if ( is_array( $val2 ) ) {
+		} elseif ( is_array( $val2 ) ) {
 			return $val2;
 		} else {
 			return array();
@@ -280,6 +287,32 @@ class CustomSidebars {
 			 * In version 2.0 four config values have been renamed and are
 			 * migrated in the following block:
 			 */
+
+			/**
+			 * set defaults
+			 */
+			$keys = array(
+				'authors',
+				'blog',
+				'category_archive',
+				'category_pages',
+				'category_posts',
+				'category_single',
+				'date',
+				'defaults',
+				'post_type_archive',
+				'post_type_pages',
+				'post_type_single',
+				'search',
+				'tags'
+			);
+
+			foreach ( $keys as $k ) {
+				if ( isset( $Options[ $k ] ) ) {
+					continue;
+				}
+				$Options[ $k ] = null;
+			}
 
 			// Single/Archive pages - new names
 			$Options['post_type_single'] = self::get_array(
@@ -438,13 +471,12 @@ class CustomSidebars {
 		$cs_sidebars = self::get_custom_sidebars();
 		$delete_widgetized_sidebars = array();
 
-
 		foreach ( $widgetized_sidebars as $id => $bar ) {
 			if ( substr( $id, 0, 3 ) == self::$sidebar_prefix ) {
-				$found = FALSE;
+				$found = false;
 				foreach ( $cs_sidebars as $csbar ) {
 					if ( $csbar['id'] == $id ) {
-						$found = TRUE;
+						$found = true;
 					}
 				}
 				if ( ! $found ) {
@@ -457,12 +489,12 @@ class CustomSidebars {
 		foreach ( $cs_sidebars as $cs ) {
 			$sb_id = $cs['id'];
 			if ( ! in_array( $sb_id, $all_ids ) ) {
-				$widgetized_sidebars[$sb_id] = array();
+				$widgetized_sidebars[ $sb_id ] = array();
 			}
 		}
 
 		foreach ( $delete_widgetized_sidebars as $id ) {
-			unset( $widgetized_sidebars[$id] );
+			unset( $widgetized_sidebars[ $id ] );
 		}
 
 		update_option( 'sidebars_widgets', $widgetized_sidebars );
@@ -475,7 +507,7 @@ class CustomSidebars {
 	 * @since  2.0
 	 */
 	static public function get_post_meta( $post_id ) {
-		$data = get_post_meta( $post_id, '_cs_replacements', TRUE );
+		$data = get_post_meta( $post_id, '_cs_replacements', true );
 		if ( ! is_array( $data ) ) {
 			$data = array();
 		}
@@ -507,31 +539,31 @@ class CustomSidebars {
 	 */
 	static public function get_sidebars( $type = 'theme' ) {
 		global $wp_registered_sidebars;
-		$allsidebars = $wp_registered_sidebars;
+		$allsidebars = CustomSidebars::sort_sidebars_by_name( $wp_registered_sidebars );
 		$result = array();
 
 		// Remove inactive sidebars.
 		foreach ( $allsidebars as $sb_id => $sidebar ) {
 			if ( false !== strpos( $sidebar['class'], 'inactive-sidebar' ) ) {
-				unset( $allsidebars[$sb_id] );
+				unset( $allsidebars[ $sb_id ] );
 			}
 		}
 
 		ksort( $allsidebars );
-		if ( $type == 'all' ) {
+		if ( 'all' == $type ) {
 			$result = $allsidebars;
-		} else if ( $type == 'cust' ) {
+		} elseif ( 'cust' == $type ) {
 			foreach ( $allsidebars as $key => $sb ) {
 				// Only keep custom sidebars in the results.
 				if ( substr( $key, 0, 3 ) == self::$sidebar_prefix ) {
-					$result[$key] = $sb;
+					$result[ $key ] = $sb;
 				}
 			}
-		} else if ( $type == 'theme' ) {
+		} elseif ( 'theme' == $type ) {
 			foreach ( $allsidebars as $key => $sb ) {
 				// Remove custom sidebars from results.
 				if ( substr( $key, 0, 3 ) != self::$sidebar_prefix ) {
-					$result[$key] = $sb;
+					$result[ $key ] = $sb;
 				}
 			}
 		}
@@ -625,7 +657,7 @@ class CustomSidebars {
 	static public function get_post_types( $type = 'names' ) {
 		$Valid = array();
 
-		if ( $type != 'objects' ) {
+		if ( 'objects' != $type ) {
 			$type = 'names';
 		}
 
@@ -672,7 +704,7 @@ class CustomSidebars {
 
 		if ( ! isset( $Sorted[ $post_id ] ) ) {
 			$Sorted[ $post_id ] = get_the_category( $post_id );
-			@usort( $Sorted[ $post_id ], array( self, 'cmp_cat_level' ) );
+			usort( $Sorted[ $post_id ], array( __CLASS__, 'cmp_cat_level' ) );
 		}
 		return $Sorted[ $post_id ];
 	}
@@ -696,7 +728,7 @@ class CustomSidebars {
 	 * Helper function used to sort categories.
 	 */
 	static public function get_category_level( $catid ) {
-		if ( $catid == 0 ) {
+		if ( ! $catid ) {
 			return 0;
 		}
 
@@ -713,26 +745,29 @@ class CustomSidebars {
 	/**
 	 * Callback for in_widget_form action
 	 *
-	 * Free version only
+	 * Free version only.
 	 *
 	 * @since 2.0.1
 	 */
 	public function in_widget_form( $widget ) {
+		
+		if ( CSB_IS_PRO ) { return; }
 		?>
 		<input type="hidden" name="csb-buttons" value="0" />
-		<?php if ( ! isset( $_POST[ 'csb-buttons' ] ) ) : ?>
+		<?php if ( ! isset( $_POST['csb-buttons'] ) ) : ?>
 			<div class="csb-pro-layer csb-pro-<?php echo esc_attr( $widget->id ); ?>">
-				<a href="#" class="button csb-clone-button"><?php _e( 'Clone', CSB_LANG ); ?></a>
-				<a href="#" class="button csb-visibility-button"><span class="dashicons dashicons-visibility"></span> <?php _e( 'Visibility', CSB_LANG ); ?></a>
+				<a href="#" class="button csb-clone-button"><?php _e( 'Clone', 'custom-sidebars' ); ?></a>
+				<a href="#" class="button csb-visibility-button"><span class="dashicons dashicons-visibility"></span> <?php _e( 'Visibility', 'custom-sidebars' ); ?></a>
 				<a href="<?php echo esc_url( CustomSidebars::$pro_url ); ?>" target="_blank" class="pro-info">
 				<?php printf(
-					__( 'Pro Version Features', CSB_LANG ),
+					__( 'Pro Version Features', 'custom-sidebars' ),
 					CustomSidebars::$pro_url
 				); ?>
 				</a>
 			</div>
 		<?php
 		endif;
+		
 	}
 
 
@@ -836,4 +871,54 @@ class CustomSidebars {
 		 */
 		do_action( 'cs_ajax_request_get', $get_action );
 	}
+
+	/**
+	 * This function will sort an array by key 'name'.
+	 *
+	 * @since 2.1.1.2
+	 *
+	 * @param $a Mixed - first value to compare.
+	 * @param $b Mixed - secound  value to compare.
+	 * @return integer value of comparation.
+	 */
+	public static function sort_sidebars_cmp_function( $a, $b ) {
+		if ( ! isset( $a['name'] ) || ! isset( $b['name'] ) ) {
+			return 0;
+		}
+		if ( function_exists( 'mb_strtolower' ) ) {
+			$a_name = mb_strtolower($a['name']);
+			$b_name = mb_strtolower($b['name']);
+		} else {
+			$a_name = strtolower($a['name']);
+			$b_name = strtolower($b['name']);
+		}
+		if ( $a_name == $b_name ) {
+			return 0;
+		}
+		return ($a_name < $b_name ) ? -1 : 1;
+	}
+
+	/**
+	 * Returns sidebars sorted by name.
+	 *
+	 * @since 2.1.1.2
+	 *
+	 * @param array $available Array of sidebars.
+	 * @return  array Sorted array of sidebars.
+	 */
+	public static function sort_sidebars_by_name( $available ) {
+		if ( empty( $available ) ) {
+			return $available;
+		}
+		foreach( $available as $key => $data ) {
+			$available[$key]['cs-key'] = $key;
+		}
+		usort( $available, array( __CLASS__, 'sort_sidebars_cmp_function' ) );
+		$sorted = array();
+		foreach( $available as $data ) {
+			$sorted[$data['cs-key']] = $data;
+		}
+		return $sorted;
+	}
+
 };

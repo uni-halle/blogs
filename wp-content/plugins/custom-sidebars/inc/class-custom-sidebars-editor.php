@@ -46,6 +46,8 @@ class CustomSidebarsEditor extends CustomSidebars {
 				'cs_ajax_request',
 				array( $this, 'handle_ajax' )
 			);
+
+			
 		}
 	}
 
@@ -59,8 +61,11 @@ class CustomSidebarsEditor extends CustomSidebars {
 		$is_json = true;
 		$handle_it = false;
 		$view_file = '';
+		$sb_id = '';
 
-		$sb_id = @$_POST['sb'];
+		if ( isset( $_POST['sb'] ) ) {
+			$sb_id = $_POST['sb'];
+		}
 
 		switch ( $action ) {
 			case 'get':
@@ -86,7 +91,7 @@ class CustomSidebarsEditor extends CustomSidebars {
 		if ( ! current_user_can( self::$cap_required ) ) {
 			$req = self::req_err(
 				$req,
-				__( 'You do not have permission for this', CSB_LANG )
+				__( 'You do not have permission for this', 'custom-sidebars' )
 			);
 		} else {
 			switch ( $action ) {
@@ -147,7 +152,7 @@ class CustomSidebarsEditor extends CustomSidebars {
 	 * @param  array $data Sidebar data to save (typically this is $_POST).
 	 * @return object Updated response object.
 	 */
-	private function save_item( $req, $data )  {
+	private function save_item( $req, $data ) {
 		$sidebars = self::get_custom_sidebars();
 		$sb_id = $req->id;
 		$sb_desc = stripslashes( trim( @$_POST['description'] ) );
@@ -161,7 +166,7 @@ class CustomSidebarsEditor extends CustomSidebars {
 		if ( empty( $sb_name ) ) {
 			return self::req_err(
 				$req,
-				__( 'Sidebar-name cannot be empty', CSB_LANG )
+				__( 'Sidebar-name cannot be empty', 'custom-sidebars' )
 			);
 		}
 
@@ -185,14 +190,14 @@ class CustomSidebarsEditor extends CustomSidebars {
 			if ( ! $sidebar ) {
 				return self::req_err(
 					$req,
-					__( 'The sidebar does not exist', CSB_LANG )
+					__( 'The sidebar does not exist', 'custom-sidebars' )
 				);
 			}
 		}
 
 		if ( function_exists( 'mb_strlen' ) ) {
-		if ( mb_strlen( $sb_desc ) > 200 ) {
-			$sb_desc = mb_substr( $sb_desc, 0, 200 );
+			if ( mb_strlen( $sb_desc ) > 200 ) {
+				$sb_desc = mb_substr( $sb_desc, 0, 200 );
 			}
 		} else {
 			if ( strlen( $sb_desc ) > 200 ) {
@@ -201,17 +206,22 @@ class CustomSidebarsEditor extends CustomSidebars {
 		}
 
 		// Populate the sidebar object.
-		$sidebar['name'] = $sb_name;
-		$sidebar['description'] = $sb_desc;
+		if ( ! CSB_IS_PRO  ) {
+			$sidebar['name'] = $sb_name;
+			$sidebar['description'] = $sb_desc;
+		} else {
+			$sidebar['name_lang'] = $sb_name;
+			$sidebar['description_lang'] = $sb_desc;
+		}
 		$sidebar['before_widget'] = stripslashes( trim( @$_POST['before_widget'] ) );
 		$sidebar['after_widget'] = stripslashes( trim( @$_POST['after_widget'] ) );
 		$sidebar['before_title'] = stripslashes( trim( @$_POST['before_title'] ) );
 		$sidebar['after_title'] = stripslashes( trim( @$_POST['after_title'] ) );
 
-		if ( $action == 'insert' ) {
+		if ( 'insert' == $action ) {
 			$sidebars[] = $sidebar;
 			$req->message = sprintf(
-				__( 'Created new sidebar <strong>%1$s</strong>', CSB_LANG ),
+				__( 'Created new sidebar <strong>%1$s</strong>', 'custom-sidebars' ),
 				esc_html( $sidebar['name'] )
 			);
 		} else {
@@ -219,7 +229,7 @@ class CustomSidebarsEditor extends CustomSidebars {
 			foreach ( $sidebars as $ind => $item ) {
 				if ( $item['id'] == $sb_id ) {
 					$req->message = sprintf(
-						__( 'Updated sidebar <strong>%1$s</strong>', CSB_LANG ),
+						__( 'Updated sidebar <strong>%1$s</strong>', 'custom-sidebars' ),
 						esc_html( $sidebar['name'] )
 					);
 					$sidebars[ $ind ] = $sidebar;
@@ -230,7 +240,7 @@ class CustomSidebarsEditor extends CustomSidebars {
 			if ( ! $found ) {
 				return self::req_err(
 					$req,
-					__( 'The sidebar was not found', CSB_LANG )
+					__( 'The sidebar was not found', 'custom-sidebars' )
 				);
 			}
 		}
@@ -239,8 +249,10 @@ class CustomSidebarsEditor extends CustomSidebars {
 		self::set_custom_sidebars( $sidebars );
 		self::refresh_sidebar_widgets();
 
-		$req->action = $action;
 		$req->data = $sidebar;
+		$req->action = $action;
+
+		
 
 		return $req;
 	}
@@ -259,7 +271,7 @@ class CustomSidebarsEditor extends CustomSidebars {
 		if ( ! $sidebar ) {
 			return self::req_err(
 				$req,
-				__( 'The sidebar does not exist', CSB_LANG )
+				__( 'The sidebar does not exist', 'custom-sidebars' )
 			);
 		}
 
@@ -268,7 +280,7 @@ class CustomSidebarsEditor extends CustomSidebars {
 			if ( $item['id'] == $req->id ) {
 				$found = true;
 				$req->message = sprintf(
-					__( 'Deleted sidebar <strong>%1$s</strong>', CSB_LANG ),
+					__( 'Deleted sidebar <strong>%1$s</strong>', 'custom-sidebars' ),
 					esc_html( $req->sidebar['name'] )
 				);
 				unset( $sidebars[ $ind ] );
@@ -279,7 +291,7 @@ class CustomSidebarsEditor extends CustomSidebars {
 		if ( ! $found ) {
 			return self::req_err(
 				$req,
-				__( 'The sidebar was not found', CSB_LANG )
+				__( 'The sidebar was not found', 'custom-sidebars' )
 			);
 		}
 
@@ -310,7 +322,7 @@ class CustomSidebarsEditor extends CustomSidebars {
 			$req->status = false;
 			foreach ( $options['modifiable'] as $i => $sb_id ) {
 				if ( $sb_id == $req->id ) {
-					unset( $options['modifiable'][$i] );
+					unset( $options['modifiable'][ $i ] );
 					break;
 				}
 			}
@@ -337,18 +349,21 @@ class CustomSidebarsEditor extends CustomSidebars {
 		$raw_cat = self::get_all_categories();
 
 		$archive_type = array(
-			'_blog' => __( 'Front Page', CSB_LANG ),
-			'_search' => __( 'Search Results', CSB_LANG ),
-			'_404' => __( 'Not found (404)', CSB_LANG ),
-			'_authors' => __( 'Any Author Archive', CSB_LANG ),
-			'_tags' => __( 'Tag Archives', CSB_LANG ),
-			'_date' => __( 'Date Archives', CSB_LANG ),
+			'_blog' => __( 'Front Page', 'custom-sidebars' ),
+			'_search' => __( 'Search Results', 'custom-sidebars' ),
+			'_404' => __( 'Not found (404)', 'custom-sidebars' ),
+			'_authors' => __( 'Any Author Archive', 'custom-sidebars' ),
+			'_tags' => __( 'Tag Archives', 'custom-sidebars' ),
+			'_date' => __( 'Date Archives', 'custom-sidebars' ),
 		);
+
+		$raw_authors = array();
+		
 
 		// Collect required data for all posttypes.
 		$posttypes = array();
 		foreach ( $raw_posttype as $item ) {
-			$sel_single = @$defaults['post_type_single'][$item->name];
+			$sel_single = @$defaults['post_type_single'][ $item->name ];
 
 			$posttypes[ $item->name ] = array(
 				'name' => $item->labels->name,
@@ -359,8 +374,8 @@ class CustomSidebarsEditor extends CustomSidebars {
 		// Extract the data from categories list that we need.
 		$categories = array();
 		foreach ( $raw_cat as $item ) {
-			$sel_single = @$defaults['category_single'][$item->term_id];
-			$sel_archive = @$defaults['category_archive'][$item->term_id];
+			$sel_single = @$defaults['category_single'][ $item->term_id ];
+			$sel_archive = @$defaults['category_archive'][ $item->term_id ];
 
 			$categories[ $item->term_id ] = array(
 				'name' => $item->name,
@@ -374,16 +389,16 @@ class CustomSidebarsEditor extends CustomSidebars {
 		$archives = array(); // Start with a copy of the posttype list.
 		foreach ( $raw_posttype as $item ) {
 			if ( $item->name == 'post' ) {
-				$label = __( 'Post Index', CSB_LANG );
+				$label = __( 'Post Index', 'custom-sidebars' );
 			} else {
 				if ( ! $item->has_archive ) { continue; }
 				$label = sprintf(
-					__( '%1$s Archives', CSB_LANG ),
+					__( '%1$s Archives', 'custom-sidebars' ),
 					$item->labels->singular_name
 				);
 			}
 
-			$sel_archive = @$defaults['post_type_archive'][$item->name];
+			$sel_archive = @$defaults['post_type_archive'][ $item->name ];
 
 			$archives[ $item->name ] = array(
 				'name' => $label,
@@ -399,6 +414,8 @@ class CustomSidebarsEditor extends CustomSidebars {
 				'archive' => self::get_array( $sel_archive ),
 			);
 		}
+
+		
 
 		$req->replaceable = $defaults['modifiable'];
 		$req->posttypes = $posttypes;
@@ -421,7 +438,19 @@ class CustomSidebarsEditor extends CustomSidebars {
 		$sidebars = $options['modifiable'];
 		$raw_posttype = self::get_post_types( 'objects' );
 		$raw_cat = self::get_all_categories();
-		$data = @$_POST['cs'];
+		$data = array();
+
+		foreach ( $_POST as $key => $value ) {
+			if ( strlen( $key ) > 8 && '___cs___' == substr( $key, 0, 8 ) ) {
+				list( $prefix, $id ) = explode( '___', substr( $key, 8 ) );
+
+				if ( ! isset( $data[ $prefix ] ) ) {
+					$data[ $prefix ] = array();
+				}
+				$data[ $prefix ][ $id ] = $value;
+			}
+		}
+
 		$special_arc = array(
 			'blog',
 			'404',
@@ -431,6 +460,9 @@ class CustomSidebarsEditor extends CustomSidebars {
 			'date',
 		);
 
+		$raw_authors = array();
+		
+
 		// == Update the options
 
 		foreach ( $sidebars as $sb_id ) {
@@ -438,29 +470,27 @@ class CustomSidebarsEditor extends CustomSidebars {
 			foreach ( $raw_posttype as $item ) {
 				$pt = $item->name;
 				if (
-					is_array( @$data['pt'][$sb_id] ) &&
-					in_array( $pt, $data['pt'][$sb_id] )
+					is_array( @$data['pt'][ $sb_id ] ) &&
+					in_array( $pt, $data['pt'][ $sb_id ] )
 				) {
-					$options['post_type_single'][$pt][$sb_id] = $req->id;
-				} else
-				if (
-					isset( $options['post_type_single'][$pt][$sb_id] ) &&
-					$options['post_type_single'][$pt][$sb_id] == $req->id
+					$options['post_type_single'][ $pt ][ $sb_id ] = $req->id;
+				} elseif (
+					isset( $options['post_type_single'][ $pt ][ $sb_id ] ) &&
+					$options['post_type_single'][ $pt ][ $sb_id ] == $req->id
 				) {
-					unset( $options['post_type_single'][$pt][$sb_id] );
+					unset( $options['post_type_single'][ $pt ][ $sb_id ] );
 				}
 
 				if (
-					is_array( @$data['arc'][$sb_id] ) &&
-					in_array( $pt, $data['arc'][$sb_id] )
+					is_array( @$data['arc'][ $sb_id ] ) &&
+					in_array( $pt, $data['arc'][ $sb_id ] )
 				) {
-					$options['post_type_archive'][$pt][$sb_id] = $req->id;
-				} else
-				if (
-					isset( $options['post_type_archive'][$pt][$sb_id] ) &&
-					$options['post_type_archive'][$pt][$sb_id] == $req->id
+					$options['post_type_archive'][ $pt ][ $sb_id ] = $req->id;
+				} elseif (
+					isset( $options['post_type_archive'][ $pt ][ $sb_id ] ) &&
+					$options['post_type_archive'][ $pt ][ $sb_id ] == $req->id
 				) {
-					unset( $options['post_type_archive'][$pt][$sb_id] );
+					unset( $options['post_type_archive'][ $pt ][ $sb_id ] );
 				}
 			}
 
@@ -468,50 +498,49 @@ class CustomSidebarsEditor extends CustomSidebars {
 			foreach ( $raw_cat as $item ) {
 				$cat = $item->term_id;
 				if (
-					is_array( @$data['cat'][$sb_id] ) &&
-					in_array( $cat, $data['cat'][$sb_id] )
+					is_array( @$data['cat'][ $sb_id ] ) &&
+					in_array( $cat, $data['cat'][ $sb_id ] )
 				) {
-					$options['category_single'][$cat][$sb_id] = $req->id;
-				} else
-				if (
-					isset( $options['category_single'][$cat][$sb_id] ) &&
-					$options['category_single'][$cat][$sb_id] == $req->id
+					$options['category_single'][ $cat ][ $sb_id ] = $req->id;
+				} elseif (
+					isset( $options['category_single'][ $cat ][ $sb_id ] ) &&
+					$options['category_single'][ $cat ][ $sb_id ] == $req->id
 				) {
-					unset( $options['category_single'][$cat][$sb_id] );
+					unset( $options['category_single'][ $cat ][ $sb_id ] );
 				}
 
 				if (
-					is_array( @$data['arc-cat'][$sb_id] ) &&
-					in_array( $cat, $data['arc-cat'][$sb_id] )
+					is_array( @$data['arc-cat'][ $sb_id ] ) &&
+					in_array( $cat, $data['arc-cat'][ $sb_id ] )
 				) {
-					$options['category_archive'][$cat][$sb_id] = $req->id;
-				} else
-				if (
-					isset( $options['category_archive'][$cat][$sb_id] ) &&
-					$options['category_archive'][$cat][$sb_id] == $req->id
+					$options['category_archive'][ $cat ][ $sb_id ] = $req->id;
+				} elseif (
+					isset( $options['category_archive'][ $cat ][ $sb_id ] ) &&
+					$options['category_archive'][ $cat ][ $sb_id ] == $req->id
 				) {
-					unset( $options['category_archive'][$cat][$sb_id] );
+					unset( $options['category_archive'][ $cat ][ $sb_id ] );
 				}
 			}
 
 			foreach ( $special_arc as $key ) {
 				if (
-					is_array( @$data['arc'][$sb_id] ) &&
-					in_array( '_' . $key, $data['arc'][$sb_id] )
+					is_array( @$data['arc'][ $sb_id ] ) &&
+					in_array( '_' . $key, $data['arc'][ $sb_id ] )
 				) {
-					$options[$key][$sb_id] = $req->id;
-				} else
-				if (
-					isset( $options[$key][$sb_id] ) &&
-					$options[$key][$sb_id] == $req->id
+					$options[ $key ][ $sb_id ] = $req->id;
+				} elseif (
+					isset( $options[ $key ][ $sb_id ] ) &&
+					$options[ $key ][ $sb_id ] == $req->id
 				) {
-					unset( $options[$key][$sb_id] );
+					unset( $options[ $key ][ $sb_id ] );
 				}
 			}
+
+			
 		}
 
 		$req->message = sprintf(
-			__( 'Updated sidebar <strong>%1$s</strong> settings.', CSB_LANG ),
+			__( 'Updated sidebar <strong>%1$s</strong> settings.', 'custom-sidebars' ),
 			esc_html( $req->sidebar['name'] )
 		);
 		self::set_options( $options );
@@ -547,7 +576,7 @@ class CustomSidebarsEditor extends CustomSidebars {
 		if ( $pt_obj->publicly_queryable || $pt_obj->public ) {
 			add_meta_box(
 				'customsidebars-mb',
-				__( 'Sidebars', CSB_LANG ),
+				__( 'Sidebars', 'custom-sidebars' ),
 				array( $this, 'print_metabox_editor' ),
 				$post_type,
 				'side'
@@ -564,6 +593,13 @@ class CustomSidebarsEditor extends CustomSidebars {
 	}
 
 	/**
+	 * Renders the sidebar-fields inside the quick-edit form.
+	 */
+	public function print_metabox_quick() {
+		$this->print_sidebars_form( 0, 'quick-edit' );
+	}
+
+	/**
 	 * Renders the Custom Sidebars form.
 	 *
 	 * @param  int $post_id The post-ID to display
@@ -571,24 +607,33 @@ class CustomSidebarsEditor extends CustomSidebars {
 	 */
 	protected function print_sidebars_form( $post_id, $type = 'metabox' ) {
 		global $wp_registered_sidebars;
-
+		$available = CustomSidebars::sort_sidebars_by_name( $wp_registered_sidebars );
 		$replacements = self::get_replacements( $post_id );
-
-		$available = $wp_registered_sidebars;
-		ksort( $available );
 		$sidebars = self::get_options( 'modifiable' );
 		$selected = array();
 		if ( ! empty( $sidebars ) ) {
 			foreach ( $sidebars as $s ) {
-				if ( isset( $replacements[$s] ) ) {
-					$selected[$s] = $replacements[$s];
+				if ( isset( $replacements[ $s ] ) ) {
+					$selected[ $s ] = $replacements[ $s ];
 				} else {
-					$selected[$s] = '';
+					$selected[ $s ] = '';
 				}
 			}
 		}
 
-		include CSB_VIEWS_DIR . 'metabox.php';
+		switch ( $type ) {
+			case 'col-sidebars':
+				include CSB_VIEWS_DIR . 'col-sidebars.php';
+				break;
+
+			case 'quick-edit':
+				include CSB_VIEWS_DIR . 'quick-edit.php';
+				break;
+
+			default:
+				include CSB_VIEWS_DIR . 'metabox.php';
+				break;
+		}
 	}
 
 	public function store_replacements( $post_id ) {
@@ -612,7 +657,7 @@ class CustomSidebarsEditor extends CustomSidebars {
 		 * 'inline-save' .. Saved via the quick-edit form.
 		 * We do not (yet) offer a bulk-editing option for custom sidebars.
 		 */
-		if ( $action != 'editpost' ) {
+		if ( ( isset( $_POST['action'] ) && 'inline-save' == $_POST['action'] ) || 'editpost' != $action  ) {
 			return $post_id;
 		}
 
@@ -627,7 +672,7 @@ class CustomSidebarsEditor extends CustomSidebars {
 			foreach ( $sidebars as $sb_id ) {
 				if ( isset( $_POST[ 'cs_replacement_' . $sb_id ] ) ) {
 					$replacement = $_POST[ 'cs_replacement_' . $sb_id ];
-					if ( ! empty( $replacement ) && $replacement != '' ) {
+					if ( ! empty( $replacement ) ) {
 						$data[ $sb_id ] = $replacement;
 					}
 				}
@@ -637,4 +682,5 @@ class CustomSidebarsEditor extends CustomSidebars {
 		self::set_post_meta( $post_id, $data );
 	}
 
+	
 };

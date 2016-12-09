@@ -1,55 +1,62 @@
-=== Plugin Name ===
-Contributors: WPMUDEV, marquex, WPMUDEV-Support2,WPMUDEV-Support1, WPMUDEV-Support6,WPMUDEV-Support4, strackerphil-1
+=== Custom Sidebars ===
+Contributors: WPMUDEV, marquex, WPMUDEV-Support2, WPMUDEV-Support1, WPMUDEV-Support6, WPMUDEV-Support4, iworks
 Tags: custom sidebars, widgets, sidebars, custom, sidebar, widget, personalize
 Requires at least: 3.3
-Tested up to: 4.0
-Stable tag:   trunk
+Tested up to: 4.6.1
+Stable tag: 2.1.1.3
 
-Create your own widgetized areas and choose on which pages they show up - "Easy to use. Even with complex themes. Made my work much easier."
+Display custom widget configurations for every page or post on your site.
 
 == Description ==
 
-If you'd like to show different widgets on the sidebars or footers of any area of your site - then this is the plugin for you.
+If you'd like to be able to choose what widgets display on each page or post of your site, then this is the plugin you need.
 
-[youtube https://www.youtube.com/watch?v=J9ys4LtB7HY]
+Screen space is limited and you can quickly run out of room when trying to pack every widget for every page of your site into one sidebar and a few widgetized footer areas.
 
-Custom Sidebars allows you to create all the widgetized areas you need, your own custom sidebars, configure them adding widgets, and replace the default sidebars on the posts or pages you want in just few clicks.
+[youtube https://www.youtube.com/watch?v=7kgqwceGynA]
 
-Find out why it's the most popular widget extension plugin for WordPress available today with over 400,000 downloads.
+Custom Sidebars allows you to display custom widget configurations on any page, post, category, post type, or archive page.
 
-<blockquote>
-<h4>And if you like this, you'll love Custom Sidebars Pro</h4>
-<br />
-<a href="http://premium.wpmudev.org/project/custom-sidebars-pro/">Custom Sidebars Pro</a> gives you everything you'll find in Custom Sidebars, and much, much more.
+★★★★★ <br>
+"Custom Sidebars will go on my "essential plugins" list from now on. I am pleased by how easy it was to figure out and by how many options are available in the free version." - <a href="https://profiles.wordpress.org/monkeyhateclean">monkeyhateclean</a>
 
-Included with the Pro Version:
+★★★★★ <br>
+"This plugin does exactly what it says. It's light, integrates well into WordPress and gives you tons of possibilities." - <a href="https://profiles.wordpress.org/darknova11">DarkNova</a>
 
+Every part of Custom Sidebars integrates seamlessly with the Widgets menu for simplicity and control. No confusing settings pages or added menu items, just simple core integration.
+
+<blockquote><h4>Simple. Powerful.</h4>
+<br>
+<strong>Custom Sidebars Includes:</strong>
 <ul>
-<li>Set widget visibility based on rules ranging from user roles to post types, individual pages or taxonomies</li>
-<li>Clone sidebars to save hours of work and then link them to update synchronously or allow them to be individually edited</li>
-<li>Import and export custom sidebars for easy backup, sharing and deployment across multiple sites</li>
-<li>24/7/365 under and hour support from <a href="http://premium.wpmudev.org/support/">the best WordPress support team on the planet</a></li>
-<li><a href="http://premium.wpmudev.org/join/">Over 400 other premium plugins and theme</a> included in your membership</li>
+  <li>Unlimited custom widget configurations</li>
+  <li>Set custom widgets for individual posts and pages, categories, post types, and archives</li>
+  <li>Seamless integration with the WordPress Widgets menu</li>
+  <li>Works with well-coded themes and doesn’t slow down your site</li>
 </ul>
 
-So checkout <a href="http://premium.wpmudev.org/project/custom-sidebars-pro/">Custom Sidebars Pro</a> and take your site to a brand new level.
+Install Custom Sidebars and see for yourself why it's the most popular widget extension plugin available for WordPress with over 200,000 downloads.
+<br>
 </blockquote>
 
-The free version is pretty rocking too though, for example, with this plugin you can customize every widget area by setting new default sidebars for a group of posts or pages easily, keeping the chance of changing them individually.
-
-For example, you can change...
-
+<h4>Need more control?</h4>
+<br>
+If you want more targeted controls checkout <a href="http://premium.wpmudev.org/project/custom-sidebars-pro/">Custom Sidebars Pro:</a>
 <ul>
-<li>Sidebars for all the posts that belong to a category.</li>
-<li>Sidebars for all the posts that belong to a post-type.</li>
-<li>Sidebars for archives (by category, post-type, author, tag).</li>
-<li>Sidebars for the main blog page.</li>
-<li>Sidebars for search results.</li>
+	<li>Set individual widget visibility – for guests, by user role, by post type, for special pages or categories</li>
+	<li>Author specific sidebars – display a custom sidebar for each of your authors</li>
+	<li>Clone and sync widget settings – quickly edit complex configurations</li>
+	<li>Import and export custom sidebars – backup and share sidebars</li>
+	<li><a href="https://premium.wpmudev.org/support/">24/7 support</a> for all things WordPress</li>
+	<li><a href="http://premium.wpmudev.org/join/">100+ premium plugins, themes, support, updates and services</a> – Including Hummingbird pagespeed booster, Uptime monitoring and security hardening</li>
 </ul>
+Get Custom Sidebars or <a href="http://premium.wpmudev.org/project/custom-sidebars-pro/">Custom Sidebars Pro</a> for targeted marketing, better widgets for each level of your membership site, or just to clean up bloated content on each page. Download and try it for free!
 
-And of course both this plugin and the Pro version are <a href="http://premium.wpmudev.org/translate/projects/custom_sidebars_pro">fully internationalized</a>.
+== Screenshots ==
 
-And if you're not convinced yet, <a href="https://wordpress.org/support/view/plugin-reviews/custom-sidebars?filter=5">check out some of the 5 star reviews for this plugin</a> - and please feel free to add your own :)
+1. Set custom sidebars for indvidual posts and pages or by category, post-type, or archive.
+2. Create new sidebars without confusing settings.
+3. Integrates with WordPress core Widgets menu.
 
 == Installation ==
 
@@ -110,14 +117,33 @@ Custom Sidebars has the same license as WordPress, so you can use it wherever yo
 
 If you are running a earlier version of Wordpress download Custom Sidebars 0.8.2.
 
-== Screenshots ==
-
-1. screenshot-1.png The WordPress Widgets section is now packed with new features to create and manage your sidebars.
-2. screenshot-2.png Create and edit sidebars directly inside the widgets page. Easy and fast!
-3. screenshot-3.png In the Location popup you can decide what page should display which sidebars.
-4. screenshot-4.png Or finetune the sidebars by selecting them directly for a special post or page!
-
 == Changelog ==
+
+= 2.1.1.3 =
+* Added check if there the function "mb_strtolower".
+
+= 2.1.1.2 =
+* Sidebars are now sorted by name.
+
+= 2.1.1.1 =
+* Fixed a problem with unclickable items on widgets admin screen.
+
+= 2.1.1.0 =
+* Fixed undefined index in Sidebars Editor.
+
+= 2.1.0.9 =
+* Fixed issue with broken link icon for cloned widgets.
+
+= 2.1.0.8 =
+* Small improvements in the admin UI: Better scrolling, fix JS errors and PHP notices.
+* Update third party libraries.
+* Small improvements in code.
+
+= 2.1.0.4 =
+* Fix missing text-domain in translation
+
+= 2.1.0.3 =
+* Fix incompatibility with PopUp plugin
 
 = 2.1.0.2 =
 * Close possible security hole (XSS vulnerability)
