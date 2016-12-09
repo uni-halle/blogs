@@ -2,7 +2,7 @@
 /*
 Plugin Name: More Privacy Options
 Plugin URI:	http://wordpress.org/extend/plugins/more-privacy-options/
-Version: 4.3
+Version: 4.6
 Description: Add more privacy(visibility) options to a WordPress Multisite Network. Settings->Reading->Visibility:Network Users, Blog Members, or Admins Only. Network Settings->Network Visibility Selector: All Blogs Visible to Network Users Only or Visibility managed per blog as default.
 Author: D. Sader
 Author URI: http://dsader.snowotherway.org/
@@ -80,8 +80,8 @@ So, better may be PHP_SELF since we can wait for script to execute before decidi
 
 Finally, changing the hook to fire at send_headers rather than template_redirect allows the activation page on every site. Still shows template pages with headers/sidebars etc - so not ideal either. Hence my preference to redirect to the main site.
 
-//			//	add_action('template_redirect', array(&$this, 'ds_users_authenticator'));
-				add_action('send_headers', array(&$this, 'ds_users_authenticator'));
+//			//	add_action('template_redirect', array($this, 'ds_users_authenticator'));
+				add_action('send_headers', array($this, 'ds_users_authenticator'));
 
 So, I have the private functions the way I actually use them on my private sites/networks. I also do many activations as the SiteAdmin manually using other plugins.
 Therefore, the code in this revision may make blogs more private, but somewhat more inconvenient to activate, both features I desire.
@@ -90,14 +90,14 @@ We'll see how the feedback trickles in on this issue.
 
 */
 
-class ds_more_privacy_options {
+class DS_More_Privacy_Options {
 		var $l10n_prefix;
 
-	function ds_more_privacy_options() {
+	function __construct() {
 		global  $current_blog;
 		
 		if ( ! is_multisite() ) {
-			add_action( 'all_admin_notices', array( &$this, 'display_not_multisite_notice' ) );
+			add_action( 'all_admin_notices', array( $this, 'display_not_multisite_notice' ) );
 			return false;
 		}
 		
@@ -106,19 +106,19 @@ class ds_more_privacy_options {
 		//------------------------------------------------------------------------//
 		//---Hooks-----------------------------------------------------------------//
 		//------------------------------------------------------------------------//
-				add_action( 'init', array(&$this, 'ds_localization_init' ));
+				add_action( 'init', array($this, 'ds_localization_init' ));
 			// Network->Settings
-				add_action( 'update_wpmu_options', array(&$this, 'sitewide_privacy_update'));
-				add_action( 'wpmu_options', array(&$this, 'sitewide_privacy_options_page'));
+				add_action( 'update_wpmu_options', array($this, 'sitewide_privacy_update'));
+				add_action( 'wpmu_options', array($this, 'sitewide_privacy_options_page'));
 			
 			// hooks into Misc Blog Actions in Network->Sites->Edit
-				add_action('wpmueditblogaction', array(&$this, 'wpmu_blogs_add_privacy_options'),-999);
+				add_action('wpmueditblogaction', array($this, 'wpmu_blogs_add_privacy_options'),-999);
 			// hooks into Blog Columns views Network->Sites
-				//add_filter( 'manage_sites-network_columns', array( &$this, 'add_sites_column' ), 10, 1);
-				//add_action( 'manage_sites_custom_column', array( &$this, 'manage_sites_custom_column' ), 10, 3);
+				//add_filter( 'manage_sites-network_columns', array( $this, 'add_sites_column' ), 10, 1);
+				//add_action( 'manage_sites_custom_column', array( $this, 'manage_sites_custom_column' ), 10, 3);
 
 			// hook into options-reading.php Dashboard->Settings->Reading.
-				add_action('blog_privacy_selector', array(&$this, 'add_privacy_options'));
+				add_action('blog_privacy_selector', array($this, 'add_privacy_options'));
 
 			// all three add_privacy_option get a redirect and a message in the Login form
 		$number = intval(get_site_option('ds_sitewide_privacy'));
@@ -126,41 +126,41 @@ class ds_more_privacy_options {
 		if (( '-1' == $current_blog->public ) || ($number == '-1')) {
 			
 			//wp_is_mobile() ? is send_headers or template_redirect better for mobiles?
-				add_action('template_redirect', array(&$this, 'ds_users_authenticator'));
-			//	add_action('send_headers', array(&$this, 'ds_users_authenticator'));
-				add_action('login_form', array(&$this, 'registered_users_login_message')); 
-				add_filter('privacy_on_link_title', array(&$this, 'registered_users_header_title'));
-				add_filter('privacy_on_link_text', array(&$this, 'registered_users_header_link') );
+				add_action('template_redirect', array($this, 'ds_users_authenticator'));
+			//	add_action('send_headers', array($this, 'ds_users_authenticator'));
+				add_action('login_form', array($this, 'registered_users_login_message')); 
+				add_filter('privacy_on_link_title', array($this, 'registered_users_header_title'));
+				add_filter('privacy_on_link_text', array($this, 'registered_users_header_link') );
 		}
 		if ( '-2' == $current_blog->public ) {
-				add_action('template_redirect', array(&$this, 'ds_members_authenticator'));
-			//	add_action('send_headers', array(&$this, 'ds_members_authenticator'));
-				add_action('login_form', array(&$this, 'registered_members_login_message')); 
-				add_filter('privacy_on_link_title', array(&$this, 'registered_members_header_title'));
-				add_filter('privacy_on_link_text', array(&$this, 'registered_members_header_link') );
+				add_action('template_redirect', array($this, 'ds_members_authenticator'));
+			//	add_action('send_headers', array($this, 'ds_members_authenticator'));
+				add_action('login_form', array($this, 'registered_members_login_message')); 
+				add_filter('privacy_on_link_title', array($this, 'registered_members_header_title'));
+				add_filter('privacy_on_link_text', array($this, 'registered_members_header_link') );
 
 		}
 		if ( '-3' == $current_blog->public ) {
-				add_action('template_redirect', array(&$this, 'ds_admins_authenticator'));
-			//	add_action('send_headers', array(&$this, 'ds_admins_authenticator'));
-				add_action('login_form', array(&$this, 'registered_admins_login_message'));
-				add_filter('privacy_on_link_title', array(&$this, 'registered_admins_header_title'));
-				add_filter('privacy_on_link_text', array(&$this, 'registered_admins_header_link') );
+				add_action('template_redirect', array($this, 'ds_admins_authenticator'));
+			//	add_action('send_headers', array($this, 'ds_admins_authenticator'));
+				add_action('login_form', array($this, 'registered_admins_login_message'));
+				add_filter('privacy_on_link_title', array($this, 'registered_admins_header_title'));
+				add_filter('privacy_on_link_text', array($this, 'registered_admins_header_link') );
 		}
 
 			// fixes robots.txt rules 
-				add_action('do_robots', array(&$this, 'do_robots'),1);
+				add_action('do_robots', array($this, 'do_robots'),1);
 
 			// fixes noindex meta as well
-				add_action('wp_head', array(&$this, 'noindex'),0);
-				add_action('login_head', array(&$this, 'noindex'),1);
+				add_action('wp_head', array($this, 'noindex'),0);
+				add_action('login_head', array($this, 'noindex'),1);
 
 			//no pings unless public either
-				add_filter('option_ping_sites', array(&$this, 'privacy_ping_filter'),1);
+				add_filter('option_ping_sites', array($this, 'privacy_ping_filter'),1);
 			//email SuperAdmin when privacy changes
-				add_action( 'update_blog_public', array(&$this,'ds_mail_super_admin'));
+				add_action( 'update_blog_public', array($this,'ds_mail_super_admin'));
 			// hook into signup form?
-				 add_action('signup_blogform', array(&$this, 'add_privacy_options'));
+				 add_action('signup_blogform', array($this, 'add_privacy_options'));
 
 	}
 	function display_not_multisite_notice() {
@@ -181,7 +181,7 @@ class ds_more_privacy_options {
 				$blogname = get_blog_option( $blog_id, 'blogname');
 			$email =  stripslashes( get_site_option('admin_email') );
 			$subject = __('Site ', $this->l10n_prefix).'"'.$blogname.'" (ID: '.$blog_id.'), '.get_site_url( $blog_id ).', '. __('changed reading visibility setting to ', $this->l10n_prefix) .'"'. $to_new.'"';
-  			$message .= __('Site ', $this->l10n_prefix).'"'.$blogname.'" (ID: '.$blog_id.'), '.get_site_url( $blog_id ).', '.__('changed reading visibility setting to ', $this->l10n_prefix) .'"'. $to_new.'."';
+  			$message = __('Site ', $this->l10n_prefix).'"'.$blogname.'" (ID: '.$blog_id.'), '.get_site_url( $blog_id ).', '.__('changed reading visibility setting to ', $this->l10n_prefix) .'"'. $to_new.'."';
   			$message .= __(" \r\n\r\nSent by More Privacy Options plugin.", $this->l10n_prefix);
 
 			$headers = 'Auto-Submitted: auto-generated';
@@ -345,11 +345,11 @@ class ds_more_privacy_options {
 		//December 2012 tested with "Free RSS" for iPhone. Google Reader does not authenticate locked feeds. Tough to find a free reader that does authenticate.
 		global $current_blog, $blog_id;
 			$credentials = array();
-        	$credentials['user_login'] = $_SERVER['PHP_AUTH_USER'];
-        	$credentials['user_password'] = $_SERVER['PHP_AUTH_PW'];
+        	$credentials['user_login'] = isset($_SERVER['PHP_AUTH_USER']) ? $_SERVER['PHP_AUTH_USER'] : '';
+        	$credentials['user_password'] = isset($_SERVER['PHP_AUTH_PW']) ? $_SERVER['PHP_AUTH_PW'] : '';
 			$credentials['remember'] = true;
 			$user = wp_signon( $credentials, false ); //if this creates WP_User, the next 3 lines are redundant
-			$user_id = get_user_id_from_string( $user->user_login );
+			$user_id = is_wp_error( $user ) ? get_user_id_from_string( $user->user_login ) : null;
 
 			if ( is_wp_error( $user ) ||
 				// "Members Only"
@@ -581,7 +581,6 @@ class ds_more_privacy_options {
 		update_site_option('ds_sitewide_privacy', $_POST['ds_sitewide_privacy']);
 	}
 }
-if (class_exists("ds_more_privacy_options")) {
-	$ds_more_privacy_options = new ds_more_privacy_options();	
-}
-?>
+new DS_More_Privacy_Options();	
+
+
