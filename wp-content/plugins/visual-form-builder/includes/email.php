@@ -305,7 +305,7 @@ $entry = array(
 	'sender_name' 		=> $form_settings->form_from_name,
 	'sender_email' 		=> $form_settings->form_from,
 	'emails_to' 		=> serialize( $form_settings->form_to ),
-	'date_submitted' 	=> date_i18n( 'Y-m-d G:i:s' ),
+	'date_submitted' 	=> date_i18n( 'Y-m-d H:i:s' ),
 	'ip_address' 		=> esc_html( $_SERVER['REMOTE_ADDR'] )
 );
 

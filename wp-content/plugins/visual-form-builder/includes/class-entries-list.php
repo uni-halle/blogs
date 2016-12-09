@@ -323,12 +323,12 @@ class VisualFormBuilder_Entries_List extends WP_List_Table {
 		$entry_id = '';
 
 		// Set the Entry ID array
-		if ( isset( $_POST['entry'] ) ) :
-			if ( is_array( $_POST['entry'] ) )
-				$entry_id = $_POST['entry'];
-			else
-				$entry_id = (array) $_POST['entry'];
-		endif;
+		if ( isset( $_GET['entry'] ) )
+			$entry_id = (array) $_GET['entry'];
+
+		if ( isset( $_POST['entry'] ) && is_array( $_POST['entry'] ) ) {
+			$entry_id = $_POST['entry'];
+		}
 
 		switch( $this->current_action() ) :
 			case 'trash' :
@@ -353,7 +353,7 @@ class VisualFormBuilder_Entries_List extends WP_List_Table {
 			break;
 
 			case 'delete' :
-				$entry_id = ( isset( $_POST['entry'] ) && is_array( $_POST['entry'] ) ) ? $_POST['entry'] : array( $_POST['entry'] );
+				$entry_id = ( isset( $_GET['entry'] ) && is_array( $_GET['entry'] ) ) ? $_GET['entry'] : array( $_GET['entry'] );
 
 				global $wpdb;
 

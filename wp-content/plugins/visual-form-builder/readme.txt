@@ -3,8 +3,8 @@ Contributors: mmuro
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=G87A9UN9CLPH4&lc=US&item_name=Visual%20Form%20Builder&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 Tags: form, forms, contact form, contact forms, form, forms, form to email, email form, email, input, validation, jquery, shortcode, form builder, contact form builder, form manager, form creator
 Requires at least: 4.3
-Tested up to: 4.5.1
-Stable tag: 2.8.8
+Tested up to: 4.6.1
+Stable tag: 2.9.2
 License: GPLv2 or later
 
 Build beautiful, fully functional contact forms in only a few minutes without writing PHP, CSS, or HTML.
@@ -236,6 +236,23 @@ function my_scripts_method() {
 4. Rendered form on a page
 
 == Changelog ==
+
+**Version 2.9.2 - Sep 08, 2016**
+
+* Update Date Submitted format to save with leading zeroes to match mySQL format
+* Update IP Address column to store longer IPv6 addresses
+
+**Version 2.9.1 - Aug 23, 2016**
+
+* Add Portuguese language translations
+
+**Version 2.9 - Jul 26, 2016**
+
+* Fix regression for recent entries bug fix
+
+**Version 2.8.9 - Jul 24, 2016**
+
+* Fix bug where entries could not be trashed or deleted
 
 **Version 2.8.8 - Apr 28, 2016**
 
@@ -682,6 +699,12 @@ function my_scripts_method() {
 * Plugin launch!
 
 == Upgrade Notice ==
+
+= 2.9 =
+Fix regression for recent entries bug fix
+
+= 2.8.9 =
+Fix bug where entries could not be trashed or deleted
 
 = 2.8.8 =
 Fix critical bug with Export
