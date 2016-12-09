@@ -1,12 +1,12 @@
 /* AVH Extended Categories Widget CSS */
 .avhec-widget-line {
-	display: inline-block;
+  display : inline-block;
 }
 
 .avhec-widget-count {
-	display: inline;
+  display : inline;
 }
 
 .avhec-widget-rss {
-	display: inline;
+  display : inline;
 }

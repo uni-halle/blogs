@@ -2,39 +2,38 @@
 
 /**
  * Singleton Class
-
  */
-class AVH_EC_Singleton
-{
-    /**
-     * @param string $class
-     * @param string $arg1
-     */
-    public static function &getInstance($class, $arg1 = null)
-    {
-        static $instances = array(); // array of instance names
-        if (array_key_exists($class, $instances)) {
-            $instance = &$instances[$class];
-        } else {
-            if (!class_exists($class)) {
-                switch ($class) {
-                    case 'AVH_EC_Core':
-                        require_once(AVHEC_ABSOLUTE_WORKING_DIR . '/class/avh-ec.core.php');
-                        break;
-                    case 'AVH_EC_Category_Group':
-                        require_once(AVHEC_ABSOLUTE_WORKING_DIR . '/class/avh-ec.category-group.php');
-                        break;
-                    case 'AVH_EC_Widget_Helper_Class':
-                        require_once(AVHEC_ABSOLUTE_WORKING_DIR . '/class/avh-ec.widget-helper.php');
-                        break;
-                }
-            }
-            $instances[$class] = new $class($arg1);
-            $instance = &$instances[$class];
-        }
+class AVH_EC_Singleton {
+	/**
+	 * @param string $class
+	 * @param string $arg1
+	 *
+	 * @return object
+	 */
+	public static function &getInstance($class, $arg1 = null) {
+		static $instances = array(); // array of instance names
+		if (array_key_exists($class, $instances)) {
+			$instance = &$instances[ $class ];
+		} else {
+			if ( ! class_exists($class)) {
+				switch ($class) {
+					case 'AVH_EC_Core':
+						require_once(AVHEC_ABSOLUTE_WORKING_DIR . '/class/avh-ec.core.php');
+						break;
+					case 'AVH_EC_Category_Group':
+						require_once(AVHEC_ABSOLUTE_WORKING_DIR . '/class/avh-ec.category-group.php');
+						break;
+					case 'AVH_EC_Widget_Helper_Class':
+						require_once(AVHEC_ABSOLUTE_WORKING_DIR . '/class/avh-ec.widget-helper.php');
+						break;
+				}
+			}
+			$instances[ $class ] = new $class($arg1);
+			$instance            = &$instances[ $class ];
+		}
 
-        return $instance;
-    }
+		return $instance;
+	}
 }
 
 /**
@@ -47,16 +46,15 @@ require_once(AVHEC_ABSOLUTE_WORKING_DIR . '/class/avh-ec.widgets.php');
 /**
  * Initialize the plugin
  */
-function avhextendedcategories_init()
-{
-    // Admin
-    if (is_admin()) {
-        require_once(AVHEC_ABSOLUTE_WORKING_DIR . '/class/avh-ec.admin.php');
-        $avhec_admin = new AVH_EC_Admin();
-    }
-    AVH_EC_Singleton::getInstance('AVH_EC_Core');
+function avhextendedcategories_init() {
+	// Admin
+	if (is_admin()) {
+		require_once(AVHEC_ABSOLUTE_WORKING_DIR . '/class/avh-ec.admin.php');
+		new AVH_EC_Admin();
+	}
+	AVH_EC_Singleton::getInstance('AVH_EC_Core');
 
-    add_action('widgets_init', 'avhextendedcategories_widgets_init');
+	add_action('widgets_init', 'avhextendedcategories_widgets_init');
 } // End avhamazon_init()
 
 /**
@@ -65,11 +63,10 @@ function avhextendedcategories_init()
  * @WordPress Action widgets_init
  * @since     3.0
  */
-function avhextendedcategories_widgets_init()
-{
-    register_widget('WP_Widget_AVH_ExtendedCategories_Normal');
-    register_widget('WP_Widget_AVH_ExtendedCategories_Top');
-    register_widget('WP_Widget_AVH_ExtendedCategories_Category_Group');
+function avhextendedcategories_widgets_init() {
+	register_widget('WP_Widget_AVH_ExtendedCategories_Normal');
+	register_widget('WP_Widget_AVH_ExtendedCategories_Top');
+	register_widget('WP_Widget_AVH_ExtendedCategories_Category_Group');
 }
 
 add_action('plugins_loaded', 'avhextendedcategories_init');
