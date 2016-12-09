@@ -232,9 +232,8 @@ abstract class Eeb_Admin {
         wp_enqueue_script('dashboard');
 
         // add script for ajax encoder
-        //wp_enqueue_script('email_encoder', plugins_url('js/src/email-encoder-bundle.js', EMAIL_ENCODER_BUNDLE_FILE), array('jquery'), EMAIL_ENCODER_BUNDLE_VERSION);
-        //wp_enqueue_script('email_encoder_admin', plugins_url('js/src/email-encoder-bundle-admin.js', EMAIL_ENCODER_BUNDLE_FILE), array('jquery'), EMAIL_ENCODER_BUNDLE_VERSION);
-        wp_enqueue_script('email_encoder', plugins_url('js/email-encoder-bundle.min.js', EMAIL_ENCODER_BUNDLE_FILE), array('jquery'), EMAIL_ENCODER_BUNDLE_VERSION);
+        wp_enqueue_script('email_encoder', plugins_url('js/email-encoder-bundle.js', EMAIL_ENCODER_BUNDLE_FILE), array('jquery'), EMAIL_ENCODER_BUNDLE_VERSION);
+        wp_enqueue_script('email_encoder_admin', plugins_url('js/email-encoder-bundle-admin.js', EMAIL_ENCODER_BUNDLE_FILE), array('jquery'), EMAIL_ENCODER_BUNDLE_VERSION);
 
         // add help tabs
         $this->add_help_tabs();
@@ -253,6 +252,7 @@ abstract class Eeb_Admin {
         add_meta_box('rss_settings', __('RSS Settings', 'email-encoder-bundle'), array($this, 'show_meta_box_content'), null, 'normal', 'core', array('rss_settings'));
         add_meta_box('admin_settings', __('Admin Settings', 'email-encoder-bundle'), array($this, 'show_meta_box_content'), null, 'normal', 'core', array('admin_settings'));
         add_meta_box('encode_form', __('Email Encoder Form', 'email-encoder-bundle'), array($this, 'show_meta_box_content'), null, 'normal', 'core', array('encode_form'));
+        add_meta_box('future', __('Future, end of support...', 'email-encoder-bundle'), array($this, 'show_meta_box_content'), null, 'normal', 'core', array('future'));
         add_meta_box('this_plugin', __('Support', 'email-encoder-bundle'), array($this, 'show_meta_box_content'), null, 'side', 'core', array('this_plugin'));
         add_meta_box('other_plugins', __('Other Plugins', 'email-encoder-bundle'), array($this, 'show_meta_box_content'), null, 'side', 'core', array('other_plugins'));
     }
@@ -349,7 +349,7 @@ abstract class Eeb_Admin {
                 </tr>
                 <tr>
                     <th><?php _e('Add class to protected mailto links', 'email-encoder-bundle') ?></th>
-                    <td><label><input type="text" id="<?php echo EMAIL_ENCODER_BUNDLE_OPTIONS_NAME ?>[class_name]" class="regular-text" name="<?php echo EMAIL_ENCODER_BUNDLE_OPTIONS_NAME ?>[class_name]" value="<?php echo $options['class_name']; ?>" />
+                    <td><label><input type="text" id="<?php echo EMAIL_ENCODER_BUNDLE_OPTIONS_NAME ?>[class_name]" class="regular-text" name="<?php echo EMAIL_ENCODER_BUNDLE_OPTIONS_NAME ?>[class_name]" value="<?php echo esc_attr($options['class_name']); ?>" />
                         <br/><span class="description"><?php _e('All protected mailto links will get these class(es). Optional, else keep blank.', 'email-encoder-bundle') ?></span></label></td>
                 </tr>
                 </table>
@@ -379,7 +379,7 @@ abstract class Eeb_Admin {
                 </tr>
                 <tr>
                     <th><?php _e('Set protection text in RSS feeds', 'email-encoder-bundle') ?></th>
-                    <td><label><input type="text" id="protection_text" class="regular-text" name="<?php echo EMAIL_ENCODER_BUNDLE_OPTIONS_NAME ?>[protection_text_rss]" value="<?php echo $options['protection_text_rss']; ?>" />
+                    <td><label><input type="text" id="protection_text" class="regular-text" name="<?php echo EMAIL_ENCODER_BUNDLE_OPTIONS_NAME ?>[protection_text_rss]" value="<?php echo esc_attr($options['protection_text_rss']); ?>" />
                             <br/><span class="description"><?php _e('Used as replacement for email addresses in RSS feeds.', 'email-encoder-bundle') ?></span>
                         </label>
                     </td>
@@ -413,13 +413,13 @@ abstract class Eeb_Admin {
                     <th><?php _e('Set <code>&lt;noscript&gt;</code> text', 'email-encoder-bundle') ?></th>
                     <td><label>
                             <span><?php _e('For encoded emails:', 'email-encoder-bundle') ?></span>
-                            <br/><input type="text" id="protection_text" class="regular-text" name="<?php echo EMAIL_ENCODER_BUNDLE_OPTIONS_NAME ?>[protection_text]" value="<?php echo $options['protection_text']; ?>" />
+                            <br/><input type="text" id="protection_text" class="regular-text" name="<?php echo EMAIL_ENCODER_BUNDLE_OPTIONS_NAME ?>[protection_text]" value="<?php echo esc_attr($options['protection_text']); ?>" />
                         </label>
                         <br/>
                         <br/>
                         <label>
                             <span><?php _e('For other encoded content:', 'email-encoder-bundle') ?></span>
-                            <br/><input type="text" id="protection_text_content" class="regular-text" name="<?php echo EMAIL_ENCODER_BUNDLE_OPTIONS_NAME ?>[protection_text_content]" value="<?php echo $options['protection_text_content']; ?>" />
+                            <br/><input type="text" id="protection_text_content" class="regular-text" name="<?php echo EMAIL_ENCODER_BUNDLE_OPTIONS_NAME ?>[protection_text_content]" value="<?php echo esc_attr($options['protection_text_content']); ?>" />
                         </label>
                         <br/>
                         <br/><span class="description"><?php _e('Used as <code>&lt;noscript&gt;</code> fallback for JavaScrip methods.', 'email-encoder-bundle') ?></span>
@@ -430,7 +430,7 @@ abstract class Eeb_Admin {
                     <td>
                         <label>
                             <span><?php _e('Do <strong>not</strong> apply protection on posts or pages with the folllowing ID:', 'email-encoder-bundle') ?></span>
-                            <br/><input type="text" id="<?php echo EMAIL_ENCODER_BUNDLE_OPTIONS_NAME ?>[skip_posts]" class="regular-text" name="<?php echo EMAIL_ENCODER_BUNDLE_OPTIONS_NAME ?>[skip_posts]" value="<?php echo $options['skip_posts']; ?>" />
+                            <br/><input type="text" id="<?php echo EMAIL_ENCODER_BUNDLE_OPTIONS_NAME ?>[skip_posts]" class="regular-text" name="<?php echo EMAIL_ENCODER_BUNDLE_OPTIONS_NAME ?>[skip_posts]" value="<?php echo esc_attr($options['skip_posts']); ?>" />
                             <br/><span class="description"><?php _e('Seperate Id\'s by comma, f.e.: 2, 7, 13, 32.', 'email-encoder-bundle') ?></span>
                             <br/><span class="description"><?php _e('Notice: shortcodes still work on these posts.', 'email-encoder-bundle') ?></span>
                         </label>
@@ -516,6 +516,21 @@ abstract class Eeb_Admin {
                 <input class="button-primary" type="submit" disabled="disabled" value="<?php _e('Save Changes') ?>" />
             </p>
             <br class="clear" />
+
+<?php
+        } else if ($key === 'future') {
+?>
+
+            <p>The support and further development of <strong>Email Encoder Bundle</strong> will soon come to an end and will continue as <strong>WP Mailto Links</strong>.</p>
+
+            <p>Therefore I would like to know, why do you like this plugin? Which features or settings do you use?
+                <br>And what features are you missing in the WP Mailto Links plugin to make the transfer?
+            </p>
+            
+            <p>Please share your thoughts on <a href="https://wordpress.org/support/topic/why-prefer-email-encoder-bundle-over-wp-mailto-links?replies=1" target="_blank">this page</a>.
+            </p>
+
+            <p><a class="button button-secondary" href="javascript:;" onclick="jQuery('#future-hide').click();">Hide this message</a></p>
 
 <?php
         } else if ($key === 'this_plugin') {
