@@ -55,7 +55,7 @@ class SiteOrigin_Widget_Cta_Widget extends SiteOrigin_Widget {
 		);
 	}
 
-	function initialize_form(){
+	function get_widget_form(){
 		return array(
 
 			'title' => array(
@@ -99,14 +99,6 @@ class SiteOrigin_Widget_Cta_Widget extends SiteOrigin_Widget {
 			),
 
 		);
-	}
-
-	function get_template_name($instance) {
-		return 'base';
-	}
-
-	function get_style_name($instance) {
-		return 'basic';
 	}
 
 	function get_less_variables($instance) {

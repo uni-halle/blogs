@@ -25,35 +25,33 @@ class SiteOrigin_Widget_GoogleMap_Widget extends SiteOrigin_Widget {
 	}
 
 	function initialize() {
-		$this->register_frontend_scripts(
-			array(
-				array(
-					'sow-google-map',
-					plugin_dir_url(__FILE__) . 'js/js-map' . SOW_BUNDLE_JS_SUFFIX . '.js',
-					array( 'jquery' ),
-					SOW_BUNDLE_VERSION
-				)
-			)
-		);
-		$this->register_frontend_styles(
-			array(
-				array(
-					'sow-google-map',
-					plugin_dir_url(__FILE__) . 'css/style.css',
-					array(),
-					SOW_BUNDLE_VERSION
-				)
-			)
-		);
+		add_action( 'siteorigin_widgets_before_widget_sow-google-map', array( $this, 'enqueue_widget_scripts' ) );
 	}
 
-	function initialize_form(){
+	function get_widget_form(){
 		return array(
 			'map_center'      => array(
 				'type'        => 'textarea',
 				'rows'        => 2,
 				'label'       => __( 'Map center', 'so-widgets-bundle' ),
 				'description' => __( 'The name of a place, town, city, or even a country. Can be an exact address too.', 'so-widgets-bundle' )
+			),
+			'api_key_section' => array(
+				'type'   => 'section',
+				'label'  => __( 'API key', 'so-widgets-bundle' ),
+				'hide'   => false,
+				'fields' => array(
+					'api_key' => array(
+						'type'        => 'text',
+						'label'       => __( 'API key', 'so-widgets-bundle' ),
+						'required'    => true,
+						'description' => sprintf(
+							__( 'Enter your %sAPI key%s. Your map may not function correctly without one.', 'so-widgets-bundle' ),
+							'<a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">',
+							'</a>'
+						)
+					)
+				)
 			),
 			'settings'        => array(
 				'type'        => 'section',
@@ -373,19 +371,6 @@ class SiteOrigin_Widget_GoogleMap_Widget extends SiteOrigin_Widget {
 					)
 				)
 			),
-			'api_key_section' => array(
-				'type'   => 'section',
-				'label'  => __( 'API key', 'so-widgets-bundle' ),
-				'hide'   => true,
-				'fields' => array(
-					'api_key' => array(
-						'type'        => 'text',
-						'label'       => __( 'API key', 'so-widgets-bundle' ),
-						'description' => __( 'Enter your API key if you have one. This enables you to monitor your Google Maps API usage in the Google APIs Console.', 'so-widgets-bundle' ),
-						'optional'    => true
-					)
-				)
-			)
 		);
 	}
 
@@ -394,7 +379,8 @@ class SiteOrigin_Widget_GoogleMap_Widget extends SiteOrigin_Widget {
 	}
 
 	function get_style_name( $instance ) {
-		return '';
+		// We aren't using a LESS style for this widget.
+		return false;
 	}
 
 	function get_template_variables( $instance, $args ) {
@@ -447,6 +433,23 @@ class SiteOrigin_Widget_GoogleMap_Widget extends SiteOrigin_Widget {
 			);
 		}
 	}
+
+	public function enqueue_widget_scripts() {
+		wp_enqueue_script(
+			'sow-google-map',
+			plugin_dir_url( __FILE__ ) . 'js/js-map' . SOW_BUNDLE_JS_SUFFIX . '.js',
+			array( 'jquery' ),
+			SOW_BUNDLE_VERSION
+		);
+
+		wp_enqueue_style(
+			'sow-google-map',
+			plugin_dir_url(__FILE__) . 'css/style.css',
+			array(),
+			SOW_BUNDLE_VERSION
+		);
+	}
+
 
 	private function get_styles( $instance ) {
 		$style_config = $instance['styles'];
