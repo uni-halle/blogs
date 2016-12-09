@@ -3,7 +3,7 @@
 Plugin Name: Anything Popup
 Description: This is a simple plugin to display the entered content in to unblockable popup window. popup will open by clicking the text or image button.
 Author: Gopi Ramasamy
-Version: 6.0
+Version: 6.1
 Plugin URI: http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
 Author URI: http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
 Donate link: http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
@@ -182,8 +182,8 @@ function AnythingPopup_install()
 	{
 		$sSql = "CREATE TABLE IF NOT EXISTS `". AnythingPopupTable . "` (";
 		$sSql = $sSql . "`pop_id` INT NOT NULL AUTO_INCREMENT ,";
-		$sSql = $sSql . "`pop_width` int(11) NOT NULL default '380' ,";
-		$sSql = $sSql . "`pop_height` int(11) NOT NULL default '260' ,";
+		$sSql = $sSql . "`pop_width` int(11) NOT NULL default '450' ,";
+		$sSql = $sSql . "`pop_height` int(11) NOT NULL default '300' ,";
 		$sSql = $sSql . "`pop_headercolor` VARCHAR( 10 ) NOT NULL default '#4D4D4D' ,";
 		$sSql = $sSql . "`pop_bordercolor` VARCHAR( 10 ) NOT NULL default '#4D4D4D',";
 		$sSql = $sSql . "`pop_header_fontcolor` VARCHAR( 10 ) NOT NULL default '#FFFFFF' ,";
