@@ -1,10 +1,10 @@
-=== GTranslate - Google Translate ===
+=== Translate Wordpress with GTranslate ===
 Contributors: edo888
 Author: Edvard Ananyan
-Tags: widget, plugin, sidebar, google, translate, translation, localization, google translate, multilingual, multilanguage
+Tags: translation proxy, localization, translate, translation, localization, google translate, language, multilingual, multilanguage, bilingual, tradurre, traducir, traduire, traduzione, ubersetzung, mehrsprachig, oversette, oversatta, vertaling, vertaler, meertalig
 Requires at least: 2.8
-Tested up to: 4.5
-Stable tag: 2.0.13
+Tested up to: 4.6
+Stable tag: 2.0.18
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
@@ -13,28 +13,31 @@ GTranslate - Google Translate for WordPress will make your website multilingual 
 
 == Description ==
 
-This plugin uses Google Translate automatic translation service to **translate your wordpress website** with Google power. With 103 available languages your site will be available to more than 99% of internet users.
+GTranslate plugin uses Google Translate automatic translation service to **translate your wordpress website** with Google power. With 103 available languages your site will be available to more than 99% of internet users. Our paid versions are **fully SEO compatible** which will **increase your international traffic and sales**.
 
-GTranslate is a leading Google Translate provider since 2008 and powers more than 500.000 websites worldwide.
+GTranslate is a leading website translation services provider since 2008 and powers more than 500.000 websites worldwide.
 
-Please `use` [GTranslate Forum](https://gtranslate.io/forum/) for your questions and support requests!
+Please use [GTranslate Support](https://gtranslate.io/?xyz=998#contact) for your questions and support requests! We have Live Chat, Helpdesk and Support Forum.
+
+Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 
 **Features**
 
-* Google automatic translation
+* Free Google automatic translation
 * Hides "Suggest better translation" pop-up
 * Hides Google top frame after translation
 * Mouse over effect
 * Flags combined in one file to load faster
 * Google Analytics integration
 * Translates the site on the fly
+* Google language translator widget
 * Available styles Dropdown/Flags/Flags with dropdown/Nice dropdown with flags
 * Valid XHTML
 * You can manually correct translations (paid)
 * You can have sub-directory (example.com/**es**/) or sub-domain (**es.**example.com) URL structure (paid)
 * URL Translation is possible (example.com/about-us -> example.es/sobre-nosotros) (paid)
 
-[Download GTranslate](https://gtranslate.io/#pricing)
+[Download GTranslate](https://gtranslate.io/?xyz=998#pricing)
 
 **GTranslate Wordpress Demo**
 https://www.youtube.com/watch?v=9mtC3LFBErY
@@ -347,7 +350,7 @@ All the HTML websites are supported. However the contents of media files like im
 You need to login to your Google Analytics account -&gt; Content -&gt; Event Tracking. The event name will be GTranslate and you will see event categories for each language code. If you want to see French language usage you can click on fr and you will see which pages are translated to French by your visitors.
 
 = What is a Translation Delivery Network? =
-Translation Delivery Network (TDN) aka Foreign Content Delivery Network (FCDN) is similar to Content Delivery Network (CDN) which is responsible for your static content delivery (images, videos, etc.). TDN will deliver your translations and make your site multilingual.
+Translation Delivery Network (TDN) aka Translation Proxy is similar to Content Delivery Network (CDN) which is responsible for your static content delivery (images, videos, etc.). TDN will deliver your translations and make your site multilingual.
 
 It means that you don't need to install any software on your server and maintain it to make your website multilingual.
 
@@ -391,6 +394,26 @@ You need to go to the language you want to edit, for instance, French: http://do
 3. Nice dropdown with flags (open)
 
 == Changelog ==
+
+= 2.0.18 =
+* Alternative flags added: USA flag, Brazil flag, Mexico flag
+
+= 2.0.17 =
+* GTranslate settings logo moved to localhost
+
+= 2.0.16 =
+* Fixed possible Cross-Site-Scripting security issue
+* GTranslate logo moved to localhost
+* Update notice removed
+
+= 2.0.15 =
+* Fix for not saving GTranslate configuration on some hostings
+* Tested up to 4.6
+* Plugin tags modified: language translator, weglot, scrybs, wpml
+
+= 2.0.14 =
+* Fix for javascript CDATA
+* Support for Google new analytics.js added
 
 = 2.0.13 =
 * Notifications added
