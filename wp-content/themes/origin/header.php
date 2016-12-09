@@ -25,8 +25,6 @@
 <?php endif; ?>
 
 <!-- Title -->
-<title><?php hybrid_document_title(); ?></title>
-
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
@@ -51,7 +49,14 @@
 	
 					<div id="branding">
 						
-						<?php origin_site_title(); ?>
+							<?php the_custom_logo(); ?>
+					<?php if ( is_front_page() && is_home() ) : ?>
+						<div class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
+                        
+					<?php else : ?>
+						<div class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
+				
+					<?php endif; ?>
 						
 					</div><!-- #branding -->
 					

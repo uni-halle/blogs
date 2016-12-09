@@ -29,7 +29,7 @@ get_header(); // Loads the header.php template. ?>
 
 						<?php do_atomic( 'open_entry' ); // origin_open_entry ?>
 
-						<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+						<h1 class="post-title entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 
 						<div class="entry-content">
 							<?php if ( wp_attachment_is_image( get_the_ID() ) ) : ?>

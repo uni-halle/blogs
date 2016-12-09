@@ -1,14 +1,14 @@
 /**
- * Theme Name: Origin
- * Theme URI: http://alienwp.com/themes/origin/
- * Description: Origin is a minimalistic theme with responsive layout. The theme supports custom header and background, plus a number of extra settings: link color picker, typography options, and a nice selection of Google fonts - built into the new WordPress theme customizer.
- * Version: 0.5.8
- * Author: AlienWP
- * Author URI: http://alienwp.com
- * Tags: responsive-layout, theme-options, threaded-comments, microformats, translation-ready, rtl-language-support, one-column, two-columns, right-sidebar, sticky-post, custom-background, featured-images
- * License: GNU General Public License v2.0
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- *
+Theme Name: Origin
+Theme URI: http://alienwp.com/themes/origin/
+Description: Origin is a minimalistic theme with responsive layout. The theme supports custom header and background, plus a number of extra settings: link color, typography options, and a nice selection of Google fonts - built into the new WordPress theme customizer. Visit AlienWP.com for more great themes, Get access to customer support and our whole collection of 18 themes for just $59.
+Version: 0.6.0
+Author: AlienWP
+Author URI: http://alienwp.com
+Tags: theme-options, threaded-comments, microformats, translation-ready, rtl-language-support, one-column, two-columns, right-sidebar, sticky-post, custom-background, featured-images
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: origin
  */
 
 /* Normalize
@@ -19,6 +19,7 @@ audio, canvas, video {
 	*display: inline;
 	*zoom: 1;
 }
+.screen-reader-text{}
 audio:not([controls]) { display: none; }
 [hidden] { display: none; }
 figure { margin: 0; }
@@ -648,15 +649,15 @@ a:hover img { opacity: 0.85; }
 	display: none;
 	float: left;
 	width: 100%;
-	height: 50px;
 	margin: 0 0 0 0;
-	font-size: 20px;
+	font-size: 12px;
 	font-weight: normal;
-	line-height: 47px;
+	line-height: 37px;
 	text-align: center;
 	color: #eee;
 	background: #111;
 	cursor: pointer;
+
 }
 .menu-toggle:hover { color: #fff; }
 
@@ -672,7 +673,7 @@ a:hover img { opacity: 0.85; }
 	overflow: hidden;
 	margin-top: 20px;
 }
-#site-title {
+.site-title {
 	font-size: 2.307692307692308em;	/* 30 / 13 = 2.307692307692308 */
 	line-height: 1em;
 	font-weight: bold;
@@ -682,11 +683,11 @@ a:hover img { opacity: 0.85; }
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	word-wrap: break-word;
 }
-#site-title a {
-	color: #222;
+.site-title a {
+	color: #222!important;
 	border-bottom: none;
 }
-#header img { max-width: 100%; }
+.custom-logo { max-width: 100%; margin-bottom:20px; }
 #site-description {
 	font-size: 1.846153em;	/* 24 / 13 = 1.846153 */
 	line-height: 1.5em;

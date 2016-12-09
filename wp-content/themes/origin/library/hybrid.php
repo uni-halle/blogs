@@ -263,14 +263,8 @@ class Hybrid {
 		/* Load the core SEO component if supported. */
 		require_if_theme_supports( 'hybrid-core-seo', trailingslashit( HYBRID_FUNCTIONS ) . 'core-seo.php' );
 
-		/* Load the shortcodes if supported. */
-		require_if_theme_supports( 'hybrid-core-shortcodes', trailingslashit( HYBRID_FUNCTIONS ) . 'shortcodes.php' );
-
 		/* Load the sidebars if supported. */
 		require_if_theme_supports( 'hybrid-core-sidebars', trailingslashit( HYBRID_FUNCTIONS ) . 'sidebars.php' );
-
-		/* Load the widgets if supported. */
-		require_if_theme_supports( 'hybrid-core-widgets', trailingslashit( HYBRID_FUNCTIONS ) . 'widgets.php' );
 
 		/* Load the template hierarchy if supported. */
 		require_if_theme_supports( 'hybrid-core-template-hierarchy', trailingslashit( HYBRID_FUNCTIONS ) . 'template-hierarchy.php' );
@@ -313,32 +307,18 @@ class Hybrid {
 		/* Load the Cleaner Caption extension if supported. */
 		require_if_theme_supports( 'cleaner-caption', trailingslashit( HYBRID_EXTENSIONS ) . 'cleaner-caption.php' );
 
-		/* Load the Custom Field Series extension if supported. */
-		require_if_theme_supports( 'custom-field-series', trailingslashit( HYBRID_EXTENSIONS ) . 'custom-field-series.php' );
-
 		/* Load the Loop Pagination extension if supported. */
 		require_if_theme_supports( 'loop-pagination', trailingslashit( HYBRID_EXTENSIONS ) . 'loop-pagination.php' );
 
 		/* Load the Entry Views extension if supported. */
 		require_if_theme_supports( 'entry-views', trailingslashit( HYBRID_EXTENSIONS ) . 'entry-views.php' );
 
-		/* Load the Theme Layouts extension if supported. */
-		require_if_theme_supports( 'theme-layouts', trailingslashit( HYBRID_EXTENSIONS ) . 'theme-layouts.php' );
-
-		/* Load the Post Stylesheets extension if supported. */
-		require_if_theme_supports( 'post-stylesheets', trailingslashit( HYBRID_EXTENSIONS ) . 'post-stylesheets.php' );
-
-		/* Load the Featured Header extension if supported. */
-		require_if_theme_supports( 'featured-header', trailingslashit( HYBRID_EXTENSIONS ) . 'featured-header.php' );
 
 		/* Load the Random Custom Background extension if supported. */
 		require_if_theme_supports( 'random-custom-background', trailingslashit( HYBRID_EXTENSIONS ) . 'random-custom-background.php' );
 
 		/* Load the Color Palette extension if supported. */
 		require_if_theme_supports( 'color-palette', trailingslashit( HYBRID_EXTENSIONS ) . 'color-palette.php' );
-
-		/* Load the Theme Fonts extension if supported. */
-		require_if_theme_supports( 'theme-fonts', trailingslashit( HYBRID_EXTENSIONS ) . 'theme-fonts.php' );
 	}
 
 	/**

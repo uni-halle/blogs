@@ -45,9 +45,9 @@ get_header(); // Loads the header.php template. ?>
 							
 							<div class="sticky-header">
 									
-								<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+								<h2 class='post-title entry-title'><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
-								<?php echo apply_atomic_shortcode( 'byline', '<div class="byline">' . __( '[entry-published] &middot; by [entry-author] &middot; in [entry-terms taxonomy="category" before=""] [entry-edit-link before=" &middot; "]', 'origin' ) . '</div>' ); ?>
+								<div class="byline"><a href="<?php the_permalink(); ?>"><?php echo get_the_date(); ?></a> &middot; by <?php the_author_posts_link(); ?> &middot; in <?php the_category(', '); ?> <?php edit_post_link(); ?> </div>
 										
 							</div><!-- .sticky-header -->
 	

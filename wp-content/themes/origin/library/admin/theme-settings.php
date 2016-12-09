@@ -166,7 +166,6 @@ function hybrid_settings_page() {
 
 	<div class="wrap">
 
-		<?php screen_icon(); ?>
 		<h2>
 			<?php printf( __( '%s Theme Settings', 'hybrid-core' ), $theme->get( 'Name' ) ); ?>
 			<a href="<?php echo admin_url( 'customize.php' ); ?>" class="add-new-h2"><?php esc_html_e( 'Customize', 'hybrid-core' ); ?></a>

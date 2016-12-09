@@ -2,7 +2,6 @@
 /**
  * @package Origin
  * @subpackage Functions
- * @version 0.5.8
  * @author AlienWP
  * @author Justin Tadlock <justin@justintadlock.com>
  * @link http://alienwp.com
@@ -23,6 +22,12 @@ add_action( 'after_setup_theme', 'origin_theme_setup' );
  *
  */
 function origin_theme_setup() {
+	
+	/* Admin functionality */
+	if ( is_admin() ) {
+		// Add Theme Documentation Page
+		require_once( get_template_directory() . '/admin/getting-started/getting-started.php' );
+	}
 
 	/* Get action/filter hook prefix. */
 	$prefix = hybrid_get_prefix();
@@ -79,20 +84,20 @@ function origin_theme_setup() {
 	
 	/* Breadcrumb trail arguments. */
 	add_filter( 'breadcrumb_trail_args', 'origin_breadcrumb_trail_args' );
-
-	/* Add support for custom headers. */
-	$args = array(
-		'width'         => 235,
-		'height'        => 70,
-		'flex-height'   => true,
-		'flex-width'    => true,		
-		'header-text'   => false,
-		'uploads'       => true,
-	);
-	add_theme_support( 'custom-header', $args );	
 	
 	/* Add support for custom backgrounds */
 	add_theme_support( 'custom-background' );
+	
+	/**
+Custom Logo
+ */
+add_theme_support( 'custom-logo', array(
+	'height'      => 200,
+	'width'       => 400,
+	'flex-height' => true,
+	'flex-width'  => true,
+	'header-text' => array( 'site-title', 'site-description' ),
+) );
 	    
 	/* Default footer settings */
 	add_filter( "{$prefix}_default_theme_settings", 'origin_default_footer_settings' );
@@ -206,6 +211,9 @@ function origin_pagination_args( $args ) {
 function origin_image_sizes() {
 	add_image_size( 'single-thumbnail', 636, 310, true );
 }
+
+/* Add support for Title Tag */    
+	add_theme_support( 'title-tag' );
 
 /**
  *  Unregister Hybrid widgets

@@ -30,9 +30,9 @@ get_header(); // Loads the header.php template. ?>
 
 						<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'thumbnail', 'attachment' => true ) ); ?>
 
-						<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+						<h1 class="post-title entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 
-						<?php echo apply_atomic_shortcode( 'byline', '<div class="byline">' . __( '[entry-published] &middot; by [entry-author] &middot; in [entry-terms taxonomy="category" before=""] [entry-edit-link before=" &middot; "]', 'origin' ) . '</div>' ); ?>
+						<div class="byline"><a href="<?php the_permalink(); ?>"><?php echo get_the_date(); ?></a> &middot; by <?php the_author_posts_link(); ?> &middot; in <?php the_category(', '); ?> <?php edit_post_link(); ?> </div>
 
 						<div class="entry-summary">
 							

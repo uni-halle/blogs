@@ -29,7 +29,7 @@ get_header(); // Loads the header.php template. ?>
 
 						<?php do_atomic( 'open_entry' ); // origin_open_entry ?>
 
-						<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink="0"]' ); ?>
+						 <h1 class="post-title entry-title"><?php the_title(); ?></h1>
 
 						<div class="entry-content">
 							
@@ -39,7 +39,7 @@ get_header(); // Loads the header.php template. ?>
 							
 						</div><!-- .entry-content -->
 
-						<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">[entry-edit-link]</div>' ); ?>
+						<div class="entry-meta"><?php edit_post_link(); ?></div>
 
 						<?php do_atomic( 'close_entry' ); // origin_close_entry ?>
 

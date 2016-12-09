@@ -28,8 +28,8 @@
 			<?php do_atomic( 'open_footer' ); // origin_open_footer ?>
 
 			<div class="footer-content">
-				
-				<?php echo apply_atomic_shortcode( 'footer_content', hybrid_get_setting( 'footer_insert' ) ); ?>
+                <p class="copyright">Copyright &#169; <?php echo date('Y'); ?> <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<p class="credit">Powered by <a href="http://wordpress.org">WordPress</a> and <a href="http://alienwp.com">Origin</a></p>
 
 				<?php do_atomic( 'footer' ); // origin_footer ?>
 

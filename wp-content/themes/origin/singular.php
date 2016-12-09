@@ -28,10 +28,9 @@ get_header(); // Loads the header.php template. ?>
 					<div id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
 
 						<?php do_atomic( 'open_entry' ); // origin_open_entry ?>
+                        <h1 class="post-title entry-title"><?php the_title(); ?></h1>
 
-						<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink="0"]' ); ?>
-
-						<?php echo apply_atomic_shortcode( 'byline', '<div class="byline">' . __( 'By [entry-author] on [entry-published] [entry-edit-link before=" | "]', 'origin' ) . '</div>' ); ?>
+						<div class="byline"><a href="<?php the_permalink(); ?>"><?php echo get_the_date(); ?></a> &middot; by <?php the_author_posts_link(); ?> &middot; in <?php the_category(', '); ?> <?php edit_post_link(); ?> </div>
 
 						<div class="entry-content">
 							

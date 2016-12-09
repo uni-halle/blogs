@@ -172,20 +172,20 @@ class Breadcrumb_Trail {
 	public function default_labels() {
 
 		$labels = array(
-			'browse'              => __( 'Browse:',                 'breadcrumb-trail' ),
-			'home'                => __( 'Home',                    'breadcrumb-trail' ),
-			'search'              => __( 'Search results for "%s"', 'breadcrumb-trail' ),
-			'error_404'           => __( '404 Not Found',           'breadcrumb-trail' ),
-			'paged'               => __( 'Page %d',                 'breadcrumb-trail' ),
-			'archives'            => __( 'Archives',                'breadcrumb-trail' ),
-			'archive_minute_hour' => __( 'g:i a',                   'breadcrumb-trail' ),
-			'archive_minute'      => __( 'Minute %d',               'breadcrumb-trail' ),
-			'archive_hour'        => __( 'g a',                     'breadcrumb-trail' ),
-			'archive_day'         => __( 'd',                       'breadcrumb-trail' ),
-			'archive_week'        => __( 'Week %d',                 'breadcrumb-trail' ),
-			'archive_month'       => __( 'F',                       'breadcrumb-trail' ),
-			'archive_year'        => __( 'Y',                       'breadcrumb-trail' ),
-		//	'edit'                => __( 'Edit',                    'breadcrumb-trail' ), // @todo Implement edit link
+			'browse'              => __( 'Browse:',                 'origin' ),
+			'home'                => __( 'Home',                    'origin' ),
+			'search'              => __( 'Search results for "%s"', 'origin' ),
+			'error_404'           => __( '404 Not Found',           'origin' ),
+			'paged'               => __( 'Page %d',                 'origin' ),
+			'archives'            => __( 'Archives',                'origin' ),
+			'archive_minute_hour' => __( 'g:i a',                   'origin' ),
+			'archive_minute'      => __( 'Minute %d',               'origin' ),
+			'archive_hour'        => __( 'g a',                     'origin' ),
+			'archive_day'         => __( 'd',                       'origin' ),
+			'archive_week'        => __( 'Week %d',                 'origin' ),
+			'archive_month'       => __( 'F',                       'origin' ),
+			'archive_year'        => __( 'Y',                       'origin' ),
+		//	'edit'                => __( 'Edit',                    'origin' ), // @todo Implement edit link
 		);
 
 		return $labels;
@@ -1024,15 +1024,15 @@ class Breadcrumb_Trail {
 
 				/* If using the %year% tag, add a link to the yearly archive. */
 				if ( '%year%' == $tag )
-					$this->items[] = '<a href="' . get_year_link( get_the_time( 'Y', $post_id ) ) . '" title="' . get_the_time( __( 'Y', 'breadcrumb-trail' ), $post_id ) . '">' . get_the_time( $this->args['labels']['archive_year'], $post_id ) . '</a>';
+					$this->items[] = '<a href="' . get_year_link( get_the_time( 'Y', $post_id ) ) . '" title="' . get_the_time( __( 'Y', origin ), $post_id ) . '">' . get_the_time( $this->args['labels']['archive_year'], $post_id ) . '</a>';
 
 				/* If using the %monthnum% tag, add a link to the monthly archive. */
 				elseif ( '%monthnum%' == $tag )
-					$this->items[] = '<a href="' . get_month_link( get_the_time( 'Y', $post_id ), get_the_time( 'm', $post_id ) ) . '" title="' . get_the_time( esc_attr__( 'F Y', 'breadcrumb-trail' ), $post_id ) . '">' . get_the_time( $this->args['labels']['archive_month'], $post_id ) . '</a>';
+					$this->items[] = '<a href="' . get_month_link( get_the_time( 'Y', $post_id ), get_the_time( 'm', $post_id ) ) . '" title="' . get_the_time( esc_attr__( 'F Y', 'origin' ), $post_id ) . '">' . get_the_time( $this->args['labels']['archive_month'], $post_id ) . '</a>';
 
 				/* If using the %day% tag, add a link to the daily archive. */
 				elseif ( '%day%' == $tag )
-					$this->items[] = '<a href="' . get_day_link( get_the_time( 'Y', $post_id ), get_the_time( 'm', $post_id ), get_the_time( 'd', $post_id ) ) . '" title="' . get_the_time( esc_attr__( 'F j, Y', 'breadcrumb-trail' ), $post_id ) . '">' . get_the_time( $this->args['labels']['archive_day'], $post_id ) . '</a>';
+					$this->items[] = '<a href="' . get_day_link( get_the_time( 'Y', $post_id ), get_the_time( 'm', $post_id ), get_the_time( 'd', $post_id ) ) . '" title="' . get_the_time( esc_attr__( 'F j, Y', 'origin' ), $post_id ) . '">' . get_the_time( $this->args['labels']['archive_day'], $post_id ) . '</a>';
 
 				/* If using the %author% tag, add a link to the post author archive. */
 				elseif ( '%author%' == $tag )
@@ -1119,7 +1119,7 @@ class bbPress_Breadcrumb_Trail extends Breadcrumb_Trail {
 			$this->items[] = '<a href="' . bbp_get_topic_tag_link() . '">' . bbp_get_topic_tag_name() . '</a>';
 
 			if ( true === $this->args['show_title'] )
-				$this->items[] = __( 'Edit', 'breadcrumb-trail' );
+				$this->items[] = __( 'Edit', 'origin' );
 		}
 
 		/* If viewing a "view" page. */
@@ -1147,15 +1147,15 @@ class bbPress_Breadcrumb_Trail extends Breadcrumb_Trail {
 
 			/* If viewing a topic split page. */
 			if ( bbp_is_topic_split() && true === $this->args['show_title'] )
-				$this->items[] = __( 'Split', 'breadcrumb-trail' );
+				$this->items[] = __( 'Split', 'origin' );
 
 			/* If viewing a topic merge page. */
 			elseif ( bbp_is_topic_merge() && true === $this->args['show_title'] )
-				$this->items[] = __( 'Merge', 'breadcrumb-trail' );
+				$this->items[] = __( 'Merge', 'origin' );
 
 			/* If viewing a topic edit page. */
 			elseif ( bbp_is_topic_edit() && true === $this->args['show_title'] )
-				$this->items[] = __( 'Edit', 'breadcrumb-trail' );
+				$this->items[] = __( 'Edit', 'origin' );
 		}
 
 		/* If viewing a single reply page. */
@@ -1172,7 +1172,7 @@ class bbPress_Breadcrumb_Trail extends Breadcrumb_Trail {
 				$this->items[] = '<a href="' . bbp_get_reply_url( $reply_id ) . '">' . bbp_get_reply_title( $reply_id ) . '</a>';
 
 				if ( true === $this->args['show_title'] )
-					$this->items[] = __( 'Edit', 'breadcrumb-trail' );
+					$this->items[] = __( 'Edit', 'origin' );
 
 			} elseif ( true === $this->args['show_title'] ) {
 				$this->items[] = bbp_get_reply_title( $reply_id );
@@ -1203,7 +1203,7 @@ class bbPress_Breadcrumb_Trail extends Breadcrumb_Trail {
 				$this->items[] = '<a href="' . bbp_get_user_profile_url() . '">' . bbp_get_displayed_user_field( 'display_name' ) . '</a>';
 
 				if ( true === $this->args['show_title'] )
-					$this->items[] = __( 'Edit', 'breadcrumb-trail' );
+					$this->items[] = __( 'Edit', 'origin' );
 			} elseif ( true === $this->args['show_title'] ) {
 				$this->items[] = bbp_get_displayed_user_field( 'display_name' );
 			}

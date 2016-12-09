@@ -33,9 +33,9 @@ get_header(); // Loads the header.php template. ?>
 						
 							<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'single-thumbnail', 'link_to_post' => false, 'image_class' => 'featured', 'attachment' => false ) ); ?>
 							
-							<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title permalink="0"]' ); ?>
+							 <h1 class="post-title entry-title"><?php the_title(); ?></h1>
 
-							<?php echo apply_atomic_shortcode( 'byline', '<div class="byline">' . __( '[entry-published] &middot; by [entry-author] &middot; in [entry-terms taxonomy="category" before=""] [entry-edit-link before=" &middot; "]', 'origin' ) . '</div>' ); ?>
+							<div class="byline"><a href="<?php the_permalink(); ?>"><?php echo get_the_date(); ?></a> &middot; by <?php the_author_posts_link(); ?> &middot; in <?php the_category(', '); ?> <?php edit_post_link(); ?> </div>
 
 							<div class="entry-content">
 								
@@ -45,7 +45,7 @@ get_header(); // Loads the header.php template. ?>
 								
 							</div><!-- .entry-content -->
 
-							<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">' . __( '[entry-terms taxonomy="post_tag" before="Tags: "]', 'origin' ) . '</div>' ); ?>
+							<div class="entry-meta"><?php the_tags(); ?></div>
 
 							<?php do_atomic( 'close_entry' ); // origin_close_entry ?>
 						

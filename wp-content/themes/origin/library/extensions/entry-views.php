@@ -36,8 +36,6 @@
 /* Add post type support for 'entry-views'. */
 add_action( 'init', 'entry_views_post_type_support' );
 
-/* Add the [entry-views] shortcode. */
-add_shortcode( 'entry-views', 'entry_views_get' );
 
 /* Registers the entry views extension scripts if we're on the correct page. */
 add_action( 'template_redirect', 'entry_views_load' );

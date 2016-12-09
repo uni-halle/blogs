@@ -227,16 +227,16 @@ function origin_google_fonts() {
 		
 		switch ( get_theme_mod( 'origin_font_family' ) ) {			
 			case 'Bitter':
-				wp_enqueue_style( 'font-bitter', '//fonts.googleapis.com/css?family=Bitter', false, 1.0, 'screen' );
+				wp_enqueue_style( 'font-bitter', 'http://fonts.googleapis.com/css?family=Bitter', false, 1.0, 'screen' );
 				break;
 			case 'Droid Serif':
-				wp_enqueue_style( 'font-droid-serif', '//fonts.googleapis.com/css?family=Droid+Serif', false, 1.0, 'screen' );
+				wp_enqueue_style( 'font-droid-serif', 'http://fonts.googleapis.com/css?family=Droid+Serif', false, 1.0, 'screen' );
 				break;
 			case 'Istok Web':
-				wp_enqueue_style( 'font-istok-web', '//fonts.googleapis.com/css?family=Istok+Web', false, 1.0, 'screen' );
+				wp_enqueue_style( 'font-istok-web', 'http://fonts.googleapis.com/css?family=Istok+Web', false, 1.0, 'screen' );
 				break;
 			case 'Droid Sans':
-				wp_enqueue_style( 'font-droid-sans', '//fonts.googleapis.com/css?family=Droid+Sans', false, 1.0, 'screen' );
+				wp_enqueue_style( 'font-droid-sans', 'http://fonts.googleapis.com/css?family=Droid+Sans', false, 1.0, 'screen' );
 				break;
 		}
 
@@ -244,21 +244,21 @@ function origin_google_fonts() {
 
 		switch ( hybrid_get_setting( 'origin_font_family' ) ) {			
 			case 'Bitter':
-				wp_enqueue_style( 'font-bitter', '//fonts.googleapis.com/css?family=Bitter', false, 1.0, 'screen' );
+				wp_enqueue_style( 'font-bitter', 'http://fonts.googleapis.com/css?family=Bitter', false, 1.0, 'screen' );
 				break;
 			case 'Droid Serif':
-				wp_enqueue_style( 'font-droid-serif', '//fonts.googleapis.com/css?family=Droid+Serif', false, 1.0, 'screen' );
+				wp_enqueue_style( 'font-droid-serif', 'http://fonts.googleapis.com/css?family=Droid+Serif', false, 1.0, 'screen' );
 				break;
 			case 'Istok Web':
-				wp_enqueue_style( 'font-istok-web', '//fonts.googleapis.com/css?family=Istok+Web', false, 1.0, 'screen' );
+				wp_enqueue_style( 'font-istok-web', 'http://fonts.googleapis.com/css?family=Istok+Web', false, 1.0, 'screen' );
 				break;
 			case 'Droid Sans':
-				wp_enqueue_style( 'font-droid-sans', '//fonts.googleapis.com/css?family=Droid+Sans', false, 1.0, 'screen' );
+				wp_enqueue_style( 'font-droid-sans', 'http://fonts.googleapis.com/css?family=Droid+Sans', false, 1.0, 'screen' );
 				break;
 		}
 
 	} else {	
-		wp_enqueue_style( 'font-bitter', '//fonts.googleapis.com/css?family=Bitter', false, 1.0, 'screen' );
+		wp_enqueue_style( 'font-bitter', 'http://fonts.googleapis.com/css?family=Bitter', false, 1.0, 'screen' );
 	}
 }
 

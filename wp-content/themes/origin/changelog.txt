@@ -1,5 +1,15 @@
 == Changelog ==
 
+= 0.6 =
+* Removed Shortcodes.php
+* Added text domain
+* Fixed multiple text domains
+* Changed resposinve menu toggle button size
+* Removed custom widgets for wordpress defaults
+* Added theme documentation welcome page to admin
+
+
+
 = 0.5.8 =
 * Some dropdown menu CSS tweaks.
 * New screenshot size - 880x660.
