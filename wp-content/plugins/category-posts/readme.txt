@@ -1,10 +1,10 @@
 === Category Posts Widget ===
 Contributors: mkrdip, mark-k, kometschuh
 Donate link: http://mkrdip.me/donate
-Tags: category, posts, widget, single category widget, posts widget, category recent posts
+Tags: category, posts, widget, posts widget, recent posts, category recent posts
 Requires at least: 2.8
-Tested up to: 4.5.2
-Stable tag: 4.1.9
+Tested up to: 4.6
+Stable tag: 4.6.2
 License: GPLv2 or later 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,19 +14,30 @@ Adds a widget that shows the most recent posts from a single category.
 Category Posts Widget is a light widget designed to do one thing and do it well: display the most recent posts from a certain category.
 
 = Term and Category based Posts Widget =
-It's the pro version and available at on <a target="_blank" href="http://tiptoppress.com/">Tip Top Press</a> created for big Wordpress sites.
+It's the premium version and available on <a target="_blank" href="http://tiptoppress.com/">Tip Top Press</a> created for big Wordpress sites.
 
-= Pro features =
-* Custom Post Types, Terms and Custom Taxonomies
-* Multi selection
-* Different styles, like vertical scrolling ticker
+= Premium features =
+* Post item "Alterations"
+* Masonry (Responsive grid layouts)
+* Grid and Column full page layouts
+* Slider (Vertical and horizontal)
+* Categories, Custom Post Types, Taxonomies, Events, Products, ...
+* Full background post images
+* Mouse hover effects for post thumbnail
+* Shortcode (Just edit all Shortcode options in the customizer)
+* Set post thumbnail dimension by width & height (CSS cropping)
+* E-Mail support
+* More [examples on the demo pages](http://demo.tiptoppress.com/)
 
 = Features =
+* Shortcode (Edit in the customizer)
+* For editing shortcode adds a customizer link to the admin-bar if page/post is in edit mode
 * Option to change ordering of posts.
 * Option to show post thumbnail & set dimension by width & height.
 * Option to crop thumbnails with CSS. <a target="_blank" href="http://tiptoppress.com/css-image-crop/">What is 'CSS Image Crop'?</a>
 * Option to set mouse hover effects for post thumbnail.
-* Jetpack 'Sharing - Show buttons on posts' support
+* Jetpack 'Social buttons on posts' support
+* Option to hide social buttons on output
 * Option to put thumbnail on top
 * Option to hide posts which have no thumbnail.
 * Option to disable widget CSS.
@@ -48,7 +59,10 @@ It's the pro version and available at on <a target="_blank" href="http://tiptopp
 * Localization support.
 
 = Documentation =
-Formatting date and time: See <a target="_blank" href="https://codex.wordpress.org/Formatting_Date_and_Time">Formatting Date and Time</a>.
+* Full documentation on [Tiptoppress](http://tiptoppress.com/category-posts-widget/documentation/)
+* Shortcode: Use [catposts] [in the content and edit options in the customizer](http://tiptoppress.com/use-shortcode-to-add-category-posts-widget-to-the-content)
+* Formatting date and time: See <a target="_blank" href="https://codex.wordpress.org/Formatting_Date_and_Time">Formatting Date and Time</a>
+* Widget <a target="_blank" href="http://tiptoppress.com/category/widget-customization-and-filter-extensions/">customization and filter extensions</a>
 
 = Contribute =
 While using this plugin if you find any bug or any conflict, please submit an issue at 
@@ -91,9 +105,19 @@ We know there are peopel how use PHP 5.2 [wordpress.org/about/stats](https://wor
 == Screenshots ==
 1. The widget configuration dialog.
 2. Front end of the widget using a default WordPress Theme.
+3. Use shortcode [catposts] in the content and edit options in the customizer.
 
 == Changelog ==
 [Read more on our blog ...](http://tiptoppress.com/category/category-posts-widget/)
+
+= 4.6.2 - August 28th 2016 =
+* Fixed only five widget instances can be costumized with shortcodes.
+* For editing shortcode adds a customizer link to the admin-bar if page/post is in edit mode.
+
+= 4.6.1 - June 5th 2016 =
+* Add shortcode [catposts] edit options only in the customizer
+* Keep panels open after save.
+* Option to hide social buttons on output.
 
 = 4.1.9 - May 5th 2016 =
 * Fixed undefined constant.
