@@ -95,7 +95,7 @@ class AAM_Core_Subject_Role extends AAM_Core_Subject {
      * @access public
      */
     public function removeCapability($capability) {
-        $this->getSubject()->remove_cap($capability);
+        $this->getSubject()->add_cap($capability, false);
         
         return true;
     }
@@ -179,7 +179,14 @@ class AAM_Core_Subject_Role extends AAM_Core_Subject {
      * @inheritdoc
      */
     public function getParent() {
-        return null;
+        return apply_filters('aam-parent-role-filter', null, $this);
+    }
+    
+    /**
+     * @inheritdoc
+     */
+    public function hasParent() {
+        return ($this->getParent() ? true : false);
     }
 
 }

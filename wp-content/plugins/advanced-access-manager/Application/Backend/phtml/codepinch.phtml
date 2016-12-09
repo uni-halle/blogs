@@ -1,0 +1,37 @@
+<div class="wrap">
+    <div class="cpi-wrapper">
+        <div class="cpi-header">CodePinch Installation Process</div>
+        
+        <?php if ($this->isInstalled()) { ?>
+            <div class="cpi-body">
+                <div class="cpi-message cpi-message-error">
+                    CodePinch plugin is already installed. You may find it on the Plugins page.
+                </div>
+            </div>
+        <?php } elseif ($this->isAllowed()) { ?>
+            <div class="cpi-body">
+                <div class="cpi-brand">
+                    <img src="<?php echo self::SCRIPT_BASE; ?>codepinch.svg" alt="CodePinch" />
+                </div>
+                <div class="cpi-progress">
+                    <span class="cpi-loading-icon"></span>
+                    <span class="cpi-loading-text">Downloading and Installing</span>
+                </div>
+            </div>
+
+            <input type="hidden" id="affiliate" value="<?php echo $this->getAffiliate(); ?>" />
+
+            <div class="cpi-footer">
+                Please wait a moment and <b>do not</b> reload the page.
+                Plugin is downloading from official WordPress repository and will be installed and activated automatically.
+            </div>
+        <?php } else { ?>
+            <div class="cpi-body">
+                <div class="cpi-message cpi-message-error">
+                    You do not have permissions to Install and Activate plugins. 
+                    Please make sure that your user has <b>install_plugins</b> and <b>activate_plugins</b> capabilities.
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+</div>

@@ -78,7 +78,7 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
         //retrieve aam capabilities if are not retrieved yet
         $caps = get_user_option(self::AAM_CAPKEY, $this->getId());
         if (is_array($caps)) {
-            $caps = array_merge($subject->caps, $caps);
+            $caps    = array_merge($subject->caps, $caps);
             $allcaps = array_merge($subject->allcaps, $caps);
             
             //reset the user capabilities
@@ -222,13 +222,13 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
      */
     public function getParent() {
         //try to get this option from the User's Role
-        $roles = $this->getSubject()->roles;
+        $roles  = $this->getSubject()->roles;
         //first user role is counted only. AAM does not support multi-roles
-        $subject_role = array_shift($roles);
+        $parent = array_shift($roles);
 
         //in case of multisite & current user does not belong to the site
-        if ($subject_role) {
-            $role = new AAM_Core_Subject_Role($subject_role);
+        if ($parent) {
+            $role = new AAM_Core_Subject_Role($parent);
         } else {
             $role = null;
         }

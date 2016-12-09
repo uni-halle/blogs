@@ -23,6 +23,11 @@ class AAM_Frontend_Manager {
      * @access private 
      */
     private static $_instance = null;
+    
+    /**
+     * pre_get_posts flag
+     */
+    protected $skip = false;
 
     /**
      * Construct the manager
@@ -32,9 +37,13 @@ class AAM_Frontend_Manager {
      * @access public
      */
     public function __construct() {
-        if (apply_filters('aam-utility-property', 'frontend-access-control', true)) {
+        if (AAM_Core_Config::get('frontend-access-control', true)) {
+            //login hook
+            add_action('wp_login', array($this, 'login'), 10, 2);
+        
             //control WordPress frontend
             add_action('wp', array($this, 'wp'), 999);
+            add_action('404_template', array($this, 'themeRedirect'), 999);
             //filter navigation pages & taxonomies
             add_filter('get_pages', array($this, 'getPages'));
             add_filter('wp_get_nav_menu_items', array($this, 'getNavigationMenu'));
@@ -46,7 +55,23 @@ class AAM_Frontend_Manager {
             add_filter('wp_authenticate_user', array($this, 'authenticate'), 1, 2);
             //add post filter for LIST restriction
             add_filter('the_posts', array($this, 'thePosts'), 999, 2);
+            if (AAM_Core_Config::get('large-post-number', false)) {
+                add_action('pre_get_posts', array($this, 'preparePostQuery'));
+            }
+            //filter post content
+            add_filter('the_content', array($this, 'theContent'), 999);
+            //admin bar
+            $this->checkAdminBar();
         }
+    }
+    
+    /**
+     * 
+     * @param type $login
+     * @param type $user
+     */
+    public function login($login, $user) {
+        AAM_Core_API::deleteOption('aam-user-switch-' . $user->ID);
     }
 
     /**
@@ -58,22 +83,71 @@ class AAM_Frontend_Manager {
      * @global WP_Post $post
      */
     public function wp() {
-        global $post;
+        global $wp_query;
+        
+        if (!empty($wp_query->queried_object)) {
+            $post = $wp_query->queried_object;
+        } elseif (!empty($wp_query->post)) {
+            $post = $wp_query->post;
+        } else {
+            $post = null;
+        }
 
-        $user = AAM::getUser();
-        if ((is_single() || is_page()) && is_object($post)) {
-            $object = $user->getObject('post', $post->ID);
-            $read   = $object->has('frontend.read');
-            $others = $object->has('frontend.read_others');
-            
-            if ($read || ($others && !$this->isAuthor($post))) {
-                AAM_Core_API::reject();
-            }
-            //trigger any action that is listeting 
-            do_action('aam-wp-action', $object);
+        if (is_a($post, 'WP_Post')) {
+            $this->checkPostReadAccess($post);
         }
     }
+    
+    /**
+     * Theme redirect
+     * 
+     * Super important function that cover the 404 redirect that triggered by theme
+     * when page is not found. This covers the scenario when page is restricted from
+     * listing and read.
+     * 
+     * @global type $wp_query
+     * 
+     * @param type $template
+     * 
+     * @return string
+     * 
+     * @access public
+     */
+    public function themeRedirect($template) {
+        global $wp_query;
+        
+        $object = (isset($wp_query->queried_object) ? $wp_query->queried_object : 0);
+        if ($object && is_a($object, 'WP_Post')) {
+            $this->checkPostReadAccess($object);
+        }
+        
+        return $template;
+    }
+    
+    /**
+     * Check post read access
+     * 
+     * @param WP_Post $post
+     * 
+     * @return void
+     * 
+     * @access protected
+     */
+    protected function checkPostReadAccess($post) {
+        $object = AAM::getUser()->getObject('post', $post->ID);
+        $read   = $object->has('frontend.read');
+        $others = $object->has('frontend.read_others');
 
+        if ($read || ($others && !$this->isAuthor($post))) {
+            AAM_Core_API::reject(
+                'frontend', 
+                array('object' => $object, 'action' => 'frontend.read')
+            );
+        }
+        //trigger any action that is listeting 
+        do_action('aam-wp-action', $object);
+    }
+    
     /**
      * Filter Pages that should be excluded in frontend
      *
@@ -159,6 +233,25 @@ class AAM_Frontend_Manager {
 
         return $open;
     }
+    
+    /**
+     * Check admin bar
+     * 
+     * Make sure that current user can see admin bar
+     * 
+     * @return void
+     * 
+     * @access public
+     */
+    public function checkAdminBar() {
+        $caps = AAM_Core_API::getAllCapabilities();
+        
+        if (isset($caps['show_admin_bar'])) {
+            if (!AAM::getUser()->hasCapability('show_admin_bar')) {
+                show_admin_bar(false);
+            }
+        }
+    }
 
     /**
      * Control User Block flag
@@ -178,7 +271,7 @@ class AAM_Frontend_Manager {
             
             $user->add(
                 'authentication_failed', 
-                AAM_Backend_Helper::preparePhrase($message, 'strong')
+                AAM_Backend_View_Helper::preparePhrase($message, 'strong')
             );
         }
 
@@ -212,6 +305,93 @@ class AAM_Frontend_Manager {
         }
 
         return $filtered;
+    }
+    
+    /**
+     * 
+     * @param type $query
+     */
+    public function preparePostQuery($query) {
+        if ($this->skip === false) {
+            $filtered = array();
+
+            foreach ($this->fetchPosts($query) as $id) {
+                if (AAM::getUser()->getObject('post', $id)->has('frontend.list')) {
+                    $filtered[] = $id;
+                }
+            }
+            
+            if (isset($query->query_vars['post__not_in'])) {
+                $query->query_vars['post__not_in'] = array_merge(
+                        $query->query_vars['post__not_in'], $filtered
+                );
+            } else {
+                $query->query_vars['post__not_in'] = $filtered;
+            }
+        }
+    }
+
+    /**
+     * 
+     * @param type $query
+     * @return type
+     */
+    protected function fetchPosts($query) {
+        $this->skip = true;
+        
+        if (!empty($query->query['post_type'])) {
+            $postType = $query->query['post_type'];
+        } elseif (!empty($query->query_vars['post_type'])) {
+            $postType = $query->query_vars['post_type'];
+        } else {
+            $postType = 'post';
+        }
+        
+        $posts = get_posts(array(
+            'post_type'   => (is_string($postType) ? $postType : 'post'),
+            'numberposts' => -1,
+            'fields'      => 'ids'
+        ));
+                    
+        $this->skip = false;
+        
+        return $posts;
+    }
+    
+    /**
+     * 
+     * @global WP_Post $post
+     * @param type $content
+     * 
+     * @return string
+     * 
+     * @access public
+     */
+    public function theContent($content) {
+        global $post;
+        
+        $object = AAM::getUser()->getObject('post', $post->ID);
+       
+        if ($object->has('frontend.limit')) {
+            $message = apply_filters(
+                'aam-filter-teaser-option', 
+                AAM_Core_Config::get("frontend.teaser.message"),
+                "frontend.teaser.message",
+                AAM::getUser()
+            );
+            $excerpt = apply_filters(
+                'aam-filter-teaser-option', 
+                AAM_Core_Config::get("frontend.teaser.excerpt"),
+                "frontend.teaser.excerpt",
+                AAM::getUser()
+            );
+            
+            $html  = (intval($excerpt) ? $post->post_excerpt : '');
+            $html .= stripslashes($message);
+            $content = do_shortcode($html);
+        }
+        
+        return $content;
     }
     
     /**

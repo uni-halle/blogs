@@ -62,21 +62,20 @@
     /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-
 .icon-spin4:before { content: '\e800'; } /* 'î ' */
-.icon-eye-off:before { content: '\e801'; } /* 'î ' */
-.icon-attention-circled:before { content: '\e802'; } /* 'î ' */
-.icon-user-secret:before { content: '\e803'; } /* 'î ' */
-.icon-users:before { content: '\e804'; } /* 'î ' */
-.icon-eye:before { content: '\e805'; } /* 'î ' */
-.icon-basket:before { content: '\e806'; } /* 'î ' */
-.icon-user:before { content: '\e807'; } /* 'î ' */
-.icon-trash-empty:before { content: '\e808'; } /* 'î ' */
-.icon-download-cloud:before { content: '\e809'; } /* 'î ' */
-.icon-github:before { content: '\e80a'; } /* 'î ' */
-.icon-cog:before { content: '\e80b'; } /* 'î ' */
-.icon-lock:before { content: '\e80c'; } /* 'î ' */
-.icon-twitter:before { content: '\e80d'; } /* 'î ' */
+.icon-user-secret:before { content: '\e801'; } /* 'î ' */
+.icon-folder:before { content: '\e802'; } /* 'î ' */
+.icon-stop:before { content: '\e803'; } /* 'î ' */
+.icon-left-dir:before { content: '\e804'; } /* 'î ' */
+.icon-dollar:before { content: '\e805'; } /* 'î ' */
+.icon-mail-alt:before { content: '\e806'; } /* 'î ' */
+.icon-download-cloud:before { content: '\e807'; } /* 'î ' */
+.icon-eye-off:before { content: '\e808'; } /* 'î ' */
+.icon-attention-circled:before { content: '\e809'; } /* 'î ' */
+.icon-cog-alt:before { content: '\e80a'; } /* 'î ' */
+.icon-link-1:before { content: '\e80b'; } /* 'î ' */
+.icon-user-secret-1:before { content: '\e80c'; } /* 'î ' */
+.icon-unlink:before { content: '\e80d'; } /* 'î ' */
 .icon-sort-down:before { content: '\e80e'; } /* 'î ' */
 .icon-pencil:before { content: '\e80f'; } /* 'î ' */
 .icon-arrows-cw:before { content: '\e810'; } /* 'î ' */
@@ -87,16 +86,48 @@
 .icon-filter:before { content: '\e815'; } /* 'î ' */
 .icon-check:before { content: '\e816'; } /* 'î ' */
 .icon-help-circled:before { content: '\e817'; } /* 'î ' */
-.icon-box:before { content: '\e818'; } /* 'î ' */
-.icon-folder:before { content: '\e819'; } /* 'î ' */
-.icon-check-empty:before { content: '\e81a'; } /* 'î ' */
-.icon-doc-text-inv:before { content: '\e81b'; } /* 'î ' */
-.icon-home:before { content: '\e81c'; } /* 'î ' */
-.icon-angle-double-right:before { content: '\e81d'; } /* 'î ' */
-.icon-facebook:before { content: '\e81e'; } /* 'î ' */
-.icon-star:before { content: '\e81f'; } /* 'î ' */
-.icon-list:before { content: '\e820'; } /* 'î  ' */
-.icon-level-down:before { content: '\e821'; } /* 'î ¡' */
+.icon-file-code:before { content: '\e818'; } /* 'î ' */
+.icon-users:before { content: '\e819'; } /* 'î ' */
+.icon-box-1:before { content: '\e81a'; } /* 'î ' */
+.icon-folder-1:before { content: '\e81b'; } /* 'î ' */
+.icon-eye-1:before { content: '\e81c'; } /* 'î ' */
+.icon-upload-cloud:before { content: '\e81d'; } /* 'î ' */
+.icon-user-plus:before { content: '\e81e'; } /* 'î ' */
+.icon-gauge:before { content: '\e81f'; } /* 'î ' */
+.icon-box:before { content: '\e820'; } /* 'î  ' */
+.icon-plus-circled:before { content: '\e821'; } /* 'î ¡' */
+.icon-link:before { content: '\e822'; } /* 'î ¢' */
+.icon-wrench:before { content: '\e823'; } /* 'î £' */
+.icon-eye:before { content: '\e824'; } /* 'î ¤' */
+.icon-medkit:before { content: '\e825'; } /* 'î ¥' */
+.icon-basket:before { content: '\e826'; } /* 'î ¦' */
+.icon-check-empty:before { content: '\e827'; } /* 'î §' */
+.icon-doc-text-inv:before { content: '\e828'; } /* 'î ¨' */
+.icon-home:before { content: '\e829'; } /* 'î ©' */
+.icon-angle-double-right:before { content: '\e82a'; } /* 'î ª' */
+.icon-facebook:before { content: '\e82b'; } /* 'î «' */
+.icon-star:before { content: '\e82c'; } /* 'î ¬' */
+.icon-list:before { content: '\e82d'; } /* 'î ­' */
+.icon-up-dir:before { content: '\e82e'; } /* 'î ®' */
+.icon-dot-circled:before { content: '\e82f'; } /* 'î ¯' */
+.icon-code:before { content: '\e830'; } /* 'î °' */
+.icon-bug:before { content: '\e831'; } /* 'î ±' */
+.icon-heartbeat:before { content: '\e832'; } /* 'î ²' */
+.icon-connectdevelop:before { content: '\e833'; } /* 'î ³' */
+.icon-trash-empty:before { content: '\e834'; } /* 'î ´' */
+.icon-download-cloud-1:before { content: '\e835'; } /* 'î µ' */
+.icon-github:before { content: '\e836'; } /* 'î ¶' */
+.icon-cog:before { content: '\e837'; } /* 'î ·' */
+.icon-lock:before { content: '\e838'; } /* 'î ¸' */
+.icon-twitter:before { content: '\e839'; } /* 'î ¹' */
+.icon-certificate:before { content: '\e83a'; } /* 'î º' */
+.icon-user:before { content: '\e83b'; } /* 'î »' */
+.icon-level-down:before { content: '\e83c'; } /* 'î ¼' */
+.icon-exchange:before { content: '\f0ec'; } /* 'ï¬' */
+.icon-circle:before { content: '\f111'; } /* 'ï' */
+.icon-thumbs-up-alt:before { content: '\f164'; } /* 'ï¤' */
+.icon-circle-thin:before { content: '\f1db'; } /* 'ï' */
+.icon-clone:before { content: '\f24d'; } /* 'ï' */
 
 .animate-spin {
     -moz-animation: spin 2s infinite linear;
@@ -206,8 +237,15 @@ html, body {
     position: relative;
 }
 
+.inner-sm {
+    padding: 20px;
+}
+
 .js .postbox .hndle, .js .widget .widget-top {
     cursor: auto;
+    background-color: #F0F0F0;
+    font-size: 1.2em;
+    letter-spacing: 2px;
 }
 
 .hndle a {
@@ -328,12 +366,21 @@ a.btn:focus, a.btn:active {
     vertical-align: middle;
 }
 
+.table .form-group {
+    margin: 5px 0 0 0;
+}
+
 .btn-group-xs > .btn, .btn-xs {
     border-radius: 0;
 }
 
 .btn {
     border-radius: 0;
+}
+
+.alert {
+    border-radius: 0;
+    margin-bottom: 0;
 }
 
 /** DATATABLES **/
@@ -383,6 +430,12 @@ input[type=checkbox] { /* to hide the checkbox itself */
     display:none; 
 } 
 
+/* overwrite for bootstrap rule */
+.checkbox input[type="checkbox"] {
+    display: inline-block;
+    margin-top: 1px;
+}
+
 input[type=checkbox] + label {
     width: 1.2em;
     font-weight: normal;
@@ -392,7 +445,7 @@ input[type=checkbox] + label:before {
     font-family: 'fontello';
     display: inline-block;
     font-size: 1.2em;
-    content: "\e81a"; /* unchecked icon */
+    content: "\e827"; /* unchecked icon */
 }
 
 input[type=checkbox]:checked + label:before { 
@@ -408,6 +461,46 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
     outline: none;
 }
 
+input[type=radio] { /* to hide the checkbox itself */
+    display:none; 
+} 
+
+input[type=radio] + label {
+    width: 1.2em;
+    font-weight: normal;
+}
+
+input[type=radio] + label:before {
+    font-family: 'fontello';
+    display: inline-block;
+    font-size: 1.2em;
+    content: "\f1db"; /* unchecked icon */
+    margin-right: 10px;
+}
+
+input[type=radio]:checked + label:before { 
+    font-size: 1.2em;
+    content: "\f111"; /* checked icon */
+    margin-right: 10px;
+} 
+
+input[type=radio]:checked + label:before {
+    color: #3c763d;
+}
+
+.radio label {
+    display: inline;
+}
+
+.aam-redirect-action {
+    padding: 10px 20px;
+}
+
+.aam-redirect-action select {
+    display: block;
+    width: 100%;
+}
+
 .aam-no-margin {
     margin-left: 0;
     margin-right: 0;
@@ -419,6 +512,7 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
 
 .aam-block {
     display: block;
+    letter-spacing: 1.5px;
 }
 
 .aam-lock {
@@ -429,10 +523,6 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
     height: 100%;
     background-color: rgba(169, 68, 66, 0.2);
     z-index: 9999;
-}
-
-.aam-block {
-    display: block;
 }
 
 .panel-title {
@@ -496,6 +586,11 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
     float: right;
 }
 
+.aam-overwrite .btn {
+    margin-top: -3px;
+    border: 0;
+}
+
 .row.aam-bordered {
     margin-left: 0;
     margin-right: 0;
@@ -506,11 +601,6 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
     font-size: 1.6em;
     line-height: 30px;
     cursor: pointer;
-}
-
-.visitor-message {
-    border: 2px solid #F5F5F5;
-    padding: 15px 10px;
 }
 
 .visitor-message span {
@@ -569,6 +659,11 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
     background-color: #5cb85c;
 }
 
+.aam-submenu-item .aam-menu-capability {
+    display: block;
+    margin-top: -4px;
+}
+
 .aam-submenu-item label {
     display: inline-block;
     width: 80%;
@@ -602,6 +697,14 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
     font-style: normal;
 }
 
+.text-larger { 
+    font-size: 1.2em;
+}
+
+.aam-large-padding {
+    padding: 25px 50px;
+}
+
 .aam-notification-message {
     font-size: 1.2em;
     border: 1px solid #E5E5E5;
@@ -611,7 +714,7 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
 .aam-extension-installed {
     border: 1px solid transparent;
     display: inline-block;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
     line-height: 1.42857;
     margin-bottom: 0;
@@ -626,9 +729,27 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
 
 .aam-help-menu {
     float: right;
-    font-size: 1em;
+    font-size: 1.4em;
+    margin-top: -4px;
     color: #337ab7;
     cursor: pointer;
+}
+
+.aam-setting-title, .aam-extension-title { 
+    font-size: 1.2em; 
+    font-weight: 700; 
+    display: block;
+}
+
+.aam-setting-title small {
+    font-size: 0.7em;
+}
+
+.aam-setting-description, .aam-extension-description {
+    font-size: 0.9em;
+    text-align: justify;
+    line-height: 1.4;
+    color: #666666;
 }
 
 .aam-help-menu.active {
@@ -686,7 +807,7 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
 
 .aam-info {
     border-left: 3px solid #337ab7;
-    background-color: #F5F5F5;
+    background-color: #FAFAFA;
     padding: 10px;
     position: relative;
     font-size: 1em;
@@ -698,6 +819,7 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
     -moz-hyphens: auto;
     word-wrap: break-word;
     text-align: justify;
+    padding: 15px;
 }
 
 .aam-notification {
@@ -734,8 +856,10 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
     margin: 0 10px;
 }
 
-.aam-error-list li {
-    font-size: 1.2em;
+.aam-error-list {
+    padding: 15px;
+    list-style: disc;
+    margin-bottom: 0;
 }
 
 .aam-menu-capability {
@@ -756,12 +880,19 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
 }
 
 .dataTables_processing {
-    border: 1px solid #cccccc;
     color: #337ab7;
     font-size: 0.8em;
     font-weight: 700;
     margin-top: -8px;
-    padding: 2px 5px;
+    padding: 30px 5px;
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    width: calc(100% - 30px);
+    height: 100%;
+    background-color: #FFFFFF;
+    opacity: 0.6;
+    text-align: center;
 }
 
 .aam-loading {
@@ -773,14 +904,104 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
 }
 
 .aam-current-subject {
-    border-bottom: 3px solid #EEEEEE;
+    background-color: #337ab7;
+    padding: 5px 15px 4px 10px;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 29px;
+    margin: 0;
+    color: #FFFFFF;
+}
+
+.aam-current-subject.danger {
+    background-color: #d9534f;
 }
 
 .aam-current-subject strong {
     text-transform: capitalize;
+    letter-spacing: 1px;
 }
 
 .table h4 {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.aam-license-indicator {
+    font-size:0.8em; 
+    display:block; 
+    margin-top: -4px; 
+    margin-bottom: 5px;
+    color: #777777;
+}
+
+/*! ========================================================================
+ * Bootstrap Toggle: bootstrap-toggle.css v2.2.0
+ * http://www.bootstraptoggle.com
+ * ========================================================================
+ * Copyright 2014 Min Hur, The New York Times Company
+ * Licensed under MIT
+ * ======================================================================== */
+.checkbox label .toggle,.checkbox-inline .toggle{margin-left:-20px;margin-right:5px}
+.toggle{position:relative;overflow:hidden}
+.toggle input[type=checkbox]{display:none}
+.toggle-group{position:absolute;width:200%;top:0;bottom:0;left:0;transition:left .35s;-webkit-transition:left .35s;-moz-user-select:none;-webkit-user-select:none}
+.toggle.off .toggle-group{left:-100%}
+.toggle-on{position:absolute;top:0;bottom:0;left:0;right:50%;margin:0;border:0;border-radius:0}
+.toggle-off{position:absolute;top:0;bottom:0;left:50%;right:0;margin:0;border:0;border-radius:0}
+.toggle-handle{position:relative;margin:0 auto;padding-top:0;padding-bottom:0;height:100%;width:0;border-width:0 1px}
+.toggle.btn{min-width:59px;min-height:34px}
+.toggle-on.btn{padding-right:24px}
+.toggle-off.btn{padding-left:24px}
+.toggle.btn-lg{min-width:79px;min-height:45px}
+.toggle-on.btn-lg{padding-right:31px}
+.toggle-off.btn-lg{padding-left:31px}
+.toggle-handle.btn-lg{width:40px}
+.toggle.btn-sm{min-width:50px;min-height:30px}
+.toggle-on.btn-sm{padding-right:20px}
+.toggle-off.btn-sm{padding-left:20px}
+.toggle.btn-xs{min-width:35px;min-height:22px}
+.toggle-on.btn-xs{padding-right:12px}
+.toggle-off.btn-xs{padding-left:12px}
+
+
+/* COVER KNOWN CSS ISSUES CASED BY OTHER PLUGINS OR THEMES */
+
+/* Bridge theme */
+.radio small, .form-group small, .panel-title small, 
+.aam-table-group small, .aam-setting-title small {
+    display: inline !important;
+    float: none !important;
+    width: auto !important;
+}
+
+/* Custom admin theme */
+.postbox a.btn {
+    color: #FFFFFF !important;
+}
+.panel-heading a {
+    color: #333333 !important;
+}
+
+/* Slate pro admin */
+.postbox {
+    padding: 0 !important;
+    border: 1px solid #e5e5e5 !important;
+}
+
+/* SEO Ultimited */
+.text-info {
+    color: #337ab7 !important;
+}
+
+.text-warning {
+    color: #8a6d3b !important;
+}
+
+.text-success { 
+    color: #3c763d !important;
+}
+
+.text-danger {
+    color: #a94442 !important;
 }

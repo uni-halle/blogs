@@ -1,0 +1,23 @@
+<?php if (defined('AAM_KEY')) { ?>
+    <div class="row">
+        <div class="col-xs-12 col-md-4">
+            <ul class="list-group" id="feature-list">
+                <?php
+                foreach (AAM_Backend_Feature::retriveList() as $i => $feature) {
+                    echo '<li class="list-group-item" data-feature="' . $feature->uid . '">';
+                    echo $feature->title;
+                    echo (empty($feature->notification) ? '' : ' <span class="badge">' . $feature->notification . '</span>');
+                    echo '</li>';
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="col-xs-12 col-md-8">
+            <?php
+            foreach (AAM_Backend_Feature::retriveList() as $feature) {
+                echo $feature->view->getContent();
+            }
+            ?>
+        </div>
+    </div>
+<?php }

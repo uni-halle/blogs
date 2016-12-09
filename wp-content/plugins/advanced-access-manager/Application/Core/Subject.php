@@ -180,7 +180,7 @@ abstract class AAM_Core_Subject {
     public function getObject($objectType, $id = 'none') {
         $object = null;
         
-        $nid = (is_scalar($id) ? $id : 'none'); //prevent from any kind of surprises
+        $nid = (is_scalar($id) ? $id : 'none'); //prevent from any surprises
         
         //check if there is an object with specified ID
         if (!isset($this->_objects[$objectType][$nid])) {
@@ -288,7 +288,9 @@ abstract class AAM_Core_Subject {
      * 
      * @access public
      */
-    abstract public function getParent();
+    public function getParent() {
+        return null;
+    }
     
     /**
      * Check if subject has parent

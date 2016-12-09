@@ -33,14 +33,12 @@ class AAM_Backend_Feature {
         $response = false;
 
         if (empty($feature->capability)){
-            $cap = AAM_Core_ConfigPress::get(
-                    'aam.feature.capability', 'administrator'
-            );
+            $cap = AAM_Core_Config::get('page.capability', 'administrator');
         } else {
             $cap = $feature->capability;
         }
 
-        if (self::accessGranted($feature->uid, $cap)) {
+        if (AAM::getUser()->hasCapability($cap)) {
             self::$_features[] = $feature;
             $response = true;
         }
@@ -88,27 +86,6 @@ class AAM_Backend_Feature {
         usort($response, 'AAM_Backend_Feature::reorder');
 
         return $response;
-    }
-
-    /**
-     * Check if current user can use feature
-     *
-     * Make sure that current user has enough capabilities to use feature
-     *
-     * @param string $feature
-     * @param string $cap
-     *
-     * @return boolean
-     *
-     * @access protected
-     * @static
-     */
-    protected static function accessGranted($feature, $cap = 'administrator') {
-        $capability = AAM_Core_ConfigPress::get(
-                        "aam.feature.{$feature}.capability", $cap
-        );
-
-        return current_user_can($capability);
     }
 
     /**

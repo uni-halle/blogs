@@ -51,12 +51,16 @@ class AAM_Backend_View {
         }
 
         //register default features
-        AAM_Backend_Menu::register();
-        AAM_Backend_Metabox::register();
-        AAM_Backend_Capability::register();
-        AAM_Backend_Post::register();
-        AAM_Backend_Extension::register();
-        AAM_Backend_Contact::register();
+        AAM_Backend_Feature_Menu::register();
+        AAM_Backend_Feature_Metabox::register();
+        AAM_Backend_Feature_Capability::register();
+        AAM_Backend_Feature_Post::register();
+        AAM_Backend_Feature_Redirect::register();
+        AAM_Backend_Feature_Teaser::register();
+        AAM_Backend_Feature_Extension::register();
+        AAM_Backend_Feature_Utility::register();
+        AAM_Backend_Feature_Contact::register();
+        
         //feature registration hook
         do_action('aam-feature-registration');
     }
@@ -70,7 +74,27 @@ class AAM_Backend_View {
      */
     public function renderPage() {
         ob_start();
-        require_once(dirname(__FILE__) . '/view/index.phtml');
+        require_once(dirname(__FILE__) . '/phtml/index.phtml');
+        $content = ob_get_contents();
+        ob_end_clean();
+
+        return $content;
+    }
+    
+    /**
+     * Run the Manager
+     *
+     * @return string
+     *
+     * @access public
+     */
+    public function renderMetabox() {
+        global $post;
+        
+        $url = admin_url('admin.php?page=aam&oid=' . $post->ID . '#post');
+        
+        ob_start();
+        require_once(dirname(__FILE__) . '/phtml/metabox.phtml');
         $content = ob_get_contents();
         ob_end_clean();
 
@@ -93,12 +117,13 @@ class AAM_Backend_View {
         if (method_exists($this, $parts[0])) {
             $response = call_user_func(array($this, $parts[0]));
         } elseif (count($parts) == 2) { //cover the Model.method pattern
-            $classname = 'AAM_Backend_' . $parts[0];
-            if (class_exists($classname)) {
-                $object = new $classname;
-                if (method_exists($object, $parts[1])) {
-                    $response = call_user_func(array($object, $parts[1]));
+            try {
+                $classname = 'AAM_Backend_Feature_' . $parts[0];
+                if (class_exists($classname)) {
+                    $response  = call_user_func(array(new $classname, $parts[1]));
                 }
+            } catch (Exception $e) {
+                $response = $e->getMessage();
             }
         }
         
@@ -116,7 +141,7 @@ class AAM_Backend_View {
      */
     public function renderContent() {
         ob_start();
-        require_once(dirname(__FILE__) . '/view/main-panel.phtml');
+        require_once(dirname(__FILE__) . '/phtml/main-panel.phtml');
         $content = ob_get_contents();
         ob_end_clean();
 
@@ -130,7 +155,7 @@ class AAM_Backend_View {
      */
     public function loadPartial($partial) {
         ob_start();
-        require_once(dirname(__FILE__) . '/view/partial/' . $partial);
+        require_once(dirname(__FILE__) . '/phtml/partial/' . $partial);
         $content = ob_get_contents();
         ob_end_clean();
 
@@ -164,28 +189,30 @@ class AAM_Backend_View {
      * 
      * @return type
      */
-    public function confirmWelcome() {
-        return json_encode(array(
-            'status' => AAM_Core_API::updateOption('aam-welcome', 0)
-        ));
-    }
-    
-    /**
-     * 
-     * @return type
-     */
-    public function getErrorFixStatus() {
-        $plugin = AAM_Core_Repository::getInstance()->pluginStatus('WP Error Fix');
+    public function switchToUser() {
+        $user  = new WP_User(AAM_Core_Request::post('user'));
+        $max   = AAM_Core_API::maxLevel(wp_get_current_user()->allcaps);
         
-        if ($plugin['status'] == 'install') {
-            $response = array('status' => 'show', 'url' => $plugin['url']);
+        if ($max > AAM_Core_API::maxLevel($user->allcaps)) {
+            AAM_Core_API::updateOption(
+                    'aam-user-switch-' . $user->ID, get_current_user_id()
+            );
+
+            wp_clear_auth_cookie();
+            wp_set_auth_cookie( $user->ID, true );
+            wp_set_current_user( $user->ID );
+            
+            $response = array('status' => 'success', 'redirect' => admin_url());
         } else {
-            $response = array('status' => 'hide');
+            $response = array(
+                'status' => 'failure', 
+                'reason' => 'You are not allowed to switch to this user'
+            );
         }
         
         return json_encode($response);
     }
-
+    
     /**
      * Get Subject
      * 

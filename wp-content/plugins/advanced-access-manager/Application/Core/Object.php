@@ -41,6 +41,18 @@ abstract class AAM_Core_Object {
      * @access private 
      */
     private $_inherited = null;
+    
+    /**
+     * Overwritten indicator
+     * 
+     * If settings for specific object were detected befor inheritance mechanism
+     * kicked off, then it it considered overwritten
+     * 
+     * @var boolean
+     * 
+     * @access private 
+     */
+    private $_overwritten = false;
 
     /**
      * Constructor
@@ -128,23 +140,27 @@ abstract class AAM_Core_Object {
     }
     
     /**
-     * Check if options were overwritten
+     * Set overwritten flat
      * 
-     * In order to consider options overwritten there are three conditions to be met:
-     * - Current subject has to have the parent subject;
-     * - Current object should have no empty option set;
-     * - The inherited flad should be null;
+     * @param boolean $overwritten
+     * 
+     * @return void
+     * 
+     * @access public
+     */
+    public function setOverwritten($overwritten = true) {
+        $this->_overwritten = $overwritten;
+    }
+    
+    /**
+     * Check if options are overwritten
      * 
      * @return boolean
      * 
      * @access public
      */
     public function isOverwritten () {
-        $parent  = $this->getSubject()->hasParent();
-        $option  = $this->getOption();
-        $inherit = $this->getInherited();
-        
-        return ($parent && !empty($option) && is_null($inherit));
+        return $this->_overwritten;
     }
 
 }

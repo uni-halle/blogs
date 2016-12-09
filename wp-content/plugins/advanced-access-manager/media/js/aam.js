@@ -5,6 +5,11 @@
  * ======================================================================
  */
 
+/**
+ * 
+ * @param {type} $
+ * @returns {undefined}
+ */
 (function ($) {
 
     /**
@@ -23,6 +28,7 @@
          * Different UI hooks
          */
         this.hooks = {};
+        
     }
 
     /**
@@ -56,7 +62,7 @@
             }
         }
     };
-
+    
     /**
      * Initialize the AAM
      * 
@@ -67,7 +73,8 @@
         this.setSubject(
                 aamLocal.subject.type, 
                 aamLocal.subject.id,
-                aamLocal.subject.name
+                aamLocal.subject.name,
+                aamLocal.subject.level
         );
         
         //load the UI javascript support
@@ -101,37 +108,6 @@
             });
             $(this).tooltip('show');
         });
-        
-        //if there is an error detected during the AAM load, show it
-        if (typeof AAM_PageError !== 'undefined' && AAM_PageError) {
-            $('.aam-error-list').append(
-                $('<li/>').html(
-                    this.__('Javascript error detected during the page load. AAM may not function properly.')
-                )
-            );
-            $('.aam-notification-container').removeClass('hidden');
-        }
-        
-        //Error Fix promotion code
-        $.ajax(aamLocal.ajaxurl, {
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                action: 'aam',
-                sub_action: 'getErrorFixStatus',
-                _ajax_nonce: aamLocal.nonce
-            },
-            success: function (response) {
-                if (response.status === 'show') {
-                    $('#errorfix-promotion').removeClass('hidden');
-                    $('#errorfix-install-btn').attr(
-                            'href', response.url.replace(/&amp;/g, '&')
-                    );
-                } else {
-                    $('#errorfix-promotion').remove();
-                }
-            }
-        });
     };
 
     /**
@@ -149,17 +125,26 @@
      * @param {type} id
      * @returns {undefined}
      */
-    AAM.prototype.setSubject = function (type, id, name) {
+    AAM.prototype.setSubject = function (type, id, name, level) {
         this.subject = {
             type: type,
             id: id,
-            name: name
+            name: name,
+            level: level
         };
         
         //update the header
+        var subject = type.charAt(0).toUpperCase() + type.slice(1);
         $('.aam-current-subject').html(
-                aam.__('Current ' + type) + ': <strong>' + name + '</strong>'
+                aam.__(subject) + ': <strong>' + name + '</strong>'
         );
+
+        //highlight screen if the same level
+        if (parseInt(level) >= aamLocal.level) {
+            $('.aam-current-subject').addClass('danger');
+        } else {
+            $('.aam-current-subject').removeClass('danger');
+        }
 
         this.triggerHook('setSubject');
     };

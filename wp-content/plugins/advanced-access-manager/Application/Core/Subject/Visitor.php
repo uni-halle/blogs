@@ -82,11 +82,4 @@ class AAM_Core_Subject_Visitor extends AAM_Core_Subject {
         return self::UID;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getParent() {
-        return null;
-    }
-
 }

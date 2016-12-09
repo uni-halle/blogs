@@ -1,33 +1,51 @@
 === Advanced Access Manager ===
 Contributors: vasyltech
-Tags: access, access manager, role, user, capability, admin, page, post, widget
+Tags: access, role, user, visitor, capability, page, post, permission, security, redirect
 Requires at least: 3.8
-Tested up to: 4.5
-Stable tag: 3.2
+Tested up to: 4.6.1
+Stable tag: 3.9.1.1
 
-One of the best tools in WordPress repository to manage access to your posts, 
-pages, categories and backend area for users, roles and visitors.
+The great WordPress plugin to manage access to your posts, pages, categories and 
+backend area for users, roles and visitors.
 
 == Description ==
 
-> Advanced Access Manager (aka AAM) is the only free plugin that allows you to
+> Advanced Access Manager (aka AAM) is probably the only plugin that allows you to
 > control access to your posts, pages or backend area on user, visitor and role
-> levels.
+> levels. 
 
-AAM is well documented so even unexperienced WordPress user can easily understand 
+AAM is well documented so even inexperienced WordPress user can easily understand 
 how to use it in the most efficient way.
 
-AAM the main objectives are to control access to your:
+Please note! Some of the features are limited with the basic version and if
+necessary, consider to get recommended free or premium extension.
 
-* posts, pages, custom post types and categories;
-* backend metaboxes and widgets as well as frontend widgets;
-* backend menu;
-* comments;
+AAM the main objectives are:
+
+* Manage access to your posts, pages, custom post types and categories;
+* Manage access to post's and page's content by displaying teaser message;
+* Filter backend metaboxes and widgets as well as frontend widgets;
+* Control access to backend menu;
+* Manage redirect when access is denied to any restricted resource;
+* Create, edit or delete user roles;
+* Manage role capabilities
 
 > AAM is very flexible and customizable plugin that is used by a lot of developers
-> around the globe to create secure and powerful WordPress solutions.
+> around the world to create secure and powerful WordPress solutions.
 
-Check our [website page](http://vasyltech.com/advanced-access-manager) to find 
+`//Get AAM_Core_Subject. This object allows you to work with access control
+//for current logged-in user or visitor
+$user = AAM::getUser();
+
+//Example 1. Get Post with ID 10 and check if current user has access to read it
+//on the frontend side of the website. If true then access denied to read this post.
+$user->getObject('post', 10)->has('frontend.read');
+
+//Example 2. Get Admin Menu object and check if user has access to Media menu.
+//If true then access denied to this menu
+$user->getObject('menu')->has('upload.php');`
+
+Check our [website page](https://vasyltech.com/advanced-access-manager) to find 
 out more about the Advanced Access Manager.
 
 == Installation ==
@@ -42,8 +60,125 @@ out more about the Advanced Access Manager.
 3. User/Role Capabilities manager
 4. Posts & Pages manager
 5. Posts & Pages access control form
+6. Utilities tab
 
 == Changelog ==
+
+= 3.9.1.1 =
+* Minor bug fix to cover uncommon scenario when user without role
+
+= 3.9.1 =
+* Replaced AAM Post Filter extension with core option "Large Post Number Support"
+* Removed redundant HTML permalink support
+* Visually highlighted editing role or user is administrator
+* Hide restricted actions for roles and users on User/Role Panel
+* Minor UI improvements
+* Significant improvements to post & pages access inheritance mechanism
+* Optimized caching mechanism
+* Fixed bug with post frontend access
+
+= 3.9 =
+* Fixed UI bug with role list
+* Fixed core bug with max user level 
+* Fixed bug with CodePinch installation page
+* Added native user switch functionality
+
+= 3.8.3 =
+* Fixed the bug with post access inheritance
+* Update CodePinch affiliate program
+
+= 3.8.2 =
+* Optimized AAM UI to manage large amount of posts and categories
+* Improved Multisite support
+* Improved UI
+* Fixed bug with Extensions tab
+* Added ability to check for extension updates manually
+
+= 3.8.1 =
+* Minor refactoring
+* UI improvements
+* Bug fixing
+
+= 3.8 =
+* Added Clone Role feature
+* Added auto cache clearing on term or post update
+* Added init custom URL for metaboxes
+
+= 3.7.6 =
+* Fixed bug related to Media Access Control
+* Fixed bug with cleaning user posts & pages cache after profile update
+
+= 3.7.5 =
+* Added AAM Content Teaser extension
+* Added LIMIT option to Posts & Pages access forms to support Teaser feature
+* Bug fixing
+* Improved UI
+* Added ability to show/hide admin bar with show_admin_bar capability
+
+= 3.7.1 =
+* Added AAM Role Hierarchy extension
+* Fixed bug with 404 page for frontend
+* Started CSS fixes for all known incompatible themes and plugins
+
+= 3.7 =
+* Introduced Redirect feature
+* Added CodePinch widget
+* Added AAM Redirect extension
+* Added AAM Complete Package extension
+* Removed AAM Development extension
+* Removed setting Access Denied Handling from the Utilities tab
+
+= 3.6.1 =
+* Bug fixing related to URL redirect
+* Added back deprecated ConfigPress class to keep compatability with old extensions
+* Fixed bug reported through CodePinch service
+
+= 3.6 =
+* Added Media Access Control feature
+* Added Access Denied Handling feature
+* Improved core functionality
+
+= 3.5 =
+* Improved access control for Posts & Pages
+* Introduced Access Manager metabox to Post edit screen
+* Added Access action to list of Posts and Pages
+* Improved UI
+* Deprecated Skeleton extension in favor to upcoming totally new concept
+* Fixed bug with metaboxes initialization when backend filtering is OFF
+
+= 3.4.2 =
+* Fixed bug with post & pages access control
+* Added Extension version indicator
+
+= 3.4.1 =
+* Fixed bug with visitor access control
+
+= 3.4 =
+* Refactored backend UI implementation
+* Integrated Utilities extension to the core
+* Improved capability management functionality
+* Improved UI
+* Added caching mechanism to the core
+* Improved caching mechanism
+* Fixed few functional bugs
+
+= 3.3 =
+* Improved UI
+* Completely protect Admin Menu if restricted
+* Tiny core refactoring
+* Rewrote UI descriptions
+
+= 3.2.3 =
+* Quick fix for extensions ajax calls
+
+= 3.2.2 =
+* Improved AAM security reported by James Golovich from Pritect
+* Extended core to allow manage access to AAM features via ConfigPress
+
+= 3.2.1 =
+* Added show_screen_options capability support to control Screen Options Tab
+* Added show_help_tabs capability support to control Help Tabs
+* Added AAM Support
 
 = 3.2 =
 * Fixed minor bug reporetd by WP Error Fix
@@ -203,17 +338,6 @@ out more about the Advanced Access Manager.
 * Added AAM Plugin Manager Extension
 * Removed Deprecated ConfigPress Object from the core
 
-= 2.7.3 =
-* Added ConfigPress Reference Page
-
-= 2.7.2 =
-* Maintenance release
-
-= 2.7.1 =
-* Improved SSL handling
-* Added ConfigPress property aam.native_role_id
-* Fixed bug with countryCode in AAM Security Extension
-
 = 2.7 =
 * Fixed bug with subject managing check 
 * Fixed bug with update hook
@@ -231,37 +355,10 @@ out more about the Advanced Access Manager.
 * Optimized CSS
 * Regenerated translation pot file
 
-= 2.5.2 =
-* Fixed issue with AAM Media Manager
-
-= 2.5.1 =
-* Extended AAM Media Manager Extension
-* Adjusted control_area to AAM Media Manager
-* Fixed issue with mb_* functions
-* Added Contextual Help Menu
-* Updated My Feature extension
-
 = 2.5 =
 * Fixed issue with AAM Plus Package and Multisite
 * Introduced Development License
 * Minor internal adjustment for AAM Development Community
-
-= 2.5 Beta =
-* Refactored Post & Pages Access List
-* Extended ConfigPress with Post & Pages Access List Options
-* Refactored internal UI hander
-* Fixed issue with Restore Default flag and AAM Plus Package
-* Added LIST Restriction for AAM Plus Package
-* Added ADD Restriction for AAM Plus Package
-* Filter list of editable roles based on current user level
-* Gives ability for non-admin users manage AAM if admin granted access
-* Removed Backup object. Replaces with Restore Default
-* Merged ajax handler with UI manager
-* Implemented Clear All Settings feature (one step closer to Import/Export)
-* Added Error notification for Extension page
-* Fixed bug with Multisite and AAM Plus Package ajax call
-* Regenerated language file
-* Fixed bug with non-existing term
 
 = 2.4 =
 * Added Norwegian language Norwegian (by Christer Berg Johannesen)
@@ -277,22 +374,6 @@ out more about the Advanced Access Manager.
 * Added Inherit Capabilities From Role drop-down on Add New Role Dialog
 * Small Cosmetic CSS changes
 
-= 2.2.3 =
-* Improved Admin Menu access control
-* Extended ConfigPress with aam.menu.undefined setting
-* Fixed issue with Frontend Widget
-* Updated Polish Language File
-
-= 2.2.2 =
-* Fixed very significant issue with Role deletion
-* Added Unfiltered Capability checkbox
-* Regenerated language file
-* Fixed issue with language encoding
-* Fixed issue with Metaboxes tooltips
-
-= 2.2.1 =
-* Fixed the issue with Activity include
-
 = 2.2 =
 * Fixed issue with jQuery UI Tooltip Widget
 * Added AAM Warning Panel
@@ -307,13 +388,6 @@ out more about the Advanced Access Manager.
 * Refactored AAM Core Console model
 * Increased the number of saved restriction for basic version
 * Simplified Undo feature
-
-= 2.1.1 =
-* Fixed fatal error in caching mechanism
-* Extended ConfigPress tutorial
-* Fixed error for AAM Plus Package for PHP earlier versions
-* Improved Admin over SSL check
-* Improved Taxonomy Query handling mechanism
 
 = 2.1 =
 * Fixed issue with Admin Menu restrictions (thanks to MikeB2B)
@@ -333,213 +407,6 @@ out more about the Advanced Access Manager.
 * Robust and completely new core functionality
 * Over 3 dozen of bug fixed and improvement during 3 alpha & beta versions
 * Improved Update mechanism
-
-= 1.9.1 =
-* Fixed bug with empty event list
-* Fixed bug with direct attachment access
-* Reverted back the default UI design
-* Last release of 1.x AAM Branch
-
-= 1.9 =
-* AAM 2.0 alpha 1 Announcement
-
-= 1.8.5 =
-* Added Event Manager
-* Added ConfigPress parameter "aam.encoding"
-
-= 1.8 =
-* Fixed user caching issue
-* Fixed issue with encoding
-* Clear output buffer to avoid from third party plugins issues
-* Notification about new release 2.0
-
-= 1.7.5 =
-* Accordion Fix
-
-= 1.7.3 =
-* Fixed reported issue #8894 to PHPSnapshot
-* Added Media File access control
-* Extended ConfigPress Tutorial
-
-= 1.7.2 =
-* Fixed CSS issues
-
-= 1.7.1 =
-* Fixed issue with cache removal query
-* Silenced Upgrade for release 1.7 and higher
-* Removed Capabilities description
-* Added .POT file for multi-language support
-* Silenced issue in updateRestriction function
-* Silenced the issue with phpQuery and taxonomy rendering
-
-= 1.7 =
-* Removed Zend Caching mechanism
-* Silenced the issue with array_merge in API model
-* Removed the ConfigPress reference
-* Created ConfigPress PDF Tutorial
-* Moved SOAP wsdl to local directory
-
-
-= 1.6.9.1 =
-* Changed the way AHM displays
-
-= 1.6.9 =
-* Encoding issue fixed
-* Removed AWM Group page
-* Removed .htaccess file
-* Fixed bug with Super Admin losing capabilities
-
-= 1.6.8.3 =
-* Implemented native WordPress jQuery UI include to avoid version issues
-
-= 1.6.8.2 =
-* Fixed JS issue with dialog destroy
-
-= 1.6.8.1 =
-* Fixed Javascript issue
-* Fixed issue with comment feature
-
-= 1.6.8 =
-* Extended ConfigPress
-* New view
-* Updated ConfigPress Reference Guide
-
-= 1.6.7.5 =
-* Implemented alternative way of Premium Upgrade
-* Extended ConfigPress
-
-= 1.6.7 =
-* New design
-
-= 1.6.6 =
-* Bug fixing
-* Maintenance work
-* Added Multisite importing feature
-
-= 1.6.5.2 =
-* Updated jQuery UI lib to 1.8.20
-* Minimized JavaScript
-* Implemented Web Service for AWM Group page
-* Implemented Web Service for Premium Version
-* Fixed bug with User Restrictions
-* Fixed bug with Edit Permalink
-* Fixed bug with Upgrade Hook
-* Reorganized Label Module (Preparing for Russian and Polish transactions)
-
-= 1.6.5.1 (Beta) =
-* Bug fixing
-* Removed custom error handler
-
-= 1.6.5 =
-* Turn off error reporting by default
-* More advanced Post/Taxonomy access control
-* Added Refresh feature for Post/Taxonomy Tree
-* Added Custom Capability Edit Permalink
-* Filtering Post's Quick Menu
-* Refactored JavaScript
-
-= 1.6.3 =
-* Added more advanced possibility to manage comments
-* Change Capabilities view
-* Added additional checking for plugin's reliability
-
-= 1.6.2 =
-* Few GUI changes
-* Added ConfigPress reference guide
-* Introduced Extended version
-* Fixed bug with UI menu ordering
-* Fixed bug with ConfigPress caching
-* Fixed bugs in filtermetabox class
-* Fixed bug with confirmation message in Multisite Setup
-
-= 1.6.1.3 =
-* Fixed issue with menu
-
-= 1.6.1.2 =
-* Resolved issue with chmod
-* Fixed issue with clearing config.ini during upgrade
-
-= 1.6.1.1 =
-* Fixed 2 bugs reported by jimaek
-
-= 1.6.1 =
-* Silenced few warnings in Access Control Class
-* Extended description to Manually Metabox Init feature
-* Added possibility to filter Frontend Widgets
-* Refactored the Option Page manager
-* Added About page
-
-= 1.6 =
-* Fixed bug for post__not_in
-* Fixed bug with Admin Panel filtering
-* Added Restore Default button
-* Added Social and Support links
-* Modified Error Handling feature
-* Modified Config Press Handling
-
-= 1.5.8 =
-* Fixed bug with categories
-* Addedd delete_capabilities parameter to Config Press
-
-= 1.5.7 =
-* Bug fixing
-* Introduced error handling
-* Added internal .htaccess
-
-= 1.5.6 =
-* Introduced _Visitor User Role
-* Fixed few core bugs
-* Implemented caching system
-* Improved API
-
-= 1.5.5 =
-* Performed code refactoring
-* Added Access Config
-* Added User Managing feature
-* Fixed bugs related to WP 3.3.x releases
-
-= 1.4.3 =
-* Emergency bug fixing
-
-= 1.4.2 =
-* Fixed cURL bug
-
-= 1.4.1 =
-* Fixed some bugs with checking algorithm
-* Maintained the code
-
-= 1.4 =
-* Added Multi-Site Support
-* Added Multi-Language Support
-* Improved checking algorithm
-* Improved Super Admin functionality
-
-= 1.3.1 =
-* Improved Super Admin functionality
-* Optimized main class
-* Improved Checking algorithm
-* Added ability to change User Role's Label
-* Added ability to Exclude Pages from Navigation
-* Added ability to spread Post/Category Restriction Options to all User Roles
-* Sorted List of Capabilities Alphabetically
-
-= 1.3 =
-* Change some interface button to WordPress default
-* Deleted General Info metabox
-* Improved check Access algorithm for compatibility with non standard links
-* Split restriction on Front-end and Back-end
-* Added Page Menu Filtering
-* Added Admin Top Menu Filtering
-* Added Import/Export Configuration functionality
-
-= 1.2.1 =
-* Fixed issue with propAttr jQuery IU incompatibility
-* Added filters for checkAccess and compareMenu results
-
-= 1.2 =
-* Fixed some notice messages reported by llucax
-* Added ability to sort Admin Menu
-* Added ability to filter Posts, Categories and Pages
 
 = 1.0 =
 * Fixed issue with comment editing

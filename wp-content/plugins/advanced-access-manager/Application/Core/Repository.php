@@ -38,11 +38,6 @@ class AAM_Core_Repository {
     const STATUS_UPDATE = 'update';
 
     /**
-     * Relative path to extension directory
-     */
-    const RELPATH = '/aam/extension';
-
-    /**
      * Single instance of itself
      * 
      * @var AAM_Core_Repository
@@ -97,6 +92,9 @@ class AAM_Core_Repository {
      */
     public function load() {
         $basedir = $this->getBasedir();
+        
+        //since release 3.4 Utilities are intergreated into core as Settings
+        $this->integrateUtility();
 
         if (file_exists($basedir)) {
             //iterate through each active extension and load it
@@ -110,7 +108,34 @@ class AAM_Core_Repository {
             do_action('aam-post-extensions-load');
         }
     }
-
+    
+    /**
+     * 
+     */
+    protected function integrateUtility() {
+        //block AAM Utilities and Post Filter Extension from load
+        define('AAM_UTILITIES', '99');
+        define('AAM_POST_FILTER', '99');
+        //TODO - Remove this in Jul 2017
+        
+         //caching filter & action
+        add_filter('aam-read-cache-filter', array($this, 'readCache'), 10, 3);
+        
+        //utilities option
+        add_filter('aam-utility-property', 'AAM_Core_Config::get', 10, 2);
+    }
+    
+    /**
+     * 
+     * @param type $value
+     * @param type $option
+     * @param type $subject
+     * @return type
+     */
+    public function readCache($value, $option, $subject) {
+        return AAM_Core_Cache::get($option);
+    }
+    
     /**
      * Bootstrap the Extension
      *
@@ -199,6 +224,17 @@ class AAM_Core_Repository {
     
     /**
      * 
+     * @param type $title
+     * @return type
+     */
+    public function getExtensionVersion($title) {
+        $const = str_replace(' ', '_', strtoupper($title));
+        
+        return (defined($const) ? constant($const) : '');
+    }
+    
+    /**
+     * 
      * @param type $slug
      * 
      * @return type
@@ -217,7 +253,7 @@ class AAM_Core_Repository {
      */
     protected function prepareExtensionCache() {
         if (empty($this->cache)) {
-            $list = AAM_Core_API::getOption('aam-extension-repository', array());
+            $list     = AAM_Core_API::getOption('aam-extension-repository', array());
             $licenses = AAM_Core_API::getOption('aam-extension-license', array());
             
             //WP Error Fix bug report
@@ -267,9 +303,7 @@ class AAM_Core_Repository {
      * @return type
      */
     public function getBasedir() {
-        $basedir = WP_CONTENT_DIR . self::RELPATH;
-        
-        return AAM_Core_ConfigPress::get('aam.extentionDir', $basedir);
+        return AAM_Core_Config::get('extentionDir', AAM_EXTENSION_BASE);
     }
 
 }

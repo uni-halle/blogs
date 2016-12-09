@@ -48,6 +48,17 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
             $this->read();
         }
     }
+    
+    /**
+     * 
+     * @param type $name
+     * @return type
+     */
+    public function __get($name) {
+        $post = $this->getPost();
+        
+        return (property_exists($post, $name) ? $post->$name : null);
+    }
 
     /**
      * Read the Post AAM Metadata
@@ -60,40 +71,37 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
      */
     public function read() {
         $subject = $this->getSubject();
-        $opname = $this->getOptionName();
-        $chname = $opname . '|' . $this->getPost()->ID;
+        $opname  = $this->getOptionName();
+        $chname  = $opname . '|' . $this->getPost()->ID;
 
         //read cache first
-        $option = apply_filters('aam-read-cache-filter', array(), $chname, $subject);
+        $option = AAM_Core_Cache::get($chname);
         
         if ($option === false) { //if false, then the cache is empty but exist
             $option = array();
         } else {
+            //Cache is empty. Get post access for current subject (user or role)
             if (empty($option)) { //no cache for this element
                 $option = get_post_meta($this->getPost()->ID, $opname, true);
+                $this->setOverwritten(!empty($option));
             }
             
-            //try to inherit from terms or default first - AAM Plus Package or any
+            //try to inherit from terms or default settings - AAM Plus Package or any
             //other extension that use this filter
-            $option = apply_filters('aam-post-access-filter', $option, $this);
-
-            //try to inherit from parent
+            if (empty($option)) {
+                $option = apply_filters('aam-post-access-filter', $option, $this);
+            }
+            
+            //No settings for a post. Try to inherit from the parent
             if (empty($option)) {
                 $option = $subject->inheritFromParent('post', $this->getPost()->ID);
-                $this->setInherited(empty($option) ? null : 'role');
             }
         }
         
         $this->setOption($option);
 
-        //trigger caching mechanism
-        do_action(
-            'aam-write-cache-action', 
-            $chname, 
-            //if cache is on and result is empty, simply cache the false to speed-up
-            (empty($option) ? false : $option), 
-            $subject
-        );
+        //if result is empty, simply cache the false to speed-up
+        AAM_Core_Cache::set($subject, $chname, (empty($option) ? false : $option));
     }
 
     /**
@@ -171,7 +179,7 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
     public function has($action) {
         $option = $this->getOption();
 
-        return !empty($option[$action]);
+        return (isset($option[$action]) && $option[$action]);
     }
 
     /**
@@ -185,22 +193,4 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
         return $this->_post;
     }
     
-    /**
-     * Check if options were overwritten
-     * 
-     * In order to consider options overwritten there are three conditions to be met:
-     * - Current object should have no empty option set;
-     * - The inherited flad should be null;
-     * 
-     * @return boolean
-     * 
-     * @access public
-     */
-    public function isOverwritten () {
-        $option  = $this->getOption();
-        $inherit = $this->getInherited();
-        
-        return (!empty($option) && is_null($inherit));
-    }
-
 }

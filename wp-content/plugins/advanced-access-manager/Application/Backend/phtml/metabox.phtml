@@ -1,0 +1,8 @@
+<?php if (defined('AAM_KEY')) { ?>
+    <?php if (AAM_Backend_Feature_Post::checkLimit() === false) { ?>
+        <div style="border-left: 4px solid #ffb900; padding-left: 10px; font-size: 0.8em; margin: 10px 5px;">
+            You've reached the limit. Consider to purchase <strong><a href="<?php echo admin_url('admin.php?page=aam#extension'); ?>" target="_blank">AAM Plus Package</a></strong> extension.
+        </div>
+    <?php } ?>
+    <a href="<?php echo $url; ?>" class="page-title-action" target="_blank" style="display: block; margin: 17px 5px 0px; text-align:center;"><?php echo __('Manage Access', AAM_KEY); ?></a>
+<?php }

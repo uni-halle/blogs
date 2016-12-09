@@ -1,0 +1,105 @@
+<?php if (defined('AAM_KEY')) { ?>
+    <div class="aam-feature" id="utilities-content">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="aam-info">
+                    <?php echo sprintf(__('To learn more about AAM Utilities check %sAAM Utilities%s article.', AAM_KEY), '<a href="https://vasyltech.com/blog/aam-utilities" target="_blank">', '</a>'); ?><br/>
+                </p>
+            </div>
+        </div>
+
+        <table class="table table-striped table-bordered">
+            <tbody>
+                <?php do_action('aam-pre-utilities-setting'); ?>
+                <tr>
+                    <td>
+                        <span class='aam-setting-title'><?php echo __('Edit/Delete Capabilities', AAM_KEY); ?></span>
+                        <p class="aam-setting-description">
+                            <?php echo AAM_Backend_View_Helper::preparePhrase('[Please note!] This feature should be used only by experienced users. Toggle an ability to edit or delete capabilities.', 'strong'); ?>
+                        </p>
+                    </td>
+                    <td>
+                        <input data-toggle="toggle" data-on="<?php echo __('Enabled', AAM_KEY); ?>" data-off="<?php echo __('Disabled', AAM_KEY); ?>" type="checkbox" name="manage-capability" <?php echo (AAM_Core_Config::get('manage-capability', false) ? 'checked' : ''); ?> />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class='aam-setting-title'><?php echo __('Backend Access Control', AAM_KEY); ?></span>
+                        <p class="aam-setting-description">
+                            <?php echo __('Use AAM to control access to posts, pages, categories, menus and metaboxes etc. Disable this setting to stop AAM from controling access for backend.', AAM_KEY); ?>
+                        </p>
+                    </td>
+                    <td>
+                        <input data-toggle="toggle" data-on="<?php echo __('Enabled', AAM_KEY); ?>" data-off="<?php echo __('Disabled', AAM_KEY); ?>" type="checkbox" name="backend-access-control" <?php echo (AAM_Core_Config::get('backend-access-control', true) ? 'checked' : ''); ?> />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class='aam-setting-title'><?php echo __('Frontend Access Control', AAM_KEY); ?></span>
+                        <p class="aam-setting-description">
+                            <?php echo __('Use AAM to control access to posts, pages, categories, menus and widgets. Disable this setting to stop AAM from controling access for frontend.', AAM_KEY); ?>
+                        </p>
+                    </td>
+                    <td>
+                        <input data-toggle="toggle" data-on="<?php echo __('Enabled', AAM_KEY); ?>" data-off="<?php echo __('Disabled', AAM_KEY); ?>" type="checkbox" name="frontend-access-control" <?php echo (AAM_Core_Config::get('frontend-access-control', true) ? 'checked' : ''); ?> />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class='aam-setting-title'><?php echo __('Media Files Access Control', AAM_KEY); ?></span>
+                        <p class="aam-setting-description">
+                            <?php echo sprintf(AAM_Backend_View_Helper::preparePhrase('When enabled, AAM will physically control access to all media files located in [uploads] folder. For more information check %sthis tutorial%s.', 'strong'), '<a href="https://vasyltech.com/blog/wordpress-media-access-control" target="_blank">', '</a>'); ?>
+                        </p>
+                    </td>
+                    <td>
+                        <input data-toggle="toggle" data-on="<?php echo __('Enabled', AAM_KEY); ?>" data-off="<?php echo __('Disabled', AAM_KEY); ?>" type="checkbox" name="media-access-control" <?php echo (AAM_Core_Config::get('media-access-control', false) ? 'checked' : ''); ?> />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class='aam-setting-title'><?php echo __('Large Post Number Support', AAM_KEY); ?></span>
+                        <p class="aam-setting-description">
+                            <?php echo AAM_Backend_View_Helper::preparePhrase('[Use cautiously!] With large amount of posts, a native WordPress pagination does not take in consideration AAM access settings. Enable this option if you restrict posts from LISTing on frontend or backend.', 'strong'); ?>
+                        </p>
+                    </td>
+                    <td>
+                        <input data-toggle="toggle" data-on="<?php echo __('Enabled', AAM_KEY); ?>" data-off="<?php echo __('Disabled', AAM_KEY); ?>" type="checkbox" name="large-post-number" <?php echo (AAM_Core_Config::get('large-post-number', false) ? 'checked' : ''); ?> />
+                    </td>
+                </tr>
+                
+                <?php do_action('aam-utilities-setting'); ?>
+
+                <tr><td colspan="2"></td></tr>
+                <tr>
+                    <td>
+                        <span class='aam-setting-title'><?php echo __('Clear All Settings', AAM_KEY); ?></span>
+                        <p class="aam-setting-description">
+                            <?php echo __('Remove all the settings related to AAM (including all extension licenses).', AAM_KEY); ?>
+                        </p>
+                    </td>
+                    <td>
+                        <a href="#clear-settings-modal" data-toggle="modal" class="btn btn-danger btn-block">Clear Settings</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="modal fade" id="clear-settings-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="<?php echo __('Close', AAM_KEY); ?>"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"><?php echo __('Clear all settings', AAM_KEY); ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-center alert alert-danger text-larger"><?php echo __('All AAM settings will be removed.', AAM_KEY); ?></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="clear-settings"><?php echo __('Clear', AAM_KEY); ?></button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo __('Cancel', AAM_KEY); ?></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php }

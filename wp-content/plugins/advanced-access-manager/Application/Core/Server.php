@@ -32,15 +32,16 @@ final class AAM_Core_Server {
      * @access public
      */
     public static function check() {
-        $response = self::send(self::SERVER_URL . '/check');
-
+        $domain   = parse_url(site_url(), PHP_URL_HOST);
+        $response = self::send(
+                self::SERVER_URL . '/check?domain=' . urlencode($domain) 
+        );
+        $result   = array();
         if (!is_wp_error($response)) {
             //WP Error Fix bug report
             if ($response->error !== true && !empty($response->products)) {
                 $result = $response->products;
             }
-        } else {
-            $result = array();
         }
 
         return $result;

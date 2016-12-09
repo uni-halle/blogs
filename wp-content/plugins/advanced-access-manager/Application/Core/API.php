@@ -152,7 +152,7 @@ final class AAM_Core_API {
         
         if (is_array($caps)) { //WP Error Fix bug report
             foreach($caps as $cap => $granted) {
-                if ($granted && preg_match('/^level_(10|[0-9])$/i', $cap, $match)) {
+                if ($granted && preg_match('/^level_([0-9]+)$/i', $cap, $match)) {
                     $levels[] = intval($match[1]);
                 }
             }
@@ -160,30 +160,104 @@ final class AAM_Core_API {
         
         return max($levels);
     }
+    
+    /**
+     * Get all capabilities
+     * 
+     * Prepare and return list of all registered in the system capabilities
+     * 
+     * @return array
+     * 
+     * @access public
+     */
+    public static function getAllCapabilities() {
+        $caps = array();
+        
+        foreach (self::getRoles()->role_objects as $role) {
+            if (is_array($role->capabilities)) {
+                $caps = array_merge($caps, $role->capabilities);
+            }
+        }
+        
+        return $caps;
+    }
 
     /**
      * Reject the request
      *
      * Redirect or die the execution based on ConfigPress settings
+     * 
+     * @param string $area
+     * @param array  $args
      *
      * @return void
      *
      * @access public
      */
-    public static function reject() {
-        $redirect = AAM_Core_ConfigPress::get('frontend.access.deny.redirect');
-
+    public static function reject($area = 'frontend', $args = array()) {
+        $type = apply_filters(
+                'aam-filter-redirect-option', 
+                AAM_Core_Config::get("{$area}.redirect.type"),
+                "{$area}.redirect.type",
+                AAM::getUser()
+        );
+        
+        if (!empty($type)) {
+            $redirect = apply_filters(
+                'aam-filter-redirect-option',
+                AAM_Core_Config::get("{$area}.redirect.{$type}"),
+                "{$area}.redirect.{$type}",
+                AAM::getUser()
+            );
+        } else {
+            $redirect = AAM_Core_Config::get("{$area}.access.deny.redirect");
+        }
+        
+        self::redirect($redirect, $area, $args);
+    }
+    
+    /**
+     * 
+     * @param type $redirect
+     * @param type $area
+     * @param type $args
+     */
+    protected static function redirect($redirect, $area , $args) {
         if (filter_var($redirect, FILTER_VALIDATE_URL)) {
             wp_redirect($redirect);
-        } elseif (is_int($redirect)) {
+        } elseif (preg_match('/^[\d]+$/', $redirect)) {
             wp_redirect(get_post_permalink($redirect));
-        } else {
-            $message = AAM_Core_ConfigPress::get(
-                'frontend.access.deny.message', __('Access Denied', AAM_KEY)
-            );
-            wp_die($message);
+        } elseif (is_callable($redirect)) {
+            call_user_func($redirect, $args);
+        } elseif (!empty($args['callback']) && is_callable($args['callback'])) {
+            $message = self::getDenyMessage($area);
+            call_user_func($args['callback'], $message, '', array());
+        } elseif (empty($args['skip-die'])) {
+            wp_die(self::getDenyMessage($area));
         }
         exit;
+    }
+    
+    /**
+     * 
+     * @param type $area
+     * @return type
+     */
+    protected static function getDenyMessage($area) {
+        $message = apply_filters(
+                'aam-filter-redirect-option', 
+                AAM_Core_Config::get("{$area}.redirect.message"),
+                "{$area}.redirect.message",
+                AAM::getUser()
+        );
+        
+        if (empty($message)) { //Support ConfigPress setup
+            $message = AAM_Core_Config::get(
+                    "{$area}.access.deny.message", __('Access Denied', AAM_KEY)
+            );
+        }
+        
+        return stripslashes($message);
     }
     
     /**
@@ -204,5 +278,22 @@ final class AAM_Core_API {
         
 	@rmdir($pathname);
     }
-
+    
+    /**
+     * 
+     * @return type
+     */
+    public static function version() {
+        if (file_exists(ABSPATH . 'wp-admin/includes/plugin.php')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+        
+        if (function_exists('get_plugin_data')) {
+            $data    = get_plugin_data(dirname(__FILE__) . '/../../aam.php');
+            $version = (isset($data['Version']) ? $data['Version'] : null);
+        }
+        
+        return (!empty($version) ? $version : null);
+    }
+    
 }

@@ -3,9 +3,9 @@
 /**
   Plugin Name: Advanced Access Manager
   Description: Manage User and Role Access to WordPress Backend and Frontend.
-  Version: 3.2
+  Version: 3.9.1.1
   Author: Vasyl Martyniuk <vasyl@vasyltech.com>
-  Author URI: http://www.vasyltech.com
+  Author URI: https://www.vasyltech.com
 
   -------
   LICENSE: This file is subject to the terms and conditions defined in
@@ -54,15 +54,8 @@ class AAM {
             $this->setUser(new AAM_Core_Subject_Visitor(''));
         }
         
-        //load all installed extension
-        AAM_Core_Repository::getInstance()->load();
-        
-        //bootstrap the correct interface
-        if (is_admin()) {
-            AAM_Backend_Manager::bootstrap();
-        } else {
-            AAM_Frontend_Manager::bootstrap();
-        }
+        //load AAM core config
+        AAM_Core_Config::bootstrap();
     }
 
     /**
@@ -97,8 +90,9 @@ class AAM {
      * @access public
      */
     public static function isAAM() {
-        $page   = AAM_Core_Request::get('page');
-        $action = AAM_Core_Request::post('action');
+        $page      = AAM_Core_Request::get('page');
+        $action    = AAM_Core_Request::post('action');
+        
         $intersect = array_intersect(array('aam', 'aamc'), array($page, $action));
         
         return (is_admin() && count($intersect));
@@ -118,6 +112,23 @@ class AAM {
                     AAM_KEY, false, dirname(plugin_basename(__FILE__)) . '/Lang/'
             );
             self::$_instance = new self;
+            
+            //load AAM cache
+            AAM_Core_Cache::bootstrap();
+            
+            //load all installed extension
+            //TODO - Remove in Aug 2017
+            AAM_Core_Repository::getInstance()->load();
+
+            //bootstrap the correct interface
+            if (is_admin()) {
+                AAM_Backend_Manager::bootstrap();
+            } else {
+                AAM_Frontend_Manager::bootstrap();
+            }
+            
+            //load media control
+            AAM_Core_Media::bootstrap();
         }
 
         return self::$_instance;
@@ -194,7 +205,8 @@ if (defined('ABSPATH')) {
     //define few common constants
     define('AAM_MEDIA', plugins_url('/media', __FILE__));
     define('AAM_KEY', 'advanced-access-manager');
-    define('AAM_BASE', dirname(__FILE__));
+    define('AAM_EXTENSION_BASE', WP_CONTENT_DIR . '/aam/extension');
+    define('AAM_CODEPINCH_AFFILIATE_CODE', 'H2K31P8H');
     
     //register autoloader
     require (dirname(__FILE__) . '/autoloader.php');
