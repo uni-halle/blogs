@@ -15,23 +15,22 @@
  * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
  * @link     http://www.generatepress.com
  */
+ 
+// No direct access, please
+if ( ! defined( 'ABSPATH' ) ) exit;
 
+if ( ! function_exists( 'generate_create_menu' ) ) :
 // create custom plugin settings menu
 add_action('admin_menu', 'generate_create_menu');
 function generate_create_menu() 
 {
 	
 	$generate_page = add_theme_page( 'GeneratePress', 'GeneratePress', 'edit_theme_options', 'generate-options', 'generate_settings_page' );
-	
-	add_action( "admin_print_scripts-$generate_page", 'generate_options_scripts' );
 	add_action( "admin_print_styles-$generate_page", 'generate_options_styles' );
 }
+endif;
 
-function generate_options_scripts() 
-{
-	// Something will go here one day...
-}
-
+if ( ! function_exists( 'generate_options_styles' ) ) :
 function generate_options_styles() 
 {
      wp_enqueue_style( 
@@ -47,7 +46,9 @@ function generate_options_styles()
 		'all' 
 	);
 }
+endif;
 
+if ( ! function_exists( 'generate_settings_page' ) ) :
 function generate_settings_page() 
 {
 	?>
@@ -210,7 +211,9 @@ function generate_settings_page()
 		</div>
 	</div>
 <?php }
+endif;
 
+if ( ! function_exists( 'generate_reset_customizer_settings' ) ) :
 /**
  * Reset customizer settings
  */
@@ -231,6 +234,7 @@ function generate_reset_customizer_settings() {
 	wp_safe_redirect( admin_url( 'themes.php?page=generate-options&status=reset' ) ); exit;
 
 }
+endif;
 
 if ( ! function_exists( 'generate_admin_errors' ) ) :
 /**

@@ -1,4 +1,7 @@
 <?php
+// No direct access, please
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if ( ! function_exists( 'generate_disable_elements' ) ) :
 /**
  * Add any necessary CSS for disabling these elements
@@ -53,15 +56,16 @@ function generate_add_de_meta_box()
 {
 	$post_types = get_post_types();
 	foreach ($post_types as $type) {
-		add_meta_box
-		(  
-			'generate_de_meta_box',
-			__('Disable Elements','generatepress'),
-			'generate_show_de_meta_box',
-			$type,
-			'side',
-			'default'
-		); 
+		if ( 'attachment' !== $type ) {
+			add_meta_box(  
+				'generate_de_meta_box',
+				__('Disable Elements','generatepress'),
+				'generate_show_de_meta_box',
+				$type,
+				'side',
+				'default'
+			); 
+		}
 	}
 }  
 endif;

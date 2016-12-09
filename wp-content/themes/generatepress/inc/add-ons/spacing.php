@@ -15,6 +15,9 @@
  * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
  * @link     http://www.generatepress.com
  */
+ 
+// No direct access, please
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 if ( !function_exists('generate_spacing_get_defaults') ) :
 	function generate_spacing_get_defaults()
@@ -103,10 +106,6 @@ if ( !function_exists('generate_spacing_css') ) :
 				'line-height' => ( isset( $spacing_settings['menu_item_height'] ) ) ? $spacing_settings['menu_item_height'] . 'px' : null,
 			),
 			
-			'.nav-float-right .main-navigation .main-nav ul li a' => array(
-				'line-height' => ( isset( $spacing_settings['menu_item_height'] ) ) ? $spacing_settings['menu_item_height'] . 'px' : null,
-			),
-			
 			'.main-navigation .main-nav ul ul li a' => array(
 				'padding' => generate_padding_css( $spacing_settings[ 'sub_menu_item_height' ], $spacing_settings[ 'menu_item' ], $spacing_settings[ 'sub_menu_item_height' ], $spacing_settings[ 'menu_item' ] )
 			),
@@ -171,7 +170,7 @@ if ( !function_exists('generate_spacing_css') ) :
 				'margin-bottom' => ( isset( $spacing_settings['separator'] ) ) ? $spacing_settings['separator'] . 'px' : null,
 			),
 			
-			'.separate-containers .widget, .separate-containers .hentry, .separate-containers .page-header, .widget-area .main-navigation' => array(
+			'.separate-containers .widget, .separate-containers .site-main > *, .separate-containers .page-header, .widget-area .main-navigation' => array(
 				'margin-bottom' => ( isset( $spacing_settings['separator'] ) ) ? $spacing_settings['separator'] . 'px' : null,
 			),
 			
@@ -200,6 +199,10 @@ if ( !function_exists('generate_spacing_css') ) :
 			'.menu-item-has-children .dropdown-menu-toggle' => array(
 				'padding-right' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
 			),
+			
+			'.main-navigation .main-nav ul li.menu-item-has-children > a' => array(
+				'padding-right' => ( is_rtl() ) ? $spacing_settings['menu_item'] . 'px' : null
+			)
 			
 		);
 		
@@ -300,8 +303,9 @@ function generate_additional_spacing()
 		),
 		
 		'.menu-item-has-children .dropdown-menu-toggle' => array(
-			'padding-right' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
-		),
+			'padding-right' => ( isset( $spacing_settings['menu_item'] ) && ! is_rtl() ) ? $spacing_settings['menu_item'] . 'px' : null,
+			'padding-left' => ( isset( $spacing_settings['menu_item'] ) && is_rtl() ) ? $spacing_settings['menu_item'] . 'px' : null,
+		)
 		
 	);
 	

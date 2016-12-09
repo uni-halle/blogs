@@ -4,12 +4,14 @@
  *
  * @package GeneratePress
  */
+
+// No direct access, please
+if ( ! defined( 'ABSPATH' ) ) exit;
 	
-define( 'GENERATE_VERSION', '1.3.29');
+define( 'GENERATE_VERSION', '1.3.40');
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 
-add_action( 'after_setup_theme', 'generate_setup' );
 if ( ! function_exists( 'generate_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -18,6 +20,7 @@ if ( ! function_exists( 'generate_setup' ) ) :
  * before the init hook. The init hook is too late for some features, such as indicating
  * support post thumbnails.
  */
+add_action( 'after_setup_theme', 'generate_setup' );
 function generate_setup() 
 {
 	/**
@@ -70,11 +73,16 @@ function generate_setup()
 	 * Add Logo support
 	 */
 	add_theme_support( 'custom-logo', array(
-		'height' => false,
-		'width' => false,
+		'height' => 70,
+		'width' => 350,
 		'flex-height' => true,
 		'flex-width' => true,
 	) );
+	
+	/*
+	 * Indicate widget sidebars can use selective refresh in the Customizer.
+	 */
+	add_theme_support( 'customize-selective-refresh-widgets' );
 	
 	/**
 	 * Set the content width to something large
@@ -91,19 +99,20 @@ function generate_setup()
 }
 endif; // generate_setup
 
+if ( ! function_exists( 'generate_get_defaults' ) ) :
 /**
  * Set default options
  */
 function generate_get_defaults()
-{
+{	
 	$generate_defaults = array(
 		'hide_title' => '',
 		'hide_tagline' => '',
 		'logo' => '',
 		'container_width' => '1100',
 		'header_layout_setting' => 'fluid-header',
-		'nav_alignment_setting' => 'left',
-		'header_alignment_setting' => 'left',
+		'nav_alignment_setting' => ( is_rtl() ) ? 'right' : 'left',
+		'header_alignment_setting' => ( is_rtl() ) ? 'right' : 'left',
 		'nav_layout_setting' => 'fluid-nav',
 		'nav_position_setting' => 'nav-below-header',
 		'nav_dropdown_type' => 'hover',
@@ -125,30 +134,63 @@ function generate_get_defaults()
 	
 	return apply_filters( 'generate_option_defaults', $generate_defaults );
 }
+endif;
 
+if ( ! function_exists( 'generate_get_setting' ) ) :
+/**
+ * A wrapper function to get our settings
+ * @since 1.3.40
+ */
+function generate_get_setting( $setting ) {
+	$generate_settings = wp_parse_args( 
+		get_option( 'generate_settings', array() ), 
+		generate_get_defaults() 
+	);
+	
+	return $generate_settings[ $setting ];
+}
+endif;
+
+if ( ! function_exists( 'generate_widgets_init' ) ) :
 /**
  * Register widgetized area and update sidebar with default widgets
  */
 add_action( 'widgets_init', 'generate_widgets_init' );
 function generate_widgets_init() 
 {
-	// Set up our array of widgets
+	// Set up our array of widgets	
 	$widgets = array(
-		__( 'Right Sidebar', 'generatepress' ) => 'sidebar-1',
-		__( 'Left Sidebar', 'generatepress' ) => 'sidebar-2',
-		__( 'Header', 'generatepress' ) => 'header',
-		__( 'Footer Widget 1', 'generatepress' ) => 'footer-1',
-		__( 'Footer Widget 2', 'generatepress' ) => 'footer-2',
-		__( 'Footer Widget 3', 'generatepress' ) => 'footer-3',
-		__( 'Footer Widget 4', 'generatepress' ) => 'footer-4',
-		__( 'Footer Widget 5', 'generatepress' ) => 'footer-5'
+		'sidebar-1' => array(
+			'name' => __( 'Right Sidebar', 'generatepress' )
+		),
+		'sidebar-2' => array(
+			'name' => __( 'Left Sidebar', 'generatepress' )
+		),
+		'header' => array(
+			'name' => __( 'Header', 'generatepress' )
+		),
+		'footer-1' => array(
+			'name' => __( 'Footer Widget 1', 'generatepress' )
+		),
+		'footer-2' => array(
+			'name' => __( 'Footer Widget 2', 'generatepress' )
+		),
+		'footer-3' => array(
+			'name' => __( 'Footer Widget 3', 'generatepress' )
+		),
+		'footer-4' => array(
+			'name' => __( 'Footer Widget 4', 'generatepress' )
+		),
+		'footer-5' => array(
+			'name' => __( 'Footer Widget 5', 'generatepress' )
+		),
 	);
 	
 	// Loop through them to create our widget areas
 	foreach ( $widgets as $widget => $id ) {
 		register_sidebar( array(
-			'name'          => $widget,
-			'id'            => $id,
+			'name'          => $id[ 'name' ],
+			'id'            => $widget,
 			'before_widget' => '<aside id="%1$s" class="widget inner-padding %2$s">',
 			'after_widget'  => '</aside>',
 			'before_title'  => apply_filters( 'generate_start_widget_title', '<h4 class="widget-title">' ),
@@ -156,6 +198,7 @@ function generate_widgets_init()
 		) );
 	}
 }
+endif;
 
 /**
  * Custom template tags for this theme.
@@ -202,6 +245,7 @@ require get_template_directory() . '/inc/add-ons.php';
  */
 require get_template_directory() . '/inc/woocommerce.php';
 
+if ( ! function_exists( 'generate_get_min_suffix' ) ) :
 /** 
  * Figure out if we should use minified scripts or not
  * @since 1.3.29
@@ -210,7 +254,9 @@ function generate_get_min_suffix()
 {
 	return defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 }
+endif;
 
+if ( ! function_exists( 'generate_scripts' ) ) :
 /**
  * Enqueue scripts and styles
  */
@@ -228,8 +274,8 @@ function generate_scripts()
 	
 	// Enqueue our CSS.
 	wp_enqueue_style( 'generate-style-grid', get_template_directory_uri() . "/css/unsemantic-grid{$suffix}.css", false, GENERATE_VERSION, 'all' );
-	wp_enqueue_style( 'generate-style', get_template_directory_uri() . '/style.css', false, GENERATE_VERSION, 'all' );
-	wp_enqueue_style( 'generate-mobile-style', get_template_directory_uri() . "/css/mobile{$suffix}.css", false, GENERATE_VERSION, 'all' );
+	wp_enqueue_style( 'generate-style', get_template_directory_uri() . '/style.css', array( 'generate-style-grid' ), GENERATE_VERSION, 'all' );
+	wp_enqueue_style( 'generate-mobile-style', get_template_directory_uri() . "/css/mobile{$suffix}.css", array( 'generate-style' ), GENERATE_VERSION, 'all' );
 	wp_add_inline_style( 'generate-style', generate_base_css() );
 	
 	// Add the child theme CSS if child theme is active.
@@ -239,7 +285,11 @@ function generate_scripts()
 	// Font Awesome
 	$icon_essentials = apply_filters( 'generate_fontawesome_essentials', false );
 	$icon_essentials = ( $icon_essentials ) ? '-essentials' : false;
-	wp_enqueue_style( "fontawesome{$icon_essentials}", get_template_directory_uri() . "/css/font-awesome{$icon_essentials}{$suffix}.css", false, '4.6.1', 'all' );
+	wp_enqueue_style( "fontawesome{$icon_essentials}", get_template_directory_uri() . "/css/font-awesome{$icon_essentials}{$suffix}.css", false, '4.6.3', 'all' );
+	
+	// IE 8
+	wp_enqueue_style( 'generate-ie', get_template_directory_uri() . "/css/ie{$suffix}.css", array( 'generate-style-grid' ), GENERATE_VERSION, 'all' );
+	wp_style_add_data( 'generate-ie', 'conditional', 'lt IE 9' );
 	
 	// Add jQuery
 	wp_enqueue_script( 'jquery' );
@@ -256,25 +306,33 @@ function generate_scripts()
 	
 	// Add our navigation search if it's enabled
 	if ( 'enable' == $generate_settings['nav_search'] ) {
-		wp_enqueue_script( 'generate-navigation-search', get_template_directory_uri() . "/js/navigation-search{$suffix}.js", array('jquery'), GENERATE_VERSION, true );
+		wp_enqueue_script( 'generate-navigation-search', get_template_directory_uri() . "/js/navigation-search{$suffix}.js", array( 'jquery' ), GENERATE_VERSION, true );
 	}
 	
 	// Add the back to top script if it's enabled
 	if ( 'enable' == $generate_settings['back_to_top'] ) {
-		wp_enqueue_script( 'generate-back-to-top', get_template_directory_uri() . "/js/back-to-top{$suffix}.js", array('jquery'), GENERATE_VERSION, true );
+		wp_enqueue_script( 'generate-back-to-top', get_template_directory_uri() . "/js/back-to-top{$suffix}.js", array( 'jquery' ), GENERATE_VERSION, true );
 	}
 	
 	// Move the navigation from below the content on mobile to below the header if it's in a sidebar
 	if ( 'nav-left-sidebar' == $generate_settings['nav_position_setting'] || 'nav-right-sidebar' == $generate_settings['nav_position_setting'] ) {
-		wp_enqueue_script( 'generate-move-navigation', get_template_directory_uri() . "/js/move-navigation{$suffix}.js", array('jquery'), GENERATE_VERSION, true );
+		wp_enqueue_script( 'generate-move-navigation', get_template_directory_uri() . "/js/move-navigation{$suffix}.js", array( 'jquery' ), GENERATE_VERSION, true );
 	}
+	
+	// IE 8
+	if ( function_exists( 'wp_script_add_data' ) ) :
+		wp_enqueue_script( 'generate-html5', get_template_directory_uri() . "/js/html5shiv{$suffix}.js", array( 'jquery' ), GENERATE_VERSION, true );
+		wp_script_add_data( 'generate-html5', 'conditional', 'lt IE 9' );
+	endif;
 	
 	// Add the threaded comments script
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
+endif;
 
+if ( ! function_exists( 'generate_get_layout' ) ) :
 /**
  * Get the layout for the current page
  */
@@ -314,7 +372,7 @@ function generate_get_layout()
 	endif;
 	
 	// If we're on the blog, archive, attachment etc..
-	if ( is_home() || is_archive() || is_search() || is_attachment() || is_tax() ) :
+	if ( is_home() || is_archive() || is_search() || is_tax() ) :
 		$layout = null;
 		$layout = $generate_settings['blog_layout_setting'];
 	endif;
@@ -322,7 +380,9 @@ function generate_get_layout()
 	// Finally, return the layout
 	return apply_filters( 'generate_sidebar_layout', $layout );
 }
+endif;
 
+if ( ! function_exists( 'generate_get_footer_widgets' ) ) :
 /**
  * Get the footer widgets for the current page
  */
@@ -356,7 +416,9 @@ function generate_get_footer_widgets()
 	// Finally, return the layout
 	return apply_filters( 'generate_footer_widgets', $widgets );
 }
+endif;
 
+if ( ! function_exists( 'generate_construct_sidebars' ) ) :
 /**
  * Construct the sidebars
  * @since 0.1
@@ -383,7 +445,9 @@ function generate_construct_sidebars()
 		get_sidebar(); 
 	endif;
 }
+endif;
 
+if ( ! function_exists( 'generate_add_footer_info' ) ) :
 add_action('generate_credits','generate_add_footer_info');
 function generate_add_footer_info()
 {
@@ -391,7 +455,9 @@ function generate_add_footer_info()
 	<span class="copyright"><?php _e('Copyright','generatepress');?> &copy; <?php echo date('Y'); ?></span> <?php do_action('generate_copyright_line');?>
 	<?php
 }
+endif;
 
+if ( ! function_exists( 'generate_add_login_attribution' ) ) :
 add_action('generate_copyright_line','generate_add_login_attribution');
 function generate_add_login_attribution()
 {
@@ -399,7 +465,9 @@ function generate_add_login_attribution()
 	&#x000B7; <a href="<?php echo esc_url('https://generatepress.com');?>" target="_blank" title="GeneratePress" itemprop="url">GeneratePress</a>
 	<?php
 }
+endif;
 
+if ( ! function_exists( 'generate_base_css' ) ) :
 /**
  * Generate the CSS in the <head> section using the Theme Customizer
  * @since 0.1
@@ -471,7 +539,9 @@ function generate_base_css()
 	$output = str_replace(array("\r", "\n"), '', $output);
 	return $output;
 }
+endif;
 
+if ( ! function_exists( 'generate_add_viewport' ) ) :
 /** 
  * Add viewport to wp_head
  * @since 1.1.0
@@ -481,22 +551,28 @@ function generate_add_viewport()
 {
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
 }
+endif;
 
+if ( ! function_exists( 'generate_ie_compatibility' ) ) :
 /** 
  * Add compatibility for IE8 and lower
+ * No need to run this if wp_script_add_data() exists
  * @since 1.1.9
  */
-add_action('wp_head','generate_ie_compatibility');
+add_action('wp_footer','generate_ie_compatibility');
 function generate_ie_compatibility()
 {
+	if ( function_exists( 'wp_script_add_data' ) )
+		return;
+	
 	$suffix = generate_get_min_suffix();
 	?>
 	<!--[if lt IE 9]>
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri();?>/css/ie<?php echo $suffix;?>.css" />
 		<script src="<?php echo get_template_directory_uri();?>/js/html5shiv<?php echo $suffix;?>.js"></script>
 	<![endif]-->
 	<?php
 }
+endif;
 
 if ( ! function_exists( 'generate_remove_caption_padding' ) ) :
 /**
@@ -646,6 +722,7 @@ function generate_show_title()
 }
 endif;
 
+if ( ! function_exists( 'generate_update_logo_setting' ) ) :
 /**
  * Migrate the old logo database entry to the new custom_logo theme mod (WordPress 4.5)
  *
@@ -691,3 +768,4 @@ function generate_update_logo_setting()
 		update_option( 'generate_settings', $update_settings );
 	endif;
 }
+endif;

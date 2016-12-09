@@ -1,4 +1,8 @@
 <?php
+// No direct access, please
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+if ( ! function_exists( 'generate_sanitize_integer' ) ) :
 /**
  * Sanitize integers
  * @since 1.0.8
@@ -6,7 +10,9 @@
 function generate_sanitize_integer( $input ) {
 	return absint( $input );
 }
+endif;
 
+if ( ! function_exists( 'generate_sanitize_checkbox' ) ) :
 /**
  * Sanitize checkbox values
  * @since 1.0.8
@@ -19,16 +25,17 @@ function generate_sanitize_checkbox( $input ) {
 	}
 	return $output;
 }
+endif;
 
+if ( ! function_exists( 'generate_sanitize_typography' ) ) :
 /**
  * Sanitize typography dropdown
  * @since 1.1.10
  */
 function generate_sanitize_typography( $input ) 
 {
-
 	// Grab all of our fonts
-	$fonts = ( get_transient('generate_all_google_fonts') ? get_transient('generate_all_google_fonts') : array() );
+	$fonts = generate_get_all_google_fonts();
 	
 	// Loop through all of them and grab their names
 	$font_names = array();
@@ -37,22 +44,7 @@ function generate_sanitize_typography( $input )
 	}
 	
 	// Get all non-Google font names
-	$not_google = array(
-		'inherit',
-		'Arial, Helvetica, sans-serif',
-		'Century Gothic',
-		'Comic Sans MS',
-		'Courier New',
-		'Georgia, Times New Roman, Times, serif',
-		'Helvetica',
-		'Impact',
-		'Lucida Console',
-		'Lucida Sans Unicode',
-		'Palatino Linotype',
-		'Tahoma, Geneva, sans-serif',
-		'Trebuchet MS, Helvetica, sans-serif',
-		'Verdana, Geneva, sans-serif'
-	);
+	$not_google = generate_typography_default_fonts();
 
 	// Merge them both into one array
 	$valid = array_merge( $font_names, $not_google );
@@ -64,10 +56,71 @@ function generate_sanitize_typography( $input )
         return 'Open Sans';
     }
 }
+endif;
 
+if ( ! function_exists( 'generate_sanitize_blog_excerpt' ) ) :
+/**
+ * Sanitize blog excerpt
+ * @since 1.0.8
+ * Needed because GP Premium calls the control ID which is different from the settings ID
+ */
+function generate_sanitize_blog_excerpt( $input ) {
+    $valid = array(
+        'full',
+		'excerpt'
+    );
+ 
+    if ( in_array( $input, $valid ) ) {
+        return $input;
+    } else {
+        return 'full';
+    }
+}
+endif;
+
+if ( ! function_exists( 'generate_sanitize_hex_color' ) ) :
+/**
+ * Sanitize colors
+ * Allow blank value
+ * @since 1.2.9.6
+ */
+function generate_sanitize_hex_color( $color ) {
+    if ( '' === $color )
+        return '';
+ 
+    // 3 or 6 hex digits, or the empty string.
+    if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) )
+        return $color;
+ 
+    return '';
+}
+endif;
+
+if ( ! function_exists( 'generate_sanitize_choices' ) ) :
+/**
+ * Sanitize choices
+ * @since 1.3.24
+ */
+function generate_sanitize_choices( $input, $setting ) {
+	
+	// Ensure input is a slug
+	$input = sanitize_key( $input );
+	
+	// Get list of choices from the control
+	// associated with the setting
+	$choices = $setting->manager->get_control( $setting->id )->choices;
+	
+	// If the input is a valid key, return it;
+	// otherwise, return the default
+	return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
+}
+endif;
+
+if ( ! function_exists( 'generate_sanitize_font_weight' ) ) :
 /**
  * Sanitize font weight
  * @since 1.1.10
+ * @deprecated 1.3.40
  */
 function generate_sanitize_font_weight( $input ) {
 
@@ -91,10 +144,13 @@ function generate_sanitize_font_weight( $input ) {
         return 'normal';
     }
 }
+endif;
 
+if ( ! function_exists( 'generate_sanitize_text_transform' ) ) :
 /**
  * Sanitize text transform
  * @since 1.1.10
+ * @deprecated 1.3.40
  */
 function generate_sanitize_text_transform( $input ) {
 
@@ -111,54 +167,4 @@ function generate_sanitize_text_transform( $input ) {
         return 'none';
     }
 }
-
-/**
- * Sanitize blog excerpt
- * @since 1.0.8
- */
-function generate_sanitize_blog_excerpt( $input ) {
-    $valid = array(
-        'full' => __( 'Show full post', 'generatepress' ),
-		'excerpt' => __( 'Show excerpt', 'generatepress' )
-    );
- 
-    if ( array_key_exists( $input, $valid ) ) {
-        return $input;
-    } else {
-        return 'full';
-    }
-}
-
-/**
- * Sanitize colors
- * Allow blank value
- * @since 1.2.9.6
- */
-function generate_sanitize_hex_color( $color ) {
-    if ( '' === $color )
-        return '';
- 
-    // 3 or 6 hex digits, or the empty string.
-    if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) )
-        return $color;
- 
-    return '';
-}
-
-/**
- * Sanitize choices
- * @since 1.3.24
- */
-function generate_sanitize_choices( $input, $setting ) {
-	
-	// Ensure input is a slug
-	$input = sanitize_key( $input );
-	
-	// Get list of choices from the control
-	// associated with the setting
-	$choices = $setting->manager->get_control( $setting->id )->choices;
-	
-	// If the input is a valid key, return it;
-	// otherwise, return the default
-	return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
-}
+endif;

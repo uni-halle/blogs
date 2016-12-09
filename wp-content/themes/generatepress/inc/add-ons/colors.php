@@ -13,8 +13,11 @@
  * @package  GeneratePress
  * @author   Thomas Usborne
  * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link     http://www.generatepress.com
+ * @link     https://generatepress.com
  */
+ 
+// No direct access, please
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 if ( !function_exists('generate_get_color_defaults') && !function_exists('generate_advanced_css') ) :
 	/**
@@ -61,8 +64,8 @@ if ( !function_exists('generate_get_color_defaults') && !function_exists('genera
 			'sidebar_widget_title_color' => '#000000',
 			'footer_widget_background_color' => '#FFFFFF',
 			'footer_widget_text_color' => '',
-			'footer_widget_link_color' => '#1e73be',
-			'footer_widget_link_hover_color' => '#000000',
+			'footer_widget_link_color' => '',
+			'footer_widget_link_hover_color' => '',
 			'footer_widget_title_color' => '#000000',
 			'footer_background_color' => '#222222',
 			'footer_text_color' => '#ffffff',

@@ -10,12 +10,15 @@
  *
  * @package GeneratePress
  */
+ 
+// No direct access, please
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 get_header(); ?>
 
 	<div id="primary" <?php generate_content_class();?>>
 		<main id="main" <?php generate_main_class(); ?>>
-		<?php do_action('generate_before_main_content'); ?>
+		<?php do_action( 'generate_before_main_content' ); ?>
 		<?php if ( have_posts() ) : ?>
 
 			<?php /* Start the Loop */ ?>
@@ -38,10 +41,10 @@ get_header(); ?>
 			<?php get_template_part( 'no-results', 'index' ); ?>
 
 		<?php endif; ?>
-		<?php do_action('generate_after_main_content'); ?>
+		<?php do_action( 'generate_after_main_content' ); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
 <?php 
-do_action('generate_sidebars');
+do_action( 'generate_sidebars' );
 get_footer();

@@ -4,7 +4,7 @@
 		var settings = $.extend({
 			item: 'menu-item'
 		}, options );
-		
+
 		$( this ).on( 'click', function( e ) {
 			e.preventDefault();
 			// Get the clicked element
@@ -80,8 +80,19 @@ jQuery(document).ready(function($) {
 	
 	// Initiate dropdown click on the arrow
 	if ( $( 'body' ).hasClass( 'dropdown-click-arrow' ) ) {
+		// Set the dropdown click to the arrows
 		$( '.dropdown-click-arrow .main-nav .menu-item-has-children > a .dropdown-menu-toggle' ).generateDropdownClick({
 			item: 'arrow'
+		});
+		
+		// If our parent item has # as the URL, add a class to it
+		$( '.main-nav .menu-item-has-children > a' ).each( function() {
+			if ( $( this ).attr( 'href' ) == '#' ) $( this ).addClass( 'menu-item-dropdown-click' );
+		});
+		
+		// If our parent item has the menu-item-dropdown-click class, set the dropdown click to the whole item
+		$( '.dropdown-click-arrow .main-nav .menu-item-has-children > a.menu-item-dropdown-click' ).generateDropdownClick({
+			item: 'menu-item'
 		});
 	}
 	

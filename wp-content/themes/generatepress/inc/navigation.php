@@ -1,4 +1,8 @@
 <?php
+// No direct access, please
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+if ( ! function_exists( 'generate_add_navigation_after_header' ) ) :
 /**
  * Generate the navigation based on settings
  * @since 0.1
@@ -16,6 +20,9 @@ function generate_add_navigation_after_header()
 	endif;
 	
 }
+endif;
+
+if ( ! function_exists( 'generate_add_navigation_before_header' ) ) :
 add_action( 'generate_before_header', 'generate_add_navigation_before_header', 5 );
 function generate_add_navigation_before_header()
 {
@@ -29,7 +36,10 @@ function generate_add_navigation_before_header()
 	endif;
 	
 }
-add_action( 'generate_before_header_content', 'generate_add_navigation_float_right', 5 );
+endif;
+
+if ( ! function_exists( 'generate_add_navigation_float_right' ) ) :
+add_action( 'generate_after_header_content', 'generate_add_navigation_float_right', 5 );
 function generate_add_navigation_float_right()
 {
 	$generate_settings = wp_parse_args( 
@@ -42,6 +52,9 @@ function generate_add_navigation_float_right()
 	endif;
 	
 }
+endif;
+
+if ( ! function_exists( 'generate_add_navigation_before_right_sidebar' ) ) :
 add_action( 'generate_before_right_sidebar_content', 'generate_add_navigation_before_right_sidebar', 5 );
 function generate_add_navigation_before_right_sidebar()
 {
@@ -57,6 +70,9 @@ function generate_add_navigation_before_right_sidebar()
 	endif;
 	
 }
+endif;
+
+if ( ! function_exists( 'generate_add_navigation_before_left_sidebar' ) ) :
 add_action( 'generate_before_left_sidebar_content', 'generate_add_navigation_before_left_sidebar', 5 );
 function generate_add_navigation_before_left_sidebar()
 {
@@ -72,6 +88,7 @@ function generate_add_navigation_before_left_sidebar()
 	endif;
 	
 }
+endif;
 
 if ( ! function_exists( 'generate_navigation_position' ) ) :
 /**
@@ -109,6 +126,7 @@ function generate_navigation_position()
 }
 endif;
 
+if ( ! function_exists( 'generate_menu_fallback' ) ) :
 /**
  * Menu fallback. 
  *
@@ -133,22 +151,23 @@ function generate_menu_fallback( $args )
 			);
 			wp_list_pages( $args );
 			if ( 'enable' == $generate_settings['nav_search'] ) :
-				echo '<li class="search-item" title="' . _x( 'Search', 'submit button', 'generatepress' ) . '"><a href="#"><i class="fa fa-fw fa-search"></i></a></li>';
+				echo '<li class="search-item" title="' . _x( 'Search', 'submit button', 'generatepress' ) . '"><a href="#"><i class="fa fa-fw fa-search" aria-hidden="true"></i><span class="screen-reader-text">' . _x( 'Search', 'submit button', 'generatepress' ) . '</span></a></li>';
 			endif;
 			?>
 		</ul>
 	</div><!-- .main-nav -->
 	<?php 
 }
+endif;
 
-if ( ! class_exists( 'Generate_Page_Walker' ) ) :
+if ( ! class_exists( 'Generate_Page_Walker' ) && class_exists( 'Walker_Page' ) ) :
 /**
  * Add current-menu-item to the current item if no theme location is set
  * This means we don't have to duplicate CSS properties for current_page_item and current-menu-item
  *
  * @since 1.3.21
  */
-class Generate_Page_Walker extends Walker_page 
+class Generate_Page_Walker extends Walker_Page 
 {
 	function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) 
 	{
@@ -192,6 +211,7 @@ class Generate_Page_Walker extends Walker_page
 }
 endif;
 
+if ( ! function_exists( 'generate_nav_dropdown' ) ) :
 /**
  *
  * Build the dropdown arrow
@@ -204,7 +224,7 @@ function generate_nav_dropdown( $item_output, $item, $depth, $args )
 	// If we're working with the primary or secondary theme locations
 	if ( 'primary' == $args->theme_location || 'secondary' == $args->theme_location || 'slideout' == $args->theme_location ) {
 		// If a dropdown menu is detected
-		$dropdown = ( in_array( 'menu-item-has-children', $item->classes ) || in_array( 'page_item_has_children', $item->classes ) ) ? true : false;
+		$dropdown = ( in_array( 'menu-item-has-children', $item->classes ) ) ? true : false;
 		if ( $dropdown ) :
 			// Add our arrow icon
 			$item_output = str_replace( $args->link_after . '</a>', $args->link_after . '<span role="button" class="dropdown-menu-toggle" aria-expanded="false"></span></a>', $item_output );
@@ -214,3 +234,4 @@ function generate_nav_dropdown( $item_output, $item, $depth, $args )
 	// Return the output
 	return $item_output;
 }
+endif;

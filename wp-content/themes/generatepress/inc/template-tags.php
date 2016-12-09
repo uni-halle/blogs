@@ -4,46 +4,54 @@
  *
  * @package GeneratePress
  */
+ 
+// No direct access, please
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if ( ! function_exists( 'generate_paging_nav' ) ) :
-	function generate_paging_nav() {
-		// Don't print empty markup if there's only one page.
-		if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
-			return;
-		}
-
-		$paged        = get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
-		$pagenum_link = html_entity_decode( get_pagenum_link() );
-		$query_args   = array();
-		$url_parts    = explode( '?', $pagenum_link );
-
-		if ( isset( $url_parts[1] ) ) {
-			wp_parse_str( $url_parts[1], $query_args );
-		}
-
-		$pagenum_link = remove_query_arg( array_keys( $query_args ), $pagenum_link );
-		$pagenum_link = trailingslashit( $pagenum_link ) . '%_%';
-
-		$format  = $GLOBALS['wp_rewrite']->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
-		$format .= $GLOBALS['wp_rewrite']->using_permalinks() ? user_trailingslashit( 'page/%#%', 'paged' ) : '?paged=%#%';
-
-		// Set up paginated links.
-		$links = paginate_links( array(
-			'base'     => $pagenum_link,
-			'format'   => $format,
-			'total'    => $GLOBALS['wp_query']->max_num_pages,
-			'current'  => $paged,
-			'mid_size' => apply_filters( 'generate_pagination_mid_size', 1 ),
-			'add_args' => array_map( 'urlencode', $query_args ),
-			'prev_text' => __( '&larr; Previous', 'generatepress' ),
-			'next_text' => __( 'Next &rarr;', 'generatepress' ),
-		) );
-
-		if ( $links ) :
-
-			echo $links; 
-
-		endif;
+/**
+ * Build the pagination links
+ * @since 1.3.35
+ */
+function generate_paging_nav() {
+	// Don't print empty markup if there's only one page.
+	if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
+		return;
 	}
+
+	$paged        = get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
+	$pagenum_link = html_entity_decode( get_pagenum_link() );
+	$query_args   = array();
+	$url_parts    = explode( '?', $pagenum_link );
+
+	if ( isset( $url_parts[1] ) ) {
+		wp_parse_str( $url_parts[1], $query_args );
+	}
+
+	$pagenum_link = remove_query_arg( array_keys( $query_args ), $pagenum_link );
+	$pagenum_link = trailingslashit( $pagenum_link ) . '%_%';
+
+	$format  = $GLOBALS['wp_rewrite']->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
+	$format .= $GLOBALS['wp_rewrite']->using_permalinks() ? user_trailingslashit( 'page/%#%', 'paged' ) : '?paged=%#%';
+
+	// Set up paginated links.
+	$links = paginate_links( array(
+		'base'     => $pagenum_link,
+		'format'   => $format,
+		'total'    => $GLOBALS['wp_query']->max_num_pages,
+		'current'  => $paged,
+		'mid_size' => apply_filters( 'generate_pagination_mid_size', 1 ),
+		'add_args' => array_map( 'urlencode', $query_args ),
+		'prev_text' => __( '&larr; Previous', 'generatepress' ),
+		'next_text' => __( 'Next &rarr;', 'generatepress' ),
+	) );
+
+	if ( $links ) :
+
+		echo $links; 
+
+	endif;
+}
 endif;
 
 if ( ! function_exists( 'generate_content_nav' ) ) :
@@ -154,10 +162,7 @@ function generate_comment( $comment, $args, $depth ) {
 			<div class="comment-content">
 				<?php comment_text(); ?>
 			</div><!-- .comment-content -->
-
-			
 		</article><!-- .comment-body -->
-
 	<?php
 	endif;
 }
@@ -167,11 +172,8 @@ if ( ! function_exists( 'generate_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */
-function generate_posted_on() {
-
-	if ( 'post' !== get_post_type() ) 
-		return;
-	
+function generate_posted_on() 
+{	
 	$date = apply_filters( 'generate_post_date', true );
 	$author = apply_filters( 'generate_post_author', true );
 		
@@ -212,25 +214,61 @@ function generate_posted_on() {
 }
 endif;
 
+if ( ! function_exists( 'generate_entry_meta' ) ) :
+/**
+ * Prints HTML with meta information for the categories, tags.
+ *
+ * @since 1.2.5
+ */
+function generate_entry_meta() 
+{
+	$categories = apply_filters( 'generate_show_categories', true );
+	$tags = apply_filters( 'generate_show_tags', true );
+	$comments = apply_filters( 'generate_show_comments', true );
+
+	$categories_list = get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'generatepress' ) );
+	if ( $categories_list && $categories ) {
+		printf( '<span class="cat-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
+			_x( 'Categories', 'Used before category names.', 'generatepress' ),
+			$categories_list
+		);
+	}
+
+	$tags_list = get_the_tag_list( '', _x( ', ', 'Used between list items, there is a space after the comma.', 'generatepress' ) );
+	if ( $tags_list && $tags ) {
+		printf( '<span class="tags-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
+			_x( 'Tags', 'Used before tag names.', 'generatepress' ),
+			$tags_list
+		);
+	}
+
+	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) && $comments ) {
+		echo '<span class="comments-link">';
+		comments_popup_link( __( 'Leave a comment', 'generatepress' ), __( '1 Comment', 'generatepress' ), __( '% Comments', 'generatepress' ) );
+		echo '</span>';
+	}
+}
+endif;
+
 if ( ! function_exists( 'generate_excerpt_more' ) ) :
 /**
  * Prints the read more HTML to post excerpts
  */
-	add_filter( 'excerpt_more', 'generate_excerpt_more' );
-	function generate_excerpt_more( $more ) {
-		return ' ... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read more', 'generatepress') . '</a>';
-	}
+add_filter( 'excerpt_more', 'generate_excerpt_more' );
+function generate_excerpt_more( $more ) {
+	return ' ... <a title="' . esc_attr( get_the_title() ) . '" class="read-more" href="'. esc_url( get_permalink( get_the_ID() ) ) . '">' . __('Read more', 'generatepress') . '</a>';
+}
 endif;
 
 if ( ! function_exists( 'generate_content_more' ) ) :
 /**
  * Prints the read more HTML to post content using the more tag
  */
-	add_filter( 'the_content_more_link', 'generate_content_more' );
-	function generate_content_more( $more ) {
-		$more_jump = apply_filters( 'generate_more_jump','#more-' . get_the_ID() );
-		return '<p class="read-more-container"><a class="read-more content-read-more" href="'. get_permalink( get_the_ID() ) . $more_jump . '">' . __('Read more', 'generatepress') . '</a></p>';
-	}
+add_filter( 'the_content_more_link', 'generate_content_more' );
+function generate_content_more( $more ) {
+	$more_jump = apply_filters( 'generate_more_jump','#more-' . get_the_ID() );
+	return '<p class="read-more-container"><a title="' . esc_attr( get_the_title() ) . '" class="read-more content-read-more" href="'. esc_url( get_permalink( get_the_ID() ) . $more_jump ) . '">' . __('Read more', 'generatepress') . '</a></p>';
+}
 endif;
 
 if ( ! function_exists( 'generate_featured_page_header_area' ) ) :
@@ -362,7 +400,7 @@ function generate_menu_search_icon( $nav, $args )
 	
 	// If our primary menu is set, add the search icon
     if( $args->theme_location == 'primary' )
-        return $nav . '<li class="search-item" title="' . _x( 'Search', 'submit button', 'generatepress' ) . '"><a href="#"><i class="fa fa-fw fa-search"></i></a></li>';
+        return $nav . '<li class="search-item" title="' . _x( 'Search', 'submit button', 'generatepress' ) . '"><a href="#"><i class="fa fa-fw fa-search" aria-hidden="true"></i><span class="screen-reader-text">' . _x( 'Search', 'submit button', 'generatepress' ) . '</span></a></li>';
 	
 	// Our primary menu isn't set, return the regular nav
 	// In this case, the search icon is added to the generate_menu_fallback() function in navigation.php
@@ -392,49 +430,13 @@ function generate_mobile_menu_search_icon()
 	<div class="mobile-bar-items">
 		<?php do_action( 'generate_inside_mobile_menu_bar' ); ?>
 		<span class="search-item" title="<?php _ex( 'Search', 'submit button', 'generatepress' ); ?>">
-			<a href="#"><i class="fa fa-fw fa-search"></i></a>
+			<a href="#">
+				<i class="fa fa-fw fa-search" aria-hidden="true"></i>
+				<span class="screen-reader-text"><?php _ex( 'Search', 'submit button', 'generatepress' ); ?></span>
+			</a>
 		</span>
 	</div><!-- .mobile-bar-items -->
 	<?php
-}
-endif;
-
-if ( ! function_exists( 'generate_entry_meta' ) ) :
-/**
- * Prints HTML with meta information for the categories, tags.
- *
- * @since 1.2.5
- */
-function generate_entry_meta() 
-{
-	$categories = apply_filters( 'generate_show_categories', true );
-	$tags = apply_filters( 'generate_show_tags', true );
-	$comments = apply_filters( 'generate_show_comments', true );
-	
-	if ( 'post' == get_post_type() ) {
-
-		$categories_list = get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'generatepress' ) );
-		if ( $categories_list && $categories ) {
-			printf( '<span class="cat-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
-				_x( 'Categories', 'Used before category names.', 'generatepress' ),
-				$categories_list
-			);
-		}
-
-		$tags_list = get_the_tag_list( '', _x( ', ', 'Used between list items, there is a space after the comma.', 'generatepress' ) );
-		if ( $tags_list && $tags ) {
-			printf( '<span class="tags-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
-				_x( 'Tags', 'Used before tag names.', 'generatepress' ),
-				$tags_list
-			);
-		}
-	}
-
-	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) && $comments ) {
-		echo '<span class="comments-link">';
-		comments_popup_link( __( 'Leave a comment', 'generatepress' ), __( '1 Comment', 'generatepress' ), __( '% Comments', 'generatepress' ) );
-		echo '</span>';
-	}
 }
 endif;
 
@@ -550,6 +552,8 @@ function generate_construct_logo()
 	if ( empty( $logo ) )
 		return;
 	
+	do_action( 'generate_before_logo' );
+	
 	// Print our HTML
 	printf( 
 		'<div class="site-logo">
@@ -561,6 +565,8 @@ function generate_construct_logo()
 		apply_filters( 'generate_logo_title', esc_attr( get_bloginfo( 'name', 'display' ) ) ),
 		apply_filters( 'generate_logo', esc_url( $logo ) )
 	);
+	
+	do_action( 'generate_after_logo' );
 }
 endif;
 
@@ -595,7 +601,7 @@ function generate_construct_site_title()
 			<?php endif;
 				
 			if ( false == $disable_tagline ) : ?>
-				<p class="site-description"><?php echo html_entity_decode( bloginfo( 'description' ) ); ?></p>
+				<p class="site-description"><?php echo html_entity_decode( get_bloginfo( 'description', 'display' ) ); ?></p>
 			<?php endif; ?>
 		</div>
 	<?php endif;
@@ -639,7 +645,7 @@ function generate_back_to_top()
 	$scroll_speed = apply_filters( 'generate_back_to_top_scroll_speed', 400 );
 	$start_scroll = apply_filters( 'generate_back_to_top_start_scroll', 300 );
 	?>
-	<a title="<?php _e( 'Scroll back to top','generatepress' ); ?>" rel="nofollow" href="#" class="generate-back-to-top" style="display:none;" data-scroll-speed="<?php echo $scroll_speed; ?>" data-start-scroll="<?php echo $start_scroll; ?>"><i class="fa <?php echo $icon;?>"></i></a>
+	<a title="<?php _e( 'Scroll back to top','generatepress' ); ?>" rel="nofollow" href="#" class="generate-back-to-top" style="display:none;" data-scroll-speed="<?php echo $scroll_speed; ?>" data-start-scroll="<?php echo $start_scroll; ?>"><i class="fa <?php echo $icon;?>" aria-hidden="true"></i><span class="screen-reader-text"><?php _e( 'Scroll back to top','generatepress' ); ?></span></a>
 	<?php
 }
 endif;
@@ -738,6 +744,24 @@ function generate_post_meta()
 		<div class="entry-meta">
 			<?php generate_posted_on(); ?>
 		</div><!-- .entry-meta -->
+	<?php endif;
+}
+endif;
+
+if ( ! function_exists( 'generate_footer_meta' ) ) :
+/**
+ * Build the footer post meta
+ *
+ * @since 1.3.30
+ */
+add_action( 'generate_after_entry_content', 'generate_footer_meta' );
+function generate_footer_meta()
+{
+	if ( 'post' == get_post_type() ) : ?>
+		<footer class="entry-meta">
+			<?php generate_entry_meta(); ?>
+			<?php if ( is_single() ) generate_content_nav( 'nav-below' ); ?>
+		</footer><!-- .entry-meta -->
 	<?php endif;
 }
 endif;

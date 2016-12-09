@@ -1,4 +1,7 @@
 <?php
+// No direct access, please
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 /** 
  * Remove default WooCommerce wrappers
  * @since 1.3.22
@@ -8,6 +11,7 @@ remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wra
 remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 add_action('woocommerce_sidebar','generate_construct_sidebars');
 
+if ( ! function_exists( 'generate_woocommerce_start' ) ) :
 /** 
  * Add WooCommerce starting wrappers
  * @since 1.3.22
@@ -23,7 +27,9 @@ function generate_woocommerce_start()
 					<?php do_action( 'generate_before_content'); ?>
 					<div class="entry-content" itemprop="text">
 <?php }
+endif;
 
+if ( ! function_exists( 'generate_woocommerce_end' ) ) :
 /** 
  * Add WooCommerce ending wrappers
  * @since 1.3.22
@@ -41,3 +47,4 @@ function generate_woocommerce_end()
 	</div><!-- #primary -->
 <?php
 }
+endif;

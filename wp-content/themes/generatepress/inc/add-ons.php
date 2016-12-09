@@ -15,6 +15,9 @@
  * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
  * @link     http://www.generatepress.com
  */
+ 
+// No direct access, please
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 require get_template_directory() . '/inc/add-ons/typography.php';
 require get_template_directory() . '/inc/add-ons/colors.php';
@@ -22,6 +25,7 @@ require get_template_directory() . '/inc/add-ons/spacing.php';
 require get_template_directory() . '/inc/add-ons/disable-elements.php';
 require get_template_directory() . '/inc/add-ons/menu-plus.php';
 
+if ( ! function_exists( 'generate_addons_available' ) ) :
 /** 
  * Check to see if there's any addons not already activated
  * @since 1.0.9
@@ -49,7 +53,9 @@ function generate_addons_available()
 			return false;
 		endif;
 }
+endif;
 
+if ( ! function_exists( 'generate_no_addons' ) ) :
 /** 
  * Check to see if no addons are activated
  * @since 1.0.9
@@ -77,3 +83,4 @@ function generate_no_addons()
 			return false;
 		endif;
 }
+endif;

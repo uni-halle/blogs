@@ -2,6 +2,9 @@
 /**
  * @package GeneratePress
  */
+ 
+// No direct access, please
+if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php generate_article_schema( 'CreativeWork' ); ?>>
@@ -26,12 +29,8 @@
 			) );
 			?>
 		</div><!-- .entry-content -->
-		<?php do_action( 'generate_after_entry_content'); ?>
-
-		<footer class="entry-meta">
-			<?php generate_entry_meta(); ?>
-			<?php generate_content_nav( 'nav-below' ); ?>
-		</footer><!-- .entry-meta -->
-		<?php do_action( 'generate_after_content'); ?>
+		
+		<?php do_action( 'generate_after_entry_content' ); ?>
+		<?php do_action( 'generate_after_content' ); ?>
 	</div><!-- .inside-article -->
 </article><!-- #post-## -->

@@ -1,24 +1,23 @@
-/* Landscape tablet and below */
-@media (max-width: 1024px) {
-	.inside-footer-widgets > div {
-		margin-bottom: 50px;
-	}
-	
-	.active-footer-widgets-1 .footer-widget-1,
-	.active-footer-widgets-3 .footer-widget-3,
-	.active-footer-widgets-5 .footer-widget-5 {
-		width: 100%;
-	}
-}
-
-/* Portrait tablet and below */
 @media (max-width: 768px) {
 	.sidebar,
-	.content-area {
+	.content-area,
+	.inside-footer-widgets > div {
 		float: none;
 		width: 100%;
 		left: 0;
 		right: 0;
+	}
+	
+	.inside-footer-widgets > div:not(:last-child) {
+		margin-bottom: 40px;
+	}
+	
+	.one-container .sidebar {
+		margin-top: 40px;
+	}
+	
+	.separate-containers #left-sidebar + #right-sidebar .inside-right-sidebar {
+		margin-top: 0;
 	}
 	
 	/* Mobile navigation */
@@ -27,14 +26,20 @@
 		display: block;
 	}
 	
-	.main-navigation ul li.sfHover > ul {
+	.main-navigation ul li.sfHover > ul,
+	.main-navigation ul {
 		display: none;
+	}
+	
+	.main-navigation .menu li.search-item {
+		display: none !important;
 	}
 	
 	button.menu-toggle {
 		background-color: transparent;
 		width: 100%;
 		border: 0;
+		outline: 0;
 	}
 	
 	button.menu-toggle:hover,
@@ -58,25 +63,14 @@
 	.sfHover > a .dropdown-menu-toggle:before {
 		content: "\f106" !important;
 	}
-
-	.main-navigation ul {
-		display: none;
-	}
 	
-	.nav-float-right .main-navigation,
-	.nav-float-left .main-navigation {
+	[class*="nav-float-"] .site-header .inside-header > * {
 		float: none;
-		margin-bottom:20px;
+		clear: both;
 	}
 	
-	.nav-float-left .site-branding,
-	.nav-float-left .site-logo {
-		float: none;
-	}
-	
-	.navigation-search {
-		bottom: auto;
-		top: 0;
+	.inside-header > *:not(:last-child) {
+		margin-bottom: 20px;
 	}
 	
 	.mobile-bar-items {
@@ -90,15 +84,6 @@
 	
 	.mobile-bar-items a {
 		display: inline-block;
-	}
-	
-	.main-navigation .menu li.search-item {
-		display: none !important;
-	}
-	
-	li.search-item a {
-		padding-left: 20px;
-		padding-right: 20px;
 	}
 	
 	.menu-toggle {
@@ -136,12 +121,6 @@
 	
 	.main-navigation {
 		text-align:left;
-	}
-	
-	.navigation-search,
-	.navigation-search input {
-		width: 100%;
-		max-width: 100%;
 	}
 	
 	.sf-menu > li.menu-item-float-right {
@@ -212,7 +191,9 @@
 	}
 	
 	.woocommerce ul.products li.product, 
-	.woocommerce-page ul.products li.product {
+	.woocommerce-page ul.products li.product, 
+	.woocommerce-page[class*=columns-] ul.products li.product,
+	.woocommerce[class*=columns-] ul.products li.product {
 		width: 100%;
 		float: none;
 	}
