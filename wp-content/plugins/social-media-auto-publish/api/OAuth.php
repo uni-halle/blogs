@@ -267,7 +267,7 @@ class SMAPOAuthRequest {
                      "application/x-www-form-urlencoded")
           ) {
         $post_data = SMAPOAuthUtil::parse_parameters(
-          file_get_contents(self::$POST_INPUT)
+          wp_remote_get(self::$POST_INPUT)
         );
         $parameters = array_merge($parameters, $post_data);
       }

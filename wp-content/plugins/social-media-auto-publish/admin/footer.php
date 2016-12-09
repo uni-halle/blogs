@@ -104,7 +104,7 @@ function verify_fields()
 
 }
 </script>
-<?php global $current_user; get_currentuserinfo(); ?>
+<?php global $current_user; wp_get_current_user(); ?>
 <form action=http://xyzscripts.com/newsletter/index.php?page=list/subscribe method="post" name="email_subscription" id="email_subscription" >
 <input type="hidden" name="fieldNameIds" value="1,">
 <input type="hidden" name="redirActive" value="http://xyzscripts.com/subscription/pending/XYZWPSMPPRE">

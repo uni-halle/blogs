@@ -10,7 +10,7 @@ function xyz_smap_add_custom_box()
 	if($posttype=="")
 		$posttype="post";
 	
-if(isset($_GET['action']) && $_GET['action']=="edit")
+if(isset($_GET['action']) && $_GET['action']=="edit" && !empty($_GET['post']))  /// empty check added for fixing client scenario
 	{
 		$postid=$_GET['post'];
 		

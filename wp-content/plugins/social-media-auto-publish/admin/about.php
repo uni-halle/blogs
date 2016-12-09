@@ -164,7 +164,7 @@ Social Media Auto Publish automatically publishes posts from your blog to your  
 		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
 		</td>
 	</tr>
-	
+		
 	<!-- Image Options  -->
 	
 	<tr>
@@ -286,7 +286,7 @@ Social Media Auto Publish automatically publishes posts from your blog to your  
 	</tr>
 	<tr>
 		<td>View auto publish error logs</td>
-		<td><img src="<?php echo plugins_url("images/cross.png",__FILE__);?>">
+		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
 		</td>
 		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
 		</td>
@@ -302,6 +302,16 @@ Social Media Auto Publish automatically publishes posts from your blog to your  
 	
 	<tr>
 		<td>Option to reschedule publishing</td>
+		<td><img src="<?php echo plugins_url("images/cross.png",__FILE__);?>">
+		</td>
+		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
+		</td>
+	</tr>
+	
+	<!-- Addons and Support -->
+	<tr>
+		<td><h4>Addon Features</h4></td>
+		<td>Advanced Autopublish Scheduler</td>
 		<td><img src="<?php echo plugins_url("images/cross.png",__FILE__);?>">
 		</td>
 		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">

@@ -82,10 +82,10 @@ jQuery(document).ready(function() {
 	<a title="Please help us to keep this plugin free forever by donating a dollar"   class="xyz_smap_link" style="margin-right:12px;"  target="_blank" href="http://xyzscripts.com/donate/1">Donate</a>
 </td>
 <td style="float:right;">
-	<a class="xyz_smap_link"  target="_blank" href="http://kb.xyzscripts.com/wordpress-plugins/social-media-auto-publish/">FAQ</a> | 
+	<a class="xyz_smap_link"  target="_blank" href="http://help.xyzscripts.com/docs/social-media-auto-publish/faq/">FAQ</a> | 
 </td>
 <td style="float:right;">
-	<a class="xyz_smap_link"  target="_blank" href="http://docs.xyzscripts.com/wordpress-plugins/social-media-auto-publish/">Readme</a> | 
+	<a class="xyz_smap_link"  target="_blank" href="http://help.xyzscripts.com/docs/social-media-auto-publish/">Readme</a> | 
 </td>
 <td style="float:right;">
 	<a class="xyz_smap_link"  target="_blank" href="http://xyzscripts.com/wordpress-plugins/social-media-auto-publish/details">About</a> | 

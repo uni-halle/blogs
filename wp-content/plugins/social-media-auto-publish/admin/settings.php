@@ -1,7 +1,7 @@
 <?php
 global $current_user;
 $auth_varble=0;
-get_currentuserinfo();
+wp_get_current_user();
 $imgpath= plugins_url()."/social-media-auto-publish/admin/images/";
 $heimg=$imgpath."support.png";
 $ms1="";
@@ -13,7 +13,7 @@ $redirecturl=admin_url('admin.php?page=social-media-auto-publish-settings&auth=1
 
 require( dirname( __FILE__ ) . '/authorization.php' );
 
-if($_GET['smap_notice'] == 'hide')
+if(isset($_GET['smap_notice']) && $_GET['smap_notice'] == 'hide')
 {
 	update_option('xyz_smap_dnt_shw_notice', "hide");
 	?>
@@ -36,7 +36,7 @@ Thanks again for using the plugin. We will never show the message again.
 $erf=0;
 if(isset($_POST['fb']))
 {
-
+	
 	$ss=array();
 	if(isset($_POST['smap_pages_list']))
 	$ss=$_POST['smap_pages_list'];
@@ -64,13 +64,13 @@ if(isset($_POST['fb']))
 
 	$applidold=get_option('xyz_smap_application_id');
 	$applsecretold=get_option('xyz_smap_application_secret');
-	$fbidold=get_option('xyz_smap_fb_id');
+	//$fbidold=get_option('xyz_smap_fb_id');
 	$posting_method=$_POST['xyz_smap_po_method'];
 	$posting_permission=$_POST['xyz_smap_post_permission'];
 	$appid=$_POST['xyz_smap_application_id'];
 	$appsecret=$_POST['xyz_smap_application_secret'];
 	$messagetopost=$_POST['xyz_smap_message'];
-	$fbid=$_POST['xyz_smap_fb_id'];
+	//$fbid=$_POST['xyz_smap_fb_id'];
 	if($appid=="" && $posting_permission==1)
 	{
 		$ms1="Please fill facebook application id.";
@@ -81,11 +81,11 @@ if(isset($_POST['fb']))
 		$ms2="Please fill facebook application secret.";
 		$erf=1;
 	}
-	elseif($fbid=="" && $posting_permission==1)
+	/*elseif($fbid=="" && $posting_permission==1)
 	{
 		$ms3="Please fill facebook user id.";
 		$erf=1;
-	}
+	}*/
 	elseif($messagetopost=="" && $posting_permission==1)
 	{
 		$ms4="Please fill message format for posting.";
@@ -94,7 +94,7 @@ if(isset($_POST['fb']))
 	else
 	{
 		$erf=0;
-		if($appid!=$applidold || $appsecret!=$applsecretold || $fbidold!=$fbid)
+		if($appid!=$applidold || $appsecret!=$applsecretold)
 		{
 			update_option('xyz_smap_af',1);
 			update_option('xyz_smap_fb_token','');
@@ -107,7 +107,7 @@ if(isset($_POST['fb']))
 		update_option('xyz_smap_application_id',$appid);
 		update_option('xyz_smap_post_permission',$posting_permission);
 		update_option('xyz_smap_application_secret',$appsecret);
-		update_option('xyz_smap_fb_id',$fbid);
+		//update_option('xyz_smap_fb_id',$fbid);
 		update_option('xyz_smap_po_method',$posting_method);
 		update_option('xyz_smap_message',$messagetopost);
 
@@ -363,10 +363,10 @@ function drpdisplay()
 	$af=get_option('xyz_smap_af');
 	$appid=get_option('xyz_smap_application_id');
 	$appsecret=get_option('xyz_smap_application_secret');
-	$fbid=get_option('xyz_smap_fb_id');
+	//$fbid=get_option('xyz_smap_fb_id');
 	$posting_method=get_option('xyz_smap_po_method');
 	$posting_message=get_option('xyz_smap_message');
-	if($af==1 && $appid!="" && $appsecret!="" && $fbid!="")
+	if($af==1 && $appid!="" && $appsecret!="")
 	{
 		?>
 	<span style="color: red;">Application needs authorisation</span> <br>
@@ -377,7 +377,7 @@ function drpdisplay()
 
 	</form>
 	<?php }
-	if($af==0 && $appid!="" && $appsecret!="" && $fbid!="")
+	if($af==0 && $appid!="" && $appsecret!="")
 	{
 		?>
 	<form method="post">
@@ -447,14 +447,14 @@ function drpdisplay()
 						value="<?php if($ms2=="") {echo $apsecret; }?>" />
 					</td>
 				</tr>
-				<tr valign="top">
+				<!-- <tr valign="top">
 					<td>Facebook user id 
 					</td>
 					<td><input id="xyz_smap_fb_id" name="xyz_smap_fb_id" type="text"
 						value="<?php if($ms3=="") {echo esc_html(get_option('xyz_smap_fb_id'));}?>" />
 						<a href="http://kb.xyzscripts.com/how-can-i-find-my-facebook-user-id" target="_blank">How can I find my Facebook user id?</a>
 					</td>
-				</tr>
+				</tr>-->
 				<tr valign="top">
 					<td>Message format for posting <img src="<?php echo $heimg?>"
 						onmouseover="detdisplay('xyz_fb')" onmouseout="dethide('xyz_fb')">
@@ -524,7 +524,7 @@ function drpdisplay()
 				if($xyz_acces_token!=""){
 
 					$offset=0;$limit=100;$data=array();
-					$fbid=get_option('xyz_smap_fb_id');
+					//$fbid=get_option('xyz_smap_fb_id');
 					do
 					{
 						$result1="";$pagearray1="";
@@ -794,17 +794,7 @@ $lnaf=get_option('xyz_smap_lnaf');
 			<br><br>
 			</form>
 			<?php  }
-			
-if(isset($_GET['auth']) && $_GET['auth']==3)
-			{
-				if(isset($_GET['auth_problem']))
-					break;
-			?>
-			
-			<span style="color: green;">Application is authorized ,go posting </span><br>
-			
-			<?php 	
-			}
+
 			?>
 			
 			<table class="widefat" style="width: 99%;background-color: #FFFBCC">
@@ -940,7 +930,8 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
         $xyz_smap_peer_verification=$_POST['xyz_smap_peer_verification'];
         $xyz_smap_premium_version_ads=$_POST['xyz_smap_premium_version_ads'];
         $xyz_smap_default_selection_edit=$_POST['xyz_smap_default_selection_edit'];
-        $xyz_smap_future_to_publish=$_POST['xyz_smap_future_to_publish'];
+        //$xyz_smap_future_to_publish=$_POST['xyz_smap_future_to_publish'];
+        $xyz_smap_utf_decode_enable=$_POST['xyz_smap_utf_decode_enable'];
 		$smap_customtype_ids="";
 		
 		$xyz_smap_applyfilters="";
@@ -980,10 +971,11 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 		update_option('xyz_smap_peer_verification',$xyz_smap_peer_verification);
 		update_option('xyz_smap_premium_version_ads',$xyz_smap_premium_version_ads);
 		update_option('xyz_smap_default_selection_edit',$xyz_smap_default_selection_edit);
-		update_option('xyz_smap_std_future_to_publish',$xyz_smap_future_to_publish);
+		update_option('xyz_smap_utf_decode_enable',$xyz_smap_utf_decode_enable);
+		//update_option('xyz_smap_std_future_to_publish',$xyz_smap_future_to_publish);
 	}
 
-	$xyz_smap_future_to_publish=get_option('xyz_smap_std_future_to_publish');
+	//$xyz_smap_future_to_publish=get_option('xyz_smap_std_future_to_publish');
 	$xyz_credit_link=get_option('xyz_credit_link');
 	$xyz_smap_include_pages=get_option('xyz_smap_include_pages');
 	$xyz_smap_include_posts=get_option('xyz_smap_include_posts');
@@ -993,6 +985,7 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 	$xyz_smap_peer_verification=esc_html(get_option('xyz_smap_peer_verification'));
 	$xyz_smap_premium_version_ads=esc_html(get_option('xyz_smap_premium_version_ads'));
 	$xyz_smap_default_selection_edit=esc_html(get_option('xyz_smap_default_selection_edit'));
+	$xyz_smap_utf_decode_enable=get_option('xyz_smap_utf_decode_enable');
 	?>
 		<h2>Basic Settings</h2>
 
@@ -1168,18 +1161,33 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 					?>
 					</td>
 				</tr>
-					
-				<tr valign="top">
+
+<tr valign="top">
+
+					<td  colspan="1" width="50%">Enable utf-8 decoding before publishing
+					</td>
+					<td><select name="xyz_smap_utf_decode_enable">
+
+							<option value="1"
+							<?php if($xyz_smap_utf_decode_enable=='1') echo 'selected'; ?>>Yes</option>
+
+							<option value="0"
+							<?php if($xyz_smap_utf_decode_enable!='1') echo 'selected'; ?>>No</option>
+					</select>
+					</td>
+				</tr>
+	
+				<!--<tr valign="top">
 
 					<td scope="row" colspan="1">Enable "future_to_publish" hook	</td>
 					<td><select name="xyz_smap_future_to_publish" id="xyz_smap_future_to_publish" >
 					
-					<option value ="1" <?php if($xyz_smap_future_to_publish=='1') echo 'selected'; ?> >Yes </option>
+					<option value ="1" <?php // if($xyz_smap_future_to_publish=='1') echo 'selected'; ?> >Yes </option>
 					
-					<option value ="2" <?php if($xyz_smap_future_to_publish=='2') echo 'selected'; ?> >No </option>
+					<option value ="2" <?php // if($xyz_smap_future_to_publish=='2') echo 'selected'; ?> >No </option>
 					</select>
 					</td>
-				</tr>					
+				</tr>-->					
 
 				<tr valign="top">
 

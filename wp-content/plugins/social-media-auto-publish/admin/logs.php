@@ -16,6 +16,7 @@
 					<tr class="xyz_smap_log_tr">
 						<th scope="col" width="1%">&nbsp;</th>
 						<th scope="col" width="12%">Post Id</th>
+						<th scope="col" width="12%">Post Title</th>
 						<th scope="col" width="18%">Account type</th>
 						<th scope="col" width="18%">Published On</th>
 						<th scope="col" width="15%">Status</th>
@@ -28,7 +29,10 @@
 				$post_tw_logsmain = get_option('xyz_smap_twap_post_logs' );
 				$post_ln_logsmain = get_option('xyz_smap_lnap_post_logs' );
 				
-				$post_fb_logsmain_array = array();
+				
+                                if(is_array($post_fb_logsmain))
+                                {
+                                $post_fb_logsmain_array = array();
 				foreach ($post_fb_logsmain as $logkey1 => $logval1)
 				{
 					$post_fb_logsmain_array[]=$logval1;
@@ -57,6 +61,9 @@
 							?>
 							<tr>
 							    <td>&nbsp;</td>
+							    <td  style="vertical-align: middle !important;">
+								<?php echo $postid;	?>
+								</td>
 								<td  style="vertical-align: middle !important;">
 								<?php echo get_the_title($postid);	?>
 								</td>
@@ -93,7 +100,10 @@
 						}
 					}
 					
-					
+			           }
+
+                                     if(is_array($post_tw_logsmain))
+                                     {	
 					$post_tw_logsmain_array = array();
 					foreach ($post_tw_logsmain as $logkey2 => $logval2)
 					{
@@ -116,6 +126,9 @@
 								?>
 								<tr>
 									<td>&nbsp;</td>
+									 <td  style="vertical-align: middle !important;">
+								     <?php echo $postid;	?>
+								     </td>
 									<td  style="vertical-align: middle !important;">
 									<?php echo get_the_title($postid);	?>
 									</td>
@@ -151,8 +164,11 @@
 							}
 						}
 					}
-								
+                                     }
 
+								
+                                       if(is_array($post_ln_logsmain))
+                                   {
 					$post_ln_logsmain_array = array();
 					foreach ($post_ln_logsmain as $logkey3 => $logval3)
 					{
@@ -176,6 +192,9 @@
 								?>
 								<tr>
 									<td>&nbsp;</td>
+									 <td  style="vertical-align: middle !important;">
+								     <?php echo $postid;	?>
+								     </td>
 									<td  style="vertical-align: middle !important;">
 									<?php echo get_the_title($postid);	?>
 									</td>
@@ -211,6 +230,8 @@
 							}
 						}
 					}
+                                     }
+
 					if($post_fb_logsmain=="" && $post_tw_logsmain=="" && $post_ln_logsmain==""){?>
 						<tr><td colspan="5" style="padding: 5px;">No logs Found</td></tr>
 					<?php }?>

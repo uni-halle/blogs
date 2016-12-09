@@ -31,7 +31,7 @@ function smap_free_destroy()
 	
 	delete_option('xyz_smap_application_id');
 	delete_option('xyz_smap_application_secret');
-	delete_option('xyz_smap_fb_id');
+	//delete_option('xyz_smap_fb_id');
 	delete_option('xyz_smap_message');
 	delete_option('xyz_smap_po_method');
 	delete_option('xyz_smap_post_permission');
@@ -74,6 +74,7 @@ function smap_free_destroy()
 	delete_option('xyz_smap_twap_post_logs');
 	delete_option('xyz_smap_premium_version_ads');
 	delete_option('xyz_smap_default_selection_edit');
+	delete_option('xyz_smap_utf_decode_enable');
 }
 
 register_uninstall_hook(XYZ_SMAP_PLUGIN_FILE,'smap_free_network_destroy');
