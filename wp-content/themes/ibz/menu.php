@@ -10,6 +10,8 @@
           
     <?php
         if(function_exists('wp_nav_menu')):
+            
+         
             wp_nav_menu(
                 array(
                 'menu' =>'primary_nav',
@@ -19,12 +21,12 @@
             );
         else:
     ?>
-    
+   
         <ul>
             <li>
                 <a class="selected" href="<?php echo home_url(); ?>" title="Home">Home</a>
             </li>
-            <?php wp_list_pages('title_li=&depth=0'); ?>
+            <?php wp_list_pages('title_li=&depth=0');  ?>
         </ul>
      
     <?php endif; ?>  

@@ -1,6 +1,235 @@
 <?php
 
+function tribe_get_event_taxonomy1( $post_id = null, $args = array() ) {
+		$post_id   = Tribe__Events__Main::postIdHelper( $post_id );
+		$tribe_ecp = Tribe__Events__Main::instance();
+		$defaults  = array(
+			'taxonomy' => $tribe_ecp->get_event_taxonomy(),
+			'before'   => '<li>',
+			'sep'      => '</li><li>',
+			'after'    => '</li>',
+		);
+		$args      = wp_parse_args( $args, $defaults );
+		extract( $args, EXTR_SKIP );
+		$taxonomy = get_the_terms( $post_id, $taxonomy, $before, $sep, $after );
 
+		return apply_filters( 'tribe_get_event_taxonomy', $taxonomy, $post_id, $args );
+	}
+
+
+
+
+ function maja_ecs_fetch_events( $atts )
+	{
+		/**
+		 * Check if events calendar plugin method exists
+		 */
+		if ( !function_exists( 'tribe_get_events' ) ) {
+			return;
+		}
+
+		global $wp_query, $post;
+		$output = '';
+		
+		$atts = shortcode_atts( array(
+			'cat' => '',
+			'month' => '',
+			'limit' => 5,
+			'eventdetails' => 'true',
+			'time' => null,
+			'past' => null,
+			'venue' => 'false',
+			'author' => null,
+			'message' => 'There are no upcoming events at this time.',
+			'key' => 'End Date',
+			'order' => 'ASC',
+			'viewall' => 'false',
+			'excerpt' => 'false',
+			'thumb' => 'false',
+			'thumbwidth' => '',
+			'thumbheight' => '',
+			'contentorder' => 'title, thumbnail, excerpt, date, venue',
+			'event_tax' => '',
+		), $atts, 'ecs-list-events' );
+
+		// Category
+		if ( $atts['cat'] ) {
+			if ( strpos( $atts['cat'], "," ) !== false ) {
+				$atts['cats'] = explode( ",", $atts['cat'] );
+				$atts['cats'] = array_map( 'trim', $atts['cats'] );
+			} else {
+				$atts['cats'] = $atts['cat'];
+			}
+
+			$atts['event_tax'] = array(
+				'relation' => 'OR',
+				array(
+					'taxonomy' => 'tribe_events_cat',
+					'field' => 'name',
+					'terms' => $atts['cats'],
+				),
+				array(
+					'taxonomy' => 'tribe_events_cat',
+					'field' => 'slug',
+					'terms' => $atts['cats'],
+				)
+			);
+		}
+
+		// Past Event
+		$meta_date_compare = '>=';
+		$meta_date_date = date( 'Y-m-d' );
+
+		if ( $atts['time'] == 'past' || !empty( $atts['past'] ) ) {
+			$meta_date_compare = '<';
+		}
+
+		// Key
+		if ( str_replace( ' ', '', trim( strtolower( $atts['key'] ) ) ) == 'startdate' ) {
+			$atts['key'] = '_EventStartDate';
+		} else {
+			$atts['key'] = '_EventEndDate';
+		}
+		// Date
+		$atts['meta_date'] = array(
+			array(
+				'key' => $atts['key'],
+				'value' => $meta_date_date,
+				'compare' => $meta_date_compare,
+				'type' => 'DATETIME'
+			)
+		);
+
+		// Specific Month
+		if ( $atts['month'] == 'current' ) {
+			$atts['month'] = date( 'Y-m' );
+		}
+		if ($atts['month']) {
+			$month_array = explode("-", $atts['month']);
+
+			$month_yearstr = $month_array[0];
+			$month_monthstr = $month_array[1];
+
+			$month_startdate = date($month_yearstr . "-" . $month_monthstr . "-1");
+			$month_enddate = date($month_yearstr . "-" . $month_monthstr . "-t");
+
+			$atts['meta_date'] = array(
+				array(
+					'key' => $atts['key'],
+					'value' => array($month_startdate, $month_enddate),
+					'compare' => 'BETWEEN',
+					'type' => 'DATETIME'
+				)
+			);
+		}
+
+		$posts = get_posts( array(
+			'post_type' => 'tribe_events',
+			'posts_per_page' => $atts['limit'],
+			'tax_query'=> $atts['event_tax'],
+			'meta_key' => $atts['key'],
+			'orderby' => 'meta_value',
+			'author' => $atts['author'],
+			'order' => $atts['order'],
+			'meta_query' => array( $atts['meta_date'] )
+		) );
+		//var_export($atts['contentorder'] );
+		
+		
+
+		if ($posts) {
+			$output .= '<ul class="ecs-event-list">';
+			$atts['contentorder'] = explode( ',', $atts['contentorder'] );
+
+			foreach( $posts as $post ) :
+			//var_export($post);
+				setup_postdata( $post );
+				$defaults   = array(
+			'echo'         => false,
+			'label'        => '',
+			'label_before' => '',
+			'label_after'  => '',
+			'wrap_before'  => '',
+			'wrap_after'   => '',
+			'before'   => '',
+			'sep'      => '',
+			'after'    => '',
+		);
+				//var_export(tribe_get_event_taxonomy(null,$defaults));
+				//var_export($post);
+				$output .= '<li class="ecs-event">';
+
+				// Put Values into $output
+				$h=tribe_get_event_taxonomy1(null,$defaults);
+				
+				foreach ( $atts['contentorder'] as $contentorder ) {
+					switch ( trim( $contentorder ) ) {
+						case 'title' :
+							$output .= '<h4 class="entry-title summary">' .
+											'<a href="' . tribe_get_event_link() . '" rel="bookmark">' . apply_filters( 'ecs_event_list_title', get_the_title(), $atts ) . '</a>
+										</h4><span class="event_cat">'.$h[0]->name. '</span><br />';
+							break;
+
+						case 'thumbnail' :
+							if( $atts['thumb']!==false ) {
+								$thumbWidth = is_numeric($atts['thumbwidth']) ? $atts['thumbwidth'] : '';
+								$thumbHeight = is_numeric($atts['thumbheight']) ? $atts['thumbheight'] : '';
+								if( !empty($thumbWidth) && !empty($thumbHeight) ) {
+									$output .= get_the_post_thumbnail(get_the_ID(), array($thumbWidth, $thumbHeight) );
+								} else {
+
+									$size = ( !empty($thumbWidth) && !empty($thumbHeight) ) ? array( $thumbWidth, $thumbHeight ) : 'medium';
+
+									if ( $thumb = get_the_post_thumbnail( get_the_ID(), $size ) ) {
+										$output .= '<a href="' . tribe_get_event_link() . '">';
+										$output .= $thumb;
+										$output .= '</a>';
+									}
+								}
+							}
+							break;
+/*
+						case 'excerpt' :
+							if( $atts['excerpt']!==false ) {
+								$excerptLength = is_numeric($atts['excerpt']) ? $atts['excerpt'] : 100;
+								$output .= '<p class="ecs-excerpt">' .
+												self::get_excerpt($excerptLength) .
+											'</p>';
+							}
+							break;
+*/
+						case 'date' :
+							if( $atts['eventdetails']!==false ) {
+								$output .= '<span class="duration time">' . apply_filters( 'ecs_event_list_details', tribe_events_event_schedule_details(), $atts ) . '</span>';
+							}
+							break;
+
+						case 'venue' :
+							if( $atts['venue']!==false ) {
+								$output .= '<span class="duration venue"><em> at </em>' . apply_filters( 'ecs_event_list_venue', tribe_get_venue(), $atts ) . '</span>';
+							}
+							break;
+					}
+				}
+				$output .= '</li>';
+			endforeach;
+			$output .= '</ul>';
+return $output;
+			if( self::isValid($atts['viewall']) ) {
+				$output .= '<span class="ecs-all-events"><a href="' . apply_filters( 'ecs_event_list_viewall_link', tribe_get_events_link(), $atts ) .'" rel="bookmark">' . translate( 'View All Events', 'tribe-events-calendar' ) . '</a></span>';
+			}
+
+		} else { //No Events were Found
+			$output .= translate( $atts['message'], 'tribe-events-calendar' );
+		} // endif
+
+		wp_reset_query();
+
+		return $output;
+	}
+
+
+add_shortcode('maja_fetch_events', 'maja_ecs_fetch_events');
 class BlogPost
 {
     var $date;

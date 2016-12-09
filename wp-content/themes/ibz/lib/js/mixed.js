@@ -16,15 +16,15 @@ jQuery(document).ready(function($) {
 	// NAVIGATION	
 	$('#menu_list').dcAccordion({
 		classParent: 'menu_list_parent',
-		eventType: 'hover',
-		autoClose: false,
+		eventType: 'click',
+		autoClose: true,
 		menuClose: false,
 		saveState: true,
 		disableLink: false,
 		hoverDelay: 0,
 		classArrow: 'menu_list_icon',
-		speed: 300
-	});			
+		speed: 200
+	});		
 		
 	// QUICKSAND PLUGIN
 	function portfolio_quicksand() {

@@ -51,6 +51,13 @@
 		background:url(../../images/ibz_bg-pattern.gif);
 		max-width:none; 
 		margin: 0 20px;
+
+		 }
+	
+	#menu nav.menu-standardmenue-container {padding: 1px 0;}
+		 
+	#menu footer{ 
+		display: none;
 		 }
 			
 	#logo_highlight { 
@@ -69,7 +76,7 @@
 		
 	.news_container , .rss_reader_container , .box_container { /* added for IBZ */
 	float: right; 
-	margin-right: 0; }
+	margin-right: 0px; }
 		
 	.content { 
 		padding-top:40px;
@@ -95,7 +102,6 @@
 	#social_icons { margin-bottom:0; }	
 					
 	/* navigation menu */	
-	#menu_list { display:none; }
 					
 	header nav { 
 		width:100%; 
@@ -103,7 +109,7 @@
 		overflow:hidden; }
 			
 	#menu nav select { 
-		display:block;
+		display:none;
  		width:300px;	
 		height:40px;
 		padding:9px 10px;
@@ -148,7 +154,7 @@
 		
 	.news_container , .rss_reader_container , .box_container { /* added for IBZ */
 	float: right; 
-	margin-right: 0; }
+	margin-right: 0px; }
 	
 	.ibz-footer-outer { /* added for IBZ */
 	margin-left: 0; }
@@ -264,6 +270,10 @@
 	/* typography */
 	.main_title { font-size:2.4em; }
 	.subtitle { font-size:1.2em; }
+
+	.news_container , .rss_reader_container , .box_container { /* added for IBZ */
+	float: left; 
+	margin-right: 20px; }
 	
 }
 
@@ -290,6 +300,11 @@
 
 	span.wpcf7-list-item {
     margin-right: 5px;}
+    
+    .news_container , .rss_reader_container , .box_container { /* added for IBZ */
+	float: left; 
+	width: 100%;
+	margin-right: 0; }
 
 
 }

@@ -4,15 +4,15 @@
  */
 ?>
 
-<?php get_header(); ?><ul class="pagnav">
-<?php /*get_template_part( 'menu' ); */// load navigation menu 
-wp_list_pages(array('child_of'=>5,'sort_column'=>'menu_order','title_li'=>'')); 
+<?php get_header(); ?>
+<?php get_template_part( 'menu' ); //load navigation menu 
+//wp_list_pages(array('child_of'=>5,'sort_column'=>'menu_order','title_li'=>'')); 
 
 
 
 
 ?>
-</ul>
+
 </section>
 
 
