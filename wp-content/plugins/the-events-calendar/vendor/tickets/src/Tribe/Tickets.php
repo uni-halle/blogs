@@ -24,6 +24,13 @@ if ( ! class_exists( 'Tribe__Tickets__Tickets' ) ) {
 	abstract class Tribe__Tickets__Tickets {
 
 		/**
+		 * Flag used to track if the registration form link has been displayed or not.
+		 *
+		 * @var boolean
+		 */
+		private static $have_displayed_reg_link = false;
+
+		/**
 		 * All Tribe__Tickets__Tickets api consumers. It's static, so it's shared across all child.
 		 *
 		 * @var array
@@ -63,6 +70,22 @@ if ( ! class_exists( 'Tribe__Tickets__Tickets' ) ) {
 		 */
 		private $parentUrl;
 
+		/**
+		 * Records batches of tickets that are currently unavailable (used for
+		 * displaying the correct "tickets are unavailable" message).
+		 *
+		 * @var array
+		 */
+		protected static $currently_unavailable_tickets = array();
+
+		/**
+		 * Records posts for which tickets *are* available (used to determine if
+		 * a "tickets are unavailable" message should even display).
+		 *
+		 * @var array
+		 */
+		protected static $posts_with_available_tickets = array();
+
 		// start API Definitions
 		// Child classes must implement all these functions / properties
 
@@ -71,6 +94,12 @@ if ( ! class_exists( 'Tribe__Tickets__Tickets' ) ) {
 		 * @var
 		 */
 		public $pluginName;
+
+		/**
+		 * The name of the post type representing a ticket.
+		 * @var string
+		 */
+		public $ticket_object = '';
 
 		/**
 		 * Path of the child class
@@ -88,6 +117,8 @@ if ( ! class_exists( 'Tribe__Tickets__Tickets' ) ) {
 		 * Constant with the Transient Key for Attendees Cache
 		 */
 		const ATTENDEES_CACHE = 'tribe_attendees';
+
+		const ATTENDEE_USER_ID = '_tribe_tickets_attendee_user_id';
 
 		/**
 		 * Returns link to the report interface for sales for an event or
@@ -124,6 +155,32 @@ if ( ! class_exists( 'Tribe__Tickets__Tickets' ) ) {
 		 * @return mixed
 		 */
 		abstract public function get_ticket( $event_id, $ticket_id );
+
+		/**
+		 * Attempts to load the specified ticket type post object.
+		 *
+		 * @param int $ticket_id
+		 *
+		 * @return Tribe__Tickets__Ticket_Object|null
+		 */
+		public static function load_ticket_object( $ticket_id ) {
+			foreach ( Tribe__Tickets__Tickets::modules() as $provider_class => $name ) {
+				$provider = call_user_func( array( $provider_class, 'get_instance' ) );
+				$event    = $provider->get_event_for_ticket( $ticket_id );
+
+				if ( ! $event ) {
+					continue;
+				}
+
+				$ticket_object = $provider->get_ticket( $event->ID, $ticket_id );
+
+				if ( $ticket_object ) {
+					return $ticket_object;
+				}
+			}
+
+			return null;
+		}
 
 		/**
 		 * Returns the event post corresponding to the possible ticket object/ticket ID.
@@ -304,7 +361,9 @@ if ( ! class_exists( 'Tribe__Tickets__Tickets' ) ) {
 
 			// Front end
 			add_action( 'tribe_events_single_event_after_the_meta', array( $this, 'front_end_tickets_form' ), 5 );
-			add_filter( 'the_content', array( $this, 'front_end_tickets_form_in_content' ) );
+			add_action( 'tribe_events_single_event_after_the_meta', array( $this, 'show_tickets_unavailable_message' ), 6 );
+			add_filter( 'the_content', array( $this, 'front_end_tickets_form_in_content' ), 11 );
+			add_filter( 'the_content', array( $this, 'show_tickets_unavailable_message_in_content' ), 12 );
 
 			// Ensure ticket prices and event costs are linked
 			add_filter( 'tribe_events_event_costs', array( $this, 'get_ticket_prices' ), 10, 2 );
@@ -320,12 +379,7 @@ if ( ! class_exists( 'Tribe__Tickets__Tickets' ) ) {
 				$post = get_post( $post );
 			}
 
-			$cap = "edit_{$post->post_type}";
-			if ( 'post' === $post->post_type || 'page' === $post->post_type ) {
-				$cap .= 's';
-			}
-
-			return ! empty( $data['nonce'] ) && wp_verify_nonce( $data['nonce'], $nonce_action ) && current_user_can( $cap );
+			return ! empty( $data['nonce'] ) && wp_verify_nonce( $data['nonce'], $nonce_action ) && current_user_can( get_post_type_object( $post->post_type )->cap->edit_posts );
 		}
 
 		/* AJAX Handlers */
@@ -459,9 +513,11 @@ if ( ! class_exists( 'Tribe__Tickets__Tickets' ) ) {
 			$order_id = $_POST['order_ID'];
 
 			// Pass the control to the child object
-			$return = $this->checkin( $order_id );
+			$did_checkin = $this->checkin( $order_id );
 
-			$this->ajax_ok( $return );
+			$this->maybe_update_attendees_cache( $did_checkin );
+
+			$this->ajax_ok( $did_checkin );
 		}
 
 		/**
@@ -487,9 +543,13 @@ if ( ! class_exists( 'Tribe__Tickets__Tickets' ) ) {
 			$order_id = $_POST['order_ID'];
 
 			// Pass the control to the child object
-			$return = $this->uncheckin( $order_id );
+			$did_uncheckin = $this->uncheckin( $order_id );
 
-			$this->ajax_ok( $return );
+			if ( class_exists( 'Tribe__Events__Main' ) ) {
+				$this->maybe_update_attendees_cache( $did_uncheckin );
+			}
+
+			$this->ajax_ok( $did_uncheckin );
 		}
 
 		/**
@@ -660,12 +720,35 @@ if ( ! class_exists( 'Tribe__Tickets__Tickets' ) ) {
 				$attendees = array_merge( $attendees, $obj->get_attendees( $event_id ) );
 			}
 
+			// Set the `ticket_exists` flag on attendees if the ticket they are associated with
+			// does not exist.
+			foreach ( $attendees as &$attendee ) {
+				$attendee['ticket_exists'] = !empty( $attendee['product_id'] ) && get_post( $attendee['product_id'] );
+			}
+
 			if ( ! is_admin() ) {
 				$expire = apply_filters( 'tribe_tickets_attendees_expire', HOUR_IN_SECONDS );
 				$post_transient->set( $event_id, self::ATTENDEES_CACHE, $attendees, $expire );
 			}
 
 			return $attendees;
+		}
+
+		/**
+		 * Returns an array of attendees for the specified event, in relation to
+		 * this ticketing provider.
+		 *
+		 * Implementation note: this is just a public wrapper around the get_attendees() method.
+		 * The reason we don't simply make that same method public is to avoid breakages in other
+		 * ticket provider plugins which have already implemented that method with protected
+		 * accessibility.
+		 *
+		 * @param $event_id
+		 *
+		 * @return array
+		 */
+		public function get_attendees_array( $event_id ) {
+			return $this->get_attendees( $event_id );
 		}
 
 		/**
@@ -1193,33 +1276,234 @@ if ( ! class_exists( 'Tribe__Tickets__Tickets' ) ) {
 			return (string) $attendee_event_key;
 		}
 
+		/**
+		 * Returns the meta key used to link ticket types with the base event.
+		 *
+		 * If the meta key cannot be determined the returned string will be empty.
+		 * Subclasses can override this if they use a key other than 'event_key'
+		 * for this purpose.
+		 *
+		 * @internal
+		 *
+		 * @return string
+		 */
+		public function get_event_key() {
+			if ( property_exists( $this, 'event_key' ) ) {
+				return $this->event_key;
+			}
+
+			return '';
+		}
+
+		/**
+		 * Returns an availability slug based on all tickets in the provided collection
+		 *
+		 * The availability slug is used for CSS class names and filter helper strings
+		 *
+		 * @since 4.2
+		 *
+		 * @param array $tickets Collection of tickets
+		 * @param string $datetime Datetime string
+		 *
+		 * @return string
+		 */
+		public function get_availability_slug_by_collection( $tickets, $datetime = null ) {
+			if ( ! $tickets ) {
+				return;
+			}
+
+			if ( is_numeric( $datetime ) ) {
+				$timestamp = $datetime;
+			} elseif ( $datetime ) {
+				$timestamp = strtotime( $datetime );
+			} else {
+				$timestamp = current_time( 'timestamp' );
+			}
+
+			$collection_availability_slug = 'available';
+			$tickets_available = false;
+			$slugs = array();
+
+			foreach ( $tickets as $ticket ) {
+				$availability_slug = $ticket->availability_slug( $timestamp );
+
+				// if any ticket is available for this event, consider the availability slug as 'available'
+				if ( 'available' === $availability_slug ) {
+					// reset the collected slugs to "available" only
+					$slugs = array( 'available' );
+					break;
+				}
+
+				// track unique availability slugs
+				if ( ! in_array( $availability_slug, $slugs ) ) {
+					$slugs[] = $availability_slug;
+				}
+			}
+
+			if ( 1 === count( $slugs ) ) {
+				$collection_availability_slug = $slugs[0];
+			} else {
+				$collection_availability_slug = 'availability-mixed';
+			}
+
+			/**
+			 * Filters the availability slug for a collection of tickets
+			 *
+			 * @var string Availability slug
+			 * @var array Collection of tickets
+			 * @var string Datetime string
+			 */
+			return apply_filters( 'event_tickets_availability_slug_by_collection', $collection_availability_slug, $tickets, $datetime );
+		}
+
+		/**
+		 * Returns a tickets unavailable message based on the availability slug of a collection of tickets
+		 *
+		 * @since 4.2
+		 *
+		 * @param array $tickets Collection of tickets
+		 *
+		 * @return string
+		 */
+		public function get_tickets_unavailable_message( $tickets ) {
+
+			$availability_slug = $this->get_availability_slug_by_collection( $tickets );
+			$message           = null;
+			$post_type = get_post_type();
+
+			if ( 'tribe_events' == $post_type && function_exists( 'tribe_is_past_event' ) && tribe_is_past_event() ) {
+				$events_label_singular_lowercase = tribe_get_event_label_singular_lowercase();
+				$message = sprintf( esc_html__( 'Tickets are not available as this %s has passed.', 'event-tickets' ), $events_label_singular_lowercase );
+			} elseif ( 'availability-future' === $availability_slug ) {
+				$message = __( 'Tickets are not yet available.', 'event-tickets' );
+			} elseif ( 'availability-past' === $availability_slug ) {
+				$message = __( 'Tickets are no longer available.', 'event-tickets' );
+			} elseif ( 'availability-mixed' === $availability_slug ) {
+				$message = __( 'There are no tickets available at this time.', 'event-tickets' );
+			}
+
+			/**
+			 * Filters the unavailability message for a ticket collection
+			 *
+			 * @var string Unavailability message
+			 * @var array Collection of tickets
+			 */
+			$message = apply_filters( 'event_tickets_unvailable_message', $message, $tickets );
+
+			return $message;
+		}
+
+		/**
+		 * Indicates that, from an individual ticket provider's perspective, the only tickets for the
+		 * event are currently unavailable and unless a different ticket provider reports differently
+		 * the "tickets unavailable" message should be displayed.
+		 *
+		 * @param array $tickets
+		 * @param int $post_id = null (defaults to the current post)
+		 */
+		public function maybe_show_tickets_unavailable_message( $tickets, $post_id = null ) {
+			if ( null === $post_id ) {
+				$post_id = get_the_ID();
+			}
+
+			$existing_tickets = ! empty( self::$currently_unavailable_tickets[ (int) $post_id ] )
+				? self::$currently_unavailable_tickets[ (int) $post_id ]
+				: array();
+
+			self::$currently_unavailable_tickets[ (int) $post_id ] = array_merge( $existing_tickets, $tickets );
+		}
+
+		/**
+		 * Indicates that, from an individual ticket provider's perspective, the event does have some
+		 * currently available tickets and so the "tickets unavailable" message should probably not
+		 * be displayed.
+		 *
+		 * @param null $post_id
+		 */
+		public function do_not_show_tickets_unavailable_message( $post_id = null ) {
+			if ( null === $post_id ) {
+				$post_id = get_the_ID();
+			}
+
+			self::$posts_with_available_tickets[] = (int) $post_id;
+		}
+
+		/**
+		 * If appropriate, displayed a "tickets unavailable" message.
+		 */
+		public function show_tickets_unavailable_message() {
+			$post_id = (int) get_the_ID();
+
+			// So long as at least one ticket provider has tickets available, do not show an unavailability message
+			if ( in_array( $post_id, self::$posts_with_available_tickets ) ) {
+				return;
+			}
+
+			// Bail if no ticket providers reported that all their tickets for the event were unavailable
+			if ( empty( self::$currently_unavailable_tickets[ $post_id ] ) ) {
+				return;
+			}
+
+			// Prepare the message
+			$message = '<div class="tickets-unavailable">'
+				. $this->get_tickets_unavailable_message( self::$currently_unavailable_tickets[ $post_id ] )
+				. '</div>';
+
+			/**
+			 * Sets the tickets unavailable message.
+			 *
+			 * @param string $message
+			 * @param int    $post_id
+			 * @param array  $unavailable_event_tickets
+			 */
+			echo apply_filters( 'tribe_tickets_unavailable_message', $message, $post_id, self::$currently_unavailable_tickets[ $post_id ] );
+
+			// Remove the record of unavailable tickets to avoid duplicate messages being rendered for the same event
+			unset( self::$currently_unavailable_tickets[ $post_id ] );
+		}
+
+		/**
+		 * Takes care of adding a "tickets unavailable" message by injecting it into the post content
+		 * (where the template settings require such an approach).
+		 *
+		 * @param string $content
+		 *
+		 * @return string
+		 */
+		public function show_tickets_unavailable_message_in_content( $content ) {
+			if ( ! $this->should_inject_ticket_form_into_post_content() ) {
+				return $content;
+			}
+
+			ob_start();
+			$this->show_tickets_unavailable_message();
+			$form = ob_get_clean();
+
+			$content .= $form;
+
+			return $content;
+		}
 		// end Helpers
 
+		/**
+		 * Associates an attendee record with a user, typically the purchaser.
+		 *
+		 * The $user_id param is optional and when not provided it will default to the current
+		 * user ID.
+		 *
+		 * @param int $attendee_id
+		 * @param int $user_id
+		 */
+		protected function record_attendee_user_id( $attendee_id, $user_id = null ) {
+			if ( null === $user_id ) {
+				$user_id = get_current_user_id();
+			}
+
+			update_post_meta( $attendee_id, self::ATTENDEE_USER_ID, (int) $user_id );
+		}
+
 		public function front_end_tickets_form_in_content( $content ) {
-			global $post;
-
-			if ( is_admin() ) {
-				return $content;
-			}
-
-			// if this isn't a post for some reason, bail
-			if ( ! $post instanceof WP_Post ) {
-				return $content;
-			}
-
-			// if this isn't a supported post type, bail
-			if ( ! in_array( $post->post_type, Tribe__Tickets__Main::instance()->post_types() ) ) {
-				return $content;
-			}
-
-			// if this is a tribe_events post, let's bail because those post types are handled with a different hook
-			if ( 'tribe_events' === $post->post_type ) {
-				return $content;
-			}
-
-			// if there aren't any tickets, bail
-			$tickets = $this->get_tickets( $post->ID );
-			if ( empty( $tickets ) ) {
+			if ( ! $this->should_inject_ticket_form_into_post_content() ) {
 				return $content;
 			}
 
@@ -1230,6 +1514,92 @@ if ( ! class_exists( 'Tribe__Tickets__Tickets' ) ) {
 			$content .= $form;
 
 			return $content;
+		}
+
+		/**
+		 * Determines if this is a suitable opportunity to inject ticket form content into a post.
+		 * Expects to run within "the_content".
+		 *
+		 * @return bool
+		 */
+		protected function should_inject_ticket_form_into_post_content() {
+			global $post;
+
+			// Prevents firing more then it needs too outside of the loop
+			$in_the_loop = isset( $GLOBALS['wp_query']->in_the_loop ) && $GLOBALS['wp_query']->in_the_loop;
+
+			if ( is_admin() || ! $in_the_loop ) {
+				return false;
+			}
+
+			// if this isn't a post for some reason, bail
+			if ( ! $post instanceof WP_Post ) {
+				return false;
+			}
+
+			// if this isn't a supported post type, bail
+			if ( ! in_array( $post->post_type, Tribe__Tickets__Main::instance()->post_types() ) ) {
+				return false;
+			}
+
+			// if this is a tribe_events post, let's bail because those post types are handled with a different hook
+			if ( 'tribe_events' === $post->post_type ) {
+				return false;
+			}
+
+			// if there aren't any tickets, bail
+			$tickets = $this->get_tickets( $post->ID );
+			if ( empty( $tickets ) ) {
+				return false;
+			}
+
+			return true;
+		}
+
+		/**
+		 * Indicates if the user must be logged in in order to obtain tickets.
+		 *
+		 * This should be regarded as an abstract method to be overridden by subclasses:
+		 * the reason it is not formally declared as abstract is to avoid breakages upon
+		 * update (for example, where Event Tickets is updated first but a dependent plugin
+		 * not yet implementing the abstract method remains at an earlier version).
+		 *
+		 * @return bool
+		 */
+		protected function login_required() {
+			return false;
+		}
+
+		/**
+		 * Provides a URL that can be used to direct users to the login form.
+		 *
+		 * @return string
+		 */
+		public static function get_login_url() {
+			$post_id   = get_the_ID();
+			$login_url = get_site_url( null, 'wp-login.php' );
+
+			if ( $post_id ) {
+				$login_url = add_query_arg( 'redirect_to', get_permalink( $post_id ), $login_url );
+			}
+
+			/**
+			 * Provides an opportunity to modify the login URL used within frontend
+			 * ticket forms (typically when they need to login before they can proceed).
+			 *
+			 * @param string $login_url
+			 */
+			return apply_filters( 'tribe_tickets_ticket_login_url', $login_url );
+		}
+
+		/**
+		 * @param $operation_did_complete
+		 */
+		private function maybe_update_attendees_cache( $operation_did_complete ) {
+			if ( $operation_did_complete && ! empty( $_POST['event_ID'] ) ) {
+				$post_transient = Tribe__Post_Transient::instance();
+				$post_transient->delete( $_POST['event_ID'], self::ATTENDEES_CACHE );
+			}
 		}
 	}
 }

@@ -144,6 +144,11 @@ if ( ! class_exists( 'Tribe__Events__Templates' ) ) {
 
 			}
 
+			// if this is an oembed, override the wrapping template and use the embed template
+			if ( Tribe__Templates::is_embed() ) {
+				$template = self::getTemplateHierarchy( 'embed' );
+			}
+
 			self::$template = $template;
 
 			return $template;
@@ -400,8 +405,16 @@ if ( ! class_exists( 'Tribe__Events__Templates' ) ) {
 				$template = self::getTemplateHierarchy( 'day' );
 			}
 
+			if ( Tribe__Templates::is_embed() ) {
+				$template = self::getTemplateHierarchy( 'embed' );
+			}
+
 			// single event view
-			if ( is_singular( Tribe__Events__Main::POSTTYPE ) && ! tribe_is_showing_all() ) {
+			if (
+				is_singular( Tribe__Events__Main::POSTTYPE )
+				&& ! tribe_is_showing_all()
+				&& ! Tribe__Templates::is_embed()
+			) {
 				$template = self::getTemplateHierarchy( 'single-event', array( 'disable_view_check' => true ) );
 			}
 
@@ -431,6 +444,9 @@ if ( ! class_exists( 'Tribe__Events__Templates' ) ) {
 			// day view
 			elseif ( tribe_is_day() || tribe_is_ajax_view_request( 'day' ) ) {
 				$class = 'Tribe__Events__Template__Day';
+			}
+			elseif ( Tribe__Templates::is_embed() ) {
+				$class = 'Tribe__Events__Template__Embed';
 			}
 			// single event view
 			elseif ( is_singular( Tribe__Events__Main::POSTTYPE ) ) {
@@ -542,7 +558,7 @@ if ( ! class_exists( 'Tribe__Events__Templates' ) ) {
 			);
 			/**
 			 * @var string $namespace
-			 * @var string $pluginpath
+			 * @var string $plugin_path
 			 * @var bool   $disable_view_check
 			 */
 			extract( $args );
@@ -553,9 +569,6 @@ if ( ! class_exists( 'Tribe__Events__Templates' ) ) {
 			if ( substr( $template, - 4 ) != '.php' ) {
 				$template .= '.php';
 			}
-
-			// setup the meta definitions
-			require_once( $tec->pluginPath . 'src/functions/advanced-functions/meta_registration.php' );
 
 			// Allow base path for templates to be filtered
 			$template_base_paths = apply_filters( 'tribe_events_template_paths', ( array ) Tribe__Events__Main::instance()->pluginPath );
@@ -605,6 +618,8 @@ if ( ! class_exists( 'Tribe__Events__Templates' ) ) {
 					if ( $file ) {
 						_deprecated_function( sprintf( esc_html__( 'Template overrides should be moved to the correct subdirectory: %s', 'the-events-calendar' ), str_replace( get_stylesheet_directory() . '/tribe-events/', '', $file ) ), '3.2', $template );
 					}
+				} else {
+					$file = apply_filters( 'tribe_events_template', $file, $template );
 				}
 			}
 

@@ -31,7 +31,17 @@
 		$provider_obj = call_user_func( array( $provider, 'get_instance' ) );
 
 		$controls[] = sprintf( '<span><a href="#" attr-provider="%1$s" attr-ticket-id="%2$s" id="ticket_edit_%2$s" class="ticket_edit">' . esc_html__( 'Edit', 'event-tickets' ) . '</a></span>', $ticket->provider_class, $ticket->ID );
-		$controls[] = sprintf( '<span><a href="#" attr-provider="%1$s" attr-ticket-id="%2$s" id="ticket_delete_%2$s" class="ticket_delete">' . esc_html__( 'Delete', 'event-tickets' ) . '</a></span>', $ticket->provider_class, $ticket->ID );
+
+		/**
+		 * Determines whether or not the current user can delete a specific ticket.
+		 *
+		 * @param bool   $user_can_delete_tickets
+		 * @param int    $ticket_id
+		 * @param string $ticket_provider
+		 */
+		if ( apply_filters( 'tribe_tickets_current_user_can_delete_ticket', true, $ticket->ID, $ticket->provider_class ) ) {
+			$controls[] = sprintf( '<span><a href="#" attr-provider="%1$s" attr-ticket-id="%2$s" id="ticket_delete_%2$s" class="ticket_delete">' . esc_html__( 'Delete', 'event-tickets' ) . '</a></span>', $ticket->provider_class, $ticket->ID );
+		}
 
 		if ( $ticket->frontend_link && get_post_status( $post_id ) == 'publish' ) {
 			$controls[] = sprintf( "<span><a href='%s'>" . esc_html__( 'View', 'event-tickets' ) . '</a></span>', esc_url( $ticket->frontend_link ) );
@@ -46,6 +56,15 @@
 			if ( $report ) {
 				$controls[] = $report;
 			}
+
+			$move_type_url = add_query_arg( array(
+				'dialog'         => Tribe__Tickets__Main::instance()->move_ticket_types()->dialog_name(),
+				'ticket_type_id' => $ticket->ID,
+				'check'          => wp_create_nonce( 'move_tickets' ),
+				'TB_iframe'      => 'true',
+			) );
+
+			$controls[] = sprintf( '<a href="%1$s" class="thickbox">' . __( 'Move', 'event-tickets' ) . '</a>', $move_type_url );
 		}
 
 		if ( ( $ticket->provider_class !== $provider ) || $count == 0 ) :
@@ -76,7 +95,7 @@
 				</h4>
 			</td>
 		<?php endif; ?>
-		<tr>
+		<tr data-ticket-type-id="<?php echo esc_attr( $ticket->ID ); ?>">
 			<td>
 				<p class="ticket_name">
 					<?php
@@ -102,9 +121,6 @@
 
 			<td nowrap="nowrap">
 				<?php echo tribe_tickets_get_ticket_stock_message( $ticket ); ?>
-			</td>
-			<td width="40%" valign="top">
-				<?php echo esc_html( $ticket->description ); ?>
 			</td>
 		</tr>
 		<?php

@@ -10,6 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Tribe__Events__API' ) ) {
 	class Tribe__Events__API {
+		public static $modified_field_key = '_tribe_modified_fields';
+
 		public static $valid_venue_keys = array(
 			'Venue',
 			'Address',
@@ -34,37 +36,38 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 		 *
 		 * @param array $args The post args.
 		 *
-		 * @return int The created event ID.
+		 * @return int|WP_Error The created event ID or a WP_Error object if it fails.
 		 */
 		public static function createEvent( $args ) {
 
 			$args['post_type'] = Tribe__Events__Main::POSTTYPE;
-			$eventId           = wp_insert_post( $args, true );
+			$event_id          = wp_insert_post( $args, true );
 
-			if ( ! is_wp_error( $eventId ) ) {
-				self::saveEventMeta( $eventId, $args, get_post( $eventId ) );
-
-				return $eventId;
+			if ( ! is_wp_error( $event_id ) ) {
+				self::saveEventMeta( $event_id, $args, get_post( $event_id ) );
 			}
+
+			return $event_id;
 		}
 
 		/**
 		 * Update an existing event
 		 *
-		 * @param int   $eventId The event ID to update.
+		 * @param int   $event_id The event ID to update.
 		 * @param array $args    The post args.
 		 *
 		 * @return false|int The event ID.
 		 */
-		public static function updateEvent( $eventId, $args ) {
-			$args['ID'] = $eventId;
+		public static function updateEvent( $event_id, $args ) {
+			$post = get_post( $event_id );
+			$args['ID'] = $event_id;
 			$args['post_type'] = Tribe__Events__Main::POSTTYPE;
 
 			if ( wp_update_post( $args ) ) {
-				self::saveEventMeta( $eventId, $args, get_post( $eventId ) );
+				self::saveEventMeta( $event_id, $args, $post );
 			}
 
-			return $eventId;
+			return $event_id;
 		}
 
 		/**
@@ -92,12 +95,22 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 
 			$data = self::prepare_event_date_meta( $event_id, $data );
 
-			if ( empty( $data['EventHideFromUpcoming'] ) ) {
-				delete_post_meta( $event_id, '_EventHideFromUpcoming' );
+			$now = current_time( 'timestamp' );
+
+			$post_meta = self::get_and_flatten_event_meta( $event_id );
+
+			if ( empty( $post_meta[ self::$modified_field_key ] ) ) {
+				$modified = array();
+			} else {
+				$modified = $post_meta[ self::$modified_field_key ];
 			}
 
-			update_post_meta( $event_id, '_EventShowMapLink', isset( $data['venue']['EventShowMapLink'] ) );
-			update_post_meta( $event_id, '_EventShowMap', isset( $data['venue']['EventShowMap'] ) );
+			if ( empty( $data['EventHideFromUpcoming'] ) ) {
+				delete_metadata( 'post', $event_id, '_EventHideFromUpcoming' );
+			}
+
+			update_metadata( 'post', $event_id, '_EventShowMapLink', isset( $data['venue']['EventShowMapLink'] ) );
+			update_metadata( 'post', $event_id, '_EventShowMap', isset( $data['venue']['EventShowMap'] ) );
 
 			if ( isset( $data['post_status'] ) ) {
 				$post_status = $data['post_status'];
@@ -105,28 +118,8 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 				$post_status = get_post_status( $event_id );
 			}
 
-			if ( isset( $data['Organizer'] ) ) {
-				if ( ! isset( $data['Organizer'][0] ) || ! is_array( $data['Organizer'][0] ) ) {
-					// convert old-style single organizer into an array of organizers
-					$data['Organizer'] = array( $data['Organizer'] );
-				}
-				foreach ( $data['Organizer'] as $organizer ) {
-					if ( ! empty( $organizer['OrganizerID'] ) ) {
-						$organizer_post_status = get_post_status( $organizer['OrganizerID'] );
-					} else {
-						$organizer_post_status = $post_status;
-					}
-					$data['EventOrganizerID'][] = self::saveEventOrganizer( $organizer, $event, $organizer_post_status );
-				}
-			}
-			if ( isset( $data['Venue'] ) ) {
-				if ( ! empty( $data['Venue']['VenueID'] ) ) {
-					$venue_post_status = get_post( $data['Venue']['VenueID'] )->post_status;
-				} else {
-					$venue_post_status = $post_status;
-				}
-				$data['EventVenueID'] = self::saveEventVenue( $data['Venue'], $event, $venue_post_status );
-			}
+			// Handle the submission of linked post type posts (like venue and organizer)
+			Tribe__Events__Linked_Posts::instance()->handle_submission( $event_id, $data );
 
 			// Ordinarily there is a single cost value for each event, but addons (ie, ticketing plugins) may need
 			// to record a number of different pricepoints for the same event
@@ -134,8 +127,12 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 			$data['EventCost'] = (array) apply_filters( 'tribe_events_event_costs', $event_cost, $event_id );
 
 			if ( isset( $data['FeaturedImage'] ) && ! empty( $data['FeaturedImage'] ) ) {
-				update_post_meta( $event_id, '_thumbnail_id', $data['FeaturedImage'] );
+				update_metadata( 'post', $event_id, '_thumbnail_id', $data['FeaturedImage'] );
 				unset( $data['FeaturedImage'] );
+			}
+
+			if ( isset( $data['EventAllDay'] ) && 'yes' === $data['EventAllDay'] ) {
+				$data['EventDuration'] = null;
 			}
 
 			do_action( 'tribe_events_event_save', $event_id );
@@ -149,14 +146,18 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 					}
 					// Fields with multiple values per key
 					if ( is_array( $data[ $htmlElement ] ) ) {
-						delete_post_meta( $event_id, $tag );
+						delete_metadata( 'post', $event_id, $tag );
 						foreach ( $data[ $htmlElement ] as $value ) {
-							add_post_meta( $event_id, $tag, $value );
+							add_metadata( 'post', $event_id, $tag, $value );
 						}
 					}
 					// Fields with a single value per key
 					else {
-						update_post_meta( $event_id, $tag, $data[ $htmlElement ] );
+						update_metadata( 'post', $event_id, $tag, $data[ $htmlElement ] );
+					}
+
+					if ( self::is_meta_value_changed( $tag, $data, $post_meta ) ) {
+						$modified[ $tag ] = $now;
 					}
 				}
 			}
@@ -178,7 +179,97 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 				}
 			}
 
+			$fields_to_check_for_changes = array(
+				'_EventShowInCalendar',
+				'_thumbnail_id',
+			);
+
+			foreach ( $fields_to_check_for_changes as $field ) {
+				if ( ! self::is_meta_value_changed( $field, $data, $post_meta ) ) {
+					continue;
+				}
+
+				$modified[ $field ] = $now;
+			}
+
+			if ( $modified ) {
+				update_post_meta( $event_id, self::$modified_field_key, $modified );
+			}
+
 			do_action( 'tribe_events_update_meta', $event_id, $data );
+		}
+
+		/**
+		 * Determines if a meta value has been changed
+		 *
+		 * @param string $field Field to compare against
+		 * @param array $new New data
+		 * @param array $old Old post data
+		 *
+		 * @return boolean
+		 */
+		public static function is_meta_value_changed( $field, $new, $old ) {
+			if ( 0 === strpos( $field, '_' ) ) {
+				$field = ltrim( $field, '_' );
+			}
+
+			$prefixed_field = "_{$field}";
+
+			if ( isset( $new[ $field ] ) && ! isset( $old[ $prefixed_field ] ) && ! empty( $new[ $field ] ) ) {
+				return true;
+			}
+
+			if ( ! isset( $new[ $field ] ) && isset( $old[ $prefixed_field ] ) ) {
+				return true;
+			} elseif ( ! isset( $new[ $field ] ) ) {
+				// if the new field isn't set and the old field isn't set, there's no change
+				return false;
+			}
+
+			$data_value = $new[ $field ];
+
+			if ( is_array( $data_value ) && ! count( $data_value ) ) {
+				$data_value = null;
+			}
+
+			if ( ! isset( $old[ $prefixed_field ] ) || $data_value !== $old[ $prefixed_field ] ) {
+				return true;
+			}
+
+			return false;
+		}
+
+		/**
+		 * Determines if a post value has been changed
+		 *
+		 * @param string $field Field to compare against
+		 * @param array $new New data
+		 * @param array $old WP_Post pre-update
+		 *
+		 * @return boolean
+		 */
+		public static function is_post_value_changed( $field, $new, $old ) {
+			if ( ! is_object( $new ) ) {
+				$new = (object) $new;
+			}
+
+			if ( ! is_object( $old ) ) {
+				$old = (object) $old;
+			}
+
+			if ( ! isset( $new->$field ) ) {
+				return false;
+			}
+
+			if ( isset( $new->$field ) && ! isset( $old->$field ) ) {
+				return true;
+			}
+
+			if ( $new->$field !== $old->$field ) {
+				return true;
+			}
+
+			return false;
 		}
 
 		/**
@@ -303,18 +394,8 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 		 * @return mixed
 		 */
 		private static function saveEventOrganizer( $data, $post = null, $post_status = 'publish' ) {
-			if ( isset( $data['OrganizerID'] ) && $data['OrganizerID'] > 0 ) {
-				if ( count( $data ) == 1 ) {
-					// Only an ID was passed and we should do nothing.
-					return $data['OrganizerID'];
-				} else {
-					self::updateOrganizer( $data['OrganizerID'], $data );
-
-					return $data['OrganizerID'];
-				}
-			} else {
-				return self::createOrganizer( $data, $post_status );
-			}
+			$organzier_id = ! empty( $data['OrganizerID'] ) ? $data['OrganizerID'] : null;
+			return Tribe__Events__Organizer::instance()->save( $organizer_id, $data, Tribe__Events__Organizer::POSTTYPE, $post_status );
 		}
 
 		/**
@@ -327,26 +408,9 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 		 * @return mixed.
 		 */
 		private static function saveEventVenue( $data, $post = null, $post_status = 'publish' ) {
-			if ( isset( $data['VenueID'] ) && $data['VenueID'] > 0 ) {
-				if ( count( $data ) == 1 ) {
-					// Only an ID was passed and we should do nothing.
-					return $data['VenueID'];
-				} else {
-					$show_map            = get_post_meta( $data['VenueID'], '_VenueShowMap', true );
-					$show_map_link       = get_post_meta( $data['VenueID'], '_VenueShowMapLink', true );
-					$data['ShowMap']     = $show_map ? $show_map : 'false';
-					$data['ShowMapLink'] = $show_map_link ? $show_map_link : 'false';
-					self::updateVenue( $data['VenueID'], $data );
+			$venue_id = ! empty( $data['VenueID'] ) ? $data['VenueID'] : null;
 
-					return $data['VenueID'];
-				}
-			} else {
-				// Remove a zero-value venue ID, if set, before creating the new venue
-				if ( isset( $data['VenueID'] ) && 0 == $data['VenueID'] ) {
-					unset( $data['VenueID'] );
-				}
-				return self::createVenue( $data, $post_status );
-			}
+			return Tribe__Events__Venue::instance()->save( $venue_id, $data, Tribe__Events__Venue::POSTTYPE, $post_status );
 		}
 
 		/**
@@ -358,32 +422,7 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 		 * @return mixed
 		 */
 		public static function createOrganizer( $data, $post_status = 'publish' ) {
-			if ( ( isset( $data['Organizer'] ) && $data['Organizer'] ) || self::someOrganizerDataSet( $data ) ) {
-
-				$organizer_label = tribe_get_organizer_label_singular();
-
-				$title = $data['Organizer'] ? $data['Organizer'] : sprintf( __( 'Unnamed %s', 'the-events-calendar' ), ucfirst( $organizer_label ) );
-				$slug  = sanitize_title( $title );
-
-				$postdata = array(
-					'post_title'  => $title,
-					'post_name'   => $slug,
-					'post_type'   => Tribe__Events__Main::ORGANIZER_POST_TYPE,
-					'post_status' => $post_status,
-				);
-
-				$organizerId = wp_insert_post( $postdata, true );
-
-				if ( ! is_wp_error( $organizerId ) ) {
-					self::saveOrganizerMeta( $organizerId, $data );
-					do_action( 'tribe_events_organizer_created', $organizerId, $data );
-
-					return $organizerId;
-				}
-			} else {
-				// if the venue is blank, let's save the value as 0 instead
-				return 0;
-			}
+			return Tribe__Events__Organizer::instance()->create( $data, $post_status );
 		}
 
 		/**
@@ -394,54 +433,40 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 		 * @return bool If there is ANY organizer data set, return true.
 		 */
 		private static function someOrganizerDataSet( $data ) {
-			foreach ( self::$valid_organizer_keys as $key ) {
-				if ( isset( $data[ $key ] ) && $data[ $key ] ) {
-					return true;
-				}
-			}
-
-			return false;
+			return Tribe__Events__Organizer::instance()->has_organizer_data( $data );
 		}
 
 		/**
 		 * Deletes an organizer
 		 *
-		 * @param int  $organizerId  The organizer ID to delete.
+		 * @param int  $organizer_id  The organizer ID to delete.
 		 * @param bool $force_delete Same as WP param.
 		 *
 		 */
-		public static function deleteOrganizer( $organizerId, $force_delete = false ) {
-			wp_delete_post( $organizerId, $force_delete );
+		public static function deleteOrganizer( $organizer_id, $force_delete = false ) {
+			return Tribe__Events__Organizer::instance()->delete( $organizer_id, $force_delete );
 		}
 
 		/**
 		 * Updates an organizer
 		 *
-		 * @param int   $organizerId The organizer ID to update.
+		 * @param int   $organizer_id The organizer ID to update.
 		 * @param array $data        The organizer data.
 		 *
 		 */
-		public static function updateOrganizer( $organizerId, $data ) {
-			self::saveOrganizerMeta( $organizerId, $data );
-			do_action( 'tribe_events_organizer_updated', $organizerId, $data );
+		public static function updateOrganizer( $organizer_id, $data ) {
+			return Tribe__Events__Organizer::instance()->update( $organizer_id, $data );
 		}
 
 		/**
 		 * Saves organizer meta
 		 *
-		 * @param int   $organizerId The organizer ID.
+		 * @param int   $organizer_id The organizer ID.
 		 * @param array $data        The organizer data.
 		 *
 		 */
-		private static function saveOrganizerMeta( $organizerId, $data ) {
-			if ( isset( $data['FeaturedImage'] ) && ! empty( $data['FeaturedImage'] ) ) {
-				update_post_meta( $organizerId, '_thumbnail_id', $data['FeaturedImage'] );
-				unset( $data['FeaturedImage'] );
-			}
-
-			foreach ( $data as $key => $var ) {
-				update_post_meta( $organizerId, '_Organizer' . $key, $var );
-			}
+		private static function saveOrganizerMeta( $organizer_id, $data ) {
+			return Tribe__Events__Organizer::instance()->save_meta( $organizer_id, $data );
 		}
 
 		/**
@@ -453,34 +478,7 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 		 * @return mixed
 		 */
 		public static function createVenue( $data, $post_status = 'publish' ) {
-
-			if ( ( isset( $data['Venue'] ) && $data['Venue'] ) || self::someVenueDataSet( $data ) ) {
-				$title = $data['Venue'] ? $data['Venue'] : esc_html__( 'Unnamed Venue', 'the-events-calendar' );
-				$slug  = sanitize_title( $title );
-
-				$postdata = array(
-					'post_title'  => $title,
-					'post_name'   => $slug,
-					'post_type'   => Tribe__Events__Main::VENUE_POST_TYPE,
-					'post_status' => $post_status,
-				);
-
-				$venueId = wp_insert_post( $postdata, true );
-
-				// By default, the show map and show map link options should be on
-				$data['ShowMap'] = isset( $data['ShowMap'] ) ? $data['ShowMap'] : 'true';
-				$data['ShowMapLink'] = isset( $data['ShowMapLink'] ) ? $data['ShowMapLink'] : 'true';
-
-				if ( ! is_wp_error( $venueId ) ) {
-					self::saveVenueMeta( $venueId, $data );
-					do_action( 'tribe_events_venue_created', $venueId, $data );
-
-					return $venueId;
-				}
-			} else {
-				// if the venue is blank, let's save the value as 0 instead
-				return 0;
-			}
+			return Tribe__Events__Venue::instance()->create( $data, $post_status );
 		}
 
 		/**
@@ -491,77 +489,61 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 		 * @return bool If there is ANY venue data set, return true.
 		 */
 		private static function someVenueDataSet( $data ) {
-			foreach ( self::$valid_venue_keys as $key ) {
-				if ( isset( $data[ $key ] ) && $data[ $key ] ) {
-					return true;
-				}
-			}
-
-			return false;
+			return Tribe__Events__Venue::instance()->has_venue_data( $data );
 		}
 
 		/**
 		 * Updates an venue
 		 *
-		 * @param int   $venueId The venue ID to update.
+		 * @param int   $venue_id The venue ID to update.
 		 * @param array $data    The venue data.
 		 *
 		 */
 		public static function updateVenue( $venue_id, $data ) {
-			$data['ShowMap']     = isset( $data['ShowMap'] ) ? $data['ShowMap'] : 'false';
-			$data['ShowMapLink'] = isset( $data['ShowMapLink'] ) ? $data['ShowMapLink'] : 'false';
-
-			self::saveVenueMeta( $venue_id, $data );
-			do_action( 'tribe_events_venue_updated', $venue_id, $data );
+			return Tribe__Events__Venue::instance()->update( $venue_id, $data );
 		}
 
 		/**
 		 * Deletes a venue
 		 *
-		 * @param int  $venueId      The venue ID to delete.
+		 * @param int  $venue_id      The venue ID to delete.
 		 * @param bool $force_delete Same as WP param.
 		 *
 		 */
-		public static function deleteVenue( $venueId, $force_delete = false ) {
-			wp_delete_post( $venueId, $force_delete );
+		public static function deleteVenue( $venue_id, $force_delete = false ) {
+			return Tribe__Events__Venue::instance()->delete( $venue_id, $force_delete );
 		}
 
 		/**
 		 * Saves venue meta
 		 *
-		 * @param int   $venueId The venue ID.
+		 * @param int   $venue_id The venue ID.
 		 * @param array $data    The venue data.
 		 *
 		 */
-		private static function saveVenueMeta( $venueId, $data ) {
-			// TODO: We should probably do away with 'StateProvince' and stick to 'State' and 'Province'.
-			if ( ! isset( $data['StateProvince'] ) || $data['StateProvince'] == '' ) {
-				if ( isset( $data['State'] ) && $data['State'] != '' &&
-					 ( empty( $data['Country'] ) || $data['Country'] == 'US' || $data['Country'] == esc_html__( 'United States', 'the-events-calendar' ) )
-				) {
-					$data['StateProvince'] = $data['State'];
+		private static function saveVenueMeta( $venue_id, $data ) {
+			return Tribe__Events__Venue::instance()->save_meta( $venue_id, $data );
+		}
+
+		/**
+		 * Gets all post meta and flattens it out a bit
+		 *
+		 * @param int $event_id Post ID for event
+		 *
+		 * @return array
+		 */
+		public static function get_and_flatten_event_meta( $event_id ) {
+			$temp_post_meta = get_post_meta( $event_id );
+			$post_meta = array();
+			foreach ( (array) $temp_post_meta as $key => $value ) {
+				if ( 1 === count( $value ) ) {
+					$post_meta[ $key ] = maybe_unserialize( reset( $value ) );
 				} else {
-					if ( isset( $data['Province'] ) && $data['Province'] != '' ) {
-						$data['StateProvince'] = $data['Province'];
-					} else {
-						$data['StateProvince'] = '';
-					}
+					$post_meta[ $key ] = maybe_unserialize( $value );
 				}
 			}
 
-			update_post_meta( $venueId, '_EventShowMapLink', isset( $data['EventShowMapLink'] ) );
-			update_post_meta( $venueId, '_EventShowMap', isset( $data['EventShowMap'] ) );
-			unset( $data['EventShowMapLink'] );
-			unset( $data['EventShowMap'] );
-
-			if ( isset( $data['FeaturedImage'] ) && ! empty( $data['FeaturedImage'] ) ) {
-				update_post_meta( $venueId, '_thumbnail_id', $data['FeaturedImage'] );
-				unset( $data['FeaturedImage'] );
-			}
-
-			foreach ( $data as $key => $var ) {
-				update_post_meta( $venueId, '_Venue' . $key, $var );
-			}
+			return $post_meta;
 		}
 	}
 }

@@ -134,16 +134,16 @@ if ( ! class_exists( 'Tribe__Date_Utils' ) ) {
 			$dt = array();
 
 			// Now try to match it
-			if ( preg_match( '#^' . $regex . '$#', $date, $dt ) ){
+			if ( preg_match( '#^' . $regex . '$#', $date, $dt ) ) {
 				// Remove unwanted Indexes
-				foreach ( $dt as $k => $v ){
-					if ( is_int( $k ) ){
+				foreach ( $dt as $k => $v ) {
+					if ( is_int( $k ) ) {
 						unset( $dt[ $k ] );
 					}
 				}
 
 				// We need at least Month + Day + Year to work with
-				if ( ! checkdate( $dt['month'], $dt['day'], $dt['year'] ) ){
+				if ( ! checkdate( $dt['month'], $dt['day'], $dt['year'] ) ) {
 					return false;
 				}
 			} else {
@@ -181,14 +181,15 @@ if ( ! class_exists( 'Tribe__Date_Utils' ) ) {
 		}
 
 		/**
-		 * Returns the date only.
+		 * Returns the time only.
 		 *
 		 * @param string $date The date.
 		 *
 		 * @return string The time only in DB format.
 		 */
 		public static function time_only( $date ) {
-			return date( self::DBTIMEFORMAT, strtotime( $date ) );
+			$date = is_numeric( $date ) ? $date : strtotime( $date );
+			return date( self::DBTIMEFORMAT, $date );
 		}
 
 		/**
@@ -199,7 +200,8 @@ if ( ! class_exists( 'Tribe__Date_Utils' ) ) {
 		 * @return string The hour only.
 		 */
 		public static function hour_only( $date ) {
-			return date( self::HOURFORMAT, strtotime( $date ) );
+			$date = is_numeric( $date ) ? $date : strtotime( $date );
+			return date( self::HOURFORMAT, $date );
 		}
 
 		/**
@@ -210,7 +212,8 @@ if ( ! class_exists( 'Tribe__Date_Utils' ) ) {
 		 * @return string The minute only.
 		 */
 		public static function minutes_only( $date ) {
-			return date( self::MINUTEFORMAT, strtotime( $date ) );
+			$date = is_numeric( $date ) ? $date : strtotime( $date );
+			return date( self::MINUTEFORMAT, $date );
 		}
 
 		/**
@@ -221,7 +224,8 @@ if ( ! class_exists( 'Tribe__Date_Utils' ) ) {
 		 * @return string The meridian only in DB format.
 		 */
 		public static function meridian_only( $date ) {
-			return date( self::MERIDIANFORMAT, strtotime( $date ) );
+			$date = is_numeric( $date ) ? $date : strtotime( $date );
+			return date( self::MERIDIANFORMAT, $date );
 		}
 
 		/**
@@ -503,6 +507,50 @@ if ( ! class_exists( 'Tribe__Date_Utils' ) ) {
 
 			return $range_coincides;
 
+		}
+
+		/**
+		 * Converts a locally-formatted date to a unix timestamp. This is a drop-in
+		 * replacement for `strtotime()`, except that where strtotime assumes GMT, this
+		 * assumes local time (as described below). If a timezone is specified, this
+		 * function defers to strtotime().
+		 *
+		 * If there is a timezone_string available, the date is assumed to be in that
+		 * timezone, otherwise it simply subtracts the value of the 'gmt_offset'
+		 * option.
+		 *
+		 * @see  strtotime()
+		 * @uses get_option() to retrieve the value of 'gmt_offset'
+		 *
+		 * @param string $string A date/time string. See `strtotime` for valid formats
+		 *
+		 * @return int UNIX timestamp.
+		 */
+		public static function wp_strtotime( $string ) {
+			// If there's a timezone specified, we shouldn't convert it
+			try {
+				$test_date = new DateTime( $string );
+				if ( 'UTC' != $test_date->getTimezone()->getName() ) {
+					return strtotime( $string );
+				}
+			} catch ( Exception $e ) {
+				return strtotime( $string );
+			}
+
+			$tz = get_option( 'timezone_string' );
+			if ( ! empty( $tz ) ) {
+				$date = date_create( $string, new DateTimeZone( $tz ) );
+				if ( ! $date ) {
+					return strtotime( $string );
+				}
+				$date->setTimezone( new DateTimeZone( 'UTC' ) );
+				return $date->format( 'U' );
+			} else {
+				$offset = (float) get_option( 'gmt_offset' );
+				$seconds = intval( $offset * HOUR_IN_SECONDS );
+				$timestamp = strtotime( $string ) - $seconds;
+				return $timestamp;
+			}
 		}
 
 		// DEPRECATED METHODS

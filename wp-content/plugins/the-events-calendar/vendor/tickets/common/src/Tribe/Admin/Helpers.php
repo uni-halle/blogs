@@ -55,7 +55,7 @@ class Tribe__Admin__Helpers {
 
 		$defaults = apply_filters( 'tribe_is_post_type_screen_post_types', Tribe__Main::get_post_types() );
 
-		// Match any Post Type form Tribe
+		// Match any Post Type from Tribe
 		if ( is_null( $post_type ) && in_array( $current_screen->post_type, $defaults ) ) {
 			return true;
 		}
@@ -103,13 +103,6 @@ class Tribe__Admin__Helpers {
 			return true;
 		}
 
-		// Match any post type page in the supported post types
-		$defaults = apply_filters( 'tribe_is_post_type_screen_post_types', Tribe__Main::get_post_types() );
-
-		if ( in_array( $current_screen->post_type, $defaults ) ) {
-			return true;
-		}
-
 		// Match any of the pages set
 		if ( ! is_scalar( $id ) && in_array( $current_screen->id, (array) $id ) ) {
 			return true;
@@ -118,6 +111,12 @@ class Tribe__Admin__Helpers {
 		// Match a specific page
 		if ( $current_screen->id === $id ) {
 			return true;
+		}
+
+		// Match any post type page in the supported post types
+		$defaults = apply_filters( 'tribe_is_post_type_screen_post_types', Tribe__Main::get_post_types() );
+		if ( ! in_array( $current_screen->post_type, $defaults ) ) {
+			return false;
 		}
 
 		return false;

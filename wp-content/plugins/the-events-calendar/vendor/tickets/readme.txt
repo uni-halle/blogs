@@ -1,10 +1,10 @@
 === Event Tickets ===
 
-Contributors: ModernTribe, borkweb, zbtirrell, barry.hughes, bordoni, brianjessee, brook-tribe, faction23, geoffgraham, ggwicz, jazbek, jbrinley, joshlimecuda, leahkoerper, lucatume, mastromktg, neillmcshea, nicosantos, peterchester, reid.peifer, roblagatta, shane.pearlman, thatdudebutch
+Contributors: ModernTribe, borkweb, zbtirrell, barry.hughes, bordoni, brianjessee, brook-tribe, faction23, geoffgraham, ggwicz, jazbek, jbrinley, joshlimecuda, leahkoerper, lucatume, mastromktg, neillmcshea, nicosantos, peterchester, reid.peifer, roblagatta, shane.pearlman, thatdudebutch, aguseo, tribecari, trishasalas
 Tags: events, add-on, ticket sales, tickets, calendar, community, registration, api, dates, date, posts, workshop, conference, meeting, seminar, concert, summit, The Events Calendar, Events Calendar PRO, ticket integration, event ticketing, RSVP, Event Tickets, Event Tickets Plus
 Requires at least: 3.9
-Tested up to: 4.4.2
-Stable tag: 4.1.1
+Tested up to: 4.6.1
+Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,15 +48,31 @@ Just getting started? Definitely watch and read through the <a href="http://m.tr
 * Extensive Template Tags for Customization
 * Hook & Filters up the wazoo
 
-Looking for something else?
+Looking for something else? We’ve got add-ons available to take your calendar to the next level.
 
+= PRO Features =
 
-* Sell tickets, collect sales, and manage attendees all from within your WordPress dashboard! Combine our <a href="http://m.tri.be/18wg">Event Tickets Plus add-on</a> with your favorite ecommerce plugin (WooCommerce, Shopp, Easy Digital Downloads, or WP E-commerce).
-* <a href="https://wordpress.org/plugins/the-events-calendar/" target="_blank">The Events Calendar</a> is the most popular calendar solution for WordPress.  Team it up with Event Tickets and see the real magic happen.
-* <a href="http://m.tri.be/2c">Events Calendar PRO</a>: recurring events, a whole range of new views ( week / map / photo / venue / organizer) & widgets (calendar / featured venue / week / event countdown), custom event attributes, default content, location search and a lot more.
-* Have so many amazing events that your users get overwhelmed? Drop some filters on them with the <a href="http://m.tri.be/52" target="_blank">Filter Bar plugin</a>.
-* Get your community involved by letting them submit events with our <a href="http://m.tri.be/18uu" target="_blank">Community Events</a> plugin.  Take it to the next level by letting them sell tickets with the <a href="http://m.tri.be/18uy" target="_blank">Community Tickets</a> add-on!
-<a href="https://www.facebook.com/theeventscalendar/" target="_blank">Join us on Facebook</a> to be part of our active community, check us out <a href="https://twitter.com/TheEventsCal" target="_blank">on Twitter</a>, and <a href="http://m.tri.be/rm">sign up for our newsletter</a> for release announcements and discounts.
+Add recurring events, a whole recurring events, a whole range of new views ( week / map / photo / venue / organizer) & widgets (calendar / featured venue / week / event countdown), custom event attributes, default content, location search, much more with <a href="http://m.tri.be/2c">Events Calendar PRO</a>
+
+= Event Ticketing =
+
+Collect free RSVPs with Event Tickets or add paid ticketing features with <a href="http://m.tri.be/18wg">Event Tickets Plus</a>, including the ability to sell tickets, collect sales, and manage attendees all from within your WordPress dashboard!  Works with your favorite eCommerce plugin (WooCommerce, Shopp, Easy Digital Downloads, or WP E-Commerce).
+
+= Bulk Event Import =
+
+Fill your calendar with events from your favorite sources, including Facebook, Meetup, Google Calendar, iCalendar, CSV, and ICS. Event Aggregator provides a convenient dashboard to manage scheduled imports, manual imports, filters, one-way sync, import history, and more.
+
+= User-Submitted Events =
+
+Running a community calendar? <a href="http://m.tri.be/2g">Community Events</a> lets users add events directly to your calendar without needing access to your admin.
+
+= Advanced User Search & Filters =
+
+Have so many amazing events that your users get overwhelmed? <a href="http://m.tri.be/52" target="_blank">Filter Bar</a> adds a configurable set of filters to your event pages so users can view and search for the exact events that interest them.
+
+= Integrate With Eventbrite =
+
+Connect your calendar with your Eventbrite.com account! <a href="http://m.tri.be/18wf">Eventbrite Tickets</a> allows you to import/export between The Events Calendar and Eventbrite, and incorporate ticket sales.
 
 = SUBMITTING PATCHES =
 
@@ -78,6 +94,15 @@ If you’ve identified a bug and want to submit a patch, we’d welcome it at ou
 * jQuery 1.11.x
 * Event Tickets 4.0 or above
 * The Events Calendar 4.0 or above (optional)
+
+== Screenshots ==
+
+1. RSVP setup
+2. RSVPs on an event
+3. RSVP on a post
+4. Attendee report
+5. Emailed ticket
+
 
 == Documentation ==
 
@@ -132,6 +157,9 @@ The plugin is produced by <a href="http://m.tri.be/18uc">Modern Tribe Inc</a>.
 * <a href="http://profiles.wordpress.org/users/shane.pearlman">Shane Pearlman</a>
 * <a href="http://profiles.wordpress.org/users/thatdudebutch">Wayne Stratton</a>
 * <a href="http://profiles.wordpress.org/users/zbtirrell">Zachary Tirrell</a>
+* <a href="https://profiles.wordpress.org/aguseo">Andras Guseo</a>
+* <a href="https://profiles.wordpress.org/tribecari">Caroline Tucker</a>
+* <a href="https://profiles.wordpress.org/trishasalas">Trisha Salas</a>
 
 = Past Contributors =
 
@@ -142,7 +170,7 @@ The plugin is produced by <a href="http://m.tri.be/18uc">Modern Tribe Inc</a>.
 * <a href="http://profiles.wordpress.org/users/jkudish">Joachim Kudish</a>
 * <a href="http://profiles.wordpress.org/users/jgadbois">John Gadbois</a>
 * <a href="http://profiles.wordpress.org/users/jonahcoyote">Jonah West</a>
-* <a href=“https://profiles.wordpress.org/justinendler/“>Justin Endler</a>
+* <a href="https://profiles.wordpress.org/justinendler/">Justin Endler</a>
 * <a href="http://profiles.wordpress.org/users/kellykathryn">Kelly Groves</a>
 * <a href="http://profiles.wordpress.org/users/kelseydamas">Kelsey Damas</a>
 * <a href="http://profiles.wordpress.org/users/kyleunzicker">Kyle Unzicker</a>
@@ -153,7 +181,7 @@ The plugin is produced by <a href="http://m.tri.be/18uc">Modern Tribe Inc</a>.
 
 = Translations =
 
-We don’t have any translations for this plugin yet, but you can help us! You can contribute at http://translations.theeventscalendar.com
+Event Tickets is translated by volunteers at https://translate.wordpress.org/projects/wp-plugins/event-tickets/stable. There you can find a list of available languages, download translation files, or help update the translations. Thank you to everyone who helps to maintain our translations!
 
 == Add-Ons ==
 
@@ -179,12 +207,100 @@ Our Premium Plugins:
 
 == Changelog ==
 
+= [4.3] 2016-10-13 =
+
+* Feature - Add ticket management facilities allowing reassignment to different posts [61724]
+* Tweak - Changed "Event Add-Ons" to load faster [64286]
+* Tweak - Reworked and reorganized the attendee list screen [61992]
+* Tweak - Added tribe_tickets_rsvp_before_order_processing and tribe_tickets_rsvp_before_attendee_ticket_creation actions (props to @sabitertan on GitHub for this!) [65836]
+* Fix - Cease using GLOB_BRACE for including deprecated files due to limited server support [63172]
+* Fix - Made some untranslatable strings translatable (big thanks to @Petr from the support forums on this!) [62458]
+* Deprecated - The `process_bulk_actions()` method has been deprecated in `Tribe__Tickets__Attendees_Table` in favor of `process_actions()` in the same class
+
+= [4.2.7] 2016-09-15 =
+
+* Fix - Stop logic for dealing with recurring events from impacting other post types (Originally reported by @Ryan on the support forums. Thanks!)
+* Tweak - Share "tickets unavailable" messaging across ticketing providers to prevent unnecessary duplication
+* Tweak - Additional support for plugin extensions
+
+= [4.2.6] 2016-08-31 =
+
+* Add - Utilize new tribe_is_event_past() conditional to display better messaging when tickets are not available (Thank you to @Jonathan here for reporting this in the forums.)
+
+= [4.2.5] 2016-08-17 =
+
+* Fix - Garbled site title in RSVP confirmation email
+
+= [4.2.4] 2016-08-03 =
+
+* Tweak - Changed "Event Add-Ons" to load faster
+
+= [4.2.3] 2016-07-20 =
+
+* Tweak - Add prompt for ratings on admin Event screens
+* Fix - Provide fallback page if App Shop API fails to load
+* Fix - Events related links should appear under the Events menu (Thanks @Abby for the original report of this on our support forums)
+
+= [4.2.2] 2016-07-06 =
+
+* Fix - Send an email acknowledgement, rather than a set of tickets, when a user confirms they will not attend an event (RSVPs)
+* Tweak - Add a period to the ticket header image setting
+* Fix - Removed the ticket description in the admin area to allow for more room for tickets sold notes
+* Fix - Displays the name of the ticket for each attendee on the order confirmation page
+* Fix - Fixed issue where front-end attendees table check-in state would not show the correct value
+
+= [4.2.1.1] 2016-06-28 =
+
+* Fix - Ensure translations load as expected with all supported versions of WordPress (thanks to @JacobALund for originally reporting this on .org forums)
+
+= [4.2.1] 2016-06-22 =
+
+* Tweak - Create a readable ID on CSV and email exports when they're available
+* Fix - Display all visible columns in attendees CSV and email export reports
+* Fix - Correct how attendee meta meta is handled on all pages
+* Fix - Remove notices in the attendees export by CSV and email when Community Tickets is activated
+
+= [4.2] 2016-06-08 =
+
+* Feature - Add a shortcode listing those upcoming events the user has indicated they will attend
+* Feature - Make it possible to disable the ticket form for logged out users
+* Feature - Added RSVP and WooCommerce tickets import via .csv file (Thank you Quakely for submitting this idea on UserVoice!)
+* Feature - Authenticated Attendees can control their RSVP on Events
+* Tweak - Language files in the `wp-content/languages/plugins` path will be loaded before attempting to load internal language files (Thank you to user @aafhhl for bringing this to our attention!)
+* Tweak - Add messaging on the RSVP form when tickets are not yet or are no longer on sale (Props to @masteradhoc on GitHub for this change!)
+* Tweak - Improved our JSON-LD output to include tickets (Big thanks to Lars for reporting this!)
+* Tweak - Record the user ID associated with the creation of new attendee records
+* Tweak - Fixed translation domain on a few strings (Thank you @TEME for reporting the issue!)
+* Tweak - Move plugin CSS to PostCSS
+* Tweak - Fix padding/spacing for RSVP form on single event page in Twenty Fifteen
+* Tweak - Updated plugin description on admin plugin page
+* Tweak - Move plugin CSS to PostCSS
+* Fix - Target specific input fields when check for remaining tickets to help with theme compatibility issues such as Avada (Thanks to Michael C!)
+* Fix - Corrects capabilities test in relation to editing tickets (Props to @bokorir!)
+* Fix - Loads thickbox for email modal in attendees list
+
+= [4.1.4] 2016-05-19 =
+
+* Fix - Improve email attendees integration with Community Events Tickets
+* Fix - Remove unneeded plugin settings when Event Tickets is operating without The Events Calendar
+* Tweak - Setting to opt out of the frontend attendee list now automatically hidden if the attendee list is also hidden
+* Tweak - Make the visibility of the delete ticket link filterable
+
+= [4.1.3] 2016-04-28 =
+
+* Tweak - Added back the purchaser name and email address to the attendee reports for all tickets. We had inadvertently removed those in a previous release. #facepalm [45082]
+* Tweak - Fixed an error where tickets on custom post types would not save or display on the front end. That was annoying to anyone trying to create RSVPs or tickets on anything other than a default page or post.
+
+= [4.1.2] 2016-04-11 =
+
+* Fix - Removed a notice on attendees list when a non-existent email method is on a hook
+
 = [4.1.1] 2016-03-30 =
 
 * Tweak - Add filters for generated attendee and order data; tribe_tickets_attendee_data and tribe_tickets_order_data, respectively
 * Tweak - Relocated the generation of tickets to the template_redirect action because init was too early for proper permalink fetching
-* Fix - Resolved issue where purchasing tickets was impossible if ticket stock was set to unlimited
-* Fix - Fixed issue where the customer name and customer email address had been removed from the attendee export CSV
+* Fix - Resolved issue where purchasing tickets was impossible if ticket stock was set to unlimited (thanks to James for reporting this one)
+* Fix - Fixed issue where the customer name and customer email address had been removed from the attendee export CSV (nice find here by Joe in our forums)
 
 = [4.1] 2016-03-15 =
 

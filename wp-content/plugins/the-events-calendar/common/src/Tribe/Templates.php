@@ -43,11 +43,11 @@ class Tribe__Templates {
 			return $fallback;
 		}
 		foreach ( $stylesheets as $filename ) {
-			if ( file_exists( STYLESHEETPATH . '/' . $filename ) ) {
+			if ( file_exists( get_stylesheet_directory() . '/' . $filename ) ) {
 				$located = trailingslashit( get_stylesheet_directory_uri() ) . $filename;
 				break;
 			} else {
-				if ( file_exists( TEMPLATEPATH . '/' . $filename ) ) {
+				if ( file_exists( get_template_directory() . '/' . $filename ) ) {
 					$located = trailingslashit( get_template_directory_uri() ) . $filename;
 					break;
 				}
@@ -58,6 +58,22 @@ class Tribe__Templates {
 		}
 
 		return $located;
+	}
+
+	/**
+	 * Add our own method is_embed to check by WordPress Version and function is_embed
+	 * to prevent fatal errors in WordPress 4.3 and earlier
+	 *
+	 * @version 4.2.1
+	 */
+	public static function is_embed() {
+		global $wp_version;
+		if ( version_compare( $wp_version, '4.4', '<' ) || ! function_exists( 'is_embed' ) ) {
+			return false;
+		}
+
+		return is_embed();
+
 	}
 
 }//end class
