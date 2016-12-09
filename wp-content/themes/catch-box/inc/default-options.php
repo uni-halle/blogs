@@ -232,7 +232,7 @@ function catchbox_theme_name() {
  */
 function catchbox_theme_author() {
 
-    return '<span class="theme-author"><a href="' . esc_url( 'http://catchthemes.com/' ) . '" title="' . esc_attr__( 'Catch Themes', 'catch-box' ) . '">' . __( 'Catch Themes', 'catch-box' ) . '</a></span>';
+    return '<span class="theme-author"><a href="' . esc_url( 'https://catchthemes.com/' ) . '" title="' . esc_attr__( 'Catch Themes', 'catch-box' ) . '">' . __( 'Catch Themes', 'catch-box' ) . '</a></span>';
 
 }
 

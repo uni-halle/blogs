@@ -284,7 +284,7 @@ function catchbox_customize_register( $wp_customize ) {
 			'panel' 			=> 'social_links',
 			'section' 			=> 'feed_url',
 			'default' 			=> '',
-			'active_callback'	=> 'catchbox_is_feed_url_present',
+			//'active_callback'	=> 'catchbox_is_feed_url_present',
 		),
 		'site_title_above' => array(
 			'id' 			=> 'site_title_above',
@@ -411,7 +411,7 @@ function catchbox_customize_register( $wp_customize ) {
 						        	)
 		),
 		'transition_duration' => array(
-			'id' 				=> 'transition_duration (in seconds)',
+			'id' 				=> 'transition_duration',
 			'title' 			=> __( 'Transition Length', 'catch-box' ),
 			'description'		=> '',
 			'field_type' 		=> 'number',
@@ -648,7 +648,7 @@ function catchbox_customize_register( $wp_customize ) {
 			'sanitize' 			=> 'wp_kses_stripslashes',
 			'panel' 			=> 'webmaster_tools',
 			'section' 			=> 'webmaster_tools',
-			'active_callback'	=> 'catchbox_is_header_code_present',
+			//'active_callback'	=> 'catchbox_is_header_code_present',
 			'default' 			=> ''
 		),
 		'tracker_footer' => array(
@@ -659,7 +659,7 @@ function catchbox_customize_register( $wp_customize ) {
 			'sanitize' 			=> 'wp_kses_stripslashes',
 			'panel' 			=> 'webmaster_tools',
 			'section' 			=> 'webmaster_tools',
-			'active_callback'	=> 'catchbox_is_footer_code_present',
+			//'active_callback'	=> 'catchbox_is_footer_code_present',
 			'default' 		=> ''
 		),
 	);
@@ -677,7 +677,7 @@ function catchbox_customize_register( $wp_customize ) {
 				'panel' 			=> 'theme_options',
 				'section' 			=> 'favicon',
 				'default' 			=> '',
-				'active_callback'	=> 'catchbox_is_site_icon_active',
+				//'active_callback'	=> 'catchbox_is_site_icon_active',
 			),
 			//Web Clip Icon
 			'web_clip' => array(
@@ -689,7 +689,7 @@ function catchbox_customize_register( $wp_customize ) {
 				'panel' 			=> 'theme_options',
 				'section' 			=> 'web_clip_icon_options',
 				'default' 			=> '',
-				'active_callback'	=> 'catchbox_is_site_icon_active',
+				//'active_callback'	=> 'catchbox_is_site_icon_active',
 			),
 		);
 
@@ -708,9 +708,9 @@ function catchbox_customize_register( $wp_customize ) {
 				'section'     => 'header_image',
 				'default'     => $defaults['header_image_position'],
 				'choices'     => array(
-					'above'   => __( 'Above Site Title-Logo', 'catch-box' ),
+					'above'   => __( 'Above Header Content', 'catch-box' ),
 					'between' => __( 'Between Site Title-Logo', 'catch-box' ),
-					'below'   => __( 'Below Site Title-Logo', 'catch-box' )
+					'below'   => __( 'Below Header Content', 'catch-box' )
 				)
 			)
 		);
@@ -930,7 +930,7 @@ function catchbox_customize_scripts() {
     wp_register_script( 'catchbox_customizer_custom', get_template_directory_uri() . '/inc/customizer-custom-scripts.js', array( 'jquery' ), '20140108', true );
 
     $catchbox_misc_links = array(
-                            'upgrade_link' 				=> esc_url( 'http://catchthemes.com/themes/catch-box-pro/' ),
+                            'upgrade_link' 				=> esc_url( 'https://catchthemes.com/themes/catch-box-pro/' ),
                             'upgrade_text'              => __( 'Upgrade To Pro', 'catch-box' ),
                             );
 

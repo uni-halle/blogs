@@ -11,7 +11,7 @@ License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Catch Box WordPress Theme, Copyright 2012-2016 Catchthemes.com
-Catch Box is distributed under the terms of the GNU General Public License v3 
+Catch Box is distributed under the terms of the GNU General Public License v3
 
 Catch Box is a derivative of the Twenty Eleven theme by the WordPress team:
 http://wordpress.org/themes/twentyeleven
@@ -24,16 +24,17 @@ Scripts used in the site are as below:
 	3. Slider script uses Cycle script http://jquery.malsup.com/cycle/ lincensed under MIT/GPL license
 	4. jQyery Cookie script (https://github.com/carhartl/jquery-cookie) licensed under MIT license
 	5. DD_belatedPNG script (http://www.dillerdesign.com/experiment/DD_belatedPNG/) licensed under MIT license
-	
+	6 FitVids is Licensed under the  WTFPL license (http://fitvidsjs.com/)
+
 Font Icons
 	Genericons by Automattic, Inc.
-  	Genericons is Licensed under the GPL, version 2 or later 
+  	Genericons is Licensed under the GPL, version 2 or later
 	http://genericons.com/
 
-Images used in screenshot are selfshot my CatchThemes team, licensed uner GPL3 license	
+Images used in screenshot are selfshot my CatchThemes team, licensed uner GPL3 license
 
 == Translation ==
-Catch Box theme is translation ready. 
+Catch Box theme is translation ready.
 Added Translation for Brazilian Portuguese by Valdir Trombini ( Email: valdir.trombini@gmail.com )
 Added Translation for Spanish by César Gómez ( Email: cesar@temperatio.com )
 Added Translation for Danish by Kris Thomsen ( Email: mail@kristhomsen.dk )
@@ -56,11 +57,11 @@ Added translation for Japanese by IIOKA Shinji (Email: iiokashinji@gmail.com)
 Added translation for Bosnian
 Added translation for Catalan by Rafa Gares (Email: ragafus@gmail.com)
 Added translation for Romanian by Marius Tirteu (Email: admin@mannius.ro)
-Added translation for Ukrainian by Alexandr Baryshnyev (Email: abb@eksi.net)
+Added translation for Ukrainian by Alexandr Baryshnyev (Email: abb@eksi.net) and Eksi.Net (Email: info@eksi.net)
 Added Translation for Lithuanian
 
 == Menus ===
-There are 3 Menus registered in this theme. Primary, Secondary and Footer menu. 
+There are 3 Menus registered in this theme. Primary, Secondary and Footer menu.
 Primary and Secondary menu is dull drop down menu while the Footer menu displays only parent menu and no drop down.
 Only Primary Menu is visible in responsive (mobile devices with max-width: 650px)
 

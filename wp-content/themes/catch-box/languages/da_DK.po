@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-09 16:53+0545\n"
-"PO-Revision-Date: 2016-05-09 16:53+0545\n"
+"POT-Creation-Date: 2016-09-23 13:49+0545\n"
+"PO-Revision-Date: 2016-09-23 13:49+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: Kris Thomsen <mail@kristhomsen.dk>\n"
 "Language: da_DK\n"
@@ -55,41 +55,12 @@ msgstr ""
 "Kontrollér, at du ikke har tastet URL'en forkert og tryk derefter genopfrisk-"
 "knappen i din browser eller brug søgeboksen nedenfor."
 
-#: ../archive.php:22
-#, php-format
-msgid "Daily Archives: %s"
-msgstr "Daglige arkiver: %s"
-
-#: ../archive.php:24
-#, php-format
-msgid "Monthly Archives: %s"
-msgstr "Månedlige arkiver: %s"
-
-#: ../archive.php:24
-msgctxt "monthly archives date format"
-msgid "F Y"
-msgstr "F Y"
-
-#: ../archive.php:26
-#, php-format
-msgid "Yearly Archives: %s"
-msgstr "Årlige arkiver: %s"
-
-#: ../archive.php:26
-msgctxt "yearly archives date format"
-msgid "Y"
-msgstr "Y"
-
-#: ../archive.php:28
-msgid "Blog Archives"
-msgstr "Blog-arkiver"
-
-#: ../archive.php:52 ../author.php:69 ../category.php:45 ../index.php:32
+#: ../archive.php:46 ../author.php:69 ../category.php:45 ../index.php:32
 #: ../page-blog.php:65 ../search.php:39 ../tag.php:45
 msgid "Nothing Found"
 msgstr "Intet fundet"
 
-#: ../archive.php:56 ../author.php:73 ../category.php:49 ../index.php:36
+#: ../archive.php:50 ../author.php:73 ../category.php:49 ../index.php:36
 #: ../page-blog.php:69 ../tag.php:49
 msgid ""
 "Apologies, but no results were found for the requested archive. Perhaps "
@@ -173,7 +144,7 @@ msgctxt "comments number"
 msgid "%"
 msgstr "%"
 
-#: ../content-aside.php:34 ../content.php:56 ../functions.php:348
+#: ../content-aside.php:34 ../content.php:56 ../functions.php:362
 #, php-format
 msgid "Continue reading %s"
 msgstr "Fortsæt læsning  %s"
@@ -206,8 +177,8 @@ msgstr "<b>%</b> svar"
 #: ../content-aside.php:56 ../content-featured.php:51
 #: ../content-gallery.php:94 ../content-image.php:71 ../content-link.php:48
 #: ../content-page.php:27 ../content-quote.php:76 ../content-single.php:64
-#: ../content-status.php:49 ../content.php:106 ../functions.php:519
-#: ../functions.php:547 ../image.php:97
+#: ../content-status.php:49 ../content.php:106 ../functions.php:533
+#: ../functions.php:561 ../image.php:97
 msgid "Edit"
 msgstr "Redigér"
 
@@ -283,7 +254,7 @@ msgstr ""
 "</span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" "
 "title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
 
-#: ../content-image.php:42 ../functions.php:585
+#: ../content-image.php:42 ../functions.php:599
 #, php-format
 msgid "View all posts by %s"
 msgstr "Vis alle indlæg af %s"
@@ -350,57 +321,57 @@ msgstr "Status"
 msgid "Featured"
 msgstr "Featured"
 
-#: ../functions.php:128 ../inc/catchbox-menus.php:70
+#: ../functions.php:142 ../inc/catchbox-menus.php:70
 msgid "Primary Menu"
 msgstr "Primær menu"
 
-#: ../functions.php:129 ../inc/catchbox-menus.php:98
+#: ../functions.php:143 ../inc/catchbox-menus.php:98
 #: ../inc/catchbox-menus.php:190
 msgid "Secondary Menu"
 msgstr "Sekundær menu"
 
-#: ../functions.php:130 ../inc/catchbox-menus.php:126
+#: ../functions.php:144 ../inc/catchbox-menus.php:126
 #: ../inc/catchbox-menus.php:230
 msgid "Footer Menu"
 msgstr "Sidefods-menu"
 
-#: ../functions.php:403 ../functions.php:432 ../single.php:15
+#: ../functions.php:417 ../functions.php:446 ../single.php:15
 msgid "Post navigation"
 msgstr "Indlægsnavigation"
 
-#: ../functions.php:411 ../functions.php:440
+#: ../functions.php:425 ../functions.php:454
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> Ældre indlæg"
 
-#: ../functions.php:412 ../functions.php:441
+#: ../functions.php:426 ../functions.php:455
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Nyere indlæg <span class=\"meta-nav\">&rarr;</span>"
 
-#: ../functions.php:519
+#: ../functions.php:533
 msgid "Pingback:"
 msgstr "Pingback:"
 
 #. translators: 1: comment author, 2: date and time
-#: ../functions.php:536
+#: ../functions.php:550
 #, php-format
 msgid "%1$s on %2$s <span class=\"says\">said:</span>"
 msgstr "%1$s d. %2$s <span class=\"says\">sagde:</span>"
 
 #. translators: 1: date, 2: time
-#: ../functions.php:542
+#: ../functions.php:556
 #, php-format
 msgid "%1$s at %2$s"
 msgstr "%1$s d. %2$s"
 
-#: ../functions.php:551
+#: ../functions.php:565
 msgid "Your comment is awaiting moderation."
 msgstr "Din kommentar afventer godkendelse."
 
-#: ../functions.php:560
+#: ../functions.php:574
 msgid "Reply <span>&darr;</span>"
 msgstr "Svar <span>&darr;</span>"
 
-#: ../functions.php:579
+#: ../functions.php:593
 #, php-format
 msgid ""
 "<span class=\"sep\">Posted on </span><a href=\"%1$s\" title=\"%2$s\" rel="
@@ -415,113 +386,113 @@ msgstr ""
 "class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s\" "
 "rel=\"author\">%7$s</a></span></span>"
 
-#: ../functions.php:652
+#: ../functions.php:666
 msgid "ID"
 msgstr "ID"
 
-#: ../functions.php:760
+#: ../functions.php:785
 msgid "Name"
 msgstr "Navn"
 
-#: ../functions.php:762 ../functions.php:989
+#: ../functions.php:787 ../functions.php:1014
 #: ../inc/customizer/customizer.php:613 ../inc/theme-options.php:808
 msgid "Email"
 msgstr "Email"
 
-#: ../functions.php:895
+#: ../functions.php:920
 msgid "Footer Social Links Menu"
 msgstr ""
 
-#: ../functions.php:899 ../inc/customizer/customizer.php:433
+#: ../functions.php:924 ../inc/customizer/customizer.php:433
 #: ../inc/theme-options.php:525 ../inc/theme-options.php:701
 msgid "Facebook"
 msgstr "Facebook"
 
-#: ../functions.php:904 ../inc/customizer/customizer.php:443
+#: ../functions.php:929 ../inc/customizer/customizer.php:443
 #: ../inc/theme-options.php:526 ../inc/theme-options.php:706
 msgid "Twitter"
 msgstr "Twitter"
 
-#: ../functions.php:909
+#: ../functions.php:934
 msgid "Google Plus"
 msgstr "Google Plus"
 
-#: ../functions.php:914
+#: ../functions.php:939
 msgid "Linkedin"
 msgstr "Linkedin"
 
-#: ../functions.php:919 ../inc/customizer/customizer.php:473
+#: ../functions.php:944 ../inc/customizer/customizer.php:473
 #: ../inc/theme-options.php:724
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: ../functions.php:924
+#: ../functions.php:949
 msgid "YouTube"
 msgstr "YouTube"
 
-#: ../functions.php:929 ../inc/theme-options.php:736
+#: ../functions.php:954 ../inc/theme-options.php:736
 msgid "RSS Feed"
 msgstr "RSS Feed"
 
-#: ../functions.php:934 ../inc/theme-options.php:742
+#: ../functions.php:959 ../inc/theme-options.php:742
 msgid "Deviantart"
 msgstr "Deviantart"
 
-#: ../functions.php:939 ../inc/customizer/customizer.php:513
+#: ../functions.php:964 ../inc/customizer/customizer.php:513
 #: ../inc/theme-options.php:748
 msgid "Tumblr"
 msgstr "Tumblr"
 
-#: ../functions.php:944 ../inc/customizer/customizer.php:523
+#: ../functions.php:969 ../inc/customizer/customizer.php:523
 #: ../inc/theme-options.php:754
 msgid "Vimeo"
 msgstr "Vimeo"
 
-#: ../functions.php:949 ../inc/customizer/customizer.php:533
+#: ../functions.php:974 ../inc/customizer/customizer.php:533
 #: ../inc/theme-options.php:760
 msgid "Dribbble"
 msgstr "Dribbble"
 
-#: ../functions.php:954 ../inc/customizer/customizer.php:543
+#: ../functions.php:979 ../inc/customizer/customizer.php:543
 #: ../inc/theme-options.php:766
 msgid "MySpace"
 msgstr "MySpace"
 
-#: ../functions.php:959
+#: ../functions.php:984
 msgid "AIM"
 msgstr "AIM"
 
-#: ../functions.php:964 ../inc/customizer/customizer.php:563
+#: ../functions.php:989 ../inc/customizer/customizer.php:563
 #: ../inc/theme-options.php:778
 msgid "Flickr"
 msgstr "Flickr"
 
-#: ../functions.php:969 ../inc/customizer/customizer.php:573
+#: ../functions.php:994 ../inc/customizer/customizer.php:573
 #: ../inc/theme-options.php:784
 msgid "Slideshare"
 msgstr "Slideshare"
 
-#: ../functions.php:974 ../inc/customizer/customizer.php:583
+#: ../functions.php:999 ../inc/customizer/customizer.php:583
 #: ../inc/theme-options.php:790
 msgid "Instagram"
 msgstr "Instagram"
 
-#: ../functions.php:979 ../inc/customizer/customizer.php:593
+#: ../functions.php:1004 ../inc/customizer/customizer.php:593
 #: ../inc/theme-options.php:796
 msgid "Skype"
 msgstr "Skype"
 
-#: ../functions.php:984 ../inc/customizer/customizer.php:603
+#: ../functions.php:1009 ../inc/customizer/customizer.php:603
 #: ../inc/theme-options.php:802
 msgid "Soundcloud"
 msgstr "Soundcloud"
 
-#: ../functions.php:994 ../inc/customizer/customizer.php:623
+#: ../functions.php:1019 ../inc/customizer/customizer.php:623
 #: ../inc/theme-options.php:813
 msgid "Xing"
 msgstr "Xing"
 
-#: ../functions.php:999 ../inc/customizer/customizer.php:633
+#: ../functions.php:1024 ../inc/customizer/customizer.php:633
 #: ../inc/theme-options.php:818
 msgid "Meetup"
 msgstr "Meetup"
@@ -911,16 +882,16 @@ msgstr "Web Clip Icon"
 msgid "Header Image Location"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:711
-msgid "Above Site Title-Logo"
+#: ../inc/customizer/customizer.php:711 ../inc/theme-options.php:574
+msgid "Above Header Content"
 msgstr ""
 
 #: ../inc/customizer/customizer.php:712 ../inc/theme-options.php:576
 msgid "Between Site Title-Logo"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:713
-msgid "Below Site Title-Logo"
+#: ../inc/customizer/customizer.php:713 ../inc/theme-options.php:578
+msgid "Below Header Content"
 msgstr ""
 
 #: ../inc/customizer/customizer.php:852
@@ -1094,40 +1065,40 @@ msgid "Theme Options By"
 msgstr "Theme Options By"
 
 #: ../inc/theme-options.php:509
-msgid "http://catchthemes.com/"
-msgstr "http://catchthemes.com/"
+msgid "https://catchthemes.com/"
+msgstr "https://catchthemes.com/"
 
 #: ../inc/theme-options.php:516
-msgid "http://catchthemes.com/themes/catch-box-pro/"
-msgstr "http://catchthemes.com/themes/catch-box-pro/"
+msgid "https://catchthemes.com/themes/catch-box-pro/"
+msgstr "https://catchthemes.com/themes/catch-box-pro/"
 
 #: ../inc/theme-options.php:516
 msgid "Upgrade to Catch Box Pro"
 msgstr "Opgrader til Catch Box Pro"
 
 #: ../inc/theme-options.php:521
-msgid "http://catchthemes.com/donate/"
-msgstr "http://catchthemes.com/donate/"
+msgid "https://catchthemes.com/donate/"
+msgstr "https://catchthemes.com/donate/"
 
 #: ../inc/theme-options.php:521
 msgid "Donate"
 msgstr "Doner Nu"
 
 #: ../inc/theme-options.php:522
-msgid "http://catchthemes.com/support/"
-msgstr "http://catchthemes.com/support/"
+msgid "https://catchthemes.com/support/"
+msgstr "https://catchthemes.com/support/"
 
 #: ../inc/theme-options.php:523
-msgid "http://catchthemes.com/support-forum/forum/catch-box-public/"
-msgstr "http://catchthemes.com/support-forum/forum/catch-box-public/"
+msgid "https://catchthemes.com/support-forum/forum/catch-box-public/"
+msgstr "https://catchthemes.com/support-forum/forum/catch-box-public/"
 
 #: ../inc/theme-options.php:523
 msgid "Support Forum"
 msgstr "Support Forum"
 
 #: ../inc/theme-options.php:524
-msgid "http://catchthemes.com/theme-instructions/catch-box/"
-msgstr "http://catchthemes.com/theme-instructions/catch-box/"
+msgid "https://catchthemes.com/theme-instructions/catch-box/"
+msgstr "https://catchthemes.com/theme-instructions/catch-box/"
 
 #: ../inc/theme-options.php:525
 msgid "https://www.facebook.com/catchthemes/"
@@ -1175,10 +1146,6 @@ msgstr "Featured Post Slider"
 msgid "Header Image:"
 msgstr ""
 
-#: ../inc/theme-options.php:563 ../inc/theme-options.php:565
-msgid "Click here to change header image"
-msgstr ""
-
 #: ../inc/theme-options.php:563
 msgid "Click here to change Header Image"
 msgstr ""
@@ -1187,24 +1154,16 @@ msgstr ""
 msgid "Click here to add Header Image"
 msgstr ""
 
-#: ../inc/theme-options.php:574
-msgid "Above Header Content"
-msgstr ""
-
-#: ../inc/theme-options.php:578
-msgid "Below Header Content"
-msgstr ""
-
 #: ../inc/theme-options.php:612 ../inc/theme-options.php:614
 msgid "Post Slider Tutorial"
 msgstr "Post Slider Tutorial"
 
 #: ../inc/theme-options.php:614
 msgid ""
-"http://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-"
+"https://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-"
 "slider/"
 msgstr ""
-"http://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-"
+"https://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-"
 "slider/"
 
 #: ../inc/theme-options.php:614
@@ -1385,6 +1344,26 @@ msgstr "Næste <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Tag-arkiver: %s"
+
+#~ msgid "Daily Archives: %s"
+#~ msgstr "Daglige arkiver: %s"
+
+#~ msgid "Monthly Archives: %s"
+#~ msgstr "Månedlige arkiver: %s"
+
+#~ msgctxt "monthly archives date format"
+#~ msgid "F Y"
+#~ msgstr "F Y"
+
+#~ msgid "Yearly Archives: %s"
+#~ msgstr "Årlige arkiver: %s"
+
+#~ msgctxt "yearly archives date format"
+#~ msgid "Y"
+#~ msgstr "Y"
+
+#~ msgid "Blog Archives"
+#~ msgstr "Blog-arkiver"
 
 #~ msgid "Skip to content"
 #~ msgstr "Hop til indhold"

@@ -506,22 +506,22 @@ function catchbox_theme_options_render_page() {
                 <div id="theme-option-title">
                     <h2 class="title"><?php _e( 'Theme Options By', 'catch-box' ); ?></h2>
                     <h2 class="logo">
-                        <a href="<?php echo esc_url( __( 'http://catchthemes.com/', 'catch-box' ) ); ?>" title="<?php esc_attr_e( 'Catch Themes', 'catch-box' ); ?>">
+                        <a href="<?php echo esc_url( __( 'https://catchthemes.com/', 'catch-box' ) ); ?>" title="<?php esc_attr_e( 'Catch Themes', 'catch-box' ); ?>">
                             <img src="<?php echo get_template_directory_uri().'/inc/images/catch-themes.png'; ?>" alt="<?php _e( 'Catch Themes', 'catch-box' ); ?>" />
                         </a>
                     </h2>
                 </div><!-- #theme-option-title -->
 
                 <div id="upgradepro">
-                	<a class="button" href="<?php echo esc_url(__('http://catchthemes.com/themes/catch-box-pro/','catch-box')); ?>" title="<?php esc_attr_e('Upgrade to Catch Box Pro', 'catch-box'); ?>"><?php printf(__('Upgrade to Catch Box Pro','catch-box')); ?></a>
+                	<a class="button" href="<?php echo esc_url(__('https://catchthemes.com/themes/catch-box-pro/','catch-box')); ?>" title="<?php esc_attr_e('Upgrade to Catch Box Pro', 'catch-box'); ?>"><?php printf(__('Upgrade to Catch Box Pro','catch-box')); ?></a>
                	</div><!-- #upgradepro -->
 
                 <div id="theme-support">
                     <ul>
-                    	<li><a class="button" href="<?php echo esc_url(__('http://catchthemes.com/donate/','catch-box')); ?>" title="<?php esc_attr_e('Donate', 'catch-box'); ?>"><?php printf(__('Donate','catch-box')); ?></a></li>
-                    	<li><a class="button" href="<?php echo esc_url(__('http://catchthemes.com/support/','catch-box')); ?>" title="<?php esc_attr_e('Support', 'catch-box'); ?>"><?php printf(__('Support','catch-box')); ?></a></li>
-                        <li><a class="button" href="<?php echo esc_url(__('http://catchthemes.com/support-forum/forum/catch-box-public/','catch-box')); ?>" title="<?php esc_attr_e('Support Forum', 'catch-box'); ?>"><?php printf(__('Support Forum','catch-box')); ?></a></li>
-                        <li><a class="button" href="<?php echo esc_url(__('http://catchthemes.com/theme-instructions/catch-box/','catch-box')); ?>" title="<?php esc_attr_e('Theme Instructions', 'catch-box'); ?>"><?php printf(__('Theme Instructions','catch-box')); ?></a></li>
+                    	<li><a class="button" href="<?php echo esc_url(__('https://catchthemes.com/donate/','catch-box')); ?>" title="<?php esc_attr_e('Donate', 'catch-box'); ?>"><?php printf(__('Donate','catch-box')); ?></a></li>
+                    	<li><a class="button" href="<?php echo esc_url(__('https://catchthemes.com/support/','catch-box')); ?>" title="<?php esc_attr_e('Support', 'catch-box'); ?>"><?php printf(__('Support','catch-box')); ?></a></li>
+                        <li><a class="button" href="<?php echo esc_url(__('https://catchthemes.com/support-forum/forum/catch-box-public/','catch-box')); ?>" title="<?php esc_attr_e('Support Forum', 'catch-box'); ?>"><?php printf(__('Support Forum','catch-box')); ?></a></li>
+                        <li><a class="button" href="<?php echo esc_url(__('https://catchthemes.com/theme-instructions/catch-box/','catch-box')); ?>" title="<?php esc_attr_e('Theme Instructions', 'catch-box'); ?>"><?php printf(__('Theme Instructions','catch-box')); ?></a></li>
                         <li><a class="button" href="<?php echo esc_url(__('https://www.facebook.com/catchthemes/','catch-box')); ?>" title="<?php esc_attr_e('Like Catch Themes on Facebook', 'catch-box'); ?>"><?php printf(__('Facebook','catch-box')); ?></a></li>
                         <li><a class="button" href="<?php echo esc_url(__('https://twitter.com/catchthemes/','catch-box')); ?>" title="<?php esc_attr_e('Follow Catch Themes on Twitter', 'catch-box'); ?>"><?php printf(__('Twitter','catch-box')); ?></a></li>
                         <li><a class="button" href="<?php echo esc_url(__('http://wordpress.org/support/view/theme-reviews/catch-box/','catch-box')); ?>" title="<?php esc_attr_e('Rate us 5 Star on WordPress', 'catch-box'); ?>"><?php printf(__('5 Star Rating','catch-box')); ?></a></li>
@@ -560,9 +560,9 @@ function catchbox_theme_options_render_page() {
 
                                         $header_image = get_header_image();
                                         if ( !empty ( $header_image ) ) {
-                                            echo '<a class="button" href="' . admin_url('themes.php?page=custom-header') . '" title="' .esc_attr__( 'Click here to change header image', 'catch-box' ). '">' . __( 'Click here to change Header Image', 'catch-box' ) . '</a>';
+                                            echo '<a class="button" href="' . admin_url('themes.php?page=custom-header') . '" title="' .esc_attr__( 'Click here to change Header Image', 'catch-box' ). '">' . __( 'Click here to change Header Image', 'catch-box' ) . '</a>';
                                         } else {
-                                            echo '<a class="button" href="' . admin_url('themes.php?page=custom-header') . '" title="' .esc_attr__( 'Click here to change header image', 'catch-box' ). '">' . __( 'Click here to add Header Image', 'catch-box' ) . '</a>';
+                                            echo '<a class="button" href="' . admin_url('themes.php?page=custom-header') . '" title="' .esc_attr__( 'Click here to add Header Image', 'catch-box' ). '">' . __( 'Click here to add Header Image', 'catch-box' ) . '</a>';
                                         }  ?>
                                         </td>
                                     </tr>
@@ -611,7 +611,7 @@ function catchbox_theme_options_render_page() {
                                     <tr>
                                         <th scope="row"><?php _e( 'Post Slider Tutorial', 'catch-box' ); ?></th>
                                         <td>
-                                            <a class="button" href="<?php echo esc_url( __( 'http://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-slider/','catch-box' ) ); ?>" title="<?php esc_attr_e( 'Post Slider Tutorial', 'catch-box' ); ?>"><?php _e( 'Click Here to Read Post Slider Tutorial', 'catch-box' );?></a>
+                                            <a class="button" href="<?php echo esc_url( __( 'https://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-slider/','catch-box' ) ); ?>" title="<?php esc_attr_e( 'Post Slider Tutorial', 'catch-box' ); ?>"><?php _e( 'Click Here to Read Post Slider Tutorial', 'catch-box' );?></a>
                                         </td>
                                     </tr>
                                     <tr>

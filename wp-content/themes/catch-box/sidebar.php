@@ -54,4 +54,4 @@ else :
 /**
  * catchbox_below_secondary hook
  */
-do_action( 'catchbox_below_secondary' ); ?>
+do_action( 'catchbox_below_secondary' );

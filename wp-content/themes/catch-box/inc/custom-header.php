@@ -215,7 +215,7 @@ function catchbox_header_image() {
 			echo '<div id="site-logo">'. get_custom_logo() . '</div><!-- #site-logo -->';
 		}
 	}
-	else if ( ! empty( $header_image ) ) : ?>
+	elseif ( ! empty( $header_image ) ) { ?>
 
     	<div id="site-logo">
         	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
@@ -223,7 +223,7 @@ function catchbox_header_image() {
             </a>
       	</div>
 
-	<?php endif; // end check for removed header image
+	<?php } // end check for removed header image
 }
 endif;
 
@@ -273,7 +273,7 @@ function catchbox_main_header_image_position() {
 	if ( 'above' == $position ) {
 		add_action( 'catchbox_before_headercontent', 'catchbox_main_header_image', 10 );
 	}
-	else if ( 'below' == $position ) {
+	elseif ( 'below' == $position ) {
 		add_action( 'catchbox_after_headercontent', 'catchbox_main_header_image', 10 );
 	}
 }

@@ -82,4 +82,4 @@
 				</div><!-- #author-link	-->
 			</div><!-- #author-description -->
 		</div><!-- #entry-author-info -->
-<?php endif; ?>
+<?php endif;

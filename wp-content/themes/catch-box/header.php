@@ -131,4 +131,4 @@ do_action( 'catchbox_before' ); ?>
                  * @hooked catchbox_breadcrumb_display - 20
                  *
                  */
-                do_action( 'catchbox_content' ); ?>
+                do_action( 'catchbox_content' );

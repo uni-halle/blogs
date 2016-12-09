@@ -39,27 +39,41 @@
  */
 
 if ( ! function_exists( 'catchbox_content_width' ) ) :
-/**
- * Change the content width based on the Theme Settings and Page/Post Settings
- */
-function catchbox_content_width() {
-
-	$layout = catchbox_get_theme_layout();
-
-	$content_width = 530;
-
-	if ( is_page_template( 'page-fullwidth.php' ) ) {
-		$content_width = 880; /* pixels */
+	/**
+	 * Set the content width in pixels, based on the theme's design and stylesheet.
+	 *
+	 * Priority 0 to make it available to lower priority callbacks.
+	 *
+	 * @global int $content_width
+	 */
+	function catchbox_content_width() {
+		$GLOBALS['content_width'] = apply_filters( 'catchbase_content_width', 530 );
 	}
-	else if ( is_page_template( 'page-disable-sidebar.php' ) ) {
-		$content_width = 660; /* pixels */
-	}
-	else if ( $layout == 'content-onecolumn' || is_page_template( 'page-onecolumn.php' ) ) {
-		$content_width = 620; /* pixels */
-	}
-}
-endif; // catchbox_content_width
+	endif; // catchbox_content_width
 add_action( 'after_setup_theme', 'catchbox_content_width', 0 );
+
+
+if ( ! function_exists( 'catchbox_template_redirect' ) ) :
+	/**
+	 * Set the content width in pixels, based on the theme's design and stylesheet for different value other than the default one
+	 *
+	 * @global int $content_width
+	 */
+	function catchbox_template_redirect() {
+	   	$layout = catchbox_get_theme_layout();
+
+		if ( is_page_template( 'page-fullwidth.php' ) ) {
+			$GLOBALS['content_width'] = 880; /* pixels */
+		}
+		else if ( is_page_template( 'page-disable-sidebar.php' ) ) {
+			$GLOBALS['content_width'] = 660; /* pixels */
+		}
+		else if ( $layout == 'content-onecolumn' || is_page_template( 'page-onecolumn.php' ) ) {
+			$GLOBALS['content_width'] = 620; /* pixels */
+		}
+	}
+endif;
+add_action( 'template_redirect', 'catchbox_template_redirect' );
 
 
 /**
@@ -662,7 +676,16 @@ function catchbox_posts_id_column( $col, $val ) {
 add_action( 'manage_posts_custom_column', 'catchbox_posts_id_column', 10, 2 );
 
 function catchbox_posts_id_column_css() {
-	echo '<style type="text/css">#postid { width: 50px; }</style>';
+	echo '
+	<style type="text/css">
+	    #postid { width: 80px; }
+	    @media screen and (max-width: 782px) {
+	        .wp-list-table #postid, .wp-list-table #the-list .postid { display: none; }
+	        .wp-list-table #the-list .is-expanded .postid {
+	            padding-left: 30px;
+	        }
+	    }
+    </style>';
 }
 add_action( 'admin_head-edit.php', 'catchbox_posts_id_column_css' );
 
@@ -686,6 +709,8 @@ function catchbox_scripts_method() {
 	 * Loads up Responsive Menu
 	 */
 	wp_enqueue_script( 'catchbox-sidr', get_template_directory_uri() . '/js/jquery.sidr.min.js', array( 'jquery' ), '2.1.1.1', false );
+
+	wp_enqueue_script( 'catchbox-fitvids', get_template_directory_uri() . '/js/catchbox-fitvids.min.js', array( 'jquery' ), '20140315', true );
 
 	//Register JQuery circle all and JQuery set up as dependent on Jquery-cycle
 	wp_register_script( 'jquery-cycle', get_template_directory_uri() . '/js/jquery.cycle.all.min.js', array( 'jquery' ), '2.9999.5', true );

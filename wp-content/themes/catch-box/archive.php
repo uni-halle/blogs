@@ -17,17 +17,11 @@ get_header(); ?>
 			<?php if ( have_posts() ) : ?>
 
 				<header class="page-header">
-					<h1 class="page-title">
-						<?php if ( is_day() ) : ?>
-							<?php printf( __( 'Daily Archives: %s', 'catch-box' ), '<span>' . get_the_date() . '</span>' ); ?>
-						<?php elseif ( is_month() ) : ?>
-							<?php printf( __( 'Monthly Archives: %s', 'catch-box' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'catch-box' ) ) . '</span>' ); ?>
-						<?php elseif ( is_year() ) : ?>
-							<?php printf( __( 'Yearly Archives: %s', 'catch-box' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'catch-box' ) ) . '</span>' ); ?>
-						<?php else : ?>
-							<?php _e( 'Blog Archives', 'catch-box' ); ?>
-						<?php endif; ?>
-					</h1>
+					<?php
+						the_archive_title( '<h1 class="page-title">', '</h1>' );
+
+						the_archive_description( '<div class="taxonomy-description">', '</div>' );
+					?>
 				</header>
 
 				<?php /* Start the Loop */ ?>
@@ -61,22 +55,22 @@ get_header(); ?>
 			<?php endif; ?>
 
 		</div><!-- #content -->
-        
-		<?php 
-        /** 
+
+		<?php
+        /**
          * catchbox_after_content hook
          *
          */
         do_action( 'catchbox_after_content' ); ?>
-            
+
 	</div><!-- #primary -->
-    
-	<?php 
-    /** 
+
+	<?php
+    /**
      * catchbox_after_primary hook
      *
      */
-    do_action( 'catchbox_after_primary' ); ?>    
+    do_action( 'catchbox_after_primary' ); ?>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
