@@ -10,15 +10,14 @@ function doBauhausReady() {
 	bauhausVideoUnwrap();
 	bauhausHandleSearch();
 	bauhausHandlePostImgs();
-	bauhausCheckForPushIt();
+	bauhausFlickity();
 }
 
 // Spice up the appearance of Foundation's Featured Slider
 function bauhausSliderMods(){
-	jQuery( '.swipe-wrap a' ).each( function(){
-		imgCloned = jQuery( this ).find( 'img' ).clone();
-		jQuery( this ).append( imgCloned );
-		imgCloned.addClass( 'clone' );
+	jQuery( '#slider a' ).each( function(){
+		imgCloned = jQuery( this ).find( 'img' ).attr( 'src' );
+		jQuery( this ).append( '<img class="clone" src="'+imgCloned+'" alt="" />');
 		jQuery( this ).find( 'p' ).not( 'p.featured-date' ).addClass( 'heading-font' );
 	});
 }
@@ -90,15 +89,98 @@ function bauhausHandleSearch() {
 	}
 }
 
-function bauhausOffCanvasMods(){
-	jQuery( '.wptouch-login-wrap' ).detach().appendTo( 'body' );
+function bauhausFlickity(){
+
+	jQuery( '.slider-latest-only .carousel' ).css({ 'height': jQuery( window ).height() });
+
+		var bauhausFriction = 0.32;
+		var bauhausAttraction = 0.06;
+		var bauhausThreshold = 15;
+		
+
+	var recentCarousel = jQuery( '.recent-carousel' ).flickity({
+		friction: bauhausFriction,
+		selectedAttraction: bauhausAttraction,
+		dragThreshold: bauhausThreshold,
+		setGallerySize: false,
+		cellAlign: 'left',
+		wrapAround: false,
+		prevNextButtons: false,
+		pageDots: false,
+		imagesLoaded: true,
+		lazyLoad: 4
+	});
+
+	var carouselData = recentCarousel.data( 'flickity' );
+	recentCarousel.on( 'settle.flickity', function(){
+		// as we go along, load more
+		if ( carouselData.selectedIndex > carouselData.cells.length - 4 ) {
+			var loadMoreRecent = recentCarousel.attr( 'rel' );
+			jQuery.get( loadMoreRecent ).done( function( result ) {
+				if ( true ) {
+					items = jQuery( result ).find( '.recent-carousel .carousel-cell' );
+					recentCarousel.flickity( 'append', items );
+					newPageUrl = jQuery( result ).find( '.recent-carousel' ).attr( 'rel' );
+					recentCarousel.attr( 'rel', newPageUrl );
+				}
+			});
+		}
+	});
+
+	jQuery( '.featured-carousel' ).flickity({
+		friction: bauhausFriction,
+		selectedAttraction: bauhausAttraction,
+		dragThreshold: bauhausThreshold,
+		setGallerySize: false,
+		cellAlign: 'left',
+		freeScroll: false,
+		imagesLoaded: true,
+		wrapAround: false,
+		prevNextButtons: false,
+		pageDots: false,
+		lazyLoad: 1
+	});
+
+	jQuery( '.popular-carousel' ).flickity({
+		friction: bauhausFriction,
+		selectedAttraction: bauhausAttraction,
+		dragThreshold: bauhausThreshold,
+		setGallerySize: false,
+		cellAlign: 'left',
+		freeScroll: false,
+		imagesLoaded: true,
+		wrapAround: false,
+		prevNextButtons: false,
+		pageDots: false,
+		lazyLoad: 1
+	});
+	
+	listCarousel = jQuery( '.list-view .list-carousel' );
+	showDots = false;
+	autoPlay = false;
+	if ( listCarousel.hasClass( 'dots' ) ) {
+		showDots = true;
+	}
+	if ( listCarousel.hasClass( 'autoplay' ) ) {
+		autoPlay = true;
+	}
+	
+	jQuery( '.list-carousel' ).flickity({
+		friction: bauhausFriction,
+		selectedAttraction: bauhausAttraction,
+		dragThreshold: bauhausThreshold,
+		setGallerySize: false,
+		cellAlign: 'left',
+		freeScroll: false,
+		imagesLoaded: true,
+		wrapAround: false,
+		prevNextButtons: false,
+		autoPlay: autoPlay,
+		pageDots: showDots,
+		lazyLoad: 1
+	});
+
 }
 
-function bauhausCheckForPushIt(){
-	if ( jQuery.fn.pushIt ) {
-		jQuery( 'body' ).pushIt( { menuWidth: '270' } );
-		bauhausOffCanvasMods();
-	}
-}
 
 jQuery( document ).ready( function() { doBauhausReady(); } );

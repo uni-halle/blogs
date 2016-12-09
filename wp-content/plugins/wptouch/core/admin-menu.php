@@ -23,6 +23,7 @@ define( 'WPTOUCH_PRO_ADMIN_WIZARD', 'wptouch-admin-wizard' );
 define( 'WPTOUCH_PRO_ADMIN_GENERAL_SETTINGS', 'wptouch-admin-general-settings' );
 define( 'WPTOUCH_PRO_ADMIN_MULTISITE_SETTINGS', 'wptouch-multisite' );
 define( 'WPTOUCH_PRO_ADMIN_LICENSE', 'wptouch-admin-license' );
+define( 'WPTOUCH_PRO_ADMIN_GO_PRO', 'wptouch-admin-go-pro' );
 
 function wptouch_admin_create_menu( $id, $friendly_name, $menu_type = WPTOUCH_PRO_ADMIN_SETTINGS_PAGE, $display_name = false ) {
 	$menu = new stdClass;
@@ -91,6 +92,10 @@ function wptouch_admin_get_predefined_menus( $network_admin = false ) {
 
 	if ( defined( 'WPTOUCH_CLIENT_MODE' ) && WPTOUCH_CLIENT_MODE === true ) {
 		unset( $available_menus[ WPTOUCH_PRO_ADMIN_LICENSE ] );
+	}
+
+	if ( defined( 'WPTOUCH_IS_FREE' ) ) {
+		$available_menus[ WPTOUCH_PRO_ADMIN_GO_PRO ] = wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_GO_PRO, 'Upgrade to Pro', WPTOUCH_PRO_ADMIN_CUSTOM_PAGE );
 	}
 
 	return apply_filters( 'wptouch_available_menus', $available_menus );

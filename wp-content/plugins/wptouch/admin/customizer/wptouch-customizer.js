@@ -1,5 +1,5 @@
 function wptouchCustomizerCloseButton(){
-	jQuery( '#customize-header-actions' ).unbind().on( 'click', 'a.customize-controls-close', function( e ){
+	jQuery( '.wp-full-overlay #customize-header-actions' ).unbind().on( 'click', 'a.customize-controls-close', function( e ){
 		e.preventDefault();
 		window.location = WPtouchCustomizer.settings_url;
 	});
@@ -16,10 +16,16 @@ function wptouchCustomizerDeviceToggles() {
 	}
 	html += '</div>';
 	html += '</div>';
+}
+
+function wptouchCustomizerWindowMods(){
+
+	// New free ad
+//	if ( WPtouchCustomizer.wptouch_is_pro == 'no' ) {
+//		html += '<div id="wptouch-pro-notice">Upgrade to WPtouch Pro and save $10 with coupon code <span>TOUCHUP10</span><a class="button button-primary" href="http://www.wptouch.com/go-pro/?utm_source=free_admin&utm_medium=website&utm_term=customizer&utm_campaign=customizer" target="_blank">Go Pro Today</a></div>';
+//	}
 
 	jQuery( '.wp-full-overlay' ).append( html);
-
-//	jQuery( 'i.customize-tooltip' ).tooltip( { placement:'top' } );
 
 	jQuery( '.toggle-inner' ).on( 'click', 'i', function( e ){
 
@@ -93,7 +99,7 @@ function wptouchCustomizerFoundationSettings(){
 	});
 
 	// Featured Slider on/off
-	var featuredCheckbox = jQuery( '[id$=featured_enabled]' );
+	var featuredCheckbox = jQuery( '[id$=wptouch_featured_enabled]' );
 	featuredCheckbox.on( 'change wptouch.customizerReady', 'input', function(){
 		if ( jQuery( this ).is( ':checked' ) ) {
 			featuredCheckbox.nextAll( 'li' ).css( 'visibility', '' );
@@ -166,11 +172,14 @@ function wptouchCustomizerChecklist() {
 }
 
 function wptouchCustomizerAdminReady(){
-	wptouchCustomizerCloseButton();
 	wptouchCustomizerDeviceToggles();
-	wptouchCustomizerAddRangeValue();
-	wptouchCustomizerFoundationSettings();
-	wptouchCustomizerChecklist();
+	if ( WPtouchCustomizer.mobile_preview == true ) {
+		wptouchCustomizerCloseButton();
+		wptouchCustomizerWindowMods();
+		wptouchCustomizerAddRangeValue();
+		wptouchCustomizerChecklist();
+		wptouchCustomizerFoundationSettings();
+	}
 }
 
 jQuery( document ).ready( function() {

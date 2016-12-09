@@ -20,15 +20,17 @@ add_filter( 'wptouch_setting_version_compare', 'foundation_setting_version_compa
 add_filter( 'wptouch_body_classes', 'foundation_body_classes' );
 add_filter( 'wptouch_the_content', 'foundation_insert_multipage_links');
 
+// fix for JetPack
+add_filter( 'jetpack_check_mobile', 'foundation_override_jetpack_check_mobile' );
+
 add_action( 'wptouch_post_head', 'foundation_setup_smart_app_banner' );
 add_action( 'wptouch_post_head', 'foundation_setup_viewport' );
 add_action( 'wptouch_post_head', 'foundation_setup_homescreen_icons' );
 add_action( 'wptouch_post_head', 'foundation_inline_styles' );
+add_action( 'wptouch_post_head', 'foundation_add_meta_theme_color' );
 
-if ( !defined( 'WPTOUCH_IS_FREE' ) ) {
-	add_action( 'pre_get_posts', 'foundation_posts_per_page' );
-	add_filter( 'pre_get_posts', 'foundation_exclude_categories_tags' );
-}
+add_action( 'pre_get_posts', 'foundation_posts_per_page' );
+add_filter( 'pre_get_posts', 'foundation_exclude_categories_tags' );
 
 add_action( 'wptouch_pre_footer', 'foundation_handle_footer' );
 add_action( 'wptouch_post_footer', 'foundation_enqueue_color_data' );
@@ -210,6 +212,8 @@ function foundation_setting_defaults( $settings ) {
 
 	// Featured Slider
 	$settings->featured_enabled = true;
+	$settings->featured_blog = true;
+	$settings->featured_homepage = true;
 	$settings->featured_style = 'enhanced';
 	$settings->featured_autoslide = false;
 	$settings->featured_continuous = false;
@@ -362,7 +366,7 @@ function foundation_setup_viewport(){
 function foundation_render_theme_settings( $page_options ) {
 	wptouch_add_sub_page( FOUNDATION_PAGE_GENERAL, 'foundation-page-theme-settings', $page_options );
 
-	if ( defined( 'WPTOUCH_IS_FREE' ) ) {
+	if ( !wptouch_admin_use_customizer() ) {
 		if ( foundation_has_theme_colors() ) {
 			$color_settings = array();
 
@@ -654,6 +658,11 @@ function foundation_load_theme_modules() {
 
 	if ( count( $theme_data->theme_support ) ) {
 		foreach( $theme_data->theme_support as $module ) {
+
+			$allow_module_load = apply_filters( 'wptouch_allow_module_' . $module, true );
+			if ( !$allow_module_load ) {
+				continue;
+			}
 
 			$bootstrap_file = dirname( __FILE__ ) . '/modules/' . $module . '/' . $module . '.php';
 			$defined_name = 'WPTOUCH_MODULE_' . str_replace( '-', '_', strtoupper( $module ) ) . '_INSTALLED';
@@ -1245,4 +1254,18 @@ function foundation_custom_die_handler( $function ) {
 	}
 
 	return $function;
+}
+
+function foundation_add_meta_theme_color() {
+
+	$header_color = apply_filters( 'wptouch_theme_color', '' );
+
+	if ( strlen( $header_color ) ) {
+		echo '<meta name="theme-color" content="' . $header_color . '">';
+	}
+
+}
+
+function foundation_override_jetpack_check_mobile() {
+	return false;
 }

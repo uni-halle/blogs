@@ -1,7 +1,7 @@
 //TODO: localize!
 // Setup Customizer Switch between mobile and desktop themes
 (function( exports, $ ){
-	var current = jQuery.cookie( 'wptouch_customizer_use' ) || 'desktop';
+	var current = jQuery.cookie( 'wptouch_customizer_mode' ) || 'desktop';
 
 	jQuery( '#customize-info .accordion-section-title' ).append( '<div><button style="margin-top: 10px;" id="switch_to" class="button">' + WPtouchCustomizerSwitch.mobile_switch + '</button></div>' );
 
@@ -18,7 +18,7 @@
 	jQuery( '#switch_to' ).click( function( e ) {
 		e.preventDefault();
 		e.stopImmediatePropagation();
-		jQuery.cookie( 'wptouch_customizer_use', next, { expires: false, path: '/' } );
+		jQuery.cookie( 'wptouch_customizer_mode', next, { expires: false, path: '/' } );
 		window.location.reload();
 	});
 

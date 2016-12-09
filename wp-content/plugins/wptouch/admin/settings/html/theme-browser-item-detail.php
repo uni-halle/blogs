@@ -31,7 +31,7 @@
 		<?php if ( !is_network_admin() || wptouch_is_controlled_network() ) { ?>
 			<div class="action-buttons<?php if ( !wptouch_can_cloud_install() && wptouch_is_theme_in_cloud() ) { ?> no-install<?php } ?>">
 
-				<?php if ( wptouch_is_theme_active() && current_user_can( 'manage_options' ) && !is_network_admin() ) { ?>
+				<?php if ( !defined( 'WPTOUCH_IS_FREE' ) && wptouch_is_theme_active() && current_user_can( 'manage_options' ) && !is_network_admin() ) { ?>
 					<a class="button" href="<?php echo admin_url( 'customize.php' ); ?>"><?php _e( 'Customize', 'wptouch-pro' ); ?></a>
 				<?php } ?>
 

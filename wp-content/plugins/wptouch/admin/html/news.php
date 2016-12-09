@@ -1,5 +1,5 @@
 <?php require_once ( ABSPATH . WPINC . '/class-simplepie.php' ); ?>
-<?php $content = fetch_feed( 'http://www.wptouch.com/feed/' ); ?>
+<?php $content = fetch_feed( '//www.wptouch.com/feed/' ); ?>
 <?php if ( !is_wp_error( $content ) ) { ?>
 	<?php $max_items = $content->get_item_quantity( WPTOUCH_MAX_NEWS_ITEMS ); ?>
 	<?php $rss_items = $content->get_items( 0, $max_items ); ?>

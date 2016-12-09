@@ -1,3 +1,5 @@
+/* @override http://wptp3.local.com/wp-content/plugins/wptouch-pro/admin/css/wptouch-admin-4.css?ver=a16b0b39889181577ded41b49cd80b1b */
+
 /* @group Clearfix */
 
 .wptouch-clearfix:after {
@@ -167,7 +169,6 @@ a#preview-theme {
 	float: right;
 }
 
-
 #wptouch-settings-area .wptouch-section .new,
 #wptouch-settings-area .wptouch-section .advanced,
 #wptouch-settings-area .wptouch-section .pro {
@@ -200,7 +201,6 @@ a#preview-theme {
 	font-size: 11px;
 	text-transform: uppercase;
 	padding: 1px 4px;
-	display: none;
 }
 
 #admin-spinner {
@@ -333,7 +333,8 @@ a#preview-theme {
 }
 
 #wptouch-admin-menu ul li a.active:before {
-	background: -webkit-linear-gradient(#eb5768, #4e8bda);
+	color: #55c2e8;
+	background: -webkit-linear-gradient(#59c4bc, #4e8bda);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
@@ -353,7 +354,9 @@ a#preview-theme {
 }
 
 #wptouch-admin-menu a.active {
-	background: -webkit-linear-gradient(#eb5768, #4e8bda);
+	font-weight: bold;
+	color: #55c2e8;
+	background: -webkit-linear-gradient(#59c4bc, #4e8bda);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
@@ -456,6 +459,20 @@ a#preview-theme {
 
 #wptouch-admin-menu ul li a.wptouch-addon-amp:before {
 	content: '\e822';
+	display: inline-block;
+	text-align: center;
+	width: 20px;
+}
+
+#wptouch-admin-menu ul li a.wptouch-addon-make-child:before {
+	content: '\e823';
+	display: inline-block;
+	text-align: center;
+	width: 20px;
+}
+
+#wptouch-admin-menu ul li a.wptouch-addon-power-pack:before {
+	content: '\e824';
 	display: inline-block;
 	text-align: center;
 	width: 20px;
@@ -2252,30 +2269,12 @@ li.no-license:hover:after {
 
 /* @group Free Version */
 
-#license-settings-area.wptouch-clearfix {
-	height: 200px;
+#upgrade-area {
+	min-height: 800px;
 }
 
 #license-settings-area.wptouch-clearfix input[type="text"] {
-	width: 300px;
-}
-
-#section-handle-gopro > h3 {
-	display: none;
-}
-
-#section-handle-gopro ul.padded {
-	border: none;
-	margin-top: 0;
-}
-
-#section-handle-gopro #license-settings-area {
-	margin-bottom: 20px;
-}
-
-#upgrade-area {
-	padding: 40px;
-	margin: -60px -45px -75px;
+	width: 260px;
 }
 
 /* @end */
@@ -2353,6 +2352,36 @@ p.deploy-text {
 	min-height: 280px;
 }
 
+.wptouch_page_wptouch-admin-go-pro #wptouch-settings-content {
+	margin-left: 0px;
+	border-left: none;
+	padding-top: 8px;
+	text-align: center;
+}
+
+.wptouch_page_wptouch-admin-go-pro #wptouch-settings-content p {
+	font-size: 15px;
+}
+
+.wptouch_page_wptouch-admin-go-pro #wptouch-settings-content input {
+	margin: 3px auto;
+}
+
+.wptouch_page_wptouch-admin-go-pro #activate-license {
+	margin-top: 10px;
+}
+
+.wptouch_page_wptouch-admin-go-pro #wptouch-preview-theme {
+	display: none;
+}
+
+.wptouch_page_wptouch-admin-go-pro .reset-button {
+	display: none;
+}
+
+.wptouch_page_wptouch-admin-go-pro #license-settings-area {
+	height: 180px;
+}
 
 
 /* @end */

@@ -2,7 +2,7 @@
 if ( !defined( 'FOUNDATION_SETTING_DOMAIN' ) ) {
     define( 'FOUNDATION_SETTING_DOMAIN', 'foundation' );
 }
-if ( !wptouch_is_controlled_network() || ( wptouch_is_controlled_network() && is_network_admin() ) ) {
+if ( ( !wptouch_is_controlled_network() || ( wptouch_is_controlled_network() && is_network_admin() ) ) && !defined( 'WPTOUCH_IS_FREE' ) ) {
 	add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_updates_page' );
 }
 
@@ -12,7 +12,6 @@ add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch
 add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_menu_page' );
 add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_themes' );
 add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_theme_customize_page' );
-add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_theme_gopro_page' );
 add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_addons' );
 add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_addon_settings' );
 
@@ -29,7 +28,7 @@ function wptouch_render_updates_page( $page_options ) {
 			__( 'Updates Available', 'wptouch-pro' ),
 			'updates-available',
 			array(
-				wptouch_add_setting(
+				wptouch_add_pro_setting(
 					'updates-available',
 					'theme-extension-updates-available',
 					false,
@@ -170,7 +169,7 @@ function wptouch_render_general_page( $page_options ) {
 		__( 'Desktop / Mobile Switching', 'wptouch-pro' ),
 		'setup-general',
 		array(
-			wptouch_add_pro_setting(
+			wptouch_add_setting(
 				'checkbox',
 				'show_switch_link',
 				_x( 'Theme switch toggle', 'switches between desktop and mobile themes', 'wptouch-pro' ),
@@ -344,21 +343,23 @@ function wptouch_render_compat_page( $page_options ) {
 
 	$page_options = apply_filters( 'wptouch_settings_compat', $page_options );
 
-	wptouch_add_page_section(
-		WPTOUCH_ADMIN_SETUP_COMPAT,
-		__( 'Active Plugins', 'wptouch-pro' ),
-		'setup-general-plugin-compat',
-		array(
-			wptouch_add_pro_setting(
-				'custom',
-				'plugin-compat'
-			)
-		),
-		$page_options,
-		'wptouch_pro',
-		false,
-		wptouchize_it( __( 'Attempts to disable plugins for mobile visitors. Some plugins don‘t support this feature due to the way they load in WordPress.', 'wptouch-pro' ) )
-	);
+    if ( !defined( 'WPTOUCH_IS_FREE' ) ) {
+    	wptouch_add_page_section(
+    		WPTOUCH_ADMIN_SETUP_COMPAT,
+    		__( 'Active Plugins', 'wptouch-pro' ),
+    		'setup-general-plugin-compat',
+    		array(
+    			wptouch_add_pro_setting(
+    				'custom',
+    				'plugin-compat'
+    			)
+    		),
+    		$page_options,
+    		'wptouch_pro',
+    		false,
+    		wptouchize_it( __( 'Attempts to disable plugins for mobile visitors. Some plugins don‘t support this feature due to the way they load in WordPress.', 'wptouch-pro' ) )
+    	);
+    }
 
 	return $page_options;
 }
@@ -389,16 +390,16 @@ function wptouch_render_devices_page( $page_options ) {
 			),
 			wptouch_add_setting(
 				'checkbox',
-				'enable_blackberry_phone',
-				'BlackBerry Browser',
+				'enable_firefox_phone',
+				'Firefox OS & Mobile Browser',
 				false,
 				WPTOUCH_SETTING_BASIC,
 				'4.0'
 			),
 			wptouch_add_setting(
 				'checkbox',
-				'enable_firefox_phone',
-				'Firefox OS & Mobile Browser',
+				'enable_blackberry_phone',
+				'BlackBerry Browser',
 				false,
 				WPTOUCH_SETTING_BASIC,
 				'4.0'
@@ -414,7 +415,7 @@ function wptouch_render_devices_page( $page_options ) {
 			wptouch_add_setting(
 				'checkbox',
 				'enable_opera_phone',
-				'Opera Mobile (Opera on Android/iOS, Opera Mini on iOS, Coast)',
+				'Opera Browser (Opera on Android/iOS, Opera Mini on iOS, Coast)',
 				false,
 				WPTOUCH_SETTING_BASIC,
 				'4.0'
@@ -643,26 +644,6 @@ function wptouch_render_theme_customize_page( $page_options ) {
 			wptouch_add_setting(
 				'custom',
 				'customizing_in_customizer'
-			)
-		),
-		$page_options
-	);
-
-	return $page_options;
-}
-
-function wptouch_render_theme_gopro_page( $page_options ) {
-
-	wptouch_add_sub_page( WPTOUCH_PRO_ADMIN_THEME_GOPRO, 'foundation-page-theme-gopro', $page_options );
-
-	wptouch_add_page_section(
-		WPTOUCH_PRO_ADMIN_THEME_GOPRO,
-		__( 'Go Pro', 'wptouch-pro' ),
-		'handle-gopro',
-		array(
-			wptouch_add_setting(
-				'custom',
-				'gopro'
 			)
 		),
 		$page_options

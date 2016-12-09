@@ -56,7 +56,13 @@
 			<?php } ?>
 
 	<?php if ( get_next_posts_link() ) { ?>
-		<a class="load-more-<?php echo str_replace( ' ', '-', strtolower( wptouch_fdn_get_search_post_type() ) ); ?>-link no-ajax" href="javascript:return false;" rel="<?php echo get_next_posts_page_link(); ?>">
+		<?php
+		if ( in_array( strtolower( $search_post_type ), array( 'post', 'page' ) ) ) {
+			$classes = 'load-more-' . strtolower( $search_post_type ). '-link';
+		} else {
+			$classes = 'load-more-custom-link';
+		} ?>
+		<a class="<?php echo $classes; ?> no-ajax" href="javascript:return false;" rel="<?php echo get_next_posts_page_link(); ?>" data-lang-type="<?php echo str_replace( ' ', '-', strtolower( wptouch_fdn_get_search_post_type() ) ); ?>">
 			<?php echo strtolower( sprintf( __( "Load more %s results", 'wptouch-pro' ), wptouch_fdn_get_search_post_type() ) ); ?>&hellip;
 		</a>
 	<?php } ?>

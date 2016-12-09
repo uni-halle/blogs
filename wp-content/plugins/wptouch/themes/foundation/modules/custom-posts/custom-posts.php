@@ -5,11 +5,14 @@ add_action( 'init', 'wptouch_register_theme_custom_post_types', 999 );
 add_filter( 'wptouch_modify_setting__foundation__enabled_custom_post_types', 'wptouch_serialize_custom_post_types', 1 );
 
 add_filter( 'wptouch_setting_defaults_foundation', 'wptouch_custom_posts_default_settings' );
-add_filter( 'wptouch_admin_page_render_wptouch-admin-theme-settings', 'wptouch_custom_posts_render_theme_settings' );
 add_filter( 'foundation_search_post_types', 'wptouch_custom_posts_add_to_search' );
 add_filter( 'wptouch_mobile_content_post_types', 'wptouch_custom_posts_add_to_search' );
 add_filter( 'pre_get_posts', 'wptouch_custom_posts_pre_get_posts' );
 add_filter( 'wptouch_foundation_search_post_type_text', 'wptouch_custom_posts_get_post_type_name' );
+
+if ( !defined('WPTOUCH_IS_FREE') ) {
+	add_filter( 'wptouch_admin_page_render_wptouch-admin-theme-settings', 'wptouch_custom_posts_render_theme_settings' );
+}
 
 function wptouch_serialize_custom_post_types( $setting ) {
 	// Function is fed the custom post type object as loaded by WordPress at render time; serialize it for pass-through as a field value.

@@ -420,7 +420,7 @@ function wptouch_addon_multisite_render_settings( $page_options ) {
 			__( 'Destination Sites', 'wptouch-pro' ),
 			'multisite-deployment-sites',
 			array(
-				wptouch_add_pro_Setting(
+				wptouch_add_pro_setting(
 					'sites',
 					'multisite_sites',
 					'',

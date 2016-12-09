@@ -21,10 +21,10 @@
 		</div>
 	</div>
 
-<!-- Back Button for Web-App Mode -->
-<div class="wptouch-icon-arrow-left back-button tappable"><!-- css-button --></div>
-
 <div class="page-wrapper">
+
+	<!-- Back Button for Web-App Mode -->
+	<div class="wptouch-icon-arrow-left back-button tappable"><!-- css-button --></div>
 
 	<header id="header-title-logo">
 		<?php if ( bauhaus_should_show_search() ) { ?>
@@ -54,12 +54,6 @@
 	<div class="content-wrap">
 
 		<?php do_action( 'wptouch_advertising_top' ); ?>
-
-		<?php if ( is_home() ) { ?>
-			<?php if ( function_exists( 'foundation_featured_slider' ) ) { ?>
-				<?php foundation_featured_slider(); ?>
-			<?php } ?>
-		<?php } ?>
 
 	<?php if ( is_archive() ) { ?>
 		<div class="post-page-head-area bauhaus">

@@ -1,5 +1,7 @@
 <?php
-if ( !defined( 'WPTOUCH_IS_FREE' ) ) {
+$settings = wptouch_get_settings();
+
+if ( !defined( 'WPTOUCH_IS_FREE' ) && $settings->show_wizard == false ) {
 	add_action( 'add_meta_boxes', 'wptouch_page_template_init' );
 	add_action( 'save_post', 'wptouch_page_template_save' );
 }

@@ -596,3 +596,7 @@ function wptouch_hex_to_rgb($hexStr, $returnAsString = false, $seperator = ',') 
 	}
 	return $returnAsString ? implode( $seperator, $rgbArray ) : $rgbArray; // returns the rgb string or the associative array
 }
+
+function wptouch_admin_use_customizer() {
+	return !( defined( 'WPTOUCH_USE_CUSTOMIZER' ) && WPTOUCH_USE_CUSTOMIZER == false );
+}

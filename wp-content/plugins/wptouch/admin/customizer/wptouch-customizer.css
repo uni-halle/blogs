@@ -1,3 +1,8 @@
+/* @override 
+	http://wptp3.local.com/wp-content/plugins/wptouch/admin/customizer/wptouch-customizer.css?ver=dedd978ae5fb3a373069b1e3fc92b8fd
+	http://wptp3.local.com/wp-content/plugins/wptouch/admin/customizer/wptouch-customizer.css?ver=604453858cb7940492f90684752e14dd
+*/
+
 /* WPtouch Customizer Styling */
 
 a:focus {
@@ -5,6 +10,36 @@ a:focus {
 	box-shadow: none;
 }
 
+#wptouch-pro-notice {
+	width: 180px;
+	position: absolute;
+	background-color: rgba(0,0,0,.5);
+	right: 10px;
+	border-radius: 12px;
+	text-align: center;
+	padding: 15px;
+	color: #fff;
+	border: 1px dashed rgba(0,0,0,.6);
+	bottom: 10px;
+}
+
+#wptouch-pro-notice span {
+	border-radius: 4px;
+	background-color: #bf1900;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	padding: 2px 6px;
+	border: 1px dashed rgba(255,255,255,.4);
+}
+
+#wptouch-pro-notice .button {
+	border-style: none;
+	margin-top: 20px;
+	display: block;
+	font-weight: bold;
+}
 
 /* @group Customizer */
 
@@ -84,6 +119,7 @@ li#customize-control-blogname, li#customize-control-blogdescription {
 }
 
 #customize-preview iframe {
+	overflow: scroll;
 	-webkit-transition-duration: .33s;
 	transition-duration: .33s;
 	position: absolute;
@@ -92,9 +128,9 @@ li#customize-control-blogname, li#customize-control-blogdescription {
 	left: 0;
 	bottom: 0;
 	z-index: 1;
-	border-radius: 18px;
-	background-color: rgba(255,255,255,.1);
-	padding: 50px 16px 70px;
+	border-radius: 12px;
+	background-color: rgba(0,0,0,0.2);
+	padding: 35px 16px 70px;
 	width: 340px;
 	height: 600px;
 }
@@ -106,13 +142,12 @@ li#customize-control-blogname, li#customize-control-blogdescription {
 	height: 374px;
 	margin-top: -240px;
 	top: 50%;
-	left: -160px;
 }
 
 #customize-preview.landscape iframe  {
 	width: 600px;
 	height: 340px;
-	padding: 16px 70px 16px 50px;
+	padding: 16px 70px 16px 34px;
 }
 
 /* @end */
@@ -163,9 +198,8 @@ li#customize-control-blogname, li#customize-control-blogdescription {
 
 .toggle-wrapper {
 	position: absolute;
-	background-color: rgba(0,0,0,0.3);
+	background-color: rgba(0,0,0,0.2);
 	padding: 6px;
-	top: 0;
 	right: 0;
 	width: 100%;
 	left: 0;
@@ -177,6 +211,7 @@ li#customize-control-blogname, li#customize-control-blogdescription {
     user-select: none;
 	height: 34px;
 	text-align: right;
+	top: 0;
 }
 
 .toggle-inner {
@@ -187,7 +222,7 @@ li#customize-control-blogname, li#customize-control-blogdescription {
 	color: rgba(255,255,255,.6);
 	display: inline-block;
 	font-size: 11px;
-	margin-right: 10px;
+	margin-top: 8px;
 }
 
 .toggle-wrapper i {
@@ -196,7 +231,6 @@ li#customize-control-blogname, li#customize-control-blogdescription {
 	font-size: 24px;
 	color: rgba(255,255,255,.15);
 	vertical-align: middle;
-	margin-top: 3px;
 	cursor: pointer;
 }
 

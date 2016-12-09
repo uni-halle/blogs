@@ -96,18 +96,10 @@ function foundation_sharing_settings( $page_options ) {
 			'social-sharing',
 			array(
 				wptouch_add_setting(
-					'no-setting-text',
-					'share_info',
-					__( 'Will show Facebook, Twitter, Pinterest and Email buttons.', 'wptouch-pro' ),
-					false,
-					WPTOUCH_SETTING_BASIC,
-					'2.0'
-				),
-				wptouch_add_setting(
 					'checkbox',
 					'show_share',
 					__( 'Show sharing links on posts', 'wptouch-pro' ),
-					false,
+					__( 'Will show Facebook, Twitter, Pinterest and Email buttons.', 'wptouch-pro' ),
 					WPTOUCH_SETTING_BASIC,
 					'2.0'
 				),

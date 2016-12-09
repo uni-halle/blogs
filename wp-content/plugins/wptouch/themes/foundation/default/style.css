@@ -93,6 +93,10 @@ hr {
 	margin: 1% 8%;
 }
 
+.post li.sow-carousel-item {
+	margin: 0;
+}
+
 blockquote, q {
 	margin-left: 5%;
 	margin-right: 5%;
@@ -415,7 +419,7 @@ to {
 
 /* @group Load More, Infinite */
 
-.load-more-link, .infinite-link, .load-more-comments-wrap, .load-more-post-link, .load-more-page-link {
+.load-more-link, .infinite-link, .load-more-comments-wrap, .load-more-post-link, .load-more-page-link, .load-more-custom-link {
 	display: block;
 	width: 100%;
 	text-align: center;
@@ -497,6 +501,7 @@ to {
 .nav-controls a.next-post {
 	padding-top: 8px;
 	padding-bottom: 8px;
+    word-wrap: break-word;
 }
 
 .nav-controls a.prev-post:before {
@@ -515,17 +520,23 @@ to {
 
 /* @group Swipe */
 
-.swipe {
+#slider {
 	overflow: hidden;
+	position: relative;
 	border-bottom: 0;
 }
 
-.swipe * {
+#slider * {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-touch-callout: none;
 }
 
-.swipe img {
+#slider .owl-item {
+	height: 220px;
+	overflow: hidden;
+}
+
+#slider img {
 	width: 114%;
 	margin-left: -7%;
 }
@@ -545,7 +556,7 @@ to {
 	height: 274px;
 }
 
-.swipe p {
+#slider p {
 	background-color: rgba(0,0,0,0.6);
 	text-align: center;
 	font-size: 100%;
@@ -560,15 +571,11 @@ to {
 	left: 0;
 }
 
-.rtl .swipe p {
-	direction: rtl;
-}
-
 p.featured-date, #slider .comments-number {
 	display: none;
 }
 
-.dark-body .swipe {
+.dark-body #slider {
 	border-bottom: 1px solid rgba(0,0,0,.1);
 	-webkit-box-shadow: rgba(255,255,255,.05) 0px 1px 0px;
 	box-shadow: rgba(255,255,255,.05) 0px 1px 0px;
@@ -588,7 +595,15 @@ ul.dots {
 	margin-bottom: -30px;
 }
 
-ul.dots li {
+.owl-dots {
+	position: absolute;
+	text-align: center;
+	top: 0;
+	width: 100%;
+}
+
+ul.dots li,
+.owl-dot {
 	width: 6px;
 	height: 6px;
 	border-radius: 4px;
@@ -600,7 +615,9 @@ ul.dots li {
 	display: inline-block;
 }
 
-ul.dots li.active {
+ul.dots li.active,
+.owl-dot.active {
+	background-color: rgba( 255, 255, 255, .75);
 	-webkit-box-shadow: inset rgba(255,255,255,.05) 0px 1px 0px, rgba(255,255,255,.05) 0px 1px 0px;
 	box-shadow: inset rgba(255,255,255,.05) 0px 1px 0px, rgba(255,255,255,.05) 0px 1px 0px;
 }
@@ -1422,7 +1439,7 @@ span.wpcf7-form-control-wrap {
 	bottom: 30px;
 	left: 30px;
 	transition: background-color .5s linear;
-	z-index: 1;
+	z-index: 100;
 }
 
 .smartphone.web-app-mode .back-button.visible {

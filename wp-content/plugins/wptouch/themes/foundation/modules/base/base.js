@@ -124,10 +124,15 @@ function wptouchFdnSetupShowHideToggles() {
 			}
 
 			jQuery( this ).toggleClass( 'toggle-open' );
-			jQuery( '#' + targetId ).attr( 'data-source-click', linkId ).webkitSlideToggle();
+
+			if ( !jQuery(e.target).hasClass('menu-btn') || !jQuery( '.pushit' ).hasClass( 'slideout-menu' ) ) {
+				jQuery( '#' + targetId ).attr( 'data-source-click', linkId ).webkitSlideToggle();
+			}
 
 			e.preventDefault();
-			e.stopImmediatePropagation();
+			if ( !jQuery(e.target).hasClass('menu-btn') || !jQuery( '.pushit' ).hasClass( 'slideout-menu' ) || jQuery( this ).attr( 'id' ) != 'menu-toggle' ) {
+				e.stopImmediatePropagation();
+			}
 		});
 	});
 }

@@ -98,6 +98,7 @@ body {
 .comment-author, .comment-time, .comment-body {
 	margin-left: 0px;
 	margin-right: 65px;
+	word-wrap: break-word;
 }
 
 #comments .comment-avatar {
@@ -126,10 +127,6 @@ body {
 /* @end */
 
 /* @group Slider */
-
-#slider {
-	direction: ltr;
-}
 
 #slider a p.featured-date {
 	text-align: right;

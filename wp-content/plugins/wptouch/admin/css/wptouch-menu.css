@@ -1,5 +1,19 @@
 /* @override http://wptp3.local.com/wp-content/plugins/wptouch-pro/admin/css/wptouch-menu.css?ver=4.0b4 */
 
+.menu-item  .menu-item-settings {
+	z-index: inherit;
+}
+
+.menu-item-settings::after {
+    content: ' ';
+    display: block;
+    clear: both;
+}
+
+.pending .wptouch-menu-icon {
+	display: none;
+}
+
 #icon-picker {
 	display: none;
 	overflow: hidden;

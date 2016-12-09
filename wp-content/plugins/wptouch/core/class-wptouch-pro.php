@@ -62,7 +62,7 @@ class WPtouchProFour {
 	var $cache_smash;
 
 	// Shortcodes that must process before AJAX shortcode request
-	var $preprocess_shortcodes = array( 'gallery', 'new_royalslider' );
+	var $preprocess_shortcodes = array( 'gallery', 'new_royalslider', 'contact-form-7', 'metaslider' );
 
 	function WPtouchProFour() {
 		$this->is_mobile_device = false;
@@ -291,7 +291,14 @@ class WPtouchProFour {
 		} else {
 			if ( $this->should_do_desktop_shortcode_magic( $settings ) ) {
 				add_filter( 'wptouch_force_mobile_device', array( &$this, 'shortcode_override' ) );
-				add_action( 'init', array( &$this, 'handle_desktop_shortcode' ) );
+
+				if ( defined( 'WPTOUCH_SHORTCODE_TIMING' ) ) {
+					$shortcode_priority = WPTOUCH_SHORTCODE_TIMING;
+				} else {
+					$shortcode_priority = 10;
+				}
+
+				add_action( 'init', array( &$this, 'handle_desktop_shortcode' ), $shortcode_priority);
 			}
 
 			add_action( 'wp', array( &$this, 'set_cache_cookie' ) );
@@ -328,10 +335,14 @@ class WPtouchProFour {
 			if ( $this->should_do_desktop_shortcode_magic( $settings ) && ( $this->is_mobile_device && $this->showing_mobile_theme ) ) {
 				remove_filter( 'the_content', 'wptexturize' );
 
+				// allow custom preprocess_shortcodes
+				$custom_preprocess_shortcodes = array();
+				$custom_preprocess_shortcodes = apply_filters( 'wptouch_preprocess_shortcodes', $custom_preprocess_shortcodes );
+
 				// Need finer-grain control over what gets processed or not.
 				global $shortcode_tags;
 				foreach ( $shortcode_tags as $shortcode => $object ) {
-					if ( !in_array( $shortcode, $this->preprocess_shortcodes ) ) {
+					if ( !in_array( $shortcode, $this->preprocess_shortcodes ) && !in_array( $shortcode, $custom_preprocess_shortcodes ) ) {
 						unset ( $shortcode_tags[ $shortcode ] );
 					}
 				}
@@ -384,9 +395,18 @@ class WPtouchProFour {
 
 			global $woocommerce;
 
-			if ( is_singular() && ( !is_object( $woocommerce ) || !( is_cart() || is_checkout() ) ) ) {
+			if ( is_singular() && ( !is_object( $woocommerce ) || !( is_account_page() || is_cart() || is_checkout() ) ) ) {
 				$should_regenerate = true;
+				global $page;
+
 				$shortcode_data = get_post_meta( get_the_ID(), 'wptouch_sc_data', true );
+
+				if ( is_array( $shortcode_data ) && isset( $shortcode_data[ 'page-' . $page ] ) ) {
+					$shortcode_data = $shortcode_data[ 'page-' . $page ];
+				} else {
+					$shortcode_data = false;
+				}
+
 				if ( $shortcode_data ) {
 					if ( $shortcode_data->has_desktop_shortcode ) {
 						if ( $shortcode_data->valid_until > time() ) {
@@ -415,7 +435,9 @@ class WPtouchProFour {
 					$styles_object = wp_styles();
 					update_post_meta( get_the_ID(), 'wptouch_sc_styles', $styles_object->queue );
 
-					$content = '<div class="wptouch-sc-content" data-post-id="' . get_the_ID() . '"></div><div style="display: none;" class="wptouch-orig-content">' . $content . '</div>';
+					global $page;
+
+					$content = '<div class="wptouch-sc-content" data-post-id="' . get_the_ID() . '" data-page="' . $page . '"></div><div style="display: none;" class="wptouch-orig-content">' . $content . '</div>';
 				} else {
 					$content = wptexturize( $content );
 
@@ -486,23 +508,33 @@ class WPtouchProFour {
 			}
 
 			$post = get_post( $this->post[ 'post_id' ] );
+			$page = $this->post[ 'page' ];
 			$post_content = $this->post[ 'post_content' ];
 
 			if ( $post ) {
-				// Save data for later
-				$shortcode_data = new stdClass;
+				$shortcode_data = get_post_meta( $this->post[ 'post_id' ], 'wptouch_sc_data', true );
 
-				$shortcode_data->has_desktop_shortcode = 1;
+				if ( is_object( $shortcode_data ) ) {
+					delete_post_meta( $this->post[ 'post_id'], 'wptouch_sc_data' );
+					$shortcode_data = "";
+				}
+
+				// Save data for later
+				$page_shortcode_data = new stdClass;
+
+				$page_shortcode_data->has_desktop_shortcode = 1;
 
 				// Prevent mobile content from overriding this
 				remove_action( 'the_content', 'wptouch_addon_the_content_mobile_content', 1 );
 				$content = apply_filters( 'the_content', $post_content );
 
-				$shortcode_data->scripts = $this->desktop_shortcode_get_assets( $this->post[ 'post_id' ], 'scripts' );
-				$shortcode_data->styles = $this->desktop_shortcode_get_assets( $this->post[ 'post_id' ], 'styles' );
+				$page_shortcode_data->scripts = $this->desktop_shortcode_get_assets( $this->post[ 'post_id' ], 'scripts' );
+				$page_shortcode_data->styles = $this->desktop_shortcode_get_assets( $this->post[ 'post_id' ], 'styles' );
 
-				$shortcode_data->valid_until = time() + 3600*24;
-				$shortcode_data->shortcode_content = $content;
+				$page_shortcode_data->valid_until = time() + 3600*24;
+				$page_shortcode_data->shortcode_content = $content;
+
+				$shortcode_data[ 'page-' . $page ] = $page_shortcode_data;
 
 				echo $content;
 
@@ -728,7 +760,7 @@ class WPtouchProFour {
 	}
 
 	function set_cache_cookie() {
-		if ( !is_admin() && function_exists( 'wptouch_cache_admin_bar' ) ) {
+		if ( !is_admin() && ( function_exists( 'wptouch_cache_admin_bar' ) || function_exists( 'wptouch_power_pack_admin_bar') ) ) {
 			global $wptouch_pro;
 
 			$cookie_value = 'desktop';
@@ -743,6 +775,8 @@ class WPtouchProFour {
 
 			if ( function_exists( 'wptouch_addon_should_cache_desktop' ) ) {
 				$cache_desktop = wptouch_addon_should_cache_desktop();
+			} else if ( function_exists( 'wptouch_power_pack_should_cache_desktop' ) ) {
+				$cache_desktop = wptouch_power_pack_should_cache_desktop();
 			} else {
 				$cache_desktop = false;
 			}
@@ -825,7 +859,7 @@ class WPtouchProFour {
 		$this->handle_admin_menu_commands();
 		$this->setup_automatic_backup();
 
-		wptouch_update_info();
+		// wptouch_update_info();
 	}
 
 	function setup_automatic_backup() {
@@ -1086,7 +1120,7 @@ class WPtouchProFour {
 		// We can have a mobile device detected, but not show the mobile theme
 		// usually this is a result of the user manually disabling it via a link in the footer
 		if ( $this->is_mobile_device ) {
-			$this->showing_mobile_theme = ( !isset( $_COOKIE[WPTOUCH_COOKIE] ) || $_COOKIE[WPTOUCH_COOKIE] === 'mobile' );
+			$this->showing_mobile_theme = ( !isset( $_COOKIE[WPTOUCH_COOKIE] ) || $_COOKIE[WPTOUCH_COOKIE] === 'mobile' || wptouch_is_customizing_mobile() );
 
 			if ( $this->showing_mobile_theme ) {
 				if ( $settings->url_filter_behaviour != 'disabled' && $settings->filtered_urls ) {
@@ -1685,6 +1719,7 @@ class WPtouchProFour {
 
 	function get_theme_information( $theme_location, $theme_url ) {
 		$style_file = $theme_location . '/readme.txt';
+
 		if ( file_exists( $style_file ) ) {
 			$style_info = $this->load_file( $style_file );
 
@@ -1701,6 +1736,15 @@ class WPtouchProFour {
 			$theme_info->long_description = '';
 			$theme_info->changelog = '';
 			$theme_info->preview_images = array();
+
+			if ( preg_match_all( '#== Long Description ==(.*)(==|\z)#sUi', $style_info, $matches ) ) {
+				$theme_info->long_description = $matches[1][0];
+			}
+
+			if ( preg_match_all( '#== Changelog ==(.*)(==|\z)#sUi', $style_info, $matches ) ) {
+				$changelog = str_replace( array( "= ", "=\n", '* ' ), array( '<em>', '</em><ul><li>', '</li><li>' ), $matches[1][0] );
+				$theme_info->changelog = $changelog . '</li></ul>';
+			}
 
 			$features = $this->get_information_fragment( $style_info, 'Features' );
 
@@ -1871,8 +1915,8 @@ class WPtouchProFour {
 			}
 		}
 
-			uksort( $addons, 'strnatcasecmp' );
-
+		uksort( $addons, 'strnatcasecmp' );
+		
 		return $addons;
 	}
 
@@ -2540,7 +2584,7 @@ class WPtouchProFour {
 					$settings_defaults = $settings;
 
 					// merge settings
-					switch_to_blog( $current_blog_id );
+					restore_current_blog();
 				}
 			}
 		}
@@ -2793,7 +2837,6 @@ class WPtouchProFour {
 		delete_site_transient( '_wptouch_available_cloud_addons' );
 		delete_site_transient( '_wptouch_available_cloud_themes' );
 		delete_site_transient( '_wptouch_bncid_latest_version' );
-		delete_site_transient( '_wptouch_language_info' );
 	}
 
 	function activate_license() {
@@ -3238,12 +3281,10 @@ class WPtouchProFour {
 		require_once( WPTOUCH_DIR . '/core/admin-settings.php' );
 		wptouch_settings_process( $this );
 
-		$this->delete_theme_add_on_cache();
-
 		$new_settings = wptouch_get_settings();
 
 		if ( function_exists( 'wptouch_pro_update_site_info' ) && $update_info ) {
-			wptouch_pro_update_site_info();
+			//wptouch_pro_update_site_info();
 		}
 	}
 

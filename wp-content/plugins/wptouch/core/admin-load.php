@@ -22,7 +22,6 @@ function wptouch_admin_check_api() {
 	wptouch_check_api();
 }
 
-
 function wptouch_admin_build_menu( $network_admin = false ) {
 	wptouch_admin_check_api();
 
@@ -77,7 +76,7 @@ function wptouch_add_page_section( $sub_page_name, $section_name, $section_slug,
 	$skip_domains = array( ADDON_SETTING_DOMAIN, 'multisite', 'wptouch_pro', 'bncid' );
 	$skip_pages = array( 'Compatibility', 'Web-App Mode', 'Basic Ads', 'General' );
 
-	if ( defined( 'WPTOUCH_IS_FREE' ) ) {
+	if ( !wptouch_admin_use_customizer() ) {
 		$use_customizer = false;
 	}
 
@@ -115,15 +114,15 @@ function _wptouch_add_setting( $type, $name, $desc = '', $tooltip = '', $level =
 		$type = 'list';
 	}
 
-	if ( defined( 'WPTOUCH_IS_FREE' ) && $type == 'select' ) {
+	if ( !wptouch_admin_use_customizer() && $type == 'select' ) {
 		$type = 'list';
 	}
 
-	if ( defined( 'WPTOUCH_IS_FREE' ) && $type == 'range' ) {
+	if ( !wptouch_admin_use_customizer() && $type == 'range' ) {
 		$type = 'text';
 	}
 
-	if ( defined( 'WPTOUCH_IS_FREE' ) && $type == 'url' ) {
+	if ( !wptouch_admin_use_customizer() && $type == 'url' ) {
 		$type = 'text';
 	}
 
@@ -284,6 +283,10 @@ function wptouch_admin_render_custom_page( $slug = false ) {
 	$panel_options = do_action( 'wptouch_admin_page_render_custom', $admin_panel_name );
 }
 
+function wptouch_should_show_setting( $setting ) {
+	return true;
+}
+
 function wptouch_section_has_visible_settings( $section ) {
 	$viewable_settings = 0;
 
@@ -291,7 +294,7 @@ function wptouch_section_has_visible_settings( $section ) {
 
 	if ( isset( $section->settings) && is_array( $section->settings ) && count( $section->settings ) ) {
 		foreach( $section->settings as $setting ) {
-			if ( !$setting->is_pro || !defined( 'WPTOUCH_IS_FREE' ) ) {
+			if ( wptouch_should_show_setting( $setting ) ) {
 				// This setting is viewable
 				$viewable_settings++;
 			}
