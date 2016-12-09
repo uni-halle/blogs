@@ -5,7 +5,7 @@ Plugin URI: http://www.nsp-code.com
 Description: Posts Order and Post Types Objects Order using a Drag and Drop Sortable javascript capability
 Author: Nsp Code
 Author URI: http://www.nsp-code.com 
-Version: 1.8.7
+Version: 1.9
 Text Domain: post-types-order
 Domain Path: /languages/
 */
@@ -269,14 +269,14 @@ Domain Path: /languages/
                 
             $current_menu_order = $post->menu_order;
             
-            $query = "SELECT p.* FROM $wpdb->posts AS p
+            $query = $wpdb->prepare( "SELECT p.* FROM $wpdb->posts AS p
                         $_join
-                        WHERE p.post_date < '". $post->post_date ."'  AND p.menu_order = '".$current_menu_order."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' $_where";
+                        WHERE p.post_date < %s  AND p.menu_order = %d AND p.post_type = %s AND p.post_status = 'publish' $_where" ,  $post->post_date, $current_menu_order, $post->post_type);
             $results = $wpdb->get_results($query);
                     
             if (count($results) > 0)
                     {
-                        $where .= " AND p.menu_order = '".$current_menu_order."'";
+                        $where .= $wpdb->prepare( " AND p.menu_order = %d", $current_menu_order );
                     }
                 else
                     {
@@ -349,14 +349,14 @@ Domain Path: /languages/
             $current_menu_order = $post->menu_order;
             
             //check if there are more posts with lower menu_order
-            $query = "SELECT p.* FROM $wpdb->posts AS p
+            $query = $wpdb->prepare( "SELECT p.* FROM $wpdb->posts AS p
                         $_join
-                        WHERE p.post_date > '". $post->post_date ."' AND p.menu_order = '".$current_menu_order."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' $_where";
+                        WHERE p.post_date > %s AND p.menu_order = %d AND p.post_type = %s AND p.post_status = 'publish' $_where", $post->post_date, $current_menu_order, $post->post_type );
             $results = $wpdb->get_results($query);
                     
             if (count($results) > 0)
                     {
-                        $where .= " AND p.menu_order = '".$current_menu_order."'";
+                        $where .= $wpdb->prepare(" AND p.menu_order = %d", $current_menu_order );
                     }
                 else
                     {
