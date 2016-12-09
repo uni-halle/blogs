@@ -96,7 +96,7 @@ if ( ! class_exists( 'TC_resources' ) ) :
           'dependencies' => array( 'tc-js-arraymap-proto', 'jquery', 'tc-js-params' )
         ),
         'tc-img-original-sizes' => array(
-          'path' => 'inc/assets/js/parts/',
+          'path' => 'inc/assets/js/jquery-plugins/',
           'files' => array( 'jqueryimgOriginalSizes.js' ),
           'dependencies' => array('jquery')
         ),
@@ -110,23 +110,33 @@ if ( ! class_exists( 'TC_resources' ) ) :
           'files' => array( 'outline.js' ),
           'dependencies' => array()
         ),
-        'tc-dropcap' => array(
+        'tc-waypoints' => array(
           'path' => 'inc/assets/js/parts/',
+          'files' => array( 'waypoints.js' ),
+          'dependencies' => array('jquery')
+        ),
+        'tc-dropcap' => array(
+          'path' => 'inc/assets/js/jquery-plugins/',
           'files' => array( 'jqueryaddDropCap.js' ),
           'dependencies' => array( 'tc-js-arraymap-proto', 'jquery' , 'tc-js-params', 'tc-bootstrap', 'underscore' )
         ),
         'tc-img-smartload' => array(
-          'path' => 'inc/assets/js/parts/',
+          'path' => 'inc/assets/js/jquery-plugins/',
           'files' => array( 'jqueryimgSmartLoad.js' ),
           'dependencies' => array( 'tc-js-arraymap-proto', 'jquery' , 'tc-js-params', 'tc-bootstrap', 'underscore' )
         ),
         'tc-ext-links' => array(
-          'path' => 'inc/assets/js/parts/',
+          'path' => 'inc/assets/js/jquery-plugins/',
           'files' => array( 'jqueryextLinks.js' ),
           'dependencies' => array( 'tc-js-arraymap-proto', 'jquery' , 'tc-js-params', 'tc-bootstrap', 'underscore' )
         ),
+        'tc-parallax' => array(
+          'path' => 'inc/assets/js/jquery-plugins/',
+          'files' => array( 'jqueryParallax.js' ),
+          'dependencies' => array( 'tc-js-arraymap-proto', 'jquery' , 'tc-js-params', 'tc-bootstrap', 'underscore' )
+        ),
         'tc-center-images' => array(
-          'path' => 'inc/assets/js/parts/',
+          'path' => 'inc/assets/js/jquery-plugins/',
           'files' => array( 'jqueryCenterImages.js' ),
           'dependencies' => array( 'tc-js-arraymap-proto', 'jquery' , 'tc-js-params', 'tc-img-original-sizes', 'tc-bootstrap', 'underscore' )
         ),
@@ -192,12 +202,12 @@ if ( ! class_exists( 'TC_resources' ) ) :
 			else {
         wp_enqueue_script( 'underscore' );
         //!!mind the dependencies
-        $this -> tc_enqueue_script( array( 'tc-js-params', 'tc-js-arraymap-proto', 'tc-img-original-sizes', 'tc-bootstrap', 'tc-smoothscroll', 'tc-outline' ) );
+        $this -> tc_enqueue_script( array( 'tc-js-params', 'tc-js-arraymap-proto', 'tc-img-original-sizes', 'tc-bootstrap', 'tc-smoothscroll', 'tc-outline', 'tc-waypoints' ) );
 
         if ( $this -> tc_is_fancyboxjs_required() )
           $this -> tc_enqueue_script( 'tc-fancybox' );
 
-        $this -> tc_enqueue_script( array( 'tc-dropcap' , 'tc-img-smartload', 'tc-ext-links', 'tc-center-images', 'tc-main-front' ) );
+        $this -> tc_enqueue_script( array( 'tc-dropcap' , 'tc-img-smartload', 'tc-ext-links', 'tc-center-images', 'tc-parallax', 'tc-main-front' ) );
 			}//end of load concatenate script if
 
       //carousel options
@@ -437,7 +447,7 @@ if ( ! class_exists( 'TC_resources' ) ) :
 
       //adapt the selectors in edit context => add specificity for the mce-editor
       if ( ! is_null( $_context ) ) {
-        $titles = ".{$_context} .h1, .{$_context} h2, .{$_context} h3";
+        $titles = ".{$_context} h1, .{$_context} h2, .{$_context} h3";
         $body   = "body.{$_context}";
       }
 
