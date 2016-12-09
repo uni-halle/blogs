@@ -3,8 +3,8 @@ Contributors: nsp-code
 Donate link: http://www.nsp-code.com/donate.php
 Tags: category order,terms order, taxonomy order, admin order
 Requires at least: 2.8
-Tested up to: 4.4
-Stable tag: 1.4.7
+Tested up to: 4.5.2
+Stable tag: 1.4.8
 
 Order Categories and all custom taxonomies terms (hierarchically) and child terms using a Drag and Drop Sortable javascript capability. No Theme update is required.
 
@@ -35,6 +35,10 @@ Feel free to contact me at electronice_delphi@yahoo.com
 
 Yes, this is the right tool for you. The plugin come with a unique feature to update the queries on the fly and return the terms in the required ored without changing any line of code. Or as alternative you can do that manually.
 
+= I prefer to apply the sort through code, how can be done? =
+
+Include a 'orderby' => 'term_order' within your get_terms() arguments.
+
 = What taxonomies will allow me to sort? =
 
 You can sort ALL taxonomies, including the default Categories.
@@ -48,6 +52,12 @@ Absolutelly, the plugin can do that. In fact you can configure so only the admin
 All ideas are welcome and i put them on my list to be implemented into the new versions. Anyway this may take time, but if you are in a rush, please consider a small donation and we can arrange something.
 
 == Change Log ==
+
+= 1.4.8 =
+  - textomain folder fix
+  - Translation fix for user roles
+  - the_title filter replced with terms_walker 
+  - Add Nonce for admin settings
 
 = 1.4.7 =
   - Texdomain change to taxonomy-terms-order to allow translations through translate.wordpress.org

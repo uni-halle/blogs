@@ -5,7 +5,7 @@ function to_plugin_options()
     {
         $options = get_option('tto_options');
         
-        if (isset($_POST['form_submit']))
+        if (isset($_POST['to_form_submit']) &&  wp_verify_nonce($_POST['to_form_nonce'],'to_form_submit') )
             {
                     
                 $options['capability'] = sanitize_key($_POST['capability']);
@@ -35,11 +35,11 @@ function to_plugin_options()
                                             <th scope="row" style="text-align: right;"><label><?php _e( "Minimum Level to use this plugin", 'taxonomy-terms-order' ) ?></label></th>
                                             <td>
                                                 <select id="role" name="capability">
-                                                    <option value="read" <?php if (isset($options['capability']) && $options['capability'] == "read") echo 'selected="selected"'?>><?php _e('Subscriber', 'cpt') ?></option>
-                                                    <option value="edit_posts" <?php if (isset($options['capability']) && $options['capability'] == "edit_posts") echo 'selected="selected"'?>><?php _e('Contributor', 'cpt') ?></option>
-                                                    <option value="publish_posts" <?php if (isset($options['capability']) && $options['capability'] == "publish_posts") echo 'selected="selected"'?>><?php _e('Author', 'cpt') ?></option>
-                                                    <option value="publish_pages" <?php if (isset($options['capability']) && $options['capability'] == "publish_pages") echo 'selected="selected"'?>><?php _e('Editor', 'cpt') ?></option>
-                                                    <option value="install_plugins" <?php if (!isset($options['capability']) || empty($options['capability']) || (isset($options['capability']) && $options['capability'] == "install_plugins")) echo 'selected="selected"'?>><?php _e('Administrator', 'cpt') ?></option>
+                                                    <option value="read" <?php if (isset($options['capability']) && $options['capability'] == "read") echo 'selected="selected"'?>><?php _e('Subscriber', 'taxonomy-terms-order') ?></option>
+                                                    <option value="edit_posts" <?php if (isset($options['capability']) && $options['capability'] == "edit_posts") echo 'selected="selected"'?>><?php _e('Contributor', 'taxonomy-terms-order') ?></option>
+                                                    <option value="publish_posts" <?php if (isset($options['capability']) && $options['capability'] == "publish_posts") echo 'selected="selected"'?>><?php _e('Author', 'taxonomy-terms-order') ?></option>
+                                                    <option value="publish_pages" <?php if (isset($options['capability']) && $options['capability'] == "publish_pages") echo 'selected="selected"'?>><?php _e('Editor', 'taxonomy-terms-order') ?></option>
+                                                    <option value="install_plugins" <?php if (!isset($options['capability']) || empty($options['capability']) || (isset($options['capability']) && $options['capability'] == "install_plugins")) echo 'selected="selected"'?>><?php _e('Administrator', 'taxonomy-terms-order') ?></option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -73,7 +73,8 @@ function to_plugin_options()
                                     <input type="submit" name="Submit" class="button-primary" value="<?php _e('Save Settings', 'taxonomy-terms-order') ?>">
                                </p>
                             
-                                <input type="hidden" name="form_submit" value="true" />
+                                <?php wp_nonce_field('to_form_submit','to_form_nonce'); ?>
+                                <input type="hidden" name="to_form_submit" value="true" />
                                 
                             </form>
                                                         

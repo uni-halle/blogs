@@ -3,7 +3,7 @@
 Plugin Name: Category Order and Taxonomy Terms Order
 Plugin URI: http://www.nsp-code.com
 Description: Category Order and Taxonomy Terms Order
-Version: 1.4.7
+Version: 1.4.8
 Author: Nsp-Code
 Author URI: http://www.nsp-code.com
 Author Email: electronice_delphi@yahoo.com
@@ -57,7 +57,7 @@ Domain Path: /languages/
     add_action( 'plugins_loaded', 'to_load_textdomain'); 
     function to_load_textdomain() 
         {
-            load_plugin_textdomain('taxonomy-terms-order', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/lang');
+            load_plugin_textdomain('taxonomy-terms-order', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages');
         }
         
     add_action('admin_print_scripts', 'TO_admin_scripts');
