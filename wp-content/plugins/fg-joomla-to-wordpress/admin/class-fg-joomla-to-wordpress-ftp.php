@@ -2,7 +2,7 @@
 /**
  * FTP module
  *
- * @link       http://www.fredericgilles.net/fg-joomla-to-wordpress/
+ * @link       https://www.fredericgilles.net/fg-joomla-to-wordpress/
  * @since      2.7.0
  *
  * @package    FG_Joomla_to_WordPress_Premium

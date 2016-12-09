@@ -1,4 +1,4 @@
-		<p><?php _e('If you found this plugin useful and it saved you many hours or days, please rate it on <a href="https://wordpress.org/support/view/plugin-reviews/fg-joomla-to-wordpress">FG Joomla to WordPress</a>. You can also make a donation using the button below.', 'fg-joomla-to-wordpress'); ?></p>
+		<p><?php printf(__('If you found this plugin useful and it saved you many hours or days, please rate it on %s.', 'fg-joomla-to-wordpress'), '<a href="https://wordpress.org/support/plugin/fg-joomla-to-wordpress/reviews/#new-post" target="_blank">WordPress.org</a>'); ?> <?php _e('You can also make a donation using the button below.', 'fg-joomla-to-wordpress'); ?></p>
 		
 		<div id="fgj2wp_paypal_donate" class="center">
 			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">

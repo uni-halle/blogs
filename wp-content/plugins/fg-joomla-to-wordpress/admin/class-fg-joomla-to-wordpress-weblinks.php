@@ -42,15 +42,11 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 		 * 							all = removes all
 		 * @return boolean
 		 */
-		public function empty_links($action) {
+		public function empty_links() {
 			global $wpdb;
-			$result = true;
 
-			if ( $action == 'all' ) {
-				$sql = "TRUNCATE $wpdb->links";
-				$result = $wpdb->query($sql);
-				update_option('fgj2wp_last_link_id', 0);
-			}
+			$result = $wpdb->query("TRUNCATE $wpdb->links");
+			update_option('fgj2wp_last_link_id', 0);
 			return ($result !== false);
 		}
 
@@ -166,6 +162,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 		/**
 		 * Get the WordPress database info
 		 * 
+		 * @param string $database_info Database info
 		 * @return string Database info
 		 */
 		public function get_database_info($database_info) {

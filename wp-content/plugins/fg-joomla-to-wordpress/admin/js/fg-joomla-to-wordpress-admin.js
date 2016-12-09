@@ -7,6 +7,7 @@
 	    
 	    plugin_id: 'fgj2wp',
 	    fatal_error: '',
+	    is_logging: false,
 	    
 	    /**
 	     * Manage the behaviour of the Skip Media checkbox
@@ -22,8 +23,8 @@
 		var confirm_message;
 		var action = $('input:radio[name=empty_action]:checked').val();
 		switch ( action ) {
-		    case 'newposts':
-			confirm_message = objectL10n.delete_new_posts_confirmation_message;
+		    case 'imported':
+			confirm_message = objectL10n.delete_imported_data_confirmation_message;
 			break;
 		    case 'all':
 			confirm_message = objectL10n.delete_all_confirmation_message;
@@ -40,16 +41,18 @@
 	     * Start the logger
 	     */
 	    start_logger: function() {
-		that.stop_logger_triggered = false;
-		clearTimeout(that.timeout);
-		that.timeout = setTimeout(that.update_display, 1000);
+		that.is_logging = true;
+		clearTimeout(that.display_logs_timeout);
+		clearTimeout(that.update_progressbar_timeout);
+		clearTimeout(that.update_wordpress_info_timeout);
+		that.update_display();
 	    },
 	    
 	    /**
 	     * Stop the logger
 	     */
 	    stop_logger: function() {
-		that.stop_logger_triggered = true;
+		that.is_logging = false;
 	    },
 	    
 	    
@@ -57,44 +60,44 @@
 	     * Update the display
 	     */
 	    update_display: function() {
-		that.timeout = setTimeout(that.update_display, 1000);
-		
-		// Actions
-		if ( $("#logger_autorefresh").is(":checked") ) {
-		    that.display_logs();
-		}
+		that.display_logs();
 		that.update_progressbar();
 		that.update_wordpress_info();
-		
-		if ( that.stop_logger_triggered ) {
-		    clearTimeout(that.timeout);
-		}
 	    },
 	    
 	    /**
 	     * Display the logs
 	     */
 	    display_logs: function() {
-		$.ajax({
-		    url: objectPlugin.log_file_url,
-		    cache: false
-		}).done(function(result) {
-		    $("#logger").html('');
-		    result.split("\n").forEach(function(row) {
-			if ( row.substr(0, 7) === '[ERROR]' || row === 'IMPORT STOPPED BY USER') {
-			    row = '<span class="error_msg">' + row + '</span>'; // Mark the errors in red
+		if ( $("#logger_autorefresh").is(":checked") ) {
+		    $.ajax({
+			url: objectPlugin.log_file_url,
+			cache: false
+		    }).done(function(result) {
+			$("#logger").html('');
+			result.split("\n").forEach(function(row) {
+			    if ( row.substr(0, 7) === '[ERROR]' || row.substr(0, 9) === '[WARNING]' || row === 'IMPORT STOPPED BY USER') {
+				row = '<span class="error_msg">' + row + '</span>'; // Mark the errors in red
+			    }
+			    // Test if the import is complete
+			    else if ( row === 'IMPORT COMPLETE' ) {
+				row = '<span class="complete_msg">' + row + '</span>'; // Mark the complete message in green
+				$('#action_message').html(objectL10n.import_complete)
+				.removeClass('failure').addClass('success');
+			    }
+			    $("#logger").append(row + "<br />\n");
+
+			});
+			$("#logger").append('<span class="error_msg">' + that.fatal_error + '</span>' + "<br />\n");
+			if ( that.is_logging ) {
+			    that.display_logs_timeout = setTimeout(that.display_logs, 1000);
 			}
-			// Test if the import is complete
-			else if ( row === 'IMPORT COMPLETE' ) {
-			    row = '<span class="complete_msg">' + row + '</span>'; // Mark the complete message in green
-			    $('#action_message').html(objectL10n.import_complete)
-			    .removeClass('failure').addClass('success');
-			}
-			$("#logger").append(row + "<br />\n");
-			
 		    });
-		    $("#logger").append('<span class="error_msg">' + that.fatal_error + '</span>' + "<br />\n");
-		});
+		} else {
+		    if ( that.is_logging ) {
+			that.display_logs_timeout = setTimeout(that.display_logs, 1000);
+		    }
+		}
 	    },
 
 	    /**
@@ -109,6 +112,9 @@
 		    // Move the progress bar
 		    var progress = Number(result.current) / Number(result.total) * 100;
 		    $('#progressbar').progressbar('option', 'value', progress);
+		    if ( that.is_logging ) {
+			that.update_progressbar_timeout = setTimeout(that.update_progressbar, 1000);
+		    }
 		});
 	    },
 
@@ -123,6 +129,9 @@
 		    data: data
 		}).done(function(result) {
 		    $('#fgj2wp_database_info_content').html(result);
+		    if ( that.is_logging ) {
+			that.update_wordpress_info_timeout = setTimeout(that.update_wordpress_info, 1000);
+		    }
 		});
 	    },
 	    
@@ -142,7 +151,10 @@
 			method: "POST",
 			url: ajaxurl,
 			data: data
-		    }).done(function() {
+		    }).done(function(result) {
+			if (result) {
+			    that.fatal_error = result;
+			}
 			that.stop_logger();
 			$('#empty').removeAttr('disabled'); // Enable the button
 			alert(objectL10n.content_removed_from_wordpress);
@@ -267,6 +279,7 @@
 			that.fatal_error = result;
 		    }
 		    that.stop_logger();
+		    that.update_display(); // Get the latest information after the import was stopped
 		    that.reactivate_import_button();
 		});
 		return false;
@@ -300,6 +313,7 @@
 		    $('#stop-import').removeAttr('disabled'); // Enable the button
 		    that.reactivate_import_button();
 		});
+		that.stop_logger();
 		return false;
 	    },
 	    

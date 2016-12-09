@@ -39,7 +39,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Modules_Check', false) ) {
 		 * @since    2.0.0
 		 */
 		public function check_modules() {
-			$premium_url = 'http://www.fredericgilles.net/fg-joomla-to-wordpress/';
+			$premium_url = 'https://www.fredericgilles.net/fg-joomla-to-wordpress/';
 			$message_premium = __('Your Joomla database contains %s. You need the <a href="%s" target="_blank">Premium version</a> to import them.', 'fg-joomla-to-wordpress');
 			if ( defined('FGJ2WPP_LOADED') ) {
 				// Message for the Premium version
@@ -162,7 +162,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Modules_Check', false) ) {
 				list($table, $count, $plugin, $message) = $module;
 					if ( !is_plugin_active($plugin) ) {
 						if ( $this->count($table) > $count ) {
-							$this->plugin->display_admin_error($message);
+							$this->plugin->display_admin_warning($message);
 						}
 					}
 			}
@@ -170,7 +170,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Modules_Check', false) ) {
 			// Check if we need the WPML module
 			if ( ($this->count_languages() > 2) && !is_plugin_active('fg-joomla-to-wordpress-premium-wpml-module/fgj2wp-wpml.php') && !$this->plugin->table_exists('jf_content') ) {
 				$message = sprintf($message_addon, __('several languages', 'fg-joomla-to-wordpress'), $premium_url, $premium_url . 'wpml/', __('WPML add-on', 'fg-joomla-to-wordpress'));
-				$this->plugin->display_admin_error($message);
+				$this->plugin->display_admin_warning($message);
 			}
 		}
 

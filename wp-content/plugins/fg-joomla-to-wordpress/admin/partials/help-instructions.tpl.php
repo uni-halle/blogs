@@ -1,4 +1,4 @@
-<div id="fgj2wp-help-instructions">
+<div id="fgj2wp_help_instructions">
 
 <h1>FG Joomla to WordPress Instructions</h1>
 <img src="https://ps.w.org/fg-joomla-to-wordpress/assets/fg-joomla-to-wordpress.png" alt="FG Joomla to WordPress screenshot" />
@@ -23,15 +23,10 @@ The plugin will move your Joomla images to the WordPress media library and will 
 <h2>Step 3:</h2>
 <h3>Run the import</h3>
 <p>After having chosen the different import options (see the options help tab), you click on this button to run the import. It can take a long time depending on the number of articles and images in Joomla.</p>
-<p>If the screen becomes blank, let it turn until it finishes. Once the process is finished, it will display the import results.</p>
+<p>Once the process is finished, it will display the import results.</p>
 <p>If the process stops before having imported all the content, you can run it again and it will continue where it left off. This may happen if you have a timeout on your server or if the memory becomes low. In this case, ensure that the automatic removal checkbox is not checked.</p>
 
 <h2>Step 4:</h2>
-<h3>Remove the prefixes from the categories</h3>
-<p>During the categories import, the plugin has added some prefixes to all the categories to make them unique. This feature is necessary in order to manage eventual duplicate categories in Joomla.</p>
-<p>After the import has finished, you are free to remove these prefixes by using this button.</p>
-
-<h2>Step 5:</h2>
 <h3>Modify the internal links</h3>
 <p>Click on this button to modify the links inside each post or page to make them point to the new WordPress URLs.</p>
 

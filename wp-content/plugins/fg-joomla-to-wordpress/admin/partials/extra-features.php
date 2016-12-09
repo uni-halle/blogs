@@ -35,7 +35,7 @@
 			<li><?php _e('RSGallery images', 'fg-joomla-to-wordpress'); ?><sup>*</sup></li>
 		</ul>
 		<div class="center">
-			<a href="http://www.fredericgilles.net/fg-joomla-to-wordpress/" target="_blank"><img src="http://www.fredericgilles.net/wp-content/uploads/premium-version.png" alt="Buy Premium Version" /></a>
+			<a href="https://www.fredericgilles.net/fg-joomla-to-wordpress/" target="_blank"><img src="https://www.fredericgilles.net/wp-content/uploads/premium-version.png" alt="Buy Premium Version" /></a>
 		</div>
 		<p><sup>*</sup><?php _e('This feature needs an add-on in addition to the Premium version.', 'fg-joomla-to-wordpress'); ?></p>
 		<hr />

@@ -30,6 +30,8 @@
 						<input id="featured_image_first_image" name="featured_image" type="radio" value="first_image" <?php checked($data['featured_image'], 'first_image'); ?> /> <label for="featured_image_first_image" title="<?php _e('Use the first image from the content', 'fg-joomla-to-wordpress'); ?>"><?php _e('first content image', 'fg-joomla-to-wordpress'); ?></label>&nbsp;&nbsp;
 						<input id="featured_image_none" name="featured_image" type="radio" value="none" <?php checked($data['featured_image'], 'none'); ?> /> <label for="featured_image_none" title="<?php _e("Don't use featured images", 'fg-joomla-to-wordpress'); ?>"><?php _e('none', 'fg-joomla-to-wordpress'); ?></label>
 						<br />
+						<input id="only_featured_image" name="only_featured_image" type="checkbox" value="1" <?php checked($data['only_featured_image'], 1); ?> /> <label for="only_featured_image"><?php _e("Import only the featured images. Don't import the other images", 'fg-joomla-to-wordpress'); ?></label>
+						<br />
 						<input id="remove_first_image" name="remove_first_image" type="checkbox" value="1" <?php checked($data['remove_first_image'], 1); ?> /> <label for="remove_first_image"><?php _e('Remove the first image from the content when it is used as the featured image', 'fg-joomla-to-wordpress'); ?></label>
 						<br />
 						<input id="import_external" name="import_external" type="checkbox" value="1" <?php checked($data['import_external'], 1); ?> /> <label for="import_external"><?php _e('Import external media', 'fg-joomla-to-wordpress'); ?></label>
