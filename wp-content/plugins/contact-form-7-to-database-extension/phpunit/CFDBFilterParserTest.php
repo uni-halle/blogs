@@ -1341,7 +1341,7 @@ function filterFalse() {
 class ChangeNameToValue implements CFDBValueConverter {
     var $name;
     var $value;
-    function ChangeNameToValue($name, $value) {
+    function __construct($name, $value) {
         $this->name = $name;
         $this->value = $value;
     }

@@ -103,7 +103,7 @@ class CF7DBOptionsManagerSubClass extends CF7DBOptionsManager {
         return $optionsMetaData;
     }
 
-    protected function getMySqlVersion() {
+    public function getMySqlVersion() {
         return 'My MySQL Version';
     }
 

@@ -20,6 +20,7 @@
 */
 
 require_once('ShortCodeLoader.php');
+require_once('CFDBPostDataConverter.php');
 
 class CFDBShortCodeSaveFormMakerSubmission extends ShortCodeLoader {
 
@@ -39,43 +40,11 @@ class CFDBShortCodeSaveFormMakerSubmission extends ShortCodeLoader {
 //        print_r($_FILES);
 //        echo '</pre>';
 
-        if (is_array($_POST) && !empty($_POST)) {
-            $title = isset($_POST[self::FORM_TITLE_FIELD]) ? $_POST[self::FORM_TITLE_FIELD] : self::DEFAULT_FORM_TITLE;
-            $posted_data = array();
-            $uploaded_files = array();
-
-            // Get posted values
-            foreach ($_POST as $key => $val) {
-                $posted_data[$key] = $val;
-            }
-
-
-            // Deal with upload files
-            // $_FILES = Array (
-            //    [your-upload] => Array
-            //        (
-            //            [name] => readme.txt
-            //            [type] => text/plain
-            //            [tmp_name] => /tmp/php3tQ1zg
-            //            [error] => 0
-            //            [size] => 1557
-            //        )
-            //)
-            if (is_array($_FILES) && !empty($_FILES)) {
-                foreach ($_FILES as $key => $file) {
-                    if (is_uploaded_file($file['tmp_name'])) {
-                        $posted_data[$key] = $file['name'];
-                        $uploaded_files[$key] = $file['tmp_name'];
-                    }
-                }
-            }
-
-
-            // Prepare data structure for call to hook
-            $data = (object)array('title' => $title,
-                    'posted_data' => $posted_data,
-                    'uploaded_files' => $uploaded_files);
-
+        $converter = new CFDBPostDataConverter();
+        $converter->addExcludeField(self::FORM_TITLE_FIELD);
+        $title = isset($_POST[self::FORM_TITLE_FIELD]) ? $_POST[self::FORM_TITLE_FIELD] : self::DEFAULT_FORM_TITLE;
+        $data = $converter->convert($title);
+        if ($data) {
             // Call hook to submit data
             do_action_ref_array('cfdb_submit', array(&$data));
         }

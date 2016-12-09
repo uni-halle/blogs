@@ -297,85 +297,7 @@ class CF7DBOptionsManager {
             }
         }
 
-        // HTML for the page
-        $settingsGroup = get_class($this) . '-settings-group';
-        ?>
-            <style type="text/css">
-                table.cfdb-options-table {width: 100%}
-                table.cfdb-options-table tr:nth-child(even) {background: #f9f9f9}
-                table.cfdb-options-table tr:nth-child(odd) {background: #FFF}
-                table.cfdb-options-table td {width: 350px}
-                table.cfdb-options-table td+td {width: auto}
-            </style>
-        <div class="wrap">
-            <h2><?php echo htmlspecialchars(__('System Settings', 'contact-form-7-to-database-extension')); ?></h2>
-            <table><tbody>
-                <?php
-                if (function_exists('php_uname')) {
-                    try { ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars(__('System', 'contact-form-7-to-database-extension')); ?></td>
-                            <td><?php echo php_uname(); ?></td>
-                        </tr>
-                    <?php
-                    } catch (Exception $ex) {}
-                }?>
-            <tr><td><?php echo htmlspecialchars(__('PHP Version', 'contact-form-7-to-database-extension')); ?></td>
-                <td><?php echo phpversion(); ?>
-                <?php
-                if (version_compare('5.2', phpversion()) > 0) {
-                    echo '&nbsp;&nbsp;&nbsp;<span style="background-color: #ffcc00;">';
-                    echo htmlspecialchars(__('(WARNING: This plugin may not work properly with versions earlier than PHP 5.2)', 'contact-form-7-to-database-extension'));
-                    echo '</span>';
-                }
-                ?>
-                </td>
-            </tr>
-            <tr><td><?php echo htmlspecialchars(__('MySQL Version', 'contact-form-7-to-database-extension')); ?></td>
-                <td><?php echo $this->getMySqlVersion() ?>
-                    <?php
-                    echo '&nbsp;&nbsp;&nbsp;<span style="background-color: #ffcc00;">';
-                    if (version_compare('5.0', $this->getMySqlVersion()) > 0) {
-                        echo htmlspecialchars(__('(WARNING: This plugin may not work properly with versions earlier than MySQL 5.0)', 'contact-form-7-to-database-extension'));
-                    }
-                    echo '</span>';
-                    ?>
-                </td>
-            </tr>
-            </tbody></table>
 
-            <h2><img src="<?php echo $this->getPluginFileUrl('img/icon-50x50.png') ?>" alt=""/>
-                <?php echo htmlspecialchars(__('Settings', 'contact-form-7-to-database-extension')); ?></h2>
-
-            <form method="post" action="">
-            <?php settings_fields($settingsGroup); ?>
-                <table class="cfdb-options-table"><tbody>
-                <?php
-        if ($optionMetaData != null) {
-                    foreach ($optionMetaData as $aOptionKey => $aOptionMeta) {
-                        $displayText = is_array($aOptionMeta) ? $aOptionMeta[0] : $aOptionMeta;
-                        $displayText = __($displayText, 'contact-form-7-to-database-extension');
-                        ?>
-                            <tr valign="top">
-                                <td><p><label for="<?php echo $aOptionKey ?>"><?php echo $displayText ?></label></p></td>
-                                <td>
-                                <?php $this->createFormControl($aOptionKey, $aOptionMeta, $this->getOption($aOptionKey)); ?>
-                                </td>
-                            </tr>
-                        <?php
-
-                    }
-                }
-                ?>
-                </tbody></table>
-                <p class="submit">
-                    <input type="submit" class="button-primary"
-                           value="<?php echo htmlspecialchars(__('Save Changes', 'contact-form-7-to-database-extension')); ?>"/>
-                </p>
-
-            </form>
-        </div>
-        <?php
 
     }
 
@@ -386,7 +308,7 @@ class CF7DBOptionsManager {
      * @param  $savedOptionValue string current value for $aOptionKey
      * @return void
      */
-    protected function createFormControl($aOptionKey, $aOptionMeta, $savedOptionValue) {
+    public function createFormControl($aOptionKey, $aOptionMeta, $savedOptionValue) {
         if (is_array($aOptionMeta) && count($aOptionMeta) >= 2) { // Drop-down list
             $choices = array_slice($aOptionMeta, 1);
             ?>
@@ -439,7 +361,7 @@ class CF7DBOptionsManager {
      * Query MySQL DB for its version
      * @return string|false
      */
-    protected function getMySqlVersion() {
+    public function getMySqlVersion() {
         global $wpdb;
         $rows = $wpdb->get_results('select version() as mysqlversion');
         if (!empty($rows)) {

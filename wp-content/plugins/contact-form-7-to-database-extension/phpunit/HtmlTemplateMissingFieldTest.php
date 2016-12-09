@@ -34,7 +34,70 @@ class HtmlTemplateMissingFieldTest extends SquashOutputUnitTest {
         $exp->export('dates', $options);
         $text = ob_get_contents();
 
-        $this->assertEquals("Mike Simpson | Oya  | ", $text);
+        $this->assertEquals('Mike Simpson | Oya  | ', $text);
+    }
+
+    public function test_unknown_field_off() {
+        $options = array();
+        $options['content'] = '${fname} ${anunknownfield} | ';
+
+        $exp = new ExportToHtmlTemplate();
+        ob_start();
+        $exp->export('dates', $options);
+        $text = ob_get_contents();
+
+        $this->assertEquals('Mike ${anunknownfield} | Oya ${anunknownfield} | ', $text);
+    }
+
+    public function test_unknown_field_on() {
+        $options = array();
+        $options['content'] = '${fname} ${anunknownfield} | ';
+        $options['unknownfields'] = 'true';
+
+        $exp = new ExportToHtmlTemplate();
+        ob_start();
+        $exp->export('dates', $options);
+        $text = ob_get_contents();
+
+        $this->assertEquals('Mike  | Oya  | ', $text);
+    }
+
+    public function test_unknown_fields_off() {
+        $options = array();
+        $options['content'] = '${fname} ${anunknownfield1} ${anunknownfield2} | ';
+
+        $exp = new ExportToHtmlTemplate();
+        ob_start();
+        $exp->export('dates', $options);
+        $text = ob_get_contents();
+
+        $this->assertEquals('Mike ${anunknownfield1} ${anunknownfield2} | Oya ${anunknownfield1} ${anunknownfield2} | ', $text);
+    }
+
+    public function test_unknown_fields_on() {
+        $options = array();
+        $options['content'] = '${fname} ${anunknownfield1} ${anunknownfield2} | ';
+        $options['unknownfields'] = 'true';
+
+        $exp = new ExportToHtmlTemplate();
+        ob_start();
+        $exp->export('dates', $options);
+        $text = ob_get_contents();
+
+        $this->assertEquals('Mike   | Oya   | ', $text);
+    }
+
+    public function test_unknown_fields_with_default_trans() {
+        $options = array();
+        $options['content'] = '${fname} ${anunknownfield1} ${anunknownfield2} | ';
+        $options['trans'] = 'DefaultField(anunknownfield1,hi,anunknownfield2,there)';
+
+        $exp = new ExportToHtmlTemplate();
+        ob_start();
+        $exp->export('dates', $options);
+        $text = ob_get_contents();
+
+        $this->assertEquals('Mike hi there | Oya hi there | ', $text);
     }
 
 }

@@ -24,9 +24,13 @@ include_once('CFDBEvaluator.php');
 class CFDBSearchEvaluator implements CFDBEvaluator {
 
     var $search;
+    var $words;
+    var $wordCount;
 
     public function setSearch($search) {
         $this->search = strtolower($search);
+        $this->words = explode(' ', $this->search);
+        $this->wordCount = count($this->words);
     }
 
     /**
@@ -39,12 +43,34 @@ class CFDBSearchEvaluator implements CFDBEvaluator {
             return true;
         }
         foreach ($data as $key => $value) {
-            // Any field can match, case insensitive
-            if (false !== strrpos(strtolower($value), $this->search)) {
+            if ($this->search($value, $this->search)) {
                 return true;
             }
         }
+
+        if ($this->wordCount > 1) {
+            // treat space in word as delimiter where all words must appear
+            $count = 0;
+            foreach ($this->words as $word) {
+                foreach ($data as $key => $value) {
+                    if ($this->search($value, $word)) {
+                        $count++;
+                        break;
+                    }
+                }
+            }
+            if ($count == $this->wordCount) {
+                // A match found for each word
+                return true;
+            }
+        }
+
         return false;
+    }
+
+    public function search($haystack, $needle) {
+        // Any field can match, case insensitive
+        return (false !== strrpos(strtolower($haystack), $needle));
     }
 
 }

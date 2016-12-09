@@ -126,6 +126,10 @@ abstract class CF7DBPluginLifeCycle extends CF7DBInstallIndicator {
                          array(&$this, 'settingsPage'));
     }
 
+    public function getSettingsSlug() {
+        return get_class($this) . 'Settings';
+    }
+
     /**
      * @param  $name string name of a database table
      * @return string input prefixed with the Wordpress DB table prefix

@@ -5,14 +5,14 @@ Tags: contact form,database,contact form database,save contact form,form databas
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.2.1
-Tested up to: 4.5
-Stable tag: 2.10.8
+Tested up to: 4.6
+Stable tag: 2.10.24
 
-Saves submitted form data to the database. Export the data to a file or use short codes to display it.
+Saves submitted form data to the database. Export the data to a file or use shortcodes to display it.
 
 == Description ==
 
-The "CFDB" plugin saves contact form submissions to your WordPress database and provides and administration page and short codes to view and display the data.
+The "CFDB" plugin saves contact form submissions to your WordPress database and provides and administration page and shortcodes to view and display the data.
 Video tutorial on the <a href="http://cfdbplugin.com/">CFDB Plugin Site</a>
 
 By simply installing the plugin, it will automatically begin to capture form submissions from:
@@ -22,7 +22,9 @@ By simply installing the plugin, it will automatically begin to capture form sub
 * <a href="https://wordpress.org/plugins/jetpack/">JetPack Contact Form plugin</a>
 * <a href="http://www.gravityforms.com">Gravity Forms plugin</a>
 * <a href="https://wordpress.org/plugins/wr-contactform/">WR ContactForm plugin</a>
+* <a href="https://wordpress.org/plugins/form-maker/">Form Maker plugin</a>
 * <a href="https://wordpress.org/plugins/formidable/">Formidable Forms (BETA)</a>
+* <a href="http://codecanyon.net/item/forms-management-systemwordpress-frontend-plugin/8978741">Forms Management System (BETA)</a>
 * <a href="http://codecanyon.net/item/quform-wordpress-form-builder/706149/">Quform plugin (BETA)</a>
 * <a href="https://wordpress.org/plugins/ninja-forms/">Ninja Forms plugin (BETA)</a>
 * <a href="https://wordpress.org/plugins/caldera-forms/">Caldera Forms plugin (BETA)</a>
@@ -32,18 +34,18 @@ By simply installing the plugin, it will automatically begin to capture form sub
 
 Other form submissions can be saved with the addition of the <a href="http://cfdbplugin.com/?page_id=508">[cfdb-save-form-post]</a> short code on the target submission page.
 
-Contact form plugins are great but generally one thing...the ability to save and retrieve the form data to/from the database.
+Contact form plugins are great except for one thing...the ability to save and retrieve the form data to/from the database.
 If you get a lot of form submissions, then you end up sorting through a lot of email.
 
 This plugin provides three administration pages in the administration area under the "Contact form DB" submenu.
 
 * "Contact form DB" to view and export form submission data
-* "Database Short Code" page to generate short codes and exports
+* "Database Short Code" page to generate shortcodes and exports
 * "Database Options" to change configuration parameters
 
 Displaying Saved Data in Posts and Pages
 
-Use short codes such as [cfdb-html], [cfdb-table], [cfdb-datatable], [cfdb-value] and [cfdb-json] to display the data on a non-admin page on your site.
+Use shortcodes such as [cfdb-html], [cfdb-table], [cfdb-datatable], [cfdb-value] and [cfdb-json] to display the data on a non-admin page on your site.
 Use the short code builder page to set short code options.
 
 == Installation ==
@@ -86,6 +88,79 @@ You can always deactivate the plugin without loosing data.
 1. Admin Panel view of submitted form data
 
 == Changelog ==
+
+= 2.10.24 =
+* Change: the new SplitField transform is changed: can be used to split a single field into multiple fields based on a delimiter in field values.
+If you have field "Choice" with values like "AAA|BBB|CCC" you change that to Choice-1,Choice-2,Choice-3 fields using [cfdb-table form="form" trans="SplitField(Choice,|)"]
+If you don't indicate a delimiter it is assumed to be a comma:
+If you have field "Choice" with values like "AAA,BBB,CCC" you change that to Choice-1,Choice-2,Choice-3 fields using [cfdb-table form="form" trans="SplitField(Choice)"]
+Use "headers" to rename those columns:
+[cfdb-table form="Gravity Form 1" trans="SplitField(List,|)&&SplitField(Option,|)" headers="Option-1=TextOption,Option-2=NumericOption"]
+
+= 2.10.23 =
+* Bug Fix: Admin page Javascript bug exporting file to Google Docs
+* Bug Fix: Shortcode builder page Javascript syntax error in Dutch translation due to quoting
+* Improvement: Identifying IP address of poster - looking at more HTTP Headers
+* New: SplitField transform can be used to split a single field into multiple fields based on a delimiter in field values. If you have field "Choice" with values like "AAA|BBB|CCC" you change that to Choice-1,Choice-2,Choice-3 fields using [cfdb-table form="form" trans="SplitField(|,Choice)"] (use "headers" to rename those columns)
+[cfdb-table form="Gravity Form 1" trans="SplitField(|,List)&&SplitField(|,Option)" headers="Option-1=TextOption,Option-2=NumericOption"]
+* New: DefaultField transform can be used to set the value in a field if it is not defined. [cfdb-table form="form" trans="DefaultField(score1,0,score2,0)"] would set "score1" and "score2" fields to be 0 where they have no value in the DB
+* New: "unknownfields" in [cfdb-html unknownfields="true"] will replace any unknown ${NAME} in the shortcode template with a blank.
+
+= 2.10.22 =
+* Bug Fix: Changed to Caldera Forms 1.4.2 was causing an error when saving submissions
+* Bug Fix: on Shortcode builder page, certain form names with special characters not displaying correctly
+
+= 2.10.21 =
+* Bug Fix: causing short code builder page to fail to generate shortcodes on some sites.
+
+= 2.10.20 =
+* Bug Fix: Form Maker submissions were being saved under "Untitled" instead of "Form Maker" form name when no form_name field specified
+* Bug Fix: Shortcode builder page: sometimes text after < character in filter not showing in shortcode
+
+= 2.10.19 =
+* New: Now saves contact form submissions from Forms Management System. Requires Forms Management 2.7 or later.
+* Bug Fix: Sometimes form data not found in dashboard view when form name is from certain character sets (e.g. Hebrew)
+
+= 2.10.18 =
+* Bug Fix: Shortcode builder & Import pages: Form names with double quotes in drop downs not working properly
+* Improvement: Shortcode builder page layout reorganized using tabs
+* New: CountInField transform (different from CountField) can could choices in one field that have multiple entries (from checkboxe field)
+
+= 2.10.17 =
+* Bug Fix: Admin View: Form names with double quotes on them could not be viewed in the admin panel
+* New: Can save Page Title and Page URL from Contact Form 7 submissions. Enable this in the CFDB Options page.
+* Improvement: Setting option for property "Allow only Administrators to see CFDB administration screens" to true by default
+
+= 2.10.16 =
+* Improvement: In shortcodes and exports, the form name can be a regular express, for example form names starting with "a" [cfdb-table form="/^a"]
+(this is case insensitive based on your MySQL CI setting. It uses a MySQL REGEX, not PHP preg_match)
+* Improvement: Helpful message on CFDB Options page when it cannot be displayed due to inadequate PHP version
+
+= 2.10.15 =
+* Bug Fix: When adding [submit_time] in Contact Form 7 mails, the value might not match what is in the DB depending on your locale setting.
+* Bug Fix: In the CFDB admin page, the WP Footer would appear on top of the CFDB table when it had a lot of entries. The "wpfooter" is not hidden on that page.
+
+= 2.10.14 =
+* New: [in] and [!in] operators for filters, for example filter="name[in]Mike,John,Tom"
+* Bug Fix: (Minor) Exporting from admin window when more than one work entered in the search box did not match what was shown on screen
+* Improvement: When exporting from admin page, if certain rows are selected then only those rows are exported
+* Improvement: Minor display fixes
+
+= 2.10.13 =
+* Improvement: Excel (.xlsx) exports for forms that include files, now have working hyperlinks to download files from the Excel spreadsheet
+
+= 2.10.12 =
+* Improvement: Plugin settings page now organized in tabs
+* Improvement: Minor CSS changes on admin pages
+
+= 2.10.11 =
+* New: changes to support capturing submissions from Very Simple Contact Form and Very Simple Signup Form
+
+= 2.10.10 =
+* Improvement: Admin page allow for the setting of the CSV delimiter for export files. If not set, regional delimiter is used ("," or ";")
+* Change: Previous change set CSV exports to use a delimiter based on the region. This is changed back to always use "," unless "delimiter" parameter sets the delimiter or if new "regionaldelimiter" paramter is set to "true"
+* New: Added transform trans="AddRowNumberField(fieldname,start)" to add a column labeled "fieldname" that simply numbers the rows starting at number "start"
+* New: Integration with Very Simple Contact Form
 
 = 2.10.9 =
 * Bug Fix: Google Spreadsheet Live data: bug was introduced in 2.10.6 where data fetched by IMPORTDATA() could return with wrong delimiter (semicolon instead of comma) based on regional settings for CSV delimiter.
@@ -330,9 +405,9 @@ For example, change trans="field=str_replace(a, b, c)" to trans="field=str_repla
 
 = 2.8 =
 * New: Can put functions in short code filters. <a target="_cfdb_doc" href="http://cfdbplugin.com/?page_id=1073">See documentation</a>
-* New: Can transform data coming into short codes by assigning functions or classes in the new "trans" short code attribute. <a target="_cfdb_doc" href="http://cfdbplugin.com/?page_id=1076">See documentation</a>
+* New: Can transform data coming into shortcodes by assigning functions or classes in the new "trans" short code attribute. <a target="_cfdb_doc" href="http://cfdbplugin.com/?page_id=1076">See documentation</a>
 * New: All short code options can be set to $_POST(value), $_GET(value), $_COOKIE(value)
-* New: Most short codes now allows for an optional "before" and "after" section
+* New: Most shortcodes now allows for an optional "before" and "after" section
 * New: Admin page view now has links on each row to bring up a window with just that entry's data. Easier to read and print (and edit if Editor extension is installed)
 * Bug Fix: Support for MySqli which should fix some character encoding issues
 * Bug Fix: Returning null from cfdb_form_data filter now stops the form from saving
@@ -386,7 +461,7 @@ For example, change trans="field=str_replace(a, b, c)" to trans="field=str_repla
 
 = 2.5.1 =
 * New: Now "headers" option on [cfdb-table] and [cfdb-datatable] allow you to change column header display names, e.g [cfdb-table form="form1" headers="ext_field1=First Name,ext_field2=Last Name"]
-* New: Can now query multiple forms at once in short codes, e.g. [cfdb-table form="form1,form2"]
+* New: Can now query multiple forms at once in shortcodes, e.g. [cfdb-table form="form1,form2"]
 * New: Added RSS URLs
 * New: Can now use regex's in options for forms & fields to ignore and which cookie values to save
 
@@ -440,7 +515,7 @@ The number is the number of random rows to return.
 * Bug Fix: Filters: Handling where one has two ampersands in a filter expression to indicate logical AND but the WordPress editor
 converts them to html-coded version of ampersand.
 * Improvement: Excel IQuery export now takes standard shortcode options
-* New: New "header=false" in table type short codes and IQuery will avoid showing the header.
+* New: New "header=false" in table type shortcodes and IQuery will avoid showing the header.
 
 = 2.2.7 =
 * Bug Fix: Fix to match change to Contact Form 7 version 3.1 where uploaded files were not being saved to the database.
@@ -453,7 +528,7 @@ converts them to html-coded version of ampersand.
 * New: Displays Jalali dates when wp-jalali plugin is installed and activated
 
 = 2.2.4 =
-* New: cfdb-html now supports nested short codes
+* New: cfdb-html now supports nested shortcodes
 * Bug Fix: short code builder for cfdb-html not showing template HTML tags
 * Improvement: if "form" missing from a short code, PHP error no longer happens
 
@@ -480,7 +555,7 @@ no $wpdb->set_charset() method exists. Made code handle this case
 = 2.1 =
 * New: short code: [cfdb-save-form-post]
 * New: [cfdb-html] new option: "stripbr"
-* New: Raw submit_time is available for short codes as a field name
+* New: Raw submit_time is available for shortcodes as a field name
 * Improvement: Removed unnecessary quotes in Short Code builder page for "enc" value in URL generated by [cfdb-export-link]
 * Improvement: On uninstall, table in DB is no longer dropped by default
 * New: When accessing a file link, it will it can now display in the browser instead of forcing a download. Mime-type issues resolves.

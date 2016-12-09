@@ -139,12 +139,25 @@ EOD;
             $cellXML .= ' s="' . $style->getId() . '"';
 
             if (CellHelper::isNonEmptyString($cellValue)) {
-                if ($this->shouldUseInlineStrings) {
-                    $cellXML .= ' t="inlineStr"><is><t>' . $this->stringsEscaper->escape($cellValue) . '</t></is></c>';
-                } else {
-                    $sharedStringId = $this->sharedStringsHelper->writeString($cellValue);
-                    $cellXML .= ' t="s"><v>' . $sharedStringId . '</v></c>';
-                }
+                // CFDB EDIT BEGIN: Special case added to handle HYPERLINK functions
+                // this IF wrapping exiting code in ELSE
+                $matches = array();
+                if (preg_match('/=HYPERLINK\("(.*)","(.*)"\)/', $cellValue, $matches)) {
+                    // Create a Formula
+                    $url = $this->stringsEscaper->escape($matches[1]);
+                    $text = $this->stringsEscaper->escape($matches[2]);
+                    $formula = sprintf('HYPERLINK("%s","%s")', $url, $text);
+                    $cellXML = sprintf(
+                            '<c r="%s%s" t="str"><f>%s</f><v>%s</v></c>',
+                            $columnIndex, $rowIndex, $formula, $text);
+                } else { // CFDB EDIT END
+                    if ($this->shouldUseInlineStrings) {
+                        $cellXML .= ' t="inlineStr"><is><t>' . $this->stringsEscaper->escape($cellValue) . '</t></is></c>';
+                    } else {
+                        $sharedStringId = $this->sharedStringsHelper->writeString($cellValue);
+                        $cellXML .= ' t="s"><v>' . $sharedStringId . '</v></c>';
+                    }
+                } // CFDB EDIT this line
             } else if (CellHelper::isBoolean($cellValue)) {
                 $cellXML .= ' t="b"><v>' . $cellValue . '</v></c>';
             } else if (CellHelper::isNumeric($cellValue)) {

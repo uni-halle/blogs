@@ -75,6 +75,14 @@ class CFDBIntegrationContactForm7 {
                 $data['posted_data'] = $submission->get_posted_data();
                 $data['uploaded_files'] = $submission->uploaded_files();
                 $data['WPCF7_ContactForm'] = $cf7;
+
+                if ('true' == $this->plugin->getOption('IntegrateWithCF7SavePageTitle', 'false', true)) {
+                    $data['posted_data']['Page Title'] = wpcf7_special_mail_tag('', '_post_title', '');
+                }
+                if ('true' == $this->plugin->getOption('IntegrateWithCF7SavePageUrl', 'false', true)) {
+                    $data['posted_data']['Page URL'] = wpcf7_special_mail_tag('', '_post_url', '');
+                }
+
                 return (object) $data;
             }
         }
