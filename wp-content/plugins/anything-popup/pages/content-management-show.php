@@ -125,12 +125,9 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
 		<input type="hidden" name="wp_create_nonce" id="wp_create_nonce" value="<?php echo wp_create_nonce( 'content-management-show-nonce' ); ?>"/>
       </form>	
 	  <div class="tablenav">
-	  <h2>
-	  <a class="button add-new-h2" href="<?php echo ANYTHGPOPUP_ADMIN_URL; ?>&amp;ac=add"><?php _e('Add New', 'anything-popup'); ?></a>
-	  <a class="button add-new-h2" target="_blank" href="<?php echo AnythingPopup_FAV; ?>"><?php _e('Help', 'anything-popup'); ?></a>
-	  </h2>
+	  <a href="<?php echo ANYTHGPOPUP_ADMIN_URL; ?>&amp;ac=add"><input class="button action" type="button" value="<?php _e('Add New', 'anything-popup'); ?>" /></a>
+	  <a target="_blank" href="<?php echo AnythingPopup_FAV; ?>"><input class="button action" type="button" value="<?php _e('Help', 'anything-popup'); ?>" /></a>
 	  </div>
-	  <div style="height:5px"></div>
 	<h3><?php _e('Plugin configuration option', 'anything-popup'); ?></h3>
 	<ol>
 		<li><?php _e('Drag and drop the widget.', 'anything-popup'); ?></li>

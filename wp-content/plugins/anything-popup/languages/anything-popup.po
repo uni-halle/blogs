@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Anything Popup\n"
-"POT-Creation-Date: 2016-04-11 22:43+0800\n"
-"PO-Revision-Date: 2016-04-11 22:43+0800\n"
+"POT-Creation-Date: 2016-11-16 21:29+0800\n"
+"PO-Revision-Date: 2016-11-16 21:29+0800\n"
 "Last-Translator: \n"
 "Language-Team: www.gopiplus.com <www.gopiplus.com>\n"
 "MIME-Version: 1.0\n"
@@ -23,13 +23,13 @@ msgstr ""
 
 #: ../anything-popup.php:233 ../pages/content-management-add.php:201
 #: ../pages/content-management-edit.php:226
-#: ../pages/content-management-show.php:141
+#: ../pages/content-management-show.php:138
 msgid "Check official website for more information"
 msgstr ""
 
 #: ../anything-popup.php:234 ../pages/content-management-add.php:202
 #: ../pages/content-management-edit.php:227
-#: ../pages/content-management-show.php:142
+#: ../pages/content-management-show.php:139
 msgid "click here"
 msgstr ""
 
@@ -205,7 +205,7 @@ msgstr ""
 
 #: ../pages/content-management-add.php:194
 #: ../pages/content-management-edit.php:219
-#: ../pages/content-management-show.php:130
+#: ../pages/content-management-show.php:129
 msgid "Help"
 msgstr ""
 
@@ -231,7 +231,7 @@ msgid "Selected record was successfully deleted."
 msgstr ""
 
 #: ../pages/content-management-show.php:55
-#: ../pages/content-management-show.php:129
+#: ../pages/content-management-show.php:128
 msgid "Add New"
 msgstr ""
 
@@ -272,18 +272,18 @@ msgstr ""
 msgid "No records available."
 msgstr ""
 
-#: ../pages/content-management-show.php:134
+#: ../pages/content-management-show.php:131
 msgid "Plugin configuration option"
 msgstr ""
 
-#: ../pages/content-management-show.php:136
+#: ../pages/content-management-show.php:133
 msgid "Drag and drop the widget."
 msgstr ""
 
-#: ../pages/content-management-show.php:137
+#: ../pages/content-management-show.php:134
 msgid "Add the plugin in the posts or pages using short code."
 msgstr ""
 
-#: ../pages/content-management-show.php:138
+#: ../pages/content-management-show.php:135
 msgid "Add directly in to the theme using PHP code."
 msgstr ""
