@@ -20,39 +20,39 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 if ( !function_exists('generate_spacing_get_defaults') ) :
-	function generate_spacing_get_defaults()
-	{
-		$generate_spacing_defaults = array(
-			'header_top' => '40',
-			'header_right' => '40',
-			'header_bottom' => '40',
-			'header_left' => '40',
-			'menu_item' => '20',
-			'menu_item_height' => '60',
-			'sub_menu_item_height' => '10',
-			'content_top' => '40',
-			'content_right' => '40',
-			'content_bottom' => '40',
-			'content_left' => '40',
-			'separator' => '20',
-			'left_sidebar_width' => '25',
-			'right_sidebar_width' => '25',
-			'widget_top' => '40',
-			'widget_right' => '40',
-			'widget_bottom' => '40',
-			'widget_left' => '40',
-			'footer_widget_container_top' => '40',
-			'footer_widget_container_right' => '0',
-			'footer_widget_container_bottom' => '40',
-			'footer_widget_container_left' => '0',
-			'footer_top' => '20',
-			'footer_right' => '0',
-			'footer_bottom' => '20',
-			'footer_left' => '0',
-		);
-		
-		return apply_filters( 'generate_spacing_option_defaults', $generate_spacing_defaults );
-	}
+function generate_spacing_get_defaults()
+{
+	$generate_spacing_defaults = array(
+		'header_top' => '40',
+		'header_right' => '40',
+		'header_bottom' => '40',
+		'header_left' => '40',
+		'menu_item' => '20',
+		'menu_item_height' => '60',
+		'sub_menu_item_height' => '10',
+		'content_top' => '40',
+		'content_right' => '40',
+		'content_bottom' => '40',
+		'content_left' => '40',
+		'separator' => '20',
+		'left_sidebar_width' => '25',
+		'right_sidebar_width' => '25',
+		'widget_top' => '40',
+		'widget_right' => '40',
+		'widget_bottom' => '40',
+		'widget_left' => '40',
+		'footer_widget_container_top' => '40',
+		'footer_widget_container_right' => '0',
+		'footer_widget_container_bottom' => '40',
+		'footer_widget_container_left' => '0',
+		'footer_top' => '20',
+		'footer_right' => '0',
+		'footer_bottom' => '20',
+		'footer_left' => '0',
+	);
+	
+	return apply_filters( 'generate_spacing_option_defaults', $generate_spacing_defaults );
+}
 endif;
 if ( !function_exists('generate_spacing_css') ) :
 	function generate_spacing_css()
@@ -197,7 +197,8 @@ if ( !function_exists('generate_spacing_css') ) :
 			),
 			
 			'.menu-item-has-children .dropdown-menu-toggle' => array(
-				'padding-right' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
+				'padding-right' => ( isset( $spacing_settings['menu_item'] ) && ! is_rtl() ) ? $spacing_settings['menu_item'] . 'px' : null,
+				'padding-left' => ( isset( $spacing_settings['menu_item'] ) && is_rtl() ) ? $spacing_settings['menu_item'] . 'px' : null,
 			),
 			
 			'.main-navigation .main-nav ul li.menu-item-has-children > a' => array(
@@ -290,18 +291,8 @@ function generate_additional_spacing()
 	// Start the magic
 	$spacing_css = array (
 		
-		'.main-navigation .mobile-bar-items a' => array(
-			'padding-left' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
-			'padding-right' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
-			'line-height' => ( isset( $spacing_settings['menu_item_height'] ) ) ? $spacing_settings['menu_item_height'] . 'px' : null,
-		),
-		
-		'.menu-item-has-children ul .dropdown-menu-toggle' => array (
-			'padding-top' => ( isset( $spacing_settings[ 'sub_menu_item_height' ] ) ) ? $spacing_settings[ 'sub_menu_item_height' ] . 'px' : null,
-			'padding-bottom' => ( isset( $spacing_settings[ 'sub_menu_item_height' ] ) ) ? $spacing_settings[ 'sub_menu_item_height' ] . 'px' : null,
-			'margin-top' => ( isset( $spacing_settings[ 'sub_menu_item_height' ] ) ) ? '-' . $spacing_settings[ 'sub_menu_item_height' ] . 'px' : null,
-		),
-		
+		// Since 1.3.41
+		// Compatibility for GP Premium 1.2.92
 		'.menu-item-has-children .dropdown-menu-toggle' => array(
 			'padding-right' => ( isset( $spacing_settings['menu_item'] ) && ! is_rtl() ) ? $spacing_settings['menu_item'] . 'px' : null,
 			'padding-left' => ( isset( $spacing_settings['menu_item'] ) && is_rtl() ) ? $spacing_settings['menu_item'] . 'px' : null,

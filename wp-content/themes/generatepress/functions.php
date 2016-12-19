@@ -7,8 +7,8 @@
 
 // No direct access, please
 if ( ! defined( 'ABSPATH' ) ) exit;
-	
-define( 'GENERATE_VERSION', '1.3.40');
+
+define( 'GENERATE_VERSION', '1.3.41' );
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 
@@ -65,9 +65,7 @@ function generate_setup()
 	/*
 	 * Add HTML5 theme support
 	 */
-	add_theme_support( 'html5', array(
-		'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
-	) );
+	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 	
 	/*
 	 * Add Logo support
@@ -111,9 +109,11 @@ function generate_get_defaults()
 		'logo' => '',
 		'container_width' => '1100',
 		'header_layout_setting' => 'fluid-header',
+		'header_inner_width' => 'contained',
 		'nav_alignment_setting' => ( is_rtl() ) ? 'right' : 'left',
 		'header_alignment_setting' => ( is_rtl() ) ? 'right' : 'left',
 		'nav_layout_setting' => 'fluid-nav',
+		'nav_inner_width' => 'contained',
 		'nav_position_setting' => 'nav-below-header',
 		'nav_dropdown_type' => 'hover',
 		'nav_search' => 'disable',
@@ -123,6 +123,7 @@ function generate_get_defaults()
 		'single_layout_setting' => 'right-sidebar',
 		'post_content' => 'full',
 		'footer_layout_setting' => 'fluid-footer',
+		'footer_inner_width' => 'contained',
 		'footer_widget_setting' => '3',
 		'back_to_top' => '',
 		'background_color' => '#efefef',
@@ -285,7 +286,7 @@ function generate_scripts()
 	// Font Awesome
 	$icon_essentials = apply_filters( 'generate_fontawesome_essentials', false );
 	$icon_essentials = ( $icon_essentials ) ? '-essentials' : false;
-	wp_enqueue_style( "fontawesome{$icon_essentials}", get_template_directory_uri() . "/css/font-awesome{$icon_essentials}{$suffix}.css", false, '4.6.3', 'all' );
+	wp_enqueue_style( "fontawesome{$icon_essentials}", get_template_directory_uri() . "/css/font-awesome{$icon_essentials}{$suffix}.css", false, '4.7', 'all' );
 	
 	// IE 8
 	wp_enqueue_style( 'generate-ie', get_template_directory_uri() . "/css/ie{$suffix}.css", array( 'generate-style-grid' ), GENERATE_VERSION, 'all' );
@@ -315,7 +316,7 @@ function generate_scripts()
 	}
 	
 	// Move the navigation from below the content on mobile to below the header if it's in a sidebar
-	if ( 'nav-left-sidebar' == $generate_settings['nav_position_setting'] || 'nav-right-sidebar' == $generate_settings['nav_position_setting'] ) {
+	if ( 'nav-left-sidebar' == generate_get_navigation_location() || 'nav-right-sidebar' == generate_get_navigation_location() ) {
 		wp_enqueue_script( 'generate-move-navigation', get_template_directory_uri() . "/js/move-navigation{$suffix}.js", array( 'jquery' ), GENERATE_VERSION, true );
 	}
 	
@@ -481,36 +482,33 @@ function generate_base_css()
 	);
 	
 	// Start the magic
-	$visual_css = array (
-	
-		// Body CSS
-		'body'  => array(
-			'background-color' => $generate_settings['background_color'],
-			'color' => $generate_settings['text_color']
+	$visual_css = array(
+		'body' => array(
+			'background-color' => esc_attr( $generate_settings['background_color'] ),
+			'color' => esc_attr( $generate_settings['text_color'] )
 		),
 		
-		// Link CSS
 		'a, a:visited' => array(
-			'color'				=> $generate_settings['link_color'],
-			'text-decoration' 	=> 'none'
+			'color' => esc_attr( $generate_settings['link_color'] ),
+			'text-decoration' => 'none'
 		),
 		
-		// Visited link color if specified
 		'a:visited' => array(
-			'color' 			=> ( !empty( $generate_settings['link_color_visited'] ) ) ? $generate_settings['link_color_visited'] : null,
+			'color' => ( ! empty( $generate_settings['link_color_visited'] ) ) ? esc_attr( $generate_settings['link_color_visited'] ) : null
 		),
 		
-		// Link hover
 		'a:hover, a:focus, a:active' => array(
-			'color' 			=> $generate_settings['link_color_hover'],
-			'text-decoration' 	=> null
+			'color' => esc_attr( $generate_settings['link_color_hover'] ),
+			'text-decoration' => 'none'
 		),
 		
-		// Grid container
 		'body .grid-container' => array(
-			'max-width' => $generate_settings['container_width'] . 'px'
-		)
+			'max-width' => absint( $generate_settings['container_width'] ) . 'px'
+		),
 		
+		'.page .entry-content' => array(
+			'margin-top' => ( ! generate_show_title() ) ? '0px' : null
+		)
 	);
 	
 	// Output the above CSS

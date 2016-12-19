@@ -41,6 +41,9 @@ function generate_body_classes( $classes )
 	// Get the layout
 	$layout = generate_get_layout();
 	
+	// Get the navigation location
+	$navigation_location = generate_get_navigation_location();
+	
 	// Get the footer widgets
 	$widgets = generate_get_footer_widgets();
 	
@@ -55,7 +58,7 @@ function generate_body_classes( $classes )
 	
 	// Layout classes
 	$classes[] = ( $layout ) ? $layout : 'right-sidebar';
-	$classes[] = ( $generate_settings['nav_position_setting'] ) ? $generate_settings['nav_position_setting'] : 'nav-below-header';
+	$classes[] = ( $navigation_location ) ? $navigation_location : 'nav-below-header';
 	$classes[] = ( $generate_settings['header_layout_setting'] ) ? $generate_settings['header_layout_setting'] : 'fluid-header';
 	$classes[] = ( $generate_settings['content_layout_setting'] ) ? $generate_settings['content_layout_setting'] : 'separate-containers';
 	$classes[] = ( '' !== $widgets ) ? 'active-footer-widgets-' . $widgets : 'active-footer-widgets-3';
@@ -92,11 +95,6 @@ function generate_body_classes( $classes )
 		$classes[] = 'dropdown-click';
 	} else {
 		$classes[] = 'dropdown-hover';
-	}
-	
-	// Adds a class of group-blog to blogs with more than 1 published author
-	if ( is_multi_author() ) {
-		$classes[] = 'group-blog';
 	}
 
 	return $classes;
@@ -314,15 +312,9 @@ function generate_inside_header_classes( $classes )
 {
 	
 	$classes[] = 'inside-header';
-
-	// Get theme options
-	$generate_settings = wp_parse_args( 
-		get_option( 'generate_settings', array() ), 
-		generate_get_defaults() 
-	);
-	$header_layout = $generate_settings['header_layout_setting'];
+	$inner_header_width = generate_get_setting( 'header_inner_width' );
 	
-	if ( $header_layout == 'fluid-header' || $header_layout == '' ) :
+	if ( $inner_header_width !== 'full-width' ) :
 		$classes[] = 'grid-container';
 		$classes[] = 'grid-parent';
 	endif;
@@ -351,6 +343,28 @@ function generate_navigation_classes( $classes )
 	$nav_layout = $generate_settings['nav_layout_setting'];
 	
 	if ( $nav_layout == 'contained-nav' ) :
+		$classes[] = 'grid-container';
+		$classes[] = 'grid-parent';
+	endif;
+
+	return $classes;
+	
+}
+endif;
+
+if ( ! function_exists( 'generate_inside_navigation_classes' ) ) :
+/**
+ * Adds custom classes to the inner navigation
+ * @since 1.3.41
+ */
+add_filter( 'generate_inside_navigation_class', 'generate_inside_navigation_classes');
+function generate_inside_navigation_classes( $classes )
+{
+	
+	$classes[] = 'inside-navigation';
+	$inner_nav_width = generate_get_setting( 'nav_inner_width' );
+	
+	if ( $inner_nav_width !== 'full-width' ) :
 		$classes[] = 'grid-container';
 		$classes[] = 'grid-parent';
 	endif;
@@ -394,6 +408,27 @@ function generate_footer_classes( $classes )
 	$footer_layout = $generate_settings['footer_layout_setting'];
 	
 	if ( $footer_layout == 'contained-footer' ) :
+		$classes[] = 'grid-container';
+		$classes[] = 'grid-parent';
+	endif;
+
+	return $classes;
+	
+}
+endif;
+
+if ( ! function_exists( 'generate_inside_footer_classes' ) ) :
+/**
+ * Adds custom classes to the footer
+ * @since 0.1
+ */
+add_filter( 'generate_inside_footer_class', 'generate_inside_footer_classes');
+function generate_inside_footer_classes( $classes )
+{
+	$classes[] = 'inside-footer-widgets';
+	$inside_footer_width = generate_get_setting( 'footer_inner_width' );
+	
+	if ( $inside_footer_width !== 'full-width' ) :
 		$classes[] = 'grid-container';
 		$classes[] = 'grid-parent';
 	endif;

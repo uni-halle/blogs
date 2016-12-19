@@ -287,7 +287,7 @@ function generate_featured_page_header_area($class)
 		return;
 		
 	?>
-	<div class="<?php echo $class; ?> grid-container grid-parent">
+	<div class="<?php echo esc_attr( $class ); ?> grid-container grid-parent">
 		<?php the_post_thumbnail( apply_filters( 'generate_page_header_default_size', 'full' ), array('itemprop' => 'image') ); ?>
 	</div>
 	<?php
@@ -340,7 +340,6 @@ if ( ! function_exists( 'generate_post_image' ) ) :
 add_action( 'generate_after_entry_header', 'generate_post_image' );
 function generate_post_image()
 {
-		
 	// If there's no featured image, return
 	if ( ! has_post_thumbnail() )
 		return;
@@ -349,7 +348,7 @@ function generate_post_image()
 	if ( ! is_singular() && ! is_404() ) {
 	?>
 		<div class="post-image">
-			<a href="<?php the_permalink();?>" title="<?php the_title(); ?>"><?php the_post_thumbnail( apply_filters( 'generate_page_header_default_size', 'full' ), array('itemprop' => 'image') ); ?></a>
+			<a href="<?php the_permalink();?>" title="<?php esc_attr( the_title() ); ?>"><?php the_post_thumbnail( apply_filters( 'generate_page_header_default_size', 'full' ), array('itemprop' => 'image') ); ?></a>
 		</div>
 	<?php
 	}
@@ -374,7 +373,7 @@ function generate_navigation_search()
 			
 	?>
 	<form method="get" class="search-form navigation-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-		<input type="search" class="search-field" value="<?php echo esc_attr( get_search_query() ); ?>" name="s" title="<?php _ex( 'Search', 'label', 'generatepress' ); ?>">
+		<input type="search" class="search-field" value="<?php echo esc_attr( get_search_query() ); ?>" name="s" title="<?php esc_attr( _ex( 'Search', 'label', 'generatepress' ) ); ?>">
 	</form>
 	<?php
 }
@@ -400,7 +399,7 @@ function generate_menu_search_icon( $nav, $args )
 	
 	// If our primary menu is set, add the search icon
     if( $args->theme_location == 'primary' )
-        return $nav . '<li class="search-item" title="' . _x( 'Search', 'submit button', 'generatepress' ) . '"><a href="#"><i class="fa fa-fw fa-search" aria-hidden="true"></i><span class="screen-reader-text">' . _x( 'Search', 'submit button', 'generatepress' ) . '</span></a></li>';
+        return $nav . '<li class="search-item" title="' . esc_attr_x( 'Search', 'submit button', 'generatepress' ) . '"><a href="#"><i class="fa fa-fw fa-search" aria-hidden="true"></i><span class="screen-reader-text">' . _x( 'Search', 'submit button', 'generatepress' ) . '</span></a></li>';
 	
 	// Our primary menu isn't set, return the regular nav
 	// In this case, the search icon is added to the generate_menu_fallback() function in navigation.php
@@ -429,10 +428,10 @@ function generate_mobile_menu_search_icon()
 	?>
 	<div class="mobile-bar-items">
 		<?php do_action( 'generate_inside_mobile_menu_bar' ); ?>
-		<span class="search-item" title="<?php _ex( 'Search', 'submit button', 'generatepress' ); ?>">
+		<span class="search-item" title="<?php esc_attr( _ex( 'Search', 'submit button', 'generatepress' ) ); ?>">
 			<a href="#">
 				<i class="fa fa-fw fa-search" aria-hidden="true"></i>
-				<span class="screen-reader-text"><?php _ex( 'Search', 'submit button', 'generatepress' ); ?></span>
+				<span class="screen-reader-text"><?php esc_attr( _ex( 'Search', 'submit button', 'generatepress' ) ); ?></span>
 			</a>
 		</span>
 	</div><!-- .mobile-bar-items -->
@@ -597,7 +596,11 @@ function generate_construct_site_title()
 	if ( false == $disable_title || false == $disable_tagline ) : ?>
 		<div class="site-branding">
 			<?php if ( false == $disable_title ) : ?>
-				<p class="main-title" itemprop="headline"><a href="<?php echo apply_filters( 'generate_site_title_href', esc_url( home_url( '/' ) ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<?php if ( is_front_page() && is_home() ) : ?>
+					<h1 class="main-title" itemprop="headline"><a href="<?php echo apply_filters( 'generate_site_title_href', esc_url( home_url( '/' ) ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+				<?php else : ?>
+					<p class="main-title" itemprop="headline"><a href="<?php echo apply_filters( 'generate_site_title_href', esc_url( home_url( '/' ) ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<?php endif; ?>
 			<?php endif;
 				
 			if ( false == $disable_tagline ) : ?>
@@ -645,7 +648,7 @@ function generate_back_to_top()
 	$scroll_speed = apply_filters( 'generate_back_to_top_scroll_speed', 400 );
 	$start_scroll = apply_filters( 'generate_back_to_top_start_scroll', 300 );
 	?>
-	<a title="<?php _e( 'Scroll back to top','generatepress' ); ?>" rel="nofollow" href="#" class="generate-back-to-top" style="display:none;" data-scroll-speed="<?php echo $scroll_speed; ?>" data-start-scroll="<?php echo $start_scroll; ?>"><i class="fa <?php echo $icon;?>" aria-hidden="true"></i><span class="screen-reader-text"><?php _e( 'Scroll back to top','generatepress' ); ?></span></a>
+	<a title="<?php esc_attr_e( 'Scroll back to top','generatepress' ); ?>" rel="nofollow" href="#" class="generate-back-to-top" style="opacity:0;visibility:hidden;" data-scroll-speed="<?php echo absint( $scroll_speed ); ?>" data-start-scroll="<?php echo absint( $start_scroll ); ?>"><i class="fa <?php echo esc_attr( $icon );?>" aria-hidden="true"></i><span class="screen-reader-text"><?php _e( 'Scroll back to top','generatepress' ); ?></span></a>
 	<?php
 }
 endif;
