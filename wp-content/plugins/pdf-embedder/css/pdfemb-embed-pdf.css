@@ -376,3 +376,55 @@ input.pdfemb-page-num {
 .pdfembAnnotationLayer .strikeoutAnnotation {
 	cursor: pointer;
 }
+
+.pdfemb-pageturner {
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    z-index: 8;
+    position: absolute;
+
+    width: 64px;
+    min-height: 96px;
+    height: 100%;
+
+    opacity: 0;
+    background-color: lightgray;
+}
+
+.pdfemb-pageturner-bottomright {
+    bottom: 0px;
+    right: 0px;
+}
+
+.pdfemb-pageturner-bottomright.pdfemb-pageturner-arrow {
+    background-image: url('../img/ptrightarrow.png');
+    background-position: right center;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+    opacity: 0.6;
+
+    transition: opacity 0.45s ease-in-out;
+    -moz-transition: opacity 0.45s ease-in-out;
+    -webkit-transition: opacity 0.45s ease-in-out;
+}
+
+.pdfemb-pageturner-bottomleft {
+    bottom: 0px;
+    left: 0px;
+}
+
+.pdfemb-pageturner-bottomleft.pdfemb-pageturner-arrow {
+    background-image: url('../img/ptleftarrow.png');
+    background-position: left center;
+    background-repeat: no-repeat;
+
+    opacity: 0.6;
+
+    cursor: pointer;
+
+    transition: opacity 0.45s ease-in-out;
+    -moz-transition: opacity 0.45s ease-in-out;
+    -webkit-transition: opacity 0.45s ease-in-out;
+}

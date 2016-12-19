@@ -72,11 +72,11 @@ jQuery(document).ready(function ($) {
 
                 var toolbar_location = divContainer.data('toolbar');
 
-                if (toolbar_location != 'bottom') {
+                if (toolbar_location == 'top' || toolbar_location == 'both') {
                     $.fn.pdfEmbedder.addToolbar(divContainer, true, divContainer.data('toolbar-fixed') == 'on', showIsSecure);
                 }
 
-                if (toolbar_location != 'top') {
+                if (toolbar_location == 'bottom' || toolbar_location == 'both') {
                     $.fn.pdfEmbedder.addToolbar(divContainer, false, divContainer.data('toolbar-fixed') == 'on', showIsSecure);
                 }
 
@@ -167,6 +167,10 @@ jQuery(document).ready(function ($) {
                     $.fn.pdfEmbedder.queueRenderPage(divContainer, newPage);
 
                 });
+
+                if (typeof(pdfembAddPageTurners) == 'function' && divContainer.data('pageturners') == 'on') {
+                    pdfembAddPageTurners(divContainer);
+                }
 
                 // Initial/first page rendering
 
@@ -520,16 +524,20 @@ jQuery(document).ready(function ($) {
 
                 if (pageNum < divContainer.data("pageCount")) {
                     divContainer.find('.pdfemb-next').removeAttr('disabled').removeClass('pdfemb-btndisabled');
+                    divContainer.find('.pdfemb-pageturner-bottomright').removeClass('pdfemb-pageturner-disabled');
                 }
                 else {
                     divContainer.find('.pdfemb-next').attr('disabled','disabled').addClass('pdfemb-btndisabled');
+                    divContainer.find('.pdfemb-pageturner-bottomright').addClass('pdfemb-pageturner-disabled').removeClass('pdfemb-pageturner-arrow');
                 }
 
                 if (pageNum > 1) {
                     divContainer.find('.pdfemb-prev').removeAttr('disabled').removeClass('pdfemb-btndisabled');
+                    divContainer.find('.pdfemb-pageturner-bottomleft').removeClass('pdfemb-pageturner-disabled');
                 }
                 else {
                     divContainer.find('.pdfemb-prev').attr('disabled','disabled').addClass('pdfemb-btndisabled');
+                    divContainer.find('.pdfemb-pageturner-bottomleft').addClass('pdfemb-pageturner-disabled').removeClass('pdfemb-pageturner-arrow');
                 }
 
                 // Do annotations layer

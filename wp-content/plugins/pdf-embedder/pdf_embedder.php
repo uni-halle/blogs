@@ -4,7 +4,7 @@
  * Plugin Name: PDF Embedder
  * Plugin URI: http://wp-pdf.com/
  * Description: Embed PDFs straight into your posts and pages, with flexible width and height. No third-party services required. 
- * Version: 2.7.5
+ * Version: 2.8
  * Author: Dan Lester
  * Author URI: http://wp-pdf.com/
  * License: GPL3
@@ -15,7 +15,7 @@ require_once( plugin_dir_path(__FILE__).'/core/core_pdf_embedder.php' );
 
 class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
 
-	protected $PLUGIN_VERSION = '2.7.5';
+	protected $PLUGIN_VERSION = '2.8';
 	
 	protected function useminified() {
 		/* using-minified */ return true;
@@ -48,18 +48,18 @@ class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
 
     public function pdfemb_wp_enqueue_scripts() {
 		if (!$this->useminified()) {
-			wp_register_script( 'pdfemb_versionspecific_pdf_js', $this->my_plugin_url().'js/pdfemb-basic.js', array('jquery'));
-			wp_register_script( 'pdfemb_grabtopan_js', $this->my_plugin_url().'js/grabtopan-basic.js', array('jquery'));
-			wp_register_script( 'pdfemb_embed_pdf_js', $this->my_plugin_url().'js/pdfemb-embed-pdf.js', array('pdfemb_versionspecific_pdf_js', 'pdfemb_grabtopan_js', 'jquery') );
+			wp_register_script( 'pdfemb_versionspecific_pdf_js', $this->my_plugin_url().'js/pdfemb-basic.js', array('jquery'), $this->PLUGIN_VERSION);
+			wp_register_script( 'pdfemb_grabtopan_js', $this->my_plugin_url().'js/grabtopan-basic.js', array('jquery'), $this->PLUGIN_VERSION);
+			wp_register_script( 'pdfemb_embed_pdf_js', $this->my_plugin_url().'js/pdfemb-embed-pdf.js', array('pdfemb_versionspecific_pdf_js', 'pdfemb_grabtopan_js', 'jquery'), $this->PLUGIN_VERSION );
 		}
 		else {
-			wp_register_script( 'pdfemb_embed_pdf_js', $this->my_plugin_url().'js/all-pdfemb-basic.min.js', array('jquery') );
+			wp_register_script( 'pdfemb_embed_pdf_js', $this->my_plugin_url().'js/all-pdfemb-basic.min.js', array('jquery'), $this->PLUGIN_VERSION );
 		}
 		
 		wp_localize_script( 'pdfemb_embed_pdf_js', 'pdfemb_trans', $this->get_translation_array() );
 	
-		wp_register_script( 'pdfemb_compat_js', $this->my_plugin_url().'js/pdfjs/compatibility'.($this->useminified() ? '.min' : '').'.js');
-		wp_register_script( 'pdfemb_pdf_js', $this->my_plugin_url().'js/pdfjs/pdf'.($this->useminified() ? '.min' : '').'.js', array('pdfemb_compat_js'));
+		wp_register_script( 'pdfemb_compat_js', $this->my_plugin_url().'js/pdfjs/compatibility'.($this->useminified() ? '.min' : '').'.js', array(), $this->PLUGIN_VERSION);
+		wp_register_script( 'pdfemb_pdf_js', $this->my_plugin_url().'js/pdfjs/pdf'.($this->useminified() ? '.min' : '').'.js', array('pdfemb_compat_js'), $this->PLUGIN_VERSION);
 	}
 	
 	protected function get_extra_js_name() {
@@ -82,9 +82,9 @@ class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
 
 		<br class="clear" />
 
-		<label for="pdfemb_tracking" class="textinput"><?php esc_html_e('Track Views/Downloads', 'pdf-embedder'); ?></label>
+		<label for="pdfemb_pageturners" class="textinput"><?php esc_html_e('Page Turners', 'pdf-embedder'); ?></label>
 		<span>
-        <label for="pdfemb_tracking" class="checkbox plain"><?php esc_html_e('Count number of views and downloads', 'pdf-embedder'); ?></label>
+        <label for="pdfemb_pageturners" class="checkbox plain"><?php esc_html_e('Page turner arrows when hovering over edges of PDF', 'pdf-embedder'); ?></label>
         </span>
 
 		<br class="clear" />
@@ -92,6 +92,14 @@ class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
 		<label for="pdfemb_newwindow" class="textinput"><?php esc_html_e('External Links', 'pdf-embedder'); ?></label>
 		<span>
         <label for="pdfemb_newwindow" class="checkbox plain"><?php esc_html_e('Open links in a new browser tab/window', 'pdf-embedder'); ?></label>
+        </span>
+
+
+		<br class="clear" />
+
+		<label for="pdfemb_tracking" class="textinput"><?php esc_html_e('Track Views/Downloads', 'pdf-embedder'); ?></label>
+		<span>
+        <label for="pdfemb_tracking" class="checkbox plain"><?php esc_html_e('Count number of views and downloads', 'pdf-embedder'); ?></label>
         </span>
 
 		<br class="clear" />
@@ -141,7 +149,8 @@ class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
                     <li>Mobile Friendly</li>
                     <li>Download Button</li>
 	                <li>Full screen button</li>
-                    <li>Working Hyperlinks</li>
+	                <li>Working Hyperlinks</li>
+	                <li>Page Turners</li>
                     <li>Jump to page number</li>
 					<li>Track views and downloads</li>
                     <li>Remove link to wp-pdf.com</li>
