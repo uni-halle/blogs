@@ -3,7 +3,7 @@ Contributors: Ramoonus
 Donate link: http://www.ramoonus.nl/donate/
 Tags: html5, html, javascript, ie, internet explorer, css 3, css3, modernizr
 Requires at least: 3.9
-Tested up to: 4.6
+Tested up to: 4.7
 Stable tag: 2.8.4
 
 This plugin adds the Modernizr to your WordPress installation.
@@ -22,7 +22,7 @@ For documentation visit http://www.modernizr.com/docs/
 
 == Changelog ==
 = 2.8.4 =
-* Improved deregistering code. Code by [Gal Baras](http://get-business-online.com/)
+* Improved deactivating other modernizr versions code. Code by [Gal Baras](http://get-business-online.com/)
 
 = 2.8.3 =
 * Updated Modernizr to version 2.8.3
@@ -44,7 +44,7 @@ For documentation visit http://www.modernizr.com/docs/
 
 = 2.5.3 = 
 * Updated Modernizr to 2.5.3
-* Code Optimalization
+* Code Optimization
 * Readme Update
 
 = 2.5.2 = 
