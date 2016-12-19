@@ -1213,19 +1213,11 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
             }
             // See if wp-jalali is active and if so, have it convert the date
             // using its 'jdate' function
-            else if (is_plugin_active('wp-jalali/wp-jalali.php')) {
-                $jDateFile = WP_PLUGIN_DIR . '/wp-jalali/inc/jalali-core.php';
-                if(@file_exists($jDateFile)) {
-                    include_once($jDateFile);
-                    if (function_exists('jdate')) {
-                        //return jdate('l, F j, Y');
-                        if (CF7DBPlugin::$customDateFormat) {
-                            return jdate(CF7DBPlugin::$customDateFormat, $time);
-                        }
-                        else {
-                            return jdate(CF7DBPlugin::$dateFormat . ' ' . CF7DBPlugin::$timeFormat, $time);
-                        }
-                    }
+            else if (is_plugin_active('wp-jalali/wp-jalali.php') && function_exists('jdate')) {
+                if (CF7DBPlugin::$customDateFormat) {
+                    return jdate(CF7DBPlugin::$customDateFormat, $time);
+                } else {
+                    return jdate(CF7DBPlugin::$dateFormat . ' ' . CF7DBPlugin::$timeFormat, $time);
                 }
             }
         }

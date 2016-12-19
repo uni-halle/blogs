@@ -85,7 +85,10 @@ class CFDBIntegrationNinjaForms {
                         if ($ninja_forms_processing->get_field_setting($field_id, 'type') == '_honeypot') {
                             continue;
                         }
-                        $field_name = $ninja_forms_processing->get_field_setting($field_id, 'label');
+                        $field_name = $ninja_forms_processing->get_field_setting($field_id, 'admin_label');
+                        if (!$field_name) {
+                            $field_name = $ninja_forms_processing->get_field_setting($field_id, 'label');
+                        }
                         if (is_array($user_value)) {
                             $postedData[$field_name] = implode(',', $user_value);
                         } else {

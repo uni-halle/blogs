@@ -78,7 +78,9 @@ class CFDBIntegrationGravityForms {
             }
 
             $fieldId = $field['id'];
-            $fieldName = $field['label'];
+            $fieldName = (isset($field['adminLabel']) && $field['adminLabel']) ?
+                    $field['adminLabel'] : // Use override label if exists
+                    $field['label'];
             
             if (isset($entry[$fieldId])) {
                 switch ($field['type']) {

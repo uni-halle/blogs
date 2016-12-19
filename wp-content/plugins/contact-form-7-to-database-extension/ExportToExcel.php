@@ -59,7 +59,7 @@ class ExportToExcel extends ExportBase implements CFDBExport {
             printf('</body></html>');
             return;
         }
-        require_once 'Spout-2.4.2/Autoloader/autoload.php'; // required PHP 5.4
+        require_once 'Spout-2.7.0/Autoloader/autoload.php'; // required PHP 5.4
 
         // Query DB for the data for that form
         $submitTimeKeyName = 'Submit_Time_Key';

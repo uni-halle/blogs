@@ -37,7 +37,7 @@ class CF7DBPluginExporter {
         }
 
         // Assumes coming from CF7DBPlugin::whatsInTheDBPage()
-        $key = '3fde789a'; //substr($_COOKIE['PHPSESSID'], - 5); // session_id() doesn't work
+        $key = '95ab43fde789a49f8e563cc1'; //substr($_COOKIE['PHPSESSID'], - 5); // session_id() doesn't work
         if (isset($params['guser'])) {
             $params['guser'] = CFDBDeobfuscate::deobfuscateHexString($params['guser'], $key);
         }
