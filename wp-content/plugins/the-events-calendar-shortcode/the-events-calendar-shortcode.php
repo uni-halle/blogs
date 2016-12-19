@@ -3,7 +3,7 @@
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin (Free Version) by Modern Tribe</a>.
- Version: 1.3
+ Version: 1.4
  Author: Event Calendar Newsletter
  Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Contributors: Brainchild Media Group, Reddit user miahelf, tallavic, hejeva2
@@ -17,6 +17,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	header( 'HTTP/1.1 403 Forbidden' );
 	exit();
 }
+
+define( 'TECS_CORE_PLUGIN_FILE', __FILE__ );
 
 /**
  * Events calendar shortcode addon main class
@@ -50,10 +52,25 @@ class Events_Calendar_Shortcode
 	 * @see	 add_shortcode()
 	 */
 	public function __construct() {
+		add_action( 'plugins_loaded', array( $this, 'verify_tec_installed' ), 2 );
 		add_action( 'admin_menu', array( $this, 'add_menu_page' ), 1000 );
 		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'add_action_links' ) );
 		add_shortcode( 'ecs-list-events', array( $this, 'ecs_fetch_events' ) );
 	} // END __construct()
+
+	public function verify_tec_installed() {
+		if ( ! class_exists( 'Tribe__Events__Main' ) or ! defined( 'Tribe__Events__Main::VERSION' )) {
+			add_action( 'admin_notices', array( $this, 'show_tec_not_installed_message' ) );
+		}
+	}
+
+	public function show_tec_not_installed_message() {
+		if ( current_user_can( 'activate_plugins' ) ) {
+			$url = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
+			$title = __( 'The Events Calendar', 'tribe-events-ical-importer' );
+			echo '<div class="error"><p>' . sprintf( __( 'To begin using The Events Calendar Shortcode, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a> and add an event.', 'tec-shortcode' ), esc_url( $url ), esc_attr( $title ) ) . '</p></div>';
+		}
+	}
 
 	public function add_menu_page() {
 		if ( ! class_exists( 'Tribe__Settings' ) or ! method_exists( Tribe__Settings::instance(), 'should_setup_pages' ) or ! Tribe__Settings::instance()->should_setup_pages() ) {
@@ -89,10 +106,11 @@ class Events_Calendar_Shortcode
 	}
 
 	public function add_action_links( $links ) {
-		$mylinks = array(
-			'<a href="' . admin_url( 'edit.php?post_type=tribe_events&page=ecs-admin' ) . '">Settings</a>',
-			'<a target="_blank" style="color:#3db634; font-weight: bold;" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode/?utm_source=plugin-list&utm_medium=upgrade-link&utm_campaign=plugin-list&utm_content=action-link">Upgrade</a>',
-		);
+		$mylinks = array();
+		if ( class_exists( 'Tribe__Settings' ) and method_exists( Tribe__Settings::instance(), 'should_setup_pages' ) and Tribe__Settings::instance()->should_setup_pages() )
+			$mylinks[] = '<a href="' . admin_url( 'edit.php?post_type=tribe_events&page=ecs-admin' ) . '">Settings</a>';
+		$mylinks[] = '<a target="_blank" style="color:#3db634; font-weight: bold;" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode/?utm_source=plugin-list&utm_medium=upgrade-link&utm_campaign=plugin-list&utm_content=action-link">Upgrade</a>';
+
 		return array_merge( $links, $mylinks );
 	}
 
@@ -183,7 +201,7 @@ class Events_Calendar_Shortcode
 
 		// Specific Month
 		if ( $atts['month'] == 'current' ) {
-			$atts['month'] = date( 'Y-m' );
+			$atts['month'] = current_time( 'Y-m' );
 		}
 		if ($atts['month']) {
 			$month_array = explode("-", $atts['month']);
@@ -212,8 +230,8 @@ class Events_Calendar_Shortcode
 			'orderby' => 'meta_value',
 			'author' => $atts['author'],
 			'order' => $atts['order'],
-			'meta_query' => array( $atts['meta_date'] ),
-		), $atts ) );
+			'meta_query' => apply_filters( 'ecs_get_meta_query', array( $atts['meta_date'] ), $atts, $meta_date_date, $meta_date_compare ),
+		), $atts, $meta_date_date, $meta_date_compare ) );
 
 		if ( $posts ) {
 			$output .= apply_filters( 'ecs_start_tag', '<ul class="ecs-event-list">', $atts );
