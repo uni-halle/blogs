@@ -491,7 +491,7 @@ class AesopCoreGallery {
 	}
 
 	/**
-	 * Draws a thumbnail gallery using fotorama
+	 * Draws a hero gallery using fotorama
 	 *
 	 * @since    1.0.0
 	 */
@@ -502,10 +502,12 @@ class AesopCoreGallery {
 		// if hero option is not set use the thumb gallery option
 		$trans = $trans ? $trans : get_post_meta( $gallery_id, 'aesop_thumb_gallery_transition', true );
 		$trans_speed = $trans_speed ? $trans_speed : get_post_meta( $gallery_id, 'aesop_thumb_gallery_transition_speed', true );
-		$autoplay  = $trans_speed ? sprintf( 'data-autoplay="%s"', $trans_speed, true ) : null;
+		$trans_speed = $trans_speed ? $trans_speed : 300;
+		$autoplay  = sprintf( 'data-autoplay="%s"', $trans_speed, true );
 		$transition = $trans ? $trans : 'crossfade';
 		$content = get_post_meta( $gallery_id, 'aesop_hero_gallery_content', true ) ? get_post_meta( $gallery_id, 'aesop_hero_gallery_content', true) : '';
 		$height = get_post_meta( $gallery_id, 'aesop_hero_gallery_height', true ) ? get_post_meta( $gallery_id, 'aesop_hero_gallery_height', true) : '';
+		$enable_nav = get_post_meta( $gallery_id, 'aesop_hero_gallery_enable_nav', true ) ? get_post_meta( $gallery_id, 'aesop_hero_gallery_enable_nav', true) : false;
 
 		// image size
 		$size    = apply_filters( 'aesop_thumb_gallery_size', 'full' );
@@ -523,24 +525,32 @@ class AesopCoreGallery {
 																			data-height="<?php echo esc_attr( $height );?>"
 																			<?php echo esc_attr( $autoplay );?>
 																			data-keyboard="false"
-																			data-nav=false
 																			data-allow-full-screen="false"
 																			data-click="false"
 																			data-fit="cover"
-																			data-captions="false"
+																			data-captions="true"
+																			data-stopautoplayontouch="false"
+																			<?php if ($enable_nav) {?>
+																			data-nav="dots"
+																			data-arrows="true"
+																			data-swipe="true"
+																			<?php }else {?>
+																			data-nav=false
 																			data-arrows="false"
 																			data-swipe="false"
+																			<?php }?>
+																			
 																			data-transitionduration="1500"
 																			><?php
 
 		foreach ( $image_ids as $image_id ):
 
 			$full    = wp_get_attachment_image_src( $image_id, $size, false );
-		$alt     = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
-		$caption  = get_post( $image_id )->post_excerpt;
-
-		?><img src="<?php echo esc_url( $full[0] );?>" data-caption="<?php echo esc_attr( $caption );?>" alt="<?php echo esc_attr( $alt );?>"><?php
-
+			$alt     = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
+			$caption  = get_post( $image_id )->post_excerpt;
+			 ?>
+			 <img src="<?php echo esc_url( $full[0] );?>" data-caption="<?php echo esc_attr( $caption );?>" alt="<?php echo esc_attr( $alt );?>">
+			 <?php
 		endforeach;
 
 		?>
