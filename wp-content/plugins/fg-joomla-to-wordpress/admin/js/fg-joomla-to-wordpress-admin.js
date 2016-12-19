@@ -74,6 +74,7 @@
 			url: objectPlugin.log_file_url,
 			cache: false
 		    }).done(function(result) {
+			$('#action_message').html(''); // Clear the action message
 			$("#logger").html('');
 			result.split("\n").forEach(function(row) {
 			    if ( row.substr(0, 7) === '[ERROR]' || row.substr(0, 9) === '[WARNING]' || row === 'IMPORT STOPPED BY USER') {
@@ -89,6 +90,7 @@
 
 			});
 			$("#logger").append('<span class="error_msg">' + that.fatal_error + '</span>' + "<br />\n");
+		    }).always(function() {
 			if ( that.is_logging ) {
 			    that.display_logs_timeout = setTimeout(that.display_logs, 1000);
 			}
@@ -108,7 +110,7 @@
 		    url: objectPlugin.progress_url,
 		    cache: false,
 		    dataType: 'json'
-		}).done(function(result) {
+		}).always(function(result) {
 		    // Move the progress bar
 		    var progress = Number(result.current) / Number(result.total) * 100;
 		    $('#progressbar').progressbar('option', 'value', progress);

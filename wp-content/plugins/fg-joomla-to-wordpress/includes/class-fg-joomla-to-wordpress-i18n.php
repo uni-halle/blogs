@@ -13,7 +13,7 @@
  * @subpackage FG_Joomla_to_WordPress/includes
  */
 
-if ( !class_exists('FG_Joomla_to_WordPress_i18n', false) ) {
+if ( !class_exists('FG_Joomla_to_WordPress_i18n', FALSE) ) {
 
 	/**
 	 * Define the internationalization functionality.
@@ -46,7 +46,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_i18n', false) ) {
 
 			load_plugin_textdomain(
 				$this->domain,
-				false,
+				FALSE,
 				dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 			);
 

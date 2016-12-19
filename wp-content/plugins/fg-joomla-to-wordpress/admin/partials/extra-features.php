@@ -33,6 +33,7 @@
 			<li><?php _e('Multilingual content to WPML', 'fg-joomla-to-wordpress'); ?><sup>*</sup></li>
 			<li><?php _e('Simple Image Gallery & Simple Image Gallery Pro', 'fg-joomla-to-wordpress'); ?><sup>*</sup></li>
 			<li><?php _e('RSGallery images', 'fg-joomla-to-wordpress'); ?><sup>*</sup></li>
+			<li><?php _e('Community Builder content', 'fg-joomla-to-wordpress'); ?><sup>*</sup></li>
 		</ul>
 		<div class="center">
 			<a href="https://www.fredericgilles.net/fg-joomla-to-wordpress/" target="_blank"><img src="https://www.fredericgilles.net/wp-content/uploads/premium-version.png" alt="Buy Premium Version" /></a>

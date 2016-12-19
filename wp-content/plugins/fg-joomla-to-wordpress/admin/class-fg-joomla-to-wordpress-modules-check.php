@@ -10,7 +10,7 @@
  * @subpackage FG_Joomla_to_WordPress/admin
  */
 
-if ( !class_exists('FG_Joomla_to_WordPress_Modules_Check', false) ) {
+if ( !class_exists('FG_Joomla_to_WordPress_Modules_Check', FALSE) ) {
 
 	/**
 	 * Class to check the modules that are needed
@@ -157,6 +157,10 @@ if ( !class_exists('FG_Joomla_to_WordPress_Modules_Check', false) ) {
 					'fg-joomla-to-wordpress-premium-usergroups-module/fgj2wp-usergroups.php',
 					sprintf($message_addon, __('user groups', 'fg-joomla-to-wordpress'), $premium_url, $premium_url . 'usergroups/', __('User Groups add-on', 'fg-joomla-to-wordpress'))
 				),
+				array('community_fields', 0,
+					'fg-joomla-to-wordpress-premium-community-builder-module/fgj2wp-community-builder.php',
+					sprintf($message_addon, __('Community Builder data', 'fg-joomla-to-wordpress'), $premium_url, $premium_url . 'community-builder/', __('Community Builder add-on', 'fg-joomla-to-wordpress'))
+				),
 			);
 			foreach ( $modules as $module ) {
 				list($table, $count, $plugin, $message) = $module;
@@ -205,7 +209,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Modules_Check', false) ) {
 		 */
 		private function count_sql($sql) {
 			$count = 0;
-			$result = $this->plugin->joomla_query($sql, false);
+			$result = $this->plugin->joomla_query($sql, FALSE);
 			if ( isset($result[0]['nb']) ) {
 				$count = $result[0]['nb'];
 			}

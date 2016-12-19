@@ -10,7 +10,7 @@
  * @subpackage FG_Joomla_to_WordPress/admin
  */
 
-if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
+if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', FALSE) ) {
 
 	/**
 	 * Class to import the web links
@@ -47,7 +47,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 
 			$result = $wpdb->query("TRUNCATE $wpdb->links");
 			update_option('fgj2wp_last_link_id', 0);
-			return ($result !== false);
+			return ($result !== FALSE);
 		}
 
 		/**
@@ -123,7 +123,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 
 			$last_id = (int)get_option('fgj2wp_last_link_id'); // to restore the import where it left
 			$prefix = $this->plugin->plugin_options['prefix'];
-			if ( version_compare($this->plugin->plugin_options['version'], '1.5', '<=') ) {
+			if ( version_compare($this->plugin->joomla_version, '1.5', '<=') ) {
 				$sql = "
 					SELECT l.id, l.title, l.url, l.description, l.ordering, l.date, l.catid
 					FROM ${prefix}weblinks l

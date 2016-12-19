@@ -34,6 +34,8 @@
 						<br />
 						<input id="remove_first_image" name="remove_first_image" type="checkbox" value="1" <?php checked($data['remove_first_image'], 1); ?> /> <label for="remove_first_image"><?php _e('Remove the first image from the content when it is used as the featured image', 'fg-joomla-to-wordpress'); ?></label>
 						<br />
+						<input id="remove_accents" name="remove_accents" type="checkbox" value="1" <?php checked($data['remove_accents'], 1); ?> /> <label for="remove_accents"><?php _e('Remove accents from file names', 'fg-joomla-to-wordpress'); ?></label>
+						<br />
 						<input id="import_external" name="import_external" type="checkbox" value="1" <?php checked($data['import_external'], 1); ?> /> <label for="import_external"><?php _e('Import external media', 'fg-joomla-to-wordpress'); ?></label>
 						<br />
 						<input id="import_duplicates" name="import_duplicates" type="checkbox" value="1" <?php checked($data['import_duplicates'], 1); ?> /> <label for="import_duplicates" title="<?php _e('Checked: download the media with their full path in order to import media with identical names.', 'fg-joomla-to-wordpress'); ?>"><?php _e('Import media with duplicate names', 'fg-joomla-to-wordpress'); ?></label>

@@ -10,7 +10,7 @@
  * @subpackage FG_Joomla_to_WordPress/includes
  */
 
-if ( !class_exists('FG_Joomla_to_WordPress_Loader', false) ) {
+if ( !class_exists('FG_Joomla_to_WordPress_Loader', FALSE) ) {
 
 	/**
 	 * Register all actions and filters for the plugin.

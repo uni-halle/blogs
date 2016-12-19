@@ -1,10 +1,10 @@
 === FG Joomla to WordPress ===
 Contributors: Frédéric GILLES
 Plugin Uri: https://wordpress.org/plugins/fg-joomla-to-wordpress/
-Tags: joomla, mambo, elxis, wordpress, importer, convert joomla to wordpress, migrate joomla to wordpress, joomla to wordpress migration, migrator, converter, import, k2, jcomments, joomlacomments, jomcomment, flexicontent, postviews, joomlatags, sh404sef, attachments, rokbox, kunena, phocagallery, phoca, joomsef, opensef, easyblog, zoo, zooitems, joomfish, joom!fish, wpml, joomgallery, jevents, contact directory, docman, virtuemart, woocommerce, jreviews, mosets tree, wpml, simple image gallery, rsgallery
+Tags: joomla, mambo, elxis, wordpress, importer, convert joomla to wordpress, migrate joomla to wordpress, joomla to wordpress migration, migrator, converter, import, k2, jcomments, joomlacomments, jomcomment, flexicontent, postviews, joomlatags, sh404sef, attachments, rokbox, kunena, phocagallery, phoca, joomsef, opensef, easyblog, zoo, zooitems, joomfish, joom!fish, wpml, joomgallery, jevents, contact directory, docman, virtuemart, woocommerce, jreviews, mosets tree, wpml, simple image gallery, rsgallery, community builder
 Requires at least: 4.4
-Tested up to: 4.6.1
-Stable tag: 3.19.0
+Tested up to: 4.7
+Stable tag: 3.22.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fred%2egilles%40free%2efr&lc=FR&item_name=fg-joomla-to-wordpress&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
@@ -15,7 +15,7 @@ A plugin to migrate categories, posts, tags, images and other medias from Joomla
 
 This plugin migrates sections, categories, posts, images, medias and tags from Joomla to Wordpress.
 
-It has been tested with **Joomla versions 1.5 through 3.6** and **Wordpress 4.6** on huge databases (72 000+ posts). It is compatible with multisite installations.
+It has been tested with **Joomla versions 1.5 through 3.6** and **Wordpress 4.7** on huge databases (72 000+ posts). It is compatible with multisite installations.
 
 Major features include:
 
@@ -85,6 +85,7 @@ The Premium version allows the use of add-ons that enhance functionality:
 * WPML
 * Simple Image Gallery & Simple Image Gallery Pro
 * RSGallery
+* Community Builder
 
 These modules can be purchased on: https://www.fredericgilles.net/fg-joomla-to-wordpress/add-ons/
 
@@ -223,6 +224,40 @@ https://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * other can be translated
 
 == Changelog ==
+
+= 3.22.0 =
+* Tweak: Code refactoring
+
+= 3.21.0 =
+* New: Add an option to remove the accents from the medias (useful on Windows)
+* Tested with WordPress 4.7
+
+= 3.20.6 =
+* Fixed: Existing images attached to imported posts were removed when deleting the imported data
+* Fixed: Typo in Italian translation
+
+= 3.20.5 =
+* Fixed: Images not imported on HTTPS sites: Warning: fsockopen(): unable to connect to https::80 (php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known)
+
+= 3.20.4 =
+* Fixed: Wrong progress bar color
+
+= 3.20.3 =
+* Fixed: The progress bar didn't move during the first import
+* Fixed: The log window was empty during the first import
+
+= 3.20.2 =
+* New: Check if the Community Builder module is required
+* Fixed: The "IMPORT COMPLETE" message was still displayed when the import was run again
+
+= 3.20.1 =
+* Fixed: The images protected by a user agent protection were not imported
+
+= 3.20.0 =
+* Tweak: Code refactoring
+
+= 3.19.1 =
+* Fixed: Database passwords containing "<" were not accepted
 
 = 3.19.0 =
 * New: Modify the tags links in the post content
@@ -845,6 +880,40 @@ https://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * Initial version: Import Joomla 1.5 sections, categories, posts and images
 
 == Upgrade Notice ==
+
+= 3.22.0 =
+Tweak: Code refactoring
+
+= 3.21.0 =
+New: Add an option to remove the accents from the medias (useful on Windows)
+Tested with WordPress 4.7
+
+= 3.20.6 =
+Fixed: Existing images attached to imported posts were removed when deleting the imported data
+Fixed: Typo in Italian translation
+
+= 3.20.5 =
+Fixed: Images not imported on HTTPS sites: Warning: fsockopen(): unable to connect to https::80 (php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known)
+
+= 3.20.4 =
+Fixed: Wrong progress bar color
+
+= 3.20.3 =
+Fixed: The progress bar didn't move during the first import
+Fixed: The log window was empty during the first import
+
+= 3.20.2 =
+New: Check if the Community Builder module is required
+Fixed: The "IMPORT COMPLETE" message was still displayed when the import was run again
+
+= 3.20.1 =
+Fixed: The images protected by a user agent protection were not imported
+
+= 3.20.0 =
+Tweak: Code refactoring
+
+= 3.19.1 =
+Fixed: Database passwords containing "<" were not accepted
 
 = 3.19.0 =
 New: Modify the tags links in the post content
