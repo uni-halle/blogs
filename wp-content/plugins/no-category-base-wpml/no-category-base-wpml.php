@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: WP No Category Base - WPML compatible
-Version: 1.2
+Plugin Name: No Category Base (WPML)
+Version: 1.3
 Plugin URI: http://infolific.com/technology/software-worth-using/no-category-base-for-wordpress/
 Description: Removes '/category' from your category permalinks. WPML compatible.
 Author: Marios Alexandrou
@@ -91,7 +91,9 @@ function no_category_base_rewrite_rules($category_rewrite) {
 
 		remove_filter( 'terms_clauses', array( $sitepress, 'terms_clauses' ) );
 		$categories = get_categories( array( 'hide_empty' => false ) );
-		add_filter( 'terms_clauses', array( $sitepress, 'terms_clauses' ) );
+		//Fix provided by Albin here https://wordpress.org/support/topic/bug-with-wpml-2/#post-8362218
+		//add_filter( 'terms_clauses', array( $sitepress, 'terms_clauses' ) );
+		add_filter( 'terms_clauses', array( $sitepress, 'terms_clauses' ), 10, 4 );
 	} else {
 		$categories = get_categories( array( 'hide_empty' => false ) );
 	}

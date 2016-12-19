@@ -1,9 +1,9 @@
-=== WP No Category Base - WPML compatible ===
+=== No Category Base (WPML) ===
 Contributors: Marios Alexandrou
 Donate Link: http://infolific.com/technology/software-worth-using/no-category-base-for-wordpress/
 Tags: category base, category parents, category slug, categories, category, url structure, permalinks, wpml
 Requires at least: 4.0
-Tested up to: 4.4.2
+Tested up to: 4.7
 License: GPLv2 or later
 
 This plugin removes the mandatory 'Category Base' from your category permalinks. It's compatible with WPML.
@@ -37,7 +37,7 @@ The plugin requires no setup or modifying core wordpress files and will not brea
 
 = Why should I use this plugin? =
 
-Use this plugin if you want to get rid of Wordpress' "Category base" completely. The normal behavior of Wordpress is to add '/category' to your category permalinks if you leave "Category base" blank in the Permalink settings. So your category links look like 'mysite.com/category/my-category/'. With this plugin your category links will look like 'mysite.com/my-category/' (or 'mysite.com/my-category/sub-category/' in case of sub categories).
+Use this plugin if you want to get rid of WordPress' "Category base" completely. The normal behavior of WordPress is to add '/category' to your category permalinks if you leave "Category base" blank in the Permalink settings. So your category links look like 'mysite.com/category/my-category/'. With this plugin your category links will look like 'mysite.com/my-category/' (or 'mysite.com/my-category/sub-category/' in case of sub categories).
 
 = Will it break any other plugins? =
 
@@ -55,11 +55,20 @@ No, you can use this plugin without having WPML installed.
 
 Just ask on the support forum. If its useful enough and I have time for it, sure.
 
+= I get 404 errors when I deactivate the plugin. What can I do? =
+
+When you deactivate the plugin, you need to tell WordPress to refresh its permalink rules. This is easy to do.
+
+Go to Settings -> Permalinks and then click on Save Changes.
+
 == Screenshots ==
 
 1. Look Ma, No Category Base!
 
 == Changelog ==
+
+= 1.3 =
+* Bug fix provided by Albin.
 
 = 1.2 =
 * Plugin transferred to Marios Alexandrou. Support and development resumed.
