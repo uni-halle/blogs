@@ -3,7 +3,7 @@ Contributors: neoxx
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=J6ZGWTZT4M29U
 Tags: time, date, timezone, calendar, world clock, clock, travel, widget, sidebar, dashboard, shortcode, multisite, multi-site, ajax, javascript, jquery, bar, admin bar
 Requires at least: 3.8
-Tested up to: 4.6
+Tested up to: 4.7
 Stable tag: trunk
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -53,9 +53,9 @@ Please find the version for WordPress
 
 = I get the error-message `Fatal error: Class 'DateTimeZone' not found in` [..] =
 
-TimeZoneCalculator uses the [PHP timezones library](https://php.net/manual/en/timezones.php). Thus, please make sure that you have a recent version of PHP including this library installed and enabled.
+TimeZoneCalculator uses the [PHP timezones library](https://secure.php.net/manual/en/timezones.php). Thus, please make sure that you have a recent version of PHP including this library installed and enabled.
 
-If any timezone information like offset, abbreviations, etc. appears to be wrong, please leave a message for the PHP guys on [their board](https://php.net/manual/en/timezones.php).
+If any timezone information like offset, abbreviations, etc. appears to be wrong, please leave a message for the PHP guys on [their board](https://secure.php.net/manual/en/timezones.php).
 
 = Why can't I see the 'Selection GUI' section? =
 
@@ -69,15 +69,15 @@ This section is based on JavaScript. Thus, you have to enable JavaScript in your
 
 With TimeZoneCalculator 2.00 and higher you can also realize a html select which displays for example the airtime of your internet radio station or your broadcasts in your users' local time. Another possibility for the usage of the upcoming function is the integration of date, time and timezone information into your travelling blog.
 
-Parameters can either be passed [as an array or a URL query type string (e.g. "display=0&format=0")](https://codex.wordpress.org/Function_Reference/wp_parse_args). Please note that WordPress parses all arguments as strings, thus booleans have to be 0 or 1 if used in query type strings whereas for arrays [real booleans](https://php.net/manual/en/language.types.boolean.php) should be used. - Furthermore you have to break your timezones with \n : `America/New_York;EST;EWT;New York, NY, US;New York, NY, US;0;0\nEurope/Vienna;;;sleep longer in winter;get up earlier to enjoy the sun;1;0` if you want to use different timezones in a query_string. In case you use an array, an array should also be used for the timezones.
+Parameters can either be passed [as an array or a URL query type string (e.g. "display=0&format=0")](https://codex.wordpress.org/Function_Reference/wp_parse_args). Please note that WordPress parses all arguments as strings, thus booleans have to be 0 or 1 if used in query type strings whereas for arrays [real booleans](https://secure.php.net/manual/en/language.types.boolean.php) should be used. - Furthermore you have to break your timezones with \n : `America/New_York;EST;EWT;New York, NY, US;New York, NY, US;0;0\nEurope/Vienna;;;sleep longer in winter;get up earlier to enjoy the sun;1;0` if you want to use different timezones in a query_string. In case you use an array, an array should also be used for the timezones.
 
 **`function $timezonecalculator->output($params=array())`**
 
 $params:
 
-- `query_time`: any unix timestamp (where `-1262304000 <= query_time <= 2145916800`) or any English textual datetime description in the range of `1930-01-01` and `2038-01-01` which can be parsed with [PHP's strtotime function](https://php.net/manual/en/function.strtotime.php); default is set to current UTC
+- `query_time`: any unix timestamp (where `-1262304000 <= query_time <= 2145916800`) or any English textual datetime description in the range of `1930-01-01` and `2038-01-01` which can be parsed with [PHP's strtotime function](https://secure.php.net/manual/en/function.strtotime.php); default is set to current UTC
 
-- `query_timezone`: origin-timezone of `query_time`; you can choose a [PHP timezone_string](https://php.net/manual/en/timezones.php); otherwise `UTC` will be used
+- `query_timezone`: origin-timezone of `query_time`; you can choose a [PHP timezone_string](https://secure.php.net/manual/en/timezones.php); otherwise `UTC` will be used
 
 - `before_list`: default `<ul>`
 
@@ -216,6 +216,10 @@ This is a general code clean-up. - Please note that for TimeZoneCalculator v3.00
 This is not only a feature but also a security update. - Thus, I'd strongly recommend all users of TimeZoneCalculator which have at least an environment of WordPress 2.8 or higher and PHP 5 to install this version!
 
 == Changelog ==
+
+= 3.35 =
+
+* SSLified further links
 
 = 3.34 =
 

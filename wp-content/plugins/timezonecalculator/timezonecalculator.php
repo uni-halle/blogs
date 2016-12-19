@@ -5,7 +5,7 @@ Plugin Name: TimeZoneCalculator
 Plugin URI: http://www.bernhard-riedl.com/projects/
 Description: Calculates, displays and automatically updates times and dates in different timezones with respect to daylight saving.
 Author: Dr. Bernhard Riedl
-Version: 3.34
+Version: 3.35
 Author URI: http://www.bernhard-riedl.com/
 */
 
@@ -1682,7 +1682,7 @@ class TimeZoneCalculator {
 			/*
 			could we parse the date/time?
 
-			-1 because of https://php.net/manual/en/function.strtotime.php
+			-1 because of https://secure.php.net/manual/en/function.strtotime.php
 			*/
 
 			if ($parsed_date===false || $parsed_date==-1)
@@ -2038,7 +2038,7 @@ class TimeZoneCalculator {
 	*/
 
 	function head_meta() {
-		echo("<meta name=\"".$this->get_nicename()."\" content=\"3.34\"/>\n");
+		echo("<meta name=\"".$this->get_nicename()."\" content=\"3.35\"/>\n");
 	}
 
 	/*
@@ -3845,7 +3845,7 @@ class TimeZoneCalculator {
 
 		<h3>Syntax</h3>
 		<ul>
-			<li><a target="_blank" href="https://php.net/manual/en/timezones.php">timezone_id</a>;</li>
+			<li><a target="_blank" href="https://secure.php.net/manual/en/timezones.php">timezone_id</a>;</li>
 			<li>abbreviation_standard;</li>
 			<li>abbreviation_daylightsaving;</li>
 			<li>name_standard;</li>
@@ -3869,7 +3869,7 @@ class TimeZoneCalculator {
 
 		<h3>Infos about TimeZones</h3>
 		<ul>
-			<li><a target="_blank" href="https://php.net/manual/en/timezones.php">php.net</a></li>
+			<li><a target="_blank" href="https://secure.php.net/manual/en/timezones.php">php.net</a></li>
 			<li><a target="_blank" href="https://en.wikipedia.org/wiki/Timezones">wikipedia.org</a></li>
 		</ul>
 	<?php }
@@ -4131,7 +4131,7 @@ class TimeZoneCalculator {
 		$time_format=apply_filters($this->get_prefix().'calculator_format_time',  $this->get_default('format_datetime'));
 		?>
 
-		Choose your current timezone, then pick your date/time in the calendar/drop-down or enter it manually in the date field by using one of these formats: <a target="_blank" href="http://www.w3.org/QA/Tips/iso-date">ISO (yyyy-mm-dd)</a>, <a target="_blank" href="https://en.wikipedia.org/wiki/Calendar_date#Gregorian.2C_month-day-year">US (mm/dd/yyyy)</a> or <a target="_blank" href="https://www.php.net/manual/en/function.strtotime.php">any English textual datetime description</a> (tomorrow 3 pm or 2009-04-23 16:30). Let's start!<br /><br />
+		Choose your current timezone, then pick your date/time in the calendar/drop-down or enter it manually in the date field by using one of these formats: <a target="_blank" href="http://www.w3.org/QA/Tips/iso-date">ISO (yyyy-mm-dd)</a>, <a target="_blank" href="https://en.wikipedia.org/wiki/Calendar_date#Gregorian.2C_month-day-year">US (mm/dd/yyyy)</a> or <a target="_blank" href="https://secure.php.net/manual/en/function.strtotime.php">any English textual datetime description</a> (tomorrow 3 pm or 2009-04-23 16:30). Let's start!<br /><br />
 
 		<div id="<?php echo($this->get_prefix()); ?>calculator_input" style="margin-right:20px">
 			<div class="<?php echo($this->get_prefix()); ?>calculator_row">
@@ -4325,9 +4325,9 @@ class TimeZoneCalculator {
 
 	$params:
 
-	- `query_time`: any unix timestamp (where `-1262304000 <= query_time <= 2145916800`) or any English textual datetime description in the range of `1930-01-01` and `2038-01-01` which can be parsed with [PHP's strtotime function](https://php.net/manual/en/function.strtotime.php); default is set to current UTC
+	- `query_time`: any unix timestamp (where `-1262304000 <= query_time <= 2145916800`) or any English textual datetime description in the range of `1930-01-01` and `2038-01-01` which can be parsed with [PHP's strtotime function](https://secure.php.net/manual/en/function.strtotime.php); default is set to current UTC
 
-	- `query_timezone`: origin-timezone of `query_time`; you can choose a [PHP timezone_string](https://php.net/manual/en/timezones.php); otherwise `UTC` will be used
+	- `query_timezone`: origin-timezone of `query_time`; you can choose a [PHP timezone_string](https://secure.php.net/manual/en/timezones.php); otherwise `UTC` will be used
 
 	- `before_list`: default `<ul>`
 
