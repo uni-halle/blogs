@@ -1,7 +1,26 @@
 # Change Log
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/bueltge/Adminimize/compare/1.10.6...HEAD)
+## [Unreleased](https://github.com/bueltge/Adminimize/compare/1.11.0...HEAD)
+
+## [1.11.2](https://github.com/bueltge/Adminimize/compare/1.11.2...1.11.2) - 2016-12-04
+* Fix backticks for `shell_exec` error #59.
+* Fix prevent access function for pages #51, #57.
+
+## [1.11.1](https://github.com/bueltge/Adminimize/compare/1.11.0...1.11.1) - 2016-11-24
+* Fix fatal error for WP smaller than 4.7 - Sorry again!
+
+## [1.11.0](https://github.com/bueltge/Adminimize/compare/1.10.6...1.11.0) - 2016-11-24
+### Fixed
+* Fix open Translations. props pedro-mendonca
+* Fix Typos.
+* Fix php warning on Admin Bar items for PHP 5.2.
+* Fix CPT feature support, if it false.
+
+### Added
+* Add check in different functions for AJAX request.
+* Add to prevent access to pages of the back end, there are active for hiding in the settings.
+* Add plugin option to remove the default behavior to prevent access to pages.
 
 ## [1.10.6](https://github.com/bueltge/Adminimize/compare/1.10.5...1.10.6) - 2016-08-09
 ### Fixed
