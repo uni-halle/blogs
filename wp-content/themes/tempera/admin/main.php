@@ -39,7 +39,7 @@ foreach ($temperas as $key => $value) {
 
 
 //  Hooks/Filters
-//add_action('admin_init', 'tempera_init_fn' ); // hooked by settings plugin 
+//add_action('admin_init', 'tempera_init_fn' ); // hooked by settings plugin
 add_action('admin_menu', 'tempera_add_page_fn');
 add_action('init', 'tempera_init');
 
@@ -106,7 +106,7 @@ function tempera_admin_scripts() {
 function tempera_init_fn(){
 
 	register_setting('tempera_settings', 'tempera_settings', 'tempera_settings_validate');
-	
+
 	do_action('tempera_pre_settings_fields');
 
 /**************
@@ -187,6 +187,7 @@ function tempera_init_fn(){
 	add_settings_field('tempera_breadcrumbs', __('Breadcrumbs','tempera') , 'cryout_setting_breadcrumbs_fn', 'tempera-page', 'graphics_section');
 	add_settings_field('tempera_pagination', __('Pagination','tempera') , 'cryout_setting_pagination_fn', 'tempera-page', 'graphics_section');
 	add_settings_field('tempera_menualign', __('Menu Alignment','tempera') , 'cryout_setting_menualign_fn', 'tempera-page', 'graphics_section');
+	add_settings_field('tempera_searchbar', __('Search Bar Locations','tempera') , 'cryout_setting_searchbar_fn', 'tempera-page', 'graphics_section');
 	add_settings_field('tempera_contentmargins', __('Content Margins','tempera') , 'cryout_setting_contentmargins_fn', 'tempera-page', 'graphics_section');
 	add_settings_field('tempera_image', __('Post Images Border','tempera') , 'cryout_setting_image_fn', 'tempera-page', 'graphics_section');
 	add_settings_field('tempera_contentlist', __('Content List Bullets','tempera') , 'cryout_setting_contentlist_fn', 'tempera-page', 'graphics_section');
@@ -229,10 +230,12 @@ function tempera_init_fn(){
 
 /*** misc ***/
 	add_settings_field('tempera_iecompat', __('Internet Explorer Compatibility Tag','tempera') , 'cryout_setting_iecompat_fn', 'tempera-page', 'misc_section');
+	//add_settings_field('tempera_masonry', __('Masonry','tempera') , 'cryout_setting_masonry_fn', 'tempera-page', 'misc_section');
+	add_settings_field('tempera_fitvids', __('FitVids','tempera') , 'cryout_setting_fitvids_fn', 'tempera-page', 'misc_section');
 	add_settings_field('tempera_copyright', __('Custom Footer Text','tempera') , 'cryout_setting_copyright_fn', 'tempera-page', 'misc_section');
 	add_settings_field('tempera_customcss', __('Custom CSS','tempera') , 'cryout_setting_customcss_fn', 'tempera-page', 'misc_section');
 	add_settings_field('tempera_customjs', __('Custom JavaScript','tempera') , 'cryout_setting_customjs_fn', 'tempera-page', 'misc_section');
-	
+
 	do_action('tempera_post_settings_fields');
 
 }
@@ -288,9 +291,9 @@ if ($tempera_varalert): ?><div id="varlimitalert"> <?php echo $tempera_varalert;
 	<div style="clear: both;"></div>
 </div>
 	<div id="main-options">
-		<?php 
+		<?php
 		tempera_theme_settings_placeholder();
-		$tempera_theme_data = get_transient( 'tempera_theme_info');  
+		$tempera_theme_data = get_transient( 'tempera_theme_info');
 		?>
 		<span id="version">
 		Tempera v<?php echo _CRYOUT_THEME_VERSION; ?> by <a href="https://www.cryoutcreations.eu" target="_blank">Cryout Creations</a>
@@ -315,16 +318,16 @@ if ($tempera_varalert): ?><div id="varlimitalert"> <?php echo $tempera_varalert;
 					<input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_SM.gif:NonHosted">
 					<input type="image" src="<?php echo get_template_directory_uri() . '/admin/images/coffee.png' ?>" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 					<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-				</form>			
+				</form>
 			</div>
-			
+
 			<p>Or socially smother, caress and embrace us:</p>
 			<div style="display:table;float:none;margin:0 auto;">
 				<div id="fb-root"></div><div class="fb-like" data-href="https://www.facebook.com/CryoutCreations" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
 				<a href="https://twitter.com/cryoutcreations" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @cryoutcreations</a>
 				<script src="https://apis.google.com/js/platform.js" async defer></script> <div class="g-plusone" data-href="https://plus.google.com/+CryoutcreationsEuCR2"  data-size="medium" data-annotation="none"></div>
 			</div>
-			
+
 		</div><!-- inside -->
 	</div><!-- donate -->
 
@@ -358,7 +361,7 @@ if ($tempera_varalert): ?><div id="varlimitalert"> <?php echo $tempera_varalert;
 	 <div title="Click to toggle" class="handlediv"><br /></div>
         		<h3 class="hndle"><?php _e( 'Tempera Latest News', 'tempera' ); ?></h3>
             <div class="panel-wrap inside" style="height:200px;overflow:auto;">
-             
+
             </div><!-- inside -->
     </div><!-- news -->
 

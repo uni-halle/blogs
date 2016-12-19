@@ -103,6 +103,12 @@ $tempera_googlefontside = str_replace('+',' ',preg_replace('/[:&].*/','',$temper
 $tempera_headingsgooglefont = str_replace('+',' ',preg_replace('/[:&].*/','',$tempera_headingsgooglefont));
 $tempera_sitetitlegooglefont = str_replace('+',' ',preg_replace('/[:&].*/','',$tempera_sitetitlegooglefont));
 $tempera_menugooglefont = str_replace('+',' ',preg_replace('/[:&].*/','',$tempera_menugooglefont));
+$tempera_fontfamily = cryout_fontname_cleanup($tempera_fontfamily);
+$tempera_fonttitle = cryout_fontname_cleanup($tempera_fonttitle);
+$tempera_fontside = cryout_fontname_cleanup($tempera_fontside);
+$tempera_sitetitlefont = cryout_fontname_cleanup($tempera_sitetitlefont);
+$tempera_menufont = cryout_fontname_cleanup($tempera_menufont);
+$tempera_headingsfont = cryout_fontname_cleanup($tempera_headingsfont);
 ?>
 body { font-family: <?php echo ((!$tempera_googlefont)?$tempera_fontfamily:"\"$tempera_googlefont\""); ?>; }
 #content h1.entry-title a, #content h2.entry-title a, #content h1.entry-title , #content h2.entry-title {
@@ -159,8 +165,8 @@ background-color:<?php echo cryout_hexadder($tempera_submenucolorbgdefault,'14')
 	background-color:  <?php echo $tempera_topbarcolorbg; ?>;border-bottom-color:<?php echo cryout_hexadder($tempera_topbarcolorbg,'40');?>;
 	box-shadow:3px 0 3px <?php echo cryout_hexadder($tempera_topbarcolorbg,'-40');?>;
 }
-.topmenu ul li a { color: <?php echo $tempera_topmenucolortxt; ?>; }
-.topmenu ul li a:hover { color: <?php echo $tempera_topmenucolortxthover; ?>; border-bottom-color: <?php echo $tempera_accentcolora; ?>; }
+.topmenu ul li a, .topmenu .searchsubmit { color: <?php echo $tempera_topmenucolortxt; ?>; }
+.topmenu ul li a:hover, .topmenu .searchform input[type="search"] { color: <?php echo $tempera_topmenucolortxthover; ?>; border-bottom-color: <?php echo $tempera_accentcolora; ?>; }
 
 #main { background-color: <?php echo $tempera_contentcolorbg; ?>; }
 #author-info, #entry-author-info, .page-title { border-color: <?php echo $tempera_accentcolora; ?>; background: <?php echo $tempera_accentcolore; ?>; }
@@ -232,8 +238,8 @@ input[type="search"]:hover, input[type="tel"]:hover, input[type="time"]:hover, i
 abbr, acronym { border-color: <?php echo $tempera_contentcolortxt; ?>; }
 .comment-meta a { color: <?php echo $tempera_contentcolortxt; ?>; }
 #respond .form-allowed-tags { color: <?php echo $tempera_contentcolortxtlight; ?>; }
-.reply a{ background-color: <?php echo $tempera_accentcolore; ?>; border-color: <?php echo $tempera_accentcolorc; ?>; }
-.reply a:hover { background-color: <?php echo $tempera_menucolorbgdefault; ?>;color: <?php echo $tempera_linkcolortext; ?>; }
+.comments .reply a{ background-color: <?php echo $tempera_accentcolore; ?>; border-color: <?php echo $tempera_accentcolorc; ?>; }
+.comments .reply a:hover { background-color: <?php echo $tempera_menucolorbgdefault; ?>;color: <?php echo $tempera_linkcolortext; ?>; }
 
 .entry-meta .icon-metas:before {color:<?php echo $tempera_metacoloricons; ?>;}
 .entry-meta span a, .comments-link a {color:<?php echo $tempera_metacolorlinks; ?>;}
@@ -267,7 +273,7 @@ abbr, acronym { border-color: <?php echo $tempera_contentcolortxt; ?>; }
 								word-spacing:<?php echo $tempera_wordspace ?>; letter-spacing:<?php echo $tempera_letterspace ?>; }
 #content p, #content ul, #content ol, content dl, .widget-area, .widget-area a { line-height:<?php echo $tempera_lineheight ?>; }
 <?php if ($tempera_uppercasetext==1): ?> #site-title a, #site-description, #access a, .topmenu ul li a, .footermenu a, .entry-meta span a, .entry-utility span a, #content h3.entry-format,
-span.edit-link, h3#comments-title, h3#reply-title, .comment-author cite, .reply a, .widget-title, #site-info a, .nivo-caption h2, a.continue-reading-link,
+span.edit-link, h3#comments-title, h3#reply-title, .comment-author cite, .comments .reply a, .widget-title, #site-info a, .nivo-caption h2, a.continue-reading-link,
 .column-image h3, #front-columns h3.column-header-noimage, .tinynav , .entry-title, .breadcrumbs, .page-link{ text-transform: uppercase; }<?php endif; ?>
 <?php if ($tempera_hcenter): ?> #bg_image {display:block;margin:0 auto;} <?php endif; ?>
 #content h1.entry-title, #content h2.entry-title { font-size:<?php echo $tempera_headfontsize; ?> ;}
@@ -369,6 +375,25 @@ function tempera_customjs() {
 	}
 	echo '</script>';
 } // tempera_customjs()
+
+// tempera function for inserting slider on the presentation page
+function tempera_pp_slider() {
+	$temperas= tempera_get_theme_options();
+	foreach ($temperas as $key => $value) { ${"$key"} = $value; } ?>
+	<script type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery('#slider').nivoSlider({
+			effect: '<?php  echo esc_html($tempera_fpslideranim); ?>',
+			animSpeed: <?php echo esc_html($tempera_fpslidertime); ?>,
+			<?php if($tempera_fpsliderarrows=="Hidden"): ?>directionNav: false,<?php endif;
+			if($tempera_fpsliderarrows=="Always Visible"): ?>directionNavHide: false,<?php endif; ?>
+			//controlNavThumbs: true,
+			pauseTime: <?php echo esc_html($tempera_fpsliderpause); ?>
+		});
+	});
+	</script>
+<?php
+}
 
 ////////// FIN //////////
 ?>

@@ -9,7 +9,7 @@
 
 // variable for theme version
 define ('_CRYOUT_THEME_NAME','tempera');
-define ('_CRYOUT_THEME_VERSION','1.4.6');
+define ('_CRYOUT_THEME_VERSION','1.4.8');
 
 require_once(get_template_directory() . "/admin/main.php"); 			  // Load necessary admin files
 

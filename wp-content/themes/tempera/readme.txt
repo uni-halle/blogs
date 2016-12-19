@@ -4,8 +4,8 @@ Copyright 2013-16 Cryout Creations
 
 Author: Cryout Creations
 Requires at least: 4.0
-Tested up to: 4.6
-Stable tag: 1.4.6
+Tested up to: 4.6.1
+Stable tag: 1.4.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: https://www.cryoutcreations.eu/donate/
@@ -106,6 +106,21 @@ Spanish - Carlol, HacKan
 
 
 == Changelog ==
+
+= 1.4.8 =
+* Fixed font names with spaces on Safari limitation
+* Added Fitvids on/off option for compatibility
+* Re-bundled de_DE, fr_FR translations due to WordPress' 90% completeness requirement
+* Improved styling of the search box in main navigation on mobile devices
+* Added filters for slider post-based excerpt length and more text
+
+= 1.4.7 =
+* Added searchbar options to all 3 menus (top bar, footer and main menu)
+* Merged frontpage CSS into the main CSS
+* Moved inline slider JS scripts from frontpage.php to theme-styles.php and loaded properly
+* All JS scripts are now loaded in the footer
+* Added minified Nivo slider JS
+* Added more specific declaration to comment reply buttons (for increased compatibility with bbPress)
 
 = 1.4.6 =
 * Escaped all theme options output

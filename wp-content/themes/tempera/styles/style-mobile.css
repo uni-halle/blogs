@@ -151,7 +151,8 @@
 	-webkit-transition:all .2s ease-in-out; transition:all .2s ease-in-out; }
 	#access > .menu ul li:hover > a:not(:only-child) span:after { top:20px; opacity:0; }
 	#access > .menu ul li > a:not(:only-child) span { padding-right:18px; }
-	#access > .menu > ul ul > li a:not(:only-child) span:after { transform: rotate(0deg); -ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); }
+	#access > .menu > ul ul > li a:not(:only-child) span:after { transform: rotate(0); -ms-transform: rotate(0); -webkit-transform: rotate(0); }
+	#access li.menu-main-search { max-width: none; }
 }
 
 @media (max-width: 600px) {

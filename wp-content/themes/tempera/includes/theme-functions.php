@@ -12,44 +12,19 @@
  * Adds HTML5 tags for IE8
  * Used in header.php
 */
-function tempera_header_scripts() {
-	$temperas= tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
-?>
-<!--[if lt IE 9]>
-<script>
-document.createElement('header');
-document.createElement('nav');
-document.createElement('section');
-document.createElement('article');
-document.createElement('aside');
-document.createElement('footer');
-</script>
-<![endif]-->
-<script type="text/javascript">
-function makeDoubleDelegate(function1, function2) {
-	/* concatenate functions */
-    return function() { if (function1) function1(); if (function2) function2(); }
-}
-
-function tempera_onload() {
-<?php if ($tempera_mobile=="Enable") { // If mobile view is enabled ?>
-    /* Add responsive videos */
-    jQuery(".entry-content").fitVids();
-	<?php } ?>
-}; // tempera_onload
-
-jQuery(document).ready(function(){
-<?php if ($tempera_mobile=="Enable") { // If mobile view is enabled ?>
-	/* enable mobile menu handle */
-	tempera_mobilemenu_init();
-<?php } ?>
-});
-
-// make sure not to lose previous onload events
-window.onload = makeDoubleDelegate(window.onload, tempera_onload );
-</script>
-<?php
+function tempera_header_scripts() { 
+	?>
+	<!--[if lt IE 9]>
+	<script>
+	document.createElement('header');
+	document.createElement('nav');
+	document.createElement('section');
+	document.createElement('article');
+	document.createElement('aside');
+	document.createElement('footer');
+	</script>
+	<![endif]-->
+	<?php
 } // tempera_header_scripts()
 
 add_action('wp_head','tempera_header_scripts',100);
@@ -314,6 +289,44 @@ endif;
 
 if($tempera_breadcrumbs=="Enable")  add_action ('cryout_before_content_hook','tempera_breadcrumbs');
 
+/* Add search box to menus */
+if ( !empty($tempera_searchbar['top']) ) add_filter('wp_nav_menu_items','cryout_search_topmenu', 10, 2);
+if ( !empty($tempera_searchbar['main']) ) add_filter('wp_nav_menu_items','cryout_search_primarymenu', 10, 2);
+if ( !empty($tempera_searchbar['footer']) ) add_filter('wp_nav_menu_items','cryout_search_footermenu', 10, 2);
+
+function cryout_search_topmenu( $items, $args ) {
+	$temperas = tempera_get_theme_options();
+	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
+
+	if( $args->theme_location == 'top') {
+		$items = $items."<li class='menu-header-search'>
+							<i class='search-icon'></i> "
+							. get_search_form( FALSE ) .
+						"</li>";
+	}
+   return $items;
+}
+
+function cryout_search_primarymenu( $items, $args ) {
+	$temperas = tempera_get_theme_options();
+	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
+
+	if( $args->theme_location == 'primary') {
+		$items = $items . "<li class='menu-main-search'> " . get_search_form( FALSE ) . " </li>";
+	}
+   return $items;
+}
+
+function cryout_search_footermenu( $items, $args ) {
+	$temperas = tempera_get_theme_options();
+	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
+
+	if( $args->theme_location == 'footer') {
+		$items = $items."<li class='menu-footer-search'>" . get_search_form( FALSE ) . "</li>";
+	}
+   return $items;
+}
+
 
 if ( ! function_exists( 'tempera_pagination' ) ) :
 /**
@@ -544,6 +557,25 @@ function cryout_optset($var,$val1,$val2='',$val3='',$val4=''){
 	$vals = array($val1,$val2,$val3,$val4);
 	if (in_array($var,$vals)): return false; else: return true; endif;
 } // cryout_optset()
+
+function cryout_fontname_cleanup( $fontid ) {
+    // do not process non font ids
+    if ( strtolower(trim($fontid)) == 'general font' ) return $fontid;
+    $fontid = trim($fontid);
+    $fonts = @explode(",", $fontid);
+    // split multifont ids into fonts array
+    if (is_array($fonts)){
+        foreach ($fonts as &$font) {
+            $font = trim($font);
+            // if font has space in name, quote it
+            if (strpos($font,' ')>-1) $font = '"' . $font . '"';
+        };
+        return implode(', ',$fonts);
+    } elseif (strpos($fontid,' ')>-1) {
+        // if font has space in name, quote it
+        return '"' . $fontid . '"';
+    } else return $fontid;  
+} // cryout_fontname_cleanup
 
 function cryout_hex2rgb($hex) {
    $hex = str_replace("#", "", $hex);

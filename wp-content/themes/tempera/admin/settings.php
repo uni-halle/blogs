@@ -227,13 +227,13 @@ function cryout_setting_frontposts_fn() {
 		array( __("Enable","tempera"), __("Disable","tempera"))
 	);
 	echo "<div><small>".__("Enable to display latest posts on the presentation page, below the columns. Sticky posts are always displayed and not counted.","tempera")."</small></div><br>";
-	
+
 	echo "<div class='slmini'><b>".__("Show:","tempera")."</b> ";
 	echo "<input type='text' id='tempera_frontpostscount' name='tempera_settings[tempera_frontpostscount]' size='3' value='";
  	echo $temperas['tempera_frontpostscount']."'> ".__('posts','tempera');
 	echo "<div><small>".__("The number of posts to show on the Presentation Page. The same number of posts will be loaded with the <em>More Posts</em> button.","tempera")."</small></div><br>";
 	echo "</div>";
-	
+
 	echo "<div class='slmini'><b>".__("Posts per row:","tempera")."</b> ";
 	$items = array ("1", "2");
 	echo "<select id='tempera_frontpostsperrow' name='tempera_settings[tempera_frontpostsperrow]'>";
@@ -246,9 +246,9 @@ function cryout_setting_frontposts_fn() {
 	<div class='slmini'><b><?php _e("More Posts text:","tempera");?></b>
 		<input id='tempera_frontmoreposts' name='tempera_settings[tempera_frontmoreposts]' size='30' type='text' value='<?php echo esc_attr( $temperas['tempera_frontmoreposts'] ) ?>' />
 		<small><?php _e("The label of the 'More Posts' button at the bottom of the Presentation Page.","tempera") ?></small></div>
-    </div> 
-	<?php	
-	
+    </div>
+	<?php
+
 } // cryout_setting_frontpage_fn()
 
 //CHECKBOX - Name: tempera_settings[frontslider]
@@ -541,7 +541,7 @@ function cryout_setting_frontcolumns_fn() {
      </div>
 </div>
 
-<?php	
+<?php
 	echo "<div class='slmini'><b>".__("Column Display:","tempera")."</b> ";
 	$items = array ("0" , "1", "2");
 	$itemsare = array( __("Animated","tempera"), __("Static on Image","tempera"), __("Static under Image","tempera"));
@@ -584,7 +584,7 @@ function cryout_setting_fronttext_fn() {
      echo "<div class='slidebox'><h4 class='slidetitle'> ".__("Extra Text","tempera")." </h4><div class='slidercontent'>";
 
      echo "<div style='width:100%;'><span>" . __("Text for the Presentation Page","tempera") . "</span><small>" .
-          __("More text for the Presentation Page. The top title is just below the slider, the second title is below the columns. A text area supporting HTML tags and shortcodes below each title<br> 
+          __("More text for the Presentation Page. The top title is just below the slider, the second title is below the columns. A text area supporting HTML tags and shortcodes below each title<br>
 		  It's all optional so leave any input field empty to not display it.", "tempera") . "</small></div>";
 
 	echo "<h5>".__("Top Title","tempera")."</h5><br>";
@@ -1052,12 +1052,27 @@ function cryout_setting_menualign_fn() {
 	echo "<div><small>".__("Sets the desired menu items alignment.","tempera")."</small></div>";
 }
 
+function cryout_setting_searchbar_fn() {
+	global $temperas;
+	$items = array( "top", "main", "footer");
+	$itemsare = array( __("Top Menu", "tempera"), __("Main Menu", "tempera"), __("Footer Menu", "tempera"));
+	$i=0;
+	foreach($items as $item):
+		echo " <label id='$item' for='search$item' class='socialsdisplay'><input ";
+		 checked($temperas['tempera_searchbar'][$item], 1);
+		echo " value='1' id='search$item' name='tempera_settings[tempera_searchbar][$item]' type='checkbox' /> ".$itemsare[$i]."</label>";
+		$i++;
+	endforeach;
+
+	echo "<div><small>".__("Select the menus where to add a search bar.","tempera")."</small></div>";
+}
+
 
 function  cryout_setting_contentmargins_fn() {
 	global $temperas;
 	echo __('Margin top: ','tempera');cryout_proto_field( $temperas, "input4str", "tempera_contentmargintop", $temperas['tempera_contentmargintop'], ' px ' );
 	echo "<div><small>".__("The margin between the content and the menu. It can be set to 0px if you want the content area and menu to join.","tempera")."</small></div><br><br>";
-	
+
 	echo __('Padding left/right: ','tempera');cryout_proto_field( $temperas, "input4str", "tempera_contentpadding", $temperas['tempera_contentpadding'], ' px' );
 	echo "<div><small>".__("The left/right padding around the content. Should be set to 10px or less for designs without a content color.","tempera")."</small></div>";
 }
@@ -1579,4 +1594,30 @@ foreach($items as $id=>$item) {
 	echo "<div><small>".__("Enable extra compatibility tag for older Internet Explorer versions. Turning this option on will trigger W3C validation errors.","tempera")."</small></div>";
 } // cryout_setting_iecompat_fn()
 
-?>
+/*function cryout_setting_masonry_fn() {
+	global $temperas;
+	$items = array (1, 0);
+	$itemsare = array( __("Enable","tempera"), __("Disable","tempera"));
+	echo "<select id='tempera_masonry' name='tempera_settings[tempera_masonry]'>";
+	foreach($items as $id=>$item) {
+		echo "<option value='$item'";
+		selected($temperas['tempera_masonry'],$item);
+		echo ">$itemsare[$id]</option>";
+	}
+	echo "</select>";
+	echo "<div><small>".__("Disable to troubleshoot compatibility with plugins that dynamically add content to post lists and change length.","tempera")."</small></div>";
+}*/
+
+function cryout_setting_fitvids_fn() {
+	global $temperas;
+	$items = array (1, 0);
+	$itemsare = array( __("Enable","tempera"), __("Disable","tempera"));
+	echo "<select id='tempera_fitvids' name='tempera_settings[tempera_fitvids]'>";
+	foreach($items as $id=>$item) {
+		echo "<option value='$item'";
+		selected($temperas['tempera_fitvids'],$item);
+		echo ">$itemsare[$id]</option>";
+	}
+	echo "</select>";
+	echo "<div><small>".__("Disable to troubleshoot embedded video resize issues.","tempera")."</small></div>";
+}

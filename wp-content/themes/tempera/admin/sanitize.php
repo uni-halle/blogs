@@ -31,9 +31,9 @@ $fonts = array(
 					 "Helvetica Neue, Arial, Helvetica, sans-serif",
 					 "Helvetica, sans-serif" ,
 					 "Century Gothic, AppleGothic, sans-serif",
-				      "Futura, Century Gothic, AppleGothic, sans-serif",
+				     "Futura, Century Gothic, AppleGothic, sans-serif",
 					 "Calibri, Arian, sans-serif",
-				      "Myriad Pro, Myriad,Arial, sans-serif",
+				     "Myriad Pro, Myriad,Arial, sans-serif",
 					 "Trebuchet MS, Arial, Helvetica, sans-serif" ,
 					 "Gill Sans, Calibri, Trebuchet MS, sans-serif",
 					 "Impact, Haettenschweiler, Arial Narrow Bold, sans-serif ",
@@ -43,23 +43,23 @@ $fonts = array(
 					 "Lucida Sans Unicode, Lucida Grande, sans-serif "),
 
 	'Serif' => array("Georgia, Times New Roman, Times, serif" ,
-					  "Times New Roman, Times, serif",
-					  "Cambria, Georgia, Times, Times New Roman, serif",
-					  "Palatino Linotype, Book Antiqua, Palatino, serif",
-					  "Book Antiqua, Palatino, serif",
-					  "Palatino, serif",
-				       "Baskerville, Times New Roman, Times, serif",
- 					  "Bodoni MT, serif",
-					  "Copperplate Light, Copperplate Gothic Light, serif",
-					  "Garamond, Times New Roman, Times, serif"),
+					 "Times New Roman, Times, serif",
+					 "Cambria, Georgia, Times, Times New Roman, serif",
+					 "Palatino Linotype, Book Antiqua, Palatino, serif",
+					 "Book Antiqua, Palatino, serif",
+					 "Palatino, serif",
+				     "Baskerville, Times New Roman, Times, serif",
+ 					 "Bodoni MT, serif",
+					 "Copperplate Light, Copperplate Gothic Light, serif",
+					 "Garamond, Times New Roman, Times, serif"),
 
 	'MonoSpace' => array( "Courier New, Courier, monospace" ,
-					  "Lucida Console, Monaco, monospace",
-					  "Consolas, Lucida Console, Monaco, monospace",
-					  "Monaco, monospace"),
+					 "Lucida Console, Monaco, monospace",
+					 "Consolas, Lucida Console, Monaco, monospace",
+					 "Monaco, monospace"),
 
-	'Cursive' => array(  "Lucida Casual, Comic Sans MS , cursive ",
-				      "Brush Script MT,Phyllis,Lucida Handwriting,cursive",
+	'Cursive' => array( "Lucida Casual, Comic Sans MS , cursive ",
+				     "Brush Script MT,Phyllis,Lucida Handwriting,cursive",
 					 "Phyllis,Lucida Handwriting,cursive",
 					 "Lucida Handwriting,cursive",
 					 "Comic Sans MS, cursive")
@@ -69,12 +69,12 @@ $fonts = array(
 /* Social media links */
 
 $socialNetworks = array (
-		"AboutMe", "AIM", "Amazon", "Contact", "Delicious", "DeviantArt", 
+		"AboutMe", "AIM", "Amazon", "Contact", "Delicious", "DeviantArt",
 		"Digg", "Dribbble", "Etsy", "Facebook", "Flickr",
 		"FriendFeed", "GoodReads", "GooglePlus", "IMDb", "Instagram",
 		"LastFM", "LinkedIn", "Mail", "MindVox", "MySpace", "Newsvine", "Phone",
-		"Picasa", "Pinterest", "Reddit", "RSS", "ShareThis",  
-		"Skype", "Steam", "SoundCloud", "StumbleUpon", "Technorati", 
+		"Picasa", "Pinterest", "Reddit", "RSS", "ShareThis",
+		"Skype", "Steam", "SoundCloud", "StumbleUpon", "Technorati",
 		"Tumblr",  "Twitch", "Twitter", "Vimeo", "VK",
 		"WordPress", "Yahoo", "Yelp", "YouTube", "Xing" );
 
@@ -98,7 +98,7 @@ else :
 
 	$input['tempera_hheight'] =  intval(wp_kses_data($input['tempera_hheight']));
 	$input['tempera_copyright'] = trim(wp_kses_post($input['tempera_copyright']));
-	
+
 	$input["tempera_headerwidgetwidth"] = trim(wp_kses_data($input['tempera_headerwidgetwidth']));
 
 	$input["tempera_backcolorheader"] = trim(wp_kses_data($input['tempera_backcolorheader']));
@@ -151,20 +151,25 @@ else :
 	$input["tempera_accentcolorc"] = trim(wp_kses_data($input['tempera_accentcolorc']));
 	$input["tempera_accentcolord"] = trim(wp_kses_data($input['tempera_accentcolord']));
 	$input["tempera_accentcolore"] = trim(wp_kses_data($input['tempera_accentcolore']));
-	
-	$input['tempera_frontpostscount'] =  intval(wp_kses_data($input['tempera_frontpostscount'])); 
+
+	$input['tempera_frontpostscount'] =  intval(wp_kses_data($input['tempera_frontpostscount']));
 
 	$input['tempera_fronttitlecolor'] =  wp_kses_data($input['tempera_fronttitlecolor']);
 	$input['tempera_fpsliderbordercolor'] =  wp_kses_data($input['tempera_fpsliderbordercolor']);
 	$input['tempera_fpslidercaptioncolor'] =  wp_kses_data($input['tempera_fpslidercaptioncolor']);
 	$input['tempera_fpslidercaptionbg'] =  wp_kses_data($input['tempera_fpslidercaptionbg']);
-	
+
 	$input["tempera_socialcolorbg"] = trim(wp_kses_data($input['tempera_socialcolorbg']));
 	$input["tempera_socialcolorbghover"] = trim(wp_kses_data($input['tempera_socialcolorbghover']));
-	
+
 	$input["tempera_metacoloricons"] = trim(wp_kses_data($input['tempera_metacoloricons']));
 	$input["tempera_metacolorlinks"] = trim(wp_kses_data($input['tempera_metacolorlinks']));
 	$input["tempera_metacolorlinkshover"] = trim(wp_kses_data($input['tempera_metacolorlinkshover']));
+
+	$show_search= array("top","main","footer");
+	foreach ($show_search as $item) :
+		if (!isset($input['tempera_searchbar'][$item])) {$input['tempera_searchbar'][$item] = 0;}
+	endforeach;
 
 	$input['tempera_excerptwords'] =  intval(wp_kses_data($input['tempera_excerptwords']));
 	$input['tempera_excerptdots'] =  wp_kses_data($input['tempera_excerptdots']);
@@ -172,7 +177,7 @@ else :
 
 	$input['tempera_fwidth'] =  intval(wp_kses_data($input['tempera_fwidth']));
 	$input['tempera_fheight'] =  intval(wp_kses_data($input['tempera_fheight']));
-	
+
 	$input['tempera_contentmargintop'] =  intval(wp_kses_data($input['tempera_contentmargintop']));
 	$input['tempera_contentpadding'] =  intval(wp_kses_data($input['tempera_contentpadding']));
 
@@ -197,12 +202,12 @@ else :
 	for ($i=0;$i<=5;$i++) {
 		if (!isset($input['tempera_socialsdisplay'.$i])) {$input['tempera_socialsdisplay'.$i] = "0";}
 		}
-		
+
 	$show_blog= array("author","date","time","category","tag","comments");
 	foreach ($show_blog as $item) :
 		if (!isset($input['tempera_blog_show'][$item])) {$input['tempera_blog_show'][$item] = 0;}
 	endforeach;
-	
+
 	$show_single= array("author","date","time","category","tag","bookmark");
 	foreach ($show_single as $item) :
 	if (!isset($input['tempera_single_show'][$item])) {$input['tempera_single_show'][$item] = 0;}
@@ -231,7 +236,7 @@ else :
 	$input['tempera_fpsliderheight'] = intval(wp_kses_data($input['tempera_fpsliderheight']));
 	$input['tempera_fpslider_topmargin'] = intval(wp_kses_data($input['tempera_fpslider_topmargin']));
 	$input['tempera_fpslider_bordersize'] = intval(wp_kses_data($input['tempera_fpslider_bordersize']));
-	
+
 /** 3 ***/
 	$input['tempera_sliderimg1'] =  wp_kses_data($input['tempera_sliderimg1']);
 	$input['tempera_slidertitle1'] =  wp_kses_data($input['tempera_slidertitle1']);
@@ -253,11 +258,11 @@ else :
 	$input['tempera_slidertitle5'] =  wp_kses_data($input['tempera_slidertitle5']);
 	$input['tempera_slidertext5'] =  wp_kses_post($input['tempera_slidertext5']);
 	$input['tempera_sliderlink5'] =  esc_url_raw($input['tempera_sliderlink5']);
-	
+
 	$input['tempera_columnNumber'] = intval(wp_kses_data($input['tempera_columnNumber']));
 	$input['tempera_nrcolumns'] = intval(wp_kses_data($input['tempera_nrcolumns']));
 	$input['tempera_colimageheight'] = intval(wp_kses_data($input['tempera_colimageheight']));
-	
+
 /** 4 **/
 	$input['tempera_columnreadmore'] =  wp_kses($input['tempera_columnreadmore'],'');
 
@@ -265,7 +270,7 @@ else :
 	$input['tempera_fronttext2'] =  trim( wp_kses_post($input['tempera_fronttext2']));
 	$input['tempera_fronttext3'] = trim( wp_kses_post($input['tempera_fronttext3']));
 	$input['tempera_fronttext4'] = trim (wp_kses_post($input['tempera_fronttext4']));
-	
+
 	$input['tempera_postboxes'] = wp_kses_post($input['tempera_postboxes']);
 
 	$resetDefault = ( ! empty( $input['tempera_defaults']) ? true : false );

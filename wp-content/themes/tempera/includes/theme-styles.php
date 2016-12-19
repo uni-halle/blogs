@@ -51,9 +51,6 @@ function tempera_enqueue_styles() {
 	endif;
 	wp_enqueue_style( 'tempera-style' );
 
-	// presentation page styling enqueued in frontpage.php
-	if (($tempera_frontpage=="Enable") && is_front_page() && 'posts' == get_option( 'show_on_front' )) { wp_enqueue_style( 'tempera-frontpage' ); }
-
 }
 
 if( !is_admin() ) { add_action('wp_head', 'tempera_enqueue_styles', 5 ); }
@@ -73,42 +70,44 @@ add_action('wp_head', 'tempera_styles_echo', 20);
 function tempera_load_mobile_css() {
 	global $temperas;
 	if ($temperas['tempera_mobile']=="Enable") {
-		echo "<link rel='stylesheet' id='tempera_style_mobile'  href='".get_template_directory_uri() . "/styles/style-mobile.css?ver=" . _CRYOUT_THEME_VERSION . "' type='text/css' media='all' />";
+		echo "<link rel='stylesheet' id='tempera-style-mobile'  href='".get_template_directory_uri() . "/styles/style-mobile.css?ver=" . _CRYOUT_THEME_VERSION . "' type='text/css' media='all' />";
 	}
 }
 if( !is_admin() ) { add_action ('wp_head','tempera_load_mobile_css', 30); }
 
 // JS loading and hook into wp_enque_scripts
-add_action('wp_head', 'tempera_customjs', 35 );
+add_action('wp_footer', 'tempera_customjs', 35 );
 
 
 
 // Scripts loading and hook into wp_enque_scripts
 
 function tempera_scripts_method() {
-global $temperas;
-foreach ($temperas as $key => $value) {
-    							 ${"$key"} = $value ;
-									}
+	global $temperas;
+	foreach ($temperas as $key => $value) { ${"$key"} = $value; }
 
-// If frontend - load the js for the menu and the social icons animations
-	if ( !is_admin() ) {
-		wp_register_script('cryout-frontend',get_template_directory_uri() . '/js/frontend.js', array('jquery'), _CRYOUT_THEME_VERSION );
-		wp_enqueue_script('cryout-frontend');
-  		// If tempera from page is enabled and the current page is home page - load the nivo slider js
-		if($tempera_frontpage == "Enable" && is_front_page()) {
-							wp_register_script('cryout-nivoSlider',get_template_directory_uri() . '/js/nivo-slider.js', array('jquery'), _CRYOUT_THEME_VERSION);
-							wp_enqueue_script('cryout-nivoSlider');
-							}
-  	}
+	wp_enqueue_script('tempera-frontend',get_template_directory_uri() . '/js/frontend.js', array('jquery'), _CRYOUT_THEME_VERSION, true );
 
+	if ($tempera_frontpage == "Enable" && is_front_page()) {
+			// if PP and the current page is frontpage - load the nivo slider js
+			wp_enqueue_script('tempera-nivoslider',get_template_directory_uri() . '/js/nivo.slider.min.js', array('jquery'), _CRYOUT_THEME_VERSION, true);
+			// add slider init js in footer
+			add_action('wp_footer', 'tempera_pp_slider' );
+	}
 
+	$js_options = array(
+		//'masonry' => $tempera_masonry,
+		'mobile' => (($tempera_mobile=='Enable')?1:0),
+		'fitvids' => $tempera_fitvids,
+	);
+	wp_localize_script( 'tempera-frontend', 'tempera_settings', $js_options );
+	
 	/* We add some JavaScript to pages with the comment form
 	 * to support sites with threaded comments (when in use).
 	 */
 	if ( is_singular() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
-}
+	
+} // tempera_scripts_method()
 
 if( !is_admin() ) { add_action('wp_enqueue_scripts', 'tempera_scripts_method'); }
-?>

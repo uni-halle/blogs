@@ -15,8 +15,8 @@ $tempera_defaults = array(
 
 "tempera_frontpage"		=> "Disable",
 "tempera_frontposts"	=> "Enable",
-"tempera_frontpostscount" 		=> get_option('posts_per_page'), 
-"tempera_frontpostsperrow" 		=> "2", 
+"tempera_frontpostscount" 		=> get_option('posts_per_page'),
+"tempera_frontpostsperrow" 		=> "2",
 "tempera_frontmoreposts"		=> "More Posts",
 "tempera_fpsliderwidth"			=> "1150",
 "tempera_fpsliderheight"		=> "400",
@@ -40,7 +40,7 @@ $tempera_defaults = array(
 "tempera_sliderlink1"	=> "",
 "tempera_sliderimg2"	=> get_template_directory_uri()."/images/slider/tempera-slide2.jpg",
 "tempera_slidertitle2"	=> "Tempera brings the mountain to you",
-"tempera_slidertext2"	=> "Remember that mountain you've always wanted to climb? Tempera will not only get it to come to you but it will also provide hiking equipment and if needed 
+"tempera_slidertext2"	=> "Remember that mountain you've always wanted to climb? Tempera will not only get it to come to you but it will also provide hiking equipment and if needed
 						will actually climb the mountain for you.",
 "tempera_sliderlink2"	=> "",
 "tempera_sliderimg3"	=> get_template_directory_uri()."/images/slider/tempera-slide3.jpg",
@@ -50,7 +50,7 @@ $tempera_defaults = array(
 "tempera_sliderlink3"	=> "",
 "tempera_sliderimg4"	=>  get_template_directory_uri()."/images/slider/tempera-slide4.jpg",
 "tempera_slidertitle4"	=> "Tempera lives up to your expectations",
-"tempera_slidertext4"	=> "Especially if your expectations are fluffy clouds. In that case it may even surpass your expectations; then your expectations will start having 
+"tempera_slidertext4"	=> "Especially if your expectations are fluffy clouds. In that case it may even surpass your expectations; then your expectations will start having
 						expectations of their own which of course Tempera will be able to fulfil as well.",
 "tempera_sliderlink4"	=> "",
 "tempera_sliderimg5"	=>  get_template_directory_uri()."/images/slider/tempera-slide5.jpg",
@@ -70,12 +70,12 @@ $tempera_defaults = array(
 "tempera_columnSpecific"	=> "",
 
 "tempera_fronttext1"	=> "Tempera is living on the edge, waiting for you to come and give it a push!",
-"tempera_fronttext3"	=> "Above and below the columns you have editable titles and text fields. The text fields suppport <em>HTML</em> tags and [shortcodes] so you can turn the 
+"tempera_fronttext3"	=> "Above and below the columns you have editable titles and text fields. The text fields suppport <em>HTML</em> tags and [shortcodes] so you can turn the
 							Presentation Page into your personal playground. You can add, remove and edit all this and much more from the Tempera Settings page.<br>
 							While you can show your latest posts on the Presentation Page, you can also use the <u>Blog</u> page template to designate another page as your primary
 							blog posts page.<br><br>
 							<div style='text-align:center;'><strong>As you can see, with Tempera the sky's the limit. Just remember to have fun!</strong></div>",
-"tempera_fronttext2"	=> "",						
+"tempera_fronttext2"	=> "",
 "tempera_fronttext4"	=> "",
 
 "tempera_fronthideheader"	=> "",
@@ -195,6 +195,11 @@ $tempera_defaults = array(
 "tempera_breadcrumbs"	=> "Enable",
 "tempera_pagination"	=> "Enable",
 "tempera_menualign"		=> "left",
+"tempera_searchbar"		=> array(
+	"top" => 1,
+	"main" => 1,
+	"footer" => 0,
+	),
 "tempera_contentmargintop" => "20",
 "tempera_contentpadding" => "30",
 "tempera_caption"		=> "caption-dark",
@@ -278,10 +283,13 @@ $tempera_defaults = array(
 <b>Lorem ipsum</b> dolor sit amet, <a href="#">consectetur adipiscing</a> elit, cras ut imperdiet augue. ',
 "tempera_customcss"	=> "/* Tempera Custom CSS */  ",
 "tempera_customjs"	=> "",
-"tempera_iecompat"	=> 0);
+"tempera_iecompat"	=> 0,
+//"tempera_masonry"   => 0,
+"tempera_fitvids"   => 1,
+);
 
 
-// Default column text						 
+// Default column text
 $tempera_column_defaults= array(
 	$tempera_column_content[] = array (
         'image'	=> get_template_directory_uri()."/images/columns/tempera-column1.jpg",
@@ -294,7 +302,7 @@ $tempera_column_defaults= array(
     $tempera_column_content[] = array (
         'image'	=> get_template_directory_uri()."/images/columns/tempera-column2.jpg",
         'title'	=> 'Responsive',
-        'text'	=> "Tablets, phones, iThings and Androids, portrait and landscape modes -  Tempera will take the shape of its container and will fit anywhere. 
+        'text'	=> "Tablets, phones, iThings and Androids, portrait and landscape modes -  Tempera will take the shape of its container and will fit anywhere.
 							Just like an internet cat.",
         'link'	=> 'http://www.cryoutcreations.eu',
         'blank'	=> 1,
@@ -309,7 +317,7 @@ $tempera_column_defaults= array(
     $tempera_column_content[] = array (
         'image'	=> get_template_directory_uri()."/images/columns/tempera-column4.jpg",
         'title'	=> 'Layouts and Page Templates',
-        'text'	=> "Defy confinement! Everything should be where you want it to be, how you want it to be.Resize and rearrange the content and sidebars to your liking. 
+        'text'	=> "Defy confinement! Everything should be where you want it to be, how you want it to be.Resize and rearrange the content and sidebars to your liking.
 							'Magazine' and 'Bog' layouts are also just around the corner.",
         'link'	=> 'http://www.cryoutcreations.eu',
         'blank'	=> 1,
