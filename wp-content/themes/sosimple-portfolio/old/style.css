@@ -1,0 +1,209 @@
+/*
+Theme Name: SoSimple_info
+Description: edu e-Portfolio 
+Version: 1.0
+Author: Anke Tornow
+Author URI: mailto:anke.tornow@llz.uni-halle.de
+Template: sosimple
+
+@import url("../sosimple/style.css");
+*/
+html {
+	margin-top: 0px;
+	font-size: 14px;
+	}
+	
+.site {
+    margin: 0 auto;
+    padding: 30px 108px;
+    }
+    
+.site-header {
+    border-bottom: 1px dotted #008aa3;
+    padding: 0px;
+    margin: 0 0 40px;
+	}
+	
+.site-branding {
+    text-align: left;
+    }
+    
+.site-title{    
+    font-size: 2.5em;
+}
+
+.site-description {
+    text-align: left;
+}
+	
+.main-navigation {
+    border-top: 1px dotted #008aa3;
+    padding-top:0px;
+	margin-top: 7px;
+	text-align: left;
+	}
+	
+.main-navigation li:hover > a {
+	color: #008aa3;
+	}
+	
+.main-navigation ul li {
+    margin-bottom: 0;
+}
+
+.main-navigation ul a {
+    padding: 7px 20px 7px 0;
+}
+	
+.widget a {
+    color: #008aa3;
+    text-decoration: none;
+    line-height: 2.2em;
+	}
+
+a 	{
+    color: #008aa3;
+    text-decoration: none;
+	}
+
+
+a:hover,
+a:focus,
+a:active 
+a:visited {
+    -webkit-transition: all .2s ease-in-out;
+       -moz-transition: all .2s ease-in-out;
+         -o-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+            color: #999;
+}
+
+a:visited {
+    color: #008aa3;
+	}
+	
+.entry-title {
+    font-size: 1.4em;
+    text-transform: none;
+    }
+
+.entry-title a:hover {
+	color: #666;
+	}
+
+a.more-link {
+    font-size: 80%;
+}
+
+h1, h2,  {
+	font-weight: lighter;
+	}
+
+h3, #respond h3 {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 5px 0;
+    }
+
+h2 {
+    font-size: 20px;
+    margin: 5px 0;
+    }
+    
+h2.entry-subtitle{
+	font-size: 120%
+	}
+    
+.entry-footer, .entry-meta {
+  	display: none;
+    /*color: #aaa;
+    font-size: 0.8em;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-weight: lighter;
+    margin-bottom: 20px;*/
+}
+
+.hentry {
+    border-bottom: 1px solid #ccc;
+    margin: 0 0 5px;
+    }
+    
+b,
+strong {
+    font-weight: bolder;
+}
+
+p, ul, td {
+	margin-bottom: 15px;
+    line-height: 1.8em;
+    font-weight: lighter;
+}
+	
+	}
+
+ul {
+    margin: 0 0 27px 27px;
+    list-style: circle;
+    line-height: 1.8em;
+}
+
+.widget ul {
+	font-size: 0.9em;
+}
+
+li {
+    margin-bottom: 0px;
+}   
+
+.entry-content, .entry-summary, .page-content, .comment-content {
+    -moz-hyphens: none;
+    font-size: 1em;
+    /*word-wrap: break-word;*/
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font-family: "Open Sans";
+}
+	
+.widget li {
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+	
+input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"] {
+    border: 1px solid #ccc;
+    }
+
+/*.entry-footer, .entry-meta {
+	margin: 0px;
+	}*/
+	
+li > ul, li > ol {
+    padding-left: 20px;
+}
+
+.entry-content .multipage-navlink {
+	margin-top: 50px;
+    text-align: left;
+}
+
+hr.blue {
+	    border: 1px dotted #008aa3;
+	    border-width: 0 0 1px 0;
+}
+
+img {
+    border: 1px solid #eee;
+    }
+    
+
+.site-info {
+	text-transform: none;
+	max-width: 90%;
+	font-size: 0.9em;
+}
