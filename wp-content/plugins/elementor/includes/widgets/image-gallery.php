@@ -14,7 +14,11 @@ class Widget_Image_Gallery extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'gallery-grid';
+		return 'eicon-gallery-grid';
+	}
+
+	public function get_categories() {
+		return [ 'general-elements' ];
 	}
 
 	protected function _register_controls() {
@@ -196,19 +200,19 @@ class Widget_Image_Gallery extends Widget_Base {
 				'options' => [
 					'left' => [
 						'title' => __( 'Left', 'elementor' ),
-						'icon' => 'align-left',
+						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
 						'title' => __( 'Center', 'elementor' ),
-						'icon' => 'align-center',
+						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
 						'title' => __( 'Right', 'elementor' ),
-						'icon' => 'align-right',
+						'icon' => 'fa fa-align-right',
 					],
 					'justify' => [
 						'title' => __( 'Justified', 'elementor' ),
-						'icon' => 'align-justify',
+						'icon' => 'fa fa-align-justify',
 					],
 				],
 				'default' => 'center',

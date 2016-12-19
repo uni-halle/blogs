@@ -14,16 +14,16 @@ class Widget_Button extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'button';
+		return 'eicon-button';
 	}
 
 	public static function get_button_sizes() {
 		return [
-			'small' => __( 'Small', 'elementor' ),
-			'medium' => __( 'Medium', 'elementor' ),
-			'large' => __( 'Large', 'elementor' ),
-			'xl' => __( 'XL', 'elementor' ),
-			'xxl' => __( 'XXL', 'elementor' ),
+			'xs' => __( 'Extra Small', 'elementor' ),
+			'sm' => __( 'Small', 'elementor' ),
+			'md' => __( 'Medium', 'elementor' ),
+			'lg' => __( 'Large', 'elementor' ),
+			'xl' => __( 'Extra Large', 'elementor' ),
 		];
 	}
 
@@ -81,19 +81,19 @@ class Widget_Button extends Widget_Base {
 				'options' => [
 					'left'    => [
 						'title' => __( 'Left', 'elementor' ),
-						'icon' => 'align-left',
+						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
 						'title' => __( 'Center', 'elementor' ),
-						'icon' => 'align-center',
+						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
 						'title' => __( 'Right', 'elementor' ),
-						'icon' => 'align-right',
+						'icon' => 'fa fa-align-right',
 					],
 					'justify' => [
 						'title' => __( 'Justified', 'elementor' ),
-						'icon' => 'align-justify',
+						'icon' => 'fa fa-align-justify',
 					],
 				],
 				'prefix_class' => 'elementor%s-align-',
@@ -106,7 +106,7 @@ class Widget_Button extends Widget_Base {
 			[
 				'label' => __( 'Size', 'elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'medium',
+				'default' => 'sm',
 				'options' => self::get_button_sizes(),
 			]
 		);

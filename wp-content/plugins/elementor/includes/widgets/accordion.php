@@ -14,7 +14,11 @@ class Widget_Accordion extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'accordion';
+		return 'eicon-accordion';
+	}
+
+	public function get_categories() {
+		return [ 'general-elements' ];
 	}
 
 	protected function _register_controls() {
@@ -51,7 +55,7 @@ class Widget_Accordion extends Widget_Base {
 					[
 						'name' => 'tab_content',
 						'label' => __( 'Content', 'elementor' ),
-						'type' => Controls_Manager::TEXTAREA,
+						'type' => Controls_Manager::WYSIWYG,
 						'default' => __( 'Accordion Content', 'elementor' ),
 						'show_label' => false,
 					],
@@ -232,7 +236,7 @@ class Widget_Accordion extends Widget_Base {
 						</span>
 						<?php echo $item['tab_title']; ?>
 					</div>
-					<div class="elementor-accordion-content" data-section="<?php echo $counter; ?>"><?php echo $this->parse_text_editor( $item['tab_content'] ); ?></div>
+					<div class="elementor-accordion-content elementor-clearfix" data-section="<?php echo $counter; ?>"><?php echo $this->parse_text_editor( $item['tab_content'] ); ?></div>
 				</div>
 			<?php
 				$counter++;
@@ -255,7 +259,7 @@ class Widget_Accordion extends Widget_Base {
 							</span>
 							{{{ item.tab_title }}}
 						</div>
-						<div class="elementor-accordion-content" data-section="{{ counter }}">{{{ item.tab_content }}}</div>
+						<div class="elementor-accordion-content elementor-clearfix" data-section="{{ counter }}">{{{ item.tab_content }}}</div>
 					</div>
 				<#
 					counter++;

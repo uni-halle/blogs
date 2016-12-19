@@ -70,7 +70,7 @@ class Preview {
 	 * @return string
 	 */
 	public function builder_wrapper( $content ) {
-		return '<div id="elementor" class="elementor"></div>';
+		return '<div id="elementor" class="elementor elementor-edit-mode"></div>';
 	}
 
 	public function print_custom_css() {
@@ -91,6 +91,9 @@ class Preview {
 	public function enqueue_styles() {
 		// Hold-on all jQuery plugins after all HTML markup render
 		wp_add_inline_script( 'jquery-migrate', 'jQuery.holdReady( true );' );
+
+		// Make sure jQuery embed in preview window
+		wp_enqueue_script( 'jquery' );
 
 		Plugin::instance()->frontend->enqueue_styles();
 

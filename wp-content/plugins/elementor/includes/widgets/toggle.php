@@ -14,7 +14,11 @@ class Widget_Toggle extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'toggle';
+		return 'eicon-toggle';
+	}
+
+	public function get_categories() {
+		return [ 'general-elements' ];
 	}
 
 	protected function _register_controls() {
@@ -51,7 +55,7 @@ class Widget_Toggle extends Widget_Base {
 					[
 						'name' => 'tab_content',
 						'label' => __( 'Content', 'elementor' ),
-						'type' => Controls_Manager::TEXTAREA,
+						'type' => Controls_Manager::WYSIWYG,
 						'default' => __( 'Toggle Content', 'elementor' ),
 						'show_label' => false,
 					],
@@ -216,7 +220,7 @@ class Widget_Toggle extends Widget_Base {
 					</span>
 					<?php echo $item['tab_title']; ?>
 				</div>
-				<div class="elementor-toggle-content" data-tab="<?php echo $counter; ?>"><?php echo $this->parse_text_editor( $item['tab_content'] ); ?></div>
+				<div class="elementor-toggle-content elementor-clearfix" data-tab="<?php echo $counter; ?>"><?php echo $this->parse_text_editor( $item['tab_content'] ); ?></div>
 			<?php
 				$counter++;
 			endforeach; ?>
@@ -237,7 +241,7 @@ class Widget_Toggle extends Widget_Base {
 					</span>
 						{{{ item.tab_title }}}
 					</div>
-					<div class="elementor-toggle-content" data-tab="{{ counter }}">{{{ item.tab_content }}}</div>
+					<div class="elementor-toggle-content elementor-clearfix" data-tab="{{ counter }}">{{{ item.tab_content }}}</div>
 				<#
 					counter++;
 				} );

@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Settings {
 
 	const PAGE_ID = 'elementor';
+	const MENU_PRIORITY_GO_PRO = 502;
 
 	public static function get_url() {
 		return admin_url( 'admin.php?page=' . self::PAGE_ID );
@@ -156,29 +157,17 @@ class Settings {
 		);
 
 		register_setting( self::PAGE_ID, $field_id );
+	}
 
-		// Tools section
-		$tools_section = 'elementor_tools_section';
+	public function register_improve_elementor_settings() {
+		$controls_class_name = __NAMESPACE__ . '\Settings_Controls';
+		$usage_section = 'elementor_usage_section';
+
 		add_settings_section(
-			$tools_section,
-			__( 'Tools', 'elementor' ),
+			$usage_section,
+			__( 'Improve Elementor', 'elementor' ),
 			'__return_empty_string', // No need intro text for this section right now
 			self::PAGE_ID
-		);
-
-		$field_id = 'elementor_raw_reset_api_data';
-		add_settings_field(
-			$field_id,
-			__( 'Sync Library', 'elementor' ),
-			[ $controls_class_name, 'render' ],
-			self::PAGE_ID,
-			$tools_section,
-			[
-				'id' => $field_id,
-				'type' => 'raw_html',
-				'html' => sprintf( '<button data-nonce="%s" class="button" id="elementor-library-sync-button">%s</button>', wp_create_nonce( 'elementor_reset_library' ), __( 'Sync Library', 'elementor' ) ),
-				'desc' => __( 'Elementor Library automatically updates on a daily basis. You can also manually update it by clicking on the sync button.', 'elementor' ),
-			]
 		);
 
 		$field_id = 'elementor_allow_tracking';
@@ -187,7 +176,7 @@ class Settings {
 			__( 'Usage Data Tracking', 'elementor' ),
 			[ $controls_class_name, 'render' ],
 			self::PAGE_ID,
-			$tools_section,
+			$usage_section,
 			[
 				'id' => $field_id,
 				'type' => 'checkbox',
@@ -210,6 +199,22 @@ class Settings {
 			'',
 			99
 		);
+	}
+	public function register_pro_menu() {
+		add_submenu_page(
+			self::PAGE_ID,
+			'',
+			'<span class="dashicons dashicons-star-filled" style="font-size: 17px"></span> ' . __( 'Go Pro', 'elementor' ),
+			'manage_options',
+			'go_elementor_pro',
+			[ $this, 'go_elementor_pro' ]
+		);
+	}
+
+	public function go_elementor_pro() {
+		if ( isset( $_GET['page'] ) && 'go_elementor_pro' === $_GET['page'] ) {
+			wp_redirect( 'https://go.elementor.com/pro-admin-menu/' );
+		}
 	}
 
 	public function admin_menu_change_name() {
@@ -240,7 +245,10 @@ class Settings {
 		include( ELEMENTOR_PATH . 'includes/settings/validations.php' );
 
 		add_action( 'admin_init', [ $this, 'register_settings_fields' ], 20 );
+		add_action( 'admin_init', [ $this, 'register_improve_elementor_settings' ], 999 ); // Keep it the last settings in page
+		add_action( 'admin_init', [ $this, 'go_elementor_pro' ] );
 		add_action( 'admin_menu', [ $this, 'register_admin_menu' ], 20 );
 		add_action( 'admin_menu', [ $this, 'admin_menu_change_name' ], 200 );
+		add_action( 'admin_menu', [ $this, 'register_pro_menu' ], self::MENU_PRIORITY_GO_PRO );
 	}
 }

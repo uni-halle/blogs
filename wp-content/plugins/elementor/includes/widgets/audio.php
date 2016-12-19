@@ -15,7 +15,11 @@ class Widget_Audio extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'headphones';
+		return 'eicon-headphones';
+	}
+
+	public function get_categories() {
+		return [ 'general-elements' ];
 	}
 
 	protected function _register_controls() {

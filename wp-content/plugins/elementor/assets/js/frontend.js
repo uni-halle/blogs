@@ -1,25 +1,8 @@
-/*! elementor - v0.10.3 - 13-10-2016 */
+/*! elementor - v1.0.5 - 18-12-2016 */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var ElementsHandler;
 
 ElementsHandler = function( $ ) {
-	var registeredHandlers = {},
-		registeredGlobalHandlers = [];
-
-	var runGlobalHandlers = function( $scope ) {
-		$.each( registeredGlobalHandlers, function() {
-			this.call( $scope, $ );
-		} );
-	};
-
-	this.addHandler = function( widgetType, callback ) {
-		registeredHandlers[ widgetType ] = callback;
-	};
-
-	this.addGlobalHandler = function( callback ) {
-		registeredGlobalHandlers.push( callback );
-	};
-
 	this.runReadyTrigger = function( $scope ) {
 		var elementType = $scope.data( 'element_type' );
 
@@ -27,13 +10,31 @@ ElementsHandler = function( $ ) {
 			return;
 		}
 
-		runGlobalHandlers( $scope );
+		elementorFrontend.hooks.doAction( 'frontend/element_ready/global', $scope, $ );
 
-		if ( ! registeredHandlers[ elementType ] ) {
+		var isWidgetType = ( -1 === [ 'section', 'column' ].indexOf( elementType ) );
+
+		if ( isWidgetType ) {
+			elementorFrontend.hooks.doAction( 'frontend/element_ready/widget', $scope, $ );
+		}
+
+		elementorFrontend.hooks.doAction( 'frontend/element_ready/' + elementType, $scope, $ );
+	};
+
+	this.addExternalListener = function( $scope, event, callback, externalElement ) {
+		var $externalElement = $( externalElement || elementorFrontend.getScopeWindow() );
+
+		if ( ! elementorFrontend.isEditMode() ) {
+			$externalElement.on( event, callback );
+
 			return;
 		}
 
-		registeredHandlers[ elementType ].call( $scope, $ );
+		var eventNS = event + '.' + $scope.attr( 'id' );
+
+		$externalElement
+			.off( eventNS )
+			.on( eventNS, callback );
 	};
 };
 
@@ -50,33 +51,47 @@ module.exports = ElementsHandler;
 		var self = this,
 			scopeWindow = window;
 
-		var elementsDefaultHandlers = {
-			accordion: require( 'elementor-frontend/handlers/accordion' ),
-			alert: require( 'elementor-frontend/handlers/alert' ),
-			counter: require( 'elementor-frontend/handlers/counter' ),
-			'image-carousel': require( 'elementor-frontend/handlers/image-carousel' ),
-			'menu-anchor': require( 'elementor-frontend/handlers/menu-anchor' ),
-			progress: require( 'elementor-frontend/handlers/progress' ),
-			section: require( 'elementor-frontend/handlers/section' ),
-			tabs: require( 'elementor-frontend/handlers/tabs' ),
-			toggle: require( 'elementor-frontend/handlers/toggle' ),
-			video: require( 'elementor-frontend/handlers/video' )
-		};
-
 		var addGlobalHandlers = function() {
-			self.elementsHandler.addGlobalHandler( require( 'elementor-frontend/handlers/global' ) );
+			self.hooks.addAction( 'frontend/element_ready/global', require( 'elementor-frontend/handlers/global' ) );
+			self.hooks.addAction( 'frontend/element_ready/widget', require( 'elementor-frontend/handlers/widget' ) );
 		};
 
 		var addElementsHandlers = function() {
-			$.each( elementsDefaultHandlers, function( elementName ) {
-				self.elementsHandler.addHandler( elementName, this );
+			$.each( self.handlers, function( elementName, funcCallback ) {
+				self.hooks.addAction( 'frontend/element_ready/' + elementName, funcCallback );
 			} );
 		};
 
 		var runElementsHandlers = function() {
-			$( '.elementor-element' ).each( function() {
+			var $elements;
+
+			if ( self.isEditMode() ) {
+				// Elements outside from the Preview
+				$elements = self.getScopeWindow().jQuery( '.elementor-element', '.elementor:not(.elementor-edit-mode)' );
+			} else {
+				$elements = $( '.elementor-element' );
+			}
+
+			$elements.each( function() {
 				self.elementsHandler.runReadyTrigger( $( this ) );
 			} );
+		};
+
+		// element-type.skin-type
+		this.handlers = {
+			// Elements
+			'section': require( 'elementor-frontend/handlers/section' ),
+
+			// Widgets
+			'accordion.default': require( 'elementor-frontend/handlers/accordion' ),
+			'alert.default': require( 'elementor-frontend/handlers/alert' ),
+			'counter.default': require( 'elementor-frontend/handlers/counter' ),
+			'progress.default': require( 'elementor-frontend/handlers/progress' ),
+			'tabs.default': require( 'elementor-frontend/handlers/tabs' ),
+			'toggle.default': require( 'elementor-frontend/handlers/toggle' ),
+			'video.default': require( 'elementor-frontend/handlers/video' ),
+			'image-carousel.default': require( 'elementor-frontend/handlers/image-carousel' ),
+			'menu-anchor.default': require( 'elementor-frontend/handlers/menu-anchor' )
 		};
 
 		this.config = elementorFrontendConfig;
@@ -162,7 +177,7 @@ jQuery( function() {
 	}
 } );
 
-},{"../utils/hooks":15,"elementor-frontend/elements-handler":1,"elementor-frontend/handlers/accordion":3,"elementor-frontend/handlers/alert":4,"elementor-frontend/handlers/counter":5,"elementor-frontend/handlers/global":6,"elementor-frontend/handlers/image-carousel":7,"elementor-frontend/handlers/menu-anchor":8,"elementor-frontend/handlers/progress":9,"elementor-frontend/handlers/section":10,"elementor-frontend/handlers/tabs":11,"elementor-frontend/handlers/toggle":12,"elementor-frontend/handlers/video":13,"elementor-frontend/utils":14}],3:[function(require,module,exports){
+},{"../utils/hooks":16,"elementor-frontend/elements-handler":1,"elementor-frontend/handlers/accordion":3,"elementor-frontend/handlers/alert":4,"elementor-frontend/handlers/counter":5,"elementor-frontend/handlers/global":6,"elementor-frontend/handlers/image-carousel":7,"elementor-frontend/handlers/menu-anchor":8,"elementor-frontend/handlers/progress":9,"elementor-frontend/handlers/section":10,"elementor-frontend/handlers/tabs":11,"elementor-frontend/handlers/toggle":12,"elementor-frontend/handlers/video":13,"elementor-frontend/handlers/widget":14,"elementor-frontend/utils":15}],3:[function(require,module,exports){
 var activateSection = function( sectionIndex, $accordionTitles ) {
 	var $activeTitle = $accordionTitles.filter( '.active' ),
 		$requestedTitle = $accordionTitles.filter( '[data-section="' + sectionIndex + '"]' ),
@@ -181,10 +196,9 @@ var activateSection = function( sectionIndex, $accordionTitles ) {
 	}
 };
 
-module.exports = function( $ ) {
-	var $this = $( this ),
-		defaultActiveSection = $this.find( '.elementor-accordion' ).data( 'active-section' ),
-		$accordionTitles = $this.find( '.elementor-accordion-title' );
+module.exports = function( $scope, $ ) {
+	var defaultActiveSection = $scope.find( '.elementor-accordion' ).data( 'active-section' ),
+		$accordionTitles = $scope.find( '.elementor-accordion-title' );
 
 	if ( ! defaultActiveSection ) {
 		defaultActiveSection = 1;
@@ -198,15 +212,15 @@ module.exports = function( $ ) {
 };
 
 },{}],4:[function(require,module,exports){
-module.exports = function( $ ) {
-	$( this ).find( '.elementor-alert-dismiss' ).on( 'click', function() {
+module.exports = function( $scope, $ ) {
+	$scope.find( '.elementor-alert-dismiss' ).on( 'click', function() {
 		$( this ).parent().fadeOut();
 	} );
 };
 
 },{}],5:[function(require,module,exports){
-module.exports = function( $ ) {
-	this.find( '.elementor-counter-number' ).waypoint( function() {
+module.exports = function( $scope, $ ) {
+	elementorFrontend.utils.waypoint( $scope.find( '.elementor-counter-number' ), function() {
 		var $number = $( this );
 
 		$number.numerator( {
@@ -216,29 +230,27 @@ module.exports = function( $ ) {
 };
 
 },{}],6:[function(require,module,exports){
-module.exports = function() {
+module.exports = function( $scope, $ ) {
 	if ( elementorFrontend.isEditMode() ) {
 		return;
 	}
 
-	var $element = this,
-		animation = $element.data( 'animation' );
+	var animation = $scope.data( 'animation' );
 
 	if ( ! animation ) {
 		return;
 	}
 
-	$element.addClass( 'elementor-invisible' ).removeClass( animation );
+	$scope.addClass( 'elementor-invisible' ).removeClass( animation );
 
-	$element.waypoint( function() {
-		$element.removeClass( 'elementor-invisible' ).addClass( animation );
+	elementorFrontend.utils.waypoint( $scope, function() {
+		$scope.removeClass( 'elementor-invisible' ).addClass( animation );
 	}, { offset: '90%' } );
-
 };
 
 },{}],7:[function(require,module,exports){
-module.exports = function( $ ) {
-	var $carousel = $( this ).find( '.elementor-image-carousel' );
+module.exports = function( $scope, $ ) {
+	var $carousel = $scope.find( '.elementor-image-carousel' );
 	if ( ! $carousel.length ) {
 		return;
 	}
@@ -270,12 +282,12 @@ module.exports = function( $ ) {
 };
 
 },{}],8:[function(require,module,exports){
-module.exports = function( $ ) {
+module.exports = function( $scope, $ ) {
 	if ( elementorFrontend.isEditMode() ) {
 		return;
 	}
 
-	var $anchor = this.find( '.elementor-menu-anchor' ),
+	var $anchor = $scope.find( '.elementor-menu-anchor' ),
 		anchorID = $anchor.attr( 'id' ),
 		$anchorLinks = $( 'a[href*="#' + anchorID + '"]' ),
 		$scrollable = $( 'html, body' ),
@@ -298,27 +310,16 @@ module.exports = function( $ ) {
 };
 
 },{}],9:[function(require,module,exports){
-module.exports = function( $ ) {
-	var interval = 80;
+module.exports = function( $scope, $ ) {
+	elementorFrontend.utils.waypoint( $scope.find( '.elementor-progress-bar' ), function() {
+		var $progressbar = $( this );
 
-	$( this ).find( '.elementor-progress-bar' ).waypoint( function() {
-		var $progressbar = $( this ),
-			max = parseInt( $progressbar.data( 'max' ), 10 ),
-			$inner = $progressbar.next(),
-			$innerTextWrap = $inner.find( '.elementor-progress-text' ),
-			$percent = $inner.find( '.elementor-progress-percentage' ),
-			innerText = $inner.data( 'inner' ) ? $inner.data( 'inner' ) : '';
-
-		$progressbar.css( 'width', max + '%' );
-		$inner.css( 'width', max + '%' );
-		$innerTextWrap.html( innerText + '' );
-		$percent.html(  max + '%' );
-
+		$progressbar.css( 'width', $progressbar.data( 'max' ) + '%' );
 	}, { offset: '90%' } );
 };
 
 },{}],10:[function(require,module,exports){
-var BackgroundVideo = function( $, $backgroundVideoContainer ) {
+var BackgroundVideo = function( $backgroundVideoContainer, $ ) {
 	var player,
 		elements = {},
 		isYTVideo = false;
@@ -400,29 +401,34 @@ var BackgroundVideo = function( $, $backgroundVideoContainer ) {
 	init();
 };
 
-var StretchedSection = function( $, $section ) {
+var StretchedSection = function( $section, $ ) {
 	var elements = {},
 		settings = {};
 
 	var stretchSection = function() {
 		// Clear any previously existing css associated with this script
-		$section.css( {
-			'width': 'auto',
-			'left': '0'
-		} );
+		var direction = settings.is_rtl ? 'right' : 'left',
+			resetCss = {
+				width: 'auto'
+			};
+
+		resetCss[ direction ] = 0;
+
+		$section.css( resetCss );
 
 		if ( ! $section.hasClass( 'elementor-section-stretched' ) ) {
 			return;
 		}
 
-		var sectionWidth = elements.$scopeWindow.width(),
+		var containerWidth = elements.$scopeWindow.outerWidth(),
+			sectionWidth = $section.outerWidth(),
 			sectionOffset = $section.offset().left,
 			correctOffset = sectionOffset;
 
-		if ( elements.$sectionContainer.length ) {
+        if ( elements.$sectionContainer.length ) {
 			var containerOffset = elements.$sectionContainer.offset().left;
 
-			sectionWidth = elements.$sectionContainer.outerWidth();
+			containerWidth = elements.$sectionContainer.outerWidth();
 
 			if ( sectionOffset > containerOffset ) {
 				correctOffset = sectionOffset - containerOffset;
@@ -431,14 +437,15 @@ var StretchedSection = function( $, $section ) {
 			}
 		}
 
-		if ( ! settings.is_rtl ) {
-			correctOffset = -correctOffset;
+		if ( settings.is_rtl ) {
+			correctOffset = containerWidth - ( sectionWidth + correctOffset );
 		}
 
-		$section.css( {
-			'width': sectionWidth + 'px',
-			'left': correctOffset + 'px'
-		} );
+		resetCss.width = containerWidth + 'px';
+
+		resetCss[ direction ] = -correctOffset + 'px';
+
+		$section.css( resetCss );
 	};
 
 	var initSettings = function() {
@@ -453,7 +460,7 @@ var StretchedSection = function( $, $section ) {
 	};
 
 	var bindEvents = function() {
-		elements.$scopeWindow.on( 'resize', stretchSection );
+		elementorFrontend.elementsHandler.addExternalListener( $section, 'resize', stretchSection );
 	};
 
 	var init = function() {
@@ -466,22 +473,21 @@ var StretchedSection = function( $, $section ) {
 	init();
 };
 
-module.exports = function( $ ) {
-	new StretchedSection( $, this );
+module.exports = function( $scope, $ ) {
+	new StretchedSection( $scope, $ );
 
-	var $backgroundVideoContainer = this.find( '.elementor-background-video-container' );
+	var $backgroundVideoContainer = $scope.find( '.elementor-background-video-container' );
 
 	if ( $backgroundVideoContainer ) {
-		new BackgroundVideo( $, $backgroundVideoContainer );
+		new BackgroundVideo( $backgroundVideoContainer, $ );
 	}
 };
 
 },{}],11:[function(require,module,exports){
-module.exports = function( $ ) {
-	var $this = $( this ),
-		defaultActiveTab = $this.find( '.elementor-tabs' ).data( 'active-tab' ),
-		$tabsTitles = $this.find( '.elementor-tab-title' ),
-		$tabs = $this.find( '.elementor-tab-content' ),
+module.exports = function( $scope, $ ) {
+	var defaultActiveTab = $scope.find( '.elementor-tabs' ).data( 'active-tab' ),
+		$tabsTitles = $scope.find( '.elementor-tab-title' ),
+		$tabs = $scope.find( '.elementor-tab-content' ),
 		$active,
 		$content;
 
@@ -513,8 +519,8 @@ module.exports = function( $ ) {
 };
 
 },{}],12:[function(require,module,exports){
-module.exports = function( $ ) {
-	var $toggleTitles = $( this ).find( '.elementor-toggle-title' );
+module.exports = function( $scope, $ ) {
+	var $toggleTitles = $scope.find( '.elementor-toggle-title' );
 
 	$toggleTitles.on( 'click', function() {
 		var $active = $( this ),
@@ -531,10 +537,9 @@ module.exports = function( $ ) {
 };
 
 },{}],13:[function(require,module,exports){
-module.exports = function( $ ) {
-	var $this = $( this ),
-		$imageOverlay = $this.find( '.elementor-custom-embed-image-overlay' ),
-		$videoFrame = $this.find( 'iframe' );
+module.exports = function( $scope, $ ) {
+	var $imageOverlay = $scope.find( '.elementor-custom-embed-image-overlay' ),
+		$videoFrame = $scope.find( 'iframe' );
 
 	if ( ! $imageOverlay.length ) {
 		return;
@@ -551,6 +556,21 @@ module.exports = function( $ ) {
 };
 
 },{}],14:[function(require,module,exports){
+module.exports = function( $scope, $ ) {
+	if ( ! elementorFrontend.isEditMode() ) {
+		return;
+	}
+
+	if ( $scope.hasClass( 'elementor-widget-edit-disabled' ) ) {
+		return;
+	}
+
+	$scope.find( '.elementor-element' ).each( function() {
+		elementorFrontend.elementsHandler.runReadyTrigger( $( this ) );
+	} );
+};
+
+},{}],15:[function(require,module,exports){
 var Utils;
 
 Utils = function( $ ) {
@@ -570,11 +590,21 @@ Utils = function( $ ) {
 	this.insertYTApi = function() {
 		$( 'script:first' ).before(  $( '<script>', { src: 'https://www.youtube.com/iframe_api' } ) );
 	};
+
+	this.waypoint = function( $element, callback, options ) {
+		var correctCallback = function() {
+			var element = this.element || this;
+
+			return callback.apply( element, arguments );
+		};
+
+		$element.waypoint( correctCallback, options );
+	};
 };
 
 module.exports = Utils;
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 
 /**

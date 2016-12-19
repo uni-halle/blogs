@@ -24,6 +24,8 @@ abstract class Element_Base {
 
 	private $_default_args = [];
 
+	protected static $_edit_tools;
+
 	/**
 	 * Holds the current section while render a set of controls sections
 	 *
@@ -31,8 +33,66 @@ abstract class Element_Base {
 	 */
 	private $_current_section = null;
 
+	/**
+	 * Holds the current tab while render a set of controls tabs
+	 *
+	 * @var null|array
+	 */
+	protected $_current_tab = null;
+
+	private $_is_type_instance = true;
+
+	public final static function get_edit_tools() {
+		if ( null === static::$_edit_tools ) {
+			self::_init_edit_tools();
+		}
+
+		return static::$_edit_tools;
+	}
+
+	public final static function add_edit_tool( $tool_name, $tool_data, $after = null ) {
+		if ( null === static::$_edit_tools ) {
+			self::_init_edit_tools();
+		}
+
+		// Adding the tool at specific position
+		// in the tools array if requested
+		if ( $after ) {
+			$after_index = array_search( $after, array_keys( static::$_edit_tools ) ) + 1;
+
+			static::$_edit_tools = array_slice( static::$_edit_tools, 0, $after_index, true ) +
+			                       [ $tool_name => $tool_data ] +
+			                       array_slice( static::$_edit_tools, $after_index, null, true );
+		} else {
+			static::$_edit_tools[ $tool_name ] = $tool_data;
+		}
+	}
+
 	public static function get_type() {
 		return 'element';
+	}
+
+	protected static function get_default_edit_tools() {
+		return [];
+	}
+
+	/**
+	 * @param array $haystack
+	 * @param string $needle
+	 *
+	 * @return mixed the whole haystack or the
+	 * needle from the haystack when requested
+	 */
+	private static function _get_items( array $haystack, $needle = null ) {
+		if ( $needle ) {
+			return isset( $haystack[ $needle ] ) ? $haystack[ $needle ] : null;
+		}
+
+		return $haystack;
+	}
+
+	private static function _init_edit_tools() {
+		static::$_edit_tools = static::get_default_edit_tools();
 	}
 
 	/**
@@ -40,19 +100,11 @@ abstract class Element_Base {
 	 *
 	 * @return Element_Base
 	 */
-	abstract protected function _get_child_type( array $element_data );
+	abstract protected function _get_default_child_type( array $element_data );
 
 	abstract public function get_name();
 
-	public function __construct( $data = [], $args = [] ) {
-		if ( $data ) {
-			$this->_init( $data );
-		} else {
-			$this->_default_args = $args;
-		}
-	}
-
-	public final function get_controls( $control_id = null ) {
+	public function get_controls( $control_id = null ) {
 		$stack = Plugin::instance()->controls_manager->get_element_stack( $this );
 
 		if ( null === $stack ) {
@@ -61,20 +113,20 @@ abstract class Element_Base {
 			return $this->get_controls();
 		}
 
-		if ( $control_id ) {
-			return isset( $stack['controls'][ $control_id ] ) ? $stack['controls'][ $control_id ] : null;
-		}
-
-		return $stack['controls'];
+		return self::_get_items( $stack['controls'], $control_id );
 	}
 
-	public final function add_control( $id, $args ) {
+	public function add_control( $id, $args ) {
 		if ( empty( $args['type'] ) || ! in_array( $args['type'], [ Controls_Manager::SECTION, Controls_Manager::WP_WIDGET ] ) ) {
 			if ( null !== $this->_current_section ) {
 				if ( ! empty( $args['section'] ) || ! empty( $args['tab'] ) ) {
 					_doing_it_wrong( __CLASS__ . '::' . __FUNCTION__, 'Cannot redeclare control with `tab` or `section` args inside section. - ' . $id, '1.0.0' );
 				}
 				$args = array_merge( $args, $this->_current_section );
+
+				if ( null !== $this->_current_tab ) {
+					$args = array_merge( $args, $this->_current_tab );
+				}
 			} elseif ( empty( $args['section'] ) ) {
 				wp_die( __CLASS__ . '::' . __FUNCTION__ . ': Cannot add a control outside a section (use `start_controls_section`).' );
 			}
@@ -84,7 +136,7 @@ abstract class Element_Base {
 	}
 
 	public function remove_control( $id ) {
-		return Plugin::instance()->controls_manager->remove_control_from_stack( $this, $id );
+		return Plugin::instance()->controls_manager->remove_control_from_stack( $this->get_name(), $id );
 	}
 
 	public final function add_group_control( $group_name, $args = [] ) {
@@ -105,10 +157,24 @@ abstract class Element_Base {
 		} );
 	}
 
-	public final function get_style_controls() {
-		return array_filter( $this->get_controls(), function( $control ) {
-			return ( ! empty( $control['selectors'] ) );
-		} );
+	public final function get_style_controls( $controls = null ) {
+		if ( null === $controls ) {
+			$controls = $this->get_controls();
+		}
+
+		$style_controls = [];
+
+		foreach ( $controls as $control_name => $control ) {
+			if ( Controls_Manager::REPEATER === $control['type'] ) {
+				$control['style_fields'] = $this->get_style_controls( $control['fields'] );
+			}
+
+			if ( ! empty( $control['style_fields'] ) || ! empty( $control['selectors'] ) ) {
+				$style_controls[ $control_name ] = $control;
+			}
+		}
+
+		return $style_controls;
 	}
 
 	public final function get_class_controls() {
@@ -127,6 +193,14 @@ abstract class Element_Base {
 
 		$control_args['responsive'] = self::RESPONSIVE_DESKTOP;
 
+		if ( isset( $control_args['desktop_default'] ) ) {
+			$control_args['default'] = $control_args['desktop_default'];
+		}
+
+		unset( $control_args['desktop_default'] );
+		unset( $control_args['tablet_default'] );
+		unset( $control_args['mobile_default'] );
+
 		$this->add_control(
 			$id,
 			$control_args
@@ -141,6 +215,14 @@ abstract class Element_Base {
 
 		$control_args['responsive'] = self::RESPONSIVE_TABLET;
 
+		if ( isset( $control_args['tablet_default'] ) ) {
+			$control_args['default'] = $control_args['tablet_default'];
+		}
+
+		unset( $control_args['desktop_default'] );
+		unset( $control_args['tablet_default'] );
+		unset( $control_args['mobile_default'] );
+
 		$this->add_control(
 			$id . '_tablet',
 			$control_args
@@ -154,6 +236,14 @@ abstract class Element_Base {
 		}
 
 		$control_args['responsive'] = self::RESPONSIVE_MOBILE;
+
+		if ( isset( $control_args['mobile_default'] ) ) {
+			$control_args['default'] = $control_args['mobile_default'];
+		}
+
+		unset( $control_args['desktop_default'] );
+		unset( $control_args['tablet_default'] );
+		unset( $control_args['mobile_default'] );
 
 		$this->add_control(
 			$id . '_mobile',
@@ -174,7 +264,7 @@ abstract class Element_Base {
 	}
 
 	public function get_keywords() {
-		return '';
+		return [];
 	}
 
 	public function get_categories() {
@@ -182,7 +272,7 @@ abstract class Element_Base {
 	}
 
 	public function get_icon() {
-		return 'columns';
+		return 'eicon-columns';
 	}
 
 	public function is_reload_preview_required() {
@@ -194,7 +284,7 @@ abstract class Element_Base {
 			'name' => $this->get_name(),
 			'elType' => $this->get_type(),
 			'title' => $this->get_title(),
-			'controls' => array_values( $this->get_controls() ),
+			'controls' => $this->get_controls(),
 			'tabs_controls' => $this->get_tabs_controls(),
 			'categories' => $this->get_categories(),
 			'keywords' => $this->get_keywords(),
@@ -202,11 +292,7 @@ abstract class Element_Base {
 			'reload_preview' => $this->is_reload_preview_required(),
 		];
 
-		if ( $item ) {
-			return isset( $config[ $item ] ) ? $config[ $item ] : null;
-		}
-
-		return $config;
+		return self::_get_items( $config, $item );
 	}
 
 	public function print_template() {
@@ -232,19 +318,11 @@ abstract class Element_Base {
 	}
 
 	public function get_data( $item = null ) {
-		if ( $item ) {
-			return isset( $this->_data[ $item ] ) ? $this->_data[ $item ] : null;
-		}
-
-		return $this->_data;
+		return self::_get_items( $this->_data, $item );
 	}
 
 	public function get_settings( $setting = null ) {
-		if ( $setting ) {
-			return isset( $this->_settings[ $setting ] ) ? $this->_settings[ $setting ] : null;
-		}
-
-		return $this->_settings;
+		return self::_get_items( $this->_settings, $setting );
 	}
 
 	public function get_children() {
@@ -255,8 +333,8 @@ abstract class Element_Base {
 		return $this->_children;
 	}
 
-	public function get_default_args() {
-		return $this->_default_args;
+	public function get_default_args( $item = null ) {
+		return self::_get_items( $this->_default_args, $item );
 	}
 
 	/**
@@ -294,7 +372,16 @@ abstract class Element_Base {
 		return $child;
 	}
 
-	public function is_control_visible( $control ) {
+	public function is_control_visible( $control, $values = null ) {
+		if ( null === $values ) {
+			$values = $this->get_settings();
+		}
+
+		// Repeater fields
+		if ( ! empty( $control['conditions'] ) ) {
+			return Conditions::check( $control['conditions'], $values );
+		}
+
 		if ( empty( $control['condition'] ) ) {
 			return true;
 		}
@@ -306,7 +393,7 @@ abstract class Element_Base {
 			$condition_sub_key = $condition_key_parts[2];
 			$is_negative_condition = ! ! $condition_key_parts[3];
 
-			$instance_value = $this->get_settings( $pure_condition_key );
+			$instance_value = $values[ $pure_condition_key ];
 
 			if ( null === $instance_value ) {
 				return false;
@@ -320,7 +407,9 @@ abstract class Element_Base {
 				$instance_value = $instance_value[ $condition_sub_key ];
 			}
 
-			$is_contains = is_array( $condition_value ) ? in_array( $instance_value, $condition_value ) : $instance_value === $condition_value;
+			// If it's a non empty array - check if the conditionValue contains the controlValue,
+			// otherwise check if they are equal. ( and give the ability to check if the value is an empty array )
+			$is_contains = ( is_array( $condition_value ) && ! empty( $condition_value ) ) ? in_array( $instance_value, $condition_value ) : $instance_value === $condition_value;
 
 			if ( $is_negative_condition && $is_contains || ! $is_negative_condition && ! $is_contains ) {
 				return false;
@@ -330,12 +419,40 @@ abstract class Element_Base {
 		return true;
 	}
 
-	public function add_render_attribute( $element, $key, $value ) {
+	public function add_render_attribute( $element, $key = null, $value = null, $overwrite = false ) {
+		if ( is_array( $element ) ) {
+			foreach ( $element as $element_key => $attributes ) {
+				$this->add_render_attribute( $element_key, $attributes, null, $overwrite );
+			}
+
+			return $this;
+		}
+
+		if ( is_array( $key ) ) {
+			foreach ( $key as $attribute_key => $attributes ) {
+				$this->add_render_attribute( $element, $attribute_key, $attributes, $overwrite );
+			}
+
+			return $this;
+		}
+
 		if ( empty( $this->_render_attributes[ $element ][ $key ] ) ) {
 			$this->_render_attributes[ $element ][ $key ] = [];
 		}
 
-		$this->_render_attributes[ $element ][ $key ] = array_merge( $this->_render_attributes[ $element ][ $key ], (array) $value );
+		settype( $value, 'array' );
+
+		if ( $overwrite ) {
+			$this->_render_attributes[ $element ][ $key ] = $value;
+		} else {
+			$this->_render_attributes[ $element ][ $key ] = array_merge( $this->_render_attributes[ $element ][ $key ], $value );
+		}
+
+		return $this;
+	}
+
+	public function set_render_attribute( $element, $key = null, $value = null ) {
+		return $this->add_render_attribute( $element, $key, $value, true );
 	}
 
 	public function get_render_attribute_string( $element ) {
@@ -384,32 +501,90 @@ abstract class Element_Base {
 		];
 	}
 
-	public function start_controls_section( $id, $args ) {
-		do_action( 'elementor/element/before_section_start', $this, $id, $args );
+	public function get_unique_selector() {
+		return '.elementor-element-' . $this->get_id();
+	}
+
+	public function start_controls_section( $section_id, $args ) {
+		do_action( 'elementor/element/before_section_start', $this, $section_id, $args );
+		do_action( 'elementor/element/' . $this->get_name() . '/' . $section_id . '/before_section_start', $this, $args );
 
 		$args['type'] = Controls_Manager::SECTION;
 
-		$this->add_control( $id, $args );
+		$this->add_control( $section_id, $args );
 
 		if ( null !== $this->_current_section ) {
 			wp_die( sprintf( 'Elementor: You can\'t start a section before the end of the previous section: `%s`', $this->_current_section['section'] ) );
 		}
 
 		$this->_current_section = [
-			'section' => $id,
-			'tab' => $this->get_controls( $id )['tab'],
+			'section' => $section_id,
+			'tab' => $this->get_controls( $section_id )['tab'],
 		];
 
-		do_action( 'elementor/element/after_section_start', $this, $id, $args );
+		do_action( 'elementor/element/after_section_start', $this, $section_id, $args );
+		do_action( 'elementor/element/' . $this->get_name() . '/' . $section_id . '/after_section_start', $this, $args );
 	}
 
 	public function end_controls_section() {
 		// Save the current section for the action
 		$current_section = $this->_current_section;
+		$section_id = $current_section['section'];
+		$args = [ 'tab' => $current_section['tab'] ];
+
+		do_action( 'elementor/element/before_section_end', $this, $section_id, $args );
+		do_action( 'elementor/element/' . $this->get_name() . '/' . $section_id . '/before_section_end', $this, $args );
 
 		$this->_current_section = null;
 
-		do_action( 'elementor/element/after_section_end', $this, $current_section['section'], [ 'tab' => $current_section['tab'] ] );
+		do_action( 'elementor/element/after_section_end', $this, $section_id, $args );
+		do_action( 'elementor/element/' . $this->get_name() . '/' . $section_id . '/after_section_end', $this, $args );
+	}
+
+	public function start_controls_tabs( $tabs_id ) {
+		if ( null !== $this->_current_tab ) {
+			wp_die( sprintf( 'Elementor: You can\'t start tabs before the end of the previous tabs: `%s`', $this->_current_tab['tabs_wrapper'] ) );
+		}
+
+		$this->add_control(
+			$tabs_id,
+			[
+				'type' => Controls_Manager::TABS,
+			]
+		);
+
+		$this->_current_tab = [
+			'tabs_wrapper' => $tabs_id,
+		];
+	}
+
+	public function end_controls_tabs() {
+		$this->_current_tab = null;
+	}
+
+	public function start_controls_tab( $tab_id, $args ) {
+		if ( ! empty( $this->_current_tab['inner_tab'] ) ) {
+			wp_die( sprintf( 'Elementor: You can\'t start a tab before the end of the previous tab: `%s`', $this->_current_tab['inner_tab'] ) );
+		}
+
+		$args['type'] = Controls_Manager::TAB;
+		$args['tabs_wrapper'] = $this->_current_tab['tabs_wrapper'];
+
+		$this->add_control( $tab_id, $args );
+
+		$this->_current_tab['inner_tab'] = $tab_id;
+	}
+
+	public function end_controls_tab() {
+		unset( $this->_current_tab['inner_tab'] );
+	}
+
+	public final function set_settings( $key, $value = null ) {
+		if ( null === $value ) {
+			$this->_settings = $key;
+		} else {
+			$this->_settings[ $key ] = $value;
+		}
 	}
 
 	protected function _register_controls() {}
@@ -453,6 +628,13 @@ abstract class Element_Base {
 		<?php
 	}
 
+	/**
+	 * @return boolean
+	 */
+	public function is_type_instance() {
+		return $this->_is_type_instance;
+	}
+
 	protected function render() {}
 
 	protected function get_default_data() {
@@ -482,6 +664,16 @@ abstract class Element_Base {
 		}
 	}
 
+	private function _get_child_type( $element_data ) {
+		$child_type = $this->_get_default_child_type( $element_data );
+
+		// If it's not a valid widget ( like a deactivated plugin )
+		if ( ! $child_type ) {
+			return false;
+		}
+		return apply_filters( 'elementor/element/get_child_type', $child_type, $element_data, $this );
+	}
+
 	private function _init_controls() {
 		Plugin::instance()->controls_manager->open_stack( $this );
 
@@ -506,5 +698,14 @@ abstract class Element_Base {
 		$this->_data = array_merge( $this->get_default_data(), $data );
 		$this->_id = $data['id'];
 		$this->_settings = $this->_get_parsed_settings();
+	}
+
+	public function __construct( array $data = [], array $args = null ) {
+		if ( $data ) {
+		    $this->_is_type_instance = false;
+			$this->_init( $data );
+		} elseif ( $args ) {
+			$this->_default_args = $args;
+		}
 	}
 }

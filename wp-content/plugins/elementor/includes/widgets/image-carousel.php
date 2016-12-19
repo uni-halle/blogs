@@ -14,7 +14,11 @@ class Widget_Image_Carousel extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'slider-push';
+		return 'eicon-slider-push';
+	}
+
+	public function get_categories() {
+		return [ 'general-elements' ];
 	}
 
 	protected function _register_controls() {
@@ -505,7 +509,7 @@ class Widget_Image_Carousel extends Widget_Base {
 
 		?>
 		<div class="elementor-image-carousel-wrapper elementor-slick-slider" dir="<?php echo $direction; ?>">
-			<div class="<?php echo implode( ' ', $carousel_classes ); ?>" data-slider_options='<?php echo wp_json_encode( $slick_options ); ?>'>
+			<div class="<?php echo implode( ' ', $carousel_classes ); ?>" data-slider_options='<?php echo esc_attr( wp_json_encode( $slick_options ) ); ?>'>
 				<?php echo implode( '', $slides ); ?>
 			</div>
 		</div>

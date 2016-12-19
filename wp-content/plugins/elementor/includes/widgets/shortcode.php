@@ -14,7 +14,11 @@ class Widget_Shortcode extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'shortcode';
+		return 'eicon-shortcode';
+	}
+
+	public function get_categories() {
+		return [ 'general-elements' ];
 	}
 
 	public function is_reload_preview_required() {

@@ -14,7 +14,7 @@ class Widget_Heading extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'type-tool';
+		return 'eicon-type-tool';
 	}
 
 	protected function _register_controls() {
@@ -93,19 +93,19 @@ class Widget_Heading extends Widget_Base {
 				'options' => [
 					'left' => [
 						'title' => __( 'Left', 'elementor' ),
-						'icon' => 'align-left',
+						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
 						'title' => __( 'Center', 'elementor' ),
-						'icon' => 'align-center',
+						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
 						'title' => __( 'Right', 'elementor' ),
-						'icon' => 'align-right',
+						'icon' => 'fa fa-align-right',
 					],
 					'justify' => [
 						'title' => __( 'Justified', 'elementor' ),
-						'icon' => 'align-justify',
+						'icon' => 'fa fa-align-justify',
 					],
 				],
 				'default' => '',
@@ -174,7 +174,10 @@ class Widget_Heading extends Widget_Base {
 		}
 
 		if ( ! empty( $settings['link']['url'] ) ) {
-			$url = sprintf( '<a href="%s">%s</a>', $settings['link']['url'], $settings['title'] );
+			$target = $settings['link']['is_external'] ? ' target="_blank"' : '';
+
+			$url = sprintf( '<a href="%s"%s>%s</a>', $settings['link']['url'], $target, $settings['title'] );
+
 			$title_html = sprintf( '<%1$s %2$s>%3$s</%1$s>', $settings['header_size'], $this->get_render_attribute_string( 'heading' ), $url );
 		} else {
 			$title_html = sprintf( '<%1$s %2$s>%3$s</%1$s>', $settings['header_size'], $this->get_render_attribute_string( 'heading' ), $settings['title'] );

@@ -38,9 +38,9 @@ class Widget_WordPress extends Widget_Base {
 
 	public function get_icon() {
 		if ( $this->_is_pojo_widget() ) {
-			return 'pojome';
+			return 'eicon-pojome';
 		}
-		return 'wordpress';
+		return 'eicon-wordpress';
 	}
 
 	public function is_reload_preview_required() {
@@ -107,7 +107,7 @@ class Widget_WordPress extends Widget_Base {
 
 	protected function content_template() {}
 
-	public function __construct( $data = [], $args = [] ) {
+	public function __construct( $data = [], $args = null ) {
 		$this->_widget_name = $args['widget_name'];
 
 		parent::__construct( $data, $args );

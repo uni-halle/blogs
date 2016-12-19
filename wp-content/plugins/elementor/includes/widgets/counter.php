@@ -14,7 +14,11 @@ class Widget_Counter extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'counter';
+		return 'eicon-counter';
+	}
+
+	public function get_categories() {
+		return [ 'general-elements' ];
 	}
 
 	protected function _register_controls() {

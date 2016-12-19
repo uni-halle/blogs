@@ -14,7 +14,7 @@ class Widget_Divider extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'divider';
+		return 'eicon-divider';
 	}
 
 	protected function _register_controls() {
@@ -100,17 +100,17 @@ class Widget_Divider extends Widget_Base {
 				'label' => __( 'Alignment', 'elementor' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
-					'left'    => [
+					'left' => [
 						'title' => __( 'Left', 'elementor' ),
-						'icon' => 'align-left',
+						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
 						'title' => __( 'Center', 'elementor' ),
-						'icon' => 'align-center',
+						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
 						'title' => __( 'Right', 'elementor' ),
-						'icon' => 'align-right',
+						'icon' => 'fa fa-align-right',
 					],
 				],
 				'default' => '',

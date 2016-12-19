@@ -63,29 +63,37 @@ class Widgets_Manager {
 
 		include( ELEMENTOR_PATH . 'includes/widgets/wordpress.php' );
 
+		// Skip Pojo widgets
+		$pojo_allowed_widgets = [
+			'Pojo_Widget_Recent_Posts',
+			'Pojo_Widget_Posts_Group',
+			'Pojo_Widget_Gallery',
+			'Pojo_Widget_Recent_Galleries',
+			'Pojo_Slideshow_Widget',
+			'Pojo_Forms_Widget',
+			'Pojo_Widget_News_Ticker',
+
+			'Pojo_Widget_WC_Products',
+			'Pojo_Widget_WC_Products_Category',
+			'Pojo_Widget_WC_Product_Categories',
+		];
+
+		// Allow themes/plugins to filter out their widgets
+		$black_list = apply_filters( 'elementor/widgets/black_list', [] );
+
 		foreach ( $wp_widget_factory->widgets as $widget_class => $widget_obj ) {
-			// Skip Pojo widgets
-			$allowed_widgets = [
-				'Pojo_Widget_Recent_Posts',
-				'Pojo_Widget_Posts_Group',
-				'Pojo_Widget_Gallery',
-				'Pojo_Widget_Recent_Galleries',
-				'Pojo_Slideshow_Widget',
-				'Pojo_Forms_Widget',
-				'Pojo_Widget_News_Ticker',
 
-				'Pojo_Widget_WC_Products',
-				'Pojo_Widget_WC_Products_Category',
-				'Pojo_Widget_WC_Product_Categories',
-			];
+			if ( in_array( $widget_class, $black_list ) ) {
+				continue;
+			}
 
-			if ( $widget_obj instanceof \Pojo_Widget_Base && ! in_array( $widget_class, $allowed_widgets ) ) {
+			if ( $widget_obj instanceof \Pojo_Widget_Base && ! in_array( $widget_class, $pojo_allowed_widgets ) ) {
 				continue;
 			}
 
 			$elementor_widget_class = __NAMESPACE__ . '\Widget_WordPress';
 
-			$this->register_widget_type( new $elementor_widget_class( null, [ 'widget_name' => $widget_class ] ) );
+			$this->register_widget_type( new $elementor_widget_class( [], [ 'widget_name' => $widget_class ] ) );
 		}
 	}
 
@@ -120,7 +128,7 @@ class Widgets_Manager {
 			$this->_init_widgets();
 		}
 
-		if ( $widget_name ) {
+		if ( null !== $widget_name ) {
 			return isset( $this->_widget_types[ $widget_name ] ) ? $this->_widget_types[ $widget_name ] : null;
 		}
 
@@ -130,12 +138,12 @@ class Widgets_Manager {
 	public function get_widget_types_config() {
 		$config = [];
 
-		foreach ( $this->get_widget_types() as $widget ) {
-			if ( 'common' === $widget->get_name() ) {
+		foreach ( $this->get_widget_types() as $widget_key => $widget ) {
+			if ( ! $widget->show_in_panel() ) {
 				continue;
 			}
 
-			$config[ $widget->get_name() ] = $widget->get_config();
+			$config[ $widget_key ] = $widget->get_config();
 		}
 
 		return $config;
@@ -162,13 +170,7 @@ class Widgets_Manager {
 		// Start buffering
 		ob_start();
 
-		/** @var Widget_Base|Widget_WordPress $widget_type */
-		$widget_type = $this->get_widget_types( $data['widgetType'] );
-
-		$widget_class = $widget_type->get_class_name();
-
-		/** @var Widget_Base $widget */
-		$widget = new $widget_class( $data, $widget_type->get_default_args() );
+		$widget = Plugin::instance()->elements_manager->create_element_instance( $data );
 
 		$widget->render_content();
 

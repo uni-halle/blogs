@@ -14,7 +14,11 @@ class Widget_Alert extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'alert';
+		return 'eicon-alert';
+	}
+
+	public function get_categories() {
+		return [ 'general-elements' ];
 	}
 
 	protected function _register_controls() {

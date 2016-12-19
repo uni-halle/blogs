@@ -5,7 +5,26 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Element_Section extends Element_Base {
 
+	protected static $_edit_tools;
+
 	private static $presets = [];
+
+	protected static function get_default_edit_tools() {
+		return [
+			'duplicate' => [
+				'title' => __( 'Duplicate', 'elementor' ),
+				'icon' => 'files-o',
+			],
+			'save' => [
+				'title' => __( 'Save', 'elementor' ),
+				'icon' => 'floppy-o',
+			],
+			'remove' => [
+				'title' => __( 'Remove', 'elementor' ),
+				'icon' => 'times',
+			],
+		];
+	}
 
 	public function get_name() {
 		return 'section';
@@ -16,7 +35,7 @@ class Element_Section extends Element_Base {
 	}
 
 	public function get_icon() {
-		return 'columns';
+		return 'eicon-columns';
 	}
 
 	public static function get_presets( $columns_count = null, $preset_index = null ) {
@@ -202,7 +221,12 @@ class Element_Section extends Element_Base {
 						'min' => 0,
 						'max' => 1440,
 					],
+					'vh' => [
+						'min' => 0,
+						'max' => 100,
+					],
 				],
+				'size_units' => [ 'px', 'vh' ],
 				'selectors' => [
 					'{{WRAPPER}} > .elementor-container' => 'min-height: {{SIZE}}{{UNIT}};',
 				],
@@ -467,15 +491,15 @@ class Element_Section extends Element_Base {
 				'options' => [
 					'left' => [
 						'title' => __( 'Left', 'elementor' ),
-						'icon' => 'align-left',
+						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
 						'title' => __( 'Center', 'elementor' ),
-						'icon' => 'align-center',
+						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
 						'title' => __( 'Right', 'elementor' ),
-						'icon' => 'align-right',
+						'icon' => 'fa fa-align-right',
 					],
 				],
 				'selectors' => [
@@ -650,6 +674,8 @@ class Element_Section extends Element_Base {
 		);
 
 		$this->end_controls_section();
+
+		Plugin::instance()->controls_manager->add_custom_css_controls( $this );
 	}
 
 	protected function _render_settings() {
@@ -749,7 +775,7 @@ class Element_Section extends Element_Base {
 		<?php
 	}
 
-	protected function _get_child_type( array $element_data ) {
+	protected function _get_default_child_type( array $element_data ) {
 		return Plugin::instance()->elements_manager->get_element_types( 'column' );
 	}
 }

@@ -26,7 +26,8 @@ class Control_Select2 extends Control_Base {
 						var value = data.controlValue;
 						if ( typeof value == 'string' ) {
 							var selected = ( option_value === value ) ? 'selected' : '';
-						} else {
+						} else if ( null !== value ) {
+							var value = _.values( value );
 							var selected = ( -1 !== value.indexOf( option_value ) ) ? 'selected' : '';
 						}
 						#>

@@ -17,12 +17,13 @@ class Controls_Manager {
 	const SELECT = 'select';
 	const CHECKBOX = 'checkbox';
 	const SWITCHER = 'switcher';
-	const CHECKBOX_LIST = 'checkbox_list';
 
 	const HIDDEN = 'hidden';
 	const HEADING = 'heading';
 	const RAW_HTML = 'raw_html';
 	const SECTION = 'section';
+	const TAB = 'tab';
+	const TABS = 'tabs';
 	const DIVIDER = 'divider';
 
 	const COLOR = 'color';
@@ -43,6 +44,7 @@ class Controls_Manager {
 	const GALLERY = 'gallery';
 	const STRUCTURE = 'structure';
 	const SELECT2 = 'select2';
+	const DATE_TIME = 'date_time';
 	const BOX_SHADOW = 'box_shadow';
 	const ANIMATION = 'animation';
 	const HOVER_ANIMATION = 'hover_animation';
@@ -82,9 +84,9 @@ class Controls_Manager {
 	 * @since 1.0.0
 	 */
 	public function register_controls() {
-		include( 'controls/base.php' );
-		include( 'controls/base-multiple.php' );
-		include( 'controls/base-units.php' );
+		require( ELEMENTOR_PATH . 'includes/controls/base.php' );
+		require( ELEMENTOR_PATH . 'includes/controls/base-multiple.php' );
+		require( ELEMENTOR_PATH . 'includes/controls/base-units.php' );
 
 		$available_controls = [
 			self::TEXT,
@@ -93,12 +95,13 @@ class Controls_Manager {
 			self::SELECT,
 			self::CHECKBOX,
 			self::SWITCHER,
-			self::CHECKBOX_LIST,
 
 			self::HIDDEN,
 			self::HEADING,
 			self::RAW_HTML,
 			self::SECTION,
+			self::TAB,
+			self::TABS,
 			self::DIVIDER,
 
 			self::COLOR,
@@ -119,6 +122,7 @@ class Controls_Manager {
 			self::GALLERY,
 			self::STRUCTURE,
 			self::SELECT2,
+			self::DATE_TIME,
 			self::BOX_SHADOW,
 			self::ANIMATION,
 			self::HOVER_ANIMATION,
@@ -127,22 +131,22 @@ class Controls_Manager {
 
 		foreach ( $available_controls as $control_id ) {
 			$control_filename = str_replace( '_', '-', $control_id );
-			$control_filename = "controls/{$control_filename}.php";
-			include( $control_filename );
+			$control_filename = ELEMENTOR_PATH . "includes/controls/{$control_filename}.php";
+			require( $control_filename );
 
 			$class_name = __NAMESPACE__ . '\Control_' . ucwords( $control_id );
 			$this->register_control( $control_id, $class_name );
 		}
 
 		// Group Controls
-		include( ELEMENTOR_PATH . 'includes/interfaces/group-control.php' );
-		include( 'controls/groups/base.php' );
+		require( ELEMENTOR_PATH . 'includes/interfaces/group-control.php' );
+		require( ELEMENTOR_PATH . 'includes/controls/groups/base.php' );
 
-		include( 'controls/groups/background.php' );
-		include( 'controls/groups/border.php' );
-		include( 'controls/groups/typography.php' );
-		include( 'controls/groups/image-size.php' );
-		include( 'controls/groups/box-shadow.php' );
+		require( ELEMENTOR_PATH . 'includes/controls/groups/background.php' );
+		require( ELEMENTOR_PATH . 'includes/controls/groups/border.php' );
+		require( ELEMENTOR_PATH . 'includes/controls/groups/typography.php' );
+		require( ELEMENTOR_PATH . 'includes/controls/groups/image-size.php' );
+		require( ELEMENTOR_PATH . 'includes/controls/groups/box-shadow.php' );
 
 		$this->_group_controls['background'] = new Group_Control_Background();
 		$this->_group_controls['border'] = new Group_Control_Border();
@@ -241,6 +245,18 @@ class Controls_Manager {
 
 	/**
 	 * @since 1.0.0
+	 *
+	 * @param $id
+	 * @param $instance
+	 *
+	 * @return Group_Control_Base[]
+	 */
+	public function add_group_control( $id, $instance ) {
+		return $this->_group_controls[ $id ] = $instance;
+	}
+
+	/**
+	 * @since 1.0.0
 	 * @return void
 	 */
 	public function enqueue_control_scripts() {
@@ -260,7 +276,6 @@ class Controls_Manager {
 
 	public function add_control_to_stack( Element_Base $element, $control_id, $control_data ) {
 		$default_args = [
-			'default' => '',
 			'type' => self::TEXT,
 			'tab' => self::TAB_CONTENT,
 		];
@@ -268,6 +283,21 @@ class Controls_Manager {
 		$control_data['name'] = $control_id;
 
 		$control_data = array_merge( $default_args, $control_data );
+
+		$control_type_instance = $this->get_control( $control_data['type'] );
+
+		if ( ! $control_type_instance ) {
+			_doing_it_wrong( __CLASS__ . '::' . __FUNCTION__, 'Control type `' . $control_data['type'] . '` not found`', '1.0.0' );
+			return false;
+		}
+
+		$control_default_value = $control_type_instance->get_default_value();
+
+		if ( is_array( $control_default_value ) ) {
+			$control_data['default'] = isset( $control_data['default'] ) ? array_merge( $control_default_value, $control_data['default'] ) : $control_default_value;
+		} else {
+			$control_data['default'] = isset( $control_data['default'] ) ? $control_data['default'] : $control_default_value;
+		}
 
 		$stack_id = $element->get_name();
 
@@ -289,14 +319,20 @@ class Controls_Manager {
 		return true;
 	}
 
-	public function remove_control_from_stack( Element_Base $element, $control_id ) {
-		$stack_id = $element->get_name();
+	public function remove_control_from_stack( $stack_id, $control_id ) {
+		if ( is_array( $control_id ) ) {
+			foreach ( $control_id as $id ) {
+				$this->remove_control_from_stack( $stack_id, $id );
+			}
 
-		if ( empty( $this->_controls_stack[ $stack_id ][ $control_id ] ) ) {
+			return true;
+		}
+
+		if ( empty( $this->_controls_stack[ $stack_id ]['controls'][ $control_id ] ) ) {
 			return new \WP_Error( 'Cannot remove not-exists control.' );
 		}
 
-		unset( $this->_controls_stack[ $stack_id ][ $control_id ] );
+		unset( $this->_controls_stack[ $stack_id ]['controls'][ $control_id ] );
 
 		return true;
 	}
@@ -310,7 +346,7 @@ class Controls_Manager {
 
 		$stack = $this->_controls_stack[ $stack_id ];
 
-		if ( 'widget' === $element->get_type() && 'common' !== $element->get_name() ) {
+		if ( 'widget' === $element->get_type() && 'common' !== $stack_id ) {
 			$common_widget = Plugin::instance()->widgets_manager->get_widget_types( 'common' );
 
 			$stack['controls'] = array_merge( $stack['controls'], $common_widget->get_controls() );
@@ -322,11 +358,48 @@ class Controls_Manager {
 	}
 
 	/**
+	 * @param $element Element_Base
+	 */
+	public function add_custom_css_controls( $element ) {
+		$element->start_controls_section(
+			'section_custom_css_pro',
+			[
+				'label' => __( 'Custom CSS', 'elementor' ),
+				'tab'   => Controls_Manager::TAB_ADVANCED,
+			]
+		);
+
+		$element->add_control(
+			'custom_css_pro',
+			[
+				'type' => Controls_Manager::RAW_HTML,
+				'raw' => '<div class="elementor-panel-nerd-box">
+						<i class="elementor-panel-nerd-box-icon eicon-hypster"></i>
+						<div class="elementor-panel-nerd-box-title">' .
+							__( 'Meet Our Custom CSS', 'elementor' ) .
+						'</div>
+						<div class="elementor-panel-nerd-box-message">' .
+							__( 'Custom CSS lets you add CSS code to any widget, and see it render live right in the editor.', 'elementor' ) .
+						'</div>
+						<div class="elementor-panel-nerd-box-message">' .
+							__( 'This feature is only available on Elementor Pro.', 'elementor' ) .
+						'</div>
+						<a class="elementor-panel-nerd-box-link elementor-button elementor-button-default elementor-go-pro" href="https://go.elementor.com/pro-custom-css/" target="_blank">' .
+							__( 'Go Pro', 'elementor' ) .
+						'</a>
+						</div>',
+			]
+		);
+
+		$element->end_controls_section();
+	}
+
+	/**
 	 * Controls_Manager constructor.
 	 *
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-		add_action( 'init', [ $this, 'register_controls' ] );
+		$this->register_controls();
 	}
 }

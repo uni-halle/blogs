@@ -6,7 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Stylesheet {
 
 	private $rules = [];
-
 	private $devices = [];
 
 	/**
@@ -37,7 +36,7 @@ class Stylesheet {
 		$parsed_properties = '';
 
 		foreach ( $properties as $property_key => $property_value ) {
-			if ( $property_value ) {
+			if ( '' !== $property_value ) {
 				$parsed_properties .= $property_key . ':' . $property_value . ';';
 			}
 		}
@@ -64,13 +63,23 @@ class Stylesheet {
 	 *
 	 * @return $this
 	 */
-	public function add_rules( $selector, $rules, $device = 'desktop' ) {
+	public function add_rules( $selector, $rules = null, $device = 'desktop' ) {
+		if ( null === $rules ) {
+			preg_match_all( '/([^\s].+?(?=\{))\{((?s:.)+?(?=}))}/', $selector, $parsed_rules );
+
+			foreach ( $parsed_rules[1] as $index => $selector ) {
+				$this->add_rules( $selector, $parsed_rules[2][ $index ], $device );
+			}
+
+			return $this;
+		}
+
 		if ( ! isset( $this->rules[ $device ][ $selector ] ) ) {
 			$this->rules[ $device ][ $selector ] = [];
 		}
 
 		if ( is_string( $rules ) ) {
-			$rules = array_filter( explode( ';', $rules ) );
+			$rules = array_filter( explode( ';', trim( $rules ) ) );
 
 			$ordered_rules = [];
 
@@ -86,6 +95,22 @@ class Stylesheet {
 		$this->rules[ $device ][ $selector ] = array_merge( $this->rules[ $device ][ $selector ], $rules );
 
 		return $this;
+	}
+
+	public function get_rules( $device = null, $selector = null, $property = null ) {
+		if ( ! $device ) {
+			return $this->rules;
+		}
+
+		if ( $property ) {
+			return isset( $this->rules[ $device ][ $selector ][ $property ] ) ? $this->rules[ $device ][ $selector ][ $property ] : null;
+		}
+
+		if ( $selector ) {
+			return isset( $this->rules[ $device ][ $selector ] ) ? $this->rules[ $device ][ $selector ] : null;
+		}
+
+		return isset( $this->rules[ $device ] ) ? $this->rules[ $device ] : null;
 	}
 
 	public function __toString() {

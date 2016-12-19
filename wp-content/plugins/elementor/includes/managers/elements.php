@@ -7,7 +7,9 @@ class Elements_Manager {
 	/**
 	 * @var Element_Base[]
 	 */
-	private $_element_types = null;
+	private $_element_types;
+
+	private $_categories;
 
 	public function __construct() {
 		$this->require_files();
@@ -15,22 +17,49 @@ class Elements_Manager {
 		add_action( 'wp_ajax_elementor_save_builder', [ $this, 'ajax_save_builder' ] );
 	}
 
+	/**
+	 * @param array $element_data
+	 *
+	 * @return Element_Base
+	 */
+	public function create_element_instance( array $element_data ) {
+		$args = [];
+
+		if ( 'widget' === $element_data['elType'] ) {
+			$element_type = Plugin::instance()->widgets_manager->get_widget_types( $element_data['widgetType'] );
+
+			$args = $element_type->get_default_args();
+		} else {
+			$element_type = $this->get_element_types( $element_data['elType'] );
+		}
+
+		$element_class = $element_type->get_class_name();
+
+		return new $element_class( $element_data, $args );
+	}
+
 	public function get_categories() {
-		// TODO: Need to filter
-		return [
-			'basic' => [
-				'title' => __( 'Elements', 'elementor' ),
-				'icon' => 'font',
-			],
-			'pojo' => [
-				'title' => __( 'Pojo Themes', 'elementor' ),
-				'icon' => 'pojome',
-			],
-			'wordpress' => [
-				'title' => __( 'WordPress', 'elementor' ),
-				'icon' => 'wordpress',
-			],
-		];
+		if ( null === $this->_categories ) {
+			$this->init_categories();
+		}
+
+		return $this->_categories;
+	}
+
+	public function add_category( $category_name, $category_properties, $offset = null ) {
+		if ( null === $this->_categories ) {
+			$this->init_categories();
+		}
+
+		if ( null === $offset ) {
+			$this->_categories[ $category_name ] = $category_properties;
+		}
+
+		$this->_categories = array_slice( $this->_categories, 0, $offset, true )
+			+ [
+				$category_name => $category_properties,
+			]
+			+ array_slice( $this->_categories, $offset, null, true );
 	}
 
 	public function register_element_type( Element_Base $element ) {
@@ -54,7 +83,7 @@ class Elements_Manager {
 			$this->_init_elements();
 		}
 
-		if ( $element_name ) {
+		if ( null !== $element_name ) {
 			return isset( $this->_element_types[ $element_name ] ) ? $this->_element_types[ $element_name ] : null;
 		}
 
@@ -90,14 +119,15 @@ class Elements_Manager {
 			wp_send_json_error( new \WP_Error( 'no_access' ) );
 		}
 
-		if ( isset( $_POST['revision'] ) && DB::REVISION_PUBLISH === $_POST['revision'] ) {
-			$revision = DB::REVISION_PUBLISH;
+		if ( isset( $_POST['status'] ) && DB::STATUS_PUBLISH === $_POST['status'] ) {
+			$status = DB::STATUS_PUBLISH;
 		} else {
-			$revision = DB::REVISION_DRAFT;
+			$status = DB::STATUS_DRAFT;
 		}
+
 		$posted = json_decode( stripslashes( html_entity_decode( $_POST['data'] ) ), true );
 
-		Plugin::instance()->db->save_editor( $_POST['post_id'], $posted, $revision );
+		Plugin::instance()->db->save_editor( $_POST['post_id'], $posted, $status );
 
 		wp_send_json_success();
 	}
@@ -114,10 +144,32 @@ class Elements_Manager {
 		do_action( 'elementor/elements/elements_registered' );
 	}
 
+	private function init_categories() {
+		$this->_categories = [
+			'basic' => [
+				'title' => __( 'Basic', 'elementor' ),
+				'icon' => 'eicon-font',
+			],
+			'general-elements' => [
+				'title' => __( 'General Elements', 'elementor' ),
+				'icon' => 'eicon-font',
+			],
+			'pojo' => [
+				'title' => __( 'Pojo Themes', 'elementor' ),
+				'icon' => 'eicon-pojome',
+			],
+			'wordpress' => [
+				'title' => __( 'WordPress', 'elementor' ),
+				'icon' => 'eicon-wordpress',
+			],
+		];
+	}
+
 	private function require_files() {
 		require_once ELEMENTOR_PATH . 'includes/base/element-base.php';
 
 		require ELEMENTOR_PATH . 'includes/elements/column.php';
 		require ELEMENTOR_PATH . 'includes/elements/section.php';
+		require ELEMENTOR_PATH . 'includes/elements/repeater.php';
 	}
 }
