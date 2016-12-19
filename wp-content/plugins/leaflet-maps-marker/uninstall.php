@@ -2,7 +2,7 @@
 //info: die if uninstall not called from Wordpress exit
 if ( !defined( 'WP_UNINSTALL_PLUGIN' ) )
 	exit ();
-$current_version = "v3106"; //2do: change on each update to current version!
+$current_version = "v3111"; //2do: change on each update to current version!
 if (is_multisite()) {
 	global $wpdb;
 	$blogs = $wpdb->get_results("SELECT `blog_id` FROM {$wpdb->blogs}", ARRAY_A);
@@ -15,8 +15,8 @@ if (is_multisite()) {
 		$current_dismissed_wp_pointers = get_user_meta(get_current_user_id(), "dismissed_wp_pointers");
 		$replace_lmmv = preg_replace('/(lmmv(p)?(\\d)+(,)?)/',NULL,$current_dismissed_wp_pointers['0']);
 		$replace_lmmesw = preg_replace('/(lmmesw)(,)?/',NULL,$replace_lmmv);
-		$replace_without_end_coma = preg_replace('/(,)$/',NULL,$replace_lmmesw);
-		update_user_meta( get_current_user_id(), 'dismissed_wp_pointers', $replace_without_end_coma);
+		$replace_without_end_comma = preg_replace('/(,)$/',NULL,$replace_lmmesw);
+		update_user_meta( get_current_user_id(), 'dismissed_wp_pointers', $replace_without_end_comma);
 
 		//info: dont remove files if pro version exists
 		if (!file_exists($lmm_pro_readme)) {
@@ -28,6 +28,9 @@ if (is_multisite()) {
 			delete_option('leafletmapsmarker_redirect');
 			delete_option('leafletmapsmarker_update_info');
 			delete_option('leafletmapsmarker_editor');
+			//info: unschedule session garbage collector.
+			$timestamp = wp_next_scheduled( 'lmm_wp_session_garbage_collection' );
+			wp_unschedule_event( $timestamp, 'lmm_wp_session_garbage_collection' );
 			/*remove map icons directory for main site */
 			$lmm_upload_dir = wp_upload_dir();
 			$icons_directory = $lmm_upload_dir['basedir'] . DIRECTORY_SEPARATOR . "leaflet-maps-marker-icons" . DIRECTORY_SEPARATOR;
@@ -49,8 +52,8 @@ if (is_multisite()) {
 			$current_dismissed_wp_pointers = get_user_meta(get_current_user_id(), "dismissed_wp_pointers");
 			$replace_lmmv = preg_replace('/(lmmv(p)?(\\d)+(,)?)/',NULL,$current_dismissed_wp_pointers['0']);
 			$replace_lmmesw = preg_replace('/(lmmesw)(,)?/',NULL,$replace_lmmv);
-			$replace_without_end_coma = preg_replace('/(,)$/',NULL,$replace_lmmesw);
-			update_user_meta( get_current_user_id(), 'dismissed_wp_pointers', $replace_without_end_coma);
+			$replace_without_end_comma = preg_replace('/(,)$/',NULL,$replace_lmmesw);
+			update_user_meta( get_current_user_id(), 'dismissed_wp_pointers', $replace_without_end_comma);
 
 			//info: dont remove files if pro version exists
 			if (!file_exists($lmm_pro_readme)) {
@@ -62,6 +65,9 @@ if (is_multisite()) {
 				delete_option('leafletmapsmarker_redirect');
 				delete_option('leafletmapsmarker_update_info');
 				delete_option('leafletmapsmarker_editor');
+				//info: unschedule session garbage collector.
+				$timestamp = wp_next_scheduled( 'lmm_wp_session_garbage_collection' );
+				wp_unschedule_event( $timestamp, 'lmm_wp_session_garbage_collection' );
 				/* Remove and clean tables */
 				$GLOBALS['wpdb']->query("DROP TABLE `".$GLOBALS['wpdb']->prefix."leafletmapsmarker_layers`");
 				$GLOBALS['wpdb']->query("DROP TABLE `".$GLOBALS['wpdb']->prefix."leafletmapsmarker_markers`");
@@ -90,8 +96,8 @@ else
 	$current_dismissed_wp_pointers = get_user_meta(get_current_user_id(), "dismissed_wp_pointers");
 	$replace_lmmv = preg_replace('/(lmmv(p)?(\\d)+(,)?)/',NULL,$current_dismissed_wp_pointers['0']);
 	$replace_lmmesw = preg_replace('/(lmmesw)(,)?/',NULL,$replace_lmmv);
-	$replace_without_end_coma = preg_replace('/(,)$/',NULL,$replace_lmmesw);
-	update_user_meta( get_current_user_id(), 'dismissed_wp_pointers', $replace_without_end_coma);
+	$replace_without_end_comma = preg_replace('/(,)$/',NULL,$replace_lmmesw);
+	update_user_meta( get_current_user_id(), 'dismissed_wp_pointers', $replace_without_end_comma);
 
 	//info: dont remove files if pro version exists
 	$lmm_pro_readme = WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'leaflet-maps-marker-pro' . DIRECTORY_SEPARATOR . 'readme.txt';
@@ -104,6 +110,9 @@ else
 		delete_option('leafletmapsmarker_redirect');
 		delete_option('leafletmapsmarker_update_info');
 		delete_option('leafletmapsmarker_editor');
+		//info: unschedule session garbage collector.
+		$timestamp = wp_next_scheduled( 'lmm_wp_session_garbage_collection' );
+		wp_unschedule_event( $timestamp, 'lmm_wp_session_garbage_collection' );
 		/* Remove and clean tables */
 		$GLOBALS['wpdb']->query("DROP TABLE `".$GLOBALS['wpdb']->prefix."leafletmapsmarker_layers`");
 		$GLOBALS['wpdb']->query("DROP TABLE `".$GLOBALS['wpdb']->prefix."leafletmapsmarker_markers`");

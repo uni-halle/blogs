@@ -1,6 +1,7 @@
 <?php
 /*
     Admin footer - Leaflet Maps Marker Plugin
+	Attention: not added to leaflet-pro-upgrade.php!
 */
 ?>
 
@@ -11,9 +12,9 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'admin-footer.php') { die ("Please 
 
 <table cellpadding="5" cellspacing="0" style="margin-top:20px;border:1px solid #ccc;width:100%;background:#F9F9F9;">
   <tr>
-    <td valign="center"><div class="logo-rtl"><a href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('Upgrade to pro version for even more features - click here to find out how you can start a free 30-day-trial easily','lmm'); ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/logo-mapsmarker-pro-framed.png" width="65" height="65" alt="pro-logo" style="padding:5px 10px 0 10px;" /></a></div>
-	<p>
-	<a style="background:#f99755;display:block;padding:5px;text-decoration:none;color:#2702c6;margin:15px 0 10px 85px;width:800px;text-align:center;" href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_pro_upgrade"><?php _e('Upgrade to pro version for even more features - click here to find out how you can start a free 30-day-trial easily','lmm'); ?></a>
+    <td valign="center" style="padding:0 0 1px 5px;"><div class="logo-rtl"><a href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('Upgrade to pro version for even more features - click here to find out how you can start a free 30-day-trial easily','lmm'); ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/logo-mapsmarker-pro-framed.png" width="65" height="65" alt="pro-logo" /></a></div>
+	<p style="margin-bottom:3px;">
+	<a style="background:#f99755;display:block;padding:5px;text-decoration:none;color:#2702c6;margin:15px 0 10px 75px;" href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_pro_upgrade"><?php _e('Upgrade to pro version for even more features - click here to find out how you can start a free 30-day-trial easily','lmm'); ?></a>
 	<a style="text-decoration:none;" href="https://www.mapsmarker.com" target="_blank"><img src="<?php echo LEAFLET_PLUGIN_URL; ?>inc/img/icon-website-home.png" width="16" height="16" alt="mapsmarker.com"> MapsMarker.com</a>&nbsp;
 	<a style="text-decoration:none;" href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_pro_upgrade" target="_blank" title="<?php  esc_attr_e('Upgrade to pro version for even more features - click here to find out how you can start a free 30-day-trial easily','lmm'); ?>"><img src="<?php echo LEAFLET_PLUGIN_URL; ?>inc/img/icon-up16.png" width="16" height="16" alt="upgrade to pro"><?php _e('Upgrade to Pro','lmm'); ?></a>&nbsp;
 	<a style="text-decoration:none;" title="<?php esc_attr_e('MapsMarker affiliate program - sign up now and receive commissions up to 50%!','lmm'); ?>" href="https://www.mapsmarker.com/affiliates" target="_blank"><img src="<?php echo LEAFLET_PLUGIN_URL; ?>inc/img/icon-affiliates.png" width="16" height="16" alt="affiliates"> <?php _e('Affiliates','lmm'); ?></a>&nbsp;
@@ -29,3 +30,11 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'admin-footer.php') { die ("Please 
 	</p></td>
   </tr>
 </table>
+<script type="text/javascript">
+//info: toggle advanced menu items
+jQuery('#show-advanced-menu-items-link, #hide-advanced-menu-items-link').click(function(e) {
+	jQuery('#show-advanced-menu-items-link').toggle();
+	jQuery('#hide-advanced-menu-items-link').toggle();
+	jQuery('#advanced-menu-items').toggle();
+});
+</script>

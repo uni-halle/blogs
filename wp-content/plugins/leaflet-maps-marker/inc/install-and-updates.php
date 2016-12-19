@@ -934,9 +934,37 @@ if (version_compare(get_option('leafletmapsmarker_version'),'3.10.5','=')) {
 		update_option('leafletmapsmarker_version_before_update', '3.10.5');
 	}
 	update_option('leafletmapsmarker_version', '3.10.6');
+}
+if (version_compare(get_option('leafletmapsmarker_version'),'3.10.6','=')) {
+	$save_defaults_for_new_options = new Class_leaflet_options();
+	$save_defaults_for_new_options->save_defaults_for_new_options();
+	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
+	if ( $version_before_update === FALSE ) {
+		set_transient( 'leafletmapsmarker_version_before_update', 'MapsMarker-transient-for-dynamic-changelog', 60 );
+		update_option('leafletmapsmarker_version_before_update', '3.10.6');
+	}
+	update_option('leafletmapsmarker_version', '3.11');
+
+	//info: re-enable Google Maps API status if no fresh free install; only run once during upgrade from 3.10.6 to 3.11
+	if (version_compare(get_option('leafletmapsmarker_version_before_update'),'0','!=')) { 
+		$overwrite_option_google_api_status = array('google_maps_api_status' => 'enabled');
+		$options_current = get_option( 'leafletmapsmarker_options' );
+		$options_updated = array_merge($options_current, $overwrite_option_google_api_status);
+		update_option( 'leafletmapsmarker_options', $options_updated );
+	}
+
+}
+if (version_compare(get_option('leafletmapsmarker_version'),'3.11','=')) {
+	$save_defaults_for_new_options = new Class_leaflet_options();
+	$save_defaults_for_new_options->save_defaults_for_new_options();
+	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
+	if ( $version_before_update === FALSE ) {
+		set_transient( 'leafletmapsmarker_version_before_update', 'MapsMarker-transient-for-dynamic-changelog', 60 );
+		update_option('leafletmapsmarker_version_before_update', '3.11');
+	}
+	update_option('leafletmapsmarker_version', '3.11.1');
 	//info: redirect to create marker page only on first plugin activation, otherwise redirect is also done on bulk plugin activations
-	if (get_option('leafletmapsmarker_redirect') == 'true')
-	{
+	if (get_option('leafletmapsmarker_redirect') == 'true')	{
 		update_option('leafletmapsmarker_redirect', 'false');
 		wp_redirect(LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade&first_run=true');
 	} else {
@@ -954,7 +982,7 @@ if (version_compare(get_option('leafletmapsmarker_version'),'3.10.5','=')) {
 	$delete_transient_query_2 = "DELETE FROM `" . $table_options . "` WHERE `" . $table_options . "`.`option_name` LIKE '_transient_timeout_leafletmapsmarker_install_update_cache%';";
 	$wpdb->query($delete_transient_query_2);
 	//info: re-add latest install-update-transient so routine is not run twice - UPDATE ON EACH RELEASE
-	set_transient( 'leafletmapsmarker_install_update_cache_v3106', 'execute install and update-routine only once a day', 60*60*24 );
+	set_transient( 'leafletmapsmarker_install_update_cache_v3111', 'execute install and update-routine only once a day', 60*60*24 );
 }
 
 /* template for plugin updates

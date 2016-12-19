@@ -51,7 +51,7 @@ $pro_feature_banner_inline = ' <a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?pa
 <br/>
 <?php echo sprintf(__('For full documentation and usage examples please visit %1$s','lmm'), '<a href="https://www.mapsmarker.com/webapi" target="_blank">https://www.mapsmarker.com/webapi</a>'); ?>
 <br/>
-<?php echo sprintf(__('For Web API settings please <a href="%1$s">click here</a>.','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-section9'); ?>
+<?php echo sprintf(__('For Web API settings please <a href="%1$s">click here</a>.','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-web_api'); ?>
 </p>
 <hr/>
 <h2><?php _e('REST API', 'lmm'); ?> <?php echo $pro_feature_banner_inline; ?></h2>

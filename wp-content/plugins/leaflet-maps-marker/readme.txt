@@ -5,9 +5,9 @@ Plugin URI:        https://www.mapsmarker.com
 Tags:              Google Maps, googlemaps, OpenStreetMap, bing, map, maps, mapping, gpx, route, location, store locator, placemarker
 Author URI:        https://www.mapsmarker.com
 Author:            MapsMarker.com e.U.
-Requires at least: 3.4
-Tested up to:      4.5.3
-Stable tag:        3.10.6
+Requires at least: 3.3
+Tested up to:      4.7
+Stable tag:        3.11.1
 License:           GPLv2
 
 The most comprehensive & user-friendly mapping solution for WordPress
@@ -21,6 +21,7 @@ Display locations and directions on your WordPress site. Organize customized ico
 With Leaflet Maps Marker, you can
 
 * pin your favorites places with **markers**,
+* search for locations by using keyless geocoding providers like MapZen Search, Algolia Places or Photon@MapsMarker (optional: use the geocoding providers MapQuest Geocoding or Google Places with mandatory API key registration),
 * show **directions** for your locations,
 * choose from over **1000 free, customizable icons** from [Maps Icons Collection](https://mapicons.mapsmarker.com),
 * add **popup description text or images** for each marker,
@@ -56,7 +57,8 @@ This plugin is built by a team with a vision. We follow a moral code and value t
 
 **Backend**
 
-* support for configuring [custom Google Maps API keys](https://www.mapsmarker.com/docs/basic-usage/how-to-register-for-a-free-google-maps-api-key-for-commercial-usage/)
+* support for multiple keyless geocoding providers like Mapzen Search, Algolia Places and Photon@Mapsmarker 
+* support for geocoding providers MapQuest Geocoding and Google Geocoding with mandatory API keys
 * organize your markers in layers or multi-layer-maps
 * option to switch between simplified and advanced editor
 * TinyMCE button for easily searching and adding maps on post/pages edit screen
@@ -99,7 +101,7 @@ This plugin is built by a team with a vision. We follow a moral code and value t
 = 46 TRANSLATIONS - AND COUNTING! =
 
 We feature full RTL (right-to-left) language support as well as full support for cyrillic, chinese and other characters with UTF-8. 
-Maps Marker makes it easy to switch between languages. Thanks to over 100 translators around the world, more languages are added regularly. Please feel free to contribute (and earn a license key in return) at [https://translate.mapsmarker.com](https://translate.mapsmarker.com)
+Leaflet Maps Marker makes it easy to switch between languages. Thanks to over 100 translators around the world, more languages are added regularly. Please feel free to contribute (and earn a license key in return) at [https://translate.mapsmarker.com](https://translate.mapsmarker.com)
 
 **Available translations**
 
@@ -114,7 +116,7 @@ Maps Marker makes it easy to switch between languages. Thanks to over 100 transl
 * Croatian (hr) thanks to Neven Pausic, Alan Benic and Marijan Rajic
 * Czech (cs_CZ) thanks to Viktor Kleiner and Vlad Kuzba
 * Danish (da_DK) thanks to Mads Dyrmann Larsen and Peter Erfurt
-* Dutch (nl_NL) thanks to Marijke Metz, Patrick Ruers and Fokko van der Leest
+* Dutch (nl_NL) thanks to Marijke Metz, Patrick Ruers, Fokko van der Leest and Hans Temming
 * English (en_US)
 * Finnish (fi_FI) thanks to Jessi Bjoerk
 * French (fr_FR) thanks to Vincèn Pujol and Rodolphe Quiedeville, Fx Benard, cazal cédric, Fabien Hurelle and Thomas Guignard
@@ -145,7 +147,7 @@ Maps Marker makes it easy to switch between languages. Thanks to over 100 transl
 * Thai (th) thanks to Makarapong Chathamma and Panupong Siriwichayakul
 * Turkish (tr_TR) thanks to Emre Erkan and Mahir Tosun
 * Uighur (ug) thanks to Yidayet Begzad
-* Ukrainian (uk_UK) thanks to Andrexj and Sergey Zhitnitsky
+* Ukrainian (uk_UK) thanks to Andrexj and Sergey Zhitnitsky and Mykhailo
 * Vietnamese (vi) thanks to Hoai Thu
 * Yiddish (yi) thanks to Raphael Finkel
 
@@ -314,7 +316,7 @@ Good news, this plugin is free for everyone! Since it's released under the GPL, 
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License included with this plugin for more details.
 
 = Licenses for used libraries, services and images =
-* Leaflet - Copyright (c) 2010-2015, CloudMade, Vladimir Agafonkin [http://www.leafletjs.com](http://www.leafletjs.com)
+* Leaflet.js, Copyright (c) 2010-2011: Cloudemade, Copyright (c) 2010-current year: Vladimir Agafonkin [http://www.leafletjs.com](http://www.leafletjs.com)
 * OpenStreetMap - The Free Wiki World Map: [OpenStreetMap License](http://wiki.openstreetmap.org/wiki/OpenStreetMap_License)
 * Map Icons Collection by Nicolas Mollet - [https://mapicons.mapsmarker.com](https://mapicons.mapsmarker.com)
 * Datasource OGD Vienna maps: Stadt Wien, Creative Commons Attribution (by) [http://data.wien.gv.at](http://data.wien.gv.at)
@@ -336,15 +338,17 @@ This program is free software; you can redistribute it and/or modify it under th
 * [Hind](http://www.nanodesu.ru) who originally release a basic Leaflet plugin (not available anymore) which I used partly as a basis for Leaflet Maps Marker plugin
 * [shramov](http://psha.org.ru/b/leaflet-plugins.html) for bing and google maps plugins for leaflet
 
+Synonyms: Map Maker - Maps Maker - mapmaker - mapsmaker
+
 = Trademark and copyright =
 MapsMarker &reg;
 Copyright 2011-2016, MapsMarker.com e.U., All Rights Reserved
 
 == Upgrade Notice ==
-= v3.10.6 =
-enhanced Google Maps API key support which is mandatory since June 22nd - see https://www.mapsmarker.com/v3.10.6 for more details
+= v3.11.1 =
+geocoding providers usability improvements and bugfixes - see https://www.mapsmarker.com/v3.11.1 for more details
 
 == Changelog ==
-[blog post with details about v3.10.6](https://www.mapsmarker.com/v3.10.6)
+[blog post with details about v3.11.1](https://www.mapsmarker.com/v3.11.1)
 
 [changelog for all versions](https://www.mapsmarker.com/changelog)

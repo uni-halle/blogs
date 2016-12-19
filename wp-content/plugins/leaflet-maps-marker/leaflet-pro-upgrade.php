@@ -4,9 +4,7 @@
 */
 //info prevent file from being accessed directly
 if (basename($_SERVER['SCRIPT_FILENAME']) == 'leaflet-pro-upgrade.php') { die ("Please do not access this file directly. Thanks!<br/><a href='https://www.mapsmarker.com/go'>www.mapsmarker.com</a>"); }
-?>
-<div class="wrap">
-<?php
+
 include('inc' . DIRECTORY_SEPARATOR . 'admin-header.php');
 $first_run = (isset($_GET['first_run']) ? 'true' : 'false');
 
@@ -14,7 +12,7 @@ $lmm_pro_readme = WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'leaflet-maps-marker-pro
 $action = isset($_POST['action']) ? $_POST['action'] : '';
 if ( $action == NULL ) {
 	if (!file_exists($lmm_pro_readme)) {
-		$override_css = ($first_run == 'false') ? 'style="margin-top:20px;"' : '';
+		$override_css = ($first_run == 'true') ? 'style="margin-top:16px;"' : 'style="margin-top:20px;"';
 		echo '<div class="pro-upgrade-logo-rtl" ' . $override_css . '><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/logo-mapsmarker-pro.png" alt="Pro Logo" title="Maps Marker Pro Logo" /></div>';
 		echo '<h1 style="margin:6px 0 0 0;">' . __('More power: try Maps Marker Pro for free!','lmm') . '</h1>';
 		echo '<form method="post"><input type="hidden" name="action" value="upgrade_to_pro_version" />';
@@ -370,13 +368,11 @@ if ( $action == NULL ) {
 				<ul style="list-style-type:disc;margin-left:15px;">
 					<li>' . __('support for displaying KML files','lmm') . '</li>
 					<li>' . __('adding markers from frontend','lmm') . '</li>
-					<li>' . __('support for Google Street View','lmm') . '</li>
 					<li>' . __('better integration into the publication workflow (adding markers from posts or as custom post type)','lmm') . '</li>
 					<li>' . __('search for markers on frontend','lmm') . '</li>
 					<li>' . __('draw features like polylines, polygons, rectangles, circles and markers on maps','lmm') . '</li>
 					<li>' . __('email notify on marker/layer actions','lmm') . '</li>
 					<li>' . __('support for permalinks','lmm') . ' (http://your-domain.com/maps/marker/1/kml)</li>
-					<li>' . __('support for geocoding services other than Google Places','lmm') . '</li>
 					<li>' . __('better integration with other plugins','lmm') . ' (Contact Form 7, Event Organizer...)</li>
 					<li>...</li>
 				</ul>
@@ -388,6 +384,14 @@ if ( $action == NULL ) {
 			</div>
 			</p>
 			<p>' . __('For more details, showcases and reviews please also visit <a style="text-decoration:none;" href="http://www.mapsmarker.com">www.mapsmarker.com</a>','lmm') . '</p>';
+			echo '<script type="text/javascript">
+					//info: toggle advanced menu items - duplicated from admin-footer.php
+					jQuery("#show-advanced-menu-items-link, #hide-advanced-menu-items-link").click(function(e) {
+						jQuery("#show-advanced-menu-items-link").toggle();
+						jQuery("#hide-advanced-menu-items-link").toggle();
+						jQuery("#advanced-menu-items").toggle();
+					});
+					</script>';
 	} else if (file_exists($lmm_pro_readme)) {
 		echo '<h1>' . __('Upgrade to pro version','lmm') . '</h1>';
 		echo '<div class="error" style="padding:10px;"><strong>' . __('You already downloaded "Maps Marker Pro" to your server but did not activate the plugin yet!','lmm') . '</strong></div>';

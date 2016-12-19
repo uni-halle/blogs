@@ -74,13 +74,6 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			$caching_apc_disabled = 'disabled="disabled"';
 			$caching_apc_disabled_css = 'style="color:#CCCCCC;" title="' . esc_attr__('this caching method is currently not available on your server','lmm') . '"';
 		}
-		if ( function_exists('memcache_add') ) { //info: Memcache
-			$caching_memcache_disabled = '';
-			$caching_memcache_disabled_css = '';
-		} else {
-			$caching_memcache_disabled = 'disabled="disabled"';
-			$caching_memcache_disabled_css = 'style="color:#CCCCCC;" title="' . esc_attr__('this caching method is currently not available on your server','lmm') . '"';
-		}
 		if ( function_exists('wincache_ucache_add') ) { //info: Wincache
 			$caching_wincache_disabled = '';
 			$caching_wincache_disabled_css = '';
@@ -123,6 +116,89 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			$caching_memoryserialized_disabled = 'disabled="disabled"';
 			$caching_memoryserialized_disabled_css = 'style="color:#CCCCCC;" title="' . esc_attr__('this caching method is currently not available on your server','lmm') . '"';
 		}
+
+		//info: disable geocoding if no API key is set for Mapzen Search and Google Geocoding
+		if ($lmm_options['geocoding_mapquest_geocoding_api_key'] == NULL && $lmm_options['geocoding_provider'] == 'mapquest-geocoding') {
+			$geocoding_radio_button_on = ' disabled="disabled"';
+			$geocoding_radio_button_off = ' checked="checked"';
+			$geocoding_provider_api_key_warning = '<br/><strong>' . sprintf(__('Error: please <a href="%1$s">enter your %2$s-API key</a> or <a href="%3$s">select an alternative geocoding provider</a>!','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-geocoding-mapquest', 'MapQuest Geocoding', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-geocoding') . '</strong>';
+		} else if 
+			(
+				( ($lmm_options['geocoding_provider'] == 'google-geocoding') || ($lmm_options['geocoding_provider_fallback'] == 'google-geocoding')	)
+				&&
+				(
+					( ($lmm_options['geocoding_google_geocoding_auth_method'] == 'api-key') && ($lmm_options['geocoding_google_geocoding_api_key'] == NULL) ) 
+					||
+					( ($lmm_options['geocoding_google_geocoding_auth_method'] == 'clientid-signature') && (($lmm_options['geocoding_google_geocoding_premium_client'] == NULL) || ($lmm_options['geocoding_google_geocoding_premium_signature'] == NULL)) )  
+				)
+			)
+		{
+			$geocoding_radio_button_on = ' disabled="disabled"';
+			$geocoding_radio_button_off = ' checked="checked"';
+			$geocoding_provider_api_key_warning = '<br/><span style="font-weight:bold;">' . sprintf(__('Warning: please <a href="%1$s">enter your %2$s-API key</a> or <a href="%3$s">select an alternative geocoding provider</a>!','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-geocoding-google', 'Google Geocoding', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-geocoding') . '</span><br/>';
+		} else {
+			$geocoding_radio_button_on = ' checked="checked"';
+			$geocoding_radio_button_off = '';
+			$geocoding_provider_api_key_warning = '';
+		}		
+		
+		//info: prepare rate limit infos
+		if ( ($lmm_options['geocoding_algolia_appId'] != NULL) && ($lmm_options['geocoding_algolia_apiKey'] != NULL) ){
+			$algolia_rate_limit = sprintf(__('Rate limit: %1$s requests/%2$s and a maximum of %3$s requests/%4$s','lmm'), '100.000', __('month','lmm'), '15', __('second','lmm'));
+		} else {
+			$algolia_rate_limit = sprintf(__('Rate limit: %1$s requests/domain/%2$s and a maximum of %3$s requests/%4$s','lmm'), '1.000', __('day','lmm'), '15', __('second','lmm'));
+		}
+		if ($lmm_options['geocoding_mapzen_search_api_key'] != NULL) {
+			$mapzen_rate_limit = sprintf(__('Rate limit: %1$s requests/%2$s and a maximum of %3$s requests/%4$s','lmm'), '30.000', __('month','lmm'), '6', __('second','lmm'));
+		} else {
+			$mapzen_rate_limit = sprintf(__('Rate limit: %1$s requests/domain/%2$s and a maximum of %3$s requests/%4$s and %5$s requests/%6$s','lmm'), '1.000', __('day','lmm'), '1', __('second','lmm'), '6', __('minute','lmm')) . '<br/><span style="font-weight:bold;color:#cc0000;">' . sprintf(__('Attention: if you want to geocode more than %1$s locations using Mapzen Search, <a href="%2$s" target="_blank">registering a free Mapzen Search API key</a> with a higher limit of maximum %3$s requests/%4$s is highly recommended!','lmm'), '6', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-geocoding-mapzen', '6', __('second','lmm')) . '</span>';
+		}
+		//info: check if MapQuest API key is set
+		$geocoding_provider_mapquest_disabled = '';
+		if ($lmm_options['geocoding_mapquest_geocoding_api_key'] == NULL) {
+			$option_mapquest_inactive = '<tr><td colspan="2"><strong>' . esc_attr__('Inactive (API key required)','lmm') . '</strong></td></tr><tr><td><input id="mapquest" type="radio" name="geocoding-provider" value="mapquest_geocoding" ' . checked($lmm_options['geocoding_provider'], 'mapquest_geocoding', false) . ' disabled="disabled"/><label for="mapquest">MapQuest Geocoding</label></td><td>'. sprintf(__('Rate limit: %1$s transactions/month and a maximum of %2$s requests/%3$s','lmm'), '15.000', '10', __('second','lmm')) . $geocoding_provider_api_key_warning . '</td></tr>';
+			$option_mapquest_active = '';
+		} else {
+			$option_mapquest_active = '<tr><td><input id="mapquest" type="radio" name="geocoding-provider" value="mapquest_geocoding" ' . checked($lmm_options['geocoding_provider'], 'mapquest_geocoding', false)  . ' disabled="disabled"/><label for="mapquest">MapQuest Geocoding</label></td><td>'. sprintf(__('Rate limit: %1$s transactions/month and a maximum of %2$s requests/%3$s','lmm'), '15.000', '10', __('second','lmm')) . '</td></tr>';
+			$option_mapquest_inactive = '';
+		}
+		//info: check if Google Geocoding API key is set
+		$geocoding_provider_google_disabled = '';
+		if 
+		( 
+				( ($lmm_options['geocoding_google_geocoding_auth_method'] == 'api-key') && ($lmm_options['geocoding_google_geocoding_api_key'] == NULL) ) 
+				|| 
+				( ($lmm_options['geocoding_google_geocoding_auth_method'] == 'clientid-signature') && (($lmm_options['geocoding_google_geocoding_premium_client'] == NULL) || ($lmm_options['geocoding_google_geocoding_premium_signature'] == NULL)) ) 
+		) {
+			$option_google_inactive = '<tr><td colspan="2"><strong>' . esc_attr__('Inactive (API key required)','lmm') . '</strong></td></tr><tr><td><input id="google" type="radio" name="geocoding-provider" value="google_geocoding" disabled="disabled" /><label for="google">Google Geocoding</label></td><td>'.sprintf(__('Rate limit: %1$s requests/%2$s and a maximum of %3$s requests/%4$s','lmm'), '2.500', __('day','lmm'), '50', __('second','lmm')). $geocoding_provider_api_key_warning . '</td></tr>';
+			$option_google_active = '';
+		} else {
+			$option_google_active = '<tr><td><input id="google" type="radio" name="geocoding-provider" value="google_geocoding" ' . checked($lmm_options['geocoding_provider'], 'google-geocoding', false ) . ' disabled="disabled"/><label for="google">Google Geocoding</label></td><td>'. sprintf(__('Rate limit: %1$s requests/%2$s and a maximum of %3$s requests/%4$s','lmm'), '2.500', __('day','lmm'), '50', __('second','lmm')) .'</td></tr>';
+			$option_google_inactive = '';
+		}
+		
+		$geocoding_provider = '
+		<table style="margin-left:23px;background:#ccc;border-radius:5px;">
+			<tr>
+				<td colspan="2">&nbsp;&nbsp;&nbsp;<strong>'. esc_attr__('Available geocoding providers','lmm') . '</strong> (<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#geocoding" title="' . esc_attr__('click to change geocoding provider','lmm') . '" target="_top">' . __('Settings','lmm') . '</a>)</td>
+			</tr>
+			<tr>
+				<td style="width:150px;"><input id="photon" type="radio" name="geocoding-provider" '. checked($lmm_options['geocoding_provider'], 'photon', false ) .' value="photon" disabled="disabled"/><label for="photon">Photon@MapsMarker</label></td>
+				<td>'.sprintf(__('Rate limit: %1$s requests/domain/%2$s and a maximum of %3$s requests/%4$s','lmm'), '2.500', __('day','lmm'), '10', __('second','lmm')).'</td>
+			</tr>
+			<tr>
+				<td style="width:150px;"><input id="algolia" type="radio" name="geocoding-provider" '. checked($lmm_options['geocoding_provider'], 'algolia-places', false ) . ' value="algolia-places" disabled="disabled"/><label for="algolia">Algolia Places</a></td>
+				<td>'.$algolia_rate_limit.'</td>
+			</tr>
+			<tr>
+				<td style="width:150px;"><input id="mapzen" type="radio" name="geocoding-provider" '. checked($lmm_options['geocoding_provider'], 'mapzen-search', false ) .' value="mapzen-search" disabled="disabled"/><label for="mapzen">Mapzen Search</label></td>
+				<td>' . $mapzen_rate_limit . '</td>
+			</tr>
+			'. $option_mapquest_active .'
+			'. $option_google_active .'
+			'. $option_mapquest_inactive .'
+			'. $option_google_inactive .'
+		</table>';
 
 		if ($action_iframe == 'import') {
 			/**********************************
@@ -192,21 +268,8 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				<tr>
 					<td valign="top">' . __('Which geocoding option should be used?','lmm') . '</td>
 					<td>
-						<input id="geocoding-on" type="radio" name="geocoding-option" value="geocoding-on" checked="checked" disabled="disabled" /> <label for="geocoding-on"> ' . __('use address for geocoding (latitude and longitude values will get overwritten by geocoding results)','lmm') . '</label><br/>
-						<input id="geocoding-off" type="radio" name="geocoding-option" value="geocoding-off" disabled="disabled" /> <label for="geocoding-off"> ' . __('do not use address for geocoding (address, latitude and longitude values will be imported as given)','lmm') . '</label><br/>
-
-						<p id="show-more-gmapsbusiness" style="margin:5px 0 0 24px;"><a href="#" onclick="document.getElementById(\'gmapsbusiness-more-options\').style.display = \'block\';document.getElementById(\'show-more-gmapsbusiness\').style.display = \'none\';">' . sprintf(__('Please note: Google Places API allows up to %1$s geocoding requests per day and IP-address! If you need more request, please click here','lmm'), '1.000', '100.000') . '</a></p>
-						<div id="gmapsbusiness-more-options" style="display:none;">
-						<p style="margin:5px 0 0 24px;">
-						' . sprintf(__('The Google Places API Web Service enforces a default limit of %1$s requests per %2$s hour period, which you can increase free of charge. If your app exceeds the limit, the app will start failing. Verify your identity to get up to %3$s requests per %4$s hour period, by <a href="%5$s" target="_blank">enabling billing on the Google Developers Console</a>.','lmm'), '1.000', '24', '150.000', '24', 'https://developers.google.com/places/web-service/usage#usage_limits') . '
-						</p>
-						<p style="margin:5px 0 0 24px;border-top:1px solid #ccc;padding-top:5px;">
-						' . sprintf(__('To use your <a href="%1$s" target="_blank">Google Maps API for business</a>-account, please fill in the fields below - more details at %2$s','lmm'), 'http://www.google.com/enterprise/mapsearth/products/mapsapi.html?rd=1#','<a href="https://developers.google.com/maps/documentation/business/webservices/auth" target="_blank">https://developers.google.com/maps/documentation/business/webservices/auth</a>') . '<br/>
-						</p>
-						<p style="margin:5px 0 0 24px;"><label for="gmapsbusiness-client" style="margin-right:12px;">client ID</label> <input id="gmapsbusiness-client" type="input" name="gmapsbusiness-client" value="" style="width:250px;" disabled="disabled" /></label></span></p>
-						<p style="margin:5px 0 0 24px;"><label for="gmapsbusiness-signature" style="margin-right:4px;">signature</label> <input id="gmapsbusiness-signature" type="input" name="gmapsbusiness-signature" value="" style="width:250px;" disabled="disabled" /></label></span></p>
-						<p style="margin:5px 0 0 24px;"><label for="gmapsbusiness-channel" style="margin-right:12px;">channel</label> <input id="gmapsbusiness-channel" type="input" name="gmapsbusiness-channel" value="" style="width:250px;" disabled="disabled" /></label></span></p>
-						</div>
+						<input id="geocoding-on" type="radio" name="geocoding-option" value="geocoding-on" selected="selected" ' . $geocoding_radio_button_on . ' disabled="disabled"/> <label for="geocoding-on"> ' . __('use address for geocoding (latitude and longitude values will get overwritten by geocoding results)','lmm') . '</label>' . $geocoding_provider . '
+						<input id="geocoding-off" type="radio" name="geocoding-option" value="geocoding-off" ' . $geocoding_radio_button_off . ' disabled="disabled"/> <label for="geocoding-off"> ' . __('do not use address for geocoding (address, latitude and longitude values will be imported as given)','lmm') . '</label><br/>
 					</td>
 				</tr>
 				<tr>
@@ -229,11 +292,6 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 
 						<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
 						<label for="caching-apc-timeout" style="margin-left:24px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-apc-timeout" type="input" name="caching-apc-timeout" value="600" style="width:30px;" ' . $caching_apc_disabled . ' /></label></span><br/>
-
-						<span ' . $caching_memcache_disabled_css . '><input id="caching-memcache" type="radio" name="caching-method" value="memcache" ' . $caching_memcache_disabled . ' /> <label for="caching-memcache">Memcache <a href="http://memcached.org/" title="http://memcached.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
-						<label for="caching-memcache-server" style="margin-left:24px;">' . __('server','lmm') . ' </label> <input id="caching-memcache-server" type="input" name="caching-memcache-server" value="localhost" style="width:150px;" ' . $caching_memcache_disabled . ' /></label>
-						<label for="caching-memcache-port" style="margin-left:5px;">' . __('port','lmm') . ' </label> <input id="caching-memcache-port" type="input" name="caching-memcache-port" value="11211" style="width:49px;" ' . $caching_memcache_disabled . ' /></label>
-						<label for="caching-memcache-timeout" style="margin-left:5px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-memcache-timeout" type="input" name="caching-memcache-timeout" value="600" style="width:31px;" ' . $caching_memcache_disabled . ' /></label></span><br/>
 
 						<span ' . $caching_wincache_disabled_css . '><input id="caching-wincache" type="radio" name="caching-method" value="wincache" ' . $caching_wincache_disabled . ' /> <label for="caching-wincache">Wincache <a href="http://sourceforge.net/projects/wincache/" title="http://sourceforge.net/projects/wincache/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
 						<label for="caching-wincache-timeout" style="margin-left:24px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-wincache-timeout" type="input" name="caching-wincache-timeout" value="600" style="width:31px;" ' . $caching_wincache_disabled . ' /></label></span><br/>
@@ -342,21 +400,8 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				<tr>
 					<td valign="top">' . __('Which geocoding option should be used?','lmm') . '</td>
 					<td>
-						<input id="geocoding-on" type="radio" name="geocoding-option" value="geocoding-on" checked="checked" disabled="disabled" /> <label for="geocoding-on"> ' . __('use address for geocoding (latitude and longitude values will get overwritten by geocoding results)','lmm') . '</label><br/>
-						<input id="geocoding-off" type="radio" name="geocoding-option" value="geocoding-off" disabled="disabled" /> <label for="geocoding-off"> ' . __('do not use address for geocoding (address, latitude and longitude values will be imported as given)','lmm') . '</label><br/>
-
-						<p id="show-more-gmapsbusiness" style="margin:5px 0 0 24px;"><a href="#" onclick="document.getElementById(\'gmapsbusiness-more-options\').style.display = \'block\';document.getElementById(\'show-more-gmapsbusiness\').style.display = \'none\';">' . sprintf(__('Please note: Google Places API allows up to %1$s geocoding requests per day and IP-address! If you need more request, please click here','lmm'), '1.000', '100.000') . '</a></p>
-						<div id="gmapsbusiness-more-options" style="display:none;">
-						<p style="margin:5px 0 0 24px;">
-						' . sprintf(__('The Google Places API Web Service enforces a default limit of %1$s requests per %2$s hour period, which you can increase free of charge. If your app exceeds the limit, the app will start failing. Verify your identity to get up to %3$s requests per %4$s hour period, by <a href="%5$s" target="_blank">enabling billing on the Google Developers Console</a>.','lmm'), '1.000', '24', '150.000', '24', 'https://developers.google.com/places/web-service/usage#usage_limits') . '
-						</p>
-						<p style="margin:5px 0 0 24px;border-top:1px solid #ccc;padding-top:5px;">
-						' . sprintf(__('To use your <a href="%1$s" target="_blank">Google Maps API for business</a>-account, please fill in the fields below - more details at %2$s','lmm'), 'http://www.google.com/enterprise/mapsearth/products/mapsapi.html?rd=1#','<a href="https://developers.google.com/maps/documentation/business/webservices/auth" target="_blank">https://developers.google.com/maps/documentation/business/webservices/auth</a>') . '<br/>
-						</p>
-						<p style="margin:5px 0 0 24px;"><label for="gmapsbusiness-client" style="margin-right:12px;">client ID</label> <input id="gmapsbusiness-client" type="input" name="gmapsbusiness-client" value="" style="width:250px;" disabled="disabled" /></label></span></p>
-						<p style="margin:5px 0 0 24px;"><label for="gmapsbusiness-signature" style="margin-right:4px;">signature</label> <input id="gmapsbusiness-signature" type="input" name="gmapsbusiness-signature" value="" style="width:250px;" disabled="disabled" /></label></span></p>
-						<p style="margin:5px 0 0 24px;"><label for="gmapsbusiness-channel" style="margin-right:12px;">channel</label> <input id="gmapsbusiness-channel" type="input" name="gmapsbusiness-channel" value="" style="width:250px;" disabled="disabled" /></label></span></p>
-						</div>
+						<input id="geocoding-on" type="radio" name="geocoding-option" value="geocoding-on" selected="selected" ' . $geocoding_radio_button_on . ' disabled="disabled"/> <label for="geocoding-on"> ' . __('use address for geocoding (latitude and longitude values will get overwritten by geocoding results)','lmm') . '</label>' . $geocoding_provider . '
+						<input id="geocoding-off" type="radio" name="geocoding-option" value="geocoding-off" ' . $geocoding_radio_button_off . ' disabled="disabled"/> <label for="geocoding-off"> ' . __('do not use address for geocoding (address, latitude and longitude values will be imported as given)','lmm') . '</label><br/>
 					</td>
 				</tr>
 				<tr>
@@ -379,11 +424,6 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 
 						<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' disabled="disabled" /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
 						<label for="caching-apc-timeout" style="margin-left:24px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-apc-timeout" type="input" name="caching-apc-timeout" value="600" style="width:30px;" ' . $caching_apc_disabled . ' disabled="disabled" /></label></span><br/>
-
-						<span ' . $caching_memcache_disabled_css . '><input id="caching-memcache" type="radio" name="caching-method" value="memcache" ' . $caching_memcache_disabled . ' disabled="disabled" /> <label for="caching-memcache">Memcache <a href="http://memcached.org/" title="http://memcached.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
-						<label for="caching-memcache-server" style="margin-left:24px;">' . __('server','lmm') . ' </label> <input id="caching-memcache-server" type="input" name="caching-memcache-server" value="localhost" style="width:150px;" ' . $caching_memcache_disabled . ' disabled="disabled" /></label>
-						<label for="caching-memcache-port" style="margin-left:5px;">' . __('port','lmm') . ' </label> <input id="caching-memcache-port" type="input" name="caching-memcache-port" value="11211" style="width:49px;" ' . $caching_memcache_disabled . ' disabled="disabled" /></label>
-						<label for="caching-memcache-timeout" style="margin-left:5px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-memcache-timeout" type="input" name="caching-memcache-timeout" value="600" style="width:31px;" ' . $caching_memcache_disabled . ' disabled="disabled" /></label></span><br/>
 
 						<span ' . $caching_wincache_disabled_css . '><input id="caching-wincache" type="radio" name="caching-method" value="wincache" ' . $caching_wincache_disabled . ' disabled="disabled" /> <label for="caching-wincache">Wincache <a href="http://sourceforge.net/projects/wincache/" title="http://sourceforge.net/projects/wincache/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
 						<label for="caching-wincache-timeout" style="margin-left:24px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-wincache-timeout" type="input" name="caching-wincache-timeout" value="600" style="width:31px;" ' . $caching_wincache_disabled . ' disabled="disabled" /></label></span><br/>
@@ -531,11 +571,6 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 						<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
 						<label for="caching-apc-timeout" style="margin-left:24px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-apc-timeout" type="input" name="caching-apc-timeout" value="600" style="width:30px;" ' . $caching_apc_disabled . ' /></label></span><br/>
 
-						<span ' . $caching_memcache_disabled_css . '><input id="caching-memcache" type="radio" name="caching-method" value="memcache" ' . $caching_memcache_disabled . ' /> <label for="caching-memcache">Memcache <a href="http://memcached.org/" title="http://memcached.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
-						<label for="caching-memcache-server" style="margin-left:24px;">' . __('server','lmm') . ' </label> <input id="caching-memcache-server" type="input" name="caching-memcache-server" value="localhost" style="width:150px;" ' . $caching_memcache_disabled . ' /></label>
-						<label for="caching-memcache-port" style="margin-left:5px;">' . __('port','lmm') . ' </label> <input id="caching-memcache-port" type="input" name="caching-memcache-port" value="11211" style="width:49px;" ' . $caching_memcache_disabled . ' /></label>
-						<label for="caching-memcache-timeout" style="margin-left:5px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-memcache-timeout" type="input" name="caching-memcache-timeout" value="600" style="width:31px;" ' . $caching_memcache_disabled . ' /></label></span><br/>
-
 						<span ' . $caching_wincache_disabled_css . '><input id="caching-wincache" type="radio" name="caching-method" value="wincache" ' . $caching_wincache_disabled . ' /> <label for="caching-wincache">Wincache <a href="http://sourceforge.net/projects/wincache/" title="http://sourceforge.net/projects/wincache/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
 						<label for="caching-wincache-timeout" style="margin-left:24px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-wincache-timeout" type="input" name="caching-wincache-timeout" value="600" style="width:31px;" ' . $caching_wincache_disabled . ' /></label></span><br/>
 
@@ -637,11 +672,6 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 						<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
 						<label for="caching-apc-timeout" style="margin-left:24px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-apc-timeout" type="input" name="caching-apc-timeout" value="600" style="width:30px;" ' . $caching_apc_disabled . ' /></label></span><br/>
 
-						<span ' . $caching_memcache_disabled_css . '><input id="caching-memcache" type="radio" name="caching-method" value="memcache" ' . $caching_memcache_disabled . ' /> <label for="caching-memcache">Memcache <a href="http://memcached.org/" title="http://memcached.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
-						<label for="caching-memcache-server" style="margin-left:24px;">' . __('server','lmm') . ' </label> <input id="caching-memcache-server" type="input" name="caching-memcache-server" value="localhost" style="width:150px;" ' . $caching_memcache_disabled . ' /></label>
-						<label for="caching-memcache-port" style="margin-left:5px;">' . __('port','lmm') . ' </label> <input id="caching-memcache-port" type="input" name="caching-memcache-port" value="11211" style="width:49px;" ' . $caching_memcache_disabled . ' /></label>
-						<label for="caching-memcache-timeout" style="margin-left:5px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-memcache-timeout" type="input" name="caching-memcache-timeout" value="600" style="width:31px;" ' . $caching_memcache_disabled . ' /></label></span><br/>
-
 						<span ' . $caching_wincache_disabled_css . '><input id="caching-wincache" type="radio" name="caching-method" value="wincache" ' . $caching_wincache_disabled . ' /> <label for="caching-wincache">Wincache <a href="http://sourceforge.net/projects/wincache/" title="http://sourceforge.net/projects/wincache/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
 						<label for="caching-wincache-timeout" style="margin-left:24px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-wincache-timeout" type="input" name="caching-wincache-timeout" value="600" style="width:31px;" ' . $caching_wincache_disabled . ' /></label></span><br/>
 
@@ -703,11 +733,6 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				$cacheSettings = array( 'cacheTime' => 600 );
 				PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
 				$cache_method_for_log = 'automatic (APC)';
-			} else if ( function_exists('memcache_add') ) { //info: Memcache
-				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_memcache;
-				$cacheSettings = array( 'memcacheServer' => 'localhost', 'memcachePort' => 11211, 'cacheTime' => 600 );
-				PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
-				$cache_method_for_log = 'automatic (Memcache)';
 			} else if ( function_exists('wincache_ucache_add') ) { //info: Wincache
 				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_wincache;
 				$cacheSettings = array( 'cacheTime' => 600 );
@@ -754,14 +779,6 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			$cacheSettings = array( 'cacheTime' => $caching_apc_timeout );
 			PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
 			$cache_method_for_log = 'APC';
-		} else if ($user_cache == 'memcache') {
-			$caching_memcache_server = trim($_POST['caching-memcache-server']);
-			$caching_memcache_port = intval($_POST['caching-memcache-port']);
-			$caching_memcache_timeout = intval($_POST['caching-memcache-timeout']);
-			$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_memcache;
-			$cacheSettings = array( 'memcacheServer' => $caching_memcache_server, 'memcachePort' => $caching_memcache_port, 'cacheTime' => $caching_memcache_timeout );
-			PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
-			$cache_method_for_log = 'Memcache';
 		} else if ($user_cache == 'wincache') {
 			$caching_wincache_timeout = intval($_POST['caching-wincache-timeout']);
 			$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_wincache;

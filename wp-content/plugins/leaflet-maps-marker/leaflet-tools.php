@@ -4,10 +4,11 @@
 */
 //info prevent file from being accessed directly
 if (basename($_SERVER['SCRIPT_FILENAME']) == 'leaflet-tools.php') { die ("Please do not access this file directly. Thanks!<br/><a href='https://www.mapsmarker.com/go'>www.mapsmarker.com</a>"); }
-?>
-<div class="wrap">
-<?php include('inc' . DIRECTORY_SEPARATOR . 'admin-header.php'); 
-global $wpdb;
+
+include('inc' . DIRECTORY_SEPARATOR . 'admin-header.php'); 
+require_once( ABSPATH . 'wp-admin' . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'file.php' );
+WP_Filesystem();
+global $wpdb, $wp_filesystem;
 $lmm_options = get_option( 'leafletmapsmarker_options' );
 $table_name_markers = $wpdb->prefix.'leafletmapsmarker_markers';
 $table_name_layers = $wpdb->prefix.'leafletmapsmarker_layers';
@@ -352,8 +353,12 @@ if (!empty($action)) {
 			</td>
 			<td class="lmm-border">
 				<input id="markermaps_osm_mapnik" type="radio" name="basemap" value="osm_mapnik" checked /> <label for="markermaps_osm_mapnik"><?php echo $lmm_options['default_basemap_name_osm_mapnik']; ?></label><br />
-				<input id="markermaps_mapquest_osm" type="radio" name="basemap" value="mapquest_osm" /> <label for="markermaps_mapquest_osm"><?php echo $lmm_options['default_basemap_name_mapquest_osm']; ?></label><br />
-				<input id="markermaps_mapquest_aerial" type="radio" name="basemap" value="mapquest_aerial" /> <label for="markermaps_mapquest_aerial"><?php echo $lmm_options['default_basemap_name_mapquest_aerial']; ?></label><br />
+				<?php
+				if ($lmm_options['mapquest_api_key'] != NULL) {
+					echo '<input id="markermaps_mapquest_osm" type="radio" name="basemap" value="mapquest_osm" /> <label for="markermaps_mapquest_osm">' . $lmm_options['default_basemap_name_mapquest_osm'] . '</label><br />';
+					echo '<input id="markermaps_mapquest_aerial" type="radio" name="basemap" value="mapquest_aerial" /> <label for="markermaps_mapquest_aerial">' . $lmm_options['default_basemap_name_mapquest_aerial'] . '</label><br />';
+					echo '<input id="markermaps_mapquest_hybrid" type="radio" name="basemap" value="mapquest_hybrid" /> <label for="markermaps_mapquest_hybrid">' . $lmm_options['default_basemap_name_mapquest_hybrid'] . '</label><br />';
+				} ?>
 				<input id="markermaps_googleLayer_roadmap" type="radio" name="basemap" value="googleLayer_roadmap" /> <label for="markermaps_googleLayer_roadmap"><?php echo $lmm_options['default_basemap_name_googleLayer_roadmap']; ?></label><br />
 				<input id="markermaps_googleLayer_satellite" type="radio" name="basemap" value="googleLayer_satellite" /> <label for="markermaps_googleLayer_satellite"><?php echo $lmm_options['default_basemap_name_googleLayer_satellite']; ?></label><br />
 				<input id="markermaps_googleLayer_hybrid" type="radio" name="basemap" value="googleLayer_hybrid" /> <label for="markermaps_googleLayer_hybrid"><?php echo $lmm_options['default_basemap_name_googleLayer_hybrid']; ?></label><br />
@@ -433,16 +438,16 @@ if (!empty($action)) {
 				<strong><?php _e('Active WMS layers','lmm') ?></strong>
 			</td>
 			<td class="lmm-border">
-				<input type="checkbox" name="wms" /> <?php echo strip_tags($lmm_options['wms_wms_name']); ?> <a title="<?php esc_attr_e('WMS layer 1 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections2"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms2" /> <?php echo strip_tags($lmm_options['wms_wms2_name']); ?> <a title="<?php esc_attr_e('WMS layer 2 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections3"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms3" /> <?php echo strip_tags($lmm_options['wms_wms3_name']); ?> <a title="<?php esc_attr_e('WMS layer 3 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections4"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms4" /> <?php echo strip_tags($lmm_options['wms_wms4_name']); ?> <a title="<?php esc_attr_e('WMS layer 4 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections5"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms5" /> <?php echo strip_tags($lmm_options['wms_wms5_name']); ?> <a title="<?php esc_attr_e('WMS layer 5 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections6"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms6" /> <?php echo strip_tags($lmm_options['wms_wms6_name']); ?> <a title="<?php esc_attr_e('WMS layer 6 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections7"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms7" /> <?php echo strip_tags($lmm_options['wms_wms7_name']); ?> <a title="<?php esc_attr_e('WMS layer 7 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections8"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms8" /> <?php echo strip_tags($lmm_options['wms_wms8_name']); ?> <a title="<?php esc_attr_e('WMS layer 8 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections9"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms9" /> <?php echo strip_tags($lmm_options['wms_wms9_name']); ?> <a title="<?php esc_attr_e('WMS layer 9 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections10"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms10" /> <?php echo strip_tags($lmm_options['wms_wms10_name']); ?> <a title="<?php esc_attr_e('WMS layer 10 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections11"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a>
+				<input type="checkbox" name="wms" /> <?php echo strip_tags($lmm_options['wms_wms_name']); ?> <a title="<?php esc_attr_e('WMS layer 1 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms1"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms2" /> <?php echo strip_tags($lmm_options['wms_wms2_name']); ?> <a title="<?php esc_attr_e('WMS layer 2 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms2"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms3" /> <?php echo strip_tags($lmm_options['wms_wms3_name']); ?> <a title="<?php esc_attr_e('WMS layer 3 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms3"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms4" /> <?php echo strip_tags($lmm_options['wms_wms4_name']); ?> <a title="<?php esc_attr_e('WMS layer 4 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms4"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms5" /> <?php echo strip_tags($lmm_options['wms_wms5_name']); ?> <a title="<?php esc_attr_e('WMS layer 5 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms5"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms6" /> <?php echo strip_tags($lmm_options['wms_wms6_name']); ?> <a title="<?php esc_attr_e('WMS layer 6 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms6"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms7" /> <?php echo strip_tags($lmm_options['wms_wms7_name']); ?> <a title="<?php esc_attr_e('WMS layer 7 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms7"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms8" /> <?php echo strip_tags($lmm_options['wms_wms8_name']); ?> <a title="<?php esc_attr_e('WMS layer 8 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms8"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms9" /> <?php echo strip_tags($lmm_options['wms_wms9_name']); ?> <a title="<?php esc_attr_e('WMS layer 9 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms9"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms10" /> <?php echo strip_tags($lmm_options['wms_wms10_name']); ?> <a title="<?php esc_attr_e('WMS layer 10 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms10"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a>
 			</td>
 			<td style="vertical-align:middle;text-align:center;" class="lmm-border">
 				<?php _e('Which markers should be updated?','lmm'); ?>
@@ -624,8 +629,11 @@ if (!empty($action)) {
 				}
 				closedir($dir);
 				sort($iconlist);
-				foreach ($iconlist as $row)
-				  echo '<div style="text-align:center;float:left;line-height:0px;margin-bottom:3px;"><label for="' . $row . '"><img id="iconpreview" src="' . LEAFLET_PLUGIN_ICONS_URL . '/' . $row . '" title="' . $row . '" alt="' . $row . '" width="32" height="37" /></label><br/><input style="margin:1px 0 0 1px;" id="' . $row . '" type="radio" name="icon" value="' . $row . '" /></div>';
+				foreach ($iconlist as $row) {
+				  $icon_data = $wp_filesystem->get_contents(LEAFLET_PLUGIN_ICONS_DIR . DIRECTORY_SEPARATOR . $row);
+				  $icon_base64 = 'data:image/png;base64,' . base64_encode($icon_data);
+ 				  echo '<div style="text-align:center;float:left;line-height:0;margin-bottom:3px;"><label for="'.$row.'"><img id="iconpreview" src="' . $icon_base64 . '" title="' . $row . '" alt="' . $row . '" width="' . intval($lmm_options[ 'defaults_marker_icon_iconsize_x' ]) . '" height="' . intval($lmm_options[ 'defaults_marker_icon_iconsize_y' ]) . '" /></label><br/><input style="margin:1px 0 0 1px;" id="' . $row . '" type="radio" name="icon" value="' . $row . '"/></div>';
+				}
 				?>
 			</td>
 			<td style="vertical-align:middle;text-align:center;" class="lmm-border">
@@ -776,8 +784,12 @@ if (!empty($action)) {
 			</td>
 			<td class="lmm-border">
 				<input id="layermaps_osm_mapnik" type="radio" name="basemap-layer" value="osm_mapnik" checked /> <label for="layermaps_osm_mapnik"><?php echo $lmm_options['default_basemap_name_osm_mapnik']; ?></label><br />
-				<input id="layermaps_mapquest_osm" type="radio" name="basemap-layer" value="mapquest_osm" /> <label for="layermaps_mapquest_osm"><?php echo $lmm_options['default_basemap_name_mapquest_osm']; ?></label><br />
-				<input id="layermaps_mapquest_aerial" type="radio" name="basemap-layer" value="mapquest_aerial" /> <label for="layermaps_mapquest_aerial"><?php echo $lmm_options['default_basemap_name_mapquest_aerial']; ?></label><br />
+				<?php
+				if ($lmm_options['mapquest_api_key'] != NULL) {
+					echo '<input id="layermaps_mapquest_osm" type="radio" name="basemap-layer" value="mapquest_osm" /> <label for="markermaps_mapquest_osm">' . $lmm_options['default_basemap_name_mapquest_osm'] . '</label><br />';	
+					echo '<input id="layermaps_mapquest_aerial" type="radio" name="basemap-layer" value="mapquest_aerial" /> <label for="markermaps_mapquest_aerial">' . $lmm_options['default_basemap_name_mapquest_aerial'] . '</label><br />';
+					echo '<input id="layermaps_mapquest_hybrid" type="radio" name="basemap-layer" value="mapquest_hybrid" /> <label for="markermaps_mapquest_hybrid">' . $lmm_options['default_basemap_name_mapquest_hybrid'] . '</label><br />';
+				} ?>
 				<input id="layermaps_googleLayer_roadmap" type="radio" name="basemap-layer" value="googleLayer_roadmap" /> <label for="layermaps_googleLayer_roadmap"><?php echo $lmm_options['default_basemap_name_googleLayer_roadmap']; ?></label><br />
 				<input id="layermaps_googleLayer_satellite" type="radio" name="basemap-layer" value="googleLayer_satellite" /> <label for="layermaps_googleLayer_satellite"><?php echo $lmm_options['default_basemap_name_googleLayer_satellite']; ?></label><br />
 				<input id="layermaps_googleLayer_hybrid" type="radio" name="basemap-layer" value="googleLayer_hybrid" /> <label for="layermaps_googleLayer_hybrid"><?php echo $lmm_options['default_basemap_name_googleLayer_hybrid']; ?></label><br />
@@ -825,16 +837,16 @@ if (!empty($action)) {
 				<strong><?php _e('Active WMS layers','lmm') ?></strong>
 			</td>
 			<td class="lmm-border">
-				<input type="checkbox" name="wms-layer" /> <?php echo strip_tags($lmm_options['wms_wms_name']); ?> <a title="<?php esc_attr_e('WMS layer 1 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections2"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms2-layer" /> <?php echo strip_tags($lmm_options['wms_wms2_name']); ?> <a title="<?php esc_attr_e('WMS layer 2 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections3"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms3-layer" /> <?php echo strip_tags($lmm_options['wms_wms3_name']); ?> <a title="<?php esc_attr_e('WMS layer 3 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections4"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms4-layer" /> <?php echo strip_tags($lmm_options['wms_wms4_name']); ?> <a title="<?php esc_attr_e('WMS layer 4 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections5"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms5-layer" /> <?php echo strip_tags($lmm_options['wms_wms5_name']); ?> <a title="<?php esc_attr_e('WMS layer 5 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections6"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms6-layer" /> <?php echo strip_tags($lmm_options['wms_wms6_name']); ?> <a title="<?php esc_attr_e('WMS layer 6 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections7"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms7-layer" /> <?php echo strip_tags($lmm_options['wms_wms7_name']); ?> <a title="<?php esc_attr_e('WMS layer 7 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections8"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms8-layer" /> <?php echo strip_tags($lmm_options['wms_wms8_name']); ?> <a title="<?php esc_attr_e('WMS layer 8 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections9"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms9-layer" /> <?php echo strip_tags($lmm_options['wms_wms9_name']); ?> <a title="<?php esc_attr_e('WMS layer 9 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections10"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
-				<input type="checkbox" name="wms10-layer" /> <?php echo strip_tags($lmm_options['wms_wms10_name']); ?> <a title="<?php esc_attr_e('WMS layer 10 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections11"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a>
+				<input type="checkbox" name="wms-layer" /> <?php echo strip_tags($lmm_options['wms_wms_name']); ?> <a title="<?php esc_attr_e('WMS layer 1 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms1"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms2-layer" /> <?php echo strip_tags($lmm_options['wms_wms2_name']); ?> <a title="<?php esc_attr_e('WMS layer 2 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms2"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms3-layer" /> <?php echo strip_tags($lmm_options['wms_wms3_name']); ?> <a title="<?php esc_attr_e('WMS layer 3 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms3"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms4-layer" /> <?php echo strip_tags($lmm_options['wms_wms4_name']); ?> <a title="<?php esc_attr_e('WMS layer 4 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms4"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms5-layer" /> <?php echo strip_tags($lmm_options['wms_wms5_name']); ?> <a title="<?php esc_attr_e('WMS layer 5 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms5"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms6-layer" /> <?php echo strip_tags($lmm_options['wms_wms6_name']); ?> <a title="<?php esc_attr_e('WMS layer 6 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms6"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms7-layer" /> <?php echo strip_tags($lmm_options['wms_wms7_name']); ?> <a title="<?php esc_attr_e('WMS layer 7 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms7"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms8-layer" /> <?php echo strip_tags($lmm_options['wms_wms8_name']); ?> <a title="<?php esc_attr_e('WMS layer 8 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms8"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms9-layer" /> <?php echo strip_tags($lmm_options['wms_wms9_name']); ?> <a title="<?php esc_attr_e('WMS layer 9 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms9"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a><br />
+				<input type="checkbox" name="wms10-layer" /> <?php echo strip_tags($lmm_options['wms_wms10_name']); ?> <a title="<?php esc_attr_e('WMS layer 10 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-wms10"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a>
 			</td>
 			<td style="vertical-align:middle;" class="lmm-border">
 				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="wms-layer-submit" value="<?php _e('change active WMS layers for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change active WMS layers for all layers? (cannot be undone)','lmm') ?>')" />
@@ -1000,7 +1012,7 @@ if (!empty($action)) {
 	<br/><br/>
 	<table class="widefat fixed" style="width:auto;">
 		<tr style="background-color:#d6d5d5;">
-			<td colspan="2"><strong><?php _e('Web API URL generator','lmm') ?></strong> <?php echo '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-section9">(' . __('MapsMarker API settings','lmm') . ')</a>'; ?></td>
+			<td colspan="2"><strong><?php _e('Web API URL generator','lmm') ?></strong> <?php echo '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-web_api">(' . __('MapsMarker API settings','lmm') . ')</a>'; ?></td>
 		</tr>
 		<tr>
 			<td style="vertical-align:middle;">
@@ -1021,7 +1033,7 @@ if (!empty($action)) {
 			<td style="vertical-align:middle;">
 				<?php 
 				if ( ($lmm_options['api_key'] == NULL) || ($lmm_options['api_key_private'] == NULL) ) {
-					echo '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-section9">' . __('Error: you have to set a public and private API key first!','lmm') . '</a>';
+					echo '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-web_api">' . __('Error: you have to set a public and private API key first!','lmm') . '</a>';
 				} else {
 					echo '<input id="api_url_generator-submit" type="submit" class="submit button-primary" value="' . __('Generate URL','lmm') . '"/>';
 				} 
@@ -1085,7 +1097,7 @@ if (!empty($action)) {
 	<br/><br/>
 	<table class="widefat fixed" style="width:auto;">
 		<tr style="background-color:#d6d5d5;">
-			<td colspan="2"><strong><?php _e('Web API URL tester','lmm') ?></strong> <?php echo '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-section9">(' . __('MapsMarker API settings','lmm') . ')</a>'; ?></td>
+			<td colspan="2"><strong><?php _e('Web API URL tester','lmm') ?></strong> <?php echo '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-web_api">(' . __('MapsMarker API settings','lmm') . ')</a>'; ?></td>
 		</tr>
 		<tr>
 			<td style="vertical-align:middle;">
@@ -1105,7 +1117,7 @@ if (!empty($action)) {
 			<td style="vertical-align:middle;">
 				<?php 
 				if ( ($lmm_options['api_key'] == NULL) || ($lmm_options['api_key_private'] == NULL) ) {
-					echo '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-section9">' . __('Error: you have to set a public and private API key first!','lmm') . '</a>';
+					echo '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-web_api">' . __('Error: you have to set a public and private API key first!','lmm') . '</a>';
 				} else {
 					echo '<input id="api_url_tester-submit" type="submit" class="submit button-primary" value="' . __('Test','lmm') . '"/>';
 				} 

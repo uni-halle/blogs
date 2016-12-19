@@ -5,6 +5,18 @@
 //info prevent file from being accessed directly
 if (basename($_SERVER['SCRIPT_FILENAME']) == 'admin-header.php') { die ("Please do not access this file directly. Thanks!<br/><a href='https://www.mapsmarker.com/go'>www.mapsmarker.com</a>"); }
 
+//info: workaround for vertical scrolling on mobiles #276
+if (function_exists('wp_is_mobile')) { 
+	if (wp_is_mobile()) { 
+		$wrap_style = 'style="overflow: scroll;"'; 
+	} else {
+		$wrap_style=''; //info: otherwise scrollbar gets hidden on desktop
+	}
+} else {
+	$wrap_style='';
+}
+echo '<div class="wrap" ' . $wrap_style . '>';
+
 //info: dont show on save (remove with AJAX ;-)
 $action = isset($_POST['action']) ? $_POST['action'] : (isset($_GET['action']) ? $_GET['action'] : '');
 $first_run = (isset($_GET['first_run']) ? 'true' : 'false');
@@ -144,7 +156,7 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 	}
 	$admin_quicklink_tools_buttons = ( current_user_can( "activate_plugins" ) ) ? "<a class='" . $buttonclass5 ."' href='" . LEAFLET_WP_ADMIN_URL . "admin.php?page=leafletmapsmarker_tools'><img src='" . LEAFLET_PLUGIN_URL . "inc/img/icon-menu-tools.png' width='10' height='10'/> ".__('Tools','lmm')."</a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;" : "";
 	$admin_quicklink_settings_buttons = ( current_user_can( "activate_plugins" ) ) ? "<a class='" . $buttonclass6 ."' href='" . LEAFLET_WP_ADMIN_URL . "admin.php?page=leafletmapsmarker_settings'><img src='" . LEAFLET_PLUGIN_URL . "inc/img/icon-menu-settings.png' width='10' height='10'/> ".__('Settings','lmm')."</a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;" : "";
-	$admin_quicklink_apis_buttons = ( current_user_can( "activate_plugins" ) ) ? "<a id='lmm-header-button9' class='" . $buttonclass9 ."' href='" . LEAFLET_WP_ADMIN_URL . "admin.php?page=leafletmapsmarker_apis'><img src='" . LEAFLET_PLUGIN_URL . "inc/img/icon-menu-api.png' width='10' height='10' /> ".__('Maps Marker APIs','lmm')."</a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;" : "";	
+	$admin_quicklink_apis_buttons = ( current_user_can( "activate_plugins" ) ) ? "<a id='lmm-header-button9' class='" . $buttonclass9 ."' href='" . LEAFLET_WP_ADMIN_URL . "admin.php?page=leafletmapsmarker_apis'><img src='" . LEAFLET_PLUGIN_URL . "inc/img/icon-menu-api.png' width='10' height='10' /> ".__('Maps Marker APIs','lmm')."</a>" : "";	
 
 	//////////////////////////////////////////////////////
 	// info: admin notices which only show on LMM pages //
@@ -167,7 +179,7 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 			$custom_shadow_icon_url = $lmm_options['defaults_marker_icon_shadow_url'];
 			$custom_shadow_icon_url_exists = checkUrlExists($custom_shadow_icon_url);
 			if ( ($custom_shadow_icon_url != NULL) && (!$custom_shadow_icon_url_exists) ) {
-				echo '<div class="error" style="padding:10px;margin:10px 0;"><strong>' . sprintf(__('Leaflet Maps Marker Warning: the setting for the marker shadow url (%1s) seems to be invalid. This can happen when you moved your WordPress installation from one server to another one.<br/>Please navigate to <a href="%2s">Settings / Map Defaults / "Default values for marker icons"</a> and update the option "Shadow URL". If you do not know which values to enter, please <a href="%3s">reset all plugins options to their defaults</a>', 'lmm'), $shadow_icon_url, LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#mapdefaults-section5', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#reset') . '</strong></div>';
+				echo '<div class="error" style="padding:10px;margin:10px 0;"><strong>' . sprintf(__('Warning: the setting for the marker shadow url (%1s) seems to be invalid. This can happen when you moved your WordPress installation from one server to another one.<br/>Please navigate to <a href="%2s">Settings / Map Defaults / "Default values for marker icons"</a> and update the option "Shadow URL". If you do not know which values to enter, please <a href="%3s">reset all plugins options to their defaults</a>', 'lmm'), $shadow_icon_url, LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-mapdefaults-marker_icons', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-reset-reset_settings') . '</strong></div>';
 			}
 		}
 		//info: display admin notice (lmm only) if user switches back to free version
@@ -198,37 +210,20 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 			echo sprintf(__('Update instruction: as your user does not have the right to update plugins, please contact your <a href="mailto:%1s?subject=Please update plugin -Leaflet Maps Marker- on %2s">administrator</a>','lmm'), get_option('admin_email'), site_url() ) . '</div></p>';
 		}
 	}
-	?>
-	<?php if ($first_run == 'true') { $menu_visibility = 'style="display:none;"'; } else { $menu_visibility = ''; } ?>
-	
-	<div id="google-api-error-admin-header" class="notice notice-error" style="padding:10px;margin:10px 0;display:none;"><!--placeholder--></div>
-	
-	<table cellpadding="5" cellspacing="0" class="widefat fixed" <?php echo $menu_visibility; ?>>
-	  <tr>
-		<td><div class="logo-rtl"><a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php _e('Upgrade to pro version for even more features - click here to find out how you can start a free 30-day-trial easily','lmm'); ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/logo-mapsmarker.png" width="65" height="65" alt="Leaflet Maps Marker Plugin Logo by Julia Loew, www.weiderand.net" /></a></div>
-	<?php
-		require_once(ABSPATH . WPINC . DIRECTORY_SEPARATOR . 'plugin.php');
-		$free_version = get_plugin_data(WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'leaflet-maps-marker' . DIRECTORY_SEPARATOR . 'leaflet-maps-marker.php');
-	?>
-	<div style="font-size:1.5em;margin-bottom:5px;"><span style="font-weight:bold;">Maps Marker<sup style="font-size:75%;">&reg;</sup> <a href="https://www.mapsmarker.com/v<?php echo $free_version['Version']; ?>" target="_blank" title="<?php esc_attr_e('view blogpost for current version','lmm');?>">v<?php echo $free_version['Version']; ?></a> - <?php _e('Lite Edition','lmm'); ?></span></div>
-	  <p style="margin:1em 0 0 0;line-height:32px;">
-	  <a class="<?php echo $buttonclass1; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_markers"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-list.png" width="10" height="10" /> <?php _e("List all markers", "lmm") ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	  <a class="<?php echo $buttonclass2; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_marker"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-add.png" width="10" height="10" /> <?php _e("Add new marker", "lmm"); ?></a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-	  <a class="<?php echo $buttonclass2b; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_import_export"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-import-export.png" width="10" height="10" /> <?php _e("Import/Export", "lmm"); ?></a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-	  <a class="<?php echo $buttonclass3; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_layers"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-list.png" width="10" height="10" /> <?php _e("List all layers", "lmm") ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	  <a class="<?php echo $buttonclass4; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_layer"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-add.png" width="10" height="10" /> <?php _e("Add new layer", "lmm"); ?></a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-	  <?php echo $admin_quicklink_tools_buttons ?>
-	  <?php echo $admin_quicklink_settings_buttons ?>
-	  <?php echo $admin_quicklink_apis_buttons; ?>
-	  <a class="<?php echo $buttonclass7; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_help"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-help.png" width="10" height="10" /> <?php _e("Support", "lmm") ?></a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-	  <a class="<?php echo $buttonclass8; ?>" style="background-color:#F99755;background-image:none;text-shadow:none;" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php _e('Upgrade to pro version for more features, higher performance and more! Click here to find out how you can start a free 30-day-trial easily','lmm'); ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-up.png" width="10" height="10" /> <?php _e("Upgrade to Pro", "lmm") ?></a>
-	  </p>
-	</td></tr></table>
 
-	<?php
+	//info: show info about Google Maps API key only for fresh free installs
+	if ( ($page == 'leafletmapsmarker_marker') || ($page == 'leafletmapsmarker_layer') ) {
+		if( current_user_can( 'activate_plugins' ) ) { //info: do not show for non-admins
+			if ( ($lmm_options['google_maps_api_key'] == NULL) || ($lmm_options['google_maps_api_status'] == 'disabled') ) {
+				if (version_compare(get_option('leafletmapsmarker_version_before_update'),'0','=')) {
+						echo '<p><div id="google-maps-api-status-info" class="notice notice-info" style="padding:5px;margin:10px 0;"><strong>' . __('Installation finished - you can now start creating maps!','lmm') . '</strong> ' . sprintf(__('We recommend using OpenStreetMap - anyway if you also want to use Google Maps, you need to register a "<a href="%1$s" target="_blank">Google Maps Javascript API key</a>".','lmm'), 'https://www.mapsmarker.com/google-maps-javascript-api') . '<br/><small>' . sprintf(__('This notice will be removed if the option <a href="%1$s">"Google Maps JavaScript API" has been enabled and a "Google Maps Javascript API key" has been set</a> or automatically after the next plugin update.','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-basemaps-google_js_api') . '</small></div></p>';
+				}
+			}
+		}
+	}
+
 	//info: display update info with current release notes
 	$update_info_action = isset($_POST['update_info_action']) ? $_POST['update_info_action'] : '';
-
 	if ( ($update_info_action == 'hide') && ($first_run == 'false') ) {
 		update_option('leafletmapsmarker_update_info', 'hide');
 	}
@@ -240,16 +235,50 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 			echo '<p><div style="border:2px solid red;background-color:#ffde00;padding:5px;">' . sprintf(__('Warning: your server uses the outdated PHP version %1$s, which is not updated anymore and potentially insecure!<br/>PHP version %2$s is now the recommended version for WordPress (but it does not hurt to get updated to PHP %3$s or higher already).<br/>Read more information about how you can update at %4$s','lmm'), phpversion(), '5.6', '7.0', '<a href="http://www.wpupdatephp.com/update/" target="_blank" style="text-decoration:none;">http://www.wpupdatephp.com/</a>') . '</div></p>';
 		}
 		if ($lmm_version_old == 0) {
-			echo '<p><span style="font-weight:bold;font-size:125%;">' . sprintf(__('Leaflet Maps Marker has been successfully updated to version %1s!','lmm'), $lmm_version_new) . '</span></p>';
+			echo '<p style="margin:5px; 0;"><span style="font-weight:bold;font-size:125%;">' . sprintf(__('Leaflet Maps Marker has been successfully updated to version %1s!','lmm'), $lmm_version_new) . '</span></p>';
 		} else {
-			echo '<p><span style="font-weight:bold;font-size:125%;">' . sprintf(__('Leaflet Maps Marker has been successfully updated from version %1s to %2s!','lmm'), $lmm_version_old, $lmm_version_new) . '</span></p>';
+			echo '<p style="margin:5px; 0;"><span style="font-weight:bold;font-size:125%;">' . sprintf(__('Leaflet Maps Marker has been successfully updated from version %1s to %2s!','lmm'), $lmm_version_old, $lmm_version_new) . '</span></p>';
 		}
-		echo '<iframe name="changelog" src="' . LEAFLET_PLUGIN_URL . 'inc/changelog.php" width="98%" height="285" marginwidth="0" marginheight="0" style="border:thin dashed #E6DB55;"></iframe>'.PHP_EOL;
-
-		echo '<p>' . __('If you like using the plugin, please <a href="http://www.mapsmarker.com/reviews" target="_blank" style="text-decoration:none;">review the plugin on wordpress.org</a> - thanks!','lmm') . '</p>'.PHP_EOL;
+		echo '<iframe name="changelog" src="' . LEAFLET_PLUGIN_URL . 'inc/changelog.php" width="98%" height="205" marginwidth="0" marginheight="0" style="border:thin dashed #E6DB55;"></iframe>'.PHP_EOL;
 		echo '<form method="post" style="padding:2px 0 6px 0;">
 			<input type="hidden" name="update_info_action" value="hide" />
-			<input class="button-secondary" type="submit" value="' . __('remove message', 'lmm') . '"/></form></div>';
-	}
+			<input class="button-secondary" type="submit" value="' . esc_attr__('hide changelog', 'lmm') . '"/><div style="display:inline-block;margin:5px 0 0 10px;"><a style="text-decoration:none;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('Upgrade to pro version for even more features - click here to find out how you can start a free 30-day-trial easily','lmm') . '</a></div></form></div>';
+	}	
+
+	if ($first_run == 'true') { $menu_visibility = 'style="display:none;"'; } else { $menu_visibility = ''; } ?>
+
+	<h1><!--placeholder for correct positioning of admin notices above header table--></h1>
+	
+	<div id="google-api-error-admin-header" class="notice notice-error" style="padding:10px;margin:10px 0;display:none;"><!--placeholder--></div>
+	
+	<table cellpadding="5" cellspacing="0" class="widefat fixed" <?php echo $menu_visibility; ?>>
+	  <tr>
+		<td style="padding:0 0 1px 5px;"><div class="logo-rtl"><a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php _e('Upgrade to pro version for even more features - click here to find out how you can start a free 30-day-trial easily','lmm'); ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/logo-mapsmarker.png" width="65" height="65" alt="Leaflet Maps Marker Plugin Logo by Julia Loew, www.weiderand.net" /></a></div>
+	<?php
+		require_once(ABSPATH . WPINC . DIRECTORY_SEPARATOR . 'plugin.php');
+		$free_version = get_plugin_data(WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'leaflet-maps-marker' . DIRECTORY_SEPARATOR . 'leaflet-maps-marker.php');
+	?>
+	<div style="font-size:1.5em;margin-top:7px;"><span style="font-weight:bold;">Maps Marker<sup style="font-size:75%;">&reg;</sup> <a href="https://www.mapsmarker.com/v<?php echo $free_version['Version']; ?>" target="_blank" title="<?php esc_attr_e('view blogpost for current version','lmm');?>">v<?php echo $free_version['Version']; ?></a> - <?php _e('Lite Edition','lmm'); ?></span></div>
+	  <p style="margin:8px 0 0 0;line-height:32px;">
+	  <a class="<?php echo $buttonclass1; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_markers"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-list.png" width="10" height="10" /> <?php _e("List all markers", "lmm") ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <a class="<?php echo $buttonclass2; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_marker" title="<?php esc_attr_e('Use markers to display a single location (for multiple locations, create a layer first).','lmm'); ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-add.png" width="10" height="10" /> <?php _e("Add new marker", "lmm"); ?></a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+	  <a class="<?php echo $buttonclass3; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_layers"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-list.png" width="10" height="10" /> <?php _e("List all layers", "lmm") ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <a class="<?php echo $buttonclass4; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_layer" title="<?php esc_attr_e('Use layers to display multiple locations at the same time.','lmm'); ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-add.png" width="10" height="10" /> <?php _e("Add new layer", "lmm"); ?></a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+	  <a class="<?php echo $buttonclass7; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_help"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-help.png" width="10" height="10" /> <?php _e("Support", "lmm") ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <a class="<?php echo $buttonclass8; ?>" style="background-color:#F99755;background-image:none;text-shadow:none;" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php _e('Upgrade to pro version for more features, higher performance and more! Click here to find out how you can start a free 30-day-trial easily','lmm'); ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-up.png" width="10" height="10" /> <?php _e("Upgrade to Pro", "lmm") ?></a>&nbsp;&nbsp;&nbsp;
+	  <span id="show-advanced-menu-items-link" style="display:inline;"><a href="javascript:void(0);" style="cursor:pointer;" title="<?php esc_attr_e('show advanced menu items','lmm'); ?>">>>></a></span>
+	  <span id="hide-advanced-menu-items-link" style="display:none;"><a href="javascript:void(0);" style="cursor:pointer;" title="<?php esc_attr_e('hide advanced menu items','lmm'); ?>"><<<</a></span>
+	  <span id="advanced-menu-items" style="display:none;">
+	   &nbsp;&nbsp;
+	  <a class="<?php echo $buttonclass2b; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_import_export"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-import-export.png" width="10" height="10" /> <?php _e("Import/Export", "lmm"); ?></a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+	  <?php echo $admin_quicklink_tools_buttons ?>
+	  <?php echo $admin_quicklink_settings_buttons ?>
+	  <?php echo $admin_quicklink_apis_buttons; ?>
+	  </span>
+	  </p>
+	</td></tr></table>
+
+	<?php
+
 } //info: $action != add/edit/duplicate
 ?>

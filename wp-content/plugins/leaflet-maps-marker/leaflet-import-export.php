@@ -4,9 +4,7 @@
 */
 //info prevent file from being accessed directly
 if (basename($_SERVER['SCRIPT_FILENAME']) == 'leaflet-import-export.php') { die ("Please do not access this file directly. Thanks!<br/><a href='https://www.mapsmarker.com/go'>www.mapsmarker.com</a>"); }
-?>
-<div class="wrap">
-<?php 
+ 
 include('inc' . DIRECTORY_SEPARATOR . 'admin-header.php'); 
 global $wpdb;
 $lmm_options = get_option( 'leafletmapsmarker_options' );
