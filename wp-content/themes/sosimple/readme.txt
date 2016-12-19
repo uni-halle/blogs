@@ -4,8 +4,8 @@ Contributors: automattic
 Tags: gray, white, custom-background, custom-header, custom-menu, flexible-header, editor-style, post-formats, one-column, two-columns, right-sidebar, full-width-template, rtl-language-support, translation-ready, fixed-layout, responsive-layout
 
 Requires at least: 4.0
-Tested up to: 4.4
-Stable tag: 1.2.4
+Tested up to: 4.7
+Stable tag: 1.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Brand your site and make it yours with Jetpack (http://jetpack.me) by including 
 * Custom header image should be at least 937 in width.
 
 == Changelog ==
+= 1.2.5- December 15 2016 =
+* Added breadcrumbs support only if Yoast SEO plugin is added
+
 = 1.2.4- May 19 2016 =
 * Added feature image on pages
 

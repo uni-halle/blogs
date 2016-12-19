@@ -45,4 +45,18 @@
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
 
+	<div class="sosimple-breadcrumbs">
+		<?php
+			if ( !(is_home()) || !(is_front_page())) {
+				if ( function_exists('yoast_breadcrumb') ) {
+					yoast_breadcrumb('
+					<p id="breadcrumbs">','</p>
+					');
+				}
+			}
+		?>
+	</div><!-- .sosimple-breadcrumbs -->
+
+	
+
 	<div id="content" class="site-content">
