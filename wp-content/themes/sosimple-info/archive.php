@@ -32,8 +32,8 @@ get_header(); ?>
 					<td><?=implode(', ',array_map(function($usr){ return $usr['display_name'];},$users)) ?></td>
 				</tr>
 			<?php endif ?> 						
-            <?php if($thema = get_field('thema')):?>
-            	<tr><td width="25%">Thema</td><td><?=$thema?></td></tr>
+            <?php if($kurztext = get_field('kurztext')):?>
+            	<tr><td width="25%">Kurzbeschreibung</td><td><?=$kurztext?></td></tr>
             <?php endif ?> 			
             <?php $datum = get_field( 'datum' );
 				if( $datum ) {?><tr><td width="25%">Datum</td><td><?php echo $datum;?></td></tr><?php	}  ?> 

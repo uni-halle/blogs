@@ -21,7 +21,7 @@ body {
 
 .site {
     margin: 0 auto;
-    padding: 30px 108px;
+    padding: 30px 50px;
     }
     
 .site-header {
@@ -106,7 +106,7 @@ h1, h2,  {
 	}
 
 h3, #respond h3 {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: normal;
     margin: 5px 0;
     }
