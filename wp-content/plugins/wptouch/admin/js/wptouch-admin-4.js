@@ -954,17 +954,8 @@ function showCustomizerWindow(){
 // The Preview Pop-Up Window
 function wptouchPreviewWindow(){
 
-	jQuery( 'input#wptouch-preview-theme' ).on( 'click', function( e ) {
-		var previewCounter = jQuery.cookie( 'wptouch-preview-count' );
-		previewCounter++;
-		jQuery.cookie( 'wptouch-preview-count', previewCounter );
-
-		if ( jQuery.cookie( 'wptouch-preview-count' ) == 5 || jQuery.cookie( 'wptouch-preview-count' ) %20 == 0 ) {
-			showCustomizerWindow();
-			showPreviewWindow();
-		} else {
-			showPreviewWindow();
-		}
+	jQuery( 'input#wptouch-preview-theme' ).on( 'click', function( e ) {		
+		showPreviewWindow();
 		e.preventDefault();
 	});
 }

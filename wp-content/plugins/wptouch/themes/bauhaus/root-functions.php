@@ -1,6 +1,6 @@
 <?php
 
-define( 'BAUHAUS_THEME_VERSION', '2.0.2' );
+define( 'BAUHAUS_THEME_VERSION', '2.0.6' );
 define( 'BAUHAUS_SETTING_DOMAIN', 'bauhaus' );
 define( 'BAUHAUS_DIR', wptouch_get_bloginfo( 'theme_root_directory' ) );
 define( 'BAUHAUS_URL', wptouch_get_bloginfo( 'theme_parent_url' ) );
@@ -88,6 +88,7 @@ function bauhaus_setting_defaults( $settings ) {
 	$settings->bauhaus_featured_post_ids = '';
 	$settings->bauhaus_featured_max_number_of_posts = '5';
 	$settings->bauhaus_featured_filter_posts = true;
+	$settings->featured_slider_page = false;
 
 	$settings->bauhaus_post_listing_view = 'default';
 
@@ -159,7 +160,7 @@ function bauhaus_theme_init() {
 	foundation_register_theme_color( 'bauhaus_background_color', __( 'Theme background', 'wptouch-pro' ), '', '.page-wrapper', BAUHAUS_SETTING_DOMAIN, WPTOUCH_PRO_LIVE_PREVIEW_SETTING, 150, 'body' );
 	foundation_register_theme_color( 'bauhaus_header_color', __( 'Header & Menu', 'wptouch-pro' ),'', 'body, header, .wptouch-menu, .pushit, #search-dropper, .date-circle, .list-view .list-carousel', BAUHAUS_SETTING_DOMAIN, WPTOUCH_PRO_LIVE_PREVIEW_SETTING, 150, 'header' );
 	foundation_register_theme_color( 'bauhaus_link_color', __( 'Links', 'wptouch-pro' ), '.content-wrap a, #slider a p:after', '.dots li.active, #switch .active', BAUHAUS_SETTING_DOMAIN, WPTOUCH_PRO_LIVE_PREVIEW_SETTING );
-	foundation_register_theme_color( 'bauhaus_post_page_header_color', __( 'Post/Page Headers', 'wptouch-pro' ), '', '.bauhaus, form#commentform button#submit', BAUHAUS_SETTING_DOMAIN, WPTOUCH_PRO_LIVE_PREVIEW_SETTING, 150, 'post-head' );
+	foundation_register_theme_color( 'bauhaus_post_page_header_color', __( 'Post/Page Headers', 'wptouch-pro' ), '', '.bauhaus, form#commentform button#submit, form#commentform input#submit', BAUHAUS_SETTING_DOMAIN, WPTOUCH_PRO_LIVE_PREVIEW_SETTING, 150, 'post-head' );
 
 }
 

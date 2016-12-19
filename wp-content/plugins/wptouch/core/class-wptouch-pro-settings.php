@@ -17,7 +17,7 @@ class WPtouchSettings extends stdClass {
 
 // These settings should never be adjusted, but rather should be augmented at a later time */
 class WPtouchDefaultSettings30 extends WPtouchSettings {
-	function WPtouchDefaultSettings30() {
+	function __construct() {
 
 		// Wizard
 		$this->show_wizard = true;
@@ -117,7 +117,7 @@ class WPtouchDefaultSettings30 extends WPtouchSettings {
 };
 
 class WPtouchDefaultSettingsBNCID30 extends WPtouchSettings {
-	function WPtouchDefaultSettingsBNCID30() {
+	function __construct() {
 		// License Information
 		$this->bncid = '';
 		$this->wptouch_license_key = '';
@@ -139,14 +139,14 @@ class WPtouchDefaultSettingsBNCID30 extends WPtouchSettings {
 };
 
 class WPtouchDefaultSettingsCompat extends WPtouchSettings {
-	function WPtouchDefaultSettingsCompat() {
+	function __construct() {
 		$this->plugin_hooks = '';
 		$this->enabled_plugins = array();
 	}
 };
 
 class WPtouchDefaultSettingsMultisite extends WPtouchSettings {
-	function WPtouchDefaultSettingsMultisite() {
+	function __construct() {
 		$this->multisite_use_master_settings = false;
 		$this->multisite_master_site = 1;
 		$this->multisite_show_general_settings = true;

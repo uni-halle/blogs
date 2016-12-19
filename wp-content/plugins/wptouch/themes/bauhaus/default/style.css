@@ -1,4 +1,4 @@
-/* @override 
+/* @override
 	http://wptp3.local.com/wp-content/wptouch-data/themes/bauhaus/default/style.css?ver=a16b0b39889181577ded41b49cd80b1b
 	http://wptp3.local.com/wp-content/plugins/wptouch/themes/bauhaus/default/style.css?ver=a16b0b39889181577ded41b49cd80b1b
 */
@@ -216,6 +216,12 @@ header img {
 	height: 220px;
 	margin-top: 0px;
 	margin-bottom: 0px;
+	position: relative;
+	visibility: hidden;
+}
+
+.list-view .carousel.list-carousel.flickity-enabled {
+	visibility: visible;
 }
 
 .list-view .list-carousel .carousel-cell {
@@ -227,16 +233,16 @@ header img {
 
 .list-view .list-carousel .carousel-cell img {
 	position: absolute;
-	top: 50%; 
+	top: 50%;
 	left: 50%;
 	-webkit-transform: translateX(-50%) translateY(-50%);
 	transform: translateX(-50%) translateY(-50%);
 	min-width: 120%;
 	max-width: 120%;
 	min-height: 100%;
-	width: auto; 
+	width: auto;
 	height: auto;
-	z-index: -1; 
+	z-index: -1;
 	overflow: hidden;
 }
 
@@ -456,7 +462,7 @@ header img {
 /* @group Latest Only */
 
 .slider-latest-only.blog .wptouch-showcase {
-	-webkit-backdrop-filter: blur(5px); 
+	-webkit-backdrop-filter: blur(5px);
 	position: absolute;
 	top: 55px;
 	z-index: 1;
@@ -485,7 +491,7 @@ header img {
 
 .slider-latest-only.blog header h1, .slider-latest-only.blog header > .tappable {
 	color:  #fff !important;
-	
+
 }
 
 .slider-latest-only.blog #search-dropper {
@@ -514,15 +520,15 @@ header img {
 
 .slider-latest-only.blog .carousel-cell img {
 	position: absolute;
-	top: 50%; 
+	top: 50%;
 	left: 50%;
 	-webkit-transform: translateX(-50%) translateY(-50%);
 	transform: translateX(-50%) translateY(-50%);
-	min-width: 200%; 
-	min-height: 100%; 
-	width: auto; 
+	min-width: 200%;
+	min-height: 100%;
+	width: auto;
 	height: auto;
-	z-index: -1; 
+	z-index: -1;
 	overflow: hidden;
 }
 
@@ -754,15 +760,15 @@ header img {
 
 .post-page-head-area.bauhaus .post-page-thumbnail {
 	position: absolute;
-	top: 50%; 
+	top: 50%;
 	left: 50%;
 	-webkit-transform: translateX(-50%) translateY(-50%);
 	transform: translateX(-50%) translateY(-50%);
-	min-width: 200%; 
-	min-height: 100%; 
-	width: auto; 
+	min-width: 200%;
+	min-height: 100%;
+	width: auto;
 	height: auto;
-	z-index: -1; 
+	z-index: -1;
 	overflow: hidden;
 	opacity: .4;
 }
@@ -949,9 +955,14 @@ form#commentform input {
 	margin-right: 5px;
 }
 
-form#commentform button#submit {
+form#commentform button#submit, form#commentform input#submit {
 	-webkit-border-radius: 2px;
 	border-radius: 2px;
+}
+
+form#commentform label {
+	display: block;
+	margin-bottom: 5px;
 }
 
 /* @end */

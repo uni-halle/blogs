@@ -134,7 +134,7 @@ class WPtouchCacheSmash {
 
 		if ( $this->is_wordfence_detected() ) {
 			$cache_type = wfConfig::get( 'cacheType', false );
-			if ( !$cache_type ) {
+			if ( !$cache_type || $cache_type == "disabled" ) {
 				$cache_configured = true;
 			} else {
 				$cookie_set = false;

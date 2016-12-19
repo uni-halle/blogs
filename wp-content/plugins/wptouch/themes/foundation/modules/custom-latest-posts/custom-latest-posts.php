@@ -35,6 +35,9 @@ function wptouch_custom_latest_post_filter( $query_vars ) {
 
 				// Since we're modifying the query here, we need to prevent the custom landing page redirect from firing for this request (it'll think it's loading the homepage)
 				add_filter( 'wptouch_redirect_target', 'wptouch_return_false' );
+
+				// filter for Yoast SEO to force site title to be name of blog
+				add_filter( 'wpseo_title', 'wptouch_custom_latest_post_title' );
 		    }
 		}
 	}
@@ -74,4 +77,13 @@ function wptouch_fdn_is_custom_latest_posts_page() {
 
 function wptouch_fdn_custom_latest_posts_query() {
 	return false;
+}
+
+function wptouch_custom_latest_post_title( $title ) {
+
+	if ( get_bloginfo( 'description' ) == '' ) {
+		return get_bloginfo( 'name' );
+	} else {
+		return get_bloginfo( 'name' ) . ' - ' . get_bloginfo( 'description' );
+	}
 }

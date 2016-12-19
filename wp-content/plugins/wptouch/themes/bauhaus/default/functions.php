@@ -165,6 +165,10 @@ function bauhaus_featured_modify_query( $query ) {
 			return;
 		}
 
+		if ( !$settings->bauhaus_featured_filter_posts && !$settings->bauhaus_featured_enabled ) {
+			return;
+		}
+
 		$should_modify_query = apply_filters(
 			'bauhaus_featured_should_modify_query',
 			( $query->is_single || $query->is_page || $query->is_feed || $query->is_search || $query->is_archive || $query->is_category ) == false,
@@ -179,9 +183,17 @@ function bauhaus_featured_modify_query( $query ) {
 
 		$post_array = array();
 
+		$post_count = 1;
+
 		if ( is_array( $bauhaus_featured_posts ) && count( $bauhaus_featured_posts ) > 0 ) {
 			foreach( $bauhaus_featured_posts as $post_id ) {
-				$post_array[] = '-' . $post_id;
+				$post_array[] = $post_id;
+
+				// ensure that we're not excluding more posts than in the slider
+				$post_count++;
+				if ( $post_count > $settings->bauhaus_featured_max_number_of_posts ) {
+					break;
+				}
 			}
 		}
 
@@ -279,6 +291,12 @@ function bauhaus_should_show_carousel_featured() {
 
 function bauhaus_featured_slider() {
 	global $bauhaus_featured_posts;
+
+	// ensure at least one featured post has been found
+	if ( $bauhaus_featured_posts === null || count($bauhaus_featured_posts) == 0 ) {
+		return;
+	}
+
 	$settings = bauhaus_get_settings();
 	$args = bauhaus_featured_get_args();
 	$classes = array();

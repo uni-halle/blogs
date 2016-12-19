@@ -433,7 +433,7 @@ class WPtouch_Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 function wptouch_menu_walker_get_classes( $item, $has_icon = true ) {
 	$clear_classes = array( 'menu-item' );
 
-	if ( isset( $item->classes ) ) {
+	if ( isset( $item->classes ) && is_array( $item->classes ) ) {
 		foreach( $item->classes as $key => $value ) {
 			if ( is_string ( $value ) && strlen( $value ) ) {
 				if ( !in_array( $value, $clear_classes ) ) {

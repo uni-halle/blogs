@@ -62,9 +62,9 @@ class WPtouchProFour {
 	var $cache_smash;
 
 	// Shortcodes that must process before AJAX shortcode request
-	var $preprocess_shortcodes = array( 'gallery', 'new_royalslider', 'contact-form-7', 'metaslider' );
+	var $preprocess_shortcodes = array( 'gallery', 'new_royalslider', 'contact-form-7', 'metaslider', 'wdi_feed' );
 
-	function WPtouchProFour() {
+	function __construct() {
 		$this->is_mobile_device = false;
 		$this->showing_mobile_theme = false;
 
@@ -1916,7 +1916,7 @@ class WPtouchProFour {
 		}
 
 		uksort( $addons, 'strnatcasecmp' );
-		
+
 		return $addons;
 	}
 

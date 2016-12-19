@@ -1,10 +1,10 @@
-# Copyright (C) 2016 WPtouch Mobile Plugin
-# This file is distributed under the same license as the WPtouch Mobile Plugin package.
+# Copyright (C) 2016 
+# This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPtouch Mobile Plugin 4.3.9\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/wptouch\n"
-"POT-Creation-Date: 2016-12-12 18:41:57+00:00\n"
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/release\n"
+"POT-Creation-Date: 2016-10-25 21:11:56+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1567,6 +1567,24 @@ msgstr ""
 msgid "Destination Sites"
 msgstr ""
 
+#: free/wptouch.php:154
+msgid ""
+"%sSign-up to to get WPtouch news, updates and changes via your user email "
+"address:%s"
+msgstr ""
+
+#: free/wptouch.php:160
+msgid ""
+"%sNEW! WPtouch now supports live editing in the WordPress Customizer!%s "
+"Check it out: <a href=\"%s?"
+"wptouch_free_message_419=1&utm_source=free_admin&utm_medium=website&utm_term=dale&utm_campaign=admin_notice"
+"\">Customize WPtouch Now &rarr;</a> %s"
+msgstr ""
+
+#: free/wptouch.php:161
+msgid "%sSign-up to to get WPtouch news, updates and changes via email:%s"
+msgstr ""
+
 #: include/html/desktop-switch.php:2
 msgid "Desktop Version"
 msgstr ""
@@ -1587,425 +1605,61 @@ msgstr ""
 msgid "Default Template"
 msgstr ""
 
-#: themes/bauhaus/default/404.php:6 themes/foundation/default/404.php:6
+#: pro/professional.php:17
+msgid "Show WPML language switcher in theme footer"
+msgstr ""
+
+#: pro/professional.php:144 pro/professional.php:170
+msgid "Unknown error"
+msgstr ""
+
+#: pro/professional.php:617
+msgid "Some themes or extensions could not be updated."
+msgstr ""
+
+#: pro/professional.php:651
+msgid "Some extensions could not be updated."
+msgstr ""
+
+#: themes/foundation/default/404.php:6
 msgid "404 Not Found"
 msgstr ""
 
-#: themes/bauhaus/default/404.php:8 themes/foundation/default/404.php:8
+#: themes/foundation/default/404.php:8
 msgid "The post or page you requested is no longer available."
 msgstr ""
 
-#: themes/bauhaus/default/attachment.php:10
 #: themes/foundation/default/attachment.php:10
 msgid "Back to %s"
 msgstr ""
 
-#: themes/bauhaus/default/attachment.php:47
 #: themes/foundation/default/attachment.php:47
 msgid "&laquo; previous in gallery"
 msgstr ""
 
-#: themes/bauhaus/default/attachment.php:49
 #: themes/foundation/default/attachment.php:49
 msgid "next in gallery &raquo;"
 msgstr ""
 
-#: themes/bauhaus/default/comments.php:10
-#: themes/bauhaus/default/post-loop.php:26
 #: themes/foundation/default/comments.php:10
 msgid "no responses"
 msgstr ""
 
-#: themes/bauhaus/default/comments.php:10
-#: themes/bauhaus/default/post-loop.php:26
 #: themes/foundation/default/comments.php:10
 msgid "1 response"
 msgstr ""
 
-#: themes/bauhaus/default/comments.php:10
-#: themes/bauhaus/default/post-loop.php:26
 #: themes/foundation/default/comments.php:10
 msgid "% responses"
 msgstr ""
 
-#: themes/bauhaus/default/comments.php:20
-#: themes/bauhaus/default/comments.php:26
 #: themes/foundation/default/comments.php:20
 #: themes/foundation/default/comments.php:26
 msgid "Load More Comments&hellip;"
 msgstr ""
 
-#: themes/bauhaus/default/comments.php:38
 #: themes/foundation/default/comments.php:38
 msgid "Comments are closed"
-msgstr ""
-
-#: themes/bauhaus/default/footer.php:10
-#: themes/foundation/default/footer.php:10
-msgid "Back to top"
-msgstr ""
-
-#: themes/bauhaus/default/header-bottom.php:13
-#: themes/bauhaus/default/header-bottom.php:15
-msgid "Logout"
-msgstr ""
-
-#: themes/bauhaus/default/header-bottom.php:47
-msgid "Search this website"
-msgstr ""
-
-#: themes/bauhaus/default/header-bottom.php:48
-msgid "Search"
-msgstr ""
-
-#: themes/bauhaus/default/layouts/carousel-post-loop.php:16
-#: themes/bauhaus/default/post-loop.php:17
-msgid "by"
-msgstr ""
-
-#: themes/bauhaus/default/layouts/carousel-view.php:6
-msgid "Latest"
-msgstr ""
-
-#: themes/bauhaus/default/layouts/carousel-view.php:20
-msgid "Featured"
-msgstr ""
-
-#: themes/bauhaus/default/layouts/carousel-view.php:25
-msgid "Popular"
-msgstr ""
-
-#: themes/bauhaus/default/layouts/post-listing-view.php:29
-#: themes/foundation/default/index.php:33
-msgid "newer posts"
-msgstr ""
-
-#: themes/bauhaus/default/layouts/post-listing-view.php:29
-#: themes/foundation/default/index.php:33
-msgid "older posts"
-msgstr ""
-
-#: themes/bauhaus/default/nav-bar.php:6
-#: themes/foundation/default/nav-bar.php:6
-msgid "previous post"
-msgstr ""
-
-#: themes/bauhaus/default/nav-bar.php:13
-#: themes/foundation/default/nav-bar.php:12
-msgid "next post"
-msgstr ""
-
-#: themes/bauhaus/default/one-comment.php:17
-#: themes/foundation/default/one-comment.php:17
-msgid "Your comment is awaiting moderation"
-msgstr ""
-
-#: themes/bauhaus/default/one-comment.php:21
-#: themes/foundation/default/one-comment.php:21
-msgid "Reply"
-msgstr ""
-
-#: themes/bauhaus/default/related-posts.php:4
-#: themes/foundation/default/related-posts.php:4
-msgid "Related"
-msgstr ""
-
-#: themes/bauhaus/default/search.php:19 themes/foundation/default/search.php:6
-msgid "You searched for \"%s\""
-msgstr ""
-
-#: themes/bauhaus/default/search.php:27
-msgid "Show %s Results"
-msgstr ""
-
-#: themes/bauhaus/default/search.php:52 themes/bauhaus/default/search.php:75
-msgid "No results found"
-msgstr ""
-
-#: themes/bauhaus/default/search.php:66
-#: themes/foundation/default/search.php:43
-msgid "Load more %s results"
-msgstr ""
-
-#: themes/bauhaus/default/sharing.php:2
-#: themes/foundation/default/sharing.php:2
-msgid "Share"
-msgstr ""
-
-#: themes/bauhaus/default/sharing.php:3
-#: themes/foundation/default/sharing.php:3
-msgid "Tweet"
-msgstr ""
-
-#: themes/bauhaus/default/sharing.php:4
-#: themes/foundation/default/sharing.php:4
-msgid "Pin"
-msgstr ""
-
-#: themes/bauhaus/default/sharing.php:5
-#: themes/foundation/default/sharing.php:5
-msgid "Mail"
-msgstr ""
-
-#: themes/bauhaus/default/single.php:16
-msgid "no comments"
-msgstr ""
-
-#: themes/bauhaus/default/single.php:16
-msgid "1 comment"
-msgstr ""
-
-#: themes/bauhaus/default/single.php:16
-msgid "% comments"
-msgstr ""
-
-#: themes/bauhaus/default/single.php:36
-msgid "Categories"
-msgstr ""
-
-#: themes/bauhaus/default/single.php:39
-msgid "Tags"
-msgstr ""
-
-#: themes/bauhaus/default/switch-link.php:8
-#: themes/foundation/default/switch-link.php:8
-msgid "mobile"
-msgstr ""
-
-#: themes/bauhaus/default/switch-link.php:9
-#: themes/foundation/default/switch-link.php:9
-msgid "desktop"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:150
-msgid "Header Menu"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:152
-msgid "Choose a menu"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:153
-msgid "Main menu selection"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:160
-msgid "Theme background"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:161
-msgid "Header & Menu"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:162
-msgid "Links"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:163
-msgid "Post/Page Headers"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:275
-msgid "Menu animation style"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:280
-msgid "Off-canvas"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:281
-msgid "Drop-down"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:289
-msgid "Menu position"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:294
-msgid "Left side"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:295
-msgid "Right side"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:303
-msgid "Show search in header"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:320
-msgid "Post thumbnails"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:325
-msgid "No thumbnails"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:326
-msgid "Blog listing only"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:327
-msgid "Blog listing, single posts"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:328
-msgid "Blog listing, single posts & pages"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:329
-msgid "All (blog, single, pages, search & archive)"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:337
-msgid "Thumbnail Type"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:342
-msgid "Post featured images"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:343
-msgid "Post custom field"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:351
-msgid "Thumbnail custom field name"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:362
-msgid "Show post categories and tags"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:373
-msgid "Show post date"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:384
-msgid "Show post author"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:395
-msgid "Show comment bubbles on posts"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:406
-msgid "Use infinite scrolling for blog"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:425
-msgid "Blog Appearance"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:430
-msgid "List View"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:431
-msgid "Carousel View"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:437
-msgid "Show featured posts"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:447
-msgid "Show slider nav bar"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:457
-msgid "Autoplay"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:467
-msgid "Show featured posts slider"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:477
-msgid "Show popular posts slider"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:487
-msgid "Max number of posts in popular slider"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:504
-msgid "Max number of featured posts"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:518
-msgid "Featured posts also show in latest posts"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:528
-msgid "Featured posts to display"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:533
-#: themes/foundation/modules/featured/featured.php:434
-msgid "Show latest posts"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:534
-#: themes/foundation/modules/featured/featured.php:435
-msgid "Show posts from a specific tag"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:535
-#: themes/foundation/modules/featured/featured.php:436
-msgid "Show posts from a specific category"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:536
-#: themes/foundation/modules/featured/featured.php:437
-msgid "Show posts from a specific post type"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:537
-#: themes/foundation/modules/featured/featured.php:438
-msgid "Show only specific posts or pages"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:544
-#: themes/foundation/modules/featured/featured.php:444
-msgid "Only this tag"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:545 themes/bauhaus/root-functions.php:555
-#: themes/foundation/modules/featured/featured.php:445
-#: themes/foundation/modules/featured/featured.php:454
-msgid "Enter the tag/category slug name"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:554
-#: themes/foundation/modules/featured/featured.php:453
-msgid "Only this category"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:564
-#: themes/foundation/modules/featured/featured.php:462
-msgid "Comma-separated list of post/page IDs"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:574
-msgid "Featured Slider Page"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:575
-msgid "Choose which page should display the featured slider"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:587
-#: themes/foundation/modules/featured/featured.php:473
-msgid "Only this post type"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:600
-msgid "Blog Featured Slider"
-msgstr ""
-
-#: themes/bauhaus/root-functions.php:610
-msgid "Blog Layout"
 msgstr ""
 
 #: themes/foundation/default/comments.php:51
@@ -2045,6 +1699,10 @@ msgstr ""
 msgid "Publish"
 msgstr ""
 
+#: themes/foundation/default/footer.php:10
+msgid "Back to top"
+msgstr ""
+
 #: themes/foundation/default/formerror.php:6
 msgid "Comment Error"
 msgstr ""
@@ -2057,6 +1715,38 @@ msgstr ""
 msgid "Go back"
 msgstr ""
 
+#: themes/foundation/default/index.php:33
+msgid "newer posts"
+msgstr ""
+
+#: themes/foundation/default/index.php:33
+msgid "older posts"
+msgstr ""
+
+#: themes/foundation/default/nav-bar.php:6
+msgid "previous post"
+msgstr ""
+
+#: themes/foundation/default/nav-bar.php:12
+msgid "next post"
+msgstr ""
+
+#: themes/foundation/default/one-comment.php:17
+msgid "Your comment is awaiting moderation"
+msgstr ""
+
+#: themes/foundation/default/one-comment.php:21
+msgid "Reply"
+msgstr ""
+
+#: themes/foundation/default/related-posts.php:4
+msgid "Related"
+msgstr ""
+
+#: themes/foundation/default/search.php:6
+msgid "You searched for \"%s\""
+msgstr ""
+
 #: themes/foundation/default/search.php:16
 msgid "%s results"
 msgstr ""
@@ -2065,8 +1755,36 @@ msgstr ""
 msgid "No search results found"
 msgstr ""
 
+#: themes/foundation/default/search.php:43
+msgid "Load more %s results"
+msgstr ""
+
+#: themes/foundation/default/sharing.php:2
+msgid "Share"
+msgstr ""
+
+#: themes/foundation/default/sharing.php:3
+msgid "Tweet"
+msgstr ""
+
+#: themes/foundation/default/sharing.php:4
+msgid "Pin"
+msgstr ""
+
+#: themes/foundation/default/sharing.php:5
+msgid "Mail"
+msgstr ""
+
 #: themes/foundation/default/single.php:13
 msgid "By"
+msgstr ""
+
+#: themes/foundation/default/switch-link.php:8
+msgid "mobile"
+msgstr ""
+
+#: themes/foundation/default/switch-link.php:9
+msgid "desktop"
 msgstr ""
 
 #: themes/foundation/modules/base/base.php:64
@@ -2157,6 +1875,47 @@ msgstr ""
 
 #: themes/foundation/modules/featured/featured.php:429
 msgid "Posts to display"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:434
+msgid "Show latest posts"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:435
+msgid "Show posts from a specific tag"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:436
+msgid "Show posts from a specific category"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:437
+msgid "Show posts from a specific post type"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:438
+msgid "Show only specific posts or pages"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:444
+msgid "Only this tag"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:445
+#: themes/foundation/modules/featured/featured.php:454
+msgid "Enter the tag/category slug name"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:453
+msgid "Only this category"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:462
+msgid "Comma-separated list of post/page IDs"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:473
+msgid "Only this post type"
 msgstr ""
 
 #: themes/foundation/modules/featured/featured.php:483
@@ -2467,44 +2226,4 @@ msgstr ""
 
 #: themes/foundation/root-functions.php:1172
 msgid "Page"
-msgstr ""
-
-#: wptouch.php:154
-msgid ""
-"%sSign-up to to get WPtouch news, updates and changes via your user email "
-"address:%s"
-msgstr ""
-
-#: wptouch.php:160
-msgid ""
-"%sNEW! WPtouch now supports live editing in the WordPress Customizer!%s "
-"Check it out: <a href=\"%s?"
-"wptouch_free_message_419=1&utm_source=free_admin&utm_medium=website&utm_term=dale&utm_campaign=admin_notice"
-"\">Customize WPtouch Now &rarr;</a> %s"
-msgstr ""
-
-#: wptouch.php:161
-msgid "%sSign-up to to get WPtouch news, updates and changes via email:%s"
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "WPtouch Mobile Plugin"
-msgstr ""
-
-#. Plugin URI of the plugin/theme
-msgid "http://www.wptouch.com/"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid ""
-"Make a beautiful mobile-friendly version of your website with just a few "
-"clicks"
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "BraveNewCode Inc."
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "http://www.bravenewcode.com/"
 msgstr ""

@@ -6,7 +6,7 @@ class WPtouchArrayIterator {
 	var $count;
 	var $cur_key;
 
-	function WPtouchArrayIterator( $a ) {
+	function __construct( $a ) {
 		$this->array = $a;
 		$this->cur_pos = 0;
 		$this->count = count( $a );

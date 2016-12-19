@@ -1,9 +1,9 @@
 === Plugin Name ===
-Contributors: kbmcardle, bravenewcode, duanestorey, dalemugford, adamdipardo, 
+Contributors: kbmcardle, bravenewcode, duanestorey, dalemugford, adamdipardo,
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 4.2
-Stable tag: 4.3.4
-Tested up to: 4.6
+Stable tag: 4.3.9
+Tested up to: 4.7
 License: GPLv2
 
 Make your WordPress website mobile-friendly with just a few clicks.
@@ -32,6 +32,30 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 6. Theme settings
 
 == Changelog ==
+
+= Version 4.3.9 (December 12, 2016) =
+
+* Fixed: Error message that appeared when running the latest version of Wordfence
+
+= Version 4.3.8 (December 8, 2016) =
+
+* Fixed: Minor bugs and issues reported by customers and users
+* Added: Compatibility with WordPress 4.7
+
+= Version 4.3.7 (November 23, 2016) =
+
+* Changed: Now using the standard WordPress comment form, for better compatibility with plugins that use or modify comments.
+* Fixed: Minor bugs and issues reported by customers and users
+
+= Version 4.3.6 (November 10, 2016) =
+
+* Fixed: Featured slider now won't show if no posts have a featured image
+* Fixed: Minor bugs and issues reported by customers and users
+
+= Version 4.3.5 (October 27, 2016) =
+
+* Fixed: Warnings that appeared for sites running PHP 7
+* Fixed: Minor bugs and issues reported by customers and users
 
 = Version 4.3.4 (October 13, 2016) =
 

@@ -966,6 +966,10 @@ p.nocomments {
 	margin-bottom: 25px;
 }
 
+.comment .comment-body img {
+    max-width: 100%;
+}
+
 /* @group Commentform */
 
 form#commentform label {
@@ -974,6 +978,11 @@ form#commentform label {
 
 form#commentform input[type="text"], form#commentform input[type="email"], form#commentform input[type="url"] {
 	width: 60%;
+}
+
+form#commentform.comment-form input[type="text"], form#commentform.comment-form input[type="email"], form#commentform.comment-form input[type="url"] {
+	width: 100%;
+	box-sizing: border-box;
 }
 
 form#commentform input:focus, form#commentform textarea:focus {
@@ -1001,6 +1010,11 @@ form#commentform textarea {
 	margin: 0;
 	width: 95%;
 	-webkit-transition-duration: .5s;
+}
+
+form#commentform.comment-form textarea {
+	width: 100%;
+	box-sizing: border-box;
 }
 
 form#commentform textarea:focus {

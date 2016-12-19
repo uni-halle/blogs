@@ -20,7 +20,7 @@ class WPtouchProDebug {
 	var $enabled;
 	var $log_level;
 
-	function WPtouchProDebug() {
+	function __construct() {
 		$this->debug_file = false;
 		$this->enabled = false;
 	}
