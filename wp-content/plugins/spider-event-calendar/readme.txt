@@ -3,8 +3,8 @@ Contributors: webdorado
 Donate link: https://web-dorado.com/products/wordpress-calendar.html  
 Tags: calendar, date, event, event calendar, events, events calendar, meeting, organizer, recurring, reservation, responsive, schedule
 Requires at least: 3.4  
-Tested up to: 4.6   
-Stable tag: 1.5.46
+Tested up to: 4.7   
+Stable tag: 1.5.47
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -141,6 +141,10 @@ Vietnamese (vi)
 
 
 == Changelog ==
+
+= 1.5.47 =
+Fixed: Minor bug  
+Fixed: Translations   
 
 = 1.5.46 =
 Fixed: Translations       

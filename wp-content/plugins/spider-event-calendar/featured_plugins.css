@@ -40,26 +40,38 @@
 	margin: 0 auto;
 }
 
-#main_featured_plugins_page #featured-plugins-list  li.form-maker  .product {background:url(images/form.png) left center no-repeat;}
-#main_featured_plugins_page #featured-plugins-list  li.events-wd  .product {background:url(images/events_wd.png) left center no-repeat;}
-#main_featured_plugins_page #featured-plugins-list  li.instagram-wd  .product {background:url(images/instagram_feed.png) left center no-repeat;}
-#main_featured_plugins_page #featured-plugins-list  li.faq-wd  .product {background:url(images/faq_wd.png) left center no-repeat;}
-#main_featured_plugins_page #featured-plugins-list  li.catalog  .product {background:url(images/catalog.png) left center no-repeat;}
-#main_featured_plugins_page #featured-plugins-list  li.contact-maker  .product {background:url(images/contact-form.png) left center no-repeat;}
-#main_featured_plugins_page #featured-plugins-list  li.contacts  .product {background:url(images/contacts.png) left center no-repeat;}
-#main_featured_plugins_page #featured-plugins-list  li.facebook  .product {background:url(images/facebook.png) left center no-repeat;}
-#main_featured_plugins_page #featured-plugins-list  li.faq  .product {background:url(images/faq.png) left center no-repeat;}
-#main_featured_plugins_page #featured-plugins-list  li.flash-calendar .product {background:url(images/flash.calendar.png) left center no-repeat;}
-#main_featured_plugins_page #featured-plugins-list  li.player  .product {background:url(images/player.png) left center no-repeat;  }
-#main_featured_plugins_page #featured-plugins-list  li.spider-calendar  .product {background:url(images/spider.calendar.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.form-maker  .product {background:url(images/plugins/form.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.events-wd  .product {background:url(images/plugins/events_wd.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.instagram-wd  .product {background:url(images/plugins/instagram_feed.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.faq-wd  .product {background:url(images/plugins/faq_wd.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.catalog  .product {background:url(images/plugins/catalog.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.contact-maker  .product {background:url(images/plugins/contact-form.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.contacts  .product {background:url(images/plugins/contacts.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.facebook  .product {background:url(images/plugins/facebook.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.faq  .product {background:url(images/plugins/faq.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.flash-calendar .product {background:url(images/plugins/flash.calendar.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.player  .product {background:url(images/plugins/player.png) left center no-repeat;  }
+#main_featured_plugins_page #featured-plugins-list  li.spider-calendar  .product {background:url(images/plugins/spider.calendar.png) left center no-repeat;}
 
-#main_featured_plugins_page #featured-plugins-list  li.contact_form_bulder .product {background:url(images/contact.builder.png) left center no-repeat;}
-#main_featured_plugins_page #featured-plugins-list  li.random_post  .product {background:url(images/random.post.png) left center no-repeat;}
-#main_featured_plugins_page #featured-plugins-list  li.slider_wd  .product {background:url(images/slider.png) left center no-repeat;}
-#main_featured_plugins_page #featured-plugins-list  li.folder_menu  .product {background:url(images/folder.menu.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.contact_form_bulder .product {background:url(images/plugins/contact.builder.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.random_post  .product {background:url(images/plugins/random.post.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.slider_wd  .product {background:url(images/plugins/slider.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.folder_menu  .product {background:url(images/plugins/folder.menu.png) left center no-repeat;}
 
-#main_featured_plugins_page #featured-plugins-list  li.zoom .product {background:url(images/zoom.png) left center no-repeat;}
-#main_featured_plugins_page #featured-plugins-list  li.photo-gallery  .product {background:url(images/photo-gallery.png) left center no-repeat #CACACA;
+
+
+#main_featured_plugins_page #featured-plugins-list  li.google_maps .product {background:url(images/plugins/google_maps.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.google_analytics  .product {background:url(images/plugins/analytics.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.ecommerce_wd  .product {background:url(images/plugins/ecommerce.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.mailchimp-wd  .product {background:url(images/plugins/mailchimp.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.facebook_feed  .product {background:url(images/plugins/fb_feed.png) left center no-repeat;}
+
+#main_featured_plugins_page #featured-plugins-list  li.postslider_wd  .product {background:url(images/plugins/post_slider.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.team_wd  .product {background:url(images/plugins/team_wd.png) left center no-repeat;}
+
+
+#main_featured_plugins_page #featured-plugins-list  li.zoom .product {background:url(images/plugins/zoom.png) left center no-repeat;}
+#main_featured_plugins_page #featured-plugins-list  li.photo-gallery  .product {background:url(images/plugins/photo-gallery.png) left center no-repeat #CACACA;
 border-top-left-radius: 5px;
 border-bottom-left-radius: 5px;
 background-position-x: 7px;
@@ -67,7 +79,7 @@ background-position-x: 7px;
 #main_featured_plugins_page #featured-plugins-list  li .product {
     background-size: 115px !important;
 }
-#main_featured_plugins_page #featured-plugins-list  li.twitter-widget  .product {background:url(images/twittertools.png) left center no-repeat #CACACA;
+#main_featured_plugins_page #featured-plugins-list  li.twitter-widget  .product {background:url(images/plugins/twittertools.png) left center no-repeat #CACACA;
 background-size: 85px;
 background-position-x: 12px;
 border-top-left-radius: 5px;
@@ -80,6 +92,7 @@ border-bottom-left-radius: 5px;}
     color: #767676;
     margin: 13px 0px 13px 0px;
     text-transform: uppercase;
+	font-weight: 100;
 }
 
 #main_featured_plugins_page #featured-plugins-list li  .title  p {
@@ -117,8 +130,14 @@ border-bottom-left-radius: 5px;}
     text-transform: uppercase;
     bottom: 0;
     left: 10px;
-	font-family: "Open Sans",sans-serif;
-	text-shadow: 1px 0;
+    font-family: "Open Sans",sans-serif;
+    letter-spacing: 0px;
+	outline: none;
+}
+
+#featured-plugins-list li a:focus{
+	outline: none;
+	box-shadow: none;
 }
 	
 #featured-plugins-list li a.download:hover {
@@ -138,7 +157,7 @@ border-bottom-left-radius: 5px;}
     border-bottom: 3px solid #E5E5E5;
     position: relative;
     padding: 20px 0;
-	margin-top: 10px;
+	margin: 15px auto 0px auto;
 }
 
 .featured_header .old_price{

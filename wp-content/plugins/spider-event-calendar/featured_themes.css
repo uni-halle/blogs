@@ -97,6 +97,11 @@
 	font-family: "Open Sans",sans-serif;
 	text-shadow: 1px 0;
 }
+
+#featured-plugins-list li a:focus{
+	outline: none;
+	box-shadow: none;
+}
 	
 #featured-plugins-list li a.download:hover {
 	color: #F47629;

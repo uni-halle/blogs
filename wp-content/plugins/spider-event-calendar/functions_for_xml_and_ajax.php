@@ -234,7 +234,6 @@ function seemore() {
   ?>
   <html>
 	<head>
-	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 	  <script>
 		function next(day_events, ev_id, theme_id, calendar_id, date, day) {
 		  var p = 0;
@@ -532,7 +531,6 @@ function spiderbigcalendar() {
   ?>
   <html>
 	  <head>
-		  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 		  <script>
 			function next(day_events, ev_id, theme_id, calendar_id, date, day, ev_ids) {
 			  var p = 0;
@@ -580,7 +578,7 @@ function spiderbigcalendar() {
 		  ?>
 		  <style>
 			#dayevent {
-			  opacity: 0;
+			  opacity: 1;
 			}
 			#previous,
 			#next {
