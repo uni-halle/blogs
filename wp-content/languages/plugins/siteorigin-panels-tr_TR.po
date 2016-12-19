@@ -1,317 +1,255 @@
-# Translation of Stable (latest release) in Turkish
-# This file is distributed under the same license as the Stable (latest release) package.
+# Translation of Plugins - Page Builder by SiteOrigin - Stable (latest release) in Turkish
+# This file is distributed under the same license as the Plugins - Page Builder by SiteOrigin - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-08-04 21:05:57+0000\n"
+"PO-Revision-Date: 2016-12-15 08:51:30+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: GlotPress/2.1.0-alpha\n"
-"Project-Id-Version: Stable (latest release)\n"
-
-#: widgets/widgets.php:768
-msgid "Attachment Page"
-msgstr "Ek dosya sayfası"
-
-#: widgets/widgets.php:769
-msgid "File"
-msgstr "Dosya"
-
-#: widgets/widgets.php:787
-msgid "Image (PB)"
-msgstr "Görsel"
-
-#: widgets/widgets.php:789
-msgid "Displays a simple image."
-msgstr "Basit bir görsel görüntüler."
-
-#: widgets/widgets.php:840
-msgid "Embedded Video (PB)"
-msgstr "Gömülü video"
-
-#: widgets/widgets.php:842
-msgid "Embeds a video."
-msgstr "Bir video gömer."
-
-#: widgets/widgets.php:880
-msgid "Video"
-msgstr "Video"
-
-#: widgets/widgets.php:896
-msgid "Self Hosted Video (PB)"
-msgstr "Barındırılan video"
-
-#: widgets/widgets.php:898
-msgid "A self hosted video player."
-msgstr "Barındırılan video oynatıcı."
-
-#: widgets/widgets.php:940
-msgid "Video URL"
-msgstr "Video bağlantısı"
-
-#: widgets/widgets.php:944
-msgid "Poster URL"
-msgstr "Poster bağlantısı"
-
-#: widgets/widgets.php:946
-msgid "An image that displays before the video starts playing."
-msgstr "Video oynamaya başlamadan önce gösterilen görsel."
-
-#: widgets/widgets.php:951
-msgid "Auto Play Video"
-msgstr "Videoyu otomatik oynat"
-
-#. Plugin Name of the plugin/theme
-msgid "Page Builder by SiteOrigin"
-msgstr "Sayfa Yapıcı, SiteOrigin tarafından yapılmıştır."
-
-#. Plugin URI of the plugin/theme
-msgid "https://siteorigin.com/page-builder/"
-msgstr "https://siteorigin.com/page-builder/"
-
-#. Description of the plugin/theme
-msgid "A drag and drop, responsive page builder that simplifies building your website."
-msgstr "Web sitenizi inşa etmenizi basitleştiren sürükle bırak ve duyarlı bir sayfa yapıcı."
-
-#. Author of the plugin/theme
-msgid "SiteOrigin"
-msgstr "SiteOrigin"
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: tr\n"
+"Project-Id-Version: Plugins - Page Builder by SiteOrigin - Stable (latest release)\n"
 
 #. Author URI of the plugin/theme
 msgid "https://siteorigin.com"
 msgstr "https://siteorigin.com"
 
-#: tpl/options.php:39
-msgid "Bundled Widgets"
-msgstr "Paketlenmiş bileşenler"
+#. Author of the plugin/theme
+msgid "SiteOrigin"
+msgstr "SiteOrigin"
 
-#: tpl/options.php:40
-msgid "Include the bundled widgets."
-msgstr "Paketlenmiş bileşenleri dahil et."
+#. Description of the plugin/theme
+msgid "A drag and drop, responsive page builder that simplifies building your website."
+msgstr "Web sitenizi inşa etmenizi basitleştiren sürükle bırak ve duyarlı bir sayfa yapıcı."
 
-#: tpl/options.php:48
-msgid "Display"
-msgstr "Görüntüle"
+#. Plugin URI of the plugin/theme
+msgid "https://siteorigin.com/page-builder/"
+msgstr "https://siteorigin.com/page-builder/"
 
-#: tpl/options.php:58
-msgid "Should the layout collapse for mobile devices."
-msgstr "Mobil cihazlar için yerleşim kapanmalı mı?"
+#. Plugin Name of the plugin/theme
+msgid "Page Builder by SiteOrigin"
+msgstr "Page Builder by SiteOrigin"
 
-#: tpl/options.php:76
-msgid "Cell Side Margins"
-msgstr "Hücre kenar boşlukları"
+#: widgets/widgets.php:951
+msgid "Auto Play Video"
+msgstr "Videoyu otomatik oynat"
 
-#: tpl/options.php:82
-msgid "Inline CSS"
-msgstr "Satır içi CSS"
+#: widgets/widgets.php:946
+msgid "An image that displays before the video starts playing."
+msgstr "Video oynamaya başlamadan önce gösterilen görsel."
 
-#. TRANSLATORS: This is the name of a widget
-#: widgets/basic.php:13
-msgid "Layout Builder"
-msgstr "Yerleşim yapıcı"
+#: widgets/widgets.php:944
+msgid "Poster URL"
+msgstr "Poster bağlantısı"
 
-#: widgets/basic.php:15
-msgid "A complete SiteOrigin Page Builder layout as a widget."
-msgstr "Bileşen olarak tam bir SiteOrigin sayfa yapıcı."
+#: widgets/widgets.php:940
+msgid "Video URL"
+msgstr "Video bağlantısı"
 
-#: widgets/basic.php:53
-msgid "Open Builder"
-msgstr "Yapıcıyı aç"
+#: widgets/widgets.php:898
+msgid "A self hosted video player."
+msgstr "Barındırılan video oynatıcı."
 
-#: widgets/basic.php:82
-msgid "Post Content"
-msgstr "Yazı içeriği"
+#: widgets/widgets.php:896
+msgid "Self Hosted Video (PB)"
+msgstr "Barındırılan video"
 
-#: widgets/basic.php:84
-msgid "Displays content from the current post."
-msgstr "Şuan ki yazıdan özellik gösterir."
+#: widgets/widgets.php:880
+msgid "Video"
+msgstr "Video"
 
-#: widgets/basic.php:130 widgets/basic.php:436 widgets/widgets.php:595
-#: widgets/widgets.php:770
-msgid "None"
-msgstr "Hiçbiri"
+#: widgets/widgets.php:842
+msgid "Embeds a video."
+msgstr "Bir video gömer."
 
-#: widgets/basic.php:131 widgets/basic.php:364
-#: widgets/widgets/call-to-action/call-to-action.php:15
-#: widgets/widgets/list/list.php:15 widgets/widgets/price-box/price-box.php:15
-msgid "Title"
-msgstr "Başlık"
+#: widgets/widgets.php:840
+msgid "Embedded Video (PB)"
+msgstr "Gömülü video"
 
-#: widgets/basic.php:132
-msgid "Featured Image"
-msgstr "Öne çıkan görsel"
+#: widgets/widgets.php:789
+msgid "Displays a simple image."
+msgstr "Basit bir görsel görüntüler."
 
-#: widgets/basic.php:137
-msgid "Display Content"
-msgstr "İçeriği görüntüle"
+#: widgets/widgets.php:787
+msgid "Image (PB)"
+msgstr "Görsel"
 
-#: widgets/basic.php:157
-msgid "Post Loop"
-msgstr "Yazı döngüsü"
+#: widgets/widgets.php:769
+msgid "File"
+msgstr "Dosya"
 
-#: widgets/basic.php:159
-msgid "Displays a post loop."
-msgstr "Yazı döngüsünü görüntüler."
+#: widgets/widgets.php:768
+msgid "Attachment Page"
+msgstr "Ek dosya sayfası"
 
-#: widgets/basic.php:358
-msgid "Your theme doesn't have any post loops."
-msgstr "Temanızda hiç bir yazı döngüsü yok."
+#: widgets/widgets.php:766
+msgid "Link To"
+msgstr "Bağlantı"
 
-#: widgets/basic.php:368
-msgid "Template"
-msgstr "Şablon"
+#: widgets/widgets.php:761
+msgid "Columns"
+msgstr "Sütunlar"
 
-#: widgets/basic.php:384
-msgid "More Link "
-msgstr "Daha fazla bağlantısı"
+#: widgets/widgets.php:756
+msgid "Gallery Type"
+msgstr "Galeri türü"
 
-#: widgets/basic.php:386
-msgid "If the template supports it, cut posts and display the more link."
-msgstr "Eğer şablon desteklerse yazıyı keser ve daha fazla bağlantısını gösterir."
+#: widgets/widgets.php:748
+msgid "Full"
+msgstr "Tam"
 
-#: widgets/basic.php:420 widgets/widgets.php:581
-msgid "Post Type"
-msgstr "Yazı tipi"
+#: widgets/widgets.php:747
+msgid "Thumbnail"
+msgstr "Küçük"
 
-#: widgets/basic.php:429 widgets/widgets.php:588
-msgid "Posts Per Page"
-msgstr "Sayfa başına yazı"
+#: widgets/widgets.php:746
+msgid "Medium"
+msgstr "Orta"
 
-#: widgets/basic.php:434 widgets/widgets.php:593
-msgid "Order By"
-msgstr "Sırala"
+#: widgets/widgets.php:745
+msgid "Large"
+msgstr "Büyük"
 
-#: widgets/basic.php:437 widgets/widgets.php:596
-msgid "Post ID"
-msgstr "Yazı no"
+#: widgets/widgets.php:742
+msgid "Image Size"
+msgstr "Görsel boyutu"
 
-#: widgets/basic.php:438 widgets/widgets.php:597
-msgid "Author"
-msgstr "Yazar"
+#: widgets/widgets.php:738
+msgid "Comma separated attachment IDs. Defaults to all current page's attachments."
+msgstr "Virgül ile ayrılmış ek dosya noları. Sayfanın tüm ekleri varsayılan."
 
-#: widgets/basic.php:439 widgets/basic.php:440
-#: widgets/widgets/testimonial/testimonial.php:15 widgets/widgets.php:598
-#: widgets/widgets.php:599
-msgid "Name"
-msgstr "İsim"
+#: widgets/widgets.php:734
+msgid "edit gallery"
+msgstr "galeriyi düzenle"
 
-#: widgets/basic.php:441 widgets/widgets.php:600
-msgid "Date"
-msgstr "Tarih"
+#: widgets/widgets.php:733
+msgid "Gallery Images"
+msgstr "Galeri görselleri"
 
-#: widgets/basic.php:442 widgets/widgets.php:601
-msgid "Modified"
-msgstr "Değiştirilmiş"
+#: widgets/widgets.php:694
+msgid "Displays a gallery."
+msgstr "Bir galeri görüntüler."
 
-#: widgets/basic.php:443 widgets/widgets.php:602
-msgid "Parent"
-msgstr "Ebeveyn"
+#: widgets/widgets.php:692
+msgid "Gallery (PB)"
+msgstr "Galeri"
 
-#: widgets/basic.php:444 widgets/widgets.php:603
-msgid "Random"
-msgstr "Rastgele"
+#: widgets/widgets.php:631
+msgid "Additional Arguments"
+msgstr "İlave parametreler"
 
-#: widgets/basic.php:445 widgets/widgets.php:604
-msgid "Comment Count"
-msgstr "Yorum sayısı"
+#: widgets/widgets.php:231
+msgid "%s Style"
+msgstr "%s stil"
 
-#: widgets/basic.php:446 widgets/widgets.php:605
-msgid "Menu Order"
-msgstr "Menü sırası"
+#: widgets/widgets.php:207
+msgid "Style"
+msgstr "Stil"
 
-#: widgets/basic.php:447
-msgid "Post In Order"
-msgstr "Sıralı yazı"
+#. TRANSLATORS: Uniform Resource Locator
+#: widgets/widgets/testimonial/testimonial.php:32
+msgid "URL"
+msgstr "URL"
 
-#: widgets/basic.php:452 widgets/widgets.php:611
-msgid "Order"
-msgstr "Sıra"
+#: widgets/widgets/testimonial/testimonial.php:23
+msgid "Image"
+msgstr "Görsel"
 
-#: widgets/basic.php:454 widgets/widgets.php:614
-msgid "Descending"
-msgstr "Azalan"
+#: widgets/widgets/testimonial/testimonial.php:19
+msgid "Location"
+msgstr "Konum"
 
-#: widgets/basic.php:455 widgets/widgets.php:613
-msgid "Ascending"
-msgstr "Artan"
+#: widgets/widgets/testimonial/testimonial.php:8
+msgid "Displays a bullet list of points"
+msgstr "Puanların işaretli bir listesini görüntüler"
 
-#: widgets/basic.php:460 widgets/widgets.php:620
-msgid "Sticky Posts"
-msgstr "Yapışkan yazılar"
+#: widgets/widgets/testimonial/testimonial.php:6
+msgid "Testimonial (PB)"
+msgstr "Referans"
 
-#: widgets/basic.php:462 widgets/widgets.php:622 widgets/widgets.php:744
-msgid "Default"
-msgstr "Varsayılan"
+#: widgets/widgets/price-box/price-box.php:50
+msgid "Feature List"
+msgstr "Özellik listesi"
 
-#: widgets/basic.php:463 widgets/widgets.php:623
-msgid "Ignore Sticky"
-msgstr "Yapışkan yazıyı yoksay"
+#: widgets/widgets/price-box/price-box.php:31
+msgid "Features Text"
+msgstr "Özellikler metni"
 
-#: widgets/basic.php:464 widgets/widgets.php:624
-msgid "Exclude Sticky"
-msgstr "Yapışkan yazıyı hariç tut"
+#: widgets/widgets/price-box/price-box.php:27
+msgid "Information Text"
+msgstr "Bilgi metni"
 
-#: widgets/basic.php:465 widgets/widgets.php:625
-msgid "Only Sticky"
-msgstr "Sadece yapışkan yazı"
+#: widgets/widgets/price-box/price-box.php:23
+msgid "Per"
+msgstr "Her biri için"
 
-#: widgets/basic.php:470
-msgid "Additional "
-msgstr "İlave"
+#: widgets/widgets/price-box/price-box.php:19
+msgid "Price"
+msgstr "Fiyat"
 
-#: widgets/basic.php:477 widgets/widgets.php:635
-msgid "Additional query arguments. See 1{query_posts}."
-msgstr "İlave sorgu parametreleri. 1{query_posts} bağlantısına bakın."
+#: widgets/widgets/price-box/price-box.php:6
+msgid "Price Box (PB)"
+msgstr "Fiyat kutusu"
 
-#: widgets/widgets/animated-image/animated-image.php:6
-msgid "Animated Image (PB)"
-msgstr "Animasyonlu görsel "
+#: widgets/widgets/list/list.php:20 widgets/widgets/price-box/price-box.php:32
+msgid "Start each new point with an asterisk (*)"
+msgstr "Her yeni satıra yıldız işareti (*) ile başla"
 
-#: widgets/widgets/animated-image/animated-image.php:8
-msgid "An image that animates in when it enters the screen."
-msgstr "Ekrana girdiğinde hareket eden bir imaj."
+#: widgets/widgets/list/list.php:8 widgets/widgets/price-box/price-box.php:8
+msgid "Displays a bullet list of elements"
+msgstr "Ögelerin madde işaretli bir listesini göster"
 
-#: widgets/widgets/animated-image/animated-image.php:15 widgets/widgets.php:822
-msgid "Image URL"
-msgstr "Görsel URL"
+#: widgets/widgets/list/list.php:6
+msgid "List (PB)"
+msgstr "Liste"
 
-#: widgets/widgets/animated-image/animated-image.php:19
-msgid "Animation"
-msgstr "Animasyon"
-
-#: widgets/widgets/animated-image/animated-image.php:21
-msgid "Fade In"
-msgstr "Yavaşça göster"
-
-#: widgets/widgets/animated-image/animated-image.php:22
-msgid "Slide Up"
-msgstr "Yukarı kaydır"
-
-#: widgets/widgets/animated-image/animated-image.php:23
-msgid "Slide Down"
-msgstr "Aşağı kaydır"
-
-#: widgets/widgets/animated-image/animated-image.php:24
-msgid "Slide Left"
-msgstr "Sola kaydır"
-
-#: widgets/widgets/animated-image/animated-image.php:25
-msgid "Slide Right"
-msgstr "Sağa kaydır"
-
-#: widgets/widgets/button/button.php:6
-msgid "Button (PB)"
+#: widgets/widgets/call-to-action/call-to-action.php:37
+#: widgets/widgets/price-box/price-box.php:49
+msgid "Button"
 msgstr "Düğme"
 
-#: widgets/widgets/button/button.php:15 widgets/widgets/list/list.php:19
-#: widgets/widgets/testimonial/testimonial.php:27
-msgid "Text"
-msgstr "Metin"
+#: widgets/widgets/call-to-action/call-to-action.php:27
+#: widgets/widgets/price-box/price-box.php:40
+msgid "Button URL"
+msgstr "Düğme adresi"
 
-#: widgets/widgets/button/button.php:19 widgets/widgets.php:826
-msgid "Destination URL"
-msgstr "Hedef URL"
+#: widgets/widgets/call-to-action/call-to-action.php:23
+#: widgets/widgets/price-box/price-box.php:36
+msgid "Button Text"
+msgstr "Tuş metni"
+
+#: widgets/widgets/call-to-action/call-to-action.php:19
+msgid "Sub Title"
+msgstr "Alt başlık"
+
+#: widgets/widgets/call-to-action/call-to-action.php:8
+msgid "A Call to Action block"
+msgstr "Bir eylem çağrısı bloğu"
+
+#: widgets/widgets/call-to-action/call-to-action.php:6
+msgid "Call To Action (PB)"
+msgstr "Eylem çağrısı"
+
+#: widgets/widgets/button/button.php:32
+msgid "Justify"
+msgstr "İki yana yasla"
+
+#: widgets/widgets/button/button.php:31
+msgid "Center"
+msgstr "Orta"
+
+#: widgets/widgets/button/button.php:30
+msgid "Right"
+msgstr "Sağ"
+
+#: widgets/widgets/button/button.php:29
+msgid "Left"
+msgstr "Sol"
+
+#: widgets/widgets/button/button.php:27
+msgid "Button Alignment"
+msgstr "Düğme hizası"
 
 #: widgets/widgets/button/button.php:23
 #: widgets/widgets/call-to-action/call-to-action.php:31
@@ -320,744 +258,388 @@ msgstr "Hedef URL"
 msgid "Open In New Window"
 msgstr "Yeni pencerede aç"
 
-#: widgets/widgets/button/button.php:27
-msgid "Button Alignment"
-msgstr "Düğme hizası"
+#: widgets/widgets/button/button.php:19 widgets/widgets.php:826
+msgid "Destination URL"
+msgstr "Hedef URL"
 
-#: widgets/widgets/button/button.php:29
-msgid "Left"
-msgstr "Sol"
+#: widgets/widgets/button/button.php:15 widgets/widgets/list/list.php:19
+#: widgets/widgets/testimonial/testimonial.php:27
+msgid "Text"
+msgstr "Metin"
 
-#: widgets/widgets/button/button.php:30
-msgid "Right"
-msgstr "Sağ"
-
-#: widgets/widgets/button/button.php:31
-msgid "Center"
-msgstr "Orta"
-
-#: widgets/widgets/button/button.php:32
-msgid "Justify"
-msgstr "İki yana yasla"
-
-#: widgets/widgets/call-to-action/call-to-action.php:6
-msgid "Call To Action (PB)"
-msgstr "Eylem çağrısı"
-
-#: widgets/widgets/call-to-action/call-to-action.php:8
-msgid "A Call to Action block"
-msgstr "Bir eylem çağrısı bloğu"
-
-#: widgets/widgets/call-to-action/call-to-action.php:19
-msgid "Sub Title"
-msgstr "Alt başlık"
-
-#: widgets/widgets/call-to-action/call-to-action.php:23
-#: widgets/widgets/price-box/price-box.php:36
-msgid "Button Text"
-msgstr "Tuş metni"
-
-#: widgets/widgets/call-to-action/call-to-action.php:27
-#: widgets/widgets/price-box/price-box.php:40
-msgid "Button URL"
-msgstr "Düğme adresi"
-
-#: widgets/widgets/call-to-action/call-to-action.php:37
-#: widgets/widgets/price-box/price-box.php:49
-msgid "Button"
+#: widgets/widgets/button/button.php:6
+msgid "Button (PB)"
 msgstr "Düğme"
 
-#: widgets/widgets/list/list.php:6
-msgid "List (PB)"
-msgstr "Liste"
-
-#: widgets/widgets/list/list.php:8 widgets/widgets/price-box/price-box.php:8
-msgid "Displays a bullet list of elements"
-msgstr "Ögelerin madde işaretli bir listesini göster"
-
-#: widgets/widgets/list/list.php:20 widgets/widgets/price-box/price-box.php:32
-msgid "Start each new point with an asterisk (*)"
-msgstr "Her yeni satıra yıldız işareti (*) ile başla"
-
-#: widgets/widgets/price-box/price-box.php:6
-msgid "Price Box (PB)"
-msgstr "Fiyat kutusu"
-
-#: widgets/widgets/price-box/price-box.php:19
-msgid "Price"
-msgstr "Fiyat"
-
-#: widgets/widgets/price-box/price-box.php:23
-msgid "Per"
-msgstr "Her biri için"
-
-#: widgets/widgets/price-box/price-box.php:27
-msgid "Information Text"
-msgstr "Bilgi metni"
-
-#: widgets/widgets/price-box/price-box.php:31
-msgid "Features Text"
-msgstr "Özellikler metni"
-
-#: widgets/widgets/price-box/price-box.php:50
-msgid "Feature List"
-msgstr "Özellik listesi"
-
-#: widgets/widgets/testimonial/testimonial.php:6
-msgid "Testimonial (PB)"
-msgstr "Referans"
-
-#: widgets/widgets/testimonial/testimonial.php:8
-msgid "Displays a bullet list of points"
-msgstr "Puanların işaretli bir listesini görüntüler"
-
-#: widgets/widgets/testimonial/testimonial.php:19
-msgid "Location"
-msgstr "Konum"
-
-#: widgets/widgets/testimonial/testimonial.php:23
-msgid "Image"
-msgstr "Görsel"
-
-#. TRANSLATORS: Uniform Resource Locator
-#: widgets/widgets/testimonial/testimonial.php:32
-msgid "URL"
-msgstr "URL"
-
-#: widgets/widgets.php:207
-msgid "Style"
-msgstr "Stil"
-
-#: widgets/widgets.php:231
-msgid "%s Style"
-msgstr "%s stil"
-
-#: widgets/widgets.php:631
-msgid "Additional Arguments"
-msgstr "İlave parametreler"
-
-#: widgets/widgets.php:692
-msgid "Gallery (PB)"
-msgstr "Galeri"
-
-#: widgets/widgets.php:694
-msgid "Displays a gallery."
-msgstr "Bir galeri görüntüler."
-
-#: widgets/widgets.php:733
-msgid "Gallery Images"
-msgstr "Galeri görselleri"
-
-#: widgets/widgets.php:734
-msgid "edit gallery"
-msgstr "galeriyi düzenle"
-
-#: widgets/widgets.php:738
-msgid "Comma separated attachment IDs. Defaults to all current page's attachments."
-msgstr "Virgül ile ayrılmış ek dosya noları. Sayfanın tüm ekleri varsayılan."
-
-#: widgets/widgets.php:742
-msgid "Image Size"
-msgstr "Görsel boyutu"
-
-#: widgets/widgets.php:745
-msgid "Large"
-msgstr "Büyük"
-
-#: widgets/widgets.php:746
-msgid "Medium"
-msgstr "Orta"
-
-#: widgets/widgets.php:747
-msgid "Thumbnail"
-msgstr "Küçük"
-
-#: widgets/widgets.php:748
-msgid "Full"
-msgstr "Tam"
-
-#: widgets/widgets.php:756
-msgid "Gallery Type"
-msgstr "Galeri türü"
-
-#: widgets/widgets.php:761
-msgid "Columns"
-msgstr "Sütunlar"
-
-#: widgets/widgets.php:766
-msgid "Link To"
-msgstr "Bağlantı"
-
-#: inc/default-styles.php:132 inc/default-styles.php:201
-msgid "Parallax"
-msgstr "Parallax"
-
-#: inc/default-styles.php:134 inc/default-styles.php:203
-msgid "How the background image is displayed."
-msgstr "Arka plan görüntüsü nasıl görüntülenir."
-
-#: inc/default-styles.php:139 inc/default-styles.php:208
-msgid "Border Color"
-msgstr "Kenarlık rengi"
-
-#: inc/default-styles.php:142
-msgid "Border color of the row."
-msgstr "Satırın kenarlık rengi"
-
-#: inc/default-styles.php:151
-msgid "Widget Class"
-msgstr "Bileşen sınıfı"
-
-#: inc/default-styles.php:170
-msgid "Padding around the entire widget."
-msgstr "Tüm bileşen etrafındaki dolgu."
-
-#: inc/default-styles.php:181
-msgid "Background color of the widget."
-msgstr "Bileşenin arka plan rengi."
-
-#: inc/default-styles.php:189
-msgid "Background image of the widget."
-msgstr "Bileşenin arka plan görseli."
-
-#: inc/default-styles.php:211
-msgid "Border color of the widget."
-msgstr "Bileşenin kenarlık rengi."
-
-#: inc/default-styles.php:216
-msgid "Font Color"
-msgstr "Font rengi"
-
-#: inc/default-styles.php:219
-msgid "Color of text inside this widget."
-msgstr "Bu bileşen içindeki metnin rengi."
-
-#: inc/plugin-activation.php:7 inc/plugin-activation.php:8
-msgid "Install Page Builder Plugin"
-msgstr "Sayfa yapıcı eklentisini yükle"
-
-#: inc/plugin-activation.php:74
-msgid "Installing %s"
-msgstr "%s yükleniyor"
-
-#: inc/revisions.php:50
-msgid "Page Builder Content"
-msgstr "Sayfa yapıcı içeriği"
-
-#: inc/styles.php:19
-msgid "Row Styles"
-msgstr "Satır stilleri"
-
-#: inc/styles.php:23
-msgid "Widget Styles"
-msgstr "Bileşen stilleri"
-
-#: inc/styles.php:46
-msgid "Attributes"
-msgstr "Nitelikler"
-
-#: inc/styles.php:50 settings/settings.php:225
-msgid "Layout"
-msgstr "Yerleşim"
-
-#: inc/styles.php:54
-msgid "Design"
-msgstr "Tasarım"
-
-#: inc/styles.php:64
-msgid "Theme"
-msgstr "Tema"
-
-#: inc/styles.php:183
-msgid "Select Image"
-msgstr "Görsel seç"
-
-#: inc/styles.php:187
-msgid "Remove"
-msgstr "Kaldır"
-
-#: inc/styles.php:201 settings/settings.php:313
-msgid "Enabled"
-msgstr "Etkinleştrildi"
-
-#: inc/widgets-bundle.php:7
-msgid "SiteOrigin Editor"
-msgstr "SiteOrigin düzenleyicisi"
-
-#: inc/widgets-bundle.php:8
-msgid "A rich text editor"
-msgstr "Zengin metin düzenleyici"
-
-#: inc/widgets-bundle.php:11 inc/widgets-bundle.php:23
-#: inc/widgets-bundle.php:35 inc/widgets-bundle.php:47
-#: inc/widgets-bundle.php:59 inc/widgets-bundle.php:71 inc/widgets.php:106
-msgid "SiteOrigin Widgets Bundle"
-msgstr "SiteOrigin bileşenleri paketi"
-
-#: inc/widgets-bundle.php:19
-msgid "SiteOrigin Button"
-msgstr "SiteOrigin düğmesi"
-
-#: inc/widgets-bundle.php:20 widgets/widgets/button/button.php:8
-msgid "A simple button"
-msgstr "Basit bir düğme"
-
-#: inc/widgets-bundle.php:31
-msgid "SiteOrigin Image"
-msgstr "SiteOrigin görseli"
-
-#: inc/widgets-bundle.php:32
-msgid "Choose images from your media library."
-msgstr "Ortam kütüphanenizden görsel seçin."
-
-#: inc/widgets-bundle.php:43
-msgid "SiteOrigin Slider"
-msgstr "SiteOrigin slayt göstericisi"
-
-#: inc/widgets-bundle.php:44
-msgid "A basic slider widget."
-msgstr "Basit bir slayt gösterici bileşen."
-
-#: inc/widgets-bundle.php:55
-msgid "SiteOrigin Features"
-msgstr "SiteOrigin özellikleri"
-
-#: inc/widgets-bundle.php:56
-msgid "Display site features as a collection of icons."
-msgstr "Site özelliklerini ikon koleksiyonu olarak göster."
-
-#: inc/widgets.php:84
-msgid "Widgets Bundle"
-msgstr "Bileşenler paketi"
-
-#: inc/widgets.php:99
-msgid "Enable more widgets in the 1{Widgets Bundle settings}."
-msgstr "1{Widgets Bundle settings} içinden daha fazla bileşeni etkinleştir."
-
-#: inc/widgets.php:107
-msgid "Install the 1{Widgets Bundle} to get extra widgets."
-msgstr "İlave bileşenleri almak için 1{Widgets Bundle} yükleyin."
-
-#: inc/widgets.php:112
-msgid "Page Builder Widgets"
-msgstr "Sayfa yapıcı bileşenleri"
-
-#: inc/widgets.php:120
-msgid "You can enable the legacy (PB) widgets in the 1{Page Builder settings}."
-msgstr "1{Page Builder settings} içinden eski bileşenleri etkinleştirebilirsiniz."
-
-#: inc/widgets.php:128
-msgid "WordPress Widgets"
-msgstr "WordPress bileşenleri"
-
-#. TRANSLATORS: The name of WordPress plugin
-#: inc/widgets.php:138
-msgid "WooCommerce"
-msgstr "WooCommerce"
-
-#. TRANSLATORS: The name of WordPress plugin
-#: inc/widgets.php:149
-msgid "Jetpack"
-msgstr "Jetpack"
-
-#. TRANSLATORS: The name of WordPress plugin
-#: inc/widgets.php:160
-msgid "BBPress"
-msgstr "bbPress"
-
-#: inc/widgets.php:168 settings/settings.php:218
-msgid "Recommended Widgets"
-msgstr "Tavsiye edilen bileşenler"
-
-#: settings/settings.php:146 settings/tpl/settings.php:9 tpl/options.php:5
-msgid "SiteOrigin Page Builder"
-msgstr "SiteOrigin site yapıcı"
-
-#: settings/settings.php:146 siteorigin-panels.php:110
-#: siteorigin-panels.php:516 tpl/js-templates.php:160
-msgid "Page Builder"
-msgstr "Sayfa yapıcı"
-
-#: settings/settings.php:170
-msgid "Page Builder Settings"
-msgstr "Sayfa yapıcı ayarları"
-
-#: settings/settings.php:186 tpl/options.php:11
-msgid "General"
-msgstr "Genel"
-
-#: settings/settings.php:192 tpl/options.php:15
-msgid "Post Types"
-msgstr "Yazı tipleri"
-
-#: settings/settings.php:194
-msgid "The post types to use Page Builder on."
-msgstr "Sayfa yapıcının kullanılacağı yazı tipleri."
-
-#: settings/settings.php:200
-msgid "Widgets"
-msgstr "Bileşenler"
-
-#: settings/settings.php:206
-msgid "Widget Title HTML"
-msgstr "Bileşen başlığı HTML"
-
-#: settings/settings.php:207
-msgid "The HTML used for widget titles. {{title}} is replaced with the widget title."
-msgstr "Bileşen başlıkları için kullanılan HTML. {{title}} bileşen başlığı içe değiştirilecek."
-
-#: settings/settings.php:212
-msgid "Legacy Bundled Widgets"
-msgstr "Eski paketlenmiş bileşenler"
-
-#: settings/settings.php:213
-msgid "Load legacy widgets from Page Builder 1."
-msgstr "Sayfa yapıcıdan eski bileşenleri yükle."
-
-#: settings/settings.php:219
-msgid "Display recommend widgets in Page Builder add widget dialog."
-msgstr "Sayfa yapıcı yeni bileşen ekleme penceresinde tavsiye edilen bileşenleri görüntüle."
-
-#: settings/settings.php:233 tpl/options.php:57
-msgid "Responsive Layout"
-msgstr "Duyarlı düzen"
-
-#: settings/settings.php:234
-msgid "Collapse widgets, rows and columns on mobile devices."
-msgstr "Mobil cihazlarda bileşenleri, satırları ve sütunları kapat."
-
-#: settings/settings.php:240 tpl/options.php:64
-msgid "Mobile Width"
-msgstr "Mobil genişliği"
-
-#: settings/settings.php:241
-msgid "Device width, in pixels, to collapse into a mobile view ."
-msgstr "Piksel olarak mobil görünüme geçilecek olan cihaz genişliği."
-
-#: settings/settings.php:247 tpl/options.php:70
-msgid "Row Bottom Margin"
-msgstr "Satır alt boşluğu"
-
-#: settings/settings.php:248
-msgid "Default margin below rows."
-msgstr "Satırların altındaki varsayılan boşluk."
-
-#: settings/settings.php:254
-msgid "Row Gutter"
-msgstr "Satırlar arasındaki boşluk"
-
-#: settings/settings.php:255
-msgid "Default spacing between columns in each row."
-msgstr "Her satırda sütunlar arasındaki varsayılan boşluk."
-
-#: settings/settings.php:261
-msgid "Full Width Container"
-msgstr "Tam genişlikteki kapsayıcı"
-
-#: settings/settings.php:262
-msgid "The container used for the full width layout."
-msgstr "Tam genişlikteki yerleşim için kullanılan kapsayıcı."
-
-#: settings/settings.php:269
-msgid "Content"
-msgstr "İçerik"
-
-#: settings/settings.php:275 tpl/options.php:25
-msgid "Copy Content"
-msgstr "İçeriği kopyala"
-
-#: settings/settings.php:276
-msgid "Copy content from Page Builder to post content."
-msgstr "Sayfa yapıcıdan yazıya içeriği kopyala."
-
-#: settings/tpl/help.php:6
-msgid "Please read the 1{settings guide} of the Page Builder documentation for help."
-msgstr "Yardım için lütfen sayfa yapıcı belgelendirmesinin 1{settings guide} kısmını okuyun."
-
-#: settings/tpl/settings.php:12
-msgid "Search Settings"
-msgstr "Ayarları ara"
-
-#: settings/tpl/settings.php:29
-msgid "Settings Saved"
-msgstr "Ayarlar kaydedildi"
-
-#: settings/tpl/settings.php:78 tpl/options.php:93
-msgid "Save Settings"
-msgstr "Ayarları kaydet"
-
-#: siteorigin-panels.php:75
-msgid "Custom Home Page Builder"
-msgstr "Özel ana sayfa yapıcı"
-
-#. TRANSLATORS: This is the default name given to a user's home page
-#: siteorigin-panels.php:76 siteorigin-panels.php:136
-msgid "Home Page"
-msgstr "Ana Sayfa"
-
-#: siteorigin-panels.php:284
-msgid "All Widgets"
-msgstr "Tüm bileşenler"
-
-#: siteorigin-panels.php:308
-msgid "Missing Widget"
-msgstr "Kayıp bileşen"
-
-#: siteorigin-panels.php:309
-msgid "Page Builder doesn't know about this widget."
-msgstr "Sayfa yapıcı bu bileşen hakkında birşey bilmiyor."
-
-#. TRANSLATORS: Number of seconds since
-#: siteorigin-panels.php:313
-msgid "%d seconds"
-msgstr "%d saniye"
-
-#. TRANSLATORS: Number of minutes since
-#: siteorigin-panels.php:315
-msgid "%d minutes"
-msgstr "%d dakika"
-
-#. TRANSLATORS: Number of hours since
-#: siteorigin-panels.php:317
-msgid "%d hours"
-msgstr "%d saat"
-
-#. TRANSLATORS: A single second since
-#: siteorigin-panels.php:320
-msgid "%d second"
-msgstr "%d saniye"
-
-#. TRANSLATORS: A single minute since
-#: siteorigin-panels.php:322
-msgid "%d minute"
-msgstr "%d dakika"
-
-#. TRANSLATORS: A single hour since
-#: siteorigin-panels.php:324
-msgid "%d hour"
-msgstr "%d saat"
-
-#. TRANSLATORS: Time ago - eg. "1 minute before".
-#: siteorigin-panels.php:327
-msgid "%s before"
-msgstr "%s önce"
-
-#: siteorigin-panels.php:328
-msgid "Now"
-msgstr "Şuan"
-
-#: siteorigin-panels.php:332
-msgid "Current"
-msgstr "Mevcut"
-
-#: siteorigin-panels.php:333
-msgid "Original"
-msgstr "Orijinal"
-
-#: siteorigin-panels.php:334
-msgid "Version restored"
-msgstr "Geri yüklenen sürüm"
-
-#: siteorigin-panels.php:335
-msgid "Converted to editor"
-msgstr "Düzenleyiciye dönüştürüldü"
-
-#. TRANSLATORS: Message displayed in the history when a widget is deleted
-#: siteorigin-panels.php:339
-msgid "Widget deleted"
-msgstr "Bileşen silindi"
-
-#. TRANSLATORS: Message displayed in the history when a widget is added
-#: siteorigin-panels.php:341
-msgid "Widget added"
-msgstr "Bileşen eklendi"
-
-#. TRANSLATORS: Message displayed in the history when a widget is edited
-#: siteorigin-panels.php:343
-msgid "Widget edited"
-msgstr "Bileşen düzenlendi"
-
-#. TRANSLATORS: Message displayed in the history when a widget is duplicated
-#: siteorigin-panels.php:345
-msgid "Widget duplicated"
-msgstr "Bileşen koplayalandı"
-
-#. TRANSLATORS: Message displayed in the history when a widget position is
-#. changed
-#: siteorigin-panels.php:347
-msgid "Widget moved"
-msgstr "Bileşen taşındı"
-
-#. TRANSLATORS: Message displayed in the history when a row is deleted
-#: siteorigin-panels.php:351
-msgid "Row deleted"
-msgstr "Satır silindi"
-
-#. TRANSLATORS: Message displayed in the history when a row is added
-#: siteorigin-panels.php:353
-msgid "Row added"
-msgstr "Satır eklendi"
-
-#. TRANSLATORS: Message displayed in the history when a row is edited
-#: siteorigin-panels.php:355
-msgid "Row edited"
-msgstr "Satır düzenlendi"
-
-#. TRANSLATORS: Message displayed in the history when a row position is changed
-#: siteorigin-panels.php:357
-msgid "Row moved"
-msgstr "Satır taşındı"
-
-#. TRANSLATORS: Message displayed in the history when a row is duplicated
-#: siteorigin-panels.php:359
-msgid "Row duplicated"
-msgstr "Satır kopyalandı"
-
-#: siteorigin-panels.php:362
-msgid "Cell resized"
-msgstr "Hücre yeniden boyutlandırıldı"
-
-#: siteorigin-panels.php:365
-msgid "Prebuilt layout loaded"
-msgstr "Ön tanımlı yerleşim yüklendi"
-
-#: siteorigin-panels.php:369
-msgid "Are you sure you want to overwrite your current content? This can be undone in the builder history."
-msgstr "Mevcut içeriğinizin üstüne yazmak istediğinize emin misiniz? Bu yapıcı geçmişinden de geri alınamaz."
-
-#: siteorigin-panels.php:370
-msgid "Loading prebuilt layout"
-msgstr "Ön tanımlı yerleşim yükleniyor"
-
-#: siteorigin-panels.php:371
-msgid "Would you like to copy this editor's existing content to Page Builder?"
-msgstr "Bu düzenleyicinin mevcut içeriğini sayfa yapıcıya kopyalamak ister misiniz?"
-
-#: siteorigin-panels.php:372
-msgid "Would you like to clear your Page Builder content and revert to using the standard visual editor?"
-msgstr "Sayfa yapıcı içeriğinizi silip standart görsel düzenleyiciyi kullanmak ister misiniz?"
-
-#. TRANSLATORS: This is the title for a widget called "Layout Builder"
-#: siteorigin-panels.php:374
-msgid "Layout Builder Widget"
-msgstr "Yerleşim yapıcı bileşen"
-
-#. TRANSLATORS: A standard confirmation message
-#: siteorigin-panels.php:376 tpl/js-templates.php:85
-msgid "Are you sure?"
-msgstr "Emin misiniz?"
-
-#: siteorigin-panels.php:377
-msgid "Search Results For: "
-msgstr "Arama sonuçları:"
-
-#: siteorigin-panels.php:381
-msgid "Add Widget Below"
-msgstr "Alta bileşen ekle"
-
-#: siteorigin-panels.php:382
-msgid "Add Widget to Cell"
-msgstr "Hücreye bileşen ekle"
-
-#: siteorigin-panels.php:383 tpl/js-templates.php:187
-msgid "Search Widgets"
-msgstr "Bileşenleri ara"
-
-#: siteorigin-panels.php:385 tpl/js-templates.php:17
-msgid "Add Row"
-msgstr "Satır ekle"
-
-#: siteorigin-panels.php:386
-msgid "Column"
-msgstr "Sütun"
-
-#: siteorigin-panels.php:394
-msgid "Page Builder layouts"
-msgstr "Sayfa yapıcı yerleşimleri"
-
-#: siteorigin-panels.php:395
-msgid "Error uploading or importing file."
-msgstr "Dosya yüklemede veya içe aktarmada hata."
-
-#: siteorigin-panels.php:442
-msgid "Untitled Widget"
-msgstr "Başlıksız bileşen"
-
-#: siteorigin-panels.php:834
-msgid "Read More"
-msgstr "Devamını oku"
-
-#: siteorigin-panels.php:1207
-msgid "Edit Home Page"
-msgstr "Ana sayfayı düzenle"
-
-#: siteorigin-panels.php:1299
-msgid "You need to install 1{%1$s} to use the widget 2{%2$s}."
-msgstr "2{%2$s} bileşenini kullanmak için 1{%1$s} yüklemelisiniz."
-
-#: siteorigin-panels.php:1305
-msgid "Save and reload this page to start using the widget after you've installed it."
-msgstr "Bileşeni yükledikten sonra kullanmak için bu sayfayı kaydedin ve yenileyin."
-
-#: siteorigin-panels.php:1322
-msgid "The widget 1{%1$s} is not available. Please try locate and install the missing plugin. Post on the 2{support forums} if you need help."
-msgstr "1{%1$s} bileşeni mevcut değil. Lütfen kayıp eklentinin yerini tespit edin. Yardıma ihtiyacınız varsa 2{support forums} mesaj gönderin."
-
-#: siteorigin-panels.php:1389
-msgid "Support Forum"
-msgstr "Destek,forumu"
-
-#: siteorigin-panels.php:1390
-msgid "Newsletter"
-msgstr "Haber bülteni"
-
-#: tpl/admin-home-page.php:9
-msgid "On"
-msgstr "Açık"
-
-#: tpl/admin-home-page.php:9
-msgid "Off"
-msgstr "Kapalı"
-
-#: tpl/admin-home-page.php:13
-msgid "Custom Home Page"
-msgstr "Özel ana sayfa"
-
-#: tpl/admin-home-page.php:29
-msgid "Home page updated. 1{View page}."
-msgstr "Ana sayfa güncellendin. 1{View page}."
-
-#: tpl/admin-home-page.php:46
-msgid "Save Home Page"
-msgstr "Ana sayfayı kaydet"
-
-#: tpl/admin-home-page.php:50
-msgid "This interface requires Javascript"
-msgstr "Bu ara yüz javascript gerektirir."
-
-#: tpl/help.php:18
-msgid "Read the 1{full documentation} on SiteOrigin. Ask a question on our 2{support forum} if you need help and sign up to 3{our newsletter} to stay up to date with future developments."
-msgstr "1{full documentation} SiteOrigin üzerinden okuyun. Yardıma ihtiyacınız varsa 2{support forum} üzerinden bize soru sorabilirsiniz ve 3{our newsletter} kayıt olarak gelecek geliştirmelerden haberdar olabilirsiniz."
-
-#: tpl/js-templates.php:12
-msgid "Add Widget"
-msgstr "Bileşen ekle"
-
-#: tpl/js-templates.php:22
-msgid "Prebuilt"
-msgstr "Önceden hazırlanmış"
-
-#: tpl/js-templates.php:29
-msgid "History"
-msgstr "Geçmiş"
-
-#: tpl/js-templates.php:34
-msgid "Live Editor"
-msgstr "Canlı düzenleyici"
-
-#: tpl/js-templates.php:39
-msgid "Switch to Editor"
-msgstr "Düzenleyiciye geç"
+#: widgets/widgets/animated-image/animated-image.php:25
+msgid "Slide Right"
+msgstr "Sağa kaydır"
+
+#: widgets/widgets/animated-image/animated-image.php:24
+msgid "Slide Left"
+msgstr "Sola kaydır"
+
+#: widgets/widgets/animated-image/animated-image.php:23
+msgid "Slide Down"
+msgstr "Aşağı kaydır"
+
+#: widgets/widgets/animated-image/animated-image.php:22
+msgid "Slide Up"
+msgstr "Yukarı kaydır"
+
+#: widgets/widgets/animated-image/animated-image.php:21
+msgid "Fade In"
+msgstr "Yavaşça göster"
+
+#: widgets/widgets/animated-image/animated-image.php:19
+msgid "Animation"
+msgstr "Animasyon"
+
+#: widgets/widgets/animated-image/animated-image.php:15 widgets/widgets.php:822
+msgid "Image URL"
+msgstr "Görsel URL"
+
+#: widgets/widgets/animated-image/animated-image.php:8
+msgid "An image that animates in when it enters the screen."
+msgstr "Ekrana girdiğinde hareket eden bir imaj."
+
+#: widgets/widgets/animated-image/animated-image.php:6
+msgid "Animated Image (PB)"
+msgstr "Animasyonlu görsel "
+
+#: widgets/basic.php:477 widgets/widgets.php:635
+msgid "Additional query arguments. See 1{query_posts}."
+msgstr "İlave sorgu parametreleri. 1{query_posts} bağlantısına bakın."
+
+#: widgets/basic.php:470
+msgid "Additional "
+msgstr "İlave"
+
+#: widgets/basic.php:465 widgets/widgets.php:625
+msgid "Only Sticky"
+msgstr "Sadece yapışkan yazı"
+
+#: widgets/basic.php:464 widgets/widgets.php:624
+msgid "Exclude Sticky"
+msgstr "Yapışkan yazıyı hariç tut"
+
+#: widgets/basic.php:463 widgets/widgets.php:623
+msgid "Ignore Sticky"
+msgstr "Yapışkan yazıyı yoksay"
+
+#: widgets/basic.php:462 widgets/widgets.php:622 widgets/widgets.php:744
+msgid "Default"
+msgstr "Varsayılan"
+
+#: widgets/basic.php:460 widgets/widgets.php:620
+msgid "Sticky Posts"
+msgstr "Yapışkan yazılar"
+
+#: widgets/basic.php:455 widgets/widgets.php:613
+msgid "Ascending"
+msgstr "Artan"
+
+#: widgets/basic.php:454 widgets/widgets.php:614
+msgid "Descending"
+msgstr "Azalan"
+
+#: widgets/basic.php:452 widgets/widgets.php:611
+msgid "Order"
+msgstr "Sıra"
+
+#: widgets/basic.php:447
+msgid "Post In Order"
+msgstr "Sıralı yazı"
+
+#: widgets/basic.php:446 widgets/widgets.php:605
+msgid "Menu Order"
+msgstr "Menü sırası"
+
+#: widgets/basic.php:445 widgets/widgets.php:604
+msgid "Comment Count"
+msgstr "Yorum sayısı"
+
+#: widgets/basic.php:444 widgets/widgets.php:603
+msgid "Random"
+msgstr "Rastgele"
+
+#: widgets/basic.php:443 widgets/widgets.php:602
+msgid "Parent"
+msgstr "Ebeveyn"
+
+#: widgets/basic.php:442 widgets/widgets.php:601
+msgid "Modified"
+msgstr "Değiştirilmiş"
+
+#: widgets/basic.php:441 widgets/widgets.php:600
+msgid "Date"
+msgstr "Tarih"
+
+#: widgets/basic.php:439 widgets/basic.php:440
+#: widgets/widgets/testimonial/testimonial.php:15 widgets/widgets.php:598
+#: widgets/widgets.php:599
+msgid "Name"
+msgstr "İsim"
+
+#: widgets/basic.php:438 widgets/widgets.php:597
+msgid "Author"
+msgstr "Yazar"
+
+#: widgets/basic.php:437 widgets/widgets.php:596
+msgid "Post ID"
+msgstr "Yazı no"
+
+#: widgets/basic.php:434 widgets/widgets.php:593
+msgid "Order By"
+msgstr "Sırala"
+
+#: widgets/basic.php:429 widgets/widgets.php:588
+msgid "Posts Per Page"
+msgstr "Sayfa başına yazı"
+
+#: widgets/basic.php:420 widgets/widgets.php:581
+msgid "Post Type"
+msgstr "Yazı tipi"
+
+#: widgets/basic.php:386
+msgid "If the template supports it, cut posts and display the more link."
+msgstr "Eğer şablon desteklerse yazıyı keser ve daha fazla bağlantısını gösterir."
+
+#: widgets/basic.php:384
+msgid "More Link "
+msgstr "Daha fazla bağlantısı"
+
+#: widgets/basic.php:368
+msgid "Template"
+msgstr "Şablon"
+
+#: widgets/basic.php:358
+msgid "Your theme doesn't have any post loops."
+msgstr "Temanızda hiç bir yazı döngüsü yok."
+
+#: widgets/basic.php:159
+msgid "Displays a post loop."
+msgstr "Yazı döngüsünü görüntüler."
+
+#: widgets/basic.php:157
+msgid "Post Loop"
+msgstr "Yazı döngüsü"
+
+#: widgets/basic.php:137
+msgid "Display Content"
+msgstr "İçeriği görüntüle"
+
+#: widgets/basic.php:132
+msgid "Featured Image"
+msgstr "Öne çıkan görsel"
+
+#: widgets/basic.php:131 widgets/basic.php:364
+#: widgets/widgets/call-to-action/call-to-action.php:15
+#: widgets/widgets/list/list.php:15 widgets/widgets/price-box/price-box.php:15
+msgid "Title"
+msgstr "Başlık"
+
+#: widgets/basic.php:130 widgets/basic.php:436 widgets/widgets.php:595
+#: widgets/widgets.php:770
+msgid "None"
+msgstr "Hiçbiri"
+
+#: widgets/basic.php:84
+msgid "Displays content from the current post."
+msgstr "Şuan ki yazıdan özellik gösterir."
+
+#: widgets/basic.php:82
+msgid "Post Content"
+msgstr "Yazı içeriği"
+
+#: widgets/basic.php:53
+msgid "Open Builder"
+msgstr "Yapıcıyı aç"
+
+#: widgets/basic.php:15
+msgid "A complete SiteOrigin Page Builder layout as a widget."
+msgstr "Bileşen olarak tam bir SiteOrigin sayfa yapıcı."
+
+#. TRANSLATORS: This is the name of a widget
+#: widgets/basic.php:13
+msgid "Layout Builder"
+msgstr "Yerleşim yapıcı"
+
+#: tpl/options.php:82
+msgid "Inline CSS"
+msgstr "Satır içi CSS"
+
+#: tpl/options.php:76
+msgid "Cell Side Margins"
+msgstr "Hücre kenar boşlukları"
+
+#: tpl/options.php:58
+msgid "Should the layout collapse for mobile devices."
+msgstr "Mobil cihazlar için yerleşim kapanmalı mı?"
+
+#: tpl/options.php:48
+msgid "Display"
+msgstr "Görüntüle"
+
+#: tpl/options.php:40
+msgid "Include the bundled widgets."
+msgstr "Paketlenmiş bileşenleri dahil et."
+
+#: tpl/options.php:39
+msgid "Bundled Widgets"
+msgstr "Paketlenmiş bileşenler"
+
+#: tpl/options.php:33
+msgid "Disable animations for improved performance."
+msgstr "İyileştirilmiş performans için animasyonları iptal et."
+
+#: tpl/options.php:32
+msgid "Animations"
+msgstr "Animasyonlar"
+
+#: tpl/options.php:26
+msgid "Copy content from Page Builder into the standard content editor."
+msgstr "Sayfa Yapıcıdan standart içerik düzenleyicisinin içine içeriği kopyala."
+
+#: tpl/js-templates.php:560
+msgid "No Results"
+msgstr "Sonuç yok"
+
+#: tpl/js-templates.php:512
+msgid "Close Live Editor"
+msgstr "Canlı düzenleyiciyi kapat"
+
+#: tpl/js-templates.php:487
+msgid "Restore Version"
+msgstr "Sürümü geri yükle"
+
+#: tpl/js-templates.php:473
+msgid "Page Builder Change History"
+msgstr "Sayfa Yapıcı değişiklik geçmişi"
+
+#: tpl/js-templates.php:452
+msgid "Download Layout"
+msgstr "Yerleşimi indirin"
+
+#: tpl/js-templates.php:440
+msgid "Select Import File"
+msgstr "İçeri aktarılacak dosyayı seçin"
+
+#: tpl/js-templates.php:437
+msgid "Or"
+msgstr "veya"
+
+#: tpl/js-templates.php:436
+msgid "Drop import file here"
+msgstr "İçe aktarım dosyasını buraya bırakın"
+
+#: tpl/js-templates.php:426
+msgid "Next"
+msgstr "Sonraki"
+
+#: tpl/js-templates.php:425
+msgid "Previous"
+msgstr "Önceki"
+
+#: tpl/js-templates.php:398
+msgid "Your search didn't return any results"
+msgstr "Aramanız herhangi bir sonuç döndermedi"
+
+#: tpl/js-templates.php:392
+msgid "Newest Layouts"
+msgstr "En yeni yerleşimler"
+
+#: tpl/js-templates.php:384
+msgid "Enable"
+msgstr "Etkinleştir"
+
+#: tpl/js-templates.php:383
+msgid "Do you want to browse the Prebuilt Layouts directory?"
+msgstr "Ön tanımlı yerleşim dizinini görüntülemek ister misiniz?"
+
+#: tpl/js-templates.php:365
+msgid "Clone: %s"
+msgstr "Kopya: %s"
+
+#: tpl/js-templates.php:359
+msgid "Import/Export"
+msgstr "İçe aktar / Dışa aktar"
+
+#: tpl/js-templates.php:358
+msgid "Layouts Directory"
+msgstr "Yerleşim dizini"
+
+#: tpl/js-templates.php:355
+msgid "Theme Defined"
+msgstr "Tema tanımlı"
+
+#: tpl/js-templates.php:351
+msgid "Search"
+msgstr "Ara"
+
+#: tpl/js-templates.php:347
+msgid "Prebuilt Layouts"
+msgstr "Ön tanımlı yerleşimler"
+
+#: tpl/js-templates.php:329
+msgid "Save"
+msgstr "Kaydet"
+
+#: tpl/js-templates.php:327
+msgid "Insert"
+msgstr "Ekle"
+
+#: tpl/js-templates.php:308
+msgid "Set"
+msgstr "Ayarla"
+
+#: tpl/js-templates.php:291
+msgid "Right to Left"
+msgstr "Sağdan sola"
+
+#: tpl/js-templates.php:290
+msgid "Left to Right"
+msgstr "Soldan sağa"
+
+#: tpl/js-templates.php:254
+msgid "Add New Row"
+msgstr "Yeni satır ekle"
+
+#: tpl/js-templates.php:199
+msgid "Close"
+msgstr "Kapat"
+
+#: tpl/js-templates.php:183
+msgid "Add New Widget %s"
+msgstr "Yeni bileşen ekle %s"
+
+#: tpl/js-templates.php:169 tpl/js-templates.php:234
+msgid "Done"
+msgstr "Bitti"
+
+#: tpl/js-templates.php:115 tpl/js-templates.php:230 tpl/js-templates.php:321
+msgid "Delete"
+msgstr "Sil"
+
+#: tpl/js-templates.php:114 tpl/js-templates.php:231 tpl/js-templates.php:322
+msgid "Duplicate"
+msgstr "Kopyala"
+
+#: tpl/js-templates.php:113
+msgid "Edit"
+msgstr "Düzenle"
+
+#: tpl/js-templates.php:85
+msgid "Delete Row"
+msgstr "Satırı sil"
+
+#: tpl/js-templates.php:84
+msgid "Duplicate Row"
+msgstr "Satırı kopyala"
+
+#: tpl/js-templates.php:83 tpl/js-templates.php:256
+msgid "Edit Row"
+msgstr "Satırı düzenle"
 
 #. TRANSLATORS: This message gives suggestions of next steps for the user
 #. x{...} is used to insert links
@@ -1065,266 +647,685 @@ msgstr "Düzenleyiciye geç"
 msgid "Add a 1{widget}, 2{row} or 3{prebuilt layout} to get started. Read our 4{documentation} if you need help."
 msgstr "Başlamak için bir 1{widget}, 2{row} veya 3{prebuilt layout} ekleyin. Eğer yardıma ihtiyacınız varsa, 4{documentation} okuyabilirsiniz."
 
-#: tpl/js-templates.php:83 tpl/js-templates.php:256
-msgid "Edit Row"
-msgstr "Satırı düzenle"
+#: tpl/js-templates.php:39
+msgid "Switch to Editor"
+msgstr "Düzenleyiciye geç"
 
-#: tpl/js-templates.php:84
-msgid "Duplicate Row"
-msgstr "Satırı kopyala"
+#: tpl/js-templates.php:34
+msgid "Live Editor"
+msgstr "Canlı düzenleyici"
 
-#: tpl/js-templates.php:85
-msgid "Delete Row"
-msgstr "Satırı sil"
+#: tpl/js-templates.php:29
+msgid "History"
+msgstr "Geçmiş"
 
-#: tpl/js-templates.php:113
-msgid "Edit"
-msgstr "Düzenle"
+#: tpl/js-templates.php:22
+msgid "Prebuilt"
+msgstr "Önceden hazırlanmış"
 
-#: tpl/js-templates.php:114 tpl/js-templates.php:231 tpl/js-templates.php:322
-msgid "Duplicate"
-msgstr "Kopyala"
+#: tpl/js-templates.php:12
+msgid "Add Widget"
+msgstr "Bileşen ekle"
 
-#: tpl/js-templates.php:115 tpl/js-templates.php:230 tpl/js-templates.php:321
-msgid "Delete"
-msgstr "Sil"
+#: tpl/help.php:18
+msgid "Read the 1{full documentation} on SiteOrigin. Ask a question on our 2{support forum} if you need help and sign up to 3{our newsletter} to stay up to date with future developments."
+msgstr "1{full documentation} SiteOrigin üzerinden okuyun. Yardıma ihtiyacınız varsa 2{support forum} üzerinden bize soru sorabilirsiniz ve 3{our newsletter} kayıt olarak gelecek geliştirmelerden haberdar olabilirsiniz."
 
-#: tpl/js-templates.php:169 tpl/js-templates.php:234
-msgid "Done"
-msgstr "Bitti"
+#: tpl/admin-home-page.php:50
+msgid "This interface requires Javascript"
+msgstr "Bu ara yüz javascript gerektirir."
 
-#: tpl/js-templates.php:183
-msgid "Add New Widget %s"
-msgstr "Yeni bileşen ekle %s"
+#: tpl/admin-home-page.php:46
+msgid "Save Home Page"
+msgstr "Ana sayfayı kaydet"
 
-#: tpl/js-templates.php:199
-msgid "Close"
-msgstr "Kapat"
+#: tpl/admin-home-page.php:29
+msgid "Home page updated. 1{View page}."
+msgstr "Ana sayfa güncellendin. 1{View page}."
 
-#: tpl/js-templates.php:254
-msgid "Add New Row"
-msgstr "Yeni satır ekle"
+#: tpl/admin-home-page.php:13
+msgid "Custom Home Page"
+msgstr "Özel ana sayfa"
 
-#: tpl/js-templates.php:290
-msgid "Left to Right"
-msgstr "Soldan sağa"
+#: tpl/admin-home-page.php:9
+msgid "Off"
+msgstr "Kapalı"
 
-#: tpl/js-templates.php:291
-msgid "Right to Left"
-msgstr "Sağdan sola"
+#: tpl/admin-home-page.php:9
+msgid "On"
+msgstr "Açık"
 
-#: tpl/js-templates.php:308
-msgid "Set"
-msgstr "Ayarla"
+#: siteorigin-panels.php:1390
+msgid "Newsletter"
+msgstr "Haber bülteni"
 
-#: tpl/js-templates.php:327
-msgid "Insert"
-msgstr "Ekle"
+#: siteorigin-panels.php:1389
+msgid "Support Forum"
+msgstr "Destek,forumu"
 
-#: tpl/js-templates.php:329
-msgid "Save"
-msgstr "Kaydet"
+#: siteorigin-panels.php:1322
+msgid "The widget 1{%1$s} is not available. Please try locate and install the missing plugin. Post on the 2{support forums} if you need help."
+msgstr "1{%1$s} bileşeni mevcut değil. Lütfen kayıp eklentinin yerini tespit edin. Yardıma ihtiyacınız varsa 2{support forums} mesaj gönderin."
 
-#: tpl/js-templates.php:347
-msgid "Prebuilt Layouts"
-msgstr "Ön tanımlı yerleşimler"
+#: siteorigin-panels.php:1305
+msgid "Save and reload this page to start using the widget after you've installed it."
+msgstr "Bileşeni yükledikten sonra kullanmak için bu sayfayı kaydedin ve yenileyin."
 
-#: tpl/js-templates.php:351
-msgid "Search"
-msgstr "Ara"
+#: siteorigin-panels.php:1299
+msgid "You need to install 1{%1$s} to use the widget 2{%2$s}."
+msgstr "2{%2$s} bileşenini kullanmak için 1{%1$s} yüklemelisiniz."
 
-#: tpl/js-templates.php:355
-msgid "Theme Defined"
-msgstr "Tema tanımlı"
+#: siteorigin-panels.php:1207
+msgid "Edit Home Page"
+msgstr "Ana sayfayı düzenle"
 
-#: tpl/js-templates.php:358
-msgid "Layouts Directory"
-msgstr "Yerleşim dizini"
+#: siteorigin-panels.php:834
+msgid "Read More"
+msgstr "Devamını oku"
 
-#: tpl/js-templates.php:359
-msgid "Import/Export"
-msgstr "İçe aktar / Dışa aktar"
+#: siteorigin-panels.php:442
+msgid "Untitled Widget"
+msgstr "Başlıksız bileşen"
 
-#: tpl/js-templates.php:365
-msgid "Clone: %s"
-msgstr "Kopya: %s"
+#: siteorigin-panels.php:395
+msgid "Error uploading or importing file."
+msgstr "Dosya yüklemede veya içe aktarmada hata."
 
-#: tpl/js-templates.php:383
-msgid "Do you want to browse the Prebuilt Layouts directory?"
-msgstr "Ön tanımlı yerleşim dizinini görüntülemek ister misiniz?"
+#: siteorigin-panels.php:394
+msgid "Page Builder layouts"
+msgstr "Sayfa yapıcı yerleşimleri"
 
-#: tpl/js-templates.php:384
-msgid "Enable"
-msgstr "Etkinleştir"
+#: siteorigin-panels.php:386
+msgid "Column"
+msgstr "Sütun"
 
-#: tpl/js-templates.php:392
-msgid "Newest Layouts"
-msgstr "En yeni yerleşimler"
+#: siteorigin-panels.php:385 tpl/js-templates.php:17
+msgid "Add Row"
+msgstr "Satır ekle"
 
-#: tpl/js-templates.php:398
-msgid "Your search didn't return any results"
-msgstr "Aramanız herhangi bir sonuç döndermedi"
+#: siteorigin-panels.php:383 tpl/js-templates.php:187
+msgid "Search Widgets"
+msgstr "Bileşenleri ara"
 
-#: tpl/js-templates.php:425
-msgid "Previous"
-msgstr "Önceki"
+#: siteorigin-panels.php:382
+msgid "Add Widget to Cell"
+msgstr "Hücreye bileşen ekle"
 
-#: tpl/js-templates.php:426
-msgid "Next"
-msgstr "Sonraki"
+#: siteorigin-panels.php:381
+msgid "Add Widget Below"
+msgstr "Alta bileşen ekle"
 
-#: tpl/js-templates.php:436
-msgid "Drop import file here"
-msgstr "İçe aktarım dosyasını buraya bırakın"
+#: siteorigin-panels.php:377
+msgid "Search Results For: "
+msgstr "Arama sonuçları:"
 
-#: tpl/js-templates.php:437
-msgid "Or"
-msgstr "veya"
+#. TRANSLATORS: A standard confirmation message
+#: siteorigin-panels.php:376 tpl/js-templates.php:85
+msgid "Are you sure?"
+msgstr "Emin misiniz?"
 
-#: tpl/js-templates.php:440
-msgid "Select Import File"
-msgstr "İçeri aktarılacak dosyayı seçin"
+#. TRANSLATORS: This is the title for a widget called "Layout Builder"
+#: siteorigin-panels.php:374
+msgid "Layout Builder Widget"
+msgstr "Yerleşim yapıcı bileşen"
 
-#: tpl/js-templates.php:452
-msgid "Download Layout"
-msgstr "Yerleşimi indirin"
+#: siteorigin-panels.php:372
+msgid "Would you like to clear your Page Builder content and revert to using the standard visual editor?"
+msgstr "Sayfa yapıcı içeriğinizi silip standart görsel düzenleyiciyi kullanmak ister misiniz?"
 
-#: tpl/js-templates.php:473
-msgid "Page Builder Change History"
-msgstr "Sayfa Yapıcı değişiklik geçmişi"
+#: siteorigin-panels.php:371
+msgid "Would you like to copy this editor's existing content to Page Builder?"
+msgstr "Bu düzenleyicinin mevcut içeriğini sayfa yapıcıya kopyalamak ister misiniz?"
 
-#: tpl/js-templates.php:487
-msgid "Restore Version"
-msgstr "Sürümü geri yükle"
+#: siteorigin-panels.php:370
+msgid "Loading prebuilt layout"
+msgstr "Ön tanımlı yerleşim yükleniyor"
 
-#: tpl/js-templates.php:512
-msgid "Close Live Editor"
-msgstr "Canlı düzenleyiciyi kapat"
+#: siteorigin-panels.php:369
+msgid "Are you sure you want to overwrite your current content? This can be undone in the builder history."
+msgstr "Mevcut içeriğinizin üstüne yazmak istediğinize emin misiniz? Bu yapıcı geçmişinden de geri alınamaz."
 
-#: tpl/js-templates.php:560
-msgid "No Results"
-msgstr "Sonuç yok"
+#: siteorigin-panels.php:365
+msgid "Prebuilt layout loaded"
+msgstr "Ön tanımlı yerleşim yüklendi"
 
-#: tpl/options.php:26
-msgid "Copy content from Page Builder into the standard content editor."
-msgstr "Sayfa Yapıcıdan standart içerik düzenleyicisinin içine içeriği kopyala."
+#: siteorigin-panels.php:362
+msgid "Cell resized"
+msgstr "Hücre yeniden boyutlandırıldı"
 
-#: tpl/options.php:32
-msgid "Animations"
-msgstr "Animasyonlar"
+#. TRANSLATORS: Message displayed in the history when a row is duplicated
+#: siteorigin-panels.php:359
+msgid "Row duplicated"
+msgstr "Satır kopyalandı"
 
-#: tpl/options.php:33
-msgid "Disable animations for improved performance."
-msgstr "İyileştirilmiş performans için animasyonları iptal et."
+#. TRANSLATORS: Message displayed in the history when a row position is changed
+#: siteorigin-panels.php:357
+msgid "Row moved"
+msgstr "Satır taşındı"
 
-#: inc/admin-actions.php:68
-msgid "No description"
-msgstr "Açıklama yok"
+#. TRANSLATORS: Message displayed in the history when a row is edited
+#: siteorigin-panels.php:355
+msgid "Row edited"
+msgstr "Satır düzenlendi"
 
-#: inc/admin-actions.php:77
-msgid "Your theme doesn't have any prebuilt layouts."
-msgstr "Temanızda hiçbir ön tanımlı yerleşim yok."
+#. TRANSLATORS: Message displayed in the history when a row is added
+#: siteorigin-panels.php:353
+msgid "Row added"
+msgstr "Satır eklendi"
 
-#: inc/admin-actions.php:78
-msgid "You can still clone existing pages though."
-msgstr "Yine de var olan sayfaları kopyalayabilirsiniz."
+#. TRANSLATORS: Message displayed in the history when a row is deleted
+#: siteorigin-panels.php:351
+msgid "Row deleted"
+msgstr "Satır silindi"
 
-#: inc/admin-actions.php:111
-msgid "Clone"
-msgstr "Kopyala"
+#. TRANSLATORS: Message displayed in the history when a widget position is
+#. changed
+#: siteorigin-panels.php:347
+msgid "Widget moved"
+msgstr "Bileşen taşındı"
 
-#: inc/default-styles.php:44
-msgid "Row Class"
-msgstr "Satır sınıfı"
+#. TRANSLATORS: Message displayed in the history when a widget is duplicated
+#: siteorigin-panels.php:345
+msgid "Widget duplicated"
+msgstr "Bileşen koplayalandı"
 
-#: inc/default-styles.php:47 inc/default-styles.php:154
-msgid "A CSS class"
-msgstr "Bir CSS sınıfı"
+#. TRANSLATORS: Message displayed in the history when a widget is edited
+#: siteorigin-panels.php:343
+msgid "Widget edited"
+msgstr "Bileşen düzenlendi"
 
-#: inc/default-styles.php:52
-msgid "Cell Class"
-msgstr "Hücre sınıfı"
+#. TRANSLATORS: Message displayed in the history when a widget is added
+#: siteorigin-panels.php:341
+msgid "Widget added"
+msgstr "Bileşen eklendi"
 
-#: inc/default-styles.php:55
-msgid "Class added to all cells in this row."
-msgstr "Bu satırdaki tüm hücrelere eklenen sınıf."
+#. TRANSLATORS: Message displayed in the history when a widget is deleted
+#: siteorigin-panels.php:339
+msgid "Widget deleted"
+msgstr "Bileşen silindi"
 
-#: inc/default-styles.php:60 inc/default-styles.php:159
-msgid "CSS Styles"
-msgstr "CSS stilleri"
+#: siteorigin-panels.php:335
+msgid "Converted to editor"
+msgstr "Düzenleyiciye dönüştürüldü"
 
-#: inc/default-styles.php:63 inc/default-styles.php:162
-msgid "CSS Styles, given as one per row."
-msgstr "Her bir satır için verilen CSS biçimleri."
+#: siteorigin-panels.php:334
+msgid "Version restored"
+msgstr "Geri yüklenen sürüm"
 
-#: inc/default-styles.php:70
-msgid "Bottom Margin"
-msgstr "Alt kenar boşluğu"
+#: siteorigin-panels.php:333
+msgid "Original"
+msgstr "Orijinal"
 
-#: inc/default-styles.php:73
-msgid "Space below the row."
-msgstr "Satır altındaki boş alan."
+#: siteorigin-panels.php:332
+msgid "Current"
+msgstr "Mevcut"
 
-#: inc/default-styles.php:78
-msgid "Gutter"
-msgstr "Kolon arası"
+#: siteorigin-panels.php:328
+msgid "Now"
+msgstr "Şuan"
 
-#: inc/default-styles.php:81
-msgid "Amount of space between columns."
-msgstr "Sütunlar arasındaki boş alan."
+#. TRANSLATORS: Time ago - eg. "1 minute before".
+#: siteorigin-panels.php:327
+msgid "%s before"
+msgstr "%s önce"
 
-#: inc/default-styles.php:86 inc/default-styles.php:167
-msgid "Padding"
-msgstr "Dolgu"
+#. TRANSLATORS: A single hour since
+#: siteorigin-panels.php:324
+msgid "%d hour"
+msgstr "%d saat"
 
-#: inc/default-styles.php:89
-msgid "Padding around the entire row."
-msgstr "Tüm satır çevresindeki dolgu."
+#. TRANSLATORS: A single minute since
+#: siteorigin-panels.php:322
+msgid "%d minute"
+msgstr "%d dakika"
 
-#: inc/default-styles.php:95
-msgid "Row Layout"
-msgstr "Satır yerleşimi"
+#. TRANSLATORS: A single second since
+#: siteorigin-panels.php:320
+msgid "%d second"
+msgstr "%d saniye"
 
-#: inc/default-styles.php:99
-msgid "Standard"
-msgstr "Standart"
+#. TRANSLATORS: Number of hours since
+#: siteorigin-panels.php:317
+msgid "%d hours"
+msgstr "%d saat"
 
-#: inc/default-styles.php:100
-msgid "Full Width"
-msgstr "Tam genişlik"
+#. TRANSLATORS: Number of minutes since
+#: siteorigin-panels.php:315
+msgid "%d minutes"
+msgstr "%d dakika"
 
-#: inc/default-styles.php:101
-msgid "Full Width Stretched"
-msgstr "Uzatılmış tam genişlik"
+#. TRANSLATORS: Number of seconds since
+#: siteorigin-panels.php:313
+msgid "%d seconds"
+msgstr "%d saniye"
 
-#: inc/default-styles.php:109 inc/default-styles.php:178
-msgid "Background Color"
-msgstr "Arka plan rengi"
+#: siteorigin-panels.php:309
+msgid "Page Builder doesn't know about this widget."
+msgstr "Sayfa yapıcı bu bileşen hakkında birşey bilmiyor."
 
-#: inc/default-styles.php:112
-msgid "Background color of the row."
-msgstr "Satırın arka plan rengi"
+#: siteorigin-panels.php:308
+msgid "Missing Widget"
+msgstr "Kayıp bileşen"
 
-#: inc/default-styles.php:117 inc/default-styles.php:186
-msgid "Background Image"
-msgstr "Arka plan görseli"
+#: siteorigin-panels.php:284
+msgid "All Widgets"
+msgstr "Tüm bileşenler"
 
-#: inc/default-styles.php:120
-msgid "Background image of the row."
-msgstr "Satırın arka plan görseli"
+#. TRANSLATORS: This is the default name given to a user's home page
+#: siteorigin-panels.php:76 siteorigin-panels.php:136
+msgid "Home Page"
+msgstr "Ana Sayfa"
 
-#: inc/default-styles.php:125 inc/default-styles.php:194
-msgid "Background Image Display"
-msgstr "Arka plan görsel gösterimi"
+#: siteorigin-panels.php:75
+msgid "Custom Home Page Builder"
+msgstr "Özel ana sayfa yapıcı"
 
-#: inc/default-styles.php:129 inc/default-styles.php:198
-msgid "Tiled Image"
-msgstr "Döşenmiş görsel"
+#: settings/tpl/settings.php:78 tpl/options.php:93
+msgid "Save Settings"
+msgstr "Ayarları kaydet"
+
+#: settings/tpl/settings.php:29
+msgid "Settings Saved"
+msgstr "Ayarlar kaydedildi"
+
+#: settings/tpl/settings.php:12
+msgid "Search Settings"
+msgstr "Ayarları ara"
+
+#: settings/tpl/help.php:6
+msgid "Please read the 1{settings guide} of the Page Builder documentation for help."
+msgstr "Yardım için lütfen sayfa yapıcı belgelendirmesinin 1{settings guide} kısmını okuyun."
+
+#: settings/settings.php:276
+msgid "Copy content from Page Builder to post content."
+msgstr "Sayfa yapıcıdan yazıya içeriği kopyala."
+
+#: settings/settings.php:275 tpl/options.php:25
+msgid "Copy Content"
+msgstr "İçeriği kopyala"
+
+#: settings/settings.php:269
+msgid "Content"
+msgstr "İçerik"
+
+#: settings/settings.php:262
+msgid "The container used for the full width layout."
+msgstr "Tam genişlikteki yerleşim için kullanılan kapsayıcı."
+
+#: settings/settings.php:261
+msgid "Full Width Container"
+msgstr "Tam genişlikteki kapsayıcı"
+
+#: settings/settings.php:255
+msgid "Default spacing between columns in each row."
+msgstr "Her satırda sütunlar arasındaki varsayılan boşluk."
+
+#: settings/settings.php:254
+msgid "Row Gutter"
+msgstr "Satırlar arasındaki boşluk"
+
+#: settings/settings.php:248
+msgid "Default margin below rows."
+msgstr "Satırların altındaki varsayılan boşluk."
+
+#: settings/settings.php:247 tpl/options.php:70
+msgid "Row Bottom Margin"
+msgstr "Satır alt boşluğu"
+
+#: settings/settings.php:241
+msgid "Device width, in pixels, to collapse into a mobile view ."
+msgstr "Piksel olarak mobil görünüme geçilecek olan cihaz genişliği."
+
+#: settings/settings.php:240 tpl/options.php:64
+msgid "Mobile Width"
+msgstr "Mobil genişliği"
+
+#: settings/settings.php:234
+msgid "Collapse widgets, rows and columns on mobile devices."
+msgstr "Mobil cihazlarda bileşenleri, satırları ve sütunları kapat."
+
+#: settings/settings.php:233 tpl/options.php:57
+msgid "Responsive Layout"
+msgstr "Duyarlı düzen"
+
+#: settings/settings.php:219
+msgid "Display recommend widgets in Page Builder add widget dialog."
+msgstr "Sayfa yapıcı yeni bileşen ekleme penceresinde tavsiye edilen bileşenleri görüntüle."
+
+#: settings/settings.php:213
+msgid "Load legacy widgets from Page Builder 1."
+msgstr "Sayfa yapıcıdan eski bileşenleri yükle."
+
+#: settings/settings.php:212
+msgid "Legacy Bundled Widgets"
+msgstr "Eski paketlenmiş bileşenler"
+
+#: settings/settings.php:207
+msgid "The HTML used for widget titles. {{title}} is replaced with the widget title."
+msgstr "Bileşen başlıkları için kullanılan HTML. {{title}} bileşen başlığı içe değiştirilecek."
+
+#: settings/settings.php:206
+msgid "Widget Title HTML"
+msgstr "Bileşen başlığı HTML"
+
+#: settings/settings.php:200
+msgid "Widgets"
+msgstr "Bileşenler"
+
+#: settings/settings.php:194
+msgid "The post types to use Page Builder on."
+msgstr "Sayfa yapıcının kullanılacağı yazı tipleri."
+
+#: settings/settings.php:192 tpl/options.php:15
+msgid "Post Types"
+msgstr "Yazı tipleri"
+
+#: settings/settings.php:186 tpl/options.php:11
+msgid "General"
+msgstr "Genel"
+
+#: settings/settings.php:170
+msgid "Page Builder Settings"
+msgstr "Sayfa yapıcı ayarları"
+
+#: settings/settings.php:146 siteorigin-panels.php:110
+#: siteorigin-panels.php:516 tpl/js-templates.php:160
+msgid "Page Builder"
+msgstr "Sayfa yapıcı"
+
+#: settings/settings.php:146 settings/tpl/settings.php:9 tpl/options.php:5
+msgid "SiteOrigin Page Builder"
+msgstr "SiteOrigin site yapıcı"
+
+#: inc/widgets.php:168 settings/settings.php:218
+msgid "Recommended Widgets"
+msgstr "Tavsiye edilen bileşenler"
+
+#. TRANSLATORS: The name of WordPress plugin
+#: inc/widgets.php:160
+msgid "BBPress"
+msgstr "bbPress"
+
+#. TRANSLATORS: The name of WordPress plugin
+#: inc/widgets.php:149
+msgid "Jetpack"
+msgstr "Jetpack"
+
+#. TRANSLATORS: The name of WordPress plugin
+#: inc/widgets.php:138
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: inc/widgets.php:128
+msgid "WordPress Widgets"
+msgstr "WordPress bileşenleri"
+
+#: inc/widgets.php:120
+msgid "You can enable the legacy (PB) widgets in the 1{Page Builder settings}."
+msgstr "1{Page Builder settings} içinden eski bileşenleri etkinleştirebilirsiniz."
+
+#: inc/widgets.php:112
+msgid "Page Builder Widgets"
+msgstr "Sayfa yapıcı bileşenleri"
+
+#: inc/widgets.php:107
+msgid "Install the 1{Widgets Bundle} to get extra widgets."
+msgstr "İlave bileşenleri almak için 1{Widgets Bundle} yükleyin."
+
+#: inc/widgets.php:99
+msgid "Enable more widgets in the 1{Widgets Bundle settings}."
+msgstr "1{Widgets Bundle settings} içinden daha fazla bileşeni etkinleştir."
+
+#: inc/widgets.php:84
+msgid "Widgets Bundle"
+msgstr "Bileşenler paketi"
+
+#: inc/widgets-bundle.php:56
+msgid "Display site features as a collection of icons."
+msgstr "Site özelliklerini ikon koleksiyonu olarak göster."
+
+#: inc/widgets-bundle.php:55
+msgid "SiteOrigin Features"
+msgstr "SiteOrigin özellikleri"
+
+#: inc/widgets-bundle.php:44
+msgid "A basic slider widget."
+msgstr "Basit bir slayt gösterici bileşen."
+
+#: inc/widgets-bundle.php:43
+msgid "SiteOrigin Slider"
+msgstr "SiteOrigin slayt göstericisi"
+
+#: inc/widgets-bundle.php:32
+msgid "Choose images from your media library."
+msgstr "Ortam kütüphanenizden görsel seçin."
+
+#: inc/widgets-bundle.php:31
+msgid "SiteOrigin Image"
+msgstr "SiteOrigin görseli"
+
+#: inc/widgets-bundle.php:20 widgets/widgets/button/button.php:8
+msgid "A simple button"
+msgstr "Basit bir düğme"
+
+#: inc/widgets-bundle.php:19
+msgid "SiteOrigin Button"
+msgstr "SiteOrigin düğmesi"
+
+#: inc/widgets-bundle.php:11 inc/widgets-bundle.php:23
+#: inc/widgets-bundle.php:35 inc/widgets-bundle.php:47
+#: inc/widgets-bundle.php:59 inc/widgets-bundle.php:71 inc/widgets.php:106
+msgid "SiteOrigin Widgets Bundle"
+msgstr "SiteOrigin bileşenleri paketi"
+
+#: inc/widgets-bundle.php:8
+msgid "A rich text editor"
+msgstr "Zengin metin düzenleyici"
+
+#: inc/widgets-bundle.php:7
+msgid "SiteOrigin Editor"
+msgstr "SiteOrigin düzenleyicisi"
+
+#: inc/styles.php:201 settings/settings.php:313
+msgid "Enabled"
+msgstr "Etkinleştrildi"
+
+#: inc/styles.php:187
+msgid "Remove"
+msgstr "Kaldır"
+
+#: inc/styles.php:183
+msgid "Select Image"
+msgstr "Görsel seç"
+
+#: inc/styles.php:64
+msgid "Theme"
+msgstr "Tema"
+
+#: inc/styles.php:54
+msgid "Design"
+msgstr "Tasarım"
+
+#: inc/styles.php:50 settings/settings.php:225
+msgid "Layout"
+msgstr "Yerleşim"
+
+#: inc/styles.php:46
+msgid "Attributes"
+msgstr "Nitelikler"
+
+#: inc/styles.php:23
+msgid "Widget Styles"
+msgstr "Bileşen stilleri"
+
+#: inc/styles.php:19
+msgid "Row Styles"
+msgstr "Satır stilleri"
+
+#: inc/revisions.php:50
+msgid "Page Builder Content"
+msgstr "Sayfa yapıcı içeriği"
+
+#: inc/plugin-activation.php:74
+msgid "Installing %s"
+msgstr "%s yükleniyor"
+
+#: inc/plugin-activation.php:7 inc/plugin-activation.php:8
+msgid "Install Page Builder Plugin"
+msgstr "Sayfa yapıcı eklentisini yükle"
+
+#: inc/default-styles.php:219
+msgid "Color of text inside this widget."
+msgstr "Bu bileşen içindeki metnin rengi."
+
+#: inc/default-styles.php:216
+msgid "Font Color"
+msgstr "Font rengi"
+
+#: inc/default-styles.php:211
+msgid "Border color of the widget."
+msgstr "Bileşenin kenarlık rengi."
+
+#: inc/default-styles.php:189
+msgid "Background image of the widget."
+msgstr "Bileşenin arka plan görseli."
+
+#: inc/default-styles.php:181
+msgid "Background color of the widget."
+msgstr "Bileşenin arka plan rengi."
+
+#: inc/default-styles.php:170
+msgid "Padding around the entire widget."
+msgstr "Tüm bileşen etrafındaki dolgu."
+
+#: inc/default-styles.php:151
+msgid "Widget Class"
+msgstr "Bileşen sınıfı"
+
+#: inc/default-styles.php:142
+msgid "Border color of the row."
+msgstr "Satırın kenarlık rengi"
+
+#: inc/default-styles.php:139 inc/default-styles.php:208
+msgid "Border Color"
+msgstr "Kenarlık rengi"
+
+#: inc/default-styles.php:134 inc/default-styles.php:203
+msgid "How the background image is displayed."
+msgstr "Arka plan görüntüsü nasıl görüntülenir."
+
+#: inc/default-styles.php:132 inc/default-styles.php:201
+msgid "Parallax"
+msgstr "Parallax"
+
+#: inc/default-styles.php:131 inc/default-styles.php:200
+msgid "Centered, with original size"
+msgstr "Orijinal boyutla ortalanmış"
 
 #: inc/default-styles.php:130 inc/default-styles.php:199
 msgid "Cover"
 msgstr "Kapla"
 
-#: inc/default-styles.php:131 inc/default-styles.php:200
-msgid "Centered, with original size"
-msgstr "Orijinal boyutla ortalanmış"
+#: inc/default-styles.php:129 inc/default-styles.php:198
+msgid "Tiled Image"
+msgstr "Döşenmiş görsel"
+
+#: inc/default-styles.php:125 inc/default-styles.php:194
+msgid "Background Image Display"
+msgstr "Arka plan görsel gösterimi"
+
+#: inc/default-styles.php:120
+msgid "Background image of the row."
+msgstr "Satırın arka plan görseli"
+
+#: inc/default-styles.php:117 inc/default-styles.php:186
+msgid "Background Image"
+msgstr "Arka plan görseli"
+
+#: inc/default-styles.php:112
+msgid "Background color of the row."
+msgstr "Satırın arka plan rengi"
+
+#: inc/default-styles.php:109 inc/default-styles.php:178
+msgid "Background Color"
+msgstr "Arka plan rengi"
+
+#: inc/default-styles.php:101
+msgid "Full Width Stretched"
+msgstr "Uzatılmış tam genişlik"
+
+#: inc/default-styles.php:100
+msgid "Full Width"
+msgstr "Tam genişlik"
+
+#: inc/default-styles.php:99
+msgid "Standard"
+msgstr "Standart"
+
+#: inc/default-styles.php:95
+msgid "Row Layout"
+msgstr "Satır yerleşimi"
+
+#: inc/default-styles.php:89
+msgid "Padding around the entire row."
+msgstr "Tüm satır çevresindeki dolgu."
+
+#: inc/default-styles.php:86 inc/default-styles.php:167
+msgid "Padding"
+msgstr "Dolgu"
+
+#: inc/default-styles.php:81
+msgid "Amount of space between columns."
+msgstr "Sütunlar arasındaki boş alan."
+
+#: inc/default-styles.php:78
+msgid "Gutter"
+msgstr "Kolon arası"
+
+#: inc/default-styles.php:73
+msgid "Space below the row."
+msgstr "Satır altındaki boş alan."
+
+#: inc/default-styles.php:70
+msgid "Bottom Margin"
+msgstr "Alt kenar boşluğu"
+
+#: inc/default-styles.php:63 inc/default-styles.php:162
+msgid "CSS Styles, given as one per row."
+msgstr "Her bir satır için verilen CSS biçimleri."
+
+#: inc/default-styles.php:60 inc/default-styles.php:159
+msgid "CSS Styles"
+msgstr "CSS stilleri"
+
+#: inc/default-styles.php:55
+msgid "Class added to all cells in this row."
+msgstr "Bu satırdaki tüm hücrelere eklenen sınıf."
+
+#: inc/default-styles.php:52
+msgid "Cell Class"
+msgstr "Hücre sınıfı"
+
+#: inc/default-styles.php:47 inc/default-styles.php:154
+msgid "A CSS class"
+msgstr "Bir CSS sınıfı"
+
+#: inc/default-styles.php:44
+msgid "Row Class"
+msgstr "Satır sınıfı"
+
+#: inc/admin-actions.php:111
+msgid "Clone"
+msgstr "Kopyala"
+
+#: inc/admin-actions.php:78
+msgid "You can still clone existing pages though."
+msgstr "Yine de var olan sayfaları kopyalayabilirsiniz."
+
+#: inc/admin-actions.php:77
+msgid "Your theme doesn't have any prebuilt layouts."
+msgstr "Temanızda hiçbir ön tanımlı yerleşim yok."
+
+#: inc/admin-actions.php:68
+msgid "No description"
+msgstr "Açıklama yok"

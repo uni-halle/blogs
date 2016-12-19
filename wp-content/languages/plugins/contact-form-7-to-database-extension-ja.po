@@ -1,1131 +1,1122 @@
-# Translation of Stable (latest release) in Japanese
-# This file is distributed under the same license as the Stable (latest release) package.
+# Translation of Plugins - Contact Form DB - Stable (latest release) in Japanese
+# This file is distributed under the same license as the Plugins - Contact Form DB - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-05-19 23:33:16+0000\n"
+"PO-Revision-Date: 2016-11-12 05:57:33+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/2.1.0-alpha\n"
-"Project-Id-Version: Stable (latest release)\n"
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: ja_JP\n"
+"Project-Id-Version: Plugins - Contact Form DB - Stable (latest release)\n"
 
-#: CF7DBPlugin.php:66
-msgid "Capture form submissions from Very Simple Contact Form and Very Simple Signup Form"
-msgstr "Very Simple Contact Form と Very Simple Signup Form からのフォーム送信を記録"
+#: CFDBViewOptions.php:97
+msgid "Notes on security settings"
+msgstr "セキュリティ設定の注意点"
 
-#: CFDBViewOptions.php:58
-msgid "Integrations"
-msgstr "連携"
+#: CFDBViewOptions.php:79
+msgid "Capture form submissions from these plugins"
+msgstr "これらのプラグインからフォームデータをキャプチャーする"
 
-#: CFDBViewOptions.php:64
-msgid "Saving"
-msgstr "保存中"
+#: CFDBViewShortCodeBuilder.php:1386
+msgid "(Shortcode Specific option)"
+msgstr "(ショートコードの詳細オプション)"
 
-#: CFDBViewOptions.php:70
+#: CFDBViewShortCodeBuilder.php:943
+msgid "Performance"
+msgstr "パフォーマンス"
+
+#: CFDBViewShortCodeBuilder.php:938
+msgid "Global Security Settings"
+msgstr "セキュリティ全般設定"
+
+#: CFDBViewShortCodeBuilder.php:385
+msgid "* All Forms *"
+msgstr "* すべてのフォーム *"
+
+#: CFDBViewShortCodeBuilder.php:122
+msgid "Security/Performance"
+msgstr "セキュリティ/パフォーマンス"
+
+#: CFDBViewShortCodeBuilder.php:119
+msgid "Shortcode Specific"
+msgstr "ショートコードの詳細"
+
+#: CFDBViewShortCodeBuilder.php:116
+msgid "Before/After"
+msgstr "前/後"
+
+#: CFDBViewShortCodeBuilder.php:110
+msgid "Rows"
+msgstr "行"
+
+#: CFDBViewShortCodeBuilder.php:107
+msgid "Columns"
+msgstr "列"
+
+#: CFDBViewShortCodeBuilder.php:104
+msgid "Form"
+msgstr "フォーム"
+
+#: CFDBViewShortCodeBuilder.php:70
+msgid "Shortcode and Export Builder"
+msgstr "ショートコードとエクスポートビルダー"
+
+#: CF7DBPlugin.php:1069 CFDBViewShortCodeBuilder.php:86
+#: CFDBViewShortCodeBuilder.php:236
+msgid "Shortcode"
+msgstr "ショートコード"
+
+#: CF7DBPlugin.php:54
+msgid "Save Page Title from Contact Form 7 submissions"
+msgstr "Contact Form 7 データからページタイトルを保存"
+
+#: CFDBViewOptions.php:152
+msgid "This page requires PHP 5.3 or later on your server."
+msgstr "このページを表示するにはPHP5.3 以降が必要です。"
+
+#: CFDBViewOptions.php:72
 msgid "Admin View"
 msgstr "管理者向け表示"
 
-#: CF7DBPlugin.php:102
-msgid "Error output file or email address"
-msgstr "出力ファイルあるいはメールアドレスのエラー"
+#: CFDBViewOptions.php:66
+msgid "Saving"
+msgstr "保存中"
 
-#: CFDBViewShortCodeBuilder.php:1458
+#: CFDBViewOptions.php:60
+msgid "Integrations"
+msgstr "連携"
+
+#: CFDBViewShortCodeBuilder.php:720
 msgid "editcolumns"
 msgstr "editcolumns"
 
-#: CF7DBPlugin.php:65
-msgid "Capture form submissions from FormCraft Premium"
-msgstr "FormCraft Premium プラグインの送信データを記録する"
+#: CF7DBPlugin.php:106
+msgid "Error output file or email address"
+msgstr "出力ファイルあるいはメールアドレスのエラー"
 
-#: ExportToExcel.php:51
-msgid "PHP Upgrade Needed"
-msgstr "PHP のアップグレードが必要です。"
+#: CFDBViewOptions.php:158 ExportToExcel.php:58
+msgid "See WordPress Recommended PHP Version"
+msgstr "WordPress が推奨する PHP バージョンを参照"
 
 #: ExportToExcel.php:52
 msgid "CFDB Excel file export requires PHP 5.4 or later on your server."
 msgstr "CFDB Excel ファイル出力は、PHP 5.4以降を要求します。"
 
-#: ExportToExcel.php:58
-msgid "See WordPress Recommended PHP Version"
-msgstr "WordPress が推奨する PHP バージョンを参照"
+#: CFDBViewOptions.php:151 ExportToExcel.php:51
+msgid "PHP Upgrade Needed"
+msgstr "PHP のアップグレードが必要です。"
 
-#: CFDBViewShortCodeBuilder.php:1161 CFDBViewShortCodeBuilder.php:1574
-#: CFDBViewWhatsInDB.php:235
-msgid "Excel .xlsx"
-msgstr "Excel .xlsx"
-
-#: CFDBViewShortCodeBuilder.php:1164 CFDBViewShortCodeBuilder.php:1577
-#: CFDBViewWhatsInDB.php:238
-msgid "OpenDocument .ods"
-msgstr "OpenDocument .ods"
-
-#: CFDBViewShortCodeBuilder.php:1192 CFDBViewShortCodeBuilder.php:1596
-#: CFDBViewWhatsInDB.php:273
+#: CFDBViewShortCodeBuilder.php:309 CFDBViewShortCodeBuilder.php:878
+#: CFDBViewWhatsInDB.php:295
 msgid "CSV Delimiter"
 msgstr "CSVの区切り文字"
 
-#: CF7DBPlugin.php:58
-msgid "Capture form submissions from Formidable Forms"
-msgstr "Formidable Forms プラグインの送信データを記録する"
-
-#: CF7DBPlugin.php:64
-msgid "Capture form submissions from CformsII"
-msgstr "CformsII プラグインの送信データを記録する"
-
-#: CFDBShortcodeExportUrl.php:59 CFDBViewImportCsv.php:115
-#: CFDBViewOptions.php:67 CFDBViewWhatsInDB.php:269
-msgid "Export"
-msgstr "エクスポート"
-
-#: CFDBView.php:69
-msgid "Rate this Plugin"
-msgstr "このプラグインを評価する"
-
-#: CFDBView.php:75 CFDBViewShortCodeBuilder.php:132
-#: CFDBViewShortCodeBuilder.php:1251
-msgid "Documentation"
-msgstr "ドキュメント"
-
-#: CFDBView.php:81
-msgid "Support"
-msgstr "サポート"
-
-#: CFDBViewImportCsv.php:45
-msgid "Import CSV File into Form"
-msgstr "CSV ファイルをフォームへインポートする"
-
-#: CFDBViewImportCsv.php:50
-msgid "File"
-msgstr "ファイル"
-
-#: CFDBViewImportCsv.php:54
-msgid "New Form"
-msgstr "新規フォーム"
-
-#: CFDBViewImportCsv.php:58
-msgid "Existing Form"
-msgstr "既存フォーム"
-
-#: CFDBViewImportCsv.php:85
-msgid "Rename Form"
-msgstr "フォームの名称変更"
-
-#: CFDBViewImportCsv.php:95
-msgid "Rename"
-msgstr "名称変更"
-
-#: CFDBViewImportCsv.php:98
-msgid "Backup Form to CSV File"
-msgstr "フォームデータを CSV ファイルへバックアップ"
-
-#: CFDBViewImportCsv.php:100
-msgid "Backup a form into a CSV file that can be re-imported without loss of data."
-msgstr "フォームデータを失うことなく再度フォームへインポートできる CSV ファイルとしてバックアップします。"
-
-#: CFDBViewImportCsv.php:101
-msgid "Limitation: this will not export file uploads."
-msgstr "制限: アップロードファイルはエクスポートしません。"
-
-#: CFDBViewImportCsv.php:102
-msgid "Limitation: extremely large numbers of records in your form may cause the export operation on your server to run out of memory, thereby not giving you all the rows."
-msgstr "制限: フォーム内のデータレコード数が非常に大きい場合、エクスポート時にサーバーのメモリオーバーが発生しすべての列データを取得できない可能性があります。"
-
-#: CFDBViewImportCsv.php:117
-msgid "Data Cleanup"
-msgstr "データのクリーンアップ"
-
-#: CFDBViewImportCsv.php:118
-msgid "Clean up data that can cause incorrect behavior"
-msgstr "不正な動作を引き起こすデータをクリーンアップします。"
-
-#: CFDBViewImportCsv.php:120
-msgid "Clean up data"
-msgstr "データのクリーンアップをします"
-
-#: CFDBViewShortCodeBuilder.php:282 CFDBViewShortCodeBuilder.php:295
-msgid "Error: \""
-msgstr "エラー: \""
-
-#: CFDBViewShortCodeBuilder.php:284 CFDBViewShortCodeBuilder.php:297
-msgid "\" should not contain double-quotes (\")"
-msgstr "\" に二重引用符 (\") を含めることではできません"
-
-#: CFDBViewShortCodeBuilder.php:358
-msgid "Error: no form is chosen"
-msgstr "エラー: フォームを選択していません"
-
-#: CFDBViewShortCodeBuilder.php:405
-msgid "Warning: \"search\" field ignored because FIELD is used (use one but not both)"
-msgstr "警告: \"FIELD\" が利用されたので \"search\" フィールドを無視しました（両方は使えません）。"
-
-#: CFDBViewShortCodeBuilder.php:426
-msgid "Error: \"FIELD\": if you provide a value for \"Start Row\" then you must also provide a value for \"Num Rows\""
-msgstr "エラー: \"FIELD\" : もし、\"Start Row\" に値が入力された場合、\"Now Rows\" にも値を入力してください。"
-
-#: CFDBViewShortCodeBuilder.php:431
-msgid "Error: \"FIELD\": \"Num Rows\" must be a positive integer"
-msgstr "エラー: \"FIELD\" : \"Num Rows\" は、正数を入力してください。"
-
-#: CFDBViewShortCodeBuilder.php:439
-msgid "Error: \"FIELD\": \"Start Row\" must be a positive integer"
-msgstr "エラー: \"FIELD\": \"Start Row\" は、正数を入力してください。"
-
-#: CFDBViewShortCodeBuilder.php:534
-msgid "Error: [cfdb-html] has empty Template. It will not output anything. "
-msgstr "エラー: [cfdb-html] にテンプレートを指定していません。何も出力しません。 "
-
-#: CFDBViewShortCodeBuilder.php:608
-msgid "Error: \"edit=true\" will not work properly when setting \"headers\" "
-msgstr "エラー:  \"headers\" を設定している場合には、\"edit=true\" は正しく動作しません。"
-
-#: CFDBViewShortCodeBuilder.php:808
-msgid "Warning: the function includes your WP login information. Avoid sharing it."
-msgstr "警告: その機能は WordPress ログイン情報を含んでいます。それを共有するのを避けてください。"
-
-#: CFDBViewShortCodeBuilder.php:815
-msgid "Error: WP User and Password are required for the Google Spreadsheet to pull data from your WordPress site."
-msgstr "エラー:  WordPress サイトからデータを Google スプレットシートへ取得するために、WordPress ユーザーとパスワードが必要です。"
-
-#: CFDBViewShortCodeBuilder.php:818
-msgid "Because the generated URL would be too long, you must use this alternative function and add its script to your Google Spreadsheet"
-msgstr "生成された URL が長すぎるため、その代替機能として、そのスクリプトを Google スプレットシートへ追加する必要があります。"
-
-#: CFDBViewShortCodeBuilder.php:1134
-msgid "Export and Short Code Builder"
-msgstr "データのエクスポートとショートコード生成"
-
-#: CFDBViewShortCodeBuilder.php:1137
-msgid "form"
-msgstr "form"
-
-#: CFDBViewShortCodeBuilder.php:1139 CFDBViewWhatsInDB.php:120
-msgid "* Select a form *"
-msgstr "フォームを選択"
-
-#: CFDBViewShortCodeBuilder.php:1149
-msgid "Reset"
-msgstr "リセット"
-
-#: CFDBViewShortCodeBuilder.php:1157
-msgid "Export File"
-msgstr "エクスポートファイル形式"
-
-#: CFDBViewShortCodeBuilder.php:1167 CFDBViewShortCodeBuilder.php:1580
-#: CFDBViewWhatsInDB.php:244
-msgid "Excel CSV (UTF8-BOM)"
-msgstr "Excel CSV (UTF8-BOM)"
-
-#: CFDBViewShortCodeBuilder.php:1170 CFDBViewShortCodeBuilder.php:1583
-#: CFDBViewWhatsInDB.php:247
-msgid "Excel TSV (UTF16LE-BOM)"
-msgstr "Excel TSV (UTF16LE-BOM)"
-
-#: CFDBViewShortCodeBuilder.php:1173 CFDBViewShortCodeBuilder.php:1586
-#: CFDBViewWhatsInDB.php:250
-msgid "Plain CSV (UTF-8)"
-msgstr "CSV (UTF-8)"
-
-#: CFDBViewShortCodeBuilder.php:1176 CFDBViewShortCodeBuilder.php:1589
-#: CFDBViewWhatsInDB.php:253
-msgid "Excel CSV for Japanese (Shift-JIS)"
-msgstr "日本語版 Excel CSV (Shift-JIS)"
-
-#: CFDBViewShortCodeBuilder.php:1179 CFDBViewShortCodeBuilder.php:1592
-#: CFDBViewWhatsInDB.php:241
-msgid "Excel Internet Query"
-msgstr "Excel Webクエリ"
-
-#: CFDBViewShortCodeBuilder.php:1182 CFDBViewWhatsInDB.php:259
-msgid "Google Spreadsheet Live Data"
-msgstr "Google スプレッドシート Live データ"
-
-#: CFDBViewShortCodeBuilder.php:1185
-msgid "RSS"
-msgstr "RSS"
-
-#: CFDBViewShortCodeBuilder.php:1188 CFDBViewWhatsInDB.php:265
-msgid "JSON"
-msgstr "JSON"
-
-#: CFDBViewShortCodeBuilder.php:1196
-msgid "Item Title"
-msgstr "項目のタイトル"
-
-#: CFDBViewShortCodeBuilder.php:1202
-msgid "Provide a WP login for the Google Spreadsheet to use to connect to your WP site"
-msgstr "Google スプレットシートが WordPress サイトに接続するために、接続先の WordPress にログインしてください。"
-
-#: CFDBViewShortCodeBuilder.php:1205
-msgid "Optional: provide a WP login for the link to work without being already logged in"
-msgstr "オプション:  WordPress にログインせずに動作するためのリンク生成のために、WordPress のログイン情報を入力してください。"
-
-#: CFDBViewShortCodeBuilder.php:1208
-msgid "WP User"
-msgstr "WordPress ユーザー"
-
-#: CFDBViewShortCodeBuilder.php:1210
-msgid "WP Password"
-msgstr "WordPress パスワード"
-
-#: CFDBViewShortCodeBuilder.php:1212
-msgid "Hide Credentials"
-msgstr "認証情報を非表示"
-
-#: CFDBViewShortCodeBuilder.php:1216
-msgid "Generated Export Link:"
-msgstr "生成したエクスポートファイルへのリンク:"
-
-#: CFDBViewShortCodeBuilder.php:1218
-msgid "Enter this function into a cell in your Google Spreadsheet:"
-msgstr "Google スプレットシートのセルにこの関数を入力してください。"
-
-#: CFDBViewShortCodeBuilder.php:1221
-msgid "Generated Google Spreadsheet Function:"
-msgstr "生成した Google スプレットシート関数:"
-
-#: CFDBViewShortCodeBuilder.php:1222 ExportToGoogleLiveData.php:170
-msgid "Replace <strong>&lt;password&gt;</strong> with your <em>WordPress</em> password"
-msgstr "<strong>&lt;パスワード&gt;</strong> の値を、 <em>WordPress</em> パスワードに差し替えてください。"
-
-#: CFDBViewShortCodeBuilder.php:1224
-msgid "Requires code installed in your Google Spreadsheet script editor."
-msgstr "必要なコードを Google スプレットシートのスクリプトエディタにインストールしました。"
-
-#: CFDBViewShortCodeBuilder.php:1225
-msgid "Get code"
-msgstr "コードの取得"
-
-#: CFDBViewShortCodeBuilder.php:1226
-msgid "See instructions."
-msgstr "説明書を参照"
-
-#: CFDBViewShortCodeBuilder.php:1241
-msgid "* Select a short code *"
-msgstr "* ショートコードを選択 *"
-
-#: CFDBViewShortCodeBuilder.php:1257
-msgid "Generated Short Code:"
-msgstr "生成したショートコード:"
-
-#: CFDBViewShortCodeBuilder.php:1263
-msgid "(Did you know: you can create your own short code)"
-msgstr "(カスタムのショートコードの作り方)"
-
-#: CFDBViewOptions.php:61 CFDBViewShortCodeBuilder.php:1270
-msgid "Security"
-msgstr "セキュリティ"
-
-#: CFDBViewShortCodeBuilder.php:1273
-msgid "role"
-msgstr "role"
-
-#: CFDBViewShortCodeBuilder.php:1286
-msgid "permissionmsg"
-msgstr "permissionmsg"
-
-#: CFDBViewShortCodeBuilder.php:1298
-msgid "Which fields/columns do you want to display?"
-msgstr "表示するフィールド/列の指定"
-
-#: CFDBViewShortCodeBuilder.php:1301
-msgid "show"
-msgstr "show"
-
-#: CFDBViewShortCodeBuilder.php:1305 CFDBViewShortCodeBuilder.php:1313
-#: CFDBViewShortCodeBuilder.php:1387 CFDBViewShortCodeBuilder.php:1462
-#: CFDBViewShortCodeBuilder.php:1703
-msgid "field1,field2,field3"
-msgstr "field1,field2,field3"
-
-#: CFDBViewShortCodeBuilder.php:1309
-msgid "hide"
-msgstr "hide"
-
-#: CFDBViewShortCodeBuilder.php:1318
-msgid "Which rows/submissions do you want to display?"
-msgstr "表示する行/送信データの指定"
-
-#: CFDBViewShortCodeBuilder.php:1321
-msgid "search"
-msgstr "search"
-
-#: CFDBViewShortCodeBuilder.php:1324 CFDBViewShortCodeBuilder.php:1657
-msgid "search text"
-msgstr "検索文字列"
-
-#: CFDBViewShortCodeBuilder.php:1328
-msgid "filter"
-msgstr "filter"
-
-#: CFDBViewShortCodeBuilder.php:1347 CFDBViewShortCodeBuilder.php:1680
-msgid "value"
-msgstr "値"
-
-#: CFDBViewShortCodeBuilder.php:1350 CFDBViewShortCodeBuilder.php:1683
-msgid "Validate submit_time"
-msgstr "submit_time を検証"
-
-#: CFDBViewShortCodeBuilder.php:1351 CFDBViewShortCodeBuilder.php:1684
-msgid "Formats"
-msgstr "書式"
-
-#: CFDBViewShortCodeBuilder.php:1354 CFDBViewShortCodeBuilder.php:1687
-msgid "filter expression"
-msgstr "フィルターの条件式"
-
-#: CFDBViewShortCodeBuilder.php:1361
-msgid "limit"
-msgstr "limit"
-
-#: CFDBViewShortCodeBuilder.php:1364 CFDBViewShortCodeBuilder.php:1694
-msgid "Num Rows"
-msgstr "行数"
-
-#: CFDBViewShortCodeBuilder.php:1364 CFDBViewShortCodeBuilder.php:1365
-#: CFDBViewShortCodeBuilder.php:1379 CFDBViewShortCodeBuilder.php:1694
-#: CFDBViewShortCodeBuilder.php:1695
-msgid "number"
-msgstr "取得行数"
-
-#: CFDBViewShortCodeBuilder.php:1365 CFDBViewShortCodeBuilder.php:1695
-msgid "Start Row (0)"
-msgstr "先頭行"
-
-#: CFDBViewShortCodeBuilder.php:1369
-msgid "unbuffered"
-msgstr "unbuffered"
-
-#: CFDBViewShortCodeBuilder.php:1376
-msgid "random"
-msgstr "random"
-
-#: CFDBViewShortCodeBuilder.php:1383
-msgid "orderby"
-msgstr "orderby"
-
-#: CFDBViewShortCodeBuilder.php:1386 CFDBViewShortCodeBuilder.php:1461
-#: CFDBViewShortCodeBuilder.php:1702
-msgid "field"
-msgstr "フィールド"
-
-#: CFDBViewShortCodeBuilder.php:1390 CFDBViewShortCodeBuilder.php:1706
-msgid "ASC"
-msgstr "昇順 (ASC)"
-
-#: CFDBViewShortCodeBuilder.php:1391 CFDBViewShortCodeBuilder.php:1707
-msgid "DESC"
-msgstr "降順 (DESC)"
-
-#: CFDBViewShortCodeBuilder.php:1397
-msgid "Table Headers"
-msgstr "テーブルのヘッダー"
-
-#: CFDBViewShortCodeBuilder.php:1401
-msgid "Include Header Row"
-msgstr "ヘッダ行を含める"
-
-#: CFDBViewShortCodeBuilder.php:1406
-msgid "headers"
-msgstr "ヘッダー"
-
-#: CFDBViewShortCodeBuilder.php:1410
-msgid "display as"
-msgstr "表示"
-
-#: CFDBViewShortCodeBuilder.php:1411
-msgid "display value"
-msgstr "表示値"
-
-#: CFDBViewShortCodeBuilder.php:1414
-msgid "field1=Display Name 1,field2=Display Name 2"
-msgstr "field1 =表示名1, field2=表示名2"
-
-#: CFDBViewShortCodeBuilder.php:1419
-msgid "HTML Table Formatting"
-msgstr "テーブル形式 (HTML)"
-
-#: CFDBViewShortCodeBuilder.php:1422
-msgid "id"
-msgstr "id"
-
-#: CFDBViewShortCodeBuilder.php:1425
-msgid "HTML id"
-msgstr "HTML id"
-
-#: CFDBViewShortCodeBuilder.php:1429
-msgid "class"
-msgstr "class"
-
-#: CFDBViewShortCodeBuilder.php:1432
-msgid "HTML class"
-msgstr "HTML class"
-
-#: CFDBViewShortCodeBuilder.php:1436
-msgid "style"
-msgstr "style"
-
-#: CFDBViewShortCodeBuilder.php:1439
-msgid "CSS style"
-msgstr "CSS スタイル"
-
-#: CFDBViewShortCodeBuilder.php:1444
-msgid "[cfdb-datatable] Options"
-msgstr "[cfdb-datatable] オプション"
-
-#: CFDBViewShortCodeBuilder.php:1447
-msgid "edit"
-msgstr "編集"
-
-#: CFDBViewShortCodeBuilder.php:1453
-msgid "cells"
-msgstr "セル"
-
-#: CFDBViewShortCodeBuilder.php:1466
-msgid "dt_options"
-msgstr "dt_options"
-
-#: CFDBViewShortCodeBuilder.php:1469
-msgid "datatable options (JSON)"
-msgstr "datatable オプション (JSON)"
-
-#: CFDBViewShortCodeBuilder.php:1474
-msgid "[cfdb-json] Options"
-msgstr "[cfdb-json] オプション"
-
-#: CFDBViewShortCodeBuilder.php:1477
-msgid "var"
-msgstr "var"
-
-#: CFDBViewShortCodeBuilder.php:1480
-msgid "JS var name"
-msgstr "JavaScript 変数名"
-
-#: CFDBViewShortCodeBuilder.php:1484
-msgid "format"
-msgstr "書式"
-
-#: CFDBViewShortCodeBuilder.php:1489
-msgid "map"
-msgstr "map"
-
-#: CFDBViewShortCodeBuilder.php:1490
-msgid "array"
-msgstr "array"
-
-#: CFDBViewShortCodeBuilder.php:1491
-msgid "arraynoheader"
-msgstr "arraynoheader"
-
-#: CFDBViewShortCodeBuilder.php:1497
-msgid "[cfdb-value] Options"
-msgstr "[cfdb-value] オプション"
-
-#: CFDBViewShortCodeBuilder.php:1500
-msgid "function"
-msgstr "関数"
-
-#: CFDBViewShortCodeBuilder.php:1505
-msgid "min"
-msgstr "最小"
-
-#: CFDBViewShortCodeBuilder.php:1506
-msgid "max"
-msgstr "最大"
-
-#: CFDBViewShortCodeBuilder.php:1507
-msgid "sum"
-msgstr "合計"
-
-#: CFDBViewShortCodeBuilder.php:1508
-msgid "mean"
-msgstr "平均"
-
-#: CFDBViewShortCodeBuilder.php:1509
-msgid "percent"
-msgstr "パーセント"
-
-#: CFDBViewShortCodeBuilder.php:1514
-msgid "delimiter"
-msgstr "区切り文字"
-
-#: CFDBViewShortCodeBuilder.php:1522
-msgid "[cfdb-html] Options"
-msgstr "[cfdb-html] オプション"
-
-#: CFDBViewShortCodeBuilder.php:1525
-msgid "filelinks"
-msgstr "filelinks"
-
-#: CFDBViewShortCodeBuilder.php:1530
-msgid "url"
-msgstr "url"
-
-#: CFDBViewShortCodeBuilder.php:1531
-msgid "name"
-msgstr "name"
-
-#: CFDBViewShortCodeBuilder.php:1532
-msgid "link"
-msgstr "link"
-
-#: CFDBViewShortCodeBuilder.php:1533
-msgid "img"
-msgstr "img"
-
-#: CFDBViewShortCodeBuilder.php:1536
-msgid "stripbr"
-msgstr "stripbr"
-
-#: CFDBViewShortCodeBuilder.php:1545
-msgid "wpautop"
-msgstr "wpautop"
-
-#: CFDBViewShortCodeBuilder.php:1556
-msgid "Template"
-msgstr "Template"
-
-#: CFDBViewShortCodeBuilder.php:1560
-msgid "Per-entry HTML using ${field name} variables"
-msgstr "案件の表示に使う ${field name} 変数を使った HTML 要素"
-
-#: CFDBViewShortCodeBuilder.php:1565
-msgid "[cfdb-export-link] Options"
-msgstr "[cfdb-export-link] オプション"
-
-#: CFDBViewShortCodeBuilder.php:1568
-msgid "enc"
-msgstr "enc"
-
-#: CFDBViewShortCodeBuilder.php:1602
-msgid "urlonly"
-msgstr "urlonly"
-
-#: CFDBViewShortCodeBuilder.php:1613
-msgid "linktext"
-msgstr "linktext"
-
-#: CFDBViewShortCodeBuilder.php:1623
-msgid "Before"
-msgstr "前"
-
-#: CFDBViewShortCodeBuilder.php:1627
-msgid "Optional HTML/Javascript before the short code output"
-msgstr "オプション: ショートコードを出力する前に、挿入する HTML/Javascript"
-
-#: CFDBViewShortCodeBuilder.php:1631
-msgid "After"
-msgstr "後"
-
-#: CFDBViewShortCodeBuilder.php:1635
-msgid "Optional HTML/Javascript after the short code output"
-msgstr "オプション: ショートコードを出力した後に、挿入する HTML/Javascript"
-
-#: CFDBViewShortCodeBuilder.php:1640
-msgid "Transform"
-msgstr "Transform プラグイン"
-
-#: CFDBViewShortCodeBuilder.php:1643
-msgid "trans"
-msgstr "trans"
-
-#: CFDBViewShortCodeBuilder.php:1647
-msgid "PHP function or class"
-msgstr "PHP 関数または class"
-
-#: CFDBViewShortCodeBuilder.php:1650
-msgid "transform expression"
-msgstr "正規表現"
-
-#: CFDBViewShortCodeBuilder.php:1654
-msgid "tsearch"
-msgstr "tsearch"
-
-#: CFDBViewShortCodeBuilder.php:1661
-msgid "tfilter"
-msgstr "tfilter"
-
-#: CFDBViewShortCodeBuilder.php:1691
-msgid "tlimit"
-msgstr "tlimit"
-
-#: CFDBViewShortCodeBuilder.php:1699
-msgid "torderby"
-msgstr "torderby"
-
-#: CFDBViewWhatsInDB.php:43
-msgid "No form submissions in the database"
-msgstr "データベースにフォームの記録がありませんでした"
-
-#: CFDBViewWhatsInDB.php:173
-msgid "Google Login for Upload"
-msgstr "アップロードのために Google にログインする"
-
-#: CFDBViewWhatsInDB.php:182
-msgid "Cannot perform operation because jQuery is not loaded in this page"
-msgstr "このページに jQuery が読み込まれていないため、処理が実行できません"
-
-#: CFDBViewWhatsInDB.php:186
-msgid "You will now be navigated to the builder page where it will generate a function to place in your Google Spreadsheet"
-msgstr "これから Google スプレッドシートに挿入するための関数を生成するビルダーのページに移動します"
-
-#: CFDBViewWhatsInDB.php:256
-msgid "Google Spreadsheet"
-msgstr "Google スプレッドシート"
-
-#: CFDBViewWhatsInDB.php:262
-msgid "HTML"
-msgstr "HTML"
-
-#: CFDBViewWhatsInDB.php:277
-msgid "Advanced Export"
-msgstr "高度な機能を使った出力"
-
-#: CFDBViewWhatsInDB.php:288
-msgid "Delete All This Form's Records"
-msgstr "このフォームの全ての記録を削除する"
-
-#: CFDBViewWhatsInDB.php:289
-msgid "Are you sure you want to delete all the data for this form?"
-msgstr "このフォームのすべてのデータを削除してもよろしいですか。"
-
-#: CFDBViewWhatsInDB.php:307
-msgid "Edit Data Mode"
-msgstr "データ編集モード"
-
-#: CFDBViewWhatsInDB.php:418
-msgid "Did you know: This plugin captures data from these plugins:"
-msgstr "ご存知ですか? このプラグインは以下のプラグインのデータも記録できます:"
-
-#: CFDBViewWhatsInDB.php:437
-msgid "Did you know: You can add this data to your posts and pages using these shortcodes:"
-msgstr "このショートコードを使って、投稿や固定ページにデータを追加することができます"
-
-#: CFDBViewWhatsInDB.php:451
-msgid "Would you like to help translate this plugin into your language?"
-msgstr "このプラグインをあなたがお使いになっている言語へ翻訳するお手伝いいただけますか。"
-
-#: CFDBViewWhatsInDB.php:453
-msgid "How to create a translation"
-msgstr "翻訳ファイルの作り方"
-
-#: CFDBViewWhatsInDB.php:464
-msgid "Query:"
-msgstr "クエリ:"
-
-#: CFDBViewWhatsInDB.php:486
-msgid "Cancel"
-msgstr "取消"
-
-#: CFDBViewWhatsInDB.php:488
-msgid "Upload"
-msgstr "アップロード"
-
-#: CFDBViewWhatsInDB.php:496
-msgid "Add Column"
-msgstr "列を追加"
-
-#: CFDBViewWhatsInDB.php:497
-msgid "Delete Column"
-msgstr "列を削除"
-
-#: CFDBViewWhatsInDB.php:513
-msgid "next »"
-msgstr "次 »"
-
-#: CFDBViewWhatsInDB.php:514
-msgid "« prev"
-msgstr "« 前"
-
-#: CFDBViewWhatsInDB.php:531
-msgid "Returned entries %s to %s of %s entries in the database"
-msgstr "%s から %s  件目までを表示 (全 %s 件中)"
-
-#: CFDBViewWhatsInDB.php:662 ExportToHtmlTable.php:138
-msgid "All"
-msgstr "すべて"
-
-#: ExportBase.php:339
-msgid "You do not have sufficient permissions to access this data."
-msgstr "このデータにアクセスする必要な権限がありません"
-
-#: ExportToGoogleLiveData.php:74
-msgid "Setting up a Google Spreadsheet to pull in data from WordPress requires these manual steps:"
-msgstr "WordPress からデータを取り込む Google スプレッドシートを設定するには、以下の手動手順が必要です。"
-
-#: ExportToGoogleLiveData.php:89
-msgid "Log into Google Docs and create a new Google Spreadsheet"
-msgstr "Google ドキュメントにログインし、新しい Google スプレッドシートを作成"
-
-#: ExportToGoogleLiveData.php:103
-msgid "Go to <strong>Tools</strong> menu -> <strong>Script Editor..."
-msgstr "<strong>ツール</strong>メニュ ->  <strong>スクリプトエディタ..."
-
-#: ExportToGoogleLiveData.php:117
-msgid "Choose <strong>Spreadsheet</strong>"
-msgstr "<strong>スプレッドシート</strong>を選択"
-
-#: ExportToGoogleLiveData.php:132
-msgid "Delete any text that is already there"
-msgstr "既存のテキストを削除"
-
-#: ExportToGoogleLiveData.php:133
-msgid "<strong>Copy</strong> the text from "
-msgstr "テキストフォームを<strong>コピー</strong>"
-
-#: ExportToGoogleLiveData.php:134
-msgid "THIS SCRIPT FILE"
-msgstr "このスクリプトファイル"
-
-#: ExportToGoogleLiveData.php:135
-msgid "and <strong>paste</strong> it into the Google script editor"
-msgstr "そして、Google スクリプトエディターに<strong>貼り付けます</strong>"
-
-#: ExportToGoogleLiveData.php:151
-msgid "<strong>Save</strong> the script"
-msgstr "スクリプトを<strong>保存</strong>"
-
-#: ExportToGoogleLiveData.php:167
-msgid "Click on a cell A1 in the Spreadsheet (or any cell)"
-msgstr "スプレッドシートのセル A1 (または任意のセル) をクリック"
-
-#: ExportToGoogleLiveData.php:168
-msgid "Enter in the cell the formula:"
-msgstr "セルに数式を入力:"
-
-#: ExportToGoogleLiveData.php:176
-msgid "Customize the output by creating a Google Spreadsheet Function call with additional options"
-msgstr "追加オプション付きの Google スプレッドシート関数コールを作成して出力をカスタマイズ"
-
-#: ExportToGoogleLiveData.php:189
-msgid "How to Set up Google Spreadsheet to pull data from WordPress"
-msgstr "WordPress からデータ取得するように Google スプレッドシートを設定する方法"
-
-#: ExportToGoogleSS.php:62
-msgid "Login Failed"
-msgstr "ログインに失敗しました"
-
-#: ExportToGoogleSS.php:101
-msgid "New Google Spreadsheet"
-msgstr "新しい Google スプレッドシート"
-
-#: ExportToGoogleSS.php:110
-msgid "Error"
-msgstr "エラー"
-
-#: contact-form-7-db.php:21
-msgid "Error: plugin \"Contact Form to DB Extension\" requires a newer version of PHP to be running."
-msgstr "エラー: \"Contact Form to DB Extension\" プラグインには新しいバージョンの PHP が必要です。"
-
-#: contact-form-7-db.php:22
-msgid "Minimal version of PHP required: "
-msgstr "必要な PHP バージョン:"
-
-#: ExportToExcel.php:54 contact-form-7-db.php:23
-msgid "Your server's PHP version: "
-msgstr "ご使用サーバの PHP バージョン:"
-
-#. Plugin URI of the plugin/theme
-msgid "http://wordpress.org/extend/plugins/contact-form-7-to-database-extension/"
-msgstr "http://wordpress.org/extend/plugins/contact-form-7-to-database-extension/"
-
-#. Description of the plugin/theme
-msgid "Save form submissions to the database from <a href=\"http://wordpress.org/extend/plugins/contact-form-7/\">Contact Form 7</a>, <a href=\"http://wordpress.org/extend/plugins/si-contact-form/\">Fast Secure Contact Form</a>, <a href=\"http://wordpress.org/extend/plugins/jetpack/\">JetPack Contact Form</a> and <a href=\"http://www.gravityforms.com\">Gravity Forms</a>. Includes exports and short codes. | <a href=\"admin.php?page=CF7DBPluginSubmissions\">Data</a> | <a href=\"admin.php?page=CF7DBPluginShortCodeBuilder\">Short Codes</a> | <a href=\"admin.php?page=CF7DBPluginSettings\">Settings</a> | <a href=\"http://cfdbplugin.com/\">Reference</a>"
-msgstr "フォームで送信されたデータをデータベースに保存します。<a href=“http://wordpress.org/extend/plugins/contact-form-7/“>Contact Form 7</a>、<a href=“http://wordpress.org/extend/plugins/si-contact-form/“>Fast Secure Contact Form</a>、<a href=“http://wordpress.org/extend/plugins/jetpack/“>Jetpack Contact Form</a>、<a href=“http://www.gravityforms.com”>Gravity Forms</a> に対応しています。エクスポートとショートコードも含まれます。| <a href=“admin.php?page=CF7DBPluginSubmissions”>データ</a> | <a href=“admin.php?page=CF7DBPluginShortCodeBuilder”>ショートコード</a> | <a href=“admin.php?page=CF7DBPluginSettings”>設定</a> | <a href=“http://cfdbplugin.com/“>リファレンス</a>"
+#: CFDBViewShortCodeBuilder.php:281 CFDBViewShortCodeBuilder.php:859
+#: CFDBViewWhatsInDB.php:260
+msgid "OpenDocument .ods"
+msgstr "OpenDocument .ods"
+
+#: CFDBViewShortCodeBuilder.php:278 CFDBViewShortCodeBuilder.php:856
+#: CFDBViewWhatsInDB.php:257
+msgid "Excel .xlsx"
+msgstr "Excel .xlsx"
 
 #. Author of the plugin/theme
 msgid "Michael Simpson"
 msgstr "Michael Simpson"
 
-#: CF7DBOptionsManager.php:286 CF7DBPlugin.php:111 CF7DBPlugin.php:598
-#: ExportToGoogleLiveData.php:31
-msgid "You do not have sufficient permissions to access this page."
-msgstr "このページへアクセスするのに必要な権限を持っていません。"
-
-#: CFDBViewOptions.php:73 CFDBViewOptions.php:193
-msgid "System"
-msgstr "システム"
-
-#: CFDBViewOptions.php:201
-msgid "PHP Version"
-msgstr "PHP バージョン"
-
-#: CFDBViewOptions.php:206
-msgid "(WARNING: This plugin may not work properly with versions earlier than PHP 5.2)"
-msgstr "(注意: このプラグインは PHP5.2 以前のバージョンでは正しく動作しない場合があります)"
-
-#: CFDBViewOptions.php:213
-msgid "MySQL Version"
-msgstr "MySQL バージョン"
-
-#: CFDBViewOptions.php:218
-msgid "(WARNING: This plugin may not work properly with versions earlier than MySQL 5.0)"
-msgstr "(注意: このプラグインは MySQL 5.0 以前のバージョンでは正しく動作しない場合があります)"
-
-#: CFDBViewOptions.php:166
-msgid "Settings"
-msgstr "設定"
-
-#: CFDBViewOptions.php:170
-msgid "Save Changes"
-msgstr "変更を保存"
-
-#: CF7DBOptionsManager.php:354 CF7DBPlugin.php:132
-#: CFDBViewShortCodeBuilder.php:1291 CFDBViewShortCodeBuilder.php:1452
-#: CFDBViewShortCodeBuilder.php:1542 CFDBViewShortCodeBuilder.php:1551
-#: CFDBViewShortCodeBuilder.php:1607
-msgid "true"
-msgstr "はい"
-
-#: CF7DBOptionsManager.php:355 CF7DBPlugin.php:134
-#: CFDBViewShortCodeBuilder.php:1292 CFDBViewShortCodeBuilder.php:1541
-#: CFDBViewShortCodeBuilder.php:1550 CFDBViewShortCodeBuilder.php:1608
-msgid "false"
-msgstr "いいえ"
-
-#: CF7DBPlugin.php:53
-msgid "Capture form submissions from Contact Form 7 Plugin"
-msgstr "Contact Form 7 プラグインの送信データを記録する"
-
-#: CF7DBPlugin.php:55
-msgid "Capture form submissions from Fast Secure Contact Form Plugin"
-msgstr "Fast Secure Contact Form プラグインの送信データを記録する"
-
-#: CF7DBPlugin.php:56
-msgid "Capture form submissions from JetPack Contact Form"
-msgstr " JetPack Contact Form プラグインの送信データを記録する"
-
-#: CF7DBPlugin.php:57
-msgid "Capture form submissions from Gravity Forms"
-msgstr "Gravity Forms プラグインの送信データを記録する"
-
-#: CF7DBPlugin.php:59
-msgid "Capture form submissions from WR ContactForm"
-msgstr "WR ContactForm プラグインの送信データを記録する"
-
-#: CF7DBPlugin.php:60
-msgid "Capture form submissions from Quform"
-msgstr "Quform プラグインの送信データを記録する"
-
-#: CF7DBPlugin.php:61
-msgid "Capture form submissions from Ninja Forms"
-msgstr "Ninja Forms プラグインの送信データを記録する"
-
-#: CF7DBPlugin.php:62
-msgid "Capture form submissions from Caldera Forms"
-msgstr "Caldera Forms プラグインの送信データを記録する"
-
-#: CF7DBPlugin.php:63
-msgid "Capture form submissions from Enfold Theme"
-msgstr "Enfold Theme プラグインの送信データを記録する"
-
-#: CF7DBPlugin.php:69
-msgid "Can See Submission data"
-msgstr "送信データの閲覧許可"
-
-#: CF7DBPlugin.php:77
-msgid "Allow only Administrators to see CFDB administration screens"
-msgstr "管理者のみに CFDB 管理画面の表示を許可"
-
-#: CF7DBPlugin.php:71
-msgid "Can See Submission when using shortcodes"
-msgstr "ショートコードを使った場合に送信データの閲覧許可"
-
-#: CF7DBPlugin.php:73
-msgid "Can Edit/Delete Submission data"
-msgstr "送信データの編集削除を許可"
-
-#: CF7DBPlugin.php:54
-msgid "Generate [submit_time] tag for Contact Form 7 email"
-msgstr "Contact Form 7 メール用の [submit_time] タグを生成"
-
-#: CF7DBPlugin.php:75
-msgid "Allow Any Function in Short Codes"
-msgstr "ショートコード内ですべての関数を許可"
-
-#: CF7DBPlugin.php:76 CF7DBPlugin.php:79
-msgid "(Creates a security hole)"
-msgstr "(セキュリティホールが作られます)"
-
-#: CF7DBPlugin.php:78
-msgid "Allow RSS URLs"
-msgstr "RSS URL を許可"
-
-#: CF7DBPlugin.php:82
-msgid "Timezone to capture Submit Time. Blank will use WordPress Timezone setting. <a target=\"_blank\" href=\"http://www.php.net/manual/en/timezones.php\">Options</a>"
-msgstr "送信時刻を記録するタイムゾーン。空にすると WordPress のタイムゾーン設定を使用します。<a target=\"_blank\" href=\"http://www.php.net/manual/en/timezones.php\">オプション</a>"
-
-#: CF7DBPlugin.php:94
-msgid "Maximum number of rows to retrieve from the DB for the Admin display"
-msgstr "管理画面に表示する際にデータベースから取得する行の最大値"
-
-#: CF7DBPlugin.php:95
-msgid "#Rows (of maximum above) visible in the Admin datatable"
-msgstr "管理データテーブル内で表示される列番号 (上記の最大)"
-
-#: CF7DBPlugin.php:96
-msgid "Use fixed width in Admin datatable"
-msgstr "管理データテーブルで固定幅を使用"
-
-#: CF7DBPlugin.php:97
-msgid "Use Javascript-enabled tables in Admin Database page"
-msgstr "データベース管理画面内の表で JavaScript 機能を使用する"
-
-#: CF7DBPlugin.php:98
-msgid "Show line breaks in submitted data table"
-msgstr "送信データの表内で改行を表示する"
-
-#: CF7DBPlugin.php:89
-msgid "Use Custom Date-Time Display Format (below)"
-msgstr "日付/時刻書式をカスタム設定する (下の欄に入力)"
-
-#: CF7DBPlugin.php:90
-msgid "Date-Time Display Format"
-msgstr "日付/時刻書式設定"
-
-#: CF7DBPlugin.php:91
-msgid "Export URLs instead of file names for uploaded files"
-msgstr "アップロードしたファイルのファイル名の代わりに URL を出力する"
-
-#: CF7DBPlugin.php:83
-msgid "Do not save <u>fields</u> in DB named (comma-separated list, no spaces)"
-msgstr "データベースに保存しない<u>フィールド</u>を指定 (カンマで区切ったリスト、空白は含まない)"
-
-#: CF7DBPlugin.php:84
-msgid "Do not save <u>forms</u> in DB named (comma-separated list, no spaces)"
-msgstr "データベースに保存しない<u>フォーム</u>を指定 (カンマで区切ったリスト、空白は含まない)"
-
-#: CF7DBPlugin.php:85
-msgid "Save Cookie Data with Form Submissions"
-msgstr "フォーム送信時に Cookie データを保存する"
-
-#: CF7DBPlugin.php:86
-msgid "Save only cookies in DB named (comma-separated list, no spaces, and above option must be set to true)"
-msgstr "データベースに保存する Cookie を指定 (カンマ区切りリスト、空白は含まない、上の設定を「はい」にする必要があります)"
-
-#: CF7DBPlugin.php:99
-msgid "Show the query used to display results"
-msgstr "検索に使用したクエリを表示する"
-
-#: CF7DBPlugin.php:103
-msgid "Drop this plugin's Database table on uninstall"
-msgstr "アンインストールの際にこのプラグインのデータベース テーブルを削除する"
-
-#: CF7DBPlugin.php:137 CFDBViewShortCodeBuilder.php:1278
-msgid "Administrator"
-msgstr "管理者"
-
-#: CF7DBPlugin.php:139 CFDBViewShortCodeBuilder.php:1279
-msgid "Editor"
-msgstr "編集者"
-
-#: CF7DBPlugin.php:141 CFDBViewShortCodeBuilder.php:1280
-msgid "Author"
-msgstr "投稿者"
-
-#: CF7DBPlugin.php:143 CFDBViewShortCodeBuilder.php:1281
-msgid "Contributor"
-msgstr "寄稿者"
-
-#: CF7DBPlugin.php:145 CFDBViewShortCodeBuilder.php:1282
-msgid "Subscriber"
-msgstr "購読者"
-
-#: CF7DBPlugin.php:147 CFDBViewShortCodeBuilder.php:1283
-msgid "Anyone"
-msgstr "だれでも"
-
-#: CF7DBPlugin.php:604
-msgid "Missing form parameters"
-msgstr "フォームの設定条件が不足しています"
-
-#: CF7DBPlugin.php:608
-msgid "No such file."
-msgstr "指定したファイルはありませんでした"
-
-#: CF7DBPlugin.php:669
-msgid "Invalid: "
-msgstr "無効:"
-
-#: CF7DBPlugin.php:672
-msgid "Valid: "
-msgstr "有効:"
-
-#: CF7DBPlugin.php:690
-msgid "Checking for conflicting entries. This may take a few minutes."
-msgstr "競合する項目を確認中。数分かかる場合があります。"
-
-#: CF7DBPlugin.php:695
-msgid "Phase 1 of 3..."
-msgstr "フェーズ1 (全3フェーズ中)"
-
-#: CF7DBPlugin.php:697 CF7DBPlugin.php:703 CF7DBPlugin.php:709
-msgid "Database entries fixed: "
-msgstr "修正したデータベースエントリー:"
-
-#: CF7DBPlugin.php:701
-msgid "Phase 2 of 3..."
-msgstr "フェーズ2 (全3フェーズ中)"
-
-#: CF7DBPlugin.php:707
-msgid "Phase 3 of 3..."
-msgstr "フェーズ3 (全3フェーズ中)"
-
-#. #-#-#-#-#  tmp-contact-form-7-to-database-extension.pot (Contact Form DB
-#. 2.10.13)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#: CF7DBPlugin.php:989
-msgid "Contact Form DB"
-msgstr "Contact Form DB"
-
-#: CF7DBPlugin.php:1038 CFDBViewShortCodeBuilder.php:1238
-msgid "Short Code"
-msgstr "ショートコード"
-
-#: CF7DBPlugin.php:1046 CFDBViewImportCsv.php:72
-msgid "Import"
-msgstr "インポート"
-
-#: CF7DBPlugin.php:1063
-msgid "Options"
-msgstr "設定"
-
-#: CF7DBPlugin.php:1124 ExportToHtmlTable.php:231
-msgid "Delete"
-msgstr "削除"
-
-#: CF7DBPlugin.php:1479
-msgid "Plugin should be updated: "
-msgstr "更新する必要があるプラグイン: "
-
-#: CF7DBPlugin.php:1480
-msgid "Current version: "
-msgstr "現在のバージョン: "
-
-#: CF7DBPlugin.php:1481
-msgid "Minimum required version: "
-msgstr "最低要求バージョン: "
-
-#: CF7DBPlugin.php:1482
-msgid "Download the latest version"
-msgstr "最新バージョンをダウンロード"
-
-#: CFDBCheckZendFramework.php:72
-msgid "Missing Zend Framework"
-msgstr "Zend Framework が見つかりません"
-
-#: CFDBIntegrationFSCF.php:52
-msgid "Database"
-msgstr "データベース"
+#. Description of the plugin/theme
+msgid "Save form submissions to the database from <a href=\"http://wordpress.org/extend/plugins/contact-form-7/\">Contact Form 7</a>, <a href=\"http://wordpress.org/extend/plugins/si-contact-form/\">Fast Secure Contact Form</a>, <a href=\"http://wordpress.org/extend/plugins/jetpack/\">JetPack Contact Form</a> and <a href=\"http://www.gravityforms.com\">Gravity Forms</a>. Includes exports and short codes. | <a href=\"admin.php?page=CF7DBPluginSubmissions\">Data</a> | <a href=\"admin.php?page=CF7DBPluginShortCodeBuilder\">Short Codes</a> | <a href=\"admin.php?page=CF7DBPluginSettings\">Settings</a> | <a href=\"http://cfdbplugin.com/\">Reference</a>"
+msgstr "フォームで送信されたデータをデータベースに保存します。<a href=“http://wordpress.org/extend/plugins/contact-form-7/“>Contact Form 7</a>、<a href=“http://wordpress.org/extend/plugins/si-contact-form/“>Fast Secure Contact Form</a>、<a href=“http://wordpress.org/extend/plugins/jetpack/“>Jetpack Contact Form</a>、<a href=“http://www.gravityforms.com”>Gravity Forms</a> に対応しています。エクスポートとショートコードも含まれます。| <a href=“admin.php?page=CF7DBPluginSubmissions”>データ</a> | <a href=“admin.php?page=CF7DBPluginShortCodeBuilder”>ショートコード</a> | <a href=“admin.php?page=CF7DBPluginSettings”>設定</a> | <a href=“http://cfdbplugin.com/“>リファレンス</a>"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/contact-form-7-to-database-extension/"
+msgstr "http://wordpress.org/extend/plugins/contact-form-7-to-database-extension/"
+
+#: CFDBViewOptions.php:154 ExportToExcel.php:54 contact-form-7-db.php:23
+msgid "Your server's PHP version: "
+msgstr "ご使用サーバの PHP バージョン:"
+
+#: contact-form-7-db.php:22
+msgid "Minimal version of PHP required: "
+msgstr "必要な PHP バージョン:"
+
+#: contact-form-7-db.php:21
+msgid "Error: plugin \"Contact Form to DB Extension\" requires a newer version of PHP to be running."
+msgstr "エラー: \"Contact Form to DB Extension\" プラグインには新しいバージョンの PHP が必要です。"
+
+#: ExportToGoogleSS.php:110
+msgid "Error"
+msgstr "エラー"
+
+#: ExportToGoogleSS.php:101
+msgid "New Google Spreadsheet"
+msgstr "新しい Google スプレッドシート"
+
+#: ExportToGoogleSS.php:62
+msgid "Login Failed"
+msgstr "ログインに失敗しました"
+
+#: ExportToGoogleLiveData.php:189
+msgid "How to Set up Google Spreadsheet to pull data from WordPress"
+msgstr "WordPress からデータ取得するように Google スプレッドシートを設定する方法"
+
+#: ExportToGoogleLiveData.php:176
+msgid "Customize the output by creating a Google Spreadsheet Function call with additional options"
+msgstr "追加オプション付きの Google スプレッドシート関数コールを作成して出力をカスタマイズ"
+
+#: ExportToGoogleLiveData.php:168
+msgid "Enter in the cell the formula:"
+msgstr "セルに数式を入力:"
+
+#: ExportToGoogleLiveData.php:167
+msgid "Click on a cell A1 in the Spreadsheet (or any cell)"
+msgstr "スプレッドシートのセル A1 (または任意のセル) をクリック"
+
+#: ExportToGoogleLiveData.php:151
+msgid "<strong>Save</strong> the script"
+msgstr "スクリプトを<strong>保存</strong>"
+
+#: ExportToGoogleLiveData.php:135
+msgid "and <strong>paste</strong> it into the Google script editor"
+msgstr "そして、Google スクリプトエディターに<strong>貼り付けます</strong>"
+
+#: ExportToGoogleLiveData.php:134
+msgid "THIS SCRIPT FILE"
+msgstr "このスクリプトファイル"
+
+#: ExportToGoogleLiveData.php:133
+msgid "<strong>Copy</strong> the text from "
+msgstr "テキストフォームを<strong>コピー</strong>"
+
+#: ExportToGoogleLiveData.php:132
+msgid "Delete any text that is already there"
+msgstr "既存のテキストを削除"
+
+#: ExportToGoogleLiveData.php:117
+msgid "Choose <strong>Spreadsheet</strong>"
+msgstr "<strong>スプレッドシート</strong>を選択"
+
+#: ExportToGoogleLiveData.php:103
+msgid "Go to <strong>Tools</strong> menu -> <strong>Script Editor..."
+msgstr "<strong>ツール</strong>メニュ ->  <strong>スクリプトエディタ..."
+
+#: ExportToGoogleLiveData.php:89
+msgid "Log into Google Docs and create a new Google Spreadsheet"
+msgstr "Google ドキュメントにログインし、新しい Google スプレッドシートを作成"
+
+#: ExportToGoogleLiveData.php:74
+msgid "Setting up a Google Spreadsheet to pull in data from WordPress requires these manual steps:"
+msgstr "WordPress からデータを取り込む Google スプレッドシートを設定するには、以下の手動手順が必要です。"
+
+#: ExportBase.php:339
+msgid "You do not have sufficient permissions to access this data."
+msgstr "このデータにアクセスする必要な権限がありません"
+
+#: CFDBViewWhatsInDB.php:681 ExportToHtmlTable.php:138
+msgid "All"
+msgstr "すべて"
+
+#: CFDBViewWhatsInDB.php:538
+msgid "Returned entries %s to %s of %s entries in the database"
+msgstr "%s から %s  件目までを表示 (全 %s 件中)"
+
+#: CFDBViewWhatsInDB.php:519
+msgid "« prev"
+msgstr "« 前"
+
+#: CFDBViewWhatsInDB.php:518
+msgid "next »"
+msgstr "次 »"
+
+#: CFDBViewWhatsInDB.php:501
+msgid "Delete Column"
+msgstr "列を削除"
+
+#: CFDBViewWhatsInDB.php:500
+msgid "Add Column"
+msgstr "列を追加"
+
+#: CFDBViewWhatsInDB.php:492
+msgid "Upload"
+msgstr "アップロード"
+
+#: CFDBViewWhatsInDB.php:490
+msgid "Cancel"
+msgstr "取消"
+
+#: CFDBViewWhatsInDB.php:468
+msgid "Query:"
+msgstr "クエリ:"
+
+#: CFDBViewWhatsInDB.php:457
+msgid "How to create a translation"
+msgstr "翻訳ファイルの作り方"
+
+#: CFDBViewWhatsInDB.php:455
+msgid "Would you like to help translate this plugin into your language?"
+msgstr "このプラグインをあなたがお使いになっている言語へ翻訳するお手伝いいただけますか。"
+
+#: CFDBViewWhatsInDB.php:441
+msgid "Did you know: You can add this data to your posts and pages using these shortcodes:"
+msgstr "このショートコードを使って、投稿や固定ページにデータを追加することができます"
+
+#: CFDBViewWhatsInDB.php:329
+msgid "Edit Data Mode"
+msgstr "データ編集モード"
+
+#: CFDBViewWhatsInDB.php:311
+msgid "Are you sure you want to delete all the data for this form?"
+msgstr "このフォームのすべてのデータを削除してもよろしいですか。"
+
+#: CFDBViewWhatsInDB.php:310
+msgid "Delete All This Form's Records"
+msgstr "このフォームの全ての記録を削除する"
+
+#: CFDBViewWhatsInDB.php:299
+msgid "Advanced Export"
+msgstr "高度な機能を使った出力"
+
+#: CFDBViewWhatsInDB.php:284
+msgid "HTML"
+msgstr "HTML"
+
+#: CFDBViewWhatsInDB.php:278
+msgid "Google Spreadsheet"
+msgstr "Google スプレッドシート"
+
+#: CFDBViewWhatsInDB.php:194
+msgid "You will now be navigated to the builder page where it will generate a function to place in your Google Spreadsheet"
+msgstr "これから Google スプレッドシートに挿入するための関数を生成するビルダーのページに移動します"
+
+#: CFDBViewWhatsInDB.php:190
+msgid "Cannot perform operation because jQuery is not loaded in this page"
+msgstr "このページに jQuery が読み込まれていないため、処理が実行できません"
+
+#: CFDBViewWhatsInDB.php:181
+msgid "Google Login for Upload"
+msgstr "アップロードのために Google にログインする"
+
+#: CFDBViewWhatsInDB.php:44
+msgid "No form submissions in the database"
+msgstr "データベースにフォームの記録がありませんでした"
+
+#: CFDBViewShortCodeBuilder.php:624
+msgid "torderby"
+msgstr "torderby"
+
+#: CFDBViewShortCodeBuilder.php:611
+msgid "tlimit"
+msgstr "tlimit"
+
+#: CFDBViewShortCodeBuilder.php:574
+msgid "tfilter"
+msgstr "tfilter"
+
+#: CFDBViewShortCodeBuilder.php:565
+msgid "tsearch"
+msgstr "tsearch"
+
+#: CFDBViewShortCodeBuilder.php:561
+msgid "transform expression"
+msgstr "正規表現"
+
+#: CFDBViewShortCodeBuilder.php:557
+msgid "PHP function or class"
+msgstr "PHP 関数または class"
+
+#: CFDBViewShortCodeBuilder.php:551
+msgid "trans"
+msgstr "trans"
+
+#: CFDBViewShortCodeBuilder.php:113 CFDBViewShortCodeBuilder.php:548
+msgid "Transform"
+msgstr "Transform プラグイン"
+
+#: CFDBViewShortCodeBuilder.php:664
+msgid "Optional HTML/Javascript after the short code output"
+msgstr "オプション: ショートコードを出力した後に、挿入する HTML/Javascript"
+
+#: CFDBViewShortCodeBuilder.php:658
+msgid "After"
+msgstr "後"
+
+#: CFDBViewShortCodeBuilder.php:654
+msgid "Optional HTML/Javascript before the short code output"
+msgstr "オプション: ショートコードを出力する前に、挿入する HTML/Javascript"
+
+#: CFDBViewShortCodeBuilder.php:648
+msgid "Before"
+msgstr "前"
+
+#: CFDBViewShortCodeBuilder.php:896
+msgid "linktext"
+msgstr "linktext"
+
+#: CFDBViewShortCodeBuilder.php:884
+msgid "urlonly"
+msgstr "urlonly"
+
+#: CFDBViewShortCodeBuilder.php:849
+msgid "enc"
+msgstr "enc"
+
+#: CFDBViewShortCodeBuilder.php:846
+msgid "[cfdb-export-link] Options"
+msgstr "[cfdb-export-link] オプション"
+
+#: CFDBViewShortCodeBuilder.php:841
+msgid "Per-entry HTML using ${field name} variables"
+msgstr "案件の表示に使う ${field name} 変数を使った HTML 要素"
+
+#: CFDBViewShortCodeBuilder.php:833
+msgid "Template"
+msgstr "Template"
+
+#: CFDBViewShortCodeBuilder.php:821
+msgid "wpautop"
+msgstr "wpautop"
+
+#: CFDBViewShortCodeBuilder.php:810
+msgid "stripbr"
+msgstr "stripbr"
+
+#: CFDBViewShortCodeBuilder.php:807
+msgid "img"
+msgstr "img"
+
+#: CFDBViewShortCodeBuilder.php:806
+msgid "link"
+msgstr "link"
+
+#: CFDBViewShortCodeBuilder.php:805
+msgid "name"
+msgstr "name"
+
+#: CFDBViewShortCodeBuilder.php:804
+msgid "url"
+msgstr "url"
+
+#: CFDBViewShortCodeBuilder.php:798
+msgid "filelinks"
+msgstr "filelinks"
+
+#: CFDBViewShortCodeBuilder.php:795
+msgid "[cfdb-html] Options"
+msgstr "[cfdb-html] オプション"
+
+#: CFDBViewShortCodeBuilder.php:786
+msgid "delimiter"
+msgstr "区切り文字"
+
+#: CFDBViewShortCodeBuilder.php:781
+msgid "percent"
+msgstr "パーセント"
+
+#: CFDBViewShortCodeBuilder.php:780
+msgid "mean"
+msgstr "平均"
+
+#: CFDBViewShortCodeBuilder.php:779
+msgid "sum"
+msgstr "合計"
+
+#: CFDBViewShortCodeBuilder.php:778
+msgid "max"
+msgstr "最大"
+
+#: CFDBViewShortCodeBuilder.php:777
+msgid "min"
+msgstr "最小"
+
+#: CFDBViewShortCodeBuilder.php:771
+msgid "function"
+msgstr "関数"
+
+#: CFDBViewShortCodeBuilder.php:768
+msgid "[cfdb-value] Options"
+msgstr "[cfdb-value] オプション"
+
+#: CFDBViewShortCodeBuilder.php:762
+msgid "arraynoheader"
+msgstr "arraynoheader"
+
+#: CFDBViewShortCodeBuilder.php:761
+msgid "array"
+msgstr "array"
+
+#: CFDBViewShortCodeBuilder.php:760
+msgid "map"
+msgstr "map"
+
+#: CFDBViewShortCodeBuilder.php:754
+msgid "format"
+msgstr "書式"
+
+#: CFDBViewShortCodeBuilder.php:750
+msgid "JS var name"
+msgstr "JavaScript 変数名"
+
+#: CFDBViewShortCodeBuilder.php:745
+msgid "var"
+msgstr "var"
+
+#: CFDBViewShortCodeBuilder.php:742
+msgid "[cfdb-json] Options"
+msgstr "[cfdb-json] オプション"
+
+#: CFDBViewShortCodeBuilder.php:737
+msgid "datatable options (JSON)"
+msgstr "datatable オプション (JSON)"
+
+#: CFDBViewShortCodeBuilder.php:732
+msgid "dt_options"
+msgstr "dt_options"
+
+#: CFDBViewShortCodeBuilder.php:715
+msgid "cells"
+msgstr "セル"
+
+#: CFDBViewShortCodeBuilder.php:708
+msgid "edit"
+msgstr "編集"
+
+#: CFDBViewShortCodeBuilder.php:705
+msgid "[cfdb-datatable] Options"
+msgstr "[cfdb-datatable] オプション"
+
+#: CFDBViewShortCodeBuilder.php:700
+msgid "CSS style"
+msgstr "CSS スタイル"
+
+#: CFDBViewShortCodeBuilder.php:695
+msgid "style"
+msgstr "style"
+
+#: CFDBViewShortCodeBuilder.php:691
+msgid "HTML class"
+msgstr "HTML class"
+
+#: CFDBViewShortCodeBuilder.php:686
+msgid "class"
+msgstr "class"
+
+#: CFDBViewShortCodeBuilder.php:682
+msgid "HTML id"
+msgstr "HTML id"
+
+#: CFDBViewShortCodeBuilder.php:677
+msgid "id"
+msgstr "id"
+
+#: CFDBViewShortCodeBuilder.php:674
+msgid "HTML Table Formatting"
+msgstr "テーブル形式 (HTML)"
+
+#: CFDBViewShortCodeBuilder.php:441
+msgid "field1=Display Name 1,field2=Display Name 2"
+msgstr "field1 =表示名1, field2=表示名2"
+
+#: CFDBViewShortCodeBuilder.php:437
+msgid "display value"
+msgstr "表示値"
+
+#: CFDBViewShortCodeBuilder.php:435
+msgid "display as"
+msgstr "表示"
+
+#: CFDBViewShortCodeBuilder.php:430
+msgid "headers"
+msgstr "ヘッダー"
+
+#: CFDBViewShortCodeBuilder.php:425
+msgid "Include Header Row"
+msgstr "ヘッダ行を含める"
+
+#: CFDBViewShortCodeBuilder.php:421
+msgid "Table Headers"
+msgstr "テーブルのヘッダー"
+
+#: CFDBViewShortCodeBuilder.php:538 CFDBViewShortCodeBuilder.php:636
+msgid "DESC"
+msgstr "降順 (DESC)"
+
+#: CFDBViewShortCodeBuilder.php:537 CFDBViewShortCodeBuilder.php:635
+msgid "ASC"
+msgstr "昇順 (ASC)"
+
+#: CFDBViewShortCodeBuilder.php:532 CFDBViewShortCodeBuilder.php:630
+#: CFDBViewShortCodeBuilder.php:726
+msgid "field"
+msgstr "フィールド"
+
+#: CFDBViewShortCodeBuilder.php:526
+msgid "orderby"
+msgstr "orderby"
+
+#: CFDBViewShortCodeBuilder.php:517
+msgid "random"
+msgstr "random"
+
+#: CFDBViewShortCodeBuilder.php:946
+msgid "unbuffered"
+msgstr "unbuffered"
+
+#: CFDBViewShortCodeBuilder.php:511 CFDBViewShortCodeBuilder.php:618
+msgid "Start Row (0)"
+msgstr "先頭行"
+
+#: CFDBViewShortCodeBuilder.php:510 CFDBViewShortCodeBuilder.php:513
+#: CFDBViewShortCodeBuilder.php:522 CFDBViewShortCodeBuilder.php:617
+#: CFDBViewShortCodeBuilder.php:620
+msgid "number"
+msgstr "取得行数"
+
+#: CFDBViewShortCodeBuilder.php:508 CFDBViewShortCodeBuilder.php:615
+msgid "Num Rows"
+msgstr "行数"
+
+#: CFDBViewShortCodeBuilder.php:504
+msgid "limit"
+msgstr "limit"
+
+#: CFDBViewShortCodeBuilder.php:497 CFDBViewShortCodeBuilder.php:607
+msgid "filter expression"
+msgstr "フィルターの条件式"
+
+#: CFDBViewShortCodeBuilder.php:493 CFDBViewShortCodeBuilder.php:603
+msgid "Formats"
+msgstr "書式"
+
+#: CFDBViewShortCodeBuilder.php:491 CFDBViewShortCodeBuilder.php:601
+msgid "Validate submit_time"
+msgstr "submit_time を検証"
+
+#: CFDBViewShortCodeBuilder.php:487 CFDBViewShortCodeBuilder.php:597
+msgid "value"
+msgstr "値"
+
+#: CFDBViewShortCodeBuilder.php:464
+msgid "filter"
+msgstr "filter"
+
+#: CFDBViewShortCodeBuilder.php:460 CFDBViewShortCodeBuilder.php:570
+msgid "search text"
+msgstr "検索文字列"
+
+#: CFDBViewShortCodeBuilder.php:455
+msgid "search"
+msgstr "検索"
+
+#: CFDBViewShortCodeBuilder.php:452
+msgid "Which rows/submissions do you want to display?"
+msgstr "表示する行/送信データの指定"
+
+#: CFDBViewShortCodeBuilder.php:409
+msgid "hide"
+msgstr "hide"
+
+#: CFDBViewShortCodeBuilder.php:405 CFDBViewShortCodeBuilder.php:416
+#: CFDBViewShortCodeBuilder.php:534 CFDBViewShortCodeBuilder.php:632
+#: CFDBViewShortCodeBuilder.php:728
+msgid "field1,field2,field3"
+msgstr "field1,field2,field3"
+
+#: CFDBViewShortCodeBuilder.php:398
+msgid "show"
+msgstr "show"
+
+#: CFDBViewShortCodeBuilder.php:395
+msgid "Which fields/columns do you want to display?"
+msgstr "表示するフィールド/列の指定"
+
+#: CFDBViewShortCodeBuilder.php:926
+msgid "permissionmsg"
+msgstr "permissionmsg"
+
+#: CFDBViewShortCodeBuilder.php:912
+msgid "role"
+msgstr "role"
+
+#: CFDBViewOptions.php:63 CFDBViewShortCodeBuilder.php:909
+msgid "Security"
+msgstr "セキュリティ"
+
+#: CFDBViewShortCodeBuilder.php:262
+msgid "(Did you know: you can create your own short code)"
+msgstr "(カスタムのショートコードの作り方)"
+
+#: CFDBViewShortCodeBuilder.php:255
+msgid "Generated Shortcode:"
+msgstr "生成したショートコード:"
+
+#: CFDBViewShortCodeBuilder.php:239
+msgid "* Select a short code *"
+msgstr "* ショートコードを選択 *"
+
+#: CFDBViewShortCodeBuilder.php:346
+msgid "See instructions."
+msgstr "説明書を参照"
+
+#: CFDBViewShortCodeBuilder.php:344
+msgid "Get code"
+msgstr "コードの取得"
+
+#: CFDBViewShortCodeBuilder.php:342
+msgid "Requires code installed in your Google Spreadsheet script editor."
+msgstr "必要なコードを Google スプレットシートのスクリプトエディタにインストールしました。"
+
+#: CFDBViewShortCodeBuilder.php:340 ExportToGoogleLiveData.php:170
+msgid "Replace <strong>&lt;password&gt;</strong> with your <em>WordPress</em> password"
+msgstr "<strong>&lt;パスワード&gt;</strong> の値を、 <em>WordPress</em> パスワードに差し替えてください。"
+
+#: CFDBViewShortCodeBuilder.php:339
+msgid "Generated Google Spreadsheet Function:"
+msgstr "生成した Google スプレットシート関数:"
+
+#: CFDBViewShortCodeBuilder.php:336
+msgid "Enter this function into a cell in your Google Spreadsheet:"
+msgstr "Google スプレットシートのセルにこの関数を入力してください。"
+
+#: CFDBViewShortCodeBuilder.php:334
+msgid "Generated Export Link:"
+msgstr "生成したエクスポートファイルへのリンク:"
+
+#: CFDBViewShortCodeBuilder.php:330
+msgid "Hide Credentials"
+msgstr "認証情報を非表示"
+
+#: CFDBViewShortCodeBuilder.php:327
+msgid "WP Password"
+msgstr "WordPress パスワード"
+
+#: CFDBViewShortCodeBuilder.php:325
+msgid "WP User"
+msgstr "WordPress ユーザー"
+
+#: CFDBViewShortCodeBuilder.php:322
+msgid "Optional: provide a WP login for the link to work without being already logged in"
+msgstr "オプション:  WordPress にログインせずに動作するためのリンク生成のために、WordPress のログイン情報を入力してください。"
+
+#: CFDBViewShortCodeBuilder.php:319
+msgid "Provide a WP login for the Google Spreadsheet to use to connect to your WP site"
+msgstr "Google スプレットシートが WordPress サイトに接続するために、接続先の WordPress にログインしてください。"
+
+#: CFDBViewShortCodeBuilder.php:313
+msgid "Item Title"
+msgstr "項目のタイトル"
+
+#: CFDBViewShortCodeBuilder.php:305 CFDBViewWhatsInDB.php:287
+msgid "JSON"
+msgstr "JSON"
+
+#: CFDBViewShortCodeBuilder.php:302
+msgid "RSS"
+msgstr "RSS"
+
+#: CFDBViewShortCodeBuilder.php:299 CFDBViewWhatsInDB.php:281
+msgid "Google Spreadsheet Live Data"
+msgstr "Google スプレッドシート Live データ"
+
+#: CFDBViewShortCodeBuilder.php:296 CFDBViewShortCodeBuilder.php:874
+#: CFDBViewWhatsInDB.php:263
+msgid "Excel Internet Query"
+msgstr "Excel Webクエリ"
+
+#: CFDBViewShortCodeBuilder.php:293 CFDBViewShortCodeBuilder.php:871
+#: CFDBViewWhatsInDB.php:275
+msgid "Excel CSV for Japanese (Shift-JIS)"
+msgstr "日本語版 Excel CSV (Shift-JIS)"
+
+#: CFDBViewShortCodeBuilder.php:290 CFDBViewShortCodeBuilder.php:868
+#: CFDBViewWhatsInDB.php:272
+msgid "Plain CSV (UTF-8)"
+msgstr "CSV (UTF-8)"
+
+#: CFDBViewShortCodeBuilder.php:287 CFDBViewShortCodeBuilder.php:865
+#: CFDBViewWhatsInDB.php:269
+msgid "Excel TSV (UTF16LE-BOM)"
+msgstr "Excel TSV (UTF16LE-BOM)"
+
+#: CFDBViewShortCodeBuilder.php:284 CFDBViewShortCodeBuilder.php:862
+#: CFDBViewWhatsInDB.php:266
+msgid "Excel CSV (UTF8-BOM)"
+msgstr "Excel CSV (UTF8-BOM)"
+
+#: CFDBViewShortCodeBuilder.php:274
+msgid "Export File"
+msgstr "エクスポートファイル形式"
+
+#: CFDBViewShortCodeBuilder.php:74
+msgid "Reset"
+msgstr "リセット"
+
+#: CFDBViewWhatsInDB.php:121
+msgid "* Select a form *"
+msgstr "フォームを選択"
+
+#: CFDBViewShortCodeBuilder.php:1670
+msgid "Because the generated URL would be too long, you must use this alternative function and add its script to your Google Spreadsheet"
+msgstr "生成された URL が長すぎるため、その代替機能として、そのスクリプトを Google スプレットシートへ追加する必要があります。"
+
+#: CFDBViewShortCodeBuilder.php:1667
+msgid "Error: WP User and Password are required for the Google Spreadsheet to pull data from your WordPress site."
+msgstr "エラー:  WordPress サイトからデータを Google スプレットシートへ取得するために、WordPress ユーザーとパスワードが必要です。"
+
+#: CFDBViewShortCodeBuilder.php:1660
+msgid "Warning: the function includes your WP login information. Avoid sharing it."
+msgstr "警告: その機能は WordPress ログイン情報を含んでいます。それを共有するのを避けてください。"
+
+#: CFDBViewShortCodeBuilder.php:1460
+msgid "Error: \"edit=true\" will not work properly when setting \"headers\" "
+msgstr "エラー:  \"headers\" を設定している場合には、\"edit=true\" は正しく動作しません。"
+
+#: CFDBViewShortCodeBuilder.php:1385
+msgid "Error: [cfdb-html] has empty Template. It will not output anything. "
+msgstr "エラー: [cfdb-html] にテンプレートを指定していません。何も出力しません。 "
+
+#: CFDBViewShortCodeBuilder.php:1290
+msgid "Error: \"FIELD\": \"Start Row\" must be a positive integer"
+msgstr "エラー: \"FIELD\": \"Start Row\" は、正数を入力してください。"
+
+#: CFDBViewShortCodeBuilder.php:1282
+msgid "Error: \"FIELD\": \"Num Rows\" must be a positive integer"
+msgstr "エラー: \"FIELD\" : \"Num Rows\" は、正数を入力してください。"
+
+#: CFDBViewShortCodeBuilder.php:1277
+msgid "Error: \"FIELD\": if you provide a value for \"Start Row\" then you must also provide a value for \"Num Rows\""
+msgstr "エラー: \"FIELD\" : もし、\"Start Row\" に値が入力された場合、\"Now Rows\" にも値を入力してください。"
+
+#: CFDBViewShortCodeBuilder.php:1256
+msgid "Warning: \"search\" field ignored because FIELD is used (use one but not both)"
+msgstr "警告: \"FIELD\" が利用されたので \"search\" フィールドを無視しました（両方は使えません）。"
+
+#: CFDBViewShortCodeBuilder.php:1209
+msgid "Error: no form is chosen"
+msgstr "エラー: フォームを選択していません"
+
+#: CFDBViewShortCodeBuilder.php:1127 CFDBViewShortCodeBuilder.php:1140
+msgid "\" should not contain double-quotes (\")"
+msgstr "\" に二重引用符 (\") を含めることではできません"
+
+#: CFDBViewShortCodeBuilder.php:1125 CFDBViewShortCodeBuilder.php:1138
+msgid "Error: \""
+msgstr "エラー: \""
+
+#: CFDBViewImportCsv.php:125
+msgid "Clean up data"
+msgstr "データのクリーンアップをします"
+
+#: CFDBViewImportCsv.php:123
+msgid "Clean up data that can cause incorrect behavior"
+msgstr "不正な動作を引き起こすデータをクリーンアップします。"
+
+#: CFDBViewImportCsv.php:122
+msgid "Data Cleanup"
+msgstr "データのクリーンアップ"
+
+#: CFDBViewImportCsv.php:106
+msgid "Limitation: extremely large numbers of records in your form may cause the export operation on your server to run out of memory, thereby not giving you all the rows."
+msgstr "制限: フォーム内のデータレコード数が非常に大きい場合、エクスポート時にサーバーのメモリオーバーが発生しすべての列データを取得できない可能性があります。"
+
+#: CFDBViewImportCsv.php:105
+msgid "Limitation: this will not export file uploads."
+msgstr "制限: アップロードファイルはエクスポートしません。"
+
+#: CFDBViewImportCsv.php:104
+msgid "Backup a form into a CSV file that can be re-imported without loss of data."
+msgstr "フォームデータを失うことなく再度フォームへインポートできる CSV ファイルとしてバックアップします。"
+
+#: CFDBViewImportCsv.php:102
+msgid "Backup Form to CSV File"
+msgstr "フォームデータを CSV ファイルへバックアップ"
+
+#: CFDBViewImportCsv.php:99
+msgid "Rename"
+msgstr "名称変更"
+
+#: CFDBViewImportCsv.php:88
+msgid "Rename Form"
+msgstr "フォームの名称変更"
+
+#: CFDBViewImportCsv.php:60
+msgid "Existing Form"
+msgstr "既存フォーム"
+
+#: CFDBViewImportCsv.php:56
+msgid "New Form"
+msgstr "新規フォーム"
+
+#: CFDBViewImportCsv.php:52
+msgid "File"
+msgstr "ファイル"
+
+#: CFDBViewImportCsv.php:47
+msgid "Import CSV File into Form"
+msgstr "CSV ファイルをフォームへインポートする"
+
+#: CFDBView.php:81
+msgid "Support"
+msgstr "サポート"
+
+#: CFDBView.php:75 CFDBViewShortCodeBuilder.php:249
+#: CFDBViewShortCodeBuilder.php:975
+msgid "Documentation"
+msgstr "ドキュメント"
+
+#: CFDBView.php:69
+msgid "Rate this Plugin"
+msgstr "このプラグインを評価する"
+
+#: CFDBShortcodeExportUrl.php:59 CFDBViewImportCsv.php:120
+#: CFDBViewOptions.php:69 CFDBViewShortCodeBuilder.php:89
+#: CFDBViewWhatsInDB.php:291
+msgid "Export"
+msgstr "エクスポート"
+
+#: CFDBIntegrationFSCF.php:58
+msgid "Reference"
+msgstr "リファレンス"
+
+#: CFDBIntegrationFSCF.php:56
+msgid "Build Shortcode"
+msgstr "ショートコード生成"
 
 #: CFDBIntegrationFSCF.php:54
 msgid "Database Options"
 msgstr "データベース設定"
 
-#: CFDBIntegrationFSCF.php:56
-msgid "Build Short Code"
-msgstr "ショートコード生成"
+#: CFDBIntegrationFSCF.php:52
+msgid "Database"
+msgstr "データベース"
 
-#: CFDBIntegrationFSCF.php:58
-msgid "Reference"
-msgstr "リファレンス"
+#: CFDBCheckZendFramework.php:72
+msgid "Missing Zend Framework"
+msgstr "Zend Framework が見つかりません"
+
+#: CF7DBPlugin.php:1511
+msgid "Download the latest version"
+msgstr "最新バージョンをダウンロード"
+
+#: CF7DBPlugin.php:1510
+msgid "Minimum required version: "
+msgstr "最低要求バージョン: "
+
+#: CF7DBPlugin.php:1509
+msgid "Current version: "
+msgstr "現在のバージョン: "
+
+#: CF7DBPlugin.php:1508
+msgid "Plugin should be updated: "
+msgstr "更新する必要があるプラグイン: "
+
+#: CF7DBPlugin.php:1158 ExportToHtmlTable.php:231
+msgid "Delete"
+msgstr "削除"
+
+#: CF7DBPlugin.php:1094
+msgid "Options"
+msgstr "設定"
+
+#: CF7DBPlugin.php:1077 CFDBViewImportCsv.php:75
+msgid "Import"
+msgstr "インポート"
+
+#. #-#-#-#-#  tmp-contact-form-7-to-database-extension.pot (Contact Form DB
+#. 2.10.26)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: CF7DBPlugin.php:1014
+msgid "Contact Form DB"
+msgstr "Contact Form DB"
+
+#: CF7DBPlugin.php:727
+msgid "Phase 3 of 3..."
+msgstr "フェーズ3 (全3フェーズ中)"
+
+#: CF7DBPlugin.php:721
+msgid "Phase 2 of 3..."
+msgstr "フェーズ2 (全3フェーズ中)"
+
+#: CF7DBPlugin.php:717 CF7DBPlugin.php:723 CF7DBPlugin.php:729
+msgid "Database entries fixed: "
+msgstr "修正したデータベースエントリー:"
+
+#: CF7DBPlugin.php:715
+msgid "Phase 1 of 3..."
+msgstr "フェーズ1 (全3フェーズ中)"
+
+#: CF7DBPlugin.php:710
+msgid "Checking for conflicting entries. This may take a few minutes."
+msgstr "競合する項目を確認中。数分かかる場合があります。"
+
+#: CF7DBPlugin.php:692
+msgid "Valid: "
+msgstr "有効:"
+
+#: CF7DBPlugin.php:689
+msgid "Invalid: "
+msgstr "無効:"
+
+#: CF7DBPlugin.php:619
+msgid "No such file."
+msgstr "指定したファイルはありませんでした"
+
+#: CF7DBPlugin.php:615
+msgid "Missing form parameters"
+msgstr "フォームの設定条件が不足しています"
+
+#: CF7DBPlugin.php:151 CFDBViewShortCodeBuilder.php:923
+msgid "Anyone"
+msgstr "だれでも"
+
+#: CF7DBPlugin.php:149 CFDBViewShortCodeBuilder.php:922
+msgid "Subscriber"
+msgstr "購読者"
+
+#: CF7DBPlugin.php:147 CFDBViewShortCodeBuilder.php:921
+msgid "Contributor"
+msgstr "寄稿者"
+
+#: CF7DBPlugin.php:145 CFDBViewShortCodeBuilder.php:920
+msgid "Author"
+msgstr "投稿者"
+
+#: CF7DBPlugin.php:143 CFDBViewShortCodeBuilder.php:919
+msgid "Editor"
+msgstr "編集者"
+
+#: CF7DBPlugin.php:141 CFDBViewShortCodeBuilder.php:918
+msgid "Administrator"
+msgstr "管理者"
+
+#: CF7DBPlugin.php:107
+msgid "Drop this plugin's Database table on uninstall"
+msgstr "アンインストールの際にこのプラグインのデータベース テーブルを削除する"
+
+#: CF7DBPlugin.php:103
+msgid "Show the query used to display results"
+msgstr "検索に使用したクエリを表示する"
+
+#: CF7DBPlugin.php:90
+msgid "Save only cookies in DB named (comma-separated list, no spaces, and above option must be set to true)"
+msgstr "データベースに保存する Cookie を指定 (カンマ区切りリスト、空白は含まない、上の設定を「はい」にする必要があります)"
+
+#: CF7DBPlugin.php:89
+msgid "Save Cookie Data with Form Submissions"
+msgstr "フォーム送信時に Cookie データを保存する"
+
+#: CF7DBPlugin.php:88
+msgid "Do not save <u>forms</u> in DB named (comma-separated list, no spaces)"
+msgstr "データベースに保存しない<u>フォーム</u>を指定 (カンマで区切ったリスト、空白は含まない)"
+
+#: CF7DBPlugin.php:87
+msgid "Do not save <u>fields</u> in DB named (comma-separated list, no spaces)"
+msgstr "データベースに保存しない<u>フィールド</u>を指定 (カンマで区切ったリスト、空白は含まない)"
+
+#: CF7DBPlugin.php:95
+msgid "Export URLs instead of file names for uploaded files"
+msgstr "アップロードしたファイルのファイル名の代わりに URL を出力する"
+
+#: CF7DBPlugin.php:94
+msgid "Date-Time Display Format"
+msgstr "日付/時刻書式設定"
+
+#: CF7DBPlugin.php:93
+msgid "Use Custom Date-Time Display Format (below)"
+msgstr "日付/時刻書式をカスタム設定する (下の欄に入力)"
+
+#: CF7DBPlugin.php:102
+msgid "Show line breaks in submitted data table"
+msgstr "送信データの表内で改行を表示する"
+
+#: CF7DBPlugin.php:101
+msgid "Use Javascript-enabled tables in Admin Database page"
+msgstr "データベース管理画面内の表で JavaScript 機能を使用する"
+
+#: CF7DBPlugin.php:100
+msgid "Use fixed width in Admin datatable"
+msgstr "管理データテーブルで固定幅を使用"
+
+#: CF7DBPlugin.php:99
+msgid "#Rows (of maximum above) visible in the Admin datatable"
+msgstr "管理データテーブル内で表示される列番号 (上記の最大)"
+
+#: CF7DBPlugin.php:98
+msgid "Maximum number of rows to retrieve from the DB for the Admin display"
+msgstr "管理画面に表示する際にデータベースから取得する行の最大値"
+
+#: CF7DBPlugin.php:86
+msgid "Timezone to capture Submit Time. Blank will use WordPress Timezone setting. <a target=\"_blank\" href=\"http://www.php.net/manual/en/timezones.php\">Options</a>"
+msgstr "送信時刻を記録するタイムゾーン。空にすると WordPress のタイムゾーン設定を使用します。<a target=\"_blank\" href=\"http://www.php.net/manual/en/timezones.php\">オプション</a>"
+
+#: CF7DBPlugin.php:82
+msgid "Allow RSS URLs"
+msgstr "RSS URL を許可"
+
+#: CF7DBPlugin.php:81 CF7DBPlugin.php:83
+msgid "(Creates a security hole)"
+msgstr "(セキュリティホールが作られます)"
+
+#: CF7DBPlugin.php:80
+msgid "Allow Any Function in Short Codes"
+msgstr "ショートコード内ですべての関数を許可"
+
+#: CF7DBPlugin.php:78
+msgid "Can Edit/Delete Submission data"
+msgstr "送信データの編集削除を許可"
+
+#: CF7DBPlugin.php:74
+msgid "Can See Submission when using shortcodes"
+msgstr "ショートコードを使った場合に送信データの閲覧許可"
+
+#: CF7DBPlugin.php:73
+msgid "Allow only Administrators to see CFDB administration screens"
+msgstr "管理者のみに CFDB 管理画面の表示を許可"
+
+#: CF7DBPlugin.php:76
+msgid "Can See Submission data"
+msgstr "送信データの閲覧許可"
+
+#: CF7DBOptionsManager.php:355 CF7DBPlugin.php:138
+#: CFDBViewShortCodeBuilder.php:816 CFDBViewShortCodeBuilder.php:827
+#: CFDBViewShortCodeBuilder.php:891 CFDBViewShortCodeBuilder.php:933
+msgid "false"
+msgstr "いいえ"
+
+#: CF7DBOptionsManager.php:354 CF7DBPlugin.php:136
+#: CFDBViewShortCodeBuilder.php:714 CFDBViewShortCodeBuilder.php:817
+#: CFDBViewShortCodeBuilder.php:828 CFDBViewShortCodeBuilder.php:890
+#: CFDBViewShortCodeBuilder.php:932
+msgid "true"
+msgstr "はい"
+
+#: CFDBViewOptions.php:190
+msgid "Save Changes"
+msgstr "変更を保存"
+
+#: CFDBViewOptions.php:243
+msgid "(WARNING: This plugin may not work properly with versions earlier than MySQL 5.0)"
+msgstr "(注意: このプラグインは MySQL 5.0 以前のバージョンでは正しく動作しない場合があります)"
+
+#: CFDBViewOptions.php:238
+msgid "MySQL Version"
+msgstr "MySQL バージョン"
+
+#: CFDBViewOptions.php:231
+msgid "(WARNING: This plugin may not work properly with versions earlier than PHP 5.2)"
+msgstr "(注意: このプラグインは PHP5.2 以前のバージョンでは正しく動作しない場合があります)"
+
+#: CFDBViewOptions.php:226
+msgid "PHP Version"
+msgstr "PHP バージョン"
+
+#: CFDBViewOptions.php:75 CFDBViewOptions.php:218
+msgid "System"
+msgstr "システム"
+
+#: CF7DBOptionsManager.php:286 CF7DBPlugin.php:115 CF7DBPlugin.php:609
+#: ExportToGoogleLiveData.php:31
+msgid "You do not have sufficient permissions to access this page."
+msgstr "このページへアクセスするのに必要な権限を持っていません。"

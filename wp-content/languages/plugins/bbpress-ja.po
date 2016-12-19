@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - bbPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-10-22 14:43:25+0000\n"
+"PO-Revision-Date: 2016-12-19 01:30:39+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,24 @@ msgstr ""
 "X-Generator: GlotPress/2.3.0-alpha\n"
 "Language: ja_JP\n"
 "Project-Id-Version: Plugins - bbPress - Stable (latest release)\n"
+
+#. translators: user role
+#: includes/common/locale.php:56
+msgctxt "User role"
+msgid "Blocked"
+msgstr "ブロックされています"
+
+#. translators: user role
+#: includes/common/locale.php:47
+msgctxt "User role"
+msgid "Moderator"
+msgstr "モデレーター"
+
+#. translators: user role
+#: includes/common/locale.php:44
+msgctxt "User role"
+msgid "Keymaster"
+msgstr "キーマスター"
 
 #. Author of the plugin/theme
 msgid "The bbPress Community"
@@ -23,9 +41,9 @@ msgstr "bbPress"
 msgid "bbPress is forum software with a twist from the creators of WordPress."
 msgstr "bbPress は WordPress の開発者たちが作った、ちょっとひねりの効いたフォーラムソフトウェアです。"
 
-#. #-#-#-#-#  tmp-bbpress.pot (bbPress 2.5.10)  #-#-#-#-#
+#. #-#-#-#-#  tmp-bbpress.pot (bbPress 2.5.12)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  tmp-bbpress.pot (bbPress 2.5.10)  #-#-#-#-#
+#. #-#-#-#-#  tmp-bbpress.pot (bbPress 2.5.12)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "https://bbpress.org"
 msgstr "https://bbpress.org"
@@ -1811,33 +1829,9 @@ msgstr "一般的な雑談"
 msgid "General"
 msgstr "一般"
 
-#: includes/core/sub-actions.php:147
-msgid "The current user is being initialized without using $wp->init()."
-msgstr "現在のユーザーは $wp->init() を使用せずに初期化されています。"
-
-#: includes/core/capabilities.php:523
+#: includes/core/capabilities.php:531
 msgid "Editable forum roles no longer exist."
 msgstr "現在、編集可能なフォーラム権限グループは存在しません。"
-
-#: includes/core/capabilities.php:404
-msgid "Blocked"
-msgstr "ブロック済み"
-
-#: includes/core/capabilities.php:398
-msgid "Spectator"
-msgstr "傍観者"
-
-#: includes/core/capabilities.php:392
-msgid "Participant"
-msgstr "参加者"
-
-#: includes/core/capabilities.php:386
-msgid "Moderator"
-msgstr "世話役"
-
-#: includes/core/capabilities.php:380
-msgid "Keymaster"
-msgstr "キーマスター"
 
 #: includes/common/widgets.php:1252
 msgid "Recent Replies"
@@ -4306,7 +4300,7 @@ msgstr "bbPress について"
 msgid "Converter Specialist"
 msgstr "変換スペシャリスト"
 
-#: bbpress.php:484
+#: bbpress.php:485
 msgid "bbPress Forums"
 msgstr "bbPress フォーラム"
 
@@ -4326,7 +4320,7 @@ msgstr "bbPress は世界中に散らばった多くの働き者の皆さんに�
 msgid "Project Leaders"
 msgstr "プロジェクトリーダー"
 
-#: bbpress.php:580
+#: bbpress.php:581
 msgctxt "post"
 msgid "Spam"
 msgstr "スパム"
@@ -4336,36 +4330,36 @@ msgstr "スパム"
 msgid "Import Forums"
 msgstr "フォーラムをインポート"
 
-#: bbpress.php:607
+#: bbpress.php:608
 msgctxt "post"
 msgid "Hidden <span class=\"count\">(%s)</span>"
 msgid_plural "Hidden <span class=\"count\">(%s)</span>"
 msgstr[0] "非表示 <span class=\"count\">(%s)</span>"
 
-#: bbpress.php:594
+#: bbpress.php:595
 msgctxt "post"
 msgid "Orphan <span class=\"count\">(%s)</span>"
 msgid_plural "Orphans <span class=\"count\">(%s)</span>"
 msgstr[0] "親なし <span class=\"count\">(%s)</span>"
 
-#: bbpress.php:404 templates/default/bbpress-functions.php:51
+#: bbpress.php:405 templates/default/bbpress-functions.php:51
 msgid "bbPress Default"
 msgstr "bbPress デフォルト"
 
-#: bbpress.php:509
+#: bbpress.php:510
 msgid "bbPress Topics"
 msgstr "bbPress トピックス"
 
-#: bbpress.php:677
+#: bbpress.php:678
 msgid "Most popular topics"
 msgstr "人気のトピック"
 
-#: bbpress.php:606
+#: bbpress.php:607
 msgctxt "post"
 msgid "Hidden"
 msgstr "非表示"
 
-#: bbpress.php:570
+#: bbpress.php:571
 msgctxt "post"
 msgid "Closed <span class=\"count\">(%s)</span>"
 msgid_plural "Closed <span class=\"count\">(%s)</span>"
@@ -4375,7 +4369,7 @@ msgstr[0] "クローズ <span class=\"count\">(%s)</span>"
 msgid "Cheatin&#8217; huh?"
 msgstr "間違えましたか ?"
 
-#: bbpress.php:534
+#: bbpress.php:535
 msgid "bbPress Replies"
 msgstr "bbPress の返信"
 
@@ -4387,23 +4381,23 @@ msgstr "フォーラム設定へ移動"
 msgid "Thank you for updating! bbPress %s is waxed, polished, and ready for you to take it for a lap or two around the block!"
 msgstr "更新ありがとうございます。bbPress %s は丁寧に手を入れており、しっかり使ってもらう準備ができています。"
 
-#: bbpress.php:569
+#: bbpress.php:570
 msgctxt "post"
 msgid "Closed"
 msgstr "クローズ"
 
-#: bbpress.php:581
+#: bbpress.php:582
 msgctxt "post"
 msgid "Spam <span class=\"count\">(%s)</span>"
 msgid_plural "Spam <span class=\"count\">(%s)</span>"
 msgstr[0] "スパム <span class=\"count\">(%s)</span>"
 
-#: bbpress.php:593
+#: bbpress.php:594
 msgctxt "post"
 msgid "Orphan"
 msgstr "親なし"
 
-#: bbpress.php:689
+#: bbpress.php:690
 msgid "Topics with no replies"
 msgstr "返信がないトピック"
 

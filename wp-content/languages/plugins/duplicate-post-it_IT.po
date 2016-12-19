@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Duplicate Post - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-10-09 20:50:51+0000\n"
+"PO-Revision-Date: 2016-12-13 16:58:52+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,121 +11,188 @@ msgstr ""
 "Language: it\n"
 "Project-Id-Version: Plugins - Duplicate Post - Stable (latest release)\n"
 
-#: duplicate-post-options.php:346
+#: duplicate-post-options.php:379
+msgid "Show update notice"
+msgstr "Mostra la notifica sull'aggiornamento"
+
+#: duplicate-post-options.php:368
+msgid "Bulk Actions"
+msgstr "Azioni di gruppo"
+
+#: duplicate-post-options.php:286
+msgid "You can use * to match zero or more alphanumeric characters or underscores: e.g. field*"
+msgstr "Puoi usare * al posto di zero o più caratteri alfanumerici o underscore: ad es. field*"
+
+#: duplicate-post-options.php:245
+msgid "Menu order"
+msgstr "Ordinamento menù"
+
+#: duplicate-post-options.php:230
+msgid "Author"
+msgstr "Autore"
+
+#: duplicate-post-options.php:227
+msgctxt "post format"
+msgid "Format"
+msgstr "Formato"
+
+#: duplicate-post-options.php:224
+msgid "Template"
+msgstr "Modello"
+
+#: duplicate-post-options.php:221
+msgid "Featured Image"
+msgstr "Immagine in evidenza"
+
+#: duplicate-post-options.php:94
+msgid "Support Forum"
+msgstr "Forum di supporto"
+
+#: duplicate-post-options.php:87
+msgid "Donate whatever sum you choose, even just 10¢."
+msgstr "Dona una qualsiasi somma a scelta, anche solo 10 centesimi."
+
+#: duplicate-post-options.php:85
+msgid "Help me develop the plugin, add new features and improve support!"
+msgstr "Aiutami a sviluppare il plugin, aggiungere nuove funzionalità e migliorare il supporto!"
+
+#: duplicate-post-admin.php:142
+msgid "Help me develop the plugin and provide support by <a href=\"http://lopo.it/duplicate-post-plugin\">donating even a small sum</a>."
+msgstr "Aiutami a sviluppare il plugin e fornire supporto <a href=\"http://lopo.it/duplicate-post-plugin\">donando anche solo una piccola somma</a>."
+
+#: duplicate-post-admin.php:141
+msgid "Please <a href=\"%s\">review the settings</a> to make sure it works as you expect."
+msgstr "Si prega di <a href=\"%s\">controllare le impostazioni</a> per accertarsi che funzioni come desiderato. "
+
+#: duplicate-post-admin.php:140
+msgid "Options for thumbnail, post format, post template, author, menu order"
+msgstr "Opzioni per immagini in evidenza, formato, modello, autore, ordinamento menù"
+
+#: duplicate-post-admin.php:140
+msgid "Wildcards in custom field names"
+msgstr "Wildcard nei nomi dei campi personalizzati"
+
+#: duplicate-post-admin.php:140
+msgid "Clone posts in bulk (WP 4.7+)"
+msgstr "Clona articoli a gruppi (WP 4.7+)"
+
+#: duplicate-post-admin.php:139
+msgid "Duplicate Post has new features!"
+msgstr "Duplicate Post ha nuove funzionalità!"
+
+#: duplicate-post-admin.php:644
+msgid "%s item copied."
+msgid_plural "%s items copied."
+msgstr[0] "%s elemento copiato."
+msgstr[1] "%s elementi copiati."
+
+#: duplicate-post-options.php:374
 msgid "You can also use the template tag duplicate_post_clone_post_link( $link, $before, $after, $id ). More info <a href=\"%s\">here</a>"
 msgstr "Puoi anche usare il template tag duplicate_post_clone_post_link( $link, $before, $after, $id ). Trovi maggiori informazioni <a href=\"%s\">qui</a>"
 
-#: duplicate-post-options.php:324 duplicate-post-options.php:345
+#: duplicate-post-options.php:347 duplicate-post-options.php:373
 msgid "Whether the links are displayed for custom post types registered by themes or plugins depends on their use of standard WordPress UI elements"
 msgstr "Che i link vengano mostrati per tipi di post custom registrati da temi o plugin dipende dal loro uso degli elementi standard dell'interfaccia utente di WordPress"
 
-#: duplicate-post-options.php:323
+#: duplicate-post-options.php:346
 msgid "Select the post types you want the plugin to be enabled"
 msgstr "Selezionare i tipi di articolo per cui si vuole abilitare il plugin"
 
-#: duplicate-post-options.php:314
+#: duplicate-post-options.php:337
 msgid "Enable for these post types"
 msgstr "Abilita per questi tipi di articolo"
 
-#: duplicate-post-options.php:308
+#: duplicate-post-options.php:331
 msgid "Passwords and contents of password-protected posts may become visible to undesired users and visitors"
 msgstr "Le password e il contenuto dei post protetti da password potrebbero diventare accessibili a utenti e visitatori indesiderati."
 
-#: duplicate-post-options.php:274
+#: duplicate-post-options.php:293
 msgid "Show/hide private taxonomies"
 msgstr "Mostra/nascondi le tassonomie private"
 
-#: duplicate-post-options.php:267
-msgid "Add <code>_thumbnail_id</code> to prevent featured images to be copied"
-msgstr "Aggiungi <code>_thumbnail_id</code> per non copiare le immagini in evidenza"
-
-#: duplicate-post-options.php:256
+#: duplicate-post-options.php:275
 msgid "Add this number to the original menu order (blank or zero to retain the value)"
 msgstr "Aggiungi questo numero al valore originale di ordinamento (lascia vuoto o zero per conservare il valore)"
 
-#: duplicate-post-options.php:251
+#: duplicate-post-options.php:270
 msgid "Increase menu order by"
 msgstr "Incrementa l'ordinamento di"
 
-#: duplicate-post-options.php:226
+#: duplicate-post-options.php:242
 msgid "except pingbacks and trackbacks"
 msgstr "tranne pingback e trackback"
 
-#: duplicate-post-options.php:226
+#: duplicate-post-options.php:242
 msgid "Comments"
 msgstr "Commenti"
 
-#: duplicate-post-options.php:223
+#: duplicate-post-options.php:239
 msgid "Children"
 msgstr "Post figli"
 
-#: duplicate-post-options.php:220
+#: duplicate-post-options.php:236
 msgid "Attachments"
 msgstr "Allegati"
 
-#: duplicate-post-options.php:217
+#: duplicate-post-options.php:233
 msgid "Password"
 msgstr "Password"
 
-#: duplicate-post-options.php:214
+#: duplicate-post-options.php:218
 msgid "Content"
 msgstr "Contenuto"
 
-#: duplicate-post-options.php:211
+#: duplicate-post-options.php:215
 msgid "Excerpt"
 msgstr "Riassunto"
 
-#: duplicate-post-options.php:208
+#: duplicate-post-options.php:212
 msgid "Slug"
 msgstr "Slug"
 
-#: duplicate-post-options.php:205
+#: duplicate-post-options.php:209
 msgid "Status"
 msgstr "Stato"
 
-#: duplicate-post-options.php:202
+#: duplicate-post-options.php:206
 msgid "Date"
 msgstr "Data"
 
-#: duplicate-post-options.php:199
+#: duplicate-post-options.php:203
 msgid "Title"
 msgstr "Titolo"
 
-#: duplicate-post-options.php:195
+#: duplicate-post-options.php:199
 msgid "Post/page elements to copy"
 msgstr "Elementi da copiare dell'articolo/pagina"
 
-#: duplicate-post-options.php:187
+#: duplicate-post-options.php:191
 msgid "Display"
 msgstr "Visualizzazione"
 
-#: duplicate-post-options.php:185
+#: duplicate-post-options.php:189
 msgid "Permissions"
 msgstr "Permessi"
 
-#: duplicate-post-options.php:183
+#: duplicate-post-options.php:187
 msgid "What to copy"
 msgstr "Cosa copiare"
 
-#: duplicate-post-options.php:80
+#: duplicate-post-options.php:93
 msgid "FAQ"
 msgstr "Domande frequenti"
 
-#: duplicate-post-admin.php:453
+#: duplicate-post-admin.php:530
 msgid "Untitled"
 msgstr "Senza titolo"
 
-#: duplicate-post-admin.php:436
+#: duplicate-post-admin.php:511
 msgid "Copy features for this post type are not enabled in options page"
 msgstr "Le funzionalità di copia per questo tipo di articolo non sono abilitate nella pagina delle opzioni"
 
-#: duplicate-post-admin.php:135
+#: duplicate-post-admin.php:145
 msgid "Dismiss this notice."
 msgstr "Nascondi questa notifica."
-
-#: duplicate-post-admin.php:133
-msgid "<strong>Duplicate Post has been greatly redesigned in its options page.</strong> Please <a href=\"%s\">review the settings</a> to make sure it works as you expect."
-msgstr "<strong>La pagina delle opzioni di Duplicate Post è stata ampiamente modificata.</strong> Si prega di <a href=\"%s\">controllare le impostazioni</a> per accertarsi che funzioni come desiderato."
 
 #. Author URI of the plugin/theme
 msgid "http://lopo.it"
@@ -147,111 +214,110 @@ msgstr "http://lopo.it/duplicate-post-plugin/"
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: duplicate-post-options.php:354
+#: duplicate-post-options.php:389
 msgid "Save Changes"
 msgstr "Salva le modifiche"
 
-#: duplicate-post-options.php:341
+#: duplicate-post-options.php:364
 msgid "Admin bar"
 msgstr "Barra di amministrazione"
 
-#: duplicate-post-options.php:339
+#: duplicate-post-options.php:362
 msgid "Edit screen"
 msgstr "Schermata di modifica"
 
-#: duplicate-post-options.php:337
+#: duplicate-post-options.php:360
 msgid "Post list"
 msgstr "Lista articoli"
 
-#: duplicate-post-options.php:333
+#: duplicate-post-options.php:356
 msgid "Show links in"
 msgstr "Mostra i link in"
 
-#: duplicate-post-options.php:307
+#: duplicate-post-options.php:330
 msgid "Warning: users will be able to copy all posts, even those of other users"
 msgstr "Attenzione: gli utenti potranno copiare tutti gli articoli, anche quelli di altri utenti"
 
-#: duplicate-post-options.php:297
+#: duplicate-post-options.php:320
 msgid "Roles allowed to copy"
 msgstr "Ruoli abilitati alla copia"
 
-#: duplicate-post-options.php:246
+#: duplicate-post-options.php:265
 msgid "Suffix to be added after the title, e.g. \"(dup)\" (blank for no suffix)"
 msgstr "Suffisso da aggiungere prima del titolo originale, es. \"(copia)\" (lasciare vuoto per nessun suffisso)"
 
-#: duplicate-post-options.php:241
+#: duplicate-post-options.php:260
 msgid "Title suffix"
 msgstr "Suffisso del titolo"
 
-#: duplicate-post-options.php:236
+#: duplicate-post-options.php:255
 msgid "Prefix to be added before the title, e.g. \"Copy of\" (blank for no prefix)"
 msgstr "Prefisso da aggiungere prima del titolo originale, es. \"Copia di\" (lasciare vuoto per nessun prefisso)"
 
-#: duplicate-post-options.php:231
+#: duplicate-post-options.php:250
 msgid "Title prefix"
 msgstr "Prefisso del titolo"
 
-#: duplicate-post-options.php:287
+#: duplicate-post-options.php:310
 msgid "Select the taxonomies you don't want to be copied"
 msgstr "Seleziona le tassonomie che non vuoi copiare"
 
-#: duplicate-post-options.php:272
+#: duplicate-post-options.php:291
 msgid "Do not copy these taxonomies"
 msgstr "Non copiare queste tassonomie"
 
-#: duplicate-post-options.php:266
+#: duplicate-post-options.php:285
 msgid "Comma-separated list of meta fields that must not be copied"
 msgstr "Lista separata da virgole di campi personalizzati da non copiare"
 
-#: duplicate-post-options.php:261
+#: duplicate-post-options.php:280
 msgid "Do not copy these fields"
 msgstr "Non copiare questi campi"
 
-#: duplicate-post-options.php:77
+#: duplicate-post-options.php:91
 msgid "Visit plugin site"
 msgstr "Visita il sito del plugin"
 
-#. #-#-#-#-#  tmp-duplicate-post.pot (Duplicate Post 3.0.1)  #-#-#-#-#
+#. #-#-#-#-#  tmp-duplicate-post.pot (Duplicate Post 3.1.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: duplicate-post-options.php:39
+#: duplicate-post-options.php:46
 msgid "Duplicate Post"
 msgstr "Duplicate Post"
 
-#: duplicate-post-options.php:39 duplicate-post-options.php:72
+#: duplicate-post-options.php:46 duplicate-post-options.php:79
 msgid "Duplicate Post Options"
 msgstr "Opzioni di Duplicate Post"
 
-#: duplicate-post-admin.php:524 duplicate-post-options.php:79
+#: duplicate-post-admin.php:631 duplicate-post-options.php:92
 msgid "Translate"
 msgstr "Traduci"
 
-#: duplicate-post-admin.php:135 duplicate-post-admin.php:523
-#: duplicate-post-options.php:81
+#: duplicate-post-admin.php:630
 msgid "Donate"
 msgstr "Invia una donazione"
 
-#: duplicate-post-admin.php:249
+#: duplicate-post-admin.php:268
 msgid "Copy creation failed, could not find original:"
 msgstr "Creazione della copia fallita, impossibile trovare l'originale:"
 
-#: duplicate-post-admin.php:227
+#: duplicate-post-admin.php:246
 msgid "No post to duplicate has been supplied!"
 msgstr "Non è stato fornito alcun articolo da copiare!"
 
-#: duplicate-post-admin.php:179
+#: duplicate-post-admin.php:191
 msgid "New Draft"
 msgstr "Nuova bozza"
 
-#: duplicate-post-admin.php:178 duplicate-post-admin.php:199
-#: duplicate-post-common.php:77 duplicate-post-common.php:81
-#: duplicate-post-common.php:115
+#: duplicate-post-admin.php:190 duplicate-post-admin.php:211
+#: duplicate-post-common.php:78 duplicate-post-common.php:81
+#: duplicate-post-common.php:116
 msgid "Copy to a new draft"
 msgstr "Copia in una nuova bozza"
 
-#: duplicate-post-admin.php:176
+#: duplicate-post-admin.php:188 duplicate-post-admin.php:669
 msgid "Clone"
 msgstr "Clona"
 
-#: duplicate-post-admin.php:175
+#: duplicate-post-admin.php:187
 msgid "Clone this item"
 msgstr "Clona questo elemento"
