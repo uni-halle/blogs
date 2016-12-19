@@ -27,6 +27,7 @@
 <?php _x( 'Italian', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Georgian', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Latin (Classical)', 'language name', 'wp-typography' ); ?>
+<?php _x( 'Latin (Liturgical)', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Latin', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Lithuanian', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Latvian', 'language name', 'wp-typography' ); ?>

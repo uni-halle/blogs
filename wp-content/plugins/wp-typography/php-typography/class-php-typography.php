@@ -552,6 +552,8 @@ class PHP_Typography {
 		$this->components['hyphensArray'] = array_unique( array( '-', $this->chr['hyphen'] ) );
 		$this->components['hyphens']      = implode( '|', $this->components['hyphensArray'] );
 
+		$this->components['numbersPrime'] = '\b(?:\d+\/)?\d{1,3}';
+
 		/*
 		 // \p{Lu} equals upper case letters and should match non english characters; since PHP 4.4.0 and 5.1.0
 		 // for more info, see http://www.regextester.com/pregsyntax.html#regexp.reference.unicode
@@ -752,14 +754,16 @@ class PHP_Typography {
 
 		$this->regex['controlCharacters'] = '/\p{C}/Su';
 
-		$this->regex['smartQuotesSingleQuotedNumbers']       = "/(?<=\W|\A)'(\d+)'(?=\W|\Z)/u";
-		$this->regex['smartQuotesDoubleQuotedNumbers']       = '/(?<=\W|\A)"(\d+)"(?=\W|\Z)/u';
-		$this->regex['smartQuotesDoublePrime']               = "/(\b\d{1,3})''(?=\W|\Z)/u";
-		$this->regex['smartQuotesDoublePrimeCompound']       = "/(\b\d{1,3})''(?=-\w)/u";
-		$this->regex['smartQuotesDoublePrime1GlyphCompound'] = "/(\b\d{1,3})\"(?=-\w)/u";
-		$this->regex['smartQuotesSinglePrimeCompound']       = "/(\b\d{1,3})'(?=-\w)/u";
-		$this->regex['smartQuotesSingleDoublePrime']         = "/(\b\d{1,3})'(\s*)(\b\d+)''(?=\W|\Z)/u";
-		$this->regex['smartQuotesSingleDoublePrime1Glyph']   = "/(\b\d{1,3})'(\s*)(\b\d+)\"(?=\W|\Z)/u";
+		$this->regex['smartQuotesSingleQuotedNumbers']       = "/(?<=\W|\A)'([^\"]*\d+)'(?=\W|\Z)/u";
+		$this->regex['smartQuotesDoubleQuotedNumbers']       = '/(?<=\W|\A)"([^"]*\d+)"(?=\W|\Z)/u';
+		$this->regex['smartQuotesDoublePrime']               = "/({$this->components['numbersPrime']})''(?=\W|\Z)/u";
+		$this->regex['smartQuotesDoublePrimeCompound']       = "/({$this->components['numbersPrime']})''(?=-\w)/u";
+		$this->regex['smartQuotesDoublePrime1Glyph']         = "/({$this->components['numbersPrime']})\"(?=\W|\Z)/u";
+		$this->regex['smartQuotesDoublePrime1GlyphCompound'] = "/({$this->components['numbersPrime']})\"(?=-\w)/u";
+		$this->regex['smartQuotesSinglePrime']               = "/({$this->components['numbersPrime']})'(?=\W|\Z)/u";
+		$this->regex['smartQuotesSinglePrimeCompound']       = "/({$this->components['numbersPrime']})'(?=-\w)/u";
+		$this->regex['smartQuotesSingleDoublePrime']         = "/({$this->components['numbersPrime']})'(\s*)(\b(?:\d+\/)?\d+)''(?=\W|\Z)/u";
+		$this->regex['smartQuotesSingleDoublePrime1Glyph']   = "/({$this->components['numbersPrime']})'(\s*)(\b(?:\d+\/)?\d+)\"(?=\W|\Z)/u";
 		$this->regex['smartQuotesCommaQuote']                = '/(?<=\s|\A),(?=\S)/';
 		$this->regex['smartQuotesApostropheWords']           = "/(?<=[\w|{$this->components['nonEnglishWordCharacters']}])'(?=[\w|{$this->components['nonEnglishWordCharacters']}])/u";
 		$this->regex['smartQuotesApostropheDecades']         = "/'(\d\d\b)/";
@@ -1000,7 +1004,8 @@ class PHP_Typography {
 			(?:\s?\/\s?{$this->chr['zeroWidthSpace']}?)	# strip out any zero-width spaces inserted by wrap_hard_hyphens
 			(\d+)
 			(
-				(?:\<sup\>(?:st|nd|rd|th)<\/sup\>)?	# handle ordinals after fractions
+				(?:{$this->chr['singlePrime']}|{$this->chr['doublePrime']})? # handle fractions followed by prime symbols
+				(?:\<sup\>(?:st|nd|rd|th)<\/sup\>)?	                         # handle ordinals after fractions
 				(?:\Z|\s|{$this->chr['noBreakSpace']}|{$this->chr['noBreakNarrowSpace']}|\.|\!|\?|\)|\;|\:|\'|\")	# makes sure we are not messing up a url
 			)
 			/xu";
@@ -1863,9 +1868,14 @@ class PHP_Typography {
 
 		// Parse the HTML.
 		$dom = $this->parse_html( $html5_parser, $html );
-		$xpath = new \DOMXPath( $dom );
+
+		// Abort if there were parsing errors.
+		if ( empty( $dom ) ) {
+			return $html;
+		}
 
 		// Query some nodes.
+		$xpath = new \DOMXPath( $dom );
 		$body_node = $xpath->query( '/html/body' )->item( 0 );
 		$all_textnodes = $xpath->query( '//text()', $body_node );
 		$tags_to_ignore = $this->query_tags_to_ignore( $xpath, $body_node );
@@ -1953,9 +1963,14 @@ class PHP_Typography {
 
 		// Parse the HTML.
 		$dom = $this->parse_html( $html5_parser, $html );
-		$xpath = new \DOMXPath( $dom );
+
+		// Abort if there were parsing errors.
+		if ( empty( $dom ) ) {
+			return $html;
+		}
 
 		// Query some nodes in the DOM.
+		$xpath = new \DOMXPath( $dom );
 		$body_node = $xpath->query( '/html/body' )->item( 0 );
 		$all_textnodes = $xpath->query( '//text()', $body_node );
 		$tags_to_ignore = $this->query_tags_to_ignore( $xpath, $body_node );
@@ -2034,7 +2049,7 @@ class PHP_Typography {
 	 * @param \Masterminds\HTML5 $parser An intialized parser object.
 	 * @param string             $html The HTML fragment to parse (not a complete document).
 	 *
-	 * @return \DOMDocument The encoding has already been set to UTF-8.
+	 * @return \DOMDocument The encoding has already been set to UTF-8. Returns null if there were parsing errors.
 	 */
 	function parse_html( \Masterminds\HTML5 $parser, $html ) {
 		// Silence some parsing errors for invalid HTML.
@@ -2042,13 +2057,19 @@ class PHP_Typography {
 		$xml_error_handling = libxml_use_internal_errors( true );
 
 		// Do the actual parsing.
-		$dom = $parser->loadHTML( '<body>' . $html . '</body>' );
+		$dom = $parser->loadHTML( '<!DOCTYPE html><html><body>' . $html . '</body></html>' );
 		$dom->encoding = 'UTF-8';
 
 		// Restore original error handling.
 		libxml_clear_errors();
 		libxml_use_internal_errors( $xml_error_handling );
 		restore_error_handler();
+
+		// Return null if there were parsing errors.
+		$errors = $parser->getErrors();
+		if ( ! empty( $errors ) ) {
+			$dom = null;
+		}
 
 		return $dom;
 	}
@@ -2065,7 +2086,7 @@ class PHP_Typography {
 	 * @return boolean Returns true if the error was handled, false otherwise.
 	 */
 	public function handle_parsing_errors( $errno, $errstr, $errfile, $errline, array $errcontext ) {
-		if ( ! ( error_reporting() & $errno ) ) {
+		if ( ! ( error_reporting() & $errno ) ) { // @codingStandardsIgnoreLine.
 			return true; // not interesting.
 		}
 
@@ -2304,7 +2325,7 @@ class PHP_Typography {
 			$textnode->data = $textnode->data . $next_character;
 		}
 
-		// Before primes, handle quoted numbers.
+		// Before primes, handle quoted numbers (and quotes ending in numbers).
 		$textnode->data = preg_replace( $this->regex['smartQuotesSingleQuotedNumbers'], $this->chr['singleQuoteOpen'] . '$1' . $this->chr['singleQuoteClose'], $textnode->data );
 		$textnode->data = preg_replace( $this->regex['smartQuotesDoubleQuotedNumbers'], $this->chr['doubleQuoteOpen'] . '$1' . $this->chr['doubleQuoteClose'], $textnode->data );
 
@@ -2318,8 +2339,10 @@ class PHP_Typography {
 		$textnode->data = preg_replace( $this->regex['smartQuotesSingleDoublePrime'],         '$1' . $this->chr['singlePrime'] . '$2$3' . $this->chr['doublePrime'], $textnode->data );
 		$textnode->data = preg_replace( $this->regex['smartQuotesSingleDoublePrime1Glyph'],   '$1' . $this->chr['singlePrime'] . '$2$3' . $this->chr['doublePrime'], $textnode->data );
 		$textnode->data = preg_replace( $this->regex['smartQuotesDoublePrime'],               '$1' . $this->chr['doublePrime'],                                      $textnode->data ); // should not interfere with regular quote matching.
+		$textnode->data = preg_replace( $this->regex['smartQuotesSinglePrime'],               '$1' . $this->chr['singlePrime'],                                      $textnode->data );
 		$textnode->data = preg_replace( $this->regex['smartQuotesSinglePrimeCompound'],       '$1' . $this->chr['singlePrime'],                                      $textnode->data );
 		$textnode->data = preg_replace( $this->regex['smartQuotesDoublePrimeCompound'],       '$1' . $this->chr['doublePrime'],                                      $textnode->data );
+		$textnode->data = preg_replace( $this->regex['smartQuotesDoublePrime1Glyph'],         '$1' . $this->chr['doublePrime'],                                      $textnode->data ); // should not interfere with regular quote matching.
 		$textnode->data = preg_replace( $this->regex['smartQuotesDoublePrime1GlyphCompound'], '$1' . $this->chr['doublePrime'],                                      $textnode->data );
 
 		// Backticks.
