@@ -1,0 +1,143 @@
+
+
+
+.main-navigation li:hover > a, .main-navigation li.focus > a {
+    color: #999;
+}
+
+
+
+
+/***********************
+ *
+ * 	
+ * 		TOPMENU
+ * 
+ *  
+ */
+
+.menu-topnavigation-container {
+	
+}
+
+#menu-topnavigation {
+	list-style: none;
+	float: right;
+	font-size: 12px;
+	margin-right: 10px;
+}
+
+#menu-topnavigation li {
+	float: left;
+	margin-left: 10px;
+	line-height: 14px;
+}
+
+
+/***********************
+ *
+ * 	
+ * 		MAINMENU
+ * 
+ *  
+ */
+
+.main-navigation {
+	font-family: 'Rubik', sans-serif;
+}
+#menu-hauptnavigation {
+	text-transform: uppercase;
+}
+#site-header-menu {
+	margin-right: 30px;
+}
+
+/***********************
+ *
+ * 	
+ * 		LANGUAGES
+ * 
+ *  
+ */
+
+
+ul.language-chooser {
+	list-style: none;
+}
+.language-chooser li {
+	float: left;
+	margin-left: 5px;
+}
+.language-chooser li {
+	height: 14px;
+	line-height: 14px;
+	border-right: 1px solid #000;
+	padding-right: 5px;
+}
+.language-chooser li:last-of-type {
+	border-right: none;
+}
+.language-chooser li a span {
+     text-transform: uppercase;
+     font-size: 12px;
+}
+.language-chooser li.active a span {
+	font-weight: bold;
+}
+
+
+/***********************
+ *
+ * 	
+ * 		FOOTERMENU
+ * 
+ *  
+ */
+.footer-menu a {
+	color: #fff;
+}
+
+
+ul.footer-menu, ul.sub-menu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.footer-menu li {
+	float: left;
+	width: 20%;
+	line-height: 22px;
+    padding-bottom: 14px;
+}
+ul.footer-menu li a {
+	text-transform: uppercase;
+}
+
+ul.sub-menu {
+	margin-top: 10px;
+}
+.sub-menu li {
+	width: 100%;
+}
+ul.sub-menu li a {
+	text-transform: none;
+}
+
+
+
+/************************
+ *
+ * 
+ * 		BURGER
+ * 
+ */
+
+.menu-toggle:hover, .menu-toggle:focus {
+    border-color: #3259a5;
+    color: #3259a5;
+}
+
+
+
+
+

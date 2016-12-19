@@ -27,7 +27,22 @@
 		<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentysixteen' ); ?></a>
 
 		<header id="masthead" class="site-header" role="banner">
+			
+			<!-- widget header-2 -->
+			<?php if ( is_active_sidebar( 'header-2' ) ) : ?>
+				<div class="header-widget-2">
+				<?php dynamic_sidebar( 'header-2' ); ?>
+				</div>
+			<?php endif; ?>
+			
+			<!-- header-menu -->
+			<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
+			
+			
+			
 			<div class="site-header-main">
+				
+				
 				<div class="site-branding">
 					<?php twentysixteen_the_custom_logo(); ?>
 
@@ -73,6 +88,19 @@
 						<?php endif; ?>
 					</div><!-- .site-header-menu -->
 				<?php endif; ?>
+				
+				
+				
+				<!-- widget header-1 -->
+			<?php if ( is_active_sidebar( 'header-1' ) ) : ?>
+				<div class="header-widget-container">
+					<div class="header-widget-1">
+					<?php dynamic_sidebar( 'header-1' ); ?>
+					</div>
+				</div>	
+			<?php endif; ?>
+				
+				
 			</div><!-- .site-header-main -->
 
 			<?php if ( get_header_image() ) : ?>
@@ -95,15 +123,9 @@
 				</div><!-- .header-image -->
 			<?php endif; // End header image check. ?>
 			
-			<!-- header-menu -->
-			<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 			
-			<!-- widget -->
-			<?php if ( is_active_sidebar( 'header-1' ) ) : ?>
-				<div class="header-widget">
-				<?php dynamic_sidebar( 'header-1' ); ?>
-				</div>
-			<?php endif; ?>
+			
+			
 			
 		</header><!-- .site-header -->
 

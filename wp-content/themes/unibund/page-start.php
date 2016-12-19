@@ -12,81 +12,132 @@ get_header(); ?>
 	
 	
 	
-	<main id="main" class="site-main" role="main">
+	<main id="main" class="site-main-wide" role="main">
 		
 		
 		<?php
+		
+		/***************
+		 * 
+		 * 		Content
+		 * 
+		 * *************/
+		 
+	    while ( have_posts() ) : the_post(); ?> 
+	        <div class="start-text">
+	            <?php the_content(); ?> 
+	        </div>
+	
+	    <?php
+	    	endwhile; 
+	    	wp_reset_query(); 
+	    ?>
+		
+	
+		<section class="project-container">
+		<?php
+		
 		
 		
 		/***************
 		 * 
 		 * 		Projekte
 		 * 
-		 * *************/
+		 **************/
 		
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 		$args = array(
 			'category_name' => 'projekte',
 			'paged' => $paged,
-			'posts_per_page' => 2
+			'posts_per_page' => 3
 		);
  
 		query_posts($args); 
 		
 		// Start the Loop.
+			
+			$i=0;
 			while ( have_posts() ) : the_post();
+				$i++;
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content-projekte', get_post_format() );
+				
+				print ('<div class="project-list project-'.$i.'">');
+				
+				get_template_part( 'template-parts/start-projekte', get_post_format() );
+				
+				print ('</div>');
 
 			// End the loop.
 			endwhile;
 
-			// Previous/next page navigation.
-			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'twentysixteen' ),
-				'next_text'          => __( 'Next page', 'twentysixteen' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>',
-			) );
 		
-		
-		
-		/***************
-		 * 
-		 * 		Termine
-		 * 
-		 * *************/
-		
-		
-		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-		$args = array(
-			'category_name' => 'termine',
-			'paged' => $paged,
-			'posts_per_page' => 2
-		);
- 
-		query_posts($args); 
-		
-		
-		
-		// Start the loop.
-		while ( have_posts() ) : the_post();
-
-			// Include the page content template.
-			get_template_part( 'template-parts/content-termine', 'page' );
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) {
-				comments_template();
-			}
-
-			// End of the loop.
-		endwhile;
 		?>
+		
+		
+		
+		</section>
+		
+		<section class="news-container">
+			
+			<div class="box-50">
+				
+				<h3 class="start-h3 side-text"><i class="material-icons">radio_button_unchecked</i><span><?php echo __('[:de]News[:en]News'); ?></span></h3>
+				
+				<?php
+				/***************
+				 * 
+				 * 		News
+				 * 
+				 * *************/
+				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+				$args = array(
+					'category_name' => 'news',
+					'paged' => $paged,
+					'posts_per_page' => 2,
+					'post_status' => array('publish', 'future'),
+				);
+				query_posts($args); 
+				while ( have_posts() ) : the_post();
+					get_template_part( 'template-parts/start-news', 'page' );
+				endwhile;
+				?>
+				
+				<div class="start-link"><a href="<?php echo get_page_link(29); ?>"><span class="link-text"><?php echo __('[:de]alle News[:en]all news'); ?></span><span class="text-icons"><i class="material-icons">arrow_forward</i></span></a></div>
+				
+			</div>
+		
+			<div class="box-50">
+				
+				<h3 class="start-h3 side-text"><i class="material-icons">radio_button_unchecked</i><span><?php echo __('[:de]Termine[:en]Events'); ?></span></h3>
+				
+				<?php
+				/***************
+				 * 
+				 * 		Termine
+				 * 
+				 * *************/
+				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+				$args = array(
+					'category_name' => 'events',
+					'paged' => $paged,
+					'posts_per_page' => 3,
+					'post_status' => array('future'),
+				);
+				query_posts($args); 
+				while ( have_posts() ) : the_post();
+					get_template_part( 'template-parts/start-termine', 'page' );
+				endwhile;
+				?>
+				
+				<div class="start-link"><a href="<?php echo get_page_link(21); ?>"><span class="link-text"><?php echo __('[:de]alle Termine[:en]all events'); ?></span><span class="text-icons"><i class="material-icons">arrow_forward</i></span></a></div>
+				
+			</div>
+			
+			
+		
+		
+		</section>
+
 
 	</main><!-- .site-main -->
 

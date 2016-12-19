@@ -150,6 +150,8 @@ section {
     width: 100%;
 }
 
+
+
 .entry-title a:hover, .entry-title a:focus {
     color: #666;
 }
@@ -246,6 +248,11 @@ input[type="search"].search-field {
     text-shadow: 0px 0px 12px rgba(0, 0, 0, 1);
 }
 
+.site-inner .post-thumbnail img {
+    border-radius: 50%;
+}
+
+
 /***********************
  *
  *
@@ -340,17 +347,39 @@ input[type="search"].search-field {
     border-radius: 50%;
 }
 
+
+.gallery-icon img {
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+
+.no-sidebar .entry-content {
+    margin-top: 30px;
+    margin-left: 22%;
+    margin-right: 0;
+}
+
+
 /*-- quick facts --*/
+
+.quickfact-container {
+    width: 100%;
+    float: left;
+}
+
 .quickfact {
     float: left;
-    width: 200px;
-    height: 200px;
+    width: 190px;
+    height: 190px;
     background: #f2f2f2;
     border-radius: 50%;
     text-align: center;
     list-style-type: none;
     padding-top: 55px;
     font-weight: 500;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
 }
 .quickfact li.qf-header {
     color: #666;
@@ -411,8 +440,26 @@ input[type="search"].search-field {
     padding: 30px 0 120px 0;
     background: #7f7f7f url('img/bg_footer.png') top center no-repeat;
 }
-
-
+#global-footer {
+    background: #333 !important;
+    color: #dedede;
+    border-top: 0 !important;
+}
+#global-footer:hover {
+    color: #dedede !important;
+}
+#global-footer a {
+    color: #dedede !important;
+}
+#global-footer:hover a {
+    color: #dedede !important;
+}
+#global-footer:hover a {
+    color: #dedede !important;
+    text-decoration: none !important;
+    background-color: #333 !important;
+    text-shadow: none !important;
+}
 
 /**************************
 *

@@ -38,6 +38,7 @@ get_header(); ?>
 				comments_template();
 			}
 
+			/*
 			if ( is_singular( 'attachment' ) ) {
 				// Parent post navigation.
 				the_post_navigation( array(
@@ -53,7 +54,7 @@ get_header(); ?>
 						'<span class="screen-reader-text">' . __( 'Previous post:', 'twentysixteen' ) . '</span> ' .
 						'<span class="post-title">%title</span>',
 				) );
-			}
+			}*/
 
 			// End of the loop.
 		endwhile;

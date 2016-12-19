@@ -3018,7 +3018,8 @@ p > video {
 
 	.main-navigation ul ul a {
 		white-space: normal;
-		width: 12.6875em;
+		/*width: 12.6875em;*/
+		width: 15em;
 	}
 
 	.main-navigation ul ul:before,

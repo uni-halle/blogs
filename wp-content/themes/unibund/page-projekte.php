@@ -12,11 +12,7 @@ get_header(); ?>
 	
 	
 	
-	<main id="main" class="site-main" role="main">
-		
-		
-		
-		
+	<main id="main" class="site-main-wide" role="main">
 		
 		<?php
 		
@@ -54,12 +50,12 @@ get_header(); ?>
 		$args = array(
 			'category_name' => 'projekte',
 			'paged' => $paged,
-			'posts_per_page' => 2
+			'posts_per_page' => 200
 		);
  
 		query_posts($args); 
 		
-		// Start the Loop.
+			// Start the Loop.
 			while ( have_posts() ) : the_post();
 
 				/*
@@ -72,17 +68,11 @@ get_header(); ?>
 			// End the loop.
 			endwhile;
 
-			// Previous/next page navigation.
-			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'twentysixteen' ),
-				'next_text'          => __( 'Next page', 'twentysixteen' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>',
-			) );
 		
 		
 		
 		?>
-
+		<div class="clearfix"></div>
 	</main><!-- .site-main -->
 
 	<?php get_sidebar( 'content-bottom' ); ?>

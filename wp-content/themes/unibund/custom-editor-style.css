@@ -1,0 +1,17 @@
+body#tinymce.wp-editor { 
+    
+}
+ 
+body#tinymce.wp-editor a {
+    color: #4CA6CF;
+}
+
+body#tinymce.wp-editor .quickfact {
+	border: 1px solid #333;
+}
+body#tinymce.wp-editor .quickfact .qf-header {
+	border: 1px solid #999;
+}
+body#tinymce.wp-editor .quickfact .qf-content {
+	border: 1px solid #999;
+}
