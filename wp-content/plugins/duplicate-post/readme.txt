@@ -2,9 +2,9 @@
 Contributors: 		lopo
 Donate link: 		http://lopo.it/duplicate-post-plugin/
 Tags: 				duplicate post, copy, clone
-Requires at least: 	3.4
-Tested up to: 		4.6
-Stable tag: 		3.0.1
+Requires at least: 	3.6
+Tested up to: 		4.7
+Stable tag: 		3.1.2
 License: 			GPLv2 or later
 License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,13 +20,15 @@ How it works:
 
 1. In 'Edit Posts'/'Edit Pages', you can click on 'Clone' link below the post/page title: this will immediately create a copy and return to the list.
 
-2. In 'Edit Posts'/'Edit Pages', you can click on 'New Draft' link below the post/page title.
+2. NEW! In 'Edit Posts'/'Edit Pages', you can select one or more items, then choose 'Clone' in the 'Bulk Actions' dropdown to copy them all at once.
 
-3. On the post edit screen, you can click on 'Copy to a new draft' above "Cancel"/"Move to trash". 
+3. In 'Edit Posts'/'Edit Pages', you can click on 'New Draft' link below the post/page title.
 
-4. While viewing a post as a logged in user, you can click on 'Copy to a new draft' as a dropdown link under "Edit Post" in the admin bar.
+4. On the post edit screen, you can click on 'Copy to a new draft' above "Cancel"/"Move to trash". 
 
-2, 3 and 4 will lead to the edit page for the new draft: change what you want, click on 'Publish' and you're done.
+5. While viewing a post as a logged in user, you can click on 'Copy to a new draft' as a dropdown link under "Edit Post" in the admin bar.
+
+3, 4 and 5 will lead to the edit page for the new draft: change what you want, click on 'Publish' and you're done.
 
 There is also a **template tag**, so you can put it in your templates and clone your posts/pages from the front-end. Clicking on the link will lead you to the edit page for the new draft, just like the admin bar link.
 
@@ -51,10 +53,6 @@ Use WordPress' Add New Plugin feature, searching "Duplicate Post", or download t
 
 == Frequently Asked Questions ==
 
-= How to stop copying featured images? =
-
-Add `_thumbnail_id` to "Do not copy these fields" in the Settings page.
-
 = The plugin doesn't work, why? =
 
 First, check your version of WordPress: the plugin is not supposed to work on old versions anymore. Make sure also to upgrade to the last version of the plugin!
@@ -69,16 +67,10 @@ If not, maybe there is some kind of conflict with other plugins: feel free [to w
 
 = The plugin is not translated in my language! =
 
-From version 3.0 the plugin's translations are managed by the WordPress.org platform and the plugin si shipped without language files, so first of all update translations under Dashboard->Updates.
+From version 3.0 the plugin's translations are managed by the WordPress.org platform and the plugin is shipped without language files, so first of all update translations under Dashboard->Updates.
 
 If Duplicate Post is still in English, or if there are some untraslated strings, you can help traslating to your language [here](https://translate.wordpress.org/projects/wp-plugins/duplicate-post): you only need a WordPress.org account.
 [Contact me](http://lopo.it/contatti/) if you wish to become an editor for your language.
-
-= Can you add it to the bulk actions in the post/page list? =
-
-I can't. There is no way to do it without hacking the core code of WordPress.
-There is an open ticket in WordPress Trac, as other plugin developers too are interested to this feature: we can only hope that eventually our wish will be fulfilled.
-
 
 == Screenshots ==
 
@@ -87,8 +79,24 @@ There is an open ticket in WordPress Trac, as other plugin developers too are in
 3. The options page.
 4. The template tag manually added to Twenty Ten theme. Click on the "Copy to a new draft" link and you're redirected to the edit screen for a new draft copy of your post.
 5. The admin bar link. 
+6. Bulk clone action.
 
 == Upgrade Notice ==
+
+= 3.1.2 =
+Fixes the problem with custom fields
+
+= 3.1.1 =
+Bulk clone + custom field wildcards + other features + bugfixes + fix for nasty nag
+
+= 3.1 =
+Bulk clone + custom field wildcards + other features + bugfixes
+
+= 3.0.3 =
+Notices + small fixes and improvements
+
+= 3.0.2 =
+Small bugfixes: check the changelog for more info
 
 = 3.0.1 =
 Recommended if you have 3.0: fixes the upgrade bug
@@ -133,6 +141,34 @@ Some users have experienced a fatal error when upgrading to v1.1: this may fix i
 New features and customization, WP 3.0 compatibility: you should upgrade if you want to copy Custom Posts with Custom Taxonomies.
 
 == Changelog ==
+
+= 3.1.2 =
+* Fix for custom fields not copied
+
+= 3.1.1 =
+* Fix for nasty update nag (plus a failsafe checkbox)
+
+= 3.1 =
+* Bulk clone action added (WP 4.7+)
+* Wildcards enabled for custom fields to skip
+* Options to copy post author, post format (moved from taxonomies), menu order, post template
+* Check publish_posts/publish_pages capability to prevent Contributors from publishing by cloning
+* Using wp_slash (WP 3.6+) or a better workaround (WP 4.4+) on the post and its meta, should also fix some compatibility issues
+* Check if admin bar is showing before enqueueing CSS
+* Probable fix for repeated clone bug
+* Other minor bugs fixed 
+
+= 3.0.3 =
+* Notices in admin after copying
+* Fixes warning in custom post type archives
+* Uses site options for version and notice
+* Minor fixes 
+
+= 3.0.2 =
+* Can now be enabled for every custom post type with visible UI (not just public ones)
+* Admin bar CSS only enqueued when needed
+* New "Donate" button
+* Fixes for minor bugs and typos
 
 = 3.0.1 =
 * Fixes the issues for people upgrading from an older version
@@ -262,7 +298,7 @@ The parameters are:
 * *id*
     (integer) (optional) Post ID. Default: Current post ID
     
-Another available template tag is `duplicate_post_get_original($id, $output)` which returns the original post, either as a post object, an associative array or a numeric array (depending on the $output parameter), jus as [get_post()](http://codex.wordpress.org/Function_Reference/get_post) does.
+Another available template tag is `duplicate_post_get_original($id, $output)` which returns the original post, either as a post object, an associative array or a numeric array (depending on the $output parameter), just as [get_post()](http://codex.wordpress.org/Function_Reference/get_post) does.
 `duplicate_post_get_original()` relies on the `_dp_original` custom field.
 
 
@@ -285,7 +321,7 @@ Please refer to the [Plugin API](http://codex.wordpress.org/Plugin_API) for ever
 
 == Contribute ==
 
-If you find this useful and you if you want to contribute, there are three ways:
+If you find this useful and if you want to contribute, there are three ways:
 
    1. You can [write me](http://lopo.it/contatti/) and submit your bug reports, suggestions and requests for features;
    2. If you want to translate it to your language (there are just a few lines of text), you can use the [translation project](https://translate.wordpress.org/projects/wp-plugins/duplicate-post);
