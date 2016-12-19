@@ -3,16 +3,12 @@ Contributors: Thomas Michalak
 Donate link: http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin
 Tags: soundcloud, integrated, media, shortcode, browse, design, easy, simple, music, sound, js, live preview, flash, html5
 Requires at least: 3.2
-Tested up to: 4.3.1
-Stable tag: 2.3.2
+Tested up to: 4.6.1
+Stable tag: 2.3.3
 
 Browse through your soundcloud tracks, sets and favourites. Select and add tracks, sets or favourites to your posts. Live preview, easy.
 
 == Description ==
-
-**Compatible with new WP 4.0.1**
-
-**Now with soundcloud's official html5 player!**
 
 **New Widget to display latest and random track, favorites or sets for one user, multiple users or random users.**
 
@@ -76,7 +72,7 @@ That's just my opinion of course...
 == Installation ==
 
 = Updating =
-When updating to 2.0, if you're experiencing issues, deactivate and reactivate the plugin from the plugin page. This is due to switching to the Settings API. Sorry for the inconvenient. 
+When updating to 2.0, if you're experiencing issues, deactivate and reactivate the plugin from the plugin page. This is due to switching to the Settings API. Sorry for the inconvenient.
 
 Just follow the usual procedure. Log on to your wordpress, go to plugin -> add new -> search 'Soundcloud is Gold' -> click install
 
@@ -99,7 +95,7 @@ Here's a simple method to track down incompatibilities with plugins and themes:
 * If it worked: enable the other plugins one by one and check if it breaks
 * If it didn't worked: enable the default Worpress theme and check if it works (add a track to a post to be sure).
 
-Remenber that even if a plugin is popular, most of the plugins are badly coded or the developer didn't follow Wordpress guidelines on plugin development. Therefor conflict happens. The method is useful not just for this plugin. 
+Remenber that even if a plugin is popular, most of the plugins are badly coded or the developer didn't follow Wordpress guidelines on plugin development. Therefor conflict happens. The method is useful not just for this plugin.
 
 = Can't play my tracks on my iphone, ipad or ipod? =
 
@@ -112,7 +108,7 @@ If for some reason you wish to use the shortcode manually, like for embeding som
 **[soundcloud id='10450254']**
 or
 **[soundcloud user='t-m']** to always display the latest track
- 
+
 This will use your default setting of with, classes, colors, autoplay, comments. (Replace *10450254* with the track id you want to show)
 
 If you wish to have more control here is an example:
@@ -141,7 +137,7 @@ Perfect for labels, collectives, festivals and schizophrenic artists.
 New widget to display a user's latest track. New "user" argument for the shortcode to display user's latest track.
 
 = 2.0 =
-When updating to 2.0, if you're experiencing issues, deactivate and reactivate the plugin from the plugin page. This is due to switching to the Settings API. Sorry for the inconvenient. 
+When updating to 2.0, if you're experiencing issues, deactivate and reactivate the plugin from the plugin page. This is due to switching to the Settings API. Sorry for the inconvenient.
 
 
 
@@ -156,8 +152,11 @@ When updating to 2.0, if you're experiencing issues, deactivate and reactivate t
 
 == Changelog ==
 
+= 2.3.3=
+* API issue fix. Temporary fix to help people going.
+
 = 2.3.2 =
-* minor XSS security update 
+* minor XSS security update
 
 = 2.3 =
 * Updated plugin to new Soundcloud API (Json only)

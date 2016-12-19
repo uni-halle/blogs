@@ -3,7 +3,7 @@
 Plugin Name: Soundcloud is Gold
 Plugin URI: http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin
 Description: <strong><a href="http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin">Soundcloud is gold</a></strong> integrates perfectly into wordpress. Browse through your soundcloud tracks, sets and favorites from the 'soundcloud is gold' tab with the post's 'upload media' popup window. Select, set and add track, sets or favorites to your post using the soundcloud player. Live Preview, easy, smart and straightforward. You can set default settings in the option page, choose your defaut soundcloud player (Mini, Standard, Artwork, html5), its width, extra classes for you CSS lovers and your favorite colors. You'll still be able to set players to different settings before adding to your post if you fancy a one off change. Now with Html5 player and Widget!
-Version: 2.3.2
+Version: 2.3.3
 Author: Thomas Michalak
 Author URI: http://www.mightymess.com/thomas-michalak
 License: GPL2 or Later
@@ -22,6 +22,8 @@ define ('SIG_PLUGIN_DIR', WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",p
 //define( 'SIG_PLUGIN_DIR', (is_ssl() ? str_replace('http:', 'https:', SIG_PLUGIN_DIR_HTTP) : SIG_PLUGIN_DIR_HTTP) );
 
 //$httpPrefix = (is_ssl() ? 'https' : 'http');
+
+define ('CLIENT_ID', '9UhNtlbTIh7V6YHJm9wwHgjCwd7t1xOk');
 
 require_once('soundcloud-is-gold-functions.php');
 
@@ -72,9 +74,9 @@ function soundcloud_is_gold_advanced_options() {
 	//include('soundcloud-is-gold-advanced.php');
 }
 /*** Link to Settings from the plugin Page ***/
-function soundcloud_is_gold_settings_link($links, $file) { 
+function soundcloud_is_gold_settings_link($links, $file) {
     if ( $file == plugin_basename( __FILE__ ) ) {
-	$settings_link = '<a href="admin.php?page=soundcloud-is-gold/soundcloud-is-gold.php">'.__('Settings').'</a>'; 
+	$settings_link = '<a href="admin.php?page=soundcloud-is-gold/soundcloud-is-gold.php">'.__('Settings').'</a>';
 	array_unshift($links, $settings_link);
     }
     return $links;
@@ -101,7 +103,7 @@ function soundcloud_is_gold_add_defaults() {
 	$soundcloudIsGoldDefaultUser = $soundcloudIsGoldDefaultUsers[array_rand($soundcloudIsGoldDefaultUsers, 1)][0];
 	if(get_option('soundcloud_is_gold_user')){
 	    $soundcloudIsGoldDefaultUser = get_option('soundcloud_is_gold_user');
-	    $userInfo = get_soundcloud_is_gold_api_response("http://api.soundcloud.com/users/".$soundcloudIsGoldDefaultUser.".json?client_id=9rD2GrGrajkmkw5eYFDp2g");
+	    $userInfo = get_soundcloud_is_gold_api_response("http://api.soundcloud.com/users/".$soundcloudIsGoldDefaultUser.".json?client_id=".CLIENT_ID);
 	    $newUsername = (string)$userInfo['response']->permalink;
 	    $newUsernameImg = (string)$userInfo['response']->{'avatar-url'}[0];
 	    $soundcloudIsGoldDefaultUsers[$newUsername][0] = $newUsername;
@@ -115,7 +117,7 @@ function soundcloud_is_gold_add_defaults() {
 	$soundcloudIsGoldWitdhDefaultSettings = array(
                                        "type" => "custom",
                                        "wp" => "medium",
-                                       "custom" => "100%"                
+                                       "custom" => "100%"
 	);
 	//Either use previous settings from version prior to 1.0.7 or use defaults is first time install
 	$args = array(
@@ -154,9 +156,9 @@ function soundcloud_is_gold_options(){
     $soundcloudIsGoldPlayerTypeDefault = empty($soundcloudIsGoldPlayerType) ? TRUE : FALSE;
     $soundcloudIsGoldWidthSettings = isset($options['soundcloud_is_gold_width_settings']) ? $options['soundcloud_is_gold_width_settings'] : '';
     $soundcloudIsGoldClasses = isset($options['soundcloud_is_gold_classes']) ? $options['soundcloud_is_gold_classes'] : '';
-    $soundcloudIsGoldColor = isset($options['soundcloud_is_gold_color']) ? $options['soundcloud_is_gold_color'] : ''; 
-    
-    $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldActiveUser.'/tracks.json?limit=1&client_id=9rD2GrGrajkmkw5eYFDp2g';
+    $soundcloudIsGoldColor = isset($options['soundcloud_is_gold_color']) ? $options['soundcloud_is_gold_color'] : '';
+
+    $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldActiveUser.'/tracks.json?limit=1&client_id='.CLIENT_ID;
     $soundcloudIsGoldApiResponse = get_soundcloud_is_gold_api_response($soundcloudIsGoldApiCall);
     if(isset($soundcloudIsGoldApiResponse['response']) && $soundcloudIsGoldApiResponse['response']){
 	foreach($soundcloudIsGoldApiResponse['response'] as $soundcloudMMLatestTrack){
@@ -166,22 +168,21 @@ function soundcloud_is_gold_options(){
     $soundcouldMMShortcode = '[soundcloud id='.$soundcouldMMId.']';
 
 ?>
-    
+
     <script type="text/javascript">
 	//Set default Soundcloud Is Gold Settings
         <?php get_soundcloud_is_gold_default_settings_for_js(); ?>
     </script>
-    
-    
+
+
     <!-- XXS test -->
     <!-- <form method="POST" action="
 http://localhost/~thomas/Others/dev/wp-admin/admin-ajax.php?action=get_soundcloud_player" />
-<input type="text" name="id" value='"></param></object><img src=x
-onerror=alert(1) />' />
+<input type="text" name="id" value='"></param></object><img src=xonerror=alert(1) />' />
 <input type="text" name="format" value="1">
 <input type="submit" name="submit" />
 </form> -->
-    
+
 
     <div class="soundcloudMMWrapper soundcloudMMOptions soundcloudMMMainWrapper">
         <div id="soundcloudMMTop" class="darkGreyGradient">
@@ -192,7 +193,7 @@ onerror=alert(1) />' />
             </a>
 	    <p id="soundcloudMMVersion">version <?php echo get_soundcloud_is_gold_version($options) ?></p>
         </div>
-        
+
         <div id="soundcloudMMMain" class="lightBlueGradient">
             <form method="post" action="options.php" id="soundcloudMMMainForm" name="soundcloudMMMainForm" class="">
 	    <p class="hidden soundcloudMMId" id="soundcloudMMId-<?php echo $soundcouldMMId ?>"><?php echo $soundcouldMMId ?></p>
@@ -228,7 +229,7 @@ onerror=alert(1) />' />
                                 <?php foreach(get_soundcloud_is_gold_wordpress_sizes() as $key => $soundcloudIsGoldMediaSize) : ?>
                                     <?php
                                     //First Time, then Other Times
-                                    if($soundcloudIsGoldWidthSettings['wp'] == 'medium') $soundcloudIsGoldMediaSelected = ($key == $soundcloudIsGoldWidthSettings['wp']) ? 'selected="selected"' : '';  
+                                    if($soundcloudIsGoldWidthSettings['wp'] == 'medium') $soundcloudIsGoldMediaSelected = ($key == $soundcloudIsGoldWidthSettings['wp']) ? 'selected="selected"' : '';
                                     else $soundcloudIsGoldMediaSelected = ($soundcloudIsGoldMediaSize[0] == $soundcloudIsGoldWidthSettings['wp']) ? 'selected="selected"' : ''; ?>
                                     <option <?php echo $soundcloudIsGoldMediaSelected ?> value="<?php echo $soundcloudIsGoldMediaSize[0]?>" class="soundcloudMMWpSelectedWidth"><?php echo $key.': '.$soundcloudIsGoldMediaSize[0]?></option>
                                 <?php endforeach; ?>
@@ -291,7 +292,7 @@ onerror=alert(1) />' />
             </ul>
         <p id="disclaimer">SoundCloud and SoundCloud Logo are trademarks of SoundCloud Ltd.</p>
     </div>
-    
+
     <?php
 }
 

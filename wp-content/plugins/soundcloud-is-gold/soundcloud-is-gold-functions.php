@@ -37,8 +37,8 @@ function get_soundcloud_is_gold_default_settings_for_js(){
 	$soundcloudIsGoldPlayerType = isset($options['soundcloud_is_gold_playerType']) ? $options['soundcloud_is_gold_playerType'] : '';
 	$soundcloudIsGoldWidthSettings = isset($options['soundcloud_is_gold_width_settings']) ? $options['soundcloud_is_gold_width_settings'] : '';
 	$soundcloudIsGoldClasses = isset($options['soundcloud_is_gold_classes']) ? $options['soundcloud_is_gold_classes'] : '';
-	$soundcloudIsGoldColor = isset($options['soundcloud_is_gold_color']) ? $options['soundcloud_is_gold_color'] : ''; 
-	
+	$soundcloudIsGoldColor = isset($options['soundcloud_is_gold_color']) ? $options['soundcloud_is_gold_color'] : '';
+
 	echo 'soundcloudIsGoldUser_default = "'.$soundcloudIsGoldActiveUser.'"; ';
 	echo 'soundcloudIsGoldAutoPlay_default = '.((!isset($soundcloudIsGoldSettings[0]) || $soundcloudIsGoldSettings[0] == '') ? 'false' : 'true') .'; ';
 	echo 'soundcloudIsGoldComments_default = '.((!isset($soundcloudIsGoldSettings[1]) || $soundcloudIsGoldSettings[1] == '') ? 'false' : 'true') .'; ';
@@ -51,8 +51,8 @@ function get_soundcloud_is_gold_default_settings_for_js(){
 function get_soundcloudIsGoldUserNumber(){
 	$options = get_option('soundcloud_is_gold_options');
 	$soundcloudIsGoldActiveUser = isset($options['soundcloud_is_gold_active_user']) ? $options['soundcloud_is_gold_active_user'] : '';
-	
-	$soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldActiveUser.'.json?client_id=9rD2GrGrajkmkw5eYFDp2g';
+
+	$soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldActiveUser.'.json?client_id='.CLIENT_ID;
 	$soundcloudIsGoldApiResponse = get_soundcloud_is_gold_api_response($soundcloudIsGoldApiCall);
 	$result['tracks'] = ($soundcloudIsGoldApiResponse['response']['track_count'] == 0) ? '0' : $soundcloudIsGoldApiResponse['response']['track_count'];
 	$result['sets'] = ($soundcloudIsGoldApiResponse['response']['playlist_count'] == 0) ? '0' : $soundcloudIsGoldApiResponse['response']['playlist_count'];
@@ -114,10 +114,10 @@ function get_soundcloud_is_gold_username_interface($options, $soundcloudIsGoldUs
  **/
 function get_soundcloud_is_gold_latest_track_id($soundcloudIsGoldUser, $format = "tracks"){
 	$soundcouldMMId = "";
-	$soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/tracks.json?limit=1&client_id=9rD2GrGrajkmkw5eYFDp2g';
-	if($format == "sets") $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/playlists.json?limit=1&client_id=9rD2GrGrajkmkw5eYFDp2g';
-	if($format == "favorites") $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/favorites.json?limit=1&client_id=9rD2GrGrajkmkw5eYFDp2g';
-	
+	$soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/tracks.json?limit=1&client_id='.CLIENT_ID;
+	if($format == "sets") $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/playlists.json?limit=1&client_id='.CLIENT_ID;
+	if($format == "favorites") $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/favorites.json?limit=1&client_id='.CLIENT_ID;
+
 	$soundcloudIsGoldApiResponse = get_soundcloud_is_gold_api_response($soundcloudIsGoldApiCall);
 	if(isset($soundcloudIsGoldApiResponse['response']) && $soundcloudIsGoldApiResponse['response']){
 	    foreach($soundcloudIsGoldApiResponse['response'] as $soundcloudMMLatestTrack){
@@ -137,19 +137,19 @@ function get_soundcloud_is_gold_multiple_tracks_id($soundcloudIsGoldUser, $nbr =
 	if($random) $getNbr = 50;
 	$soundcouldMMIds= array();
 
-	$soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/tracks.json?limit='.$getNbr.'&client_id=9rD2GrGrajkmkw5eYFDp2g';
-	if($format == 'sets') $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/playlists.json?limit='.$getNbr.'&client_id=9rD2GrGrajkmkw5eYFDp2g';
-	if($format == 'favorites') $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/favorites.json?limit='.$getNbr.'&client_id=9rD2GrGrajkmkw5eYFDp2g';
-	
-	
+	$soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/tracks.json?limit='.$getNbr.'&client_id='.CLIENT_ID;
+	if($format == 'sets') $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/playlists.json?limit='.$getNbr.'&client_id='.CLIENT_ID;
+	if($format == 'favorites') $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/favorites.json?limit='.$getNbr.'&client_id='.CLIENT_ID;
+
+
 	$soundcloudIsGoldApiResponse = get_soundcloud_is_gold_api_response($soundcloudIsGoldApiCall);
-	
+
 	if(isset($soundcloudIsGoldApiResponse['response']) && $soundcloudIsGoldApiResponse['response']){
 	    foreach($soundcloudIsGoldApiResponse['response'] as $soundcloudMMLatestTrack){
 		$soundcouldMMIds[] .= (string)$soundcloudMMLatestTrack['id'];
 	    }
 	}
-	if($random) return array_random($soundcouldMMIds, $nbr);	
+	if($random) return array_random($soundcouldMMIds, $nbr);
 	return $soundcouldMMIds;
 }
 /**
@@ -174,11 +174,11 @@ function get_soundcloud_is_gold_api_response($soundcloudIsGoldApiCall){
 		if($soundcloudIsGoldResponse === false) $soundcloudIsGoldRespError = 'Curl error: ' . curl_error($soundcloudIsGoldCURL);
 		//No cURL Errors: Load the call and captured Json returned by the API
 		else {
-		    
+
 		}
 		// close cURL resource, and free up system resources
 		curl_close($soundcloudIsGoldCURL);
-		
+
 	}
 	//No cURL: Try loading the Json directly
 	else $soundcloudIsGoldResponse = file_get_contents($soundcloudIsGoldApiCall);
@@ -224,21 +224,21 @@ function get_soundcloud_is_gold_api_response_xml($soundcloudIsGoldApiCall){
 soundcloud_is_gold_pagination($totalItems, $currentPage, $perPage)
 */
 function soundcloud_is_gold_pagination($format, $totalItems, $currentPage, $perPage, $post_ID){
-	
+
 	// The items on the current page.
 	$offset = ($currentPage - 1) * $perPage;
 	$firstItem = $offset + 1;
 	$lastItem = $offset + $perPage < $totalItems ? $offset + $perPage : $totalItems;
-	
+
 	// Some useful variables for making links.
 	$firstPage = 1;
 	$lastPage = ceil($totalItems / $perPage);
 	$prevPage = $currentPage - 1 > 0 ? $currentPage - 1 : 1;
 	$nextPage = $currentPage + 1 > $lastPage ? $lastPage : $currentPage + 1;
-	
+
 	$disableFirst = ($currentPage == $firstPage) ? ' disabled' : '';
 	$disableLast = ($currentPage == $lastPage) ? ' disabled' : '';
-	
+
 	$output = '<div class="tablenav-pages"><span class="displaying-num">'.$totalItems.' tracks</span>';
 	$output .= '<span class="pagination-links">';
 	$output .= '<a href="?post_id='.$post_ID.'&tab=soundcloud_is_gold&selectFormat='.$format.'&paged='.$firstPage.'&TB_iframe=1&width=640&height=584" title="Go to the first page" class="first-page'.$disableFirst.'">&laquo;</a>';
@@ -247,7 +247,7 @@ function soundcloud_is_gold_pagination($format, $totalItems, $currentPage, $perP
 	$output .= '<a href="?post_id='.$post_ID.'&tab=soundcloud_is_gold&selectFormat='.$format.'&paged='.$nextPage.'&TB_iframe=1&width=640&height=584" title="Go to the next page" class="next-page'.$disableLast.'">&rsaquo;</a>';
 	$output .= '<a href="?post_id='.$post_ID.'&tab=soundcloud_is_gold&selectFormat='.$format.'&paged='.$lastPage.'&TB_iframe=1&width=640&height=584" title="Go to the last page" class="last-page'.$disableLast.'">&raquo;</a>';
 	$output .= '</span></div>';
-	
+
 	return $output;
 }
 /*Select Tracks / Favorites / Sets
@@ -277,7 +277,7 @@ function soundcloud_is_gold_mce_button( $buttons ) {
 function soundcloud_is_gold_mce_css($mce_css) {
   if (! empty($mce_css)) $mce_css .= ',';
   $mce_css .= SIG_PLUGIN_DIR.'/tinymce-plugin/soundcloud-is-gold-editor_plugin.css';
-  return $mce_css; 
+  return $mce_css;
 }
 
 /* Random Values from Array */
@@ -321,8 +321,8 @@ add_filter('media_upload_tabs', 'soundcloud_is_gold_media_upload_tab');
 /* Add Scripts and Styles to New Tab **/
 add_action('admin_print_scripts-media-upload-popup', 'soundcloud_is_gold_option_scripts', 2000);
 add_action('admin_print_styles-media-upload-popup', 'soundcloud_is_gold_option_styles', 2000);
-	
-	
+
+
 /* Soundcloud is Gold Tab (Iframe) content*/
 function media_soundcloud_is_gold_process() {
 	media_upload_header();
@@ -342,7 +342,7 @@ function plugin_media_button($context) {
 	return sprintf($context, $plugin_media_button);
   }
 add_filter('media_buttons_context', 'plugin_media_button');
-  
+
 /** Populate the new Soundcloud is Gold Tab **/
 function get_soundcloud_is_gold_user_tracks(){
 	//Default Settings
@@ -356,48 +356,48 @@ function get_soundcloud_is_gold_user_tracks(){
 	$soundcloudIsGoldWidthSettings = isset($options['soundcloud_is_gold_width_settings']) ? $options['soundcloud_is_gold_width_settings'] : '';
 	$soundcloudIsGoldWidth = get_soundcloud_is_gold_default_width($soundcloudIsGoldWidthSettings);
 	$soundcloudIsGoldClasses = isset($options['soundcloud_is_gold_classes']) ? $options['soundcloud_is_gold_classes'] : '';
-	$soundcloudIsGoldColor = isset($options['soundcloud_is_gold_color']) ? $options['soundcloud_is_gold_color'] : ''; 
-    
+	$soundcloudIsGoldColor = isset($options['soundcloud_is_gold_color']) ? $options['soundcloud_is_gold_color'] : '';
+
 	//Default Pagination Settings
 	$soundcloudIsGoldTracksPerPage = 25;
 	$soundcloudIsGoldPage = isset($_REQUEST['paged']) ? $_REQUEST['paged'] : '1';
 	$post_id = no_more_XSS($_REQUEST['post_id']);
 	$soundcloudIsGoldApiOffset = $soundcloudIsGoldTracksPerPage*($soundcloudIsGoldPage-1);
-	
+
 	//API Call
 	$soundcloudIsGoldSelectedFormat = isset($_REQUEST['selectFormat']) ? no_more_XSS($_REQUEST['selectFormat']) : 'tracks';
-	if($soundcloudIsGoldSelectedFormat == 'tracks') $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldActiveUser.'/tracks.json?limit='.$soundcloudIsGoldTracksPerPage.'&offset='.$soundcloudIsGoldApiOffset.'&client_id=9rD2GrGrajkmkw5eYFDp2g';
-	if($soundcloudIsGoldSelectedFormat == 'sets') $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldActiveUser.'/playlists.json?limit='.$soundcloudIsGoldTracksPerPage.'&offset='.$soundcloudIsGoldApiOffset.'&client_id=9rD2GrGrajkmkw5eYFDp2g';
-	if($soundcloudIsGoldSelectedFormat == 'favorites') $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldActiveUser.'/favorites.json?limit='.$soundcloudIsGoldTracksPerPage.'&offset='.$soundcloudIsGoldApiOffset.'&client_id=9rD2GrGrajkmkw5eYFDp2g';
+	if($soundcloudIsGoldSelectedFormat == 'tracks') $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldActiveUser.'/tracks.json?limit='.$soundcloudIsGoldTracksPerPage.'&offset='.$soundcloudIsGoldApiOffset.'&client_id='.CLIENT_ID;
+	if($soundcloudIsGoldSelectedFormat == 'sets') $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldActiveUser.'/playlists.json?limit='.$soundcloudIsGoldTracksPerPage.'&offset='.$soundcloudIsGoldApiOffset.'&client_id='.CLIENT_ID;
+	if($soundcloudIsGoldSelectedFormat == 'favorites') $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldActiveUser.'/favorites.json?limit='.$soundcloudIsGoldTracksPerPage.'&offset='.$soundcloudIsGoldApiOffset.'&client_id='.CLIENT_ID;
 	$soundcloudIsGoldApiResponse = get_soundcloud_is_gold_api_response($soundcloudIsGoldApiCall);
-	
+
 	//Pagination and Actions
 	$soundcloudIsGoldNumbers = get_soundcloudIsGoldUserNumber($soundcloudIsGoldSelectedFormat);
 	$soundcloudIsGoldPagination = soundcloud_is_gold_pagination($soundcloudIsGoldSelectedFormat, $soundcloudIsGoldNumbers[$soundcloudIsGoldSelectedFormat], $soundcloudIsGoldPage, $soundcloudIsGoldTracksPerPage, $post_id);
 	$soundcloudIsGoldSelectTracksFavsSets = soundcloud_is_gold_select_tracks_favs_sets($soundcloudIsGoldSelectedFormat, $soundcloudIsGoldNumbers, $post_id);
-	
+
 	//Usernames
 	echo '<div class="soundcloudMMWrapper">';
 		echo '<div id="soundcloudMMUsernameHeader"><img src="'.$soundcloudIsGoldUsers[$soundcloudIsGoldActiveUser][1].'" width="50" height="50"/><span>'.$soundcloudIsGoldUsers[$soundcloudIsGoldActiveUser][0].'</span> <a href="#" id="soundcloudMMShowUsernames">show users options</a><a href="#" id="soundcloudMMHideUsernames" class="hidden">hide users options</a></div>';
 		echo '<div id="soundcloudMMUsermameTab">';
 		get_soundcloud_is_gold_username_interface($options, $soundcloudIsGoldUsers);
 	echo '</div></div>';
-	
+
 	echo '<div id="soundcloudMMTabActions" class="tablenav">';
 		//Select Tracks / Sets / Favs
 		echo (isset($soundcloudIsGoldSelectTracksFavsSets)) ? $soundcloudIsGoldSelectTracksFavsSets : '';
 		//Pagination
 		echo (isset($soundcloudIsGoldPagination)) ? $soundcloudIsGoldPagination : '';
 	echo '</div>';
-	
+
 	//Sorting Menu
 	echo '<form id="library-form" class="media-upload-form validate" action="" method="post" enctype="multipart/form-data"><div id="media-items" class="media-items-'.$post_id.'">';
 	?>
-	
+
 	<script type="text/javascript">
 	<!--
 	jQuery(function($){
-		
+
 		var preloaded = $(".media-item.preloaded");
 		if ( preloaded.length > 0 ) {
 			preloaded.each(function(){prepareMediaItem({id:this.id.replace(/[^0-9]/g, '')},'');});
@@ -405,17 +405,17 @@ function get_soundcloud_is_gold_user_tracks(){
 		}
 	});
 	-->
-	
+
 	//Set default Soundcloud Is Gold Settings
 	<?php get_soundcloud_is_gold_default_settings_for_js(); ?>
-		
-		
+
+
 	</script>
-	
+
 	<?php
 	if (isset($soundcloudIsGoldApiResponse['response']) && $soundcloudIsGoldApiResponse['response']) {
 			foreach($soundcloudIsGoldApiResponse['response'] as $soundcloudIsGoldtrack): ?>
-			
+
 				<div class="media-item preloaded" id="media-item-<?php echo $soundcloudIsGoldtrack['id'] ?>">
 					<a href="#" class="toggle describe-toggle-on soundcloud" id="show-<?php echo $soundcloudIsGoldtrack['id'] ?>">Show</a>
 					<a href="#" class="toggle describe-toggle-off soundcloudMM">Hide</a>
@@ -451,7 +451,7 @@ function get_soundcloud_is_gold_user_tracks(){
 											<input type="checkbox" <?php echo (isset($soundcloudIsGoldSettings[2]) ? $soundcloudIsGoldSettings[2] : 0) ? 'checked="checked"' : '' ?> id="soundcloudMMShowArtwork-<?php echo $soundcloudIsGoldtrack['id'] ?>" class="text soundcloudMMShowArtwork">
 											<label >Show artwork <small>(html5 player)</small></label>
 											<!-- <input type="text" class="soundcloudPlayercolor" value""/> -->
-											
+
 										</td>
 									</tr>
 									<tr class="soundcloudMM_playerType">
@@ -522,7 +522,7 @@ function get_soundcloud_is_gold_user_tracks(){
 											<!-- <input type="submit" value="Insert into Post" name="" class="button"> -->
 											<!-- <input type="button" id="soundcloudMMAddToGallery-<?php echo $soundcloudIsGoldtrack['id'] ?>" value="Add to post's gallery" name="" class="button soundcloudMMAddToGallery">
 											<a href="#" id="soundcloudMMFeat-<?php echo $soundcloudIsGoldtrack['id'] ?>" class="soundcloudMMFeat">Use as featured Soundcloud</a> -->
-											
+
 										</td>
 									</tr>
 								</tbody>
@@ -558,8 +558,8 @@ function soundcloud_is_gold_shortcode($atts){
 	$soundcloudIsGoldPlayerType = isset($options['soundcloud_is_gold_playerType']) ? $options['soundcloud_is_gold_playerType'] : '';
 	$soundcloudIsGoldWidthSettings = isset($options['soundcloud_is_gold_width_settings']) ? $options['soundcloud_is_gold_width_settings'] : '';
 	$soundcloudIsGoldClasses = isset($options['soundcloud_is_gold_classes']) ? $options['soundcloud_is_gold_classes'] : '';
-	$soundcloudIsGoldColor = isset($options['soundcloud_is_gold_color']) ? $options['soundcloud_is_gold_color'] : ''; 
-   
+	$soundcloudIsGoldColor = isset($options['soundcloud_is_gold_color']) ? $options['soundcloud_is_gold_color'] : '';
+
 	//Only use lowercase as atts!
 	extract( shortcode_atts( array(
 					'id' => '1',
@@ -587,15 +587,15 @@ function soundcloud_is_gold_shortcode($atts){
 
 /** The Player **/
 function soundcloud_is_gold_player($id, $user, $autoPlay, $comments, $width, $classes, $playerTypes, $color, $artwork, $format){
-	
+
 
 	$options = get_option('soundcloud_is_gold_options');
 	$soundcloudIsGoldSettings = isset($options['soundcloud_is_gold_settings']) ? $options['soundcloud_is_gold_settings'] : '';
 	$soundcloudIsGoldPlayerType = isset($options['soundcloud_is_gold_playerType']) ? $options['soundcloud_is_gold_playerType'] : '';
 	$soundcloudIsGoldWidthSettings = isset($options['soundcloud_is_gold_width_settings']) ? $options['soundcloud_is_gold_width_settings'] : '';
 	$soundcloudIsGoldClasses = isset($options['soundcloud_is_gold_classes']) ? $options['soundcloud_is_gold_classes'] : '';
-	$soundcloudIsGoldColor = isset($options['soundcloud_is_gold_color']) ? $options['soundcloud_is_gold_color'] : ''; 
-   
+	$soundcloudIsGoldColor = isset($options['soundcloud_is_gold_color']) ? $options['soundcloud_is_gold_color'] : '';
+
 	//Default values: Needed when not called trough shortode (like in the ajax preview)
 	if(!isset($autoPlay)) $autoPlay = ((!isset($soundcloudIsGoldSettings[0]) || $soundcloudIsGoldSettings[0] == '') ? 'false' : 'true');
 	if(!isset($comments)) $comments = ((!isset($soundcloudIsGoldSettings[1]) || $soundcloudIsGoldSettings[1] == '') ? 'false' : 'true');
@@ -607,17 +607,17 @@ function soundcloud_is_gold_player($id, $user, $autoPlay, $comments, $width, $cl
 	if(!isset($format)) $format = 'tracks';
 	if($format == 'sets' || $format == 'set') $format = 'playlists';
 	$html5Player = false;
-	
+
 	$color = str_replace('#', '', $color);
-	
+
 	//In case of requesting latest track
 	/*if(isset($user) && $user != "null"){
 		$returnedId = get_soundcloud_is_gold_latest_track_id($user, $format);
 		if($returnedId != "") $id = $returnedId;
 	}*/
-	
+
 	if($format == 'favorites') $format = "tracks"; //Reset Favorites to tracks as soundcloud treats them as tracks.
-	
+
 	//Player types sizes
 	switch($playerTypes){
 		case 'Standard':
@@ -639,7 +639,7 @@ function soundcloud_is_gold_player($id, $user, $autoPlay, $comments, $width, $cl
 	}
 
 	$player = '<div class="soundcloudIsGold '.esc_attr($classes).'" id="soundcloud-'.esc_attr($id).'">';
-	
+
 	//Flash Player
 	if(!$html5Player){
 		$player .= '<object height="'.esc_attr($height).'" width="'.esc_attr($width).'">';
@@ -647,14 +647,14 @@ function soundcloud_is_gold_player($id, $user, $autoPlay, $comments, $width, $cl
 		$player .= '<param name="allowscriptaccess" value="always"></param>';
 		$player .= '<param name="wmode" value="transparent"></param>';
 		$player .= '<embed wmode="transparent" allowscriptaccess="always" height="'.esc_attr($height).'" src="http://player.soundcloud.com/player.swf?url=http%3A%2F%2Fapi.soundcloud.com%2F'.esc_attr($format).'%2F'.esc_attr($id).'&amp;auto_play='.esc_attr($autoPlay).'&amp;player_type='.esc_attr($playerType).'&amp;show_comments='.esc_attr($comments).'&amp;color='.esc_attr($color).'" type="application/x-shockwave-flash" width="'.esc_attr($width).'"></embed>';
-		$player .= '</object>';	
+		$player .= '</object>';
 	}
 	//Html5 Player
 	else{
 		$player .= '<iframe width="'.esc_attr($width).'" height="'.esc_attr($height).'" scrolling="no" frameborder="no" src="http://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2F'.esc_attr($format).'%2F'.esc_attr($id).'&amp;auto_play='.esc_attr($autoPlay).'&amp;show_artwork='.esc_attr($artwork).'&amp;color='.esc_attr($color).'"></iframe>';
 	}
 	$player .= '</div>';
-        
+
 	return $player;
 
 }
@@ -709,11 +709,11 @@ function soundcloud_is_gold_add_user(){
 			if(!empty($_POST['username']) && !array_key_exists($_POST['username'], $options['soundcloud_is_gold_users'])){
 				$newUsername = str_replace(" ", "-", trim($_POST['username']));
 				//Get user info
-				$userInfo = get_soundcloud_is_gold_api_response("http://api.soundcloud.com/users/".$newUsername.".json?client_id=9rD2GrGrajkmkw5eYFDp2g");
+				$userInfo = get_soundcloud_is_gold_api_response("http://api.soundcloud.com/users/".$newUsername.".json?client_id=".CLIENT_ID);
 				if(isset($userInfo) && isset($userInfo['response']['permalink'])){
 					$newUsername = $userInfo['response']['permalink'];
 					$newUsernameImg = $userInfo['response']['avatar_url'];
-					
+
 					$return = '<li class="soundcloudIsGoldUserContainer" style="background-image:URL('.$newUsernameImg.')">';
 					$return .= '<span class="soundcloudIsGoldRemoveUser" />&nbsp;</span>';
 					$return .= '<div>';
@@ -722,7 +722,7 @@ function soundcloud_is_gold_add_user(){
 					$return .= '<p>'.$newUsername.'</p>';
 					$return .= '</div>';
 					$return .= '</li>';
-					
+
 					//Tab: extra actions
 					if($_POST['updateOption'] == '1'){
 						$options['soundcloud_is_gold_users'][$newUsername][0] = $newUsername;
@@ -775,7 +775,7 @@ function soundcloud_is_gold_delete_user(){
 			}
 		}
 	}
-	
+
 	echo $message;
 	die;
 }
@@ -824,7 +824,7 @@ class Soundcloud_Is_Gold_Widget extends WP_Widget {
 		$behavior = $instance['behavior'];
 		$number = $instance['number'];
 		$format = $instance['format'];
-		
+
 		//Random User
 		if($user == "randomUser") {
 			$options = get_option('soundcloud_is_gold_options');
@@ -832,10 +832,10 @@ class Soundcloud_Is_Gold_Widget extends WP_Widget {
 			//printl($soundcloudIsGoldUsers[0][0]);
 			if(isset($soundcloudIsGoldUsers))  $user = $soundcloudIsGoldUsers[0][0];
 		}
-		
+
 		echo $before_widget;
 		if ( ! empty( $title ) ) echo $before_title . $title . $after_title;
-		
+
 		//Random User per Track
 		if($user == "randomUsers") {
 			$options = get_option('soundcloud_is_gold_options');
@@ -855,14 +855,14 @@ class Soundcloud_Is_Gold_Widget extends WP_Widget {
 			}
 		}
 		//One User
-		else{	
+		else{
 			foreach(get_soundcloud_is_gold_multiple_tracks_id($user, $number, ($behavior == "latest") ? FALSE : TRUE, $format) as $key=>$ids){
 				if($key == 1) $autoplay = false;
 				if($format == "favorites") $format = "tracks"; //Soundcloud treats Favorites as Tracks for the player.
 				echo soundcloud_is_gold_player($ids, NULL, $autoplay, $comments, $width, $classes, $playertype, NULL, $artwork, $format);
-			}		
+			}
 		}
-		
+
 		echo $after_widget;
 	}
 
@@ -891,7 +891,7 @@ class Soundcloud_Is_Gold_Widget extends WP_Widget {
 		$instance['type'] = strip_tags( $new_instance['type'] );
 		$instance['wp'] = strip_tags( $new_instance['wp'] );
 		$instance['custom'] = strip_tags( $new_instance['custom'] );
-		
+
 		return $instance;
 	}
 
@@ -912,7 +912,7 @@ class Soundcloud_Is_Gold_Widget extends WP_Widget {
 		?>
 		<!-- Title -->
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 		<!-- Users -->
@@ -922,10 +922,10 @@ class Soundcloud_Is_Gold_Widget extends WP_Widget {
 				<?php
 				$options = get_option('soundcloud_is_gold_options');
 				foreach($options['soundcloud_is_gold_users'] as $user) : ?>
-					<option value="<?php echo $user[0] ?>"<?php selected( $instance['user'], $user[0] ); ?>><?php _e($user[0]); ?></option>	
+					<option value="<?php echo $user[0] ?>"<?php selected( $instance['user'], $user[0] ); ?>><?php _e($user[0]); ?></option>
 				<?php endforeach; ?>
-				<option value="randomUser"<?php selected( $instance['user'], "randomUser" ); ?>><?php _e("Pick a Random User"); ?></option>	
-				<option value="randomUsers"<?php selected( $instance['user'], "randomUsers" ); ?>><?php _e("Pick a Random User per Track"); ?></option>	
+				<option value="randomUser"<?php selected( $instance['user'], "randomUser" ); ?>><?php _e("Pick a Random User"); ?></option>
+				<option value="randomUsers"<?php selected( $instance['user'], "randomUsers" ); ?>><?php _e("Pick a Random User per Track"); ?></option>
 			</select>
 		</p>
 		<!-- Main options -->
@@ -952,7 +952,7 @@ class Soundcloud_Is_Gold_Widget extends WP_Widget {
 			<select name="<?php echo $this->get_field_name('number'); ?>" id="<?php echo $this->get_field_id('number'); ?>" class="widefat">
 				<?php
 				for($i=1; $i<=10; $i++) : ?>
-					<option value="<?php echo $i ?>"<?php selected( $instance['number'], $i ); ?>><?php _e($i); ?></option>	
+					<option value="<?php echo $i ?>"<?php selected( $instance['number'], $i ); ?>><?php _e($i); ?></option>
 				<?php endfor; ?>
 			</select>
 			<br/>
@@ -970,13 +970,13 @@ class Soundcloud_Is_Gold_Widget extends WP_Widget {
 				<?php
 				$playertypes = array("Mini", "Standard", "Artwork", "html5");
 				foreach($playertypes as $playertype) : ?>
-					<option value="<?php echo $playertype ?>"<?php selected( $instance['playertype'], $playertype ); ?>><?php _e($playertype); ?></option>	
+					<option value="<?php echo $playertype ?>"<?php selected( $instance['playertype'], $playertype ); ?>><?php _e($playertype); ?></option>
 				<?php endforeach; ?>
 			</select>
 		</p>
 		<!-- Width -->
 		<?php
-		
+
 		?>
 		<p>
 			<label for=""><?php _e( 'Width:' ); ?></label>
