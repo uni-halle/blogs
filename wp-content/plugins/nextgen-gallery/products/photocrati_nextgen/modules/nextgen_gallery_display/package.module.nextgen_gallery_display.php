@@ -1,35 +1,50 @@
 <?php
+/**
+ * Class A_Display_Settings_Controller
+ * @mixin C_NextGen_Admin_Page_Controller
+ * @adapts I_NextGen_Admin_Page using "ngg_display_settings" context
+ */
 class A_Display_Settings_Controller extends Mixin
 {
     /**
      * Static resources required for the Display Settings page
      */
-    public function enqueue_backend_resources()
+    function enqueue_backend_resources()
     {
         $this->call_parent('enqueue_backend_resources');
         wp_enqueue_style('nextgen_gallery_display_settings');
         wp_enqueue_script('nextgen_gallery_display_settings');
     }
-    public function get_page_title()
+    function get_page_title()
     {
         return __('Gallery Settings', 'nggallery');
     }
-    public function get_required_permission()
+    function get_required_permission()
     {
         return 'NextGEN Change options';
     }
 }
+/**
+ * Class A_Display_Settings_Page
+ * @mixin C_Page_Manager
+ * @adapts I_Page_Manager
+ */
 class A_Display_Settings_Page extends Mixin
 {
-    public function setup()
+    function setup()
     {
         $this->object->add(NGG_DISPLAY_SETTINGS_SLUG, array('adapter' => 'A_Display_Settings_Controller', 'parent' => NGGFOLDER, 'before' => 'ngg_other_options'));
         return $this->call_parent('setup');
     }
 }
+/**
+ * Class A_Displayed_Gallery_Trigger_Element
+ * @mixin C_MVC_View
+ * @adapts I_MVC_View
+ */
 class A_Displayed_Gallery_Trigger_Element extends Mixin
 {
-    public function render_object()
+    function render_object()
     {
         $root_element = $this->call_parent('render_object');
         if (($displayed_gallery = $this->object->get_param('displayed_gallery')) && $this->object->get_param('display_type_rendering')) {
@@ -39,15 +54,20 @@ class A_Displayed_Gallery_Trigger_Element extends Mixin
         return $root_element;
     }
 }
+/**
+ * Class A_Displayed_Gallery_Trigger_Resources
+ * @mixin C_Display_Type_Controller
+ * @adapts I_Display_Type_Controller
+ */
 class A_Displayed_Gallery_Trigger_Resources extends Mixin
 {
     protected $run_once = FALSE;
-    public function enqueue_frontend_resources($displayed_gallery)
+    function enqueue_frontend_resources($displayed_gallery)
     {
         $this->call_parent('enqueue_frontend_resources', $displayed_gallery);
         return $this->enqueue_displayed_gallery_trigger_buttons_resources($displayed_gallery);
     }
-    public function enqueue_displayed_gallery_trigger_buttons_resources($displayed_gallery = FALSE)
+    function enqueue_displayed_gallery_trigger_buttons_resources($displayed_gallery = FALSE)
     {
         $retval = FALSE;
         M_Gallery_Display::enqueue_fontawesome();
@@ -71,6 +91,11 @@ class A_Displayed_Gallery_Trigger_Resources extends Mixin
         return $retval;
     }
 }
+/**
+ * Class A_Gallery_Display_Factory
+ * @mixin C_Component_Factory
+ * @adapts I_Component_Factory
+ */
 class A_Gallery_Display_Factory extends Mixin
 {
     /**
@@ -79,7 +104,7 @@ class A_Gallery_Display_Factory extends Mixin
      * @param array|stdClass|C_DataMapper_Model $properties
      * @param string|array|FALSE $context
      */
-    public function display_type($properties = array(), $mapper = FALSE, $context = FALSE)
+    function display_type($properties = array(), $mapper = FALSE, $context = FALSE)
     {
         return new C_Display_Type($properties, $mapper, $context);
     }
@@ -89,11 +114,16 @@ class A_Gallery_Display_Factory extends Mixin
      * @param array|stdClass|C_DataMapper_Model $properties
      * @param string|array|FALSE $context
      */
-    public function displayed_gallery($properties = array(), $mapper = FALSE, $context = FALSE)
+    function displayed_gallery($properties = array(), $mapper = FALSE, $context = FALSE)
     {
         return new C_Displayed_Gallery($properties, $mapper, $context);
     }
 }
+/**
+ * Class A_Gallery_Display_View
+ * @mixin C_MVC_View
+ * @adapts I_MVC_View
+ */
 class A_Gallery_Display_View extends Mixin
 {
     /**
@@ -104,7 +134,7 @@ class A_Gallery_Display_View extends Mixin
      * @param string $addition_type what kind of addition is being made 'layout', 'decoration', 'style', 'logic' etc.
      * @return string|NULL
      */
-    public function _check_addition_rendering($displayed_gallery, $template_id, $root_element, $addition_type)
+    function _check_addition_rendering($displayed_gallery, $template_id, $root_element, $addition_type)
     {
         $view = $root_element->get_object();
         $mode = $view->get_param('render_mode');
@@ -131,11 +161,16 @@ class A_Gallery_Display_View extends Mixin
  * - entity_types (gallery, album)
  * - name		 (nextgen_basic-thumbnails)
  * - title		 (NextGEN Basic Thumbnails)
+ * - aliases	[basic_thumbnail, basic_thumbnails]
+ *
+ * @mixin Mixin_Display_Type_Validation
+ * @mixin Mixin_Display_Type_Instance_Methods
+ * @implements I_Display_Type
  */
 class C_Display_Type extends C_DataMapper_Model
 {
-    public $_mapper_interface = 'I_Display_Type_Mapper';
-    public function define($properties = array(), $mapper = FALSE, $context = FALSE)
+    var $_mapper_interface = 'I_Display_Type_Mapper';
+    function define($properties = array(), $mapper = FALSE, $context = FALSE)
     {
         parent::define($mapper, $properties, $context);
         $this->add_mixin('Mixin_Display_Type_Validation');
@@ -148,7 +183,7 @@ class C_Display_Type extends C_DataMapper_Model
      * @param array|stdClass|C_Display_Type $properties
      * @param FALSE|string|array $context
      */
-    public function initialize($properties = array(), $mapper = FALSE, $context = FALSE)
+    function initialize($properties = array(), $mapper = FALSE, $context = FALSE)
     {
         // If no mapper was specified, then get the mapper
         if (!$mapper) {
@@ -163,7 +198,7 @@ class C_Display_Type extends C_DataMapper_Model
      * @param string $property
      * @return mixed
      */
-    public function &__get($property)
+    function &__get($property)
     {
         if (isset($this->settings) && isset($this->settings[$property])) {
             $retval =& $this->settings[$property];
@@ -175,7 +210,7 @@ class C_Display_Type extends C_DataMapper_Model
 }
 class Mixin_Display_Type_Validation extends Mixin
 {
-    public function validation()
+    function validation()
     {
         $this->object->validates_presence_of('entity_types');
         $this->object->validates_presence_of('name');
@@ -194,11 +229,11 @@ class Mixin_Display_Type_Instance_Methods extends Mixin
      * @param stdClass
      * @return bool
      */
-    public function is_compatible_with_source($source)
+    function is_compatible_with_source($source)
     {
         return C_Displayed_Gallery_Source_Manager::get_instance()->is_compatible($source, $this);
     }
-    public function get_order()
+    function get_order()
     {
         return NGG_DISPLAY_PRIORITY_BASE;
     }
@@ -207,10 +242,15 @@ class Mixin_Display_Type_Instance_Methods extends Mixin
  * A Controller which displays the settings form for the display type, as
  * well as the front-end display
  */
+/**
+ * Class C_Display_Type_Controller
+ * @mixin Mixin_Display_Type_Controller
+ * @implements I_Display_Type_Controller
+ */
 class C_Display_Type_Controller extends C_MVC_Controller
 {
     static $_instances = array();
-    public function define($context = FALSE)
+    function define($context = FALSE)
     {
         parent::define($context);
         $this->add_mixin('Mixin_Display_Type_Controller');
@@ -234,16 +274,16 @@ class C_Display_Type_Controller extends C_MVC_Controller
  */
 class Mixin_Display_Type_Controller extends Mixin
 {
-    public $_render_mode;
+    var $_render_mode;
     /**
      * Enqueues static resources required for lightbox effects
      * @param type $displayed_gallery
      */
-    public function enqueue_lightbox_resources($displayed_gallery)
+    function enqueue_lightbox_resources($displayed_gallery)
     {
         C_Lightbox_Library_Manager::get_instance()->enqueue();
     }
-    public function is_cachable()
+    function is_cachable()
     {
         return TRUE;
     }
@@ -251,7 +291,7 @@ class Mixin_Display_Type_Controller extends Mixin
      * This method should be overwritten by other adapters/mixins, and call
      * wp_enqueue_script() / wp_enqueue_style()
      */
-    public function enqueue_frontend_resources($displayed_gallery)
+    function enqueue_frontend_resources($displayed_gallery)
     {
         // This script provides common JavaScript among all display types
         wp_enqueue_script('ngg_common');
@@ -267,18 +307,18 @@ class Mixin_Display_Type_Controller extends Mixin
         // Enqueue lightbox library
         $this->object->enqueue_lightbox_resources($displayed_gallery);
     }
-    public function enqueue_ngg_styles()
+    function enqueue_ngg_styles()
     {
         $settings = C_NextGen_Settings::get_instance();
         if ((!is_multisite() || is_multisite() && $settings->wpmuStyle) && $settings->activateCSS) {
             wp_enqueue_style('nggallery', C_NextGen_Style_Manager::get_instance()->get_selected_stylesheet_url(), FALSE, NGG_SCRIPT_VERSION);
         }
     }
-    public function get_render_mode()
+    function get_render_mode()
     {
         return $this->object->_render_mode;
     }
-    public function set_render_mode($mode)
+    function set_render_mode($mode)
     {
         $this->object->_render_mode = $mode;
     }
@@ -288,7 +328,7 @@ class Mixin_Display_Type_Controller extends Mixin
      * @param null $params
      * @return array|null
      */
-    public function prepare_display_parameters($displayed_gallery, $params = null)
+    function prepare_display_parameters($displayed_gallery, $params = null)
     {
         if ($params == null) {
             $params = array();
@@ -301,7 +341,7 @@ class Mixin_Display_Type_Controller extends Mixin
     /**
      * Renders the frontend display of the display type
      */
-    public function index_action($displayed_gallery, $return = FALSE)
+    function index_action($displayed_gallery, $return = FALSE)
     {
         return $this->object->render_partial('photocrati-nextgen_gallery_display#index', array(), $return);
     }
@@ -309,11 +349,11 @@ class Mixin_Display_Type_Controller extends Mixin
      * Returns the url for the JavaScript library required
      * @return null|string
      */
-    public function _get_js_lib_url()
+    function _get_js_lib_url()
     {
         return NULL;
     }
-    public function does_lightbox_support_displayed_gallery($displayed_gallery, $lightbox = NULL)
+    function does_lightbox_support_displayed_gallery($displayed_gallery, $lightbox = NULL)
     {
         if (!$lightbox) {
             $lightbox = C_Lightbox_Library_Manager::get_instance()->get_selected();
@@ -337,7 +377,7 @@ class Mixin_Display_Type_Controller extends Mixin
      * Returns the effect HTML code for the displayed gallery
      * @param type $displayed_gallery
      */
-    public function get_effect_code($displayed_gallery)
+    function get_effect_code($displayed_gallery)
     {
         $retval = '';
         if ($lightbox = C_Lightbox_Library_Manager::get_instance()->get_selected()) {
@@ -362,7 +402,7 @@ class Mixin_Display_Type_Controller extends Mixin
      * @param mixed $object_value
      * @param bool $define
      */
-    public function _add_script_data($handle, $object_name, $object_value, $define = TRUE, $override = FALSE)
+    function _add_script_data($handle, $object_name, $object_value, $define = TRUE, $override = FALSE)
     {
         $retval = FALSE;
         // wp_localize_script allows you to add data to the DOM, associated
@@ -401,7 +441,7 @@ class Mixin_Display_Type_Controller extends Mixin
         return $retval;
     }
     // Returns the longest and widest dimensions from a list of entities
-    public function get_entity_statistics($entities, $named_size, $style_images = FALSE)
+    function get_entity_statistics($entities, $named_size, $style_images = FALSE)
     {
         $longest = $widest = 0;
         $storage = C_Gallery_Storage::get_instance();
@@ -454,11 +494,14 @@ class Mixin_Display_Type_Controller extends Mixin
 }
 /**
  * Provides a datamapper to perform CRUD operations for Display Types
+ *
+ * @mixin Mixin_Display_Type_Mapper
+ * @implements I_Display_Type_Mapper
  */
 class C_Display_Type_Mapper extends C_CustomPost_DataMapper_Driver
 {
     public static $_instances = array();
-    public function define($context = FALSE, $not_used = FALSE)
+    function define($context = FALSE, $not_used = FALSE)
     {
         $object_name = 'display_type';
         // Add the object name to the context of the object as well
@@ -481,7 +524,7 @@ class C_Display_Type_Mapper extends C_CustomPost_DataMapper_Driver
         $this->add_serialized_column('settings');
         $this->add_serialized_column('entity_types');
     }
-    public function initialize($context = FALSE)
+    function initialize($context = FALSE)
     {
         parent::initialize('display_type');
     }
@@ -507,13 +550,20 @@ class Mixin_Display_Type_Mapper extends Mixin
      * Locates a Display Type by names
      * @param string $name
      */
-    public function find_by_name($name, $model = FALSE)
+    function find_by_name($name, $model = FALSE)
     {
         $retval = NULL;
         $this->object->select();
         $this->object->where(array('name = %s', $name));
         $results = $this->object->run_query(FALSE, $model);
-        if ($results) {
+        if (!$results) {
+            foreach ($this->object->find_all(FALSE, $model) as $entity) {
+                if ($entity->name == $name || isset($entity->aliases) && is_array($entity->aliases) && in_array($name, $entity->aliases)) {
+                    $retval = $entity;
+                    break;
+                }
+            }
+        } else {
             $retval = $results[0];
         }
         return $retval;
@@ -523,11 +573,11 @@ class Mixin_Display_Type_Mapper extends Mixin
      * @param string|array $entity_type e.g. image, gallery, album
      * @return array
      */
-    public function find_by_entity_type($entity_type, $model = FALSE)
+    function find_by_entity_type($entity_type, $model = FALSE)
     {
         $find_entity_types = is_array($entity_type) ? $entity_type : array($entity_type);
         $retval = NULL;
-        foreach ($this->object->find_all($model) as $display_type) {
+        foreach ($this->object->find_all(FALSE, $model) as $display_type) {
             foreach ($find_entity_types as $entity_type) {
                 if (isset($display_type->entity_types) && in_array($entity_type, $display_type->entity_types)) {
                     $retval[] = $display_type;
@@ -542,14 +592,14 @@ class Mixin_Display_Type_Mapper extends Mixin
      * @param stdClass $entity
      * @return string
      */
-    public function get_post_title($entity)
+    function get_post_title($entity)
     {
         return $entity->title;
     }
     /**
      * Sets default values needed for display types
      */
-    public function set_defaults($entity)
+    function set_defaults($entity)
     {
         if (!isset($entity->settings)) {
             $entity->settings = array();
@@ -559,6 +609,9 @@ class Mixin_Display_Type_Mapper extends Mixin
         $this->_set_default_value($entity, 'view_order', NGG_DISPLAY_PRIORITY_BASE);
         $this->_set_default_value($entity, 'settings', 'use_lightbox_effect', TRUE);
         $this->_set_default_value($entity, 'hidden_from_ui', FALSE);
+        // todo remove later
+        $this->_set_default_value($entity, 'hidden_from_igw', FALSE);
+        $this->_set_default_value($entity, 'aliases', array());
         return $this->call_parent('set_defaults', $entity);
     }
 }
@@ -574,11 +627,16 @@ class Mixin_Display_Type_Mapper extends Mixin
  * - entity_ids			(specific images/galleries to include, sorted)
  * - order_by
  * - order_direction
+ *
+ * @mixin Mixin_Displayed_Gallery_Validation
+ * @mixin Mixin_Displayed_Gallery_Instance_Methods
+ * @mixin Mixin_Displayed_Gallery_Queries
+ * @implements I_Displayed_Gallery
  */
 class C_Displayed_Gallery extends C_DataMapper_Model
 {
-    public $_mapper_interface = 'I_Displayed_Gallery_Mapper';
-    public function define($properties = array(), $mapper = FALSE, $context = FALSE)
+    var $_mapper_interface = 'I_Displayed_Gallery_Mapper';
+    function define($properties = array(), $mapper = FALSE, $context = FALSE)
     {
         parent::define($mapper, $properties, $context);
         $this->add_mixin('Mixin_Displayed_Gallery_Validation');
@@ -592,7 +650,7 @@ class C_Displayed_Gallery extends C_DataMapper_Model
      * @param array|stdClass|C_Displayed_Gallery $properties
      * @param FALSE|string|array $context
      */
-    public function initialize($properties = array(), $mapper = FALSE, $context = FALSE)
+    function initialize($properties = array(), $mapper = FALSE, $context = FALSE)
     {
         if (!$mapper) {
             $mapper = $this->get_registry()->get_utility($this->_mapper_interface);
@@ -606,7 +664,7 @@ class C_Displayed_Gallery extends C_DataMapper_Model
  */
 class Mixin_Displayed_Gallery_Validation extends Mixin
 {
-    public function validation()
+    function validation()
     {
         // Valid sources
         $this->object->validates_presence_of('source');
@@ -624,6 +682,7 @@ class Mixin_Displayed_Gallery_Validation extends Mixin
                     }
                 }
             }
+            $this->object->display_type = $display_type->name;
             // Is the display type compatible with the source? E.g., if we're
             // using a display type that expects images, we can't be feeding it
             // galleries and albums
@@ -649,7 +708,7 @@ class Mixin_Displayed_Gallery_Validation extends Mixin
 }
 class Mixin_Displayed_Gallery_Queries extends Mixin
 {
-    public function select_random_variation()
+    function select_random_variation()
     {
         $retval = FALSE;
         $source_obj = $this->object->get_source();
@@ -667,7 +726,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
         }
         return $retval;
     }
-    public function get_entities($limit = FALSE, $offset = FALSE, $id_only = FALSE, $returns = 'included')
+    function get_entities($limit = FALSE, $offset = FALSE, $id_only = FALSE, $returns = 'included')
     {
         $retval = array();
         $source_obj = $this->object->get_source();
@@ -694,7 +753,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
      * @param boolean $id_only
      * @param string $returns
      */
-    public function _get_image_entities($source_obj, $limit, $offset, $id_only, $returns)
+    function _get_image_entities($source_obj, $limit, $offset, $id_only, $returns)
     {
         // TODO: This method is very long, and therefore more difficult to read
         // Find a way to minimalize or segment
@@ -763,7 +822,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
             }
             // Ensure that no images marked as excluded at the gallery level are returned
             if (empty($this->object->skip_excluding_globally_excluded_images)) {
-                $mapper->where(array('exclude = %d', 0));
+                $mapper->where(array("exclude = %d", 0));
             }
         } elseif ($returns == 'excluded') {
             // If the sortorder propery is available, then we need to override
@@ -774,7 +833,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
                 $sort_by = 'new_sortorder';
             }
             // Mark each result as excluded
-            $select .= ', 1 AS exclude';
+            $select .= ", 1 AS exclude";
             $mapper->select($select);
             // Is this case, entity_ids become the exclusions
             $exclusions = $this->object->entity_ids;
@@ -796,7 +855,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
                 }
             }
             // Ensure that images marked as excluded are returned as well
-            $mapper->where(array('exclude = 1'));
+            $mapper->where(array("exclude = 1"));
         }
         // Filter based on containers_ids. Container ids is a little more
         // complicated as it can contain gallery ids or tags
@@ -806,7 +865,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
                 $term_ids = $this->object->get_term_ids_for_tags($this->object->container_ids);
                 $mapper->where(array("{$image_key} IN %s", get_objects_in_term($term_ids, 'ngg_tag')));
             } else {
-                $mapper->where(array('galleryid IN %s', $this->object->container_ids));
+                $mapper->where(array("galleryid IN %s", $this->object->container_ids));
             }
         }
         // Filter based on excluded container ids
@@ -816,7 +875,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
                 $term_ids = $this->object->get_term_ids_for_tags($this->object->excluded_container_ids);
                 $mapper->where(array("{$image_key} NOT IN %s", get_objects_in_term($term_ids, 'ngg_tag')));
             } else {
-                $mapper->where(array('galleryid NOT IN %s', $this->object->excluded_container_ids));
+                $mapper->where(array("galleryid NOT IN %s", $this->object->excluded_container_ids));
             }
         }
         // Adjust the query more based on what source was selected
@@ -858,7 +917,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
      * @param boolean $id_only
      * @param array $returns
      */
-    public function _get_album_and_gallery_entities($source_obj, $limit = FALSE, $offset = FALSE, $id_only = FALSE, $returns = 'included')
+    function _get_album_and_gallery_entities($source_obj, $limit = FALSE, $offset = FALSE, $id_only = FALSE, $returns = 'included')
     {
         // Albums queries and difficult and inefficient to perform due to the
         // database schema. To complicate things, we're returning two different
@@ -869,7 +928,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
         $album_key = $album_mapper->get_primary_key_column();
         $gallery_mapper = C_Gallery_Mapper::get_instance();
         $gallery_key = $gallery_mapper->get_primary_key_column();
-        $select = $id_only ? $album_key . ', sortorder' : $album_mapper->get_table_name() . '.*';
+        $select = $id_only ? $album_key . ", sortorder" : $album_mapper->get_table_name() . '.*';
         $retval = array();
         // If no exclusions are specified, are entity_ids are specified,
         // and we're to return is "included", then we have a relatively easy
@@ -946,7 +1005,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
      * @param int $offset
      * @return array
      */
-    public function _entities_to_galleries_and_albums($entity_ids, $id_only = FALSE, $exclusions = array(), $limit = FALSE, $offset = FALSE)
+    function _entities_to_galleries_and_albums($entity_ids, $id_only = FALSE, $exclusions = array(), $limit = FALSE, $offset = FALSE)
     {
         $retval = array();
         $gallery_ids = array();
@@ -956,8 +1015,8 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
         $gallery_mapper = C_Gallery_Mapper::get_instance();
         $image_mapper = C_Image_Mapper::get_instance();
         $gallery_key = $gallery_mapper->get_primary_key_column();
-        $album_select = ($id_only ? $album_key : $album_mapper->get_table_name() . '.*') . ', 1 AS is_album, 0 AS is_gallery, name AS title, albumdesc AS galdesc';
-        $gallery_select = ($id_only ? $gallery_key : $gallery_mapper->get_table_name() . '.*') . ', 1 AS is_gallery, 0 AS is_album';
+        $album_select = ($id_only ? $album_key : $album_mapper->get_table_name() . '.*') . ", 1 AS is_album, 0 AS is_gallery, name AS title, albumdesc AS galdesc";
+        $gallery_select = ($id_only ? $gallery_key : $gallery_mapper->get_table_name() . '.*') . ", 1 AS is_gallery, 0 AS is_album";
         // Modify the sort order of the entities
         if ($this->object->sortorder) {
             $sortorder = array_intersect($this->object->sortorder, $entity_ids);
@@ -982,16 +1041,16 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
         if ($gallery_ids) {
             $gallery_select = $this->object->_add_find_in_set_column($gallery_select, $gallery_key, $gallery_ids, 'ordered_by', TRUE);
         } else {
-            $gallery_select .= ', 0 AS ordered_by';
+            $gallery_select .= ", 0 AS ordered_by";
         }
         if ($album_ids) {
             $album_select = $this->object->_add_find_in_set_column($album_select, $album_key, $album_ids, 'ordered_by', TRUE);
         } else {
-            $album_select .= ', 0 AS ordered_by';
+            $album_select .= ", 0 AS ordered_by";
         }
         // Fetch entities
         $galleries = $gallery_mapper->select($gallery_select)->where(array("{$gallery_key} IN %s", $gallery_ids))->order_by('ordered_by', 'DESC')->run_query();
-        $counts = $image_mapper->select('galleryid, COUNT(*) as counter')->where(array(array('galleryid IN %s', $gallery_ids), array('exclude = %d', 0)))->group_by('galleryid')->run_query(FALSE, FALSE, TRUE);
+        $counts = $image_mapper->select('galleryid, COUNT(*) as counter')->where(array(array("galleryid IN %s", $gallery_ids), array('exclude = %d', 0)))->group_by('galleryid')->run_query(FALSE, FALSE, TRUE);
         $albums = $album_mapper->select($album_select)->where(array("{$album_key} IN %s", $album_ids))->order_by('ordered_by', 'DESC')->run_query();
         // Reorder entities according to order specified in entity_ids
         foreach ($entity_ids as $entity_id) {
@@ -1031,7 +1090,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
      * @param string $returns
      * @returns int
      */
-    public function get_entity_count($returns = 'included')
+    function get_entity_count($returns = 'included')
     {
         $retval = 0;
         // Is this an image query?
@@ -1049,7 +1108,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
     }
     // Honor the gallery 'maximum_entity_count' setting ONLY when dealing with random & recent galleries. All
     // others will always obey the *global* 'maximum_entity_count' setting.
-    public function get_maximum_entity_count()
+    function get_maximum_entity_count()
     {
         $max = intval(C_NextGen_Settings::get_instance()->get('maximum_entity_count', 500));
         $sources = C_Displayed_Gallery_Source_Manager::get_instance();
@@ -1066,7 +1125,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
      * @param boolean $id_only
      * @return array
      */
-    public function get_included_entities($limit = FALSE, $offset = FALSE, $id_only = FALSE)
+    function get_included_entities($limit = FALSE, $offset = FALSE, $id_only = FALSE)
     {
         return $this->object->get_entities($limit, $offset, $id_only, 'included');
     }
@@ -1080,12 +1139,12 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
      * @param boolean $add_column
      * @return string
      */
-    public function _add_find_in_set_column($select, $key, $array, $alias, $add_column = FALSE)
+    function _add_find_in_set_column($select, $key, $array, $alias, $add_column = FALSE)
     {
         $array = array_map('intval', $array);
-        $set = implode(',', array_reverse($array));
+        $set = implode(",", array_reverse($array));
         if (!$select) {
-            $select = '1';
+            $select = "1";
         }
         $select .= ", @{$alias} := FIND_IN_SET({$key}, '{$set}')";
         if ($add_column) {
@@ -1093,10 +1152,10 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
         }
         return $select;
     }
-    public function _add_if_column($select, $alias, $true = 1, $false = 0)
+    function _add_if_column($select, $alias, $true = 1, $false = 0)
     {
         if (!$select) {
-            $select = '1';
+            $select = "1";
         }
         $select .= ", IF(@{$alias} = 0, {$true}, {$false}) AS {$alias}";
         return $select;
@@ -1106,7 +1165,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
      * ensures everything meets expectations
      * @return boolean
      */
-    public function _parse_parameters()
+    function _parse_parameters()
     {
         $valid = FALSE;
         // Ensure that the source is valid
@@ -1133,7 +1192,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
      * @param array $tags
      * @return array
      */
-    public function get_term_ids_for_tags($tags = FALSE)
+    function get_term_ids_for_tags($tags = FALSE)
     {
         global $wpdb;
         // If no tags were provided, get them from the container_ids
@@ -1170,7 +1229,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
      * @param stdClass $a
      * @param stdClass $b
      */
-    public function _sort_album_result($a, $b)
+    function _sort_album_result($a, $b)
     {
         $key = $this->object->order_by;
         return strcmp($a->{$key}, $b->{$key});
@@ -1182,7 +1241,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
  */
 class Mixin_Displayed_Gallery_Instance_Methods extends Mixin
 {
-    public function get_entity()
+    function get_entity()
     {
         $entity = $this->call_parent('get_entity');
         unset($entity->post_author);
@@ -1211,7 +1270,7 @@ class Mixin_Displayed_Gallery_Instance_Methods extends Mixin
      * Gets the display type object used in this displayed gallery
      * @return C_Display_Type
      */
-    public function get_display_type()
+    function get_display_type()
     {
         return C_Display_Type_Mapper::get_instance()->find_by_name($this->object->display_type, TRUE);
     }
@@ -1219,7 +1278,7 @@ class Mixin_Displayed_Gallery_Instance_Methods extends Mixin
      * Gets the corresponding source instance
      * @return stdClass
      */
-    public function get_source()
+    function get_source()
     {
         return C_Displayed_Gallery_Source_Manager::get_instance()->get($this->object->source);
     }
@@ -1227,7 +1286,7 @@ class Mixin_Displayed_Gallery_Instance_Methods extends Mixin
      * Returns the galleries queries in this displayed gallery
      * @return array
      */
-    public function get_galleries()
+    function get_galleries()
     {
         $retval = array();
         if ($source = $this->object->get_source()) {
@@ -1247,7 +1306,7 @@ class Mixin_Displayed_Gallery_Instance_Methods extends Mixin
      * Gets albums queried in this displayed gallery
      * @return array
      */
-    public function get_albums()
+    function get_albums()
     {
         $retval = array();
         if ($source = $this->object->get_source()) {
@@ -1266,7 +1325,7 @@ class Mixin_Displayed_Gallery_Instance_Methods extends Mixin
      * Returns a transient for the displayed gallery
      * @return string
      */
-    public function to_transient()
+    function to_transient()
     {
         $params = $this->object->get_entity();
         unset($params->transient_id);
@@ -1284,7 +1343,7 @@ class Mixin_Displayed_Gallery_Instance_Methods extends Mixin
      * Applies the values of a transient to this object
      * @param string $transient_id
      */
-    public function apply_transient($transient_id = NULL)
+    function apply_transient($transient_id = NULL)
     {
         $retval = FALSE;
         if (!$transient_id && isset($this->object->transient_id)) {
@@ -1331,21 +1390,31 @@ class Mixin_Displayed_Gallery_Instance_Methods extends Mixin
         return $retval;
     }
 }
+/**
+ * Class C_Displayed_Gallery_Mapper
+ * @mixin Mixin_Displayed_Gallery_Defaults
+ * @implements I_Displayed_Gallery_Mapper
+ */
 class C_Displayed_Gallery_Mapper extends C_CustomPost_DataMapper_Driver
 {
     static $_instances = array();
-    public function define($context = FALSE, $not_used = FALSE)
+    function define($context = FALSE, $not_used = FALSE)
     {
         parent::define('displayed_gallery', array($context, 'displayed_gallery', 'display_gallery'));
         $this->add_mixin('Mixin_Displayed_Gallery_Defaults');
         $this->implement('I_Displayed_Gallery_Mapper');
         $this->set_model_factory_method('displayed_gallery');
+        //		$this->add_post_hook(
+        //			'save',
+        //			'Propagate thumbnail dimensions',
+        //			'Hook_Propagate_Thumbnail_Dimensions_To_Settings'
+        //		);
     }
     /**
      * Initializes the mapper
      * @param string|array|FALSE $context
      */
-    public function initialize()
+    function initialize()
     {
         parent::initialize('displayed_gallery');
     }
@@ -1372,7 +1441,7 @@ class Mixin_Displayed_Gallery_Defaults extends Mixin
      * @param stdClass|C_DataMapper_Model $entity
      * @return null|stdClass
      */
-    public function get_display_type($entity)
+    function get_display_type($entity)
     {
         $mapper = C_Display_Type_Mapper::get_instance();
         return $mapper->find_by_name($entity->display_type);
@@ -1381,7 +1450,7 @@ class Mixin_Displayed_Gallery_Defaults extends Mixin
      * Sets defaults needed for the entity
      * @param type $entity
      */
-    public function set_defaults($entity)
+    function set_defaults($entity)
     {
         // Ensure that we have a settings array
         if (!isset($entity->display_settings)) {
@@ -1411,6 +1480,11 @@ class Mixin_Displayed_Gallery_Defaults extends Mixin
         $this->object->_set_default_value($entity, 'maximum_entity_count', $settings->maximum_entity_count);
     }
 }
+/**
+ * Class C_Displayed_Gallery_Renderer
+ * @mixin Mixin_Displayed_Gallery_Renderer
+ * @implements I_Displayed_Gallery_Renderer
+ */
 class C_Displayed_Gallery_Renderer extends C_Component
 {
     static $_instances = array();
@@ -1431,7 +1505,7 @@ class C_Displayed_Gallery_Renderer extends C_Component
      * Defines the object
      * @param bool $context
      */
-    public function define($context = FALSE)
+    function define($context = FALSE)
     {
         parent::define($context);
         $this->add_mixin('Mixin_Displayed_Gallery_Renderer');
@@ -1443,6 +1517,78 @@ class C_Displayed_Gallery_Renderer extends C_Component
  */
 class Mixin_Displayed_Gallery_Renderer extends Mixin
 {
+    function params_to_displayed_gallery($params)
+    {
+        $displayed_gallery = NULL;
+        // Get the NextGEN settings to provide some defaults
+        $settings = C_NextGen_Settings::get_instance();
+        // Configure the arguments
+        $defaults = array('id' => NULL, 'source' => '', 'container_ids' => array(), 'gallery_ids' => array(), 'album_ids' => array(), 'tag_ids' => array(), 'display_type' => '', 'exclusions' => array(), 'order_by' => $settings->galSort, 'order_direction' => $settings->galSortOrder, 'image_ids' => array(), 'entity_ids' => array(), 'tagcloud' => FALSE, 'returns' => 'included', 'slug' => NULL, 'sortorder' => array());
+        $args = shortcode_atts($defaults, $params);
+        // Are we loading a specific displayed gallery that's persisted?
+        $mapper = C_Displayed_Gallery_Mapper::get_instance();
+        if (!is_null($args['id'])) {
+            $displayed_gallery = $mapper->find($args['id'], TRUE);
+            unset($mapper);
+            // no longer needed
+        } else {
+            // Perform some conversions...
+            // Galleries?
+            if ($args['gallery_ids']) {
+                if ($args['source'] != 'albums' and $args['source'] != 'album') {
+                    $args['source'] = 'galleries';
+                    $args['container_ids'] = $args['gallery_ids'];
+                    if ($args['image_ids']) {
+                        $args['entity_ids'] = $args['image_ids'];
+                    }
+                } elseif ($args['source'] == 'albums') {
+                    $args['entity_ids'] = $args['gallery_ids'];
+                }
+                unset($args['gallery_ids']);
+            } elseif ($args['album_ids'] || $args['album_ids'] === '0') {
+                $args['source'] = 'albums';
+                $args['container_ids'] = $args['album_ids'];
+                unset($args['albums_ids']);
+            } elseif ($args['tag_ids']) {
+                $args['source'] = 'tags';
+                $args['container_ids'] = $args['tag_ids'];
+                unset($args['tag_ids']);
+            } elseif ($args['image_ids']) {
+                $args['source'] = 'galleries';
+                $args['entity_ids'] = $args['image_ids'];
+                unset($args['image_ids']);
+            } elseif ($args['tagcloud']) {
+                $args['source'] = 'tags';
+            }
+            // Convert strings to arrays
+            if (!is_array($args['container_ids'])) {
+                $args['container_ids'] = preg_split("/,|\\|/", $args['container_ids']);
+            }
+            if (!is_array($args['exclusions'])) {
+                $args['exclusions'] = preg_split("/,|\\|/", $args['exclusions']);
+            }
+            if (!is_array($args['entity_ids'])) {
+                $args['entity_ids'] = preg_split("/,|\\|/", $args['entity_ids']);
+            }
+            if (!is_array($args['sortorder'])) {
+                $args['sortorder'] = preg_split("/,|\\|/", $args['sortorder']);
+            }
+            // Get the display settings
+            foreach (array_keys($defaults) as $key) {
+                unset($params[$key]);
+            }
+            $args['display_settings'] = $params;
+            // Create the displayed gallery
+            $factory = C_Component_Factory::get_instance();
+            $displayed_gallery = $factory->create('displayed_gallery', $args, $mapper);
+            unset($factory);
+        }
+        // Validate the displayed gallery
+        if ($displayed_gallery) {
+            $displayed_gallery->validate();
+        }
+        return $displayed_gallery;
+    }
     /**
      * Displays a "displayed gallery" instance
      *
@@ -1491,74 +1637,14 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
      * To retrieve a tag cloud
      * [ngg_images tagcloud=yes display_type='photocrati-nextgen_basic_tagcloud']
      */
-    public function display_images($params, $inner_content = NULL, $mode = NULL)
+    function display_images($params, $inner_content = NULL, $mode = NULL)
     {
         $retval = '';
-        $displayed_gallery = NULL;
-        // Get the NextGEN settings to provide some defaults
-        $settings = C_NextGen_Settings::get_instance();
-        // Configure the arguments
-        $defaults = array('id' => NULL, 'source' => '', 'container_ids' => array(), 'gallery_ids' => array(), 'album_ids' => array(), 'tag_ids' => array(), 'display_type' => '', 'exclusions' => array(), 'order_by' => $settings->galSort, 'order_direction' => $settings->galSortOrder, 'image_ids' => array(), 'entity_ids' => array(), 'tagcloud' => FALSE, 'inner_content' => $inner_content, 'returns' => 'included', 'slug' => NULL);
-        $args = shortcode_atts($defaults, $params);
-        // Are we loading a specific displayed gallery that's persisted?
-        $mapper = C_Displayed_Gallery_Mapper::get_instance();
-        if (!is_null($args['id'])) {
-            $displayed_gallery = $mapper->find($args['id']);
-            unset($mapper);
-        } else {
-            // Perform some conversions...
-            // Galleries?
-            if ($args['gallery_ids']) {
-                if ($args['source'] != 'albums' and $args['source'] != 'album') {
-                    $args['source'] = 'galleries';
-                    $args['container_ids'] = $args['gallery_ids'];
-                    if ($args['image_ids']) {
-                        $args['entity_ids'] = $args['image_ids'];
-                    }
-                } elseif ($args['source'] == 'albums') {
-                    $args['entity_ids'] = $args['gallery_ids'];
-                }
-                unset($args['gallery_ids']);
-            } elseif ($args['album_ids'] || $args['album_ids'] === '0') {
-                $args['source'] = 'albums';
-                $args['container_ids'] = $args['album_ids'];
-                unset($args['albums_ids']);
-            } elseif ($args['tag_ids']) {
-                $args['source'] = 'tags';
-                $args['container_ids'] = $args['tag_ids'];
-                unset($args['tag_ids']);
-            } elseif ($args['image_ids']) {
-                $args['source'] = 'galleries';
-                $args['entity_ids'] = $args['image_ids'];
-                unset($args['image_ids']);
-            } elseif ($args['tagcloud']) {
-                $args['source'] = 'tags';
-            }
-            // Convert strings to arrays
-            if (!is_array($args['container_ids'])) {
-                $args['container_ids'] = preg_split('/,|\\|/', $args['container_ids']);
-            }
-            if (!is_array($args['exclusions'])) {
-                $args['exclusions'] = preg_split('/,|\\|/', $args['exclusions']);
-            }
-            if (!is_array($args['entity_ids'])) {
-                $args['entity_ids'] = preg_split('/,|\\|/', $args['entity_ids']);
-            }
-            // Get the display settings
-            foreach (array_keys($defaults) as $key) {
-                unset($params[$key]);
-            }
-            $args['display_settings'] = $params;
-            // Create the displayed gallery
-            $factory = C_Component_Factory::get_instance();
-            $displayed_gallery = $factory->create('displayed_gallery', $args, $mapper);
-            unset($factory);
-        }
         // Validate the displayed gallery
-        if ($displayed_gallery) {
+        if ($displayed_gallery = $this->object->params_to_displayed_gallery($params)) {
             if ($displayed_gallery->validate()) {
                 // Display!
-                return $this->object->render($displayed_gallery, TRUE, $mode);
+                $retval = $this->object->render($displayed_gallery, TRUE, $mode);
             } else {
                 if (C_NextGEN_Bootstrap::$debug) {
                     $retval = __('We cannot display this gallery', 'nggallery') . $this->debug_msg($displayed_gallery->get_errors()) . $this->debug_msg($displayed_gallery->get_entity());
@@ -1571,7 +1657,7 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
         }
         return $retval;
     }
-    public function debug_msg($msg, $print_r = FALSE)
+    function debug_msg($msg, $print_r = FALSE)
     {
         $retval = '';
         if (C_NextGEN_Bootstrap::$debug) {
@@ -1591,7 +1677,7 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
      * Renders a displayed gallery on the frontend
      * @param C_Displayed_Gallery|stdClass $displayed_gallery
      */
-    public function render($displayed_gallery, $return = FALSE, $mode = null)
+    function render($displayed_gallery, $return = FALSE, $mode = null)
     {
         $retval = '';
         $lookup = TRUE;
@@ -1645,7 +1731,7 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
                 $retval = $controller->cache_action($displayed_gallery);
             }
             // Output debug message
-            $retval .= $this->debug_msg('Lookup!');
+            $retval .= $this->debug_msg("Lookup!");
             // Some settings affect display types
             $settings = C_NextGen_Settings::get_instance();
             $key_params = apply_filters('ngg_displayed_gallery_cache_params', array($displayed_gallery->get_entity(), $url, $mode, $settings->activateTags, $settings->appendType, $settings->maxImages, $settings->thumbEffect, $settings->thumbCode, $settings->galSort, $settings->galSortDir));
@@ -1659,16 +1745,17 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
             $html = C_Photocrati_Transient_Manager::fetch($key, FALSE);
             // Output debug messages
             if ($html) {
-                $retval .= $this->debug_msg('HIT!');
+                $retval .= $this->debug_msg("HIT!");
             } else {
-                $retval .= $this->debug_msg('MISS!');
+                $retval .= $this->debug_msg("MISS!");
             }
             // TODO: This is hack. We need to figure out a more uniform way of detecting dynamic image urls
             if (strpos($html, C_Photocrati_Settings_Manager::get_instance()->dynamic_thumbnail_slug . '/') !== FALSE) {
                 $html = FALSE;
+                // forces the cache to be re-generated
             }
         } else {
-            $retval .= $this->debug_msg('Not looking up in cache as per rules');
+            $retval .= $this->debug_msg("Not looking up in cache as per rules");
         }
         // If we're displaying a variant, I want to know it
         if (isset($displayed_gallery->variation) && is_numeric($displayed_gallery->variation) && $displayed_gallery->variation > 0) {
@@ -1676,7 +1763,7 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
         }
         // If a cached version doesn't exist, then create the cache
         if (!$html) {
-            $retval .= $this->debug_msg('Rendering displayed gallery');
+            $retval .= $this->debug_msg("Rendering displayed gallery");
             $current_mode = $controller->get_render_mode();
             $controller->set_render_mode($mode);
             $html = apply_filters('ngg_displayed_gallery_rendering', $controller->index_action($displayed_gallery, TRUE), $displayed_gallery);
@@ -1706,7 +1793,7 @@ class C_Displayed_Gallery_Source_Manager
         }
         return self::$_instance;
     }
-    public function register_defaults()
+    function register_defaults()
     {
         // Entity types must be registered first!!!
         // ----------------------------------------
@@ -1751,7 +1838,7 @@ class C_Displayed_Gallery_Source_Manager
         $this->register($recent->name, $recent);
         $this->_registered_defaults = TRUE;
     }
-    public function register($name, $properties)
+    function register($name, $properties)
     {
         // We'll use an object to represent the source
         $object = $properties;
@@ -1781,7 +1868,7 @@ class C_Displayed_Gallery_Source_Manager
             $this->_sources[$name] = $object;
         }
     }
-    public function register_entity_type()
+    function register_entity_type()
     {
         $aliases = func_get_args();
         $name = array_shift($aliases);
@@ -1790,7 +1877,7 @@ class C_Displayed_Gallery_Source_Manager
             $this->_entity_types[$alias] = $name;
         }
     }
-    public function deregister($name)
+    function deregister($name)
     {
         if ($source = $this->get($name)) {
             unset($this->_sources[$name]);
@@ -1799,11 +1886,11 @@ class C_Displayed_Gallery_Source_Manager
             }
         }
     }
-    public function deregister_entity_type($name)
+    function deregister_entity_type($name)
     {
         unset($this->_entity_types[$name]);
     }
-    public function get($name_or_alias)
+    function get($name_or_alias)
     {
         if (!$this->_registered_defaults) {
             $this->register_defaults();
@@ -1814,7 +1901,7 @@ class C_Displayed_Gallery_Source_Manager
         }
         return $retval;
     }
-    public function get_entity_type($name)
+    function get_entity_type($name)
     {
         if (!$this->_registered_defaults) {
             $this->register_defaults();
@@ -1826,7 +1913,7 @@ class C_Displayed_Gallery_Source_Manager
             return NULL;
         }
     }
-    public function get_all()
+    function get_all()
     {
         if (!$this->_registered_defaults) {
             $this->register_defaults();
@@ -1840,32 +1927,32 @@ class C_Displayed_Gallery_Source_Manager
         usort($retval, array(&$this, '__sort_by_name'));
         return $retval;
     }
-    public function __sort_by_name($a, $b)
+    function __sort_by_name($a, $b)
     {
         return strcmp($a->name, $b->name);
     }
-    public function get_all_entity_types()
+    function get_all_entity_types()
     {
         if (!$this->_registered_defaults) {
             $this->register_defaults();
         }
         return array_unique(array_values($this->_entity_types));
     }
-    public function is_registered($name)
+    function is_registered($name)
     {
         return !is_null($this->get($name));
     }
-    public function is_valid_entity_type($name)
+    function is_valid_entity_type($name)
     {
         return !is_null($this->get_entity_type($name));
     }
-    public function deregister_all()
+    function deregister_all()
     {
         $this->_sources = array();
         $this->_entity_types = array();
         $this->_registered_defaults = FALSE;
     }
-    public function is_compatible($source, $display_type)
+    function is_compatible($source, $display_type)
     {
         $retval = FALSE;
         if ($source = $this->get($source->name)) {
@@ -1893,15 +1980,15 @@ abstract class C_Displayed_Gallery_Trigger
     {
         return TRUE;
     }
-    public function get_css_class()
+    function get_css_class()
     {
         return 'fa fa-circle';
     }
-    public function get_attributes()
+    function get_attributes()
     {
         return array('class' => $this->get_css_class());
     }
-    public function render()
+    function render()
     {
         $attributes = array();
         foreach ($this->get_attributes() as $k => $v) {
@@ -1909,7 +1996,7 @@ abstract class C_Displayed_Gallery_Trigger
             $v = esc_attr($v);
             $attributes[] = "{$k}='{$v}'";
         }
-        $attributes = implode(' ', $attributes);
+        $attributes = implode(" ", $attributes);
         return "<i {$attributes}></i>";
     }
 }
@@ -1942,28 +2029,28 @@ class C_Displayed_Gallery_Trigger_Manager
         }
         return self::$_instance;
     }
-    public function __construct()
+    function __construct()
     {
         $this->_default_display_type_handler = 'C_Displayed_Gallery_Trigger_Handler';
         foreach ($this->_default_image_types as $display_type) {
             $this->register_display_type_handler($display_type, 'C_Displayed_Gallery_Image_Trigger_Handler');
         }
     }
-    public function register_display_type_handler($display_type, $klass)
+    function register_display_type_handler($display_type, $klass)
     {
         $this->_display_type_handlers[$display_type] = $klass;
     }
-    public function deregister_display_type_handler($display_type)
+    function deregister_display_type_handler($display_type)
     {
         unset($this->_display_type_handlers[$display_type]);
     }
-    public function add($name, $handler)
+    function add($name, $handler)
     {
         $this->_triggers[$name] = $handler;
         $this->_trigger_order[] = $name;
         return $this;
     }
-    public function remove($name)
+    function remove($name)
     {
         $order = array();
         unset($this->_triggers[$name]);
@@ -1975,7 +2062,7 @@ class C_Displayed_Gallery_Trigger_Manager
         $this->_trigger_order = $order;
         return $this;
     }
-    public function _rebuild_index()
+    function _rebuild_index()
     {
         $order = array();
         foreach ($this->_trigger_order as $name) {
@@ -1984,7 +2071,7 @@ class C_Displayed_Gallery_Trigger_Manager
         $this->_trigger_order = $order;
         return $this;
     }
-    public function increment_position($name)
+    function increment_position($name)
     {
         if (($current_index = array_search($name, $this->_trigger_order)) !== FALSE) {
             $next_index = $current_index += 1;
@@ -1997,7 +2084,7 @@ class C_Displayed_Gallery_Trigger_Manager
         }
         return $this->position_of($name);
     }
-    public function decrement_position($name)
+    function decrement_position($name)
     {
         if (($current_index = array_search($name, $this->_trigger_order)) !== FALSE) {
             $previous_index = $current_index -= 1;
@@ -2009,11 +2096,11 @@ class C_Displayed_Gallery_Trigger_Manager
         }
         return $this->position_of($name);
     }
-    public function position_of($name)
+    function position_of($name)
     {
         return array_search($name, $this->_trigger_order);
     }
-    public function move_to_position($name, $position_index)
+    function move_to_position($name, $position_index)
     {
         if (($current_index = $this->position_of($name)) !== FALSE) {
             $func = 'increment_position';
@@ -2026,7 +2113,7 @@ class C_Displayed_Gallery_Trigger_Manager
         }
         return $this->position_of($name);
     }
-    public function move_to_start($name)
+    function move_to_start($name)
     {
         if ($index = $this->position_of($name)) {
             unset($this->_trigger_order[$index]);
@@ -2035,11 +2122,11 @@ class C_Displayed_Gallery_Trigger_Manager
         }
         return $this->position_of($name);
     }
-    public function count()
+    function count()
     {
         return count($this->_trigger_order);
     }
-    public function move_to_end($name)
+    function move_to_end($name)
     {
         $index = $this->position_of($name);
         if ($index !== FALSE or $index != $this->count() - 1) {
@@ -2049,7 +2136,7 @@ class C_Displayed_Gallery_Trigger_Manager
         }
         return $this->position_of($name);
     }
-    public function get_handler_for_displayed_gallery($displayed_gallery)
+    function get_handler_for_displayed_gallery($displayed_gallery)
     {
         // Find the trigger handler for the current display type.
         // First, check the display settings for the displayed gallery. Some third-party
@@ -2065,7 +2152,7 @@ class C_Displayed_Gallery_Trigger_Manager
         }
         return $klass;
     }
-    public function render($view, $displayed_gallery)
+    function render($view, $displayed_gallery)
     {
         if ($klass = $this->get_handler_for_displayed_gallery($displayed_gallery)) {
             $handler = new $klass();
@@ -2078,7 +2165,7 @@ class C_Displayed_Gallery_Trigger_Manager
         }
         return $view;
     }
-    public function render_trigger($name, $view, $displayed_gallery)
+    function render_trigger($name, $view, $displayed_gallery)
     {
         $retval = '';
         if (isset($this->_triggers[$name])) {
@@ -2093,7 +2180,7 @@ class C_Displayed_Gallery_Trigger_Manager
         }
         return $retval;
     }
-    public function render_triggers($view, $displayed_gallery)
+    function render_triggers($view, $displayed_gallery)
     {
         $output = FALSE;
         $css_class = esc_attr($this->css_class);
@@ -2105,15 +2192,14 @@ class C_Displayed_Gallery_Trigger_Manager
             }
         }
         if ($output) {
-            $retval[] = '</div>';
-            $retval = implode('
-', $retval);
+            $retval[] = "</div>";
+            $retval = implode("\n", $retval);
         } else {
             $retval = '';
         }
         return $retval;
     }
-    public function enqueue_resources($displayed_gallery)
+    function enqueue_resources($displayed_gallery)
     {
         if ($handler = $this->get_handler_for_displayed_gallery($displayed_gallery)) {
             wp_enqueue_style('fontawesome');
@@ -2136,7 +2222,7 @@ class C_Displayed_Gallery_Trigger_Manager
 }
 class C_Displayed_Gallery_Image_Trigger_Handler
 {
-    public function render()
+    function render()
     {
         foreach ($this->view->find('nextgen_gallery.image', true) as $image_element) {
             $image_element->append($this->manager->render_triggers($image_element, $this->displayed_gallery));
@@ -2145,15 +2231,19 @@ class C_Displayed_Gallery_Image_Trigger_Handler
 }
 class C_Displayed_Gallery_Trigger_Handler
 {
-    public function render()
+    function render()
     {
         $this->view->append($this->manager->render_triggers($this->view, $this->displayed_gallery));
     }
 }
+/**
+ * Class Mixin_Display_Type_Form
+ * @mixin C_Form
+ */
 class Mixin_Display_Type_Form extends Mixin
 {
-    public $_model = null;
-    public function initialize()
+    var $_model = null;
+    function initialize()
     {
         $this->object->implement('I_Display_Type_Form');
     }
@@ -2162,15 +2252,15 @@ class Mixin_Display_Type_Form extends Mixin
      * @throws Exception
      * @returns string
      */
-    public function get_display_type_name()
+    function get_display_type_name()
     {
-        throw new Exception(__METHOD__ . ' not implemented');
+        throw new Exception(__METHOD__ . " not implemented");
     }
     /**
      * Returns the model (display type) used in the form
      * @return stdClass
      */
-    public function get_model()
+    function get_model()
     {
         if ($this->_model == null) {
             $mapper = C_Display_Type_Mapper::get_instance();
@@ -2182,7 +2272,7 @@ class Mixin_Display_Type_Form extends Mixin
      * Returns the title of the form, which is the title of the display type
      * @returns string
      */
-    public function get_title()
+    function get_title()
     {
         return __($this->object->get_model()->title, 'nggallery');
     }
@@ -2191,7 +2281,7 @@ class Mixin_Display_Type_Form extends Mixin
      * @param array $attributes
      * @return boolean
      */
-    public function save_action($attributes = array())
+    function save_action($attributes = array())
     {
         return $this->object->get_model()->save(array('settings' => $attributes));
     }

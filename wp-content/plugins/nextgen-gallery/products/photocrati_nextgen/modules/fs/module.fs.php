@@ -12,7 +12,7 @@ class M_Fs extends C_Base_Module
 			'photocrati-fs',
 			'Filesystem',
 			'Provides a filesystem abstraction layer for Pope modules',
-			'0.5',
+			'0.6',
 			'https://www.imagely.com',
 			'Photocrati Media',
 			'https://www.imagely.com'

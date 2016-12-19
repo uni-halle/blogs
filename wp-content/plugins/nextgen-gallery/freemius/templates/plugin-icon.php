@@ -10,6 +10,9 @@
 		exit;
 	}
 
+	/**
+	 * @var array $VARS
+	 */
 	$slug = $VARS['slug'];
 	$fs   = freemius( $slug );
 
@@ -89,5 +92,5 @@
 	$relative_url = fs_img_url( substr( $icons[0], strlen( $icon_dir ) ), $icon_dir );
 ?>
 <div class="fs-plugin-icon">
-	<img src="<?php echo $relative_url ?>"/>
+	<img src="<?php echo $relative_url ?>" width="80" height="80" />
 </div>

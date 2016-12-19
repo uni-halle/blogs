@@ -1,7 +1,12 @@
 <?php
+/**
+ * Class A_NextGen_Basic_Gallery_Controller
+ * @mixin C_Display_Type_Controller
+ * @adapts I_Display_Type_Controller for both "photocrati-nextgen_basic_slideshow" and "photocrati-nextgen_basic_thumbnails" contexts
+ */
 class A_NextGen_Basic_Gallery_Controller extends Mixin
 {
-    public function index_action($displayed_gallery, $return = FALSE)
+    function index_action($displayed_gallery, $return = FALSE)
     {
         $retval = '';
         $call_parent = TRUE;
@@ -35,7 +40,7 @@ class A_NextGen_Basic_Gallery_Controller extends Mixin
      * @param string $display_type
      * @return string
      */
-    public function get_url_for_alternate_display_type($displayed_gallery, $display_type, $origin_url = FALSE)
+    function get_url_for_alternate_display_type($displayed_gallery, $display_type, $origin_url = FALSE)
     {
         if (!$origin_url && !empty($displayed_gallery->display_settings['original_display_type']) && !empty($_SERVER['ORIG_REQUEST_URI'])) {
             $origin_url = $_SERVER['ORIG_REQUEST_URI'];
@@ -48,10 +53,12 @@ class A_NextGen_Basic_Gallery_Controller extends Mixin
 }
 /**
  * Sets default values for the NextGen Basic Slideshow display type
+ * @mixin C_Display_Type_Mapper
+ * @adapts I_Display_Type_Mapper
  */
 class A_NextGen_Basic_Gallery_Mapper extends Mixin
 {
-    public function set_defaults($entity)
+    function set_defaults($entity)
     {
         $this->call_parent('set_defaults', $entity);
         if (isset($entity->name)) {
@@ -64,7 +71,7 @@ class A_NextGen_Basic_Gallery_Mapper extends Mixin
             }
         }
     }
-    public function set_slideshow_defaults($entity)
+    function set_slideshow_defaults($entity)
     {
         $settings = C_NextGen_Settings::get_instance();
         $this->object->_set_default_value($entity, 'settings', 'gallery_width', $settings->irWidth);
@@ -72,7 +79,7 @@ class A_NextGen_Basic_Gallery_Mapper extends Mixin
         $this->object->_set_default_value($entity, 'settings', 'thumbnail_width', $settings->thumbwidth);
         $this->object->_set_default_value($entity, 'settings', 'thumbnail_height', $settings->thumbheight);
         $this->object->_set_default_value($entity, 'settings', 'cycle_interval', $settings->irRotatetime);
-        $this->object->_set_default_value($entity, 'settings', 'cycle_effect', $settings->slideFx);
+        $this->object->_set_default_value($entity, 'settings', 'cycle_effect', $settings->slideFX);
         $this->object->_set_default_value($entity, 'settings', 'effect_code', $settings->thumbCode);
         $this->object->_set_default_value($entity, 'settings', 'show_thumbnail_link', $settings->galShowSlide ? 1 : 0);
         $this->object->_set_default_value($entity, 'settings', 'thumbnail_link_text', $settings->galTextGallery);
@@ -80,7 +87,7 @@ class A_NextGen_Basic_Gallery_Mapper extends Mixin
         // Part of the pro-modules
         $this->object->_set_default_value($entity, 'settings', 'ngg_triggers_display', 'never');
     }
-    public function set_thumbnail_defaults($entity)
+    function set_thumbnail_defaults($entity)
     {
         $settings = C_NextGen_Settings::get_instance();
         $this->object->_set_default_value($entity, 'settings', 'images_per_page', $settings->galImages);
@@ -106,9 +113,14 @@ class A_NextGen_Basic_Gallery_Mapper extends Mixin
         $this->object->_set_default_value($entity, 'settings', 'ngg_triggers_display', 'never');
     }
 }
+/**
+ * Class A_NextGen_Basic_Gallery_Urls
+ * @mixin C_Routing_App
+ * @adapts I_Routing_App
+ */
 class A_NextGen_Basic_Gallery_Urls extends Mixin
 {
-    public function create_parameter_segment($key, $value, $id = NULL, $use_prefix = FALSE)
+    function create_parameter_segment($key, $value, $id = NULL, $use_prefix = FALSE)
     {
         if ($key == 'show') {
             if ($value == NGG_BASIC_SLIDESHOW) {
@@ -125,12 +137,12 @@ class A_NextGen_Basic_Gallery_Urls extends Mixin
             return $this->call_parent('create_parameter_segment', $key, $value, $id, $use_prefix);
         }
     }
-    public function set_parameter_value($key, $value, $id = NULL, $use_prefix = FALSE, $url = FALSE)
+    function set_parameter_value($key, $value, $id = NULL, $use_prefix = FALSE, $url = FALSE)
     {
         $retval = $this->call_parent('set_parameter_value', $key, $value, $id, $use_prefix, $url);
         return $this->_set_ngglegacy_page_parameter($retval, $key, $value, $id, $use_prefix);
     }
-    public function remove_parameter($key, $id = NULL, $url = FALSE)
+    function remove_parameter($key, $id = NULL, $url = FALSE)
     {
         $retval = $this->call_parent('remove_parameter', $key, $id, $url);
         $retval = $this->_set_ngglegacy_page_parameter($retval, $key);
@@ -148,7 +160,7 @@ class A_NextGen_Basic_Gallery_Urls extends Mixin
         }
         return $retval;
     }
-    public function _set_ngglegacy_page_parameter($retval, $key, $value = NULL, $id = NULL, $use_prefix = NULL)
+    function _set_ngglegacy_page_parameter($retval, $key, $value = NULL, $id = NULL, $use_prefix = NULL)
     {
         // Get the settings manager
         $settings = C_NextGen_Settings::get_instance();
@@ -157,17 +169,17 @@ class A_NextGen_Basic_Gallery_Urls extends Mixin
         if ($key == 'nggpage') {
             $regex = "#(/{$param_slug}/.*)(/?page/\\d+/?)(.*)#";
             if (preg_match($regex, $retval, $matches)) {
-                $new_segment = $value ? "/page/{$value}" : '';
-                $retval = rtrim(str_replace($matches[0], rtrim($matches[1], '/') . $new_segment . ltrim($matches[3], '/'), $retval), '/');
+                $new_segment = $value ? "/page/{$value}" : "";
+                $retval = rtrim(str_replace($matches[0], rtrim($matches[1], "/") . $new_segment . ltrim($matches[3], "/"), $retval), "/");
             }
         }
         # Convert the nggpage parameter to a slug
         if (preg_match("#(/{$param_slug}/.*)nggpage--(.*)#", $retval, $matches)) {
-            $retval = rtrim(str_replace($matches[0], rtrim($matches[1], '/') . '/page/' . ltrim($matches[2], '/'), $retval), '/');
+            $retval = rtrim(str_replace($matches[0], rtrim($matches[1], "/") . "/page/" . ltrim($matches[2], "/"), $retval), "/");
         }
         # Convert the show parameter to a slug
         if (preg_match("#(/{$param_slug}/.*)show--(.*)#", $retval, $matches)) {
-            $retval = rtrim(str_replace($matches[0], rtrim($matches[1], '/') . '/' . $matches[2], $retval), '/');
+            $retval = rtrim(str_replace($matches[0], rtrim($matches[1], "/") . '/' . $matches[2], $retval), "/");
             $retval = str_replace(NGG_BASIC_SLIDESHOW, 'slideshow', $retval);
             $retval = str_replace(NGG_BASIC_THUMBNAILS, 'thumbnails', $retval);
             $retval = str_replace(NGG_BASIC_IMAGEBROWSER, 'imagebrowser', $retval);
@@ -175,9 +187,14 @@ class A_NextGen_Basic_Gallery_Urls extends Mixin
         return $retval;
     }
 }
+/**
+ * Class A_NextGen_Basic_Gallery_Validation
+ * @mixin C_Display_Type
+ * @adapts I_Display_Type
+ */
 class A_NextGen_Basic_Gallery_Validation extends Mixin
 {
-    public function validation()
+    function validation()
     {
         if ($this->object->name == NGG_BASIC_THUMBNAILS) {
             $this->object->validates_presence_of('thumbnail_width');
@@ -196,6 +213,11 @@ class A_NextGen_Basic_Gallery_Validation extends Mixin
         return $this->call_parent('validation');
     }
 }
+/**
+ * Class A_NextGen_Basic_Slideshow_Controller
+ * @mixin C_Display_Type_Controller
+ * @adapts I_Display_Type_Controller for "photocrati-nextgen_basic_slideshow" context
+ */
 class A_NextGen_Basic_Slideshow_Controller extends Mixin
 {
     /**
@@ -203,7 +225,7 @@ class A_NextGen_Basic_Slideshow_Controller extends Mixin
      * This method deprecates the use of the nggShowGallery() function.
      * @param stdClass|C_Displayed_Gallery|C_DataMapper_Model $displayed_gallery
      */
-    public function index_action($displayed_gallery, $return = FALSE)
+    function index_action($displayed_gallery, $return = FALSE)
     {
         // Get the images to be displayed
         $current_page = (int) $this->param('nggpage', 1);
@@ -222,6 +244,11 @@ class A_NextGen_Basic_Slideshow_Controller extends Mixin
             $gallery_height = $displayed_gallery->display_settings['gallery_height'];
             $params['aspect_ratio'] = $gallery_width / $gallery_height;
             $params['placeholder'] = $this->object->get_static_url('photocrati-nextgen_basic_gallery#slideshow/placeholder.gif');
+            // There was a problem with the slideFX/cycle_effect parameter not getting set
+            // correctly in previous versions
+            if (!isset($params['display_settings']['cycle_effect']) or !$params['cycle_effect']) {
+                $params['cycle_effect'] = 'fade';
+            }
             // Are we to generate a thumbnail link?
             if ($displayed_gallery->display_settings['show_thumbnail_link']) {
                 $params['thumbnail_link'] = $this->object->get_url_for_alternate_display_type($displayed_gallery, NGG_BASIC_THUMBNAILS);
@@ -237,9 +264,9 @@ class A_NextGen_Basic_Slideshow_Controller extends Mixin
      * Enqueues all static resources required by this display type
      * @param C_Displayed_Gallery $displayed_gallery
      */
-    public function enqueue_frontend_resources($displayed_gallery)
+    function enqueue_frontend_resources($displayed_gallery)
     {
-        wp_register_script('jquery-cycle', $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/jquery.cycle.all.js'), array('jquery'), NGG_SCRIPT_VERSION);
+        wp_register_script('jquery-cycle', $this->get_static_url("photocrati-nextgen_basic_gallery#slideshow/jquery.cycle.all.js"), array('jquery'), NGG_SCRIPT_VERSION);
         wp_enqueue_script('jquery-cycle');
         wp_enqueue_style('nextgen_basic_slideshow_style', $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/nextgen_basic_slideshow.css'), FALSE, NGG_SCRIPT_VERSION);
         wp_enqueue_script('waitforimages', $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/jquery.waitforimages.js'), array('jquery'), NGG_SCRIPT_VERSION);
@@ -251,21 +278,23 @@ class A_NextGen_Basic_Slideshow_Controller extends Mixin
      * NextGEN Basic Slideshow to display
      * @return string
      */
-    public function _get_js_lib_url()
+    function _get_js_lib_url()
     {
         return $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/nextgen_basic_slideshow.js');
     }
 }
 /**
  * Provides the display settings form for the NextGen Basic Slideshow
+ * @mixin C_Form
+ * @adapts I_Form for "photocrati-nextgen_basic_slideshow" context
  */
 class A_NextGen_Basic_Slideshow_Form extends Mixin_Display_Type_Form
 {
-    public function get_display_type_name()
+    function get_display_type_name()
     {
         return NGG_BASIC_SLIDESHOW;
     }
-    public function enqueue_static_resources()
+    function enqueue_static_resources()
     {
         wp_enqueue_script('nextgen_basic_slideshow_settings-js', $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/nextgen_basic_slideshow_settings.js'), array('jquery.nextgen_radio_toggle'), NGG_SCRIPT_VERSION);
         $atp = C_Attach_Controller::get_instance();
@@ -276,19 +305,19 @@ class A_NextGen_Basic_Slideshow_Form extends Mixin_Display_Type_Form
     /**
      * Returns a list of fields to render on the settings page
      */
-    public function _get_field_names()
+    function _get_field_names()
     {
         return array('nextgen_basic_slideshow_gallery_dimensions', 'nextgen_basic_slideshow_cycle_effect', 'nextgen_basic_slideshow_cycle_interval', 'nextgen_basic_slideshow_show_thumbnail_link', 'nextgen_basic_slideshow_thumbnail_link_text');
     }
-    public function _render_nextgen_basic_slideshow_cycle_interval_field($display_type)
+    function _render_nextgen_basic_slideshow_cycle_interval_field($display_type)
     {
         return $this->_render_number_field($display_type, 'cycle_interval', __('Interval', 'nggallery'), $display_type->settings['cycle_interval'], '', FALSE, __('# of seconds', 'nggallery'), 1);
     }
-    public function _render_nextgen_basic_slideshow_cycle_effect_field($display_type)
+    function _render_nextgen_basic_slideshow_cycle_effect_field($display_type)
     {
         return $this->_render_select_field($display_type, 'cycle_effect', 'Effect', array('fade' => 'fade', 'blindX' => 'blindX', 'cover' => 'cover', 'scrollUp' => 'scrollUp', 'scrollDown' => 'scrollDown', 'shuffle' => 'shuffle', 'toss' => 'toss', 'wipe' => 'wipe'), $display_type->settings['cycle_effect'], '', FALSE);
     }
-    public function _render_nextgen_basic_slideshow_gallery_dimensions_field($display_type)
+    function _render_nextgen_basic_slideshow_gallery_dimensions_field($display_type)
     {
         return $this->render_partial('photocrati-nextgen_basic_gallery#slideshow/nextgen_basic_slideshow_settings_gallery_dimensions', array('display_type_name' => $display_type->name, 'gallery_dimensions_label' => __('Maximum dimensions', 'nggallery'), 'gallery_dimensions_tooltip' => __('Certain themes may allow images to flow over their container if this setting is too large', 'nggallery'), 'gallery_width' => $display_type->settings['gallery_width'], 'gallery_height' => $display_type->settings['gallery_height']), True);
     }
@@ -298,7 +327,7 @@ class A_NextGen_Basic_Slideshow_Form extends Mixin_Display_Type_Form
      * @param C_Display_Type $display_type
      * @return string
      */
-    public function _render_nextgen_basic_slideshow_show_thumbnail_link_field($display_type)
+    function _render_nextgen_basic_slideshow_show_thumbnail_link_field($display_type)
     {
         return $this->_render_radio_field($display_type, 'show_thumbnail_link', __('Show thumbnail link', 'nggallery'), $display_type->settings['show_thumbnail_link']);
     }
@@ -308,21 +337,26 @@ class A_NextGen_Basic_Slideshow_Form extends Mixin_Display_Type_Form
      * @param C_Display_Type $display_type
      * @return string
      */
-    public function _render_nextgen_basic_slideshow_thumbnail_link_text_field($display_type)
+    function _render_nextgen_basic_slideshow_thumbnail_link_text_field($display_type)
     {
         return $this->_render_text_field($display_type, 'thumbnail_link_text', __('Thumbnail link text', 'nggallery'), $display_type->settings['thumbnail_link_text'], '', !empty($display_type->settings['show_thumbnail_link']) ? FALSE : TRUE);
     }
 }
+/**
+ * Class A_NextGen_Basic_Thumbnail_Form
+ * @mixin C_Form
+ * @adapts I_Form for photocrati-nextgen_basic_thumbnails context
+ */
 class A_NextGen_Basic_Thumbnail_Form extends Mixin_Display_Type_Form
 {
-    public function get_display_type_name()
+    function get_display_type_name()
     {
         return NGG_BASIC_THUMBNAILS;
     }
     /**
      * Enqueues static resources required by this form
      */
-    public function enqueue_static_resources()
+    function enqueue_static_resources()
     {
         wp_enqueue_style('nextgen_basic_thumbnails_settings', $this->object->get_static_url('photocrati-nextgen_basic_gallery#thumbnails/nextgen_basic_thumbnails_settings.css'), FALSE, NGG_SCRIPT_VERSION);
         wp_enqueue_script('nextgen_basic_thumbnails_settings', $this->object->get_static_url('photocrati-nextgen_basic_gallery#thumbnails/nextgen_basic_thumbnails_settings.js'), array('jquery.nextgen_radio_toggle'), NGG_SCRIPT_VERSION);
@@ -334,7 +368,7 @@ class A_NextGen_Basic_Thumbnail_Form extends Mixin_Display_Type_Form
     /**
      * Returns a list of fields to render on the settings page
      */
-    public function _get_field_names()
+    function _get_field_names()
     {
         return array('thumbnail_override_settings', 'nextgen_basic_thumbnails_images_per_page', 'nextgen_basic_thumbnails_number_of_columns', 'nextgen_basic_thumbnails_ajax_pagination', 'nextgen_basic_thumbnails_hidden', 'nextgen_basic_thumbnails_imagebrowser_effect', 'nextgen_basic_thumbnails_show_slideshow_link', 'nextgen_basic_thumbnails_slideshow_link_text', 'nextgen_basic_templates_template');
     }
@@ -344,7 +378,7 @@ class A_NextGen_Basic_Thumbnail_Form extends Mixin_Display_Type_Form
      * @param C_Display_Type $display_type
      * @return string
      */
-    public function _render_nextgen_basic_thumbnails_images_per_page_field($display_type)
+    function _render_nextgen_basic_thumbnails_images_per_page_field($display_type)
     {
         return $this->_render_number_field($display_type, 'images_per_page', __('Images per page', 'nggallery'), $display_type->settings['images_per_page'], __('0 will display all images at once', 'nggallery'), FALSE, '# of images', 0);
     }
@@ -354,7 +388,7 @@ class A_NextGen_Basic_Thumbnail_Form extends Mixin_Display_Type_Form
      * @param C_Display_Type $display_type
      * @return string
      */
-    public function _render_nextgen_basic_thumbnails_number_of_columns_field($display_type)
+    function _render_nextgen_basic_thumbnails_number_of_columns_field($display_type)
     {
         return $this->_render_number_field($display_type, 'number_of_columns', __('Number of columns to display', 'nggallery'), $display_type->settings['number_of_columns'], '', FALSE, __('# of columns', 'nggallery'), 0);
     }
@@ -364,11 +398,11 @@ class A_NextGen_Basic_Thumbnail_Form extends Mixin_Display_Type_Form
      * @param C_Display_Type $display_type
      * @return string
      */
-    public function _render_nextgen_basic_thumbnails_hidden_field($display_type)
+    function _render_nextgen_basic_thumbnails_hidden_field($display_type)
     {
         return $this->_render_radio_field($display_type, 'show_all_in_lightbox', __('Add Hidden Images', 'nggallery'), $display_type->settings['show_all_in_lightbox'], __('If pagination is used this option will show all images in the modal window (Thickbox, Lightbox etc.) This increases page load.', 'nggallery'));
     }
-    public function _render_nextgen_basic_thumbnails_imagebrowser_effect_field($display_type)
+    function _render_nextgen_basic_thumbnails_imagebrowser_effect_field($display_type)
     {
         return $this->_render_radio_field($display_type, 'use_imagebrowser_effect', __('Use imagebrowser effect', 'nggallery'), $display_type->settings['use_imagebrowser_effect'], __('When active each image in the gallery will link to an imagebrowser display and lightbox effects will not be applied.', 'nggallery'));
     }
@@ -378,7 +412,7 @@ class A_NextGen_Basic_Thumbnail_Form extends Mixin_Display_Type_Form
      * @param C_Display_Type $display_type
      * @return string
      */
-    public function _render_nextgen_basic_thumbnails_ajax_pagination_field($display_type)
+    function _render_nextgen_basic_thumbnails_ajax_pagination_field($display_type)
     {
         return $this->_render_radio_field($display_type, 'ajax_pagination', __('Enable AJAX pagination', 'nggallery'), $display_type->settings['ajax_pagination'], __('Browse images without reloading the page.', 'nggallery'));
     }
@@ -388,7 +422,7 @@ class A_NextGen_Basic_Thumbnail_Form extends Mixin_Display_Type_Form
      * @param C_Display_Type $display_type
      * @return string
      */
-    public function _render_nextgen_basic_thumbnails_show_slideshow_link_field($display_type)
+    function _render_nextgen_basic_thumbnails_show_slideshow_link_field($display_type)
     {
         return $this->_render_radio_field($display_type, 'show_slideshow_link', __('Show slideshow link', 'nggallery'), $display_type->settings['show_slideshow_link']);
     }
@@ -398,17 +432,21 @@ class A_NextGen_Basic_Thumbnail_Form extends Mixin_Display_Type_Form
      * @param C_Display_Type $display_type
      * @return string
      */
-    public function _render_nextgen_basic_thumbnails_slideshow_link_text_field($display_type)
+    function _render_nextgen_basic_thumbnails_slideshow_link_text_field($display_type)
     {
         return $this->_render_text_field($display_type, 'slideshow_link_text', __('Slideshow link text', 'nggallery'), $display_type->settings['slideshow_link_text'], '', !empty($display_type->settings['show_slideshow_link']) ? FALSE : TRUE);
     }
 }
+/**
+ * Class A_NextGen_Basic_Thumbnails_Controller
+ * @mixin Mixin_NextGen_Basic_Pagination
+ */
 class A_NextGen_Basic_Thumbnails_Controller extends Mixin
 {
     /**
      * Adds framework support for thumbnails
      */
-    public function initialize()
+    function initialize()
     {
         $this->add_mixin('Mixin_NextGen_Basic_Pagination');
     }
@@ -417,7 +455,7 @@ class A_NextGen_Basic_Thumbnails_Controller extends Mixin
      * This method deprecates the use of the nggShowGallery() function.
      * @param stdClass|C_Displayed_Gallery|C_DataMapper_Model $displayed_gallery
      */
-    public function index_action($displayed_gallery, $return = FALSE)
+    function index_action($displayed_gallery, $return = FALSE)
     {
         $display_settings = $displayed_gallery->display_settings;
         $gallery_id = $displayed_gallery->id();
@@ -496,7 +534,7 @@ class A_NextGen_Basic_Thumbnails_Controller extends Mixin
                 //                    'get_image_url'
                 //                );
                 //                $effect_code = '';
-                $effect_code = 'class=\'use_imagebrowser_effect\'';
+                $effect_code = "class='use_imagebrowser_effect'";
             } else {
                 $effect_code = $this->object->get_effect_code($displayed_gallery);
             }
@@ -522,7 +560,7 @@ class A_NextGen_Basic_Thumbnails_Controller extends Mixin
             return $output;
         } else {
             if ($display_settings['display_no_images_error']) {
-                return $this->object->render_partial('photocrati-nextgen_gallery_display#no_images_found', array(), $return);
+                return $this->object->render_partial("photocrati-nextgen_gallery_display#no_images_found", array(), $return);
             }
         }
     }
@@ -530,7 +568,7 @@ class A_NextGen_Basic_Thumbnails_Controller extends Mixin
      * Enqueues all static resources required by this display type
      * @param C_Displayed_Gallery $displayed_gallery
      */
-    public function enqueue_frontend_resources($displayed_gallery)
+    function enqueue_frontend_resources($displayed_gallery)
     {
         $this->call_parent('enqueue_frontend_resources', $displayed_gallery);
         wp_enqueue_style('nextgen_basic_thumbnails_style', $this->get_static_url('photocrati-nextgen_basic_gallery#thumbnails/nextgen_basic_thumbnails.css'), FALSE, NGG_SCRIPT_VERSION);
@@ -545,7 +583,7 @@ class A_NextGen_Basic_Thumbnails_Controller extends Mixin
      * NextGEN Basic Thumbnails to display
      * @return string
      */
-    public function _get_js_lib_url()
+    function _get_js_lib_url()
     {
         return $this->object->get_static_url('photocrati-nextgen_basic_gallery#thumbnails/nextgen_basic_thumbnails.js');
     }

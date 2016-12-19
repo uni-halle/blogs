@@ -20,7 +20,7 @@ class M_MVC extends C_Base_Module
             "photocrati-mvc",
             "MVC Framework",
             "Provides an MVC architecture for the plugin to use",
-            "0.7",
+            "0.8",
             "https://www.imagely.com",
             "Photocrati Media",
             "https://www.imagely.com"

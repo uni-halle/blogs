@@ -350,8 +350,12 @@ msgstr ""
 msgid "Custom"
 msgstr ""
 
+#: products/photocrati_nextgen/modules/nextgen_addgallery_page/templates/import_folder.php:7
+msgid "Leave blank for folder name"
+msgstr ""
+
 #: products/photocrati_nextgen/modules/nextgen_addgallery_page/adapter.import_folder_form.php:7
-#: products/photocrati_nextgen/modules/nextgen_addgallery_page/templates/import_folder.php:6
+#: products/photocrati_nextgen/modules/nextgen_addgallery_page/templates/import_folder.php:12
 msgid "Import Folder"
 msgstr ""
 
@@ -400,11 +404,31 @@ msgstr ""
 msgid "Upload Images"
 msgstr ""
 
+#: products/photocrati_nextgen/modules/nextgen_addgallery_page/adapter.upload_images_form.php:13
+msgid "No images were uploaded successfully."
+msgstr ""
+
+#: products/photocrati_nextgen/modules/nextgen_addgallery_page/adapter.upload_images_form.php:14
+msgid "1 image was uploaded successfully."
+msgstr ""
+
+#: products/photocrati_nextgen/modules/nextgen_addgallery_page/adapter.upload_images_form.php:15
+msgid "{count} images were uploaded successfully."
+msgstr ""
+
+#: products/photocrati_nextgen/modules/nextgen_addgallery_page/adapter.upload_images_form.php:16
+msgid "The following errors occured:"
+msgstr ""
+
+#: products/photocrati_nextgen/modules/nextgen_addgallery_page/adapter.upload_images_form.php:17
+msgid "Manage gallery {name}"
+msgstr ""
+
 #: products/photocrati_nextgen/modules/nextgen_addgallery_page/templates/import_folder.php:1
 msgid "Select a folder to import. The folder name will be used as the title of the gallery."
 msgstr ""
 
-#: products/photocrati_nextgen/modules/nextgen_addgallery_page/templates/import_folder.php:5
+#: products/photocrati_nextgen/modules/nextgen_addgallery_page/templates/import_folder.php:11
 msgid "Keep images in original location."
 msgstr ""
 
@@ -445,6 +469,10 @@ msgstr[1] ""
 
 #: products/photocrati_nextgen/modules/nextgen_addgallery_page/templates/upload_images.php:4
 msgid "Create a new gallery"
+msgstr ""
+
+#: products/photocrati_nextgen/modules/nextgen_addgallery_page/templates/upload_images.php:9
+msgid "Gallery title"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/nextgen_addgallery_page/templates/upload_images.php:13
@@ -1141,6 +1169,10 @@ msgstr ""
 #: products/photocrati_nextgen/modules/nextgen_gallery_display/templates/alt_view_link_text.php:15
 #: products/photocrati_nextgen/modules/nextgen_gallery_display/templates/return_link_text.php:15
 msgid "link text"
+msgstr ""
+
+#: products/photocrati_nextgen/modules/nextgen_gallery_display/templates/no_images_found.php:1
+msgid "no images were found"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/nextgen_other_options/adapter.image_options_form.php:12

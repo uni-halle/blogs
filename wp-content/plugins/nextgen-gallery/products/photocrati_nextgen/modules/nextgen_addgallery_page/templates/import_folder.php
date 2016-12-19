@@ -3,7 +3,8 @@
 </div>
 <p>
     <label for="import_gallery_title">
-        <input type="text" name="import_gallery_title" id="import_gallery_title"/>
+        Gallery title
+        <input type="text" name="import_gallery_title" id="import_gallery_title" placeholder="<?php _e('Leave blank for folder name', 'nggallery'); ?>"/>
     </label>
 </p>
 <p>
@@ -55,6 +56,7 @@
 	        post_params.action = 'import_folder';
 	        post_params.folder = selected_folder;
 	        post_params.keep_location =  $('#import_keep_location').is(":checked") ? 'on' : 'off';
+            post_params.gallery_title = $('#import_gallery_title').val();
 
             $.post(photocrati_ajax.url, post_params, function(response){
                 if (typeof(response) != 'object') response = JSON.parse(response);

@@ -2,12 +2,6 @@
 
 define('NGG_AJAX_SLUG', 'photocrati_ajax');
 
-/*
- {
-		Module: photocrati-ajax,
-		Depends: { photocrati-mvc }
- }
- */
 class M_Ajax extends C_Base_Module
 {
     function define()
@@ -16,7 +10,7 @@ class M_Ajax extends C_Base_Module
             'photocrati-ajax',
             'AJAX',
             'Provides AJAX functionality',
-            '0.9',
+            '0.10',
             'https://www.imagely.com',
             'Photocrati Media',
             'https://www.imagely.com'

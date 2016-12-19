@@ -29,6 +29,14 @@
 	width:24px;
 }
 
+#ngg-gallery-wizard {
+	min-height: auto;
+}
+
+#ngg-gallery-wizard a {
+	font-weight: bold;
+}
+
 #gallerydiv h3 {
 	margin-left: 10px;
 }

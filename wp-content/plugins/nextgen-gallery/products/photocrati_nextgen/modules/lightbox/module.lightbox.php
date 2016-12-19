@@ -16,7 +16,7 @@ class M_Lightbox extends C_Base_Module
             'photocrati-lightbox',
             'Lightbox',
             "Provides integration with several JavaScript lightbox effect libraries",
-            '0.16',
+            '0.17',
             'http://leandrovieira.com/projects/jquery/lightbox/',
             'Photocrati Media',
             'https://www.imagely.com'

@@ -1,7 +1,12 @@
 <?php
+/**
+ * Class A_WordPress_Base_Url
+ * @mixin C_Router
+ * @adapts I_Router
+ */
 class A_WordPress_Base_Url extends Mixin
 {
-    public function _add_index_dot_php_to_url($url)
+    function _add_index_dot_php_to_url($url)
     {
         if (strpos($url, '/index.php') === FALSE) {
             $pattern = get_option('permalink_structure');
@@ -11,7 +16,7 @@ class A_WordPress_Base_Url extends Mixin
         }
         return $url;
     }
-    public function get_base_url($site_url = FALSE)
+    function get_base_url($site_url = FALSE)
     {
         $retval = NULL;
         $add_index_dot_php = TRUE;
@@ -64,9 +69,14 @@ class A_WordPress_Base_Url extends Mixin
         return $retval;
     }
 }
+/**
+ * Class A_WordPress_Router
+ * @mixin C_Router
+ * @adapts I_Router
+ */
 class A_WordPress_Router extends Mixin
 {
-    public function get_url($uri = '/', $with_qs = TRUE, $site_url = FALSE)
+    function get_url($uri = '/', $with_qs = TRUE, $site_url = FALSE)
     {
         static $cache = array();
         $key = implode('|', array($uri, $with_qs, $site_url));
@@ -89,15 +99,20 @@ class A_WordPress_Router extends Mixin
         }
     }
 }
+/**
+ * Class A_WordPress_Routing_App
+ * @mixin C_Routing_App
+ * @adapts I_Routing_App
+ */
 class A_WordPress_Routing_App extends Mixin
 {
-    public function remove_parameter($key, $id = NULL, $url = FALSE)
+    function remove_parameter($key, $id = NULL, $url = FALSE)
     {
         $generated_url = $this->call_parent('remove_parameter', $key, $id, $url);
         $generated_url = $this->object->add_post_permalink_to_url($generated_url);
         return $generated_url;
     }
-    public function parse_url($url)
+    function parse_url($url)
     {
         $parts = parse_url($url);
         if (!isset($parts['path'])) {
@@ -116,7 +131,7 @@ class A_WordPress_Routing_App extends Mixin
      * @param $generated_url
      * @return mixed
      */
-    public function add_post_permalink_to_url($generated_url)
+    function add_post_permalink_to_url($generated_url)
     {
         if (!apply_filters('ngg_wprouting_add_post_permalink', TRUE)) {
             return $generated_url;
@@ -179,12 +194,12 @@ class A_WordPress_Routing_App extends Mixin
         }
         return $generated_url;
     }
-    public function join_paths()
+    function join_paths()
     {
         $args = func_get_args();
         return $this->get_router()->join_paths($args);
     }
-    public function passthru()
+    function passthru()
     {
         $router = C_Router::get_instance();
         $_SERVER['ORIG_REQUEST_URI'] = $_SERVER['REQUEST_URI'];

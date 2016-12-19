@@ -1,7 +1,7 @@
 <?php
 class C_Lightbox_Installer_Mapper
 {
-    public function find_by_name()
+    function find_by_name()
     {
         return NULL;
     }
@@ -12,11 +12,9 @@ class C_Lightbox_Installer
     {
         $this->mapper = new C_Lightbox_Installer_Mapper();
     }
-    public function install_lightbox($name, $title, $code, $stylesheet_paths = array(), $script_paths = array(), $values = array(), $i18n = array())
+    function install_lightbox($name, $title, $code, $stylesheet_paths = array(), $script_paths = array(), $values = array(), $i18n = array())
     {
-        $lightbox = new C_NGG_Lightbox($name, array('title' => $title, 'code' => $code, 'styles' => is_array($stylesheet_paths) ? implode('
-', $stylesheet_paths) : $stylesheet_paths, 'scripts' => is_array($script_paths) ? implode('
-', $script_paths) : $script_paths, 'values' => $values, 'i18n' => $i18n));
+        $lightbox = new C_NGG_Lightbox($name, array('title' => $title, 'code' => $code, 'styles' => is_array($stylesheet_paths) ? implode("\n", $stylesheet_paths) : $stylesheet_paths, 'scripts' => is_array($script_paths) ? implode("\n", $script_paths) : $script_paths, 'values' => $values, 'i18n' => $i18n));
         C_Lightbox_Library_Manager::get_instance()->register($name, $lightbox);
     }
 }
@@ -36,7 +34,7 @@ class C_Lightbox_Library_Manager
         }
         return self::$_instance;
     }
-    public function register_defaults()
+    function register_defaults()
     {
         $settings = C_NextGen_Settings::get_instance();
         $fs = C_Fs::get_instance();
@@ -71,7 +69,7 @@ class C_Lightbox_Library_Manager
         // Add Thickbox
         $thickbox = new C_NGG_Lightbox('thickbox');
         $thickbox->title = __('Thickbox', 'nggallery');
-        $thickbox->code = 'class=\'thickbox\' rel=\'%GALLERY_NAME%\'';
+        $thickbox->code = "class='thickbox' rel='%GALLERY_NAME%'";
         $thickbox->styles = array('wordpress#thickbox');
         $thickbox->scripts = array('photocrati-lightbox#thickbox/nextgen_thickbox_init.js', 'wordpress#thickbox');
         $thickbox->values = array('nextgen_thickbox_i18n' => array('next' => __('Next &gt;', 'nggallery'), 'prev' => __('&lt; Prev', 'nggallery'), 'image' => __('Image', 'nggallery'), 'of' => __('of', 'nggallery'), 'close' => __('Close', 'nggallery'), 'noiframes' => __('This feature requires inline frames. You have iframes disabled or your browser does not support them.', 'nggallery')));
@@ -87,7 +85,7 @@ class C_Lightbox_Library_Manager
         $this->register('custom_lightbox', $custom);
         $this->_registered_defaults = TRUE;
     }
-    public function register($name, $properties)
+    function register($name, $properties)
     {
         // We'll use an object to represent the lightbox
         $object = $properties;
@@ -116,11 +114,11 @@ class C_Lightbox_Library_Manager
         }
         $this->_lightboxes[$name] = $object;
     }
-    public function deregister($name)
+    function deregister($name)
     {
         unset($this->_lightboxes[$name]);
     }
-    public function get($name)
+    function get($name)
     {
         if (!$this->_registered_defaults) {
             $this->register_defaults();
@@ -138,7 +136,7 @@ class C_Lightbox_Library_Manager
      * either of those options we silently make their selection fallback to Fancybox
      * @return null|string
      */
-    public function get_selected()
+    function get_selected()
     {
         $settings = C_NextGen_Settings::get_instance();
         if (in_array($settings->thumbEffect, array('highslide', 'lightbox'))) {
@@ -146,22 +144,22 @@ class C_Lightbox_Library_Manager
         }
         return $this->get($settings->thumbEffect);
     }
-    public function get_selected_context()
+    function get_selected_context()
     {
         return C_NextGen_Settings::get_instance()->thumbEffectContext;
     }
-    public function get_all()
+    function get_all()
     {
         if (!$this->_registered_defaults) {
             $this->register_defaults();
         }
         return array_values($this->_lightboxes);
     }
-    public function is_registered($name)
+    function is_registered($name)
     {
         return !is_null($this->get($name));
     }
-    public function maybe_enqueue()
+    function maybe_enqueue()
     {
         $settings = C_NextGen_Settings::get_instance();
         $thumbEffectContext = isset($settings->thumbEffectContext) ? $settings->thumbEffectContext : '';
@@ -169,7 +167,7 @@ class C_Lightbox_Library_Manager
             $this->enqueue();
         }
     }
-    public function enqueue($lightbox = NULL)
+    function enqueue($lightbox = NULL)
     {
         $router = C_Router::get_instance();
         $settings = C_NextGen_Settings::get_instance();
@@ -247,7 +245,7 @@ class C_Lightbox_Library_Manager
      * @param mixed $object_value
      * @param bool $define
      */
-    public function _add_script_data($handle, $object_name, $object_value, $define = TRUE, $override = FALSE)
+    function _add_script_data($handle, $object_name, $object_value, $define = TRUE, $override = FALSE)
     {
         $retval = FALSE;
         // wp_localize_script allows you to add data to the DOM, associated
@@ -285,7 +283,7 @@ class C_Lightbox_Library_Manager
         }
         return $retval;
     }
-    public function deregister_all()
+    function deregister_all()
     {
         $this->_lightboxes = array();
         $this->_registered_defaults = FALSE;
@@ -294,16 +292,18 @@ class C_Lightbox_Library_Manager
 /**
  * Represents a lightbox available in NextGEN Gallery
  * Class C_NGG_Lightbox
+ * @mixin Mixin_NGG_Lightbox_Instance_Methods
+ * @implements I_Lightbox
  */
 class C_NGG_Lightbox extends C_Component
 {
-    public function define($context = FALSE, $properties = array())
+    function define($context = FALSE, $properties = array())
     {
         parent::define($context);
         $this->add_mixin('Mixin_NGG_Lightbox_Instance_Methods');
         $this->implement('I_Lightbox');
     }
-    public function initialize($name = '', $properties = array())
+    function initialize($name = '', $properties = array())
     {
         parent::initialize($name);
         $properties['name'] = $name;
@@ -319,7 +319,7 @@ class Mixin_NGG_Lightbox_Instance_Methods extends Mixin
      * @param $displayed_gallery. By default, lightboxes don't support albums
      * @return bool
      */
-    public function is_supported($displayed_gallery)
+    function is_supported($displayed_gallery)
     {
         $retval = TRUE;
         if (in_array($displayed_gallery->source, array('album', 'albums')) && !isset($displayed_gallery->display_settings['open_gallery_in_lightbox'])) {

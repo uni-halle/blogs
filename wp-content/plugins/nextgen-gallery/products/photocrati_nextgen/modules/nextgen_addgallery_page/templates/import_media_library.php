@@ -7,7 +7,7 @@
             <option value="<?php echo esc_attr($gallery->{$gallery->id_field}) ?>"><?php echo esc_attr($gallery->title) ?></option>
         <?php endforeach ?>
     </select>
-    <input type="text" id="ngg-importML-gallery-name" name="gallery_name"/>
+    <input type="text" id="ngg-importML-gallery-name" name="gallery_name" placeholder="<?php _e('Gallery title', 'nggallery'); ?>"/>
 </div>
 
 <button id='ngg-importML-select-opener'

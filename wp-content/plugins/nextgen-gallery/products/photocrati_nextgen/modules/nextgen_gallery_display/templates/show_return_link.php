@@ -13,7 +13,7 @@
 			name='<?php echo esc_attr($display_type_name); ?>[show_return_link]'
 			class='show_return_link'
 			value='1'
-			<?php echo checked(1, intval($show_return_link)); ?>'>
+			<?php echo checked(1, intval($show_return_link)); ?>>
 		<label for='<?php echo esc_attr($display_type_name); ?>_show_return_link'>Yes</label>
 		&nbsp;
 		<input type="radio"

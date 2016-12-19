@@ -1,9 +1,4 @@
 <?php
-/***
-{
-        Module: photocrati-widget
-}
-***/
 class M_Widget extends C_Base_Module
 {
     /**
@@ -15,7 +10,7 @@ class M_Widget extends C_Base_Module
             'photocrati-widget',
             'Widget',
             'Handles clearing of NextGen Widgets',
-            '0.5',
+            '0.6',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
             'Photocrati Media',
             'https://www.imagely.com'

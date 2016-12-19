@@ -169,6 +169,7 @@ function nggallery_admin_overview()
         <h1><?php _e( 'Welcome to NextGEN Gallery', 'nggallery' ); ?></h1>
 
         <div class="about-text"><?php printf( __( "Congrats! You're now running the most popular WordPress gallery plugin of all time. So far you've added %s images, %s galleries, and %s albums." ), $images, $galleries, $albums); ?></div>
+        <div class="about-text" id="ngg-gallery-wizard"><?php echo __("Need help setting up a gallery? Launch the ", 'nggallery') . ' <a data-ngg-wizard="nextgen.beginner.gallery_creation_igw" class="ngg-wizard-invoker" href="' . esc_url(add_query_arg('ngg_wizard', 'nextgen.beginner.gallery_creation_igw')) . '">' . __('Gallery Wizard.', 'nggallery') . '</a>'; ?></div>
         <div class="wp-badge"></div>
 
         <h2 class="nav-tab-wrapper wp-clearfix" id="ngg-tabs-wrapper">

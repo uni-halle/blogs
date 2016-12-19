@@ -17,7 +17,7 @@ class M_NextGen_Basic_Tagcloud extends C_Base_Module
 			NGG_BASIC_TAGCLOUD,
             'NextGen Basic Tagcloud',
             'Provides a tagcloud for NextGEN Gallery',
-            '0.11',
+            '0.15',
             'https://www.imagely.com',
             'Photocrati Media',
             'https://www.imagely.com'
@@ -168,7 +168,12 @@ class C_NextGen_Basic_Tagcloud_Installer extends C_Gallery_Display_Installer
 				'entity_types'			=>	array('image'),
 				'preview_image_relpath'	=>	'photocrati-nextgen_basic_tagcloud#preview.gif',
 				'default_source'		=>	'tags',
-				'view_order' => NGG_DISPLAY_PRIORITY_BASE + 100
+				'view_order'            => NGG_DISPLAY_PRIORITY_BASE + 100,
+                'aliases'               => array(
+                    'basic_tagcloud',
+                    'tagcloud',
+                    'nextgen_basic_tagcloud'
+                )
 			)
 
 		);

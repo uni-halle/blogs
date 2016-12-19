@@ -14,7 +14,7 @@ class M_NextGen_XmlRpc extends C_Base_Module
 			'photocrati-nextgen_xmlrpc',
 			'NextGEN Gallery XML-RPC',
 			'Provides an XML-RPC API for NextGEN Gallery',
-			'0.5',
+			'0.6',
 			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
 			'Photocrati Media',
 			'https://www.imagely.com'

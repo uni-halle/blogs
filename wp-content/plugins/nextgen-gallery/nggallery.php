@@ -3,8 +3,8 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 
 /**
  * Plugin Name: NextGEN Gallery
- * Description: The most popular gallery plugin for WordPress and one of the most popular plugins of all time with over 15 million downloads.
- * Version: 2.1.50
+ * Description: The most popular gallery plugin for WordPress and one of the most popular plugins of all time with over 16 million downloads.
+ * Version: 2.1.62
  * Author: Imagely
  * Plugin URI: https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/
  * Author URI: https://www.imagely.com
@@ -161,11 +161,11 @@ class C_NextGEN_Bootstrap
 	function is_activating()
 	{
 		$retval =  strpos($_SERVER['REQUEST_URI'], 'plugins.php') !== FALSE && isset($_REQUEST['action']) && $_REQUEST['action'] == 'activate';
-		
+
 		if (!$retval && strpos($_SERVER['REQUEST_URI'], 'update.php') !== FALSE && isset($_REQUEST['action']) && $_REQUEST['action'] == 'install-plugin' && isset($_REQUEST['plugin']) && strpos($_REQUEST['plugin'], 'nextgen-gallery') === 0) {
 			$retval = TRUE;
 		}
-		
+
 		if (!$retval && strpos($_SERVER['REQUEST_URI'], 'update.php') !== FALSE && isset($_REQUEST['action']) && $_REQUEST['action'] == 'activate-plugin' && isset($_REQUEST['plugin']) && strpos($_REQUEST['plugin'], 'nextgen-gallery') === 0) {
 			$retval = TRUE;
 		}
@@ -174,7 +174,7 @@ class C_NextGEN_Bootstrap
 		/* if (!$retval && isset($_REQUEST['tgmpa-activate']) && $_REQUEST['tgmpa-activate'] == 'activate-plugin' && isset($_REQUEST['plugin']) && strtolower($_REQUEST['plugin']) == 'nextgen-gallery') {
 			$retval = TRUE;
 		} */
-		
+
 		return $retval;
 	}
 
@@ -206,6 +206,7 @@ class C_NextGEN_Bootstrap
 
 		// Load the shortcode manager
 		include_once('non_pope/class.nextgen_shortcode_manager.php');
+		C_NextGen_Shortcode_Manager::get_instance();
 	}
 
 	/**
@@ -595,7 +596,7 @@ class C_NextGEN_Bootstrap
 		define('NGG_PRODUCT_URL', path_join(str_replace("\\", '/', NGG_PLUGIN_URL), 'products'));
 		define('NGG_MODULE_URL', path_join(str_replace("\\", '/', NGG_PRODUCT_URL), 'photocrati_nextgen/modules'));
 		define('NGG_PLUGIN_STARTED_AT', microtime());
-		define('NGG_PLUGIN_VERSION', '2.1.50');
+		define('NGG_PLUGIN_VERSION', '2.1.62');
 
 		if (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG)
 			define('NGG_SCRIPT_VERSION', (string)mt_rand(0, mt_getrandmax()));
@@ -871,48 +872,67 @@ function ngg_fs_uninstall() {
 }
 
 /**
+ * Send custom event about 1st gallery creation.
+ *
+ * @author Vova Feldman (@svovaf)
+ */
+function fs_track_new_gallery() {
+	global $ngg_fs;
+
+	$galleries = C_Gallery_Mapper::get_instance()->count();
+	if (1 == $galleries) {
+		// Only track event on 1st gallery creation.
+		$ngg_fs->track_event_once( 'new_gallery' );
+	}
+}
+
+/**
  * Create a helper function for easy SDK access.
  *
  * @author Vova Feldman (@svovaf)
- * @since 2.1.32
+ * @since  2.1.32
+ *
+ * @param bool $activate_for_all If true, activate Freemius for all users. Was added for testing.
  *
  * @return \Freemius
  */
-function ngg_fs() {
+function ngg_fs( $activate_for_all = false ) {
 	global $ngg_fs;
 
-	$ngg_options = get_option( 'ngg_options' );
-	$ngg_run_freemius = get_option('ngg_run_freemius', NULL);
+	if ( ! $activate_for_all ) {
+		$ngg_options      = get_option( 'ngg_options' );
+		$ngg_run_freemius = get_option( 'ngg_run_freemius', null );
 
-	if ( false === $ngg_options ) {
-		// New plugin installation.
+		if ( false === $ngg_options ) {
+			// New plugin installation.
 
-		if ( defined('WP_FS__DEV_MODE') && WP_FS__DEV_MODE ) {
-			// Always run Freemius in development mode for new plugin installs.
-			$run_freemius = true;
-		} else {
-			// Run Freemius code on 20% of the new installations.
+			if ( defined( 'WP_FS__DEV_MODE' ) && WP_FS__DEV_MODE ) {
+				// Always run Freemius in development mode for new plugin installs.
+				$run_freemius = true;
+			} else {
+				// Run Freemius code on 20% of the new installations.
 			// $random = rand( 1, 10 );
 			// $run_freemius = ( 1 <= $random && $random <= 2 );
             // Update 2016-08: run on all new instances
             $run_freemius = TRUE;
-		}
+			}
 
-		update_option('ngg_run_freemius', $run_freemius);
+			update_option( 'ngg_run_freemius', $run_freemius );
 
-	// Compare both bool or string 0/1 because get_option() may give us either
-	} else if ((is_bool($ngg_run_freemius) && $ngg_run_freemius) || '1' === $ngg_run_freemius) {
-		// If runFreemius was set, use the value.
-		$run_freemius = $ngg_run_freemius;
-	} else {
-		// Don't run Freemius for plugin updates.
-		$run_freemius = false;
+			// Compare both bool or string 0/1 because get_option() may give us either
+		} else if ( ( is_bool( $ngg_run_freemius ) && $ngg_run_freemius ) || '1' === $ngg_run_freemius ) {
+			// If runFreemius was set, use the value.
+			$run_freemius = $ngg_run_freemius;
+		} else {
+			// Don't run Freemius for plugin updates.
+			$run_freemius = false;
 		if (is_null($ngg_run_freemius))
 			update_option('ngg_run_freemius', FALSE);
-	}
+		}
 
-	if ( ! $run_freemius ) {
-		return false;
+		if ( ! $run_freemius ) {
+			return false;
+		}
 	}
 
 	if ( ! isset( $ngg_fs ) ) {
@@ -950,6 +970,9 @@ function ngg_fs() {
 	// Hook to the custom message filter.
 	$ngg_fs->add_filter( 'connect_message', 'ngg_fs_custom_connect_message', 10, 6 );
 	$ngg_fs->add_action( 'after_uninstall', 'ngg_fs_uninstall' );
+
+	// Hook to new gallery creation event.
+	add_action( 'ngg_created_new_gallery', 'fs_track_new_gallery' );
 
 	return $ngg_fs;
 }

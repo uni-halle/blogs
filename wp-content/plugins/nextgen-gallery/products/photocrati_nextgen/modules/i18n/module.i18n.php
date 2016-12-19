@@ -13,7 +13,7 @@ class M_I18N extends C_Base_Module
             'photocrati-i18n',
             'Internationalization',
             "Adds I18N resources and methods",
-            '0.1',
+            '0.3',
             'https://www.imagely.com/languages/',
             'Photocrati Media',
             'https://www.imagely.com'

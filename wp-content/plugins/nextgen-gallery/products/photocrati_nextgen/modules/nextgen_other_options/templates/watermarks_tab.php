@@ -41,7 +41,7 @@
                     <td><input type="radio" name="watermark_options[wmPos]" value="botRight"  <?php checked('botRight',  $position); ?>/></td>
                 </tr>
             </table>
-        </td
+        </td>
     </tr>
 
     <tr class="watermark_field hidden">

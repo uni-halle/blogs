@@ -19,6 +19,14 @@
 		}
 	}
 
+	if ( ! function_exists( 'starts_with' ) ) {
+		function starts_with( $haystack, $needle ) {
+			$length = strlen( $needle );
+
+			return ( substr( $haystack, 0, $length ) === $needle );
+		}
+	}
+
 	/* Url.
 	--------------------------------------------------------------------------------------------*/
 	function fs_get_url_daily_cache_killer() {
@@ -107,7 +115,19 @@
 	}
 
 	function fs_request_get_bool( $key, $def = false ) {
-		return ( isset( $_REQUEST[ $key ] ) && ( 1 == $_REQUEST[ $key ] || 'true' === strtolower( $_REQUEST[ $key ] ) ) ) ? true : $def;
+		if ( ! isset( $_REQUEST[ $key ] ) ) {
+			return $def;
+		}
+
+		if ( 1 == $_REQUEST[ $key ] || 'true' === strtolower( $_REQUEST[ $key ] ) ) {
+			return true;
+		}
+
+		if ( 0 == $_REQUEST[ $key ] || 'false' === strtolower( $_REQUEST[ $key ] ) ) {
+			return false;
+		}
+
+		return $def;
 	}
 
 	function fs_request_is_post() {
@@ -338,7 +358,7 @@
 				return '';
 			}
 
-			// Urlencode both keys and values
+			// Url encode both keys and values
 			$keys   = fs_urlencode_rfc3986( array_keys( $params ) );
 			$values = fs_urlencode_rfc3986( array_values( $params ) );
 			$params = array_combine( $keys, $values );
@@ -352,7 +372,9 @@
 				$lower_param = strtolower( $parameter );
 
 				// Skip ignore params.
-				if ( in_array( $lower_param, $ignore_params ) || ( false !== $params_prefix && startsWith( $lower_param, $params_prefix ) ) ) {
+				if ( in_array( $lower_param, $ignore_params ) ||
+				     ( false !== $params_prefix && starts_with( $lower_param, $params_prefix ) )
+				) {
 					continue;
 				}
 

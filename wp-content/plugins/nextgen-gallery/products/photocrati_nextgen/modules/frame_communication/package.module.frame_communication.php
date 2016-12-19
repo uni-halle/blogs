@@ -1,15 +1,20 @@
 <?php
+/**
+ * Class C_Frame_Event_Publisher
+ * @mixin Mixin_Frame_Event_Publisher
+ * @implements I_Frame_Event_Publisher
+ */
 class C_Frame_Event_Publisher extends C_Component
 {
     static $_instances = array();
-    public $setting_name = NULL;
-    public function define($context = FALSE)
+    var $setting_name = NULL;
+    function define($context = FALSE)
     {
         parent::define($context);
         $this->add_mixin('Mixin_Frame_Event_Publisher');
         $this->implement('I_Frame_Event_Publisher');
     }
-    public function initialize()
+    function initialize()
     {
         parent::initialize();
         $this->setting_name = C_NextGen_Settings::get_instance()->frame_event_cookie_name;
@@ -35,7 +40,7 @@ class Mixin_Frame_Event_Publisher extends Mixin
      * @param array $data
      * @return string
      */
-    public function _encode($data)
+    function _encode($data)
     {
         return rawurlencode(json_encode($data));
     }
@@ -44,7 +49,7 @@ class Mixin_Frame_Event_Publisher extends Mixin
      * @param string $data
      * @return array
      */
-    public function _decode($data)
+    function _decode($data)
     {
         return (array) json_decode(rawurldecode($data));
     }
@@ -53,7 +58,7 @@ class Mixin_Frame_Event_Publisher extends Mixin
      * @param type $data
      * @return type
      */
-    public function add_event($data)
+    function add_event($data)
     {
         $id = md5(serialize($data));
         $data['context'] = $this->object->context;

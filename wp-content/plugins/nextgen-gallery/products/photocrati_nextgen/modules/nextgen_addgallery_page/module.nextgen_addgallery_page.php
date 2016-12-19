@@ -15,7 +15,7 @@ class M_NextGen_AddGallery_Page extends C_Base_Module
             'photocrati-nextgen_addgallery_page',
             'NextGEN Add Gallery Page',
             'Provides admin page for adding a gallery and uploading images',
-            '0.7',
+            '0.9',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
             'Photocrati Media',
             'https://www.imagely.com'

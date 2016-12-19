@@ -13,7 +13,7 @@ class M_Dynamic_Thumbnails extends C_Base_Module
 			'photocrati-dynamic_thumbnails',
 			'Dynamic Thumbnails',
 			'Adds support for dynamic thumbnails',
-			'0.6',
+			'0.7',
 			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
 			'Photocrati Media',
 			'https://www.imagely.com'

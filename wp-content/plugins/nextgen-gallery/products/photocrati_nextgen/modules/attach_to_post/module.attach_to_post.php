@@ -1,10 +1,4 @@
 <?php
-/**
- {
-	Module:		photocrati-attach_to_post,
-	Depends:	{ photocrati-nextgen_gallery_display }
- }
- */
 
 define('NGG_ATTACH_TO_POST_SLUG', 'nextgen-attach_to_post');
 
@@ -24,7 +18,7 @@ class M_Attach_To_Post extends C_Base_Module
 			'photocrati-attach_to_post',
 			'Attach To Post',
 			'Provides the "Attach to Post" interface for displaying galleries and albums',
-			'0.14',
+			'0.18',
 			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
 			'Photocrati Media',
 			'https://www.imagely.com',
@@ -111,12 +105,14 @@ class M_Attach_To_Post extends C_Base_Module
 
         // We use two hooks here because we need it to execute for both the post-new.php
         // page and ATP interface
-        add_action('plugins_loaded',            array(&$this, 'fix_ie11'), 1);
-        add_action('admin_init',                array(&$this, 'fix_ie11'), PHP_INT_MAX-1);
-        add_action('admin_enqueue_scripts',     array(&$this, 'fix_ie11'), 1);
-        add_action('admin_enqueue_scripts',     array(&$this, 'fix_ie11'), PHP_INT_MAX-1);
-		add_filter('wpseo_pre_analysis_post_content', array(&$this, 'remove_preview_images_from_yoast_opengraph'));
-		add_filter('wpseo_sitemap_urlimages', 	array(&$this, 'remove_preview_images_from_yoast_sitemap'), NULL, 2);
+        add_action('plugins_loaded',        array($this, 'fix_ie11'), 1);
+        add_action('admin_init',            array($this, 'fix_ie11'), PHP_INT_MAX-1);
+        add_action('admin_enqueue_scripts', array($this, 'fix_ie11'), 1);
+        add_action('admin_enqueue_scripts', array($this, 'fix_ie11'), PHP_INT_MAX-1);
+
+        add_filter('wpseo_opengraph_image',   array($this, 'hide_preview_image_from_yoast'));
+        add_filter('wpseo_twitter_image',     array($this, 'hide_preview_image_from_yoast'));
+        add_filter('wpseo_sitemap_urlimages', array($this, 'remove_preview_images_from_yoast_sitemap'), NULL, 2);
 
         // Emit frame communication events
 		if ($this->does_request_require_frame_communication()) {
@@ -135,13 +131,10 @@ class M_Attach_To_Post extends C_Base_Module
 			);
 
 			add_action('admin_init', array(&$this, 'route_insert_gallery_window'));
-
-			// TODO: In 2.0.69, we're going to change the ATP placeholder urls
-			if (FALSE) {
-				add_filter('the_editor_content', array($this, 'fix_preview_images'));
-			}
 			
 			add_action('media_buttons', array($this, 'add_media_button'), 15);
+			add_action('admin_init', array($this, 'enqueue_tinymce_plugin_css'));
+			add_action('admin_print_scripts', array(&$this, 'print_tinymce_placeholder_template'));
 		}
 
 		// Frontend-only hooks
@@ -152,17 +145,39 @@ class M_Attach_To_Post extends C_Base_Module
 	}
 
 	/**
-	 * Removes IGW preview/placeholder images from Yoast OpenGraph analysis
-	 * @param $content
-	 * @return mixed
+	 * Renders the underscore template used by TinyMCE for IGW placeholders
 	 */
-	function remove_preview_images_from_yoast_opengraph($content)
+	function print_tinymce_placeholder_template()
 	{
-		$content = $this->fix_preview_images($content);
-		$content = preg_replace('/http(s)?:\/\/(.*?)'.NGG_ATTACH_TO_POST_SLUG.'\/preview\/id--\d+/', "", $content);
-		$content = preg_replace('/http(s)?:\/\/(.*?)'.NGG_ATTACH_TO_POST_SLUG.'\/preview\/id\/\d+/', "", $content);
-		return $content;
+		readfile(C_Fs::get_instance()->join_paths(
+			$this->get_registry()->get_module_dir('photocrati-attach_to_post'),
+			'templates',
+			'tinymce_placeholder.php'
+		));
 	}
+
+	/**
+	 * Enqueues the CSS needed to style the IGW placeholders
+	 */
+	function enqueue_tinymce_plugin_css()
+	{
+		add_editor_style('https://fonts.googleapis.com/css?family=Lato');
+		add_editor_style(M_Gallery_Display::get_fontawesome_url());
+		add_editor_style(C_Router::get_instance()->get_static_url('photocrati-attach_to_post#ngg_attach_to_post_tinymce_plugin.css'));
+	}
+
+    /**
+     * Prevents ATP preview image placeholders from being used as opengraph / twitter metadata
+     *
+     * @param string $image
+     * @return null
+     */
+	function hide_preview_image_from_yoast($image)
+    {
+        if (strpos($image, NGG_ATTACH_TO_POST_SLUG) !== FALSE)
+            return null;
+        return $image;
+    }
 
 	/**
 	 * Removes IGW preview/placeholder images from Yoast's sitemap
@@ -236,8 +251,11 @@ class M_Attach_To_Post extends C_Base_Module
 	function add_media_button()
 	{
 		$router = C_Router::get_instance();
+		$button_url = $router->get_static_url('photocrati-attach_to_post#atp_button.png');
+		$label		= __('Add Gallery', 'nggallery');
+		$igw_url    = admin_url('/?'.NGG_ATTACH_TO_POST_SLUG.'=1&KeepThis=true&TB_iframe=true&height=600&width=1000');
 
-		echo '<a href="#" data-editor="content" class="button ngg-add-gallery" id="ngg-media-button" class="button" onclick="tinymce.EditorManager.execCommand(\'ngg_attach_to_post\'); return false;"><img src="' . $router->get_static_url('photocrati-attach_to_post#atp_button.png') . '" style="padding:0; margin-top:-3px;"> ' . __('Add Gallery', 'nggallery') . '</a>';
+		echo sprintf('<a href="%s" data-editor="content" class="button ngg-add-gallery thickbox" id="ngg-media-button" class="button" ><img src="%s" style="padding:0; margin-top:-3px;">%s</a>', $igw_url, $button_url, $label);
 	}
 
 	/**
@@ -332,12 +350,27 @@ class M_Attach_To_Post extends C_Base_Module
 		// Enqueue resources needed at post/page level
 		if (preg_match("/\/wp-admin\/(post|post-new)\.php$/", $_SERVER['SCRIPT_NAME'])) {
 			$this->_enqueue_tinymce_resources();
+
+			M_Gallery_Display::enqueue_fontawesome();
+
 			wp_enqueue_style(
 				'ngg_attach_to_post_dialog',
 				$router->get_static_url('photocrati-attach_to_post#attach_to_post_dialog.css'),
 				FALSE,
 				NGG_SCRIPT_VERSION
 			);
+
+			wp_enqueue_script(
+				'ngg-igw',
+				$router->get_static_url('photocrati-attach_to_post#igw.js'),
+				array('jquery'),
+				NGG_PLUGIN_VERSION
+			);
+			wp_localize_script('ngg-igw', 'ngg_igw_i18n', array(
+				'nextgen_gallery'	=>	__('NextGEN Gallery', 'nggallery'),
+				'edit'				=>	__('Click to edit', 'nggallery'),
+				'remove'			=>	__('Click to remove', 'nggallery'),
+			));
 		}
 
 		elseif (isset($_REQUEST['attach_to_post']) OR
@@ -402,15 +435,8 @@ class M_Attach_To_Post extends C_Base_Module
 	{
         global $wp_version;
         $router = C_Router::get_instance();
-
 		wp_enqueue_script('photocrati_ajax');
-
-        if ($wp_version >= 3.9)
-            $file = $router->get_static_url('photocrati-attach_to_post#ngg_attach_to_post_tinymce_plugin.js');
-        else
-            $file = $router->get_static_url('photocrati-attach_to_post#ngg_attach_to_post_tinymce_plugin_wp38_compat.js');
-
-		$plugins[$this->attach_to_post_tinymce_plugin] = $file;
+		$plugins[$this->attach_to_post_tinymce_plugin] = $router->get_static_url('photocrati-attach_to_post#ngg_attach_to_post_tinymce_plugin.js');
 		return $plugins;
 	}
 

@@ -1,8 +1,13 @@
 <?php
+/**
+ * Class C_Widget
+ * @mixin Mixin_Widget
+ * @implements I_Widget
+ */
 class C_Widget extends C_MVC_Controller
 {
     public static $_instances = array();
-    public function define($context = FALSE)
+    function define($context = FALSE)
     {
         parent::define($context);
         $this->add_mixin('Mixin_Widget');
@@ -23,7 +28,7 @@ class Mixin_Widget extends Mixin
      *
      * @return echo the widget content
      */
-    public function echo_widget_random($number, $width = '75', $height = '50', $exclude = 'all', $list = '', $show = 'thumbnail')
+    function echo_widget_random($number, $width = '75', $height = '50', $exclude = 'all', $list = '', $show = 'thumbnail')
     {
         $options = array('title' => FALSE, 'items' => $number, 'show' => $show, 'type' => 'random', 'width' => $width, 'height' => $height, 'exclude' => $exclude, 'list' => $list, 'webslice' => FALSE);
         $widget = new C_Widget_Gallery();
@@ -34,7 +39,7 @@ class Mixin_Widget extends Mixin
      *
      * @return echo the widget content
      */
-    public function echo_widget_recent($number, $width = '75', $height = '50', $exclude = 'all', $list = '', $show = 'thumbnail')
+    function echo_widget_recent($number, $width = '75', $height = '50', $exclude = 'all', $list = '', $show = 'thumbnail')
     {
         $options = array('title' => FALSE, 'items' => $number, 'show' => $show, 'type' => 'recent', 'width' => $width, 'height' => $height, 'exclude' => $exclude, 'list' => $list, 'webslice' => FALSE);
         $widget = new C_Widget_Gallery();
@@ -48,7 +53,7 @@ class Mixin_Widget extends Mixin
      * @param string $height
      * @return echo the widget content
      */
-    public function echo_widget_slideshow($galleryID, $width = '', $height = '')
+    function echo_widget_slideshow($galleryID, $width = '', $height = '')
     {
         $widget = new C_Widget_Slideshow();
         $widget->render_slideshow($galleryID, $width, $height);
@@ -56,12 +61,12 @@ class Mixin_Widget extends Mixin
 }
 class C_Widget_Gallery extends WP_Widget
 {
-    public function __construct()
+    function __construct()
     {
         $widget_ops = array('classname' => 'ngg_images', 'description' => __('Add recent or random images from the galleries', 'nggallery'));
         parent::__construct('ngg-images', __('NextGEN Widget', 'nggallery'), $widget_ops);
     }
-    public function form($instance)
+    function form($instance)
     {
         // used for rendering utilities
         $parent = C_Widget::get_instance();
@@ -69,7 +74,7 @@ class C_Widget_Gallery extends WP_Widget
         $instance = wp_parse_args((array) $instance, array('exclude' => 'all', 'height' => '75', 'items' => '4', 'list' => '', 'show' => 'thumbnail', 'title' => 'Gallery', 'type' => 'recent', 'webslice' => TRUE, 'width' => '100'));
         $parent->render_partial('photocrati-widget#form_gallery', array('self' => $this, 'instance' => $instance, 'title' => esc_attr($instance['title']), 'items' => intval($instance['items']), 'height' => esc_attr($instance['height']), 'width' => esc_attr($instance['width'])));
     }
-    public function update($new_instance, $old_instance)
+    function update($new_instance, $old_instance)
     {
         $instance = $old_instance;
         // do not allow 0 or less
@@ -107,7 +112,7 @@ class C_Widget_Gallery extends WP_Widget
         $instance['webslice'] = (bool) $new_instance['webslice'];
         return $instance;
     }
-    public function widget($args, $instance)
+    function widget($args, $instance)
     {
         $router = C_Router::get_instance();
         wp_enqueue_style('nextgen_widgets_style', $router->get_static_url('photocrati-widget#widgets.css'), FALSE, NGG_SCRIPT_VERSION);
@@ -155,13 +160,13 @@ class C_Widget_Gallery extends WP_Widget
 }
 class C_Widget_MediaRSS extends WP_Widget
 {
-    public $options;
-    public function __construct()
+    var $options;
+    function __construct()
     {
         $widget_ops = array('classname' => 'ngg_mrssw', 'description' => __('Widget that displays Media RSS links for NextGEN Gallery.', 'nggallery'));
         parent::__construct('ngg-mrssw', __('NextGEN Media RSS', 'nggallery'), $widget_ops);
     }
-    public function form($instance)
+    function form($instance)
     {
         // used for rendering utilities
         $parent = C_Widget::get_instance();
@@ -169,7 +174,7 @@ class C_Widget_MediaRSS extends WP_Widget
         $instance = wp_parse_args((array) $instance, array('mrss_text' => __('Media RSS', 'nggallery'), 'mrss_title' => __('Link to the main image feed', 'nggallery'), 'show_global_mrss' => TRUE, 'show_icon' => TRUE, 'title' => 'Media RSS'));
         $parent->render_partial('photocrati-widget#form_mediarss', array('self' => $this, 'instance' => $instance, 'title' => esc_attr($instance['title']), 'mrss_text' => esc_attr($instance['mrss_text']), 'mrss_title' => esc_attr($instance['mrss_title'])));
     }
-    public function update($new_instance, $old_instance)
+    function update($new_instance, $old_instance)
     {
         $instance = $old_instance;
         $instance['title'] = strip_tags($new_instance['title']);
@@ -179,7 +184,7 @@ class C_Widget_MediaRSS extends WP_Widget
         $instance['mrss_title'] = $new_instance['mrss_title'];
         return $instance;
     }
-    public function widget($args, $instance)
+    function widget($args, $instance)
     {
         // these are handled by extract() but I want to silence my IDE warnings that these vars don't exist
         $before_widget = NULL;
@@ -193,31 +198,31 @@ class C_Widget_MediaRSS extends WP_Widget
         $title = apply_filters('widget_title', empty($instance['title']) ? '&nbsp;' : $instance['title'], $instance, $this->id_base);
         $parent->render_partial('photocrati-widget#display_mediarss', array('self' => $this, 'instance' => $instance, 'title' => $title, 'settings' => $settings, 'before_widget' => $before_widget, 'before_title' => $before_title, 'after_widget' => $after_widget, 'after_title' => $after_title, 'widget_id' => $widget_id));
     }
-    public function get_mrss_link($mrss_url, $show_icon = TRUE, $title, $text)
+    function get_mrss_link($mrss_url, $show_icon = TRUE, $title, $text)
     {
         $out = '';
         if ($show_icon) {
             $icon_url = NGGALLERY_URLPATH . 'images/mrss-icon.gif';
             $out .= "<a href='{$mrss_url}' title='{$title}' class='ngg-media-rss-link'>";
-            $out .= "<img src='{$icon_url}' alt='MediaRSS Icon' title='" . $title . '\' class=\'ngg-media-rss-icon\' />';
-            $out .= '</a> ';
+            $out .= "<img src='{$icon_url}' alt='MediaRSS Icon' title='" . $title . "' class='ngg-media-rss-icon' />";
+            $out .= "</a> ";
         }
         if ($text != '') {
             $out .= "<a href='{$mrss_url}' title='{$title}' class='ngg-media-rss-link'>";
             $out .= $text;
-            $out .= '</a>';
+            $out .= "</a>";
         }
         return $out;
     }
 }
 class C_Widget_Slideshow extends WP_Widget
 {
-    public function __construct()
+    function __construct()
     {
         $widget_ops = array('classname' => 'widget_slideshow', 'description' => __('Show a NextGEN Gallery Slideshow', 'nggallery'));
         parent::__construct('slideshow', __('NextGEN Slideshow', 'nggallery'), $widget_ops);
     }
-    public function form($instance)
+    function form($instance)
     {
         global $wpdb;
         // used for rendering utilities
@@ -226,7 +231,7 @@ class C_Widget_Slideshow extends WP_Widget
         $instance = wp_parse_args((array) $instance, array('galleryid' => '0', 'height' => '120', 'title' => 'Slideshow', 'width' => '160', 'limit' => '10'));
         $parent->render_partial('photocrati-widget#form_slideshow', array('self' => $this, 'instance' => $instance, 'title' => esc_attr($instance['title']), 'height' => esc_attr($instance['height']), 'width' => esc_attr($instance['width']), 'limit' => esc_attr($instance['limit']), 'tables' => $wpdb->get_results("SELECT * FROM {$wpdb->nggallery} ORDER BY 'name' ASC")));
     }
-    public function update($new_instance, $old_instance)
+    function update($new_instance, $old_instance)
     {
         $nh = $new_instance['height'];
         $nw = $new_instance['width'];
@@ -247,7 +252,7 @@ class C_Widget_Slideshow extends WP_Widget
         $instance['limit'] = (int) $new_instance['limit'];
         return $instance;
     }
-    public function widget($args, $instance)
+    function widget($args, $instance)
     {
         $router = C_Router::get_instance();
         wp_enqueue_style('nextgen_widgets_style', $router->get_static_url('photocrati-widget#widgets.css'), FALSE, NGG_SCRIPT_VERSION);
@@ -267,7 +272,7 @@ class C_Widget_Slideshow extends WP_Widget
         $out = $this->render_slideshow($instance['galleryid'], $instance['width'], $instance['height'], $instance['limit'], $args);
         $parent->render_partial('photocrati-widget#display_slideshow', array('self' => $this, 'instance' => $instance, 'title' => $title, 'out' => $out, 'before_widget' => $before_widget, 'before_title' => $before_title, 'after_widget' => $after_widget, 'after_title' => $after_title, 'widget_id' => $widget_id));
     }
-    public function render_slideshow($galleryID, $irWidth = '', $irHeight = '', $limit = 10, $args)
+    function render_slideshow($galleryID, $irWidth = '', $irHeight = '', $limit = 10, $args)
     {
         $registry = C_Component_Registry::get_instance();
         $renderer = C_Displayed_Gallery_Renderer::get_instance();

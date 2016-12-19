@@ -1,8 +1,13 @@
 <?php
+/**
+ * Class C_Fs
+ * @mixin Mixin_Fs_Instance_Methods
+ * @implements I_Fs
+ */
 class C_Fs extends C_Component
 {
     static $_instances = array();
-    public $_document_root;
+    var $_document_root;
     /**
      * Gets an instance of the FS utility
      * @param mixed $context
@@ -20,13 +25,13 @@ class C_Fs extends C_Component
      * Defines the instance of the FS utility
      * @param mixed $context	the context in this case is the product
      */
-    public function define($context = FALSE)
+    function define($context = FALSE)
     {
         parent::define($context);
         $this->add_mixin('Mixin_Fs_Instance_Methods');
         $this->implement('I_Fs');
     }
-    public function initialize()
+    function initialize()
     {
         parent::initialize();
         $this->_document_root = $this->set_document_root(ABSPATH);
@@ -34,9 +39,9 @@ class C_Fs extends C_Component
 }
 class Mixin_Fs_Instance_Methods extends Mixin
 {
-    public function add_trailing_slash($path)
+    function add_trailing_slash($path)
     {
-        return rtrim($path, '/\\') . DIRECTORY_SEPARATOR;
+        return rtrim($path, "/\\") . DIRECTORY_SEPARATOR;
     }
     /**
      * Returns a calculated path to a file
@@ -45,7 +50,7 @@ class Mixin_Fs_Instance_Methods extends Mixin
      * @param boolean $relpath
      * @returns string
      */
-    public function get_abspath($path, $module = FALSE, $relpath = FALSE)
+    function get_abspath($path, $module = FALSE, $relpath = FALSE)
     {
         // Wel'l assume that we're to calculate the path relative to
         // the site document root
@@ -74,7 +79,7 @@ class Mixin_Fs_Instance_Methods extends Mixin
      * @param string $module
      * @return string
      */
-    public function get_relpath($path, $module = FALSE)
+    function get_relpath($path, $module = FALSE)
     {
         return $this->object->get_abspath($path, $module, TRUE);
     }
@@ -84,9 +89,9 @@ class Mixin_Fs_Instance_Methods extends Mixin
      * @param string $segment
      * @return string
      */
-    public function remove_path_segment($path, $segment)
+    function remove_path_segment($path, $segment)
     {
-        $parts = explode($segment, rtrim($path, '/\\'));
+        $parts = explode($segment, rtrim($path, "/\\"));
         return $this->join_paths($parts);
     }
     /**
@@ -97,7 +102,7 @@ class Mixin_Fs_Instance_Methods extends Mixin
      * @param string $module
      * @returns string|NULL
      */
-    public function find_abspath($path, $module = FALSE, $relpath = FALSE, $search_paths = array())
+    function find_abspath($path, $module = FALSE, $relpath = FALSE, $search_paths = array())
     {
         $retval = NULL;
         // Ensure that we weren't passed a module id in the path
@@ -139,7 +144,7 @@ class Mixin_Fs_Instance_Methods extends Mixin
      * @param string $module
      * @return array
      */
-    public function get_search_paths($path, $module = FALSE)
+    function get_search_paths($path, $module = FALSE)
     {
         $append_module = FALSE;
         // Ensure that we weren't passed a module id in the path
@@ -177,7 +182,7 @@ class Mixin_Fs_Instance_Methods extends Mixin
      * @param string $file
      * @return string
      */
-    public function _rglob($base_path, $file)
+    function _rglob($base_path, $file)
     {
         $retval = NULL;
         $results = @file_exists($this->join_paths($base_path, $file));
@@ -209,11 +214,11 @@ class Mixin_Fs_Instance_Methods extends Mixin
      * @param type $module
      * @returns string|NULL
      */
-    public function find_relpath($path, $module = FALSE)
+    function find_relpath($path, $module = FALSE)
     {
         return $this->object->find_abspath($path, $module, TRUE);
     }
-    public function delete($abspath)
+    function delete($abspath)
     {
         $retval = FALSE;
         if (file_exists($abspath)) {
@@ -237,7 +242,7 @@ class Mixin_Fs_Instance_Methods extends Mixin
      * Joins multiple path segments together
      * @return string
      */
-    public function join_paths()
+    function join_paths()
     {
         $segments = array();
         $retval = array();
@@ -245,7 +250,7 @@ class Mixin_Fs_Instance_Methods extends Mixin
         $params = func_get_args();
         $this->_flatten_array($params, $segments);
         foreach ($segments as $segment) {
-            $segment = trim($segment, '/\\');
+            $segment = trim($segment, "/\\");
             $pieces = array_values(preg_split('#[/\\\\]#', $segment));
             // determine if each piece should be appended to $retval
             foreach ($pieces as $ndx => $val) {
@@ -272,7 +277,7 @@ class Mixin_Fs_Instance_Methods extends Mixin
         // Join the paths together
         $retval = implode(DIRECTORY_SEPARATOR, $retval);
         if (strpos($retval, $this->get_document_root()) !== 0 && strtoupper(substr(PHP_OS, 0, 3)) != 'WIN') {
-            $retval = DIRECTORY_SEPARATOR . trim($retval, '/\\');
+            $retval = DIRECTORY_SEPARATOR . trim($retval, "/\\");
         }
         // Check for and adjust Windows UNC paths (\\server\share\) for network mounted sites
         if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN' && substr($this->get_document_root(), 0, 2) === '\\\\') {
@@ -280,7 +285,7 @@ class Mixin_Fs_Instance_Methods extends Mixin
         }
         return $retval;
     }
-    public function _flatten_array($obj, &$arr)
+    function _flatten_array($obj, &$arr)
     {
         if (is_array($obj)) {
             foreach ($obj as $inner_obj) {
@@ -294,7 +299,7 @@ class Mixin_Fs_Instance_Methods extends Mixin
      * Parses the path for a module and filename
      * @param string $str
      */
-    public function parse_formatted_path($str)
+    function parse_formatted_path($str)
     {
         $module = FALSE;
         $path = $str;
@@ -309,7 +314,7 @@ class Mixin_Fs_Instance_Methods extends Mixin
      * Gets the document root for this application
      * @return string
      */
-    public function get_document_root($type = 'root')
+    function get_document_root($type = 'root')
     {
         $retval = NULL;
         switch ($type) {
@@ -358,14 +363,14 @@ class Mixin_Fs_Instance_Methods extends Mixin
      * @param type $value
      * @return type
      */
-    public function set_document_root($value)
+    function set_document_root($value)
     {
         // some web servers like home.pl and PhpStorm put the document root in "/" or (even weirder) "//"
         if ($value == DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR) {
             $value = DIRECTORY_SEPARATOR;
         }
         if ($value !== DIRECTORY_SEPARATOR) {
-            $value = rtrim($value, '/\\');
+            $value = rtrim($value, "/\\");
         }
         return $this->_document_root = $value;
     }

@@ -1,11 +1,5 @@
 <?php
 
-/***
-{
-	Module:	photocrati-nextgen_settings
-}
-***/
-
 class M_NextGen_Settings extends C_Base_Module
 {
 	/**
@@ -17,7 +11,7 @@ class M_NextGen_Settings extends C_Base_Module
 			'photocrati-nextgen_settings',
 			'NextGEN Gallery Settings',
 			'Provides central management for NextGEN Gallery settings',
-			'0.9',
+			'0.15',
 			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
 			'Photocrati Media',
 			'https://www.imagely.com'

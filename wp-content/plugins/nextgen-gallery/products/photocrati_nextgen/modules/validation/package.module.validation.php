@@ -1,12 +1,12 @@
 <?php
 class Mixin_Validation extends Mixin
 {
-    public $_default_msgs = array('validates_presence_of' => '%s should be present', 'validates_presence_with' => '%s should be present with %s', 'validates_uniqueness_of' => '%s should be unique', 'validates_confirmation_of' => '%s should match confirmation', 'validates_exclusion_of' => '%s is reserved', 'validates_format_of' => '%s is invalid', 'validates_inclusion_of' => '%s is not included in the list', 'validates_numericality_of' => '%s is not numeric', 'validates_less_than' => '%s is too small', 'validates_greater_than' => '%s is too large', 'validates_equals' => '%s is invalid');
-    public $_default_patterns = array('email_address' => '//');
+    var $_default_msgs = array("validates_presence_of" => "%s should be present", "validates_presence_with" => "%s should be present with %s", "validates_uniqueness_of" => "%s should be unique", "validates_confirmation_of" => "%s should match confirmation", "validates_exclusion_of" => "%s is reserved", "validates_format_of" => "%s is invalid", "validates_inclusion_of" => "%s is not included in the list", "validates_numericality_of" => "%s is not numeric", "validates_less_than" => "%s is too small", "validates_greater_than" => "%s is too large", "validates_equals" => "%s is invalid");
+    var $_default_patterns = array('email_address' => "//");
     /**
      * Clears all errors for the object
      */
-    public function clear_errors()
+    function clear_errors()
     {
         $this->object->_errors = array();
     }
@@ -15,7 +15,7 @@ class Mixin_Validation extends Mixin
      * @param string $property
      * @return array|null
      */
-    public function errors_for($property)
+    function errors_for($property)
     {
         $errors = $this->object->_errors;
         if (isset($errors[$property])) {
@@ -29,7 +29,7 @@ class Mixin_Validation extends Mixin
      * @param string $property
      * @param string $msg
      */
-    public function add_error($msg, $property = '*')
+    function add_error($msg, $property = '*')
     {
         if (!isset($this->object->_errors)) {
             $this->object->_errors = array();
@@ -46,7 +46,7 @@ class Mixin_Validation extends Mixin
      * @param string $validator
      * @return string
      */
-    public function _get_default_error_message_for($validator)
+    function _get_default_error_message_for($validator)
     {
         $retval = FALSE;
         // The $validator variable is often set to __METHOD__, and many
@@ -68,7 +68,7 @@ class Mixin_Validation extends Mixin
      * @param string $formatter
      * @return string
      */
-    public function get_default_pattern_for($formatter)
+    function get_default_pattern_for($formatter)
     {
         $retval = FALSE;
         if (isset($this->_default_patterns[$formatter])) {
@@ -80,10 +80,10 @@ class Mixin_Validation extends Mixin
      * Gets all of the errors for the object
      * @return type
      */
-    public function get_errors($property = FALSE)
+    function get_errors($property = FALSE)
     {
         $retval = $property ? $this->object->errors_for($property) : $this->object->_errors;
-        if (!$retval) {
+        if (!$retval || is_array($retval)) {
             $retval = array();
         }
         return $retval;
@@ -94,7 +94,7 @@ class Mixin_Validation extends Mixin
      * @param string $property
      * @return boolean
      */
-    public function is_valid($property = FALSE)
+    function is_valid($property = FALSE)
     {
         $valid = TRUE;
         $errors = $this->object->get_errors();
@@ -112,14 +112,14 @@ class Mixin_Validation extends Mixin
      * @param type $property
      * @return type
      */
-    public function is_invalid($property = FALSE)
+    function is_invalid($property = FALSE)
     {
         return !$this->object->is_valid($property);
     }
     /**
      * Calls the validation method for a record, clearing the previous errors
      */
-    public function validate()
+    function validate()
     {
         $this->clear_errors();
         if ($this->object->has_method('validation')) {
@@ -133,7 +133,7 @@ class Mixin_Validation extends Mixin
      * @param string $str
      * @return string
      */
-    public function humanize_string($str)
+    function humanize_string($str)
     {
         $retval = array();
         if (is_array($str)) {
@@ -151,7 +151,7 @@ class Mixin_Validation extends Mixin
      * @param type $length
      * @param type $msg
      */
-    public function validates_length_of($property, $length, $comparison_operator = '=', $msg = FALSE)
+    function validates_length_of($property, $length, $comparison_operator = '=', $msg = FALSE)
     {
         $valid = TRUE;
         $value = $this->object->{$property};
@@ -205,7 +205,7 @@ class Mixin_Validation extends Mixin
      * @param string $comparison_operator
      * @param type $msg
      */
-    public function validates_numericality_of($property, $comparison = FALSE, $comparison_operator = FALSE, $int_only = FALSE, $msg = FALSE)
+    function validates_numericality_of($property, $comparison = FALSE, $comparison_operator = FALSE, $int_only = FALSE, $msg = FALSE)
     {
         $properties = is_array($property) ? $property : array($property);
         foreach ($properties as $property) {
@@ -268,7 +268,7 @@ class Mixin_Validation extends Mixin
      * @param array $values
      * @param string $msg
      */
-    public function validates_inclusion_of($property, $values = array(), $msg = FALSE)
+    function validates_inclusion_of($property, $values = array(), $msg = FALSE)
     {
         if (!is_array($values)) {
             $values = array($values);
@@ -287,7 +287,7 @@ class Mixin_Validation extends Mixin
      * @param string $pattern
      * @param string $msg
      */
-    public function validates_format_of($property, $pattern, $msg = FALSE)
+    function validates_format_of($property, $pattern, $msg = FALSE)
     {
         if (!is_array($property)) {
             $property = array($property);
@@ -319,7 +319,7 @@ class Mixin_Validation extends Mixin
      * @param array $exclusions
      * @param string $msg
      */
-    public function validates_exclusion_of($property, $exclusions = array(), $msg = FALSE)
+    function validates_exclusion_of($property, $exclusions = array(), $msg = FALSE)
     {
         $invalid = FALSE;
         if (!is_array($exclusions)) {
@@ -345,7 +345,7 @@ class Mixin_Validation extends Mixin
      * @param string $confirmation
      * @param string $msg
      */
-    public function validates_confirmation_of($property, $confirmation, $msg = FALSE)
+    function validates_confirmation_of($property, $confirmation, $msg = FALSE)
     {
         if ($this->object->{$property} != $this->object->{$confirmation}) {
             if (!$msg) {
@@ -361,7 +361,7 @@ class Mixin_Validation extends Mixin
      * @param array $scope
      * @param string $msg
      */
-    public function validates_uniqueness_of($property, $scope = array(), $msg = FALSE)
+    function validates_uniqueness_of($property, $scope = array(), $msg = FALSE)
     {
         // Get any entities that have the same property
         $mapper = $this->object->get_mapper();
@@ -392,7 +392,7 @@ class Mixin_Validation extends Mixin
      * @param string $property
      * @param string $msg
      */
-    public function validates_presence_of($properties, $with = array(), $msg = FALSE)
+    function validates_presence_of($properties, $with = array(), $msg = FALSE)
     {
         $missing = array();
         if (!is_array($properties)) {

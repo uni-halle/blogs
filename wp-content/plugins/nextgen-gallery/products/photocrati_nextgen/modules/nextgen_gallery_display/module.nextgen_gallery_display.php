@@ -1,11 +1,5 @@
 <?php
 
-/***
-	{
-		Module: photocrati-nextgen_gallery_display
-	}
-***/
-
 define('NGG_DISPLAY_SETTINGS_SLUG', 'ngg_display_settings');
 define('NGG_DISPLAY_PRIORITY_BASE', 10000);
 define('NGG_DISPLAY_PRIORITY_STEP', 2000);
@@ -22,7 +16,7 @@ class M_Gallery_Display extends C_Base_Module
 			'photocrati-nextgen_gallery_display',
 			'Gallery Display',
 			'Provides the ability to display gallery of images',
-			'0.14',
+			'0.16',
 			'https://www.imagely.com',
 			'Photocrati Media',
 			'https://www.imagely.com'
@@ -226,25 +220,50 @@ class M_Gallery_Display extends C_Base_Module
         }
     }
 
+	/**
+	 * Enqueues fontawesome. First checks to see if fontawesome is provided by another plugin or already enqueued,
+	 * and if not, enqueues a version of fontawesome that will work with or without IIS
+	 */
     static function enqueue_fontawesome()
     {
         if (!wp_style_is('fontawesome', 'registered'))
         {
-            if (strpos(strtolower($_SERVER['SERVER_SOFTWARE']), 'microsoft-iis') !== FALSE) {
-                wp_register_style('fontawesome', site_url('/?ngg_serve_fontawesome_css=1'), FALSE, NGG_SCRIPT_VERSION);
-            } else {
-                $router = C_Router::get_instance();
-                wp_register_style(
-	                'fontawesome',
-	                $router->get_static_url('photocrati-nextgen_gallery_display#fontawesome/font-awesome.css'),
-	                FALSE,
-	                NGG_SCRIPT_VERSION
-                );
-            }
+			wp_enqueue_style(
+				'fontawesome',
+				self::get_fontawesome_url(TRUE),
+				FALSE,
+				'4.6.1'
+			);
         }
 
         wp_enqueue_style('fontawesome');
     }
+
+	/**
+	 * Gets the src url for the registered fontawesome handler
+	 * @param bool $ngg_provided_only
+	 * @return null|string|void
+	 */
+	static function get_fontawesome_url($ngg_provided_only=FALSE)
+	{
+		$retval = NULL;
+
+		if (wp_style_is('fontawesome', 'registered') && !$ngg_provided_only) {
+			$style = wp_styles()->registered['fontawesome'];
+			$retval = $style->src;
+		}
+		else {
+			if (strpos(strtolower($_SERVER['SERVER_SOFTWARE']), 'microsoft-iis') !== FALSE) {
+				$retval = site_url('/?ngg_serve_fontawesome_css=1');
+			}
+			else {
+				$router = C_Router::get_instance();
+				$retval = $router->get_static_url('photocrati-nextgen_gallery_display#fontawesome/font-awesome.css');
+			}
+		}
+
+		return $retval;
+	}
 
 	function no_resources_mode($valid_request=TRUE)
 	{

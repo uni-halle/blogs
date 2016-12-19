@@ -163,7 +163,7 @@ jQuery(function (){
       jQuery('#spinner').fadeIn();
       jQuery('#spinner').position({ my: "center", at: "center", of: container });
 
-      var dialog = jQuery('<div class="ngg-overlay-dialog" style="display:hidden"></div>').appendTo('body');
+      var dialog = jQuery('<div class="ngg-overlay-dialog"></div>').appendTo('body');
       // load the remote content
       dialog.load(
           this.href,

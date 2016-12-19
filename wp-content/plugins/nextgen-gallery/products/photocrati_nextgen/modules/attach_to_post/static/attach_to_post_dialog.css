@@ -61,8 +61,3 @@
     background: rgba(255, 255, 255, 0.6);
     border-top: none;
 }
-
-/** "Add Gallery" button */
-#ngg-media-button {
-	display: none;
-}

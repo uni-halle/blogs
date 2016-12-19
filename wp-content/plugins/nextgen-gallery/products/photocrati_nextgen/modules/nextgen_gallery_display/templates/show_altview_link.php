@@ -13,7 +13,7 @@
 			name='<?php echo esc_attr($display_type_name); ?>[show_alternative_view_link]'
 			class='show_altview_link'
 			value='1'
-			<?php echo checked(1, intval($show_alternative_view_link)); ?>'>
+			<?php echo checked(1, intval($show_alternative_view_link)); ?>>
 		<label for='<?php echo esc_attr($display_type_name); ?>_show_altview_link'>Yes</label>
 		&nbsp;
 		<input type="radio"

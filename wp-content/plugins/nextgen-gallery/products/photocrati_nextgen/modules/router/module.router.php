@@ -1,10 +1,5 @@
 <?php
-/*
-{
-	Module: photocrati-router,
-	Depends: { photocrati-fs }
-}
- */
+
 class M_Router extends C_Base_Module
 {
 	function define()
@@ -13,7 +8,7 @@ class M_Router extends C_Base_Module
 			'photocrati-router',
 			'Router for Pope',
 			'Provides routing capabilities for Pope modules',
-			'0.7',
+			'0.9',
 			'https://www.imagely.com',
 			'Photocrati Media',
 			'https://www.imagely.com'

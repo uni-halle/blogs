@@ -1,10 +1,5 @@
 <?php
 
-/***
-{
-Module: photocrati-wpcli
-}
- ***/
 class M_WPCLI extends C_Base_Module
 {
     function define()
@@ -13,7 +8,7 @@ class M_WPCLI extends C_Base_Module
             'photocrati-wpcli',
             'WP-CLI Integration',
             "Provides additional commands for WP-CLI (https://github.com/wp-cli/wp-cli",
-            '0.1',
+            '0.2',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
             'Photocrati Media',
             'https://www.imagely.com'

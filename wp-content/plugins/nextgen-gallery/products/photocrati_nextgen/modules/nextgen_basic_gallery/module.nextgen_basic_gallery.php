@@ -25,7 +25,7 @@ class M_NextGen_Basic_Gallery extends C_Base_Module
             'photocrati-nextgen_basic_gallery',
             'NextGEN Basic Gallery',
             "Provides NextGEN Gallery's basic thumbnail/slideshow integrated gallery",
-            '0.15',
+            '0.16',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
             'Photocrati Media',
             'https://www.imagely.com'
@@ -342,7 +342,12 @@ class C_NextGen_Basic_Gallery_Installer extends C_Gallery_Display_Installer
 				'entity_types'			=>	array('image'),
 				'preview_image_relpath'	=>	'photocrati-nextgen_basic_gallery#thumb_preview.jpg',
 				'default_source'		=>	'galleries',
-				'view_order' => NGG_DISPLAY_PRIORITY_BASE
+				'view_order'            =>  NGG_DISPLAY_PRIORITY_BASE,
+                'aliases'               =>  array(
+                    'basic_thumbnail',
+                    'basic_thumbnails',
+                    'nextgen_basic_thumbnails',
+                )
 			)
 		);
 
@@ -352,7 +357,11 @@ class C_NextGen_Basic_Gallery_Installer extends C_Gallery_Display_Installer
 				'entity_types'			=>	array('image'),
 				'preview_image_relpath'	=>	'photocrati-nextgen_basic_gallery#slideshow_preview.jpg',
 				'default_source'		=>	'galleries',
-				'view_order' => NGG_DISPLAY_PRIORITY_BASE + 10
+				'view_order'            => NGG_DISPLAY_PRIORITY_BASE + 10,
+                'aliases'               =>  array(
+                    'basic_slideshow',
+                    'nextgen_basic_slideshow'
+                )
 			)
 		);
 	}

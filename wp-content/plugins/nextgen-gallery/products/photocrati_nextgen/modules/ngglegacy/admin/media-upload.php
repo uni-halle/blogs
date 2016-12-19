@@ -190,7 +190,7 @@ if ($chromeless)
 	?>
 	
 	<div class="alignleft actions">
-		<select id="select_gal" name="select_gal" style="width:120px;">;
+		<select id="select_gal" name="select_gal" style="width:120px;">
 			<option value="0" <?php selected('0', $galleryID); ?> ><?php esc_attr( _e('No gallery',"nggallery") ); ?></option>
 			<?php
 			// Show gallery selection

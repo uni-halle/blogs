@@ -1,7 +1,13 @@
 <?php
+/**
+ * Class A_NextGen_Pro_Plus_Upgrade_Page
+ * @mixin C_Page_Manager
+ * @adapts I_Page_Manager
+ * @todo merge with A_NextGen_Pro_Upgrade_Page class
+ */
 class A_NextGen_Pro_Plus_Upgrade_Page extends Mixin
 {
-    public function setup()
+    function setup()
     {
         // Using include() to retrieve the is_plugin_active() is apparently The WordPress Way(tm)..
         include_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -19,22 +25,27 @@ class A_NextGen_Pro_Plus_Upgrade_Page extends Mixin
         return $this->call_parent('setup');
     }
 }
+/**
+ * Class A_NextGen_Pro_Upgrade_Controller
+ * @mixin C_NextGen_Admin_Page_Controller
+ * @adapts I_NextGen_Admin_Page_Controller using "ngg_pro_upgrade" context
+ */
 class A_NextGen_Pro_Upgrade_Controller extends Mixin
 {
-    public function enqueue_backend_resources()
+    function enqueue_backend_resources()
     {
         $this->call_parent('enqueue_backend_resources');
         wp_enqueue_style('nextgen_pro_upgrade_page', $this->get_static_url('photocrati-nextgen_pro_upgrade#style.css'), FALSE, NGG_SCRIPT_VERSION);
     }
-    public function get_page_title()
+    function get_page_title()
     {
         return __('Upgrade to Pro', 'nggallery');
     }
-    public function get_required_permission()
+    function get_required_permission()
     {
         return 'NextGEN Change options';
     }
-    public function get_i18n_strings()
+    function get_i18n_strings()
     {
         $i18n = new stdClass();
         $i18n->plus_title = __('Upgrade to NextGEN Plus or Pro!', 'nggallery');
@@ -47,7 +58,7 @@ class A_NextGen_Pro_Upgrade_Controller extends Mixin
         $i18n->click = __('CLICK TO LEARN MORE:', 'nggallery');
         return $i18n;
     }
-    public function index_action()
+    function index_action()
     {
         $this->object->enqueue_backend_resources();
         $key = C_Photocrati_Transient_Manager::create_key('nextgen_pro_upgrade_page', 'html');
@@ -67,9 +78,15 @@ class A_NextGen_Pro_Upgrade_Controller extends Mixin
         }
     }
 }
+/**
+ * Class A_NextGen_Pro_Upgrade_Page
+ * @mixin C_NextGen_Admin_Page_Controller
+ * @adapts I_NextGen_Admin_Page_Controller
+ * @todo merge with A_NextGen_Pro_Plus_Upgrade_Page class
+ */
 class A_NextGen_Pro_Upgrade_Page extends Mixin
 {
-    public function setup()
+    function setup()
     {
         // Using include() to retrieve the is_plugin_active() is apparently The WordPress Way(tm)..
         include_once ABSPATH . 'wp-admin/includes/plugin.php';

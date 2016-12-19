@@ -1,7 +1,12 @@
 <?php
+/**
+ * Class A_Dynamic_Thumbnails_Storage_Driver
+ * @mixin C_GalleryStorage_Driver_Base
+ * @adapts I_GalleryStorage_Driver
+ */
 class A_Dynamic_Thumbnails_Storage_Driver extends Mixin
 {
-    public function get_image_abspath($image, $size = FALSE, $check_existance = FALSE)
+    function get_image_abspath($image, $size = FALSE, $check_existance = FALSE)
     {
         $retval = NULL;
         $dynthumbs = C_Dynamic_Thumbnails_Manager::get_instance();
@@ -16,7 +21,7 @@ class A_Dynamic_Thumbnails_Storage_Driver extends Mixin
                 if ($folder_path = $this->object->get_cache_abspath($image->galleryid)) {
                     $params = $dynthumbs->get_params_from_name($size, true);
                     $image_filename = $dynthumbs->get_image_name($image, $params);
-                    $image_path = implode(DIRECTORY_SEPARATOR, array(rtrim($folder_path, '\\/'), $image_filename));
+                    $image_path = implode(DIRECTORY_SEPARATOR, array(rtrim($folder_path, "\\/"), $image_filename));
                     if ($check_existance) {
                         if (@file_exists($image_path)) {
                             $retval = $image_path;
@@ -31,7 +36,7 @@ class A_Dynamic_Thumbnails_Storage_Driver extends Mixin
         }
         return $retval;
     }
-    public function get_image_url($image, $size = 'full', $check_existance = FALSE)
+    function get_image_url($image, $size = 'full', $check_existance = FALSE)
     {
         $retval = NULL;
         $abspath = FALSE;
@@ -59,7 +64,7 @@ class A_Dynamic_Thumbnails_Storage_Driver extends Mixin
         }
         return $retval;
     }
-    public function get_image_dimensions($image, $size = 'full')
+    function get_image_dimensions($image, $size = 'full')
     {
         $retval = $this->call_parent('get_image_dimensions', $image, $size);
         if ($retval == null) {
@@ -71,7 +76,7 @@ class A_Dynamic_Thumbnails_Storage_Driver extends Mixin
         }
         return $retval;
     }
-    public function get_image_size_params($image, $size, $params = null, $skip_defaults = false)
+    function get_image_size_params($image, $size, $params = null, $skip_defaults = false)
     {
         $dynthumbs = C_Dynamic_Thumbnails_Manager::get_instance();
         if ($dynthumbs && $dynthumbs->is_size_dynamic($size)) {
@@ -83,10 +88,14 @@ class A_Dynamic_Thumbnails_Storage_Driver extends Mixin
         return $this->call_parent('get_image_size_params', $image, $size, $params, $skip_defaults);
     }
 }
+/**
+ * Class C_Dynamic_Thumbnails_Controller
+ * @implements I_Dynamic_Thumbnails_Controller
+ */
 class C_Dynamic_Thumbnails_Controller extends C_MVC_Controller
 {
     static $_instances = array();
-    public function define($context = FALSE)
+    function define($context = FALSE)
     {
         parent::define($context);
         $this->implement('I_Dynamic_Thumbnails_Controller');
@@ -105,7 +114,7 @@ class C_Dynamic_Thumbnails_Controller extends C_MVC_Controller
         }
         return self::$_instances[$context];
     }
-    public function index_action()
+    function index_action()
     {
         $dynthumbs = C_Dynamic_Thumbnails_Manager::get_instance();
         $uri = $_SERVER['REQUEST_URI'];
@@ -116,6 +125,9 @@ class C_Dynamic_Thumbnails_Controller extends C_MVC_Controller
             // Note, URLs should always include quality setting when returned by Gallery Storage component
             // this sanity check is mostly for manually testing URLs
             if (!isset($params['quality'])) {
+                // Note: there's a problem when doing this as using the same set of parameters to *retrieve* the image path/URL will lead to a different filename than the one tha was used to *generate* it (which went through here)
+                // The statement above about URLs always containing quality setting is not true anymore, this is because we need to retrieve default quality from the imgQuality and thumbquality settings, depending on "full" or "thumbnail" request in the ngglegacy storage
+                //$params['quality'] = 100;
             }
             $image_id = $params['image'];
             $size = $dynthumbs->get_size_name($params);
@@ -141,11 +153,11 @@ class C_Dynamic_Thumbnails_Controller extends C_MVC_Controller
 }
 class Mixin_Dynamic_Thumbnails_Manager extends Mixin
 {
-    public function get_route_name()
+    function get_route_name()
     {
         return C_NextGen_Settings::get_instance()->get('dynamic_thumbnail_slug');
     }
-    public function _get_params_sanitized($params)
+    function _get_params_sanitized($params)
     {
         if (isset($params['rotation'])) {
             $rotation = intval($params['rotation']);
@@ -169,7 +181,7 @@ class Mixin_Dynamic_Thumbnails_Manager extends Mixin
         }
         return $params;
     }
-    public function get_uri_from_params($params)
+    function get_uri_from_params($params)
     {
         $params = $this->object->_get_params_sanitized($params);
         $image = isset($params['image']) ? $params['image'] : null;
@@ -212,7 +224,7 @@ class Mixin_Dynamic_Thumbnails_Manager extends Mixin
         }
         return $uri;
     }
-    public function get_image_uri($image, $params)
+    function get_image_uri($image, $params)
     {
         $params['image'] = $image;
         $uri = $this->object->get_uri_from_params($params);
@@ -222,11 +234,11 @@ class Mixin_Dynamic_Thumbnails_Manager extends Mixin
         $uri .= wp_hash($uri) . '/';
         return $uri;
     }
-    public function get_image_url($image, $params)
+    function get_image_url($image, $params)
     {
         return C_Router::get_instance()->get_url($this->object->get_image_uri($image, $params), FALSE, 'root');
     }
-    public function get_params_from_uri($uri)
+    function get_params_from_uri($uri)
     {
         $regex = '/\\/?' . $this->object->get_route_name() . '\\/(\\d+)(?:\\/(.*))?/';
         $match = null;
@@ -278,11 +290,11 @@ class Mixin_Dynamic_Thumbnails_Manager extends Mixin
         }
         return null;
     }
-    public function _get_name_prefix_list()
+    function _get_name_prefix_list()
     {
         return array('id' => 'nggid0', 'size' => 'ngg0dyn-', 'flags' => '00f0', 'flag' => array('w0' => 'watermark', 'c0' => 'crop', 'r1' => 'rotation', 'f1' => 'flip', 'r0' => 'reflection', 't0' => 'type'), 'flag_len' => 2, 'max_value_length' => 15);
     }
-    public function get_name_from_params($params, $only_size_name = false, $id_in_name = true)
+    function get_name_from_params($params, $only_size_name = false, $id_in_name = true)
     {
         $prefix_list = $this->object->_get_name_prefix_list();
         $id_prefix = $prefix_list['id'];
@@ -351,18 +363,18 @@ class Mixin_Dynamic_Thumbnails_Manager extends Mixin
         $name .= $extension;
         return $name;
     }
-    public function get_size_name($params)
+    function get_size_name($params)
     {
         $name = $this->object->get_name_from_params($params, true);
         return $name;
     }
-    public function get_image_name($image, $params)
+    function get_image_name($image, $params)
     {
         $params['image'] = $image;
         $name = $this->object->get_name_from_params($params);
         return $name;
     }
-    public function get_params_from_name($name, $is_only_size_name = false)
+    function get_params_from_name($name, $is_only_size_name = false)
     {
         $prefix_list = $this->object->_get_name_prefix_list();
         $id_prefix = $prefix_list['id'];
@@ -441,6 +453,7 @@ class Mixin_Dynamic_Thumbnails_Manager extends Mixin
                                 unset($flags_todo[$flag_prefix]);
                             }
                         } else {
+                            // XXX unknown flag?
                         }
                     }
                 } else {
@@ -469,7 +482,7 @@ class Mixin_Dynamic_Thumbnails_Manager extends Mixin
         }
         return $this->object->_get_params_sanitized($params);
     }
-    public function is_size_dynamic($name, $is_only_size_name = false)
+    function is_size_dynamic($name, $is_only_size_name = false)
     {
         $params = $this->object->get_params_from_name($name, $is_only_size_name);
         if (isset($params['width']) && isset($params['height'])) {
@@ -478,10 +491,14 @@ class Mixin_Dynamic_Thumbnails_Manager extends Mixin
         return false;
     }
 }
+/**
+ * Class C_Dynamic_Thumbnails_Manager
+ * @mixin Mixin_Dynamic_Thumbnails_Manager
+ */
 class C_Dynamic_Thumbnails_Manager extends C_Component
 {
     static $_instances = array();
-    public function define($context = FALSE)
+    function define($context = FALSE)
     {
         parent::define($context);
         $this->implement('I_Dynamic_Thumbnails_Manager');

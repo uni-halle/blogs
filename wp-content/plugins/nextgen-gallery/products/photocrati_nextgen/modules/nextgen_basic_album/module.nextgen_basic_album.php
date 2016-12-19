@@ -18,7 +18,7 @@ class M_NextGen_Basic_Album extends C_Base_Module
             'photocrati-nextgen_basic_album',
             'NextGEN Basic Album',
             "Provides support for NextGEN's Basic Album",
-            '0.13',
+            '0.17',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
             'Photocrati Media',
             'https://www.imagely.com'
@@ -191,6 +191,12 @@ class C_NextGen_Basic_Album_Installer extends C_Gallery_Display_Installer
 				'preview_image_relpath'	=>	'photocrati-nextgen_basic_album#compact_preview.jpg',
 				'default_source'		=>	'albums',
 				'view_order'            => NGG_DISPLAY_PRIORITY_BASE + 200,
+                'aliases'               =>  array(
+                    'basic_compact_album',
+                    'nextgen_basic_album',
+                    'basic_album_compact',
+                    'compact_album'
+                )
 			));
 
 		$this->install_display_type(
@@ -199,7 +205,12 @@ class C_NextGen_Basic_Album_Installer extends C_Gallery_Display_Installer
 				'entity_types'			=>	array('album', 'gallery'),
 				'preview_image_relpath'	=>	'photocrati-nextgen_basic_album#extended_preview.jpg',
 				'default_source'		=>	'albums',
-				'view_order' => NGG_DISPLAY_PRIORITY_BASE + 210
+				'view_order'            => NGG_DISPLAY_PRIORITY_BASE + 210,
+                'aliases'               =>  array(
+                    'basic_extended_album',
+                    'nextgen_basic_extended_album',
+                    'extended_album'
+                )
 			));
 	}
 }

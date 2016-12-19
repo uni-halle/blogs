@@ -1,11 +1,21 @@
 <?php
+/**
+ * Class A_Routing_App_Factory
+ * @mixin C_Component_Factory
+ * @adapts I_Component_Factory
+ */
 class A_Routing_App_Factory extends Mixin
 {
-    public function routing_app($context = FALSE, $router = FALSE)
+    function routing_app($context = FALSE, $router = FALSE)
     {
         return new C_Routing_App($context, $router);
     }
 }
+/**
+ * Class C_Http_Response_Controller
+ * @mixin Mixin_Http_Response_Actions
+ * @implements I_Http_Response
+ */
 class C_Http_Response_Controller extends C_Component
 {
     static $_instance = NULL;
@@ -17,7 +27,7 @@ class C_Http_Response_Controller extends C_Component
         }
         return self::$_instance;
     }
-    public function define()
+    function define()
     {
         $this->add_mixin('Mixin_Http_Response_Actions');
         $this->implement('I_Http_Response');
@@ -25,41 +35,41 @@ class C_Http_Response_Controller extends C_Component
 }
 class Mixin_Http_Response_Actions extends Mixin
 {
-    public function http_301_action()
+    function http_301_action()
     {
         header('HTTP/1.1 301 Permanent Redirect');
         header("Location: {$this->object->get_routed_url()}");
     }
-    public function http_302_action()
+    function http_302_action()
     {
         header('HTTP/1.1 302 Temporary Redirect');
         header("Location: {$this->object->get_routed_url()}");
     }
-    public function http_501_action()
+    function http_501_action()
     {
         header('HTTP/1.1 501 Not Implemented');
     }
-    public function http_404_action()
+    function http_404_action()
     {
         header('HTTP/1.1 404 Not found');
     }
-    public function http_202_action()
+    function http_202_action()
     {
         header('HTTP/1.1 202 Accepted');
     }
 }
 class Mixin_Router extends Mixin
 {
-    public function set_routed_app($app)
+    function set_routed_app($app)
     {
         $this->object->_routed_app = $app;
     }
-    public function &get_routed_app()
+    function &get_routed_app()
     {
         $retval = $this->object->_routed_app ? $this->object->_routed_app : $this->object->get_default_app();
         return $retval;
     }
-    public function &get_default_app()
+    function &get_default_app()
     {
         if (is_null($this->object->_default_app)) {
             $this->object->_default_app = $this->object->create_app();
@@ -67,27 +77,27 @@ class Mixin_Router extends Mixin
         $retval = $this->object->_default_app;
         return $retval;
     }
-    public function route($patterns, $handler = FALSE)
+    function route($patterns, $handler = FALSE)
     {
         $this->object->get_default_app()->route($patterns, $handler);
     }
-    public function rewrite($src, $dst, $redirect = FALSE)
+    function rewrite($src, $dst, $redirect = FALSE)
     {
         $this->object->get_default_app()->rewrite($src, $dst, $redirect);
     }
-    public function get_parameter($key, $prefix = NULL, $default = NULL)
+    function get_parameter($key, $prefix = NULL, $default = NULL)
     {
         return $this->object->get_routed_app()->get_parameter($key, $prefix, $default);
     }
-    public function param($key, $prefix = NULL, $default = NULL)
+    function param($key, $prefix = NULL, $default = NULL)
     {
         return $this->object->get_parameter($key, $prefix, $default);
     }
-    public function has_parameter_segments()
+    function has_parameter_segments()
     {
         return $this->object->get_routed_app()->has_parameter_segments();
     }
-    public function passthru()
+    function passthru()
     {
         return $this->object->get_default_app()->passthru();
     }
@@ -96,7 +106,7 @@ class Mixin_Router extends Mixin
      * @param string $uri
      * @return string
      */
-    public function get_url($uri = '/', $with_qs = TRUE, $site_url = FALSE)
+    function get_url($uri = '/', $with_qs = TRUE, $site_url = FALSE)
     {
         $retval = $this->object->join_paths($this->object->get_base_url($site_url), $uri);
         if ($with_qs) {
@@ -108,7 +118,7 @@ class Mixin_Router extends Mixin
             }
             $retval = $this->object->construct_url_from_parts($parts);
         }
-        return str_replace('\\', '/', $retval);
+        return str_replace("\\", "/", $retval);
     }
     /**
      * Currents the relative url
@@ -116,7 +126,7 @@ class Mixin_Router extends Mixin
      * @param boolean $with_qs
      * @return string
      */
-    public function get_relative_url($uri = '/', $with_qs = TRUE)
+    function get_relative_url($uri = '/', $with_qs = TRUE)
     {
         $url = $this->object->get_url($uri, $with_qs = TRUE);
         if ($url !== '/') {
@@ -130,7 +140,7 @@ class Mixin_Router extends Mixin
      * @param string $module
      * @return string
      */
-    public function get_static_url($path, $module = FALSE)
+    function get_static_url($path, $module = FALSE)
     {
         $fs = C_Fs::get_instance();
         $path = $fs->find_abspath($path, $module);
@@ -138,13 +148,13 @@ class Mixin_Router extends Mixin
         $base_url = $this->object->remove_url_segment('/index.php', $base_url);
         $path = str_replace($fs->get_document_root('plugins'), $base_url, $path);
         // adjust for possible windows hosts
-        return str_replace('\\', '/', $path);
+        return str_replace("\\", '/', $path);
     }
     /**
      * Gets the routed url
      * @returns string
      */
-    public function get_routed_url()
+    function get_routed_url()
     {
         $retval = $this->object->get_url($this->object->get_request_uri());
         if ($app = $this->object->get_routed_app()) {
@@ -158,16 +168,16 @@ class Mixin_Router extends Mixin
      * @param bool $site_url Unused
      * @return string
      */
-    public function get_base_url($site_url = FALSE)
+    function get_base_url($site_url = FALSE)
     {
         $protocol = $this->object->is_https() ? 'https://' : 'http://';
         $retval = "{$protocol}{$_SERVER['SERVER_NAME']}{$this->object->context}";
-        return str_replace('\\', '/', rtrim($retval, '/\\'));
+        return str_replace("\\", "/", rtrim($retval, "/\\"));
     }
     /**
      * Determines if the current request is over HTTPs or not
      */
-    public function is_https()
+    function is_https()
     {
         return !empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off' || !empty($_SERVER['HTTP_USESSL']) && strtolower($_SERVER['HTTP_USESSL']) !== 'off' || !empty($_SERVER['REDIRECT_HTTPS']) && strtolower($_SERVER['REDIRECT_HTTPS']) !== 'off' || !empty($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443;
     }
@@ -176,7 +186,7 @@ class Mixin_Router extends Mixin
      *
      * @param string|FALSE $request_uri
      */
-    public function serve_request()
+    function serve_request()
     {
         $served = FALSE;
         // iterate over all apps, and serve the route
@@ -191,11 +201,11 @@ class Mixin_Router extends Mixin
      * Gets the querystring of the current request
      * @return string
      */
-    public function get_querystring()
+    function get_querystring()
     {
         return isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : null;
     }
-    public function set_querystring($value)
+    function set_querystring($value)
     {
         $_SERVER['QUERY_STRING'] = $value;
     }
@@ -203,7 +213,7 @@ class Mixin_Router extends Mixin
      * Gets the request for the router
      * @return string
      */
-    public function get_request_uri($with_params = TRUE)
+    function get_request_uri($with_params = TRUE)
     {
         if (!empty($_SERVER['ORIG_REQUEST_URI'])) {
             $retval = $_SERVER['ORIG_REQUEST_URI'];
@@ -232,11 +242,11 @@ class Mixin_Router extends Mixin
      * Gets the method of the HTTP request
      * @return string
      */
-    public function get_request_method()
+    function get_request_method()
     {
         return $this->object->_request_method;
     }
-    public function &create_app($name = '/')
+    function &create_app($name = '/')
     {
         $factory = C_Component_Factory::get_instance();
         $app = $factory->create('routing_app', $name);
@@ -248,7 +258,7 @@ class Mixin_Router extends Mixin
      *
      * @return array
      */
-    public function get_apps()
+    function get_apps()
     {
         usort($this->object->_apps, array(&$this, '_sort_apps'));
         return array_reverse($this->object->_apps);
@@ -260,20 +270,23 @@ class Mixin_Router extends Mixin
      * @param C_Routed_App $b
      * @return int
      */
-    public function _sort_apps($a, $b)
+    function _sort_apps($a, $b)
     {
         return strnatcmp($a->context, $b->context);
     }
 }
 /**
  * A router is configured to match patterns against a url and route the request to a particular controller and action
+ * @mixin Mixin_Url_Manipulation
+ * @mixin Mixin_Router
+ * @implements I_Router
  */
 class C_Router extends C_Component
 {
     static $_instances = array();
-    public $_apps = array();
-    public $_default_app = NULL;
-    public function define($context = FALSE)
+    var $_apps = array();
+    var $_default_app = NULL;
+    function define($context = FALSE)
     {
         if (!$context or $context == 'all') {
             $context = '/';
@@ -283,7 +296,7 @@ class C_Router extends C_Component
         $this->add_mixin('Mixin_Router');
         $this->implement('I_Router');
     }
-    public function initialize()
+    function initialize()
     {
         parent::initialize();
         $this->_request_method = !empty($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : null;
@@ -305,7 +318,7 @@ class Mixin_Routing_App extends Mixin
      * @param array $routes URL to route, eg /page/{page}/
      * @param array $handler Formatted array
      */
-    public function route($routes, $handler)
+    function route($routes, $handler)
     {
         // ensure that the routing patterns array exists
         if (!is_array($this->object->_routing_patterns)) {
@@ -330,7 +343,7 @@ class Mixin_Routing_App extends Mixin
      * @param string $dst Destination URL
      * @param bool $redirect FALSE for internal handling, otherwise the HTTP code to send
      */
-    public function rewrite($src, $dst, $redirect = FALSE, $stop = FALSE)
+    function rewrite($src, $dst, $redirect = FALSE, $stop = FALSE)
     {
         // ensure that rewrite patterns array exists
         if (!is_array($this->object->_rewrite_patterns)) {
@@ -341,7 +354,7 @@ class Mixin_Routing_App extends Mixin
         // Assign rewrite definition
         $definition = array('dst' => $dst, 'redirect' => $redirect, 'stop' => $stop);
         // We treat wildcards much differently than normal rewrites
-        if (preg_match('/\\{[\\.\\\\*]/', $src)) {
+        if (preg_match("/\\{[\\.\\\\*]/", $src)) {
             $pattern = str_replace('{*}', '(.*?)', $src);
             $pattern = str_replace('{.*}', '(.*?)', $pattern);
             $pattern = str_replace('{\\w}', '([^/]*)', $pattern);
@@ -360,26 +373,26 @@ class Mixin_Routing_App extends Mixin
      * Gets an instance of the router
      * @return type
      */
-    public function get_router()
+    function get_router()
     {
         return C_Router::get_instance();
     }
-    public function get_app_url($request_uri = FALSE, $with_qs = FALSE)
+    function get_app_url($request_uri = FALSE, $with_qs = FALSE)
     {
         return $this->object->get_router()->get_url($this->object->get_app_uri($request_uri), $with_qs);
     }
-    public function get_routed_url($with_qs = TRUE)
+    function get_routed_url($with_qs = TRUE)
     {
         return $this->object->get_app_url(FALSE, $with_qs);
     }
-    public function get_app_uri($request_uri = FALSE)
+    function get_app_uri($request_uri = FALSE)
     {
         if (!$request_uri) {
             $request_uri = $this->object->get_app_request_uri();
         }
         return $this->object->join_paths($this->object->context, $request_uri);
     }
-    public function get_app_request_uri()
+    function get_app_request_uri()
     {
         $retval = FALSE;
         if ($this->object->_request_uri) {
@@ -398,7 +411,7 @@ class Mixin_Routing_App extends Mixin
      * Sets the application request uri
      * @param type $uri
      */
-    public function set_app_request_uri($uri)
+    function set_app_request_uri($uri)
     {
         $this->object->_request_uri = $uri;
     }
@@ -406,7 +419,7 @@ class Mixin_Routing_App extends Mixin
      * Gets the application's routing regex pattern
      * @return string
      */
-    public function get_app_routing_pattern()
+    function get_app_routing_pattern()
     {
         return $this->object->_route_to_regex($this->object->context);
     }
@@ -414,7 +427,7 @@ class Mixin_Routing_App extends Mixin
      * Determines whether this app serves the request
      * @return boolean|string
      */
-    public function does_app_serve_request()
+    function does_app_serve_request()
     {
         $retval = FALSE;
         $request_uri = $this->object->get_router()->get_request_uri(TRUE);
@@ -442,7 +455,7 @@ class Mixin_Routing_App extends Mixin
      * redirect, if we're to do so. Otherwise FALSE
      * @return int|bool
      */
-    public function do_rewrites($request_uri = FALSE)
+    function do_rewrites($request_uri = FALSE)
     {
         $redirect = FALSE;
         static $stop_processing = FALSE;
@@ -521,7 +534,7 @@ class Mixin_Routing_App extends Mixin
      *
      * @return bool
      */
-    public function serve_request()
+    function serve_request()
     {
         $served = FALSE;
         // ensure that the routing patterns array exists
@@ -583,7 +596,7 @@ class Mixin_Routing_App extends Mixin
      * Executes an action of a particular controller
      * @param array $handler
      */
-    public function execute_route_handler($handler)
+    function execute_route_handler($handler)
     {
         // Get action
         $action = $handler['action'];
@@ -599,7 +612,7 @@ class Mixin_Routing_App extends Mixin
      * @param mixed $handler
      * @return array
      */
-    public function parse_route_handler($handler)
+    function parse_route_handler($handler)
     {
         if (is_string($handler)) {
             $handler = array_combine(array('controller', 'action'), explode('#', $handler));
@@ -614,7 +627,7 @@ class Mixin_Routing_App extends Mixin
         }
         return $handler;
     }
-    public function add_placeholder_params_from_matches($matches)
+    function add_placeholder_params_from_matches($matches)
     {
         // Add the placeholder parameter values to the _params array
         foreach ($matches as $key => $value) {
@@ -627,7 +640,7 @@ class Mixin_Routing_App extends Mixin
     /**
      * Used to pass execution to PHP and perhaps an above framework
      */
-    public function passthru()
+    function passthru()
     {
     }
     /**
@@ -636,7 +649,7 @@ class Mixin_Routing_App extends Mixin
      * @param stirng $value
      * @param string $source
      */
-    public function add_placeholder_param($name, $value, $source = NULL)
+    function add_placeholder_param($name, $value, $source = NULL)
     {
         if (!is_array($this->object->_parameters)) {
             $this->object->_parameters = array('global');
@@ -652,7 +665,7 @@ class Mixin_Routing_App extends Mixin
      * @param string $route
      * @return string
      */
-    public function _route_to_regex($route)
+    function _route_to_regex($route)
     {
         // Get the settings manager
         $settings = $this->object->_settings;
@@ -673,10 +686,10 @@ class Mixin_Routing_App extends Mixin
         }
         // If parameters come after a slug, it might appear as well
         if ($param_slug) {
-            $route_regex .= '(' . preg_quote($param_slug, '#') . '/)?';
+            $route_regex .= "(" . preg_quote($param_slug, '#') . '/)?';
         }
         // Parameter might follow the request uri
-        $route_regex .= '(/?([^/]+\\-\\-)?[^/]+\\-\\-[^/]+/?){0,}';
+        $route_regex .= "(/?([^/]+\\-\\-)?[^/]+\\-\\-[^/]+/?){0,}";
         // Create the regex
         $route_regex = '#' . $route_regex . '/?$#i';
         // convert placeholders to regex as well
@@ -702,12 +715,12 @@ class Mixin_Routing_App extends Mixin
      * @param mixed $default
      * @return mixed
      */
-    public function get_parameter($key, $id = NULL, $default = NULL, $segment = FALSE, $url = FALSE)
+    function get_parameter($key, $id = NULL, $default = NULL, $segment = FALSE, $url = FALSE)
     {
         $retval = $default;
         $settings = $this->object->_settings;
         $quoted_key = preg_quote($key, '#');
-        $id = $id ? preg_quote($id, '#') : '[^/]+';
+        $id = $id ? preg_quote($id, '#') : "[^/]+";
         $param_prefix = preg_quote($settings->router_param_prefix, '#');
         $param_sep = preg_quote($settings->router_param_separator, '#');
         $param_regex = "#/((?P<id>{$id}){$param_sep})?({$param_prefix}[-_]?)?{$quoted_key}{$param_sep}(?P<value>[^/\\?]+)/?#i";
@@ -718,7 +731,7 @@ class Mixin_Routing_App extends Mixin
                 if ($segment) {
                     $retval = array('segment' => $matches[0], 'source' => $source_name);
                 } else {
-                    $retval = $matches['value'];
+                    $retval = $this->object->recursive_stripslashes($matches['value']);
                 }
                 $found = TRUE;
                 break;
@@ -756,7 +769,7 @@ class Mixin_Routing_App extends Mixin
      * @param string $_context Private. Use esc_url_raw() for database usage.
      * @return string The cleaned $url after the 'clean_url' filter is applied.
      */
-    public function esc_url($url, $protocols = null, $_context = 'display')
+    function esc_url($url, $protocols = null, $_context = 'display')
     {
         $original_url = $url;
         $url = preg_replace('|[^a-z0-9-~+_.?#=!&;,/:%@$\\|*\'()\\x80-\\xff]|i', '', $url);
@@ -767,7 +780,7 @@ class Mixin_Routing_App extends Mixin
         if ('display' == $_context) {
             $url = wp_kses_normalize_entities($url);
             $url = str_replace('&amp;', '&#038;', $url);
-            $url = str_replace('\'', '&#039;', $url);
+            $url = str_replace("'", '&#039;', $url);
         }
         if (!empty($url[0]) && '/' === $url[0]) {
             $good_protocol_url = $url;
@@ -797,7 +810,7 @@ class Mixin_Routing_App extends Mixin
      * @param mixed $value
      * @param mixed $id
      */
-    public function set_parameter_value($key, $value, $id = NULL, $use_prefix = FALSE, $url = FALSE)
+    function set_parameter_value($key, $value, $id = NULL, $use_prefix = FALSE, $url = FALSE)
     {
         // Remove the parameter from both the querystring and request uri
         $retval = $this->object->remove_parameter($key, $id, $url);
@@ -827,7 +840,7 @@ class Mixin_Routing_App extends Mixin
      * @param mixed $id
      * @return string
      */
-    public function remove_param($key, $id = NULL, $url = FALSE)
+    function remove_param($key, $id = NULL, $url = FALSE)
     {
         return $this->object->remove_parameter($key, $id, $url);
     }
@@ -838,7 +851,7 @@ class Mixin_Routing_App extends Mixin
      * @param mixed $id
      * @return string
      */
-    public function remove_parameter($key, $id = NULL, $url = FALSE)
+    function remove_parameter($key, $id = NULL, $url = FALSE)
     {
         $retval = $url;
         $settings = $this->object->_settings;
@@ -882,7 +895,7 @@ class Mixin_Routing_App extends Mixin
      * @param mixed $value
      * @param mixed $id
      */
-    public function add_parameter_to_app_request_uri($key, $value, $id = NULL, $use_prefix = FALSE)
+    function add_parameter_to_app_request_uri($key, $value, $id = NULL, $use_prefix = FALSE)
     {
         $settings = $this->object->_settings;
         $param_slug = $settings->router_param_slug;
@@ -902,7 +915,7 @@ class Mixin_Routing_App extends Mixin
      * @param mixed $id
      * @return string
      */
-    public function create_parameter_segment($key, $value, $id = NULL, $use_prefix = FALSE)
+    function create_parameter_segment($key, $value, $id = NULL, $use_prefix = FALSE)
     {
         $settings = $this->object->_settings;
         if ($use_prefix) {
@@ -926,7 +939,7 @@ class Mixin_Routing_App extends Mixin
      * @param mixed $value
      * @param mixed $id
      */
-    public function set_parameter($key, $value, $id = NULL, $use_prefix = FALSE, $url = FALSE)
+    function set_parameter($key, $value, $id = NULL, $use_prefix = FALSE, $url = FALSE)
     {
         return $this->object->set_parameter_value($key, $value, $id, $use_prefix, $url);
     }
@@ -936,7 +949,7 @@ class Mixin_Routing_App extends Mixin
      * @param mixed $value
      * @param mixed $id
      */
-    public function set_param($key, $value, $id = NULL, $use_prefix = FALSE, $url = FALSE)
+    function set_param($key, $value, $id = NULL, $use_prefix = FALSE, $url = FALSE)
     {
         return $this->object->set_parameter_value($key, $value, $id, $use_prefix = FALSE, $url);
     }
@@ -947,7 +960,7 @@ class Mixin_Routing_App extends Mixin
      * @param mixed $default
      * @return mixed
      */
-    public function get_parameter_value($key, $id = NULL, $default = NULL, $url = FALSE)
+    function get_parameter_value($key, $id = NULL, $default = NULL, $url = FALSE)
     {
         return $this->object->get_parameter($key, $id, $default, FALSE, $url);
     }
@@ -958,7 +971,7 @@ class Mixin_Routing_App extends Mixin
      * @param mixed $default
      * @return mixed
      */
-    public function get_parameter_segment($key, $id = NULL, $url = FALSE)
+    function get_parameter_segment($key, $id = NULL, $url = FALSE)
     {
         return $this->object->get_parameter($key, $id, NULL, TRUE, $url);
     }
@@ -966,25 +979,25 @@ class Mixin_Routing_App extends Mixin
      * Gets sources used for parsing and extracting parameters
      * @return array
      */
-    public function get_parameter_sources()
+    function get_parameter_sources()
     {
         return array('querystring' => $this->object->get_formatted_querystring(), 'request_uri' => $this->object->get_app_request_uri());
     }
-    public function get_postdata()
+    function get_postdata()
     {
-        $retval = '/' . urldecode(file_get_contents('php://input'));
+        $retval = '/' . urldecode(file_get_contents("php://input"));
         $settings = $this->object->_settings;
         $retval = str_replace(array('&', '='), array('/', $settings->router_param_separator), $retval);
         return $retval;
     }
-    public function get_formatted_querystring()
+    function get_formatted_querystring()
     {
         $retval = '/' . $this->object->get_router()->get_querystring();
         $settings = $this->object->_settings;
         $retval = str_replace(array('&', '='), array('/', $settings->router_param_separator), $retval);
         return $retval;
     }
-    public function has_parameter_segments()
+    function has_parameter_segments()
     {
         $retval = FALSE;
         $settings = $this->object->_settings;
@@ -1008,7 +1021,7 @@ class Mixin_Routing_App extends Mixin
      * @param mixed $value Value to be processed
      * @return mixed Resulting value
      */
-    public function recursive_stripslashes($value)
+    function recursive_stripslashes($value)
     {
         if (is_string($value)) {
             $value = stripslashes($value);
@@ -1024,24 +1037,30 @@ class Mixin_Routing_App extends Mixin
         return $value;
     }
 }
+/**
+ * Class C_Routing_App
+ * @mixin Mixin_Url_Manipulation
+ * @mixin Mixin_Routing_App
+ * @implements I_Routing_App
+ */
 class C_Routing_App extends C_Component
 {
     static $_instances = array();
-    public $_request_uri = FALSE;
-    public $_settings = null;
-    public function define($context = FALSE)
+    var $_request_uri = FALSE;
+    var $_settings = null;
+    function define($context = FALSE)
     {
         parent::define($context);
         $this->add_mixin('Mixin_Url_Manipulation');
         $this->add_mixin('Mixin_Routing_App');
         $this->implement('I_Routing_App');
     }
-    public function initialize()
+    function initialize()
     {
         parent::initialize();
         $this->_settings = $this->object->get_routing_settings();
     }
-    public function get_routing_settings()
+    function get_routing_settings()
     {
         $settings = C_NextGen_Settings::get_instance();
         $object = new stdClass();
@@ -1060,12 +1079,12 @@ class C_Routing_App extends C_Component
 }
 class Mixin_Url_Manipulation extends Mixin
 {
-    public function join_paths()
+    function join_paths()
     {
         $args = func_get_args();
         $parts = $this->_flatten_array($args);
         foreach ($parts as &$part) {
-            $part = trim(str_replace('\\', '/', $part), '/');
+            $part = trim(str_replace("\\", '/', $part), "/");
         }
         return implode('/', $parts);
     }
@@ -1075,7 +1094,7 @@ class Mixin_Url_Manipulation extends Mixin
      * @param string $url
      * @return string
      */
-    public function remove_url_segment($segment, $url)
+    function remove_url_segment($segment, $url)
     {
         $retval = $url;
         $parts = parse_url($url);
@@ -1099,7 +1118,7 @@ class Mixin_Url_Manipulation extends Mixin
      * @param bool $exclude_duplicates (optional - defaults to TRUE)
      * @return array
      */
-    public function _flatten_array($array, $parent = NULL, $exclude_duplicates = TRUE)
+    function _flatten_array($array, $parent = NULL, $exclude_duplicates = TRUE)
     {
         if (is_array($array)) {
             // We're to add each element to the parent array
@@ -1133,16 +1152,16 @@ class Mixin_Url_Manipulation extends Mixin
         }
         return $array;
     }
-    public function join_querystrings()
+    function join_querystrings()
     {
         $parts = array();
         $retval = array();
         $params = func_get_args();
         $parts = $this->_flatten_array($params);
         foreach ($parts as $part) {
-            $part = explode('&', $part);
+            $part = explode("&", $part);
             foreach ($part as $segment) {
-                $segment = explode('=', $segment);
+                $segment = explode("=", $segment);
                 $key = $segment[0];
                 $value = isset($segment[1]) ? $segment[1] : '';
                 $retval[$key] = $value;
@@ -1150,7 +1169,7 @@ class Mixin_Url_Manipulation extends Mixin
         }
         return $this->object->assoc_array_to_querystring($retval);
     }
-    public function assoc_array_to_querystring($arr)
+    function assoc_array_to_querystring($arr)
     {
         $retval = array();
         foreach ($arr as $key => $val) {
@@ -1158,14 +1177,14 @@ class Mixin_Url_Manipulation extends Mixin
                 $retval[] = strlen($val) ? "{$key}={$val}" : $key;
             }
         }
-        return implode('&', $retval);
+        return implode("&", $retval);
     }
     /**
      * Constructs a url from individual parts, created by parse_url
      * @param array $parts
      * @return string
      */
-    public function construct_url_from_parts($parts)
+    function construct_url_from_parts($parts)
     {
         // let relative paths be relative, and full paths full
         $prefix = '';
@@ -1181,7 +1200,7 @@ class Mixin_Url_Manipulation extends Mixin
         }
         return $retval;
     }
-    public function get_parameter_segments($request_uri)
+    function get_parameter_segments($request_uri)
     {
         return str_replace($this->strip_param_segments($request_uri), '', $request_uri);
     }
@@ -1190,7 +1209,7 @@ class Mixin_Url_Manipulation extends Mixin
      * @param string $request_uri
      * @return string
      */
-    public function strip_param_segments($request_uri, $remove_slug = TRUE)
+    function strip_param_segments($request_uri, $remove_slug = TRUE)
     {
         $retval = $request_uri ? $request_uri : '/';
         $settings = C_NextGen_Settings::get_instance();

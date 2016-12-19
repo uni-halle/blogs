@@ -4,7 +4,13 @@ this.id = 'ngg-attach_to_post';
 // Provides a function to close the TinyMCE popup window
 function close_attach_to_post_window()
 {
-	parent.tinyMCE.activeEditor.windowManager.close(window);
+	var src = jQuery(top.document).find("#TB_window iframe").attr('src');
+	if (src && src.match('attach_to_post')) {
+		top.tb_remove();
+	}
+	else {
+		top.tinyMCE.activeEditor.windowManager.close(window);
+	}
 }
 
 // Adjusts the height of a frame on the page, and then executes
@@ -123,3 +129,45 @@ jQuery(function($){
 		opacity: 1.0
 	});
 });
+
+function is_visual_editor()
+{
+	return jQuery(top.document).find('.html-active:visible').length == 0;
+}
+
+function insert_into_editor(snippet, ref_or_id)
+{
+	if (is_visual_editor()) {
+		var editor = top.tinyMCE.activeEditor;
+		if (editor.selection.getNode().outerHTML.indexOf(ref_or_id) >= 0) {
+			jQuery(editor.selection.getNode()).attr('data-shortcode', snippet.substring(1, snippet.length-1));
+		}
+		else {
+			editor.insertContent(snippet);
+		}
+		editor.selection.collapse(true);
+
+	}
+	else {
+		myField = top.document.getElementById('content');
+
+		myValue = snippet;
+
+		//IE support
+		if (document.selection) {
+			myField.focus();
+			sel = document.selection.createRange();
+			sel.text = myValue;
+		}
+		//MOZILLA and others
+		else if (myField.selectionStart || myField.selectionStart == '0') {
+			var startPos = myField.selectionStart;
+			var endPos = myField.selectionEnd;
+			myField.value = myField.value.substring(0, startPos)
+				+ myValue
+				+ myField.value.substring(endPos, myField.value.length);
+		} else {
+			myField.value += myValue;
+		}
+	}
+}

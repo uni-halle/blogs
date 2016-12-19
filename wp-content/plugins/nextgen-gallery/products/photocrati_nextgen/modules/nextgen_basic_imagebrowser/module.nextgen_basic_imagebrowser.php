@@ -19,7 +19,7 @@ class M_NextGen_Basic_ImageBrowser extends C_Base_Module
 			'photocrati-nextgen_basic_imagebrowser',
 			'NextGEN Basic ImageBrowser',
 			'Provides the NextGEN Basic ImageBrowser Display Type',
-            '0.11',
+            '0.13',
 			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
 			'Photocrati Media',
 			'https://www.imagely.com'
@@ -179,7 +179,12 @@ class C_NextGen_Basic_ImageBrowser_Installer extends C_Gallery_Display_Installer
 				'entity_types'			=>	array('image'),
 				'preview_image_relpath'	=>	'photocrati-nextgen_basic_imagebrowser#preview.jpg',
 				'default_source'		=>	'galleries',
-				'view_order' => NGG_DISPLAY_PRIORITY_BASE + 20
+				'view_order' 			=> NGG_DISPLAY_PRIORITY_BASE + 20,
+				'aliases'				=> array(
+					'basic_imagebrowser',
+					'imagebrowser',
+					'nextgen_basic_imagebrowser'
+				)
 			)
 		);
 	}

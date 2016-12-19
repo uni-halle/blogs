@@ -1,5 +1,5 @@
 // Self-executing function to create and register the TinyMCE plugin
-(function(siteurl) {
+(function(siteurl, $) {
     window.id = 'wordpress-post-page';
 
     tinyMCE.addI18n('en.ngg_attach_to_post', {
@@ -54,24 +54,123 @@
 				image:	plugin_url+'/atp_button.png'
 			});
 
-			// When the shortcode is clicked, open the attach to post interface
-			editor.settings.extended_valid_elements += ",shortcode";
-			editor.settings.custom_elements = "shortcode";
-
+			/**
+			 * Listen for click events to our placeholder
+			 */
             editor.on('mouseup', function(e) {
-                if (e.target.tagName == 'IMG') {
-                    if (self.get_class_name(e.target).indexOf('ngg_displayed_gallery') >= 0) {
-                        editor.dom.events.cancel(e);
-                        var id = e.target.src.match(/\d+$/);
-                        if (id) id = id.pop();
-                        var obj = tinymce.extend(self, {
-                            editor: editor,
-                            plugin: editor.plugins.NextGEN_AttachToPost,
-                            id:		id
-                        });
-                        self.render_attach_to_post_interface(id);
-                    }
-                }
+				tinymce.extend(self, {
+					editor: editor,
+					plugin: editor.plugins.NextGEN_AttachToPost
+				});
+
+				// Support for IGW placeholder images. NGG <= 2.1.50
+				if (e.target.tagName == 'IMG') {
+					if (self.get_class_name(e.target).indexOf('ngg_displayed_gallery') >= 0) {
+						editor.dom.events.cancel(e);
+						var id = e.target.src.match(/\d+$/);
+						if (id) id = id.pop();
+						self.render_attach_to_post_interface({
+							key: 'id',
+							val: id
+						});
+					}
+				}
+				// Support for IGW Visual Shortcodes. NGG >= 2.1.50.1
+				else {
+					var $target = $(e.target);
+					if ($target.parents('.nggPlaceholderButton')) {
+						$target = $target.parents('.nggPlaceholderButton');
+					}
+					if ($target.hasClass('nggPlaceholderButton')) {
+
+						// Remove button
+						if ($target.hasClass('nggIgwRemove')) {
+							$target.parents('.nggPlaceholder').remove();
+						}
+
+						// Edit button
+						else {
+							window.igw_shortcode=  $(e.target).parents('.nggPlaceholder').data('shortcode');
+							self.render_attach_to_post_interface({
+								key: 'shortcode',
+								val: btoa(window.igw_shortcode),
+								ref: $(e.target).parents('.nggPlaceholder').attr('id')
+							});
+						}
+					}
+				}
+			});
+
+			/**
+			 * Find each shortcode and replace it with the placeholder, rendered using an underscore template
+			 * in templates/tinymce_placeholder.php
+			 */
+			editor.on('BeforeSetContent', function(event){
+				var shortcode_opening_tag = '[ngg_images ';
+				while (event.content.indexOf(shortcode_opening_tag)>=0) {
+					var start_of_shortcode = event.content.indexOf(shortcode_opening_tag);
+					var index = start_of_shortcode+shortcode_opening_tag.length;
+					var found_attribute_assignment = false;
+					var current_attribute_enclosure = null;
+					var last_found_char = false;
+					var content_length = event.content.length;
+					while (true) {
+						var char = event.content[index];
+						if (char == '"' || char == "'" && last_found_char == '=') {
+							// Is this the closing quote for an already found attribute assignment?
+							if (found_attribute_assignment && current_attribute_enclosure == char) {
+								found_attribute_assignment = false;
+								current_attribute_enclosure = null;
+							}
+							else {
+								found_attribute_assignment = true;
+								current_attribute_enclosure = char;
+							}
+						}
+						else if (char == ']') {
+							// we've found a shortcode closing tag. But, we need to ensure
+							// that this ] isn't within the value of a shortcode attribute
+							if (!found_attribute_assignment) {
+								break; //exit loop - we've found the shortcode
+							}
+						}
+
+						last_found_char = char;
+
+						if (index == content_length) {
+							break;
+						}
+
+						index++;
+					}
+
+					// Replace the shortcode with a placeholder
+					var match = event.content.substring(start_of_shortcode, ++index);
+					var shortcode = match.substring(1, match.length-1);
+					shortcode = shortcode.replace('[', '&#91;');
+					shortcode = shortcode.replace(']', '&#93;');
+
+					var template = _.template($('#ngg-igw-placeholder').html());
+					event.content = event.content.replace(match, template($.extend(ngg_igw_i18n, {
+						shortcode: shortcode,
+						ref: _.now()
+					})));
+				}
+			});
+
+			/**
+			 * Whenever a request is made to fetch the content of the editor, substitute the IGW placeholders
+			 * with the corresponding shortcode
+			 */
+			editor.on('GetContent', function(event){
+				var $content = $('<div/>').append(event.content);
+				$content.find('.nggPlaceholder').toArray().forEach(function(placeholder){
+					var $placeholder = $(placeholder);
+					var shortcode = $placeholder.data('shortcode');
+					shortcode = '[' + _.unescape(shortcode) + ']';
+					$placeholder.replaceWith(shortcode);
+				});
+				event.content = $content.html();
 			});
 		},
 
@@ -87,7 +186,7 @@
         wm_close_event: function(e) {
             if (e && e.target && e.target._id && e.target._id == 'ngg_attach_to_post_dialog') {
                 // Restore scrolling for the main content window when the attach to post interface is closed
-                jQuery('html,body').css('overflow', 'auto');
+                $('html,body').css('overflow', 'auto');
                 tinyMCE.activeEditor.selection.select(tinyMCE.activeEditor.dom.select('p')[0]);
                 tinyMCE.activeEditor.selection.collapse(0);
             }
@@ -96,11 +195,14 @@
 		/**
 		 * Renders the attach to post interface
 		 */
-		render_attach_to_post_interface: function(id) {
+		render_attach_to_post_interface: function(params) {
 			// Determine the attach to post url
 			var attach_to_post_url = nextgen_gallery_attach_to_post_url;
-            if (typeof(id) != 'undefined') {
-				attach_to_post_url += "&id=" + this.id;
+            if (typeof(params) != 'undefined') {
+				attach_to_post_url += '&' + params.key + '='+encodeURIComponent(params.val);
+				if (typeof(params['ref']) != 'undefined') {
+					attach_to_post_url += '&ref='+encodeURIComponent(params.ref);
+				}
             }
 
 			var win = window;
@@ -108,7 +210,7 @@
 				win = win.parent;
 			}
 
-			win = jQuery(win);
+			win = $(win);
 			var winWidth    = win.width();
 			var winHeight   = win.height();
 			var popupWidth  = 1200;
@@ -133,23 +235,13 @@
 			});
 
 			// Ensure that the window cannot be scrolled - XXX actually allow scrolling in the main window and disable it for the inner-windows/frames/elements as to create a single scrollbar
-            jQuery('html,body').css('overflow', 'hidden');
-			jQuery('#ngg_attach_to_post_dialog_ifr').css('overflow-y', 'auto');
-			jQuery('#ngg_attach_to_post_dialog_ifr').css('overflow-x', 'hidden');
+            $('html,body').css('overflow', 'hidden');
+			$('#ngg_attach_to_post_dialog_ifr').css('overflow-y', 'auto');
+			$('#ngg_attach_to_post_dialog_ifr').css('overflow-x', 'hidden');
 		}
 	});
 
 	// Register plugin
 	tinymce.PluginManager.add('NextGEN_AttachToPost', tinymce.plugins.NextGEN_AttachToPost);
 
-	// Hide this button by default
-	var $button = jQuery('#ngg-media-button');
-	$button.css('display', 'inline-block');
-	jQuery('#content-html').on('click', function() {
-		$button.hide();
-	});
-	jQuery('#content-tmce').on('click', function() {
-		$button.css('display', 'inline-block');
-	});
-
-})(photocrati_ajax.wp_site_url);
+})(photocrati_ajax.wp_site_url, jQuery);
