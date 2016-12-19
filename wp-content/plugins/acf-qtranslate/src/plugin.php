@@ -14,11 +14,14 @@ class acf_qtranslate_plugin {
 	 * @return void
 	 */
 	public function __construct() {
-		add_action('plugins_loaded',                  array($this, 'plugins_loaded'), 3);
+		add_action('plugins_loaded',                  array($this, 'init'), 3);
+		add_action('after_setup_theme',               array($this, 'init'), -10);
 		add_action('acf/input/admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
+		add_action('admin_footer',                    array($this, 'admin_footer'));
 		add_action('admin_menu',                      array($this, 'admin_menu'));
 		add_action('admin_init',                      array($this, 'admin_init'));
 
+		add_filter('qtranslate_load_admin_page_config',                             array($this, 'qtranslate_load_admin_page_config'));
 		add_filter('plugin_action_links_' . plugin_basename(ACF_QTRANSLATE_PLUGIN), array($this, 'plugin_action_links'));
 	}
 
@@ -26,8 +29,10 @@ class acf_qtranslate_plugin {
 	 * Setup plugin if Advanced Custom Fields is enabled.
 	 * @return void
 	 */
-	public function plugins_loaded() {
-		if ($this->acf_enabled() && $this->qtranslate_variant_enabled()) {
+	public function init() {
+		static $plugin_loaded;
+
+		if (!$plugin_loaded && $this->acf_enabled() && $this->qtranslatex_enabled()) {
 
 			// setup qtranslate fields for ACF 4
 			if ($this->acf_major_version() === 4) {
@@ -41,52 +46,13 @@ class acf_qtranslate_plugin {
 				$this->acf = new acf_qtranslate_acf_5($this);
 			}
 
-			// setup mqtranslate integration
-			if ($this->mqtranslate_enabled()) {
-				require_once ACF_QTRANSLATE_PLUGIN_DIR . 'src/mqtranslate.php';
-				new acf_qtranslate_mqtranslate($this, $this->acf);
-			}
-
-			// setup ppqtranslate integration
-			if ($this->ppqtranslate_enabled()) {
-				require_once ACF_QTRANSLATE_PLUGIN_DIR . 'src/ppqtranslate.php';
-				new acf_qtranslate_ppqtranslate($this, $this->acf);
-			}
-
 			// setup qtranslatex integration
-			if ($this->qtranslatex_enabled()) {
-				require_once ACF_QTRANSLATE_PLUGIN_DIR . 'src/qtranslatex.php';
-				new acf_qtranslate_qtranslatex($this, $this->acf);
-			}
+			require_once ACF_QTRANSLATE_PLUGIN_DIR . 'src/qtranslatex.php';
+			new acf_qtranslate_qtranslatex($this, $this->acf);
+
+			$plugin_loaded = true;
 
 		}
-	}
-
-	/**
-	 * Check whether the plugin is active by checking the active_plugins list.
-	 *
-	 * @param string $plugin Base plugin path from plugins directory.
-	 * @return bool True, if in the active plugins list. False, not in the list.
-	 */
-	public function is_plugin_active($plugin) {
-		return in_array($plugin, (array)get_option('active_plugins', array())) || $this->is_plugin_active_for_network($plugin);
-	}
-
-	/**
-	 * Check whether the plugin is active for the entire network.
-	 *
-	 * @param string $plugin Base plugin path from plugins directory.
-	 * @return bool True, if active for the network, otherwise false.
-	 */
-	public function is_plugin_active_for_network($plugin) {
-		if (!is_multisite()) {
-			return false;
-		}
-		$plugins = get_site_option('active_sitewide_plugins');
-		if (isset($plugins[$plugin])) {
-			return true;
-		}
-		return false;
 	}
 
 	/**
@@ -109,44 +75,10 @@ class acf_qtranslate_plugin {
 	}
 
 	/**
-	 * Check if a qTranslate variant is enabled.
-	 * @return boolean
-	 */
-	public function qtranslate_variant_enabled() {
-		$plugins = array(
-			'qtranslate/qtranslate.php',
-			'ztranslate/ztranslate.php',
-			'mqtranslate/mqtranslate.php',
-			'qtranslate-x/qtranslate.php',
-			'qtranslate-xp/ppqtranslate.php',
-		);
-		foreach ($plugins as $identifier) {
-			if ($this->is_plugin_active($identifier)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	/**
-	 * Check if qTranslate Plus is enabled.
-	 */
-	public function ppqtranslate_enabled() {
-		return function_exists('ppqtrans_getLanguage');
-	}
-
-	/**
 	 * Check if qTranslate-X is enabled.
 	 */
 	public function qtranslatex_enabled() {
 		return function_exists('qtranxf_getLanguage');
-	}
-
-	/**
-	 * Check if mqTranslate is enabled.
-	 */
-	public function mqtranslate_enabled() {
-		return function_exists('mqtrans_currentUserCanEdit');
 	}
 
 	/**
@@ -165,6 +97,14 @@ class acf_qtranslate_plugin {
 	}
 
 	/**
+	 * Output a hidden block that can be use to force qTranslate-X
+	 * to include the LSB.
+	 */
+	public function admin_footer() {
+		echo '<span id="acf-qtranslate-lsb-shim" style="display:none">[:en]LSB[:]</span>';
+	}
+
+	/**
 	 * Add settings link on plugin page.
 	 * @param array
 	 * @return array
@@ -172,6 +112,59 @@ class acf_qtranslate_plugin {
 	public function plugin_action_links($links) {
 		array_unshift($links, '<a href="options-general.php?page=acf-qtranslate">Settings</a>');
 		return $links;
+	}
+
+	/**
+	 * Enable the display of the LSB on ACF Options pages.
+	 * @param array
+	 * @return array
+	 */
+	public function qtranslate_load_admin_page_config($config)
+	{
+		$config['acf-display-nodes'] = array(
+			'pages' => array('post.php' => '', 'admin.php' => 'page='),
+			'forms' => array(
+				'wpwrap' => array(
+					'fields' => array(
+						'lsb-shim' => array(
+							'jquery' => '#acf-qtranslate-lsb-shim',
+							'encode' => 'display',
+						),
+						'acf4-field-group-handle' => array(
+							'jquery' => '.acf_postbox h2 span,.acf_postbox h3 span',
+							'encode' => 'display',
+						),
+						'acf5-field-group-handle' => array(
+							'jquery' => '.acf-postbox h2 span,.acf-postbox h3 span',
+							'encode' => 'display',
+						),
+						'acf5-field-label' => array(
+							'jquery' => '.acf-field .acf-label label',
+							'encode' => 'display',
+						),
+						'acf5-field-description' => array(
+							'jquery' => '.acf-field .acf-label p.description',
+							'encode' => 'display',
+						),
+				)),
+			),
+		);
+
+		$config['acf-field-group'] = array(
+			'pages'     => array('post.php' => ''),
+			'post_type' => 'acf-field-group',
+			'forms'     => array(
+				'post' => array(
+					'fields' => array(
+						'field-group-object-label' => array(
+							'jquery' => '.li-field-label .edit-field',
+							'encode' => 'display',
+						),
+				)),
+			),
+		);
+
+		return $config;
 	}
 
 	/**
