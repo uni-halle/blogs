@@ -1,23 +1,23 @@
 === Translate Wordpress with GTranslate ===
 Contributors: edo888
 Author: Edvard Ananyan
-Tags: translation proxy, localization, translate, translation, localization, google translate, language, multilingual, multilanguage, bilingual, tradurre, traducir, traduire, traduzione, ubersetzung, mehrsprachig, oversette, oversatta, vertaling, vertaler, meertalig
+Tags: translation proxy, localization, translate, translation, localization, google translate, language, multilingual, multilanguage, bilingual, tradurre, traducir, traduire, traduzione, ubersetzung, mehrsprachig, oversette, oversatta, vertaling, vertaler, meertalig, polylang, qtranslate, transposh
 Requires at least: 2.8
-Tested up to: 4.6
-Stable tag: 2.0.18
+Tested up to: 4.7
+Stable tag: 2.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
 
-GTranslate - Google Translate for WordPress will make your website multilingual and available to more than 99% of internet users.
+Translate WordPress with Google Translate to make your website multilingual and available to more than 99% of internet users.
 
 == Description ==
 
-GTranslate plugin uses Google Translate automatic translation service to **translate your wordpress website** with Google power. With 103 available languages your site will be available to more than 99% of internet users. Our paid versions are **fully SEO compatible** which will **increase your international traffic and sales**.
+GTranslate plugin uses Google Translate automatic translation service to **translate wordpress** site with Google power. With 103 available languages your site will be available to more than 99% of internet users. Our paid versions are **fully SEO compatible** which will **increase your international traffic and sales**.
 
 GTranslate is a leading website translation services provider since 2008 and powers more than 500.000 websites worldwide.
 
-Please use [GTranslate Support](https://gtranslate.io/?xyz=998#contact) for your questions and support requests! We have Live Chat, Helpdesk and Support Forum.
+Please use [GTranslate Support](https://wordpress.org/support/plugin/gtranslate) for your questions and support requests!
 
 Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 
@@ -33,20 +33,23 @@ Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 * Google language translator widget
 * Available styles Dropdown/Flags/Flags with dropdown/Nice dropdown with flags
 * Valid XHTML
-* You can manually correct translations (paid)
-* You can have sub-directory (example.com/**es**/) or sub-domain (**es.**example.com) URL structure (paid)
-* URL Translation is possible (example.com/about-us -> example.es/sobre-nosotros) (paid)
+* Alternative for WPML, qtranslate, transposh and polylang
+* (paid) You can manually correct translations
+* (paid) You can have sub-directory (example.com/**es**/) or sub-domain (**es.**example.com) URL structure
+* (paid) URL Translation is possible (example.com/about-us -> example.es/sobre-nosotros)
 
 [Download GTranslate](https://gtranslate.io/?xyz=998#pricing)
 
 **GTranslate Wordpress Demo**
-https://www.youtube.com/watch?v=9mtC3LFBErY
+[youtube https://www.youtube.com/watch?v=9mtC3LFBErY]
 
 **Watch GTranslate Tour**
 [vimeo http://vimeo.com/30132555]
 
 **Edit Translations Demo (paid)**
-https://www.youtube.com/watch?v=YwSy3VtQx3I
+[youtube https://www.youtube.com/watch?v=YwSy3VtQx3I]
+
+Keywords: polylang, prisna, gts, localize, lingotek, smartling, qtranslate, loco translate, google website translator, translate wordpress, translate, transposh, global translator, machine translate, wp translate
 
 == Installation ==
 
@@ -320,7 +323,7 @@ Languages not yet supported by Google Translate, but in process.
 == Frequently Asked Questions ==
 
 = It doesn't work, what to do? =
-Please check [GTranslate Forum](https://gtranslate.io/forum/) and feel free to create a new topic if you cannot find answers.
+Please check [GTranslate Support Forum](https://wordpress.org/support/plugin/gtranslate) and feel free to create a new topic if you cannot find answers.
 
 = Can I exclude some parts from being translated? =
 Yes, you need to wrap the text you don't want to be translated with &lt;span class=&quot;notranslate&quot;&gt;&lt;/span&gt;.
@@ -346,13 +349,18 @@ Here is the list: Afrikaans, Albanian, Amharic, Arabic, Armenian, Azerbaijani, B
 = Which websites are supported? =
 All the HTML websites are supported. However the contents of media files like images and flash will not be translated.
 
-= Where I can see analytics data? =
-You need to login to your Google Analytics account -&gt; Content -&gt; Event Tracking. The event name will be GTranslate and you will see event categories for each language code. If you want to see French language usage you can click on fr and you will see which pages are translated to French by your visitors.
+= Is it FREE? =
+Yes! We have free version and paid versions with [advanced features](https://gtranslate.io/?xyz=998#pricing).
+
+= How the free version differs from the paid versions? =
+Free vesion is a nice looking language selector you can place on your website. It has a built in Javascript engine which allows to translate your website automatically to multiple languages. With free version your website URL doesn't change and the translations are not stored. While paid versions are a translation proxy also known as Translation Delivery Network. We host the translated versions of your website on our cloud network under a language specific domain. In that case every language will have a separate domain and be indexed in search engines, which will help you to increase international traffic and sales.
 
 = What is a Translation Delivery Network? =
-Translation Delivery Network (TDN) aka Translation Proxy is similar to Content Delivery Network (CDN) which is responsible for your static content delivery (images, videos, etc.). TDN will deliver your translations and make your site multilingual.
+Translation Delivery Network is a translation proxy which mirrors your website in different languages.
 
-It means that you don't need to install any software on your server and maintain it to make your website multilingual.
+GTranslate TDN technology is a cloud-based approach to the website translation task. There is no need to alter your environment and install software to localize your website. You can have your multilingual website up and running in less than 5 minutes.
+
+We will translate your content and host your translations in our cloud network. All the visits to your translated versions will be proxied through our network to your original website, so you will have a translated mirror of your website.
 
 [vimeo http://vimeo.com/38686858]
 
@@ -369,8 +377,13 @@ There are no server requirements! Your website can be written in any programming
 = What about updates? =
 Updates are done seamlessly. Since the translations are hosted on our server we take care about updates. You just use up to date service every day.
 
+If you decide to cancel during the trial period you will not be charged anything.
+
+= Do I need to pay for Google Translate API key usage? =
+No, we provide the automatic translations for free.
+
 = Can I test before making a payment? =
-You can test the free version.
+Yes, we have a 15 days free trial for our new customers.
 
 = Can I use it on SSL / HTTPS website? =
 Absolutely! By default we provide a self signed certificate, but if you want we can setup verified certificate purchased by you.
@@ -378,8 +391,8 @@ Absolutely! By default we provide a self signed certificate, but if you want we 
 = Can I exclude some parts from being translated? =
 Yes, you need to wrap the text you don't want to be translated with &lt;span class="notranslate"&gt;&lt;/span&gt;. You can add class="nturl" to the "a" tag if you don't want the destination URL to contain the language code.
 
-= How it differs from the Pro version? =
-Pro version is a software hosted on your own server while Enterprise is a Translation Delivery Network which doesn't require software to be installed on your server.
+= How does the 15 day free trial work? =
+Trial is available for new customers only. If you do not wish to continue you may cancel any time during the trial period and you will not be charged anything.
 
 = How can I be sure that search engines will index my website? =
 You can check that this website is indexed in Google by searching for site:gtranslate.io.
@@ -392,8 +405,27 @@ You need to go to the language you want to edit, for instance, French: http://do
 1. Dropdown with flags
 2. Nice dropdown with flags (closed)
 3. Nice dropdown with flags (open)
+4. Globe with language flags
 
 == Changelog ==
+
+= 2.8.1 =
+* New Globe widget look added
+* Plugin localization added
+* Language list reordering added
+
+= 2.0.21 =
+* New option to render in primary menu
+
+= 2.0.20 =
+* Fix for depreciated code: PLUGINDIR
+
+= 2.0.19 =
+* Added support message
+* Added Live Chat on GTranslate options page
+* Plugin tags added: polylang, prisna, gts, localize, lingotek, smartling
+* Plugin tags added: qtranslate, loco translate, google website translator, translate wordpress
+* Plugin tags added: translate, transposh, glabol translator, machine translate, wp translate
 
 = 2.0.18 =
 * Alternative flags added: USA flag, Brazil flag, Mexico flag
@@ -579,6 +611,9 @@ You need to go to the language you want to edit, for instance, French: http://do
 * Initial version for WordPress
 
 == Upgrade Notice ==
+
+= 2.8.1 =
+A lot of new features added!
 
 = 1.0.22 =
 Users are highly recommended to upgrade to this version!
