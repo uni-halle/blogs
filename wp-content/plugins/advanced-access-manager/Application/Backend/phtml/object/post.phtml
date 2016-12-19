@@ -72,50 +72,20 @@
                             </td>
                         </tr>
 
+                        <?php foreach($this->getAccessOptionList('frontend') as $option => $data) { ?>
                         <tr>
                             <td width="90%">
-                                <strong class="aam-block aam-highlight text-uppercase"><?php echo __('List', AAM_KEY); ?>&nbsp;</strong>
-                                <p class="aam-hint" data-dynamic-post-label="Hide %s from all frontend website lists."></p>
+                                <strong class="aam-block aam-highlight text-uppercase"><?php echo $data['title']; ?></strong>
+                                <p class="aam-hint" data-dynamic-post-label="<?php echo $data['descr']; ?>"></p>
                             </td>
                             <td>
                                 <div class="aam-row-actions">
-                                    <i class="aam-row-action text-muted icon-check-empty" data-property="frontend.list"></i>
+                                    <i class="aam-row-action text-muted icon-check-empty" data-property="frontend.<?php echo $option; ?>"></i>
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <strong class="aam-block aam-highlight text-uppercase"><?php echo __('Read', AAM_KEY); ?></strong>
-                                <p class="aam-hint" data-dynamic-post-label="Restrict access to read %s. If List option is not checked, %s will be still listed on your website frontend."></p>
-                            </td>
-                            <td>
-                                <div class="aam-row-actions">
-                                    <i class="aam-row-action text-muted icon-check-empty" data-property="frontend.read"></i>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong class="aam-block aam-highlight text-uppercase"><?php echo __('LIMIT', AAM_KEY); ?></strong>
-                                <p class="aam-hint" data-dynamic-post-label="If checked, show defined in Content Teaser tab teaser message while reading %s instead of its content."></p>
-                            </td>
-                            <td>
-                                <div class="aam-row-actions">
-                                    <i class="aam-row-action text-muted icon-check-empty" data-property="frontend.limit"></i>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong class="aam-block aam-highlight text-uppercase"><?php echo __('Comment', AAM_KEY); ?></strong>
-                                <p class="aam-hint" data-dynamic-post-label="Restrict access to comment on %s (if commenting feature is activated)."></p>
-                            </td>
-                            <td>
-                                <div class="aam-row-actions">
-                                    <i class="aam-row-action text-muted icon-check-empty" data-property="frontend.comment"></i>
-                                </div>
-                            </td>
-                        </tr>
+                        <?php } ?>
+                        
                         <?php do_action('aam-post-access-option-action', 'post', 'frontend'); ?>
 
                         <tr class="aam-backend-post-access">
@@ -124,40 +94,22 @@
                             </td>
                         </tr>
 
-                        <tr class="aam-backend-post-access">
-                            <td>
-                                <strong class="aam-block aam-highlight text-uppercase"><?php echo __('List', AAM_KEY); ?></strong>
-                                <p class="aam-hint" data-dynamic-post-label="Hide or exclude %s from any website backend lists."></p>
+                       <?php foreach($this->getAccessOptionList('backend') as $option => $data) { ?>
+                        <tr>
+                            <td width="90%">
+                                <strong class="aam-block aam-highlight text-uppercase"><?php echo $data['title']; ?></strong>
+                                <p class="aam-hint" data-dynamic-post-label="<?php echo $data['descr']; ?>"></p>
                             </td>
                             <td>
                                 <div class="aam-row-actions">
-                                    <i class="aam-row-action text-muted icon-check-empty" data-property="backend.list"></i>
+                                    <i class="aam-row-action text-muted icon-check-empty" data-property="backend.<?php echo $option; ?>"></i>
                                 </div>
                             </td>
                         </tr>
-                        <tr class="aam-backend-post-access">
-                            <td>
-                                <strong class="aam-block  aam-highlight text-uppercase"><?php echo __('Edit', AAM_KEY); ?></strong>
-                                <p class="aam-hint" data-dynamic-post-label="Restrict access to edit %s (also the link Edit and Quick Edit will be removed below the %s title)."></p>
-                            </td>
-                            <td>
-                                <div class="aam-row-actions">
-                                    <i class="aam-row-action text-muted icon-check-empty" data-property="backend.edit"></i>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="aam-backend-post-access">
-                            <td>
-                                <strong class="aam-block aam-highlight text-uppercase"><?php echo __('Delete', AAM_KEY); ?></strong>
-                                <p class="aam-hint" data-dynamic-post-label="Restrict access to trash or permanently delete %s (also the link Trash or Delete Permanently will be removed below the %s title)."></p>
-                            </td>
-                            <td>
-                                <div class="aam-row-actions">
-                                    <i class="aam-row-action text-muted icon-check-empty" data-property="backend.delete"></i>
-                                </div>
-                            </td>
-                        </tr>
+                        <?php } ?>
+                        
                         <?php do_action('aam-post-access-option-action', 'post', 'backend'); ?>
+                        
                     </tbody>
                 </table>
                 

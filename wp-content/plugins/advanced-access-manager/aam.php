@@ -3,7 +3,7 @@
 /**
   Plugin Name: Advanced Access Manager
   Description: Manage User and Role Access to WordPress Backend and Frontend.
-  Version: 3.9.1.1
+  Version: 3.9.2.2
   Author: Vasyl Martyniuk <vasyl@vasyltech.com>
   Author URI: https://www.vasyltech.com
 

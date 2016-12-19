@@ -84,7 +84,7 @@ class AAM_Backend_Manager {
         }
         
         //register CodePinch affiliate
-        AAM_Backend_View_CodePinch::bootstrap(AAM_CODEPINCH_AFFILIATE_CODE);
+        AAM_Backend_View_CodePinch::bootstrap();
     }
     
     /**

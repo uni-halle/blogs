@@ -91,12 +91,16 @@ class AAM_Backend_View {
     public function renderMetabox() {
         global $post;
         
-        $url = admin_url('admin.php?page=aam&oid=' . $post->ID . '#post');
-        
-        ob_start();
-        require_once(dirname(__FILE__) . '/phtml/metabox.phtml');
-        $content = ob_get_contents();
-        ob_end_clean();
+        if (is_a($post, 'WP_Post')) {
+            $url = admin_url('admin.php?page=aam&oid=' . $post->ID . '#post');
+
+            ob_start();
+            require_once(dirname(__FILE__) . '/phtml/metabox.phtml');
+            $content = ob_get_contents();
+            ob_end_clean();
+        } else {
+            $content = null;
+        }
 
         return $content;
     }

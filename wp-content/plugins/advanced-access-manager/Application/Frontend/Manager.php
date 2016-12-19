@@ -45,7 +45,7 @@ class AAM_Frontend_Manager {
             add_action('wp', array($this, 'wp'), 999);
             add_action('404_template', array($this, 'themeRedirect'), 999);
             //filter navigation pages & taxonomies
-            add_filter('get_pages', array($this, 'getPages'));
+            add_filter('get_pages', array($this, 'thePosts'));
             add_filter('wp_get_nav_menu_items', array($this, 'getNavigationMenu'));
             //widget filters
             add_filter('sidebars_widgets', array($this, 'widgetFilter'), 999);
@@ -70,12 +70,14 @@ class AAM_Frontend_Manager {
      * @param type $login
      * @param type $user
      */
-    public function login($login, $user) {
-        AAM_Core_API::deleteOption('aam-user-switch-' . $user->ID);
+    public function login($login, $user = null) {
+        if (is_a($user, 'WP_User')) {
+            AAM_Core_API::deleteOption('aam-user-switch-' . $user->ID); 
+        }
     }
 
     /**
-     * Main Frontend access control hook
+     * Main frontend access control hook
      *
      * @return void
      *
@@ -83,16 +85,8 @@ class AAM_Frontend_Manager {
      * @global WP_Post $post
      */
     public function wp() {
-        global $wp_query;
+        $post = $this->getCurrentPost();
         
-        if (!empty($wp_query->queried_object)) {
-            $post = $wp_query->queried_object;
-        } elseif (!empty($wp_query->post)) {
-            $post = $wp_query->post;
-        } else {
-            $post = null;
-        }
-
         if (is_a($post, 'WP_Post')) {
             $this->checkPostReadAccess($post);
         }
@@ -125,6 +119,33 @@ class AAM_Frontend_Manager {
     }
     
     /**
+     * 
+     * @global type $wp_query
+     * @return type
+     */
+    protected function getCurrentPost() {
+        global $wp_query;
+        
+        $current = null;
+        
+        if (!empty($wp_query->queried_object)) {
+            $current = $wp_query->queried_object;
+        } elseif (!empty($wp_query->post)) {
+            $current = $wp_query->post;
+        } elseif (!empty($wp_query->query['name']) && !empty($wp_query->posts)) {
+            //Important! Cover the scenario of NOT LIST but ALLOW READ
+            foreach($wp_query->posts as $post) {
+                if ($post->post_name == $wp_query->query['name']) {
+                    $current = $post;
+                    break;
+                }
+            }
+        }
+        
+        return (is_a($current, 'WP_Post') ? $current : null);
+    }
+    
+    /**
      * Check post read access
      * 
      * @param WP_Post $post
@@ -149,28 +170,32 @@ class AAM_Frontend_Manager {
     }
     
     /**
-     * Filter Pages that should be excluded in frontend
-     *
-     * @param array $pages
-     *
+     * Filter posts from the list
+     *  
+     * @param array $posts
+     * 
      * @return array
-     *
+     * 
      * @access public
      */
-    public function getPages($pages) {
-        if (is_array($pages)) {
-            foreach ($pages as $i => $page) {
-                $object = AAM::getUser()->getObject('post', $page->ID);
+    public function thePosts($posts) {
+        $current = $this->getCurrentPost();
+        
+        if (is_array($posts)) {
+            foreach ($posts as $i => $post) {
+                if ($current && ($current->ID == $post->ID)) { continue; } 
+                
+                $object = AAM::getUser()->getObject('post', $post->ID);
                 $list   = $object->has('frontend.list');
                 $others = $object->has('frontend.list_others');
                 
-                if ($list || ($others && !$this->isAuthor($page))) {
-                    unset($pages[$i]);
+                if ($list || ($others && !$this->isAuthor($post))) {
+                    unset($posts[$i]);
                 }
             }
         }
 
-        return $pages;
+        return $posts;
     }
 
     /**
@@ -279,35 +304,6 @@ class AAM_Frontend_Manager {
     }
     
     /**
-     * Filter posts from the list
-     *  
-     * @param array $posts
-     * 
-     * @return array
-     * 
-     * @access public
-     */
-    public function thePosts($posts) {
-        $filtered = array();
-
-        if (is_array($posts)) {
-            foreach ($posts as $post) {
-                $object = AAM::getUser()->getObject('post', $post->ID);
-                $list   = $object->has('frontend.list');
-                $others = $object->has('frontend.list_others');
-                
-                if (!$list && (!$others || $this->isAuthor($post))) {
-                    $filtered[] = $post;
-                }
-            }
-        } else {
-            $filtered = $posts;
-        }
-
-        return $filtered;
-    }
-    
-    /**
      * 
      * @param type $query
      */
@@ -370,25 +366,27 @@ class AAM_Frontend_Manager {
     public function theContent($content) {
         global $post;
         
-        $object = AAM::getUser()->getObject('post', $post->ID);
-       
-        if ($object->has('frontend.limit')) {
-            $message = apply_filters(
-                'aam-filter-teaser-option', 
-                AAM_Core_Config::get("frontend.teaser.message"),
-                "frontend.teaser.message",
-                AAM::getUser()
-            );
-            $excerpt = apply_filters(
-                'aam-filter-teaser-option', 
-                AAM_Core_Config::get("frontend.teaser.excerpt"),
-                "frontend.teaser.excerpt",
-                AAM::getUser()
-            );
-            
-            $html  = (intval($excerpt) ? $post->post_excerpt : '');
-            $html .= stripslashes($message);
-            $content = do_shortcode($html);
+        if (is_a($post, 'WP_Post')) {
+            $object = AAM::getUser()->getObject('post', $post->ID);
+
+            if ($object->has('frontend.limit')) {
+                $message = apply_filters(
+                    'aam-filter-teaser-option', 
+                    AAM_Core_Config::get("frontend.teaser.message"),
+                    "frontend.teaser.message",
+                    AAM::getUser()
+                );
+                $excerpt = apply_filters(
+                    'aam-filter-teaser-option', 
+                    AAM_Core_Config::get("frontend.teaser.excerpt"),
+                    "frontend.teaser.excerpt",
+                    AAM::getUser()
+                );
+
+                $html  = (intval($excerpt) ? $post->post_excerpt : '');
+                $html .= stripslashes($message);
+                $content = do_shortcode($html);
+            }
         }
         
         return $content;

@@ -40,7 +40,7 @@ class AAM_Backend_Feature_Extension extends AAM_Backend_Feature_Abstract {
         static $products = null;
         
         if (is_null($products)) {
-            $products = require(dirname(__FILE__) . '/ProductList.php');
+            $products = require(dirname(__FILE__) . '/../View/ProductList.php');
         }
         
         $filtered = array();
@@ -76,6 +76,11 @@ class AAM_Backend_Feature_Extension extends AAM_Backend_Feature_Abstract {
         }elseif ($error = $repo->checkDirectory()) {
             $response = $this->installFailureResponse($error, $package);
             $this->storeLicense($package->title, $license);
+        } elseif (empty($package->content)) { //any unpredictable scenario
+            $response = array(
+                'status' => 'failure', 
+                'error'  => 'Failed to download the extension. Try again or contact us.'
+            );
         } else { //otherwise install the extension
             $result = $repo->addExtension(base64_decode($package->content));
             if (is_wp_error($result)) {

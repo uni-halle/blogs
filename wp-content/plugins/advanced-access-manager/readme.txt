@@ -2,8 +2,8 @@
 Contributors: vasyltech
 Tags: access, role, user, visitor, capability, page, post, permission, security, redirect
 Requires at least: 3.8
-Tested up to: 4.6.1
-Stable tag: 3.9.1.1
+Tested up to: 4.7
+Stable tag: 3.9.2.2
 
 The great WordPress plugin to manage access to your posts, pages, categories and 
 backend area for users, roles and visitors.
@@ -63,6 +63,18 @@ out more about the Advanced Access Manager.
 6. Utilities tab
 
 == Changelog ==
+
+= 3.9.2.2 =
+* Bug fixing
+* Simplified affiliate implementation
+
+= 3.9.2.1 =
+* Minor bug fixes reported by CodePinch service
+
+= 3.9.2 =
+* Bug fixing
+* Internal code improvements
+* Extended list of post & pages access options
 
 = 3.9.1.1 =
 * Minor bug fix to cover uncommon scenario when user without role

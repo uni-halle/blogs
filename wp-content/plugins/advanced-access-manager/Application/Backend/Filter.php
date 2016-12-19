@@ -122,7 +122,7 @@ class AAM_Backend_Filter {
     }
 
     /**
-     * Hanlde Metabox initialization process
+     * Handle metabox initialization process
      *
      * @return void
      *
@@ -158,8 +158,11 @@ class AAM_Backend_Filter {
     public function postRowActions($actions, $post) {
         $object = AAM::getUser()->getObject('post', $post->ID);
         
+        $edit   = $object->has('backend.edit');
+        $others = $object->has('backend.edit_others');
+        
         //filter edit menu
-        if ($object->has('backend.edit')) {
+        if ($edit || ($others && !$this->isAuthor($post))) {
             if (isset($actions['edit'])) { 
                 unset($actions['edit']); 
             }
@@ -167,14 +170,27 @@ class AAM_Backend_Filter {
                 unset($actions['inline hide-if-no-js']);
             }
         }
+        
+        $delete = $object->has('backend.delete');
+        $others = $object->has('backend.delete_others');
 
         //filter delete menu
-        if ($object->has('backend.delete')) {
+        if ($delete || ($others && !$this->isAuthor($post))) {
             if (isset($actions['trash'])) {
                 unset($actions['trash']);
             }
             if (isset($actions['delete'])) {
                 unset($actions['delete']);
+            }
+        }
+        
+        $publish = $object->has('backend.publish');
+        $others  = $object->has('backend.publish_others');
+        
+        //filter edit menu
+        if ($publish || ($others && !$this->isAuthor($post))) {
+            if (isset($actions['inline hide-if-no-js'])) {
+                unset($actions['inline hide-if-no-js']);
             }
         }
 
@@ -195,7 +211,9 @@ class AAM_Backend_Filter {
         
         if (is_a($post, 'WP_Post')) {
             $object = AAM::getUser()->getObject('post', $post->ID);
-            if ($object->has('backend.edit')) {
+            $edit   = $object->has('backend.edit');
+            $others = $object->has('backend.edit_others');
+            if ($edit || ($others && !$this->isAuthor($post))) {
                 AAM_Core_API::reject(
                         'backend', 
                         array('object' => $object, 'action' => 'backend.edit')
@@ -282,7 +300,7 @@ class AAM_Backend_Filter {
     public function preparePostQuery($query) {
         if ($this->skip === false) {
             $filtered = array();
-
+            
             foreach ($this->fetchPosts($query) as $id) {
                 if (AAM::getUser()->getObject('post', $id)->has('backend.list')) {
                     $filtered[] = $id;
@@ -344,21 +362,45 @@ class AAM_Backend_Filter {
      * @access public
      */
     public function checkUserCap($allCaps, $metaCaps, $args) {
+        global $post;
+        
         //make sure that $args[2] is actually post ID
         if (isset($args[2]) && is_scalar($args[2])) { 
             switch($args[0]) {
                 case 'edit_post':
                     $object = AAM::getUser()->getObject('post', $args[2]);
-                    if ($object->has('backend.edit')) {
+                    $edit   = $object->has('backend.edit');
+                    $others = $object->has('backend.edit_others');
+                    if ($edit || ($others && !$this->isAuthor($object->getPost()))) {
                         $allCaps = $this->restrictPostActions($allCaps, $metaCaps);
                     }
                     break;
 
                 case 'delete_post' :
                     $object = AAM::getUser()->getObject('post', $args[2]);
-                    if ($object->has('backend.delete')) {
+                    $delete = $object->has('backend.delete');
+                    $others = $object->has('backend.delete_others');
+                    if ($delete || ($others && !$this->isAuthor($object->getPost()))) {
                         $allCaps = $this->restrictPostActions($allCaps, $metaCaps);
                     }
+                    break;
+                
+                default:
+                    break;
+            }
+        } elseif (is_a($post, 'WP_Post')) {
+            switch ($args[0]) {
+                case 'publish_posts':
+                case 'publish_pages':
+                    $object = AAM::getUser()->getObject('post', $post->ID);
+                    $publish = $object->has('backend.publish');
+                    $others  = $object->has('backend.publish_others');
+                    if ($publish || ($others && !$this->isAuthor($post))) {
+                        $allCaps = $this->restrictPostActions($allCaps, $metaCaps);
+                    }
+                    break;
+                
+                default:
                     break;
             }
         }

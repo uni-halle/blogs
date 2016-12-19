@@ -335,6 +335,25 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
     
     /**
      * 
+     * @staticvar type $list
+     * @param type $area
+     * @return type
+     */
+    public function getAccessOptionList($area) {
+        static $list = null;
+        
+        if (is_null($list)) {
+            $list = apply_filters(
+                    'aam-post-access-options-filter', 
+                    require_once dirname(__FILE__) . '/../View/PostOptionList.php'
+            );
+        }
+        
+        return $list[$area];
+    }
+    
+    /**
+     * 
      * @return type
      */
     public function getCurrentPost() {

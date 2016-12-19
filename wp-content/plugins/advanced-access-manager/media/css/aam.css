@@ -378,6 +378,18 @@ a.btn:focus, a.btn:active {
     border-radius: 0;
 }
 
+.btn-codepinch {
+    background-color: #EC4F7C;
+    border-color: #EC4F7C;
+    color: #FFFFFF;
+}
+
+.btn-codepinch:hover, .btn-codepinch:focus {
+    background-color: #f0ad4e;
+    border-color: #eea236;
+    color: #fff;
+}
+
 .alert {
     border-radius: 0;
     margin-bottom: 0;
@@ -560,7 +572,7 @@ input[type=radio]:checked + label:before {
 }
 
 .aam-overwrite {
-    padding: 5px 15px;
+    padding: 5px 5px 5px 15px;
     background-color: #f0ad4e;
     color: #FFFFFF;
     font-weight: 700;
@@ -811,7 +823,7 @@ input[type=radio]:checked + label:before {
     padding: 10px;
     position: relative;
     font-size: 1em;
-    margin-bottom: 20px;
+    margin-bottom: 20px !important;
 }
 
 .aam-info-modal, .aam-info-modal p, .aam-info-modal ul {

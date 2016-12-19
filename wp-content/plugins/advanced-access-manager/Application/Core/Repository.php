@@ -90,8 +90,8 @@ class AAM_Core_Repository {
      *
      * @access public
      */
-    public function load() {
-        $basedir = $this->getBasedir();
+    public function load($dir = null) {
+        $basedir = (is_null($dir) ? $this->getBasedir() : $dir);
         
         //since release 3.4 Utilities are intergreated into core as Settings
         $this->integrateUtility();

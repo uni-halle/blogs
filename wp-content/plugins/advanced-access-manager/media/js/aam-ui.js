@@ -29,7 +29,7 @@
      * 
      * @returns {undefined}
      */
-    function fetchRoleList() {
+    function fetchRoleList(exclude) {
         $.ajax(aamLocal.ajaxurl, {
             type: 'POST',
             dataType: 'json',
@@ -37,7 +37,7 @@
                 action: 'aam',
                 sub_action: 'Role.getList',
                 _ajax_nonce: aamLocal.nonce,
-                exclude: aam.getSubject().id
+                exclude: exclude
             },
             beforeSend: function () {
                 $('.inherit-role-list').html(
@@ -240,7 +240,7 @@
     });
     
     $('#edit-role-modal').on('shown.bs.modal', function (e) {
-        fetchRoleList();
+        fetchRoleList(aam.getSubject().id);
         $('input[name="name"]', '#edit-role-modal').focus();
     });
 
@@ -1355,6 +1355,12 @@
                 if (typeof callback === 'function') {
                     callback.call();
                 }
+                
+                //update dynamic labels
+                var marker = '<b>' + $('.aam-post-breadcrumb span').text() + '</b>';
+                $('[data-dynamic-post-label]').each(function() {
+                    $(this).html($(this).attr('data-dynamic-post-label').replace(/%s/g, marker));
+                });
             },
             error: function () {
                 aam.notification('danger', aam.__('Application error'));
@@ -1362,12 +1368,6 @@
             complete: function () {
                 $(btn).attr('class', 'aam-row-action text-info icon-cog');
             }
-        });
-        
-        //update dynamic labels
-        var marker = '<b>' + $('.aam-post-breadcrumb span').text() + '</b>';
-        $('[data-dynamic-post-label]').each(function() {
-            $(this).html($(this).attr('data-dynamic-post-label').replace(/%s/g, marker));
         });
     }
 
@@ -1501,10 +1501,12 @@
                             }).bind('click', function () {
                                 if (!$(this).prop('disabled')) {
                                     $(this).prop('disabled', true);
-                                    loadAccessForm(data[2], data[0], $(this), function () {
-                                        addBreadcrumbLevel('edit', data[2], data[3]);
-                                        $(this).prop('disabled', false);
-                                    });
+                                    //set filter
+                                    filter[data[2]] = data[0];
+                                    //finally reload the data
+                                    $('#post-list').DataTable().ajax.reload();
+                                    //update the breadcrumb
+                                    addBreadcrumbLevel('type', data[0], data[3]);
                                 }
                             }).attr({
                                 'data-toggle': "tooltip",

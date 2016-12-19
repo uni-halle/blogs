@@ -78,9 +78,11 @@ class AAM_Backend_Feature_User {
         
         $names = AAM_Core_API::getRoles()->get_names();
         
-        foreach($roles as $role) {
-            if (isset($names[$role])) {
-                $response[] = translate_user_role($names[$role]);
+        if (is_array($roles)) {
+            foreach($roles as $role) {
+                if (isset($names[$role])) {
+                    $response[] = translate_user_role($names[$role]);
+                }
             }
         }
         
@@ -99,7 +101,7 @@ class AAM_Backend_Feature_User {
     protected function prepareRowActions(WP_User $user) {
         $max = AAM_Core_API::maxLevel(wp_get_current_user()->allcaps);
         
-        $allowed = ($max > AAM_Core_API::maxLevel($user->allcaps));
+        $allowed = ($max >= AAM_Core_API::maxLevel($user->allcaps));
         
         if ($allowed || ($user->ID == get_current_user_id())) {
             $actions = array('manage');

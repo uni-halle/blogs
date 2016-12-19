@@ -211,9 +211,11 @@ class AAM_Backend_Feature_Capability extends AAM_Backend_Feature_Abstract {
         
         $names = AAM_Core_API::getRoles()->get_names();
         
-        foreach($roles as $role) {
-            if (isset($names[$role])) {
-                $response[] = translate_user_role($names[$role]);
+        if (is_array($roles)) { 
+            foreach($roles as $role) {
+                if (isset($names[$role])) {
+                    $response[] = translate_user_role($names[$role]);
+                }
             }
         }
         

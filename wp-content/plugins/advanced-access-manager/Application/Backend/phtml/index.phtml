@@ -209,14 +209,13 @@
                     <?php do_action('aam-sidebar-ui-action', 'bottom'); ?>
                 </div>
                 
-                <?php $codepinch = AAM_Backend_View_CodePinch::getInstance()->getStatus(); ?>
-                <?php if ($codepinch['status'] == 'install') { ?>
+                <?php if (AAM_Backend_View_CodePinch::isInstalled() === false) { ?>
                 <div class="metabox-holder">
                     <div class="postbox">
                         <div class="inside text-center">
                             <div class="inner-sm">
-                                <p class="text-muted text-larger"><?php echo sprintf(AAM_Backend_View_Helper::preparePhrase('Keep your website error-free with our CodePinch plugin [(%sread more%s)]', 'small'), '<a href="https://wordpress.org/plugins/wp-error-fix/" target="-blank">', '</a>'); ?></p>
-                                <a href="<?php echo $codepinch['url']; ?>" class="btn btn-lg btn-warning">
+                                <p class="text-muted text-larger"><?php echo __('Keep your website secure and error-free with our CodePinch plugin', AAM_KEY); ?></p>
+                                <a href="<?php echo AAM_Backend_View_CodePinch::getUrl(AAM_CODEPINCH_AFFILIATE_CODE); ?>" class="btn btn-lg btn-codepinch" target="_blank">
                                     <img src="http://codepinch.io/frontend/img/codepinch-icon.svg" /> Install CodePinch
                                 </a>
                             </div>
