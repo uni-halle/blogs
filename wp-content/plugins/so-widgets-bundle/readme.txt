@@ -1,9 +1,9 @@
 === SiteOrigin Widgets Bundle ===
 Tags: bundle, widget, button, slider, image, carousel, price table, google maps, tinymce, social links
 Requires at least: 3.9
-Tested up to: 4.6
-Stable tag: 1.7.1
-Build time: 2016-09-21T16:57:15+02:00
+Tested up to: 4.7
+Stable tag: 1.7.2
+Build time: 2016-11-10T09:26:59+02:00
 License: GPLv3 or later
 Contributors: gpriday, braam-genis
 
@@ -50,6 +50,20 @@ The SiteOrigin Widgets Bundle is the perfect platform to build widgets for your 
 3. An example of the button widget.
 
 == Changelog ==
+
+= 1.7.2 - 09 November 2016 =
+* Made fixes to pass PHP 7 compatibility checks.
+* Image Widget: Get alt and title text from chosen image.
+* Replaced markup parser with more actively maintained one.
+* Simple Masonry: ensure resize on load
+* Image Grid: Allow 0 as valid spacing value.
+* Editor Widget: Call `WP_Embed::run_shortcode` on Editor widget content
+* Maps: Added missing `typeof` causing maps api not to load properly.
+* Icon: Fixed URL output.
+* Fixed double slash in URLs.
+* Features: Use Measurement fields.
+* Apply modify_form to form arrays created in the constructor.
+* Contact Form: add email default email subject if no subject defined.
 
 = 1.7.1 - 21 September 2016 =
 * Fixed case of Maps widget in sidebar causing an error on pages without that sidebar.
