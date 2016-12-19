@@ -23,7 +23,7 @@ function catchbox_customize_register( $wp_customize ) {
 	//print_r($options);
 
 	//Custom Controls
-	require get_template_directory() . '/inc/customizer/customizer-custom-controls.php';
+	require trailingslashit( get_template_directory() ) . 'inc/customizer/customizer-custom-controls.php';
 
 	$theme_slug = 'catchbox_theme_';
 
@@ -665,7 +665,7 @@ function catchbox_customize_register( $wp_customize ) {
 	);
 
 	//@remove Remove if block when WordPress 4.8 is released
-	if( !function_exists( 'has_site_icon' ) ) {
+	if ( !function_exists( 'has_site_icon' ) ) {
 		$settings_favicon = array(
 			//Favicon
 			'fav_icon' => array(
@@ -696,7 +696,7 @@ function catchbox_customize_register( $wp_customize ) {
 		$settings_parameters = array_merge( $settings_parameters, $settings_favicon);
 	}
 
-	if( function_exists( 'has_custom_logo' ) ) {
+	if ( function_exists( 'has_custom_logo' ) ) {
 		$settings_header_image = array(
 			//Favicon
 			'header_image_position' => array(
@@ -718,8 +718,13 @@ function catchbox_customize_register( $wp_customize ) {
 		$settings_parameters = array_merge( $settings_parameters, $settings_header_image);
 	}
 
+	//@remove Remove if block and custom_css from $settings_paramater when WordPress 5.0 is released
+	if( function_exists( 'wp_update_custom_css_post' ) ) {
+		unset( $settings_parameters['custom_css'] );
+	}
+
 	foreach ( $settings_parameters as $option ) {
-		if( 'image' == $option['field_type'] ) {
+		if ( 'image' == $option['field_type'] ) {
 			$wp_customize->add_setting(
 				// $id
 				$theme_slug . 'options[' . $option['id'] . ']',
@@ -743,7 +748,7 @@ function catchbox_customize_register( $wp_customize ) {
 				)
 			);
 		}
-		else if ('checkbox' == $option['field_type'] ) {
+		elseif ('checkbox' == $option['field_type'] ) {
 			$wp_customize->add_setting(
 				// $id
 				$theme_slug . 'options[' . $option['id'] . ']',
@@ -830,7 +835,7 @@ function catchbox_customize_register( $wp_customize ) {
 		}
 	}
 
-	if( !isset( $options['slider_qty'] ) || !is_numeric( $options['slider_qty'] ) ) {
+	if ( !isset( $options['slider_qty'] ) || !is_numeric( $options['slider_qty'] ) ) {
 		$options[ 'slider_qty' ] = 4;
 	}
 
@@ -871,7 +876,8 @@ function catchbox_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting( 'catchbox_theme_options[reset_all_settings]', array(
 		'capability'		=> 'edit_theme_options',
-		'sanitize_callback' => 'catchbox_reset_all_settings',
+		'sanitize_callback' => 'catchbox_sanitize_checkbox',
+		'type'				=> 'option',
 		'transport'			=> 'postMessage',
 	) );
 
@@ -893,7 +899,7 @@ function catchbox_customize_register( $wp_customize ) {
 	 * Has dummy Sanitizaition function as it contains no value to be sanitized
 	 */
 	$wp_customize->add_setting( 'important_links', array(
-		'sanitize_callback'	=> 'catchbox_sanitize_important_link',
+		'sanitize_callback'	=> 'sanitize_text_field',
 	) );
 
 	$wp_customize->add_control( new CatchBox_Important_Links( $wp_customize, 'important_links', array(
@@ -927,25 +933,23 @@ add_action( 'customize_save', 'catchbox_customize_preview' );
  * @since Catch Box 3.3
  */
 function catchbox_customize_scripts() {
-    wp_register_script( 'catchbox_customizer_custom', get_template_directory_uri() . '/inc/customizer-custom-scripts.js', array( 'jquery' ), '20140108', true );
+    wp_enqueue_script( 'catchbox_customizer_custom', get_template_directory_uri() . '/inc/customizer-custom-scripts.js', array( 'jquery' ), '20140108', true );
 
     $catchbox_misc_links = array(
-                            'upgrade_link' 				=> esc_url( 'https://catchthemes.com/themes/catch-box-pro/' ),
-                            'upgrade_text'              => __( 'Upgrade To Pro', 'catch-box' ),
-                            );
+		'reset_message' => esc_html__( 'Refresh the customizer page after saving to view reset effects', 'catch-box' ),
+	);
 
-    //Add More Theme Options Button
+	// Send reset message as object to custom customizer js
     wp_localize_script( 'catchbox_customizer_custom', 'catchbox_misc_links', $catchbox_misc_links );
-
-    wp_enqueue_script( 'catchbox_customizer_custom' );
-
-    wp_enqueue_style( 'catchbox_customizer_custom', get_template_directory_uri() . '/inc/catchbox-customizer.css');
 }
 add_action( 'customize_controls_enqueue_scripts', 'catchbox_customize_scripts');
 
 
 //Active callbacks for customizer
-require get_template_directory() . '/inc/customizer/customizer-active-callbacks.php';
+require trailingslashit( get_template_directory() ) . 'inc/customizer/customizer-active-callbacks.php';
 
 //Sanitize functions for customizer
-require get_template_directory() . '/inc/customizer/customizer-sanitize-functions.php';
+require trailingslashit( get_template_directory() ) . 'inc/customizer/customizer-sanitize-functions.php';
+
+// Add Upgrade to Pro Button.
+require trailingslashit( get_template_directory() ) . 'inc/customizer/upgrade-button/class-customize.php';

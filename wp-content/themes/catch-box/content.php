@@ -41,7 +41,7 @@
             </div><!-- .entry-summary -->
         <?php elseif ( $current_content_layout=='excerpt' && !empty( $catchbox_excerpt ) ) : // Only display Featured Image and Excerpts if checked in Theme Option ?>
             <div class="entry-summary">
-                <?php if( has_post_thumbnail() ):?>
+                <?php if ( has_post_thumbnail() ):?>
                		<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'catch-box' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
 						<?php the_post_thumbnail('featured-slider'); ?>
                    	</a>

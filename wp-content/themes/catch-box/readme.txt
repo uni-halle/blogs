@@ -59,6 +59,7 @@ Added translation for Catalan by Rafa Gares (Email: ragafus@gmail.com)
 Added translation for Romanian by Marius Tirteu (Email: admin@mannius.ro)
 Added translation for Ukrainian by Alexandr Baryshnyev (Email: abb@eksi.net) and Eksi.Net (Email: info@eksi.net)
 Added Translation for Lithuanian
+Added Translation for Turkish by Cem (Email: cem@karincakitap.com)
 
 == Menus ===
 There are 3 Menus registered in this theme. Primary, Secondary and Footer menu.

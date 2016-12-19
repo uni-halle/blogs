@@ -16,7 +16,7 @@ do_action( 'catchbox_above_secondary' );
 
 $layout = catchbox_get_theme_layout();
 
-if ( $layout == 'no-sidebar-one-column' || $layout == 'no-sidebar' || is_page_template( 'page-disable-sidebar.php' ) || is_page_template( 'page-fullwidth.php' ) || is_page_template( 'page-onecolumn.php' ) ) :
+if ( 'no-sidebar-one-column' == $layout || 'no-sidebar' == $layout || is_page_template( 'page-disable-sidebar.php' ) || is_page_template( 'page-fullwidth.php' ) || is_page_template( 'page-onecolumn.php' ) ) :
 	return false;
 else :
 ?>

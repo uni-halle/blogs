@@ -88,10 +88,10 @@ function catchbox_sidebar_layout() {
                     <?php
                     foreach ($sidebar_layout as $field) {
                         $meta = get_post_meta( $post->ID, $field['id'], true );
-                        if(empty( $meta ) ){
+                        if (empty( $meta ) ){
                             $meta='default';
                         }
-                        if( $field['thumbnail']==' ' ): ?>
+                        if ( $field['thumbnail']==' ' ): ?>
                                 <label class="description">
                                     <input type="radio" name="<?php echo $field['id']; ?>" value="<?php echo $field['value']; ?>" <?php checked( $field['value'], $meta ); ?>/>&nbsp;&nbsp;<?php echo $field['label']; ?>
                                 </label>

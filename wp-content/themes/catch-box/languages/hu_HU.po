@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box 2.7.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-23 13:50+0545\n"
-"PO-Revision-Date: 2016-09-23 13:50+0545\n"
+"Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
+"POT-Creation-Date: 2016-12-07 14:33-0500\n"
+"PO-Revision-Date: 2016-12-07 14:33-0500\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: Szempy <szempy@gmail.com>\n"
 "Language: hu_HU\n"
@@ -114,7 +114,7 @@ msgstr "Hozzászólások lezárva."
 #: ../content-gallery.php:15 ../content-gallery.php:46 ../content-image.php:14
 #: ../content-link.php:15 ../content-quote.php:13 ../content-status.php:14
 #: ../content.php:14 ../content.php:17 ../content.php:45
-#: ../inc/catchbox-sliders.php:83
+#: ../inc/catchbox-sliders.php:82
 #, php-format
 msgid "Permalink to %s"
 msgstr "Elérési útvonal %s"
@@ -140,7 +140,7 @@ msgctxt "comments number"
 msgid "%"
 msgstr "%"
 
-#: ../content-aside.php:34 ../content.php:56 ../functions.php:362
+#: ../content-aside.php:34 ../content.php:56 ../functions.php:287
 #, php-format
 msgid "Continue reading %s"
 msgstr "Tovább %s"
@@ -173,8 +173,8 @@ msgstr "<b>%</b> Hozzászólás"
 #: ../content-aside.php:56 ../content-featured.php:51
 #: ../content-gallery.php:94 ../content-image.php:71 ../content-link.php:48
 #: ../content-page.php:27 ../content-quote.php:76 ../content-single.php:64
-#: ../content-status.php:49 ../content.php:106 ../functions.php:533
-#: ../functions.php:561 ../image.php:97
+#: ../content-status.php:49 ../content.php:106 ../functions.php:458
+#: ../functions.php:486 ../image.php:97
 msgid "Edit"
 msgstr "Szerkesztés"
 
@@ -251,7 +251,7 @@ msgstr ""
 "szerző </span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s"
 "\" title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
 
-#: ../content-image.php:42 ../functions.php:599
+#: ../content-image.php:42 ../functions.php:524
 #, php-format
 msgid "View all posts by %s"
 msgstr "Összes bejegyzés megjelenítése %stől"
@@ -335,43 +335,43 @@ msgstr "Másodlagos Menü"
 msgid "Footer Menu"
 msgstr "Lábléc Menü"
 
-#: ../functions.php:417 ../functions.php:446 ../single.php:15
+#: ../functions.php:342 ../functions.php:371 ../single.php:15
 msgid "Post navigation"
 msgstr "Hozzászólás navigáció"
 
-#: ../functions.php:425 ../functions.php:454
+#: ../functions.php:350 ../functions.php:379
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> Régebbi hozzászólások"
 
-#: ../functions.php:426 ../functions.php:455
+#: ../functions.php:351 ../functions.php:380
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Újabb hozzászólások <span class=\"meta-nav\">&rarr;</span>"
 
-#: ../functions.php:533
+#: ../functions.php:458
 msgid "Pingback:"
 msgstr "Pingback:"
 
 #. translators: 1: comment author, 2: date and time
-#: ../functions.php:550
+#: ../functions.php:475
 #, php-format
 msgid "%1$s on %2$s <span class=\"says\">said:</span>"
 msgstr "%1$s ekkor %2$s <span class=\"says\">ezt mondta:</span>"
 
 #. translators: 1: date, 2: time
-#: ../functions.php:556
+#: ../functions.php:481
 #, php-format
 msgid "%1$s at %2$s"
 msgstr "%1$s ekkor %2$s"
 
-#: ../functions.php:565
+#: ../functions.php:490
 msgid "Your comment is awaiting moderation."
 msgstr "A hozzászólása moderálásra vár."
 
-#: ../functions.php:574
+#: ../functions.php:499
 msgid "Reply <span>&darr;</span>"
 msgstr "Válasz <span>&darr;</span>"
 
-#: ../functions.php:593
+#: ../functions.php:518
 #, php-format
 msgid ""
 "<span class=\"sep\">Posted on </span><a href=\"%1$s\" title=\"%2$s\" rel="
@@ -386,114 +386,114 @@ msgstr ""
 "span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title="
 "\"%6$s\" rel=\"author\">%7$s</a></span></span>"
 
-#: ../functions.php:666
+#: ../functions.php:591
 msgid "ID"
 msgstr "ID"
 
-#: ../functions.php:785
+#: ../functions.php:710
 msgid "Name"
 msgstr "Név"
 
-#: ../functions.php:787 ../functions.php:1014
-#: ../inc/customizer/customizer.php:613 ../inc/theme-options.php:808
+#: ../functions.php:712 ../functions.php:939
+#: ../inc/customizer/customizer.php:613 ../inc/theme-options.php:820
 msgid "Email"
 msgstr "Emailcím"
 
-#: ../functions.php:920
+#: ../functions.php:845
 msgid "Footer Social Links Menu"
 msgstr ""
 
-#: ../functions.php:924 ../inc/customizer/customizer.php:433
-#: ../inc/theme-options.php:525 ../inc/theme-options.php:701
+#: ../functions.php:849 ../inc/customizer/customizer.php:433
+#: ../inc/theme-options.php:537 ../inc/theme-options.php:713
 msgid "Facebook"
 msgstr "Facebook"
 
-#: ../functions.php:929 ../inc/customizer/customizer.php:443
-#: ../inc/theme-options.php:526 ../inc/theme-options.php:706
+#: ../functions.php:854 ../inc/customizer/customizer.php:443
+#: ../inc/theme-options.php:538 ../inc/theme-options.php:718
 msgid "Twitter"
 msgstr "Twitter"
 
-#: ../functions.php:934
+#: ../functions.php:859
 msgid "Google Plus"
 msgstr "Google Plus"
 
-#: ../functions.php:939
+#: ../functions.php:864
 msgid "Linkedin"
 msgstr "Linkedin"
 
-#: ../functions.php:944 ../inc/customizer/customizer.php:473
-#: ../inc/theme-options.php:724
+#: ../functions.php:869 ../inc/customizer/customizer.php:473
+#: ../inc/theme-options.php:736
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: ../functions.php:949
+#: ../functions.php:874
 msgid "YouTube"
 msgstr "YouTube"
 
-#: ../functions.php:954 ../inc/theme-options.php:736
+#: ../functions.php:879 ../inc/theme-options.php:748
 msgid "RSS Feed"
 msgstr "RSS Feed"
 
-#: ../functions.php:959 ../inc/theme-options.php:742
+#: ../functions.php:884 ../inc/theme-options.php:754
 msgid "Deviantart"
 msgstr "Deviantart"
 
-#: ../functions.php:964 ../inc/customizer/customizer.php:513
-#: ../inc/theme-options.php:748
+#: ../functions.php:889 ../inc/customizer/customizer.php:513
+#: ../inc/theme-options.php:760
 msgid "Tumblr"
 msgstr "Tumblr"
 
-#: ../functions.php:969 ../inc/customizer/customizer.php:523
-#: ../inc/theme-options.php:754
+#: ../functions.php:894 ../inc/customizer/customizer.php:523
+#: ../inc/theme-options.php:766
 msgid "Vimeo"
 msgstr "Vimeo"
 
-#: ../functions.php:974 ../inc/customizer/customizer.php:533
-#: ../inc/theme-options.php:760
+#: ../functions.php:899 ../inc/customizer/customizer.php:533
+#: ../inc/theme-options.php:772
 msgid "Dribbble"
 msgstr "Dribbble"
 
-#: ../functions.php:979 ../inc/customizer/customizer.php:543
-#: ../inc/theme-options.php:766
+#: ../functions.php:904 ../inc/customizer/customizer.php:543
+#: ../inc/theme-options.php:778
 msgid "MySpace"
 msgstr "MySpace"
 
-#: ../functions.php:984
+#: ../functions.php:909
 msgid "AIM"
 msgstr "AIM"
 
-#: ../functions.php:989 ../inc/customizer/customizer.php:563
-#: ../inc/theme-options.php:778
+#: ../functions.php:914 ../inc/customizer/customizer.php:563
+#: ../inc/theme-options.php:790
 msgid "Flickr"
 msgstr "Flickr"
 
-#: ../functions.php:994 ../inc/customizer/customizer.php:573
-#: ../inc/theme-options.php:784
+#: ../functions.php:919 ../inc/customizer/customizer.php:573
+#: ../inc/theme-options.php:796
 msgid "Slideshare"
 msgstr "Slideshare"
 
-#: ../functions.php:999 ../inc/customizer/customizer.php:583
-#: ../inc/theme-options.php:790
+#: ../functions.php:924 ../inc/customizer/customizer.php:583
+#: ../inc/theme-options.php:802
 msgid "Instagram"
 msgstr "Instagram"
 
-#: ../functions.php:1004 ../inc/customizer/customizer.php:593
-#: ../inc/theme-options.php:796
+#: ../functions.php:929 ../inc/customizer/customizer.php:593
+#: ../inc/theme-options.php:808
 msgid "Skype"
 msgstr "Skype"
 
-#: ../functions.php:1009 ../inc/customizer/customizer.php:603
-#: ../inc/theme-options.php:802
+#: ../functions.php:934 ../inc/customizer/customizer.php:603
+#: ../inc/theme-options.php:814
 msgid "Soundcloud"
 msgstr "Soundcloud"
 
-#: ../functions.php:1019 ../inc/customizer/customizer.php:623
-#: ../inc/theme-options.php:813
+#: ../functions.php:944 ../inc/customizer/customizer.php:623
+#: ../inc/theme-options.php:825
 msgid "Xing"
 msgstr "Xing"
 
-#: ../functions.php:1024 ../inc/customizer/customizer.php:633
-#: ../inc/theme-options.php:818
+#: ../functions.php:949 ../inc/customizer/customizer.php:633
+#: ../inc/theme-options.php:830
 msgid "Meetup"
 msgstr "Meetup"
 
@@ -588,12 +588,12 @@ msgid "Mountain"
 msgstr "Hegy"
 
 #: ../inc/customizer/customizer-custom-controls.php:18
-#: ../inc/theme-options.php:524
+#: ../inc/theme-options.php:536
 msgid "Theme Instructions"
 msgstr "Theme Instructions"
 
 #: ../inc/customizer/customizer-custom-controls.php:22
-#: ../inc/theme-options.php:522
+#: ../inc/theme-options.php:534
 msgid "Support"
 msgstr "Support"
 
@@ -609,8 +609,8 @@ msgstr ""
 msgid "Review"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:33 ../inc/theme-options.php:209
-#: ../inc/theme-options.php:210 ../inc/theme-options.php:542
+#: ../inc/customizer/customizer.php:33 ../inc/theme-options.php:212
+#: ../inc/theme-options.php:213 ../inc/theme-options.php:554
 msgid "Theme Options"
 msgstr "Téma Beállítások"
 
@@ -663,7 +663,7 @@ msgid "Enable Secondary & Footer Menu in Mobile Devices?"
 msgstr "Engedélyezze a Másodlagos és a Lábléc Menüt mobil eszközökön ?"
 
 #: ../inc/customizer/customizer.php:83 ../inc/customizer/customizer.php:327
-#: ../inc/theme-options.php:164
+#: ../inc/theme-options.php:166
 msgid "Custom CSS Styles"
 msgstr "Egyéni CSS stílusok"
 
@@ -675,11 +675,11 @@ msgstr ""
 msgid "Featured Slider"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:101 ../inc/theme-options.php:608
+#: ../inc/customizer/customizer.php:101 ../inc/theme-options.php:620
 msgid "Slider Options"
 msgstr "Oszlop beállítások"
 
-#: ../inc/customizer/customizer.php:106 ../inc/theme-options.php:642
+#: ../inc/customizer/customizer.php:106 ../inc/theme-options.php:654
 msgid "Slider Effect Options"
 msgstr "Slider hatások beállítása"
 
@@ -695,7 +695,7 @@ msgstr ""
 msgid "Custom Color Options"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:133 ../inc/theme-options.php:544
+#: ../inc/customizer/customizer.php:133 ../inc/theme-options.php:556
 msgid "Social Links"
 msgstr "Közösségi linkek"
 
@@ -708,7 +708,7 @@ msgid "Predefined Social Icons"
 msgstr ""
 
 #: ../inc/customizer/customizer.php:145 ../inc/customizer/customizer.php:150
-#: ../inc/theme-options.php:545
+#: ../inc/theme-options.php:557
 msgid "Webmaster Tools"
 msgstr "Webmester Eszközök"
 
@@ -733,7 +733,7 @@ msgstr "Hivatkozás színe"
 msgid "Feed Redirect url"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:291 ../inc/theme-options.php:358
+#: ../inc/customizer/customizer.php:291 ../inc/theme-options.php:361
 msgid "Check to move above the Header/Logo Image"
 msgstr "Pipálja ki ahhoz hogy a Fejléc/Logó fölött jelenjen meg"
 
@@ -741,11 +741,11 @@ msgstr "Pipálja ki ahhoz hogy a Fejléc/Logó fölött jelenjen meg"
 msgid "Default Display Text in Search"
 msgstr "Default Display Text in Search"
 
-#: ../inc/customizer/customizer.php:309 ../inc/theme-options.php:388
+#: ../inc/customizer/customizer.php:309 ../inc/theme-options.php:391
 msgid "Check to Disable"
 msgstr "Letíltáshoz pipálja ki"
 
-#: ../inc/customizer/customizer.php:318 ../inc/theme-options.php:403
+#: ../inc/customizer/customizer.php:318 ../inc/theme-options.php:406
 msgid "Check to Enable"
 msgstr "Engedélyezéshez pipálja ki"
 
@@ -757,7 +757,7 @@ msgstr ""
 msgid "Check to Exclude Slider posts from Homepage posts"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:360 ../inc/theme-options.php:623
+#: ../inc/customizer/customizer.php:360 ../inc/theme-options.php:635
 msgid "Number of Slides"
 msgstr "Oszlopok száma"
 
@@ -771,47 +771,47 @@ msgstr ""
 msgid "Transition Effect"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:384 ../inc/theme-options.php:652
+#: ../inc/customizer/customizer.php:384 ../inc/theme-options.php:664
 msgid "fade"
 msgstr "fade"
 
-#: ../inc/customizer/customizer.php:385 ../inc/theme-options.php:653
+#: ../inc/customizer/customizer.php:385 ../inc/theme-options.php:665
 msgid "wipe"
 msgstr "wipe"
 
-#: ../inc/customizer/customizer.php:386 ../inc/theme-options.php:654
+#: ../inc/customizer/customizer.php:386 ../inc/theme-options.php:666
 msgid "scrollUp"
 msgstr "scrollUp"
 
-#: ../inc/customizer/customizer.php:387 ../inc/theme-options.php:655
+#: ../inc/customizer/customizer.php:387 ../inc/theme-options.php:667
 msgid "scrollDown"
 msgstr "scrollDown"
 
-#: ../inc/customizer/customizer.php:388 ../inc/theme-options.php:656
+#: ../inc/customizer/customizer.php:388 ../inc/theme-options.php:668
 msgid "scrollLeft"
 msgstr "scrollLeft"
 
-#: ../inc/customizer/customizer.php:389 ../inc/theme-options.php:657
+#: ../inc/customizer/customizer.php:389 ../inc/theme-options.php:669
 msgid "scrollRight"
 msgstr "scrollRight"
 
-#: ../inc/customizer/customizer.php:390 ../inc/theme-options.php:658
+#: ../inc/customizer/customizer.php:390 ../inc/theme-options.php:670
 msgid "blindX"
 msgstr "blindX"
 
-#: ../inc/customizer/customizer.php:391 ../inc/theme-options.php:659
+#: ../inc/customizer/customizer.php:391 ../inc/theme-options.php:671
 msgid "blindY"
 msgstr "blindY"
 
-#: ../inc/customizer/customizer.php:392 ../inc/theme-options.php:660
+#: ../inc/customizer/customizer.php:392 ../inc/theme-options.php:672
 msgid "blindZ"
 msgstr "blindZ"
 
-#: ../inc/customizer/customizer.php:393 ../inc/theme-options.php:661
+#: ../inc/customizer/customizer.php:393 ../inc/theme-options.php:673
 msgid "cover"
 msgstr "cover"
 
-#: ../inc/customizer/customizer.php:394 ../inc/theme-options.php:662
+#: ../inc/customizer/customizer.php:394 ../inc/theme-options.php:674
 msgid "shuffle"
 msgstr "shuffle"
 
@@ -819,7 +819,7 @@ msgstr "shuffle"
 msgid "Transition Delay (in seconds)"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:415 ../inc/theme-options.php:677
+#: ../inc/customizer/customizer.php:415 ../inc/theme-options.php:689
 msgid "Transition Length"
 msgstr "Átmenet hossza"
 
@@ -827,11 +827,11 @@ msgstr "Átmenet hossza"
 msgid "Google+"
 msgstr "Google+"
 
-#: ../inc/customizer/customizer.php:463 ../inc/theme-options.php:718
+#: ../inc/customizer/customizer.php:463 ../inc/theme-options.php:730
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: ../inc/customizer/customizer.php:483 ../inc/theme-options.php:730
+#: ../inc/customizer/customizer.php:483 ../inc/theme-options.php:742
 msgid "Youtube"
 msgstr "Youtube"
 
@@ -843,11 +843,11 @@ msgstr "RSS"
 msgid "deviantART"
 msgstr "deviantART"
 
-#: ../inc/customizer/customizer.php:553 ../inc/theme-options.php:772
+#: ../inc/customizer/customizer.php:553 ../inc/theme-options.php:784
 msgid "Aim"
 msgstr "Aim"
 
-#: ../inc/customizer/customizer.php:645 ../inc/theme-options.php:842
+#: ../inc/customizer/customizer.php:645 ../inc/theme-options.php:854
 msgid "Code to display on Header"
 msgstr "A fejlécben megjelenítendő kód"
 
@@ -856,7 +856,7 @@ msgid ""
 "Here you can put scripts from Google, Facebook etc. which will load on Header"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:656 ../inc/theme-options.php:853
+#: ../inc/customizer/customizer.php:656 ../inc/theme-options.php:865
 msgid "Code to display on Footer"
 msgstr "A láblécben megjelenítendő kód"
 
@@ -873,47 +873,43 @@ msgstr ""
 msgid "Web Clip Icon"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:704 ../inc/theme-options.php:571
+#: ../inc/customizer/customizer.php:704 ../inc/theme-options.php:583
 msgid "Header Image Location"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:711 ../inc/theme-options.php:574
+#: ../inc/customizer/customizer.php:711 ../inc/theme-options.php:586
 msgid "Above Header Content"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:712 ../inc/theme-options.php:576
+#: ../inc/customizer/customizer.php:712 ../inc/theme-options.php:588
 msgid "Between Site Title-Logo"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:713 ../inc/theme-options.php:578
+#: ../inc/customizer/customizer.php:713 ../inc/theme-options.php:590
 msgid "Below Header Content"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:852
+#: ../inc/customizer/customizer.php:857
 #, php-format
 msgid "#%s Featured Post ID"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:867
+#: ../inc/customizer/customizer.php:872
 msgid ""
 "Caution: Reset all settings to default. Refresh the page after save to view "
 "full effects."
 msgstr ""
 
-#: ../inc/customizer/customizer.php:869
+#: ../inc/customizer/customizer.php:874
 msgid "Reset all settings"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:879
+#: ../inc/customizer/customizer.php:885
 msgid "Check to reset all settings to default"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:889 ../inc/customizer/customizer.php:900
+#: ../inc/customizer/customizer.php:895 ../inc/customizer/customizer.php:906
 msgid "Important Links"
-msgstr ""
-
-#: ../inc/customizer/customizer.php:934
-msgid "Upgrade To Pro"
 msgstr ""
 
 #: ../inc/default-options.php:29
@@ -980,8 +976,8 @@ msgstr "WordPress"
 msgid "Theme: Catch Box by "
 msgstr "Theme: Catch Box by "
 
-#: ../inc/default-options.php:235 ../inc/theme-options.php:509
-#: ../inc/theme-options.php:510
+#: ../inc/default-options.php:235 ../inc/theme-options.php:521
+#: ../inc/theme-options.php:522
 msgid "Catch Themes"
 msgstr "Catch Themes"
 
@@ -1009,119 +1005,119 @@ msgstr "Tartalom Elrendezése"
 msgid "Move Site Title and Tagline?"
 msgstr "Helyezzük át a Honlap Címét és a Cimkéket ?"
 
-#: ../inc/theme-options.php:172
+#: ../inc/theme-options.php:175
 msgid "Scroll Up"
 msgstr ""
 
-#: ../inc/theme-options.php:234
+#: ../inc/theme-options.php:237
 msgid "Insert as Favicon"
 msgstr "Insert as Favicon"
 
-#: ../inc/theme-options.php:234
+#: ../inc/theme-options.php:237
 msgid "Add/Change Favicon"
 msgstr "Favicon Hozzáadása/Megváltoztatása"
 
-#: ../inc/theme-options.php:250
+#: ../inc/theme-options.php:253
 msgid "Insert as Web Clip Icon"
 msgstr "Insert as Web Clip Icon"
 
-#: ../inc/theme-options.php:250
+#: ../inc/theme-options.php:253
 msgid "Add/Change Web Clip Icon"
 msgstr "Web Clip Ikon Hozzáadása/Megváltoztatása"
 
-#: ../inc/theme-options.php:330
+#: ../inc/theme-options.php:333
 msgid "Words"
 msgstr "Szavak"
 
-#: ../inc/theme-options.php:417
+#: ../inc/theme-options.php:429
 msgid "CSS Tutorial from W3Schools."
 msgstr "CSS útmutatót a W3Schools-on talál."
 
-#: ../inc/theme-options.php:417
+#: ../inc/theme-options.php:429
 msgid "http://www.w3schools.com/css/default.asp"
 msgstr "http://www.w3schools.com/css/default.asp"
 
-#: ../inc/theme-options.php:417
+#: ../inc/theme-options.php:429
 msgid "CSS Tutorial"
 msgstr "CSS Útmutató"
 
-#: ../inc/theme-options.php:417
+#: ../inc/theme-options.php:429
 msgid "Click Here to Read"
 msgstr "Kattintson ide az olvasáshoz"
 
-#: ../inc/theme-options.php:431 ../inc/theme-options.php:620
+#: ../inc/theme-options.php:443 ../inc/theme-options.php:632
 msgid "Check to disable"
 msgstr "Letíltáshoz pipálja ki"
 
-#: ../inc/theme-options.php:507
+#: ../inc/theme-options.php:519
 msgid "Theme Options By"
 msgstr "Theme Options By"
 
-#: ../inc/theme-options.php:509
+#: ../inc/theme-options.php:521
 msgid "https://catchthemes.com/"
 msgstr "https://catchthemes.com/"
 
-#: ../inc/theme-options.php:516
+#: ../inc/theme-options.php:528
 msgid "https://catchthemes.com/themes/catch-box-pro/"
 msgstr "https://catchthemes.com/themes/catch-box-pro/"
 
-#: ../inc/theme-options.php:516
+#: ../inc/theme-options.php:528
 msgid "Upgrade to Catch Box Pro"
 msgstr "Upgrade to Catch Box Pro"
 
-#: ../inc/theme-options.php:521
+#: ../inc/theme-options.php:533
 msgid "https://catchthemes.com/donate/"
 msgstr "https://catchthemes.com/donate/"
 
-#: ../inc/theme-options.php:521
+#: ../inc/theme-options.php:533
 msgid "Donate"
 msgstr "Adományozzon most"
 
-#: ../inc/theme-options.php:522
+#: ../inc/theme-options.php:534
 msgid "https://catchthemes.com/support/"
 msgstr "https://catchthemes.com/support/"
 
-#: ../inc/theme-options.php:523
+#: ../inc/theme-options.php:535
 msgid "https://catchthemes.com/support-forum/forum/catch-box-public/"
 msgstr "https://catchthemes.com/support-forum/forum/catch-box-public/"
 
-#: ../inc/theme-options.php:523
+#: ../inc/theme-options.php:535
 msgid "Support Forum"
 msgstr "Support Forum"
 
-#: ../inc/theme-options.php:524
+#: ../inc/theme-options.php:536
 msgid "https://catchthemes.com/theme-instructions/catch-box/"
 msgstr "https://catchthemes.com/theme-instructions/catch-box/"
 
-#: ../inc/theme-options.php:525
+#: ../inc/theme-options.php:537
 msgid "https://www.facebook.com/catchthemes/"
 msgstr "https://www.facebook.com/catchthemes/"
 
-#: ../inc/theme-options.php:525
+#: ../inc/theme-options.php:537
 msgid "Like Catch Themes on Facebook"
 msgstr "Like Catch Themes on Facebook"
 
-#: ../inc/theme-options.php:526
+#: ../inc/theme-options.php:538
 msgid "https://twitter.com/catchthemes/"
 msgstr "https://twitter.com/catchthemes/"
 
-#: ../inc/theme-options.php:526
+#: ../inc/theme-options.php:538
 msgid "Follow Catch Themes on Twitter"
 msgstr "Follow Catch Themes on Twitter"
 
-#: ../inc/theme-options.php:527
+#: ../inc/theme-options.php:539
 msgid "http://wordpress.org/support/view/theme-reviews/catch-box/"
 msgstr "http://wordpress.org/support/view/theme-reviews/catch-box/"
 
-#: ../inc/theme-options.php:527
+#: ../inc/theme-options.php:539
 msgid "Rate us 5 Star on WordPress"
 msgstr "Rate us 5 Star on WordPress"
 
-#: ../inc/theme-options.php:527
+#: ../inc/theme-options.php:539
 msgid "5 Star Rating"
 msgstr "5 Star Rating"
 
-#: ../inc/theme-options.php:533
+#: ../inc/theme-options.php:545
 #, php-format
 msgctxt "1: Customizer Link Start, 2: Customizer Link End"
 msgid ""
@@ -1129,27 +1125,27 @@ msgid ""
 "Customizer %2$s instead."
 msgstr ""
 
-#: ../inc/theme-options.php:543
+#: ../inc/theme-options.php:555
 msgid "Featured Post Slider"
 msgstr "Featured Post Slider"
 
-#: ../inc/theme-options.php:554
+#: ../inc/theme-options.php:566
 msgid "Header Image:"
 msgstr ""
 
-#: ../inc/theme-options.php:563
+#: ../inc/theme-options.php:575
 msgid "Click here to change Header Image"
 msgstr ""
 
-#: ../inc/theme-options.php:565
+#: ../inc/theme-options.php:577
 msgid "Click here to add Header Image"
 msgstr ""
 
-#: ../inc/theme-options.php:612 ../inc/theme-options.php:614
+#: ../inc/theme-options.php:624 ../inc/theme-options.php:626
 msgid "Post Slider Tutorial"
 msgstr "Post Slider Tutorial"
 
-#: ../inc/theme-options.php:614
+#: ../inc/theme-options.php:626
 msgid ""
 "https://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-"
 "slider/"
@@ -1157,23 +1153,23 @@ msgstr ""
 "https://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-"
 "slider/"
 
-#: ../inc/theme-options.php:614
+#: ../inc/theme-options.php:626
 msgid "Click Here to Read Post Slider Tutorial"
 msgstr "Click Here to Read Post Slider Tutorial"
 
-#: ../inc/theme-options.php:618
+#: ../inc/theme-options.php:630
 msgid "Exclude Slider post from Home page posts:"
 msgstr "Csúszka kizárása a Főoldal hozászólásainál:"
 
-#: ../inc/theme-options.php:629
+#: ../inc/theme-options.php:641
 msgid "Featured Post ID"
 msgstr "Kiemelt bejegyzés IDja"
 
-#: ../inc/theme-options.php:631
+#: ../inc/theme-options.php:643
 msgid "Click Here To Edit"
 msgstr "A szerkesztéshez kattintson ide"
 
-#: ../inc/theme-options.php:637
+#: ../inc/theme-options.php:649
 msgid ""
 "<strong>Note</strong>: Here you add in Post IDs which displays on Homepage "
 "Featured Slider."
@@ -1181,28 +1177,28 @@ msgstr ""
 "<strong>Megjegyzés</strong>: Itt adhatod hozzá a bejegyzések IDját amelyek "
 "megjelennek a Főoldal kiemelt oszlopába."
 
-#: ../inc/theme-options.php:638 ../inc/theme-options.php:684
-#: ../inc/theme-options.php:825 ../inc/theme-options.php:864
+#: ../inc/theme-options.php:650 ../inc/theme-options.php:696
+#: ../inc/theme-options.php:837 ../inc/theme-options.php:876
 msgid "Save"
 msgstr "Mentés"
 
-#: ../inc/theme-options.php:647
+#: ../inc/theme-options.php:659
 msgid "Transition Effect:"
 msgstr "Átmenet hatása:"
 
-#: ../inc/theme-options.php:668
+#: ../inc/theme-options.php:680
 msgid "Transition Delay"
 msgstr "Átmenet késleltetés"
 
-#: ../inc/theme-options.php:671 ../inc/theme-options.php:680
+#: ../inc/theme-options.php:683 ../inc/theme-options.php:692
 msgid "second(s)"
 msgstr "másodpercben (s)"
 
-#: ../inc/theme-options.php:712
+#: ../inc/theme-options.php:724
 msgid "Google +"
 msgstr "Google +"
 
-#: ../inc/theme-options.php:824
+#: ../inc/theme-options.php:836
 msgid ""
 "<strong>Note:</strong> Enter the url for correponding social networking "
 "website"
@@ -1210,11 +1206,11 @@ msgstr ""
 "<strong>Megjegyzés:</strong> Írja be a megfelelő szociális hálózatoknak a "
 "linkjét."
 
-#: ../inc/theme-options.php:837
+#: ../inc/theme-options.php:849
 msgid "Header and Footer Code"
 msgstr "Fejléc és Lábléc kód"
 
-#: ../inc/theme-options.php:849
+#: ../inc/theme-options.php:861
 msgid ""
 "Note: Here you can put scripts from Google, Facebook etc. which will load on "
 "Header"
@@ -1222,7 +1218,7 @@ msgstr ""
 "Megjegyzés : Ide teheti be szkripteket Google, Facebook stb. amik a fejlécen "
 "fognak betőltödni."
 
-#: ../inc/theme-options.php:860
+#: ../inc/theme-options.php:872
 msgid ""
 "Note: Here you can put scripts from Google, Facebook, Add This etc. which "
 "will load on footer"
@@ -1335,6 +1331,31 @@ msgstr "Következő <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Archívum címkék: %s"
+
+#, fuzzy
+#~ msgid "Catch Box Pro"
+#~ msgstr "Upgrade to Catch Box Pro"
+
+#, fuzzy
+#~ msgid "Catch Box"
+#~ msgstr "Theme: Catch Box by "
+
+#, fuzzy
+#~ msgid "https://catchthemes.com/themes/catchbox"
+#~ msgstr "https://catchthemes.com/themes/catch-box-pro/"
+
+#, fuzzy
+#~ msgid "https://catchthemes.com"
+#~ msgstr "https://catchthemes.com/"
+
+#, fuzzy
+#~ msgid "Disable Sidebar Template"
+#~ msgstr "Keresősáv letíltása a Fejlécben"
+
+#, fuzzy
+#~ msgctxt "placeholder"
+#~ msgid "Search"
+#~ msgstr "Keresés"
 
 #~ msgid "Daily Archives: %s"
 #~ msgstr "Napi archívum : %s"

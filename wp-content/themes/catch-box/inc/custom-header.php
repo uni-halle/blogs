@@ -180,7 +180,7 @@ function catchbox_admin_header_image() { ?>
 		<?php
 		$color = get_header_textcolor();
 		$image = get_header_image();
-		if ( $color && $color != 'blank' )
+		if ( $color && 'blank' != $color )
 			$style = ' style="color:#' . $color . '"';
 		else
 			$style = ' style="display:none"';
@@ -314,7 +314,7 @@ function catchbox_headerdetails() {
 
 	echo '<div class="logo-wrap clearfix">';
 
-		if ( $sitedetails == '0' ) {
+		if ( '0' == $sitedetails ) {
 			echo catchbox_header_image();
 			if ( 'between' == $position ) {
 				catchbox_main_header_image();

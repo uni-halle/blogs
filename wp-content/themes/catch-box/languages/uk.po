@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-23 13:50+0545\n"
-"PO-Revision-Date: 2016-09-23 13:50+0545\n"
+"Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
+"POT-Creation-Date: 2016-12-07 14:34-0500\n"
+"PO-Revision-Date: 2016-12-07 14:34-0500\n"
 "Last-Translator: Alexandr Baryshnyev <abb@eksi.net>\n"
 "Language-Team: Eksi.Net <info@eksi.net>\n"
 "Language: uk\n"
@@ -115,7 +115,7 @@ msgstr "Коментування заборонено."
 #: ../content-gallery.php:15 ../content-gallery.php:46 ../content-image.php:14
 #: ../content-link.php:15 ../content-quote.php:13 ../content-status.php:14
 #: ../content.php:14 ../content.php:17 ../content.php:45
-#: ../inc/catchbox-sliders.php:83
+#: ../inc/catchbox-sliders.php:82
 #, php-format
 msgid "Permalink to %s"
 msgstr "Постійне посилання на %s"
@@ -141,7 +141,7 @@ msgctxt "comments number"
 msgid "%"
 msgstr "%"
 
-#: ../content-aside.php:34 ../content.php:56 ../functions.php:362
+#: ../content-aside.php:34 ../content.php:56 ../functions.php:287
 #, php-format
 msgid "Continue reading %s"
 msgstr "Продовжити читання %s"
@@ -174,8 +174,8 @@ msgstr "<b>%</b> відповідей"
 #: ../content-aside.php:56 ../content-featured.php:51
 #: ../content-gallery.php:94 ../content-image.php:71 ../content-link.php:48
 #: ../content-page.php:27 ../content-quote.php:76 ../content-single.php:64
-#: ../content-status.php:49 ../content.php:106 ../functions.php:533
-#: ../functions.php:561 ../image.php:97
+#: ../content-status.php:49 ../content.php:106 ../functions.php:458
+#: ../functions.php:486 ../image.php:97
 msgid "Edit"
 msgstr "Редагувати"
 
@@ -253,7 +253,7 @@ msgstr ""
 "автор </span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s"
 "\" title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
 
-#: ../content-image.php:42 ../functions.php:599
+#: ../content-image.php:42 ../functions.php:524
 #, php-format
 msgid "View all posts by %s"
 msgstr "Переглянути всі публікації автора %s"
@@ -337,43 +337,43 @@ msgstr "Додаткове меню"
 msgid "Footer Menu"
 msgstr "Нижнє меню"
 
-#: ../functions.php:417 ../functions.php:446 ../single.php:15
+#: ../functions.php:342 ../functions.php:371 ../single.php:15
 msgid "Post navigation"
 msgstr "Пересування по публікаціях"
 
-#: ../functions.php:425 ../functions.php:454
+#: ../functions.php:350 ../functions.php:379
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> Попередні публікації"
 
-#: ../functions.php:426 ../functions.php:455
+#: ../functions.php:351 ../functions.php:380
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Наступні публікації <span class=\"meta-nav\">&rarr;</span>"
 
-#: ../functions.php:533
+#: ../functions.php:458
 msgid "Pingback:"
 msgstr "Сповіщення (pingback):"
 
 #. translators: 1: comment author, 2: date and time
-#: ../functions.php:550
+#: ../functions.php:475
 #, php-format
 msgid "%1$s on %2$s <span class=\"says\">said:</span>"
 msgstr "%1$s %2$s <span class=\"says\">написав:</span>"
 
 #. translators: 1: date, 2: time
-#: ../functions.php:556
+#: ../functions.php:481
 #, php-format
 msgid "%1$s at %2$s"
 msgstr "%1$s о %2$s"
 
-#: ../functions.php:565
+#: ../functions.php:490
 msgid "Your comment is awaiting moderation."
 msgstr "Ваш коментар очікує на підтвердження модератором."
 
-#: ../functions.php:574
+#: ../functions.php:499
 msgid "Reply <span>&darr;</span>"
 msgstr "Відповідь <span>&darr;</span>"
 
-#: ../functions.php:593
+#: ../functions.php:518
 #, php-format
 msgid ""
 "<span class=\"sep\">Posted on </span><a href=\"%1$s\" title=\"%2$s\" rel="
@@ -388,114 +388,114 @@ msgstr ""
 "span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title="
 "\"%6$s\" rel=\"author\">%7$s</a></span></span>"
 
-#: ../functions.php:666
+#: ../functions.php:591
 msgid "ID"
 msgstr "Ідентифікатор"
 
-#: ../functions.php:785
+#: ../functions.php:710
 msgid "Name"
 msgstr "Ім'я"
 
-#: ../functions.php:787 ../functions.php:1014
-#: ../inc/customizer/customizer.php:613 ../inc/theme-options.php:808
+#: ../functions.php:712 ../functions.php:939
+#: ../inc/customizer/customizer.php:613 ../inc/theme-options.php:820
 msgid "Email"
 msgstr "Електронна пошта"
 
-#: ../functions.php:920
+#: ../functions.php:845
 msgid "Footer Social Links Menu"
 msgstr "Посилання на соціальні мережі в нижньому колонтитулі"
 
-#: ../functions.php:924 ../inc/customizer/customizer.php:433
-#: ../inc/theme-options.php:525 ../inc/theme-options.php:701
+#: ../functions.php:849 ../inc/customizer/customizer.php:433
+#: ../inc/theme-options.php:537 ../inc/theme-options.php:713
 msgid "Facebook"
 msgstr "Фейсбук"
 
-#: ../functions.php:929 ../inc/customizer/customizer.php:443
-#: ../inc/theme-options.php:526 ../inc/theme-options.php:706
+#: ../functions.php:854 ../inc/customizer/customizer.php:443
+#: ../inc/theme-options.php:538 ../inc/theme-options.php:718
 msgid "Twitter"
 msgstr "Твіттер"
 
-#: ../functions.php:934
+#: ../functions.php:859
 msgid "Google Plus"
 msgstr "Google Plus"
 
-#: ../functions.php:939
+#: ../functions.php:864
 msgid "Linkedin"
 msgstr "Linkedin"
 
-#: ../functions.php:944 ../inc/customizer/customizer.php:473
-#: ../inc/theme-options.php:724
+#: ../functions.php:869 ../inc/customizer/customizer.php:473
+#: ../inc/theme-options.php:736
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: ../functions.php:949
+#: ../functions.php:874
 msgid "YouTube"
 msgstr "YouTube"
 
-#: ../functions.php:954 ../inc/theme-options.php:736
+#: ../functions.php:879 ../inc/theme-options.php:748
 msgid "RSS Feed"
 msgstr "RSS Feed"
 
-#: ../functions.php:959 ../inc/theme-options.php:742
+#: ../functions.php:884 ../inc/theme-options.php:754
 msgid "Deviantart"
 msgstr "Deviantart"
 
-#: ../functions.php:964 ../inc/customizer/customizer.php:513
-#: ../inc/theme-options.php:748
+#: ../functions.php:889 ../inc/customizer/customizer.php:513
+#: ../inc/theme-options.php:760
 msgid "Tumblr"
 msgstr "Tumblr"
 
-#: ../functions.php:969 ../inc/customizer/customizer.php:523
-#: ../inc/theme-options.php:754
+#: ../functions.php:894 ../inc/customizer/customizer.php:523
+#: ../inc/theme-options.php:766
 msgid "Vimeo"
 msgstr "Vimeo"
 
-#: ../functions.php:974 ../inc/customizer/customizer.php:533
-#: ../inc/theme-options.php:760
+#: ../functions.php:899 ../inc/customizer/customizer.php:533
+#: ../inc/theme-options.php:772
 msgid "Dribbble"
 msgstr "Dribbble"
 
-#: ../functions.php:979 ../inc/customizer/customizer.php:543
-#: ../inc/theme-options.php:766
+#: ../functions.php:904 ../inc/customizer/customizer.php:543
+#: ../inc/theme-options.php:778
 msgid "MySpace"
 msgstr "MySpace"
 
-#: ../functions.php:984
+#: ../functions.php:909
 msgid "AIM"
 msgstr "AIM"
 
-#: ../functions.php:989 ../inc/customizer/customizer.php:563
-#: ../inc/theme-options.php:778
+#: ../functions.php:914 ../inc/customizer/customizer.php:563
+#: ../inc/theme-options.php:790
 msgid "Flickr"
 msgstr "Flickr"
 
-#: ../functions.php:994 ../inc/customizer/customizer.php:573
-#: ../inc/theme-options.php:784
+#: ../functions.php:919 ../inc/customizer/customizer.php:573
+#: ../inc/theme-options.php:796
 msgid "Slideshare"
 msgstr "Slideshare"
 
-#: ../functions.php:999 ../inc/customizer/customizer.php:583
-#: ../inc/theme-options.php:790
+#: ../functions.php:924 ../inc/customizer/customizer.php:583
+#: ../inc/theme-options.php:802
 msgid "Instagram"
 msgstr "Instagram"
 
-#: ../functions.php:1004 ../inc/customizer/customizer.php:593
-#: ../inc/theme-options.php:796
+#: ../functions.php:929 ../inc/customizer/customizer.php:593
+#: ../inc/theme-options.php:808
 msgid "Skype"
 msgstr "Skype"
 
-#: ../functions.php:1009 ../inc/customizer/customizer.php:603
-#: ../inc/theme-options.php:802
+#: ../functions.php:934 ../inc/customizer/customizer.php:603
+#: ../inc/theme-options.php:814
 msgid "Soundcloud"
 msgstr "Soundcloud"
 
-#: ../functions.php:1019 ../inc/customizer/customizer.php:623
-#: ../inc/theme-options.php:813
+#: ../functions.php:944 ../inc/customizer/customizer.php:623
+#: ../inc/theme-options.php:825
 msgid "Xing"
 msgstr "Xing"
 
-#: ../functions.php:1024 ../inc/customizer/customizer.php:633
-#: ../inc/theme-options.php:818
+#: ../functions.php:949 ../inc/customizer/customizer.php:633
+#: ../inc/theme-options.php:830
 msgid "Meetup"
 msgstr "Meetup"
 
@@ -590,12 +590,12 @@ msgid "Mountain"
 msgstr "гора"
 
 #: ../inc/customizer/customizer-custom-controls.php:18
-#: ../inc/theme-options.php:524
+#: ../inc/theme-options.php:536
 msgid "Theme Instructions"
 msgstr "Інструкція з користування темою (англ.)"
 
 #: ../inc/customizer/customizer-custom-controls.php:22
-#: ../inc/theme-options.php:522
+#: ../inc/theme-options.php:534
 msgid "Support"
 msgstr "Підтримка теми (англ.)"
 
@@ -611,8 +611,8 @@ msgstr "Пожертвувати"
 msgid "Review"
 msgstr "Огляд"
 
-#: ../inc/customizer/customizer.php:33 ../inc/theme-options.php:209
-#: ../inc/theme-options.php:210 ../inc/theme-options.php:542
+#: ../inc/customizer/customizer.php:33 ../inc/theme-options.php:212
+#: ../inc/theme-options.php:213 ../inc/theme-options.php:554
 msgid "Theme Options"
 msgstr "Налаштування теми"
 
@@ -668,7 +668,7 @@ msgid "Enable Secondary & Footer Menu in Mobile Devices?"
 msgstr "Дозволити показувати додаткове та нижнє меню для мобільних пристроїв?"
 
 #: ../inc/customizer/customizer.php:83 ../inc/customizer/customizer.php:327
-#: ../inc/theme-options.php:164
+#: ../inc/theme-options.php:166
 msgid "Custom CSS Styles"
 msgstr "Додаткові стилі CSS теми"
 
@@ -680,11 +680,11 @@ msgstr "Налаштування кнопки \"Вверх\""
 msgid "Featured Slider"
 msgstr "Налаштування слайдера"
 
-#: ../inc/customizer/customizer.php:101 ../inc/theme-options.php:608
+#: ../inc/customizer/customizer.php:101 ../inc/theme-options.php:620
 msgid "Slider Options"
 msgstr "Параметри слайд-шоу"
 
-#: ../inc/customizer/customizer.php:106 ../inc/theme-options.php:642
+#: ../inc/customizer/customizer.php:106 ../inc/theme-options.php:654
 msgid "Slider Effect Options"
 msgstr "Налаштування слайд-ефектів"
 
@@ -700,7 +700,7 @@ msgstr "Базові кольори"
 msgid "Custom Color Options"
 msgstr "Налаштування користувацького кольору"
 
-#: ../inc/customizer/customizer.php:133 ../inc/theme-options.php:544
+#: ../inc/customizer/customizer.php:133 ../inc/theme-options.php:556
 msgid "Social Links"
 msgstr "Посилання на соціальні мережі"
 
@@ -713,7 +713,7 @@ msgid "Predefined Social Icons"
 msgstr "Попередньо визначені іконки соціальних мереж"
 
 #: ../inc/customizer/customizer.php:145 ../inc/customizer/customizer.php:150
-#: ../inc/theme-options.php:545
+#: ../inc/theme-options.php:557
 msgid "Webmaster Tools"
 msgstr "Інструменти вебмайстра"
 
@@ -742,7 +742,7 @@ msgstr "Колір посилань"
 msgid "Feed Redirect url"
 msgstr "Посилання перенаправлення"
 
-#: ../inc/customizer/customizer.php:291 ../inc/theme-options.php:358
+#: ../inc/customizer/customizer.php:291 ../inc/theme-options.php:361
 msgid "Check to move above the Header/Logo Image"
 msgstr "Активуйте, якщо хочете перемістити Заголовок/Логотип вище"
 
@@ -750,11 +750,11 @@ msgstr "Активуйте, якщо хочете перемістити Заг�
 msgid "Default Display Text in Search"
 msgstr "Текст за замовчуванням у формі пошуку"
 
-#: ../inc/customizer/customizer.php:309 ../inc/theme-options.php:388
+#: ../inc/customizer/customizer.php:309 ../inc/theme-options.php:391
 msgid "Check to Disable"
 msgstr "Активуйте для заборони"
 
-#: ../inc/customizer/customizer.php:318 ../inc/theme-options.php:403
+#: ../inc/customizer/customizer.php:318 ../inc/theme-options.php:406
 msgid "Check to Enable"
 msgstr "Активуйте для дозволу."
 
@@ -768,7 +768,7 @@ msgstr ""
 "Активуйте для видалення слайд-публікації з числа публікацій на домашній "
 "сторінці сайту"
 
-#: ../inc/customizer/customizer.php:360 ../inc/theme-options.php:623
+#: ../inc/customizer/customizer.php:360 ../inc/theme-options.php:635
 msgid "Number of Slides"
 msgstr "Кількість слайдів"
 
@@ -783,47 +783,47 @@ msgstr ""
 msgid "Transition Effect"
 msgstr "Ефект переходу"
 
-#: ../inc/customizer/customizer.php:384 ../inc/theme-options.php:652
+#: ../inc/customizer/customizer.php:384 ../inc/theme-options.php:664
 msgid "fade"
 msgstr "зникнення"
 
-#: ../inc/customizer/customizer.php:385 ../inc/theme-options.php:653
+#: ../inc/customizer/customizer.php:385 ../inc/theme-options.php:665
 msgid "wipe"
 msgstr "витирання"
 
-#: ../inc/customizer/customizer.php:386 ../inc/theme-options.php:654
+#: ../inc/customizer/customizer.php:386 ../inc/theme-options.php:666
 msgid "scrollUp"
 msgstr "прокрутка догори"
 
-#: ../inc/customizer/customizer.php:387 ../inc/theme-options.php:655
+#: ../inc/customizer/customizer.php:387 ../inc/theme-options.php:667
 msgid "scrollDown"
 msgstr "прокрутка вниз"
 
-#: ../inc/customizer/customizer.php:388 ../inc/theme-options.php:656
+#: ../inc/customizer/customizer.php:388 ../inc/theme-options.php:668
 msgid "scrollLeft"
 msgstr "прокрутка ліворуч"
 
-#: ../inc/customizer/customizer.php:389 ../inc/theme-options.php:657
+#: ../inc/customizer/customizer.php:389 ../inc/theme-options.php:669
 msgid "scrollRight"
 msgstr "прокрутка праворуч"
 
-#: ../inc/customizer/customizer.php:390 ../inc/theme-options.php:658
+#: ../inc/customizer/customizer.php:390 ../inc/theme-options.php:670
 msgid "blindX"
 msgstr "прив&prime;язка X"
 
-#: ../inc/customizer/customizer.php:391 ../inc/theme-options.php:659
+#: ../inc/customizer/customizer.php:391 ../inc/theme-options.php:671
 msgid "blindY"
 msgstr "прив&prime;язка Y"
 
-#: ../inc/customizer/customizer.php:392 ../inc/theme-options.php:660
+#: ../inc/customizer/customizer.php:392 ../inc/theme-options.php:672
 msgid "blindZ"
 msgstr "прив&prime;язка Z"
 
-#: ../inc/customizer/customizer.php:393 ../inc/theme-options.php:661
+#: ../inc/customizer/customizer.php:393 ../inc/theme-options.php:673
 msgid "cover"
 msgstr "приховувати"
 
-#: ../inc/customizer/customizer.php:394 ../inc/theme-options.php:662
+#: ../inc/customizer/customizer.php:394 ../inc/theme-options.php:674
 msgid "shuffle"
 msgstr "перетасування"
 
@@ -831,7 +831,7 @@ msgstr "перетасування"
 msgid "Transition Delay (in seconds)"
 msgstr "Затримка переходу"
 
-#: ../inc/customizer/customizer.php:415 ../inc/theme-options.php:677
+#: ../inc/customizer/customizer.php:415 ../inc/theme-options.php:689
 msgid "Transition Length"
 msgstr "Тривалість переходу"
 
@@ -839,11 +839,11 @@ msgstr "Тривалість переходу"
 msgid "Google+"
 msgstr "Google+"
 
-#: ../inc/customizer/customizer.php:463 ../inc/theme-options.php:718
+#: ../inc/customizer/customizer.php:463 ../inc/theme-options.php:730
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: ../inc/customizer/customizer.php:483 ../inc/theme-options.php:730
+#: ../inc/customizer/customizer.php:483 ../inc/theme-options.php:742
 msgid "Youtube"
 msgstr "Youtube"
 
@@ -855,11 +855,11 @@ msgstr "RSS"
 msgid "deviantART"
 msgstr "deviantART"
 
-#: ../inc/customizer/customizer.php:553 ../inc/theme-options.php:772
+#: ../inc/customizer/customizer.php:553 ../inc/theme-options.php:784
 msgid "Aim"
 msgstr "Aim"
 
-#: ../inc/customizer/customizer.php:645 ../inc/theme-options.php:842
+#: ../inc/customizer/customizer.php:645 ../inc/theme-options.php:854
 msgid "Code to display on Header"
 msgstr "Коди, які будуть показані у заголовку"
 
@@ -870,7 +870,7 @@ msgstr ""
 "Тут ви можете помістити скрипти з Google, Facebook і т.д., які будуть "
 "завантажуватися в заголовку"
 
-#: ../inc/customizer/customizer.php:656 ../inc/theme-options.php:853
+#: ../inc/customizer/customizer.php:656 ../inc/theme-options.php:865
 msgid "Code to display on Footer"
 msgstr "Коди, які будуть показані у футері (внизу сайту)"
 
@@ -889,28 +889,28 @@ msgstr "Іконка сайту"
 msgid "Web Clip Icon"
 msgstr "Іконка веб-додатку"
 
-#: ../inc/customizer/customizer.php:704 ../inc/theme-options.php:571
+#: ../inc/customizer/customizer.php:704 ../inc/theme-options.php:583
 msgid "Header Image Location"
 msgstr "Розташування зображення в Заголовку"
 
-#: ../inc/customizer/customizer.php:711 ../inc/theme-options.php:574
+#: ../inc/customizer/customizer.php:711 ../inc/theme-options.php:586
 msgid "Above Header Content"
 msgstr "Вміст вище заголовку"
 
-#: ../inc/customizer/customizer.php:712 ../inc/theme-options.php:576
+#: ../inc/customizer/customizer.php:712 ../inc/theme-options.php:588
 msgid "Between Site Title-Logo"
 msgstr "Логотип між назвою сайту"
 
-#: ../inc/customizer/customizer.php:713 ../inc/theme-options.php:578
+#: ../inc/customizer/customizer.php:713 ../inc/theme-options.php:590
 msgid "Below Header Content"
 msgstr "Вміст нижче заголовку"
 
-#: ../inc/customizer/customizer.php:852
+#: ../inc/customizer/customizer.php:857
 #, php-format
 msgid "#%s Featured Post ID"
 msgstr "#%s Ідентифікатор популярної публікації "
 
-#: ../inc/customizer/customizer.php:867
+#: ../inc/customizer/customizer.php:872
 msgid ""
 "Caution: Reset all settings to default. Refresh the page after save to view "
 "full effects."
@@ -918,21 +918,17 @@ msgstr ""
 "Увага: Скидання всіх налаштувань до стандартних. Оновіть сторінку після "
 "збереження для перегляду повного ефекту."
 
-#: ../inc/customizer/customizer.php:869
+#: ../inc/customizer/customizer.php:874
 msgid "Reset all settings"
 msgstr "Скинути всі налаштування"
 
-#: ../inc/customizer/customizer.php:879
+#: ../inc/customizer/customizer.php:885
 msgid "Check to reset all settings to default"
 msgstr "Активуйте, щоб скинути всі налаштування за замовчуванням"
 
-#: ../inc/customizer/customizer.php:889 ../inc/customizer/customizer.php:900
+#: ../inc/customizer/customizer.php:895 ../inc/customizer/customizer.php:906
 msgid "Important Links"
 msgstr "Корисні посилання"
-
-#: ../inc/customizer/customizer.php:934
-msgid "Upgrade To Pro"
-msgstr "Оновити до Pro"
 
 #: ../inc/default-options.php:29
 msgid "Light"
@@ -999,8 +995,8 @@ msgstr "WordPress"
 msgid "Theme: Catch Box by "
 msgstr "Тема Catch Box від&nbsp;&nbsp;"
 
-#: ../inc/default-options.php:235 ../inc/theme-options.php:509
-#: ../inc/theme-options.php:510
+#: ../inc/default-options.php:235 ../inc/theme-options.php:521
+#: ../inc/theme-options.php:522
 msgid "Catch Themes"
 msgstr "&nbsp;&nbsp;Catch Themes"
 
@@ -1028,119 +1024,119 @@ msgstr "Макет змісту"
 msgid "Move Site Title and Tagline?"
 msgstr "Перемістити Назву сайту (Title) та Гасло сайту (Tagline)?"
 
-#: ../inc/theme-options.php:172
+#: ../inc/theme-options.php:175
 msgid "Scroll Up"
 msgstr "Кнопка Вверх"
 
-#: ../inc/theme-options.php:234
+#: ../inc/theme-options.php:237
 msgid "Insert as Favicon"
 msgstr "Вставити як іконку Favicon"
 
-#: ../inc/theme-options.php:234
+#: ../inc/theme-options.php:237
 msgid "Add/Change Favicon"
 msgstr "додати/змінити іконку Favicon"
 
-#: ../inc/theme-options.php:250
+#: ../inc/theme-options.php:253
 msgid "Insert as Web Clip Icon"
 msgstr "Вставити як іконку WebClip"
 
-#: ../inc/theme-options.php:250
+#: ../inc/theme-options.php:253
 msgid "Add/Change Web Clip Icon"
 msgstr "додати /змінити іконку WebClip"
 
-#: ../inc/theme-options.php:330
+#: ../inc/theme-options.php:333
 msgid "Words"
 msgstr "слів"
 
-#: ../inc/theme-options.php:417
+#: ../inc/theme-options.php:429
 msgid "CSS Tutorial from W3Schools."
 msgstr "CSS підручник від W3Schools."
 
-#: ../inc/theme-options.php:417
+#: ../inc/theme-options.php:429
 msgid "http://www.w3schools.com/css/default.asp"
 msgstr "http://htmlbook.ru/css/"
 
-#: ../inc/theme-options.php:417
+#: ../inc/theme-options.php:429
 msgid "CSS Tutorial"
 msgstr "Підручник з CSS"
 
-#: ../inc/theme-options.php:417
+#: ../inc/theme-options.php:429
 msgid "Click Here to Read"
 msgstr "Натисніть для читання"
 
-#: ../inc/theme-options.php:431 ../inc/theme-options.php:620
+#: ../inc/theme-options.php:443 ../inc/theme-options.php:632
 msgid "Check to disable"
 msgstr "Активуйте для заборони"
 
-#: ../inc/theme-options.php:507
+#: ../inc/theme-options.php:519
 msgid "Theme Options By"
 msgstr "Налаштування теми від"
 
-#: ../inc/theme-options.php:509
+#: ../inc/theme-options.php:521
 msgid "https://catchthemes.com/"
 msgstr "https://catchthemes.com/"
 
-#: ../inc/theme-options.php:516
+#: ../inc/theme-options.php:528
 msgid "https://catchthemes.com/themes/catch-box-pro/"
 msgstr "https://catchthemes.com/themes/catch-box-pro/"
 
-#: ../inc/theme-options.php:516
+#: ../inc/theme-options.php:528
 msgid "Upgrade to Catch Box Pro"
 msgstr "Оновити безкоштовну тему до платної версії Catch Box Pro"
 
-#: ../inc/theme-options.php:521
+#: ../inc/theme-options.php:533
 msgid "https://catchthemes.com/donate/"
 msgstr "https://catchthemes.com/donate/"
 
-#: ../inc/theme-options.php:521
+#: ../inc/theme-options.php:533
 msgid "Donate"
 msgstr "Пожертвувати (англ.)"
 
-#: ../inc/theme-options.php:522
+#: ../inc/theme-options.php:534
 msgid "https://catchthemes.com/support/"
 msgstr "https://catchthemes.com/support/"
 
-#: ../inc/theme-options.php:523
+#: ../inc/theme-options.php:535
 msgid "https://catchthemes.com/support-forum/forum/catch-box-public/"
 msgstr "https://catchthemes.com/support-forum/forum/catch-box-public/"
 
-#: ../inc/theme-options.php:523
+#: ../inc/theme-options.php:535
 msgid "Support Forum"
 msgstr "Форум підтримки теми (англ.)"
 
-#: ../inc/theme-options.php:524
+#: ../inc/theme-options.php:536
 msgid "https://catchthemes.com/theme-instructions/catch-box/"
 msgstr "https://catchthemes.com/theme-instructions/catch-box/"
 
-#: ../inc/theme-options.php:525
+#: ../inc/theme-options.php:537
 msgid "https://www.facebook.com/catchthemes/"
 msgstr "https://www.facebook.com/catchthemes/"
 
-#: ../inc/theme-options.php:525
+#: ../inc/theme-options.php:537
 msgid "Like Catch Themes on Facebook"
 msgstr "Вподобати Catch Themes у Фейсбуці"
 
-#: ../inc/theme-options.php:526
+#: ../inc/theme-options.php:538
 msgid "https://twitter.com/catchthemes/"
 msgstr "https://twitter.com/catchthemes/"
 
-#: ../inc/theme-options.php:526
+#: ../inc/theme-options.php:538
 msgid "Follow Catch Themes on Twitter"
 msgstr "Підписатись на Catch Themes у Твіттері"
 
-#: ../inc/theme-options.php:527
+#: ../inc/theme-options.php:539
 msgid "http://wordpress.org/support/view/theme-reviews/catch-box/"
 msgstr "http://wordpress.org/support/view/theme-reviews/catch-box/"
 
-#: ../inc/theme-options.php:527
+#: ../inc/theme-options.php:539
 msgid "Rate us 5 Star on WordPress"
 msgstr "Будь ласка, оцініть нас п&prime;ятьма зірками на сайті WordPress"
 
-#: ../inc/theme-options.php:527
+#: ../inc/theme-options.php:539
 msgid "5 Star Rating"
 msgstr "5-зіркова оцінка"
 
-#: ../inc/theme-options.php:533
+#: ../inc/theme-options.php:545
 #, php-format
 msgctxt "1: Customizer Link Start, 2: Customizer Link End"
 msgid ""
@@ -1150,27 +1146,27 @@ msgstr ""
 "Панель налаштувань теми буде відсутня у майбутніх версіях. Будь ласка, "
 "користуйтесь %1$s Налаштовувачем %2$s замість цього"
 
-#: ../inc/theme-options.php:543
+#: ../inc/theme-options.php:555
 msgid "Featured Post Slider"
 msgstr "Розширена панель публікацій"
 
-#: ../inc/theme-options.php:554
+#: ../inc/theme-options.php:566
 msgid "Header Image:"
 msgstr "Зображення в Заголовку"
 
-#: ../inc/theme-options.php:563
+#: ../inc/theme-options.php:575
 msgid "Click here to change Header Image"
 msgstr "Натисніть для зміни Зображення в заголовку"
 
-#: ../inc/theme-options.php:565
+#: ../inc/theme-options.php:577
 msgid "Click here to add Header Image"
 msgstr "Натисніть, щоб додати зображення Заголовку"
 
-#: ../inc/theme-options.php:612 ../inc/theme-options.php:614
+#: ../inc/theme-options.php:624 ../inc/theme-options.php:626
 msgid "Post Slider Tutorial"
 msgstr "Підручник з користування розширеною панеллю публікацій"
 
-#: ../inc/theme-options.php:614
+#: ../inc/theme-options.php:626
 msgid ""
 "https://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-"
 "slider/"
@@ -1178,26 +1174,26 @@ msgstr ""
 "https://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-"
 "slider/"
 
-#: ../inc/theme-options.php:614
+#: ../inc/theme-options.php:626
 msgid "Click Here to Read Post Slider Tutorial"
 msgstr ""
 "Натисніть тут для ознайомлення з підручником з користування розширеною "
 "панеллю публікацій"
 
-#: ../inc/theme-options.php:618
+#: ../inc/theme-options.php:630
 msgid "Exclude Slider post from Home page posts:"
 msgstr ""
 "Видалити слайд-публікацію з числа публікацій на домашній сторінці сайту: "
 
-#: ../inc/theme-options.php:629
+#: ../inc/theme-options.php:641
 msgid "Featured Post ID"
 msgstr "Розширений ідентифікатор публікації"
 
-#: ../inc/theme-options.php:631
+#: ../inc/theme-options.php:643
 msgid "Click Here To Edit"
 msgstr "Натисніть тут для редагування"
 
-#: ../inc/theme-options.php:637
+#: ../inc/theme-options.php:649
 msgid ""
 "<strong>Note</strong>: Here you add in Post IDs which displays on Homepage "
 "Featured Slider."
@@ -1205,28 +1201,28 @@ msgstr ""
 "<strong>Зауваження</strong>: Тут ви додаєте в публікацію ідентифікатор, який "
 "буде відібражатися на розширеній панелі домашньої сторінки"
 
-#: ../inc/theme-options.php:638 ../inc/theme-options.php:684
-#: ../inc/theme-options.php:825 ../inc/theme-options.php:864
+#: ../inc/theme-options.php:650 ../inc/theme-options.php:696
+#: ../inc/theme-options.php:837 ../inc/theme-options.php:876
 msgid "Save"
 msgstr "Зберегти"
 
-#: ../inc/theme-options.php:647
+#: ../inc/theme-options.php:659
 msgid "Transition Effect:"
 msgstr "Ефект переходу:"
 
-#: ../inc/theme-options.php:668
+#: ../inc/theme-options.php:680
 msgid "Transition Delay"
 msgstr "Затримка переходу"
 
-#: ../inc/theme-options.php:671 ../inc/theme-options.php:680
+#: ../inc/theme-options.php:683 ../inc/theme-options.php:692
 msgid "second(s)"
 msgstr "секунд"
 
-#: ../inc/theme-options.php:712
+#: ../inc/theme-options.php:724
 msgid "Google +"
 msgstr "Google +"
 
-#: ../inc/theme-options.php:824
+#: ../inc/theme-options.php:836
 msgid ""
 "<strong>Note:</strong> Enter the url for correponding social networking "
 "website"
@@ -1234,11 +1230,11 @@ msgstr ""
 "<strong>Зауваження:</strong> Введіть URL-адресу, яка відповідає вашій "
 "соцільній мережі."
 
-#: ../inc/theme-options.php:837
+#: ../inc/theme-options.php:849
 msgid "Header and Footer Code"
 msgstr "Коди для розміщення нагорі у заголовку та знизу у футері"
 
-#: ../inc/theme-options.php:849
+#: ../inc/theme-options.php:861
 msgid ""
 "Note: Here you can put scripts from Google, Facebook etc. which will load on "
 "Header"
@@ -1246,7 +1242,7 @@ msgstr ""
 "Зауваження: Тут ви маєте можливість розмістити сценарії Google, Facebook та "
 "інші. які будуть завантажуватися нагорі у заголовку"
 
-#: ../inc/theme-options.php:860
+#: ../inc/theme-options.php:872
 msgid ""
 "Note: Here you can put scripts from Google, Facebook, Add This etc. which "
 "will load on footer"
@@ -1366,6 +1362,38 @@ msgstr "Наступна публікація <span class=\"meta-nav\">&rarr;</s
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Архіви за ключовими словами: %s"
+
+#, fuzzy
+#~ msgid "Catch Box Pro"
+#~ msgstr "Налаштування Catch Box"
+
+#, fuzzy
+#~ msgid "Upgrade Now"
+#~ msgstr "Оновити до Pro"
+
+#, fuzzy
+#~ msgid "Catch Box"
+#~ msgstr "Налаштування Catch Box"
+
+#, fuzzy
+#~ msgid "https://catchthemes.com/themes/catchbox"
+#~ msgstr "https://catchthemes.com/themes/catch-box-pro/"
+
+#, fuzzy
+#~ msgid "https://catchthemes.com"
+#~ msgstr "https://catchthemes.com/"
+
+#~ msgid "Disable Sidebar Template"
+#~ msgstr "Désactiver la barre latérale"
+
+#, fuzzy
+#~ msgid "Full Width Disable Sidebar Template"
+#~ msgstr "Désactiver la barre latérale"
+
+#, fuzzy
+#~ msgctxt "placeholder"
+#~ msgid "Search"
+#~ msgstr "Пошук"
 
 #~ msgid "Daily Archives: %s"
 #~ msgstr "Архіви за день: %s"
@@ -1571,6 +1599,3 @@ msgstr "Архіви за ключовими словами: %s"
 
 #~ msgid "Viemo"
 #~ msgstr "Viemo"
-
-#~ msgid "Disable Sidebar Template"
-#~ msgstr "Désactiver la barre latérale"

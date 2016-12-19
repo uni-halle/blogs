@@ -1,185 +1,185 @@
-# Copyright (C) 2012 the Catch Themes Team
-# This file is distributed under the  GNU General Public License.
+# Translation of Themes - Catch Box in Turkish
+# This file is distributed under the same license as the Themes - Catch Box package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2016-12-07 14:32-0500\n"
-"PO-Revision-Date: 2016-12-07 14:32-0500\n"
-"Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
-"Language-Team: H.P. Brinkmann\n"
-"Language: cs\n"
+"POT-Creation-Date: 2016-12-07 14:33-0500\n"
+"PO-Revision-Date: 2016-12-07 14:34-0500\n"
+"Last-Translator: \n"
+"Language-Team: Catch Themes <info@catchthemes.com>\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_x;_ex;_n;esc_attr_e;esc_attr__\n"
-"X-Poedit-Basepath: .\n"
-"X-Textdomain-Support: yes\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.7.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;esc_attr_e;esc_attr__\n"
+"X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../404.php:14
 msgid "Error 404 - Page Not Found."
-msgstr "Chyba 404 - Stránka bohužel nebyla nalezena."
+msgstr "ERROR 404 - Sayfa Bulunamadı"
 
 #: ../404.php:18
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for."
-msgstr "Vypadá to, že nemohu&rsquo; najít to, co hledáte."
+msgstr ""
+"Görünüşe göre aradığınız şeyi bulamadık. Belki farklı arama yapmak size yardımcı "
+"olacaktır."
 
 #: ../404.php:19
 msgid "This might be because:"
-msgstr "Tohle se stalo, protože "
+msgstr "Bu olabilir, çünkü:"
 
 #: ../404.php:20
 msgid ""
-"You have typed the web address incorrectly, or the page you were looking for "
-"may have been moved, updated or deleted."
+"You have typed the web address incorrectly, or the page you were looking for may "
+"have been moved, updated or deleted."
 msgstr ""
-"Vypadá to, že jste adresu nezadali správně . Je ale také možné, že byl "
-"hledaný cíl přesunut nebo smazán."
+"Web adresini yanlış yazdınız veya Aradığınız sayfa taşınmış, güncelleştirildi "
+"veya silinmiş."
 
 #: ../404.php:21
 msgid "Please try the following options instead:"
-msgstr "Můžete zkusit toto: "
+msgstr "Lütfen bunun yerine aşağıdaki seçenekleri deneyin:"
 
 #: ../404.php:22
 msgid ""
-"Check for a mis-typed URL error, then press the refresh button on your "
-"browser or Use the search box below."
+"Check for a mis-typed URL error, then press the refresh button on your browser or "
+"Use the search box below."
 msgstr ""
-"Zkuste zkontrolovat, zda jste zadali URL adresu správně. TIP! Pokud si "
-"nejste jistý, použijte vyhledávač."
+"Yanlış yazılmış bir URL hatasını kontrol edin, tarayıcınızın yenile düğmesine "
+"basın veya aşağıdaki arama kutusunu kullanın."
 
 #: ../archive.php:46 ../author.php:69 ../category.php:45 ../index.php:32
 #: ../page-blog.php:65 ../search.php:39 ../tag.php:45
 msgid "Nothing Found"
-msgstr "Nic jsem nenašel :-("
+msgstr "Bulunamadı"
 
 #: ../archive.php:50 ../author.php:73 ../category.php:49 ../index.php:36
 #: ../page-blog.php:69 ../tag.php:49
 msgid ""
-"Apologies, but no results were found for the requested archive. Perhaps "
-"searching will help find a related post."
+"Apologies, but no results were found for the requested archive. Perhaps searching "
+"will help find a related post."
 msgstr ""
-"Bohužel jsem v dané kategorii nic nenašel. Zkuste vyhledávat podle štítků."
+"Üzgünüz, istekte bulunulan arşiv için sonuç dönmedi. Belki arama yaparak ilişkili "
+"bir yazıya ulaşabilirsiniz."
 
 #: ../author.php:25
 #, php-format
 msgid "Author Archives: %s"
-msgstr "Od autora: %s"
+msgstr "Yazar arşivleri: %s"
 
 #: ../author.php:44 ../content-single.php:76
 #, php-format
 msgid "About %s"
-msgstr "O  %s"
+msgstr "%s hakkında"
 
 #: ../category.php:16
 #, php-format
 msgid "Category Archives: %s"
-msgstr "Archiv kategorie: %s"
+msgstr "Kategori arşivi: %s"
 
 #: ../comments.php:17
-msgid ""
-"This post is password protected. Enter the password to view any comments."
-msgstr ""
-"Tento článek mohou kompletně zobrazit pouze vyvolení. Jestli mezi ně "
-"patříte, zadejte heslo."
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "Bu yazı parola korumalı. Yorumları görmek için parola girin."
 
 #: ../comments.php:33
-#, fuzzy, php-format
+#, php-format
 msgid "One thought on &ldquo;%2$s&rdquo;"
-msgstr "komentář u &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "&ldquo;%2$s&rdquo; üzerine bir düşünce"
+msgstr[1] "&ldquo;%2$s&rdquo; üzerine %1$s düşünce"
 
 #: ../comments.php:40 ../comments.php:60
 msgid "Comment navigation"
-msgstr "Navigaci v komentářích"
+msgstr "Yorum dolaşımı"
 
 #: ../comments.php:41 ../comments.php:61
 msgid "&larr; Older Comments"
-msgstr "&larr; Starší komentáře"
+msgstr "&arr; Eski yorumlar"
 
 #: ../comments.php:42 ../comments.php:62
 msgid "Newer Comments &rarr;"
-msgstr "Novější komentáře &rarr;"
+msgstr "Yeni yorumlar &arr;"
 
 #: ../comments.php:72
 msgid "Comments are closed."
-msgstr "U tohoto článku nemůžete přidávat komentáře."
+msgstr "Yorumlar kapalı."
 
-#: ../content-aside.php:15 ../content-featured.php:14
-#: ../content-gallery.php:15 ../content-gallery.php:46 ../content-image.php:14
-#: ../content-link.php:15 ../content-quote.php:13 ../content-status.php:14
-#: ../content.php:14 ../content.php:17 ../content.php:45
-#: ../inc/catchbox-sliders.php:82
+#: ../content-aside.php:15 ../content-featured.php:14 ../content-gallery.php:15
+#: ../content-gallery.php:46 ../content-image.php:14 ../content-link.php:15
+#: ../content-quote.php:13 ../content-status.php:14 ../content.php:14
+#: ../content.php:17 ../content.php:45 ../inc/catchbox-sliders.php:82
 #, php-format
 msgid "Permalink to %s"
-msgstr "Permalink pro %s"
+msgstr "%s için kalıcı bağlantı"
 
 #: ../content-aside.php:16
 msgid "Aside"
-msgstr "Stranou"
+msgstr "Özet"
 
 #: ../content-aside.php:20 ../content-image.php:18 ../content-link.php:20
 #: ../content-quote.php:22 ../content-status.php:19
 msgid "Reply"
-msgstr "Odpověď"
+msgstr "Cevapla"
 
 #: ../content-aside.php:20 ../content-image.php:18 ../content-link.php:20
 #: ../content-quote.php:22 ../content-status.php:19
+msgctxt "comments number"
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ../content-aside.php:20 ../content-image.php:18 ../content-link.php:20
 #: ../content-quote.php:22 ../content-status.php:19
+msgctxt "comments number"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: ../content-aside.php:34 ../content.php:56 ../functions.php:287
 #, php-format
 msgid "Continue reading %s"
-msgstr "Celý článek  %s"
+msgstr "Okumaya devam et %s"
 
-#: ../content-aside.php:41 ../content-featured.php:24
-#: ../content-gallery.php:53 ../content-image.php:26 ../content-link.php:33
-#: ../content-page.php:19 ../content-quote.php:35 ../content-single.php:31
-#: ../content-status.php:34 ../content.php:63 ../image.php:87
+#: ../content-aside.php:41 ../content-featured.php:24 ../content-gallery.php:53
+#: ../content-image.php:26 ../content-link.php:33 ../content-page.php:19
+#: ../content-quote.php:35 ../content-single.php:31 ../content-status.php:34
+#: ../content.php:63 ../image.php:87
 msgid "Pages:"
-msgstr "Stránky:"
+msgstr "Sayfalar:"
 
 #: ../content-aside.php:54 ../content-gallery.php:91 ../content-image.php:67
 #: ../content-link.php:46 ../content-quote.php:73 ../content-status.php:47
 #: ../content.php:103
 msgid "Leave a reply"
-msgstr "Zanechte komentář"
+msgstr "Bir Cevap Yazın"
 
 #: ../content-aside.php:54 ../content-gallery.php:91 ../content-image.php:67
 #: ../content-link.php:46 ../content-quote.php:73 ../content-status.php:47
 #: ../content.php:103
 msgid "<b>1</b> Reply"
-msgstr "<b>1</b> komentář"
+msgstr "<b>1</b> Yanıt"
 
 #: ../content-aside.php:54 ../content-gallery.php:91 ../content-image.php:67
 #: ../content-link.php:46 ../content-quote.php:73 ../content-status.php:47
 #: ../content.php:103
 msgid "<b>%</b> Replies"
-msgstr "<b>%</b> komentářů"
+msgstr "<b>%</b> Yanıt"
 
-#: ../content-aside.php:56 ../content-featured.php:51
-#: ../content-gallery.php:94 ../content-image.php:71 ../content-link.php:48
-#: ../content-page.php:27 ../content-quote.php:76 ../content-single.php:64
-#: ../content-status.php:49 ../content.php:106 ../functions.php:458
-#: ../functions.php:486 ../image.php:97
+#: ../content-aside.php:56 ../content-featured.php:51 ../content-gallery.php:94
+#: ../content-image.php:71 ../content-link.php:48 ../content-page.php:27
+#: ../content-quote.php:76 ../content-single.php:64 ../content-status.php:49
+#: ../content.php:106 ../functions.php:458 ../functions.php:486 ../image.php:97
 msgid "Edit"
-msgstr "Upravit"
+msgstr "Düzenle"
 
 #. translators: used between list items, there is a space after the comma
-#: ../content-featured.php:35 ../content-featured.php:44
-#: ../content-gallery.php:66 ../content-gallery.php:76 ../content-image.php:50
-#: ../content-image.php:59 ../content-quote.php:48 ../content-quote.php:58
-#: ../content-single.php:42 ../content-single.php:45 ../content.php:77
-#: ../content.php:87
+#: ../content-featured.php:35 ../content-featured.php:44 ../content-gallery.php:66
+#: ../content-gallery.php:76 ../content-image.php:50 ../content-image.php:59
+#: ../content-quote.php:48 ../content-quote.php:58 ../content-single.php:42
+#: ../content-single.php:45 ../content.php:77 ../content.php:87
 msgid ", "
 msgstr ", "
 
@@ -189,85 +189,88 @@ msgid ""
 "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" "
 "title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr ""
-"Publikováno: %1$s Štítky: %2$s. <a href=\"%3$s\" title=\"Permalink %4$s\" "
-"rel=\"bookmark\">Permalink</a>"
+"Bu yazı %1$s kategorisine gönderilmiş ve %2$s ile etiketlenmiş. <a href=\"%3$s\" "
+"title=\"%4$s için kalıcı bağlantı\" rel=\"bookmark\">Kalıcı bağlantıyı</a> yer "
+"imlerinize ekleyin."
 
 #: ../content-featured.php:39
 #, php-format
 msgid ""
-"This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title="
-"\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+"This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to "
+"%4$s\" rel=\"bookmark\">permalink</a>."
 msgstr ""
-"Publikováno:  %1$s. <a href=\"%3$s\" title=\"Permalink %4$s\" rel=\"bookmark"
-"\">permalink</a>"
+"Bu yazı %1$s kategorisine gönderilmiş. <a href=\"%3$s\" title=\"%4$s için kalıcı "
+"bağlantı\" rel=\"bookmark\">Kalıcı bağlantıyı</a> yer imlerinize ekleyin."
 
 #: ../content-gallery.php:16
 msgid "Gallery"
-msgstr "Galerie"
+msgstr "Galeri"
 
 #: ../content-gallery.php:30 ../content-image.php:24 ../content-link.php:31
 #: ../content-quote.php:33 ../content-status.php:32
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
-msgstr "Celý článek <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Okumaya devam et <span class=\"meta-nav\">&rarr;</span>"
 
 #: ../content-gallery.php:45
-#, fuzzy, php-format
+#, php-format
 msgid "This gallery contains <a %1$s>%2$s photo</a>."
-msgstr "V této galerii najdete <a %1$s>%2$s Fotos</a>."
+msgid_plural "This gallery contains <a %1$s>%2$s photos</a>."
+msgstr[0] "Bu galeri <a %1$s>%2$s fotoğraf</a> içeriyor."
+msgstr[1] "Bu galeri <a %1$s>%2$s fotoğraf</a> içeriyor."
 
 #: ../content-gallery.php:70 ../content-image.php:54 ../content-quote.php:52
 #: ../content.php:81
 #, php-format
 msgid "<span class=\"%1$s\">Posted in</span> %2$s"
-msgstr "<span class=\"%1$s\">Publikováno:</span> %2$s"
+msgstr "%2$s <span class=\"%1$s\">kategorisine gönderildi</span>"
 
 #: ../content-gallery.php:82 ../content-image.php:62 ../content-quote.php:64
 #: ../content.php:93
 #, php-format
 msgid "<span class=\"%1$s\">Tagged</span> %2$s"
-msgstr "<span class=\"%1$s\">Štítky:  </span> %2$s"
+msgstr "%2$s <span class=\"%1$s\">ile etiketlendi</span>"
 
 #: ../content-image.php:15
 msgid "Image"
-msgstr "Obrázek"
+msgstr "Resim"
 
 #: ../content-image.php:37
 #, php-format
 msgid ""
-"<a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s"
-"\" pubdate>%3$s</time></a><span class=\"by-author\"> <span class=\"sep\"> by "
-"</span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" "
-"title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
+"<a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s\" "
+"pubdate>%3$s</time></a><span class=\"by-author\"> <span class=\"sep\"> by </span> "
+"<span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" title=\"%5$s\" "
+"rel=\"author\">%6$s</a></span></span>"
 msgstr ""
-"<a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s"
-"\" pubdate>%3$s</time></a><span class=\"by-author\"> <span class=\"sep\"> "
-"Autor:  </span> <span class=\"author vcard\"><a class=\"url fn n\" href="
-"\"%4$s\" title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
+"<a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s\" "
+"pubdate>%3$s</time></a><span class=\"by-author\"> <span class=\"sep\"> yazarı </"
+"span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" title="
+"\"%5$s\" rel=\"author\">%6$s</a></span></span>"
 
 #: ../content-image.php:42 ../functions.php:524
 #, php-format
 msgid "View all posts by %s"
-msgstr "Zobrazit všechny články od : %s "
+msgstr "%s tarafından yazılmış tüm yazıları görüntüle"
 
 #: ../content-link.php:16
 msgid "Link"
-msgstr "Link"
+msgstr "Bağlantı"
 
 #: ../content-quote.php:14
 msgid "Quote"
-msgstr "Citovat"
+msgstr "Alıntıla"
 
 #: ../content-single.php:21 ../content.php:26
 msgid "No Comments &darr;"
-msgstr "Žádné komentáře &darr;"
+msgstr "Henüz Yorum Yapılmadı &darr;"
 
 #: ../content-single.php:21 ../content.php:26
 msgid "1 Comment &darr;"
-msgstr "1 komentář &darr;"
+msgstr "1 Yorum &darr;"
 
 #: ../content-single.php:21 ../content.php:26
 msgid "% Comments &darr;"
-msgstr "% komentářů &darr;"
+msgstr "% Yorum &darr;"
 
 #: ../content-single.php:47
 #, php-format
@@ -276,123 +279,116 @@ msgid ""
 "Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark"
 "\">permalink</a>."
 msgstr ""
-"Publikováno: %1$s Štítky: %2$s Autor: <a href=\"%6$s\">%5$s</a>. <a href="
-"\"%3$s\" title=\"Permalink zu %4$s\" rel=\"bookmark\">Permalink</a>"
+"Bu yazı %1$s kategorisine, %2$s etiketleri ile <a href=\"%6$s\">%5$s</a> "
+"tarafından yazılmıştır. <a href=\"%3$s\" title=\"%4$s için kalıcı bağlantı\" rel="
+"\"bookmark\">yer imlerinize ekleyin</a>. "
 
 #: ../content-single.php:49
 #, php-format
 msgid ""
-"This entry was posted in %1$s by <a href=\"%6$s\">%5$s</a>. Bookmark the <a "
-"href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+"This entry was posted in %1$s by <a href=\"%6$s\">%5$s</a>. Bookmark the <a href="
+"\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr ""
-"Publikováno: %1$s Autor:  <a href=\"%6$s\">%5$s</a>. <a href=\"%3$s\" title="
-"\"Permalink zu %4$s\" rel=\"bookmark\">Permalink</a>"
+"Bu yazı %1$s kategorisine <a href=\"%6$s\">%5$s</a> tarafından yazılmıştır. <a "
+"href=\"%3$s\" title=\"%4$s için kalıcı bağlantı\" rel=\"bookmark\">yer imlerinize "
+"ekleyin</a>."
 
 #: ../content-single.php:51
 #, php-format
 msgid ""
-"This entry was posted by <a href=\"%6$s\">%5$s</a>. Bookmark the <a href="
-"\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+"This entry was posted by <a href=\"%6$s\">%5$s</a>. Bookmark the <a href=\"%3$s\" "
+"title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr ""
-"Tento článek napsal <a href=\"%6$s\">%5$s</a>. <a href=\"%3$s\" title="
-"\"Permalink zu %4$s\" rel=\"bookmark\">Permalink</a>"
+"Bu girdi <a href=\"%6$s\">%5$s</a> tarafından gönderilmiş. Yer imlerinize <a href="
+"\"%3$s\" title=\"%4$s için kalıcı bağlantı\" rel=\"bookmark\">ekleyin</a>."
 
 #: ../content-single.php:80
 #, php-format
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
-msgstr ""
-"Všechny články od tohoto autora %s <span class=\"meta-nav\">&rarr;</span> "
-"ansehen"
+msgstr "%s tarafından yazılan yazılar <span class=\"meta-nav\">&rarr;</span>"
 
 #: ../content-status.php:15
 msgid "Status"
-msgstr "Status"
+msgstr "Durum"
 
 #: ../content.php:15
 msgid "Featured"
-msgstr "Doporučené"
+msgstr "Öne çıkarılmış"
 
 #: ../functions.php:142 ../inc/catchbox-menus.php:70
 msgid "Primary Menu"
-msgstr "Hlavní menu"
+msgstr "Birincil menü"
 
-#: ../functions.php:143 ../inc/catchbox-menus.php:98
-#: ../inc/catchbox-menus.php:190
+#: ../functions.php:143 ../inc/catchbox-menus.php:98 ../inc/catchbox-menus.php:190
 msgid "Secondary Menu"
-msgstr "Duhé ménu"
+msgstr "İkincil Mönü"
 
-#: ../functions.php:144 ../inc/catchbox-menus.php:126
-#: ../inc/catchbox-menus.php:230
+#: ../functions.php:144 ../inc/catchbox-menus.php:126 ../inc/catchbox-menus.php:230
 msgid "Footer Menu"
-msgstr "Menu v zápatí"
+msgstr "Site Altı Menüsü"
 
 #: ../functions.php:342 ../functions.php:371 ../single.php:15
 msgid "Post navigation"
-msgstr "Navigace v příspěvku"
+msgstr "Yazı dolaşımı"
 
 #: ../functions.php:350 ../functions.php:379
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
-msgstr "<span class=\"meta-nav\">&larr;</span> Starší"
+msgstr "<span class=\"meta-nav\">&larr;</span> Eski yazılar"
 
 #: ../functions.php:351 ../functions.php:380
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
-msgstr "Novější <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Yeni yazılar <span class=\"meta-nav\">&rarr;</span>"
 
 #: ../functions.php:458
 msgid "Pingback:"
-msgstr "Pingback:"
+msgstr "Geri izleme:"
 
 #. translators: 1: comment author, 2: date and time
 #: ../functions.php:475
 #, php-format
 msgid "%1$s on %2$s <span class=\"says\">said:</span>"
-msgstr "%1$s na %2$s <span class=\"says\">řekl:</span>"
+msgstr "%2$s için %1$s <span class=\"says\">der ki</span>"
 
 #. translators: 1: date, 2: time
 #: ../functions.php:481
 #, php-format
 msgid "%1$s at %2$s"
-msgstr "%1$s v %2$s"
+msgstr "%1$s, %2$s"
 
 #: ../functions.php:490
 msgid "Your comment is awaiting moderation."
-msgstr "Váš komentář čeká na schválení."
+msgstr "Yorumunuz denetim için bekliyor."
 
 #: ../functions.php:499
 msgid "Reply <span>&darr;</span>"
-msgstr "Odpověd <span>&darr;</span>"
+msgstr "Yanıtla <span>&darr;</span>"
 
 #: ../functions.php:518
 #, php-format
 msgid ""
 "<span class=\"sep\">Posted on </span><a href=\"%1$s\" title=\"%2$s\" rel="
-"\"bookmark\"><time class=\"entry-date updated\" datetime=\"%3$s\" pubdate>"
-"%4$s</time></a><span class=\"by-author\"> <span class=\"sep\"> by </span> "
-"<span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s"
-"\" rel=\"author\">%7$s</a></span></span>"
+"\"bookmark\"><time class=\"entry-date updated\" datetime=\"%3$s\" pubdate>%4$s</"
+"time></a><span class=\"by-author\"> <span class=\"sep\"> by </span> <span class="
+"\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s\" rel=\"author"
+"\">%7$s</a></span></span>"
 msgstr ""
-"<span class=\"sep\">Publikováno: </span><a href=\"%1$s\" title=\"%2$s\" rel="
-"\"bookmark\"><time class=\"entry-date updated\" datetime=\"%3$s\" pubdate>"
-"%4$s</time></a><span class=\"by-author\"> <span class=\"sep\"> Autor: </"
-"span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title="
-"\"%6$s\" rel=\"author\">%7$s</a></span></span>"
 
 #: ../functions.php:591
 msgid "ID"
-msgstr "ID"
+msgstr "No"
 
 #: ../functions.php:710
 msgid "Name"
-msgstr "Jméno"
+msgstr "İsim"
 
-#: ../functions.php:712 ../functions.php:939
-#: ../inc/customizer/customizer.php:613 ../inc/theme-options.php:820
+#: ../functions.php:712 ../functions.php:939 ../inc/customizer/customizer.php:613
+#: ../inc/theme-options.php:820
 msgid "Email"
-msgstr "E-Mail"
+msgstr "E-posta"
 
 #: ../functions.php:845
 msgid "Footer Social Links Menu"
-msgstr ""
+msgstr "Alt kısım sosyal bağlantılar menüsü"
 
 #: ../functions.php:849 ../inc/customizer/customizer.php:433
 #: ../inc/theme-options.php:537 ../inc/theme-options.php:713
@@ -410,7 +406,7 @@ msgstr "Google Plus"
 
 #: ../functions.php:864
 msgid "Linkedin"
-msgstr "Linkedin"
+msgstr "LinkedIn"
 
 #: ../functions.php:869 ../inc/customizer/customizer.php:473
 #: ../inc/theme-options.php:736
@@ -423,11 +419,11 @@ msgstr "YouTube"
 
 #: ../functions.php:879 ../inc/theme-options.php:748
 msgid "RSS Feed"
-msgstr "RSS Feed"
+msgstr "RSS beslemesi"
 
 #: ../functions.php:884 ../inc/theme-options.php:754
 msgid "Deviantart"
-msgstr "Deviantart"
+msgstr "deviantART"
 
 #: ../functions.php:889 ../inc/customizer/customizer.php:513
 #: ../inc/theme-options.php:760
@@ -451,7 +447,7 @@ msgstr "MySpace"
 
 #: ../functions.php:909
 msgid "AIM"
-msgstr "AIM"
+msgstr "AIM Adınız"
 
 #: ../functions.php:914 ../inc/customizer/customizer.php:563
 #: ../inc/theme-options.php:790
@@ -461,7 +457,7 @@ msgstr "Flickr"
 #: ../functions.php:919 ../inc/customizer/customizer.php:573
 #: ../inc/theme-options.php:796
 msgid "Slideshare"
-msgstr "Slideshare"
+msgstr "SlideShare"
 
 #: ../functions.php:924 ../inc/customizer/customizer.php:583
 #: ../inc/theme-options.php:802
@@ -476,7 +472,7 @@ msgstr "Skype"
 #: ../functions.php:934 ../inc/customizer/customizer.php:603
 #: ../inc/theme-options.php:814
 msgid "Soundcloud"
-msgstr "Soundcloud"
+msgstr "SoundCloud"
 
 #: ../functions.php:944 ../inc/customizer/customizer.php:623
 #: ../inc/theme-options.php:825
@@ -490,196 +486,196 @@ msgstr "Meetup"
 
 #: ../image.php:15
 msgid "Image navigation"
-msgstr "Navigace v galerii"
+msgstr "Görsel dolaşım"
 
 #: ../image.php:16
 msgid "&larr; Previous"
-msgstr "&larr; Předešlý"
+msgstr "&larr; Önceki"
 
 #: ../image.php:17
 msgid "Next &rarr;"
-msgstr "Další  &rarr;"
+msgstr "Sonraki &arr;"
 
 #: ../image.php:27
 #, php-format
 msgid ""
 "<span class=\"meta-prep meta-prep-entry-date\">Published </span> <span class="
-"\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span> "
-"at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> "
-"in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>"
+"\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span> at <a "
+"href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> in <a href="
+"\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>"
 msgstr ""
-"<span class=\"meta-prep meta-prep-entry-date\">Publikováno:  </span> <span "
-"class=\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></"
-"span> v <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; "
-"%5$s</a> v <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>"
+"<span class=\"meta-prep meta-prep-entry-date\">Yayınlanma tarihi</span> <span "
+"class=\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span> "
+"<a href=\"%3$s\" title=\"Tam boyutlu görsele bağlantı\">%4$s &times; %5$s</a> <a "
+"href=\"%6$s\" title=\"%7$s e geri dön\" rel=\"gallery\">%8$s</a>"
 
 #: ../inc/catchbox-menus.php:71
 msgid "Primary menu"
-msgstr "Primární menu"
+msgstr "Birincil menü"
 
 #: ../inc/catchbox-menus.php:99
 msgid "Secondary menu"
-msgstr "Sekundární menu"
+msgstr "İkincil Mönü"
 
 #: ../inc/catchbox-menus.php:127
 msgid "Footer menu"
-msgstr "Menu v zápatí"
+msgstr "Site Altı Menüsü"
 
 #: ../inc/catchbox-menus.php:161
 msgid "Menu"
-msgstr "Menu"
+msgstr "Menü"
 
 #: ../inc/catchbox-menus.php:165
 msgid "Primary Mobile Menu"
-msgstr ""
+msgstr "Ana menü"
 
 #: ../inc/catchbox-menus.php:195 ../inc/catchbox-menus.php:234
 msgid "Secondary Mobile Menu"
-msgstr ""
+msgstr "İkincil Menü"
 
 #: ../inc/catchbox-metabox.php:31 ../inc/catchbox-metabox.php:37
 msgid "Catch Box Options"
-msgstr ""
+msgstr "Catch Box Tercihleri"
 
 #: ../inc/catchbox-metabox.php:50
 #, php-format
 msgid "Default Layout Set in <a href=\"%s\">Theme Settings</a>"
-msgstr ""
+msgstr "Varsayılan Düzen <a href=\"%s\">Tema ayarları</a>"
 
 #: ../inc/catchbox-metabox.php:56
 msgid "Right sidebar"
-msgstr ""
+msgstr "Sağ Menü"
 
 #: ../inc/catchbox-metabox.php:62
 msgid "Left sidebar"
-msgstr ""
+msgstr "Sol Menü"
 
 #: ../inc/catchbox-metabox.php:68
 msgid "No Sidebar, One Column"
-msgstr ""
+msgstr "Kenar Çubuksuz, Tek Kolon"
 
 #: ../inc/catchbox-metabox.php:84
 msgid "Sidebar Layout Options"
-msgstr ""
+msgstr "Yan Sütun Yerleşim Seçenekleri"
 
 #. translators: header image description
 #: ../inc/custom-header.php:31
 msgid "Garden"
-msgstr "Zahrada"
+msgstr "Garden"
 
 #. translators: header image description
 #: ../inc/custom-header.php:37
 msgid "Flower"
-msgstr "Kytice"
+msgstr "Flower"
 
 #. translators: header image description
 #: ../inc/custom-header.php:43
 msgid "Mountain"
-msgstr "hory"
+msgstr "Mountain"
 
-#: ../inc/customizer/customizer-custom-controls.php:18
-#: ../inc/theme-options.php:536
+#: ../inc/customizer/customizer-custom-controls.php:18 ../inc/theme-options.php:536
 msgid "Theme Instructions"
-msgstr "Natavení šablony"
+msgstr "Tema Talimatlar"
 
-#: ../inc/customizer/customizer-custom-controls.php:22
-#: ../inc/theme-options.php:534
+#: ../inc/customizer/customizer-custom-controls.php:22 ../inc/theme-options.php:534
 msgid "Support"
-msgstr "Sodpora"
+msgstr "Destek"
 
 #: ../inc/customizer/customizer-custom-controls.php:26
 msgid "Changelog"
-msgstr ""
+msgstr "Değişim listesi"
 
 #: ../inc/customizer/customizer-custom-controls.php:30
 msgid "Donate Now"
-msgstr "Přispět"
+msgstr "Bağış Yap"
 
 #: ../inc/customizer/customizer-custom-controls.php:34
 msgid "Review"
-msgstr ""
+msgstr "Görünüm"
 
 #: ../inc/customizer/customizer.php:33 ../inc/theme-options.php:212
 #: ../inc/theme-options.php:213 ../inc/theme-options.php:554
 msgid "Theme Options"
-msgstr "Natavení šablony"
+msgstr "Tema Seçenekleri"
 
 #: ../inc/customizer/customizer.php:34
 msgid "Basic theme Options"
-msgstr ""
+msgstr "Temel Tema Seçenekleri"
 
 #: ../inc/customizer/customizer.php:38
 msgid "Favicon"
-msgstr ""
+msgstr "Favicon"
 
 #: ../inc/customizer/customizer.php:43
 msgid "Webclip Icon Options"
-msgstr ""
+msgstr "Webclip ikon Seçenekleri"
 
 #: ../inc/customizer/customizer.php:44
 msgid ""
-"Web Clip Icon for Apple devices. Recommended Size - Width 144px and Height "
-"144px height, which will support High Resolution Devices like iPad Retina"
+"Web Clip Icon for Apple devices. Recommended Size - Width 144px and Height 144px "
+"height, which will support High Resolution Devices like iPad Retina"
 msgstr ""
+"Apple cihazları için Web Clip ikon.  Önerilen boyutlar 144 px genişlik ve 144 px "
+"yükseklik. Yüksek çözünürlüklü ipad retina cihazlarını destekleyecektir."
 
 #: ../inc/customizer/customizer.php:48 ../inc/customizer/customizer.php:241
 #: ../inc/theme-options.php:100
 msgid "Default Layout"
-msgstr "Základní  rozložení"
+msgstr "Varsayılan düzen"
 
 #: ../inc/customizer/customizer.php:53 ../inc/customizer/customizer.php:252
 msgid "Content Layout"
-msgstr ""
+msgstr "İçerik Yerleşimi"
 
 #: ../inc/customizer/customizer.php:58 ../inc/customizer/customizer.php:264
 #: ../inc/theme-options.php:116
 msgid "Excerpt Length in Words"
-msgstr "Přesná délka podle počtu slov"
+msgstr "Özet için kelime sayısı"
 
 #: ../inc/customizer/customizer.php:63 ../inc/theme-options.php:124
 msgid "Feed Redirect URL"
-msgstr "Přesměrování"
+msgstr "Feed yönlendirme için URL"
 
 #: ../inc/customizer/customizer.php:68
 msgid "Search Text Settings"
-msgstr ""
+msgstr "Arama içeriği Ayarları"
 
 #: ../inc/customizer/customizer.php:73 ../inc/theme-options.php:148
 msgid "Disable Search in Header?"
-msgstr "Zrušit Vyhledávání v headeru?"
+msgstr "Sayfa Tepesinde Aramayı Kapat"
 
 #: ../inc/customizer/customizer.php:78 ../inc/theme-options.php:156
 msgid "Enable Secondary & Footer Menu in Mobile Devices?"
-msgstr "Zapnout Sekundární & zápatí menu in Mobile Devices?"
+msgstr "Mobil cihazlarda ikincil ve dip menüyü aç"
 
 #: ../inc/customizer/customizer.php:83 ../inc/customizer/customizer.php:327
 #: ../inc/theme-options.php:166
 msgid "Custom CSS Styles"
-msgstr "Vlastní CSS stylování"
+msgstr "CSS Stillerini özelleştirin"
 
 #: ../inc/customizer/customizer.php:88
 msgid "Scroll Up Options"
-msgstr ""
+msgstr "Yukarı Kaydırma Seçenekleri"
 
 #: ../inc/customizer/customizer.php:96 ../inc/customizer/customizer.php:97
 msgid "Featured Slider"
-msgstr ""
+msgstr "Özellikli Kaydırıcı"
 
 #: ../inc/customizer/customizer.php:101 ../inc/theme-options.php:620
 msgid "Slider Options"
-msgstr "Nastavení slideru"
+msgstr "Slayt Seçenekleri"
 
 #: ../inc/customizer/customizer.php:106 ../inc/theme-options.php:654
 msgid "Slider Effect Options"
-msgstr "Nastavení efektu přechodu mezi položkami ve slideru"
+msgstr "Slayt Seçenekleri"
 
 #: ../inc/customizer/customizer.php:114
 msgid "Colors"
-msgstr ""
+msgstr "Renkler"
 
 #: ../inc/customizer/customizer.php:120
 msgid "Basic Colors"
-msgstr ""
+msgstr "Temel Renkler"
 
 #: ../inc/customizer/customizer.php:125
 msgid "Custom Color Options"
@@ -687,131 +683,130 @@ msgstr ""
 
 #: ../inc/customizer/customizer.php:133 ../inc/theme-options.php:556
 msgid "Social Links"
-msgstr "Sociální sítě"
+msgstr "Sosyal Ağ Linkleri"
 
 #: ../inc/customizer/customizer.php:134
 msgid "Add your social links here"
-msgstr ""
+msgstr "Sosyal Bağlantılarınızı buraya Ekleyin"
 
 #: ../inc/customizer/customizer.php:138
 msgid "Predefined Social Icons"
-msgstr ""
+msgstr "Tanımlanmış Sosyal İkonlar"
 
 #: ../inc/customizer/customizer.php:145 ../inc/customizer/customizer.php:150
 #: ../inc/theme-options.php:557
 msgid "Webmaster Tools"
-msgstr "Webmaster Tools"
+msgstr "Araçlar"
 
 #: ../inc/customizer/customizer.php:146 ../inc/customizer/customizer.php:151
 #, php-format
 msgid ""
 "Webmaster Tools falls under Plugins Territory according to Theme Review "
-"Guidelines in WordPress.org. This feature will be depreciated in future "
-"versions from Catch Box free version. If you want this feature, then you can "
-"add <a href=\"%s\">Catch Web Tools</a>  plugin."
+"Guidelines in WordPress.org. This feature will be depreciated in future versions "
+"from Catch Box free version. If you want this feature, then you can add <a href="
+"\"%s\">Catch Web Tools</a>  plugin."
 msgstr ""
 
 #: ../inc/customizer/customizer.php:220 ../inc/theme-options.php:84
 msgid "Color Scheme"
-msgstr "Barevná varianta"
+msgstr "Renk şeması"
 
 #: ../inc/customizer/customizer.php:231 ../inc/theme-options.php:92
 msgid "Link Color"
-msgstr "Barva odkazů"
+msgstr "Bağlantı rengi"
 
 #: ../inc/customizer/customizer.php:280
 msgid "Feed Redirect url"
-msgstr ""
+msgstr "Feed yönlendirme için URL"
 
 #: ../inc/customizer/customizer.php:291 ../inc/theme-options.php:361
 msgid "Check to move above the Header/Logo Image"
-msgstr "Check to move above the Header/Logo Image"
+msgstr "Tepe/Logo Görselinin Üzerine taşımak için işaretleyin"
 
 #: ../inc/customizer/customizer.php:299 ../inc/theme-options.php:140
 msgid "Default Display Text in Search"
-msgstr "Default Display Text in Search"
+msgstr "Aramada Gösterilecek Varsayılan Yazı"
 
 #: ../inc/customizer/customizer.php:309 ../inc/theme-options.php:391
 msgid "Check to Disable"
-msgstr "Nezobrazovat"
+msgstr "Kaldırmak için işaretle "
 
 #: ../inc/customizer/customizer.php:318 ../inc/theme-options.php:406
 msgid "Check to Enable"
-msgstr "umožnit"
+msgstr "Devreye sokmak için işaretle"
 
 #: ../inc/customizer/customizer.php:339
 msgid "Check to disable scroll up"
-msgstr ""
+msgstr "Yukarı kaydırmayı etkisizleştirmek için işaretleyin."
 
 #: ../inc/customizer/customizer.php:351
 msgid "Check to Exclude Slider posts from Homepage posts"
-msgstr ""
+msgstr "Slayt yazıları Anasayfa harici tutmak için işaretleyin."
 
 #: ../inc/customizer/customizer.php:360 ../inc/theme-options.php:635
 msgid "Number of Slides"
-msgstr "Počet slidů"
+msgstr "Slayt Görseli Sayısı"
 
 #: ../inc/customizer/customizer.php:361
 msgid ""
-"Customizer page needs to be refreshed after saving if number of slides is "
-"changed"
-msgstr ""
+"Customizer page needs to be refreshed after saving if number of slides is changed"
+msgstr "Slayt sayısı değiştiyse, Ayarlar sayfasının yenilenmesi gerekir."
 
 #: ../inc/customizer/customizer.php:376
 msgid "Transition Effect"
-msgstr ""
+msgstr "Geçiş Efekti:"
 
 #: ../inc/customizer/customizer.php:384 ../inc/theme-options.php:664
 msgid "fade"
-msgstr "zeslábnutí"
+msgstr "soluklaş"
 
 #: ../inc/customizer/customizer.php:385 ../inc/theme-options.php:665
 msgid "wipe"
-msgstr "wipe"
+msgstr "sil"
 
 #: ../inc/customizer/customizer.php:386 ../inc/theme-options.php:666
 msgid "scrollUp"
-msgstr "Vyměnit ze shora"
+msgstr "yukarı kay"
 
 #: ../inc/customizer/customizer.php:387 ../inc/theme-options.php:667
 msgid "scrollDown"
-msgstr "Vyměnit z dola"
+msgstr "aşağı kay"
 
 #: ../inc/customizer/customizer.php:388 ../inc/theme-options.php:668
 msgid "scrollLeft"
-msgstr "Vyměnit z leva"
+msgstr "sola kay"
 
 #: ../inc/customizer/customizer.php:389 ../inc/theme-options.php:669
 msgid "scrollRight"
-msgstr "Vyměnit z prava"
+msgstr "sağa kay"
 
 #: ../inc/customizer/customizer.php:390 ../inc/theme-options.php:670
 msgid "blindX"
-msgstr "roletaX"
+msgstr "kepenk X"
 
 #: ../inc/customizer/customizer.php:391 ../inc/theme-options.php:671
 msgid "blindY"
-msgstr "roletaY"
+msgstr "kepenk Y"
 
 #: ../inc/customizer/customizer.php:392 ../inc/theme-options.php:672
 msgid "blindZ"
-msgstr "roletaZ"
+msgstr "kepenk Z"
 
 #: ../inc/customizer/customizer.php:393 ../inc/theme-options.php:673
 msgid "cover"
-msgstr "překrýt"
+msgstr "kapla"
 
 #: ../inc/customizer/customizer.php:394 ../inc/theme-options.php:674
 msgid "shuffle"
-msgstr "Přehodit"
+msgstr "Karıştır"
 
 #: ../inc/customizer/customizer.php:399
 msgid "Transition Delay (in seconds)"
-msgstr ""
+msgstr "Geçiş Bekleme Süresi"
 
 #: ../inc/customizer/customizer.php:415 ../inc/theme-options.php:689
 msgid "Transition Length"
-msgstr "Délka trvání přechodu"
+msgstr "Geçiş Bekleme Süresi"
 
 #: ../inc/customizer/customizer.php:453
 msgid "Google+"
@@ -823,7 +818,7 @@ msgstr "LinkedIn"
 
 #: ../inc/customizer/customizer.php:483 ../inc/theme-options.php:742
 msgid "Youtube"
-msgstr "Youtube"
+msgstr "YouTube"
 
 #: ../inc/customizer/customizer.php:493
 msgid "RSS"
@@ -835,20 +830,20 @@ msgstr "deviantART"
 
 #: ../inc/customizer/customizer.php:553 ../inc/theme-options.php:784
 msgid "Aim"
-msgstr "Aim"
+msgstr "AIM"
 
 #: ../inc/customizer/customizer.php:645 ../inc/theme-options.php:854
 msgid "Code to display on Header"
-msgstr "Code to display on Header"
+msgstr "Sayfa tepesinde gösterilecek kod"
 
 #: ../inc/customizer/customizer.php:646
 msgid ""
 "Here you can put scripts from Google, Facebook etc. which will load on Header"
-msgstr ""
+msgstr "Burada, Google, facebook dan kod girebilirsiniz. Başlığa yüklenecektir."
 
 #: ../inc/customizer/customizer.php:656 ../inc/theme-options.php:865
 msgid "Code to display on Footer"
-msgstr "Code to display on Footer"
+msgstr "Sayfa altında gösterilecek kod"
 
 #: ../inc/customizer/customizer.php:657
 msgid ""
@@ -857,11 +852,11 @@ msgstr ""
 
 #: ../inc/customizer/customizer.php:673
 msgid "Fav Icon"
-msgstr ""
+msgstr "Fav Icon"
 
 #: ../inc/customizer/customizer.php:685
 msgid "Web Clip Icon"
-msgstr ""
+msgstr "Web Clip Icon"
 
 #: ../inc/customizer/customizer.php:704 ../inc/theme-options.php:583
 msgid "Header Image Location"
@@ -886,13 +881,13 @@ msgstr ""
 
 #: ../inc/customizer/customizer.php:872
 msgid ""
-"Caution: Reset all settings to default. Refresh the page after save to view "
-"full effects."
+"Caution: Reset all settings to default. Refresh the page after save to view full "
+"effects."
 msgstr ""
 
 #: ../inc/customizer/customizer.php:874
 msgid "Reset all settings"
-msgstr ""
+msgstr "Tüm ayarları sıfırla"
 
 #: ../inc/customizer/customizer.php:885
 msgid "Check to reset all settings to default"
@@ -904,55 +899,55 @@ msgstr ""
 
 #: ../inc/default-options.php:29
 msgid "Light"
-msgstr "Světlé"
+msgstr "Açık"
 
 #: ../inc/default-options.php:35
 msgid "Dark"
-msgstr "Tmavé"
+msgstr "Koyu"
 
 #: ../inc/default-options.php:41
 msgid "Blue"
-msgstr "Modré"
+msgstr "Mavi"
 
 #: ../inc/default-options.php:47
 msgid "Green"
-msgstr "Green"
+msgstr "Yeşil"
 
 #: ../inc/default-options.php:53
 msgid "Red"
-msgstr "Red"
+msgstr "Kırmızı"
 
 #: ../inc/default-options.php:59
 msgid "Brown"
-msgstr "Brown"
+msgstr "Kahverengi"
 
 #: ../inc/default-options.php:65
 msgid "Orange"
-msgstr "Orange"
+msgstr "Turuncu"
 
 #: ../inc/default-options.php:85
 msgid "Content on left"
-msgstr "Obsah na levé straně"
+msgstr "İçerik solda"
 
 #: ../inc/default-options.php:91
 msgid "Content on right"
-msgstr "Obsah na pravé straně"
+msgstr "İçerik sağda"
 
 #: ../inc/default-options.php:97
 msgid "One-column, no sidebar"
-msgstr "Jeden seznam, žádné sidebary"
+msgstr "Tek kolon, yan sütun yok"
 
 #: ../inc/default-options.php:115
 msgid "Show excerpt"
-msgstr "Zobrazit výpis"
+msgstr "Özeti göster"
 
 #: ../inc/default-options.php:120
 msgid "Show full content"
-msgstr "Zobrazit celý obsah článku"
+msgstr "Tüm içeriği göster"
 
-#: ../inc/default-options.php:145 ../searchform.php:22
+#: ../inc/default-options.php:145
 msgid "Search"
-msgstr "Vyhledávání"
+msgstr "Ara"
 
 #: ../inc/default-options.php:193
 msgid "Y"
@@ -964,48 +959,48 @@ msgstr "WordPress"
 
 #: ../inc/default-options.php:224
 msgid "Theme: Catch Box by "
-msgstr "Theme: Catch Box by "
+msgstr "Tema: Catch Box"
 
 #: ../inc/default-options.php:235 ../inc/theme-options.php:521
 #: ../inc/theme-options.php:522
 msgid "Catch Themes"
-msgstr "Catch Themes"
+msgstr "Catch Temaları"
 
 #: ../inc/default-options.php:246
 msgid "Copyright"
-msgstr "Copyright"
+msgstr "Telif Hakları"
 
 #: ../inc/default-options.php:246
 msgid "All Rights Reserved"
-msgstr "Všechna práva vyhrazena."
+msgstr "Tüm Hakları Saklıdır"
 
 #: ../inc/theme-options.php:65
 msgid "Favicon URL"
-msgstr "Favicon URL"
+msgstr "Favori ikon URL"
 
 #: ../inc/theme-options.php:74
 msgid "Web Clip Icon URL"
-msgstr "Web Clip Icon URL"
+msgstr "Web Clip Simgesi URL"
 
 #: ../inc/theme-options.php:108
 msgid "Content layout"
-msgstr "Rozložení obsahu"
+msgstr "İçerik Yerleşimi"
 
 #: ../inc/theme-options.php:132
 msgid "Move Site Title and Tagline?"
-msgstr "Move Site Title and Tagline?"
+msgstr "Site Başlığını ve Etiket satırını kaldır"
 
 #: ../inc/theme-options.php:175
 msgid "Scroll Up"
-msgstr ""
+msgstr "Yukarı kaydır"
 
 #: ../inc/theme-options.php:237
 msgid "Insert as Favicon"
-msgstr "Insert as Favicon"
+msgstr "Favori ikon girin"
 
 #: ../inc/theme-options.php:237
 msgid "Add/Change Favicon"
-msgstr "Přidat/změnit Favicon"
+msgstr "Favori ikon ekle/değiştir"
 
 #: ../inc/theme-options.php:253
 msgid "Insert as Web Clip Icon"
@@ -1013,15 +1008,15 @@ msgstr "Insert as Web Clip Icon"
 
 #: ../inc/theme-options.php:253
 msgid "Add/Change Web Clip Icon"
-msgstr "Přidat/změnit Web Clip Icon"
+msgstr "Web klip ikon ekle/değiştir"
 
 #: ../inc/theme-options.php:333
 msgid "Words"
-msgstr "Words"
+msgstr "Kelimeler"
 
 #: ../inc/theme-options.php:429
 msgid "CSS Tutorial from W3Schools."
-msgstr "CSS Tutorial od W3Schools"
+msgstr "W3Schools adresinden CSS İpuçları."
 
 #: ../inc/theme-options.php:429
 msgid "http://www.w3schools.com/css/default.asp"
@@ -1029,19 +1024,19 @@ msgstr "http://www.w3schools.com/css/default.asp"
 
 #: ../inc/theme-options.php:429
 msgid "CSS Tutorial"
-msgstr "CSS Tutorial"
+msgstr "CSS İpuçları"
 
 #: ../inc/theme-options.php:429
 msgid "Click Here to Read"
-msgstr "Číst"
+msgstr "Okumak İçin Burayı Tıklayın"
 
 #: ../inc/theme-options.php:443 ../inc/theme-options.php:632
 msgid "Check to disable"
-msgstr "Nezobrazovat: "
+msgstr "Kaldırmak için işaretle "
 
 #: ../inc/theme-options.php:519
 msgid "Theme Options By"
-msgstr "Theme Options By"
+msgstr "Tema Seçeneklerini Sağlayan"
 
 #: ../inc/theme-options.php:521
 msgid "https://catchthemes.com/"
@@ -1053,7 +1048,7 @@ msgstr "https://catchthemes.com/themes/catch-box-pro/"
 
 #: ../inc/theme-options.php:528
 msgid "Upgrade to Catch Box Pro"
-msgstr "Upgradovat na Catch Box Pro"
+msgstr "Catch Box pro ya yükseltin"
 
 #: ../inc/theme-options.php:533
 msgid "https://catchthemes.com/donate/"
@@ -1061,11 +1056,11 @@ msgstr "https://catchthemes.com/donate/"
 
 #: ../inc/theme-options.php:533
 msgid "Donate"
-msgstr "Přispět"
+msgstr "Bağış"
 
 #: ../inc/theme-options.php:534
 msgid "https://catchthemes.com/support/"
-msgstr "https://catchthemes.com/"
+msgstr "https://catchthemes.com/support/"
 
 #: ../inc/theme-options.php:535
 msgid "https://catchthemes.com/support-forum/forum/catch-box-public/"
@@ -1073,7 +1068,7 @@ msgstr "https://catchthemes.com/support-forum/forum/catch-box-public/"
 
 #: ../inc/theme-options.php:535
 msgid "Support Forum"
-msgstr "Support Forum"
+msgstr "Destek Forumu"
 
 #: ../inc/theme-options.php:536
 msgid "https://catchthemes.com/theme-instructions/catch-box/"
@@ -1085,7 +1080,7 @@ msgstr "https://www.facebook.com/catchthemes/"
 
 #: ../inc/theme-options.php:537
 msgid "Like Catch Themes on Facebook"
-msgstr "Like Catch Themes on Facebook"
+msgstr "Catch Temalarını Facebook üzerinde beğen"
 
 #: ../inc/theme-options.php:538
 msgid "https://twitter.com/catchthemes/"
@@ -1093,7 +1088,7 @@ msgstr "https://twitter.com/catchthemes/"
 
 #: ../inc/theme-options.php:538
 msgid "Follow Catch Themes on Twitter"
-msgstr "Follow Catch Themes on Twitter"
+msgstr "Twitter üzerinde Catch Temalaını izle"
 
 #: ../inc/theme-options.php:539
 msgid "http://wordpress.org/support/view/theme-reviews/catch-box/"
@@ -1101,90 +1096,86 @@ msgstr "http://wordpress.org/support/view/theme-reviews/catch-box/"
 
 #: ../inc/theme-options.php:539
 msgid "Rate us 5 Star on WordPress"
-msgstr "Rate us 5 Star on WordPress"
+msgstr "WordPress sitesinde 5 yıldızla değerlendir"
 
 #: ../inc/theme-options.php:539
 msgid "5 Star Rating"
-msgstr "5 Star Rating"
+msgstr "5 Yıldızla Değerlendir"
 
 #: ../inc/theme-options.php:545
 #, php-format
+msgctxt "1: Customizer Link Start, 2: Customizer Link End"
 msgid ""
 "Theme Options Panel will be retired on future versions. Please use %1$s "
 "Customizer %2$s instead."
 msgstr ""
+"İleri uyarlamalarda tema seçenekleri kaldırılacaktır. Lütfen bunun yerine  %1$s "
+"Customizer %2$s kullanın"
 
 #: ../inc/theme-options.php:555
 msgid "Featured Post Slider"
-msgstr "Featured Post Slider"
+msgstr "Öne Çıkan İleti İçin Slayt"
 
 #: ../inc/theme-options.php:566
 msgid "Header Image:"
-msgstr ""
+msgstr "Tepe Görseli"
 
 #: ../inc/theme-options.php:575
 msgid "Click here to change Header Image"
-msgstr ""
+msgstr "Tepe görselini değiştirmek için basın."
 
 #: ../inc/theme-options.php:577
 msgid "Click here to add Header Image"
-msgstr ""
+msgstr "Tepe görseli eklemek için basın"
 
 #: ../inc/theme-options.php:624 ../inc/theme-options.php:626
 msgid "Post Slider Tutorial"
-msgstr "Post Slider Tutorial"
+msgstr "Slayt iletisi Dersleri"
 
 #: ../inc/theme-options.php:626
 msgid ""
-"https://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-"
-"slider/"
+"https://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-slider/"
 msgstr ""
-"https://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-"
-"slider/"
+"https://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-slider/"
 
 #: ../inc/theme-options.php:626
 msgid "Click Here to Read Post Slider Tutorial"
-msgstr "Click Here to Read Post Slider Tutorial"
+msgstr "İleti slaytı Derslerini okumak için buraya basın."
 
 #: ../inc/theme-options.php:630
 msgid "Exclude Slider post from Home page posts:"
-msgstr ""
-"Vyloučit příspěvky, které jsou použity ve slideru, z výpisu článků na domácí "
-"obrazovce: "
+msgstr "Anasayfa iletilerinde Slayt iletilerini Kullanma:"
 
 #: ../inc/theme-options.php:641
 msgid "Featured Post ID"
-msgstr "Featured Post ID"
+msgstr "Öne Çıkan İleti Kimliği"
 
-# @ default
 #: ../inc/theme-options.php:643
 msgid "Click Here To Edit"
-msgstr "Klikněte zde pro úpravu"
+msgstr "Düzenlemek için burayı tıklayın"
 
 #: ../inc/theme-options.php:649
 msgid ""
 "<strong>Note</strong>: Here you add in Post IDs which displays on Homepage "
 "Featured Slider."
 msgstr ""
-"<strong>Poznámka</strong>: Zde můžete zadat ID číslo článků, podle kterého "
-"se budou články ve slideru zobrazovat ."
 
 #: ../inc/theme-options.php:650 ../inc/theme-options.php:696
 #: ../inc/theme-options.php:837 ../inc/theme-options.php:876
 msgid "Save"
-msgstr "Uložit"
+msgstr "Kaydet"
 
 #: ../inc/theme-options.php:659
 msgid "Transition Effect:"
-msgstr "efekt přechodu:"
+msgstr "Geçiş Efekti:"
 
 #: ../inc/theme-options.php:680
 msgid "Transition Delay"
-msgstr "Doba statického zobrazení"
+msgstr "Geçiş Bekleme Süresi"
 
 #: ../inc/theme-options.php:683 ../inc/theme-options.php:692
 msgid "second(s)"
-msgstr "vteřin"
+msgstr "saniye"
 
 #: ../inc/theme-options.php:724
 msgid "Google +"
@@ -1192,71 +1183,66 @@ msgstr "Google +"
 
 #: ../inc/theme-options.php:836
 msgid ""
-"<strong>Note:</strong> Enter the url for correponding social networking "
-"website"
-msgstr ""
-"<strong>Poznámka:</strong>Zadejte URL adresy pro dané profily na určených "
-"sociálních sítích."
+"<strong>Note:</strong> Enter the url for correponding social networking website"
+msgstr "<strong>Note:</strong> Sosyal ağ url sini girin."
 
 #: ../inc/theme-options.php:849
 msgid "Header and Footer Code"
-msgstr "Header and Footer Code"
+msgstr "Sayfa tepesi ve Sayfa altı kodu"
 
 #: ../inc/theme-options.php:861
 msgid ""
 "Note: Here you can put scripts from Google, Facebook etc. which will load on "
 "Header"
 msgstr ""
-"Note: Here you can put scripts from Google, Facebook etc. which will load on "
-"Header"
+"Note: Burada Google, Add This den kod girebilirsiniz, tepe bölüme yüklenecektir."
 
 #: ../inc/theme-options.php:872
 msgid ""
-"Note: Here you can put scripts from Google, Facebook, Add This etc. which "
-"will load on footer"
+"Note: Here you can put scripts from Google, Facebook, Add This etc. which will "
+"load on footer"
 msgstr ""
-"Note: Here you can put scripts from Google, Facebook, Add This etc. which "
-"will load on footer"
+"Note: Burada Google, Add This den kod girebilirsiniz, dip bölüme yüklenecektir."
 
 #: ../inc/widgets.php:23
 msgid "Main Sidebar"
-msgstr "Hlavní sidebar"
+msgstr "Birincil yan sütun"
 
 #: ../inc/widgets.php:32
 msgid "Footer Area One"
-msgstr "Zápatí 1"
+msgstr "Alt alan bir"
 
 #: ../inc/widgets.php:34 ../inc/widgets.php:44 ../inc/widgets.php:54
 msgid "An optional widget area for your site footer"
-msgstr "Místo pro widget, který bude zobrazen v zápatí"
+msgstr "Yandaki alt alan için isteğe bağlı bileşen"
 
 #: ../inc/widgets.php:42
 msgid "Footer Area Two"
-msgstr "Zápatí 2"
+msgstr "Alt alan iki"
 
 #: ../inc/widgets.php:52
 msgid "Footer Area Three"
-msgstr "Zápatí 3"
+msgstr "Alt alan üç"
 
 #: ../inc/widgets.php:73
 msgid "CT: Adspace Widget"
-msgstr ""
+msgstr "CT: Reklam alanı bileşeni"
 
 #: ../inc/widgets.php:74
 msgid "Use this widget to add any type of Ad as a widget. "
-msgstr ""
+msgstr "Herhangi bir reklam kodu için bu bileşeni kullanın."
 
 #: ../inc/widgets.php:92
 msgid "Title (optional):"
-msgstr "Název (doporovolný):"
+msgstr "Başlık (isteğe bağlı):"
 
 #: ../inc/widgets.php:97
 msgid "Ad Code:"
-msgstr "Kód reklamy:"
+msgstr "Reklam kodu"
 
 #: ../inc/widgets.php:103
 msgid "Image Url:"
-msgstr "URL obrázku:"
+msgstr "Image Url:"
 
 #: ../inc/widgets.php:107
 msgid "Link URL:"
@@ -1264,283 +1250,90 @@ msgstr "Link URL:"
 
 #: ../inc/widgets.php:111
 msgid "Alt text:"
-msgstr "Text:"
+msgstr "Alt text:"
 
 #: ../search.php:15
 #, php-format
 msgid "Search Results for: %s"
-msgstr "Výsledky vyhledávání pro : %s"
+msgstr "Arama sonuçları: %s"
 
 #: ../search.php:43
 msgid ""
 "Sorry, but nothing matched your search criteria. Please try again with some "
 "different keywords."
-msgstr "Bohužel jsem nic nenašel. Zkuste zadat jiná klíčová slova."
+msgstr ""
+"Üzgünüm, arama kriterlerinizle örtüşen sonuç bulunamadı. Farklı anahtar "
+"kelimelerle tekrar deneyin."
 
 #: ../searchform.php:19
+msgctxt "label"
 msgid "Search for:"
-msgstr ""
+msgstr "Ara:"
+
+#: ../searchform.php:22
+msgctxt "submit button"
+msgid "Search"
+msgstr "Ara"
 
 #: ../sidebar.php:24 ../sidebar.php:29
 msgid "Primary Sidebar Widget Area"
-msgstr ""
+msgstr "Birincil yan bar eklenti bölgesi"
 
 #: ../sidebar.php:31
 msgid ""
-"This is the Primary Sidebar Widget Area if you are using a two column site "
-"layout option."
+"This is the Primary Sidebar Widget Area if you are using a two column site layout "
+"option."
 msgstr ""
+"2 sütunlu yerleşim seçeneği kullanıyorsanız, bu Birincil yan bar eklentisi "
+"olacaktır."
 
 #: ../sidebar.php:32
 #, php-format
 msgid ""
-"By default it will load Search and Archives widgets as shown below. You can "
-"add widget to this area by visiting your <a href=\"%s\">Widgets Panel</a> "
-"which will replace default widgets."
+"By default it will load Search and Archives widgets as shown below. You can add "
+"widget to this area by visiting your <a href=\"%s\">Widgets Panel</a> which will "
+"replace default widgets."
 msgstr ""
+"Varsayılan olarak, aşağıda gösterildiği gibi Arama ve Arşivler eklentisine "
+"yüklenecektir. Bu alana eklenti eklemek için <a href=\"%s\">Widgets Panel</a> "
+"bağlantısını ziyaret edebilirsiniz. Bu varsayılan eklentilerin yerini alacaktır."
 
 #: ../sidebar.php:38
 msgid "Archives"
-msgstr "Archiv"
+msgstr "Arşiv"
 
 #: ../single.php:16
 msgid "<span class=\"meta-nav\">&larr;</span> Previous"
-msgstr "<span class=\"meta-nav\">&larr;</span> Předešlý"
+msgstr "<span class=\"meta-nav\">&larr;</span> Önceki"
 
 #: ../single.php:17
 msgid "Next <span class=\"meta-nav\">&rarr;</span>"
-msgstr "Další <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Sonraki <span class=\"meta-nav\">&rarr;</span>"
 
 #: ../tag.php:16
 #, php-format
 msgid "Tag Archives: %s"
-msgstr "Více se stejným štíkem: %s"
+msgstr "Etiket arşivi: %s"
 
-#, fuzzy
 #~ msgid "Catch Box Pro"
-#~ msgstr "Upgradovat na Catch Box Pro"
+#~ msgstr "Catch Box Pro"
 
-#, fuzzy
+#~ msgid "Upgrade Now"
+#~ msgstr "Yükselt: PRO"
+
 #~ msgid "Catch Box"
-#~ msgstr "Theme: Catch Box by "
+#~ msgstr "Catch Box"
 
-#, fuzzy
 #~ msgid "https://catchthemes.com/themes/catchbox"
-#~ msgstr "https://catchthemes.com/themes/catch-box-pro/"
+#~ msgstr "https://catchthemes.com/themes/catchbox"
 
-#, fuzzy
 #~ msgid "https://catchthemes.com"
-#~ msgstr "https://catchthemes.com/"
+#~ msgstr "https://catchthemes.com"
 
 #, fuzzy
 #~ msgid "Disable Sidebar Template"
-#~ msgstr "Zrušit Vyhledávání v headeru?"
+#~ msgstr "Sayfa Tepesinde Aramayı Kapat"
 
-#, fuzzy
-#~ msgctxt "comments number"
-#~ msgid "1"
-#~ msgstr "1"
-
-#, fuzzy
-#~ msgctxt "comments number"
-#~ msgid "%"
-#~ msgstr "%"
-
-#, fuzzy
 #~ msgctxt "placeholder"
 #~ msgid "Search"
-#~ msgstr "Vyhledávání"
-
-#, fuzzy
-#~ msgctxt "label"
-#~ msgid "Search for:"
-#~ msgstr "Vyhledávání"
-
-#, fuzzy
-#~ msgctxt "submit button"
-#~ msgid "Search"
-#~ msgstr "Vyhledávání"
-
-#~ msgid "Daily Archives: %s"
-#~ msgstr "Denní archiv: %s"
-
-#~ msgid "Monthly Archives: %s"
-#~ msgstr "Měsíční archiv: %s"
-
-#~ msgid "F Y"
-#~ msgstr "F Y"
-
-#~ msgid "Yearly Archives: %s"
-#~ msgstr "Roční archiv: %s"
-
-#~ msgid "Blog Archives"
-#~ msgstr "Archiv od počátku věků, tedy od vzniku webu."
-
-#~ msgid "Skip to content"
-#~ msgstr "Přeskočit k obsahu"
-
-#~ msgid "Skip to primary content"
-#~ msgstr "Přeskočit k primárnímu obsahu."
-
-#~ msgid "Skip to secondary content"
-#~ msgstr "Přeskočit k sekundárnímu obsahu."
-
-#~ msgid "More Theme Options &raquo;"
-#~ msgstr "More Theme Options &raquo;"
-
-#~ msgid "Page %s"
-#~ msgstr "Stránka  %s"
-
-#~ msgid "Use this widget to add any type of Ad as a widget."
-#~ msgstr "Použijte tento widget pro přidání jakékoliv reklamy."
-
-#~ msgid "Catch Box Adspace Widget"
-#~ msgstr "Catch Box Adspace Widget"
-
-#~ msgid "Meta"
-#~ msgstr "Další"
-
-#~ msgid "Copyright &copy;"
-#~ msgstr "Copyright &copy;"
-
-#~ msgid ". All Rights Reserved."
-#~ msgstr "Všechna práva vyhrazena."
-
-#~ msgid "http://wordpress.org/"
-#~ msgstr "http://wordpress.org/"
-
-#~ msgid "Powered by WordPress"
-#~ msgstr "Powered by WordPress"
-
-#~ msgid "Powered by %s"
-#~ msgstr "Powered by %s"
-
-#~ msgid "Theme Catch Box by Catch Themes"
-#~ msgstr "Theme Catch Box od  Catch Themes"
-
-#~ msgid "Theme: %s"
-#~ msgstr "Šablona: %s"
-
-#~ msgid "Select a Color"
-#~ msgstr "Vybrat barvu"
-
-#~ msgid "Default color: %s"
-#~ msgstr "Základní barva: %s"
-
-#~ msgid "http://facebook.com/catchthemes"
-#~ msgstr "http://facebook.com/catchthemes"
-
-#~ msgid "https://twitter.com/catchthemes"
-#~ msgstr "https://twitter.com/catchthemes"
-
-#~ msgid "Settings saved."
-#~ msgstr "Nastavení uloženo"
-
-#~ msgid ""
-#~ "Some themes provide customization options that are grouped together on a "
-#~ "Theme Options screen. If you change themes, options may change or "
-#~ "disappear, as they are theme-specific. Your current theme, Catch Box, "
-#~ "provides the following Theme Options:"
-#~ msgstr ""
-#~ "Některá nastavení jsou shromážděny v položce menu Nastavení. Pokud "
-#~ "šablonu změníte na jinou, můžé se nastavení změnit. Pro nastavení šablony "
-#~ "Catch Box přejděte do Nastavení šablony."
-
-#~ msgid ""
-#~ "<strong>Color Scheme</strong>: You can choose a color palette of \"Light"
-#~ "\" (light background with dark text) or \"Dark\" (dark background with "
-#~ "light text) for your site."
-#~ msgstr ""
-#~ "<strong>Barevný styl</strong>: Můžete si zvolit jedno z barevných stylů"
-#~ "\"Hell\" (bílé pozadí s černým textem) nebo\"Dunkel\" (černé pozadí s "
-#~ "bílým textem) pro vaši stránku."
-
-#~ msgid ""
-#~ "<strong>Link Color</strong>: You can choose the color used for text links "
-#~ "on your site. You can enter the HTML color or hex code, or you can choose "
-#~ "visually by clicking the \"Select a Color\" button to pick from a color "
-#~ "wheel."
-#~ msgstr ""
-#~ "<strong>Barva odkazů</strong>: Zde můžete nastavit, jakou barvu budou mít "
-#~ "všechny aktivní odkazy. Můžete jej zadat pomocí HTML nebo hex kódem. Taky "
-#~ "můžete barvu zvolit kliknutím  na \"Zvolit barvu\"  a vybrat si z "
-#~ "barevného spektra."
-
-#~ msgid ""
-#~ "<strong>Default Layout</strong>: You can choose if you want your "
-#~ "site&#8217;s default layout to have a sidebar on the left, the right, or "
-#~ "not at all."
-#~ msgstr ""
-#~ "<strong>Základní rozložení</strong>: Pokud chcete základní rozložení se "
-#~ "sidebarem na levé, pravé nebo žádné straně."
-
-#~ msgid ""
-#~ "Remember to click \"Save Changes\" to save any changes you have made to "
-#~ "the theme options."
-#~ msgstr ""
-#~ "Nezapomeň kliknut na \"Uložit změny\" aby jsi uložit všechy provedené "
-#~ "změny."
-
-#~ msgid "For more information:"
-#~ msgstr "Pro více informací: "
-
-#~ msgid ""
-#~ "<a href=\"http://codex.wordpress.org/Appearance_Theme_Options_Screen\" "
-#~ "target=\"_blank\">Documentation on Theme Options</a>"
-#~ msgstr ""
-#~ "<a href=\"http://codex.wordpress.org/Appearance_Theme_Options_Screen\" "
-#~ "target=\"_blank\">Nápověda pro Nastavení šablony</a>"
-
-#~ msgid ""
-#~ "<a href=\"http://wordpress.org/support/\" target=\"_blank\">Support "
-#~ "Forums</a>"
-#~ msgstr ""
-#~ "<a href=\"http://wordpress.org/support/\" target=\"_blank\">Fórum "
-#~ "podpory</a>"
-
-#~ msgid "Overview"
-#~ msgstr "Přehled"
-
-#~ msgid ""
-#~ "Slider Some themes provide customization options that are grouped "
-#~ "together on a Theme Options screen. If you change themes, options may "
-#~ "change or disappear, as they are theme-specific. Your current theme, "
-#~ "Catch Box, provides the following Theme Options:"
-#~ msgstr ""
-#~ "Posuvník Některé šablony si můžete uživatelsky přizpůsobit. Všechny tyto "
-#~ "možnosti najdete v Nastavení šablony. Pokud šablonu změníte na jinou, "
-#~ "můžete o současné nastavení přijít. Vaše současná šablona Catch Box "
-#~ "nabízí zmiňované nastavení zde: "
-
-#~ msgid "Webmaster Site Verification IDs"
-#~ msgstr "Webmaster Site Verification IDs"
-
-#~ msgid "Google Site Verification ID"
-#~ msgstr "Google Site Verification ID"
-
-#~ msgid "Enter your Google ID number only"
-#~ msgstr "Geben Sie nur Ihre Google-ID-Nummer ein"
-
-#~ msgid "Yahoo Site Verification ID"
-#~ msgstr "Yahoo Site Verification ID"
-
-#~ msgid "Enter your Yahoo ID number only"
-#~ msgstr "Geben Sie nur Ihre Yahoo-ID-Nummer ein"
-
-#~ msgid "Bing Site Verification ID"
-#~ msgstr "Bing Site Verification ID"
-
-#~ msgid "Enter your Bing ID number only"
-#~ msgstr "Geben Sie nur Ihre Bing-ID-Nummer ein"
-
-#~ msgid "Webmaster Site Verification Code"
-#~ msgstr "Webmaster Site Verification Code"
-
-#~ msgid "Analytics, site stats Header code"
-#~ msgstr "Analytics, statistiky Header kód"
-
-#~ msgid "Analytics, site stats footer code"
-#~ msgstr "Analytics, statistiky kód v zápatí"
-
-#~ msgid "Viemo"
-#~ msgstr "Viemo"
+#~ msgstr "Ara"

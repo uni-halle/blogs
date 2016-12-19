@@ -9,13 +9,13 @@
  */
 function catchbox_pass_slider_value() {
 	$options = catchbox_get_theme_options();
-	if( !isset( $options[ 'transition_effect' ] ) ) {
+	if ( !isset( $options[ 'transition_effect' ] ) ) {
 		$options[ 'transition_effect' ] = "fade";
 	}
-	if( !isset( $options[ 'transition_delay' ] ) ) {
+	if ( !isset( $options[ 'transition_delay' ] ) ) {
 		$options[ 'transition_delay' ] = 4;
 	}
-	if( !isset( $options[ 'transition_duration' ] ) ) {
+	if ( !isset( $options[ 'transition_duration' ] ) ) {
 		$options[ 'transition_duration' ] = 1;
 	}
 	$transition_effect = $options[ 'transition_effect' ];
@@ -52,16 +52,15 @@ function catchbox_sliders() {
 	// get data value from catchbox_options_slider through theme options
 	$options = catchbox_get_theme_options();
 	// get slider_qty from theme options
-	if( !isset( $options['slider_qty'] ) || !is_numeric( $options['slider_qty'] ) ) {
+	if ( !isset( $options['slider_qty'] ) || !is_numeric( $options['slider_qty'] ) ) {
 		$options[ 'slider_qty' ] = 4;
 	}
 
 	$postperpage = $options[ 'slider_qty' ];
 	if ( isset( $options[ 'featured_slider' ] ) ) {
-		//In customizer, all values are returned but with empty, this rectifies the issue in customizer
-		$slider_array = array_filter( $options[ 'featured_slider' ] );
+		$slider_array = ( array ) $options[ 'featured_slider' ];
 
-		if( ( !$catchbox_sliders = get_transient( 'catchbox_sliders' ) ) && !empty( $slider_array ) ) {
+		if ( ( !$catchbox_sliders = get_transient( 'catchbox_sliders' ) ) && !empty( $slider_array ) ) {
 			echo '<!-- refreshing cache -->';
 
 			$catchbox_sliders = '

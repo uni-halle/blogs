@@ -153,13 +153,13 @@ class catchbox_adwidget extends WP_Widget {
 
 
 		echo $before_widget;
-		if ( $title != '' ) {
+		if ( '' != $title ) {
 			echo $before_title . apply_filters( 'widget_title', $title, $instance, $this->id_base ) . $after_title;
 		} else {
 			echo '<span class="paddingtop"></span>';
 		}
 
-		if ( $adcode != '' ) {
+		if ( '' != $adcode ) {
 			echo $adcode;
 		} else {
 			?><a href="<?php echo $href; ?>"><img src="<?php echo $image; ?>" alt="<?php echo $alt; ?>" /></a><?php
