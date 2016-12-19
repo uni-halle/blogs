@@ -60,6 +60,18 @@ class inkthemes_Customizer {
         );
 
         /**
+         * Dummy Data Section
+         */
+        $wp_customize->add_section('dummy_data_setting', array(
+            'title' => __('Dummy Data', 'colorway'),
+            'description' => __('Allows you to anable or disable dummy data for ColorWay Theme.', 'colorway'), //Descriptive tooltip
+            'panel' => 'general_setting_panel',
+            'priority' => '',
+            'capability' => 'edit_theme_options'
+                )
+        );
+
+        /**
          * Home page slider panel
          */
         $wp_customize->add_panel('home_page_slider_panel', array(
@@ -343,6 +355,9 @@ class inkthemes_Customizer {
             'tracking_code_setting' => array(
                 'colorway_analytics'
             ),
+            'dummy_data_setting' => array(
+                'colorway_dummy_data'
+            ),
             'home_page_slider_control' => array(
                 'colorway_home_page_slider'
             ),
@@ -456,6 +471,18 @@ class inkthemes_Customizer {
                 'type' => 'option',
                 'setting_type' => 'textarea',
                 'default' => ''
+            ),
+            'colorway_dummy_data' => array(
+                'id' => 'inkthemes_options[colorway_dummy_data]',
+                'label' => __('Dummy Data', 'colorway'),
+                'description' => __('Enable or Disable Dummy Data for the theme', 'colorway'),
+                'type' => 'option',
+                'setting_type' => 'radio',
+                'default' => 'on',
+                'choices' => array(
+                    'on' => 'On',
+                    'off' => 'Off'
+                )
             ),
             'colorway_home_page_blog_post' => array(
                 'id' => 'inkthemes_options[colorway_home_page_blog_post]',
@@ -1102,10 +1129,10 @@ function inkthemes_registers() {
     wp_localize_script('inkthemes_customizer_script', 'ink_advert', array(
         'pro' => __('View PRO version', 'colorway'),
         'url' => esc_url('http://www.inkthemes.com/wp-themes/colorway-wp-theme/'),
-		'support_text' => __('Need Help!','colorway'),
-		'support_url' => esc_url('http://www.inkthemes.com/lets-connect/'),
-    )
-);
+        'support_text' => __('Need Help!', 'colorway'),
+        'support_url' => esc_url('http://www.inkthemes.com/lets-connect/'),
+            )
+    );
 }
 
 add_action('customize_controls_enqueue_scripts', 'inkthemes_registers');

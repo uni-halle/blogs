@@ -7,11 +7,16 @@ include_once get_template_directory() . '/functions/customizer.php';
 
 //get the theme option from options array
 function inkthemes_get_option($name, $default = '') {
+//    echo $default;
     $options = get_option('inkthemes_options');
-    if (isset($options[$name])) {
+    if (isset($options[$name]) && $options[$name] != '') {
         return $options[$name];
+    } elseif ($default) {
+        if (inkthemes_get_option('colorway_dummy_data') == 'on') {
+            return $default;
+        }
     } else {
-        return $default;
+        return false;
     }
 }
 
@@ -79,7 +84,6 @@ add_action('init', 'inkthemes_add_stylesheet');
 
 function inkthemes_wp_enqueue_scripts() {
     if (!is_admin()) {
-        wp_enqueue_script('jquery');
         wp_enqueue_script('inkthemes_sfish', get_template_directory_uri() . "/js/superfish.js", array('jquery'));
         wp_enqueue_script('slides', get_template_directory_uri() . '/js/jquery.flexslider.js', array('jquery'));
         wp_enqueue_script('inkthemes_tipsy', get_template_directory_uri() . '/js/jquery.tipsy.js', array('jquery'));
@@ -90,8 +94,9 @@ function inkthemes_wp_enqueue_scripts() {
         wp_enqueue_script('inkthemes-slitslider', get_template_directory_uri() . '/js/jquery.slitslider.js', array('jquery'), false, true);
         wp_enqueue_script('inkthemes-sliderinit', get_template_directory_uri() . '/js/slider-init.js', array('jquery'), false, true);
         wp_enqueue_script('inkthemes_custom', get_template_directory_uri() . '/js/custom.js', array('jquery'));
-    } elseif (is_admin()) {
-        
+        if (is_singular() and get_site_option('thread_comments')) {
+            wp_enqueue_script('comment-reply');
+        }
     }
 }
 

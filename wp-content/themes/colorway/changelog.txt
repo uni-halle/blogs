@@ -1,6 +1,14 @@
 Theme Name: ColorWay
 
 ========================
+* Version 3.4.4
+***************************************
+1. Homepage moved to as template called Home page.
+
+* Version 3.4.3
+***************************************
+1. Depreciated theme tags replaced with latest tags.
+2. Comment reply script enqueued.
 
 * Version 3.4.2
 ***************************************
