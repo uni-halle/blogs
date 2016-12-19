@@ -6,6 +6,10 @@
  * @package Customizr
  * @since Customizr 1.0
  */
+if ( apply_filters( 'czr_four_do', false ) ) {
+  do_action( 'czr_four_template' );
+  return;
+}
 ?>
 <?php do_action( '__before_main_wrapper' ); ##hook of the header with get_header ?>
 <div id="main-wrapper" class="<?php echo implode(' ', apply_filters( 'tc_main_wrapper_classes' , array('container') ) ) ?>">
@@ -17,13 +21,13 @@
 
             <?php do_action( '__before_article_container'); ##hook of left sidebar?>
 
-                <div id="content" class="<?php echo implode(' ', apply_filters( 'tc_article_container_class' , array( TC_utils::tc_get_layout( TC_utils::tc_id() , 'class' ) , 'article-container' ) ) ) ?>">
+                <div id="content" class="<?php echo implode(' ', apply_filters( 'tc_article_container_class' , array( CZR_utils::czr_fn_get_layout( CZR_utils::czr_fn_id() , 'class' ) , 'article-container' ) ) ) ?>">
 
                     <?php do_action ('__before_loop');##hooks the heading of the list of post : archive, search... ?>
 
-                        <?php if ( tc__f('__is_no_results') || is_404() ) : ##no search results or 404 cases ?>
+                        <?php if ( czr_fn__f('__is_no_results') || is_404() ) : ##no search results or 404 cases ?>
 
-                            <article <?php tc__f('__article_selectors') ?>>
+                            <article <?php czr_fn__f('__article_selectors') ?>>
                                 <?php do_action( '__loop' ); ?>
                             </article>
 
@@ -34,7 +38,7 @@
                                 <?php the_post(); ?>
 
                                 <?php do_action ('__before_article') ?>
-                                    <article <?php tc__f('__article_selectors') ?>>
+                                    <article <?php czr_fn__f('__article_selectors') ?>>
                                         <?php do_action( '__loop' ); ?>
                                     </article>
                                 <?php do_action ('__after_article') ?>

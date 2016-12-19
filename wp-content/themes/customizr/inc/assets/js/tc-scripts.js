@@ -2838,9 +2838,11 @@ var TCParams = TCParams || {};
  * Replace all img src placeholder in the $element by the real src on scroll window event
  * Bind a 'smartload' event on each transformed img
  *
- * Note : the data-src attr has to be pre-processed before the actual page load
+ * Note : the data-src (data-srcset) attr has to be pre-processed before the actual page load
  * Example of regex to pre-process img server side with php :
  * preg_replace_callback('#<img([^>]+?)src=[\'"]?([^\'"\s>]+)[\'"]?([^>]*)>#', 'regex_callback' , $_html)
+ *
+ * (c) 2016 Nicolas Guillaume, Nice, France
  *
  *
  * Example of gif 1px x 1px placeholder :
@@ -2849,6 +2851,8 @@ var TCParams = TCParams || {};
  * inspired by the work of Luís Almeida
  * http://luis-almeida.github.com/unveil
  *
+ * Requires requestAnimationFrame polyfill:
+ * http://paulirish.com/2011/requestanimationframe-for-smart-animating/
  * =================================================== */
 ;(function ( $, window, document, undefined ) {
   //defaults
@@ -2898,15 +2902,14 @@ var TCParams = TCParams || {};
   */
   Plugin.prototype._better_scroll_event_handler = function( $_imgs , _evt ) {
     var self = this;
-    //use a timer
-    if ( 0 !== this.timer ) {
-        this.increment++;
-        window.clearTimeout( this.timer );
-    }
 
-    this.timer = window.setTimeout(function() {
-      self._maybe_trigger_load( $_imgs , _evt );
-    }, self.increment > 5 ? 50 : 0 );
+    if ( ! this.doingAnimation ) {
+      this.doingAnimation = true;
+      window.requestAnimationFrame(function() {
+        self._maybe_trigger_load( $_imgs , _evt );
+        self.doingAnimation = false;
+      });
+    }
   };
 
 
@@ -3213,7 +3216,9 @@ var TCParams = TCParams || {};
         goldenRatioVal : 1.618,
         skipGoldenRatioClasses : ['no-gold-ratio'],
         disableGRUnder : 767,//in pixels
-        useImgAttr:false//uses the img height and width attributes if not visible (typically used for the customizr slider hidden images)
+        useImgAttr:false,//uses the img height and width attributes if not visible (typically used for the customizr slider hidden images)
+        setOpacityWhenCentered : false,//this can be used to hide the image during the time it is centered
+        opacity : 1
       };
 
   function Plugin( element, options ) {
@@ -3373,14 +3378,24 @@ var TCParams = TCParams || {};
 
   //@return void
   Plugin.prototype._maybe_center_img = function( $_img, _state ) {
-    var _case  = _state.current,
+    var self = this,
+        _case  = _state.current,
         _p     = _state.prop[_case],
         _not_p = _state.prop[ 'h' == _case ? 'v' : 'h'],
-        _not_p_dir_val = 'h' == _case ? ( this.options.zeroTopAdjust || 0 ) : ( this.options.zeroLeftAdjust || 0 );
-
-    $_img.css( _p.dim.name , _p.dim.val ).css( _not_p.dim.name , this.options.defaultCSSVal[_not_p.dim.name] || 'auto' )
-        .addClass( _p._class ).removeClass( _not_p._class )
-        .css( _p.dir.name, _p.dir.val ).css( _not_p.dir.name, _not_p_dir_val );
+        _not_p_dir_val = 'h' == _case ? ( this.options.zeroTopAdjust || 0 ) : ( this.options.zeroLeftAdjust || 0 ),
+        _centerImg = function( $_img ) {
+          $_img.css( _p.dim.name , _p.dim.val ).css( _not_p.dim.name , self.options.defaultCSSVal[_not_p.dim.name] || 'auto' )
+          .addClass( _p._class ).removeClass( _not_p._class )
+          .css( _p.dir.name, _p.dir.val ).css( _not_p.dir.name, _not_p_dir_val );
+          return $_img;
+        };
+    if ( this.options.setOpacityWhenCentered ) {
+        $.when( _centerImg( $_img ) ).done( function( $_img ) {
+            $_img.css('opacity', self.options.opacity );
+        });
+    } else {
+        _centerImg( $_img );
+    }
   };
 
   /********
@@ -3429,25 +3444,11 @@ var TCParams = TCParams || {};
  *
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  *
- *
+ * Requires requestAnimationFrame polyfill:
+ * http://paulirish.com/2011/requestanimationframe-for-smart-animating/
  *
  * =================================================== */
 ;(function ( $, window, document, undefined ) {
-  /*
-  * In order to handle a smooth scroll
-  * ( inspired by jquery.waypoints and smoothScroll.js )
-  * Maybe use this -> https://gist.github.com/paulirish/1579671
-  */
-  var czrParallaxRequestAnimationFrame = function(callback) {
-    var requestFn = ( czrapp && czrapp.requestAnimationFrame) ||
-      window.requestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      function( callback ) { window.setTimeout(callback, 1000 / 60); };
-
-    requestFn.call(window, callback);
-  };
-
   //defaults
   var pluginName = 'czrParallax',
       defaults = {
@@ -3476,7 +3477,7 @@ var TCParams = TCParams || {};
     //cache some element
     this.$_document   = $(document);
     this.$_window     = czrapp ? czrapp.$_window : $(window);
-    this.windowIsBusy = false;
+    this.doingAnimation = false;
 
     this.initWaypoints();
     this.stageParallaxElements();
@@ -3516,7 +3517,7 @@ var TCParams = TCParams || {};
           }else{
             self.element.removeClass('parallaxing');
             self.$_window.off('scroll', self.maybeParallaxMe );
-            self.windowIsBusy = false;
+            self.doingAnimation = false;
             self.element.css('top', 0 );
           }
         }
@@ -3532,7 +3533,7 @@ var TCParams = TCParams || {};
           }else {
             self.element.removeClass('parallaxing');
             self.$_window.off('scroll', self.maybeParallaxMe );
-            self.windowIsBusy = false;
+            self.doingAnimation = false;
           }
         },
         offset: function(){
@@ -3549,11 +3550,11 @@ var TCParams = TCParams || {};
   Plugin.prototype.maybeParallaxMe = function() {
       var self = this;
 
-      if ( !this.windowIsBusy ) {
-        this.windowIsBusy = true;
-        czrParallaxRequestAnimationFrame(function() {
+      if ( !this.doingAnimation ) {
+        this.doingAnimation = true;
+        window.requestAnimationFrame(function() {
           self.parallaxMe();
-          self.windowIsBusy = false;
+          self.doingAnimation = false;
         });
       }
   };
@@ -3584,7 +3585,35 @@ var TCParams = TCParams || {};
       });
   };
 
-})( jQuery, window, document );// Customizr version of Galambosi's SmoothScroll
+})( jQuery, window, document );// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+// http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+
+// requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
+
+// MIT license
+(function() {
+    var lastTime = 0;
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+                                   || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            lastTime = currTime + timeToCall;
+            return window.setTimeout(function() { callback(currTime + timeToCall); },
+              timeToCall);
+        };
+
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+}());// Customizr version of Galambosi's SmoothScroll
 
 // SmoothScroll for websites v1.3.8 (Balazs Galambosi)
 // Licensed under the terms of the MIT license.
@@ -5458,7 +5487,9 @@ var czrapp = czrapp || {};
         enableCentering : 1 == TCParams.centerAllImg,
         enableGoldenRatio : false,
         disableGRUnder : 0,//<= don't disable golden ratio when responsive
-        oncustom : ['smartload', 'refresh-height', 'simple_load'] //bind 'refresh-height' event (triggered to the the customizer preview frame)
+        oncustom : ['smartload', 'refresh-height', 'simple_load'], //bind 'refresh-height' event (triggered to the the customizer preview frame)
+        setOpacityWhenCentered : true,//will set the opacity to 1
+        opacity : 1
       });
 
       //POST GRID IMAGES
@@ -6528,10 +6559,10 @@ var czrapp = czrapp || {};
 /************************************************
 * DROPDOWN PLACEMENT SUB CLASS
 *************************************************/
-/* 
+/*
 * We need to compute the offset of dropdown and to do this the parents of the submenus
-* have to be visible (visible for jQuery means display:block or similar). 
-* So we treat them case by case 'cause they might be already open (see resize when opened on click ). 
+* have to be visible (visible for jQuery means display:block or similar).
+* So we treat them case by case 'cause they might be already open (see resize when opened on click ).
 * We cannot grab all the dropdowns and process them independentely from their parents.
 *
 * So what we do is:
@@ -6547,12 +6578,12 @@ var czrapp = czrapp || {};
     init : function() {
       this.$_sidenav                = $( '#tc-sn' );
       this._dd_first_selector       = '.menu-item-has-children.dropdown > .dropdown-menu' ;
-      this.$_nav_collapse           = czrapp.$_tcHeader.length > 0 ? czrapp.$_tcHeader.find( '.navbar-wrapper .nav-collapse' ) : {};
-      this.$_nav                    = this.$_nav_collapse.length ? this.$_nav_collapse.find( '.nav' ) : {};
+      this.$_nav_collapse           = czrapp.$_tcHeader.length > 0 ? czrapp.$_tcHeader.find( '.navbar-wrapper .nav-collapse' ) : [];
+      this.$_nav                    = this.$_nav_collapse.length ? this.$_nav_collapse.find( '.nav' ) : [];
 
       if ( ! this._has_dd_to_move() )
         return;
-      
+
       //cache jQuery el
       this.$_navbar_wrapper         = this.$_nav_collapse.closest( '.navbar-wrapper' );
       this.$_nav                    = this.$_nav_collapse.find( '.nav' );
@@ -6561,7 +6592,7 @@ var czrapp = czrapp || {};
       //other useful vars
       this._dyn_style_id            = 'tc-dropdown-dyn-style';
       this._prop                    = czrapp.$_body.hasClass('rtl') ? 'right' : 'left';
-      
+
       //fire event listener
       this.dropdownPlaceEventListener();
 
@@ -6597,14 +6628,14 @@ var czrapp = czrapp || {};
 
 
     _place_dropdowns : function () {
-      var _dd = this._get_dd_to_move();  
+      var _dd = this._get_dd_to_move();
       if ( ! _dd.length )
         return;
 
-      this._staging();  
+      this._staging();
       this._move_dropdown( _dd );
       this._write_dyn_style();
-      this._unstaging();        
+      this._unstaging();
     },
 
 
@@ -6615,13 +6646,13 @@ var czrapp = czrapp || {};
     //DROPDOWN PLACE SUB CLASS HELPER (private like)
     //When checking if there's something to move does not make sense at the start
     //1) there's no navbar collapse in the header
-    //2) there are no dropdowns to move in the header 
+    //2) there are no dropdowns to move in the header
     _has_dd_to_move : function() {
       if ( this.$_nav_collapse.length < 1 )
-        return false;    
+        return false;
       if ( this.$_nav.length && this.$_nav.find( this._dd_first_selector ) < 1 )
-        return false;    
-      
+        return false;
+
       return true;
     },
 
@@ -6629,7 +6660,7 @@ var czrapp = czrapp || {};
     //returns the dropdowns to move on resize?
     //a) when the nav-collapse is not absolute => we're not in mobile menu case => no dd to move
     //b) .tc-header .nav is hidden (case: second menu hidden in mobiles ) => no dd to move
-    //c) return the .tc-header .nav dropdown children 
+    //c) return the .tc-header .nav dropdown children
     _get_dd_to_move : function() {
       if ( 'absolute' == this.$_nav_collapse.css('position') )
         return {};
@@ -6646,22 +6677,22 @@ var czrapp = czrapp || {};
     // a) sets the max width of the dropdown to the window's width
     // b) allows braking words for submenus label
     _staging : function() {
-      this._window_width = czrapp.$_window.width();  
+      this._window_width = czrapp.$_window.width();
       //remove submenu fade, transitions corrupt the offset computing
       if ( this.$_navbar_wrapper.hasClass('tc-submenu-fade') )
         // tc-submenu-fade-susp(ended) is a dummy class we add for the future check in _unstaging
         this.$_navbar_wrapper.removeClass('tc-submenu-fade').addClass('tc-submenu-fade-susp');
       var _max_width            = this._window_width - 40,
           _dyn_style_css_prefix = '.tc-header .nav-collapse .dropdown-menu';
-          
+
       //the max width of a drodpdown must be the window's width (- 40px aesthetical )
       this._dyn_style  = _dyn_style_css_prefix + ' {max-width: ' + _max_width + 'px;}';
       //following is to ensure that big labels are broken in more lines if they exceed the max width
-      //probably due to a bug, white-space: pre; doesn't work fine in recent firefox. 
+      //probably due to a bug, white-space: pre; doesn't work fine in recent firefox.
       //Anyway this just means that the following rule (hence the prev) for them is useless => doesn't introduce a bug
       //p.s. this could be moved in our main CSS
       this._dyn_style += _dyn_style_css_prefix + ' > li > a { word-wrap: break-word; white-space: pre; }';
-      this._write_dyn_style();  
+      this._write_dyn_style();
     },
 
     //DROPDOWN PLACE SUB CLASS HELPER (private like)
@@ -6678,7 +6709,7 @@ var czrapp = czrapp || {};
     //Write the dynamic style into the HEAD
     _write_dyn_style : function() {
       var $_dyn_style_el = this.$_head.find('#' + this._dyn_style_id);
-                  
+
       //there's already a _dyn_style_el, so remove it
       //I thought that remove/create a new element every time is worse than just have an empty style, but looks like that $_dyn_style_el.html( _dyn_style ) isnt' cross-browser, gives me errors in ie8
       if ( $_dyn_style_el.length > 0 )
@@ -6698,7 +6729,7 @@ var czrapp = czrapp || {};
       // does dropdown_menu element exists?
       if ( $dropdown_menu && $dropdown_menu.length ) {
         if ( $dropdown_menu.length > 1 ) {
-          var self = this;    
+          var self = this;
           // is $dropdown_menu an array of elements ? if yes call this function over them
           $.each( $dropdown_menu, function(){
             self._move_dropdown( $(this) );
@@ -6713,22 +6744,22 @@ var czrapp = czrapp || {};
         $dropdown_menu.css('display', 'block').css('visibility', 'hidden');
 
       //first thing to do; reset all changes why?
-      //example, say the last menu item has a submenu which has been moved when window's width == 1200px, 
+      //example, say the last menu item has a submenu which has been moved when window's width == 1200px,
       //then the window is shrinked to 1000px and the last menu item drops on a new line. In this case :
       //a) the "moving" might not be needed anymore 'cause it might not overflows the window
       //b) even worse, the "moving" might have made it overflow on the opposite side.
       this._set_dropdown_offset( $dropdown_menu, '' );
       //get the current overflow
       var _overflow     = this._get_dropdown_overflow( $dropdown_menu );
-                    
-      if ( _overflow ) 
+
+      if ( _overflow )
         this._set_dropdown_offset( $dropdown_menu, _overflow );
 
       //move all the childrens (1st level of children ) which are dropdowns
       var $_children_dropdowns = $dropdown_menu.children('li.dropdown-submenu');
         if ( $_children_dropdowns.length )
-          this._move_dropdown( $_children_dropdowns.children('ul.dropdown-menu') );    
-                    
+          this._move_dropdown( $_children_dropdowns.children('ul.dropdown-menu') );
+
       //reset 'visibility-manipulation'
       if ( ! _is_dropdown_visible )
         $dropdown_menu.css('display', '').css('visibility', '');
@@ -6738,7 +6769,7 @@ var czrapp = czrapp || {};
     //Set dropdown offset + first dropdown level top arrow offset accordingly
     _set_dropdown_offset : function( $dropdown_menu, _dropdown_overflow ) {
       var _offset = '';
-      
+
       if ( _dropdown_overflow ) {
         var $_parent_dropdown  = $dropdown_menu.parent('.menu-item-has-children'),
             _is_dropdown_submenu = $_parent_dropdown.hasClass('dropdown-submenu');
@@ -6758,7 +6789,7 @@ var czrapp = czrapp || {};
           if ( $_parent_dropdown.next('.menu-item').length ) {
             var _submenu_overflows_parent = this._get_element_overflow( $dropdown_menu, _offset, $_parent_dropdown );
             if ( _offset < 30  || _submenu_overflows_parent < 30 )
-              //the new offset is then the old one minus the amount of overflow (ex. in ltr align parent and child right edge ) minus 30px  
+              //the new offset is then the old one minus the amount of overflow (ex. in ltr align parent and child right edge ) minus 30px
               _offset = _offset - _submenu_overflows_parent - 30;
           }
         } else {
@@ -6768,7 +6799,7 @@ var czrapp = czrapp || {};
           var _menu_id = $_parent_dropdown.attr('class').match(/menu-item-\d+/);
           _menu_id = _menu_id ? _menu_id[0] : null;
           if ( _menu_id )
-            this._set_dropdown_arrow_style( _menu_id, _offset );  
+            this._set_dropdown_arrow_style( _menu_id, _offset );
         }
       }
       //in any case write the dropdown offset css:
@@ -6782,7 +6813,7 @@ var czrapp = czrapp || {};
       var overflow = null,
           _t_overflow;
        // how we compute the overflow
-       // ltr 
+       // ltr
        if ( 'left' == this._prop ) {
          // the overlfow is: the absolute position left/right of the elemnt + its width - the window's width
          // so it represents the amount of "width" which overflows the window
@@ -6792,7 +6823,7 @@ var czrapp = czrapp || {};
         // and the window's width is < 5 (6), just to avoid dropdown edges so close to the end of the window
         overflow = _t_overflow > -5 ? _t_overflow : overflow ;
       }else { // rtl
-        //the overflow is: the left offset * -1 if less than 5px 
+        //the overflow is: the left offset * -1 if less than 5px
         //note: jQuery.offset() gives just top and left properties.
         _t_overflow = $dropdown_menu.offset().left;
         overflow  = _t_overflow < 5 ? -1 * _t_overflow : overflow;
@@ -6802,7 +6833,7 @@ var czrapp = czrapp || {};
     //DROPDOWN PLACE SUB CLASS HELPER (private like)
     //compute the overflow of an element given a parent an an initial left offset
     _get_element_overflow : function ( $_el, _offset, $_parent, _parent_width ) {
-      _parent_width = $_parent.length ? $_parent.width() : _parent_width;  
+      _parent_width = $_parent.length ? $_parent.width() : _parent_width;
       return $_el.width() + _offset - _parent_width;
     },
     //DROPDOWN PLACE SUB CLASS HELPER (private like)
@@ -6810,12 +6841,12 @@ var czrapp = czrapp || {};
     //which is the original offset for the pseudo element before and after minus the
     //shift amount applied to the dropdown
     _set_dropdown_arrow_style : function( _menu_id, _offset ) {
-      //9px is static to avoid using the following via javascript  
-      //window.getComputedStyle($_dropdown[0], ':before').left ;  
+      //9px is static to avoid using the following via javascript
+      //window.getComputedStyle($_dropdown[0], ':before').left ;
       var _arrow_before_offset    = +9 - _offset,
           _arrow_after_offset     = _arrow_before_offset + 1,
           _arrow_css_rule_prefix  = '.tc-header .navbar .nav > .' + _menu_id + ' > .dropdown-menu',
-        
+
          _arrow_before_css_rule  = _arrow_css_rule_prefix + ":before { " + this._prop + ": " + _arrow_before_offset + "px;}",
          _arrow_after_css_rule   = _arrow_css_rule_prefix + ":after { " + this._prop + ": " + _arrow_after_offset + "px;}";
 

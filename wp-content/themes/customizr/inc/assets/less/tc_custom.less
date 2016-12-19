@@ -120,9 +120,11 @@ h3#reply-title:before,
   -moz-osx-font-smoothing: grayscale;
 }
 
+#footer .white-icons .widget-title:before,
 #footer .white-icons .widget li:before {
   color: #FFF;
 }
+
 
 /*SOCIAL ICONS*/
 .colophon .credits a[class*=icon-]:focus,
@@ -184,6 +186,9 @@ h3#reply-title:before,
 }
 .icon-xing:before {
   content: "\f168";
+}
+.icon-snapchat:before {
+  content: "\f2ab";
 }
 /* icons in social block - fine alignment */
 .social-block a.social-icon {
@@ -677,8 +682,14 @@ h2.site-description {
   background-image: none;
   text-decoration: none;
 }
-
+/*
+* Reset bootstrap caret
+* dropdowns.less
+*/
 .dropdown-submenu > a:after {
+  content: none;
+}
+.nav .dropdown-submenu > a:after {
   display: block;
   content: " ";
   & when (@is_rtl = true) {
@@ -1664,6 +1675,18 @@ footer#footer .colophon .credits a[class*=icon-] {
   width: 50%;
   margin-top: 20px;
 }
+/*
+* round-divs and featured pages container compatibility with bootstrap3+
+*
+* See https://github.com/presscustomizr/customizr/issues/640
+* fixes also the alternate post list layout when displaying rounded thumb
+*/
+#tc-page-wrap .marketing, #tc-page-wrap .round-div {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
 /* Center align the text within the three columns below the carousel */
 .marketing {
   margin-top: 20px

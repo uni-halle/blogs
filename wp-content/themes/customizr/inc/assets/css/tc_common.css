@@ -1,5 +1,5 @@
 /*!
- * Customizr v3.4.23
+ * Customizr v3.4.36
  *
  * Licensed under the GNU General Public License v2 or later
  * http://www.gnu.org/licenses/gpl-2.0.html
@@ -2436,14 +2436,14 @@ table th[class*="span"],
 .dropdown-submenu:focus > a {
   text-decoration: none;
   color: #ffffff;
-  background-color: #25c49e;
-  background-image: -moz-linear-gradient(top, #27cda5, #23b894);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#27cda5), to(#23b894));
-  background-image: -webkit-linear-gradient(top, #27cda5, #23b894);
-  background-image: -o-linear-gradient(top, #27cda5, #23b894);
-  background-image: linear-gradient(to bottom, #27cda5, #23b894);
+  background-color: #555555;
+  background-image: -moz-linear-gradient(top, #5a5a5a, #4d4d4d);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5a5a5a), to(#4d4d4d));
+  background-image: -webkit-linear-gradient(top, #5a5a5a, #4d4d4d);
+  background-image: -o-linear-gradient(top, #5a5a5a, #4d4d4d);
+  background-image: linear-gradient(to bottom, #5a5a5a, #4d4d4d);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff27cda5' , endColorstr='#ff23b894' , GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5a5a5a' , endColorstr='#ff4d4d4d' , GradientType=0);
 }
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
@@ -4771,6 +4771,7 @@ h3#reply-title:before,
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+#footer .white-icons .widget-title:before,
 #footer .white-icons .widget li:before {
   color: #FFF;
 }
@@ -4834,6 +4835,9 @@ h3#reply-title:before,
 }
 .icon-xing:before {
   content: "\f168";
+}
+.icon-snapchat:before {
+  content: "\f2ab";
 }
 /* icons in social block - fine alignment */
 .social-block a.social-icon {
@@ -5285,7 +5289,14 @@ h2.site-description {
   background-image: none;
   text-decoration: none;
 }
+/*
+* Reset bootstrap caret
+* dropdowns.less
+*/
 .dropdown-submenu > a:after {
+  content: none;
+}
+.nav .dropdown-submenu > a:after {
   display: block;
   content: " ";
   float: right;
@@ -6167,6 +6178,18 @@ footer#footer .colophon .credits a[class*=icon-] {
   font-size: 17px;
   width: 50%;
   margin-top: 20px;
+}
+/*
+* round-divs and featured pages container compatibility with bootstrap3+
+*
+* See https://github.com/presscustomizr/customizr/issues/640
+* fixes also the alternate post list layout when displaying rounded thumb
+*/
+#tc-page-wrap .marketing,
+#tc-page-wrap .round-div {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
 }
 /* Center align the text within the three columns below the carousel */
 .marketing {
@@ -9068,7 +9091,7 @@ li#wp-admin-bar-tc-customizr-help a {
   .navbar .nav-collapse ul.nav > li li li a {
     padding-left: 50px;
   }
-  .dropdown-submenu > a:after {
+  .nav .dropdown-submenu > a:after {
     content: none;
   }
   .nav a {
