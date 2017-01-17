@@ -47,5 +47,13 @@
 <option value="mic_brown_parking_01.png"><?php _e('Parking','OSM-plugin');echo ' ';_e('brown','OSM-plugin') ?></option>
 <option value="mic_green_palm-tree-export_01.png"><?php _e('Palm tree','OSM-plugin');echo ' ';_e('brown','OSM-plugin') ?></option>
 
+<option value="mic_blue_ski_tour_01.png"><?php _e('Skitour','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+<option value="mic_green_tent_01.png"><?php _e('Tent','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
+<option value="mic_green_hut_01.png"><?php _e('Hut 01','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
+<option value="mic_green_hut_02.png"><?php _e('Hut 02','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
+<option value="mic_green_restaurant_02.png"><?php _e('Restaurant','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
+<option value="mic_orange_climbing_01.png"><?php _e('Climbing','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+<option value="mic_orange_van_01.png"><?php _e('Van','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+
 <option value="geocache.png"><?php _e('Geocache','OSM-plugin') ?></option>
 <option value="styria_linux.png"><?php _e('Styria Tux','OSM-plugin') ?></option>

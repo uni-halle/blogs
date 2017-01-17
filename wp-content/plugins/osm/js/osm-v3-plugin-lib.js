@@ -3,7 +3,7 @@
   plugin: http://wp-osm-plugin.HanBlog.net
   blog:   http://www.HanBlog.net
 */
-
+ 
 function osm_addClusterPopupClickhandler(a_MapObj, a_MapStr) {
 
   var container_div_id = a_MapStr + "_popup";
@@ -186,5 +186,12 @@ function osm_addMarkerLayer(a_mapname, a_lon, a_lat, a_MarkerIcon, a_MarkerXAnch
         });
 
        a_mapname.addLayer(vectorMarkerLayer);
+}
+
+function osm_addMouseHover(a_mapname){
+  a_mapname.on('pointermove', function(evt) {
+    a_mapname.getTargetElement().style.cursor =
+      a_mapname.hasFeatureAtPixel(evt.pixel) ? 'pointer' : '';
+  });
 }
 

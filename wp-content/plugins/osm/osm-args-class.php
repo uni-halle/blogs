@@ -128,7 +128,7 @@ private function setMapSize($a_width,  $a_height){
 }
 
 private function setPostMarkers($a_post_markers){
-    if ($a_post_markers == "1"){
+    if (($a_post_markers == "1") || ($a_post_markers == "2")  || ($a_post_markers == "3") || ($a_post_markers == "4") || ($a_post_markers == "5") || ($a_post_markers == "6") || ($a_post_markers == "7") || ($a_post_markers == "8") || ($a_post_markers == "9") || ($a_post_markers == "all")){
       $this->post_markers = $a_post_markers;
    }
     else {

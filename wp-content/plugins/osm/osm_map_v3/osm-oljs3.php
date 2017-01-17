@@ -1,5 +1,5 @@
 <?php
-/*  (c) Copyright 2015  MiKa (wp-osm-plugin.HanBlog.Net)
+/*  (c) Copyright 2017  MiKa (wp-osm-plugin.HanBlog.Net)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -209,11 +209,11 @@ class Osm_OLJS3
         $TileLayer .= '
       var template = "{Layer}/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.png";
       var urls_basemap = [
-        "http://maps1.wien.gv.at/basemap/" + template,
-        "http://maps2.wien.gv.at/basemap/" + template,
-        "http://maps3.wien.gv.at/basemap/" + template,
-        "http://maps4.wien.gv.at/basemap/" + template,
-        "http://maps.wien.gv.at/basemap/" + template
+        "https://maps1.wien.gv.at/basemap/" + template,
+        "https://maps2.wien.gv.at/basemap/" + template,
+        "https://maps3.wien.gv.at/basemap/" + template,
+        "https://maps4.wien.gv.at/basemap/" + template,
+        "https://maps.wien.gv.at/basemap/" + template
       ];
 
       // HiDPI support:

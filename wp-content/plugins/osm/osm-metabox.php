@@ -88,8 +88,17 @@ function osm_map_create_shortcode_function( $post ) {
       </select>
       <b>3. <?php _e('marker id','OSM-plugin') ?></b>:
       <select name="osm_marker_id">
-      <option value="none"><?php _e('none','OSM-plugin') ?></option>
+      <option value="no"><?php _e('none','OSM-plugin') ?></option>
+      <option value="all"><?php _e('all','OSM-plugin') ?></option>
       <option value="1">01</option>
+      <option value="2">02</option>
+      <option value="3">03</option>
+      <option value="4">04</option>
+      <option value="5">05</option>
+      <option value="6">06</option>
+      <option value="7">07</option>
+      <option value="8">08</option>
+      <option value="9">09</option>
       </select><br>
       <br>
       <b>3. <?php _e('map controls','OSM-plugin') ?></b>: 
@@ -185,21 +194,28 @@ function osm_map_create_shortcode_function( $post ) {
  
  
  <div id="tab_add_marker" class="tab">
-      <?php _e('You can store a marker here for this post / page','OSM-plugin') ?><br>
-      <b>1. <?php _e('marker name','OSM-plugin') ?></b>: 
+      <?php _e('You can store up to nine markers here for this post / page','OSM-plugin') ?><br>
+
+      <b>1. <?php _e('marker id','OSM-plugin') ?></b>: 
+      <select name="osm_add_marker_id">
+      <option value="1">01</option><option value="2">02</option><option value="3">03</option>
+      <option value="4">04</option><option value="5">05</option><option value="6">06</option>
+      <option value="7">07</option><option value="8">08</option><option value="9">09</option>
+      </select><br>
+      <b>2. <?php _e('marker name','OSM-plugin') ?></b>: 
         <input name="osm_add_marker_name" type="text" size="20" maxlength="30" value="NoName"><br>
-       <b>2. <?php _e('marker icon','OSM-plugin') ?></b>:
+       <b>3. <?php _e('marker icon','OSM-plugin') ?></b>:
       <select name="osm_add_marker_icon">
       <?php include('osm-marker-select.php'); ?>
       </select>
       ( <a href="http://wp-osm-plugin.hanblog.net/cc0-license-map-icons-collection/" target="_blank"> icons</a> )<br>
 
-        <b>3. <?php _e('marker text','OSM-plugin') ?>  (<?php _e('optional','OSM-plugin') ?>)</b>: <br>
+        <b>4. <?php _e('marker text','OSM-plugin') ?>  (<?php _e('optional','OSM-plugin') ?>)</b>: <br>
         <?php _e('Use &lt;b&gt;&lt;/b&gt; for bold, &lt;i&gt;&lt;/i&gt; for kursiv and&lt;br&gt; for new line.','OSM-plugin') ?>
          <textarea id="osm_add_marker_text" name="marker_text" cols="35" rows="4"></textarea> 	
       <br>
       <br>
-      <b>4. <?php $url = 'http://wp-osm-plugin.hanblog.net/'; 
+      <b>5. <?php $url = 'http://wp-osm-plugin.hanblog.net/'; 
       $link = sprintf( __( 'Adjust the map and click into the map to generate the shortcode. Find more features  <a href="%s" target="_blank">here</a> !', 'OSM-plugin' ), esc_url( $url ) );
       echo $link; ?></b><br><br>
       <?php echo Osm::sc_showMap(array('msg_box'=>'metabox_add_marker_sc_gen','lat'=>OSM_default_lat,'long'=>OSM_default_lon,'zoom'=>OSM_default_zoom, 'type'=>'mapnik_ssl', 'width'=>'450','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition,scaleline')); ?>
@@ -320,9 +336,13 @@ function osm_map_create_shortcode_function( $post ) {
        <td><b><?php _e('Coordination','OSM-plugin'); echo " & "; _e('Development','OSM-plugin') ?>:</b><a target="_new" href="http://mika.HanBlog.net"> MiKa</a><br><br>
        <b><?php _e('Thanks for Translation to','OSM-plugin') ?>:</b><br> Вячеслав Стренадко, <a target="_new" href="http://tounoki.org/">Tounoki</a>, Sykane, <a target="_new" href="http://www.pibinko.org">Andrea Giacomelli</a><br><br><b>
        <?php
-       $url = "https://wordpress.org/support/view/plugin-reviews/osm";
-       $rate_txt = sprintf( __( 'If you like the OSM plugin rate it <a href="%s">here</a>. ', 'OSM-plugin' ), esc_url($url));
+       $wp_url = "https://wordpress.org/support/view/plugin-reviews/osm";
+       $rate_txt = sprintf( __( 'If you like the OSM plugin rate it on WP <a href="%s">here</a> ', 'OSM-plugin' ), esc_url($wp_url));
        echo $rate_txt; ?>
+	   <?php
+       $fb_url = "https://www.facebook.com/WpOsmPlugin";
+	   $fb_txt = sprintf( __( ' or ike us on facebook <a href="%s">here</a>. ', 'OSM-plugin' ), esc_url($fb_url));
+       echo $fb_txt; ?>
        <?php _e('Thanks!','OSM-plugin') ?></b>
        </td></tr>
      </table>

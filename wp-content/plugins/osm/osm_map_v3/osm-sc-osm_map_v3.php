@@ -1,5 +1,5 @@
 <?php
-/*  (c) Copyright 2014  MiKa (http://wp-osm-plugin.HanBlog.Net)
+/*  (c) Copyright 2017  MiKa (http://wp-osm-plugin.HanBlog.Net)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -95,6 +95,9 @@ if (($mwz != "true") && ($mwz != "false")){
       $output .= '
         <link rel="stylesheet" href="'.Osm_OL_3_CSS.'" type="text/css"> 
         <link rel="stylesheet" href="'.Osm_OL_3_Ext_CSS.'" type="text/css"> 
+		<!-- The line below is only needed for old environments like Internet Explorer and Android 4.x 
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+		-->
         <script src="'.Osm_OL_3_LibraryLocation.'" type="text/javascript"></script> 
         <script src="'.Osm_OL_3_Ext_LibraryLocation.'" type="text/javascript"></script>
       ';
@@ -287,13 +290,13 @@ if ((($tagged_type == "post") || ($tagged_type == "page") || ($tagged_type == "a
     $Counter = 0;
     $output .= '
       var vectorMarkerSource = new ol.source.Vector({});
-	  var vectorMarkerLayer = new ol.layer.Vector({
+      var vectorMarkerLayer = new ol.layer.Vector({
         source: vectorMarkerSource
        });
     ';
     foreach( $MarkerArray as $Marker ) {
       if ($MarkerArray[$Counter]['Marker'] != ""){
-        $tagged_icon->setIcon($MarkerArray[$Counter]['Marker']);
+         $tagged_icon->setIcon($MarkerArray[$Counter]['Marker']);
       }
       else{
         $tagged_icon->setIcon($default_icon->getIconName());   
@@ -376,69 +379,78 @@ if ((($tagged_type == "post") || ($tagged_type == "page") || ($tagged_type == "a
 
 // add post markers
 if (strtolower($postmarkers) != 'no'){ 
-      global $post;
-      $metapostLatLon = get_post_meta($post->ID, 'OSM_Marker_01_LatLon', true);  
-      $metapostIcon_name = get_post_meta($post->ID, 'OSM_Marker_01_Icon', true);
-      $metapostmarker_name = get_post_meta($post->ID, 'OSM_Marker_01_Name', true);
-      $metapostmarker_text = get_post_meta($post->ID, 'OSM_Marker_01_Text', true);
 
-       if ($metapostIcon_name == ""){
-           Osm::traceText(DEBUG_ERROR, __('You have to add a marker to the post at [Add marker] tab!','OSM-plugin'));
-       }
-       $postmarker_icon = new cOsm_icon($metapostIcon_name); 
+    $MarkerArray = OSM::OL3_createMarkerList($postmarkers, $tagged_filter, 'Osm_None', $tagged_type, 'Osm_All', 'none');
+	
+	$NumOfMarker = count($MarkerArray);
+    $Counter = 0;
+	
+	foreach( $MarkerArray as $Marker ) {
+      $metapostmarker_text = addslashes($MarkerArray[$Counter]['text']);
+	  $temp_lat = $MarkerArray[$Counter]['lat'];
+	  $temp_lon = $MarkerArray[$Counter]['lon'];
+	  $metapostIcon_name = $MarkerArray[$Counter]['marker'];
 
+      $metapostmarker_name = "MISSING";
 
-     // check lat lon
-      $metapostLatLon = preg_replace('/\s*,\s*/', ',',$metapostLatLon);
-      // get pairs of coordination
-      $GeoData_Array = explode( ' ', $metapostLatLon );
-      list($temp_lat, $temp_lon) = explode(',', $GeoData_Array[0]); 
+      if ($metapostIcon_name == ""){
+        Osm::traceText(DEBUG_ERROR, __('You have to add a marker to the post at [Add marker] tab!','OSM-plugin'));
+      }
+      $postmarker_icon = new cOsm_icon($metapostIcon_name); 
+
       $DoPopUp = 'false';
 
       list($temp_lat, $temp_lon) = Osm::checkLatLongRange('Marker',$temp_lat, $temp_lon,'no');
       if (($temp_lat != 0) || ($temp_lon != 0)){
-      $output .= 'osm_addMarkerLayer('.$MapName.','.$temp_lon.','.$temp_lat.',"'.$postmarker_icon->getIconURL().'",'.$postmarker_icon->getIconOffsetwidth().','.$postmarker_icon->getIconOffsetheight().',"'.$metapostmarker_text.'") ; ';
-      }// templat lon != 0
-    } //($postmarkers) != 'no'')
-          $output.= '
-            var osm_controls = [
-                new ol.control.Attribution(),
-                new ol.control.MousePosition({
-                    undefinedHTML: "outside",
-                    projection: "EPSG:4326",
-                    coordinateFormat: function(coordinate) {
-                        return ol.coordinate.format(coordinate, "{y}, {x}", 4);
-                    }
-                }),
-                new ol.control.OverviewMap({
-                    collapsed: false
-                }),
-                new ol.control.Rotate({
-                    autoHide: false
-                }),
-                new ol.control.ScaleLine(),
-                new ol.control.Zoom(),
-                new ol.control.ZoomSlider(),
-                new ol.control.ZoomToExtent(),
-                new ol.control.FullScreen()
-            ]; ';
-            if ($sc_args->issetFullScreen()){
-              $output .= $MapName.'.addControl(osm_controls[8]);';
-            }
-            if ($sc_args->issetScaleline()){
-              $output .= $MapName.'.addControl(osm_controls[4]);';
-            }
-            if ($sc_args->issetMouseposition()){
-              $output .= $MapName.'.addControl(osm_controls[1]);';
-            }           
-  if ($tagged_param == "cluster"){
-          $output .= 'osm_addClusterPopupClickhandler('.$MapName.',  "'.$MapName.'"); ';
-  }
-  else{
-    $output .= 'osm_addPopupClickhandler('.$MapName.',  "'.$MapName.'"); ';
-}
-    $output .= '})(jQuery)';
-    $output .= '/* ]]> */';
-    $output .= ' </script>';
+        $output .= 'osm_addMarkerLayer('.$MapName.','.$temp_lon.','.$temp_lat.',"'.$postmarker_icon->getIconURL().'",'.$postmarker_icon->getIconOffsetwidth().','.$postmarker_icon->getIconOffsetheight().',"'.$metapostmarker_text.'") ; ';
+        $Counter = $Counter +1;
+      } 
 
+
+    }// foreach(MarkerArray)
+} //($postmarkers) != 'no'')
+$output.= '
+  var osm_controls = [
+    new ol.control.Attribution(),
+    new ol.control.MousePosition({
+      undefinedHTML: "outside",
+      projection: "EPSG:4326",
+      coordinateFormat: function(coordinate) {
+         return ol.coordinate.format(coordinate, "{y}, {x}", 4);
+      }
+    }),
+    new ol.control.OverviewMap({
+      collapsed: false
+    }),
+    new ol.control.Rotate({
+      autoHide: false
+    }),
+    new ol.control.ScaleLine(),
+    new ol.control.Zoom(),
+    new ol.control.ZoomSlider(),
+    new ol.control.ZoomToExtent(),
+    new ol.control.FullScreen()
+  ]; ';
+if ($sc_args->issetFullScreen()){
+  $output .= $MapName.'.addControl(osm_controls[8]);';
+}
+if ($sc_args->issetScaleline()){
+  $output .= $MapName.'.addControl(osm_controls[4]);';
+}
+if ($sc_args->issetMouseposition()){
+  $output .= $MapName.'.addControl(osm_controls[1]);';
+}           
+if ($tagged_param == "cluster"){
+  $output .= 'osm_addClusterPopupClickhandler('.$MapName.',  "'.$MapName.'"); ';
+}
+else{
+  $output .= 'osm_addPopupClickhandler('.$MapName.',  "'.$MapName.'"); ';
+}
+
+// change mouse cursor when over marker
+$output .= 'osm_addMouseHover('.$MapName.'); ';
+
+$output .= '})(jQuery)
+            /* ]]> */
+            </script>';
 ?>
