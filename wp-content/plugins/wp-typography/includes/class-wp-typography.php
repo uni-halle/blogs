@@ -2,9 +2,8 @@
 /**
  *  This file is part of wp-Typography.
  *
- *	Copyright 2014-2016 Peter Putzer.
- *	Copyright 2012-2013 Marie Hogebrandt.
- *	Coypright 2009-2011 KINGdesk, LLC.
+ *	Copyright 2014-2017 Peter Putzer.
+ *	Copyright 2009-2011 KINGdesk, LLC.
  *
  *	This program is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public License
@@ -126,7 +125,7 @@ class WP_Typography {
 	 * Sets up a new WP_Typography object.
 	 *
 	 * @param string $version  The full plugin version string (e.g. "3.0.0-beta.2").
-	 * @param string $basename The result of plugin_basename() for the main plugin file.
+	 * @param string $basename Optional. The result of plugin_basename() for the main plugin file. Default 'wp-typography/wp-typography.php'.
 	 */
 	private function __construct( $version, $basename = 'wp-typography/wp-typography.php' ) {
 		// Basic set-up.
@@ -142,16 +141,16 @@ class WP_Typography {
 	}
 
 	/**
-	 * Create & retrieve the WP_Typography instance. Should not be called outside of plugin set-up.
+	 * Retrieves (and if necessary creates) the WP_Typography instance. Should not be called outside of plugin set-up.
 	 *
 	 * @since 3.2.0
 	 *
 	 * @param string $version  The full plugin version string (e.g. "3.0.0-beta.2").
-	 * @param string $basename The result of plugin_basename() for the main plugin file.
+	 * @param string $basename Optional. The result of plugin_basename() for the main plugin file. Default 'wp-typography/wp-typography.php'.
 	 * @return WP_Typography
 	 */
 	public static function _get_instance( $version, $basename = 'wp-typography/wp-typography.php' ) {
-		if ( ! self::$_instance ) {
+		if ( empty( self::$_instance ) ) {
 			self::$_instance = new self( $version, $basename );
 		} else {
 			_doing_it_wrong( __FUNCTION__, 'WP_Typography::_get_instance called more than once.', '3.2.0' );
@@ -161,14 +160,14 @@ class WP_Typography {
 	}
 
 	/**
-	 * Retrieve the plugin instance.
+	 * Retrieves the plugin instance.
 	 *
 	 * @since 3.2.0
 	 *
 	 * @return WP_Typography
 	 */
 	public static function get_instance() {
-		if ( ! self::$_instance ) {
+		if ( empty( self::$_instance ) ) {
 			_doing_it_wrong( __FUNCTION__, 'WP_Typography::get_instance called without plugin intialization.', '3.2.0' );
 			return self::_get_instance( '0.0.0' ); // fallback with invalid version.
 		}
@@ -177,7 +176,114 @@ class WP_Typography {
 	}
 
 	/**
-	 * Start the plugin for real.
+	 * Retrieves a copy of the preferences set by the user via the plugin settings screen.
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return \PHP_Typography\Settings
+	 */
+	public static function get_user_settings() {
+		return self::get_instance()->get_settings();
+	}
+
+	/**
+	 * Retrieves the list of valid hyphenation languages.
+	 *
+	 * The language names are translation-ready but not translated yet.
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return array An array in the form of ( $language_code => $language ).
+	 */
+	static public function get_hyphenation_languages() {
+		return \PHP_Typography\PHP_Typography\get_hyphenation_languages();
+	}
+
+	/**
+	 * Retrieves the list of valid diacritic replacement languages.
+	 *
+	 * The language names are translation-ready but not translated yet.
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return array An array in the form of ( $language_code => $language ).
+	 */
+	static public function get_diacritic_languages() {
+		return \PHP_Typography\PHP_Typography\get_diacritic_languages();
+	}
+
+	/**
+	 * Processes a content text fragment.
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string                   $text     Required.
+	 * @param \PHP_Typography\Settings $settings Optional. A settings object. Default null (which means the internal settings will be used).
+	 *
+	 * @return string The processed $text.
+	 */
+	public static function filter( $text, \PHP_Typography\Settings $settings = null ) {
+		return self::get_instance()->process( $text, false, false, $settings );
+	}
+
+	/**
+	 * Processes a title text fragment.
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string                   $text     Required.
+	 * @param \PHP_Typography\Settings $settings Optional. A settings object. Default null (which means the internal settings will be used).
+	 *
+	 * @return string The processed $text.
+	 */
+	public static function filter_title( $text, \PHP_Typography\Settings $settings = null ) {
+		return self::get_instance()->process_title( $text, $settings );
+	}
+
+	/**
+	 * Processes the title parts and strips &shy; and zero-width space.
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param array                    $title_parts An array of strings.
+	 * @param \PHP_Typography\Settings $settings    Optional. A settings object. Default null (which means the internal settings will be used).
+	 *
+	 * @return array
+	 */
+	public static function filter_title_parts( $title_parts, \PHP_Typography\Settings $settings = null ) {
+		return self::get_instance()->process_title_parts( $title_parts, $settings );
+	}
+
+	/**
+	 * Processes a content text fragment as part of an RSS feed (limiting HTML features to most widely compatible ones).
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string                   $text     Required.
+	 * @param \PHP_Typography\Settings $settings Optional. A settings object. Default null (which means the internal settings will be used).
+	 *
+	 * @return string The processed $text.
+	 */
+	public static function filter_feed( $text, \PHP_Typography\Settings $settings = null ) {
+		return self::get_instance()->process_feed( $text, false, $settings );
+	}
+
+	/**
+	 * Processes a title text fragment as part of an RSS feed (limiting HTML features to most widely compatible ones).
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string                   $text     Required.
+	 * @param \PHP_Typography\Settings $settings Optional. A settings object. Default null (which means the internal settings will be used).
+	 *
+	 * @return string The processed $text.
+	 */
+	public static function filter_feed_title( $text, \PHP_Typography\Settings $settings = null ) {
+		return self::get_instance()->process_feed( $text, true, $settings );
+	}
+
+	/**
+	 * Starts the plugin for real.
 	 */
 	function run() {
 		// Ensure that our translations are loaded.
@@ -191,7 +297,7 @@ class WP_Typography {
 	}
 
 	/**
-	 * Load the settings from the option table.
+	 * Loads the settings from the option table.
 	 */
 	function init() {
 		// Restore defaults if necessary.
@@ -220,48 +326,65 @@ class WP_Typography {
 		// Apply our filters.
 		if ( ! is_admin() ) {
 			/**
-			 * Filter the priority used for wp-Typography's text processing filters.
+			 * Filters the priority used for wp-Typography's text processing filters.
 			 *
 			 * When NextGen Gallery is detected, the priority is set to PHP_INT_MAX.
 			 *
 			 * @since 3.2.0
 			 *
-			 * @param number $priority The filter priority. Default 9999.
+			 * @param int $priority The filter priority. Default 9999.
 			 */
 			$priority = apply_filters( 'typo_filter_priority', $this->filter_priority );
 
 			// Add filters for "full" content.
-			add_filter( 'comment_author',    array( $this, 'process' ),       $priority );
-			add_filter( 'comment_text',      array( $this, 'process' ),       $priority );
-			add_filter( 'comment_text',      array( $this, 'process' ),       $priority );
-			add_filter( 'the_content',       array( $this, 'process' ),       $priority );
-			add_filter( 'term_name',         array( $this, 'process' ),       $priority );
-			add_filter( 'term_description',  array( $this, 'process' ),       $priority );
-			add_filter( 'link_name',         array( $this, 'process' ),       $priority );
-			add_filter( 'the_excerpt',       array( $this, 'process' ),       $priority );
-			add_filter( 'the_excerpt_embed', array( $this, 'process' ),       $priority );
-			add_filter( 'widget_text',       array( $this, 'process' ),       $priority );
+			/**
+			 * Disables automatic filtering by wp-Typography.
+			 *
+			 * @since 3.6.0
+			 *
+			 * @param bool   $disable      Whether to disable automatic filtering. Default false.
+			 * @param string $filter_group Which filters to disable. Possible values 'content', 'heading', 'title', 'acf'.
+			 */
+			if ( ! apply_filters( 'typo_disable_filtering', false, 'content' ) ) {
+				add_filter( 'comment_author',    array( $this, 'process' ), $priority );
+				add_filter( 'comment_text',      array( $this, 'process' ), $priority );
+				add_filter( 'comment_text',      array( $this, 'process' ), $priority );
+				add_filter( 'the_content',       array( $this, 'process' ), $priority );
+				add_filter( 'term_name',         array( $this, 'process' ), $priority );
+				add_filter( 'term_description',  array( $this, 'process' ), $priority );
+				add_filter( 'link_name',         array( $this, 'process' ), $priority );
+				add_filter( 'the_excerpt',       array( $this, 'process' ), $priority );
+				add_filter( 'the_excerpt_embed', array( $this, 'process' ), $priority );
+				add_filter( 'widget_text',       array( $this, 'process' ), $priority );
+			}
 
 			// Add filters for headings.
-			add_filter( 'the_title',            array( $this, 'process_title' ), $priority );
-			add_filter( 'single_post_title',    array( $this, 'process_title' ), $priority );
-			add_filter( 'single_cat_title',     array( $this, 'process_title' ), $priority );
-			add_filter( 'single_tag_title',     array( $this, 'process_title' ), $priority );
-			add_filter( 'single_month_title',   array( $this, 'process_title' ), $priority );
-			add_filter( 'single_month_title',   array( $this, 'process_title' ), $priority );
-			add_filter( 'nav_menu_attr_title',  array( $this, 'process_title' ), $priority );
-			add_filter( 'nav_menu_description', array( $this, 'process_title' ), $priority );
-			add_filter( 'widget_title',         array( $this, 'process_title' ), $priority );
-			add_filter( 'list_cats',            array( $this, 'process_title' ), $priority );
+			/** This filter is documented in class-wp-typography.php */
+			if ( ! apply_filters( 'typo_disable_filtering', false, 'heading' ) ) {
+				add_filter( 'the_title',            array( $this, 'process_title' ), $priority );
+				add_filter( 'single_post_title',    array( $this, 'process_title' ), $priority );
+				add_filter( 'single_cat_title',     array( $this, 'process_title' ), $priority );
+				add_filter( 'single_tag_title',     array( $this, 'process_title' ), $priority );
+				add_filter( 'single_month_title',   array( $this, 'process_title' ), $priority );
+				add_filter( 'single_month_title',   array( $this, 'process_title' ), $priority );
+				add_filter( 'nav_menu_attr_title',  array( $this, 'process_title' ), $priority );
+				add_filter( 'nav_menu_description', array( $this, 'process_title' ), $priority );
+				add_filter( 'widget_title',         array( $this, 'process_title' ), $priority );
+				add_filter( 'list_cats',            array( $this, 'process_title' ), $priority );
+			}
 
 			// Extra care needs to be taken with the <title> tag.
-			add_filter( 'wp_title',             array( $this, 'process_feed' ),        $priority ); // WP < 4.4.
-			add_filter( 'document_title_parts', array( $this, 'process_title_parts' ), $priority );
-			add_filter( 'wp_title_parts',       array( $this, 'process_title_parts' ), $priority ); // WP < 4.4.
+			/** This filter is documented in class-wp-typography.php */
+			if ( ! apply_filters( 'typo_disable_filtering', false, 'title' ) ) {
+				add_filter( 'wp_title',             array( $this, 'process_feed' ),        $priority ); // WP < 4.4.
+				add_filter( 'document_title_parts', array( $this, 'process_title_parts' ), $priority );
+				add_filter( 'wp_title_parts',       array( $this, 'process_title_parts' ), $priority ); // WP < 4.4.
+			}
 
 			// 3rd-party plugins
 			// ACF (https://www.advancedcustomfields.com)
-			if ( class_exists( 'acf' ) && function_exists( 'acf_get_setting' ) ) {
+			/** This filter is documented in class-wp-typography.php */
+			if ( class_exists( 'acf' ) && function_exists( 'acf_get_setting' ) && ! apply_filters( 'typo_disable_filtering', false, 'acf' ) ) {
 				if ( 5 === intval( acf_get_setting( 'version' ) ) ) { // ACF Pro (version 5).
 					add_filter( 'acf/format_value/type=wysiwyg',  array( $this, 'process' ),       $priority );
 					add_filter( 'acf/format_value/type=textarea', array( $this, 'process' ),       $priority );
@@ -283,38 +406,47 @@ class WP_Typography {
 
 
 	/**
-	 * Process heading text fragment.
+	 * Processes a heading text fragment.
 	 *
-	 * Calls `process( $text, true )`.
+	 * Calls `process( $text, true, $settings )`.
 	 *
-	 * @param string $text Required.
+	 * @since 4.0.0 Parameter $settings added.
+	 *
+	 * @param string                   $text Required.
+	 * @param \PHP_Typography\Settings $settings Optional. A settings object. Default null (which means the internal settings will be used).
 	 */
-	function process_title( $text ) {
-		return $this->process( $text, true );
+	function process_title( $text, \PHP_Typography\Settings $settings = null ) {
+		return $this->process( $text, true, $settings );
 	}
 
 	/**
-	 * Process text as feed.
+	 * Processes a content text fragment as part of an RSS feed.
 	 *
 	 * Calls `process( $text, $is_title, true )`.
 	 *
 	 * @since 3.2.4
+	 * @since 4.0.0 Parameter $settings added.
 	 *
-	 * @param string  $text     Required.
-	 * @param boolean $is_title Optional. Default false.
+	 * @param string                   $text     Required.
+	 * @param bool                     $is_title Optional. Default false.
+	 * @param \PHP_Typography\Settings $settings Optional. A settings object. Default null (which means the internal settings will be used).
 	 */
-	function process_feed( $text, $is_title = false ) {
-		return $this->process( $text, $is_title, true );
+	function process_feed( $text, $is_title = false, \PHP_Typography\Settings $settings = null ) {
+		return $this->process( $text, $is_title, true, $settings );
 	}
 
 	/**
-	 * Process title parts and strip &shy; and zero-width space.
+	 * Processes title parts and strips &shy; and zero-width space.
 	 *
 	 * @since 3.2.5
+	 * @since 4.0.0 Parameter $settings added.
 	 *
-	 * @param array $title_parts An array of strings.
+	 * @param array                    $title_parts An array of strings.
+	 * @param \PHP_Typography\Settings $settings    Optional. A settings object. Default null (which means the internal settings will be used).
+	 *
+	 * @return array
 	 */
-	function process_title_parts( $title_parts ) {
+	function process_title_parts( $title_parts, \PHP_Typography\Settings $settings = null ) {
 		/**
 		 * We need a utility function that's not autoloaded.
 		 */
@@ -322,31 +454,36 @@ class WP_Typography {
 
 		foreach ( $title_parts as $index => $part ) {
 			// Remove &shy; and &#8203; after processing title part.
-			$title_parts[ $index ] = strip_tags( str_replace( array( \PHP_Typography\uchr( 173 ), \PHP_Typography\uchr( 8203 ) ), '', $this->process( $part, true, true ) ) );
+			$title_parts[ $index ] = strip_tags( str_replace( array( \PHP_Typography\uchr( 173 ), \PHP_Typography\uchr( 8203 ) ), '', $this->process( $part, true, true, $settings ) ) );
 		}
 
 		return $title_parts;
 	}
 
 	/**
-	 * Process text fragment.
+	 * Processes a text fragment.
 	 *
 	 * @since 3.2.4 Parameter $force_feed added.
+	 * @since 4.0.0 Parameter $settings added.
 	 *
-	 * @param string  $text       Required.
-	 * @param boolean $is_title   Optional. Default false.
-	 * @param boolean $force_feed Optional. Default false.
+	 * @param string                   $text       Required.
+	 * @param bool                     $is_title   Optional. Default false.
+	 * @param bool                     $force_feed Optional. Default false.
+	 * @param \PHP_Typography\Settings $settings   Optional. A settings object. Default null (which means the internal settings will be used).
+	 *
+	 * @return string The processed $text.
 	 */
-	public function process( $text, $is_title = false, $force_feed = false ) {
+	function process( $text, $is_title = false, $force_feed = false, \PHP_Typography\Settings $settings = null ) {
 		$typo = $this->get_php_typo();
-		$key = 'typo_' . base64_encode( md5( $text, true ) . $this->cached_settings_hash );
+		$hash = ! empty( $settings ) ? $settings->get_hash() : $this->cached_settings_hash;
+		$key  = 'typo_' . base64_encode( md5( $text, true ) . $hash );
 
 		/**
 		 * Filter the caching duration for processed text fragments.
 		 *
 		 * @since 3.2.0
 		 *
-		 * @param number $duration The duration in seconds. Defaults to 1 day.
+		 * @param int $duration The duration in seconds. Defaults to 1 day.
 		 */
 		$duration = apply_filters( 'typo_processed_text_caching_duration', DAY_IN_SECONDS );
 		$found = false;
@@ -356,7 +493,7 @@ class WP_Typography {
 			$processed_text = $this->get_cache( $key, $found );
 
 			if ( ! $found ) {
-				$processed_text = $typo->process_feed( $text, $is_title );
+				$processed_text = $typo->process_feed( $text, $is_title, $settings );
 				$this->set_cache( $key, $processed_text, $duration );
 			}
 		} else {
@@ -364,7 +501,7 @@ class WP_Typography {
 			$processed_text = $this->get_cache( $key, $found );
 
 			if ( ! $found ) {
-				$processed_text = $typo->process( $text, $is_title );
+				$processed_text = $typo->process( $text, $is_title, $settings );
 				$this->set_cache( $key, $processed_text, $duration );
 			}
 		}
@@ -373,13 +510,13 @@ class WP_Typography {
 	}
 
 	/**
-	 * Set a transient and store the key.
+	 * Sets a transient and stores the key for clean-up.
 	 *
 	 * @param string $transient The transient key. Maximum length depends on WordPress version (for WP < 4.4 it is 45 characters).
 	 * @param mixed  $value     The value to store.
-	 * @param number $duration  The duration in seconds. Optional. Default 1 second.
+	 * @param int    $duration  Optional. The duration in seconds. Default 1 second.
 	 *
-	 * @return boolean True if the transient could be set successfully.
+	 * @return bool True if the transient could be set successfully.
 	 */
 	public function set_transient( $transient, $value, $duration = 1 ) {
 		$result = false;
@@ -394,13 +531,13 @@ class WP_Typography {
 	}
 
 	/**
-	 * Store an entry in the cache and remember the key.
+	 * Sets an entry in the cache and stores the key.
 	 *
 	 * @param string $key       The cache key.
 	 * @param mixed  $value     The value to store.
-	 * @param number $duration  The duration in seconds. Optional. Default 0 (no expiration).
+	 * @param int    $duration  Optional. The duration in seconds. Default 0 (no expiration).
 	 *
-	 * @return boolean True if the cache could be set successfully.
+	 * @return bool True if the cache could be set successfully.
 	 */
 	public function set_cache( $key, $value, $duration = 0 ) {
 		$result = false;
@@ -415,10 +552,10 @@ class WP_Typography {
 	}
 
 	/**
-	 * Retrieve a cached value.
+	 * Retrieves a cached value.
 	 *
-	 * @param string  $key   The cache key.
-	 * @param boolean $found Optional. Whether the key was found in the cache. Disambiguates a return of false, a storable value. Passed by reference. Default null.
+	 * @param string $key   The cache key.
+	 * @param bool   $found Optional. Whether the key was found in the cache. Disambiguates a return of false, a storable value. Passed by reference. Default null.
 	 *
 	 * @return mixed
 	 */
@@ -427,7 +564,7 @@ class WP_Typography {
 	}
 
 	/**
-	 * Retrieve the PHP_Typography instance and ensure just-in-time initialization.
+	 * Retrieves the PHP_Typography instance and ensure just-in-time initialization.
 	 */
 	private function get_php_typo() {
 
@@ -442,11 +579,11 @@ class WP_Typography {
 				$this->init_php_typo();
 
 				/**
-				 * Filter the caching duration for the PHP_Typography engine state.
+				 * Filters the caching duration for the PHP_Typography engine state.
 				 *
 				 * @since 3.2.0
 				 *
-				 * @param number $duration The duration in seconds. Defaults to 0 (no expiration).
+				 * @param int $duration The duration in seconds. Defaults to 0 (no expiration).
 				 */
 				$duration = apply_filters( 'typo_php_typography_caching_duration', 0 );
 
@@ -462,10 +599,10 @@ class WP_Typography {
 	}
 
 	/**
-	 * Initialize the PHP_Typograpyh instance from our settings.
+	 * Initializes the PHP_Typography instance from our settings.
 	 */
 	private function init_php_typo() {
-		// Load configuration variables into our phpTypography class.
+		// Load configuration variables into our PHP_Typography class.
 		$this->php_typo->set_tags_to_ignore( $this->settings['typo_ignore_tags'] );
 		$this->php_typo->set_classes_to_ignore( $this->settings['typo_ignore_classes'] );
 		$this->php_typo->set_ids_to_ignore( $this->settings['typo_ignore_ids'] );
@@ -537,12 +674,26 @@ class WP_Typography {
 		} else { // save some cycles.
 			$this->php_typo->set_hyphenation( $this->settings['typo_enable_hyphenation'] );
 		}
+
+		/**
+		 * Filters whether HTML parser errors should be silently ignored.
+		 *
+		 * The resulting HTML will be a "best guess" by the parser, like it was before version 3.5.2.
+		 *
+		 * @since 3.6.0
+		 *
+		 * @param bool $ignore Default false.
+		 */
+		$this->php_typo->set_ignore_parser_errors( $this->settings['typo_ignore_parser_errors'] || apply_filters( 'typo_ignore_parser_errors', false ) );
+
+		// Make parser errors filterable on an individual level.
+		$this->php_typo->set_parser_errors_handler( array( $this, 'parser_errors_handler' ) );
 	}
 
 	/**
-	 * Initialize options with default values.
+	 * Initializes the options with default values.
 	 *
-	 * @param boolean $force_defaults Optional. Default false.
+	 * @param bool $force_defaults Optional. Default false.
 	 */
 	function set_default_options( $force_defaults = false ) {
 		// Grab configuration variables.
@@ -561,7 +712,7 @@ class WP_Typography {
 	}
 
 	/**
-	 * Retrieve the plugin's default option values.
+	 * Retrieves the plugin's default option values.
 	 *
 	 * @return array
 	 */
@@ -570,7 +721,7 @@ class WP_Typography {
 	}
 
 	/**
-	 * Clear all transients set by the plugin.
+	 * Clears all transients set by the plugin.
 	 */
 	 function clear_cache() {
 		// Delete all our transients.
@@ -589,7 +740,25 @@ class WP_Typography {
 	}
 
 	/**
-	 * Print CSS and JS depending on plugin options.
+	 * Makes parser errors filterable.
+	 *
+	 * @param array $errors An array of error messages.
+	 *
+	 * @return array The filtered array.
+	 */
+	function parser_errors_handler( $errors ) {
+		/**
+		 * Filters the HTML parser errors (if there are any).
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param array $errors An array of error messages.
+		 */
+		return apply_filters( 'typo_handle_parser_errors', $errors );
+	}
+
+	/**
+	 * Prints CSS and JS depending on plugin options.
 	 */
 	function add_wp_head() {
 		if ( $this->settings['typo_style_css_include'] && '' !== trim( $this->settings['typo_style_css'] ) ) {
@@ -604,7 +773,7 @@ class WP_Typography {
 	}
 
 	/**
-	 * Load translations and check for other plugins.
+	 * Loads translations and checks for other plugins.
 	 */
 	function plugins_loaded() {
 		// Load our translations.
@@ -630,6 +799,7 @@ class WP_Typography {
 	 * acceptable to make the algorithm simpler.
 	 *
 	 * @param string $version A version string.
+	 *
 	 * @return string The hashed version (containing as few bytes as possible);
 	 */
 	private function hash_version_string( $version ) {
@@ -644,7 +814,7 @@ class WP_Typography {
 	}
 
 	/**
-	 * Retrieve the plugin version.
+	 * Retrieves the plugin version.
 	 *
 	 * @return string
 	 */
@@ -653,7 +823,7 @@ class WP_Typography {
 	}
 
 	/**
-	 * Retrieve the plugin version hash.
+	 * Retrieves the plugin version hash.
 	 *
 	 * @return string
 	 */
@@ -662,12 +832,15 @@ class WP_Typography {
 	}
 
 	/**
-	 * Enqueue frontend javascript.
+	 * Enqueues frontend JavaScript files.
 	 */
 	public function enqueue_scripts() {
 		if ( $this->settings['typo_hyphenate_clean_clipboard'] ) {
-			wp_enqueue_script( 'jquery-selection', plugin_dir_url( $this->local_plugin_path ) . 'js/jquery.selection.js', array( 'jquery' ), $this->version, true );
-			wp_enqueue_script( 'wp-typography-cleanup-clipboard', plugin_dir_url( $this->local_plugin_path ) . 'js/clean_clipboard.js', array( 'jquery', 'jquery-selection' ), $this->version, true );
+			// Set up file suffix.
+			$suffix = SCRIPT_DEBUG ? '' : '.min';
+
+			wp_enqueue_script( 'jquery-selection',                plugin_dir_url( $this->local_plugin_path ) . "js/jquery.selection$suffix.js", array( 'jquery' ),                     $this->version, true );
+			wp_enqueue_script( 'wp-typography-cleanup-clipboard', plugin_dir_url( $this->local_plugin_path ) . "js/clean_clipboard$suffix.js",  array( 'jquery', 'jquery-selection' ), $this->version, true );
 		}
 	}
 }

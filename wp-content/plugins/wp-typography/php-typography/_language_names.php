@@ -18,6 +18,7 @@
 <?php _x( 'Irish', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Galician', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Greek (Ancient)', 'language name', 'wp-typography' ); ?>
+<?php _x( 'Hindi', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Croatian', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Hungarian', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Armenian', 'language name', 'wp-typography' ); ?>
@@ -32,8 +33,12 @@
 <?php _x( 'Lithuanian', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Latvian', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Mongolian (Cyrillic)', 'language name', 'wp-typography' ); ?>
+<?php _x( 'Marathi', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Dutch', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Norwegian', 'language name', 'wp-typography' ); ?>
+<?php _x( 'Occitan', 'language name', 'wp-typography' ); ?>
+<?php _x( 'Oriya', 'language name', 'wp-typography' ); ?>
+<?php _x( 'Panjabi', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Polish', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Portuguese', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Romanian', 'language name', 'wp-typography' ); ?>
@@ -45,6 +50,8 @@
 <?php _x( 'Slovenian', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Serbian (Cyrillic)', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Swedish', 'language name', 'wp-typography' ); ?>
+<?php _x( 'Tamil', 'language name', 'wp-typography' ); ?>
+<?php _x( 'Telugu', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Thai', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Turkmen', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Turkish', 'language name', 'wp-typography' ); ?>

@@ -3,7 +3,7 @@ Contributors: pputzer
 Tags: typography, hyphenation, smart quotes, quote marks, smartypants, typogrify, quotes, prettify, widows, orphans, small caps, diacritics
 Requires at least: 4.4
 Tested up to: 4.7
-Stable tag: 3.5.3
+Stable tag: 4.0.1
 
 Improve your web typography with: hyphenation, space control, intelligent character replacement, and CSS hooks.
 
@@ -49,57 +49,86 @@ wp‐Typography has the following requirements:
 
 FAQs are maintained on the [wp-Typography website](https://code.mundschenk.at/wp-typography/frequently-asked-questions/).
 
-Three questions come up so frequently, we will republish their answers here:
+Two questions come up so frequently, we will republish their answers here:
 
 = Will this plu­gin slow my page load­ing times? =
 
 Yes. Use [WP Super Cache](http://wordpress.org/extend/plugins/wp-super-cache/).
 
-= This plugin breaks post title links.  What gives? =
+= This plugin breaks post title links. What gives? =
 
 More likely than not, your WordPress theme is using an improper function to set the title attribute of your heading's link.  It is probably using the `the_title()` function, which delivers the post title *after* filtering.  It should be using `the_title_attribute()` which delivers the post title *before* filtering.  Change out this function throughout your theme when it is used inside of an HTML tag, and the problem should go away.
 
 If you are uncomfortable editing your theme's code, you may alternatively go to the wp-Typography settings page in your admin panel and add `h1` and `h2` to the "Do not process the content of these HTML elements:" field.  This will disable typographic processing within improperly designed page title links <em>and</em> page titles.
-
-= Does this plugin work with wp-Typogrify? =
-
-This plugin is an official replacement for the [wp-Typogrify plugin](http://wordpress.org/extend/plugins/wp-typogrify/).  Please uninstall wp-Typogrify and install wp-Typography in its place.
 
 Remember, many more FAQs are are addressed the [wp-Typography website](https://code.mundschenk.at/wp-typography/frequently-asked-questions/).
 
 
 == Screenshots ==
 
-1. wp-Typography administrative settings page
+1. wp-Typography "General" settings page.
+2. wp-Typography "Hyphenation" settings page.
+3. wp-Typography "Intelligent Character Replacement" settings page.
+4. wp-Typography "Space Control" settings page.
+4. wp-Typography "Add CSS Hooks" settings page.
 
 == Changelog ==
 
+= 4.0.1 - January 7, 2017 =
+* _Bugfix:_ Workaround for PHP 5.3 issue in `dewidow` callback.
+
+= 4.0.0 - January 6, 2017 =
+* _Feature:_ API improvements for developers
+  - New Settings API added.
+  - Easier access via new static methods `WP_Typography::filter*`.
+  - Updated [API documentation](https://code.mundschenk.at/wp-typography/api/).
+* _Feature:_ Re-vamped settings page
+  - Uses tabs for easier navigation.
+  - Follows WordPress styleguide more closely.
+  - Includes online help.
+* _Feature:_ New hyphenation languages
+  - Hindi,
+  - Marathi,
+  - Occitan,
+  - Oriya,
+  - Panjabi,
+  - Tamil,
+  - Telugu.
+* _Change:_ Uses minified JavaScript.
+* _Change:_ Updated list of valid top-level domains.
+* _Change:_ "Ignore errors in parsed HTML" is the default again (as it was pre 3.5.2) and can be switched on and off via the settings page. Parsing errors can be filtered via the new hook `typo_handle_parser_errors` (`typo_ignore_parser_errors` still works as well, of course).
+
+= 3.6.0 - December 26, 2016 =
+* _Feature:_ Added hook `typo_ignore_parser_errors` to re-enable "parser guessing" as it was before version 3.5.2.
+* _Feature:_ Added new hook `typo_disable_filtering` to selectively disable filter groups.
+
 = 3.5.3 - December 17, 2016 =
-* Bugfix: Remove ambiguous entries from German diacritics replacement file.
+* _Bugfix:_ Remove ambiguous entries from German diacritics replacement file.
 
 = 3.5.2 - December 14, 2016 =
-* Change: Return unmodified HTML if a processed text fragment is not well-formed. This improves compatibility with page builder plugins (and themes) that do weird things with the `the_content` filter.
+* _Change:_ Return unmodified HTML if a processed text fragment is not well-formed. This improves compatibility with page builder plugins (and themes) that do weird things with the `the_content` filter.
 
 = 3.5.1 - November 05, 2016 =
-* Bugfix: Quotes ending in numbers were sometimes interpreted as primes.
+* _Bugfix:_ Quotes ending in numbers were sometimes interpreted as primes.
 
 = 3.5.0 - October 21, 2016 =
-* Feature: Added "Latin (Liturgical)" as a new hyphenation language.
-* Feature: Limited support for ACF Pro.
-* Change: Better compatibility with improperly written plugins (ensuring that `wptexturize` is always off).
-* Change: Only use the WP Object Cache for caching, not transients, to reduce database usage and prevent clogging in some configurations.
-* Change: Updated list of valid top-level domains.
-* Change: Updated HTML5 parser (html5-php) to 2.2.2.
-* Bugfix: Custom hyphenations with more than one hyphenation point were not working properly.
-* Bugfix: The `min_after` hyphenation setting was off by one.
-* Bugfix: An IE11 bug on Windows 7 was previously triggered when the Safari workaround is enabled.
-* Bugfix: Language names were not translated in the settings screen.
-* Bugfix: Fractions did not play nice with prime symbols.
+* _Feature:_ Added "Latin (Liturgical)" as a new hyphenation language.
+* _Feature:_ Limited support for ACF Pro.
+* _Change:_ Better compatibility with improperly written plugins (ensuring that `wptexturize` is always off).
+* _Change:_ Only use the WP Object Cache for caching, not transients, to reduce database usage and prevent clogging in some configurations.
+* _Change:_ Updated list of valid top-level domains.
+* _Change:_ Updated HTML5 parser (html5-php) to 2.2.2.
+* _Bugfix:_ Custom hyphenations with more than one hyphenation point were not working properly.
+* _Bugfix:_ The `min_after` hyphenation setting was off by one.
+* _Bugfix:_ An IE11 bug on Windows 7 was previously triggered when the Safari workaround is enabled.
+* _Bugfix:_ Language names were not translated in the settings screen.
+* _Bugfix:_ Fractions did not play nice with prime symbols.
 
 = 3.4.0 - July 10, 2016 =
 * Store hyphenation patterns as JSON files instead of PHP to work around a GlotPress bug that prevents timely language pack updates.
 * Out-of-the box support for Advanced Custom Fields (specifically for fields of the types `text`, `textarea` and `wysiwyg`).
 * Updated list of valid top-level domains.
+* Tested as compatible with WPML.
 
 = 3.3.1 - June 27, 2016 =
 * The JavaScript files for `Remove hyphenation when copying to clipboard` were missing from the build.
@@ -146,7 +175,7 @@ Remember, many more FAQs are are addressed the [wp-Typography website](https://c
 * Changed behavior of caching setting: it needs to be explicitely enabled. Having it on by default caused too many problems on shared hosting environments.
 * Started adding filters for programmatic adjustments to the typographic enhancements.
 * Made main plugin class a singleton to ensure easier access for theme developers.
-* Added the wp-Typography filter to additional WordPress hooks and completely disabled wptexturize (if Smart Character Replacement is enabled).
+* Added the wp-Typography filter to additional WordPress hooks and completely disabled `wptexturize` (if Intelligent Character Replacement is enabled).
 
 = 3.1.3 - January 13, 2016 =
 * Pre­vent in­cor­rect re­place­ment of straight quotes with primes (e.g. `"number 6"` is not re­placed with `“num­ber 6″` but with `“num­ber 6”`).
