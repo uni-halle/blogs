@@ -1,23 +1,23 @@
 === Translate Wordpress with GTranslate ===
 Contributors: edo888
 Author: Edvard Ananyan
-Tags: translation proxy, localization, translate, translation, localization, google translate, language, multilingual, multilanguage, bilingual, tradurre, traducir, traduire, traduzione, ubersetzung, mehrsprachig, oversette, oversatta, vertaling, vertaler, meertalig, polylang, qtranslate, transposh
+Tags: translation proxy, localization, translate, translation, google translate, language, multilingual, multilanguage, bilingual, tradurre, traducir, traduire, traduzione, ubersetzung, mehrsprachig, oversette, oversatta, vertaling, vertaler, meertalig, polylang, qtranslate, transposh, wpml, l18n
 Requires at least: 2.8
 Tested up to: 4.7
-Stable tag: 2.8.1
+Stable tag: 2.8.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
 
-Translate WordPress with Google Translate to make your website multilingual and available to more than 99% of internet users.
+Translate WordPress with Google Translate multilanguage plugin to make your website multilingual and available to more than 99% of internet users.
 
 == Description ==
 
-GTranslate plugin uses Google Translate automatic translation service to **translate wordpress** site with Google power. With 103 available languages your site will be available to more than 99% of internet users. Our paid versions are **fully SEO compatible** which will **increase your international traffic and sales**.
+GTranslate plugin uses Google Translate automatic translation service to **translate wordpress** site with Google power and make it **multilingual**. With 103 available languages your site will be available to more than 99% of internet users. Our paid versions are **fully SEO compatible** which will **increase your international traffic and sales**.
 
-GTranslate is a leading website translation services provider since 2008 and powers more than 500.000 websites worldwide.
+GTranslate is a leading website translation services provider since 2008 and powers more than 500.000 multilingual websites worldwide.
 
-Please use [GTranslate Support](https://wordpress.org/support/plugin/gtranslate) for your questions and support requests!
+Please use [GTranslate Support](https://wordpress.org/support/plugin/gtranslate) for your questions and support requests! We are multilingual!
 
 Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 
@@ -31,9 +31,12 @@ Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 * Google Analytics integration
 * Translates the site on the fly
 * Google language translator widget
-* Available styles Dropdown/Flags/Flags with dropdown/Nice dropdown with flags
-* Valid XHTML
-* Alternative for WPML, qtranslate, transposh and polylang
+* Available styles Dropdown/Flags/Flags with dropdown/Nice dropdown with flags/Globe
+* Floating language selector
+* Language bar in menu
+* Multilanguage
+* Multilingual language names in native alphabet
+* Alternative for WPML, qtranslate, transposh, loco translate and polylang
 * (paid) You can manually correct translations
 * (paid) You can have sub-directory (example.com/**es**/) or sub-domain (**es.**example.com) URL structure
 * (paid) URL Translation is possible (example.com/about-us -> example.es/sobre-nosotros)
@@ -44,12 +47,12 @@ Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 [youtube https://www.youtube.com/watch?v=9mtC3LFBErY]
 
 **Watch GTranslate Tour**
-[vimeo http://vimeo.com/30132555]
+[youtube https://www.youtube.com/watch?v=R4mfiKGZh_g]
 
 **Edit Translations Demo (paid)**
 [youtube https://www.youtube.com/watch?v=YwSy3VtQx3I]
 
-Keywords: polylang, prisna, gts, localize, lingotek, smartling, qtranslate, loco translate, google website translator, translate wordpress, translate, transposh, global translator, machine translate, wp translate
+Keywords: polylang, prisna, gts, localize, lingotek, smartling, qtranslate, loco translate, loco, google website translator, translate wordpress, translate, transposh, global translator, machine translate, wp translate, bilingual, multilanguage, multilingual, l18n
 
 == Installation ==
 
@@ -409,6 +412,40 @@ You need to go to the language you want to edit, for instance, French: http://do
 
 == Changelog ==
 
+= 2.8.8 =
+* Fix for flags rendering issue in menu
+* Fix for analytics code in onfly mode
+* Fixed issue with some template conflicts
+
+= 2.8.7 =
+* Happy New Year! :)
+* Fix for mystery language change when selecting default language
+* .htaccess plugin_path now relative without http://example.com
+* Bug fixed, scrolling for dropdown flags doesn't work on some templates
+
+= 2.8.6 =
+* Fixed bug on options page related to native language names
+* Plugin keywords added: multilanguage, multilingual, language, bilingual, l18n
+* Vimeo videos replaced by YouTube videos: GTranslate video and Translation Proxy video
+
+= 2.8.5 =
+* Show languages in their native names
+* Automatically select default language based on wordpress locale
+* Coding issue with PHP Strict Standards and Fatal Error on some PHP versions fixed
+* Error messages more informative
+
+= 2.8.4 =
+* New option to select in which menu the selector should appear
+
+= 2.8.3 =
+* Added URL add-on to easily enable sub-directory URL structure (paid)
+* New option to easily enable URL Translation
+* Disallow both sub-domain and sub-directory URL structure selection at the same time
+* Fix for language change issue when URL Translation is on
+
+= 2.8.2 =
+* Floating language selector option added: Top left, Top right, Bottom left, Bottom right
+
 = 2.8.1 =
 * New Globe widget look added
 * Plugin localization added
@@ -611,6 +648,8 @@ You need to go to the language you want to edit, for instance, French: http://do
 * Initial version for WordPress
 
 == Upgrade Notice ==
+= 2.8.8 =
+Make sure to regenerate the widget code from GTranslate Settings page by checking/unchecking Analytics feature and Saving changes.
 
 = 2.8.1 =
 A lot of new features added!

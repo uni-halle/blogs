@@ -3,14 +3,14 @@
 Plugin Name: GTranslate
 Plugin URI: https://gtranslate.io/?xyz=998
 Description: Makes your website <strong>multilingual</strong> and available to the world using Google Translate. For support visit <a href="https://wordpress.org/support/plugin/gtranslate">GTranslate Support</a>.
-Version: 2.8.1
+Version: 2.8.8
 Author: Edvard Ananyan
 Author URI: https://gtranslate.io
 Text Domain: gtranslate
 
 */
 
-/*  Copyright 2010 - 2016 Edvard Ananyan  (email : edo888@gmail.com)
+/*  Copyright 2010 - 2017 Edvard Ananyan  (email : edo888@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -36,25 +36,6 @@ add_action('init', array('GTranslate', 'enqueue_scripts'));
 add_action('plugins_loaded', array('GTranslate', 'load_textdomain'));
 add_shortcode('GTranslate', array('GTranslate', 'get_widget_code'));
 add_shortcode('gtranslate', array('GTranslate', 'get_widget_code'));
-
-if(is_admin()) {
-    global $pagenow;
-
-    if(!defined('DOING_AJAX') or !DOING_AJAX)
-        new GTranslate_Notices();
-}
-
-$data = get_option('GTranslate');
-GTranslate::load_defaults($data);
-
-if($data['show_in_primary_menu']) {
-    add_filter('wp_nav_menu_items', 'gtranslate_menu_item', 10, 2);
-    function gtranslate_menu_item($items, $args) {
-        if($args->theme_location == 'primary')
-            $items .= '<li style="position:relative;" class="menu-item menu-item-gtranslate"><div style="position:absolute;">'.GTranslate::get_widget_code(false).'</div></li>';
-        return $items;
-    }
-}
 
 class GTranslate extends WP_Widget {
     public static function activate() {
@@ -94,6 +75,9 @@ class GTranslate extends WP_Widget {
 
         wp_enqueue_style( 'gtranslate-style', plugins_url('gtranslate-style'.$data['flag_size'].'.css', __FILE__) );
         wp_enqueue_script('jquery');
+
+        //if($data['pro_version'] or $data['enterprise_version'])
+            //wp_add_inline_script('jquery-core', "var gt_request_uri = '".addslashes($_SERVER['REQUEST_URI'])."';", 'before');
     }
 
     public static function load_textdomain() {
@@ -136,7 +120,7 @@ class GTranslate extends WP_Widget {
         echo $args['after_widget'];
     }
 
-    function get_widget_code($atts) {
+    public static function get_widget_code($atts) {
         $data = get_option('GTranslate');
         GTranslate::load_defaults($data);
 
@@ -179,6 +163,9 @@ class GTranslate extends WP_Widget {
 
         $gt_lang_array_json = '{"af":"Afrikaans","sq":"Albanian","am":"Amharic","ar":"Arabic","hy":"Armenian","az":"Azerbaijani","eu":"Basque","be":"Belarusian","bn":"Bengali","bs":"Bosnian","bg":"Bulgarian","ca":"Catalan","ceb":"Cebuano","ny":"Chichewa","zh-CN":"Chinese (Simplified)","zh-TW":"Chinese (Traditional)","co":"Corsican","hr":"Croatian","cs":"Czech","da":"Danish","nl":"Dutch","en":"English","eo":"Esperanto","et":"Estonian","tl":"Filipino","fi":"Finnish","fr":"French","fy":"Frisian","gl":"Galician","ka":"Georgian","de":"German","el":"Greek","gu":"Gujarati","ht":"Haitian Creole","ha":"Hausa","haw":"Hawaiian","iw":"Hebrew","hi":"Hindi","hmn":"Hmong","hu":"Hungarian","is":"Icelandic","ig":"Igbo","id":"Indonesian","ga":"Irish","it":"Italian","ja":"Japanese","jw":"Javanese","kn":"Kannada","kk":"Kazakh","km":"Khmer","ko":"Korean","ku":"Kurdish (Kurmanji)","ky":"Kyrgyz","lo":"Lao","la":"Latin","lv":"Latvian","lt":"Lithuanian","lb":"Luxembourgish","mk":"Macedonian","mg":"Malagasy","ms":"Malay","ml":"Malayalam","mt":"Maltese","mi":"Maori","mr":"Marathi","mn":"Mongolian","my":"Myanmar (Burmese)","ne":"Nepali","no":"Norwegian","ps":"Pashto","fa":"Persian","pl":"Polish","pt":"Portuguese","pa":"Punjabi","ro":"Romanian","ru":"Russian","sm":"Samoan","gd":"Scottish Gaelic","sr":"Serbian","st":"Sesotho","sn":"Shona","sd":"Sindhi","si":"Sinhala","sk":"Slovak","sl":"Slovenian","so":"Somali","es":"Spanish","su":"Sudanese","sw":"Swahili","sv":"Swedish","tg":"Tajik","ta":"Tamil","te":"Telugu","th":"Thai","tr":"Turkish","uk":"Ukrainian","ur":"Urdu","uz":"Uzbek","vi":"Vietnamese","cy":"Welsh","xh":"Xhosa","yi":"Yiddish","yo":"Yoruba","zu":"Zulu"}';
         $gt_lang_array = get_object_vars(json_decode($gt_lang_array_json));
+        include dirname(__FILE__) . '/native_names_map.php'; // defines $native_names_map array
+        //echo '<pre>' . print_r($native_names_map, true) . '</pre>';
+        $gt_lang_array_native_json = json_encode($native_names_map);
 
         if(!empty($language_codes))
             $gt_lang_codes_json = json_encode(explode(',', $language_codes));
@@ -190,13 +177,11 @@ class GTranslate extends WP_Widget {
         else
             $gt_lang_codes2_json = '[]';
 
-
-        #unset($data['widget_code']);
-        #echo '<pre>', print_r($data, true), '</pre>';
-
 $script = <<<EOT
 
-var gt_lang_array = $gt_lang_array_json;
+var gt_lang_array_english = $gt_lang_array_json;
+var gt_lang_array_native = $gt_lang_array_native_json;
+var gt_lang_array = gt_lang_array_english;
 var languages = [], language_codes = $gt_lang_codes_json, language_codes2 = $gt_lang_codes2_json;
 
 //for(var key in gt_lang_array)
@@ -214,21 +199,25 @@ function RefreshDoWidgetCode() {
     var new_line = "\\n";
     var widget_preview = '<!-- GTranslate: https://gtranslate.io/ -->'+new_line;
     var widget_code = '';
-    var translation_method = 'onfly'; //jQuery('#translation_method').val();
+    var translation_method = 'onfly';
     var widget_look = jQuery('#widget_look').val();
     var default_language = jQuery('#default_language').val();
     var flag_size = jQuery('#flag_size').val();
     var pro_version = jQuery('#pro_version:checked').length > 0 ? true : false;
     var enterprise_version = jQuery('#enterprise_version:checked').length > 0 ? true : false;
     var new_window = jQuery('#new_window:checked').length > 0 ? true : false;
-    var show_in_primary_menu = jQuery('#show_in_primary_menu:checked').length > 0 ? true : false;
+    var show_in_menu = jQuery('#show_in_menu').val();
+    var floating_language_selector = jQuery('#floating_language_selector').val();
+    var native_language_names = jQuery('#native_language_names:checked').length > 0 ? true : false;
     var analytics = jQuery('#analytics:checked').length > 0 ? true : false;
 
     if(pro_version || enterprise_version) {
         translation_method = 'redirect';
         jQuery('#new_window_option').show();
+        jQuery('#url_translation_option').show();
     } else {
         jQuery('#new_window_option').hide();
+        jQuery('#url_translation_option').hide();
     }
 
     if(widget_look == 'dropdown' || widget_look == 'flags_dropdown' || widget_look == 'globe') {
@@ -264,34 +253,22 @@ function RefreshDoWidgetCode() {
         jQuery('#flag_size_option').show();
     }
 
+    if(native_language_names) {
+        gt_lang_array = gt_lang_array_native;
+        jQuery('.en_names').hide();
+        jQuery('.native_names').show();
+    } else {
+        gt_lang_array = gt_lang_array_english;
+        jQuery('.native_names').hide();
+        jQuery('.en_names').show();
+    }
+
     if(pro_version && enterprise_version)
         pro_version = false;
 
-    if(translation_method == 'google_default') {
-        included_languages = '';
-        jQuery.each(language_codes2, function(i, val) {
-            lang = language_codes2[i];
-            if(jQuery('#incl_langs'+lang+':checked').length) {
-                lang_name = gt_lang_array[lang];
-                included_languages += ','+lang;
-            }
-        });
-
-        widget_preview += '<div id="google_translate_element"></div>'+new_line;
-        widget_preview += '<script type="text/javascript">'+new_line;
-        widget_preview += 'function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: \'';
-        widget_preview += default_language;
-        widget_preview += '\', layout: google.translate.TranslateElement.InlineLayout.SIMPLE';
-        widget_preview += ', autoDisplay: false';
-        widget_preview += ', includedLanguages: \'';
-        widget_preview += included_languages;
-        widget_preview += "'}, 'google_translate_element');}"+new_line;
-        widget_preview += '<\/script>';
-        widget_preview += '<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"><\/script>'+new_line;
-    } else if(translation_method == 'on_fly' || translation_method == 'redirect' || translation_method == 'onfly') {
+    if(translation_method == 'on_fly' || translation_method == 'redirect' || translation_method == 'onfly') {
         // Adding flags
-        if(widget_look == 'flags' || widget_look == 'flags_dropdown' /* jQuery('#show_flags:checked').length */) {
-            //console.log('adding flags');
+        if(widget_look == 'flags' || widget_look == 'flags_dropdown') {
             jQuery.each(language_codes, function(i, val) {
                 lang = language_codes[i];
                 if(jQuery('#fincl_langs'+lang+':checked').length) {
@@ -318,9 +295,8 @@ function RefreshDoWidgetCode() {
         }
 
         // Adding dropdown
-        if(widget_look == 'dropdown' || widget_look == 'flags_dropdown' /* jQuery('#show_dropdown:checked').length */) {
-            //console.log('adding dropdown');
-            if(/* jQuery('#show_flags:checked').length*/ (widget_look == 'flags' || widget_look == 'flags_dropdown') && jQuery('#add_new_line:checked').length)
+        if(widget_look == 'dropdown' || widget_look == 'flags_dropdown') {
+            if((widget_look == 'flags' || widget_look == 'flags_dropdown') && jQuery('#add_new_line:checked').length)
                 widget_preview += '<br />';
             else
                 widget_preview += ' ';
@@ -338,8 +314,6 @@ function RefreshDoWidgetCode() {
 
         // Adding onfly html and css
         if(translation_method == 'onfly') {
-            //console.log('adding onfly html, css and javascript');
-
             widget_code += '<style type="text/css">'+new_line;
             widget_code += '<!--'+new_line;
             widget_code += "#goog-gt-tt {display:none !important;}"+new_line;
@@ -354,8 +328,6 @@ function RefreshDoWidgetCode() {
             widget_code += 'function googleTranslateElementInit2() {new google.translate.TranslateElement({pageLanguage: \'';
             widget_code += default_language;
             widget_code += '\',autoDisplay: false';
-            //if(analytics)
-            //  widget_code += ",gaTrack: (typeof ga!='undefined'),gaId: (typeof ga!='undefined' ? ga.getAll()[0].get('trackingId') : '')";
             widget_code += "}, 'google_translate_element2');}"+new_line;
             widget_code += '<\/script>';
             widget_code += '<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"><\/script>'+new_line;
@@ -368,7 +340,6 @@ function RefreshDoWidgetCode() {
             widget_preview += '<style type="text/css">'+new_line;
             widget_preview += '.gglobe {background-image:url($wp_plugin_url/gtglobe.svg);opacity:0.8;border-radius:50%;height:40px;width:40px;cursor:pointer;display:block;-moz-transition: all 0.3s;-webkit-transition: all 0.3s;transition: all 0.3s;}'+new_line;
             widget_preview += '.gglobe:hover {opacity:1;-moz-transform: scale(1.2);-webkit-transform: scale(1.2);transform: scale(1.2);}'+new_line;
-            //widget_preview += '.gsatelites {position:relative;}'+new_line;
             widget_preview += '.gsatelite {background-color:#777777;opacity:0.95;border-radius:50%;height:24px;width:24px;cursor:pointer;position:absolute;z-index:100000;display:none;-moz-transition: all 0.3s;-webkit-transition: all 0.3s;transition: all 0.3s;}'+new_line;
             widget_preview += '.gsatelite:hover {opacity:1;-moz-transform: scale(1.3);-webkit-transform: scale(1.3);transform: scale(1.3);}'+new_line;
             widget_preview += '</style>'+new_line+new_line;
@@ -407,7 +378,7 @@ function RefreshDoWidgetCode() {
             x = centerPosition.left + Math.cos(angle) * r;
             y = centerPosition.top + Math.sin(angle) * r;
 
-            var positionGSatelites = $('.gsatelites').offset(),
+            var positionGSatelites = ($('.gsatelites').parent().css('position') == 'fixed' ? $('.gsatelites').parent().position() : $('.gsatelites').offset()),
                 vpHeight = $(window).height(),
                 vpWidth = $(window).width(),
                 tpViz = positionGSatelites.top + y >= 0 && positionGSatelites.top + y < vpHeight,
@@ -492,8 +463,9 @@ function hideGSatelites($) {
 
             // Adding slider javascript
             widget_preview += '<script type="text/javascript">'+new_line;
-            widget_preview += "jQuery('.switcher .selected').click(function() {if(!(jQuery('.switcher .option').is(':visible'))) {jQuery('.switcher .option').stop(true,true).delay(50).slideDown(800);}});"+new_line;
-            widget_preview += "jQuery('body').not('.switcher .selected').mousedown(function() {if(jQuery('.switcher .option').is(':visible')) {jQuery('.switcher .option').stop(true,true).delay(300).slideUp(800);}});"+new_line;
+            widget_preview += "jQuery('.switcher .selected').click(function() {if(!(jQuery('.switcher .option').is(':visible'))) {jQuery('.switcher .option').stop(true,true).delay(50).slideDown(500);jQuery('.switcher .selected a').toggleClass('open')}});"+new_line;
+            widget_preview += "jQuery('.switcher .option').bind('mousewheel', function(e) {var options = jQuery('.switcher .option');if(options.is(':visible'))options.scrollTop(options.scrollTop() - e.originalEvent.wheelDelta);return false;});"+new_line;
+            widget_preview += "jQuery('body').not('.switcher .selected').mousedown(function() {if(jQuery('.switcher .option').is(':visible')) {jQuery('.switcher .option').stop(true,true).delay(50).slideUp(500);jQuery('.switcher .selected a').toggleClass('open')}});"+new_line;
             widget_preview += '<\/script>'+new_line;
 
             // Adding slider css
@@ -505,6 +477,7 @@ function hideGSatelites($) {
             widget_preview += '.switcher a span.gflag {margin-right:3px;padding:0;display:block;float:left;}'+new_line;
             widget_preview += '.switcher .selected {background:#FFFFFF url($wp_plugin_url/switcher.png) repeat-x;position:relative;z-index:9999;}'+new_line;
             widget_preview += '.switcher .selected a {border:1px solid #CCCCCC;background:url($wp_plugin_url/arrow_down.png) 146px center no-repeat;color:#666666;padding:3px 5px;width:151px;}'+new_line;
+            widget_preview += '.switcher .selected a.open {background-image:url($wp_plugin_url/arrow_up.png)}'+new_line;
             widget_preview += '.switcher .selected a:hover {background:#F0F0F0 url($wp_plugin_url/arrow_down.png) 146px center no-repeat;}'+new_line;
             widget_preview += '.switcher .option {position:relative;z-index:9998;border-left:1px solid #CCCCCC;border-right:1px solid #CCCCCC;border-bottom:1px solid #CCCCCC;background-color:#EEEEEE;display:none;width:161px;max-height:198px;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;overflow-y:auto;overflow-x:hidden;}'+new_line;
             widget_preview += '.switcher .option a {color:#000;padding:3px 5px;}'+new_line;
@@ -519,53 +492,38 @@ function hideGSatelites($) {
         }
 
         // Adding javascript
-        //console.log('adding doGTranslate javascript');
-
         widget_code += new_line+new_line;
         widget_code += '<script type="text/javascript">'+new_line;
         if(pro_version && translation_method == 'redirect' && new_window) {
             widget_code += "function openTab(url) {var form=document.createElement('form');form.method='post';form.action=url;form.target='_blank';document.body.appendChild(form);form.submit();}"+new_line;
             if(analytics)
-                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];if(typeof _gaq!='undefined'){_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);}else {if(typeof ga!='undefined')ga('send', 'event', 'GTranslate', lang, location.pathname+location.search);}var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='"+default_language+"';if(lang == '"+default_language+"')openTab(location.protocol+'//'+location.host+location.pathname.replace('/'+plang+'/', '/')+location.search);else openTab(location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang+'/', '/')+location.search);}"+new_line;
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];if(typeof _gaq!='undefined'){_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);}else {if(typeof ga!='undefined')ga('send', 'event', 'GTranslate', lang, location.pathname+location.search);}var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='"+default_language+"';if(lang == '"+default_language+"')openTab(location.protocol+'//'+location.host+gt_request_uri);else openTab(location.protocol+'//'+location.host+'/'+lang+gt_request_uri);}"+new_line;
             else
-                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='"+default_language+"';if(lang == '"+default_language+"')openTab(location.protocol+'//'+location.host+location.pathname.replace('/'+plang+'/', '/')+location.search);else openTab(location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang+'/', '/')+location.search);}"+new_line;
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='"+default_language+"';if(lang == '"+default_language+"')openTab(location.protocol+'//'+location.host+gt_request_uri);else openTab(location.protocol+'//'+location.host+'/'+lang+gt_request_uri);}"+new_line;
         } else if(pro_version && translation_method == 'redirect') {
             if(analytics)
-                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];if(typeof _gaq!='undefined'){_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);}else {if(typeof ga!='undefined')ga('send', 'event', 'GTranslate', lang, location.pathname+location.search);}var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='"+default_language+"';if(lang == '"+default_language+"')location.href=location.protocol+'//'+location.host+location.pathname.replace('/'+plang+'/', '/')+location.search;else location.href=location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang+'/', '/')+location.search;}"+new_line;
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];if(typeof _gaq!='undefined'){_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);}else {if(typeof ga!='undefined')ga('send', 'event', 'GTranslate', lang, location.pathname+location.search);}var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='"+default_language+"';if(lang == '"+default_language+"')location.href=location.protocol+'//'+location.host+gt_request_uri;else location.href=location.protocol+'//'+location.host+'/'+lang+gt_request_uri;}"+new_line;
             else
-                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='"+default_language+"';if(lang == '"+default_language+"')location.href=location.protocol+'//'+location.host+location.pathname.replace('/'+plang+'/', '/')+location.search;else location.href=location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang+'/', '/')+location.search;}"+new_line;
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='"+default_language+"';if(lang == '"+default_language+"')location.href=location.protocol+'//'+location.host+gt_request_uri;else location.href=location.protocol+'//'+location.host+'/'+lang+gt_request_uri;}"+new_line;
         } else if(enterprise_version && translation_method == 'redirect' && new_window) {
             widget_code += "function openTab(url) {var form=document.createElement('form');form.method='post';form.action=url;form.target='_blank';document.body.appendChild(form);form.submit();}"+new_line;
             if(analytics)
-                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];if(typeof _gaq!='undefined'){_gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname+location.pathname+location.search]);}else {if(typeof ga!='undefined')ga('send', 'event', 'GTranslate', lang, location.hostname+location.pathname+location.search);}var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='"+default_language+"';openTab(location.protocol+'//'+(lang == '"+default_language+"' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\.'), '')+location.pathname+location.search);}"+new_line;
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];if(typeof _gaq!='undefined'){_gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname+location.pathname+location.search]);}else {if(typeof ga!='undefined')ga('send', 'event', 'GTranslate', lang, location.hostname+location.pathname+location.search);}var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='"+default_language+"';openTab(location.protocol+'//'+(lang == '"+default_language+"' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\.'), '')+gt_request_uri);}"+new_line;
             else
-                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='"+default_language+"';openTab(location.protocol+'//'+(lang == '"+default_language+"' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\.'), '')+location.pathname+location.search);}"+new_line;
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='"+default_language+"';openTab(location.protocol+'//'+(lang == '"+default_language+"' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\.'), '')+gt_request_uri);}"+new_line;
         } else if(enterprise_version && translation_method == 'redirect') {
             if(analytics)
-                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];if(typeof _gaq!='undefined'){_gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname+location.pathname+location.search]);}else {if(typeof ga!='undefined')ga('send', 'event', 'GTranslate', lang, location.hostname+location.pathname+location.search);}var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='"+default_language+"';location.href=location.protocol+'//'+(lang == '"+default_language+"' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\.'), '')+location.pathname+location.search;}"+new_line;
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];if(typeof _gaq!='undefined'){_gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname+location.pathname+location.search]);}else {if(typeof ga!='undefined')ga('send', 'event', 'GTranslate', lang, location.hostname+location.pathname+location.search);}var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='"+default_language+"';location.href=location.protocol+'//'+(lang == '"+default_language+"' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\.'), '')+gt_request_uri;}"+new_line;
             else
-                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='"+default_language+"';location.href=location.protocol+'//'+(lang == '"+default_language+"' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\.'), '')+location.pathname+location.search;}"+new_line;
-        } else if(translation_method == 'redirect' && new_window) {
-            widget_code += 'if(top.location!=self.location)top.location=self.location;'+new_line;
-            widget_code += "window['_tipoff']=function(){};window['_tipon']=function(a){};"+new_line;
-            if(analytics)
-                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;if(location.hostname!='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')return;var lang=lang_pair.split('|')[1];if(typeof _gaq!='undefined'){_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);}else {if(typeof ga!='undefined')ga('send', 'event', 'GTranslate', lang, location.pathname+location.search);}if(location.hostname=='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')openTab(unescape(gfg('u')));else if(location.hostname!='translate.googleusercontent.com' && lang_pair!='"+default_language+"|"+default_language+"')openTab('//translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href));else openTab('//translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u')));}"+new_line;
-            else
-                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(location.hostname!='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')return;else if(location.hostname=='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')openTab(unescape(gfg('u')));else if(location.hostname!='translate.googleusercontent.com' && lang_pair!='"+default_language+"|"+default_language+"')openTab('//translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href));else openTab('//translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u')));}"+new_line;
-            widget_code += 'function gfg(name) {name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var regexS="[\\?&]"+name+"=([^&#]*)";var regex=new RegExp(regexS);var results=regex.exec(location.href);if(results==null)return "";return results[1];}'+new_line;
-            widget_code += "function openTab(url) {var form=document.createElement('form');form.method='post';form.action=url;form.target='_blank';document.body.appendChild(form);form.submit();}"+new_line;
-        } else if(translation_method == 'redirect') {
-            widget_code += 'if(top.location!=self.location)top.location=self.location;'+new_line;
-            widget_code += "window['_tipoff']=function(){};window['_tipon']=function(a){};"+new_line;
-            if(analytics)
-                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;if(location.hostname!='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')return;var lang=lang_pair.split('|')[1];if(typeof _gaq!='undefined'){_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);}else {if(typeof ga!='undefined')ga('send', 'event', 'GTranslate', lang, location.pathname+location.search);}if(location.hostname=='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')location.href=unescape(gfg('u'));else if(location.hostname!='translate.googleusercontent.com' && lang_pair!='"+default_language+"|"+default_language+"')location.href='//translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);else location.href='//translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u'));}"+new_line;
-            else
-                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(location.hostname!='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')return;else if(location.hostname=='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')location.href=unescape(gfg('u'));else if(location.hostname!='translate.googleusercontent.com' && lang_pair!='"+default_language+"|"+default_language+"')location.href='//translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);else location.href='//translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u'));}"+new_line;
-            widget_code += 'function gfg(name) {name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var regexS="[\\?&]"+name+"=([^&#]*)";var regex=new RegExp(regexS);var results=regex.exec(location.href);if(results==null)return "";return results[1];}'+new_line;
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='"+default_language+"';location.href=location.protocol+'//'+(lang == '"+default_language+"' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\.'), '')+gt_request_uri;}"+new_line;
         } else if(translation_method == 'onfly') {
-            widget_code += "function GTranslateFireEvent(element,event){try{if(document.createEventObject){var evt=document.createEventObject();element.fireEvent('on'+event,evt)}else{var evt=document.createEvent('HTMLEvents');evt.initEvent(event,true,true);element.dispatchEvent(evt)}}catch(e){}}function doGTranslate(lang_pair){if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var teCombo;var sel=document.getElementsByTagName('select');for(var i=0;i<sel.length;i++)if(sel[i].className=='goog-te-combo')teCombo=sel[i];if(document.getElementById('google_translate_element2')==null||document.getElementById('google_translate_element2').innerHTML.length==0||teCombo.length==0||teCombo.innerHTML.length==0){setTimeout(function(){doGTranslate(lang_pair)},500)}else{teCombo.value=lang;GTranslateFireEvent(teCombo,'change');GTranslateFireEvent(teCombo,'change')}}"+new_line;
+            widget_code += "function GTranslateGetCurrentLang() {var keyValue = document.cookie.match('(^|;) ?googtrans=([^;]*)(;|$)');return keyValue ? keyValue[2].split('/')[2] : null;}"+new_line;
+            widget_code += "function GTranslateFireEvent(element,event){try{if(document.createEventObject){var evt=document.createEventObject();element.fireEvent('on'+event,evt)}else{var evt=document.createEvent('HTMLEvents');evt.initEvent(event,true,true);element.dispatchEvent(evt)}}catch(e){}}"+new_line;
+            if(analytics)
+                widget_code += "function doGTranslate(lang_pair){if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];if(GTranslateGetCurrentLang() == null && lang == lang_pair.split('|')[0])return;if(typeof ga!='undefined'){ga('send', 'event', 'GTranslate', lang, location.hostname+location.pathname+location.search);}else{if(typeof _gaq!='undefined')_gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname+location.pathname+location.search]);}var teCombo;var sel=document.getElementsByTagName('select');for(var i=0;i<sel.length;i++)if(sel[i].className=='goog-te-combo')teCombo=sel[i];if(document.getElementById('google_translate_element2')==null||document.getElementById('google_translate_element2').innerHTML.length==0||teCombo.length==0||teCombo.innerHTML.length==0){setTimeout(function(){doGTranslate(lang_pair)},500)}else{teCombo.value=lang;GTranslateFireEvent(teCombo,'change');GTranslateFireEvent(teCombo,'change')}}"+new_line;
+            else
+                widget_code += "function doGTranslate(lang_pair){if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];if(GTranslateGetCurrentLang() == null && lang == lang_pair.split('|')[0])return;var teCombo;var sel=document.getElementsByTagName('select');for(var i=0;i<sel.length;i++)if(sel[i].className=='goog-te-combo')teCombo=sel[i];if(document.getElementById('google_translate_element2')==null||document.getElementById('google_translate_element2').innerHTML.length==0||teCombo.length==0||teCombo.innerHTML.length==0){setTimeout(function(){doGTranslate(lang_pair)},500)}else{teCombo.value=lang;GTranslateFireEvent(teCombo,'change');GTranslateFireEvent(teCombo,'change')}}"+new_line;
             if(widget_look == 'dropdown_with_flags') {
-                widget_code += "function GTranslateGetCurrentLang() {var keyValue = document.cookie.match('(^|;) ?googtrans=([^;]*)(;|$)');return keyValue ? keyValue[2].split('/')[2] : null;}"+new_line;
                 widget_code += "if(GTranslateGetCurrentLang() != null)jQuery(document).ready(function() {jQuery('div.switcher div.selected a').html(jQuery('div.switcher div.option').find('span.gflag img[alt=\"'+GTranslateGetCurrentLang()+'\"]').parent().parent().html());});"+new_line;
             }
         }
@@ -585,7 +543,6 @@ function hideGSatelites($) {
 function ShowWidgetPreview(widget_preview) {
     widget_preview = widget_preview.replace(/javascript:doGTranslate/g, 'javascript:void')
     widget_preview = widget_preview.replace('onchange="doGTranslate(this);"', '');
-    widget_preview = widget_preview.replace('if(jQuery.cookie', 'if(false && jQuery.cookie');
 
     jQuery('head').append( jQuery('<link rel="stylesheet" type="text/css" />').attr('href', '$wp_plugin_url/gtranslate-style'+jQuery('#flag_size').val()+'.css') );
     jQuery('#widget_preview').html(widget_preview);
@@ -593,19 +550,21 @@ function ShowWidgetPreview(widget_preview) {
 
 jQuery('#pro_version').attr('checked', '$pro_version'.length > 0);
 jQuery('#enterprise_version').attr('checked', '$enterprise_version'.length > 0);
+jQuery('#url_translation').attr('checked', '$url_translation'.length > 0);
 jQuery('#new_window').attr('checked', '$new_window'.length > 0);
-jQuery('#show_in_primary_menu').attr('checked', '$show_in_primary_menu'.length > 0);
+jQuery('#show_in_menu').val('$show_in_menu');
+jQuery('#floating_language_selector').val('$floating_language_selector');
+jQuery('#native_language_names').attr('checked', '$native_language_names'.length > 0);
 jQuery('#analytics').attr('checked', '$analytics'.length > 0);
-jQuery('#load_jquery').attr('checked', '$load_jquery'.length > 0);
 jQuery('#add_new_line').attr('checked', '$add_new_line'.length > 0);
-
 jQuery('#default_language').val('$default_language');
-//jQuery('#translation_method').val('$translation_method');
 jQuery('#widget_look').val('$widget_look');
 jQuery('#flag_size').val('$flag_size');
 
-if(jQuery('#pro_version:checked').length || jQuery('#enterprise_version:checked').length)
+if(jQuery('#pro_version:checked').length || jQuery('#enterprise_version:checked').length) {
     jQuery('#new_window_option').show();
+    jQuery('#url_translation_option').show();
+}
 
 if('$widget_look' == 'dropdown' || '$widget_look' == 'flags_dropdown' || '$widget_look' == 'globe') {
     jQuery('#dropdown_languages_option').show();
@@ -645,6 +604,11 @@ if(jQuery('#widget_code').val() == '')
 else
     ShowWidgetPreview(jQuery('#widget_code').val());
 
+if(jQuery('#native_language_names:checked').length) {
+    jQuery('.en_names').hide();
+    jQuery('.native_names').show();
+}
+
 jQuery(function(){
     jQuery(".connectedSortable1").sortable({connectWith: ".connectedSortable1"}).disableSelection();
     jQuery(".connectedSortable2").sortable({connectWith: ".connectedSortable2"}).disableSelection();
@@ -683,7 +647,7 @@ foreach($alt_flags as $flag)
     $script .= "jQuery('#alt_$flag').attr('checked', true);\n";
 ?>
 
-        <form id="gtranslate" name="form1" method="post" action="<?php echo admin_url('options-general.php?page=gtranslate_options'); ?>">
+        <form id="gtranslate" name="form1" method="post" class="notranslate" action="<?php echo admin_url('options-general.php?page=gtranslate_options'); ?>">
 
         <div class="postbox-container og_left_col">
 
@@ -692,16 +656,6 @@ foreach($alt_flags as $flag)
                 <h3 id="settings"><?php _e('Widget options', 'gtranslate'); ?></h3>
                 <div class="inside">
                     <table style="width:100%;" cellpadding="4">
-                    <!--tr>
-                        <td class="option_name">Translation method:</td>
-                        <td>
-                            <select id="translation_method" name="translation_method" onChange="RefreshDoWidgetCode()">
-                                <option value="google_default">Google Default</option>
-                                <option value="redirect">Redirect</option>
-                                <option value="onfly">On Fly</option>
-                            </select>
-                        </td>
-                    </tr-->
                     <tr>
                         <td class="option_name"><?php _e('Widget look', 'gtranslate'); ?>:</td>
                         <td>
@@ -830,26 +784,49 @@ foreach($alt_flags as $flag)
                         <td><input id="analytics" name="analytics" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
                     </tr>
                     <tr>
-                        <td class="option_name">* <?php _e('Sub-directory URL structure', 'gtranslate'); ?>:<br><small>http://example.com/<b>ru</b>/</small></td>
-                        <td><input id="pro_version" name="pro_version" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/> <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank">* <?php _e('paid plans only', 'gtranslate'); ?></a></td>
+                        <td class="option_name">* <?php _e('Sub-directory URL structure', 'gtranslate'); ?>:<br><code><small>http://example.com/<b>ru</b>/</small></code></td>
+                        <td><input id="pro_version" name="pro_version" value="1" type="checkbox" onclick="if(jQuery('#pro_version').is(':checked') && jQuery('#enterprise_version').is(':checked'))jQuery('#enterprise_version').prop('checked', false);RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/> <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank">* <?php _e('paid plans only', 'gtranslate'); ?></a></td>
                     </tr>
                     <tr>
-                        <td class="option_name">* <?php _e('Sub-domain URL structure', 'gtranslate'); ?>:<br><small>http://<b>es</b>.example.com/</small></td>
-                        <td><input id="enterprise_version" name="enterprise_version" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/> <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank">* <?php _e('paid plans only', 'gtranslate'); ?></a></td>
+                        <td class="option_name">* <?php _e('Sub-domain URL structure', 'gtranslate'); ?>:<br><code><small>http://<b>es</b>.example.com/</small></code></td>
+                        <td><input id="enterprise_version" name="enterprise_version" value="1" type="checkbox" onclick="if(jQuery('#pro_version').is(':checked') && jQuery('#enterprise_version').is(':checked'))jQuery('#pro_version').prop('checked', false);RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/> <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank">* <?php _e('paid plans only', 'gtranslate'); ?></a></td>
+                    </tr>
+                    <tr id="url_translation_option" style="display:none;">
+                        <td class="option_name"><?php _e('Enable URL Translation', 'gtranslate'); ?>:</td>
+                        <td><input id="url_translation" name="url_translation" value="1" type="checkbox"/></td>
                     </tr>
                     <tr id="new_window_option" style="display:none;">
                         <td class="option_name"><?php _e('Open in new window', 'gtranslate'); ?>:</td>
                         <td><input id="new_window" name="new_window" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
                     </tr>
                     <tr>
-                        <td class="option_name"><?php _e('Show in primary menu', 'gtranslate'); ?>:</td>
-                        <td><input id="show_in_primary_menu" name="show_in_primary_menu" value="1" type="checkbox"/></td>
+                        <td class="option_name"><?php _e('Show in menu', 'gtranslate'); ?>:</td>
+                        <td>
+                            <select id="show_in_menu" name="show_in_menu">
+                                <option value="" selected> - <?php _e('None', 'gtranslate'); ?> - </option>
+                                <?php $menus = get_registered_nav_menus(); ?>
+                                <?php foreach($menus as $location => $description): ?>
+                                <option value="<?php echo $location; ?>"><?php echo $description; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
                     </tr>
-
-                    <!--tr>
-                        <td class="option_name">Show flags:</td>
-                        <td><input id="show_flags" name="show_flags" value="1" type="checkbox" checked="checked" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
-                    </tr-->
+                    <tr id="floating_option">
+                        <td class="option_name"><?php _e('Show floating language selector', 'gtranslate'); ?>:</td>
+                        <td>
+                            <select id="floating_language_selector" name="floating_language_selector">
+                                <option value="no"><?php _e('No', 'gtranslate'); ?></option>
+                                <option value="top_left"><?php _e('Top left', 'gtranslate'); ?></option>
+                                <option value="top_right"><?php _e('Top right', 'gtranslate'); ?></option>
+                                <option value="bottom_left"><?php _e('Bottom left', 'gtranslate'); ?></option>
+                                <option value="bottom_right"><?php _e('Bottom right', 'gtranslate'); ?></option>
+                            </select>
+                        </td>
+                    </tr>
+                        <td class="option_name"><?php _e('Show native language names', 'gtranslate'); ?>:</td>
+                        <td><input id="native_language_names" name="native_language_names" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
+                    <tr>
+                    </tr>
                     <tr id="flag_size_option">
                         <td class="option_name"><?php _e('Flag size', 'gtranslate'); ?>:</td>
                         <td>
@@ -869,7 +846,7 @@ foreach($alt_flags as $flag)
                         <ul style="list-style-type:none;width:25%;float:left;" class="connectedSortable1">
                             <?php for($j = $i * 15; $j < 15 * ($i+1); $j++): ?>
                             <?php if(isset($gt_lang_codes[$j])): ?>
-                            <li><input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langs<?php echo $gt_lang_codes[$j]; ?>" name="fincl_langs[]" value="<?php echo $gt_lang_codes[$j]; ?>"><label for="fincl_langs<?php echo $gt_lang_codes[$j]; ?>"><?php _e($gt_lang_array[$gt_lang_codes[$j]], 'gtranslate'); ?></label></li>
+                            <li><input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langs<?php echo $gt_lang_codes[$j]; ?>" name="fincl_langs[]" value="<?php echo $gt_lang_codes[$j]; ?>"><label for="fincl_langs<?php echo $gt_lang_codes[$j]; ?>"><span class="en_names"><?php _e($gt_lang_array[$gt_lang_codes[$j]], 'gtranslate'); ?></span><span class="native_names" style="display:none;"><?php echo $native_names_map[$gt_lang_codes[$j]]; ?></span></label></li>
                             <?php endif; ?>
                             <?php endfor; ?>
                         </ul>
@@ -888,10 +865,6 @@ foreach($alt_flags as $flag)
                         <td class="option_name"><?php _e('Line break after flags', 'gtranslate'); ?>:</td>
                         <td><input id="add_new_line" name="add_new_line" value="1" type="checkbox" checked="checked" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
                     </tr>
-                    <!--tr>
-                        <td class="option_name">Show dropdown:</td>
-                        <td><input id="show_dropdown" name="show_dropdown" value="1" type="checkbox" checked="checked" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
-                    </tr-->
                     <tr id="dropdown_languages_option" style="display:none;">
                         <td class="option_name" colspan="2"><?php _e('Languages', 'gtranslate'); ?>: <a onclick="jQuery('.connectedSortable2 input').attr('checked', true);RefreshDoWidgetCode()" style="cursor:pointer;text-decoration:underline;"><?php _e('Check All', 'gtranslate'); ?></a> | <a onclick="jQuery('.connectedSortable2 input').attr('checked', false);RefreshDoWidgetCode()" style="cursor:pointer;text-decoration:underline;"><?php _e('Uncheck All', 'gtranslate'); ?></a><br /><br />
                         <div>
@@ -900,7 +873,7 @@ foreach($alt_flags as $flag)
                         <ul style="list-style-type:none;width:25%;float:left;" class="connectedSortable2">
                             <?php for($j = $i * 26; $j < 26 * ($i+1); $j++): ?>
                             <?php if(isset($gt_lang_codes[$j])): ?>
-                            <li><input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langs<?php echo $gt_lang_codes[$j]; ?>" name="incl_langs[]" value="<?php echo $gt_lang_codes[$j]; ?>"><label for="incl_langs<?php echo $gt_lang_codes[$j]; ?>"><?php _e($gt_lang_array[$gt_lang_codes[$j]], 'gtranslate'); ?></label></li>
+                            <li><input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langs<?php echo $gt_lang_codes[$j]; ?>" name="incl_langs[]" value="<?php echo $gt_lang_codes[$j]; ?>"><label for="incl_langs<?php echo $gt_lang_codes[$j]; ?>"><span class="en_names"><?php _e($gt_lang_array[$gt_lang_codes[$j]], 'gtranslate'); ?></span><span class="native_names" style="display:none;"><?php echo $native_names_map[$gt_lang_codes[$j]]; ?></span></label></li>
                             <?php endif; ?>
                             <?php endfor; ?>
                         </ul>
@@ -917,9 +890,10 @@ foreach($alt_flags as $flag)
             <div class="postbox">
                 <h3 id="settings"><?php _e('Widget code', 'gtranslate'); ?></h3>
                 <div class="inside">
-                    <span style="color:red;"><?php _e('DO NOT COPY THIS INTO YOUR POSTS OR PAGES! Use [GTranslate] shortcode inside the post/page <br />or add a GTranslate widget into your sidebar from Appearance -> Widgets instead.', 'gtranslate'); ?></span><br /><br />
                     <?php _e('You can edit this if you wish', 'gtranslate'); ?>:<br />
-                    <textarea id="widget_code" name="widget_code" onchange="ShowWidgetPreview(this.value)" style="font-family:Monospace;font-size:11px;height:150px;width:565px;"><?php echo $widget_code; ?></textarea>
+                    <textarea id="widget_code" name="widget_code" onchange="ShowWidgetPreview(this.value)" style="font-family:Monospace;font-size:11px;height:150px;width:565px;"><?php echo $widget_code; ?></textarea><br />
+                    <span style="color:red;"><?php _e('DO NOT COPY THIS INTO YOUR POSTS OR PAGES! Use [GTranslate] shortcode inside the post/page <br />or add a GTranslate widget into your sidebar from Appearance -> Widgets instead.', 'gtranslate'); ?></span><br /><br />
+                    <?php _e('You can also use <code>&lt;?php echo do_shortcode(\'[gtranslate]\'); ?&gt;</code> in your template header/footer files.', 'gtranslate'); ?>
                 </div>
             </div>
         </div>
@@ -945,51 +919,52 @@ foreach($alt_flags as $flag)
 
             <div id="poststuff">
                 <div class="postbox">
+                    <h3 id="settings"><?php _e('Paid features', 'gtranslate'); ?></h3>
+                    <div class="inside">
+                        <p><?php _e('Prices starting from <b>$1.99/month</b>!', 'gtranslate'); ?></p>
+                        <ul style="list-style-type:square;padding-left:20px;">
+                            <li style="margin:0;"><?php _e('Enable search engine indexing', 'gtranslate'); ?></li>
+                            <li style="margin:0;"><?php _e('Search engine friendly (SEF) URLs', 'gtranslate'); ?></li>
+                            <li style="margin:0;"><?php _e('Increase traffic and AdSense revenue', 'gtranslate'); ?></li>
+                            <li style="margin:0;"><?php _e('Meta data translation', 'gtranslate'); ?></li>
+                            <li style="margin:0;"><?php _e('Edit translations manually', 'gtranslate'); ?></li>
+                            <li style="margin:0;"><?php _e('URL translation', 'gtranslate'); ?></li>
+                            <li style="margin:0;"><?php _e('Language hosting', 'gtranslate'); ?></li>
+                            <li style="margin:0;"><?php _e('Seamless updates', 'gtranslate'); ?></li>
+                            <li style="margin:0;"><?php _e('SSL support', 'gtranslate'); ?></li>
+                        </ul>
+
+                        <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank"><?php _e('15 day free trial', 'gtranslate'); ?></a> | <a href="https://gtranslate.io/?xyz=998#faq" target="_blank"><?php _e('FAQ', 'gtranslate'); ?></a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="poststuff">
+                <div class="postbox">
                     <h3 id="settings"><?php _e('Do you like GTranslate?', 'gtranslate'); ?></h3>
                     <div class="inside">
-                        <p><?php _e('Please write a review on', 'gtranslate'); ?> <a href="https://wordpress.org/support/view/plugin-reviews/gtranslate?filter=5">WordPress.org</a>.</p>
+                        <p><?php _e('Please write a review on', 'gtranslate'); ?> <a href="https://wordpress.org/support/plugin/gtranslate/reviews/?filter=5">WordPress.org</a>.</p>
 
                         <div id="fb-root"></div>
                         <script>(function(d, s, id) {
                           var js, fjs = d.getElementsByTagName(s)[0];
                           if (d.getElementById(id)) return;
                           js = d.createElement(s); js.id = id;
-                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=231165476898475";
+                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=231165476898475";
                           fjs.parentNode.insertBefore(js, fjs);
                         }(document, 'script', 'facebook-jssdk'));</script>
 
-                        <div class="fb-page" data-href="https://www.facebook.com/gtranslate" data-width="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/gtranslate"><a href="https://www.facebook.com/gtranslate">GTranslate</a></blockquote></div></div>
-
+                        <div class="fb-page" data-href="https://www.facebook.com/gtranslate" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/gtranslate" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/gtranslate">GTranslate</a></blockquote></div>
                     </div>
                 </div>
             </div>
 
-            <div id="poststuff">
-                <div class="postbox">
-                    <h3 id="settings"><?php _e('Useful info', 'gtranslate'); ?></h3>
-                    <div class="inside">
-                        <?php _e('Upgrade to <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank">GTranslate Enterprise</a> to have the following features', 'gtranslate'); ?>:
-                        <ul style="list-style-type: square;padding-left:40px;">
-                            <li><?php _e('Enable search engine indexing', 'gtranslate'); ?></li>
-                            <li><?php _e('Search engine friendly (SEF) URLs', 'gtranslate'); ?></li>
-                            <li><?php _e('Increase traffic and AdSense revenue', 'gtranslate'); ?></li>
-                            <li><?php _e('Meta data translation', 'gtranslate'); ?></li>
-                            <li><?php _e('Edit translations manually', 'gtranslate'); ?></li>
-                            <li><?php _e('URL translation', 'gtranslate'); ?></li>
-                            <li><?php _e('Language hosting', 'gtranslate'); ?></li>
-                            <li><?php _e('Seamless updates', 'gtranslate'); ?></li>
-                            <li><?php _e('SSL support', 'gtranslate'); ?></li>
-                        </ul>
-
-                        <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank"><?php _e('More Info', 'gtranslate'); ?></a>
-                    </div>
-                </div>
-            </div>
             <div id="poststuff">
                 <div class="postbox">
                     <h3 id="settings"><?php _e('GTranslate Tour Video', 'gtranslate'); ?></h3>
                     <div class="inside">
-                        <iframe src="//player.vimeo.com/video/30132555?title=1&amp;byline=0&amp;portrait=0" width="568" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                        <iframe width="480" height="270" src="https://www.youtube.com/embed/R4mfiKGZh_g" frameborder="0" allowfullscreen></iframe>
+                        <!--iframe src="//player.vimeo.com/video/30132555?title=1&amp;byline=0&amp;portrait=0" width="568" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe-->
                     </div>
                 </div>
             </div>
@@ -997,7 +972,8 @@ foreach($alt_flags as $flag)
                 <div class="postbox">
                     <h3 id="settings"><?php _e('Translation Delivery Network', 'gtranslate'); ?></h3>
                     <div class="inside">
-                        <iframe src="//player.vimeo.com/video/38686858?title=1&amp;byline=0&amp;portrait=0" width="568" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                        <iframe width="480" height="270" src="https://www.youtube.com/embed/1o5PkECOj-U" frameborder="0" allowfullscreen></iframe>
+                        <!--iframe src="//player.vimeo.com/video/38686858?title=1&amp;byline=0&amp;portrait=0" width="568" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe-->
                     </div>
                 </div>
             </div>
@@ -1036,10 +1012,12 @@ foreach($alt_flags as $flag)
 
         $data['pro_version'] = isset($_POST['pro_version']) ? intval($_POST['pro_version']) : '';
         $data['enterprise_version'] = isset($_POST['enterprise_version']) ? intval($_POST['enterprise_version']) : '';
+        $data['url_translation'] = isset($_POST['url_translation']) ? intval($_POST['url_translation']) : '';
         $data['new_window'] = isset($_POST['new_window']) ? intval($_POST['new_window']) : '';
-        $data['show_in_primary_menu'] = isset($_POST['show_in_primary_menu']) ? intval($_POST['show_in_primary_menu']) : '';
+        $data['show_in_menu'] = isset($_POST['show_in_menu']) ? sanitize_text_field($_POST['show_in_menu']) : '';
+        $data['floating_language_selector'] = isset($_POST['floating_language_selector']) ? sanitize_text_field($_POST['floating_language_selector']) : 'no';
+        $data['native_language_names'] = isset($_POST['native_language_names']) ? intval($_POST['native_language_names']) : '';
         $data['analytics'] = isset($_POST['analytics']) ? intval($_POST['analytics']) : '';
-        $data['load_jquery'] = isset($_POST['load_jquery']) ? intval($_POST['load_jquery']) : '';
         $data['add_new_line'] = isset($_POST['add_new_line']) ? intval($_POST['add_new_line']) : '';
         $data['default_language'] = isset($_POST['default_language']) ? sanitize_text_field($_POST['default_language']) : 'en';
         $data['translation_method'] = 'onfly';
@@ -1052,23 +1030,66 @@ foreach($alt_flags as $flag)
         $data['language_codes'] = (isset($_POST['language_codes']) and !empty($_POST['language_codes'])) ? sanitize_text_field($_POST['language_codes']) : 'af,sq,ar,hy,az,eu,be,bg,ca,zh-CN,zh-TW,hr,cs,da,nl,en,et,tl,fi,fr,gl,ka,de,el,ht,iw,hi,hu,is,id,ga,it,ja,ko,lv,lt,mk,ms,mt,no,fa,pl,pt,ro,ru,sr,sk,sl,es,sw,sv,th,tr,uk,ur,vi,cy,yi';
         $data['language_codes2'] = (isset($_POST['language_codes2']) and !empty($_POST['language_codes2'])) ? sanitize_text_field($_POST['language_codes2']) : 'af,sq,am,ar,hy,az,eu,be,bn,bs,bg,ca,ceb,ny,zh-CN,zh-TW,co,hr,cs,da,nl,en,eo,et,tl,fi,fr,fy,gl,ka,de,el,gu,ht,ha,haw,iw,hi,hmn,hu,is,ig,id,ga,it,ja,jw,kn,kk,km,ko,ku,ky,lo,la,lv,lt,lb,mk,mg,ms,ml,mt,mi,mr,mn,my,ne,no,ps,fa,pl,pt,pa,ro,ru,sm,gd,sr,st,sn,sd,si,sk,sl,so,es,su,sw,sv,tg,ta,te,th,tr,uk,ur,uz,vi,cy,xh,yi,yo,zu';
 
-        echo '<p style="color:red;">' . __('Changes Saved') . '</p>';
+        echo '<p style="color:red;">' . __('Changes Saved', 'gtranslate') . '</p>';
         update_option('GTranslate', $data);
+
+        if($data['pro_version']) { // check if rewrite rules are in place
+            $htaccess_file = get_home_path() . '.htaccess';
+            if(is_writeable($htaccess_file)) {
+                $htaccess = file_get_contents($htaccess_file);
+                if(strpos($htaccess, 'gtranslate.php') === false) { // no config rules
+                    $rewrite_rules = file_get_contents(dirname(__FILE__) . '/url_addon/rewrite.txt');
+                    $rewrite_rules = str_replace('GTRANSLATE_PLUGIN_PATH', str_replace(home_url(), '', plugins_url()) . '/gtranslate', $rewrite_rules);
+
+                    $htaccess = $rewrite_rules . "\r\n\r\n" . $htaccess;
+                    if(!empty($htaccess)) { // going to update .htaccess
+                        file_put_contents($htaccess_file, $htaccess);
+                        echo '<p style="color:red;">' . __('.htaccess file updated', 'gtranslate') . '</p>';
+                    }
+                }
+            } else {
+                $rewrite_rules = file_get_contents(dirname(__FILE__) . '/url_addon/rewrite.txt');
+                $rewrite_rules = str_replace('GTRANSLATE_PLUGIN_PATH', str_replace(home_url(), '', plugins_url()) . '/gtranslate', $rewrite_rules);
+
+                echo '<p style="color:red;">' . __('Please add the following rules to the top of your .htaccess file', 'gtranslate') . '</p>';
+                echo '<pre style="background-color:#eaeaea;">' . $rewrite_rules . '</pre>';
+            }
+
+            // update main_lang in config.php
+            $config_file = dirname(__FILE__) . '/url_addon/config.php';
+            if(is_writable($config_file)) {
+                $config = file_get_contents($config_file);
+                $config = preg_replace('/\$main_lang = \'[a-z-]{2,5}\'/i', '$main_lang = \''.$data['default_language'].'\'', $config);
+                file_put_contents($config_file, $config);
+            } else {
+                echo '<p style="color:red;">' . __('Cannot update gtranslate/url_addon/config.php file. Make sure to update it manually and set correct $main_lang.', 'gtranslate') . '</p>';
+            }
+
+        } else { // todo: remove rewrite rules
+            // do nothing
+        }
     }
 
     public static function load_defaults(& $data) {
         $data['pro_version'] = isset($data['pro_version']) ? $data['pro_version'] : '';
         $data['enterprise_version'] = isset($data['enterprise_version']) ? $data['enterprise_version'] : '';
+        $data['url_translation'] = isset($data['url_translation']) ? $data['url_translation'] : '';
         $data['new_window'] = isset($data['new_window']) ? $data['new_window'] : '';
-        $data['show_in_primary_menu'] = isset($data['show_in_primary_menu']) ? $data['show_in_primary_menu'] : '';
+        $data['show_in_menu'] = isset($data['show_in_menu']) ? $data['show_in_menu'] : ((isset($data['show_in_primary_menu']) and $data['show_in_primary_menu'] == 1) ? 'primary' : '');
+        $data['floating_language_selector'] = isset($data['floating_language_selector']) ? $data['floating_language_selector'] : 'no';
+        $data['native_language_names'] = isset($data['native_language_names']) ? $data['native_language_names'] : '';
         $data['analytics'] = isset($data['analytics']) ? $data['analytics'] : '';
-        $data['load_jquery'] = isset($data['load_jquery']) ? $data['load_jquery'] : '1';
         $data['add_new_line'] = isset($data['add_new_line']) ? $data['add_new_line'] : '1';
-        //$data['show_dropdown'] = isset($data['show_dropdown']) ? $data['show_dropdown'] : '1';
-        //$data['show_flags'] = isset($data['show_flags']) ? $data['show_flags'] : '1';
-        $data['default_language'] = isset($data['default_language']) ? $data['default_language'] : 'en';
+
+        if(!isset($data['default_language'])) {
+            $locale_map = array('af'=>'af','am'=>'am','arq'=>'ar','ar'=>'ar','ary'=>'ar','az'=>'az','az_TR'=>'az','azb'=>'az','bel'=>'be','bg_BG'=>'bg','bn_BD'=>'bn','bs_BA'=>'bs','ca'=>'ca','bal'=>'ca','ceb'=>'ceb','co'=>'co','cs_CZ'=>'cs','cy'=>'cy','da_DK'=>'da','de_DE'=>'de','de_CH'=>'de','gsw'=>'de','el'=>'el','en_AU'=>'en','en_CA'=>'en','en_NZ'=>'en','en_ZA'=>'en','en_GB'=>'en','eo'=>'eo','es_AR'=>'es','es_CL'=>'es','es_CO'=>'es','es_GT'=>'es','es_MX'=>'es','es_PE'=>'es','es_PR'=>'es','es_ES'=>'es','es_VE'=>'es','et'=>'et','eu'=>'eu','fa_IR'=>'fa','fa_AF'=>'fa','fi'=>'fi','fr_BE'=>'fr','fr_CA'=>'fr','fr_FR'=>'fr','fy'=>'fy','ga'=>'ga','gd'=>'gd','gl_ES'=>'gl','gu'=>'gu','hau'=>'ha','haw_US'=>'haw','hi_IN'=>'hi','hr'=>'hr','hat'=>'ht','hu_HU'=>'hu','hy'=>'hy','id_ID'=>'id','is_IS'=>'is','it_IT'=>'it','he_IL'=>'iw','ja'=>'ja','jv_ID'=>'jw','ka_GE'=>'ka','kk'=>'kk','km'=>'km','kn'=>'kn','ko_KR'=>'ko','ckb'=>'ku','kir'=>'ky','lb_LU'=>'lb','lo'=>'lo','lt_LT'=>'lt','lv'=>'lv','mg_MG'=>'mg','mri'=>'mi','mk_MK'=>'mk','ml_IN'=>'ml','mn'=>'mn','mr'=>'mr','ms_MY'=>'ms','my_MM'=>'my','ne_NP'=>'ne','nl_NL'=>'nl','nl_BE'=>'nl','nb_NO'=>'no','nn_NO'=>'no','pa_IN'=>'pa','pl_PL'=>'pl','ps'=>'ps','pt_BR'=>'pt','pt_PT'=>'pt','ro_RO'=>'ro','ru_RU'=>'ru','snd'=>'sd','si_LK'=>'si','sk_SK'=>'sk','sl_SI'=>'sl','so_SO'=>'so','sq'=>'sq','sr_RS'=>'sr','su_ID'=>'su','sv_SE'=>'sv','sw'=>'sw','ta_IN'=>'ta','ta_LK'=>'ta','te'=>'te','tg'=>'tg','th'=>'th','tr_TR'=>'tr','uk'=>'uk','ur'=>'ur','uz_UZ'=>'uz','vi'=>'vi','xho'=>'xh','yor'=>'yo','zh_CN'=>'zh-CN','zh_HK'=>'zh-CN','zh_TW'=>'zh-TW');
+            $locale = get_locale();
+            $data['default_language'] = isset($locale_map[$locale]) ? $locale_map[$locale] : 'en';
+        }
+
         $data['translation_method'] = isset($data['translation_method']) ? $data['translation_method'] : 'onfly';
         if($data['translation_method'] == 'on_fly') $data['translation_method'] = 'redirect';
+
         $data['widget_look'] = isset($data['widget_look']) ? $data['widget_look'] : 'flags_dropdown';
         $data['flag_size'] = isset($data['flag_size']) ? $data['flag_size'] : '16';
         $data['widget_code'] = isset($data['widget_code']) ? $data['widget_code'] : '';
@@ -1367,4 +1388,82 @@ class GTranslate_Notices {
         $this->admin_notice($notices);
     }
 
+}
+
+if(is_admin()) {
+    global $pagenow;
+
+    if(!defined('DOING_AJAX') or !DOING_AJAX)
+        new GTranslate_Notices();
+}
+
+$data = get_option('GTranslate');
+GTranslate::load_defaults($data);
+
+if(!empty($data['show_in_menu'])) {
+    add_filter('wp_nav_menu_items', 'gtranslate_menu_item', 10, 2);
+    function gtranslate_menu_item($items, $args) {
+        $data = get_option('GTranslate');
+        GTranslate::load_defaults($data);
+
+        if($args->theme_location == $data['show_in_menu']) {
+            $items .= '<li style="position:relative;" class="menu-item menu-item-gtranslate">';
+            if($data['widget_look'] == 'dropdown_with_flags')
+                $items .= '<div style="position:absolute;">';
+            $items .= GTranslate::get_widget_code(false);
+            if($data['widget_look'] == 'dropdown_with_flags')
+                $items .= '</div>';
+
+            if($data['widget_look'] == 'flags' or $data['widget_look'] == 'flags_dropdown') {
+                // adding css
+                $items .= '<style type="text/css">';
+                $items .= '.menu-item-gtranslate a {display:inline !important;padding:0 !important;margin:0 !important;}';
+                $items .= '</style>';
+            }
+
+            $items .= '</li>';
+        }
+
+        return $items;
+    }
+}
+
+if($data['floating_language_selector'] != 'no' and !is_admin()) {
+    add_action('wp_footer', 'gtranslate_display_floating');
+    function gtranslate_display_floating() {
+        $data = get_option('GTranslate');
+        GTranslate::load_defaults($data);
+
+        if($data['widget_look'] == 'dropdown_with_flags')
+            $vertical_location = '0';
+        else
+            $vertical_location = '5%';
+
+        switch($data['floating_language_selector']) {
+            case 'top_left': $html = '<div style="position:fixed;top:'.$vertical_location.';left:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
+            case 'top_right': $html = '<div style="position:fixed;top:'.$vertical_location.';right:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
+            case 'bottom_left': $html = '<div style="position:fixed;bottom:'.$vertical_location.';left:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
+            case 'bottom_right': $html = '<div style="position:fixed;bottom:'.$vertical_location.';right:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
+            default: $html = ''; break;
+        }
+
+        echo $html;
+    }
+}
+
+if($data['pro_version'] or $data['enterprise_version']) {
+    add_action('wp_head', 'gtranslate_request_uri_var');
+    if(isset($_GET['page']) and $_GET['page'] == 'gtranslate_options')
+        add_action('admin_head', 'gtranslate_request_uri_var');
+
+    function gtranslate_request_uri_var() {
+        echo "<script type='text/javascript'>var gt_request_uri = '".addslashes($_SERVER['REQUEST_URI'])."';</script>";
+    }
+}
+
+if($data['url_translation'] and ($data['pro_version'] or $data['enterprise_version'])) {
+    add_action('wp_head', 'gtranslate_url_translation_meta', 1);
+    function gtranslate_url_translation_meta() {
+        echo '<meta name="uri-translation" content="on" />';
+    }
 }
