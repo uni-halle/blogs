@@ -41,7 +41,6 @@ class CustomSidebars {
 	 */
 	static protected $accessibility_mode = false;
 
-
 	/**
 	 * Returns the singleton instance of the custom sidebars class.
 	 *
@@ -154,8 +153,12 @@ class CustomSidebars {
 				10, 1
 			);
 		}
-	}
 
+		/**
+		* add links on plugin page.
+		*/
+		add_filter( 'plugin_action_links_' . plugin_basename( CSB_PLUGIN ), array( $this, 'add_action_links' ), 10, 4 );
+	}
 
 
 	// =========================================================================
@@ -276,7 +279,7 @@ class CustomSidebars {
 			}
 
 			// List of modifiable sidebars.
-			if ( ! is_array( @$Options['modifiable'] ) ) {
+			if ( ! isset( $Options['modifiable'] ) || ! is_array( $Options['modifiable'] ) ) {
 				// By default we make ALL theme sidebars replaceable:
 				$all = self::get_sidebars( 'theme' );
 				$Options['modifiable'] = array_keys( $all );
@@ -304,7 +307,7 @@ class CustomSidebars {
 				'post_type_pages',
 				'post_type_single',
 				'search',
-				'tags'
+				'tags',
 			);
 
 			foreach ( $keys as $k ) {
@@ -316,20 +319,20 @@ class CustomSidebars {
 
 			// Single/Archive pages - new names
 			$Options['post_type_single'] = self::get_array(
-				@$Options['post_type_single'], // new name
-				@$Options['defaults']          // old name
+				$Options['post_type_single'], // new name
+				$Options['defaults']          // old name
 			);
 			$Options['post_type_archive'] = self::get_array(
-				@$Options['post_type_archive'], // new name
-				@$Options['post_type_pages']    // old name
+				$Options['post_type_archive'], // new name
+				$Options['post_type_pages']    // old name
 			);
 			$Options['category_single'] = self::get_array(
-				@$Options['category_single'], // new name
-				@$Options['category_posts']   // old name
+				$Options['category_single'], // new name
+				$Options['category_posts']   // old name
 			);
 			$Options['category_archive'] = self::get_array(
-				@$Options['category_archive'], // new name
-				@$Options['category_pages']    // old name
+				$Options['category_archive'], // new name
+				$Options['category_pages']    // old name
 			);
 
 			// Remove old item names from the array.
@@ -351,21 +354,22 @@ class CustomSidebars {
 			}
 
 			// Special archive pages
-			$Options['blog'] = self::get_array( @$Options['blog'] );
-			$Options['tags'] = self::get_array( @$Options['tags'] );
-			$Options['authors'] = self::get_array( @$Options['authors'] );
-			$Options['search'] = self::get_array( @$Options['search'] );
-			$Options['date'] = self::get_array( @$Options['date'] );
+			$keys = array( 'blog', 'tags', 'authors', 'search', 'date' );
+			foreach ( $keys as $temporary_key ) {
+				if ( isset( $Options[ $temporary_key ] ) ) {
+					$Options[ $temporary_key ] = self::get_array( $Options[ $temporary_key ] );
+				} else {
+					$Options[ $temporary_key ] = array();
+				}
+			}
 
 			$Options = self::validate_options( $Options );
-
 			if ( $need_update ) {
 				self::set_options( $Options );
 			}
 		}
-
 		if ( ! empty( $key ) ) {
-			return @$Options[ $key ];
+			return isset( $Options[ $key ] )? $Options[ $key ] : null;
 		} else {
 			return $Options;
 		}
@@ -400,12 +404,13 @@ class CustomSidebars {
 			return array();
 		}
 		$valid = array_keys( self::get_sidebars( 'theme' ) );
-		$current = self::get_array( @$data['modifiable'] );
-
+		$current = array();
+		if ( isset( $data['modifiable'] ) ) {
+			$current = self::get_array( $data['modifiable'] );
+		}
 		// Get all the sidebars that are modifiable AND exist.
 		$modifiable = array_intersect( $valid, $current );
 		$data['modifiable'] = $modifiable;
-
 		return $data;
 	}
 
@@ -852,8 +857,8 @@ class CustomSidebars {
 		// Catch any unexpected output via output buffering.
 		ob_start();
 
-		$action = @$_POST['do'];
-		$get_action = @$_GET['do'];
+		$action = isset( $_POST['do'] )? $_POST['do']:null;
+		$get_action = isset( $_GET['do'] )? $_GET['do']:null;
 
 		/**
 		 * Notify all extensions about the ajax call.
@@ -886,11 +891,11 @@ class CustomSidebars {
 			return 0;
 		}
 		if ( function_exists( 'mb_strtolower' ) ) {
-			$a_name = mb_strtolower($a['name']);
-			$b_name = mb_strtolower($b['name']);
+			$a_name = mb_strtolower( $a['name'] );
+			$b_name = mb_strtolower( $b['name'] );
 		} else {
-			$a_name = strtolower($a['name']);
-			$b_name = strtolower($b['name']);
+			$a_name = strtolower( $a['name'] );
+			$b_name = strtolower( $b['name'] );
 		}
 		if ( $a_name == $b_name ) {
 			return 0;
@@ -910,15 +915,38 @@ class CustomSidebars {
 		if ( empty( $available ) ) {
 			return $available;
 		}
-		foreach( $available as $key => $data ) {
-			$available[$key]['cs-key'] = $key;
+		foreach ( $available as $key => $data ) {
+			$available[ $key ]['cs-key'] = $key;
 		}
 		usort( $available, array( __CLASS__, 'sort_sidebars_cmp_function' ) );
 		$sorted = array();
-		foreach( $available as $data ) {
-			$sorted[$data['cs-key']] = $data;
+		foreach ( $available as $data ) {
+			$sorted[ $data['cs-key'] ] = $data;
 		}
 		return $sorted;
 	}
 
+	/**
+	 * Add "support" and (configure) "widgets" on plugin list page
+	 *
+	 * @since 2.1.1.8
+	 *
+	 */
+	public function add_action_links( $actions, $plugin_file, $plugin_data, $context ) {
+		if ( current_user_can( 'edit_theme_options' ) ) {
+			$actions['widgets'] = sprintf(
+				'<a href="%s">%s</a>',
+				esc_url( admin_url( 'widgets.php' ) ),
+				__( 'Widgets', 'custom-sidebars' )
+			);
+		}
+		$url = 'https://wordpress.org/support/plugin/custom-sidebars';
+		
+		$actions['support'] = sprintf(
+			'<a href="%s">%s</a>',
+			esc_url( $url ),
+			__( 'Support', 'custom-sidebars' )
+		);
+		return $actions;
+	}
 };
