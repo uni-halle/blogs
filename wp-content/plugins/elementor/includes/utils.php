@@ -74,13 +74,31 @@ class Utils {
 
 		// Create a UTC+- zone if no timezone string exists
 		if ( empty( $timezone_string ) ) {
-			if ( 0 === $current_offset )
+			if ( 0 === $current_offset ) {
 				$timezone_string = 'UTC+0';
-			elseif ( $current_offset < 0 )
+			} elseif ( $current_offset < 0 ) {
 				$timezone_string = 'UTC' . $current_offset;
-			else $timezone_string = 'UTC+' . $current_offset;
+			} else {
+				$timezone_string = 'UTC+' . $current_offset;
+			}
 		}
 
 		return $timezone_string;
+	}
+
+	public static function do_action_deprecated( $tag, $args, $version, $replacement = false, $message = null ) {
+		if ( function_exists( 'do_action_deprecated' ) ) { /* WP >= 4.6 */
+			do_action_deprecated( $tag, $args, $version, $replacement, $message );
+		} else {
+			do_action_ref_array( $tag, $args );
+		}
+	}
+
+	public static function apply_filters_deprecated( $tag, $args, $version, $replacement = false, $message = null ) {
+		if ( function_exists( 'apply_filters_deprecated' ) ) { /* WP >= 4.6 */
+			return apply_filters_deprecated( $tag, $args, $version, $replacement, $message );
+		} else {
+			return apply_filters_ref_array( $tag, $args );
+		}
 	}
 }

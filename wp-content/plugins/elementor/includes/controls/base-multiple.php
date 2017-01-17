@@ -3,14 +3,20 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+/**
+ * A base control for controls that return more than a single value. Extends `Control_Base`.
+ * Each value of a multiple-value control will be returned as an item in a key => value array
+ *
+ * @since 1.0.0
+ */
 abstract class Control_Base_Multiple extends Control_Base {
 
 	public function get_default_value() {
 		return [];
 	}
 
-	public function get_value( $control, $instance ) {
-		$value = parent::get_value( $control, $instance );
+	public function get_value( $control, $widget ) {
+		$value = parent::get_value( $control, $widget );
 
 		if ( empty( $control['default'] ) )
 			$control['default'] = [];

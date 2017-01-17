@@ -1,4 +1,4 @@
-/*! elementor - v1.0.5 - 18-12-2016 */
+/*! elementor - v1.1.3 - 15-01-2017 */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var ElementsHandler;
 
@@ -117,8 +117,6 @@ module.exports = ElementsHandler;
 
 			addElementsHandlers();
 
-			self.utils.insertYTApi();
-
 			runElementsHandlers();
 		};
 
@@ -221,11 +219,16 @@ module.exports = function( $scope, $ ) {
 },{}],5:[function(require,module,exports){
 module.exports = function( $scope, $ ) {
 	elementorFrontend.utils.waypoint( $scope.find( '.elementor-counter-number' ), function() {
-		var $number = $( this );
+		var $number = $( this ),
+			data = $number.data();
 
-		$number.numerator( {
-			duration: $number.data( 'duration' )
-		} );
+		var decimalDigits = data.toValue.toString().match( /\.(.*)/ );
+
+		if ( decimalDigits ) {
+			data.rounding = decimalDigits[1].length;
+		}
+
+		$number.numerator( data );
 	}, { offset: '90%' } );
 };
 
@@ -576,7 +579,20 @@ var Utils;
 Utils = function( $ ) {
 	var self = this;
 
+	// FIXME: Choose other variable name for this flag
+	var isYTInserted = false;
+
+	var insertYTApi = function() {
+		isYTInserted = true;
+
+		$( 'script:first' ).before(  $( '<script>', { src: 'https://www.youtube.com/iframe_api' } ) );
+	};
+
 	this.onYoutubeApiReady = function( callback ) {
+		if ( ! isYTInserted ) {
+			insertYTApi();
+		}
+
 		if ( window.YT && YT.loaded ) {
 			callback( YT );
 		} else {
@@ -587,10 +603,6 @@ Utils = function( $ ) {
 		}
 	};
 
-	this.insertYTApi = function() {
-		$( 'script:first' ).before(  $( '<script>', { src: 'https://www.youtube.com/iframe_api' } ) );
-	};
-
 	this.waypoint = function( $element, callback, options ) {
 		var correctCallback = function() {
 			var element = this.element || this;
@@ -598,7 +610,7 @@ Utils = function( $ ) {
 			return callback.apply( element, arguments );
 		};
 
-		$element.waypoint( correctCallback, options );
+		$element.elementorWaypoint( correctCallback, options );
 	};
 };
 

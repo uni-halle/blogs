@@ -1,9 +1,9 @@
 === Elementor Page Builder ===
-Contributors: pojo.me, KingYes, ariel.k, jzaltzberg, yehudah, mati1000, pojosh
+Contributors: pojo.me, KingYes, ariel.k, jzaltzberg, mati1000, pojosh, yehudah
 Tags: page builder, editor, elementor, builder, visual editor, front-end editor, design, drag and drop builder, front-end builder, landing page, page builder plugin, site builder, template builder, visual builder, website builder, wysiwyg
 Requires at least: 4.4
 Tested up to: 4.7
-Stable tag: 1.0.5
+Stable tag: 1.1.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -160,6 +160,75 @@ No. Elementor supports WordPress 4.4 or greater, and is compatible with PHP 5.4 
 5. **Responsive Design.** Create custom settings for desktop, tablet & mobile by switching between devices.
 
 == Changelog ==
+
+= 1.1.3 - 15.01.2017 =
+* Tweak! - Embed YouTube API just when is needed
+* Tweak! - Added post revisions support as default to any CPT Elementor is active on
+* Fix! - E-Icons font library correct files
+* Fix! - Prevent click event on parent elements when clicking inner element handle buttons
+* Fix! - Error message for import template
+
+= 1.1.2 - 12.01.2017 =
+* Fix! - Clear browser caching from last new JS files
+
+= 1.1.1 - 11.01.2017 =
+* Fix! - Revision history panel title
+* Fix! - Renamed content tab in Column to style
+* Fix! - Regenerate new Waypoints JS lib
+
+= 1.1.0 - 11.01.2017 =
+* New! - Revision History (Based on WP Revisions)
+* New! - Added Tool for Replace Site URL in Elementor data
+* New! - Hotkey: Ctrl / Cmd + S = Save
+* New! - Hotkey: Ctrl / Cmd + P = Preview Mode
+* New! - Hotkey: Ctrl / Cmd + Shift + L = Open Library Modal
+* New! - Hotkey: Ctrl / Cmd + Shift + H = Go to Revision History
+* New! - Hotkey: Ctrl / Cmd + Shift + M = Mobile Editing Preview
+* New! - Added Background Overlay Settings for Column ([#810](https://github.com/pojome/elementor/issues/810))
+* Tweak! - Enqueue assets only if elementor exists on the page
+* Tweak! - Move all element ID's in editor mode to classes (Start working on [#939](https://github.com/pojome/elementor/issues/939))
+* Fix! - Added missing translation strings for media modal ([#1126](https://github.com/pojome/elementor/issues/1126))
+
+= 1.0.12 - 05.01.2017 =
+* Fix! - Library modal 'Insert' button
+
+= 1.0.11 - 04.01.2017 =
+* Fix! - Some breaks from previous release
+
+= 1.0.10 - 04.01.2017 =
+* New! - Added API docs for developers
+* Tweak! - Changed 'Prevent Scroll' control type to switcher in Map widget
+* Tweak! - Updated Dialog Manager v3.0.2
+* Fix! - Library modal 'Go Pro' button in FireFox
+* Fix! - Bug load elementor in front page in some server configuration
+* Fix! - Ninja Forms widget conflict
+* Deprecated! - `elementor/frontend/enqueue_scripts/after` is no longer available
+* Deprecated! - `elementor/elements/print_template` is replaced by `elementor/element/print_template`
+* Deprecated! - `elementor/element_css/parse_css` is replaced by `elementor/element/parse_css`
+
+= 1.0.9 - 27.12.2016 =
+* Fix! - Elementor library import remote template
+
+= 1.0.8 - 27.12.2016 =
+* Tweak! - Added raw css support for stylesheet class ([#1086](https://github.com/pojome/elementor/issues/1086))
+* Tweak! - Improve memory used in the editor mode ([Topic](https://wordpress.org/support/topic/need-update-folks/))
+* Fix! - Issue with post-css-file in HTTPS ([#1077](https://github.com/pojome/elementor/issues/1077))
+
+= 1.0.7 - 25.12.2016 =
+* Fix! - Validate export import for elementor template
+* Fix! - Excluded `elementor_library` custom post type from the sitemap by Yoast SEO
+* Fix! - Prevent Scroll BUG in Google Map widget
+* Fix! - Added unique name for repeater control
+
+= 1.0.6 - 20.12.2016 =
+* New! - Added social icons for Apple & Spotify
+* New! - Added Thousand Separator control for counter widget
+* Tweak! - Added Filter template types in library backend
+* Tweak! - Updated jQuery Numerator Plugin v0.2.1
+* Fix! - Added support for floating numbers in counter widget
+* Fix! - Removed limit from counter widget
+* Deprecated! - Removed `#elementor-section-wrap` ID from frontend output
+* Deprecated! - Removed `#elementor-inner` ID from frontend output
 
 = 1.0.5 - 18.12.2016 =
 * Tweak! - Added VH unit in min-height control for section

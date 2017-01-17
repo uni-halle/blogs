@@ -28,6 +28,10 @@ class Elements_Manager {
 		if ( 'widget' === $element_data['elType'] ) {
 			$element_type = Plugin::instance()->widgets_manager->get_widget_types( $element_data['widgetType'] );
 
+			if ( ! $element_type ) {
+				return null;
+			}
+
 			$args = $element_type->get_default_args();
 		} else {
 			$element_type = $this->get_element_types( $element_data['elType'] );
@@ -119,8 +123,8 @@ class Elements_Manager {
 			wp_send_json_error( new \WP_Error( 'no_access' ) );
 		}
 
-		if ( isset( $_POST['status'] ) && DB::STATUS_PUBLISH === $_POST['status'] ) {
-			$status = DB::STATUS_PUBLISH;
+		if ( isset( $_POST['status'] ) || in_array( $_POST['status'], [ DB::STATUS_PUBLISH, DB::STATUS_DRAFT, DB::STATUS_AUTOSAVE ] ) ) {
+			$status = $_POST['status'];
 		} else {
 			$status = DB::STATUS_DRAFT;
 		}
@@ -129,7 +133,23 @@ class Elements_Manager {
 
 		Plugin::instance()->db->save_editor( $_POST['post_id'], $posted, $status );
 
-		wp_send_json_success();
+		$return_data = [];
+
+		$latest_revision = Revisions_Manager::get_revisions( $_POST['post_id'], [
+			'posts_per_page' => 1,
+		] );
+
+		$all_revision_ids = Revisions_Manager::get_revisions( $_POST['post_id'], [
+			'posts_per_page' => -1,
+			'fields' => 'ids',
+		], false );
+
+		if ( ! empty( $latest_revision ) ) {
+			$return_data['last_revision'] = $latest_revision[0];
+			$return_data['revisions_ids'] = $all_revision_ids;
+		}
+
+		wp_send_json_success( $return_data );
 	}
 
 	private function _init_elements() {

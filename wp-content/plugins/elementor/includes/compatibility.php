@@ -23,7 +23,7 @@ class Compatibility {
 		}
 
 		// Hack for Ninja Forms
-		if ( class_exists( '\Ninja_Forms' ) ) {
+		if ( class_exists( '\Ninja_Forms' ) && class_exists( '\NF_Display_Render' ) ) {
 			add_action( 'elementor/preview/enqueue_styles', function() {
 				ob_start();
 
@@ -41,6 +41,14 @@ class Compatibility {
 
 			return $post_types;
 		} );
+
+		add_filter( 'wpseo_sitemap_exclude_post_type', function( $retval, $post_type ) {
+			if ( TemplateLibrary\Source_Local::CPT === $post_type ) {
+				$retval = true;
+			}
+
+			return $retval;
+		}, 10, 2 );
 
 		// Disable optimize files in Editor from Autoptimize plugin
 		add_filter( 'autoptimize_filter_noptimize', function( $retval ) {

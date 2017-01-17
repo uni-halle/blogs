@@ -101,12 +101,7 @@ class Post_CSS_File {
 		$this->post_id = $post_id;
 
 		// Check if it's an Elementor post
-		$db = Plugin::instance()->db;
-
-		$data = $db->get_plain_editor( $post_id );
-		$edit_mode = $db->get_edit_mode( $post_id );
-
-		$this->is_built_with_elementor = ( ! empty( $data ) && 'builder' === $edit_mode );
+		$this->is_built_with_elementor = Plugin::instance()->db->is_built_with_elementor( $post_id );
 
 		if ( ! $this->is_built_with_elementor ) {
 			return;
@@ -124,7 +119,6 @@ class Post_CSS_File {
 		$this->parse_elements_css();
 
 		$meta = [
-			'version' => ELEMENTOR_VERSION,
 			'time' => time(),
 			'fonts' => array_unique( $this->fonts ),
 		];
@@ -169,16 +163,16 @@ class Post_CSS_File {
 			return;
 		}
 
-		if ( apply_filters( 'elementor/css_file/update', version_compare( ELEMENTOR_VERSION, $meta['version'], '>' ), $this ) ) {
+		// First time after clear cache and etc.
+		if ( '' === $meta['status'] ) {
 			$this->update();
-			// Refresh new meta
 			$meta = $this->get_meta();
 		}
 
 		if ( self::CSS_STATUS_INLINE === $meta['status'] ) {
 			wp_add_inline_style( 'elementor-frontend', $meta['css'] );
 		} else {
-			wp_enqueue_style( 'elementor-post-' . $this->post_id, $this->url, [], $meta['time'] );
+			wp_enqueue_style( 'elementor-post-' . $this->post_id, $this->url, [ 'elementor-frontend' ], $meta['time'] );
 		}
 
 		// Handle fonts
@@ -226,14 +220,13 @@ class Post_CSS_File {
 		$wp_upload_dir = wp_upload_dir( null, false );
 		$relative_path = sprintf( self::FILE_NAME_PATTERN, self::FILE_BASE_DIR, self::FILE_PREFIX, $this->post_id );
 		$this->path = $wp_upload_dir['basedir'] . $relative_path;
-		$this->url = $wp_upload_dir['baseurl'] . $relative_path;
+		$this->url = set_url_scheme( $wp_upload_dir['baseurl'] . $relative_path );
 	}
 
 	protected function get_meta() {
 		$meta = get_post_meta( $this->post_id, self::META_KEY_CSS, true );
 
 		$defaults = [
-			'version' => '',
 			'status'  => '',
 		];
 
@@ -323,7 +316,7 @@ class Post_CSS_File {
 		}
 
 		if ( ! is_numeric( $value ) && ! is_float( $value ) && empty( $value ) ) {
-			return '';
+			return null;
 		}
 
 		return $value;
@@ -340,6 +333,11 @@ class Post_CSS_File {
 			}
 		}
 
-		do_action( 'elementor/element_css/parse_css', $this, $element );
+		/**
+		 * @deprecated, use `elementor/element/parse_css`
+		 */
+		Utils::do_action_deprecated( 'elementor/element_css/parse_css',[ $this, $element ], '1.0.10', 'elementor/element/parse_css' );
+
+		do_action( 'elementor/element/parse_css', $this, $element );
 	}
 }
