@@ -70,6 +70,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 		echo '</mapsmarker>';
 	}
 } else {
+	require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'class-mmp-geocoding.php' );
 	$request_method = $_SERVER['REQUEST_METHOD'];
 	global $wpdb;
 	$table_name_markers = $wpdb->prefix.'leafletmapsmarker_markers';

@@ -3552,7 +3552,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-geolocate',
 			'title'   => __('Add a geolocate button to each map','lmm') . $pro_button_link,
-			'desc'    => '',
+			'desc'    => sprintf(__('Recommendation: only enable this feature if your maps are accessible via https, which is required by the following browsers: %1$s. For more details, <a href="%2$s" target="_blank">please click here</a>','lmm'), 'Chrome 50+, Safari 10+', 'http://mapsmarker.com/geolocation-https-only'),
 			'type'    => 'radio-pro',
 			'std'     => 'false',
 			'choices' => array(
@@ -3615,29 +3615,31 @@ $this->_settings['clustering_helptext2'] = array(
 				'false' => __('false','lmm')
 			)
 		);
-		$this->_settings['geolocate_follow'] = array(
-			'version' => 'p1.9',
+		$this->_settings['geolocate_drawMarker'] = array(
+			'version' => 'p2.9',
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-geolocate',
-			'title'   => 'follow' . $pro_button_link,
-			'desc'    => esc_attr__('follow the location of the user','lmm'),
+			'title'   => 'drawMarker' . $pro_button_link,
+			'desc'    => esc_attr__('If set, the marker at the user´s location is drawn.','lmm'),
 			'type'    => 'radio-pro',
 			'std'     => 'true',
 			'choices' => array(
 				'true' => __('true','lmm'),
 				'false' => __('false','lmm')
 			)
-		);
+		);		
 		$this->_settings['geolocate_setView'] = array(
-			'version' => 'p1.9',
+			'version' => 'p2.9',
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-geolocate',
 			'title'   => 'setView' . $pro_button_link,
-			'desc'    => esc_attr__('automatically sets the map view to the location of the user, enabled if setting "follow" is true','lmm'),
+			'desc'    => esc_attr__('set the map view (zoom and pan) to the user´s location as it updates.','lmm'),
 			'type'    => 'radio-pro',
-			'std'     => 'true',
+			'std'     => 'untilPan',
 			'choices' => array(
-				'true' => __('true','lmm'),
+				'untilPan' => 'untilPan',
+				'once' => __('once','lmm'),
+				'always' => __('always','lmm'),
 				'false' => __('false','lmm')
 			)
 		);
@@ -3654,17 +3656,30 @@ $this->_settings['clustering_helptext2'] = array(
 				'false' => __('false (use maximum zoom level)','lmm')
 			)
 		);
-		$this->_settings['geolocate_remainActive'] = array(
-			'version' => 'p1.9',
+		$this->_settings['geolocate_clickBehavior_inView'] = array(
+			'version' => 'p2.9',
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-geolocate',
-			'title'   => 'remainActive' . $pro_button_link,
-			'desc'    => esc_attr__('if true locate control remains active on click even if the location of the user is in view','lmm'),
+			'title'   => 'clickBehavior inView' . $pro_button_link,
+			'desc'    => sprintf(esc_attr__('What to do when the user clicks on the control (%1$s)','lmm'),'inView'),
 			'type'    => 'radio-pro',
-			'std'     => 'false',
+			'std'     => 'stop',
 			'choices' => array(
-				'true' => __('true','lmm'),
-				'false' => __('false','lmm')
+				'stop' => __('stop','lmm'),
+				'setView' => 'setView'
+			)
+		);
+		$this->_settings['geolocate_clickBehavior_outOfView'] = array(
+			'version' => 'p2.9',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-geolocate',
+			'title'   => 'clickBehavior outOfView' . $pro_button_link,
+			'desc'    => sprintf(esc_attr__('What to do when the user clicks on the control (%1$s)','lmm'),'outOfView'),
+			'type'    => 'radio-pro',
+			'std'     => 'setView',
+			'choices' => array(
+				'stop' => __('stop','lmm'),
+				'setView' => 'setView'
 			)
 		);
 		$this->_settings['geolocate_showPopup'] = array(
@@ -11472,7 +11487,7 @@ $this->_settings['clustering_helptext2'] = array(
 		}
 		/* template for plugin updates
 		//info:  set defaults for options introduced in v3.12
-		if (version_compare(get_option('leafletmapsmarker_version'),'3.11.1','='))
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.11.2','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )

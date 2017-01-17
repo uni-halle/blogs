@@ -318,6 +318,18 @@ if ( $action == NULL ) {
 				</div>
 				<p><a href="#top" class="upgrade-top-link">' . __('back to top to start free 30-day-trial','lmm') . '</a></p>
 
+				<span class="pro-feature-header">' . __('WPML translation support for multilingual maps','lmm') . '</span>
+				<div class="pro-feature-content" style="background:' . $bgcolor . ';">
+				<p style="margin:0 0 10px 0;">
+				' . __('Maps Marker Pro makes it easy to build multilingual maps by fully supporting the translation solution WPML.','lmm') . '
+				</p>
+				<img src="' . LEAFLET_PLUGIN_URL . 'inc/img/pro-feature-wpml.png">
+				<p>
+				<a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.9p" target="_blank">' . __('Click here to get more information about this pro feature on mapsmarker.com','lmm') . '</a>
+				</p>
+				</div>
+				<p><a href="#top" class="upgrade-top-link">' . __('back to top to start free 30-day-trial','lmm') . '</a></p>
+
 				<span class="pro-feature-header">' . __('additional optimizations and improvements','lmm') . '</span>
 				<div class="pro-feature-content" style="background:' . $bgcolor . ';">
 				<ul style="list-style-type:disc;margin-left:15px;margin-top:0;">

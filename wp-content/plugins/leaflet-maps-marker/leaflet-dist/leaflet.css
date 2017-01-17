@@ -25,6 +25,8 @@
 	padding-top:5px !important;
 	border-left:1px solid #ccc !important;
 	border-right:1px solid #ccc !important;
+	table-layout: inherit;
+	font-size: 13px;
 }
 .lmm-listmarkers td {
 	vertical-align:middle;
@@ -496,4 +498,9 @@ td.lmm-listmarkers-icon {
 	box-shadow:unset !important;
 	border-radius:0;
 	display:inline;
+}
+/*fix for twentyfifteen theme*/
+.mapsmarker a {
+	border:none;
+	box-shadow:unset;
 }

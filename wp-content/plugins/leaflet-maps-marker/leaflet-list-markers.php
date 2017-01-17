@@ -125,7 +125,7 @@ if ($mcount > intval($lmm_options[ 'markers_per_page' ])) {
 		<?php echo (isset($_POST['searchtext']) != NULL) ? __('Search result','lmm') : __('Total','lmm') ?>: <?php echo $mcount; echo ' ' . $mcount_singular_plural = ($mcount == 1) ? __('marker','lmm') : __('markers','lmm'); echo $pager; ?>
 	</div>
 	<form method="POST">
-		<table id="list-markers" cellspacing="0" class="wp-list-table widefat fixed bookmarks" style="width:auto;">
+		<table id="list-markers" cellspacing="0" class="wp-list-table widefat fixed bookmarks">
 			<thead>
 				<tr>
 					<th class="manage-column column-cb check-column" scope="col"><input type="checkbox"></th>
@@ -286,7 +286,7 @@ if ($mcount > intval($lmm_options[ 'markers_per_page' ])) {
 	  echo '<tr valign="middle" class="alternate" id="link-' . $row['id'] . '">
       <th class="lmm-border check-column" scope="row"><input type="checkbox" value="' . $row['id'] . '" name="checkedmarkers[]"></th>
       <td class="lmm-border before_primary">' . $row['id'] . '</td>
-      <td class="lmm-border column-primary"><strong><a title="' . esc_attr__('edit marker','lmm') . ' (' . $row['id'].')" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_marker&id=' . $row['id'] . '" class="row-title">' . stripslashes(htmlspecialchars($row['markername'])) . '</a></strong><br/><div class="row-actions"><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_marker&id=' . $row['id'] . '">' . __('edit','lmm') . '</a><span style="margin-left:20px;color:#ccc;" title="' . esc_attr__('Feature available in pro version only','lmm') . '">' . __('duplicate','lmm') . '</span>' . $delete_link_marker . '</div> <button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button> </td>
+      <td class="lmm-border column-primary"><strong><a title="' . esc_attr__('edit marker','lmm') . ' (' . $row['id'].')" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_marker&id=' . $row['id'] . '" class="row-title">' . stripslashes(htmlspecialchars($row['markername'])) . '</a></strong><br/><div class="row-actions"><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_marker&id=' . $row['id'] . '">' . __('edit','lmm') . '</a><span style="margin-left:20px;color:#ccc;" title="' . esc_attr__('Feature available in pro version only','lmm') . '">' . __('duplicate','lmm') . '</span><span style="margin-left:20px;color:#ccc;" title="' . esc_attr__('Feature available in pro version only','lmm') . '">' . __('translate','lmm') . '</span>' . $delete_link_marker . '</div> <button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button> </td>
       <td class="lmm-border" data-colname="'.esc_attr__('Icon', 'lmm').'">';
       if ($row['icon'] != null) {
          echo '<img src="' . LEAFLET_PLUGIN_ICONS_URL . '/' . $row['icon'] . '" title="' . $row['icon'] . '" width="' . intval($lmm_options[ 'defaults_marker_icon_iconsize_x' ]) . '" height="' . intval($lmm_options[ 'defaults_marker_icon_iconsize_y' ]) . '" />';

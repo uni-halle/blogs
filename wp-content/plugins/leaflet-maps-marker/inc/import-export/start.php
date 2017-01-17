@@ -53,6 +53,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				<body><p style="margin:0.5em 0 0 0;">';
 
 		//info: get available caching methods for import/export prepare forms
+		/* temporarily disabled due to https://github.com/PHPOffice/PHPExcel/issues/1085
 		if ( function_exists('sqlite_open') ){ //info: SQLite2
 			$caching_sqlite2_disabled = '';
 			$caching_sqlite2_disabled_css = '';
@@ -67,6 +68,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			$caching_sqlite3_disabled = 'disabled="disabled"';
 			$caching_sqlite3_disabled_css = 'style="color:#CCCCCC;" title="' . esc_attr__('this caching method is currently not available on your server','lmm') . '"';
 		}
+		*/
 		if ( function_exists('apc_store') && (apc_sma_info() === TRUE) ) { //info: APC
 			$caching_apc_disabled = '';
 			$caching_apc_disabled_css = '';
@@ -183,16 +185,16 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				<td colspan="2">&nbsp;&nbsp;&nbsp;<strong>'. esc_attr__('Available geocoding providers','lmm') . '</strong> (<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#geocoding" title="' . esc_attr__('click to change geocoding provider','lmm') . '" target="_top">' . __('Settings','lmm') . '</a>)</td>
 			</tr>
 			<tr>
-				<td style="width:150px;"><input id="photon" type="radio" name="geocoding-provider" '. checked($lmm_options['geocoding_provider'], 'photon', false ) .' value="photon" disabled="disabled"/><label for="photon">Photon@MapsMarker</label></td>
-				<td>'.sprintf(__('Rate limit: %1$s requests/domain/%2$s and a maximum of %3$s requests/%4$s','lmm'), '2.500', __('day','lmm'), '10', __('second','lmm')).'</td>
+				<td style="width:150px;"><input id="mapzen" type="radio" name="geocoding-provider" '. checked($lmm_options['geocoding_provider'], 'mapzen-search', false ) .' value="mapzen-search" disabled="disabled"/><label for="mapzen">Mapzen Search</label></td>
+				<td>' . $mapzen_rate_limit . '</td>
 			</tr>
 			<tr>
 				<td style="width:150px;"><input id="algolia" type="radio" name="geocoding-provider" '. checked($lmm_options['geocoding_provider'], 'algolia-places', false ) . ' value="algolia-places" disabled="disabled"/><label for="algolia">Algolia Places</a></td>
 				<td>'.$algolia_rate_limit.'</td>
 			</tr>
 			<tr>
-				<td style="width:150px;"><input id="mapzen" type="radio" name="geocoding-provider" '. checked($lmm_options['geocoding_provider'], 'mapzen-search', false ) .' value="mapzen-search" disabled="disabled"/><label for="mapzen">Mapzen Search</label></td>
-				<td>' . $mapzen_rate_limit . '</td>
+				<td style="width:150px;"><input id="photon" type="radio" name="geocoding-provider" '. checked($lmm_options['geocoding_provider'], 'photon', false ) .' value="photon" disabled="disabled"/><label for="photon">Photon@MapsMarker</label></td>
+				<td>'.sprintf(__('Rate limit: %1$s requests/domain/%2$s and a maximum of %3$s requests/%4$s','lmm'), '2.500', __('day','lmm'), '10', __('second','lmm')).'</td>
 			</tr>
 			'. $option_mapquest_active .'
 			'. $option_google_active .'
@@ -285,12 +287,13 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 						<input id="caching-auto" type="radio" name="caching-method" value="auto" checked="checked" disabled="disabled" /> <label for="caching-auto">' . __('automatic','lmm') . '</label>
 
 						<a href="#" id="show-more-link" onclick="document.getElementById(\'caching-options-more\').style.display = \'block\';document.getElementById(\'show-more-link\').style.display = \'none\';"> - ' . __('show more options','lmm') . '</a>
-						<div id="caching-options-more" style="display:none;">
+						<div id="caching-options-more" style="display:none;">'.
+						/* temporarily disabled due to https://github.com/PHPOffice/PHPExcel/issues/1085
 						<span ' . $caching_sqlite2_disabled_css . '><input id="caching-sqlite2" type="radio" name="caching-method" value="sqlite2" ' . $caching_sqlite2_disabled . ' /> <label for="caching-sqlite2">SQLite2 <a href="http://www.sqlite.org/" title="http://www.sqlite.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('very low','lmm'), __('low','lmm')) . ')</label></span><br/>
 
 						<span ' . $caching_sqlite3_disabled_css . '><input id="caching-sqlite3" type="radio" name="caching-method" value="sqlite3" ' . $caching_sqlite3_disabled . ' /> <label for="caching-sqlite3">SQLite3 <a href="http://www.sqlite.org/" title="http://www.sqlite.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('very low','lmm'), __('very low','lmm')) . ')</label></span><br/>
-
-						<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
+						*/
+						'<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
 						<label for="caching-apc-timeout" style="margin-left:24px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-apc-timeout" type="input" name="caching-apc-timeout" value="600" style="width:30px;" ' . $caching_apc_disabled . ' /></label></span><br/>
 
 						<span ' . $caching_wincache_disabled_css . '><input id="caching-wincache" type="radio" name="caching-method" value="wincache" ' . $caching_wincache_disabled . ' /> <label for="caching-wincache">Wincache <a href="http://sourceforge.net/projects/wincache/" title="http://sourceforge.net/projects/wincache/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
@@ -417,12 +420,13 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 						<input id="caching-auto" type="radio" name="caching-method" value="auto" checked="checked" disabled="disabled" /> <label for="caching-auto">' . __('automatic','lmm') . '</label>
 
 						<a href="#" id="show-more-link" onclick="document.getElementById(\'caching-options-more\').style.display = \'block\';document.getElementById(\'show-more-link\').style.display = \'none\';"> - ' . __('show more options','lmm') . '</a>
-						<div id="caching-options-more" style="display:none;">
+						<div id="caching-options-more" style="display:none;">'.
+						/* temporarily disabled due to https://github.com/PHPOffice/PHPExcel/issues/1085
 						<span ' . $caching_sqlite2_disabled_css . '><input id="caching-sqlite2" type="radio" name="caching-method" value="sqlite2" ' . $caching_sqlite2_disabled . ' disabled="disabled" /> <label for="caching-sqlite2">SQLite2 <a href="http://www.sqlite.org/" title="http://www.sqlite.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('very low','lmm'), __('low','lmm')) . ')</label></span><br/>
 
 						<span ' . $caching_sqlite3_disabled_css . '><input id="caching-sqlite3" type="radio" name="caching-method" value="sqlite3" ' . $caching_sqlite3_disabled . ' disabled="disabled" /> <label for="caching-sqlite3">SQLite3 <a href="http://www.sqlite.org/" title="http://www.sqlite.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('very low','lmm'), __('very low','lmm')) . ')</label></span><br/>
-
-						<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' disabled="disabled" /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
+						*/
+						'<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' disabled="disabled" /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
 						<label for="caching-apc-timeout" style="margin-left:24px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-apc-timeout" type="input" name="caching-apc-timeout" value="600" style="width:30px;" ' . $caching_apc_disabled . ' disabled="disabled" /></label></span><br/>
 
 						<span ' . $caching_wincache_disabled_css . '><input id="caching-wincache" type="radio" name="caching-method" value="wincache" ' . $caching_wincache_disabled . ' disabled="disabled" /> <label for="caching-wincache">Wincache <a href="http://sourceforge.net/projects/wincache/" title="http://sourceforge.net/projects/wincache/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
@@ -563,12 +567,13 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 						<input id="caching-auto" type="radio" name="caching-method" value="auto" checked="checked" /> <label for="caching-auto">' . __('automatic','lmm') . '</label>
 
 						<a href="#" id="show-more-link" onclick="document.getElementById(\'caching-options-more\').style.display = \'block\';document.getElementById(\'show-more-link\').style.display = \'none\';"> - ' . __('show more options','lmm') . '</a>
-						<div id="caching-options-more" style="display:none;">
+						<div id="caching-options-more" style="display:none;">'.
+						/* temporarily disabled due to https://github.com/PHPOffice/PHPExcel/issues/1085
 						<span ' . $caching_sqlite2_disabled_css . '><input id="caching-sqlite2" type="radio" name="caching-method" value="sqlite2" ' . $caching_sqlite2_disabled . ' /> <label for="caching-sqlite2">SQLite2 <a href="http://www.sqlite.org/" title="http://www.sqlite.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('very low','lmm'), __('low','lmm')) . ')</label></span><br/>
 
 						<span ' . $caching_sqlite3_disabled_css . '><input id="caching-sqlite3" type="radio" name="caching-method" value="sqlite3" ' . $caching_sqlite3_disabled . ' /> <label for="caching-sqlite3">SQLite3 <a href="http://www.sqlite.org/" title="http://www.sqlite.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('very low','lmm'), __('very low','lmm')) . ')</label></span><br/>
-
-						<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
+						*/
+						'<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
 						<label for="caching-apc-timeout" style="margin-left:24px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-apc-timeout" type="input" name="caching-apc-timeout" value="600" style="width:30px;" ' . $caching_apc_disabled . ' /></label></span><br/>
 
 						<span ' . $caching_wincache_disabled_css . '><input id="caching-wincache" type="radio" name="caching-method" value="wincache" ' . $caching_wincache_disabled . ' /> <label for="caching-wincache">Wincache <a href="http://sourceforge.net/projects/wincache/" title="http://sourceforge.net/projects/wincache/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
@@ -664,12 +669,13 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 						<input id="caching-auto" type="radio" name="caching-method" value="auto" checked="checked" /> <label for="caching-auto">' . __('automatic','lmm') . '</label>
 
 						<a href="#" id="show-more-link" onclick="document.getElementById(\'caching-options-more\').style.display = \'block\';document.getElementById(\'show-more-link\').style.display = \'none\';"> - ' . __('show more options','lmm') . '</a>
-						<div id="caching-options-more" style="display:none;">
+						<div id="caching-options-more" style="display:none;">'.
+						/* temporarily disabled due to https://github.com/PHPOffice/PHPExcel/issues/1085
 						<span ' . $caching_sqlite2_disabled_css . '><input id="caching-sqlite2" type="radio" name="caching-method" value="sqlite2" ' . $caching_sqlite2_disabled . ' /> <label for="caching-sqlite2">SQLite2 <a href="http://www.sqlite.org/" title="http://www.sqlite.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('very low','lmm'), __('low','lmm')) . ')</label></span><br/>
 
 						<span ' . $caching_sqlite3_disabled_css . '><input id="caching-sqlite3" type="radio" name="caching-method" value="sqlite3" ' . $caching_sqlite3_disabled . ' /> <label for="caching-sqlite3">SQLite3 <a href="http://www.sqlite.org/" title="http://www.sqlite.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('very low','lmm'), __('very low','lmm')) . ')</label></span><br/>
-
-						<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
+						*/
+						'<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
 						<label for="caching-apc-timeout" style="margin-left:24px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-apc-timeout" type="input" name="caching-apc-timeout" value="600" style="width:30px;" ' . $caching_apc_disabled . ' /></label></span><br/>
 
 						<span ' . $caching_wincache_disabled_css . '><input id="caching-wincache" type="radio" name="caching-method" value="wincache" ' . $caching_wincache_disabled . ' /> <label for="caching-wincache">Wincache <a href="http://sourceforge.net/projects/wincache/" title="http://sourceforge.net/projects/wincache/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
@@ -720,6 +726,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 		//info: prepare caching - http://phpexcel.codeplex.com/discussions/234150
 		$user_cache = $_POST['caching-method'];
 		if ($user_cache == 'auto') {
+			/* temporarily disabled due to https://github.com/PHPOffice/PHPExcel/issues/1085
 			if ( function_exists('sqlite_open') ){ //info: SQLite2
 				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_sqlite;
 				PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
@@ -728,7 +735,8 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_sqlite3;
 				PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
 				$cache_method_for_log = 'automatic (SQLite3)';
-			} else if ( function_exists('apc_store') && (apc_sma_info() === TRUE) ) { //info: APC
+			*/
+			if ( function_exists('apc_store') && (apc_sma_info() === TRUE) ) { //info: APC
 				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_APC;
 				$cacheSettings = array( 'cacheTime' => 600 );
 				PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
@@ -765,6 +773,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				$cache_method_for_log = 'automatic (Memory)';
 			}
 		//info: perpare custom cache selection
+		/* temporarily disabled due to https://github.com/PHPOffice/PHPExcel/issues/1085
 		} else if ($user_cache == 'sqlite2') {
 			$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_sqlite;
 			PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
@@ -773,6 +782,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_sqlite3;
 			PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
 			$cache_method_for_log = 'SQLite3';
+		*/
 		} else if ($user_cache == 'apc') {
 			$caching_apc_timeout = intval($_POST['caching-apc-timeout']);
 			$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_APC;

@@ -223,6 +223,7 @@ if (!empty($action)) {
 	<li>- <a href="#delete-selected-markers" style="text-decoration:none;">' . __('Delete all markers from a layer','lmm') . '</a></li>
 	<li>- <a href="#delete-all-markers" style="text-decoration:none;">' . sprintf( esc_attr__('Delete all %1$s markers from all %2$s layers','lmm'), $markercount_all, $layercount_all) . '</a></li>
 	<li>- <a href="#marker-validity-check" style="text-decoration:none;">' . __('Marker validity check for layer assignements','lmm') . '</a></li>
+	<li>- <a href="#initialize-map-texts-wpml" style="text-decoration:none;">' .  __('Initialize map texts for translation using the WPML String Translation plugin','lmm') . '</a></li>
 	</ul>';
 	?>
 	<a name="backup-restore"></a>
@@ -1273,6 +1274,29 @@ if (!empty($action)) {
 	</table>
 	</form>
 	<p><a href="#top" style="text-decoration:none;"><?php _e('back to top','lmm'); ?></a></p>
+    
+    
+    	<a name="initialize-map-texts-wpml"></a>
+	<br/><br/>
+	<?php $nonce= wp_create_nonce('tool-nonce'); ?>
+	<form method="post">
+	<input type="hidden" name="action" value="prepare_strings_wpml" />
+	<?php wp_nonce_field('tool-nonce'); ?>
+	<table class="widefat fixed" style="width:auto;">
+		<tr style="background-color:#d6d5d5;">
+			<td colspan="2"><strong><?php echo __('Initialize map texts for translation using the WPML String Translation plugin','lmm'); ?></strong>  <a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/help-pro-feature.png" /></a></td>
+		</tr>
+		<tr>
+			<td>
+				<?php 
+					echo sprintf(__('Prepare existing maps strings (marker name, marker address, marker popuptext, layer name, layer address) for translation using the <a href="%1$s">WPML String Translation plugin</a>.','lmm'), 'https://www.mapsmarker.com/wpml'); 
+					echo '<div style="margin:10px 0;"><strong><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a></strong></div>'; ?>
+			</td>
+		</tr>
+	</table>
+	</form>
+	<p><a href="#top" style="text-decoration:none;"><?php _e('back to top','lmm'); ?></a></p>
+    
 	</div>
 	<!--wrap-->
 <?php } include('inc' . DIRECTORY_SEPARATOR . 'admin-footer.php'); ?>

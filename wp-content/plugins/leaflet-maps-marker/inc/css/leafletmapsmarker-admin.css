@@ -2,8 +2,8 @@
 .fixed .check-column { width: 20px; }
 .fixed .column-id { width: 49px; }
 .fixed .column-type { width: 65px; }
-.fixed .column-markername { width: 180px; }
-.fixed .column-layername { width: 130px; }
+.fixed .column-markername { width: 200px; }
+.fixed .column-layername { width: 200px; }
 .fixed .column-address { width: 130px; }
 .fixed .column-coords { width: 105px; }
 .fixed .column-count { width: 68px;text-align:center; }
@@ -19,7 +19,7 @@
 .fixed .column-fullscreen { width: 82px;text-align:center; }
 .fixed .column-qr-code { width: 72px;text-align:center; }
 .fixed .column-wikitude { width: 80px;text-align:center; }
-.fixed .column-usedincontent { width: 150px; }
+.fixed .column-usedincontent { width: 65px; }
 .widefat .check-column {
     padding: 10px 3px 5px !important;
 }

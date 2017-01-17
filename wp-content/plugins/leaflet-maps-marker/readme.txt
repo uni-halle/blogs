@@ -7,7 +7,7 @@ Author URI:        https://www.mapsmarker.com
 Author:            MapsMarker.com e.U.
 Requires at least: 3.3
 Tested up to:      4.7
-Stable tag:        3.11.1
+Stable tag:        3.11.2
 License:           GPLv2
 
 The most comprehensive & user-friendly mapping solution for WordPress
@@ -206,6 +206,7 @@ For full credits of each translations please visit [https://www.mapsmarker.com/l
 * [RESTful API allowing you to access some of the common core functionalities](https://www.mapsmarker.com/restapi)
 * [Javascript Events API for LeafletJS to to attach events handlers to markers and layers](https://www.mapsmarker.com/jseventsapi)
 * [support for filters and actions](https://www.mapsmarker.com/filters-actions)
+* [WPML translation support for multilingual maps](https://www.mapsmarker.com/wpml)
 * **frequent updates**
 * **dedicated and priority support** from the plugin author
 * non-expiring license keys
@@ -342,13 +343,13 @@ Synonyms: Map Maker - Maps Maker - mapmaker - mapsmaker
 
 = Trademark and copyright =
 MapsMarker &reg;
-Copyright 2011-2016, MapsMarker.com e.U., All Rights Reserved
+Copyright 2011-2017, MapsMarker.com e.U., All Rights Reserved
 
 == Upgrade Notice ==
-= v3.11.1 =
-geocoding providers usability improvements and bugfixes - see https://www.mapsmarker.com/v3.11.1 for more details
+= v3.11.2 =
+bugfixes and compatibility fixes - see https://www.mapsmarker.com/v3.11.2 for more details
 
 == Changelog ==
-[blog post with details about v3.11.1](https://www.mapsmarker.com/v3.11.1)
+[blog post with details about v3.11.2](https://www.mapsmarker.com/v3.11.2)
 
 [changelog for all versions](https://www.mapsmarker.com/changelog)

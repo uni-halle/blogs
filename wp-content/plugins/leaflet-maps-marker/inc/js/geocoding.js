@@ -342,20 +342,29 @@ var MMP_Geocoding = function( provider , options, is_edit, typinginterval, min_c
 											parent.providers[parent.provider].displayError(response, xhrObj);
 										}
 							  		}
-				              }).fail(function(e){
+				             }).fail(function(e){
 				              		//display previous provider error
 				              		if(typeof parent.providers[parent.provider].displayError == 'function'){
 					            		parent.providers[parent.provider].displayError(e.responseJSON, e);
 					            	}
+					            	//info: save the address old value
+					            	var address_value = jQuery('#address').val();
 				              		//info: Performing fallbacks
 				              		jQuery('#address').places_autocomplete('destroy');
 				              		parent.provider = parent.options.fallback;
 				              		parent.init();
 				              		jQuery('#address').focus();
+									var e = jQuery.Event("keydown");
+									e.which = 50;
+									jQuery("#address").trigger(e);
+									jQuery('#address').val( address_value );
 		                			jQuery('#address').removeClass('results-loading');
                                     jQuery('#address').css('background', '#ffffcc');
                                     jQuery('#s2id_geocoding-provider-select').select2('val', parent.provider);
                                     jQuery('#geocoding-rate-limit-details').html(jQuery('#defaults_texts_geocoding_fallback_info').val());
+									setTimeout(function(){
+										jQuery('#address').places_autocomplete('open');
+									},500);
 				              });
 				          	}
 			            }, parent.typingInterval);

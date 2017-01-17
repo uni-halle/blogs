@@ -36,8 +36,10 @@ class LMM_LeakyBucket implements ThrottleInterface
      */
     public function __construct()
     {
-        if ( function_exists('apc_store') && (apc_sma_info() === TRUE) ) {
+        if ( function_exists('apc_store') && (apc_sma_info() !== FALSE) ) {
             $this->storage = new LMM_Apc();
+		} else if ( function_exists('apcu_store') && (apcu_sma_info() !== FALSE) ) {
+			$this->storage = new LMM_Apcu();
         } else {
             $this->storage = new LMM_Session();
         }

@@ -73,8 +73,8 @@ class LMM_WP_Session_Utils {
 		$limit = absint( $limit );
 		$keys = $wpdb->get_results(
  			$wpdb->prepare(
- 				"SELECT option_name, option_value FROM $wpdb->options WHERE option_name LIKE '_wp_session_expires_%' ORDER BY option_value ASC LIMIT 0, %d",
- 				$limit
+ 				"SELECT option_name, option_value FROM $wpdb->options WHERE option_name LIKE %s ORDER BY option_value ASC LIMIT 0, %d",
+ 				'_wp_session_expires_%', $limit
  			)
  		);
 		$now = time();
@@ -100,10 +100,7 @@ class LMM_WP_Session_Utils {
 		// Delete expired sessions
  		if ( ! empty( $expired ) ) {
 			$wpdb->query(
-				$wpdb->prepare(
-					"DELETE FROM $wpdb->options WHERE option_name IN ('%s')",
-					implode( "','", $expired )
-				)
+				"DELETE FROM $wpdb->options WHERE option_name IN ('".implode( "','", $expired )."')"
 			);
  		}
 

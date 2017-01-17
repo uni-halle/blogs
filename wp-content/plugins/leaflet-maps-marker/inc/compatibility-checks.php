@@ -144,29 +144,7 @@ if (is_plugin_active('siteorigin-panels/siteorigin-panels.php') ) {
 }
 //info: plugin WP External Links
 if (is_plugin_active('wp-external-links/wp-external-links.php') ) {
-	$wp_external_links_metadata = get_plugin_data(WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'wp-external-links' . DIRECTORY_SEPARATOR . 'wp-external-links.php');
-	if (version_compare($wp_external_links_metadata['Version'],"2.0.0",">=")){
-		$plugin_options = get_option('wpel-exceptions-settings');
-		$plugin_options_exclude = $plugin_options['exclude_urls'];
-	} else {
-		$plugin_options = get_option('wp_external_links-main');
-		$plugin_options_exclude = $plugin_options['ignore'];
-	}
-	$ignore_list = '';
-	if (strpos($plugin_options_exclude, 'mapsmarker.com') === false) { $ignore_list .= 'mapsmarker.com<br/>'; }
-	if (strpos($plugin_options_exclude, 'leafletjs.com') === false) { $ignore_list .= 'leafletjs.com<br/>'; }
-	if (strpos($plugin_options_exclude, 'mapicons.mapsmarker.com') === false) { $ignore_list .= 'mapicons.mapsmarker.com<br/>'; }
-	if (strpos($plugin_options_exclude, 'visualead.com') === false) { $ignore_list .= 'visualead.com<br/>'; }
-	if (strpos($plugin_options_exclude, 'openstreetmap.org') === false) { $ignore_list .= 'openstreetmap.org<br/>'; }
-	if (strpos($plugin_options_exclude, 'mapquest.com') === false) { $ignore_list .= 'mapquest.com<br/>'; }
-	if (strpos($plugin_options_exclude, 'data.wien.gv.at') === false) { $ignore_list .= 'data.wien.gv.at<br/>'; }
-	if (strpos($plugin_options_exclude, 'stamen.com') === false) { $ignore_list .= 'stamen.com<br/>'; }
-	if (strpos($plugin_options_exclude, 'creativecommons.org') === false) { $ignore_list .= 'creativecommons.org<br/>'; }
-	if (strpos($plugin_options_exclude, 'mapbox.com') === false) { $ignore_list .= 'mapbox.com<br/>'; }
-	if (strpos($plugin_options_exclude, 'thunderforest.com') === false) { $ignore_list .= 'thunderforest.com<br/>'; }
-	if ($ignore_list != NULL) {
-		echo '<p><div class="notice notice-error" style="padding:10px;"><strong>' . sprintf(__('Warning: you are using the plugin "WP External Links" which is currently causing maps to break! Please navigate to "External Links" and add the following links to the option "Ignore links (URL) containing...": %1$s','lmm'), '</strong><br/>' . $ignore_list) . '</div></p>';
-	}
+	echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin %1$s which can cause layer maps to break - please deactivate the plugin %1$s in order to display maps created with %2$s properly!','lmm'), '"WP External Links"', '"Leaflet Maps Marker"' ) . '</div></p>';
 }
 //info: check if custom mapbox basemaps are used
 if ( ($lmm_options[ 'mapbox_user' ] != 'mapbox') || ($lmm_options[ 'mapbox2_user' ] != 'mapbox') || ($lmm_options[ 'mapbox3_user' ] != 'mapbox') ) {
@@ -205,10 +183,13 @@ if ( $lmm_options['google_maps_api_status'] == 'enabled') {
 				if (strpos($script->src, 'maps.google.com/maps/api/js') !== false) {
 					$scripts_found .= $script->handle;
 				}
+				if (strpos($script->src, 'maps.googleapis.com/maps/api/js') !== false) {
+					$scripts_found .= $script->handle;
+				}
 			}
 		}
 		if ($scripts_found != '') {
-			echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('<b>Warning: an active plugin or theme is also embedding the Google Maps API (script handle: %1$s) - this can break (Google) maps and address search on backend for %2$s!</b><br/>To fix this, please either remove that additional Google Maps API call manually or enable the compatibility option "<a href="%3$s">Deregister Google Maps API scripts enqueued by third parties</a>"','lmm'), $scripts_found, 'Leaflet Maps Marker', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-google') . '</div></p>';
+			echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('<b>Warning: an active plugin or theme is also embedding the Google Maps API (script handle: %1$s) - this can break (Google) maps and address search on backend for %2$s!</b><br/>To fix this, please either remove that additional Google Maps API call manually or enable the compatibility option "<a href="%3$s">Deregister Google Maps API scripts enqueued by third parties</a>"','lmm'), $scripts_found, 'Leaflet Maps Marker', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-basemaps-google_js_api') . '</div></p>';
 		}
 	}
 }

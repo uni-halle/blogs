@@ -9,11 +9,11 @@ require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'globals.php' )
 require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle/Throttle/ThrottleInterface.php' );
 require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle/Throttle/LeakyBucket.php' );
 require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle/Storage/StorageInterface.php' );
-if ( function_exists('apc_store') && (apc_sma_info() === TRUE) ) {
-    //initialize APC storage
+if ( function_exists('apc_store') && (apc_sma_info() !== FALSE) ) { //info: initialize APC storage
     require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle/Storage/Apc.php' );
-} else {
-    //use WordPress session storage
+} else if ( function_exists('apcu_store') && (apcu_sma_info() !== FALSE) ) { //info: initialize APCu storage
+    require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle/Storage/Apcu.php' );
+} else { //info: use WordPress session storage
     require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle/Storage/Session.php' );
 }
 
