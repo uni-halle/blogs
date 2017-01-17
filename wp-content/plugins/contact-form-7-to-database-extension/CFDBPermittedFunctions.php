@@ -189,7 +189,10 @@ class CFDBPermittedFunctions {
         // CFDB-defined functions
             'concat',
             'sum',
-            'multiply'
+            'diff',
+            'multiply',
+            'cfdb_date_diff',
+            'cfdb_duration'
 
     );
 

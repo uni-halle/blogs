@@ -70,6 +70,16 @@ class CFDBViewImportCsv extends CFDBView
                         </select>
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="2">
+                        <?php echo htmlspecialchars(__('Delimiter Character', 'contact-form-7-to-database-extension')); ?>
+                        <input type="text" name="delim" id="delim" size="1" value=","/>
+                        <?php echo htmlspecialchars(__('Enclosure Character', 'contact-form-7-to-database-extension')); ?>
+                        <input type="text" name="encl" id="encl" size="1" value='"'/>
+                        <?php echo htmlspecialchars(__('Escape Character', 'contact-form-7-to-database-extension')); ?>
+                        <input type="text" name="esc" id="esc" size="1" value="\"/>
+                    </td>
+                </tr>
                 </tbody>
             </table>
             <input type="submit" class="button" name="<?php echo htmlspecialchars(__('Import', 'contact-form-7-to-database-extension')); ?>" id="importsubmit" value="import">

@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Contact Form DB package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Contact Form DB 2.10.19\n"
+"Project-Id-Version: Contact Form DB 2.10.28\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/contact-form-7-to-"
 "database-extension\n"
-"POT-Creation-Date: 2016-07-04 15:49:10+00:00\n"
+"POT-Creation-Date: 2016-12-30 19:18:25+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,27 +36,27 @@ msgid "Save Page Title from Contact Form 7 submissions"
 msgstr ""
 
 #: CF7DBPlugin.php:73
-msgid "Can See Submission data"
+msgid "Allow only Administrators to see CFDB administration screens"
 msgstr ""
 
-#: CF7DBPlugin.php:75
+#: CF7DBPlugin.php:74
 msgid "Can See Submission when using shortcodes"
 msgstr ""
 
-#: CF7DBPlugin.php:77
+#: CF7DBPlugin.php:76
+msgid "Can See Submission data"
+msgstr ""
+
+#: CF7DBPlugin.php:78
 msgid "Can Edit/Delete Submission data"
 msgstr ""
 
-#: CF7DBPlugin.php:79
+#: CF7DBPlugin.php:80
 msgid "Allow Any Function in Short Codes"
 msgstr ""
 
-#: CF7DBPlugin.php:80 CF7DBPlugin.php:83
+#: CF7DBPlugin.php:81 CF7DBPlugin.php:83
 msgid "(Creates a security hole)"
-msgstr ""
-
-#: CF7DBPlugin.php:81
-msgid "Allow only Administrators to see CFDB administration screens"
 msgstr ""
 
 #: CF7DBPlugin.php:82
@@ -192,7 +192,7 @@ msgstr ""
 msgid "Phase 3 of 3..."
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (Contact Form DB 2.10.19)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (Contact Form DB 2.10.28)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: CF7DBPlugin.php:1014
 msgid "Contact Form DB"
@@ -203,7 +203,7 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: CF7DBPlugin.php:1077 CFDBViewImportCsv.php:75
+#: CF7DBPlugin.php:1077 CFDBViewImportCsv.php:85
 msgid "Import"
 msgstr ""
 
@@ -215,19 +215,19 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: CF7DBPlugin.php:1516
+#: CF7DBPlugin.php:1508
 msgid "Plugin should be updated: "
 msgstr ""
 
-#: CF7DBPlugin.php:1517
+#: CF7DBPlugin.php:1509
 msgid "Current version: "
 msgstr ""
 
-#: CF7DBPlugin.php:1518
+#: CF7DBPlugin.php:1510
 msgid "Minimum required version: "
 msgstr ""
 
-#: CF7DBPlugin.php:1519
+#: CF7DBPlugin.php:1511
 msgid "Download the latest version"
 msgstr ""
 
@@ -251,9 +251,9 @@ msgstr ""
 msgid "Reference"
 msgstr ""
 
-#: CFDBShortcodeExportUrl.php:59 CFDBViewImportCsv.php:120
+#: CFDBShortcodeExportUrl.php:59 CFDBViewImportCsv.php:130
 #: CFDBViewOptions.php:69 CFDBViewShortCodeBuilder.php:89
-#: CFDBViewWhatsInDB.php:286
+#: CFDBViewWhatsInDB.php:291
 msgid "Export"
 msgstr ""
 
@@ -286,43 +286,55 @@ msgstr ""
 msgid "Existing Form"
 msgstr ""
 
-#: CFDBViewImportCsv.php:88
+#: CFDBViewImportCsv.php:75
+msgid "Delimiter Character"
+msgstr ""
+
+#: CFDBViewImportCsv.php:77
+msgid "Enclosure Character"
+msgstr ""
+
+#: CFDBViewImportCsv.php:79
+msgid "Escape Character"
+msgstr ""
+
+#: CFDBViewImportCsv.php:98
 msgid "Rename Form"
 msgstr ""
 
-#: CFDBViewImportCsv.php:99
+#: CFDBViewImportCsv.php:109
 msgid "Rename"
 msgstr ""
 
-#: CFDBViewImportCsv.php:102
+#: CFDBViewImportCsv.php:112
 msgid "Backup Form to CSV File"
 msgstr ""
 
-#: CFDBViewImportCsv.php:104
+#: CFDBViewImportCsv.php:114
 msgid ""
 "Backup a form into a CSV file that can be re-imported without loss of data."
 msgstr ""
 
-#: CFDBViewImportCsv.php:105
+#: CFDBViewImportCsv.php:115
 msgid "Limitation: this will not export file uploads."
 msgstr ""
 
-#: CFDBViewImportCsv.php:106
+#: CFDBViewImportCsv.php:116
 msgid ""
 "Limitation: extremely large numbers of records in your form may cause the "
 "export operation on your server to run out of memory, thereby not giving you "
 "all the rows."
 msgstr ""
 
-#: CFDBViewImportCsv.php:122
+#: CFDBViewImportCsv.php:132
 msgid "Data Cleanup"
 msgstr ""
 
-#: CFDBViewImportCsv.php:123
+#: CFDBViewImportCsv.php:133
 msgid "Clean up data that can cause incorrect behavior"
 msgstr ""
 
-#: CFDBViewImportCsv.php:125
+#: CFDBViewImportCsv.php:135
 msgid "Clean up data"
 msgstr ""
 
@@ -348,6 +360,10 @@ msgstr ""
 
 #: CFDBViewOptions.php:79
 msgid "Capture form submissions from these plugins"
+msgstr ""
+
+#: CFDBViewOptions.php:97
+msgid "Notes on security settings"
 msgstr ""
 
 #: CFDBViewOptions.php:151 ExportToExcel.php:51
@@ -443,41 +459,41 @@ msgid "Export File"
 msgstr ""
 
 #: CFDBViewShortCodeBuilder.php:278 CFDBViewShortCodeBuilder.php:856
-#: CFDBViewWhatsInDB.php:252
+#: CFDBViewWhatsInDB.php:257
 msgid "Excel .xlsx"
 msgstr ""
 
 #: CFDBViewShortCodeBuilder.php:281 CFDBViewShortCodeBuilder.php:859
-#: CFDBViewWhatsInDB.php:255
+#: CFDBViewWhatsInDB.php:260
 msgid "OpenDocument .ods"
 msgstr ""
 
 #: CFDBViewShortCodeBuilder.php:284 CFDBViewShortCodeBuilder.php:862
-#: CFDBViewWhatsInDB.php:261
+#: CFDBViewWhatsInDB.php:266
 msgid "Excel CSV (UTF8-BOM)"
 msgstr ""
 
 #: CFDBViewShortCodeBuilder.php:287 CFDBViewShortCodeBuilder.php:865
-#: CFDBViewWhatsInDB.php:264
+#: CFDBViewWhatsInDB.php:269
 msgid "Excel TSV (UTF16LE-BOM)"
 msgstr ""
 
 #: CFDBViewShortCodeBuilder.php:290 CFDBViewShortCodeBuilder.php:868
-#: CFDBViewWhatsInDB.php:267
+#: CFDBViewWhatsInDB.php:272
 msgid "Plain CSV (UTF-8)"
 msgstr ""
 
 #: CFDBViewShortCodeBuilder.php:293 CFDBViewShortCodeBuilder.php:871
-#: CFDBViewWhatsInDB.php:270
+#: CFDBViewWhatsInDB.php:275
 msgid "Excel CSV for Japanese (Shift-JIS)"
 msgstr ""
 
 #: CFDBViewShortCodeBuilder.php:296 CFDBViewShortCodeBuilder.php:874
-#: CFDBViewWhatsInDB.php:258
+#: CFDBViewWhatsInDB.php:263
 msgid "Excel Internet Query"
 msgstr ""
 
-#: CFDBViewShortCodeBuilder.php:299 CFDBViewWhatsInDB.php:276
+#: CFDBViewShortCodeBuilder.php:299 CFDBViewWhatsInDB.php:281
 msgid "Google Spreadsheet Live Data"
 msgstr ""
 
@@ -485,12 +501,12 @@ msgstr ""
 msgid "RSS"
 msgstr ""
 
-#: CFDBViewShortCodeBuilder.php:305 CFDBViewWhatsInDB.php:282
+#: CFDBViewShortCodeBuilder.php:305 CFDBViewWhatsInDB.php:287
 msgid "JSON"
 msgstr ""
 
 #: CFDBViewShortCodeBuilder.php:309 CFDBViewShortCodeBuilder.php:878
-#: CFDBViewWhatsInDB.php:290
+#: CFDBViewWhatsInDB.php:295
 msgid "CSV Delimiter"
 msgstr ""
 
@@ -552,7 +568,7 @@ msgstr ""
 msgid "See instructions."
 msgstr ""
 
-#: CFDBViewShortCodeBuilder.php:384
+#: CFDBViewShortCodeBuilder.php:385
 msgid "* All Forms *"
 msgstr ""
 
@@ -909,54 +925,54 @@ msgstr ""
 msgid "\" should not contain double-quotes (\")"
 msgstr ""
 
-#: CFDBViewShortCodeBuilder.php:1201
+#: CFDBViewShortCodeBuilder.php:1209
 msgid "Error: no form is chosen"
 msgstr ""
 
-#: CFDBViewShortCodeBuilder.php:1248
+#: CFDBViewShortCodeBuilder.php:1256
 msgid ""
 "Warning: \"search\" field ignored because FIELD is used (use one but not "
 "both)"
 msgstr ""
 
-#: CFDBViewShortCodeBuilder.php:1269
+#: CFDBViewShortCodeBuilder.php:1277
 msgid ""
 "Error: \"FIELD\": if you provide a value for \"Start Row\" then you must "
 "also provide a value for \"Num Rows\""
 msgstr ""
 
-#: CFDBViewShortCodeBuilder.php:1274
+#: CFDBViewShortCodeBuilder.php:1282
 msgid "Error: \"FIELD\": \"Num Rows\" must be a positive integer"
 msgstr ""
 
-#: CFDBViewShortCodeBuilder.php:1282
+#: CFDBViewShortCodeBuilder.php:1290
 msgid "Error: \"FIELD\": \"Start Row\" must be a positive integer"
 msgstr ""
 
-#: CFDBViewShortCodeBuilder.php:1377
+#: CFDBViewShortCodeBuilder.php:1385
 msgid "Error: [cfdb-html] has empty Template. It will not output anything. "
 msgstr ""
 
-#: CFDBViewShortCodeBuilder.php:1378
+#: CFDBViewShortCodeBuilder.php:1386
 msgid "(Shortcode Specific option)"
 msgstr ""
 
-#: CFDBViewShortCodeBuilder.php:1452
+#: CFDBViewShortCodeBuilder.php:1460
 msgid "Error: \"edit=true\" will not work properly when setting \"headers\" "
 msgstr ""
 
-#: CFDBViewShortCodeBuilder.php:1652
+#: CFDBViewShortCodeBuilder.php:1660
 msgid ""
 "Warning: the function includes your WP login information. Avoid sharing it."
 msgstr ""
 
-#: CFDBViewShortCodeBuilder.php:1659
+#: CFDBViewShortCodeBuilder.php:1667
 msgid ""
 "Error: WP User and Password are required for the Google Spreadsheet to pull "
 "data from your WordPress site."
 msgstr ""
 
-#: CFDBViewShortCodeBuilder.php:1662
+#: CFDBViewShortCodeBuilder.php:1670
 msgid ""
 "Because the generated URL would be too long, you must use this alternative "
 "function and add its script to your Google Spreadsheet"
@@ -984,77 +1000,77 @@ msgid ""
 "function to place in your Google Spreadsheet"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:273
+#: CFDBViewWhatsInDB.php:278
 msgid "Google Spreadsheet"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:279
+#: CFDBViewWhatsInDB.php:284
 msgid "HTML"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:294
+#: CFDBViewWhatsInDB.php:299
 msgid "Advanced Export"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:305
+#: CFDBViewWhatsInDB.php:310
 msgid "Delete All This Form's Records"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:306
+#: CFDBViewWhatsInDB.php:311
 msgid "Are you sure you want to delete all the data for this form?"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:324
+#: CFDBViewWhatsInDB.php:329
 msgid "Edit Data Mode"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:436
+#: CFDBViewWhatsInDB.php:441
 msgid ""
 "Did you know: You can add this data to your posts and pages using these "
 "shortcodes:"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:450
+#: CFDBViewWhatsInDB.php:455
 msgid "Would you like to help translate this plugin into your language?"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:452
+#: CFDBViewWhatsInDB.php:457
 msgid "How to create a translation"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:463
+#: CFDBViewWhatsInDB.php:468
 msgid "Query:"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:485
+#: CFDBViewWhatsInDB.php:490
 msgid "Cancel"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:487
+#: CFDBViewWhatsInDB.php:492
 msgid "Upload"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:495
+#: CFDBViewWhatsInDB.php:500
 msgid "Add Column"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:496
+#: CFDBViewWhatsInDB.php:501
 msgid "Delete Column"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:513
+#: CFDBViewWhatsInDB.php:518
 msgid "next »"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:514
+#: CFDBViewWhatsInDB.php:519
 msgid "« prev"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:533
+#: CFDBViewWhatsInDB.php:538
 msgid "Returned entries %s to %s of %s entries in the database"
 msgstr ""
 
-#: CFDBViewWhatsInDB.php:676 ExportToHtmlTable.php:138
+#: CFDBViewWhatsInDB.php:681 ExportToHtmlTable.php:138
 msgid "All"
 msgstr ""
 

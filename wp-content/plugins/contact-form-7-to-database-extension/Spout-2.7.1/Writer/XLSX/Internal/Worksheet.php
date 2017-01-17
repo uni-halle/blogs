@@ -149,7 +149,8 @@ EOD;
     private function isEmptyRow($dataRow)
     {
         $numCells = count($dataRow);
-        return ($numCells === 1 && CellHelper::isEmpty($dataRow[0]));
+        // using "reset()" instead of "$dataRow[0]" because $dataRow can be an associative array
+        return ($numCells === 1 && CellHelper::isEmpty(reset($dataRow)));
     }
 
     /**
@@ -202,16 +203,16 @@ EOD;
         if (CellHelper::isNonEmptyString($cellValue)) {
             // CFDB EDIT BEGIN: Special case added to handle HYPERLINK functions
             // this IF wrapping exiting code in ELSE
-            $matches = array();
-            if (preg_match('/=HYPERLINK\("(.*)","(.*)"\)/', $cellValue, $matches)) {
-                // Create a Formula
-                $url = $this->stringsEscaper->escape($matches[1]);
-                $text = $this->stringsEscaper->escape($matches[2]);
-                $formula = sprintf('HYPERLINK("%s","%s")', $url, $text);
-                $cellXML = sprintf(
-                        '<c r="%s%s" t="str"><f>%s</f><v>%s</v></c>',
-                        $columnIndex, $rowIndex, $formula, $text);
+            $formula = HyperlinkFormula::getHyperlinkXml(
+                    $this->stringsEscaper,
+                    $cellValue,
+                    $columnIndex,
+                    $rowIndex
+            );
+            if ($formula) {
+                $cellXML = $formula;
             } else { // CFDB EDIT END
+
                 if ($this->shouldUseInlineStrings) {
                     $cellXML .= ' t="inlineStr"><is><t>' . $this->stringsEscaper->escape($cellValue) . '</t></is></c>';
                 } else {

@@ -1502,7 +1502,7 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
         $editorData = $this->getEditorPluginData();
         if (isset($editorData['Version'])) {
             if (version_compare($editorData['Version'], $requiredEditorVersion) == -1) {
-                $editorPluginName = version_compare($editorData['Version'], '1.4', '<') ? 'Contact Form to DB Extension Edit' : 'Contact Form DB Editor';
+                $editorPluginName = version_compare($editorData['Version'], '1.5', '<') ? 'Contact Form to DB Extension Edit' : 'Contact Form DB Editor';
                 ?>
                 <div id="message" class="error">
                     <?php echo htmlentities(__('Plugin should be updated: ', 'contact-form-7-to-database-extension')); ?><strong><?php echo $editorPluginName ?></strong><br/>

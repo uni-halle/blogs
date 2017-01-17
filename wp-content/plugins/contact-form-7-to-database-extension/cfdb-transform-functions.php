@@ -45,6 +45,24 @@ function sum() { // concat(...) // splat operator in PHP 5.3
 }
 
 /**
+ * Subtract all input values from the first input value
+ * @return float
+ */
+function diff() {
+    $diff = 0.0;
+    $first = true;
+    foreach (func_get_args() as $arg) {
+        if ($first) {
+            $diff = floatval($arg);
+            $first = false;
+        } else {
+            $diff -= floatval($arg);
+        }
+    }
+    return $diff;
+}
+
+/**
  * Sum all input parameters
  * @return float|int
  */
@@ -63,4 +81,24 @@ function multiply() { // concat(...) // splat operator in PHP 5.3
     }
     return $product;
 }
+
+function cfdb_date_diff($start, $end) {
+    $start_time = strtotime($start);
+    $end_time = strtotime($end);
+    return $end_time - $start_time;
+}
+
+/**
+ * @param $start
+ * @param $end
+ * @param $format String format: http://php.net/manual/en/dateinterval.format.php
+ * @return string
+ */
+function cfdb_duration($start, $end, $format) {
+    $datetime1 = new DateTime($start);
+    $datetime2 = new DateTime($end);
+    $interval = $datetime1->diff($datetime2);
+    return $interval->format($format);
+}
+
 
