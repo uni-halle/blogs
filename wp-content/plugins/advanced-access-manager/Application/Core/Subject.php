@@ -243,7 +243,9 @@ abstract class AAM_Core_Subject {
      *
      * @access public
      */
-    abstract public function getCapabilities();
+    public function getCapabilities() {
+        return array();
+    }
 
     /**
      * Retrieve subject based on used class
@@ -252,7 +254,9 @@ abstract class AAM_Core_Subject {
      *
      * @access protected
      */
-    abstract protected function retrieveSubject();
+    protected function retrieveSubject() {
+        return null;
+    }
     
     /**
      * 
@@ -290,20 +294,6 @@ abstract class AAM_Core_Subject {
      */
     public function getParent() {
         return null;
-    }
-    
-    /**
-     * Check if subject has parent
-     * 
-     * Return true if current subject has parent subject. Applicable only for User
-     * only were Role is a parent subject to it.
-     * 
-     * @return boolean
-     * 
-     * @access public
-     */
-    public function hasParent() {
-        return false;
     }
     
 }

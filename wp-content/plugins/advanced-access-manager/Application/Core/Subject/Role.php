@@ -179,14 +179,11 @@ class AAM_Core_Subject_Role extends AAM_Core_Subject {
      * @inheritdoc
      */
     public function getParent() {
-        return apply_filters('aam-parent-role-filter', null, $this);
+        return apply_filters(
+                'aam-parent-role-filter', 
+                new AAM_Core_Subject_Default, 
+                $this
+        );
     }
     
-    /**
-     * @inheritdoc
-     */
-    public function hasParent() {
-        return ($this->getParent() ? true : false);
-    }
-
 }

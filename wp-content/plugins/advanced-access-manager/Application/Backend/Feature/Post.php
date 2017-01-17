@@ -343,13 +343,10 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
         static $list = null;
         
         if (is_null($list)) {
-            $list = apply_filters(
-                    'aam-post-access-options-filter', 
-                    require_once dirname(__FILE__) . '/../View/PostOptionList.php'
-            );
+            $list = require_once dirname(__FILE__) . '/../View/PostOptionList.php';
         }
         
-        return $list[$area];
+        return apply_filters('aam-post-access-options-filter', $list[$area], $area);
     }
     
     /**
@@ -384,7 +381,8 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
             'subjects'   => array(
                 'AAM_Core_Subject_Role',
                 'AAM_Core_Subject_User',
-                'AAM_Core_Subject_Visitor'
+                'AAM_Core_Subject_Visitor',
+                'AAM_Core_Subject_Default'
             ),
             'view'       => __CLASS__
         ));

@@ -41,6 +41,7 @@
                                 <tr>
                                     <td>
                                         <span class='aam-setting-title'><?php echo $product['title'], (!empty($product['new']) ? ' <span class="badge">NEW</span> ' : ''), (!empty($product['version']) ? ' <small class="text-muted">v' . $product['version'] . '</small>' : ''), ' - ' . ($product['price']); ?></span>
+                                        <?php if (!empty($product['license'])) { ?><small class="aam-license-key"><b>License Key:</b> <?php echo $product['license']; ?></small><?php } ?>
                                         <p class="aam-extension-description">
                                             <?php echo $product['description']; ?>
                                         </p>

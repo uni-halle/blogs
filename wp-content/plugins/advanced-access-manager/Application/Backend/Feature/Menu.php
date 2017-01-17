@@ -33,7 +33,7 @@ class AAM_Backend_Feature_Menu extends AAM_Backend_Feature_Abstract {
     /**
      * Get subject's menu
      * 
-     * Based on the list of capabilitis that current subject has, prepare
+     * Based on the list of capabilities that current subject has, prepare
      * complete menu list and return it.
      * 
      * @return array
@@ -104,7 +104,8 @@ class AAM_Backend_Feature_Menu extends AAM_Backend_Feature_Abstract {
         
         if (isset($submenu[$menu])) {
             foreach ($submenu[$menu] as $item) {
-                if ($subject->hasCapability($item[1])) {
+                if ($subject->hasCapability($item[1]) 
+                                    || is_a($subject, 'AAM_Core_Subject_Default')) {
                     $response[] = array(
                         'id'         => $item[2],
                         'name'       => $this->filterMenuName($item[0]),
@@ -188,7 +189,11 @@ class AAM_Backend_Feature_Menu extends AAM_Backend_Feature_Abstract {
             'position'   => 5,
             'title'      => __('Backend Menu', AAM_KEY),
             'capability' => $cap,
-            'subjects'   => array('AAM_Core_Subject_Role', 'AAM_Core_Subject_User'),
+            'subjects'   => array(
+                'AAM_Core_Subject_Role', 
+                'AAM_Core_Subject_User',
+                'AAM_Core_Subject_Default'
+            ),
             'view'       => __CLASS__
         ));
     }

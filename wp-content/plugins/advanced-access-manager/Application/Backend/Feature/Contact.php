@@ -47,7 +47,8 @@ class AAM_Backend_Feature_Contact extends AAM_Backend_Feature_Abstract {
             'subjects'   => array(
                 'AAM_Core_Subject_Role', 
                 'AAM_Core_Subject_User', 
-                'AAM_Core_Subject_Visitor'
+                'AAM_Core_Subject_Visitor',
+                'AAM_Core_Subject_Default'
             ),
             'view'       => __CLASS__
         ));

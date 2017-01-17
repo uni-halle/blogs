@@ -22,9 +22,9 @@ return array(
         'title'       => 'AAM Redirect',
         'id'          => 'AAM Redirect',
         'type'        => 'commercial',
-        'price'       => '$20 <small>USD</small>',
+        'price'       => '$10 <small>USD</small>',
         'new'         => true,
-        'description' => 'Define custom redirect or "Access Denied" message for each role, individual user or visitors. <a href="http://vasyltech.com/blog/aam-redirect-extension" target="_blank">Read more.</a>',
+        'description' => 'Setup customized redirect or "Access Denied" message for each role, individual user or visitors. <a href="http://vasyltech.com/blog/aam-redirect-extension" target="_blank">Read more.</a>',
         'storeURL'    => 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QAM3P45X6PKUU',
         'status'      => AAM_Core_Repository::getInstance()->extensionStatus('AAM Redirect'),
         'version'     => AAM_Core_Repository::getInstance()->getExtensionVersion('AAM Redirect')
@@ -35,10 +35,21 @@ return array(
         'type'        => 'commercial',
         'price'       => '$10 <small>USD</small>',
         'new'         => true,
-        'description' => 'Define custom teaser message for each role, individual user or visitors. <a href="http://vasyltech.com/blog/aam-content-teaser" target="_blank">Read more.</a>',
+        'description' => 'Setup customized teaser message for any user role, individual user or visitors. <a href="http://vasyltech.com/blog/aam-content-teaser" target="_blank">Read more.</a>',
         'storeURL'    => 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3NG4CZX3WEH7L',
         'status'      => AAM_Core_Repository::getInstance()->extensionStatus('AAM Content Teaser'),
         'version'     => AAM_Core_Repository::getInstance()->getExtensionVersion('AAM Content Teaser')
+    ),
+    array(
+        'title'       => 'AAM Login Redirect',
+        'id'          => 'AAM Login Redirect',
+        'type'        => 'commercial',
+        'price'       => '$10 <small>USD</small>',
+        'new'         => true,
+        'description' => 'Setup customized login redirect for any user or user role. <a href="http://vasyltech.com/blog/aam-login-redirect" target="_blank">Read more.</a>',
+        'storeURL'    => 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PQCF4AEK856TG',
+        'status'      => AAM_Core_Repository::getInstance()->extensionStatus('AAM Login Redirect'),
+        'version'     => AAM_Core_Repository::getInstance()->getExtensionVersion('AAM Login Redirect')
     ),
     array(
         'title'       => 'AAM Role Hierarchy',
@@ -79,6 +90,15 @@ return array(
         'description' => 'Convenient way to navigate between different sites in the Network Admin Panel.',
         'status'      => AAM_Core_Repository::getInstance()->extensionStatus('AAM Multisite'),
         'version'     => AAM_Core_Repository::getInstance()->getExtensionVersion('AAM Multisite')
+    ),
+    array(
+        'title'       => 'AAM ConfigPress',
+        'id'          => 'AAM ConfigPress',
+        'type'        => 'GNU',
+        'license'     => 'AAMCONFIGPRESS',
+        'description' => 'Extension to manage AAM core functionality with advanced configuration settings.',
+        'status'      => AAM_Core_Repository::getInstance()->extensionStatus('AAM ConfigPress'),
+        'version'     => AAM_Core_Repository::getInstance()->getExtensionVersion('AAM ConfigPress')
     ),
     array(
         'title'       => 'CodePinch',

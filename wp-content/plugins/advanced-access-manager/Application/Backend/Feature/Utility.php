@@ -91,9 +91,7 @@ class AAM_Backend_Feature_Utility  extends AAM_Backend_Feature_Abstract {
             'title'      => __('Utilities', AAM_KEY),
             'capability' => $cap,
             'subjects'   => array(
-                'AAM_Core_Subject_Role', 
-                'AAM_Core_Subject_User', 
-                'AAM_Core_Subject_Visitor'
+                'AAM_Core_Subject_Role'
             ),
             'view'       => __CLASS__
         ));

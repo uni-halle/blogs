@@ -8,12 +8,12 @@
  */
 
 /**
- * Content teaser manager
+ * Login redirect
  * 
  * @package AAM
  * @author Vasyl Martyniuk <vasyl@vasyltech.com>
  */
-class AAM_Backend_Feature_Teaser extends AAM_Backend_Feature_Abstract {
+class AAM_Backend_Feature_LoginRedirect extends AAM_Backend_Feature_Abstract {
     
     /**
      * 
@@ -26,7 +26,7 @@ class AAM_Backend_Feature_Teaser extends AAM_Backend_Feature_Abstract {
         if ($this->isDefault()) {
             AAM_Core_Config::set($param, $value);
         } else {
-            do_action('aam-action-teaser-save', $subject, $param, $value);
+            do_action('aam-login-redirect-save-action', $subject, $param, $value);
         }
         
         return json_encode(array('status' => 'success'));
@@ -37,7 +37,7 @@ class AAM_Backend_Feature_Teaser extends AAM_Backend_Feature_Abstract {
      * @return type
      */
     public function reset() {
-        do_action('aam-action-teaser-reset', AAM_Backend_View::getSubject());
+        do_action('aam-login-redirect-reset-action', AAM_Backend_View::getSubject());
         
         return json_encode(array('status' => 'success')); 
     }
@@ -61,7 +61,7 @@ class AAM_Backend_Feature_Teaser extends AAM_Backend_Feature_Abstract {
         if (!$this->isDefault()) {
             $subject = AAM_Backend_View::getSubject();
             $value = apply_filters(
-                    'aam-filter-teaser-option', $value, $option, $subject
+                    'aam-login-redirect-option-filter', $value, $option, $subject
             );
         }
         
@@ -72,14 +72,14 @@ class AAM_Backend_Feature_Teaser extends AAM_Backend_Feature_Abstract {
      * @inheritdoc
      */
     public static function getAccessOption() {
-        return 'feature.teaser.capability';
+        return 'feature.login-redirect.capability';
     }
     
     /**
      * @inheritdoc
      */
     public static function getTemplate() {
-        return 'object/teaser.phtml';
+        return 'object/login-redirect.phtml';
     }
     
     /**
@@ -93,14 +93,13 @@ class AAM_Backend_Feature_Teaser extends AAM_Backend_Feature_Abstract {
         $cap = AAM_Core_Config::get(self::getAccessOption(), 'administrator');
         
         AAM_Backend_Feature::registerFeature((object) array(
-            'uid'        => 'teaser',
+            'uid'        => 'login_redirect',
             'position'   => 40,
-            'title'      => __('Content Teaser', AAM_KEY),
+            'title'      => __('Login Redirect', AAM_KEY),
             'capability' => $cap,
             'subjects'   => array(
                 'AAM_Core_Subject_Role', 
                 'AAM_Core_Subject_User', 
-                'AAM_Core_Subject_Visitor',
                 'AAM_Core_Subject_Default'
             ),
             'view'       => __CLASS__

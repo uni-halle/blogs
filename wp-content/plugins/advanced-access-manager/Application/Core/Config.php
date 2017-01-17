@@ -55,13 +55,11 @@ class AAM_Core_Config {
      * @static
      */
     public static function get($option, $default = null) {
-        if (isset(self::$config[$option])) {
-            $value = self::$config[$option];
-        } else { //try to get option from ConfigPress
-            $value = self::readConfigPress($option, $default);
+        if (!isset(self::$config[$option])) {
+            self::$config[$option] = self::readConfigPress($option, $default);
         }
         
-        return apply_filters('aam-filter-config-get', $value, $option);
+        return apply_filters('aam-filter-config-get', self::$config[$option], $option);
     }
     
     /**
@@ -93,7 +91,9 @@ class AAM_Core_Config {
      * @static
      */
     protected static function readConfigPress($param, $default = null) {
-        if (class_exists('ConfigPress')) {
+        if (defined('AAM_CONFIGPRESS')) {
+            $config = AAM_ConfigPress::get('aam.' . $param, $default);
+        } elseif (class_exists('ConfigPress')) {
             $config = ConfigPress::get('aam.' . $param, $default);
         } else {
             $config = $default;

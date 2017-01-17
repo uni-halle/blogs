@@ -680,12 +680,8 @@
  */
 (function ($) {
 
-    /**
-     * 
-     * @returns {undefined}
-     */
-    function initialize() {
-        $('#manage-visitor').bind('click', function (event) {
+    $('document').ready(function() {
+         $('#manage-visitor').bind('click', function (event) {
             event.preventDefault();
             aam.setSubject('visitor', null, aam.__('Anonymous'), 0);
             $('i.icon-cog', $(this)).attr('class', 'icon-spin4 animate-spin');
@@ -694,11 +690,29 @@
             //hide post & pages access control groups that belong to backend
             $('.aam-backend-post-access').hide();
         });
-    }
+    });
+    
+})(jQuery);
 
-    //add setSubject hook
-    aam.addHook('init', initialize);
+/**
+ * Default Interface
+ * 
+ * @param {jQuery} $
+ * 
+ * @returns {void}
+ */
+(function ($) {
 
+    $('document').ready(function() {
+        $('#manage-default').bind('click', function (event) {
+            event.preventDefault();
+            aam.setSubject('default', null, aam.__('All Users, Roles and Visitor'), 0);
+            $('i.icon-cog', $(this)).attr('class', 'icon-spin4 animate-spin');
+            aam.fetchContent();
+            $('i.icon-spin4', $(this)).attr('class', 'icon-cog');
+        });
+    });
+    
 })(jQuery);
 
 
@@ -1400,6 +1414,13 @@
             success: function (response) {
                 if (response.status === 'failure') {
                     aam.notification('danger', response.error);
+                } else {
+                    $('#post-overwritten').removeClass('hidden');
+                    //add some specific attributes to reset button
+                    $('#post-reset').attr({
+                        'data-type': object,
+                        'data-id': object_id
+                    });
                 }
                 result = response;
             },
@@ -1590,10 +1611,6 @@
                         $('#post-overwritten').addClass('hidden');
                         loadAccessForm(type, id);
                     }
-                },
-                error: function () {
-                },
-                complete: function () {
                 }
             });
         });
@@ -1653,6 +1670,7 @@
             }
         });
     }
+    
     /**
      * 
      * @returns {undefined}
@@ -1664,6 +1682,72 @@
             $(this).bind('click', function () {
                 //hide group
                 $('.' + $(this).data('group')).hide();
+                
+                //show the specific one
+                $($(this).data('action')).show();
+                
+                //save redirect type
+                save($(this).attr('name'), $(this).val());
+            });
+        });
+        
+        $('input[type="text"],select,textarea', container).each(function () {
+            $(this).bind('change', function () {
+                //save redirect type
+                save($(this).attr('name'), $(this).val());
+            });
+        });
+    }
+
+    aam.addHook('init', initialize);
+
+})(jQuery);
+
+/**
+ * Login Redirect Interface
+ * 
+ * @param {jQuery} $
+ * 
+ * @returns {void}
+ */
+(function ($) {
+
+    /**
+     * 
+     * @param {type} param
+     * @param {type} value
+     * @returns {undefined}
+     */
+    function save(param, value) {
+        $.ajax(aamLocal.ajaxurl, {
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                action: 'aam',
+                sub_action: 'LoginRedirect.save',
+                _ajax_nonce: aamLocal.nonce,
+                subject: aam.getSubject().type,
+                subjectId: aam.getSubject().id,
+                param: param,
+                value: value
+            },
+            error: function () {
+                aam.notification('danger', aam.__('Application error'));
+            }
+        });
+    }
+    
+    /**
+     * 
+     * @returns {undefined}
+     */
+    function initialize() {
+        var container = '#login_redirect-content';
+        
+        $('input[type="radio"]', container).each(function () {
+            $(this).bind('click', function () {
+                //hide all fields
+                $('.login-redirect-action').hide();
                 
                 //show the specific one
                 $($(this).data('action')).show();
@@ -1990,19 +2074,10 @@
                 //show feature content
                 $('#' + $(this).data('feature') + '-content').addClass('active');
                 location.hash = $(this).data('feature');
+                //trigger hook
+                aam.triggerHook('menu-feature-click', $(this).data('feature'));
             });
         });
-        
-        var item = $('li:eq(0)', '#feature-list');
-        
-        if (location.hash !== '') {
-            var hash = location.hash.substr(1);
-            if ($('li[data-feature="' + hash + '"]', '#feature-list').length) {
-                item = $('li[data-feature="' + hash + '"]', '#feature-list');
-            }
-        }
-        
-        item.trigger('click');
     }
 
     /**
@@ -2036,6 +2111,17 @@
                 initializeMenu();
                 //trigger initialization hook
                 aam.triggerHook('init');
+                //activate one of the menu items
+                var item = $('li:eq(0)', '#feature-list');
+        
+                if (location.hash !== '') {
+                    var hash = location.hash.substr(1);
+                    if ($('li[data-feature="' + hash + '"]', '#feature-list').length) {
+                        item = $('li[data-feature="' + hash + '"]', '#feature-list');
+                    }
+                }
+
+                item.trigger('click');
             }
         });
     };

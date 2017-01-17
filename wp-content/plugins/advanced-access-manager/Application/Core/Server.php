@@ -33,10 +33,21 @@ final class AAM_Core_Server {
      */
     public static function check() {
         $domain   = parse_url(site_url(), PHP_URL_HOST);
-        $response = self::send(
-                self::SERVER_URL . '/check?domain=' . urlencode($domain) 
-        );
+        
+        //prepare check params
+        $params = array('domain' => $domain, 'extensions' => array());
+        
+        //add list of all premium installed extensions
+        foreach(AAM_Core_Repository::getInstance()->getExtensionList() as $ext) {
+            if ($ext->status !== AAM_Core_Repository::STATUS_DOWNLOAD 
+                    && ($ext->price !== 'Free')) {
+                $params['extensions'][$ext->title] = (isset($ext->license) ? $ext->license : null);
+            }
+        }
+        
+        $response = self::send(self::SERVER_URL . '/check', $params);
         $result   = array();
+        
         if (!is_wp_error($response)) {
             //WP Error Fix bug report
             if ($response->error !== true && !empty($response->products)) {
@@ -59,10 +70,10 @@ final class AAM_Core_Server {
     public static function download($license) {
         $host = parse_url(site_url(), PHP_URL_HOST);
 
-        $url  = self::SERVER_URL . '/download?license=' . urlencode($license);
-        $url .= '&domain=' . urlencode($host);
-        
-        $response = self::send($url);
+        $response = self::send(
+                self::SERVER_URL . '/download', 
+                array('license' => $license, 'domain' => $host)
+        );
         
         if (!is_wp_error($response)) {
             if ($response->error === true) {
@@ -86,8 +97,8 @@ final class AAM_Core_Server {
      * 
      * @access protected
      */
-    protected static function send($request) {
-        $response = AAM_Core_API::cURL($request, false);
+    protected static function send($request, $params) {
+        $response = AAM_Core_API::cURL($request, false, $params);
 
         if (!is_wp_error($response)) {
             $response = json_decode($response['body']);

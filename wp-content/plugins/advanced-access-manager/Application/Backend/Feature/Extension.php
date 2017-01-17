@@ -46,6 +46,9 @@ class AAM_Backend_Feature_Extension extends AAM_Backend_Feature_Abstract {
         $filtered = array();
         foreach($products as $product) {
             if ($product['type'] == $filter) {
+                if (!isset($product['license'])) {
+                    $product['license'] = $this->retrieveLicense($product['id']);
+                }
                 $filtered[] = $product;
             }
         }
@@ -136,8 +139,8 @@ class AAM_Backend_Feature_Extension extends AAM_Backend_Feature_Abstract {
     /**
      * Install extension failure response
      * 
-     * In case the filesystem fails, AAM allows to download the extension for
-     * manuall installation
+     * In case the file system fails, AAM allows to download the extension for
+     * manual installation
      * 
      * @param string   $error
      * @param stdClass $package
@@ -177,6 +180,18 @@ class AAM_Backend_Feature_Extension extends AAM_Backend_Feature_Abstract {
     }
     
     /**
+     * 
+     * @param type $title
+     * @return type
+     */
+    protected function retrieveLicense($title) {
+        //retrieve the installed list of extensions
+        $list = AAM_Core_API::getOption('aam-extension-license', array());
+        
+        return (isset($list[$title]) ? $list[$title] : null);
+    }
+    
+    /**
      * Register Extension feature
      * 
      * @return void
@@ -193,9 +208,7 @@ class AAM_Backend_Feature_Extension extends AAM_Backend_Feature_Abstract {
             'capability'   => $cap,
             'notification' => self::getNotification(),
             'subjects'     => array(
-                'AAM_Core_Subject_Role', 
-                'AAM_Core_Subject_User', 
-                'AAM_Core_Subject_Visitor'
+                'AAM_Core_Subject_Role'
             ),
             'view'         => __CLASS__
         ));

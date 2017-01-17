@@ -54,13 +54,9 @@ class AAM_Core_Media {
      * @access protected
      */
     protected function checkMediaAccess() {
-        $directory = wp_get_upload_dir();
-        
-        $abspath = str_replace('\\', '/', ABSPATH);
-        $uploads = str_replace('\\', '/', $directory['basedir']);
         $request = AAM_Core_Request::server('REQUEST_URI');
         
-        if (strpos($request, str_replace($abspath, '/', $uploads)) === 0) {
+        if ($this->isMediaRequest($request)) {
             $media = $this->findMedia($request);
             $area  = (is_admin() ? 'backend' : 'frontend');
             
@@ -71,7 +67,27 @@ class AAM_Core_Media {
                     $area, array('object' => $media, 'action' => "{$area}.read")
                 );
             }
+        } else {
+            $this->printMedia();
         }
+    }
+    
+    /**
+     * 
+     * @param type $request
+     * @return type
+     */
+    protected function isMediaRequest($request) {
+        $directory = wp_get_upload_dir();
+        
+        $abspath = str_replace('\\', '/', ABSPATH);
+        $uploads = str_replace('\\', '/', $directory['basedir']);
+        
+        return apply_filters(
+                'aam-media-request', 
+                (strpos($request, str_replace($abspath, '/', $uploads)) === 0),
+                $request
+        );
     }
     
     /**
@@ -83,7 +99,7 @@ class AAM_Core_Media {
         $request = AAM_Core_Request::server('REQUEST_URI');
             
         if (is_null($media)) {
-            $media   = $this->findMedia($request);
+            $media = $this->findMedia($request);
         }
         
         if (!empty($media)) {
@@ -111,7 +127,11 @@ class AAM_Core_Media {
         global $wpdb;
         
         $s  = addslashes(preg_replace('/(-[\d]+x[\d]+)(\.[\w]+)$/', '$2', $uri));
-        $id = $wpdb->get_var("SELECT ID FROM {$wpdb->posts} WHERE guid LIKE '%$s'");
+        $id = apply_filters(
+                'aam-find-media',  
+                $wpdb->get_var("SELECT ID FROM {$wpdb->posts} WHERE guid LIKE '%$s'"), 
+                $uri
+        );
         
         return ($id ? AAM::getUser()->getObject('post', $id) : null);
     }

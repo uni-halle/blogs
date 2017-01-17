@@ -8,28 +8,41 @@
  */
 
 /**
- * Visitor subject
+ * Default subject
  * 
  * @package AAM
  * @author Vasyl Martyniuk <vasyl@vasyltech.com>
  */
-class AAM_Core_Subject_Visitor extends AAM_Core_Subject {
+class AAM_Core_Subject_Default extends AAM_Core_Subject {
 
     /**
-     * Subject UID: VISITOR
+     * Subject UID: DEFAULT
      */
-    const UID = 'visitor';
+    const UID = 'default';
 
     /**
      *
      * @param type $value
      * @param type $object
-     * @param type $id
+     * @param type $object_id
      * @return type
      */
-    public function updateOption($value, $object, $id = 0) {
+    public function updateOption($value, $object, $object_id = 0) {
         return AAM_Core_API::updateOption(
-                        $this->getOptionName($object, $id), $value
+                        $this->getOptionName($object, $object_id), $value
+        );
+    }
+
+    /**
+     *
+     * @param type $object
+     * @param type $object_id
+     * @param type $default
+     * @return type
+     */
+    public function readOption($object, $object_id = 0, $default = null) {
+        return AAM_Core_API::getOption(
+                        $this->getOptionName($object, $object_id), $default
         );
     }
 
@@ -37,22 +50,10 @@ class AAM_Core_Subject_Visitor extends AAM_Core_Subject {
      *
      * @param type $object
      * @param type $id
-     * @return type
-     */
-    public function readOption($object, $id = 0) {
-        return AAM_Core_API::getOption(
-                        $this->getOptionName($object, $id)
-        );
-    }
-
-    /**
-     * 
-     * @param type $object
-     * @param type $id
-     * @return type
+     * @return string
      */
     public function getOptionName($object, $id) {
-        return 'aam_' . self::UID . "_{$object}" . ($id ? "_{$id}" : '');
+        return "aam_{$object}" . ($id ? "_{$id}_" : '_') . self::UID;
     }
 
     /**

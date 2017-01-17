@@ -251,13 +251,6 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
     }
     
     /**
-     * @inheritdoc
-     */
-    public function hasParent() {
-        return true;
-    }
-
-    /**
      * Get Subject UID
      *
      * @return string

@@ -23,7 +23,7 @@ class AAM_Backend_Feature_Redirect extends AAM_Backend_Feature_Abstract {
         $value   = AAM_Core_Request::post('value');
         $subject = AAM_Backend_View::getSubject();
         
-        if ($this->isAdministrator()) {
+        if ($this->isDefault()) {
             AAM_Core_Config::set($param, $value);
         } else {
             do_action('aam-action-redirect-save', $subject, $param, $value);
@@ -46,11 +46,8 @@ class AAM_Backend_Feature_Redirect extends AAM_Backend_Feature_Abstract {
      * 
      * @return type
      */
-    public function isAdministrator() {
-        $subject = AAM_Backend_View::getSubject();
-        $adminId = AAM_Core_Config::get('core.admin.id', 'administrator');
-        
-        return ($subject->getUID() == 'role' && $subject->getId() == $adminId);
+    public function isDefault() {
+        return AAM_Backend_View::getSubject()->getUID() == 'default';
     }
     
     /**
@@ -61,7 +58,7 @@ class AAM_Backend_Feature_Redirect extends AAM_Backend_Feature_Abstract {
     public function getOption($option, $default = null) {
         $value = AAM_Core_Config::get($option, $default);
         
-        if (!$this->isAdministrator()) {
+        if (!$this->isDefault()) {
             $subject = AAM_Backend_View::getSubject();
             $value = apply_filters(
                     'aam-filter-redirect-option', $value, $option, $subject
@@ -98,12 +95,13 @@ class AAM_Backend_Feature_Redirect extends AAM_Backend_Feature_Abstract {
         AAM_Backend_Feature::registerFeature((object) array(
             'uid'        => 'redirect',
             'position'   => 30,
-            'title'      => __('Redirect', AAM_KEY),
+            'title'      => __('Access Denied Redirect', AAM_KEY),
             'capability' => $cap,
             'subjects'   => array(
                 'AAM_Core_Subject_Role', 
                 'AAM_Core_Subject_User', 
-                'AAM_Core_Subject_Visitor'
+                'AAM_Core_Subject_Visitor',
+                'AAM_Core_Subject_Default'
             ),
             'view'       => __CLASS__
         ));

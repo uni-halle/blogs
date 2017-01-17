@@ -39,7 +39,7 @@ class AAM_Frontend_Manager {
     public function __construct() {
         if (AAM_Core_Config::get('frontend-access-control', true)) {
             //login hook
-            add_action('wp_login', array($this, 'login'), 10, 2);
+            add_action('wp_login', array($this, 'login'), 999);
         
             //control WordPress frontend
             add_action('wp', array($this, 'wp'), 999);
@@ -70,9 +70,31 @@ class AAM_Frontend_Manager {
      * @param type $login
      * @param type $user
      */
-    public function login($login, $user = null) {
+    public function login() {
+        $user = wp_get_current_user();
+        
         if (is_a($user, 'WP_User')) {
-            AAM_Core_API::deleteOption('aam-user-switch-' . $user->ID); 
+            AAM_Core_API::deleteOption('aam-user-switch-' . $user->ID);
+            
+            $subject = new AAM_Core_Subject_User($user->ID);
+            
+            //if Login redirect is defined
+            $type = apply_filters(
+                'aam-login-redirect-option-filter', 
+                AAM_Core_Config::get('login.redirect.type', 'default'),
+                'login.redirect.type',
+                $subject
+            );
+            
+            if ($type !== 'default') {
+                $redirect = apply_filters(
+                    'aam-login-redirect-option-filter', 
+                    AAM_Core_Config::get("login.redirect.{$type}"),
+                    "login.redirect.{$type}",
+                    $subject
+                );
+                AAM_Core_API::redirect($redirect);
+            }
         }
     }
 
@@ -124,7 +146,7 @@ class AAM_Frontend_Manager {
      * @return type
      */
     protected function getCurrentPost() {
-        global $wp_query;
+        global $wp_query, $post;
         
         $current = null;
         
@@ -158,8 +180,14 @@ class AAM_Frontend_Manager {
         $object = AAM::getUser()->getObject('post', $post->ID);
         $read   = $object->has('frontend.read');
         $others = $object->has('frontend.read_others');
+        
+        $restrict = apply_filters(
+                'aam-check-post-read-access-filer',
+                ($read || ($others && !$this->isAuthor($post))),
+                $object
+        );
 
-        if ($read || ($others && !$this->isAuthor($post))) {
+        if ($restrict) {
             AAM_Core_API::reject(
                 'frontend', 
                 array('object' => $object, 'action' => 'frontend.read')

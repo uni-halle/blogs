@@ -2,7 +2,7 @@
     <div class="aam-feature" id="redirect-content">
         <div class="row">
             <div class="col-xs-12">
-                <?php if ($this->isAdministrator() || defined('AAM_REDIRECT')) {  ?>
+                <?php if ($this->isDefault() || defined('AAM_REDIRECT')) {  ?>
                     <?php echo apply_filters('aam-redirect-ui-filter', AAM_Backend_View::getInstance()->loadPartial('redirect.phtml')); ?>
                 <?php } ?>
             </div>
@@ -10,7 +10,7 @@
 
         <div class="row">
             <div class="col-xs-12">
-                <?php if ($this->isAdministrator() || defined('AAM_REDIRECT')) {  ?>
+                <?php if ($this->isDefault() || defined('AAM_REDIRECT')) {  ?>
                     <div>
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active"><a href="#frontend-redirect" aria-controls="frontend-redirect" role="tab" data-toggle="tab"><i class="icon-home"></i> <?php echo __('Frontend Redirect', AAM_KEY); ?></a></li>
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="radio">
                                     <input type="radio" name="frontend.redirect.type" id="frontend-redirect-url" data-action="#frontend-url-action" value="url" data-group="frontend-redirect"<?php echo ($frontendType == 'url' ? ' checked' : ''); ?> />
-                                    <label for="frontend-redirect-url"><?php echo AAM_Backend_View_Helper::preparePhrase('Redirected to custom URL [(valid URL is required)]', 'small'); ?></label>
+                                    <label for="frontend-redirect-url"><?php echo AAM_Backend_View_Helper::preparePhrase('Redirected to the URL [(enter valid URL starting from http or https)]', 'small'); ?></label>
                                 </div>
                                 <div class="radio">
                                     <input type="radio" name="frontend.redirect.type" id="frontend-redirect-callback" data-action="#frontend-callback-action" value="callback" data-group="frontend-redirect"<?php echo ($frontendType == 'callback' ? ' checked' : ''); ?> />
@@ -57,14 +57,14 @@
                                         'echo' => 1,
                                         'name' => 'frontend.redirect.page',
                                         'id' => 'frontend-page', // string
-                                        'class' => 'forn-control', // string
+                                        'class' => 'form-control', // string
                                         'show_option_none' => __('-- Select Page --', AAM_KEY) // string
                                     ));
                                     ?> 
                                 </div>
 
                                 <div class="form-group aam-redirect-action frontend-redirect" id="frontend-url-action" style="display: <?php echo ($frontendType == 'url' ? 'block' : 'none'); ?>;">
-                                    <label for="frontend-url"><?php echo __('Custom URL', AAM_KEY); ?></label>
+                                    <label for="frontend-url"><?php echo __('The URL', AAM_KEY); ?></label>
                                     <input type="text" class="form-control" name="frontend.redirect.url" placeholder="http://" value="<?php echo $this->getOption('frontend.redirect.url'); ?>" />
                                 </div>
 
@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="radio">
                                     <input type="radio" name="backend.redirect.type" id="backend-redirect-url" data-action="#backend-url" value="url" data-group="backend-redirect"<?php echo ($backendType == 'url' ? ' checked' : ''); ?> />
-                                    <label for="backend-redirect-url"><?php echo AAM_Backend_View_Helper::preparePhrase('Redirected to custom URL [(valid URL is required)]', 'small'); ?></label>
+                                    <label for="backend-redirect-url"><?php echo AAM_Backend_View_Helper::preparePhrase('Redirected to the URL [(enter valid URL starting from http or https)]', 'small'); ?></label>
                                 </div>
                                 <div class="radio">
                                     <input type="radio" name="backend.redirect.type" id="backend-redirect-callback" data-action="#backend-callback-action" value="callback" data-group="backend-redirect"<?php echo ($backendType == 'callback' ? ' checked' : ''); ?> />
@@ -97,7 +97,7 @@
                                 </div>
 
                                 <div class="form-group aam-redirect-action backend-redirect" id="backend-url" style="display: <?php echo ($backendType == 'url' ? 'block' : 'none'); ?>;">
-                                    <label for="backend-url"><?php echo __('Custom URL', AAM_KEY); ?></label>
+                                    <label for="backend-url"><?php echo __('The URL', AAM_KEY); ?></label>
                                     <input type="text" class="form-control" placeholder="http://" name="backend.redirect.url" value="<?php echo $this->getOption('backend.redirect.url'); ?>" />
                                 </div>
                                 <div class="form-group aam-redirect-action backend-redirect" id="backend-callback-action" style="display: <?php echo ($backendType == 'callback' ? 'block' : 'none'); ?>;">
@@ -109,7 +109,7 @@
                     </div>
                 <?php } else { ?>
                     <p class="aam-notification">
-                        <?php echo sprintf(AAM_Backend_View_Helper::preparePhrase('In order to setup customized redirect for any user or role, consider to purchase [AAM Redirect] extension. Otherwise switch back to [%s] role to setup [default] access to all users and roles.', 'b', 'b', 'b'), translate_user_role('Administrator')); ?>
+                        <?php echo AAM_Backend_View_Helper::preparePhrase('You are allowed to setup only the [default] access denied redirect for all users, roles and visitor. With [AAM Redirect] extension you can customize redirect for any user, role or visitors.', 'b', 'b'); ?>
                     </p>
                 <?php } ?>
             </div>

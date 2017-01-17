@@ -29,7 +29,7 @@ class AAM_Autoloader {
     public static function add($classname, $filepath) {
         self::$classmap[$classname] = $filepath;
     }
-
+    
     /**
      * Autoloader for project Advanced Access Manager
      *

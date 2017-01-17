@@ -73,7 +73,7 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
         $subject = $this->getSubject();
         $opname  = $this->getOptionName();
         $chname  = $opname . '|' . $this->getPost()->ID;
-
+        
         //read cache first
         $option = AAM_Core_Cache::get($chname);
         
@@ -129,6 +129,8 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
      * @access public
      */
     public function reset() {
+        AAM_Core_Cache::clear();
+        
         return delete_post_meta($this->getPost()->ID, $this->getOptionName());
     }
 

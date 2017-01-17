@@ -93,7 +93,7 @@ final class AAM_Core_API {
      * 
      * @access public
      */
-    public static function cURL($url, $send_cookies = TRUE) {
+    public static function cURL($url, $send_cookies = TRUE, $params = array()) {
         $header = array('User-Agent' => AAM_Core_Request::server('HTTP_USER_AGENT'));
 
         $cookies = AAM_Core_Request::cookie(null, array());
@@ -111,6 +111,8 @@ final class AAM_Core_API {
 
         return wp_remote_request($url, array(
             'headers' => $header,
+            'method'  => 'POST',
+            'body'    => $params,
             'cookies' => $requestCookies,
             'timeout' => 5
         ));
@@ -201,7 +203,7 @@ final class AAM_Core_API {
                 "{$area}.redirect.type",
                 AAM::getUser()
         );
-        
+                
         if (!empty($type)) {
             $redirect = apply_filters(
                 'aam-filter-redirect-option',
@@ -218,17 +220,17 @@ final class AAM_Core_API {
     
     /**
      * 
-     * @param type $redirect
+     * @param type $location
      * @param type $area
      * @param type $args
      */
-    protected static function redirect($redirect, $area , $args) {
-        if (filter_var($redirect, FILTER_VALIDATE_URL)) {
-            wp_redirect($redirect);
-        } elseif (preg_match('/^[\d]+$/', $redirect)) {
-            wp_redirect(get_post_permalink($redirect));
-        } elseif (is_callable($redirect)) {
-            call_user_func($redirect, $args);
+    public static function redirect($location, $area = null, $args = null) {
+        if (filter_var($location, FILTER_VALIDATE_URL)) {
+            wp_redirect($location);
+        } elseif (preg_match('/^[\d]+$/', $location)) {
+            wp_redirect(get_post_permalink($location));
+        } elseif (is_callable($location)) {
+            call_user_func($location, $args);
         } elseif (!empty($args['callback']) && is_callable($args['callback'])) {
             $message = self::getDenyMessage($area);
             call_user_func($args['callback'], $message, '', array());

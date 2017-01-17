@@ -32,6 +32,9 @@ class AAM_Backend_Manager {
      * @access protected
      */
     protected function __construct() {
+        //check if user is allowed to see backend
+        $this->checkUserAccess();
+        
         //check if user switch is required
         $this->checkUserSwitch();
         
@@ -90,6 +93,19 @@ class AAM_Backend_Manager {
     /**
      * 
      */
+    protected function checkUserAccess() {
+        $all = AAM_Core_API::getAllCapabilities();
+        
+        if (isset($all['access_dashboard']) && get_current_user_id()) {
+            if (empty(AAM::getUser()->allcaps['access_dashboard'])) {
+                AAM_Core_API::reject('backend');
+            }
+        }
+    }
+    
+    /**
+     * 
+     */
     protected function checkUserSwitch() {
         if (AAM_Core_Request::get('action') == 'aam-switch-back') {
             $current  = get_current_user_id();
@@ -113,15 +129,21 @@ class AAM_Backend_Manager {
      * 
      */
     protected function checkExtensionList() {
-        $list = AAM_Core_API::getOption('aam-extension-repository', array());
-        $repo = AAM_Core_Repository::getInstance();
+        $list = AAM_Core_Repository::getInstance()->getExtensionList();
         
-        foreach((is_array($list) ? $list : array()) as $extension) {
-            $status = $repo->extensionStatus($extension->title);
-            if ($status == AAM_Core_Repository::STATUS_UPDATE) {
+        foreach($list as $extension) {
+            if ($extension->status == AAM_Core_Repository::STATUS_UPDATE) {
                 AAM_Core_Console::add(
                     sprintf(
                         __('Extension %s has new update available for download.'), 
+                        $extension->title
+                    )
+                );
+            }
+            if (!empty($extension->violation) && ($extension->status != AAM_Core_Repository::STATUS_DOWNLOAD)) {
+                AAM_Core_Console::add(
+                    sprintf(
+                        __('Extension %s is not licensed for this website and will be removed automatically at any time. Insert correct license on the Extensions tab or contact us immediately.'), 
                         $extension->title
                     )
                 );
@@ -301,10 +323,7 @@ class AAM_Backend_Manager {
      */
     public function printJavascript() {
         if (AAM::isAAM()) {
-            wp_enqueue_script('aam-bt', AAM_MEDIA . '/js/bootstrap.min.js');
-            wp_enqueue_script('aam-dt', AAM_MEDIA . '/js/datatables.min.js');
-            wp_enqueue_script('aam-dwn', AAM_MEDIA . '/js/download.min.js');
-            wp_enqueue_script('aam-utl-tg', AAM_MEDIA . '/js/toggle.min.js');
+            wp_enqueue_script('aam-vendor', AAM_MEDIA . '/js/vendor.js');
             wp_enqueue_script('aam-main', AAM_MEDIA . '/js/aam.js');
             
             //add plugin localization

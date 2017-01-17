@@ -192,29 +192,29 @@ class AAM_Core_Repository {
      * upper case and replacing the white spaces with underscore "_" 
      * (e.g AAM Plus Package defines the contant AAM_PLUS_PACKAGE). 
      * 
-     * @param string $title
+     * @param string $id
      * 
      * @return string
      * 
      * @access public
      */
-    public function extensionStatus($title) {
+    public function extensionStatus($id) {
         static $cache = null;
         
         $status = self::STATUS_INSTALLED;
-        $const = str_replace(' ', '_', strtoupper($title));
+        $const = str_replace(' ', '_', strtoupper($id));
         
         if (is_null($cache)) {
-            $cache = $this->prepareExtensionCache();
+            $cache = $this->getExtensionList();
         }
         
         if (!defined($const)) { //extension does not exist
             $status = self::STATUS_DOWNLOAD;
-        } elseif (!empty($cache[$title])) {
+        } elseif (!empty($cache[$id])) {
             //Check if user has the latest extension. Also ignore if there is no 
             //license stored for this extension
-            $version = version_compare(constant($const), $cache[$title]->version);
-            if ($version == -1 && !empty($cache[$title]->license)) { 
+            $version = version_compare(constant($const), $cache[$id]->version);
+            if ($version == -1 && !empty($cache[$id]->license)) { 
                 $status = self::STATUS_UPDATE;
             }
         }
@@ -251,7 +251,7 @@ class AAM_Core_Repository {
      * 
      * @return type
      */
-    protected function prepareExtensionCache() {
+    public function getExtensionList() {
         if (empty($this->cache)) {
             $list     = AAM_Core_API::getOption('aam-extension-repository', array());
             $licenses = AAM_Core_API::getOption('aam-extension-license', array());
@@ -265,10 +265,22 @@ class AAM_Core_Repository {
                 if (isset($licenses[$row->title])) {
                     $this->cache[$row->title]->license = $licenses[$row->title];
                 }
+                $this->cache[$row->title]->status = $this->extensionStatus($row->title);
             }
         }
         
         return $this->cache;
+    }
+    
+    /**
+     * 
+     * @param type $title
+     * @return type
+     */
+    public function hasViolation($title) {
+        $list = $this->getExtensionList();
+        
+        return (!empty($list[$title]->violation));
     }
 
     /**

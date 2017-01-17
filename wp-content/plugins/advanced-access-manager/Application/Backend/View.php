@@ -57,6 +57,7 @@ class AAM_Backend_View {
         AAM_Backend_Feature_Post::register();
         AAM_Backend_Feature_Redirect::register();
         AAM_Backend_Feature_Teaser::register();
+        AAM_Backend_Feature_LoginRedirect::register();
         AAM_Backend_Feature_Extension::register();
         AAM_Backend_Feature_Utility::register();
         AAM_Backend_Feature_Contact::register();

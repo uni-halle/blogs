@@ -2,8 +2,8 @@
 
 /**
   Plugin Name: Advanced Access Manager
-  Description: Manage User and Role Access to WordPress Backend and Frontend.
-  Version: 3.9.2.2
+  Description: Manage website access for any user, role or visitors
+  Version: 3.9.5.1
   Author: Vasyl Martyniuk <vasyl@vasyltech.com>
   Author URI: https://www.vasyltech.com
 
@@ -53,7 +53,7 @@ class AAM {
         } else {
             $this->setUser(new AAM_Core_Subject_Visitor(''));
         }
-        
+
         //load AAM core config
         AAM_Core_Config::bootstrap();
     }

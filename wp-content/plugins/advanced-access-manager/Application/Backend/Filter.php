@@ -207,12 +207,13 @@ class AAM_Backend_Filter {
      * @access public
      */
     public function adminActionEdit() {
-        global $post;
+        $post = $this->getPost();
         
         if (is_a($post, 'WP_Post')) {
             $object = AAM::getUser()->getObject('post', $post->ID);
             $edit   = $object->has('backend.edit');
             $others = $object->has('backend.edit_others');
+            
             if ($edit || ($others && !$this->isAuthor($post))) {
                 AAM_Core_API::reject(
                         'backend', 

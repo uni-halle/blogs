@@ -1,18 +1,18 @@
 === Advanced Access Manager ===
 Contributors: vasyltech
-Tags: access, role, user, visitor, capability, page, post, permission, security, redirect
+Tags: access, role, user, visitor, capability, page, post, permission, security, redirect, access
 Requires at least: 3.8
 Tested up to: 4.7
-Stable tag: 3.9.2.2
+Stable tag: 3.9.5.1
 
-The great WordPress plugin to manage access to your posts, pages, categories and 
-backend area for users, roles and visitors.
+Set of tools to manage access to your website resources like posts, pages or menus for
+any user, role or visitors.
 
 == Description ==
 
 > Advanced Access Manager (aka AAM) is probably the only plugin that allows you to
-> control access to your posts, pages or backend area on user, visitor and role
-> levels. 
+> manage access to a website in the backend and frontend for any user, role or
+> visitors. 
 
 AAM is well documented so even inexperienced WordPress user can easily understand 
 how to use it in the most efficient way.
@@ -20,15 +20,17 @@ how to use it in the most efficient way.
 Please note! Some of the features are limited with the basic version and if
 necessary, consider to get recommended free or premium extension.
 
-AAM the main objectives are:
+Below is the list of some of the most used features:
 
-* Manage access to your posts, pages, custom post types and categories;
-* Manage access to post's and page's content by displaying teaser message;
-* Filter backend metaboxes and widgets as well as frontend widgets;
-* Control access to backend menu;
-* Manage redirect when access is denied to any restricted resource;
-* Create, edit or delete user roles;
-* Manage role capabilities
+* Create, edit or delete Roles;
+* Create, edit or delete Capabilities;
+* Manage access to the Backend Menu;
+* Manage access to Widgets & Metaboxes;
+* Manage access to Posts, Pages, Custom Post Types or Categories;
+* Limit access the a post's content with Teaser Message;
+* Manage Access Denied Redirect for any restricted website resource;
+* Manage Login Redirect after user authenticated successfully;
+* And many more...
 
 > AAM is very flexible and customizable plugin that is used by a lot of developers
 > around the world to create secure and powerful WordPress solutions.
@@ -63,6 +65,20 @@ out more about the Advanced Access Manager.
 6. Utilities tab
 
 == Changelog ==
+
+= 3.9.5.1 = 
+* Fixed bug with login redirect
+
+= 3.9.5 =
+* General bug fixing and improvements
+* Added ability to setup access settings to all Users, Roles and Visitors
+* Added Login Redirect feature
+
+= 3.9.3 =
+* Bug fixing
+* Implemented license check mechanism
+* Improved media access control
+* Added ConfigPress extension
 
 = 3.9.2.2 =
 * Bug fixing
