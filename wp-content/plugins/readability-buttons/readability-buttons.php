@@ -3,13 +3,13 @@
 Plugin Name: Readability Buttons (readability.com)
 Plugin URI: http://sparanoid.com/work/readability/
 Description: Adds readability.com widget for your site.
-Version: 2.1.3
+Version: 2.1.4
 Author: Tunghsiao Liu
 Author URI: http://sparanoid.com/
 Author Email: t@sparanoid.com
 License: GPLv2 or later
 
-  Copyright 2016 Tunghsiao Liu, aka. Sparanoid (t@sparanoid.com)
+  Copyright 2017 Tunghsiao Liu (t@sparanoid.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2, as
