@@ -2,8 +2,8 @@
 Tags: page builder, responsive, widget, widgets, builder, page, admin, gallery, content, cms, pages, post, css, layout, grid
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 2.4.20
-Build time: 2016-12-07T20:36:30+02:00
+Stable tag: 2.4.21
+Build time: 2016-12-19T12:05:47+02:00
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: https://siteorigin.com/downloads/contribution/
@@ -95,6 +95,11 @@ Page Builder is actively developed and updated, so generally I'd recommend that 
 We've tried to ensure that Page Builder is compatible with most plugin widgets. It's best to just download Page Builder and test for yourself.
 
 == Changelog ==
+
+= 2.4.21 - 19 December 2016 =
+* Removed course toolbar links.
+* Added filter for post loop query.
+* Replace TinyMCE _.isUndefined() check with a typeof to prevent JS errors.
 
 = 2.4.20 - 7 December 2016 =
 * Removed Premium and contribution links.
