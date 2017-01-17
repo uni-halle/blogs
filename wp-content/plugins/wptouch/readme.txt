@@ -2,7 +2,7 @@
 Contributors: kbmcardle, bravenewcode, duanestorey, dalemugford, adamdipardo,
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 4.2
-Stable tag: 4.3.9
+Stable tag: 4.3.10
 Tested up to: 4.7
 License: GPLv2
 
@@ -32,6 +32,10 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 6. Theme settings
 
 == Changelog ==
+
+= Version 4.3.10 (December 22, 2016) =
+
+* Fixed: Bug that sometimes prevented the customizer from showing the mobile theme
 
 = Version 4.3.9 (December 12, 2016) =
 

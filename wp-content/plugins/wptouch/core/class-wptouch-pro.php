@@ -1123,7 +1123,7 @@ class WPtouchProFour {
 			$this->showing_mobile_theme = ( !isset( $_COOKIE[WPTOUCH_COOKIE] ) || $_COOKIE[WPTOUCH_COOKIE] === 'mobile' || wptouch_is_customizing_mobile() );
 
 			if ( $this->showing_mobile_theme ) {
-				if ( $settings->url_filter_behaviour != 'disabled' && $settings->filtered_urls ) {
+				if ( $settings->url_filter_behaviour != 'disabled' && $settings->filtered_urls && !wptouch_is_customizing_mobile() ) {
 					$server_url = strtolower( $_SERVER['REQUEST_URI'] );
 					$url_list = preg_split('/\R/', trim( strtolower( $settings->filtered_urls ) ) );
 					$block_mobile = false;
