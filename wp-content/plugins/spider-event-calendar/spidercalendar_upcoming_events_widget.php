@@ -18,7 +18,7 @@ if (!class_exists('WP_Widget')) {
 
 class upcoming_events extends WP_Widget {
   // Constructor //
-  function upcoming_events() {
+  function __construct() {
     $widget_ops = array(
       'classname' => 'upcoming_events',
       'description' => ''

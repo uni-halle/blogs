@@ -886,7 +886,6 @@ function evented_days($r, $number_of_shown_evetns, $ev_id, $i,$evented_color_bg,
 
 	if(str_replace('#','',category_color($ev_id[0]))=="") $cat_col_without_color = $evented_color_bg;
 	else $cat_col_without_color = '#' . str_replace('#','',category_color($ev_id[0]));
-	
 	if($r>1){
 		if(category_color($ev_id[$r-1])=='#')
 			$cat_color_for_last='#' . str_replace('#','',$evented_color_bg);
