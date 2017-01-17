@@ -1091,6 +1091,7 @@ SQL;
 		 */
 		private function import_categories() {
 			$cat_count = 0;
+			$taxonomy = 'category';
 			$all_categories = array();
 			
 			if ( $this->import_stopped() ) {
@@ -1108,7 +1109,7 @@ SQL;
 					$sections = $this->get_sections($this->chunks_size);
 					$all_categories = array_merge($all_categories, $sections);
 					// Insert the sections
-					$cat_count += $this->insert_categories($sections, 'category', 'fgj2wp_last_section_id');
+					$cat_count += $this->insert_categories($sections, $taxonomy, 'fgj2wp_last_section_id');
 				} while ( ($sections != null) && (count($sections) > 0) );
 			}
 			
@@ -1127,14 +1128,9 @@ SQL;
 			
 			$all_categories = apply_filters('fgj2wp_import_categories', $all_categories);
 			
-			// Update the categories with their parent ids
-			// We need to do it in a second step because the children categories
-			// may have been imported before their parent
-			$this->update_parent_categories($all_categories);
-			
 			if ( !$this->import_stopped() ) {
 				// Hook after importing all the categories
-				do_action('fgj2wp_post_import_categories', $all_categories);
+				do_action('fgj2wp_post_import_categories', $all_categories, $taxonomy);
 			}
 
 			return $cat_count;
@@ -1231,18 +1227,29 @@ SQL;
 		}
 
 		/**
-		 * Update the parent categories
+		 * Update the categories hierarchy
+		 * 
+		 * @since 3.23.0
 		 * 
 		 * @param array $categories Categories
 		 * @param string $taxonomy Taxonomy
+		 * @param string $language Language code
 		 */
-		public function update_parent_categories($categories, $taxonomy='category') {
+		public function update_categories_hierarchy($categories, $taxonomy='category', $language='') {
 			foreach ( $categories as $category ) {
-				// Parent category
-				if ( isset($this->imported_categories[$category['id']]) && !empty($category['parent_id']) && isset($this->imported_categories[$category['parent_id']]) ) {
-					$cat_id = $this->imported_categories[$category['id']];
-					$parent_cat_id = $this->imported_categories[$category['parent_id']];
-					wp_update_term($cat_id, $taxonomy, array('parent' => $parent_cat_id));
+				if ( !empty($category['parent_id']) ) {
+					$joomla_category_id = $category['id'];
+					$joomla_parent_category_id = $category['parent_id'];
+					if ( !empty($language) ) {
+						$joomla_category_id .= '-' . $language;
+						$joomla_parent_category_id .= '-' . $language;
+					}
+					// Parent category
+					if ( isset($this->imported_categories[$joomla_category_id]) && isset($this->imported_categories[$joomla_parent_category_id]) ) {
+						$cat_id = $this->imported_categories[$joomla_category_id];
+						$parent_cat_id = $this->imported_categories[$joomla_parent_category_id];
+						wp_update_term($cat_id, $taxonomy, array('parent' => $parent_cat_id));
+					}
 				}
 			}
 		}

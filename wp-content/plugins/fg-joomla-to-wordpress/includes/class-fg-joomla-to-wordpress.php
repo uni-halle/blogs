@@ -69,7 +69,7 @@ class FG_Joomla_to_WordPress {
 	public function __construct() {
 
 		$this->plugin_name = 'fg-joomla-to-wordpress';
-		$this->version = '3.22.0';
+		$this->version = '3.23.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -182,6 +182,7 @@ class FG_Joomla_to_WordPress {
 		$this->loader->add_action( 'load-importer-fgj2wp', $plugin_admin, 'add_help_tab', 20 );
 		$this->loader->add_action( 'admin_footer', $plugin_admin, 'display_notices', 20 );
 		$this->loader->add_action( 'wp_ajax_fgj2wp_import', $plugin_admin, 'ajax_importer' );
+		$this->loader->add_action( 'fgj2wp_post_import_categories', $plugin_admin, 'update_categories_hierarchy', 10, 2);
 		
 		/*
 		 * Modules checker
