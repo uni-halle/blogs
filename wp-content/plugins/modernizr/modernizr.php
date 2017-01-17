@@ -16,6 +16,6 @@ function rw_modernizr() {
 			wp_deregister_script( 'modernizr' );
 		}
 
-		wp_enqueue_script('modernizr', plugins_url('/js/modernizr-custom.js', __FILE__), array('jquery'), '2.8.4', false);
+		wp_enqueue_script('modernizr', plugins_url('/js/modernizr.js', __FILE__), array('jquery'), '2.8.4', false);
 }
 add_action('wp_enqueue_scripts', 'rw_modernizr');
