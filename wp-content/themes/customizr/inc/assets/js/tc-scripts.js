@@ -2859,7 +2859,7 @@ var TCParams = TCParams || {};
   var pluginName = 'imgSmartLoad',
       defaults = {
         load_all_images_on_first_scroll : false,
-        attribute : [ 'data-src', 'data-srcset' ],
+        attribute : [ 'data-src', 'data-srcset', 'data-sizes' ],
         excludeImg : '',
         threshold : 200,
         fadeIn_options : { duration : 400 },
@@ -2958,6 +2958,7 @@ var TCParams = TCParams || {};
     var $_img    = $(_img),
         _src     = $_img.attr( this.options.attribute[0] ),
         _src_set = $_img.attr( this.options.attribute[1] ),
+        _sizes   = $_img.attr( this.options.attribute[2] ),
         self = this;
 
     $_img.parent().addClass('smart-loading');
@@ -2968,6 +2969,7 @@ var TCParams = TCParams || {};
     //An attribute to remove; as of version 1.7, it can be a space-separated list of attributes.
     //minimum supported wp version (3.4+) embeds jQuery 1.7.2
     .removeAttr( this.options.attribute.join(' ') )
+    .attr( 'sizes' , _sizes )
     .attr( 'srcset' , _src_set )
     .attr('src', _src )
     .load( function () {
@@ -5122,26 +5124,36 @@ var czrapp = czrapp || {};
 
     //bool
     isResponsive : function() {
-      return $(window).width() <= 979 - 15;
+      return this.matchMedia(979);
     },
 
     //@return string of current device
     getDevice : function() {
       var _devices = {
-            desktop : 979 - 15,
-            tablet : 767 - 15,
-            smartphone : 480 - 15
+            desktop : 979,
+            tablet : 767,
+            smartphone : 480
           },
           _current_device = 'desktop',
-          $_window = czrapp.$_window || $(window);
+          that = this;
+
 
       _.map( _devices, function( max_width, _dev ){
-        if ( $_window.width() <= max_width )
+        if ( that.matchMedia( max_width ) )
           _current_device = _dev;
       } );
+
       return _current_device;
     },
 
+    matchMedia : function( _maxWidth ) {
+      if ( window.matchMedia )
+        return ( window.matchMedia("(max-width: "+_maxWidth+"px)").matches );
+
+      //old browsers compatibility
+      $_window = czrapp.$_window || $(window);
+      return $_window.width() <= ( _maxWidth - 15 );
+    },
 
     //@return bool
     isSelectorAllowed : function( $_el, skip_selectors, requested_sel_type ) {
@@ -5247,7 +5259,7 @@ var czrapp = czrapp || {};
       var self = this;
       _.map( cbs, function(cb) {
         if ( 'function' == typeof(self[cb]) ) {
-          args = 'undefined' == typeof( args ) ? Array() : args ;  
+          args = 'undefined' == typeof( args ) ? Array() : args ;
           self[cb].apply(self, args );
           czrapp.trigger( cb, _.object( _.keys(args), args ) );
         }
@@ -5281,7 +5293,7 @@ var czrapp = czrapp || {};
       return czrapp.isReponsive();
     },
     isSelectorAllowed: function( $_el, skip_selectors, requested_sel_type ) {
-      return czrapp.isSelectorAllowed( $_el, skip_selectors, requested_sel_type );    
+      return czrapp.isSelectorAllowed( $_el, skip_selectors, requested_sel_type );
     }
 
   };//_methods{}
