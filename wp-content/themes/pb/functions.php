@@ -143,4 +143,17 @@ function makeSemesterKeysReadable($return) {
 	}
 	return $return;
 }
+
+// Kummulierte Semesterdaten
+function cumulateSemester($arr) {
+	$j = 1;
+  foreach ($arr as $semester => $count) {
+  	if ($j > 1) {
+    	$arr[$semester] += $prevSemesterCount;
+    }
+    $prevSemesterCount = $arr[$semester];
+    $j++;
+  }
+  return $arr;
+}
 ?>
