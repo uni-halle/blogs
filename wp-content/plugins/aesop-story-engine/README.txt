@@ -5,8 +5,8 @@ Plugin URI: http://aesopstoryengine.com
 Donate link: http://aesopstoryengine.com/donate
 Tags: aesop, story, business, education, parallax, interactive, shortcode, gallery, grid gallery, thumbnail gallery,
 Requires at least: 3.8
-Tested up to: 4.6.1
-Stable tag: 1.9.5.5
+Tested up to: 4.7
+Stable tag: 1.9.6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,9 +23,9 @@ Aesop Story Engine is a suite of open-sourced tools and components that empower 
 
 Utilizing these components, writers can take their work to the next level, and developers can utilize the core storytelling engine to build feature-rich, visually compelling WordPress themes. 
 
-Check out the new features of Aesop Story Engine v 1.9.5
+Check out the new features of Aesop Story Engine v 1.9.6
 
-[http://aesopstoryengine.com/updates/aesop-1-9-5-features/](http://aesopstoryengine.com/updates/aesop-1-9-5-features/)
+[http://aesopstoryengine.com/releases/aesop-story-engine-1-9-6-new-features/](http://aesopstoryengine.com/releases/aesop-story-engine-1-9-6-new-features/)
 
 
 Check out the new features of Aesop Story Engine v 1.9
@@ -173,6 +173,15 @@ Full documentation can be found here: [http://aesopstoryengine.com/developers](h
 * Initial Release
 
 == Changelog ==
+= 1.9.6.2 =
+* FIX Fixed the editor issues when attributes include HTML
+* FIX Fixed the transition time value for Hero gallery not being saved
+* NEW Quote component can use HTML for texts
+* NEW Content box component now supports Reveal Animation
+
+= 1.9.6 =
+* NEW Gallery component (except Parallax) now support Reveal Animation.
+
 = 1.9.5.5 =
 * FIX disable parallax scrolling on mobile devices for compatibility
 
