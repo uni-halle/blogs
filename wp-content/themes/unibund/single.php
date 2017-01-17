@@ -18,7 +18,8 @@ get_header(); ?>
 			// Include the single post content template.
 			//get_template_part( 'template-parts/content', 'single' );
 
-			
+
+
 			
 			// set single template
 			foreach (get_the_category() as $k => $v) {

@@ -46,7 +46,9 @@
 					get_template_part( 'template-parts/biography' );
 				}
 			?>
-		
+		<div class="content-link"><a href="javascript:history.back();"><span class="text-icons"><i class="material-icons">arrow_backward</i></span><span class="link-text">zurück</span></a></div>
+
+
 	</div>
 	
 	

@@ -37,7 +37,7 @@ get_header(); ?>
 
 		
 		
-			<h3 class="start-h3"><i class="material-icons">radio_button_unchecked</i><span><?php echo __('[:de]News[:en]News'); ?></span></h3>
+			<h3 class="start-h3"><i class="material-icons">radio_button_unchecked</i><span><?php echo __('[:de]Aktuelles[:en]News'); ?></span></h3>
 				
 			<?php
 				/***************
@@ -49,7 +49,7 @@ get_header(); ?>
 				$args = array(
 					'category_name' => 'news',
 					'paged' => $paged,
-					'posts_per_page' => 200
+					'posts_per_page' => 200,
 				);
 				query_posts($args);
 				while ( have_posts() ) : the_post();

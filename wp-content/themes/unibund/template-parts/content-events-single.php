@@ -7,22 +7,17 @@
  * @since Twenty Sixteen 1.0
  */
 ?>
-<section class="single-page">
+<section class="single-page single-events">
 
 
-    <div class="row single-table">
-        <div class="single-table-row">
-            <div class="sp-image"><?php twentysixteen_post_thumbnail(); ?></div>
-            <div class="sp-headline">
 
-                <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-                
-            </div>
-        </div>
-    </div>
 
 
     <div class="single-content">
+
+        <h4><?php the_field('zeit'); ?></h4>
+
+        <?php the_title( '<h1 class="entry-title single-events-header">', '</h1>' ); ?>
 
         <?php the_field('teaser_text'); ?>
         <?php twentysixteen_excerpt(); ?>
@@ -47,7 +42,6 @@
 
         <div class="content-link"><a href="javascript:history.back();"><span class="text-icons"><i class="material-icons">arrow_backward</i></span><span class="link-text">zurück</span></a></div>
 
-
     </div>
 
 
@@ -60,3 +54,5 @@
 
 
 </section>
+
+

@@ -18,7 +18,7 @@
 			<div class="e-teaser">
 				<?php  
 					$content = get_the_content();
-					echo substr($content, 0, 80).'... ';
+					echo substr($content, 0, 180).'... ';
 				?>
 				
 				<a href="<?php echo esc_url( get_permalink() ); ?>">Weiterlesen &rsaquo;</a>

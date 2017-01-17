@@ -16,12 +16,12 @@
 			<?php twentysixteen_post_thumbnail(); ?>
 		</div>
 		<div class="news-text">
-			<div class="n-date"><?php the_time('d.m.Y'); ?></div>
+			<div class="n-date"><?php the_time('d. F Y'); ?></div>
 			<?php the_title( sprintf( '<h4><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h4>' ); ?>
 			<div class="n-teaser">
 				<?php  
 					$content = get_the_content();
-					echo substr($content, 0, 190).'... ';
+					echo substr($content, 0, 120).'... ';
 				?>
 				
 				<a href="<?php echo esc_url( get_permalink() ); ?>">Weiterlesen &rsaquo;</a>

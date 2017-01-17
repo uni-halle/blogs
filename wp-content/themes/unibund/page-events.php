@@ -37,7 +37,7 @@ get_header(); ?>
 
 
 
-		<h3 class="start-h3"><i class="material-icons">radio_button_unchecked</i><span><?php echo __('[:de]News[:en]News'); ?></span></h3>
+		<h3 class="start-h3"><i class="material-icons">radio_button_unchecked</i><span><?php echo __('[:de]Termine[:en]News'); ?></span></h3>
 
 		<?php
 		/***************
@@ -49,8 +49,9 @@ get_header(); ?>
 		$args = array(
 			'category_name' => 'events',
 			'paged' => $paged,
-			'posts_per_page' => 3,
+			'posts_per_page' => 200,
 			'post_status' => array('future'),
+			'order' => 'ASC',
 		);
 		query_posts($args);
 		while ( have_posts() ) : the_post();
@@ -58,7 +59,7 @@ get_header(); ?>
 		endwhile;
 		?>
 
-
+		<br /><br />
 
 		<div class="clearfix"></div>
 	</main><!-- .site-main -->

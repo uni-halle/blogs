@@ -81,7 +81,7 @@ get_header(); ?>
 			
 			<div class="box-50">
 				
-				<h3 class="start-h3 side-text"><i class="material-icons">radio_button_unchecked</i><span><?php echo __('[:de]News[:en]News'); ?></span></h3>
+				<h3 class="start-h3 side-text"><i class="material-icons">radio_button_unchecked</i><span><?php echo __('[:de]Aktuelles[:en]News'); ?></span></h3>
 				
 				<?php
 				/***************
@@ -93,7 +93,7 @@ get_header(); ?>
 				$args = array(
 					'category_name' => 'news',
 					'paged' => $paged,
-					'posts_per_page' => 2,
+					'posts_per_page' => 3,
 					'post_status' => array('publish', 'future'),
 				);
 				query_posts($args); 
@@ -102,7 +102,7 @@ get_header(); ?>
 				endwhile;
 				?>
 				
-				<div class="start-link"><a href="<?php echo get_page_link(29); ?>"><span class="link-text"><?php echo __('[:de]alle News[:en]all news'); ?></span><span class="text-icons"><i class="material-icons">arrow_forward</i></span></a></div>
+				<div class="start-link sl-1"><a href="<?php echo get_page_link(29); ?>"><span class="link-text"><?php echo __('[:de]alle Nachrichten[:en]all news'); ?></span><span class="text-icons"><i class="material-icons">arrow_forward</i></span></a></div>
 				
 			</div>
 		
@@ -120,8 +120,9 @@ get_header(); ?>
 				$args = array(
 					'category_name' => 'events',
 					'paged' => $paged,
-					'posts_per_page' => 3,
+					'posts_per_page' => 4,
 					'post_status' => array('future'),
+					'order' => 'ASC',
 				);
 				query_posts($args); 
 				while ( have_posts() ) : the_post();
@@ -129,7 +130,7 @@ get_header(); ?>
 				endwhile;
 				?>
 				
-				<div class="start-link"><a href="<?php echo get_page_link(21); ?>"><span class="link-text"><?php echo __('[:de]alle Termine[:en]all events'); ?></span><span class="text-icons"><i class="material-icons">arrow_forward</i></span></a></div>
+				<div class="start-link sl-2"><a href="<?php echo get_page_link(21); ?>"><span class="link-text"><?php echo __('[:de]alle Termine[:en]all events'); ?></span><span class="text-icons"><i class="material-icons">arrow_forward</i></span></a></div>
 				
 			</div>
 			
