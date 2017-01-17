@@ -152,6 +152,7 @@ function catchbox_get_default_theme_options() {
 		'transition_duration'   => 1,
 
 		'disable_scrollup'      => '0',
+		'custom_css'			=> ''
 	);
 
 	if ( is_rtl() )

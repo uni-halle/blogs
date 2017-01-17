@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2016-12-07 14:34-0500\n"
-"PO-Revision-Date: 2016-12-07 14:34-0500\n"
+"POT-Creation-Date: 2017-01-07 18:48+0545\n"
+"PO-Revision-Date: 2017-01-07 18:48+0545\n"
 "Last-Translator: Alexandr Baryshnyev <abb@eksi.net>\n"
 "Language-Team: Eksi.Net <info@eksi.net>\n"
 "Language: uk\n"
@@ -983,28 +983,28 @@ msgstr "Показати повний вміст"
 msgid "Search"
 msgstr "Пошук"
 
-#: ../inc/default-options.php:193
+#: ../inc/default-options.php:194
 msgid "Y"
 msgstr "Y"
 
-#: ../inc/default-options.php:214
+#: ../inc/default-options.php:215
 msgid "WordPress"
 msgstr "WordPress"
 
-#: ../inc/default-options.php:224
+#: ../inc/default-options.php:225
 msgid "Theme: Catch Box by "
 msgstr "Тема Catch Box від&nbsp;&nbsp;"
 
-#: ../inc/default-options.php:235 ../inc/theme-options.php:521
+#: ../inc/default-options.php:236 ../inc/theme-options.php:521
 #: ../inc/theme-options.php:522
 msgid "Catch Themes"
 msgstr "&nbsp;&nbsp;Catch Themes"
 
-#: ../inc/default-options.php:246
+#: ../inc/default-options.php:247
 msgid "Copyright"
 msgstr "Авторські права"
 
-#: ../inc/default-options.php:246
+#: ../inc/default-options.php:247
 msgid "All Rights Reserved"
 msgstr "Усі права застережено"
 

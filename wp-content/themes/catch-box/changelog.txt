@@ -1,5 +1,8 @@
 == Change Log ==
 
+Version 4.5.5
+* Bug Fixed: Undefined index - custom_css in functions.php file
+
 Version 4.5.4
 * Bug Fixed: array_filter() in category types for slider,content, etc causing issues in some php versions
  * Solved by removing the function and type casting using (array)

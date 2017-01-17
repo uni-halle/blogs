@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2016-12-07 14:33-0500\n"
-"PO-Revision-Date: 2016-12-07 14:33-0500\n"
+"POT-Creation-Date: 2017-01-07 18:47+0545\n"
+"PO-Revision-Date: 2017-01-07 18:47+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: H.P. Brinkmann\n"
 "Language: sk_SK\n"
@@ -952,28 +952,28 @@ msgstr "Zobraziť celý obsah článku"
 msgid "Search"
 msgstr "Vyhľadávanie"
 
-#: ../inc/default-options.php:193
+#: ../inc/default-options.php:194
 msgid "Y"
 msgstr "Y"
 
-#: ../inc/default-options.php:214
+#: ../inc/default-options.php:215
 msgid "WordPress"
 msgstr "WordPress"
 
-#: ../inc/default-options.php:224
+#: ../inc/default-options.php:225
 msgid "Theme: Catch Box by "
 msgstr "Theme: Catch Box by "
 
-#: ../inc/default-options.php:235 ../inc/theme-options.php:521
+#: ../inc/default-options.php:236 ../inc/theme-options.php:521
 #: ../inc/theme-options.php:522
 msgid "Catch Themes"
 msgstr "Catch Themes"
 
-#: ../inc/default-options.php:246
+#: ../inc/default-options.php:247
 msgid "Copyright"
 msgstr "Copyright"
 
-#: ../inc/default-options.php:246
+#: ../inc/default-options.php:247
 msgid "All Rights Reserved"
 msgstr "Všetky práva vyhradené"
 
