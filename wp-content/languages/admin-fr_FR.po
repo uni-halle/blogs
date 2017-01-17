@@ -1,15 +1,15 @@
-# Translation of WordPress - Development - Administration in French (France)
-# This file is distributed under the same license as the WordPress - Development - Administration package.
+# Translation of WordPress - 4.7.x - Administration in French (France)
+# This file is distributed under the same license as the WordPress - 4.7.x - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-12-08 10:49:30+0000\n"
+"PO-Revision-Date: 2017-01-05 17:22:59+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: GlotPress/2.3.0-alpha\n"
 "Language: fr\n"
-"Project-Id-Version: WordPress - Development - Administration\n"
+"Project-Id-Version: WordPress - 4.7.x - Administration\n"
 
 #. translators: default GMT offset or timezone string. Must be either a valid
 #. offset (-12 to 14) 	   or a valid timezone string (America/New_York). See
@@ -956,7 +956,7 @@ msgstr "Fichier zip du thème"
 msgid "Attach to existing content"
 msgstr "Attacher à un contenu existant"
 
-#: wp-admin/includes/post.php:1454
+#: wp-admin/includes/post.php:1425
 msgid "Click the image to edit or update"
 msgstr "Cliquez sur l&rsquo;image pour la modifier ou la mettre à jour."
 
@@ -1519,11 +1519,11 @@ msgstr "Obtenir la version %s"
 msgid "Toggle panel: %s"
 msgstr "Ouvrir/fermer le bloc %s"
 
-#: wp-admin/includes/post.php:1651
+#: wp-admin/includes/post.php:1622
 msgid "Saving revision&hellip;"
 msgstr "Enregistrement de la révision&hellip;"
 
-#: wp-admin/includes/post.php:1380
+#: wp-admin/includes/post.php:1351
 msgid "Edit permalink"
 msgstr "Modifier le permalien"
 
@@ -3560,11 +3560,11 @@ msgstr "Traductions"
 msgid "Future security updates will be applied automatically."
 msgstr "Les prochaines mises à jour de sécurité seront appliquées automatiquement."
 
-#: wp-admin/includes/post.php:1614
+#: wp-admin/includes/post.php:1585
 msgid "If you take over, %s will be blocked from continuing to edit."
 msgstr "Si vous souhaitez vous en occuper, %s sera bloqué et ne pourra pas terminer sa modification."
 
-#: wp-admin/includes/post.php:1612
+#: wp-admin/includes/post.php:1583
 msgid "This content is currently locked."
 msgstr "Ce contenu est actuellement verrouillé."
 
@@ -4140,7 +4140,7 @@ msgstr "Depuis cet écran, vous pouvez&nbsp;:"
 msgid "This screen is used for managing your custom navigation menus."
 msgstr "Cet écran est utilisé pour gérer vos menus de navigations personnalisés."
 
-#: wp-admin/includes/post.php:1652
+#: wp-admin/includes/post.php:1623
 msgid "Your latest changes were saved as a revision."
 msgstr "Vos dernières modifications ont été enregistrées dans une révision."
 
@@ -4235,7 +4235,7 @@ msgstr "Brouillon créé le %1$s à %2$s"
 msgid "You cannot move this item to the Trash. %s is currently editing."
 msgstr "Vous ne pouvez pas déplacer cet élément dans la corbeille. %s est en train de le modifier."
 
-#: wp-admin/includes/post.php:1637
+#: wp-admin/includes/post.php:1608
 msgid "Take over"
 msgstr "Prendre la main"
 
@@ -4848,7 +4848,7 @@ msgstr "Modifier le lien"
 
 #: wp-admin/includes/user.php:127
 msgid "<strong>ERROR</strong>: Please enter a nickname."
-msgstr "<strong>ERREUR</strong>&nbsp;: Veuillez entrer un identifiant."
+msgstr "<strong>ERREUR</strong>&nbsp;: Veuillez saisir un pseudonyme."
 
 #: wp-admin/includes/class-wp-list-table.php:1069
 #: wp-admin/includes/nav-menu.php:575 wp-admin/includes/nav-menu.php:774
@@ -6534,7 +6534,7 @@ msgstr "Tout le contenu"
 
 #: wp-admin/export.php:177 wp-admin/export.php:219
 msgid "Authors:"
-msgstr "Auteur&nbsp;:"
+msgstr "Auteurs&nbsp;:"
 
 #: wp-admin/export.php:161
 msgid "Choose what to export"
@@ -7706,7 +7706,7 @@ msgstr "Widgets disponibles"
 msgid "Error in displaying the widget settings form."
 msgstr "Une erreur est survenue durant l&rsquo;affichage du formulaire de paramétrage du widget."
 
-#: wp-admin/includes/misc.php:882 wp-admin/includes/post.php:1814
+#: wp-admin/includes/misc.php:882 wp-admin/includes/post.php:1785
 #: wp-admin/widgets.php:340
 msgid "Error while saving."
 msgstr "Erreur lors de la sauvegarde."
@@ -8044,7 +8044,7 @@ msgid "You can&#8217;t edit this item because it is in the Trash. Please restore
 msgstr "Vous ne pouvez pas modifier ce contenu, car il est dans la corbeille. Sortez-l&rsquo;en, puis réessayez."
 
 #: wp-admin/async-upload.php:57 wp-admin/edit-tags.php:154
-#: wp-admin/includes/post.php:1820 wp-admin/media-upload.php:46
+#: wp-admin/includes/post.php:1791 wp-admin/media-upload.php:46
 #: wp-admin/post.php:117 wp-admin/term.php:38
 msgid "Sorry, you are not allowed to edit this item."
 msgstr "Désolé, vous n’avez pas l’autorisation de modifier cet élément."
@@ -9184,11 +9184,11 @@ msgstr "Un site utilisant %s"
 msgid "Just another WordPress site"
 msgstr "Un site utilisant WordPress"
 
-#: wp-admin/includes/post.php:1365
+#: wp-admin/includes/post.php:1336
 msgid "Change Permalinks"
 msgstr "Modifier les permaliens"
 
-#: wp-admin/includes/post.php:1354 wp-admin/includes/post.php:1377
+#: wp-admin/includes/post.php:1325 wp-admin/includes/post.php:1348
 msgid "Permalink:"
 msgstr "Permalien&nbsp;:"
 
@@ -10841,7 +10841,7 @@ msgid "Sorry, you are not allowed to edit comments on this post."
 msgstr "Désolé, vous n’avez pas l’autorisation de modifier les commentaires de cet article."
 
 #: wp-admin/comment.php:61 wp-admin/comment.php:255
-#: wp-admin/includes/post.php:1561
+#: wp-admin/includes/post.php:1532
 msgid "Go back"
 msgstr "Retour"
 
