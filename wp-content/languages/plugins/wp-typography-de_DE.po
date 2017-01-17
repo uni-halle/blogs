@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - wp-Typography - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-10-21 19:06:58+0000\n"
+"PO-Revision-Date: 2017-01-06 21:41:15+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,162 +11,447 @@ msgstr ""
 "Language: de\n"
 "Project-Id-Version: Plugins - wp-Typography - Stable (latest release)\n"
 
-#: php-typography/_language_names.php:30
+#: php-typography/_language_names.php:54
+msgctxt "language name"
+msgid "Telugu"
+msgstr "Telugu"
+
+#: php-typography/_language_names.php:53
+msgctxt "language name"
+msgid "Tamil"
+msgstr "Tamil"
+
+#: php-typography/_language_names.php:41
+msgctxt "language name"
+msgid "Panjabi"
+msgstr "Panjabi"
+
+#: php-typography/_language_names.php:40
+msgctxt "language name"
+msgid "Oriya"
+msgstr "Oriya"
+
+#: php-typography/_language_names.php:39
+msgctxt "language name"
+msgid "Occitan"
+msgstr "Okzitanisch"
+
+#: php-typography/_language_names.php:36
+msgctxt "language name"
+msgid "Marathi"
+msgstr "Marathi"
+
+#: php-typography/_language_names.php:21
+msgctxt "language name"
+msgid "Hindi"
+msgstr "Hindi"
+
+#: includes/class-wp-typography-admin.php:990
+msgid "Useful resources:"
+msgstr "Nützliche Ressourcen:"
+
+#: includes/class-wp-typography-admin.php:946
+msgid "Cached post content cleared."
+msgstr "Zwischengespeicherte Beitragsinhalte verworfen."
+
+#: includes/class-wp-typography-admin.php:931
+msgid "Settings reset to default values."
+msgstr "Einstellungen auf Standardwerte zurückgesetzt."
+
+#: includes/class-wp-typography-admin.php:813
+msgid "Styles"
+msgstr "CSS"
+
+#: includes/class-wp-typography-admin.php:796
+msgid "Initial quotes"
+msgstr "Initiale Anführungszeichen"
+
+#: includes/class-wp-typography-admin.php:787
+msgid "Hanging punctuation"
+msgstr "Hängende Interpunktion"
+
+#: includes/class-wp-typography-admin.php:779
+msgid "Numbers"
+msgstr "Zahlen"
+
+#: includes/class-wp-typography-admin.php:771
+msgid "Caps"
+msgstr "Blockbuchstaben"
+
+#: includes/class-wp-typography-admin.php:763
+msgid "Ampersands"
+msgstr "Et-Zeichen"
+
+#: includes/class-wp-typography-admin.php:715
+msgid "URLs"
+msgstr "URLs"
+
+#: includes/class-wp-typography-admin.php:705
+msgid "%1$s Enable wrapping of long email addresses."
+msgstr "%1$s Umbrechen von langen E-Mail-Adressen ermöglichen."
+
+#: includes/class-wp-typography-admin.php:704
+msgid "Email addresses"
+msgstr "E-Mail-Adressen"
+
+#: includes/class-wp-typography-admin.php:693
+msgid "Hyphens"
+msgstr "Gedankenstriche"
+
+#: includes/class-wp-typography-admin.php:685
+msgid "Additional unit names:"
+msgstr "Weitere Einheiten:"
+
+#: includes/class-wp-typography-admin.php:676
+msgid "Examples: <code>1 in.</code> or <code>10 m<sup>2</sup></code>."
+msgstr "Beispiele: <code>1 kg</code> oder <code>10 m<sup>2</sup></code>."
+
+#: includes/class-wp-typography-admin.php:664
+msgid "French punctuation"
+msgstr "Französische Interpunktion"
+
+#: includes/class-wp-typography-admin.php:655
+msgid "Adjacent spacing"
+msgstr "Leerzeichen"
+
+#: includes/class-wp-typography-admin.php:647
+msgid "Examples: <code>1 1/2</code> or <code>1 <sup>1</sup>&#8260;<sub>2</sub></code>."
+msgstr "Beispiele: <code>1 1/2</code> oder <code>1 <sup>1</sup>&#8260;<sub>2</sub></code>."
+
+#: includes/class-wp-typography-admin.php:629
+msgid "Single character words"
+msgstr "Wörter mit einem Buchstaben"
+
+#: includes/class-wp-typography-admin.php:621
+msgid "Ordinal numbers"
+msgstr "Ordnungszahlen"
+
+#: includes/class-wp-typography-admin.php:613
+msgid "Warning: If you use a font (like Lucida Grande) that does not have a fraction-slash character, this may cause a missing line between the numerator and denominator."
+msgstr "Achtung: Bei Verwendung einer Schriftart ohne Bruchstrichzeichen (wie Lucida Grande) kann die Linie zwischen Zähler und Nenner fehlen."
+
+#: includes/class-wp-typography-admin.php:612
+msgid "%1$s Transform fractions [ <code>1/2</code> ] to  pretty fractions [ <code><sup>1</sup>&#8260;<sub>2</sub></code> ]."
+msgstr "%1$s Bruchzahlen [ <code>1/2</code> ] richtig formatieren [ <code><sup>1</sup>&#8260;<sub>2</sub></code> ]."
+
+#: includes/class-wp-typography-admin.php:611
+#: includes/class-wp-typography-admin.php:645
+msgid "Fractions"
+msgstr "Bruchzahlen"
+
+#: includes/class-wp-typography-admin.php:602
+msgid "Math symbols"
+msgstr "Mathematische Symbole"
+
+#: includes/class-wp-typography-admin.php:594
+msgid "%1$s Transform registration marks [ <code>(c)</code> <code>(r)</code> <code>(tm)</code> <code>(sm)</code> <code>(p)</code> ] to  proper characters [ <code>©</code> <code>®</code> <code>™</code> <code>℠</code> <code>℗</code> ]."
+msgstr "%1$s Registrierungs- und Warenzeichen [ <code>(c)</code> <code>(r)</code> <code>(tm)</code> <code>(sm)</code> <code>(p)</code> ] durch passende Einzelzeichen [ <code>©</code> <code>®</code> <code>™</code> <code>℠</code> <code>℗</code> ] ersetzen."
+
+#: includes/class-wp-typography-admin.php:593
+msgid "Registration marks"
+msgstr "Registrierungs- und Warenzeichen"
+
+#: includes/class-wp-typography-admin.php:585
+msgid "Ellipses"
+msgstr "Auslassungszeichen"
+
+#: includes/class-wp-typography-admin.php:568
+msgid "Language definitions will purposefully not process words that have alternate meaning without diacritics like <code>resume</code>/<code>résumé</code>, <code>divorce</code>/<code>divorcé</code>, and <code>expose</code>/<code>exposé</code>."
+msgstr "Manche Wörter werden je nach Sprachdefinition absichtlich unverändert gelassen, wenn sowohl die Variante ohne als auch mit diakritischen Zeichen eigenständige Bedeutungen haben, wie z.B. <code>Pate</code>/<code>Paté</code>."
+
+#: includes/class-wp-typography-admin.php:558
+msgid "For example, <code>creme brulee</code> becomes <code>crème brûlée</code>."
+msgstr "Zum Beispiel wird <code>creme brulee</code> durch <code>crème brûlée</code> ersetzt."
+
+#: includes/class-wp-typography-admin.php:556
+msgid "Smart diacritics"
+msgstr "Diakritische Zeichen"
+
+#: includes/class-wp-typography-admin.php:545
+msgid "Use the %1$s style for dashes."
+msgstr "Den %1$s Stil für Gedankenstriche verwenden."
+
+#: includes/class-wp-typography-admin.php:537
+msgid "%1$s Transform minus-hyphens [ <code>-</code> <code>--</code> ] to contextually appropriate dashes, minus signs, and hyphens [ <code>&ndash;</code> <code>&mdash;</code> <code>&#8722;</code> <code>&#8208;</code> ]."
+msgstr "%1$s Bindestriche [ <code>-</code> <code>--</code> ] durch zum Kontext passende Gedankenstriche, Minuszeichen usw. ersetzen [ <code>&ndash;</code> <code>&mdash;</code> <code>&#8722;</code> <code>&#8208;</code> ]."
+
+#: includes/class-wp-typography-admin.php:536
+msgid "Smart dashes"
+msgstr "Typographische Gedankenstriche"
+
+#: includes/class-wp-typography-admin.php:512
+msgid "Secondary quotation style: Convert <code>'foo'</code> to %1$s."
+msgstr "Sekundärer Zitatstil: Ersetze <code>'foo'</code> durch %1$s."
+
+#: includes/class-wp-typography-admin.php:488
+msgid "Primary quotation style: Convert <code>\"foo\"</code> to %1$s."
+msgstr "Primärer Zitatstil: Ersetze <code>\"foo\"</code> durch %1$s."
+
+#: includes/class-wp-typography-admin.php:478
+msgid "Smart quotes"
+msgstr "Typographische Anführungszeichen"
+
+#: includes/class-wp-typography-admin.php:470
+msgid "Intelligent character replacement"
+msgstr "Intelligente Zeichenersetzung"
+
+#: includes/class-wp-typography-admin.php:420
+msgid "Character limits"
+msgstr "Zeichenbegrenzungen"
+
+#: includes/class-wp-typography-admin.php:385
+msgid "Special cases"
+msgstr "Sonderfälle"
+
+#: includes/class-wp-typography-admin.php:362
+msgid "Unchecking will prevent processing completely if the HTML parser produces any errors for a given content part. You should only need to do this in case your site layout changes with wp-Typography enabled."
+msgstr "Durch Entfernen des Häkchens wird die Verarbeitung unterbunden, wenn der HTML-Code eines Inhaltsbereichs zu Parser-Fehlern führt. Dies sollte jedoch nur notwendig sein, wenn sich das Layout deiner Website beim Aktivieren von wp-Typography verändert."
+
+#: includes/class-wp-typography-admin.php:361
+msgid "%1$s Ignore errors in parsed HTML."
+msgstr "%1$s Fehler im HTML-Code ignorieren."
+
+#: includes/class-wp-typography-admin.php:360
+msgid "Parser errors"
+msgstr "Parser-Fehler"
+
+#: includes/class-wp-typography-admin.php:354
+msgid "Separate ID names with spaces. Elements with these IDs will not be processed."
+msgstr "IDs durch Leerzeichen trennen. Der Inhalt von Elementen mit diesen IDs wird nicht verändert."
+
+#: includes/class-wp-typography-admin.php:353
+msgid "Ignore IDs"
+msgstr "IDs ignorieren"
+
+#: includes/class-wp-typography-admin.php:347
+msgid "Separate class names with spaces. Elements with these classes will not be processed."
+msgstr "Klassennamen durch Leerzeichen trennen. Der Inhalt von Elementen mit diesen Klassen wird nicht verändert."
+
+#: includes/class-wp-typography-admin.php:346
+msgid "Ignore CSS classes"
+msgstr "CSS-Klassen ignorieren"
+
+#: includes/class-wp-typography-admin.php:340
+msgid "Separate tag names with spaces; do not include the <code>&lt;</code> or <code>&gt;</code>. The content of these HTML elements will not be processed."
+msgstr "Namen der HTML-Elemente (ohne <code>&lt;</code> und <code>&gt;</code>) durch Leerzeichen trennen. Der Inhalt dieser Elemente wird nicht verändert."
+
+#: includes/class-wp-typography-admin.php:339
+msgid "Ignore HTML elements"
+msgstr "Ignoriere HTML-Elemente"
+
+#: includes/class-wp-typography-admin.php:311
+msgid "Sometimes you want to enable certain long words to wrap to a new line, while at other times you want to prevent wrapping."
+msgstr "Manchmal sollen bestimmte Wörter umgebrochen werden, in anderen Fällen möchtest du das gerade verhindern."
+
+#: includes/class-wp-typography-admin.php:306
+msgid "Not all number formattings are appropriate for all languages."
+msgstr "Nicht alle Formatierungsregeln sind für alle Sprachen relevant."
+
+#: includes/class-wp-typography-admin.php:305
+msgid "Math & Numbers"
+msgstr "Mathematik & Zahlen"
+
+#: includes/class-wp-typography-admin.php:285
+msgid "To help with styling your posts, some additional CSS classes can be added automatically."
+msgstr "Zur Unterstützung bei der Beitragsgestaltung können einige zusätzliche CSS-Klassen automatisch hinzugefügt werden."
+
+#: includes/class-wp-typography-admin.php:284
+msgid "CSS Hooks"
+msgstr "CSS-Klassen"
+
+#: includes/class-wp-typography-admin.php:281
+msgid "Take control of space. At least in your WordPress posts."
+msgstr "Übernimm die Kontrolle über den Weißraum in deinen WordPress-Beiträgen."
+
+#: includes/class-wp-typography-admin.php:277
+msgid "Modern keyboards are still based on the limited character range of typewriters. This section allows you to selectively replace typewriter characters with better alternatives."
+msgstr "Computer-Tastaturen basieren immer noch auf der eingeschränkten Zeichenauswahl der Schreibmaschine. Dieser Abschnitt hilft beim Ersetzen von Schreibmaschinenzeichen durch typographisch bessere Alternativen."
+
+#: includes/class-wp-typography-admin.php:273
+msgid "Hyphenation rules are based on pre-computed dictionaries, but can be fine tuned. Custom hyphenations always override the patterns from the dictionary."
+msgstr "Die Silbentrennungsregeln basieren auf vorbereiteten Katalogen, die in begrenztem Rahmen angepaßt werden können. Individuelle Silbentrennungen haben gegenüber den bereitgestellten Regeln immer Vorrang."
+
+#: includes/class-wp-typography-admin.php:269
+msgid "By default, wp-Typography processes all post content and titles (but not the whole page). Certain HTML elements within your content can be exempted to prevent conflicts with your theme or other plugins."
+msgstr "Standardmäßig verarbeitet wp-Typography alle Beitragsinhalte und -titel, nicht jedoch die Seite als Ganzes. Einzelne HTML-Elemente in den Inhalten können gezielt ausgeschlossen werden, um Konflikte mit dem Theme oder anderen Plugins zu vermeiden."
+
+#: includes/class-wp-typography-admin.php:452
+msgid "Browser support"
+msgstr "Browser-Unterstützung"
+
+#: includes/class-wp-typography-admin.php:250
+msgid "Please keep in mind that technically, WordPress applies the typographic fixes on the individual content parts used in your site templates, e.g. <code>the_title</code>, <code>the_content</code>, not the page as a whole. For this reason, HTML tags (including classes and IDs) from the theme's template files cannot be used to limit the scope of wp-Typography's processing."
+msgstr "Bitte bedenke, dass WordPress aus technischer Sicht die typographischen Kniffe auf die einzelnen Inhaltsbereiche (wie <code>the_title</code>, <code>the_content</code>) innerhalb der Templates anwendet und nicht auf die Seite als Ganzes. Aus diesem Grund funktioniert auch die Einschränkung über HTML-Elemente, -Klassen und -IDs aus den Template-Dateien nicht."
+
+#: includes/class-wp-typography-admin.php:248
+msgid "Improve your web typography with <em>hyphenation</em>, <em>space control</em>, <em>intelligent character replacement</em>, and <em>CSS hooks</em>. These improvements can be enabled separately via the settings tabs provided below. We try to provide reasonable default values, but please check that they are suitable for your site language."
+msgstr "Verbessere die Typography deiner Website durch <em>Silbentrennung</em>, <em>Weißraum-Kontrolle</em>, <em>intelligente Zeichenersetzung</em> und <em>CSS-Klassen</em>. Dieser Verbesserung können einzeln über die Einstellungsseiten aktiviert werden. Obwohl wir uns bemühen, sinnvolle Standardeinstellung bereitzustellen, solltest du überprüfen, ob diese zu den Spracheinstellungen deiner Website passen."
+
+#: includes/class-wp-typography-admin.php:245
+msgid "Introduction"
+msgstr "Überblick"
+
+#. translators: settings page headline, %s is the plugin name
+#: admin/partials/settings.php:3
+msgid "%s Settings"
+msgstr "Einstellungen > %s"
+
+#: php-typography/_language_names.php:31
 msgctxt "language name"
 msgid "Latin (Liturgical)"
 msgstr "Latein (Kirchenlatein)"
 
-#: php-typography/_language_names.php:52
+#: php-typography/_language_names.php:59
 msgctxt "language name"
 msgid "Chinese pinyin (Latin)"
 msgstr "Chinesisch (Pinyin)"
 
-#: php-typography/_language_names.php:51
+#: php-typography/_language_names.php:58
 msgctxt "language name"
 msgid "Ukrainian"
 msgstr "Ukrainisch"
 
-#: php-typography/_language_names.php:50
+#: php-typography/_language_names.php:57
 msgctxt "language name"
 msgid "Turkish"
 msgstr "Türkisch"
 
-#: php-typography/_language_names.php:49
+#: php-typography/_language_names.php:56
 msgctxt "language name"
 msgid "Turkmen"
 msgstr "Turkmenisch"
 
-#: php-typography/_language_names.php:48
+#: php-typography/_language_names.php:55
 msgctxt "language name"
 msgid "Thai"
 msgstr "Thai"
 
-#: php-typography/_language_names.php:47
+#: php-typography/_language_names.php:52
 msgctxt "language name"
 msgid "Swedish"
 msgstr "Schwedisch"
 
-#: php-typography/_language_names.php:46
+#: php-typography/_language_names.php:51
 msgctxt "language name"
 msgid "Serbian (Cyrillic)"
 msgstr "Serbisch (Kyrillisch)"
 
-#: php-typography/_language_names.php:45
+#: php-typography/_language_names.php:50
 msgctxt "language name"
 msgid "Slovenian"
 msgstr "Slowenisch"
 
-#: php-typography/_language_names.php:44
+#: php-typography/_language_names.php:49
 msgctxt "language name"
 msgid "Slovak"
 msgstr "Slowakisch"
 
-#: php-typography/_language_names.php:43
+#: php-typography/_language_names.php:48
 msgctxt "language name"
 msgid "Serbocroatian (Latin)"
 msgstr "Serbokroatisch (Lateinschrift)"
 
-#: php-typography/_language_names.php:42
+#: php-typography/_language_names.php:47
 msgctxt "language name"
 msgid "Serbocroatian (Cyrillic)"
 msgstr "Serbokroatisch (Kyrillisch)"
 
-#: php-typography/_language_names.php:41
+#: php-typography/_language_names.php:46
 msgctxt "language name"
 msgid "Sanskrit"
 msgstr "Sanskrit"
 
-#: php-typography/_language_names.php:40
+#: php-typography/_language_names.php:45
 msgctxt "language name"
 msgid "Russian"
 msgstr "Russisch"
 
-#: php-typography/_language_names.php:39
+#: php-typography/_language_names.php:44
 msgctxt "language name"
 msgid "Romanian"
 msgstr "Rumänisch"
 
-#: php-typography/_language_names.php:38
+#: php-typography/_language_names.php:43
 msgctxt "language name"
 msgid "Portuguese"
 msgstr "Portugiesisch"
 
-#: php-typography/_language_names.php:37
+#: php-typography/_language_names.php:42
 msgctxt "language name"
 msgid "Polish"
 msgstr "Polnisch"
 
-#: php-typography/_language_names.php:36
+#: php-typography/_language_names.php:38
 msgctxt "language name"
 msgid "Norwegian"
 msgstr "Norwegisch"
 
-#: php-typography/_language_names.php:35
+#: php-typography/_language_names.php:37
 msgctxt "language name"
 msgid "Dutch"
 msgstr "Niederländisch"
 
-#: php-typography/_language_names.php:34
+#: php-typography/_language_names.php:35
 msgctxt "language name"
 msgid "Mongolian (Cyrillic)"
 msgstr "Mongolisch (Kyrillisch)"
 
-#: php-typography/_language_names.php:33
+#: php-typography/_language_names.php:34
 msgctxt "language name"
 msgid "Latvian"
 msgstr "Lettisch"
 
-#: php-typography/_language_names.php:32
+#: php-typography/_language_names.php:33
 msgctxt "language name"
 msgid "Lithuanian"
 msgstr "Litauisch"
 
-#: php-typography/_language_names.php:31
+#: php-typography/_language_names.php:32
 msgctxt "language name"
 msgid "Latin"
 msgstr "Latein"
 
-#: php-typography/_language_names.php:29
+#: php-typography/_language_names.php:30
 msgctxt "language name"
 msgid "Latin (Classical)"
 msgstr "Latein (klassisch)"
 
-#: php-typography/_language_names.php:28
+#: php-typography/_language_names.php:29
 msgctxt "language name"
 msgid "Georgian"
 msgstr "Georgisch"
 
-#: php-typography/_language_names.php:27
+#: php-typography/_language_names.php:28
 msgctxt "language name"
 msgid "Italian"
 msgstr "Italienisch"
 
-#: php-typography/_language_names.php:26
+#: php-typography/_language_names.php:27
 msgctxt "language name"
 msgid "Icelandic"
 msgstr "Isländisch"
 
-#: php-typography/_language_names.php:25
+#: php-typography/_language_names.php:26
 msgctxt "language name"
 msgid "Indonesian"
 msgstr "Indonesisch"
 
-#: php-typography/_language_names.php:24
+#: php-typography/_language_names.php:25
 msgctxt "language name"
 msgid "Interlingua"
 msgstr "Interlingua"
 
-#: php-typography/_language_names.php:23
+#: php-typography/_language_names.php:24
 msgctxt "language name"
 msgid "Armenian"
 msgstr "Armenisch"
 
-#: php-typography/_language_names.php:22
+#: php-typography/_language_names.php:23
 msgctxt "language name"
 msgid "Hungarian"
 msgstr "Ungarisch"
 
-#: php-typography/_language_names.php:21
+#: php-typography/_language_names.php:22
 msgctxt "language name"
 msgid "Croatian"
 msgstr "Kroatisch"
@@ -211,7 +496,7 @@ msgctxt "language name"
 msgid "Spanish"
 msgstr "Spanisch"
 
-#: php-typography/_language_names.php:12 php-typography/_language_names.php:54
+#: php-typography/_language_names.php:12 php-typography/_language_names.php:61
 msgctxt "language name"
 msgid "English (United States)"
 msgstr "Englisch (USA)"
@@ -231,7 +516,7 @@ msgctxt "language name"
 msgid "Greek (Modern Monotonic)"
 msgstr "Griechisch (monotonisch)"
 
-#: php-typography/_language_names.php:8 php-typography/_language_names.php:53
+#: php-typography/_language_names.php:8 php-typography/_language_names.php:60
 msgctxt "language name"
 msgid "German"
 msgstr "Deutsch"
@@ -271,61 +556,69 @@ msgctxt "language name"
 msgid "Afrikaans"
 msgstr "Afrikaans"
 
-#: includes/class-wp-typography-admin.php:567
+#: includes/class-wp-typography-admin.php:638
 msgid "%1$s Force thin spaces between em &amp; en dashes and adjoining words."
 msgstr "%1$s Schmale Leerzeichen zwischen Geviert- &amp; Halbgeviertstrichen und angrenzenden Wörtern erzwingen."
 
-#: includes/class-wp-typography-admin.php:399
+#: includes/class-wp-typography-admin.php:454
 msgid "To prevent legacy applications from displaying inappropriate hyphens, all soft hyphens and zero-width spaces are removed from the clipboard selection. Requires JavaScript."
 msgstr "Um eine fehlerhafte Darstellung in älteren Anwendungen zu verhindern, werden alle bedingten Trennstriche und breitenlose Leerzeichen aus der in die Zwischenablage kopierten Auswahl entfernt. Erfordert JavaScript."
 
-#: includes/class-wp-typography-admin.php:398
+#: includes/class-wp-typography-admin.php:453
 msgid "%1$s Remove hyphenation when copying to clipboard"
 msgstr "%1$s Bedingte Trennstriche beim Kopieren in die Zwischenablage entfernen"
 
-#: includes/class-wp-typography-admin.php:697
-msgid "Note: The amount of push/pull should be adjusted for your selected font in the stylesheet. <br />Single quote-like marks [ <samp>&#8218;&lsquo;&apos;&prime;'</samp> ] are wrapped with <samp>&lt;span class=\"pull-single\"&gt;</samp>. <br />Double quote-like marks [ <samp>&#8222;&ldquo;&Prime;\"</samp> ] are wrapped with <samp>&lt;span class=\"pull-double\"&gt;</samp>. <br/>For punctuation marks that do not begin a block of text, a corresponding empty <samp>&lt;span class=\"push-&hellip;\"&gt;</samp> ensures proper alignment within the line."
-msgstr "Anmerkung: Der Versatz sollte im Stylesheet an die jeweils verwendete Schriftart angepasst werden. <br />Einfache Anführungszeichen et al. [ <samp>&#8218;&lsquo;&apos;&prime;'</samp> ] werden mit <samp>&lt;span class=\"pull-single\"&gt;</samp> umgeben. <br />Doppelte Anführungszeichen et al. [ <samp>&#8222;&ldquo;&Prime;\"</samp> ] werden mit <samp>&lt;span class=\"pull-double\"&gt;</samp> umgeben. <br/>Für nicht am Anfang eines Textblocks stehende Interpunktionszeichen sorgt ein leeres <samp>&lt;span class=\"push-&hellip;\"&gt;</samp> für den richtigen Abstand innerhalb einer Textzeile."
+#: includes/class-wp-typography-admin.php:789
+msgid "The amount of push/pull should be adjusted for your selected font in the stylesheet. <br />Single quote-like marks [ <code>&#8218;&lsquo;&apos;&prime;'</code> ] are wrapped with <code>&lt;span class=\"pull-single\"&gt;</code>. <br />Double quote-like marks [ <code>&#8222;&ldquo;&Prime;\"</code> ] are wrapped with <code>&lt;span class=\"pull-double\"&gt;</code>. <br/>For punctuation marks that do not begin a block of text, a corresponding empty <code>&lt;span class=\"push-&hellip;\"&gt;</code> ensures proper alignment within the line."
+msgstr "Der Versatz sollte im Stylesheet an die jeweils verwendete Schriftart angepasst werden. <br />Einfache Anführungszeichen et al. [ <code>&#8218;&lsquo;&apos;&prime;'</code> ] werden mit <code>&lt;span class=\"pull-single\"&gt;</code> umgeben. <br />Doppelte Anführungszeichen et al. [ <code>&#8222;&ldquo;&Prime;\"</code> ] werden mit <code>&lt;span class=\"pull-double\"&gt;</code> umgeben. <br/>Für nicht am Anfang eines Textblocks stehende Interpunktionszeichen sorgt ein leeres <code>&lt;span class=\"push-&hellip;\"&gt;</code> für den richtigen Abstand innerhalb einer Textzeile."
 
-#: includes/class-wp-typography-admin.php:696
-msgid "%1$s Wrap small punctuation marks"
-msgstr "%1$s Kleine Interpunktionszeichen mit CSS-Klassen umgeben"
+#: includes/class-wp-typography-admin.php:788
+msgid "%1$s Wrap small punctuation marks."
+msgstr "%1$s Kleine Interpunktionszeichen mit CSS-Klassen umgeben."
 
-#: includes/class-wp-typography-admin.php:591
-msgid "This option adds a thin non-breakable space before <samp>?!:;</samp>."
-msgstr "Diese Einstellung fügt vor <samp>?!:;</samp> ein schmales geschütztes Leerzeichen ein."
+#: includes/class-wp-typography-admin.php:666
+msgid "This option adds a thin non-breakable space before <code>?!:;</code>."
+msgstr "Diese Einstellung fügt vor <code>?!:;</code> ein schmales geschütztes Leerzeichen ein."
 
-#: includes/class-wp-typography-admin.php:590
+#: includes/class-wp-typography-admin.php:665
 msgid "%1$s Apply French punctuation rules."
 msgstr "%1$s Französische Interpunktionsregeln anwenden."
 
-#: includes/class-wp-typography-admin.php:349
-msgid "Uncheck to disallow the hyphenation of the words making up a hyphenated compound (e.g. <samp>editor-in-chief</samp>)."
-msgstr "Häkchen entfernen, um die Silbentrennung für die Teilwörter einer durch Bindestriche verbundenen Zusammensetzung (z.B. <samp>Nordrhein-Westfalen</samp>) zu deaktivieren."
+#: includes/class-wp-typography-admin.php:405
+msgid "Uncheck to disallow the hyphenation of the words making up a hyphenated compound (e.g. <code>editor-in-chief</code>)."
+msgstr "Häkchen entfernen, um die Silbentrennung für die Teilwörter einer durch Bindestriche verbundenen Zusammensetzung (z.B. <code>Nordrhein-Westfalen</code>) zu deaktivieren."
 
-#: includes/class-wp-typography-admin.php:348
+#: includes/class-wp-typography-admin.php:404
 msgid "%1$s Allow hyphenation of the components of hyphenated compound words."
 msgstr "%1$s Silbentrennung für Zusammensetzungen mit Bindestrichen erlauben."
 
-#: includes/class-wp-typography-admin.php:890
+#. Description of the plugin/theme
+msgid "Improve your web typography with: hyphenation, space control, intelligent character replacement, and CSS hooks."
+msgstr "Verbessere die Typography deiner Website durch Silbentrennung, Weißraum-Kontrolle, intelligente Zeichenersetzung und CSS-Klassen."
+
+#: admin/partials/settings.php:27
 msgid "Clear Cache"
 msgstr "Cache leeren"
 
-#: includes/class-wp-typography-admin.php:492
+#: includes/class-wp-typography-admin.php:550
 msgid "International"
 msgstr "internationalen"
 
-#: includes/class-wp-typography-admin.php:492
+#: includes/class-wp-typography-admin.php:549
 msgid "Traditional US"
 msgstr "traditionellen US-amerikanischen"
 
-#: includes/class-wp-typography-admin.php:490
-msgid "Use the %1$s style for dashes. In the US, the em dash&#8202;&mdash;&#8202;with no or very little spacing&#8202;&mdash;&#8202;is used for parenthetical expressions, while internationally, the en dash &ndash; with spaces &ndash; is more prevalent."
-msgstr "Den %1$s Stil für Gedankenstriche verwenden. In den USA wird traditionell der Geviertstrich&#8202;&mdash;&#8202;ohne oder mit sehr geringem Leerraum&#8202;&mdash;&#8202;für Einschübe benutzt, während international der Halbgeviertstrich &ndash; mit umgebenden Leerzeichen &ndash; üblich ist."
+#: includes/class-wp-typography-admin.php:546
+msgid "In the US, the em dash&#8202;&mdash;&#8202;with no or very little spacing&#8202;&mdash;&#8202;is used for parenthetical expressions, while internationally, the en dash &ndash; with spaces &ndash; is more prevalent."
+msgstr "In den USA wird traditionell der Geviertstrich&#8202;&mdash;&#8202;ohne oder mit sehr geringem Leerraum&#8202;&mdash;&#8202;für Einschübe benutzt, während international der Halbgeviertstrich &ndash; mit umgebenden Leerzeichen &ndash; üblich ist."
 
-#: includes/class-wp-typography-admin.php:253
+#: includes/class-wp-typography-admin.php:637
 msgid "Dashes"
 msgstr "Gedankenstriche"
+
+#. Author of the plugin/theme
+msgid "Peter Putzer"
+msgstr "Peter Putzer"
 
 #. Plugin URI of the plugin/theme
 msgid "https://code.mundschenk.at/wp-typography/"
@@ -335,365 +628,275 @@ msgstr "https://code.mundschenk.at/wp-typography/"
 msgid "wp-Typography"
 msgstr "wp-Typography"
 
-#: admin/partials/settings.php:7
-msgid "Resource Links"
-msgstr "Ressourcen"
-
-#: includes/class-wp-typography-requirements.php:185
+#: includes/class-wp-typography-requirements.php:184
 msgid "The activated plugin %1$s requires your blog use the UTF-8 character encoding. You have set your blogs encoding to %2$s. Please deactivate this plugin, or <a href=\"%3$s\">change your character encoding to UTF-8</a>."
 msgstr "Das aktivierte Plugin %1$s benötigt die Zeichenkodierung UTF-8. Derzeit wird die Kodierung PHP %2$s verwendet. Bitte das Plugin deaktivieren oder <a href=\"%3$s\">die Zeichenkodierung auf UTF-8 ändern</a>."
 
-#: includes/class-wp-typography-requirements.php:176
+#: includes/class-wp-typography-requirements.php:175
 msgid "The activated plugin %1$s requires the mbstring PHP extension to be enabled on your server. Please deactivate this plugin, or <a href=\"%2$s\">enable the extension</a>."
 msgstr "Das aktivierte Plugin %1$s benötigt die PHP-Erweiterung mbstring. Bitte das Plugin deaktivieren oder <a href=\"%2$s\">die Erweiterung aktivieren</a>."
 
-#: includes/class-wp-typography-requirements.php:166
+#: includes/class-wp-typography-requirements.php:165
 msgid "The activated plugin %1$s requires PHP %2$s or later. Your server is running PHP %3$s. Please deactivate this plugin, or upgrade your server's installation of PHP."
 msgstr "Das aktivierte Plugin %1$s benötigt PHP %2$s oder höher. Am Server wird PHP %3$s ausgeführt. Bitte das Plugin deaktivieren oder ein Upgrade der PHP-Version durchführen."
 
-#: includes/class-wp-typography-requirements.php:156
+#: includes/class-wp-typography-requirements.php:155
 msgid "The activated plugin %1$s requires WordPress version %2$s or later. You are running WordPress version %3$s. Please deactivate this plugin, or upgrade your installation of WordPress."
 msgstr "Das aktivierte Plugin %1$s benötigt WordPress in der Version %2$s oder höher. Aktuell wird WordPress in Version %3$s ausgeführt. Bitte das Plugin deaktivieren oder ein Upgrade von WordPress durchführen."
 
-#: includes/class-wp-typography-admin.php:894
+#: admin/partials/settings.php:24
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
-#: includes/class-wp-typography-admin.php:886
+#: admin/partials/settings.php:26
 msgid "Restore Defaults"
 msgstr "Alles zurücksetzen"
 
-#: includes/class-wp-typography-admin.php:810
+#: includes/class-wp-typography-admin.php:1104
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: includes/class-wp-typography-admin.php:728
+#: includes/class-wp-typography-admin.php:824
 msgid "This will only be applied if explicitly selected with the preceding option."
-msgstr "Diese Styles werden nur angewendet, wenn die vorige Option ausgewählt ist."
+msgstr "Diese Stile werden nur angewendet, wenn die vorige Option ausgewählt ist."
 
-#: includes/class-wp-typography-admin.php:727
-msgid "Styling for CSS Hooks:"
+#: includes/class-wp-typography-admin.php:823
+msgid "Styling for CSS hooks:"
 msgstr "Stile für CSS-Klassen:"
 
-#: includes/class-wp-typography-admin.php:720
+#: includes/class-wp-typography-admin.php:815
 msgid "Attempts to inject the CSS specified below.  If you are familiar with CSS, it is recommended you not use this option, and maintain all styles in your main stylesheet."
 msgstr "Versucht die unten angeführten CSS-Stile einzufügen. Es wird jedoch empfohlen, die gesamte Gestaltung im Theme-Stylesheet vorzunehmen und diese Option zu deaktivieren."
 
-#: includes/class-wp-typography-admin.php:719
-msgid "%1$s Include Styling for CSS Hooks"
-msgstr "%1$s Stylesheet für CSS-Klassen inkludieren"
+#: includes/class-wp-typography-admin.php:814
+msgid "%1$s Include styling for CSS hooks."
+msgstr "%1$s Stylesheet für CSS-Klassen inkludieren."
 
-#: includes/class-wp-typography-admin.php:712
+#: includes/class-wp-typography-admin.php:806
 msgid "Limit styling of initial quotes to these <strong>HTML elements</strong>:"
 msgstr "Gestaltung initialer Anführungszeichen auf bestimmte <strong>HTML-Elemente</strong> beschränken:"
 
-#: includes/class-wp-typography-admin.php:705
-msgid "Note: matches quotemarks at the beginning of blocks of text, <strong>not</strong> all opening quotemarks. <br />Single quotes [ <samp>&lsquo;</samp> <samp>&#8218;</samp> ] are wrapped with <samp>&lt;span class=\"quo\"&gt;</samp>. <br />Double quotes [ <samp>&ldquo;</samp> <samp>&#8222;</samp> ] are wrapped with <samp>&lt;span class=\"dquo\"&gt;</samp>. <br />Guillemets [ <samp>&laquo;</samp> <samp>&raquo;</samp> ] are wrapped with <samp>&lt;span class=\"dquo\"&gt;</samp>."
-msgstr "Anmerkung: Erkennt Anführungszeichen am Beginn von Textblöcken, <strong>nicht</strong> alle öffnenden Anführungszeichen. <br />Einfache Anfürhungszeichen [ <samp>&lsquo;</samp> <samp>&#8218;</samp> ] werden mit <samp>&lt;span class=\"quo\"&gt;</samp> umgeben. <br />Doppelte Anführungszeichen [ <samp>&ldquo;</samp> <samp>&#8222;</samp> ] werden mit <samp>&lt;span class=\"dquo\"&gt;</samp> umgeben. <br />Guillemets [ <samp>&laquo;</samp> <samp>&raquo;</samp> ] werden mit <samp>&lt;span class=\"dquo\"&gt;</samp> umgeben."
+#: includes/class-wp-typography-admin.php:798
+msgid "Matches quotemarks at the beginning of blocks of text, not all opening quotemarks. <br />Single quotes [ <code>&lsquo;</code> <code>&#8218;</code> ] are wrapped with <code>&lt;span class=\"quo\"&gt;</code>. <br />Double quotes [ <code>&ldquo;</code> <code>&#8222;</code> ] are wrapped with <code>&lt;span class=\"dquo\"&gt;</code>. <br />Guillemets [ <code>&laquo;</code> <code>&raquo;</code> ] are wrapped with <code>&lt;span class=\"dquo\"&gt;</code>."
+msgstr "Erkennt Anführungszeichen am Beginn von Textblöcken, nicht alle öffnenden Anführungszeichen. <br />Einfache Anführungszeichen [ <code>&lsquo;</code> <code>&#8218;</code> ] werden mit <code>&lt;span class=\"quo\"&gt;</code> umgeben. <br />Doppelte Anführungszeichen [ <code>&ldquo;</code> <code>&#8222;</code> ] werden mit <code>&lt;span class=\"dquo\"&gt;</code> umgeben. <br />Guillemets [ <code>&laquo;</code> <code>&raquo;</code> ] werden mit <code>&lt;span class=\"dquo\"&gt;</code> umgeben."
 
-#: includes/class-wp-typography-admin.php:704
-msgid "%1$s Wrap initial quotes"
-msgstr "%1$s Initiale Anführungszeichen mit CSS-Klassen umgeben"
+#: includes/class-wp-typography-admin.php:797
+msgid "%1$s Wrap initial quotes."
+msgstr "%1$s Initiale Anführungszeichen mit CSS-Klassen umgeben."
 
-#: includes/class-wp-typography-admin.php:689
-msgid "%1$s Wrap digits [ <samp>0123456789</samp> ] with <samp>&lt;span class=\"numbers\"&gt;</samp>."
-msgstr "%1$s Zahlen [ <samp>0123456789</samp> ] mit <samp>&lt;span class=\"numbers\"&gt;</samp> umgeben."
+#: includes/class-wp-typography-admin.php:780
+msgid "%1$s Wrap digits [ <code>0123456789</code> ] with <code>&lt;span class=\"numbers\"&gt;</code>."
+msgstr "%1$s Zahlen [ <code>0123456789</code> ] mit <code>&lt;span class=\"numbers\"&gt;</code> umgeben."
 
-#: includes/class-wp-typography-admin.php:682
-msgid "%1$s Wrap acronyms (all capitals) with <samp>&lt;span class=\"caps\"&gt;</samp>."
-msgstr "%1$s Akronyme (in Blockbuchstaben) mit <samp>&lt;span class=\"caps\"&gt;</samp> umgeben."
+#: includes/class-wp-typography-admin.php:772
+msgid "%1$s Wrap acronyms (all capitals) with <code>&lt;span class=\"caps\"&gt;</code>."
+msgstr "%1$s Akronyme (in Blockbuchstaben) mit <code>&lt;span class=\"caps\"&gt;</code> umgeben."
 
-#: includes/class-wp-typography-admin.php:675
-msgid "%1$s Wrap ampersands [ <samp>&amp;</samp> ] with <samp>&lt;span class=\"amp\"&gt;</samp>."
-msgstr "%1$s Et-Zeichen [ <samp>&amp;</samp> ] mit <samp>&lt;span class=\"amp\"&gt;</samp> umgeben."
+#: includes/class-wp-typography-admin.php:764
+msgid "%1$s Wrap ampersands [ <code>&amp;</code> ] with <code>&lt;span class=\"amp\"&gt;</code>."
+msgstr "%1$s Et-Zeichen [ <code>&amp;</code> ] mit <code>&lt;span class=\"amp\"&gt;</code> umgeben."
 
-#: includes/class-wp-typography-admin.php:668
+#: includes/class-wp-typography-admin.php:727
 msgid "Keep at least the last %1$s characters of a URL together."
 msgstr "Mindestens die letzten %1$s Zeichen einer URL beieinander halten."
 
-#: includes/class-wp-typography-admin.php:660
+#: includes/class-wp-typography-admin.php:717
 msgid "Adds zero-width spaces throughout the URL."
 msgstr "Fügt breitenlose Leerzeichen innerhalb der URL hinzu."
 
-#: includes/class-wp-typography-admin.php:659
+#: includes/class-wp-typography-admin.php:716
 msgid "%1$s Enable wrapping of long URLs."
 msgstr "%1$s Umbrechen von langen URLs ermöglichen."
 
-#: includes/class-wp-typography-admin.php:651
-msgid "Adds zero-width spaces throughout the email."
+#: includes/class-wp-typography-admin.php:706
+msgid "Adds zero-width spaces throughout the email address."
 msgstr "Fügt breitenlose Leerzeichen innerhalb der E-Mail-Adresse hinzu."
 
-#: includes/class-wp-typography-admin.php:650
-msgid "%1$s Enable wrapping of long emails."
-msgstr "%1$s Umbrechen von langen E-Mail-Adressen ermöglichen."
-
-#: includes/class-wp-typography-admin.php:642
+#: includes/class-wp-typography-admin.php:695
 msgid "Adds zero-width spaces after hard hyphens (like in &ldquo;zero-width&rdquo;)."
 msgstr "Fügt breitenlose Leerzeichen nach Bindestrichen (wie im Wort &ldquo;Binde-Strich&rdquo;) ein."
 
-#: includes/class-wp-typography-admin.php:641
+#: includes/class-wp-typography-admin.php:694
 msgid "%1$s Enable wrapping after hard hyphens."
 msgstr "%1$s Umbrüche nach Bindestrichen ermöglichen."
 
-#: includes/class-wp-typography-admin.php:633
+#: includes/class-wp-typography-admin.php:756
 msgid "Pull at most %1$s letters from the previous line to keep the widow company."
 msgstr "Maximal %1$s Buchstaben aus der vorigen Zeile ziehen, um dem Hurenkind Gesellschaft zu leisten."
 
-#: includes/class-wp-typography-admin.php:625
+#: includes/class-wp-typography-admin.php:747
 msgid "Only protect widows with %1$s or fewer letters."
 msgstr "Nur Hurenkinder mit  %1$s oder weniger Zeichen verhindern. "
 
-#: includes/class-wp-typography-admin.php:617
+#: includes/class-wp-typography-admin.php:737
 msgid "Widows are the last word in a block of text that wraps to its own line."
 msgstr "Hurenkinder bezeichnen hier das letzte Wort eines Textblocks, das in eine neue Zeile wandert."
 
-#: includes/class-wp-typography-admin.php:616
-msgid "%1$s Prevent widows"
-msgstr "%1$s Hurenkinder verhindern"
+#: includes/class-wp-typography-admin.php:736
+msgid "%1$s Prevent widows."
+msgstr "%1$s Hurenkinder verhindern."
 
-#: includes/class-wp-typography-admin.php:609
+#: includes/class-wp-typography-admin.php:686
 msgid "Separate unit names with spaces. We already look for a large list; fill in any holes here."
 msgstr "Einheiten durch Leerzeichen trennen. Die vorgegebene Liste ist bereits sehr umfangreich; allfällige Lücken können hier geschlossen werden."
 
-#: includes/class-wp-typography-admin.php:608
-msgid "Unit names:"
-msgstr "Einheiten:"
-
-#: includes/class-wp-typography-admin.php:600
-msgid "i.e. <samp>1 in.</samp> or <samp>10 m<sup>2</sup></samp>"
-msgstr "d.h. <samp>1 kg</samp> or <samp>10 m<sup>2</sup></samp>"
-
-#: includes/class-wp-typography-admin.php:599
+#: includes/class-wp-typography-admin.php:675
 msgid "%1$s Keep values and units together."
 msgstr "%1$s Werte und Einheiten beieinander behalten."
 
-#: includes/class-wp-typography-admin.php:583
-msgid "Normal HTML processing collapses basic spaces.  This option will additionally collapse no-break spaces, zero-width spaces, figure spaces, etc."
+#: includes/class-wp-typography-admin.php:657
+msgid "Normal HTML processing collapses basic spaces. This option will additionally collapse no-break spaces, zero-width spaces, figure spaces, etc."
 msgstr "Normalerweise werden in HTML mehrere einfache Leerzeichen wie eines behandelt. Diese Einstellung dehnt dieses Verhalten auf geschützte Leerzeichen, schmale Leerzeichen, leere Ziffern etc. aus. "
 
-#: includes/class-wp-typography-admin.php:582
+#: includes/class-wp-typography-admin.php:656
 msgid "%1$s Collapse adjacent spacing to a single character."
 msgstr "%1$s Nebeneinander stehende Leerzeichen zusammenfassen."
 
-#: includes/class-wp-typography-admin.php:575
-msgid "i.e. <samp>1 1/2</samp> or <samp>1 <sup>1</sup>&#8260;<sub>2</sub></samp>"
-msgstr "d.h. <samp>1 1/2</samp> oder <samp>1 <sup>1</sup>&#8260;<sub>2</sub></samp>"
-
-#: includes/class-wp-typography-admin.php:574
+#: includes/class-wp-typography-admin.php:646
 msgid "%1$s Keep integers with adjoining fractions."
 msgstr "%1$s Ganze Zahlen mit Brüchen beieinander behalten."
 
-#: includes/class-wp-typography-admin.php:560
+#: includes/class-wp-typography-admin.php:630
 msgid "%1$s Prevent single character words from residing at the end of a line of text (unless it is a widow)."
 msgstr "%1$s Einzelbuchstabenwörter am Zeilenende verhindern (ausgenommen Hurenkinder)."
 
-#: includes/class-wp-typography-admin.php:553
-msgid "%1$s Transform ordinal suffixes [ <samp>1st</samp> ] to  pretty ordinals [ <samp>1<sup>st</sup></samp> ]."
-msgstr "%1$s Ordinalsuffixe [ <samp>1st</samp> ] hochstellen [ <samp>1<sup>st</sup></samp> ]."
+#: includes/class-wp-typography-admin.php:622
+msgid "%1$s Transform ordinal suffixes [ <code>1st</code> ] to  pretty ordinals [ <code>1<sup>st</sup></code> ]."
+msgstr "%1$s Ordinalsuffixe [ <code>1st</code> ] hochstellen [ <code>1<sup>st</sup></code> ]."
 
-#: includes/class-wp-typography-admin.php:546
-msgid "%1$s Transform fractions [ <samp>1/2</samp> ] to  pretty fractions [ <samp><sup>1</sup>&#8260;<sub>2</sub></samp> ].<br>WARNING: If you use a font (like Lucida Grande) that does not have a fraction-slash character, this may cause a missing line between the numerator and denominator."
-msgstr "%1$s Bruchzahlen [ <samp>1/2</samp> ] richtig formatieren [ <samp><sup>1</sup>&#8260;<sub>2</sub></samp> ].<br>Achtung: Bei Verwendung einer Schriftart ohne Bruchstrichzeichen (wie Lucida Grande) kann die Linie zwischen Zähler und Nenner fehlen."
+#: includes/class-wp-typography-admin.php:603
+msgid "%1$s Transform exponents [ <code>3^2</code> ] to pretty exponents [ <code>3<sup>2</sup></code> ] and math symbols [ <code>(2x6)/3=4</code> ] to correct symbols [ <code>(2&#215;6)&#247;3=4</code> ]."
+msgstr "%1$s Exponentialzahlen [ <code>3^2</code> ] richtig formatieren [ <code>3<sup>2</sup></code> ] und mathematische Symbole [ <code>(2x6)/3=4</code> ] durch die korrekten Zeichen [ <code>(2&#215;6)&#247;3=4</code> ] ersetzen."
 
-#: includes/class-wp-typography-admin.php:539
-msgid "%1$s Transform exponents [ <samp>3^2</samp> ] to pretty exponents [ <samp>3<sup>2</sup></samp> ] and math symbols [ <samp>(2x6)/3=4</samp> ] to correct symbols [ <samp>(2&#215;6)&#247;3=4</samp> ]."
-msgstr "%1$s Exponentialzahlen [ <samp>3^2</samp> ] richtig formatieren [ <samp>3<sup>2</sup></samp> ] und mathematische Symbole [ <samp>(2x6)/3=4</samp> ] durch die korrekten Zeichen [ <samp>(2&#215;6)&#247;3=4</samp> ] ersetzen."
+#: includes/class-wp-typography-admin.php:577
+msgid "Must be formatted <code>\"word to replace\"=>\"replacement word\",</code>. The entries are case-sensitive."
+msgstr "Formatierung als <code>\"zu ersetzendes Wort\"=>\"Ersatzwort\",</code> erforderlich. Ersetzungen werden nur bei identer Groß- und Kleinschreibung vorgenommen."
 
-#: includes/class-wp-typography-admin.php:532
-msgid "%1$s Transform registration marks [ <samp>(c)</samp> <samp>(r)</samp> <samp>(tm)</samp> <samp>(sm)</samp> <samp>(p)</samp> ] to  proper characters [ <samp>©</samp> <samp>®</samp> <samp>™</samp> <samp>℠</samp> <samp>℗</samp> ]."
-msgstr "%1$s Registrierungs- und Warenzeichen [ <samp>©</samp> <samp>®</samp> <samp>(™)</samp> <samp>(sm)</samp> <samp>℗</samp> ] durch passende Einzelzeichen [ <samp>©</samp> <samp>®</samp> <samp>™</samp> <samp>℠</samp> <samp>℗</samp> ] ersetzen."
-
-#: includes/class-wp-typography-admin.php:518
-msgid "Must be formatted <samp>\"word to replace\"=>\"replacement word\",</samp>; This is case-sensitive."
-msgstr "Formatierung <samp>\"zu ersetzendes Wort\"=>\"Ersatzwort\",</samp>; Ersetzungen werden nur bei identer Groß- und Kleinschreibung vorgenommen."
-
-#: includes/class-wp-typography-admin.php:517
+#: includes/class-wp-typography-admin.php:576
 msgid "Custom diacritic word replacements:"
 msgstr "Individuelle Ersetzungen mit diakritischen Zeichen:"
 
-#: includes/class-wp-typography-admin.php:509
-msgid "Language definitions will purposefully <strong>not</strong> process words that have alternate meaning without diacritics like <samp>resume &amp; résumé</samp>, <samp>divorce &amp; divorcé</samp>, and <samp>expose &amp; exposé</samp>."
-msgstr "Manche Wörter werden je nach Sprachdefinition absichtlich <strong>unverändert</strong> gelassen, wenn sowohl die Variante ohne als auch mit diakritischen Zeichen eigenständige Bedeutungen haben, wie z.B. <samp>Pate</samp> &amp; <samp>Paté</samp>."
-
-#: includes/class-wp-typography-admin.php:508
+#: includes/class-wp-typography-admin.php:567
 msgid "Language for diacritic replacements: %1$s"
 msgstr "Sprache für Ersetzung mit diakritischen Zeichen: %1$s"
 
-#: includes/class-wp-typography-admin.php:500
-msgid "i.e. <samp>creme brulee</samp> becomes <samp>crème brûlée</samp>"
-msgstr "d.h. <samp>creme brulee</samp> wird durch <samp>crème brûlée</samp> ersetzt"
-
-#: includes/class-wp-typography-admin.php:499
+#: includes/class-wp-typography-admin.php:557
 msgid "%1$s Force diacritics where appropriate."
 msgstr "%1$s Passende diakritische Zeichen erzwingen."
 
-#: includes/class-wp-typography-admin.php:525
-msgid "%1$s Transform three periods [ <samp>...</samp> ] to  ellipses [ <samp>&hellip;</samp> ]."
-msgstr "%1$s Drei Punkte [ <samp>...</samp> ] durch Auslassungspunkte [ <samp>&hellip;</samp> ] ersetzen."
+#: includes/class-wp-typography-admin.php:586
+msgid "%1$s Transform three periods [ <code>...</code> ] to  ellipses [ <code>&hellip;</code> ]."
+msgstr "%1$s Drei Punkte [ <code>...</code> ] durch Auslassungspunkte [ <code>&hellip;</code> ] ersetzen."
 
-#: includes/class-wp-typography-admin.php:482
-msgid "%1$s Transform minus-hyphens [ <samp>-</samp> <samp>--</samp> ] to contextually appropriate dashes, minus signs, and hyphens [ <samp>&ndash;</samp> <samp>&mdash;</samp> <samp>&#8722;</samp> <samp>&#8208;</samp> ]."
-msgstr "%1$s Bindestriche [ <samp>-</samp> <samp>--</samp> ] durch zum Kontext passende Gedankenstriche, Minuszeichen usw. ersetzen [ <samp>&ndash;</samp> <samp>&mdash;</samp> <samp>&#8722;</samp> <samp>&#8208;</samp> ]."
+#: includes/class-wp-typography-admin.php:479
+msgid "%1$s Transform straight quotes [ <code>'</code> <code>\"</code> ] to typographically correct characters as detailed below."
+msgstr "%1$s Fuß- und Zollzeichen [ <code>'</code> <code>\"</code> ] durch typographisch korrekte Anführungszeichen ersetzen. "
 
-#: includes/class-wp-typography-admin.php:457
-msgid "Secondary quotation style."
-msgstr "Sekundärer Zitatstil."
-
-#: includes/class-wp-typography-admin.php:456
-msgid "Convert <samp>'foo'</samp> to: %1$s"
-msgstr "Ersetze <samp>'foo'</samp> durch: %1$s"
-
-#: includes/class-wp-typography-admin.php:432
-msgid "Primary quotation style."
-msgstr "Primärer Zitatstil."
-
-#: includes/class-wp-typography-admin.php:431
-msgid "Convert <samp>\"foo\"</samp> to: %1$s"
-msgstr "Ersetze <samp>\"foo\"</samp> durch: %1$s"
-
-#: includes/class-wp-typography-admin.php:422
-msgid "%1$s Transform straight quotes [ <samp>'</samp> <samp>\\\"</samp> ] to typographically correct characters as detailed below."
-msgstr "%1$s Fuß- und Zollzeichen [ <samp>'</samp> <samp>\"</samp> ] durch typographisch korrekte Anführungszeichen ersetzen. "
-
-#: includes/class-wp-typography-admin.php:414
+#: includes/class-wp-typography-admin.php:471
 msgid "%1$s Override WordPress' automatic character handling with your preferences here."
 msgstr "%1$s Die automatische Zeichenersetzung von WordPress durch diese Einstellungen überschreiben."
 
-#: includes/class-wp-typography-admin.php:385
-#: includes/class-wp-typography-admin.php:392
+#: includes/class-wp-typography-admin.php:445
 msgid "Mark allowed hyphenations with \"-\"; separate words with spaces."
 msgstr "Trennstellen mit \"-\" markieren, Wörter durch Leerzeichen trennen."
 
-#: includes/class-wp-typography-admin.php:384
-#: includes/class-wp-typography-admin.php:391
-msgid "Exception List:"
-msgstr "Ausnahmen:"
+#: includes/class-wp-typography-admin.php:444
+msgid "Exception list"
+msgstr "Ausnahmen"
 
-#: includes/class-wp-typography-admin.php:407
+#: includes/class-wp-typography-admin.php:463
 msgid "Safari displays weird ligature-like characters with some fonts (like Open Sans) when hyhpenation is enabled. Inserts <code>-webkit-font-feature-settings: \"liga\", \"dlig\";</code> as inline CSS workaround."
 msgstr "Safari zeigt mit manchen Schriftarten (wie Open Sans) seltsame, ligaturähnliche Zeichen an, wenn die Silbentrennung eingeschaltet ist. Die Umgehungslösung fügt <code>-webkit-font-feature-settings: \"liga\", \"dlig\";</code> als Inline-Style hinzu."
 
-#: includes/class-wp-typography-admin.php:406
+#: includes/class-wp-typography-admin.php:462
 msgid "%1$s Add workaround for Safari hyphenation bug"
 msgstr "%1$s Umgehungslösung für Silbentrennungsfehler in Safari anwenden"
 
-#: includes/class-wp-typography-admin.php:377
+#: includes/class-wp-typography-admin.php:437
 msgid "Keep at least %1$s letters after hyphenation."
 msgstr "Mindestens %1$s Buchstaben nach einer Trennstelle behalten."
 
-#: includes/class-wp-typography-admin.php:370
+#: includes/class-wp-typography-admin.php:429
 msgid "Keep at least %1$s letters before hyphenation."
 msgstr "Mindestens %1$s Buchstaben vor einer Trennstelle behalten."
 
-#: includes/class-wp-typography-admin.php:363
+#: includes/class-wp-typography-admin.php:421
 msgid "Do not hyphenate words with less than %1$s letters."
 msgstr "Wörter mit weniger als %1$s Buchstaben nicht trennen."
 
-#: includes/class-wp-typography-admin.php:356
+#: includes/class-wp-typography-admin.php:413
 msgid "%1$s Hyphenate words in ALL CAPS."
 msgstr "%1$s Wörter in BLOCKBUCHSTABEN trennen."
 
-#: includes/class-wp-typography-admin.php:341
+#: includes/class-wp-typography-admin.php:396
 msgid "Uncheck to avoid hyphenation of proper nouns."
 msgstr "Häkchen entfernen, um die Silbentrennung für Eigennamen und Hauptwörter zu deaktivieren."
 
-#: includes/class-wp-typography-admin.php:340
+#: includes/class-wp-typography-admin.php:395
 msgid "%1$s Allow hyphenation of words that begin with a capital letter."
 msgstr "%1$s Silbentrennung für großgeschriebene Wörter erlauben."
 
-#: includes/class-wp-typography-admin.php:333
+#: includes/class-wp-typography-admin.php:387
 msgid "Unchecking will disallow hyphenation of headings, even if allowed in the general scope."
 msgstr "Durch Entfernen des Häkchens wird die Silbentrennung innerhalb von Überschriften deaktiviert, auch wenn sie in den HTML-Elementen erlaubt wäre."
 
-#: includes/class-wp-typography-admin.php:332
+#: includes/class-wp-typography-admin.php:386
 msgid "%1$s Hyphenate headings."
 msgstr "%1$s Silbentrennung in Überschriften"
 
-#: includes/class-wp-typography-admin.php:325
+#: includes/class-wp-typography-admin.php:378
 msgid "Language for hyphenation rules: %1$s"
 msgstr "Sprache für Silbentrennungsregeln: %1$s"
 
-#: includes/class-wp-typography-admin.php:318
+#: includes/class-wp-typography-admin.php:370
 msgid "%1$s Enable hyphenation."
 msgstr "%1$s Silbentrennung aktivieren."
 
-#: includes/class-wp-typography-admin.php:312
-msgid "Separate ID names with spaces."
-msgstr "IDs durch Leerzeichen trennen."
+#: includes/class-wp-typography-admin.php:807
+msgid "Separate tag names with spaces; do not include the <code>&lt;</code> or <code>&gt;</code>."
+msgstr "Namen der HTML-Elemente (ohne <code>&lt;</code> und <code>&gt;</code>) durch Leerzeichen trennen."
 
-#: includes/class-wp-typography-admin.php:311
-msgid "Do not process elements of <strong>ID</strong>:"
-msgstr "Den Inhalt von Elementen mit diesen <strong>IDs</strong> nicht verändern:"
-
-#: includes/class-wp-typography-admin.php:305
-msgid "Separate class names with spaces."
-msgstr "Klassennamen durch Leerzeichen trennen."
-
-#: includes/class-wp-typography-admin.php:304
-msgid "Do not process elements of <strong>class</strong>:"
-msgstr "Den Inhalt von Elementen mit diesen <strong>Klassen</strong> nicht verändern:"
-
-#: includes/class-wp-typography-admin.php:298
-#: includes/class-wp-typography-admin.php:713
-msgid "Separate tag names with spaces; do not include the <samp>&lt;</samp> or <samp>&gt;</samp>."
-msgstr "Namen der HTML-Elemente (ohne <samp>&lt;</samp> und <samp>&gt;</samp>) durch Leerzeichen trennen."
-
-#: includes/class-wp-typography-admin.php:297
-msgid "Do not process the content of these <strong>HTML elements</strong>:"
-msgstr "Den Inhalt dieser <strong>HTML-Elemente</strong> nicht verändern:"
-
-#: includes/class-wp-typography-admin.php:269
+#: includes/class-wp-typography-admin.php:735
 msgid "Widows"
 msgstr "Hurenkinder"
 
-#: includes/class-wp-typography-admin.php:265
+#: includes/class-wp-typography-admin.php:310
 msgid "Enable Wrapping"
 msgstr "Umbruch"
 
-#: includes/class-wp-typography-admin.php:261
+#: includes/class-wp-typography-admin.php:674
 msgid "Values &amp; Units"
 msgstr "Einheiten"
 
-#: includes/class-wp-typography-admin.php:257
-msgid "Diacritics"
-msgstr "Diakritische Zeichen"
-
-#: includes/class-wp-typography-admin.php:249
-msgid "Quotemarks"
-msgstr "Anführungszeichen"
-
-#: includes/class-wp-typography-admin.php:230
-msgid "Add CSS Hooks"
-msgstr "CSS-Klassen hinzufügen"
-
-#: includes/class-wp-typography-admin.php:229
+#: includes/class-wp-typography-admin.php:280
 msgid "Space Control"
 msgstr "Weißraum-Steuerung"
 
-#: includes/class-wp-typography-admin.php:228
+#: includes/class-wp-typography-admin.php:276
 msgid "Intelligent Character Replacement"
 msgstr "Intelligente Zeichenersetzung"
 
-#: includes/class-wp-typography-admin.php:227
+#: includes/class-wp-typography-admin.php:272
+#: includes/class-wp-typography-admin.php:369
 msgid "Hyphenation"
 msgstr "Silbentrennung"
 
-#: includes/class-wp-typography-admin.php:226
+#: includes/class-wp-typography-admin.php:268
 msgid "General Scope"
 msgstr "Allgemein"
 
-#: includes/class-wp-typography-admin.php:211
+#: includes/class-wp-typography-admin.php:228
 msgid "License"
 msgstr "Lizenz"
 
-#: includes/class-wp-typography-admin.php:210
+#: includes/class-wp-typography-admin.php:227
 msgid "Changelog"
 msgstr "Änderungshistorie"
 
-#: includes/class-wp-typography-admin.php:209
+#: includes/class-wp-typography-admin.php:226
 msgid "FAQs"
 msgstr "Hilfe"
 
-#: includes/class-wp-typography-admin.php:208
+#: includes/class-wp-typography-admin.php:225
 msgid "Plugin Home"
 msgstr "Plugin-Homepage"

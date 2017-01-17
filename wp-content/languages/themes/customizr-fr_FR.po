@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Customizr package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-10-17 06:17:43+0000\n"
+"PO-Revision-Date: 2017-01-09 11:21:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,39 +19,39 @@ msgstr "Customizr est un thème WordPress polyvalent et facile à personnaliser,
 msgid "Customizr"
 msgstr "Customizr "
 
-#: inc/czr-init.php:8480
+#: inc/czr-init.php:8503
 msgid "What We Do"
 msgstr "Notre Activité"
 
-#: inc/czr-init.php:8476
+#: inc/czr-init.php:8499
 msgid "Who We Are"
 msgstr "A Propos"
 
-#: inc/czr-init.php:8657
+#: inc/czr-init.php:8680
 msgid "Call to action"
 msgstr "Appel à action"
 
-#: inc/czr-init.php:8712 inc/czr-init.php:8758
+#: inc/czr-init.php:8735 inc/czr-init.php:8781
 msgid "Search"
 msgstr "Rechercher"
 
-#: inc/czr-init.php:8655
+#: inc/czr-init.php:8678
 msgid "Engage your visitors with a carousel in any pages."
 msgstr "Faites réagir vos visiteurs avec un diaporama dans n'importe quelle page."
 
-#: inc/czr-init.php:8484
+#: inc/czr-init.php:8507
 msgid "Contact Us"
 msgstr "Contactez-nous"
 
-#: inc/czr-init.php:8649
+#: inc/czr-init.php:8672
 msgid "The Customizr theme fits nicely on any mobile devices."
 msgstr "Le thème Customizr s'intègre bien sur tous les appareils mobiles."
 
-#: inc/czr-init.php:8718 inc/czr-init.php:8736
+#: inc/czr-init.php:8741 inc/czr-init.php:8759
 msgid "Recent Posts"
 msgstr "Billets Récents"
 
-#: inc/czr-init.php:8725 inc/czr-init.php:8747
+#: inc/czr-init.php:8748 inc/czr-init.php:8770
 msgid "Recent Comments"
 msgstr "Commentaires Récents"
 
@@ -179,31 +179,31 @@ msgstr "Texte du bouton du diaporama d’articles"
 msgid "Front page slider name"
 msgstr "Nom du diaporama de la page d'accueil"
 
-#: inc/czr-front.php:9707
+#: inc/czr-front.php:9709
 msgid "Powered by WordPress"
 msgstr "Propulsé par WordPress"
 
-#: inc/czr-front.php:9706
+#: inc/czr-front.php:9708
 msgid "Powered by"
 msgstr "Propulsé par"
 
-#: inc/czr-front.php:8895
+#: inc/czr-front.php:8897
 msgid "this slider"
 msgstr "le diaporama"
 
-#: inc/czr-front.php:8895
+#: inc/czr-front.php:8897
 msgid "the posts slider"
 msgstr "Le diaporama d’articles"
 
-#: inc/czr-front.php:8894
+#: inc/czr-front.php:8896
 msgid "Customize or remove %s"
 msgstr "Personnaliser ou retirer %s"
 
-#: inc/czr-init.php:7605
+#: inc/czr-init.php:7628
 msgid "%s and check the option 'Load images on scroll' under 'Website Performances' section."
 msgstr "%s et vérifiez l’option « Charger les images lors du défilement » sous la section « performances du site »."
 
-#: inc/czr-init.php:7604
+#: inc/czr-init.php:7627
 msgid "Did you know you can easily speed up your page load by deferring the loading of the non visible images?"
 msgstr "Saviez-vous que vous pouvez facilement accélérer le temps de chargement de votre page en reportant le chargement des images non visibles ?"
 
@@ -232,12 +232,12 @@ msgid "Click inside the above field and pick post categories you want to display
 msgstr "Cliquez dans les champs suivants et sélectionner les catégories d’article que vous voulez voir apparaitre. Aucun filtre ne sera appliqué si laissé vide."
 
 #: core/front/models/modules/slider/class-model-slider_of_posts.php:489
-#: inc/czr-front.php:9407
+#: inc/czr-front.php:9409
 msgid "There is no excerpt because this is a protected post."
 msgstr "Il n’y a pas d'extrait, car cet article est protégé."
 
 #: core/front/models/modules/slider/class-model-slider_of_posts.php:466
-#: inc/czr-front.php:9382
+#: inc/czr-front.php:9384
 msgid "Protected: %s"
 msgstr "Protégé : %s"
 
@@ -399,77 +399,77 @@ msgstr "Afficher des liens vers vos pages sociales dans les barres latérales."
 msgid "Front-end placeholders and help blocks"
 msgstr "Blocs d'aide en front-office"
 
-#: inc/czr-front.php:3549
+#: inc/czr-front.php:3551
 msgid "Edit those featured pages %s, or %s (you'll be able to add yours later)."
 msgstr "Personnalisez ces pages %s, ou %s (vous pourrez les modifier plus tard)."
 
-#: inc/czr-front.php:3550
+#: inc/czr-front.php:3552
 msgid "Edit those featured pages"
 msgstr "Personnalisez ces pages"
 
-#: inc/czr-front.php:3550 inc/czr-front.php:7856 inc/czr-front.php:8953
-#: inc/czr-front.php:9611
+#: inc/czr-front.php:3552 inc/czr-front.php:7858 inc/czr-front.php:8955
+#: inc/czr-front.php:9613
 msgid "now"
 msgstr "maintenant"
 
-#: inc/czr-front.php:3551
+#: inc/czr-front.php:3553
 msgid "Remove the featured pages"
 msgstr "Supprimer ce bloc de pages"
 
 #: core/front/models/modules/featured-pages/class-model-featured_pages.php:131
-#: inc/czr-front.php:3676
+#: inc/czr-front.php:3678
 msgid "Edit now."
 msgstr "Modifier maintenant."
 
-#: inc/czr-front.php:3551
+#: inc/czr-front.php:3553
 msgid "remove them"
 msgstr "supprimez les"
 
-#: inc/czr-front.php:4837
+#: inc/czr-front.php:4839
 msgid "You can display your post's featured image here if you have set one."
 msgstr "Vous pouvez afficher les images à la une de vos billets ici."
 
-#: inc/czr-front.php:4838
+#: inc/czr-front.php:4840
 msgid "%s to display a featured image here."
 msgstr "%s pour afficher les images à la une."
 
-#: inc/czr-front.php:4839 inc/czr-init.php:7606
+#: inc/czr-front.php:4841 inc/czr-init.php:7629
 msgid "Jump to the customizer now"
 msgstr "Ouvrir le customizer maintenant"
 
-#: inc/czr-front.php:7851
+#: inc/czr-front.php:7853
 msgid "The %s sidebar has no widgets."
 msgstr "La barre latérale %s n'a pas de widgets."
 
-#: inc/czr-front.php:7855
+#: inc/czr-front.php:7857
 msgid "Add widgets to this sidebar %s or %s."
 msgstr "Ajouter des widgets à cette barre latérale %s ou %s."
 
-#: inc/czr-front.php:7858 inc/czr-front.php:9613
+#: inc/czr-front.php:7860 inc/czr-front.php:9615
 msgid "dismiss this notice"
 msgstr "supprimer"
 
-#: inc/czr-front.php:8952
+#: inc/czr-front.php:8954
 msgid "Select your own slider %s, or %s (you'll be able to add one back later)."
 msgstr "Choisissez un diaporama %s, ou %s (vous pourrez en ajouter un plus tard)."
 
-#: inc/czr-front.php:8762 templates/modules/slider/slide.php:9
+#: inc/czr-front.php:8764 templates/modules/slider/slide.php:9
 msgid "Go to"
 msgstr "Aller à"
 
-#: inc/czr-front.php:8953
+#: inc/czr-front.php:8955
 msgid "Select your own slider"
 msgstr "Choisissez un diaprama"
 
-#: inc/czr-front.php:8954
+#: inc/czr-front.php:8956
 msgid "Remove the home page slider"
 msgstr "Supprimer le diaporama de la page d'accueil"
 
-#: inc/czr-front.php:9610
+#: inc/czr-front.php:9612
 msgid "Add widgets to the footer %s or %s."
 msgstr "Ajoutez des widgets au pied de page %s ou %s."
 
-#: inc/czr-front.php:8954
+#: inc/czr-front.php:8956
 msgid "remove this demo slider"
 msgstr "supprimer ce diaporama de demo"
 
@@ -525,7 +525,7 @@ msgstr "Si vous souhaitez seulement modifier la disposition de la page d'accueil
 msgid "You can display the featured image (also called the post thumbnail) of your posts before their content, when they are displayed individually."
 msgstr "Vous pouvez afficher l'image à la une (thumbnail) de vos billets à cet emplacement."
 
-#: core/utils/class-fire-utils_settings_map.php:1483 inc/czr-front.php:4841
+#: core/utils/class-fire-utils_settings_map.php:1483 inc/czr-front.php:4843
 #: inc/czr-init.php:4162
 msgid "Don't know how to set a featured image to a post? Learn how in the %s."
 msgstr "Vous ne savez pas comment ajouter une image à la une ? Visitez la %s."
@@ -799,7 +799,7 @@ msgid "Create a new menu now"
 msgstr "Créez un nouveau menu maintenant"
 
 #: core/utils/class-fire-utils_settings_map.php:1484 inc/czr-customize.php:137
-#: inc/czr-front.php:4842 inc/czr-init.php:4163
+#: inc/czr-front.php:4844 inc/czr-init.php:4163
 msgid "WordPress documentation"
 msgstr "documentation WordPress"
 
@@ -847,176 +847,176 @@ msgstr "Ajouter un menu"
 msgid "Back Home"
 msgstr "Retour Accueil"
 
-#: inc/czr-front.php:9731
+#: inc/czr-front.php:9733
 msgid "Back to top"
 msgstr "Retour haut de page"
 
-#: inc/czr-front.php:9606
+#: inc/czr-front.php:9608
 msgid "The footer has no widgets"
 msgstr "Le pied de page n'a pas de widgets"
 
 #: core/front/models/modules/slider/class-model-slider.php:318
-#: inc/czr-front.php:9036
+#: inc/czr-front.php:9038
 msgid "Check the slider doc now &raquo;"
 msgstr "Lire la documentation maintenant &raquo;"
 
 #: core/front/models/modules/slider/class-model-slider.php:316
-#: inc/czr-front.php:9034
+#: inc/czr-front.php:9036
 msgid "Easily create sliders and add them in any posts or pages."
 msgstr "Créez et insérez facilement des diaporamas dans vos pages."
 
 #: core/front/models/modules/slider/class-model-slider.php:312
-#: inc/czr-front.php:9030
+#: inc/czr-front.php:9032
 msgid "Check the front page slider doc &raquo;"
 msgstr "Lire la documentation &raquo;"
 
 #: core/front/models/modules/slider/class-model-slider.php:310
-#: inc/czr-front.php:9028
+#: inc/czr-front.php:9030
 msgid "Discover how to replace or remove this demo slider."
 msgstr "Découvrez comment remplacer ou supprimer ce diaporama de démo."
 
 #: inc/czr-front.php:824 inc/czr-front.php:1079 inc/czr-front.php:1106
-#: inc/czr-front.php:3555 inc/czr-front.php:4846 inc/czr-front.php:7871
-#: inc/czr-front.php:8958 inc/czr-front.php:9619 inc/czr-init.php:7610
+#: inc/czr-front.php:3557 inc/czr-front.php:4848 inc/czr-front.php:7873
+#: inc/czr-front.php:8960 inc/czr-front.php:9621 inc/czr-init.php:7633
 msgid "dismiss notice"
 msgstr "supprimer"
 
-#: inc/czr-front.php:7867
+#: inc/czr-front.php:7869
 msgid "See the theme documentation."
 msgstr "Lire la documentation."
 
-#: inc/czr-front.php:7866
+#: inc/czr-front.php:7868
 msgid "Changing the layout in the Customizr theme"
 msgstr "Modifier la mise en page dans le thème Customizr"
 
-#: inc/czr-front.php:7864
+#: inc/czr-front.php:7866
 msgid "You can also remove this sidebar by changing the current page layout."
 msgstr "Vous pouvez également supprimer cette barre latérale en modifiant la structure de cette page."
 
-#: inc/czr-front.php:7856 inc/czr-front.php:9611
+#: inc/czr-front.php:7858 inc/czr-front.php:9613
 msgid "Add widgets"
 msgstr "Ajouter un widget"
 
-#: inc/czr-front.php:7847 inc/czr-front.php:9602
+#: inc/czr-front.php:7849 inc/czr-front.php:9604
 msgid "This block is visible for admin users only."
 msgstr "Ce bloc n'est visible que pour les administrateurs du site."
 
-#: inc/czr-front.php:7306
+#: inc/czr-front.php:7308
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Billets plus récents <span class=\"meta-nav\">&rarr;</span>"
 
-#: inc/czr-front.php:7286
+#: inc/czr-front.php:7288
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> Billets plus anciens"
 
-#: inc/czr-front.php:7218 inc/czr-front.php:7273
+#: inc/czr-front.php:7220 inc/czr-front.php:7275
 #: templates/content/navigation/singular_posts_navigation.php:33
 msgid "Post navigation"
 msgstr "Parcourir les billets"
 
-#: inc/czr-front.php:7108
+#: inc/czr-front.php:7110
 msgid "by"
 msgstr "par"
 
-#: inc/czr-front.php:7085
+#: inc/czr-front.php:7087
 msgid "tagged"
 msgstr "étiqueté"
 
-#: inc/czr-front.php:7035
+#: inc/czr-front.php:7037
 msgid "Open"
 msgstr "Ouvrir"
 
 #: core/front/models/content/post-metas/class-model-post_metas.php:157
-#: inc/czr-front.php:7015
+#: inc/czr-front.php:7017
 msgid "View all posts by %s"
 msgstr "Voir tous les billets de %s"
 
 #: core/front/models/content/post-metas/class-model-post_metas.php:205
-#: inc/czr-front.php:6880
+#: inc/czr-front.php:6882
 msgid "View all posts in %s"
 msgstr "Voir tous les billets dans %s"
 
-#: inc/czr-front.php:6819
+#: inc/czr-front.php:6821
 msgid "(updated on %1$s)"
 msgstr "(mis à jour le %1$s)"
 
-#: inc/czr-front.php:6816
+#: inc/czr-front.php:6818
 msgid "(updated 1 day ago)"
 msgstr "(mis à jour hier)"
 
-#: inc/czr-front.php:6815
+#: inc/czr-front.php:6817
 msgid "(updated %s days ago)"
 msgstr "(mis à jour il y a %s jours)"
 
-#: inc/czr-front.php:6815
+#: inc/czr-front.php:6817
 msgid "(updated today)"
 msgstr "(mis à jour aujourd'hui)"
 
-#: inc/czr-front.php:6799 inc/czr-front.php:6801
+#: inc/czr-front.php:6801 inc/czr-front.php:6803
 msgid "by %1$s"
 msgstr "par %1$s"
 
-#: inc/czr-front.php:6799
+#: inc/czr-front.php:6801
 msgid "This entry was posted"
 msgstr "Billet publié"
 
-#: inc/czr-front.php:6787
+#: inc/czr-front.php:6789
 msgid "and posted on %1$s"
 msgstr "et publié le %1$s"
 
-#: inc/czr-front.php:6785
+#: inc/czr-front.php:6787
 msgid "on %1$s"
 msgstr "le %1$s"
 
-#: inc/czr-front.php:6783
+#: inc/czr-front.php:6785
 msgid "This entry was posted on %1$s"
 msgstr "Billet publié le %1$s"
 
-#: inc/czr-front.php:6774
+#: inc/czr-front.php:6776
 msgid "This entry was tagged %2$s"
 msgstr "Billet comportant le(s) mot(s) clé(s) %2$s"
 
-#: inc/czr-front.php:6772
+#: inc/czr-front.php:6774
 msgid "This entry was posted in %1$s"
 msgstr "Billet publié dans %1$s"
 
-#: inc/czr-front.php:6770
+#: inc/czr-front.php:6772
 msgid "This entry was posted in %1$s and tagged %2$s"
 msgstr "Billet publié dans %1$s et taggé avec %2$s"
 
-#: inc/czr-front.php:6708
+#: inc/czr-front.php:6710
 msgid "Return to "
 msgstr "Retour sur "
 
-#: inc/czr-front.php:6708 inc/czr-front.php:7084
+#: inc/czr-front.php:6710 inc/czr-front.php:7086
 msgid "in"
 msgstr "dans"
 
-#: inc/czr-front.php:6707
+#: inc/czr-front.php:6709
 msgid "Link to full-size image"
 msgstr "Lien vers l'image en taille originale"
 
-#: inc/czr-front.php:6707
+#: inc/czr-front.php:6709
 msgid "at dimensions"
 msgstr "aux dimensions"
 
-#: inc/czr-front.php:6704
+#: inc/czr-front.php:6706
 msgid "Published"
 msgstr "Publié"
 
-#: inc/czr-front.php:6685
+#: inc/czr-front.php:6687
 msgid "This entry was posted on %1$s<span class=\"by-author\"> by %2$s</span>."
 msgstr "Ce billet a été publié le %1$s<span class=\"by-author\"> par %2$s</span>."
 
-#: inc/czr-front.php:4775
+#: inc/czr-front.php:4777
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Voir tous les billets de %s <span class=\"meta-nav\">&rarr;</span>"
 
-#: inc/czr-front.php:4575 inc/czr-front.php:4733 inc/czr-front.php:5211
+#: inc/czr-front.php:4577 inc/czr-front.php:4735 inc/czr-front.php:5213
 msgid "Pages:"
 msgstr "Pages :"
 
-#: inc/czr-front.php:4573 inc/czr-front.php:4732 inc/czr-front.php:5209
+#: inc/czr-front.php:4575 inc/czr-front.php:4734 inc/czr-front.php:5211
 #: templates/content/post-lists/singles/contents/post_list_single_content_inner.php:13
 #: templates/content/singular/page_content.php:16
 #: templates/content/singular/post_content.php:15
@@ -1024,189 +1024,189 @@ msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Poursuivre la lecture <span class=\"meta-nav\">&rarr;</span>"
 
 #: core/front/models/content/headings/class-model-post_list_heading.php:67
-#: inc/czr-front.php:4344
+#: inc/czr-front.php:4346
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y"
 
-#: inc/czr-front.php:4344
+#: inc/czr-front.php:4346
 msgid "Yearly Archives: %s"
 msgstr "Billets de l'année : %s"
 
 #: core/front/models/content/headings/class-model-post_list_heading.php:66
-#: inc/czr-front.php:4343
+#: inc/czr-front.php:4345
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "F Y"
 
-#: inc/czr-front.php:4343
+#: inc/czr-front.php:4345
 msgid "Monthly Archives: %s"
 msgstr "Billets du mois : %s"
 
-#: inc/czr-front.php:4342
+#: inc/czr-front.php:4344
 msgid "Archives"
 msgstr "Archives"
 
-#: inc/czr-front.php:4342
+#: inc/czr-front.php:4344
 msgid "Daily Archives: %s"
 msgstr "Billets du jour : %s"
 
-#: inc/czr-front.php:4302 inc/czr-front.php:4771
+#: inc/czr-front.php:4304 inc/czr-front.php:4773
 msgid "About %s"
-msgstr "A propos %s"
+msgstr "A propos de %s"
 
-#: inc/czr-front.php:4268
+#: inc/czr-front.php:4270
 msgid "No"
 msgstr "Aucun"
 
-#: inc/czr-front.php:4254 templates/content/no-results/404.php:8
+#: inc/czr-front.php:4256 templates/content/no-results/404.php:8
 msgid "Ooops, page not found"
 msgstr "Ooops, page non trouvée"
 
-#: inc/czr-front.php:4116
+#: inc/czr-front.php:4118
 msgid "Permalink to %s"
 msgstr "Permalien vers %s"
 
-#: inc/czr-front.php:4112 inc/czr-front.php:4117
+#: inc/czr-front.php:4114 inc/czr-front.php:4119
 msgid "{no title} Read the post &raquo;"
 msgstr "{Pas de titre} Voir le billet &raquo;"
 
-#: core/front/utils/class-content-gallery.php:47 inc/czr-front.php:3899
+#: core/front/utils/class-content-gallery.php:47 inc/czr-front.php:3901
 msgid "Missing Attachment"
 msgstr "Image manquante"
 
 #: core/front/models/modules/featured-pages/class-model-featured_pages.php:142
-#: inc/czr-front.php:3687
+#: inc/czr-front.php:3689
 msgid "Featured page description text : use the page excerpt or set your own custom text in the Customizr screen."
 msgstr "Extrait de la page en une : utilisez l'extrait automatique ou écrivez un texte personnalisé."
 
 #: core/front/models/modules/featured-pages/class-model-featured_pages.php:138
-#: inc/czr-front.php:3683
+#: inc/czr-front.php:3685
 msgid "Featured page"
 msgstr "Page à la une"
 
 #: core/front/models/modules/featured-pages/class-model-featured_pages.php:130
-#: inc/czr-front.php:3675
+#: inc/czr-front.php:3677
 msgid "Customizer screen"
 msgstr "Customizer"
 
-#: inc/czr-front.php:3361 templates/content/comments/comment_list.php:19
+#: inc/czr-front.php:3363 templates/content/comments/comment_list.php:19
 #: templates/modules/comment_info.php:9
 msgid "comment"
 msgid_plural "comments"
 msgstr[0] "commentaire"
 msgstr[1] "commentaires"
 
-#: inc/czr-front.php:3342 templates/modules/comment_info.php:7
+#: inc/czr-front.php:3344 templates/modules/comment_info.php:7
 msgid "Comment(s) on"
 msgstr "Commentaire(s) sur"
 
-#: core/main-templates/comments.php:20 inc/czr-front.php:3319
+#: core/main-templates/comments.php:20 inc/czr-front.php:3321
 msgid "Leave a comment"
 msgstr "Laissez un commentaire"
 
-#: inc/czr-front.php:3284 templates/content/comments/comment_list.php:89
+#: inc/czr-front.php:3286 templates/content/comments/comment_list.php:89
 msgid "Comments are closed."
 msgstr "Les commentaires sont fermés."
 
-#: inc/czr-front.php:3252 templates/content/comments/comment_list.php:80
+#: inc/czr-front.php:3254 templates/content/comments/comment_list.php:80
 msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Billets plus récents <span class=\"meta-nav\">&rarr;</span>"
 
-#: inc/czr-front.php:3244 templates/content/comments/comment_list.php:72
+#: inc/czr-front.php:3246 templates/content/comments/comment_list.php:72
 msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
 msgstr "<span class=\"meta-nav\">&larr;</span> Billets plus anciens"
 
-#: inc/czr-front.php:3238 templates/content/comments/comment_list.php:66
+#: inc/czr-front.php:3240 templates/content/comments/comment_list.php:66
 msgid "Comment navigation"
 msgstr "Comment navigation"
 
-#: inc/czr-front.php:3203 templates/content/comments/comment.php:44
+#: inc/czr-front.php:3205 templates/content/comments/comment.php:44
 msgid "Your comment is awaiting moderation."
 msgstr "Votre commentaire est en attente de modération."
 
 #. translators: 1: date, 2: time
-#: inc/czr-front.php:3198
+#: inc/czr-front.php:3200
 msgid "%1$s at %2$s"
 msgstr "%1$s à %2$s"
 
-#: inc/czr-front.php:3191 templates/content/comments/comment.php:22
+#: inc/czr-front.php:3193 templates/content/comments/comment.php:22
 msgid "Post author"
 msgstr "Auteur du billet"
 
-#: inc/czr-front.php:3178
+#: inc/czr-front.php:3180
 msgid "Reply"
 msgstr "Répondre"
 
-#: inc/czr-front.php:3150
+#: inc/czr-front.php:3152
 msgid "(Edit)"
 msgstr "(Modifier)"
 
-#: inc/czr-front.php:3149
+#: inc/czr-front.php:3151
 msgid "Pingback:"
 msgstr "Pingback:"
 
-#: inc/czr-front.php:3089 templates/content/comments/comment_list.php:11
+#: inc/czr-front.php:3091 templates/content/comments/comment_list.php:11
 msgid "thoughts on"
 msgstr "commentaires sur"
 
-#: inc/czr-front.php:3087 templates/content/comments/comment_list.php:11
+#: inc/czr-front.php:3089 templates/content/comments/comment_list.php:11
 msgid "One thought on"
 msgstr "Commentaire sur"
 
 #: core/front/models/modules/class-model-breadcrumb.php:789
-#: inc/czr-front.php:2785
+#: inc/czr-front.php:2787
 msgid "F j, Y"
 msgstr "j F Y"
 
 #: core/front/models/modules/class-model-breadcrumb.php:785
-#: inc/czr-front.php:2781
+#: inc/czr-front.php:2783
 msgid "F Y"
 msgstr "F Y"
 
 #: core/front/models/modules/class-model-breadcrumb.php:635
-#: inc/czr-front.php:2630
+#: inc/czr-front.php:2632
 msgid "Merge"
 msgstr "Fusionner"
 
 #: core/front/models/modules/class-model-breadcrumb.php:631
-#: inc/czr-front.php:2626
+#: inc/czr-front.php:2628
 msgid "Split"
 msgstr "Dissocier"
 
 #: core/front/models/modules/class-model-breadcrumb.php:558
 #: core/front/models/modules/class-model-breadcrumb.php:560
-#: inc/czr-front.php:2555 inc/czr-front.php:2557
+#: inc/czr-front.php:2557 inc/czr-front.php:2559
 msgid "Page %d"
 msgstr "Page %d"
 
 #: core/front/models/modules/class-model-breadcrumb.php:553
-#: inc/czr-front.php:2550
+#: inc/czr-front.php:2551
 msgid "404 Not Found"
 msgstr "Page non trouvées (erreur 404)"
 
 #: core/front/models/modules/class-model-breadcrumb.php:546
 #: core/front/models/modules/class-model-breadcrumb.php:548
-#: inc/czr-front.php:2543 inc/czr-front.php:2545
+#: inc/czr-front.php:2544 inc/czr-front.php:2546
 msgid "Search results for &quot;%1$s&quot;"
 msgstr "Résultats de recherche pour &quot;%1$s&quot;"
 
 #: core/front/models/modules/class-model-breadcrumb.php:518
 #: core/front/models/modules/class-model-breadcrumb.php:520
-#: inc/czr-front.php:2515 inc/czr-front.php:2517
+#: inc/czr-front.php:2516 inc/czr-front.php:2518
 msgid "W"
 msgstr "O"
 
 #: core/front/models/modules/class-model-breadcrumb.php:518
 #: core/front/models/modules/class-model-breadcrumb.php:520
-#: inc/czr-front.php:2515 inc/czr-front.php:2517
+#: inc/czr-front.php:2516 inc/czr-front.php:2518
 msgid "Week %1$s"
 msgstr "Semaine %1$s"
 
 #: core/front/models/modules/class-model-breadcrumb.php:509
 #: core/front/models/modules/class-model-breadcrumb.php:511
 #: core/front/models/modules/class-model-breadcrumb.php:789
-#: inc/czr-front.php:2506 inc/czr-front.php:2508 inc/czr-front.php:2785
+#: inc/czr-front.php:2507 inc/czr-front.php:2509 inc/czr-front.php:2787
 msgid "d"
 msgstr "d"
 
@@ -1214,8 +1214,8 @@ msgstr "d"
 #: core/front/models/modules/class-model-breadcrumb.php:527
 #: core/front/models/modules/class-model-breadcrumb.php:529
 #: core/front/models/modules/class-model-breadcrumb.php:785
-#: inc/czr-front.php:2503 inc/czr-front.php:2524 inc/czr-front.php:2526
-#: inc/czr-front.php:2781
+#: inc/czr-front.php:2504 inc/czr-front.php:2525 inc/czr-front.php:2527
+#: inc/czr-front.php:2783
 msgid "F"
 msgstr "F"
 
@@ -1225,28 +1225,28 @@ msgstr "F"
 #: core/front/models/modules/class-model-breadcrumb.php:535
 #: core/front/models/modules/class-model-breadcrumb.php:537
 #: core/front/models/modules/class-model-breadcrumb.php:781
-#: inc/czr-front.php:2502 inc/czr-front.php:2512 inc/czr-front.php:2521
-#: inc/czr-front.php:2532 inc/czr-front.php:2534 inc/czr-front.php:2777
+#: inc/czr-front.php:2503 inc/czr-front.php:2513 inc/czr-front.php:2522
+#: inc/czr-front.php:2533 inc/czr-front.php:2535 inc/czr-front.php:2779
 msgid "Y"
 msgstr "Y"
 
 #: core/front/models/modules/class-model-breadcrumb.php:489
-#: inc/czr-front.php:2486
+#: inc/czr-front.php:2487
 msgid "g a"
 msgstr "g a"
 
 #: core/front/models/modules/class-model-breadcrumb.php:486
-#: inc/czr-front.php:2483
+#: inc/czr-front.php:2484
 msgid "i"
 msgstr "i"
 
 #: core/front/models/modules/class-model-breadcrumb.php:486
-#: inc/czr-front.php:2483
+#: inc/czr-front.php:2484
 msgid "Minute %1$s"
 msgstr "Minute %1$s"
 
 #: core/front/models/modules/class-model-breadcrumb.php:483
-#: inc/czr-front.php:2480
+#: inc/czr-front.php:2481
 msgid "g:i a"
 msgstr "g:i a"
 
@@ -1395,7 +1395,6 @@ msgid "Social link title in sidebars"
 msgstr "Liens sociaux dans les barres latérales"
 
 #: core/utils/class-fire-utils_settings_map.php:2049 inc/czr-init.php:4728
-#: inc/czr-init.php:4736
 msgid "Display a back to top arrow on scroll"
 msgstr "Afficher une flèche de retour en haut de page lors du scroll."
 
@@ -1593,7 +1592,7 @@ msgstr "Position des imagettes"
 msgid "Search results page titles"
 msgstr "Titre de la page de résultats de recherche"
 
-#: core/utils/class-fire-utils_settings_map.php:1336 inc/czr-front.php:4269
+#: core/utils/class-fire-utils_settings_map.php:1336 inc/czr-front.php:4271
 #: inc/czr-init.php:4015
 msgid "Search Results for :"
 msgstr "Résultats de recherche pour :"
@@ -2628,7 +2627,7 @@ msgstr "Page à la une N° 2"
 msgid "Home featured page one"
 msgstr "Page à la une N° 1"
 
-#: core/utils/class-fire-utils.php:319 inc/czr-init.php:6036
+#: core/utils/class-fire-utils.php:319 inc/czr-init.php:6039
 msgid "Page %s"
 msgstr "Page %s"
 
@@ -2645,12 +2644,12 @@ msgid "Main Menu"
 msgstr "Menu principal"
 
 #: core/front/models/modules/slider/class-model-slider.php:303
-#: inc/czr-init.php:863 inc/czr-init.php:8625
+#: inc/czr-init.php:863 inc/czr-init.php:8648
 msgid "Many layout and design options are available from the WordPress customizer screen : see your changes live !"
 msgstr "De nombreuses options de design et structures sont disponibles dans l'écran de customization Wordpress : vos modifications s'affichent en live !"
 
 #: core/front/models/modules/slider/class-model-slider.php:290
-#: inc/czr-init.php:849 inc/czr-init.php:8619 inc/czr-init.php:8631
+#: inc/czr-init.php:849 inc/czr-init.php:8642 inc/czr-init.php:8654
 msgid "Customizr is a clean responsive theme"
 msgstr "Customizr est un thème élégant et simple"
 
@@ -3040,9 +3039,9 @@ msgstr "Aucune image sélectionnée"
 #: core/front/models/modules/class-model-breadcrumb.php:682
 #: core/front/models/modules/class-model-edit_button.php:9
 #: core/front/models/modules/class-model-edit_button.php:10
-#: inc/czr-admin.php:1770 inc/czr-front.php:2601 inc/czr-front.php:2634
-#: inc/czr-front.php:2649 inc/czr-front.php:2677 inc/czr-front.php:3192
-#: inc/czr-front.php:3766 inc/czr-front.php:4171 inc/czr-front.php:8855
+#: inc/czr-admin.php:1770 inc/czr-front.php:2603 inc/czr-front.php:2636
+#: inc/czr-front.php:2651 inc/czr-front.php:2679 inc/czr-front.php:3194
+#: inc/czr-front.php:3768 inc/czr-front.php:4173 inc/czr-front.php:8857
 msgid "Edit"
 msgstr "Modifier"
 

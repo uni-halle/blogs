@@ -1,0 +1,1293 @@
+# Translation of Plugins - Page Builder by SiteOrigin - Stable (latest release) in Japanese
+# This file is distributed under the same license as the Plugins - Page Builder by SiteOrigin - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-01-14 02:44:44+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: ja_JP\n"
+"Project-Id-Version: Plugins - Page Builder by SiteOrigin - Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "https://siteorigin.com"
+msgstr "https://siteorigin.com"
+
+#. Author of the plugin/theme
+msgid "SiteOrigin"
+msgstr "SiteOrigin"
+
+#. Description of the plugin/theme
+msgid "A drag and drop, responsive page builder that simplifies building your website."
+msgstr "あなたのウェブサイトの構築を簡素化するドラッグアンドドロップ式のレスポンシブページビルダー。"
+
+#. Plugin URI of the plugin/theme
+msgid "https://siteorigin.com/page-builder/"
+msgstr "https://siteorigin.com/page-builder/"
+
+#. Plugin Name of the plugin/theme
+msgid "Page Builder by SiteOrigin"
+msgstr "Page Builder by SiteOrigin"
+
+#: widgets/widgets.php:951
+msgid "Auto Play Video"
+msgstr "動画の自動再生"
+
+#: widgets/widgets.php:946
+msgid "An image that displays before the video starts playing."
+msgstr "ビデオ再生前に表示される画像"
+
+#: widgets/widgets.php:944
+msgid "Poster URL"
+msgstr "ポスターの URL"
+
+#: widgets/widgets.php:940
+msgid "Video URL"
+msgstr "動画 URL"
+
+#: widgets/widgets.php:898
+msgid "A self hosted video player."
+msgstr "セルフホスティング型の動画プレーヤー。"
+
+#: widgets/widgets.php:896
+msgid "Self Hosted Video (PB)"
+msgstr "セルフホスティング動画 (PB)"
+
+#: widgets/widgets.php:880
+msgid "Video"
+msgstr "動画"
+
+#: widgets/widgets.php:842
+msgid "Embeds a video."
+msgstr "動画を埋め込みます。"
+
+#: widgets/widgets.php:840
+msgid "Embedded Video (PB)"
+msgstr "埋め込み動画 (PB)"
+
+#: widgets/widgets.php:789
+msgid "Displays a simple image."
+msgstr "シンプルな画像を表示します。"
+
+#: widgets/widgets.php:787
+msgid "Image (PB)"
+msgstr "画像 (PB)"
+
+#: widgets/widgets.php:769
+msgid "File"
+msgstr "ファイル"
+
+#: widgets/widgets.php:768
+msgid "Attachment Page"
+msgstr "添付ファイルページ"
+
+#: widgets/widgets.php:766
+msgid "Link To"
+msgstr "へのリンク"
+
+#: widgets/widgets.php:761
+msgid "Columns"
+msgstr "カラム"
+
+#: widgets/widgets.php:756
+msgid "Gallery Type"
+msgstr "ギャラリータイプ"
+
+#: widgets/widgets.php:748
+msgid "Full"
+msgstr "全幅"
+
+#: widgets/widgets.php:747
+msgid "Thumbnail"
+msgstr "サムネイル"
+
+#: widgets/widgets.php:746
+msgid "Medium"
+msgstr "中"
+
+#: widgets/widgets.php:745
+msgid "Large"
+msgstr "大"
+
+#: widgets/widgets.php:742
+msgid "Image Size"
+msgstr "画像サイズ"
+
+#: widgets/widgets.php:738
+msgid "Comma separated attachment IDs. Defaults to all current page's attachments."
+msgstr "カンマ区切りの添付ファイルID。現在のページのすべての添付ファイルにデフォルト設定されます。"
+
+#: widgets/widgets.php:734
+msgid "edit gallery"
+msgstr "ギャラリーを編集"
+
+#: widgets/widgets.php:733
+msgid "Gallery Images"
+msgstr "ギャラリー画像"
+
+#: widgets/widgets.php:694
+msgid "Displays a gallery."
+msgstr "ギャラリーを表示します。"
+
+#: widgets/widgets.php:692
+msgid "Gallery (PB)"
+msgstr "ギャラリー (PB)"
+
+#: widgets/widgets.php:631
+msgid "Additional Arguments"
+msgstr "追加の引数"
+
+#: widgets/widgets.php:231
+msgid "%s Style"
+msgstr "%s スタイル"
+
+#: widgets/widgets.php:207
+msgid "Style"
+msgstr "スタイル"
+
+#. TRANSLATORS: Uniform Resource Locator
+#: widgets/widgets/testimonial/testimonial.php:32
+msgid "URL"
+msgstr "URL"
+
+#: widgets/widgets/testimonial/testimonial.php:23
+msgid "Image"
+msgstr "画像"
+
+#: widgets/widgets/testimonial/testimonial.php:19
+msgid "Location"
+msgstr "場所"
+
+#: widgets/widgets/testimonial/testimonial.php:8
+msgid "Displays a bullet list of points"
+msgstr "ポイントの箇条書きリストを表示"
+
+#: widgets/widgets/testimonial/testimonial.php:6
+msgid "Testimonial (PB)"
+msgstr "お客様の声 (PB)"
+
+#: widgets/widgets/price-box/price-box.php:50
+msgid "Feature List"
+msgstr "機能一覧"
+
+#: widgets/widgets/price-box/price-box.php:31
+msgid "Features Text"
+msgstr "機能テキスト"
+
+#: widgets/widgets/price-box/price-box.php:27
+msgid "Information Text"
+msgstr "情報テキスト"
+
+#: widgets/widgets/price-box/price-box.php:23
+msgid "Per"
+msgstr "あたり"
+
+#: widgets/widgets/price-box/price-box.php:19
+msgid "Price"
+msgstr "価格"
+
+#: widgets/widgets/price-box/price-box.php:6
+msgid "Price Box (PB)"
+msgstr "価格ボックス (PB)"
+
+#: widgets/widgets/list/list.php:20 widgets/widgets/price-box/price-box.php:32
+msgid "Start each new point with an asterisk (*)"
+msgstr "アスタリスク（*）で新しいポイントをそれぞれ開始します。"
+
+#: widgets/widgets/list/list.php:8 widgets/widgets/price-box/price-box.php:8
+msgid "Displays a bullet list of elements"
+msgstr "要素の箇条書きリストを表示"
+
+#: widgets/widgets/list/list.php:6
+msgid "List (PB)"
+msgstr "リスト (PB)"
+
+#: widgets/widgets/call-to-action/call-to-action.php:37
+#: widgets/widgets/price-box/price-box.php:49
+msgid "Button"
+msgstr "ボタン"
+
+#: widgets/widgets/call-to-action/call-to-action.php:27
+#: widgets/widgets/price-box/price-box.php:40
+msgid "Button URL"
+msgstr "ボタン URL"
+
+#: widgets/widgets/call-to-action/call-to-action.php:23
+#: widgets/widgets/price-box/price-box.php:36
+msgid "Button Text"
+msgstr "ボタンテキスト"
+
+#: widgets/widgets/call-to-action/call-to-action.php:19
+msgid "Sub Title"
+msgstr "サブタイトル"
+
+#: widgets/widgets/call-to-action/call-to-action.php:8
+msgid "A Call to Action block"
+msgstr "CTA (コールトゥアクション) ブロック"
+
+#: widgets/widgets/call-to-action/call-to-action.php:6
+msgid "Call To Action (PB)"
+msgstr "CTA (コールトゥアクション) (PB)"
+
+#: widgets/widgets/button/button.php:32
+msgid "Justify"
+msgstr "両端揃え"
+
+#: widgets/widgets/button/button.php:31
+msgid "Center"
+msgstr "中央"
+
+#: widgets/widgets/button/button.php:30
+msgid "Right"
+msgstr "右"
+
+#: widgets/widgets/button/button.php:29
+msgid "Left"
+msgstr "左寄せ"
+
+#: widgets/widgets/button/button.php:27
+msgid "Button Alignment"
+msgstr "ボタン配置"
+
+#: widgets/widgets/button/button.php:23
+#: widgets/widgets/call-to-action/call-to-action.php:31
+#: widgets/widgets/price-box/price-box.php:44
+#: widgets/widgets/testimonial/testimonial.php:36
+msgid "Open In New Window"
+msgstr "新しいウィンドウで開く"
+
+#: widgets/widgets/button/button.php:19 widgets/widgets.php:826
+msgid "Destination URL"
+msgstr "リンク先 URL"
+
+#: widgets/widgets/button/button.php:15 widgets/widgets/list/list.php:19
+#: widgets/widgets/testimonial/testimonial.php:27
+msgid "Text"
+msgstr "テキスト"
+
+#: widgets/widgets/button/button.php:6
+msgid "Button (PB)"
+msgstr "ボタン (PB)"
+
+#: widgets/widgets/animated-image/animated-image.php:25
+msgid "Slide Right"
+msgstr "右にスライド"
+
+#: widgets/widgets/animated-image/animated-image.php:24
+msgid "Slide Left"
+msgstr "左にスライド"
+
+#: widgets/widgets/animated-image/animated-image.php:23
+msgid "Slide Down"
+msgstr "下にスライド"
+
+#: widgets/widgets/animated-image/animated-image.php:22
+msgid "Slide Up"
+msgstr "上にスライド"
+
+#: widgets/widgets/animated-image/animated-image.php:21
+msgid "Fade In"
+msgstr "フェードイン"
+
+#: widgets/widgets/animated-image/animated-image.php:19
+msgid "Animation"
+msgstr "アニメーション"
+
+#: widgets/widgets/animated-image/animated-image.php:15 widgets/widgets.php:822
+msgid "Image URL"
+msgstr "画像 URL"
+
+#: widgets/widgets/animated-image/animated-image.php:8
+msgid "An image that animates in when it enters the screen."
+msgstr "スクリーンに入るときにアニメートする画像。"
+
+#: widgets/widgets/animated-image/animated-image.php:6
+msgid "Animated Image (PB)"
+msgstr "アニメーション画像 (PB)"
+
+#: widgets/basic.php:477 widgets/widgets.php:635
+msgid "Additional query arguments. See 1{query_posts}."
+msgstr "追加のクエリ引数。 1 {query_posts} 参照。"
+
+#: widgets/basic.php:470
+msgid "Additional "
+msgstr "追加の"
+
+#: widgets/basic.php:465 widgets/widgets.php:625
+msgid "Only Sticky"
+msgstr "先頭固定表示のみ"
+
+#: widgets/basic.php:464 widgets/widgets.php:624
+msgid "Exclude Sticky"
+msgstr "先頭固定表示を除外"
+
+#: widgets/basic.php:463 widgets/widgets.php:623
+msgid "Ignore Sticky"
+msgstr "先頭固定表示を無視"
+
+#: widgets/basic.php:462 widgets/widgets.php:622 widgets/widgets.php:744
+msgid "Default"
+msgstr "デフォルト"
+
+#: widgets/basic.php:460 widgets/widgets.php:620
+msgid "Sticky Posts"
+msgstr "先頭固定表示の投稿"
+
+#: widgets/basic.php:455 widgets/widgets.php:613
+msgid "Ascending"
+msgstr "昇順"
+
+#: widgets/basic.php:454 widgets/widgets.php:614
+msgid "Descending"
+msgstr "降順"
+
+#: widgets/basic.php:452 widgets/widgets.php:611
+msgid "Order"
+msgstr "注文"
+
+#: widgets/basic.php:447
+msgid "Post In Order"
+msgstr "投稿の並び順"
+
+#: widgets/basic.php:446 widgets/widgets.php:605
+msgid "Menu Order"
+msgstr "メニューの並び順"
+
+#: widgets/basic.php:445 widgets/widgets.php:604
+msgid "Comment Count"
+msgstr "コメント数"
+
+#: widgets/basic.php:444 widgets/widgets.php:603
+msgid "Random"
+msgstr "ランダム"
+
+#: widgets/basic.php:443 widgets/widgets.php:602
+msgid "Parent"
+msgstr "親"
+
+#: widgets/basic.php:442 widgets/widgets.php:601
+msgid "Modified"
+msgstr "修正"
+
+#: widgets/basic.php:441 widgets/widgets.php:600
+msgid "Date"
+msgstr "日付"
+
+#: widgets/basic.php:439 widgets/basic.php:440
+#: widgets/widgets/testimonial/testimonial.php:15 widgets/widgets.php:598
+#: widgets/widgets.php:599
+msgid "Name"
+msgstr "名称"
+
+#: widgets/basic.php:438 widgets/widgets.php:597
+msgid "Author"
+msgstr "登録者"
+
+#: widgets/basic.php:437 widgets/widgets.php:596
+msgid "Post ID"
+msgstr "投稿 ID"
+
+#: widgets/basic.php:434 widgets/widgets.php:593
+msgid "Order By"
+msgstr "並び順"
+
+#: widgets/basic.php:429 widgets/widgets.php:588
+msgid "Posts Per Page"
+msgstr "ページ毎の投稿"
+
+#: widgets/basic.php:420 widgets/widgets.php:581
+msgid "Post Type"
+msgstr "投稿タイプ"
+
+#: widgets/basic.php:386
+msgid "If the template supports it, cut posts and display the more link."
+msgstr "テンプレートがそれをサポートしている場合は、投稿を切断し、さらにリンクを表示します。"
+
+#: widgets/basic.php:384
+msgid "More Link "
+msgstr "「続きを読む」リンク"
+
+#: widgets/basic.php:368
+msgid "Template"
+msgstr "テンプレート"
+
+#: widgets/basic.php:358
+msgid "Your theme doesn't have any post loops."
+msgstr "あなたのテーマには投稿ループがありません。"
+
+#: widgets/basic.php:159
+msgid "Displays a post loop."
+msgstr "投稿ループを表示します。"
+
+#: widgets/basic.php:157
+msgid "Post Loop"
+msgstr "投稿ループ"
+
+#: widgets/basic.php:137
+msgid "Display Content"
+msgstr "コンテンツ表示"
+
+#: widgets/basic.php:132
+msgid "Featured Image"
+msgstr "アイキャッチ画像"
+
+#: widgets/basic.php:131 widgets/basic.php:364
+#: widgets/widgets/call-to-action/call-to-action.php:15
+#: widgets/widgets/list/list.php:15 widgets/widgets/price-box/price-box.php:15
+msgid "Title"
+msgstr "タイトル"
+
+#: widgets/basic.php:130 widgets/basic.php:436 widgets/widgets.php:595
+#: widgets/widgets.php:770
+msgid "None"
+msgstr "なし"
+
+#: widgets/basic.php:84
+msgid "Displays content from the current post."
+msgstr "現在の投稿のコンテンツを表示します。"
+
+#: widgets/basic.php:82
+msgid "Post Content"
+msgstr "投稿コンテンツ"
+
+#: widgets/basic.php:53
+msgid "Open Builder"
+msgstr "ビルダーを開く"
+
+#: widgets/basic.php:15
+msgid "A complete SiteOrigin Page Builder layout as a widget."
+msgstr "ウィジェットとしての完全な SiteOrigin Page Builder レイアウト。"
+
+#. TRANSLATORS: This is the name of a widget
+#: widgets/basic.php:13
+msgid "Layout Builder"
+msgstr "レイアウトビルダー"
+
+#: tpl/options.php:82
+msgid "Inline CSS"
+msgstr "インライン CSS"
+
+#: tpl/options.php:76
+msgid "Cell Side Margins"
+msgstr "セル側のマージン"
+
+#: tpl/options.php:58
+msgid "Should the layout collapse for mobile devices."
+msgstr "モバイルデバイスのレイアウトが崩壊するかどうか。"
+
+#: tpl/options.php:48
+msgid "Display"
+msgstr "表示"
+
+#: tpl/options.php:40
+msgid "Include the bundled widgets."
+msgstr "バンドル済みウィジェットを含める。"
+
+#: tpl/options.php:39
+msgid "Bundled Widgets"
+msgstr "バンドルされているウィジェット"
+
+#: tpl/options.php:33
+msgid "Disable animations for improved performance."
+msgstr "アニメーションを無効にすると、パフォーマンスが向上します。"
+
+#: tpl/options.php:32
+msgid "Animations"
+msgstr "アニメーション"
+
+#: tpl/options.php:26
+msgid "Copy content from Page Builder into the standard content editor."
+msgstr "Page Builderから標準のコンテンツエディタにコンテンツをコピーします。"
+
+#: tpl/js-templates.php:560
+msgid "No Results"
+msgstr "見つかりません"
+
+#: tpl/js-templates.php:512
+msgid "Close Live Editor"
+msgstr "ライブエディタを閉じる"
+
+#: tpl/js-templates.php:487
+msgid "Restore Version"
+msgstr "復元バージョン"
+
+#: tpl/js-templates.php:473
+msgid "Page Builder Change History"
+msgstr "ページビルダーの変更履歴"
+
+#: tpl/js-templates.php:452
+msgid "Download Layout"
+msgstr "レイアウトをダウンロード"
+
+#: tpl/js-templates.php:440
+msgid "Select Import File"
+msgstr "インポートファイルの選択"
+
+#: tpl/js-templates.php:437
+msgid "Or"
+msgstr "または"
+
+#: tpl/js-templates.php:436
+msgid "Drop import file here"
+msgstr "インポートファイルをここにドロップ"
+
+#: tpl/js-templates.php:426
+msgid "Next"
+msgstr "次へ"
+
+#: tpl/js-templates.php:425
+msgid "Previous"
+msgstr "前"
+
+#: tpl/js-templates.php:398
+msgid "Your search didn't return any results"
+msgstr "検索結果が見つかりませんでした"
+
+#: tpl/js-templates.php:392
+msgid "Newest Layouts"
+msgstr "最新のレイアウト"
+
+#: tpl/js-templates.php:384
+msgid "Enable"
+msgstr "有効化"
+
+#: tpl/js-templates.php:383
+msgid "Do you want to browse the Prebuilt Layouts directory?"
+msgstr "再構築レイアウトディレクトリを立ち上げますか?"
+
+#: tpl/js-templates.php:365
+msgid "Clone: %s"
+msgstr "クローン: %s"
+
+#: tpl/js-templates.php:359
+msgid "Import/Export"
+msgstr "インポート/エクスポート"
+
+#: tpl/js-templates.php:358
+msgid "Layouts Directory"
+msgstr "レイアウトディレクトリ"
+
+#: tpl/js-templates.php:355
+msgid "Theme Defined"
+msgstr "定義されたテーマ"
+
+#: tpl/js-templates.php:351
+msgid "Search"
+msgstr "検索"
+
+#: tpl/js-templates.php:347
+msgid "Prebuilt Layouts"
+msgstr "事前に作成されたレイアウト"
+
+#: tpl/js-templates.php:329
+msgid "Save"
+msgstr "保存"
+
+#: tpl/js-templates.php:327
+msgid "Insert"
+msgstr "挿入"
+
+#: tpl/js-templates.php:308
+msgid "Set"
+msgstr "設定"
+
+#: tpl/js-templates.php:291
+msgid "Right to Left"
+msgstr "右から左"
+
+#: tpl/js-templates.php:290
+msgid "Left to Right"
+msgstr "左から右"
+
+#: tpl/js-templates.php:254
+msgid "Add New Row"
+msgstr "新しい行の追加"
+
+#: tpl/js-templates.php:199
+msgid "Close"
+msgstr "閉じる"
+
+#: tpl/js-templates.php:183
+msgid "Add New Widget %s"
+msgstr "新しいウィジェットの追加 %s"
+
+#: tpl/js-templates.php:169 tpl/js-templates.php:234
+msgid "Done"
+msgstr "終了"
+
+#: tpl/js-templates.php:115 tpl/js-templates.php:230 tpl/js-templates.php:321
+msgid "Delete"
+msgstr "削除"
+
+#: tpl/js-templates.php:114 tpl/js-templates.php:231 tpl/js-templates.php:322
+msgid "Duplicate"
+msgstr "重複"
+
+#: tpl/js-templates.php:113
+msgid "Edit"
+msgstr "編集"
+
+#: tpl/js-templates.php:85
+msgid "Delete Row"
+msgstr "列の削除"
+
+#: tpl/js-templates.php:84
+msgid "Duplicate Row"
+msgstr "行の複製"
+
+#: tpl/js-templates.php:83 tpl/js-templates.php:256
+msgid "Edit Row"
+msgstr "行の編集"
+
+#: tpl/js-templates.php:39
+msgid "Switch to Editor"
+msgstr "エディタに切り替え"
+
+#: tpl/js-templates.php:34
+msgid "Live Editor"
+msgstr "ライブエディタ"
+
+#: tpl/js-templates.php:29
+msgid "History"
+msgstr "履歴"
+
+#: tpl/js-templates.php:22
+msgid "Prebuilt"
+msgstr "再構築"
+
+#: tpl/js-templates.php:12
+msgid "Add Widget"
+msgstr "ウィジェットを追加"
+
+#: tpl/help.php:3
+msgid "The page layouts are responsive and fully customizable."
+msgstr "ページレイアウトは、レスポンシブでフルカスタマイズ可能です。"
+
+#: tpl/help.php:2
+msgid "You can use SiteOrigin Page Builder to create home and sub pages, filled your own widgets."
+msgstr "SiteOrigin Page Builder を使用して、独自のウィジェットを埋め込んだホームページとサブページを作成できます。"
+
+#: tpl/admin-home-page.php:50
+msgid "This interface requires Javascript"
+msgstr "このインターフェースは JavaScript が必要です。"
+
+#: tpl/admin-home-page.php:46
+msgid "Save Home Page"
+msgstr "ホームページを保存する"
+
+#: tpl/admin-home-page.php:29
+msgid "Home page updated. 1{View page}."
+msgstr "ホームページを更新しました。 1{ページをみる}。"
+
+#: tpl/admin-home-page.php:13
+msgid "Custom Home Page"
+msgstr "カスタムホームページ"
+
+#: tpl/admin-home-page.php:9
+msgid "Off"
+msgstr "オフ"
+
+#: tpl/admin-home-page.php:9
+msgid "On"
+msgstr "オン"
+
+#: siteorigin-panels.php:1390
+msgid "Newsletter"
+msgstr "ニュースレター"
+
+#: siteorigin-panels.php:1389
+msgid "Support Forum"
+msgstr "サポートフォーラム"
+
+#: siteorigin-panels.php:1305
+msgid "Save and reload this page to start using the widget after you've installed it."
+msgstr "ウィジェットをインストールしたら、このページを保存して再度読み込み、ウィジェットの仕様を開始します。"
+
+#: siteorigin-panels.php:1299
+msgid "You need to install 1{%1$s} to use the widget 2{%2$s}."
+msgstr "2{%2$s}ウィジェットを利用するには1{%1$s}のインストールが必要です。"
+
+#: siteorigin-panels.php:1207
+msgid "Edit Home Page"
+msgstr "ホームページを編集する"
+
+#: siteorigin-panels.php:834
+msgid "Read More"
+msgstr "続きを読む"
+
+#: siteorigin-panels.php:442
+msgid "Untitled Widget"
+msgstr "無題のウィジェット"
+
+#: siteorigin-panels.php:395
+msgid "Error uploading or importing file."
+msgstr "ファイルのアップロードまたはインポートエラー。"
+
+#: siteorigin-panels.php:394
+msgid "Page Builder layouts"
+msgstr "Page Builder レイアウト"
+
+#: siteorigin-panels.php:386
+msgid "Column"
+msgstr "カラム"
+
+#: siteorigin-panels.php:385 tpl/js-templates.php:17
+msgid "Add Row"
+msgstr "列を追加"
+
+#: siteorigin-panels.php:383 tpl/js-templates.php:187
+msgid "Search Widgets"
+msgstr "検索ウィジェット"
+
+#: siteorigin-panels.php:382
+msgid "Add Widget to Cell"
+msgstr "セルにウィジェットを追加"
+
+#: siteorigin-panels.php:381
+msgid "Add Widget Below"
+msgstr "下にウィジェットを追加"
+
+#: siteorigin-panels.php:377
+msgid "Search Results For: "
+msgstr "検索結果: "
+
+#. TRANSLATORS: A standard confirmation message
+#: siteorigin-panels.php:376 tpl/js-templates.php:85
+msgid "Are you sure?"
+msgstr "本当に実行しますか ?"
+
+#. TRANSLATORS: This is the title for a widget called "Layout Builder"
+#: siteorigin-panels.php:374
+msgid "Layout Builder Widget"
+msgstr "レイアウトビルダーウィジェット"
+
+#: siteorigin-panels.php:372
+msgid "Would you like to clear your Page Builder content and revert to using the standard visual editor?"
+msgstr "ページビルダーの内容をクリアして、標準のビジュアルエディタを使用しますか ?"
+
+#: siteorigin-panels.php:371
+msgid "Would you like to copy this editor's existing content to Page Builder?"
+msgstr "このエディターの既存のコンテンツを Page Builder にコピーしますか ?"
+
+#: siteorigin-panels.php:370
+msgid "Loading prebuilt layout"
+msgstr "作成済みレイアウトを読み込み中"
+
+#: siteorigin-panels.php:369
+msgid "Are you sure you want to overwrite your current content? This can be undone in the builder history."
+msgstr "現在のコンテンツを上書きしてもよろしいですか ? これはビルダーの履歴を使用して元に戻すことができます。"
+
+#: siteorigin-panels.php:362
+msgid "Cell resized"
+msgstr "セルのサイズを変更"
+
+#. TRANSLATORS: Message displayed in the history when a row is duplicated
+#: siteorigin-panels.php:359
+msgid "Row duplicated"
+msgstr "行を複製しました"
+
+#. TRANSLATORS: Message displayed in the history when a row position is changed
+#: siteorigin-panels.php:357
+msgid "Row moved"
+msgstr "行を移動しました"
+
+#. TRANSLATORS: Message displayed in the history when a row is edited
+#: siteorigin-panels.php:355
+msgid "Row edited"
+msgstr "行を編集しました"
+
+#. TRANSLATORS: Message displayed in the history when a row is added
+#: siteorigin-panels.php:353
+msgid "Row added"
+msgstr "行を追加しました"
+
+#. TRANSLATORS: Message displayed in the history when a row is deleted
+#: siteorigin-panels.php:351
+msgid "Row deleted"
+msgstr "行を削除しました"
+
+#. TRANSLATORS: Message displayed in the history when a widget position is
+#. changed
+#: siteorigin-panels.php:347
+msgid "Widget moved"
+msgstr "ウィジェットを移動しました"
+
+#. TRANSLATORS: Message displayed in the history when a widget is duplicated
+#: siteorigin-panels.php:345
+msgid "Widget duplicated"
+msgstr "ウィジェットを複製しました"
+
+#. TRANSLATORS: Message displayed in the history when a widget is edited
+#: siteorigin-panels.php:343
+msgid "Widget edited"
+msgstr "ウィジェットを編集しました"
+
+#. TRANSLATORS: Message displayed in the history when a widget is added
+#: siteorigin-panels.php:341
+msgid "Widget added"
+msgstr "ウィジェットを追加しました"
+
+#. TRANSLATORS: Message displayed in the history when a widget is deleted
+#: siteorigin-panels.php:339
+msgid "Widget deleted"
+msgstr "ウィジェットを削除しました"
+
+#: siteorigin-panels.php:335
+msgid "Converted to editor"
+msgstr "エディタに変換"
+
+#: siteorigin-panels.php:334
+msgid "Version restored"
+msgstr "復元されたバージョン"
+
+#: siteorigin-panels.php:333
+msgid "Original"
+msgstr "オリジナル"
+
+#: siteorigin-panels.php:332
+msgid "Current"
+msgstr "現行"
+
+#: siteorigin-panels.php:328
+msgid "Now"
+msgstr "現在"
+
+#. TRANSLATORS: Time ago - eg. "1 minute before".
+#: siteorigin-panels.php:327
+msgid "%s before"
+msgstr "%s前"
+
+#. TRANSLATORS: A single hour since
+#: siteorigin-panels.php:324
+msgid "%d hour"
+msgstr "%d時間"
+
+#. TRANSLATORS: A single minute since
+#: siteorigin-panels.php:322
+msgid "%d minute"
+msgstr "%d分"
+
+#. TRANSLATORS: A single second since
+#: siteorigin-panels.php:320
+msgid "%d second"
+msgstr "%d秒"
+
+#. TRANSLATORS: Number of hours since
+#: siteorigin-panels.php:317
+msgid "%d hours"
+msgstr "%d時間"
+
+#. TRANSLATORS: Number of minutes since
+#: siteorigin-panels.php:315
+msgid "%d minutes"
+msgstr "%d分"
+
+#. TRANSLATORS: Number of seconds since
+#: siteorigin-panels.php:313
+msgid "%d seconds"
+msgstr "%d秒"
+
+#: siteorigin-panels.php:309
+msgid "Page Builder doesn't know about this widget."
+msgstr "ページビルダーではこのウィジェットを使えません"
+
+#: siteorigin-panels.php:308
+msgid "Missing Widget"
+msgstr "ウィジェットがありません"
+
+#: siteorigin-panels.php:284
+msgid "All Widgets"
+msgstr "すべてのウィジェット"
+
+#. TRANSLATORS: This is the default name given to a user's home page
+#: siteorigin-panels.php:76 siteorigin-panels.php:136
+msgid "Home Page"
+msgstr "ホームページ"
+
+#: siteorigin-panels.php:75
+msgid "Custom Home Page Builder"
+msgstr "ホームページビルダーを編集する"
+
+#: settings/tpl/settings.php:78 tpl/options.php:93
+msgid "Save Settings"
+msgstr "設定を保存"
+
+#: settings/tpl/settings.php:29
+msgid "Settings Saved"
+msgstr "設定が保存されました"
+
+#: settings/tpl/settings.php:12
+msgid "Search Settings"
+msgstr "検索設定"
+
+#: settings/settings.php:276
+msgid "Copy content from Page Builder to post content."
+msgstr "Page Builder からコンテンツを投稿します。"
+
+#: settings/settings.php:275 tpl/options.php:25
+msgid "Copy Content"
+msgstr "コンテンツをコピー"
+
+#: settings/settings.php:269
+msgid "Content"
+msgstr "コンテンツ"
+
+#: settings/settings.php:262
+msgid "The container used for the full width layout."
+msgstr "全幅レイアウトに使用されるコンテナー。"
+
+#: settings/settings.php:261
+msgid "Full Width Container"
+msgstr "全幅コンテナ"
+
+#: settings/settings.php:254
+msgid "Row Gutter"
+msgstr "行下の余白"
+
+#: settings/settings.php:248
+msgid "Default margin below rows."
+msgstr "行の下の標準マージン"
+
+#: settings/settings.php:247 tpl/options.php:70
+msgid "Row Bottom Margin"
+msgstr "行の下マージン:"
+
+#: settings/settings.php:241
+msgid "Device width, in pixels, to collapse into a mobile view ."
+msgstr "モバイルビューに折りたたむデバイスの幅（ピクセル単位）。"
+
+#: settings/settings.php:240 tpl/options.php:64
+msgid "Mobile Width"
+msgstr "モバイル幅"
+
+#: settings/settings.php:234
+msgid "Collapse widgets, rows and columns on mobile devices."
+msgstr "モバイルデバイス上のウィジェット、行、列を折りたたむ。"
+
+#: settings/settings.php:233 tpl/options.php:57
+msgid "Responsive Layout"
+msgstr "レスポンシブレイアウト"
+
+#: settings/settings.php:212
+msgid "Legacy Bundled Widgets"
+msgstr "レガシーなバンドルウィジェット"
+
+#: settings/settings.php:206
+msgid "Widget Title HTML"
+msgstr "ウィジェットタイトルの HTML"
+
+#: settings/settings.php:200
+msgid "Widgets"
+msgstr "ウィジェット"
+
+#: settings/settings.php:192 tpl/options.php:15
+msgid "Post Types"
+msgstr "投稿タイプ"
+
+#: settings/settings.php:186 tpl/options.php:11
+msgid "General"
+msgstr "一般"
+
+#: settings/settings.php:170
+msgid "Page Builder Settings"
+msgstr "Page Builder 設定"
+
+#: settings/settings.php:146 siteorigin-panels.php:110
+#: siteorigin-panels.php:516 tpl/js-templates.php:160
+msgid "Page Builder"
+msgstr "ページビルダー"
+
+#: settings/settings.php:146 settings/tpl/settings.php:9 tpl/options.php:5
+msgid "SiteOrigin Page Builder"
+msgstr "SiteOrigin Page Builder"
+
+#: inc/widgets.php:168 settings/settings.php:218
+msgid "Recommended Widgets"
+msgstr "おすすめウィジェット"
+
+#. TRANSLATORS: The name of WordPress plugin
+#: inc/widgets.php:160
+msgid "BBPress"
+msgstr "BBPress"
+
+#. TRANSLATORS: The name of WordPress plugin
+#: inc/widgets.php:149
+msgid "Jetpack"
+msgstr "Jetpack"
+
+#. TRANSLATORS: The name of WordPress plugin
+#: inc/widgets.php:138
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: inc/widgets.php:128
+msgid "WordPress Widgets"
+msgstr "WordPress ウィジェット"
+
+#: inc/widgets.php:112
+msgid "Page Builder Widgets"
+msgstr "Page Builder ウィジェット"
+
+#: inc/widgets.php:84
+msgid "Widgets Bundle"
+msgstr "ウィジェットバンドル"
+
+#: inc/widgets-bundle.php:68
+msgid "Display your posts as a carousel."
+msgstr "投稿をカルーセルとして表示する。"
+
+#: inc/widgets-bundle.php:67
+msgid "SiteOrigin Post Carousel"
+msgstr "SiteOrigin 投稿カルーセル"
+
+#: inc/widgets-bundle.php:56
+msgid "Display site features as a collection of icons."
+msgstr "サイトの機能をアイコンで表示します。"
+
+#: inc/widgets-bundle.php:55
+msgid "SiteOrigin Features"
+msgstr "SiteOrigin 機能"
+
+#: inc/widgets-bundle.php:44
+msgid "A basic slider widget."
+msgstr "標準的なスライダーウィジェット。"
+
+#: inc/widgets-bundle.php:43
+msgid "SiteOrigin Slider"
+msgstr "SiteOrigin スライダー"
+
+#: inc/widgets-bundle.php:32
+msgid "Choose images from your media library."
+msgstr "メディアライブラリから画像を選択してください。"
+
+#: inc/widgets-bundle.php:31
+msgid "SiteOrigin Image"
+msgstr "SiteOrigin 画像"
+
+#: inc/widgets-bundle.php:20 widgets/widgets/button/button.php:8
+msgid "A simple button"
+msgstr "シンプルボタン"
+
+#: inc/widgets-bundle.php:19
+msgid "SiteOrigin Button"
+msgstr "SiteOrigin ボタン"
+
+#: inc/widgets-bundle.php:11 inc/widgets-bundle.php:23
+#: inc/widgets-bundle.php:35 inc/widgets-bundle.php:47
+#: inc/widgets-bundle.php:59 inc/widgets-bundle.php:71 inc/widgets.php:106
+msgid "SiteOrigin Widgets Bundle"
+msgstr "SiteOrigin ウィジェットのバンドル"
+
+#: inc/widgets-bundle.php:8
+msgid "A rich text editor"
+msgstr "リッチテキストエディター"
+
+#: inc/widgets-bundle.php:7
+msgid "SiteOrigin Editor"
+msgstr "SiteOrigin エディター"
+
+#: inc/styles.php:201 settings/settings.php:313
+msgid "Enabled"
+msgstr "有効"
+
+#: inc/styles.php:187
+msgid "Remove"
+msgstr "削除"
+
+#: inc/styles.php:183
+msgid "Select Image"
+msgstr "画像を選択"
+
+#: inc/styles.php:64
+msgid "Theme"
+msgstr "テーマ"
+
+#: inc/styles.php:54
+msgid "Design"
+msgstr "デザイン"
+
+#: inc/styles.php:50 settings/settings.php:225
+msgid "Layout"
+msgstr "レイアウト"
+
+#: inc/styles.php:46
+msgid "Attributes"
+msgstr "属性"
+
+#: inc/styles.php:23
+msgid "Widget Styles"
+msgstr "ウィジェットのスタイル"
+
+#: inc/styles.php:19
+msgid "Row Styles"
+msgstr "行のスタイル"
+
+#: inc/revisions.php:50
+msgid "Page Builder Content"
+msgstr "Page Builder コンテンツ"
+
+#: inc/plugin-activation.php:74
+msgid "Installing %s"
+msgstr "%s をインストールしています"
+
+#: inc/plugin-activation.php:7 inc/plugin-activation.php:8
+msgid "Install Page Builder Plugin"
+msgstr "Page Builder プラグインをインストール"
+
+#: inc/default-styles.php:219
+msgid "Color of text inside this widget."
+msgstr "このウィジェット内のテキスト色。"
+
+#: inc/default-styles.php:216
+msgid "Font Color"
+msgstr "フォント色"
+
+#: inc/default-styles.php:211
+msgid "Border color of the widget."
+msgstr "ウィジェットの境界線の色。"
+
+#: inc/default-styles.php:189
+msgid "Background image of the widget."
+msgstr "ウィジェットの背景画像。"
+
+#: inc/default-styles.php:181
+msgid "Background color of the widget."
+msgstr "ウィジェットの背景色。"
+
+#: inc/default-styles.php:170
+msgid "Padding around the entire widget."
+msgstr "ウィジェット全体のパディング"
+
+#: inc/default-styles.php:151
+msgid "Widget Class"
+msgstr "ウィジェット class"
+
+#: inc/default-styles.php:142
+msgid "Border color of the row."
+msgstr "行の境界線の色"
+
+#: inc/default-styles.php:139 inc/default-styles.php:208
+msgid "Border Color"
+msgstr "境界線の色"
+
+#: inc/default-styles.php:134 inc/default-styles.php:203
+msgid "How the background image is displayed."
+msgstr "背景画像の表示方法。"
+
+#: inc/default-styles.php:132 inc/default-styles.php:201
+msgid "Parallax"
+msgstr "パララックス"
+
+#: inc/default-styles.php:131 inc/default-styles.php:200
+msgid "Centered, with original size"
+msgstr "元のサイズで中央揃え"
+
+#: inc/default-styles.php:130 inc/default-styles.php:199
+msgid "Cover"
+msgstr "カバー"
+
+#: inc/default-styles.php:129 inc/default-styles.php:198
+msgid "Tiled Image"
+msgstr "画像のタイル化"
+
+#: inc/default-styles.php:125 inc/default-styles.php:194
+msgid "Background Image Display"
+msgstr "背景画像表示"
+
+#: inc/default-styles.php:120
+msgid "Background image of the row."
+msgstr "行の背景画像。"
+
+#: inc/default-styles.php:117 inc/default-styles.php:186
+msgid "Background Image"
+msgstr "背景画像"
+
+#: inc/default-styles.php:112
+msgid "Background color of the row."
+msgstr "行の背景色。"
+
+#: inc/default-styles.php:109 inc/default-styles.php:178
+msgid "Background Color"
+msgstr "背景色"
+
+#: inc/default-styles.php:101
+msgid "Full Width Stretched"
+msgstr "全幅ページ (ストレッチ)"
+
+#: inc/default-styles.php:100
+msgid "Full Width"
+msgstr "全幅"
+
+#: inc/default-styles.php:99
+msgid "Standard"
+msgstr "標準"
+
+#: inc/default-styles.php:95
+msgid "Row Layout"
+msgstr "行のレイアウト"
+
+#: inc/default-styles.php:89
+msgid "Padding around the entire row."
+msgstr "全行のパディング"
+
+#: inc/default-styles.php:86 inc/default-styles.php:167
+msgid "Padding"
+msgstr "パディング"
+
+#: inc/default-styles.php:81
+msgid "Amount of space between columns."
+msgstr "カラム間のスペース。"
+
+#: inc/default-styles.php:78
+msgid "Gutter"
+msgstr "ガター"
+
+#: inc/default-styles.php:73
+msgid "Space below the row."
+msgstr "行下のスペース"
+
+#: inc/default-styles.php:70
+msgid "Bottom Margin"
+msgstr "下余白"
+
+#: inc/default-styles.php:63 inc/default-styles.php:162
+msgid "CSS Styles, given as one per row."
+msgstr "CSS スタイル。行ごとに1つずつ指定します。"
+
+#: inc/default-styles.php:60 inc/default-styles.php:159
+msgid "CSS Styles"
+msgstr "CSS スタイル"
+
+#: inc/default-styles.php:55
+msgid "Class added to all cells in this row."
+msgstr "この行のすべてのセルにclassが追加されました。"
+
+#: inc/default-styles.php:52
+msgid "Cell Class"
+msgstr "セルのクラス"
+
+#: inc/default-styles.php:47 inc/default-styles.php:154
+msgid "A CSS class"
+msgstr "CSS クラス"
+
+#: inc/default-styles.php:44
+msgid "Row Class"
+msgstr "行のクラス"
+
+#: inc/admin-actions.php:111
+msgid "Clone"
+msgstr "複製"
+
+#: inc/admin-actions.php:78
+msgid "You can still clone existing pages though."
+msgstr "あなたは既存のページを複製することができます。"
+
+#: inc/admin-actions.php:77
+msgid "Your theme doesn't have any prebuilt layouts."
+msgstr "あなたのテーマには、あらかじめ作成されたレイアウトがありません。"
+
+#: inc/admin-actions.php:68
+msgid "No description"
+msgstr "description がありません"

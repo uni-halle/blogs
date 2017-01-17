@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Contact Form DB - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-11-12 05:57:33+0000\n"
+"PO-Revision-Date: 2016-11-29 00:11:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -393,11 +393,11 @@ msgstr "link"
 
 #: CFDBViewShortCodeBuilder.php:805
 msgid "name"
-msgstr "name"
+msgstr "名前"
 
 #: CFDBViewShortCodeBuilder.php:804
 msgid "url"
-msgstr "url"
+msgstr "URL"
 
 #: CFDBViewShortCodeBuilder.php:798
 msgid "filelinks"
@@ -638,7 +638,7 @@ msgstr "permissionmsg"
 
 #: CFDBViewShortCodeBuilder.php:912
 msgid "role"
-msgstr "role"
+msgstr "権限グループ"
 
 #: CFDBViewOptions.php:63 CFDBViewShortCodeBuilder.php:909
 msgid "Security"
@@ -805,39 +805,39 @@ msgstr "\" に二重引用符 (\") を含めることではできません"
 msgid "Error: \""
 msgstr "エラー: \""
 
-#: CFDBViewImportCsv.php:125
+#: CFDBViewImportCsv.php:135
 msgid "Clean up data"
 msgstr "データのクリーンアップをします"
 
-#: CFDBViewImportCsv.php:123
+#: CFDBViewImportCsv.php:133
 msgid "Clean up data that can cause incorrect behavior"
 msgstr "不正な動作を引き起こすデータをクリーンアップします。"
 
-#: CFDBViewImportCsv.php:122
+#: CFDBViewImportCsv.php:132
 msgid "Data Cleanup"
 msgstr "データのクリーンアップ"
 
-#: CFDBViewImportCsv.php:106
+#: CFDBViewImportCsv.php:116
 msgid "Limitation: extremely large numbers of records in your form may cause the export operation on your server to run out of memory, thereby not giving you all the rows."
 msgstr "制限: フォーム内のデータレコード数が非常に大きい場合、エクスポート時にサーバーのメモリオーバーが発生しすべての列データを取得できない可能性があります。"
 
-#: CFDBViewImportCsv.php:105
+#: CFDBViewImportCsv.php:115
 msgid "Limitation: this will not export file uploads."
 msgstr "制限: アップロードファイルはエクスポートしません。"
 
-#: CFDBViewImportCsv.php:104
+#: CFDBViewImportCsv.php:114
 msgid "Backup a form into a CSV file that can be re-imported without loss of data."
 msgstr "フォームデータを失うことなく再度フォームへインポートできる CSV ファイルとしてバックアップします。"
 
-#: CFDBViewImportCsv.php:102
+#: CFDBViewImportCsv.php:112
 msgid "Backup Form to CSV File"
 msgstr "フォームデータを CSV ファイルへバックアップ"
 
-#: CFDBViewImportCsv.php:99
+#: CFDBViewImportCsv.php:109
 msgid "Rename"
 msgstr "名称変更"
 
-#: CFDBViewImportCsv.php:88
+#: CFDBViewImportCsv.php:98
 msgid "Rename Form"
 msgstr "フォームの名称変更"
 
@@ -870,7 +870,7 @@ msgstr "ドキュメント"
 msgid "Rate this Plugin"
 msgstr "このプラグインを評価する"
 
-#: CFDBShortcodeExportUrl.php:59 CFDBViewImportCsv.php:120
+#: CFDBShortcodeExportUrl.php:59 CFDBViewImportCsv.php:130
 #: CFDBViewOptions.php:69 CFDBViewShortCodeBuilder.php:89
 #: CFDBViewWhatsInDB.php:291
 msgid "Export"
@@ -878,7 +878,7 @@ msgstr "エクスポート"
 
 #: CFDBIntegrationFSCF.php:58
 msgid "Reference"
-msgstr "リファレンス"
+msgstr "参考資料"
 
 #: CFDBIntegrationFSCF.php:56
 msgid "Build Shortcode"
@@ -920,12 +920,12 @@ msgstr "削除"
 msgid "Options"
 msgstr "設定"
 
-#: CF7DBPlugin.php:1077 CFDBViewImportCsv.php:75
+#: CF7DBPlugin.php:1077 CFDBViewImportCsv.php:85
 msgid "Import"
 msgstr "インポート"
 
 #. #-#-#-#-#  tmp-contact-form-7-to-database-extension.pot (Contact Form DB
-#. 2.10.26)  #-#-#-#-#
+#. 2.10.29)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: CF7DBPlugin.php:1014
 msgid "Contact Form DB"

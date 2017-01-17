@@ -1,14 +1,15 @@
-# Translation of Responsive in German
-# This file is distributed under the same license as the Responsive package.
+# Translation of Themes - Responsive in German
+# This file is distributed under the same license as the Themes - Responsive package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-10-01 10:57:12+0000\n"
+"PO-Revision-Date: 2017-01-11 11:59:38+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/2.1.0-alpha\n"
-"Project-Id-Version: Responsive\n"
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: de\n"
+"Project-Id-Version: Themes - Responsive\n"
 
 #. Theme Name of the plugin/theme
 msgid "Responsive"
@@ -95,7 +96,7 @@ msgstr "Aktuelle Beiträge"
 msgid "Categories"
 msgstr "Kategorien"
 
-#: single.php:48
+#: single.php:53
 msgid "About"
 msgstr "Über"
 
@@ -119,6 +120,10 @@ msgstr "Modell:"
 #: sidebar-right-half.php:30 sidebar-right.php:30 sidebar.php:56
 msgid "In Archive"
 msgstr "Im Archiv"
+
+#: sidebar-gallery.php:59 sidebar-gallery.php:62 sidebar-gallery.php:66
+msgid "sec"
+msgstr "Sek"
 
 #: sidebar-gallery.php:46
 msgid "mm"
@@ -180,22 +185,6 @@ msgstr "404 &#8212; Wow, nicht gedacht dich hier zu sehen."
 msgid "Don&#39;t panic, we&#39;ll get through this together. Let&#39;s explore our options here."
 msgstr "Keine Panik, wir schaffen das. Sehen wir uns an, was du tun kannst."
 
-#: loop-header.php:41
-msgid "Blog Archives"
-msgstr "Blog-Archive"
-
-#: loop-header.php:39
-msgid "Yearly Archives: %s"
-msgstr "Archiv für das Jahr: %s"
-
-#: loop-header.php:37
-msgid "Monthly Archives: %s"
-msgstr "Archiv für den Monat: %s"
-
-#: loop-header.php:35
-msgid "Daily Archives: %s"
-msgstr "Archiv für den Tag: %s"
-
 #: image.php:74 post-data.php:32 sidebar-content-half-page.php:66
 #: sidebar-content-page.php:66 sitemap.php:65
 msgid "Edit"
@@ -206,7 +195,7 @@ msgstr "Bearbeiten"
 msgid "Posted in %s"
 msgstr "Veröffentlicht in %s"
 
-#: image.php:45 post-meta-page.php:35 post-meta.php:35
+#: image.php:45 post-meta-page.php:35 post-meta.php:42
 #: sidebar-content-half-page.php:47 sidebar-content-page.php:47
 msgid "% Comments &darr;"
 msgstr "% Kommentare &darr;"
@@ -216,12 +205,12 @@ msgstr "% Kommentare &darr;"
 msgid "Tagged with:"
 msgstr "Getagged mit:"
 
-#: image.php:45 post-meta-page.php:35 post-meta.php:35
+#: image.php:45 post-meta-page.php:35 post-meta.php:42
 #: sidebar-content-half-page.php:47 sidebar-content-page.php:47
 msgid "No Comments &darr;"
 msgstr "Keine Kommentare &darr;"
 
-#: image.php:45 post-meta-page.php:35 post-meta.php:35
+#: image.php:45 post-meta-page.php:35 post-meta.php:42
 #: sidebar-content-half-page.php:47 sidebar-content-page.php:47
 msgid "1 Comment &darr;"
 msgstr "1 Kommentar &darr;"
@@ -234,7 +223,7 @@ msgstr "&#8249; Zurück zu"
 msgid "&darr; Skip to Main Content"
 msgstr "&darr; Zum zentralen Inhalt"
 
-#: footer.php:73
+#: footer.php:72
 msgid "WordPress"
 msgstr "WordPress"
 
@@ -242,7 +231,7 @@ msgstr "WordPress"
 msgid "&uarr;"
 msgstr "↑"
 
-#: footer.php:73
+#: footer.php:72
 msgid "powered by"
 msgstr "Powered by"
 
@@ -585,7 +574,7 @@ msgstr "Beiträge getagged %s"
 msgid "View all posts by %s"
 msgstr "Zeige alle Artikel von %s"
 
-#: core/includes/functions-extentions.php:46 loop-header.php:59
+#: core/includes/functions-extentions.php:46 loop-header.php:43
 msgid "Search results for: %s"
 msgstr "Suchergebnisse für: %s"
 
@@ -1068,14 +1057,14 @@ msgstr "Installiere Plugin: %s"
 msgid "Install Plugins"
 msgstr "Plugins installieren"
 
-#. #-#-#-#-#  responsive.pot (Responsive 1.9.8.9)  #-#-#-#-#
+#. #-#-#-#-#  responsive.pot (Responsive 1.9.9.0)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: core/includes/classes/Responsive_Options.php:257
 #: core/includes/post-custom-meta.php:167
 msgid "Sidebar/Content"
 msgstr "Sidebar/Inhalt"
 
-#. #-#-#-#-#  responsive.pot (Responsive 1.9.8.9)  #-#-#-#-#
+#. #-#-#-#-#  responsive.pot (Responsive 1.9.9.0)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: core/includes/classes/Responsive_Options.php:259
 #: core/includes/post-custom-meta.php:169
@@ -1086,21 +1075,21 @@ msgstr "Sidebar/Inhalt Halbe Seite"
 msgid "Install Required Plugins"
 msgstr "Installieren Sie die erforderlichen Plugins"
 
-#. #-#-#-#-#  responsive.pot (Responsive 1.9.8.9)  #-#-#-#-#
+#. #-#-#-#-#  responsive.pot (Responsive 1.9.9.0)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: core/includes/classes/Responsive_Options.php:258
 #: core/includes/post-custom-meta.php:168
 msgid "Content/Sidebar Half Page"
 msgstr "Inhalt/Sidebar Halbe Seite"
 
-#. #-#-#-#-#  responsive.pot (Responsive 1.9.8.9)  #-#-#-#-#
+#. #-#-#-#-#  responsive.pot (Responsive 1.9.9.0)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: core/includes/classes/Responsive_Options.php:260
 #: core/includes/post-custom-meta.php:170
 msgid "Full Width Page (no sidebar)"
 msgstr "Volle Breite Seite (keine Sidebar)"
 
-#. #-#-#-#-#  responsive.pot (Responsive 1.9.8.9)  #-#-#-#-#
+#. #-#-#-#-#  responsive.pot (Responsive 1.9.9.0)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: core/includes/classes/Responsive_Options.php:256
 #: core/includes/post-custom-meta.php:166
@@ -1180,7 +1169,7 @@ msgstr "Neuere Beiträge &#8250;"
 #: blog.php:65 content-sidebar-half-page.php:41 content-sidebar-page.php:41
 #: core/includes/functions-extras.php:96 full-width-page.php:41 home.php:53
 #: image.php:56 index.php:43 landing-page.php:39 page.php:40
-#: sidebar-content-half-page.php:54 sidebar-content-page.php:54 single.php:40
+#: sidebar-content-half-page.php:54 sidebar-content-page.php:54 single.php:45
 msgid "Read more &#8250;"
 msgstr "Weiterlesen ›"
 
@@ -1196,7 +1185,7 @@ msgstr "&#8249; Ältere Beiträge"
 #: content-sidebar-half-page.php:42 content-sidebar-page.php:42
 #: full-width-page.php:42 home.php:54 image.php:57 index.php:44
 #: landing-page.php:40 page.php:41 search.php:41
-#: sidebar-content-half-page.php:55 sidebar-content-page.php:55 single.php:54
+#: sidebar-content-half-page.php:55 sidebar-content-page.php:55 single.php:59
 #: sitemap.php:62
 msgid "Pages:"
 msgstr "Seiten:"

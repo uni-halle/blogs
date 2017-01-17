@@ -1,0 +1,488 @@
+# Translation of Themes - Yoko in French (France)
+# This file is distributed under the same license as the Themes - Yoko package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-01-04 10:52:31+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: fr\n"
+"Project-Id-Version: Themes - Yoko\n"
+
+#. Theme Name of the plugin/theme
+msgid "Yoko"
+msgstr "Yoko"
+
+#. Template Name of the plugin/theme
+msgid "Full-width, no sidebar"
+msgstr "Pleine-Largeur, Sans Sidebar"
+
+#: tag.php:18
+msgid "Tag Archives: %s"
+msgstr "Archives par mot-clé&nbsp;: %s"
+
+#: single.php:24
+msgid "Next Post  &rarr;"
+msgstr "Article suivant  &rarr;"
+
+#: single.php:23
+msgid "&larr; Previous Post"
+msgstr "&larr; Article précédent"
+
+#: search.php:42
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr "Désolé, mais rien ne correspond à votre critère de recherche. Veuillez réessayer avec d&rsquo;autres mots-clés."
+
+#: search.php:38
+msgid "Nothing Found"
+msgstr "Rien de trouvé"
+
+#: search.php:16
+msgid "Search Results for: %s"
+msgstr "Résultats de recherche pour %s"
+
+#: inc/theme-options.php:73
+msgid "Save Options"
+msgstr "Sauvegarder les options"
+
+#: inc/theme-options.php:68
+msgid " using the WordPress Media Library and insert the URL here"
+msgstr "utilisez la bibliothèque de WordPress et collez l'URL ici"
+
+#: inc/theme-options.php:68
+msgid "Upload your own logo image"
+msgstr "Uploadez votre logo"
+
+#: inc/theme-options.php:65
+msgid "Custom Logo Image URL"
+msgstr "URL du Logo"
+
+#: inc/theme-options.php:51
+msgid "Options saved"
+msgstr "Réglages sauvegardés"
+
+#: inc/theme-options.php:48
+msgid "%s Theme Options"
+msgstr "Options du thème %s"
+
+#: inc/theme-options.php:34
+msgid "Theme Options"
+msgstr "Options du thème"
+
+#: inc/customizer.php:32
+msgid "Link Color"
+msgstr "Couleur des liens"
+
+#: inc/customizer.php:20
+msgid "Theme"
+msgstr "Thème"
+
+#: image.php:81
+msgid "Both comments and trackbacks are currently closed."
+msgstr "Commentaires et trackbacks clos."
+
+#: image.php:79
+msgid "Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">post a comment</a>."
+msgstr "Trackbacks clos, mais vous pouvez <a class=\"comment-link\" href=\"#respond\" title=\"Poster un commentaire\">poster un commentaire</a>."
+
+#: image.php:77
+msgid "Comments are closed, but you can leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr "Commentaires clos, mais vous pouvez laisser un trackback: <a class=\"trackback-link\" href=\"%s\" title=\"URL de Trackback\" rel=\"trackback\">URL de Trackback</a>."
+
+#: image.php:75
+msgid "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr "<a class=\"comment-link\" href=\"#respond\" title=\"Poster un commentaire\">Poster un commentaire</a> ou faire un trackback: <a class=\"trackback-link\" href=\"%s\" title=\"URL de Trackback\" rel=\"trackback\">URL de Trackback</a>."
+
+#: image.php:23
+msgid "Next Image &rarr;"
+msgstr "Image Suivante &rarr;"
+
+#: image.php:22
+msgid "&larr; Previous Image"
+msgstr "&larr; Image Précédente"
+
+#: functions.php:615
+msgid "RSS  URL:"
+msgstr "URL RSS :"
+
+#: functions.php:613
+msgid "RSS Text:"
+msgstr "Texte RSS :"
+
+#: functions.php:611
+msgid "Delicious URL:"
+msgstr "URL Delicious :"
+
+#: functions.php:610
+msgid "Delicious Text:"
+msgstr "Texte Delicious :"
+
+#: functions.php:609
+msgid "LinkedIn URL:"
+msgstr "URL LinkedIn :"
+
+#: functions.php:608
+msgid "LinkedIn Text:"
+msgstr "Texte LinkedIn :"
+
+#: functions.php:606
+msgid "Xing URL:"
+msgstr "URL Xing :"
+
+#: functions.php:605
+msgid "Xing Text:"
+msgstr "Texte Xing :"
+
+#: functions.php:604
+msgid "WordPress URL:"
+msgstr "URL WordPress :"
+
+#: functions.php:603
+msgid "WordPress Text:"
+msgstr "Texte WordPress :"
+
+#: functions.php:602
+msgid "Foursquare URL:"
+msgstr "URL Foursquare :"
+
+#: functions.php:601
+msgid "Foursquare Text:"
+msgstr "Texte Foursquare :"
+
+#: functions.php:599
+msgid "GitHub URL:"
+msgstr "URL GitHub :"
+
+#: functions.php:598
+msgid "GitHub Text:"
+msgstr "Texte GitHub :"
+
+#: functions.php:597
+msgid "Dribbble URL:"
+msgstr "URL Dribbble :"
+
+#: functions.php:596
+msgid "Dribbble Text:"
+msgstr "Texte Dribbble :"
+
+#: functions.php:595
+msgid "Flickr URL:"
+msgstr "URL Flickr :"
+
+#: functions.php:594
+msgid "Flickr Text:"
+msgstr "Texte Flickr :"
+
+#: functions.php:593
+msgid "Instagram URL:"
+msgstr "URL Instagram :"
+
+#: functions.php:592
+msgid "Instagram Text:"
+msgstr "Texte Instagram :"
+
+#: functions.php:590
+msgid "YouTube URL:"
+msgstr "URL YouTube :"
+
+#: functions.php:589
+msgid "YouTube Text:"
+msgstr "Texte YouTube :"
+
+#: functions.php:587
+msgid "Vimeo URL:"
+msgstr "URL Vimeo :"
+
+#: functions.php:586
+msgid "Vimeo Text:"
+msgstr "Texte Vimeo :"
+
+#: functions.php:585
+msgid "Pinterest URL:"
+msgstr "URL Pinterest :"
+
+#: functions.php:584
+msgid "Pinterest Text:"
+msgstr "Texte Pinterest :"
+
+#: functions.php:583
+msgid "Google+ URL:"
+msgstr "URL Google+ :"
+
+#: functions.php:582
+msgid "Google+ Text:"
+msgstr "Texte Google+ :"
+
+#: functions.php:581
+msgid "Facebook URL:"
+msgstr "URL Facebook :"
+
+#: functions.php:580
+msgid "Facebook Text:"
+msgstr "Texte Facebook :"
+
+#: functions.php:579
+msgid "Twitter  URL:"
+msgstr "URL Twitter :"
+
+#: functions.php:578
+msgid "Twitter Text:"
+msgstr "Texte Twitter :"
+
+#: functions.php:577
+msgid "Title:"
+msgstr "Titre&nbsp;:"
+
+#: functions.php:405
+msgid "Link to your social profiles like twitter, facebook or flickr."
+msgstr "Liens vers vos profils sociaux tels que Twitter, FaceBook ou Flickr."
+
+#: functions.php:356
+msgid "Search"
+msgstr "Recherche"
+
+#: functions.php:329
+msgid "An second sidebar area"
+msgstr "Une seconde zone de barre latérale"
+
+#: functions.php:327
+msgid "Sidebar 2"
+msgstr "Barre Latérale 2"
+
+#: functions.php:318
+msgid "Sidebar 1"
+msgstr "Barre Latérale 1"
+
+#: functions.php:306
+msgid "(Edit)"
+msgstr "(Modifier)"
+
+#: functions.php:306
+msgid "Pingback:"
+msgstr "Ping&nbsp;:"
+
+#: functions.php:288
+msgid "Your comment is awaiting moderation."
+msgstr "Votre commentaire est en attente de validation."
+
+#. translators: 1: date, 2: time
+#: functions.php:281
+msgid "%1$s at %2$s"
+msgstr "%1$s à %2$s"
+
+#: functions.php:277
+msgid "%s"
+msgstr "%s"
+
+#. translators: header image description
+#: functions.php:175
+msgid "Seagull"
+msgstr "Mouette"
+
+#. translators: header image description
+#: functions.php:169
+msgid "Cape"
+msgstr "Cape"
+
+#. translators: header image description
+#: functions.php:163
+msgid "Sailing"
+msgstr "Voile"
+
+#. translators: header image description
+#: functions.php:157
+msgid "Plant"
+msgstr "Plante"
+
+#. translators: header image description
+#: functions.php:151
+msgid "Flowers"
+msgstr "Fleurs"
+
+#. translators: header image description
+#: functions.php:145
+msgid "Ginko"
+msgstr "Ginseng"
+
+#: functions.php:103
+msgid "Primary Navigation"
+msgstr "Navigation principale"
+
+#: functions.php:39
+msgctxt "Droid Serif font: on or off"
+msgid "on"
+msgstr "on"
+
+#. Translators: If there are characters in your language that are not supported
+#. by PT Sans or Raleway translate this to 'off'. Do not translate into your
+#. own language.
+#: functions.php:37
+msgctxt "Droid Sans font: on or off"
+msgid "on"
+msgstr "ouvert"
+
+#: footer.php:12
+msgid "Top"
+msgstr "Haut"
+
+#: footer.php:11
+msgid "Theme: %1$s by %2$s"
+msgstr "Thème : %1$s par %2$s | Traduction : <a href=\"http://www.wolforg.eu\">Wp Trads</a>."
+
+#: content-single.php:47
+msgid "Author: %s"
+msgstr "Auteur : %s"
+
+#: content-image.php:16 content-link.php:11 content-quote.php:17
+#: content-single.php:25 content-video.php:16 content.php:27
+msgid "Continue Reading &rarr;"
+msgstr "Lire la suite &rarr;"
+
+#: content-gallery.php:45
+msgid "This gallery contains <a %1$s>%2$s photo</a>."
+msgid_plural "This gallery contains <a %1$s>%2$s photos</a>"
+msgstr[0] "Diese Galerie enthält <a %1$s>%2$s Bilder</a>."
+msgstr[1] "Cette galerie contient <a %1$s>%2$s photos</a>"
+
+#: content-gallery.php:19 content-gallery.php:24 content-gallery.php:42
+msgid "View the pictures &rarr;"
+msgstr "Voir les images &rarr;"
+
+#: content-gallery.php:12 content-gallery.php:46 content-image.php:12
+#: content-video.php:12 content.php:20
+msgid "Permalink to %s"
+msgstr "Permalien vers %s"
+
+#: content-aside.php:29 content-gallery.php:64 content-image.php:28
+#: content-link.php:22 content-page.php:18 content-quote.php:29
+#: content-single.php:40 content-video.php:28 content.php:40 functions.php:281
+#: image.php:83
+msgid "Edit &rarr;"
+msgstr "Modifier &rarr;"
+
+#: content-aside.php:28 content-gallery.php:63 content-image.php:27
+#: content-link.php:21 content-quote.php:28 content-single.php:39
+#: content-video.php:27 content.php:39
+msgid "Permalink "
+msgstr "Permaliens"
+
+#: content-aside.php:26 content-gallery.php:61 content-image.php:25
+#: content-link.php:19 content-quote.php:26 content-single.php:37
+#: content-video.php:25 content.php:37
+msgid "Tags: %2$s"
+msgstr "Mots-clés : %2$s"
+
+#: content-aside.php:22 content-gallery.php:57 content-image.php:21
+#: content-link.php:15 content-quote.php:22 content-single.php:33
+#: content-video.php:21 content.php:33
+msgid "Categories: %2$s"
+msgstr "Catégories : %2$s"
+
+#: content-aside.php:18 content-gallery.php:53 content-image.php:17
+#: content-page.php:17 content-quote.php:18 content-single.php:28
+#: content-video.php:17 content.php:28 image.php:68
+msgid "Pages:"
+msgstr "Pages&nbsp;:"
+
+#: content-aside.php:17 functions.php:225
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Continuer la lecture <span class=\"meta-nav\">&rarr;</span>"
+
+#: content-aside.php:13 content-gallery.php:14 content-image.php:13
+#: content-quote.php:13 content-single.php:18 content-video.php:13
+#: content.php:16 image.php:18
+msgid "% Comments"
+msgstr "% commentaires"
+
+#: content-aside.php:13 content-gallery.php:14 content-image.php:13
+#: content-quote.php:13 content-single.php:18 content-video.php:13
+#: content.php:16 image.php:18
+msgid "1 Comment"
+msgstr "Un commentaire"
+
+#: content-aside.php:13 content-gallery.php:14 content-image.php:13
+#: content-quote.php:13 content-single.php:18 content-video.php:13
+#: content.php:16 image.php:18
+msgid "0 comments"
+msgstr "0 Commentaires"
+
+#: content-aside.php:12 content-gallery.php:13 content-image.php:13
+#: content-quote.php:12 content-single.php:18 content-video.php:13
+#: content.php:15 image.php:18
+msgid "by"
+msgstr "de"
+
+#: comments.php:62
+msgctxt "noun"
+msgid "Message <span class=\"required\">*</span>"
+msgstr "Message <span class=\"requis\">*</span>"
+
+#: comments.php:60
+msgid "<p class=\"comment-notes\">Required fields are marked <span class=\"required\">*</span>.</p>"
+msgstr "<p class=\"comment-notes\">Champs Requis <span class=\"required\">*</span>.</p>"
+
+#: comments.php:53
+msgid "Comments are closed."
+msgstr "Les commentaires sont fermés."
+
+#: comments.php:37
+msgid "Newer Comments &rarr;"
+msgstr "Commentaires plus récents &rarr;"
+
+#: comments.php:36
+msgid "&larr; Older Comments"
+msgstr "&larr; Commentaire plus ancien"
+
+#: comments.php:29
+msgid "Leave a reply &rarr;"
+msgstr "Répondre &rarr;"
+
+#: comments.php:26
+msgid "One Comment"
+msgid_plural "%1$s Comments"
+msgstr[0] "Un Commentaire"
+msgstr[1] "%1$s Commentaires"
+
+#: comments.php:10
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "Cet article est protégé par un mot de passe. Saisissez le mot de passe pour lire les commentaires."
+
+#: category.php:14
+msgid "Category Archives: %s"
+msgstr "Archives de catégorie&nbsp;: %s"
+
+#: author.php:16
+msgid "Author Archives: <span class=\"vcard\">%s</span>"
+msgstr "Archives pour l'Auteur : <span class=\"vcard\">%s</span>"
+
+#: archive.php:35 author.php:32 category.php:29 index.php:23 search.php:30
+#: tag.php:35
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Articles plus récents <span class=\"meta-nav\">&rarr;</span>"
+
+#: archive.php:34 author.php:31 category.php:28 index.php:22 search.php:29
+#: tag.php:34
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Articles plus anciens"
+
+#: 404.php:19
+msgid "Apologies, but the page you requested could not be found. Perhaps searching will help."
+msgstr "Toutes nos excuses, mais la page que vous demandez est introuvable. Essayez de lancer une recherche."
+
+#: 404.php:15
+msgid "Not Found"
+msgstr "Rien de trouvé"
+
+#. Author URI of the plugin/theme
+msgid "http://www.elmastudio.de/en/themes/"
+msgstr "http://www.elmastudio.de/en/themes/"
+
+#. Author of the plugin/theme
+msgid "Elmastudio"
+msgstr "Elmastudio"
+
+#. Theme URI of the plugin/theme
+msgid "http://www.elmastudio.de/wordpress-themes/yoko/"
+msgstr "http://www.elmastudio.de/wordpress-themes/yoko/"

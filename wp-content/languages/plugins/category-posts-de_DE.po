@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Category Posts Widget - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-11-19 10:26:01+0000\n"
+"PO-Revision-Date: 2016-12-21 16:01:23+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,233 +12,321 @@ msgstr ""
 "Project-Id-Version: Plugins - Category Posts Widget - Stable (latest release)\n"
 
 #. Author URI of the plugin/theme
-msgid "http://mkrdip.me"
-msgstr "http://mkrdip.me"
+msgid "http://tiptoppress.com"
+msgstr "http://tiptoppress.com"
 
 #. Author of the plugin/theme
-msgid "Mrinal Kanti Roy"
-msgstr "Mrinal Kanti Roy"
+msgid "TipTopPress"
+msgstr "TipTopPress"
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/category-posts/"
+msgstr "https://wordpress.org/plugins/category-posts/"
+
+#: tinymce_translations.php:21
+msgid "Hide the button"
+msgstr "Schaltfläche ausblenden"
+
+#: tinymce_translations.php:20
+msgid "Category Posts Insert Shortcode"
+msgstr "Einfügter Category Posts Shortcode"
+
+#: tinymce_translations.php:19
+msgid "Insert Category Posts shortcode"
+msgstr "Einfügen von Category Posts shortcode"
+
+#: tinymce_translations.php:18
+msgid "Name"
+msgstr "Name"
+
+#: cat-posts.php:1955
+msgid "Hide the \"insert shortcode\" button from the editor"
+msgstr "Ausblenden vom \"Shortcode Einfügen\"-Button aus dem Editor"
+
+#: cat-posts.php:1952
+msgid "Visual editor button"
+msgstr "Editor Button"
+
+#: cat-posts.php:1948
+msgid "Close the curremtly open panel when opening a new one"
+msgstr "Schließt ein aktuell geöffnetes Bedienfeld, wenn ein neues öffnen wird"
+
+#: cat-posts.php:1945
+msgid "Open panels behavior"
+msgstr "Verhalten der offenen Panels"
+
+#: cat-posts.php:1941
+msgid "Category Posts Widget behaviour settings"
+msgstr "Einstellungen für das Verhalten vom Category Posts Widget"
+
+#: cat-posts.php:1741
+msgid "[shortcode]"
+msgstr "[shortcode]"
+
+#: cat-posts.php:1358
+msgid "We are on <a href=\"%1$s\">Facebook</a> and <a href=\"%2$s\">Twitter</a>."
+msgstr "Du kannst uns auf <a href=\"%1$s\">Facebook</a> und <a href=\"%2$s\">Twitter</a> finden."
+
+#: cat-posts.php:1357
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: cat-posts.php:1356
+msgid "Widget admin behaviour settings"
+msgstr "Einstellungen für das Verhalten des Widgets im Administrationsbereich "
+
+#: cat-posts.php:1295
+msgid "Themes and plugins may override"
+msgstr "Themes und Plugins können überschreiben"
+
+#: cat-posts.php:1264
+msgid "Everything is a link"
+msgstr "Alles als Link"
+
+#: cat-posts.php:1156
+msgid "No default"
+msgstr "Default löschen"
+
+#: cat-posts.php:1153
+msgid "Select image"
+msgstr "Bild auswählen"
+
+#: cat-posts.php:1137
+msgid "Default thumbnail "
+msgstr "Default Vorschaubild"
+
+#: cat-posts.php:1040
+msgid "Start offsett"
+msgstr "Offset Startparameter"
+
+#: cat-posts.php:1029
+msgid "Exclude child categories"
+msgstr "Sub-Kategorien ausschließen"
+
+#: cat-posts.php:1023
+msgid "All categories"
+msgstr "Alle Kategorien"
+
+#: cat-posts.php:774
+msgid "Continue reading %s"
+msgstr "mehr %s"
+
+#: cat-posts.php:612 cat-posts.php:614
+msgid "Recent Posts"
+msgstr "Recent Posts"
+
+#: cat-posts.php:165
+msgid "Select"
+msgstr "Auswählen"
+
+#: cat-posts.php:164
+msgid "Select a default thumbnail"
+msgstr "Ein Default-Vorschaubild wählen"
 
 #. Description of the plugin/theme
 msgid "Adds a widget that shows the most recent posts from a single category."
 msgstr "Ein Widget, das aktuellste Beiträge aus einer Kategorie anzeigt."
 
-#. Plugin URI of the plugin/theme
-msgid "http://mkrdip.me/category-posts-widget"
-msgstr "http://mkrdip.me/category-posts-widget"
-
 #. Plugin Name of the plugin/theme
 msgid "Category Posts Widget"
 msgstr "Category Posts Widget"
 
-#: cat-posts.php:1413
+#: cat-posts.php:1769
 msgid "Layout"
 msgstr "Gestaltung"
 
-#: cat-posts.php:1380
+#: cat-posts.php:1714
 msgid "Category Posts Shortcode"
 msgstr "Category Posts Shortcode"
 
-#: cat-posts.php:1187
+#: cat-posts.php:1253 cat-posts.php:1377
 msgid "Get the Pro version"
 msgstr "Premium Version herunterladen"
 
-#: cat-posts.php:1161
-msgid "Auto close panels"
-msgstr "Fenster automatisch schließen"
-
-#: cat-posts.php:1156
-msgid "My settings"
-msgstr "Meine Einstellungen"
-
-#: cat-posts.php:1152
+#: cat-posts.php:1352
 msgid "... more by this topic"
 msgstr "... mehr zu diesem Thema"
 
-#: cat-posts.php:1151
+#: cat-posts.php:1351
 msgid "Footer link text"
 msgstr "Fußzeilen Link-Text"
 
-#: cat-posts.php:1147
+#: cat-posts.php:1347
 msgid "Footer"
 msgstr "Fußzeile"
 
-#: cat-posts.php:1143
-msgid "Hide social buttons in widget output"
-msgstr "Soziale Buttons in der Widget-Ausgabe ausblenden"
-
-#: cat-posts.php:1137
+#: cat-posts.php:1343
 msgid "Hide widget if there are no matching posts"
 msgstr "Verberge das Widget, wenn es keine passenden Beiträge gibt."
 
-#: cat-posts.php:1131
+#: cat-posts.php:1337
 msgid "Disable the built-in CSS for this widget"
 msgstr "Mitgeliefertes CSS für diese Widget deaktivieren"
 
-#: cat-posts.php:1126
+#: cat-posts.php:1332
 msgid "General"
 msgstr "Allgemein"
 
-#: cat-posts.php:1122
+#: cat-posts.php:1328
 msgid "Show post author"
 msgstr "Beitragsautor anzeigen"
 
-#: cat-posts.php:1116
+#: cat-posts.php:1322
 msgid "Show number of comments"
 msgstr "Anzahl der Kommentare anzeigen"
 
-#: cat-posts.php:1110
+#: cat-posts.php:1315
 msgid "Make widget date link"
 msgstr "Datum anzeigen als Link zum Beitrag"
 
-#: cat-posts.php:1103
+#: cat-posts.php:1308
 msgid "Date format:"
 msgstr "Datumsformatierung:"
 
-#: cat-posts.php:1098
+#: cat-posts.php:1302
 msgid "Show post date"
 msgstr "Beitragsdatum anzeigen"
 
-#: cat-posts.php:1093
+#: cat-posts.php:1290
 msgid "... more"
 msgstr "... mehr"
 
-#: cat-posts.php:1091
+#: cat-posts.php:1288
 msgid "Excerpt 'more' text:"
 msgstr "„Weiterlesen“-Text für Auszug:"
 
-#: cat-posts.php:1085
+#: cat-posts.php:1282
 msgid "Excerpt length (in words):"
 msgstr "Auszugslänge (in Worten):"
 
-#: cat-posts.php:1080
+#: cat-posts.php:1276
 msgid "Show post excerpt"
 msgstr "Auszugstext anzeigen"
 
-#: cat-posts.php:1074
+#: cat-posts.php:1270
 msgid "Hide post titles"
 msgstr "Beitragstitel verbergen"
 
-#: cat-posts.php:1069
+#: cat-posts.php:1259
 msgid "Post details"
 msgstr "Beitragsdetails"
 
-#: cat-posts.php:1015
+#: cat-posts.php:1168
 msgid "Blur"
 msgstr "Verwischen"
 
-#: cat-posts.php:1014
+#: cat-posts.php:1167
 msgid "Zoom in"
 msgstr "Hineinzoomen"
 
-#: cat-posts.php:1013
+#: cat-posts.php:1166
 msgid "Brighter"
 msgstr "Heller"
 
-#: cat-posts.php:1012
+#: cat-posts.php:1165
 msgid "Darker"
 msgstr "Dunkler"
 
-#: cat-posts.php:1011
+#: cat-posts.php:166 cat-posts.php:1143 cat-posts.php:1164
 msgid "None"
 msgstr "Kein(er)"
 
-#: cat-posts.php:1008
+#: cat-posts.php:1161
 msgid "Animation on mouse hover:"
 msgstr "Animation beim Überfahren mit der Maus:"
 
-#: cat-posts.php:1003
+#: cat-posts.php:1132
 msgid "CSS crop to requested size "
 msgstr "Auf die gewünschte Größe zuschneiden"
 
-#: cat-posts.php:996
+#: cat-posts.php:1125
 msgid "Height:"
 msgstr "Höhe:"
 
-#: cat-posts.php:992
+#: cat-posts.php:1121
 msgid "Width:"
 msgstr "Breite:"
 
-#: cat-posts.php:990
+#: cat-posts.php:1119
 msgid "Thumbnail dimensions (in pixels)"
 msgstr "Vorschaubildabmessungen (in Pixel)"
 
-#: cat-posts.php:985
+#: cat-posts.php:1114
 msgid "Show thumbnails above text"
 msgstr "Vorschaubild über dem Text platzieren"
 
-#: cat-posts.php:979
+#: cat-posts.php:1108
 msgid "Show post thumbnail"
 msgstr "Vorschaubild anzeigen"
 
-#: cat-posts.php:974
+#: cat-posts.php:1103
 msgid "Thumbnails"
 msgstr "Vorschaubilder"
 
-#: cat-posts.php:943
+#: cat-posts.php:1070
 msgid "Exclude posts which have no thumbnail"
 msgstr "Beiträge ohne Vorschaubild nicht anzeigen"
 
-#: cat-posts.php:937
+#: cat-posts.php:1064
 msgid "Exclude current post"
 msgstr "Aktuellen Beitrag nicht mitanzeigen"
 
-#: cat-posts.php:931
+#: cat-posts.php:1058
 msgid "Reverse sort order (ascending)"
 msgstr "Reihenfolge umdrehen (aufsteigend)"
 
-#: cat-posts.php:924
+#: cat-posts.php:1051
 msgid "Random"
 msgstr "Zufällig"
 
-#: cat-posts.php:923
+#: cat-posts.php:1050
 msgid "Number of comments"
 msgstr "Anzahl der Kommentare mitanzeigen"
 
-#: cat-posts.php:921
+#: cat-posts.php:1048
 msgid "Date"
 msgstr "Datum"
 
-#: cat-posts.php:919
+#: cat-posts.php:1046
 msgid "Sort by"
 msgstr "Sortierung"
 
-#: cat-posts.php:913
+#: cat-posts.php:1034
 msgid "Number of posts to show"
 msgstr "Anzahl anzuzeigender Beiträge"
 
-#: cat-posts.php:907
+#: cat-posts.php:1022
 msgid "Category"
 msgstr "Kategorie"
 
-#: cat-posts.php:903
+#: cat-posts.php:1018
 msgid "Filter"
 msgstr "Filter"
 
-#: cat-posts.php:872
+#: cat-posts.php:983
 msgid "Hide title"
 msgstr "Titel verbergen"
 
-#: cat-posts.php:866
+#: cat-posts.php:977
 msgid "Make widget title link"
 msgstr "Widget-Titel als Link ausgeben"
 
-#: cat-posts.php:855 cat-posts.php:859 cat-posts.php:922
+#: cat-posts.php:966 cat-posts.php:970 cat-posts.php:1049
 msgid "Title"
 msgstr "Titel"
 
-#: cat-posts.php:704
+#: cat-posts.php:808
 msgid "Posts by %s"
 msgstr "Beiträge von %s"
 
-#: cat-posts.php:293
+#: cat-posts.php:286
 msgid "Category Posts"
 msgstr "Category Posts"
 
-#: cat-posts.php:292
+#: cat-posts.php:285
 msgid "List single category posts"
 msgstr "Eine Liste mit neusten Beiträge aus einer bestimmten Kategorie anzeigen."
 
-#: cat-posts.php:117
+#: cat-posts.php:51
 msgid "Customize"
 msgstr "Customizer"

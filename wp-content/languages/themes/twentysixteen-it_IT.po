@@ -1,22 +1,28 @@
-# Translation of Twenty Sixteen in Italian
-# This file is distributed under the same license as the Twenty Sixteen package.
+# Translation of Themes - Twenty Sixteen in Italian
+# This file is distributed under the same license as the Themes - Twenty Sixteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-06-16 12:55:06+0000\n"
+"PO-Revision-Date: 2016-12-19 09:44:00+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/2.1.0-alpha\n"
-"Project-Id-Version: Twenty Sixteen\n"
-
-#. Description of the plugin/theme
-msgid "Twenty Sixteen is a modernized take on an ever-popular WordPress layout — the horizontal masthead with an optional right sidebar that works perfectly for blogs and websites. It has custom color options with beautiful default color schemes, a harmonious fluid grid using a mobile-first approach, and impeccable polish in every detail. Twenty Sixteen will make your WordPress look beautiful everywhere."
-msgstr "Twenty Sixteen è una versione modernizzata di un modello di WordPress molto popolare con una testata orizzontale e una barra laterale destra opzione che funziona perfettamente per blog e siti web. I colori possono essere personalizzati con belle combinazioni predefinite, è basato su una griglia fluida armoniosa che utilizza un approccio ottimizzato per cellulari e tablet, ed è impeccabile in ogni dettaglio. Twenty Sixteen renderà il tuo WordPress bello su qualsiasi dispositivo."
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: it\n"
+"Project-Id-Version: Themes - Twenty Sixteen\n"
 
 #. Theme Name of the plugin/theme
 msgid "Twenty Sixteen"
 msgstr "Twenty Sixteen"
+
+#. Description of the plugin/theme
+msgid "Twenty Sixteen is a modernized take on an ever-popular WordPress layout — the horizontal masthead with an optional right sidebar that works perfectly for blogs and websites. It has custom color options with beautiful default color schemes, a harmonious fluid grid using a mobile-first approach, and impeccable polish in every detail. Twenty Sixteen will make your WordPress look beautiful everywhere."
+msgstr "Twenty Sixteen è la versione moderna di un modello di WordPress molto popolare con una testata orizzontale e una barra laterale destra opzione che funziona perfettamente per blog e siti web. I colori possono essere personalizzati con belle combinazioni predefinite, è basato su una griglia fluida armoniosa che utilizza un approccio ottimizzato per cellulari e tablet, ed è impeccabile in ogni dettaglio. Twenty Sixteen renderà il tuo WordPress bello su qualsiasi dispositivo."
+
+#. translators: %s: Name of current post
+#: inc/template-tags.php:184 template-parts/content.php:28
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "Leggi tutto<span class=\"screen-reader-text\"> \"%s\"</span>"
 
 #. translators: %s: Name of current post
 #: image.php:84 template-parts/content-page.php:37
@@ -24,11 +30,6 @@ msgstr "Twenty Sixteen"
 #: template-parts/content-single.php:45 template-parts/content.php:49
 msgid "Edit<span class=\"screen-reader-text\"> \"%s\"</span>"
 msgstr "Modifica<span class=\"screen-reader-text\"> \"%s\"</span>"
-
-#. translators: %s: Name of current post
-#: inc/template-tags.php:184 template-parts/content.php:28
-msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
-msgstr "Leggi tutto<span class=\"screen-reader-text\"> \"%s\"</span>"
 
 #: inc/customizer.php:283
 msgid "Red"
@@ -55,13 +56,13 @@ msgctxt "label"
 msgid "Search for:"
 msgstr "Cerca:"
 
-#: footer.php:17
-msgid "Footer Primary Menu"
-msgstr "Menu primario nel piè di pagina"
-
 #: footer.php:28
 msgid "Footer Social Links Menu"
 msgstr "Menu social nel piè di pagina"
+
+#: footer.php:17
+msgid "Footer Primary Menu"
+msgstr "Menu primario nel piè di pagina"
 
 #: functions.php:158
 msgid "Add widgets here to appear in your sidebar."
@@ -99,13 +100,13 @@ msgstr "Autore:"
 msgid "Previous post:"
 msgstr "Articolo precedente:"
 
-#: single.php:35
-msgid "Next post:"
-msgstr "Articolo successivo:"
-
 #: single.php:37
 msgid "Previous"
 msgstr "Precedente"
+
+#: single.php:35
+msgid "Next post:"
+msgstr "Articolo successivo:"
 
 #: single.php:34
 msgid "Next"
@@ -135,14 +136,14 @@ msgctxt "Used before publish date."
 msgid "Posted on"
 msgstr "Pubblicato il"
 
-#: inc/template-tags.php:50
-msgid "Leave a comment<span class=\"screen-reader-text\"> on %s</span>"
-msgstr "Lascia un commento<span class=\"screen-reader-text\"> su %s</span>"
-
 #: inc/template-tags.php:38
 msgctxt "Used before post format."
 msgid "Format"
 msgstr "Formato"
+
+#: inc/template-tags.php:50
+msgid "Leave a comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr "Lascia un commento<span class=\"screen-reader-text\"> su %s</span>"
 
 #: inc/template-tags.php:25
 msgctxt "Used before post author name."
@@ -161,38 +162,38 @@ msgstr "Grigio"
 msgid "Dark"
 msgstr "Scuro"
 
-#: inc/customizer.php:184
-msgid "Secondary Text Color"
-msgstr "Colore secondario del testo"
+#: inc/customizer.php:172
+msgid "Main Text Color"
+msgstr "Colore principale del testo"
 
 #: inc/customizer.php:253
 msgid "Default"
 msgstr "Predefinito"
 
-#: inc/customizer.php:172
-msgid "Main Text Color"
-msgstr "Colore principale del testo"
-
-#: inc/customizer.php:145
-msgid "Page Background Color"
-msgstr "Colore di sfondo della pagina"
+#: inc/customizer.php:184
+msgid "Secondary Text Color"
+msgstr "Colore secondario del testo"
 
 #: inc/customizer.php:160
 msgid "Link Color"
 msgstr "Colore dei link"
 
-#: inc/customizer.php:130
-msgid "Base Color Scheme"
-msgstr "Schema colore di base"
-
-#: inc/back-compat.php:41 inc/back-compat.php:53 inc/back-compat.php:68
-msgid "Twenty Sixteen requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again."
-msgstr "Twenty Sixteen ha bisogno della versione 4.4 di WordPress. Tu stai usando la versione %s. Per favore aggiorna e riprova."
+#: inc/customizer.php:145
+msgid "Page Background Color"
+msgstr "Colore di sfondo della pagina"
 
 #: image.php:102 single.php:29
 msgctxt "Parent post link"
 msgid "<span class=\"meta-nav\">Published in</span><span class=\"post-title\">%title</span>"
 msgstr "<span class=\"meta-nav\">Pubblicato in</span><span class=\"post-title\">%title</span>"
+
+#: inc/back-compat.php:41 inc/back-compat.php:53 inc/back-compat.php:68
+msgid "Twenty Sixteen requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again."
+msgstr "Twenty Sixteen ha bisogno della versione 4.4 di WordPress. Tu stai usando la versione %s. Per favore aggiorna e riprova."
+
+#: inc/customizer.php:130
+msgid "Base Color Scheme"
+msgstr "Schema colore di base"
 
 #: image.php:73
 msgctxt "Used before full size attachment link."
@@ -220,21 +221,33 @@ msgstr "Menu"
 msgid "Skip to content"
 msgstr "Salta al contenuto"
 
-#: functions.php:285
-msgid "collapse child menu"
-msgstr "chiudi i menu child"
-
 #: functions.php:284
 msgid "expand child menu"
 msgstr "apri i menu child"
 
+#: functions.php:285
+msgid "collapse child menu"
+msgstr "chiudi i menu child"
+
 #. translators: If there are characters in your language that are not supported
-#. by Montserrat, translate this to 'off'. Do not translate into your own
+#. by Inconsolata, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:208
-msgctxt "Montserrat font: on or off"
+#: functions.php:213
+msgctxt "Inconsolata font: on or off"
 msgid "on"
-msgstr "Attivo"
+msgstr "on"
+
+#: functions.php:166
+msgid "Content Bottom 1"
+msgstr "Sotto al contenuto 1"
+
+#: functions.php:168 functions.php:178
+msgid "Appears at the bottom of the content on posts and pages."
+msgstr "Appare sotto al contenuto degli articoli e delle pagine."
+
+#: functions.php:176
+msgid "Content Bottom 2"
+msgstr "Sotto al contenuto 2"
 
 #. translators: If there are characters in your language that are not supported
 #. by Merriweather, translate this to 'off'. Do not translate into your own
@@ -244,25 +257,13 @@ msgctxt "Merriweather font: on or off"
 msgid "on"
 msgstr "Attivo"
 
-#: functions.php:176
-msgid "Content Bottom 2"
-msgstr "Sotto al contenuto 2"
-
-#: functions.php:168 functions.php:178
-msgid "Appears at the bottom of the content on posts and pages."
-msgstr "Appare sotto al contenuto degli articoli e delle pagine."
-
-#: functions.php:166
-msgid "Content Bottom 1"
-msgstr "Sotto al contenuto 1"
-
 #. translators: If there are characters in your language that are not supported
-#. by Inconsolata, translate this to 'off'. Do not translate into your own
+#. by Montserrat, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:213
-msgctxt "Inconsolata font: on or off"
+#: functions.php:208
+msgctxt "Montserrat font: on or off"
 msgid "on"
-msgstr "on"
+msgstr "Attivo"
 
 #: functions.php:156
 msgid "Sidebar"
@@ -314,15 +315,15 @@ msgstr "Pare che non sia stato trovato nulla nel posto in cui stavi cercando. Fo
 msgid "Oops! That page can&rsquo;t be found."
 msgstr "Oops! La pagina non è stata trovata."
 
-#. Author of the plugin/theme
-msgid "the WordPress team"
-msgstr "il team di WordPress"
-
 #. Theme URI of the plugin/theme
 msgid "https://wordpress.org/themes/twentysixteen/"
 msgstr "https://wordpress.org/themes/twentysixteen/"
 
-#. #-#-#-#-#  twentysixteen.pot (Twenty Sixteen 1.2)  #-#-#-#-#
+#. Author of the plugin/theme
+msgid "the WordPress team"
+msgstr "il team di WordPress"
+
+#. #-#-#-#-#  twentysixteen.pot (Twenty Sixteen 1.3)  #-#-#-#-#
 #. Author URI of the plugin/theme
 #: footer.php:51
 msgid "https://wordpress.org/"
