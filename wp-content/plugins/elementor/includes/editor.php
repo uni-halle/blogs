@@ -292,7 +292,7 @@ class Editor {
 				'jquery-simple-dtpicker',
 				'ace',
 			],
-			$plugin->get_version(),
+			ELEMENTOR_VERSION,
 			true
 		);
 
@@ -368,7 +368,7 @@ class Editor {
 				'preview_el_not_found_message' => __( 'You must call \'the_content\' function in the current template, in order for Elementor to work on this page.', 'elementor' ),
 				'learn_more' => __( 'Learn More', 'elementor' ),
 				'an_error_occurred' => __( 'An error occurred', 'elementor' ),
-				'templates_request_error' => __( 'The following error occurred when processing the request:', 'elementor' ),
+				'templates_request_error' => __( 'The following error(s) occurred while processing the request:', 'elementor' ),
 				'save_your_template' => __( 'Save Your {0} to Library', 'elementor' ),
 				'save_your_template_description' => __( 'Your designs will be available for export and reuse on any page or website', 'elementor' ),
 				'page' => __( 'Page', 'elementor' ),
@@ -423,14 +423,14 @@ class Editor {
 			'elementor-icons',
 			ELEMENTOR_ASSETS_URL . 'lib/eicons/css/elementor-icons' . $suffix . '.css',
 			[],
-			Plugin::instance()->get_version()
+			ELEMENTOR_VERSION
 		);
 
 		wp_register_style(
 			'google-font-roboto',
 			'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700',
 			[],
-			Plugin::instance()->get_version()
+			ELEMENTOR_VERSION
 		);
 
 		wp_register_style(
@@ -451,7 +451,7 @@ class Editor {
 				'google-font-roboto',
 				'jquery-simple-dtpicker',
 			],
-			Plugin::instance()->get_version()
+			ELEMENTOR_VERSION
 		);
 
 		wp_enqueue_style( 'elementor-editor' );

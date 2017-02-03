@@ -30,7 +30,7 @@ class Admin {
 			[
 				'jquery',
 			],
-			Plugin::instance()->get_version(),
+			ELEMENTOR_VERSION,
 			true
 		);
 		wp_enqueue_script( 'elementor-admin-app' );
@@ -61,7 +61,7 @@ class Admin {
 			'elementor-icons',
 			ELEMENTOR_ASSETS_URL . 'lib/eicons/css/elementor-icons' . $suffix . '.css',
 			[],
-			Plugin::instance()->get_version()
+			ELEMENTOR_VERSION
 		);
 
 		wp_register_style(
@@ -70,7 +70,7 @@ class Admin {
 			[
 				'elementor-icons',
 			],
-			Plugin::instance()->get_version()
+			ELEMENTOR_VERSION
 		);
 
 		wp_enqueue_style( 'elementor-admin-app' );
@@ -204,6 +204,19 @@ class Admin {
 		return $links;
 	}
 
+	public function plugin_row_meta( $plugin_meta, $plugin_file ) {
+		if ( ELEMENTOR_PLUGIN_BASE === $plugin_file ) {
+			$row_meta = [
+				'docs' => '<a href="https://go.elementor.com/docs-admin-plugins/" title="' . esc_attr( __( 'View Elementor Documentation', 'elementor' ) ) . '" target="_blank">' . __( 'Docs & FAQs', 'elementor' ) . '</a>',
+				'ideo' => '<a href="https://go.elementor.com/yt-admin-plugins/" title="' . esc_attr( __( 'View Elementor Video Tutorials', 'elementor' ) ) . '" target="_blank">' . __( 'Video Tutorials', 'elementor' ) . '</a>',
+			];
+
+			$plugin_meta = array_merge( $plugin_meta, $row_meta );
+		}
+
+		return $plugin_meta;
+	}
+
 	public function admin_notices() {
 		$upgrade_notice = Api::get_upgrade_notice();
 		if ( empty( $upgrade_notice ) )
@@ -224,7 +237,7 @@ class Admin {
 		$product = $update_plugins->response[ ELEMENTOR_PLUGIN_BASE ];
 
 		// Check if have upgrade notices to show
-		if ( version_compare( Plugin::instance()->get_version(), $upgrade_notice['version'], '>=' ) )
+		if ( version_compare( ELEMENTOR_VERSION, $upgrade_notice['version'], '>=' ) )
 			return;
 
 		$notice_id = 'upgrade_notice_' . $upgrade_notice['version'];
@@ -293,7 +306,7 @@ class Admin {
 				'underscore',
 				'elementor-dialog',
 			],
-			Plugin::instance()->get_version(),
+			ELEMENTOR_VERSION,
 			true
 		);
 
@@ -399,6 +412,7 @@ class Admin {
 		add_filter( 'post_row_actions', [ $this, 'add_edit_in_dashboard' ], 10, 2 );
 
 		add_filter( 'plugin_action_links_' . ELEMENTOR_PLUGIN_BASE, [ $this, 'plugin_action_links' ] );
+		add_filter( 'plugin_row_meta', [ $this, 'plugin_row_meta' ], 10, 2 );
 
 		add_action( 'admin_notices', [ $this, 'admin_notices' ] );
 		add_filter( 'admin_body_class', [ $this, 'body_status_classes' ] );
