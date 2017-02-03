@@ -1,9 +1,9 @@
 === NextGEN Gallery - WordPress Gallery Plugin ===
 Contributors: photocrati, imagely
-Tags: gallery, wordpress gallery plugin, nextgen, nextgen gallery, photo gallery, photo album, photos, image gallery, image, images, photography, photographer, watermarking, responsive gallery, slideshow, thumbnail gallery, watermarking, watermark
+Tags: wordpress gallery plugin, gallery, nextgen, nextgen gallery, photo gallery, image gallery, photography, slideshow, images, photo, photo album, watermark
 Requires at least: 4.0.0
-Stable tag: 2.1.62
-Tested up to: 4.7.0
+Stable tag: 2.1.77
+Tested up to: 4.7.1
 License: GPLv2
 
 The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 16 million downloads.
@@ -53,7 +53,7 @@ Learn more or connect with us:<br>
 *<a href="https://www.imagely.com/podcast/" target="_blank">The WordPress Photography Podcast</a><br>
 *<a href="https://www.imagely.com/docs/nextgen-gallery/" target="_blank">NextGEN Gallery Documentation</a><br>
 *<a href="https://twitter.com/imagely" target="_blank">Imagely on Twitter</a><br>
-*<a href="https://facebook.com/getimagely" target="_blank">Imagely on Facebook</a><br>
+*<a href="https://facebook.com/imagely" target="_blank">Imagely on Facebook</a><br>
 *<a href="https://instagram.com/imagely" target="_blank">Imagely on Instagram</a><br>
 
 == Credits ==
@@ -186,6 +186,17 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 
 == Changelog ==
+
+= V2.1.77 - 01.31.2017 =
+* Changed:  Corrected Facebook link
+* Changed:  Tags in readme.txt
+* Fixed:    Problem with deactivating other plugin
+
+= V2.1.69 - 01.18.2017 =
+* Fixed:    Ensured compatibility with WordPress 4.7.1
+* Fixed:    Missing option names on setting pages when Wizard active
+* Fixed:    Ensure that NextGEN Gallery is always loaded after it's extension plugins in WP 4.7
+* Fixed:    Pope product uninstaller not running during activation
 
 = V2.1.62 - 12.15.2016 =
 * Fixed:   Typo in notice for launching the gallery wizard

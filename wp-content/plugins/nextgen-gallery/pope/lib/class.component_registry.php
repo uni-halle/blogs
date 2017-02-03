@@ -787,42 +787,45 @@ class C_Component_Registry
 	{
 		$retval = array();
 		static $recursive_level = 0;
+        static $exclusions = array('..', '.', 'error_log', 'README', 'CHANGELOG', 'readme.txt', 'changelog.txt');
 		$recursive_level++;
 
 		$abspath = str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, $abspath);
-		$contents = @scandir($abspath);
-		if ($contents) foreach ($contents as $filename) {
-			if ($filename == '.' || $filename == '..' || $filename == 'error_log') continue;
-			$filename_abspath = $abspath.DIRECTORY_SEPARATOR.$filename;
+		if (!in_array($abspath, $exclusions)) {
+            $contents = @scandir($abspath);
+            if ($contents) foreach ($contents as $filename) {
+                if (in_array($filename, $exclusions)) continue;
+                $filename_abspath = $abspath.DIRECTORY_SEPARATOR.$filename;
 
-			// Is this a subdirectory?
-			// We don't use is_dir(), as it's less efficient than just checking for a 'dot' in the filename.
-			// The problem is that we're assuming that our directories won't contain a 'dot'.
-			if ($recursive && strpos($filename, '.') === FALSE) {
+                // Is this a subdirectory?
+                // We don't use is_dir(), as it's less efficient than just checking for a 'dot' in the filename.
+                // The problem is that we're assuming that our directories won't contain a 'dot'.
+                if ($recursive && strpos($filename, '.') === FALSE) {
 
-				// The recursive parameter can either be set to TRUE or the number of levels to navigate
-				// If we reach the max number of recursive levels we're supported to navigate, then we try
-				// to guess if there's a module or product file under the directory with the same name as
-				// the directory
-				if ($recursive === TRUE || (is_int($recursive) && $recursive_level <= $recursive)) {
-					$retval = array_merge($retval, $this->find_product_and_module_files($filename_abspath, $recursive));
-				}
+                    // The recursive parameter can either be set to TRUE or the number of levels to navigate
+                    // If we reach the max number of recursive levels we're supported to navigate, then we try
+                    // to guess if there's a module or product file under the directory with the same name as
+                    // the directory
+                    if ($recursive === TRUE || (is_int($recursive) && $recursive_level <= $recursive)) {
+                        $retval = array_merge($retval, $this->find_product_and_module_files($filename_abspath, $recursive));
+                    }
 
-				elseif (@file_exists(($module_abspath = $filename_abspath.DIRECTORY_SEPARATOR.'module.'.$filename.'.php'))) {
-					$filename = 'module.'.$filename.'.php';
-					$filename_abspath = $module_abspath;
-				}
-				elseif (@file_exists(($product_abspath = $filename_abspath.DIRECTORY_SEPARATOR.'product.'.$filename.'.php'))) {
-					$filename = 'product.'.$filename.'.php';
-					$filename_abspath = $module_abspath;
-				}
+                    elseif (@file_exists(($module_abspath = $filename_abspath.DIRECTORY_SEPARATOR.'module.'.$filename.'.php'))) {
+                        $filename = 'module.'.$filename.'.php';
+                        $filename_abspath = $module_abspath;
+                    }
+                    elseif (@file_exists(($product_abspath = $filename_abspath.DIRECTORY_SEPARATOR.'product.'.$filename.'.php'))) {
+                        $filename = 'product.'.$filename.'.php';
+                        $filename_abspath = $module_abspath;
+                    }
 
-			}
+                }
 
- 			if ((strpos($filename, 'module.') === 0 OR strpos($filename, 'product.') === 0) AND !$this->is_blacklisted($filename)) {
-                $retval[] = $filename_abspath;
+                if ((strpos($filename, 'module.') === 0 OR strpos($filename, 'product.') === 0) AND !$this->is_blacklisted($filename)) {
+                    $retval[] = $filename_abspath;
+                }
             }
-		}
+        }
 
 		$this->mark_as_searched_path($abspath);
 
