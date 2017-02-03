@@ -1,10 +1,11 @@
 === Contact Form 7 Modules ===
-Tags: Contact Form 7, form, forms, contactform7, contact form, hidden fields, hidden, cf7, cforms ii, cforms, Contact Forms 7, Contact Forms, contacted, contacts
+Tags: Contact Form 7, cf7, Contact Forms 7, hidden fields, all fields
 Requires at least: 2.8
-Tested up to: 4.2.2
+Tested up to: 4.7.2
 Stable tag: trunk
 Contributors: katzwebdesign, katzwebservices
 Donate link: https://katz.co/contact-form-7-hidden-fields/
+License: GPLv2 or later
 
 Contact Form 7 - Add useful modules such as hidden fields and "send all fields" to the Contact Form 7 plugin
 
@@ -12,7 +13,7 @@ Contact Form 7 - Add useful modules such as hidden fields and "send all fields" 
 
 ### Add Hidden Fields to Contact Form 7
 
-The Contact Form 7 plugin has over <em>8.4 million</em> downloads, yet the great plugin still lacks a simple feature: <strong>hidden fields</strong>. This plugin adds hidden fields to Contact Form 7 once and for all.
+The Contact Form 7 plugin has over <em>1 million</em> active installations, yet the great plugin still lacks a simple feature: <strong>hidden fields</strong>. This plugin adds hidden fields to Contact Form 7 once and for all.
 
 #### Inserting dynamic values
 
@@ -52,6 +53,11 @@ Using the <strong>Send All Fields</strong> module, you simply need to add `[all-
 
 <h4>Visit the official <a href="https://katz.co/contact-form-7-hidden-fields/">Contact Form 7 Modules plugin page</a> for more support & additional information</h4>
 
+== Screenshots ==
+
+1. The Hidden fields tag generator
+2. The `[all-fields]` Mail tag
+
 == Installation ==
 
 1. Upload plugin files to your plugins folder, or install using WordPress' built-in Add New Plugin installer
@@ -59,11 +65,6 @@ Using the <strong>Send All Fields</strong> module, you simply need to add `[all-
 1. Edit a form in Contact Form 7
 1. Choose "Hidden field" from the Generate Tag dropdown
 1. Follow the instructions on the page
-
-== Screenshots ==
-
-1. The Hidden fields tag generator
-2. The `[all-fields]` Mail tag
 
 == Frequently Asked Questions ==
 
@@ -90,10 +91,6 @@ To get the values of WordPress default profile fields, for example, you would us
 
 * This plugin is released under a GPL license.
 
-= Is the plugin available in other languages? =
-
-Not yet, so [help translate the plugin!](https://www.transifex.com/projects/p/contact-form-7-modules/)
-
 = How do I send empty values with the `[all-fields]` shortcode? =
 
 Add this to your `functions.php` file: `add_filter('wpcf7_send_all_fields_send_empty_fields', '__return_true');`
@@ -113,6 +110,15 @@ Add this to your `functions.php` file: `add_filter('wpcf7_send_all_fields_send_e
 	* `$format` _string_ Either "html" or "text"
 
 == Changelog ==
+
+= 2.0.1 & 2.0.2 on February 1, 2017 =
+
+* Confirmed compatibility with WordPress 4.7.2
+* Updated to work with Contact Form 7 4.6
+    * Fixed: `[hidden]` shortcodes not being replaced in emails
+    * Fixed: PHP warning related to deprecated function
+* Fixed: Removed use of deprecated `get_currentuserinfo()` function
+* Updated translations
 
 = 2.0 on June 28, 2015 =
 * **Requires Contact Form 7 4.2 or higher**
