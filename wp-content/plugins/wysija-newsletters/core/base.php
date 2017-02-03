@@ -19,7 +19,7 @@ class WYSIJA_object{
 	 * Static variable holding core MailPoet's version
 	 * @var array
 	 */
-	static $version = '2.7.5';
+	static $version = '2.7.7';
 
 	function __construct(){}
 
@@ -1616,8 +1616,8 @@ add_action( 'init', array('WYSIJA','create_post_type') );
 // check for PHP version and display a warning notice if it's <5.3
 if ( version_compare( PHP_VERSION , '5.3' , '<' ) &&
   !get_option("wysija_dismiss_update_notice") &&
-  empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
-  strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
+  empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+) {
 
   $a = new WYSIJA_object();
   $a->notice(__("Your version of PHP is outdated. If you don't upgrade soon, new versions of MailPoet won't work.")

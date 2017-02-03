@@ -354,7 +354,7 @@ class WYSIJA_help_back extends WYSIJA_help{
             $msg=$config->getValue('ignore_msgs');
             if(!isset($msg['queuesendsslow'])){
                 $this->notice(
-                        __('Tired of waiting more than 48h to send your emails?',WYSIJA).' '. str_replace(array('[link]','[/link]'), array('<a href="http://support.mailpoet.com/knowledgebase/how-fast-can-i-send-emails-optimal-sending-configurations-explained/?utm_source=wpadmin&utm_campaign=slowqueue" target="_blank">','</a>'), __('[link]Find out[/link] how you can improve this.',WYSIJA)).
+                        __('Tired of waiting more than 48h to send your emails?',WYSIJA).' '. str_replace(array('[link]','[/link]'), array('<a href="http://docs.mailpoet.com/article/48-wp-cron-batch-emails-sending-frequency" target="_blank">','</a>'), __('[link]Find out[/link] how you can improve this.',WYSIJA)).
                         ' <a class="linkignore queuesendsslow" href="javascript:;">'.__('Hide!',WYSIJA).'</a>');
             }
         }

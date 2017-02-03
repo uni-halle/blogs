@@ -27,16 +27,20 @@ class acymailingSendgrid {
             /*foreach($to as $oneRecipient){
                     $data .= '&to[]='.urlencode($object->AddrFormat($oneRecipient).";");
             }*/
+            $replyToKey  = key($object->ReplyTo);
+
             $params = array(
             'api_user' => $this->Username,
             'api_key' => $this->Password,
             'to' => array_filter($to),
-            'replyto'=> $object->ReplyTo[0][0],
+            'replyto'=> $object->ReplyTo[$replyToKey][0],
             'from' => $object->From,
             'fromname' =>  $object->FromName,
             );
 
-            if(!empty($object->ReplyTo[0][1])) $params['replytoname']= $object->ReplyTo[0][1];
+            if(!empty($object->ReplyTo[$replyToKey][1])) {
+              $params['replytoname']= $object->ReplyTo[$replyToKey][1];
+            }
 
             if (!empty ($object->Subject)) $params['subject']= $object->Subject;
 
@@ -66,6 +70,8 @@ class acymailingSendgrid {
             $params['headers']=json_encode($header);
             $request = $url.'/api/mail.send.json';
 
+            $this->error='';
+
             // Generate curl request
             $session = curl_init($request);
 
@@ -79,21 +85,31 @@ class acymailingSendgrid {
             curl_setopt($session, CURLOPT_HEADER, false);
             curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
 
+            // Disable verification for misconfigured hosts :(
+            curl_setopt($session, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($session, CURLOPT_SSL_VERIFYPEER, false);
+
             // obtain response
             $result = curl_exec($session);
+
+            if (!$result) {
+              $this->error .= curl_error($session);
+            }
+
             curl_close($session);
 
             //We take the last value of the server's response which correspond of the file's ID.
             $result=json_decode($result);
 
             //If the ID is correct and we have no Errors
-            $this->error='';
-            if(isset($result->message) && $result->message=='error'){
-                foreach($result->errors as $msgError)
-                    $this->error .= $msgError."\n\r";
-                return false;
+            if(isset($result->message) && $result->message=='success'){
+              return true;
             } else {
-                return true;
+              if(isset($result->message) && $result->message=='error'){
+                  foreach($result->errors as $msgError)
+                      $this->error .= $msgError."\n\r";
+              }
+              return false;
             }
 	}
 

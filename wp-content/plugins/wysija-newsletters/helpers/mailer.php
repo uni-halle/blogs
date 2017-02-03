@@ -5,8 +5,8 @@
  */
 defined( 'WYSIJA' ) || die( 'Restricted access' );
 
-require_once WYSIJA_DIR . 'inc' . DS . 'phpmailer' . DS . 'class.phpmailer.php';
-class WYSIJA_help_mailer extends acymailingPHPMailer {
+require_once ABSPATH . WPINC . '/class-phpmailer.php';
+class WYSIJA_help_mailer extends PHPMailer {
 	var $report = true;
 	var $checkConfirmField = true;
 	var $checkEnabled = true;
@@ -33,6 +33,16 @@ class WYSIJA_help_mailer extends acymailingPHPMailer {
 	var $listnames = false;
 	var $is_wp_mail = false;
 
+  /**
+   * Change parent properties scope for legacy compatibility
+   */
+  public   $to             = array();
+  public   $cc             = array();
+  public   $bcc            = array();
+  public   $ReplyTo        = array();
+  public   $all_recipients = array();
+  public   $attachment     = array();
+
 	/**
 	 *
 	 * @param type $extension
@@ -40,7 +50,9 @@ class WYSIJA_help_mailer extends acymailingPHPMailer {
 	 * @param boolean $multisiteTest
 	 */
 	function __construct($extension='',$config=false, $multisiteTest=false) {
+		$this->core = new WYSIJA_OBJECT();
 
+		$this->XMailer = 'MailPoet (https://www.mailpoet.com)';
 		$this->subscriberClass = WYSIJA::get( 'user', 'model' );
 		$this->subscriberClass->getFormat = OBJECT;
 
@@ -95,7 +107,7 @@ class WYSIJA_help_mailer extends acymailingPHPMailer {
 
 				if(in_array(trim($this->Host), array('smtp.elasticemail.com','smtp25.elasticemail.com'))){
 					//REST API!
-					include_once (WYSIJA_INC. 'phpmailer' . DS . 'class.elasticemail.php');
+					include_once (WYSIJA_INC. 'mailer' . DS . 'class.elasticemail.php');
 					$this->Mailer = 'elasticemail';
 					$this->elasticEmail = new acymailingElasticemail();
 					$this->elasticEmail->Username = trim($this->config->getValue('smtp_login'));
@@ -103,7 +115,7 @@ class WYSIJA_help_mailer extends acymailingPHPMailer {
 					$this->isElasticRest=true;
 				}elseif(in_array(trim($this->Host), array('smtp.sendgrid.net')) && $this->config->getValue('smtp_rest')){
 					//REST API!
-					include_once (WYSIJA_INC. 'phpmailer' . DS . 'class.sendgrid.php');
+					include_once (WYSIJA_INC. 'mailer' . DS . 'class.sendgrid.php');
 					$this->Mailer = 'sendgrid';
 					$this->sendGrid = new acymailingSendgrid();
 					$this->sendGrid->Username = trim($this->config->getValue('smtp_login'));
@@ -172,7 +184,7 @@ class WYSIJA_help_mailer extends acymailingPHPMailer {
 	  	if($this->config->getValue('dkim_active') && $this->config->getValue('dkim_pubk') && !$this->isElasticRest && !$this->isSendGridRest && $this->Mailer !== 'mailpoet' && $this->Mailer !== 'sparkpost'){
 		   // check that server can sign emails
 		   if(!function_exists('openssl_sign')){
-			   $this->error(__('You cannot use the DKIM signature option...',WYSIJA).' '.__('The PHP Extension openssl is not enabled on your server. Ask your host to enable it if you want to use an SSL connection.',WYSIJA));
+			   $this->core->error(__('You cannot use the DKIM signature option...',WYSIJA).' '.__('The PHP Extension openssl is not enabled on your server. Ask your host to enable it if you want to use an SSL connection.',WYSIJA));
 		   }else{
 				$this->DKIM_domain = $this->config->getValue('dkim_domain');
 				$this->DKIM_private = trim($this->config->getValue('dkim_privk'));
@@ -180,6 +192,13 @@ class WYSIJA_help_mailer extends acymailingPHPMailer {
 	   }
 
 	   $this->DKIM_selector   = 'wys';
+
+     /**
+      * SMTP class overriding for Mailer versions < 5.2.7
+      */
+     if ($this->Mailer == 'smtp' && !is_callable('parent::getSMTPInstance')) {
+       $this->getSMTPInstance();
+     }
 	}
 
 	function IsWPmail() {
@@ -257,14 +276,14 @@ class WYSIJA_help_mailer extends acymailingPHPMailer {
 					$this->reportMessage.=' | '.$error['error'];
 				}
 				$this->ErrorInfo=array();
-				//$this->error($this->ErrorInfo);
+				//$this->core->error($this->ErrorInfo);
 				//$this->reportMessage();
 			}
 
 			if(!empty($warnings)) $this->reportMessage .= ' | '.$warnings;
 			$this->errorNumber = 1;
 			if($this->report){
-				$this->error($this->reportMessage);
+				$this->core->error($this->reportMessage);
 			}
 
 		}else{
@@ -273,7 +292,7 @@ class WYSIJA_help_mailer extends acymailingPHPMailer {
 			if($this->report){
 				if(!empty($warnings)){
 					$this->reportMessage .= ' | '.$warnings;
-					$this->notice($this->reportMessage,false);
+					$this->core->notice($this->reportMessage,false);
 				}
 			}
 		}
@@ -327,24 +346,24 @@ class WYSIJA_help_mailer extends acymailingPHPMailer {
 		return $this->defaultMail[ $email_id ];
 	}
 
-	function wpmail_init( $phpmailer ){
-		$phpmailer->ClearCustomHeaders();
-		$phpmailer->Body = $this->AltBody;
-		$phpmailer->AltBody = $this->AltBody;
-		$phpmailer->Subject = $this->Subject;
-		$phpmailer->From = $this->From;
-		$phpmailer->FromName = $this->FromName;
-		$phpmailer->Sender = $this->Sender;
-		$phpmailer->MessageID = $this->MessageID;
+	function wpmail_init( $mailer ){
+		$mailer->ClearCustomHeaders();
+		$mailer->Body = $this->AltBody;
+		$mailer->AltBody = $this->AltBody;
+		$mailer->Subject = $this->Subject;
+		$mailer->From = $this->From;
+		$mailer->FromName = $this->FromName;
+		$mailer->Sender = $this->Sender;
+		$mailer->MessageID = $this->MessageID;
 
-		$phpmailer->AddAddress( $this->to[0][0], $this->to[0][1] );
-		$phpmailer->AddReplyTo( $this->ReplyTo[0][0], $this->ReplyTo[0][1] );
+		$mailer->AddAddress( $this->to[0][0], $this->to[0][1] );
+		$mailer->AddReplyTo( $this->ReplyTo[0][0], $this->ReplyTo[0][1] );
 
-		$phpmailer->CharSet = $this->CharSet;
-		$phpmailer->Encoding = $this->Encoding;
-		$phpmailer->WordWrap = $this->WordWrap;
+		$mailer->CharSet = $this->CharSet;
+		$mailer->Encoding = $this->Encoding;
+		$mailer->WordWrap = $this->WordWrap;
 
-		return $phpmailer;
+		return $mailer;
 	}
 
 	function recordEmail( $email_id, $email_object = false ){
@@ -481,7 +500,7 @@ class WYSIJA_help_mailer extends acymailingPHPMailer {
 			if(!$this->load($email_id)){
 				$this->reportMessage = 'Can not load the email : '.$email_id;
 				if($this->report){
-						$this->error($this->reportMessage);
+						$this->core->error($this->reportMessage);
 				}
 				$this->errorNumber = 2;
 				return false;
@@ -505,7 +524,7 @@ class WYSIJA_help_mailer extends acymailingPHPMailer {
 			$this->reportMessage = sprintf(__('The email ID %s is not published',WYSIJA),$email_id);
 			$this->errorNumber = 3;
 			if($this->report){
-					$this->error($this->reportMessage);
+					$this->core->error($this->reportMessage);
 			}
 			return false;
 		}
@@ -548,7 +567,7 @@ class WYSIJA_help_mailer extends acymailingPHPMailer {
 		if(empty($receiver->email)){
 			$this->reportMessage = sprintf(__('Subscriber not found : <b><i>%s</i></b>',WYSIJA),isset($receiver->user_id) ? (int)$receiver->user_id : (int)$receiverid);
 			if($this->report){
-					$this->error($this->reportMessage);
+					$this->core->error($this->reportMessage);
 			}
 			$this->errorNumber = 4;
 			return false;
@@ -573,7 +592,7 @@ class WYSIJA_help_mailer extends acymailingPHPMailer {
 				if(/*!isset($this->defaultMail[$email_id]->simple) &&*/ $this->checkConfirmField AND empty($receiver->status) AND $this->config->getValue('confirm_dbleoptin')==1 AND $email_id != $this->config->getValue('confirm_email_id')){
 						$this->reportMessage = sprintf(__($this->config->getValue('confirm_dbleoptin').' The subscriber <b><i>%s</i></b> is not confirmed',WYSIJA),esc_html($receiver->email));
 						if($this->report){
-								$this->error($this->reportMessage);
+								$this->core->error($this->reportMessage);
 						}
 						$this->errorNumber = 5;
 						return false;
@@ -731,7 +750,7 @@ class WYSIJA_help_mailer extends acymailingPHPMailer {
 	function cleanText($text){
 		return trim( preg_replace( '/(%0A|%0D|\n+|\r+)/i', '', (string) $text ) );
 	}
-	function setFrom($email,$name=''){
+	function setFrom($email,$name='',$auto=true){
 		if(!empty($email)){
 			$this->From = $this->cleanText($email);
 		}
@@ -1015,7 +1034,14 @@ class WYSIJA_help_mailer extends acymailingPHPMailer {
 			}
 
 			$mytracker=WYSIJA::get_permalink($modelConf->getValue($page_id),$args);
-			$urls[$results[0][$i]] = str_replace($url,$mytracker,$results[0][$i]);
+
+			// overwrite unsubscribe link when sending with Elastic Email
+			if(strpos($email_url, '[unsubscribe_link]')!==false){
+			  $mailer_host = $modelConf->getValue('smtp_host');
+			  $mytracker = (preg_match('/elastic/i', $mailer_host)) ? "{unsubscribe:{$mytracker}}" : $mytracker;
+            }
+
+            $urls[$results[0][$i]] = str_replace($url,$mytracker,$results[0][$i]);
 		}
 		$email->body = str_replace(array_keys($urls),$urls,$email->body);
 
@@ -1114,4 +1140,48 @@ class WYSIJA_help_mailer extends acymailingPHPMailer {
 		$this->sendHTML = $ishtml;
 	}
 
+  /**
+   * Overrides parent method
+   */
+  public function getSMTPInstance() {
+    if (!is_object($this->smtp)) {
+      require_once WYSIJA_DIR . 'inc' . DS . 'mailer' . DS . 'class.mysmtp.php';
+      $this->smtp = new WYSIJA_MySMTP;
+    }
+    return $this->smtp;
+  }
+
+  /**
+   * Overrides parent method
+   */
+  public function postSend() {
+    switch($this->Mailer) {
+      case 'elasticemail' :
+        $result = $this->elasticEmail->sendMail($this);
+        if (!$result) $this->SetError($this->elasticEmail->error);
+        break;
+      case 'sendgrid' :
+        $result = $this->sendGrid->sendMail($this);
+        if (!$result) $this->SetError($this->sendGrid->error);
+        break;
+      case 'sparkpost' :
+        $result = $this->sparkpost->send_mail($this);
+        if ( $result !== true ) $this->core->error($this->sparkpost->error);
+        break;
+      case 'mailpoet' :
+        $result = $this->mailpoet->send_mail($this);
+        if ( $result !== true ) $this->core->error($this->mailpoet->error);
+        break;
+      case 'wpmail' :
+        $to = array_filter($this->to[0]);
+        add_filter('phpmailer_init',array($this,'wpmail_init'),90);
+        $result = wp_mail($to[0], $this->Subject, $this->Body, $header);
+        break;
+      default:
+        $result = parent::postSend();
+        break;
+    }
+
+    return $result;
+  }
 }

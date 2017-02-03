@@ -17,7 +17,7 @@ class WJ_Bridge {
         'address' => $object->to[0][0] ),
       'reply_to'=> array(
         'name' => '' ,
-        'address' => $object->ReplyTo[0][0] ),
+        'address' => (!empty($object->ReplyTo[0][0])) ? $object->ReplyTo[0][0] : '' ),
       'from' => array(
         'name' => $object->FromName ,
         'address' => $object->From ),

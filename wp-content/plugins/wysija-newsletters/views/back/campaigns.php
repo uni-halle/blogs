@@ -2941,7 +2941,7 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
                                                                                                             '<li>'.__('What we’re working on',WYSIJA).'</li>' .
                                                                                                             '<li>'.__('News from us, the team',WYSIJA).'</li>' .
                                                                                                     '</ul>
-                                                                                                     <p>View an <a target="_blank" href="http://www.mailpoet.com/?wysija-page=1&controller=email&action=view&email_id=1181&wysijap=subscriptions-3">an example blog post email</a> and <a target="_blank" href="http://www.mailpoet.com/?wysija-page=1&controller=email&action=view&email_id=64&wysijap=subscriptions-2">an example newsletter</a>.</p>
+                                                                                                     <p>View <a target="_blank" href="http://www.mailpoet.com/?wysija-page=1&controller=email&action=view&email_id=1181&wysijap=subscriptions-3">an example blog post email</a> and <a target="_blank" href="http://www.mailpoet.com/?wysija-page=1&controller=email&action=view&email_id=64&wysijap=subscriptions-2">an example newsletter</a>.</p>
                                                                                                         </div>' .
                                                                                             '<div class="mpoet-update-subscribe-right">' .
 

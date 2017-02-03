@@ -68,8 +68,11 @@ class acymailingElasticemail {
 		if (!empty ($object->Subject)) $data .= "&subject=" . urlencode($object->Subject);
 
 		if (!empty($object->ReplyTo)){
-			$data .="&reply_to=". urlencode($object->ReplyTo[0][0]);
-			if(!empty($object->ReplyTo[0][1])) $data .="&reply_to_name=". urlencode($object->ReplyTo[0][1]);
+      $replyToKey = key($object->ReplyTo);
+			$data .="&reply_to=". urlencode($object->ReplyTo[$replyToKey][0]);
+			if(!empty($object->ReplyTo[$replyToKey][1])) {
+        $data .="&reply_to_name=". urlencode($object->ReplyTo[$replyToKey][1]);
+      }
 		}
 
 		if (!empty($object->Sender)) $data .="&sender=".urlencode($object->Sender);

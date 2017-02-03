@@ -68,21 +68,22 @@ class WYSIJA_help_conflicts extends WYSIJA_object{
         $this->remove_actions('admin_enqueue_scripts');
     }
 
+
+
     function remove_actions($actionsToClear){
-        //Carefull WordPress global
         global $wp_filter;
 
-        foreach($wp_filter[$actionsToClear] as $priority => $callbacks) {
+        if (!isset($wp_filter[$actionsToClear])) return;
 
+        foreach($wp_filter[$actionsToClear] as $priority => $callbacks) {
             if(!isset($this->cleanHooks[$actionsToClear][$priority])) continue;
 
             foreach($callbacks as $identifier => $arrayInfo){
-
                 if(is_array($arrayInfo['function'])){
                     foreach($arrayInfo['function'] as $id => $myobject){
                         foreach($this->cleanHooks[$actionsToClear][$priority] as $infoClear) {
                             if(isset($infoClear['objects']) && is_object($myobject) && in_array(get_class($myobject),$infoClear['objects'])){
-                                unset($wp_filter[$actionsToClear][$priority][$identifier]);
+                              remove_action( $actionsToClear, $infoClear['function'], $priority, $arrayInfo['accepted_args'] );
                             }
                         }
                     }
@@ -90,15 +91,17 @@ class WYSIJA_help_conflicts extends WYSIJA_object{
                     foreach($this->cleanHooks[$actionsToClear][$priority] as $infoClear){
                         // if there is more than one function specified (key: functions, type: array)
                         if(isset($infoClear["functions"]) && function_exists($arrayInfo['function']) && in_array($arrayInfo['function'],$infoClear["functions"])){
-                            unset($wp_filter[$actionsToClear][$priority][$identifier]);
+                          foreach($infoClear['functions'] as $function) {
+                            remove_action( $actionsToClear, $function, $priority, $arrayInfo['accepted_args'] );
+                          }
                         // if there is only one function to remove (key: function, type: string)
                         } else if(array_key_exists('function', $infoClear) && $infoClear['function'] === $arrayInfo['function']) {
-                            unset($wp_filter[$actionsToClear][$priority][$identifier]);
+                            remove_action( $actionsToClear, $infoClear['function'], $priority, $arrayInfo['accepted_args'] );
                         }
                     }
 
                 }
             }
         }
-    }
+     }
 }
