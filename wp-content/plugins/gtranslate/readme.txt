@@ -4,7 +4,7 @@ Author: Edvard Ananyan
 Tags: translation proxy, localization, translate, translation, google translate, language, multilingual, multilanguage, bilingual, tradurre, traducir, traduire, traduzione, ubersetzung, mehrsprachig, oversette, oversatta, vertaling, vertaler, meertalig, polylang, qtranslate, transposh, wpml, l18n
 Requires at least: 2.8
 Tested up to: 4.7
-Stable tag: 2.8.8
+Stable tag: 2.8.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
@@ -31,7 +31,7 @@ Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 * Google Analytics integration
 * Translates the site on the fly
 * Google language translator widget
-* Available styles Dropdown/Flags/Flags with dropdown/Nice dropdown with flags/Globe
+* Available styles Dropdown, Flags, Flags with dropdown, Nice dropdown with flags, Flags with language names, Flags with language codes, Language names, Language codes, Globe
 * Floating language selector
 * Language bar in menu
 * Multilanguage
@@ -52,7 +52,7 @@ Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 **Edit Translations Demo (paid)**
 [youtube https://www.youtube.com/watch?v=YwSy3VtQx3I]
 
-Keywords: polylang, prisna, gts, localize, lingotek, smartling, qtranslate, loco translate, loco, google website translator, translate wordpress, translate, transposh, global translator, machine translate, wp translate, bilingual, multilanguage, multilingual, l18n
+Keywords: polylang, prisna, gts, localize, lingotek, smartling, qtranslate, loco translate, loco, google website translator, translate wordpress, translate, transposh, global translator, machine translate, wp translate, bilingual, multilanguage, multilingual, l18n, quebec, canada, usa, brazil, mexico
 
 == Installation ==
 
@@ -61,6 +61,112 @@ Keywords: polylang, prisna, gts, localize, lingotek, smartling, qtranslate, loco
 3. You can add a widget to your website or use [GTranslate] syntax inside pages where you want it to appear.
 
 == Google Translate history ==
+
+= Country Language Map =
+United Kingdom (alt USA)         English                  en
+South Africa                     Afrikaans                af
+Albania                          Albanian                 sq
+Ethiopia                         Amharic                  am
+Arab League                      Arabic                   ar
+Armenia                          Armenian                 hy
+Azerbaijan                       Azerbaijani              az
+Basque Country                   Basque                   eu
+Belarus                          Belarusian               be
+Bangladesh                       Bengali                  bn
+Bosnia & Herzegovina             Bosnian                  bs
+Bulgaria                         Bulgarian                bg
+Catalonia                        Catalan                  ca
+Philippines                      Cebuano                  ceb
+Malawi                           Chichewa                 ny
+China                            Chinese (Simplified)     zh-CN
+Taiwan                           Chinese (Traditional)    zh-TW
+Corsica                          Corsican                 co
+Croatia                          Croatian                 hr
+Czech Republic                   Czech                    cs
+Denmark                          Danish                   da
+Netherlands                      Dutch                    nl
+Esperanto                        Esperanto                eo
+Estonia                          Estonian                 et
+Philippines                      Filipino                 tl
+Finland                          Finnish                  fi
+France                           French                   fr
+Frisia                           Frisian                  fy
+Galicia                          Galician                 gl
+Georgia                          Georgian                 ka
+Germany                          German                   de
+Greece                           Greek                    el
+India                            Gujarati                 gu
+Haiti                            Haitian Creole           ht
+Nigeria                          Hausa                    ha
+Hawaii state                     Hawaiian                 haw
+Israel                           Hebrew                   iw
+India                            Hindi                    hi
+China                            Hmong                    hmn
+Hungary                          Hungarian                hu
+Iceland                          Icelandic                is
+Nigeria                          Igbo                     ig
+Indonezia                        Indonesian               id
+Ireland                          Irish                    ga
+Italy                            Italian                  it
+Japan                            Japanese                 ja
+Indonezia                        Javanese                 jw
+India                            Kannada                  kn
+Kazakhstan                       Kazakh                   kk
+Cambodja                         Khmer                    km
+South Korea                      Korean                   ko
+Roj flag                         Kurdish (Kurmanji)       ku
+Kyrgyzstan                       Kyrgyz                   ky
+Laos                             Lao                      lo
+Vatican City                     Latin                    la
+Latvia                           Latvian                  lv
+Lithuania                        Lithuanian               lt
+Luxembourg                       Luxembourgish            lb
+Macedonia                        Macedonian               mk
+Madagascar                       Malagasy                 mg
+Malaysia                         Malay                    ms
+India                            Malayalam                ml
+Malta                            Maltese                  mt
+New Zealand                      Maori                    mi
+India                            Marathi                  mr
+Mongolia                         Mongolian                mn
+Myanmar(Burma)                   Myanmar (Burmese)        my
+Nepal                            Nepali                   ne
+Norway                           Norwegian                no
+Afghanistan                      Pashto                   ps
+Iran                             Persian                  fa
+Poland                           Polish                   pl
+Portugal (alt Brazil)            Portuguese               pt
+India                            Punjabi                  pa
+Romania                          Romanian                 ro
+Russian Federation               Russian                  ru
+Samoa                            Samoan                   sm
+Scotland                         Scottish Gaelic          gd
+Serbia(Yugoslavia)               Serbian                  sr
+Lesotho                          Sesotho                  st
+Zimbabwe                         Shona                    sn
+Pakistan                         Sindhi                   sd
+Sri Lanka                        Sinhala                  si
+Slovakia                         Slovak                   sk
+Slovenia                         Slovenian                sl
+Somalia                          Somali                   so
+Spain (alt Mexico)               Spanish                  es
+Sudan                            Sudanese                 su
+Tanzania                         Swahili                  sw
+Sweden                           Swedish                  sv
+Tajikistan                       Tajik                    tg
+India                            Tamil                    ta
+India                            Telugu                   te
+Thailand                         Thai                     th
+Turkey                           Turkish                  tr
+Ukraine                          Ukrainian                uk
+Pakistan                         Urdu                     ur
+Uzbekistan                       Uzbek                    uz
+Viet Nam                         Vietnamese               vi
+Wales                            Welsh                    cy
+South Africa                     Xhosa                    xh
+Israel                           Yiddish                  yi
+Nigeria                          Yoruba                   yo
+South Africa                     Zulu                     zu
 
 = Supported languages =
 **1st stage**
@@ -409,8 +515,22 @@ You need to go to the language you want to edit, for instance, French: http://do
 2. Nice dropdown with flags (closed)
 3. Nice dropdown with flags (open)
 4. Globe with language flags
+5. Flags with language names
+6. Flags with language codes
 
 == Changelog ==
+
+= 2.8.10 =
+* Added Quebec and Canada alternative flags for French and English
+
+= 2.8.9 =
+* Major changes
+* Added missing flags, so all 104 languages have flags now
+* New 48px size flags added
+* New widget look added Flags and Language name
+* New widget look added Flags and Language code
+* New widget look added Language names
+* New widget look added Language codes
 
 = 2.8.8 =
 * Fix for flags rendering issue in menu
@@ -648,6 +768,9 @@ You need to go to the language you want to edit, for instance, French: http://do
 * Initial version for WordPress
 
 == Upgrade Notice ==
+= 2.8.9 =
+Major changes, new flags added, optimized for HTTP/2 (SPDY).
+
 = 2.8.8 =
 Make sure to regenerate the widget code from GTranslate Settings page by checking/unchecking Analytics feature and Saving changes.
 
