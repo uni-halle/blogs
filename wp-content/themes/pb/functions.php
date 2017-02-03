@@ -86,6 +86,37 @@ add_filter( 'posts_where', 'cf_search_where' ); */
 }
 add_filter( 'posts_distinct', 'cf_search_distinct' ); */
 
+// Semesterliste generieren
+function listSemesterInRange($startDate, $endDate) {
+	$semesterList = array();
+	$loopDate = $startDate;
+	$loopYear = substr($loopDate, 0, 4);
+	$loopMonth = substr($loopDate, 4, 2);
+	$i = 0;
+	while ($loopDate <= $endDate) {
+		if ($loopMonth <= '03') {
+			// Wintersemester
+			$semesterList[$i]['start'] = ($loopYear - 1) . '10' . '01';
+			$semesterList[$i]['end'] = $loopYear . '03' . '31';
+			$loopMonth = '03';
+		} elseif ($loopMonth <= '09') {
+			// Sommersemester
+			$semesterList[$i]['start'] = $loopYear . '04' . '01';
+			$semesterList[$i]['end'] = $loopYear . '09' . '30';
+			$loopMonth = '09';
+		} else {
+			// Wintersemester
+			$semesterList[$i]['start'] = $loopYear . '10' . '01';
+			$semesterList[$i]['end'] = ($loopYear + 1) . '03' . '31';
+			$loopYear++;
+			$loopMonth = '03';
+		}
+		$loopMonth++;
+		$loopDate = $loopYear . $loopMonth . '01';
+		$i++;
+	}
+	return $semesterList;
+}
 
 // Datum in Semester umwandeln
 function convertDateToSemester($date, $mode = NULL) {
@@ -119,6 +150,15 @@ function convertDateToSemester($date, $mode = NULL) {
 
 		case 3:
 			return intval($semYear);
+			break;
+
+		case 4:
+			if ($semSeason == 'w') {
+				$string = 'Wintersemester ' . $semYear . '/' . ($semYear + 1);
+			} elseif ($semSeason == 's') {
+				$string = 'Sommersemester ' . $semYear;
+			}
+			return $string;
 			break;
 
 		default:
@@ -156,4 +196,82 @@ function cumulateSemester($arr) {
   }
   return $arr;
 }
+
+// Zeilenumbrüche aus Text entfernen
+function removeReturn ($text) {
+	return str_replace(array("\r\n", "\n", chr(13)), ' ', $text);
+}
+
+// Rekursive Suche nach einem Schlüssel in einem multidimensionalem Array
+function getArrayKey($search, $array) {
+    foreach($array as $key => $values) {
+        if(in_array($search, $values)) {
+            return $key;
+        }
+    }
+    return false;
+}
+
+// Überflüssige Tabellenspalten im WP-Backend entfernen
+function removeDefaultWPColumns($defaults) {
+    unset($defaults['categories']);
+    unset($defaults['comments']);
+    unset($defaults['tags']);
+    unset($defaults['date']);
+
+    return $defaults;
+}
+
+add_filter('manage_post_posts_columns', 'removedefaultWPColumns');
+
+// Neue Spalten anlegen
+function projectNewColumnHeads($defaults) {
+    $defaults['projectCategory'] = 'Kategorie';
+    $defaults['projectWorkgroup'] = 'Facharbeitsgruppe';
+
+    return $defaults;
+}
+
+add_filter('manage_posts_columns', 'projectNewColumnHeads');
+
+// Die neuen Spalten auch mit Inhalt füllen
+function projectNewColumnContent($column, $postID) {
+    if ($column == 'projectCategory') {
+        $cat = get_post_meta($postID, 'kategorie', 1);
+        if ($cat) {
+            echo $cat;
+        }
+    }
+    if ($column == 'projectWorkgroup') {
+        $workgroup = get_post_meta($postID, 'facharbeitsgruppe_0_arbeitsgruppe', 1);
+        if ($workgroup) {
+            echo $workgroup;
+        }
+    }
+}
+add_action('manage_posts_custom_column', 'projectNewColumnContent', 10, 2);
+
+// Einige der neuen Spalten als sortierbar kennzeichnen
+function makeProjectColumnsSortable($sortable_columns) {
+    $sortable_columns['projectCategory'] = 'projectCategory';
+
+    return $sortable_columns;
+}
+
+add_filter('manage_edit-post_sortable_columns', 'makeProjectColumnsSortable');
+
+// Die als "sortierbar" gekennzeichneten Spalten sortierbar machen
+function sortProjectColumns($query) {
+    if ($query->is_main_query() && ($orderby = $query->get('orderby'))) {
+        switch($orderby) {
+            case 'projectCategory':
+                $query->set( 'meta_key', 'kategorie' );
+                $query->set( 'orderby', 'meta_value' );
+                break;
+        }
+
+    }
+}
+add_action('pre_get_posts', 'sortProjectColumns', 1);
+
 ?>

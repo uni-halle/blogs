@@ -77,9 +77,21 @@ desired effect
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <li>
-            <a href="/wp-admin/edit.php" target="backend"><i class="fa fa-tachometer"></i></a>
-          </li>
+            <?php $current_user = wp_get_current_user(); ?>
+            <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $current_user->user_firstname . ' ' . $current_user->user_lastname; ?></a>
+                <ul class="dropdown-menu">
+                    <li class="user-body">
+                      <div class="text-center">
+                        <?php echo $current_user->user_firstname . ' ' . $current_user->user_lastname; ?> ist gerade angemeldet.
+                      </div>
+                    </li>
+                    <li class="user-footer">
+                        <div class="pull-left"><a href="/wp-admin/edit.php" class="btn btn-default btn-flat"><!--<i class="fa fa-tachometer"></i> -->Dashboard</a></div>
+                        <div class="pull-right"><a href="<?php echo wp_logout_url( home_url() ); ?>" class="btn btn-default btn-flat"><!--<i class="fa fa-sign-out"></i> -->Abmelden</a></div>
+                    </li>
+                </ul>
+            </li>
         </ul>
       </div>
     </nav>
