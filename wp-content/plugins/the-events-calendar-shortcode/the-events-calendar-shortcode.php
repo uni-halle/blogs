@@ -3,7 +3,7 @@
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin (Free Version) by Modern Tribe</a>.
- Version: 1.4
+ Version: 1.4.1
  Author: Event Calendar Newsletter
  Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Contributors: Brainchild Media Group, Reddit user miahelf, tallavic, hejeva2
@@ -239,14 +239,14 @@ class Events_Calendar_Shortcode
 
 			foreach( $posts as $post ) {
 				setup_postdata( $post );
+				$event_output = '';
+				$event_output .= apply_filters( 'ecs_event_start_tag', '<li class="ecs-event">', $atts, $post );
 
-				$output .= apply_filters( 'ecs_event_start_tag', '<li class="ecs-event">', $atts, $post );
-
-				// Put Values into $output
+				// Put Values into $event_output
 				foreach ( apply_filters( 'ecs_event_contentorder', $atts['contentorder'], $atts, $post ) as $contentorder ) {
 					switch ( trim( $contentorder ) ) {
 						case 'title':
-							$output .= apply_filters( 'ecs_event_title_tag_start', '<h4 class="entry-title summary">', $atts, $post ) .
+							$event_output .= apply_filters( 'ecs_event_title_tag_start', '<h4 class="entry-title summary">', $atts, $post ) .
 											'<a href="' . tribe_get_event_link() . '" rel="bookmark">' . apply_filters( 'ecs_event_list_title', get_the_title(), $atts, $post ) . '</a>' .
 							           apply_filters( 'ecs_event_title_tag_end', '</h4>', $atts, $post );
 							break;
@@ -256,12 +256,12 @@ class Events_Calendar_Shortcode
 								$thumbWidth = is_numeric($atts['thumbwidth']) ? $atts['thumbwidth'] : '';
 								$thumbHeight = is_numeric($atts['thumbheight']) ? $atts['thumbheight'] : '';
 								if( !empty( $thumbWidth ) && !empty( $thumbHeight ) ) {
-									$output .= apply_filters( 'ecs_event_thumbnail', get_the_post_thumbnail( get_the_ID(), apply_filters( 'ecs_event_thumbnail_size', array( $thumbWidth, $thumbHeight ), $atts, $post ) ), $atts, $post );
+									$event_output .= apply_filters( 'ecs_event_thumbnail', get_the_post_thumbnail( get_the_ID(), apply_filters( 'ecs_event_thumbnail_size', array( $thumbWidth, $thumbHeight ), $atts, $post ) ), $atts, $post );
 								} else {
 									if ( $thumb = get_the_post_thumbnail( get_the_ID(), apply_filters( 'ecs_event_thumbnail_size', 'medium', $atts, $post ) ) ) {
-										$output .= apply_filters( 'ecs_event_thumbnail_link_start', '<a href="' . tribe_get_event_link() . '">', $atts, $post );
-										$output .= apply_filters( 'ecs_event_thumbnail', $thumb, $atts, $post );
-										$output .= apply_filters( 'ecs_event_thumbnail_link_end', '</a>', $atts, $post );
+										$event_output .= apply_filters( 'ecs_event_thumbnail_link_start', '<a href="' . tribe_get_event_link() . '">', $atts, $post );
+										$event_output .= apply_filters( 'ecs_event_thumbnail', $thumb, $atts, $post );
+										$event_output .= apply_filters( 'ecs_event_thumbnail_link_end', '</a>', $atts, $post );
 									}
 								}
 							}
@@ -270,15 +270,15 @@ class Events_Calendar_Shortcode
 						case 'excerpt':
 							if ( self::isValid( $atts['excerpt'] ) ) {
 								$excerptLength = is_numeric($atts['excerpt']) ? $atts['excerpt'] : 100;
-								$output .= apply_filters( 'ecs_event_excerpt_tag_start', '<p class="ecs-excerpt">', $atts, $post ) .
-								           apply_filters( 'ecs_event_excerpt', self::get_excerpt( $excerptLength ), $atts, $post ) .
+								$event_output .= apply_filters( 'ecs_event_excerpt_tag_start', '<p class="ecs-excerpt">', $atts, $post ) .
+								           apply_filters( 'ecs_event_excerpt', self::get_excerpt( $excerptLength ), $atts, $post, $excerptLength ) .
 								           apply_filters( 'ecs_event_excerpt_tag_end', '</p>', $atts, $post );
 							}
 							break;
 
 						case 'date':
 							if ( self::isValid( $atts['eventdetails'] ) ) {
-								$output .= apply_filters( 'ecs_event_date_tag_start', '<span class="duration time">', $atts, $post ) .
+								$event_output .= apply_filters( 'ecs_event_date_tag_start', '<span class="duration time">', $atts, $post ) .
 								           apply_filters( 'ecs_event_list_details', tribe_events_event_schedule_details(), $atts, $post ) .
 								           apply_filters( 'ecs_event_date_tag_end', '</span>', $atts, $post );
 							}
@@ -286,7 +286,7 @@ class Events_Calendar_Shortcode
 
 						case 'venue':
 							if ( self::isValid( $atts['venue'] ) ) {
-								$output .= apply_filters( 'ecs_event_venue_tag_start', '<span class="duration venue">', $atts, $post ) .
+								$event_output .= apply_filters( 'ecs_event_venue_tag_start', '<span class="duration venue">', $atts, $post ) .
 								           apply_filters( 'ecs_event_venue_at_tag_start', '<em> ', $atts, $post ) .
 								           apply_filters( 'ecs_event_venue_at_text', __( 'at', 'the-events-calendar-shortcode' ), $atts, $post ) .
 								           apply_filters( 'ecs_event_venue_at_tag_end', ' </em>', $atts, $post ) .
@@ -296,14 +296,15 @@ class Events_Calendar_Shortcode
 							break;
 						case 'date_thumb':
 							if ( self::isValid( $atts['eventdetails'] ) ) {
-								$output .= apply_filters( 'ecs_event_date_thumb', '<div class="date_thumb"><div class="month">' . tribe_get_start_date( null, false, 'M' ) . '</div><div class="day">' . tribe_get_start_date( null, false, 'j' ) . '</div></div>', $atts, $post );
+								$event_output .= apply_filters( 'ecs_event_date_thumb', '<div class="date_thumb"><div class="month">' . tribe_get_start_date( null, false, 'M' ) . '</div><div class="day">' . tribe_get_start_date( null, false, 'j' ) . '</div></div>', $atts, $post );
 							}
 							break;
 						default:
-							$output .= apply_filters( 'ecs_event_list_output_custom', '', trim( $contentorder ), $atts, $post );
+							$event_output .= apply_filters( 'ecs_event_list_output_custom_' . strtolower( trim( $contentorder ) ), '', $atts, $post );
 					}
 				}
-				$output .= apply_filters( 'ecs_event_end_tag', '</li>', $atts, $post );
+				$event_output .= apply_filters( 'ecs_event_end_tag', '</li>', $atts, $post );
+				$output .= apply_filters( 'ecs_single_event_output', $event_output, $atts, $post );
 			}
 			$output .= apply_filters( 'ecs_end_tag', '</ul>', $atts );
 
@@ -343,7 +344,7 @@ class Events_Calendar_Shortcode
 	 *
 	 * @return string
 	 */
-	private function get_excerpt( $limit, $source = null )
+	public static function get_excerpt( $limit, $source = null )
 	{
 		$excerpt = get_the_excerpt();
 		if( $source == "content" ) {

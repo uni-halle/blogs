@@ -90,8 +90,8 @@
 					</ul>
 
 					<p><em>Want a better looking design without adding any CSS?  Check out <a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design&utm_content=description">The Events Calendar Shortcode PRO</a></em></p>
-					<p><a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-1&utm_content=description"><img style="width: 200px;" src="<?php echo plugins_url( '/static/the-events-calendar-shortcode-pro-design.png', TECS_CORE_PLUGIN_FILE ) ?>"><br>Pro version default design</a></p>
-					<p><a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-2&utm_content=description"><img style="width: 200px;" src="<?php echo plugins_url( '/static/event-calendar-shortcode-compact-design.png', TECS_CORE_PLUGIN_FILE ) ?>"><br>Pro version compact design</a></p>
+					<p><a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-1&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/shortcode-default-design-2.png', TECS_CORE_PLUGIN_FILE ) ?>"><br>Pro version default design</a></p>
+					<p><a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-2&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/event-calendar-shortcode-compact-design.png', TECS_CORE_PLUGIN_FILE ) ?>"><br>Pro version compact design</a></p>
 
 				<?php endif; ?>
 			</td>
