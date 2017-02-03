@@ -45,59 +45,79 @@ if ( ! function_exists( 'catchbox_sliders' ) ) :
  * @uses set_transient and delete_transient
  */
 function catchbox_sliders() {
-	global $post;
-
 	//delete_transient( 'catchbox_sliders' );
+	
+	if ( !$output = get_transient( 'catchbox_sliders' ) ) {
+		echo '<!-- refreshing cache -->';
 
-	// get data value from catchbox_options_slider through theme options
-	$options = catchbox_get_theme_options();
-	// get slider_qty from theme options
-	if ( !isset( $options['slider_qty'] ) || !is_numeric( $options['slider_qty'] ) ) {
-		$options[ 'slider_qty' ] = 4;
-	}
+		// get data value from catchbox_options_slider through theme options
+		$options = catchbox_get_theme_options();
+		// get slider_qty from theme options
+		if ( !isset( $options['slider_qty'] ) || !is_numeric( $options['slider_qty'] ) ) {
+			$options[ 'slider_qty' ] = 4;
+		}
 
-	$postperpage = $options[ 'slider_qty' ];
-	if ( isset( $options[ 'featured_slider' ] ) ) {
-		$slider_array = ( array ) $options[ 'featured_slider' ];
+		$postperpage = $options['slider_qty'];
 
-		if ( ( !$catchbox_sliders = get_transient( 'catchbox_sliders' ) ) && !empty( $slider_array ) ) {
-			echo '<!-- refreshing cache -->';
+		$slider_array = isset( $options['featured_slider'] ) ? (array) $options['featured_slider'] : array() ;
 
-			$catchbox_sliders = '
+		$post_list		= array();
+
+		foreach ( $slider_array as $slider ) {
+			if ( '' != $slider && 'publish' == get_post_status( $slider ) ){
+				$post_list[] = $slider;
+			}
+		}
+
+		$output = '';
+		
+		if ( ! empty( $post_list ) ) {
+
+			$output = '
 			<div id="slider">
 				<section id="slider-wrap">';
-				$get_featured_posts = new WP_Query( array(
+				$loop = new WP_Query( array(
 					'posts_per_page' => $postperpage,
-					'post__in'		 => $options[ 'featured_slider' ],
+					'post__in'		 => $post_list,
 					'orderby' 		 => 'post__in',
 					'ignore_sticky_posts' => 1 // ignore sticky posts
 				));
 
-				$i=0; while ( $get_featured_posts->have_posts()) : $get_featured_posts->the_post(); $i++;
-					$title_attribute = esc_attr( apply_filters( 'the_title', get_the_title( $post->ID ) ) );
+				while ( $loop->have_posts()) : 
+					$loop->the_post(); 
 
-					if ( $i == 1 ) { $classes = "slides displayblock"; } else { $classes = "slides displaynone"; }
-					$catchbox_sliders .= '
-					<div class="'.$classes.'">
-						<a href="'. esc_url ( get_permalink() ).'" title="'.sprintf( esc_attr__( 'Permalink to %s', 'catch-box' ), the_title_attribute( 'echo=0' ) ).'" rel="bookmark">
-								'.get_the_post_thumbnail( $post->ID, 'featured-slider', array( 'title' => $title_attribute, 'alt' => $title_attribute, 'class'	=> 'pngfix' ) ).'
+					$title_attribute = the_title_attribute( 'echo=0' );
+
+					if ( 0 == $loop->current_post ) { 
+						$classes = "slides displayblock"; 
+					} else { 
+						$classes = "slides displaynone"; 
+					}
+					
+					$output .= '
+					<div class="'. $classes . '">
+						<a href="'. esc_url ( get_permalink() ).'" title="' . $title_attribute .'" rel="bookmark">
+								' . get_the_post_thumbnail( $loop->ID, 'featured-slider', array( 'title' => $title_attribute, 'alt' => $title_attribute, 'class'	=> 'pngfix' ) ).'
 						</a>
 						<div class="featured-text">'
-							.the_title( '<span class="slider-title">','</span>', false ).' <span class="sep">:</span>
-							<span class="slider-excerpt">'.get_the_excerpt().'</span>
+							. the_title( '<span class="slider-title">','</span>', false ).' <span class="sep">:</span>
+							<span class="slider-excerpt">' . get_the_excerpt() . '</span>
 						</div><!-- .featured-text -->
 					</div> <!-- .slides -->';
-				endwhile; wp_reset_query();
-			$catchbox_sliders .= '
+				endwhile; 
+			wp_reset_postdata();
+			
+			$output .= '
 				</section> <!-- .slider-wrap -->
 				<nav id="nav-slider">
 					<div class="nav-previous"><img class="pngfix" src="'.get_template_directory_uri().'/images/previous.png" alt="next slide"></div>
 					<div class="nav-next"><img class="pngfix" src="'.get_template_directory_uri().'/images/next.png" alt="next slide"></div>
 				</nav>
 			</div> <!-- #featured-slider -->';
-			set_transient( 'catchbox_sliders', $catchbox_sliders, 86940 );
 		}
-		echo $catchbox_sliders;
+
+		set_transient( 'catchbox_sliders', $output, 86940 );
 	}
+	echo $output;
 }
 endif;  // catchbox_sliders

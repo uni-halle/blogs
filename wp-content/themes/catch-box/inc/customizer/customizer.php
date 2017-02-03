@@ -70,12 +70,12 @@ function catchbox_customize_register( $wp_customize ) {
 				),
 				'disable_header_search' => array(
 					'id' 			=> 'disable_header_search',
-					'title' 		=> __( 'Disable Search in Header?', 'catch-box' ),
+					'title' 		=> __( 'Disable Search in Header', 'catch-box' ),
 					'description' 	=> '',
 				),
 				'enable_menus' => array(
 					'id' 			=> 'enable_menus',
-					'title' 		=> __( 'Enable Secondary & Footer Menu in Mobile Devices?', 'catch-box' ),
+					'title' 		=> __( 'Mobile Menu Options', 'catch-box' ),
 					'description' 	=> '',
 				),
 				'custom_css' => array(
@@ -284,7 +284,7 @@ function catchbox_customize_register( $wp_customize ) {
 			'panel' 			=> 'social_links',
 			'section' 			=> 'feed_url',
 			'default' 			=> '',
-			//'active_callback'	=> 'catchbox_is_feed_url_present',
+			'active_callback'	=> 'catchbox_is_feed_url_present',
 		),
 		'site_title_above' => array(
 			'id' 			=> 'site_title_above',
@@ -313,14 +313,25 @@ function catchbox_customize_register( $wp_customize ) {
 			'section' 		=> 'disable_header_search',
 			'default' 		=> $defaults['disable_header_search']
 		),
-		'enable_menus' => array(
-			'id' 			=> 'enable_menus',
-			'title' 		=> __( 'Check to Enable', 'catch-box' ),
+		'enable_sec_menu' => array(
+			'id' 			=> 'enable_sec_menu',
+			'title' 		=> __( 'Check to enable secondary mobile menu', 'catch-box' ),
+			'description'	=> '',
 			'field_type' 	=> 'checkbox',
 			'sanitize' 		=> 'catchbox_sanitize_checkbox',
 			'panel' 		=> 'theme_options',
 			'section' 		=> 'enable_menus',
-			'default' 		=> $defaults['enable_menus']
+			'default' 		=> $defaults['enable_sec_menu']
+		),
+		'enable_footer_menu' => array(
+			'id' 			=> 'enable_footer_menu',
+			'title' 				=> __( 'Check to enable footer mobile menu', 'catch-box' ),
+			'description'	=> '',
+			'field_type' 	=> 'checkbox',
+			'sanitize' 		=> 'catchbox_sanitize_checkbox',
+			'panel' 		=> 'theme_options',
+			'section' 		=> 'enable_menus',
+			'default' 		=> $defaults['enable_footer_menu']
 		),
 		'custom_css' => array(
 			'id' 			=> 'custom_css',
@@ -648,7 +659,7 @@ function catchbox_customize_register( $wp_customize ) {
 			'sanitize' 			=> 'wp_kses_stripslashes',
 			'panel' 			=> 'webmaster_tools',
 			'section' 			=> 'webmaster_tools',
-			//'active_callback'	=> 'catchbox_is_header_code_present',
+			'active_callback'	=> 'catchbox_is_header_code_present',
 			'default' 			=> ''
 		),
 		'tracker_footer' => array(
@@ -659,7 +670,7 @@ function catchbox_customize_register( $wp_customize ) {
 			'sanitize' 			=> 'wp_kses_stripslashes',
 			'panel' 			=> 'webmaster_tools',
 			'section' 			=> 'webmaster_tools',
-			//'active_callback'	=> 'catchbox_is_footer_code_present',
+			'active_callback'	=> 'catchbox_is_footer_code_present',
 			'default' 		=> ''
 		),
 	);
@@ -953,3 +964,4 @@ require trailingslashit( get_template_directory() ) . 'inc/customizer/customizer
 
 // Add Upgrade to Pro Button.
 require trailingslashit( get_template_directory() ) . 'inc/customizer/upgrade-button/class-customize.php';
+

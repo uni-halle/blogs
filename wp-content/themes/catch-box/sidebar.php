@@ -21,7 +21,7 @@ if ( 'no-sidebar-one-column' == $layout || 'no-sidebar' == $layout || is_page_te
 else :
 ?>
 		<aside id="secondary" class="sidebar widget-area" role="complementary">
-			<h1 class="screen-reader-text"><?php _e( 'Primary Sidebar Widget Area', 'catch-box' ); ?></h1>
+			<h2 class="screen-reader-text"><?php _e( 'Primary Sidebar Widget Area', 'catch-box' ); ?></h2>
 			<?php if ( ! dynamic_sidebar( 'sidebar-1' ) ) :
 				//Helper Text
 				if ( current_user_can( 'edit_theme_options' ) ) { ?>

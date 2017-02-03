@@ -339,7 +339,7 @@ function catchbox_content_nav( $nav_id ) {
 
 	if ( $wp_query->max_num_pages > 1 ) {  ?>
 		<nav id="<?php echo $nav_id; ?>">
-			<h3 class="assistive-text"><?php _e( 'Post navigation', 'catch-box' ); ?></h3>
+			<h3 class="screen-reader-text"><?php _e( 'Post navigation', 'catch-box' ); ?></h3>
 			<?php if ( function_exists('wp_pagenavi' ) )  {
 				wp_pagenavi();
 			}
@@ -368,7 +368,7 @@ function catchbox_content_query_nav( $nav_id ) {
 
 	if ( $wp_query->max_num_pages > 1 ) { ?>
 		<nav id="<?php echo $nav_id; ?>">
-        	<h3 class="assistive-text"><?php _e( 'Post navigation', 'catch-box' ); ?></h3>
+        	<h3 class="screen-reader-text"><?php _e( 'Post navigation', 'catch-box' ); ?></h3>
 			<?php if ( function_exists('wp_pagenavi' ) )  {
                 wp_pagenavi();
             }
@@ -561,7 +561,7 @@ function catchbox_body_classes( $classes ) {
 		$classes[] = 'no-sidebar full-width';
 	}
 
-	if ( empty ( $options ['enable_menus'] ) ) {
+	if ( ! ( ! empty ( $options['enable_sec_menu'] ) && has_nav_menu( 'secondary' ) ) ) {
 		$classes[] = 'one-menu';
 	}
 
@@ -633,7 +633,12 @@ function catchbox_scripts_method() {
 	/**
 	 * Loads up Responsive Menu
 	 */
-	wp_enqueue_script( 'jquery-sidr', get_template_directory_uri() . '/js/jquery.sidr.min.js', array( 'jquery' ), '2.1.1.1', false );
+	wp_enqueue_script( 'catchbox-menu', get_template_directory_uri() . '/js/menu.min.js', array( 'jquery' ), '2.1.1.1', false );
+
+	wp_localize_script( 'catchbox-menu', 'screenReaderText', array(
+		'expand'   => esc_html__( 'expand child menu', 'catch-box' ),
+		'collapse' => esc_html__( 'collapse child menu', 'catch-box' ),
+	) );
 
 	wp_enqueue_script( 'jquery-fitvids', get_template_directory_uri() . '/js/catchbox-fitvids.min.js', array( 'jquery' ), '20140315', true );
 
@@ -1074,18 +1079,10 @@ function catchbox_enqueue_color_scheme() {
 	$options = catchbox_get_theme_options();
 	$color_scheme = $options['color_scheme'];
 
-	if ( 'dark' == $color_scheme ) {
-		wp_enqueue_style( 'dark', get_template_directory_uri() . '/colors/dark.css', array( 'catchbox-style' ), null );
-	} elseif ( 'blue' == $color_scheme ) {
-		wp_enqueue_style( 'blue', get_template_directory_uri() . '/colors/blue.css', array( 'catchbox-style' ), null );
-	} elseif ( 'green' == $color_scheme ) {
-		wp_enqueue_style( 'green', get_template_directory_uri() . '/colors/green.css', array( 'catchbox-style' ), null );
-	} elseif ( 'red' == $color_scheme ) {
-		wp_enqueue_style( 'red', get_template_directory_uri() . '/colors/red.css', array( 'catchbox-style' ), null );
-	} elseif ( 'brown' == $color_scheme ) {
-		wp_enqueue_style( 'brown', get_template_directory_uri() . '/colors/brown.css', array( 'catchbox-style' ), null );
-	} elseif ( 'orange' == $color_scheme ) {
-		wp_enqueue_style( 'orange', get_template_directory_uri() . '/colors/orange.css', array( 'catchbox-style' ), null );
+	$enqueue_schemes = array( 'dark', 'blue', 'green', 'red', 'brown', 'orange' );
+	
+	if ( in_array( $color_scheme, $enqueue_schemes ) ) {
+		wp_enqueue_style( $color_scheme, get_template_directory_uri() . '/colors/' . $color_scheme . '.css', array( 'catchbox-style' ), null );
 	}
 
 	do_action( 'catchbox_enqueue_color_scheme', $color_scheme );
@@ -1300,7 +1297,7 @@ function catchbox_custom_css_migrate(){
 		 */
 		$options = catchbox_get_theme_options();
 
-	    if ( '' != $options['custom_css'] ) {
+	    if ( isset( $options['custom_css'] ) && '' != $options['custom_css'] ) {
 			$core_css = wp_get_custom_css(); // Preserve any CSS already added to the core option.
 			$return   = wp_update_custom_css_post( $core_css . $options['custom_css'] );
 

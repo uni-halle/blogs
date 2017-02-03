@@ -12,7 +12,7 @@ get_header(); ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
 					<nav id="nav-single">
-						<h3 class="assistive-text"><?php _e( 'Post navigation', 'catch-box' ); ?></h3>
+						<h2 class="screen-reader-text"><?php _e( 'Post navigation', 'catch-box' ); ?></h2>
 						<span class="nav-previous"><?php previous_post_link( '%link', __( '<span class="meta-nav">&larr;</span> Previous', 'catch-box' ) ); ?></span>
 						<span class="nav-next"><?php next_post_link( '%link', __( 'Next <span class="meta-nav">&rarr;</span>', 'catch-box' ) ); ?></span>
 					</nav><!-- #nav-single -->

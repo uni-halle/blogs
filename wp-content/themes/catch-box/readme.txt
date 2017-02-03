@@ -19,12 +19,11 @@ Copyright: Automattic, automattic.com
 Licensed under GPLv2 or later
 
 Scripts used in the site are as below:
-	1. Menu script uses Sidr (https://github.com/artberri/sidr) licensed under MIT license
-	2. HTML5 script (https://github.com/aFarkas/html5shiv) licensed under MIT/GPL2 license
-	3. Slider script uses Cycle script http://jquery.malsup.com/cycle/ lincensed under MIT/GPL license
-	4. jQyery Cookie script (https://github.com/carhartl/jquery-cookie) licensed under MIT license
-	5. DD_belatedPNG script (http://www.dillerdesign.com/experiment/DD_belatedPNG/) licensed under MIT license
-	6 FitVids is Licensed under the  WTFPL license (http://fitvidsjs.com/)
+	1. HTML5 script (https://github.com/aFarkas/html5shiv) licensed under MIT/GPL2 license
+	2. Slider script uses Cycle script http://jquery.malsup.com/cycle/ lincensed under MIT/GPL license
+	3. jQyery Cookie script (https://github.com/carhartl/jquery-cookie) licensed under MIT license
+	4. DD_belatedPNG script (http://www.dillerdesign.com/experiment/DD_belatedPNG/) licensed under MIT license
+	5. FitVids is Licensed under the  WTFPL license (http://fitvidsjs.com/)
 
 Font Icons
 	Genericons by Automattic, Inc.

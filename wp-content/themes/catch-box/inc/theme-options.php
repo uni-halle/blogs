@@ -119,13 +119,20 @@ function catchbox_theme_options_init() {
 		'general' // Settings section. Same as the first argument in the add_settings_section() above
 	);
 
-	add_settings_field(
-		'feed_redirect', // Unique identifier for the settings section
-		__( 'Feed Redirect URL', 'catch-box' ), // Setting field label
-		'catchbox_settings_field_feed_redirect', // Function that renders the settings field
-		'theme_options', // Menu slug, used to uniquely identify the page; see catchbox_theme_options_add_page()
-		'general' // Settings section. Same as the first argument in the add_settings_section() above
-	);
+	$options = catchbox_get_theme_options();
+
+	if ( isset( $options['feed_url'] ) && '' != $options['feed_url'] ) {
+		// Display only if feed redirect code is present. As WordPress.org review will not allow it
+		add_settings_field(
+			'feed_redirect', // Unique identifier for the settings section
+			__( 'Feed Redirect URL', 'catch-box' ), // Setting field label
+			'catchbox_settings_field_feed_redirect', // Function that renders the settings field
+			'theme_options', // Menu slug, used to uniquely identify the page; see catchbox_theme_options_add_page()
+			'general' // Settings section. Same as the first argument in the add_settings_section() above
+		);
+	}
+
+	
 
 	add_settings_field(
 		'site_title_above', // Unique identifier for the settings section
@@ -145,16 +152,24 @@ function catchbox_theme_options_init() {
 
 	add_settings_field(
 		'disable_header_search', // Unique identifier for the settings section
-		__( 'Disable Search in Header?', 'catch-box' ), // Setting field label
+		__( 'Disable Search in Header', 'catch-box' ), // Setting field label
 		'catchbox_settings_field_disable_header_search', // Function that renders the settings field
 		'theme_options', // Menu slug, used to uniquely identify the page; see catchbox_theme_options_add_page()
 		'general' // Settings section. Same as the first argument in the add_settings_section() above
 	);
 
 	add_settings_field(
-		'enable_menus', // Unique identifier for the settings section
-		__( 'Enable Secondary & Footer Menu in Mobile Devices?', 'catch-box' ), // Setting field label
-		'catchbox_settings_field_enable_menus', // Function that renders the settings field
+		'enable_sec_menu', // Unique identifier for the settings section
+		__( 'Enable Secondary Mobile Menu', 'catch-box' ), // Setting field label
+		'catchbox_settings_field_enable_sec_menu', // Function that renders the settings field
+		'theme_options', // Menu slug, used to uniquely identify the page; see catchbox_theme_options_add_page()
+		'general' // Settings section. Same as the first argument in the add_settings_section() above
+	);
+
+	add_settings_field(
+		'enable_footer_menu', // Unique identifier for the settings section
+		__( 'Enable Footer Mobile Menu', 'catch-box' ), // Setting field label
+		'catchbox_settings_field_enable_footer_menu', // Function that renders the settings field
 		'theme_options', // Menu slug, used to uniquely identify the page; see catchbox_theme_options_add_page()
 		'general' // Settings section. Same as the first argument in the add_settings_section() above
 	);
@@ -394,16 +409,30 @@ function catchbox_settings_field_disable_header_search() {
 
 
 /**
- * Enable Secondary and Footer Menu
+ * Enable Secondary Menu
  *
  * @since Catch Box 2.2.2
  */
-function catchbox_settings_field_enable_menus() {
+function catchbox_settings_field_enable_sec_menu() {
 	$options = catchbox_get_theme_options();
-	if ( empty( $options['enable_menus'] ) )
+	if ( empty( $options['enable_sec_menu'] ) )
 		$options = catchbox_get_default_theme_options();
 	?>
-    <input type="checkbox" id="disable-header-search" name="catchbox_theme_options[enable_menus]" value="1" <?php checked( '1', $options['enable_menus'] ); ?> /> <?php _e( 'Check to Enable', 'catch-box' ); ?>
+    <input type="checkbox" id="disable-header-search" name="catchbox_theme_options[enable_sec_menu]" value="1" <?php checked( '1', $options['enable_sec_menu'] ); ?> /> <?php _e( 'Check to Enable', 'catch-box' ); ?>
+	<?php
+}
+
+/**
+ * Enable Footer Menu
+ *
+ * @since Catch Box 2.2.2
+ */
+function catchbox_settings_field_enable_footer_menu() {
+	$options = catchbox_get_theme_options();
+	if ( empty( $options['enable_footer_menu'] ) )
+		$options = catchbox_get_default_theme_options();
+	?>
+    <input type="checkbox" id="disable-header-search" name="catchbox_theme_options[enable_footer_menu]" value="1" <?php checked( '1', $options['enable_footer_menu'] ); ?> /> <?php _e( 'Check to Enable', 'catch-box' ); ?>
 	<?php
 }
 
@@ -510,6 +539,7 @@ function catchbox_settings_field_content_scheme() {
  * @since Catch Box 1.0
  */
 function catchbox_theme_options_render_page() {
+	$options = catchbox_get_theme_options();
 	?>
 	<div id="catchthemes" class="wrap">
 
@@ -554,7 +584,13 @@ function catchbox_theme_options_render_page() {
                     <li><a href="#themeoptions"><?php _e( 'Theme Options', 'catch-box' );?></a></li>
                     <li><a href="#slidersettings"><?php _e( 'Featured Post Slider', 'catch-box' );?></a></li>
                     <li><a href="#sociallinks"><?php _e( 'Social Links', 'catch-box' );?></a></li>
-                    <li><a href="#webmaster"><?php _e( 'Webmaster Tools', 'catch-box' );?></a></li>
+                     <?php
+	                if ( '' != $options['tracker_header'] || '' != $options['tracker_footer'] ) {
+	                ?>
+                	<li><a href="#webmaster"><?php _e( 'Webmaster Tools', 'catch-box' );?></a></li>
+                	<?php
+	            	}
+	                ?>
                 </ul><!-- .tabsNavigation #mainNav -->
                <form method="post" action="options.php">
                 <!-- Option for Theme Options -->
@@ -839,15 +875,17 @@ function catchbox_theme_options_render_page() {
                   	</div><!-- .option-container -->
                 </div> <!-- #sociallinks -->
 
+                <?php
+                if ( '' != $options['tracker_header'] || '' != $options['tracker_footer'] ) {
+                ?>
                 <!-- Option for Webmaster Tools -->
-                <div id="webmaster">
-
+                	<div id="webmaster">
                         <?php
                             settings_fields( 'catchbox_options' );
                         ?>
                         <div class="option-container">
                             <h3 class="option-toggle"><a href="#"><?php _e( 'Header and Footer Code', 'catch-box' ); ?></a></h3>
-                           <div class="option-content inside">
+                            <div class="option-content inside">
                                 <table class="form-table">
                                     <table class="form-table">
                                         <tr>
@@ -857,6 +895,7 @@ function catchbox_theme_options_render_page() {
 
                                             </td>
                                         </tr>
+                                        
                                         <tr>
                                         	<td></td><td><?php _e('Note: Here you can put scripts from Google, Facebook etc. which will load on Header', 'catch-box' ); ?></td>
                                     	</tr>
@@ -868,16 +907,20 @@ function catchbox_theme_options_render_page() {
 
                                             </td>
                                         </tr>
+                                        
                                         <tr>
                                         	<td></td><td><?php _e( 'Note: Here you can put scripts from Google, Facebook, Add This etc. which will load on footer', 'catch-box' ); ?></td>
                                    	 	</tr>
                                     </tbody>
                                 </table>
+                                
                                 <p class="submit"><input type="submit" class="button-primary" value="<?php esc_attr_e( 'Save', 'catch-box' ); ?>" /></p>
                             </div> <!-- .option-content  -->
                         </div> <!-- .option-container  -->
-
-                </div> <!-- #webmaster -->
+                	</div> <!-- #webmaster -->
+                <?php
+            	}
+                ?>
                 </form>
        		</div><!-- #catchbox_ad_tabs -->
 
@@ -896,10 +939,12 @@ function catchbox_theme_options_render_page() {
  * @since Catch Box 1.0
  */
 function catchbox_theme_options_validate( $input ) {
-	$options_validated = $defaults = catchbox_get_default_theme_options();
+	$options_validated = catchbox_get_default_theme_options();
 
-	if( $options_validated['reset_all_settings'] == "1" ) {
-        return $defaults;
+	if( '1' == $input['reset_all_settings'] ) {
+		remove_theme_mods();
+		
+        return $options_validated;
     }
 
 	// favicon url
@@ -957,10 +1002,15 @@ function catchbox_theme_options_validate( $input ) {
 		// Our checkbox value is either 0 or 1
 		$options_validated[ 'disable_header_search' ] = $input[ 'disable_header_search' ];
 
-	// Enable Seconday and Footer Menu
-	if ( isset( $input['enable_menus'] ) )
+	// Enable Seconday Menu
+	if ( isset( $input['enable_sec_menu'] ) )
 		// Our checkbox value is either 0 or 1
-		$options_validated[ 'enable_menus' ] = $input[ 'enable_menus' ];
+		$options_validated[ 'enable_sec_menu' ] = $input[ 'enable_sec_menu' ];
+
+	// Enable Footer Menu
+	if ( isset( $input['enable_footer_menu'] ) )
+		// Our checkbox value is either 0 or 1
+		$options_validated[ 'enable_footer_menu' ] = $input[ 'enable_footer_menu' ];
 
 	// Custom CSS
 	// @remove whne WP 5.0 is released

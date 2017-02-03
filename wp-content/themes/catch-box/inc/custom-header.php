@@ -290,10 +290,17 @@ if ( ! function_exists( 'catchbox_header_details' ) ) :
 function catchbox_header_details() {
 	?>
 	<div id="hgroup" class="site-details">
-   		<h1 id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-       	<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-   	</div><!-- #hgroup -->
+		<?php if ( is_front_page() && is_home() ) : ?>
+			<h1 id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+		<?php else : ?>
+			<p id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+		<?php endif;
 
+		$description = get_bloginfo( 'description', 'display' );
+		if ( $description || is_customize_preview() ) : ?>
+			<p id="site-description"><?php echo $description; ?></p>
+		<?php endif; ?>	
+   	</div><!-- #hgroup -->
 <?php
 }
 endif;

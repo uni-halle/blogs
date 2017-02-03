@@ -141,8 +141,9 @@ function catchbox_get_default_theme_options() {
 		'content_layout'        => 'excerpt',
 		'site_title_above'      => '0',
 		'disable_header_search' => '0',
-		'enable_menus'          => '0',
-		'search_display_text'   => __( 'Search', 'catch-box' ),
+		'enable_sec_menu'       => '1',
+		'enable_footer_menu'    => '0',
+		'search_display_text'   => esc_html__( 'Search', 'catch-box' ),
 
 		//Feature Slider
 		'exclude_slider_post'   => '0',

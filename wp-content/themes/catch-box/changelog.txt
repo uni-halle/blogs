@@ -1,5 +1,26 @@
 == Change Log ==
 
+Version 4.6.1
+* Bug Fixed: Color scheme not working in child themes. Replaced get_stylesheet_directory_uri with get_template_directory_uri
+* Replaced Theme URI in style.css
+
+Version 4.6.1
+* Enhanced: HTML5 structure
+* Bug Fixed: Secondary mobile menu anchor and body class condition
+* Bug Fixed: Homepage/Frontpage categories update option causing blog to show no posts
+
+Version 4.6
+* Bug Fixed: Used 'get_stylesheet_directory_uri()' instead of 'get_template_directory_uri()' for enqueuing color scheme css (Reported by: malodk02)
+* Bug Fixed: No Sidebar layout issue with Comment width in mobile view (Reported by: Marius)
+* Bug Fixed: Cancel reply button design issue in mobile view (Reported by: Marius)
+* Bug Fixed: Slider Navigation Issue when there are no active slider
+* Bug Fixed: Reset all settings not working
+* Removed: Duplicate CSS (Reported by: malodk02)
+* Optimized: Social icon image (Reported by: Marius)
+* Updated: Menu script (removed sidr in favor of custom script)
+* Updated: Option enable mobile menus separated into different secondary and footer mobile menu
+* Theme Check Issues fixed
+
 Version 4.5.5
 * Bug Fixed: Undefined index - custom_css in functions.php file
 
