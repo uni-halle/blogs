@@ -32,13 +32,11 @@ get_header(); ?>
 					<td><?=implode(', ',array_map(function($usr){ return $usr['display_name'];},$users)) ?></td>
 				</tr>
 			<?php endif ?> 						
-            <?php if($kurztext = get_field('kurztext')):?>
-            	<tr><td width="25%">Kurzbeschreibung</td><td><?=$kurztext?></td></tr>
-            <?php endif ?> 			
+			
             <?php $datum = get_field( 'datum' );
 				if( $datum ) {?><tr><td width="25%">Datum</td><td><?php echo $datum;?></td></tr><?php	}  ?> 
-			<?php $aufgabe = get_field( 'aufgabe' );
-				if( $aufgabe ) {?><tr><td width="25%">Aufgabe</td><td><?php echo $aufgabe;?></td></tr><?php	}  ?>  
+			<?php $kurztext = get_field( 'kurztext' );
+				if( $kurztext ) {?><tr><td width="25%">Kurzbeschreibung</td><td><?php echo $kurztext;?></td></tr><?php	}  ?>  
 			<?php $status = get_field( 'status' );
 				if( $status ) {?><tr><td width="25%">Status</td><td><?php foreach($status as $status)
 							{
