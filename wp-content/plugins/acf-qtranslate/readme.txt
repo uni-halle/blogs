@@ -2,9 +2,9 @@
 Contributors: funkjedi
 Tags: acf, advanced custom fields, qtranslate, add-on, admin
 Requires at least: 3.5.0
-Tested up to: 4.6.1
-Version: 1.7.17
-Stable tag: 1.7.17
+Tested up to: 4.7.2
+Version: 1.7.22
+Stable tag: 1.7.22
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,22 @@ The plugin is based on code samples posted to the ACF support forums by taeo bac
 
 
 == Changelog ==
+
+= 1.7.22 =
+* Bug Fix: Prevent LSBs from loading on all pages by default
+
+= 1.7.21 =
+* Bug Fix: Make compatible with older versions of ACF5 by checking for `acf_connect_attachment_to_post`
+
+= 1.7.20 =
+* Core: Added ability to display LSBs on specific pages
+
+= 1.7.19 =
+* Bug Fix: Fixed issue with saving File and Image fields after ACF 5.5.5 upgrade
+
+= 1.7.18 =
+* Core: Prevent error on older versions of ACF5
+* Bug Fix: Updated ACF5 qTranslate File field to match recent ACF update
 
 = 1.7.17 =
 * Core: Initialize on either `plugins_loaded` or `after_setup_theme`
@@ -163,8 +179,4 @@ The plugin is based on code samples posted to the ACF support forums by taeo bac
 
 == Upgrade Notice ==
 
-= 1.7.7 =
-If using qTranslate-X translation of the standard Text, Text Area and WYSIWYG field types is now disabled by default.
-
-= 1.7.3 =
-Removed namespaces to make code compatible with PHP 5.2
+Bug Fix: Fixed issue with saving File and Image fields after ACF 5.5.5 upgrade
