@@ -79,15 +79,24 @@ $('#areyouhuman input').attr('checked','checked');
 */
 }); //end get script
 
-jQuery('.tile .post a[href^="https://studieninfo.physik.uni-halle.de/"]').css({'border-bottom':'1px dotted','cursor':'pointer'}).on( 'click', function() {
-jQuery(".tile >a[href='" + jQuery(this).attr('href') + "']").click();
-//console.log(jQuery(this).attr('href'));
-return false;
- })
-
+$('.post27 em strong').css({'border-bottom':'1px dotted','cursor':'pointer'}).click(function(){ 
+$("a[href='http://studieninfo.physik.uni-halle.de/?p=160']").click();
+ });
+ $('.post27 strong em').css({'border-bottom':'1px dotted','cursor':'pointer'}).click(function(){ 
+$("a[href='http://studieninfo.physik.uni-halle.de/?p=204']").click();
+ });
  
 }; // END function
+function innertilelink () {
+	$('.tile').on('hover', 'strong a', function(){
+ olghref = $(this).attr('href');
+$(this).removeAttr("href").css({'border-bottom':'1px dotted','cursor':'pointer'}).click(function(){ 
+$("a[href='" + olghref + "']").click(); 
+return false;
 
+ });
+});
+};// END function
 	
 	$(function (){
         $('.loop-entry a').bind("click",function(event){
