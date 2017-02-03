@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Easy Image Gallery
-Plugin URI: http://sumobi.com/shop/easy-image-gallery/
+Plugin URI: http://devrix.com/
 Description: An easy to use image gallery with drag & drop re-ordering
-Version: 1.1.4
-Author: Andrew Munro, Sumobi
-Author URI: http://sumobi.com
+Version: 1.2.1
+Author: DevriX
+Author URI: http://devrix.com/
 Text Domain: easy-image-gallery
 License: GPL-2.0+
 License URI: http://www.opensource.org/licenses/gpl-license.php
@@ -55,7 +55,7 @@ if ( ! class_exists( 'Easy_Image_Gallery' ) ) {
 			    define( 'EASY_IMAGE_GALLERY_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 
 			if ( ! defined( 'EASY_IMAGE_GALLERY_VERSION' ) )
-			    define( 'EASY_IMAGE_GALLERY_VERSION', '1.1.4' );
+			    define( 'EASY_IMAGE_GALLERY_VERSION', '1.2' );
 
 			if ( ! defined( 'EASY_IMAGE_GALLERY_INCLUDES' ) )
 			    define( 'EASY_IMAGE_GALLERY_INCLUDES', EASY_IMAGE_GALLERY_DIR . trailingslashit( 'includes' ) );

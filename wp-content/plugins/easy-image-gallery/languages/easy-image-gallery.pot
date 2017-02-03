@@ -70,7 +70,7 @@ msgid "prettyPhoto"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://sumobi.com/shop/easy-image-gallery/"
+msgid "http://devrix.com/"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -78,9 +78,9 @@ msgid "An easy to use image gallery with drag & drop re-ordering"
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Andrew Munro, Sumobi"
+msgid "DevriX"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://sumobi.com"
+msgid "http://devrix.com/"
 msgstr ""
