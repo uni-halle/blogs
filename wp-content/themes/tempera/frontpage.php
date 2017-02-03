@@ -59,16 +59,16 @@ foreach ($temperas as $key => $value) { ${"$key"} = $value; }
 	// Switch for Query type
 	switch ($tempera_slideType) {
 		case 'Latest Posts' :
-		   $custom_query->query('showposts='.$tempera_slideNumber.'&ignore_sticky_posts=1');
+		   $custom_query->query('showposts='.$tempera_slideNumber.'&ignore_sticky_posts=' . apply_filters('tempera_pp_nosticky', 1) );
 		break;
 		case 'Random Posts' :
-		   $custom_query->query('showposts='.$tempera_slideNumber.'&orderby=rand&ignore_sticky_posts=1');
+		   $custom_query->query('showposts='.$tempera_slideNumber.'&orderby=rand&ignore_sticky_posts=' . apply_filters('tempera_pp_nosticky', 1) );
 		break;
 		case 'Latest Posts from Category' :
-		   $custom_query->query('showposts='.$tempera_slideNumber.'&category_name='.$tempera_slideCateg.'&ignore_sticky_posts=1');
+		   $custom_query->query('showposts='.$tempera_slideNumber.'&category_name='.$tempera_slideCateg.'&ignore_sticky_posts=' . apply_filters('tempera_pp_nosticky', 1) );
 		break;
 		case 'Random Posts from Category' :
-		   $custom_query->query('showposts='.$tempera_slideNumber.'&category_name='.$tempera_slideCateg.'&orderby=rand&ignore_sticky_posts=1');
+		   $custom_query->query('showposts='.$tempera_slideNumber.'&category_name='.$tempera_slideCateg.'&orderby=rand&ignore_sticky_posts=' . apply_filters('tempera_pp_nosticky', 1) );
 		break;
 		case 'Sticky Posts' :
 		   $custom_query->query(array('post__in'  => get_option( 'sticky_posts' ), 'showposts' =>$tempera_slideNumber,'ignore_sticky_posts' => 1));
@@ -76,7 +76,7 @@ foreach ($temperas as $key => $value) { ${"$key"} = $value; }
 		case 'Specific Posts' :
 		   // Transofm string separated by commas into array
 		   $pieces_array = explode(",", $tempera_slideSpecific);
-		   $custom_query->query(array( 'post_type' => 'any', 'showposts' => -1, 'post__in' => $pieces_array, 'ignore_sticky_posts' => 1,'orderby' => 'post__in' ));
+		   $custom_query->query(array( 'post_type' => 'any', 'showposts' => -1, 'post__in' => $pieces_array, 'ignore_sticky_posts' => apply_filters('tempera_pp_nosticky', 1),'orderby' => 'post__in' ));
 		   break;
 		case 'Custom Slides':
 		break;

@@ -1,11 +1,11 @@
 =============
 Tempera WordPress Theme
-Copyright 2013-16 Cryout Creations
+Copyright 2013-17 Cryout Creations
 
 Author: Cryout Creations
 Requires at least: 4.0
 Tested up to: 4.6.1
-Stable tag: 1.4.8
+Stable tag: 1.4.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: https://www.cryoutcreations.eu/donate/
@@ -106,6 +106,20 @@ Spanish - Carlol, HacKan
 
 
 == Changelog ==
+
+= 1.4.9 = 
+* Hid mobile menu placeholder when menu visibility disabled on Presentation Page
+* Fixed social icons URL double sanitization (breaking special cases)
+* Fixed automatically generated menu dropdowns inaccessible on mobile devices with WordPress 4.7+
+* Added plugin interference failsafe for color codes in the theme settings
+* Improved menu styling to fix double arrow and extra padding when menu-related plugins are used
+* Added 'tempera_pp_nosticky' filter for sticky posts inclusion in Presentation Page posts list
+
+= 1.4.8 =
+* Fixed mobile menu still visible despite menu being disabled on the presentation page
+* Undid the social icon URL double sanitization (breaking special keys)
+* Fixed mobile menu double-tap protection code issue on WordPress 4.7
+* Restored # in color codes on save/display (failsafe for plugin interference)
 
 = 1.4.8 =
 * Fixed font names with spaces on Safari limitation

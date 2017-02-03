@@ -12,7 +12,6 @@ jQuery(document).ready(function() {
 	if (tempera_settings['mobile'] == 1) { 
 		tempera_mobilemenu_init();
 		
-		console.log(tempera_settings['fitvids']);
 		if (tempera_settings['fitvids'] == 1) jQuery(".entry-content").fitVids();
 	};
 
@@ -25,7 +24,7 @@ jQuery(document).ready(function() {
 				jQuery(this).parent().data('clicked', null);
 			}
 			else { // first touch
-				if (custom_event != 'click' && !ios && (jQuery(this).parent().children('.sub-menu').length >0)) {e.preventDefault();}
+				if (custom_event != 'click' && !ios && (jQuery(this).parent().children('ul').length >0)) {e.preventDefault();}
 				jQuery(this).parent().data('clicked', $link_id);
 			}
 		});

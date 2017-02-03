@@ -101,67 +101,67 @@ else :
 
 	$input["tempera_headerwidgetwidth"] = trim(wp_kses_data($input['tempera_headerwidgetwidth']));
 
-	$input["tempera_backcolorheader"] = trim(wp_kses_data($input['tempera_backcolorheader']));
-	$input["tempera_backcolormain"] = trim(wp_kses_data($input['tempera_backcolormain']));
-	$input["tempera_backcolorfooterw"] = trim(wp_kses_data($input['tempera_backcolorfooterw']));
-	$input["tempera_backcolorfooter"] = trim(wp_kses_data($input['tempera_backcolorfooter']));
+	$input["tempera_backcolorheader"] = cryout_color_sanitize($input['tempera_backcolorheader']);
+	$input["tempera_backcolormain"] = cryout_color_sanitize($input['tempera_backcolormain']);
+	$input["tempera_backcolorfooterw"] = cryout_color_sanitize($input['tempera_backcolorfooterw']);
+	$input["tempera_backcolorfooter"] = cryout_color_sanitize($input['tempera_backcolorfooter']);
 
-	$input["tempera_contentcolortxt"] = trim(wp_kses_data($input['tempera_contentcolortxt']));
-	$input["tempera_contentcolortxtlight"] = trim(wp_kses_data($input['tempera_contentcolortxtlight']));
-	$input["tempera_footercolortxt"] = trim(wp_kses_data($input['tempera_footercolortxt']));
+	$input["tempera_contentcolortxt"] = cryout_color_sanitize($input['tempera_contentcolortxt']);
+	$input["tempera_contentcolortxtlight"] = cryout_color_sanitize($input['tempera_contentcolortxtlight']);
+	$input["tempera_footercolortxt"] = cryout_color_sanitize($input['tempera_footercolortxt']);
 
-	$input["tempera_titlecolor"] = trim(wp_kses_data($input['tempera_titlecolor']));
-	$input["tempera_descriptioncolor"] = trim(wp_kses_data($input['tempera_descriptioncolor']));
-	$input["tempera_descriptionbg"] = trim(wp_kses_data($input['tempera_descriptionbg']));
+	$input["tempera_titlecolor"] = cryout_color_sanitize($input['tempera_titlecolor']);
+	$input["tempera_descriptioncolor"] = cryout_color_sanitize($input['tempera_descriptioncolor']);
+	$input["tempera_descriptionbg"] = cryout_color_sanitize($input['tempera_descriptionbg']);
 
-	$input["tempera_menucolorbgdefault"] = trim(wp_kses_data($input['tempera_menucolorbgdefault']));
-	$input["tempera_submenucolorshadow"] = trim(wp_kses_data($input['tempera_submenucolorshadow']));
-	$input["tempera_menucolortxtdefault"] = trim(wp_kses_data($input['tempera_menucolortxtdefault']));
+	$input["tempera_menucolorbgdefault"] = cryout_color_sanitize($input['tempera_menucolorbgdefault']);
+	$input["tempera_submenucolorshadow"] = cryout_color_sanitize($input['tempera_submenucolorshadow']);
+	$input["tempera_menucolortxtdefault"] = cryout_color_sanitize($input['tempera_menucolortxtdefault']);
 
-	$input["tempera_topmenucolortxt"] = trim(wp_kses_data($input['tempera_topmenucolortxt']));
-	$input["tempera_topmenucolortxthover"] = trim(wp_kses_data($input['tempera_topmenucolortxthover']));
-	$input["tempera_topbarcolorbg"] = trim(wp_kses_data($input['tempera_topbarcolorbg']));
+	$input["tempera_topmenucolortxt"] = cryout_color_sanitize($input['tempera_topmenucolortxt']);
+	$input["tempera_topmenucolortxthover"] = cryout_color_sanitize($input['tempera_topmenucolortxthover']);
+	$input["tempera_topbarcolorbg"] = cryout_color_sanitize($input['tempera_topbarcolorbg']);
 
-	$input["tempera_contentcolorbg"] = trim(wp_kses_data($input['tempera_contentcolorbg']));
-	$input["tempera_contentcolortxttitle"] = trim(wp_kses_data($input['tempera_contentcolortxttitle']));
-	$input["tempera_contentcolortxttitlehover"] = trim(wp_kses_data($input['tempera_contentcolortxttitlehover']));
-	$input["tempera_contentcolortxtheadings"] = trim(wp_kses_data($input['tempera_contentcolortxtheadings']));
+	$input["tempera_contentcolorbg"] = cryout_color_sanitize($input['tempera_contentcolorbg']);
+	$input["tempera_contentcolortxttitle"] = cryout_color_sanitize($input['tempera_contentcolortxttitle']);
+	$input["tempera_contentcolortxttitlehover"] = cryout_color_sanitize($input['tempera_contentcolortxttitlehover']);
+	$input["tempera_contentcolortxtheadings"] = cryout_color_sanitize($input['tempera_contentcolortxtheadings']);
 
-	$input["tempera_sidebg"] = trim(wp_kses_data($input['tempera_sidebg']));
-	$input["tempera_sidetxt"] = trim(wp_kses_data($input['tempera_sidetxt']));
-	$input["tempera_sidetitlebg"] = trim(wp_kses_data($input['tempera_sidetitlebg']));
-	$input["tempera_sidetitletxt"] = trim(wp_kses_data($input['tempera_sidetitletxt']));
+	$input["tempera_sidebg"] = cryout_color_sanitize($input['tempera_sidebg']);
+	$input["tempera_sidetxt"] = cryout_color_sanitize($input['tempera_sidetxt']);
+	$input["tempera_sidetitlebg"] = cryout_color_sanitize($input['tempera_sidetitlebg']);
+	$input["tempera_sidetitletxt"] = cryout_color_sanitize($input['tempera_sidetitletxt']);
 
-	$input["tempera_widgetbg"] = trim(wp_kses_data($input['tempera_widgetbg']));
-	$input["tempera_widgettxt"] = trim(wp_kses_data($input['tempera_widgettxt']));
-	$input["tempera_widgettitlebg"] = trim(wp_kses_data($input['tempera_widgettitlebg']));
-	$input["tempera_widgettitletxt"] = trim(wp_kses_data($input['tempera_widgettitletxt']));
+	$input["tempera_widgetbg"] = cryout_color_sanitize($input['tempera_widgetbg']);
+	$input["tempera_widgettxt"] = cryout_color_sanitize($input['tempera_widgettxt']);
+	$input["tempera_widgettitlebg"] = cryout_color_sanitize($input['tempera_widgettitlebg']);
+	$input["tempera_widgettitletxt"] = cryout_color_sanitize($input['tempera_widgettitletxt']);
 
-	$input["tempera_linkcolortext"] = trim(wp_kses_data($input['tempera_linkcolortext']));
-	$input["tempera_linkcolorhover"] = trim(wp_kses_data($input['tempera_linkcolorhover']));
-	$input["tempera_linkcolorside"] = trim(wp_kses_data($input['tempera_linkcolorside']));
-	$input["tempera_linkcolorsidehover"] = trim(wp_kses_data($input['tempera_linkcolorsidehover']));
-	$input["tempera_linkcolorwooter"] = trim(wp_kses_data($input['tempera_linkcolorwooter']));
-	$input["tempera_linkcolorwooterhover"] = trim(wp_kses_data($input['tempera_linkcolorwooterhover']));
-	$input["tempera_linkcolorfooter"] = trim(wp_kses_data($input['tempera_linkcolorfooter']));
-	$input["tempera_linkcolorfooterhover"] = trim(wp_kses_data($input['tempera_linkcolorfooterhover']));
+	$input["tempera_linkcolortext"] = cryout_color_sanitize($input['tempera_linkcolortext']);
+	$input["tempera_linkcolorhover"] = cryout_color_sanitize($input['tempera_linkcolorhover']);
+	$input["tempera_linkcolorside"] = cryout_color_sanitize($input['tempera_linkcolorside']);
+	$input["tempera_linkcolorsidehover"] = cryout_color_sanitize($input['tempera_linkcolorsidehover']);
+	$input["tempera_linkcolorwooter"] = cryout_color_sanitize($input['tempera_linkcolorwooter']);
+	$input["tempera_linkcolorwooterhover"] = cryout_color_sanitize($input['tempera_linkcolorwooterhover']);
+	$input["tempera_linkcolorfooter"] = cryout_color_sanitize($input['tempera_linkcolorfooter']);
+	$input["tempera_linkcolorfooterhover"] = cryout_color_sanitize($input['tempera_linkcolorfooterhover']);
 
-	$input["tempera_accentcolora"] = trim(wp_kses_data($input['tempera_accentcolora']));
-	$input["tempera_accentcolorb"] = trim(wp_kses_data($input['tempera_accentcolorb']));
-	$input["tempera_accentcolorc"] = trim(wp_kses_data($input['tempera_accentcolorc']));
-	$input["tempera_accentcolord"] = trim(wp_kses_data($input['tempera_accentcolord']));
-	$input["tempera_accentcolore"] = trim(wp_kses_data($input['tempera_accentcolore']));
+	$input["tempera_accentcolora"] = cryout_color_sanitize($input['tempera_accentcolora']);
+	$input["tempera_accentcolorb"] = cryout_color_sanitize($input['tempera_accentcolorb']);
+	$input["tempera_accentcolorc"] = cryout_color_sanitize($input['tempera_accentcolorc']);
+	$input["tempera_accentcolord"] = cryout_color_sanitize($input['tempera_accentcolord']);
+	$input["tempera_accentcolore"] = cryout_color_sanitize($input['tempera_accentcolore']);
 
-	$input['tempera_frontpostscount'] =  intval(wp_kses_data($input['tempera_frontpostscount']));
-
-	$input['tempera_fronttitlecolor'] =  wp_kses_data($input['tempera_fronttitlecolor']);
-	$input['tempera_fpsliderbordercolor'] =  wp_kses_data($input['tempera_fpsliderbordercolor']);
-	$input['tempera_fpslidercaptioncolor'] =  wp_kses_data($input['tempera_fpslidercaptioncolor']);
-	$input['tempera_fpslidercaptionbg'] =  wp_kses_data($input['tempera_fpslidercaptionbg']);
+	$input['tempera_fronttitlecolor'] =  cryout_color_sanitize($input['tempera_fronttitlecolor']);
+	$input['tempera_fpsliderbordercolor'] =  cryout_color_sanitize($input['tempera_fpsliderbordercolor']);
+	$input['tempera_fpslidercaptioncolor'] =  cryout_color_sanitize($input['tempera_fpslidercaptioncolor']);
+	$input['tempera_fpslidercaptionbg'] =  cryout_color_sanitize($input['tempera_fpslidercaptionbg']);
 
 	$input["tempera_socialcolorbg"] = trim(wp_kses_data($input['tempera_socialcolorbg']));
 	$input["tempera_socialcolorbghover"] = trim(wp_kses_data($input['tempera_socialcolorbghover']));
 
+	$input['tempera_frontpostscount'] =  intval(wp_kses_data($input['tempera_frontpostscount']));
+	
 	$input["tempera_metacoloricons"] = trim(wp_kses_data($input['tempera_metacoloricons']));
 	$input["tempera_metacolorlinks"] = trim(wp_kses_data($input['tempera_metacolorlinks']));
 	$input["tempera_metacolorlinkshover"] = trim(wp_kses_data($input['tempera_metacolorlinkshover']));

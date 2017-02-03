@@ -337,4 +337,5 @@ $tempera_column_defaults= array(
         'blank' => 1,
     ),
 );
-?>
+
+// FIN

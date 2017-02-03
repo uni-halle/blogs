@@ -83,7 +83,17 @@ function cryout_proto_field($settings,$type,$name,$values,$labels='',$cls='',$ec
 
 function cryout_proto_css(){
 
-
 } //cryout_proto_css()
 
-?>
+function cryout_color_sanitize( $color ) {
+    if ( '' === $color ) return '';
+	$color = trim(wp_kses_data($color));
+ 
+    if ( preg_match( '/^#?([A-Fa-f0-9]{3}){1,2}$/', $color ) ) {
+        return '#' . preg_replace( '/#/i', '', $color );
+    }	
+	return '';
+} // cryout_color_sanitize()
+
+
+// FIN

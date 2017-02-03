@@ -6,7 +6,7 @@
  * @package tempera
  * @subpackage Functions
  */
- 
+
 
 function tempera_presentation_css() {
 	$temperas= tempera_get_theme_options();
@@ -14,11 +14,11 @@ function tempera_presentation_css() {
 	ob_start();
 	echo '<style type="text/css">';
 	if ($tempera_fronthideheader) {?> #branding {display: none;} <?php }
-	if ($tempera_fronthidemenu) {?> #access, .topmenu {display: none;} <?php }
+	if ($tempera_fronthidemenu) {?> #access, body #nav-toggle, .topmenu {display: none;} <?php }
   	if ($tempera_fronthidewidget) {?> #colophon {display: none;} <?php }
 	if ($tempera_fronthidefooter) {?> #footer2 {display: none;} <?php }
     if ($tempera_fronthideback) {?> #main {background: none;} <?php }
-	
+
 	if ($tempera_fpslider_topmargin) { ?> .slider-wrapper {padding-top: <?php echo $tempera_fpslider_topmargin; ?>px;} <?php }
 ?>
 
@@ -36,7 +36,7 @@ function tempera_presentation_css() {
 .theme-default .nivo-controlNav {top:-<?php echo $tempera_fpslider_bordersize+33 ?>px;}
 
 #front-text1 h1, #front-text2 h1 {
-	color: <?php echo $tempera_fronttitlecolor; ?>; 
+	color: <?php echo $tempera_fronttitlecolor; ?>;
 	font-size: <?php echo round(30*(preg_replace("/[^\d]/","",$tempera_headingsfontsize)/100),0) ?>px;
     line-height: <?php echo round(42*(preg_replace("/[^\d]/","",$tempera_headingsfontsize)/100),0) ?>px; }
 

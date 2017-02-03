@@ -2,54 +2,42 @@
 /**
  * Contains methods for customizing the theme customization screen.
  * @since Tempera 1.2.4
- * @updated Tempera 1.3.3 / Cryout 0.5
  */
 
 $cryout_customizer = array(
 
-'info_sections' => array(
-	'support' => array(
-		'title' => __( 'Support', 'cryout' ),
-		'desc' => __( 'Got a question? Need help?', 'cryout' ),
-	),
-	'rating' => array(
-		'title' => __( 'Rating', 'cryout' ),
-		'desc' => __( 'If you like the theme, rate it. If you hate the theme, rate it as well. Let us know how we can make it better.', 'cryout' ),
-	),
-), // info_sections
-
 'info_settings' => array(
-	'support_link1' => array(
-		'default' => 'http://www.cryoutcreations.eu/' . _CRYOUT_THEME_NAME . '/' . _CRYOUT_THEME_NAME .'-faqs',
-		'label' => __( 'Read the FAQs', 'cryout' ),
-		'desc' => '',
-		'section' => 'support',
+	'support_link_faqs' => array(
+		'label' => '',
+		'default' => sprintf( '<a href="https://www.cryoutcreations.eu/wordpress-themes/' . _CRYOUT_THEME_NAME . '" target="_blank">%s</a>', __( 'Read the Docs', 'cryout' ) ),
+		'desc' =>  '',
+		'section' => 'cryoutspecial-about-theme',
 	),
-	'support_link2' => array(
-		'default' => 'http://www.cryoutcreations.eu/forums/f/wordpress/' . _CRYOUT_THEME_NAME ,
-		'label' => __( 'Browse the Forum', 'cryout' ),
+	'support_link_forum' => array(
+		'label' => '',
+		'default' => sprintf( '<a href="https://www.cryoutcreations.eu/forums/f/wordpress/' . cryout_sanitize_tn( _CRYOUT_THEME_NAME ) . '" target="_blank">%s</a>', __( 'Browse the Forum', 'cryout' ) ),
 		'desc' => '',
-		'section' => 'support',
+		'section' => 'cryoutspecial-about-theme',
 	),
 	'premium_support_link' => array(
-		'default' => 'https://www.cryoutcreations.eu/premium-support',
-		'label' => __( 'Request Premium Support', 'cryout' ),
-		'desc' => __( 'We also provide fast support via our premiums support system.', 'cryout' ),
-		'section' => 'support',
+		'label' => '',
+		'default' => sprintf( '<a href="https://www.cryoutcreations.eu/priority-support" target="_blank">%s</a>', __( 'Priority Support', 'cryout' ) ),
+		'desc' => '',
+		'section' => 'cryoutspecial-about-theme',
 	),
 	'rating_url' => array(
-		'default' => 'https://wordpress.org/support/view/theme-reviews/'. _CRYOUT_THEME_NAME .'#postform',
-		'label' => sprintf( __( 'Rate %s on Wordpress.org', 'cryout' ) , ucwords(_CRYOUT_THEME_NAME) ),
+		'label' => '&nbsp;',
+		'default' => sprintf( '<a href="https://wordpress.org/support/view/theme-reviews/'. cryout_sanitize_tn( _CRYOUT_THEME_NAME ).'#postform" target="_blank">%s</a>', sprintf( __( 'Rate %s on WordPress.org', 'cryout' ) , ucwords(_CRYOUT_THEME_NAME) ) ),
 		'desc' => '',
-		'section' => 'rating',
+		'section' => 'cryoutspecial-about-theme',
 	),
-), // info_settings
+),
 
-'advanced_settings' => array(
-	'default' => sprintf('themes.php?page=%1$s-page', _CRYOUT_THEME_NAME),
+'cryout_advanced_settings' => array(
+	'default' => sprintf('<a href="themes.php?page=' . cryout_sanitize_tn( _CRYOUT_THEME_NAME ) . '-page">%s</a>', __('Manage Theme Settings', 'cryout') ),
 	'label' => ucwords(_CRYOUT_THEME_NAME) . ' ' . __(  'Settings', 'cryout' ),
 	'desc' => __("To configure the remaining 200+ theme options, access the dedicated settings page.<br><br><em>The settings page is only available when the theme is active. It cannot be previewed in the Customizer.</em>", 'cryout' ),
-	'section' => 'advanced_settings',
+	'section' => 'cryout_advanced_settings',
 	'priority' => 999,
 ), // advanced_settings
 
@@ -57,6 +45,20 @@ $cryout_customizer = array(
 
 ///////// CUSTOM CUSTOMIZERS
 function cryout_customizer_extras($wp_customize) {
+	
+	class Cryout_Customize_About_Control extends WP_Customize_Control {
+			public $type = 'about';
+			public function render_content() {
+					if ( ! empty( $this->label ) ) { ?>
+                        <span class="customize-control-title"><?php echo esc_attr( $this->label ) ?></span>
+					<?php }
+					if ( ! empty( $this->description ) ) { ?>
+                        <span class="description customize-control-description cryout-nomove"><?php echo wp_kses_post( $this->description ) ?></span>
+                    <?php } ?>
+					<span class="customize-control-content customize-cryoutspecial-about-link"><?php echo wp_kses_post( $this->value() ) ?></span>
+			<?php
+			}
+	} // class Cryout_Customize_About_Control
 
 	class Cryout_Customize_Link_Control extends WP_Customize_Control {
 			public $type = 'link';
@@ -93,23 +95,12 @@ class Cryout_Customizer {
 		global $cryout_customizer;
 
 		// add about theme panel and sections
-		if (!empty($cryout_customizer['info_sections'])):
-		$wp_customize->add_panel( 'about', array(
-			'priority'       => 0,
-			'title'          => __( 'About', 'cryout' ). ' ' . ucwords(_CRYOUT_THEME_NAME),
-			'description'    => ucwords(_CRYOUT_THEME_NAME) . __( ' by ', 'cryout' ) . 'Cryout Creations',
+		if (!empty($cryout_customizer['info_settings'])):
+		$wp_customize->add_section( 'cryoutspecial-about-theme', array(
+			'priority'       => 10,
+			'title'          => sprintf( __( 'About %s', 'cryout' ), ucwords(_CRYOUT_THEME_NAME) ),
+			'description'    => sprintf( __( '%1$s Theme by %2$s', 'cryout' ), ucwords(_CRYOUT_THEME_NAME), 'Cryout Creations' ),
 		) );
-		$section_priority = 10;
-
-		foreach ($cryout_customizer['info_sections'] as $iid=>$info):
-			$wp_customize->add_section( $iid, array(
-				'title'          => $info['title'],
-				'description'    => $info['desc'],
-				'priority'       => $section_priority++,
-				'panel'  		 => 'about',
-			) );
-		endforeach;
-		endif; //!empty
 
 		foreach ($cryout_customizer['info_settings'] as $iid => $info):
 			$wp_customize->add_setting( $iid, array(
@@ -117,24 +108,21 @@ class Cryout_Customizer {
 				'capability'     => 'edit_theme_options',
 				'sanitize_callback' => 'cryout_customizer_sanitize_blank'
 			) );
-			$wp_customize->add_control( new Cryout_Customize_Link_Control( $wp_customize, $iid, array(
-				'label'   		=> $info['label'],
-				'description'   => $info['desc'],
-				'section' 		=> $info['section'],
-				'settings'   	=> $iid,
-				'priority'   	=> 10,
+			$wp_customize->add_control( new Cryout_Customize_About_Control( $wp_customize, $iid, array(
+				'label'   	 => $info['label'],
+				'description' => $info['desc'],
+				'section' 	 => $info['section'],
+				'default' 	 => $info['default'],
+				'settings'   => $iid,
+				'priority'   => 10,
 			) ) );
 		endforeach;
-		// end about panel
+		////////// end about panel
+		endif; //!empty
 
 		// add settings page panel and section
-		if (!empty($cryout_customizer['advanced_settings'])):
-		$adv = $cryout_customizer['advanced_settings'];
-		/*$wp_customize->add_panel( $adv['section'], array(
-			'priority'       => $adv['priority'],
-			'title'          => $adv['label'],
-			'description'    => $adv['desc'],
-		) );*/
+		if (!empty($cryout_customizer['cryout_advanced_settings'])):
+		$adv = $cryout_customizer['cryout_advanced_settings'];
 
 		$wp_customize->add_section( $adv['section'], array(
 			'title'          => $adv['label'],
@@ -148,16 +136,15 @@ class Cryout_Customizer {
 			'capability'     => 'edit_theme_options',
 			'sanitize_callback' => 'cryout_customizer_sanitize_blank'
 		) );
-		$wp_customize->add_control( new Cryout_Customize_Link_Control( $wp_customize, $adv['section'], array(
-			'label'   => $adv['label'],
-			'description'  => $adv['desc'],
-			'section' => $adv['section'],
+		$wp_customize->add_control( new Cryout_Customize_About_Control( $wp_customize, $adv['section'], array(
+			'label'   	 => '', //$adv['label'],
+			'description' => $adv['desc'],
+			'section' 	 => $adv['section'],
 			'settings'   => $adv['section'],
 			'priority'   => $adv['priority'],
 		) ) );
 		endif;
 		// end settings panel
-
 
    } // register()
 
@@ -167,4 +154,20 @@ class Cryout_Customizer {
 add_action( 'customize_register', 'cryout_customizer_extras' );
 add_action( 'customize_register', array('Cryout_Customizer', 'register' ) );
 
-?>
+	////////// external resources //////////
+function cryout_customizer_enqueue_scripts() {
+	wp_enqueue_style( 'cryout-customizer-css', get_template_directory_uri() . '/admin/css/customizer.css', array(), _CRYOUT_THEME_VERSION );
+	//wp_enqueue_script( 'cryout-customizer-js', get_template_directory_uri() . '/admin/js/customizer.js', array( 'jquery' ), _CRYOUT_THEME_VERSION, true );
+}
+add_action('customize_controls_enqueue_scripts', 'cryout_customizer_enqueue_scripts');
+
+
+function cryout_sanitize_tn($input){
+	return preg_replace( '/[^a-z0-9-]/i', '-', $input );
+}
+
+function cryout_sanitize_tn_fn($input){
+	return preg_replace( '/[^a-z0-9]/i', '_', $input );
+}
+
+// FIN

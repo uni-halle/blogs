@@ -140,7 +140,7 @@ function tempera_set_social_icons($idd) {
 				$cryout_current_social = esc_url( ${"tempera_social$j"} );
 			endif;	?>
 
-			<a <?php if ($temperas['tempera_social_target'.$i]) {echo ' target="_blank" ';} ?> href="<?php echo esc_url( $cryout_current_social ); ?>"
+			<a <?php if ($temperas['tempera_social_target'.$i]) {echo ' target="_blank" ';} ?> href="<?php echo $cryout_current_social; ?>"
 			class="socialicons social-<?php echo esc_attr(${"tempera_social$i"}); ?>" title="<?php echo ${"tempera_social_title$i"} !="" ? esc_attr(${"tempera_social_title$i"}) : esc_attr(${"tempera_social$i"}); ?>">
 				<img alt="<?php echo esc_attr(${"tempera_social$i"}); ?>" src="<?php echo get_template_directory_uri().'/images/socials/'.${"tempera_social$i"}.'.png'; ?>" />
 			</a><?php

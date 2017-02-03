@@ -1,0 +1,32 @@
+/* about section */
+#customize-theme-controls [id*="site_icon"] img,
+#customize-theme-controls [id*="_logoupload"] img {
+    width: initial;
+}
+
+
+
+#customize-theme-controls [id*="accordion-section-about"] .customize-cryoutspecial-about-link a,
+#customize-theme-controls [id*="accordion-section-cryoutspecial-about-theme"] .customize-cryoutspecial-about-link a,
+#customize-theme-controls [id*="accordion-section-cryout_advanced_settings"] .customize-cryoutspecial-about-link a  {
+	display: block;
+	max-width: 300px;
+	padding: 10px;
+	border: 1px solid #DDD;
+	font-weight: bold;
+	background: #fff;
+	text-align: center;
+	text-decoration: none;
+}
+
+/* theme logo in about section */
+#accordion-section-cryoutspecial-about-theme > .accordion-section-title::before,
+#accordion-panel-cryoutspecial-about-theme > .accordion-section-title::before {
+	background: url(../../admin/images/logo-customizer.png) center right no-repeat;
+    content: "";
+    height: 22px;
+    position: absolute;
+    right: 40px;
+    top: 11px;
+    min-width: 35%;
+}
