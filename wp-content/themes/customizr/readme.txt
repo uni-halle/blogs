@@ -35,12 +35,38 @@ The exceptions to this license are as follows:
 * Hammer.JS - v2.0.4 - Copyright (c) 2014 Jorik Tangelder, MIT license
 * SmoothScroll - v1.3.8 (Balazs Galambosi), MIT license
 * Icon Set: Font Awesome is licensed under SIL OFL 1.1 and MIT License
-* The images screenshot.png, inc/assets/img/customizr-theme-customizer.png, inc/assets/img/customizr-theme-responsive.png, inc/admin/img/ are creations of Nicolas Guillaume and licensed under GPL v2+
-* All images in inc/assets/img/demo are licensed under CC0 in pixabay.com
+* The images screenshot.png, and all images under inc/admin/img/ are creations of Nicolas Guillaume and licensed under GPL v2+, or licensed under CC0 and found on pixabay.com or unsplash.com
 * The image slider-loader.gif is released under the WTFPL license (http://www.wtfpl.net/, GPL compatible), generated on http://ajaxload.info/
 
 
 #######################  Changelog ######################
+= 3.5.1 February 1st 2017 =
+* fixed : compatibility issue with PHP<5.5
+* fixed: customizer header partial refresh not correctly working
+
+= 3.5.0 January 31st 2017 =
+* fixed : Trying to get property of non-object php notice when setting up WooCommerce
+* Imp : introduced Poppins as the new default Google font
+* Imp : changed default body line-height in pixelds to 1.6em
+* Imp: new screenshot
+* Imp: implemented an enhanced social links module in the customizer
+* Imp: improved compatibility with Woothemes Sensei plugin fixes #759
+* Imp: use lower tc-page-wrap and tc-sn z-index for compatibility reasons fixes #762
+* Imp: button toggle nav positioning improvments
+* Imp : added a notice for for freshly created menu not yet visible in the header main location
+* Imp: improve side menu positioning depending on the header layout
+
+= 3.4.38 January 21st 2017 =
+* Fix: fix default page menu behavior when dropdown on click submenu open #730
+* Imp: fix plugin php7 checker (wrong) compatibility issue #727 , #719
+* Imp: improve WooCommerce compatibility + allow shop layout selection #733
+* Fix: small tweak to the header cart WooCommerce CSS #733
+* Fix: add tc-center-images body class only when tc_center_img option true #735
+* Fix: fix superfluous bracket in font-awesome icons inline style #739
+* Fix: escape title attributes used in fp round-div and readmore button #743
+* Imp: various bootstrap>2.3.2 compatibility improvements fix #742 #737 #746
+* Imp: img to smartload must have an src which matches an allowed ext #747
+
 = 3.4.37 January 5th 2017 =
 * fixed : correctly handle sizes attribute when smartloading resp imgs
 * fixed : back to top arrow position option

@@ -1,5 +1,5 @@
 /*!
- * Customizr v3.4.37
+ * Customizr v3.5.1
  *
  * Licensed under the GNU General Public License v2 or later
  * http://www.gnu.org/licenses/gpl-2.0.html
@@ -43,7 +43,7 @@
 .input-block-level {
   display: block;
   width: 100%;
-  min-height: 30px;
+  min-height: 32px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;

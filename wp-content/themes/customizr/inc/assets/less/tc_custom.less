@@ -107,8 +107,7 @@ h3#reply-title:before,
 .format-icon:before,
 .icon-bubble:before,
 .widget h3:before,
-.colophon .credits a[class*=icon-]:before,
-.social-block a:before {
+.colophon .credits a[class*=icon-]:before {
   font-family: 'FontAwesome';
   speak: none;
   font-weight: normal;
@@ -133,81 +132,8 @@ h3#reply-title:before,
   text-decoration: none;
   opacity: 1;
 }
-.icon-google:before {
-  content: "\f0d5";
-}
-.icon-facebook:before {
-  content: "\f09a";
-}
-.icon-twitter:before {
-  content: "\f099";
-}
-.icon-feed:before {
-  content: "\f09e";
-}
-.icon-flux:before {
-  content: "\f09e";
-}
-.icon-github:before {
-  content: "\f09b";
-}
-.icon-dribbble:before {
-  content: "\f17d";
-}
-.icon-pinterest:before {
-  content: "\f231";
-}
-.icon-youtube:before {
-  content: "\f167";
-}
-.icon-linkedin:before {
-  content: "\f0e1";
-}
-.icon-wordpress:before {
+.credits .icon-wordpress:before {
   content: "\f19a";
-}
-.icon-instagram:before {
-  content: "\f16d";
-}
-.icon-flickr:before {
-  content: "\f16e";
-}
-.icon-tumblr:before {
-  content: "\f173";
-}
-.icon-email:before {
-  content: "\f0e0";
-}
-.icon-vk:before {
-  content: "\f189";
-}
-.icon-yelp:before {
-  content: "\f1e9";
-}
-.icon-xing:before {
-  content: "\f168";
-}
-.icon-snapchat:before {
-  content: "\f2ab";
-}
-/* icons in social block - fine alignment */
-.social-block a.social-icon {
-  top: -0.04em;
-}
-a.social-icon.icon-feed {
-  top: -0.01em;
-}
-a.social-icon.icon-youtube {
-  top: -0.15em;
-}
-a.social-icon.icon-wordpress {
-  top: -0.1em;
-}
-a.social-icon.icon-twitter {
-  top: 0.01em;
-}
-a.social-icon.icon-instagram {
-  top: 0;
 }
 /* Social icons floating in sidebars and colophon left block */
 .tc-sidebar .social-block a.social-icon,
@@ -585,11 +511,6 @@ body:not(.tc-sticky-header) #tc-reset-margin-top {
     display:none;
   }
 
-.navbar.notresp {
-  display:block;
-  min-width: 690px\9; /* IE 8 and below */
-}
-
 .navbar {
   & when (@is_rtl = true) {
   float: left;
@@ -715,6 +636,10 @@ h2.site-description {
 .navbar .btn-navbar:hover, .navbar .btn-navbar:focus, .navbar .btn-navbar:active, .navbar .btn-navbar.active {
   outline: 0;
 }
+/* Fix bootstrap>2.3.2 plugin conflicts*/
+.tc-header .nav-collapse.collapse.in {
+  height: auto;
+}
 
 /* REGULAR MENU
     -------------------------------------------------- */
@@ -820,9 +745,6 @@ li.dropdown.active>.dropdown-toggle, .navbar .nav li.dropdown.open.active>.dropd
   margin-right: 0px;
 }
 
-.tc-header .btn-toggle-nav.pull-left {
-  clear: both;
-}
 .tc-header .btn-toggle-nav.pull-left,
 .pull-menu-left .navbar div>ul.nav>.menu-item:first-child>a {
   & when (@is_rtl = true) {
@@ -873,7 +795,7 @@ li.dropdown.active>.dropdown-toggle, .navbar .nav li.dropdown.open.active>.dropd
 }
 #tc-page-wrap {
   position: relative;
-  z-index: 15;
+  z-index: 1;
   background: inherit;
 }
 
@@ -890,7 +812,7 @@ nav#tc-sn {
   top: 0;
   height: 100%;
   margin: 0;
-  z-index: 10; /* Make sure the z-index is lower than the #page */
+  z-index: 0; /* Make sure the z-index is lower than the #tc-page-wrap */
   overflow: hidden;
 }
 
@@ -1098,6 +1020,7 @@ style when side nav visible is actually rendered inline TC_menu.tc_set_sidenav_s
 /* Adjustment when tagline off */
 .sticky-enabled .tc-tagline-off .btn-toggle-nav {
   margin-top: 8px;
+  margin-bottom: 8px;
 }
 .navbar .btn-toggle-nav .btn {
   -webkit-border-radius: 0px;
@@ -1395,7 +1318,6 @@ footer#footer .colophon .social-block a {
   color:#5A5A5A;
   text-shadow: 0 0px 0 @white;
   font-size: 1.1em;
-
 }
 footer#footer .colophon .credits a[class*=icon-] {
   vertical-align: inherit;
@@ -1496,13 +1418,13 @@ footer#footer .colophon .credits a[class*=icon-] {
 }
 */
 
-.carousel .item {
+.carousel .czr-item {
   line-height: 500px;
   overflow: hidden;
   min-height: 500px;
   max-height: 500px;
 }
-.carousel .item > span {
+.carousel .czr-item > span {
   *zoom:1; /* layout hack IE7 and below */
   }
 
@@ -1545,6 +1467,7 @@ footer#footer .colophon .credits a[class*=icon-] {
   display: inline-block;
   position: relative;
   margin-left: 11%;
+  text-align: left;
   /*display:inline; IE7 and below */
 }
 .carousel-caption h1,
@@ -1570,7 +1493,7 @@ footer#footer .colophon .credits a[class*=icon-] {
 }
 
 /* If automatic centering is enabled */
-.carousel > .center-slides-enabled > .item > .carousel-image img {
+.carousel > .center-slides-enabled > .czr-item > .carousel-image img {
   display: block;
   position: relative;
 }
@@ -1662,7 +1585,7 @@ footer#footer .colophon .credits a[class*=icon-] {
           animation: tc-mr-loader 1.25s 0s infinite cubic-bezier(.21, .53, .56, .8);
 }
 /* CUSTOM SLIDER HEIGHT */
-.custom-slider-height .carousel-inner .item {
+.custom-slider-height .carousel-inner .czr-item {
   /*min-height:inherit;*/
 }
 
@@ -2037,7 +1960,7 @@ article .author-info h2 , .archive-header .author-info h2 {
   min-height: 18px;
   display: inline-block;
   font-size: 10px;
-  line-height: 17px;
+  line-height: 18px;
   text-align: center;
   background: none;
   -webkit-transition: bottom .3s ease;
@@ -2417,6 +2340,10 @@ article .no-thumb figcaption {
     margin: 0 8%;
     padding: 0;
     overflow: hidden;
+}
+.mask .entry-summary{
+  mask-image:linear-gradient(top, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
+   -webkit-mask-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
 }
 /*.tc-post-list-grid article:not(.expanded) .entry-summary{
   max-height: 75%;

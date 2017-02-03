@@ -562,8 +562,10 @@ var TCParams = TCParams || {};
       if ($this.is('.disabled, :disabled')) return
 
       $parent = getParent($this)
-
-      isActive = $parent.hasClass('open')
+      //@tc adddon
+      //add && ! $parent.children('ul').is(':visible');
+      //to avoid conflicts with bootstrap>2.3.2 dropdown on click for the menu
+      isActive = $parent.hasClass('open') && ! $parent.children('ul').is(':visible');
 
       clearMenus()
 
@@ -581,6 +583,7 @@ var TCParams = TCParams || {};
     }
 
   , keydown: function (e) {
+
       var $this
         , $items
         , $active
@@ -662,7 +665,6 @@ var TCParams = TCParams || {};
   }
 
   $.fn.dropdown.Constructor = Dropdown
-
 
  /* DROPDOWN NO CONFLICT
   * ==================== */
@@ -1816,6 +1818,9 @@ var TCParams = TCParams || {};
   var Collapse = function (element, options) {
     this.$element = $(element)
     this.options = $.extend({}, $.fn.collapse.defaults, options)
+    //@tc adddon
+    //to avoid conflicts with bootstrap>2.3.2 mobile menu
+    this._collapsed = true;
 
     if (this.options.parent) {
       this.$parent = $(this.options.parent)
@@ -1834,12 +1839,13 @@ var TCParams = TCParams || {};
     }
 
   , show: function () {
+
       var dimension
         , scroll
         , actives
         , hasData
-
-      if (this.transitioning || this.$element.hasClass('in')) return
+//( this._collapsed && !this.$element.hasClass('in') )
+      if (this.transitioning || this.$element.hasClass('in') ) return
 
       dimension = this.dimension()
       scroll = $.camelCase(['scroll', dimension].join('-'))
@@ -1856,6 +1862,10 @@ var TCParams = TCParams || {};
       this.transition('addClass', $.Event('show'), 'shown')
       $.support.transition && this.$element[dimension](this.$element[0][scroll])
 
+    //@tc adddon
+    //to avoid conflicts with bootstrap>2.3.2 mobile menu
+      this._collapsed = false;
+
       //@tc adddon
       //give the revealed sub menu the height of the visible viewport
       if ( ! this.$element.hasClass('nav-collapse') )
@@ -1863,7 +1873,7 @@ var TCParams = TCParams || {};
 
       if ( TCParams && 1 == TCParams.dropdowntoViewport )
       {
-        //fallback on jQuery height() if window.innerHeight isn't defined (e.g. ie<9)  
+        //fallback on jQuery height() if window.innerHeight isn't defined (e.g. ie<9)
         var winHeight = 'undefined' === typeof window.innerHeight ? window.innerHeight : czrapp.$_window.height(),
             tcVisible = winHeight - this.$element.offset().top + czrapp.$_window.scrollTop();
         this.$element.css('max-height' , tcVisible + 'px');
@@ -1886,13 +1896,22 @@ var TCParams = TCParams || {};
 
   , hide: function () {
       var dimension
-      if (this.transitioning || !this.$element.hasClass('in')) return
+      //@tc adddon
+      //( this._collapsed
+      if (this.transitioning || ( this._collapsed && !this.$element.hasClass('in') ) ) return
       dimension = this.dimension()
       this.reset(this.$element[dimension]())
       this.transition('removeClass', $.Event('hide'), 'hidden')
       this.$element[dimension](0)
 
+    //@tc adddon
+    //to avoid conflicts with bootstrap>2.3.2 mobile menu
+      this._collapsed = true;
+
       //@tc adddon
+      if ( ! this.$element.hasClass('nav-collapse') )
+          return;
+
       if ( TCParams && 1 != TCParams.dropdowntoViewport && 1 == TCParams.stickyHeader ) {
         $('body').addClass('tc-sticky-header');
       }
@@ -1933,7 +1952,9 @@ var TCParams = TCParams || {};
     }
 
   , toggle: function () {
-      this[this.$element.hasClass('in') ? 'hide' : 'show']()
+    //@tc adddon || ! this._collapsed
+    //to avoid conflicts with bootstrap>2.3.2 mobile menu
+      this[this.$element.hasClass('in') || ! this._collapsed ? 'hide' : 'show']();
     }
 
   }
@@ -2021,7 +2042,10 @@ var TCParams = TCParams || {};
   }
 
   Carousel.prototype = {
-
+    //@tc_addon
+    //use customizr events namespace
+    //use .czr-item in place of .item
+    //to avoid conflicts with other bootstrap versions
     cycle: function (e) {
       if (!e) this.paused = false
       if (this.interval) clearInterval(this.interval);
@@ -2032,7 +2056,7 @@ var TCParams = TCParams || {};
     }
 
   , getActiveIndex: function () {
-      this.$active = this.$element.find('.item.active')
+      this.$active = this.$element.find('.czr-item.active')
       this.$items = this.$active.parent().children()
       return this.$items.index(this.$active)
     }
@@ -2044,7 +2068,7 @@ var TCParams = TCParams || {};
       if (pos > (this.$items.length - 1) || pos < 0) return
 
       if (this.sliding) {
-        return this.$element.one('slid', function () {
+        return this.$element.one('customizr.slid', function () {
           that.to(pos)
         })
       }
@@ -2079,9 +2103,9 @@ var TCParams = TCParams || {};
 
   , slide: function (type, next) {
       if(!$.support.transition && this.$element.hasClass('customizr-slide')) {
-         this.$element.find('.item').stop(true, true); //Finish animation and jump to end.
+         this.$element.find('.czr-item').stop(true, true); //Finish animation and jump to end.
       }
-      var $active = this.$element.find('.item.active')
+      var $active = this.$element.find('.czr-item.active')
         , $next = next || $active[type]()
         , isCycling = this.interval
         , direction = type == 'next' ? 'left' : 'right'
@@ -2093,9 +2117,9 @@ var TCParams = TCParams || {};
 
       isCycling && this.pause()
 
-      $next = $next.length ? $next : this.$element.find('.item')[fallback]()
+      $next = $next.length ? $next : this.$element.find('.czr-item')[fallback]()
 
-      e = $.Event('slide', {
+      e = $.Event('customizr.slide', {
         relatedTarget: $next[0]
       , direction: direction
       })
@@ -2104,7 +2128,7 @@ var TCParams = TCParams || {};
 
       if (this.$indicators.length) {
         this.$indicators.find('.active').removeClass('active')
-        this.$element.one('slid', function () {
+        this.$element.one('customizr.slid', function () {
           var $nextIndicator = $(that.$indicators.children()[that.getActiveIndex()])
           $nextIndicator && $nextIndicator.addClass('active')
         })
@@ -2115,7 +2139,7 @@ var TCParams = TCParams || {};
         if (e.isDefaultPrevented()) return
         //tc addon => trigger slide event to img
         if ( 0 !== $next.find('img').length )
-          $next.find('img').trigger('slide');
+          $next.find('img').trigger('customizr.slide');
         $next.addClass(type)
         $next[0].offsetWidth // force reflow
         $active.addClass(direction)
@@ -2125,10 +2149,10 @@ var TCParams = TCParams || {};
           $active.removeClass(['active', direction].join(' '))
           that.sliding = false
           setTimeout(function () {
-            that.$element.trigger('slid');
+            that.$element.trigger('customizr.slid');
             //tc addon => trigger slid event to img
             if ( 0 !== $next.find('img').length )
-              $next.find('img').trigger('slid');
+              $next.find('img').trigger('customizr.slid');
           }, 0)
         })
       } else if(!$.support.transition && this.$element.hasClass('customizr-slide')) {
@@ -2137,7 +2161,7 @@ var TCParams = TCParams || {};
           $active.animate({left: (direction == 'right' ? '100%' : '-100%')}, 600, function(){
              $active.removeClass('active')
               that.sliding = false
-              setTimeout(function () { that.$element.trigger('slid') }, 0)
+              setTimeout(function () { that.$element.trigger('customizr.slid') }, 0)
             })
            $next.addClass(type).css({left: (direction == 'right' ? '-100%' : '100%')}).animate({left: '0'}, 600,  function(){
                $next.removeClass(type).addClass('active')
@@ -2148,7 +2172,7 @@ var TCParams = TCParams || {};
         $active.removeClass('active')
         $next.addClass('active')
         this.sliding = false
-        this.$element.trigger('slid')
+        this.$element.trigger('customizr.slid')
       }
 
       isCycling && this.cycle()
@@ -5085,17 +5109,29 @@ var czrapp = czrapp || {};
         $_window         : $(window),
         $_html           : $('html'),
         $_body           : $('body'),
-        $_tcHeader       : $('.tc-header'),
         $_wpadminbar     : $('#wpadminbar'),
-
         //various properties definition
         localized        : TCParams || {},
         is_responsive    : this.isResponsive(),//store the initial responsive state of the window
         current_device   : this.getDevice()//store the initial device
       });
+
+      this.cacheInnerElements();
+
       return czrapp;
     },
 
+    /**
+    * Cache those jQuery elements which are inside the body
+    * @return {[type]} [description]
+    */
+    cacheInnerElements : function() {
+      $.extend( czrapp, {
+        //cache various jQuery body inner el in czrapp obj
+        $_tcHeader       : $('.tc-header')
+      });
+      return czrapp;
+    },
 
     /***************************************************************************
     * CUSTOM EVENTS
@@ -5117,6 +5153,15 @@ var czrapp = czrapp || {};
         czrapp.current_device = _to;
         czrapp.$_body.trigger( 'tc-resize', { current : _current, to : _to} );
       } );//resize();
+
+      /*-----------------------------------------------------
+      - > CUSTOM REFRESH CACHE EVENT on partial content rendered (customizer preview)
+      ------------------------------------------------------*/
+      if ( 'undefined' !== typeof wp.customize && 'undefined' !== typeof wp.customize.selectiveRefresh ) {
+        wp.customize.selectiveRefresh.bind( 'partial-content-rendered', function(placement) {
+          czrapp.cacheInnerElements().$_body.trigger('partialRefresh.czr', placement);
+        });
+      }
 
       return czrapp;
     },
@@ -5193,6 +5238,7 @@ var czrapp = czrapp || {};
     },
 
     bind: function( id ) {
+      //'partial-content-rendered'
       this.topics = this.topics || {};
       this.topics[ id ] = this.topics[ id ] || $.Callbacks();
       this.topics[ id ].add.apply( this.topics[ id ], slice.call( arguments, 1 ) );
@@ -5452,8 +5498,8 @@ var czrapp = czrapp || {};
         $.each( $( '.carousel .carousel-inner') , function() {
           $( this ).centerImages( {
             enableCentering : 1 == TCParams.centerSliderImg,
-            imgSel : '.item .carousel-image img',
-            oncustom : ['slid', 'simple_load'],
+            imgSel : '.czr-item .carousel-image img',
+            oncustom : ['customizr.slid', 'simple_load'],
             defaultCSSVal : { width : '100%' , height : 'auto' },
             useImgAttr : true
           });
@@ -6026,12 +6072,12 @@ var czrapp = czrapp || {};
   var _methods =  {
     init : function() {
       //cache jQuery el
-      this.$_sticky_logo    = $('img.sticky', '.site-logo');
-      this.$_resetMarginTop = $('#tc-reset-margin-top');
+      this.stickyHeaderCacheElements();
+
       //subclass properties
       this.elToHide         = []; //[ '.social-block' , '.site-description' ],
       this.customOffset     = TCParams.stickyCustomOffset || {};// defaults : { _initial : 0, _scrolling : 0 }
-      this.logo             = 0 === this.$_sticky_logo.length ? { _logo: $('img:not(".sticky")', '.site-logo') , _ratio: '' }: false;
+
       this.timer            = 0;
       this.increment        = 1;//used to wait a little bit after the first user scroll actions to trigger the timer
       this.triggerHeight    = 20; //0.5 * windowHeight;
@@ -6048,6 +6094,12 @@ var czrapp = czrapp || {};
       czrapp.$_body.trigger( 'sticky-enabled-on-load' , { on : 'load' } );
     },
 
+    stickyHeaderCacheElements : function() {
+      //cache jQuery el
+      this.$_resetMarginTop = $('#tc-reset-margin-top');
+      this.$_sticky_logo    = $('img.sticky', '.site-logo');
+      this.logo             = 0 === this.$_sticky_logo.length ? { _logo: $('img:not(".sticky")', '.site-logo') , _ratio: '' }: false;
+    },
 
     stickyHeaderEventListener : function() {
       //LOADING ACTIONS
@@ -6059,6 +6111,14 @@ var czrapp = czrapp || {};
       //RESIZING ACTIONS
       czrapp.$_window.on( 'tc-resize', function() {
         self.stickyHeaderEventHandler('resize');
+      });
+
+      //PARTIAL REFRESH ACTIONS
+      czrapp.$_body.on( 'partialRefresh.czr', function( e, placement ) {
+        if ( placement.container.hasClass('tc-header') ) {
+          self.stickyHeaderCacheElements();
+          self.stickyHeaderEventHandler('resize');
+        }
       });
 
       //SCROLLING ACTIONS
@@ -6612,15 +6672,26 @@ var czrapp = czrapp || {};
       this._place_dropdowns();
     },//init()
 
+
+    dropdownPlaceCacheElements : function() {
+      //cache jQuery el
+      this.$_nav_collapse           = czrapp.$_tcHeader.length > 0 ? czrapp.$_tcHeader.find( '.navbar-wrapper .nav-collapse' ) : [];
+      this.$_nav                    = this.$_nav_collapse.length ? this.$_nav_collapse.find( '.nav' ) : [];
+      this.$_navbar_wrapper         = this.$_nav_collapse.length ? this.$_nav_collapse.closest( '.navbar-wrapper' ) : [];
+    },
+
     /***********************************************
     * DOM EVENT LISTENERS AND HANDLERS
     ***********************************************/
     dropdownPlaceEventListener : function() {
       var self    = this,
-          _events = 'tc-resize sn-open sn-close tc-sticky-enabled tc-place-dropdowns';
+          _events = 'tc-resize sn-open sn-close tc-sticky-enabled tc-place-dropdowns partialRefresh.czr';
 
       //Any event which may have resized the header
-      czrapp.$_body.on( _events, function( evt ) {
+      czrapp.$_body.on( _events, function( evt, data ) {
+        if ( 'partialRefresh' === evt.type && 'czr' === evt.namespace && data.container.hasClass('tc-header')  ) {
+          self.dropdownPlaceCacheElements();
+        }
         self.dropdownPlaceEventHandler( evt, 'resize' );
       });
     },
@@ -6808,7 +6879,7 @@ var czrapp = czrapp || {};
           _offset = -20 - _dropdown_overflow; //add some space (20px) on the right(rtl-> left)
           // when is dropdown first level we need to move the top arrow
           // we need the menu-item-{id} class to build the css rule
-          var _menu_id = $_parent_dropdown.attr('class').match(/menu-item-\d+/);
+          var _menu_id = $_parent_dropdown.attr('class').match(/(menu|page)-item-\d+/);
           _menu_id = _menu_id ? _menu_id[0] : null;
           if ( _menu_id )
             this._set_dropdown_arrow_style( _menu_id, _offset );
