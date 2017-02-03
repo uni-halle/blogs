@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Events Manager - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-10-03 15:38:07+0000\n"
+"PO-Revision-Date: 2016-12-20 11:04:37+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,7 +13,7 @@ msgstr ""
 
 #: templates/templates/search/geo-units.php:13
 msgid "distance units"
-msgstr "Unità di Distanza"
+msgstr "Unità di Misura"
 
 #: admin/settings/tabs/formats.php:445
 msgid "documentation"
@@ -21,7 +21,7 @@ msgstr "documentazione "
 
 #: admin/settings/tabs/formats.php:445
 msgid "Google Maps require an API key, please see our %s page for instructions on obtaining one."
-msgstr "Google Maps richiede una chiave API, consulta il nostro pagina %s per le istruzioni su come ottenere uno."
+msgstr "Google Maps richiede una chiave API, consulta la nostra pagina %s per istruzioni su come ottenerne una."
 
 #: admin/settings/tabs/formats.php:445
 msgid "Google Maps API Browser Key"
@@ -64,7 +64,7 @@ msgstr "Visualizza un elenco di luoghi per gli eventi di Events Manager."
 
 #: widgets/em-locations.php:22
 msgid "Event start date/time, location name"
-msgstr "Data ora di inizio dell'evento, nome del luogo"
+msgstr "Data/ora di inizio dell'evento, nome del luogo"
 
 #: widgets/em-locations.php:18
 msgid "No locations"
@@ -76,7 +76,7 @@ msgstr "Luoghi dell'evento"
 
 #: widgets/em-events.php:182 widgets/em-locations.php:121
 msgid "List item format"
-msgstr "Lista elemento di formato"
+msgstr "Formato degli elementi di un elenco"
 
 #: widgets/em-events.php:180 widgets/em-locations.php:119
 msgid "The list is wrapped in a %s tag, so if an %s tag is not wrapping the formats below it will be added automatically."
@@ -88,7 +88,7 @@ msgstr "Testo per il collegamento a tutti gli eventi?"
 
 #: widgets/em-events.php:164
 msgid "Show all events link at bottom?"
-msgstr "Mostra in fondo un collegamento a tutti gli eventi?"
+msgstr "Mostra un collegamento a tutti gli eventi in fondo?"
 
 #: widgets/em-events.php:143
 msgid "Order"
@@ -157,7 +157,7 @@ msgstr "Visualizzare gli eventi in un widget calendario."
 
 #: templates/templates/search/geo.php:16
 msgid "If this is incorrect, click cancel and try a more specific address."
-msgstr "Se questo non è corretto, fare clic su Annulla e provare un indirizzo più specifico."
+msgstr "Se non è corretto, fare clic su Annulla e provare un indirizzo più specifico."
 
 #: templates/templates/search/geo.php:16
 msgid "We are going to use %s for searching."
@@ -231,7 +231,7 @@ msgstr "HTML ammesso."
 
 #: templates/forms/location-editor.php:44
 msgid "Details about the location."
-msgstr "Dettagli circa il uogo"
+msgstr "Dettagli circa il luogo"
 
 #: templates/forms/location-editor.php:29
 msgid "The name of the location"
@@ -310,7 +310,7 @@ msgstr "Questo è un evento ricorrente"
 #: templates/forms/event/recurring-when.php:65
 #: templates/forms/event/when-with-recurring.php:71
 msgid "For a recurring event, a one day event will be created on each recurring date within this date range."
-msgstr "Per un evento ricorrente, sarà creato un evento giornaliero ad ogni data all'interno di questo intervallo."
+msgstr "Per un evento ricorrente, verrà creato un evento giornaliero in ogni data all'interno di questo intervallo."
 
 #: templates/forms/event/recurring-when.php:63
 #: templates/forms/event/when-with-recurring.php:69
@@ -464,7 +464,7 @@ msgstr "Crea un nuovo Luogo o inizia a digitare nel campo qui sopra per cercare 
 
 #: templates/forms/event/location.php:74
 msgid "Location Name:"
-msgstr "Località Nome:"
+msgstr "Nome Luogo:"
 
 #: templates/forms/event/location.php:35
 msgid "No Location"
@@ -484,11 +484,11 @@ msgstr "Nessun gruppo definito."
 
 #: templates/forms/event/group.php:43
 msgid "As a site admin, you see all group events, users will only be able to choose groups they are admins of."
-msgstr "Come amministratore del sito, si vede tutti gli eventi di gruppo, gli utenti saranno in grado di scegliere i gruppi che sono amministratori di."
+msgstr "Come amministratore del sito, tu puoi vedere tutti gli eventi di gruppo, mentre gli utenti saranno in grado di scegliere soltanto i gruppi di cui hanno diritti di amministrazione."
 
 #: templates/forms/event/group.php:40
 msgid "Select a group you admin to attach this event to it. Note that all other admins of that group can modify the booking."
-msgstr "Selezionare un gruppo Admin collegare questo evento ad esso. Si noti che tutti gli altri amministratori del gruppo possono modificare la prenotazione."
+msgstr "Selezionare un gruppo che amministri per collegare questo evento al gruppo. Da notare che tutti gli altri amministratori del gruppo possono modificare la prenotazione."
 
 #: templates/forms/event/group.php:22
 msgid "Not a Group Event"
@@ -554,7 +554,7 @@ msgstr "Chiudere l'editor del biglietto"
 
 #: templates/forms/event/bookings.php:73
 msgid "Free"
-msgstr "Libero"
+msgstr "Gratuito"
 
 #: templates/forms/event/bookings.php:68
 msgid "View Bookings"
@@ -662,7 +662,7 @@ msgstr "Prima"
 #: templates/forms/event/bookings.php:146
 msgctxt "before or after"
 msgid "%s the event starts"
-msgstr "%s l'evento inizia"
+msgstr "%s che l'evento inizia"
 
 #: templates/forms/event/bookings-ticket-form.php:48
 #: templates/forms/event/bookings-ticket-form.php:67
@@ -698,7 +698,7 @@ msgstr "Almeno"
 #: templates/forms/event/bookings-ticket-form.php:28
 #: templates/forms/event/bookings-ticket-form.php:33
 msgid "Leave either blank for no upper/lower limit."
-msgstr "Lasciare in bianco per nessun limite superiore / inferiore."
+msgstr "Lasciare vuoto per nessun limite superiore/inferiore."
 
 #: templates/forms/event/bookings-ticket-form.php:22
 msgid "Enter a maximum number of spaces (required)."
@@ -739,7 +739,7 @@ msgstr "Posti disponibili"
 #: templates/forms/event/attributes.php:83
 #: templates/forms/location/attributes.php:83
 msgid "In order to use attributes, you must define some in your templates, otherwise they'll never show. Go to Events > Settings > General to add attribute placeholders."
-msgstr "Per poter utilizzare gli attributi, è necessario definire alcuni in template, altrimenti non saranno mai mostrare. Vai a Eventi> Impostazioni> Generale per aggiungere segnaposto attributi."
+msgstr "Per poter utilizzare attributi, è necessario definirne alcuni nei tuoi template, altrimenti non saranno visibili. Vai a Eventi> Impostazioni> Generale per aggiungere testi predefiniti per gli attributi."
 
 #: templates/forms/event/attributes.php:51
 msgid "If you see any attributes under here, that means they're not used in Events Manager formats. To add them, you need to add the custom attribute again to a formatting option in the settings page. To remove any of these deprecated attributes, give it a blank value and save."
@@ -792,7 +792,7 @@ msgstr "Sconti Prima Imposte"
 
 #: templates/emails/bookingsummary.php:25
 msgid "Sub Total"
-msgstr "sottotale"
+msgstr "Subtotale"
 
 #: templates/emails/bookingsummary.php:13 templates/emails/bookingtickets.php:7
 msgid "Quantity"
@@ -850,7 +850,7 @@ msgstr "Tu non hai i permessi per modificare gli altri %s"
 #: events-manager.php:442 events-manager.php:450 events-manager.php:456
 #: events-manager.php:463
 msgid "You do not have permission to delete %s"
-msgstr "Non avete il permesso di cancellare %s"
+msgstr "Non hai il permesso di cancellare %s"
 
 #: events-manager.php:441 events-manager.php:449 events-manager.php:455
 msgid "You do not have permission to delete others %s"
@@ -1061,7 +1061,7 @@ msgstr "Nome nuova categoria evento"
 
 #: em-posts.php:104
 msgid "Add New Event Category"
-msgstr "Aggiungi nova Categoria evento"
+msgstr "Aggiungi nuova Categoria evento"
 
 #: em-posts.php:103
 msgid "Update Event Category"
@@ -1155,7 +1155,7 @@ msgstr "Nessun Evento"
 
 #: em-install.php:723 em-install.php:729
 msgid "Booking Rejected"
-msgstr "Prenotazione Rifiutato"
+msgstr "Prenotazione Rifiutata"
 
 #: em-install.php:721 em-install.php:731
 msgid "Booking Confirmed"
@@ -1195,7 +1195,7 @@ msgstr "Prenota ora"
 
 #: em-install.php:703
 msgid "You cannot book more than %d spaces for this event."
-msgstr "Non è possibile prenotare più di spazi %d per questo evento."
+msgstr "Non è possibile prenotare più di %d spazi per questo evento."
 
 #: em-install.php:702
 msgid "You must request at least one space to book an event."
@@ -1223,7 +1223,7 @@ msgstr "La prenotazione non può essere creata"
 
 #: em-install.php:696
 msgid "However, there were some problems whilst sending confirmation emails to you and/or the event contact person. You may want to contact them directly and letting them know of this error."
-msgstr "Purtroppo, ci sono stati alcuni problemi, nell'invio della mail di conferma a voi e / o la persona referente dell'evento. Si consiglia di contattarla direttamente e far sapere di questo errore."
+msgstr "Purtroppo ci sono stati alcuni problemi nell'invio della mail di conferma a voi e/o la persona referente dell'evento. Si consiglia di contattarla direttamente e far sapere di questo errore."
 
 #: em-install.php:695
 msgid "You must log in or register to make a booking."
@@ -1231,7 +1231,7 @@ msgstr "È necessario accedere o registrati per effettuare una prenotazione."
 
 #: em-install.php:694
 msgid "Booking cannot be made, not enough spaces available!"
-msgstr "Prenotazione non può essere fatto, non gli spazi disponibili sufficienti!"
+msgstr "La Prenotazione non può essere eseguita, non ci sono abbastanza posti disponibili!"
 
 #: em-install.php:693
 msgid "Booking successful."
@@ -1574,7 +1574,7 @@ msgstr "Si prega di inserire un valore corretto del prezzo del biglietto. Ad ese
 #: classes/em-ticket.php:137 classes/em-ticket.php:138
 #: classes/em-ticket.php:143 classes/em-ticket.php:144
 msgid "There was a problem saving the ticket."
-msgstr "C'è stato un problema salvando il biglietto."
+msgstr "C'è stato un problema durante il salvataggio del biglietto."
 
 #: classes/em-ticket.php:134
 msgid "Ticket created"
@@ -1603,7 +1603,7 @@ msgstr "L'immagine è in un formato sbagliato!"
 
 #: classes/em-object.php:1504
 msgid "The image is too small! Minimum size allowed:"
-msgstr "L'immagine è troppo piccola! Taglia minima consentita:"
+msgstr "L'immagine è troppo piccola! Dimensione minima consentita:"
 
 #: classes/em-object.php:1501
 msgid "The image is too big! Maximum size allowed:"
@@ -1611,7 +1611,7 @@ msgstr "L'immagine è troppo grande! Dimensione massima consentita:"
 
 #: classes/em-object.php:1494
 msgid "The image file is too big! Maximum size:"
-msgstr "Il file immagine è troppo grande! Dimensione massima:"
+msgstr "L'immagine è troppo grande! Dimensione massima:"
 
 #: classes/em-object.php:1473
 msgid "There was an error uploading the image."
@@ -1694,7 +1694,7 @@ msgstr "Da %1$s in %2$s"
 
 #: classes/em-event.php:2349
 msgid "the last %s of the month"
-msgstr "l'ultimo%s del mese"
+msgstr "l'ultimo %s del mese"
 
 #: classes/em-event.php:2349
 msgid "the fourth %s of the month"
@@ -1764,15 +1764,15 @@ msgstr "Non verrà visualizzato sugli elenchi del sito, per correggere questo de
 
 #: classes/em-event.php:723
 msgid "There were some errors saving your location."
-msgstr "C'è stato qualche errore salvando il tuo luogo."
+msgstr "C'è stato qualche errore durante il salvataggio del tuo luogo."
 
 #: classes/em-event.php:619
 msgid "Please specify what days of the week this event should occur on."
-msgstr "Si prega di specificare quali giorni della settimana l'evento dovrebbe essere."
+msgstr "Si prega di specificare in quali giorni della settimana l'evento dovrebbe essere."
 
 #: classes/em-event.php:616
 msgid "Since the event is repeated, you must specify an event end date greater than the start date."
-msgstr "Dal momento che l'evento si ripete, è necessario specificare una data di conclusione dell'evento successiva alla data iniziale."
+msgstr "Dal momento che l'evento è ripetuto, è necessario specificare una data di conclusione dell'evento successiva a quella iniziale."
 
 #: classes/em-event.php:612 classes/em-ticket-booking.php:113
 #: classes/em-ticket.php:247
@@ -1797,7 +1797,7 @@ msgstr "Il tuo nome"
 
 #: classes/em-event.php:562
 msgid "A valid email"
-msgstr "Una email valido"
+msgstr "Una email valida"
 
 #: classes/em-event.php:557
 msgid "Event name"
@@ -1829,7 +1829,7 @@ msgstr "Scollega"
 #: templates/buddypress/group-events.php:131
 #: templates/buddypress/my-group-events.php:130 templates/tables/events.php:145
 msgid "Edit Recurring Events"
-msgstr "Modifica evento ricorrenti"
+msgstr "Modifica eventi ricorrenti"
 
 #: classes/em-event-posts-admin.php:226
 #: templates/buddypress/group-events.php:127
@@ -2133,7 +2133,7 @@ msgstr "LA prenotazione non è stata %s."
 #: classes/em-booking.php:829 classes/em-booking.php:830 em-actions.php:402
 #: em-actions.php:429
 msgid "ERROR : Email Not Sent."
-msgstr "ERRORE : Email Non Inviato"
+msgstr "ERRORE : Email Non Inviata"
 
 #: classes/em-booking.php:825 em-actions.php:397 em-actions.php:420
 msgid "Email Sent."

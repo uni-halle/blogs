@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Akismet - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-08-19 19:54:11+0000\n"
+"PO-Revision-Date: 2016-11-03 01:32:42+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -60,6 +60,14 @@ msgid "%s missed spam"
 msgid_plural "%s missed spam"
 msgstr[0] "%s verpasster Spam"
 msgstr[1] "%s verpasste Spam"
+
+#: views/start.php:80
+msgid "Log in or sign up now."
+msgstr "Anmelden oder jetzt registrieren."
+
+#: views/start.php:66
+msgid "Already have your key? Enter it here."
+msgstr "Haben Sie bereits einen Schlüssel? Geben Sie ihn hier ein."
 
 #: views/start.php:65
 msgid "Enter an API key"
@@ -272,7 +280,7 @@ msgstr "Registrieren Sie sich auf %s, um einen API-Schlüssel zu erhalten."
 
 #: class.akismet-admin.php:172
 msgid "If you already have an API key"
-msgstr "Wenn Sie bereits einen API Schlüssel haben"
+msgstr "Wenn Sie bereits einen API-Schlüssel haben"
 
 #: class.akismet-admin.php:174
 msgid "Copy and paste the API key into the text field."
@@ -742,7 +750,7 @@ msgstr "Sicher: Spam immer in den Spam-Ordner legen zum Überprüfen."
 
 #. Description of the plugin/theme
 msgid "Used by millions, Akismet is quite possibly the best way in the world to <strong>protect your blog from spam</strong>. It keeps your site protected even while you sleep. To get started: 1) Click the \"Activate\" link to the left of this description, 2) <a href=\"https://akismet.com/get/\">Sign up for an Akismet plan</a> to get an API key, and 3) Go to your Akismet configuration page, and save your API key."
-msgstr "Akismet wird von Millionen benutzt und ist möglicherweise die beste Art und Weise auf der Welt, um <strong>Ihren Blog vor Kommentar- und Trackback-Spam zu schützen</strong>. Es schützt Ihre Seite sogar während Sie schlafen vor Spam. Um zu beginnen: 1) Klicken Sie den \"Aktivieren\" Link links neben dieser Beschreibung, 2) <a href=\"https://akismet.com/get/\">Registrieren Sie sich, um einen Akismet API Schlüssel zu erhalten</a> und 3) Gehen Sie auf Ihre Akismet Konfigurationsseite und speichern Sie Ihren API Schlüssel."
+msgstr "Akismet wird von Millionen benutzt und ist möglicherweise die beste Art und Weise auf der Welt, um <strong>Ihren Blog vor Kommentar- und Trackback-Spam zu schützen</strong>. Es schützt Ihre Seite sogar während Sie schlafen vor Spam. Um zu beginnen: 1) Klicken Sie den \"Aktivieren\" Link links neben dieser Beschreibung, 2) <a href=\"https://akismet.com/get/\">Registrieren Sie sich, um einen Akismet API-Schlüssel zu erhalten</a> und 3) Gehen Sie auf Ihre Akismet Konfigurationsseite und speichern Sie Ihren API-Schlüssel."
 
 #. Author URI of the plugin/theme
 msgid "https://automattic.com/wordpress-plugins/"

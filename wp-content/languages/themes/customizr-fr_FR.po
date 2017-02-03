@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Customizr package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-01-09 11:21:04+0000\n"
+"PO-Revision-Date: 2017-01-19 15:57:49+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,51 +19,182 @@ msgstr "Customizr est un thème WordPress polyvalent et facile à personnaliser,
 msgid "Customizr"
 msgstr "Customizr "
 
-#: inc/czr-init.php:8503
-msgid "What We Do"
-msgstr "Notre Activité"
+#: inc/czr-init.php:4753
+msgid "Back to top arrow position"
+msgstr "Position de l'icône Retour en haut"
 
-#: inc/czr-init.php:8499
-msgid "Who We Are"
-msgstr "A Propos"
+#: core/front/models/modules/slider/class-model-slider_of_posts.php:34
+msgid "Customize or remove the posts slider"
+msgstr "Customiser ou supprimer le carrousel d'article"
 
-#: inc/czr-init.php:8680
-msgid "Call to action"
-msgstr "Appel à action"
+#: templates/modules/searchform.php:11
+msgctxt "title"
+msgid "Search &hellip;"
+msgstr "Rechercher &hellip;"
 
-#: inc/czr-init.php:8735 inc/czr-init.php:8781
+#: templates/modules/searchform.php:10
+msgctxt "label"
 msgid "Search"
 msgstr "Rechercher"
 
-#: inc/czr-init.php:8678
+#: templates/modules/related-posts/related_posts.php:9
+msgid "You may also like"
+msgstr "Vous pourrez aussi être intéressé par"
+
+#: templates/modules/read_more.php:9
+msgid "Read more"
+msgstr "En lire davantage"
+
+#: templates/modules/grid/grid_item.php:39
+msgid "Permalink to"
+msgstr "Lien vers"
+
+#: templates/footer/footer_credits.php:9
+msgid "All rights reserved"
+msgstr "Tous droits réservés"
+
+#: templates/content/navigation/singular_posts_navigation.php:51
+msgid "Next post"
+msgstr "Article suivant"
+
+#: templates/content/navigation/singular_posts_navigation.php:43
+#: templates/content/navigation/singular_posts_navigation.php:45
+msgid "Back to post list"
+msgstr "Retour à la liste des articles"
+
+#: templates/content/navigation/singular_posts_navigation.php:37
+msgid "Previous post"
+msgstr "Article précédent"
+
+#: templates/content/navigation/post_list_posts_navigation.php:29
+msgid "Posts navigation"
+msgstr "Navigation dans les articles"
+
+#: templates/content/navigation/post_list_posts_navigation.php:9
+msgid "Newer posts"
+msgstr "Articles plus récents"
+
+#: templates/content/navigation/post_list_posts_navigation.php:8
+msgid "Older posts"
+msgstr "Articles plus anciens"
+
+#: templates/content/headings/search_heading.php:15
+msgid "%s result"
+msgid_plural "%s results"
+msgstr[0] "%s résultat"
+msgstr[1] "%s résultats"
+
+#: templates/content/headings/search_heading.php:9
+msgid "Search results for:"
+msgstr "Résultats de recherche pour :"
+
+#: templates/content/headings/post_list_heading.php:21
+msgid "%s post"
+msgid_plural "%s posts"
+msgstr[0] "%s article"
+msgstr[1] "%s articles"
+
+#: templates/content/no-results/search_no_results.php:7
+msgid "Nothing Found"
+msgstr "Aucun résutat"
+
+#: templates/content/no-results/404.php:7
+msgid "404"
+msgstr "404"
+
+#: templates/content/comments/comment_list.php:24
+msgid "pingback"
+msgid_plural "pingbacks"
+msgstr[0] "ping"
+msgstr[1] "pings"
+
+#: templates/content/comments/comment.php:35
+msgid "Edit comment"
+msgstr "Modifier le commentaire"
+
+#: templates/content/authors/author_info.php:14
+#: templates/content/authors/author_info_small.php:9
+msgid "View all the posts of the author"
+msgstr "Voir tous les articles de l'auteur"
+
+#: templates/content/authors/author_info.php:11
+msgid "AUTHOR"
+msgstr "AUTEUR"
+
+#: inc/czr-init.php:778
+msgid "Snapchat profile url"
+msgstr "Adresse url du profil Snapchat"
+
+#: inc/czr-init.php:777
+msgid "Contact me on Snapchat"
+msgstr "Contactez moi su Snapchat"
+
+#: core/front/models/content/post-lists/singles/class-model-post_list_single_media.php:97
+#: core/front/models/content/post-lists/singles/class-model-post_list_single_media.php:131
+#: core/front/models/content/post-lists/singles/contents/class-model-post_list_single_content_inner.php:82
+#: templates/content/post-lists/singles/headings/post_list_single_header-no_metas.php:16
+#: templates/content/post-lists/singles/headings/post_list_single_header.php:21
+#: templates/content/post-lists/singles/post_list_single_media.php:22
+msgid "Permalink to "
+msgstr "Lien vers"
+
+#: core/front/models/content/headings/class-model-post_list_heading.php:53
+msgid "Yearly Archives:"
+msgstr "Archives annuelles:"
+
+#: core/front/models/content/headings/class-model-post_list_heading.php:52
+msgid "Monthly Archives:"
+msgstr "Archives mensuelles:"
+
+#: core/front/models/content/headings/class-model-post_list_heading.php:51
+msgid "Daily Archives:"
+msgstr "Archives journalières:"
+
+#: inc/czr-init.php:8549
+msgid "What We Do"
+msgstr "Notre Activité"
+
+#: inc/czr-init.php:8545
+msgid "Who We Are"
+msgstr "A Propos"
+
+#: inc/czr-init.php:8726
+msgid "Call to action"
+msgstr "Appel à action"
+
+#: inc/czr-init.php:8781 inc/czr-init.php:8827
+msgid "Search"
+msgstr "Rechercher"
+
+#: inc/czr-init.php:8724
 msgid "Engage your visitors with a carousel in any pages."
 msgstr "Faites réagir vos visiteurs avec un diaporama dans n'importe quelle page."
 
-#: inc/czr-init.php:8507
+#: inc/czr-init.php:8553
 msgid "Contact Us"
 msgstr "Contactez-nous"
 
-#: inc/czr-init.php:8672
+#: inc/czr-init.php:8718
 msgid "The Customizr theme fits nicely on any mobile devices."
 msgstr "Le thème Customizr s'intègre bien sur tous les appareils mobiles."
 
-#: inc/czr-init.php:8741 inc/czr-init.php:8759
+#: inc/czr-init.php:8787 inc/czr-init.php:8805
 msgid "Recent Posts"
 msgstr "Billets Récents"
 
-#: inc/czr-init.php:8748 inc/czr-init.php:8770
+#: inc/czr-init.php:8794 inc/czr-init.php:8816
 msgid "Recent Comments"
 msgstr "Commentaires Récents"
 
-#: inc/czr-init.php:3084
+#: inc/czr-init.php:3101
 msgid "If enabled, your slides scroll slower than the page (parallax effect)."
 msgstr "Si activé, vos diapositives défilent plus lentement que la page (effet parallax)."
 
-#: inc/czr-init.php:3081
+#: inc/czr-init.php:3098
 msgid "Sliders : use parallax scrolling"
 msgstr "Diaporamas : utiliser un défilement parallax"
 
-#: core/utils/class-fire-utils_settings_map.php:622 inc/czr-init.php:3301
+#: core/utils/class-fire-utils_settings_map.php:622 inc/czr-init.php:3318
 msgid "WooCommerce: if checked, your WooCommerce cart icon will remain visible when scrolling."
 msgstr "WooCommerce : si coché, quand vous défilerez votre icône de panier WooCommerce restera visible."
 
@@ -79,31 +210,31 @@ msgstr "Obtenir du support"
 msgid "Code snippets for developers"
 msgstr "Exemples de code pour les développeurs"
 
-#: core/utils/class-fire-utils_settings_map.php:2511 inc/czr-init.php:5200
+#: core/utils/class-fire-utils_settings_map.php:2511 inc/czr-init.php:5217
 msgid "Front-end Icons (Font Awesome)"
 msgstr "Les icônes de l’interface utilisateur (Font Awesome)"
 
-#: core/utils/class-fire-utils_settings_map.php:2154 inc/czr-init.php:4848
+#: core/utils/class-fire-utils_settings_map.php:2154 inc/czr-init.php:4865
 msgid "Check out some example of uses"
 msgstr "Découvrez quelques exemples d'utilisations"
 
-#: core/utils/class-fire-utils_settings_map.php:2153 inc/czr-init.php:4847
+#: core/utils/class-fire-utils_settings_map.php:2153 inc/czr-init.php:4864
 msgid "When checked, the additional Font Awesome CSS stylesheet will be loaded. This stylesheet is not loaded by default to save bandwidth but you might need it if you want to use the whole Font Awesome CSS."
 msgstr "Lorsque cette option est cochée, la feuille de style Font Awesome sera chargée. Elle n'est pas chargée par défaut pour préserver la bande passante. Mais vous en aurez besoin si vous voulez utiliser toutes les fonctions de Font Awesome CSS."
 
-#: core/utils/class-fire-utils_settings_map.php:2149 inc/czr-init.php:4843
+#: core/utils/class-fire-utils_settings_map.php:2149 inc/czr-init.php:4860
 msgid "Load Font Awesome CSS"
 msgstr "Chargez le CSS de Font Awesome"
 
-#: core/utils/class-fire-utils_settings_map.php:2143 inc/czr-init.php:4837
+#: core/utils/class-fire-utils_settings_map.php:2143 inc/czr-init.php:4854
 msgid "When checked, the Font Awesome icons will be loaded on front end. You might want to load the Font Awesome icons with a custom code, or let a plugin do it for you."
 msgstr "Lorsque l&rsquo;option est cochée, les icônes Font Awesome seront chargées dans l&rsquo;interface publique. Vous aurez la possibilité de charger les icônes Font Awesome avec un code personnalisé ou d&rsquo;utiliser une extension pour le faire."
 
-#: core/utils/class-fire-utils_settings_map.php:2142 inc/czr-init.php:4836
+#: core/utils/class-fire-utils_settings_map.php:2142 inc/czr-init.php:4853
 msgid "Use with caution"
 msgstr "Utiliser avec précaution"
 
-#: core/utils/class-fire-utils_settings_map.php:910 inc/czr-init.php:3589
+#: core/utils/class-fire-utils_settings_map.php:910 inc/czr-init.php:3606
 msgid "Display navigation in your home blog"
 msgstr "Affichez la navigation sur votre page d'accueil de blog"
 
@@ -131,79 +262,79 @@ msgstr "Url du profil Vkontakte"
 msgid "Follow me on VKontakte"
 msgstr "Suivez moi sur VKontakte"
 
-#: core/utils/class-fire-utils_settings_map.php:2138 inc/czr-init.php:4832
+#: core/utils/class-fire-utils_settings_map.php:2138 inc/czr-init.php:4849
 msgid "Load Font Awesome set of icons"
 msgstr "Chargez l&rsquo;ensemble des icônes Font Awesome"
 
-#: core/utils/class-fire-utils_settings_map.php:615 inc/czr-init.php:3294
+#: core/utils/class-fire-utils_settings_map.php:615 inc/czr-init.php:3311
 msgid "Sticky header: display the shopping cart"
 msgstr "En-tête fixe : afficher le panier"
 
-#: core/utils/class-fire-utils_settings_map.php:569 inc/czr-init.php:3248
+#: core/utils/class-fire-utils_settings_map.php:569 inc/czr-init.php:3265
 msgid "WooCommerce: check to display a cart icon showing the number of items in your cart next to your header's tagline."
 msgstr "WooCommerce&nbsp;: Vous pouvez afficher une icône de panier montrant le nombre d&rsquo;éléments dans votre panier à côté de votre slogan d&rsquo;en-tête"
 
-#: core/utils/class-fire-utils_settings_map.php:566 inc/czr-init.php:3245
+#: core/utils/class-fire-utils_settings_map.php:566 inc/czr-init.php:3262
 msgid "Display the shopping cart in the header"
 msgstr "Afficher le panier dans l&rsquo;en-tête"
 
-#: core/utils/class-fire-utils_settings_map.php:449 inc/czr-init.php:3128
+#: core/utils/class-fire-utils_settings_map.php:449 inc/czr-init.php:3145
 msgid "This feature has been introduced in WordPress v4.4+ (dec-2015), and might have minor side effects on some of your existing images. Check / uncheck this option to safely verify that your images are displayed nicely."
 msgstr "Cette fonctionnalité a été introduite dans WordPress v4.4 + (déc-2015), et pourrait avoir des effets secondaires mineurs sur certaines de vos images existantes. Cochez / décochez l&rsquo;option et vérifiez que vos images sont affichées correctement."
 
-#: core/utils/class-fire-utils_settings_map.php:447 inc/czr-init.php:3126
+#: core/utils/class-fire-utils_settings_map.php:447 inc/czr-init.php:3143
 msgid "Enable the WordPress responsive image feature for the theme's thumbnails"
 msgstr "Activer la fonction WordPress d&rsquo;image responsive pour les miniatures du thème."
 
-#: core/utils/class-fire-utils_settings_map.php:440 inc/czr-init.php:3119
+#: core/utils/class-fire-utils_settings_map.php:440 inc/czr-init.php:3136
 msgid "Enable the WordPress responsive image feature for the slider"
 msgstr "Activer la fonction WordPress d&rsquo;image responsive pour le diaporama"
 
-#: inc/czr-init.php:2285 templates/header/woocommerce_cart.php:7
+#: inc/czr-init.php:2302 templates/header/woocommerce_cart.php:7
 msgid "View your shopping cart"
 msgstr "Afficher votre panier"
 
-#: core/utils/class-fire-utils_settings_map.php:967 inc/czr-init.php:3646
+#: core/utils/class-fire-utils_settings_map.php:967 inc/czr-init.php:3663
 msgid "You can choose to display only the sticky posts. If you're not sure how to set a sticky post, check"
 msgstr "Vous pouvez choisir d’afficher uniquement les articles mis en avant. Si vous ne savez pas ce qu’est un article en avant, référez-vous à"
 
-#: core/utils/class-fire-utils_settings_map.php:962 inc/czr-init.php:3641
+#: core/utils/class-fire-utils_settings_map.php:962 inc/czr-init.php:3658
 msgid "Include only sticky posts"
 msgstr "N'inclure que les articles mis à la Une"
 
-#: core/class-fire-plugins_compat.php:352 inc/czr-init.php:1614
+#: core/class-fire-plugins_compat.php:352 inc/czr-init.php:1624
 msgid "Posts slider button text"
 msgstr "Texte du bouton du diaporama d’articles"
 
-#: core/class-fire-plugins_compat.php:350 inc/czr-init.php:1612
+#: core/class-fire-plugins_compat.php:350 inc/czr-init.php:1622
 msgid "Front page slider name"
 msgstr "Nom du diaporama de la page d'accueil"
 
-#: inc/czr-front.php:9709
+#: inc/czr-front.php:9714
 msgid "Powered by WordPress"
 msgstr "Propulsé par WordPress"
 
-#: inc/czr-front.php:9708
+#: inc/czr-front.php:9713
 msgid "Powered by"
 msgstr "Propulsé par"
 
-#: inc/czr-front.php:8897
+#: inc/czr-front.php:8901
 msgid "this slider"
 msgstr "le diaporama"
 
-#: inc/czr-front.php:8897
+#: inc/czr-front.php:8901
 msgid "the posts slider"
 msgstr "Le diaporama d’articles"
 
-#: inc/czr-front.php:8896
+#: inc/czr-front.php:8900
 msgid "Customize or remove %s"
 msgstr "Personnaliser ou retirer %s"
 
-#: inc/czr-init.php:7628
+#: inc/czr-init.php:7674
 msgid "%s and check the option 'Load images on scroll' under 'Website Performances' section."
 msgstr "%s et vérifiez l’option « Charger les images lors du défilement » sous la section « performances du site »."
 
-#: inc/czr-init.php:7627
+#: inc/czr-init.php:7673
 msgid "Did you know you can easily speed up your page load by deferring the loading of the non visible images?"
 msgstr "Saviez-vous que vous pouvez facilement accélérer le temps de chargement de votre page en reportant le chargement des images non visibles ?"
 
@@ -215,81 +346,85 @@ msgstr "E-mail de contact"
 msgid "E-mail"
 msgstr "E-mail"
 
-#: core/utils/class-fire-utils_settings_map.php:919 inc/czr-init.php:3598
+#: core/utils/class-fire-utils_settings_map.php:919 inc/czr-init.php:3615
 msgid "Apply a category filter to your home / blog posts"
 msgstr "Appliquer un filtre de catégorie pour votre page d’accueil / articles de blog"
 
-#: core/utils/class-fire-utils_settings_map.php:855 inc/czr-init.php:3534
+#: core/utils/class-fire-utils_settings_map.php:855 inc/czr-init.php:3551
 msgid "Set the number of posts to display"
 msgstr "Définissez le nombre d’articles à afficher"
 
-#: core/utils/class-fire-utils_settings_map.php:848 inc/czr-init.php:3527
+#: core/utils/class-fire-utils_settings_map.php:848 inc/czr-init.php:3544
 msgid "Learn more about post categories in WordPress"
 msgstr "Plus d’informations sur les catégories d’articles dans WordPress"
 
-#: core/utils/class-fire-utils_settings_map.php:846 inc/czr-init.php:3525
+#: core/utils/class-fire-utils_settings_map.php:846 inc/czr-init.php:3542
 msgid "Click inside the above field and pick post categories you want to display. No filter will be applied if empty."
 msgstr "Cliquez dans les champs suivants et sélectionner les catégories d’article que vous voulez voir apparaitre. Aucun filtre ne sera appliqué si laissé vide."
 
 #: core/front/models/modules/slider/class-model-slider_of_posts.php:489
-#: inc/czr-front.php:9409
+#: inc/czr-front.php:9414
 msgid "There is no excerpt because this is a protected post."
 msgstr "Il n’y a pas d'extrait, car cet article est protégé."
 
 #: core/front/models/modules/slider/class-model-slider_of_posts.php:466
-#: inc/czr-front.php:9384
+#: inc/czr-front.php:9389
 msgid "Protected: %s"
 msgstr "Protégé : %s"
 
-#: core/utils/class-fire-utils_settings_map.php:2709 inc/czr-init.php:5398
+#: core/front/models/modules/slider/class-model-slider.php:467
+msgid "Customize or remove this slider"
+msgstr "Customiser ou supprimer ce diaporama"
+
+#: core/utils/class-fire-utils_settings_map.php:2709 inc/czr-init.php:5415
 msgid "&mdash; Auto-generated slider from your blog posts &mdash;"
 msgstr "&mdash; Le diaporama auto-généré de vos articles de blog &mdash;"
 
-#: core/utils/class-fire-utils_settings_map.php:1020 inc/czr-init.php:3699
+#: core/utils/class-fire-utils_settings_map.php:1020 inc/czr-init.php:3716
 msgid "When checked, the front page slider occupies the full viewport's width"
 msgstr "Quand coché, le curseur de la première page occupe tout l’espace de la fenêtre d’affichage."
 
-#: core/utils/class-fire-utils_settings_map.php:1010 inc/czr-init.php:3689
+#: core/utils/class-fire-utils_settings_map.php:1010 inc/czr-init.php:3706
 msgid "The button text will be limited to 80 chars max. Leave this field empty to hide the button"
 msgstr "Le texte du bouton sera limité à 80 caractères maximum. Laissez le champ vide pour cacher le bouton."
 
-#: core/utils/class-fire-utils_settings_map.php:999 inc/czr-init.php:3678
+#: core/utils/class-fire-utils_settings_map.php:999 inc/czr-init.php:3695
 msgid "Entire slide and call to action button"
 msgstr "Diapositive entière et bouton d'appel à action"
 
-#: core/utils/class-fire-utils_settings_map.php:998 inc/czr-init.php:3677
+#: core/utils/class-fire-utils_settings_map.php:998 inc/czr-init.php:3694
 msgid "Entire slide"
 msgstr "Diapositive entière"
 
-#: core/utils/class-fire-utils_settings_map.php:997 inc/czr-init.php:3676
+#: core/utils/class-fire-utils_settings_map.php:997 inc/czr-init.php:3693
 msgid "Call to action button"
 msgstr "Bouton d’appel à l’action"
 
-#: core/utils/class-fire-utils_settings_map.php:993 inc/czr-init.php:3672
+#: core/utils/class-fire-utils_settings_map.php:993 inc/czr-init.php:3689
 msgid "Link post with"
 msgstr "Lier l'article avec"
 
-#: core/utils/class-fire-utils_settings_map.php:988 inc/czr-init.php:3667
+#: core/utils/class-fire-utils_settings_map.php:988 inc/czr-init.php:3684
 msgid "The excerpt will be limited to 80 chars max"
 msgstr "L’extrait sera limité à 80 caractères max"
 
-#: core/utils/class-fire-utils_settings_map.php:979 inc/czr-init.php:3658
+#: core/utils/class-fire-utils_settings_map.php:979 inc/czr-init.php:3675
 msgid "The title will be limited to 80 chars max"
 msgstr "L’extrait sera limité à 80 caractères max"
 
-#: core/utils/class-fire-utils_settings_map.php:975 inc/czr-init.php:3654
+#: core/utils/class-fire-utils_settings_map.php:975 inc/czr-init.php:3671
 msgid "Display the title"
 msgstr "Afficher le titre"
 
-#: core/utils/class-fire-utils_settings_map.php:968 inc/czr-init.php:3647
+#: core/utils/class-fire-utils_settings_map.php:968 inc/czr-init.php:3664
 msgid "the WordPress documentation."
 msgstr "la documentation de WordPress"
 
-#: core/utils/class-fire-utils_settings_map.php:957 inc/czr-init.php:3636
+#: core/utils/class-fire-utils_settings_map.php:957 inc/czr-init.php:3653
 msgid "Only the posts with a featured image or at least an image inside their content will qualify for the slider. The number of post slides displayed won't exceed the number of available posts in your website."
 msgstr "Seuls les articles avec une image mise en avant ou ayant au moins une image intégrée dans l’article seront intégrés dans le diaporama. Le nombre d’articles affichés sur le diaporama  ne dépassera pas le nombre d’articles disponibles sur votre site."
 
-#: core/utils/class-fire-utils_settings_map.php:953 inc/czr-init.php:3632
+#: core/utils/class-fire-utils_settings_map.php:953 inc/czr-init.php:3649
 msgid "Number of posts to display"
 msgstr "Définissez le nombre d’articles à afficher"
 
@@ -315,15 +450,15 @@ msgstr "Passer à Customizr Pro"
 msgid "This option generates a home page slider based on your last posts, starting from the most recent or the featured (sticky) post(s) if any."
 msgstr "Cette option génère un diaporama de page d’accueil basé sur vos derniers articles (à partir du plus récent) ou sinon sur les articles (mis en avant)."
 
-#: core/utils/class-fire-utils_settings_map.php:749 inc/czr-init.php:3428
+#: core/utils/class-fire-utils_settings_map.php:749 inc/czr-init.php:3445
 msgid "Change the header layout"
 msgstr "Changer la disposition du haut de page"
 
-#: core/utils/class-fire-utils_settings_map.php:748 inc/czr-init.php:3427
+#: core/utils/class-fire-utils_settings_map.php:748 inc/czr-init.php:3444
 msgid "jump to the Design and Layout section"
 msgstr "aller à la section Design et Disposition"
 
-#: core/utils/class-fire-utils_settings_map.php:745 inc/czr-init.php:3424
+#: core/utils/class-fire-utils_settings_map.php:745 inc/czr-init.php:3441
 msgid "To change the global header layout, %s"
 msgstr "Pour modifier la disposition générale du haut de page, %s"
 
@@ -335,330 +470,330 @@ msgstr "Votre icône de site doit être rechargée pour s'afficher correctement 
 msgid "SITE ICON"
 msgstr "ICONE DE SITE"
 
-#: inc/czr-front.php:883
+#: inc/czr-front.php:874
 msgid "Open the menu"
 msgstr "Ouvrir le menu"
 
-#: inc/czr-front.php:1072
+#: inc/czr-front.php:1063
 msgid "You can now display your menu as a vertical and mobile friendly side menu, animated when revealed."
 msgstr "Vous pouvez désormais afficher votre menu dans une barre latérale verticale animée, compatible avec les appareils mobiles."
 
-#: inc/czr-front.php:1073
+#: inc/czr-front.php:1064
 msgid "%s or %s."
 msgstr "%s ou %s."
 
-#: inc/czr-front.php:1074
+#: inc/czr-front.php:1065
 msgid "Try it with the demo"
 msgstr "Essayez le dans la demo"
 
-#: inc/czr-front.php:1075
+#: inc/czr-front.php:1066
 msgid "open the customizer menu section"
 msgstr "ouvrir le customizer"
 
-#: inc/czr-front.php:1075
+#: inc/czr-front.php:1066
 msgid "change your menu design now"
 msgstr "changez le design de votre menu maintenant"
 
-#: inc/czr-front.php:1099
+#: inc/czr-front.php:1090
 msgid "You can display your main menu or a second menu here horizontally."
 msgstr "Vous pouvez afficher votre menu principal ou un second menu ici, horizontalement."
 
-#: inc/czr-front.php:1100
+#: inc/czr-front.php:1091
 msgid "%s or read the %s."
 msgstr "%s ou parcourez la %s."
 
-#: inc/czr-front.php:1101
+#: inc/czr-front.php:1092
 msgid "Manage menus in the header"
 msgstr "Choisissez vos menus dans le haut de page"
 
-#: inc/czr-front.php:1101
+#: inc/czr-front.php:1092
 msgid "Manage your menus in the header now"
 msgstr "Choisissez vos menus dans le haut de page maintenant"
 
-#: core/front/models/header/class-model-menu.php:161 inc/czr-front.php:1502
+#: core/front/models/header/class-model-menu.php:161 inc/czr-front.php:1493
 msgid "Pages"
 msgstr "Pages"
 
-#: inc/czr-front.php:876
+#: inc/czr-front.php:867
 msgid "Menu"
 msgstr "Menu"
 
-#: inc/czr-front.php:876 inc/czr-front.php:883
+#: inc/czr-front.php:867 inc/czr-front.php:874
 msgid "Close"
 msgstr "fermer"
 
-#: core/utils/class-fire-utils_settings_map.php:2467 inc/czr-init.php:5156
+#: core/utils/class-fire-utils_settings_map.php:2467 inc/czr-init.php:5173
 msgid "Socials in Sidebars"
 msgstr "Liens sociaux dans les barres latérales"
 
-#: core/utils/class-fire-utils_settings_map.php:2469 inc/czr-init.php:5158
+#: core/utils/class-fire-utils_settings_map.php:2469 inc/czr-init.php:5175
 msgid "Set up your social profiles links in the sidebar(s)."
 msgstr "Afficher des liens vers vos pages sociales dans les barres latérales."
 
-#: core/utils/class-fire-utils_settings_map.php:2506 inc/czr-init.php:5195
+#: core/utils/class-fire-utils_settings_map.php:2506 inc/czr-init.php:5212
 msgid "Front-end placeholders and help blocks"
 msgstr "Blocs d'aide en front-office"
 
-#: inc/czr-front.php:3551
+#: inc/czr-front.php:3555
 msgid "Edit those featured pages %s, or %s (you'll be able to add yours later)."
 msgstr "Personnalisez ces pages %s, ou %s (vous pourrez les modifier plus tard)."
 
-#: inc/czr-front.php:3552
+#: inc/czr-front.php:3556
 msgid "Edit those featured pages"
 msgstr "Personnalisez ces pages"
 
-#: inc/czr-front.php:3552 inc/czr-front.php:7858 inc/czr-front.php:8955
-#: inc/czr-front.php:9613
+#: inc/czr-front.php:3556 inc/czr-front.php:7862 inc/czr-front.php:8959
+#: inc/czr-front.php:9618
 msgid "now"
 msgstr "maintenant"
 
-#: inc/czr-front.php:3553
+#: inc/czr-front.php:3557
 msgid "Remove the featured pages"
 msgstr "Supprimer ce bloc de pages"
 
 #: core/front/models/modules/featured-pages/class-model-featured_pages.php:131
-#: inc/czr-front.php:3678
+#: inc/czr-front.php:3682
 msgid "Edit now."
 msgstr "Modifier maintenant."
 
-#: inc/czr-front.php:3553
+#: inc/czr-front.php:3557
 msgid "remove them"
 msgstr "supprimez les"
 
-#: inc/czr-front.php:4839
+#: inc/czr-front.php:4843
 msgid "You can display your post's featured image here if you have set one."
 msgstr "Vous pouvez afficher les images à la une de vos billets ici."
 
-#: inc/czr-front.php:4840
+#: inc/czr-front.php:4844
 msgid "%s to display a featured image here."
 msgstr "%s pour afficher les images à la une."
 
-#: inc/czr-front.php:4841 inc/czr-init.php:7629
+#: inc/czr-front.php:4845 inc/czr-init.php:7675
 msgid "Jump to the customizer now"
 msgstr "Ouvrir le customizer maintenant"
 
-#: inc/czr-front.php:7853
+#: inc/czr-front.php:7857
 msgid "The %s sidebar has no widgets."
 msgstr "La barre latérale %s n'a pas de widgets."
 
-#: inc/czr-front.php:7857
+#: inc/czr-front.php:7861
 msgid "Add widgets to this sidebar %s or %s."
 msgstr "Ajouter des widgets à cette barre latérale %s ou %s."
 
-#: inc/czr-front.php:7860 inc/czr-front.php:9615
+#: inc/czr-front.php:7864 inc/czr-front.php:9620
 msgid "dismiss this notice"
 msgstr "supprimer"
 
-#: inc/czr-front.php:8954
+#: inc/czr-front.php:8958
 msgid "Select your own slider %s, or %s (you'll be able to add one back later)."
 msgstr "Choisissez un diaporama %s, ou %s (vous pourrez en ajouter un plus tard)."
 
-#: inc/czr-front.php:8764 templates/modules/slider/slide.php:9
+#: inc/czr-front.php:8768 templates/modules/slider/slide.php:9
 msgid "Go to"
 msgstr "Aller à"
 
-#: inc/czr-front.php:8955
+#: inc/czr-front.php:8959
 msgid "Select your own slider"
 msgstr "Choisissez un diaprama"
 
-#: inc/czr-front.php:8956
+#: inc/czr-front.php:8960
 msgid "Remove the home page slider"
 msgstr "Supprimer le diaporama de la page d'accueil"
 
-#: inc/czr-front.php:9612
+#: inc/czr-front.php:9617
 msgid "Add widgets to the footer %s or %s."
 msgstr "Ajoutez des widgets au pied de page %s ou %s."
 
-#: inc/czr-front.php:8956
+#: inc/czr-front.php:8960
 msgid "remove this demo slider"
 msgstr "supprimer ce diaporama de demo"
 
-#: inc/czr-front.php:816
+#: inc/czr-front.php:807
 msgid "This is a default page menu."
 msgstr "Ceci est un menu de pages affiché par défaut."
 
-#: inc/czr-front.php:817
+#: inc/czr-front.php:808
 msgid "( If you don't have any pages in your website, then this side menu is empty for the moment. )"
 msgstr "( Si vous n'avez aucune page dans votre site, cet emplacement est vide pour le moment. )"
 
-#: inc/czr-front.php:818
+#: inc/czr-front.php:809
 msgid "If you have already created menu(s), you can %s. If you need to create a new menu, jump to the %s."
 msgstr "Si vous avez déjà créé des menus, vous pouvez %s. Pour créer un nouveau menu, allez au %s."
 
-#: inc/czr-front.php:819
+#: inc/czr-front.php:810
 msgid "change the default menu"
 msgstr "modifier le menu par défaut"
 
-#: inc/czr-front.php:819
+#: inc/czr-front.php:810
 msgid "replace this default menu by another one"
 msgstr "remplacer ce menu par un nouveau"
 
-#: inc/czr-front.php:820
+#: inc/czr-front.php:811
 msgid "menu creation screen"
 msgstr "la page de création des menus"
 
-#: core/utils/class-fire-utils_settings_map.php:819 inc/czr-init.php:3498
+#: core/utils/class-fire-utils_settings_map.php:819 inc/czr-init.php:3515
 msgid "Remove all the menus."
 msgstr "Supprimer tous les menus."
 
-#: core/utils/class-fire-utils_settings_map.php:820 inc/czr-init.php:3499
+#: core/utils/class-fire-utils_settings_map.php:820 inc/czr-init.php:3516
 msgid "Don't display any menus in the header of your website"
 msgstr "Cette option supprime tous les menus du haut de page de votre site."
 
-#: core/utils/class-fire-utils_settings_map.php:824 inc/czr-init.php:3503
+#: core/utils/class-fire-utils_settings_map.php:824 inc/czr-init.php:3520
 msgid "Use with caution : provide an alternative way to navigate in your website for your users."
 msgstr "Utiliser avec prudence : essayez toujours de fournir un moyen de navigation dans votre site à vos utilisateurs."
 
-#: core/utils/class-fire-utils_settings_map.php:1186 inc/czr-init.php:3865
+#: core/utils/class-fire-utils_settings_map.php:1186 inc/czr-init.php:3882
 msgid "The above layout options will set your layout globally for your post and pages. But you can also define the layout for each post and page individually. Learn how in the %s."
 msgstr "Le réglage ci-dessus s'applique globalement aux pages et billets de votre site. Vous pouvez cependant définir une disposition spécifique pour chaque page ou billet. Voir la %s."
 
-#: core/utils/class-fire-utils_settings_map.php:1187 inc/czr-init.php:3866
+#: core/utils/class-fire-utils_settings_map.php:1187 inc/czr-init.php:3883
 msgid "Customizr theme documentation"
 msgstr "documentation du thème"
 
-#: core/utils/class-fire-utils_settings_map.php:1190 inc/czr-init.php:3869
+#: core/utils/class-fire-utils_settings_map.php:1190 inc/czr-init.php:3886
 msgid "If you need to change the layout design of the front page, then open the 'Front Page' section above this one."
 msgstr "Si vous souhaitez seulement modifier la disposition de la page d'accueil, ouvrez la section 'Page d'accueil'."
 
-#: core/utils/class-fire-utils_settings_map.php:1482 inc/czr-init.php:4161
+#: core/utils/class-fire-utils_settings_map.php:1482 inc/czr-init.php:4178
 msgid "You can display the featured image (also called the post thumbnail) of your posts before their content, when they are displayed individually."
 msgstr "Vous pouvez afficher l'image à la une (thumbnail) de vos billets à cet emplacement."
 
-#: core/utils/class-fire-utils_settings_map.php:1483 inc/czr-front.php:4843
-#: inc/czr-init.php:4162
+#: core/utils/class-fire-utils_settings_map.php:1483 inc/czr-front.php:4847
+#: inc/czr-init.php:4179
 msgid "Don't know how to set a featured image to a post? Learn how in the %s."
 msgstr "Vous ne savez pas comment ajouter une image à la une ? Visitez la %s."
 
-#: core/utils/class-fire-utils_settings_map.php:2040 inc/czr-init.php:4719
+#: core/utils/class-fire-utils_settings_map.php:2040 inc/czr-init.php:4736
 msgid "Stick the footer to the bottom of the page"
 msgstr "Toujours afficher le pied de page au bas de la page"
 
-#: core/utils/class-fire-utils_settings_map.php:2122 inc/czr-init.php:4816
+#: core/utils/class-fire-utils_settings_map.php:2122 inc/czr-init.php:4833
 msgid "Display help notices on front-end for logged in users."
 msgstr "Afficher des blocs d'aide dans votre site pour les utilisateurs connectés"
 
-#: core/utils/class-fire-utils_settings_map.php:2125 inc/czr-init.php:4819
+#: core/utils/class-fire-utils_settings_map.php:2125 inc/czr-init.php:4836
 msgid "When this options is enabled, various help notices and some placeholder blocks are displayed on the front-end of your website. They are only visible by logged in users with administration capabilities."
 msgstr "Lorsque cette option est activée, des blocs d'aide et d'informations sont affichés dans votre site. Ils sont seulement visibles pour un utilisateur connecté."
 
-#: core/utils/class-fire-utils_settings_map.php:2193 inc/czr-init.php:4887
+#: core/utils/class-fire-utils_settings_map.php:2193 inc/czr-init.php:4904
 msgid "Sidebars"
 msgstr "Colonnes latérales"
 
-#: core/utils/class-fire-utils_settings_map.php:2194 inc/czr-init.php:4888
+#: core/utils/class-fire-utils_settings_map.php:2194 inc/czr-init.php:4905
 msgid "Sidebars settings for the Customizr theme."
 msgstr "Réglages des barres latérales"
 
 #: core/utils/class-fire-utils_settings_map.php:2288
-#: core/utils/class-fire-utils_settings_map.php:2296 inc/czr-init.php:4977
-#: inc/czr-init.php:4985
+#: core/utils/class-fire-utils_settings_map.php:2296 inc/czr-init.php:4994
+#: inc/czr-init.php:5002
 msgid "You can create new menu and edit your menu's content %s."
 msgstr "Vous pouvez créer de nouveaux menus et éditer leurs contenus %s."
 
-#: core/utils/class-fire-utils_settings_map.php:2291 inc/czr-init.php:4980
+#: core/utils/class-fire-utils_settings_map.php:2291 inc/czr-init.php:4997
 msgid "on the Menus screen in the Appearance section"
 msgstr "dans la page Menus de la section Apparence."
 
 #: core/utils/class-fire-utils_settings_map.php:2292
-#: core/utils/class-fire-utils_settings_map.php:2300 inc/czr-init.php:4981
-#: inc/czr-init.php:4989
+#: core/utils/class-fire-utils_settings_map.php:2300 inc/czr-init.php:4998
+#: inc/czr-init.php:5006
 msgid "create/edit menus"
 msgstr "créer / éditer vos menus"
 
-#: core/utils/class-fire-utils_settings_map.php:2299 inc/czr-init.php:4988
+#: core/utils/class-fire-utils_settings_map.php:2299 inc/czr-init.php:5005
 msgid "in the menu panel"
 msgstr "dans le panel des menus"
 
-#: core/utils/class-fire-utils_settings_map.php:2305 inc/czr-init.php:4994
+#: core/utils/class-fire-utils_settings_map.php:2305 inc/czr-init.php:5011
 msgid "If a menu location has no menu assigned to it, a default page menu will be used."
 msgstr "Si un emplacement de menu n'a aucun menu affecté, un menu créé à partir de vos pages sera utilisé par défaut."
 
-#: core/utils/class-fire-utils_settings_map.php:2365 inc/czr-init.php:5054
+#: core/utils/class-fire-utils_settings_map.php:2365 inc/czr-init.php:5071
 msgid "Smooth Scroll"
 msgstr "Smooth Scrool"
 
-#: core/utils/class-fire-utils_settings_map.php:2367 inc/czr-init.php:5056
+#: core/utils/class-fire-utils_settings_map.php:2367 inc/czr-init.php:5073
 msgid "Smooth Scroll settings"
 msgstr "Réglages pour le Smooth Scroll"
 
-#: core/utils/class-fire-utils_settings_map.php:2380 inc/czr-init.php:5069
+#: core/utils/class-fire-utils_settings_map.php:2380 inc/czr-init.php:5086
 msgid "Navigation Menus"
 msgstr "Menus"
 
-#: core/utils/class-fire-utils_settings_map.php:698 inc/czr-init.php:3377
+#: core/utils/class-fire-utils_settings_map.php:698 inc/czr-init.php:3394
 msgid "When you've set your main menu as a vertical side navigation, you can check this option to display a complementary horizontal menu in the header."
 msgstr "Lorsque le menu vertical est activé, vous pouvez afficher un second menu (horizontal) dans le haut de page."
 
-#: core/utils/class-fire-utils_settings_map.php:694 inc/czr-init.php:3373
+#: core/utils/class-fire-utils_settings_map.php:694 inc/czr-init.php:3390
 msgid "Display a secondary (horizontal) menu in the header."
 msgstr "Afficher un second menu (horizontal) dans le haut de page."
 
-#: core/utils/class-fire-utils_settings_map.php:650 inc/czr-init.php:3329
+#: core/utils/class-fire-utils_settings_map.php:650 inc/czr-init.php:3346
 msgid "Also applied to the secondary menu if any."
 msgstr "Egalement appliqué au second menu s'il est actif."
 
-#: core/utils/class-fire-utils_settings_map.php:703 inc/czr-init.php:3382
+#: core/utils/class-fire-utils_settings_map.php:703 inc/czr-init.php:3399
 msgid "Main menu design"
 msgstr "Design du menu principal"
 
-#: core/utils/class-fire-utils_settings_map.php:704 inc/czr-init.php:3383
+#: core/utils/class-fire-utils_settings_map.php:704 inc/czr-init.php:3400
 msgid "Select a design : side menu (vertical) or regular (horizontal)"
 msgstr "Choisir un style : menu lateral (vertical) ou classique (horizontal)"
 
-#: core/utils/class-fire-utils_settings_map.php:708 inc/czr-init.php:3387
+#: core/utils/class-fire-utils_settings_map.php:708 inc/czr-init.php:3404
 msgid "Regular (horizontal)"
 msgstr "Classique (horizontal)"
 
-#: core/utils/class-fire-utils_settings_map.php:709 inc/czr-init.php:3388
+#: core/utils/class-fire-utils_settings_map.php:709 inc/czr-init.php:3405
 msgid "Side Menu (vertical)"
 msgstr "Lateral (vertical)"
 
-#: core/utils/class-fire-utils_settings_map.php:716 inc/czr-init.php:3395
+#: core/utils/class-fire-utils_settings_map.php:716 inc/czr-init.php:3412
 msgid "For mobile devices (responsive), limit the height of the dropdown menu block to the visible viewport."
 msgstr "Pour les appareils mobiles, limiter la hauteur du menu déroulant à la partie visible de l'écran."
 
-#: core/utils/class-fire-utils_settings_map.php:725 inc/czr-init.php:3404
+#: core/utils/class-fire-utils_settings_map.php:725 inc/czr-init.php:3421
 msgid "Display a label next to the menu button."
 msgstr "Ajouter un label \"menu\" à côté du bouton de menu."
 
-#: core/utils/class-fire-utils_settings_map.php:729 inc/czr-init.php:3408
+#: core/utils/class-fire-utils_settings_map.php:729 inc/czr-init.php:3425
 msgid "Note : the label is hidden on mobile devices."
 msgstr "Note : le label n'est pas affiché sur les appareils mobiles."
 
-#: core/utils/class-fire-utils_settings_map.php:734 inc/czr-init.php:3413
+#: core/utils/class-fire-utils_settings_map.php:734 inc/czr-init.php:3430
 msgid "Menu position (for \"main\" menu)"
 msgstr "Position du menu (menu principal)"
 
-#: core/utils/class-fire-utils_settings_map.php:744 inc/czr-init.php:3423
+#: core/utils/class-fire-utils_settings_map.php:744 inc/czr-init.php:3440
 msgid "When the menu style is set to \"Side Menu\", the menu position is the side on which the menu will be revealed."
 msgstr "Lorsque vous avez activé le menu latéral, ce réglage correspond au côté d'où le menu apparaît."
 
-#: core/utils/class-fire-utils_settings_map.php:758 inc/czr-init.php:3437
+#: core/utils/class-fire-utils_settings_map.php:758 inc/czr-init.php:3454
 msgid "Secondary (horizontal) menu design"
 msgstr "Design du second menu (horizontal)"
 
-#: core/utils/class-fire-utils_settings_map.php:759 inc/czr-init.php:3438
+#: core/utils/class-fire-utils_settings_map.php:759 inc/czr-init.php:3455
 msgid "Menu position (for the horizontal menu)"
 msgstr "Position du menu (menu horizontal)"
 
-#: core/utils/class-fire-utils_settings_map.php:804 inc/czr-init.php:3483
+#: core/utils/class-fire-utils_settings_map.php:804 inc/czr-init.php:3500
 msgid "Choose a mobile devices (responsive) behaviour for the secondary menu."
 msgstr "Choisir comment s'affiche le second menu pour les appareils mobiles."
 
-#: core/utils/class-fire-utils_settings_map.php:809 inc/czr-init.php:3488
+#: core/utils/class-fire-utils_settings_map.php:809 inc/czr-init.php:3505
 msgid "Move after inside the side menu "
 msgstr "Inclure après les éléments du menu lateral"
 
-#: core/utils/class-fire-utils_settings_map.php:808 inc/czr-init.php:3487
+#: core/utils/class-fire-utils_settings_map.php:808 inc/czr-init.php:3504
 msgid "Move before inside the side menu "
 msgstr "Inclure avant les éléments du menu latéral"
 
-#: core/utils/class-fire-utils_settings_map.php:810 inc/czr-init.php:3489
+#: core/utils/class-fire-utils_settings_map.php:810 inc/czr-init.php:3506
 msgid "Display in the header"
 msgstr "Afficher dans le haut de page"
 
-#: core/utils/class-fire-utils_settings_map.php:811 inc/czr-init.php:3490
+#: core/utils/class-fire-utils_settings_map.php:811 inc/czr-init.php:3507
 msgid "Hide"
 msgstr "Ne pas afficher"
 
@@ -670,31 +805,31 @@ msgstr "Customizr Pro ajoute des fonctionnalités qui améliorent l'expérience 
 msgid "Secondary (horizontal) Menu"
 msgstr "Second Menu (horizontal)"
 
-#: core/utils/class-fire-utils_settings_map.php:189 inc/czr-init.php:2859
+#: core/utils/class-fire-utils_settings_map.php:189 inc/czr-init.php:2876
 msgid "Disabled if the random option is on."
 msgstr "Désactivé si l'option aléatoire est activée."
 
-#: core/utils/class-fire-utils_settings_map.php:256 inc/czr-init.php:2926
+#: core/utils/class-fire-utils_settings_map.php:256 inc/czr-init.php:2943
 msgid "Important note"
 msgstr "Note importante"
 
-#: core/utils/class-fire-utils_settings_map.php:256 inc/czr-init.php:2926
+#: core/utils/class-fire-utils_settings_map.php:256 inc/czr-init.php:2943
 msgid "this option can create conflicts with some plugins, make sure that your plugins features (if any) are working fine after enabling this option."
 msgstr "Cette option peut parfois entrer en conflit avec certains plugins. Vérifiez donc que vos plugins fonctionnent correctement après activation."
 
-#: core/utils/class-fire-utils_settings_map.php:508 inc/czr-init.php:3187
+#: core/utils/class-fire-utils_settings_map.php:508 inc/czr-init.php:3204
 msgid "Enable Smooth Scroll"
 msgstr "Activer le Smooth Scroll"
 
-#: core/utils/class-fire-utils_settings_map.php:512 inc/czr-init.php:3191
+#: core/utils/class-fire-utils_settings_map.php:512 inc/czr-init.php:3208
 msgid "This option enables a smoother page scroll."
 msgstr "Cette option rend le scroll de vos pages plus fluide."
 
-#: core/utils/class-fire-utils_settings_map.php:534 inc/czr-init.php:3213
+#: core/utils/class-fire-utils_settings_map.php:534 inc/czr-init.php:3230
 msgid "Choose a layout for the header"
 msgstr "Choisir une disposition pour le haut de page"
 
-#: core/utils/class-fire-utils_settings_map.php:543 inc/czr-init.php:3222
+#: core/utils/class-fire-utils_settings_map.php:543 inc/czr-init.php:3239
 msgid "This setting might impact the side on which the menu is revealed."
 msgstr "Ce réglage peut avoir un impact sur la position d'ouverture du menu vertical."
 
@@ -746,7 +881,7 @@ msgstr "La meilleure façon de démarrer est de lire la %s."
 msgid "Welcome to"
 msgstr "Bienvenue dans"
 
-#: inc/czr-admin.php:518 inc/czr-admin.php:564 inc/czr-front.php:1102
+#: inc/czr-admin.php:518 inc/czr-admin.php:564 inc/czr-front.php:1093
 msgid "documentation"
 msgstr "documentation"
 
@@ -799,7 +934,7 @@ msgid "Create a new menu now"
 msgstr "Créez un nouveau menu maintenant"
 
 #: core/utils/class-fire-utils_settings_map.php:1484 inc/czr-customize.php:137
-#: inc/czr-front.php:4844 inc/czr-init.php:4163
+#: inc/czr-front.php:4848 inc/czr-init.php:4180
 msgid "WordPress documentation"
 msgstr "documentation WordPress"
 
@@ -839,7 +974,7 @@ msgstr "&mdash; Sélectionner &mdash;"
 msgid "Custom Page Example"
 msgstr "Exemple de template de page"
 
-#: inc/czr-front.php:909
+#: inc/czr-front.php:900
 msgid "Add a menu"
 msgstr "Ajouter un menu"
 
@@ -847,176 +982,176 @@ msgstr "Ajouter un menu"
 msgid "Back Home"
 msgstr "Retour Accueil"
 
-#: inc/czr-front.php:9733
+#: inc/czr-front.php:9738
 msgid "Back to top"
 msgstr "Retour haut de page"
 
-#: inc/czr-front.php:9608
+#: inc/czr-front.php:9613
 msgid "The footer has no widgets"
 msgstr "Le pied de page n'a pas de widgets"
 
 #: core/front/models/modules/slider/class-model-slider.php:318
-#: inc/czr-front.php:9038
+#: inc/czr-front.php:9042
 msgid "Check the slider doc now &raquo;"
 msgstr "Lire la documentation maintenant &raquo;"
 
 #: core/front/models/modules/slider/class-model-slider.php:316
-#: inc/czr-front.php:9036
+#: inc/czr-front.php:9040
 msgid "Easily create sliders and add them in any posts or pages."
 msgstr "Créez et insérez facilement des diaporamas dans vos pages."
 
 #: core/front/models/modules/slider/class-model-slider.php:312
-#: inc/czr-front.php:9032
+#: inc/czr-front.php:9036
 msgid "Check the front page slider doc &raquo;"
 msgstr "Lire la documentation &raquo;"
 
 #: core/front/models/modules/slider/class-model-slider.php:310
-#: inc/czr-front.php:9030
+#: inc/czr-front.php:9034
 msgid "Discover how to replace or remove this demo slider."
 msgstr "Découvrez comment remplacer ou supprimer ce diaporama de démo."
 
-#: inc/czr-front.php:824 inc/czr-front.php:1079 inc/czr-front.php:1106
-#: inc/czr-front.php:3557 inc/czr-front.php:4848 inc/czr-front.php:7873
-#: inc/czr-front.php:8960 inc/czr-front.php:9621 inc/czr-init.php:7633
+#: inc/czr-front.php:815 inc/czr-front.php:1070 inc/czr-front.php:1097
+#: inc/czr-front.php:3561 inc/czr-front.php:4852 inc/czr-front.php:7877
+#: inc/czr-front.php:8964 inc/czr-front.php:9626 inc/czr-init.php:7679
 msgid "dismiss notice"
 msgstr "supprimer"
 
-#: inc/czr-front.php:7869
+#: inc/czr-front.php:7873
 msgid "See the theme documentation."
 msgstr "Lire la documentation."
 
-#: inc/czr-front.php:7868
+#: inc/czr-front.php:7872
 msgid "Changing the layout in the Customizr theme"
 msgstr "Modifier la mise en page dans le thème Customizr"
 
-#: inc/czr-front.php:7866
+#: inc/czr-front.php:7870
 msgid "You can also remove this sidebar by changing the current page layout."
 msgstr "Vous pouvez également supprimer cette barre latérale en modifiant la structure de cette page."
 
-#: inc/czr-front.php:7858 inc/czr-front.php:9613
+#: inc/czr-front.php:7862 inc/czr-front.php:9618
 msgid "Add widgets"
 msgstr "Ajouter un widget"
 
-#: inc/czr-front.php:7849 inc/czr-front.php:9604
+#: inc/czr-front.php:7853 inc/czr-front.php:9609
 msgid "This block is visible for admin users only."
 msgstr "Ce bloc n'est visible que pour les administrateurs du site."
 
-#: inc/czr-front.php:7308
+#: inc/czr-front.php:7312
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Billets plus récents <span class=\"meta-nav\">&rarr;</span>"
 
-#: inc/czr-front.php:7288
+#: inc/czr-front.php:7292
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> Billets plus anciens"
 
-#: inc/czr-front.php:7220 inc/czr-front.php:7275
+#: inc/czr-front.php:7224 inc/czr-front.php:7279
 #: templates/content/navigation/singular_posts_navigation.php:33
 msgid "Post navigation"
 msgstr "Parcourir les billets"
 
-#: inc/czr-front.php:7110
+#: inc/czr-front.php:7114
 msgid "by"
 msgstr "par"
 
-#: inc/czr-front.php:7087
+#: inc/czr-front.php:7091
 msgid "tagged"
 msgstr "étiqueté"
 
-#: inc/czr-front.php:7037
+#: inc/czr-front.php:7041
 msgid "Open"
 msgstr "Ouvrir"
 
 #: core/front/models/content/post-metas/class-model-post_metas.php:157
-#: inc/czr-front.php:7017
+#: inc/czr-front.php:7021
 msgid "View all posts by %s"
 msgstr "Voir tous les billets de %s"
 
 #: core/front/models/content/post-metas/class-model-post_metas.php:205
-#: inc/czr-front.php:6882
+#: inc/czr-front.php:6886
 msgid "View all posts in %s"
 msgstr "Voir tous les billets dans %s"
 
-#: inc/czr-front.php:6821
+#: inc/czr-front.php:6825
 msgid "(updated on %1$s)"
 msgstr "(mis à jour le %1$s)"
 
-#: inc/czr-front.php:6818
+#: inc/czr-front.php:6822
 msgid "(updated 1 day ago)"
 msgstr "(mis à jour hier)"
 
-#: inc/czr-front.php:6817
+#: inc/czr-front.php:6821
 msgid "(updated %s days ago)"
 msgstr "(mis à jour il y a %s jours)"
 
-#: inc/czr-front.php:6817
+#: inc/czr-front.php:6821
 msgid "(updated today)"
 msgstr "(mis à jour aujourd'hui)"
 
-#: inc/czr-front.php:6801 inc/czr-front.php:6803
+#: inc/czr-front.php:6805 inc/czr-front.php:6807
 msgid "by %1$s"
 msgstr "par %1$s"
 
-#: inc/czr-front.php:6801
+#: inc/czr-front.php:6805
 msgid "This entry was posted"
 msgstr "Billet publié"
 
-#: inc/czr-front.php:6789
+#: inc/czr-front.php:6793
 msgid "and posted on %1$s"
 msgstr "et publié le %1$s"
 
-#: inc/czr-front.php:6787
+#: inc/czr-front.php:6791
 msgid "on %1$s"
 msgstr "le %1$s"
 
-#: inc/czr-front.php:6785
+#: inc/czr-front.php:6789
 msgid "This entry was posted on %1$s"
 msgstr "Billet publié le %1$s"
 
-#: inc/czr-front.php:6776
+#: inc/czr-front.php:6780
 msgid "This entry was tagged %2$s"
 msgstr "Billet comportant le(s) mot(s) clé(s) %2$s"
 
-#: inc/czr-front.php:6774
+#: inc/czr-front.php:6778
 msgid "This entry was posted in %1$s"
 msgstr "Billet publié dans %1$s"
 
-#: inc/czr-front.php:6772
+#: inc/czr-front.php:6776
 msgid "This entry was posted in %1$s and tagged %2$s"
 msgstr "Billet publié dans %1$s et taggé avec %2$s"
 
-#: inc/czr-front.php:6710
+#: inc/czr-front.php:6714
 msgid "Return to "
 msgstr "Retour sur "
 
-#: inc/czr-front.php:6710 inc/czr-front.php:7086
+#: inc/czr-front.php:6714 inc/czr-front.php:7090
 msgid "in"
 msgstr "dans"
 
-#: inc/czr-front.php:6709
+#: inc/czr-front.php:6713
 msgid "Link to full-size image"
 msgstr "Lien vers l'image en taille originale"
 
-#: inc/czr-front.php:6709
+#: inc/czr-front.php:6713
 msgid "at dimensions"
 msgstr "aux dimensions"
 
-#: inc/czr-front.php:6706
+#: inc/czr-front.php:6710
 msgid "Published"
 msgstr "Publié"
 
-#: inc/czr-front.php:6687
+#: inc/czr-front.php:6691
 msgid "This entry was posted on %1$s<span class=\"by-author\"> by %2$s</span>."
 msgstr "Ce billet a été publié le %1$s<span class=\"by-author\"> par %2$s</span>."
 
-#: inc/czr-front.php:4777
+#: inc/czr-front.php:4781
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Voir tous les billets de %s <span class=\"meta-nav\">&rarr;</span>"
 
-#: inc/czr-front.php:4577 inc/czr-front.php:4735 inc/czr-front.php:5213
+#: inc/czr-front.php:4581 inc/czr-front.php:4739 inc/czr-front.php:5217
 msgid "Pages:"
 msgstr "Pages :"
 
-#: inc/czr-front.php:4575 inc/czr-front.php:4734 inc/czr-front.php:5211
+#: inc/czr-front.php:4579 inc/czr-front.php:4738 inc/czr-front.php:5215
 #: templates/content/post-lists/singles/contents/post_list_single_content_inner.php:13
 #: templates/content/singular/page_content.php:16
 #: templates/content/singular/post_content.php:15
@@ -1024,189 +1159,189 @@ msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Poursuivre la lecture <span class=\"meta-nav\">&rarr;</span>"
 
 #: core/front/models/content/headings/class-model-post_list_heading.php:67
-#: inc/czr-front.php:4346
+#: inc/czr-front.php:4350
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y"
 
-#: inc/czr-front.php:4346
+#: inc/czr-front.php:4350
 msgid "Yearly Archives: %s"
 msgstr "Billets de l'année : %s"
 
 #: core/front/models/content/headings/class-model-post_list_heading.php:66
-#: inc/czr-front.php:4345
+#: inc/czr-front.php:4349
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "F Y"
 
-#: inc/czr-front.php:4345
+#: inc/czr-front.php:4349
 msgid "Monthly Archives: %s"
 msgstr "Billets du mois : %s"
 
-#: inc/czr-front.php:4344
+#: inc/czr-front.php:4348
 msgid "Archives"
 msgstr "Archives"
 
-#: inc/czr-front.php:4344
+#: inc/czr-front.php:4348
 msgid "Daily Archives: %s"
 msgstr "Billets du jour : %s"
 
-#: inc/czr-front.php:4304 inc/czr-front.php:4773
+#: inc/czr-front.php:4308 inc/czr-front.php:4777
 msgid "About %s"
 msgstr "A propos de %s"
 
-#: inc/czr-front.php:4270
+#: inc/czr-front.php:4274
 msgid "No"
 msgstr "Aucun"
 
-#: inc/czr-front.php:4256 templates/content/no-results/404.php:8
+#: inc/czr-front.php:4260 templates/content/no-results/404.php:8
 msgid "Ooops, page not found"
 msgstr "Ooops, page non trouvée"
 
-#: inc/czr-front.php:4118
+#: inc/czr-front.php:4122
 msgid "Permalink to %s"
 msgstr "Permalien vers %s"
 
-#: inc/czr-front.php:4114 inc/czr-front.php:4119
+#: inc/czr-front.php:4118 inc/czr-front.php:4123
 msgid "{no title} Read the post &raquo;"
 msgstr "{Pas de titre} Voir le billet &raquo;"
 
-#: core/front/utils/class-content-gallery.php:47 inc/czr-front.php:3901
+#: core/front/utils/class-content-gallery.php:47 inc/czr-front.php:3905
 msgid "Missing Attachment"
 msgstr "Image manquante"
 
 #: core/front/models/modules/featured-pages/class-model-featured_pages.php:142
-#: inc/czr-front.php:3689
+#: inc/czr-front.php:3693
 msgid "Featured page description text : use the page excerpt or set your own custom text in the Customizr screen."
 msgstr "Extrait de la page en une : utilisez l'extrait automatique ou écrivez un texte personnalisé."
 
 #: core/front/models/modules/featured-pages/class-model-featured_pages.php:138
-#: inc/czr-front.php:3685
+#: inc/czr-front.php:3689
 msgid "Featured page"
 msgstr "Page à la une"
 
 #: core/front/models/modules/featured-pages/class-model-featured_pages.php:130
-#: inc/czr-front.php:3677
+#: inc/czr-front.php:3681
 msgid "Customizer screen"
 msgstr "Customizer"
 
-#: inc/czr-front.php:3363 templates/content/comments/comment_list.php:19
+#: inc/czr-front.php:3367 templates/content/comments/comment_list.php:19
 #: templates/modules/comment_info.php:9
 msgid "comment"
 msgid_plural "comments"
 msgstr[0] "commentaire"
 msgstr[1] "commentaires"
 
-#: inc/czr-front.php:3344 templates/modules/comment_info.php:7
+#: inc/czr-front.php:3348 templates/modules/comment_info.php:7
 msgid "Comment(s) on"
 msgstr "Commentaire(s) sur"
 
-#: core/main-templates/comments.php:20 inc/czr-front.php:3321
+#: core/main-templates/comments.php:20 inc/czr-front.php:3325
 msgid "Leave a comment"
 msgstr "Laissez un commentaire"
 
-#: inc/czr-front.php:3286 templates/content/comments/comment_list.php:89
+#: inc/czr-front.php:3290 templates/content/comments/comment_list.php:89
 msgid "Comments are closed."
 msgstr "Les commentaires sont fermés."
 
-#: inc/czr-front.php:3254 templates/content/comments/comment_list.php:80
+#: inc/czr-front.php:3258 templates/content/comments/comment_list.php:80
 msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Billets plus récents <span class=\"meta-nav\">&rarr;</span>"
 
-#: inc/czr-front.php:3246 templates/content/comments/comment_list.php:72
+#: inc/czr-front.php:3250 templates/content/comments/comment_list.php:72
 msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
 msgstr "<span class=\"meta-nav\">&larr;</span> Billets plus anciens"
 
-#: inc/czr-front.php:3240 templates/content/comments/comment_list.php:66
+#: inc/czr-front.php:3244 templates/content/comments/comment_list.php:66
 msgid "Comment navigation"
 msgstr "Comment navigation"
 
-#: inc/czr-front.php:3205 templates/content/comments/comment.php:44
+#: inc/czr-front.php:3209 templates/content/comments/comment.php:44
 msgid "Your comment is awaiting moderation."
 msgstr "Votre commentaire est en attente de modération."
 
 #. translators: 1: date, 2: time
-#: inc/czr-front.php:3200
+#: inc/czr-front.php:3204
 msgid "%1$s at %2$s"
 msgstr "%1$s à %2$s"
 
-#: inc/czr-front.php:3193 templates/content/comments/comment.php:22
+#: inc/czr-front.php:3197 templates/content/comments/comment.php:22
 msgid "Post author"
 msgstr "Auteur du billet"
 
-#: inc/czr-front.php:3180
+#: inc/czr-front.php:3184
 msgid "Reply"
 msgstr "Répondre"
 
-#: inc/czr-front.php:3152
+#: inc/czr-front.php:3156
 msgid "(Edit)"
 msgstr "(Modifier)"
 
-#: inc/czr-front.php:3151
+#: inc/czr-front.php:3155
 msgid "Pingback:"
 msgstr "Pingback:"
 
-#: inc/czr-front.php:3091 templates/content/comments/comment_list.php:11
+#: inc/czr-front.php:3095 templates/content/comments/comment_list.php:11
 msgid "thoughts on"
 msgstr "commentaires sur"
 
-#: inc/czr-front.php:3089 templates/content/comments/comment_list.php:11
+#: inc/czr-front.php:3093 templates/content/comments/comment_list.php:11
 msgid "One thought on"
 msgstr "Commentaire sur"
 
 #: core/front/models/modules/class-model-breadcrumb.php:789
-#: inc/czr-front.php:2787
+#: inc/czr-front.php:2791
 msgid "F j, Y"
 msgstr "j F Y"
 
 #: core/front/models/modules/class-model-breadcrumb.php:785
-#: inc/czr-front.php:2783
+#: inc/czr-front.php:2787
 msgid "F Y"
 msgstr "F Y"
 
 #: core/front/models/modules/class-model-breadcrumb.php:635
-#: inc/czr-front.php:2632
+#: inc/czr-front.php:2636
 msgid "Merge"
 msgstr "Fusionner"
 
 #: core/front/models/modules/class-model-breadcrumb.php:631
-#: inc/czr-front.php:2628
+#: inc/czr-front.php:2632
 msgid "Split"
 msgstr "Dissocier"
 
 #: core/front/models/modules/class-model-breadcrumb.php:558
 #: core/front/models/modules/class-model-breadcrumb.php:560
-#: inc/czr-front.php:2557 inc/czr-front.php:2559
+#: inc/czr-front.php:2561 inc/czr-front.php:2563
 msgid "Page %d"
 msgstr "Page %d"
 
 #: core/front/models/modules/class-model-breadcrumb.php:553
-#: inc/czr-front.php:2551
+#: inc/czr-front.php:2555
 msgid "404 Not Found"
 msgstr "Page non trouvées (erreur 404)"
 
 #: core/front/models/modules/class-model-breadcrumb.php:546
 #: core/front/models/modules/class-model-breadcrumb.php:548
-#: inc/czr-front.php:2544 inc/czr-front.php:2546
+#: inc/czr-front.php:2548 inc/czr-front.php:2550
 msgid "Search results for &quot;%1$s&quot;"
 msgstr "Résultats de recherche pour &quot;%1$s&quot;"
 
 #: core/front/models/modules/class-model-breadcrumb.php:518
 #: core/front/models/modules/class-model-breadcrumb.php:520
-#: inc/czr-front.php:2516 inc/czr-front.php:2518
+#: inc/czr-front.php:2520 inc/czr-front.php:2522
 msgid "W"
 msgstr "O"
 
 #: core/front/models/modules/class-model-breadcrumb.php:518
 #: core/front/models/modules/class-model-breadcrumb.php:520
-#: inc/czr-front.php:2516 inc/czr-front.php:2518
+#: inc/czr-front.php:2520 inc/czr-front.php:2522
 msgid "Week %1$s"
 msgstr "Semaine %1$s"
 
 #: core/front/models/modules/class-model-breadcrumb.php:509
 #: core/front/models/modules/class-model-breadcrumb.php:511
 #: core/front/models/modules/class-model-breadcrumb.php:789
-#: inc/czr-front.php:2507 inc/czr-front.php:2509 inc/czr-front.php:2787
+#: inc/czr-front.php:2511 inc/czr-front.php:2513 inc/czr-front.php:2791
 msgid "d"
 msgstr "d"
 
@@ -1214,8 +1349,8 @@ msgstr "d"
 #: core/front/models/modules/class-model-breadcrumb.php:527
 #: core/front/models/modules/class-model-breadcrumb.php:529
 #: core/front/models/modules/class-model-breadcrumb.php:785
-#: inc/czr-front.php:2504 inc/czr-front.php:2525 inc/czr-front.php:2527
-#: inc/czr-front.php:2783
+#: inc/czr-front.php:2508 inc/czr-front.php:2529 inc/czr-front.php:2531
+#: inc/czr-front.php:2787
 msgid "F"
 msgstr "F"
 
@@ -1225,1409 +1360,1409 @@ msgstr "F"
 #: core/front/models/modules/class-model-breadcrumb.php:535
 #: core/front/models/modules/class-model-breadcrumb.php:537
 #: core/front/models/modules/class-model-breadcrumb.php:781
-#: inc/czr-front.php:2503 inc/czr-front.php:2513 inc/czr-front.php:2522
-#: inc/czr-front.php:2533 inc/czr-front.php:2535 inc/czr-front.php:2779
+#: inc/czr-front.php:2507 inc/czr-front.php:2517 inc/czr-front.php:2526
+#: inc/czr-front.php:2537 inc/czr-front.php:2539 inc/czr-front.php:2783
 msgid "Y"
 msgstr "Y"
 
 #: core/front/models/modules/class-model-breadcrumb.php:489
-#: inc/czr-front.php:2487
+#: inc/czr-front.php:2491
 msgid "g a"
 msgstr "g a"
 
 #: core/front/models/modules/class-model-breadcrumb.php:486
-#: inc/czr-front.php:2484
+#: inc/czr-front.php:2488
 msgid "i"
 msgstr "i"
 
 #: core/front/models/modules/class-model-breadcrumb.php:486
-#: inc/czr-front.php:2484
+#: inc/czr-front.php:2488
 msgid "Minute %1$s"
 msgstr "Minute %1$s"
 
 #: core/front/models/modules/class-model-breadcrumb.php:483
-#: inc/czr-front.php:2481
+#: inc/czr-front.php:2485
 msgid "g:i a"
 msgstr "g:i a"
 
 #: core/front/models/modules/class-model-breadcrumb.php:45
-#: inc/czr-front.php:2000
+#: inc/czr-front.php:2004
 msgid "Browse:"
 msgstr "Naviguer:"
 
 #: core/front/models/header/class-model-menu.php:112
 #: core/front/models/modules/class-model-breadcrumb.php:36
 #: core/front/models/modules/class-model-breadcrumb.php:48
-#: inc/czr-front.php:1454 inc/czr-front.php:1991 inc/czr-front.php:2003
+#: inc/czr-front.php:1445 inc/czr-front.php:1995 inc/czr-front.php:2007
 msgid "Home"
 msgstr "Accueil"
 
-#: inc/czr-front.php:1840
+#: inc/czr-front.php:1844
 msgid "Next &rarr;"
 msgstr "Suivant &rarr;"
 
-#: inc/czr-front.php:1839
+#: inc/czr-front.php:1843
 msgid "&larr; Previous"
 msgstr "&larr; Précédent"
 
-#: core/utils/class-fire-utils_settings_map.php:1450 inc/czr-init.php:4129
+#: core/utils/class-fire-utils_settings_map.php:1450 inc/czr-init.php:4146
 msgid "Set the post grid thumbnail's max height in pixels"
 msgstr "Régler la hauteur max. des imagettes en mode grid"
 
-#: core/utils/class-fire-utils_settings_map.php:1449 inc/czr-init.php:4128
+#: core/utils/class-fire-utils_settings_map.php:1449 inc/czr-init.php:4145
 msgid "Thumbnails max height for the grid layout"
 msgstr "Hauteur max des imagettes en mode grid"
 
-#: core/utils/class-fire-utils_settings_map.php:1438 inc/czr-init.php:4117
+#: core/utils/class-fire-utils_settings_map.php:1438 inc/czr-init.php:4134
 msgid "Max. length for post titles (in words)"
 msgstr "Longueur max. pour les titres (en nombre de mots)"
 
-#: core/utils/class-fire-utils_settings_map.php:1428 inc/czr-init.php:4107
+#: core/utils/class-fire-utils_settings_map.php:1428 inc/czr-init.php:4124
 msgid "Display post format icons in the background"
 msgstr "Afficher les icones de format de billets"
 
-#: core/utils/class-fire-utils_settings_map.php:1419 inc/czr-init.php:4098
+#: core/utils/class-fire-utils_settings_map.php:1419 inc/czr-init.php:4115
 msgid "Apply a colored bottom border to each grid items"
 msgstr "Appliquer une bordure basse colorée"
 
-#: core/utils/class-fire-utils_settings_map.php:1410 inc/czr-init.php:4089
+#: core/utils/class-fire-utils_settings_map.php:1410 inc/czr-init.php:4106
 msgid "Apply a shadow to each grid items"
 msgstr "Appliquer un effet d'ombrage"
 
-#: core/utils/class-fire-utils_settings_map.php:1405 inc/czr-init.php:4084
+#: core/utils/class-fire-utils_settings_map.php:1405 inc/czr-init.php:4101
 msgid "Unchecked contexts are displayed with the alternate thumbnails layout."
 msgstr "Les contextes non sélectionnés sont affichés par défaut avec les imagettes alternées."
 
-#: core/utils/class-fire-utils_settings_map.php:1401 inc/czr-init.php:4080
+#: core/utils/class-fire-utils_settings_map.php:1401 inc/czr-init.php:4097
 msgid "Apply the grid layout to Search results"
 msgstr "Appliquer le mode \"grid\" pour les résultats de recherche"
 
-#: core/utils/class-fire-utils_settings_map.php:1393 inc/czr-init.php:4072
+#: core/utils/class-fire-utils_settings_map.php:1393 inc/czr-init.php:4089
 msgid "Apply the grid layout to Archives (archives, categories, author posts)"
 msgstr "Appliquer le mode \"grid\" pour les archives ( catégories, tags)"
 
-#: core/utils/class-fire-utils_settings_map.php:1385 inc/czr-init.php:4064
+#: core/utils/class-fire-utils_settings_map.php:1385 inc/czr-init.php:4081
 msgid "Apply the grid layout to Home/Blog"
 msgstr "Appliquer le mode \"grid\" pour l'accueil/le blog"
 
-#: core/utils/class-fire-utils_settings_map.php:1377 inc/czr-init.php:4056
+#: core/utils/class-fire-utils_settings_map.php:1377 inc/czr-init.php:4073
 msgid "Expand the last sticky post (for home and blog page only)"
 msgstr "Elargir les billets à la une (pour l'accueil et la page de blog)"
 
-#: core/utils/class-fire-utils_settings_map.php:1372 inc/czr-init.php:4051
+#: core/utils/class-fire-utils_settings_map.php:1372 inc/czr-init.php:4068
 msgid "Note : columns are limited to 3 for single sidebar layouts and to 2 for double sidebar layouts."
 msgstr "Note : le nombre de colonnes est limité à 3 pour une structure avec une barre latérale, 2 pour une structure avec deux barres latérales."
 
-#: core/utils/class-fire-utils_settings_map.php:1369 inc/czr-init.php:4048
+#: core/utils/class-fire-utils_settings_map.php:1369 inc/czr-init.php:4065
 msgid "4"
 msgstr "4"
 
-#: core/utils/class-fire-utils_settings_map.php:1368 inc/czr-init.php:4047
+#: core/utils/class-fire-utils_settings_map.php:1368 inc/czr-init.php:4064
 msgid "3"
 msgstr "3"
 
-#: core/utils/class-fire-utils_settings_map.php:1367 inc/czr-init.php:4046
+#: core/utils/class-fire-utils_settings_map.php:1367 inc/czr-init.php:4063
 msgid "2"
 msgstr "2"
 
-#: core/utils/class-fire-utils_settings_map.php:1366 inc/czr-init.php:4045
+#: core/utils/class-fire-utils_settings_map.php:1366 inc/czr-init.php:4062
 msgid "1"
 msgstr "1"
 
-#: core/utils/class-fire-utils_settings_map.php:1362 inc/czr-init.php:4041
+#: core/utils/class-fire-utils_settings_map.php:1362 inc/czr-init.php:4058
 msgid "Number of columns per row"
 msgstr "Nombre de colonnes par ligne"
 
-#: core/utils/class-fire-utils_settings_map.php:1357 inc/czr-init.php:4036
+#: core/utils/class-fire-utils_settings_map.php:1357 inc/czr-init.php:4053
 msgid "When you select the grid Layout, the post content is limited to the excerpt."
 msgstr "Lorsque le mode \"grid\" est sélectionné, le contenu est toujours limité à l'extrait."
 
-#: core/utils/class-fire-utils_settings_map.php:1354 inc/czr-init.php:4033
+#: core/utils/class-fire-utils_settings_map.php:1354 inc/czr-init.php:4050
 msgid "Grid layout"
 msgstr "Disposition \"Grid\""
 
-#: core/utils/class-fire-utils_settings_map.php:1353 inc/czr-init.php:4032
+#: core/utils/class-fire-utils_settings_map.php:1353 inc/czr-init.php:4049
 msgid "Alternate thumbnails layout"
 msgstr "Alterner l'imagette et l'extrait de texte."
 
-#: core/utils/class-fire-utils_settings_map.php:1349 inc/czr-init.php:4028
+#: core/utils/class-fire-utils_settings_map.php:1349 inc/czr-init.php:4045
 msgid "Select a Layout"
 msgstr "Choisir une disposition"
 
-#: core/utils/class-fire-utils_settings_map.php:1348 inc/czr-init.php:4027
+#: core/utils/class-fire-utils_settings_map.php:1348 inc/czr-init.php:4044
 msgid "Post List Design"
 msgstr "Design des listes de billets"
 
-#: core/utils/class-fire-utils_settings_map.php:1065 inc/czr-init.php:3744
+#: core/utils/class-fire-utils_settings_map.php:1065 inc/czr-init.php:3761
 msgid "You might want to regenerate your thumbnails."
 msgstr "Pensez à re-générer vos images."
 
-#: core/utils/class-fire-utils_settings_map.php:1064 inc/czr-init.php:3743
+#: core/utils/class-fire-utils_settings_map.php:1064 inc/czr-init.php:3760
 msgid "If this option is checked, your images will be resized with your custom height on upload. This is better for your overall loading performance."
 msgstr "Si vous cochez cette option, vos images seront re-générées avec votre hauteur personnalisée. Cela contribuera à améliorer le temps de chargement de vos pages."
 
-#: core/utils/class-fire-utils_settings_map.php:1058 inc/czr-init.php:3737
+#: core/utils/class-fire-utils_settings_map.php:1058 inc/czr-init.php:3754
 msgid "Replace the default image slider's height"
 msgstr "Remplacer la hauteur par défaut des images."
 
-#: core/utils/class-fire-utils_settings_map.php:1050 inc/czr-init.php:3729
+#: core/utils/class-fire-utils_settings_map.php:1050 inc/czr-init.php:3746
 msgid "Apply this height to all sliders"
 msgstr "Aplliquer cette hauteur à tous les slides"
 
-#: core/utils/class-fire-utils_settings_map.php:1040 inc/czr-init.php:3719
+#: core/utils/class-fire-utils_settings_map.php:1040 inc/czr-init.php:3736
 msgid "Set slider's height in pixels"
 msgstr "Régler la hauteur en pixels"
 
-#: core/utils/class-fire-utils_settings_map.php:2109 inc/czr-init.php:4803
+#: core/utils/class-fire-utils_settings_map.php:2109 inc/czr-init.php:4820
 msgid "Check this option to delay the loading of non visible images. Images below the viewport will be loaded dynamically on scroll. This can boost performances by reducing the weight of long web pages with images."
 msgstr "Cocher cette option permet d'éviter de charger les images non visibles de vos pages. Les images sont ensuites chargées dynamiquement lors du scroll. Cela permet de reduire le poids des longues pages incluant de nombreuses images."
 
-#: core/utils/class-fire-utils_settings_map.php:2104 inc/czr-init.php:4798
+#: core/utils/class-fire-utils_settings_map.php:2104 inc/czr-init.php:4815
 msgid "Load images on scroll"
 msgstr "Charger les images lors du scroll"
 
-#: core/utils/class-fire-utils_settings_map.php:2011 inc/czr-init.php:4690
+#: core/utils/class-fire-utils_settings_map.php:2011 inc/czr-init.php:4707
 msgid "Will be hidden if empty"
 msgstr "Sera invisible si vide."
 
-#: core/utils/class-fire-utils_settings_map.php:2005 inc/czr-init.php:4684
+#: core/utils/class-fire-utils_settings_map.php:2005 inc/czr-init.php:4701
 msgid "Social link title in sidebars"
 msgstr "Liens sociaux dans les barres latérales"
 
-#: core/utils/class-fire-utils_settings_map.php:2049 inc/czr-init.php:4728
+#: core/utils/class-fire-utils_settings_map.php:2049 inc/czr-init.php:4745
 msgid "Display a back to top arrow on scroll"
 msgstr "Afficher une flèche de retour en haut de page lors du scroll."
 
-#: core/utils/class-fire-utils_settings_map.php:1964 inc/czr-init.php:4643
+#: core/utils/class-fire-utils_settings_map.php:1964 inc/czr-init.php:4660
 msgid "Display posts navigation in post lists (archives, blog page, categories, search results ..)"
 msgstr "Afficher la navigation entre billets dans les listes de billets (archives, page de blog, les catégories, les résultats de recherche ..)"
 
-#: core/utils/class-fire-utils_settings_map.php:1955 inc/czr-init.php:4634
+#: core/utils/class-fire-utils_settings_map.php:1955 inc/czr-init.php:4651
 msgid "Display posts navigation in single posts"
 msgstr "Afficher la navigation au sein des billets seuls"
 
-#: core/utils/class-fire-utils_settings_map.php:1946 inc/czr-init.php:4625
+#: core/utils/class-fire-utils_settings_map.php:1946 inc/czr-init.php:4642
 msgid "Display navigation in pages"
 msgstr "Afficher la navigation au sein des pages"
 
-#: core/utils/class-fire-utils_settings_map.php:1937 inc/czr-init.php:4616
+#: core/utils/class-fire-utils_settings_map.php:1937 inc/czr-init.php:4633
 msgid "When this option is checked, the posts navigation is displayed below the posts"
 msgstr "Lorsque cette option est cochée, la navigation au sein des articles est affichée juste après vos billets"
 
-#: core/utils/class-fire-utils_settings_map.php:1934 inc/czr-init.php:4613
+#: core/utils/class-fire-utils_settings_map.php:1934 inc/czr-init.php:4630
 msgid "Display posts navigation"
 msgstr "Afficher la navigation au sein des billets"
 
-#: core/utils/class-fire-utils_settings_map.php:1919 inc/czr-init.php:4598
+#: core/utils/class-fire-utils_settings_map.php:1919 inc/czr-init.php:4615
 msgid "By default, WordPress displays the past comments, even if comments are disabled in posts or pages. Unchecking this option allows you to not display this comment history."
 msgstr "Par défaut, Wordpress affiche les commentaires passés, même si ils ont été désactivés dans les billets et les pages. Décocher cette option vous permet de ne pas afficher l'historique des commentaires."
 
-#: core/utils/class-fire-utils_settings_map.php:1915 inc/czr-init.php:4594
+#: core/utils/class-fire-utils_settings_map.php:1915 inc/czr-init.php:4611
 msgid "Display the comment list"
 msgstr "Afficher les listes de commentaires"
 
-#: core/utils/class-fire-utils_settings_map.php:1909 inc/czr-init.php:4588
+#: core/utils/class-fire-utils_settings_map.php:1909 inc/czr-init.php:4605
 msgid "discussion settings page."
 msgstr "réglages des commentaires"
 
-#: core/utils/class-fire-utils_settings_map.php:1907 inc/czr-init.php:4586
+#: core/utils/class-fire-utils_settings_map.php:1907 inc/czr-init.php:4603
 msgid "You can also change other comments settings in the"
 msgstr "Vous pouvez également modifier les autres réglages de commentaires dans"
 
-#: core/utils/class-fire-utils_settings_map.php:1906 inc/czr-init.php:4585
+#: core/utils/class-fire-utils_settings_map.php:1906 inc/czr-init.php:4602
 msgid "post screen"
 msgstr "écran des billets"
 
-#: core/utils/class-fire-utils_settings_map.php:1904 inc/czr-init.php:4583
+#: core/utils/class-fire-utils_settings_map.php:1904 inc/czr-init.php:4600
 msgid "If checked, this option enables comments on all types of single posts. You can disable comments for a single post in quick edit mode from the"
 msgstr "Une fois cochée, cette option active les commentaires dans tous les types de billets. Il est également possible de gérer l'activation des commentaires billet par billet avec le mode édition rapide."
 
-#: core/utils/class-fire-utils_settings_map.php:1899 inc/czr-init.php:4578
+#: core/utils/class-fire-utils_settings_map.php:1899 inc/czr-init.php:4595
 msgid "Enable comments on posts"
 msgstr "Autoriser les commentaires sur les billets"
 
-#: core/utils/class-fire-utils_settings_map.php:1893 inc/czr-init.php:4572
+#: core/utils/class-fire-utils_settings_map.php:1893 inc/czr-init.php:4589
 msgid "the discussion settings page."
 msgstr "la page de réglages des commentaires"
 
-#: core/utils/class-fire-utils_settings_map.php:1891 inc/czr-init.php:4570
+#: core/utils/class-fire-utils_settings_map.php:1891 inc/czr-init.php:4587
 msgid "You can also change other comments settings in :"
 msgstr "Vous pouvez également modifier les autres réglages de commentaires dans :"
 
-#: core/utils/class-fire-utils_settings_map.php:1890 inc/czr-init.php:4569
+#: core/utils/class-fire-utils_settings_map.php:1890 inc/czr-init.php:4586
 msgid "If checked, this option will enable comments on pages. You can disable comments for a single page in the quick edit mode of the page list screen."
 msgstr "Une fois cochée, cette option active les commentaires dans les pages. Il est également possible de gérer l'activation des commentaires page par page avec le mode édition rapide dans la liste des pages."
 
-#: core/utils/class-fire-utils_settings_map.php:1884 inc/czr-init.php:4563
+#: core/utils/class-fire-utils_settings_map.php:1884 inc/czr-init.php:4580
 msgid "Other comments settings"
 msgstr "Autres réglages des commentaires"
 
-#: core/utils/class-fire-utils_settings_map.php:1866 inc/czr-init.php:4545
+#: core/utils/class-fire-utils_settings_map.php:1866 inc/czr-init.php:4562
 msgid "Custom"
 msgstr "Custom"
 
-#: core/utils/class-fire-utils_settings_map.php:1865 inc/czr-init.php:4544
+#: core/utils/class-fire-utils_settings_map.php:1865 inc/czr-init.php:4561
 msgid "Skin color"
 msgstr "Couleur du thème"
 
 #: core/utils/class-fire-utils_settings_map.php:1861
-#: core/utils/class-fire-utils_settings_map.php:1873 inc/czr-init.php:4540
-#: inc/czr-init.php:4552
+#: core/utils/class-fire-utils_settings_map.php:1873 inc/czr-init.php:4557
+#: inc/czr-init.php:4569
 msgid "Comments bubble color"
 msgstr "Couleur des bulles de commentaires"
 
-#: core/utils/class-fire-utils_settings_map.php:1853 inc/czr-init.php:4532
+#: core/utils/class-fire-utils_settings_map.php:1853 inc/czr-init.php:4549
 msgid "Large bubbles"
 msgstr "Grandes bulles"
 
-#: core/utils/class-fire-utils_settings_map.php:1852 inc/czr-init.php:4531
+#: core/utils/class-fire-utils_settings_map.php:1852 inc/czr-init.php:4548
 msgid "Small bubbles"
 msgstr "Petites bulles"
 
-#: core/utils/class-fire-utils_settings_map.php:1848 inc/czr-init.php:4527
+#: core/utils/class-fire-utils_settings_map.php:1848 inc/czr-init.php:4544
 msgid "Comments bubble shape"
 msgstr "Forme des bulles de commentaires"
 
-#: core/utils/class-fire-utils_settings_map.php:1839 inc/czr-init.php:4518
+#: core/utils/class-fire-utils_settings_map.php:1839 inc/czr-init.php:4535
 msgid "Display the number of comments in a bubble next to the post title"
 msgstr "Afficher le nombre de commentaires dans une bulle à côté du titre"
 
-#: core/utils/class-fire-utils_settings_map.php:1837 inc/czr-init.php:4516
+#: core/utils/class-fire-utils_settings_map.php:1837 inc/czr-init.php:4533
 msgid "Comments bubbles"
 msgstr "Bulles de commentaires"
 
-#: core/utils/class-fire-utils_settings_map.php:1820 inc/czr-init.php:4499
+#: core/utils/class-fire-utils_settings_map.php:1820 inc/czr-init.php:4516
 msgid "Apply a drop cap to the first paragraph of your pages"
 msgstr "Appliquer une lettrine au premier paragraphe des pages"
 
-#: core/utils/class-fire-utils_settings_map.php:1818 inc/czr-init.php:4497
+#: core/utils/class-fire-utils_settings_map.php:1818 inc/czr-init.php:4514
 msgid "Enable drop caps in pages"
 msgstr "Activer les lettrines dans les pages "
 
-#: core/utils/class-fire-utils_settings_map.php:1811 inc/czr-init.php:4490
+#: core/utils/class-fire-utils_settings_map.php:1811 inc/czr-init.php:4507
 msgid "Apply a drop cap to the first paragraph of your single posts content"
 msgstr "Appliquer une lettrine au premier paragraphe des billets"
 
-#: core/utils/class-fire-utils_settings_map.php:1809 inc/czr-init.php:4488
+#: core/utils/class-fire-utils_settings_map.php:1809 inc/czr-init.php:4505
 msgid "Enable drop caps in posts"
 msgstr "Activer les lettrines dans les billets"
 
-#: core/utils/class-fire-utils_settings_map.php:1803 inc/czr-init.php:4482
+#: core/utils/class-fire-utils_settings_map.php:1803 inc/czr-init.php:4499
 msgid "Simple black"
 msgstr "Noire simple"
 
-#: core/utils/class-fire-utils_settings_map.php:1802 inc/czr-init.php:4481
+#: core/utils/class-fire-utils_settings_map.php:1802 inc/czr-init.php:4498
 msgid "Skin color with shadow"
 msgstr "Couleur du thème"
 
-#: core/utils/class-fire-utils_settings_map.php:1798 inc/czr-init.php:4477
+#: core/utils/class-fire-utils_settings_map.php:1798 inc/czr-init.php:4494
 msgid "Drop cap style"
 msgstr "Style des lettrines"
 
-#: core/utils/class-fire-utils_settings_map.php:1788 inc/czr-init.php:4467
+#: core/utils/class-fire-utils_settings_map.php:1788 inc/czr-init.php:4484
 msgid "(number of words)"
 msgstr "(nombre de mots)"
 
-#: core/utils/class-fire-utils_settings_map.php:1787 inc/czr-init.php:4466
+#: core/utils/class-fire-utils_settings_map.php:1787 inc/czr-init.php:4483
 msgid "Apply a drop cap when the paragraph includes at least the following number of words :"
 msgstr "Afficher une lettrine lorsque le paragraphe inclut au moins le nombre de mots ci-dessous :"
 
-#: core/utils/class-fire-utils_settings_map.php:1778 inc/czr-init.php:4457
+#: core/utils/class-fire-utils_settings_map.php:1778 inc/czr-init.php:4474
 msgid "Apply a drop cap to the first paragraph of your post / page content"
 msgstr "Afficher une lettrine dans le premier paragraphe de vos pages ou billets"
 
-#: core/utils/class-fire-utils_settings_map.php:1776 inc/czr-init.php:4455
+#: core/utils/class-fire-utils_settings_map.php:1776 inc/czr-init.php:4472
 msgid "Enable drop caps"
 msgstr "Activer les lettrines"
 
-#: core/utils/class-fire-utils_settings_map.php:1775 inc/czr-init.php:4454
+#: core/utils/class-fire-utils_settings_map.php:1775 inc/czr-init.php:4471
 msgid "Drop caps"
 msgstr "Lettrines"
 
-#: core/utils/class-fire-utils_settings_map.php:1757 inc/czr-init.php:4436
+#: core/utils/class-fire-utils_settings_map.php:1757 inc/czr-init.php:4453
 msgid "Apply nice on hover expansion effect to the galleries images"
 msgstr "Activer un effet de zoom au passage de la souris"
 
-#: core/utils/class-fire-utils_settings_map.php:1755 inc/czr-init.php:4434
+#: core/utils/class-fire-utils_settings_map.php:1755 inc/czr-init.php:4451
 msgid "Enable Customizr effects on hover"
 msgstr "Activer un effet de zoom au passage de la souris"
 
-#: core/utils/class-fire-utils_settings_map.php:1748 inc/czr-init.php:4427
+#: core/utils/class-fire-utils_settings_map.php:1748 inc/czr-init.php:4444
 msgid "Apply lightbox effects to galleries images"
 msgstr "Ouvrir les images de galerie avec un effet de zoom"
 
-#: core/utils/class-fire-utils_settings_map.php:1746 inc/czr-init.php:4425
+#: core/utils/class-fire-utils_settings_map.php:1746 inc/czr-init.php:4442
 msgid "Enable Lightbox effect in galleries"
 msgstr "Ouvrir les images de galerie avec un effet de zoom"
 
-#: core/utils/class-fire-utils_settings_map.php:1739 inc/czr-init.php:4418
+#: core/utils/class-fire-utils_settings_map.php:1739 inc/czr-init.php:4435
 msgid "Apply Customizr effects to galleries images"
 msgstr "Applique un effet de zoom au passage de la souris"
 
-#: core/utils/class-fire-utils_settings_map.php:1737 inc/czr-init.php:4416
+#: core/utils/class-fire-utils_settings_map.php:1737 inc/czr-init.php:4433
 msgid "Enable Customizr galleries"
 msgstr "Activer des effets spécifiques aux galeries d'images"
 
-#: core/utils/class-fire-utils_settings_map.php:1478 inc/czr-init.php:4157
+#: core/utils/class-fire-utils_settings_map.php:1478 inc/czr-init.php:4174
 msgid "After the title"
 msgstr "Après le titre"
 
-#: core/utils/class-fire-utils_settings_map.php:1477 inc/czr-init.php:4156
+#: core/utils/class-fire-utils_settings_map.php:1477 inc/czr-init.php:4173
 msgid "Before the title boxed"
 msgstr "Avant le titre"
 
-#: core/utils/class-fire-utils_settings_map.php:1476 inc/czr-init.php:4155
+#: core/utils/class-fire-utils_settings_map.php:1476 inc/czr-init.php:4172
 msgid "Before the title in full width"
 msgstr "Sous le titre en pleine largeur"
 
-#: core/utils/class-fire-utils_settings_map.php:1475 inc/czr-init.php:4154
+#: core/utils/class-fire-utils_settings_map.php:1475 inc/czr-init.php:4171
 msgid "Don't display"
 msgstr "Ne pas afficher"
 
-#: core/utils/class-fire-utils_settings_map.php:1471 inc/czr-init.php:4150
+#: core/utils/class-fire-utils_settings_map.php:1471 inc/czr-init.php:4167
 msgid "Post thumbnail position"
 msgstr "Position des imagettes"
 
-#: core/utils/class-fire-utils_settings_map.php:1337 inc/czr-init.php:4016
+#: core/utils/class-fire-utils_settings_map.php:1337 inc/czr-init.php:4033
 msgid "Search results page titles"
 msgstr "Titre de la page de résultats de recherche"
 
-#: core/utils/class-fire-utils_settings_map.php:1336 inc/czr-front.php:4271
-#: inc/czr-init.php:4015
+#: core/utils/class-fire-utils_settings_map.php:1336 inc/czr-front.php:4275
+#: inc/czr-init.php:4032
 msgid "Search Results for :"
 msgstr "Résultats de recherche pour :"
 
-#: core/utils/class-fire-utils_settings_map.php:1328 inc/czr-init.php:4007
+#: core/utils/class-fire-utils_settings_map.php:1328 inc/czr-init.php:4024
 msgid "Author pages titles"
 msgstr "Titre des pages d'auteurs"
 
-#: core/utils/class-fire-utils_settings_map.php:1319 inc/czr-init.php:3998
+#: core/utils/class-fire-utils_settings_map.php:1319 inc/czr-init.php:4015
 msgid "Tag pages titles"
 msgstr "Titres pour les archives de tags"
 
-#: core/utils/class-fire-utils_settings_map.php:1310 inc/czr-init.php:3989
+#: core/utils/class-fire-utils_settings_map.php:1310 inc/czr-init.php:4006
 msgid "Category pages titles"
 msgstr "Titre des pages de catégories"
 
-#: core/utils/class-fire-utils_settings_map.php:1309 inc/czr-init.php:3988
+#: core/utils/class-fire-utils_settings_map.php:1309 inc/czr-init.php:4005
 msgid "Archive titles"
 msgstr "Titres des archives"
 
-#: core/utils/class-fire-utils_settings_map.php:1300 inc/czr-init.php:3979
+#: core/utils/class-fire-utils_settings_map.php:1300 inc/czr-init.php:3996
 msgid "Alternate thumbnail/content"
 msgstr "Alterner l'imagette et l'extrait de texte."
 
-#: core/utils/class-fire-utils_settings_map.php:1293 inc/czr-init.php:3972
-#: inc/czr-init.php:4740
+#: core/utils/class-fire-utils_settings_map.php:1293 inc/czr-init.php:3989
+#: inc/czr-init.php:4757
 msgid "Left"
 msgstr "Gauche"
 
-#: core/utils/class-fire-utils_settings_map.php:1292 inc/czr-init.php:3971
+#: core/utils/class-fire-utils_settings_map.php:1292 inc/czr-init.php:3988
 msgid "Bottom"
 msgstr "Bas"
 
-#: core/utils/class-fire-utils_settings_map.php:1291 inc/czr-init.php:3970
-#: inc/czr-init.php:4741
+#: core/utils/class-fire-utils_settings_map.php:1291 inc/czr-init.php:3987
+#: inc/czr-init.php:4758
 msgid "Right"
 msgstr "Droite"
 
-#: core/utils/class-fire-utils_settings_map.php:1290 inc/czr-init.php:3969
+#: core/utils/class-fire-utils_settings_map.php:1290 inc/czr-init.php:3986
 msgid "Top"
 msgstr "Haut"
 
-#: core/utils/class-fire-utils_settings_map.php:1286 inc/czr-init.php:3965
+#: core/utils/class-fire-utils_settings_map.php:1286 inc/czr-init.php:3982
 msgid "Thumbnails position"
 msgstr "Position de l'imagette"
 
 #: core/utils/class-fire-utils_settings_map.php:1274
-#: core/utils/class-fire-utils_settings_map.php:1492 inc/czr-init.php:3953
-#: inc/czr-init.php:4171
+#: core/utils/class-fire-utils_settings_map.php:1492 inc/czr-init.php:3970
+#: inc/czr-init.php:4188
 msgid "Set the thumbnail's max height in pixels"
 msgstr "Régler la hauteur de l'imagette en pixels"
 
-#: core/utils/class-fire-utils_settings_map.php:1266 inc/czr-init.php:3945
+#: core/utils/class-fire-utils_settings_map.php:1266 inc/czr-init.php:3962
 msgid "Rectangular with unblur effect on hover"
 msgstr "Rectangulaire avec un effet de netteté au passage de la souris"
 
-#: core/utils/class-fire-utils_settings_map.php:1265 inc/czr-init.php:3944
+#: core/utils/class-fire-utils_settings_map.php:1265 inc/czr-init.php:3961
 msgid "Rectangular with blur effect on hover"
 msgstr "Rectangulaire avec un effet de brouillage au passage de la souris"
 
-#: core/utils/class-fire-utils_settings_map.php:1264 inc/czr-init.php:3943
+#: core/utils/class-fire-utils_settings_map.php:1264 inc/czr-init.php:3960
 msgid "Rectangular with no effect"
 msgstr "Rectangulaire sans effet"
 
-#: core/utils/class-fire-utils_settings_map.php:1263 inc/czr-init.php:3942
+#: core/utils/class-fire-utils_settings_map.php:1263 inc/czr-init.php:3959
 msgid "Squared, no expansion"
 msgstr "Carré, sans expansion"
 
-#: core/utils/class-fire-utils_settings_map.php:1262 inc/czr-init.php:3941
+#: core/utils/class-fire-utils_settings_map.php:1262 inc/czr-init.php:3958
 msgid "Squared, expand on hover"
 msgstr "Carré, expansion au passage de la souris"
 
-#: core/utils/class-fire-utils_settings_map.php:1261 inc/czr-init.php:3940
+#: core/utils/class-fire-utils_settings_map.php:1261 inc/czr-init.php:3957
 msgid "Rounded, no expansion"
 msgstr "Rond, sans expansion"
 
-#: core/utils/class-fire-utils_settings_map.php:1260 inc/czr-init.php:3939
+#: core/utils/class-fire-utils_settings_map.php:1260 inc/czr-init.php:3956
 msgid "Rounded, expand on hover"
 msgstr "Roud, expansion au passage de la souris"
 
-#: core/utils/class-fire-utils_settings_map.php:1256 inc/czr-init.php:3935
+#: core/utils/class-fire-utils_settings_map.php:1256 inc/czr-init.php:3952
 msgid "Thumbnails shape"
 msgstr "Design des imagettes"
 
-#: core/utils/class-fire-utils_settings_map.php:1255 inc/czr-init.php:3934
+#: core/utils/class-fire-utils_settings_map.php:1255 inc/czr-init.php:3951
 msgid "Thumbnails options for the alternate thumbnails layout"
 msgstr "Options pour les imagettes en mode non \"Grid\""
 
-#: core/utils/class-fire-utils_settings_map.php:1237 inc/czr-init.php:3916
+#: core/utils/class-fire-utils_settings_map.php:1237 inc/czr-init.php:3933
 msgid "Upload a default thumbnail"
 msgstr "Charger une imagette par défaut"
 
-#: core/utils/class-fire-utils_settings_map.php:1229 inc/czr-init.php:3908
+#: core/utils/class-fire-utils_settings_map.php:1229 inc/czr-init.php:3925
 msgid "If no featured image is set, use the last image attached to this post."
 msgstr "Si aucune image n'a été mise en une, utiliser la dernière image attachée au billet."
 
-#: core/utils/class-fire-utils_settings_map.php:1224 inc/czr-init.php:3903
+#: core/utils/class-fire-utils_settings_map.php:1224 inc/czr-init.php:3920
 msgid "Note : thumbnails are always displayed when the grid layout is choosen."
 msgstr "Note : les imagettes sont toujours affichées en mode \"grid\""
 
-#: core/utils/class-fire-utils_settings_map.php:1224 inc/czr-init.php:3903
+#: core/utils/class-fire-utils_settings_map.php:1224 inc/czr-init.php:3920
 msgid "When this option is checked, the post thumbnails are displayed in all post lists : blog, archives, author page, search pages, ..."
 msgstr "Si cette option est cochée, les imagette sont affichées dans toutes les listes de billets : blog, archives, ..."
 
-#: core/utils/class-fire-utils_settings_map.php:1220 inc/czr-init.php:3899
+#: core/utils/class-fire-utils_settings_map.php:1220 inc/czr-init.php:3916
 msgid "Display the post thumbnails"
 msgstr "Afficher les imagettes"
 
-#: core/utils/class-fire-utils_settings_map.php:1219 inc/czr-init.php:3898
+#: core/utils/class-fire-utils_settings_map.php:1219 inc/czr-init.php:3915
 msgid "Thumbnails options"
 msgstr "Options des imagettes"
 
-#: core/utils/class-fire-utils_settings_map.php:1209 inc/czr-init.php:3888
+#: core/utils/class-fire-utils_settings_map.php:1209 inc/czr-init.php:3905
 msgid "Set the excerpt length (in number of words) "
 msgstr "Régler la longueur des extraits (en nombre de mots)"
 
-#: core/utils/class-fire-utils_settings_map.php:1720 inc/czr-init.php:4399
+#: core/utils/class-fire-utils_settings_map.php:1720 inc/czr-init.php:4416
 msgid "Info (blue)"
 msgstr "Info (bleu)"
 
-#: core/utils/class-fire-utils_settings_map.php:1719 inc/czr-init.php:4398
+#: core/utils/class-fire-utils_settings_map.php:1719 inc/czr-init.php:4415
 msgid "Important (red)"
 msgstr "Important (rouge)"
 
-#: core/utils/class-fire-utils_settings_map.php:1718 inc/czr-init.php:4397
+#: core/utils/class-fire-utils_settings_map.php:1718 inc/czr-init.php:4414
 msgid "Alert (orange)"
 msgstr "Alerte (orange)"
 
-#: core/utils/class-fire-utils_settings_map.php:1717 inc/czr-init.php:4396
+#: core/utils/class-fire-utils_settings_map.php:1717 inc/czr-init.php:4413
 msgid "Success (green)"
 msgstr "Succés (vert)"
 
-#: core/utils/class-fire-utils_settings_map.php:1716 inc/czr-init.php:4395
+#: core/utils/class-fire-utils_settings_map.php:1716 inc/czr-init.php:4412
 msgid "Default (grey)"
 msgstr "Défaut (gris)"
 
-#: core/utils/class-fire-utils_settings_map.php:1712 inc/czr-init.php:4391
+#: core/utils/class-fire-utils_settings_map.php:1712 inc/czr-init.php:4408
 msgid "Update notice style"
 msgstr "Design de la notification de mise à jour"
 
-#: core/utils/class-fire-utils_settings_map.php:1703 inc/czr-init.php:4382
+#: core/utils/class-fire-utils_settings_map.php:1703 inc/czr-init.php:4399
 msgid "Update notice text"
 msgstr "Text de la notification de mise à jour"
 
-#: core/utils/class-fire-utils_settings_map.php:1701 inc/czr-init.php:4380
+#: core/utils/class-fire-utils_settings_map.php:1701 inc/czr-init.php:4397
 msgid "Recently updated !"
 msgstr "Mise à jour récente !"
 
-#: core/utils/class-fire-utils_settings_map.php:1698 inc/czr-init.php:4377
+#: core/utils/class-fire-utils_settings_map.php:1698 inc/czr-init.php:4394
 msgid "Set a maximum interval (in days) during which the last update notice will be displayed."
 msgstr "Choisir une durée (en jours) pendant laquelle la notification de dernière mise à jour doit s'afficher."
 
-#: core/utils/class-fire-utils_settings_map.php:1692 inc/czr-init.php:4371
+#: core/utils/class-fire-utils_settings_map.php:1692 inc/czr-init.php:4388
 msgid "Display the notice if the last update is less (strictly) than n days old"
 msgstr "Afficher la notification si la dernière mise à jour a été faite il y a moins de n jours (strictement)"
 
-#: core/utils/class-fire-utils_settings_map.php:1686 inc/czr-init.php:4365
+#: core/utils/class-fire-utils_settings_map.php:1686 inc/czr-init.php:4382
 msgid "If this option is checked, a customizable recent update notice is displayed next to the post title."
 msgstr "Si cette option est cochée, une notification (modifiable) de mise à jour récente est affichée à côté du titre."
 
-#: core/utils/class-fire-utils_settings_map.php:1682 inc/czr-init.php:4361
+#: core/utils/class-fire-utils_settings_map.php:1682 inc/czr-init.php:4378
 msgid "Display a recent update notice"
 msgstr "Afficher une note de mise à jour"
 
-#: core/utils/class-fire-utils_settings_map.php:1681 inc/czr-init.php:4360
+#: core/utils/class-fire-utils_settings_map.php:1681 inc/czr-init.php:4377
 msgid "Recent update notice after post titles"
 msgstr "Notice de mise à jour récente après le titre des billets"
 
-#: core/utils/class-fire-utils_settings_map.php:1673 inc/czr-init.php:4352
+#: core/utils/class-fire-utils_settings_map.php:1673 inc/czr-init.php:4369
 msgid "Date of the last update"
 msgstr "Date de la dernière mise à jour"
 
-#: core/utils/class-fire-utils_settings_map.php:1672 inc/czr-init.php:4351
+#: core/utils/class-fire-utils_settings_map.php:1672 inc/czr-init.php:4368
 msgid "Nb of days since last update"
 msgstr "Nombre de jours depuis la dernière mise à jour"
 
-#: core/utils/class-fire-utils_settings_map.php:1668 inc/czr-init.php:4347
+#: core/utils/class-fire-utils_settings_map.php:1668 inc/czr-init.php:4364
 msgid "Select the last update format"
 msgstr "Choisir un format pour l'affichage de la mise à jour"
 
-#: core/utils/class-fire-utils_settings_map.php:1662 inc/czr-init.php:4341
+#: core/utils/class-fire-utils_settings_map.php:1662 inc/czr-init.php:4358
 msgid "If this option is checked, additional date informations about the the last post update can be displayed (nothing will show up if the post has never been updated)."
 msgstr "Une fois cochée, cette option permet d'afficher des informations sur la date de dernière mise à jour (rien ne sera affiché si le billet n'a jamais été mis à jour)."
 
-#: core/utils/class-fire-utils_settings_map.php:1658 inc/czr-init.php:4337
+#: core/utils/class-fire-utils_settings_map.php:1658 inc/czr-init.php:4354
 msgid "Display the update date"
 msgstr "Afficher la date de mise à jour"
 
-#: core/utils/class-fire-utils_settings_map.php:1650 inc/czr-init.php:4329
+#: core/utils/class-fire-utils_settings_map.php:1650 inc/czr-init.php:4346
 msgid "Display the author"
 msgstr "Afficher l'auteur"
 
-#: core/utils/class-fire-utils_settings_map.php:1642 inc/czr-init.php:4321
+#: core/utils/class-fire-utils_settings_map.php:1642 inc/czr-init.php:4338
 msgid "Display the publication date"
 msgstr "Afficher la date de publication"
 
-#: core/utils/class-fire-utils_settings_map.php:1633 inc/czr-init.php:4312
+#: core/utils/class-fire-utils_settings_map.php:1633 inc/czr-init.php:4329
 msgid "Display non-hierarchical taxonomies (like tags)"
 msgstr "Afficher les taxinomies non hiérarchiques (telles que les mots clés)"
 
-#: core/utils/class-fire-utils_settings_map.php:1624 inc/czr-init.php:4303
+#: core/utils/class-fire-utils_settings_map.php:1624 inc/czr-init.php:4320
 msgid "Display hierarchical taxonomies (like categories)"
 msgstr "Afficher les taxinomies hiérarchiques (telles que les catégories)"
 
-#: core/utils/class-fire-utils_settings_map.php:1623 inc/czr-init.php:4302
+#: core/utils/class-fire-utils_settings_map.php:1623 inc/czr-init.php:4319
 msgid "Select the metas to display"
 msgstr "Choisir les metas informations à afficher"
 
-#: core/utils/class-fire-utils_settings_map.php:1613 inc/czr-init.php:4292
+#: core/utils/class-fire-utils_settings_map.php:1613 inc/czr-init.php:4309
 msgid "Display posts metas in post lists (archives, blog page)"
 msgstr "Afficher les metas informations dans les listes de billets"
 
-#: core/utils/class-fire-utils_settings_map.php:1604 inc/czr-init.php:4283
+#: core/utils/class-fire-utils_settings_map.php:1604 inc/czr-init.php:4300
 msgid "Display posts metas for single posts"
 msgstr "Afficher les metas informations pour les billets seuls"
 
-#: core/utils/class-fire-utils_settings_map.php:1595 inc/czr-init.php:4274
+#: core/utils/class-fire-utils_settings_map.php:1595 inc/czr-init.php:4291
 msgid "Display posts metas on home"
 msgstr "Afficher les metas informations sur la page d'accueil."
 
 #: core/utils/class-fire-utils_settings_map.php:1594
-#: core/utils/class-fire-utils_settings_map.php:1945 inc/czr-init.php:4273
-#: inc/czr-init.php:4624
+#: core/utils/class-fire-utils_settings_map.php:1945 inc/czr-init.php:4290
+#: inc/czr-init.php:4641
 msgid "Select the contexts"
 msgstr "Choisir les contextes d'affichage"
 
-#: core/utils/class-fire-utils_settings_map.php:1587 inc/czr-init.php:4266
+#: core/utils/class-fire-utils_settings_map.php:1587 inc/czr-init.php:4283
 msgid "Text only"
 msgstr "Texte"
 
-#: core/utils/class-fire-utils_settings_map.php:1586 inc/czr-init.php:4265
+#: core/utils/class-fire-utils_settings_map.php:1586 inc/czr-init.php:4282
 msgid "Buttons and text"
 msgstr "Texte et boutons"
 
-#: core/utils/class-fire-utils_settings_map.php:1582 inc/czr-init.php:4261
+#: core/utils/class-fire-utils_settings_map.php:1582 inc/czr-init.php:4278
 msgid "Select a design for the post metas"
 msgstr "Choisir un design pour les metas informations"
 
-#: core/utils/class-fire-utils_settings_map.php:1581 inc/czr-init.php:4260
+#: core/utils/class-fire-utils_settings_map.php:1581 inc/czr-init.php:4277
 msgid "Metas Design"
 msgstr "Post metas design"
 
-#: core/utils/class-fire-utils_settings_map.php:1574 inc/czr-init.php:4253
+#: core/utils/class-fire-utils_settings_map.php:1574 inc/czr-init.php:4270
 msgid "When this option is checked, the post metas (like taxonomies, date and author) are displayed below the post titles."
 msgstr "Si cette option est cochée, les metas informations ( taxinomies, date et auteur) sont affichées sous les titres des billets."
 
-#: core/utils/class-fire-utils_settings_map.php:1571 inc/czr-init.php:4250
+#: core/utils/class-fire-utils_settings_map.php:1571 inc/czr-init.php:4267
 msgid "Display posts metas"
 msgstr "Afficher les metas informations des billets"
 
-#: core/utils/class-fire-utils_settings_map.php:359 inc/czr-init.php:3029
+#: core/utils/class-fire-utils_settings_map.php:359 inc/czr-init.php:3046
 msgid "WP footer widgets : display icons next to titles"
 msgstr "Afficher une icône à côté des titres des widgets WordPress"
 
-#: core/utils/class-fire-utils_settings_map.php:350 inc/czr-init.php:3020
+#: core/utils/class-fire-utils_settings_map.php:350 inc/czr-init.php:3037
 msgid "WP sidebar widgets : display icons next to titles"
 msgstr "Si cette option est cochée, une icône est affichée à gauche du titre de chaque type d'archives : categorie, tags, auteurs..."
 
-#: core/utils/class-fire-utils_settings_map.php:343 inc/czr-init.php:3013
+#: core/utils/class-fire-utils_settings_map.php:343 inc/czr-init.php:3030
 msgid "When this option is checked, a post type icon is displayed on the left of each post titles in an archive page. An archive page can be : category, tag, author, date archive, custom taxonomies, search results."
 msgstr "Si cette option est cochée, une icône est affichée à gauche du titre des billets dans les pages d'archive : categorie, tags, auteurs..."
 
-#: core/utils/class-fire-utils_settings_map.php:340 inc/czr-init.php:3010
+#: core/utils/class-fire-utils_settings_map.php:340 inc/czr-init.php:3027
 msgid "Display an icon next to each post title in an archive page"
 msgstr "Afficher une icône à côté des titres des billets dans une page d'archive"
 
-#: core/utils/class-fire-utils_settings_map.php:333 inc/czr-init.php:3003
+#: core/utils/class-fire-utils_settings_map.php:333 inc/czr-init.php:3020
 msgid "When this option is checked, an archive type icon is displayed in the heading of every types of archives, on the left of the title. An archive page can be : category, tag, author, date archive, custom taxonomies, search results."
 msgstr "Si cette option est cochée, une icône est affichée à gauche du titre de chaque type d'archives : categorie, tags, auteurs..."
 
-#: core/utils/class-fire-utils_settings_map.php:330 inc/czr-init.php:3000
+#: core/utils/class-fire-utils_settings_map.php:330 inc/czr-init.php:3017
 msgid "Display an icon next to the archive title"
 msgstr "Afficher une icône à côté des titres d'archive"
 
-#: core/utils/class-fire-utils_settings_map.php:321 inc/czr-init.php:2991
+#: core/utils/class-fire-utils_settings_map.php:321 inc/czr-init.php:3008
 msgid "Display a post icon next to the single post title"
 msgstr "Afficher une icône à côté des titres des billets seuls."
 
-#: core/utils/class-fire-utils_settings_map.php:312 inc/czr-init.php:2982
+#: core/utils/class-fire-utils_settings_map.php:312 inc/czr-init.php:2999
 msgid "Display a page icon next to the page title"
 msgstr "Afficher une icône à côté des titres des pages."
 
-#: core/utils/class-fire-utils_settings_map.php:306 inc/czr-init.php:2976
+#: core/utils/class-fire-utils_settings_map.php:306 inc/czr-init.php:2993
 msgid "When this option is checked, a contextual icon is displayed next to the titles of pages, posts, archives, and WP built-in widgets."
 msgstr "Lorsque cette option est cochée, une icône contextuelle est affichée à côté des titres de pages, billets, archives, et widgets WordPress."
 
-#: core/utils/class-fire-utils_settings_map.php:302 inc/czr-init.php:2972
+#: core/utils/class-fire-utils_settings_map.php:302 inc/czr-init.php:2989
 msgid "Display icons next to titles"
 msgstr "Afficher des icônes à côté des titres"
 
-#: core/utils/class-fire-utils_settings_map.php:1552 inc/czr-init.php:4231
+#: core/utils/class-fire-utils_settings_map.php:1552 inc/czr-init.php:4248
 msgid "Display the breadcrumb in posts lists : blog page, archives, search results..."
 msgstr "Afficher le fil d'Ariane dans les listes de billets : blog, archives, résultats de recherche..."
 
-#: core/utils/class-fire-utils_settings_map.php:1543 inc/czr-init.php:4222
+#: core/utils/class-fire-utils_settings_map.php:1543 inc/czr-init.php:4239
 msgid "Display the breadcrumb in single posts"
 msgstr "Afficher le fil d'Ariane dans les billets seuls"
 
-#: core/utils/class-fire-utils_settings_map.php:1534 inc/czr-init.php:4213
+#: core/utils/class-fire-utils_settings_map.php:1534 inc/czr-init.php:4230
 msgid "Display the breadcrumb in pages"
 msgstr "Afficher le fil d'Ariane dans les pages"
 
-#: core/utils/class-fire-utils_settings_map.php:1526 inc/czr-init.php:4205
+#: core/utils/class-fire-utils_settings_map.php:1526 inc/czr-init.php:4222
 msgid "Display the breadcrumb on home page"
 msgstr "Afficher le fil d'Ariane sur la page d'accueil"
 
-#: core/utils/class-fire-utils_settings_map.php:282 inc/czr-init.php:2952
+#: core/utils/class-fire-utils_settings_map.php:282 inc/czr-init.php:2969
 msgid "Open external links in a new tab"
 msgstr "Ouvrir les liens externes dans un nouvel onglet"
 
 #: core/utils/class-fire-utils_settings_map.php:275
-#: core/utils/class-fire-utils_settings_map.php:286 inc/czr-init.php:2945
-#: inc/czr-init.php:2956
+#: core/utils/class-fire-utils_settings_map.php:286 inc/czr-init.php:2962
+#: inc/czr-init.php:2973
 msgid "This will be applied to the links included in post or page content only."
 msgstr "Ce réglage sera appliqué aux liens inclus dans le contenu des pages et des billets uniquement."
 
-#: core/utils/class-fire-utils_settings_map.php:271 inc/czr-init.php:2941
+#: core/utils/class-fire-utils_settings_map.php:271 inc/czr-init.php:2958
 msgid "Display an icon next to external links"
 msgstr "Afficher une icône à côté des liens externes"
 
-#: core/utils/class-fire-utils_settings_map.php:261 inc/czr-init.php:2931
+#: core/utils/class-fire-utils_settings_map.php:261 inc/czr-init.php:2948
 msgid "Fade effect on link hover"
 msgstr "Effet de fondu au passage de la souris"
 
-#: core/utils/class-fire-utils_settings_map.php:795 inc/czr-init.php:3474
+#: core/utils/class-fire-utils_settings_map.php:795 inc/czr-init.php:3491
 msgid "Hover move effect for the sub menu items"
 msgstr "Sous-menus : effet de mouvement au passage de la souris"
 
-#: core/utils/class-fire-utils_settings_map.php:786 inc/czr-init.php:3465
+#: core/utils/class-fire-utils_settings_map.php:786 inc/czr-init.php:3482
 msgid "Reveal the sub-menus blocks with a fade effect"
 msgstr "Révéler les sous-menus avec un effet de fondu"
 
 #: core/utils/class-fire-utils_settings_map.php:739
-#: core/utils/class-fire-utils_settings_map.php:764 inc/czr-init.php:3418
-#: inc/czr-init.php:3443
+#: core/utils/class-fire-utils_settings_map.php:764 inc/czr-init.php:3435
+#: inc/czr-init.php:3460
 msgid "Menu on the right"
 msgstr "Menu à droite"
 
 #: core/utils/class-fire-utils_settings_map.php:738
-#: core/utils/class-fire-utils_settings_map.php:763 inc/czr-init.php:3417
-#: inc/czr-init.php:3442
+#: core/utils/class-fire-utils_settings_map.php:763 inc/czr-init.php:3434
+#: inc/czr-init.php:3459
 msgid "Menu on the left"
 msgstr "Menu à gauche"
 
-#: core/utils/class-fire-utils_settings_map.php:675 inc/czr-init.php:3354
+#: core/utils/class-fire-utils_settings_map.php:675 inc/czr-init.php:3371
 msgid "the z-index"
 msgstr "le z-index"
 
-#: core/utils/class-fire-utils_settings_map.php:673 inc/czr-init.php:3352
+#: core/utils/class-fire-utils_settings_map.php:673 inc/czr-init.php:3369
 msgid "What is"
 msgstr "Qu'est ce que"
 
-#: core/utils/class-fire-utils_settings_map.php:665 inc/czr-init.php:3344
+#: core/utils/class-fire-utils_settings_map.php:665 inc/czr-init.php:3361
 msgid "Set the header z-index"
 msgstr "Réglage de la propriété z-index"
 
-#: core/utils/class-fire-utils_settings_map.php:655 inc/czr-init.php:3334
+#: core/utils/class-fire-utils_settings_map.php:655 inc/czr-init.php:3351
 msgid "Sticky header : semi-transparent on scroll"
 msgstr "Haut de page fixe : semi-transparent"
 
-#: core/utils/class-fire-utils_settings_map.php:645 inc/czr-init.php:3324
+#: core/utils/class-fire-utils_settings_map.php:645 inc/czr-init.php:3341
 msgid "Sticky header : display the menu"
 msgstr "Haut de page fixe : inclure le menu"
 
-#: core/utils/class-fire-utils_settings_map.php:636 inc/czr-init.php:3315
+#: core/utils/class-fire-utils_settings_map.php:636 inc/czr-init.php:3332
 msgid "Sticky header : shrink title / logo"
 msgstr "Haut de page fixe : reduire le titre / logo"
 
-#: core/utils/class-fire-utils_settings_map.php:627 inc/czr-init.php:3306
+#: core/utils/class-fire-utils_settings_map.php:627 inc/czr-init.php:3323
 msgid "Sticky header : display the title / logo"
 msgstr "Haut de page fixe : inclure le titre / logo"
 
-#: core/utils/class-fire-utils_settings_map.php:607 inc/czr-init.php:3286
+#: core/utils/class-fire-utils_settings_map.php:607 inc/czr-init.php:3303
 msgid "Sticky header : display the tagline"
 msgstr "Haut de page fixe : inclure la description du site"
 
-#: core/utils/class-fire-utils_settings_map.php:602 inc/czr-init.php:3281
+#: core/utils/class-fire-utils_settings_map.php:602 inc/czr-init.php:3298
 msgid "If checked, this option makes the header stick to the top of the page on scroll down."
 msgstr "Si cette option est cochée, le haut de page reste fixe lors du scroll."
 
-#: core/utils/class-fire-utils_settings_map.php:597 inc/czr-init.php:3276
+#: core/utils/class-fire-utils_settings_map.php:597 inc/czr-init.php:3293
 msgid "Sticky on scroll"
 msgstr "Fixe en haut lors du scroll"
 
-#: core/utils/class-fire-utils_settings_map.php:596 inc/czr-init.php:3275
+#: core/utils/class-fire-utils_settings_map.php:596 inc/czr-init.php:3292
 msgid "Sticky header settings"
 msgstr "Réglages du haut de page fixe"
 
-#: core/utils/class-fire-utils_settings_map.php:540 inc/czr-init.php:3219
+#: core/utils/class-fire-utils_settings_map.php:540 inc/czr-init.php:3236
 msgid "Logo / title on the right"
 msgstr "Logo / titre à droite"
 
-#: core/utils/class-fire-utils_settings_map.php:539 inc/czr-init.php:3218
+#: core/utils/class-fire-utils_settings_map.php:539 inc/czr-init.php:3235
 msgid "Logo / title centered"
 msgstr "Logo / titre centré"
 
-#: core/utils/class-fire-utils_settings_map.php:538 inc/czr-init.php:3217
+#: core/utils/class-fire-utils_settings_map.php:538 inc/czr-init.php:3234
 msgid "Logo / title on the left"
 msgstr "Logo / titre à gauche"
 
-#: core/utils/class-fire-utils_settings_map.php:591 inc/czr-init.php:3270
+#: core/utils/class-fire-utils_settings_map.php:591 inc/czr-init.php:3287
 msgid "If checked, this option wraps the header menu/tagline/social in a light grey box."
 msgstr "Si cette option est cochée, la barre de navigation est entourée par un liseret gris."
 
-#: core/utils/class-fire-utils_settings_map.php:586 inc/czr-init.php:3265
+#: core/utils/class-fire-utils_settings_map.php:586 inc/czr-init.php:3282
 msgid "Display menu in a box"
 msgstr "Afficher le menu dans une boîte"
 
-#: core/utils/class-fire-utils_settings_map.php:558 inc/czr-init.php:3237
+#: core/utils/class-fire-utils_settings_map.php:558 inc/czr-init.php:3254
 msgid "Display the tagline"
 msgstr "Afficher la description du site"
 
-#: core/utils/class-fire-utils_settings_map.php:231 inc/czr-init.php:2901
+#: core/utils/class-fire-utils_settings_map.php:231 inc/czr-init.php:2918
 msgid "This option sets the default font size applied to any text element of your website, when no font size is already applied."
 msgstr "Cette option permet de régler la taille de police par défaut appliquée sur tout votre site."
 
-#: core/utils/class-fire-utils_settings_map.php:223 inc/czr-init.php:2893
+#: core/utils/class-fire-utils_settings_map.php:223 inc/czr-init.php:2910
 msgid "Set your website default font size in pixels."
 msgstr "Régler la taille de police par défaut en pixels."
 
-#: core/utils/class-fire-utils_settings_map.php:218 inc/czr-init.php:2888
+#: core/utils/class-fire-utils_settings_map.php:218 inc/czr-init.php:2905
 msgid "This font picker allows you to preview and select among a handy selection of font pairs and single fonts. If you choose a pair, the first font will be applied to the site main headings : site name, site description, titles h1, h2, h3., while the second will be the default font of your website for any texts or paragraphs."
 msgstr "Cette liste déroulante vous permet de prévisualiser et sélectionner une paire de police, ou une police par défaut. La première police d'une paire s'applique aux principaux titres de votre site : nom de site, description, titres h1, h2, h3, tandis que la seconde s'applique à tous les autres textes ou paragraphes (p)."
 
-#: core/utils/class-fire-utils_settings_map.php:211 inc/czr-init.php:2881
+#: core/utils/class-fire-utils_settings_map.php:211 inc/czr-init.php:2898
 msgid "Select a beautiful font pair (headings &amp; default fonts) or single font for your website."
 msgstr "Choisissez la meilleure combinaison de polices ou une police unique pour votre site."
 
-#: core/utils/class-fire-utils_settings_map.php:493 inc/czr-init.php:3172
+#: core/utils/class-fire-utils_settings_map.php:493 inc/czr-init.php:3189
 msgid "Check this option to display an author info block after each single post content. Note : the Biographical info field must be filled out in the user profile."
 msgstr "Cocher cette option pour afficher un bloc d'informations sur l'auteur après le contenu d'un billet. Note : le champ biographie doit être renseigné dans le profil de l'utilisateur."
 
-#: core/utils/class-fire-utils_settings_map.php:489 inc/czr-init.php:3168
+#: core/utils/class-fire-utils_settings_map.php:489 inc/czr-init.php:3185
 msgid "Display an author box after each single post content"
 msgstr "Afficher un bloc d'informations sur l'auteur après les billets"
 
-#: core/utils/class-fire-utils_settings_map.php:1155 inc/czr-init.php:3834
+#: core/utils/class-fire-utils_settings_map.php:1155 inc/czr-init.php:3851
 msgid "Global Post Lists Settings"
 msgstr "Réglages globaux des listes de billets"
 
-#: core/utils/class-fire-utils_settings_map.php:1125 inc/czr-init.php:3804
+#: core/utils/class-fire-utils_settings_map.php:1125 inc/czr-init.php:3821
 msgid "Note : the home page layout has to be set in the home page section"
 msgstr "Note : la disposition de la page d'accueil se fait dans la section dédiée à la page d'accueil"
 
-#: core/utils/class-fire-utils_settings_map.php:2502 inc/czr-init.php:5191
+#: core/utils/class-fire-utils_settings_map.php:2502 inc/czr-init.php:5208
 msgid "On the web, speed is key ! Improve the load time of your pages with those options."
 msgstr "Sur le web, la vitesse est essentielle. Cette options vous permettent d'améliorer le temps de chargement de vos pages."
 
-#: core/utils/class-fire-utils_settings_map.php:2500 inc/czr-init.php:5189
+#: core/utils/class-fire-utils_settings_map.php:2500 inc/czr-init.php:5206
 msgid "Website Performances"
 msgstr "Performances"
 
-#: core/utils/class-fire-utils_settings_map.php:2486 inc/czr-init.php:5175
+#: core/utils/class-fire-utils_settings_map.php:2486 inc/czr-init.php:5192
 msgid "Set up footer global options"
 msgstr "Réglages globaux du pied de page"
 
-#: core/utils/class-fire-utils_settings_map.php:2484 inc/czr-init.php:5173
+#: core/utils/class-fire-utils_settings_map.php:2484 inc/czr-init.php:5190
 msgid "Footer global settings"
 msgstr "Réglages généraux du pied de page"
 
-#: core/utils/class-fire-utils_settings_map.php:2458 inc/czr-init.php:5147
+#: core/utils/class-fire-utils_settings_map.php:2458 inc/czr-init.php:5164
 msgid "Set up post/page navigation options"
 msgstr "Choisir les options pour la navigation au sein des billets et des pages"
 
-#: core/utils/class-fire-utils_settings_map.php:2456 inc/czr-init.php:5145
+#: core/utils/class-fire-utils_settings_map.php:2456 inc/czr-init.php:5162
 msgid "Post/Page Navigation"
 msgstr "Navigation au sein des billets/pages"
 
-#: core/utils/class-fire-utils_settings_map.php:2446 inc/czr-init.php:5135
+#: core/utils/class-fire-utils_settings_map.php:2446 inc/czr-init.php:5152
 msgid "Set up paragraphs options"
 msgstr "Réglages des paragraphes"
 
-#: core/utils/class-fire-utils_settings_map.php:2444 inc/czr-init.php:5133
+#: core/utils/class-fire-utils_settings_map.php:2444 inc/czr-init.php:5150
 msgid "Paragraphs"
 msgstr "Paragraphes"
 
-#: core/utils/class-fire-utils_settings_map.php:2440 inc/czr-init.php:5129
+#: core/utils/class-fire-utils_settings_map.php:2440 inc/czr-init.php:5146
 msgid "Set up gallery options"
 msgstr "Choisir les options pour les galeries d'images"
 
-#: core/utils/class-fire-utils_settings_map.php:2438 inc/czr-init.php:5127
+#: core/utils/class-fire-utils_settings_map.php:2438 inc/czr-init.php:5144
 msgid "Galleries"
 msgstr "Galeries d'images"
 
-#: core/utils/class-fire-utils_settings_map.php:2434 inc/czr-init.php:5123
+#: core/utils/class-fire-utils_settings_map.php:2434 inc/czr-init.php:5140
 msgid "Set up post metas options"
 msgstr "Réglages des metas informations"
 
-#: core/utils/class-fire-utils_settings_map.php:2432 inc/czr-init.php:5121
+#: core/utils/class-fire-utils_settings_map.php:2432 inc/czr-init.php:5138
 msgid "Post metas (category, tags, custom taxonomies)"
 msgstr "Metas données (categorie, tags, taxinomies)"
 
-#: core/utils/class-fire-utils_settings_map.php:2420 inc/czr-init.php:5109
+#: core/utils/class-fire-utils_settings_map.php:2420 inc/czr-init.php:5126
 msgid "Set up breadcrumb options"
 msgstr "Réglages du fil d'Ariane"
 
-#: core/utils/class-fire-utils_settings_map.php:2418 inc/czr-init.php:5107
+#: core/utils/class-fire-utils_settings_map.php:2418 inc/czr-init.php:5124
 msgid "Breadcrumb"
 msgstr "Fil d'Ariane"
 
-#: core/utils/class-fire-utils_settings_map.php:2414 inc/czr-init.php:5103
+#: core/utils/class-fire-utils_settings_map.php:2414 inc/czr-init.php:5120
 msgid "Set up single posts options"
 msgstr "Réglages des billets seuls"
 
-#: core/utils/class-fire-utils_settings_map.php:2412 inc/czr-init.php:5101
+#: core/utils/class-fire-utils_settings_map.php:2412 inc/czr-init.php:5118
 msgid "Single posts"
 msgstr "Billets seuls"
 
-#: core/utils/class-fire-utils_settings_map.php:2408 inc/czr-init.php:5097
+#: core/utils/class-fire-utils_settings_map.php:2408 inc/czr-init.php:5114
 msgid "Set up post lists options"
 msgstr "Réglages des listes de billets"
 
-#: core/utils/class-fire-utils_settings_map.php:2406 inc/czr-init.php:5095
+#: core/utils/class-fire-utils_settings_map.php:2406 inc/czr-init.php:5112
 msgid "Post lists : blog, archives, ..."
 msgstr "Listes de billets : blog, archives"
 
-#: core/utils/class-fire-utils_settings_map.php:2285 inc/czr-init.php:4974
+#: core/utils/class-fire-utils_settings_map.php:2285 inc/czr-init.php:4991
 msgid "Your theme supports %s menu. Select which menu you would like to use."
 msgid_plural "Your theme supports %s menus. Select which menu appears in each location."
 msgstr[0] "Ce thème fonctionne avec %s menu. Sélectionner le menu que vous souhaitez utiliser."
 msgstr[1] "Ce thème fonctionne avec %s menus. Sélectionner le menu de chaque emplacements prédéfinis."
 
-#: core/utils/class-fire-utils_settings_map.php:2375 inc/czr-init.php:5064
+#: core/utils/class-fire-utils_settings_map.php:2375 inc/czr-init.php:5081
 msgid "Design and layout"
 msgstr "Design et réglages"
 
 #: core/utils/class-fire-utils_settings_map.php:532
-#: core/utils/class-fire-utils_settings_map.php:2375 inc/czr-init.php:3211
-#: inc/czr-init.php:5064
+#: core/utils/class-fire-utils_settings_map.php:2375 inc/czr-init.php:3228
+#: inc/czr-init.php:5081
 msgid "Header design and layout"
 msgstr "Réglages du haut de page"
 
-#: core/utils/class-fire-utils_settings_map.php:2361 inc/czr-init.php:5050
+#: core/utils/class-fire-utils_settings_map.php:2361 inc/czr-init.php:5067
 msgid "Post authors settings"
 msgstr "Réglages pour les auteurs"
 
-#: core/utils/class-fire-utils_settings_map.php:2359 inc/czr-init.php:5048
+#: core/utils/class-fire-utils_settings_map.php:2359 inc/czr-init.php:5065
 msgid "Authors"
 msgstr "Auteurs"
 
-#: core/utils/class-fire-utils_settings_map.php:2353 inc/czr-init.php:5042
+#: core/utils/class-fire-utils_settings_map.php:2353 inc/czr-init.php:5059
 msgid "Image settings"
 msgstr "Réglages pour les images"
 
-#: core/utils/class-fire-utils_settings_map.php:2349 inc/czr-init.php:5038
+#: core/utils/class-fire-utils_settings_map.php:2349 inc/czr-init.php:5055
 msgid "Set up the titles icons options"
 msgstr "Paramétrer les icônes des titres"
 
-#: core/utils/class-fire-utils_settings_map.php:2347 inc/czr-init.php:5036
+#: core/utils/class-fire-utils_settings_map.php:2347 inc/czr-init.php:5053
 msgid "Titles icons settings"
 msgstr "Réglages des icônes des titres"
 
-#: core/utils/class-fire-utils_settings_map.php:2341 inc/czr-init.php:5030
+#: core/utils/class-fire-utils_settings_map.php:2341 inc/czr-init.php:5047
 msgid "Links style and effects"
 msgstr "Style et effet des liens"
 
-#: core/utils/class-fire-utils_settings_map.php:2331 inc/czr-init.php:5020
+#: core/utils/class-fire-utils_settings_map.php:2331 inc/czr-init.php:5037
 msgid "Set up the font global settings"
 msgstr "Réglages des polices d'écriture"
 
-#: core/utils/class-fire-utils_settings_map.php:2329 inc/czr-init.php:5018
+#: core/utils/class-fire-utils_settings_map.php:2329 inc/czr-init.php:5035
 msgid "Fonts"
 msgstr "Polices"
 
-#: core/utils/class-fire-utils_settings_map.php:2312 inc/czr-init.php:5001
+#: core/utils/class-fire-utils_settings_map.php:2312 inc/czr-init.php:5018
 msgid "Site Title & Tagline"
 msgstr "Titre et description du site"
 
-#: core/utils/class-fire-utils_settings_map.php:2080 inc/czr-init.php:4774
+#: core/utils/class-fire-utils_settings_map.php:2080 inc/czr-init.php:4791
 msgid "How to create and use a child theme ?"
 msgstr "Comment créer et utiliser un thème enfant ?"
 
-#: core/utils/class-fire-utils_settings_map.php:2079 inc/czr-init.php:4773
+#: core/utils/class-fire-utils_settings_map.php:2079 inc/czr-init.php:4790
 msgid "child theme."
 msgstr "thème enfant"
 
-#: core/utils/class-fire-utils_settings_map.php:2078 inc/czr-init.php:4772
+#: core/utils/class-fire-utils_settings_map.php:2078 inc/czr-init.php:4789
 msgid "Use this field to test small chunks of CSS code. For important CSS customizations, you'll want to modify the style.css file of a"
 msgstr "Utilisez ce champ pour tester des petits bouts de code CSS. Pour des modifications plus importantes, modifiez plutôt le fichier style.css d'un"
 
-#: core/utils/class-fire-utils_settings_map.php:2074 inc/czr-init.php:4768
+#: core/utils/class-fire-utils_settings_map.php:2074 inc/czr-init.php:4785
 msgid "Add your custom css here and design live! (for advanced users)"
 msgstr "Ajoutez votre CSS ici pour un design live! (utilisateurs avancés)"
 
-#: core/utils/class-fire-utils_settings_map.php:474 inc/czr-init.php:3153
+#: core/utils/class-fire-utils_settings_map.php:474 inc/czr-init.php:3170
 msgid "Activate this option to move the sidebars (if any) after the main content block, for smartphones or tablets viewport."
 msgstr "Activer cette option pour déplacer vos barres latérales après le contenu principal pour les tablettes et smartphones."
 
-#: core/utils/class-fire-utils_settings_map.php:471 inc/czr-init.php:3150
+#: core/utils/class-fire-utils_settings_map.php:471 inc/czr-init.php:3167
 msgid "Dynamic sidebar reordering on small devices"
 msgstr "Réorganisation des blocks en mode responsive"
 
-#: core/utils/class-fire-utils_settings_map.php:256 inc/czr-init.php:2926
+#: core/utils/class-fire-utils_settings_map.php:256 inc/czr-init.php:2943
 msgid "If enabled, this option activates a smooth page scroll when clicking on a link to an anchor of the same page."
 msgstr "Cette option "
 
-#: core/utils/class-fire-utils_settings_map.php:253 inc/czr-init.php:2923
+#: core/utils/class-fire-utils_settings_map.php:253 inc/czr-init.php:2940
 msgid "Smooth scroll on click"
 msgstr "« Smooth Scroll » lors du clic"
 
-#: core/utils/class-fire-utils_settings_map.php:430 inc/czr-init.php:3109
+#: core/utils/class-fire-utils_settings_map.php:430 inc/czr-init.php:3126
 msgid "This option dynamically centers your images on any devices, vertically or horizontally according to their initial aspect ratio."
 msgstr "Cette option recentre vos images dynamiquement en fonction de leurs proportions originales, pour tous les types d'écran."
 
-#: core/utils/class-fire-utils_settings_map.php:427 inc/czr-init.php:3106
+#: core/utils/class-fire-utils_settings_map.php:427 inc/czr-init.php:3123
 msgid "Dynamic thumbnails centering on any devices"
 msgstr "Recentrage automatique pour les imagettes"
 
-#: core/utils/class-fire-utils_settings_map.php:419 inc/czr-init.php:3098
+#: core/utils/class-fire-utils_settings_map.php:419 inc/czr-init.php:3115
 msgid "Dynamic slider images centering on any devices"
 msgstr "Recentrage automatique pour les images des diaporamas"
 
-#: core/utils/class-fire-utils_settings_map.php:414 inc/czr-init.php:3092
+#: core/utils/class-fire-utils_settings_map.php:414 inc/czr-init.php:3109
 msgid "When checked, this option displays a loading icon when the slides are being setup."
 msgstr "En cochant cette option, une icône animée sera affichée lors du chargement des images."
 
-#: core/utils/class-fire-utils_settings_map.php:411 inc/czr-init.php:3089
+#: core/utils/class-fire-utils_settings_map.php:411 inc/czr-init.php:3106
 msgid "Sliders : display on loading icon before rendering the slides"
 msgstr "Diaporamas : afficher une animation lors du chargement des images"
 
-#: core/utils/class-fire-utils_settings_map.php:405 inc/czr-init.php:3075
+#: core/utils/class-fire-utils_settings_map.php:405 inc/czr-init.php:3092
 msgid "Open the description page of the Regenerate thumbnails plugin"
 msgstr "Ouvrir la page d'information du plugin Regenerate thumbnails"
 
-#: core/utils/class-fire-utils_settings_map.php:403 inc/czr-init.php:3073
+#: core/utils/class-fire-utils_settings_map.php:403 inc/czr-init.php:3090
 msgid "regenerate thumbnails"
 msgstr "régénérer vos images"
 
-#: core/utils/class-fire-utils_settings_map.php:402 inc/czr-init.php:3072
+#: core/utils/class-fire-utils_settings_map.php:402 inc/czr-init.php:3089
 msgid "It is strongly recommended to regenerate your media library images in high definition with this free plugin"
 msgstr "Il est fortement recommandé de régénérer les images de votre bibliothèque en haute définition grâce à ce plugin gratuit"
 
-#: core/utils/class-fire-utils_settings_map.php:401 inc/czr-init.php:3071
+#: core/utils/class-fire-utils_settings_map.php:401 inc/czr-init.php:3088
 msgid "If enabled, your website will include support for high resolution devices."
 msgstr "Cette option active la compatibilité avec les supports haute résolution (retina)"
 
-#: core/utils/class-fire-utils_settings_map.php:397 inc/czr-init.php:3067
+#: core/utils/class-fire-utils_settings_map.php:397 inc/czr-init.php:3084
 msgid "High resolution (Retina) support"
 msgstr "Prise en charge des images haute résolution ( Retina )"
 
-#: core/utils/class-fire-utils_settings_map.php:391 inc/czr-init.php:3061
+#: core/utils/class-fire-utils_settings_map.php:391 inc/czr-init.php:3078
 msgid "If enabled, this option will force images to fit the screen on lightbox zoom."
 msgstr "Si elle est activée, cette option adapte l'image aux dimensions de l'écran lors du zoom."
 
-#: core/utils/class-fire-utils_settings_map.php:388 inc/czr-init.php:3058
+#: core/utils/class-fire-utils_settings_map.php:388 inc/czr-init.php:3075
 msgid "Autoscale images on zoom"
 msgstr "Redimensionnement automatique dans l'écran"
 
-#: core/utils/class-fire-utils_settings_map.php:382 inc/czr-init.php:3052
+#: core/utils/class-fire-utils_settings_map.php:382 inc/czr-init.php:3069
 msgid "If enabled, this option activates a popin window whith a zoom effect when an image is clicked. Note : to enable this effect on the images of your pages and posts, images have to be linked to the Media File."
 msgstr "Si elle est activée, cette option affiche une fenêtre popin avec effet de zoom lorsque l'image est cliquée."
 
-#: core/utils/class-fire-utils_settings_map.php:379 inc/czr-init.php:3049
+#: core/utils/class-fire-utils_settings_map.php:379 inc/czr-init.php:3066
 msgid "Lightbox effect on images"
 msgstr "Effet lightbox sur les images"
 
-#: core/utils/class-fire-utils_settings_map.php:2030 inc/czr-init.php:4709
+#: core/utils/class-fire-utils_settings_map.php:2030 inc/czr-init.php:4726
 msgid "Social links in footer"
 msgstr "Liens sociaux dans le footer"
 
-#: core/utils/class-fire-utils_settings_map.php:1996 inc/czr-init.php:4675
+#: core/utils/class-fire-utils_settings_map.php:1996 inc/czr-init.php:4692
 msgid "Social links in right sidebar"
 msgstr "Liens sociaux dans la barre latérale droite"
 
-#: core/utils/class-fire-utils_settings_map.php:1986 inc/czr-init.php:4665
+#: core/utils/class-fire-utils_settings_map.php:1986 inc/czr-init.php:4682
 msgid "Social links in left sidebar"
 msgstr "Liens sociaux dans la barre latérale gauche"
 
-#: core/utils/class-fire-utils_settings_map.php:576 inc/czr-init.php:3255
+#: core/utils/class-fire-utils_settings_map.php:576 inc/czr-init.php:3272
 msgid "Social links in header"
 msgstr "Liens sociaux dans le header"
 
-#: core/utils/class-fire-utils_settings_map.php:1885 inc/czr-init.php:4564
+#: core/utils/class-fire-utils_settings_map.php:1885 inc/czr-init.php:4581
 msgid "Enable comments on pages"
 msgstr "Autoriser les commentaires sur les pages"
 
-#: core/utils/class-fire-utils_settings_map.php:1180 inc/czr-init.php:3859
+#: core/utils/class-fire-utils_settings_map.php:1180 inc/czr-init.php:3876
 msgid "Choose the pages default layout"
 msgstr "Choisir la structure par défaut des pages"
 
-#: core/utils/class-fire-utils_settings_map.php:1172 inc/czr-init.php:3851
+#: core/utils/class-fire-utils_settings_map.php:1172 inc/czr-init.php:3868
 msgid "Display the full content"
 msgstr "Afficher le contenu complet"
 
 #: core/utils/class-fire-utils_settings_map.php:984
-#: core/utils/class-fire-utils_settings_map.php:1171 inc/czr-init.php:3663
-#: inc/czr-init.php:3850
+#: core/utils/class-fire-utils_settings_map.php:1171 inc/czr-init.php:3680
+#: inc/czr-init.php:3867
 msgid "Display the excerpt"
 msgstr "Afficher le résumé"
 
-#: core/utils/class-fire-utils_settings_map.php:1167 inc/czr-init.php:3846
+#: core/utils/class-fire-utils_settings_map.php:1167 inc/czr-init.php:3863
 msgid "Select the length of posts in lists (home, search, archives, ...)"
 msgstr "Choisir la longueur de l'extrait dans les listes de billets (blog, archives, ...)"
 
-#: core/utils/class-fire-utils_settings_map.php:1156 inc/czr-init.php:3835
+#: core/utils/class-fire-utils_settings_map.php:1156 inc/czr-init.php:3852
 msgid "Maximum number of posts per page"
 msgstr "Nombre de billets max. par page"
 
-#: core/utils/class-fire-utils_settings_map.php:1143 inc/czr-init.php:3822
+#: core/utils/class-fire-utils_settings_map.php:1143 inc/czr-init.php:3839
 msgid "Choose the posts default layout"
 msgstr "Choisir la structure par défaut des billets"
 
-#: core/utils/class-fire-utils_settings_map.php:1136 inc/czr-init.php:3815
+#: core/utils/class-fire-utils_settings_map.php:1136 inc/czr-init.php:3832
 msgid "This option will override the specific layouts on all posts/pages, including the front page."
 msgstr "Cette option remplacera les paramétrages de structures sur les pages/billets, page d'accueil comprise."
 
-#: core/utils/class-fire-utils_settings_map.php:1133 inc/czr-init.php:3812
+#: core/utils/class-fire-utils_settings_map.php:1133 inc/czr-init.php:3829
 msgid "Force default layout everywhere"
 msgstr "Forcer la structure par défaut sur tout le site"
 
-#: core/utils/class-fire-utils_settings_map.php:1121 inc/czr-init.php:3800
+#: core/utils/class-fire-utils_settings_map.php:1121 inc/czr-init.php:3817
 msgid "Choose the global default layout"
 msgstr "Choisir la structure globale par défaut"
 
-#: core/utils/class-fire-utils_settings_map.php:1517 inc/czr-init.php:4196
+#: core/utils/class-fire-utils_settings_map.php:1517 inc/czr-init.php:4213
 msgid "Display Breadcrumb"
 msgstr "Afficher le fil d'Ariane"
 
 #: core/utils/class-fire-utils_settings_map.php:1006
-#: core/utils/class-fire-utils_settings_map.php:1099 inc/czr-init.php:3685
-#: inc/czr-init.php:3778
+#: core/utils/class-fire-utils_settings_map.php:1099 inc/czr-init.php:3702
+#: inc/czr-init.php:3795
 msgid "Button text"
 msgstr "Texte du bouton"
 
 #: core/utils/class-fire-utils_settings_map.php:1005
-#: core/utils/class-fire-utils_settings_map.php:1097 inc/czr-init.php:3684
-#: inc/czr-init.php:3776
+#: core/utils/class-fire-utils_settings_map.php:1097 inc/czr-init.php:3701
+#: inc/czr-init.php:3793
 msgid "Read more &raquo;"
 msgstr "Lire la suite &raquo;"
 
-#: core/utils/class-fire-utils_settings_map.php:1091 inc/czr-init.php:3770
+#: core/utils/class-fire-utils_settings_map.php:1091 inc/czr-init.php:3787
 msgid "The images are set with the \"featured image\" of each pages (in the page edit screen). Uncheck the option above to disable the featured page images."
 msgstr "Les images sont gérées avec les \"images à la une\" de chaques pages. Décocher l'option ci-dessus pour désactiver les images des pages en avant."
 
-#: core/utils/class-fire-utils_settings_map.php:1088 inc/czr-init.php:3767
+#: core/utils/class-fire-utils_settings_map.php:1088 inc/czr-init.php:3784
 msgid "Show images"
 msgstr "Afficher les images"
 
-#: core/utils/class-fire-utils_settings_map.php:1079 inc/czr-init.php:3758
+#: core/utils/class-fire-utils_settings_map.php:1079 inc/czr-init.php:3775
 msgid "Disable"
 msgstr "Désactiver"
 
-#: core/utils/class-fire-utils_settings_map.php:1078 inc/czr-init.php:3757
+#: core/utils/class-fire-utils_settings_map.php:1078 inc/czr-init.php:3774
 msgid "Enable"
 msgstr "Activer"
 
-#: core/utils/class-fire-utils_settings_map.php:1074 inc/czr-init.php:3753
+#: core/utils/class-fire-utils_settings_map.php:1074 inc/czr-init.php:3770
 msgid "Display home featured pages area"
 msgstr "Afficher des pages en avant sur la page d'accueil"
 
-#: core/utils/class-fire-utils_settings_map.php:1073 inc/czr-init.php:3752
+#: core/utils/class-fire-utils_settings_map.php:1073 inc/czr-init.php:3769
 msgid "Featured pages options"
 msgstr "Options des pages en avant"
 
-#: core/utils/class-fire-utils_settings_map.php:1033 inc/czr-init.php:3712
+#: core/utils/class-fire-utils_settings_map.php:1033 inc/czr-init.php:3729
 msgid "in ms : 1000ms = 1s"
 msgstr "en ms : 1000ms = 1s"
 
-#: core/utils/class-fire-utils_settings_map.php:1028 inc/czr-init.php:3707
+#: core/utils/class-fire-utils_settings_map.php:1028 inc/czr-init.php:3724
 msgid "Delay between each slides"
 msgstr "Délai entre les diapos"
 
-#: core/utils/class-fire-utils_settings_map.php:1016 inc/czr-init.php:3695
+#: core/utils/class-fire-utils_settings_map.php:1016 inc/czr-init.php:3712
 msgid "Full width slider"
 msgstr "Diaporama en pleine largeur"
 
-#: core/utils/class-fire-utils_settings_map.php:942 inc/czr-init.php:3621
+#: core/utils/class-fire-utils_settings_map.php:942 inc/czr-init.php:3638
 msgid "Select front page slider"
 msgstr "Choisir un diaporama pour la page d'accueil"
 
-#: core/utils/class-fire-utils_settings_map.php:941 inc/czr-init.php:3620
+#: core/utils/class-fire-utils_settings_map.php:941 inc/czr-init.php:3637
 msgid "Slider options"
 msgstr "Options du diaporama"
 
-#: core/utils/class-fire-utils_settings_map.php:929 inc/czr-init.php:3608
+#: core/utils/class-fire-utils_settings_map.php:929 inc/czr-init.php:3625
 msgid "Set up the front page layout"
 msgstr "Régler la structure de la page d'accueil"
 
-#: core/utils/class-fire-utils_settings_map.php:902 inc/czr-init.php:3581
+#: core/utils/class-fire-utils_settings_map.php:902 inc/czr-init.php:3598
 msgid "Posts page"
 msgstr "Page des billets"
 
-#: core/utils/class-fire-utils_settings_map.php:894 inc/czr-init.php:3573
+#: core/utils/class-fire-utils_settings_map.php:894 inc/czr-init.php:3590
 msgid "Front page"
 msgstr "Page d'accueil"
 
-#: core/utils/class-fire-utils_settings_map.php:888 inc/czr-init.php:3567
+#: core/utils/class-fire-utils_settings_map.php:888 inc/czr-init.php:3584
 msgid "A static page"
 msgstr "Une page statique"
 
-#: core/utils/class-fire-utils_settings_map.php:887 inc/czr-init.php:3566
+#: core/utils/class-fire-utils_settings_map.php:887 inc/czr-init.php:3583
 msgid "Your latest posts"
 msgstr "Vos derniers billets"
 
-#: core/utils/class-fire-utils_settings_map.php:886 inc/czr-init.php:3565
+#: core/utils/class-fire-utils_settings_map.php:886 inc/czr-init.php:3582
 msgid "Don't show any posts or page"
 msgstr "Ne rien afficher : pas de billets ou de page"
 
-#: core/utils/class-fire-utils_settings_map.php:881 inc/czr-init.php:3560
+#: core/utils/class-fire-utils_settings_map.php:881 inc/czr-init.php:3577
 msgid "Front page displays"
 msgstr "Affichages de la page d'accueil"
 
-#: core/utils/class-fire-utils_settings_map.php:873 inc/czr-init.php:3552
+#: core/utils/class-fire-utils_settings_map.php:873 inc/czr-init.php:3569
 msgid "Choose content and layout"
 msgstr "Choisir le contenu et sa disposition"
 
-#: core/utils/class-fire-utils_settings_map.php:167 inc/czr-init.php:2837
+#: core/utils/class-fire-utils_settings_map.php:167 inc/czr-init.php:2854
 msgid "FAVICON"
 msgstr "FAVICON"
 
-#: core/utils/class-fire-utils_settings_map.php:166 inc/czr-init.php:2836
+#: core/utils/class-fire-utils_settings_map.php:166 inc/czr-init.php:2853
 msgid "Favicon Upload (supported formats : .ico, .png, .gif)"
 msgstr "Uploader une favicon (formats acceptés : .ico, .png, .gif)"
 
-#: core/utils/class-fire-utils_settings_map.php:160 inc/czr-init.php:2830
+#: core/utils/class-fire-utils_settings_map.php:160 inc/czr-init.php:2847
 msgid "Use this upload control to specify a different logo on sticky header mode."
 msgstr "Utilisez ce bouton d'upload pour utiliser un logo différent lorsque le menu est fixe lors du scroll."
 
-#: core/utils/class-fire-utils_settings_map.php:149 inc/czr-init.php:2819
+#: core/utils/class-fire-utils_settings_map.php:149 inc/czr-init.php:2836
 msgid "Sticky Logo Upload (supported formats : .jpg, .png, .gif, svg, svgz)"
 msgstr "Uploader un logo pour le mode sticky (formats acceptés : .jpg, .png, .gif, svg, svgz)"
 
-#: core/utils/class-fire-utils_settings_map.php:145 inc/czr-init.php:2815
+#: core/utils/class-fire-utils_settings_map.php:145 inc/czr-init.php:2832
 msgid "Uncheck this option to keep your original logo dimensions."
 msgstr "Décocher cette option pour conserver les dimensions originales du logo."
 
-#: core/utils/class-fire-utils_settings_map.php:141 inc/czr-init.php:2811
+#: core/utils/class-fire-utils_settings_map.php:141 inc/czr-init.php:2828
 msgid "Force logo dimensions to max-width:250px and max-height:100px"
 msgstr "Forcer les dimensions du logo à : largeur max. 250px et hauteur max.  100px"
 
-#: core/utils/class-fire-utils_settings_map.php:126 inc/czr-init.php:2796
+#: core/utils/class-fire-utils_settings_map.php:126 inc/czr-init.php:2813
 msgid "LOGO"
 msgstr "LOGO"
 
-#: core/utils/class-fire-utils_settings_map.php:125 inc/czr-init.php:2795
+#: core/utils/class-fire-utils_settings_map.php:125 inc/czr-init.php:2812
 msgid "Logo Upload (supported formats : .jpg, .png, .gif, svg, svgz)"
 msgstr "Uploader un logo (formats acceptés : .jpg, .png, .gif, svg, svgz)"
 
-#: core/utils/class-fire-utils_settings_map.php:552 inc/czr-init.php:3231
+#: core/utils/class-fire-utils_settings_map.php:552 inc/czr-init.php:3248
 msgid "Uncheck this option to remove the colored top border."
 msgstr "Décocher cette option pour supprimer la bordure colorée en haut de page."
 
-#: core/utils/class-fire-utils_settings_map.php:548 inc/czr-init.php:3227
+#: core/utils/class-fire-utils_settings_map.php:548 inc/czr-init.php:3244
 msgid "Display top border"
 msgstr "Afficher la bordure en haut de page"
 
-#: core/utils/class-fire-utils_settings_map.php:2100 inc/czr-init.php:4794
+#: core/utils/class-fire-utils_settings_map.php:2100 inc/czr-init.php:4811
 msgid "Using the minified version of the stylesheets will speed up your webpage load time."
 msgstr "Utiliser une feuille de style compressée améliore la vitesse de chargement de vos pages."
 
-#: core/utils/class-fire-utils_settings_map.php:2097 inc/czr-init.php:4791
+#: core/utils/class-fire-utils_settings_map.php:2097 inc/czr-init.php:4808
 msgid "Performance : use the minified CSS stylesheets"
 msgstr "Performance : utiliser la feuille de style CSS compressée"
 
-#: core/utils/class-fire-utils_settings_map.php:197 inc/czr-init.php:2867
+#: core/utils/class-fire-utils_settings_map.php:197 inc/czr-init.php:2884
 msgid "Apply a random color skin on each page load."
 msgstr "Appliquer une couleur de thème aléatoire à chaque chargement de page."
 
-#: core/utils/class-fire-utils_settings_map.php:194 inc/czr-init.php:2864
+#: core/utils/class-fire-utils_settings_map.php:194 inc/czr-init.php:2881
 msgid "Randomize the skin"
 msgstr "Rendre le thème couleur aléatoire"
 
-#: core/utils/class-fire-utils_settings_map.php:184 inc/czr-init.php:2854
+#: core/utils/class-fire-utils_settings_map.php:184 inc/czr-init.php:2871
 msgid "Choose a predefined skin"
 msgstr "Choisir un thème prédéfini"
 
-#: core/utils/class-fire-utils_settings_map.php:779 inc/czr-init.php:3458
+#: core/utils/class-fire-utils_settings_map.php:779 inc/czr-init.php:3475
 msgid "Expand submenus on hover"
 msgstr "Ouverture au passage de la souris"
 
-#: core/utils/class-fire-utils_settings_map.php:778 inc/czr-init.php:3457
+#: core/utils/class-fire-utils_settings_map.php:778 inc/czr-init.php:3474
 msgid "Expand submenus on click"
 msgstr "Ouverture en cliquant"
 
-#: core/utils/class-fire-utils_settings_map.php:774 inc/czr-init.php:3453
+#: core/utils/class-fire-utils_settings_map.php:774 inc/czr-init.php:3470
 msgid "Select a submenu expansion option"
 msgstr "Choisir un mode d'ouverture pour les sous-menus"
 
-#: core/utils/class-fire-utils_settings_map.php:2475 inc/czr-init.php:5164
+#: core/utils/class-fire-utils_settings_map.php:2475 inc/czr-init.php:5181
 msgid "Various settings for responsive display"
 msgstr "Réglages pour le mode responsive"
 
 #: core/utils/class-fire-utils_settings_map.php:439
-#: core/utils/class-fire-utils_settings_map.php:2473 inc/czr-init.php:3118
-#: inc/czr-init.php:5162
+#: core/utils/class-fire-utils_settings_map.php:2473 inc/czr-init.php:3135
+#: inc/czr-init.php:5179
 msgid "Responsive settings"
 msgstr "Réglages responsive"
 
-#: core/utils/class-fire-utils_settings_map.php:2495 inc/czr-init.php:5184
+#: core/utils/class-fire-utils_settings_map.php:2495 inc/czr-init.php:5201
 msgid "Custom CSS"
 msgstr "Custom CSS"
 
-#: core/utils/class-fire-utils_settings_map.php:2343 inc/czr-init.php:5032
+#: core/utils/class-fire-utils_settings_map.php:2343 inc/czr-init.php:5049
 msgid "Various links settings"
 msgstr "Options des liens"
 
-#: core/utils/class-fire-utils_settings_map.php:2355 inc/czr-init.php:5044
+#: core/utils/class-fire-utils_settings_map.php:2355 inc/czr-init.php:5061
 msgid "Various images settings"
 msgstr "Réglages pour les images"
 
-#: core/utils/class-fire-utils_settings_map.php:2337 inc/czr-init.php:5026
+#: core/utils/class-fire-utils_settings_map.php:2337 inc/czr-init.php:5043
 msgid "Set up your social links"
 msgstr "Réglages des liens vers les réseaux sociaux"
 
 #: core/utils/class-fire-utils_settings_map.php:2004
-#: core/utils/class-fire-utils_settings_map.php:2335 inc/czr-init.php:4683
-#: inc/czr-init.php:5024
+#: core/utils/class-fire-utils_settings_map.php:2335 inc/czr-init.php:4700
+#: inc/czr-init.php:5041
 msgid "Social links"
 msgstr "Liens sociaux"
 
-#: core/utils/class-fire-utils_settings_map.php:2452 inc/czr-init.php:5141
+#: core/utils/class-fire-utils_settings_map.php:2452 inc/czr-init.php:5158
 msgid "Set up comments options"
 msgstr "Choisir les options de commentaires"
 
-#: core/utils/class-fire-utils_settings_map.php:2450 inc/czr-init.php:5139
+#: core/utils/class-fire-utils_settings_map.php:2450 inc/czr-init.php:5156
 msgid "Comments"
 msgstr "Commentaires"
 
-#: core/utils/class-fire-utils_settings_map.php:2401 inc/czr-init.php:5090
+#: core/utils/class-fire-utils_settings_map.php:2401 inc/czr-init.php:5107
 msgid "Set up layout options"
 msgstr "Choisir les options de structure de la page"
 
-#: core/utils/class-fire-utils_settings_map.php:2399 inc/czr-init.php:5088
+#: core/utils/class-fire-utils_settings_map.php:2399 inc/czr-init.php:5105
 msgid "Pages &amp; Posts Layout"
 msgstr "Disposition des pages &amp; billets"
 
-#: core/utils/class-fire-utils_settings_map.php:2394 inc/czr-init.php:5083
+#: core/utils/class-fire-utils_settings_map.php:2394 inc/czr-init.php:5100
 msgid "Set up front page options"
 msgstr "Régler les options de la page d'accueil du site"
 
-#: core/utils/class-fire-utils_settings_map.php:2392 inc/czr-init.php:5081
+#: core/utils/class-fire-utils_settings_map.php:2392 inc/czr-init.php:5098
 msgid "Front Page"
 msgstr "Page d'accueil"
 
-#: core/utils/class-fire-utils_settings_map.php:2319 inc/czr-init.php:5008
+#: core/utils/class-fire-utils_settings_map.php:2319 inc/czr-init.php:5025
 msgid "Set up logo and favicon options"
 msgstr "Réglages du logo et du favicon"
 
-#: core/utils/class-fire-utils_settings_map.php:2317 inc/czr-init.php:5006
+#: core/utils/class-fire-utils_settings_map.php:2317 inc/czr-init.php:5023
 msgid "Logo &amp; Favicon"
 msgstr "Logo &amp; Favicon"
 
-#: core/utils/class-fire-utils_settings_map.php:2325 inc/czr-init.php:5014
+#: core/utils/class-fire-utils_settings_map.php:2325 inc/czr-init.php:5031
 msgid "Select a skin for Customizr"
 msgstr "Choisir un thème pour Customizr"
 
-#: core/utils/class-fire-utils_settings_map.php:2323 inc/czr-init.php:5012
+#: core/utils/class-fire-utils_settings_map.php:2323 inc/czr-init.php:5029
 msgid "Skin"
 msgstr "Thème"
 
-#: core/utils/class-fire-utils_settings_map.php:2206 inc/czr-init.php:4900
+#: core/utils/class-fire-utils_settings_map.php:2206 inc/czr-init.php:4917
 msgid "Advanced settings for the Customizr theme."
 msgstr "Réglages avancés"
 
-#: core/utils/class-fire-utils_settings_map.php:2205 inc/czr-init.php:4899
+#: core/utils/class-fire-utils_settings_map.php:2205 inc/czr-init.php:4916
 msgid "Advanced options"
 msgstr "Options avancées"
 
-#: core/utils/class-fire-utils_settings_map.php:2200 inc/czr-init.php:4894
+#: core/utils/class-fire-utils_settings_map.php:2200 inc/czr-init.php:4911
 msgid "Footer settings for the Customizr theme."
 msgstr "Réglages du pied de page"
 
-#: core/utils/class-fire-utils_settings_map.php:2199 inc/czr-init.php:4893
+#: core/utils/class-fire-utils_settings_map.php:2199 inc/czr-init.php:4910
 msgid "Footer"
 msgstr "Pied de page"
 
-#: core/utils/class-fire-utils_settings_map.php:2188 inc/czr-init.php:4882
+#: core/utils/class-fire-utils_settings_map.php:2188 inc/czr-init.php:4899
 msgid "Content settings for the Customizr theme."
 msgstr "Réglages du contenu principal : page d'accueil, billets, pages, ..."
 
-#: core/utils/class-fire-utils_settings_map.php:2187 inc/czr-init.php:4881
+#: core/utils/class-fire-utils_settings_map.php:2187 inc/czr-init.php:4898
 msgid "Content : home, posts, ..."
 msgstr "Contenu principal"
 
-#: core/utils/class-fire-utils_settings_map.php:2182 inc/czr-init.php:4876
+#: core/utils/class-fire-utils_settings_map.php:2182 inc/czr-init.php:4893
 msgid "Header settings for the Customizr theme."
 msgstr "Réglages du haut de page : titre, logo, menu ..."
 
-#: core/utils/class-fire-utils_settings_map.php:2181 inc/czr-init.php:4875
+#: core/utils/class-fire-utils_settings_map.php:2181 inc/czr-init.php:4892
 msgid "Header"
 msgstr "En-tête"
 
-#: core/utils/class-fire-utils_settings_map.php:2176 inc/czr-init.php:4870
+#: core/utils/class-fire-utils_settings_map.php:2176 inc/czr-init.php:4887
 msgid "Global settings for the Customizr theme :skin, socials, links..."
 msgstr "Réglages globaux du thème Customizr : couleurs, réseaux sociaux, liens"
 
-#: core/utils/class-fire-utils_settings_map.php:2175 inc/czr-init.php:4869
+#: core/utils/class-fire-utils_settings_map.php:2175 inc/czr-init.php:4886
 msgid "Global settings"
 msgstr "Réglages globaux"
 
-#: core/utils/class-fire-utils_settings_map.php:2708 inc/czr-init.php:5397
+#: core/utils/class-fire-utils_settings_map.php:2708 inc/czr-init.php:5414
 msgid "&mdash; Demo Slider &mdash;"
 msgstr "&mdash; Diaporama démo &mdash;"
 
-#: core/utils/class-fire-utils_settings_map.php:2707 inc/czr-init.php:5396
+#: core/utils/class-fire-utils_settings_map.php:2707 inc/czr-init.php:5413
 msgid "&mdash; No slider &mdash;"
 msgstr "&mdash; Pas de diaporama &mdash;"
 
-#: core/utils/class-fire-utils_settings_map.php:2581 inc/czr-init.php:5270
+#: core/utils/class-fire-utils_settings_map.php:2581 inc/czr-init.php:5287
 msgid "You need to select a page first. Leave this field empty if you want to use the page excerpt."
 msgstr "Sélectionnez d'abord une page. Laissez ce champ vide si vous souhaitez utiliser l'extrait de la page."
 
-#: core/utils/class-fire-utils_settings_map.php:2578 inc/czr-init.php:5267
+#: core/utils/class-fire-utils_settings_map.php:2578 inc/czr-init.php:5284
 msgid "Featured text %1$s (200 char. max)"
 msgstr "Texte %1$s (200 car. max)"
 
-#: core/utils/class-fire-utils_settings_map.php:2562 inc/czr-init.php:5251
+#: core/utils/class-fire-utils_settings_map.php:2562 inc/czr-init.php:5268
 msgid "Custom featured page %1$s"
 msgstr "Page en une %1$s"
 
-#: core/utils/class-fire-utils_settings_map.php:2546 inc/czr-init.php:5235
+#: core/utils/class-fire-utils_settings_map.php:2546 inc/czr-init.php:5252
 msgid "Featured text three (200 char. max)"
 msgstr "Texte de la page en avant numéro 3 (200 car. max)"
 
-#: core/utils/class-fire-utils_settings_map.php:2545 inc/czr-init.php:5234
+#: core/utils/class-fire-utils_settings_map.php:2545 inc/czr-init.php:5251
 msgid "Featured text two (200 char. max)"
 msgstr "Texte de la page en avant numéro 2 (200 car. max)"
 
-#: core/utils/class-fire-utils_settings_map.php:2544 inc/czr-init.php:5233
+#: core/utils/class-fire-utils_settings_map.php:2544 inc/czr-init.php:5250
 msgid "Featured text one (200 char. max)"
 msgstr "Texte de la page en avant numéro 1 (200 car. max)"
 
-#: core/utils/class-fire-utils_settings_map.php:2541 inc/czr-init.php:5230
+#: core/utils/class-fire-utils_settings_map.php:2541 inc/czr-init.php:5247
 msgid "Home featured page three"
 msgstr "Page à la une N° 3"
 
-#: core/utils/class-fire-utils_settings_map.php:2540 inc/czr-init.php:5229
+#: core/utils/class-fire-utils_settings_map.php:2540 inc/czr-init.php:5246
 msgid "Home featured page two"
 msgstr "Page à la une N° 2"
 
-#: core/utils/class-fire-utils_settings_map.php:2539 inc/czr-init.php:5228
+#: core/utils/class-fire-utils_settings_map.php:2539 inc/czr-init.php:5245
 msgid "Home featured page one"
 msgstr "Page à la une N° 1"
 
-#: core/utils/class-fire-utils.php:319 inc/czr-init.php:6039
+#: core/utils/class-fire-utils.php:319 inc/czr-init.php:6085
 msgid "Page %s"
 msgstr "Page %s"
 
@@ -2644,12 +2779,12 @@ msgid "Main Menu"
 msgstr "Menu principal"
 
 #: core/front/models/modules/slider/class-model-slider.php:303
-#: inc/czr-init.php:863 inc/czr-init.php:8648
+#: inc/czr-init.php:863 inc/czr-init.php:8694
 msgid "Many layout and design options are available from the WordPress customizer screen : see your changes live !"
 msgstr "De nombreuses options de design et structures sont disponibles dans l'écran de customization Wordpress : vos modifications s'affichent en live !"
 
 #: core/front/models/modules/slider/class-model-slider.php:290
-#: inc/czr-init.php:849 inc/czr-init.php:8642 inc/czr-init.php:8654
+#: inc/czr-init.php:849 inc/czr-init.php:8688 inc/czr-init.php:8700
 msgid "Customizr is a clean responsive theme"
 msgstr "Customizr est un thème élégant et simple"
 
@@ -3039,9 +3174,9 @@ msgstr "Aucune image sélectionnée"
 #: core/front/models/modules/class-model-breadcrumb.php:682
 #: core/front/models/modules/class-model-edit_button.php:9
 #: core/front/models/modules/class-model-edit_button.php:10
-#: inc/czr-admin.php:1770 inc/czr-front.php:2603 inc/czr-front.php:2636
-#: inc/czr-front.php:2651 inc/czr-front.php:2679 inc/czr-front.php:3194
-#: inc/czr-front.php:3768 inc/czr-front.php:4173 inc/czr-front.php:8857
+#: inc/czr-admin.php:1770 inc/czr-front.php:2607 inc/czr-front.php:2640
+#: inc/czr-front.php:2655 inc/czr-front.php:2683 inc/czr-front.php:3198
+#: inc/czr-front.php:3772 inc/czr-front.php:4177 inc/czr-front.php:8861
 msgid "Edit"
 msgstr "Modifier"
 
@@ -3170,7 +3305,7 @@ msgstr "Choisir une structure spécifique pour %1$s"
 #: core/utils/class-fire-utils_settings_map.php:857
 #: core/utils/class-fire-utils_settings_map.php:862
 #: core/utils/class-fire-utils_settings_map.php:2156 inc/czr-admin.php:1024
-#: inc/czr-init.php:3536 inc/czr-init.php:3541 inc/czr-init.php:4850
+#: inc/czr-init.php:3553 inc/czr-init.php:3558 inc/czr-init.php:4867
 msgid "here"
 msgstr "ici"
 
@@ -3297,7 +3432,7 @@ msgstr ", developpeur du thème Customizr"
 msgid "Hi! This is"
 msgstr "Bonjour, je suis"
 
-#: core/utils/class-fire-utils_settings_map.php:860 inc/czr-init.php:3539
+#: core/utils/class-fire-utils_settings_map.php:860 inc/czr-init.php:3556
 msgid "Jump to the blog design options"
 msgstr "Options de design des billets"
 

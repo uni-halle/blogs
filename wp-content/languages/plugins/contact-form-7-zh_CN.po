@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Contact Form 7 - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-12-12 16:36:36+0000\n"
+"PO-Revision-Date: 2017-01-23 23:59:50+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -139,19 +139,19 @@ msgstr "数字小于允许的最小值"
 msgid "The number format is invalid."
 msgstr "数字格式无效"
 
-#: modules/file.php:211
+#: modules/file.php:214
 msgid "There was an error uploading the file."
 msgstr "上传文件时出错。"
 
-#: modules/file.php:206
+#: modules/file.php:209
 msgid "The file is too big."
 msgstr "该文件太大。"
 
-#: modules/file.php:201
+#: modules/file.php:204
 msgid "You are not allowed to upload files of this type."
 msgstr "抱歉，不允许上传这一类型的文件。"
 
-#: modules/file.php:196
+#: modules/file.php:199
 msgid "There was an unknown error uploading the file."
 msgstr "上传文件时出错。"
 
@@ -291,7 +291,7 @@ msgstr "要使用reCAPTCHA，请先安装API键值对。欲知详情，请参阅
 #: admin/includes/welcome-panel.php:26 modules/recaptcha.php:184
 #: modules/recaptcha.php:414 modules/recaptcha.php:424
 msgid "http://contactform7.com/recaptcha/"
-msgstr "http://contactform7.com/date-field/"
+msgstr "http://contactform7.com/recaptcha/"
 
 #: modules/recaptcha.php:184
 msgid "For more details, see %s."
@@ -540,51 +540,51 @@ msgstr "数字小于下限"
 msgid "Number format that the sender entered is invalid"
 msgstr "发送者输入的数字格式无效"
 
-#: modules/file.php:317
+#: modules/file.php:320
 msgid "This contact form contains file uploading fields, but the temporary folder for the files (%s) does not exist or is not writable. You can create the folder or change its permission manually."
 msgstr "这个联系表单包含上传的附件，但包含文件(%s)的临时文件夹不存在或者没法写入。你可以创建文件夹或者手动修改权限。"
 
-#: modules/file.php:291
+#: modules/file.php:294
 msgid "To attach the file uploaded through this field to mail, you need to insert the corresponding mail-tag (%s) into the File Attachments field on the Mail tab."
 msgstr "要将通过此字段上传的文件附加到邮件，您需要将相应的邮件标签 (%s) 插入“邮件”选项卡上的“文件附件”字段。"
 
-#: modules/file.php:263
+#: modules/file.php:266
 msgid "Acceptable file types"
 msgstr "可上传的文件类型"
 
-#: modules/file.php:258
+#: modules/file.php:261
 msgid "File size limit (bytes)"
 msgstr "文件大小限制（字节）"
 
-#: modules/file.php:233
+#: modules/file.php:236
 msgid "File Uploading and Attachment"
 msgstr "文件上传和附件"
 
-#: modules/file.php:233
+#: modules/file.php:236
 msgid "http://contactform7.com/file-uploading-and-attachment/"
 msgstr "http://contactform7.com/file-uploading-and-attachment/"
 
-#: modules/file.php:231
+#: modules/file.php:234
 msgid "Generate a form-tag for a file uploading field. For more details, see %s."
 msgstr "为文件上传字段创建form标签。 有关更多详细信息，请参阅 %s"
 
-#: modules/file.php:223
+#: modules/file.php:226
 msgid "file"
 msgstr "文件"
 
-#: modules/file.php:210
+#: modules/file.php:213
 msgid "Uploading a file fails for PHP error"
 msgstr "因为PHP错误，上传文件失败"
 
-#: modules/file.php:205
+#: modules/file.php:208
 msgid "Uploaded file is too large"
 msgstr "上传的文件太大"
 
-#: modules/file.php:200
+#: modules/file.php:203
 msgid "Uploaded file is not allowed for file type"
 msgstr "上传的文件是不允许的文件类型"
 
-#: modules/file.php:195
+#: modules/file.php:198
 msgid "Uploading a file fails for any reason"
 msgstr "由于某种原因上传文件失败"
 
@@ -660,14 +660,14 @@ msgstr "标签在前，选项在后。"
 msgid "One option per line."
 msgstr "每行一个选项。"
 
-#: modules/checkbox.php:307 modules/date.php:167 modules/file.php:247
+#: modules/checkbox.php:307 modules/date.php:167 modules/file.php:250
 #: modules/number.php:175 modules/select.php:185 modules/text.php:242
 #: modules/textarea.php:154
 msgid "Required field"
 msgstr "必填字段"
 
 #: modules/checkbox.php:303 modules/checkbox.php:306 modules/date.php:163
-#: modules/date.php:166 modules/file.php:243 modules/file.php:246
+#: modules/date.php:166 modules/file.php:246 modules/file.php:249
 #: modules/number.php:166 modules/number.php:169 modules/select.php:181
 #: modules/select.php:184 modules/text.php:238 modules/text.php:241
 #: modules/textarea.php:150 modules/textarea.php:153
@@ -743,7 +743,7 @@ msgid "To use CAPTCHA, you need <a href=\"http://wordpress.org/extend/plugins/re
 msgstr "为了使用CAPTCHA,你需要安装<a href=\"http://wordpress.org/extend/plugins/really-simple-captcha/\">Really Simple CAPTCHA</a>插件。"
 
 #: modules/acceptance.php:189 modules/checkbox.php:353 modules/date.php:219
-#: modules/file.php:286 modules/number.php:227 modules/quiz.php:218
+#: modules/file.php:289 modules/number.php:227 modules/quiz.php:218
 #: modules/really-simple-captcha.php:283 modules/recaptcha.php:476
 #: modules/select.php:227 modules/submit.php:90 modules/text.php:306
 #: modules/textarea.php:189
@@ -751,7 +751,7 @@ msgid "Insert Tag"
 msgstr "插入标签"
 
 #: modules/acceptance.php:176 modules/checkbox.php:340 modules/date.php:207
-#: modules/file.php:273 modules/number.php:215 modules/quiz.php:205
+#: modules/file.php:276 modules/number.php:215 modules/quiz.php:205
 #: modules/really-simple-captcha.php:256 modules/really-simple-captcha.php:271
 #: modules/recaptcha.php:463 modules/select.php:214 modules/submit.php:77
 #: modules/text.php:293 modules/textarea.php:176
@@ -759,7 +759,7 @@ msgid "Class attribute"
 msgstr "class属性"
 
 #: modules/acceptance.php:171 modules/checkbox.php:335 modules/date.php:202
-#: modules/file.php:268 modules/number.php:210 modules/quiz.php:200
+#: modules/file.php:271 modules/number.php:210 modules/quiz.php:200
 #: modules/really-simple-captcha.php:251 modules/really-simple-captcha.php:266
 #: modules/recaptcha.php:458 modules/select.php:209 modules/submit.php:72
 #: modules/text.php:288 modules/textarea.php:171
@@ -781,7 +781,7 @@ msgid "Options"
 msgstr "可选项"
 
 #: modules/acceptance.php:155 modules/checkbox.php:314 modules/date.php:173
-#: modules/file.php:253 modules/number.php:181 modules/quiz.php:184
+#: modules/file.php:256 modules/number.php:181 modules/quiz.php:184
 #: modules/really-simple-captcha.php:241 modules/select.php:191
 #: modules/text.php:248 modules/textarea.php:160
 msgid "Name"
@@ -1256,7 +1256,7 @@ msgstr "编辑联系表单"
 msgid "Contact"
 msgstr "联系"
 
-#. #-#-#-#-#  tmp-contact-form-7.pot (Contact Form 7 4.6)  #-#-#-#-#
+#. #-#-#-#-#  tmp-contact-form-7.pot (Contact Form 7 4.6.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: admin/admin.php:21 modules/flamingo.php:138
 msgid "Contact Form 7"

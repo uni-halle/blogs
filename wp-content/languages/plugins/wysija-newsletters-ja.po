@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - MailPoet Newsletters - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-11-19 12:45:55+0000\n"
+"PO-Revision-Date: 2017-01-06 05:07:27+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5150,7 +5150,7 @@ msgstr "月"
 #: classes/WJ_FieldRender.php:185 helpers/form_engine.php:45
 #: helpers/wj_engine.php:112 views/back/config.php:2424
 msgid "Year"
-msgstr "そう"
+msgstr "年"
 
 #: classes/WJ_FieldRender.php:88 classes/WJ_FieldRender.php:113
 #: classes/WJ_FieldRender.php:134
@@ -5167,7 +5167,7 @@ msgstr "設定"
 
 #: add-ons/add-ons.php:230 views/back/campaigns.php:657
 msgid "Activate"
-msgstr "アクティベート"
+msgstr "有効化"
 
 #: add-ons/add-ons.php:219
 msgid "Install from WordPress.org"

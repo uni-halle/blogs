@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - bbPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-10-05 09:53:27+0000\n"
+"PO-Revision-Date: 2017-01-20 09:14:31+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,9 +23,9 @@ msgstr "bbPress"
 msgid "bbPress is forum software with a twist from the creators of WordPress."
 msgstr "bbPress ist eine Forensoftware von den Machern von WordPress."
 
-#. #-#-#-#-#  tmp-bbpress.pot (bbPress 2.5.10)  #-#-#-#-#
+#. #-#-#-#-#  tmp-bbpress.pot (bbPress 2.5.12)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  tmp-bbpress.pot (bbPress 2.5.10)  #-#-#-#-#
+#. #-#-#-#-#  tmp-bbpress.pot (bbPress 2.5.12)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "https://bbpress.org"
 msgstr "https://bbpress.org"
@@ -1823,33 +1823,9 @@ msgstr "Allgemeines Gerede"
 msgid "General"
 msgstr "Allgemein"
 
-#: includes/core/sub-actions.php:147
-msgid "The current user is being initialized without using $wp->init()."
-msgstr "Der aktuelle Benutzer wurde ohne Gebrauch von $wp->init() initialisiert."
-
-#: includes/core/capabilities.php:523
+#: includes/core/capabilities.php:531
 msgid "Editable forum roles no longer exist."
 msgstr "Es existieren keine editierbaren Forum-Rollen."
-
-#: includes/core/capabilities.php:404
-msgid "Blocked"
-msgstr "Blockiert"
-
-#: includes/core/capabilities.php:398
-msgid "Spectator"
-msgstr "Betrachter"
-
-#: includes/core/capabilities.php:392
-msgid "Participant"
-msgstr "Teilnehmer"
-
-#: includes/core/capabilities.php:386
-msgid "Moderator"
-msgstr "Moderator"
-
-#: includes/core/capabilities.php:380
-msgid "Keymaster"
-msgstr "Keymaster"
 
 #: includes/common/widgets.php:1252
 msgid "Recent Replies"
@@ -1873,7 +1849,7 @@ msgstr "%1$s"
 #: includes/common/widgets.php:1178
 msgctxt "widgets"
 msgid "%1$s on %2$s"
-msgstr "%1$s bei %2$s"
+msgstr "%1$s zu %2$s"
 
 #. translators: 1: reply link, 2: reply timestamp
 #: includes/common/widgets.php:1172
@@ -4325,7 +4301,7 @@ msgstr "Über bbPress"
 msgid "Converter Specialist"
 msgstr "Konvertierungs-Spezialist"
 
-#: bbpress.php:484
+#: bbpress.php:485
 msgid "bbPress Forums"
 msgstr "bbPress-Foren"
 
@@ -4345,7 +4321,7 @@ msgstr "bbPress ist von einem weltweiten Schwarm eifriger, eifriger Bienen erste
 msgid "Project Leaders"
 msgstr "Projektleiter"
 
-#: bbpress.php:580
+#: bbpress.php:581
 msgctxt "post"
 msgid "Spam"
 msgstr "Spam"
@@ -4355,38 +4331,38 @@ msgstr "Spam"
 msgid "Import Forums"
 msgstr "Foren importieren"
 
-#: bbpress.php:607
+#: bbpress.php:608
 msgctxt "post"
 msgid "Hidden <span class=\"count\">(%s)</span>"
 msgid_plural "Hidden <span class=\"count\">(%s)</span>"
 msgstr[0] "Versteckt <span class=\"count\">(%s)</span>"
 msgstr[1] "Versteckt <span class=\"count\">(%s)</span>"
 
-#: bbpress.php:594
+#: bbpress.php:595
 msgctxt "post"
 msgid "Orphan <span class=\"count\">(%s)</span>"
 msgid_plural "Orphans <span class=\"count\">(%s)</span>"
 msgstr[0] "Verwaist <span class=\"count\">(%s)</span>"
 msgstr[1] "Verwaist <span class=\"count\">(%s)</span>"
 
-#: bbpress.php:404 templates/default/bbpress-functions.php:51
+#: bbpress.php:405 templates/default/bbpress-functions.php:51
 msgid "bbPress Default"
 msgstr "bbPress-Standard"
 
-#: bbpress.php:509
+#: bbpress.php:510
 msgid "bbPress Topics"
 msgstr "bbPress Themen"
 
-#: bbpress.php:677
+#: bbpress.php:678
 msgid "Most popular topics"
 msgstr "Beliebteste Themen"
 
-#: bbpress.php:606
+#: bbpress.php:607
 msgctxt "post"
 msgid "Hidden"
 msgstr "Versteckt"
 
-#: bbpress.php:570
+#: bbpress.php:571
 msgctxt "post"
 msgid "Closed <span class=\"count\">(%s)</span>"
 msgid_plural "Closed <span class=\"count\">(%s)</span>"
@@ -4397,7 +4373,7 @@ msgstr[1] "Geschlossen <span class=\"count\">(%s)</span>"
 msgid "Cheatin&#8217; huh?"
 msgstr "Schummeln, was?"
 
-#: bbpress.php:534
+#: bbpress.php:535
 msgid "bbPress Replies"
 msgstr "bbPress-Antworten"
 
@@ -4409,24 +4385,24 @@ msgstr "Zu den Foren-Einstellungen"
 msgid "Thank you for updating! bbPress %s is waxed, polished, and ready for you to take it for a lap or two around the block!"
 msgstr "Danke, dass du bbPress aktualisiert hast. bbPress %s ist frisch gewienert und auf Hochglanz poliert, und wartet nur darauf, dass du damit 'ne Runde drehst. Oder auch zwei."
 
-#: bbpress.php:569
+#: bbpress.php:570
 msgctxt "post"
 msgid "Closed"
 msgstr "Geschlossen"
 
-#: bbpress.php:581
+#: bbpress.php:582
 msgctxt "post"
 msgid "Spam <span class=\"count\">(%s)</span>"
 msgid_plural "Spam <span class=\"count\">(%s)</span>"
 msgstr[0] "Spam <span class=\"count\">(%s)</span>"
 msgstr[1] "Spam <span class=\"count\">(%s)</span>"
 
-#: bbpress.php:593
+#: bbpress.php:594
 msgctxt "post"
 msgid "Orphan"
 msgstr "Verwaist"
 
-#: bbpress.php:689
+#: bbpress.php:690
 msgid "Topics with no replies"
 msgstr "Themen ohne Antworten"
 

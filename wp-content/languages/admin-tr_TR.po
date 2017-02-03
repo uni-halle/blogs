@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.7.x - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-12-06 09:45:13+0000\n"
+"PO-Revision-Date: 2017-01-18 02:44:10+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,143 +26,143 @@ msgctxt "start of week"
 msgid "1"
 msgstr "1"
 
-#: wp-admin/about.php:231
+#: wp-admin/about.php:234
 msgid "Customize changesets make changes in the customizer persistent, like autosave drafts. They also make exciting new features like starter content possible."
 msgstr "Özelleştirici içinde değişiklik kümelerini kaılıcı hale getirebiliyorsunuz, aynı otomatik kaydedilen taslaklar gibi. Bu sayede başlangıç içeriği gibi heyecan verici yeni özellikler de olanaklı hale geliyor."
 
-#: wp-admin/about.php:230
+#: wp-admin/about.php:233
 msgid "Customize Changesets"
 msgstr "Özelleştirme değişiklik kümeleri"
 
 #. translators: 1: register_setting(), 2:
 #. https://make.wordpress.org/core/2016/10/26/registering-your-settings-in-wordpress-4-7/
-#: wp-admin/about.php:223
+#: wp-admin/about.php:226
 msgid "%1$s <a href=\"%2$s\">has been enhanced</a> to include type, description, and REST API visibility."
 msgstr "%1$s <a href=\"%2$s\">geliştirildi</a>, artık tip, açıklama ve REST API görünürlüğü içeriyor."
 
-#: wp-admin/about.php:219
+#: wp-admin/about.php:222
 msgid "Settings Registration API"
 msgstr "Ayarlar kayıt API'ı"
 
 #. translators: %s:
 #. https://make.wordpress.org/core/2016/09/08/wp_hook-next-generation-actions-and-filters/
-#: wp-admin/about.php:213
+#: wp-admin/about.php:216
 msgid "The code that lies beneath actions and filters has been overhauled and modernized, fixing bugs along the way."
 msgstr "Eylemlerin ve filtrelerin altında yatan kodlar yol boyunca modernize edildi, hatalar düzeltildi ve elden geçirilerek yenilendi."
 
-#: wp-admin/about.php:203
+#: wp-admin/about.php:206
 msgid "List tables, now with more than bulk edit and delete."
 msgstr "Tablolar listesi ile artık toplu düzenleme ve silme işlemlerinden fazlasını yapabilirsiniz."
 
-#: wp-admin/about.php:202
+#: wp-admin/about.php:205
 msgid "Custom Bulk Actions"
 msgstr "Özel Toplu Eylemler"
 
 #. translators: %s:
 #. https://make.wordpress.org/core/2016/09/09/new-functions-hooks-and-behaviour-for-theme-developers-in-wordpress-4-7/
-#: wp-admin/about.php:196
+#: wp-admin/about.php:199
 msgid "WordPress 4.7 includes <a href=\"%s\">new functions, hooks, and behavior</a> for theme developers."
 msgstr "WordPress 4.7 tema geliştiricileri için <a href=\"%s\">yeni işlevler, çengeller ve davranışlar</a> içerir."
 
-#: wp-admin/about.php:192
+#: wp-admin/about.php:195
 msgid "More Theme API Goodies"
 msgstr "Daha fazla tema API güzellikleri"
 
-#: wp-admin/about.php:189
+#: wp-admin/about.php:192
 msgid "By opening up the page template functionality to all post types, theme developers have even more flexibility with the WordPress template hierarchy."
 msgstr "Tüm yazı tipleri için sayfa şablonu becerisinin açılmasıyla, tema geliştiricileri artık WordPress şablon hiyerarşisi üzerinde daha fazla esnekliğe sahip."
 
-#: wp-admin/about.php:188
+#: wp-admin/about.php:191
 msgid "Post Type Templates"
 msgstr "Yazı Tipi Şablonları"
 
 #. translators: %s: smiling face with smiling eyes emoji
-#: wp-admin/about.php:181
+#: wp-admin/about.php:184
 msgid "Even More Developer Happiness %s"
 msgstr "Daha fazla geliştirici mutluluğu %s"
 
 #. translators: %s: https://developer.wordpress.org/rest-api/
-#: wp-admin/about.php:169
+#: wp-admin/about.php:172
 msgid "Content endpoints provide machine-readable external access to your WordPress site with a clear, standards-driven interface, paving the way for new and innovative methods of interacting with sites through plugins, themes, apps, and beyond. Ready to get started with development? <a href=\"%s\">Check out the REST API reference.</a>"
 msgstr "İçerik uçları WordPress siteniz için temiz, standartlara uygun arayüze sahip, eklentiler, temalar, uygulamalar ve daha fazlası için yeni ve gelişmiş yollar ile makine-okunabilir harici bir erişim sağlar. Geliştirmeye başlamak için hazır mısınız? <a href=\"%s\"> REST API referanslarına bir göz atın.</a>"
 
-#: wp-admin/about.php:164
+#: wp-admin/about.php:167
 msgid "WordPress 4.7 comes with REST API endpoints for posts, comments, terms, users, meta, and settings."
 msgstr "WordPress 4.7 yazılar, yorumlar, terimler, kullanıcılar, meta ve ayarlar için REST API uç noktaları ile geliyor."
 
-#: wp-admin/about.php:163
+#: wp-admin/about.php:166
 msgid "Introducing REST API Content Endpoints"
 msgstr "REST API içerik uç noktalarıyla tanışın"
 
-#: wp-admin/about.php:156
+#: wp-admin/about.php:159
 msgid "Just because your site is in one language doesn&#8217;t mean that everybody helping manage it prefers that language for their admin. Add more languages to your site and a user language option will show up in your user&#8217;s profiles."
 msgstr "Sitenizin bir dilde yayın yapıyor olması ona içerik sağlayan herkesin yönetim panelinde aynı dili tercih edeceği anlamına gelmiyor. Sitenize daha çok dil ekleyin ve kullanıcı profillerinde kullanıcı dili ayarı ortaya çıkacaktır."
 
-#: wp-admin/about.php:154
+#: wp-admin/about.php:157
 msgid "Dashboard in your language"
 msgstr "Pano sizin dilinizde"
 
-#: wp-admin/about.php:151
+#: wp-admin/about.php:154
 msgid "Managing your document collection is easier with WordPress 4.7. Uploading PDFs will generate thumbnail images so you can more easily distinguish between all your documents."
 msgstr "WordPress 4.7 ile belgeleri yönetmek artık daha kolay. PDF yüklediğinizde belgelerinizi daha kolay ayırt edebilmeniz için küçük resimler oluşturacaktır."
 
-#: wp-admin/about.php:149
+#: wp-admin/about.php:152
 msgid "PDF Thumbnail Previews"
 msgstr "PDF Küçük resim önizlemesi"
 
-#: wp-admin/about.php:141
+#: wp-admin/about.php:144
 msgid "Sometimes you just need a few visual tweaks to make your site perfect. WordPress 4.7 allows you to add custom CSS and instantly see how your changes affect your site. The live preview allows you to work quickly without page refreshes slowing you down."
-msgstr "Bazen sitenizi mükemmele ulaştırmak için bir kaç görsel iyileştirme yapmak gerekebilir. WordPress 4.7 özel CSS ekleyip değişikliklerin sitenize nasıl yansıyacağını görebilmenizi sağlıyor. Canlı önizleme sayfayı yenilemenize gerek kalamdan hızlı bir çalışma imkanı sağıyor."
+msgstr "Bazen sitenizi mükemmele ulaştırmak için bir kaç görsel iyileştirme yapmak gerekebilir. WordPress 4.7 özel CSS ekleyip değişikliklerin sitenize nasıl yansıyacağını görebilmenizi sağlıyor. Canlı önizleme sayfayı yenilemenize gerek kalmadan hızlı bir çalışma imkanı sağıyor."
 
-#: wp-admin/about.php:136
+#: wp-admin/about.php:139
 msgid "Many menus for sites contain links to the pages of your site, but what happens when you don&#8217;t have any pages yet? Now you can add new pages while building menus instead of leaving the customizer and abandoning your changes. Once you&#8217;ve published your customizations, you&#8217;ll have new pages ready for you to fill with content."
 msgstr "Bir çok menü sitenize ait sayfalara bağlantılar veriyor, fakat ya sitenizde henüz hiç sayfa yoksa? Artık özelleştiriciyi terketmenize ve değişikliklerini kaybetmenize gerek kalmadan menü oluştururken yeni sayfalar ekleyebilirsiniz. Özelleştirmelerinizi yayımladığınız zaman oluşturduğunuz sayfalar doldurmanız için sizi bekliyor olacaklar."
 
-#: wp-admin/about.php:134
+#: wp-admin/about.php:137
 msgid "Smoother Menu Building"
 msgstr "Akıcı menü inşası"
 
-#: wp-admin/about.php:128
+#: wp-admin/about.php:131
 msgid "Sometimes a big atmospheric video as a moving header image is just what you need to showcase your wares; go ahead and try it out with Twenty Seventeen. Need some video inspiration? Try searching for sites with video headers available for download and use."
-msgstr "Bazen büyük atmosferik bir videoyu üst kısım görseli olarak kullanmak sunumunuzu yapmak için gerekli olabilir; devam edin ve Yirmi Onyedi ile bunu deneyin. Videolar için ilhama mı ihtiyacınız mı var? Videolu üst kısma sahip siteleri arayın ve kullanın."
+msgstr "Bazen büyük atmosferik bir videoyu üst kısım görseli olarak kullanmak sunumunuzu yapmak için gerekli olabilir; devam edin ve Yirmi Onyedi ile bunu deneyin. Videolar için ilhama mı ihtiyacınız var? Videolu üst kısma sahip siteleri arayın ve kullanın."
 
-#: wp-admin/about.php:116
+#: wp-admin/about.php:119
 msgid "Video Headers"
 msgstr "Video başlıkları"
 
-#: wp-admin/about.php:113
+#: wp-admin/about.php:116
 msgid "Visible icons appear to show you which parts of your site can be customized while live previewing. Click on a shortcut and get straight to editing. Paired with starter content, getting started with customizing your site is faster than ever."
 msgstr "Canlı önizleme yaparken sitenizin bazı bölümlerinde simgeler görünür olacaklar. Bu kısayollara tıklayarak direkt düzenlemeye başlayabilirsiniz. Başlangıç içeriği ile beraber sitenizi özelleştirmeye başlamak her zamankinden daha hızlı bir hale geldi."
 
-#: wp-admin/about.php:101
+#: wp-admin/about.php:104
 msgid "Edit Shortcuts"
 msgstr "Kısayolları düzenle"
 
-#: wp-admin/about.php:82
+#: wp-admin/about.php:85
 msgid "To help give you a solid base to build from, individual themes can provide starter content that appears when you go to customize your brand new site. This can range from placing a business information widget in the best location to providing a sample menu with social icon links to a static front page complete with beautiful images. Don&#8217;t worry - nothing new will appear on the live site until you&#8217;re ready to save and publish your initial theme setup."
-msgstr "Yeni sitenizi özelleştirmek için harekete geçtiğinizde size sağlam bir taban sunmak için bazı temalar başlangıç içeriği ile beraber gelebilirler. Bu kimi zaman kurumsal bilgilerinizi içeren bir bileşeni iyi bir konuma yerleştirmek gibi bir içerik olabileceği gibi kimi zaman da sosyal bağlantılar için örnek bir menü olabilir. Merak etmeyin, siz kaydedip yayımlamadığınız sürece sitenizde yeni hiç bir şey ortaya çıkmayacak."
+msgstr "Yeni sitenizi özelleştirmek için harekete geçtiğinizde size sağlam bir taban sunmak için bazı temalar başlangıç içeriği ile beraber gelebilirler. Bu kimi zaman kurumsal bilgilerinizi içeren bir bileşeni iyi bir konuma yerleştirmek gibi bir içerik olabileceği gibi kimi zaman da sosyal bağlantılar için örnek bir menü olabilir. Merak etmeyin, siz kaydedip yayımlamadığınız sürece sitenizde yeni hiçbir şey ortaya çıkmayacak."
 
-#: wp-admin/about.php:81
+#: wp-admin/about.php:84
 msgid "Theme Starter Content"
 msgstr "Tema Başlangıç ​​İçeriği"
 
-#: wp-admin/about.php:76
+#: wp-admin/about.php:79
 msgid "WordPress 4.7 adds new features to the customizer to help take you through the initial setup of a theme, with non-destructive live previews of all your changes in one uninterrupted workflow."
 msgstr "WordPress 4.7 temanızın ilk kurulumunu yapmanız için, yıkıcı olmayan canlı önizlemeler ve kesintisiz iş süreci ile özelleştiriciye yeni özellikler ekliyor."
 
-#: wp-admin/about.php:75
+#: wp-admin/about.php:78
 msgid "Your Site, Your Way"
 msgstr "Sizin siteniz, sizin yolunuz"
 
-#: wp-admin/about.php:69
+#: wp-admin/about.php:72
 msgid "Twenty Seventeen focuses on business sites and features a customizable front page with multiple sections. Personalize it with widgets, navigation, social menus, a logo, custom colors, and more. Our default theme for 2017 works great in many languages, on any device, and for a wide range of users."
-msgstr "Yirmi Onyedi kurumsal sitelere odaklanıyor ve bir çok bölüme sahip özelleştirilebilir bir ön sayfa ile beraber geliyor. Bileşenler, dolaşım ve sosyal menüler, logo, özel renkler ve daha fazlasını kullanarak kişiselleştirin. 2017 için yeni varsayılan temamız bir çok dilde, her türlü cihazda ve bir çok kullanıcı için harika çalışıyor."
+msgstr "Yirmi Onyedi kurumsal sitelere odaklanıyor ve bir çok bölüme sahip özelleştirilebilir bir ön sayfa ile beraber geliyor. Bileşenler, dolaşım ve sosyal menüler, logo, özel renkler ve daha fazlasını kullanarak kişiselleştirin. 2017 için yeni varsayılan temamız bir çok dilde, her türlü cihazda ve birçok kullanıcı için harika çalışıyor."
 
-#: wp-admin/about.php:63
+#: wp-admin/about.php:66
 msgid "A brand new default theme brings your site to life with immersive featured images and video headers."
 msgstr "Sürükleyici öne çıkan görseller ve video başlıklar barındıran yepyeni bir varsayılan tema ile sitenizi canlandırın."
 
-#: wp-admin/about.php:62
+#: wp-admin/about.php:65
 msgid "Presenting Twenty Seventeen"
 msgstr "Karşınızda Yirmi Onyedi"
 
@@ -1228,7 +1228,7 @@ msgid "Welcome to %s. This is your first post. Edit or delete it, then start blo
 msgstr "%s, hoşgeldiniz. Bu sizin ilk yazınız. Düzenleyin ya da silin, sonra bloglamaya başlayın!"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:266
+#: wp-admin/about.php:269
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>Sürüm %s</strong> bir güvenlik açığını kapatıyor."
 
@@ -1245,15 +1245,15 @@ msgstr "Profil fotoğrafınızı <a href=\"%s\">Gravatar</a> üzerinden değişt
 msgid "Profile Picture"
 msgstr "Profil fotoğrafı"
 
-#: wp-admin/about.php:263
+#: wp-admin/about.php:47 wp-admin/about.php:266
 msgid "Maintenance and Security Releases"
 msgstr "Bakım ve güvenlik dağıtımları"
 
-#: wp-admin/about.php:260
+#: wp-admin/about.php:263
 msgid "Security Releases"
 msgstr "Güvenlik dağıtımları"
 
-#: wp-admin/about.php:257
+#: wp-admin/about.php:260
 msgid "Maintenance Releases"
 msgstr "Bakım dağıtımları"
 
@@ -1648,7 +1648,7 @@ msgstr "Öge listesi dolaşımı"
 msgid "Filter items list"
 msgstr "Öge listesini filtrele"
 
-#: wp-admin/includes/class-wp-press-this.php:1483
+#: wp-admin/includes/class-wp-press-this.php:1521
 msgid "Saving&hellip;"
 msgstr "Kaydediliyor&hellip;"
 
@@ -1938,11 +1938,11 @@ msgstr[1] "Bu yazara ait %s yazı"
 msgid "Live Preview &#8220;%s&#8221;"
 msgstr "Canlı önizleme &#8220;%s&#8221;"
 
-#: wp-admin/includes/class-wp-press-this.php:1486
+#: wp-admin/includes/class-wp-press-this.php:1524
 msgid "More actions"
 msgstr "Daha fazla eylem"
 
-#: wp-admin/includes/class-wp-press-this.php:223
+#: wp-admin/includes/class-wp-press-this.php:241
 msgid "This category already exists."
 msgstr "Bu kategori zaten var."
 
@@ -2267,7 +2267,7 @@ msgstr "https://codex.wordpress.org/Introduction_to_Blogging#Managing_Comments"
 msgid "The <a href=\"https://codex.wordpress.org/Glossary#Character_set\">character encoding</a> of your site (UTF-8 is recommended)"
 msgstr "Sitenizin <a href=\"https://codex.wordpress.org/Glossary#Character_set\">karakter kodlaması</a> (UTF-8 önerilir)"
 
-#: wp-admin/includes/class-wp-press-this.php:1491
+#: wp-admin/includes/class-wp-press-this.php:1529
 msgid "Standard Editor"
 msgstr "Standart düzenleyici"
 
@@ -2387,7 +2387,7 @@ msgstr "Aşağıdaki eklentileri kaldırmak üzeresiniz:"
 msgid "Delete Plugins"
 msgstr "Eklentileri sil"
 
-#: wp-admin/includes/class-wp-press-this.php:1333
+#: wp-admin/includes/class-wp-press-this.php:1363
 msgid "Hide post options"
 msgstr "Yazı seçeneklerini gizle"
 
@@ -2509,67 +2509,67 @@ msgctxt "revision date short format"
 msgid "j M @ H:i"
 msgstr "j M @ H:i"
 
-#: wp-admin/includes/class-wp-press-this.php:241
+#: wp-admin/includes/class-wp-press-this.php:259
 msgid "This category cannot be added. Please change the name and try again."
 msgstr "Bu kategori eklenemiyor. Lütfen ismini değiştirip tekrar deneyin."
 
-#: wp-admin/includes/class-wp-press-this.php:248
+#: wp-admin/includes/class-wp-press-this.php:266
 msgid "Error while adding the category. Please try again later."
 msgstr "Kategori eklerken hata oluştu. Lütfen daha sonra tekrar deneyin."
 
-#: wp-admin/includes/class-wp-press-this.php:859
+#: wp-admin/includes/class-wp-press-this.php:883
 msgid "Toggle add category"
 msgstr "Kategori eklemeyi aç/kapa"
 
-#: wp-admin/includes/class-wp-press-this.php:884
+#: wp-admin/includes/class-wp-press-this.php:908
 msgid "Search categories by name"
 msgstr "Kategorilerde isimle ara"
 
-#: wp-admin/includes/class-wp-press-this.php:886
+#: wp-admin/includes/class-wp-press-this.php:910
 msgid "Search categories"
 msgstr "Kategorilerde ara"
 
-#: wp-admin/includes/class-wp-press-this.php:1138
+#: wp-admin/includes/class-wp-press-this.php:1162
 msgctxt "Used in Press This to indicate where the content comes from."
 msgid "Source:"
 msgstr "Kaynak:"
 
-#: wp-admin/includes/class-wp-press-this.php:1331
+#: wp-admin/includes/class-wp-press-this.php:1361
 msgid "Show post options"
 msgstr "Yazı seçeneklerini göster"
 
-#: wp-admin/includes/class-wp-press-this.php:1244
+#: wp-admin/includes/class-wp-press-this.php:1268
 msgid "Press This!"
 msgstr "Bas Bunu!"
 
-#: wp-admin/includes/class-wp-press-this.php:1339
+#: wp-admin/includes/class-wp-press-this.php:1369
 msgid "Scan site for content"
 msgstr "İçerik için siteyi tara"
 
-#: wp-admin/includes/class-wp-press-this.php:1340
+#: wp-admin/includes/class-wp-press-this.php:1370
 msgid "Enter a URL to scan"
 msgstr "Taramak için bir adres girin"
 
-#: wp-admin/includes/class-wp-press-this.php:1341
+#: wp-admin/includes/class-wp-press-this.php:1371
 msgid "Scan"
 msgstr "Tara"
 
-#: wp-admin/includes/class-wp-press-this.php:1367
+#: wp-admin/includes/class-wp-press-this.php:1397
 msgid "You should upgrade <a href=\"%s\" target=\"_blank\">your bookmarklet</a> to the latest version!"
 msgstr "<a href=\"%s\" target=\"_blank\">Aparatınızı</a> en son sürümüne güncellemelisiniz!"
 
-#: wp-admin/includes/class-wp-press-this.php:1376
-#: wp-admin/includes/class-wp-press-this.php:1377
+#: wp-admin/includes/class-wp-press-this.php:1406
+#: wp-admin/includes/class-wp-press-this.php:1407
 msgid "Post title"
 msgstr "Yazı başlığı"
 
-#: wp-admin/includes/class-wp-press-this.php:1381
+#: wp-admin/includes/class-wp-press-this.php:1411
 msgid "Suggested media"
 msgstr "Önerilen ortam"
 
-#: wp-admin/includes/class-wp-press-this.php:1444
-#: wp-admin/includes/class-wp-press-this.php:1454
-#: wp-admin/includes/class-wp-press-this.php:1463
+#: wp-admin/includes/class-wp-press-this.php:1478
+#: wp-admin/includes/class-wp-press-this.php:1489
+#: wp-admin/includes/class-wp-press-this.php:1500
 msgid "Back to post options"
 msgstr "Yazı seçeneklerine dön"
 
@@ -5376,7 +5376,7 @@ msgid "Contributing Developers"
 msgstr "Katkıda bulunan geliştiriciler"
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:271
+#: wp-admin/about.php:274
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>%1$s sürümü</strong> %2$s açığını barındırıyor."
@@ -5384,20 +5384,20 @@ msgstr[1] "<strong>%1$s sürümü</strong> %2$s açıklarını barındırıyor."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:48 wp-admin/about.php:279
+#: wp-admin/about.php:51 wp-admin/about.php:282
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>%1$s sürümü</strong> bazı güvenlik açıkları için çıkartıldı ve %2$s açığı kapattı."
 msgstr[1] "<strong>%1$s sürümü</strong> bazı güvenlik açıkları için çıkartıldı ve %2$s açığı kapattı."
 
 #. translators: %s: Codex URL
-#: wp-admin/about.php:50 wp-admin/about.php:283
+#: wp-admin/about.php:49 wp-admin/about.php:53 wp-admin/about.php:286
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Daha fazla bilgi için <a href=\"%s\">dağıtım notlarına</a> bakın."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:275
+#: wp-admin/about.php:278
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>%1$s sürümü</strong> bir güvenlik açığı için çıkartıldı ve %2$s hatayı düzeltti."
@@ -5408,15 +5408,15 @@ msgid "Welcome to your WordPress Dashboard! This is the screen you will see when
 msgstr "WordPress başlangıç ekranına hoş geldiniz! Bu ekran sitenize giriş yaptığınızda sizi karşılayan ekrandır ve size WordPress altyapısının sunduğu tüm yönetim imkanlarını sağlar. Herhangi bir ekranda yardıma ihtiyacınız olduğunda üst köşede yer alan Yardım tuşuna basabilirsiniz."
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:268
+#: wp-admin/about.php:48 wp-admin/about.php:271
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>%s sürümü</strong> bir güvenlik açığı barındırıyor."
 
-#: wp-admin/about.php:256
+#: wp-admin/about.php:259
 msgid "Maintenance Release"
 msgstr "Bakım dağıtımı"
 
-#: wp-admin/about.php:259
+#: wp-admin/about.php:262
 msgid "Security Release"
 msgstr "Güvenlik dağıtımı"
 
@@ -5424,7 +5424,7 @@ msgstr "Güvenlik dağıtımı"
 msgid "What&#8217;s New"
 msgstr "Neler yeni"
 
-#: wp-admin/about.php:47 wp-admin/about.php:262
+#: wp-admin/about.php:265
 msgid "Maintenance and Security Release"
 msgstr "Bakım ve Güvenlik dağıtımı"
 
@@ -5436,7 +5436,7 @@ msgstr "Bu ekran, varsayılan kalıcı bağlantı yapısını seçmenize olanak 
 msgid "Welcome to WordPress %1$s. <a href=\"%2$s\">Learn more</a>."
 msgstr "WordPress %1$s&#8217;e hoşgeldiniz. <a href=\"%2$s\">Daha fazla bilgi</a>."
 
-#: wp-admin/about.php:242
+#: wp-admin/about.php:245
 msgid "Return to Updates"
 msgstr "Güncelleştirmelere geri dön"
 
@@ -5716,11 +5716,11 @@ msgstr "add_meta_box() kullanımı için wp-admin/includes/template.php direkt o
 msgid "Welcome to WordPress %s"
 msgstr "WordPress %s&#8217;e hoşgeldiniz"
 
-#: wp-admin/about.php:242
+#: wp-admin/about.php:245
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "Başlangıç ekranına geri dön &rarr; Güncellemeler"
 
-#: wp-admin/about.php:245
+#: wp-admin/about.php:248
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Başlangıç ekranına git &rarr; Ana sayfa"
 
@@ -6144,7 +6144,7 @@ msgstr ""
 msgid "Featured Images"
 msgstr "Öne çıkarılan görseller"
 
-#: wp-admin/includes/class-wp-press-this.php:823
+#: wp-admin/includes/class-wp-press-this.php:841
 #: wp-admin/includes/meta-boxes.php:385 wp-admin/includes/theme.php:263
 msgid "Post Formats"
 msgstr "Yazı biçimleri"
@@ -7576,7 +7576,7 @@ msgstr "Tümünü göster"
 msgid "Please enter a valid menu name."
 msgstr "Lütfen geçerli bir menü ismi giriniz."
 
-#: wp-admin/about.php:245
+#: wp-admin/about.php:248
 msgid "Go to Dashboard"
 msgstr "Başlangıca git"
 
@@ -10084,7 +10084,7 @@ msgstr "Bu yorumun onayını geri al"
 msgid "Approve this comment"
 msgstr "Bu yorumu onayla"
 
-#: wp-admin/includes/class-wp-press-this.php:1482
+#: wp-admin/includes/class-wp-press-this.php:1520
 #: wp-admin/includes/meta-boxes.php:269 wp-admin/includes/meta-boxes.php:270
 msgid "Submit for Review"
 msgstr "İnceleme için Gönder"

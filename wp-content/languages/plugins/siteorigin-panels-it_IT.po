@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Page Builder by SiteOrigin - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-10-03 15:31:00+0000\n"
+"PO-Revision-Date: 2017-01-24 12:58:18+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,6 +18,10 @@ msgstr "https://siteorigin.com"
 #. Author of the plugin/theme
 msgid "SiteOrigin"
 msgstr "SiteOrigin"
+
+#. Description of the plugin/theme
+msgid "A drag and drop, responsive page builder that simplifies building your website."
+msgstr "Un costruttore di pagine drag and drop e responsive che semplifica la costruzione del tuo sito."
 
 #. Plugin URI of the plugin/theme
 msgid "https://siteorigin.com/page-builder/"
@@ -440,6 +444,10 @@ msgstr "Titolo"
 msgid "None"
 msgstr "Nessuno"
 
+#: widgets/basic.php:84
+msgid "Displays content from the current post."
+msgstr "Mostra contenuti dal corrente articolo."
+
 #: widgets/basic.php:82
 msgid "Post Content"
 msgstr "Pubblica Contenuto"
@@ -533,6 +541,22 @@ msgstr "Prossimo"
 msgid "Previous"
 msgstr "Precedente"
 
+#: tpl/js-templates.php:398
+msgid "Your search didn't return any results"
+msgstr "La tua ricerca non ha prodotto risultati"
+
+#: tpl/js-templates.php:392
+msgid "Newest Layouts"
+msgstr "Layout più recenti"
+
+#: tpl/js-templates.php:384
+msgid "Enable"
+msgstr "Attiva"
+
+#: tpl/js-templates.php:383
+msgid "Do you want to browse the Prebuilt Layouts directory?"
+msgstr "Vuoi sfogliare la directory dei Layout Pre-costruiti?"
+
 #: tpl/js-templates.php:365
 msgid "Clone: %s"
 msgstr "Clona: %s"
@@ -540,6 +564,10 @@ msgstr "Clona: %s"
 #: tpl/js-templates.php:359
 msgid "Import/Export"
 msgstr "Import/Export"
+
+#: tpl/js-templates.php:358
+msgid "Layouts Directory"
+msgstr "Directory dei Layout"
 
 #: tpl/js-templates.php:355
 msgid "Theme Defined"
@@ -703,6 +731,10 @@ msgstr "Devi installare 1{%1$s} per usare il widget 2{%2$s}."
 msgid "Edit Home Page"
 msgstr "Modifica la Homepage"
 
+#: siteorigin-panels.php:834
+msgid "Read More"
+msgstr "Per saperne di più"
+
 #: siteorigin-panels.php:442
 msgid "Untitled Widget"
 msgstr "Widget senza titolo"
@@ -734,6 +766,10 @@ msgstr "Aggiungi Widget alla Cella"
 #: siteorigin-panels.php:381
 msgid "Add Widget Below"
 msgstr "Aggiungi Widget Sotto"
+
+#: siteorigin-panels.php:377
+msgid "Search Results For: "
+msgstr "Risultati ricerca per:"
 
 #. TRANSLATORS: A standard confirmation message
 #: siteorigin-panels.php:376 tpl/js-templates.php:85
@@ -819,6 +855,10 @@ msgstr "Widget aggiunto"
 #: siteorigin-panels.php:339
 msgid "Widget deleted"
 msgstr "Widget cancellato"
+
+#: siteorigin-panels.php:335
+msgid "Converted to editor"
+msgstr "Convertito nell'editor"
 
 #: siteorigin-panels.php:334
 msgid "Version restored"
@@ -1097,6 +1137,10 @@ msgstr "Pulsante SiteOrigin"
 #: inc/widgets-bundle.php:59 inc/widgets-bundle.php:71 inc/widgets.php:106
 msgid "SiteOrigin Widgets Bundle"
 msgstr "Raccolta di Widget SiteOrigin"
+
+#: inc/widgets-bundle.php:8
+msgid "A rich text editor"
+msgstr "Un rich text editor"
 
 #: inc/widgets-bundle.php:7
 msgid "SiteOrigin Editor"
