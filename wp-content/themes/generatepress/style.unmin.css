@@ -394,9 +394,11 @@ input[type="file"] {
 	content: "\f0c9";
 	font-family: FontAwesome;
 	line-height: 1em;
+	speak: none;
 }
 .toggled .menu-toggle:before {
 	content: "\f00d";
+	speak: none;
 }
 .menu-toggle .mobile-menu {
 	margin-left: 10px;
@@ -443,6 +445,7 @@ input[type="file"] {
 	z-index: 99999;
 	width:200px;
 	text-align:left;
+	top: auto;
 }
 .main-navigation ul ul ul {
 	left: 100%;
@@ -473,6 +476,9 @@ input[type="file"] {
 .dropdown-click .secondary-navigation ul li:hover > ul.toggled-on,
 .dropdown-click .secondary-navigation ul li.sfHover > ul.toggled-on {
 	display: block;
+}
+.dropdown-click nav ul ul ul {
+	background-color: transparent;
 }
 .nav-float-right .inside-header .main-navigation {
 	float:right;
@@ -672,6 +678,7 @@ nav:not(.toggled):not(.slideout-navigation) ul ul .menu-item-has-children .dropd
 	content: "\f107";
 	font-family: FontAwesome;
 	line-height: 1em;
+	speak: none;
 }
 
 .dropdown-click .menu-item-has-children.sfHover > a .dropdown-menu-toggle:before {
@@ -1287,10 +1294,6 @@ h4, h5, h6 {
 .widget .search-field {
 	width: 100%;
 }
-.widget-area .widget.widget_search {
-	padding: 0;
-	line-height: 0;
-}
 .widget:last-child,
 .separate-containers .widget:last-child {
 	margin-bottom: 0;
@@ -1335,8 +1338,70 @@ h4, h5, h6 {
 .inside-footer-widgets .inner-padding {
 	padding: 0 40px;
 }
+
 .site-info {
 	text-align: center;
+}
+
+/* Footer bar */
+.footer-bar-active .footer-bar .widget {
+	padding: 0;
+}
+
+.footer-bar .widget_nav_menu > div > ul {
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* Footer bar aligned right */
+.footer-bar-align-right .copyright-bar {
+	float: left;
+}
+
+.footer-bar-align-right .footer-bar {
+	float: right;
+	text-align: right;
+}
+
+/* Footer bar aligned left */
+.footer-bar-align-left .copyright-bar {
+	float: right;
+	text-align: right;
+}
+
+.footer-bar-align-left .footer-bar {
+	float: left;
+}
+
+/* Footer bar aligned center */
+.footer-bar-align-center .copyright-bar {
+	float: none;
+	text-align: center;
+}
+
+.footer-bar-align-center .footer-bar {
+	float: none;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+/* Footer bar menu */
+.footer-bar .widget_nav_menu li {
+	margin: 0 10px;
+	float: left;
+	padding: 0;
+}
+
+.footer-bar .widget_nav_menu li:first-child {
+	margin-left: 0;
+}
+
+.footer-bar .widget_nav_menu li:last-child {
+	margin-right: 0;
+}
+
+.footer-bar .widget_nav_menu li ul {
+	display: none;
 }
 
 /* Posts */
@@ -1387,6 +1452,7 @@ footer.entry-meta .posted-on:before,
 	margin-right: 0.6em;
 	width: 13px;
 	text-align:center;
+	speak: none;
 }
 
 footer.entry-meta .author:before {

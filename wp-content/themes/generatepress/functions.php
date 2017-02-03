@@ -8,7 +8,7 @@
 // No direct access, please
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'GENERATE_VERSION', '1.3.41' );
+define( 'GENERATE_VERSION', '1.3.44' );
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 
@@ -125,6 +125,7 @@ function generate_get_defaults()
 		'footer_layout_setting' => 'fluid-footer',
 		'footer_inner_width' => 'contained',
 		'footer_widget_setting' => '3',
+		'footer_bar_alignment' => 'right',
 		'back_to_top' => '',
 		'background_color' => '#efefef',
 		'text_color' => '#3a3a3a',
@@ -185,6 +186,9 @@ function generate_widgets_init()
 		'footer-5' => array(
 			'name' => __( 'Footer Widget 5', 'generatepress' )
 		),
+		'footer-bar' => array(
+			'name' => __( 'Footer Bar','generatepress' )
+		)
 	);
 	
 	// Loop through them to create our widget areas
@@ -242,6 +246,11 @@ require get_template_directory() . '/inc/options.php';
 require get_template_directory() . '/inc/add-ons.php';
 
 /**
+ * Load our CSS builder
+ */
+require get_template_directory() . '/inc/css.php';
+
+/**
  * Load WooCommerce compatibility
  */
 require get_template_directory() . '/inc/woocommerce.php';
@@ -277,11 +286,16 @@ function generate_scripts()
 	wp_enqueue_style( 'generate-style-grid', get_template_directory_uri() . "/css/unsemantic-grid{$suffix}.css", false, GENERATE_VERSION, 'all' );
 	wp_enqueue_style( 'generate-style', get_template_directory_uri() . '/style.css', array( 'generate-style-grid' ), GENERATE_VERSION, 'all' );
 	wp_enqueue_style( 'generate-mobile-style', get_template_directory_uri() . "/css/mobile{$suffix}.css", array( 'generate-style' ), GENERATE_VERSION, 'all' );
-	wp_add_inline_style( 'generate-style', generate_base_css() );
+	
+	// Enqueue our default CSS styles in a static file
+	if ( generate_include_default_styles() ) {
+		wp_enqueue_style( 'generate-defaults', get_template_directory_uri() . "/css/defaults{$suffix}.css", array( 'generate-style' ), GENERATE_VERSION, 'all' );
+	}
 	
 	// Add the child theme CSS if child theme is active.
-	if ( is_child_theme() )
-		wp_enqueue_style( 'generate-child', get_stylesheet_uri(), true, filemtime( get_stylesheet_directory() . '/style.css' ), 'all' );
+	if ( is_child_theme() ) {
+		wp_enqueue_style( 'generate-child', get_stylesheet_uri(), array( 'generate-style' ), filemtime( get_stylesheet_directory() . '/style.css' ), 'all' );
+	}
 	
 	// Font Awesome
 	$icon_essentials = apply_filters( 'generate_fontawesome_essentials', false );
@@ -299,11 +313,8 @@ function generate_scripts()
 	wp_enqueue_script( 'generate-navigation', get_template_directory_uri() . "/js/navigation{$suffix}.js", array( 'jquery' ), GENERATE_VERSION, true );
 	
 	// Add our hover or click dropdown menu scripts
-	if ( 'click' == $generate_settings[ 'nav_dropdown_type' ] || 'click-arrow' == $generate_settings[ 'nav_dropdown_type' ] ) {
-		wp_enqueue_script( 'generate-dropdown-click', get_template_directory_uri() . "/js/dropdown-click{$suffix}.js", array( 'jquery' ), GENERATE_VERSION, true );
-	} else {
-		wp_enqueue_script( 'generate-dropdown', get_template_directory_uri() . "/js/dropdown{$suffix}.js", array( 'jquery' ), GENERATE_VERSION, true );
-	}
+	$click = ( 'click' == $generate_settings[ 'nav_dropdown_type' ] || 'click-arrow' == $generate_settings[ 'nav_dropdown_type' ] ) ? '-click' : '';
+	wp_enqueue_script( 'generate-dropdown', get_template_directory_uri() . "/js/dropdown{$click}{$suffix}.js", array( 'jquery' ), GENERATE_VERSION, true );
 	
 	// Add our navigation search if it's enabled
 	if ( 'enable' == $generate_settings['nav_search'] ) {
@@ -452,19 +463,13 @@ if ( ! function_exists( 'generate_add_footer_info' ) ) :
 add_action('generate_credits','generate_add_footer_info');
 function generate_add_footer_info()
 {
-	?>
-	<span class="copyright"><?php _e('Copyright','generatepress');?> &copy; <?php echo date('Y'); ?></span> <?php do_action('generate_copyright_line');?>
-	<?php
-}
-endif;
-
-if ( ! function_exists( 'generate_add_login_attribution' ) ) :
-add_action('generate_copyright_line','generate_add_login_attribution');
-function generate_add_login_attribution()
-{
-	?>
-	&#x000B7; <a href="<?php echo esc_url('https://generatepress.com');?>" target="_blank" title="GeneratePress" itemprop="url">GeneratePress</a>
-	<?php
+	$copyright = sprintf( '<span class="copyright">&copy; %1$s</span> &bull; <a href="%2$s" target="_blank" itemprop="url">%3$s</a>',
+		date( 'Y' ),
+		esc_url( 'https://generatepress.com' ),
+		__( 'GeneratePress','generatepress' )
+	);
+	
+	echo apply_filters( 'generate_copyright', $copyright );
 }
 endif;
 
@@ -475,67 +480,56 @@ if ( ! function_exists( 'generate_base_css' ) ) :
  */
 function generate_base_css()
 {
-	
+	// Get our settings
 	$generate_settings = wp_parse_args( 
 		get_option( 'generate_settings', array() ), 
 		generate_get_defaults() 
 	);
 	
-	// Start the magic
-	$visual_css = array(
-		'body' => array(
-			'background-color' => esc_attr( $generate_settings['background_color'] ),
-			'color' => esc_attr( $generate_settings['text_color'] )
-		),
-		
-		'a, a:visited' => array(
-			'color' => esc_attr( $generate_settings['link_color'] ),
-			'text-decoration' => 'none'
-		),
-		
-		'a:visited' => array(
-			'color' => ( ! empty( $generate_settings['link_color_visited'] ) ) ? esc_attr( $generate_settings['link_color_visited'] ) : null
-		),
-		
-		'a:hover, a:focus, a:active' => array(
-			'color' => esc_attr( $generate_settings['link_color_hover'] ),
-			'text-decoration' => 'none'
-		),
-		
-		'body .grid-container' => array(
-			'max-width' => absint( $generate_settings['container_width'] ) . 'px'
-		),
-		
-		'.page .entry-content' => array(
-			'margin-top' => ( ! generate_show_title() ) ? '0px' : null
-		)
-	);
+	// Initiate our class
+	$css = new GeneratePress_CSS;
 	
-	// Output the above CSS
-	$output = '';
-	foreach($visual_css as $k => $properties) {
-		if(!count($properties))
-			continue;
-
-		$temporary_output = $k . ' {';
-		$elements_added = 0;
-
-		foreach($properties as $p => $v) {
-			if(empty($v))
-				continue;
-
-			$elements_added++;
-			$temporary_output .= $p . ': ' . $v . '; ';
-		}
-
-		$temporary_output .= "}";
-
-		if($elements_added > 0)
-			$output .= $temporary_output;
+	// Body
+	$css->set_selector( 'body' );
+	$css->add_property( 'background-color', esc_attr( $generate_settings[ 'background_color' ] ) );
+	$css->add_property( 'color', esc_attr( $generate_settings[ 'text_color' ] ) );
+	
+	// Links
+	$css->set_selector( 'a, a:visited' );
+	$css->add_property( 'color', esc_attr( $generate_settings[ 'link_color' ] ) );
+	$css->add_property( 'text-decoration', 'none' ); // Temporary until people can get their browser caches cleared
+	
+	// Visited links
+	$css->set_selector( 'a:visited' )->add_property( 'color', esc_attr( $generate_settings[ 'link_color_visited' ] ) );
+	
+	// Hover/focused links
+	$css->set_selector( 'a:hover, a:focus, a:active' );
+	$css->add_property( 'color', esc_attr( $generate_settings[ 'link_color_hover' ] ) );
+	$css->add_property( 'text-decoration', 'none' ); // Temporary until people can get their browser caches cleared
+	
+	// Container width
+	$css->set_selector( 'body .grid-container' )->add_property( 'max-width', absint( $generate_settings['container_width'] ), false, 'px' );
+	
+	// Content margin if there's no title
+	if ( ! generate_show_title() ) {
+		$css->set_selector( '.page .entry-content' )->add_property( 'margin-top', '0px' );
 	}
+	
+	// Allow us to hook CSS into our output
+	do_action( 'generate_base_css', $css );
+	
+	return apply_filters( 'generate_base_css_output', $css->css_output() );
+}
+endif;
 
-	$output = str_replace(array("\r", "\n"), '', $output);
-	return $output;
+if ( ! function_exists( 'generate_add_base_inline_css' ) ) :
+/**
+ * Add our base inline CSS
+ * @since 1.3.42
+ */
+add_action( 'wp_enqueue_scripts','generate_add_base_inline_css', 40 );
+function generate_add_base_inline_css() {
+	wp_add_inline_style( 'generate-style', generate_base_css() );
 }
 endif;
 
@@ -547,28 +541,7 @@ if ( ! function_exists( 'generate_add_viewport' ) ) :
 add_action('wp_head','generate_add_viewport');
 function generate_add_viewport()
 {
-	echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
-}
-endif;
-
-if ( ! function_exists( 'generate_ie_compatibility' ) ) :
-/** 
- * Add compatibility for IE8 and lower
- * No need to run this if wp_script_add_data() exists
- * @since 1.1.9
- */
-add_action('wp_footer','generate_ie_compatibility');
-function generate_ie_compatibility()
-{
-	if ( function_exists( 'wp_script_add_data' ) )
-		return;
-	
-	$suffix = generate_get_min_suffix();
-	?>
-	<!--[if lt IE 9]>
-		<script src="<?php echo get_template_directory_uri();?>/js/html5shiv<?php echo $suffix;?>.js"></script>
-	<![endif]-->
-	<?php
+	echo apply_filters( 'generate_meta_viewport', '<meta name="viewport" content="width=device-width, initial-scale=1">' );
 }
 endif;
 
@@ -726,7 +699,7 @@ if ( ! function_exists( 'generate_update_logo_setting' ) ) :
  *
  * @since 1.3.29
  */
-add_action( 'after_setup_theme', 'generate_update_logo_setting' );
+add_action( 'admin_init', 'generate_update_logo_setting' );
 function generate_update_logo_setting() 
 {
 	// If we're not running WordPress 4.5, bail.

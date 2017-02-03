@@ -2,50 +2,6 @@
 // No direct access, please
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( ! function_exists( 'generate_disable_elements' ) ) :
-/**
- * Add any necessary CSS for disabling these elements
- * The function_exists call above is different from the function name
- * This is so the plugin function generate_disable_elements() is taken ahead of this function
- * @since 1.3.18
- */
-function generate_disable_elements_css()
-{
-	// Don't run the function unless we're on a page it applies to
-	if ( ! is_singular() )
-		return;
-	
-	// Get the post
-	global $post;
-	
-	// Get our option
-	$disable_headline = ( isset( $post ) ) ? get_post_meta( $post->ID, '_generate-disable-headline', true ) : '';
-	
-	// Set up our return variable
-	$return = '';
-	
-	// If our option is set, get the CSS
-	if ( ( !empty( $disable_headline ) && false !== $disable_headline ) && ! is_single() ) :
-		$return .= '.entry-header {display:none} .page-content, .entry-content, .entry-summary {margin-top:0}';
-	endif;
-	
-	// Print our CSS
-	return $return;
-}
-endif;
-
-if ( ! function_exists( 'generate_de_scripts' ) ) :
-/**
- * Add CSS to wp_head
- * @since 1.3.18
- */
-add_action( 'wp_enqueue_scripts', 'generate_de_scripts', 50 );
-function generate_de_scripts() 
-{
-	wp_add_inline_style( 'generate-style', generate_disable_elements_css() );
-}
-endif;
-
 if ( !function_exists('generate_add_de_meta_box') ) :
 /**
  * Create the metabox
@@ -89,7 +45,7 @@ function generate_show_de_meta_box( $post )
 		</label>
 		<?php if ( generate_addons_available() ) : ?>
 			<span style="display:block;padding-top:1em;border-top:1px solid #EFEFEF;">
-				<a href="<?php echo esc_url('https://generatepress.com/downloads/generate-disable-elements');?>" target="_blank"><?php _e( 'Add-on available', 'generatepress' ); ?></a>
+				<a href="<?php echo generate_get_premium_url( 'https://generatepress.com/downloads/generate-disable-elements' );?>" target="_blank"><?php _e( 'Add-on available', 'generatepress' ); ?></a>
 			</span>
 		<?php endif; ?>
 	</div>
@@ -108,7 +64,7 @@ function generate_save_de_meta( $post_id )
 	// Checks save status
     $is_autosave = wp_is_post_autosave( $post_id );
     $is_revision = wp_is_post_revision( $post_id );
-    $is_valid_nonce = ( isset( $_POST[ 'generate_de_nonce' ] ) && wp_verify_nonce( $_POST[ 'generate_de_nonce' ], basename( __FILE__ ) ) ) ? true : false;
+    $is_valid_nonce = ( isset( $_POST[ 'generate_de_nonce' ] ) && wp_verify_nonce( sanitize_key( $_POST[ 'generate_de_nonce' ] ), basename( __FILE__ ) ) ) ? true : false;
  
     // Exits script depending on save status
     if ( $is_autosave || $is_revision || ! $is_valid_nonce ) {

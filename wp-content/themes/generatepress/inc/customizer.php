@@ -63,7 +63,7 @@ function generate_customize_register( $wp_customize ) {
 			new GeneratePress_Upsell_Section( $wp_customize, 'generatepress_upsell_section',
 				array(
 					'pro_text' => __( 'Add-ons Available! Take a look', 'generatepress' ),
-					'pro_url' => 'https://generatepress.com/premium',
+					'pro_url' => generate_get_premium_url( 'https://generatepress.com/premium' ),
 					'capability' => 'edit_theme_options',
 					'priority' => 0,
 					'type' => 'gp-upsell-section'
@@ -223,12 +223,12 @@ function generate_customize_register( $wp_customize ) {
 					'section'     => 'body_section',
 					'type'        => 'addon',
 					'label'			=> __( 'More Settings','generatepress' ),
-					'url' => 'https://generatepress.com/downloads/generate-colors/',
+					'url' => generate_get_premium_url( 'https://generatepress.com/downloads/generate-colors/' ),
 					'description' => sprintf(
 						__( 'Looking to add more color settings?<br /> %s.', 'generatepress' ),
 						sprintf(
 							'<a href="%1$s" target="_blank">%2$s</a>',
-							esc_url( 'https://generatepress.com/downloads/generate-colors/' ),
+							generate_get_premium_url( 'https://generatepress.com/downloads/generate-colors/' ),
 							__( 'Check out Generate Colors', 'generatepress' )
 						)
 					),
@@ -462,7 +462,7 @@ function generate_customize_register( $wp_customize ) {
 		'generate_settings[nav_position_setting]',
 		array(
 			'type' => 'select',
-			'label' => __( 'Navigation Position', 'generatepress' ),
+			'label' => __( 'Navigation Location', 'generatepress' ),
 			'section' => 'generate_layout_navigation',
 			'choices' => array(
 				'nav-below-header' => __( 'Below Header', 'generatepress' ),
@@ -780,6 +780,35 @@ function generate_customize_register( $wp_customize ) {
 		)
 	);
 	
+	// Add footer widget setting
+	$wp_customize->add_setting(
+		'generate_settings[footer_bar_alignment]',
+		array(
+			'default' => $defaults['footer_bar_alignment'],
+			'type' => 'option',
+			'sanitize_callback' => 'generate_sanitize_choices',
+			'transport' => 'postMessage'
+		)
+	);
+	
+	// Add footer widget control
+	$wp_customize->add_control(
+		'generate_settings[footer_bar_alignment]',
+		array(
+			'type' => 'select',
+			'label' => __( 'Footer Bar Alignment', 'generatepress' ),
+			'section' => 'generate_layout_footer',
+			'choices' => array(
+				'left' => __( 'Left','generatepress' ),
+				'center' => __( 'Center','generatepress' ),
+				'right' => __( 'Right','generatepress' )
+			),
+			'settings' => 'generate_settings[footer_bar_alignment]',
+			'priority' => 47,
+			'active_callback' => 'generate_is_footer_bar_active'
+		)
+	);
+	
 	// Add back to top setting
 	$wp_customize->add_setting(
 		'generate_settings[back_to_top]',
@@ -853,12 +882,12 @@ function generate_customize_register( $wp_customize ) {
 					'section'     => 'blog_section',
 					'type'        => 'addon',
 					'label'			=> __( 'More Settings','generatepress' ),
-					'url' => 'https://generatepress.com/downloads/generate-blog/',
+					'url' => generate_get_premium_url( 'https://generatepress.com/downloads/generate-blog/' ),
 					'description' => sprintf(
 						__( 'Looking to add more blog settings?<br /> %s.', 'generatepress' ),
 						sprintf(
 							'<a href="%1$s" target="_blank">%2$s</a>',
-							esc_url( 'https://generatepress.com/downloads/generate-blog/' ),
+							generate_get_premium_url( 'https://generatepress.com/downloads/generate-blog/' ),
 							__( 'Check out Generate Blog', 'generatepress' )
 						)
 					),
@@ -906,6 +935,18 @@ if ( ! function_exists( 'generate_is_posts_page' ) ) :
 function generate_is_posts_page()
 {
 	return ( is_home() || is_archive() || is_tax() ) ? true : false;
+}
+endif;
+
+if ( ! function_exists( 'generate_is_footer_bar_active' ) ) :
+/**
+ * Check to see if we're using our footer bar widget
+ *
+ * @since 1.3.42
+ */
+function generate_is_footer_bar_active() 
+{
+	return ( is_active_sidebar( 'footer-bar' ) ) ? true : false;
 }
 endif;
 
