@@ -2691,12 +2691,13 @@ SQL;
 		 */
 		public function url_exists($filePath) {
 			$url = str_replace(' ', '%20', $filePath);
-			if ( strpos($filePath, 'https:') === 0 ) {
-				// HTTPS
-				$headers = @get_headers($url);
-				return preg_match("/200/", $headers[0]);
-			} else {
-				// HTTP
+			
+			// Try the get_headers method
+			$headers = @get_headers($url);
+			$result = preg_match("/200/", $headers[0]);
+			
+			if ( !$result && strpos($filePath, 'https:') !== 0 ) {
+				// Try the fsock method
 				$url = str_replace('http://', '', $url);
 				if ( strstr($url, '/') ) {
 					$url = explode('/', $url, 2);
@@ -2711,11 +2712,13 @@ SQL;
 					fputs($fh,"User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.94 Safari/537.36\n\n");
 					$response = fread($fh, 22);
 					fclose($fh);
-					return (strpos($response, '200') !== FALSE);
+					$result = (strpos($response, '200') !== FALSE);
 				} else {
-					return FALSE;
+					$result = FALSE;
 				}
 			}
+			
+			return $result;
 		}
 		
 		/**
