@@ -1,9 +1,13 @@
-img.soundcloudIsGold{
-    background: url("../images/soundcloud-logo-sc.png") no-repeat scroll center center #DAE8F6;
+img.soundcloudIsGold_placeholder{
+    background: url("img/player-placeholder.jpg") no-repeat scroll top left #DAE8F6;
+    background-size: 100% auto;
     border: 1px solid #7B9DA2;
-    height: 100px;
-    width: 99%;
-    box-shadow:0 0 5px #666;
-    -moz-box-shadow:0 0 5px #666;
-    -webkit-box-shadow: 0 0 5px #666;
+    margin-bottom: 10px;
+    max-width: 566px;
+    height: 166px;
+}
+img.soundcloudIsGold_placeholder:hover{
+  background-color: #0085ba;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }

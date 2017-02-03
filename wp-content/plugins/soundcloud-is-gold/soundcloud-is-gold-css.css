@@ -24,6 +24,11 @@
     margin:0;
     display:block;
 }
+.soundcloudMMWrapper .soundcloudMMBt.button-primary{
+  height: auto;
+  padding: 3% 0;
+  font-size: 1.1em;
+}
 .soundcloudMMWrapper .soundcloudMMBox{
     background:#FFFFFF;
     border:solid 1px #7b9da2;
@@ -51,7 +56,7 @@
 }
 /****** WIDTH SETTINGS *******/
 #soundcloudMMWidthSetting{
-    
+
 }
 #soundcloudMMWidthSetting .soundcloudMMInput{
     margin-left:5px;
@@ -85,7 +90,7 @@
 .shadow{
 	box-shadow:0 0 10px #666666;
 	-moz-box-shadow:0 0 10px #666666;
-	-webkit-box-shadow: 0 0 10px #666666;	
+	-webkit-box-shadow: 0 0 10px #666666;
 }
 .blackShadow{
 	box-shadow:0 0 10px #000000;
@@ -95,12 +100,12 @@
 .mediumShadow{
 	box-shadow:0 0 15px #333333;
 	-moz-box-shadow:0 0 15px #333333;
-	-webkit-box-shadow: 0 0 15px #333333;	
+	-webkit-box-shadow: 0 0 15px #333333;
 }
 .lightShadow{
     	box-shadow:0 0 5px #9B9B9B;
 	-moz-box-shadow:0 0 5px #9B9B9B;
-	-webkit-box-shadow: 0 0 5px #9B9B9B;	
+	-webkit-box-shadow: 0 0 5px #9B9B9B;
 }
 .soundcloudMMWrapper .darkGrey{
     background:#555555;
@@ -235,72 +240,56 @@
 /*** TOP HEADER ***/
 #soundcloudMMTop{
     float: left;
-    font-family: ChunkFiveRegular,Georgia;
     width: 100%;
-    background:#333333;
     position:relative;
-    border-bottom:#666 solid 1px;
+    margin-bottom: 0;
 }
-#soundcloudMMTop #soundcloudMMLogo {
-    display: block;
-    float: left;
-    height: 85px;
+#soundcloudMMTop .leftPart{
+  width: 46%;
+  padding: 0 5% 0 2%;
+  float: left;
+  border-right: solid 1px #CCC;
+}
+#soundcloudMMTop .rightPart{
+  width: 35%;
+  padding: 0 5%;
+  float: right;
+}
+#soundcloudMMTop .leftPart h1{
+  font-size: 3em;
+  font-weight: 700;
+}
+#soundcloudMMTop h1 small{
+  font-size: 0.3em;
+}
+#soundcloudMMTop #soundcloudMMPowered {
+  display: inline;
     margin: 0;
-    padding: 1.5% 1%;
-    text-align: center;
-    width: 13%;
+  width: 20%;
+  height: auto;
 }
-#soundcloudMMTop #soundcloudMMLogo img{
-    margin-top:5px;
-}
-#soundcloudMMLogo:hover, #soundcloudMMHeader:hover{
-    background:#333333555555;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#555555'); /* for IE */
-    background: -webkit-gradient(linear, left top, left bottom, from(#333333), to(#555555)); /* for webkit browsers */
-    background: -moz-linear-gradient(top,  #333333,  #555555);/*  for firefox 3.6 */
-    text-shadow:#666666 0 0 20px, #000000 0 0 10px !important;
-}
-#soundcloudMMHeader{
-    color: #FFFFFF;
-    float: right;
-    height: 85px;
-    margin: 0;
-    padding: 1.5% 1% 1.5% 3%;
-    text-decoration: none !important;
-    width: 80.95%;
-}
-#soundcloudMMHeader .soundcloudMMTitle{
-    color: #FFFFFF;
-    display: block;
-    font-size: 300%;
-    margin: 19px 0 0;
-}
-#soundcloudMMHeader .soundcloudMMTitle small{
-    font-size:50%;
-}
-#soundcloudMMHeader .soundcloudMMUrl{
-    color: #FFFFFF;
-    display: block;
-    font-family: QuicksandBook,Verdana;
-    font-size: 130%;
-    margin-top: 10px;
-    text-decoration:underline !important;
-}
-#soundcloudMMTop #soundcloudMMVersion{
-    bottom: 0;
-    color: #333333;
-    font-family: Arial;
-    font-size: 80%;
-    font-weight: normal;
-    position: absolute;
-    right: 1%;
-}
+/* Main Part */
 #soundcloudMMMain{
     float:left;
     width:100%;
     padding:5px 0 30px 0;
-    border-bottom:#CCC solid 1px;
-    border-top:#FFF 1px solid;
+}
+
+/******* EXTRAS *******/
+#soundcloudMMExtras{
+    float: left;
+    font-size: 120%;
+    list-style: none outside none;
+    margin: 0% 0 0 0;
+    padding: 7% 0 0 0;
+    text-shadow: none !important;
+    width: 100%;
+}
+#soundcloudMMExtras li{
+  display: block;
+      margin: 0 0 5% 0;
+      padding: 0 1%;
+      width: 100%;
 }
 
 
@@ -413,9 +402,15 @@
 #soundcloudIsGoldUsernameCarouselNav a.selected {
 	background-position: -15px 0;
 	cursor: default;
+  border: none;
 }
 #soundcloudIsGoldUsernameCarouselNav a span {
 	display: none;
+}
+#soundcloudIsGoldUsernameCarouselNav a.selected:focus, #soundcloudIsGoldUsernameCarouselNav a.selected:hover, #soundcloudIsGoldUsernameCarouselNav a:active, #soundcloudIsGoldUsernameCarouselNav a:focus, #soundcloudIsGoldUsernameCarouselNav a:hover{
+  color: white;
+  box-shadow: none;
+  outline: 0;
 }
 /** User **/
 .soundcloudIsGoldUserContainer{
@@ -433,7 +428,7 @@
 }
 .soundcloudIsGoldUserContainer div{
     width:100px;
-    height:100px; 
+    height:100px;
 }
 .soundcloudIsGoldUserContainer div p{
     background:#F6F6F6;
@@ -529,7 +524,7 @@ select.soundcloudMMInput option{
     height:20px;
 }
 .subSettings.texts li label{
-    
+
 }
 .subSettings.texts li .soundcloudMMInput{
     width: 30%;
@@ -546,13 +541,13 @@ select.soundcloudMMInput option{
     display:inline;
 }
 #soundcloudMMDefaultColorPicker{
-    
+
 }
 #soundcloudMMDefaultColorPicker li{
-    
+
 }
 #soundcloudMMDefaultColorPicker li label{
-    
+
 }
 #soundcloudMMDefaultColorPicker li .soundcloudMMInput, .soundcloudMMColor{
     width:20% !important;
@@ -568,31 +563,14 @@ select.soundcloudMMInput option{
     width:96%;
     margin:1%;
 }
-/******* EXTRAS *******/
-#soundcloudMMExtras{
-    float: left;
-    font-size: 120%;
-    list-style: none outside none;
-    margin: 0;
-    padding: 2%;
-    text-shadow: none !important;
-    width: 96%;
-    border-top:solid 1px #FFF;
-}
-#soundcloudMMExtras li{
-    display: block;
-    float: left;
-    margin: 0;
-    padding: 0 1%;
-    width: 23%;
-}
+
 .subSettings.texts li .soundcloudMMInput.soundcloudMMClasses{
     width:20%;
 }
 
 /******* ADVANCED SETTINGS *******/
 #soundcloudMMAdvancedSettingsOptions{
-    
+
 }
 #soundcloudMMAdvancedSettingsOptions #soundcloudMMAdvancedSettingsShowHide{
     padding:0 0 2% 5%;
@@ -638,12 +616,13 @@ select.soundcloudMMInput option{
     margin: 0;
     padding: 0 2% 0 2%;
     text-shadow: none;
-    width: 96%; 
+    width: 96%;
 }
-.soundcloudMMWrapper #soundcloudMMSubmit .soundcloudMMBt{
-    padding:2%;
-    font-size:100%;
-    font-weight:bold;
+.soundcloudMMWrapper #soundcloudMMSubmit .soundcloudMMButton-primary{
+    width: 100%;
+    padding: 2% 0;
+    height: auto;
+    font-size: 1.3em;
 }
 
 
@@ -697,7 +676,7 @@ select.soundcloudMMInput option{
     position: absolute;
     width: 95%;
 }
-/** Color Picher **/
+/** Color Picker **/
 .soundcloudMMColorPicker .soundcloudMMColorPickerClose{
     display: block;
     padding: 6% 2%;
@@ -718,7 +697,7 @@ select.soundcloudMMInput option{
     margin:0 20px 0 0 !important;
 }
 .soundcloudMMTabWidthSettings input.soundcloudMMInput{
-    
+
 }
 .soundcloudMMTabWidthSettings select.soundcloudMMInput{
     padding:5px !important;
@@ -744,4 +723,39 @@ select.soundcloudMMInput option{
     font-size:130%;
     color:#333333;
     text-align:center;
+}
+
+/************************/
+/*                      */
+/*        SURVEY        */
+/*                      */
+/************************/
+@keyframes survey_anim {
+    from {
+      background: #008ec2;
+      box-shadow: 0 0 10px rgba(0, 142, 194, 1);
+    }
+    to {
+      background: #0085ba;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+#soundcloudMMSurvey{
+    z-index: 100000;
+    position: fixed;
+    right: -425px;
+    font-size: 1.2em;
+    top: 45%;
+    padding: 0.5% 1%;
+    height: auto;
+    transition: right ease-in-out 0.5s;
+    animation-name: survey_anim;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+#soundcloudMMSurvey:hover{
+    right: -2px;
+    transition: right ease-in-out 0.5s;
 }

@@ -1,24 +1,26 @@
 === SoundCloud Is Gold ===
 Contributors: Thomas Michalak
 Donate link: http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin
-Tags: soundcloud, integrated, media, shortcode, browse, design, easy, simple, music, sound, js, live preview, flash, html5
+Tags: soundcloud, simple, shortcode, music, sound
 Requires at least: 3.2
-Tested up to: 4.6.1
-Stable tag: 2.3.3
+Tested up to: 4.7.2
+Stable tag: 2.4.1
 
-Browse through your soundcloud tracks, sets and favourites. Select and add tracks, sets or favourites to your posts. Live preview, easy.
+Browse through your soundcloud tracks, playlists and favorites. Add tracks, playlists and favorites to your posts. Live preview, easy to use.
 
 == Description ==
 
+**The only way to a create a better plugin is to listen to you, the users. I created a super short survey with questions around possible new features and asking what you like or hate about the plugin. It’s very short and only take a few minutes at most. [https://mightymess.typeform.com/to/Bg82kF](https://mightymess.typeform.com/to/Bg82kF), Thank you for your support**
+
 **New Widget to display latest and random track, favorites or sets for one user, multiple users or random users.**
 
-**Soundcloud is Gold** integrates perfectly into wordpress. Browse through your soundcloud tracks, sets and favorites from the 'Soundcloud is gold' tab in the post's 'upload media' popup window. Select, set and add track, sets, favorites to your post using the soundcloud player. Live Preview, easy, smart and straightforward.
-You can set default settings in the option page, choose your defaut soundcloud player (Mini, Standard, Artwork, Html5), it's width, add extra classes for you CSS lovers, show comments, autoplay and your favorite color.
+**Soundcloud is Gold** integrates perfectly into wordpress. Browse through your soundcloud tracks, playlists and favorites from the 'Soundcloud is gold' tab in the post's 'upload media' popup window. Select, set and add track, playlists, favorites to your post using the soundcloud player. Live Preview, easy, smart and straightforward.
+You can set default settings in the option page, choose your defaut soundcloud player style, it's width, add extra classes for you CSS lovers, show comments, autoplay and set your favorite color.
 You'll also be able to set players to different settings before adding to your post if you fancy a one off change.
 
 **Save multiple users, very useful for labels, collectives or artists with many projects.**
 
-**Soundcloud is Gold** use a shortcode but the "Soundcloud is Gold" tab will write it for you dynamicly as you select parameters, and on top of this it will provide a nice live preview of your player so you know what does what. When done just press the 'insert soundcloud player' and it will added to your post just like when you're adding a photo or gallery.
+**Soundcloud is Gold** use a shortcode but the "Soundcloud is Gold" tab will write it for you dynamically as you select parameters, and on top of this it will provide a nice live preview of your player so you know what does what. When done just press the 'insert soundcloud player' and it will added to your post just like when you're adding a photo or gallery.
 
 If you love it please rate it! If you use it and want to help, [donations are always welcomed](http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin) or you could like, tweet or spread the love on your blog ;)
 
@@ -34,7 +36,7 @@ Check out my [TM soundcloud profile](http://www.soundcloud.com/t-m), more [might
 * Integrates perfectly with wordpress media upload by using the same listing style that you get with the images (see screenshot).
 * See track's info directly in the tab (description, url, cover, etc...).
 * Set default settings from the option page (see screenshot):
-    * Default player type (Mini, Standard, Artwork, Html5)
+    * Default player type (Standard, Artwork, Visual)
     * Width
     * Extra Classes for the div that wraps around the player
     * Auto Play
@@ -42,8 +44,8 @@ Check out my [TM soundcloud profile](http://www.soundcloud.com/t-m), more [might
     * Player's Colors
 * Use shortcode
 * Plugin construct shortode for you, no need to remember any syntax.
-* Style sortcode for neat layout in your editor.
-* Implement Soundcloud Html5 player (beta).
+* Styled sortcode for neat layout in your editor.
+* Implement Soundcloud Html5 player.
 * Widget for showing latest and random track, favorites or sets for one user, multiple users or random users.
 * Follow WP developpers guidelines (enqueue scripts and styles just for the plugin, clean code, commented, secure and leave no trace when uninstall ).
 * https support
@@ -56,23 +58,28 @@ Check out my [TM soundcloud profile](http://www.soundcloud.com/t-m), more [might
 That's just my opinion of course...
 
 
-= To Do List =
+== RoadMap ==
 
-* v3: So much to do I can't list it.
-* V3: Advance Settings (change background color and comments color, playcounts, buy link, font, wmode, etc, show/hide styled shortcode, number of tracks per page)
-* v3: url attribute for shortcode: easier for people using the shortcode manually.
-* v3: other soundcloud shortcode conflict fix (jetpack)
-* Add Soundcloud default Width to the options
-* Trigger live preview when changing Soundcloud user name
+= Priority =
+
+* Contextual On-boarding to help new users getting to know the plugin
+* Use your own API key (which mean you're not dependent of the rate_limit attached to my key )
+* Advance Settings (change background color and comments color, playcounts, buy link, font, wmode, etc, show/hide styled shortcode, number of tracks per page)
+* Other soundcloud shortcode conflict fix (jetpack)
+* Update to the way Settings are handled to be even more inline with Wordpress settings API.
 * Live search while typing a name in the user name field. So if you're looking for someone it's kind of easier.
-* Add 'activities' to a widget
-* Fall Back for smartphone to html5 player when using flash player.
+* Better UX for the editor: clicking to edit should know if which user and if it's a track/playlist/favourite
+* Better UX for the editor: Better visual to actually know what the track is just by looking at it.
+
+= Secondary =
+
+* Seperate playlists into playlist types (ep, album, etc...)
+* Url attribute for shortcode: easier for people using the shortcode manually.
+* Trigger live preview when changing Soundcloud user name
+* Add 'activities' to the widget
 
 
 == Installation ==
-
-= Updating =
-When updating to 2.0, if you're experiencing issues, deactivate and reactivate the plugin from the plugin page. This is due to switching to the Settings API. Sorry for the inconvenient.
 
 Just follow the usual procedure. Log on to your wordpress, go to plugin -> add new -> search 'Soundcloud is Gold' -> click install
 
@@ -97,23 +104,26 @@ Here's a simple method to track down incompatibilities with plugins and themes:
 
 Remenber that even if a plugin is popular, most of the plugins are badly coded or the developer didn't follow Wordpress guidelines on plugin development. Therefor conflict happens. The method is useful not just for this plugin.
 
-= Can't play my tracks on my iphone, ipad or ipod? =
+= Do you have some documentation for the shortcode? =
 
-Soundcloud has just released a html5 player. It's currently in it's beta version, which means that there might be bugs. Soundcloud is gold give you the option to use the html5 player but it's either flash all flash or all html5 for now.
+If for some reason you wish to use the shortcode manually, here's what's possible:
 
-= How can I use the shortcode manually? =
+**id or user is required for the shortcode to work**
+[soundcloud id='trackID']: The id of the track, favorite or playlist.
 
-If for some reason you wish to use the shortcode manually, like for embeding someone else tracks, you can use:
+[soundcloud user='yourUsername'] : This will always display the latest track (will overwrite id if set)
 
-**[soundcloud id='10450254']**
-or
-**[soundcloud user='t-m']** to always display the latest track
+**Those attributes are optional**
+comments: True or False
+autoplay: True or False
+playertype: 'Standard'
+width: px or % (for example 56px or 56%)
+color: rgb hex color code (for example #005bff)
+show_artwork: True or False
+visual: True or False (overwrites show_artwork)
+show_comments: True or False
+format: 'tracks' or 'playlists'
 
-This will use your default setting of with, classes, colors, autoplay, comments. (Replace *10450254* with the track id you want to show)
-
-If you wish to have more control here is an example:
-
-**[soundcloud id='10450254' comments='true' autoplay='false' playertype='Standard' width='100%' color='#005bff']**
 
 
 = Can I request features? =
@@ -124,35 +134,43 @@ Yes, you can. If asked nicely and the requests are sensibles, I almost always in
 
 Sometimes, I generally keep a eye on my plugin's forums and website's comments. Bear in mind that I've got a full time job and a life, so I can't always help straight away. I will not reply to people who obviously don't read the faqs or the forum or just say 'it doesn't work'.
 
-== Upgrade Notice ==
-
-= 2.2.1 =
-* Security Update. Thanks to Samuel Wood for his help and time.
-
-= 2.2 =
-Widget Update! Display latest and random track, favorites or sets for one user, multiple users or random users.
-Perfect for labels, collectives, festivals and schizophrenic artists.
-
-= 2.1 =
-New widget to display a user's latest track. New "user" argument for the shortcode to display user's latest track.
-
-= 2.0 =
-When updating to 2.0, if you're experiencing issues, deactivate and reactivate the plugin from the plugin page. This is due to switching to the Settings API. Sorry for the inconvenient.
-
 
 
 == Screenshots ==
 
-1. screenshot-1.jpg
-2. screenshot-2.jpg
-3. screenshot-3.jpg
-4. screenshot-4.jpg
-5. screenshot-5.jpg
+1. screenshot-1.png
+2. screenshot-2.png
+3. screenshot-3.png
+4. screenshot-4.png
+4. screenshot-5.png
+4. screenshot-6.png
 
 
 == Changelog ==
 
-= 2.3.3=
+= 2.4.1 =
+* Fixed a bug in the Widget not properly displaying Playlists after updating from 2.3.3. Thanks to Jan Middelkoop and @gnorf for helping out.
+* Added shortcode attr to show latest track from a specific, see FAQs for how to do it manually.
+* Updated FAQs to give more documentation around the shortcode
+* Added a survey for all users: Please help me make this plugin better by answering those few questions.
+
+= 2.4 =
+* Removed flash player and all related options as Soundcloud only support their html5 player now
+* New Visual player now supported (big full artwork) with the addition with a force square option (height of 450px) to match Soundcloud default settings
+* Editor: Clicking the image that represent the player now works again, let's you to edit the track or playlist (still need further UX refinements in next release). placeholder look has been updated too.
+* Sets are now renamed Playlists
+* Hide comments options now works again
+* Playlists now get the counting properly in the tab
+* Track duration in the upload tab is now properly formatted again (although there seems to a minor different of time with Soundcloud's site)
+* HTTPS support: All Api calls are now using https
+* Up to date screenshots
+* All plugin images optimized with imageAlpha for faster plugin download and performance.
+* Soundcloud limit attr bug temporary patch.
+* Some labels/User block the API. Included a better error message to explain this.
+* Styling update: No more custom fonts, faster download of the plugin, cleaned styling to match some default Wordpress styling.
+* Using setting_errors() for default Wordpress notices.
+
+= 2.3.3 =
 * API issue fix. Temporary fix to help people going.
 
 = 2.3.2 =
