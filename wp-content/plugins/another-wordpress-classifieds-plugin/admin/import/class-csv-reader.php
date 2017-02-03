@@ -33,7 +33,7 @@ class AWPCP_CSV_Reader {
 
     public function get_number_of_rows() {
         if ( is_null( $this->number_of_rows ) ) {
-            $this->number_of_rows = $this->get_number_of_lines() - 1;
+            $this->number_of_rows = $this->get_number_of_lines();
         }
 
         return $this->number_of_rows;
@@ -113,8 +113,11 @@ class AWPCP_CSV_Reader {
     public function get_row( $row_number = null ) {
         $header = $this->get_header();
         $row_data = $this->get_row_data( $row_number );
+        $filtered_row_data = array_filter( $row_data );
 
-        if ( count( $header ) != count( $row_data ) ) {
+        if ( empty( $filtered_row_data ) ) {
+            throw new UnexpectedValueException( __( 'The row was empty.', 'another-wordpress-classifieds-plugin' ) );
+        } else if ( count( $header ) != count( $row_data ) ) {
             $message = __( "The number of values in the row (<number-of-values-in-row>) does not match the number of columns in the file's header (<number-of-columns>).", 'another-wordpress-classifieds-plugin' );
             $message = str_replace( '<number-of-values-in-row>', count( $row_data ), $message );
             $message = str_replace( '<number-of-columns>', count( $header ), $message );

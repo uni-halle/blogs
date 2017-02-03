@@ -25,6 +25,10 @@ class AWPCP_ListingPaymentTransactionHandler {
     }
 
     public function process_completed_transaction( $transaction ) {
+        if ( strcmp( $transaction->get( 'context' ), 'place-ad' ) !== 0 ) {
+            return;
+        }
+
         if ( ! $transaction->get( 'ad-id' ) ) {
             return;
         }

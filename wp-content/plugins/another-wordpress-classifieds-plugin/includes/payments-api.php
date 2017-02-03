@@ -654,14 +654,23 @@ class AWPCP_PaymentsAPI {
             $title = __('Payment Canceled', 'another-wordpress-classifieds-plugin');
             $text = __("The Payment transaction was canceled. You can't post an Ad this time.", 'another-wordpress-classifieds-plugin');
 
-        // } else if ($transaction->payment_is_invalid() || $transaction->payment_is_not_verified()) {
+        } else if ( $transaction->payment_is_not_verified() ) {
+            $title = __( 'Waiting on Confirmation', 'another-wordpress-classifieds-plugin' );
+            $text = __( 'The payment gateway is taking a bit longer than expected to confirm your payment. Please wait a few seconds while we verify the transaction. The page will reload automatically.', 'another-wordpress-classifieds-plugin' );
+        // } else if ($transaction->payment_is_invalid() || ) {
         } else {
             $title = __('Payment Error', 'another-wordpress-classifieds-plugin');
             $text = __("There was an error processing your payment. The payment status couldn't be found. Please contact the website admin to solve this issue.", 'another-wordpress-classifieds-plugin');
         }
 
         $redirect = $transaction->get('redirect');
-        $hidden = array_merge($transaction->get('redirect-data'), $hidden);
+        $hidden = array_merge(
+            $transaction->get( 'redirect-data' ),
+            array(
+                'payment_status' => $transaction->payment_status
+            ),
+            $hidden
+        );
 
         ob_start();
             include(AWPCP_DIR . '/frontend/templates/payments-payment-completed-page.tpl.php');
@@ -676,6 +685,8 @@ class AWPCP_PaymentsAPI {
             return __('Payment Completed', 'another-wordpress-classifieds-plugin');
         } else if ($transaction->payment_is_canceled()) {
             return __('Payment Canceled', 'another-wordpress-classifieds-plugin');
+        } else if ( $transaction->payment_is_not_verified() ) {
+            return __( 'Payment Not Verified', 'another-wordpress-classifieds-plugin' );
         } else {
             return __('Payment Failed', 'another-wordpress-classifieds-plugin');
         }

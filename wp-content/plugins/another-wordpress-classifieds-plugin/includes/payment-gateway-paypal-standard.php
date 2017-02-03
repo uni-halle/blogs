@@ -1,13 +1,23 @@
 <?php
 
+function awpcp_paypal_standard_payment_gateway() {
+    return new AWPCP_PayPalStandardPaymentGateway( awpcp_request() );
+}
+
 class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
 
     const PAYPAL_URL = 'https://www.paypal.com/cgi-bin/webscr';
     const SANDBOX_URL = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
 
-    public function __construct() {
-        $icon = AWPCP_URL . '/resources/images/payments-paypal.jpg';
-        parent::__construct('paypal', _x('PayPal', 'payment gateways', 'another-wordpress-classifieds-plugin'), '', $icon);
+    public function __construct( $request ) {
+        parent::__construct(
+            'paypal',
+            _x( 'PayPal', 'payment gateways', 'another-wordpress-classifieds-plugin' ),
+            '',
+            AWPCP_URL . '/resources/images/payments-paypal.jpg'
+        );
+
+        $this->request = $request;
     }
 
     public function get_integration_type() {
@@ -20,6 +30,8 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
      *
      * Request errors, if any, are returned by reference.
      *
+     *
+     * @return VERIFIED, INVALID or ERROR
      * @since 2.1.4
      */
     private function verify_recevied_data_with_curl($postfields='', $cainfo=true, &$errors=array()) {
@@ -110,6 +122,7 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
      *
      * Request errors, if any, are returned by reference.
      *
+     * @return VERIFIED, INVALID or ERROR
      * @since 2.0.7
      */
     private function verify_received_data($data=array(), &$errors=array()) {
@@ -146,6 +159,7 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
             $response = $this->verify_received_data($_POST, $errors);
             $verified = strcasecmp($response, 'VERIFIED') === 0;
         } else {
+            $response = null;
             $verified = $transaction->get('verified', false);
         }
 
@@ -177,7 +191,7 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
         $transaction->set('txn-id', awpcp_post_param('txn_id'));
         $transaction->set('verified', $verified);
 
-        return $verified;
+        return $response;
     }
 
     private function validate_transaction($transaction) {
@@ -328,10 +342,23 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
     }
 
     public function process_payment_completed($transaction) {
-        if (!$this->verify_transaction($transaction)) {
+        if ( $transaction->get( 'verified', false ) ) {
+            return;
+        }
+
+        if ( ! $this->request->post( 'verify_sign' ) ) {
             $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_NOT_VERIFIED;
-        } else {
+            return;
+        }
+
+        $response = $this->verify_transaction( $transaction );
+
+        if ( 'VERIFIED' == $response ) {
             $this->validate_transaction( $transaction );
+        } else if ( 'INVALID' == $response ) {
+            $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_INVALID;
+        } else {
+            $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_UNKNOWN;
         }
     }
 

@@ -7,7 +7,7 @@
             <div class="awpcp-media-uploader-instructions">
                 <span class="awpcp-media-uploader-instructions-title"><?php echo __( 'Drop files here to upload', 'another-wordpress-classifieds-plugin' ); ?></span>
                 <span><?php echo _x( 'or', "The 'or' after 'Drop files here to upload' in Media Uploader", 'another-wordpress-classifieds-plugin' ); ?></span>
-                <a href="#" class="awpcp-media-uploader-browser-button button button-hero"><?php echo __( 'Select Files', 'another-wordpress-classifieds-plugin' ); ?></a>
+                <a href="#" class="awpcp-media-uploader-browser-button awpcp-button"><?php echo __( 'Select Files', 'another-wordpress-classifieds-plugin' ); ?></a>
             </div>
             <div class="awpcp-media-uploader-restrictions"></div>
         </div>

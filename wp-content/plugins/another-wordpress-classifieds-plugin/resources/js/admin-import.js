@@ -2,21 +2,27 @@
 
 AWPCP.run('awpcp/admin-import', [
     'jquery',
+    'awpcp/datepicker-field',
     'awpcp/settings',
     'awpcp/jquery-userfield',
     'awpcp/knockout-progress',
 ],
-function( $, settings ) {
+function( $, DatepickerField, settings ) {
     $(function() {
         $( '#awpcp-import-listings-upload-source-files' ).usableform();
 
         $( '#awpcp-import-listings-configuration-form' ).each(function() {
             var $form = $( this );
 
-            $form.find( '#awpcp-importer-start-date, #awpcp-importer-end-date' ).datepicker({
-                changeMonth: true,
-                changeYear: true
-            });
+            $form.find( '[name="default_start_date"], [name="default_end_date"]' ).each( function() {
+                $.noop( new DatepickerField( $(this), {
+                    datepicker: {
+                        changeMonth: true,
+                        changeYear: true,
+                        altFormat: 'mm/dd/yy'
+                    }
+                } ) );
+            } );
 
             $form.usableform();
         });

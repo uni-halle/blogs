@@ -113,9 +113,9 @@
         <?php endif; ?>
 
         <?php if ( $preview ): ?>
-        <input type="submit" class="button" value="<?php echo esc_attr( __( 'Preview Ad', 'another-wordpress-classifieds-plugin' ) ); ?>" />
+        <input type="submit" class="button" value="<?php echo esc_attr( _x( 'Preview Ad', 'listing details form', 'another-wordpress-classifieds-plugin' ) ); ?>" />
         <?php else: ?>
-        <input type="submit" class="button" value="<?php echo esc_attr( __( 'Continue', 'another-wordpress-classifieds-plugin' ) ); ?>" />
+        <input type="submit" class="button" value="<?php echo esc_attr( _x( 'Continue', 'listing details form', 'another-wordpress-classifieds-plugin' ) ); ?>" />
         <?php endif; ?>
 	</form>
 </div>

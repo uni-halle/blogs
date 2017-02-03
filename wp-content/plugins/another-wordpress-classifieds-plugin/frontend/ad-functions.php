@@ -312,40 +312,6 @@ function awpcp_ad_posted_user_email( $ad, $transaction = null, $message='' ) {
 	return $email;
 }
 
-
-/**
- * @since 2.1.4
- */
-function awpcp_ad_posted_email( $ad, $transaction = null, $message = '', $notify_admin = true ) {
-	$result = false;
-
-	// user email
-	$user_message = awpcp_ad_posted_user_email( $ad, $transaction, $message );
-	if (get_awpcp_option('send-user-ad-posted-notification', true)) {
-		$result = $user_message->send();
-	}
-
-	// admin email
-	if ($notify_admin && get_awpcp_option('notifyofadposted')) {
-		// grab the body to be included in the email sent to the admin
-		$content = $user_message->body;
-
-		$admin_message = new AWPCP_Email;
-		$admin_message->to[] = awpcp_admin_email_to();
-		$admin_message->subject = __( 'New classified listing created', 'another-wordpress-classifieds-plugin' );
-
-		$params = array('page' => 'awpcp-listings',  'action' => 'view', 'id' => $ad->ad_id);
-		$url = add_query_arg( urlencode_deep( $params ), admin_url( 'admin.php' ) );
-
-		$template = AWPCP_DIR . '/frontend/templates/email-place-ad-success-admin.tpl.php';
-		$admin_message->prepare($template, compact('content', 'url'));
-
-		$admin_message->send();
-	}
-
-	return $result;
-}
-
 /**
  * Renders each listing using the layout configured in the plugin
  * settings.

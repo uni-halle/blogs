@@ -133,7 +133,7 @@ class AWPCP_2CheckoutPaymentGateway extends AWPCP_PaymentGateway {
 
     public function process_payment_completed($transaction) {
         if (!$this->verify_transaction($transaction)) {
-            $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_NOT_VERIFIED;
+            $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_UNKNOWN;
             return;
         }
 

@@ -63,11 +63,15 @@ class AWPCP_RenewAdPage extends AWPCP_Place_Ad_Page {
         $action = $this->get_current_action($default);
 
         if (!is_null($transaction) && $transaction->is_payment_completed()) {
-            if ( ! $transaction->was_payment_successful() ) {
+            if ( ! ( $transaction->was_payment_successful() || $transaction->payment_is_not_verified() ) ) {
                 $message = __('You can\'t renew your Ad at this time because the payment associated with this transaction failed (see reasons below).', 'another-wordpress-classifieds-plugin');
                 $message = awpcp_print_message($message);
                 $message = $message . awpcp_payments_api()->render_transaction_errors($transaction);
                 return $this->render('content', $message);
+            }
+
+            if ( $transaction->payment_is_not_verified() ) {
+                $action = 'payment-completed';
             }
 
             $forbidden = in_array($action, array('order', 'checkout'));

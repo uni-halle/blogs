@@ -45,7 +45,7 @@ class AWPCP_Query {
     }
 
     public function is_browse_categories_page() {
-        return $this->is_page_that_has_shortcode( 'AWPCPBROWSECATS' );
+        return $this->is_browse_listings_page();
     }
 
     public function is_page_that_accepts_payments() {

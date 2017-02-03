@@ -13,10 +13,6 @@ class AWPCP_BrowseAdsPage extends AWPCP_Page {
         $this->request = awpcp_request();
     }
 
-    public function get_current_action($default='browseads') {
-        return awpcp_request_param('a', $default);
-    }
-
     public function url($params=array()) {
         $url = awpcp_get_page_url('browse-ads-page-name');
         return add_query_arg( urlencode_deep( $params ), $url );
@@ -29,23 +25,14 @@ class AWPCP_BrowseAdsPage extends AWPCP_Page {
     protected function _dispatch() {
         awpcp_enqueue_main_script();
 
-        $action = $this->get_current_action();
+        $category_id = absint( $this->request->param( 'category_id', get_query_var( 'cid' ) ) );
 
-        switch ($action) {
-            case 'browsecat':
-                return $this->browse_listings( 'render_listings_from_category' );
-            case 'browseads':
-            default:
-                return $this->browse_listings( 'render_all_listings' );
-        }
-    }
-
-    protected function browse_listings( $callback ) {
-        $category_id = intval( $this->request->param( 'category_id', get_query_var( 'cid' ) ) );
         $output = apply_filters( 'awpcp-browse-listings-content-replacement', null, $category_id );
 
-        if ( is_null( $output ) ) {
-            return $this->$callback( $category_id );
+        if ( is_null( $output ) && $category_id ) {
+            return $this->render_listings_from_category( $category_id );
+        } elseif ( is_null( $output ) ) {
+            return $this->render_all_listings( $category_id );
         } else {
             return $output;
         }

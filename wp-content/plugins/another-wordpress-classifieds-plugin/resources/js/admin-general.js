@@ -144,4 +144,31 @@ if (typeof jQuery !== 'undefined') {
         });
 
     })(jQuery);
+
+    (function($, undefined) {
+        $(function() {
+            $( '.awpcp-notice.is-dismissible' ).on( 'click', '.notice-dismiss', function() {
+                var $notice = $( this ).closest( '.awpcp-notice' );
+
+                $.post( ajaxurl, {
+                    action: 'awpcp-dismiss-notice',
+                    notice: $notice.attr( 'id' ),
+                } );
+            } );
+
+            $( '.awpcp-notice.is-dismissible' ).on( 'click', '[data-action]', function( event ) {
+                event.preventDefault();
+
+                var $button = $( this );
+                var $notice = $button.closest( '.awpcp-notice' );
+
+                $.post( ajaxurl, $.extend(
+                    $.parseJSON( $button.attr( 'data-action-params' ) ),
+                    { action: $button.attr( 'data-action' ) }
+                ) );
+
+                $( '.awpcp-notice.is-dismissible .notice-dismiss' ).click();
+            } );
+        });
+    })(jQuery)
 }

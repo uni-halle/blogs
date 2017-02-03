@@ -23,7 +23,8 @@
                                 <label for="awpcp-importer-start-date"><?php echo esc_html( __( 'Start Date', 'another-wordpress-classifieds-plugin' ) ); ?></label>
                             </th>
                             <td>
-                                <input id="awpcp-importer-start-date" type="text" name="default_start_date" value="<?php echo esc_attr( $form_data['default_start_date'] ); ?>" />
+                                <input id="awpcp-importer-start-date" type="text" datepicker-placeholder value="<?php echo esc_attr( $form_data['default_start_date'] ); ?>" />
+                                <input type="hidden" name="default_start_date" value="<?php echo esc_attr( awpcp_datetime( 'm/d/Y', $form_data['default_start_date'] ) ); ?>" />
                                 <?php echo awpcp_form_error( 'default_start_date', $form_errors ); ?>
                             </td>
                         </tr>
@@ -32,7 +33,8 @@
                                 <label for="awpcp-importer-end-date"><?php echo esc_html( __( 'End Date', 'another-wordpress-classifieds-plugin' ) ); ?></label>
                             </th>
                             <td>
-                                <input id="awpcp-importer-end-date" type="text" name="default_end_date" value="<?php echo esc_attr( $form_data['default_end_date'] ); ?>" />
+                                <input id="awpcp-importer-end-date" type="text" datepicker-placeholder value="<?php echo esc_attr( $form_data['default_end_date'] ); ?>" />
+                                <input type="hidden" name="default_end_date" value="<?php echo esc_attr( awpcp_datetime( 'm/d/Y', $form_data['default_end_date'] ) ); ?>" />
                                 <?php echo awpcp_form_error( 'default_end_date', $form_errors ); ?>
                             </td>
                         </tr>

@@ -143,7 +143,7 @@ class AWPCP_Meta {
         }
 
         $query = $GLOBALS['wp_the_query'];
-        if ( ! $query->is_page( awpcp_get_page_id_by_ref( 'browse-categories-page-name' ) ) ) {
+        if ( ! $query->is_page( awpcp_get_page_id_by_ref( 'browse-ads-page-name' ) ) ) {
             return false;
         }
 

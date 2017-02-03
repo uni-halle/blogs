@@ -2,10 +2,10 @@
 Contributors: awpcp
 Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified theme,classifieds theme
-Requires at least: 4.1
-Tested up to: 4.6
-Last Updated: 2016-Aug-16
-Stable tag: tags/3.7.1
+Requires at least: 4.2
+Tested up to: 4.7
+Last Updated: 2017-Jan-19
+Stable tag: tags/3.7.3
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -161,7 +161,7 @@ If you love the plugin, [please consider purchasing a Premium Module](http://awp
 
 == Credits ==
 
-Copyright 2009-16 awpcp.com
+Copyright 2009-17 awpcp.com
 
 AWPCP Classifieds icons courtesy of http://www.famfamfam.com/lab/icons/silk/
 dcfunctions.php used with permission under GPL by Dan Caragea http://www.datemill.com
@@ -221,6 +221,28 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 [Plugin documentation](http://www.awpcp.com/documentation/)
 
 == Changelog ==
+
+= Version 3.7.3 =
+* Fix PHP Warning in Browse Categories Page Redirection Handler.
+* Remove no longer used query paramter a=browsecat
+
+= Version 3.7.2 =
+* Remove Browse Categories page.
+* Update plugin to use Facebook API v2.7.
+* Generate better frontend URLs
+* Show database error when a listing cannot be saved.
+* Include up to date translations from Transifex.
+* Update text context for strings in Place/Edit Listing page.
+* For TB_closeWindow element to have box-sizing: content-box.
+* Use awpcp-button CSS class in 'Select Files' button.
+* Fix width of category icon in smaller screens.
+* Fix database error in Listings Finder.
+* Fix problem with Datepicker fields in Import Listing.
+* Fix error calculating number of rows in CSV file.
+* Add Waiting on Confirmation screen for payment transactions.
+* Update cacert.pem.
+* Renewed listings should not require moderation.
+* Restore support for Extra Fields in CSV Importer.
 
 = Version 3.7.1 =
 * Add support for Custom Login URL.

@@ -31,6 +31,6 @@
             <br><a href="<?php echo esc_attr( $send_access_key_url ); ?>"><?php echo esc_html( __( 'Click here to have your Ad access keys sent to you.', 'another-wordpress-classifieds-plugin' ) ); ?></a>
         </p>
 
-        <input type="submit" class="button" value="<?php echo esc_attr( _x( "Continue", 'ad details form', 'another-wordpress-classifieds-plugin' ) ); ?>" />
+        <input type="submit" class="button" value="<?php echo esc_attr( _x( "Continue", 'enter email and access key form', 'another-wordpress-classifieds-plugin' ) ); ?>" />
 	</form>
 </div>

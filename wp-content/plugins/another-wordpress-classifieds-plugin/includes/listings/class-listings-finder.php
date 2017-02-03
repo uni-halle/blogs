@@ -603,22 +603,22 @@ class AWPCP_ListingsFinder {
                 $parts = array( 'ad_enddate %1$s' );
                 break;
             case 'renewed-date':
-                $parts = array( $basedate . ' %1$s', 'ad_startdate %1$s', 'ad_id %1$s' );
+                $parts = array( $basedate . ' %1$s', 'ad_startdate %1$s', '`listings`.`ad_id` %1$s' );
                 break;
             case 'status':
-                $parts = array( 'disabled %1$s', 'ad_startdate %1$s', 'ad_id %1$s' );
+                $parts = array( 'disabled %1$s', 'ad_startdate %1$s', '`listings`.`ad_id` %1$s' );
                 break;
             case 'payment-term':
-                $parts = array( 'adterm_id %1$s', 'ad_startdate %1$s', 'ad_id %1$s' );
+                $parts = array( 'adterm_id %1$s', 'ad_startdate %1$s', '`listings`.`ad_id` %1$s' );
                 break;
             case 'payment-status':
-                $parts = array( 'payment_status %1$s', 'ad_startdate %1$s', 'ad_id %1$s' );
+                $parts = array( 'payment_status %1$s', 'ad_startdate %1$s', '`listings`.`ad_id` %1$s' );
                 break;
             case 'featured-ad':
-                $parts = array( 'is_featured_ad %1$s', 'ad_startdate %1$s', 'ad_id %1$s' );
+                $parts = array( 'is_featured_ad %1$s', 'ad_startdate %1$s', '`listings`.`ad_id` %1$s' );
                 break;
             case 'owner':
-                $parts = array( 'user_id %1$s', 'ad_startdate %1$s', 'ad_id %1$s' );
+                $parts = array( 'user_id %1$s', 'ad_startdate %1$s', '`listings`.`ad_id` %1$s' );
                 break;
             case 'random':
                 $parts = array( 'RAND()' );

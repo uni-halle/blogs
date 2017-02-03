@@ -82,7 +82,7 @@ class AWPCP_BuyCreditsPage extends AWPCP_BasePage {
         $transaction = $this->get_transaction();
 
         if ( ! is_null( $transaction ) && $transaction->is_payment_completed() ) {
-            if ( ! $transaction->was_payment_successful() ) {
+            if ( ! ( $transaction->was_payment_successful() || $transaction->payment_is_not_verified() ) ) {
                 $this->errors = array_merge( $this->errors, awpcp_flatten_array( $transaction->errors ) );
                 $message = __('The payment associated with this transaction failed (see reasons below).', 'another-wordpress-classifieds-plugin');
 
@@ -98,7 +98,9 @@ class AWPCP_BuyCreditsPage extends AWPCP_BasePage {
         $step_not_allowed = in_array( $step_name, array( 'select-credit-plan', 'checkout' ) );
 
         if ( ! is_null( $transaction ) && $transaction->is_payment_completed() ) {
-            if ( $transaction->was_payment_successful() && $step_not_allowed ) {
+            if ( $transaction->payment_is_not_verified() ) {
+                $this->set_current_step( 'payment-completed' );
+            } else if ( $transaction->was_payment_successful() && $step_not_allowed ) {
                 $this->set_current_step( 'payment-completed' );
             }
         }

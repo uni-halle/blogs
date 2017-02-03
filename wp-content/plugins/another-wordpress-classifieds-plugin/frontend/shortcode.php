@@ -11,7 +11,6 @@ require_once(AWPCP_DIR . '/frontend/page-show-ad.php');
 require_once(AWPCP_DIR . '/frontend/page-reply-to-ad.php');
 require_once(AWPCP_DIR . '/frontend/page-search-ads.php');
 require_once(AWPCP_DIR . '/frontend/page-browse-ads.php');
-require_once(AWPCP_DIR . '/frontend/page-browse-categories.php');
 
 
 class AWPCP_Pages {
@@ -22,7 +21,6 @@ class AWPCP_Pages {
 
 		$this->show_ad = new AWPCP_Show_Ad_Page();
 		$this->browse_ads = new AWPCP_BrowseAdsPage();
-		$this->browse_categories = new AWPCP_BrowseCategoriesPage();
 
 		// fix for theme conflict with ThemeForest themes.
 		new AWPCP_RawShortcode();
@@ -41,7 +39,6 @@ class AWPCP_Pages {
 		add_shortcode('AWPCPPAYMENTTHANKYOU', array($this, 'noop'));
 		add_shortcode('AWPCPCANCELPAYMENT', array($this, 'noop'));
 		add_shortcode('AWPCPBROWSEADS', array($this->browse_ads, 'dispatch'));
-		add_shortcode('AWPCPBROWSECATS', array($this->browse_categories, 'dispatch'));
 
         add_shortcode('AWPCPSHOWAD', array( $this, 'show_ad' ) );
 		add_shortcode('AWPCPCLASSIFIEDSUI', 'awpcpui_homescreen');

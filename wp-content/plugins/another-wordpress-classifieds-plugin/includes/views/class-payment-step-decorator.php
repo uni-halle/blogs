@@ -51,7 +51,7 @@ class AWPCP_PaymentStepDecorator extends AWPCP_StepDecorator {
         $transaction = $this->controller->get_transaction();
 
         if ( ! is_null( $transaction ) && $transaction->is_payment_completed() ) {
-            if ( ! $transaction->was_payment_successful() ) {
+            if ( ! ( $transaction->was_payment_successful() || $transaction->payment_is_not_verified() ) ) {
                 $message = __( 'The payment associated with the current transaction failed (see reasons below).', 'another-wordpress-classifieds-plugin' );
 
                 throw new AWPCP_Exception( $message, awpcp_flatten_array( $transaction->errors ) );
@@ -63,7 +63,9 @@ class AWPCP_PaymentStepDecorator extends AWPCP_StepDecorator {
         $transaction = $this->controller->get_transaction();
 
         if ( ! is_null( $transaction ) && $transaction->is_payment_completed() ) {
-            if ( $transaction->was_payment_successful() && $this->current_step_is_not_allowed() ) {
+            if ( $transaction->payment_is_not_verified() ) {
+                $this->controller->redirect( 'payment-completed' );
+            } else if ( $transaction->was_payment_successful() && $this->current_step_is_not_allowed() ) {
                 $this->controller->redirect( 'payment-completed' );
             }
         }

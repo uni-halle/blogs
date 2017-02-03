@@ -175,7 +175,7 @@ class AWPCP_CategoriesListWalker extends Walker {
 
         $category_icon_url = awpcp_category_icon_url( $category_icon_filename );
 
-        $category_icon = '<a href="[category-url]"><img class="categoryicon" src="[category-icon-url]" alt="[category-name]" border="0" /></a>';
+        $category_icon = '<a class="awpcp-category-icon" href="[category-url]"><img class="awpcp-category-icon-image categoryicon" src="[category-icon-url]" alt="[category-name]" border="0" /></a>';
         $category_icon = str_replace( '[category-icon-url]', $category_icon_url, $category_icon );
 
         return $category_icon;

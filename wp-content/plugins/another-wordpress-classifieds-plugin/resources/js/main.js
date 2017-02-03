@@ -12,3 +12,24 @@ function( $ ) {
         $( '.awpcp-category-dropdown' ).categorydropdown();
     } );
 } );
+
+AWPCP.run( 'awpcp/reload-payment-completed-page', ['jquery'],
+function( $ ) {
+    $( function() {
+        var $form = $( '#awpcp-payment-completed-form' );
+
+        if ( 0 === $form.length ) {
+            return;
+        }
+
+        var payment_status = $form.find( ':hidden[name="payment_status"]' ).val();
+
+        if ( 'Not Verified' !== payment_status ) {
+            return;
+        }
+
+        setTimeout( function() {
+            location.reload();
+        }, 5000 );
+    } );
+} );

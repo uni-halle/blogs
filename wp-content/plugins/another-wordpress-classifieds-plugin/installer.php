@@ -285,6 +285,10 @@ class AWPCP_Installer {
                 'create_phone_number_digits_column',
                 'enable_upgrade_task_to_store_phone_number_digits',
             ),
+            '3.7.2' => array(
+                'set_flag_to_store_browse_categories_page_information',
+                'set_flag_to_maybe_fix_browse_categories_page_information',
+            ),
         );
 
         foreach ( $upgrade_routines as $version => $routines ) {
@@ -1102,6 +1106,14 @@ class AWPCP_Installer {
     private function enable_upgrade_task_to_store_phone_number_digits() {
         delete_option( 'awpcp-spnd-last-file-id' );
         awpcp()->manual_upgrades->enable_upgrade_task( 'awpcp-store-phone-number-digits' );
+    }
+
+    private function set_flag_to_store_browse_categories_page_information() {
+        update_option( 'awpcp-store-browse-categories-page-information', true, false );
+    }
+
+    private function set_flag_to_maybe_fix_browse_categories_page_information() {
+        update_option( 'awpcp-maybe-fix-browse-categories-page-information', true, false );
     }
 }
 
