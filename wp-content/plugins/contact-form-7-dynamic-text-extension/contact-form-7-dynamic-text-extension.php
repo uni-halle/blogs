@@ -4,13 +4,13 @@
 Plugin Name: Contact Form 7 - Dynamic Text Extension
 Plugin URI: http://sevenspark.com/wordpress-plugins/contact-form-7-dynamic-text-extension
 Description: Provides a dynamic text field that accepts any shortcode to generate the content.  Requires Contact Form 7
-Version: 2.0.1
+Version: 2.0.2.1
 Author: Chris Mavricos, SevenSpark
 Author URI: http://sevenspark.com
 License: GPL2
 */
 
-/*  Copyright 2010-2015  Chris Mavricos, SevenSpark http://sevenspark.com
+/*  Copyright 2010-2017  Chris Mavricos, SevenSpark http://sevenspark.com
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
@@ -36,12 +36,12 @@ function wpcf7dtx_init(){
 
 
 function wpcf7dtx_add_shortcode_dynamictext() {
-	wpcf7_add_shortcode(
+	wpcf7_add_form_tag(
 		array( 'dynamictext' , 'dynamictext*' , 'dynamichidden' ),
 		'wpcf7dtx_dynamictext_shortcode_handler', true );
 }
 function wpcf7dtx_dynamictext_shortcode_handler( $tag ) {
-	$tag = new WPCF7_Shortcode( $tag );
+	$tag = new WPCF7_FormTag( $tag );
 
 	if ( empty( $tag->name ) )
 		return '';
@@ -120,7 +120,7 @@ function wpcf7dtx_dynamictext_shortcode_handler( $tag ) {
 
 //add_filter( 'wpcf7_validate_text', 'wpcf7_text_validation_filter', 10, 2 );  // in init
 function wpcf7dtx_dynamictext_validation_filter( $result, $tag ) {
-	$tag = new WPCF7_Shortcode( $tag );
+	$tag = new WPCF7_FormTag( $tag );
 
 	$name = $tag->name;
 
@@ -379,17 +379,17 @@ add_shortcode('CF7_get_custom_field', 'cf7_get_custom_field');
 
 /* Insert information about the current user
  * New in 1.0.4 
- * See http://codex.wordpress.org/Function_Reference/get_currentuserinfo 
+ * See https://codex.wordpress.org/Function_Reference/wp_get_current_user 
  */
 function cf7_get_current_user($atts){
 	extract(shortcode_atts(array(
 		'key' => 'user_login',
 	), $atts));
-
-	global $current_user;
-	get_currentuserinfo();
-
-	$val = $current_user->$key;
+	$val = '';
+	if( is_user_logged_in() ) {
+		$current_user = wp_get_current_user();
+		$val = $current_user->$key;
+	}
 	return $val;
 }
 add_shortcode('CF7_get_current_user', 'cf7_get_current_user');
