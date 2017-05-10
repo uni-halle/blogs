@@ -1,6 +1,9 @@
 <?php
 namespace Elementor;
 
+use Elementor\Debug\Debug;
+use Elementor\PageSettings\Manager as PageSettingsManager;
+
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
@@ -11,7 +14,7 @@ class Plugin {
 	/**
 	 * @var Plugin
 	 */
-	private static $_instance = null;
+	public static $instance = null;
 
 	/**
 	 * @var DB
@@ -22,6 +25,11 @@ class Plugin {
 	 * @var Controls_Manager
 	 */
 	public $controls_manager;
+
+	/**
+	 * @var Debug
+	 */
+	public $debug;
 
 	/**
 	 * @var Schemes_Manager
@@ -42,6 +50,16 @@ class Plugin {
 	 * @var Revisions_Manager
 	 */
 	public $revisions_manager;
+
+	/**
+	 * @var Maintenance_Mode
+	 */
+	public $maintenance_mode;
+
+	/**
+	 * @var PageSettingsManager
+	 */
+	public $page_settings_manager;
 
 	/**
 	 * @var Settings
@@ -126,11 +144,12 @@ class Plugin {
 	 * @return Plugin
 	 */
 	public static function instance() {
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self();
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
 			do_action( 'elementor/loaded' );
 		}
-		return self::$_instance;
+
+		return self::$instance;
 	}
 
 	/**
@@ -154,6 +173,7 @@ class Plugin {
 		include( ELEMENTOR_PATH . 'includes/compatibility.php' );
 
 		include( ELEMENTOR_PATH . 'includes/db.php' );
+		include( ELEMENTOR_PATH . 'includes/base/controls-stack.php' );
 		include( ELEMENTOR_PATH . 'includes/managers/controls.php' );
 		include( ELEMENTOR_PATH . 'includes/managers/schemes.php' );
 		include( ELEMENTOR_PATH . 'includes/managers/elements.php' );
@@ -174,10 +194,14 @@ class Plugin {
 
 		include( ELEMENTOR_PATH . 'includes/managers/css-files.php' );
 		include( ELEMENTOR_PATH . 'includes/managers/revisions.php' );
+		include( ELEMENTOR_PATH . 'includes/page-settings/manager.php' );
 		include( ELEMENTOR_PATH . 'includes/css-file/css-file.php' );
 		include( ELEMENTOR_PATH . 'includes/css-file/post-css-file.php' );
 		include( ELEMENTOR_PATH . 'includes/css-file/global-css-file.php' );
 		include( ELEMENTOR_PATH . 'includes/conditions.php' );
+		include( ELEMENTOR_PATH . 'includes/shapes.php' );
+		include( ELEMENTOR_PATH . 'includes/debug/debug.php' );
+		include( ELEMENTOR_PATH . 'includes/maintenance-mode.php' );
 
 		if ( is_admin() ) {
 			include( ELEMENTOR_PATH . 'includes/admin.php' );
@@ -198,16 +222,20 @@ class Plugin {
 		$this->skins_manager = new Skins_Manager();
 		$this->posts_css_manager = new Posts_CSS_Manager();
 		$this->revisions_manager = new Revisions_Manager();
+		$this->page_settings_manager = new PageSettingsManager();
 
 		$this->settings = new Settings();
 		$this->editor = new Editor();
 		$this->preview = new Preview();
 		$this->frontend = new Frontend();
+		$this->debug = new Debug();
 
 		$this->heartbeat = new Heartbeat();
 		$this->system_info = new System_Info\Main();
 
 		$this->templates_manager = new TemplateLibrary\Manager();
+
+		$this->maintenance_mode = new Maintenance_Mode();
 
 		if ( is_admin() ) {
 			new Admin();
@@ -219,7 +247,7 @@ class Plugin {
 		$cpt_support = get_option( 'elementor_cpt_support', [ 'page', 'post' ] );
 
 		foreach ( $cpt_support as $cpt_slug ) {
-			add_post_type_support( $cpt_slug, [ 'elementor', 'revisions' ] );
+			add_post_type_support( $cpt_slug, 'elementor' );
 		}
 	}
 

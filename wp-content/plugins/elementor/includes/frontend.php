@@ -6,25 +6,32 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Frontend {
 
 	private $google_fonts = [];
+	private $registered_fonts = [];
 	private $google_early_access_fonts = [];
 
 	private $_is_frontend_mode = false;
 	private $_has_elementor_in_page = false;
+	private $_is_excerpt = false;
 
 	public function init() {
-		if ( Plugin::instance()->editor->is_edit_mode() || Plugin::instance()->preview->is_preview_mode() ) {
+		if ( Plugin::$instance->editor->is_edit_mode() ) {
+			return;
+		}
+
+		add_filter( 'body_class', [ $this, 'body_class' ] );
+
+		if ( Plugin::$instance->preview->is_preview_mode() ) {
 			return;
 		}
 
 		$this->_is_frontend_mode = true;
-		$this->_has_elementor_in_page = Plugin::instance()->db->has_elementor_in_post( get_the_ID() );
-
-		add_filter( 'body_class', [ $this, 'body_class' ] );
+		$this->_has_elementor_in_page = Plugin::$instance->db->is_built_with_elementor( get_the_ID() );
 
 		if ( $this->_has_elementor_in_page ) {
 			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
 		}
 
+		add_action( 'wp_head', [ $this, 'print_google_fonts' ] );
 		add_action( 'wp_footer', [ $this, 'wp_footer' ] );
 
 		// Add Edit with the Elementor in Admin Bar
@@ -33,7 +40,11 @@ class Frontend {
 
 	protected function _print_elements( $elements_data ) {
 		foreach ( $elements_data as $element_data ) {
-			$element = Plugin::instance()->elements_manager->create_element_instance( $element_data );
+			$element = Plugin::$instance->elements_manager->create_element_instance( $element_data );
+
+			if ( ! $element ) {
+				continue;
+			}
 
 			$element->print_element();
 		}
@@ -41,16 +52,18 @@ class Frontend {
 
 	public function body_class( $classes = [] ) {
 		$classes[] = 'elementor-default';
-		if ( is_singular() && 'builder' === Plugin::instance()->db->get_edit_mode( get_the_ID() ) ) {
-			$classes[] = 'elementor-page';
+
+		$id = get_the_ID();
+
+		if ( is_singular() && 'builder' === Plugin::$instance->db->get_edit_mode( $id ) ) {
+			$classes[] = 'elementor-page elementor-page-' . $id;
 		}
+
 		return $classes;
 	}
 
-	public function enqueue_scripts() {
-		Utils::do_action_deprecated( 'elementor/frontend/enqueue_scripts/before', [], '1.0.10', 'elementor/frontend/before_enqueue_scripts' );
-
-		do_action( 'elementor/frontend/before_enqueue_scripts' );
+	public function register_scripts() {
+		do_action( 'elementor/frontend/before_register_scripts' );
 
 		$suffix = Utils::is_script_debug() ? '' : '.min';
 
@@ -65,12 +78,32 @@ class Frontend {
 		);
 
 		wp_register_script(
+			'imagesloaded',
+			ELEMENTOR_ASSETS_URL . 'lib/imagesloaded/imagesloaded' . $suffix . '.js',
+			[
+				'jquery',
+			],
+			'4.1.0',
+			true
+		);
+
+		wp_register_script(
 			'jquery-numerator',
 			ELEMENTOR_ASSETS_URL . 'lib/jquery-numerator/jquery-numerator' . $suffix . '.js',
 			[
 				'jquery',
 			],
 			'0.2.1',
+			true
+		);
+
+		wp_register_script(
+			'jquery-swiper',
+			ELEMENTOR_ASSETS_URL . 'lib/swiper/swiper.jquery' . $suffix . '.js',
+			[
+				'jquery',
+			],
+			'3.4.1',
 			true
 		);
 
@@ -85,30 +118,33 @@ class Frontend {
 		);
 
 		wp_register_script(
+			'elementor-dialog',
+			ELEMENTOR_ASSETS_URL . 'lib/dialog/dialog' . $suffix . '.js',
+			[
+				'jquery-ui-position',
+			],
+			'3.1.1',
+			true
+		);
+
+		wp_register_script(
 			'elementor-frontend',
 			ELEMENTOR_ASSETS_URL . 'js/frontend' . $suffix . '.js',
 			[
 				'elementor-waypoints',
-				'jquery-numerator',
-				'jquery-slick',
+
 			],
 			ELEMENTOR_VERSION,
 			true
 		);
-		wp_enqueue_script( 'elementor-frontend' );
 
-		wp_localize_script(
-			'elementor-frontend',
-			'elementorFrontendConfig', [
-				'isEditMode' => Plugin::instance()->editor->is_edit_mode(),
-				'stretchedSectionContainer' => get_option( 'elementor_stretched_section_container', '' ),
-				'is_rtl' => is_rtl(),
-			]
-		);
+		do_action( 'elementor/frontend/after_register_scripts' );
 	}
 
 	public function register_styles() {
-		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		do_action( 'elementor/frontend/before_register_styles' );
+
+		$suffix = Utils::is_script_debug() ? '' : '.min';
 
 		$direction_suffix = is_rtl() ? '-rtl' : '';
 
@@ -139,22 +175,63 @@ class Frontend {
 			[],
 			ELEMENTOR_VERSION
 		);
+
+		do_action( 'elementor/frontend/after_register_styles' );
+	}
+
+	public function enqueue_scripts() {
+		Utils::do_action_deprecated( 'elementor/frontend/enqueue_scripts/before', [], '1.0.10', 'elementor/frontend/before_enqueue_scripts' );
+
+		do_action( 'elementor/frontend/before_enqueue_scripts' );
+
+		wp_enqueue_script( 'elementor-frontend' );
+
+		$elementor_frontend_config = [
+			'isEditMode' => Plugin::$instance->editor->is_edit_mode(),
+			'stretchedSectionContainer' => get_option( 'elementor_stretched_section_container', '' ),
+			'is_rtl' => is_rtl(),
+			'urls' => [
+				'assets' => ELEMENTOR_ASSETS_URL,
+			],
+		];
+
+		$elements_manager = Plugin::$instance->elements_manager;
+
+		$elements_frontend_keys = [
+			'section' => $elements_manager->get_element_types( 'section' )->get_frontend_settings_keys(),
+			'column' => $elements_manager->get_element_types( 'column' )->get_frontend_settings_keys(),
+		];
+
+		$elements_frontend_keys += Plugin::$instance->widgets_manager->get_widgets_frontend_settings_keys();
+
+		if ( Plugin::$instance->editor->is_edit_mode() ) {
+			$elementor_frontend_config['elements'] = [
+				'data' => (object) [],
+				'keys' => $elements_frontend_keys,
+			];
+		}
+
+		wp_localize_script( 'elementor-frontend', 'elementorFrontendConfig', $elementor_frontend_config );
+
+		do_action( 'elementor/frontend/after_enqueue_scripts' );
 	}
 
 	public function enqueue_styles() {
-		$this->print_google_fonts();
+		do_action( 'elementor/frontend/before_enqueue_styles' );
 
 		wp_enqueue_style( 'elementor-icons' );
 		wp_enqueue_style( 'font-awesome' );
 		wp_enqueue_style( 'elementor-animations' );
 		wp_enqueue_style( 'elementor-frontend' );
 
-		if ( ! Plugin::instance()->preview->is_preview_mode() ) {
+		if ( ! Plugin::$instance->preview->is_preview_mode() ) {
 			$this->parse_global_css_code();
 
 			$css_file = new Post_CSS_File( get_the_ID() );
 			$css_file->enqueue();
 		}
+
+		do_action( 'elementor/frontend/after_enqueue_styles' );
 	}
 
 	/**
@@ -168,11 +245,14 @@ class Frontend {
 		$this->enqueue_styles();
 		$this->enqueue_scripts();
 
-		// TODO: add JS to append the css to the `head` tag
 		$this->print_google_fonts();
 	}
 
 	public function print_google_fonts() {
+		if ( ! apply_filters( 'elementor/frontend/print_google_fonts', true ) ) {
+			return;
+		}
+
 		// Print used fonts
 		if ( ! empty( $this->google_fonts ) ) {
 			foreach ( $this->google_fonts as &$font ) {
@@ -208,7 +288,14 @@ class Frontend {
 	}
 
 	public function enqueue_font( $font ) {
-		switch ( Fonts::get_font_type( $font ) ) {
+		$font_type = Fonts::get_font_type( $font );
+		$cache_id = $font_type . $font;
+
+		if ( in_array( $cache_id, $this->registered_fonts ) ) {
+			return;
+		}
+
+		switch ( $font_type ) {
 			case Fonts::GOOGLE :
 				if ( ! in_array( $font, $this->google_fonts ) )
 					$this->google_fonts[] = $font;
@@ -219,6 +306,8 @@ class Frontend {
 					$this->google_early_access_fonts[] = $font;
 				break;
 		}
+
+		$this->registered_fonts[] = $cache_id;
 	}
 
 	protected function parse_global_css_code() {
@@ -252,20 +341,22 @@ class Frontend {
 			return '';
 		}
 
-		$edit_mode = Plugin::instance()->db->get_edit_mode( $post_id );
+		$edit_mode = Plugin::$instance->db->get_edit_mode( $post_id );
 		if ( 'builder' !== $edit_mode ) {
 			return '';
 		}
 
-		$data = Plugin::instance()->db->get_plain_editor( $post_id );
+		$data = Plugin::$instance->db->get_plain_editor( $post_id );
 		$data = apply_filters( 'elementor/frontend/builder_content_data', $data, $post_id );
 
 		if ( empty( $data ) ) {
 			return '';
 		}
 
-		$css_file = new Post_CSS_File( $post_id );
-		$css_file->enqueue();
+		if ( ! $this->_is_excerpt ) {
+			$css_file = new Post_CSS_File( $post_id );
+			$css_file->enqueue();
+		}
 
 		ob_start();
 
@@ -274,7 +365,7 @@ class Frontend {
 			$with_css = true;
 		}
 
-		if ( $with_css ) {
+		if ( ! empty( $css_file ) && $with_css ) {
 			echo '<style>' . $css_file->get_css() . '</style>';
 		}
 
@@ -296,9 +387,9 @@ class Frontend {
 		return $content;
 	}
 
-	function add_menu_in_admin_bar( \WP_Admin_Bar $wp_admin_bar ) {
+	public function add_menu_in_admin_bar( \WP_Admin_Bar $wp_admin_bar ) {
 		$post_id = get_the_ID();
-		$is_not_builder_mode = ! is_singular() || ! User::is_current_user_can_edit( $post_id ) || 'builder' !== Plugin::instance()->db->get_edit_mode( $post_id );
+		$is_not_builder_mode = ! is_singular() || ! User::is_current_user_can_edit( $post_id ) || 'builder' !== Plugin::$instance->db->get_edit_mode( $post_id );
 
 		if ( $is_not_builder_mode ) {
 			return;
@@ -319,7 +410,7 @@ class Frontend {
 		// Avoid recursion
 		if ( get_the_ID() === (int) $post_id ) {
 			$content = '';
-			if ( Plugin::instance()->editor->is_edit_mode() ) {
+			if ( Plugin::$instance->editor->is_edit_mode() ) {
 				$content = '<div class="elementor-alert elementor-alert-danger">' . __( 'Invalid Data: The Template ID cannot be the same as the currently edited template. Please choose a different one.', 'elementor' ) . '</div>';
 			}
 
@@ -327,8 +418,8 @@ class Frontend {
 		}
 
 		// Set edit mode as false, so don't render settings and etc. use the $is_edit_mode to indicate if we need the css inline
-		$is_edit_mode = Plugin::instance()->editor->is_edit_mode();
-		Plugin::instance()->editor->set_edit_mode( false );
+		$is_edit_mode = Plugin::$instance->editor->is_edit_mode();
+		Plugin::$instance->editor->set_edit_mode( false );
 
 		// Change the global post to current library post, so widgets can use `get_the_ID` and other post data
 		if ( isset( $GLOBALS['post'] ) ) {
@@ -347,9 +438,19 @@ class Frontend {
 		}
 
 		// Restore edit mode state
-		Plugin::instance()->editor->set_edit_mode( $is_edit_mode );
+		Plugin::$instance->editor->set_edit_mode( $is_edit_mode );
 
 		return $content;
+	}
+
+	public function start_excerpt_flag( $excerpt ) {
+		$this->_is_excerpt = true;
+		return $excerpt;
+	}
+
+	public function end_excerpt_flag( $excerpt ) {
+		$this->_is_excerpt = false;
+		return $excerpt;
 	}
 
 	public function __construct() {
@@ -359,7 +460,12 @@ class Frontend {
 		}
 
 		add_action( 'template_redirect', [ $this, 'init' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'register_scripts' ], 5 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'register_styles' ], 5 );
 		add_filter( 'the_content', [ $this, 'apply_builder_in_content' ] );
+
+		// Hack to avoid enqueue post css wail it's a `the_excerpt` call
+		add_filter( 'get_the_excerpt', [ $this, 'start_excerpt_flag' ], 1 );
+		add_filter( 'get_the_excerpt', [ $this, 'end_excerpt_flag' ], 20 );
 	}
 }

@@ -33,6 +33,15 @@ class Admin {
 			ELEMENTOR_VERSION,
 			true
 		);
+
+		wp_localize_script(
+			'elementor-admin-app',
+			'ElementorAdminConfig',
+			[
+				'home_url' => home_url(),
+			]
+		);
+
 		wp_enqueue_script( 'elementor-admin-app' );
 
 		if ( in_array( get_current_screen()->id, [ 'plugins', 'plugins-network' ] ) ) {
@@ -93,7 +102,7 @@ class Admin {
 			return;
 		}
 
-		$current_mode = Plugin::instance()->db->get_edit_mode( $post->ID );
+		$current_mode = Plugin::$instance->db->get_edit_mode( $post->ID );
 		if ( 'builder' !== $current_mode ) {
 			$current_mode = 'editor';
 		}
@@ -155,7 +164,7 @@ class Admin {
 		if ( ! isset( $_POST['_elementor_post_mode'] ) )
 			$_POST['_elementor_post_mode'] = '';
 
-		Plugin::instance()->db->set_edit_mode( $post_id, $_POST['_elementor_post_mode'] );
+		Plugin::$instance->db->set_edit_mode( $post_id, $_POST['_elementor_post_mode'] );
 	}
 
 	/**
@@ -168,7 +177,7 @@ class Admin {
 	 * @return array
 	 */
 	public function add_edit_in_dashboard( $actions, $post ) {
-		if ( User::is_current_user_can_edit( $post->ID ) && 'builder' === Plugin::instance()->db->get_edit_mode( $post->ID ) ) {
+		if ( User::is_current_user_can_edit( $post->ID ) && 'builder' === Plugin::$instance->db->get_edit_mode( $post->ID ) ) {
 			$actions['edit_with_elementor'] = sprintf(
 				'<a href="%s">%s</a>',
 				Utils::get_edit_link( $post->ID ),
@@ -184,7 +193,7 @@ class Admin {
 
 		if ( in_array( $pagenow, [ 'post.php', 'post-new.php' ] ) && Utils::is_post_type_support() ) {
 			$post = get_post();
-			$current_mode = Plugin::instance()->db->get_edit_mode( $post->ID );
+			$current_mode = Plugin::$instance->db->get_edit_mode( $post->ID );
 
 			$mode_class = 'builder' === $current_mode ? 'elementor-editor-active' : 'elementor-editor-inactive';
 
@@ -288,7 +297,7 @@ class Admin {
 			$footer_text = sprintf(
 				/* translators: %s: link to plugin review */
 				__( 'Enjoyed <strong>Elementor</strong>? Please leave us a %s rating. We really appreciate your support!', 'elementor' ),
-				'<a href="https://wordpress.org/support/view/plugin-reviews/elementor?filter=5#postform" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
+				'<a href="https://wordpress.org/support/plugin/elementor/reviews/?filter=5#new-post" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
 			);
 		}
 

@@ -5,6 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Revisions_Manager {
 
+	private static $authors = [];
+
 	public function __construct() {
 		self::register_actions();
 	}
@@ -31,11 +33,13 @@ class Revisions_Manager {
 			return $posts;
 		}
 
+		$current_time = current_time( 'timestamp' );
+
 		/** @var \WP_Post $revision */
 		foreach ( $posts as $revision ) {
 			$date = date_i18n( _x( 'M j @ H:i', 'revision date format', 'elementor' ), strtotime( $revision->post_modified ) );
 
-			$human_time = human_time_diff( strtotime( $revision->post_modified ), current_time( 'timestamp' ) );
+			$human_time = human_time_diff( strtotime( $revision->post_modified ), $current_time );
 
 			if ( false !== strpos( $revision->post_name, 'autosave' ) ) {
 				$type = 'autosave';
@@ -43,12 +47,19 @@ class Revisions_Manager {
 				$type = 'revision';
 			}
 
+			if ( ! isset( self::$authors[ $revision->post_author ] ) ) {
+				self::$authors[ $revision->post_author ] = [
+					'avatar' => get_avatar( $revision->post_author, 22 ),
+					'display_name' => get_the_author_meta( 'display_name' , $revision->post_author ),
+				];
+			}
+
 			$revisions[] = [
 				'id' => $revision->ID,
-				'author' => get_the_author_meta( 'display_name' , $revision->post_author ),
+				'author' => self::$authors[ $revision->post_author ]['display_name'],
 				'date' => sprintf( __( '%1$s ago (%2$s)', 'elementor' ), $human_time, $date ),
 				'type' => $type,
-				'gravatar' => get_avatar( $revision->post_author, 22 ),
+				'gravatar' => self::$authors[ $revision->post_author ]['avatar'],
 			];
 		}
 
@@ -62,11 +73,11 @@ class Revisions_Manager {
 			return;
 		}
 
-		Plugin::instance()->db->copy_elementor_meta( $parent_id, $revision_id );
+		Plugin::$instance->db->copy_elementor_meta( $parent_id, $revision_id );
 	}
 
 	public static function restore_revision( $parent_id, $revision_id ) {
-		Plugin::instance()->db->copy_elementor_meta( $revision_id, $parent_id );
+		Plugin::$instance->db->copy_elementor_meta( $revision_id, $parent_id );
 
 		$post_css = new Post_CSS_File( $parent_id );
 		$post_css->update();
@@ -77,7 +88,7 @@ class Revisions_Manager {
 			wp_send_json_error( 'You must set the revision ID' );
 		}
 
-		$revision = Plugin::instance()->db->get_plain_editor( $_POST['id'] );
+		$revision = Plugin::$instance->db->get_plain_editor( $_POST['id'] );
 
 		if ( empty( $revision ) ) {
 			wp_send_json_error( 'Invalid Revision' );
@@ -91,7 +102,7 @@ class Revisions_Manager {
 			wp_send_json_error( 'You must set the id' );
 		}
 
-		$revision = Plugin::instance()->db->get_plain_editor( $_POST['id'] );
+		$revision = Plugin::$instance->db->get_plain_editor( $_POST['id'] );
 
 		if ( empty( $revision ) ) {
 			wp_send_json_error( __( 'Invalid Revision', 'elementor' ) );
@@ -106,8 +117,16 @@ class Revisions_Manager {
 		}
 	}
 
+	public static function add_revision_support_for_all_post_types() {
+		$post_types = get_post_types_by_support( 'elementor' );
+		foreach ( $post_types as $post_type ) {
+			add_post_type_support( $post_type, 'revisions' );
+		}
+	}
+
 	private static function register_actions() {
 		add_action( 'wp_restore_post_revision', [ __CLASS__, 'restore_revision' ], 10, 2 );
+		add_action( 'init', [ __CLASS__, 'add_revision_support_for_all_post_types' ], 9999 );
 
 		if ( Utils::is_ajax() ) {
 			add_action( 'wp_ajax_elementor_get_revision_data', [ __CLASS__, 'on_revision_data_request' ] );

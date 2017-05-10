@@ -23,6 +23,7 @@ class Control_Repeater extends Control_Base {
 	protected function get_default_settings() {
 		return [
 			'prevent_empty' => true,
+			'is_repeater' => true,
 		];
 	}
 
@@ -32,7 +33,7 @@ class Control_Repeater extends Control_Base {
 		if ( ! empty( $value ) ) {
 			foreach ( $value as &$item ) {
 				foreach ( $control['fields'] as $field ) {
-					$control_obj = Plugin::instance()->controls_manager->get_control( $field['type'] );
+					$control_obj = Plugin::$instance->controls_manager->get_control( $field['type'] );
 					if ( ! $control_obj )
 						continue;
 

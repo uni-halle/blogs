@@ -1,6 +1,8 @@
 <?php
 namespace Elementor;
 
+use Elementor\Plugin;
+
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Tools {
@@ -14,7 +16,7 @@ class Tools {
 	public function register_admin_menu() {
 		add_submenu_page(
 			Settings::PAGE_ID,
-			__( 'Elementor Tools', 'elementor' ),
+			__( 'Tools', 'elementor' ),
 			__( 'Tools', 'elementor' ),
 			'manage_options',
 			self::PAGE_ID,
@@ -24,6 +26,8 @@ class Tools {
 
 	public function register_settings_fields() {
 		$controls_class_name = __NAMESPACE__ . '\Settings_Controls';
+		$validations_class_name = __NAMESPACE__ . '\Settings_Validations';
+
 		$tools_section = 'elementor_tools_section';
 		add_settings_section(
 			$tools_section,
@@ -90,16 +94,47 @@ class Tools {
 				'desc' => __( 'Enter your old and new URLs for your WordPress installation, to update all Elementor data (Relevant for domain transfers or move to \'HTTPS\').', 'elementor' ),
 			]
 		);
+
+		$editor_break_lines_section = 'elementor_editor_break_lines_section';
+
+		add_settings_section(
+			$editor_break_lines_section,
+			__( 'Editor Loader', 'elementor' ),
+			'__return_false',
+			self::PAGE_ID
+		);
+
+		$field_id = 'elementor_editor_break_lines';
+		add_settings_field(
+			$field_id,
+			__( 'Switch front-end editor loader method', 'elementor' ),
+			[ $controls_class_name, 'render' ],
+			self::PAGE_ID,
+			$editor_break_lines_section,
+			[
+				'id' => $field_id,
+				'type' => 'select',
+				'options' => [
+					'' => __( 'Disable', 'elementor' ),
+					1 => __( 'Enable', 'elementor' ),
+				],
+				'desc' => __( 'For troubleshooting server configuration conflicts.', 'elementor' ),
+			]
+		);
+
+		register_setting( Tools::PAGE_ID, $field_id );
 	}
 
 	public function display_settings_page() {
 		?>
 		<div class="wrap">
-			<h2><?php _e( 'Elementor Tools', 'elementor' ); ?></h2>
-			<form method="post" action="">
+			<h2><?php _e( 'Tools', 'elementor' ); ?></h2>
+			<form method="post" action="options.php">
 				<?php
 				settings_fields( self::PAGE_ID );
 				do_settings_sections( self::PAGE_ID );
+
+				submit_button();
 				?>
 			</form>
 		</div><!-- /.wrap -->
@@ -109,7 +144,7 @@ class Tools {
 	public function ajax_elementor_clear_cache() {
 		check_ajax_referer( 'elementor_clear_cache', '_nonce' );
 
-		Plugin::instance()->posts_css_manager->clear_cache();
+		Plugin::$instance->posts_css_manager->clear_cache();
 
 		wp_send_json_success();
 	}
@@ -141,7 +176,7 @@ class Tools {
 		if ( false === $rows_affected ) {
 			wp_send_json_error( __( 'An error occurred', 'elementor' ) );
 		} else {
-			Plugin::instance()->posts_css_manager->clear_cache();
+			Plugin::$instance->posts_css_manager->clear_cache();
 			wp_send_json_success( sprintf( __( '%d Rows Affected', 'elementor' ), $rows_affected ) );
 		}
 	}

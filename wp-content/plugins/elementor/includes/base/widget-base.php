@@ -123,7 +123,7 @@ abstract class Widget_Base extends Element_Base {
 		] );
 	}
 
-	public final function print_template() {
+	final public function print_template() {
 		ob_start();
 
 		$this->_content_template();
@@ -137,7 +137,7 @@ abstract class Widget_Base extends Element_Base {
 		}
 		?>
 		<script type="text/html" id="tmpl-elementor-<?php echo static::get_type(); ?>-<?php echo esc_attr( $this->get_name() ); ?>-content">
-			<?php self::_render_settings(); ?>
+			<?php $this->_render_settings(); ?>
 			<div class="elementor-widget-container">
 				<?php echo $content_template; ?>
 			</div>
@@ -176,7 +176,7 @@ abstract class Widget_Base extends Element_Base {
 	}
 
 	public function render_content() {
-		if ( Plugin::instance()->editor->is_edit_mode() ) {
+		if ( Plugin::$instance->editor->is_edit_mode() ) {
 			$this->_render_settings();
 		}
 		?>
@@ -203,40 +203,23 @@ abstract class Widget_Base extends Element_Base {
 	}
 
 	protected function _add_render_attributes() {
+		parent::_add_render_attributes();
+
 		$this->add_render_attribute( '_wrapper', 'class', [
 			'elementor-widget',
-			'elementor-element',
-			'elementor-element-' . $this->get_id(),
 			'elementor-widget-' . $this->get_name(),
 		] );
 
 		$settings = $this->get_settings();
 
-		foreach ( self::get_class_controls() as $control ) {
-			if ( empty( $settings[ $control['name'] ] ) )
-				continue;
-
-			if ( ! $this->is_control_visible( $control ) )
-				continue;
-
-			$this->add_render_attribute( '_wrapper', 'class', $control['prefix_class'] . $settings[ $control['name'] ] );
-		}
-
 		if ( ! empty( $settings['_animation'] ) ) {
 			$this->add_render_attribute( '_wrapper', 'data-animation', $settings['_animation'] );
 		}
 
-		if ( ! empty( $settings['_element_id'] ) ) {
-			$this->add_render_attribute( '_wrapper', 'id', trim( $settings['_element_id'] ) );
-		}
-
-		$skin_type = ! empty( $settings['_skin'] ) ? $settings['_skin'] : 'default';
-
-		$this->add_render_attribute( '_wrapper', 'data-element_type', $this->get_name() . '.' . $skin_type );
+		$this->add_render_attribute( '_wrapper', 'data-element_type', $this->get_name() . '.' . ( ! empty( $settings['_skin'] ) ? $settings['_skin'] : 'default' ) );
 	}
 
 	public function before_render() {
-	    $this->_add_render_attributes();
 		?>
 		<div <?php echo $this->get_render_attribute_string( '_wrapper' ); ?>>
 		<?php
@@ -279,11 +262,11 @@ abstract class Widget_Base extends Element_Base {
 	}
 
 	protected function _get_default_child_type( array $element_data ) {
-		return Plugin::instance()->elements_manager->get_element_types( 'section' );
+		return Plugin::$instance->elements_manager->get_element_types( 'section' );
 	}
 
 	public function add_skin( Skin_Base $skin ) {
-		Plugin::instance()->skins_manager->add_skin( $this, $skin );
+		Plugin::$instance->skins_manager->add_skin( $this, $skin );
 	}
 
 	public function get_skin( $skin_id ) {
@@ -303,13 +286,13 @@ abstract class Widget_Base extends Element_Base {
 	}
 
 	public function remove_skin( $skin_id ) {
-		return Plugin::instance()->skins_manager->remove_skin( $this, $skin_id );
+		return Plugin::$instance->skins_manager->remove_skin( $this, $skin_id );
 	}
 
 	/**
 	 * @return Skin_Base[]
 	 */
 	public function get_skins() {
-		return Plugin::instance()->skins_manager->get_skins( $this );
+		return Plugin::$instance->skins_manager->get_skins( $this );
 	}
 }

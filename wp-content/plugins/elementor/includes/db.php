@@ -40,7 +40,8 @@ class DB {
 		if ( self::STATUS_PUBLISH === $status ) {
 			$this->remove_draft( $post_id );
 
-			$is_meta_updated = update_post_meta( $post_id, '_elementor_data', $json_value );
+			// Don't use `update_post_meta` that can't handle `revision` post type
+			$is_meta_updated = update_metadata( 'post', $post_id, '_elementor_data', $json_value );
 
 			if ( $is_meta_updated ) {
 				Revisions_Manager::handle_revision();
@@ -76,8 +77,8 @@ class DB {
 			unset( $GLOBALS['post'] );
 		}
 
-		$css_file = new Post_CSS_File( $post_id );
-		$css_file->update();
+		// Remove Post CSS
+		delete_post_meta( $post_id, Post_CSS_File::META_KEY );
 
 		do_action( 'elementor/editor/after_save', $post_id, $editor_data );
 	}
@@ -133,7 +134,7 @@ class DB {
 			return [];
 		}
 
-		$text_editor_widget_type = Plugin::instance()->widgets_manager->get_widget_types( 'text-editor' );
+		$text_editor_widget_type = Plugin::$instance->widgets_manager->get_widget_types( 'text-editor' );
 
 		// TODO: Better coding to start template for editor
 		return [
@@ -207,9 +208,11 @@ class DB {
 	private function _render_element_plain_content( $element_data ) {
 		if ( 'widget' === $element_data['elType'] ) {
 			/** @var Widget_Base $widget */
-			$widget = Plugin::instance()->elements_manager->create_element_instance( $element_data );
+			$widget = Plugin::$instance->elements_manager->create_element_instance( $element_data );
 
-			$widget->render_plain_content();
+			if ( $widget ) {
+				$widget->render_plain_content();
+			}
 		}
 
 		if ( ! empty( $element_data['elements'] ) ) {
@@ -265,7 +268,11 @@ class DB {
 		$editor_data = [];
 
 		foreach ( $data as $element_data ) {
-			$element = Plugin::instance()->elements_manager->create_element_instance( $element_data );
+			$element = Plugin::$instance->elements_manager->create_element_instance( $element_data );
+
+			if ( ! $element ) {
+				continue;
+			}
 
 			$editor_data[] = $element->get_raw_data( $with_html_content );
 		} // End Section
@@ -283,7 +290,13 @@ class DB {
 		}
 
 		foreach ( $data_container as $element_key => $element_value ) {
-			$data_container[ $element_key ] = $this->iterate_data( $data_container[ $element_key ], $callback );
+			$element_data = $this->iterate_data( $data_container[ $element_key ], $callback );
+
+			if ( null === $element_data ) {
+				continue;
+			}
+
+			$data_container[ $element_key ] = $element_data;
 		}
 
 		return $data_container;
@@ -306,6 +319,7 @@ class DB {
 					$value = wp_slash( $value );
 				}
 
+				// Don't use `update_post_meta` that can't handle `revision` post type
 				update_metadata( 'post', $to_post_id, $meta_key, $value );
 			}
 		}
@@ -318,10 +332,10 @@ class DB {
 		return ( ! empty( $data ) && 'builder' === $edit_mode );
 	}
 
+	/**
+	 * @deprecated 1.4.0
+	 */
 	public function has_elementor_in_post( $post_id ) {
-		$data = $this->get_plain_editor( $post_id );
-		$edit_mode = $this->get_edit_mode( $post_id );
-
-		return ( ! empty( $data ) && 'builder' === $edit_mode );
+		return $this->is_built_with_elementor( $post_id );
 	}
 }

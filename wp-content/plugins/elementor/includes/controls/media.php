@@ -38,7 +38,7 @@ class Control_Media extends Control_Base_Multiple {
 			return $settings;
 		}
 
-		$settings = Plugin::instance()->templates_manager->get_import_images_instance()->import( $settings );
+		$settings = Plugin::$instance->templates_manager->get_import_images_instance()->import( $settings );
 
 		if ( ! $settings ) {
 			$settings = [
@@ -90,7 +90,7 @@ class Control_Media extends Control_Base_Multiple {
 				</div>
 			</div>
 			<# if ( data.description ) { #>
-				<div class="elementor-control-description">{{{ data.description }}}</div>
+				<div class="elementor-control-field-description">{{{ data.description }}}</div>
 			<# } #>
 			<input type="hidden" data-setting="{{ data.name }}" />
 		</div>
