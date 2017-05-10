@@ -3,8 +3,8 @@ Contributors: mark-k, kometschuh, mkrdip
 Donate link: http://mkrdip.me/donate
 Tags: category, categories, posts, widget, posts widget, recent posts, category recent posts, shortcode, sidebar, excerpt, multiple widgets
 Requires at least: 2.8
-Tested up to: 4.7
-Stable tag: 4.7.1
+Tested up to: 4.7.2
+Stable tag: 4.7.2
 License: GPLv2 or later 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,41 +14,44 @@ Adds a widget that shows the most recent posts from a single category.
 Category Posts Widget is a light widget designed to do one thing and do it well: display the most recent posts from a certain category.
 
 = Term and Category based Posts Widget =
-This is the premium version of this free widget here and available on <a href="http://tiptoppress.com/?utm_source=wordpress_org&utm_campaign=premium_widget_cpw&utm_medium=web">tiptoppress.com</a> created for big Wordpress sites.
-We've also started creating free widget extensions for the Premium Widget. The first extension is the <a href="https://github.com/tiptoppress/term-posts-excerpt-extension">Excerpt Extension</a>.
+A premium version of this free widget here and available on <a href="http://tiptoppress.com/?utm_source=wordpress_org&utm_campaign=premium_widget_cpw&utm_medium=web">tiptoppress.com</a> created for big Wordpress sites.
+We've also started creating free widget extensions for the Premium Widget. The first extension is the <a href="https://wordpress.org/plugins/excerpt-extension/">Excerpt Extension</a>.
 
 = Premium features =
 * "Post List Alterations"
 * Masonry (Responsive grid layouts)
 * Grid and Column full page layouts
 * Slider (Vertical and horizontal)
+* More complex ways to filter (all, any, exclude, also childes, AND or just OR rule)
 * Categories, Custom Post Types, Taxonomies, Events, Products, ...
 * Full background post images
 * Mouse hover effects for post thumbnail
+* All Category Posts Widget features
 * E-Mail support
-* All free features
+* Free trail on localhost
 * More [examples on the demo pages](http://demo.tiptoppress.com/?utm_source=wordpress_org&utm_campaign=demo_cpw&utm_medium=web)
 
 = Features =
-* Shortcode (Easily change all Shortcode options in the customizer.)
-* Support multiple shortcodes
-* Add option for post offset (use two or more widgets after another)
-* Add insert shortcode buttons to the editor toolbar
+* Shortcode (Easily change all Shortcode options in the customizer).
+* Support multiple shortcodes at the same post.
+* Add option for post offset (use two or more widgets after another).
+* Add UI in the editor to insert shortcode.
+* Option to touch device friendly "everything is a link".
 * For editing shortcode adds a Customizer link to the admin-bar ("With one click to the Customizer").
 * Option to show post thumbnail & set dimensions by width & height.
 * Option for <a target="_blank" href="http://tiptoppress.com/css-image-crop/?utm_source=wordpress_org&utm_campaign=features_crop_cpw&utm_medium=web">client-side cropped thumbnail dimensions</a> by width & height.
-* Fluid images for Responsive Layouts
+* Fluid images for Responsive Layouts.
 * Option to set mouse hover effects for post thumbnail.
-* Set a thumbnail as default thumbnail
-* Add option to enable excerpt filters from Themes and plugins
+* Set a thumbnail as default thumbnail.
+* Add option to enable excerpt filters from Themes and plugins.
 * Jetpack 'Social buttons on posts' support.
-* Add option to disable social buttons, banner, ... in the excerpt
+* Add option to disable social buttons, banner, ... in the excerpt.
 * Option to change ordering of posts.
 * Set which category the posts should come form.
-* Add dropdownbox entry for 'all' categories
+* Add dropdownbox entry for 'all' categories.
 * Set how many posts to show.
 * Option to hide widget, if category have currently no posts.
-* Add option to disable subcategories
+* Add option to disable subcategories.
 * Option to put thumbnail on top.
 * Option to hide posts which have no thumbnail.
 * Option exclude current post.
@@ -61,11 +64,11 @@ We've also started creating free widget extensions for the Premium Widget. The f
 * Option to make the widget date link to the category page.
 * Option to format the outputted date string.
 * Option to link to the category page below posts list.
-* Option to disable widget CSS.
+* Option to disable the widget CSS or more granular control of default styling with not apply the font styles.
 * Multiple widgets.
 * Multi sites support.
 * Support localization with translate.wordpress.org
-* Use WP user profile for settings ('auto close' and if the shortcode button appears in the editor toolbar)
+* Use WP user profile for settings ('auto close' and if the shortcode button appears in the editor toolbar).
 
 = Documentation =
 * Full documentation on [tiptoppress.com](http://tiptoppress.com/category-posts-widget/documentation-4-7/?utm_source=wordpress_org&utm_campaign=documentation_4_7_cpw&utm_medium=web)
@@ -99,6 +102,18 @@ Automatic installation is the easiest option as WordPress handles the file trans
 * Version 3.0 or later version uses WordPress 2.9's built in post thumbnail functionality.
 
 == Frequently Asked Questions ==
+= Thumb and Title not able to float left =
+Check the option in the Thumbnails panels > "Show thumbnails above text".
+Then add this custom CSS:
+
+`.cat-post-thumbnail {
+	float: left !important;
+}`
+
+If you use wordpress 4.7 or higher you can [add this custom CSS with the customizer](http://kometschuh.de/Easily-adding-custom-CSS-using-the-WordPress-Theme-customizer.html/?utm_source=wordpress_org&utm_campaign=faq_cpw&utm_medium=web)
+
+For more layout options please try our premium widget: [Term and Category based Posts Widget](http://tiptoppress.com/term-and-category-based-posts-widget/?utm_source=wordpress_org&utm_campaign=faq_cpw&utm_medium=web).
+
 = The font-size is different from that of other widgets or Theme elements? =
 Please use the option: "Disable widget CSS".
 
@@ -118,6 +133,17 @@ We know there are peopel how use PHP 5.2 [wordpress.org/about/stats](https://wor
 
 == Changelog ==
 [Read more on our blog ...](http://tiptoppress.com/category/category-posts-widget?utm_source=wordpress_org&utm_campaign=changelog_cpw&utm_medium=web)
+
+= 4.7.2 - February 25th 2017 =
+* Add option to disable only the font styles
+* Fixed if option 'Everything is a link' no closing anchor tag
+* Fixed if option 'Everyting is a link' wrong layout
+* Fixed when a manual excerpt is provided, use it instead of generating an automatic one
+* Fixed if option 'Disable the built-in CSS' the thumbnail client-side cropping isn't disabled
+* Fixed if option 'Disable the built-in CSS' title class is not rendered
+* Fixed when having multi shortcodes, clicking on a checkbox label marks in any of them selects the one in the "first"
+* Fixed if option 'CSS crop to requested size' for multi shortcodes
+* Fixed for CSS animation
 
 = 4.7.1 - December 20th 2016 =
 * Support multiple shortcodes in content
