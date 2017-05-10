@@ -355,6 +355,21 @@ abstract class SiteOrigin_Widget extends WP_Widget {
 				}
 				$instance[$id] = $this->add_defaults( $field['fields'], $instance[$id], $level + 1 );
 			}
+			else if( $field['type'] == 'measurement' ) {
+				if( ! isset( $instance[$id] ) ) {
+					$instance[$id] = isset( $field['default'] ) ? $field['default'] : '';
+				}
+				if ( empty( $instance[ $id . '_unit' ] ) ) {
+					$instance[ $id . '_unit' ] = 'px';
+				}
+			}
+			else if ( $field['type'] == 'order') {
+				if ( empty( $instance[$id] ) ) {
+					if( ! empty( $field['default'] ) ) {
+						$instance[$id] = $field['default'];
+					}
+				}
+			}
 			else {
 				if( !isset( $instance[$id] ) ) {
 					$instance[$id] = isset( $field['default'] ) ? $field['default'] : '';
@@ -1266,7 +1281,7 @@ abstract class SiteOrigin_Widget extends WP_Widget {
 	/**
 	 * Get the global settings from the options table.
 	 *
-	 * @return mixed|void
+	 * @return mixed
 	 */
 	function get_global_settings( ){
 		$values = get_option( 'so_widget_settings[' . $this->widget_class . ']', array() );
