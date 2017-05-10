@@ -9,6 +9,12 @@
   -webkit-justify-content: space-between;
   justify-content: space-between;
 }
+.panel-layout.panel-is-rtl .panel-grid.panel-no-style,
+.panel-layout.panel-is-rtl .panel-grid.panel-has-style > .panel-row-style {
+  -ms-flex-direction: row-reverse;
+  -webkit-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
 .panel-grid-cell {
   -ms-box-sizing: border-box;
   -moz-box-sizing: border-box;
