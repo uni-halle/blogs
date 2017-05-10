@@ -157,8 +157,20 @@ $hdQuJ("#questionnaire1").submit(function() {
 				else { $hdQuJ(this).closest('.question').children('.imageAnswer.selected').addClass("wrong2"); }				
 			});
 
+			var questionContentShow = $hdQuJ("#showQuestionContent").val(); 			
 			// search all questions, see if question was answered incorrectly (or not at all), and display the questionContent if there is one
 			$hdQuJ('#questionnaire1 *').filter(".question").each(function(){
+				// if the user wants to show this regardless if the answer was correct or not				
+				if (questionContentShow == "yes"){
+					if ($hdQuJ(this).children(".imageAnswer")){
+						$hdQuJ(this).closest(".question").children('.questionContent').fadeIn("slow");					
+					}
+					if ($hdQuJ(this).children("label")){					
+						$hdQuJ(this).closest(".question").children('.questionContent').fadeIn("slow");				
+					}
+				}
+
+				// default - only show on wrong answers
 				if ($hdQuJ(this).children(".imageAnswer").hasClass("wrong2")){
 					$hdQuJ(this).closest(".question").children('.questionContent').fadeIn("slow");					
 				}

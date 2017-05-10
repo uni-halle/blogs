@@ -15,8 +15,13 @@
 	// lots of sanitation to ensure no line breaks occur and that links work correctly
 	// there's almost definitely a better way to do this. Must optimize in future.
 
+	$quizPagination = "true";
+	$quizPool = $term_meta['pool'];
 	$passText = $term_meta['passText'];
 	$failText = $term_meta['failText'];
+	$showQuestionContent = "no";
+	$showQuestionContent = $term_meta['showIncorrectAnswerText'];
+
 	$passText = nl2br($passText);
 	$failText = nl2br($failText);
 	$passText = strip_tags(stripslashes($passText), '<a><i><em><b><strong><u><br><p>');
@@ -108,6 +113,12 @@ else {
 		$quizPaginate = "-1";
 	}
 
+	if($quizPool > 0){
+		$quizPaginate = $quizPool; //set the posts-per-page to the quiz pool amount
+		$randomizeQuestions = "rand"; //force the quiz to randomize the questions
+		$quizPagination = "false"; // disable WP pagination
+	}
+
 	// WP_Query arguments
 	$args2 = array (
 		'post_type'              => array( 'post_type_questionna' ),
@@ -117,7 +128,7 @@ else {
            		'terms' => $quiz,
         		)
     		),
-		'pagination'             => true,
+		'pagination'             => $quizPagination,
 		'posts_per_page'         => $quizPaginate,
 		'paged' 		 => $paged,
 		'orderby'                => $randomizeQuestions,
@@ -226,7 +237,7 @@ if ( has_post_thumbnail() ) {
 
 		<textarea name ="quPass" id ="quPass"><?php echo $passText; ?></textarea>
 		<textarea name ="quFail" id ="quFail"><?php echo $failText; ?></textarea>
-
+		<input type="hidden" name ="showQuestionContent" id ="showQuestionContent" value="<?php echo stripslashes($showQuestionContent); ?>">
 		<input type="hidden" name ="showResults" id ="showResults" value="<?php echo stripslashes($showResults); ?>">
 		<input type="hidden" name ="quPassPercent" id ="quPassPercent" value="<?php echo esc_attr($passPercent); ?>">
 		<input type="hidden" name ="quQuizTitle" id ="quQuizTitle" value="<?php the_title(); ?>">
@@ -241,13 +252,15 @@ if ( has_post_thumbnail() ) {
 
 		</div>
 <?php 
-	if ($query->max_num_pages > 1 ||  $quizPaginate != "-1") { 
-		if ($query->max_num_pages != $paged) { ?>
-			<a href ="<?php the_permalink();?>page/<?php echo $paged + 1;?>?currentScore=" id ="hdQuNext"><?php if ($nextText) {echo $nextText;} else echo 'next'; ?></a>
-		<?php }
+	if ($query->max_num_pages > 1 ||  $quizPaginate != "-1") {
+		if($quizPool == 0){
+			if ($query->max_num_pages != $paged) { ?>
+				<a href ="<?php the_permalink();?>page/<?php echo $paged + 1;?>?currentScore=" id ="hdQuNext"><?php if ($nextText) {echo $nextText;} else echo 'next'; ?></a>
+			<?php }
+		}
 	}
  
-	if ($query->max_num_pages == $paged || $quizPaginate == "-1") { ?>
+	if ($query->max_num_pages == $paged || $quizPaginate == "-1" || $quizPool > 0) { ?>
 		<p style ="text-align:center;"><input type ="submit" id ="hdQuFinish" value ="<?php if ($finishText) {echo $finishText;} else echo 'finish'; ?>"></p>
 <?php }
 

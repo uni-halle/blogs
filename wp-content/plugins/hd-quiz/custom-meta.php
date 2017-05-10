@@ -221,6 +221,18 @@ function quiz_taxonomy_custom_fields($tag) {
 	</td>
 </tr>
 
+<tr class="form-field">
+	<th scope="row" valign="top">
+		<label><?php _e('Show the "Text that appears if answer was wrong" even if the user got the question right.'); ?></label>
+	</th>
+	<td>
+<input type="radio" name="term_meta[showIncorrectAnswerText]" id="term_meta[showIncorrectAnswerText]1" value="yes" <?php if ($term_meta['showIncorrectAnswerText'] =="yes") {echo 'checked';} ?>><label for="term_meta[showIncorrectAnswerText]1"><span></span> Yes</label><br/>
+<input type="radio" name="term_meta[showIncorrectAnswerText]" id="term_meta[showIncorrectAnswerText]2" value="no" <?php if ($term_meta['showIncorrectAnswerText'] == "no") {echo 'checked';} if (! $term_meta['showIncorrectAnswerText']) {echo 'checked';}  ?>><label for="term_meta[showIncorrectAnswerText]2"><span></span> No</label>
+<p class ="description small">Each indivdual question can have accompanying text that will show if the user selects the wrong answer.</p>
+<p class ="description small">Enabling this feature will go the extra step and show this text even if the selected answer was correct.</p>
+	</td>
+</tr>
+
 <tr class="form-field h3Highlight">
 	<th scope="row" valign="top" colspan ="2">
 		<h3><?php _e('Advanced Quiz Options'); ?></h3>
@@ -260,6 +272,20 @@ function quiz_taxonomy_custom_fields($tag) {
 <input type="radio" name="term_meta[randomizeAnswers]" id="term_meta[randomizeAnswers]1" value="yes" <?php if ($term_meta['randomizeAnswers'] =="yes") {echo 'checked';} ?>><label for="term_meta[randomizeAnswers]1"><span></span> Yes</label><br/>
 <input type="radio" name="term_meta[randomizeAnswers]" id="term_meta[randomizeAnswers]2" value="no" <?php if ($term_meta['randomizeAnswers'] == "no") {echo 'checked';} if (! $term_meta['randomizeAnswers']) {echo 'checked';} ?>><label for="term_meta[randomizeAnswers]2"><span></span> No</label>
 <p class ="description small">This feature will randomize the order that each answer is displayed.</p>
+
+	</td>
+</tr>
+
+<tr class="form-field">
+	<th scope="row" valign="top">
+		<label><?php _e('Use Pool of Questions'); ?></label><br/>
+		leave blank to disable
+	</th>
+	<td>
+<input class="widefat2" type="number" min="0" max="30" name="term_meta[pool]" id="term_meta[pool]" value="<?php echo $term_meta['pool'] ? $term_meta['pool'] : '0'; ?>" size="3" /><br/>
+<p class ="description">Enter how many questions to grab. </p>
+<p class ="description small"><strong>Please note</strong> that this feature CANNOT be used with WP Pagination. This is a limiation of WordPress.</p>
+<p class ="description small">If used, this feature will randomly grab the amount of questions entered from the total amount of questions in that quiz. <strong>Example:</strong> If your quiz has 100 questions but you want the quiz to only contain 20 questions chosen at random.</p>
 
 	</td>
 </tr>

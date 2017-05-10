@@ -1,17 +1,17 @@
 ﻿=== HD Quiz ===
 Contributors: HarmonicDesign
-Tags: quiz, quizzes, quizes, questionnaire, questionnaires, questionnairs, questionair, questionaires, hdquiz, hd quiz, test, question and answers, harmonic design
+Tags: quiz, quizzes, quizes, quiz, questionnaire, questionnaires, questionnairs, questionair, questionaires, hdquiz, hd quiz, test, question and answers, harmonic design
 Requires at least: 3.4.1
-Tested up to: 4.4.2
-Stable tag: 1.4.1
+Tested up to: 4.7.2
+Stable tag: 1.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A very easy to use and feature rich plugin to create an unlimited amount of quizzes or questionnaires and embed them onto any page or post.
+Create a Quiz. A very easy to use and feature rich plugin to create an unlimited amount of quizzes and embed them onto any page or post.
 
 == Description ==
 
-HD Quiz is a very easy to use plugin to create an unlimited amount of quizzes or questionnaires and embed them onto any page or post. The plugin is equally perfect for building strong professional based questionnaires or fun Buzzfeed style quizzes.
+HD Quiz is a very easy to use plugin to create an unlimited amount of quizzes and embed them onto any page or post. HD Quiz is equally perfect for building strong professional based questionnaires or fun Buzzfeed style quizzes.
 
 [See a live demo](http://designbypixel.ca/the-ultimate-friends-quiz/ "See a live demo")
 
@@ -31,8 +31,9 @@ HD Quiz is a very easy to use plugin to create an unlimited amount of quizzes or
 * Pagination
 * Question as title / heading
 * Ability to rename the Next and Finish buttons (found in the HD Quiz About / Options page)
-* NEW: Add links to quiz results!
-* NEW: Ability to add a small writeup for each question that would be displayed underneath the question on quiz completion (only if user get's the question wrong!).
+* Add links to quiz results!
+* Ability to add a small writeup for each question that would be displayed underneath the question on quiz completion.
+* [NEW!] Grab from a pool of questions
 
 Please note that as always, new features are marked as experimental - so please let me know if you need any help in getting them to work!
 
@@ -41,14 +42,14 @@ Please note that as always, new features are marked as experimental - so please 
 * Results position (above quiz/below quiz)
 * Ability to share quiz results
 * Results checking (highlights right and wrong answers on quiz completion)
- * NEW: Option to highlight what the correct answer was
+ * Option to highlight what the correct answer was
 * Pass percentage
 * Quiz Pass text
 * Quiz Fail text
 * Quiz Timer
 * Pagination
-* NEW: Random question order
-* NEW: Random answer order
+* Random question order
+* Random answer order
 
 [view the HD Quiz plugin page](https://harmonicdesign.ca/hd-quiz/ "view the HD Quiz plugin page")
 
@@ -123,7 +124,8 @@ Please see [this article](https://harmonicdesign.ca/hd-quiz-pagination/ "HD Quiz
 = I have a feature request! =
 Fantastic! I'm one of those cray programmers who loves a good challenge. Please submit your feature request here by using the **support** tab or leave a request of the [official HD Quiz plugin page](https://harmonicdesign.ca/hd-quiz/ "view the HD Quiz plugin page").
 
-
+= Keywords =
+Quiz, quizzes, create a quiz, add a quiz, quiz plugin
 
 == Screenshots ==
 
@@ -134,6 +136,11 @@ Fantastic! I'm one of those cray programmers who loves a good challenge. Please 
 5. Questions Page
 
 == Changelog ==
+= 1.4.2 =
+* various bug fixes and compatability increases
+* Quiz option to grab from a pool of questions
+* Quiz option to allow the custom question text to appear even if the user selected the correct answer
+
 = 1.4.1 =
 * various bug fixes and compatability increases
 * the word 'question' (that's prefixed before every question) is now translatable in the HD Quiz options page along with 'Next' and 'Finish'.

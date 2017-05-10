@@ -5,6 +5,7 @@ Template Name: Questionnaire Results
 ?>
 
 <?php 
+error_reporting(0);
 $paged = $_POST[quQuizPaged];
 $total = 0;
 $passPerc = stripslashes($_POST[quPassPercent]);
@@ -68,7 +69,7 @@ $quAddress = $_POST[quQuizAddress];
 			<h4>SHARE YOUR RESULTS</h4>
 
 <?php if($fb == "no") { ?>
-<a href = "http://www.facebook.com/sharer/sharer.php?u=<?php echo $quAddress;?>&title=<?php echo $quTitle;?>"><img id ="fbShare" src="" target ="_blank" alt ="Share your score!"></a>
+<a href = "http://www.facebook.com/sharer/sharer.php?u=<?php echo $quAddress;?>&title=<?php echo $quTitle;?>" target ="_blank"><img id ="fbShare" src="" alt ="Share your score!"></a>
 <a href="https://twitter.com/intent/tweet?screen_name=<?php echo $tw; ?>&text=<?php echo 'I scored '.$total.'/'.$total_Questions.' on the '.$quTitle.' quiz. Can you beat me? '.$quAddress;?>" target ="_blank"><img id ="twShare" src="" alt ="Tweet your score!"/></a>
 
 <script>
@@ -86,7 +87,8 @@ else { ?>
 
 
 <div id="fb-root"></div>
-<img onclick="shareOnFB();" style="cursor:pointer" id ="fbShare" src="" alt ="Share your score!">
+<a href ="https://www.facebook.com/v2.4/dialog/share?app_id=<?php echo $fb; ?>&caption=<?php echo $captionText; ?>&description=<?php echo 'I scored '.$total.'/'.$total_Questions.' or '.$total_Percent.'%. Can you beat me?'; ?>&href=<?php echo $quAddress; ?>&locale=en_US&mobile_iframe=false&name=<?php echo $quTitle; ?>" target ="_blank"><img onclick="" style="cursor:pointer" id ="fbShare" src="" alt ="Share your score!"></a>
+
 <a href="https://twitter.com/intent/tweet?screen_name=<?php echo $tw; ?>&text=<?php echo 'I scored '.$total.'/'.$total_Questions.' on the '.$quTitle.' quiz. Can you beat me? '.$quAddress;?>" target ="_blank"><img id ="twShare" src="" alt ="Tweet your score!"/></a>
 
 <script>

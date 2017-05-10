@@ -105,6 +105,12 @@ a.hdQuTooltip span b {background: #2d2d2d; border-top: 1px solid #2d2d2d; border
 .payPal {float:right; cursor:pointer; text-align: center;letter-spacing: 0;padding: 15px 28px;color: #fff !important;margin: 0 auto;margin-bottom:10px;position:relative;width: auto;min-width: 4em;height: auto;line-height: 1.5em; vertical-align: middle; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4); text-decoration: none !important; background: #FD751A; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), inset 0px -2px 0 rgba(0, 0, 0, 0.3); border-radius: 4px; border:none;}
 .payPal:hover {box-shadow: 0 0px 2px rgba(0, 0, 0, 0.4), inset 0px -2px 0 rgba(0, 0, 0, 0.3);}
 
+.hdQuReadMore {float:right; cursor:pointer; text-align: center;letter-spacing: 0;padding: 15px 28px;color: #fff !important;margin: 0 auto;margin-bottom:10px;position:relative;width: auto;min-width: 4em;height: auto;line-height: 1.5em; vertical-align: middle; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4); text-decoration: none !important; background: #a48ad4; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), inset 0px -2px 0 rgba(0, 0, 0, 0.3); border-radius: 4px; border:none;}
+.hdQuReadMore:hover {box-shadow: 0 0px 2px rgba(0, 0, 0, 0.4), inset 0px -2px 0 rgba(0, 0, 0, 0.3);}
+.hdQuCallout {background:#444; padding:20px;}
+
+
+
 #hdAdvancedFeatures .hdAdvancedFeatures {margin:12px; display:inline-block; width:30%}
 
 #hdTitle {margin:30px auto;}

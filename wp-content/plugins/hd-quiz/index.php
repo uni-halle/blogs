@@ -5,7 +5,7 @@
  * Plugin URI: http://harmonicdesign.ca/hd-quiz/
  * Author: Harmonic Design
  * Author URI: http://harmonicdesign.ca
- * Version: 1.4.1
+ * Version: 1.4.2
 */
 
 
@@ -177,7 +177,7 @@ wp_enqueue_style( 'style-name', plugin_dir_url( __FILE__ ) . 'admin.css' );
 	<div class="wrap">
 		<div id ="hdTitle">
 			<img src ="<?php echo plugin_dir_url( __FILE__ );?>harmonicDesignLogo.png" alt ="Harmonic Design Logo" style ="float:left; position:relative; top:-12px"/>
-			<h1>HD Quiz</h1>
+			<h1>HD Quiz</h1>			
 		</div>
 
 
@@ -217,14 +217,17 @@ wp_enqueue_style( 'style-name', plugin_dir_url( __FILE__ ) . 'admin.css' );
 <div class = "one_third last">
 
 
-<p>HD Quiz is provided for free by Dylan of <a href ="http://harmonicdesign.ca">Harmonic Design</a>, so why not say thanks in the best kind of way by buying him a coffee!</p>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
-">
-<input type="submit" class ="payPal" border="0" name="DONATE" value = "DONATE" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
+<p>HD Quiz is provided for free by Dylan of <a href ="http://harmonicdesign.ca">Harmonic Design</a>.</p>
+
+<div class ="hdQuCallout">
+	<p>Hi everyone, I've recently released my first premium WordPress plugin! HD Invoice is the easiest way to create invoices and get paid online!</p>
+	<p>If you are interested, here is a $5 off coupon code as a thank you for supporting and using HD Quiz! <strong>Coupon code: hdquiz</strong></p><br/>
+
+	<a href="https://hdinvoice.com/?utm_source=HDQuiz&amp;utm_medium=about" class="hdQuReadMore">VISIT HD INVOICE</a></p>
+	<div class ="clearboth"></div>
+
+</div>
+
 <div class ="clearboth"></div>
 
 <?php add_thickbox(); ?>
