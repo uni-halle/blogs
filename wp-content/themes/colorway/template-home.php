@@ -66,7 +66,7 @@ if (inkthemes_get_option('colorway_home_page_slider') != 'off') {
                                 <img src="<?php echo inkthemes_get_option('inkthemes_fimg4', get_template_directory_uri() . '/images/4.jpg'); ?>"/>
                             </div>
                         </a>
-                        <h2><a href="<?php echo inkthemes_get_option('inkthemes_link4', '#'); ?>"><?php echo inkthemes_get_option('inkthemes_headline3', __('Ready Contact Form', 'colorway')); ?></a></h2>
+                        <h2><a href="<?php echo inkthemes_get_option('inkthemes_link4', '#'); ?>"><?php echo inkthemes_get_option('inkthemes_headline4', __('Ready Contact Form', 'colorway')); ?></a></h2>
                         <p><?php echo inkthemes_get_option('inkthemes_feature4', __('Let your visitors easily contact you. The builtin readymade contact form makes it easier for clients to contact.', 'colorway')); ?></p>
                     </div>
                 </div>   
@@ -99,12 +99,12 @@ if (inkthemes_get_option('colorway_home_page_slider') != 'off') {
                                 } else {
                                     ?>
                                     <div><?php _e('Please go to Appearance-> Widgets and add atleast one widget to the Home Page Left Feature Widget Area to the "ColorWay Homepage". You can enable dummy data option from the Appearance-> Customize-> General Settings to set up the theme like the demo website.', 'colorway'); ?></div>
-                                <?php
+                                    <?php
                                 }
                             }
                             ?>
                         </div>
-    <?php endif; ?>	
+                    <?php endif; ?>	
                 </div>
                 <div class=" grid_12 blog_slider omega">  
                     <div class="blog_slider_wrapper animated fade_right">
@@ -120,12 +120,12 @@ if (inkthemes_get_option('colorway_home_page_slider') != 'off') {
                                 );
                                 $query = new WP_Query($args);
                                 ?>
-    <?php while ($query->have_posts()) : $query->the_post(); ?>
+                                <?php while ($query->have_posts()) : $query->the_post(); ?>
                                     <li class="blog_item">                
                                         <div class="flex_thumbnail"> <?php if ((function_exists('has_post_thumbnail')) && (has_post_thumbnail())) { ?>
                                                 <a href="<?php the_permalink(); ?>">
                                                     <div class='img_thumb'><span></span>
-            <?php the_post_thumbnail('colorway_custom_size', array('class' => 'postimg')); ?>
+                                                        <?php the_post_thumbnail('colorway_custom_size', array('class' => 'postimg')); ?>
                                                     </div>
                                                 </a>
                                                 <?php
@@ -136,7 +136,7 @@ if (inkthemes_get_option('colorway_home_page_slider') != 'off') {
                                         </div>
                                         <div class="flex_content"> 
                                             <h3><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php _e('Permanent Link to ', 'colorway') . the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-        <?php echo inkthemes_custom_trim_excerpt(40); ?>
+                                            <?php echo inkthemes_custom_trim_excerpt(40); ?>
                                             <div class="clear"></div>
                                             <a class="read_more" href="<?php the_permalink() ?>"><?php _e('Continue Reading &rarr;', 'colorway') ?></a>		
                                         </div>
@@ -152,7 +152,7 @@ if (inkthemes_get_option('colorway_home_page_slider') != 'off') {
                 </div>
             </div>
         <?php } ?>
-<?php if (inkthemes_get_option('colorway_testimonial_status', 'on') == 'on') { ?>
+        <?php if (inkthemes_get_option('colorway_testimonial_status', 'on') == 'on') { ?>
             <div class="clear"></div>
             <div class="testimonial_item_container"> 
                 <div class="testimonial_heading_container animated fading"> 
@@ -198,7 +198,7 @@ if (inkthemes_get_option('colorway_home_page_slider') != 'off') {
                 <?php }
                 ?>        
             </div>
-<?php } ?>
+        <?php } ?>
     </div>
     <div class="clear"></div>
 </div>

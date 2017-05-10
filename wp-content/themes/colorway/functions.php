@@ -1,5 +1,4 @@
 <?php
-
 ob_start();
 include_once get_template_directory() . '/functions/inkthemes-functions.php';
 include_once get_template_directory() . '/functions/themes-page.php';
@@ -273,6 +272,19 @@ function colorway_import_file($file, $post_id = 0, $import_date = 'file') {
 
     return $id;
 }
+
+function colorway_tracking_admin_notice() {
+    global $current_user;
+    $user_id = $current_user->ID;
+    /* Check that the user hasn't already clicked to ignore the message */
+    if (!get_user_meta($user_id, 'wp_email_tracking_ignore_notice')) {
+        ?>
+        <div class="updated um-admin-notice"><p><?php _e('Allow Colorway theme to send you setup guide? Opt-in to our newsletter and we will immediately e-mail you a setup guide along with 20% discount which you can use to purchase any theme.', 'colorway'); ?></p><p><a href="<?php echo get_template_directory_uri() . '/functions/smtp.php?wp_email_tracking=email_smtp_allow_tracking'; ?>" class="button button-primary"><?php _e('Allow Sending', 'colorway'); ?></a>&nbsp;<a href="<?php echo get_template_directory_uri() . '/functions/smtp.php?wp_email_tracking=email_smtp_hide_tracking'; ?>" class="button-secondary"><?php _e('Do not allow', 'colorway'); ?></a></p></div>
+        <?php
+    }
+}
+
+add_action('admin_notices', 'colorway_tracking_admin_notice');
 
 ob_clean();
 ?>

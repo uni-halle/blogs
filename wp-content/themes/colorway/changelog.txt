@@ -1,9 +1,20 @@
 Theme Name: ColorWay
 
 ========================
+
+* Version 3.4.7
+***************************************
+1. Change the stylng of tags in blog page.
+
+* Version 3.4.5
+***************************************
+1. Fourth Feature Heading Issue Fixed
+
 * Version 3.4.4
 ***************************************
-1. Homepage moved to as template called Home page.
+1. Created a new home page template.
+2. Added a new option in the customizer to enable and disable dummy data for the home template.
+3. Default home page set to blog page.
 
 * Version 3.4.3
 ***************************************
