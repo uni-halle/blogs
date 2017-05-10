@@ -19,7 +19,7 @@ class WYSIJA_object{
 	 * Static variable holding core MailPoet's version
 	 * @var array
 	 */
-	static $version = '2.7.7';
+	static $version = '2.7.10';
 
 	function __construct(){}
 
@@ -390,7 +390,7 @@ class WYSIJA_help extends WYSIJA_object{
 			if( method_exists( $this->controller , $_REQUEST['task'] ) ){
 				$result_array['result'] = call_user_func(array($this->controller, $_REQUEST['task']));
 			}else{
-				$this->error( 'Method "' . $_REQUEST['task'] . '" doesn\'t exist for controller : "'.$_REQUEST['controller'] );
+				$this->error( 'Method "' . esc_html($_REQUEST['task']) . '" doesn\'t exist for controller : "'.esc_html($_REQUEST['controller']) );
 			}
 		}
 

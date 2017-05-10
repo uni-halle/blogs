@@ -187,7 +187,8 @@ class WYSIJA_help_mailer extends PHPMailer {
 			   $this->core->error(__('You cannot use the DKIM signature option...',WYSIJA).' '.__('The PHP Extension openssl is not enabled on your server. Ask your host to enable it if you want to use an SSL connection.',WYSIJA));
 		   }else{
 				$this->DKIM_domain = $this->config->getValue('dkim_domain');
-				$this->DKIM_private = trim($this->config->getValue('dkim_privk'));
+				$this->DKIM_private = tempnam(sys_get_temp_dir(), 'pk');
+				file_put_contents($this->DKIM_private, trim($this->config->getValue('dkim_privk')));
 		   }
 	   }
 
@@ -200,6 +201,14 @@ class WYSIJA_help_mailer extends PHPMailer {
        $this->getSMTPInstance();
      }
 	}
+
+  function __destruct() {
+    if($this->config->getValue('dkim_active')
+      && file_exists($this->DKIM_private)
+    ) {
+      @unlink($this->DKIM_private);
+    }
+  }
 
 	function IsWPmail() {
 		$this->is_wp_mail = true;

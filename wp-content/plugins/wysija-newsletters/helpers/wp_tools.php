@@ -313,12 +313,7 @@ class WYSIJA_help_wp_tools extends WYSIJA_object{
       if ( ! is_object( $post ) || ! is_a( $post, 'WP_Post' ) ) {
         return array();
       }
-      $post_categories = get_the_category($post->ID);
-      $post_categories_ids = array();
-      foreach ($post_categories as $post_category) {
-        $post_categories_ids[] = $post_category->cat_ID;
-      }
-      return $post_categories_ids;
+      return wp_get_post_terms( $post->ID, get_object_taxonomies( $post->post_type ), array( 'fields' => 'ids' ));
 	}
 
 	function get_post_categories( $post = null ) {

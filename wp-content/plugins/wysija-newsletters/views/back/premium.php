@@ -320,13 +320,13 @@ class WYSIJA_view_back_premium extends WYSIJA_view_back{
 
         if($helper_toolbox->is_european()){
             $prices['blogger'] = '75€';
-            $prices['freelancer'] = '189€';
-            $prices['agency'] = '299€';
+            $prices['freelancer'] = '249€';
+            $prices['agency'] = '499€';
             $this->is_european = true;
         }else{
             $prices['blogger'] = '$99';
             $prices['freelancer'] = '$249';
-            $prices['agency'] = '$399';
+            $prices['agency'] = '$499';
             $this->is_european = false;
         }
         return $prices;

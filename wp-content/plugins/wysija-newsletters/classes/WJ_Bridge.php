@@ -10,6 +10,7 @@ class WJ_Bridge {
 
   public function send_mail(& $object)
   {
+    $replyToKey = key($object->ReplyTo);
 
     $msg = array(
       'to' => array(
@@ -17,7 +18,8 @@ class WJ_Bridge {
         'address' => $object->to[0][0] ),
       'reply_to'=> array(
         'name' => '' ,
-        'address' => (!empty($object->ReplyTo[0][0])) ? $object->ReplyTo[0][0] : '' ),
+        'address' => $object->ReplyTo[$replyToKey][0]
+      ),
       'from' => array(
         'name' => $object->FromName ,
         'address' => $object->From ),

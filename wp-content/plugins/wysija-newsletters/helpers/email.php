@@ -45,16 +45,15 @@ class WYSIJA_help_email extends WYSIJA_object{
             'smtp_auth'=>'smtp_auth',
         );
 
-        //add a prefix to each option if we are in ms test case
         if($testMultisite){
             $is_multisite=is_multisite();
 
             //$is_multisite=true;//PROD comment that line
             if(!$is_multisite) return false;
-            foreach($options as &$option) $option='ms_'.$option;
         }
 
         switch($values[$options['sending_method']]){
+            case 'network':
             case 'site':
                 if($values[$options['sending_emails_site_method']]=='phpmail'){
                     $send_method='PHP Mail';

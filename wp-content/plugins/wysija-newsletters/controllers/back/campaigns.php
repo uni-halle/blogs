@@ -650,6 +650,7 @@ class WYSIJA_control_back_campaigns extends WYSIJA_control_back {
 	function editDetails() {
 		if (!$this->_checkEmailExists($_REQUEST['id']))
 			return;
+
 		$this->viewObj->title = __('Final step: last details', WYSIJA);
 		$this->viewShow = 'editDetails';
 		$this->js[] = 'wysija-validator';
@@ -680,7 +681,6 @@ class WYSIJA_control_back_campaigns extends WYSIJA_control_back {
 			$this->data['email']['replyto_email'] = $current_user->data->user_email;
 			$this->data['email']['replyto_name'] = $current_user->data->display_name;
 		}
-
 
 		if ((int) $this->data['email']['type'] == 2) {
 			$this->js['wysija-edit-autonl'] = 'wysija-edit-autonl';
@@ -785,7 +785,6 @@ class WYSIJA_control_back_campaigns extends WYSIJA_control_back {
                 $this->requireSecurity();
 		/* update email */
 		$data = array();
-
 		// in case the newsletter already exists
 		if (isset($_REQUEST['id'])) {
 			$modelEmail = WYSIJA::get('email', 'model');
@@ -1286,7 +1285,14 @@ class WYSIJA_control_back_campaigns extends WYSIJA_control_back {
 		$model_email->reset();
 		$model_email->columns['modified_at']['autoup'] = 1;
 
-		// update some fields of the email
+        // re-render and save newsletter body (title may change during the last newsletter creation step)
+        $wj_engine = WYSIJA::get('wj_engine', 'helper');
+        // set data & styles
+        $wj_engine->setData($email_data['wj_data'], true);
+        $wj_engine->setStyles($email_data['wj_styles'], true);
+        $email_data['subject'] = $_POST['wysija']['email']['subject'];
+        $update_email['body'] = $wj_engine->renderEmail($email_data);
+        // update some fields of the email
 		$model_email->update($update_email);
 
 		// update the campaign subject which ispretty much useless but good to keep in sync with the email

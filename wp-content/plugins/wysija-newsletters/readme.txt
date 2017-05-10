@@ -2,8 +2,8 @@
 Contributors: wysija
 Tags: newsletter, newsletters, email newsletter, email subscription, newsletter signup, post notification, autoresponder, newsletter alert, auto newsletter, automatic post notification, email newsletters, email signup, auto post notifications, newsletter widget, newsletter builder, subscribe widget, signup widget, email subscription, newsletter plugin, widget, subscription, emailing, mailpoet, wysija, mandrill, sendgrid
 Requires at least: 3.5
-Tested up to: 4.7.2
-Stable tag: 2.7.7
+Tested up to: 4.7.4
+Stable tag: 2.7.10
 Send newsletters post notifications or autoresponders from WordPress easily, and beautifully. Start to capture subscribers with our widget now.
 
 == Description ==
@@ -20,19 +20,19 @@ https://vimeo.com/130151897
 
 = Features =
 
-* Drag & drop newsletter editor
+* Drag-and-drop newsletter designer
 * Send your latest posts automatically
-* Autoresponders, i.e. "Send email 3 days after someone subscribes"
+* Autoresponders (e.g., "send email 3 days after someone subscribes")
 * Send emails to your WordPress users
-* Start collecting subscribers in 2-clicks with our sign up widget
-* Single or double opt-in, your choice
-* Import subscribers in 2 steps
-* Get stats for your newsletter: opens, clicks, unsubscribes
-* Drag and drop subscription form designer
-* Your newsletters look the same in Gmail, iPhone, Android, Outlook, Yahoo, Hotmail, etc.
-* Send with your web host, Gmail, any SMTP, like SendGrid, Amazon SES Mandrill, etc...
-* Segment your lists based on unopened, opened and clicked
-* [Selection of over 70 themes](http://www.mailpoet.com/newsletter-templates-wordpress/). Photoshop files included
+* Start collecting subscribers in 2-clicks with our subscription widget
+* Your choice of single or double opt-in
+* Import subscribers in 2 easy steps
+* Get statistics for your newsletters: opens, clicks, unsubscribes
+* Drag-and-drop subscription form designer
+* Perfect rendering that makes your newsletters look the same on mobile devices (iPhone, Android) and desktop/web email clients (Gmail, Outlooki, Yahoo, Hotmai, etc.)
+* Send with your own web host or, third-party SMTP (e.g., SendGrid, Amazon SES, Gmail, etc.), or third-party API (SendGrid, Elastic EMail, etc.)
+* Segment your lists based on unopened, opened and clicked rates
+* [Selection of over 70 themes](http://www.mailpoet.com/newsletter-templates-wordpress/). Photoshop files included!
 * Sending newsletters in the free version is limited to 2000 subscribers
 
 = Premium version =
@@ -40,12 +40,12 @@ https://vimeo.com/130151897
 [MailPoet Premium](http://www.mailpoet.com/premium/) offers these nifty extra features:
 
 * Send to more than 2000 subscribers
-* A beautiful statistics dashboard to compare your newsletters, and subscribers
+* A beautiful statistics dashboard to compare your newsletters and subscribers
 * Detailed stats for each subscriber and newsletter
-* Automated bounce handling, keep your subscribers' list clean
-* Test your spam score before you send a newsletter to your subscribers
+* Automated bounce handling that keeps your subscribers' list clean
+* Test your SPAM score before you send a newsletter to your subscribers
 * Improve deliverability with DKIM signature
-* Don't reinstall. Simply install an additional plugin
+* Simple install process
 * Priority support: let us optimize your settings!
 
 [Visit our Premium page](http://www.mailpoet.com/premium/).
@@ -99,7 +99,7 @@ There are 3 ways to install this plugin:
 1. Search for `mailpoet`
 1. Click to install
 1. Activate the plugin
-1. A new menu `mailpoet` will appear in your Admin
+1. A new menu `MailPoet` will appear in your Admin
 
 = 2. The easy way =
 1. Download the plugin (.zip file) on the right column of this page
@@ -131,6 +131,19 @@ Our [support site](http://support.mailpoet.com/) has plenty of articles and a ti
 7. Importing subscribers with a CSV.
 
 == Changelog ==
+
+= 2.7.10 - 2017-04-20 =
+* Introduced minor changes to the premium page
+
+= 2.7.9 - 2017-04-17 =
+* Fixed security issue reported by Craig Smith. Thanks!
+
+= 2.7.8 - 2017-03-03 =
+* Fixed sending issues when MailPoet's sending service is selected
+* Fixed sending post notifications when tag filters are used
+* Fixed the display of incorrect newsletter title in browser preview
+* Fixed PHP notices associated with sending on multisite hosts
+* Fixed broken DKIM signing
 
 = 2.7.7 - 2017-01-31 =
 * Fixed activation issues on PHP 5.2

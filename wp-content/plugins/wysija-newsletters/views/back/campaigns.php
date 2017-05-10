@@ -2928,7 +2928,7 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
 				}
 
                                 $sharing_data = $model_config->getValue('analytics');
-                                if( empty( $sharing_data ) ){
+/*                                if( empty( $sharing_data ) ){
                                     $data['sections'][] = array(
                                             'title' => __('One quick question...',WYSIJA),
 
@@ -2950,7 +2950,7 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
                                                                                                 <div style="clear:both;"></div>',
                                             'format' => 'title-content',
                                     );
-                                }
+                                }*/
 
 
 
@@ -2972,14 +2972,14 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
 					);
 				}
 
-                                if( $show_survey ){
+/*                                if( $show_survey ){
                                     $data['sections'][] = array(
 						'title' => 'Answer our survey and make your plugin better',
 
 						'content' => '<iframe frameborder="0" width="100%" height="600" scrolling="auto" allowtransparency="true" src="//mailpoet.polldaddy.com/s/what-s-new-sept-2015?iframe=1"><a href="//mailpoet.polldaddy.com/s/what-s-new-sept-2015">View Survey</a></iframe><hr/>',
 						'format' => 'title-content',
 					);
-                                }
+                                }*/
 
 				if (isset($helper_readme->changelog[WYSIJA::get_version()])) {
 					$data['sections'][] = array(
