@@ -3,7 +3,7 @@
  * Plugin Name: WPMU Dev code library
  * Plugin URI:  http://premium.wpmudev.org/
  * Description: Framework to support creating WordPress plugins and themes.
- * Version:     3.0.1
+ * Version:     3.0.4
  * Author:      WPMU DEV
  * Author URI:  http://premium.wpmudev.org/
  * Textdomain:  wpmu-lib
@@ -30,7 +30,7 @@
  *     define( 'WDEV_SEND_P3P', 'CP="CAO OUR"' ) // Overwrite default P3P header
  */
 
-$version = '3.0.1';
+$version = '3.0.4';
 
 if ( ! function_exists( 'lib3' ) ) {
 	/**

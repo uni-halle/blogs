@@ -460,7 +460,6 @@
   font-size: 12px;
 }
 
-#wpwrap .button-link,
 .wpmui-form .button-link,
 .wpmui-popup .button-link {
   display: inline-block;
@@ -487,10 +486,7 @@
   -webkit-transition-timing-function: ease-in-out;
   transition-timing-function: ease-in-out;
 }
-#wpwrap .button-link:hover, #wpwrap .button-link:active, #wpwrap .button-link:focus,
-.wpmui-form .button-link:hover,
-.wpmui-form .button-link:active,
-.wpmui-form .button-link:focus,
+.wpmui-form .button-link:hover, .wpmui-form .button-link:active, .wpmui-form .button-link:focus,
 .wpmui-popup .button-link:hover,
 .wpmui-popup .button-link:active,
 .wpmui-popup .button-link:focus {
@@ -1079,7 +1075,7 @@
   font-size: 13px;
   text-align: center;
   color: #FFF;
-  text-shadow: 0 0 5px #264c73;
+  text-shadow: 0 0 5px #264d73;
 }
 .wpmui-progress-wrap .wpmui-progress-percent:before {
   content: '';
@@ -1091,8 +1087,8 @@
   border-radius: 5px;
   margin-top: -5px;
   margin-left: -15px;
-  box-shadow: 0 0 8px 4px #264c73;
-  background: #264c73;
+  box-shadow: 0 0 8px 4px #264d73;
+  background: #264d73;
   z-index: -1;
   opacity: .5;
 }

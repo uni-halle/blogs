@@ -47,7 +47,34 @@ class CustomSidebarsEditor extends CustomSidebars {
 				array( $this, 'handle_ajax' )
 			);
 
-			
+			// Add a custom column to post list.
+			$posttypes = self::get_post_types( 'objects' );
+			foreach ( $posttypes as $pt ) {
+				add_filter(
+					'manage_' . $pt->name . '_posts_columns',
+					array( $this, 'post_columns' )
+				);
+
+				add_action(
+					'manage_' . $pt->name . '_posts_custom_column',
+					array( $this, 'post_column_content' ),
+					10, 2
+				);
+			}
+			/** This action is documented in wp-admin/includes/screen.php */
+			add_filter( 'default_hidden_columns', array( $this, 'default_hidden_columns' ), 10, 2 );
+
+			add_action(
+				'quick_edit_custom_box',
+				array( $this, 'post_quick_edit' ),
+				10, 2
+			);
+
+			add_action(
+				'admin_footer',
+				array( $this, 'post_quick_edit_js' )
+			);
+
 		}
 	}
 
@@ -206,7 +233,7 @@ class CustomSidebarsEditor extends CustomSidebars {
 		}
 
 		// Populate the sidebar object.
-		if ( ! CSB_IS_PRO  ) {
+		if ( 'insert' == $action || self::wpml_is_default_lang() ) {
 			$sidebar['name'] = $sb_name;
 			$sidebar['description'] = $sb_desc;
 		} else {
@@ -252,7 +279,9 @@ class CustomSidebarsEditor extends CustomSidebars {
 		$req->data = $sidebar;
 		$req->action = $action;
 
-		
+		// Allow user to translate sidebar name/description via WPML.
+		self::wpml_update( $sidebars );
+		$req->data = self::wpml_translate( $sidebar );
 
 		return $req;
 	}
@@ -358,7 +387,13 @@ class CustomSidebarsEditor extends CustomSidebars {
 		);
 
 		$raw_authors = array();
-		
+		$raw_authors = get_users(
+			array(
+				'order_by' => 'display_name',
+				'fields' => array( 'ID', 'display_name' ),
+				'who' => 'authors',
+			)
+		);
 
 		// Collect required data for all posttypes.
 		$posttypes = array();
@@ -415,7 +450,17 @@ class CustomSidebarsEditor extends CustomSidebars {
 			);
 		}
 
-		
+		// Build a list of authors.
+		$authors = array();
+		foreach ( $raw_authors as $user ) {
+			$sel_archive = @$defaults['author_archive'][ @$user->ID ];
+
+			$authors[ @$user->ID ] = array(
+				'name' => @$user->display_name,
+				'archive' => self::get_array( $sel_archive ),
+			);
+		}
+		$req->authors = $authors;
 
 		$req->replaceable = $defaults['modifiable'];
 		$req->posttypes = $posttypes;
@@ -461,7 +506,13 @@ class CustomSidebarsEditor extends CustomSidebars {
 		);
 
 		$raw_authors = array();
-		
+		$raw_authors = get_users(
+			array(
+				'order_by' => 'display_name',
+				'fields' => array( 'ID', 'display_name' ),
+				'who' => 'authors',
+			)
+		);
 
 		// == Update the options
 
@@ -536,7 +587,21 @@ class CustomSidebarsEditor extends CustomSidebars {
 				}
 			}
 
-			
+			// Author settings.
+			foreach ( $raw_authors as $user ) {
+				$key = $user->ID;
+				if (
+					is_array( @$data['arc-aut'][ $sb_id ] ) &&
+					in_array( $key, $data['arc-aut'][ $sb_id ] )
+				) {
+					$options['author_archive'][ $key ][ $sb_id ] = $req->id;
+				} elseif (
+					isset( $options['author_archive'][ $key ][ $sb_id ] ) &&
+					$options['author_archive'][ $key ][ $sb_id ] == $req->id
+				) {
+					unset( $options['author_archive'][ $key ][ $sb_id ] );
+				}
+			}
 		}
 
 		$req->message = sprintf(
@@ -682,5 +747,278 @@ class CustomSidebarsEditor extends CustomSidebars {
 		self::set_post_meta( $post_id, $data );
 	}
 
-	
+	// ========== WPML support.
+
+	/**
+	 * Updates the WPML string register with the current sidebar string so the
+	 * user can translate the sidebar details using the WPML string translation.
+	 *
+	 * @since  2.0.9.7
+	 * @param  array $custom_sidebars List of the custom sidebars.
+	 */
+	static protected function wpml_update( $custom_sidebars ) {
+		if ( ! function_exists( 'icl_register_string' ) ) { return false; }
+
+		$theme_sidebars = self::get_sidebars();
+
+		// This is used to identify the sidebar-translations by WPML.
+		$context = 'Sidebar';
+
+		// First do the theme sidebars, so they will be displayed in the
+		// *bottom* of the translations list.
+		foreach ( $theme_sidebars as $fields ) {
+			self::wpml_update_field( $context, $fields['id'] . '-name', @$fields['name'], false );
+			self::wpml_update_field( $context, $fields['id'] . '-description', @$fields['description'], false );
+		}
+
+		foreach ( $custom_sidebars as $fields ) {
+			$name = isset( $fields['name_lang'] ) ? $fields['name_lang'] : $fields['name'];
+			$description = isset( $fields['description_lang'] ) ? $fields['description_lang'] : $fields['description'];
+			self::wpml_update_field( $context, $fields['id'] . '-name', $name, true );
+			self::wpml_update_field( $context, $fields['id'] . '-description', $description, true );
+		}
+	}
+
+	/**
+	 * Updates the WPML string register for a single field.
+	 *
+	 * @since  2.0.9.7
+	 * @param  string $context
+	 * @param  string $field
+	 * @param  string $value
+	 * @param  bool $update_string If false then the translation will only be
+	 *                registered but not updated.
+	 */
+	static protected function wpml_update_field( $context, $field, $value, $update_string = true ) {
+		global $sitepress, $sitepress_settings;
+
+		if ( empty( $sitepress ) || empty( $sitepress_settings ) ) { return false; }
+		if ( ! function_exists( 'icl_t' ) ) { return false; }
+
+		if ( ! icl_st_is_registered_string( $context, $field ) ) {
+			// Register the field if it does not exist.
+			icl_register_string( $context, $field, $value, false );
+
+			$active_languages = $sitepress->get_active_languages();
+
+			foreach ( $active_languages as $lang => $data ) {
+				icl_update_string_translation( $field, $lang, $value, ICL_STRING_TRANSLATION_COMPLETE );
+			}
+
+			$default_language = ! empty( $sitepress_settings['st']['strings_language'] )
+				? $sitepress_settings['st']['strings_language']
+				: $sitepress->get_default_language();
+			icl_update_string_translation( $field, $default_language, $value, ICL_STRING_TRANSLATION_COMPLETE );
+
+		} else if ( $update_string ) {
+
+			// Add translation.
+			if ( defined( 'DOING_AJAX' ) ) {
+				$current_language = $sitepress->get_language_cookie();
+			} else {
+				$current_language = $sitepress->get_current_language();
+			}
+
+			icl_update_string_translation( $field, $current_language, $value, ICL_STRING_TRANSLATION_COMPLETE );
+		}
+	}
+
+	/**
+	 * Returns boolean true, when site is currently using the default language.
+	 *
+	 * @since  2.0.9.7
+	 * @return bool
+	 */
+	static protected function wpml_is_default_lang() {
+		global $sitepress, $sitepress_settings;
+		if ( empty( $sitepress ) || empty( $sitepress_settings ) ) { return true; }
+		if ( ! function_exists( 'icl_t' ) ) { return true; }
+
+		if ( defined( 'DOING_AJAX' ) ) {
+			$current_language = $sitepress->get_language_cookie();
+		} else {
+			$current_language = $sitepress->get_current_language();
+		}
+
+		$default_language = ! empty( $sitepress_settings['st']['strings_language'] )
+			? $sitepress_settings['st']['strings_language']
+			: $sitepress->get_default_language();
+
+		return $default_language == $current_language;
+	}
+
+	/**
+	 * Translates the text inside the specified sidebar object.
+	 *
+	 * @since  2.0.9.7
+	 * @param  array $sidebar Sidebar object.
+	 * @return array Translated sidebar object.
+	 */
+	static protected function wpml_translate( $sidebar ) {
+		if ( ! function_exists( 'icl_t' ) ) { return $sidebar; }
+
+		$context = 'Sidebar';
+
+		// Translate the name and description.
+		// Note: When changing a translation the icl_t() function will not
+		// return the updated value due to caching.
+
+		if ( isset( $sidebar['name_lang'] ) ) {
+			$sidebar['name'] = $sidebar['name_lang'];
+		} else {
+			$sidebar['name'] = icl_t( $context, $sidebar['id'] . '-name', $sidebar['name'] );
+		}
+		if ( isset( $sidebar['description_lang'] ) ) {
+			$sidebar['description'] = $sidebar['description_lang'];
+		} else {
+			$sidebar['description'] = icl_t( $context, $sidebar['id'] . '-description', $sidebar['description'] );
+		}
+
+		return $sidebar;
+	}
+
+
+	//
+	// ========== Custom column an Quick-Edit fields for post list.
+	// http://shibashake.com/wordpress-theme/expand-the-wordpress-quick-edit-menu
+	//
+
+	/**
+	 * Adds a custom column to post-types that support custom sidebars.
+	 *
+	 * @since  2.0.9.7
+	 * @param  array $columns Column list.
+	 * @return array Modified column list.
+	 */
+	public function post_columns( $columns ) {
+		// This column is added.
+		$insert = array(
+			'cs_replacement' => __( 'Custom Sidebars', 'custom-sidebars' ),
+		);
+
+		// Column is added after column 'title'.
+		$insert_after = 'title';
+
+		$pos = array_search( $insert_after, array_keys( $columns ) ) + 1;
+		$columns = array_merge(
+			array_slice( $columns, 0, $pos ),
+			$insert,
+			array_slice( $columns, $pos )
+		);
+
+		return $columns;
+	}
+
+	/**
+	 * Display values in the custom column.
+	 *
+	 * @since  2.0.9.7
+	 * @param  string $column_name Column-Key defined in post_columns above.
+	 * @param  int $post_id Post-ID
+	 */
+	public function post_column_content( $column_name, $post_id ) {
+		switch ( $column_name ) {
+			case 'cs_replacement':
+				$this->print_sidebars_form( $post_id, 'col-sidebars' );
+				break;
+		}
+	}
+
+	/**
+	 * Adds a custom field to the quick-edit box to select custom columns.
+	 *
+	 * @since  2.0.9.7
+	 * @param  string $column_name Column-Key defined in post_columns above.
+	 * @param  string $post_type Post-type that is currently edited.
+	 */
+	public function post_quick_edit( $column_name, $post_type ) {
+		if ( ! self::supported_post_type( $post_type ) ) { return false; }
+
+		switch ( $column_name ) {
+			case 'cs_replacement':
+				$this->print_metabox_quick();
+				break;
+		}
+	}
+
+	/**
+	 * Javascript to set the values of the quick-edit form.
+	 *
+	 * Note: There is only 1 quick-edit form on the page. The form is displayed
+	 * when the user clicks the quick edit action; all fields are then populated
+	 * with values of the corresponding post.
+	 *
+	 * @since  2.0.9.7
+	 */
+	public function post_quick_edit_js() {
+		global $current_screen;
+
+		if ( ( $current_screen->base != 'edit' ) ) { return false; }
+		if ( ! self::supported_post_type( $current_screen->post_type ) ) { return false; }
+
+		?>
+		<script type="text/javascript">
+		<!--
+		jQuery(function() {
+			// we create a copy of the WP inline edit post function
+			var wp_inline_edit = inlineEditPost.edit;
+
+			// and then we overwrite the function with our own code
+			inlineEditPost.edit = function( id ) {
+
+				// "call" the original WP edit function
+				// we don't want to leave WordPress hanging
+				wp_inline_edit.apply( this, arguments );
+
+				// now we take care of our business.
+
+				// get the post ID
+				var post_id = 0;
+				if ( typeof( id ) == 'object' ) {
+					post_id = parseInt( this.getId( id ) );
+				}
+
+				if ( post_id > 0 ) {
+
+					// define the edit row
+					var edit_row = jQuery( '#edit-' + post_id );
+					var post_row = jQuery( '#post-' + post_id );
+
+					// Our custom column
+					var sidebar_col = post_row.find( '.cs_replacement' );
+
+					sidebar_col.find( '[data-sidebar]' ).each(function() {
+						var key = jQuery( this ).attr( 'data-sidebar' ),
+							val = jQuery( this ).attr( 'data-replaced' ),
+							hide = 'yes' === jQuery( this ).attr( 'data-cshide' );
+
+						if ( hide ) {
+							edit_row.find( '.cs-replacement-field.' + key ).val( val ).parent().hide();
+						} else {
+							edit_row.find( '.cs-replacement-field.' + key ).val( val ).parent().show();
+						}
+					});
+				}
+			};
+		});
+		//-->
+		</script>
+		<?php
+	}
+
+	/**
+	 * Hide column "Custom Sidebars" by default.
+	 *
+	 * @since 3.0.5
+	 *
+	 * @param array $hidden Array of hidden columns.
+	 * @param WP_Screen $screen Current WP screen.
+	 * @return array $hidden
+	 */
+	public function default_hidden_columns( $hidden, $screen ) {
+		if ( is_object( $screen ) && isset( $screen->post_type ) && 'post' == $screen->post_type ) {
+			$hidden[] = 'cs_replacement';
+		}
+		return $hidden;
+	}
 };
