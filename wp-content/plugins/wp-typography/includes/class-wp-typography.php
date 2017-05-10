@@ -71,6 +71,13 @@ class WP_Typography {
 	private $php_typo;
 
 	/**
+	 * The Hyphenator instance.
+	 *
+	 * @var Hyphenator $hyphenator
+	 */
+	private $hyphenator;
+
+	/**
 	 * The transients set by the plugin (to clear on update).
 	 *
 	 * @var array A hash with the transient keys set by the plugin stored as ( $key => true ).
@@ -183,7 +190,7 @@ class WP_Typography {
 	 * @return \PHP_Typography\Settings
 	 */
 	public static function get_user_settings() {
-		return self::get_instance()->get_settings();
+		return self::get_instance()->get_php_typo()->get_settings();
 	}
 
 	/**
@@ -320,7 +327,7 @@ class WP_Typography {
 			add_filter( 'run_wptexturize', '__return_false' );
 
 			// Ensure that wptexturize is actually off by forcing a re-evaluation (some plugins call it too early).
-			wptexturize( '', true );
+			wptexturize( ' ', true ); // Argument must not be empty string!
 		}
 
 		// Apply our filters.
@@ -416,7 +423,7 @@ class WP_Typography {
 	 * @param \PHP_Typography\Settings $settings Optional. A settings object. Default null (which means the internal settings will be used).
 	 */
 	function process_title( $text, \PHP_Typography\Settings $settings = null ) {
-		return $this->process( $text, true, $settings );
+		return $this->process( $text, true, false, $settings );
 	}
 
 	/**
@@ -453,7 +460,7 @@ class WP_Typography {
 		require_once dirname( __DIR__ ) . '/php-typography/php-typography-functions.php'; // @codeCoverageIgnore.
 
 		foreach ( $title_parts as $index => $part ) {
-			// Remove &shy; and &#8203; after processing title part.
+			// Remove "&shy;" and "&#8203;" after processing title part.
 			$title_parts[ $index ] = strip_tags( str_replace( array( \PHP_Typography\uchr( 173 ), \PHP_Typography\uchr( 8203 ) ), '', $this->process( $part, true, true, $settings ) ) );
 		}
 
@@ -519,9 +526,9 @@ class WP_Typography {
 	 * @return bool True if the transient could be set successfully.
 	 */
 	public function set_transient( $transient, $value, $duration = 1 ) {
-		$result = false;
+		$result = set_transient( $transient, $value, $duration );
 
-		if ( $result = set_transient( $transient, $value, $duration ) ) {
+		if ( $result ) {
 			// Store $transient as keys to prevent duplicates.
 			$this->transients[ $transient ] = true;
 			update_option( 'typo_transient_keys', $this->transients );
@@ -540,9 +547,9 @@ class WP_Typography {
 	 * @return bool True if the cache could be set successfully.
 	 */
 	public function set_cache( $key, $value, $duration = 0 ) {
-		$result = false;
+		$result = wp_cache_set( $key, $value, 'wp-typography', $duration );
 
-		if ( $result = wp_cache_set( $key, $value, 'wp-typography', $duration ) ) {
+		if ( $result ) {
 			// Store as keys to prevent duplicates.
 			$this->cache_keys[ $key ] = true;
 			update_option( 'typo_cache_keys', $this->cache_keys );
@@ -568,10 +575,12 @@ class WP_Typography {
 	 */
 	private function get_php_typo() {
 
+		// Initialize PHP_Typography instance.
 		if ( empty( $this->php_typo ) ) {
-			$transient = 'typo_php_' . md5( json_encode( $this->settings ) ) . '_' . $this->version_hash;
+			$transient      = 'typo_php_' . md5( wp_json_encode( $this->settings ) ) . '_' . $this->version_hash;
+			$this->php_typo = $this->_maybe_fix_object( get_transient( $transient ) );
 
-			if ( ! $this->php_typo = ( get_transient( $transient ) ) ) {
+			if ( empty( $this->php_typo ) ) {
 				// OK, we have to initialize the PHP_Typography instance manually.
 				$this->php_typo = new \PHP_Typography\PHP_Typography( false, 'now' );
 
@@ -593,6 +602,25 @@ class WP_Typography {
 
 			// Settings won't be touched again, so cache the hash.
 			$this->cached_settings_hash = $this->php_typo->get_settings_hash( 32 );
+		}
+
+		// Also cache hyphenator (the pattern trie is expensive to build).
+		if ( $this->settings['typo_enable_hyphenation'] && empty( $this->hyphenator ) ) {
+			$transient  = 'typo_php_hyphenator_' . $this->version_hash;
+			$this->hyphenator = $this->_maybe_fix_object( get_transient( $transient ) );
+
+			if ( empty( $this->hyphenator ) ) {
+				$this->hyphenator = $this->php_typo->get_hyphenator( $this->php_typo->get_settings() );
+
+				/** This filter is documented in class-wp-typography.php */
+				$duration = apply_filters( 'typo_php_typography_caching_duration', 0 );
+
+				// Try again next time.
+				$res = set_transient( $transient, $this->hyphenator, $duration );
+			}
+
+			// Let's use it!
+			$this->php_typo->set_hyphenator( $this->hyphenator );
 		}
 
 		return $this->php_typo;
@@ -733,7 +761,8 @@ class WP_Typography {
 			wp_cache_delete( $key, 'wp-typography' );
 		}
 
-		$this->transients = $this->cache_keys = array();
+		$this->transients = array();
+		$this->cache_keys = array();
 		update_option( 'typo_transient_keys', $this->transients );
 		update_option( 'typo_cache_keys', $this->cache_keys );
 		update_option( 'typo_clear_cache', false );
@@ -842,5 +871,21 @@ class WP_Typography {
 			wp_enqueue_script( 'jquery-selection',                plugin_dir_url( $this->local_plugin_path ) . "js/jquery.selection$suffix.js", array( 'jquery' ),                     $this->version, true );
 			wp_enqueue_script( 'wp-typography-cleanup-clipboard', plugin_dir_url( $this->local_plugin_path ) . "js/clean_clipboard$suffix.js",  array( 'jquery', 'jquery-selection' ), $this->version, true );
 		}
+	}
+
+	/**
+	 * Fix object cache implementations sumetimes returning __PHP_Incomplete_Class.
+	 *
+	 * Based on http://stackoverflow.com/a/1173769/6646342.
+	 *
+	 * @param  object $object An object that should have been unserialized, but may be of __PHP_Incomplete_Class.
+	 * @return object         The object with its real class.
+	 */
+	private function _maybe_fix_object( $object ) {
+		if ( ! is_object( $object ) && 'object' === gettype( $object ) ) {
+			$object = unserialize( serialize( $object ) );
+		}
+
+		return $object;
 	}
 }

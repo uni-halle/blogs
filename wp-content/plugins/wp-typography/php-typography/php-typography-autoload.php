@@ -2,7 +2,7 @@
 /**
  *  This file is part of wp-Typography.
  *
- *	Copyright 2015 Peter Putzer.
+ *	Copyright 2015-2017 Peter Putzer.
  *
  *	This program is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public License
@@ -37,16 +37,20 @@ function php_typography_autoloader( $class_name ) {
 
 	if ( false === strpos( $class_name, $prefix ) ) {
 		return; // abort early.
+	} else {
+		$class_name = substr( $class_name, strlen( $prefix ) );
 	}
 
-	static $classes_dir;
-	if ( empty( $classes_dir ) ) {
-		$classes_dir = realpath( dirname( __FILE__ ) ) . DIRECTORY_SEPARATOR;
-	}
-
+	$classes_dir = realpath( dirname( __FILE__ ) ) . DIRECTORY_SEPARATOR;
 	$class_name_parts = explode( '\\', $class_name );
 	$class_file = 'class-' . str_replace( '_', '-', strtolower( array_pop( $class_name_parts ) ) ) . '.php';
-	if ( is_file( $class_file_path = $classes_dir . $class_file ) ) {
+
+	if ( count( $class_name_parts ) > 0 ) {
+		$classes_dir .= implode( DIRECTORY_SEPARATOR, array_map( 'strtolower', $class_name_parts ) ) . DIRECTORY_SEPARATOR;
+	}
+
+	$class_file_path = $classes_dir . $class_file;
+	if ( is_file( $class_file_path ) ) {
 		require_once( $class_file_path );
 	}
 }

@@ -1,9 +1,9 @@
 === wp-Typography ===
 Contributors: pputzer
-Tags: typography, hyphenation, smart quotes, quote marks, smartypants, typogrify, quotes, prettify, widows, orphans, small caps, diacritics
+Tags: typography, hyphenation, smart quotes, quote marks, formatting, typogrify, quotes, prettify, widows, orphans, small caps, diacritics
 Requires at least: 4.4
-Tested up to: 4.7
-Stable tag: 4.0.1
+Tested up to: 4.7.3
+Stable tag: 4.1.1
 
 Improve your web typography with: hyphenation, space control, intelligent character replacement, and CSS hooks.
 
@@ -63,6 +63,9 @@ If you are uncomfortable editing your theme's code, you may alternatively go to 
 
 Remember, many more FAQs are are addressed the [wp-Typography website](https://code.mundschenk.at/wp-typography/frequently-asked-questions/).
 
+= I'm using Advanced Custom Fields and don't want my custom fields to be hyphenated! How can I disable that behavior? =
+
+Please install the [wp-Typography Disable ACF Integration plugin](https://wordpress.org/plugins/wp-typography-disable-acf-integration/) by @sarukku.
 
 == Screenshots ==
 
@@ -73,6 +76,20 @@ Remember, many more FAQs are are addressed the [wp-Typography website](https://c
 4. wp-Typography "Add CSS Hooks" settings page.
 
 == Changelog ==
+
+= 4.1.1 - March 19, 2017 =
+* _Bugfix_: Performance issue accidentally introduced in 4.1.0 fixed.
+
+= 4.1.0 - March 18, 2017 =
+* _Feature_: Hyphenator instance has been made cacheable.
+* _Feature_: Workaround for broken GoDaddy APC object cache.
+* _Bugfix_: Incorrect replacement of initial hyphens fixed.
+* _Bugfix_: French spacing rules improved.
+* _Bugfix_: Proper dashes for German date intervals.
+* _Bugfix_: `WP_Typography::get_user_settings` and `WP_Typography::process_title` now work correctly (props @roopemerikukka).
+
+= 4.0.2 - February 17, 2017 =
+* _Bugfix:_ Workaround for plugins that call `wptexturize` too early (wasn't actually working before).
 
 = 4.0.1 - January 7, 2017 =
 * _Bugfix:_ Workaround for PHP 5.3 issue in `dewidow` callback.
@@ -138,11 +155,11 @@ Remember, many more FAQs are are addressed the [wp-Typography website](https://c
 * Updated HTML parser (html5-php) to 2.2.1.
 * Updated list of valid top-level domains.
 * Removed IE6 references and workarounds. He's dead, Jim.
-* Prevent references to US non-profit organizations like `501(c)(3)` being replaced with the copyright symbol (props randybruder).
+* Prevent references to US non-profit organizations like `501(c)(3)` being replaced with the copyright symbol (props @randybruder).
 * Added optional clean up of text copied to clipboard to prevent stray hyphens from showing on paste.
 * Added CSS classes for smart fractions ("numerator", "denominator") and ordinal suffixes ("ordinal").
 * Fixed « and » spacing when French punctuation style is enabled.
-* Fixed `<title>` tag handling (no more `&shy;` and `<span>`tags, props mpcube).
+* Fixed `<title>` tag handling (no more `&shy;` and `<span>`tags, props @mpcube).
 * [Preliminary API documentation](https://code.mundschenk.at/wp-typography/api/) has been added to the plugin website.
 
 = 3.2.7 - April 14, 2016 =
@@ -152,7 +169,7 @@ Remember, many more FAQs are are addressed the [wp-Typography website](https://c
 * Fixed autoloading issue on frontpage. Sorry!
 
 = 3.2.5 - April 05, 2016 =
-* Properly handle `<title>` in WordPress 4.4 or higher (props TimThemann).
+* Properly handle `<title>` in WordPress 4.4 or higher (props @TimThemann).
 * Fixed missing parameter that prevented the `Hyphenate headings` setting from working correctly.
 
 = 3.2.4 - April 04, 2016 =
@@ -189,7 +206,7 @@ Remember, many more FAQs are are addressed the [wp-Typography website](https://c
 
 = 3.1.0 - January 3, 2016 =
 * Minimum PHP version updated to 5.3.4 (from 5.3.0) to ensure consistent handling of UTF-8 regular expressions.
-* Added workaround for insane NextGEN Gallery filter priority (props Itsacon).
+* Added workaround for insane NextGEN Gallery filter priority (props @Itsacon).
 * Added "Clear Cache" button.
 * Changed internal option names to conform to WordPress standards (no camel case).
 * Performance improvements through lazy initialization and caching of the PHP_Typography object state.
@@ -225,7 +242,7 @@ Remember, many more FAQs are are addressed the [wp-Typography website](https://c
 
 = 3.0.1 - December 3, 2015 =
 * Prevent drop-down box settings from being accidentally overwritten (props Stefan Engenhorst).
-* Earlier check for minimum PHP version to prevent a parsing error on PHP 5.2 (props Javi).
+* Earlier check for minimum PHP version to prevent a parsing error on PHP 5.2 (props @Javi).
 
 = 3.0.0 - December 2, 2015 =
 * DOM-based HTML parsing with HTML5-PHP
