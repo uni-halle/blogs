@@ -23,11 +23,7 @@ get_header(); ?>
 					</div><!-- .entry-meta -->
 			</header><!-- .entry-header -->
 			<table>	 
-			<?php /*$personen = get_field( 'personen' );
-				if( $personen ) {?><tr><td width="25%">Personen</td><td><?php foreach($personen as $personen)
-							{
-								echo  $personen . ', ';
-							} ?></td></tr><?php	} */ ?> 
+			 
 			<?php if( $users = get_field('user') ) :?>
 				<tr>
 					<td width="25%">Personen</td>
@@ -42,12 +38,13 @@ get_header(); ?>
 			  
 			<?php $aufgabe = get_field( 'aufgabe' );
 				if( $aufgabe ) {?><tr><td width="25%">Aufgabe</td><td><?php echo $aufgabe;?></td></tr><?php	}  ?>  
+			
 			<?php $status = get_field( 'status' );
-				if( $status ) {?><tr><td width="25%">Status</td><td><?php foreach($status as $status)
-							{
-								echo  $status ;
-							} ?></td></tr><?php	}  ?> 
-							<tr><td colspan="2"><hr class="blue"></td></tr>
+                    if( $status ) {?><tr><td width="25%">Status</td><td><?php foreach($status as $status)
+                                   {
+                                        echo  $status ;
+                                   } ?></td></tr><?php     }  ?>
+                                   <tr><td colspan="2"><hr class="blue"></td></tr>	
 			<?php $smart = get_field( 'smart' );
 				if( $smart ) {?><tr><td width="25%">Smart-Kriterien	</td><td><?php foreach($smart as $smart)
 							{
@@ -55,9 +52,11 @@ get_header(); ?>
 							} ?></td></tr><?php	}  ?> 
 			<?php $lernziele = get_field( 'lernziele' );
 				if( $lernziele ) {?><tr><td colspan="2"><h2>Lernziele</h2><?php echo $lernziele;?></td></tr><?php	}  ?>
-							<tr><td colspan="2"><hr class="blue"></td></tr>	
+							
 			<?php $langtext = get_field( 'langtext' );
 				if( $langtext ) {?><tr><td colspan="2"><h2>Portfoliobeitrag</h2><?php echo $langtext;?></td></tr><?php	}  ?>
+			<?php $reflexion = get_field( 'reflexion' );
+				if( $reflexion ) {?><tr><td colspan="2"><h2>Reflexion</h2><?php echo $reflexion;?></td></tr><?php	}  ?>
             </table>
 
 			<?php if ( has_post_thumbnail() ) : ?>

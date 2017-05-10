@@ -38,10 +38,10 @@ get_header(); ?>
 			<?php $kurztext = get_field( 'kurztext' );
 				if( $kurztext ) {?><tr><td width="25%">Kurzbeschreibung</td><td><?php echo $kurztext;?></td></tr><?php	}  ?>  
 			<?php $status = get_field( 'status' );
-				if( $status ) {?><tr><td width="25%">Status</td><td><?php foreach($status as $status)
-							{
-								echo  $status ;
-							} ?></td></tr><?php	}  ?> 
+                    if( $status ) {?><tr><td width="25%">Status</td><td><?php foreach($status as $status)
+                                   {
+                                        echo  $status ;
+                                   } ?></td></tr><?php     }  ?>
             </table>
 <hr class="blue">
 
