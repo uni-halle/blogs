@@ -329,6 +329,11 @@ class Tribe__Events__Aggregator__Cron {
 					$this->log( 'debug', sprintf( '%s — %s (%s)', $response->status, $response->message, $response->data->import_id ) );
 
 					$record->update_meta( 'last_import_status', 'success:queued' );
+				} elseif ( is_numeric( $response ) ) {
+					// it's the post ID of a rescheduled record
+					$this->log( 'debug', sprintf( 'rescheduled — %s', $response ) );
+
+					$record->update_meta( 'last_import_status', 'queued' );
 				} else {
 					$this->log( 'debug', 'Could not create Queue on Service' );
 
@@ -387,13 +392,13 @@ class Tribe__Events__Aggregator__Cron {
 
 			if ( ! is_wp_error( $queue ) ) {
 				/** @var Tribe__Events__Aggregator__Record__Queue $queue */
-				$this->log( 'debug', sprintf( 'Record (%d) has processed queue ', $queue->record->id ) );
+				$this->log( 'debug', sprintf( 'Record (%d) has processed queue ', $record->id ) );
 
 				if ( $queue instanceof Tribe__Events__Aggregator__Record__Queue ) {
 					$activity = $queue->activity()->get();
 				} else {
 					// if fetching or on error
-					$activity = $queue;
+					$activity = $queue->get();
 				}
 
 				foreach ( $activity as $key => $actions ) {
@@ -471,6 +476,11 @@ class Tribe__Events__Aggregator__Cron {
 
 		foreach ( $query->posts as $post ) {
 			$record = Tribe__Events__Aggregator__Records::instance()->get_by_post_id( $post );
+
+			if ( ! $record ) {
+				$this->log( 'debug', sprintf( 'Record (%d) skipped, original post non-existent', $post->id ) );
+				continue;
+			}
 
 			if ( ! $record->has_passed_retention_time() ) {
 				$this->log( 'debug', sprintf( 'Record (%d) skipped, not passed retetion time', $record->id ) );

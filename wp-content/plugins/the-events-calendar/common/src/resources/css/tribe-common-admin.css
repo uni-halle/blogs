@@ -210,6 +210,10 @@ table.plugins .tribe-plugin-update-message a {
 	list-style: circle;
 }
 /* sizes */
+.tribe-field-inline-dropdown {
+	margin-left: 0;
+	margin-right: 0;
+}
 .tribe-field-inline-text {
 	line-height: 28px;
 	margin: 0 2px;
@@ -429,12 +433,10 @@ table.plugins .tribe-plugin-update-message a {
 }
 #tribe-log-controls .working {
 	opacity: 1;
-	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
 }
 #tribe-log-controls .working.hidden {
 	opacity: 0;
-	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
 }
 #tribe-system-info dl.support-stats,
@@ -696,7 +698,6 @@ table.plugins .tribe-plugin-update-message a {
 	left: 0;
 	position: absolute;
 	top: 0;
-	-webkit-transition: all 1s linear;
 	transition: all 1s linear;
 	webkit-transition: all 1s linear;
 	width: 100%;
@@ -861,7 +862,6 @@ a.tribe-rating-link {
 #tribe-dialog-wrapper .select-single-container label {
 	opacity: 1;
 	padding: 3px 5px;
-	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
 }
 #tribe-dialog-wrapper .select-single-container label:nth-child(odd) {
@@ -877,7 +877,6 @@ a.tribe-rating-link {
 }
 #tribe-dialog-wrapper .select-single-container.updating label {
 	opacity: 0.35;
-	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
 }
 /* Useful to ensure modals rise above the grey 'miasma' */
@@ -906,11 +905,6 @@ a.tribe-rating-link {
 	clear: both;
 }
 .api-check .tribe-spirit-animal {
-	background: #325f81;
-	background: -webkit-linear-gradient(45deg, #325f81 0%,#3d87c0 100%);
-	background: linear-gradient(45deg, #325f81 0%,#3d87c0 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#325f81', endColorstr='#3d87c0',GradientType=1 );
-	border-left: 4px solid #eee;
 	bottom: 0;
 	display: none;
 	padding: 16px;
@@ -918,7 +912,7 @@ a.tribe-rating-link {
 	position: absolute;
 	right: 0;
 	top: 0;
-	width: 180px;
+	width: 125px;
 }
 .api-check .tribe-spirit-animal:before {
 	content: '';
@@ -1004,7 +998,6 @@ a.tribe-rating-link {
 .tribe-ea-dropdown.select2-container-multi .select2-choices .select2-search-choice-close, .tribe-dropdown.select2-container-multi .select2-choices .select2-search-choice-close {
 	top: 3px;
 	left: 4px;
-	-webkit-transition-property: border,color;
 	transition-property: border,color;
 }
 .select2-results li.select2-result-with-children.select2-result-unselectable > .select2-result-label {
