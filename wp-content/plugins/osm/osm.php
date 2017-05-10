@@ -3,7 +3,7 @@
 Plugin Name: OSM
 Plugin URI: http://wp-osm-plugin.HanBlog.net
 Description: Embeds maps in your blog and adds geo data to your posts.  Find samples and a forum on the <a href="http://wp-osm-plugin.HanBlog.net">OSM plugin page</a>.  
-Version: 3.8
+Version: 3.9.3
 Author: MiKa
 Author URI: http://www.HanBlog.net
 Minimum WordPress Version Required: 3.0
@@ -25,9 +25,9 @@ Minimum WordPress Version Required: 3.0
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-load_plugin_textdomain('OSM-plugin', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
+load_plugin_textdomain('OSM', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
 
-define ("PLUGIN_VER", "V3.8");
+define ("PLUGIN_VER", "V3.9.3");
 
 // modify anything about the marker for tagged posts here
 // instead of the coding.
@@ -94,13 +94,13 @@ if (version_compare($wp_version,"3.0","<")){
 	
 // get the configuratin by
 // default or costumer settings
-if (@(!include('osm-config.php'))){
-  include ('osm-config-sample.php');
-}
+
+include ('osm-config.php');
+
 
 // do not edit this
-//define ("Osm_TraceLevel", DEBUG_ERROR);
-define ("Osm_TraceLevel", DEBUG_OFF);
+define ("Osm_TraceLevel", DEBUG_ERROR);
+//define ("Osm_TraceLevel", DEBUG_OFF);
 
 //define ("Osm_TraceLevel", DEBUG_INFO);
 
@@ -133,7 +133,7 @@ function saveGeotagAndPic(){
     echo "Error: Bad ajax request";
   }
   else {
-    _e('Geotag saved, you can use it at [Map & geotags]!','OSM-plugin');
+    _e('Geotag saved, you can use it at [Map & geotags]!','OSM');
     $CustomField =  get_option('osm_custom_field','OSM_geo_data');
     delete_post_meta($post_id, $CustomField);
     delete_post_meta($post_id, "OSM_geo_icon");
@@ -165,7 +165,7 @@ function savePostMarker(){
     add_post_meta($post_id, 'OSM_Marker_0'.$MarkerId.'_LatLon', $MarkerLatLon, true );
     add_post_meta($post_id, 'OSM_Marker_0'.$MarkerId.'_Icon', $MarkerIcon, true );
     add_post_meta($post_id, 'OSM_Marker_0'.$MarkerId.'_Text', $MarkerText, true );
-    _e('Marker saved, you can use it at [Map & Marker]!','OSM-plugin');
+    _e('Marker saved, you can use it at [Map & Marker]!','OSM');
   }
   wp_die();
 }
@@ -183,7 +183,7 @@ if ( ! function_exists( 'osm_restrict_mime_types_hint' ) ) {
 	 */
 	function osm_restrict_mime_types_hint() {
 	  echo '<br />';
-          _e('OSM plugin added: GPX / KML','OSM-plugin');
+          _e('OSM plugin added: GPX / KML','OSM');
 	}
 }
 
@@ -355,7 +355,7 @@ class Osm
     return $flip * ($degrees + $minutes / 60 + $seconds / 3600);
   }
  
-  function getPostMarkerCFN($a_Number, $a_FieldName) {
+  static function getPostMarkerCFN($a_Number, $a_FieldName) {
     $CustomFieldName = "OSM_Marker_0".$a_Number."_".$a_FieldName;
     return $CustomFieldName;
   }
@@ -431,6 +431,10 @@ class Osm
       
            $Marker_Txt = '<a href="'.get_permalink($post->ID).'">'.get_the_title($post->ID).'  </a><br>';
            //$Marker_Txt .= get_the_excerpt($post->ID);  <= not supported anymore ....
+           /** picture of article */ 
+           $Marker_Txt .= get_the_post_thumbnail( $post->ID , 'medium');
+           
+           
            $MarkerArray[] = array('lat'=> $temp_lat,'lon'=>$temp_lon,'popup_height'=>'100', 'popup_width'=>'150', 'marker'=>$PostMarker, 'text'=>$Marker_Txt, 'Marker'=>$PostMarker);
          }
          $post = $post_org;
@@ -476,7 +480,7 @@ class Osm
          $PostMarker = $metapostIcon_name;
          $PostMarker = Osm_icon::replaceOldIcon($PostMarker);
       
-	     $Marker_Txt = $metapostmarker_text.'  </a><br>';
+	     $Marker_Txt = $metapostmarker_text.'  </a><br />';
          $MarkerArray[] = array('lat'=> $temp_lat,'lon'=>$temp_lon,'popup_height'=>'100', 'popup_width'=>'150', 'marker'=>$PostMarker, 'text'=>$Marker_Txt, 'Marker'=>$PostMarker);
        }
        $post = $post_org;

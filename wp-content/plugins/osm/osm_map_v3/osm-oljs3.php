@@ -18,10 +18,11 @@
 
 class Osm_OLJS3
 {
-  public static function addTileLayer($a_LayerName, $a_Type, $a_OverviewMapZoom, $a_MapControl, $a_WMSType, $a_WMSAttrName, $a_WMSAttrUrl, $a_WMSAddress, $a_WMSParam, $a_theme){
+  public static function addTileLayer($a_LayerName, $a_Type, $a_OverviewMapZoom, $a_MapControl, $a_WMSType, $a_WMSAttrName, $a_WMSAttrUrl, $a_WMSAddress, $a_WMSParam, $a_theme, $a_api_key){
     Osm::traceText(DEBUG_INFO, "addTileLayer V3(".$a_LayerName.",".$a_Type.",".$a_OverviewMapZoom.")");
     $TileLayer = '
-           var attribution = new ol.control.Attribution({
+    
+	var attribution = new ol.control.Attribution({
         collapsible: false
       });
       ';
@@ -87,11 +88,11 @@ class Osm_OLJS3
               ol.source.OSM.ATTRIBUTION
               ],
               crossOrigin: null,
-              url: "http://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"
+              url: "'.Osm_OpenSeaMap_Tiles.'"
             })
           });';
     }
-      else if ($a_Type == "cyclemap"){
+	      else if ($a_Type == "cyclemap"){
         $TileLayer .= '
           var raster = new ol.layer.Tile({
             source: new ol.source.OSM({
@@ -101,29 +102,13 @@ class Osm_OLJS3
                  "<a href=\"http://www.opencyclemap.org/\">OpenCycleMap</a>"
                }),
                ol.source.OSM.ATTRIBUTION
-               ],
-               url: "http://{a-c}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png"
+               ],  
+               url: "'.Osm_thunderforest_Cycle_Tiles.'?apikey='.$a_api_key.'"
              })
            });
           ';
     } 
-       else if ($a_Type == "cyclemap"){
-        $TileLayer .= '
-          var raster = new ol.layer.Tile({
-            source: new ol.source.OSM({
-              attributions: [
-               new ol.Attribution({
-               html: "All maps &copy; " +
-                 "<a href=\"http://www.opencyclemap.org/\">Outdoor</a>"
-               }),
-               ol.source.OSM.ATTRIBUTION
-               ],
-               url: "'.Osm_OpenCycle_Tiles.'"
-             })
-           });
-          ';
-    } 
-         else if ($a_Type == "outdoor"){
+    else if ($a_Type == "outdoor"){
         $TileLayer .= '
           var raster = new ol.layer.Tile({
             source: new ol.source.OSM({
@@ -134,7 +119,7 @@ class Osm_OLJS3
                }),
                ol.source.OSM.ATTRIBUTION
                ],
-               url: "'.Osm_thunderforest_Outdoor_Tiles.'"
+               url: "'.Osm_thunderforest_Outdoor_Tiles.'?apikey='.$a_api_key.'"
              })
            });
           ';
@@ -151,7 +136,7 @@ class Osm_OLJS3
                ol.source.OSM.ATTRIBUTION
                ],
           
-          url: "'.Osm_thunderforest_Landscape_Tiles.'"
+          url: "'.Osm_thunderforest_Landscape_Tiles.'?apikey='.$a_api_key.'"
              })
            });
           ';
@@ -167,7 +152,7 @@ class Osm_OLJS3
                }),
                ol.source.OSM.ATTRIBUTION
                ],
-               url: "'.Osm_thunderforest_Spinal_Tiles.'"
+               url: "'.Osm_thunderforest_Spinal_Tiles.'?apikey='.$a_api_key.'"
              })
            });
           ';
@@ -183,7 +168,7 @@ class Osm_OLJS3
                }),
                ol.source.OSM.ATTRIBUTION
                ],
-               url: "'.Osm_thunderforest_Pioneer_Tiles.'"
+               url: "'.Osm_thunderforest_Pioneer_Tiles.'?apikey='.$a_api_key.'"
              })
            });
           ';
@@ -295,7 +280,7 @@ class Osm_OLJS3
       return $TileLayer;
   }
 
-  public static function addVectorLayer($a_MapName, $a_FileName, $a_Colour, $a_Type, $a_Counter, $a_MarkerName, $a_showMarkerName)
+  public static function addVectorLayer($a_MapName, $a_FileName, $a_Colour, $a_Type, $a_Counter, $a_MarkerName, $a_showMarkerName, $a_title)
   {
     Osm::traceText(DEBUG_INFO, "addVectorLayer V3(".$a_MapName.",".$a_Type.",".$a_FileName.")");
     $VectorLayer = '';
@@ -327,32 +312,71 @@ class Osm_OLJS3
     };';
 	
 	
-    if ($a_Type == 'gpx'){
-      $VectorLayer .= '
-      var vectorL = new ol.layer.Vector({
-        source: new ol.source.Vector({
-	  url:"'.$a_FileName.'",
-          format: new ol.format.GPX({
-            extractStyles: false
-          })
-        }),
-        style: function(feature, resolution) {return style'.$a_Counter.'[feature.getGeometry().getType()];}
-      });
-      ';
-}
+	/** if no map_title is given, plugin output remains the same */ 
+	if (empty($a_title)) {
 
-    if ($a_Type == 'kml'){
-      $VectorLayer .= '
-      var vectorL = new ol.layer.Vector({
-        source: new ol.source.Vector({
-	  url:"'.$a_FileName.'",
-          format: new ol.format.KML({ showPointNames: '.$a_showMarkerName.'})
-        })
-      });';
-    }
-    $VectorLayer .= $a_MapName.'.addLayer(vectorL);';
-  return $VectorLayer;
-  }
+		if ($a_Type == 'kml'){
+		  $VectorLayer .= '
+		  vectorL'.$a_Counter.' = new ol.layer.Vector({
 
+			source: new ol.source.Vector({
+		  url:"'. trim($a_FileName).'",
+			  format: new ol.format.KML({ showPointNames: '.$a_showMarkerName.'})
+			})
+		  });';
+		}
+		    
+
+		if ($a_Type == 'gpx'){
+		  $VectorLayer .= '
+		  var vectorL'.$a_Counter.' = new ol.layer.Vector({
+				source: new ol.source.Vector({
+				url:"' . trim($a_FileName) . '",
+				format: new ol.format.GPX({
+					extractStyles: false
+				})
+			}),
+			style: function(feature, resolution) {return style'.$a_Counter.'[feature.getGeometry().getType()];}
+		  });
+		  ';
+		}
+
+		$VectorLayer .= $a_MapName .'.addLayer(vectorL'.$a_Counter.');';
+	
+	  } else {
+	
+		/** titles for layers are give, so let's start the magic :-)
+		 * vectorM is a global array	
+		 * no adding of layer at the end of this script 
+		 */ 
+		if ($a_Type == 'kml'){
+			$VectorLayer .= '
+				vectorM[\'' . $a_MapName . '\'][' . $a_Counter . '] = new ol.layer.Vector({
+					options: {title: "overlay' . $a_Counter . '"},
+					source: new ol.source.Vector({
+						url:"' . trim($a_FileName) . '",
+						format: new ol.format.KML({ showPointNames: ' . $a_showMarkerName . '})
+					})
+				});'
+			;
+		}
+		
+		if ($a_Type == 'gpx'){
+			$VectorLayer .= '
+				vectorM[\'' . $a_MapName . '\'][' . $a_Counter . '] = new ol.layer.Vector({
+					options: {title: "overlay' . $a_Counter . '"},
+					source: new ol.source.Vector({
+						url:"' . trim($a_FileName) . '",
+						format: new ol.format.GPX({
+							extractStyles: false
+						})
+					}),
+					style: function(feature, resolution) {return style' . $a_Counter . '[feature.getGeometry().getType()];}
+				 });'
+				;
+			}
+		}
+		
+	return $VectorLayer;
+	}
 }
-?>

@@ -3,7 +3,7 @@ Contributors: MiKa
 Tags: map, OpenStreetMap, googlemaps, geo, KML, GPX, geotag, geolocation, geocache, geocaching, OSM, travelogue, OpenLayers, CloudMade, marker, POI, geocode, geotagging, location, Tracks, WMS, fullscreen, OpenSeaMap, stamen, basemap, exif, meta, widget, thunderforest
 Requires at least: 3.0
 Tested up to: 4.7.1
-Stable tag: 3.8
+Stable tag: 3.9.3
 
 Customize maps in your post, pages and widgets. GPX, KML and more. The easy way to map! 
 
@@ -43,7 +43,7 @@ Licenses of the maps:
 * OpenStreetMap: [OpenStreetMap License](http://wiki.openstreetmap.org/wiki/OpenStreetMap_License) 
 * Stamen Maps: [Stamen License](http://maps.stamen.com)
 * BaseMap:  [BaseMap License](http://basemap.at)
-* Thunderforest: [Thunderforest License](http://www.thunderforest.com/terms/)
+* Thunderforest (API key): [Thunderforest License](http://www.thunderforest.com/terms/)
 * WMS: Depends on the map you are including - check it before including it!
 
 == Installation ==
