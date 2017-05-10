@@ -115,14 +115,12 @@ class nggAdmin{
         if ($output == false)
             return $galleryID;
 
-        if ($galleryID != false && !isset($_REQUEST['attach_to_post'])) {
-            $message  = __('Gallery ID %1$s successfully created. You can show this gallery in your post or page with the shortcode %2$s.<br/>','nggallery');
-            $message  = sprintf($message, $galleryID, '<strong>[nggallery id=' . $galleryID . ']</strong>');
-            $message .= '<a href="' . admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid=' . $galleryID . '" >';
-            $message .= __('Edit gallery','nggallery');
-            $message .= '</a>';
-
-            if ($output) nggGallery::show_message($message, 'gallery_created_msg');
+        if ($galleryID != false && !isset($_REQUEST['attach_to_post']))
+        {
+            $url = admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid=' . $galleryID;
+            $message = sprintf(__('Gallery successfully created. <a href="%s" target="_blank">Manage gallery</a>', 'nggallery'), $url);
+            if ($output)
+                nggGallery::show_message($message, 'gallery_created_msg');
         }
         return true;
     }

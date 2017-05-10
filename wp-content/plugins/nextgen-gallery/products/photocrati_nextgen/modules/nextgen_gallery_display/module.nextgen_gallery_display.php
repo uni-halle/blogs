@@ -10,16 +10,23 @@ if (!defined('NGG_SHOW_DISPLAYED_GALLERY_ERRORS')) define('NGG_SHOW_DISPLAYED_GA
 
 class M_Gallery_Display extends C_Base_Module
 {
-	function define()
+	function define($id = 'pope-module',
+                    $name = 'Pope Module',
+                    $description = '',
+                    $version = '',
+                    $uri = '',
+                    $author = '',
+                    $author_uri = '',
+                    $context = FALSE)
 	{
 		parent::define(
 			'photocrati-nextgen_gallery_display',
 			'Gallery Display',
 			'Provides the ability to display gallery of images',
-			'0.16',
-			'https://www.imagely.com',
-			'Photocrati Media',
-			'https://www.imagely.com'
+			'0.17',
+      'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
+      'Imagely',
+      'https://www.imagely.com'
 		);
 
 		C_Photocrati_Installer::add_handler($this->module_id, 'C_Display_Type_Installer');
@@ -492,6 +499,33 @@ class M_Gallery_Display extends C_Base_Module
             'Mixin_Display_Type_Form' 		=> 'mixin.display_type_form.php'
         );
     }
+
+    /**
+     * Gets a list of directories in which display type template might be stored
+     *
+     * @param C_Display_Type $display_type
+     * @return array
+     */
+    static function get_display_type_view_dirs($display_type)
+    {
+        if (!is_object($display_type)) $display_type = C_Display_Type_Mapper::get_instance()->find_by_name($display_type);
+
+        /* Create array of directories to scan */
+        $dirs = array(
+            'default' => C_Component_Registry::get_instance()->get_module_dir($display_type->name) . DIRECTORY_SEPARATOR . 'templates',
+            'custom' => WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'ngg' . DIRECTORY_SEPARATOR . 'modules' . DIRECTORY_SEPARATOR . $display_type->name . DIRECTORY_SEPARATOR . 'templates',
+        );
+
+        /* Apply filters so third party devs can add directories for their templates */
+        $dirs = apply_filters('ngg_display_type_template_dirs', $dirs, $display_type);
+        $dirs = apply_filters('ngg_' . $display_type->name . '_template_dirs', $dirs, $display_type);
+        foreach ($display_type->aliases as $alias) {
+          $dirs = apply_filters("ngg_{$alias}_template_dirs", $dirs, $display_type);
+        }
+
+        return $dirs;
+    }
+
 }
 
 class C_Display_Type_Installer

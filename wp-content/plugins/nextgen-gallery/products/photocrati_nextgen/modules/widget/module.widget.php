@@ -4,7 +4,14 @@ class M_Widget extends C_Base_Module
     /**
      * Defines the module name & version
      */
-    function define()
+    function define($id = 'pope-module',
+                    $name = 'Pope Module',
+                    $description = '',
+                    $version = '',
+                    $uri = '',
+                    $author = '',
+                    $author_uri = '',
+                    $context = FALSE)
     {
         parent::define(
             'photocrati-widget',
@@ -12,7 +19,7 @@ class M_Widget extends C_Base_Module
             'Handles clearing of NextGen Widgets',
             '0.6',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
-            'Photocrati Media',
+            'Imagely',
             'https://www.imagely.com'
         );
     }

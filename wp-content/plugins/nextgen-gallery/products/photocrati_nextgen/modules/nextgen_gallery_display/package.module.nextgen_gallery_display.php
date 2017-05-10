@@ -491,6 +491,49 @@ class Mixin_Display_Type_Controller extends Mixin
         }
         return array('entities' => $entities, 'longest' => $longest, 'widest' => $widest);
     }
+    /**
+     * Renders a view after checking for templates
+     */
+    function create_view($template, $params = array(), $context = NULL)
+    {
+        if (isset($params['displayed_gallery'])) {
+            if (isset($params['displayed_gallery']->display_settings)) {
+                if (isset($params['displayed_gallery']->display_settings['display_type_view'])) {
+                    if ('default' !== $params['displayed_gallery']->display_settings['display_type_view']) {
+                        $template = $this->get_display_type_view_abspath($template, $params);
+                    }
+                }
+            }
+        }
+        return $this->call_parent('create_view', $template, $params, $context);
+    }
+    /**
+     * Finds the abs path of template given file name and list of posssible directories
+     * @param string $template
+     * @param array $params
+     * @return string $template 
+     */
+    function get_display_type_view_abspath($template, $params)
+    {
+        /* Identify display type and display_type_view */
+        $display_type_name = $params['displayed_gallery']->display_type;
+        $display_type_view = $params['displayed_gallery']->display_settings['display_type_view'];
+        /* Fetch array of template directories */
+        $dirs = M_Gallery_Display::get_display_type_view_dirs($display_type_name);
+        /* Set abspath for template based on directory placeholder in display_type_view */
+        $path = pathinfo($display_type_view);
+        if ($path['dirname'] == ".") {
+            $template = $dirs['default'] . DIRECTORY_SEPARATOR . $path['basename'];
+        } else {
+            foreach ($dirs as $dir_name => $dir) {
+                if ($path['dirname'] == $dir_name) {
+                    $template = $dir . DIRECTORY_SEPARATOR . $path['basename'];
+                }
+            }
+        }
+        /* Return template. If no match is found, returns the original template */
+        return $template;
+    }
 }
 /**
  * Provides a datamapper to perform CRUD operations for Display Types
@@ -1203,6 +1246,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
         $container_ids = array();
         if (is_array($tags) && !in_array('all', array_map('strtolower', $tags))) {
             foreach ($tags as $ndx => $container) {
+                $container = esc_sql(str_replace('%', '%%', $container));
                 $container_ids[] = "'{$container}'";
             }
             $container_ids = implode(',', $container_ids);
@@ -2284,5 +2328,111 @@ class Mixin_Display_Type_Form extends Mixin
     function save_action($attributes = array())
     {
         return $this->object->get_model()->save(array('settings' => $attributes));
+    }
+    /**
+     * Renders the AJAX pagination settings field
+     *
+     * @param C_Display_Type $display_type
+     * @return string
+     */
+    function _render_ajax_pagination_field($display_type)
+    {
+        return $this->object->_render_radio_field($display_type, 'ajax_pagination', __('Enable AJAX pagination', 'nggallery'), isset($display_type->settings['ajax_pagination']) ? $display_type->settings['ajax_pagination'] : FALSE, __('Browse images without reloading the page.', 'nggallery'));
+    }
+    function _render_thumbnail_override_settings_field($display_type)
+    {
+        $hidden = !(isset($display_type->settings['override_thumbnail_settings']) ? $display_type->settings['override_thumbnail_settings'] : FALSE);
+        $override_field = $this->_render_radio_field($display_type, 'override_thumbnail_settings', __('Override thumbnail settings', 'nggallery'), isset($display_type->settings['override_thumbnail_settings']) ? $display_type->settings['override_thumbnail_settings'] : FALSE, __("This does not affect existing thumbnails; overriding the thumbnail settings will create an additional set of thumbnails. To change the size of existing thumbnails please visit 'Manage Galleries' and choose 'Create new thumbnails' for all images in the gallery.", 'nggallery'));
+        $dimensions_field = $this->object->render_partial('photocrati-nextgen_gallery_display#thumbnail_settings', array('display_type_name' => $display_type->name, 'name' => 'thumbnail_dimensions', 'label' => __('Thumbnail dimensions', 'nggallery'), 'thumbnail_width' => isset($display_type->settings['thumbnail_width']) ? intval($display_type->settings['thumbnail_width']) : 0, 'thumbnail_height' => isset($display_type->settings['thumbnail_height']) ? intval($display_type->settings['thumbnail_height']) : 0, 'hidden' => $hidden ? 'hidden' : '', 'text' => ''), TRUE);
+        /*
+        $qualities = array();
+        for ($i = 100; $i > 40; $i -= 5) { $qualities[$i] = "{$i}%"; }
+        $quality_field = $this->_render_select_field(
+            $display_type,
+            'thumbnail_quality',
+            __('Thumbnail quality', 'nggallery'),
+            $qualities,
+            isset($display_type->settings['thumbnail_quality']) ? $display_type->settings['thumbnail_quality'] : 100,
+            '',
+            $hidden
+        );
+        */
+        $crop_field = $this->_render_radio_field($display_type, 'thumbnail_crop', __('Thumbnail crop', 'nggallery'), isset($display_type->settings['thumbnail_crop']) ? $display_type->settings['thumbnail_crop'] : FALSE, '', $hidden);
+        /*
+        $watermark_field = $this->_render_radio_field(
+            $display_type,
+            'thumbnail_watermark',
+            __('Thumbnail watermark', 'nggallery'),
+            isset($display_type->settings['thumbnail_watermark']) ? $display_type->settings['thumbnail_watermark'] : FALSE,
+            '',
+            $hidden
+        );
+        */
+        $everything = $override_field . $dimensions_field . $crop_field;
+        return $everything;
+    }
+    /**
+     * Renders the thumbnail override settings field(s)
+     *
+     * @param C_Display_Type $display_type
+     * @return string
+     */
+    function _render_image_override_settings_field($display_type)
+    {
+        $hidden = !(isset($display_type->settings['override_image_settings']) ? $display_type->settings['override_image_settings'] : FALSE);
+        $override_field = $this->_render_radio_field($display_type, 'override_image_settings', __('Override image settings', 'nggallery'), isset($display_type->settings['override_image_settings']) ? $display_type->settings['override_image_settings'] : 0, __('Overriding the image settings will create an additional set of images', 'nggallery'));
+        $qualities = array();
+        for ($i = 100; $i > 40; $i -= 5) {
+            $qualities[$i] = "{$i}%";
+        }
+        $quality_field = $this->_render_select_field($display_type, 'image_quality', __('Image quality', 'nggallery'), $qualities, $display_type->settings['image_quality'], '', $hidden);
+        $crop_field = $this->_render_radio_field($display_type, 'image_crop', __('Image crop', 'nggallery'), $display_type->settings['image_crop'], '', $hidden);
+        $watermark_field = $this->_render_radio_field($display_type, 'image_watermark', __('Image watermark', 'nggallery'), $display_type->settings['image_watermark'], '', $hidden);
+        $everything = $override_field . $quality_field . $crop_field . $watermark_field;
+        return $everything;
+    }
+    /**
+     * Renders a field for selecting a template
+     *
+     * @param C_Display_Type $display_type
+     * @return string
+     */
+    function _render_display_type_view_field($display_type)
+    {
+        $display_type_views = $this->get_available_display_type_views($display_type);
+        return $this->object->_render_select_field($display_type, 'display_type_view', __('Select Template', 'nggallery'), $display_type_views, $display_type->settings['display_type_view'], '', FALSE);
+    }
+    /**
+     * Gets available templates
+     *
+     * @param C_Display_Type $display_type
+     * @return array
+     */
+    function get_available_display_type_views($display_type)
+    {
+        /* Set up templates array */
+        $views = array('default' => __('Default Template', 'nggallery'));
+        /* Fetch array of directories to scan */
+        $dirs = M_Gallery_Display::get_display_type_view_dirs($display_type);
+        /* Populate the views array by scanning each directory for relevant templates */
+        foreach ($dirs as $dir_name => $dir) {
+            /* Confirm directory exists */
+            if (!file_exists($dir) || !is_dir($dir)) {
+                continue;
+            }
+            /* Scan for template files and create array */
+            $files = scandir($dir);
+            $template_files = preg_grep('/^.+\\-template.php$/i', $files);
+            $template_files = $template_files ? array_combine($template_files, $template_files) : array();
+            /* For custom templates only, append directory name placeholder */
+            foreach ($template_files as $key => $value) {
+                if ($dir_name !== 'default') {
+                    $template_files[$dir_name . DIRECTORY_SEPARATOR . $key] = $dir_name . DIRECTORY_SEPARATOR . $value;
+                    unset($template_files[$key]);
+                }
+            }
+            $views = array_merge($views, $template_files);
+        }
+        return $views;
     }
 }

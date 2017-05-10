@@ -10,7 +10,14 @@ if (!function_exists(('file_get_html'))) require_once('simplehtmldom/simple_html
 
 class M_Simple_Html_Dom extends C_Base_Module
 {
-    function define()
+    function define($id = 'pope-module',
+                    $name = 'Pope Module',
+                    $description = '',
+                    $version = '',
+                    $uri = '',
+                    $author = '',
+                    $author_uri = '',
+                    $context = FALSE)
     {
         parent::define(
             'photocrati-simple_html_dom',
@@ -18,7 +25,7 @@ class M_Simple_Html_Dom extends C_Base_Module
             'Provides the simple_html_dom utility for other modules to use',
             '1.5',
             'https://www.imagely.com',
-            'Photocrati Media',
+            'Imagely',
             'https://www.imagely.com'
         );
     }

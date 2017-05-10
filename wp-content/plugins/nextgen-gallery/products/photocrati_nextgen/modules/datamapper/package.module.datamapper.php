@@ -1655,18 +1655,14 @@ class Mixin_DataMapper_Driver_Base extends Mixin
                         $entity->{$key} = strval($value);
                     }
                 } else {
-                    if (preg_match("/decimal|numeric|double/i", $column_type)) {
-                        $entity->{$key} = doubleval($value);
+                    if (preg_match("/decimal|numeric|double|float/i", $column_type)) {
+                        $entity->{$key} = floatval($value);
                     } else {
-                        if (preg_match("/float/i", $column_type)) {
-                            $entity->{$key} = floatval($value);
+                        if (preg_match("/int/i", $column_type)) {
+                            $entity->{$key} = intval($value);
                         } else {
-                            if (preg_match("/int/i", $column_type)) {
-                                $entity->{$key} = intval($value);
-                            } else {
-                                if (preg_match("/bool/i", $column_type)) {
-                                    $entity->{$key} = $value ? TRUE : FALSE;
-                                }
+                            if (preg_match("/bool/i", $column_type)) {
+                                $entity->{$key} = $value ? TRUE : FALSE;
                             }
                         }
                     }

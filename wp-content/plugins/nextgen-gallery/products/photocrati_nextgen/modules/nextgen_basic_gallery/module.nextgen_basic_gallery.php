@@ -19,7 +19,14 @@ define(
 
 class M_NextGen_Basic_Gallery extends C_Base_Module
 {
-    function define()
+    function define($id = 'pope-module',
+                    $name = 'Pope Module',
+                    $description = '',
+                    $version = '',
+                    $uri = '',
+                    $author = '',
+                    $author_uri = '',
+                    $context = FALSE)
     {
         parent::define(
             'photocrati-nextgen_basic_gallery',
@@ -27,7 +34,7 @@ class M_NextGen_Basic_Gallery extends C_Base_Module
             "Provides NextGEN Gallery's basic thumbnail/slideshow integrated gallery",
             '0.16',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
-            'Photocrati Media',
+            'Imagely',
             'https://www.imagely.com'
         );
 
@@ -334,7 +341,7 @@ function nggShowSlideshow($galleryID, $width, $height)
 
 class C_NextGen_Basic_Gallery_Installer extends C_Gallery_Display_Installer
 {
-	function install()
+	function install($reset = FALSE)
 	{
 		$this->install_display_type(NGG_BASIC_THUMBNAILS,
 			array(

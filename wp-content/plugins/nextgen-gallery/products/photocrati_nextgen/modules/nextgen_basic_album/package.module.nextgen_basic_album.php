@@ -190,6 +190,111 @@ class A_NextGen_Album_Breadcrumbs extends Mixin
     }
 }
 /**
+ * Because enqueueing an albums child entities (for use in lightboxes) is slow to do inside of cache_action() and
+ * we can't guarantee index_action() will run on every hit (thanks to page caching) we inline those entities into
+ * our basic albums templates under a window.load listener.
+ *
+ * @mixin C_MVC_View
+ * @adapts I_MVC_View
+ */
+class A_NextGen_Album_Child_Entities extends Mixin
+{
+    protected static $_runonce = FALSE;
+    public static $_entities = array();
+    /**
+     * The album controller will invoke this filter when its _render_album() method is called
+     */
+    function __construct()
+    {
+        if (!self::$_runonce) {
+            add_filter('ngg_album_prepared_child_entity', array($this, 'register_child_gallery'), 10, 2);
+        } else {
+            self::$_runonce = TRUE;
+        }
+    }
+    /**
+     * Register each gallery belonging to the album that has just been rendered, so that when the MVC controller
+     * system 'catches up' and runs $this->render_object() that method knows what galleries to inline as JS.
+     *
+     * @param array $gallery
+     * @param $displayed_gallery
+     * @return array mixed
+     */
+    function register_child_gallery($galleries, $displayed_gallery)
+    {
+        if (!$this->is_basic_album($displayed_gallery)) {
+            return $galleries;
+        }
+        $id = $displayed_gallery->ID();
+        foreach ($galleries as $gallery) {
+            if ($gallery->is_album) {
+                continue;
+            }
+            self::$_entities[$id][] = $gallery;
+        }
+        return $galleries;
+    }
+    function is_basic_album($displayed_gallery)
+    {
+        return in_array($displayed_gallery->display_type, array(NGG_BASIC_COMPACT_ALBUM, NGG_BASIC_EXTENDED_ALBUM));
+    }
+    /**
+     * Determine if we need to append the JS to the current template. This method static for the basic album controller to access.
+     *
+     * @param $display_settings
+     * @return bool
+     */
+    static function are_child_entities_enabled($display_settings)
+    {
+        $retval = FALSE;
+        if (empty($display_settings['open_gallery_in_lightbox'])) {
+            $display_settings['open_gallery_in_lightbox'] = 0;
+        }
+        if ($display_settings['open_gallery_in_lightbox'] == 1) {
+            $retval = TRUE;
+        }
+        return $retval;
+    }
+    /**
+     * Search inside the template for the inside of the container and append our inline JS
+     */
+    function render_object()
+    {
+        $root_element = $this->call_parent('render_object');
+        if ($displayed_gallery = $this->object->get_param('displayed_gallery')) {
+            if (!$this->is_basic_album($displayed_gallery)) {
+                return $root_element;
+            }
+            $ds = $displayed_gallery->display_settings;
+            if (self::are_child_entities_enabled($ds)) {
+                $id = $displayed_gallery->ID();
+                foreach ($root_element->find('nextgen_gallery.gallery_container', TRUE) as $container) {
+                    $container->append(self::generate_script(self::$_entities[$id]));
+                }
+            }
+        }
+        return $root_element;
+    }
+    /**
+     * Generate the JS that will be inserted into the template. This method static for the basic album controller to access.
+     *
+     * @param array $galleries
+     * @return string
+     */
+    static function generate_script($galleries)
+    {
+        $retval = '<script type="text/javascript">window.addEventListener("load", function() {';
+        foreach ($galleries as $gallery) {
+            $dg = $gallery->displayed_gallery;
+            $id = $dg->id();
+            $retval .= 'galleries.gallery_' . $id . ' = ' . json_encode($dg->get_entity()) . ';';
+            $retval .= 'galleries.gallery_' . $id . '.wordpress_page_root = "' . get_permalink() . '";';
+        }
+        $retval .= '}, false);</script>';
+        return $retval;
+    }
+}
+/**
  * Class A_NextGen_Album_Descriptions
  * @mixin C_MVC_View
  * @adapts I_MVC_View
@@ -310,10 +415,6 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
      */
     function index_action($displayed_gallery, $return = FALSE)
     {
-        // Ensure that the open_gallery_in_lightbox setting is present
-        if (!array_key_exists('open_gallery_in_lightbox', $displayed_gallery->display_settings)) {
-            $displayed_gallery->display_settings['open_gallery_in_lightbox'] = 0;
-        }
         $display_settings = $displayed_gallery->display_settings;
         // We need to fetch the album containers selected in the Attach
         // to Post interface. We need to do this, because once we fetch the
@@ -376,22 +477,26 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
         // If there are entities to be displayed
         if ($entities) {
             $pagination_result = $this->object->create_pagination($current_page, $displayed_gallery->get_entity_count(), $display_settings['galleries_per_page'], urldecode($this->object->param('ajax_pagination_referrer')));
+            $display_settings['entities'] = $entities;
+            $display_settings['pagination'] = $pagination_result['output'];
+            $display_settings['displayed_gallery'] = $displayed_gallery;
+            $display_settings = $this->prepare_legacy_album_params($displayed_gallery->get_entity(), $display_settings);
             if (!empty($display_settings['template']) && $display_settings['template'] != 'default') {
                 // Add additional parameters
                 $this->object->remove_param('ajax_pagination_referrer');
                 $display_settings['current_page'] = $current_page;
-                $display_settings['entities'] =& $entities;
                 $display_settings['pagination_prev'] = $pagination_result['prev'];
                 $display_settings['pagination_next'] = $pagination_result['next'];
-                $display_settings['pagination'] = $pagination_result['output'];
                 // Legacy templates lack a good way of injecting content at the right time
+                $this->object->add_mixin('Mixin_NextGen_Basic_Templates');
                 $this->object->add_mixin('A_NextGen_Album_Breadcrumbs');
                 $this->object->add_mixin('A_NextGen_Album_Descriptions');
                 $breadcrumbs = $this->object->render_legacy_template_breadcrumbs($displayed_gallery, $entities);
                 $description = $this->object->render_legacy_template_description($displayed_gallery);
-                // Render legacy template
-                $this->object->add_mixin('Mixin_NextGen_Basic_Templates');
-                $display_settings = $this->prepare_legacy_album_params($displayed_gallery->get_entity(), $display_settings);
+                // If enabled enqueue the child entities as JSON for lightboxes to read
+                if (A_NextGen_Album_Child_Entities::are_child_entities_enabled($display_settings)) {
+                    $script = A_NextGen_Album_Child_Entities::generate_script($entities);
+                }
                 $retval = $this->object->legacy_render($display_settings['template'], $display_settings, $return, 'album');
                 if (!empty($description)) {
                     $retval = $description . $retval;
@@ -399,35 +504,12 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
                 if (!empty($breadcrumbs)) {
                     $retval = $breadcrumbs . $retval;
                 }
+                if (!empty($script)) {
+                    $retval = $retval . $script;
+                }
                 return $retval;
             } else {
                 $params = $display_settings;
-                $albums = $this->prepare_legacy_album_params($displayed_gallery->get_entity(), array('entities' => $entities));
-                $params['pagination'] = $pagination_result['output'];
-                $params['image_gen_params'] = $albums['image_gen_params'];
-                $params['galleries'] = $albums['galleries'];
-                foreach ($params['galleries'] as &$gallery) {
-                    $gallery->entity_type = isset($gallery->is_gallery) && intval($gallery->is_gallery) ? 'gallery' : 'album';
-                    // If we're to open a gallery in a lightbox, we need to expose it to the lightbox
-                    // as a displayed gallery
-                    if (isset($params['open_gallery_in_lightbox']) && $gallery->entity_type == 'gallery') {
-                        $gallery->displayed_gallery = new C_Displayed_Gallery();
-                        $gallery->displayed_gallery->container_ids = array($gallery->{$gallery->id_field});
-                        $gallery->displayed_gallery->display_settings = $displayed_gallery->display_settings;
-                        $gallery->displayed_gallery->returns = 'included';
-                        $gallery->displayed_gallery->source = 'galleries';
-                        $gallery->displayed_gallery->images_list_count = $gallery->displayed_gallery->get_entity_count();
-                        $gallery->displayed_gallery->is_album_gallery = TRUE;
-                        $gallery->displayed_gallery->to_transient();
-                        if ($this->does_lightbox_support_displayed_gallery($displayed_gallery)) {
-                            $gallery->displayed_gallery->effect_code = $this->object->get_effect_code($gallery->displayed_gallery);
-                        }
-                        // Add "galleries.gallery_1 = {};"
-                        $this->object->_add_script_data('ngg_common', 'galleries.gallery_' . $gallery->displayed_gallery->id(), (array) $gallery->displayed_gallery->get_entity(), FALSE);
-                        $this->object->_add_script_data('ngg_common', 'galleries.gallery_' . $gallery->displayed_gallery->id() . '.wordpress_page_root', get_permalink(), FALSE);
-                    }
-                }
-                $params['displayed_gallery'] = $displayed_gallery;
                 $params = $this->object->prepare_display_parameters($displayed_gallery, $params);
                 switch ($displayed_gallery->display_type) {
                     case NGG_BASIC_COMPACT_ALBUM:
@@ -442,6 +524,26 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
         } else {
             return $this->object->render_partial('photocrati-nextgen_gallery_display#no_images_found', array(), $return);
         }
+    }
+    /**
+     * Creates a displayed gallery of a gallery belonging to an album. Shared by index_action() and cache_action() to
+     * allow lightboxes to open album children directly.
+     *
+     * @param $gallery
+     * @param $display_settings
+     * @return $gallery
+     */
+    function make_child_displayed_gallery($gallery, $display_settings)
+    {
+        $gallery->displayed_gallery = new C_Displayed_Gallery();
+        $gallery->displayed_gallery->container_ids = array($gallery->{$gallery->id_field});
+        $gallery->displayed_gallery->display_settings = $display_settings;
+        $gallery->displayed_gallery->returns = 'included';
+        $gallery->displayed_gallery->source = 'galleries';
+        $gallery->displayed_gallery->images_list_count = $gallery->displayed_gallery->get_entity_count();
+        $gallery->displayed_gallery->is_album_gallery = TRUE;
+        $gallery->displayed_gallery->to_transient();
+        return $gallery;
     }
     function add_breadcrumbs_to_legacy_templates($html, $displayed_gallery)
     {
@@ -548,9 +650,19 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
                     $gallery->pagelink = $this->object->set_param_for($pagelink, 'gallery', $gallery->slug);
                 }
             }
+            // Mark the child type
+            $gallery->entity_type = isset($gallery->is_gallery) && intval($gallery->is_gallery) ? 'gallery' : 'album';
+            // If this setting is on we need to inject an effect code
+            if (!empty($displayed_gallery->display_settings['open_gallery_in_lightbox']) && $gallery->entity_type == 'gallery') {
+                $gallery = $this->object->make_child_displayed_gallery($gallery, $displayed_gallery->display_settings);
+                if ($this->does_lightbox_support_displayed_gallery($displayed_gallery)) {
+                    $gallery->displayed_gallery->effect_code = $this->object->get_effect_code($gallery->displayed_gallery);
+                }
+            }
             // Let plugins modify the gallery
             $gallery = apply_filters('ngg_album_galleryobject', $gallery);
         }
+        $params['galleries'] = apply_filters('ngg_album_prepared_child_entity', $params['galleries'], $params['displayed_gallery']);
         $params['album'] = reset($this->albums);
         $params['albums'] = $this->albums;
         // Clean up

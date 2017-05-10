@@ -370,7 +370,7 @@ class A_NextGen_Basic_Thumbnail_Form extends Mixin_Display_Type_Form
      */
     function _get_field_names()
     {
-        return array('thumbnail_override_settings', 'nextgen_basic_thumbnails_images_per_page', 'nextgen_basic_thumbnails_number_of_columns', 'nextgen_basic_thumbnails_ajax_pagination', 'nextgen_basic_thumbnails_hidden', 'nextgen_basic_thumbnails_imagebrowser_effect', 'nextgen_basic_thumbnails_show_slideshow_link', 'nextgen_basic_thumbnails_slideshow_link_text', 'nextgen_basic_templates_template');
+        return array('thumbnail_override_settings', 'nextgen_basic_thumbnails_images_per_page', 'nextgen_basic_thumbnails_number_of_columns', 'ajax_pagination', 'nextgen_basic_thumbnails_hidden', 'nextgen_basic_thumbnails_imagebrowser_effect', 'nextgen_basic_thumbnails_show_slideshow_link', 'nextgen_basic_thumbnails_slideshow_link_text', 'nextgen_basic_templates_template');
     }
     /**
      * Renders the images_per_page settings field
@@ -405,16 +405,6 @@ class A_NextGen_Basic_Thumbnail_Form extends Mixin_Display_Type_Form
     function _render_nextgen_basic_thumbnails_imagebrowser_effect_field($display_type)
     {
         return $this->_render_radio_field($display_type, 'use_imagebrowser_effect', __('Use imagebrowser effect', 'nggallery'), $display_type->settings['use_imagebrowser_effect'], __('When active each image in the gallery will link to an imagebrowser display and lightbox effects will not be applied.', 'nggallery'));
-    }
-    /**
-     * Renders the AJAX pagination settings field
-     *
-     * @param C_Display_Type $display_type
-     * @return string
-     */
-    function _render_nextgen_basic_thumbnails_ajax_pagination_field($display_type)
-    {
-        return $this->_render_radio_field($display_type, 'ajax_pagination', __('Enable AJAX pagination', 'nggallery'), $display_type->settings['ajax_pagination'], __('Browse images without reloading the page.', 'nggallery'));
     }
     /**
      * Renders the show_slideshow_link settings field

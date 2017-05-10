@@ -74,10 +74,109 @@ class A_NextGen_Admin_Default_Pages extends Mixin
         return $this->call_parent('setup');
     }
 }
+class C_Review_Notice
+{
+    function __construct($params = array())
+    {
+        $this->_data['name'] = $params['name'];
+        $this->_data['range'] = $params['range'];
+        $this->_data['follows'] = $params['follows'];
+    }
+    function get_name()
+    {
+        return $this->_data['name'];
+    }
+    function get_gallery_count()
+    {
+        // Get the total # of galleries if we don't have them
+        $settings = C_NextGen_Settings::get_instance();
+        $count = $settings->get('gallery_count', FALSE);
+        if (!$count) {
+            $count = M_NextGen_Admin::update_gallery_count_setting();
+        }
+        return $count;
+    }
+    function get_range()
+    {
+        return $this->_data['range'];
+    }
+    function is_renderable()
+    {
+        return ($this->is_on_dashboard() || $this->is_on_ngg_admin_page()) && $this->is_at_gallery_count() && $this->is_previous_notice_dismissed() && $this->gallery_created_flag_check();
+    }
+    function gallery_created_flag_check()
+    {
+        $settings = C_NextGen_Settings::get_instance();
+        return $settings->get('gallery_created_after_reviews_introduced');
+    }
+    function is_at_gallery_count()
+    {
+        $retval = FALSE;
+        $range = $this->_data['range'];
+        $count = $this->get_gallery_count();
+        $manager = C_Admin_Notification_Manager::get_instance();
+        // Determine if we match the current range
+        if ($count >= $range['min'] && $count <= $range['max']) {
+            $retval = TRUE;
+        }
+        // If the current number of galleries exceeds the parent notice's maximum we should dismiss the parent
+        if (!empty($this->_data['follows'])) {
+            $follows = $this->_data['follows'];
+            $parent_range = $follows->get_range();
+            if ($count > $parent_range['max'] && !$manager->is_dismissed($follows->get_name())) {
+                $manager->dismiss($follows->get_name(), 2);
+            }
+        }
+        return $retval;
+    }
+    function is_previous_notice_dismissed($level = FALSE)
+    {
+        $retval = FALSE;
+        $manager = C_Admin_Notification_Manager::get_instance();
+        if (empty($level)) {
+            $level = $this;
+        }
+        if (!empty($level->_data['follows'])) {
+            $parent = $level->_data['follows'];
+            $retval = $manager->is_dismissed($parent->get_name());
+            if (!$retval && !empty($parent->_data['follows'])) {
+                $retval = $this->is_previous_notice_dismissed($parent);
+            }
+        } else {
+            $retval = TRUE;
+        }
+        return $retval;
+    }
+    function is_on_dashboard()
+    {
+        return preg_match('#/wp-admin/?(index\\.php)?$#', $_SERVER['REQUEST_URI']) == TRUE;
+    }
+    function is_on_ngg_admin_page()
+    {
+        // Do not show this notification inside of the ATP popup
+        return (preg_match("/wp-admin.*(ngg|nextgen).*/", $_SERVER['REQUEST_URI']) || isset($_REQUEST['page']) && preg_match("/ngg|nextgen/", $_REQUEST['page'])) && strpos(strtolower($_SERVER['REQUEST_URI']), '&attach_to_post') == false;
+    }
+    function render()
+    {
+        $view = new C_MVC_View('photocrati-nextgen_admin#review_notice', array('number' => $this->get_gallery_count()));
+        return $view->render(TRUE);
+    }
+    function dismiss($code)
+    {
+        $retval = array('dismiss' => TRUE, 'persist' => TRUE, 'success' => TRUE, 'code' => $code, 'dismiss_code' => $code);
+        $manager = C_Admin_Notification_Manager::get_instance();
+        if ($code == 1 || $code == 3) {
+            $retval['review_level_1'] = $manager->dismiss('review_level_1', 2);
+            $retval['review_level_2'] = $manager->dismiss('review_level_2', 2);
+            $retval['review_level_3'] = $manager->dismiss('review_level_3', 2);
+        }
+        return $retval;
+    }
+}
 class C_Admin_Notification_Wrapper
 {
-    var $_name;
-    var $_data;
+    public $_name;
+    public $_data;
     function __construct($name, $data)
     {
         $this->_name = $name;
@@ -98,9 +197,12 @@ class C_Admin_Notification_Wrapper
 }
 class C_Admin_Notification_Manager
 {
-    var $_notifications = array();
-    var $_displayed_notice = FALSE;
-    var $_dismiss_url = NULL;
+    public $_notifications = array();
+    public $_displayed_notice = FALSE;
+    public $_dismiss_url = NULL;
+    /**
+     * @var C_Admin_Notification_Manager
+     */
     static $_instance = NULL;
     static function get_instance()
     {
@@ -154,25 +256,55 @@ class C_Admin_Notification_Manager
         }
         return $retval;
     }
-    function dismiss($name)
+    function dismiss($name, $dismiss_code = 1)
     {
-        $retval = FALSE;
+        $response = array();
         if ($handler = $this->get_handler_instance($name)) {
             $has_method = method_exists($handler, 'is_dismissable');
             if ($has_method && $handler->is_dismissable() || !$has_method) {
-                $settings = C_NextGen_Settings::get_instance();
-                $dismissed = $settings->get('dismissed_notifications', array());
-                if (!isset($dismissed[$name])) {
-                    $dismissed[$name] = array();
+                if (method_exists($handler, 'dismiss')) {
+                    $response = $handler->dismiss($dismiss_code);
+                    $response['handled'] = TRUE;
                 }
-                $user_id = get_current_user_id();
-                $dismissed[$name][] = $user_id ? $user_id : 'unknown';
-                $settings->set('dismissed_notifications', $dismissed);
-                $settings->save();
-                $retval = TRUE;
+                if (is_bool($response)) {
+                    $response = array('dismiss' => $response);
+                }
+                // Set default key/values
+                if (!isset($response['handled'])) {
+                    $response['handled'] = FALSE;
+                }
+                if (!isset($response['dismiss'])) {
+                    $response['dismiss'] = TRUE;
+                }
+                if (!isset($response['persist'])) {
+                    $response['persist'] = $response['dismiss'];
+                }
+                if (!isset($response['success'])) {
+                    $response['success'] = $response['dismiss'];
+                }
+                if (!isset($response['code'])) {
+                    $response['code'] = $dismiss_code;
+                }
+                if ($response['dismiss']) {
+                    $settings = C_NextGen_Settings::get_instance();
+                    $dismissed = $settings->get('dismissed_notifications', array());
+                    if (!isset($dismissed[$name])) {
+                        $dismissed[$name] = array();
+                    }
+                    $user_id = get_current_user_id();
+                    $dismissed[$name][] = $user_id ? $user_id : 'unknown';
+                    $settings->set('dismissed_notifications', $dismissed);
+                    if ($response['persist']) {
+                        $settings->save();
+                    }
+                }
+            } else {
+                $response['error'] = __("Notice is not dismissible", 'nggallery');
             }
+        } else {
+            $response['error'] = __("No handler defined for this notice", 'nggallery');
         }
-        return $retval;
+        return $response;
     }
     function get_handler_instance($name)
     {
@@ -201,14 +333,19 @@ class C_Admin_Notification_Manager
     {
         $retval = array('failure' => TRUE);
         if (isset($_REQUEST['ngg_dismiss_notice'])) {
-            header('Content-Type: application/json');
-            //			ob_start();
-            if (isset($_REQUEST['name']) && $this->dismiss($_REQUEST['name'])) {
-                $retval = array('success' => TRUE);
+            if (!headers_sent()) {
+                header('Content-Type: application/json');
+            }
+            ob_start();
+            if (!isset($_REQUEST['code'])) {
+                $_REQUEST['code'] = 1;
+            }
+            if (isset($_REQUEST['name'])) {
+                $retval = $this->dismiss($_REQUEST['name'], intval($_REQUEST['code']));
             } else {
                 $retval['msg'] = __('Not a valid notice name', 'nggallery');
             }
-            //			ob_end_clean();
+            ob_end_clean();
             echo json_encode($retval);
             throw new E_Clean_Exit();
         }
@@ -220,7 +357,8 @@ class C_Admin_Notification_Manager
             // Does the handler want to render?
             $has_method = method_exists($handler, 'is_renderable');
             if ($has_method && $handler->is_renderable() || !$has_method) {
-                $view = new C_MVC_View('photocrati-nextgen_admin#admin_notice', array('css_class' => method_exists($handler, 'get_css_class') ? $handler->get_css_class() : 'updated', 'is_dismissable' => method_exists($handler, 'is_dismissable') ? $handler->is_dismissable() : FALSE, 'html' => method_exists($handler, 'render') ? $handler->render() : '', 'notice_name' => $name));
+                $show_dismiss_button = method_exists($handler, 'show_dismiss_button') ? $handler->show_dismiss_button() : method_exists($handler, 'is_dismissable') ? $handler->is_dismissable() : FALSE;
+                $view = new C_MVC_View('photocrati-nextgen_admin#admin_notice', array('css_class' => method_exists($handler, 'get_css_class') ? $handler->get_css_class() : 'updated', 'is_dismissable' => method_exists($handler, 'is_dismissable') ? $handler->is_dismissable() : FALSE, 'html' => method_exists($handler, 'render') ? $handler->render() : '', 'show_dismiss_button' => $show_dismiss_button, 'notice_name' => $name));
                 $retval = $view->render(TRUE);
                 $this->_displayed_notice = TRUE;
             }
@@ -350,62 +488,6 @@ class Mixin_Form_Field_Generators extends Mixin
     function _render_color_field($display_type, $name, $label, $value, $text = '', $hidden = FALSE)
     {
         return $this->object->render_partial('photocrati-nextgen_admin#field_generator/nextgen_settings_field_color', array('display_type_name' => $display_type->name, 'name' => $name, 'label' => $label, 'value' => $value, 'text' => $text, 'hidden' => $hidden), True);
-    }
-    function _render_ajax_pagination_field($display_type)
-    {
-        return $this->object->_render_radio_field($display_type, 'ajax_pagination', __('Enable AJAX pagination', 'nggallery'), isset($display_type->settings['ajax_pagination']) ? $display_type->settings['ajax_pagination'] : FALSE);
-    }
-    function _render_thumbnail_override_settings_field($display_type)
-    {
-        $hidden = !(isset($display_type->settings['override_thumbnail_settings']) ? $display_type->settings['override_thumbnail_settings'] : FALSE);
-        $override_field = $this->_render_radio_field($display_type, 'override_thumbnail_settings', __('Override thumbnail settings', 'nggallery'), isset($display_type->settings['override_thumbnail_settings']) ? $display_type->settings['override_thumbnail_settings'] : FALSE, __("This does not affect existing thumbnails; overriding the thumbnail settings will create an additional set of thumbnails. To change the size of existing thumbnails please visit 'Manage Galleries' and choose 'Create new thumbnails' for all images in the gallery.", 'nggallery'));
-        $dimensions_field = $this->object->render_partial('photocrati-nextgen_admin#field_generator/thumbnail_settings', array('display_type_name' => $display_type->name, 'name' => 'thumbnail_dimensions', 'label' => __('Thumbnail dimensions', 'nggallery'), 'thumbnail_width' => isset($display_type->settings['thumbnail_width']) ? intval($display_type->settings['thumbnail_width']) : 0, 'thumbnail_height' => isset($display_type->settings['thumbnail_height']) ? intval($display_type->settings['thumbnail_height']) : 0, 'hidden' => $hidden ? 'hidden' : '', 'text' => ''), TRUE);
-        /*
-        $qualities = array();
-        for ($i = 100; $i > 40; $i -= 5) { $qualities[$i] = "{$i}%"; }
-        $quality_field = $this->_render_select_field(
-            $display_type,
-            'thumbnail_quality',
-            __('Thumbnail quality', 'nggallery'),
-            $qualities,
-            isset($display_type->settings['thumbnail_quality']) ? $display_type->settings['thumbnail_quality'] : 100,
-            '',
-            $hidden
-        );
-        */
-        $crop_field = $this->_render_radio_field($display_type, 'thumbnail_crop', __('Thumbnail crop', 'nggallery'), isset($display_type->settings['thumbnail_crop']) ? $display_type->settings['thumbnail_crop'] : FALSE, '', $hidden);
-        /*
-        $watermark_field = $this->_render_radio_field(
-            $display_type,
-            'thumbnail_watermark',
-            __('Thumbnail watermark', 'nggallery'),
-            isset($display_type->settings['thumbnail_watermark']) ? $display_type->settings['thumbnail_watermark'] : FALSE,
-            '',
-            $hidden
-        );
-        */
-        $everything = $override_field . $dimensions_field . $crop_field;
-        return $everything;
-    }
-    /**
-     * Renders the thumbnail override settings field(s)
-     *
-     * @param C_Display_Type $display_type
-     * @return string
-     */
-    function _render_image_override_settings_field($display_type)
-    {
-        $hidden = !(isset($display_type->settings['override_image_settings']) ? $display_type->settings['override_image_settings'] : FALSE);
-        $override_field = $this->_render_radio_field($display_type, 'override_image_settings', __('Override image settings', 'nggallery'), isset($display_type->settings['override_image_settings']) ? $display_type->settings['override_image_settings'] : 0, __('Overriding the image settings will create an additional set of images', 'nggallery'));
-        $qualities = array();
-        for ($i = 100; $i > 40; $i -= 5) {
-            $qualities[$i] = "{$i}%";
-        }
-        $quality_field = $this->_render_select_field($display_type, 'image_quality', __('Image quality', 'nggallery'), $qualities, $display_type->settings['image_quality'], '', $hidden);
-        $crop_field = $this->_render_radio_field($display_type, 'image_crop', __('Image crop', 'nggallery'), $display_type->settings['image_crop'], '', $hidden);
-        $watermark_field = $this->_render_radio_field($display_type, 'image_watermark', __('Image watermark', 'nggallery'), $display_type->settings['image_watermark'], '', $hidden);
-        $everything = $override_field . $quality_field . $crop_field . $watermark_field;
-        return $everything;
     }
     /**
      * Renders a pair of fields for width and width-units (px, em, etc)
@@ -621,7 +703,7 @@ if (!class_exists('C_NextGen_Admin_Installer')) {
 class C_NextGen_Admin_Page_Controller extends C_MVC_Controller
 {
     static $_instances = array();
-    static function &get_instance($context = FALSE)
+    static function get_instance($context = FALSE)
     {
         if (!isset(self::$_instances[$context])) {
             $klass = get_class();

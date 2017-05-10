@@ -39,10 +39,12 @@ class nggManageGallery {
 		// Should be called via a publish dialog
 		if ( isset($_POST['page']) && $_POST['page'] == 'publish-post' )
 			$this->publish_post();
+
 		//Look for other POST process
 		if ( !empty($_POST) || !empty($_GET) )
 			$this->processor();
 
+        M_NextGen_Admin::emit_do_notices_action();
 	}
 
 	function controller() {

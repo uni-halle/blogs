@@ -23,9 +23,26 @@ Follow variables are useable :
 	<div class="ngg-album-compact">
 		<div class="ngg-album-compactbox">
 			<div class="ngg-album-link">
-				<a class="Link" href="<?php echo nextgen_esc_url($gallery->pagelink) ?>">
-					<img class="Thumb" alt="<?php echo esc_attr($gallery->title) ?>" src="<?php echo nextgen_esc_url($gallery->previewurl) ?>"/>
-				</a>
+                <?php if ($open_gallery_in_lightbox && $gallery->entity_type == 'gallery') { ?>
+                    <a <?php echo $gallery->displayed_gallery->effect_code; ?>
+                       href="<?php echo esc_attr($gallery->previewpic_fullsized_url); ?>"
+                       data-fullsize="<?php echo esc_attr($gallery->previewpic_fullsized_url); ?>"
+                       data-src="<?php echo esc_attr($gallery->previewpic_fullsized_url); ?>"
+                       data-thumbnail="<?php echo esc_attr($gallery->previewurl); ?>"
+                       data-title="<?php echo esc_attr($gallery->previewpic_image->alttext); ?>"
+                       data-description="<?php echo esc_attr(stripslashes($gallery->previewpic_image->description)); ?>"
+                       data-image-id="<?php echo esc_attr($gallery->previewpic); ?>">
+                        <img class="Thumb"
+                             alt="<?php echo esc_attr($gallery->title); ?>"
+                             src="<?php echo nextgen_esc_url($gallery->previewurl); ?>"/>
+                    </a>
+                <?php } else { ?>
+                    <a class="Link" href="<?php echo nextgen_esc_url($gallery->pagelink); ?>">
+                        <img class="Thumb"
+                             alt="<?php echo esc_attr($gallery->title); ?>"
+                             src="<?php echo nextgen_esc_url($gallery->previewurl); ?>"/>
+                    </a>
+                <?php } ?>
 			</div>
 		</div>
         <?php if (!empty($image_gen_params)) {

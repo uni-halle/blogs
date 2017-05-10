@@ -11,15 +11,22 @@ define('NGG_BASIC_TAGCLOUD', 'photocrati-nextgen_basic_tagcloud');
 
 class M_NextGen_Basic_Tagcloud extends C_Base_Module
 {
-    function define()
+    function define($id = 'pope-module',
+                    $name = 'Pope Module',
+                    $description = '',
+                    $version = '',
+                    $uri = '',
+                    $author = '',
+                    $author_uri = '',
+                    $context = FALSE)
     {
         parent::define(
 			NGG_BASIC_TAGCLOUD,
             'NextGen Basic Tagcloud',
             'Provides a tagcloud for NextGEN Gallery',
             '0.15',
-            'https://www.imagely.com',
-            'Photocrati Media',
+            'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
+            'Imagely',
             'https://www.imagely.com'
         );
 
@@ -160,7 +167,7 @@ class C_NextGen_Basic_Tagcloud_Installer extends C_Gallery_Display_Installer
 	/**
 	 * Installs the display type for NextGEN Basic Tagcloud
 	 */
-	function install()
+	function install($reset = FALSE)
 	{
 		$this->install_display_type(
 			NGG_BASIC_TAGCLOUD, array(

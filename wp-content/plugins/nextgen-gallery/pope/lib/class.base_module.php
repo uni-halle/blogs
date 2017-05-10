@@ -63,7 +63,10 @@ abstract class C_Base_Module
 
 	function load()
 	{
-		@include_once($this->get_package_abspath());
+	    // Package files may not exist until releases are built
+	    $path = $this->get_package_abspath();
+		if (@file_exists($path))
+		    @include_once($path);
 
 		$this->_register_utilities();
 		$this->_register_adapters();

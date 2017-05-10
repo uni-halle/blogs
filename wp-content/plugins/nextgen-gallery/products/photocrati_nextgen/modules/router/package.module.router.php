@@ -27,7 +27,7 @@ class C_Http_Response_Controller extends C_Component
         }
         return self::$_instance;
     }
-    function define()
+    function define($context = FALSE)
     {
         $this->add_mixin('Mixin_Http_Response_Actions');
         $this->implement('I_Http_Response');

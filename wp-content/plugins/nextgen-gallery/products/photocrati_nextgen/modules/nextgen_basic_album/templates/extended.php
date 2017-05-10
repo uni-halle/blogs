@@ -1,39 +1,29 @@
 <?php $this->start_element('nextgen_gallery.gallery_container', 'container', $displayed_gallery); ?>
 <div class="ngg-albumoverview">
-    <?php foreach ($galleries as $gallery) { ?>
+    <?php foreach ($galleries as $gallery) {
+        if ($open_gallery_in_lightbox && $gallery->entity_type == 'gallery') {
+            $anchor = $gallery->displayed_gallery->effect_code . "
+                      href='" . nextgen_esc_url($gallery->pagelink) . "'
+                      data-src='" . esc_attr($gallery->previewpic_fullsized_url) . "'
+                      data-fullsize='" . esc_attr($gallery->previewpic_fullsized_url) . "'
+                      data-thumbnail='" . esc_attr($gallery->previewurl) . "'
+                      data-title='" . esc_attr($gallery->previewpic_image->alttext) . "'
+                      data-description='" . esc_attr(stripslashes($gallery->previewpic_image->description)) . "'
+                      data-image-id='" . esc_attr($gallery->previewpic) . "'";
+        } else {
+            $anchor = "class='gallery_link' href='" . nextgen_esc_url($gallery->pagelink) . "'";
+        } ?>
         <div class="ngg-album">
             <div class="ngg-albumtitle">
-                <a href="<?php echo nextgen_esc_url($gallery->pagelink); ?>"><?php echo_safe_html($gallery->title); ?></a>
+                <a <?php echo $anchor; ?>><?php echo_safe_html($gallery->title); ?></a>
             </div>
             <div class="ngg-albumcontent">
                 <div class="ngg-thumbnail">
-                <?php if ($open_gallery_in_lightbox AND $gallery->entity_type == 'gallery'): ?>
-                    <a
-                        <?php echo $gallery->displayed_gallery->effect_code ?>
-                        href="<?php echo esc_attr($gallery->previewpic_fullsized_url)?>"
-                        data-fullsize="<?php echo esc_attr($gallery->previewpic_fullsized_url) ?>"
-                        data-src="http://sandbox.dev/wp-content/gallery/wood-cutting/DSC_0236.JPG"
-                        data-thumbnail="<?php echo esc_attr($gallery->previewurl)?>"
-                        data-title="<?php echo esc_attr($gallery->previewpic_image->alttext)?>"
-                        data-description="<?php echo esc_attr(stripslashes($gallery->previewpic_image->description))?>"
-                        data-image-id="<?php echo esc_attr($gallery->previewpic)?>"
-                    >
+                    <a <?php echo $anchor; ?>>
                         <img class="Thumb"
                              alt="<?php echo esc_attr($gallery->title); ?>"
                              src="<?php echo nextgen_esc_url($gallery->previewurl); ?>"/>
                     </a>
-                <?php else: ?>
-                        <a
-                            class="gallery_link"
-                            href="<?php echo nextgen_esc_url($gallery->pagelink); ?>"
-                        >
-                            <img
-                                class="Thumb"
-                                alt="<?php echo esc_attr($gallery->title); ?>"
-                                src="<?php echo nextgen_esc_url($gallery->previewurl); ?>"
-                            />
-                        </a>
-                <?php endif ?>
                 </div>
                 <div class="ngg-description">
                     <p><?php echo_safe_html($gallery->galdesc); ?></p>
@@ -44,6 +34,6 @@
             </div>
         </div>
     <?php } ?>
-    <?php echo $pagination ?>
+    <?php echo $pagination; ?>
 </div>
 <?php $this->end_element(); ?>

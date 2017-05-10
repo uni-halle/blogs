@@ -353,7 +353,9 @@ jQuery(function($){
                     'exclusions',
                     'sortorder',
                     '__defaults_set',
-                    'id_field'
+                    'id_field',
+                    'post_category',
+                    'ID'
                 ];
 
                 if (skipped.indexOf(key) > -1) continue;

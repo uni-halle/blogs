@@ -12,7 +12,14 @@ define('NGG_BASIC_EXTENDED_ALBUM', 'photocrati-nextgen_basic_extended_album');
 
 class M_NextGen_Basic_Album extends C_Base_Module
 {
-	function define()
+	function define($id = 'pope-module',
+                    $name = 'Pope Module',
+                    $description = '',
+                    $version = '',
+                    $uri = '',
+                    $author = '',
+                    $author_uri = '',
+                    $context = FALSE)
     {
         parent::define(
             'photocrati-nextgen_basic_album',
@@ -20,7 +27,7 @@ class M_NextGen_Basic_Album extends C_Base_Module
             "Provides support for NextGEN's Basic Album",
             '0.17',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
-            'Photocrati Media',
+            'Imagely',
             'https://www.imagely.com'
         );
 
@@ -74,6 +81,7 @@ class M_NextGen_Basic_Album extends C_Base_Module
 
             $this->get_registry()->add_adapter('I_MVC_View', 'A_NextGen_Album_Breadcrumbs');
             $this->get_registry()->add_adapter('I_MVC_View', 'A_NextGen_Album_Descriptions');
+            $this->get_registry()->add_adapter('I_MVC_View', 'A_NextGen_Album_Child_Entities');
         }
 
 
@@ -168,6 +176,7 @@ class M_NextGen_Basic_Album extends C_Base_Module
         return array(
             'A_NextGen_Album_Breadcrumbs' => 'adapter.nextgen_album_breadcrumbs.php',
             'A_NextGen_Album_Descriptions' => 'adapter.nextgen_album_descriptions.php',
+            'A_NextGen_Album_Child_Entities' => 'adapter.nextgen_album_child_entities.php',
             'A_Nextgen_Basic_Album' => 'adapter.nextgen_basic_album.php',
             'A_Nextgen_Basic_Album_Controller' => 'adapter.nextgen_basic_album_controller.php',
             'A_Nextgen_Basic_Album_Mapper' => 'adapter.nextgen_basic_album_mapper.php',
@@ -182,7 +191,7 @@ class M_NextGen_Basic_Album extends C_Base_Module
 
 class C_NextGen_Basic_Album_Installer extends C_Gallery_Display_Installer
 {
-	function install()
+	function install($reset = FALSE)
 	{
 		$this->install_display_type(
 			NGG_BASIC_COMPACT_ALBUM, array(

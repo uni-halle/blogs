@@ -1,6 +1,29 @@
 NextGEN Gallery
 by Imagely
 
+= V2.2.3 - 04.05.2017 =
+* Fixed:    E_WARNING on Gallery Settings page due to improper use of array_combine() on PHP <= 5.3
+
+= V2.2.2 -  04.04.2017 =
+* Fixed:    Hyperlinks in image descriptions
+* Fixed:    WordPress SEO sitemap image count
+* Fixed:    Removed id parameter in shortcodes
+* Fixed:    Fatal error in Freemius code
+
+= V2.2.1 - 03.13.2017 =
+* NEW:      Template mechanism for all display types
+* NEW:      Review notices
+* Changed:  Updated branding to Imagely
+* Changed:  Added the ability to click on a gallery title and have it open direct to Pro Lightbox
+* Fixed:    Problems with activation after initial installation
+* Fixed:    Don't display legacy shortcodes after creating new galleries
+* Fixed:    false positive malware detection notices against 'eval'
+* Fixed:    Various PHP notices and warnings
+* Fixed:    Issue with dynamic container height for Imagebrowser display types
+
+= V2.1.79 - 02.23.2017 =
+* Secured: Resolved vulnerability with tag cloud displays
+
 = V2.1.77 - 01.31.2017 =
 * Changed:  Corrected Facebook link
 * Changed:  Tags in readme.txt

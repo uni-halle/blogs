@@ -8,7 +8,14 @@
 
 class M_NextGen_Pro_Upgrade extends C_Base_Module
 {
-    function define()
+    function define($id = 'pope-module',
+                    $name = 'Pope Module',
+                    $description = '',
+                    $version = '',
+                    $uri = '',
+                    $author = '',
+                    $author_uri = '',
+                    $context = FALSE)
     {
         parent::define(
             'photocrati-nextgen_pro_upgrade',
@@ -16,7 +23,7 @@ class M_NextGen_Pro_Upgrade extends C_Base_Module
             'NextGEN Gallery Pro Upgrade Page',
             '0.6',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
-            'Photocrati Media',
+            'Imagely',
             'https://www.imagely.com'
         );
     }

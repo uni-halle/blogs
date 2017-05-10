@@ -13,16 +13,23 @@ class M_NextGen_Admin extends C_Base_Module
 	/**
 	 * Defines the module
 	 */
-	function define()
+	function define($id = 'pope-module',
+                    $name = 'Pope Module',
+                    $description = '',
+                    $version = '',
+                    $uri = '',
+                    $author = '',
+                    $author_uri = '',
+                    $context = FALSE)
 	{
 		parent::define(
 			'photocrati-nextgen_admin',
 			'NextGEN Administration',
 			'Provides a framework for adding Administration pages',
 			'0.16',
-			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
-			'Photocrati Media',
-			'https://www.imagely.com'
+            'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
+            'Imagely',
+            'https://www.imagely.com'
 		);
 
 		C_Photocrati_Installer::add_handler($this->module_id, 'C_NextGen_Admin_Installer');
@@ -105,23 +112,109 @@ class M_NextGen_Admin extends C_Base_Module
 		$notices = C_Admin_Notification_Manager::get_instance();
 		add_action('init', array($notices, 'serve_ajax_request'));
 		add_action('admin_footer', array($notices, 'enqueue_scripts'));
-		add_action('all_admin_notices', array($notices, 'render'));
-		
-		$php_id = 0;
+		add_action('do_ngg_notices', array($notices, 'render'));
+        add_action('ngg_created_new_gallery', array($this, 'set_review_notice_flag'));
+        add_action('ngg_created_new_gallery', get_class().'::update_gallery_count_setting');
+        add_action('ngg_delete_gallery', get_class().'::update_gallery_count_setting');
+        if (!self::is_ngg_legacy_page()) {
+            add_action('all_admin_notices', get_class().'::emit_do_notices_action');
+        }
 
-		if (defined('PHP_VERSION_ID')) {
-			$php_id = PHP_VERSION_ID;
-		}
-		else {
-			$version = explode('.', PHP_VERSION);
+        $notices = C_Admin_Notification_Manager::get_instance();
 
-			$php_id = ($version[0] * 10000 + $version[1] * 100 + $version[2]);
-		}
-		
-		if ($php_id < 50300) {
-			$notices->add("ngg_php52_deprecation", array("message" => __('PHP 5.2 will be deprecated in a future version of NextGEN. Please upgrade your PHP installation to 5.3 or above.', 'nggallery')));
-		}
+        $php_id = 0;
+
+        if (defined('PHP_VERSION_ID')) {
+            $php_id = PHP_VERSION_ID;
+        }
+        else {
+            $version = explode('.', PHP_VERSION);
+
+            $php_id = ($version[0] * 10000 + $version[1] * 100 + $version[2]);
+        }
+
+        if ($php_id < 50300) {
+            $notices->add("ngg_php52_deprecation", array("message" => __('PHP 5.2 will be deprecated in a future version of NextGEN. Please upgrade your PHP installation to 5.3 or above.', 'nggallery')));
+        }
+
+        // Add review notices
+        $review_notice_1 = new C_Review_Notice(array(
+                'name'    => 'review_level_1',
+                'range'   => array('min' => 3, 'max' => 8),
+                'follows' => '')
+        );
+        $review_notice_2 = new C_Review_Notice(array(
+                'name'    => 'review_level_2',
+                'range'   => array('min' => 10, 'max' => 18),
+                'follows' => &$review_notice_1)
+        );
+        $review_notice_3 = new C_Review_Notice(array(
+                'name'    => 'review_level_3',
+                'range'   => array('min' => 20, 'max' => PHP_INT_MAX),
+                'follows' => &$review_notice_2)
+        );
+        $notices->add($review_notice_1->get_name(), $review_notice_1);
+        $notices->add($review_notice_2->get_name(), $review_notice_2);
+        $notices->add($review_notice_3->get_name(), $review_notice_3);
 	}
+
+    /**
+     * Used to determine if the current request is for a NGG legacy page
+     * @return bool
+     */
+	static function is_ngg_legacy_page()
+    {
+        return (
+            is_admin() &&
+            isset($_REQUEST['page']) &&
+            in_array($_REQUEST['page'], array(
+                'nggallery-manage-gallery',
+                'nggallery-manage-album',
+                'nggallery-tags',
+                'manage-galleries'
+            ))
+        );
+    }
+
+    /**
+     * Emits the 'do_ngg_notices' action
+     * Used by the notification manager to render all notices
+     */
+    static function emit_do_notices_action()
+    {
+        if (!did_action('do_ngg_notices')) {
+            do_action('do_ngg_notices');
+        }
+    }
+
+    /**
+     * We do not want to suddenly ask users for a review when they have upgraded. Instead we will wait for a new
+     * gallery to be created and then will we also consider displaying reviews if the gallery count is within range.
+     */
+	function set_review_notice_flag()
+    {
+        $settings = C_NextGen_Settings::get_instance();
+        if (!$settings->get('gallery_created_after_reviews_introduced'))
+            $settings->set('gallery_created_after_reviews_introduced', TRUE);
+        $settings->save();
+    }
+
+    /**
+     * Review notifications are pegged to run only when the current gallery count is within a certain range. This
+     * updates the 'gallery_count' setting when galleries have been created or deleted.
+     */
+    static function update_gallery_count_setting()
+    {
+        $settings = C_NextGen_Settings::get_instance();
+        $mapper = C_Gallery_Mapper::get_instance();
+        $original_cache_setting = $mapper->__use_cache;
+        $mapper->_use_cache = FALSE;
+        $gallery_count = C_Gallery_Mapper::get_instance()->count();
+        $mapper->_use_cache = $original_cache_setting;
+        $settings->set('gallery_count', $gallery_count);
+        $settings->save();
+        return $gallery_count;
+    }
 
     function define_routes($router)
     {

@@ -867,6 +867,14 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
     {
         return $this->object->get_image_url($image, 'full', $check_existance);
     }
+    function get_image_checksum($image, $size = 'full')
+    {
+        $retval = NULL;
+        if ($image_abspath = $this->get_image_abspath($image, $size, TRUE)) {
+            $retval = md5_file($image_abspath);
+        }
+        return $retval;
+    }
     /**
      * Gets the dimensions for a particular-sized image
      *
@@ -1213,7 +1221,7 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
                     }
                     // Ensure that fullsize dimensions are added to metadata array
                     $dimensions = getimagesize($abs_filename);
-                    $full_meta = array('width' => $dimensions[0], 'height' => $dimensions[1]);
+                    $full_meta = array('width' => $dimensions[0], 'height' => $dimensions[1], 'md5' => $this->object->get_image_checksum($image, 'full'));
                     if (!isset($image->meta_data) or is_string($image->meta_data) && strlen($image->meta_data) == 0) {
                         $image->meta_data = array();
                     }

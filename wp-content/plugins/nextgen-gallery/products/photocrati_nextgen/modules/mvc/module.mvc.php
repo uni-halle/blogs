@@ -14,16 +14,23 @@
 
 class M_MVC extends C_Base_Module
 {
-    function define()
+    function define($id = 'pope-module',
+                    $name = 'Pope Module',
+                    $description = '',
+                    $version = '',
+                    $uri = '',
+                    $author = '',
+                    $author_uri = '',
+                    $context = FALSE)
     {
         parent::define(
-            "photocrati-mvc",
-            "MVC Framework",
-            "Provides an MVC architecture for the plugin to use",
-            "0.8",
-            "https://www.imagely.com",
-            "Photocrati Media",
-            "https://www.imagely.com"
+            'photocrati-mvc',
+            'MVC Framework',
+            'Provides an MVC architecture for the plugin to use',
+            '0.8',
+            'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery',
+            'Imagely',
+            'https://www.imagely.com'
         );
 
 		C_NextGen_Settings::get_instance()->add_option_handler('C_Mvc_Option_Handler', array(

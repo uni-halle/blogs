@@ -235,14 +235,11 @@ class nggdb
      * @id The gallery ID
      */
     function delete_gallery( $id ) {
-        global $wpdb;
-
-        $wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->nggpictures WHERE galleryid = %d", $id) );
-        $wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->nggallery WHERE gid = %d", $id) );
-
+        $mapper = C_Gallery_Mapper::get_instance();
+        $gallery = $mapper->find($id);
+        $mapper->destroy($gallery);
         wp_cache_delete($id, 'ngg_gallery');
 
-        //TODO:Remove all tag relationship
         return true;
     }
 
@@ -605,7 +602,7 @@ class nggdb
     * @param (optional) int $author
     * @return bool result of the ID of the inserted gallery
     */
-    function add_gallery( $title = '', $path = '', $description = '', $pageid = 0, $previewpic = 0, $author = 0  ) {
+    static function add_gallery( $title = '', $path = '', $description = '', $pageid = 0, $previewpic = 0, $author = 0  ) {
         global $wpdb;
 
         // slug must be unique, we use the title for that
@@ -618,6 +615,9 @@ class nggdb
 		}
 
 		$galleryID = (int) $wpdb->insert_id;
+
+        do_action('ngg_created_new_gallery', $galleryID);
+        C_Photocrati_Transient_Manager::flush('displayed_gallery_rendering');
 
 		//and give me the new id
 		return $galleryID;
@@ -813,7 +813,7 @@ class nggdb
                 $searchand = ' AND ';
             }
 
-            $term = $wpdb->escape($request);
+            $term = esc_sql($request);
             if (count($search_terms) > 1 && $search_terms[0] != $request )
                 $search .= " OR (title LIKE '{$n}{$term}{$n}') OR (name LIKE '{$n}{$term}{$n}')";
 
@@ -861,7 +861,7 @@ class nggdb
                 $searchand = ' AND ';
             }
 
-            $term = $wpdb->escape($request);
+            $term = esc_sql($request);
             if (count($search_terms) > 1 && $search_terms[0] != $request )
                 $search .= " OR (name LIKE '{$n}{$term}{$n}')";
 

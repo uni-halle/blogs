@@ -11,15 +11,22 @@ define('NGG_BASIC_SINGLEPIC', 'photocrati-nextgen_basic_singlepic');
 
 class M_NextGen_Basic_Singlepic extends C_Base_Module
 {
-    function define()
+    function define($id = 'pope-module',
+                    $name = 'Pope Module',
+                    $description = '',
+                    $version = '',
+                    $uri = '',
+                    $author = '',
+                    $author_uri = '',
+                    $context = FALSE)
     {
         parent::define(
             NGG_BASIC_SINGLEPIC,
             'NextGen Basic Singlepic',
             'Provides a singlepic gallery for NextGEN Gallery',
             '0.14',
-            'https://www.imagely.com',
-            'Photocrati Media',
+            'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
+            'Imagely',
             'https://www.imagely.com'
         );
 
@@ -138,7 +145,7 @@ class M_NextGen_Basic_Singlepic extends C_Base_Module
 
 class C_NextGen_Basic_SinglePic_Installer extends C_Gallery_Display_Installer
 {
-	function install()
+	function install($reset = FALSE)
 	{
 		$this->install_display_type(
 			NGG_BASIC_SINGLEPIC, array(

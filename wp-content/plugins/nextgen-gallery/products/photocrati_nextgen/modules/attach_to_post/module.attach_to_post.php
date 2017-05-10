@@ -12,16 +12,23 @@ class M_Attach_To_Post extends C_Base_Module
 	 * Defines the module
 	 * @param string|bool $context
 	 */
-    function define($context=FALSE)
+    function define($id = 'pope-module',
+                    $name = 'Pope Module',
+                    $description = '',
+                    $version = '',
+                    $uri = '',
+                    $author = '',
+                    $author_uri = '',
+                    $context = FALSE)
     {
         parent::define(
 			'photocrati-attach_to_post',
 			'Attach To Post',
 			'Provides the "Attach to Post" interface for displaying galleries and albums',
 			'0.18',
-			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
-			'Photocrati Media',
-			'https://www.imagely.com',
+            'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
+            'Imagely',
+            'https://www.imagely.com',
 		    $context
 		);
 
@@ -95,7 +102,7 @@ class M_Attach_To_Post extends C_Base_Module
 
 	function does_request_require_frame_communication()
 	{
-		return (strpos($_SERVER['REQUEST_URI'], 'attach_to_post') !== FALSE OR strpos($_SERVER['HTTP_REFERER'], 'attach_to_post') !== FALSE OR array_key_exists('attach_to_post', $_REQUEST));
+		return (strpos($_SERVER['REQUEST_URI'], 'attach_to_post') !== FALSE OR (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'attach_to_post') !== FALSE) OR array_key_exists('attach_to_post', $_REQUEST));
 	}
 
 

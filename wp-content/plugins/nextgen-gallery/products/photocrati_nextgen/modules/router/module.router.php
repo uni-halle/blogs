@@ -2,7 +2,14 @@
 
 class M_Router extends C_Base_Module
 {
-	function define()
+	function define($id = 'pope-module',
+                    $name = 'Pope Module',
+                    $description = '',
+                    $version = '',
+                    $uri = '',
+                    $author = '',
+                    $author_uri = '',
+                    $context = FALSE)
 	{
 		parent::define(
 			'photocrati-router',
@@ -10,7 +17,7 @@ class M_Router extends C_Base_Module
 			'Provides routing capabilities for Pope modules',
 			'0.9',
 			'https://www.imagely.com',
-			'Photocrati Media',
+			'Imagely',
 			'https://www.imagely.com'
 		);
 

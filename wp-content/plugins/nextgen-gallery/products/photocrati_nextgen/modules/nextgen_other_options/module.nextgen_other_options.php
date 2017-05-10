@@ -10,7 +10,14 @@ define('NGG_OTHER_OPTIONS_SLUG', 'ngg_other_options');
 
 class M_NextGen_Other_Options extends C_Base_Module
 {
-	function define()
+	function define($id = 'pope-module',
+                    $name = 'Pope Module',
+                    $description = '',
+                    $version = '',
+                    $uri = '',
+                    $author = '',
+                    $author_uri = '',
+                    $context = FALSE)
 	{
 		parent::define(
 			'photocrati-nextgen_other_options',
@@ -18,7 +25,7 @@ class M_NextGen_Other_Options extends C_Base_Module
 			'NextGEN Gallery Others Options Page',
 			'0.9',
 			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
-			'Photocrati Media',
+			'Imagely',
 			'https://www.imagely.com'
 		);
 	}

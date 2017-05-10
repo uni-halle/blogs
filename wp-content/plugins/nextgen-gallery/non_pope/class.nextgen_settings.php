@@ -3,6 +3,9 @@
 
 if (!class_exists('C_NextGen_Settings')) {
     class C_NextGen_Settings {
+        /**
+         * @return C_NextGen_Settings
+         */
         static function get_instance()
         {
             return C_Photocrati_Settings_Manager::get_instance();

@@ -1,7 +1,16 @@
 <?php
 class M_Third_Party_Compat extends C_Base_Module
 {
-    function define()
+    protected $wpseo_images = array();
+
+    function define($id = 'pope-module',
+                    $name = 'Pope Module',
+                    $description = '',
+                    $version = '',
+                    $uri = '',
+                    $author = '',
+                    $author_uri = '',
+                    $context = FALSE)
     {
         parent::define(
             'photocrati-third_party_compat',
@@ -9,7 +18,7 @@ class M_Third_Party_Compat extends C_Base_Module
             "Adds Third party compatibility hacks, adjustments, and modifications",
             '0.6',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
-            'Photocrati Media',
+            'Imagely',
             'https://www.imagely.com'
         );
 
@@ -113,6 +122,7 @@ class M_Third_Party_Compat extends C_Base_Module
         add_filter('ngg_non_minified_modules', array($this, 'dont_minify_nextgen_pro_cssjs'));
         add_filter('ngg_atp_show_display_type', array($this, 'atp_check_pro_albums'), 10, 2);
         add_filter('run_ngg_resource_manager', array($this, 'run_ngg_resource_manager'));
+        add_filter('wpseo_sitemap_urlimages', array($this, 'add_wpseo_xml_sitemap_images'), 10, 2);
 
         // WPML fix
         if (class_exists('SitePress')) {
@@ -123,6 +133,61 @@ class M_Third_Party_Compat extends C_Base_Module
 
         // TODO: Only needed for NGG Pro 1.0.10 and lower
         add_action('the_post', array(&$this, 'add_ngg_pro_page_parameter'));
+
+    }
+
+    /**
+     * Filter support for WordPress SEO
+     *
+     * @param array $images Provided by WPSEO Filter
+     * @param int $post ID Provided by WPSEO Filter
+     * @return array $image List of a displayed galleries entities
+     */
+    function add_wpseo_xml_sitemap_images($images, $post_id)
+    {
+        $this->wpseo_images = $images;
+
+        $post = get_post($post_id);
+
+        // Assign our own shortcode handler; ngglegacy and ATP do this same routine for their own
+        // legacy and preview image placeholders.
+        remove_all_shortcodes();
+        C_NextGen_Shortcode_Manager::add('ngg_images', array($this, 'wpseo_shortcode_handler'));
+        do_shortcode($post->post_content);
+
+        return $this->wpseo_images;
+    }
+
+    /**
+     * Processes ngg_images shortcode when WordPress SEO is building sitemaps. Adds images belonging to a
+     * displayed gallery to $this->wpseo_images for the assigned filter method to return.
+     *
+     * @param array $params Array of shortcode parameters
+     * @param null $inner_content
+     */
+    function wpseo_shortcode_handler($params, $inner_content = NULL)
+    {
+        $renderer = C_Displayed_Gallery_Renderer::get_instance();
+        $displayed_gallery = $renderer->params_to_displayed_gallery($params);
+
+        if ($displayed_gallery)
+        {
+            $gallery_storage = C_Gallery_Storage::get_instance();
+            $settings		 = C_NextGen_Settings::get_instance();
+            $source          = $displayed_gallery->get_source();
+            if (in_array('image', $source->returns))
+            {
+                foreach ($displayed_gallery->get_entities() as $image) {
+                    $named_image_size = $settings->imgAutoResize ? 'full' : 'thumb';
+                    $sitemap_image = array(
+                        'src'	=>	$gallery_storage->get_image_url($image, $named_image_size),
+                        'alt'	=>	$image->alttext,
+                        'title'	=>	$image->description ? $image->description: $image->alttext
+                    );
+                    $this->wpseo_images[] = $sitemap_image;
+                }
+            }
+        }
     }
 
     /**
@@ -165,12 +230,8 @@ class M_Third_Party_Compat extends C_Base_Module
      */
     function excellent_themes_admin()
     {
-        if (is_admin()
-        &&  defined('ET_TAXONOMY_META_OPTION_KEY')
-        &&  (!empty($_GET['page']) && strpos($_GET['page'], 'et_') == 0))
-        {
+        if (is_admin() && (!empty($_GET['page']) && strpos($_GET['page'], 'et_') == 0))
             wp_deregister_style('ngg-jquery-ui');
-        }
     }
 
     function atp_check_pro_albums($available, $display_type)

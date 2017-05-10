@@ -6,16 +6,23 @@
  */
 class M_Fs extends C_Base_Module
 {
-	function define()
+	function define($id = 'pope-module',
+                    $name = 'Pope Module',
+                    $description = '',
+                    $version = '',
+                    $uri = '',
+                    $author = '',
+                    $author_uri = '',
+                    $context = FALSE)
 	{
 		parent::define(
 			'photocrati-fs',
 			'Filesystem',
 			'Provides a filesystem abstraction layer for Pope modules',
 			'0.6',
-			'https://www.imagely.com',
-			'Photocrati Media',
-			'https://www.imagely.com'
+            'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
+            'Imagely',
+            'https://www.imagely.com'
 		);
 	}
 
