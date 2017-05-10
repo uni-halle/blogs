@@ -1,19 +1,19 @@
 === Translate Wordpress with GTranslate ===
 Contributors: edo888
 Author: Edvard Ananyan
-Tags: translation proxy, localization, translate, translation, google translate, language, multilingual, multilanguage, bilingual, tradurre, traducir, traduire, traduzione, ubersetzung, mehrsprachig, oversette, oversatta, vertaling, vertaler, meertalig, polylang, qtranslate, transposh, wpml, l18n
-Requires at least: 2.8
+Tags: bilingual, multilingual, translate, translation, language, localization, translation proxy, i18n, l10n, localisation, multilanguage, google translate
+Requires at least: 2.8.1
 Tested up to: 4.7
-Stable tag: 2.8.10
+Stable tag: 2.8.19
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
 
-Translate WordPress with Google Translate multilanguage plugin to make your website multilingual and available to more than 99% of internet users.
+Translate WordPress with Google Translate multilanguage plugin to make your website multilingual. Complete multilingual solution for WordPress.
 
 == Description ==
 
-GTranslate plugin uses Google Translate automatic translation service to **translate wordpress** site with Google power and make it **multilingual**. With 103 available languages your site will be available to more than 99% of internet users. Our paid versions are **fully SEO compatible** which will **increase your international traffic and sales**.
+GTranslate plugin uses Google Translate automatic translation service to **translate wordpress** site with Google power and make it **multilingual**. With 103 available languages your site will be available to more than 99% of internet users. Our paid versions are **fully SEO compatible** which will **increase your international traffic and sales**. GTranslate is a budget multilingual WordPress solution which combines automatic and human translations to save money and is easy to implement.
 
 GTranslate is a leading website translation services provider since 2008 and powers more than 500.000 multilingual websites worldwide.
 
@@ -23,23 +23,47 @@ Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 
 **Features**
 
-* Free Google automatic translation
+* Free Google automatic machine translation
 * Hides "Suggest better translation" pop-up
 * Hides Google top frame after translation
 * Mouse over effect
-* Flags combined in one file to load faster
 * Google Analytics integration
 * Translates the site on the fly
+* Posts and pages translation
+* Categories and tags translation
+* Menus and widgets translation
+* Themes and plugins translation
+* Right to left language support
 * Google language translator widget
 * Available styles Dropdown, Flags, Flags with dropdown, Nice dropdown with flags, Flags with language names, Flags with language codes, Language names, Language codes, Globe
 * Floating language selector
-* Language bar in menu
+* Language bar with flags in menu
+* WooCommerce shop translation
 * Multilanguage
 * Multilingual language names in native alphabet
-* Alternative for WPML, qtranslate, transposh, loco translate and polylang
-* (paid) You can manually correct translations
-* (paid) You can have sub-directory (example.com/**es**/) or sub-domain (**es.**example.com) URL structure
-* (paid) URL Translation is possible (example.com/about-us -> example.es/sobre-nosotros)
+* Alternative flags for Quebec, Canada, USA, Brazil, Mexico, Argentina, Colombia
+
+**Paid Features**
+
+* Multilingual SEO - Enable search engine indexing
+* Increase traffic and AdSense revenue
+* Search engine friendly (SEF) URLs
+* Yoast SEO compatible
+* WooCommerce compatible
+* You can have sub-directory (example.com/**es**/) or sub-domain (**es.**example.com) URL structure
+* URL Translation aka slug translation is possible (example.com/about-us &rarr; example.es/sobre-nosotros)
+* You can manually correct translations
+* In context translation interface (make corrections without loosing the context)
+* Meta data translation (meta keywords, meta description)
+* Translating schema.org microdata for better search engine appearance
+* Seamless updates (cloud service updated on our side - SaaS, you do not need to worry about backups on your side)
+* JSON format translation
+* AMP translation (Accelerated Mobile Pages translation)
+* Image localization - Media translation
+* Translation Proxy (aka Translation Delivery Network)
+* Centralized Translation Cache - We revise and improve translations over time
+* Language Hosting (**example.fr**)
+* Live Chat Support
 
 [Download GTranslate](https://gtranslate.io/?xyz=998#pricing)
 
@@ -52,390 +76,38 @@ Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 **Edit Translations Demo (paid)**
 [youtube https://www.youtube.com/watch?v=YwSy3VtQx3I]
 
-Keywords: polylang, prisna, gts, localize, lingotek, smartling, qtranslate, loco translate, loco, google website translator, translate wordpress, translate, transposh, global translator, machine translate, wp translate, bilingual, multilanguage, multilingual, l18n, quebec, canada, usa, brazil, mexico
+Keywords: translate wordpress, wordpress translator, translate, translator, translation, machine translate, wp translate, ajax translate, bilingual, multilanguage, multilingual, i18n, localization, l10n, tradurre, traducir, traduire, traduzione, ubersetzung, mehrsprachig, oversette, oversatta, vertaling, vertaler, meertalig
+
+List of supported languages: Afrikaans, Albanian, Amharic, Arabic, Armenian, Azerbaijani, Basque, Belarusian, Bengali, Bosnian, Bulgarian, Catalan, Cebuano, Chichewa, Chinese (Simplified), Chinese (Traditional), Corsican, Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Frisian, Galician, Georgian, German, Greek, Gujarati, Haitian Creole, Hausa, Hawaiian, Hebrew, Hindi, Hmong, Hungarian, Icelandic, Igbo, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Kazakh, Khmer, Korean, Kurdish (Kurmanji), Kyrgyz, Lao, Latin, Latvian, Lithuanian, Luxembourgish, Macedonian, Malagasy, Malay, Malayalam, Maltese, Maori, Marathi, Mongolian, Myanmar (Burmese), Nepali, Norwegian, Pashto, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Samoan, Scottish Gaelic, Serbian, Sesotho, Shona, Sindhi, Sinhala, Slovak, Slovenian, Somali, Spanish, Sudanese, Swahili, Swedish, Tajik, Tamil, Telugu, Thai, Turkish, Ukrainian, Urdu, Uzbek, Vietnamese, Welsh, Xhosa, Yiddish, Yoruba, Zulu
 
 == Installation ==
 
-1. Upload `gtranslate` folder to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. You can add a widget to your website or use [GTranslate] syntax inside pages where you want it to appear.
+1. Upload the plugin files to the `/wp-content/plugins/gtranslate` directory, or install the plugin through the WordPress plugins screen directly.
+1. Activate the plugin through the 'Plugins' screen in WordPress
+1. Use the Settings &rarr; GTranslate screen to configure the plugin
+1. There are 4 ways you can use to publish the language selector on your website
 
-== Google Translate history ==
+**1. Floating Language Selector**
+You can turn on Floating language selector option from Settings &rarr; GTranslate screen and it will show the language selector in appropriate location (Top Right, Bottom Right, Top Left or Bottom Left)
 
-= Country Language Map =
-United Kingdom (alt USA)         English                  en
-South Africa                     Afrikaans                af
-Albania                          Albanian                 sq
-Ethiopia                         Amharic                  am
-Arab League                      Arabic                   ar
-Armenia                          Armenian                 hy
-Azerbaijan                       Azerbaijani              az
-Basque Country                   Basque                   eu
-Belarus                          Belarusian               be
-Bangladesh                       Bengali                  bn
-Bosnia & Herzegovina             Bosnian                  bs
-Bulgaria                         Bulgarian                bg
-Catalonia                        Catalan                  ca
-Philippines                      Cebuano                  ceb
-Malawi                           Chichewa                 ny
-China                            Chinese (Simplified)     zh-CN
-Taiwan                           Chinese (Traditional)    zh-TW
-Corsica                          Corsican                 co
-Croatia                          Croatian                 hr
-Czech Republic                   Czech                    cs
-Denmark                          Danish                   da
-Netherlands                      Dutch                    nl
-Esperanto                        Esperanto                eo
-Estonia                          Estonian                 et
-Philippines                      Filipino                 tl
-Finland                          Finnish                  fi
-France                           French                   fr
-Frisia                           Frisian                  fy
-Galicia                          Galician                 gl
-Georgia                          Georgian                 ka
-Germany                          German                   de
-Greece                           Greek                    el
-India                            Gujarati                 gu
-Haiti                            Haitian Creole           ht
-Nigeria                          Hausa                    ha
-Hawaii state                     Hawaiian                 haw
-Israel                           Hebrew                   iw
-India                            Hindi                    hi
-China                            Hmong                    hmn
-Hungary                          Hungarian                hu
-Iceland                          Icelandic                is
-Nigeria                          Igbo                     ig
-Indonezia                        Indonesian               id
-Ireland                          Irish                    ga
-Italy                            Italian                  it
-Japan                            Japanese                 ja
-Indonezia                        Javanese                 jw
-India                            Kannada                  kn
-Kazakhstan                       Kazakh                   kk
-Cambodja                         Khmer                    km
-South Korea                      Korean                   ko
-Roj flag                         Kurdish (Kurmanji)       ku
-Kyrgyzstan                       Kyrgyz                   ky
-Laos                             Lao                      lo
-Vatican City                     Latin                    la
-Latvia                           Latvian                  lv
-Lithuania                        Lithuanian               lt
-Luxembourg                       Luxembourgish            lb
-Macedonia                        Macedonian               mk
-Madagascar                       Malagasy                 mg
-Malaysia                         Malay                    ms
-India                            Malayalam                ml
-Malta                            Maltese                  mt
-New Zealand                      Maori                    mi
-India                            Marathi                  mr
-Mongolia                         Mongolian                mn
-Myanmar(Burma)                   Myanmar (Burmese)        my
-Nepal                            Nepali                   ne
-Norway                           Norwegian                no
-Afghanistan                      Pashto                   ps
-Iran                             Persian                  fa
-Poland                           Polish                   pl
-Portugal (alt Brazil)            Portuguese               pt
-India                            Punjabi                  pa
-Romania                          Romanian                 ro
-Russian Federation               Russian                  ru
-Samoa                            Samoan                   sm
-Scotland                         Scottish Gaelic          gd
-Serbia(Yugoslavia)               Serbian                  sr
-Lesotho                          Sesotho                  st
-Zimbabwe                         Shona                    sn
-Pakistan                         Sindhi                   sd
-Sri Lanka                        Sinhala                  si
-Slovakia                         Slovak                   sk
-Slovenia                         Slovenian                sl
-Somalia                          Somali                   so
-Spain (alt Mexico)               Spanish                  es
-Sudan                            Sudanese                 su
-Tanzania                         Swahili                  sw
-Sweden                           Swedish                  sv
-Tajikistan                       Tajik                    tg
-India                            Tamil                    ta
-India                            Telugu                   te
-Thailand                         Thai                     th
-Turkey                           Turkish                  tr
-Ukraine                          Ukrainian                uk
-Pakistan                         Urdu                     ur
-Uzbekistan                       Uzbek                    uz
-Viet Nam                         Vietnamese               vi
-Wales                            Welsh                    cy
-South Africa                     Xhosa                    xh
-Israel                           Yiddish                  yi
-Nigeria                          Yoruba                   yo
-South Africa                     Zulu                     zu
+**2. Showing in Menu**
+You can select from the list of available menus in which menu the language selector should appear
 
-= Supported languages =
-**1st stage**
+**3. Use GTranslate shortcode**
+You can use `[gtranslate]` shortcode anywhere on your website including posts, pages, text widgets.
+You can edit your template files and use `<?php echo do_shortcode('[gtranslate]'); ?>` in HTML which will render the language selector.
 
-* English to and from German
-* English to and from Spanish
-* English to and from French
+**4. Use GTranslate Widget**
+You can use Appearence &rarr; Widgets screen to publish GTranslate widget inside a sidebar of your template.
 
-**2nd stage**
+If you are using any cache plugin, do not forget to clear your cache.
 
-* English to and from Portuguese
-
-**3rd stage**
-
-* English to and from Italian
-
-**4th stage**
-
-* English to and from Chinese (Simplified)
-* English to and from Japanese
-* English to and from Korean
-
-**5th stage (launched April 28, 2006)**
-
-* English to and from Arabic
-
-**6th stage (launched December 16, 2006)**
-
-* English to and from Russian
-
-**7th stage (launched February 9, 2007)**
-
-* English to and from Chinese (Traditional)
-* Chinese (Simplified to and from Traditional)
-
-**8th stage (all 25 language pairs use Google's machine translation system) (launched October 22, 2007)**
-
-* English to and from Dutch
-* English to and from Greek
-
-**9th stage**
-
-* English to and from Hindi
-
-**10th stage (as of this stage, translation can be done between any two languages, using English as an intermediate step, if needed) (launched May 8, 2008)**
-
-* Bulgarian
-* Croatian
-* Czech
-* Danish
-* Finnish
-* Norwegian
-* Polish
-* Romanian
-* Swedish
-
-**11th stage (launched September 25, 2008)**
-
-* Catalan
-* Filipino
-* Hebrew
-* Indonesian
-* Latvian
-* Lithuanian
-* Serbian
-* Slovak
-* Slovene
-* Ukrainian
-* Vietnamese
-
-**12th stage (launched January 30, 2009)**
-
-* Albanian
-* Estonian
-* Galician
-* Hungarian
-* Maltese
-* Thai
-* Turkish
-
-**13th stage (launched June 19, 2009)**
-
-* Persian
-
-**14th stage (launched August 24, 2009)**
-
-* Afrikaans
-* Belarusian
-* Icelandic
-* Irish
-* Macedonian
-* Malay
-* Swahili
-* Welsh
-* Yiddish
-
-**15th stage (launched November 19, 2009)**
-
-* The Beta stage is finished. Users can now choose to have the romanization written for Chinese, Japanese, Korean, Russian, Ukrainian, Belarusian, Bulgarian, Greek, Hindi and Thai. For translations from Arabic, Persian and Hindi, the user can enter a Latin transliteration of the text and the text will be transliterated to the native script for these languages as the user is typing. The text can now be read by a text-to-speech program in English, Italian, French and German.
-
-**16th stage (launched January 30, 2010)**
-
-* Haitian Creole
-
-**17th stage (launched April 2010)**
-
-* Speech program launched in Hindi and Spanish.
-
-*18th stage (launched May 5, 2010)**
-
-* Speech program launched in Afrikaans, Albanian, Catalan, Chinese (Mandarin), Croatian, Czech, Danish, Dutch, Finnish, Greek, Hungarian, Icelandic, Indonesian, Latvian, Macedonian, Norwegian, Polish, Portuguese, Romanian, Russian, Serbian, Slovak, Swahili, Swedish, Turkish, Vietnamese and Welsh (based on eSpeak)
-
-**19th stage (launched May 13, 2010)**
-
-* Armenian
-* Azerbaijani
-* Basque
-* Georgian
-* Urdu
-
-**20th stage (launched June 2010)**
-
-* Provides romanization for Arabic.
-
-**21st stage (launched September 2010)**
-
-* Allows phonetic typing for Arabic, Greek, Hindi, Persian, Russian, Serbian and Urdu.
-* Latin
-
-**22nd stage (launched December 2010)**
-
-* Romanization of Arabic removed.
-* Spell check added.
-* For some languages, Google replaced text-to-speech synthesizers from eSpeak's robot voice to native speaker's nature voice technologies made by SVOX (Chinese, Czech, Danish, Dutch, Finnish, Greek, Hungarian, Norwegian, Polish, Portuguese, Russian, Swedish, Turkish). Also the old versions of French, German, Italian and Spanish. Latin uses the same synthesizer as Italian.
-* Speech program launched in Arabic, Japanese and Korean.
-
-**23rd stage (launched January 2011)**
-
-* Choice of different translations for a word.
-
-**24th stage (Launched June 2011)**
-
-* 5 new Indic languages (in alpha) and a transliterated input method:
-* Bengali
-* Gujarati
-* Kannada
-* Tamil
-* Telugu
-
-**25th stage (launched July 2011)**
-
-* Translation rating introduced.
-
-**26th stage (launched January 2012)**
-
-* Dutch male voice synthesizer replaced with female.
-* Elena by SVOX replaced the Slovak eSpeak voice.
-* Transliteration of Yiddish added.
-
-**27th stage (launched February 2012)**
-
-* Speech program launched in Thai.
-* Esperanto
-
-**28th stage (launched September 2012)**
-
-* Lao
-
-**29th stage (launched October 2012)**
-
-* Transliteration of Lao added. (Alpha status)
-
-**30th stage (launched October 2012)**
-
-* New speech program launched in English.
-
-**31st stage (launched November 2012)**
-
-* New speech program in French, Spanish, Italian and German.
-
-**32nd stage (launched March 2013)**
-
-* Phrasebook added.
-
-**33rd stage (launched April 2013)**
-
-* Khmer
-
-**34th stage (launched May 2013)**
-
-* Bosnian
-* Cebuano
-* Hmong
-* Javanese
-* Marathi
-
-**35th stage (launched May 2013)**
-
-* 16 additional languages can be used with camera-input: Bulgarian, Catalan, Danish, Estonian, Finnish, Croatian, Hungarian, Indonesian, Icelandic, Lithuanian, Latvian, Norwegian, Romanian, Slovak, Slovenian and Swedish.
-
-**36th stage (launched December 2013)**
-
-* Hausa
-* Igbo
-* Maori
-* Mongolian
-* Nepali
-* Punjabi
-* Somali
-* Yoruba
-* Zulu
-
-**37th stage (launched June 2014)**
-
-* Definition of words added.
-
-**38th stage (launched December 2014)**
-
-* Chichewa
-* Kazakh
-* Malagasy
-* Malayalam
-* Myanmar (Burmese)
-* Sesotho
-* Sinhala
-* Sundanese
-* Tajik
-* Uzbek
-
-**41st stage (launched February 2016)
-* Amharic
-* Corsican
-* Hawaiian
-* Kurdish (Kurmanji)
-* Kyrgyz
-* Luxembourgish
-* Pashto
-* Samoan
-* Scottish Gaelic
-* Shona
-* Sindhi
-* West Frisian
-* Xhosa
-
-= Languages not yet supported by Google Translate =
-Languages not yet supported by Google Translate, but in process.
-
-* Assamese
-* Cantonese
-* Cherokee
-* Dzongkha
-* Guarani
-* Kinyarwanda
-* Kurdish (Sorani)
-* Odia
-* Romansh
-* Tatar
-* Tibetan
-* Turkmen
-* Uyghur
-* Wolof
+If you have any issues, please do not hesitate to use our [Support Forum](https://wordpress.org/support/plugin/gtranslate) or [Live Chat](https://gtranslate.io/?xyz=998#contact)
 
 == Frequently Asked Questions ==
 
 = It doesn't work, what to do? =
 Please check [GTranslate Support Forum](https://wordpress.org/support/plugin/gtranslate) and feel free to create a new topic if you cannot find answers.
-
-= Can I exclude some parts from being translated? =
-Yes, you need to wrap the text you don't want to be translated with &lt;span class=&quot;notranslate&quot;&gt;&lt;/span&gt;.
 
 = What is GTranslate? =
 GTranslate is a multilingual solution for your website.
@@ -449,17 +121,29 @@ GTranslate is a multilingual solution for your website.
 
 [vimeo http://vimeo.com/30132555]
 
+= Is it FREE? =
+Yes! We have free version and paid versions with [advanced features](https://gtranslate.io/?xyz=998#pricing).
+
 = What is the quality of translation? =
-It's Google translation, hence Google quality. In the Pro and Enterprise versions you can refine the translations manually and order professional translations directly from your site.
+It's Google translation, hence Google quality. We use machine translations provided by Google Translate service. In the paid versions you can refine the translations manually and order professional translations directly from your site.
+
+= Are the translations provided free of charge? =
+Yes, we use Google Translate widget for website which provides free machine translations which makes it possible to make your wordpress website multilingual instantly upon installation.
+
+= Can I modify the translations? =
+That feature is available in our paid version. You will be able to make edits directly on the page without loosing the context.
 
 = Which languages are supported? =
 Here is the list: Afrikaans, Albanian, Amharic, Arabic, Armenian, Azerbaijani, Basque, Belarusian, Bengali, Bosnian, Bulgarian, Catalan, Cebuano, Chichewa, Chinese (Simplified), Chinese (Traditional), Corsican, Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Frisian, Galician, Georgian, German, Greek, Gujarati, Haitian Creole, Hausa, Hawaiian, Hebrew, Hindi, Hmong, Hungarian, Icelandic, Igbo, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Kazakh, Khmer, Korean, Kurdish (Kurmanji), Kyrgyz, Lao, Latin, Latvian, Lithuanian, Luxembourgish, Macedonian, Malagasy, Malay, Malayalam, Maltese, Maori, Marathi, Mongolian, Myanmar (Burmese), Nepali, Norwegian, Pashto, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Samoan, Scottish Gaelic, Serbian, Sesotho, Shona, Sindhi, Sinhala, Slovak, Slovenian, Somali, Spanish, Sudanese, Swahili, Swedish, Tajik, Tamil, Telugu, Thai, Turkish, Ukrainian, Urdu, Uzbek, Vietnamese, Welsh, Xhosa, Yiddish, Yoruba, Zulu
 
-= Which websites are supported? =
-All the HTML websites are supported. However the contents of media files like images and flash will not be translated.
+= Is it SEO compatible? =
+Our free version doesn't give any SEO advantage. For SEO features and multilingual SEO you need to use our paid versions which have all the SEO advantages.
 
-= Is it FREE? =
-Yes! We have free version and paid versions with [advanced features](https://gtranslate.io/?xyz=998#pricing).
+= What is multilingual SEO? =
+Multilingual SEO is a SEO strategy which uses new content generation technique by translating your original content and making your website multilingual. By translating your website into many languages you are creating many new multilingual keywords targeted for international market. It helps to increase your search appearnce on search engines results pages (SERPs), which can generate more traffic, increase sales and rise the conversion rate.
+
+= Is URL Translation available? =
+In our paid versions we have a feature to translate URL of your website which will give you more SEO advantage. For example http://example.com/*about-us* &rarr; http://example.com/*sobre-nosotros*
 
 = How the free version differs from the paid versions? =
 Free vesion is a nice looking language selector you can place on your website. It has a built in Javascript engine which allows to translate your website automatically to multiple languages. With free version your website URL doesn't change and the translations are not stored. While paid versions are a translation proxy also known as Translation Delivery Network. We host the translated versions of your website on our cloud network under a language specific domain. In that case every language will have a separate domain and be indexed in search engines, which will help you to increase international traffic and sales.
@@ -470,6 +154,12 @@ Translation Delivery Network is a translation proxy which mirrors your website i
 GTranslate TDN technology is a cloud-based approach to the website translation task. There is no need to alter your environment and install software to localize your website. You can have your multilingual website up and running in less than 5 minutes.
 
 We will translate your content and host your translations in our cloud network. All the visits to your translated versions will be proxied through our network to your original website, so you will have a translated mirror of your website.
+
+= Can I exclude some parts from being translated? =
+Yes, you need to wrap the text you don't want to be translated with &lt;span class=&quot;notranslate&quot;&gt;&lt;/span&gt;.
+
+= Which websites are supported? =
+All the HTML websites are supported. However the contents of media files like images and flash will not be translated. You can upload a different image for each translation.
 
 [vimeo http://vimeo.com/38686858]
 
@@ -484,9 +174,7 @@ After that you can just configure and place the GTranslate Free widget on your s
 There are no server requirements! Your website can be written in any programming language and hosted on any web server.
 
 = What about updates? =
-Updates are done seamlessly. Since the translations are hosted on our server we take care about updates. You just use up to date service every day.
-
-If you decide to cancel during the trial period you will not be charged anything.
+Updates are done seamlessly. Since the translations are hosted on our server we take care about updates. You just use up to date service every day. No need to worry about backups.
 
 = Do I need to pay for Google Translate API key usage? =
 No, we provide the automatic translations for free.
@@ -495,7 +183,9 @@ No, we provide the automatic translations for free.
 Yes, we have a 15 days free trial for our new customers.
 
 = Can I use it on SSL / HTTPS website? =
-Absolutely! By default we provide a self signed certificate, but if you want we can setup verified certificate purchased by you.
+Absolutely! You can use it for our free and paid versions.
+
+Recently we have added support for Let's Encrypt certificates which are provided for free if you use sub-domain URL structure.
 
 = Can I exclude some parts from being translated? =
 Yes, you need to wrap the text you don't want to be translated with &lt;span class="notranslate"&gt;&lt;/span&gt;. You can add class="nturl" to the "a" tag if you don't want the destination URL to contain the language code.
@@ -517,8 +207,55 @@ You need to go to the language you want to edit, for instance, French: http://do
 4. Globe with language flags
 5. Flags with language names
 6. Flags with language codes
+7. Settings page
 
 == Changelog ==
+
+= 2.8.19 =
+* Render gtranslate selector in a submenu if the menu link has gtranslate-parent class
+* Bug fixed when select tag has more than one class assigned
+
+= 2.8.18 =
+* Make sure default language is always selected
+* Paid pricing updated
+* Disable text highlighting when translated
+
+= 2.8.17 =
+* Fixed saving translation issue which appeared in 2.8.16 version
+* Minor readme fixes
+
+= 2.8.16 =
+* Added option to save encoded HTML to avoid some firewall blocking
+* Updated readme to look better with the new wp.org plugin updates
+* Added link to easily navigate from widgets to plugin settings page
+
+= 2.8.15 =
+* Fix for saving issue on GoDaddy hosting
+* Fix for double gziping in sub-directory URL structure when using Sucuri service
+
+= 2.8.14 =
+* Added Argentina and Colombia alternative flags
+* Fixed bug in Nice looking dropdown look related to clicking the last dropdown element
+* Fixed Quebec flag issue
+* Fixed caching incompatability issue in nice looking dropdown look with GoDaddy cache, W3 Total Cache and WP Fastest Cache
+
+= 2.8.13 =
+* Fixed bug with Globe widget look
+* Disables conflicting similar translation plugins
+* Fixed bug appeared in the latest version with the number of available languages
+
+= 2.8.12 =
+* Tweaks to make it work better with WooCommerce
+* Fixed bug when turning off native language names option
+* Fixed bug with reordering languages
+* Fixed bug with updating the plugin when using sub-directory option
+* Fixed bug in doGTrnaslate javascript function
+* Fixed bug with floating selector when admin bar is visible (thanks to @redoper)
+* Readme updated to comply with Wordpress directory guidelines (keywords removed WPML, qtranslate, transposh, loco translate, polylang, prisna translate, gts translation, lingotek, google website translator, global translator)
+
+= 2.8.11 =
+* Fix for open redirect issue
+* Fix for incorrect selected language in nice dropdown
 
 = 2.8.10 =
 * Added Quebec and Canada alternative flags for French and English
@@ -545,7 +282,7 @@ You need to go to the language you want to edit, for instance, French: http://do
 
 = 2.8.6 =
 * Fixed bug on options page related to native language names
-* Plugin keywords added: multilanguage, multilingual, language, bilingual, l18n
+* Plugin keywords added: multilanguage, multilingual, language, bilingual, i18n
 * Vimeo videos replaced by YouTube videos: GTranslate video and Translation Proxy video
 
 = 2.8.5 =
