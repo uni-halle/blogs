@@ -66,19 +66,19 @@ jQuery(document).ready(function($){
 	});
     }
     /** Remove User From Options (Tab only) **/
-    function removeUserFromOptions(usernameToRemove, reload){
-	if($("#soundcloudMMUsermameTab").length){
-	    //console.log(usernameToRemove);
-	    //Set request
-	    var myData = {
-		action: 'soundcloud_is_gold_delete_user',
-		request: 'soundcloudIsGoldDeleteUser',
-		username: usernameToRemove
-	    };
-	    jQuery.post(ajaxurl, myData, function(response) {
-		if(response == 'done' && reload) location.reload();
-	    });
-	}
+    function removeUserFromOptions(useridToRemove, reload){
+    	if($("#soundcloudMMUsermameTab").length){
+    	    //console.log(useridToRemove);
+    	    //Set request
+    	    var myData = {
+    		action: 'soundcloud_is_gold_delete_user',
+    		request: 'soundcloudIsGoldDeleteUser',
+    		userid: useridToRemove
+    	    };
+    	    jQuery.post(ajaxurl, myData, function(response) {
+    		if(response == 'done' && reload) location.reload();
+    	    });
+    	}
     }
     /** Add new User **/
     $("#soundcloudIsGoldAddUser").click(function(e){
@@ -113,7 +113,7 @@ jQuery(document).ready(function($){
 		//Copy new Active User to the Active User container and move active user label
 		newActiveUser.clone().css("margin", "5px 4px").appendTo("#soundcloudIsGoldActiveUserContainer").prepend($("#soundcloudIsGoldActiveLabel")).fadeIn();
 		//Update hidden field for active user
-		$("#soundcloudIsGoldActiveUser").val($('p', newActiveUser).html());
+		$("#soundcloudIsGoldActiveUser").val($('input:first', newActiveUser).val());
 		//Remove it from carousel
 		$("#soundcloudIsGoldUsernameCarousel").trigger("removeItem", $(this));
 		//Move old active user to carousel
@@ -128,7 +128,7 @@ jQuery(document).ready(function($){
 		    var myData = {
 			action: 'soundcloud_is_gold_set_active_user',
 			request: 'soundcloudIsGoldSetActiveUser',
-			username: $("#soundcloudIsGoldActiveUser").val()
+			userid: $("#soundcloudIsGoldActiveUser").val()
 		    };
 		    jQuery.post(ajaxurl, myData, function(response) {
 			if(response != "error"){
@@ -160,7 +160,7 @@ jQuery(document).ready(function($){
 		    //Remove it from carousel
 		    removeUser($(this));
 		    //Update hidden field for active user
-		    $("#soundcloudIsGoldActiveUser").val($('#soundcloudIsGoldActiveUserContainer .soundcloudIsGoldUserContainer div p').html());
+		    $("#soundcloudIsGoldActiveUser").val($('#soundcloudIsGoldActiveUserContainer .soundcloudIsGoldUserContainer div input:first').val());
 		});
 	    });
 	});
@@ -260,6 +260,7 @@ jQuery(document).ready(function($){
 	      if(format != 'tracks') shortcode += " format='playlist'";
 
         $('.soundcloudMMShortcode', parent).val("["+shortcode+"]");
+
     }
 
     /********************************************/

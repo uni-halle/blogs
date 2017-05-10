@@ -62,17 +62,18 @@ function get_soundcloud_is_gold_username_interface($options, $soundcloudIsGoldUs
 	?>
 	<!-- Active User -->
 			<ul id="soundcloudIsGoldActiveUserContainer">
-			    <li class="soundcloudIsGoldUserContainer" style="background-image:URL('<?php echo $options['soundcloud_is_gold_users'][$options['soundcloud_is_gold_active_user']][1] ?>')">
+			    <li class="soundcloudIsGoldUserContainer" style="background-image:URL('<?php echo $options['soundcloud_is_gold_users'][$options['soundcloud_is_gold_active_user']][2] ?>')">
 				<span id="soundcloudIsGoldActiveLabel">&nbsp;</span>
 				<div>
 				    <span class="soundcloudIsGoldRemoveUser" />&nbsp;</span>
 				    <input type="hidden" value="<?php echo $options['soundcloud_is_gold_users'][$options['soundcloud_is_gold_active_user']][0]?>" name="soundcloud_is_gold_options[soundcloud_is_gold_users][<?php echo $options['soundcloud_is_gold_active_user'] ?>][0]" />
 				    <input type="hidden" value="<?php echo $options['soundcloud_is_gold_users'][$options['soundcloud_is_gold_active_user']][1]?>" name="soundcloud_is_gold_options[soundcloud_is_gold_users][<?php echo $options['soundcloud_is_gold_active_user'] ?>][1]" />
-				    <p><?php echo $options['soundcloud_is_gold_active_user'] ?></p>
+				    <input type="hidden" value="<?php echo $options['soundcloud_is_gold_users'][$options['soundcloud_is_gold_active_user']][2]?>" name="soundcloud_is_gold_options[soundcloud_is_gold_users][<?php echo $options['soundcloud_is_gold_active_user'] ?>][2]" />
+            <p><?php echo $options['soundcloud_is_gold_users'][$options['soundcloud_is_gold_active_user']][1]?></p>
 				</div>
 			    </li>
 			    <li class="hidden">
-				<input type="hidden" id="soundcloudIsGoldActiveUser" value="<?php echo $options['soundcloud_is_gold_active_user'] ?>" name="soundcloud_is_gold_options[soundcloud_is_gold_active_user]" />
+				        <input type="hidden" id="soundcloudIsGoldActiveUser" value="<?php echo $options['soundcloud_is_gold_active_user'] ?>" name="soundcloud_is_gold_options[soundcloud_is_gold_active_user]" />
 			    </li>
 			</ul>
 			<!-- Add user -->
@@ -92,12 +93,13 @@ function get_soundcloud_is_gold_username_interface($options, $soundcloudIsGoldUs
 			    <ul id="soundcloudIsGoldUsernameCarousel">
 				<?php foreach($soundcloudIsGoldUsers as $key => $user): ?>
 				    <?php if($user[0] != $options['soundcloud_is_gold_active_user']) :?>
-				    <li class="soundcloudIsGoldUserContainer"  style="background-image:URL('<?php echo $user[1] ?>')">
+				    <li class="soundcloudIsGoldUserContainer"  style="background-image:URL('<?php echo $user[2] ?>')">
 					<span class="soundcloudIsGoldRemoveUser" />&nbsp;</span>
 					<div>
 					    <input type="hidden" value="<?php echo $user[0]?>" name="soundcloud_is_gold_options[soundcloud_is_gold_users][<?php echo $key ?>][0]" />
 					    <input type="hidden" value="<?php echo $user[1]?>" name="soundcloud_is_gold_options[soundcloud_is_gold_users][<?php echo $key ?>][1]" />
-					    <p><?php echo $user[0] ?></p>
+					    <input type="hidden" value="<?php echo $user[2]?>" name="soundcloud_is_gold_options[soundcloud_is_gold_users][<?php echo $key ?>][2]" />
+              <p><?php echo $user[1] ?></p>
 					</div>
 				    </li>
 				<?php endif; endforeach; ?>
@@ -113,16 +115,21 @@ function get_soundcloud_is_gold_username_interface($options, $soundcloudIsGoldUs
  **/
 function get_soundcloud_is_gold_latest_track_id($soundcloudIsGoldUser, $format = "tracks"){
 	$soundcouldMMId = "";
-	$soundcloudIsGoldApiCall = 'https://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/tracks.json?limit=1&client_id='.CLIENT_ID;
-	if($format == "playlists") $soundcloudIsGoldApiCall = 'https://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/playlists.json?limit=1&client_id='.CLIENT_ID;
-	if($format == "favorites") $soundcloudIsGoldApiCall = 'https://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/favorites.json?limit=1&client_id='.CLIENT_ID;
+  //Get user id from name
+  $userInfo = soundcloud_is_gold_user_info($soundcloudIsGoldUser);
+  if(isset($userInfo['response']['id'])){
+    $soundcloudIsGoldUser = $userInfo['response']['id'];
+    $soundcloudIsGoldApiCall = 'https://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/tracks.json?limit=1&client_id='.CLIENT_ID;
+  	if($format == "playlists") $soundcloudIsGoldApiCall = 'https://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/playlists.json?limit=1&client_id='.CLIENT_ID;
+  	if($format == "favorites") $soundcloudIsGoldApiCall = 'https://api.soundcloud.com/users/'.$soundcloudIsGoldUser.'/favorites.json?limit=1&client_id='.CLIENT_ID;
 
-	$soundcloudIsGoldApiResponse = get_soundcloud_is_gold_api_response($soundcloudIsGoldApiCall);
-	if(isset($soundcloudIsGoldApiResponse['response']) && $soundcloudIsGoldApiResponse['response']){
-	    foreach($soundcloudIsGoldApiResponse['response'] as $soundcloudMMLatestTrack){
-		$soundcouldMMId = $soundcloudMMLatestTrack['id'];
-	    }
-	}
+  	$soundcloudIsGoldApiResponse = get_soundcloud_is_gold_api_response($soundcloudIsGoldApiCall);
+  	if(isset($soundcloudIsGoldApiResponse['response']) && $soundcloudIsGoldApiResponse['response']){
+  	    foreach($soundcloudIsGoldApiResponse['response'] as $soundcloudMMLatestTrack){
+  		$soundcouldMMId = $soundcloudMMLatestTrack['id'];
+  	    }
+  	}
+  }
 	return $soundcouldMMId;
 }
 
@@ -157,6 +164,66 @@ function get_soundcloud_is_gold_multiple_tracks_id($soundcloudIsGoldUser, $nbr =
 	if($random) return array_random($soundcouldMMIds, $nbr);
 	return $soundcouldMMIds;
 }
+
+/**
+ * Update usernames to ids
+ * $soundcloudIsGoldApiCall: API request (url)
+ **/
+function soundcloud_is_gold_update_users($options){
+  $updateNeeded = true;
+  if(isset($options['soundcloud_is_gold_users'])){
+    foreach ($options['soundcloud_is_gold_users'] as $key => $user) {
+    if(!is_numeric($key)){
+  			$soundcloudIsGoldApiResponse = soundcloud_is_gold_user_info($key);
+  			if(isset($soundcloudIsGoldApiResponse['response'])){
+          //Update options
+          $id = $soundcloudIsGoldApiResponse['response']['id'];
+          $options['soundcloud_is_gold_users'][$id][0] = $soundcloudIsGoldApiResponse['response']['id'];
+          $options['soundcloud_is_gold_users'][$id][1] = $soundcloudIsGoldApiResponse['response']['permalink'];
+          $options['soundcloud_is_gold_users'][$id][2] = $soundcloudIsGoldApiResponse['response']['avatar_url'];
+          //Delete old options
+          unset($options['soundcloud_is_gold_users'][$key]);
+          //Set Active User if match
+          if($options['soundcloud_is_gold_active_user'] == $options['soundcloud_is_gold_users'][$id][1]) {
+            $options['soundcloud_is_gold_active_user'] = $options['soundcloud_is_gold_users'][$id][0];
+          }
+        }
+  		}else{
+        //If one key is numeric than we're good, just break the loop
+        $updateNeeded = false;
+        break;
+      }
+  	}
+    //Update Settings
+    if($updateNeeded) update_option('soundcloud_is_gold_options', $options);
+    return $options;
+  }
+}
+
+/**
+ * Resolve usernames to get ids
+ * $username: soundcloud username
+ **/
+function soundcloud_is_gold_user_info($username){
+			//Get user id based on username
+			$resolvedAPIurl = soundcloud_is_gold_resolve('https://www.soundcloud.com/'.$username);
+			$soundcloudIsGoldApiResponse = get_soundcloud_is_gold_api_response($resolvedAPIurl);
+      //Return user info
+			return $soundcloudIsGoldApiResponse;
+}
+
+/**
+ * Resolve
+ * $url: url to resolve
+ **/
+function soundcloud_is_gold_resolve($url){
+			//Get the new API url
+			$soundcloudIsGoldApiCall = 'https://api.soundcloud.com/resolve.json?url='.$url.'&client_id='.CLIENT_ID;
+      $soundcloudIsGoldApiResponse = get_soundcloud_is_gold_api_response($soundcloudIsGoldApiCall);
+      //Return resolved url
+      return $soundcloudIsGoldApiResponse['response']['location'];
+}
+
 /**
  * Get Soundcloud API Response (Json version)
  * $soundcloudIsGoldApiCall: API request (url)
@@ -164,7 +231,7 @@ function get_soundcloud_is_gold_multiple_tracks_id($soundcloudIsGoldUser, $nbr =
 function get_soundcloud_is_gold_api_response($soundcloudIsGoldApiCall){
 	//Set Error default message && default Json state
 	$soundcloudIsGoldRespError = false;
-	//Check is cURL extension is loaded
+  //Check is cURL extension is loaded
 	if(extension_loaded("curl")){
 		// create a new cURL resource
 		$soundcloudIsGoldCURL = curl_init();
@@ -355,6 +422,8 @@ add_filter('media_buttons_context', 'plugin_media_button');
 function get_soundcloud_is_gold_user_tracks(){
   //Default Settings
 	$options = get_option('soundcloud_is_gold_options');
+  //Fix bug when updating to 2.4.2 where API requests can only use user id
+  $options = soundcloud_is_gold_update_users($options);
 	//printl($options);
 	$soundcloudIsGoldActiveUser = isset($options['soundcloud_is_gold_active_user']) ? $options['soundcloud_is_gold_active_user'] : '';
 	$soundcloudIsGoldUsers = isset($options['soundcloud_is_gold_users']) ? $options['soundcloud_is_gold_users'] : '';
@@ -388,7 +457,7 @@ function get_soundcloud_is_gold_user_tracks(){
 
 	//Usernames
 	echo '<div class="soundcloudMMWrapper">';
-		echo '<div id="soundcloudMMUsernameHeader"><img src="'.$soundcloudIsGoldUsers[$soundcloudIsGoldActiveUser][1].'" width="50" height="50"/><span>'.$soundcloudIsGoldUsers[$soundcloudIsGoldActiveUser][0].'</span> <a href="#" id="soundcloudMMShowUsernames">show users options</a><a href="#" id="soundcloudMMHideUsernames" class="hidden">hide users options</a></div>';
+		echo '<div id="soundcloudMMUsernameHeader"><img src="'.$soundcloudIsGoldUsers[$soundcloudIsGoldActiveUser][2].'" width="50" height="50"/><span>'.$soundcloudIsGoldUsers[$soundcloudIsGoldActiveUser][1].'</span> <a href="#" id="soundcloudMMShowUsernames">show users options</a><a href="#" id="soundcloudMMHideUsernames" class="hidden">hide users options</a></div>';
 		echo '<div id="soundcloudMMUsermameTab">';
 		get_soundcloud_is_gold_username_interface($options, $soundcloudIsGoldUsers);
 	echo '</div></div>';
@@ -535,7 +604,7 @@ function get_soundcloud_is_gold_user_tracks(){
 									<tr class="soundcloudMM_shortcode">
 										<th valign="top" class="label" scope="row"><label><span class="alignleft">Shortcode</span><br class="clear"></label></th>
 										<td class="field">
-											<input id="soundcloudMMShortcode-<?php echo $soundcloudIsGoldtrack['id'] ?>" type="text" class="text soundcloudMMShortcode" value="[soundcloud <?php echo 'id='.$soundcloudIsGoldtrack['id'] ?>']">
+											<input id="soundcloudMMShortcode-<?php echo $soundcloudIsGoldtrack['id'] ?>" type="text" class="text soundcloudMMShortcode" value="[soundcloud <?php echo "id='".$soundcloudIsGoldtrack['id'] ?>']">
 										</td>
 									</tr>
 									 <tr class="soundcloudMM_submit">
@@ -710,35 +779,44 @@ function get_soundcloud_player(){
 add_action('wp_ajax_soundcloud_is_gold_add_user', 'soundcloud_is_gold_add_user');
 function soundcloud_is_gold_add_user(){
 	if(isset($_POST['request'])){
-		$options = get_option('soundcloud_is_gold_options');
-		if(isset($options['soundcloud_is_gold_users'])){
-			$return = 'error';
-			//Check if username doesn't exist already and is not blank
-			if(!empty($_POST['username']) && !array_key_exists($_POST['username'], $options['soundcloud_is_gold_users'])){
-				$newUsername = str_replace(" ", "-", trim($_POST['username']));
-				//Get user info
-				$userInfo = get_soundcloud_is_gold_api_response("https://api.soundcloud.com/users/".$newUsername.".json?client_id=".CLIENT_ID);
-        //printl($userInfo);
-        if(isset($userInfo) && isset($userInfo['response']['permalink'])){
-					$newUsername = $userInfo['response']['permalink'];
-					$newUsernameImg = $userInfo['response']['avatar_url'];
-
+    //Set return to error by default
+    $return = 'error';
+    //If username is blank kill it
+    if (empty($_POST['username'])) {
+      echo $return;
+      die;
+    }
+    //Get options
+    $options = get_option('soundcloud_is_gold_options');
+    //Replace spaces with hyphen in case users enter their name without it
+    $newUsername = str_replace(" ", "-", trim($_POST['username']));
+    //Get user info
+    $userInfo = soundcloud_is_gold_user_info($newUsername);
+    //Check that plugin's options are in place and that we've got $userinfo
+		if(isset($options['soundcloud_is_gold_users']) && isset($userInfo)){
+      //Set Info to keep
+      $newUserId = $userInfo['response']['id'];
+      $newUsername = $userInfo['response']['permalink'];
+      $newUsernameImg = $userInfo['response']['avatar_url'];
+			//Check if id doesn't exist already
+			if(!array_key_exists($newUserId, $options['soundcloud_is_gold_users'])){
 					$return = '<li class="soundcloudIsGoldUserContainer" style="background-image:URL('.$newUsernameImg.')">';
 					$return .= '<span class="soundcloudIsGoldRemoveUser" />&nbsp;</span>';
 					$return .= '<div>';
-					$return .= '<input type="hidden" value="'.$newUsername.'" name="soundcloud_is_gold_options[soundcloud_is_gold_users]['.$newUsername.'][0]" />';
-					$return .= '<input type="hidden" value="'.$newUsernameImg.'" name="soundcloud_is_gold_options[soundcloud_is_gold_users]['.$newUsername.'][1]" />';
+          $return .= '<input type="hidden" value="'.$newUserId.'" name="soundcloud_is_gold_options[soundcloud_is_gold_users]['.$newUserId.'][0]" />';
+          $return .= '<input type="hidden" value="'.$newUsername.'" name="soundcloud_is_gold_options[soundcloud_is_gold_users]['.$newUserId.'][1]" />';
+					$return .= '<input type="hidden" value="'.$newUsernameImg.'" name="soundcloud_is_gold_options[soundcloud_is_gold_users]['.$newUserId.'][2]" />';
 					$return .= '<p>'.$newUsername.'</p>';
 					$return .= '</div>';
 					$return .= '</li>';
 
 					//Tab: extra actions
 					if($_POST['updateOption'] == '1'){
-						$options['soundcloud_is_gold_users'][$newUsername][0] = $newUsername;
-						$options['soundcloud_is_gold_users'][$newUsername][1] = $newUsernameImg;
+						$options['soundcloud_is_gold_users'][$newUserId][0] = $newUserId;
+            $options['soundcloud_is_gold_users'][$newUserId][1] = $newUsername;
+						$options['soundcloud_is_gold_users'][$newUserId][2] = $newUsernameImg;
 						update_option( 'soundcloud_is_gold_options', $options );
 					}
-				}
 			}
 			echo $return;
 		}
@@ -752,9 +830,9 @@ function soundcloud_is_gold_set_active_user(){
 	if(isset($_POST['request'])){
 		$options = get_option('soundcloud_is_gold_options');
 		if(isset($options['soundcloud_is_gold_active_user'])){
-			//Check if username exist and is not blank
-			if(!empty($_POST['username']) && array_key_exists($_POST['username'], $options['soundcloud_is_gold_users'])){
-				$options['soundcloud_is_gold_active_user'] = $_POST['username'];
+			//Check if userid exist and is not blank
+			if(!empty($_POST['userid']) && array_key_exists($_POST['userid'], $options['soundcloud_is_gold_users'])){
+				$options['soundcloud_is_gold_active_user'] = $_POST['userid'];
 				update_option( 'soundcloud_is_gold_options', $options );
 				$message = 'done';
 			}
@@ -771,11 +849,11 @@ function soundcloud_is_gold_delete_user(){
 		$options = get_option('soundcloud_is_gold_options');
 		if(isset($options['soundcloud_is_gold_active_user'])){
 			//Check username exist and isn't blank
-			if(!empty($_POST['username']) && array_key_exists($_POST['username'], $options['soundcloud_is_gold_users'])){
+			if(!empty($_POST['userid']) && array_key_exists($_POST['userid'], $options['soundcloud_is_gold_users'])){
 				//Remove from users
-				unset($options['soundcloud_is_gold_users'][$_POST['username']]);
+				unset($options['soundcloud_is_gold_users'][$_POST['userid']]);
 				//If active user, set the first element to be active
-				if($options['soundcloud_is_gold_active_user'] == $_POST['username']){
+				if($options['soundcloud_is_gold_active_user'] == $_POST['userid']){
 					$newActiveUser = array_shift(array_values($options['soundcloud_is_gold_users']));
 					$options['soundcloud_is_gold_active_user'] = $newActiveUser[0];
 				}
@@ -841,6 +919,9 @@ class Soundcloud_Is_Gold_Widget extends WP_Widget {
 		//Random User
 		if($user == "randomUser") {
 			$options = get_option('soundcloud_is_gold_options');
+      //Fix bug when updating to 2.4.2 where API requests can only use user id
+      $options = soundcloud_is_gold_update_users($options);
+  		//Pick Random User
 			$soundcloudIsGoldUsers = isset($options['soundcloud_is_gold_users']) ? array_random($options['soundcloud_is_gold_users'], 1) : '';
 			//printl($soundcloudIsGoldUsers[0][0]);
 			if(isset($soundcloudIsGoldUsers))  $user = $soundcloudIsGoldUsers[0][0];
@@ -852,6 +933,9 @@ class Soundcloud_Is_Gold_Widget extends WP_Widget {
 		//Random User per Track
 		if($user == "randomUsers") {
 			$options = get_option('soundcloud_is_gold_options');
+      //Fix bug when updating to 2.4.2 where API requests can only use user id
+      $options = soundcloud_is_gold_update_users($options);
+  		//Set Random User per Track
 			if(isset($options['soundcloud_is_gold_users'])){
 				//Never select more tracks than there is users.
 				$number = (count($options['soundcloud_is_gold_users']) <= $number) ? count($options['soundcloud_is_gold_users']) : $number;
@@ -923,6 +1007,10 @@ class Soundcloud_Is_Gold_Widget extends WP_Widget {
 		else {
 			$title = __( 'Latest', 'text_domain' );
 		}
+    //Get Plugin Options
+    $options = get_option('soundcloud_is_gold_options');
+    //Fix bug when updating to 2.4.2 where API requests can only use user id
+    $options = soundcloud_is_gold_update_users($options);
 		?>
 		<!-- Title -->
 		<p>
@@ -934,9 +1022,8 @@ class Soundcloud_Is_Gold_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id('user'); ?>"><?php _e( 'Username:' ); ?></label>
 			<select name="<?php echo $this->get_field_name('user'); ?>" id="<?php echo $this->get_field_id('user'); ?>" class="widefat">
 				<?php
-				$options = get_option('soundcloud_is_gold_options');
 				foreach($options['soundcloud_is_gold_users'] as $user) : ?>
-					<option value="<?php echo $user[0] ?>"<?php selected( $instance['user'], $user[0] ); ?>><?php _e($user[0]); ?></option>
+					<option value="<?php echo $user[0] ?>"<?php selected( $instance['user'], $user[0] ); ?>><?php _e($user[1]); ?></option>
 				<?php endforeach; ?>
 				<option value="randomUser"<?php selected( $instance['user'], "randomUser" ); ?>><?php _e("Pick a Random User"); ?></option>
 				<option value="randomUsers"<?php selected( $instance['user'], "randomUsers" ); ?>><?php _e("Pick a Random User per Track"); ?></option>

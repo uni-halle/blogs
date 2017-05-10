@@ -4,7 +4,7 @@ Donate link: http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin
 Tags: soundcloud, simple, shortcode, music, sound
 Requires at least: 3.2
 Tested up to: 4.7.2
-Stable tag: 2.4.1
+Stable tag: 2.4.3
 
 Browse through your soundcloud tracks, playlists and favorites. Add tracks, playlists and favorites to your posts. Live preview, easy to use.
 
@@ -147,6 +147,12 @@ Sometimes, I generally keep a eye on my plugin's forums and website's comments. 
 
 
 == Changelog ==
+
+= 2.4.3 =
+* Fixed apostrophe bug in the shortcode when trying to insert
+
+= 2.4.2 =
+* Updated plugin to reflect Soundcloud API changes. Please update to fix any issues in version 2.4.1
 
 = 2.4.1 =
 * Fixed a bug in the Widget not properly displaying Playlists after updating from 2.3.3. Thanks to Jan Middelkoop and @gnorf for helping out.

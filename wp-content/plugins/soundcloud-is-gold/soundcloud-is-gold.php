@@ -3,7 +3,7 @@
 Plugin Name: Soundcloud is Gold
 Plugin URI: http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin
 Description: <strong><a href="http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin">Soundcloud is gold</a></strong> integrates perfectly into wordpress. Select, set and add track, playlists or favorites to your post using the soundcloud player. Live Preview, easy, smart and straightforward. You can set default settings in the option page, choose your defaut soundcloud player (Standard, Artwork, Visual), its width, extra Css classes for you CSS lovers and your favorite colors. You'll still be able to set players to different settings before adding to your post if you fancy a one off change!
-Version: 2.4.1
+Version: 2.4.3
 Author: Thomas Michalak
 Author URI: http://www.mightymess.com/thomas-michalak
 License: GPL2 or Later
@@ -162,7 +162,9 @@ add_action('admin_notices', 'soundcloud_is_gold_add_settings_errors');
 /**********************************************/
 function soundcloud_is_gold_options(){
     $options = get_option('soundcloud_is_gold_options');
-    //printl($options);
+		//Fix bug when updating to 2.4.2 where API requests can only use user id
+    $options = soundcloud_is_gold_update_users($options);
+		//printl($options);
     $soundcloudIsGoldActiveUser = isset($options['soundcloud_is_gold_active_user']) ? $options['soundcloud_is_gold_active_user'] : '';
     $soundcloudIsGoldUsers = isset($options['soundcloud_is_gold_users']) ? $options['soundcloud_is_gold_users'] : '';
     $soundcloudIsGoldSettings = isset($options['soundcloud_is_gold_settings']) ? $options['soundcloud_is_gold_settings'] : '';
