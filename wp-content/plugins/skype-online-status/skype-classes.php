@@ -45,7 +45,8 @@ class Skype_Status_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['skype_id'] =  trim(strip_tags(stripslashes($new_instance['skype_id']))); 
+		$skype_id_array = explode("@",$new_instance['skype_id']);
+		$instance['skype_id'] =  trim(strip_tags(stripslashes($skype_id_array[0]))); 
 		$instance['user_name'] =  trim(strip_tags(stripslashes($new_instance['user_name']))); 
 
 		if ( current_user_can('unfiltered_html') ) {

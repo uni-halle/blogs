@@ -1,0 +1,606 @@
+# Copyright (C) 2010
+# This file is distributed under the same license as the  package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Skype Online Status/2.8\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-07 12:00+0300\n"
+"PO-Revision-Date: 2017-03-28 16:28+0200\n"
+"Language-Team: Skype Online Status - Languages <ravanhagen@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.8.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Last-Translator: RavanH <ravanhagen@gmail.com>\n"
+"Language: ga_GA\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../skype-admin.php:10
+msgid "Post content"
+msgstr "Post ábhar"
+
+#: ../skype-admin.php:11
+#, php-format
+msgid "When writing posts you can insert a Skype button with a simple quicktag %1$s or %2$s but to make life even easier, a small button on the WYSIWYG editor can do it for you. Check this option to show %3$s or uncheck to hide it. You may still insert the quicktag  in the HTML code of your post or page content manually."
+msgstr "Nuair post scríobh is féidir leat a chur isteach ar cnaipe Skype le quicktag simplí %1$s nó %2$s , ach a dhéanamh ar an saol níos éasca, cnaipe beag ar an eagarthóir WYSIWYG a dhéanamh ar do shon. Ticeáil an rogha seo a thaispeáint %3$s nó bain an tic a cheilt. Is féidir leat a chur isteach fós ar an quicktag an cód HTML de do phoist nó inneachar an leathanaigh de láimh."
+
+#: ../skype-admin.php:11 ../skype-admin.php:195 ../skype-admin.php:263
+#: ../skype-admin.php:328 ../skype-admin.php:363 ../skype-admin.php:365
+#: ../skype-admin.php:367 ../skype-admin.php:481 ../skype-classes.php:575
+#: ../skype-quickguide-notes.php:114 ../skype-quickguide-notes.php:123
+msgid "Skype Legacy Buttons"
+msgstr "Buttons Skype Legacy"
+
+#: ../skype-admin.php:12
+msgid "Use <strong>Skype shortcode button</strong> in the RTE for posts."
+msgstr "Úsáid <strong> Skype cnaipe shortcode </ strong> in RTÉ do phoist."
+
+#: ../skype-admin.php:16 ../skype-admin.php:182 ../skype-admin.php:502
+msgid "Display &amp; Function"
+msgstr "Taispeáin & amp; Feidhm"
+
+#: ../skype-admin.php:17
+msgid "These settings define which options should be used to replace their respective tag (if present) in the selected template file. If unchecked, the tags will be blanked out."
+msgstr "Tá na socruithe a shainiú chóir roghanna a úsáid a chur in ionad a n-chlib seach (más ann dó) sa chomhad teimpléad roghnaithe. Más rud é unchecked, beidh na clibeanna a blanked amach."
+
+#: ../skype-admin.php:18
+#, php-format
+msgid "Use %1$s in dropdown button. Leave unchecked if you do not have %2$s or %3$s."
+msgstr "Bain úsáid as %1$s in gcnaipe anuas. Fág unchecked más rud é nach bhfuil tú ag %2$s nó %3$s ."
+
+#: ../skype-admin.php:18 ../skype-classes.php:315
+msgid "Leave me voicemail"
+msgstr "Fág mé glórphost"
+
+#: ../skype-admin.php:18 ../skype-admin.php:307 ../skype-classes.php:114
+msgid "SkypeIn"
+msgstr "SkypeIn"
+
+#: ../skype-admin.php:18 ../skype-admin.php:308 ../skype-classes.php:114
+msgid "Skype Voicemail"
+msgstr "Skype Glórphost"
+
+#: ../skype-admin.php:21
+#, php-format
+msgid "Use %1$s (define below) for %2$s tags."
+msgstr "Bain úsáid as %1$s (shainiú faoi bhun) le %2$s tags."
+
+#: ../skype-admin.php:21
+msgid "Action text"
+msgstr "téacs gníomh"
+
+#: ../skype-admin.php:23
+msgid "Use local images instead of the ones hosted on the Skype servers."
+msgstr "Úsáid Íomhánna áitiúla in ionad na cinn óstáil ar na freastalaithe Skype."
+
+#: ../skype-admin.php:25
+msgid "Use schemeless URLs / protocol relative paths for TLS compatibility."
+msgstr "Bain úsáid as schemeless URLanna / prótacal cosáin coibhneasta don TLS comhoiriúnacht."
+
+#: ../skype-admin.php:61
+#, php-format
+msgid "Use %s link."
+msgstr "Úsáid %s nasc."
+
+#: ../skype-admin.php:61
+msgid "Download Skype now!"
+msgstr "Íosluchtaigh Skype anois!"
+
+#: ../skype-admin.php:62
+msgid "Place link on a new line."
+msgstr "Cuir nasc ar líne nua."
+
+#: ../skype-admin.php:63
+msgid "Link text"
+msgstr "téacs Nasc"
+
+#: ../skype-admin.php:63 ../skype-admin.php:64 ../skype-admin.php:175
+#: ../skype-admin.php:182 ../skype-admin.php:195 ../skype-admin.php:306
+#: ../skype-admin.php:307 ../skype-admin.php:308 ../skype-admin.php:493
+#: ../skype-admin.php:496 ../skype-admin.php:499 ../skype-classes.php:94
+#: ../skype-classes.php:97 ../skype-classes.php:100 ../skype-classes.php:103
+#: ../skype-classes.php:106
+msgid ": "
+msgstr ":"
+
+#: ../skype-admin.php:64
+msgid "Link URL"
+msgstr "URL Link"
+
+#: ../skype-admin.php:66
+msgid "Default affiliate link"
+msgstr "nasc Réamhshocraithe affiliate"
+
+#: ../skype-admin.php:67
+msgid "Skype main page"
+msgstr "Skype príomh-leathanach"
+
+#: ../skype-admin.php:68
+msgid "Skype download page"
+msgstr "Skype leathanach íoslódáil"
+
+#: ../skype-admin.php:69 ../skype-admin.php:71 ../skype-admin.php:175
+#: ../skype-admin.php:177 ../skype-admin.php:182 ../skype-admin.php:252
+#: ../skype-admin.php:499 ../skype-admin.php:500 ../skype-admin.php:501
+msgid "Custom..."
+msgstr "Saincheaptha ..."
+
+#: ../skype-admin.php:71
+msgid "Leave to Default if you are generous and think downloads should create some small possible revenue for the developer of this plugin. Or you could donate with the PayPal button on this page. -- Thanks! :)"
+msgstr "Cead chun Réamhshocrú má tá tú flaithiúil agus ba cheart, dar íosluchtú chruthú roinnt ioncam beag agus is féidir chun forbróir an mbreiseán seo. Nó d'fhéadfá a bhronnadh leis an gcnaipe PayPal ar an leathanach seo. - Go raibh maith agat! :)"
+
+#: ../skype-admin.php:71
+#, php-format
+msgid "If you want to create your own link to get possible revenue from downloads yourself, select %1$s and paste the link code in the textarea under %2$s below."
+msgstr "Más mian leat a chruthú do nasc féin a fháil ioncam féideartha ó íosluchtú tú féin, roghnaigh %1$s agus greamaigh an cód nasc sa textarea faoi %2$s thíos."
+
+#: ../skype-admin.php:71 ../skype-admin.php:182 ../skype-admin.php:500
+#: ../skype-admin.php:501 ../skype-admin.php:502 ../skype-classes.php:628
+msgid "Advanced Options"
+msgstr "Ardroghanna"
+
+#: ../skype-admin.php:71 ../skype-admin.php:181
+msgid "Custom Download Link"
+msgstr "Saincheaptha Íosluchtaigh Link"
+
+#: ../skype-admin.php:117
+msgid "Tag texts"
+msgstr "téacsanna Clib"
+
+#: ../skype-admin.php:118
+msgid "Define texts to replace their respective template tags relating to the Skype button action."
+msgstr "téacsanna Sainmhínigh a chur in ionad a n-clibeanna teimpléad faoi seach a bhaineann leis an ngníomh gcnaipe Skype."
+
+#: ../skype-admin.php:121
+msgid "Action"
+msgstr "gníomh"
+
+#: ../skype-admin.php:122 ../skype-admin.php:152
+msgid "Tag"
+msgstr "Clib"
+
+#: ../skype-admin.php:123 ../skype-admin.php:153
+msgid "Text"
+msgstr "Téacs"
+
+#: ../skype-admin.php:151
+msgid "Other"
+msgstr "Eile"
+
+#: ../skype-admin.php:156
+msgid "Separator"
+msgstr "deighilteoir"
+
+#: ../skype-admin.php:174 ../skype-admin.php:500 ../skype-admin.php:501
+msgid "Custom Template"
+msgstr "Teimpléad Saincheaptha"
+
+#: ../skype-admin.php:175
+#, php-format
+msgid "The currently selected template has been loaded into the database. You can edit it here if you like, but be sure to select %1$s under %2$s or your changes will be lost."
+msgstr "Tá an teimpléad roghnaithe curtha luchtú isteach ar an mbunachar sonraí. Is féidir leat é a athrú anseo más mian leat, ach a bheith cinnte a roghnú %1$s faoi %2$s nó beidh do chuid athruithe a bheith caillte."
+
+#: ../skype-admin.php:175 ../skype-admin.php:177 ../skype-admin.php:480
+#: ../skype-admin.php:499 ../skype-classes.php:103
+msgid "Theme"
+msgstr "Téama"
+
+#: ../skype-admin.php:175 ../skype-admin.php:500
+msgid "Customize currently loaded template"
+msgstr "Saincheap teimpléad luchtaithe faoi láthair"
+
+#: ../skype-admin.php:177
+msgid "Available tags:"
+msgstr "Search Fáil:"
+
+#: ../skype-admin.php:177
+msgid "Available markers:"
+msgstr "marcóirí ar fáil:"
+
+#: ../skype-admin.php:177
+#, php-format
+msgid "See %s for more instructions."
+msgstr "Féach %s le haghaidh treoracha níos mó."
+
+#: ../skype-admin.php:177 ../skype-admin.php:215 ../skype-admin.php:352
+#: ../skype-admin.php:484 ../skype-admin.php:503
+#: ../skype-quickguide-notes.php:6
+msgid "Quick Guide"
+msgstr "Treoir Thapa"
+
+#: ../skype-admin.php:177
+#, php-format
+msgid "Oh, and did I mention this? Changes to the template will only be loaded when the option %1$s under %2$s is selected!"
+msgstr "Ó, agus luaigh mé seo? Cuirfear athruithe ar an teimpléad a luchtú ach amháin nuair a bheidh an rogha %1$s faoi %2$s roghnaítear!"
+
+#: ../skype-admin.php:182
+#, php-format
+msgid "If you are a <a href=\"%1$s\">Skype Affiliate</a> select %2$s at %3$s (above) and paste your link/banner code (HTML/Javascript) here."
+msgstr "Má tá tú ag <a href=\" %1$s \"> Skype Affiliate </a> roghnú %2$s ag %3$s (thuas) agus greamaigh ar do nasc / cód banner (HTML / Javascript) anseo."
+
+#: ../skype-admin.php:182
+msgid "Link/Banner Code"
+msgstr "Nasc / Cód Banner"
+
+#: ../skype-admin.php:186 ../skype-admin.php:235
+msgid "Save Changes"
+msgstr "Sábháil Athruithe"
+
+#: ../skype-admin.php:189 ../skype-quickguide-notes.php:13
+#: ../skype-quickguide-notes.php:28 ../skype-quickguide-notes.php:46
+#: ../skype-quickguide-notes.php:93 ../skype-quickguide-notes.php:107
+#: ../skype-quickguide-notes.php:120 ../skype-quickguide-notes.php:129
+#: ../skype-quickguide-notes.php:134 ../skype-quickguide-notes.php:138
+msgid "Top"
+msgstr "Barr"
+
+#: ../skype-admin.php:195 ../skype-admin.php:263
+#: ../skype-quickguide-notes.php:114 ../skype-quickguide-notes.php:123
+msgid "WordPress Support"
+msgstr "Tacaíocht WordPress"
+
+#: ../skype-admin.php:199
+msgid "More..."
+msgstr "Níos mó ..."
+
+#: ../skype-admin.php:218 ../skype-admin.php:484
+msgid "Notes"
+msgstr "Nótaí"
+
+#: ../skype-admin.php:239
+msgid "WARNING !"
+msgstr "RABHADH!"
+
+#: ../skype-admin.php:252
+msgid " (edit under advanced options)"
+msgstr "(In eagar faoi roghanna chun cinn)"
+
+#: ../skype-admin.php:257 ../skype-admin.php:483 ../skype-admin.php:494
+msgid "Note:"
+msgstr "Nóta:"
+
+#: ../skype-admin.php:257
+msgid "The preview button uses the Skype Test Call service to allow testing its function."
+msgstr "Úsáideann an cnaipe réamhamharc ar an tseirbhís Ghlao Tástáil Skype chun ligean tástáil a fheidhm."
+
+#: ../skype-admin.php:263
+msgid "For all support questions and suggestions, please go to"
+msgstr "I gcás gach ceist tacaíochta agus moltaí, le do thoil téigh go dtí"
+
+#: ../skype-admin.php:264
+#, php-format
+msgid "For <strong>feature requests</strong> or general help with <strong>WordPress</strong> or <strong>hosting</strong>, please contact <em>RavanH</em> via e-mail %s or Skype chat:"
+msgstr "I gcás iarratais <strong> gné </ strong> nó cúnamh ginearálta le <strong> WordPress </ strong> nó <strong> óstáil </ strong>, téigh i dteagmháil le <em> RavanH </ em> trí ríomhphost %s nó Skype comhrá:"
+
+#: ../skype-admin.php:273
+msgid "Translations"
+msgstr "Aistriúcháin"
+
+#: ../skype-admin.php:274
+msgid "Translation contributions are highly appreciated. Authors of new translations or updates will be mentioned here."
+msgstr "Ranníocaíochtaí aistriúcháin atá bhuíoch. Beidh Údair na haistriúcháin nua nó cothrom le dáta a lua anseo."
+
+#: ../skype-admin.php:278
+msgid "Want to make your own translation too? Read the <a href=\"http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt\">translation instructions</a> included with this plugin to get started."
+msgstr "Want a dhéanamh do aistriúchán féin freisin? Léigh an t-<a treoracha aistriúcháin href=\"http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt\"> </a> san áireamh leis an mbreiseán seo a fháil thosaigh."
+
+#: ../skype-admin.php:280
+msgid "Donations"
+msgstr "Síntiúis"
+
+#: ../skype-admin.php:281
+msgid "All donations are much appreciated and will (without objection) be mentioned here as a way of expressing my gratitude."
+msgstr "Gach síntiús a buíoch as an méid agus beidh (gan agóid) a lua anseo mar bhealach a chur in iúl mo bhuíochas."
+
+#: ../skype-admin.php:285
+msgid "Please <strong>rate this plugin</strong> at <a href=\"https://wordpress.org/plugins/skype-online-status/\">WordPress</a>"
+msgstr "Le do thoil <strong> Ráta an mbreiseán </ strong> <a ag href=\"https://wordpress.org/plugins/skype-online-status/\"> WordPress </a>"
+
+#: ../skype-admin.php:286
+msgid "Do you want your name and/or link up there too? Or just appreciate my work?"
+msgstr "Ar mhaith leat d'ainm agus / nó an nasc suas ann freisin? Nó díreach buíoch mo chuid oibre?"
+
+#: ../skype-admin.php:287
+msgid "Donate with PayPal - it's fast, free and secure!"
+msgstr "Síntiúis le PayPal - tá sé go tapa, saor in aisce agus slán!"
+
+#: ../skype-admin.php:288
+msgid "Thanks!"
+msgstr "Go raibh maith agat!"
+
+#: ../skype-admin.php:303 ../skype-classes.php:575
+msgid "Skype Buttons"
+msgstr "Buttons Skype"
+
+#: ../skype-admin.php:305
+msgid "Edit Privacy Options in your Skype client"
+msgstr "Cuir Roghanna Príobháideacht i do chliant Skype"
+
+#: ../skype-admin.php:306 ../skype-admin.php:494
+msgid "SkypeOut"
+msgstr "SkypeOut"
+
+#: ../skype-admin.php:306
+msgid "Call any phone directly from Skype."
+msgstr "Glaoigh ar aon fón go díreach ó Skype."
+
+#: ../skype-admin.php:307
+msgid "Your personal online number."
+msgstr "D'uimhir ar líne pearsanta."
+
+#: ../skype-admin.php:308
+msgid "Never miss a call!"
+msgstr "Ná caill glao!"
+
+#: ../skype-admin.php:309
+msgid "Group Video calling"
+msgstr "Grúpa Video glaoch"
+
+#: ../skype-admin.php:336
+msgid "Your Skype Legacy Buttons database settings have been cleared from the database for removal of this plugin!"
+msgstr "Do Skype Leagáid suímh bunachar Buttons bheith glanta ó bhunachar sonraí chun deireadh a mbreiseán!"
+
+#: ../skype-admin.php:336
+msgid "You can still resave the old settings shown below to (partly) undo this action but custom widget settings will be reverted to default."
+msgstr "Is féidir leat resave fós na socruithe d'aois a thaispeántar thíos chun (go páirteach) Cealaigh an ngníomh, ach saincheaptha beidh socruithe ghiuirléid a bhfillfeadh réamhshocraithe."
+
+#: ../skype-admin.php:336
+msgid "Are you sure?"
+msgstr "An bhfuil tú cinnte?"
+
+#: ../skype-admin.php:338
+msgid "Deactivate this plugin"
+msgstr "Díghníomhachtaigh mbreiseán seo"
+
+#: ../skype-admin.php:338
+msgid "Deactivate"
+msgstr "Díghníomhachtaigh"
+
+#: ../skype-admin.php:340
+msgid "Go to the <a href=\"plugins.php\">Plugins page</a> and deactivate it."
+msgstr "Téigh go dtí an <a href=\"plugins.php\"> Breiseáin leathanach </a> agus dhíghníomhachtú air."
+
+#: ../skype-admin.php:345
+msgid "Skype Legacy Buttons plugin has been upgraded to version "
+msgstr "Tá Skype Legacy Buttons breiseán Rinneadh uasghrádú leagan"
+
+#: ../skype-admin.php:345
+msgid "Please, verify your settings now."
+msgstr "Le do thoil, a fhíorú do chuid socruithe anois."
+
+#: ../skype-admin.php:345
+msgid "What's new?"
+msgstr "Cad atá nua?"
+
+#: ../skype-admin.php:350
+#, php-format
+msgid "Skype Legacy Buttons plugin version %s has been installed!"
+msgstr "Buttons Skype Legacy plugin leagan %s curtha isteach!"
+
+#: ../skype-admin.php:351
+msgid "Please, adapt the default settings to your personal preference so you can start using Skype buttons anywhere on your site."
+msgstr "Le do thoil, na socruithe réamhshocraithe do rogha pearsanta a chur in oiriúint ionas gur féidir leat tosú ag baint úsáide as cnaipí Skype áit ar bith ar do shuíomh."
+
+#: ../skype-admin.php:352
+#, php-format
+msgid "Read the %s section for more instructions."
+msgstr "Léigh an t- %s alt le haghaidh treoracha níos mó."
+
+#: ../skype-admin.php:363
+#, php-format
+msgid "There is a new version of %1$s available. <a href=\"%2$s\">Download version %3$s here</a>."
+msgstr "Tá leagan nua de %1$s ar fáil. <a href=\" %2$s \"> Íosluchtaigh Leagan %3$s anseo </a>."
+
+#: ../skype-admin.php:365
+#, php-format
+msgid "There is a new version of %1$s available. <a href=\"%2$s\">Download version %3$s here</a> <em>automatic upgrade unavailable for this plugin</em>."
+msgstr "Tá leagan nua de %1$s ar fáil. <a href=\" %2$s \"> Íosluchtaigh Leagan %3$s anseo </a> <em> uasghrádú uathoibríoch ar fáil le mbreiseán </ em>."
+
+#: ../skype-admin.php:367
+#, php-format
+msgid "There is a new version of %1$s available. <a href=\"%2$s\">Download version %3$s here</a> or <a href=\"%4$s\">upgrade automatically</a>."
+msgstr "Tá leagan nua de %1$s ar fáil. <a href=\" %2$s \"> Download Leagan %3$s anseo </a> nó <a href=\" %4$s \"> uasghrádú go huathoibríoch </a>."
+
+#: ../skype-admin.php:433
+msgid "Options updated!"
+msgstr "Roghanna cothrom le dáta!"
+
+#: ../skype-admin.php:439
+msgid "Options reset!"
+msgstr "Roghanna athshocrú!"
+
+#: ../skype-admin.php:445 ../skype-classes.php:240
+msgid "Skype Test Call"
+msgstr "Skype Tástáil Call"
+
+#: ../skype-admin.php:479
+msgid "Define all your <em>default</em> Skype settings here."
+msgstr "Sainmhínigh do <em> default </ em> suímh Skype anseo."
+
+#: ../skype-admin.php:480
+#, php-format
+msgid "Start simply by setting the basics like %1$s, %2$s and the button %3$s you want to show on your blog."
+msgstr "Tosaigh go simplí ag leagan síos na Basics cosúil le %1$s , %2$s agus an cnaipe %3$s mian leat a thaispeáint ar do bhlag."
+
+#: ../skype-admin.php:480 ../skype-admin.php:493 ../skype-classes.php:94
+msgid "Skype ID"
+msgstr "Skype ID"
+
+#: ../skype-admin.php:480 ../skype-admin.php:496 ../skype-classes.php:97
+msgid "Full Name"
+msgstr "Ainm iomlán"
+
+#: ../skype-admin.php:481
+#, php-format
+msgid "Then activate a Skype Button widget on your <a href=\"widgets.php\">Widgets</a> page or use the Skype shortcode button %s in the WYSIWYG editor (TinyMCE) to place a Skype legacy button in any post or page."
+msgstr "Ansin ghníomhachtú ghiuirléid Button Skype ar do href=\"widgets.php\"> <a Widgets </a> leathanach nó an shortcode Skype gcnaipe %s san eagarthóir WYSIWYG (TinyMCE) chun áit a cnaipe leagáide Skype in aon phost nó leathanach."
+
+#: ../skype-admin.php:482
+msgid "Later on, you can fine-tune everything until it fits just perfectly on you pages."
+msgstr "Níos déanaí ar, is féidir leat a mhionchoigeartú gach rud go dtí go n-oireann sé ach breá ar tú leathanaigh."
+
+#: ../skype-admin.php:483
+msgid "Some basic settings may be overridden per Widget settings or when calling the Skype button with a template function."
+msgstr "D'fhéadfadh roinnt suímh bunúsacha a shárú de réir suímh Giuirléid nó ar cuairt chuig an gcnaipe Skype le feidhm teimpléad."
+
+#: ../skype-admin.php:484
+#, php-format
+msgid "Read more about configuring this plugin and more ways to trigger Skype buttons on your blog in the %1$s section. If you have any remaining questions, see the %2$s page to get help."
+msgstr "Léigh tuilleadh faoi chumrú an mbreiseán agus ar bhealaí níos mó chun tús le cnaipí Skype ar do bhlag sa %1$s roinn. Má tá aon cheist agat fágtha agat, féach an %2$s leathanach cabhrach a fháil."
+
+#: ../skype-admin.php:494
+#, php-format
+msgid "Simply enter your Skype ID. Or... If you want the button to invoke a Skype multichat or conference call, enter more then one Skype ID seperated with a semi-colon (<strong>;</strong>). You may also enter a regular phone number (starting with a <strong>+</strong> followed by country code; note that callers need to have %s to call). It just all depends on what you want to achieve!"
+msgstr "Níl ort ach isteach do ID Skype. Nó ... Más mian leat an cnaipe chun agairt multichat nó comhdháil Skype glaoch, isteach níos mó ansin scartha amháin Skype ID le leathstad (<strong>; </ strong>). Is féidir leat chomh maith dul isteach uimhir theileafóin rialta (ag tosú le <strong> + </ strong> ina dhiaidh cód tíre; deara gur gá do ghlaoiteoirí a bheith acu %s a ghlaoch). ach braitheann sé ar fad ar cad ba mhaith leat a bhaint amach!"
+
+#: ../skype-admin.php:497
+msgid "Your full name as you want it to appear in Skype links, link-titles and image alt-texts on your blog."
+msgstr "D'ainm iomlán mar is mian leat é a bheith i láthair ar naisc Skype, nasc-teidil agus íomhá alt-téacsanna ar do bhlag."
+
+#: ../skype-admin.php:500
+#, php-format
+msgid "When %1$s is selected, you can edit the template to your liking below at %2$s under %3$s. When you make changes to that field but select another theme template here, those changes will be overwriten by the new template!"
+msgstr "Nuair %1$s roghnaithe, is féidir leat an teimpléad a chur in eagar le do liking thíos ag %2$s faoi %3$s . Nuair a dhéanann tú athruithe ar réimse sin ach teimpléad eile téama a roghnú anseo, beidh na hathruithe a overwriten ag an teimpléad nua!"
+
+#: ../skype-admin.php:501
+#, php-format
+msgid "Start with <strong>selecting one of the predefined theme templates</strong> to load into the database. Change the options to see a preview. You might later select %1$s to edit the template in the text field under %2$s."
+msgstr "Tosaigh le <strong> roghnú ar cheann de na teimpléid téama réamhshainithe </ strong> a luchtú isteach i mbunachar sonraí. Athraigh na roghanna a fheiceáil réamhamharc. D'fhéadfá a roghnú ina dhiaidh sin %1$s a chur in eagar ar an teimpléad i réimse téacs faoi %2$s ."
+
+#: ../skype-admin.php:502
+#, php-format
+msgid "If you cannot find a suitable theme, check out <a href=\"http://www.skype.com/en/features/skype-buttons/\" target=\"_blank\">http://www.skype.com/en/features/skype-buttons/</a>. Select your options there and copy/paste the output into the textarea under %s."
+msgstr "Mura bhfuil tú ar théama oiriúnach, seiceáil amach <a href=\"http://www.skype.com/en/features/skype-buttons/\" target=\"_blank\"> http: // www. </a> skype.com/en/features/skype-buttons/. Roghnaigh do roghanna ann agus cóipeáil / greamaigh an t-aschur isteach sa textarea faoi %s ."
+
+#: ../skype-admin.php:503
+#, php-format
+msgid "If you have your basic settings correct and there is a Skype button visible on blog, you can fine-tune it's appearance and function with the advanced settings. Each option is annotated but you can read more in the %s section."
+msgstr "Má tá tú do chuid socruithe an bhunfhaisnéis chruinn ar agus tá cnaipe Skype le feiceáil ar bhlag, is féidir leat a fíneáil-tune tá sé gcuma agus feidhm leis na suímh chun cinn. Tá gach rogha anótáilte ach is féidir leat níos mó a léamh sa %s roinn."
+
+#: ../skype-classes.php:13 ../skype-classes.php:73
+msgid "Skype Button"
+msgstr "Skype Button"
+
+#: ../skype-classes.php:16
+msgid "Add a Skype legacy button"
+msgstr "Cuir cnaipe oidhreacht Skype"
+
+#: ../skype-classes.php:91
+msgid "Title:"
+msgstr "Teideal:"
+
+#: ../skype-classes.php:100
+msgid "Text before button"
+msgstr "Téacs roimh gcnaipe"
+
+#: ../skype-classes.php:104 ../skype-classes.php:110
+msgid "Default"
+msgstr "Réamhshocrú"
+
+#: ../skype-classes.php:106
+msgid "Text after button"
+msgstr "Téacs i ndiaidh cnaipe"
+
+#: ../skype-classes.php:109
+msgid "Use Voicemail?"
+msgstr "Úsáid Glórphost?"
+
+#: ../skype-classes.php:110
+msgid "Yes"
+msgstr "Is ea"
+
+#: ../skype-classes.php:110 ../skype-classes.php:114
+msgid "No"
+msgstr "Níl"
+
+#: ../skype-classes.php:112
+msgid "Leave blank to use the default options as you defined on the <a href=\"options-general.php?page=skype-status.php\">Skype Settings</a> page."
+msgstr "Fág bán a bhaint as na roghanna réamhshocraithe mar a shainmhínítear tú ar an href=\"options-general.php?page=skype-status.php\"> <a Skype Settings </a> leathanach."
+
+#: ../skype-classes.php:113
+msgid "You can use some basic HTML here like &lt;br /&gt; for new line."
+msgstr "Is féidir leat úsáid a bhaint roinnt HTML simplí anseo cosúil & lt; br / & gt; le haghaidh líne nua."
+
+#: ../skype-classes.php:114
+#, php-format
+msgid "Set to %1$s if you do not have %2$s or %3$s."
+msgstr "Socraigh do %1$s más rud é nach bhfuil tú ag %2$s nó %3$s ."
+
+#: ../skype-classes.php:257
+msgid " - "
+msgstr "-"
+
+#: ../skype-classes.php:268
+msgid "&raquo; Get Skype, call free!"
+msgstr "& Raquo; Faigh Skype, glaoigh haghaidh saor in aisce!"
+
+#: ../skype-classes.php:311
+msgid "Call me!"
+msgstr "Cuir glaoch orm!"
+
+#: ../skype-classes.php:312
+msgid "Add me to Skype"
+msgstr "Cuir dom Skype"
+
+#: ../skype-classes.php:313
+msgid "Chat with me"
+msgstr "Comhrá le liom"
+
+#: ../skype-classes.php:314
+msgid "View my profile"
+msgstr "Amharc ar mo phróifíl"
+
+#: ../skype-classes.php:316
+msgid "Send me a file"
+msgstr "Seol dom comhad"
+
+#: ../skype-classes.php:362
+msgid "Skype button disabled:"
+msgstr "Skype cnaipe díchumasaithe:"
+
+#: ../skype-classes.php:362
+msgid "Missing Skype ID."
+msgstr "Iarraidh Skype ID."
+
+#: ../skype-classes.php:587
+msgid "Sections"
+msgstr "Ailt"
+
+#: ../skype-classes.php:588
+msgid "Preview"
+msgstr "réamhamharc"
+
+#: ../skype-classes.php:589 ../skype-quickguide-notes.php:102
+#: ../skype-quickguide-notes.php:122
+msgid "Support"
+msgstr "Tacaíocht"
+
+#: ../skype-classes.php:590
+msgid "Get more from Skype"
+msgstr "Faigh níos mó ó Skype"
+
+#: ../skype-classes.php:591
+msgid "Resources"
+msgstr "Acmhainní"
+
+#: ../skype-classes.php:610
+msgid "Settings"
+msgstr "Socruithe"
+
+#: ../skype-classes.php:629
+msgid "Discussion"
+msgstr "plé"
+
+#: ../skype-classes.php:630 ../skype-quickguide-notes.php:103
+msgid "Credits"
+msgstr "Creidmheasanna"
+
+#: ../skype-quickguide-notes.php:99
+msgid "Notes &amp; Live Support"
+msgstr "Nótaí & amp; Tacaíocht Live"

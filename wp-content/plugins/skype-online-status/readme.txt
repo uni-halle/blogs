@@ -1,12 +1,12 @@
 === Skype Legacy Buttons ===
 Contributors: RavanH
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ravanhagen%40gmail%2ecom&item_name=Skype%20Legacy%20Buttons&item_number=2%2e8&no_shipping=0&tax=0&bn=PP%2dDonationsBF&charset=UTF%2d8&lc=us
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ravanhagen%40gmail%2ecom&item_name=Skype%20Legacy%20Buttons&item_number=3%2e0&no_shipping=0&tax=0&bn=PP%2dDonationsBF&charset=UTF%2d8&lc=us
 Tags: skype, skype button, call, support, widget, widgets, post, posts, quicktag, tinymce, tinymce3, im, skype-button
 Requires at least: 3.2
 Tested up to: 4.6
-Stable tag: 3.0.3
+Stable tag: 3.0.4
 
-Unlimited, highly customizable and accessible (!) Skype buttons through widgets, post shortcode/quicktag and template tags.
+Add Legacy Skype "Contact Me" buttons to your WordPress site through widgets, post shortcode and template tags.
 
 == Description ==
 
@@ -16,33 +16,38 @@ This WordPress plugin allows you to add one or multiple, customizable and access
 
 The Skype Buttons admin page and Skype Widget options are adequately annotated but there is also a **Quick Guide** section with lots of information on all the possible ways to get you blog Skyped. If you still cannot get it working the way you want to, find a Skype link to the developer on the Notes & Live Support section.
 
+This plugin has grown a lot since the start but it should be mentioned that it was built upon the neat little plugin Skype Button v2.01 by Anti Veeranna. Many thanks!
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
 = Translations =
 
-Since version 2.6.4.0, Skype Online Status is ready for internationalization. Anyone who wants to contribute can do so by making a transation. Read [translation instructions http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt "Skype Online Status translation instructions" (also included in the latest package) for more info.
+Since version 2.6.4.0, Skype Online Status is ready for internationalization. Anyone who wants to contribute can do so by making a transation. Read [translation instructions](http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt "Skype Online Status translation instructions") (also included in the latest package) for more info.
 
-- **Basque** * Silvia Ribés http://silviaribes.net/ (version 2.9.3)
-- **Belorussian** * M. Comfi http://www.comfi.com/ (version 2.7)
-- **Bulgarian** * Nikolay Nikolov http://en.chat4o.com/ (version 2.8.2)
-- **Croatian** * Saša http://lasersko-graviranje.bisa.hr (version 2.9.4)
-- **Czech** * Cathy Freyberg https://www.cathydoesloans.com/ (version 3.0)
-- **Danish** * Georg S. Adamsen http://wordpress.blogos.dk/2009/03/18/skype-online-status/ (version 2.8.2)
-- **Dutch** * R.A. van Hagen http://status301.net/ (version 3.0)
-- **Estonian** * Iflexion Design http://iflexion.com/ (version 2.7)
-- **Finnish** * Jani Alha http://www.wysiwyg.fi/ (version 2.8.5)
-- **French** * Emmanuelle Traduction http://www.translatonline.com/ (version 2.8.2)
-- **German** * Fabian Schulz http://www.fabianschulz.net/blog/2009/08/05/skype-online-status/ (version 2.7)
-- **Hindi** * Outshine Solutions http://outshinesolutions.com (version 2.8.2)
-- **Indonesian** * Nasrulhaq Muiz http://al-badar.net (version 2.8.4)
-- **Italian** * Gianni Diurno http://gidibao.net/index.php/portfolio/ (version 2.6.9)
+- **Basque** * [Silvia Ribés](http://silviaribes.net/) (version 2.9.3)
+- **Belorussian** * [M. Comfi](http://www.comfi.com/) (version 2.7)
+- **Bulgarian** * [Nikolay Nikolov](http://en.chat4o.com/) (version 2.8.2)
+- **Croatian** * [Saša](http://lasersko-graviranje.bisa.hr) (version 2.9.4)
+- **Czech** * [Cathy Freyberg](https://www.cathydoesloans.com/) (version 3.0)
+- **Danish** * [Georg S. Adamsen](http://wordpress.blogos.dk/2009/03/18/skype-online-status/) (version 2.8.2)
+- **Dutch** * [R.A. van Hagen](http://status301.net/) (version 3.0)
+- **Estonian** * [Iflexion Design](http://iflexion.com/) (version 2.7)
+- **Finnish** * [Jani Alha](http://www.wysiwyg.fi/) (version 2.8.5)
+- **French** * [Emmanuelle Traduction](http://www.translatonline.com/) (version 2.8.2)
+- **Gaeilge** * [Jordan Silaen](https://www.chameleonjohn.com/) (version 3.0)
+- **German** * [Fabian Schulz](http://www.fabianschulz.net/blog/2009/08/05/skype-online-status/) (version 2.7)
+- **Hindi** * [Outshine Solutions](http://outshinesolutions.com) (version 2.8.2)
+- **Indonesian** * [Nasrulhaq Muiz](http://al-badar.net) (version 2.8.4)
+- **Italian** * [Gianni Diurno](http://gidibao.net/index.php/portfolio/) (version 2.6.9)
 - **Japanese** * Ryuei Sasaki (version 2.8.2)
-- **Lithuanian** * Vincent G http://www.host1free.com (version 2.8.2)
-- **Portuguese** * Miguel Angelo Patricio http://www.miguelpatricio.com/ (version 2.8.2)
-- **Russian** * Leonid Jack http://studio-xl.com/ (version 2.7)
-- **Serbian** * Ognjen Djuraskovic http://firstsiteguide.com (version 2.9.3)
-- **Spanish** * Rodolfo Castro & Rocio Moreno http://www.ars-legalconsulting.es/blog/ (version 2.7)
-- **Turkish** * Hakan Er http://hakanertr.wordpress.com/ (version 2.8.8)
-- **Ukrainian (uk_UA)** * Michael Svystun http://emarketingblog.com.ua/ (version 2.7)
-- **Ukrainian (uk)** * Ivanka from Everycloudtech http://everycloudtech.com/ (version 3.0.2)
+- **Lithuanian** * Vincent G (version 2.8.2)
+- **Portuguese** * [Miguel Angelo Patricio](http://www.miguelpatricio.com/) (version 2.8.2)
+- **Russian** * [Leonid Jack](http://studio-xl.com/) (version 2.7)
+- **Serbian** * O[gnjen Djuraskovic](http://firstsiteguide.com) (version 2.9.3)
+- **Spanish** * [Rodolfo Castro & Rocio Moreno](http://www.ars-legalconsulting.es/blog/) (version 2.7)
+- **Turkish** * [Hakan Er](http://hakanertr.wordpress.com/) (version 2.8.8)
+- **Ukrainian (uk_UA)** * [Michael Svystun](http://emarketingblog.com.ua/) (version 2.7)
+- **Ukrainian (uk)** * [Ivanka from Everycloudtech](http://everycloudtech.com/) (version 3.0.2)
 
 New translations and their Authors will be mentioned here.
 
@@ -50,15 +55,37 @@ New translations and their Authors will be mentioned here.
 
 Top donators making my continued work possible:
 
-- **Claudio Cosmaro** Social Hosting http://socialhosting.net/
-- **G. Pelzer** Life is a journey. Life Coaching http://vivocoaching.com/
+- **Claudio Cosmaro** [Social Hosting](http://socialhosting.net/)
+- **G. Pelzer** Life is a journey. [Life Coaching](http://vivocoaching.com/)
 - **Yamisi Daniel, USA** What could you do with more time? inTouch Virtual Assistance http://www.intouchva.com/
 - **Michelle Vandepas, USA** Live Your life's Purpose. Divine Purpose Unleashed http://divinepurposeunleashed.com/
 
+= Support =
+
+Post your questions on [WordPress Support &raquo; Skype Legacy Buttons](http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Lecgacy Buttons").
+
+= Road Map =
+
+For version 3.5 and beyond :)
+
+- add the modern Skype buttons
+- integration with WP user system (skype field on the Profile page, ++)
+- more translations! Read [translation instructions](http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt "Skype Legacy Buttons translation instructions" (also included in the latest package) for more info.
+- make multiple drop downs per page possible
+
+= Bugs =
+
+Please report anything you find on [WordPress Support &raquo; Skype Legacy Buttons](http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Legacy Buttons")
+
+When reporting bugs, please describe as carefully as possible and provide information like the version number of the plugin, WordPress and - if relevant - server security settings, PHP and MySQL version. Provide as much related info as you can, so we can reproduce the error... And fix it :) 
+
+= Known issues =
+
+- The javascript provided by Skype that detects whether Skype is installed (client side), does not work properly on Linux. It defaults to displaying a download popup even if Skype is installed on the visitors computer after the Skype button is clicked. Hopefully - but I doubt it - Skype will fix this some day :$ 
 
 == Installation ==
 
-Quick installation: [Install now http://coveredwebservices.com/wp-plugin-install/?plugin=skype-online-status) !
+Quick installation: [Install now](http://coveredwebservices.com/wp-plugin-install/?plugin=skype-online-status) !
 
  &hellip; OR &hellip;
 
@@ -88,15 +115,15 @@ Go to your Settings > Skype Buttons (or Appearance > Widgets) and switch to any 
 
 = I have found a bug. Where do I report it? =
 
-For bug reports, go to [WordPress Support &raquo; Skype Online Status http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Online Status") and describe what is happening there. Please provide as much related info as you can but at least give me your plugin and Wordpress version number.
+For bug reports, go to [WordPress Support &raquo; Skype Online Status](http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Online Status") and describe what is happening there. Please provide as much related info as you can but at least give me your plugin and Wordpress version number.
 
 = I have a feature request. Where do I ask? =
 
-For all 'normal' feature requests and suggestions go to [WordPress Support &raquo; Skype Online Status http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Online Status") but if you want custom development, please contact me directly from the *Notes & Live Support* section on the Skype Online Status options page or browse to my website [Status301 http://status301.net/ "Status301.net"). I will gladly consider any proposal.
+For all 'normal' feature requests and suggestions go to [WordPress Support &raquo; Skype Online Status](http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Online Status") but if you want custom development, please contact me directly from the *Notes & Live Support* section on the Skype Online Status options page or browse to my website [Status301](http://status301.net/ "Status301.net"). I will gladly consider any proposal.
 
 = I have trouble setting up a Skype button on my blog. Where do I get help? =
 
-Have you read the *Quick Guide* section of your WordPress Options > Skype Status page, available after installation already? For all remaining questions, post them on [WordPress Support &raquo; Skype Online Status http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Online Status") or go for Live Support via Skype Chat to the Support section on the Skype Online Status Options page after installation. I will be happy to respond :)
+Have you read the *Quick Guide* section of your WordPress Options > Skype Status page, available after installation already? For all remaining questions, post them on [WordPress Support &raquo; Skype Online Status](http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Online Status") or go for Live Support via Skype Chat to the Support section on the Skype Online Status Options page after installation. I will be happy to respond :)
 
 = I have installed the plugin, fiddled with the settings, added a widget/shortcode, there is no error message but I see no button! =
 
@@ -108,9 +135,9 @@ By default, the plugin displays a link below each Skype button that allows visit
 
 = I would like to contribute. Is that possible? =
 
-Of cource! What did you have in mind? Monetary funding is always appreciated but if you can help me out in development, that's cool too :) Right now, translation (.mo) files are MORE then welcome! Read [translation instructions http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt "Skype Online Status translation instructions" (also included in the latest package) for more info.
+Of cource! What did you have in mind? Monetary funding is always appreciated but if you can help me out in development, that's cool too :) Right now, translation (.mo) files are MORE then welcome! Read [translation instructions](http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt "Skype Online Status translation instructions" (also included in the latest package) for more info.
 
-Any small donation via [PayPal https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ravanhagen%40gmail%2ecom&item_name=Skype%20Online%20Status&item_number=2%2e6%2e2%2e9&no_shipping=0&tax=0&bn=PP%2dDonationsBF&charset=UTF%2d8 "PayPal Donate") to keep me developing is _**VERY**_ welcome. Thanks!
+Any small donation via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ravanhagen%40gmail%2ecom&item_name=Skype%20Online%20Status&item_number=3%2e0&no_shipping=0&tax=0&bn=PP%2dDonationsBF&charset=UTF%2d8 "PayPal Donate") to keep me developing is _**VERY**_ welcome. Thanks!
 
 Read more on usage in the **Quick Guide** section of your WordPress Settings > Skype Buttons page, available after installation.
 
@@ -120,41 +147,18 @@ Read more on usage in the **Quick Guide** section of your WordPress Settings > S
 2. Activate a Skype widget and either set alternative options or leave blank and fall-back options will be used.
 3. Example of Skype button widget in sidebar.
 
-== Other Notes ==
-
-This plugin has grown a lot since the start but it should be mentioned that it was built upon the neat little plugin Skype Button v2.01 by Anti Veeranna. Many thanks!
-
-This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
-
-= Support =
-
-Post your questions on [WordPress Support &raquo; Skype Legacy Buttons http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Lecgacy Buttons") or go for Live Support via Skype Chat to the Support section on the Skype Buttons Options page after installation.
-
-= Road Map =
-
-For version 3.5 and beyond :)
-
-- add the modern Skype buttons
-- integration with WP user system (skype field on the Profile page, ++)
-- More translations! Read [translation instructions http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt "Skype Legacy Buttons translation instructions" (also included in the latest package) for more info.
-
-= Bugs =
-
-Please report anything you find on [WordPress Support &raquo; Skype Legacy Buttons http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Legacy Buttons")
-
-When reporting bugs, please describe as carefully as possible and provide information like the version number of the plugin, WordPress and - if relevant - server security settings, PHP and MySQL version. Provide as much related info as you can, so we can reproduce the error... And fix it :) 
-
-= Known issues =
-
-- The javascript provided by Skype that detects whether Skype is installed (client side), does not work properly on Linux. It defaults to displaying a download popup even if Skype is installed on the visitors computer after the Skype button is clicked. Hopefully - but I doubt it - Skype will fix this some day :$ 
-
-
 == Upgrade Notice ==
 
-= 3.0.3 =
-Czech translation
+= 3.0.4 =
+Gaeilge translation and dropdown template protocol bugfix
 
 == Changelog ==
+
+= 3.0.4 =
+
+* Allow "live:" in skype ID again because no live server support anyway
+* FIX: Skype dropdown script protocol relative href
+* NEW: Gaeilge translation, thanks to Jordan Silaen
 
 = 3.0.3 =
 * NEW: Czech translation
@@ -261,7 +265,7 @@ Czech translation
 * adaptation of settings page to fit the new WP 2.7 backend
 
 = 2.6.4 =
-* Internationalization: Read [translation instructions http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt "Skype Online Status translation instructions") for more info.
+* Internationalization: Read [translation instructions](http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt "Skype Online Status translation instructions") for more info.
 
 = 2.6.3 =
 * Implement the use of cURL if available

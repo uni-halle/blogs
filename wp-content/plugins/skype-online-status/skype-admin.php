@@ -384,7 +384,7 @@ class Skype_Online_Status_Admin extends Skype_Online_Status {
 
 			$skype_id_array = array('');
 			if (isset($_POST['skype_id'])) { 
-				$skype_id_array = explode("@",str_replace("live:","",$_POST['skype_id']));
+				$skype_id_array = explode("@",$_POST['skype_id']);
 			}
 
 			$option = array(
