@@ -473,7 +473,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', FALSE) ) {
 		 *
 		 * return boolean Connection successful or not
 		 */
-		protected function joomla_connect() {
+		public function joomla_connect() {
 			global $joomla_db;
 
 			if ( !class_exists('PDO') ) {
