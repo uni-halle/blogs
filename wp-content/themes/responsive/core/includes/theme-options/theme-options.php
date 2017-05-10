@@ -34,6 +34,9 @@ function responsive_admin_enqueue_scripts( $hook_suffix ) {
 
 	wp_enqueue_style( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.css', false, '1.0' );
 	wp_enqueue_script( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.js', array( 'jquery' ), '1.0' );
+	wp_enqueue_script( 'responsive-skytabs', $template_directory_uri . '/core/includes/theme-options/sky-tabs-ie8.js');	
+	wp_enqueue_style('responsive-skytabs', $template_directory_uri . '/core/includes/theme-options/sky-tabs.css');
+	wp_enqueue_script ('jquery');
 }
 
 add_action( 'admin_print_styles-appearance_page_theme_options', 'responsive_admin_enqueue_scripts' );
@@ -90,7 +93,7 @@ add_action( 'wp_footer', 'responsive_inline_js_footer' );
  * Create the options page
  */
 function responsive_theme_options_do_page() {
-
+	
 	if ( !isset( $_REQUEST['settings-updated'] ) ) {
 		$_REQUEST['settings-updated'] = false;
 	}
@@ -104,7 +107,7 @@ function responsive_theme_options_do_page() {
 	<?php echo "<h2>" . $theme_name . " " . __( 'Theme Options', 'responsive' ) . "</h2>"; ?>
 
 
-	<?php if ( false !== $_REQUEST['settings-updated'] ) : ?>
+	<?php if ( false !== $_REQUEST['settings-updated'] ) : ?> 
 		<div class="updated fade"><p><strong><?php _e( 'Options Saved', 'responsive' ); ?></strong></p></div>
 	<?php endif; ?>
 
@@ -118,6 +121,9 @@ function responsive_theme_options_do_page() {
 	 * @Title The display title
 	 * @id The id that the option array references so the options display in the correct section
 	 */
+	$wp_version = get_bloginfo('version');
+	if ($wp_version >= 4.7)
+	{
 	$sections = apply_filters( 'responsive_option_sections_filter', array(
 																	  array(
 																		  'title' => __( 'Theme Elements', 'responsive' ),
@@ -140,11 +146,7 @@ function responsive_theme_options_do_page() {
 																	  array(
 																		  'title' => __( 'Social Icons', 'responsive' ),
 																		  'id'    => 'social'
-																	  ),
-																	  array(
-																		  'title' => __( 'CSS Styles', 'responsive' ),
-																		  'id'    => 'css'
-																	  ),
+																	  ),																	 
 																	  array(
 																		  'title' => __( 'Scripts', 'responsive' ),
 																		  'id'    => 'scripts'
@@ -153,6 +155,45 @@ function responsive_theme_options_do_page() {
 																  )
 
 	);
+	}
+	else 
+	{
+		$sections = apply_filters( 'responsive_option_sections_filter', array(
+				array(
+						'title' => __( 'Theme Elements', 'responsive' ),
+						'id'    => 'theme_elements'
+				),
+		
+				array(
+						'title' => __( 'Logo Upload', 'responsive' ),
+						'id'    => 'logo_upload'
+				),
+				array(
+						'title' => __( 'Home Page', 'responsive' ),
+						'id'    => 'home_page'
+				)
+				,
+				array(
+						'title' => __( 'Default Layouts', 'responsive' ),
+						'id'    => 'layouts'
+				),
+				array(
+						'title' => __( 'Social Icons', 'responsive' ),
+						'id'    => 'social'
+				),
+				array(
+						'title' => __( 'CSS Styles', 'responsive' ),
+						'id'    => 'css'
+				),
+				array(
+						'title' => __( 'Scripts', 'responsive' ),
+						'id'    => 'scripts'
+				)
+		
+		)
+		
+		);
+	}
 
 	/**
 	 * Creates and array of options that get added to the relevant sections
@@ -170,7 +211,7 @@ function responsive_theme_options_do_page() {
 	 */
 	$options = apply_filters( 'responsive_options_filter', array(
 		'theme_elements' => array(
-			array(
+				array(
 				'title'       => __( 'Disable breadcrumb list?', 'responsive' ),
 				'subtitle'    => '',
 				'heading'     => '',
@@ -497,16 +538,19 @@ function responsive_theme_options_do_page() {
 	}
 
 	?>
-	<form method="post" action="options.php">
+	<form id="form" method="post" action="">
+		
 		<?php settings_fields( 'responsive_options' ); ?>
 		<?php global $responsive_options; ?>
 
-		<div id="rwd" class="grid col-940">
+		<div class="body">		
+			<!-- tabs -->
+			<div class="sky-tabs sky-tabs-pos-left sky-tabs-anim-flip sky-tabs-response-to-icons">
 			<?php
 			$display->render_display();
 			?>
-		</div>
-		<!-- end of .grid col-940 -->
+			</div>
+		</div>		
 	</form>
 	</div><!-- wrap -->
 <?php
@@ -516,17 +560,13 @@ function responsive_theme_options_do_page() {
  * Sanitize and validate input. Accepts an array, return a sanitized array.
  */
 function responsive_theme_options_validate( $input ) {
-
 	global $responsive_options;
 	$defaults = responsive_get_option_defaults();
 
 	if ( isset( $input['reset'] ) ) {
-
 		$input = $defaults;
-
 	}
 	else {
-
 		// checkbox value is either 0 or 1
 		foreach( array(
 					'breadcrumb',

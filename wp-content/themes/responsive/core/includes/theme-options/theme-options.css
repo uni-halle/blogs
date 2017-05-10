@@ -191,8 +191,7 @@ h4.sub-title
 
 .rwd-container .rwd-block input[type=text]
 {
-	display: block;
-}
+	display: block}
 
 
 .js .rwd-container
@@ -296,7 +295,7 @@ h4.sub-title
 	padding: 5px 15px;
 	margin-right: 5px;
 	margin-bottom: 10px;
-	background: 0 0;
+	background: 0;
 	background-color: #333;
 	border-color: transparent;
 	box-shadow: none;
@@ -508,13 +507,31 @@ ul.error-list
 
 .responsivepro-offer
 {
-	font-size:16px;
-        padding-bottom: 1%;
-}
+	font-size: 16px;
+	padding-bottom: 1%}
+
+
 .coupon-code
 {
-color: #e9f253;
+	color: #e9f253}
+
+
+p
+{
+	font-size: 14px}
+
+
+.sky-tabs ul li .grid {
+	margin-bottom: 3.6%;
 }
-p{
-font-size: 14px;
-}
+.sky-tabs p .upgrade {text-decoration: none!important;}
+.sky-tabs p { font-size: 13px ;}
+.sky-tabs p .button { margin-right : 4px; }
+.sky-tabs .wp-editor-container  { border : 1px solid #ddd; }
+.sky-tabs div.formsuccess { width: 73%;
+margin: 1% 0 0 25%;
+color: #01AA42;
+background:none repeat scroll 0% 0% #F4FCEF; 
+border: none;
+border-radius: 4px;padding: 10px 12px;}
+.sky-tabs.formsuccess p { font-size: 14px;}
