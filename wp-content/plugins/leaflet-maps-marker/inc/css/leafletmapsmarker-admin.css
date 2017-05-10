@@ -712,7 +712,7 @@ a.pro-upgrade-external-links:hover {
 }
 .algolia-autocomplete {
 	width: 640px;
-	z-index: 999999;
+	z-index: 9999;
 }
 .algolia-autocomplete .aa-input,
 .algolia-autocomplete .aa-hint {

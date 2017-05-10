@@ -93,7 +93,7 @@ $sql_layers_table = "CREATE TABLE " . $table_name_layers . " (
 	gpx_url varchar(2083) NOT NULL,
 	gpx_panel tinyint(1) NOT NULL,
 	mlm_filter int(1) NOT NULL,
-	mlm_filter_details varchar(4000) DEFAULT NULL,
+	mlm_filter_details varchar(65535) DEFAULT NULL,
 	PRIMARY KEY  (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
 dbDelta($sql_layers_table);
@@ -971,6 +971,31 @@ if (version_compare(get_option('leafletmapsmarker_version'),'3.11.1','=')) {
 		update_option('leafletmapsmarker_version_before_update', '3.11.1');
 	}
 	update_option('leafletmapsmarker_version', '3.11.2');
+}
+if (version_compare(get_option('leafletmapsmarker_version'),'3.11.2','=')) {
+	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
+	if ( $version_before_update === FALSE ) {
+		set_transient( 'leafletmapsmarker_version_before_update', 'MapsMarker-transient-for-dynamic-changelog', 60 );
+		update_option('leafletmapsmarker_version_before_update', '3.11.2');
+	}
+	update_option('leafletmapsmarker_version', '3.12');
+
+	//info: for v3.12 update routine only (change default geocoding provider to Algolia Places if Mapzen without API key is used)
+	$options_current_geocoding_provider = get_option( 'leafletmapsmarker_options' );
+	if ( ($options_current_geocoding_provider['geocoding_provider'] = 'mapzen-search') && ($options_current_geocoding_provider['geocoding_mapzen_search_api_key'] == NULL) ) {
+		$overwrite_default_geocoding_provider = array('geocoding_provider' => 'algolia-places');
+		$options_updated_geocoding_provider = array_merge($options_current_geocoding_provider, $overwrite_default_geocoding_provider);
+		update_option( 'leafletmapsmarker_options', $options_updated_geocoding_provider );
+	}	
+
+	//info: for v3.12 update routine only (change fallback geocoding provider to Photon if Algolia is set - to prevent warnings that fallback provider is same as default geocoding provider)
+	$options_current_geocoding_provider_fallback = get_option( 'leafletmapsmarker_options' );
+	if ( ($options_current_geocoding_provider_fallback['geocoding_provider_fallback'] = 'algolia-places') && ($options_current_geocoding_provider_fallback['geocoding_mapzen_search_api_key'] == NULL) ) {
+		$overwrite_default_geocoding_provider_fallback = array('geocoding_provider_fallback' => 'photon');
+		$options_updated_geocoding_provider_fallback = array_merge($options_current_geocoding_provider_fallback, $overwrite_default_geocoding_provider_fallback);
+		update_option( 'leafletmapsmarker_options', $options_updated_geocoding_provider_fallback );
+	}
+
 	//info: redirect to create marker page only on first plugin activation, otherwise redirect is also done on bulk plugin activations
 	if (get_option('leafletmapsmarker_redirect') == 'true')	{
 		update_option('leafletmapsmarker_redirect', 'false');
@@ -990,7 +1015,7 @@ if (version_compare(get_option('leafletmapsmarker_version'),'3.11.1','=')) {
 	$delete_transient_query_2 = "DELETE FROM `" . $table_options . "` WHERE `" . $table_options . "`.`option_name` LIKE '_transient_timeout_leafletmapsmarker_install_update_cache%';";
 	$wpdb->query($delete_transient_query_2);
 	//info: re-add latest install-update-transient so routine is not run twice - UPDATE ON EACH RELEASE
-	set_transient( 'leafletmapsmarker_install_update_cache_v3112', 'execute install and update-routine only once a day', 60*60*24 );
+	set_transient( 'leafletmapsmarker_install_update_cache_v312', 'execute install and update-routine only once a day', 60*60*24 );
 }
 
 /* template for plugin updates

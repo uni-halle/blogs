@@ -125,7 +125,7 @@ function lmm_wp_session_cleanup() {
 		 *
 		 * @param int
 		 */
-		$batch_size = apply_filters( 'wp_session_delete_batch_size', 1000 );
+		$batch_size = apply_filters( 'wp_session_delete_batch_size', 2000 );
 
 		// Delete a batch of old sessions
 		LMM_WP_Session_Utils::delete_old_sessions( $batch_size );

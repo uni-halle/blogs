@@ -2,7 +2,7 @@
 //info: die if uninstall not called from Wordpress exit
 if ( !defined( 'WP_UNINSTALL_PLUGIN' ) )
 	exit ();
-$current_version = "v3112"; //2do: change on each update to current version!
+$current_version = "v312"; //2do: change on each update to current version!
 if (is_multisite()) {
 	global $wpdb;
 	$blogs = $wpdb->get_results("SELECT `blog_id` FROM {$wpdb->blogs}", ARRAY_A);
@@ -31,6 +31,9 @@ if (is_multisite()) {
 			//info: unschedule session garbage collector.
 			$timestamp = wp_next_scheduled( 'lmm_wp_session_garbage_collection' );
 			wp_unschedule_event( $timestamp, 'lmm_wp_session_garbage_collection' );
+			//info: delete _wp_session-entries in wp_options
+			$GLOBALS['wpdb']->query("DELETE FROM `".$GLOBALS['wpdb']->prefix."options` WHERE `option_name` LIKE '_wp_session_%';");
+			$GLOBALS['wpdb']->query("OPTIMIZE TABLE `".$GLOBALS['wpdb']->prefix."options`;");
 			/*remove map icons directory for main site */
 			$lmm_upload_dir = wp_upload_dir();
 			$icons_directory = $lmm_upload_dir['basedir'] . DIRECTORY_SEPARATOR . "leaflet-maps-marker-icons" . DIRECTORY_SEPARATOR;
@@ -71,7 +74,7 @@ if (is_multisite()) {
 				/* Remove and clean tables */
 				$GLOBALS['wpdb']->query("DROP TABLE `".$GLOBALS['wpdb']->prefix."leafletmapsmarker_layers`");
 				$GLOBALS['wpdb']->query("DROP TABLE `".$GLOBALS['wpdb']->prefix."leafletmapsmarker_markers`");
-				$GLOBALS['wpdb']->query("OPTIMIZE TABLE `" .$GLOBALS['wpdb']->prefix."options`");
+
 				/*remove map icons directory for subsites*/
 				$lmm_upload_dir = wp_upload_dir();
 				$icons_directory = $lmm_upload_dir['basedir'] . DIRECTORY_SEPARATOR . "leaflet-maps-marker-icons" . DIRECTORY_SEPARATOR;
@@ -81,6 +84,9 @@ if (is_multisite()) {
 					}
 					rmdir($icons_directory);
 				}
+				//info: delete _wp_session-entries in wp_options
+				$GLOBALS['wpdb']->query("DELETE FROM `".$GLOBALS['wpdb']->prefix."options` WHERE `option_name` LIKE '_wp_session_%';");
+				$GLOBALS['wpdb']->query("OPTIMIZE TABLE `".$GLOBALS['wpdb']->prefix."options`;");
 			}
 			restore_current_blog();
 		}
@@ -110,9 +116,6 @@ else
 		delete_option('leafletmapsmarker_redirect');
 		delete_option('leafletmapsmarker_update_info');
 		delete_option('leafletmapsmarker_editor');
-		//info: unschedule session garbage collector.
-		$timestamp = wp_next_scheduled( 'lmm_wp_session_garbage_collection' );
-		wp_unschedule_event( $timestamp, 'lmm_wp_session_garbage_collection' );
 		/* Remove and clean tables */
 		$GLOBALS['wpdb']->query("DROP TABLE `".$GLOBALS['wpdb']->prefix."leafletmapsmarker_layers`");
 		$GLOBALS['wpdb']->query("DROP TABLE `".$GLOBALS['wpdb']->prefix."leafletmapsmarker_markers`");
@@ -126,6 +129,11 @@ else
 			}
 		rmdir($icons_directory);
 		}
+		//info: unschedule session garbage collector.
+		$timestamp = wp_next_scheduled( 'lmm_wp_session_garbage_collection' );
+		wp_unschedule_event( $timestamp, 'lmm_wp_session_garbage_collection' );
+		//info: delete _wp_session-entries in wp_options
+		$GLOBALS['wpdb']->query("DELETE FROM `".$GLOBALS['wpdb']->prefix."options` WHERE `option_name` LIKE '_wp_session_%';");
+		$GLOBALS['wpdb']->query("OPTIMIZE TABLE `".$GLOBALS['wpdb']->prefix."options`;");
 	}
 }
-?>

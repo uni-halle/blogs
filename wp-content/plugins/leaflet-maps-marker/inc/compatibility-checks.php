@@ -203,4 +203,27 @@ if (is_plugin_active('geographical-redirect/geo-redirect.php')) {
 		}
 	}
 }
-?>
+//info: WP Rocket
+if (is_plugin_active('wp-rocket/wp-rocket.php') ) {
+	if (function_exists('get_rocket_option')) { //safety check
+		//info: check for JS Minify exclusion
+		$wp_rocket_js_exclude = get_rocket_option('exclude_js');
+		if (in_array('/wp-content/plugins/leaflet-maps-marker/leaflet-dist/leaflet.js', $wp_rocket_js_exclude) == false) {
+			echo '<p><div class="notice notice-error" style="padding:10px;"><strong>' . sprintf(__('Warning: you are using the plugin "WP Rocket" which is currently causing maps to break.<br/>To fix this, please navigate to <a href="%1s">Settings / WP Rocket / Advanced Options</a> and add <strong>%2s</strong> and <strong>%3s</strong> to "JS files to exclude from minification:"','lmm'), LEAFLET_WP_ADMIN_URL . 'options-general.php?page=wprocket', '<code>/wp-content/plugins/leaflet-maps-marker/leaflet-dist/leaflet.js</code>') . '</strong></div></p>';
+		}
+		//info: check for JS File optimization
+		$wp_rocket_js_file_optimiziation = get_rocket_option('minify_js');
+		if ($wp_rocket_js_file_optimiziation == 1) {
+			echo '<p><div class="notice notice-error" style="padding:10px;"><strong>' . sprintf(__('Warning: you are using the plugin "WP Rocket" with the option "Files optimisation (Minification & Concatenation)" for Javascript enabled, which is causing maps to break! <br/>To fix this, please navigate to <a href="%1s">Settings / WP Rocket / Basic Options / Files optimisation</a>, untick the "<strong>JS</strong>" checkbox and save the change.','lmm'), LEAFLET_WP_ADMIN_URL . 'options-general.php?page=wprocket') . '</strong></div></p>';
+		}		
+	}
+}
+//info: plugin Async Javascript
+if (is_plugin_active('async-javascript/async-javascript.php') ) {
+	if ( get_option( 'aj_enabled' ) == 1 ) {
+		$aj_exclusions = get_option('aj_exclusions');
+		if ( (strpos($aj_exclusions, 'leaflet-core.js') === false) || (strpos($aj_exclusions, 'leaflet-core.js') === false) || (strpos($aj_exclusions, 'mq-map.js') === false )) { 
+			echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin "Async Javascript" which is currently causing maps to break!<br/>To fix this, please navigate to <a href="%1$s">Async JavaScript Settings</a> and add the following to the end the option "Exclusions": %2$s','lmm'), LEAFLET_WP_ADMIN_URL . 'options-general.php?page=async-javascript', '<strong><code>,leaflet-core.js,leaflet-addons.js,mq-map.js</code></strong>') . '</div></p>';
+		}
+	}
+}

@@ -3,7 +3,7 @@
  * @package    Stiphle
  * @subpackage Stiphle\Storage
  */
-namespace Stiphle\Storage;
+//namespace Stiphle\Storage;
 
 /**
  * This file is part of Stiphle

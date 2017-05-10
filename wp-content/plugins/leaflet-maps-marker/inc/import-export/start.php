@@ -119,85 +119,94 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			$caching_memoryserialized_disabled_css = 'style="color:#CCCCCC;" title="' . esc_attr__('this caching method is currently not available on your server','lmm') . '"';
 		}
 
-		//info: disable geocoding if no API key is set for Mapzen Search and Google Geocoding
+		//info: disable geocoding if no API key is set for Mapzen Search, Google Geocoding and Mapzen Search
 		if ($lmm_options['geocoding_mapquest_geocoding_api_key'] == NULL && $lmm_options['geocoding_provider'] == 'mapquest-geocoding') {
 			$geocoding_radio_button_on = ' disabled="disabled"';
 			$geocoding_radio_button_off = ' checked="checked"';
-			$geocoding_provider_api_key_warning = '<br/><strong>' . sprintf(__('Error: please <a href="%1$s">enter your %2$s-API key</a> or <a href="%3$s">select an alternative geocoding provider</a>!','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-geocoding-mapquest', 'MapQuest Geocoding', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-geocoding') . '</strong>';
-		} else if 
+			$geocoding_provider_api_key_warning_mapquest = '<br/><strong>' . sprintf(__('Error: please <a href="%1$s">enter your %2$s-API key</a> or <a href="%3$s">select an alternative geocoding provider</a>!','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-geocoding-mapquest', 'MapQuest Geocoding', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-geocoding') . '</strong>';
+		} else if
 			(
 				( ($lmm_options['geocoding_provider'] == 'google-geocoding') || ($lmm_options['geocoding_provider_fallback'] == 'google-geocoding')	)
 				&&
 				(
-					( ($lmm_options['geocoding_google_geocoding_auth_method'] == 'api-key') && ($lmm_options['geocoding_google_geocoding_api_key'] == NULL) ) 
+					( ($lmm_options['geocoding_google_geocoding_auth_method'] == 'api-key') && ($lmm_options['geocoding_google_geocoding_api_key'] == NULL) )
 					||
-					( ($lmm_options['geocoding_google_geocoding_auth_method'] == 'clientid-signature') && (($lmm_options['geocoding_google_geocoding_premium_client'] == NULL) || ($lmm_options['geocoding_google_geocoding_premium_signature'] == NULL)) )  
+					( ($lmm_options['geocoding_google_geocoding_auth_method'] == 'clientid-signature') && (($lmm_options['geocoding_google_geocoding_premium_client'] == NULL) || ($lmm_options['geocoding_google_geocoding_premium_signature'] == NULL)) )
 				)
 			)
 		{
 			$geocoding_radio_button_on = ' disabled="disabled"';
 			$geocoding_radio_button_off = ' checked="checked"';
-			$geocoding_provider_api_key_warning = '<br/><span style="font-weight:bold;">' . sprintf(__('Warning: please <a href="%1$s">enter your %2$s-API key</a> or <a href="%3$s">select an alternative geocoding provider</a>!','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-geocoding-google', 'Google Geocoding', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-geocoding') . '</span><br/>';
+			$geocoding_provider_api_key_warning_google = '<br/><span style="font-weight:bold;">' . sprintf(__('Warning: please <a href="%1$s">enter your %2$s-API key</a> or <a href="%3$s">select an alternative geocoding provider</a>!','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-geocoding-google', 'Google Geocoding', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-geocoding') . '</span><br/>';
+		} else if ( (($lmm_options['geocoding_provider'] == 'mapzen-search') || ($lmm_options['geocoding_provider_fallback'] == 'mapzen-search')) && ($lmm_options['geocoding_mapzen_search_api_key'] == NULL) ) {
+			$geocoding_radio_button_on = ' disabled="disabled"';
+			$geocoding_radio_button_off = ' checked="checked"';
+			$geocoding_provider_api_key_warning_mapzen = '<br/><strong>' . sprintf(__('Error: please <a href="%1$s">enter your %2$s-API key</a> or <a href="%3$s">select an alternative geocoding provider</a>!','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-geocoding-mapzen', 'Mapzen Search', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-geocoding') . '</strong>';
 		} else {
-			$geocoding_radio_button_on = ' checked="checked"';
+			$geocoding_radio_button_on = ' checked="checked" disabled="disabled"';
 			$geocoding_radio_button_off = '';
 			$geocoding_provider_api_key_warning = '';
-		}		
-		
+		}
+
 		//info: prepare rate limit infos
 		if ( ($lmm_options['geocoding_algolia_appId'] != NULL) && ($lmm_options['geocoding_algolia_apiKey'] != NULL) ){
 			$algolia_rate_limit = sprintf(__('Rate limit: %1$s requests/%2$s and a maximum of %3$s requests/%4$s','lmm'), '100.000', __('month','lmm'), '15', __('second','lmm'));
 		} else {
 			$algolia_rate_limit = sprintf(__('Rate limit: %1$s requests/domain/%2$s and a maximum of %3$s requests/%4$s','lmm'), '1.000', __('day','lmm'), '15', __('second','lmm'));
 		}
-		if ($lmm_options['geocoding_mapzen_search_api_key'] != NULL) {
-			$mapzen_rate_limit = sprintf(__('Rate limit: %1$s requests/%2$s and a maximum of %3$s requests/%4$s','lmm'), '30.000', __('month','lmm'), '6', __('second','lmm'));
+		$mapzen_rate_limit = sprintf(__('Rate limit: %1$s requests/%2$s and a maximum of %3$s requests/%4$s','lmm'), '30.000', __('month','lmm'), '6', __('second','lmm'));
+
+		//info: check if Mapzen Search API key is set
+		$geocoding_provider_mapzen_disabled = '';
+		if ($lmm_options['geocoding_mapzen_search_api_key'] == NULL) {
+			$option_mapzen_inactive = '<tr><td colspan="2"><strong>' . esc_attr__('Inactive (API key required)','lmm') . '</strong></td></tr><tr><td><input id="mapzen" type="radio" name="geocoding-provider" value="mapzen-search" ' . checked($lmm_options['geocoding_provider'], 'mapzen-search', false) . ' disabled="disabled"/><label for="mapzen">Mapzen Search (' . __('recommended','lmm') . ')</label></td><td>'. sprintf(__('Rate limit: %1$s transactions/month and a maximum of %2$s requests/%3$s','lmm'), '30.000', '6', __('second','lmm')) . $geocoding_provider_api_key_warning_mapzen . '</td></tr>';
+			$option_mapzen_active = '';
 		} else {
-			$mapzen_rate_limit = sprintf(__('Rate limit: %1$s requests/domain/%2$s and a maximum of %3$s requests/%4$s and %5$s requests/%6$s','lmm'), '1.000', __('day','lmm'), '1', __('second','lmm'), '6', __('minute','lmm')) . '<br/><span style="font-weight:bold;color:#cc0000;">' . sprintf(__('Attention: if you want to geocode more than %1$s locations using Mapzen Search, <a href="%2$s" target="_blank">registering a free Mapzen Search API key</a> with a higher limit of maximum %3$s requests/%4$s is highly recommended!','lmm'), '6', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-geocoding-mapzen', '6', __('second','lmm')) . '</span>';
-		}
+			$option_mapzen_active = '<tr><td><input id="mapzen" type="radio" name="geocoding-provider" value="mapzen-geocoding" disabled="disabled" ' . checked($lmm_options['geocoding_provider'], 'mapzen-search', false)  . ' /><label for="mapzen">Mapzen Search</label></td><td>'. sprintf(__('Rate limit: %1$s transactions/month and a maximum of %2$s requests/%3$s','lmm'), '30.000', '6', __('second','lmm')) . '</td></tr>';
+			$option_mapzen_inactive = '';
+		}		
+		
 		//info: check if MapQuest API key is set
 		$geocoding_provider_mapquest_disabled = '';
 		if ($lmm_options['geocoding_mapquest_geocoding_api_key'] == NULL) {
-			$option_mapquest_inactive = '<tr><td colspan="2"><strong>' . esc_attr__('Inactive (API key required)','lmm') . '</strong></td></tr><tr><td><input id="mapquest" type="radio" name="geocoding-provider" value="mapquest_geocoding" ' . checked($lmm_options['geocoding_provider'], 'mapquest_geocoding', false) . ' disabled="disabled"/><label for="mapquest">MapQuest Geocoding</label></td><td>'. sprintf(__('Rate limit: %1$s transactions/month and a maximum of %2$s requests/%3$s','lmm'), '15.000', '10', __('second','lmm')) . $geocoding_provider_api_key_warning . '</td></tr>';
+			$option_mapquest_inactive = '<tr><td colspan="2"><strong>' . esc_attr__('Inactive (API key required)','lmm') . '</strong></td></tr><tr><td><input id="mapquest" type="radio" name="geocoding-provider" value="mapquest-geocoding" ' . checked($lmm_options['geocoding_provider'], 'mapquest-geocoding', false) . ' disabled="disabled"/><label for="mapquest">MapQuest Geocoding</label></td><td>'. sprintf(__('Rate limit: %1$s transactions/month and a maximum of %2$s requests/%3$s','lmm'), '15.000', '10', __('second','lmm')) . $geocoding_provider_api_key_warning_mapquest . '</td></tr>';
 			$option_mapquest_active = '';
 		} else {
-			$option_mapquest_active = '<tr><td><input id="mapquest" type="radio" name="geocoding-provider" value="mapquest_geocoding" ' . checked($lmm_options['geocoding_provider'], 'mapquest_geocoding', false)  . ' disabled="disabled"/><label for="mapquest">MapQuest Geocoding</label></td><td>'. sprintf(__('Rate limit: %1$s transactions/month and a maximum of %2$s requests/%3$s','lmm'), '15.000', '10', __('second','lmm')) . '</td></tr>';
+			$option_mapquest_active = '<tr><td><input id="mapquest" type="radio" name="geocoding-provider" value="mapquest-geocoding" disabled="disabled" ' . checked($lmm_options['geocoding_provider'], 'mapquest-geocoding', false)  . ' /><label for="mapquest">MapQuest Geocoding</label></td><td>'. sprintf(__('Rate limit: %1$s transactions/month and a maximum of %2$s requests/%3$s','lmm'), '15.000', '10', __('second','lmm')) . '</td></tr>';
 			$option_mapquest_inactive = '';
 		}
 		//info: check if Google Geocoding API key is set
 		$geocoding_provider_google_disabled = '';
-		if 
-		( 
-				( ($lmm_options['geocoding_google_geocoding_auth_method'] == 'api-key') && ($lmm_options['geocoding_google_geocoding_api_key'] == NULL) ) 
-				|| 
-				( ($lmm_options['geocoding_google_geocoding_auth_method'] == 'clientid-signature') && (($lmm_options['geocoding_google_geocoding_premium_client'] == NULL) || ($lmm_options['geocoding_google_geocoding_premium_signature'] == NULL)) ) 
+		if
+		(
+				( ($lmm_options['geocoding_google_geocoding_auth_method'] == 'api-key') && ($lmm_options['geocoding_google_geocoding_api_key'] == NULL) )
+				||
+				( ($lmm_options['geocoding_google_geocoding_auth_method'] == 'clientid-signature') && (($lmm_options['geocoding_google_geocoding_premium_client'] == NULL) || ($lmm_options['geocoding_google_geocoding_premium_signature'] == NULL)) )
 		) {
-			$option_google_inactive = '<tr><td colspan="2"><strong>' . esc_attr__('Inactive (API key required)','lmm') . '</strong></td></tr><tr><td><input id="google" type="radio" name="geocoding-provider" value="google_geocoding" disabled="disabled" /><label for="google">Google Geocoding</label></td><td>'.sprintf(__('Rate limit: %1$s requests/%2$s and a maximum of %3$s requests/%4$s','lmm'), '2.500', __('day','lmm'), '50', __('second','lmm')). $geocoding_provider_api_key_warning . '</td></tr>';
+			$option_google_inactive = '<tr><td colspan="2"><strong>' . esc_attr__('Inactive (API key required)','lmm') . '</strong></td></tr><tr><td><input id="google" type="radio" name="geocoding-provider" value="google-geocoding" ' . checked($lmm_options['geocoding_provider'], 'google-geocoding', false) . 'disabled="disabled" /><label for="google">Google Geocoding</label></td><td>'.sprintf(__('Rate limit: %1$s requests/%2$s and a maximum of %3$s requests/%4$s','lmm'), '2.500', __('day','lmm'), '50', __('second','lmm')). $geocoding_provider_api_key_warning_google . '</td></tr>';
 			$option_google_active = '';
 		} else {
-			$option_google_active = '<tr><td><input id="google" type="radio" name="geocoding-provider" value="google_geocoding" ' . checked($lmm_options['geocoding_provider'], 'google-geocoding', false ) . ' disabled="disabled"/><label for="google">Google Geocoding</label></td><td>'. sprintf(__('Rate limit: %1$s requests/%2$s and a maximum of %3$s requests/%4$s','lmm'), '2.500', __('day','lmm'), '50', __('second','lmm')) .'</td></tr>';
+			$option_google_active = '<tr><td><input id="google" type="radio" name="geocoding-provider" value="google-geocoding" disabled="disabled" ' . checked($lmm_options['geocoding_provider'], 'google-geocoding', false ) . '/><label for="google">Google Geocoding</label></td><td>'. sprintf(__('Rate limit: %1$s requests/%2$s and a maximum of %3$s requests/%4$s','lmm'), '2.500', __('day','lmm'), '50', __('second','lmm')) .'</td></tr>';
 			$option_google_inactive = '';
 		}
-		
+
 		$geocoding_provider = '
 		<table style="margin-left:23px;background:#ccc;border-radius:5px;">
 			<tr>
 				<td colspan="2">&nbsp;&nbsp;&nbsp;<strong>'. esc_attr__('Available geocoding providers','lmm') . '</strong> (<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#geocoding" title="' . esc_attr__('click to change geocoding provider','lmm') . '" target="_top">' . __('Settings','lmm') . '</a>)</td>
 			</tr>
 			<tr>
-				<td style="width:150px;"><input id="mapzen" type="radio" name="geocoding-provider" '. checked($lmm_options['geocoding_provider'], 'mapzen-search', false ) .' value="mapzen-search" disabled="disabled"/><label for="mapzen">Mapzen Search</label></td>
-				<td>' . $mapzen_rate_limit . '</td>
-			</tr>
-			<tr>
-				<td style="width:150px;"><input id="algolia" type="radio" name="geocoding-provider" '. checked($lmm_options['geocoding_provider'], 'algolia-places', false ) . ' value="algolia-places" disabled="disabled"/><label for="algolia">Algolia Places</a></td>
+				<td style="width:150px;"><input id="algolia" type="radio" name="geocoding-provider" disabled="disabled" '. checked($lmm_options['geocoding_provider'], 'algolia-places', false ) . ' value="algolia-places" /><label for="algolia">Algolia Places</a></td>
 				<td>'.$algolia_rate_limit.'</td>
 			</tr>
 			<tr>
-				<td style="width:150px;"><input id="photon" type="radio" name="geocoding-provider" '. checked($lmm_options['geocoding_provider'], 'photon', false ) .' value="photon" disabled="disabled"/><label for="photon">Photon@MapsMarker</label></td>
+				<td style="width:150px;"><input id="photon" type="radio" name="geocoding-provider" disabled="disabled" '. checked($lmm_options['geocoding_provider'], 'photon', false ) .' value="photon" /><label for="photon">Photon@MapsMarker</label></td>
 				<td>'.sprintf(__('Rate limit: %1$s requests/domain/%2$s and a maximum of %3$s requests/%4$s','lmm'), '2.500', __('day','lmm'), '10', __('second','lmm')).'</td>
 			</tr>
+			'. $option_mapzen_active .'
 			'. $option_mapquest_active .'
 			'. $option_google_active .'
+			'. $option_mapzen_inactive .'
 			'. $option_mapquest_inactive .'
 			'. $option_google_inactive .'
 		</table>';
@@ -736,8 +745,8 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
 				$cache_method_for_log = 'automatic (SQLite3)';
 			*/
-			if ( function_exists('apc_store') && (apc_sma_info() === TRUE) ) { //info: APC
-				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_APC;
+			if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_to_apc) === TRUE ) { //info: APC
+				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_apc;
 				$cacheSettings = array( 'cacheTime' => 600 );
 				PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
 				$cache_method_for_log = 'automatic (APC)';
@@ -785,7 +794,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 		*/
 		} else if ($user_cache == 'apc') {
 			$caching_apc_timeout = intval($_POST['caching-apc-timeout']);
-			$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_APC;
+			$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_apc;
 			$cacheSettings = array( 'cacheTime' => $caching_apc_timeout );
 			PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
 			$cache_method_for_log = 'APC';

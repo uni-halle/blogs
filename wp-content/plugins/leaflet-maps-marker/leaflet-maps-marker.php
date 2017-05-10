@@ -1,14 +1,39 @@
-<?php
-/*
+<?php /*
++----+-----+-----+-----+-----+----+-----+-----+-----+-----+-----+-----+
+|          . _..::__:  ,-"-"._       |7       ,     _,.__             |
+|  _.___ _ _<_>`!(._`.`-.    /        _._     `_ ,_/  '  '-._.---.-.__|
+|.{     " " `-==,',._\{  \  / {)     / _ ">_,-' `                mt-2_|
++ \_.:--.       `._ )`^-. "'      , [_/(                       __,/-' +
+|'"'     \         "    _L       oD_,--'                )     /. (|   |
+|         |           ,'         _)_.\\._<> 6              _,' /  '   |
+|         `.         /          [_/_'` `"(                <'}  )      |
++          \\    .-. )          /   `-'"..' `:._          _)  '       +
+|   `        \  (  `(          /         `:\  > \  ,-^.  /' '         |
+|             `._,   ""        |           \`'   \|   ?_)  {\         |
+|                `=.---.       `._._       ,'     "`  |' ,- '.        |
++                  |    `-._        |     /          `:`<_|h--._      +
+|                  (        >       .     | ,          `=.__.`-'\     |
+|                   `.     /        |     |{|              ,-.,\     .|
+|                    |   ,'          \   / `'            ,"     \     |
++                    |  /             |_'                |  __  /     +
+|                    | |                                 '-'  `-'   \.|
+|                    |/             Leaflet Maps Marker             / |
+|                    \.    The most comprehensive & user-friendly   ' |
++                              mapping solution for WordPress         +
+|                     ,/           ______._.--._ _..---.---------._   |
+|    ,-----"-..?----_/ )      _,-'"             "                  (  |
+|.._(                  `-----'                                      `-|
++----+-----+-----+-----+-----+----+-----+-----+-----+-----+-----+-----+
+ASCII Map (C) 1998 Matthew Thomas (freely usable as long as this line is included)
 Plugin Name: Leaflet Maps Marker
 Plugin URI: https://www.mapsmarker.com
 Description: The most comprehensive & user-friendly mapping solution for WordPress
 Tags: map, maps, Leaflet, OpenStreetMap, geoJSON, json, jsonp, OSM, travelblog, opendata, open data, opengov, open government, ogdwien, WMTS, geoRSS, location, geo, geo-mashup, geocoding, geolocation, travel, mapnick, osmarender, mapquest, geotag, geocaching, gpx, OpenLayers, mapping, bikemap, coordinates, geocode, geocoding, geotagging, latitude, longitude, position, route, tracks, google maps, googlemaps, gmaps, google map, google map short code, google map widget, google maps v3, google earth, gmaps, ar, augmented-reality, wikitude, wms, web map service, geocache, geocaching, qr, qr code, fullscreen, marker, marker icons, layer, multiple markers, karte, blogmap, geocms, geographic, routes, tracks, directions, navigation, routing, location plan, YOURS, yournavigation, ORS, openrouteservice, widget, bing, bing maps, microsoft, map short code, map widget, kml, cross-browser, fully documented, traffic, bike lanes, map short code, custom marker text, custom marker icons and text, gpx
-Version: 3.11.2
+Version: 3.12
 Author: MapsMarker.com e.U.
 Author URI: https://www.mapsmarker.com
 Requires at least: 3.3
-Tested up to: 4.7
+Tested up to: 4.7.3
 Copyright 2011-2017 - MapsMarker.com e.U. - All rights reserved
 MapsMarker &reg;
 
@@ -134,9 +159,11 @@ class Leafletmapsmarker
 			foreach ( $wp_scripts->registered as $script) {
 				if (strpos($script->src, 'maps.google.com/maps/api/js') !== false) {
 					wp_dequeue_script($script->handle);
+					wp_deregister_script($script->handle);
 				}
 				if (strpos($script->src, 'maps.googleapis.com/maps/api/js') !== false) {
 					wp_dequeue_script($script->handle);
+					wp_deregister_script($script->handle);
 				}
 			}
 		}
@@ -456,7 +483,11 @@ class Leafletmapsmarker
 			$page5 = '';
 			$page8 = '';
 		}
-		$page3b = add_submenu_page('leafletmapsmarker_markers', 'Maps Marker - ' . __('Import/Export', 'lmm'), '<hr noshade size="1" style="margin-top:0px;"/><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-import-export' . $mp6_icon . '.png"> ' . __('Import/Export', 'lmm'), $lmm_options[ 'capabilities_edit' ], 'leafletmapsmarker_import_export', array(&$this, 'lmm_import_export') );
+		if ( !empty($lmm_options) ) { //info: needed to suppress warning when reseting settings
+			$page3b = add_submenu_page('leafletmapsmarker_markers', 'Maps Marker - ' . __('Import/Export', 'lmm'), '<hr noshade size="1" style="margin-top:0px;"/><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-import-export' . $mp6_icon . '.png"> ' . __('Import/Export', 'lmm'), $lmm_options[ 'capabilities_edit' ], 'leafletmapsmarker_import_export', array(&$this, 'lmm_import_export') );
+		} else {
+			$page3b = '';
+		}
 		$page6 = add_submenu_page('leafletmapsmarker_markers', 'Maps Marker - ' . __('Tools', 'lmm'), '<img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-tools' . $mp6_icon . '.png"> ' . __('Tools', 'lmm'), 'activate_plugins','leafletmapsmarker_tools', array(&$this, 'lmm_tools') );
 		$page7 = add_submenu_page('leafletmapsmarker_markers', 'Maps Marker - ' . __('Settings', 'lmm'), '<img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-settings' . $mp6_icon . '.png"> ' . __('Settings', 'lmm'), 'activate_plugins', 'leafletmapsmarker_settings', array(&$this, 'lmm_settings') );
 		$page11 = add_submenu_page('leafletmapsmarker_markers', 'Maps Marker - Maps Marker API', '<img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-api' . $mp6_icon . '.png"> ' . __('Maps Marker APIs', 'lmm'), 'activate_plugins', 'leafletmapsmarker_apis', array(&$this, 'lmm_apis') );
@@ -486,8 +517,6 @@ class Leafletmapsmarker
 		add_action('admin_print_styles-'.$page8, array(&$this, 'lmm_admin_enqueue_stylesheets'),23);
 		add_action('admin_print_styles-'.$page10, array(&$this, 'lmm_admin_enqueue_stylesheets'),23);
 		add_action('admin_print_styles-'.$page11, array(&$this, 'lmm_admin_enqueue_stylesheets'),26);
-		//info: add css styles for datepicker
-		add_action('admin_print_styles-'.$page3, array(&$this, 'lmm_admin_enqueue_stylesheets_datepicker'),24);
 		//info: add css for adminbar entry for MP6
 		add_action('admin_enqueue_scripts', array(&$this, 'lmm_admin_enqueue_stylesheets_adminbar'),25);
 		//info: add contextual help on all pages
@@ -502,8 +531,6 @@ class Leafletmapsmarker
 		add_action('admin_print_scripts-'.$page8, array(&$this, 'lmm_add_contextual_help'));
 		add_action('admin_print_scripts-'.$page10, array(&$this, 'lmm_add_contextual_help'));
 		add_action('admin_print_scripts-'.$page11, array(&$this, 'lmm_add_contextual_help'));
-		//info: add jquery datepicker on marker page
-		add_action('admin_print_scripts-'.$page3, array(&$this, 'lmm_admin_enqueue_scripts_jquerydatepicker'));
 	}
 	function lmm_pro_upgrade() {
 		include('leaflet-pro-upgrade.php');
@@ -616,6 +643,15 @@ class Leafletmapsmarker
 		$screen->add_help_tab( array( 'id' => 'lmm_help_tab', 'title' => __('Help & Support','lmm'), 'content' => $helptext ));
 	}
 	function lmm_admin_selectjs() {
+		//info: dequeue bootstrap from 3rd party plugins
+		global $wp_scripts;
+		if (isset($wp_scripts->registered) && is_array($wp_scripts->registered)) {
+			foreach ( $wp_scripts->registered as $script) {
+				if ( (strpos($script->handle, 'bootstrap') !== false) || (strpos($script->src, 'bootstrap') !== false) ) {
+					wp_dequeue_script($script->handle);
+				}
+			}
+		}
 		$plugin_version = get_option('leafletmapsmarker_version');
 		wp_enqueue_script( array ( 'jquery' ) );
 		wp_enqueue_script( 'leafletmapsmarker-bootstrap-tabs', LEAFLET_PLUGIN_URL . 'inc/js/bootstrap-tabs.min.js', array('jquery'), $plugin_version);
@@ -770,10 +806,6 @@ class Leafletmapsmarker
 			wp_enqueue_script( 'leafletmapsmarker-mapquest', 'https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=' . esc_js(trim($lmm_options['mapquest_api_key'])), array('leafletmapsmarker'), NULL, false);
 		}
 	}
-	function lmm_admin_enqueue_scripts_jquerydatepicker() {
-		$plugin_version = get_option('leafletmapsmarker_version');
-		wp_enqueue_script( 'jquery-ui-timepicker-addon', LEAFLET_PLUGIN_URL . 'inc/js/jquery-ui-timepicker-addon.js', array( 'jquery', 'jquery-ui-tabs', 'jquery-ui-datepicker', 'jquery-ui-slider' ), $plugin_version );
-	}
 	function lmm_frontend_enqueue_stylesheets() {
 		//info: conditional loading of css files
 		$lmm_options = get_option( 'leafletmapsmarker_options' );
@@ -792,14 +824,11 @@ class Leafletmapsmarker
 				$plugin_version = get_option('leafletmapsmarker_version');
 				global $wp_styles;
 				wp_register_style($css_enqueue_handle, LEAFLET_PLUGIN_URL . 'leaflet-dist/' . $css_file_name, array(), $plugin_version);
-				wp_register_style('leafletmapsmarker-ie-only', LEAFLET_PLUGIN_URL . 'leaflet-dist/leaflet.ie.css', array(), $plugin_version);
 
 				if (is_array($posts)) {
 					foreach ($posts as $post) {
 						if ( preg_match_all( '/'. $pattern .'/s', $post->post_content, $matches ) && array_key_exists( 2, $matches ) && in_array( $lmm_options['shortcode'], $matches[2] ) ) {
 							wp_enqueue_style($css_enqueue_handle);
-							wp_enqueue_style('leafletmapsmarker-ie-only');
-							$wp_styles->add_data('leafletmapsmarker-ie-only', 'conditional', 'lt IE 9');
 							break;
 						}
 					}
@@ -812,9 +841,6 @@ class Leafletmapsmarker
 				$plugin_version = get_option('leafletmapsmarker_version');
 				wp_register_style($css_enqueue_handle, LEAFLET_PLUGIN_URL . 'leaflet-dist/' . $css_file_name, array(), $plugin_version);
 				wp_enqueue_style($css_enqueue_handle);
-				wp_register_style('leafletmapsmarker-ie-only', LEAFLET_PLUGIN_URL . 'leaflet-dist/leaflet.ie.css', array(), $plugin_version);
-				wp_enqueue_style('leafletmapsmarker-ie-only');
-				$wp_styles->add_data('leafletmapsmarker-ie-only', 'conditional', 'lt IE 9');
 				//info: override max image width in popups
 				$lmm_custom_css = ".leaflet-popup-content img { " . htmlspecialchars($lmm_options['defaults_marker_popups_image_css']) . " }";
 					wp_add_inline_style($css_enqueue_handle,$lmm_custom_css);
@@ -839,9 +865,6 @@ class Leafletmapsmarker
 					$plugin_version = get_option('leafletmapsmarker_version');
 					wp_register_style($css_enqueue_handle, LEAFLET_PLUGIN_URL . 'leaflet-dist/' . $css_file_name, array(), $plugin_version);
 					wp_enqueue_style($css_enqueue_handle);
-					wp_register_style('leafletmapsmarker-ie-only', LEAFLET_PLUGIN_URL . 'leaflet-dist/leaflet.ie.css', array(), $plugin_version);
-					wp_enqueue_style('leafletmapsmarker-ie-only');
-					$wp_styles->add_data('leafletmapsmarker-ie-only', 'conditional', 'lt IE 9');
 					break;
 				}
 			}
@@ -877,14 +900,6 @@ class Leafletmapsmarker
 		}
 		wp_register_style( $css_enqueue_handle, LEAFLET_PLUGIN_URL . 'leaflet-dist/' . $css_file_name, array(), $plugin_version);
 		wp_enqueue_style( $css_enqueue_handle );
-		wp_register_style('leafletmapsmarker-ie-only', LEAFLET_PLUGIN_URL . 'leaflet-dist/leaflet.ie.css', array(), $plugin_version);
-		wp_enqueue_style('leafletmapsmarker-ie-only');
-		$wp_styles->add_data('leafletmapsmarker-ie-only', 'conditional', 'lt IE 9');
-	}
-	function lmm_admin_enqueue_stylesheets_datepicker() {
-		$plugin_version = get_option('leafletmapsmarker_version');
-		wp_register_style( 'leafletmapsmarker-jquery-ui-custom', LEAFLET_PLUGIN_URL . 'inc/css/jquery-datepicker-theme/jquery-ui-custom.css', array(), $plugin_version);
-		wp_enqueue_style( 'leafletmapsmarker-jquery-ui-custom' );
 	}
 	function lmm_admin_enqueue_stylesheets_adminbar() {
 		$lmm_options = get_option( 'leafletmapsmarker_options' );
@@ -897,7 +912,7 @@ class Leafletmapsmarker
 	}
 	function lmm_install_and_updates() {
 		//info: set transient to execute install & update-routine only once a day
-		$current_version = "v3112"; //2do - mandatory: change on each update to new version!
+		$current_version = "v312"; //2do - mandatory: change on each update to new version!
 		$schedule_transient = 'leafletmapsmarker_install_update_cache_' . $current_version;
 		$install_update_schedule = get_transient( $schedule_transient );
 		if ( $install_update_schedule === FALSE ) {

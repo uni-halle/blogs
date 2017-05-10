@@ -223,7 +223,7 @@ if (!empty($action)) {
 	<li>- <a href="#delete-selected-markers" style="text-decoration:none;">' . __('Delete all markers from a layer','lmm') . '</a></li>
 	<li>- <a href="#delete-all-markers" style="text-decoration:none;">' . sprintf( esc_attr__('Delete all %1$s markers from all %2$s layers','lmm'), $markercount_all, $layercount_all) . '</a></li>
 	<li>- <a href="#marker-validity-check" style="text-decoration:none;">' . __('Marker validity check for layer assignements','lmm') . '</a></li>
-	<li>- <a href="#initialize-map-texts-wpml" style="text-decoration:none;">' .  __('Initialize map texts for translation using the WPML String Translation plugin','lmm') . '</a></li>
+	<li>- <a href="#initialize-map-texts-wpml" style="text-decoration:none;">' .  __('Initialize map texts for translations','lmm') . '</a></li>
 	</ul>';
 	?>
 	<a name="backup-restore"></a>
@@ -632,6 +632,18 @@ if (!empty($action)) {
 				sort($iconlist);
 				foreach ($iconlist as $row) {
 				  $icon_data = $wp_filesystem->get_contents(LEAFLET_PLUGIN_ICONS_DIR . DIRECTORY_SEPARATOR . $row);
+				  if ($icon_data == NULL) { //info: workaround #1 due to support request
+						$icon_data = file_get_contents(LEAFLET_PLUGIN_ICONS_DIR . DIRECTORY_SEPARATOR . $row);
+				  }
+				  if ($icon_data == NULL) { //info: workaround #2 due to support request
+						$ch = curl_init();
+						curl_setopt($ch, CURLOPT_HEADER, 0);
+						curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+						curl_setopt($ch, CURLOPT_URL, LEAFLET_PLUGIN_ICONS_URL . '/' . $row);
+						curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);       
+						$icon_data = curl_exec($ch);
+						curl_close($ch);
+				  }
 				  $icon_base64 = 'data:image/png;base64,' . base64_encode($icon_data);
  				  echo '<div style="text-align:center;float:left;line-height:0;margin-bottom:3px;"><label for="'.$row.'"><img id="iconpreview" src="' . $icon_base64 . '" title="' . $row . '" alt="' . $row . '" width="' . intval($lmm_options[ 'defaults_marker_icon_iconsize_x' ]) . '" height="' . intval($lmm_options[ 'defaults_marker_icon_iconsize_y' ]) . '" /></label><br/><input style="margin:1px 0 0 1px;" id="' . $row . '" type="radio" name="icon" value="' . $row . '"/></div>';
 				}
@@ -702,42 +714,21 @@ if (!empty($action)) {
 				<?php
 					global $wp_version;
 					if ( version_compare( $wp_version, '3.9-alpha', '>=' ) ) {
-						function lmm_plugin_mce_css( $mce_css ) {
-							global $wp_version;
-							$lmm_options = get_option( 'leafletmapsmarker_options' );
-							$defaults_marker_popups_maxwidth = intval($lmm_options['defaults_marker_popups_maxwidth'] + 1);
-							$defaults_marker_popups_image_css = urlencode(htmlspecialchars($lmm_options['defaults_marker_popups_image_css']));						
-							//info: to prevent potential XSS attacks
-							$transient_tinymce_custom_css = get_transient( 'leafletmapsmarker_tinymce_custom_css' );
-							if ( $transient_tinymce_custom_css === FALSE ) {
-								$rand_number = substr(md5('123'.rand()), 0, 8);
-								set_transient( 'leafletmapsmarker_tinymce_custom_css', $rand_number, 60*10 );
-								$transient_tinymce_custom_css = get_transient( 'leafletmapsmarker_tinymce_custom_css' );
-							}
-							$custom_tinymce_css = LEAFLET_PLUGIN_URL . 'inc/css/leafletmapsmarker-admin-tinymce.php?defaults_marker_popups_maxwidth=' . $defaults_marker_popups_maxwidth . '&defaults_marker_popups_image_css=' . $defaults_marker_popups_image_css . '&wordpress_version='.$wp_version.'&timestamp='.time().'&transient=' . $transient_tinymce_custom_css;
-							if ( ! empty( $mce_css ) ) {
-								$mce_css .= ',';
-							}
-							$mce_css .= $custom_tinymce_css;
-							return $mce_css;
-						}
-						add_filter( 'mce_css', 'lmm_plugin_mce_css' );
 						$settings = array(
 							'wpautop' => true,
 							'tinymce' => array(
-								'height' => '250'
+								'height' => '250',
+								'content_style' => 'img {' . htmlspecialchars($lmm_options['defaults_marker_popups_image_css']) . '} a {text-decoration:none;} a:hover {text-decoration:underline;}'
 							 ),
 						'quicktags' => array('buttons' => 'strong,em,link,block,del,ins,img,code,close'));
 					} else {
-						$defaults_marker_popups_maxwidth = intval($lmm_options['defaults_marker_popups_maxwidth'] + 1);
-						$defaults_marker_popups_image_css = urlencode(htmlspecialchars($lmm_options['defaults_marker_popups_image_css']));
 						$settings = array(
 							'wpautop' => true,
 							'tinymce' => array(
 								'theme_advanced_buttons1' => 'bold,italic,underline,strikethrough,|,fontselect,fontsizeselect,forecolor,backcolor,|,justifyleft,justifycenter,justifyright,justifyfull,|,outdent,indent,blockquote,|,link,unlink,|,ltr,rtl',
 								'theme' => 'advanced',
 								'height' => '250',
-								'content_css' => LEAFLET_PLUGIN_URL . 'inc/css/leafletmapsmarker-admin-tinymce.php?wordpress_version='.$wp_version.'&timestamp='.time().'&defaults_marker_popups_maxwidth=' . $defaults_marker_popups_maxwidth . '&defaults_marker_popups_image_css=' . $defaults_marker_popups_image_css . '',
+								'content_style' => 'html .mcecontentbody {font:12px/1.4 "Helvetica Neue",Arial,Helvetica,sans-serif; max-width:' . intval($lmm_options['defaults_marker_popups_maxwidth']) + 1 . 'px; /* Default + 1 fix */ word-wrap:break-word;} .mcecontentbody a {text-decoration:none;} .mcecontentbody a:hover {text-decoration:underline;} .mcecontentbody img {' . htmlspecialchars($lmm_options['defaults_marker_popups_image_css']) . '}',
 								'theme_advanced_statusbar_location' => 'bottom'
 							),
 						'quicktags' => array('buttons' => 'strong,em,link,block,del,ins,img,code,close'));
@@ -1284,12 +1275,12 @@ if (!empty($action)) {
 	<?php wp_nonce_field('tool-nonce'); ?>
 	<table class="widefat fixed" style="width:auto;">
 		<tr style="background-color:#d6d5d5;">
-			<td colspan="2"><strong><?php echo __('Initialize map texts for translation using the WPML String Translation plugin','lmm'); ?></strong>  <a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/help-pro-feature.png" /></a></td>
+			<td colspan="2"><strong><?php echo __('Initialize map texts for translation','lmm'); ?></strong>  <a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/help-pro-feature.png" /></a></td>
 		</tr>
 		<tr>
 			<td>
 				<?php 
-					echo sprintf(__('Prepare existing maps strings (marker name, marker address, marker popuptext, layer name, layer address) for translation using the <a href="%1$s">WPML String Translation plugin</a>.','lmm'), 'https://www.mapsmarker.com/wpml'); 
+					echo sprintf(__('Prepare existing maps strings (marker name, marker address, marker popuptext, layer name, layer address) for translation using the <a href="%1$s">%2$s plugin</a>.','lmm'), 'https://www.mapsmarker.com/multilingual', 'WPML string translation or Polylang'); 
 					echo '<div style="margin:10px 0;"><strong><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a></strong></div>'; ?>
 			</td>
 		</tr>

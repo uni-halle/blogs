@@ -67,7 +67,7 @@ class LMM_WP_Session_Utils {
 	 *
 	 * @return int Sessions deleted.
 	 */
-	public static function delete_old_sessions( $limit = 1000 ) {
+	public static function delete_old_sessions( $limit = 2000 ) {
 		global $wpdb;
 
 		$limit = absint( $limit );

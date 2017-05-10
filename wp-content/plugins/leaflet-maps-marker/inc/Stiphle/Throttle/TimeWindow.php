@@ -1,11 +1,13 @@
 <?php
+/*
+//info: not actually used, but kept for reference
 
 namespace Stiphle\Throttle;
 
 use Stiphle\Throttle\ThrottleInterface;
 use Stiphle\Storage\StorageInterface;
 use Stiphle\Storage\LMM_Process;
-
+*/
 /**
  * This file is part of Stiphle
  *
@@ -32,7 +34,13 @@ class LMM_TimeWindow implements ThrottleInterface
      */
     public function __construct()
     {
-        $this->storage = new LMM_Process();
+        if ( function_exists('apc_store') && (apc_sma_info() !== FALSE) ) {
+            $this->storage = new LMM_Apc();
+		} else if ( function_exists('apcu_store') && (apcu_sma_info() !== FALSE) ) {
+			$this->storage = new LMM_Apcu();
+        } else {
+            $this->storage = new LMM_Session();
+        }
     }
 
     /**

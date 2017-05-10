@@ -1,4 +1,5 @@
 <?php
+//info: not actually used, but kept for reference
 /**
  * @package    Stiphle
  * @subpackage Stiphle\Storage

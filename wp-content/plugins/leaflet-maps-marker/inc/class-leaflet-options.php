@@ -62,19 +62,21 @@ class Class_leaflet_options {
 		$this->sections['mapdefaults-geolocate']	= esc_attr__('Geolocate settings','lmm');
 		$this->sections['mapdefaults-mobile_web_app']	= esc_attr__('Mobile web app settings','lmm');
 		$this->sections['mapdefaults-qr_code']			= esc_attr__('QR code settings','lmm');
+		$this->sections['mapdefaults-marker_tooltip']			= esc_attr__('Marker tooltip settings','lmm');
 
 		$this->sections['geocoding-general_settings']		= esc_attr__('Geocoding provider','lmm') . '</li><li>&nbsp;';
 
-		$this->sections['geocoding-mapzen']		= esc_attr__('Mapzen Search settings','lmm');
 		$this->sections['geocoding-algolia']		= esc_attr__('Algolia Places settings','lmm');
 		$this->sections['geocoding-photon']		= esc_attr__('Photon@MapsMarker settings','lmm') . '</li><li>&nbsp;';
 
-        $this->sections['geocoding-mapquest']		= esc_attr__('MapQuest Geocoding settings','lmm');
+        $this->sections['geocoding-mapzen']		= '<span style="float:left;margin-right:5px;margin-top:-2px;"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/icon-good-mark.png" width="23" height="23" /></span>' . esc_attr__('Mapzen Search settings','lmm');
+		$this->sections['geocoding-mapquest']		= esc_attr__('MapQuest Geocoding settings','lmm');
 		$this->sections['geocoding-google']		= esc_attr__('Google Geocoding settings','lmm');
 
 		$this->sections['basemaps-default_basemap']		= esc_attr__('Default basemap for new markers/layers','lmm');
 		$this->sections['basemaps-available_basemaps_controlbox']		= esc_attr__('Available basemaps in control box','lmm');
-		$this->sections['basemaps-basemap_names']		= esc_attr__('Names for basemaps in control box','lmm') . '</li><li>&nbsp;';
+		$this->sections['basemaps-basemap_names']		= esc_attr__('Names for basemaps in control box','lmm');
+		$this->sections['basemaps-basemap_global_settings']		= esc_attr__('Global basemap settings','lmm') . '</li><li>&nbsp;';
 
 		$this->sections['basemaps-openstreetmap']		= 'OpenStreetMap';
 		$this->sections['basemaps-stamen_maps']		= esc_attr__( 'Stamen Maps', 'lmm' );
@@ -514,7 +516,7 @@ class Class_leaflet_options {
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-marker_map_defaults',
 			'title'   => __( 'Latitude', 'lmm' ),
-			'desc'    => __( 'Please use a dot instead of a comma as decimal delimiter!', 'lmm' ),
+			'desc'    => '',
 			'std'     => '48.216038',
 			'type'    => 'text'
 		);
@@ -523,7 +525,7 @@ class Class_leaflet_options {
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-marker_map_defaults',
 			'title'   => __( 'Longitude', 'lmm' ),
-			'desc'    => __( 'Please use a dot instead of a comma as decimal delimiter!', 'lmm' ),
+			'desc'    => '',
 			'std'     => '16.378984',
 			'type'    => 'text'
 		);
@@ -1127,7 +1129,7 @@ class Class_leaflet_options {
 			'version' => '2.7.1',
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-marker_icons',
-			'title'   => __('Marker tooltip','lmm') . '<br/><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/help-marker-title.jpg" width="79" height="40" />',
+			'title'   => __('Native marker tooltip','lmm') . '<br/><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/help-marker-title.jpg" width="79" height="40" />',
 			'desc'    => __('Show marker name for the browser tooltip that appear on marker hover (tooltip is always hidden if marker name is empty).','lmm'),
 			'type'    => 'radio',
 			'std'     => 'show',
@@ -1363,6 +1365,19 @@ class Class_leaflet_options {
 				'false' => __('false','lmm')
 			)
 		);
+		$this->_settings['defaults_marker_popups_rise_on_hover'] = array(
+			'version' => 'p3.0',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-marker_popups',
+			'title'   => __('Open popups on mouse hover instead of mouse click','lmm') . $pro_button_link,
+			'desc'    => __('If set to true, popups will open on mouse hover.','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'false',
+			'choices' => array(
+				'true' => __('true','lmm'),
+				'false' => __('false','lmm')
+			)
+		);
 
 		/*
 		* Default values for new layer maps
@@ -1381,7 +1396,7 @@ class Class_leaflet_options {
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-layer_map_defaults',
 			'title'   => __( 'Latitude', 'lmm' ),
-			'desc'    => __( 'Please use a dot instead of a comma as decimal delimiter!', 'lmm' ),
+			'desc'    => '',
 			'std'     => '48.216038',
 			'type'    => 'text'
 		);
@@ -1390,7 +1405,7 @@ class Class_leaflet_options {
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-layer_map_defaults',
 			'title'   => __( 'Longitude', 'lmm' ),
-			'desc'    => __( 'Please use a dot instead of a comma as decimal delimiter!', 'lmm' ),
+			'desc'    => '',
 			'std'     => '16.378984',
 			'type'    => 'text'
 		);
@@ -2970,29 +2985,6 @@ $this->_settings['clustering_helptext2'] = array(
 				'false' => __('false','lmm')
 			)
 		);
-		/* Retina display detection */
-		$this->_settings['map_retina_detection_helptext'] = array(
-			'version' => '2.7.1',
-			'pane'    => 'mapdefaults',
-			'section' => 'mapdefaults-control',
-			'std'     => '',
-			'title'   => '<h4 class="h4-lmm-settings">' . __('Retina display detection','lmm') . '</h4>',
-			'desc'    => '',
-			'type'    => 'helptext'
-		);
-		$this->_settings['map_retina_detection'] = array(
-			'version' => '2.7.1',
-			'pane'    => 'mapdefaults',
-			'section' => 'mapdefaults-control',
-			'title'   => 'detectRetina',
-			'desc'    => __('If true and user is on a retina display (= iPhone 4/4S/5, iPad 3, MacBook Pro 3rd Generation), it will request four tiles of half the specified size and a bigger zoom level in place of one to utilize the high resolution.','lmm') . '<br/><strong>' . __('Attention: custom setting is overwritten with false by default since v3.11.1 to prevent issue with max zoom on mobile devices. Re-enabling is planned for a future release!','lmm') . '</strong>',
-			'type'    => 'radio',
-			'std'     => 'true',
-			'choices' => array(
-				'true' => __('true','lmm'),
-				'false' => __('false','lmm')
-			)
-		);
 		/* KML Settings */
 		$this->_settings['misc_kml_helptext'] = array(
 			'version' => '1.8',
@@ -3015,30 +3007,6 @@ $this->_settings['clustering_helptext2'] = array(
 				'show' => __('show', 'lmm'),
 				'hide' => __('hide', 'lmm'),
 				'popup' => __('put in front of popup-text', 'lmm')
-			)
-		);
-		/* CRS settings */
-		$this->_settings['misc_projections_helptext'] = array(
-			'version' => '3.11',
-			'pane'    => 'mapdefaults',
-			'section' => 'mapdefaults-control',
-			'std'     => '',
-			'title'   => '<h4 class="h4-lmm-settings">' . __('Coordinate Reference System','lmm') . '</h4>',
-			'desc'    => '',
-			'type'    => 'helptext'
-		);
-		$this->_settings['misc_projections'] = array(
-			'version' => '1.0',
-			'pane'    => 'mapdefaults',
-			'section' => 'mapdefaults-control',
-			'title'   => __( 'Coordinate Reference System', 'lmm' ),
-			'desc'    => __( 'Used for created maps - do not change this if you are not sure what it means!', 'lmm'),
-			'type'    => 'radio',
-			'std'     => 'L.CRS.EPSG3857',
-			'choices' => array(
-				'L.CRS.EPSG3857' => __('EPSG:3857 (Spherical Mercator), used by most of commercial map providers (CloudMade, Google, Yahoo, Bing, etc.)', 'lmm'),
-				'L.CRS.EPSG4326' => __('EPSG:4326 (Plate Carree), very popular among GIS enthusiasts', 'lmm'),
-				'L.CRS.EPSG3395' => __('EPSG:4326 (Mercator), used by some map providers.', 'lmm')
 			)
 		);
 
@@ -4071,6 +4039,115 @@ $this->_settings['clustering_helptext2'] = array(
 			'type'    => 'text'
 		);
 
+		/*
+		* Marker tooltip settings
+		*/
+		$this->_settings['marker_tooltip_helptext'] = array(
+			'version' => 'p3.0',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-marker_tooltip',
+			'std'     => '',
+			'title'   => '',
+			'desc'    => __( 'Display the marker name as small texts on top of marker icons:', 'lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-marker-tooltip.jpg" width="201" height="81" />',
+			'type'    => 'helptext'
+		);
+       $this->_settings['marker_tooltip_status'] = array(
+            'version' => 'p3.0',
+            'pane'    => 'mapdefaults',
+            'section' => 'mapdefaults-marker_tooltip',
+            'title'   => __('Marker tooltip status','lmm') . $pro_button_link,
+            'desc'    => '',
+            'type'    => 'radio-pro',
+            'std'     => 'disabled',
+            'choices' => array(
+                'enabled' => __('enabled','lmm'),
+                'disabled' => __('disabled','lmm')
+            )
+        );
+		$this->_settings['marker_tooltip_permanent'] = array(
+			'version' => 'p3.0',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-marker_tooltip',
+			'title'   => 'permanent' . $pro_button_link,
+			'desc'    => __('Whether to show the tooltip permanently or only on mouseover','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'false',
+			'choices' => array(
+				'false' => __('false (show tooltip only on mouseover)','lmm'),
+				'true' => __('true','lmm')
+			)
+		);
+		$this->_settings['marker_tooltip_sticky'] = array(
+			'version' => 'p3.0',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-marker_tooltip',
+			'title'   => 'sticky' . $pro_button_link,
+			'desc'    => __('If true, the tooltip will follow the mouse instead of being fixed at the set direction','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'false',
+			'choices' => array(
+				'false' => __('false','lmm'),
+				'true' => __('true','lmm')
+			)
+		);
+		$this->_settings['marker_tooltip_direction'] = array(
+			'version' => 'p3.0',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-marker_tooltip',
+			'title'   => __('Direction','lmm') . $pro_button_link,
+			'desc'    => sprintf(__('Direction where to open the tooltip. %1$s will dynamicaly switch between right and left according to the tooltip position on the map.','lmm'), 'auto'),
+			'type'    => 'radio-pro',
+			'std'     => 'auto',
+			'choices' => array(
+				'auto' => 'auto - ' . sprintf(__('recommended offset (x/y): %1$s','lmm'), '0/0'),
+				'right' => 'right - ' . sprintf(__('recommended offset (x/y): %1$s or %2$s','lmm'), '0/0', '11/-20'),
+				'left' => 'left - ' . sprintf(__('recommended offset (x/y): %1$s or %2$s','lmm'), '0/0', '-13/-20'),
+				'top' => 'top - ' . sprintf(__('recommended offset (x/y): %1$s','lmm'), '-2/-32'),
+				'bottom' => 'bottom - ' . sprintf(__('recommended offset (x/y): %1$s','lmm'), '0/-1'),
+				'center' => 'center - ' . sprintf(__('recommended offset (x/y): %1$s','lmm'), '0/20', '/')
+			)
+		);
+        $this->_settings['marker_tooltip_offset_x'] = array(
+            'version' => 'p3.0',
+            'pane'    => 'mapdefaults',
+            'section' => 'mapdefaults-marker_tooltip',
+            'title'   => __( 'Offset (x)', 'lmm' ) . $pro_button_link,
+            'desc'    => __('Optional offset value of the tooltip position.','lmm'),
+            'std'     => '0',
+            'type'    => 'text-pro'
+        );		
+        $this->_settings['marker_tooltip_offset_y'] = array(
+            'version' => 'p3.0',
+            'pane'    => 'mapdefaults',
+            'section' => 'mapdefaults-marker_tooltip',
+            'title'   => __( 'Offset (y)', 'lmm' ) . $pro_button_link,
+            'desc'    => __('Optional offset value of the tooltip position.','lmm'),
+            'std'     => '0',
+            'type'    => 'text-pro'
+        );		
+		$this->_settings['marker_tooltip_interactive'] = array(
+			'version' => 'p3.0',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-marker_tooltip',
+			'title'   => 'interactive' . $pro_button_link,
+			'desc'    => __('If true, the tooltip will listen to the feature events','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'false',
+			'choices' => array(
+				'false' => __('false','lmm'),
+				'true' => __('true','lmm')
+			)
+		);
+        $this->_settings['marker_tooltip_opacity'] = array(
+            'version' => 'p3.0',
+            'pane'    => 'mapdefaults',
+            'section' => 'mapdefaults-marker_tooltip',
+            'title'   => __( 'Opacity', 'lmm' ) . $pro_button_link,
+            'desc'    => __('Tooltip container opacity','lmm'),
+            'std'     => '0.9',
+            'type'    => 'text-pro'
+        );
+
 		/*===========================================
 		*
 		*
@@ -4097,12 +4174,12 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'   => __('Main geocoding provider','lmm'),
 			'desc'    => '',
 			'type'    => 'radio',
-			'std'     => 'mapzen-search',
+			'std'     => 'algolia-places',
 			'choices' => array(
-                'mapzen-search' => 'Mapzen Search',
-				'algolia-places' => 'Algolia Places',
+                'algolia-places' => 'Algolia Places',
 				'photon' => 'Photon@MapsMarker',
-                'mapquest-geocoding' => 'MapQuest Geocoding <strong>(<a href="https://www.mapsmarker.com/mapquest-geocoding" target="_blank">' . __('API key required','lmm') . '</a>)</strong>',
+                 'mapzen-search' => '<span style="float:left;margin-right:5px;"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/icon-good-mark.png" width="23" height="23" /></span> Mapzen Search <strong>(' . __('recommended','lmm') . ' - <a href="https://www.mapsmarker.com/mapzen-search" target="_blank">' . __('API key required','lmm') . '</a>)</strong>',
+				'mapquest-geocoding' => 'MapQuest Geocoding <strong>(<a href="https://www.mapsmarker.com/mapquest-geocoding" target="_blank">' . __('API key required','lmm') . '</a>)</strong>',
 				'google-geocoding' => 'Google Geocoding <strong>(<a href="https://www.mapsmarker.com/google-geocoding" target="_blank">' . __('API key required','lmm') . ')</a></strong>',
 			)
 		);
@@ -4113,11 +4190,11 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'   => __('Fallback geocoding provider','lmm'),
 			'desc'    => __('The fallback geocoding provider is used automatically if the main geocoding provider is unavailable','lmm'),
 			'type'    => 'radio',
-			'std'     => 'algolia-places',
+			'std'     => 'photon',
 			'choices' => array(
-				'mapzen-search' => 'Mapzen Search',
 				'algolia-places' => 'Algolia Places',
 				'photon' => 'Photon@MapsMarker',
+				'mapzen-search' => 'Mapzen Search <strong>(<a href="https://www.mapsmarker.com/mapzen-search" target="_blank">' . __('API key required','lmm') . '</a>)</strong>',
                 'mapquest-geocoding' => 'MapQuest Geocoding <strong>(<a href="https://www.mapsmarker.com/mapquest-geocoding" target="_blank">' . __('API key required','lmm') . '</a>)</strong>',
                 'google-geocoding' => 'Google Geocoding <strong>(<a href="https://www.mapsmarker.com/google-geocoding" target="_blank">' . __('API key required','lmm') . ')</a></strong>',
 			)
@@ -4151,6 +4228,169 @@ $this->_settings['clustering_helptext2'] = array(
 		);
 
 		/*
+		* Algolia Places settings
+		*/
+		$this->_settings['geocoding_algolia_helptext'] = array(
+			'version' => '3.11',
+			'pane'    => 'geocoding',
+			'section' => 'geocoding-algolia',
+			'std'     => '',
+			'title'   => '',
+			'desc'    => '<a href="https://www.mapsmarker.com/algolia-places/" target="_blank"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/geocoding/algolia-places.png" width="674" height="160" /></a><br/><br/>' . sprintf(__('<a href="%1$s" target="_blank">%2$s</a> allows up to %3$s requests/domain/day and a maximum of %4$s requests/%5$s without registration - just select "%6$s" as preferred "Geocoding provider" in the according tab on the left to start using the service.','lmm'), 'https://www.mapsmarker.com/algolia-places/', 'Algolia Places', '1.000', '15', __('second','lmm'), 'Algolia Places'),
+			'type'    => 'helptext'
+		);
+		$this->_settings['geocoding_algolia_helptext2'] = array(
+			'version' => '3.11',
+			'pane'    => 'geocoding',
+			'section' => 'geocoding-algolia',
+			'std'     => '',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('Authentication settings','lmm') . '</h4>',
+			'desc'    =>  sprintf(__('With <a href="%1$s" target="_blank">free authentication</a> up to %2$s request per domain/month are allowed. <a href="%3$s" target="_blank">Paid plans with even higher limits are available upon request</a>.','lmm'), 'https://www.algolia.com/users/sign_up/places', '100.000', 'https://community.algolia.com/places/contact.html'),
+			'type'    => 'helptext'
+		);
+		$this->_settings['geocoding_algolia_appId'] = array(
+			'version' => '3.11',
+			'pane'    => 'geocoding',
+			'section' => 'geocoding-algolia',
+			'title'   => 'appId',
+			'desc'    => __('If using the authenticated API, the Application ID to use.','lmm'),
+			'std'     => '',
+			'type'    => 'text'
+		);
+		$this->_settings['geocoding_algolia_apiKey'] = array(
+			'version' => '3.11',
+			'pane'    => 'geocoding',
+			'section' => 'geocoding-algolia',
+			'title'   => 'apiKey',
+			'desc'    => __('If using the authenticated API, the API key to use.','lmm'),
+			'std'     => '',
+			'type'    => 'text'
+		);
+		$this->_settings['geocoding_algolia_helptext3'] = array(
+			'version' => '3.11',
+			'pane'    => 'geocoding',
+			'section' => 'geocoding-algolia',
+			'std'     => '',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('Advanced settings','lmm') . '</h4>',
+			'desc'    => '',
+			'type'    => 'helptext'
+		);
+		$this->_settings['geocoding_algolia_aroundLatLng'] = array(
+			'version' => '3.11',
+			'pane'    => 'geocoding',
+			'section' => 'geocoding-algolia',
+			'title'   => 'aroundLatLng',
+			'desc'    => __('Force to first search around a specific latitude longitude. The option value must be provided as a string: latitude,longitude like 12.232,23.1. The default is to search around the location of the user determined via his IP address (geoip).','lmm'),
+			'std'     => '',
+			'type'    => 'text'
+		);
+		$this->_settings['geocoding_algolia_aroundLatLngViaIP'] = array(
+			'version' => '3.11',
+			'pane'    => 'geocoding',
+			'section' => 'geocoding-algolia',
+			'title'   => 'aroundLatLngViaIP',
+			'desc'    => __( 'Whether or not to first search around the geolocation of the user found via his IP address.', 'lmm' ),
+			'type'    => 'radio',
+			'std'     => 'true',
+			'choices' => array(
+				'false' => __('false', 'lmm'),
+				'true' => __('true', 'lmm')
+			)
+		);
+		$this->_settings['geocoding_algolia_language'] = array(
+			'version' => '3.11',
+			'pane'    => 'geocoding',
+			'section' => 'geocoding-algolia',
+			'title'   => __('language','lmm'),
+			'desc'    => sprintf(__('Change the default language of the results. You can pass two letters country codes (<a href="%1$s" target="_blank">ISO 639-1</a>).','lmm'), 'https://en.wikipedia.org/wiki/ISO_3166-1#Officially_assigned_code_elements') . '<br/>' . sprintf(__('By default the language will be retrieved from the WordPress global variable $locale = %1$s (with a fallback to %2$s if not supported)','lmm'), '<strong>' . get_locale() . '</strong>', 'en'),
+			'std'     => '',
+			'type'    => 'text'
+		);
+		$this->_settings['geocoding_algolia_countries'] = array(
+			'version' => '3.11',
+			'pane'    => 'geocoding',
+			'section' => 'geocoding-algolia',
+			'title'   => __('countries','lmm'),
+			'desc'    => sprintf(__('Change the countries to search in. You must pass an array of two letters country codes. You can pass two letters country codes (<a href="%1$s" target="_blank">ISO 639-1</a>). Default: Search on the whole planet.','lmm'), 'https://en.wikipedia.org/wiki/ISO_3166-1#Officially_assigned_code_elements'),
+			'std'     => '',
+			'type'    => 'text'
+		);
+
+		/*
+		* Photon@MapsMarker settings
+		*/
+		$this->_settings['geocoding_photon_helptext'] = array(
+			'version' => '3.11',
+			'pane'    => 'geocoding',
+			'section' => 'geocoding-photon',
+			'std'     => '',
+			'title'   => '',
+			'desc'    => '<a href="https://www.mapsmarker.com/photon/" target="_blank"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/geocoding/photon-mapsmarker.png" width="486" height="78" /></a><br/><br/>' . sprintf(__('<a href="%1$s" target="_blank">%2$s</a> allows up to %3$s requests/domain/day and a maximum of %4$s requests/%5$s without registration - just select "%6$s" as preferred "Geocoding provider" in the according tab on the left to start using the service.','lmm'), 'https://www.mapsmarker.com/photon/', 'Photon@MapsMarker', '2.500', '10', __('second','lmm'), 'Photon@MapsMarker'),
+			'type'    => 'helptext'
+		);
+		$this->_settings['geocoding_photon_language'] = array(
+			'version' => '3.11',
+			'pane'    => 'geocoding',
+			'section' => 'geocoding-photon',
+			'title'   => __('Language','lmm'),
+			'desc'    => sprintf(__('By default the language will be retrieved from the WordPress global variable $locale = %1$s (with a fallback to %2$s if not supported)','lmm'), '<strong>' . get_locale() . '</strong>', __('English','lmm')),
+			'type'    => 'radio',
+			'std'     => 'automatic',
+			'choices' => array(
+				'automatic' => __('automatic','lmm'),
+				'en' => __('English','lmm'),
+				'de' => __('German','lmm'),
+				'fr' => __('French','lmm'),
+				'it' => __('Italian','lmm')
+			)
+		);
+		$this->_settings['geocoding_photon_helptext2'] = array(
+			'version' => '3.11',
+			'pane'    => 'geocoding',
+			'section' => 'geocoding-photon',
+			'std'     => '',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('Location Biasing','lmm') . '</h4>',
+			'desc'    => __('To focus your search based upon a geographical area, please provide latitude and longitude values.','lmm'),
+			'type'    => 'helptext'
+		);
+		$this->_settings['geocoding_photon_location_bias_lat'] = array(
+			'version' => '3.11',
+			'pane'    => 'geocoding',
+			'section' => 'geocoding-photon',
+			'title'   => __('Latitude','lmm'),
+			'desc'    => '',
+			'std'     => '',
+			'type'    => 'text'
+		);
+		$this->_settings['geocoding_photon_location_bias_lon'] = array(
+			'version' => '3.11',
+			'pane'    => 'geocoding',
+			'section' => 'geocoding-photon',
+			'title'   => __('Longitude','lmm'),
+			'desc'    => '',
+			'std'     => '',
+			'type'    => 'text'
+		);
+		$this->_settings['geocoding_photon_helptext3'] = array(
+			'version' => '3.11',
+			'pane'    => 'geocoding',
+			'section' => 'geocoding-photon',
+			'std'     => '',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('Filter results by tags and values','lmm') . '</h4>',
+			'desc'    => '',
+			'type'    => 'helptext'
+		);
+		$this->_settings['geocoding_photon_filter_results'] = array(
+			'version' => '3.11',
+			'pane'    => 'geocoding',
+			'section' => 'geocoding-photon',
+			'title'   => __('Filter to use','lmm'),
+			'desc'    => sprintf(__('For a detailed documentation <a href="%1$s" target="_blank">please click here</a>','lmm'), 'https://github.com/komoot/photon#filter-results-by-tags-and-values'),
+			'std'     => '',
+			'type'    => 'text'
+		);
+
+		/*
 		* Mapzen Search settings
 		*/
 		$this->_settings['geocoding_mapzen_search_helptext'] = array(
@@ -4159,7 +4399,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'section' => 'geocoding-mapzen',
 			'std'     => '',
 			'title'   => '',
-			'desc'    => '<a href="https://www.mapsmarker.com/mapzen-search/" target="_blank"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/geocoding/mapzen-search-large.png" width="293" height="108" alt="pro option" /></a><br/><br/>' . sprintf(__('<a href="%1$s" target="_blank">Mapzen Search</a> allows up to %2$s requests/domain/day and a maximum of %3$s requests/%4$s and %5$s requests/%6$s without registration - just select "Mapzen Search" as preferred "Geocoding provider" in the according tab on the left.','lmm'), 'https://www.mapsmarker.com/mapzen-search/', '1.000', '1', __('second','lmm'), '6', __('minute','lmm')),
+			'desc'    => '<a href="https://www.mapsmarker.com/mapzen-search/" target="_blank"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/geocoding/mapzen-search-large.png" width="293" height="108" alt="pro option" /></a><br/><br/>' . sprintf(__('<a href="%1$s" target="_blank">Mapzen Search</a> is a search engine for places worldwide, powered by open data and as result our recommended geolocation provider.','lmm'), 'https://www.mapsmarker.com/mapzen-search/'),
 			'type'    => 'helptext'
 		);
 		$this->_settings['geocoding_mapzen_search_helptext2'] = array(
@@ -4168,14 +4408,14 @@ $this->_settings['clustering_helptext2'] = array(
 			'section' => 'geocoding-mapzen',
 			'std'     => '',
 			'title'   => '<h4 class="h4-lmm-settings">' . __('Authentication settings','lmm') . '</h4>',
-			'desc'    =>  sprintf(__('With a <a href="%1$s" target="_blank">free API key</a> up to %2$s requests/%3$s and a maximum of %4$s requests/%5$s are allowed. <a href="%6$s" target="_blank">Even higher limits are available upon request</a>.','lmm'), 'https://mapzen.com/developers/sign_in', '30.000', __('day','lmm'), '6', __('second','lmm'), 'mailto:hello@mapzen.com?subject=Maps Marker Pro - request for higher API limits') . ' <span style="font-weight:bold;color:red;">' . __('Registering for a free Mapzen Search API key is highly recommended if you are planning to also use geocoding for importer or APIs!','lmm') . '</span>',
+			'desc'    =>  sprintf(__('With a <a href="%1$s" target="_blank">free API key</a> up to %2$s requests/%3$s and a maximum of %4$s requests/%5$s are allowed. <a href="%6$s" target="_blank">Even higher limits are available upon request</a>.','lmm'), 'https://mapzen.com/developers/sign_in', '30.000', __('day','lmm'), '6', __('second','lmm'), 'mailto:hello@mapzen.com?subject=Maps Marker Pro - request for higher API limits'),
 			'type'    => 'helptext'
 		);
 		$this->_settings['geocoding_mapzen_search_api_key'] = array(
 			'version' => '3.11',
 			'pane'    => 'geocoding',
 			'section' => 'geocoding-mapzen',
-			'title'   => __('API key','lmm'),
+			'title'   => __('API key','lmm') . ' (' . __('required','lmm') . ')',
 			'desc'    => sprintf(__('Get your free API key at %1$s','lmm'),'<a href="https://mapzen.com/developers/" target="_blank">https://mapzen.com/developers/</a>'),
 			'std'     => '',
 			'type'    => 'text'
@@ -4392,169 +4632,6 @@ $this->_settings['clustering_helptext2'] = array(
 				'region' => 'region',
 				'country' => 'country'
 			)
-		);
-
-		/*
-		* Algolia Places settings
-		*/
-		$this->_settings['geocoding_algolia_helptext'] = array(
-			'version' => '3.11',
-			'pane'    => 'geocoding',
-			'section' => 'geocoding-algolia',
-			'std'     => '',
-			'title'   => '',
-			'desc'    => '<a href="https://www.mapsmarker.com/algolia-places/" target="_blank"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/geocoding/algolia-places.png" width="674" height="160" /></a><br/><br/>' . sprintf(__('<a href="%1$s" target="_blank">%2$s</a> allows up to %3$s requests/domain/day and a maximum of %4$s requests/%5$s without registration - just select "%6$s" as preferred "Geocoding provider" in the according tab on the left to start using the service.','lmm'), 'https://www.mapsmarker.com/algolia-places/', 'Algolia Places', '1.000', '15', __('second','lmm'), 'Algolia Places'),
-			'type'    => 'helptext'
-		);
-		$this->_settings['geocoding_algolia_helptext2'] = array(
-			'version' => '3.11',
-			'pane'    => 'geocoding',
-			'section' => 'geocoding-algolia',
-			'std'     => '',
-			'title'   => '<h4 class="h4-lmm-settings">' . __('Authentication settings','lmm') . '</h4>',
-			'desc'    =>  sprintf(__('With <a href="%1$s" target="_blank">free authentication</a> up to %2$s request per domain/month are allowed. <a href="%3$s" target="_blank">Paid plans with even higher limits are available upon request</a>.','lmm'), 'https://www.algolia.com/users/sign_up/places', '100.000', 'https://community.algolia.com/places/contact.html'),
-			'type'    => 'helptext'
-		);
-		$this->_settings['geocoding_algolia_appId'] = array(
-			'version' => '3.11',
-			'pane'    => 'geocoding',
-			'section' => 'geocoding-algolia',
-			'title'   => 'appId',
-			'desc'    => __('If using the authenticated API, the Application ID to use.','lmm'),
-			'std'     => '',
-			'type'    => 'text'
-		);
-		$this->_settings['geocoding_algolia_apiKey'] = array(
-			'version' => '3.11',
-			'pane'    => 'geocoding',
-			'section' => 'geocoding-algolia',
-			'title'   => 'apiKey',
-			'desc'    => __('If using the authenticated API, the API key to use.','lmm'),
-			'std'     => '',
-			'type'    => 'text'
-		);
-		$this->_settings['geocoding_algolia_helptext3'] = array(
-			'version' => '3.11',
-			'pane'    => 'geocoding',
-			'section' => 'geocoding-algolia',
-			'std'     => '',
-			'title'   => '<h4 class="h4-lmm-settings">' . __('Advanced settings','lmm') . '</h4>',
-			'desc'    => '',
-			'type'    => 'helptext'
-		);
-		$this->_settings['geocoding_algolia_aroundLatLng'] = array(
-			'version' => '3.11',
-			'pane'    => 'geocoding',
-			'section' => 'geocoding-algolia',
-			'title'   => 'aroundLatLng',
-			'desc'    => __('Force to first search around a specific latitude longitude. The option value must be provided as a string: latitude,longitude like 12.232,23.1. The default is to search around the location of the user determined via his IP address (geoip).','lmm'),
-			'std'     => '',
-			'type'    => 'text'
-		);
-		$this->_settings['geocoding_algolia_aroundLatLngViaIP'] = array(
-			'version' => '3.11',
-			'pane'    => 'geocoding',
-			'section' => 'geocoding-algolia',
-			'title'   => 'aroundLatLngViaIP',
-			'desc'    => __( 'Whether or not to first search around the geolocation of the user found via his IP address.', 'lmm' ),
-			'type'    => 'radio',
-			'std'     => 'true',
-			'choices' => array(
-				'false' => __('false', 'lmm'),
-				'true' => __('true', 'lmm')
-			)
-		);
-		$this->_settings['geocoding_algolia_language'] = array(
-			'version' => '3.11',
-			'pane'    => 'geocoding',
-			'section' => 'geocoding-algolia',
-			'title'   => __('language','lmm'),
-			'desc'    => sprintf(__('Change the default language of the results. You can pass two letters country codes (<a href="%1$s" target="_blank">ISO 639-1</a>).','lmm'), 'https://en.wikipedia.org/wiki/ISO_3166-1#Officially_assigned_code_elements') . '<br/>' . sprintf(__('By default the language will be retrieved from the WordPress global variable $locale = %1$s (with a fallback to %2$s if not supported)','lmm'), '<strong>' . get_locale() . '</strong>', 'en'),
-			'std'     => '',
-			'type'    => 'text'
-		);
-		$this->_settings['geocoding_algolia_countries'] = array(
-			'version' => '3.11',
-			'pane'    => 'geocoding',
-			'section' => 'geocoding-algolia',
-			'title'   => __('countries','lmm'),
-			'desc'    => sprintf(__('Change the countries to search in. You must pass an array of two letters country codes. You can pass two letters country codes (<a href="%1$s" target="_blank">ISO 639-1</a>). Default: Search on the whole planet.','lmm'), 'https://en.wikipedia.org/wiki/ISO_3166-1#Officially_assigned_code_elements'),
-			'std'     => '',
-			'type'    => 'text'
-		);
-
-		/*
-		* Photon@MapsMarker settings
-		*/
-		$this->_settings['geocoding_photon_helptext'] = array(
-			'version' => '3.11',
-			'pane'    => 'geocoding',
-			'section' => 'geocoding-photon',
-			'std'     => '',
-			'title'   => '',
-			'desc'    => '<a href="https://www.mapsmarker.com/photon/" target="_blank"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/geocoding/photon-mapsmarker.png" width="486" height="78" /></a><br/><br/>' . sprintf(__('<a href="%1$s" target="_blank">%2$s</a> allows up to %3$s requests/domain/day and a maximum of %4$s requests/%5$s without registration - just select "%6$s" as preferred "Geocoding provider" in the according tab on the left to start using the service.','lmm'), 'https://www.mapsmarker.com/photon/', 'Photon@MapsMarker', '2.500', '10', __('second','lmm'), 'Photon@MapsMarker'),
-			'type'    => 'helptext'
-		);
-		$this->_settings['geocoding_photon_language'] = array(
-			'version' => '3.11',
-			'pane'    => 'geocoding',
-			'section' => 'geocoding-photon',
-			'title'   => __('Language','lmm'),
-			'desc'    => sprintf(__('By default the language will be retrieved from the WordPress global variable $locale = %1$s (with a fallback to %2$s if not supported)','lmm'), '<strong>' . get_locale() . '</strong>', __('English','lmm')),
-			'type'    => 'radio',
-			'std'     => 'automatic',
-			'choices' => array(
-				'automatic' => __('automatic','lmm'),
-				'en' => __('English','lmm'),
-				'de' => __('German','lmm'),
-				'fr' => __('French','lmm'),
-				'it' => __('Italian','lmm')
-			)
-		);
-		$this->_settings['geocoding_photon_helptext2'] = array(
-			'version' => '3.11',
-			'pane'    => 'geocoding',
-			'section' => 'geocoding-photon',
-			'std'     => '',
-			'title'   => '<h4 class="h4-lmm-settings">' . __('Location Biasing','lmm') . '</h4>',
-			'desc'    => __('To focus your search based upon a geographical area, please provide latitude and longitude values.','lmm'),
-			'type'    => 'helptext'
-		);
-		$this->_settings['geocoding_photon_location_bias_lat'] = array(
-			'version' => '3.11',
-			'pane'    => 'geocoding',
-			'section' => 'geocoding-photon',
-			'title'   => __('Latitude','lmm'),
-			'desc'    => '',
-			'std'     => '',
-			'type'    => 'text'
-		);
-		$this->_settings['geocoding_photon_location_bias_lon'] = array(
-			'version' => '3.11',
-			'pane'    => 'geocoding',
-			'section' => 'geocoding-photon',
-			'title'   => __('Longitude','lmm'),
-			'desc'    => '',
-			'std'     => '',
-			'type'    => 'text'
-		);
-		$this->_settings['geocoding_photon_helptext3'] = array(
-			'version' => '3.11',
-			'pane'    => 'geocoding',
-			'section' => 'geocoding-photon',
-			'std'     => '',
-			'title'   => '<h4 class="h4-lmm-settings">' . __('Filter results by tags and values','lmm') . '</h4>',
-			'desc'    => '',
-			'type'    => 'helptext'
-		);
-		$this->_settings['geocoding_photon_filter_results'] = array(
-			'version' => '3.11',
-			'pane'    => 'geocoding',
-			'section' => 'geocoding-photon',
-			'title'   => __('Filter to use','lmm'),
-			'desc'    => sprintf(__('For a detailed documentation <a href="%1$s" target="_blank">please click here</a>','lmm'), 'https://github.com/komoot/photon#filter-results-by-tags-and-values'),
-			'std'     => '',
-			'type'    => 'text'
 		);
 
         /*
@@ -4823,15 +4900,7 @@ $this->_settings['clustering_helptext2'] = array(
 				'empty_basemap' => __('empty basemap','lmm')
 			)
 		);
-		$this->_settings['global_maxzoom_level'] = array(
-			'version' => 'p1.5',
-			'pane'    => 'basemaps',
-			'section' => 'basemaps-default_basemap',
-			'title'   => __('Global maximum zoom level','lmm') . $pro_button_link,
-			'desc'    => __('If the native maximum zoom level of a basemap is lower, tiles will be upscaled automatically.','lmm'),
-			'std'     => '21',
-			'type'    => 'text-pro'
-		);
+
 		/*
 		* Available basemaps in controlbox
 		*/
@@ -5271,6 +5340,65 @@ $this->_settings['clustering_helptext2'] = array(
 			'type'    => 'text'
 		);
 		/*
+		* Global basemap settings
+		*/
+		$this->_settings['global_basemap_settings_helptext'] = array(
+			'version' => 'p3.0',
+			'pane'    => 'basemaps',
+			'section' => 'basemaps-basemap_global_settings',
+			'std'     => '',
+			'title'   => '',
+			'desc'    => __( 'The following settings will be used for all marker and layer maps', 'lmm'),
+			'type'    => 'helptext'
+		);
+		$this->_settings['global_maxzoom_level'] = array(
+			'version' => 'p1.5',
+			'pane'    => 'basemaps',
+			'section' => 'basemaps-basemap_global_settings',
+			'title'   => __('Global maximum zoom level','lmm') . $pro_button_link,
+			'desc'    => __('If the native maximum zoom level of a basemap is lower, tiles will be upscaled automatically.','lmm'),
+			'std'     => '21',
+			'type'    => 'text-pro'
+		);
+		$this->_settings['edgeBufferTiles'] = array(
+			'version' => 'p3.0',
+			'pane'    => 'basemaps',
+			'section' => 'basemaps-basemap_global_settings',
+			'title'   => 'edgeBufferTiles' . $pro_button_link,
+			'desc'    => __('The number of tiles that should be pre-loaded beyond the edge of the visible map. This makes it less likely to see the blank background behind tile images when panning a map. This may also be a fractional number, set to 0 for disabling this feature.','lmm'),
+			'std'     => '2',
+			'type'    => 'text-pro'
+		);
+		/* Retina display detection */
+		$this->_settings['map_retina_detection'] = array(
+			'version' => '2.7.1',
+			'pane'    => 'basemaps',
+			'section' => 'basemaps-basemap_global_settings',
+			'title'   => 'detectRetina',
+			'desc'    => __('If true and user is on a retina display, four tiles of half the specified size and a bigger zoom level in place of one will be requested to utilize the high resolution.','lmm'),
+			'type'    => 'radio',
+			'std'     => 'true',
+			'choices' => array(
+				'true' => __('true','lmm'),
+				'false' => __('false','lmm')
+			)
+		);		
+		$this->_settings['misc_projections'] = array(
+			'version' => '1.0',
+			'pane'    => 'basemaps',
+			'section' => 'basemaps-basemap_global_settings',
+			'title'   => __( 'Coordinate Reference System', 'lmm' ),
+			'desc'    => __( 'Used for created maps - do not change this if you are not sure what it means!', 'lmm') . '<div style="height:200px;"></div>',
+			'type'    => 'radio',
+			'std'     => 'L.CRS.EPSG3857',
+			'choices' => array(
+				'L.CRS.EPSG3857' => __('EPSG:3857 (Spherical Mercator), used by most of commercial map providers (CloudMade, Google, Yahoo, Bing, etc.)', 'lmm'),
+				'L.CRS.EPSG4326' => __('EPSG:4326 (Plate Carree), very popular among GIS enthusiasts', 'lmm'),
+				'L.CRS.EPSG3395' => __('EPSG:4326 (Mercator), used by some map providers.', 'lmm')
+			)
+		);
+				
+		/*
 		* OpenStreetMap section
 		*/
 		$this->_settings['openstreetmap_helptext'] = array(
@@ -5391,7 +5519,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'section' => 'basemaps-mapquest',
 			'std'     => '',
 			'title'   => '',
-			'desc'    => sprintf(__( 'Since July 11 2016, MapQuest requires to <a href="%1$s" target="_blank">sign up for a plan on their Developer Network</a> if you want to use their maps on your site.','lmm'), 'https://developer.mapquest.com/plans') . '<br/><br/>' . sprintf(__( 'For a tutorial on how to signup for a free plan with %1$s monthly transactions included, <a href="%2$s" target="_blank">please click here</a>', 'lmm'), '15.000', 'https://www.mapsmarker.com/mapquest-api-key') . '<br/><br/>' . '<span style="font-weight:bold;color:red;">MapQuest basemaps are currently not working properly with Leaflet Maps Marker due compatibility issues with leaflet.js (MapQuest maps work properly with Maps Marker Pro though where a newer version of leaflet.js is used).<br/><br/>We will fix this with a future release of Leaflet Maps Marker where we will update to a more current version of leaflet.js - until then, activating MapQuest basemap for Leaflet Maps Marker is not recommended!</span>',
+			'desc'    => sprintf(__( 'Since July 11 2016, MapQuest requires to <a href="%1$s" target="_blank">sign up for a plan on their Developer Network</a> if you want to use their maps on your site.','lmm'), 'https://developer.mapquest.com/plans') . '<br/><br/>' . sprintf(__( 'For a tutorial on how to signup for a free plan with %1$s monthly transactions included, <a href="%2$s" target="_blank">please click here</a>', 'lmm'), '15.000', 'https://www.mapsmarker.com/mapquest-api-key'),
 			'type'    => 'helptext'
 		);
 		$this->_settings['mapquest_api_key'] = array(
@@ -5446,17 +5574,17 @@ $this->_settings['clustering_helptext2'] = array(
 			'std'     => '',
 			'type'    => 'text'
 		);
-		$this->_settings['google_api_deregister_scripts'] = array(
-			'version' => '3.10.6',
+		$this->_settings['google_maps_plugin'] = array(
+			'version' => 'p3.0',
 			'pane'    => 'basemaps',
 			'section' => 'basemaps-google_js_api',
-			'title'   => __('Deregister Google Maps API scripts enqueued by third parties','lmm'),
-			'desc'    => __('Only enable this compatibility option if you see the admin notice that another plugin or theme also embedds the Google Maps API (which can cause maps and address search to break if that implementation does not properly send the Google API key which is mandatory since June 22nd 2016!)','lmm'),
-			'type'    => 'radio',
-			'std'     => 'disabled',
+			'title'   => __('Google Maps leaflet implementation','lmm') . $pro_button_link,
+			'desc'    => sprintf(__('GoogleMutant plugin is recommended although not supported on Internet Explorer 10 or lower and several older browsers versions (maps will automatically switch to OpenStreetMap for those users).<br/>Current browser market share for affected browsers: about %1$s and declining steadily. If you do not want Google basemaps to automatically switch to OpenStreetMap for those outdated browsers, please activate the legacy plugin.','lmm'), '7% (02/2017)'),
+			'type'    => 'radio-pro',
+			'std'     => 'google_legacy',
 			'choices' => array(
-				'enabled' => __('enabled','lmm'),
-				'disabled' => __('disabled','lmm')
+				'google_mutant' => __('GoogleMutant plugin (higher performance, active development)','lmm'),
+				'google_legacy' => __('legacy plugin (slower performance, no active development)','lmm')
 			)
 		);
 		$this->_settings['google_maps_api_deferred_loading'] = array(
@@ -5464,9 +5592,22 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'basemaps',
 			'section' => 'basemaps-google_js_api',
 			'title'   => __('Deferred loading','lmm') . $pro_button_link,
-			'desc'    => __('If enabled, Google Maps API scripts will only be loaded on demand as this significantly decreases the loadtime for all OpenStreetMap based maps. Disabling this feature is only recommended if you are experiencing compatibility issues with other plugins or themes.','lmm') . '<br/><br/><div style="height:160px;"></div>',
+			'desc'    => __('If enabled, Google Maps API scripts will only be loaded on demand as this significantly decreases the loadtime for all OpenStreetMap based maps. Disabling this feature is only recommended if you are experiencing compatibility issues with other plugins or themes.','lmm'),
 			'type'    => 'radio-pro',
-			'std'     => 'enabled',
+			'std'     => 'disabled',
+			'choices' => array(
+				'enabled' => __('enabled','lmm'),
+				'disabled' => __('disabled','lmm')
+			)
+		);
+		$this->_settings['google_api_deregister_scripts'] = array(
+			'version' => '3.10.6',
+			'pane'    => 'basemaps',
+			'section' => 'basemaps-google_js_api',
+			'title'   => __('Deregister Google Maps API scripts enqueued by third parties','lmm'),
+			'desc'    => __('Only enable this compatibility option if you see the admin notice that another plugin or theme also embedds the Google Maps API (which can cause maps and address search to break if that implementation does not properly send the Google API key which is mandatory since June 22nd 2016!)','lmm') . '<br/><br/><div style="height:40px;"></div>',
+			'type'    => 'radio',
+			'std'     => 'disabled',
 			'choices' => array(
 				'enabled' => __('enabled','lmm'),
 				'disabled' => __('disabled','lmm')
@@ -5627,7 +5768,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'basemaps',
 			'section' => 'basemaps-google_styling',
 			'title'   => 'JSON' . $pro_button_link,
-			'desc'    => sprintf(__('Please enter the custom JSON array to style your Google maps (you can use the <a href="%1s" target="_blank">Google Styled Maps Wizard</a> to create custom styles easily). Example for hiding roads:','lmm'), 'https://mapstyle.withgoogle.com/') . ' <br/><strong>[ { &#39;featureType&#39;: &#39;road.highway&#39;, &#39;elementType&#39;: &#39;geometry&#39;, &#39;stylers&#39;: [ { &#39;visibility&#39;: &#39;off&#39; } ] },{ &#39;featureType&#39;: &#39;road.arterial&#39;, &#39;stylers&#39;: [ { &#39;visibility&#39;: &#39;off&#39; } ] },{ &#39;featureType&#39;: &#39;road.local&#39;, &#39;stylers&#39;: [ { &#39;visibility&#39;: &#39;off&#39; } ] } ]</strong><div style="height:75px;"></div>',
+			'desc'    => sprintf(__('Please enter the custom JSON array to style your Google maps (you can use the <a href="%1s" target="_blank">Google Styled Maps Wizard</a> to create custom styles easily). Example for hiding roads:','lmm'), 'https://mapstyle.withgoogle.com/') . ' <br/><strong>[ { &#39;featureType&#39;: &#39;road.highway&#39;, &#39;elementType&#39;: &#39;geometry&#39;, &#39;stylers&#39;: [ { &#39;visibility&#39;: &#39;off&#39; } ] },{ &#39;featureType&#39;: &#39;road.arterial&#39;, &#39;stylers&#39;: [ { &#39;visibility&#39;: &#39;off&#39; } ] },{ &#39;featureType&#39;: &#39;road.local&#39;, &#39;stylers&#39;: [ { &#39;visibility&#39;: &#39;off&#39; } ] } ]</strong><div style="height:90px;"></div>',
 			'std'     => '',
 			'type'    => 'text-pro'
 		);
@@ -5862,7 +6003,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'basemaps',
 			'section' => 'basemaps-mapbox1',
 			'title'   => __('Attribution','lmm'),
-			'desc'    => __("For example","lmm"). ": Copyright ".date('Y')." &lt;a href=&quot;http://xy.com&quot;&gt;Provider X&lt;/a&gt;<div style=\"height:155px;\"></div>",
+			'desc'    => __("For example","lmm"). ": Copyright ".date('Y')." &lt;a href=&quot;http://xy.com&quot;&gt;Provider X&lt;/a&gt;<div style=\"height:180px;\"></div>",
 			'std'     => "MapBox/NASA, <a href=&quot;http://www.mapbox.com&quot; target=&quot;_blank&quot;>http://www.mapbox.com</a>",
 			'type'    => 'text'
 		);
@@ -5929,7 +6070,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'basemaps',
 			'section' => 'basemaps-mapbox2',
 			'title'   => __('Attribution','lmm'),
-			'desc'    => __("For example","lmm"). ": Copyright ".date('Y')." &lt;a href=&quot;http://xy.com&quot;&gt;Provider X&lt;/a&gt;<div style=\"height:155px;\"></div>",
+			'desc'    => __("For example","lmm"). ": Copyright ".date('Y')." &lt;a href=&quot;http://xy.com&quot;&gt;Provider X&lt;/a&gt;<div style=\"height:180px;\"></div>",
 			'std'     => "MapBox, <a href=&quot;http://www.mapbox.com&quot; target=&quot;_blank&quot;>http://www.mapbox.com</a>",
 			'type'    => 'text'
 		);
@@ -5996,7 +6137,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'basemaps',
 			'section' => 'basemaps-mapbox3',
 			'title'   => __('Attribution','lmm'),
-			'desc'    => __("For example","lmm"). ": Copyright ".date('Y')." &lt;a href=&quot;http://xy.com&quot;&gt;Provider X&lt;/a&gt;<div style=\"height:155px;\"></div>",
+			'desc'    => __("For example","lmm"). ": Copyright ".date('Y')." &lt;a href=&quot;http://xy.com&quot;&gt;Provider X&lt;/a&gt;<div style=\"height:180px;\"></div>",
 			'std'     => "MapBox, <a href=&quot;http://www.mapbox.com&quot; target=&quot;_blank&quot;>http://www.mapbox.com</a>",
 			'type'    => 'text'
 		);
@@ -10911,6 +11052,28 @@ $this->_settings['clustering_helptext2'] = array(
 				'hide' => __('hide','lmm')
 			)
 		);
+		$this->_settings['multilingual_integration_status'] = array(
+			'version' => 'p3.0',
+			'pane'    => 'misc',
+			'section' => 'misc-wordpress_integration',
+			'title'   => __('WPML/Polylang integration','lmm') . $pro_button_link,
+			'desc'    => sprintf(__('if enabled and WPML or Polylang translation plugin is active, map texts can be translated. Fore more details please see %1s','lmm'), '<a href="https://www.mapsmarker.com/multilingual" target="_blank">mapsmarker.com/multilingual</a>'),
+			'type'    => 'radio-pro',
+			'std'     => 'disabled',
+			'choices' => array(
+				'enabled' => __('enabled','lmm'),
+				'disabled' => __('disabled','lmm')
+			)
+		);
+		$this->_settings['rewrite_slug'] = array(
+			'version' => 'p3.0',
+			'pane'    => 'misc',
+			'section' => 'misc-wordpress_integration',
+			'title'   => __('Permalinks slug','lmm') . $pro_button_link,
+			'desc'    => sprintf(__('Used to create pretty links to fullscreen maps or API endpoints. Default value: %1$s','lmm'), '<strong>maps</strong>') . '<br/>' . sprintf(__('Example link to fullscreen marker map ID 1: %1$s','lmm'), get_site_url() . '/<strong>maps</strong>/fullscreen/marker/1'),
+			'type'    => 'text-pro',
+			'std'     => 'maps'
+		);
 
 		/*===========================================
 		*
@@ -11486,13 +11649,13 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		/* template for plugin updates
-		//info:  set defaults for options introduced in v3.12
-		if (version_compare(get_option('leafletmapsmarker_version'),'3.11.2','='))
+		//info:  set defaults for options introduced in v3.13
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.12','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
 			{
-				if ( $setting['type'] != 'heading' && $setting['type'] != 'helptext' && $setting['type'] != 'helptext-twocolumn' && $setting['type'] != 'checkbox-pro' && $setting['type'] != 'select-pro' && $setting['type'] != 'radio-pro' && $setting['type'] != 'radio-reverse-pro' && $setting['type'] != 'textarea-pro' && $setting['type'] != 'text-pro' && $setting['type'] != 'text-reverse-pro' && $setting['version'] == '3.12')
+				if ( $setting['type'] != 'heading' && $setting['type'] != 'helptext' && $setting['type'] != 'helptext-twocolumn' && $setting['type'] != 'checkbox-pro' && $setting['type'] != 'select-pro' && $setting['type'] != 'radio-pro' && $setting['type'] != 'radio-reverse-pro' && $setting['type'] != 'textarea-pro' && $setting['type'] != 'text-pro' && $setting['type'] != 'text-reverse-pro' && $setting['version'] == '3.13')
 				{
 				$new_options_defaults[$id] = $setting['std'];
 				}
@@ -11521,4 +11684,3 @@ $this->_settings['clustering_helptext2'] = array(
 		return false;
 	}
 }
-?>

@@ -88,11 +88,11 @@ var MMP_Geocoding = function( provider , options, is_edit, typinginterval, min_c
 				var error_type = (typeof response.results != 'undefined')?response.results.error.type:'';
                 var error_message = (typeof response.results != 'undefined')?response.results.error.message:'';
 				if(xhrObj.status != 200){
-					if (response.meta.status_code == '429') {
-						if(parent.options[parent.provider].api_key){
-							jQuery('#geocoding-provider-status').html(jQuery('#defaults_texts_geocoding_mapzen_limit2').html());
-						} else {
-							jQuery('#geocoding-provider-status').html(jQuery('#defaults_texts_geocoding_mapzen_limit').html());
+					if ( (response.meta.status_code == '429') || (response.meta.status_code == '401') ) {
+						if(!parent.options[parent.provider].api_key){
+							jQuery('#geocoding-provider-status').html(jQuery('#defaults_texts_geocoding_mapzen_api_key_needed').html());
+						} else { //info: not sure if needed, added as fallback
+							jQuery('#geocoding-provider-status').html('Mapzen Search failed: "' + error_type + ' - ' + error_message + '"');
 						}
 					} else if (response.meta.status_code != '200') {
 						jQuery('#geocoding-provider-status').html('Mapzen Search failed: "' + error_type + ' - ' + error_message + '"');
@@ -428,9 +428,9 @@ var MMP_Geocoding = function( provider , options, is_edit, typinginterval, min_c
 			if (document.getElementById("openpopup").checked) { var openpopup_js = ".openPopup()"; } else { var openpopup_js = ""; };
 			if(jQuery('#defaults_directions_popuptext_panel').val() == 'yes'){
 				if (document.getElementById("popuptext").value != undefined) { var popup_panel_css_google = ""; } else { var popup_panel_css_google = "border-top:1px solid #f0f0e7;padding-top:5px;margin-top:5px;clear:both;"; }
-				marker.bindPopup(document.getElementById("selectlayer-popuptext-hidden").innerHTML+"<div style=\""+popup_panel_css_google+"\">"+document.getElementById("address").value+" <a href=\""+ jQuery('#defaults_directions_link').val() +"\" target=\"_blank\" title=\"Get directions\">(Directions)</a>"+ jQuery('#directions_settings_link').html() +"</div>",{maxWidth: jQuery('#defaults_marker_popups_maxwidth').val(), minWidth: jQuery('#defaults_marker_popups_minwidth').val(), maxHeight: jQuery('#defaults_marker_popups_maxheight').val(), autoPan: jQuery('#defaults_marker_popups_autopan').val(), closeButton: jQuery('#defaults_marker_popups_closebutton').val(), autoPanPadding: new L.Point(jQuery('#defaults_marker_popups_autopanpadding_x').val(), jQuery('#defaults_marker_popups_autopanpadding_y').val())})+openpopup_js;
+				marker.bindPopup(document.getElementById("selectlayer-popuptext-hidden").innerHTML+"<div style=\""+popup_panel_css_google+"\">"+document.getElementById("address").value+" <a href=\""+ jQuery('#defaults_directions_link').val() +"\" target=\"_blank\" title=\"Get directions\">(Directions)</a>"+ jQuery('#directions_settings_link').html() +"</div>",{maxWidth: jQuery('#defaults_marker_popups_maxWidth').val(), minWidth: jQuery('#defaults_marker_popups_minWidth').val(), maxHeight: jQuery('#defaults_marker_popups_maxHeight').val(), autoPan: jQuery('#defaults_marker_popups_autoPan').val(), closeButton: jQuery('#defaults_marker_popups_closeButton').val(), autoPanPadding: new L.Point(jQuery('#defaults_marker_popups_autopanpadding_x').val(), jQuery('#defaults_marker_popups_autopanpadding_y').val())})+openpopup_js;
 			}else{
-				marker.bindPopup(document.getElementById("selectlayer-popuptext-hidden").innerHTML,{maxWidth: jQuery('#defaults_marker_popups_maxwidth').val(), minWidth: jQuery('#defaults_marker_popups_minwidth').val(), maxHeight: jQuery('#defaults_marker_popups_maxheight').val(), autoPan: jQuery('#defaults_marker_popups_autopan').val(), closeButton: jQuery('#defaults_marker_popups_closebutton').val(), autoPanPadding: new L.Point(jQuery('#defaults_marker_popups_autopanpadding_x').val(), jQuery('#defaults_marker_popups_autopanpadding_y').val())})+openpopup_js;
+				marker.bindPopup(document.getElementById("selectlayer-popuptext-hidden").innerHTML,{maxWidth: jQuery('#defaults_marker_popups_maxWidth').val(), minWidth: jQuery('#defaults_marker_popups_minWidth').val(), maxHeight: jQuery('#defaults_marker_popups_maxHeight').val(), autoPan: jQuery('#defaults_marker_popups_autoPan').val(), closeButton: jQuery('#defaults_marker_popups_closeButton').val(), autoPanPadding: new L.Point(jQuery('#defaults_marker_popups_autopanpadding_x').val(), jQuery('#defaults_marker_popups_autopanpadding_y').val())})+openpopup_js;
 			}
 		}
 		map.setView(markerLocation, selectlayer.getZoom());

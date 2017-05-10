@@ -24,8 +24,14 @@ Map button for text tab
 function lmm_button_text($plugin_array) {
 	if (!is_multisite()) { $adminurl = admin_url(); } else { $adminurl = get_admin_url(); }
 	$text_add = __('Add Map','lmm');
-	$link = LEAFLET_PLUGIN_URL . 'inc/js/tinymce_button_text.php?leafletpluginurl='.base64_encode(LEAFLET_PLUGIN_URL).'&adminurl='.base64_encode($adminurl).'&textadd='.base64_encode($text_add);
+	$link = LEAFLET_PLUGIN_URL . 'inc/js/tinymce_button_text.js';
+	$tinymce_options = array(
+		'leafletPluginUrl' => LEAFLET_PLUGIN_URL,
+		'adminUrl' => $adminurl,
+		'textAdd' => $text_add
+	);
 	wp_register_script('html-dialog', $link);
+	wp_localize_script('html-dialog', 'tinymceOptions', $tinymce_options);
 	wp_enqueue_script('html-dialog');
 	return $plugin_array;
 }
@@ -35,7 +41,7 @@ Map button for visual tab
 function lmm_button_visual( $plugin_array ) {
 	if (!is_multisite()) { $adminurl = admin_url(); } else { $adminurl = get_admin_url(); }
 	$text_add = __('Add Map','lmm');
-	$plugin_array['mm_shortcode'] = LEAFLET_PLUGIN_URL . 'inc/js/tinymce_button_visual.php?leafletpluginurl='.base64_encode(LEAFLET_PLUGIN_URL).'&adminurl='.base64_encode($adminurl).'&textadd='.base64_encode($text_add);
+	$plugin_array['mm_shortcode'] = LEAFLET_PLUGIN_URL . 'inc/js/tinymce_button_visual.js';
 	return $plugin_array;
 }
 add_action('wp_ajax_get_mm_list',  'get_mm_list');
@@ -255,4 +261,3 @@ function buildMarkersList($array){
     </div>
     <?php endforeach; 
 }
-?>

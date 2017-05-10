@@ -6,15 +6,16 @@
 */
 if (basename($_SERVER['SCRIPT_FILENAME']) == 'class-mmp-geocoding.php') { die ("Please do not access this file directly. Thanks!<br/><a href='https://www.mapsmarker.com/go'>www.mapsmarker.com</a>"); }
 require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'globals.php' );
-require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle/Throttle/ThrottleInterface.php' );
-require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle/Throttle/LeakyBucket.php' );
-require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle/Storage/StorageInterface.php' );
+require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle' . DIRECTORY_SEPARATOR . 'Throttle' . DIRECTORY_SEPARATOR . 'ThrottleInterface.php' );
+require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle' . DIRECTORY_SEPARATOR . 'Throttle' . DIRECTORY_SEPARATOR . 'LeakyBucket.php' );
+require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle' . DIRECTORY_SEPARATOR. 'Storage' . DIRECTORY_SEPARATOR . 'StorageInterface.php' );
+require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle' . DIRECTORY_SEPARATOR . 'Storage' . DIRECTORY_SEPARATOR . 'LockWaitTimeoutException.php' );
 if ( function_exists('apc_store') && (apc_sma_info() !== FALSE) ) { //info: initialize APC storage
-    require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle/Storage/Apc.php' );
+    require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle' . DIRECTORY_SEPARATOR . 'Storage' . DIRECTORY_SEPARATOR . 'Apc.php' );
 } else if ( function_exists('apcu_store') && (apcu_sma_info() !== FALSE) ) { //info: initialize APCu storage
-    require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle/Storage/Apcu.php' );
+    require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle' . DIRECTORY_SEPARATOR . 'Storage' . DIRECTORY_SEPARATOR . 'Apcu.php' );
 } else { //info: use WordPress session storage
-    require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle/Storage/Session.php' );
+    require_once( LEAFLET_PLUGIN_DIR . 'inc' . DIRECTORY_SEPARATOR . 'Stiphle' . DIRECTORY_SEPARATOR . 'Storage' . DIRECTORY_SEPARATOR . 'Session.php' );
 }
 
 class MMP_Geocoding{
@@ -33,12 +34,7 @@ class MMP_Geocoding{
 
 		switch ( $provider ) {
 			case 'mapzen-search':
-				if ($lmm_options['geocoding_mapzen_search_api_key'] == NULL) {
-					$throttle->throttle($provider, 1, 1000);
-					$throttle->throttle($provider, 6, 60000);
-				} else {
-					$throttle->throttle($provider, 6, 1000);
-				}
+				$throttle->throttle($provider, 6, 1000);
 				return self::mapzen_geocode( $address_to_geocode );
 				break;
 			case 'algolia-places':
@@ -58,7 +54,7 @@ class MMP_Geocoding{
 				return self::google_geocode( $address_to_geocode );
 				break;
 			default:
-				$throttle->throttle('mapzen-search', 1, 1000);
+				$throttle->throttle('algolia-places', 15, 1000);
 				return self::mapzen_geocode( $address_to_geocode );
 				break;
 		}

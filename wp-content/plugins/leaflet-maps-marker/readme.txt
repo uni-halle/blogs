@@ -6,8 +6,8 @@ Tags:              Google Maps, googlemaps, OpenStreetMap, bing, map, maps, mapp
 Author URI:        https://www.mapsmarker.com
 Author:            MapsMarker.com e.U.
 Requires at least: 3.3
-Tested up to:      4.7
-Stable tag:        3.11.2
+Tested up to:      4.7.3
+Stable tag:        3.12
 License:           GPLv2
 
 The most comprehensive & user-friendly mapping solution for WordPress
@@ -128,14 +128,14 @@ Leaflet Maps Marker makes it easy to switch between languages. Thanks to over 10
 * Hungarian (hu_HU) thanks to István Pintér and Csaba Orban
 * Indonesian (id_ID) thanks to Andy Aditya Sastrawikarta, Emir Hartato and Phibu Reza
 * Italian (it_IT) thanks to Luca Barbetti and Angelo Giammarresi
-* Japanese (ja) thanks to Shu Higashi
+* Japanese (ja) thanks to Shu Higashi and Taisuke Shimamoto
 * Korean (ko_KR) thanks to Andy Park
 * Latvian (lv) thanks to Juris Orlovs and Eriks Remess
 * Lithuanian (lt_LT) thanks to Donatas Liaudaitis
 * Malawy (ms_MY) thanks to Mohd Zulkifli
 * Norwegian/Bokmal (nb_NO) thanks to Inge Tang
 * Polish (pl_PL) translation thanks to Pawel Wyszynski, Tomasz Rudnicki, Robert Pawlak and Daniel
-* Portuguese (pt_BR) thanks to Andre Santos and Antonio Hammerl
+* Portuguese (pt_BR) thanks to Fabio Bianchi, Andre Santos and Antonio Hammerl
 * Portuguese (pt_PT) translation thanks to Joao Campos
 * Romanian (ro_RO) translation thanks to Arian, Daniel Codrea and Flo Bejgu, http://www.inboxtranslation.com
 * Russian (ru_RU) thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies) and Vyacheslav Strenadko
@@ -155,9 +155,12 @@ For full credits of each translations please visit [https://www.mapsmarker.com/l
 
 = Need more power? Try Maps Marker Pro =
 
-* **latest [leaflet.js](http://www.leafletjs.com) version** for higher performance & usability
+* [latest [leaflet.js](http://www.leafletjs.com) version for higher performance & usability](https://www.mapsmarker.com/v3.0p)
+* [significantly improved performance for Google basemaps by using the leaflet plugin GoogleMutant](https://www.mapsmarker.com/v3.0p)
+* [pre-loading for tiles beyond the edge of the visible map to prevent showing background behind tiles images when panning a map](https://www.mapsmarker.com/v3.0p)
 * animated [marker clustering](https://www.mapsmarker.com/pro-feature-clustering)
 * [organize your markers in categories and to toggle their visibility on frontend](https://www.mapsmarker.com/v2.7p)
+* [WPML/Polylang translation support for multilingual maps](https://www.mapsmarker.com/multilingual)
 * [dynamic list of markers supporting paging, searching and sorting - including distance from current position](https://www.mapsmarker.com/v2.7p)
 * [home button allowing your visitors to reset the map to its original state](https://www.mapsmarker.com/v2.7p)
 * display [GPX tracks](https://www.mapsmarker.com/pro-feature-gpx)
@@ -206,7 +209,10 @@ For full credits of each translations please visit [https://www.mapsmarker.com/l
 * [RESTful API allowing you to access some of the common core functionalities](https://www.mapsmarker.com/restapi)
 * [Javascript Events API for LeafletJS to to attach events handlers to markers and layers](https://www.mapsmarker.com/jseventsapi)
 * [support for filters and actions](https://www.mapsmarker.com/filters-actions)
-* [WPML translation support for multilingual maps](https://www.mapsmarker.com/wpml)
+* [new option to open popups on mouse hover instead of mouse click](https://www.mapsmarker.com/v3.0p)
+* [Pretty permalinks with customizable slug for fullscreen maps and APIs (e.g. yourdomain.com/maps/fullscreen/marker/1)](https://www.mapsmarker.com/v3.0p)
+* [support for tooltips to display the marker name as small text on top of marker icons](https://www.mapsmarker.com/v3.0p)
+* [support for AMP optimized mobile pages](https://www.mapsmarker.com/v3.0p)
 * **frequent updates**
 * **dedicated and priority support** from the plugin author
 * non-expiring license keys
@@ -346,10 +352,10 @@ MapsMarker &reg;
 Copyright 2011-2017, MapsMarker.com e.U., All Rights Reserved
 
 == Upgrade Notice ==
-= v3.11.2 =
-bugfixes and compatibility fixes - see https://www.mapsmarker.com/v3.11.2 for more details
+= v3.12 =
+update to leaflet.js 0.7.7, optimiziations and bugfixes - see https://www.mapsmarker.com/v3.12 for more details
 
 == Changelog ==
-[blog post with details about v3.11.2](https://www.mapsmarker.com/v3.11.2)
+[blog post with details about v3.12](https://www.mapsmarker.com/v3.12)
 
 [changelog for all versions](https://www.mapsmarker.com/changelog)

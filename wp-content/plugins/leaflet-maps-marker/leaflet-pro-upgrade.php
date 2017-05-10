@@ -46,17 +46,25 @@ if ( $action == NULL ) {
 				<p style="margin:0;">
 				<div style="float:right;margin:0 10px 10px 0;"><a href="http://www.leafletjs.com" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/pro-feature-leaflet.png"></a></div>' . __('Maps Marker Pro supports the latest leaflet.js version, which is the core library used for displaying maps.','lmm') . ' ' . __('Major highlights:','lmm') . '
 				<ul style="list-style-type:disc;margin-left:15px;">
-					<li>' . __('significantly improved controls design on mobile devices','lmm') . '</li>
-					<li>' . __('improved zoom animation curve for a better feel overal','lmm') . '</li>
-					<li>' . __('support for IE11 touch devices','lmm') . ' & ' . __('support for Metro apps','lmm') . '</li>
-					<li>' . __('a much better panning inertia implementation','lmm') . '</li>
-					<li>' . __('improved scroll wheel zoom to be more responsive','lmm') . '</li>
-					<li>' . __('hand cursors for dragging','lmm') . '</li>
+					<li>' . sprintf(__('over %1$s changes compared to v%2$s','lmm'), '400', '0.7.7') . '</li>
+					<li>' . __('huge performance improvements in all aspects of the library and vector layers in particular','lmm') . '</li>
+					<li>' . __('much better tile loading algorithm with less flickering','lmm') . '</li>
+					<li>' . __('more accessibility features','lmm') . '</li>
+					<li>' . __('tons of bugfixes and stability improvements','lmm') . '</li>
 				</ul>
-				' . __('But the real power of the leaflet.js version used in Maps Marker Pro comes with about a hundred of subtle improvements and bugfixes, improving usability, performance and overall "feel" of browsing the map even further.','lmm') . '
 				</p>
 				<p>
-				<a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/pro-feature-leaflet-changelog" target="_blank">' . sprintf(__('Click here to get the full changelog for leaflet.js v%1s currently integrated in the pro version','lmm'), '0.7.7 (10/2015)') . '</a> (' . sprintf(__('v%1s is used in the free version','lmm'), '0.4.5 (10/2012)') . ')
+				<a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/pro-feature-leaflet-changelog" target="_blank">' . sprintf(__('Click here to get the full changelog for leaflet.js v%1s currently integrated in the pro version','lmm'), '1.0.2 (11/2016)') . '</a> (' . sprintf(__('v%1s is used in the free version','lmm'), '0.7.7 (10/2015)') . ')
+				</p>
+				</div>
+				<p><a href="#top" class="upgrade-top-link">' . __('back to top to start free 30-day-trial','lmm') . '</a></p>
+
+				<span class="pro-feature-header">' . __('significantly increased performance for Google-based maps','lmm') . '</span>
+				<div class="pro-feature-content" style="background:' . $bgcolor . ';">
+				<div style="float:left;margin:0 10px 0 0;"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/pro-feature-speed.png"></div>
+				' . __('Maps Marker Pro uses the state-of-the-art "GoogleMutant" leaflet plugin, which provides a much better user experience and performance when using Google Maps as basemaps.','lmm') . '
+				<p>
+				<a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v3.0p" target="_blank">' . __('Click here to get more information about this pro feature on mapsmarker.com','lmm') . '</a>
 				</p>
 				</div>
 				<p><a href="#top" class="upgrade-top-link">' . __('back to top to start free 30-day-trial','lmm') . '</a></p>
@@ -321,11 +329,11 @@ if ( $action == NULL ) {
 				<span class="pro-feature-header">' . __('WPML translation support for multilingual maps','lmm') . '</span>
 				<div class="pro-feature-content" style="background:' . $bgcolor . ';">
 				<p style="margin:0 0 10px 0;">
-				' . __('Maps Marker Pro makes it easy to build multilingual maps by fully supporting the translation solution WPML.','lmm') . '
+				' . __('Maps Marker Pro makes it easy to build multilingual maps by fully supporting the translation solutions WPML and Polylang.','lmm') . '
 				</p>
-				<img src="' . LEAFLET_PLUGIN_URL . 'inc/img/pro-feature-wpml.png">
+				<img src="' . LEAFLET_PLUGIN_URL . 'inc/img/pro-feature-multilingual.jpg" width="424" height="104">
 				<p>
-				<a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.9p" target="_blank">' . __('Click here to get more information about this pro feature on mapsmarker.com','lmm') . '</a>
+				<a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/multilingual" target="_blank">' . __('Click here to get more information about this pro feature on mapsmarker.com','lmm') . '</a>
 				</p>
 				</div>
 				<p><a href="#top" class="upgrade-top-link">' . __('back to top to start free 30-day-trial','lmm') . '</a></p>
@@ -368,6 +376,10 @@ if ( $action == NULL ) {
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/restapi" target="_blank">' . __('RESTful API allowing you to access some of the common core functionalities ','lmm') . '</a></li> 
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/jseventsapi" target="_blank">' . __('Javascript Events API for LeafletJS to to attach events handlers to markers and layers','lmm') . '</a></li> 
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/filters-actions" target="_blank">' . __('support for filters and actions','lmm') . '</a></li> 
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v3.0p" target="_blank">' . __('add pre-loading for map tiles beyond the edge of the visible map to prevent showing background behind tile images when panning a map','lmm') . '</a></li>
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v3.0p" target="_blank">' . sprintf(__('Pretty permalinks with customizable slug for fullscreen maps and APIs (e.g. %1$s)','lmm'), get_site_url() . '/<strong>maps</strong>/fullscreen/marker/1') . '</a></li>
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v3.0p" target="_blank">' . __('support for tooltips to display the marker name as small text on top of marker icons','lmm') . '</a></li>
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v3.0p" target="_blank">' . __('AMP support: show placeholder image for map with link to fullscreen view on AMP enabled pages','lmm') . '</a></li>
 				</ul>
 				</div>
 				<p><a href="#top" class="upgrade-top-link">' . __('back to top to start free 30-day-trial','lmm') . '</a></p>
@@ -375,21 +387,7 @@ if ( $action == NULL ) {
 				<span class="pro-feature-header">' . __('features planned for future releases','lmm') . '</span>
 				<div class="pro-feature-content" style="background:' . $bgcolor . ';">
 				<p style="margin:0 0 10px 0;">
-				' . __('We are working hard on delivering the best mapping solution available for WordPress - helping you to share your favorite spots. Therefore we are commited to constantly improving Maps Marker Pro. Below you find some highlights from our development roadmap - if an important one is missing for you, let us know and we will check if we can include it in a future release:','lmm') . '
-				</p>
-				<ul style="list-style-type:disc;margin-left:15px;">
-					<li>' . __('support for displaying KML files','lmm') . '</li>
-					<li>' . __('adding markers from frontend','lmm') . '</li>
-					<li>' . __('better integration into the publication workflow (adding markers from posts or as custom post type)','lmm') . '</li>
-					<li>' . __('search for markers on frontend','lmm') . '</li>
-					<li>' . __('draw features like polylines, polygons, rectangles, circles and markers on maps','lmm') . '</li>
-					<li>' . __('email notify on marker/layer actions','lmm') . '</li>
-					<li>' . __('support for permalinks','lmm') . ' (http://your-domain.com/maps/marker/1/kml)</li>
-					<li>' . __('better integration with other plugins','lmm') . ' (Contact Form 7, Event Organizer...)</li>
-					<li>...</li>
-				</ul>
-				<p>
-				<a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/contact" target="_blank">' . __('Visit our contact form to submit your feature request or idea','lmm') . '</a>
+				' . __('We are working hard on delivering the best mapping solution available for WordPress - helping you to share your favorite spots. Therefore we are commited to constantly improving Maps Marker Pro.','lmm') . '<br/>' . sprintf(__('Follow <a href="%1$s" target="_blank">@MapsMarker</a> on Twitter for constant updates or use our <a href="%2$s" target="_blank">contact form</a> to submit your feature request or idea.','lmm'), 'https://twitter.com/MapsMarker', 'https://www.mapsmarker.com/contact') . '
 				</p>
 				</div>
 				<p><a href="#top" class="upgrade-top-link">' . __('back to top to start free 30-day-trial','lmm') . '</a></p>
