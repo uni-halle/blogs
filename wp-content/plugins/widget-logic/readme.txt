@@ -1,10 +1,10 @@
 === Widget Logic ===
-Contributors: alanft
+Contributors: wpchefgadget, alanft
 Donate link: http://www.justgiving.com/widgetlogic_cancerresearchuk
 Tags: widget, admin, conditional tags, filter, context
-Requires at least: 2.8
-Tested up to: 3.7.1
-Stable tag: 0.57
+Requires at least: 3.0
+Tested up to: 4.7.4
+Stable tag: 5.7.4
 License: GPLv2 or later
 
 Widget Logic lets you control on which pages widgets appear using WP's conditional tags. It also adds a 'widget_content' filter.
@@ -18,11 +18,7 @@ There is also an option to add a wordpress 'widget_content' filter -- this lets 
 
 = Donations =
 
-If you like and use Widget Logic you could consider a small donation to Cancer Research UK. I have a [JustGiving.com donation link](http://www.justgiving.com/widgetlogic_cancerresearchuk). As of December 2011 we have raised 440 UKP. I'm going to aim to have upped that to 750 UKP by the end of 2012.
-
-= Translate =
-
-Social Translation: [https://translate.foe-services.de](https://translate.foe-services.de)
+If you like and use Widget Logic you could consider a small donation to Cancer Research UK. I have a [JustGiving.com donation link](http://www.justgiving.com/widgetlogic_cancerresearchuk). As of February 2017 we have raised 1,048.50 UKP.
 
 == Installation ==
 
@@ -38,27 +34,39 @@ Aside from logic against your widgets, there are three options added to the foot
 
 * Use 'wp_reset_query' fix -- Many features of WP, as well as the many themes and plugins out there, can mess with the conditional tags, such that is_home is NOT true on the home page. This can often be fixed with a quick wp_reset_query() statement just before the widgets are called, and this option puts that in for you rather than having to resort to code editing
 
-* Load logic -- This option allows you to set the point in the page load at which your widget logic starts to be checked. Pre v.50 it was when the 'wp_head' trigger happened, ie during the creation of the HTML's HEAD block. Many themes didn't call wp_head, which was a problem. From v.50 it happens, by default, as early as possible, which is as soon as the plugin loads. You can now specify these 'late load' points (in chronological order):
+* Load logic -- This option allows you to set the point in the page load at which your widget logic if first checked. Pre v.50 it was when the 'wp_head' trigger happened, ie during the creation of the HTML's HEAD block. Many themes didn't call wp_head, which was a problem. From v.50 it happens, by default, as early as possible, which is as soon as the plugin loads. You can now specify these 'late load' points (in chronological order):
 	* after the theme loads (after_setup_theme trigger)
 	* when all PHP loaded (wp_loaded trigger)
+	* after query variables set (parse_query) – this is the default
 	* during page header (wp_head trigger)
 
 	You may need to delay the load if your logic depends on functions defined, eg in the theme functions.php file. Conversely you may want the load early so that the widget count is calculated correctly, eg to show an alternative layour or content when a sidebar has no widgets.
 
+*  Don't cache widget logic results -- From v .58 the widget logic code should only execute once, but that might cause unexpected results with some themes, so this option is here to turn that behaviour off. (The truth/false of the code will be evaluated every time the sidebars_widgets filter is called.
+
 == Frequently Asked Questions ==
 
-= Why isn't it working? =
+= I upgraded to Version 5.7.0 and my site's widgets now behave differently =
 
-Try switching to the WP default theme - if the problem goes away, there is something specific to your theme that may be interfering with the WP conditional tags.
+There was an important change to how your Widget Logic code is evaluated. There is a new default 'Load logic' point of 'after query variables set'. For most people this should be better, but you could try reverting to the old default 'when plugin starts'.
 
-The most common sources of problems are:
+= What can I try if it's not working? =
 
-* The logic text on one of your widgets is invalid PHP
-* Your theme performs custom queries before calling the dynamic sidebar -- if so, try ticking the `wp_reset_query` option.
+* Switch to the default theme. If the problem goes away, your theme may be interfering with the WP conditional tags or how widgets work
+* Try the `wp_reset_query` option. If your theme performs custom queries before calling the dynamic sidebar this might help.
+* Try a different 'Load logic' point. Most wordpress conditional tags only work 'after query variables set', but some plugins may require evaluation earlier or later.
+* The 'Evaluate widget logic more than once' option may be needed if you have to use an early 'Load logic' point.
 
-= Use 'wp_reset_query' fix option isn't working properly any more =
 
-In version 0.50 I made some fundamental changes to how Widget Logic works. The result was that the wp_reset_query was less targeted in the code. If lots of people find this problematic I will look at a general solution, but the main workround is to put wp_reset_query() into your code just before calling a dynamic sidebar.
+= I'm getting errors that read like "PHP Parse error… … eval()'d code on line 1" =
+
+You have a PHP syntax error in one of your widget's Widget Logic fields. Review them for errors. You might find it easiest to check by using 'Export options' and reading the code there (Though be aware that single and double quotes are escaped with multiple backslash characters.)
+
+If you are having trouble finding the syntax error, a simple troubleshooting method is to use 'Export options' to keep a copy and then blank each Widget Logic field in turn until the problem goes. Once you've identified the problematic code, you can restore the rest with 'Import options'.
+
+= It's causing problems with Woo Commerce / other popular plugin =
+
+This is often, not always, fixed by trying the different 'Load Logic' options. The 'after query variables set' option looks like it might be a better default, try it.
 
 = What's this stuff in my sidebar when there are no widgets? =
 
@@ -71,6 +79,8 @@ Your options, if you want this default sidebar content gone, are to either edit 
 There is some confusion between the [Main Page and the front page](http://codex.wordpress.org/Conditional_Tags#The_Main_Page). If you want a widget on your 'front page' whether that is a static page or a set of posts, use is_front_page(). If it is a page using is_page(x) does not work. If your 'front page' is a page and not a series of posts, you can still use is_home() to get widgets on that main posts page (as defined in Admin > Settings > Reading).
 
 = Logic using is_page() doesn't work =
+
+I believe this is fixed in 5.7.0. Let me know if that is not the case.
 
 If your theme calls the sidebar after the loop you should find that the wp_reset_query option fixes things. This problem is explained on the [is_page codex page](http://codex.wordpress.org/Function_Reference/is_page#Cannot_Be_Used_Inside_The_Loop).
 
@@ -105,7 +115,112 @@ Tighten up your definitions with PHPs 'logical AND' &&, for example:
 == Screenshots ==
 
 1. The 'Widget logic' field at work in standard widgets.
-2. The `widget_content` filter, `wp_reset_query` option and 'load logic point' options are at the foot of the widget admin page. You can also export and import your site's WL options for safe-keeping.
+2. The plugin options are at the foot of the usual widget admin page… `widget_content` filter, `wp_reset_query` option, 'load logic point' and 'evaluate more than once'. You can also export and import your site's WL options as a plain text file for a quick backup/restore and to help troubleshoot issues.
+
+== Changelog ==
+
+= 5.7.4 =
+Fixed the "Warning: Attempt to assign property of non-object" bug.
+https://wordpress.org/support/topic/latest-update-seems-break-my-installation/
+
+= 5.7.3 =
+Fixed the issue when in some cases the plugin displayed user logic errors in the Widgets section and this didn't allow to save the widgets.
+https://wordpress.org/support/topic/an-error-has-occurred-please-reload-the-page-and-try-again-3/
+
+Fixed ini_set() related warnings for some rare hosting configurations.
+https://wordpress.org/support/topic/ini_set-diabled-warning/
+
+= 5.7.2 =
+Removed conflicts with outdated WP versions.
+
+= 5.7.1 =
+Fixed the settings form not being saved settings under some circumstances.
+
+Added a setting to show logic code errors for admins (turned off by default).
+
+Fixed the issue with quotes in error messages on some WP installations.
+
+= 5.7.0 =
+Fixed PHP 7 compatibility issue.
+
+Fixed a conflict with the latest WPML plugin.
+
+A new default load logic point attached to the action 'parse_query'. By default the widget logic is only evaluated once.
+
+Translation added: Ukrainian by Roman Sulym
+
+= 0.57 =
+Small fixes to satisfy some define('WP_DEBUG', true) errors
+
+= 0.56 =
+Small fix to the original WP3.5 fix in 0.54 that had the side effect of failing to save logic text on newly added widgets.
+
+= 0.55 =
+Restored a striplashes that vanished in 0.54 causing much grief.
+
+Translation: Spanish by Eduardo Larequi http://wordpress.org/support/profile/elarequi
+
+= 0.54 =
+Removed a WP 3.1+ function call, hopefully making it 2.8 compatible again.
+
+A little 'trim' of WL code to stop "syntax error, unexpected ')'" errors, which could occur if your WL was just a single space. Thanks to https://twitter.com/chrisjean for pointing this out.
+
+Translation support! Thanks to Foe Services Labs http://wordpress.org/support/profile/cfoellmann for the work on this and the German Social Translation
+
+Added a 'widget_logic_eval_override' filter. This allows advanced users to bypass EVAL with a function of their own.
+
+= 0.53 =
+Accidentally released code with a terrible bug in it :-(
+
+= 0.52 =
+Two new features: optional delayed loading of logic (see Configuration under [Installation](../installation/)), and the ability to save out and reload all your site's widget logic into a config file
+
+= 0.51 =
+One important bug fix (fairly major and fairly stupid of me too)
+
+= 0.50 =
+For the first time since this started on WP 2.3, I've rewritten how the core widget logic function works, so there may be 'bumps ahead'.
+
+It now uses the 'sidebars_widgets' filter (as it should have done when that was
+introduced in WP2.8 by the look of it). The upshot is that is_active_sidebar should behave properly.
+
+Widget callbacks only get intercepted if the 'widget_content' filter is activated, and much more briefly. (A widget's 'callback' is rewired within the 'dynamic_sidebar' function just before the widget is called, by the 'dynamic_sidebar_param' filter, and is restored when the callback function is invoked.)
+
+= 0.48 =
+Kill some poor coding practices that throws debug notices - thanks to John James Jacoby.
+
+= 0.47 =
+FINALLY tracked down the elusive 'wp_reset_query' option resetting bug.
+
+= 0.46 =
+Fix to work with new WP2.8 admin ajax. With bonus fixes.
+
+= 0.44 =
+Officially works with 2.7 now. Documentation changes and minor bug fixes.
+
+= 0.43 =
+simple bug fix (form data was being lost when 'Cancel'ing widgets)
+
+= 0.42 =
+WP 2.5+ only now. WP's widget admin has changed so much and I was getting tied up in knots trying to make it work with them both.
+
+= 0.4 =
+Brings WP 2.5 compatibility. I am trying to make it back compatible. If you have trouble using WL with WP 2.1--2.3 let me know the issue. Thanks to Kjetil Flekkoy for reporting and helping to diagnose errors in this version
+
+= 0.31 =
+Last WP 2.3 only version
+
+== Upgrade Notice ==
+
+= 0.58 =
+Important change to the default of when your Widget Logic is evaluated. It is now on the "parse_query" action, and just once. Those defaults can be overridden.
+
+= 0.46 =
+Required with WP2.8 cos of changes in Widget admin AJAX
+
+= 0.44 =
+Updated for WP2.7 with extra bug fixes
+
 
 == Writing Logic Code ==
 
@@ -178,74 +293,3 @@ function make_alternating_widget_styles($content='')
 	$wl_make_alt_ws=($wl_make_alt_ws=="style_a")?"style_b":"style_a";
 	return preg_replace('/(class="widget )/', "$1 widget_${wl_make_alt_ws} ", $content);
 }`
-
-
-== Changelog ==
-
-= 0.57 =
-Small fixes to satisfy some define('WP_DEBUG', true) errors
-
-= 0.56 =
-Small fix to the original WP3.5 fix in 0.54 that had the side effect of failing to save logic text on newly added widgets.
-
-= 0.55 =
-Restored a striplashes that vanished in 0.54 causing much grief.
-
-Translation: Spanish by Eduardo Larequi http://wordpress.org/support/profile/elarequi
-
-= 0.54 =
-Removed a WP 3.1+ function call, hopefully making it 2.8 compatible again.
-
-A little 'trim' of WL code to stop "syntax error, unexpected ')'" errors, which could occur if your WL was just a single space. Thanks to https://twitter.com/chrisjean for pointing this out.
-
-Translation support! Thanks to Foe Services Labs http://wordpress.org/support/profile/cfoellmann for the work on this and the German translation files.
-
-Added a 'widget_logic_eval_override' filter. This allows advanced users to bypass EVAL with a function of their own.
-
-= 0.53 =
-Accidentally released code with a terrible bug in it :-(
-
-= 0.52 =
-Two new features: optional delayed loading of logic (see Configuration under [Installation](../installation/)), and the ability to save out and reload all your site's widget logic into a config file
-
-= 0.51 =
-One important bug fix (fairly major and fairly stupid of me too)
-
-= 0.50 =
-For the first time since this started on WP 2.3, I've rewritten how the core widget logic function works, so there may be 'bumps ahead'.
-
-It now uses the 'sidebars_widgets' filter (as it should have done when that was
-introduced in WP2.8 by the look of it). The upshot is that is_active_sidebar should behave properly.
-
-Widget callbacks only get intercepted if the 'widget_content' filter is activated, and much more briefly. (A widget's 'callback' is rewired within the 'dynamic_sidebar' function just before the widget is called, by the 'dynamic_sidebar_param' filter, and is restored when the callback function is invoked.) 
-
-= 0.48 =
-Kill some poor coding practices that throws debug notices - thanks to John James Jacoby.
-
-= 0.47 =
-FINALLY tracked down the elusive 'wp_reset_query' option resetting bug.
-
-= 0.46 =
-Fix to work with new WP2.8 admin ajax. With bonus fixes.
-
-= 0.44 =
-Officially works with 2.7 now. Documentation changes and minor bug fixes.
-
-= 0.43 =
-simple bug fix (form data was being lost when 'Cancel'ing widgets)
-
-= 0.42 =
-WP 2.5+ only now. WP's widget admin has changed so much and I was getting tied up in knots trying to make it work with them both.
-
-= 0.4 =
-Brings WP 2.5 compatibility. I am trying to make it back compatible. If you have trouble using WL with WP 2.1--2.3 let me know the issue. Thanks to Kjetil Flekkoy for reporting and helping to diagnose errors in this version
-
-= 0.31 =
-Last WP 2.3 only version
-
-== Upgrade Notice ==
-= 0.46 =
-Required with WP2.8 cos of changes in Widget admin AJAX
-
-= 0.44 =
-Updated for WP2.7 with extra bug fixes
