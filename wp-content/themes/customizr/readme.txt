@@ -40,6 +40,89 @@ The exceptions to this license are as follows:
 
 
 #######################  Changelog ######################
+= 3.5.12 May 5th 2017 =
+* Fix: use wp_sprintf to avoid Warning sprintf(): Too few arguments. Fixes #875
+* Fix: fix header layout center - menu position deps in the customizer. Fixes #879
+* Fix: don't display the single post featured image if a slider is displayed
+
+= 3.5.11 April 7th 2017 =
+* Fix: fix logo centered - menu centered not working non front ( fixes #868 )
+* Imp: add theme support for wc gallery zoom lightbox and slider ( fixes #871
+see: https://woocommerce.wordpress.com/2017/02/28/adding-support-for-woocommerce-2-7s-new-gallery-feature-to-your-theme/ )
+
+= 3.5.10 March 31st 2017 =
+* Imp : allow menu centering when logo/title centered #861
+* Imp : added a utility czr_fn_is_front_help_enabled() in init.php
+
+= 3.5.9 March 17th 2017 =
+* fix : prevdem mode should be turned off when user starts customizing
+* fix : user defined WP core settings like show_on_front should be preserved if customizing in prevdem mode
+* fix: slider of posts revert - show post attachment if no featured image fixes #850
+* fix : bugs on partialRefresh.czr. some placement have no containers
+* fix: allow using first attachment as thumb for slider of posts in pages
+* Fix: prevent colophon inner container enlarging page in certain vps see #853
+* improved czr_fn_get_raw_option : added an option to retrieve the not cached option value from database. Typically used when getting the template name. Should fix #844
+* added match Media polyfill.
+* Updated the parallax jquery plugin => added a matchMedia option set to 'only screen and (max-width: 768px)' by default
+* imp : allow child theme user to override the slide-placeholder image
+* updated it_IT translation fix #842
+* Imp: display thumbnail in single pages like we do in single posts fixes #738
+* added : theme support for selective refresh for widgets
+
+= 3.5.8 March 11th 2017 =
+* Fix: amend img_size param passed the wrong way to the posts slider builder fixes #840
+* Fix : removed li+li list style with 0.25em top margin
+
+= 3.5.7 March 8th 2017 =
+* improved : li+li list style with 0.25em top margin
+* fix : default slider should show the demo slides when previewing
+
+= 3.5.6 March 8th 2017 =
+* Fix: fix preview demo content should fix #785
+* Fix: fix wrong text domain in customizer files fixes #832
+* Fix: fix passing a non array to implode in the headings rendering fixes #830
+* Fix: fix small comment bubble borders issue introduced fixes #833
+* Fix: serverControlParams.translatedStrings by serverControlParams.i18n
+* Imp: improve slider loader visibility handling. Add javascript detection inline script in wp_head (ref. twentyseventeen and below)
+* Imp: init parallax slider in js files
+* Imp: WordPress theme guidelines, moved all hardcoded scripts in enqueued js file
+* Imp: in the customizer, display the front page layout control in the post layout section
+* Imp: posts slider, prevent get_posts if asking for n<1 posts
+* Changed : moved translated languages on polyglots : pt_BR, uk, tr_TR to lang_pro
+* Changed : the default slider is now the posts slider
+* Added : a default thumbnail for posts slides with no thumbnails
+
+= 3.5.5 February 26th 2017 =
+* Fix: do not show first attachment as thumb in single context fixes #815
+* Fix: fix reference to maybe undefined wp in front js fixes #820
+* Fix: fix comment bubble bottom arrow when custom color selected fixes #822
+* Imp : added aria-label to button - support accessibility
+* Imp : enabled accessibility for social icons
+* Imp: move theme Custom CSS option to WordPress embedded one fixes #818
+
+= 3.5.4 February 18th 2017 =
+* Fix: customizer javascript error when customizing the social links
+* Improved: customizer social links module user interface
+
+= 3.5.3 February 17th 2017 =
+* Fix: fix potential option inconsistencies with some hosts. fixes #810
+* Imp: rtl - fix update notice positioning in admin. fixes #800
+* Imp: improve bootstrap plugin compatibility with the slider. fixes #737
+* Removed : Swedish translations sv_SE, now part of the translation pack automatically downloaded from wordpress.org.
+* Imp : add Array.from js polyfill for customizer control js
+* Fix : IE11 (at least) : potential customizer breaks when trying log in the console
+
+= 3.5.2 February 8th 2017 =
+* Fix: second menu responsive actions on header partial refresh
+* Fix: fix rtl carousel-caption positioning and text alignment. fixes #797
+* Fix: fix btn-toggle-nav position on sticky-enabled when tagline-off #799
+* Imp: fix btn-toggle-nav positioning when sticky enabled and no socials
+* Imp: improve overall plugins compatibility : do not render the comments template more than once should fix #774
+* Imp: customizer - fonts/skins select on focus instead of on click
+* Imp: customizer - improve slider control dependencies some controls should not be displayed when demo slider is selected
+* Imp: try to avoid double social icons see #787
+* Imp: compliancy with WP theme guidelines : one customizr pro link in the customizer, a simpler screenshot, no donate button in the customizer
+
 = 3.5.1 February 1st 2017 =
 * fixed : compatibility issue with PHP<5.5
 * fixed: customizer header partial refresh not correctly working

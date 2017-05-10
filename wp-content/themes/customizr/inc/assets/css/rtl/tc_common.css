@@ -1,5 +1,5 @@
 /*!
- * Customizr v3.5.1
+ * Customizr v3.5.12
  *
  * Licensed under the GNU General Public License v2 or later
  * http://www.gnu.org/licenses/gpl-2.0.html
@@ -5982,8 +5982,8 @@ footer#footer .colophon .credits a[class*=icon-] {
   /*hack IE7 and below */
   display: inline-block;
   position: relative;
-  margin-left: 11%;
-  text-align: left;
+  margin-right: 11%;
+  text-align: right;
   /*display:inline; IE7 and below */
 }
 .carousel-caption h1,
@@ -6307,6 +6307,10 @@ h2 a:hover {
 }
 .edit-link a {
   color: white;
+}
+.edit-link a:hover {
+  color: white;
+  text-decoration: underline;
 }
 article .tc-content {
   margin-bottom: 30px;
@@ -7255,6 +7259,10 @@ ul {
 .woocommerce div.product .product_title {
   text-align: right;
 }
+/* woocommerce single product figure margin set to 0 */
+.woocommerce-product-gallery__wrapper {
+  margin: 0;
+}
 /* Woocommerce thumbnails */
 .woocommerce .thumbnails {
   margin-left: 0;
@@ -7309,6 +7317,9 @@ footer#footer .colophon {
   margin-top: 0px;
   background-color: #ffffff;
   padding: 10px 20px;
+}
+footer#footer .colophon .container {
+  max-width: 100%;
 }
 footer#footer .colophon a,
 footer#footer .colophon p {
@@ -8741,12 +8752,16 @@ li#wp-admin-bar-tc-customizr-help a {
     height: 100% !important;
     overflow: auto !important;
   }
-  /* btn-toggle-nav edge case positioning*/
+  /* btn-toggle-nav edge case positioning */
   /* when on the right */
-  body:not(.sticky-enabled) .tc-header .btn-toggle-nav.pull-right {
+  body .tc-header .btn-toggle-nav.pull-right {
     clear: both;
   }
-  /* if only socials + btn-nav in navbar (no tagline), do not drop on a new line */
+  /* do not drop on a new line if:
+  - only socials + btn-nav in navbar (no tagline), do not drop on a new line when sticky disabled
+  - tagline-off (socials are never displayed as of now) when sticky enabled
+  */
+  .sticky-enabled .tc-tagline-off .btn-toggle-nav.pull-right,
   body:not(.sticky-enabled) .tc-header .social-block + .btn-toggle-nav.pull-right {
     clear: none;
   }
@@ -8758,6 +8773,25 @@ li#wp-admin-bar-tc-customizr-help a {
     clear: both;
   }
   /* btn-toggle-nav edge case positioning END */
+  /*
+  *
+  * Center menu
+  *
+  */
+  .sticky-disabled .logo-centered .pull-menu-center .nav-collapse {
+    width: 100%;
+    text-align: center;
+  }
+  .sticky-disabled .logo-centered .pull-menu-center .nav-collapse .nav {
+    float: initial;
+    display: inline-block;
+    margin: 0 -15px 0 -10px;
+    text-align: initial;
+  }
+  .sticky-disabled .logo-centered .pull-menu-center .nav-collapse .nav > .menu-item > a {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 @media (max-width: 979px) {
   .tc-header .outside {
@@ -9310,8 +9344,8 @@ li#wp-admin-bar-tc-customizr-help a {
   }
   .carousel-caption .lead,
   .carousel-caption .btn {
-    font-size: 13px;
-    line-height: 13px;
+    font-size: 0.75em;
+    line-height: 1.4em;
     max-height: 50px;
     overflow: hidden;
   }

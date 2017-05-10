@@ -37,6 +37,8 @@ body {
     unicode-bidi: embed;
   }
 }
+
+
 /* LINKS HOVER EFFECT */
 .tc-fade-hover-links a:not([class*=round-div]), .tc-fade-hover-links a:visited, .tc-fade-hover-links button, .tc-fade-hover-links input[type="button"], .tc-fade-hover-links input[type="submit"] {
   -webkit-transition-property: border, background, color;
@@ -1466,10 +1468,17 @@ footer#footer .colophon .credits a[class*=icon-] {
   *top: 25%;/*hack IE7 and below */
   display: inline-block;
   position: relative;
-  margin-left: 11%;
-  text-align: left;
+  & when (@is_rtl = true) {
+    margin-right: 11%;
+    text-align: right;
+  }
+  & when (@is_rtl = false) {
+    margin-left: 11%;
+    text-align: left;
+  }
   /*display:inline; IE7 and below */
 }
+
 .carousel-caption h1,
 .carousel-caption .lead {
   margin: 0;
@@ -1506,6 +1515,7 @@ footer#footer .colophon .credits a[class*=icon-] {
   z-index: 99;/*less than the default sticky-header z-index */
   background: #FAFAFA;
 }
+
 .tc-img-gif-loader {
   width: 100%;
   display: inline-block;
@@ -1812,7 +1822,10 @@ h1 a:hover, h2 a:hover {
 .edit-link a {
   color: white;
 }
-
+.edit-link a:hover{
+  color: white;
+  text-decoration: underline;
+}
 article .tc-content {
   margin-bottom: 30px;
 }
@@ -2857,6 +2870,10 @@ ul {
 .woocommerce div.product .product_title {
   text-align: @textAlign;
 }
+/* woocommerce single product figure margin set to 0 */
+.woocommerce-product-gallery__wrapper {
+  margin: 0;
+}
 /* Woocommerce thumbnails */
 .woocommerce .thumbnails {
   margin-left: 0;
@@ -2915,6 +2932,9 @@ footer#footer .colophon {
   margin-top: 0px;
   background-color:@ColophonBg;
   padding: 10px 20px;
+}
+footer#footer .colophon .container {
+  max-width: 100%;
 }
 footer#footer .colophon a, footer#footer .colophon p {
   color:@FooterBg;
