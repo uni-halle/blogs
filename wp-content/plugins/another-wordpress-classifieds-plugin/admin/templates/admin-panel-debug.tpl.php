@@ -70,13 +70,14 @@
 					</thead>
 					<tbody>
 				<?php foreach($options as $name => $value): ?>
-				<?php if ($debug_info->blacklisted($name)) continue ?>
-				<?php $value = $debug_info->sanitize($name, $value) ?>
+                    <?php if ( ! $debug_info->blacklisted( $name ) ): ?>
+                    <?php $value = $debug_info->sanitize( $name, $value ) ?>
 						<tr>
-							<th scope="row"><?php echo $name ?></th>
-							<td><?php echo esc_html($value) ?></td>
+                            <th scope="row"><?php echo $name; ?></th>
+                            <td><?php echo esc_html( $value ); ?></td>
 						</tr>
-				<?php endforeach ?> 
+                    <?php endif; ?>
+                <?php endforeach ?>
 					</tbody>
 				</table>
 		    </div>
@@ -115,7 +116,7 @@
 						</tr>
 						<tr>
 							<th scope="row"><?php _ex('cURL', 'debug page', 'another-wordpress-classifieds-plugin') ?></th>
-							<td><?php echo in_array('curl', get_loaded_extensions()) ? __('Installed', 'another-wordpress-classifieds-plugin') : __('Not Installed', 'another-wordpress-classifieds-plugin') ?></td>
+							<td><?php echo awpcp_get_curl_info(); ?></td>
 						</tr>
 						<tr>
 							<th scope="row"><?php _ex("cURL's alternate CA info (cacert.pem)", 'debug page', 'another-wordpress-classifieds-plugin') ?></th>
@@ -129,7 +130,7 @@
 							<?php else: ?>
 							<td>
 								<?php _ex('Not Working', 'debug page', 'another-wordpress-classifieds-plugin') ?><br/>
-								<?php foreach ($errors as $error): ?>
+								<?php foreach ( (array) $errors as $error ): ?>
 								<?php echo $error ?><br/>
 								<?php endforeach ?>
 							</td>

@@ -73,6 +73,14 @@ class AWPCP_RolesAndCapabilities {
         }
     }
 
+    public function remove_moderator_role() {
+        if ( get_role( 'awpcp-moderator' ) ) {
+            return remove_role( 'awpcp-moderator' );
+        } else {
+            return false;
+        }
+    }
+
     public function current_user_is_administrator() {
         return $this->current_user_can( $this->get_administrator_capabilities() );
     }

@@ -935,6 +935,16 @@ function awpcp_array_insert_after($array, $index, $key, $item) {
 }
 
 /**
+ * @since 3.7.6
+ */
+function awpcp_array_insert_first( $array, $item_key, $item ) {
+    $all_keys = array_keys( $array );
+    $first_key = array_shift( $all_keys );
+
+    return awpcp_array_insert( $array, $first_key, $item_key, $item, 'before' );
+}
+
+/**
  * Inserts a menu item after one of the existing items.
  *
  * This function should be used by plugins when handling
@@ -1357,25 +1367,32 @@ function awpcp_format_integer( $value ) {
 }
 
 /**
+ * @since 3.7.5
+ */
+function awpcp_parse_number( $value, $decimal_separator = false, $thousands_separator = false ) {
+    if ( strlen( $value ) === 0 ) return false;
+
+    $thousands_separator = $thousands_separator ? $thousands_separator : get_awpcp_option('thousands-separator');
+    $decimal_separator = $decimal_separator ? $decimal_separator : get_awpcp_option('decimal-separator');
+
+    $pattern = '/^-?(?:\d+|\d{1,3}(?:' . preg_quote( $thousands_separator ) . '\\d{3})+)?(?:' . preg_quote( $decimal_separator ) . '\\d+)?$/';
+
+    if ( preg_match( $pattern, $value ) ) {
+        $value = str_replace($thousands_separator, '', $value);
+        $value = str_replace($decimal_separator, '.', $value);
+        $number = floatval($value);
+    } else {
+        $number = false;
+    }
+
+    return $number;
+}
+
+/**
  * @since 3.0
  */
 function awpcp_parse_money($value, $decimal_separator=false, $thousands_separator=false) {
-	if ( strlen( $value ) === 0 ) return false;
-
-	$thousands_separator = $thousands_separator ? $thousands_separator : get_awpcp_option('thousands-separator');
-	$decimal_separator = $decimal_separator ? $decimal_separator : get_awpcp_option('decimal-separator');
-
-	$pattern = '/^-?(?:\d+|\d{1,3}(?:' . preg_quote( $thousands_separator ) . '\\d{3})+)?(?:' . preg_quote( $decimal_separator ) . '\\d+)?$/';
-
-	if ( preg_match( $pattern, $value ) ) {
-		$value = str_replace($thousands_separator, '', $value);
-		$value = str_replace($decimal_separator, '.', $value);
-		$number = floatval($value);
-	} else {
-		$number = false;
-	}
-
-	return $number;
+    return awpcp_parse_number( $value, $decimal_separator, $thousands_separator );
 }
 
 
@@ -1457,20 +1474,27 @@ function awpcp_print_messages() {
 function awpcp_print_form_errors( $errors ) {
     foreach ( $errors as $index => $error ) {
         if ( is_numeric( $index ) ) {
-            echo awpcp_print_message( $error, array( 'error' ) );
+            echo awpcp_print_message( $error, array( 'awpcp-error', 'notice', 'notice-error' ) );
         } else {
-            echo awpcp_print_message( $error, array( 'error', 'ghost' ) );
+            echo awpcp_print_message( $error, array( 'awpcp-error', 'notice', 'notice-error', 'ghost' ) );
         }
     }
 }
 
-function awpcp_print_message( $message, $class = array( 'awpcp-updated', 'updated' ) ) {
+function awpcp_print_message( $message, $class = array( 'awpcp-updated', 'notice', 'notice-info' ) ) {
 	$class = array_merge(array('awpcp-message'), $class);
 	return '<div class="' . join(' ', $class) . '"><p>' . $message . '</p></div>';
 }
 
 function awpcp_print_error($message) {
 	return awpcp_print_message($message, array('error'));
+}
+
+/**
+ * @since 3.7.4
+ */
+function awpcp_render_warning( $message ) {
+    return awpcp_print_message( $message, array( 'awpcp-warning', 'notice', 'notice-warning' ) );
 }
 
 function awpcp_validate_error($field, $errors) {
@@ -2531,13 +2555,6 @@ function awpcp_is_valid_email_address($email) {
 }
 
 /**
- * @deprecated since 3.0.2. @see awpcp_is_valid_email_address()
- */
-function isValidEmailAddress($email) {
-    return awpcp_is_valid_email_address( $email );
-}
-
-/**
  * @since 3.4
  */
 function awpcp_is_email_address_allowed( $email_address ) {
@@ -2685,6 +2702,10 @@ function awpcp_phpmailer_init_smtp( $phpmailer ) {
     }
     // that's it!
 }
+
+/**
+ * @deprecated 3.7.5    Use AWPCP_Email class instead.
+ */
 function awpcp_process_mail($senderemail='', $receiveremail='',  $subject='',
                             $body='', $sendername='', $replytoemail='', $html=false)
 {
@@ -2791,7 +2812,10 @@ function awpcp_get_ad_share_info($id) {
     $info['url'] = url_showad($id);
     $info['title'] = stripslashes($ad->ad_title);
     $info['description'] = strip_tags(stripslashes($ad->ad_details));
-    $info['description'] = str_replace("\n", " ", $info['description']);
+
+    $info['description'] = str_replace( array( "\r", "\n", "\t" ), ' ', $info['description'] );
+    $info['description'] = preg_replace( '/ {2,}/', ' ', $info['description'] );
+    $info['description'] = trim( $info['description'] );
 
     if ( awpcp_utf8_strlen( $info['description'] ) > 300 ) {
         $info['description'] = awpcp_utf8_substr( $info['description'], 0, 300 ) . '...';
@@ -2873,4 +2897,31 @@ function awpcp_user_agent_header() {
     $user_agent = "WordPress %s / Another WordPress Classifieds Plugin %s";
     $user_agent = sprintf( $user_agent, get_bloginfo( 'version' ), $GLOBALS['awpcp_db_version'] );
     return $user_agent;
+}
+
+/**
+ * @since 3.7.6
+ */
+function awpcp_get_curl_info() {
+    if ( ! in_array( 'curl', get_loaded_extensions() ) ) {
+        return __( 'Not Installed', 'another-wordpress-classifieds-plugin' );
+    }
+
+    if ( ! function_exists( 'curl_version' ) ) {
+        return __( 'Installed', 'another-wordpress-classifieds-plugin' );
+    }
+
+    $curl_info = curl_version();
+
+    $output[] = "Version: {$curl_info['version']}";
+
+    if ( $curl_info['features'] & CURL_VERSION_SSL) {
+        $output[] = __( 'SSL Support: Yes.', 'another-wordpress-classifieds-plugin' );
+    } else {
+        $output[] = __( 'SSL Support: No.', 'another-wordpress-classifieds-plugin' );
+    }
+
+    $output[] = __( 'OpenSSL version:' ) . ' ' . $curl_info['ssl_version'];
+
+    return implode( '<br>', $output );
 }

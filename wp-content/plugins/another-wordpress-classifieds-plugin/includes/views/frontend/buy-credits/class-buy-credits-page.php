@@ -71,7 +71,7 @@ class AWPCP_BuyCreditsPage extends AWPCP_BasePage {
             $page_name = $this->title;
             $page_url = $this->url( array( 'page' => $this->page ) );
 
-            $message = __( 'You are trying to buy credits using a transaction created for a different purpose. Pelase go back to the <a href="%s">%s</a> page.<br>If you think this is an error please contact the administrator and provide the following transaction ID: %s', 'another-wordpress-classifieds-plugin' );
+            $message = __( 'You are trying to buy credits using a transaction created for a different purpose. Please go back to the <a href="%s">%s</a> page.<br>If you think this is an error please contact the administrator and provide the following transaction ID: %s', 'another-wordpress-classifieds-plugin' );
             $message = sprintf( $message, $page_url, $page_name, $transaction->id );
 
             throw new AWPCP_Exception( $message );

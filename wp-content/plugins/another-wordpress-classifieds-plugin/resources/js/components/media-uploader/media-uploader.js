@@ -27,6 +27,7 @@ function( $, settings) {
                 multipart_params: {
                     action: 'awpcp-upload-listing-media',
                     listing: self.get('settings').listing_id,
+                    context: self.get( 'settings' ).context,
                     nonce: self.get('settings').nonce
                 },
                 multi_selection: false,

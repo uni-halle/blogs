@@ -1,6 +1,6 @@
 <!-- Using template binding as workaround for conflict with imagesLoaded plugin
 from Paul Irish. See https://github.com/drodenbaugh/awpcp/issues/979. -->
-<div class="awpcp-media-manager" data-breakpoint-class-prefix="awpcp-media-manager" data-breakpoints="480,680,992" data-bind="{ template: 'awpcp-media-manager-template' }"></div>
+<div class="awpcp-media-manager" data-breakpoints-class-prefix="awpcp-media-manager" data-breakpoints='{"tiny":[0,420],"small":[420,620],"medium":[620,874], "large": [874,9999]}' data-bind="{ template: 'awpcp-media-manager-template' }"></div>
 
 <script type="text/html" id="awpcp-media-manager-template">
     <div class="awpcp-uploaded-files-group awpcp-uploaded-images" data-bind="if: haveImages">

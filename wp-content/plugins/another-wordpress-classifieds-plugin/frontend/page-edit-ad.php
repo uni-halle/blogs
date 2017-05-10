@@ -204,7 +204,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         $hidden = array('edit-hash' => $this->get_edit_hash($ad));
         $required = $this->get_required_fields();
 
-        if ( is_admin() ) {
+        if ( is_admin() && $this->should_show_upload_files_step( $ad ) ) {
             $manage_attachments = __( 'Manage Attachments', 'another-wordpress-classifieds-plugin' );
             $url = add_query_arg( array( 'action' => 'manage-images', 'id' => $ad->ad_id ), $this->url() );
             $link = sprintf( '<strong><a href="%s" title="%s">%s</a></strong>', esc_url( $url ), esc_attr( $manage_attachments ), esc_html( $manage_attachments ) );
@@ -330,6 +330,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
             ),
             'media_uploader_configuration' => array(
                 'listing_id' => $ad->ad_id,
+                'context' => 'edit-listing',
                 'nonce' => wp_create_nonce( 'awpcp-upload-media-for-listing-' . $ad->ad_id ),
                 'allowed_files' => $allowed_files,
             ),
@@ -417,11 +418,11 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
 
         $errors = array();
         $form = array(
-            'ad_email' => awpcp_post_param('ad_email'),
-            'attempts' => (int) awpcp_post_param('attempts', 0)
+            'ad_email' => $this->get_request()->post( 'ad_email' ),
+            'attempts' => (int) $this->get_request()->post( 'attempts', 0 ),
         );
 
-        if ($form['attempts'] == 0 && get_awpcp_option('enable-user-panel') == 1) {
+        if ( $form['attempts'] == 0 && $this->get_settings()->get_option( 'enable-user-panel' ) == 1 ) {
             $url = admin_url('admin.php?page=awpcp-panel');
             $message = __('You are currently not logged in, if you have an account in this website you can log in and go to the Ad Management panel to edit your Ads.', 'another-wordpress-classifieds-plugin');
             $message = sprintf('%s <a href="%s">%s</a>', $message, $url, __('Click here', 'another-wordpress-classifieds-plugin'));
@@ -436,7 +437,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
 
         $ads = array();
         if ( empty( $errors ) ) {
-            $ads = AWPCP_Ad::find_by_email( $form['ad_email'] );
+            $ads = $this->find_listings_by_email( $form['ad_email'] );
             if ( empty( $ads ) ) {
                 $errors[] = __('The email address you entered does not match any of the Ads in our system.', 'another-wordpress-classifieds-plugin');
             }
@@ -444,10 +445,37 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
             $errors = array();
         }
 
+        // TODO: define what a valid listing really looks like and use that everywhere:
+        //       - here!
+        //       - AWPCP_Ad::get_where_conditions_for_valid_ads()
+        $valid_listings = array();
+
+        $accepted_payment_statuses = array(
+            AWPCP_Payment_Transaction::PAYMENT_STATUS_COMPLETED,
+            AWPCP_Payment_Transaction::PAYMENT_STATUS_NOT_REQUIRED,
+        );
+
+        if ( get_awpcp_option( 'enable-ads-pending-payment' ) ) {
+            $accepted_payment_statuses[] = AWPCP_Payment_Transaction::PAYMENT_STATUS_PENDING;
+        }
+
+        foreach ( $ads as $listing ) {
+            if ( ! $listing->verified ) {
+                continue;
+            }
+
+            if ( ! in_array( $listing->payment_status, $accepted_payment_statuses, true ) ) {
+                continue;
+            }
+
+            array_push( $valid_listings, $listing );
+        }
+
         // if $ads is non-empty then $errors is empty
-        if ( !empty( $ads ) ) {
-            $access_keys_sent = $this->send_access_keys( $ads, $errors );
+        if ( ! empty( $valid_listings ) ) {
+            $access_keys_sent = $this->send_access_keys( $valid_listings, $errors );
         } else {
+            $errors[] = __( 'The email address you entered does not match any of the listing in our system.', 'another-wordpress-classifieds-plugin' );
             $access_keys_sent = false;
         }
 
@@ -463,6 +491,10 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         } else {
             return $this->enter_email_and_key_step(false);
         }
+    }
+
+    protected function find_listings_by_email( $email_address ) {
+        return AWPCP_Ad::find_by_email( $email_address );
     }
 
     public function send_access_keys($ads, &$errors=array()) {

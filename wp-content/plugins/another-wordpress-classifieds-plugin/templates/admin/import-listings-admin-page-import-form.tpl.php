@@ -3,7 +3,10 @@
 
 <?php include( AWPCP_DIR . '/admin/templates/admin-panel-header.tpl.php') ?>
 
-        <h3><?php echo esc_html( __( 'Import', 'another-wordpress-classifieds-plugin' ) ); ?></h3>
+        <h3><?php echo esc_html( $action_name ); ?></h3>
+        <?php if ( $test_mode_enabled ): ?>
+        <p><?php echo awpcp_render_warning( __( "You're currently testing the import operation. No listings will be created or modified in the database.", 'another-wordpress-classifieds-plugin' ) ); ?></p>
+        <?php endif; ?>
 
         <form id="awpcp-import-listings-import-form" method="post">
             <div class="progress-bar">
@@ -20,7 +23,7 @@
 
             <p class="submit">
                 <input type="submit" class="button" name="change_configuration" value="<?php echo esc_html( __( 'Change Configuration & Restart', 'another-wordpress-classifieds-plugin' ) ); ?>" data-bind="visible: paused() || completed()"></input>
-                <input type="submit" class="button-primary button" name="start" value="<?php echo esc_html( __( 'Import', 'another-wordpress-classifieds-plugin' ) ); ?>" data-bind="visible: paused() && ! completed(), click: start"></input>
+                <input type="submit" class="button-primary button" name="start" value="<?php echo esc_html( $action_name ); ?>" data-bind="visible: paused() && ! completed(), click: start"></input>
 
                 <input type="submit" class="button-primary button" name="start" value="<?php echo esc_html( __( 'Pause', 'another-wordpress-classifieds-plugin' ) ); ?>" data-bind="visible: ! paused() && ! completed(), click: pause"></input>
 

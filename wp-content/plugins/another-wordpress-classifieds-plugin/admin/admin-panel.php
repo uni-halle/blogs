@@ -740,6 +740,10 @@ function awpcp_opsconfig_categories() {
 		}
 		if ($aeaction == 'delete')
 		{
+			$section_icon_style = "background:transparent url($awpcp_imagesurl/edit_ico.png) left center no-repeat;padding-left:20px;";
+			$categorynamefield = '';
+			$exclude = '';
+
 			$orderinput='';
 			if ($cat_ID == 1)
 			{
@@ -1207,8 +1211,8 @@ function awpcp_handle_admin_requests() {
 		elseif ($aeaction == 'edit')
 		{
 			$category = AWPCP_Category::find_by_id( $category_id );
-			$category->name = clean_field( awpcp_request_param( 'category_name' ) );
-			$category->parent = intval( clean_field( awpcp_request_param( 'category_parent_id' ) ) );
+			$category->name = stripslashes( awpcp_request_param( 'category_name' ) );
+			$category->parent = intval( awpcp_request_param( 'category_parent_id' ) );
 			$category->order = intval( awpcp_request_param( 'category_order', 0 ) );
 
 			try {

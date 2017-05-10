@@ -43,18 +43,18 @@ class AWPCP_Email {
         }
 
         $headers = array_merge(array(
-            'MIME-Version' => '1.0',
             'Content-Type' => $content_type,
             'From' => $this->from,
             'Reply-To' => awpcp_admin_email_to(),
         ), $this->headers);
 
-        $email_headers = '';
+        $sanitized_headers = array();
+
         foreach ($headers as $k => $v) {
-            $email_headers .= sprintf( "%s: %s\r\n", $k, str_replace( "\n", '', $v ) );
+            $sanitized_headers[] = sprintf( "%s: %s", $k, str_replace( "\n", '', $v ) );
         }
 
-        return $email_headers;
+        return $sanitized_headers;
     }
 
     /**
@@ -67,18 +67,10 @@ class AWPCP_Email {
         $sent_date = awpcp_format_email_sent_datetime();
         $body = sprintf( "%s\n\n%s", $this->body, $sent_date );
 
-        if ($result = wp_mail($this->to, $this->subject, $body, $headers)) {
-            return $result;
-        }
+        return $this->send_email( $this->to, $this->subject, $body, $headers );
+    }
 
-        if ($result = awpcp_send_email($this->from, $this->to, $this->subject, $body, $format === 'html')) {
-            return $result;
-        }
-
-        if ($result = @mail($this->to, $this->subject, $body, $headers)) {
-            return $result;
-        }
-
-        return false;
+    protected function send_email( $to, $subject, $body, $headers = array(), $attachments = array() ) {
+        return wp_mail( $to, $subject, $body, $headers, $attachments );
     }
 }

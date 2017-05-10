@@ -473,7 +473,7 @@ p.maincategoryclass {
 }
 
 .awpcp-category-icon {
-    display: block;
+    display: inline-block;
     margin: 0 4px;
 }
 .awpcp-category-icon-image,
@@ -481,6 +481,12 @@ p.maincategoryclass {
     box-sizing: border-box;
     vertical-align: middle;
     max-width: 100%;
+}
+
+.sub-categories {
+    .awpcp-category-icon {
+        margin-left: 0;
+    }
 }
 
 .theuploaddiv .button {  margin-top:20px; padding:6px; }

@@ -17,7 +17,7 @@ class AWPCP_Dismiss_Notice_Ajax_Handler extends AWPCP_AjaxHandler {
     }
 
     public function ajax() {
-        delete_option( 'awpcp-show-' . $this->request->get( 'notice' ) );
+        delete_option( 'awpcp-show-' . $this->request->post( 'notice' ) );
         return $this->success();
     }
 }

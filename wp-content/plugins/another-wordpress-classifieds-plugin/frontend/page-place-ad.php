@@ -12,16 +12,36 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
 
     public $messages = array();
 
+    protected $request;
+    protected $payments_api;
     protected $authorization;
+    protected $listing_upload_limits;
 
     public function __construct($page='awpcp-place-ad', $title=null) {
         parent::__construct($page, $title);
 
         $this->authorization = awpcp_listing_authorization();
+        $this->listing_upload_limits = awpcp_listing_upload_limits();
+    }
+
+    protected function get_payments_api() {
+        if ( ! isset( $this->payments_api ) ) {
+            $this->payments_api = awpcp_payments_api();
+        }
+
+        return $this->payments_api;
+    }
+
+    protected function get_request() {
+        if ( ! isset( $this->request ) ) {
+            $this->request = awpcp_request();
+        }
+
+        return $this->request;
     }
 
     public function get_current_action($default=null) {
-        return awpcp_post_param('step', awpcp_request_param('step', $default));
+        return $this->get_request()->post( 'step', $this->get_request()->param( 'step', $default ) );
     }
 
     public function url($params=array()) {
@@ -39,9 +59,9 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
 
     public function get_transaction($create=false) {
         if ( $create ) {
-            $this->transaction = awpcp_payments_api()->get_or_create_transaction();
+            $this->transaction = $this->get_payments_api()->get_or_create_transaction();
         } else {
-            $this->transaction = awpcp_payments_api()->get_transaction();
+            $this->transaction = $this->get_payments_api()->get_transaction();
         }
 
         if (!is_null($this->transaction) && $this->transaction->is_new()) {
@@ -134,7 +154,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         if (!is_null($transaction) && $transaction->get('context') != $this->context) {
             $page_name = awpcp_get_page_name('place-ad-page-name');
             $page_url = awpcp_get_page_url('place-ad-page-name');
-            $message = __('You are trying to post an Ad using a transaction created for a different purpose. Pelase go back to the <a href="%s">%s</a> page.<br>If you think this is an error please contact the administrator and provide the following transaction ID: %s', 'another-wordpress-classifieds-plugin');
+            $message = __('You are trying to post an Ad using a transaction created for a different purpose. Please go back to the <a href="%s">%s</a> page.<br>If you think this is an error please contact the administrator and provide the following transaction ID: %s', 'another-wordpress-classifieds-plugin');
             $message = sprintf($message, $page_url, $page_name, $transaction->id);
             return $this->render('content', awpcp_print_error($message));
         }
@@ -186,6 +206,10 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             default:
                 return $this->place_ad();
         }
+    }
+
+    protected function get_settings() {
+        return awpcp()->settings;
     }
 
     public function place_ad() {
@@ -652,6 +676,8 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             $data[ $name ] = $value;
         }
 
+        $data['ad_title'] = str_replace( array( "\r", "\n" ), '', $data['ad_title'] );
+        $data['ad_details'] = str_replace( "\r", '', $data['ad_details'] );
         $data['websiteurl'] = awpcp_maybe_add_http_to_url( $data['websiteurl'] );
 
         if (empty($data['user_id'])) {
@@ -761,14 +787,15 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         $form = $this->get_posted_details($form, $transaction);
         $form = array_merge( $form, $this->get_characters_allowed( $form['ad_id'], $transaction ) );
 
-        $form['regions-allowed'] = $this->get_regions_allowed( $form['ad_id'], $transaction );
-
         // pre-fill user information if we are placing a new Ad
         if ($transaction->user_id) {
             foreach ($this->get_user_info($transaction->user_id) as $field => $value) {
                 $form[$field] = empty($form[$field]) ? $value : $form[$field];
             }
         }
+
+        $form['regions-allowed'] = $this->get_regions_allowed( $form['ad_id'], $transaction );
+        $form['regions'] = array_slice( $form['regions'], 0, $form['regions-allowed'] );
 
         // pref-fill ad information if we are editing a new Ad
         if ($transaction->get('ad-id', false)) {
@@ -1115,23 +1142,24 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         }
     }
 
-    private function should_show_upload_files_step( $listing ) {
-        $allowed_files = awpcp_listing_upload_limits()->get_listing_upload_limits( $listing );
-
-        foreach ( $allowed_files as $file_type => $limits ) {
-            if ( $limits['allowed_file_count'] >= $limits['uploaded_file_count'] ) {
-                return true;
-            }
-        }
-
-        return false;
+    protected function should_show_upload_files_step( $listing ) {
+        return $this->listing_upload_limits->are_uploads_allowed_for_listing( $listing );
     }
 
     public function get_images_config( $ad ) {
-        $payment_term = awpcp_payments_api()->get_ad_payment_term($ad);
+        $upload_limits = $this->listing_upload_limits->get_listing_upload_limits( $ad );
 
-        $images_allowed = awpcp_get_property( $payment_term, 'images', get_awpcp_option( 'imagesallowedfree', 0 ) );
-        $images_uploaded = $ad->count_image_files();
+        if ( isset( $upload_limits['images']['allowed_file_count'] ) ) {
+            $images_allowed = $upload_limits['images']['allowed_file_count'];
+        } else {
+            $images_allowed = 0;
+        }
+
+        if ( isset( $upload_limits['images']['uploaded_file_count'] ) ) {
+            $images_uploaded = $upload_limits['images']['uploaded_file_count'];
+        } else {
+            $images_uploaded = 0;
+        }
 
         return array(
             'images_allowed' => $images_allowed,
@@ -1176,7 +1204,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
     }
 
     protected function show_upload_images_form( $ad, $transaction, $params, $errors ) {
-        $allowed_files = awpcp_listing_upload_limits()->get_listing_upload_limits( $ad );
+        $allowed_files = $this->listing_upload_limits->get_listing_upload_limits( $ad );
 
         $params = array_merge( $params, array(
             'transaction' => $transaction,
@@ -1189,6 +1217,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             ),
             'media_uploader_configuration' => array(
                 'listing_id' => $ad->ad_id,
+                'context' => 'post-listing',
                 'nonce' => wp_create_nonce( 'awpcp-upload-media-for-listing-' . $ad->ad_id ),
                 'allowed_files' => $allowed_files,
             ),
@@ -1200,12 +1229,13 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
     public function upload_images_form( $ad, $params=array() ) {
         $show_preview = (bool) get_awpcp_option('show-ad-preview-before-payment');
         $pay_first = (bool) get_awpcp_option('pay-before-place-ad');
+        $payments_enabled = awpcp_get_option( 'freepay' ) == 1;
 
         extract( $params );
 
         if ( $show_preview ) {
             $next = _x( 'Preview Ad', 'upload listing images form', 'another-wordpress-classifieds-plugin' );
-        } else if ( $pay_first ) {
+        } else if ( $pay_first || ! $payments_enabled ) {
             $next = _x( 'Place Ad', 'upload listing images form', 'another-wordpress-classifieds-plugin' );
         } else {
             $next = _x( 'Checkout', 'upload listing images form', 'another-wordpress-classifieds-plugin' );

@@ -57,11 +57,15 @@ class AWPCP_ListingTitleFormField extends AWPCP_FormField {
         } else if ( $transaction = $this->payments->get_transaction() ) {
             $payment_term = $this->payments->get_transaction_payment_term( $transaction );
             $characters_used = 0;
+        } else {
+            $payment_term = null;
         }
 
         if ( ! is_null( $payment_term ) ) {
             $characters_allowed = $payment_term->get_characters_allowed_in_title();
             $remaining_characters = max( 0, $characters_allowed - $characters_used );
+        } else {
+            $characters_allowed = $remaining_characters = 0;
         }
 
         return compact( 'characters_allowed', 'remaining_characters' );

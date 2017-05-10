@@ -681,8 +681,7 @@ function awpcp_validate_extra_field( $name, $value, $validate, $type, $options, 
                 break;
 
             case 'email':
-                $regex = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$";
-                if ( ! eregi( $regex, $item ) ) {
+                if ( ! awpcp_is_valid_email_address( $item ) ) {
                     $validation_errors[] = "The value for Extra Field $name must be a valid email address.";
                 }
                 break;

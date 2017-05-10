@@ -127,7 +127,6 @@ class AWPCP_ModulesUpdater {
 		remove_filter( 'http_request_args', array( $this, 'filter_http_request_args' ), 10, 2 );
 
 		$args['user-agent'] = awpcp_user_agent_header();
-		$args['sslverify'] = false;
 
         return $args;
     }

@@ -175,7 +175,7 @@ class AWPCP_PaymentTermsTable {
             $attrs['checked'] = 'checked';
 
         return sprintf(
-            '<label class="awpcp-payment-terms-table-payment-term-price for="%s">%s%s</label>',
+            '<label class="awpcp-payment-terms-table-payment-term-price" for="%s">%s%s</label>',
             esc_attr( $value ),
             sprintf( '<input %s>', awpcp_html_attributes( $attrs ) ),
             '<span>' . esc_html( $amount ) . '</span>'

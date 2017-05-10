@@ -6,16 +6,6 @@ function($) {
         maxDelay = 1500,
         timeout = false;
 
-    var waitForReCaptchaToBeReady = function() {
-        attempts = attempts + 1;
-
-        if ( typeof grecaptcha !== 'undefined' ) {
-            renderReCaptchaWidgets();
-        } else if ( attempts <= maxAttempts ) {
-            timeout = setTimeout( waitForReCaptchaToBeReady, maxDelay * Math.pow( attempts / maxAttempts, 2 ) );
-        }
-    };
-
     var renderReCaptchaWidgets = function() {
         $( '.awpcp-recaptcha' ).each( function() {
             var element = $( this );
@@ -29,6 +19,16 @@ function($) {
                 element.data( 'awpcp-recaptcha', true );
             }
         } );
+    };
+
+    var waitForReCaptchaToBeReady = function() {
+        attempts = attempts + 1;
+
+        if ( typeof grecaptcha !== 'undefined' ) {
+            renderReCaptchaWidgets();
+        } else if ( attempts <= maxAttempts ) {
+            timeout = setTimeout( waitForReCaptchaToBeReady, maxDelay * Math.pow( attempts / maxAttempts, 2 ) );
+        }
     };
 
     window['AWPCPreCAPTCHAonLoadCallback'] = function() {

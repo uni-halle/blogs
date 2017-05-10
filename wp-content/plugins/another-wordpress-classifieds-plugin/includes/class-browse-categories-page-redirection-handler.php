@@ -23,7 +23,7 @@ class AWPCP_Browse_Categories_Page_Redirection_Handler {
 
         $browse_categories_page_info = get_option( 'awpcp-browse-categories-page-information', array() );
 
-        if ( ! isset( $browse_categories_page_info['page_id'] ) ) {
+        if ( empty( $browse_categories_page_info['page_id'] ) ) {
             return;
         }
 
@@ -38,7 +38,7 @@ class AWPCP_Browse_Categories_Page_Redirection_Handler {
             return;
         }
 
-        return $this->redirect( $query_args );
+        return $this->redirect();
     }
 
     private function redirect() {

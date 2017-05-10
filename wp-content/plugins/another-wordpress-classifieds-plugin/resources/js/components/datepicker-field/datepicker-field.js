@@ -2,9 +2,7 @@
 AWPCP.define( 'awpcp/datepicker-field', [ 'jquery', 'awpcp/settings' ],
 function( $, settings ) {
     var DatepickerField = function( element, options ) {
-        var self = this,
-            options = options || {},
-            datepickerOptions;
+        var self = this;
 
         self.element = $(element);
         self.textfield = self.element.parent().find( '[datepicker-placeholder]' );
@@ -16,7 +14,7 @@ function( $, settings ) {
                 altField: self.element,
                 altFormat: 'yy/mm/dd'
             },
-            options.datepicker
+            options ? options.datepicker : {}
         ) );
     };
 

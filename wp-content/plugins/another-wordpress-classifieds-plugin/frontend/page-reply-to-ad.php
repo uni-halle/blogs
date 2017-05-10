@@ -114,7 +114,7 @@ class AWPCP_ReplyToAdPage extends AWPCP_Page {
 
         if (empty($data['awpcp_sender_email'])) {
             $errors['awpcp_sender_email'] = __('Please enter your email.', 'another-wordpress-classifieds-plugin');
-        } else if (!isValidEmailAddress($data['awpcp_sender_email'])) {
+        } else if ( ! awpcp_is_valid_email_address( $data['awpcp_sender_email'] ) ) {
             $errors['ad_contact_email'] = __("The email address you entered was not a valid email address. Please check for errors and try again.", 'another-wordpress-classifieds-plugin');
         }
 
@@ -201,15 +201,19 @@ class AWPCP_ReplyToAdPage extends AWPCP_Page {
         /* send email to admin */
         if (get_awpcp_option('notify-admin-about-contact-message')) {
             $subject = __('Notification about a response regarding Ad: %s', 'another-wordpress-classifieds-plugin');
-            $subject = sprintf($subject, $ad_title);
 
-            ob_start();
-                include(AWPCP_DIR . '/frontend/templates/email-reply-to-ad-admin.tpl.php');
-                $admin_body = ob_get_contents();
-            ob_end_clean();
+            $template = AWPCP_DIR . '/frontend/templates/email-reply-to-ad-admin.tpl.php';
+            $params = compact( 'ad_url', 'ad_title', 'message', 'sender_name', 'sender_email', 'nameofsite' );
 
-            $admin_email = awpcp_admin_recipient_email_address();
-            $result = awpcp_process_mail($from, $admin_email, $subject, $admin_body, $sender, $sender_email);
+            $email = new AWPCP_Email();
+
+            $email->subject = sprintf( $subject, $ad_title );
+            $email->to = awpcp_admin_recipient_email_address();
+            $email->from = awpcp_format_email_address( $from, $sender );
+            $email->headers['Reply-To'] = awpcp_format_email_address( $from, $sender );
+            $email->prepare( $template, $params );
+
+            $result = $email->send();
         }
 
         /* send email to user */ {
@@ -227,13 +231,18 @@ class AWPCP_ReplyToAdPage extends AWPCP_Page {
             $body_template = get_awpcp_option( 'contactformbodymessage' );
             $body = awpcp_replace_placeholders( $placeholders, $ad, $body_template, 'reply-to-listing' );
 
-            ob_start();
-                include(AWPCP_DIR . '/frontend/templates/email-reply-to-ad-user.tpl.php');
-                $body = ob_get_contents();
-            ob_end_clean();
+            $template = AWPCP_DIR . '/frontend/templates/email-reply-to-ad-user.tpl.php';
+            $params = compact( 'body', 'ad_title', 'ad_url', 'message', 'sender_name', 'sender_email', 'nameofsite' );
 
-            $sendtoemail = awpcp_format_recipient_address( get_adposteremail( $ad->ad_id ) );
-            $result = awpcp_process_mail( $from, $sendtoemail, trim($subject), $body, $sender, $sender_email );
+            $email = new AWPCP_Email();
+
+            $email->subject = trim( $subject );
+            $email->to = awpcp_format_recipient_address( get_adposteremail( $ad->ad_id ) );
+            $email->from = awpcp_format_email_address( $from, $sender );
+            $email->headers['Reply-To'] = awpcp_format_email_address( $sender_email, $sender_name );
+            $email->prepare( $template, $params );
+
+            $result = $email->send();
         }
 
         if ($result) {

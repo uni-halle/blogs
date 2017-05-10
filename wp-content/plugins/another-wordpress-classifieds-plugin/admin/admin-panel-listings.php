@@ -13,6 +13,8 @@ require_once( AWPCP_DIR . '/admin/admin-panel-listings-table.php' );
  */
 class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
 
+    protected $listing_upload_limits;
+
     public function __construct($page=false, $title=false) {
         $page = $page ? $page : 'awpcp-admin-listings';
         $title = $title ? $title : awpcp_admin_page_title( __( 'Manage Listings', 'another-wordpress-classifieds-plugin' ) );
@@ -20,6 +22,8 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
         parent::__construct($page, $title, __('Listings', 'another-wordpress-classifieds-plugin'));
 
         $this->table = null;
+
+        $this->listing_upload_limits = awpcp_listing_upload_limits();
 
         add_action('wp_ajax_awpcp-listings-delete-ad', array($this, 'ajax'));
     }
@@ -119,7 +123,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
             $label = __( 'Manage Images', 'another-wordpress-classifieds-plugin' );
             $url = $this->url(array('action' => 'manage-images', 'id' => $ad->ad_id));
             $actions['manage-images'] = array($label, array('', $url, " ($images)"));
-        } else if ( awpcp_are_images_allowed() ) {
+        } else if ( $this->listing_upload_limits->are_uploads_allowed_for_listing( $ad ) ) {
             $actions['add-image'] = array(__('Add Images', 'another-wordpress-classifieds-plugin'), $this->url(array('action' => 'add-image', 'id' => $ad->ad_id)));
         }
 
@@ -567,6 +571,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
             ),
             'media_uploader_configuration' => array(
                 'listing_id' => $listing->ad_id,
+                'context' => 'manage-media',
                 'nonce' => wp_create_nonce( 'awpcp-upload-media-for-listing-' . $listing->ad_id ),
                 'allowed_files' => $allowed_files,
             ),

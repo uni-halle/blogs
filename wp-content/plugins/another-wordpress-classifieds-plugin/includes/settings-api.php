@@ -78,27 +78,34 @@ class AWPCP_Settings_API {
 		$this->add_setting( $key, 'maxcharactersallowed', __( 'Maximum Ad details length', 'another-wordpress-classifieds-plugin' ), 'textfield', 750, __( 'Number of characters allowed in Ad details. Please note this is the default value and can be overwritten in Fees and Subscription Plans.', 'another-wordpress-classifieds-plugin' ) );
 		$this->add_setting( $key, 'words-in-listing-excerpt', __( 'Number of words in Ad excerpt', 'another-wordpress-classifieds-plugin' ), 'textfield', 20, __( 'Number of words shown by the Ad excerpt placeholder.', 'another-wordpress-classifieds-plugin' ) );
 		$this->add_setting( $key, 'hidelistingcontactname', __( 'Hide contact name to anonymous users?', 'another-wordpress-classifieds-plugin' ), 'checkbox', 0, __( 'Hide listing contact name to anonymous (non logged in) users.', 'another-wordpress-classifieds-plugin' ) );
-		$this->add_setting( $key, 'displayadlayoutcode', __( 'Ad Listings page layout', 'another-wordpress-classifieds-plugin' ),
-							'textarea', '
-							<div class="$awpcpdisplayaditems $isfeaturedclass">
-								<div style="width:$imgblockwidth; padding:5px; float:left; margin-right:20px;">
-									$awpcp_image_name_srccode
-								</div>
-								<div style="width:50%; padding:5px; float:left;">
-									<h4>$title_link</h4>
-									$excerpt
-								</div>
-								<div style="padding:5px; float:left;">
-									$awpcpadpostdate
-									$awpcp_city_display
-									$awpcp_state_display
-									$awpcp_display_adviews
-									$awpcp_display_price
-									$awpcpextrafields
-								</div>
-								<span class="fixfloat"></span>
-							</div>
-							<div class="fixfloat"></div>', __( 'Modify as needed to control layout of ad listings page. Maintain code formatted as \$somecodetitle. Changing the code keys will prevent the elements they represent from displaying.', 'another-wordpress-classifieds-plugin' ) );
+
+		$this->add_setting(
+            $key,
+            'displayadlayoutcode',
+            __( 'Ad Listings page layout', 'another-wordpress-classifieds-plugin' ),
+            'textarea', '
+<div class="awpcp-listing-excerpt $awpcpdisplayaditems $isfeaturedclass" data-breakpoints-class-prefix="awpcp-listing-excerpt" data-breakpoints=\'{"tiny": [0,328], "small": [328,600], "medium": [600,999999]}\'>
+    <div class="awpcp-listing-excerpt-thumbnail">
+        $awpcp_image_name_srccode
+    </div>
+    <div class="awpcp-listing-excerpt-inner" style="w">
+        <h4 class="awpcp-listing-title">$title_link</h4>
+        <div class="awpcp-listing-excerpt-content">$excerpt</div>
+    </div>
+    <div class="awpcp-listing-excerpt-extra">
+        $awpcpadpostdate
+        $awpcp_city_display
+        $awpcp_state_display
+        $awpcp_display_adviews
+        $awpcp_display_price
+        $awpcpextrafields
+    </div>
+    <span class="fixfloat"></span>
+</div>
+<div class="fixfloat"></div>',
+            __( 'Modify as needed to control layout of ad listings page. Maintain code formatted as \$somecodetitle. Changing the code keys will prevent the elements they represent from displaying.', 'another-wordpress-classifieds-plugin' )
+        );
+
 		$this->add_setting( $key, 'awpcpshowtheadlayout', __( 'Single Ad page layout', 'another-wordpress-classifieds-plugin' ),
 							'textarea', '
 							<div id="showawpcpadpage">
@@ -209,9 +216,19 @@ class AWPCP_Settings_API {
 			__( 'Email address for PayPal payments (if running in pay mode and if PayPal is activated).', 'another-wordpress-classifieds-plugin' )
 		);
 
+        $this->add_setting(
+            $key,
+            'paypal_merchant_id',
+            __( 'PayPal Merchant ID', 'another-wordpress-classifieds-plugin' ),
+            'textfield',
+            '',
+            __( 'Merchant ID associated with the PayPal account that will receive the payments. Go to <a href="https://www.paypal.com/myaccount/settings/" target="_blank">https://www.paypal.com/myaccount/settings/</a> to obtain your Merchant ID.' )
+        );
+
 		$this->add_validation_rule( $key, 'paypalemail', 'required', array( 'depends' => 'activatepaypal' ) );
 		$this->add_validation_rule( $key, 'paypalemail', 'email', true, __( 'Please enter a valid email address.', 'another-wordpress-classifieds-plugin' ) );
 		$this->add_behavior( $key, 'paypalemail', 'enabledIf', 'activatepaypal' );
+        $this->add_behavior( $key, 'paypal_merchant_id', 'enabledIf', 'activatepaypal' );
 
 		$this->add_setting(
 			$key,
@@ -591,7 +608,7 @@ class AWPCP_Settings_API {
 
 		if ( ! isset( $this->groups[ $group_slug ] ) ) {
 			$this->add_group( __( 'Licenses', 'another-wordpress-classifieds-plugin' ), $group_slug, 100000 );
-			$this->add_section( $group_slug, 'Premium Modules', $section_slug, 10, array( $this, 'section' ) );
+			$this->add_section( $group_slug, 'Premium Modules', $section_slug, 10, array( $this, 'licenses_section' ) );
 		}
 
 		return "$group_slug:$section_slug";
@@ -1106,6 +1123,67 @@ class AWPCP_Settings_API {
 	 */
 	public function section($args) {
 	}
+
+    /**
+     * @since 3.7.6
+     */
+    public function licenses_section( $args ) {
+        echo '<p class="description">' . $this->get_licenses_section_description() . '</p>';
+    }
+
+    /**
+     * @since 3.7.6
+     */
+    private function get_licenses_section_description() {
+        $ip_address = $this->get_server_ip_address();
+
+        if ( ! $ip_address ) {
+            return '';
+        }
+
+        $description = _x( 'The IP address of your server is <ip-address>. Please make sure to include that information if you need to contact support about problems trying to activate your licenses.', 'settings', 'WPBDM' );
+        $description = str_replace( '<ip-address>', '<strong>' . $ip_address . '</strong>', $description );
+
+        return $description;
+    }
+
+    /**
+     * @since 3.7.6
+     */
+    private function get_server_ip_address() {
+        $ip_address = get_transient( 'awpcp-server-ip-address' );
+
+        if ( $ip_address ) {
+            return $ip_address;
+        }
+
+        $ip_address = $this->figure_out_server_ip_address();
+
+        if ( $ip_address ) {
+            set_transient( 'awpcp-server-ip-address', $ip_address, HOUR_IN_SECONDS );
+        }
+
+        return $ip_address;
+    }
+
+    /**
+     * @since 3.7.6
+     */
+    private function figure_out_server_ip_address() {
+        $response = wp_remote_get( 'https://httpbin.org/ip' );
+
+        if ( is_wp_error( $response ) ) {
+            return null;
+        }
+
+        $body = json_decode( wp_remote_retrieve_body( $response ) );
+
+        if ( ! isset( $body->origin ) ) {
+            return null;
+        }
+
+        return $body->origin;
+    }
 
 	public function section_date_time_format($args) {
 		$link = '<a href="http://codex.wordpress.org/Formatting_Date_and_Time">%s</a>.';

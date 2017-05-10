@@ -34,10 +34,10 @@ function( $ ) {
 
         // using a single dropdown
         } else {
-            function onDropDownChange() {
+            var onDropDownChange = function() {
                 var category_id = parseInt(self.dropdown.val(), 10);
                 $.publish('/category/updated' , [self.dropdown, isNaN(category_id) ? null : category_id]);
-            }
+            };
 
             self.dropdown.change( onDropDownChange );
 

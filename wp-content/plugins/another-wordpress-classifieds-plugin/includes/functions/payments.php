@@ -7,16 +7,19 @@
  * Request errors, if any, are returned by reference.
  *
  * @since 2.1.1
+ *
+ * @return VERIFIED, INVALID or ERROR
  */
-function awpcp_paypal_verify_recevied_data_with_curl($postfields='', $cainfo=true, &$errors=array()) {
+function awpcp_paypal_verify_received_data_with_curl($postfields='', $cainfo=true, &$errors=array()) {
     if (get_awpcp_option('paylivetestmode') == 1) {
-        $paypal_url = "https://www.sandbox.paypal.com/cgi-bin/webscr";
+        $paypal_url = "https://ipnpb.sandbox.paypal.com/cgi-bin/webscr";
     } else {
-        $paypal_url = "https://www.paypal.com/cgi-bin/webscr";
+        $paypal_url = "https://ipnpb.paypal.com/cgi-bin/webscr";
     }
 
     $ch = curl_init($paypal_url);
     curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt( $ch, CURLOPT_VERBOSE, true );
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
@@ -56,9 +59,9 @@ function awpcp_paypal_verify_recevied_data_with_curl($postfields='', $cainfo=tru
  */
 function awpcp_paypal_verify_received_data_with_fsockopen($content, &$errors=array()) {
     if (get_awpcp_option('paylivetestmode') == 1) {
-        $host = "www.sandbox.paypal.com";
+        $host = "ipnpb.sandbox.paypal.com";
     } else {
-        $host = "www.paypal.com";
+        $host = "ipnpb.paypal.com";
     }
 
     $response = 'ERROR';
@@ -98,6 +101,8 @@ function awpcp_paypal_verify_received_data_with_fsockopen($content, &$errors=arr
  * Request errors, if any, are returned by reference.
  *
  * @since 2.0.7
+ *
+ * @return VERIFIED, INVALID or ERROR
  */
 function awpcp_paypal_verify_received_data($data=array(), &$errors=array()) {
     $content = 'cmd=_notify-validate';
@@ -109,15 +114,17 @@ function awpcp_paypal_verify_received_data($data=array(), &$errors=array()) {
     $response = 'ERROR';
     if (in_array('curl', get_loaded_extensions())) {
         // try using custom CA information -- included with the plugin
-        $response = awpcp_paypal_verify_recevied_data_with_curl($content, true, $errors);
+        $response = awpcp_paypal_verify_received_data_with_curl( $content, true, $errors );
 
         // try using default CA information -- installed in the server
-        if (strcmp($response, 'ERROR') === 0)
-            $response = awpcp_paypal_verify_recevied_data_with_curl($content, false, $errors);
+        if ( strcmp( $response, 'ERROR' ) === 0 ) {
+            $response = awpcp_paypal_verify_received_data_with_curl( $content, false, $errors );
+        }
     }
 
-    if (strcmp($response, 'ERROR') === 0)
-        $response = awpcp_paypal_verify_received_data_with_fsockopen($content, $errors);
+    if ( strcmp( $response, 'ERROR' ) === 0 ) {
+        $response = awpcp_paypal_verify_received_data_with_fsockopen( $content, $errors );
+    }
 
     return $response;
 }

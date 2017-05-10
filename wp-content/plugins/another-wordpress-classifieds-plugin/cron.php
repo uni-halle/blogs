@@ -85,10 +85,6 @@ function doadexpirations() {
     $subject = sprintf($subject, $nameofsite);
     $bodybase = get_awpcp_option('adexpiredbodymessage');
 
-    $admin_sender_email = awpcp_admin_sender_email_address();
-    $admin_recipient_email = awpcp_admin_recipient_email_address();
-
-
     $ads = AWPCP_Ad::find("ad_enddate <= NOW() AND disabled != 1 AND payment_status != 'Unpaid' AND verified = 1");
 
     foreach ($ads as $ad) {
@@ -119,12 +115,26 @@ function doadexpirations() {
         if ( $notify_expiring ) {
             $user_email = awpcp_format_recipient_address( get_adposteremail( $ad->ad_id ) );
             if ( ! empty( $user_email ) ) {
-                awpcp_process_mail( $admin_sender_email, $user_email, $subject, $body, $nameofsite, $admin_recipient_email );
+                $email = new AWPCP_Email();
+
+                $email->to = $user_email;
+                $email->from = awpcp_admin_email_from();
+                $email->subject = $subject;
+                $email->body = $body;
+
+                $email->send();
             }
         }
 
         if ( $notify_admin ) {
-            awpcp_process_mail( $admin_sender_email, $admin_recipient_email, $subject, $body, $nameofsite, $admin_recipient_email );
+            $email = new AWPCP_Email();
+
+            $email->to = awpcp_admin_email_to();
+            $email->from = awpcp_admin_email_from();
+            $email->subject = $subject;
+            $email->body = $body;
+
+            $email->send();
         }
     }
 }

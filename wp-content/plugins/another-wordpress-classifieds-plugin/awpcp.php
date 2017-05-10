@@ -4,7 +4,7 @@
  * Plugin Name: Another WordPress Classifieds Plugin (AWPCP)
  * Plugin URI: http://www.awpcp.com
  * Description: AWPCP - A plugin that provides the ability to run a free or paid classified ads service on your WP site. <strong>!!!IMPORTANT!!!</strong> It's always a good idea to do a BACKUP before you upgrade AWPCP!
- * Version: 3.7.3
+ * Version: 3.7.6
  * Author: D. Rodenbaugh
  * License: GPLv2 or any later version
  * Author URI: http://www.skylineconsult.com
@@ -94,11 +94,14 @@ require_once(AWPCP_DIR . "/cron.php");
 require_once(AWPCP_DIR . "/includes/exceptions.php");
 
 require_once(AWPCP_DIR . "/includes/compatibility/compatibility.php");
+require_once( AWPCP_DIR . '/includes/compatibility/interface-plugin-integration.php' );
 require_once( AWPCP_DIR . "/includes/compatibility/class-add-meta-tags-plugin-integration.php" );
 require_once(AWPCP_DIR . "/includes/compatibility/class-all-in-one-seo-pack-plugin-integration.php");
 require( AWPCP_DIR . "/includes/compatibility/class-facebook-button-plugin-integration.php");
 require_once(AWPCP_DIR . "/includes/compatibility/class-facebook-plugin-integration.php");
 require_once( AWPCP_DIR . '/includes/compatibility/class-facebook-all-plugin-integration.php' );
+require_once( AWPCP_DIR . '/includes/compatibility/class-mashshare-plugin-integration.php' );
+require_once( AWPCP_DIR . '/includes/compatibility/class-plugin-integrations.php' );
 require( AWPCP_DIR . "/includes/compatibility/class-profile-builder-plugin-integration.php");
 require( AWPCP_DIR . "/includes/compatibility/class-profile-builder-login-form-implementation.php");
 require_once( AWPCP_DIR . "/includes/compatibility/class-yoast-wordpress-seo-plugin-integration.php" );
@@ -240,6 +243,7 @@ require_once( AWPCP_DIR . '/includes/media/class-listing-upload-limits.php' );
 require( AWPCP_DIR . '/includes/media/class-listing-media-creator.php' );
 require_once( AWPCP_DIR . "/includes/media/class-media-manager-component.php" );
 require_once( AWPCP_DIR . "/includes/media/class-media-manager.php" );
+require_once( AWPCP_DIR . '/includes/media/class-media-uploaded-notification.php' );
 require_once( AWPCP_DIR . '/includes/media/class-media-uploader-component.php' );
 require_once( AWPCP_DIR . "/includes/media/class-messages-component.php" );
 require_once( AWPCP_DIR . '/includes/media/class-mime-types.php' );
@@ -295,6 +299,7 @@ require_once( AWPCP_DIR . "/includes/class-exceptions.php" );
 require_once( AWPCP_DIR . "/includes/class-fees-collection.php" );
 require_once( AWPCP_DIR . "/includes/class-listing-authorization.php" );
 require_once( AWPCP_DIR . "/includes/class-listing-payment-transaction-handler.php" );
+require_once( AWPCP_DIR . "/includes/class-renew-listing-payment-transaction-handler.php" );
 require_once( AWPCP_DIR . "/includes/class-listing-is-about-to-expire-notification.php" );
 require_once( AWPCP_DIR . "/includes/class-listings-collection.php" );
 require_once( AWPCP_DIR . "/includes/class-listings-metadata.php" );
@@ -331,6 +336,7 @@ require_once(AWPCP_DIR . "/admin/admin-panel.php");
 require_once(AWPCP_DIR . "/admin/user-panel.php");
 require_once( AWPCP_DIR . '/admin/class-delete-browse-categories-page-notice.php' );
 require_once( AWPCP_DIR . '/admin/class-dismiss-notice-ajax-handler.php' );
+require_once( AWPCP_DIR . '/admin/class-missing-paypal-merchant-id-setting-notice.php' );
 require_once( AWPCP_DIR . '/admin/class-page-name-monitor.php' );
 require_once( AWPCP_DIR . '/admin/pointers/class-drip-autoresponder-ajax-handler.php' );
 require_once( AWPCP_DIR . '/admin/pointers/class-drip-autoresponder.php' );
@@ -493,9 +499,16 @@ class AWPCP {
 		$this->compatibility = new AWPCP_Compatibility();
 		$this->compatibility->load_plugin_integrations();
 
+        $this->plugin_integrations = new AWPCP_Plugin_Integrations();
+
+        add_action( 'activated_plugin', array( $this->plugin_integrations, 'maybe_enable_plugin_integration' ), 10, 2 );
+        add_action( 'deactivated_plugin', array( $this->plugin_integrations, 'maybe_disable_plugin_integration' ), 10, 2 );
+
         add_action( 'generate_rewrite_rules', array( $this, 'clear_categories_list_cache' ) );
 
+        add_action( 'init', array( $this, 'register_plugin_integrations' ) );
         add_action( 'init', array( $this->compatibility, 'load_plugin_integrations_on_init' ) );
+        add_action( 'init', array( $this->plugin_integrations, 'load_plugin_integrations' ), AWPCP_LOWEST_FILTER_PRIORITY );
 		add_action( 'init', array($this, 'init' ));
 		add_action( 'init', array($this, 'register_custom_style'), AWPCP_LOWEST_FILTER_PRIORITY );
 
@@ -585,6 +598,10 @@ class AWPCP {
         add_action( 'awpcp-admin-settings-page--form-field-settings', array( $form_fields_settings, 'settings_header' ) );
 	}
 
+    public function register_plugin_integrations() {
+        $this->plugin_integrations->add_plugin_integration( 'mashsharer/mashshare.php', 'awpcp_mashshare_plugin_integration' );
+    }
+
 	public function init() {
         // load resources always required
         $facebook_cache_helper = awpcp_facebook_cache_helper();
@@ -612,6 +629,10 @@ class AWPCP {
             $listing_payment_transaction_handler = awpcp_listing_payment_transaction_handler();
             add_action( 'awpcp-transaction-status-updated', array( $listing_payment_transaction_handler, 'transaction_status_updated' ), 10, 2 );
             add_filter( 'awpcp-process-payment-transaction', array( $listing_payment_transaction_handler, 'process_payment_transaction' ) );
+
+            $handler = awpcp_renew_listing_payment_transaction_handler();
+            add_action( 'awpcp-transaction-status-updated', array( $handler, 'process_payment_transaction' ) );
+            add_filter( 'awpcp-process-payment-transaction', array( $handler, 'process_payment_transaction' ) );
 
             add_action( 'awpcp-place-ad', array( $facebook_cache_helper, 'on_place_ad' ) );
             add_action( 'awpcp_approve_ad', array( $facebook_cache_helper, 'on_approve_ad' ) );
@@ -644,6 +665,7 @@ class AWPCP {
                 add_action( 'admin_notices', array( awpcp_fee_payment_terms_notices(), 'dispatch' ) );
                 add_action( 'admin_notices', array( awpcp_credit_plans_notices(), 'dispatch' ) );
                 add_action( 'admin_notices', array( awpcp_delete_browse_categories_page_notice(), 'maybe_show_notice' ) );
+                add_action( 'admin_notices', array( awpcp_missing_paypal_merchant_id_setting_notice(), 'maybe_show_notice' ) );
 
                 // TODO: do we really need to execute this every time the plugin settings are saved?
                 $handler = awpcp_license_settings_update_handler();
@@ -694,6 +716,8 @@ class AWPCP {
 		}
 
         if ( get_option( 'awpcp-installed-or-upgraded' ) ) {
+            $this->plugin_integrations->discover_supported_plugin_integrations();
+
             $roles_and_capabilities = awpcp_roles_and_capabilities();
             add_action( 'wp_loaded', array( $roles_and_capabilities, 'setup_roles_capabilities' ) );
 
@@ -956,6 +980,12 @@ class AWPCP {
         }
 
         $page_id = awpcp_get_page_id_by_ref( 'browse-categories-page-name' );
+
+        if ( 0 == $page_id ) {
+            delete_option( 'awpcp-store-browse-categories-page-information' );
+            return;
+        }
+
         $page = get_post( $page_id );
 
         if ( $page && $page->post_status == 'trash' ) {
@@ -1041,7 +1071,14 @@ class AWPCP {
 		wp_register_script('awpcp-jquery-validate', "{$js}/jquery-validate/all.js", array('jquery'), '1.10.0', true);
         wp_register_script( 'awpcp-knockout', "//ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js", array(), '3.1.0', true );
         wp_register_script( 'awpcp-momentjs-with-locales', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js', array(), '2.10.6', true );
-        wp_register_script( 'awpcp-jquery-breakpoints', "{$js}/jquery-breakpoints/jquery-breakpoints.min.js", array('jquery'), $awpcp_db_version, true );
+
+        wp_register_script(
+            'awpcp-breakpoints.js',
+            "{$vendors}/breakpoints.js/breakpoints.min.js",
+            array( 'jquery' ),
+            $awpcp_db_version,
+            true
+        );
 
         wp_register_script(
             'awpcp-jquery-usableform',
@@ -1064,7 +1101,7 @@ class AWPCP {
 		wp_register_script(
             'awpcp',
             "{$js}/awpcp.min.js",
-            array( 'jquery', 'backbone', 'awpcp-knockout', 'awpcp-jquery-breakpoints' ),
+            array( 'jquery', 'backbone', 'awpcp-knockout', 'awpcp-breakpoints.js' ),
             $awpcp_db_version,
             true
         );
@@ -1277,7 +1314,9 @@ class AWPCP {
 	}
 
     public function register_notification_handlers() {
-        add_action( 'awpcp-media-uploaded', 'awpcp_send_listing_media_uploaded_notifications', 10, 2 );
+        $media_uploaded_notification = awpcp_media_uploaded_notification();
+        add_action( 'awpcp-media-uploaded', array( $media_uploaded_notification, 'maybe_schedule_notification' ), 10, 2 );
+        add_action( 'awpcp-media-uploaded-notification', array( $media_uploaded_notification, 'send_notification' ) );
     }
 
     public function register_file_handlers( $file_handlers ) {
@@ -1570,9 +1609,7 @@ function awpcp_query_vars($query_vars) {
 
 		// misc
         'awpcp-custom',
-        'a',
 		"cid",
-		"i",
 		"id",
 		"layout",
 		"regionid",

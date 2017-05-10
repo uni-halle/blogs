@@ -107,9 +107,7 @@ class AWPCP_Plugin_Rewrite_Rules {
     }
 
     private function get_pages_rewrite_rules_definitions() {
-        $view_categories = sanitize_title(get_awpcp_option('view-categories-page-name'));
-
-        return array(
+        $rewrite_rules = array(
             'show-ads-page-name' => array(
                 array(
                     'regex' => '(<page-uri>)/(\d+)(?:.*)',
@@ -156,13 +154,8 @@ class AWPCP_Plugin_Rewrite_Rules {
             ),
             'main-page-name' => array(
                 array(
-                    'regex' => '(<page-uri>)/('.$view_categories.')',
-                    'redirect' => 'index.php?pagename=$matches[1]&layout=2&cid='.$view_categories,
-                    'position' => 'top'
-                ),
-                array(
                     'regex' => '(<page-uri>)/(setregion)/(.+?)/(.+?)',
-                    'redirect' => 'index.php?pagename=$matches[1]&regionid=$matches[3]&a=setregion',
+                    'redirect' => 'index.php?pagename=$matches[1]&regionid=$matches[3]',
                     'position' => 'top'
                 ),
                 array(
@@ -177,6 +170,18 @@ class AWPCP_Plugin_Rewrite_Rules {
                 ),
             ),
         );
+
+        $view_categories = sanitize_title( get_awpcp_option( 'view-categories-page-name' ) );
+
+        if ( $view_categories ) {
+            array_unshift( $rewrite_rules['main-page-name'], array(
+                'regex' => '(<page-uri>)/('.$view_categories.')',
+                'redirect' => 'index.php?pagename=$matches[1]&layout=2',
+                'position' => 'top'
+            ) );
+        }
+
+        return $rewrite_rules;
     }
 
     private function add_legacy_plugin_pages_rewrite_rules() {

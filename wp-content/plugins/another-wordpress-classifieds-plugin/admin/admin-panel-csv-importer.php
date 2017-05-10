@@ -347,8 +347,16 @@ class AWPCP_Admin_CSV_Importer {
             'message-description' => _x( '<message-type> in line <message-line>', 'description for messages used to show feedback for the Import Listings operation', 'another-wordpress-classifieds-plugin' )
         ) );
 
+        $params = array( 'test_mode_enabled' => $import_session->is_test_mode_enabled() );
+
+        if ( $import_session->is_test_mode_enabled() ) {
+            $params['action_name'] = _x( 'Test Import', 'text for page subtitle and submit button', 'another-wordpress-classifieds-plugin' );
+        } else {
+            $params['action_name'] = _x( 'Import', 'text for page subtitle and submit button', 'another-wordpress-classifieds-plugin' );
+        }
+
         $template = AWPCP_DIR . '/templates/admin/import-listings-admin-page-import-form.tpl.php';
 
-        return awpcp_render_template( $template, array() );
+        return awpcp_render_template( $template, $params );
     }
 }

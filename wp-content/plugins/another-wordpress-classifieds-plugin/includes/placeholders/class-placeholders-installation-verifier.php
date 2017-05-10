@@ -28,11 +28,11 @@ class AWPCP_PlaceholdersInstallationVerifier {
     }
 
     protected function show_missing_placeholder_notice( $warning_message ) {
-        $warning_message = sprintf( '<strong>%s:</strong> %s', __( 'Warning', 'awpcp-attachments' ), $warning_message );
+        $warning_message = sprintf( '<strong>%s:</strong> %s', __( 'Warning', 'another-wordpress-classifieds-plugin' ), $warning_message );
 
         $url = awpcp_get_admin_settings_url( 'listings-settings' );
-        $link = sprintf( '<a href="%s">%s</a>', $url, __( 'Ad/Listings settings page', 'awpcp-attachments' ) );
-        $go_to_settings_message = sprintf( __( 'Go to the %s to change the Single Ad layout.', 'awpcp-attachments' ), $link );
+        $link = sprintf( '<a href="%s">%s</a>', $url, __( 'Ad/Listings settings page', 'another-wordpress-classifieds-plugin' ) );
+        $go_to_settings_message = sprintf( __( 'Go to the %s to change the Single Ad layout.', 'another-wordpress-classifieds-plugin' ), $link );
 
         echo awpcp_print_error( sprintf( '%s<br/><br/>%s', $warning_message, $go_to_settings_message ) );
     }

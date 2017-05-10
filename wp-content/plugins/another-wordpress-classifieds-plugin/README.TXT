@@ -1,18 +1,18 @@
 === AWPCP - Classifieds Plugin ===
 Contributors: awpcp
 Donate link: http://awpcp.com/donate
-Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified theme,classifieds theme
-Requires at least: 4.2
-Tested up to: 4.7
-Last Updated: 2017-Jan-19
-Stable tag: tags/3.7.3
+Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified theme,wp classified
+Requires at least: 4.3
+Tested up to: 4.7.3
+Last Updated: 2017-Apr-25
+Stable tag: tags/3.7.6
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
 
 == Description ==
 
-[Main Site](http://awpcp.com/) | [Support Forum](http://awpcp.com/forum/) | [Documentation](http://awpcp.com/docs/) | [Showcase](http://awpcp.com/showcase/) | [Premium Modules](http://awpcp.com/premium-modules/)
+[Main Site](http://awpcp.com/) | [Support](http://awpcp.com/forum/) | [Docs](http://awpcp.com/docs/) | [Showcase](http://awpcp.com/showcase/) | [Premium Modules](http://awpcp.com/premium-modules/)
 
 Add a classified ads section to your WordPress site, quickly and easily.  
 Lots of features, very configurable.  Easy to setup.  Great support.
@@ -211,16 +211,73 @@ Your classifieds should now be ready and working. If you are having problems ple
 
 == Frequently Asked Questions ==
 
-Question: Does your plugin have any particular requirements for PHP or MySQL versions?
-Answer: Yes, you need PHP 5.2+ and MySQL 5+.  Earlier versions may work, but are not officially supported.
+For the definitive FAQ section, please visit the [FAQ Section of the Forum](http://www.awpcp.com/forum/faq), or our [Quick Start](http://awpcp.com/quick-start-guide/) guide.
 
-Visit the support forum for [support, FAQs and docs](http://forum.awpcp.com)
+= Installation Instructions =
+Please see our [Installation Guide](https://awpcp.com/quick-start-guide/#qs-general), the [Quick Start Guide](http://awpcp.com/quick-start-guide) for common how-to scenarios, and our [Initial Setup](https://awpcp.com/documentation/#setup) page for instructions on how to get going quickly with Business Directory Plugin.
 
-Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
+Full [documentation](http://awpcp.com/docs) for the plugin is also available.
 
-[Plugin documentation](http://www.awpcp.com/documentation/)
+If you are having problems please visit [support forum](http://awpcp.com/forum) for help.
+
+= Can AWPCP support paid and free listings? =
+Yes it can.  You can do this by creating fee plans for 0.00 and some other paid amount at the same time.  For more details, read [this article](https://awpcp.com/quick-start-guide/#qs-freepaid).
+
+= Will AWPCP work with my theme? =
+AWPCP will work with any well-written, WP 4.x compliant theme.  Generally speaking, paid themes tend to be higher quality than free ones, so we don't recommend those.
+
+Whatever theme you pick, we recommend using the Theme Check plugin (available for free on WordPress.org) to validate how WordPress-compliant that theme actually is.  The more errors and warnings you see on the theme when you run that check, the worse the theme is.  You can read more about it here:  https://wordpress.org/plugins/theme-check/
+
+(This plugin was developed by WP Core developers to validate their own default themes and is highly respected in the theme community)
+
+In general, we like WooThemes as a solid company with great products and support.  You can check them out [here](http://woothemes.com)  Or [StudioPress](http://studiopress.com​​)
+
+= Can AWPCP be translated into my language? =
+Yes it can. AWPCP comes with many user-provided translations under the /languages folder. For details on how to do it, our [translation guide](http://awpcp.com/quick-start-guide/#qs-translate) will help get you started.
+
+= Is AWPCP compatible with WordPress Multisite (WPMU)? =
+Yes it is. However, you cannot "network-activate" the plugin (as this will share the database). Activate it on only the subsites on which you need a directory.  This can be done under Plugins->Add New as the Administrator user.  Do not "network activate" AWPCP as the "super admin".
 
 == Changelog ==
+= Version 3.7.6 =
+* Show server's IP address in Licenses settings tab.
+* Show version of cURL in Debug area
+* Remove Roles and Capabilities on Uninstall.
+* Fix typo in Payment Terms Table.
+* Do not force sslverify=false for modules packages.
+
+= Version 3.7.5 =
+* Fix positioning for category icons.
+* Stop adding MIME-Version header to emails.
+* Do not count CR characters in listing's content.
+* Prevent access keys of invalid listings from being sent.
+* Fix category URLs when Browse Listings is front page.
+* Disable MashShare meta tags in Listings pages.
+* Fix IPN Post Back host in sandbox mode.
+* Replace use of awpcp_process_mail() with AWPCP_Email.
+* Use an array to pass headers to wp_mail.
+* Send email using wp_mail only.
+
+= Version 3.7.4 =
+* Prevent 404 errors in BuddyPress Listings.
+* Add better responsive behaviour to List of Listings.
+* Do not show regions selector if no regions are allowed.
+* Restore AWPCPBROWSECATS shortcode but direct to AWPCPBROWSEADS.
+* Remove unused query vars 'a' and 'i'.
+* Prevent PHP Warnings and Errors in PHP 5.4 and above.
+* Do not show View Categories menu if page's name is emtpy.
+* Prevent creation of invalid rules for View Categories page.
+* Fix label for submit button in Upload Images form.
+* Fix bug that incorrectly allowed images to be allowed.
+* Strip CR characters from listing's meta description.
+* Fix typo: 'Pelase' -> 'Please'.
+* Fix problem with aposthrophes in categories names.
+* Validate PayPal payment information using Merchant ID.
+* Fix text domain for strings in Placeholder's notice.
+* Add updated translations from Transifex.
+* Add notification for media uploaded to listings (#532).
+* Asks admins to enter PayPal Merchant ID to improve verification of payment information.
+* Add warning notice when testing an import operation.
 
 = Version 3.7.3 =
 * Fix PHP Warning in Browse Categories Page Redirection Handler.

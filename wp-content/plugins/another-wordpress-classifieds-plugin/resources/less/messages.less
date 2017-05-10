@@ -1,59 +1,41 @@
-.awpcp-message {
-    background-color: #FFFBCC;
-    border: 1px solid #CCC;
-    color: #333;
-    margin: 10px 0;
-    padding: 8px 12px;
+#classiwrapper {
+    .awpcp-message {
+        background-color: #FFFBCC;
+        border: 1px solid #CCC;
+        color: #333;
+        margin: 10px 0;
+        padding: 8px 12px;
 
-    p {
-        margin: 0;
+        &.updated {
+            border-color: #E6DB55;
+        }
+        &.error {
+            border-color: #CC0000;
+        }
+        &.info {
+            border-color: #00A1CE;
+        }
+        &.ghost {
+            display: none;
+        }
+
+        p {
+            margin: 0;
+        }
     }
-}
 
-// frontend(?)
-.awpcp-page .awpcp-message p {
-    margin: 0;
-}
-
-// admin(?)
-.wp-admin .awpcp-message {
-    border-top: none;
-    border-right: none;
-    border-bottom: none;
-
-    p {
-        margin: .5em 0;
-    }
-}
-
-// are we overwriting WordPress styles?
-// A: In the admin only .ghost remains applied,
-//    all other are overwritten by WordPress styles.
-.awpcp-message {
-    &.updated {
+    .awpcp-updated {
         border-color: #E6DB55;
+        display: block !important;
     }
-    &.error {
-        border-color: #CC0000;
-    }
-    &.info {
-        border-color: #00A1CE;
-    }
-    &.ghost {
-        display: none;
-    }
-}
 
-.awpcp-updated {
-    border-color: #E6DB55;
-    display: block !important;
-}
-.awpcp-error {
-    background-color: #FFEBE8;
-    border-color: #CC0000;
-    color: #ff0000;
-    font-weight: normal;
-    font-size: 14px;
+    .awpcp-error {
+        background-color: #FFEBE8;
+        border-color: #CC0000;
+        color: #ff0000;
+        font-weight: normal;
+        font-size: 14px;
+    }
 }
 
 .wrap div.awpcp-inline-form-error /* necessary to overwrite WordPress styles */ {
