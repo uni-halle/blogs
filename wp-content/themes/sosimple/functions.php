@@ -206,6 +206,14 @@ function sosimple_load_theme_fonts()
 }
 add_action( 'wp_head', 'sosimple_load_theme_fonts' );
 
+function sosimple_admin_notice__success() {
+	$class = 'notice notice-info is-dismissible';
+	$message = __( 'Good Day, this is the SoSimple theme creator <b>fervillz</b>. I am thankful that you are still using my theme, in return I would like to offer you a chance to be a part of the next SoSimple update. <br> <b>What to do?</b> Just contact me on my email <a href="mailto:fervillz@gmail.com">fervillz@gmail.com</a> an write what features you wantto add on the next update. That\'s all!!', 'sosimple' );
+
+	printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message ); 
+}
+add_action( 'admin_notices', 'sosimple_admin_notice__success' );
+
 /**
  * Enqueue Google Fonts for custom headers
  */

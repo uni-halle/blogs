@@ -5,7 +5,7 @@ Tags: gray, white, custom-background, custom-header, custom-menu, flexible-heade
 
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 1.2.6
+Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,10 @@ Brand your site and make it yours with Jetpack (http://jetpack.me) by including 
 * The sidebar width is 234.
 * Featured Images for single posts are 656 by 300
 * Custom header image should be at least 937 in width.
+
+== Changelog ==
+= 1.2.7- February 23 2017 =
+* Theme fixes update
 
 == Changelog ==
 = 1.2.5- December 15 2016 =
