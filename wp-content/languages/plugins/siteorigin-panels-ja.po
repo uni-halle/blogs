@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Plugins - Page Builder by SiteOrigin - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-01-14 02:44:44+0000\n"
+"PO-Revision-Date: 2017-05-06 08:33:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: ja_JP\n"
 "Project-Id-Version: Plugins - Page Builder by SiteOrigin - Stable (latest release)\n"
 
@@ -21,7 +21,7 @@ msgstr "SiteOrigin"
 
 #. Description of the plugin/theme
 msgid "A drag and drop, responsive page builder that simplifies building your website."
-msgstr "あなたのウェブサイトの構築を簡素化するドラッグアンドドロップ式のレスポンシブページビルダー。"
+msgstr "サイト構築を簡単にしてくれる、ドラッグ & ドロップ方式のレスポンシブページビルダー。"
 
 #. Plugin URI of the plugin/theme
 msgid "https://siteorigin.com/page-builder/"
@@ -194,7 +194,7 @@ msgstr "価格ボックス (PB)"
 
 #: widgets/widgets/list/list.php:20 widgets/widgets/price-box/price-box.php:32
 msgid "Start each new point with an asterisk (*)"
-msgstr "アスタリスク（*）で新しいポイントをそれぞれ開始します。"
+msgstr "アスタリスク (*) で各新規ポイントを始めます"
 
 #: widgets/widgets/list/list.php:8 widgets/widgets/price-box/price-box.php:8
 msgid "Displays a bullet list of elements"
@@ -245,7 +245,7 @@ msgstr "右"
 
 #: widgets/widgets/button/button.php:29
 msgid "Left"
-msgstr "左寄せ"
+msgstr "左"
 
 #: widgets/widgets/button/button.php:27
 msgid "Button Alignment"
@@ -555,7 +555,7 @@ msgstr "有効化"
 
 #: tpl/js-templates.php:383
 msgid "Do you want to browse the Prebuilt Layouts directory?"
-msgstr "再構築レイアウトディレクトリを立ち上げますか?"
+msgstr "事前構築済みレイアウトディレクトリをブラウズしますか ?"
 
 #: tpl/js-templates.php:365
 msgid "Clone: %s"
@@ -579,7 +579,7 @@ msgstr "検索"
 
 #: tpl/js-templates.php:347
 msgid "Prebuilt Layouts"
-msgstr "事前に作成されたレイアウト"
+msgstr "事前構築済みレイアウト"
 
 #: tpl/js-templates.php:329
 msgid "Save"
@@ -592,6 +592,10 @@ msgstr "挿入"
 #: tpl/js-templates.php:308
 msgid "Set"
 msgstr "設定"
+
+#: tpl/js-templates.php:302
+msgid "1{Set row layout}: %1$s columns with a ratio of %2$s going from %3$s"
+msgstr "1{Set row layout}: %1$sカラム。割合%2$s方向%3$s"
 
 #: tpl/js-templates.php:291
 msgid "Right to Left"
@@ -641,6 +645,12 @@ msgstr "行の複製"
 msgid "Edit Row"
 msgstr "行の編集"
 
+#. TRANSLATORS: This message gives suggestions of next steps for the user
+#. x{...} is used to insert links
+#: tpl/js-templates.php:64
+msgid "Add a 1{widget}, 2{row} or 3{prebuilt layout} to get started. Read our 4{documentation} if you need help."
+msgstr "始めるには 1{widget}、2{row}、3{prebuilt layout} を追加します。もしヘルプが必要な場合は 4{documentation} をお読みください。"
+
 #: tpl/js-templates.php:39
 msgid "Switch to Editor"
 msgstr "エディタに切り替え"
@@ -655,11 +665,15 @@ msgstr "履歴"
 
 #: tpl/js-templates.php:22
 msgid "Prebuilt"
-msgstr "再構築"
+msgstr "事前構築済み"
 
 #: tpl/js-templates.php:12
 msgid "Add Widget"
 msgstr "ウィジェットを追加"
+
+#: tpl/help.php:18
+msgid "Read the 1{full documentation} on SiteOrigin. Ask a question on our 2{support forum} if you need help and sign up to 3{our newsletter} to stay up to date with future developments."
+msgstr "SiteOrigin で 1{full documentation} をお読みください。ヘルプが必要な場合は2{support forum}で質問してください。今後の開発情報を受け取るには3{our newsletter}に登録してください。"
 
 #: tpl/help.php:3
 msgid "The page layouts are responsive and fully customizable."
@@ -700,6 +714,10 @@ msgstr "ニュースレター"
 #: siteorigin-panels.php:1389
 msgid "Support Forum"
 msgstr "サポートフォーラム"
+
+#: siteorigin-panels.php:1322
+msgid "The widget 1{%1$s} is not available. Please try locate and install the missing plugin. Post on the 2{support forums} if you need help."
+msgstr "ウィジェット「1{%1$s}」は利用できません。見当たらないプラグインを確認し、インストールを試みてください。ヘルプが必要な場合は2{support forums}に投稿してください。"
 
 #: siteorigin-panels.php:1305
 msgid "Save and reload this page to start using the widget after you've installed it."
@@ -773,11 +791,15 @@ msgstr "このエディターの既存のコンテンツを Page Builder にコ�
 
 #: siteorigin-panels.php:370
 msgid "Loading prebuilt layout"
-msgstr "作成済みレイアウトを読み込み中"
+msgstr "事前構築済みレイアウトを読み込み中"
 
 #: siteorigin-panels.php:369
 msgid "Are you sure you want to overwrite your current content? This can be undone in the builder history."
 msgstr "現在のコンテンツを上書きしてもよろしいですか ? これはビルダーの履歴を使用して元に戻すことができます。"
+
+#: siteorigin-panels.php:365
+msgid "Prebuilt layout loaded"
+msgstr "事前構築済みレイアウトを読み込みました"
 
 #: siteorigin-panels.php:362
 msgid "Cell resized"
@@ -916,15 +938,19 @@ msgstr "設定を保存"
 
 #: settings/tpl/settings.php:29
 msgid "Settings Saved"
-msgstr "設定が保存されました"
+msgstr "設定を保存しました"
 
 #: settings/tpl/settings.php:12
 msgid "Search Settings"
 msgstr "検索設定"
 
+#: settings/tpl/help.php:6
+msgid "Please read the 1{settings guide} of the Page Builder documentation for help."
+msgstr "ヘルプが必要な場合は Page Builder の1{settings guide}をご覧ください。"
+
 #: settings/settings.php:276
 msgid "Copy content from Page Builder to post content."
-msgstr "Page Builder からコンテンツを投稿します。"
+msgstr "Page Builder からコンテンツをコピーして投稿。"
 
 #: settings/settings.php:275 tpl/options.php:25
 msgid "Copy Content"
@@ -942,6 +968,10 @@ msgstr "全幅レイアウトに使用されるコンテナー。"
 msgid "Full Width Container"
 msgstr "全幅コンテナ"
 
+#: settings/settings.php:255
+msgid "Default spacing between columns in each row."
+msgstr "各行内のカラム間のスペースのデフォルト。"
+
 #: settings/settings.php:254
 msgid "Row Gutter"
 msgstr "行下の余白"
@@ -956,7 +986,7 @@ msgstr "行の下マージン:"
 
 #: settings/settings.php:241
 msgid "Device width, in pixels, to collapse into a mobile view ."
-msgstr "モバイルビューに折りたたむデバイスの幅（ピクセル単位）。"
+msgstr "モバイルビューに折りたたむデバイスの幅 (px)。"
 
 #: settings/settings.php:240 tpl/options.php:64
 msgid "Mobile Width"
@@ -970,9 +1000,21 @@ msgstr "モバイルデバイス上のウィジェット、行、列を折りた
 msgid "Responsive Layout"
 msgstr "レスポンシブレイアウト"
 
+#: settings/settings.php:219
+msgid "Display recommend widgets in Page Builder add widget dialog."
+msgstr "Page Builder のウィジェット追加ダイアログにおすすめウィジェットを表示する。"
+
+#: settings/settings.php:213
+msgid "Load legacy widgets from Page Builder 1."
+msgstr "Page Builder 1 からのレガシーウィジェットを読み込む。"
+
 #: settings/settings.php:212
 msgid "Legacy Bundled Widgets"
 msgstr "レガシーなバンドルウィジェット"
+
+#: settings/settings.php:207
+msgid "The HTML used for widget titles. {{title}} is replaced with the widget title."
+msgstr "ウィジェットのタイトルに使われる HTML。{{title}} はウィジェットのタイトルに置き換えられます。"
 
 #: settings/settings.php:206
 msgid "Widget Title HTML"
@@ -981,6 +1023,10 @@ msgstr "ウィジェットタイトルの HTML"
 #: settings/settings.php:200
 msgid "Widgets"
 msgstr "ウィジェット"
+
+#: settings/settings.php:194
+msgid "The post types to use Page Builder on."
+msgstr "Page Builder を適用する投稿タイプ。"
 
 #: settings/settings.php:192 tpl/options.php:15
 msgid "Post Types"
@@ -1026,9 +1072,21 @@ msgstr "WooCommerce"
 msgid "WordPress Widgets"
 msgstr "WordPress ウィジェット"
 
+#: inc/widgets.php:120
+msgid "You can enable the legacy (PB) widgets in the 1{Page Builder settings}."
+msgstr "レガシー (Page Builder) ウィジェットは 1{Page Builder settings} で有効化できます。"
+
 #: inc/widgets.php:112
 msgid "Page Builder Widgets"
 msgstr "Page Builder ウィジェット"
+
+#: inc/widgets.php:107
+msgid "Install the 1{Widgets Bundle} to get extra widgets."
+msgstr "追加ウィジェットを入手するには1{Widgets Bundle}をインストールしてください。"
+
+#: inc/widgets.php:99
+msgid "Enable more widgets in the 1{Widgets Bundle settings}."
+msgstr "1{Widgets Bundle settings} で追加ウィジェットを有効化する。"
 
 #: inc/widgets.php:84
 msgid "Widgets Bundle"
@@ -1276,17 +1334,23 @@ msgstr "CSS クラス"
 msgid "Row Class"
 msgstr "行のクラス"
 
+#. TRANSLATORS: Indicate if there are items to clone. %s will be pages, posts,
+#. etc.
+#: inc/admin-actions.php:129
+msgid "There are no %s with Page Builder content to clone."
+msgstr "複製できる Page Builder コンテンツを持つ%sがありません。"
+
 #: inc/admin-actions.php:111
 msgid "Clone"
 msgstr "複製"
 
 #: inc/admin-actions.php:78
 msgid "You can still clone existing pages though."
-msgstr "あなたは既存のページを複製することができます。"
+msgstr "既存のページを複製することもできます。"
 
 #: inc/admin-actions.php:77
 msgid "Your theme doesn't have any prebuilt layouts."
-msgstr "あなたのテーマには、あらかじめ作成されたレイアウトがありません。"
+msgstr "あなたのテーマには事前構築済みレイアウトがありません。"
 
 #: inc/admin-actions.php:68
 msgid "No description"

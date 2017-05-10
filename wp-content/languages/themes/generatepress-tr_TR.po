@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Themes - GeneratePress package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-01-29 03:42:39+0000\n"
+"PO-Revision-Date: 2017-03-14 21:36:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: tr\n"
 "Project-Id-Version: Themes - GeneratePress\n"
 
@@ -15,9 +15,9 @@ msgstr ""
 msgid "GeneratePress is a fast, lightweight (less than 1MB zipped), mobile responsive WordPress theme built with speed, SEO and usability in mind. GP can serve as a solid base for any website, and works great with any of your favorite page builders. With an emphasis on WordPress coding standards, we ensure GeneratePress is compatible with all well-coded plugins, including major ones like WooCommerce, WPML, BuddyPress and bbPress. GeneratePress is device friendly (mobile and tablet), uses 100% valid HTML, is fully schema microdata integrated, is translated into over 20 languages by our amazing community and is cross browser compatible (including IE8). Some of our features include 9 widget areas, 5 navigation positions, 5 sidebar layouts, dropdown menus (click or hover) and a back to top button. All our options use the native WordPress Customizer, meaning you can see every change you make instantly before pressing the publish button. Learn more and check out our powerful premium version at https://generatepress.com"
 msgstr "GeneratePress is a fast, lightweight (less than 1MB zipped), mobile responsive WordPress theme built with speed, SEO and usability in mind. GP can serve as a solid base for any website, and works great with any of your favorite page builders. With an emphasis on WordPress coding standards, we ensure GeneratePress is compatible with all well-coded plugins, including major ones like WooCommerce, WPML, BuddyPress and bbPress. GeneratePress is device friendly (mobile and tablet), uses 100% valid HTML, is fully schema microdata integrated, is translated into over 20 languages by our amazing community and is cross browser compatible (including IE8). Some of our features include 9 widget areas, 5 navigation positions, 5 sidebar layouts, dropdown menus (click or hover) and a back to top button. All our options use the native WordPress Customizer, meaning you can see every change you make instantly before pressing the publish button. Learn more and check out our powerful premium version at https://generatepress.com"
 
-#. #-#-#-#-#  generatepress.pot (GeneratePress 1.3.44)  #-#-#-#-#
+#. #-#-#-#-#  generatepress.pot (GeneratePress 1.3.46)  #-#-#-#-#
 #. Theme Name of the plugin/theme
-#: functions.php:469
+#: functions.php:455
 msgid "GeneratePress"
 msgstr "GeneratePress"
 
@@ -47,31 +47,31 @@ msgstr "Kılavuzlar"
 msgid "Premium"
 msgstr "Premium"
 
-#: inc/customizer.php:799
+#: inc/customizer.php:895
 msgid "Footer Bar Alignment"
 msgstr "Alt alanı pozisyonu"
 
-#: functions.php:190
+#: functions.php:176
 msgid "Footer Bar"
 msgstr "Alt alanı"
 
-#: inc/customizer.php:742
+#: inc/customizer.php:838
 msgid "Inner Footer Width"
 msgstr "Alt alanın iç eni"
 
-#: inc/customizer.php:438
+#: inc/customizer.php:534
 msgid "Inner Navigation Width"
 msgstr "İç navigasyon eni"
 
-#: inc/customizer.php:346
+#: inc/customizer.php:442
 msgid "Inner Header Width"
 msgstr "İç başlık eni"
 
-#: inc/add-ons/typography.php:546
+#: inc/add-ons/typography.php:577
 msgid "Paragraph margin"
 msgstr "Paragraf kenarı"
 
-#: inc/add-ons/typography.php:520
+#: inc/add-ons/typography.php:551
 msgid "Line height"
 msgstr "Satır yüksekliği"
 
@@ -79,89 +79,82 @@ msgstr "Satır yüksekliği"
 msgid "Reset"
 msgstr "Meta"
 
-#: inc/metaboxes.php:266
-msgid "Full Width Content"
-msgstr "Tam Eninde İçeriği"
-
-#: inc/metaboxes.php:240
-msgid "Page Builder Integration"
-msgstr "Sayfa Tasarımcı Entegrasyonu"
-
-#: inc/customizer.php:692
-msgid "Footer"
-msgstr "Ayak"
-
-#: inc/customizer.php:592
-msgid "Sidebars"
-msgstr "Yan Paneller"
-
-#: inc/customizer.php:388
-msgid "Primary Navigation"
-msgstr "Ana Navigasyon"
-
 #: inc/customizer.php:258
 msgid "Container"
 msgstr "Taşıyıcı"
+
+#: inc/customizer.php:484
+msgid "Primary Navigation"
+msgstr "Ana Navigasyon"
+
+#: inc/customizer.php:688
+msgid "Sidebars"
+msgstr "Yan Paneller"
+
+#: inc/customizer.php:788
+msgid "Footer"
+msgstr "Ayak"
 
 #: comments.php:107
 msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" class=\"comment-logout\" title=\"Log out of this account\">Log out?</a>"
 msgstr "<a href=\"%1$s\">%2$s</a> olarak giriş yaptınız. <a href=\"%3$s\" class=\"comment-logout\" title=\"Bu hesaptan çıkış yap\">Çıkış yap?</a>"
 
-#: inc/template-tags.php:670
-msgid "Scroll back to top"
-msgstr "Başa dön"
-
-#: inc/customizer.php:827
-msgid "Back to Top Button"
-msgstr "Başa Dön Butonu"
-
-#: inc/customizer.php:715
-msgid "Footer Width"
-msgstr "Ayak Eni"
-
-#: inc/customizer.php:529
-msgid "Click - Arrow"
-msgstr "Tıkla - Ok"
-
-#: inc/customizer.php:528
-msgid "Click - Menu Item"
-msgstr "Tıkla - Menu Öğe"
-
-#: inc/customizer.php:527
+#: inc/customizer.php:623
 msgid "Hover"
 msgstr "Hover"
 
-#: inc/customizer.php:524
-msgid "Navigation Dropdown"
-msgstr "Navigasyon Dropdown"
+#: inc/template-tags.php:686 inc/template-tags.php:690
+msgid "Scroll back to top"
+msgstr "Başa dön"
 
-#: inc/customizer.php:411
+#: inc/customizer.php:507
 msgid "Navigation Width"
 msgstr "Navigasyon eni"
 
-#: inc/customizer.php:322 inc/customizer.php:350 inc/customizer.php:414
-#: inc/customizer.php:442 inc/customizer.php:718 inc/customizer.php:746
+#: inc/customizer.php:620
+msgid "Navigation Dropdown"
+msgstr "Navigasyon Dropdown"
+
+#: inc/customizer.php:624
+msgid "Click - Menu Item"
+msgstr "Tıkla - Menu Öğe"
+
+#: inc/customizer.php:625
+msgid "Click - Arrow"
+msgstr "Tıkla - Ok"
+
+#: inc/customizer.php:811
+msgid "Footer Width"
+msgstr "Ayak Eni"
+
+#: inc/customizer.php:923
+msgid "Back to Top Button"
+msgstr "Başa Dön Butonu"
+
+#: inc/customizer.php:322 inc/customizer.php:350 inc/customizer.php:418
+#: inc/customizer.php:446 inc/customizer.php:510 inc/customizer.php:538
+#: inc/customizer.php:814 inc/customizer.php:842
 msgid "Full"
 msgstr "Tamamı"
 
-#: inc/customizer.php:319
+#: inc/customizer.php:415
 msgid "Header Width"
 msgstr "Başlık Eni"
+
+#: inc/customizer.php:567
+msgid "Float Left"
+msgstr "Sola Kaydır"
 
 #: inc/options.php:208
 msgctxt "made with love"
 msgid "Made with %s by Tom Usborne"
 msgstr "Tom Usborne tarafından %s ile yapılmış"
 
-#: inc/customizer.php:471
-msgid "Float Left"
-msgstr "Sola Kaydır"
-
 #: inc/options.php:53
 msgid "Support"
 msgstr "Destek"
 
-#: inc/add-ons/disable-elements.php:42 inc/add-ons/disable-elements.php:44
+#: inc/add-ons/disable-elements.php:50 inc/add-ons/disable-elements.php:52
 msgid "Content Title"
 msgstr "İçerik Başlığı"
 
@@ -169,21 +162,21 @@ msgstr "İçerik Başlığı"
 msgid "It looks like nothing was found at this location. Maybe try searching?"
 msgstr "Burada birşey bulunamadı. Aramayı deneyebilirsiniz."
 
-#: inc/options.php:188
-msgid "<strong>Warning:</strong> Deleting your <a href=\"%1$s\">Customizer</a> settings can not be undone."
-msgstr "<strong>Dikkat:</strong> Silen <a href=\"%1$s\">Customizer</a> ayarları geri alınmaz."
+#: inc/template-tags.php:842 inc/template-tags.php:856
+#: inc/template-tags.php:870 inc/template-tags.php:884
+#: inc/template-tags.php:898
+msgid "Replace this widget content by going to <a href=\"%1$s\"><strong>Appearance / Widgets</strong></a> and dragging widgets into this widget area."
+msgstr "Bunu değiştirmek için tıkla <a href=\"%1$s\"><strong>Appearance / Widgets</strong></a> and dragging widgets into this widget area."
 
-#: inc/template-tags.php:834 inc/template-tags.php:848
-#: inc/template-tags.php:862 inc/template-tags.php:876
-#: inc/template-tags.php:890
+#: inc/template-tags.php:843 inc/template-tags.php:857
+#: inc/template-tags.php:871 inc/template-tags.php:885
+#: inc/template-tags.php:899
 msgid "To remove or choose the number of footer widgets, go to <a href=\"%1$s\"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>."
 msgstr "Ayak widgets seçmek için tıkla <a href=\"%1$s\"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>."
 
-#: inc/template-tags.php:833 inc/template-tags.php:847
-#: inc/template-tags.php:861 inc/template-tags.php:875
-#: inc/template-tags.php:889
-msgid "Replace this widget content by going to <a href=\"%1$s\"><strong>Appearance / Widgets</strong></a> and dragging widgets into this widget area."
-msgstr "Bunu değiştirmek için tıkla <a href=\"%1$s\"><strong>Appearance / Widgets</strong></a> and dragging widgets into this widget area."
+#: inc/options.php:188
+msgid "<strong>Warning:</strong> Deleting your <a href=\"%1$s\">Customizer</a> settings can not be undone."
+msgstr "<strong>Dikkat:</strong> Silen <a href=\"%1$s\">Customizer</a> ayarları geri alınmaz."
 
 #: searchform.php:14
 msgctxt "placeholder"
@@ -215,133 +208,129 @@ msgstr "İlk yazınızı yayınlamaya hazır mısınız? <a href=\"%1$s\">Burada
 msgid "Nothing Found"
 msgstr "Bulunamadı"
 
-#: inc/template-tags.php:247
+#: inc/template-tags.php:225
 msgid "% Comments"
 msgstr "% Yorum"
 
-#: inc/template-tags.php:247
+#: inc/template-tags.php:225
 msgid "1 Comment"
 msgstr "1 Yorum"
 
-#: inc/template-tags.php:247
+#: inc/template-tags.php:225
 msgid "Leave a comment"
 msgstr "Yorum yap"
 
-#: inc/template-tags.php:240
+#: inc/template-tags.php:218
 msgctxt "Used before tag names."
 msgid "Tags"
 msgstr "Etiketler"
 
-#: inc/template-tags.php:232
+#: inc/template-tags.php:210
 msgctxt "Used before category names."
 msgid "Categories"
 msgstr "Kategoriler"
 
-#: inc/template-tags.php:229 inc/template-tags.php:237
+#: inc/template-tags.php:207 inc/template-tags.php:215
 msgctxt "Used between list items, there is a space after the comma."
 msgid ", "
 msgstr ", "
 
-#: inc/template-tags.php:376
+#: inc/template-tags.php:372
 msgctxt "label"
 msgid "Search"
 msgstr "Ara"
 
-#: inc/template-tags.php:259 inc/template-tags.php:270
+#: inc/template-tags.php:240 inc/template-tags.php:254
 msgid "Read more"
 msgstr "Devamını oku..."
 
-#: inc/template-tags.php:208
+#: inc/template-tags.php:187
 msgid "View all posts by %s"
 msgstr "%s tarafından yazılmış tüm yazıları görüntüle"
 
-#: inc/template-tags.php:206
+#: inc/template-tags.php:185
 msgid "by"
 msgstr "Yazarı:"
 
-#: inc/template-tags.php:158
+#: inc/template-tags.php:136
 msgid "Your comment is awaiting moderation."
 msgstr "Yorumunuz denetim için bekliyor."
 
-#: inc/template-tags.php:141
+#: inc/template-tags.php:119
 msgctxt "1: date, 2: time"
 msgid "%1$s at %2$s"
 msgstr "%1$s %2$s"
 
-#: inc/template-tags.php:124
+#: inc/template-tags.php:102
 msgid "Pingback:"
 msgstr "Geri izleme:"
 
-#: inc/template-tags.php:97
+#: inc/template-tags.php:52
 msgid "Newer posts"
 msgstr "Yeni yazılar"
 
-#: inc/template-tags.php:93
+#: inc/template-tags.php:48
 msgid "Older posts"
 msgstr "Eski yazılar"
 
-#: inc/template-tags.php:88 inc/template-tags.php:97
+#: inc/template-tags.php:43 inc/template-tags.php:52
 msgid "Next"
 msgstr "Sonraki"
 
-#: inc/template-tags.php:87 inc/template-tags.php:93
+#: inc/template-tags.php:42 inc/template-tags.php:48
 msgid "Previous"
 msgstr "Önceki"
 
-#: inc/template-tags.php:83
+#: inc/template-tags.php:38
 msgid "Post navigation"
 msgstr "Yazı dolaşımı"
 
-#: inc/template-tags.php:46
+#: inc/deprecated.php:17 inc/template-tags.php:59
 msgid "Next &rarr;"
 msgstr "Sonraki &rarr;"
 
-#: inc/template-tags.php:45
+#: inc/deprecated.php:16 inc/template-tags.php:58
 msgid "&larr; Previous"
 msgstr "&larr; Önceki"
-
-#: inc/options.php:259
-msgid "Settings removed."
-msgstr "Ayarlar silindi."
 
 #: inc/options.php:255
 msgid "Import successful."
 msgstr "İçe aktarma başarılı."
 
+#: inc/options.php:259
+msgid "Settings removed."
+msgstr "Ayarlar silindi."
+
 #: inc/options.php:251
 msgid "Settings saved."
 msgstr "Ayarlar Kaydedildi."
-
-#: inc/add-ons/disable-elements.php:19
-msgid "Disable Elements"
-msgstr "Elementleri devre dışı bırak"
-
-#: inc/options.php:196
-msgid "Delete Default Customizer Settings"
-msgstr "Varsayılan Customizer Settings Sil"
-
-#: inc/options.php:194
-msgid "Warning: This will delete your settings."
-msgstr "Dikkat: ayarlar silenecek."
-
-#: inc/options.php:189
-msgid "Consider using our Import/Export add-on to export your settings before deleting them."
-msgstr "Import/Export eklenti ile ayarları yedekle ondan sonra silebilirsiniz."
-
-#: inc/options.php:186
-msgid "Delete Customizer Settings"
-msgstr "Customizer ayarları sil"
 
 #: inc/options.php:137
 msgid "Add-ons"
 msgstr "Eklemeler"
 
+#: inc/options.php:186
+msgid "Delete Customizer Settings"
+msgstr "Customizer ayarları sil"
+
+#: inc/options.php:194
+msgid "Warning: This will delete your settings."
+msgstr "Dikkat: ayarlar silenecek."
+
+#: inc/add-ons/disable-elements.php:27
+msgid "Disable Elements"
+msgstr "Elementleri devre dışı bırak"
+
+#: inc/options.php:189
+msgid "Consider using our Import/Export add-on to export your settings before deleting them."
+msgstr "Import/Export eklenti ile ayarları yedekle ondan sonra silebilirsiniz."
+
 #: inc/options.php:72 inc/options.php:166
 msgid "Customize"
 msgstr "Özelleştir"
 
-#: inc/navigation.php:136 inc/template-tags.php:402 inc/template-tags.php:431
-#: inc/template-tags.php:434 searchform.php:16
+#: inc/navigation.php:136 inc/template-tags.php:398 inc/template-tags.php:429
+#: inc/template-tags.php:432 searchform.php:16
 msgctxt "submit button"
 msgid "Search"
 msgstr "Ara"
@@ -354,233 +343,225 @@ msgstr "İçeriğe atla"
 msgid "Menu"
 msgstr "Menü"
 
-#: inc/metaboxes.php:183 inc/metaboxes.php:185
-msgid "5 Widgets"
-msgstr "5 Widget"
-
-#: inc/metaboxes.php:179 inc/metaboxes.php:181
-msgid "4 Widgets"
-msgstr "4 Widget"
-
-#: inc/metaboxes.php:175 inc/metaboxes.php:177
-msgid "3 Widgets"
-msgstr "3 Widget"
-
-#: inc/metaboxes.php:171 inc/metaboxes.php:173
-msgid "2 Widgets"
-msgstr "2 Widget"
-
-#: inc/metaboxes.php:167 inc/metaboxes.php:169
-msgid "1 Widget"
-msgstr "1 Widget"
-
-#: inc/metaboxes.php:163 inc/metaboxes.php:165
-msgid "0 Widgets"
-msgstr "Widget Yok"
-
-#: inc/metaboxes.php:161
-msgid "Global Footer Widget Settings"
-msgstr "Genel Alt Ayarlar"
-
-#: inc/metaboxes.php:77
-msgid "Both Sidebars on Right"
-msgstr "İki Yan Bölümü Sağda"
-
-#: inc/metaboxes.php:73
-msgid "Both Sidebars on Left"
-msgstr "İki Yan Bölümü Solda"
-
-#: inc/metaboxes.php:69
+#: inc/metaboxes.php:68
 msgid "Both Sidebars"
 msgstr "İki Yan Bölümleri"
 
-#: inc/metaboxes.php:65
+#: inc/metaboxes.php:72
+msgid "Both Sidebars on Left"
+msgstr "İki Yan Bölümü Solda"
+
+#: inc/metaboxes.php:76
+msgid "Both Sidebars on Right"
+msgstr "İki Yan Bölümü Sağda"
+
+#: inc/metaboxes.php:166 inc/metaboxes.php:168
+msgid "0 Widgets"
+msgstr "Widget Yok"
+
+#: inc/metaboxes.php:170 inc/metaboxes.php:172
+msgid "1 Widget"
+msgstr "1 Widget"
+
+#: inc/metaboxes.php:174 inc/metaboxes.php:176
+msgid "2 Widgets"
+msgstr "2 Widget"
+
+#: inc/metaboxes.php:178 inc/metaboxes.php:180
+msgid "3 Widgets"
+msgstr "3 Widget"
+
+#: inc/metaboxes.php:182 inc/metaboxes.php:184
+msgid "4 Widgets"
+msgstr "4 Widget"
+
+#: inc/metaboxes.php:186 inc/metaboxes.php:188
+msgid "5 Widgets"
+msgstr "5 Widget"
+
+#: inc/metaboxes.php:64
 msgid "No Sidebars"
 msgstr "Yanlar yok"
 
-#: inc/metaboxes.php:59 inc/metaboxes.php:63 inc/metaboxes.php:71
-#: inc/metaboxes.php:75 inc/metaboxes.php:79
-msgid "Sidebar"
-msgstr "Yan Menü"
-
-#: inc/metaboxes.php:59 inc/metaboxes.php:63 inc/metaboxes.php:71
-#: inc/metaboxes.php:75 inc/metaboxes.php:79
+#: inc/metaboxes.php:58 inc/metaboxes.php:62 inc/metaboxes.php:70
+#: inc/metaboxes.php:74 inc/metaboxes.php:78
 msgid "Content"
 msgstr "İçerik"
 
-#: inc/metaboxes.php:55
-msgid "Global Layout Settings"
-msgstr "Global taslak ayarlar"
+#: inc/add-ons/disable-elements.php:56 inc/controls.php:100
+msgid "Add-on available"
+msgstr "Eklenti bulunuyor"
 
 #: inc/customizer.php:65
 msgid "Add-ons Available! Take a look"
 msgstr "Eklentiler bulunuyor! Gözat"
 
-#: inc/add-ons/disable-elements.php:48 inc/controls.php:100
-msgid "Add-on available"
-msgstr "Eklenti bulunuyor"
-
-#: inc/controls.php:123
+#: inc/controls.php:123 inc/metaboxes.php:54 inc/metaboxes.php:164
+#: inc/metaboxes.php:280
 msgid "Default"
 msgstr "Varsayılan"
 
-#: inc/customizer.php:891
-msgid "Check out Generate Blog"
-msgstr "Generate Blog'a bakın"
-
-#: inc/customizer.php:887
-msgid "Looking to add more blog settings?<br /> %s."
-msgstr "Fazla blog ayarlar mı lazım?<br /> %s."
-
-#: inc/customizer.php:868
-msgid "Show excerpt"
-msgstr "Özet göster"
-
-#: inc/customizer.php:867
-msgid "Show full post"
-msgstr "Yazının tümünü göster"
-
-#: inc/customizer.php:864
+#: inc/customizer.php:960
 msgid "Blog Post Content"
 msgstr "Blog içeriği"
 
-#: inc/customizer.php:842
+#: inc/customizer.php:963
+msgid "Show full post"
+msgstr "Yazının tümünü göster"
+
+#: inc/customizer.php:964
+msgid "Show excerpt"
+msgstr "Özet göster"
+
+#: inc/customizer.php:983
+msgid "Looking to add more blog settings?<br /> %s."
+msgstr "Fazla blog ayarlar mı lazım?<br /> %s."
+
+#: inc/customizer.php:987
+msgid "Check out Generate Blog"
+msgstr "Generate Blog'a bakın"
+
+#: inc/customizer.php:938
 msgid "Blog"
 msgstr "Blog"
 
-#: inc/customizer.php:768 inc/metaboxes.php:134 inc/options.php:180
+#: inc/customizer.php:864 inc/metaboxes.php:138 inc/options.php:180
 msgid "Footer Widgets"
 msgstr "Footer Bileşenleri"
 
-#: inc/customizer.php:674
-msgid "Single Post Sidebar Layout"
-msgstr "Tek Yazı Yan Tasarım"
-
-#: inc/customizer.php:644
-msgid "Blog Sidebar Layout"
-msgstr "Blog Yan Tasarım"
-
-#: inc/customizer.php:622 inc/customizer.php:652 inc/customizer.php:682
-msgid "Content / Sidebar / Sidebar"
-msgstr "İçerik / Yan / Yan"
-
-#: inc/customizer.php:621 inc/customizer.php:651 inc/customizer.php:681
-msgid "Sidebar / Sidebar / Content"
-msgstr "Yan / Yan / İçerik"
-
-#: inc/customizer.php:620 inc/customizer.php:650 inc/customizer.php:680
-msgid "Sidebar / Content / Sidebar"
-msgstr "Yan / İçerik / Yan"
-
-#: inc/customizer.php:619 inc/customizer.php:649 inc/customizer.php:679
-#: inc/metaboxes.php:67
-msgid "Content (no sidebars)"
-msgstr "İçerik (yanlar yok)"
-
-#: inc/customizer.php:618 inc/customizer.php:648 inc/customizer.php:678
+#: inc/customizer.php:714 inc/customizer.php:744 inc/customizer.php:774
 msgid "Content / Sidebar"
 msgstr "İçeri / Yan"
 
-#: inc/customizer.php:617 inc/customizer.php:647 inc/customizer.php:677
-msgid "Sidebar / Content"
-msgstr "Yan / İçerik"
+#: inc/customizer.php:715 inc/customizer.php:745 inc/customizer.php:775
+#: inc/metaboxes.php:66
+msgid "Content (no sidebars)"
+msgstr "İçerik (yanlar yok)"
 
-#: inc/customizer.php:614 inc/metaboxes.php:26 inc/options.php:177
-msgid "Sidebar Layout"
-msgstr "Yan Sütun Yerleşimi"
+#: inc/customizer.php:716 inc/customizer.php:746 inc/customizer.php:776
+msgid "Sidebar / Content / Sidebar"
+msgstr "Yan / İçerik / Yan"
 
-#: inc/customizer.php:582
-msgid "One Container"
-msgstr "Tek parça"
+#: inc/customizer.php:717 inc/customizer.php:747 inc/customizer.php:777
+msgid "Sidebar / Sidebar / Content"
+msgstr "Yan / Yan / İçerik"
 
-#: inc/customizer.php:581
-msgid "Separate Containers"
-msgstr "Ayrı kap"
+#: inc/customizer.php:718 inc/customizer.php:748 inc/customizer.php:778
+msgid "Content / Sidebar / Sidebar"
+msgstr "İçerik / Yan / Yan"
 
-#: inc/customizer.php:578
+#: inc/customizer.php:740
+msgid "Blog Sidebar Layout"
+msgstr "Blog Yan Tasarım"
+
+#: inc/customizer.php:770
+msgid "Single Post Sidebar Layout"
+msgstr "Tek Yazı Yan Tasarım"
+
+#: inc/customizer.php:674
 msgid "Content Layout"
 msgstr "İçerik Yerleşimi"
 
-#: inc/customizer.php:555 inc/customizer.php:831
-msgid "Disabled"
-msgstr "Devre dışı"
+#: inc/customizer.php:710 inc/metaboxes.php:26 inc/options.php:177
+msgid "Sidebar Layout"
+msgstr "Yan Sütun Yerleşimi"
 
-#: inc/customizer.php:554 inc/customizer.php:830
-msgid "Enabled"
-msgstr "Etkin"
+#: inc/customizer.php:677
+msgid "Separate Containers"
+msgstr "Ayrı kap"
 
-#: inc/customizer.php:551
-msgid "Navigation Search"
-msgstr "Navigasyon arama"
+#: inc/customizer.php:678
+msgid "One Container"
+msgstr "Tek parça"
 
-#: inc/customizer.php:497
-msgid "Navigation Alignment"
-msgstr "Navigasyon konumu"
+#: inc/customizer.php:713 inc/customizer.php:743 inc/customizer.php:773
+msgid "Sidebar / Content"
+msgstr "Yan / İçerik"
 
-#: inc/customizer.php:474
-msgid "No Navigation"
-msgstr "Navigasyon yok"
+#: inc/customizer.php:651 inc/customizer.php:927
+msgid "Disable"
+msgstr "Etkisizleştir"
 
-#: inc/customizer.php:470
-msgid "Float Right"
-msgstr "Sağ kaydır"
-
-#: inc/customizer.php:469
+#: inc/customizer.php:565
 msgid "Above Header"
 msgstr "Başlığı üstü"
 
-#: inc/customizer.php:468
-msgid "Below Header"
-msgstr "Başlığı altı"
+#: inc/customizer.php:566
+msgid "Float Right"
+msgstr "Sağ kaydır"
 
-#: inc/customizer.php:465 inc/options.php:179
+#: inc/customizer.php:570
+msgid "No Navigation"
+msgstr "Navigasyon yok"
+
+#: inc/customizer.php:593
+msgid "Navigation Alignment"
+msgstr "Navigasyon konumu"
+
+#: inc/customizer.php:647
+msgid "Navigation Search"
+msgstr "Navigasyon arama"
+
+#: inc/customizer.php:561 inc/options.php:179
 msgid "Navigation Location"
 msgstr "Navigasyon Pozisyonu"
 
-#: inc/customizer.php:378 inc/customizer.php:502 inc/customizer.php:804
+#: inc/customizer.php:564
+msgid "Below Header"
+msgstr "Başlığı altı"
+
+#: inc/customizer.php:650 inc/customizer.php:926
+msgid "Enable"
+msgstr "Etkinleştir"
+
+#: inc/customizer.php:380 inc/customizer.php:474 inc/customizer.php:598
+#: inc/customizer.php:900
 msgid "Right"
 msgstr "Sağ"
 
-#: inc/customizer.php:377 inc/customizer.php:501 inc/customizer.php:803
+#: inc/customizer.php:379 inc/customizer.php:473 inc/customizer.php:597
+#: inc/customizer.php:899
 msgid "Center"
 msgstr "Orta"
 
-#: inc/customizer.php:376 inc/customizer.php:500 inc/customizer.php:802
+#: inc/customizer.php:378 inc/customizer.php:472 inc/customizer.php:596
+#: inc/customizer.php:898
 msgid "Left"
 msgstr "Sol"
-
-#: inc/customizer.php:373
-msgid "Header Alignment"
-msgstr "Başlık pozisyon"
-
-#: inc/customizer.php:323 inc/customizer.php:349 inc/customizer.php:415
-#: inc/customizer.php:441 inc/customizer.php:719 inc/customizer.php:745
-msgid "Contained"
-msgstr "Kısıtlı"
 
 #: inc/customizer.php:281 inc/options.php:178
 msgid "Container Width"
 msgstr "Taşıyıcı genişliği"
 
+#: inc/customizer.php:323 inc/customizer.php:351 inc/customizer.php:419
+#: inc/customizer.php:445 inc/customizer.php:511 inc/customizer.php:537
+#: inc/customizer.php:815 inc/customizer.php:841 inc/metaboxes.php:288
+msgid "Contained"
+msgstr "Kısıtlı"
+
+#: inc/customizer.php:469
+msgid "Header Alignment"
+msgstr "Başlık pozisyon"
+
 #: inc/customizer.php:248
 msgid "Layout"
 msgstr "Yerleşim"
 
-#: inc/customizer.php:232
-msgid "Check out Generate Colors"
-msgstr "Generate Colors'a göz at"
-
-#: inc/customizer.php:228
-msgid "Looking to add more color settings?<br /> %s."
-msgstr "Fazla renk ayar mı lazım?<br /> %s."
+#: inc/customizer.php:183
+msgid "Link Color Hover"
+msgstr "Link üstü renk"
 
 #: inc/customizer.php:189
 msgid "Link Color Visited"
 msgstr "Link renk ziyaret edilmiş"
 
-#: inc/customizer.php:183
-msgid "Link Color Hover"
-msgstr "Link üstü renk"
+#: inc/customizer.php:228
+msgid "Looking to add more color settings?<br /> %s."
+msgstr "Fazla renk ayar mı lazım?<br /> %s."
+
+#: inc/customizer.php:232
+msgid "Check out Generate Colors"
+msgstr "Generate Colors'a göz at"
 
 #: inc/customizer.php:177
 msgid "Link Color"
@@ -602,43 +583,43 @@ msgstr "Renkler"
 msgid "Logo"
 msgstr "Logo"
 
-#: inc/customizer.php:109
-msgid "Hide site tagline"
-msgstr "Site alt başlığı gizle"
-
 #: inc/customizer.php:89
 msgid "Hide site title"
 msgstr "Site başlığı gizle"
 
-#: inc/add-ons/typography.php:573
-msgid "Check out Generate Typography"
-msgstr "Generate Typography gözat"
+#: inc/customizer.php:109
+msgid "Hide site tagline"
+msgstr "Site alt başlığı gizle"
 
-#: inc/add-ons/typography.php:569
-msgid "Looking to add more typography settings?<br /> %s."
-msgstr "Daha fazla tipografi ayarlar mı lazım?<br /> %s."
-
-#: inc/add-ons/typography.php:566 inc/customizer.php:225 inc/customizer.php:884
+#: inc/add-ons/typography.php:597 inc/customizer.php:225 inc/customizer.php:980
 msgid "More Settings"
 msgstr "Fazla ayarlar"
 
-#: inc/add-ons/typography.php:494
-msgid "Font size"
-msgstr "Yazı tipi boyutu"
+#: inc/add-ons/typography.php:600
+msgid "Looking to add more typography settings?<br /> %s."
+msgstr "Daha fazla tipografi ayarlar mı lazım?<br /> %s."
 
-#: inc/add-ons/typography.php:464
-msgid "Text transform"
-msgstr "Metin değiştir"
+#: inc/add-ons/typography.php:604
+msgid "Check out Generate Typography"
+msgstr "Generate Typography gözat"
 
-#: inc/add-ons/typography.php:426
-msgid "Font weight"
-msgstr "Font Genişliği"
-
-#: inc/add-ons/typography.php:362 inc/customizer.php:143
+#: inc/add-ons/typography.php:393 inc/customizer.php:143
 msgid "Body"
 msgstr "Gövde"
 
-#: inc/add-ons/typography.php:340
+#: inc/add-ons/typography.php:457
+msgid "Font weight"
+msgstr "Font Genişliği"
+
+#: inc/add-ons/typography.php:525
+msgid "Font size"
+msgstr "Yazı tipi boyutu"
+
+#: inc/add-ons/typography.php:495
+msgid "Text transform"
+msgstr "Metin değiştir"
+
+#: inc/add-ons/typography.php:371
 msgid "Typography"
 msgstr "Tipografi"
 
@@ -646,23 +627,23 @@ msgstr "Tipografi"
 msgid "Font family"
 msgstr "Yazı tipi ailesi"
 
-#: inc/add-ons/controls.php:29
-msgid "Google fonts"
-msgstr "Google fontlar"
-
 #: inc/add-ons/controls.php:28
 msgid "Default fonts"
 msgstr "Varsayılan yazı tipi"
 
-#: functions.php:172 inc/customizer.php:296
+#: inc/add-ons/controls.php:29
+msgid "Google fonts"
+msgstr "Google fontlar"
+
+#: functions.php:170 inc/customizer.php:392
 msgid "Header"
 msgstr "Üst Kısım"
 
-#: functions.php:169 inc/customizer.php:472 inc/metaboxes.php:61
+#: functions.php:169 inc/customizer.php:568 inc/metaboxes.php:60
 msgid "Left Sidebar"
 msgstr "Sol Menü"
 
-#: functions.php:166 inc/customizer.php:473 inc/metaboxes.php:57
+#: functions.php:168 inc/customizer.php:569 inc/metaboxes.php:56
 msgid "Right Sidebar"
 msgstr "Sağ Menü"
 
@@ -670,27 +651,27 @@ msgstr "Sağ Menü"
 msgid "Primary Menu"
 msgstr "Birincil menü"
 
-#: functions.php:187 inc/template-tags.php:887
-msgid "Footer Widget 5"
-msgstr "Ayak Widget 5"
-
-#: functions.php:184 inc/template-tags.php:873
-msgid "Footer Widget 4"
-msgstr "Ayak Widget 4"
-
-#: functions.php:181 inc/template-tags.php:859
-msgid "Footer Widget 3"
-msgstr "Sayfa Altı Widget 3"
-
-#: functions.php:178 inc/template-tags.php:845
-msgid "Footer Widget 2"
-msgstr "Sayfa Altı Widget 2"
-
-#: functions.php:175 inc/template-tags.php:831
+#: functions.php:171 inc/template-tags.php:840
 msgid "Footer Widget 1"
 msgstr "Sayfa Altı Widget 1"
 
-#: inc/template-tags.php:124 inc/template-tags.php:144
+#: functions.php:172 inc/template-tags.php:854
+msgid "Footer Widget 2"
+msgstr "Sayfa Altı Widget 2"
+
+#: functions.php:173 inc/template-tags.php:868
+msgid "Footer Widget 3"
+msgstr "Sayfa Altı Widget 3"
+
+#: functions.php:174 inc/template-tags.php:882
+msgid "Footer Widget 4"
+msgstr "Ayak Widget 4"
+
+#: functions.php:175 inc/template-tags.php:896
+msgid "Footer Widget 5"
+msgstr "Ayak Widget 5"
+
+#: inc/template-tags.php:102 inc/template-tags.php:122
 msgid "Edit"
 msgstr "Düzenle"
 
@@ -754,41 +735,9 @@ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] "&ldquo;%2$s&rdquo; üzerine bir yorum"
 msgstr[1] "&ldquo;%2$s&rdquo; üzerine %1$s yorum"
 
-#: inc/template-tags.php:733 sidebar-left.php:35 sidebar.php:34
+#: sidebar-left.php:35 sidebar.php:34
 msgid "Archives"
 msgstr "Arşiv"
-
-#: inc/template-tags.php:730
-msgid "Links"
-msgstr "Bağlantılar"
-
-#: inc/template-tags.php:727
-msgid "Quotes"
-msgstr "Alıntılar"
-
-#: inc/template-tags.php:724
-msgid "Videos"
-msgstr "Videolar"
-
-#: inc/template-tags.php:721
-msgid "Images"
-msgstr "Resimler"
-
-#: inc/template-tags.php:718
-msgid "Asides"
-msgstr "Yan sütunlar"
-
-#: inc/template-tags.php:715
-msgid "Year: %s"
-msgstr "Yıl: %s"
-
-#: inc/template-tags.php:712
-msgid "Month: %s"
-msgstr "Aylar: %s"
-
-#: inc/template-tags.php:709
-msgid "Day: %s"
-msgstr "Gün :%s"
 
 #: 404.php:20
 msgid "Oops! That page can&rsquo;t be found."

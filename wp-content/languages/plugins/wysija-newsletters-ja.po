@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Plugins - MailPoet Newsletters - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-01-06 05:07:27+0000\n"
+"PO-Revision-Date: 2017-02-18 02:41:18+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: ja_JP\n"
 "Project-Id-Version: Plugins - MailPoet Newsletters - Stable (latest release)\n"
 
@@ -335,7 +335,7 @@ msgstr "リストに移動"
 
 #: views/back/subscribers.php:119 views/back.php:202
 msgid "Bulk Actions"
-msgstr "一括処理"
+msgstr "一括操作"
 
 #: views/back/subscribers.php:113
 msgid "Delete these subscribers forever?"
@@ -2988,7 +2988,7 @@ msgstr "フッター"
 
 #: helpers/themes.php:125
 msgid "Header"
-msgstr "ヘッダ"
+msgstr "ヘッダー"
 
 #: helpers/server.php:149 helpers/server.php:172
 msgid "The MySQL user you have setup on your WordPress site (wp-config.php) doesn't have enough privileges to CREATE MySQL tables. Please change this user yourself or contact the administrator of your site in order to complete MailPoet's installation. mysql errors:(%1$s)"
@@ -5171,7 +5171,7 @@ msgstr "有効化"
 
 #: add-ons/add-ons.php:219
 msgid "Install from WordPress.org"
-msgstr "Wordpress.orgよりインストールする"
+msgstr "WordPress.org からインストールする"
 
 #: add-ons/add-ons.php:212
 msgid "Purchase"

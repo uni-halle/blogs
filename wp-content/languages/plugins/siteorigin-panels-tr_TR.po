@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Plugins - Page Builder by SiteOrigin - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-12-15 08:51:30+0000\n"
+"PO-Revision-Date: 2017-02-06 22:25:41+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: tr\n"
 "Project-Id-Version: Plugins - Page Builder by SiteOrigin - Stable (latest release)\n"
 
@@ -1128,7 +1128,7 @@ msgstr "SiteOrigin düzenleyicisi"
 
 #: inc/styles.php:201 settings/settings.php:313
 msgid "Enabled"
-msgstr "Etkinleştrildi"
+msgstr "Etkinleştirildi"
 
 #: inc/styles.php:187
 msgid "Remove"

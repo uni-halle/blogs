@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the WordPress - 4.7.x - Administration - Network Admin package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-11-10 14:13:22+0000\n"
+"PO-Revision-Date: 2017-02-17 11:46:52+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: tr\n"
 "Project-Id-Version: WordPress - 4.7.x - Administration - Network Admin\n"
 
@@ -195,11 +195,6 @@ msgctxt "site"
 msgid "Not Spam"
 msgstr "İstenmeyen değil"
 
-#: wp-admin/includes/class-wp-ms-sites-list-table.php:531
-msgctxt "verb; site"
-msgid "Archive"
-msgstr "Arşiv"
-
 #: wp-admin/includes/class-wp-ms-sites-list-table.php:192
 msgid "No sites found."
 msgstr "Hiç site bulunamadı."
@@ -347,6 +342,11 @@ msgstr "%s temasını tema düzenleyicide aç"
 #: wp-admin/includes/class-wp-ms-themes-list-table.php:568
 msgid "Visit %s homepage"
 msgstr "%s temasının sitesini ziyaret et"
+
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:531
+msgctxt "verb; site"
+msgid "Archive"
+msgstr "Arşivle"
 
 #: wp-admin/network/site-users.php:332 wp-admin/network/user-new.php:117
 msgid "A password reset link will be sent to the user via email."

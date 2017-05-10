@@ -2,40 +2,110 @@
 # This file is distributed under the same license as the Themes - GeneratePress package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-12-24 00:16:19+0000\n"
+"PO-Revision-Date: 2017-05-09 08:18:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: ja_JP\n"
 "Project-Id-Version: Themes - GeneratePress\n"
 
-#. Description of the plugin/theme
-msgid "GeneratePress is a fast, lightweight (less than 1MB zipped), mobile responsive WordPress theme built with speed, SEO and usability in mind. GP is compatible with major plugins like WooCommerce, Beaver Builder, Elementor, WPML, BuddyPress, bbPress and many more. It's also mobile & tablet responsive, 100% valid HTML, Schema microdata integrated, search engine friendly, translated into over 20 languages and cross browser compatible (including IE8). GeneratePress has 8 widget areas, 5 navigation positions, 5 sidebar layouts, dropdown menus (click or hover), a back to top button and so much more. Navigate to Appearance > Customize to start customizing. Create your website exactly the way you want it using the Customizer and see your changes take place right in front of you before publishing. See more and check out our awesome add-ons at https://generatepress.com"
-msgstr "GeneratePress はすばやく軽量 (ZIP ファイルサイズ 1MB 以下) な、モバイルレスポンシブ対応の WordPress テーマです。スピード、SEO、ユーザビリティを念頭に置いて作られています。WooCommerce、Beaver Builder、Elementor、WPML、BuddyPress、bbPress その他数多くのメジャーなプラグインとの互換性があります。モバイル・タブレットでレスポンシブ対応、100% valid な HTML、スキーマ・マイクロデータ連携、検索エンジンフレンドリー、20以上の言語への翻訳、IE8 を含むクロスブラウザー互換。GeneratePress には8つのウィジェットエリア、5つのナビゲーションポジション、5つのサイドバーレイアウト、ドロップダウンメニュー (クリックまたはホバー)、「トップへ戻る」ボタンなど数多くのオプションが含まれています。「外観 \t カスタマイズ」画面に移動し、カスタマイズしてください。カスタマイザーを使って思い通りのサイトを作り、公開前に変更をそのままプレビューしましょう。さらに詳しい情報やアドオンは https://generatepress.com でご覧いただけます。"
-
+#. #-#-#-#-#  generatepress.pot (GeneratePress 1.3.46)  #-#-#-#-#
 #. Theme Name of the plugin/theme
+#: functions.php:455
 msgid "GeneratePress"
 msgstr "GeneratePress"
 
-#: inc/customizer.php:742
+#: inc/options.php:196
+msgid "Delete Default Settings"
+msgstr "デフォルト設定を削除"
+
+#: inc/metaboxes.php:284
+msgid "Full Width"
+msgstr "全幅"
+
+#: inc/metaboxes.php:275
+msgid "Choose your page builder content container type. Both options remove the content padding for you."
+msgstr "ページビルダーのコンテンツコンテナーの種類を選択してください。どちらの場合もコンテンツのパディングを除去します。"
+
+#: inc/metaboxes.php:248
+msgid "Page Builder Container"
+msgstr "ページビルダーコンテナー"
+
+#: inc/metaboxes.php:58 inc/metaboxes.php:62 inc/metaboxes.php:70
+#: inc/metaboxes.php:74 inc/metaboxes.php:78
+msgctxt "Short name for meta box"
+msgid "Sidebar"
+msgstr "サイドバー"
+
+#: inc/customizer.php:375
+msgid "Top Bar Alignment"
+msgstr "トップバーの配置"
+
+#: inc/customizer.php:347
+msgid "Top Bar Inner Width"
+msgstr "トップバー内側幅"
+
+#: inc/customizer.php:319
+msgid "Top Bar Width"
+msgstr "トップバー幅"
+
+#: functions.php:177 inc/customizer.php:296
+msgid "Top Bar"
+msgstr "トップバー"
+
+#. translators: %s: post title
+#: comments.php:36
+msgctxt "comments title"
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr "&ldquo;%s&rdquo; に1件のコメントがあります。"
+
+#: inc/options.php:176
+msgid "Adding a Logo"
+msgstr "ロゴを追加"
+
+#: inc/options.php:173
+msgid "View all"
+msgstr "すべて表示"
+
+#: inc/options.php:146
+msgid "Learn more"
+msgstr "詳細を表示"
+
+#: inc/options.php:54 inc/options.php:173
+msgid "Documentation"
+msgstr "ドキュメンテーション"
+
+#: inc/options.php:51
+msgid "Premium"
+msgstr "プレミアム"
+
+#: inc/customizer.php:895
+msgid "Footer Bar Alignment"
+msgstr "フッターバーの配置"
+
+#: functions.php:176
+msgid "Footer Bar"
+msgstr "フッターバー"
+
+#: inc/customizer.php:838
 msgid "Inner Footer Width"
 msgstr "内側フッター幅"
 
-#: inc/customizer.php:438
+#: inc/customizer.php:534
 msgid "Inner Navigation Width"
 msgstr "内側ナビゲーション幅"
 
-#: inc/customizer.php:346
+#: inc/customizer.php:442
 msgid "Inner Header Width"
 msgstr "内側ヘッダー幅"
 
-#: inc/add-ons/typography.php:572
+#: inc/add-ons/typography.php:577
 msgid "Paragraph margin"
 msgstr "段落マージン"
 
-#: inc/add-ons/typography.php:546
+#: inc/add-ons/typography.php:551
 msgid "Line height"
 msgstr "行の高さ"
 
@@ -43,93 +113,82 @@ msgstr "行の高さ"
 msgid "Reset"
 msgstr "リセット"
 
-#: inc/metaboxes.php:266
-msgid "Full Width Content"
-msgstr "全幅コンテンツ"
-
-#: inc/metaboxes.php:240
-msgid "Page Builder Integration"
-msgstr "ページビルダー統合"
-
-#: inc/customizer.php:692
+#: inc/customizer.php:788
 msgid "Footer"
 msgstr "フッター"
 
-#: inc/customizer.php:592
+#: inc/customizer.php:688
 msgid "Sidebars"
 msgstr "サイドバー"
 
-#: inc/customizer.php:388
+#: inc/customizer.php:484
 msgid "Primary Navigation"
-msgstr "プライマリナビゲーション"
+msgstr "メインナビゲーション"
 
 #: inc/customizer.php:258
 msgid "Container"
 msgstr "コンテナ"
 
-#: comments.php:88
+#: comments.php:107
 msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" class=\"comment-logout\" title=\"Log out of this account\">Log out?</a>"
 msgstr "<a href=\"%1$s\">%2$s</a>としてログイン中です。<a href=\"%3$s\" class=\"comment-logout\" title=\"このアカウントからログアウト\">ログアウトしますか ?</a>"
 
-#: inc/template-tags.php:651
+#: inc/template-tags.php:686 inc/template-tags.php:690
 msgid "Scroll back to top"
 msgstr "ページ上部へ戻る"
 
-#: inc/customizer.php:798
+#: inc/customizer.php:923
 msgid "Back to Top Button"
 msgstr "トップへ戻るボタン"
 
-#: inc/customizer.php:715
+#: inc/customizer.php:811
 msgid "Footer Width"
 msgstr "フッター幅"
 
-#: inc/customizer.php:529
+#: inc/customizer.php:625
 msgid "Click - Arrow"
 msgstr "クリック - 矢印"
 
-#: inc/customizer.php:528
+#: inc/customizer.php:624
 msgid "Click - Menu Item"
 msgstr "クリック - メニュー項目"
 
-#: inc/customizer.php:527
+#: inc/customizer.php:623
 msgid "Hover"
 msgstr "ホバー"
 
-#: inc/customizer.php:524
+#: inc/customizer.php:620
 msgid "Navigation Dropdown"
 msgstr "ナビゲーションドロップダウン"
 
-#: inc/customizer.php:411
+#: inc/customizer.php:507
 msgid "Navigation Width"
 msgstr "ナビゲーション幅"
 
-#: inc/customizer.php:322 inc/customizer.php:350 inc/customizer.php:414
-#: inc/customizer.php:442 inc/customizer.php:718 inc/customizer.php:746
+#: inc/customizer.php:322 inc/customizer.php:350 inc/customizer.php:418
+#: inc/customizer.php:446 inc/customizer.php:510 inc/customizer.php:538
+#: inc/customizer.php:814 inc/customizer.php:842
 msgid "Full"
-msgstr "フルサイズ"
+msgstr "全幅"
 
-#: inc/customizer.php:319
+#: inc/customizer.php:415
 msgid "Header Width"
 msgstr "ヘッダー幅"
 
-#: inc/options.php:71
+#: inc/options.php:208
 msgctxt "made with love"
 msgid "Made with %s by Tom Usborne"
 msgstr "Made with %s by Tom Usborne "
 
-#: inc/customizer.php:471
+#: inc/customizer.php:567
 msgid "Float Left"
 msgstr "左フロート"
 
-#: inc/options.php:78
-msgid "Knowledgebase"
-msgstr "ナレッジベース"
-
-#: inc/options.php:77
+#: inc/options.php:53
 msgid "Support"
-msgstr "支援"
+msgstr "サポート"
 
-#: inc/add-ons/disable-elements.php:86 inc/add-ons/disable-elements.php:88
+#: inc/add-ons/disable-elements.php:50 inc/add-ons/disable-elements.php:52
 msgid "Content Title"
 msgstr "コンテンツタイトル"
 
@@ -137,15 +196,19 @@ msgstr "コンテンツタイトル"
 msgid "It looks like nothing was found at this location. Maybe try searching?"
 msgstr "ここには何も見つかりません。サイト内で検索してみてください。"
 
-#: inc/options.php:103
+#: inc/options.php:188
 msgid "<strong>Warning:</strong> Deleting your <a href=\"%1$s\">Customizer</a> settings can not be undone."
 msgstr "<strong>警告:</strong> <a href=\"%1$s\">カスタマイザ</a>設定を削除すると元に戻すことはできません。"
 
-#: footer.php:43 footer.php:57 footer.php:71 footer.php:85 footer.php:99
+#: inc/template-tags.php:843 inc/template-tags.php:857
+#: inc/template-tags.php:871 inc/template-tags.php:885
+#: inc/template-tags.php:899
 msgid "To remove or choose the number of footer widgets, go to <a href=\"%1$s\"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>."
 msgstr "フッターウィジェットの削除または数を選択するには<a href=\"%1$s\"><strong>外観 / カスタマイズ / レイアウト / フッターウィジェット</strong>画面に移動してください。</a>"
 
-#: footer.php:42 footer.php:56 footer.php:70 footer.php:84 footer.php:98
+#: inc/template-tags.php:842 inc/template-tags.php:856
+#: inc/template-tags.php:870 inc/template-tags.php:884
+#: inc/template-tags.php:898
 msgid "Replace this widget content by going to <a href=\"%1$s\"><strong>Appearance / Widgets</strong></a> and dragging widgets into this widget area."
 msgstr "このウィジェットのコンテンツを入れ替えるには<a href=\"%1$s\"><strong>外観 / ウィジェット</strong></a>画面に移動してウィジェットをこのウィジェットエリアにドラッグしてください。"
 
@@ -179,150 +242,134 @@ msgstr "最初の投稿をする準備ができましたか ?  <a href=\"%1$s\">
 msgid "Nothing Found"
 msgstr "見つかりません"
 
-#: inc/template-tags.php:247
+#: inc/template-tags.php:225
 msgid "% Comments"
 msgstr "%件のコメント"
 
-#: inc/template-tags.php:247
+#: inc/template-tags.php:225
 msgid "1 Comment"
 msgstr "1件のコメント"
 
-#: inc/template-tags.php:247
+#: inc/template-tags.php:225
 msgid "Leave a comment"
 msgstr "コメントする"
 
-#: inc/template-tags.php:240
+#: inc/template-tags.php:218
 msgctxt "Used before tag names."
 msgid "Tags"
 msgstr "タグ"
 
-#: inc/template-tags.php:232
+#: inc/template-tags.php:210
 msgctxt "Used before category names."
 msgid "Categories"
 msgstr "カテゴリー"
 
-#: inc/template-tags.php:229 inc/template-tags.php:237
+#: inc/template-tags.php:207 inc/template-tags.php:215
 msgctxt "Used between list items, there is a space after the comma."
 msgid ", "
 msgstr ", "
 
-#: inc/template-tags.php:376
+#: inc/template-tags.php:372
 msgctxt "label"
 msgid "Search"
 msgstr "検索"
 
-#: inc/template-tags.php:259 inc/template-tags.php:270
+#: inc/template-tags.php:240 inc/template-tags.php:254
 msgid "Read more"
 msgstr "続きを読む"
 
-#: inc/template-tags.php:208
+#: inc/template-tags.php:187
 msgid "View all posts by %s"
 msgstr "%s の投稿をすべて表示"
 
-#: inc/template-tags.php:206
+#: inc/template-tags.php:185
 msgid "by"
-msgstr "から"
+msgstr "投稿者:"
 
-#: inc/template-tags.php:158
+#: inc/template-tags.php:136
 msgid "Your comment is awaiting moderation."
 msgstr "あなたのコメントは承認待ちです。"
 
-#: inc/template-tags.php:141
+#: inc/template-tags.php:119
 msgctxt "1: date, 2: time"
 msgid "%1$s at %2$s"
 msgstr "%1$s %2$s"
 
-#: inc/template-tags.php:124
+#: inc/template-tags.php:102
 msgid "Pingback:"
 msgstr "ピンバック:"
 
-#: inc/template-tags.php:97
+#: inc/template-tags.php:52
 msgid "Newer posts"
 msgstr "新しい投稿"
 
-#: inc/template-tags.php:93
+#: inc/template-tags.php:48
 msgid "Older posts"
 msgstr "過去の投稿"
 
-#: inc/template-tags.php:88 inc/template-tags.php:97
+#: inc/template-tags.php:43 inc/template-tags.php:52
 msgid "Next"
 msgstr "次"
 
-#: inc/template-tags.php:87 inc/template-tags.php:93
+#: inc/template-tags.php:42 inc/template-tags.php:48
 msgid "Previous"
 msgstr "前"
 
-#: inc/template-tags.php:83
+#: inc/template-tags.php:38
 msgid "Post navigation"
 msgstr "投稿ナビゲーション"
 
-#: inc/template-tags.php:46
+#: inc/deprecated.php:17 inc/template-tags.php:59
 msgid "Next &rarr;"
 msgstr "次へ &rarr;"
 
-#: inc/template-tags.php:45
+#: inc/deprecated.php:16 inc/template-tags.php:58
 msgid "&larr; Previous"
 msgstr "&larr; 前へ"
 
-#: inc/options.php:261
+#: inc/options.php:259
 msgid "Settings removed."
 msgstr "設定を削除しました。"
 
-#: inc/options.php:257
+#: inc/options.php:255
 msgid "Import successful."
 msgstr "インポートに成功しました。"
 
-#: inc/options.php:253
+#: inc/options.php:251
 msgid "Settings saved."
 msgstr "設定を保存しました。"
 
-#: inc/add-ons/disable-elements.php:63
+#: inc/add-ons/disable-elements.php:27
 msgid "Disable Elements"
 msgstr "要素を無効化"
 
-#: inc/options.php:111
-msgid "Delete Default Customizer Settings"
-msgstr "デフォルトのカスタマイザー設定を削除"
-
-#: inc/options.php:109
+#: inc/options.php:194
 msgid "Warning: This will delete your settings."
 msgstr "警告: この操作を行うと設定が削除されます。"
 
-#: inc/options.php:104
+#: inc/options.php:189
 msgid "Consider using our Import/Export add-on to export your settings before deleting them."
 msgstr "設定を削除する前にインポート / エクスポートアドオンのご利用をご検討ください。"
 
-#: inc/options.php:101
+#: inc/options.php:186
 msgid "Delete Customizer Settings"
 msgstr "カスタマイザー設定を削除"
 
-#: inc/options.php:89
-msgid "Add-on Updates"
-msgstr "アドオン更新"
-
-#: inc/options.php:80
-msgid "Buy me a coffee :)"
-msgstr "コーヒーでも買ってください :)"
-
-#: inc/options.php:80
-msgid "Please help support the ongoing development of GeneratePress by buying me a coffee :)"
-msgstr "コーヒー代を払って、GeneratePress の開発をサポートしてください :)"
-
-#: inc/options.php:75 inc/options.php:127
+#: inc/options.php:137
 msgid "Add-ons"
 msgstr "アドオン"
 
-#: inc/options.php:65 inc/options.php:123
+#: inc/options.php:72 inc/options.php:166
 msgid "Customize"
 msgstr "カスタマイズ"
 
-#: inc/navigation.php:136 inc/template-tags.php:402 inc/template-tags.php:431
-#: inc/template-tags.php:434 searchform.php:16
+#: inc/navigation.php:136 inc/template-tags.php:398 inc/template-tags.php:429
+#: inc/template-tags.php:432 searchform.php:16
 msgctxt "submit button"
 msgid "Search"
 msgstr "検索"
 
-#: header.php:25
+#: header.php:23
 msgid "Skip to content"
 msgstr "コンテンツへスキップ"
 
@@ -330,213 +377,205 @@ msgstr "コンテンツへスキップ"
 msgid "Menu"
 msgstr "メニュー"
 
-#: inc/metaboxes.php:183 inc/metaboxes.php:185
+#: inc/metaboxes.php:186 inc/metaboxes.php:188
 msgid "5 Widgets"
 msgstr "ウィジェット5個"
 
-#: inc/metaboxes.php:179 inc/metaboxes.php:181
+#: inc/metaboxes.php:182 inc/metaboxes.php:184
 msgid "4 Widgets"
 msgstr "ウィジェット4個"
 
-#: inc/metaboxes.php:175 inc/metaboxes.php:177
+#: inc/metaboxes.php:178 inc/metaboxes.php:180
 msgid "3 Widgets"
 msgstr "ウィジェット3個"
 
-#: inc/metaboxes.php:171 inc/metaboxes.php:173
+#: inc/metaboxes.php:174 inc/metaboxes.php:176
 msgid "2 Widgets"
 msgstr "ウィジェット2個"
 
-#: inc/metaboxes.php:167 inc/metaboxes.php:169
+#: inc/metaboxes.php:170 inc/metaboxes.php:172
 msgid "1 Widget"
 msgstr "ウィジェット1個"
 
-#: inc/metaboxes.php:163 inc/metaboxes.php:165
+#: inc/metaboxes.php:166 inc/metaboxes.php:168
 msgid "0 Widgets"
 msgstr "ウィジェット0個"
 
-#: inc/metaboxes.php:161
-msgid "Global Footer Widget Settings"
-msgstr "グローバルフッターウィジェット設定"
-
-#: inc/metaboxes.php:77
+#: inc/metaboxes.php:76
 msgid "Both Sidebars on Right"
 msgstr "両方のサイドバーの右"
 
-#: inc/metaboxes.php:73
+#: inc/metaboxes.php:72
 msgid "Both Sidebars on Left"
 msgstr "両方のサイドバーの左"
 
-#: inc/metaboxes.php:69
+#: inc/metaboxes.php:68
 msgid "Both Sidebars"
 msgstr "両方のサイドバー"
 
-#: inc/metaboxes.php:65
+#: inc/metaboxes.php:64
 msgid "No Sidebars"
 msgstr "サイドバーなし"
 
-#: inc/metaboxes.php:59 inc/metaboxes.php:63 inc/metaboxes.php:71
-#: inc/metaboxes.php:75 inc/metaboxes.php:79
-msgid "Sidebar"
-msgstr "サイドバー"
-
-#: inc/metaboxes.php:59 inc/metaboxes.php:63 inc/metaboxes.php:71
-#: inc/metaboxes.php:75 inc/metaboxes.php:79
+#: inc/metaboxes.php:58 inc/metaboxes.php:62 inc/metaboxes.php:70
+#: inc/metaboxes.php:74 inc/metaboxes.php:78
 msgid "Content"
-msgstr "内容"
-
-#: inc/metaboxes.php:55
-msgid "Global Layout Settings"
-msgstr "グローバルレイアウト設定"
+msgstr "コンテンツ"
 
 #: inc/customizer.php:65
 msgid "Add-ons Available! Take a look"
 msgstr "アドオンが利用できます。ご覧ください"
 
-#: inc/add-ons/disable-elements.php:92 inc/controls.php:98
+#: inc/add-ons/disable-elements.php:56 inc/controls.php:100
 msgid "Add-on available"
 msgstr "アドオンが利用できます"
 
-#: inc/controls.php:121
+#: inc/controls.php:123 inc/metaboxes.php:54 inc/metaboxes.php:164
+#: inc/metaboxes.php:280
 msgid "Default"
 msgstr "デフォルト"
 
-#: inc/customizer.php:862
+#: inc/customizer.php:987
 msgid "Check out Generate Blog"
 msgstr "Generate ブログをチェック"
 
-#: inc/customizer.php:858
+#: inc/customizer.php:983
 msgid "Looking to add more blog settings?<br /> %s."
 msgstr "ブログ設定をもっと追加したいですか ?<br /> %s."
 
-#: inc/customizer.php:839
+#: inc/customizer.php:964
 msgid "Show excerpt"
 msgstr "抜粋を表示"
 
-#: inc/customizer.php:838
+#: inc/customizer.php:963
 msgid "Show full post"
 msgstr "投稿全文を表示"
 
-#: inc/customizer.php:835
+#: inc/customizer.php:960
 msgid "Blog Post Content"
-msgstr "ブログ投稿の内容"
+msgstr "ブログ投稿のコンテンツ"
 
-#: inc/customizer.php:813
+#: inc/customizer.php:938
 msgid "Blog"
 msgstr "ブログ"
 
-#: inc/customizer.php:768 inc/metaboxes.php:134
+#: inc/customizer.php:864 inc/metaboxes.php:138 inc/options.php:180
 msgid "Footer Widgets"
 msgstr "フッターウィジェット"
 
-#: inc/customizer.php:674
+#: inc/customizer.php:770
 msgid "Single Post Sidebar Layout"
 msgstr "個別投稿サイドバーレイアウト"
 
-#: inc/customizer.php:644
+#: inc/customizer.php:740
 msgid "Blog Sidebar Layout"
 msgstr "ブログサイドバーレイアウト"
 
-#: inc/customizer.php:622 inc/customizer.php:652 inc/customizer.php:682
+#: inc/customizer.php:718 inc/customizer.php:748 inc/customizer.php:778
 msgid "Content / Sidebar / Sidebar"
 msgstr "コンテンツ / サイドバー / サイドバー"
 
-#: inc/customizer.php:621 inc/customizer.php:651 inc/customizer.php:681
+#: inc/customizer.php:717 inc/customizer.php:747 inc/customizer.php:777
 msgid "Sidebar / Sidebar / Content"
 msgstr "サイドバー / サイドバー / コンテンツ"
 
-#: inc/customizer.php:620 inc/customizer.php:650 inc/customizer.php:680
+#: inc/customizer.php:716 inc/customizer.php:746 inc/customizer.php:776
 msgid "Sidebar / Content / Sidebar"
 msgstr "サイドバー / コンテンツ / サイドバー"
 
-#: inc/customizer.php:619 inc/customizer.php:649 inc/customizer.php:679
-#: inc/metaboxes.php:67
+#: inc/customizer.php:715 inc/customizer.php:745 inc/customizer.php:775
+#: inc/metaboxes.php:66
 msgid "Content (no sidebars)"
 msgstr "コンテンツ (サイドバーなし)"
 
-#: inc/customizer.php:618 inc/customizer.php:648 inc/customizer.php:678
+#: inc/customizer.php:714 inc/customizer.php:744 inc/customizer.php:774
 msgid "Content / Sidebar"
 msgstr "コンテンツ / サイドバー"
 
-#: inc/customizer.php:617 inc/customizer.php:647 inc/customizer.php:677
+#: inc/customizer.php:713 inc/customizer.php:743 inc/customizer.php:773
 msgid "Sidebar / Content"
 msgstr "サイドバー / コンテンツ"
 
-#: inc/customizer.php:614 inc/metaboxes.php:26
+#: inc/customizer.php:710 inc/metaboxes.php:26 inc/options.php:177
 msgid "Sidebar Layout"
 msgstr "サイドバーレイアウト"
 
-#: inc/customizer.php:582
+#: inc/customizer.php:678
 msgid "One Container"
-msgstr "コンテナ1個"
+msgstr "単一コンテナー"
 
-#: inc/customizer.php:581
+#: inc/customizer.php:677
 msgid "Separate Containers"
-msgstr "独立コンテナ"
+msgstr "独立コンテナー"
 
-#: inc/customizer.php:578
+#: inc/customizer.php:674
 msgid "Content Layout"
 msgstr "コンテンツのレイアウト"
 
-#: inc/customizer.php:555 inc/customizer.php:802
-msgid "Disabled"
+#: inc/customizer.php:651 inc/customizer.php:927
+msgid "Disable"
 msgstr "無効"
 
-#: inc/customizer.php:554 inc/customizer.php:801
-msgid "Enabled"
+#: inc/customizer.php:650 inc/customizer.php:926
+msgid "Enable"
 msgstr "有効"
 
-#: inc/customizer.php:551
+#: inc/customizer.php:647
 msgid "Navigation Search"
 msgstr "ナビゲーション検索"
 
-#: inc/customizer.php:497
+#: inc/customizer.php:593
 msgid "Navigation Alignment"
 msgstr "ナビゲーション配置"
 
-#: inc/customizer.php:474
+#: inc/customizer.php:570
 msgid "No Navigation"
 msgstr "ナビゲーションなし"
 
-#: inc/customizer.php:470
+#: inc/customizer.php:566
 msgid "Float Right"
 msgstr "右フロート"
 
-#: inc/customizer.php:469
+#: inc/customizer.php:565
 msgid "Above Header"
 msgstr "ヘッダーの上"
 
-#: inc/customizer.php:468
+#: inc/customizer.php:564
 msgid "Below Header"
 msgstr "ヘッダーの下"
 
-#: inc/customizer.php:465
-msgid "Navigation Position"
+#: inc/customizer.php:561 inc/options.php:179
+msgid "Navigation Location"
 msgstr "ナビゲーション位置"
 
-#: inc/customizer.php:378 inc/customizer.php:502
+#: inc/customizer.php:380 inc/customizer.php:474 inc/customizer.php:598
+#: inc/customizer.php:900
 msgid "Right"
 msgstr "右"
 
-#: inc/customizer.php:377 inc/customizer.php:501
+#: inc/customizer.php:379 inc/customizer.php:473 inc/customizer.php:597
+#: inc/customizer.php:899
 msgid "Center"
 msgstr "中央"
 
-#: inc/customizer.php:376 inc/customizer.php:500
+#: inc/customizer.php:378 inc/customizer.php:472 inc/customizer.php:596
+#: inc/customizer.php:898
 msgid "Left"
 msgstr "左"
 
-#: inc/customizer.php:373
+#: inc/customizer.php:469
 msgid "Header Alignment"
 msgstr "ヘッダー配置"
 
-#: inc/customizer.php:323 inc/customizer.php:349 inc/customizer.php:415
-#: inc/customizer.php:441 inc/customizer.php:719 inc/customizer.php:745
+#: inc/customizer.php:323 inc/customizer.php:351 inc/customizer.php:419
+#: inc/customizer.php:445 inc/customizer.php:511 inc/customizer.php:537
+#: inc/customizer.php:815 inc/customizer.php:841 inc/metaboxes.php:288
 msgid "Contained"
-msgstr "含有"
+msgstr "含まれる"
 
-#: inc/customizer.php:281
+#: inc/customizer.php:281 inc/options.php:178
 msgid "Container Width"
-msgstr "コンテナ幅"
+msgstr "コンテナー幅"
 
 #: inc/customizer.php:248
 msgid "Layout"
@@ -586,35 +625,35 @@ msgstr "サイトのキャッチフレーズを非表示"
 msgid "Hide site title"
 msgstr "サイトタイトルを非表示"
 
-#: inc/add-ons/typography.php:599
+#: inc/add-ons/typography.php:604
 msgid "Check out Generate Typography"
 msgstr "Generate Typography をチェック"
 
-#: inc/add-ons/typography.php:595
+#: inc/add-ons/typography.php:600
 msgid "Looking to add more typography settings?<br /> %s."
 msgstr "タイポグラフィー設定をもっと追加したいですか ?<br /> %s."
 
-#: inc/add-ons/typography.php:592 inc/customizer.php:225 inc/customizer.php:855
+#: inc/add-ons/typography.php:597 inc/customizer.php:225 inc/customizer.php:980
 msgid "More Settings"
 msgstr "詳細設定"
 
-#: inc/add-ons/typography.php:520
+#: inc/add-ons/typography.php:525
 msgid "Font size"
 msgstr "文字サイズ"
 
-#: inc/add-ons/typography.php:490
+#: inc/add-ons/typography.php:495
 msgid "Text transform"
 msgstr "テキスト変換"
 
-#: inc/add-ons/typography.php:452
+#: inc/add-ons/typography.php:457
 msgid "Font weight"
 msgstr "フォントウェイト"
 
-#: inc/add-ons/typography.php:388 inc/customizer.php:143
+#: inc/add-ons/typography.php:393 inc/customizer.php:143
 msgid "Body"
 msgstr "ボディ"
 
-#: inc/add-ons/typography.php:366
+#: inc/add-ons/typography.php:371
 msgid "Typography"
 msgstr "文字装飾"
 
@@ -624,25 +663,21 @@ msgstr "フォント"
 
 #: inc/add-ons/controls.php:29
 msgid "Google fonts"
-msgstr "Googleフォント"
+msgstr "Google フォント"
 
 #: inc/add-ons/controls.php:28
 msgid "Default fonts"
 msgstr "デフォルトフォント"
 
-#: functions.php:456
-msgid "Copyright"
-msgstr "Copyright"
-
-#: functions.php:171 inc/customizer.php:296
+#: functions.php:170 inc/customizer.php:392
 msgid "Header"
 msgstr "ヘッダー"
 
-#: functions.php:168 inc/customizer.php:472 inc/metaboxes.php:61
+#: functions.php:169 inc/customizer.php:568 inc/metaboxes.php:60
 msgid "Left Sidebar"
 msgstr "左サイドバー"
 
-#: functions.php:165 inc/customizer.php:473 inc/metaboxes.php:57
+#: functions.php:168 inc/customizer.php:569 inc/metaboxes.php:56
 msgid "Right Sidebar"
 msgstr "右サイドバー"
 
@@ -650,123 +685,92 @@ msgstr "右サイドバー"
 msgid "Primary Menu"
 msgstr "メインメニュー"
 
-#: footer.php:96 functions.php:186
+#: functions.php:175 inc/template-tags.php:896
 msgid "Footer Widget 5"
 msgstr "フッターウィジェット5"
 
-#: footer.php:82 functions.php:183
+#: functions.php:174 inc/template-tags.php:882
 msgid "Footer Widget 4"
 msgstr "フッターウィジェット4"
 
-#: footer.php:68 functions.php:180
+#: functions.php:173 inc/template-tags.php:868
 msgid "Footer Widget 3"
 msgstr "フッターウィジェット3"
 
-#: footer.php:54 functions.php:177
+#: functions.php:172 inc/template-tags.php:854
 msgid "Footer Widget 2"
 msgstr "フッターウィジェット2"
 
-#: footer.php:40 functions.php:174
+#: functions.php:171 inc/template-tags.php:840
 msgid "Footer Widget 1"
 msgstr "フッターウィジェット1"
 
-#: inc/template-tags.php:124 inc/template-tags.php:144
+#: inc/template-tags.php:102 inc/template-tags.php:122
 msgid "Edit"
 msgstr "編集"
 
 #: content-link.php:29 content-page.php:27 content-single.php:27 content.php:28
 msgid "Pages:"
-msgstr "ページ:"
+msgstr "ページ: "
 
-#: comments.php:96
+#: comments.php:115
 msgid "Post Comment"
 msgstr "コメントを送信"
 
-#: comments.php:95
+#: comments.php:114
 msgid "Cancel reply"
 msgstr "コメントをキャンセル"
 
-#: comments.php:94
+#: comments.php:113
 msgid "Leave a Reply to %s"
 msgstr "%s にコメントする"
 
-#: comments.php:93
+#: comments.php:112
 msgid "Leave a Comment"
 msgstr "コメントする"
 
-#: comments.php:87
+#: comments.php:106
 msgid "You must be <a href=\"%1$s\">logged in</a> to post a comment."
 msgstr "コメントを投稿するには<a href=\"%1$s\">ログイン</a>してください。"
 
-#: comments.php:82
+#: comments.php:101
 msgid "Website"
 msgstr "ウェブサイト"
 
-#: comments.php:81
+#: comments.php:100
 msgid "Email"
 msgstr "メールアドレス"
 
-#: comments.php:80
+#: comments.php:99
 msgid "Name"
 msgstr "名前"
 
-#: comments.php:75
+#: comments.php:94
 msgid "Comments are closed."
 msgstr "コメントは停止中です。"
 
-#: comments.php:43 comments.php:65
+#: comments.php:62 comments.php:84
 msgid "Newer Comments &rarr;"
 msgstr "新しいコメント &rarr;"
 
-#: comments.php:42 comments.php:64
+#: comments.php:61 comments.php:83
 msgid "&larr; Older Comments"
 msgstr "&larr; 過去のコメント"
 
-#: comments.php:41 comments.php:63
+#: comments.php:60 comments.php:82
 msgid "Comment navigation"
 msgstr "コメントナビゲーション"
 
-#: comments.php:32
+#. translators: 1: number of comments, 2: post title
+#: comments.php:42
 msgctxt "comments title"
-msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
-msgstr[0] "「%2$s」への%1$s件のフィードバック"
+msgstr[0] "&ldquo;%2$s&rdquo; に%1$s件のコメントがあります"
 
-#: inc/template-tags.php:714 sidebar-left.php:35 sidebar.php:34
+#: sidebar-left.php:35 sidebar.php:34
 msgid "Archives"
 msgstr "アーカイブ"
-
-#: inc/template-tags.php:711
-msgid "Links"
-msgstr "リンク"
-
-#: inc/template-tags.php:708
-msgid "Quotes"
-msgstr "引用"
-
-#: inc/template-tags.php:705
-msgid "Videos"
-msgstr "動画"
-
-#: inc/template-tags.php:702
-msgid "Images"
-msgstr "画像"
-
-#: inc/template-tags.php:699
-msgid "Asides"
-msgstr "アサイド"
-
-#: inc/template-tags.php:696
-msgid "Year: %s"
-msgstr "﻿年別: %s"
-
-#: inc/template-tags.php:693
-msgid "Month: %s"
-msgstr "月別: %s"
-
-#: inc/template-tags.php:690
-msgid "Day: %s"
-msgstr "﻿日別: %s"
 
 #: 404.php:20
 msgid "Oops! That page can&rsquo;t be found."

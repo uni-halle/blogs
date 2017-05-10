@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Plugins - Events Manager - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-12-20 02:34:48+0000\n"
+"PO-Revision-Date: 2017-04-09 05:19:11+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: ja_JP\n"
 "Project-Id-Version: Plugins - Events Manager - Stable (latest release)\n"
 
@@ -2140,7 +2140,7 @@ msgstr "メールを送信しました。"
 
 #: classes/em-booking.php:821
 msgid "Booking %s."
-msgstr "%sを予約しました。"
+msgstr "ステイタスを「%s」へ変更しました。"
 
 #: classes/em-booking.php:812
 msgid "Not approved, spaces full."
@@ -5945,7 +5945,7 @@ msgstr "承認する"
 #: admin/bookings/em-person.php:51 admin/bookings/em-rejected.php:49
 #: templates/tables/locations.php:21
 msgid "Bulk Actions"
-msgstr "バルクアクション"
+msgstr "一括操作"
 
 #: admin/bookings/em-cancelled.php:38 admin/bookings/em-cancelled.php:40
 #: admin/bookings/em-confirmed.php:39 admin/bookings/em-confirmed.php:41

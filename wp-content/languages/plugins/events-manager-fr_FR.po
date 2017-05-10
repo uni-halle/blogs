@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Plugins - Events Manager - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-11-20 11:45:26+0000\n"
+"PO-Revision-Date: 2017-03-02 18:27:56+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: fr\n"
 "Project-Id-Version: Plugins - Events Manager - Stable (latest release)\n"
 
@@ -161,7 +161,7 @@ msgstr "S’il s’agit d’une erreur, cliquez sur annuler et essayez une adres
 
 #: templates/templates/search/geo.php:16
 msgid "We are going to use %s for searching."
-msgstr "Nous allons utilisé %s pour la recherche."
+msgstr "Nous allons utiliser %s pour la recherche."
 
 #: templates/templates/my-bookings.php:96
 msgid "Please <a href=\"%s\">Log In</a> to view your bookings."
@@ -2176,7 +2176,7 @@ msgstr "<strong>ERREUR :</strong> Cette adresse e-mail est incorrecte."
 
 #: classes/em-booking.php:669 em-functions.php:434
 msgid "<strong>ERROR</strong>: Please type your e-mail address."
-msgstr "<strong>ERREUR :</strong> Veuillez saisirr votre adresse e-mail."
+msgstr "<strong>ERREUR :</strong> Veuillez saisir votre adresse e-mail."
 
 #: classes/em-booking.php:646 classes/em-booking.php:722
 msgid "Not Supplied"

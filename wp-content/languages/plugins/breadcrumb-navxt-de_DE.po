@@ -2,14 +2,18 @@
 # This file is distributed under the same license as the Plugins - Breadcrumb NavXT - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-10-29 14:08:24+0000\n"
+"PO-Revision-Date: 2017-05-02 12:31:14+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: de\n"
 "Project-Id-Version: Plugins - Breadcrumb NavXT - Stable (latest release)\n"
+
+#: class.bcn_widget.php:124
+msgid "Ignore breadcrumb cache"
+msgstr "Breadcrumb-Cache ignorieren"
 
 #: includes/class.mtekk_adminkit.php:337
 msgid "One or more of your plugin settings are invalid."
@@ -27,17 +31,17 @@ msgstr "Deine Einstellungen sind für eine aktuellere Version dieses Plugins."
 msgid "Your settings are for an older version of this plugin and need to be migrated."
 msgstr "Deine Einstellungen sind veraltet und müssen für die neue Version des Plugins migriert werden."
 
-#: class.bcn_breadcrumb_trail.php:600
+#: class.bcn_breadcrumb_trail.php:601
 msgctxt "year archive breadcrumb date format"
 msgid "Y"
 msgstr "Y"
 
-#: class.bcn_breadcrumb_trail.php:583
+#: class.bcn_breadcrumb_trail.php:584
 msgctxt "month archive breadcrumb date format"
 msgid "F"
 msgstr "F"
 
-#: class.bcn_breadcrumb_trail.php:563
+#: class.bcn_breadcrumb_trail.php:564
 msgctxt "day archive breadcrumb date format"
 msgid "d"
 msgstr "d"
@@ -122,7 +126,7 @@ msgstr "Wähle eine XML Datei mit Einstellungen zum Hochladen und Einstellungen-
 
 #: includes/class.mtekk_adminkit.php:836
 msgid "Settings File"
-msgstr "Einstellungen Datei"
+msgstr "Einstellungs-Datei"
 
 #: includes/class.mtekk_adminkit.php:833
 msgid "Import settings from a XML file, export the current settings to a XML file, or reset to the default settings."
@@ -234,39 +238,39 @@ msgstr "Die Einstellungen jetzt migrieren."
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: class.bcn_widget.php:121
+#: class.bcn_widget.php:122
 msgid "Hide the trail on the front page"
 msgstr "Verstecke den Trail auf der Startseite"
 
-#: class.bcn_widget.php:119
+#: class.bcn_widget.php:120
 msgid "Reverse the order of the trail"
 msgstr "Die Reihenfolge des Trails umkehren"
 
-#: class.bcn_widget.php:117
+#: class.bcn_widget.php:118
 msgid "Link the breadcrumbs"
-msgstr "Verlinke die Breadcrumbs"
+msgstr "Die Breadcrumbs verlinken"
 
-#: class.bcn_widget.php:111
+#: class.bcn_widget.php:112
 msgid "Plain"
 msgstr "Plain"
 
-#: class.bcn_widget.php:110
+#: class.bcn_widget.php:111
 msgid "Google (RDFa) Breadcrumbs"
 msgstr "Google (RDFa) Breadcrumbs"
 
-#: class.bcn_widget.php:109
+#: class.bcn_widget.php:110
 msgid "List"
 msgstr "Liste"
 
-#: class.bcn_widget.php:107
+#: class.bcn_widget.php:108
 msgid "Output trail as:"
 msgstr "Trail ausgeben als:"
 
-#: class.bcn_widget.php:103
+#: class.bcn_widget.php:104
 msgid "Text to show before the trail:"
 msgstr "Text, der vor dem Trail angezeigt werden soll:"
 
-#: class.bcn_widget.php:99
+#: class.bcn_widget.php:100
 msgid "Title:"
 msgstr "Titel:"
 
@@ -292,11 +296,15 @@ msgstr "404"
 
 #: class.bcn_admin.php:721 class.bcn_network_admin.php:793
 msgid "Save Changes"
-msgstr "Änderungen Speichern"
+msgstr "Änderungen speichern"
 
 #: class.bcn_admin.php:709 class.bcn_network_admin.php:781
 msgid "Max Title Length: "
 msgstr "Maximale Länge des Titels:"
+
+#: class.bcn_admin.php:704 class.bcn_network_admin.php:776
+msgid "Limit the length of the breadcrumb title. (Deprecated, %suse CSS instead%s)"
+msgstr "Länge des Breadcrumb-Titels einschränken. (Veraltet, %sbenutze stattdessen CSS%s)"
 
 #: class.bcn_admin.php:699 class.bcn_network_admin.php:771
 msgid "Title Length"
@@ -710,6 +718,11 @@ msgstr "Eine Sammlung von Einstellungen, die am häufigsten verändert werden, f
 msgid "Breadcrumb NavXT Settings"
 msgstr "Breadcrumb NavXT Einstellungen"
 
+#: class.bcn_admin.php:416 class.bcn_admin.php:704
+#: class.bcn_network_admin.php:488 class.bcn_network_admin.php:776
+msgid "Go to the guide on trimming breadcrumb title lengths with CSS"
+msgstr "Schau in die Anleitung um zu erfahren, wie du die Titellänge mit Hilfe von CSS kürzen kannst."
+
 #: class.bcn_admin.php:404 class.bcn_network_admin.php:475
 msgid "Warning: No BCN_SETTINGS_* define statement found, defaulting to BCN_SETTINGS_USE_LOCAL."
 msgstr "Warnung: Kein BCN_SETTINGS_* define Statement gefunden; greife auf BCN_SETTINGS_USE_LOCAL zurück."
@@ -785,7 +798,7 @@ msgstr "%sSpende%s: Dir gefällt Breadcrumb NavXT und Du willst die Entwicklung 
 
 #: class.bcn_admin.php:300 class.bcn_network_admin.php:371
 msgid "Giving Back"
-msgstr "Etwas Zurückgeben"
+msgstr "Etwas zurückgeben"
 
 #: class.bcn_admin.php:299 class.bcn_network_admin.php:370
 msgid "Go to the Breadcrumb NavXT support post for your version."
@@ -826,4 +839,4 @@ msgstr "Nicht genügend Rechte um fortzufahren."
 #: breadcrumb-navxt.php:35 class.bcn_admin.php:25
 #: class.bcn_network_admin.php:25
 msgid "Your PHP version is too old, please upgrade to a newer version. Your version is %1$s, Breadcrumb NavXT requires %2$s"
-msgstr "Deine PHP Version ist veraltet, bitte führe ein Upgrade auf eine neuere Version durch. Deine aktuelle Version ist %1$s, Breadcrumb NavXT benötigt mindestens %2$s"
+msgstr "Deine PHP-Version ist veraltet, bitte führe ein Upgrade auf eine neuere Version durch. Deine aktuelle Version ist %1$s, Breadcrumb NavXT benötigt mindestens %2$s"

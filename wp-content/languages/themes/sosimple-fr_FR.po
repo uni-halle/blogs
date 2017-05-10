@@ -1,0 +1,301 @@
+# Translation of Themes - SoSimple in French (France)
+# This file is distributed under the same license as the Themes - SoSimple package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-04-19 09:05:50+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: fr\n"
+"Project-Id-Version: Themes - SoSimple\n"
+
+#. Description of the plugin/theme
+msgid "A clean, responsive simple theme for simple websites."
+msgstr "Un thème simple propre et responsive pour les sites web simples."
+
+#. Theme Name of the plugin/theme
+msgid "SoSimple"
+msgstr "SoSimple"
+
+#: functions.php:211
+msgid "Good Day, this is the SoSimple theme creator <b>fervillz</b>. I am thankful that you are still using my theme, in return I would like to offer you a chance to be a part of the next SoSimple update. <br> <b>What to do?</b> Just contact me on my email <a href=\"mailto:fervillz@gmail.com\">fervillz@gmail.com</a> an write what features you wantto add on the next update. That's all!!"
+msgstr "Bonjour, c'est le créateur du thème SoSimple <b>fervillz</b> . Je suis reconnaissant que vous utilisiez toujours mon thème, en retour, je voudrais vous offrir une chance de faire partie de la prochaine mise à jour SoSimple. <br> <b>Que faire?</b> <a href=\"mailto:fervillz@gmail.com\">Contactez</a> -moi <a href=\"mailto:fervillz@gmail.com\">simplement</a> sur mon email <a href=\"mailto:fervillz@gmail.com\">fervillz@gmail.com</a> et écrivez les fonctionnalités que vous souhaitez ajouter à la prochaine mise à jour. C'est tout !!"
+
+#: inc/customizer.php:222
+msgid "Body Font"
+msgstr "Police du corps"
+
+#: inc/customizer.php:206
+msgid "Header Font"
+msgstr "Police de l'en-tête"
+
+#: inc/customizer.php:193
+msgid "Fonts"
+msgstr "Polices"
+
+#. Template Name of the plugin/theme
+msgid "Full Width Page"
+msgstr "Page plein écran"
+
+#: lib/admin.php:9
+msgid "<b>Hi! This is Fernando, developer of the SoSimple theme :)</b>. I am doing my best to make SoSImple the perfect free theme for you. If you think it helped you in any way to build a better web presence, please support its continued development and updates with a donation of $20, $50,..."
+msgstr "<b>Salut ! C'est Fernando, développeur du thème SoSimple :)</b> . Je fais de mon mieux pour que SoSimple soit le thème gratuit parfait pour vous. Si vous pensez que cela vous a aidé de quelque façon que ce soit à créer une meilleure présence sur le web, veuillez soutenir son développement continu et ses mises à jour avec un don de 20 $, 50 $, ..."
+
+#: template-parts/content-page.php:23 template-parts/content-single.php:27
+#: template-parts/content.php:64
+msgid "Pages:"
+msgstr "Pages :"
+
+#: template-parts/content-none.php:29
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Il semble que ce que vous cherchez est introuvable. Essayez avec une recherche."
+
+#: template-parts/content-none.php:24
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Désolé, mais rien ne correspond à votre recherche. Veuillez réessayer avec des mots clés différents."
+
+#: template-parts/content-none.php:20
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Prêt à publier votre premier article ? <a href=\"%1$s\">Commcez ici</a>."
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr "Rien trouvé"
+
+#: search.php:16
+msgid "Search Results for: %s"
+msgstr "Résultats de recherche pour : %s"
+
+#: inc/template-tags.php:181
+msgid "Archives"
+msgstr "Archives"
+
+#. translators: 1: Taxonomy singular name, 2: Current taxonomy term
+#: inc/template-tags.php:179
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
+
+#: inc/template-tags.php:175
+msgid "Archives: %s"
+msgstr "Archives : %s"
+
+#: inc/template-tags.php:172
+msgctxt "post format archive title"
+msgid "Chats"
+msgstr "Chats"
+
+#: inc/template-tags.php:170
+msgctxt "post format archive title"
+msgid "Audio"
+msgstr "Audio"
+
+#: inc/template-tags.php:168
+msgctxt "post format archive title"
+msgid "Statuses"
+msgstr "États"
+
+#: inc/template-tags.php:166
+msgctxt "post format archive title"
+msgid "Links"
+msgstr "Liens"
+
+#: inc/template-tags.php:164
+msgctxt "post format archive title"
+msgid "Quotes"
+msgstr "Citations"
+
+#: inc/template-tags.php:162
+msgctxt "post format archive title"
+msgid "Videos"
+msgstr "Vidéos"
+
+#: inc/template-tags.php:160
+msgctxt "post format archive title"
+msgid "Images"
+msgstr "Images"
+
+#: inc/template-tags.php:158
+msgctxt "post format archive title"
+msgid "Galleries"
+msgstr "Galeries"
+
+#: inc/template-tags.php:156
+msgctxt "post format archive title"
+msgid "Asides"
+msgstr "En passant"
+
+#: inc/template-tags.php:153
+msgctxt "daily archives date format"
+msgid "F j, Y"
+msgstr "j F Y"
+
+#: inc/template-tags.php:153
+msgid "Day: %s"
+msgstr "Jour : %s"
+
+#: inc/template-tags.php:151
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "F Y"
+
+#: inc/template-tags.php:151
+msgid "Month: %s"
+msgstr "Mois : %s"
+
+#: inc/template-tags.php:149
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y"
+
+#: inc/template-tags.php:149
+msgid "Year: %s"
+msgstr "Année : %s"
+
+#: inc/template-tags.php:147
+msgid "Author: %s"
+msgstr "Auteur : %s"
+
+#: inc/template-tags.php:145
+msgid "Tag: %s"
+msgstr "Étiquette : %s"
+
+#: inc/template-tags.php:143
+msgid "Category: %s"
+msgstr "Catégorie : %s"
+
+#: inc/template-tags.php:126 template-parts/content-page.php:30
+msgid "Edit"
+msgstr "Modifier"
+
+#: inc/template-tags.php:122
+msgid " % Comments"
+msgstr " % commentaires"
+
+#: inc/template-tags.php:122
+msgid " 1 Comment"
+msgstr " 1 commentaire"
+
+#: inc/template-tags.php:122
+msgid "Leave a comment"
+msgstr "Laisser un commentaire"
+
+#: inc/template-tags.php:116
+msgid "Tagged %1$s"
+msgstr "Étiqueté %1$s"
+
+#: inc/template-tags.php:110
+msgid "Posted in %1$s"
+msgstr "Publié dans %1$s"
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:108 inc/template-tags.php:114
+msgid ", "
+msgstr ", "
+
+#: inc/template-tags.php:91
+msgctxt "post author"
+msgid "by %s"
+msgstr "par %s"
+
+#: inc/template-tags.php:86
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr "Publié le %s"
+
+#: inc/template-tags.php:56
+msgid "Post navigation"
+msgstr "Navigation de contenu"
+
+#: inc/template-tags.php:31
+msgid "Newer posts"
+msgstr "Articles plus récents"
+
+#: inc/template-tags.php:27
+msgid "Older posts"
+msgstr "Articles plus anciens"
+
+#: inc/template-tags.php:23
+msgid "Posts navigation"
+msgstr "Navigation au sein des articles"
+
+#: inc/extras.php:52
+msgid "Page %s"
+msgstr "Page %s"
+
+#: header.php:23
+msgid "Skip to content"
+msgstr "Aller au contenu"
+
+#: functions.php:105
+msgid "Sidebar"
+msgstr "Colonne latérale"
+
+#: functions.php:48 header.php:43
+msgid "Primary Menu"
+msgstr "Menu principal"
+
+#: footer.php:19
+msgid "Theme: %1$s by %2$s."
+msgstr "Thème : %1$s par %2$s."
+
+#: footer.php:16
+msgid "Proudly powered by %s"
+msgstr "Fièrement propulsé par %s"
+
+#: footer.php:16
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#: comments.php:75
+msgid "Comments are closed."
+msgstr "Les commentaires sont fermés"
+
+#: comments.php:42 comments.php:63
+msgid "Newer Comments"
+msgstr "Commentaires plus récents"
+
+#: comments.php:41 comments.php:62
+msgid "Older Comments"
+msgstr "Commentaires plus anciens"
+
+#: comments.php:38 comments.php:59
+msgid "Comment navigation"
+msgstr "Navigation des commentaires"
+
+#: comments.php:29
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "1 commentaire sur &ldquo;%s&rdquo;"
+msgstr[1] "%1$s commentaires sur &ldquo;%s&rdquo;"
+
+#. translators: %1$s: smiley
+#: 404.php:44
+msgid "Try looking in the monthly archives. %1$s"
+msgstr "Essayez de voir du côté des archives mensuelles. %1$s"
+
+#: 404.php:27
+msgid "Most Used Categories"
+msgstr "Catégories les plus utilisées"
+
+#: 404.php:19
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr "Il semble que rien n’a été trouvé à cet endroit. Peut-être devriez-vous essayer un des liens ci-dessous ou une recherche ?"
+
+#: 404.php:15
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Oops ! Cette page n'a pas pû être trouvée."
+
+#. Theme URI of the plugin/theme
+msgid "https://wordpress.org/themes/sosimple/"
+msgstr "https://wordpress.org/themes/sosimple/"
+
+#. Author URI of the plugin/theme
+msgid "http://fernandovillamorjr.com"
+msgstr "http://fernandovillamorjr.com"
+
+#. Author of the plugin/theme
+msgid "fernando villamor jr"
+msgstr "fernando villamor jr"

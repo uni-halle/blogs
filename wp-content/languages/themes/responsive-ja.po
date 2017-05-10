@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Themes - Responsive package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-01-14 06:04:49+0000\n"
+"PO-Revision-Date: 2017-02-20 00:46:14+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: ja_JP\n"
 "Project-Id-Version: Themes - Responsive\n"
 
@@ -28,51 +28,39 @@ msgid "Fermentum"
 msgstr "Fermentum"
 
 #: core/includes/customizer.php:87
-#: core/includes/theme-options/theme-options.php:274
+#: core/includes/theme-options/theme-options.php:315
 #: template-parts/featured-area.php:36
 msgid "IS A WARM CUP"
 msgstr "IS A WARM CUP"
 
 #: core/includes/customizer.php:80
-#: core/includes/theme-options/theme-options.php:265
+#: core/includes/theme-options/theme-options.php:306
 #: template-parts/featured-area.php:26
 msgid "HAPPINESS"
 msgstr "HAPPINESS"
 
-#: core/includes/functions-admin.php:16
-msgid "Get %1$s off on %2$s using Coupon Code <span class=\"coupon-code\">RESPONSIVE30</span>"
-msgstr "クーポンコード <span class=\"coupon-code\">RESPONSIVE30</span> で %2$s を%1$s引きに"
-
-#: core/includes/functions-admin.php:47
-msgid ""
-"<a href=\"http://cyberchimps.com/store/responsivepro/\" target=\"_blank\" title=\"Responsive Pro\">Responsive Pro</a> allows you to create Sliders using 13 Dynamic Sources like YouTube, Vimeo, Pinterest and more.\n"
-"Upgrade to <a href=\"https://cyberchimps.com/responsive2pro\" target=\"_blank\" title=\"Responsive Pro\">Responsive Pro</a> Today."
-msgstr ""
-"<a href=\"http://cyberchimps.com/store/responsivepro/\" target=\"_blank\" title=\"Responsive Pro\">Responsive Pro</a> では YouTube, Vimeo, Pinterest など13種類のサービスからの素材でスライダーを作成可能です。\n"
-"<a href=\"https://cyberchimps.com/responsive2pro\" target=\"_blank\" title=\"Responsive Pro\">Responsive Pro</a> にアップグレードしましょう。"
-
-#: core/includes/theme-options/theme-options.php:224
+#: core/includes/theme-options/theme-options.php:265
 msgid "Default Copyright Text"
 msgstr "標準の著作権表示"
 
-#: core/includes/theme-options/theme-options.php:218
+#: core/includes/theme-options/theme-options.php:259
 msgid "Copyright Text"
 msgstr "著作権テキスト"
 
-#: core/includes/customizer.php:337
-#: core/includes/theme-options/theme-options.php:227
+#: core/includes/customizer.php:340
+#: core/includes/theme-options/theme-options.php:268
 msgid "Display Powered By WordPress Link"
 msgstr "「Powered By WordPress」リンクを表示"
 
-#: core/includes/customizer.php:329
+#: core/includes/customizer.php:332
 msgid "Copyright text"
 msgstr "著作権テキスト"
 
-#: core/includes/customizer.php:326
+#: core/includes/customizer.php:329
 msgid "Default copyright text"
 msgstr "標準の著作権表示"
 
-#: core/includes/customizer.php:323
+#: core/includes/customizer.php:326
 msgid "Footer Settings"
 msgstr "フッター設定"
 
@@ -177,37 +165,37 @@ msgstr "検索&hellip;"
 msgid "Search for:"
 msgstr "検索:"
 
-#: loop-no-posts.php:38
+#: loop-no-posts.php:52
 msgid "&larr; Home"
 msgstr "&larr; ホーム"
 
-#: loop-no-posts.php:34
+#: loop-no-posts.php:48
 msgid "You can return %s or search for the page you were looking for."
 msgstr "%sに戻るか、探していたページを検索してみましょう"
 
-#: loop-no-posts.php:31
+#: loop-no-posts.php:45
 msgid "Don&#39;t panic, we&#39;ll get through this together. Let&#39;s explore our options here."
 msgstr "落ち着いてください、大丈夫です。他のオプションを一緒に考えてみましょう。"
 
-#: loop-no-posts.php:26
+#: loop-no-posts.php:27
 msgid "404 &#8212; Fancy meeting you here!"
 msgstr "404 &#8212; お探しのページが見つかりません。"
 
-#: loop-no-posts.php:26
+#: loop-no-posts.php:27
 msgid "Your search for %s did not match any entries."
 msgstr "「%s」に一致する検索結果が見つかりませんでした。"
 
-#: image.php:74 post-data.php:32 sidebar-content-half-page.php:66
+#: image.php:74 post-data.php:40 sidebar-content-half-page.php:66
 #: sidebar-content-page.php:66 sitemap.php:65
 msgid "Edit"
 msgstr "編集"
 
-#: image.php:70 post-data.php:26 sidebar-content-half-page.php:62
+#: image.php:70 post-data.php:34 sidebar-content-half-page.php:62
 #: sidebar-content-page.php:62
 msgid "Posted in %s"
 msgstr "カテゴリー: %s"
 
-#: image.php:69 post-data.php:27 sidebar-content-half-page.php:61
+#: image.php:69 post-data.php:35 sidebar-content-half-page.php:61
 #: sidebar-content-page.php:61
 msgid "Tagged with:"
 msgstr "タグ:"
@@ -263,151 +251,152 @@ msgstr "&copy;"
 msgid "Themes You Can Trust"
 msgstr "信頼できるテーマ"
 
-#: core/includes/theme-options/theme-options.php:486
+#: core/includes/theme-options/theme-options.php:527
 msgid "Enter your custom footer script."
 msgstr "カスタムフッタースクリプトを入力してください。"
 
-#: core/includes/theme-options/theme-options.php:483
+#: core/includes/theme-options/theme-options.php:524
 msgid "Embeds to footer.php &darr;"
 msgstr "footer.php への埋め込み ↓"
 
-#: core/includes/theme-options/theme-options.php:477
+#: core/includes/theme-options/theme-options.php:518
 msgid "Enter your custom header script."
 msgstr "カスタムヘッダースクリプトを入力してください。"
 
-#: core/includes/theme-options/theme-options.php:474
+#: core/includes/theme-options/theme-options.php:515
 msgid "Embeds to header.php &darr;"
 msgstr "header.php への埋め込み ↓"
 
-#: core/includes/theme-options/theme-options.php:473
+#: core/includes/theme-options/theme-options.php:514
 msgid "Quick Tutorial"
 msgstr "クイックチュートリアル"
 
-#: core/includes/theme-options/theme-options.php:472
+#: core/includes/theme-options/theme-options.php:513
 msgid "Custom Scripts for Header and Footer"
 msgstr "ヘッダー・フッター用のカスタムスクリプト"
 
-#: core/includes/theme-options/theme-options.php:466
+#: core/includes/theme-options/theme-options.php:507
 msgid "Enter your custom CSS styles."
 msgstr "カスタムCSSを入力してください。"
 
-#: core/includes/theme-options/theme-options.php:462
+#: core/includes/theme-options/theme-options.php:503
 msgid "CSS Tutorial"
 msgstr "CSS チュートリアル"
 
-#: core/includes/theme-options/theme-options.php:454
+#: core/includes/theme-options/theme-options.php:495
 msgid "Enter your foursquare URL"
 msgstr "Foursquare を入力してください"
 
-#: core/includes/theme-options/theme-options.php:445
+#: core/includes/theme-options/theme-options.php:486
 msgid "Enter your Vimeo URL"
 msgstr "Vimeo URL を入力"
 
-#: core/includes/theme-options/theme-options.php:436
+#: core/includes/theme-options/theme-options.php:477
 msgid "Enter your Yelp! URL"
 msgstr "Yelp! URL を入力"
 
-#: core/includes/theme-options/theme-options.php:427
+#: core/includes/theme-options/theme-options.php:468
 msgid "Enter your Pinterest URL"
 msgstr "Pinterest URL を入力"
 
-#: core/includes/theme-options/theme-options.php:418
+#: core/includes/theme-options/theme-options.php:459
 msgid "Enter your Instagram URL"
 msgstr "Instagram URL を入力"
 
-#: core/includes/theme-options/theme-options.php:409
+#: core/includes/theme-options/theme-options.php:450
 msgid "Enter your Google+ URL"
 msgstr "Google+ URL を入力"
 
-#: core/includes/theme-options/theme-options.php:400
+#: core/includes/theme-options/theme-options.php:441
 msgid "Enter your RSS Feed URL"
 msgstr "RSS フィードの URL を入力"
 
-#: core/includes/theme-options/theme-options.php:391
+#: core/includes/theme-options/theme-options.php:432
 msgid "Enter your StumbleUpon URL"
 msgstr "StumbleUpon URL を入力"
 
-#: core/includes/theme-options/theme-options.php:382
+#: core/includes/theme-options/theme-options.php:423
 msgid "Enter your YouTube URL"
 msgstr "YouTube URL を入力"
 
-#: core/includes/theme-options/theme-options.php:373
+#: core/includes/theme-options/theme-options.php:414
 msgid "Enter your LinkedIn URL"
 msgstr "LinkedIn URL を入力"
 
-#: core/includes/theme-options/theme-options.php:364
+#: core/includes/theme-options/theme-options.php:405
 msgid "Enter your Facebook URL"
 msgstr "Facebook URL を入力"
 
-#: core/includes/theme-options/theme-options.php:355
+#: core/includes/theme-options/theme-options.php:396
 msgid "Enter your Twitter URL"
 msgstr "Twitter URL を入力"
 
-#: core/includes/theme-options/theme-options.php:305
-#: core/includes/theme-options/theme-options.php:306
+#: core/includes/theme-options/theme-options.php:346
+#: core/includes/theme-options/theme-options.php:347
 msgid "See Docs"
 msgstr "ドキュメンテーションを見る"
 
-#: core/includes/theme-options/theme-options.php:301
+#: core/includes/theme-options/theme-options.php:342
 #: template-parts/featured-area.php:57
 msgid "Call to Action"
 msgstr "いますぐ登録！"
 
-#: core/includes/theme-options/theme-options.php:300
+#: core/includes/theme-options/theme-options.php:341
 msgid "Enter your call to action text"
 msgstr "アクション喚起ボタンのテキストを入力"
 
-#: core/includes/theme-options/theme-options.php:291
+#: core/includes/theme-options/theme-options.php:332
 msgid "Enter your call to action URL"
 msgstr "アクション喚起ボタンのリンク先 URL を入力"
 
-#: core/includes/theme-options/theme-options.php:282
+#: core/includes/theme-options/theme-options.php:323
 msgid "Enter your content"
 msgstr "コンテンツを入力"
 
-#: core/includes/theme-options/theme-options.php:273
+#: core/includes/theme-options/theme-options.php:314
 msgid "Enter your subheadline"
 msgstr "サブヘッドラインを入力"
 
-#: core/includes/theme-options/theme-options.php:264
+#: core/includes/theme-options/theme-options.php:305
 msgid "Enter your headline"
 msgstr "ヘッドラインを入力"
 
-#: core/includes/theme-options/theme-options.php:255
+#: core/includes/theme-options/theme-options.php:296
 msgid "Overrides the WordPress %1sfront page option%2s"
 msgstr "WordPress の%1sフロントページオプション%2sを上書きします"
 
-#: core/includes/theme-options/theme-options.php:243
+#: core/includes/theme-options/theme-options.php:284
 msgid "Click here"
 msgstr "ここをクリック"
 
-#: core/includes/theme-options/theme-options.php:243
+#: core/includes/theme-options/theme-options.php:284
 msgid "Need to replace or remove default logo?"
 msgstr "デフォルトのロゴを差し替えまたは削除しますか ?"
 
-#: core/includes/theme-options/theme-options.php:238
+#: core/includes/theme-options/theme-options.php:279
 msgid "Custom Header"
 msgstr "カスタムヘッダー"
 
-#: core/includes/theme-options/theme-options.php:215
+#: core/includes/theme-options/theme-options.php:256
 msgid "Blog"
 msgstr "ブログ"
 
-#: core/includes/theme-options/theme-options.php:197
-#: core/includes/theme-options/theme-options.php:206
+#: core/includes/theme-options/theme-options.php:238
+#: core/includes/theme-options/theme-options.php:247
 msgid "Check to enable"
 msgstr "有効化にはチェック"
 
-#: core/includes/theme-options/theme-options.php:179
-#: core/includes/theme-options/theme-options.php:188
+#: core/includes/theme-options/theme-options.php:220
+#: core/includes/theme-options/theme-options.php:229
 msgid "Check to disable"
 msgstr "無効化にはチェック"
 
-#: core/includes/theme-options/theme-options.php:128
+#: core/includes/theme-options/theme-options.php:134
+#: core/includes/theme-options/theme-options.php:168
 msgid "Logo Upload"
 msgstr "ロゴのアップロード"
 
-#: core/includes/theme-options/theme-options.php:108
+#: core/includes/theme-options/theme-options.php:111
 msgid "Options Saved"
 msgstr "設定を保存しました"
 
@@ -415,35 +404,25 @@ msgstr "設定を保存しました"
 msgid "Layout"
 msgstr "レイアウト"
 
-#: core/includes/functions.php:361
+#: core/includes/functions.php:379
 msgid "<span class=\"%1$s\">Posted on </span>%2$s<span class=\"%3$s\"> by </span>%4$s"
 msgstr "<span class=\"%1$s\">投稿日: </span>%2$s<span class=\"%3$s\"> 作成者: </span>%4$s"
 
-#: core/includes/functions.php:162
+#: core/includes/functions.php:180
 msgid "Footer Menu"
 msgstr "フッターメニュー"
 
-#: core/includes/functions.php:161
+#: core/includes/functions.php:179
 msgid "Sub-Header Menu"
 msgstr "サブヘッダーメニュー"
 
-#: core/includes/functions.php:160
+#: core/includes/functions.php:178
 msgid "Header Menu"
 msgstr "ヘッダーメニュー"
 
-#: core/includes/functions.php:159
+#: core/includes/functions.php:177
 msgid "Top Menu"
 msgstr "トップメニュー"
-
-#: core/includes/functions-update.php:110
-msgid "update page"
-msgstr "ページを更新"
-
-#. Translators: This is a big update. Please read the blog post before
-#. updating.
-#: core/includes/functions-update.php:109
-msgid "<strong>WARNING:</strong> There is a big <strong>Responsive Theme</strong> update available. Please read the %1$s before updating."
-msgstr "<strong>警告:</strong> 利用可能な <strong>Responsive テーマ</strong>の大幅な更新があります。更新する前に %1$s をお読みください。"
 
 #: core/includes/functions-sidebar.php:138
 msgid "Area 12 - sidebar-footer.php - Maximum of 3 widgets per row"
@@ -542,8 +521,8 @@ msgid "Main Sidebar"
 msgstr "メインサイドバー"
 
 #: core/includes/functions-install.php:38
-#: core/includes/theme-options/theme-options.php:52
-#: core/includes/theme-options/theme-options.php:104
+#: core/includes/theme-options/theme-options.php:55
+#: core/includes/theme-options/theme-options.php:107
 msgid "Theme Options"
 msgstr "テーマオプション"
 
@@ -560,22 +539,22 @@ msgid "Settings saved and %s activated successfully."
 msgstr "設定を保存し、%s を有効化しました。"
 
 #: core/includes/functions-extentions.php:334
-#: core/includes/theme-options/theme-options.php:449
+#: core/includes/theme-options/theme-options.php:490
 msgid "foursquare"
 msgstr "FourSquare"
 
 #: core/includes/functions-extentions.php:332
-#: core/includes/theme-options/theme-options.php:431
+#: core/includes/theme-options/theme-options.php:472
 msgid "Yelp!"
 msgstr "Yelp!"
 
 #: core/includes/customizer.php:201 core/includes/functions-extentions.php:326
-#: core/includes/theme-options/theme-options.php:377
+#: core/includes/theme-options/theme-options.php:418
 msgid "YouTube"
 msgstr "YouTube"
 
 #: core/includes/functions-extentions.php:193
-#: core/includes/functions-extras.php:169
+#: core/includes/functions-extras.php:168
 msgid "Page %s"
 msgstr "ページ %s"
 
@@ -583,7 +562,7 @@ msgstr "ページ %s"
 msgid "Error 404"
 msgstr "404 エラー"
 
-#: core/includes/functions-extentions.php:48 core/includes/functions.php:372
+#: core/includes/functions-extentions.php:48 core/includes/functions.php:390
 msgid "View all posts by %s"
 msgstr "%s の投稿をすべて表示"
 
@@ -599,75 +578,76 @@ msgstr "検索結果: %s"
 msgid "Archive for %s"
 msgstr "%s のアーカイブ"
 
-#: core/includes/functions-extentions.php:44 loop-no-posts.php:37
+#: core/includes/functions-extentions.php:44 loop-no-posts.php:51
 msgid "Home"
 msgstr "ホーム"
 
-#: core/includes/functions-admin.php:166
+#: core/includes/functions-admin.php:145
 msgid "The Custom Front Page is disabled. You can enable it in the <a href=\"%1$s\">theme settings</a>."
 msgstr "カスタムフロントページが無効化されています。<a href=\"%1$s\">テーマ設定</a>で有効化できます。"
 
-#: core/includes/functions-admin.php:164
+#: core/includes/functions-admin.php:143
 msgid "The Custom Front Page is enabled. You can disable it in the <a href=\"%1$s\">theme settings</a>."
 msgstr "カスタムフロントページが有効化されています。<a href=\"%1$s\">テーマ設定</a>で無効化できます。"
 
-#: core/includes/functions-admin.php:140
+#: core/includes/functions-admin.php:119
 msgid "All plugins installed and activated successfully. %s"
 msgstr "全てのプラグインのインストール・有効化が完了しました：%s"
 
-#: core/includes/functions-admin.php:127
+#: core/includes/functions-admin.php:106
 msgid "Something went wrong with the plugin API."
 msgstr "Plugin API で問題が発生しました。"
 
-#: core/includes/functions-admin.php:125
+#: core/includes/functions-admin.php:104
 msgid "Activate Add Ons"
 msgstr "アドオンを有効化"
 
-#: core/includes/functions-admin.php:124
+#: core/includes/functions-admin.php:103
 msgid "Responsive Add Features"
 msgstr "Responsive 追加機能"
 
-#: core/includes/functions-admin.php:76 core/includes/functions-admin.php:77
+#: core/includes/functions-admin.php:55 core/includes/functions-admin.php:56
 msgid "More Themes"
 msgstr "テーマをもっと見る"
 
-#: core/includes/functions-admin.php:73 core/includes/functions-admin.php:74
+#: core/includes/functions-admin.php:52 core/includes/functions-admin.php:53
 msgid "Showcase"
 msgstr "ショーケース"
 
-#: core/includes/functions-admin.php:70 core/includes/functions-admin.php:71
+#: core/includes/functions-admin.php:49 core/includes/functions-admin.php:50
 msgid "Translate"
 msgstr "翻訳する"
 
-#: core/includes/functions-admin.php:67 core/includes/functions-admin.php:68
+#: core/includes/functions-admin.php:46 core/includes/functions-admin.php:47
 #: core/includes/functions-install.php:39
 msgid "Help"
 msgstr "ヘルプ"
 
-#: core/includes/functions-admin.php:64 core/includes/functions-admin.php:65
+#: core/includes/functions-admin.php:43 core/includes/functions-admin.php:44
 msgid "Instructions"
 msgstr "手順"
 
-#: core/includes/customizer.php:312
+#: core/includes/customizer.php:315
 msgid "Embeds to footer.php"
 msgstr "footer.php への埋め込み"
 
-#: core/includes/customizer.php:304
+#: core/includes/customizer.php:307
 msgid "Embeds to header.php"
 msgstr "header.php への埋め込み"
 
-#: core/includes/customizer.php:299
-#: core/includes/theme-options/theme-options.php:149
+#: core/includes/customizer.php:302
+#: core/includes/theme-options/theme-options.php:151
+#: core/includes/theme-options/theme-options.php:189
 msgid "Scripts"
 msgstr "スクリプト"
 
-#: core/includes/customizer.php:288
-#: core/includes/theme-options/theme-options.php:461
+#: core/includes/customizer.php:290
+#: core/includes/theme-options/theme-options.php:502
 msgid "Custom CSS Styles"
 msgstr "カスタム CSS スタイル"
 
-#: core/includes/customizer.php:283
-#: core/includes/theme-options/theme-options.php:145
+#: core/includes/customizer.php:285
+#: core/includes/theme-options/theme-options.php:185
 msgid "CSS Styles"
 msgstr "CSS スタイル"
 
@@ -680,47 +660,47 @@ msgid "Yelp"
 msgstr "Yelp"
 
 #: core/includes/customizer.php:255 core/includes/functions-extentions.php:333
-#: core/includes/theme-options/theme-options.php:440
+#: core/includes/theme-options/theme-options.php:481
 msgid "Vimeo"
 msgstr "Vimeo"
 
 #: core/includes/customizer.php:246 core/includes/functions-extentions.php:327
-#: core/includes/theme-options/theme-options.php:386
+#: core/includes/theme-options/theme-options.php:427
 msgid "StumbleUpon"
 msgstr "StumbleUpon"
 
 #: core/includes/customizer.php:237 core/includes/functions-extentions.php:331
-#: core/includes/theme-options/theme-options.php:422
+#: core/includes/theme-options/theme-options.php:463
 msgid "Pinterest"
 msgstr "Pinterest"
 
 #: core/includes/customizer.php:228 core/includes/functions-extentions.php:330
-#: core/includes/theme-options/theme-options.php:413
+#: core/includes/theme-options/theme-options.php:454
 msgid "Instagram"
 msgstr "Instagram"
 
 #: core/includes/customizer.php:219 core/includes/functions-extentions.php:328
-#: core/includes/theme-options/theme-options.php:395
+#: core/includes/theme-options/theme-options.php:436
 msgid "RSS Feed"
 msgstr "RSS"
 
 #: core/includes/customizer.php:210 core/includes/functions-extentions.php:329
-#: core/includes/theme-options/theme-options.php:404
+#: core/includes/theme-options/theme-options.php:445
 msgid "Google+"
 msgstr "Google+"
 
 #: core/includes/customizer.php:192 core/includes/functions-extentions.php:325
-#: core/includes/theme-options/theme-options.php:368
+#: core/includes/theme-options/theme-options.php:409
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
 #: core/includes/customizer.php:183 core/includes/functions-extentions.php:324
-#: core/includes/theme-options/theme-options.php:359
+#: core/includes/theme-options/theme-options.php:400
 msgid "Facebook"
 msgstr "Facebook"
 
 #: core/includes/customizer.php:174 core/includes/functions-extentions.php:323
-#: core/includes/theme-options/theme-options.php:350
+#: core/includes/theme-options/theme-options.php:391
 msgid "Twitter"
 msgstr "Twitter"
 
@@ -729,68 +709,70 @@ msgid "Enter the URL to your account for each service for the icon to appear in 
 msgstr "ヘッダーに表示されるアイコンの各サービスに対するアカウント URL を入力してください。"
 
 #: core/includes/customizer.php:165
-#: core/includes/theme-options/theme-options.php:141
+#: core/includes/theme-options/theme-options.php:147
+#: core/includes/theme-options/theme-options.php:181
 msgid "Social Icons"
 msgstr "ソーシャルアイコン"
 
 #: core/includes/customizer.php:153
-#: core/includes/theme-options/theme-options.php:337
+#: core/includes/theme-options/theme-options.php:378
 msgid "Default Blog Posts Index Layout"
 msgstr "デフォルトブログ投稿一覧ページレイアウト"
 
 #: core/includes/customizer.php:145
-#: core/includes/theme-options/theme-options.php:327
+#: core/includes/theme-options/theme-options.php:368
 msgid "Default Single Blog Post Layout"
 msgstr "デフォルト個別ブログ投稿レイアウト"
 
 #: core/includes/customizer.php:137
-#: core/includes/theme-options/theme-options.php:317
+#: core/includes/theme-options/theme-options.php:358
 msgid "Default Static Page Layout"
 msgstr "デフォルト固定ページレイアウト"
 
 #: core/includes/customizer.php:132
-#: core/includes/theme-options/theme-options.php:137
+#: core/includes/theme-options/theme-options.php:143
+#: core/includes/theme-options/theme-options.php:177
 msgid "Default Layouts"
 msgstr "デフォルトレイアウト"
 
 #: core/includes/customizer.php:123
-#: core/includes/theme-options/theme-options.php:310
+#: core/includes/theme-options/theme-options.php:351
 msgid "Paste your shortcode, video or image source"
 msgstr "ショートコード、動画または画像のソース URL を入力してください。"
 
 #: core/includes/customizer.php:119
-#: core/includes/theme-options/theme-options.php:304
+#: core/includes/theme-options/theme-options.php:345
 msgid "Featured Content"
 msgstr "おすすめコンテンツ"
 
 #: core/includes/customizer.php:111
-#: core/includes/theme-options/theme-options.php:295
+#: core/includes/theme-options/theme-options.php:336
 msgid "Call to Action (Text)"
 msgstr "アクション喚起ボタン (テキスト)"
 
 #: core/includes/customizer.php:103
-#: core/includes/theme-options/theme-options.php:286
+#: core/includes/theme-options/theme-options.php:327
 msgid "Call to Action (URL)"
 msgstr "アクション喚起ボタン (URL)"
 
 #: core/includes/customizer.php:96
-#: core/includes/theme-options/theme-options.php:277
+#: core/includes/theme-options/theme-options.php:318
 msgid "Content Area"
 msgstr "コンテンツエリア"
 
 #: core/includes/customizer.php:94
-#: core/includes/theme-options/theme-options.php:283
+#: core/includes/theme-options/theme-options.php:324
 #: template-parts/featured-area.php:44
 msgid "Your title, subtitle and this very content is editable from Theme Option. Call to Action button and its destination link as well. Image on your right can be an image or even YouTube video if you like."
 msgstr "タイトル、サブタイトル、このコンテンツはテーマ設定から編集できます。アクション喚起ボタンとリンク先も同様です。右側の画像は、お好みの画像や YouTube などの動画を指定できます。"
 
 #: core/includes/customizer.php:89
-#: core/includes/theme-options/theme-options.php:268
+#: core/includes/theme-options/theme-options.php:309
 msgid "Subheadline"
 msgstr "サブヘッドライン"
 
 #: core/includes/customizer.php:82
-#: core/includes/theme-options/theme-options.php:259
+#: core/includes/theme-options/theme-options.php:300
 msgid "Headline"
 msgstr "見出し"
 
@@ -799,42 +781,44 @@ msgid "Overrides the WordPress front page option"
 msgstr "WordPress のフロントページ設定を上書き"
 
 #: core/includes/customizer.php:74
-#: core/includes/theme-options/theme-options.php:250
+#: core/includes/theme-options/theme-options.php:291
 msgid "Enable Custom Front Page"
 msgstr "カスタムフロントページを有効化"
 
 #: core/includes/customizer.php:69
-#: core/includes/theme-options/theme-options.php:132
+#: core/includes/theme-options/theme-options.php:138
+#: core/includes/theme-options/theme-options.php:172
 msgid "Home Page"
 msgstr "ホームページ"
 
 #: core/includes/customizer.php:57
-#: core/includes/theme-options/theme-options.php:209
+#: core/includes/theme-options/theme-options.php:250
 msgid "Title Text"
 msgstr "タイトルテキスト"
 
 #: core/includes/customizer.php:49
-#: core/includes/theme-options/theme-options.php:201
+#: core/includes/theme-options/theme-options.php:242
 msgid "Enable Blog Title"
 msgstr "ブログタイトルを有効化"
 
 #: core/includes/customizer.php:42
-#: core/includes/theme-options/theme-options.php:192
+#: core/includes/theme-options/theme-options.php:233
 msgid "Enable minified css?"
 msgstr "CSS Minify を有効化しますか ?"
 
 #: core/includes/customizer.php:35
-#: core/includes/theme-options/theme-options.php:183
+#: core/includes/theme-options/theme-options.php:224
 msgid "Disable Call to Action Button?"
 msgstr "アクション喚起ボタンを非表示にしますか ?"
 
 #: core/includes/customizer.php:28
-#: core/includes/theme-options/theme-options.php:174
+#: core/includes/theme-options/theme-options.php:215
 msgid "Disable breadcrumb list?"
 msgstr "パンくずリストを無効化しますか ?"
 
 #: core/includes/customizer.php:23
-#: core/includes/theme-options/theme-options.php:123
+#: core/includes/theme-options/theme-options.php:129
+#: core/includes/theme-options/theme-options.php:163
 msgid "Theme Elements"
 msgstr "テーマ要素"
 
@@ -995,7 +979,7 @@ msgstr "以下のプラグインを有効化しました:"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:171
 #: core/includes/classes/class-tgm-plugin-activation.php:1931
-#: core/includes/functions-admin.php:139
+#: core/includes/functions-admin.php:118
 msgid "Plugin activated successfully."
 msgstr "プラグインを有効化しました。"
 
@@ -1004,66 +988,66 @@ msgid "Return to the dashboard"
 msgstr "ダッシュボードに戻る"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:169
-#: core/includes/functions-admin.php:138
+#: core/includes/functions-admin.php:117
 msgid "Return to Required Plugins Installer"
 msgstr "必須プラグインのインストール画面に戻る"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:168
-#: core/includes/functions-admin.php:137
+#: core/includes/functions-admin.php:116
 msgid "Activate installed plugin"
 msgid_plural "Activate installed plugins"
 msgstr[0] "インストール済みプラグインを有効化"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:167
-#: core/includes/functions-admin.php:136
+#: core/includes/functions-admin.php:115
 msgid "Begin installing plugin"
 msgid_plural "Begin installing plugins"
 msgstr[0] "プラグインのインストールを開始"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:166
-#: core/includes/functions-admin.php:135
+#: core/includes/functions-admin.php:114
 msgid "Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated."
 msgid_plural "Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated."
 msgstr[0] "申し訳ありませんが　あなたの権限では、%s  プラグインのアップデートをすることが出来ません。サイト管理者に連絡を取り、助言を求めてください"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:165
-#: core/includes/functions-admin.php:134
+#: core/includes/functions-admin.php:113
 msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
 msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
 msgstr[0] "%1$s プラグインは、このテーマとの互換性を最大限に確保するために、最新バージョンにアップデートする必要があります"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:164
-#: core/includes/functions-admin.php:133
+#: core/includes/functions-admin.php:112
 msgid "Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated."
 msgid_plural "Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated."
 msgstr[0] "申し訳ありませんが　あなたの権限では、%s  プラグインのアクティブ設定をすることが出来ません。サイト管理者に連絡を取り、助言を求めてください"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:163
-#: core/includes/functions-admin.php:132
+#: core/includes/functions-admin.php:111
 msgid "The following recommended plugin is currently inactive: %1$s."
 msgid_plural "The following recommended plugins are currently inactive: %1$s."
 msgstr[0] "推奨プラグインが現在無効です: %1$s。"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:162
-#: core/includes/functions-admin.php:131
+#: core/includes/functions-admin.php:110
 msgid "The following required plugin is currently inactive: %1$s."
 msgid_plural "The following required plugins are currently inactive: %1$s."
 msgstr[0] "必須プラグインが現在無効です: %1$s。"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:161
-#: core/includes/functions-admin.php:130
+#: core/includes/functions-admin.php:109
 msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
 msgid_plural "Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed."
 msgstr[0] "申し訳ありませんが　あなたの権限では、%s  プラグインのインストールをすることが出来ません。サイト管理者に連絡を取り、助言を求めてください"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:160
-#: core/includes/functions-admin.php:129
+#: core/includes/functions-admin.php:108
 msgid "This theme recommends the following plugin: %1$s."
 msgid_plural "This theme recommends the following plugins: %1$s."
 msgstr[0] "このテーマは、以下のプラグインの利用を推奨しています: %1$s。"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:159
-#: core/includes/functions-admin.php:128
+#: core/includes/functions-admin.php:107
 msgid "This theme requires the following plugin: %1$s."
 msgid_plural "This theme requires the following plugins: %1$s."
 msgstr[0] "このテーマは、以下のプラグインの利用が必要です: %1$s。"
@@ -1073,7 +1057,7 @@ msgid "Something went wrong."
 msgstr "問題が発生しました。"
 
 #: core/includes/classes/class-tgm-plugin-activation.php:157
-#: core/includes/functions-admin.php:126
+#: core/includes/functions-admin.php:105
 msgid "Installing Plugin: %s"
 msgstr "インストールしているプラグイン: %s"
 
@@ -1085,70 +1069,70 @@ msgstr "プラグインのインストール"
 msgid "Install Required Plugins"
 msgstr "必要なプラグインをインストールする"
 
-#. #-#-#-#-#  responsive.pot (Responsive 1.9.9.0)  #-#-#-#-#
+#. #-#-#-#-#  responsive.pot (Responsive 2.5)  #-#-#-#-#
 #. Template Name of the plugin/theme
-#: core/includes/classes/Responsive_Options.php:260
+#: core/includes/classes/Responsive_Options.php:305
 #: core/includes/post-custom-meta.php:170
 msgid "Full Width Page (no sidebar)"
 msgstr "全幅ページ (サイドバーなし)"
 
-#. #-#-#-#-#  responsive.pot (Responsive 1.9.9.0)  #-#-#-#-#
+#. #-#-#-#-#  responsive.pot (Responsive 2.5)  #-#-#-#-#
 #. Template Name of the plugin/theme
-#: core/includes/classes/Responsive_Options.php:259
+#: core/includes/classes/Responsive_Options.php:304
 #: core/includes/post-custom-meta.php:169
 msgid "Sidebar/Content Half Page"
 msgstr "サイドバー/コンテンツ半ページ"
 
-#. #-#-#-#-#  responsive.pot (Responsive 1.9.9.0)  #-#-#-#-#
+#. #-#-#-#-#  responsive.pot (Responsive 2.5)  #-#-#-#-#
 #. Template Name of the plugin/theme
-#: core/includes/classes/Responsive_Options.php:258
+#: core/includes/classes/Responsive_Options.php:303
 #: core/includes/post-custom-meta.php:168
 msgid "Content/Sidebar Half Page"
 msgstr "コンテンツ/サイドバー半ページ"
 
-#. #-#-#-#-#  responsive.pot (Responsive 1.9.9.0)  #-#-#-#-#
+#. #-#-#-#-#  responsive.pot (Responsive 2.5)  #-#-#-#-#
 #. Template Name of the plugin/theme
-#: core/includes/classes/Responsive_Options.php:257
+#: core/includes/classes/Responsive_Options.php:302
 #: core/includes/post-custom-meta.php:167
 msgid "Sidebar/Content"
 msgstr "サイドバー/コンテンツ"
 
-#. #-#-#-#-#  responsive.pot (Responsive 1.9.9.0)  #-#-#-#-#
+#. #-#-#-#-#  responsive.pot (Responsive 2.5)  #-#-#-#-#
 #. Template Name of the plugin/theme
-#: core/includes/classes/Responsive_Options.php:256
+#: core/includes/classes/Responsive_Options.php:301
 #: core/includes/post-custom-meta.php:166
 msgid "Content/Sidebar"
 msgstr "コンテンツ/サイドバー"
 
-#: core/includes/classes/Responsive_Options.php:255
+#: core/includes/classes/Responsive_Options.php:300
 #: core/includes/post-custom-meta.php:165
 msgid "Default"
 msgstr "デフォルト"
 
-#: core/includes/classes/Responsive_Options.php:242
+#: core/includes/classes/Responsive_Options.php:287
 msgid "Upgrade"
 msgstr "アップグレード"
 
-#: core/includes/classes/Responsive_Options.php:241
+#: core/includes/classes/Responsive_Options.php:286
 msgid "Restore Defaults"
 msgstr "デフォルトに戻す"
 
-#: core/includes/classes/Responsive_Options.php:240
+#: core/includes/classes/Responsive_Options.php:285
 msgid "Save Options"
 msgstr "設定を保存"
 
 #: core/includes/classes/Responsive_Options.php:38
-#: core/includes/theme-options/theme-options.php:99
+#: core/includes/theme-options/theme-options.php:102
 msgid "Click OK to Restore."
 msgstr "復元するには OK をクリックしてください。"
 
 #: core/includes/classes/Responsive_Options.php:38
-#: core/includes/theme-options/theme-options.php:99
+#: core/includes/theme-options/theme-options.php:102
 msgid "All theme settings will be lost!"
 msgstr "すべてのテーマ設定が失われます。"
 
 #: core/includes/classes/Responsive_Options.php:38
-#: core/includes/theme-options/theme-options.php:99
+#: core/includes/theme-options/theme-options.php:102
 msgid "Do you want to restore?"
 msgstr "復元しますか ?"
 
@@ -1189,10 +1173,11 @@ msgstr[0] "&ldquo;%2$s&rdquo; への1件のコメント"
 msgid "This post is password protected. Enter the password to view any comments."
 msgstr "この投稿はパスワードで保護されています。コメントを表示するにはパスワードを入力してください。"
 
-#: blog.php:65 content-sidebar-half-page.php:41 content-sidebar-page.php:41
-#: core/includes/functions-extras.php:96 full-width-page.php:41 home.php:53
-#: image.php:56 index.php:43 landing-page.php:39 page.php:40
-#: sidebar-content-half-page.php:54 sidebar-content-page.php:54 single.php:45
+#: archive.php:62 blog.php:65 content-sidebar-half-page.php:41
+#: content-sidebar-page.php:41 core/includes/functions-extras.php:96
+#: full-width-page.php:41 home.php:71 home.php:75 image.php:56 index.php:43
+#: landing-page.php:39 page.php:40 sidebar-content-half-page.php:54
+#: sidebar-content-page.php:54 single.php:45
 msgid "Read more &#8250;"
 msgstr "続きを読む &#8250;"
 
@@ -1204,9 +1189,9 @@ msgstr "新しい投稿 &#8250;"
 msgid "&#8249; Older posts"
 msgstr "&#8249; 古い投稿"
 
-#: archive.php:46 blog-excerpt.php:64 blog.php:66
+#: archive.php:70 blog-excerpt.php:64 blog.php:66
 #: content-sidebar-half-page.php:42 content-sidebar-page.php:42
-#: full-width-page.php:42 home.php:54 image.php:57 index.php:44
+#: full-width-page.php:42 home.php:77 image.php:57 index.php:44
 #: landing-page.php:40 page.php:41 search.php:41
 #: sidebar-content-half-page.php:55 sidebar-content-page.php:55 single.php:59
 #: sitemap.php:62

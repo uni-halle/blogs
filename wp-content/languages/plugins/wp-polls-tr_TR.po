@@ -1,0 +1,1314 @@
+# Translation of Plugins - WP-Polls - Stable (latest release) in Turkish
+# This file is distributed under the same license as the Plugins - WP-Polls - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-03-09 07:43:17+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: tr\n"
+"Project-Id-Version: Plugins - WP-Polls - Stable (latest release)\n"
+
+#: wp-polls.php:1398
+msgid "Invalid Answer to Poll ID #%s"
+msgstr "#%s ID'li ankete geçersiz cevap"
+
+#. Author URI of the plugin/theme
+msgid "https://lesterchan.net"
+msgstr "https://lesterchan.net"
+
+#. Author of the plugin/theme
+msgid "Lester 'GaMerZ' Chan"
+msgstr "Lester 'GaMerZ' Chan"
+
+#. Description of the plugin/theme
+msgid "Adds an AJAX poll system to your WordPress blog. You can easily include a poll into your WordPress's blog post/page. WP-Polls is extremely customizable via templates and css styles and there are tons of options for you to choose to ensure that WP-Polls runs the way you wanted. It now supports multiple selection of answers."
+msgstr "Wordpress blogunuza bir AJAX anket sistemi ekler. Wordpress'inizin blog post/sayfasına kolaylıkla bir anket ekleyebilirsiniz. WP-Polls temalar ve css stilleri ile özelleştirilebilir ve WP-Polls'un sizin istediğiniz gibi çalışabilmesi için pek çok seçenek vardır. Artık çoklu cevabı da destekliyor."
+
+#. Plugin URI of the plugin/theme
+msgid "https://lesterchan.net/portfolio/programming/php/"
+msgstr "https://lesterchan.net/portfolio/programming/php/"
+
+#: wp-polls.php:1797
+msgid "No Comments"
+msgstr "Yorum Yok"
+
+#: wp-polls.php:1796
+msgid "Can Be Improved"
+msgstr "İyileştirilebilir"
+
+#: wp-polls.php:1795
+msgid "Bad"
+msgstr "Kötü"
+
+#: wp-polls.php:1794
+msgid "Excellent"
+msgstr "Mükemmel"
+
+#: wp-polls.php:1793
+msgid "Good"
+msgstr "İyi"
+
+#: wp-polls.php:1790
+msgid "How Is My Site?"
+msgstr "Sitem nasıl?"
+
+#: wp-polls.php:1674
+msgid "Poll To Display:"
+msgstr "Gösterilecek anket:"
+
+#: wp-polls.php:1666
+msgid "Display Polls Archive Link Below Poll?"
+msgstr "Anketin altında anket arşivi bağlantısı gösterilsin mi?"
+
+#: wp-polls.php:1663
+msgid "Title:"
+msgstr "Başlık:"
+
+#: wp-polls.php:1622
+msgid "WP-Polls polls"
+msgstr "WP-Polls anketleri"
+
+#: wp-polls.php:1611
+msgid "<strong>%s</strong> vote was cast."
+msgid_plural "<strong>%s</strong> votes were cast."
+msgstr[0] "<strong>%s</strong> oy kullanıldı."
+msgstr[1] "<strong>%s</strong> oy kullanıldı."
+
+#: wp-polls.php:1610
+msgid "<strong>%s</strong> polls' answer was given."
+msgid_plural "<strong>%s</strong> polls' answers were given."
+msgstr[0] "<strong>%s</strong> anketine yanıt verildi."
+msgstr[1] "<strong>%s</strong> anketine yanıt verildi."
+
+#: wp-polls.php:1609
+msgid "<strong>%s</strong> poll was created."
+msgid_plural "<strong>%s</strong> polls were created."
+msgstr[0] "<strong>%s</strong> anketi yaratıldı."
+msgstr[1] "<strong>%s</strong> anketi yaratıldı."
+
+#. #-#-#-#-#  tmp-wp-polls.pot (WP-Polls 2.73.3)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: wp-polls.php:1595 wp-polls.php:1597 wp-polls.php:1607
+msgid "WP-Polls"
+msgstr "WP-Polls"
+
+#: wp-polls.php:1536
+msgid "Poll '%s' Deleted Successfully"
+msgstr "'%s' anketi başarıyla silindi"
+
+#: wp-polls.php:1533
+msgid "Error In Deleting Poll '%s' Question"
+msgstr "'%s' anketinin sorusunun silinmesinde hata"
+
+#: wp-polls.php:1520
+msgid "Error Closing Poll '%s'"
+msgstr "'%s' anketinin kapatılmasında hata"
+
+#: wp-polls.php:1518
+msgid "Poll '%s' Is Now Closed"
+msgstr "'%s' anketi artık kapalı"
+
+#: wp-polls.php:1494
+msgid "Error Opening Poll '%s'"
+msgstr "'%s' anketini açma sırasında hata"
+
+#: wp-polls.php:1492
+msgid "Poll '%s' Is Now Opened"
+msgstr "'%s' anketi artık açık"
+
+#: wp-polls.php:1468
+msgid "Error In Deleting Poll Answer '%s'."
+msgstr "'%s' anket cevabını silme sırasında hata"
+
+#: wp-polls.php:1466
+msgid "Poll Answer '%s' Deleted Successfully."
+msgstr "'%s' anket cevabı başarıyla silindi"
+
+#: wp-polls.php:1450
+msgid "An Error Has Occurred While Deleting All Logs For '%s'"
+msgstr "'%s' için tüm kayıtların silinmesi sırasında bir hata oluştu"
+
+#: wp-polls.php:1448
+msgid "All Logs For '%s' Has Been Deleted."
+msgstr "'%s' için tüm kayıtlar silindi"
+
+#: wp-polls.php:1436
+msgid "An Error Has Occurred While Deleting All Polls Logs."
+msgstr "Tüm anket kayıtlarının silinmesi sırasında bir hata oluştu."
+
+#: wp-polls.php:1434
+msgid "All Polls Logs Have Been Deleted."
+msgstr "Tüm anket kayıtları silindi"
+
+#: wp-polls.php:1395
+msgid "Invalid Poll ID. Poll ID #%s"
+msgstr "Geçersiz Anket ID'si. Anket ID #%s"
+
+#: wp-polls.php:1392
+msgid "Poll ID #%s is closed"
+msgstr "Anket ID #%s kapalı"
+
+#: wp-polls.php:1389
+msgid "You Had Already Voted For This Poll. Poll ID #%s"
+msgstr "Bu ankete zaten oy verdiniz. Anket ID #%s"
+
+#: wp-polls.php:1386
+msgid "Unable To Update Poll Total Votes And Poll Total Voters. Poll ID #%s"
+msgstr "Ankete verilen tüm oylar ve toplam oy veren sayısı güncellenemiyor. Anket ID #%s"
+
+#: wp-polls.php:1309
+msgid "Failed To Verify Referrer"
+msgstr "Yönlendireni Doğrulama Başarısız Oldu"
+
+#: wp-polls.php:1302
+msgid "Invalid Poll ID"
+msgstr "Geçersiz anket ID'si"
+
+#: wp-polls.php:1148
+msgid "Last &raquo;"
+msgstr "Son &raquo;"
+
+#: wp-polls.php:1144
+msgid "&raquo;"
+msgstr "&raquo;"
+
+#: wp-polls.php:1134
+msgid "&laquo;"
+msgstr "&laquo;"
+
+#: wp-polls.php:1130
+msgid "&laquo; First"
+msgstr "&laquo; İlk"
+
+#: wp-polls.php:1128
+msgid "Page %s of %s"
+msgstr "Sayfa: %s / %s"
+
+#: wp-polls.php:760
+msgid "Note: There is a poll embedded within this post, please visit the site to participate in this post's poll."
+msgstr "Not: Bu yazının içine yerleştirilmiş bir anket var, bu ankete katılabilmek için lütfen siteyi ziyaret edin."
+
+#: wp-polls.php:524 wp-polls.php:707
+msgid "Loading"
+msgstr "Yükleniyor"
+
+#: wp-polls.php:295
+msgid "Insert Poll"
+msgstr "Anket yerleştir"
+
+#: wp-polls.php:257 wp-polls.php:294
+msgid "Please enter Poll ID again"
+msgstr "Lütfen anket numarasını tekrar girin"
+
+#: wp-polls.php:257 wp-polls.php:293
+msgid "Error: Poll ID must be numeric"
+msgstr "Hata: Anket numarası sayısal olmalı"
+
+#: wp-polls.php:255 wp-polls.php:292
+msgid "Enter Poll ID"
+msgstr "Anket numarası girin"
+
+#: wp-polls.php:254
+msgid "Poll"
+msgstr "Anket"
+
+#: wp-polls.php:236 wp-polls.php:1455
+msgid "Delete Poll Answer"
+msgstr "Anket cevabını sil"
+
+#: wp-polls.php:235
+msgid "Please check the \\'Yes\\' checkbox if you want to delete all logs for this poll ONLY."
+msgstr "Sadece BU ANKETİN tüm kayıtlarını silmek istiyorsanız lütfen \\'Evet\\' kutusunu işaretleyin."
+
+#: wp-polls.php:233
+msgid "Please check the \\'Yes\\' checkbox if you want to delete all logs."
+msgstr "Tüm kayıtları silmek istiyorsanız lütfen \\'Evet\\' kutusunu işaretleyin."
+
+#: wp-polls.php:230 wp-polls.php:1524
+msgid "Delete Poll"
+msgstr "Anketi sil"
+
+#: wp-polls.php:213
+msgid "Maximum number of choices allowed: "
+msgstr "İzin verilen maksimum seçim sayısı:"
+
+#: wp-polls.php:212
+msgid "Please choose a valid poll answer."
+msgstr "Lütfen geçerli bir anket cevabı seçin."
+
+#: wp-polls.php:211
+msgid "Your last request is still being processed. Please wait a while ..."
+msgstr "Son isteğiniz halen işleniyor. Lütfen biraz bekleyin..."
+
+#: polls-templates.php:485
+msgid "Displayed When An Error Has Occured While Processing The Poll"
+msgstr "Anket İşlenirken Bir Hata Oluştuğunda Gösterilir"
+
+#: polls-templates.php:485
+msgid "Poll Error"
+msgstr "Anket hatası"
+
+#: polls-templates.php:476
+msgid "Displayed When The Poll Is Disabled"
+msgstr "Anket pasifleştirildiğinde gösterilir"
+
+#: polls-templates.php:476
+msgid "Poll Disabled"
+msgstr "Anket pasif"
+
+#: polls-templates.php:472
+msgid "Poll Misc Templates"
+msgstr "Anket Çeşitli Şablonlar"
+
+#: polls-templates.php:462
+msgid "Displayed After Paging In The Poll Archive"
+msgstr "Anket Arşivinde Sayfa Numarasından Sonra Gösterilir"
+
+#: polls-templates.php:462
+msgid "Paging Footer"
+msgstr "Sayfalama Alt Kısım"
+
+#: polls-templates.php:453
+msgid "Displayed Before Paging In The Poll Archive"
+msgstr "Anket Arşivinde Sayfa Numarasından Önce Gösterilir"
+
+#: polls-templates.php:453
+msgid "Paging Header"
+msgstr "Sayfalama Üst Bilgi"
+
+#: polls-templates.php:434
+msgid "Displayed After Each Poll In The Poll Archive"
+msgstr "Anket Arşivindeki Her Anketten Sonra Gösterilir"
+
+#: polls-templates.php:434
+msgid "Individual Poll Footer"
+msgstr "Tekil Anket Alt Kısım"
+
+#: polls-templates.php:427 polls-templates.php:455 polls-templates.php:464
+#: polls-templates.php:478 polls-templates.php:487
+msgid "N/A"
+msgstr "N/A"
+
+#: polls-templates.php:425
+msgid "Displayed Before Each Poll In The Poll Archive"
+msgstr "Anket Arşivindeki Her Anketten Önce Gösterilir"
+
+#: polls-templates.php:425
+msgid "Individual Poll Header"
+msgstr "Tekil Anket Üst Bilgi"
+
+#: polls-templates.php:416
+msgid "Template For Displaying Poll Archive Link"
+msgstr "Anket Arşivi Bağlantısını Göstermek İçin Şablon"
+
+#: polls-templates.php:416
+msgid "Poll Archive Link"
+msgstr "Anket Arşiv Bağlantısı"
+
+#: polls-templates.php:412
+msgid "Poll Archive Templates"
+msgstr "Anket Arşiv Şablonları"
+
+#: polls-templates.php:371 polls-templates.php:391
+msgid "Result Footer:"
+msgstr "Sonuç Alt Kısım:"
+
+#: polls-templates.php:356 polls-templates.php:371
+msgid "Displayed When The User HAS Voted"
+msgstr "Kullanıcı Oy VERDİĞİNDE Gösterilir"
+
+#: polls-templates.php:341 polls-templates.php:391
+msgid "Displayed When The User HAS NOT Voted"
+msgstr "Kullanıcı Oy VERMEDİĞİNDE Gösterilir"
+
+#: polls-templates.php:341 polls-templates.php:356
+msgid "Result Body:"
+msgstr "Sonuç Gövde:"
+
+#: polls-templates.php:326
+msgid "Result Header:"
+msgstr "Sonuç Üst Bilgi:"
+
+#: polls-templates.php:322
+msgid "Poll Result Templates"
+msgstr "Anket Sonuç Şablonları"
+
+#: polls-templates.php:310
+msgid "Voting Form Footer:"
+msgstr "Oylama Formu Alt Kısım:"
+
+#: polls-templates.php:297
+msgid "Voting Form Body:"
+msgstr "Oylama Formu Gövde:"
+
+#: polls-templates.php:291 polls-templates.php:304 polls-templates.php:315
+#: polls-templates.php:335 polls-templates.php:350 polls-templates.php:365
+#: polls-templates.php:385 polls-templates.php:405 polls-templates.php:419
+#: polls-templates.php:428 polls-templates.php:447 polls-templates.php:456
+#: polls-templates.php:465 polls-templates.php:479 polls-templates.php:488
+msgid "Restore Default Template"
+msgstr "Varsayılan Şablonu Geri Yükle"
+
+#: polls-templates.php:283 polls-templates.php:298 polls-templates.php:311
+#: polls-templates.php:327 polls-templates.php:342 polls-templates.php:357
+#: polls-templates.php:372 polls-templates.php:392 polls-templates.php:417
+#: polls-templates.php:426 polls-templates.php:435 polls-templates.php:454
+#: polls-templates.php:463 polls-templates.php:477 polls-templates.php:486
+msgid "Allowed Variables:"
+msgstr "İzin Verilen Değişkenler:"
+
+#: polls-templates.php:282
+msgid "Voting Form Header:"
+msgstr "Oylama Formu Üst Bilgi:"
+
+#: polls-templates.php:278
+msgid "Poll Voting Form Templates"
+msgstr "Anket Oylama Formu Şablonları"
+
+#: polls-templates.php:272
+msgid "Note: <strong>%POLL_TOTALVOTES%</strong> and <strong>%POLL_TOTALVOTERS%</strong> will be different if your poll supports multiple answers. If your poll allows only single answer, both value will be the same."
+msgstr "Not: Eğer anketiniz çoklu yanıtı destekliyorsa <strong>%POLL_TOTALVOTES%</strong> ve <strong>%POLL_TOTALVOTERS%</strong> farklı olacaktır. Eğer anketiniz tek cevaba izin veriyorsa, her iki değer de aynı olur."
+
+#: polls-templates.php:267
+msgid "Display the poll archive URL"
+msgstr "Anket arşivi URL'sini göster"
+
+#: polls-templates.php:263
+msgid "Display the number of people who voted for the poll NOT the total votes of the poll"
+msgstr "Ankete oy veren kişi sayısını göster anketin toplam oy sayısı DEĞİLDİR"
+
+#: polls-templates.php:257
+msgid "Display \"checkbox\" or \"radio\" input types depending on the poll type"
+msgstr "Anket tipine göre \"kutucuk\" veya \"radyo düğmesi\" giriş tiplerini göster"
+
+#: polls-templates.php:253
+msgid "Display the the maximum number of answers the user can choose if the poll supports multiple answers"
+msgstr "Eğer anket çoklu yanıtı destekliyorsa kullanıcının seçebileceği maksimum cevap sayısını göster"
+
+#: polls-templates.php:247
+msgid "Display the poll's answer percentage for the least voted answer"
+msgstr "En az oylanan cevap için anketin cevap yüzdesini göster"
+
+#: polls-templates.php:243
+msgid "Display the poll's end date/time"
+msgstr "Anketin bitiş tarih/zamanını göster"
+
+#: polls-templates.php:237
+msgid "Display the poll's answer votes for the least voted answer"
+msgstr "En az oylanan cevap için anketin cevap oylarını göster"
+
+#: polls-templates.php:233
+msgid "Display the poll's start date/time"
+msgstr "Anketin başlangıç tarih/zamanını göster"
+
+#: polls-templates.php:227
+msgid "Display the poll's least voted answer"
+msgstr "Anketin en az oylanan cevabını göster"
+
+#: polls-templates.php:223
+msgid "Display the poll's answer percentage for the most voted answer"
+msgstr "En çok oylanan cevap için anketin cevap yüzdesini göster"
+
+#: polls-templates.php:217
+msgid "Display the poll's answer image width"
+msgstr "Anket cevabı görselinin enini göster"
+
+#: polls-templates.php:213
+msgid "Display the poll's answer votes for the most voted answer"
+msgstr "En çok oylanan cevap için anketin cevap oylarını göster"
+
+#: polls-templates.php:207
+msgid "Display the poll's answer percentage"
+msgstr "Anketin yanıtlanma yüzdesini göster"
+
+#: polls-templates.php:203
+msgid "Display the poll's most voted answer"
+msgstr "Anketin en çok oylanan cevabını göster"
+
+#: polls-templates.php:197
+msgid "Display the poll's answer votes"
+msgstr "Anketin cevap oylarını göster"
+
+#: polls-templates.php:193
+msgid "Displays URL to poll's result"
+msgstr "Anketin sonucuna giden URL'yi gösterir"
+
+#: polls-templates.php:187
+msgid "Display the poll's answer without HTML formatting."
+msgstr "Anketin cevabını HTML biçimleme olmadan göster."
+
+#: polls-templates.php:183
+msgid "Display the poll's total votes NOT the number of people who voted for the poll"
+msgstr "Anketin toplam oy sayısını göster ankete oy veren kişi sayısını DEĞİL"
+
+#: polls-templates.php:177
+msgid "Display the poll's answer"
+msgstr "Anketin cevabını göster"
+
+#: polls-templates.php:173
+msgid "Display the poll's question"
+msgstr "Anketin sorusunu göster"
+
+#: polls-templates.php:167
+msgid "Display the poll's answer ID"
+msgstr "Anketin cevap ID'sini göster"
+
+#: polls-templates.php:163
+msgid "Display the poll's ID"
+msgstr "Anket ID'sini göster"
+
+#: polls-templates.php:158
+msgid "Template Variables"
+msgstr "Şablon Değişkenleri"
+
+#: polls-templates.php:156 wp-polls.php:58
+msgid "Poll Templates"
+msgstr "Anket Şablonları"
+
+#: polls-templates.php:145 wp-polls.php:1822
+msgid "An error has occurred when processing your poll."
+msgstr "Anketiniz işlenirken bir hata oluştu."
+
+#: polls-templates.php:142 wp-polls.php:1821
+msgid "Sorry, there are no polls available at the moment."
+msgstr "Üzgünüz, şu an hiç anket bulunmuyor."
+
+#: polls-templates.php:133 wp-polls.php:1846
+msgid "End Date:"
+msgstr "Bitiş Tarihi:"
+
+#: polls-templates.php:133 wp-polls.php:1846
+msgid "Start Date:"
+msgstr "Başlangıç Tarihi:"
+
+#: polls-templates.php:127 wp-polls.php:1842
+msgid "Polls Archive"
+msgstr "Anket Arşivi"
+
+#: polls-templates.php:124 wp-polls.php:1819
+msgid "Vote For This Poll"
+msgstr "Bu Ankete Oy Ver"
+
+#: polls-templates.php:118 wp-polls.php:1813
+msgid "You Have Voted For This Choice"
+msgstr "Bu Seçeneği Oyladınız"
+
+#: polls-templates.php:115 polls-templates.php:118 wp-polls.php:1812
+#: wp-polls.php:1813
+msgid "Votes"
+msgstr "Oylar"
+
+#: polls-templates.php:115 polls-templates.php:118 wp-polls.php:1812
+#: wp-polls.php:1813
+msgid ","
+msgstr ","
+
+#: polls-templates.php:109 wp-polls.php:1807
+msgid "View Results"
+msgstr "Sonuçları görüntüle"
+
+#: polls-templates.php:109 wp-polls.php:1807
+msgid "View Results Of This Poll"
+msgstr "Bu Anketin Sonuçlarını Görüntüle"
+
+#: polls-templates.php:109 polls-templates.php:124 wp-polls.php:1806
+#: wp-polls.php:1819
+msgid "Vote"
+msgstr "Oy Ver"
+
+#: polls-templates.php:79
+msgid "Poll Error Template"
+msgstr "Anket Hata Şablonu"
+
+#: polls-templates.php:78
+msgid "Poll Disabled Template"
+msgstr "Anket Etkisiz Şablonu"
+
+#: polls-templates.php:77
+msgid "Poll Archive Paging Footer Template"
+msgstr "Anket Arşiv Alt Bilgi Şablonu"
+
+#: polls-templates.php:76
+msgid "Poll Archive Paging Header Template"
+msgstr "Anket Arşiv Üst Bilgi Şablonu"
+
+#: polls-templates.php:75
+msgid "Poll Archive Poll Footer Template"
+msgstr "Anket Arşiv Anket Alt Kısım Şablonu"
+
+#: polls-templates.php:74
+msgid "Poll Archive Poll Header Template"
+msgstr "Anket Arşiv Anket Üst Bilgi Şablonu"
+
+#: polls-templates.php:73
+msgid "Poll Archive Link Template"
+msgstr "Anket Arşiv Bağlantı Şablonu"
+
+#: polls-templates.php:72
+msgid "Result Footer2 Template"
+msgstr "Sonuç Alt Kısım2 Şablonu"
+
+#: polls-templates.php:71
+msgid "Result Footer Template"
+msgstr "Sonuç Alt Kısım Şablonu"
+
+#: polls-templates.php:70
+msgid "Result Body2 Template"
+msgstr "Sonuç Gövde2 Şablonu"
+
+#: polls-templates.php:69
+msgid "Result Body Template"
+msgstr "Sonuç Gövde Şablonu"
+
+#: polls-templates.php:68
+msgid "Result Header Template"
+msgstr "Sonuç Üst Bilgi Şablonu"
+
+#: polls-templates.php:67
+msgid "Voting Form Footer Template"
+msgstr "Oylama Formu Alt Kısım Şablonu"
+
+#: polls-templates.php:66
+msgid "Voting Form Body Template"
+msgstr "Oylama Formu Gövde Şablonu"
+
+#: polls-templates.php:65
+msgid "Voting Form Header Template"
+msgstr "Oylama Formu Üst Bilgi Şablonu"
+
+#: polls-options.php:384 polls-templates.php:494
+msgid "Save Changes"
+msgstr "Değişiklikleri kaydet"
+
+#: polls-options.php:376
+msgid "Do Not Display Poll In Post/Sidebar"
+msgstr "Yazı/Yan Menü Üzerinde Anketi Gösterme"
+
+#: polls-options.php:375
+msgid "Display Disabled Poll's Voting Form"
+msgstr "Etkisiz Anketin Oylama Formunu Göster"
+
+#: polls-options.php:374
+msgid "Display Poll's Results"
+msgstr "Anketin Sonuçlarını Göster"
+
+#: polls-options.php:371
+msgid "When Poll Is Closed"
+msgstr "Anketin Kapanma Zamanı"
+
+#: polls-options.php:351 wp-polls.php:1678
+msgid "Display Latest Poll"
+msgstr "Son Anketi Göster"
+
+#: polls-options.php:350 wp-polls.php:1677
+msgid "Display Random Poll"
+msgstr "Rastgele Anket Göster"
+
+#: polls-options.php:349 wp-polls.php:1676
+msgid "Do NOT Display Poll (Disable)"
+msgstr "Anketi GÖSTERME (Pasifleştir)"
+
+#: polls-options.php:343 polls-options.php:346
+msgid "Current Active Poll"
+msgstr "Mevcut Aktif Anket"
+
+#: polls-options.php:338
+msgid "Only polls' results will be shown in the Poll Archive regardless of whether the poll is closed or opened."
+msgstr "Anket Arşivinde, anketin kapalı veya açık olmasına bakılmaksızın sadece anketin sonuçları gösterilecek."
+
+#: polls-options.php:337
+msgid "Note"
+msgstr "Not"
+
+#: polls-options.php:333
+msgid "Poll Archive URL:"
+msgstr "Anket Arşivi URL'si:"
+
+#: polls-options.php:328
+msgid "Closed And Opened Polls"
+msgstr "Kapalı Ve Açık Anketler"
+
+#: polls-options.php:327
+msgid "Opened Polls Only"
+msgstr "Sadece Açık Anketler"
+
+#: polls-options.php:326
+msgid "Closed Polls Only"
+msgstr "Sadece Kapalı Anketler"
+
+#: polls-options.php:323
+msgid "Type Of Polls To Display In Poll Archive:"
+msgstr "Anket Arşivinde Gösterilecek Anket Tipleri"
+
+#: polls-options.php:319
+msgid "Number Of Polls Per Page:"
+msgstr "Sayfa Başına Gösterilecek Anket Sayısı"
+
+#: polls-options.php:316
+msgid "Poll Archive"
+msgstr "Anket arşivi"
+
+#: polls-options.php:311
+msgid "seconds (0 to disable)"
+msgstr "saniyeler (etkisizleştirmek için 0)"
+
+#: polls-options.php:310
+msgid "Expiry Time For Cookie And Log:"
+msgstr "Çerez ve Kayıt İçin Son Geçerlilik Zamanı:"
+
+#: polls-options.php:305
+msgid "Logged By Username"
+msgstr "Kullanıcı Adıyla Kayıtlar"
+
+#: polls-options.php:304
+msgid "Logged By Cookie And IP"
+msgstr "Çerez Ve IP İle Kayıtlar"
+
+#: polls-options.php:303
+msgid "Logged By IP"
+msgstr "IP İle Kayıtlar"
+
+#: polls-options.php:302
+msgid "Logged By Cookie"
+msgstr "Çerez İle Kayıtlar"
+
+#: polls-options.php:301
+msgid "Do Not Log"
+msgstr "Kayıt Yapma"
+
+#: polls-options.php:298
+msgid "Poll Logging Method:"
+msgstr "Anket Kayıtlama Metodu:"
+
+#: polls-options.php:288
+msgid "Registered Users And Guests"
+msgstr "Kayıtlı Kullanıcılar ve Misafirler"
+
+#: polls-options.php:287
+msgid "Registered Users Only"
+msgstr "Sadece Kayıtlı Kullanıcılar"
+
+#: polls-options.php:286
+msgid "Guests Only"
+msgstr "Sadece Misafirler"
+
+#: polls-options.php:283
+msgid "Who Is Allowed To Vote?"
+msgstr "Kimler Oy Verebilir?"
+
+#: polls-options.php:280
+msgid "Allow To Vote"
+msgstr "Oylamaya İzin Ver"
+
+#: polls-options.php:269
+msgid "Sort Order Of Poll Results:"
+msgstr "Anket Sonuçlarını Ayrıştırma Düzeni:"
+
+#: polls-options.php:236 polls-options.php:261
+msgid "Votes Cast"
+msgstr "Kullanılan Oylar"
+
+#: polls-options.php:258
+msgid "Sort Poll Results By:"
+msgstr "Anket Sonuçlarını Şuna Göre Ayrıştır:"
+
+#: polls-options.php:255
+msgid "Sorting Of Poll Results"
+msgstr "Anket Sonuçları Ayrıştırması"
+
+#: polls-options.php:248 polls-options.php:273
+msgid "Descending"
+msgstr "Azalan"
+
+#: polls-options.php:247 polls-options.php:272
+msgid "Ascending"
+msgstr "Artan"
+
+#: polls-options.php:244
+msgid "Sort Order Of Poll Answers:"
+msgstr "Anket Cevaplarını Ayrıştırma Sırası:"
+
+#: polls-options.php:239 polls-options.php:264
+msgid "Random Order"
+msgstr "Rastgele Sıralama"
+
+#: polls-options.php:238 polls-options.php:263
+msgid "Alphabetical Order"
+msgstr "Alfabetik Sıra"
+
+#: polls-options.php:237 polls-options.php:262
+msgid "Exact Order"
+msgstr "Mutlak Sıra"
+
+#: polls-options.php:233
+msgid "Sort Poll Answers By:"
+msgstr "Anket Cevaplarını Şuna Göre Ayrıştır:"
+
+#: polls-options.php:230
+msgid "Sorting Of Poll Answers"
+msgstr "Anket Cevaplarının Ayrıştırılması"
+
+#: polls-options.php:219
+msgid "Show Fading In And Fading Out Of Poll"
+msgstr "Ankete Girerken Aydınlatma Ve Çıkarken Karartma Göster"
+
+#: polls-options.php:210
+msgid "Show Loading Image With Text"
+msgstr "Yükleniyor Görselini Metin İle Göster"
+
+#: polls-options.php:207
+msgid "Polls AJAX Style"
+msgstr "AJAX Stili Anketler"
+
+#: polls-options.php:192
+msgid "Your poll bar will look like this"
+msgstr "Anket çubuğunuz şu şekilde gözükecek"
+
+#: polls-options.php:188
+msgid "Poll Bar Height"
+msgstr "Anket Çubuğu Yüksekliği"
+
+#: polls-options.php:183
+msgid "Poll Bar Border"
+msgstr "Anket Çubuğu Kenarlığı"
+
+#: polls-options.php:178
+msgid "Poll Bar Background"
+msgstr "Anket Çubuğu Arkaplanı"
+
+#: polls-options.php:174
+msgid "Use CSS Style"
+msgstr "CSS Stili Kullan"
+
+#: polls-options.php:149 wp-polls.php:57
+msgid "Poll Options"
+msgstr "Anket Seçenekleri"
+
+#: polls-options.php:115 polls-templates.php:89
+msgid "No Poll Option Updated"
+msgstr "Hiçbir Anket Seçeneği Güncellenmedi"
+
+#: polls-options.php:110 polls-templates.php:84
+msgid "Updated"
+msgstr "Güncellendi"
+
+#: polls-options.php:105
+msgid "Allow To Vote Option"
+msgstr "Oylamaya İzin Ver Seçeneği"
+
+#: polls-options.php:104
+msgid "Cookie And Log Expiry Option"
+msgstr "Çerez ve Kayıt Son Geçerliliği Seçeneği"
+
+#: polls-options.php:103 polls-options.php:295
+msgid "Logging Method"
+msgstr "Kayıtlama Yöntemi"
+
+#: polls-options.php:102
+msgid "Poll Close Option"
+msgstr "Anket Kapatma Seçeneği"
+
+#: polls-options.php:101
+msgid "Current Active Poll Option"
+msgstr "Mevcut Aktif Anket Seçeneği"
+
+#: polls-options.php:100
+msgid "Show Poll Achive Link Option"
+msgstr "Anket Arşiv Bağlantısını Göster Seçeneği"
+
+#: polls-options.php:99
+msgid "Poll Archive URL Option"
+msgstr "Anket Arşiv URL Seçeneği"
+
+#: polls-options.php:98
+msgid "Type Of Polls To Display In Poll Archive Option"
+msgstr "Anket Arşivinde Gösterilecek Anket Tipleri Seçeneği"
+
+#: polls-options.php:97
+msgid "Number Of Polls Per Page To Display In Poll Archive Option"
+msgstr "Anket Arşivinde Sayfa Başına Gösterilecek Anket Sayısı Seçeneği"
+
+#: polls-options.php:96
+msgid "Sort Order Of Poll Results Option"
+msgstr "Anket Sonuçlarını Ayrıştırma Sırası Seçeneği"
+
+#: polls-options.php:95
+msgid "Sort Poll Results By Option"
+msgstr "Anket Sonuçlarını Seçeneğe Göre Ayrıştır"
+
+#: polls-options.php:94
+msgid "Sort Order Of Poll Answers Option"
+msgstr "Anket Cevapları Sırasını Ayrıştır Seçeneği"
+
+#: polls-options.php:93
+msgid "Sort Poll Answers By Option"
+msgstr "Seçeneğe Göre Anket Cevaplarını Ayrıştır"
+
+#: polls-options.php:92
+msgid "Poll AJAX Style"
+msgstr "AJAX anket stili"
+
+#: polls-options.php:91 polls-options.php:151 polls-options.php:154
+msgid "Poll Bar Style"
+msgstr "Anket Çubuğu Stili"
+
+#: polls-manager.php:506 wp-polls.php:231
+msgid "No poll logs available."
+msgstr "Hiçbir anket kayıdı bulunamadı."
+
+#: polls-manager.php:503
+msgid "You are about to delete all poll logs. This action is not reversible."
+msgstr "Tüm anket kayıtlarını silmek üzeresiniz. Bu işlem geri alınamaz."
+
+#: polls-manager.php:503 wp-polls.php:232 wp-polls.php:1429
+msgid "Delete All Logs"
+msgstr "Tüm Kayıtları Sil"
+
+#: polls-manager.php:501
+msgid "Are You Sure You Want To Delete All Polls Logs?"
+msgstr "Tüm Anketlerin Kayıtlarını Silmek İstediğinize Emin Misiniz?"
+
+#: polls-manager.php:494
+msgid "Polls Logs"
+msgstr "Anket kayıtları"
+
+#: polls-manager.php:481
+msgid "Total Votes Cast:"
+msgstr "Verilen Toplam Oy:"
+
+#: polls-manager.php:477
+msgid "Total Polls' Answers:"
+msgstr "Toplam anket cevabı:"
+
+#: polls-manager.php:473
+msgid "Total Polls:"
+msgstr "Toplam anket sayısı:"
+
+#: polls-manager.php:469
+msgid "Polls Stats:"
+msgstr "Anket istatistiği:"
+
+#: polls-manager.php:459
+msgid "No Polls Found"
+msgstr "Hiç anket bulunamadı"
+
+#: polls-manager.php:451
+msgid "You are about to delete this poll, '%s'."
+msgstr "Bu anketi silmek üzeresiniz, '%s'."
+
+#: polls-manager.php:450
+msgid "Edit"
+msgstr "Düzenle"
+
+#: polls-manager.php:449
+msgid "Logs"
+msgstr "Kayıtlar"
+
+#: polls-manager.php:446
+msgid "Closed"
+msgstr "Kapalı"
+
+#: polls-manager.php:444
+msgid "Future"
+msgstr "Gelecek"
+
+#: polls-manager.php:442
+msgid "Open"
+msgstr "Açık"
+
+#: polls-manager.php:427 polls-manager.php:431 polls-manager.php:434
+msgid "Displayed:"
+msgstr "Gösteriliyor:"
+
+#: polls-manager.php:402 wp-polls.php:443 wp-polls.php:568 wp-polls.php:986
+msgid "No Expiry"
+msgstr "Son geçerlilik tarihi yok"
+
+#: polls-manager.php:378
+msgid "Action"
+msgstr "Eylem"
+
+#: polls-manager.php:377
+msgid "Status"
+msgstr "Durum"
+
+#: polls-manager.php:374 polls-templates.php:121 polls-templates.php:124
+#: wp-polls.php:1815 wp-polls.php:1818
+msgid "Total Voters"
+msgstr "Toplam oy veren"
+
+#: polls-manager.php:372
+msgid "ID"
+msgstr "Numara"
+
+#: polls-manager.php:367 wp-polls.php:53 wp-polls.php:1623 wp-polls.php:1657
+msgid "Polls"
+msgstr "Anketler"
+
+#: polls-manager.php:366 wp-polls.php:55
+msgid "Manage Polls"
+msgstr "Anketleri yönet"
+
+#: polls-manager.php:347
+msgid "You are about to OPEN this poll '%s'."
+msgstr "'%s' anketini açmak üzeresiniz."
+
+#: polls-manager.php:347 wp-polls.php:237 wp-polls.php:1472
+msgid "Open Poll"
+msgstr "Anketi aç"
+
+#: polls-manager.php:346
+msgid "You are about to CLOSE this poll '%s'."
+msgstr "'%s' anketini kapatmak üzeresiniz."
+
+#: polls-manager.php:346 wp-polls.php:238 wp-polls.php:1498
+msgid "Close Poll"
+msgstr "Anketi kapat"
+
+#: polls-manager.php:317
+msgid "This Poll Will Not Expire"
+msgstr "Bu anketin son geçerlilik tarihi yok"
+
+#: polls-manager.php:308
+msgid "Edit Start Date/Time"
+msgstr "Başlangıç tarihini/zamanını düzenle"
+
+#: polls-manager.php:268 polls-manager.php:485
+msgid "Total Voters:"
+msgstr "Toplam oy veren:"
+
+#: polls-manager.php:263
+msgid "Total Votes:"
+msgstr "Toplam oy:"
+
+#: polls-manager.php:251
+msgid "You are about to delete this poll's answer '%s'."
+msgstr "'%s' anketinin cevabını silmek üzeresiniz."
+
+#: polls-manager.php:251 polls-manager.php:451
+msgid "Delete"
+msgstr "Sil"
+
+#: polls-manager.php:242
+msgid "Null Votes"
+msgstr "Boş oylar"
+
+#: polls-manager.php:233
+msgid "No. Of Votes"
+msgstr "Oy numarası"
+
+#: polls-manager.php:232
+msgid "Answer Text"
+msgstr "Cevap metni"
+
+#: polls-manager.php:231
+msgid "Answer No."
+msgstr "Cevap No."
+
+#: polls-manager.php:177
+msgid "Poll '%s' Edited Successfully."
+msgstr "'%s' anketi başarıyla düzenlendi."
+
+#: polls-manager.php:170
+msgid "Poll's Answer '%s' Added Successfully."
+msgstr "Anket'in Cevabı '%s' Başarıyla Eklendi."
+
+#: polls-manager.php:143
+msgid "Invalid Poll '%s'."
+msgstr "Geçersiz Anket: '%s'."
+
+#: polls-manager.php:139
+msgid "Poll's Answer '%s' Edited Successfully."
+msgstr "Anket'in Cevabı '%s' Başarıyla Düzenlendi."
+
+#: polls-manager.php:137
+msgid "No Changes Had Been Made To Poll's Answer '%s'."
+msgstr "Anket'in Cevabı '%s' İçin Hiçbir Değişiklik Yapılmadı."
+
+#: polls-manager.php:105
+msgid "No Changes Had Been Made To Poll's Question '%s'."
+msgstr "Anket'in Sorusu '%s' İçin Hiçbir Değişiklik Yapılmadı."
+
+#: polls-manager.php:19 polls-manager.php:217 polls-manager.php:336
+msgid "Edit Poll"
+msgstr "Anketi Değiştir"
+
+#: polls-logs.php:379 polls-manager.php:510
+msgid "Note: If your logging method is by IP and Cookie or by Cookie, users may still be unable to vote if they have voted before as the cookie is still stored in their computer."
+msgstr "Not: eğer kayıt alma metodunuz \"IP ve Çerez ile\" veya \"Çerez ile\" ise, eğer kullanıcılar daha önce oy verdilerse hala oy kullanamıyor olabilirler çünkü çerezler halen bilgisayarlarında kayıtlıdır. "
+
+#: polls-logs.php:372
+msgid "You are about to delete poll logs for this poll '%s' ONLY. This action is not reversible."
+msgstr "SADECE '%s' anketinin tüm kayıtlarını silmek üzeresiniz. Bu işlem geri alınamaz."
+
+#: polls-logs.php:372 wp-polls.php:234 wp-polls.php:1441
+msgid "Delete Logs For This Poll Only"
+msgstr "Sadece Bu Anket İçin Kayıtları Sil"
+
+#: polls-logs.php:370
+msgid "Are You Sure You Want To Delete Logs For This Poll Only?"
+msgstr "Sadece Bu Anket İçin Tüm Kayıtları Silmek İstediğinize Emin Misiniz?"
+
+#: polls-logs.php:366
+msgid "Delete Poll Logs"
+msgstr "Anket kayıtlarını sil"
+
+#: polls-logs.php:359 polls-logs.php:375
+msgid "No poll logs available for this poll."
+msgstr "Bu anket için hiçbir anket kaydı bulunmuyor."
+
+#: polls-logs.php:357
+msgid "No poll logs matches the filter."
+msgstr "Filtreyle eşleşen anket kaydı yok."
+
+#: polls-logs.php:350
+msgid "Total number of records that matches this filter: <strong>%s</strong>"
+msgstr "Bu filtreyle eşleşen toplam kayıt sayısı: <strong>%s</strong>"
+
+#: polls-logs.php:328
+msgid "IP/Host"
+msgstr "IP/Sunucu"
+
+#: polls-logs.php:326
+msgid "No."
+msgstr "No."
+
+#: polls-logs.php:296 polls-logs.php:327
+msgid "User"
+msgstr "Kullanıcı"
+
+#: polls-logs.php:286 polls-logs.php:316 polls-manager.php:307
+#: polls-manager.php:319 polls-manager.php:396 polls-manager.php:404
+#: wp-polls.php:440 wp-polls.php:445 wp-polls.php:565 wp-polls.php:570
+#: wp-polls.php:984 wp-polls.php:988
+msgid "%s @ %s"
+msgstr "%s @ %s"
+
+#: polls-logs.php:279 polls-logs.php:329
+msgid "Date"
+msgstr "Tarih"
+
+#: polls-logs.php:278
+msgid "Host"
+msgstr "Sunucu"
+
+#: polls-logs.php:277
+msgid "IP"
+msgstr "IP"
+
+#: polls-logs.php:276 polls-logs.php:322 wp-polls.php:239
+msgid "Answer"
+msgstr "Cevap"
+
+#: polls-logs.php:266
+msgid "This default filter is limited to display only <strong>%s</strong> records."
+msgstr "Bu varsayılan filtre sadece <strong>%s</strong> kayıt gösterebilir."
+
+#: polls-logs.php:261
+msgid "Poll Logs"
+msgstr "Anket Kayıtları"
+
+#: polls-logs.php:254
+msgid "Clear Filter"
+msgstr "Filtreyi Temizle"
+
+#: polls-logs.php:228
+msgid "Display What This User Has Voted"
+msgstr "Bu Kullanıcının Neye Oy Verdiğini Göster"
+
+#: polls-logs.php:207
+msgid "Guests will automatically be excluded"
+msgstr "Misafirler otomatik olarak hariç tutulacak"
+
+#: polls-logs.php:192 polls-logs.php:194
+msgid "%s Answer"
+msgid_plural "%s Answers"
+msgstr[0] "%s Cevap"
+msgstr[1] "%s Cevap"
+
+#: polls-logs.php:189
+msgid "1 Answer"
+msgstr "1 Cevap"
+
+#: polls-logs.php:182
+msgid "Less Than"
+msgstr "Daha Az"
+
+#: polls-logs.php:181
+msgid "Less Than Or Exactly"
+msgstr "Daha Az Veya Tam Olarak"
+
+#: polls-logs.php:180
+msgid "Exactly"
+msgstr "Tam Olarak"
+
+#: polls-logs.php:179
+msgid "More Than Or Exactly"
+msgstr "Daha Fazla Veya Tam Olarak"
+
+#: polls-logs.php:178
+msgid "More Than"
+msgstr "Daha Fazla"
+
+#: polls-logs.php:175
+msgid "Display Users That Voted For"
+msgstr "Şunun İçin Oy Veren Kullanıcıları Göster:"
+
+#: polls-logs.php:163 polls-logs.php:211 polls-logs.php:246
+msgid "Filter"
+msgstr "Filtrele"
+
+#: polls-logs.php:159
+msgid "Guests"
+msgstr "Misafirler"
+
+#: polls-logs.php:158 polls-logs.php:206
+msgid "Comment Authors"
+msgstr "Yorum Yazarları"
+
+#: polls-logs.php:157 polls-logs.php:205
+msgid "Registered Users"
+msgstr "Kayıtlı Kullanıcılar"
+
+#: polls-logs.php:155 polls-logs.php:203
+msgid "Voters To EXCLUDE"
+msgstr "HARİÇ TUTULACAK Oy Verenler"
+
+#: polls-logs.php:134
+msgid "Display All Users That Voted For"
+msgstr "Şunun İçin Oy Veren Tüm Kullanıcıları Göster:"
+
+#: polls-logs.php:125
+msgid "Filter Poll's Logs"
+msgstr "Anketin Kayıtlarını Filtrele"
+
+#: polls-logs.php:120
+msgid "<strong>&raquo;</strong> <strong>%s</strong> vote is cast by guests"
+msgid_plural "<strong>&raquo;</strong> <strong>%s</strong> votes are cast by guests"
+msgstr[0] "Misafirler tarafından <strong>&raquo;</strong> <strong>%s</strong> oy kullanıldı"
+msgstr[1] "Misafirler tarafından <strong>&raquo;</strong> <strong>%s</strong> oy kullanıldı"
+
+#: polls-logs.php:119
+msgid "<strong>&raquo;</strong> <strong>%s</strong> vote is cast by comment authors"
+msgid_plural "<strong>&raquo;</strong> <strong>%s</strong> votes are cast by comment authors"
+msgstr[0] "<strong>&raquo;</strong> <strong>%s</strong> oy yorum yazarları tarafından kullanıldı"
+msgstr[1] "<strong>&raquo;</strong> <strong>%s</strong> oy yorum yazarları tarafından kullanıldı"
+
+#: polls-logs.php:118
+msgid "<strong>&raquo;</strong> <strong>%s</strong> vote is cast by registered users"
+msgid_plural "<strong>&raquo;</strong> <strong>%s</strong> votes are cast by registered users"
+msgstr[0] "<strong>&raquo;</strong> <strong>%s</strong> oy kayıtlı kullanıcılar tarafından kullandı"
+msgstr[1] "<strong>&raquo;</strong> <strong>%s</strong> oy kayıtlı kullanıcılar tarafından kullandı"
+
+#: polls-logs.php:117
+msgid "There are a total of <strong>%s</strong> recorded vote for this poll."
+msgid_plural "There are a total of <strong>%s</strong> recorded votes for this poll."
+msgstr[0] "Bu anket için toplam <strong>%s</strong> kayıtlı oy bulunuyor."
+msgstr[1] "Bu anket için toplam <strong>%s</strong> kayıtlı oy bulunuyor."
+
+#: polls-logs.php:114
+msgid "Poll's Logs"
+msgstr "Anketin kayıtları"
+
+#: polls-logs.php:16 polls-logs.php:17 polls-logs.php:21 polls-logs.php:56
+#: polls-logs.php:60 polls-logs.php:93 polls-logs.php:96 wp-polls.php:1335
+msgid "Guest"
+msgstr "Ziyaretçi"
+
+#: polls-add.php:206 polls-manager.php:348
+msgid "Cancel"
+msgstr "İptal"
+
+#: polls-add.php:203 polls-manager.php:324
+msgid "Do NOT Expire This Poll"
+msgstr "Bu anketi yayından kaldırma"
+
+#: polls-add.php:202 polls-manager.php:313 polls-manager.php:376
+msgid "End Date/Time"
+msgstr "Bitiş tarihi/saati"
+
+#: polls-add.php:198 polls-manager.php:305 polls-manager.php:375
+msgid "Start Date/Time"
+msgstr "Başlangıç tarihi/saati"
+
+#: polls-add.php:195 polls-manager.php:302
+msgid "Poll Start/End Date"
+msgstr "Anket başlangıç/bitiş tarihi"
+
+#: polls-add.php:182 polls-manager.php:285
+msgid "Maximum Number Of Selected Answers Allowed?"
+msgstr "İzin verilen maksimum seçilebilir cevap sayısı?"
+
+#: polls-add.php:177 polls-logs.php:371 polls-manager.php:280
+#: polls-manager.php:502 polls-options.php:214 polls-options.php:223
+#: wp-polls.php:1669
+msgid "Yes"
+msgstr "Evet"
+
+#: polls-add.php:176 polls-manager.php:279 polls-options.php:213
+#: polls-options.php:222 wp-polls.php:1668
+msgid "No"
+msgstr "Hayır"
+
+#: polls-add.php:173 polls-manager.php:276
+msgid "Allows Users To Select More Than One Answer?"
+msgstr "Kullanıcıların birden çok cevap seçebilmelerine izin verilsin mi?"
+
+#: polls-add.php:170 polls-manager.php:273
+msgid "Poll Multiple Answers"
+msgstr "Çok cevaplı anket"
+
+#: polls-add.php:162 wp-polls.php:240
+msgid "Remove"
+msgstr "Kaldır"
+
+#: polls-add.php:161 polls-manager.php:249
+msgid "Answer %s"
+msgstr "Cevap %s"
+
+#: polls-add.php:154 polls-manager.php:262
+msgid "Add Answer"
+msgstr "Cevap ekle"
+
+#: polls-add.php:149 polls-manager.php:227
+msgid "Poll Answers"
+msgstr "Anket cevapları"
+
+#: polls-add.php:144 polls-manager.php:222 polls-manager.php:373
+msgid "Question"
+msgstr "Soru"
+
+#: polls-add.php:141 polls-manager.php:219
+msgid "Poll Question"
+msgstr "Anket sorusu"
+
+#: polls-add.php:125
+msgid "Poll Question is empty."
+msgstr "Anket sorusu boş."
+
+#: polls-add.php:119
+msgid "Poll '%s' (ID: %s) (Shortcode: %s) added successfully, but there are some errors with the Poll's Answers. Embed this poll with the shortcode: %s or go back to <a href=\"%s\">Manage Polls</a>"
+msgstr "Anket '%s' (ID: %s) (Shortcode: %s) başarıyla eklendi, fakat Anketin Cevapları'nda bazı hatalar var. Anketi şu shortcode ile gömün: %s veya <a href=\"%s\">Anketleri Yönet</a>'e dönün."
+
+#: polls-add.php:116
+msgid "Poll '%s' (ID: %s) added successfully. Embed this poll with the shortcode: %s or go back to <a href=\"%s\">Manage Polls</a>"
+msgstr "Anket '%s' (ID: %s) başarıyla eklendi. Anketi bu shortcode ile gömün: %s veya <a href=\"%s\">Anketleri Yönet</a>'e dönün."
+
+#: polls-add.php:107
+msgid "Poll's Answer is empty."
+msgstr "Anketin cevabı boş."
+
+#: polls-add.php:104 polls-manager.php:168
+msgid "Error In Adding Poll's Answer '%s'."
+msgstr "'%s' anketinin cevabını eklemede hata."
+
+#: polls-add.php:82
+msgid "Error In Adding Poll '%s'."
+msgstr "'%s' anketini eklemede hata."
+
+#: polls-add.php:16 polls-add.php:139 polls-add.php:206 wp-polls.php:56
+msgid "Add Poll"
+msgstr "Anket ekle"

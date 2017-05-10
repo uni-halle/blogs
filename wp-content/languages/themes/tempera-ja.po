@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Themes - Tempera package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-01-24 08:55:29+0000\n"
+"PO-Revision-Date: 2017-03-12 14:58:31+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: ja_JP\n"
 "Project-Id-Version: Themes - Tempera\n"
 
@@ -23,17 +23,42 @@ msgstr "%1$s Theme by %2$s"
 msgid "About %s"
 msgstr "%s について"
 
-#: admin/settings.php:1058
+#: admin/customizer.php:37
+msgid "Manage Theme Settings"
+msgstr "テーマ設定の管理"
+
+#: admin/customizer.php:24
+msgid "Priority Support"
+msgstr "優先サポート"
+
+#: admin/customizer.php:12
+msgid "Read the Docs"
+msgstr "ドキュメントを読む"
+
+#: admin/settings.php:1064
 msgid "Footer Menu"
 msgstr "フッターメニュー"
 
-#: admin/settings.php:1058
+#: admin/settings.php:1064
 msgid "Top Menu"
 msgstr "トップメニュー"
 
+#: admin/settings.php:1073
+msgid "Select the menus where to add a search bar."
+msgstr "検索バーを設置する場所を選択してください。"
+
+#: admin/main.php:190
+msgid "Search Bar Locations"
+msgstr "検索バー位置"
+
 #: includes/theme-comments.php:94
 msgid "Leave a comment"
-msgstr "コメントする"
+msgstr "コメントをする"
+
+#: includes/theme-comments.php:96 includes/theme-comments.php:99
+msgid "One Comment"
+msgid_plural "%1$s Comments"
+msgstr[0] "%1$s件のコメント"
 
 #. translators: %s: version number
 #: includes/tgm.php:2037
@@ -89,6 +114,22 @@ msgstr "ページ"
 #: includes/theme-functions.php:270
 msgid "Error 404"
 msgstr "404 エラー"
+
+#: includes/theme-functions.php:267
+msgid "Articles posted by"
+msgstr "著者別アーカイブ:"
+
+#: includes/theme-functions.php:261
+msgid "Posts tagged"
+msgstr "タグ付きの投稿"
+
+#: includes/theme-functions.php:201
+msgid "Search results for"
+msgstr "検索結果 "
+
+#: includes/theme-functions.php:198
+msgid "Archive by category"
+msgstr "カテゴリ別アーカイブ"
 
 #: includes/tgm.php:3570
 msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
@@ -203,7 +244,7 @@ msgstr "タイプ"
 
 #: includes/tgm.php:2603
 msgid "Source"
-msgstr "ソース"
+msgstr "取得方法"
 
 #. translators: 1: number of plugins.
 #: includes/tgm.php:2455
@@ -439,9 +480,41 @@ msgstr "インストールしているプラグイン: %s"
 msgid "<strong>Slides content:</strong>"
 msgstr "<strong>スライドコンテンツ:</strong>"
 
+#: admin/settings.php:483
+msgid "<strong>Columns content:</strong>"
+msgstr "<strong>カラムコンテンツ:</strong>"
+
 #: admin/customizer.php:38
 msgid "Settings"
 msgstr "設定"
+
+#: admin/customizer.php:30
+msgid "Rate %s on WordPress.org"
+msgstr "WordPress.org で %s を評価する"
+
+#: admin/customizer.php:18
+msgid "Browse the Forum"
+msgstr "フォーラムを見る"
+
+#. Template Name of the plugin/theme
+msgid "Two Columns, Sidebar on the Right"
+msgstr "2カラム、右サイドバー"
+
+#. Template Name of the plugin/theme
+msgid "Two columns, Sidebar on the Left"
+msgstr "2カラム、左サイドバー"
+
+#. Template Name of the plugin/theme
+msgid "Three columns, Sidebars on the Right"
+msgstr "3カラム、右サイドバー"
+
+#. Template Name of the plugin/theme
+msgid "Three Columns, Sidebars on the Left"
+msgstr "3カラム、左サイドバー"
+
+#. Template Name of the plugin/theme
+msgid "Three columns, Sidebars Left and Right"
+msgstr "3カラム、左右サイドバー"
 
 #. Template Name of the plugin/theme
 msgid "One column, no sidebar"
@@ -449,7 +522,7 @@ msgstr "1カラム、サイドバーなし"
 
 #. Template Name of the plugin/theme
 msgid "Blog Template ( Posts Page)"
-msgstr "ブログテンプレート ( 投稿ページ )"
+msgstr "ブログテンプレート ( 投稿ページ)"
 
 #: sidebar-left.php:29 sidebar-right.php:29
 msgid "To hide this sidebar, switch to a different Layout via the <a href=\"%s\">Theme Settings</a>."
@@ -469,7 +542,7 @@ msgstr "タグアーカイブ: %s"
 
 #: single.php:40
 msgid "View all posts by "
-msgstr "すべての投稿を表示: "
+msgstr "すべての投稿を見る："
 
 #: search.php:40
 msgid "No search results for: %s."
@@ -499,37 +572,37 @@ msgstr "ヘッダーウィジェット"
 msgid "Search Results for: %s"
 msgstr "検索結果: %s"
 
-#: includes/theme-setup.php:284
-msgid "Second Footer Area"
-msgstr "2番目のフッターエリア"
-
-#: includes/theme-setup.php:275
-msgid "First footer area"
-msgstr "1番目のフッターエリア"
-
-#: includes/theme-setup.php:273
-msgid "First Footer Area"
-msgstr "1番目のフッターエリア"
-
 #: includes/theme-setup.php:308
 msgid "The fourth footer area"
-msgstr "4番目のフッターエリア"
+msgstr "フッターエリア4"
 
 #: includes/theme-setup.php:306
 msgid "Fourth Footer Area"
-msgstr "4番目のフッターエリア"
+msgstr "フッターエリア4"
 
 #: includes/theme-setup.php:297
 msgid "The third footer area"
-msgstr "3番目のフッターエリア"
+msgstr "フッターエリア3"
 
 #: includes/theme-setup.php:295
 msgid "Third Footer Area"
-msgstr "3番目のフッターエリア"
+msgstr "フッターエリア3"
 
 #: includes/theme-setup.php:286
 msgid "Second footer area"
-msgstr "2番目のフッターエリア"
+msgstr "フッターエリア2"
+
+#: includes/theme-setup.php:284
+msgid "Second Footer Area"
+msgstr "フッターエリア2"
+
+#: includes/theme-setup.php:275
+msgid "First footer area"
+msgstr "フッターエリア1"
+
+#: includes/theme-setup.php:273
+msgid "First Footer Area"
+msgstr "フッターエリア1"
 
 #: includes/theme-setup.php:264
 msgid "Right sidebar"
@@ -674,7 +747,7 @@ msgstr "状態"
 msgid "Quote"
 msgstr "引用"
 
-#: content/content-gallery.php:55
+#: content/content-gallery.php:50
 msgid "Gallery"
 msgstr "ギャラリー"
 
@@ -682,7 +755,7 @@ msgstr "ギャラリー"
 msgid "You currently have no published posts. To hide this message either <a href=\"%s\">add some posts</a> or disable displaying posts on the Presentation Page in <a href=\"%s\">theme settings</a>."
 msgstr "投稿した記事がありません。このメッセージを非表示にするには<a href=\"%s\">投稿を追加</a>するか、<a href=\"%s\">テーマの設定</a>のプレゼンテーションページの投稿表示を無効に設定してください。"
 
-#: content/content-gallery.php:41
+#: content/content-gallery.php:37
 msgid "This gallery contains <a %1$s>%2$s photo</a>."
 msgid_plural "This gallery contains <a %1$s>%2$s photos</a>."
 msgstr[0] "このギャラリーには<a %1$s>%2$s枚の写真</a>が含まれています。"
@@ -716,7 +789,7 @@ msgstr "コメントは受け付けていません。"
 
 #: content/content-aside.php:15 content/content-audio.php:15
 #: content/content-chat.php:15 content/content-gallery.php:18
-#: content/content-gallery.php:42 content/content-image.php:14
+#: content/content-gallery.php:38 content/content-image.php:14
 #: content/content-link.php:15 content/content-quote.php:13
 #: content/content-status.php:14 content/content-video.php:15
 #: content/content.php:21
@@ -731,10 +804,6 @@ msgstr "この投稿はパスワードで保護されています。コメント
 msgid "Category Archives: %s"
 msgstr "「%s」カテゴリーアーカイブ"
 
-#: author.php:29
-msgid "Author Archives: %s"
-msgstr "作者アーカイブ: %s"
-
 #: attachment.php:93
 msgid "Next image"
 msgstr "次の画像"
@@ -744,7 +813,7 @@ msgid "Previous image"
 msgstr "前の画像"
 
 #: attachment.php:87 content/content-aside.php:29 content/content-audio.php:24
-#: content/content-chat.php:29 content/content-gallery.php:51
+#: content/content-chat.php:29 content/content-gallery.php:46
 #: content/content-image.php:23 content/content-link.php:29
 #: content/content-page.php:22 content/content-quote.php:27
 #: content/content-video.php:24 content/content.php:40 content/content.php:56
@@ -763,7 +832,7 @@ msgstr "編集"
 
 #: attachment.php:35
 msgid "Link to full-size image"
-msgstr "フルサイズ画像へのリンク"
+msgstr "フルサイズの画像にリンク"
 
 #. translators: %s - title of parent post
 #: attachment.php:32
@@ -774,15 +843,15 @@ msgstr "フルサイズ: %sピクセル"
 msgid "Return to %s"
 msgstr "%s に戻る"
 
-#: archive.php:60 author.php:75 category.php:53 content/content-index.php:39
+#: archive.php:60 author.php:71 category.php:53 content/content-index.php:39
 #: tag.php:54 templates/template-blog.php:38
 msgid "Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post."
 msgstr "リクエストされたアーカイブには何も見つかりませんでした。検索すれば関連投稿が見つかるかもしれません。"
 
-#: archive.php:56 author.php:71 category.php:49 content/content-index.php:35
+#: archive.php:56 author.php:67 category.php:49 content/content-index.php:35
 #: search.php:38 tag.php:50 templates/template-blog.php:34
 msgid "Nothing Found"
-msgstr "見つかりません"
+msgstr "見つかりませんでした"
 
 #: archive.php:32
 msgid "Blog Archives"
@@ -806,23 +875,23 @@ msgstr "Y年n月"
 msgid "Monthly Archives: %s"
 msgstr "月別アーカイブ: %s"
 
-#: admin/settings.php:1572
+#: admin/settings.php:1578
 msgid "Insert your custom CSS here. Any CSS declarations made here will overwrite Tempera's (even the custom options specified right here in the Tempera Settings page). <br /> Your custom CSS will be preserved when updating the theme."
 msgstr "カスタムCSSを入力してください。ここで宣言するCSSはTemperaの定義を（Temperaの設定ページで定義したカスタムオプションを含め）上書きします。<br />テーマをアップデートしてもカスタムCSSは保持します。"
 
-#: admin/settings.php:1551
+#: admin/settings.php:1557
 msgid "Choose the <b>areas</b> where to display the social icons."
 msgstr "ソーシャルアイコンを表示する<b>エリア</b>を選択してください。"
 
-#: admin/settings.php:1564
+#: admin/settings.php:1570
 msgid "Insert custom text or HTML code that will appear in you footer. <br /> You can use HTML to insert links, images and special characters like &copy;."
 msgstr "降ったに表示するカスタムテキストまたはカスタムHTMLコードを入力してください。<br />リンクや画像や &copy; のような特殊文字を入力するためにHTMLが利用可能です。"
 
-#: admin/settings.php:1594
+#: admin/settings.php:1600
 msgid "Enable extra compatibility tag for older Internet Explorer versions. Turning this option on will trigger W3C validation errors."
 msgstr "古いバージョンのInternet Explorerとの互換性を保つためのタグを有効にします。このオプションを有効にするとW3Cの規格には違反することになります。"
 
-#: admin/settings.php:1579
+#: admin/settings.php:1585
 msgid "Insert your custom Javascript code here. (Google Analytics and any other forms of Analytic software)."
 msgstr "カスタムJavaScriptを入力してください。（Googleアナリティクスやその他の解析ソフトなど。）"
 
@@ -830,91 +899,91 @@ msgstr "カスタムJavaScriptを入力してください。（Googleアナリ�
 msgid "Daily Archives: %s"
 msgstr "日別アーカイブ: %s"
 
-#: admin/settings.php:1549 includes/theme-setup.php:262 sidebar-right.php:26
+#: admin/settings.php:1555 includes/theme-setup.php:262 sidebar-right.php:26
 msgid "Right Sidebar"
 msgstr "右サイドバー"
 
-#: admin/settings.php:1539
+#: admin/settings.php:1545
 msgid "Right side"
 msgstr "右側"
 
-#: admin/settings.php:1535
+#: admin/settings.php:1541
 msgid "Left side"
 msgstr "左側"
 
-#: admin/settings.php:1545 includes/theme-setup.php:251 sidebar-left.php:26
+#: admin/settings.php:1551 includes/theme-setup.php:251 sidebar-left.php:26
 msgid "Left Sidebar"
 msgstr "左サイドバー"
 
-#: admin/settings.php:1481
+#: admin/settings.php:1487
 msgid "Social Network Link"
 msgstr "ソーシャルネットワークのリンク"
 
-#: admin/settings.php:1488
+#: admin/settings.php:1494
 msgid "Social Network Title"
 msgstr "ソーシャルネットワークのタイトル"
 
-#: admin/settings.php:1459
+#: admin/settings.php:1465
 msgid "Select your desired Social network from the left dropdown menu and insert your corresponding address in the right input field. (ex: <i>http://www.facebook.com/yourname</i> )"
 msgstr "表示するソーシャルネットワークを左のドロップダウンメニューから選択して右の入力欄にアドレスを入力してください。（例：<i>http://www.facebook.com/yourname</i> ）"
 
-#: admin/settings.php:1461
+#: admin/settings.php:1467
 msgid "You can show up to 5 different social icons from over 35 social networks."
 msgstr "35以上のソーシャルネットワークの中から最大5個まで選択して表示することができます。"
 
-#: admin/settings.php:1462
+#: admin/settings.php:1468
 msgid "You can leave any number of inputs empty."
 msgstr "いくつ空欄にしておいてもかまいません。"
 
-#: admin/settings.php:1448
+#: admin/settings.php:1454
 msgid "Show featured images on headers. The header will be replaced with a featured image if you selected it as a Featured Image in the post and if it is bigger or at least equal to the current header size."
 msgstr "ヘッダにアイキャッチ画像を表示します。投稿にアイキャッチ画像を選択し、それが現在のヘッダ以上のサイズであればヘッダと置き換えます。"
 
-#: admin/settings.php:1463
+#: admin/settings.php:1469
 msgid "You can change the background for your social colors from the colors settings section."
 msgstr "カラー設定のセクションでソーシャルアイコンの背景色を変更できます。"
 
-#: admin/settings.php:1415
+#: admin/settings.php:1421
 msgid "Thumbnail alignment."
 msgstr "サムネイルの配置"
 
-#: admin/settings.php:1422
+#: admin/settings.php:1428
 msgid "(width)"
 msgstr "（幅）"
 
-#: admin/settings.php:1423
+#: admin/settings.php:1429
 msgid "(height)"
 msgstr "（高さ）"
 
-#: admin/settings.php:1429
+#: admin/settings.php:1435
 msgid "Crop images to exact size."
 msgstr "サイズに合わせて画像を切取り"
 
-#: admin/settings.php:1432
+#: admin/settings.php:1438
 msgid "The size (in pixels) for your thumbnails. By default imges will be scaled with aspect ratio kept. Choose to crop the images if you want the exact size."
 msgstr "サムネイルの大きさ（ピクセル）です。デフォルトでは画像は縦横の比率を保って拡大・縮小されます。正確な画像サイズを指定したい場合には「画像をサイズに合わせて切り取る」にチェックしてください。"
 
-#: admin/settings.php:1399
+#: admin/settings.php:1405
 msgid "Show the first image that you inserted in a post as a thumbnail. If there is a Featured Image selected for that post, it will have priority."
 msgstr "投稿に挿入した最初の画像を投稿のサムネイルとして表示します。アイキャッチ画像があれば、そちらを優先します。"
 
-#: admin/settings.php:1335
+#: admin/settings.php:1341
 msgid "Replaces the three dots ('[...])' that are appended automatically to excerpts."
 msgstr "抜粋に自動的に付加する3個の点（'[...]'）を置き換えます。"
 
-#: admin/settings.php:1342
+#: admin/settings.php:1348
 msgid "Edit the 'Continue Reading' link added to your post excerpts."
 msgstr "全文表示リンクのテキストを編集します。"
 
-#: admin/settings.php:1383
+#: admin/settings.php:1389
 msgid "Link the thumbnail to the post"
 msgstr "サムネイルを投稿にリンク"
 
-#: admin/settings.php:1384
+#: admin/settings.php:1390
 msgid "Show featured images as thumbnails on posts. The images must be selected for each post in the Featured Image section."
 msgstr "アイキャッチ画像を投稿のサムネイルとして表示します。それぞれの投稿でアイキャッチ画像を選択する必要があります。"
 
-#: admin/settings.php:1328
+#: admin/settings.php:1334
 msgid "The number of words for excerpts. When that number is reached the post will be interrupted by a <i>Continue reading</i> link that will take the reader to the full post page."
 msgstr "抜粋の文字数/単語数を指定します。ここで指定する上限に達すると、記事は打ち切られて<i>全文表示</i>リンクが表示されます。"
 
@@ -922,780 +991,780 @@ msgstr "抜粋の文字数/単語数を指定します。ここで指定する�
 msgid "Enable the Magazine Layout. This layout applies to pages with posts and shows 2 posts per row."
 msgstr "雑誌レイアウトを有効にします。雑誌レイアウトはページと投稿に適用され、1行に2個ずつ投稿を表示します。"
 
-#: admin/settings.php:1304
+#: admin/settings.php:1310
 msgid "Choose if you want the sticky posts on your home page to be visible in full or just the excerpts. "
 msgstr "固定表示の投稿をホームページ上で全文表示するか、抜粋のみ表示するかを選択します。"
 
-#: admin/settings.php:1320
+#: admin/settings.php:1326
 msgid "Excerpts on archive, categroy and search pages. Same as above, only standard posts will be affected."
 msgstr "アーカイブ、カテゴリ、検索ページでの抜粋表示。上と同じですが、標準の投稿にのみ影響します。"
 
-#: admin/settings.php:1289
+#: admin/settings.php:1295
 msgid "Excerpts on the main page. Only standard posts will be affected. All other post formats (aside, image, chat, quote etc.) have their specific formating."
 msgstr "メインページでの抜粋。「標準」フォーマットにのみ適用します。それ以外のフォーマット（アサイド、画像、チャット、引用など）はそれぞれのフォーマットを使います。"
 
-#: admin/settings.php:1531
+#: admin/settings.php:1537
 msgid "Footer"
 msgstr "フッター"
 
-#: admin/settings.php:1486
+#: admin/settings.php:1492
 msgid "Open in new window"
 msgstr "新しいウィンドウで開く"
 
-#: admin/settings.php:1281 admin/settings.php:1296 admin/settings.php:1312
+#: admin/settings.php:1287 admin/settings.php:1302 admin/settings.php:1318
 msgid "Full Post"
 msgstr "全ての投稿"
 
-#: admin/settings.php:1460
+#: admin/settings.php:1466
 msgid "You can also choose if you want the link to open in a new window and what title to display while hovering over the icon."
 msgstr "新しいウィンドウで開くかどうかを選択し、アイコン上にマウスカーソルが置かれたときに表示するタイトルを設定できます。"
 
-#: admin/settings.php:1269
+#: admin/settings.php:1275
 msgid "Hide the <b>Comments off</b> text next to posts that have comments disabled."
 msgstr "<b>コメント無効</b>のテキストを表示するかどうかを選択します。"
 
-#: admin/settings.php:1245
+#: admin/settings.php:1251
 msgid "Hide in pages"
 msgstr "ページで非表示"
 
-#: admin/settings.php:1245
+#: admin/settings.php:1251
 msgid "Hide everywhere"
 msgstr "常に非表示"
 
-#: admin/settings.php:1253
+#: admin/settings.php:1259
 msgid "Hide the <b>Comments are closed</b> text that by default shows up on pages or posts with comments disabled."
 msgstr "<b>コメント停止中</b>のテキストをページや投稿で表示するかどうかを選択します。"
 
-#: admin/settings.php:1238
+#: admin/settings.php:1244
 msgid "Hide the explanatory text under the comments form (starts with  <i>You may use these HTML tags and attributes:...</i>)."
 msgstr "コメントフォームの下に表示する説明文（<i>次のHTMLタグと属性が使えます：</i>で始まる説明文）を非表示にします。"
 
-#: admin/settings.php:1245
+#: admin/settings.php:1251
 msgid "Hide in posts"
 msgstr "投稿で非表示"
 
-#: admin/settings.php:1221
+#: admin/settings.php:1227
 msgid "Choose the post metas you want to show on sigle post pages."
 msgstr "個別投稿ページに表示したい投稿メタ情報を選択してください。"
 
-#: admin/settings.php:1212 includes/theme-loop.php:297
+#: admin/settings.php:1218 includes/theme-loop.php:297
 msgid "Bookmark"
 msgstr "ブックマーク"
 
-#: admin/settings.php:1205
+#: admin/settings.php:1211
 msgid "Choose the post metas you want to show on multiple post pages (home, blog, category, archive etc.)"
 msgstr "複数の投稿を表示するページ（ホーム、ブログ、カテゴリ、アーカイブなど）で表示したい投稿メタ情報を選択してください。"
 
-#: admin/settings.php:1281 admin/settings.php:1296 admin/settings.php:1312
+#: admin/settings.php:1287 admin/settings.php:1302 admin/settings.php:1318
 msgid "Excerpt"
 msgstr "抜粋"
 
-#: admin/settings.php:1196
+#: admin/settings.php:1202
 msgid "Comments"
 msgstr "コメント"
 
-#: admin/settings.php:1196 admin/settings.php:1212
+#: admin/settings.php:1202 admin/settings.php:1218
 msgid "Tag"
 msgstr "タグ"
 
-#: admin/settings.php:1196 admin/settings.php:1212
+#: admin/settings.php:1202 admin/settings.php:1218
 msgid "Time"
 msgstr "時刻"
 
-#: admin/settings.php:1196 admin/settings.php:1212
+#: admin/settings.php:1202 admin/settings.php:1218
 msgid "Category"
 msgstr "カテゴリー"
 
-#: admin/settings.php:1196 admin/settings.php:1212 includes/theme-loop.php:205
+#: admin/settings.php:1202 admin/settings.php:1218 includes/theme-loop.php:205
 msgid "Date"
 msgstr "日時"
 
-#: admin/settings.php:1196 admin/settings.php:1212
+#: admin/settings.php:1202 admin/settings.php:1218
 msgid "Author"
 msgstr "作成者"
 
-#: admin/settings.php:1181
+#: admin/settings.php:1187
 msgid "Bottom"
 msgstr "下"
 
-#: admin/settings.php:1154
+#: admin/settings.php:1160
 msgid "Hide table borders and background color."
 msgstr "テーブルの枠線と背景色を非表示。"
 
-#: admin/settings.php:1170
+#: admin/settings.php:1176
 msgid "Enable the Back to Top button. The button appears after scrolling the page down."
 msgstr "「先頭に戻る」ボタンを有効にします。ページを下にスクロールすると表示されるボタンです。"
 
-#: admin/settings.php:1124
+#: admin/settings.php:1130
 msgid "Hide or show titles on pages."
 msgstr "ページのタイトルを表示するかどうか。"
 
-#: admin/settings.php:1139
+#: admin/settings.php:1145
 msgid "Hide or show titles on Categories and Archives."
 msgstr "カテゴリとアーカイブのタイトルを表示するかどうか。"
 
-#: admin/settings.php:1107
+#: admin/settings.php:1113
 msgid "Hide or show bullets next to lists in your content area (posts, pages etc.)."
 msgstr "コンテンツエリア（投稿、ページなど）の中の箇条書きの先頭に箇条書きマークをつけるかどうか。"
 
-#: admin/settings.php:1181
+#: admin/settings.php:1187
 msgid "Top"
 msgstr "上"
 
-#: admin/settings.php:1092
+#: admin/settings.php:1098
 msgid "The border style for your images. Only images inserted in your posts and pages will be affected. "
 msgstr "画像の枠スタイル。投稿やページに挿入する画像にのみ適用します。"
 
-#: admin/settings.php:1044
+#: admin/settings.php:1050
 msgid "Right (multiline)"
 msgstr "右（複数行）"
 
-#: admin/settings.php:1052
+#: admin/settings.php:1058
 msgid "Sets the desired menu items alignment."
 msgstr "メニュー項目配置を選択してください。"
 
-#: admin/settings.php:1073
+#: admin/settings.php:1079
 msgid "Margin top: "
 msgstr "上マージン："
 
-#: admin/settings.php:1074
+#: admin/settings.php:1080
 msgid "The margin between the content and the menu. It can be set to 0px if you want the content area and menu to join."
 msgstr "コンテンツとメニューの間のマージン。コンテンツエリアとメニューを連結したい場合は0pxを指定します。"
 
-#: admin/settings.php:1076
+#: admin/settings.php:1082
 msgid "Padding left/right: "
 msgstr "左右パディング："
 
-#: admin/settings.php:1077
+#: admin/settings.php:1083
 msgid "The left/right padding around the content. Should be set to 10px or less for designs without a content color."
 msgstr "コンテンツ周囲の左右のパディング。コンテンツに色を指定しない場合、10px以下にすると良いでしょう。"
 
-#: admin/settings.php:1038
+#: admin/settings.php:1044
 msgid "Show numbered pagination. Where there is more than one page, instead of the bottom <b>Older Posts</b> and <b>Newer posts</b> links you have a numbered pagination. "
 msgstr "番号付きページネーションを表示します。複数ページにまたがるとき、下部に「<b>前の記事</b>」や「<b>次の記事</b>」のリンクの代わりに番号付きのページネーションを表示します。"
 
-#: admin/settings.php:1008
+#: admin/settings.php:1014
 msgid "Show the topbar that can include social icons and the top menu."
 msgstr "ソーシャルアイコンとトップメニューを置くトップバーを表示します。"
 
-#: admin/settings.php:1023
+#: admin/settings.php:1029
 msgid "Show breadcrumbs at the top of the content area. Breadcrumbs are a form of navigation that keeps track of your location withtin the site."
 msgstr "コンテンツエリアの先頭にパンくずリストを表示します。パンくずリストとは、サイト内での位置をわかりやすくするためのナビゲーションです。"
 
-#: admin/settings.php:1099 admin/settings.php:1116 admin/settings.php:1131
-#: admin/settings.php:1230 admin/settings.php:1245 admin/settings.php:1261
+#: admin/settings.php:1105 admin/settings.php:1122 admin/settings.php:1137
+#: admin/settings.php:1236 admin/settings.php:1251 admin/settings.php:1267
 msgid "Show"
 msgstr "表示する"
 
-#: admin/settings.php:999
+#: admin/settings.php:1005
 msgid "Site width"
 msgstr "サイト幅"
 
-#: admin/settings.php:999
+#: admin/settings.php:1005
 msgid "Full width"
 msgstr "全幅"
 
-#: admin/settings.php:989 admin/settings.php:1099 admin/settings.php:1116
-#: admin/settings.php:1131 admin/settings.php:1181 admin/settings.php:1230
-#: admin/settings.php:1261
+#: admin/settings.php:995 admin/settings.php:1105 admin/settings.php:1122
+#: admin/settings.php:1137 admin/settings.php:1187 admin/settings.php:1236
+#: admin/settings.php:1267
 msgid "Hide"
-msgstr "隠す"
+msgstr "非表示"
 
-#: admin/settings.php:989
+#: admin/settings.php:995
 msgid "Fixed"
 msgstr "固定"
 
-#: admin/settings.php:976
+#: admin/settings.php:982
 msgid "This setting changes the look of your captions. Images that are not inserted through captions will not be affected."
 msgstr "この設定でキャプションの見た目を変更できます。キャプションのついていない画像には影響ありません。"
 
-#: admin/settings.php:968
+#: admin/settings.php:974
 msgid "Simple"
 msgstr "シンプル"
 
-#: admin/settings.php:989
+#: admin/settings.php:995
 msgid "Normal"
 msgstr "通常"
 
-#: admin/settings.php:968
+#: admin/settings.php:974
 msgid "Dark"
 msgstr "ダーク"
 
-#: admin/settings.php:968
+#: admin/settings.php:974
 msgid "Light"
 msgstr "ライト"
 
-#: admin/settings.php:962
+#: admin/settings.php:968
 msgid "Background colours for your social icons."
 msgstr "ソーシャルアイコンの背景色"
 
-#: admin/settings.php:955
+#: admin/settings.php:961
 msgid "Colours for your meta area (post information)."
 msgstr "メタエリア（投稿情報）の色"
 
-#: admin/settings.php:960
+#: admin/settings.php:966
 msgid "Social Icons Background"
 msgstr "ソーシャルアイコン背景"
 
-#: admin/settings.php:961
+#: admin/settings.php:967
 msgid "Social Icons Background Hover"
 msgstr "ソーシャルアイコン背景（マウスオーバー時）"
 
-#: admin/settings.php:952
+#: admin/settings.php:958
 msgid "Meta Icons"
 msgstr "メタアイコン"
 
-#: admin/settings.php:953
+#: admin/settings.php:959
 msgid "Meta Links"
 msgstr "メタリンク"
 
-#: admin/settings.php:954
+#: admin/settings.php:960
 msgid "Meta Links Hover"
 msgstr "メタリンク（マウスオーバー時）"
 
-#: admin/settings.php:947
-msgid "Footer colours include the footer menu colours."
-msgstr "フッタ色にはフッタメニュー色も含みます。"
-
-#: admin/settings.php:940
+#: admin/settings.php:946
 msgid "Sidebar Widgets Links Hover"
 msgstr "サイドバーウィジェットリンク（マウスオーバー時）"
 
-#: admin/settings.php:936
+#: admin/settings.php:942
 msgid "General Links"
 msgstr "一般リンク"
 
-#: admin/settings.php:937
+#: admin/settings.php:943
 msgid "General Links Hover"
 msgstr "一般リンク（マウスオーバー時）"
 
-#: admin/settings.php:938
+#: admin/settings.php:944
 msgid "Sidebar Widgets:"
 msgstr "サイドバーウィジェット："
 
-#: admin/settings.php:939
+#: admin/settings.php:945
 msgid "Sidebar Widgets Links"
 msgstr "サイドバーウィジェットリンク"
 
-#: admin/settings.php:879
+#: admin/settings.php:885
 msgid "These colours apply to the main site menu (and dropdown elements)."
 msgstr "ここで指定する色はメインサイトメニュー（およびドロップダウン要素）で使用します。"
 
-#: admin/settings.php:888
+#: admin/settings.php:894
 msgid "Top Bar Menu Link Hover"
 msgstr "トップバーメニューリンク（マウスオーバー時）"
 
-#: admin/settings.php:889
+#: admin/settings.php:895
 msgid "These colours apply to the top bar menu."
 msgstr "ここで指定する色はトップバーメニューで使用します。"
 
-#: admin/settings.php:894
+#: admin/settings.php:900
 msgid "Content Background"
 msgstr "コンテンツ背景"
 
-#: admin/settings.php:895
+#: admin/settings.php:901
 msgid "Page/Post Title"
 msgstr "ページ/投稿タイトル"
 
-#: admin/settings.php:896
+#: admin/settings.php:902
 msgid "Page/Post Title Hover"
 msgstr "ページ/投稿タイトル（マウスオーバー時）"
 
-#: admin/settings.php:897
+#: admin/settings.php:903
 msgid "Content Headings"
 msgstr "コンテンツ見出し"
 
-#: admin/settings.php:898
+#: admin/settings.php:904
 msgid "Content colours apply to post and page areas of the site."
 msgstr "コンテンツの色は投稿とページで使用します。"
 
-#: admin/settings.php:903
+#: admin/settings.php:909
 msgid "Titles Color"
 msgstr "タイトル色"
 
-#: admin/settings.php:907
+#: admin/settings.php:913
 msgid "These colours apply to specific areas of the presentation page."
 msgstr "ここで設定する色はプレゼンテーションページの特定のエリアで使用します。"
 
-#: admin/settings.php:870
+#: admin/settings.php:876
 msgid "Menu Background"
 msgstr "メニュー背景"
 
-#: admin/settings.php:871
+#: admin/settings.php:877
 msgid "Menu Text"
 msgstr "メニューテキスト"
 
-#: admin/settings.php:875
+#: admin/settings.php:881
 msgid "Submenu Background"
 msgstr "サブメニュー背景"
 
-#: admin/settings.php:876
+#: admin/settings.php:882
 msgid "Submenu Text"
 msgstr "サブメニューテキスト"
 
-#: admin/settings.php:877
+#: admin/settings.php:883
 msgid "Submenu Shadow"
 msgstr "サブメニュー影"
 
-#: admin/settings.php:918
+#: admin/settings.php:924
 msgid "These colours apply to the widgets placed in either sidebar."
 msgstr "ここで設定する色はサイドバーに置かれるウィジェットで使用します。"
 
-#: admin/settings.php:917
+#: admin/settings.php:923
 msgid "Sidebars Widget Title Text"
 msgstr "サイドバーウィジェットのタイトルテキスト"
 
-#: admin/settings.php:916
+#: admin/settings.php:922
 msgid "Sidebars Text"
 msgstr "サイドバーのテキスト"
 
-#: admin/settings.php:914
+#: admin/settings.php:920
 msgid "Sidebars Widget Title Background"
 msgstr "サイドバーウィジェットのタイトル背景"
 
-#: admin/settings.php:913
+#: admin/settings.php:919
 msgid "Sidebars Background"
 msgstr "サイドバー背景"
 
-#: admin/settings.php:885
+#: admin/settings.php:891
 msgid "Top Bar Background"
 msgstr "トップバー背景"
 
-#: admin/settings.php:887
+#: admin/settings.php:893
 msgid "Top Bar Menu Link"
 msgstr "トップバーメニューリンク"
 
-#: admin/settings.php:946
-msgid "Footer Links Hover"
-msgstr "フッターリンク（マウスオーバー時）"
-
-#: admin/settings.php:945
+#: admin/settings.php:951
 msgid "Footer Links"
 msgstr "フッターリンク"
 
-#: admin/settings.php:944
+#: admin/settings.php:950
 msgid "Footer:"
 msgstr "フッター: "
 
-#: admin/settings.php:943
-msgid "Footer Widgets Links Hover"
-msgstr "フッターウィジェットリンク（マウスオーバー時）"
-
-#: admin/settings.php:942
+#: admin/settings.php:948
 msgid "Footer Widgets Links"
 msgstr "フッターウィジェットリンク"
 
-#: admin/settings.php:941
+#: admin/settings.php:947
 msgid "Footer Widgets:"
 msgstr "フッターウィジェット: "
 
-#: admin/settings.php:935
+#: admin/settings.php:941
 msgid "General:"
 msgstr "一般: "
 
-#: admin/settings.php:930
-msgid "These colours apply to the widgets in the footer area."
-msgstr "ここで設定する色はフッターエリアに置かれるウィジェットで使用します。"
-
-#: admin/settings.php:929
+#: admin/settings.php:935
 msgid "Footer Widgets Title Text"
 msgstr "フッターウィジェットのタイトルテキスト"
 
-#: admin/settings.php:928
+#: admin/settings.php:934
 msgid "Footer Widget Text"
 msgstr "フッターウィジェットのテキスト"
 
-#: admin/settings.php:926
+#: admin/settings.php:932
 msgid "Footer Widgets Title Background"
 msgstr "フッターウィジェットのタイトル背景"
 
-#: admin/settings.php:925
+#: admin/settings.php:931
 msgid "Footer Widgets Background"
 msgstr "フッターウィジェット背景"
 
-#: admin/settings.php:906
+#: admin/settings.php:912
 msgid "Slider Caption Background"
 msgstr "スライダーキャプション背景色"
 
-#: admin/settings.php:905
+#: admin/settings.php:911
 msgid "Slider Caption Text Color"
 msgstr "スライダーキャプションテキスト色"
 
-#: admin/settings.php:904
+#: admin/settings.php:910
 msgid "Slider Border Color"
 msgstr "スライダー枠線色"
 
-#: admin/settings.php:874
+#: admin/settings.php:880
 msgid "Submenu:"
 msgstr "サブメニュー: "
 
-#: admin/settings.php:869
+#: admin/settings.php:875
 msgid "Menu:"
 msgstr "メニュー: "
 
-#: admin/settings.php:839
+#: admin/settings.php:953
+msgid "Footer colours include the footer menu colours."
+msgstr "フッター色にはフッターメニュー色も含まれます。"
+
+#: admin/settings.php:952
+msgid "Footer Links Hover"
+msgstr "フッターリンク (マウスオーバー時)"
+
+#: admin/settings.php:949
+msgid "Footer Widgets Links Hover"
+msgstr "フッターウィジェットリンク (マウスオーバー時)"
+
+#: admin/settings.php:936
+msgid "These colours apply to the widgets in the footer area."
+msgstr "ここで設定した色はフッターエリア内のウィジェットに適用されます。"
+
+#: admin/settings.php:845
 msgid "General Text"
 msgstr "一般テキスト"
 
-#: admin/settings.php:840
+#: admin/settings.php:846
 msgid "General Lighter Text"
 msgstr "一般テキスト（明）"
 
-#: admin/settings.php:842
+#: admin/settings.php:848
 msgid "The site background features 4 separately coloured areas.<br />The general text colour applies to all text on the website that is not controlled by any other option."
 msgstr "サイトの4種類のエリアに別々に背景色を指定できます。<br />一般テキスト色はサイト上のすべてのテキストに適用され、他のオプションから制御されることはありません。"
 
-#: admin/settings.php:847
+#: admin/settings.php:853
 msgid "Accent Color #1"
 msgstr "アクセントカラー#1"
 
-#: admin/settings.php:848
+#: admin/settings.php:854
 msgid "Accent Color #2"
 msgstr "アクセントカラー#2"
 
-#: admin/settings.php:849
+#: admin/settings.php:855
 msgid "Accent Color #3"
 msgstr "アクセントカラー#3"
 
-#: admin/settings.php:850
+#: admin/settings.php:856
 msgid "Accent Color #4"
 msgstr "アクセントカラー#4"
 
-#: admin/settings.php:851
+#: admin/settings.php:857
 msgid "Accent Color #5"
 msgstr "アクセントカラー#5"
 
-#: admin/settings.php:860
+#: admin/settings.php:866
 msgid "Site Description Background"
 msgstr "サイト説明背景"
 
-#: admin/settings.php:863
+#: admin/settings.php:869
 msgid "Site Description"
 msgstr "サイト説明"
 
-#: admin/settings.php:841
+#: admin/settings.php:847
 msgid "Footer Text"
 msgstr "フッターテキスト"
 
-#: admin/settings.php:773
+#: admin/settings.php:778
 msgid "Disable the default headings indent (left margin)."
 msgstr "デフォルトの見出しインデント（左マージン）を無効にします。"
 
-#: admin/settings.php:783
+#: admin/settings.php:789
 msgid "Text line height. The height between 2 rows of text."
 msgstr "テキスト行の高さ。行間を含めた高さです。"
 
-#: admin/settings.php:793
+#: admin/settings.php:799
 msgid "The space between <i>words</i>. Leave 'Default' for normal settings (size value will be as set in the CSS)."
 msgstr "<i>単語</i>の間隔。通常はデフォルトを選択してください。（CSSで設定した値が使われます。）"
 
-#: admin/settings.php:803
+#: admin/settings.php:809
 msgid "The space between <i>letters</i>. Leave 'Default' for normal settings (size value will be as set in the CSS)."
 msgstr "<i>文字</i>の間隔。通常はデフォルトを選択してください。（CSSで設定した値が使われます。）"
 
-#: admin/settings.php:811
-msgid "Select the spacing between the paragraphs."
-msgstr "パラグラフの間隔。"
-
-#: admin/settings.php:818
+#: admin/settings.php:824
 msgid "Default (disabled)"
 msgstr "デフォルト（無効）"
 
-#: admin/settings.php:820
+#: admin/settings.php:826
 msgid "Enable uppercase text styling. All text in the site will be uppercase."
 msgstr "テキストをすべて大文字で表示します。サイト上のすべてのテキストを大文字にします。"
 
-#: admin/settings.php:828
+#: admin/settings.php:834
 msgid "Define background image"
 msgstr "背景画像を設定"
 
-#: admin/settings.php:835
+#: admin/settings.php:841
 msgid "Main Site Background"
 msgstr "メインサイト背景"
 
-#: admin/settings.php:836
-msgid "Footer Widgets Area Background"
-msgstr "フッタウィジェットエリア背景"
-
-#: admin/settings.php:752
+#: admin/settings.php:757
 msgid "This overwrites the text alignment in posts and pages. Leave 'Default' for normal settings (alignment will remain as declared in posts, comments etc.)."
 msgstr "投稿やページ内でのテキスト配置指定を上書きします。通常は「デフォルト」を選択してください。（投稿やコメント内で定義したとおりの配置で表示します。）"
 
-#: admin/settings.php:762
+#: admin/settings.php:767
 msgid "Choose the indent for your paragraphs."
 msgstr "パラグラフのインデントを指定してください。"
 
-#: admin/settings.php:838 admin/settings.php:861 admin/settings.php:886
-#: admin/settings.php:915 admin/settings.php:927
+#: admin/settings.php:844 admin/settings.php:867 admin/settings.php:892
+#: admin/settings.php:921 admin/settings.php:933
 msgid "Text:"
 msgstr "テキスト:"
 
-#: admin/settings.php:834
+#: admin/settings.php:840
 msgid "Header Background"
 msgstr "ヘッダー背景"
 
-#: admin/settings.php:837
+#: admin/settings.php:843
 msgid "Footer Background"
 msgstr "フッター背景"
 
-#: admin/settings.php:833 admin/settings.php:859 admin/settings.php:884
-#: admin/settings.php:912 admin/settings.php:924
+#: admin/settings.php:839 admin/settings.php:865 admin/settings.php:890
+#: admin/settings.php:918 admin/settings.php:930
 msgid "Background:"
 msgstr "背景: "
 
-#: admin/settings.php:750 admin/settings.php:1044 admin/settings.php:1407
+#: admin/settings.php:842
+msgid "Footer Widgets Area Background"
+msgstr "フッターウィジェットエリア背景"
+
+#: admin/settings.php:817
+msgid "Select the spacing between the paragraphs."
+msgstr "段落間の間隔を選択します。"
+
+#: admin/settings.php:755 admin/settings.php:1050 admin/settings.php:1413
 msgid "Center"
 msgstr "中央"
 
-#: admin/settings.php:750
+#: admin/settings.php:755
 msgid "Justify"
 msgstr "両端揃え"
 
-#: admin/settings.php:750 admin/settings.php:1044 admin/settings.php:1407
+#: admin/settings.php:755 admin/settings.php:1050 admin/settings.php:1413
 msgid "Right"
 msgstr "右"
 
-#: admin/settings.php:750 admin/settings.php:1044 admin/settings.php:1407
+#: admin/settings.php:755 admin/settings.php:1050 admin/settings.php:1413
 msgid "Left"
 msgstr "左"
 
-#: admin/settings.php:516
+#: admin/settings.php:521
 msgid "Load your custom Widgets as columns. Go to <a>Appearance >> Widgets</a> and create your custom columns using the Columns widget. You can use as many as you want."
 msgstr "カスタムウィジェットをコラムに読み込みます。外観 >> ウィジェット へ行き、コラムウィジェットを使ってカスタムコラムを作成してください。いくつでも好きなだけ作成できます。"
 
-#: admin/settings.php:547
+#: admin/settings.php:552
 msgid "Animated"
 msgstr "アニメーション表示"
 
-#: admin/settings.php:547
+#: admin/settings.php:552
 msgid "Static on Image"
 msgstr "画像に重ねて表示"
 
-#: admin/settings.php:547
+#: admin/settings.php:552
 msgid "Static under Image"
 msgstr "画像の下に表示"
 
-#: admin/settings.php:555
+#: admin/settings.php:560
 msgid "How to display your Presentation Page Columns."
 msgstr "プレゼンテーションページのコラムをどのように表示しますか。"
 
-#: admin/settings.php:570
+#: admin/settings.php:575
 msgid "The sizes for your column images. The width is dependent on total site width and not configurable."
 msgstr "コラム画像のサイズ。幅はサイト全体の幅によって自動で変わるため、設定できません。"
 
-#: admin/settings.php:572
-msgid "Read more text:"
-msgstr "全文表示のテキスト："
-
-#: admin/settings.php:575
+#: admin/settings.php:580
 msgid "The linked text that appears at the bottom of each column. Leave empty to hide the link."
 msgstr "コラムの下に表示されるリンク用のテキスト。リンクを表示しない場合は空欄にしてください。"
 
-#: admin/settings.php:584
+#: admin/settings.php:589
 msgid "Extra Text"
 msgstr "その他のテキスト"
 
-#: admin/settings.php:586
+#: admin/settings.php:591
 msgid "Text for the Presentation Page"
 msgstr "プレゼンテーションページのテキスト"
 
-#: admin/settings.php:590
+#: admin/settings.php:595
 msgid "Top Title"
 msgstr "トップのタイトル"
 
-#: admin/settings.php:592
+#: admin/settings.php:597
 msgid "Top Text"
 msgstr "トップの本文"
 
-#: admin/settings.php:595
+#: admin/settings.php:600
 msgid "Second Title"
 msgstr "2番目のタイトル"
 
-#: admin/settings.php:597
+#: admin/settings.php:602
 msgid "Second text"
 msgstr "2番目の本文"
 
-#: admin/settings.php:600
+#: admin/settings.php:605
 msgid "Hide areas"
 msgstr "エリアの非表示"
 
-#: admin/settings.php:602
+#: admin/settings.php:607
 msgid "Choose the areas to hide on the first page."
 msgstr "フロントページ上に表示したくないエリアを選択してください。"
 
-#: admin/settings.php:613
-msgid "Hide the header area (logo/title and/or image/empty area)."
-msgstr "ヘッダエリアを非表示（ロゴ/タイトル、画像）"
-
-#: admin/settings.php:616
+#: admin/settings.php:621
 msgid "Hide the main menu and the top menu."
 msgstr "メインメニューとトップメニューを非表示"
 
-#: admin/settings.php:619
-msgid "Hide the footer widgets. "
-msgstr "フッタウィジェットを非表示"
-
-#: admin/settings.php:622
-msgid "Hide the footer (copyright area)."
-msgstr "フッタを非表示（著作権表示エリア）"
-
-#: admin/settings.php:647
+#: admin/settings.php:652
 msgid "Select the general font family and size or insert the Google Font name you'll use in your blog. This will affect all text except the one controlled by the options below. "
 msgstr "ブログで使いたいフォントファミリとサイズ、またはGoogleフォント名を選択してください。この設定は下で設定するものを除き、すべてのテキストに適用されます。"
 
-#: admin/settings.php:666
+#: admin/settings.php:671
 msgid "Select the font family and size or insert the Google Font name you want for your titles. It will affect post titles and page titles. Leave 'General Font' and the general font values you selected will be used."
 msgstr "タイトルで使いたいフォントファミリとサイズ、またはGoogleフォント名を選択してください。この設定はすべての投稿タイトルとページタイトルに適用されます。「既定のフォント」にしておくと「既定のフォント」で選択したものを使用します。"
 
-#: admin/settings.php:685
+#: admin/settings.php:690
 msgid "Select the font family and size or insert the Google Font name you want your widget titles to have. Leave 'General Font' and the general font values you selected will be used."
 msgstr "ウィジェットタイトルで使いたいフォントファミリとサイズ、またはGoogleフォント名を選択してください。「既定のフォント」にしておくと「既定のフォント」で選択したものを使用します。"
 
-#: admin/settings.php:703
+#: admin/settings.php:708
 msgid "Select the font family and size or insert the Google Font name you want your site title and tagline to use. Leave 'General Font' and the general font values you selected will be used."
 msgstr "サイトタイトルおよびタグラインで使いたいフォントファミリとサイズ、またはGoogleフォント名を選択してください。「既定のフォント」にしておくと「既定のフォント」で選択したものを使用します。"
 
-#: admin/settings.php:721
+#: admin/settings.php:726
 msgid "Select the font family and size or insert the Google Font name you want your main menu to use. Leave 'General Font' and the general font values you selected will be used."
 msgstr "メインメニューで使いたいフォントファミリとサイズ、またはGoogleフォント名を選択してください。「既定のフォント」にしておくと「既定のフォント」で選択したものを使用します。"
 
-#: admin/settings.php:742
+#: admin/settings.php:747
 msgid "Select the font family and size or insert the Google Font name you want your headings to have (h1 - h6 tags will be affected). Leave 'General Font' and the general font values you selected will be used."
 msgstr "見出し（h1～h6タグ）に使いたいフォントファミリとサイズ、またはGoogleフォント名を選択してください。「既定のフォント」にしておくと「既定のフォント」で選択したものを使用します。"
 
-#: admin/settings.php:750 admin/settings.php:791 admin/settings.php:801
+#: admin/settings.php:755 admin/settings.php:797 admin/settings.php:807
 msgid "Default"
 msgstr "デフォルト"
 
-#: admin/settings.php:569
+#: admin/settings.php:574
 msgid "Width: "
 msgstr "幅: "
 
-#: admin/settings.php:568
+#: admin/settings.php:573
 msgid "Height: "
 msgstr "高さ: "
 
-#: admin/settings.php:567
+#: admin/settings.php:572
 msgid "Image Size:"
 msgstr "画像サイズ: "
 
-#: admin/settings.php:557
+#: admin/settings.php:562
 msgid "Columns per row:"
 msgstr "1行あたりのコラム数: "
 
-#: admin/settings.php:545
+#: admin/settings.php:550
 msgid "Column Display:"
 msgstr "コラムの表示: "
 
-#: admin/settings.php:491
+#: admin/settings.php:627
+msgid "Hide the footer (copyright area)."
+msgstr "フッター (著作権表示エリア) を非表示にする。"
+
+#: admin/settings.php:624
+msgid "Hide the footer widgets. "
+msgstr "フッターウィジェットを非表示にする。"
+
+#: admin/settings.php:618
+msgid "Hide the header area (logo/title and/or image/empty area)."
+msgstr "ヘッダーエリア (ロゴ・タイトルまたは画像・空のエリア) を非表示にする。"
+
+#: admin/settings.php:577
+msgid "Read more text:"
+msgstr "全文表示のテキスト:"
+
+#: admin/settings.php:496
 msgid "Latest posts will be loaded into the columns."
 msgstr "コラムに最新の投稿を読み込みます。"
 
-#: admin/settings.php:495
+#: admin/settings.php:500
 msgid "Random posts will be loaded into the columns."
 msgstr "コラムに投稿をランダムに読み込みます。"
 
-#: admin/settings.php:499
+#: admin/settings.php:504
 msgid "Latest posts from the category you choose will be loaded in the columns."
 msgstr "選択したカテゴリ内の最新の投稿をコラムに読み込みます。"
 
-#: admin/settings.php:503
+#: admin/settings.php:508
 msgid "Random posts from the category you choose will be loaded into the columns."
 msgstr "選択したカテゴリ内の投稿をコラムにランダムに読み込みます。"
 
-#: admin/settings.php:507
+#: admin/settings.php:512
 msgid "Only sticky posts will be loaded into the columns."
 msgstr "固定表示に設定された投稿だけをコラムに読み込みます。"
 
-#: admin/settings.php:477
+#: admin/settings.php:482
 msgid "Widget Columns"
 msgstr "ウィジェットコラム"
 
-#: admin/settings.php:486
+#: admin/settings.php:491
 msgid "Only the columns with a defined image will become active and visible on the presentation page.<br>When using columns from posts, make sure the selected posts have featured images.<br>Read the FAQs for more info."
 msgstr "画像の定義されたコラムだけがプレゼンテーションページ上に表示されます。<br>コラムに投稿を表示する場合、投稿にアイキャッチ画像をつけてください。<br>詳しくはFAQをご覧ください。"
 
-#: admin/settings.php:459 content/content-link.php:33
+#: admin/settings.php:464 content/content-link.php:33
 msgid "Link"
 msgstr "リンク"
 
-#: admin/settings.php:456
+#: admin/settings.php:461
 msgid "Text"
 msgstr "テキスト"
 
-#: admin/settings.php:453
+#: admin/settings.php:458
 msgid "Title"
 msgstr "タイトル"
 
-#: admin/settings.php:447
+#: admin/settings.php:452
 msgid "Slide"
 msgstr "スライド"
 
-#: admin/settings.php:449 content/content-image.php:26
+#: admin/settings.php:454 content/content-image.php:26
 msgid "Image"
 msgstr "画像"
 
-#: admin/settings.php:436 admin/settings.php:537
+#: admin/settings.php:441 admin/settings.php:542
 msgid "Number of posts to show:"
-msgstr "表示する投稿数:"
+msgstr "表示する投稿の数:"
 
-#: admin/settings.php:415 admin/settings.php:511
-msgid "List the post IDs you want to display (separated by a comma): "
-msgstr "表示したい投稿のIDを入力してください（カンマ区切り）："
-
-#: admin/settings.php:381 admin/settings.php:477
+#: admin/settings.php:381 admin/settings.php:482
 msgid "Specific Posts"
 msgstr "特定の投稿"
 
-#: admin/settings.php:422 admin/settings.php:523
+#: admin/settings.php:427 admin/settings.php:528
 msgid "Select Category"
 msgstr "カテゴリーを選択"
 
-#: admin/settings.php:381 admin/settings.php:477
+#: admin/settings.php:381 admin/settings.php:482
 msgid "Disabled"
 msgstr "無効"
 
-#: admin/settings.php:420 admin/settings.php:521
+#: admin/settings.php:425 admin/settings.php:526
 msgid "<br> Choose the category: "
 msgstr "<br> カテゴリーを選択: "
 
-#: admin/settings.php:411
+#: admin/settings.php:416
 msgid "Only sticky posts will be loaded into the slider."
 msgstr "固定表示に設定された投稿だけをスライダーに読み込みます。"
 
-#: admin/settings.php:407
+#: admin/settings.php:412
 msgid "Random posts from the category you choose will be loaded into the slider."
 msgstr "選択したカテゴリーの中から投稿をランダムにスライダーに読み込みます。"
 
-#: admin/settings.php:403
+#: admin/settings.php:408
 msgid "Latest posts from the category you choose will be loaded in the slider."
 msgstr "選択したカテゴリーの中から最新の投稿をスライダーに読み込みます。"
 
-#: admin/settings.php:399
+#: admin/settings.php:404
 msgid "Random posts will be loaded into the slider."
 msgstr "投稿をランダムにスライダーに読み込みます。"
 
-#: admin/settings.php:395
+#: admin/settings.php:400
 msgid "Latest posts will be loaded into the slider."
 msgstr "最新の投稿をスライダーに読み込みます。"
 
-#: admin/settings.php:390
-msgid "Only the slides with a defined image will become active and visible in the live slider.<br>When using slides from posts, make sure the selected posts have featured images.<br>Read the FAQs for more info."
-msgstr "スライダーに表示するスライドに定義した画像のみを表示します。<br>投稿をスライドとして使用する場合、選択した投稿にアイキャッチ画像が設定されている必要があります。<br>詳しい説明はFAQをご覧ください。"
-
-#: admin/settings.php:381 admin/settings.php:477
-msgid "Random Posts from Category"
-msgstr "カテゴリー内のランダム投稿"
-
-#: admin/settings.php:381 admin/settings.php:477
+#: admin/settings.php:381 admin/settings.php:482
 msgid "Latest Posts from Category"
 msgstr "カテゴリー内の最新の投稿"
+
+#: admin/settings.php:420 admin/settings.php:516
+msgid "List the post IDs you want to display (separated by a comma): "
+msgstr "表示したい投稿のIDを入力してください(カンマ区切り):"
+
+#: admin/settings.php:390
+msgid "Only the slides with a defined image will become active and visible in the live slider.<br>When using slides from posts, make sure the selected posts have featured images.<br>Read the FAQs for more info."
+msgstr "スライダに表示するスライドに定義した画像のみを表示します。<br>投稿をスライドとして使用する場合、選択した投稿にアイキャッチ画像が設定されている必要があります。<br>詳しい説明はFAQをご覧ください。"
+
+#: admin/settings.php:381 admin/settings.php:482
+msgid "Random Posts from Category"
+msgstr "カテゴリー内のランダムな投稿"
 
 #: admin/settings.php:381
 msgid "Custom Slides"
 msgstr "カスタムスライド"
 
-#: admin/settings.php:381 admin/settings.php:477
+#: admin/settings.php:381 admin/settings.php:482
 msgid "Random Posts"
 msgstr "ランダムな記事"
 
@@ -1707,15 +1776,7 @@ msgstr "スライダの上マージンを追加します。デフォルトのマ
 msgid "The slider's border width. You can also edit its color from the Color Settings. Use a border width when your slider is smaller than the total site width."
 msgstr "スライダの枠線幅。カラー設定で色を変更することもできます。スライダがサイト幅より小さい場合に指定してください。"
 
-#: admin/settings.php:309 admin/settings.php:313
-msgid "px"
-msgstr "ピクセル"
-
-#: admin/settings.php:306
-msgid "The Left and Right arrows on your slider"
-msgstr "スライダの左右の矢印"
-
-#: admin/settings.php:381 admin/settings.php:477
+#: admin/settings.php:381 admin/settings.php:482
 msgid "Latest Posts"
 msgstr "最新の記事"
 
@@ -1726,6 +1787,14 @@ msgstr "スライダーの上マージン: "
 #: admin/settings.php:308
 msgid "Slider Border Width:"
 msgstr "スライダーの枠線幅: "
+
+#: admin/settings.php:309 admin/settings.php:313
+msgid "px"
+msgstr "px"
+
+#: admin/settings.php:306
+msgid "The Left and Right arrows on your slider"
+msgstr "スライダーの左右の矢印"
 
 #: admin/settings.php:298
 msgid "Always Visible"
@@ -1745,7 +1814,7 @@ msgstr "非表示"
 
 #: admin/settings.php:296
 msgid "Slider arrows:"
-msgstr "スライダの矢印: "
+msgstr "スライダーの矢印: "
 
 #: admin/settings.php:286
 msgid "Bullets"
@@ -1927,21 +1996,13 @@ msgstr "60%"
 msgid "left"
 msgstr "左"
 
-#: admin/settings.php:173 admin/settings.php:190 admin/settings.php:452
+#: admin/settings.php:173 admin/settings.php:190 admin/settings.php:457
 msgid "Select / Upload Image"
 msgstr "画像を選択 / アップロード"
-
-#: admin/settings.php:164
-msgid "Choose what to display inside your header area."
-msgstr "ヘッダエリア内に表示したいものを選択してください。"
 
 #: admin/settings.php:172
 msgid "Custom Logo upload. The logo will appear over the header image if you have used one."
 msgstr "カスタムロゴをアップロードします。ヘッダ画像を使用している場合、ログはヘッダ画像の上に表示されます。"
-
-#: admin/settings.php:162
-msgid "Clickable header image"
-msgstr "クリッカブルなヘッダ画像"
 
 #: admin/settings.php:162
 msgid "Custom Logo"
@@ -1954,6 +2015,14 @@ msgstr "上"
 #: admin/settings.php:162
 msgid "Empty"
 msgstr "空"
+
+#: admin/settings.php:164
+msgid "Choose what to display inside your header area."
+msgstr "ヘッダーエリア内に表示するものを選択してください。"
+
+#: admin/settings.php:162
+msgid "Clickable header image"
+msgstr "クリッカブルなヘッダー画像"
 
 #: admin/settings.php:162
 msgid "Site Title and Description"
@@ -1975,23 +2044,23 @@ msgstr "チェックするとを完全にレスポンシブ対応にします。
 msgid "Keep header image aspect ratio."
 msgstr "ヘッダー画像の縦横比を維持"
 
-#: admin/settings.php:151
-msgid "Center the header image horizontally"
-msgstr "ヘッダー画像を水平方向に中央寄せ"
-
-#: admin/settings.php:150
-msgid "Define header image"
-msgstr "ヘッダー画像を設定"
-
 #: admin/settings.php:144
 msgid "Select the header's height. After saving the settings go and upload your new header image. The header's width will be "
 msgstr "ヘッダーの高さを選択してください。設定を保存したら、新しいヘッダー画像をアップロードしてください。ヘッダーの幅: "
 
+#: admin/settings.php:151
+msgid "Center the header image horizontally"
+msgstr "ヘッダー画像を水平方向に中央配置する"
+
+#: admin/settings.php:150
+msgid "Define header image"
+msgstr "ヘッダー画像を定義"
+
 #: admin/settings.php:108 admin/settings.php:123 admin/settings.php:215
-#: admin/settings.php:227 admin/settings.php:771 admin/settings.php:1015
-#: admin/settings.php:1030 admin/settings.php:1146 admin/settings.php:1162
-#: admin/settings.php:1349 admin/settings.php:1372 admin/settings.php:1391
-#: admin/settings.php:1440 admin/settings.php:1584 admin/settings.php:1614
+#: admin/settings.php:227 admin/settings.php:776 admin/settings.php:1021
+#: admin/settings.php:1036 admin/settings.php:1152 admin/settings.php:1168
+#: admin/settings.php:1355 admin/settings.php:1378 admin/settings.php:1397
+#: admin/settings.php:1446 admin/settings.php:1590 admin/settings.php:1620
 msgid "Disable"
 msgstr "無効化"
 
@@ -2060,11 +2129,11 @@ msgid "It's that easy: a mouse click away - the ability to export your Tempera s
 msgstr "マウスをクリックするだけ。それでTemperaの設定はコンピュータ上に保存されます。これで安心！"
 
 #: admin/settings.php:108 admin/settings.php:123 admin/settings.php:215
-#: admin/settings.php:227 admin/settings.php:771 admin/settings.php:818
-#: admin/settings.php:1015 admin/settings.php:1030 admin/settings.php:1146
-#: admin/settings.php:1162 admin/settings.php:1349 admin/settings.php:1372
-#: admin/settings.php:1391 admin/settings.php:1440 admin/settings.php:1584
-#: admin/settings.php:1614
+#: admin/settings.php:227 admin/settings.php:776 admin/settings.php:824
+#: admin/settings.php:1021 admin/settings.php:1036 admin/settings.php:1152
+#: admin/settings.php:1168 admin/settings.php:1355 admin/settings.php:1378
+#: admin/settings.php:1397 admin/settings.php:1446 admin/settings.php:1590
+#: admin/settings.php:1620
 msgid "Enable"
 msgstr "有効"
 
@@ -2124,10 +2193,6 @@ msgstr "リンクNo.3"
 msgid "Link nr. 4"
 msgstr "リンクNo.4"
 
-#: admin/main.php:221
-msgid "Featured Images as HEADER Images "
-msgstr "アイキャッチ画像をヘッダ画像に"
-
 #: admin/main.php:218
 msgid "Auto Select Images From Posts "
 msgstr "投稿からアイキャッチ画像を自動選択"
@@ -2168,7 +2233,7 @@ msgstr "雑誌レイアウト"
 msgid "Custom Footer Text"
 msgstr "カスタムフッターテキスト"
 
-#: admin/main.php:209 admin/settings.php:381 admin/settings.php:477
+#: admin/main.php:209 admin/settings.php:381 admin/settings.php:482
 msgid "Sticky Posts"
 msgstr "固定投稿"
 
@@ -2176,13 +2241,17 @@ msgstr "固定投稿"
 msgid "Custom CSS"
 msgstr "カスタム CSS"
 
-#: admin/main.php:232
-msgid "Internet Explorer Compatibility Tag"
-msgstr "Internet Explorer 互換性タグ"
-
 #: admin/main.php:214
 msgid "HTML tags in Excerpts"
 msgstr "抜粋中の HTML タグ"
+
+#: admin/main.php:232
+msgid "Internet Explorer Compatibility Tag"
+msgstr "Internet Explorer互換性タグ"
+
+#: admin/main.php:221
+msgid "Featured Images as HEADER Images "
+msgstr "アイキャッチ画像をヘッダー画像にする"
 
 #: admin/main.php:208 includes/theme-functions.php:188
 msgid "Home Page"
@@ -2276,7 +2345,7 @@ msgstr "リンク"
 msgid "Footer Widgets"
 msgstr "フッターウィジェット"
 
-#: admin/main.php:174 admin/main.php:186 admin/settings.php:1527
+#: admin/main.php:174 admin/main.php:186 admin/settings.php:1533
 msgid "Top Bar"
 msgstr "トップバー"
 
@@ -2284,7 +2353,7 @@ msgstr "トップバー"
 msgid "Content"
 msgstr "内容"
 
-#: admin/main.php:173 admin/settings.php:1058
+#: admin/main.php:173 admin/settings.php:1064
 msgid "Main Menu"
 msgstr "メインメニュー"
 
@@ -2292,7 +2361,7 @@ msgstr "メインメニュー"
 msgid "Accents"
 msgstr "アクセント"
 
-#: admin/main.php:172 admin/settings.php:862
+#: admin/main.php:172 admin/settings.php:868
 msgid "Site Title"
 msgstr "サイトのタイトル"
 
@@ -2348,12 +2417,8 @@ msgstr "投稿タイトルのフォント"
 msgid "Widget Title Font"
 msgstr "ウィジェットタイトルのフォント"
 
-#: admin/main.php:149
-msgid "Header Widget Width"
-msgstr "ヘッダウィジェットの幅"
-
-#: admin/main.php:152 admin/settings.php:664 admin/settings.php:683
-#: admin/settings.php:701 admin/settings.php:719 admin/settings.php:740
+#: admin/main.php:152 admin/settings.php:669 admin/settings.php:688
+#: admin/settings.php:706 admin/settings.php:724 admin/settings.php:745
 msgid "General Font"
 msgstr "既定のフォント"
 
@@ -2380,6 +2445,10 @@ msgstr "ヘッダーコンテンツのスペース"
 #: admin/main.php:145
 msgid "Site Header"
 msgstr "サイトヘッダー"
+
+#: admin/main.php:149
+msgid "Header Widget Width"
+msgstr "ヘッダーウィジェットの幅"
 
 #: admin/main.php:139 includes/theme-setup.php:352
 msgid "Presentation Page Columns"

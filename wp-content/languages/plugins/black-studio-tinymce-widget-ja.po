@@ -1,21 +1,113 @@
-# Translation of Stable (latest release) in Japanese
-# This file is distributed under the same license as the Stable (latest release) package.
+# Translation of Plugins - Black Studio TinyMCE Widget - Stable (latest release) in Japanese
+# This file is distributed under the same license as the Plugins - Black Studio TinyMCE Widget - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-05-19 07:18:26+0000\n"
+"PO-Revision-Date: 2017-02-18 06:07:11+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/2.1.0-alpha\n"
-"Project-Id-Version: Stable (latest release)\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: ja_JP\n"
+"Project-Id-Version: Plugins - Black Studio TinyMCE Widget - Stable (latest release)\n"
 
-#: black-studio-tinymce-widget.php:193 includes/class-admin-pointer.php:63
-#: includes/class-admin.php:72 includes/class-compatibility-plugins.php:62
-#: includes/class-compatibility-wordpress.php:65
-#: includes/class-compatibility.php:95 includes/class-text-filters.php:71
-msgid "Cheatin&#8217; uh?"
-msgstr "間違えましたか?"
+#. Author URI of the plugin/theme
+msgid "http://www.blackstudio.it"
+msgstr "http://www.blackstudio.it"
+
+#. Author of the plugin/theme
+msgid "Black Studio"
+msgstr "Black Studio"
+
+#. Description of the plugin/theme
+msgid "Adds a new \"Visual Editor\" widget type based on the native WordPress TinyMCE editor."
+msgstr "WordPress ネイティブの TinyMCE エディターをベースにした新しい「ビジュアルエディター」ウィジェットタイプを追加します。"
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/black-studio-tinymce-widget/"
+msgstr "https://wordpress.org/plugins/black-studio-tinymce-widget/"
+
+#: includes/class-widget.php:135
+msgid "Automatically add paragraphs"
+msgstr "自動的に段落を追加"
+
+#: includes/class-widget.php:128
+msgid "Title:"
+msgstr "タイトル: "
+
+#. translators: description of the widget, shown in available widgets
+#: includes/class-widget.php:29
+msgid "Arbitrary text or HTML with visual editor"
+msgstr "ビジュアルエディターを使った任意のテキストまたは HTML"
+
+#. translators: title of the widget
+#: includes/class-widget.php:27
+msgid "Visual Editor"
+msgstr "ビジュアルエディター"
+
+#: includes/class-compatibility-wordpress.php:335
+msgid "Visual"
+msgstr "ビジュアル"
+
+#: includes/class-compatibility-wordpress.php:334
+msgid "HTML"
+msgstr "HTML"
+
+#. translators: text used for the icon that shows the plugin links
+#: includes/class-admin.php:364
+msgid "About Black Studio TinyMCE Widget plugin"
+msgstr "Black Studio TinyMCE Widget プラグインについて"
+
+#. translators: text used for donation link
+#: includes/class-admin.php:344
+msgid "Donate"
+msgstr "寄付する"
+
+#. translators: text used for follow on twitter link
+#: includes/class-admin.php:342
+msgid "Follow"
+msgstr "フォロー:"
+
+#. translators: text used for reviews link
+#: includes/class-admin.php:340
+msgid "Rate"
+msgstr "率"
+
+#. translators: text used for support forum link
+#: includes/class-admin.php:338
+msgid "Support"
+msgstr "サポート"
+
+#. translators: text used for support faq link
+#: includes/class-admin.php:336
+msgid "FAQ"
+msgstr "FAQ"
+
+#. translators: text used for plugin home link
+#: includes/class-admin.php:334
+msgid "Home"
+msgstr "ホーム"
+
+#. translators: error message shown when a duplicated widget ID is detected
+#: includes/class-admin.php:246
+msgid "ERROR: Duplicate widget ID detected. To avoid content loss, please create a new widget with the same content and then delete this one."
+msgstr "エラー: 重複したウィジェット ID が検出されました。コンテンツの消失を防ぐには、同じコンテンツの新しいウィジェットを作成してこちらを削除してください。"
+
+#. translators: text for the dismissable admin pointer tooltip
+#: includes/class-admin-pointer.php:167
+msgid "The Visual Editor widget allows you to insert rich text and media objects in your sidebars"
+msgstr "ビジュアルエディターウィジェットを使えば、リッチテキストやメディアオブジェクトをサイドバーに挿入できます。"
+
+#. #-#-#-#-#  tmp-black-studio-tinymce-widget.pot (Black Studio TinyMCE Widget
+#. 2.3.2)  #-#-#-#-#
+#. translators: title for the dismissable admin pointer tooltip (same as plugin
+#. name)
+#. #-#-#-#-#  tmp-black-studio-tinymce-widget.pot (Black Studio TinyMCE Widget
+#. 2.3.2)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: includes/class-admin-pointer.php:165
+msgid "Black Studio TinyMCE Widget"
+msgstr "Black Studio TinyMCE Widget"
 
 #. translators: error message shown when multiple instance of the plugin are
 #. detected
@@ -23,100 +115,9 @@ msgstr "間違えましたか?"
 msgid "ERROR: Multiple instances of the Black Studio TinyMCE Widget plugin were detected. Please activate only one instance at a time."
 msgstr "エラー: Black Studio TinyMCE Widget の重複インスタンスが検出されました。一度に一つだけ有効化するようにしてください。"
 
-#. #-#-#-#-#  tmp-black-studio-tinymce-widget.pot (Black Studio TinyMCE Widget
-#. 2.2.9)  #-#-#-#-#
-#. translators: title for the dismissable admin pointer tooltip (same as plugin
-#. name)
-#. #-#-#-#-#  tmp-black-studio-tinymce-widget.pot (Black Studio TinyMCE Widget
-#. 2.2.9)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#: includes/class-admin-pointer.php:165
-msgid "Black Studio TinyMCE Widget"
-msgstr "Black Studio TinyMCE Widget"
-
-#. translators: text for the dismissable admin pointer tooltip
-#: includes/class-admin-pointer.php:167
-msgid "The Visual Editor widget allows you to insert rich text and media objects in your sidebars"
-msgstr "ビジュアルエディターウィジェットを使えば、リッチテキストやメディアオブジェクトをサイドバーに挿入できます。"
-
-#. translators: error message shown when a duplicated widget ID is detected
-#: includes/class-admin.php:246
-msgid "ERROR: Duplicate widget ID detected. To avoid content loss, please create a new widget with the same content and then delete this one."
-msgstr "エラー: 重複したウィジェット ID が検出されました。コンテンツの消失を防ぐには、同じコンテンツの新しいウィジェットを作成してこちらを削除してください。"
-
-#. translators: text used for plugin home link
-#: includes/class-admin.php:334
-msgid "Home"
-msgstr "ホーム"
-
-#. translators: text used for support faq link
-#: includes/class-admin.php:336
-msgid "FAQ"
-msgstr "FAQ"
-
-#. translators: text used for support forum link
-#: includes/class-admin.php:338
-msgid "Support"
-msgstr "サポート"
-
-#. translators: text used for reviews link
-#: includes/class-admin.php:340
-msgid "Rate"
-msgstr "率"
-
-#. translators: text used for follow on twitter link
-#: includes/class-admin.php:342
-msgid "Follow"
-msgstr "フォロー:"
-
-#. translators: text used for donation link
-#: includes/class-admin.php:344
-msgid "Donate"
-msgstr "寄付する"
-
-#. translators: text used for the icon that shows the plugin links
-#: includes/class-admin.php:364
-msgid "About Black Studio TinyMCE Widget plugin"
-msgstr "Black Studio TinyMCE Widget プラグインについて"
-
-#: includes/class-compatibility-wordpress.php:334
-msgid "HTML"
-msgstr "HTML"
-
-#: includes/class-compatibility-wordpress.php:335
-msgid "Visual"
-msgstr "ビジュアル"
-
-#. translators: title of the widget
-#: includes/class-widget.php:27
-msgid "Visual Editor"
-msgstr "ビジュアルエディター"
-
-#. translators: description of the widget, shown in available widgets
-#: includes/class-widget.php:29
-msgid "Arbitrary text or HTML with visual editor"
-msgstr "ビジュアルエディターを使った任意のテキストまたは HTML"
-
-#: includes/class-widget.php:126
-msgid "Title:"
-msgstr "タイトル："
-
-#: includes/class-widget.php:133
-msgid "Automatically add paragraphs"
-msgstr "自動的に段落を追加"
-
-#. Plugin URI of the plugin/theme
-msgid "https://wordpress.org/plugins/black-studio-tinymce-widget/"
-msgstr "https://wordpress.org/plugins/black-studio-tinymce-widget/"
-
-#. Description of the plugin/theme
-msgid "Adds a new \"Visual Editor\" widget type based on the native WordPress TinyMCE editor."
-msgstr "WordPress ネイティブの TinyMCE エディターをベースにした新しい「ビジュアルエディター」ウィジェットタイプを追加します。"
-
-#. Author of the plugin/theme
-msgid "Black Studio"
-msgstr "Black Studio"
-
-#. Author URI of the plugin/theme
-msgid "http://www.blackstudio.it"
-msgstr "http://www.blackstudio.it"
+#: black-studio-tinymce-widget.php:193 includes/class-admin-pointer.php:63
+#: includes/class-admin.php:72 includes/class-compatibility-plugins.php:65
+#: includes/class-compatibility-wordpress.php:65
+#: includes/class-compatibility.php:95 includes/class-text-filters.php:71
+msgid "Cheatin&#8217; uh?"
+msgstr "間違えましたか?"

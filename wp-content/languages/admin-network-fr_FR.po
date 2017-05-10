@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the WordPress - 4.7.x - Administration - Network Admin package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-11-27 15:53:27+0000\n"
+"PO-Revision-Date: 2017-05-05 12:10:24+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: fr\n"
 "Project-Id-Version: WordPress - 4.7.x - Administration - Network Admin\n"
 
@@ -976,7 +976,7 @@ msgstr "Veuillez suivre les étapes de configuration. Pour créer un nouveau ré
 
 #: wp-admin/includes/network.php:373
 msgid "An existing WordPress network was detected."
-msgstr "Un réseau WordPress pré-existant à été détecté. "
+msgstr "Un réseau WordPress pré-existant a été détecté."
 
 #: wp-admin/includes/network.php:368
 msgid "The original configuration steps are shown here for reference."
@@ -1032,7 +1032,7 @@ msgstr "Survoler chaque site avec la souris révèle sept options (trois pour le
 
 #: wp-admin/network/sites.php:36
 msgid "The site ID is used internally, and is not shown on the front end of the site or to users/viewers."
-msgstr "L&rsquo;identifiant du site est utilisé en interne et n’est pas affiché dans la partie publique du site, ni aux utilisateurs/visiteurs."
+msgstr "L’ID du site est utilisé en interne et n’est pas affiché dans la partie publique du site, ni aux utilisateurs/visiteurs."
 
 #: wp-admin/network/sites.php:33
 msgid "Deactivate, Archive, and Spam which lead to confirmation screens. These actions can be reversed later."

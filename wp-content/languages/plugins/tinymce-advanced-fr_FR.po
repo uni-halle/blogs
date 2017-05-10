@@ -2,14 +2,18 @@
 # This file is distributed under the same license as the Plugins - TinyMCE Advanced - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-10-25 12:01:53+0000\n"
+"PO-Revision-Date: 2017-04-23 08:22:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: fr\n"
 "Project-Id-Version: Plugins - TinyMCE Advanced - Stable (latest release)\n"
+
+#: tadv_admin.php:333
+msgid "Replace the size setting available for fonts with: %s."
+msgstr "Remplacez le réglage de taille disponible pour les polices avec : %s."
 
 #: tadv_admin.php:380
 msgid "To use this option, add editor-style.css to your theme or a child theme. Enabling this option will also load that stylesheet in the editor."
@@ -27,7 +31,7 @@ msgstr "Votre thème ne supporte pas editor-style.css"
 msgid "ERROR:"
 msgstr "ERREUR&nbsp;:"
 
-#: tinymce-advanced.php:844
+#: tinymce-advanced.php:856
 msgid "Settings"
 msgstr "Paramètres de configuration"
 
@@ -103,11 +107,11 @@ msgstr "http://www.laptoptips.ca/projects/tinymce-advanced/"
 msgid "TinyMCE Advanced"
 msgstr "TinyMCE Advanced"
 
-#: tinymce-advanced.php:289
+#: tinymce-advanced.php:291
 msgid "Please upgrade your WordPress installation or download an <a href=\"%s\">older version of the plugin</a>."
 msgstr "Veuillez mettre à jour votre installation de WordPress ou télécharger une <a href=\"%s\">ancienne version de l’extension</a>."
 
-#: tinymce-advanced.php:282
+#: tinymce-advanced.php:284
 msgid "TinyMCE Advanced requires WordPress version %1$s or newer. It appears that you are running %2$s. This can make the editor unstable."
 msgstr "TinyMCE Advanced nécessite la version WordPress %1$s ou plus récente. Il semble que vous utilisez la version %2$s. Cela peut rendre l'éditeur instable."
 
@@ -146,10 +150,6 @@ msgstr "Fonctionne uniquement dans Firefox et Safari. Ces navigateurs supportent
 #: tadv_admin.php:398
 msgid "Enable pasting of image source"
 msgstr "Activer coller de la source de l'image"
-
-#: tadv_admin.php:333
-msgid "Replace the size setting available for fonts with: 8px 10px 12px 14px 16px 20px 24px 28px 32px 36px 48px 60px."
-msgstr "Remplace le réglage de la taille disponible pour les polices avec : 8px 10px 12px 14px 16px 20px 24px 28px 32px 36px 48px 60px."
 
 #: tadv_admin.php:393
 msgid "Line breaks in the Text editor would still affect the output, in particular do not use empty lines, line breaks inside HTML tags or multiple &lt;br /&gt; tags."
