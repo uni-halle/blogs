@@ -78,7 +78,7 @@
         );
         
         //load the UI javascript support
-        $.getScript(aamLocal.url.jsbase + '/aam-ui.js');
+        $.getScript(aamLocal.url.jsbase + '/aam-interface.js');
 
         //initialize help context
         $('.aam-help-menu').each(function() {
@@ -226,6 +226,10 @@
             $(el).append('<span>' + $(el).data('readmore') + '</span>');
         }));
     };
+    
+    AAM.prototype.isUI = function() {
+        return (typeof aamLocal.ui !== 'undefined');
+    };
 
     /**
      * Initialize UI
@@ -233,6 +237,7 @@
     $(document).ready(function () {
         aam = new AAM();
         aam.initialize();
+        $.aam = aam;
     });
 
 })(jQuery);

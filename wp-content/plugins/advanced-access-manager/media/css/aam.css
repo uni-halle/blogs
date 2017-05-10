@@ -16,19 +16,9 @@
     font-weight: normal;
     font-style: normal;
 }
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-/*
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: 'fontello';
-    src: url('../font/fontello.svg?99287648#fontello') format('svg');
-  }
-}
-*/
 
 [class^="icon-"]:before, [class*=" icon-"]:before {
-    font-family: "fontello";
+    font-family: "fontello" !important;
     font-style: normal;
     font-weight: normal;
     speak: none;
@@ -62,74 +52,48 @@
     /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-
-.icon-asterisk:before { content: '\e800'; } /* 'î ' */
-.icon-spin4:before { content: '\e801'; } /* 'î ' */
-.icon-user-secret:before { content: '\e802'; } /* 'î ' */
-.icon-folder:before { content: '\e803'; } /* 'î ' */
-.icon-stop:before { content: '\e804'; } /* 'î ' */
-.icon-left-dir:before { content: '\e805'; } /* 'î ' */
-.icon-dollar:before { content: '\e806'; } /* 'î ' */
-.icon-mail-alt:before { content: '\e807'; } /* 'î ' */
-.icon-download-cloud:before { content: '\e808'; } /* 'î ' */
-.icon-eye-off:before { content: '\e809'; } /* 'î ' */
-.icon-attention-circled:before { content: '\e80a'; } /* 'î ' */
-.icon-cog-alt:before { content: '\e80b'; } /* 'î ' */
-.icon-link-1:before { content: '\e80c'; } /* 'î ' */
-.icon-user-secret-1:before { content: '\e80d'; } /* 'î ' */
-.icon-unlink:before { content: '\e80e'; } /* 'î ' */
-.icon-sort-down:before { content: '\e80f'; } /* 'î ' */
-.icon-pencil:before { content: '\e810'; } /* 'î ' */
-.icon-arrows-cw:before { content: '\e811'; } /* 'î ' */
-.icon-sort-up:before { content: '\e812'; } /* 'î ' */
-.icon-sort:before { content: '\e813'; } /* 'î ' */
-.icon-lock-open-alt:before { content: '\e814'; } /* 'î ' */
-.icon-plus:before { content: '\e815'; } /* 'î ' */
-.icon-filter:before { content: '\e816'; } /* 'î ' */
-.icon-check:before { content: '\e817'; } /* 'î ' */
-.icon-help-circled:before { content: '\e818'; } /* 'î ' */
-.icon-file-code:before { content: '\e819'; } /* 'î ' */
-.icon-users:before { content: '\e81a'; } /* 'î ' */
-.icon-box-1:before { content: '\e81b'; } /* 'î ' */
-.icon-folder-1:before { content: '\e81c'; } /* 'î ' */
-.icon-eye-1:before { content: '\e81d'; } /* 'î ' */
-.icon-upload-cloud:before { content: '\e81e'; } /* 'î ' */
-.icon-user-plus:before { content: '\e81f'; } /* 'î ' */
-.icon-gauge:before { content: '\e820'; } /* 'î  ' */
-.icon-box:before { content: '\e821'; } /* 'î ¡' */
-.icon-plus-circled:before { content: '\e822'; } /* 'î ¢' */
-.icon-link:before { content: '\e823'; } /* 'î £' */
-.icon-wrench:before { content: '\e824'; } /* 'î ¤' */
-.icon-eye:before { content: '\e825'; } /* 'î ¥' */
-.icon-medkit:before { content: '\e826'; } /* 'î ¦' */
-.icon-basket:before { content: '\e827'; } /* 'î §' */
-.icon-check-empty:before { content: '\e828'; } /* 'î ¨' */
-.icon-doc-text-inv:before { content: '\e829'; } /* 'î ©' */
-.icon-home:before { content: '\e82a'; } /* 'î ª' */
-.icon-angle-double-right:before { content: '\e82b'; } /* 'î «' */
-.icon-facebook:before { content: '\e82c'; } /* 'î ¬' */
-.icon-star:before { content: '\e82d'; } /* 'î ­' */
-.icon-list:before { content: '\e82e'; } /* 'î ®' */
-.icon-up-dir:before { content: '\e82f'; } /* 'î ¯' */
-.icon-dot-circled:before { content: '\e830'; } /* 'î °' */
-.icon-code:before { content: '\e831'; } /* 'î ±' */
-.icon-bug:before { content: '\e832'; } /* 'î ²' */
-.icon-heartbeat:before { content: '\e833'; } /* 'î ³' */
-.icon-connectdevelop:before { content: '\e834'; } /* 'î ´' */
-.icon-trash-empty:before { content: '\e835'; } /* 'î µ' */
-.icon-download-cloud-1:before { content: '\e836'; } /* 'î ¶' */
-.icon-github:before { content: '\e837'; } /* 'î ·' */
-.icon-cog:before { content: '\e838'; } /* 'î ¸' */
-.icon-lock:before { content: '\e839'; } /* 'î ¹' */
-.icon-twitter:before { content: '\e83a'; } /* 'î º' */
-.icon-certificate:before { content: '\e83b'; } /* 'î »' */
-.icon-user:before { content: '\e83c'; } /* 'î ¼' */
-.icon-level-down:before { content: '\e83d'; } /* 'î ½' */
-.icon-exchange:before { content: '\f0ec'; } /* 'ï¬' */
-.icon-circle:before { content: '\f111'; } /* 'ï' */
-.icon-thumbs-up-alt:before { content: '\f164'; } /* 'ï¤' */
-.icon-circle-thin:before { content: '\f1db'; } /* 'ï' */
-.icon-clone:before { content: '\f24d'; } /* 'ï' */
+.icon-asterisk:before { content: '\e801' !important; } /* 'î ' */
+.icon-spin4:before { content: '\e802' !important; } /* 'î ' */
+.icon-user-secret:before { content: '\e803' !important; } /* 'î ' */
+.icon-folder:before { content: '\e804' !important; } /* 'î ' */
+.icon-stop:before { content: '\e805' !important; } /* 'î ' */
+.icon-left-dir:before { content: '\e806' !important; } /* 'î ' */
+.icon-mail-alt:before { content: '\e808' !important; } /* 'î ' */
+.icon-download-cloud:before { content: '\e809' !important; } /* 'î ' */
+.icon-eye-off:before { content: '\e80a' !important; } /* 'î ' */
+.icon-attention-circled:before { content: '\e80b' !important; } /* 'î ' */
+.icon-sort-down:before { content: '\e810' !important; } /* 'î ' */
+.icon-pencil:before { content: '\e811' !important; } /* 'î ' */
+.icon-arrows-cw:before { content: '\e812' !important; } /* 'î ' */
+.icon-sort-up:before { content: '\e813' !important; } /* 'î ' */
+.icon-sort:before { content: '\e814' !important; } /* 'î ' */
+.icon-lock-open-alt:before { content: '\e815' !important; } /* 'î ' */
+.icon-plus:before { content: '\e816' !important; } /* 'î ' */
+.icon-filter:before { content: '\e817' !important; } /* 'î ' */
+.icon-check:before { content: '\e818' !important; } /* 'î ' */
+.icon-help-circled:before { content: '\e819' !important; } /* 'î ' */
+.icon-users:before { content: '\e81b' !important; } /* 'î ' */
+.icon-user-plus:before { content: '\e820' !important; } /* 'î  ' */
+.icon-box:before { content: '\e822' !important; } /* 'î ¢' */
+.icon-plus-circled:before { content: '\e823' !important; } /* 'î £' */
+.icon-link:before { content: '\e824' !important; } /* 'î ¤' */
+.icon-eye:before { content: '\e826' !important; } /* 'î ¦' */
+.icon-check-empty:before { content: '\e829' !important; } /* 'î ©' */
+.icon-doc-text-inv:before { content: '\e82a' !important; } /* 'î ª' */
+.icon-home:before { content: '\e82b' !important; } /* 'î «' */
+.icon-angle-double-right:before { content: '\e82c' !important; } /* 'î ¬' */
+.icon-star:before { content: '\e82e' !important; } /* 'î ®' */
+.icon-trash-empty:before { content: '\e836' !important; } /* 'î ¶' */
+.icon-cog:before { content: '\e839' !important; } /* 'î ¹' */
+.icon-lock:before { content: '\e83a' !important; } /* 'î º' */
+.icon-twitter:before { content: '\e83b' !important; } /* 'î »' */
+.icon-user:before { content: '\e83d' !important; } /* 'î ½' */
+.icon-level-down:before { content: '\e83e' !important; } /* 'î ¾' */
+.icon-chat-empty:before { content: '\f0e6'; } /* 'ï¦' */
+.icon-exchange:before { content: '\f0ec' !important; } /* 'ï¬' */
+.icon-circle:before { content: '\f111' !important; } /* 'ï' */
+.icon-circle-thin:before { content: '\f1db' !important; } /* 'ï' */
+.icon-clone:before { content: '\f24d' !important; } /* 'ï' */
 
 .animate-spin {
     -moz-animation: spin 2s infinite linear;
@@ -398,6 +362,21 @@ a.btn:focus, a.btn:active {
     margin-bottom: 0;
 }
 
+.aam-shortcode {
+    margin-top: 20px;
+    border: 1px solid #EEEEEE;
+    padding: 10px;
+}
+
+.aam-shortcode p {
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.list-group-item.highlight {
+    background-color: #F7D3A1;
+}
+
 /** DATATABLES **/
 .dataTables_info {
     float: left;
@@ -460,12 +439,12 @@ input[type=checkbox] + label:before {
     font-family: 'fontello';
     display: inline-block;
     font-size: 1.2em;
-    content: "\E828"; /* unchecked icon */
+    content: "\E829"; /* unchecked icon */
 }
 
 input[type=checkbox]:checked + label:before { 
     font-size: 1.2em;
-    content: "\E817"; /* checked icon */
+    content: "\E818"; /* checked icon */
 } 
 
 input[type=checkbox].aam-checkbox-danger:checked + label:before {
@@ -530,6 +509,14 @@ input[type=radio]:checked + label:before {
     letter-spacing: 1.5px;
 }
 
+.aam-highligh-row { 
+    border:3px solid #337ab7;
+}
+
+.aam-highligh-row > td {
+    padding: 15px !important;
+}
+
 .aam-lock {
     position: absolute;
     top: 0;
@@ -575,7 +562,7 @@ input[type=radio]:checked + label:before {
 }
 
 .aam-overwrite {
-    padding: 5px 5px 5px 15px;
+    padding: 5px 0px 5px 15px;
     background-color: #f0ad4e;
     color: #FFFFFF;
     font-weight: 700;
@@ -602,8 +589,9 @@ input[type=radio]:checked + label:before {
 }
 
 .aam-overwrite .btn {
-    margin-top: -3px;
+    margin-top: -5px;
     border: 0;
+    padding: 5px 10px;
 }
 
 .row.aam-bordered {
@@ -616,6 +604,21 @@ input[type=radio]:checked + label:before {
     font-size: 1.6em;
     line-height: 30px;
     cursor: pointer;
+}
+
+.aam-access-form {
+    position: relative;
+}
+
+.aam-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(200,200,200, 0.3);
+    display: none;
+    z-index: 10;
 }
 
 .visitor-message span {
@@ -698,6 +701,7 @@ input[type=radio]:checked + label:before {
 
 .aam-feature textarea {
     width: 100%;
+    font-size: 1.2em;
 }
 
 .aam-postbox-inside {
@@ -719,6 +723,10 @@ input[type=radio]:checked + label:before {
     display: block;
     font-size: 0.8em;
     font-style: normal;
+}
+
+.aam-row-subtitle b {
+    color: #777777;
 }
 
 .text-larger { 
@@ -747,6 +755,22 @@ input[type=radio]:checked + label:before {
     vertical-align: middle;
     white-space: nowrap;
     background-color: #666666;
+    color: #FFFFFF;
+    width: 100%;
+}
+
+.aam-extension-inactive {
+    border: 1px solid transparent;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.42857;
+    margin-bottom: 0;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    background-color: #D9534F;
     color: #FFFFFF;
     width: 100%;
 }
@@ -877,13 +901,26 @@ input[type=radio]:checked + label:before {
 }
 
 .aam-social {
-    font-size: 1.4em;
+    font-size: 3em;
     text-align: center;
+    width: 100%;
+    display: table;
 }
 
 .aam-social a {
     text-decoration: none;
     margin: 0 10px;
+    display: table-cell;
+}
+
+.aam-social span {
+    font-size: 0.25em;
+    color: #333333;
+    display: block;
+    letter-spacing: 1px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 .aam-error-list {
@@ -965,35 +1002,10 @@ input[type=radio]:checked + label:before {
     color: #777777;
 }
 
-/*! ========================================================================
- * Bootstrap Toggle: bootstrap-toggle.css v2.2.0
- * http://www.bootstraptoggle.com
- * ========================================================================
- * Copyright 2014 Min Hur, The New York Times Company
- * Licensed under MIT
- * ======================================================================== */
-.checkbox label .toggle,.checkbox-inline .toggle{margin-left:-20px;margin-right:5px}
-.toggle{position:relative;overflow:hidden}
-.toggle input[type=checkbox]{display:none}
-.toggle-group{position:absolute;width:200%;top:0;bottom:0;left:0;transition:left .35s;-webkit-transition:left .35s;-moz-user-select:none;-webkit-user-select:none}
-.toggle.off .toggle-group{left:-100%}
-.toggle-on{position:absolute;top:0;bottom:0;left:0;right:50%;margin:0;border:0;border-radius:0}
-.toggle-off{position:absolute;top:0;bottom:0;left:50%;right:0;margin:0;border:0;border-radius:0}
-.toggle-handle{position:relative;margin:0 auto;padding-top:0;padding-bottom:0;height:100%;width:0;border-width:0 1px}
-.toggle.btn{min-width:59px;min-height:34px}
-.toggle-on.btn{padding-right:24px}
-.toggle-off.btn{padding-left:24px}
-.toggle.btn-lg{min-width:79px;min-height:45px}
-.toggle-on.btn-lg{padding-right:31px}
-.toggle-off.btn-lg{padding-left:31px}
-.toggle-handle.btn-lg{width:40px}
-.toggle.btn-sm{min-width:50px;min-height:30px}
-.toggle-on.btn-sm{padding-right:20px}
-.toggle-off.btn-sm{padding-left:20px}
-.toggle.btn-xs{min-width:35px;min-height:22px}
-.toggle-on.btn-xs{padding-right:12px}
-.toggle-off.btn-xs{padding-left:12px}
-
+.aam-promo {
+    font-size: 1.1em;
+    letter-spacing: 1px;
+}
 
 /* COVER KNOWN CSS ISSUES CASED BY OTHER PLUGINS OR THEMES */
 
@@ -1034,4 +1046,9 @@ input[type=radio]:checked + label:before {
 
 .text-danger {
     color: #a94442 !important;
+}
+
+/* Purge Varnish */
+ul.tab li a:focus, .active {
+    background-color: transparent;
 }

@@ -47,14 +47,14 @@ class AAM_Core_Cache {
      * 
      * @access public
      */
-    public static function get($option) {
-        return (isset(self::$cache[$option]) ? self::$cache[$option] : null);
+    public static function get($option, $default = null) {
+        return (isset(self::$cache[$option]) ? self::$cache[$option] : $default);
     }
     
     /**
      * Set cache option
      * 
-     * @param AAM_Core_Subject $subject
+     * @param string           $subject
      * @param string           $option
      * @param mixed            $data
      * 
@@ -63,12 +63,19 @@ class AAM_Core_Cache {
      * @access public
      */
     public static function set($subject, $option, $data) {
-        if ($subject instanceof AAM_Core_Subject_User) { //cache only for actual user
-            if (!isset(self::$cache[$option]) || self::$cache[$option] != $data) {
-                self::$cache[$option] = $data;
-                self::$updated = true;
-            }
+        if (!isset(self::$cache[$option]) || (self::$cache[$option] != $data)) {
+            self::$cache[$option] = $data;
+            self::$updated        = true;
         }
+    }
+    
+    /**
+     * 
+     * @param type $option
+     * @return type
+     */
+    public static function has($option) {
+        return (isset(self::$cache[$option]));
     }
     
     /**
@@ -79,15 +86,23 @@ class AAM_Core_Cache {
      * @access public
      * @global WPDB $wpdb
      */
-    public static function clear() {
+    public static function clear($user = null) {
         global $wpdb;
         
-        //clear visitor cache
-        $oquery = "DELETE FROM {$wpdb->options} WHERE `option_name` = %s";
-        $wpdb->query($wpdb->prepare($oquery, 'aam_visitor_cache' ));
+        if (is_null($user)) {
+            //clear visitor cache
+            $oquery = "DELETE FROM {$wpdb->options} WHERE `option_name` = %s";
+            $wpdb->query($wpdb->prepare($oquery, 'aam_visitor_cache' ));
+
+            $mquery = "DELETE FROM {$wpdb->usermeta} WHERE `meta_key` = %s";
+            $wpdb->query($wpdb->prepare($mquery, $wpdb->prefix . 'aam_cache' ));
+        } else {
+            $query  = "DELETE FROM {$wpdb->usermeta} WHERE (`user_id` = %d) AND ";
+            $query .= "`meta_key` = %s";
+            $wpdb->query($wpdb->prepare($query, $user, $wpdb->prefix . 'aam_cache'));
+        }
         
-        $mquery = "DELETE FROM {$wpdb->usermeta} WHERE `meta_key` = %s";
-        $wpdb->query($wpdb->prepare($mquery, $wpdb->prefix . 'aam_cache' ));
+        self::$cache = false;
         
         //clear updated flag
         self::$updated = false;

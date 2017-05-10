@@ -27,8 +27,9 @@ class AAM_Backend_View_Helper {
      */
     public static function preparePhrase($phrase) {
         //prepare search patterns
-        $num = func_num_args();
-        $search = array_fill(0, ($num - 1) * 2, null);
+        $num    = func_num_args();
+        $search = ($num > 1 ? array_fill(0, ($num - 1) * 2, null) : array());
+        
         array_walk($search, 'AAM_Backend_View_Helper::prepareWalk');
 
         $replace = array();

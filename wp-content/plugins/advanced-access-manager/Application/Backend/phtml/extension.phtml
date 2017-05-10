@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <p class="aam-info">
-                    <?php echo AAM_Backend_View_Helper::preparePhrase('By purchasing any extension below you obtain a license that does not expire but is limited to one website. However, the license can be used for unlimited number of test or development environments where URL is either [localhost] or starts with [dev.], [staging.], [test.] or [demo.] Contact us immediately if you have troubles installing license on your website. [Money back guaranteed] within 30 day from the time of purchase.', 'i', 'i', 'i', 'i', 'i', 'b'); ?><br/>
+                    <?php echo sprintf(AAM_Backend_View_Helper::preparePhrase('By purchasing any extension below you obtain the license to use it [for one life site] unless you purchased %sdevelopment package%s. The license can be used for unlimited number of test or development sites where URL is either [localhost] or starts with [dev.], [staging.], [test.] or [demo.] [before it is activated on the life site]. Contact us immediately if you have troubles installing extension. [Money back guaranteed] within 30 day from the time of purchase.', 'b', 'i', 'i', 'i', 'i', 'i', 'b', 'b'), '<a href="https://aamplugin.com/development-package" target="_blank">', '</a>'); ?><br/>
                 </p>
             </div>
         </div>
@@ -20,16 +20,13 @@
             </div>
         </div>
         
-        <?php $commercial = $this->getProductList('commercial'); ?>
-        <?php $free       = $this->getProductList('GNU'); ?>
-        <?php $plugins    = $this->getProductList('plugin'); ?>
+        <?php $commercial = $this->getList('commercial'); ?>
+        <?php $free       = $this->getList('GNU'); ?>
 
         <div>
             <ul class="nav nav-tabs" role="tablist">
                 <?php if(count($commercial)) { ?><li role="presentation" class="active"><a href="#premium-extensions" aria-controls="premium-extensions" role="tab" data-toggle="tab"><i class='icon-basket'></i> <?php echo __('Premium', AAM_KEY); ?></a></li><?php } ?>
                 <?php if(count($free)) { ?><li role="presentation" <?php echo (!count($commercial) ? 'class="active"' : ''); ?>><a href="#free-extensions" aria-controls="free-extensions" role="tab" data-toggle="tab"><i class='icon-download-cloud'></i> <?php echo __('Free', AAM_KEY); ?></a></li><?php } ?>
-                <?php if(count($plugins)) { ?><li role="presentation" <?php echo (!count($commercial) && !count($free) ? 'class="active"' : ''); ?>><a href="#useful-plugins" aria-controls="help-plugins" role="tab" data-toggle="tab"><i class='icon-thumbs-up-alt'></i> <?php echo __('Useful Plugins', AAM_KEY); ?></a></li><?php } ?>
-                <li style="float:right;"><a href="#" id="update-check" data-toggle="tooltip" title="<?php echo __('Check For Updates', AAM_KEY); ?>"><small><i class="icon-arrows-cw"></i> <?php echo __('Check', AAM_KEY); ?></small></a></li>
             </ul>
 
             <!-- Tab panes -->
@@ -37,25 +34,32 @@
                 <div role="tabpanel" class="tab-pane<?php echo (count($commercial) ? ' active' : ''); ?>" id="premium-extensions">
                     <table class="table table-striped table-bordered">
                         <tbody>
-                            <?php foreach ($commercial as $product) { ?>
-                                <tr>
-                                    <td>
-                                        <span class='aam-setting-title'><?php echo $product['title'], (!empty($product['new']) ? ' <span class="badge">NEW</span> ' : ''), (!empty($product['version']) ? ' <small class="text-muted">v' . $product['version'] . '</small>' : ''), ' - ' . ($product['price']); ?></span>
-                                        <?php if (!empty($product['license'])) { ?><small class="aam-license-key"><b>License Key:</b> <?php echo $product['license']; ?></small><?php } ?>
-                                        <p class="aam-extension-description">
-                                            <?php echo $product['description']; ?>
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <?php if ($product['status'] == AAM_Core_Repository::STATUS_INSTALLED) { ?>
-                                            <span class="aam-extension-installed"><i class="icon-check"></i> <?php echo __('Installed', AAM_KEY); ?></span>
-                                        <?php } elseif ($product['status'] == AAM_Core_Repository::STATUS_UPDATE) { ?>
-                                            <a href="#" class="btn btn-sm btn-warning btn-block aam-update-extension" data-product="<?php echo $product['id']; ?>"><i class="icon-arrows-cw"></i> <?php echo __('Update', AAM_KEY); ?></a>
-                                        <?php } else { ?>
-                                            <a href="<?php echo $product['storeURL']; ?>" target="_blank" class="btn btn-sm btn-success btn-block"><i class="icon-basket"></i> <?php echo __('Purchase', AAM_KEY); ?></a>
-                                        <?php } ?>
-                                    </td>
-                                </tr>
+                            <?php foreach ($commercial as $i => $product) { ?>
+                                <?php if ($i == 2) { ?>
+                                    <tr class="aam-highligh-row">
+                                        <td colspan="2">Do not know which extension to choose? <b>Please do not hesitate to <a href="mailto:support@aamplugin.com">send us a message to support@aamplugin.com</a></b>. We speak English, Russian, Ukrainian and Polish. Any other language is acceptable, however we might have some lost in translation.</td>
+                                    </tr>
+                                <?php } ?>
+                                    <tr>
+                                        <td>
+                                            <span class='aam-setting-title'><?php echo $product['title'], (!empty($product['new']) ? ' <span class="badge">NEW</span> ' : ''), (!empty($product['version']) ? ' <small class="text-muted">v' . $product['version'] . '</small>' : ''); ?></span>
+                                            <?php if (!empty($product['license'])) { ?><small class="aam-license-key"><b>License:</b> <?php echo $product['license'] . (!empty($product['expire']) ? " (expires {$product['expire']})" : ''); ?></small><?php } ?>
+                                            <p class="aam-extension-description">
+                                                <?php echo $product['description']; ?>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <?php if ($product['status'] == AAM_Extension_Repository::STATUS_INSTALLED) { ?>
+                                                <span class="aam-extension-installed"><i class="icon-check"></i> <?php echo __('Installed', AAM_KEY); ?></span>
+                                            <?php } elseif ($product['status'] == AAM_Extension_Repository::STATUS_UPDATE) { ?>
+                                                <a href="#" class="btn btn-sm btn-warning btn-block aam-update-extension" data-product="<?php echo $product['id']; ?>"><i class="icon-arrows-cw"></i> <?php echo __('Update', AAM_KEY); ?></a>
+                                            <?php } elseif ($product['status'] == AAM_Extension_Repository::STATUS_INACTIVE) { ?>
+                                                <span class="aam-extension-inactive"><i class="icon-stop"></i> <?php echo __('Inactive', AAM_KEY); ?></span>
+                                            <?php } else { ?>
+                                                <a href="<?php echo $product['storeURL']; ?>" target="_blank" class="btn btn-sm btn-primary btn-block"><i class="icon-link"></i> <?php echo __('Read More', AAM_KEY); ?></a>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
                             <?php } ?>
                         </tbody>
                     </table>
@@ -72,35 +76,12 @@
                                         </p>
                                     </td>
                                     <td>
-                                        <?php if ($product['status'] == AAM_Core_Repository::STATUS_INSTALLED) { ?>
+                                        <?php if ($product['status'] == AAM_Extension_Repository::STATUS_INSTALLED) { ?>
                                             <span class="aam-extension-installed"><i class="icon-check"></i> <?php echo __('Installed', AAM_KEY); ?></span>
-                                        <?php } elseif ($product['status'] == AAM_Core_Repository::STATUS_UPDATE) { ?>
+                                        <?php } elseif ($product['status'] == AAM_Extension_Repository::STATUS_UPDATE) { ?>
                                             <a href="#" class="btn btn-sm btn-warning btn-block aam-update-extension" data-product="<?php echo $product['id']; ?>"><i class="icon-arrows-cw"></i> <?php echo __('Update', AAM_KEY); ?></a>
                                         <?php } else { ?>
                                             <a href="#" class="btn btn-sm btn-success btn-block aam-download-extension" data-license="<?php echo $product['license']; ?>"><i class="icon-download-cloud"></i> <?php echo __('Download', AAM_KEY); ?></a>
-                                        <?php } ?>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="useful-plugins">
-                    <table class="table table-striped table-bordered">
-                        <tbody>
-                            <?php foreach ($plugins as $product) { ?>
-                                <tr>
-                                    <td>
-                                        <span class='aam-setting-title'><?php echo $product['title'], ' - ' . ('<span class="text-success">' . __('Free', AAM_KEY) . '</span>'); ?></span>
-                                        <p class="aam-extension-description">
-                                            <?php echo $product['description']; ?>
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <?php if ($product['status']['status'] == 'install') { ?>
-                                            <a href="<?php echo $product['status']['url']; ?>" class="btn btn-sm btn-success btn-block"><i class="icon-plus"></i> <?php echo __('Install', AAM_KEY); ?></a>
-                                        <?php } else { ?>
-                                            <span class="aam-extension-installed"><i class="icon-check"></i> <?php echo __('Installed', AAM_KEY); ?></span>
                                         <?php } ?>
                                     </td>
                                 </tr>
@@ -149,7 +130,7 @@
                         <p>
                             <?php echo __('Insert license key that you recieved after the payment (find the email example below). It might take up to 2 hours to process the payment. Please remember that license key is limited only to one life domain.', AAM_KEY); ?>
                             <br /> <br />
-                            <img src="https://vasyltech.com/media/img/email-confirmation.jpg" class="img-responsive" />
+                            <img src="https://aamplugin.com/media/img/email-confirmation.jpg" class="img-responsive" />
                         </p>
                     </div>
                     <div class="modal-footer">

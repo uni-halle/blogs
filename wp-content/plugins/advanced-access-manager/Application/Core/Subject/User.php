@@ -24,10 +24,16 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
      * AAM Capability Key
      *
      * It is very important to have all user capability changes be stored in
-     * seperate options from the wp_capabilities usermeta cause if AAM is not
+     * separate options from the wp_capabilities usermeta cause if AAM is not
      * active as a plugin, it reverts back to the default WordPress settings
      */
     const AAM_CAPKEY = 'aam_capability';
+    
+    /**
+     *
+     * @var type 
+     */
+    protected $parent = null;
     
     /**
      * Block User
@@ -66,14 +72,7 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
      * @access protected
      */
     protected function retrieveSubject() {
-        global $current_user;
-        
-        $user = $current_user;
-        if (is_a($user, 'WP_User') && ($user->ID == $this->getId())) {
-            $subject = $user;
-        } else {
-            $subject = new WP_User($this->getId());
-        }
+        $subject = new WP_User($this->getId());
 
         //retrieve aam capabilities if are not retrieved yet
         $caps = get_user_option(self::AAM_CAPKEY, $this->getId());
@@ -83,9 +82,14 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
             
             //reset the user capabilities
             $subject->allcaps = $allcaps;
-            $subject->caps = $caps;
+            $subject->caps    = $caps;
+            
+            if (wp_get_current_user()->ID == $subject->ID) {
+                wp_get_current_user()->allcaps = $allcaps;
+                wp_get_current_user()->caps    = $caps;
+            }
         }
-
+        
         return $subject;
     }
 
@@ -123,17 +127,7 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
      * @access public
      */
     public function addCapability($capability) {
-        //check if user is capable to have this capability
-        $map = call_user_func_array(
-                'map_meta_cap', array($capability, $this->getSubject()->ID)
-        );
-        if (!in_array('do_not_allow', $map)) {
-            $response = $this->updateCapability($capability, true);
-        } else {
-            $response = false;
-        }
-        
-        return $response;
+        return $this->updateCapability($capability, true);
     }
 
     /**
@@ -166,6 +160,14 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
         
         //save and return the result of operation
         return update_user_option($this->getId(), self::AAM_CAPKEY, $caps);
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function resetCapabilities() {
+        return delete_user_option($this->getId(), self::AAM_CAPKEY);
     }
 
     /**
@@ -221,19 +223,21 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
      * @inheritdoc
      */
     public function getParent() {
-        //try to get this option from the User's Role
-        $roles  = $this->getSubject()->roles;
-        //first user role is counted only. AAM does not support multi-roles
-        $parent = array_shift($roles);
+        if (is_null($this->parent)) {
+            //try to get this option from the User's Role
+            $roles  = $this->getSubject()->roles;
+            //first user role is counted only. AAM does not support multi-roles
+            $parent = array_shift($roles);
 
-        //in case of multisite & current user does not belong to the site
-        if ($parent) {
-            $role = new AAM_Core_Subject_Role($parent);
-        } else {
-            $role = null;
+            //in case of multisite & current user does not belong to the site
+            if ($parent) {
+                $this->parent = new AAM_Core_Subject_Role($parent);
+            } else {
+                $this->parent = null;
+            }
         }
 
-        return $role;
+        return $this->parent;
     }
 
     /**

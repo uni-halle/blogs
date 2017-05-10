@@ -112,7 +112,7 @@ class AAM_Core_Subject_Role extends AAM_Core_Subject {
      * @access public
      */
     public function addCapability($capability) {
-        $this->getSubject()->add_cap($capability, 1);
+        $this->getSubject()->add_cap($capability, true);
         
         return true;
     }
@@ -181,7 +181,7 @@ class AAM_Core_Subject_Role extends AAM_Core_Subject {
     public function getParent() {
         return apply_filters(
                 'aam-parent-role-filter', 
-                new AAM_Core_Subject_Default, 
+                AAM_Core_Subject_Default::getInstance(), 
                 $this
         );
     }

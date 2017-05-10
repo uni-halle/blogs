@@ -38,7 +38,7 @@ abstract class AAM_Core_Subject {
     private $_subject;
 
     /**
-     * List of Objects to be access controled for current subject
+     * List of Objects to be access controlled for current subject
      *
      * All access control objects like Admin Menu, Metaboxes, Posts etc
      *
@@ -78,7 +78,7 @@ abstract class AAM_Core_Subject {
         $subject = $this->getSubject();
         
         //make sure that method is callable
-        if ($subject instanceof AAM_Core_Subject && method_exists($subject, $name)) {
+        if (method_exists($subject, $name)) {
             $response = call_user_func_array(array($subject, $name), $args);
         } else {
             $response = null;
@@ -170,34 +170,34 @@ abstract class AAM_Core_Subject {
     /**
      * Get Individual Object
      *
-     * @param string $objectType
+     * @param string $type
      * @param mixed  $id
      *
      * @return AAM_Core_Object
      *
      * @access public
      */
-    public function getObject($objectType, $id = 'none') {
+    public function getObject($type, $id = 'none', $param = null) {
         $object = null;
         
-        $nid = (is_scalar($id) ? $id : 'none'); //prevent from any surprises
+        //performance optimization
+        $id = (is_scalar($id) ? $id : 'none'); //prevent from any surprises
         
         //check if there is an object with specified ID
-        if (!isset($this->_objects[$objectType][$nid])) {
-            $classname = 'AAM_Core_Object_' . ucfirst($objectType);
+        if (!isset($this->_objects[$type][$id])) {
+            $classname = 'AAM_Core_Object_' . ucfirst($type);
+            
             if (class_exists($classname)) {
-                $object = new $classname($this, $nid);
-            } else {
-                $object = apply_filters(
-                        'aam-object-filter', null, $objectType, $nid, $this
-                );
+                $object = new $classname($this, (is_null($param) ? $id : $param));
             }
             
-            if ($object instanceof AAM_Core_Object) {
-                $this->_objects[$objectType][$nid] = $object;
+            $object = apply_filters('aam-object-filter', $object, $type, $id, $this);
+            
+            if (is_a($object, 'AAM_Core_Object')) {
+                $this->_objects[$type][$id] = $object;
             }
         } else {
-            $object = $this->_objects[$objectType][$nid];
+            $object = $this->_objects[$type][$id];
         }
 
         return $object;
@@ -273,9 +273,9 @@ abstract class AAM_Core_Subject {
      * 
      * @access public
      */
-    public function inheritFromParent($object, $id = ''){
+    public function inheritFromParent($object, $id = '', $param = null){
         if ($subject = $this->getParent()){
-            $option = $subject->getObject($object, $id)->getOption();
+            $option = $subject->getObject($object, $id, $param)->getOption();
         } else {
             $option = null;
         }
@@ -284,7 +284,7 @@ abstract class AAM_Core_Subject {
     }
     
     /**
-     * Retrive parent subject
+     * Retrieve parent subject
      * 
      * If there is no parent subject, return null
      * 

@@ -23,7 +23,7 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
      * @access private
      */
     private $_post;
-
+    
     /**
      * Constructor
      *
@@ -38,12 +38,12 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
         parent::__construct($subject);
 
         //make sure that we are dealing with WP_Post object
-        if ($post instanceof WP_Post) {
+        if (is_object($post)) {
             $this->setPost($post);
         } elseif (intval($post)) {
             $this->setPost(get_post($post));
         }
-
+        
         if ($this->getPost()) {
             $this->read();
         }
@@ -71,8 +71,9 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
      */
     public function read() {
         $subject = $this->getSubject();
+        $post    = $this->getPost();
         $opname  = $this->getOptionName();
-        $chname  = $opname . '|' . $this->getPost()->ID;
+        $chname  = $opname . '|' . $post->ID;
         
         //read cache first
         $option = AAM_Core_Cache::get($chname);
@@ -82,7 +83,7 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
         } else {
             //Cache is empty. Get post access for current subject (user or role)
             if (empty($option)) { //no cache for this element
-                $option = get_post_meta($this->getPost()->ID, $opname, true);
+                $option = get_post_meta($post->ID, $opname, true);
                 $this->setOverwritten(!empty($option));
             }
             
@@ -94,16 +95,16 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
             
             //No settings for a post. Try to inherit from the parent
             if (empty($option)) {
-                $option = $subject->inheritFromParent('post', $this->getPost()->ID);
+                $option = $subject->inheritFromParent('post', $post->ID, $post);
             }
         }
         
         $this->setOption($option);
-
+        
         //if result is empty, simply cache the false to speed-up
         AAM_Core_Cache::set($subject, $chname, (empty($option) ? false : $option));
     }
-
+    
     /**
      * Save options
      * 
@@ -116,9 +117,15 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
         
         $option[$property] = $checked;
         
-        return update_post_meta(
+        $result = update_post_meta(
                 $this->getPost()->ID, $this->getOptionName(), $option
         );
+        
+        if ($result) {
+            $this->setOption($option);
+        }
+        
+        return $result;
     }
     
     /**
@@ -135,20 +142,16 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
     }
 
     /**
-     * Set Post. Cover all unexpectd wierd issues with WP Core
+     * Set Post
      *
-     * @param WP_Post $post
+     * @param WP_Post|stdClass $post
      *
      * @return void
      *
      * @access public
      */
     public function setPost($post) {
-        if ($post instanceof WP_Post) {
-            $this->_post = $post;
-        } else {
-            $this->_post = (object) array('ID' => 0);
-        }
+        $this->_post = $post;
     }
 
     /**
@@ -169,7 +172,7 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
     }
 
     /**
-     * Check if action is resricted
+     * Check if option is set
      * 
      * @param string $area
      * @param string $action
@@ -184,6 +187,44 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
         return (isset($option[$action]) && $option[$action]);
     }
 
+    /**
+     * Get option
+     * 
+     * @param string $area
+     * @param string $action
+     * 
+     * @return boolean
+     * 
+     * @access public
+     */
+    public function get($action) {
+        $option = $this->getOption();
+
+        return (isset($option[$action]) ? $option[$action] : null);
+    }
+    
+    /**
+     * Set option
+     * 
+     * Set property without storing to the database for cased like "expire".
+     * 
+     * @param string $property
+     * @param mixed $value
+     * 
+     * @return boolean
+     * 
+     * @access public
+     */
+    public function set($property, $value) {
+        $option = $this->getOption();
+        
+        $option[$property] = $value;
+        
+        $this->setOption($option);
+        
+        return true;
+    }
+    
     /**
      * Get Post
      *

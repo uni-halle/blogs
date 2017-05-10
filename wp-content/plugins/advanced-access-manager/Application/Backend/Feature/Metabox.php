@@ -231,7 +231,13 @@ class AAM_Backend_Feature_Metabox extends AAM_Backend_Feature_Abstract {
      * @access public
      */
     public static function register() {
-        $cap = AAM_Core_Config::get(self::getAccessOption(), 'administrator');
+        if (AAM_Core_API::capabilityExists('aam_manage_metaboxes')) {
+            $cap = 'aam_manage_metaboxes';
+        } else {
+            $cap = AAM_Core_Config::get(
+                    self::getAccessOption(), AAM_Backend_View::getAAMCapability()
+            );
+        }
         
         AAM_Backend_Feature::registerFeature((object) array(
             'uid'        => 'metabox',

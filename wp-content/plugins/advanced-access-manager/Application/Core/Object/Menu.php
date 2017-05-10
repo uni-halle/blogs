@@ -65,6 +65,19 @@ class AAM_Core_Object_Menu extends AAM_Core_Object {
             }
         }
     }
+    
+    /**
+     * 
+     * @param array $menu
+     * @return array
+     */
+    protected function normalizeItem($menu) {
+        if (strpos($menu, 'customize.php') === 0) {
+            $menu = 'customize.php';
+        }
+        
+        return $menu;
+    }
 
     /**
      * Filter submenu
@@ -81,7 +94,7 @@ class AAM_Core_Object_Menu extends AAM_Core_Object {
         global $submenu;
 
         foreach ($submenu[$parent] as $id => $item) {
-            if ($this->has($item[2])) {
+            if ($this->has($this->normalizeItem($item[2]))) {
                 unset($submenu[$parent][$id]);
             }
         }

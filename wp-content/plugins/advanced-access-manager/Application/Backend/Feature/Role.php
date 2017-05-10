@@ -16,21 +16,6 @@
 class AAM_Backend_Feature_Role {
     
     /**
-     * Constructor
-     * 
-     * @return void
-     * 
-     * @access public
-     * @throws Exception
-     */
-    public function __construct() {
-        $cap = AAM_Core_Config::get('page.capability', 'administrator');
-        if (!AAM::getUser()->hasCapability($cap)) {
-            Throw new Exception(__('Access Denied', AAM_KEY));
-        }
-    }
-
-    /**
      * Get role list
      * 
      * Prepare and return the list of roles for the table view
@@ -40,33 +25,66 @@ class AAM_Backend_Feature_Role {
      * @access public
      */
     public function getTable() {
-        //retrieve list of users
-        $count = count_users();
-        $stats = $count['avail_roles'];
+        if (AAM_Backend_View::userCan('aam_list_roles')) {
+            //retrieve list of users
+            $count = count_users();
+            $stats = $count['avail_roles'];
 
-        $filtered = $this->fetchRoleList();
+            $filtered = $this->fetchRoleList();
 
-        $response = array(
-            'recordsTotal'    => count(get_editable_roles()),
-            'recordsFiltered' => count($filtered),
-            'draw'            => AAM_Core_Request::request('draw'),
-            'data'            => array(),
-        );
-        
-        foreach ($filtered as $id => $data) {
-            $uc    = (isset($stats[$id]) ? $stats[$id] : 0);
-            $allow = current_user_can('delete_users');
-            
-            $response['data'][] = array(
-                $id,
-                $uc,
-                translate_user_role($data['name']),
-                'manage,edit,clone' . ($uc || !$allow ? '' : ',delete'),
-                AAM_Core_API::maxLevel($data['capabilities'])
+            $response = array(
+                'recordsTotal'    => count(get_editable_roles()),
+                'recordsFiltered' => count($filtered),
+                'draw'            => AAM_Core_Request::request('draw'),
+                'data'            => array(),
+            );
+
+            foreach ($filtered as $id => $data) {
+                $uc = (isset($stats[$id]) ? $stats[$id] : 0);
+
+                $response['data'][] = array(
+                    $id,
+                    $uc,
+                    translate_user_role($data['name']),
+                    apply_filters(
+                            'aam-role-row-actions-filter', 
+                            implode(',', $this->prepareRowActions($uc)),
+                            $data
+                    ),
+                    AAM_Core_API::maxLevel($data['capabilities'])
+                );
+            }
+        } else {
+            $response = array(
+                'recordsTotal'    => 0,
+                'recordsFiltered' => 0,
+                'draw'            => AAM_Core_Request::request('draw'),
+                'data'            => array(),
             );
         }
-
+        
         return json_encode(apply_filters('aam-get-role-list-filter', $response));
+    }
+    
+    /**
+     * 
+     * @param type $count
+     * @return string
+     */
+    protected function prepareRowActions($count) {
+        $actions = array('manage');
+        
+        if (AAM_Backend_View::userCan('aam_edit_roles')) {
+            $actions[] = 'edit';
+        }
+        if (AAM_Backend_View::userCan('aam_create_roles')) {
+            $actions[] = 'clone';
+        }
+        if (AAM_Backend_View::userCan('aam_delete_roles') && !$count) {
+            $actions[] = 'delete';
+        }
+        
+        return $actions;
     }
     
     /**
@@ -75,7 +93,9 @@ class AAM_Backend_Feature_Role {
      * @return string
      */
     public function getList(){
-        return json_encode($this->fetchRoleList());
+        return json_encode(
+                apply_filters('aam-get-role-list-filter', $this->fetchRoleList())
+        );
     }
     
     /**
@@ -91,8 +111,8 @@ class AAM_Backend_Feature_Role {
         //filter by name
         $search  = trim(AAM_Core_Request::request('search.value'));
         $exclude = trim(AAM_Core_Request::request('exclude'));
-        
         $roles   = get_editable_roles();
+        
         foreach ($roles as $id => $role) {
             $match = preg_match('/^' . $search . '/i', $role['name']);
             if (($exclude != $id) && (!$search || $match)) {
@@ -111,29 +131,31 @@ class AAM_Backend_Feature_Role {
      * @access public
      */
     public function add() {
-        $name    = sanitize_text_field(AAM_Core_Request::post('name'));
-        $roles   = AAM_Core_API::getRoles();
-        $role_id = strtolower($name);
+        $response = array('status' => 'failure');
         
-        //if inherited role is set get capabilities from it
-        $parent = $roles->get_role(trim(AAM_Core_Request::post('inherit')));
-        $caps   = ($parent ? $parent->capabilities : array());
+        if (AAM_Backend_View::userCan('aam_create_roles')) {
+            $name    = sanitize_text_field(filter_input(INPUT_POST, 'name'));
+            $roles   = AAM_Core_API::getRoles();
+            $role_id = strtolower($name);
 
-        if ($role = $roles->add_role($role_id, $name, $caps)) {
-            $response = array(
-                'status' => 'success',
-                'role'   => array(
-                    'id'    => $role_id,
-                    'name'  => $name,
-                    'level' => AAM_Core_API::maxLevel($caps)
-                )
-            );
-            if (AAM_Core_Request::post('clone')) {
-                $this->cloneSettings($role, $parent);
+            //if inherited role is set get capabilities from it
+            $parent = $roles->get_role(trim(filter_input(INPUT_POST, 'inherit')));
+            $caps   = ($parent ? $parent->capabilities : array());
+
+            if ($role = $roles->add_role($role_id, $name, $caps)) {
+                $response = array(
+                    'status' => 'success',
+                    'role'   => array(
+                        'id'    => $role_id,
+                        'name'  => $name,
+                        'level' => AAM_Core_API::maxLevel($caps)
+                    )
+                );
+                if (AAM_Core_Request::post('clone')) {
+                    $this->cloneSettings($role, $parent);
+                }
+                do_action('aam-post-add-role-action', $role, $parent);
             }
-            do_action('aam-post-add-role-action', $role, $parent);
-        } else {
-            $response = array('status' => 'failure');
         }
 
         return json_encode($response);
@@ -180,12 +202,18 @@ class AAM_Backend_Feature_Role {
      * @access public
      */
     public function edit() {
-        $role    = AAM_Backend_View::getSubject();
-        $role->update(trim(AAM_Core_Request::post('name')));
+        if (AAM_Backend_View::userCan('aam_edit_roles')) {
+            $role    = AAM_Backend_View::getSubject();
+            $role->update(trim(filter_input(INPUT_POST, 'name')));
+
+            do_action('aam-post-update-role-action', $role);
+            
+            $response = array('status' => 'success');
+        } else {
+            $response = array('status' => 'failure');
+        }
         
-        do_action('aam-post-update-role-action', $role);
-        
-        return json_encode(array('status' => 'success'));
+        return json_encode($response);
     }
 
     /**
@@ -196,10 +224,12 @@ class AAM_Backend_Feature_Role {
      * @access public
      */
     public function delete() {
-        if (AAM_Backend_View::getSubject()->delete()) {
-            $status = 'success';
-        } else {
-            $status = 'failure';
+        $status = 'failure';
+        
+        if (AAM_Backend_View::userCan('aam_delete_roles')) {
+            if (AAM_Backend_View::getSubject()->delete()) {
+                $status = 'success';
+            }
         }
 
         return json_encode(array('status' => $status));

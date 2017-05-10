@@ -62,5 +62,13 @@ class AAM_Core_Subject_Visitor extends AAM_Core_Subject {
     public function getUID() {
         return self::UID;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getParent() {
+        return AAM_Core_Subject_Default::getInstance();
+    }
 
 }

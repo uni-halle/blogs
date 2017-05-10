@@ -45,6 +45,15 @@ class AAM_Backend_Feature_Capability extends AAM_Backend_Feature_Abstract {
             'unfiltered_html', 'unfiltered_upload', 'update_themes',
             'update_core', 'upload_files', 'delete_plugins', 'remove_users',
             'switch_themes', 'list_users', 'promote_users', 'create_users'
+        ),
+        'aam' => array(
+            'aam_manage_admin_menu', 'aam_manage_metaboxes', 'aam_manage_capabilities',
+            'aam_manage_posts', 'aam_manage_access_denied_redirect', 'aam_create_roles',
+            'aam_manage_login_redirect', 'aam_manage_logout_redirect', 'aam_manager',
+            'aam_manage_content_teaser', 'aam_manage_security', 'aam_manage_utilities',
+            'aam_manage_extensions', 'aam_view_contact', 'aam_manage_404_redirect',
+            'aam_manage_default', 'aam_manage_visitors', 'aam_list_roles',
+            'aam_edit_roles', 'aam_delete_roles', 'aam_toggle_users', 'aam_switch_users'
         )
     );
 
@@ -53,21 +62,7 @@ class AAM_Backend_Feature_Capability extends AAM_Backend_Feature_Abstract {
      * @return type
      */
     public function getTable() {
-        $response = array('data' => array());
-
-        $subject = AAM_Backend_View::getSubject();
-        if ($subject instanceof AAM_Core_Subject_Role) {
-            $response['data'] = $this->retrieveAllCaps();
-        } else {
-            foreach ($this->getCapabilityList($subject) as $cap) {
-                $response['data'][] = array(
-                    $cap,
-                    $this->getGroup($cap),
-                    $cap,
-                    $this->prepareActionList($cap)
-                );
-            }
-        }
+        $response = array('data' => $this->retrieveAllCaps());
 
         return json_encode($response);
     }
@@ -84,12 +79,9 @@ class AAM_Backend_Feature_Capability extends AAM_Backend_Feature_Abstract {
         $updated    = AAM_Core_Request::post('updated');
         $roles      = AAM_Core_API::getRoles();
         
-        //first make sure that similar capability does not exist already
-        $allcaps = AAM_Core_API::getAllCapabilities();
-        
-        if (!isset($allcaps[$updated])) {
+        if (AAM_Core_API::capabilityExists($updated) === false) {
             foreach($roles->role_objects as $role) {
-                //check if capability is present for current role! Please notice, we
+                //check if capability is present for current role! Note, we
                 //can not use the native WP_Role::has_cap function because it will
                 //return false if capability exists but not checked
                 if (isset($role->capabilities[$capability])) {
@@ -138,6 +130,18 @@ class AAM_Backend_Feature_Capability extends AAM_Backend_Feature_Abstract {
     }
     
     /**
+     * 
+     * @return type
+     */
+    public function reset() {
+        $subject = AAM_Backend_View::getSubject();
+        
+        return json_encode(array(
+            'status' => ($subject->resetCapabilities() ? 'success' : 'failure')
+        ));
+    }
+    
+    /**
      * @inheritdoc
      */
     public static function getAccessOption() {
@@ -149,29 +153,6 @@ class AAM_Backend_Feature_Capability extends AAM_Backend_Feature_Abstract {
      */
     public static function getTemplate() {
         return 'object/capability.phtml';
-    }
-    
-    /**
-     * 
-     * @param AAM_Core_Subject_User $subject
-     * @return type
-     */
-    protected function getCapabilityList(AAM_Core_Subject_User $subject) {
-        $list = array();
-        
-        //IMPORTANT! Cause it is possible that user is not assigned to any role
-        $roles = $subject->roles;
-        
-        if (is_array($roles)) {
-            foreach($roles as $slug) {
-                $role = AAM_Core_API::getRoles()->get_role($slug);
-                if ($role) {
-                    $list = array_keys($role->capabilities);
-                    break;
-                }
-            }
-        }
-        return $list;
     }
     
     /**
@@ -254,6 +235,7 @@ class AAM_Backend_Feature_Capability extends AAM_Backend_Feature_Abstract {
             __('System', AAM_KEY),
             __('Posts & Pages', AAM_KEY),
             __('Backend', AAM_KEY),
+            __('AAM Interface', AAM_KEY),
             __('Miscellaneous', AAM_KEY)
         ));
     }
@@ -271,6 +253,7 @@ class AAM_Backend_Feature_Capability extends AAM_Backend_Feature_Abstract {
         if ($capability) {
             //add the capability to administrator's role as default behavior
             AAM_Core_API::getRoles()->add_cap('administrator', $capability);
+            AAM_Backend_View::getSubject()->addCapability($capability);
             $response = array('status' => 'success');
         } else {
             $response = array('status' => 'failure');
@@ -295,6 +278,8 @@ class AAM_Backend_Feature_Capability extends AAM_Backend_Feature_Abstract {
             $response = __('Posts & Pages', AAM_KEY);
         } elseif (in_array($capability, $this->_groups['backend'])) {
             $response = __('Backend', AAM_KEY);
+        } elseif (in_array($capability, $this->_groups['aam'])) {
+            $response = __('AAM Interface', AAM_KEY);
         } else {
             $response = __('Miscellaneous', AAM_KEY);
         }
@@ -303,7 +288,20 @@ class AAM_Backend_Feature_Capability extends AAM_Backend_Feature_Abstract {
                 'aam-capability-group-filter', $response, $capability
         );
     }
-
+    
+    /**
+     * Check overwritten status
+     * 
+     * @return boolean
+     * 
+     * @access protected
+     */
+    protected function isOverwritten() {
+        $object = AAM_Backend_View::getSubject()->getObject('capability');
+        
+        return $object->isOverwritten();
+    }
+    
     /**
      * Register capability feature
      * 
@@ -312,7 +310,13 @@ class AAM_Backend_Feature_Capability extends AAM_Backend_Feature_Abstract {
      * @access public
      */
     public static function register() {
-        $cap = AAM_Core_Config::get(self::getAccessOption(), 'administrator');
+        if (AAM_Core_API::capabilityExists('aam_manage_capabilities')) {
+            $cap = 'aam_manage_capabilities';
+        } else {
+            $cap = AAM_Core_Config::get(
+                    self::getAccessOption(), AAM_Backend_View::getAAMCapability()
+            );
+        }
         
         AAM_Backend_Feature::registerFeature((object) array(
             'uid'        => 'capability',

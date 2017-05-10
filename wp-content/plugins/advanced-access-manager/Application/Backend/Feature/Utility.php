@@ -30,6 +30,17 @@ class AAM_Backend_Feature_Utility  extends AAM_Backend_Feature_Abstract {
     }
     
     /**
+     * 
+     * @return type
+     */
+    public function getUtilityOptionList() {
+        $filename = dirname(__FILE__) . '/../View/UtilityOptionList.php';
+        $options  = include $filename;
+        
+        return apply_filters('aam-utility-option-list-filter', $options);
+    }
+    
+    /**
      * Save AAM utility options
      * 
      * @return string
@@ -58,7 +69,8 @@ class AAM_Backend_Feature_Utility  extends AAM_Backend_Feature_Abstract {
         global $wpdb;
         
         //clear wp_options
-        $oquery = "DELETE FROM {$wpdb->options} WHERE `option_name` LIKE %s";
+        $oquery  = "DELETE FROM {$wpdb->options} WHERE (`option_name` LIKE %s) AND ";
+        $oquery .= "(`option_name` NOT IN ('aam-extensions', 'aam-uid'))";
         $wpdb->query($wpdb->prepare($oquery, 'aam%' ));
         
         //clear wp_postmeta
@@ -76,6 +88,16 @@ class AAM_Backend_Feature_Utility  extends AAM_Backend_Feature_Abstract {
     }
     
     /**
+     * 
+     * @return type
+     */
+    public function clearCache() {
+        AAM_Core_Cache::clear();
+        
+        return json_encode(array('status' => 'success'));
+    }
+    
+    /**
      * Register Contact/Hire feature
      * 
      * @return void
@@ -83,18 +105,27 @@ class AAM_Backend_Feature_Utility  extends AAM_Backend_Feature_Abstract {
      * @access public
      */
     public static function register() {
-        $cap = AAM_Core_Config::get(self::getAccessOption(), 'administrator');
-        
-        AAM_Backend_Feature::registerFeature((object) array(
-            'uid'        => 'utilities',
-            'position'   => 100,
-            'title'      => __('Utilities', AAM_KEY),
-            'capability' => $cap,
-            'subjects'   => array(
-                'AAM_Core_Subject_Role'
-            ),
-            'view'       => __CLASS__
-        ));
+        if (is_main_site()) {
+            if (AAM_Core_API::capabilityExists('aam_manage_utilities')) {
+                $cap = 'aam_manage_utilities';
+            } else {
+                $cap = AAM_Core_Config::get(
+                        self::getAccessOption(), AAM_Backend_View::getAAMCapability()
+                );
+            }
+
+            AAM_Backend_Feature::registerFeature((object) array(
+                'uid'        => 'utilities',
+                'position'   => 100,
+                'title'      => __('Utilities', AAM_KEY),
+                'capability' => $cap,
+                'subjects'   => array(
+                    'AAM_Core_Subject_Role',
+                    'AAM_Core_Subject_Visitor'
+                ),
+                'view'       => __CLASS__
+            ));
+        }
     }
 
 }

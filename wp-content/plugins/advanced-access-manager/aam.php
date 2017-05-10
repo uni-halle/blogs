@@ -2,10 +2,10 @@
 
 /**
   Plugin Name: Advanced Access Manager
-  Description: Manage website access for any user, role or visitors
-  Version: 3.9.5.1
+  Description: All you need to manage access to your WordPress website
+  Version: 4.7.2
   Author: Vasyl Martyniuk <vasyl@vasyltech.com>
-  Author URI: https://www.vasyltech.com
+  Author URI: https://vasyltech.com
 
   -------
   LICENSE: This file is subject to the terms and conditions defined in
@@ -47,13 +47,15 @@ class AAM {
      * @access protected
      */
     protected function __construct() {
+        $uid = get_current_user_id();
+        
         //initialize the user subject
-        if (get_current_user_id()) {
-            $this->setUser(new AAM_Core_Subject_User(get_current_user_id()));
+        if ($uid) {
+            $this->setUser(new AAM_Core_Subject_User($uid));
         } else {
             $this->setUser(new AAM_Core_Subject_Visitor(''));
         }
-
+        
         //load AAM core config
         AAM_Core_Config::bootstrap();
     }
@@ -118,7 +120,12 @@ class AAM {
             
             //load all installed extension
             //TODO - Remove in Aug 2017
-            AAM_Core_Repository::getInstance()->load();
+            AAM_Extension_Repository::getInstance()->load();
+            
+            //check if user is locked
+            if (get_current_user_id() && AAM::getUser()->user_status == 1) {
+                wp_logout();
+            }
 
             //bootstrap the correct interface
             if (is_admin()) {
@@ -144,10 +151,13 @@ class AAM {
      * @access public
      */
     public static function cron() {
-        //grab the server extension list
-        $response = AAM_Core_Server::check();
-        if (!empty($response)) {
-            AAM_Core_API::updateOption('aam-extension-repository', $response);
+        $extensions = AAM_Core_API::getOption('aam-extensions', null, 'site');
+        
+        if (!empty($extensions)) {
+            //grab the server extension list
+            AAM_Core_API::updateOption(
+                    'aam-check', AAM_Extension_Server::check(), 'site'
+            );
         }
     }
 
@@ -177,7 +187,7 @@ class AAM {
     }
 
     /**
-     * Uninstall hook
+     * De-install hook
      *
      * Remove all leftovers from AAM execution
      *
@@ -203,7 +213,10 @@ class AAM {
 
 if (defined('ABSPATH')) {
     //define few common constants
-    define('AAM_MEDIA', plugins_url('/media', __FILE__));
+    define(
+        'AAM_MEDIA', 
+        preg_replace('/^http[s]?:/', '', plugins_url('/media', __FILE__))
+    );
     define('AAM_KEY', 'advanced-access-manager');
     define('AAM_EXTENSION_BASE', WP_CONTENT_DIR . '/aam/extension');
     define('AAM_CODEPINCH_AFFILIATE_CODE', 'H2K31P8H');
@@ -221,7 +234,7 @@ if (defined('ABSPATH')) {
         wp_schedule_event(time(), 'daily', 'aam-cron');
     }
     add_action('aam-cron', 'AAM::cron');
-
+    
     //activation & deactivation hooks
     register_activation_hook(__FILE__, array('AAM', 'activate'));
     register_uninstall_hook(__FILE__, array('AAM', 'uninstall'));

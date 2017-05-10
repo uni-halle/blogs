@@ -15,12 +15,17 @@
  * @package AAM
  * @author Vasyl Martyniuk <vasyl@vasyltech.com>
  */
-final class AAM_Core_Server {
+final class AAM_Extension_Server {
 
     /**
      * Server endpoint
      */
-    const SERVER_URL = 'http://rest.vasyltech.com/v1';
+    const SERVER_URL = 'https://aamplugin.com/api/v1';
+    
+    /**
+     * Fallback endpoint
+     */
+    const FALLBACK_URL = 'http://rest.vasyltech.com/v1';
 
     /**
      * Fetch the extension list
@@ -32,20 +37,13 @@ final class AAM_Core_Server {
      * @access public
      */
     public static function check() {
-        $domain   = parse_url(site_url(), PHP_URL_HOST);
-        
         //prepare check params
-        $params = array('domain' => $domain, 'extensions' => array());
+        $params = array(
+            'domain'  => parse_url(site_url(), PHP_URL_HOST), 
+            'version' => AAM_Core_API::version()
+        );
         
-        //add list of all premium installed extensions
-        foreach(AAM_Core_Repository::getInstance()->getExtensionList() as $ext) {
-            if ($ext->status !== AAM_Core_Repository::STATUS_DOWNLOAD 
-                    && ($ext->price !== 'Free')) {
-                $params['extensions'][$ext->title] = (isset($ext->license) ? $ext->license : null);
-            }
-        }
-        
-        $response = self::send(self::SERVER_URL . '/check', $params);
+        $response = self::send('/check', $params);
         $result   = array();
         
         if (!is_wp_error($response)) {
@@ -68,11 +66,11 @@ final class AAM_Core_Server {
      * @access public
      */
     public static function download($license) {
-        $host = parse_url(site_url(), PHP_URL_HOST);
+        $domain = parse_url(site_url(), PHP_URL_HOST);
 
         $response = self::send(
-                self::SERVER_URL . '/download', 
-                array('license' => $license, 'domain' => $host)
+                '/download', 
+                array('license' => $license, 'domain' => $domain)
         );
         
         if (!is_wp_error($response)) {
@@ -98,12 +96,42 @@ final class AAM_Core_Server {
      * @access protected
      */
     protected static function send($request, $params) {
-        $response = AAM_Core_API::cURL($request, false, $params);
-
-        if (!is_wp_error($response)) {
-            $response = json_decode($response['body']);
+        //add AAM UID
+        $params['uid']   = AAM_Core_API::getOption('aam-uid', null, 'site');
+        $params['email'] = AAM_Core_API::getOption('admin_email');
+        
+        $response = self::parseResponse(
+                AAM_Core_API::cURL(self::SERVER_URL . $request, false, $params)
+        );
+        
+        if (empty($response) || is_wp_error($response)) {
+            $response = self::parseResponse(
+                AAM_Core_API::cURL(self::FALLBACK_URL . $request, false, $params)
+            );
         }
-
+        
+        return $response;
+    }
+    
+    /**
+     * 
+     * @param type $response
+     */
+    protected static function parseResponse($response) {
+        if (!is_wp_error($response)) {
+            if ($response['response']['code'] == 200) {
+                $response = json_decode($response['body']);
+                if (empty($params['uid']) && isset($response->uid)) {
+                    AAM_Core_API::updateOption('aam-uid', $response->uid, 'site');
+                }
+            } else {
+                $response = new WP_Error(
+                        $response['response']['code'], 
+                        $response['response']['message'] . ':' . $response['body']
+                );
+            }
+        }
+        
         return $response;
     }
 

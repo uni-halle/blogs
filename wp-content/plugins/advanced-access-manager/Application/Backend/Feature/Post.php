@@ -55,7 +55,7 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
                 null,
                 'type',
                 $type->labels->name,
-                'drilldown,manage'
+                apply_filters('aam-type-row-actions-filter', 'drilldown,manage', $type)
             );
         }
         
@@ -74,9 +74,10 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
         $s      = AAM_Core_Request::post('search.value');
         $length = AAM_Core_Request::post('length');
         $start  = AAM_Core_Request::post('start');
+        $all    = AAM_Core_Config::get('manage-hidden-post-types', false);
         
         foreach (get_post_types(array(), 'objects') as $type) {
-            if ($type->public 
+            if (($all || $type->public) 
                     && (empty($s) || stripos($type->labels->name, $s) !== false)) {
                 $filtered[] = $type;
             }
@@ -114,8 +115,8 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
                     $record->ID,
                     get_edit_post_link($record->ID, 'link'),
                     'post',
-                    $record->post_title,
-                    'manage,edit'
+                    (!empty($record->post_title) ? $record->post_title : 'Reference To: ' . $record->post_name),
+                    apply_filters('aam-post-row-actions-filter', 'manage,edit', $record)
                 );
             } else { //term
                 $response['data'][] = array(
@@ -123,7 +124,7 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
                     get_edit_term_link($record->term_id, $record->taxonomy),
                     'term',
                     $record->name,
-                    'manage,edit'
+                    apply_filters('aam-term-row-actions-filter', 'manage,edit', $record)
                 );
             }
         } 
@@ -137,68 +138,162 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
      * @return type
      */
     protected function prepareContentList($type) {
-        $list     = array();
-        $filtered = array();
-        
+        $list   = array();
         //filters
         $s      = AAM_Core_Request::post('search.value');
         $length = AAM_Core_Request::post('length');
         $start  = AAM_Core_Request::post('start');
         
+        //calculate how many term and/or posts we need to fetch
+        $paging = $this->getFetchPagination($type, $s, $start, $length);
+        
         //first retrieve all hierarchical terms that belong to Post Type
-        foreach (get_object_taxonomies($type, 'objects') as $tax) {
-            if (is_taxonomy_hierarchical($tax->name)) {
-                //get all terms that have no parent category
-                $list = array_merge($list, $this->retrieveTermList($tax->name));
-            }
+        if ($paging['terms']) {
+            $list = $this->retrieveTermList(
+                    $this->getTypeTaxonomies($type), $s, $paging['term_offset'], $paging['terms']
+            );
         }
         
         //retrieve all posts
-        $list = array_merge(
-            $list, 
-            get_posts(array(
-                'post_type'   => $type, 'category' => 0, 
-                'numberposts' => -1, 'post_status' => 'any'
-            ))
-        );
-        
-        foreach($list as $row) {
-            if (!empty($s)) {
-                if (isset($row->term_id) && stripos($row->name, $s) !== false) {
-                    $filtered[] = $row;
-                } elseif (isset($row->ID) && stripos($row->post_title, $s) !== false) {
-                    $filtered[] = $row;
-                }
-            } else {
-                $filtered[] = $row;
-            }
+        if ($paging['posts']) {
+            $list = array_merge(
+                $list, $this->retrievePostList($type, $s, $paging['post_offset'], $paging['posts'])
+            );
         }
         
         return (object) array(
-            'total'    => count($list),
-            'filtered' => count($filtered),
-            'records'  => array_slice($filtered, $start, $length)
+            'total'    => $paging['total'],
+            'filtered' => $paging['total'],
+            'records'  => $list
         );
+    }
+    
+    /**
+     * 
+     * @param type $type
+     * @return type
+     */
+    protected function getTypeTaxonomies($type) {
+        $list = array();
+        
+        foreach (get_object_taxonomies($type) as $name) {
+            if (is_taxonomy_hierarchical($name)) {
+                //get all terms that have no parent category
+                $list[] = $name;
+            }
+        }
+        
+        return $list;
+    }
+    
+    /**
+     * 
+     * @param type $type
+     * @param type $search
+     * @param type $offset
+     * @param type $limit
+     * @return type
+     */
+    protected function getFetchPagination($type, $search, $offset, $limit) {
+        $result = array('terms' => 0, 'posts' => 0, 'term_offset' => $offset);
+        
+        //get terms count
+        $taxonomy = $this->getTypeTaxonomies($type);
+        
+        if (!empty($taxonomy)) {
+            $terms = get_terms(array(
+                'fields'     => 'count', 
+                'search'     => $search, 
+                'hide_empty' => false, 
+                'taxonomy'   => $taxonomy
+            ));
+        } else {
+            $terms = 0;
+        }
+        
+        //get posts count
+        $posts = $this->getPostCount($type, $search);
+        
+        if ($offset < $terms) {
+            if ($terms - $limit >= $offset) {
+                $result['terms'] = $limit;
+            } else {
+                $result['terms'] = $terms - $offset;
+                $result['posts'] = $limit - $result['terms'];
+            }
+        } else {
+            $result['posts'] = $limit;
+        }
+        
+        $result['total']       = $terms + $posts;
+        $result['post_offset'] = ($offset ? $offset - $terms : 0);
+        
+        return $result;
+    }
+    
+    /**
+     * 
+     * @global type $wpdb
+     * @param type $type
+     * @param type $search
+     * @return type
+     */
+    protected function getPostCount($type, $search) {
+        global $wpdb;
+        
+        $query  = "SELECT COUNT( * ) AS total FROM {$wpdb->posts} ";
+        $query .= "WHERE (post_type = %s) AND (post_title LIKE %s)";
+        
+        $args   = array($type, "{$search}%");
+        
+        foreach (get_post_stati(array( 'exclude_from_search' => true)) as $status ) {
+            $query .= " AND ({$wpdb->posts}.post_status <> %s)";
+            $args[] = $status;
+        }
+        
+        return $wpdb->get_var($wpdb->prepare($query, $args));
     }
     
     /**
      * Retrieve term list
      * 
-     * @param string $taxonomy
+     * @param array $taxonomies
      * 
      * @return array
      * 
      * @access protected
      */
-    protected function retrieveTermList($taxonomy) {
-        $response = array();
+    protected function retrieveTermList($taxonomies, $search, $offset, $limit) {
+        $args = array(
+            'fields'     => 'all', 
+            'hide_empty' => false, 
+            'search'     => $search, 
+            'taxonomy'   => $taxonomies,
+            'offset'     => $offset,
+            'number'     => $limit
+        );
 
-        foreach (get_terms($taxonomy, array('hide_empty' => false)) as $term) {
-            $term->taxonomy = $taxonomy;
-            $response[] = $term;
-        }
-
-        return $response;
+        return get_terms($args);
+    }
+    
+    /**
+     * 
+     * @param type $type
+     * @param type $search
+     * @param type $offset
+     * @param type $limit
+     * @return type
+     */
+    protected function retrievePostList($type, $search, $offset, $limit) {
+        return get_posts(array(
+            'post_type'   => $type, 
+            'category'    => 0, 
+            's'           => $search,
+            'offset'      => $offset,
+            'numberposts' => $limit, 
+            'post_status' => 'any', 
+            'fields'      => 'all'
+        ));
     }
 
     /**
@@ -224,17 +319,21 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
      * @access public
      */
     public function getAccess() {
-        $type = trim(AAM_Core_Request::post('type'));
-        $id   = AAM_Core_Request::post('id');
-
+        $type   = trim(AAM_Core_Request::post('type'));
+        $id     = AAM_Core_Request::post('id');
+        $access = $metadata = array();
         $object = AAM_Backend_View::getSubject()->getObject($type, $id);
 
         //prepare the response object
-        if ($object instanceof AAM_Core_Object) {
-            $access   = $object->getOption();
+        if (is_a($object, 'AAM_Core_Object')) {
+            foreach($object->getOption() as $key => $value) {
+                if (is_numeric($value) || is_bool($value)) {
+                    $access[$key] = ($value ? 1 : 0); //TODO - to support legacy
+                } else {
+                    $access[$key] = $value;
+                }
+            }
             $metadata = array('overwritten' => $object->isOverwritten());
-        } else {
-            $access = $metadata = array();
         }
 
         return json_encode(array('access' => $access, 'meta' => $metadata));
@@ -248,29 +347,26 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
      * @access public
      */
     public function save() {
-        if ($this->checkLimit()) {
-            $subject = AAM_Backend_View::getSubject();
-            
-            $object = trim(AAM_Core_Request::post('object'));
-            $id     = AAM_Core_Request::post('objectId', null);
+        $subject = AAM_Backend_View::getSubject();
 
-            $param = AAM_Core_Request::post('param');
-            $value = filter_var(
-                    AAM_Core_Request::post('value'), FILTER_VALIDATE_BOOLEAN
-            );
-            
-            //clear cache
-            AAM_Core_Cache::clear();
-            
-            $result = $subject->save($param, $value, $object, $id);
-        } else {
-            $result = false;
-            $error  = __('You reached your limitation.', AAM_KEY);
+        $object = trim(AAM_Core_Request::post('object'));
+        $id     = AAM_Core_Request::post('objectId', null);
+
+        $param = AAM_Core_Request::post('param');
+        $value = AAM_Core_Request::post('value');
+
+        if (strpos($param, 'frontend.expire_datetime') !== false) {
+            $value = date('F jS g:i:s a', strtotime($value));
         }
+
+        //clear cache
+        AAM_Core_Cache::clear();
+
+        $result = $subject->save($param, $value, $object, $id);
 
         return json_encode(array(
                     'status' => ($result ? 'success' : 'failure'),
-                    'error'  => (empty($error) ? '' : $error)
+                    'value'  => $value
         ));
     }
     
@@ -298,28 +394,6 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
     }
 
     /**
-     * 
-     * @global type $wpdb
-     * @return type
-     */
-    public static function checkLimit() {
-        global $wpdb;
-        
-        $limit = apply_filters('aam-post-limit', 0);
-        
-        if ($limit != -1) {
-            //count number of posts that have access saved
-            $query = "SELECT COUNT(*) as `total` FROM {$wpdb->postmeta} "
-                   . "WHERE meta_key LIKE %s";
-            
-            $row = $wpdb->get_row($wpdb->prepare($query, 'aam_post_access_%'));
-            $limit = ($row->total < 10 ? -1 : 0);
-        }
-        
-        return ($limit == -1);
-    }
-    
-    /**
      * @inheritdoc
      */
     public static function getAccessOption() {
@@ -339,7 +413,7 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
      * @param type $area
      * @return type
      */
-    public function getAccessOptionList($area) {
+    public static function getAccessOptionList($area) {
         static $list = null;
         
         if (is_null($list)) {
@@ -353,14 +427,22 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
      * 
      * @return type
      */
-    public function getCurrentPost() {
-        $id = intval(AAM_Core_Request::post('oid'));
+    public static function getCurrentObject() {
+        $object = (object) array(
+            'id'   => urldecode(AAM_Core_Request::request('oid')),
+            'type' => AAM_Core_Request::request('otype')
+        );
         
-        if ($id) {
-            $post = get_post($id);
+        if ($object->id) {
+            if (strpos($object->id, '|') !== false) { //term
+                $part = explode('|', $object->id);
+                $object->term = get_term($part[0], $part[1]);
+            } else {
+                $object->post = get_post($object->id);
+            }
         }
         
-        return (isset($post) ? $post : null);
+        return $object;
     }
 
     /**
@@ -371,8 +453,14 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
      * @access public
      */
     public static function register() {
-        $cap = AAM_Core_Config::get(self::getAccessOption(), 'administrator');
-        
+        if (AAM_Core_API::capabilityExists('aam_manage_posts')) {
+            $cap = 'aam_manage_posts';
+        } else {
+            $cap = AAM_Core_Config::get(
+                    self::getAccessOption(), AAM_Backend_View::getAAMCapability()
+            );
+        }
+
         AAM_Backend_Feature::registerFeature((object) array(
             'uid'        => 'post',
             'position'   => 20,

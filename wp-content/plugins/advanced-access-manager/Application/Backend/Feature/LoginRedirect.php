@@ -19,15 +19,10 @@ class AAM_Backend_Feature_LoginRedirect extends AAM_Backend_Feature_Abstract {
      * 
      */
     public function save() {
-        $param   = AAM_Core_Request::post('param');
-        $value   = AAM_Core_Request::post('value');
-        $subject = AAM_Backend_View::getSubject();
+        $param = AAM_Core_Request::post('param');
+        $value = AAM_Core_Request::post('value');
         
-        if ($this->isDefault()) {
-            AAM_Core_Config::set($param, $value);
-        } else {
-            do_action('aam-login-redirect-save-action', $subject, $param, $value);
-        }
+        AAM_Backend_View::getSubject()->getObject('loginRedirect')->save($param, $value);
         
         return json_encode(array('status' => 'success'));
     }
@@ -37,7 +32,8 @@ class AAM_Backend_Feature_LoginRedirect extends AAM_Backend_Feature_Abstract {
      * @return type
      */
     public function reset() {
-        do_action('aam-login-redirect-reset-action', AAM_Backend_View::getSubject());
+        $subject = AAM_Backend_View::getSubject();
+        $subject->getObject('loginRedirect')->reset();
         
         return json_encode(array('status' => 'success')); 
     }
@@ -51,21 +47,30 @@ class AAM_Backend_Feature_LoginRedirect extends AAM_Backend_Feature_Abstract {
     }
     
     /**
+     * Check inheritance status
+     * 
+     * Check if redirect settings are overwritten
+     * 
+     * @return boolean
+     * 
+     * @access protected
+     */
+    protected function isOverwritten() {
+        $object = AAM_Backend_View::getSubject()->getObject('loginRedirect');
+        
+        return $object->isOverwritten();
+    }
+    
+    /**
      * 
      * @param type $option
      * @return type
      */
     public function getOption($option, $default = null) {
-        $value = AAM_Core_Config::get($option, $default);
+        $object = AAM_Backend_View::getSubject()->getObject('loginRedirect');
+        $value  = $object->get($option);
         
-        if (!$this->isDefault()) {
-            $subject = AAM_Backend_View::getSubject();
-            $value = apply_filters(
-                    'aam-login-redirect-option-filter', $value, $option, $subject
-            );
-        }
-        
-        return $value;
+        return (!is_null($value) ? $value : $default);
     }
     
     /**
@@ -90,7 +95,13 @@ class AAM_Backend_Feature_LoginRedirect extends AAM_Backend_Feature_Abstract {
      * @access public
      */
     public static function register() {
-        $cap = AAM_Core_Config::get(self::getAccessOption(), 'administrator');
+        if (AAM_Core_API::capabilityExists('aam_manage_login_redirect')) {
+            $cap = 'aam_manage_login_redirect';
+        } else {
+            $cap = AAM_Core_Config::get(
+                    self::getAccessOption(), AAM_Backend_View::getAAMCapability()
+            );
+        }
         
         AAM_Backend_Feature::registerFeature((object) array(
             'uid'        => 'login_redirect',

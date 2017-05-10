@@ -8,7 +8,7 @@
  */
 
 /**
- * Project autloader
+ * Project autoloader
  * 
  * @package AAM
  * @author Vasyl Martyniuk <vasyl@vasyltech.com>

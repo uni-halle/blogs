@@ -16,7 +16,7 @@
 final class AAM_Core_API {
 
     /**
-     * Get current blog's option
+     * Get option
      *
      * @param string $option
      * @param mixed  $default
@@ -29,7 +29,13 @@ final class AAM_Core_API {
      */
     public static function getOption($option, $default = FALSE, $blog_id = null) {
         if (is_multisite()) {
-            $blog = (is_null($blog_id) ? get_current_blog_id() : $blog_id);
+            if (is_null($blog_id)) {
+                $blog = get_current_blog_id();
+            } elseif ($blog_id == 'site') {
+                $blog = (defined('SITE_ID_CURRENT_SITE') ? SITE_ID_CURRENT_SITE : 1);
+            } else {
+                $blog = $blog_id;
+            }
             $response = get_blog_option($blog, $option, $default);
         } else {
             $response = get_option($option, $default);
@@ -39,7 +45,7 @@ final class AAM_Core_API {
     }
 
     /**
-     * Update Blog Option
+     * Update option
      *
      * @param string $option
      * @param mixed  $data
@@ -52,7 +58,13 @@ final class AAM_Core_API {
      */
     public static function updateOption($option, $data, $blog_id = null) {
         if (is_multisite()) {
-            $blog = (is_null($blog_id) ? get_current_blog_id() : $blog_id);
+            if (is_null($blog_id)) {
+                $blog = get_current_blog_id();
+            } elseif ($blog_id == 'site') {
+                $blog = (defined('SITE_ID_CURRENT_SITE') ? SITE_ID_CURRENT_SITE : 1);
+            } else {
+                $blog = $blog_id;
+            }
             $response = update_blog_option($blog, $option, $data);
         } else {
             $response = update_option($option, $data);
@@ -62,7 +74,7 @@ final class AAM_Core_API {
     }
 
     /**
-     * Delete Blog Option
+     * Delete option
      *
      * @param string $option
      * @param int    $blog_id
@@ -74,7 +86,13 @@ final class AAM_Core_API {
      */
     public static function deleteOption($option, $blog_id = null) {
         if (is_multisite()) {
-            $blog = (is_null($blog_id) ? get_current_blog_id() : $blog_id);
+            if (is_null($blog_id)) {
+                $blog = get_current_blog_id();
+            } elseif ($blog_id == 'site') {
+                $blog = (defined('SITE_ID_CURRENT_SITE') ? SITE_ID_CURRENT_SITE : 1);
+            } else {
+                $blog = $blog_id;
+            }
             $response = delete_blog_option($blog, $option);
         } else {
             $response = delete_option($option);
@@ -114,7 +132,7 @@ final class AAM_Core_API {
             'method'  => 'POST',
             'body'    => $params,
             'cookies' => $requestCookies,
-            'timeout' => 5
+            'timeout' => 10
         ));
     }
     
@@ -123,7 +141,7 @@ final class AAM_Core_API {
      * 
      * @global WP_Roles $wp_roles
      * 
-     * @return \WP_Roles
+     * @return WP_Roles
      */
     public static function getRoles() {
         global $wp_roles;
@@ -183,7 +201,23 @@ final class AAM_Core_API {
         
         return $caps;
     }
-
+    
+    /**
+     * Check if capability exists
+     * 
+     * @param string $cap
+     * 
+     * @return boolean
+     * 
+     * @access public
+     * @static
+     */
+    public static function capabilityExists($cap) {
+        $caps = self::getAllCapabilities();
+        
+        return (isset($caps[$cap]) ? true : false);
+    }
+    
     /**
      * Reject the request
      *
@@ -197,69 +231,50 @@ final class AAM_Core_API {
      * @access public
      */
     public static function reject($area = 'frontend', $args = array()) {
-        $type = apply_filters(
-                'aam-filter-redirect-option', 
-                AAM_Core_Config::get("{$area}.redirect.type"),
-                "{$area}.redirect.type",
-                AAM::getUser()
-        );
-                
-        if (!empty($type)) {
-            $redirect = apply_filters(
-                'aam-filter-redirect-option',
-                AAM_Core_Config::get("{$area}.redirect.{$type}"),
-                "{$area}.redirect.{$type}",
-                AAM::getUser()
+        $object = AAM::getUser()->getObject('redirect');
+        $type   = $object->get("{$area}.redirect.type");
+        
+        if (!empty($type) && ($type == 'login')) {
+            $redirect = add_query_arg(
+                    array('aam-redirect' => 'login'), 
+                    wp_login_url(AAM_Core_Request::server('REQUEST_URI'))
             );
-        } else {
-            $redirect = AAM_Core_Config::get("{$area}.access.deny.redirect");
+        } elseif (!empty($type) && ($type != 'default')) {
+            $redirect = $object->get("{$area}.redirect.{$type}");
+        } else { //ConfigPress setup
+            $redirect = AAM_Core_Config::get(
+                   "{$area}.access.deny.redirect", __('Access Denied', AAM_KEY)
+            );
         }
         
-        self::redirect($redirect, $area, $args);
+        do_action('aam-rejected-action', $area, $args);
+        
+        self::redirect($redirect, $args);
     }
     
     /**
+     * Redirect request
      * 
-     * @param type $location
-     * @param type $area
-     * @param type $args
+     * Redirect user based on defined $rule
+     * 
+     * @param mixed $rule
+     * @param mixed $args
+     * 
+     * @access public
      */
-    public static function redirect($location, $area = null, $args = null) {
-        if (filter_var($location, FILTER_VALIDATE_URL)) {
-            wp_redirect($location);
-        } elseif (preg_match('/^[\d]+$/', $location)) {
-            wp_redirect(get_post_permalink($location));
-        } elseif (is_callable($location)) {
-            call_user_func($location, $args);
+    public static function redirect($rule, $args = null) {
+        if (filter_var($rule, FILTER_VALIDATE_URL)) {
+            wp_redirect($rule, 301);
+        } elseif (preg_match('/^[\d]+$/', $rule)) {
+            wp_safe_redirect(get_page_link($rule), 301);
+        } elseif (is_callable($rule)) {
+            call_user_func($rule, $args);
         } elseif (!empty($args['callback']) && is_callable($args['callback'])) {
-            $message = self::getDenyMessage($area);
-            call_user_func($args['callback'], $message, '', array());
-        } elseif (empty($args['skip-die'])) {
-            wp_die(self::getDenyMessage($area));
+            call_user_func($args['callback'], $rule, '', array());
+        } else {
+            wp_die($rule);
         }
         exit;
-    }
-    
-    /**
-     * 
-     * @param type $area
-     * @return type
-     */
-    protected static function getDenyMessage($area) {
-        $message = apply_filters(
-                'aam-filter-redirect-option', 
-                AAM_Core_Config::get("{$area}.redirect.message"),
-                "{$area}.redirect.message",
-                AAM::getUser()
-        );
-        
-        if (empty($message)) { //Support ConfigPress setup
-            $message = AAM_Core_Config::get(
-                    "{$area}.access.deny.message", __('Access Denied', AAM_KEY)
-            );
-        }
-        
-        return stripslashes($message);
     }
     
     /**
@@ -282,8 +297,11 @@ final class AAM_Core_API {
     }
     
     /**
+     * Get plugin version
      * 
-     * @return type
+     * @return string
+     * 
+     * @access public
      */
     public static function version() {
         if (file_exists(ABSPATH . 'wp-admin/includes/plugin.php')) {
@@ -296,6 +314,113 @@ final class AAM_Core_API {
         }
         
         return (!empty($version) ? $version : null);
+    }
+    
+    /**
+     * Get filtered post list
+     * 
+     * Return only posts that are restricted to LIST or LIST TO OTHERS for the
+     * current user. This function is shared by both frontend and backend
+     * 
+     * @param WP_Query $query
+     * @param string   $area
+     * 
+     * @return array
+     * 
+     * @access public
+     */
+    public static function getFilteredPostList($query, $area = 'frontend') {
+        $filtered = array();
+        $type     = self::getQueryPostType($query);
+        
+        if ($type) { 
+            if (AAM_Core_Cache::has("{$type}__not_in_{$area}")) {
+                $filtered = AAM_Core_Cache::get("{$type}__not_in_{$area}");
+            } else { //first initial build
+                $posts = get_posts(array(
+                    'post_type'   => $type, 
+                    'numberposts' => AAM_Core_Config::get('get_post_limit', 500), 
+                    'post_status' => 'any'
+                ));
+
+                foreach ($posts as $post) {
+                    if (self::isHiddenPost($post, $type, $area)) {
+                        $filtered[] = $post->ID;
+                    }
+                }
+            }
+        }
+        
+        return (is_array($filtered) ? $filtered : array());
+    }
+    
+    /**
+     * Check if post is hidden
+     * 
+     * @param mixed  $post
+     * @param string $area
+     * 
+     * @return boolean
+     * 
+     * @access public
+     */
+    public static function isHiddenPost($post, $type, $area = 'frontend') {
+        static $counter = 0;
+        
+        $hidden = false;
+        
+        if ($counter <= AAM_Core_Config::get('get_post_limit', 500)) { //avoid server crash
+            $user    = get_current_user_id();
+            $key     = "{$type}__not_in_{$area}";
+            $cache   = AAM_Core_Cache::get($key, array());
+            $checked = AAM_Core_Cache::get($key . '_checked', array());
+            
+            if (!in_array($post->ID, $cache)) {
+                if (!in_array($post->ID, $checked)) {
+                    $object    = AAM::getUser()->getObject('post', $post->ID, $post);
+                    $list      = $object->has("{$area}.list");
+                    $others    = $object->has("{$area}.list_others");
+                    $checked[] = $post->ID;
+
+                    if ($list || ($others && ($post->post_author != $user))) {
+                        $hidden  = true;
+                        $cache[] = $post->ID;
+                    }
+                    
+                    AAM_Core_Cache::set(AAM::getUser(), $key . '_checked', $checked);
+                    AAM_Core_Cache::set(AAM::getUser(), $key, $cache);
+                    $counter++;
+                }
+            } else {
+                $hidden = true;
+            }
+        }
+        
+        return $hidden;
+    }
+    
+    /**
+     * Get Query post type
+     * 
+     * @param WP_Query $query
+     * 
+     * @return string
+     * 
+     * @access public
+     */
+    public static function getQueryPostType($query) {
+        //get post type based on queired object
+        if (!empty($query->query['post_type'])) {
+            $type = $query->query['post_type'];
+        } elseif (!empty($query->query_vars['post_type'])) {
+            $type = $query->query_vars['post_type'];
+        }
+        
+        if (empty($type) || !is_scalar($type)){
+            $type = 'post';
+        }
+        
+        return $type;
     }
     
 }

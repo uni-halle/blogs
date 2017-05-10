@@ -19,7 +19,13 @@ class AAM_Core_Subject_Default extends AAM_Core_Subject {
      * Subject UID: DEFAULT
      */
     const UID = 'default';
-
+    
+    /**
+     *
+     * @var type 
+     */
+    protected static $instance = null;
+    
     /**
      *
      * @param type $value
@@ -62,6 +68,18 @@ class AAM_Core_Subject_Default extends AAM_Core_Subject {
      */
     public function getUID() {
         return self::UID;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public static function getInstance() {
+        if (is_null(self::$instance)) {
+            self::$instance = new self;
+        }
+        
+        return self::$instance;
     }
 
 }

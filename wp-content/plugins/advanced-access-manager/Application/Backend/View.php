@@ -46,7 +46,7 @@ class AAM_Backend_View {
         );
         if (class_exists($classname)) {
             $this->setSubject(new $classname(
-                    AAM_Core_Request::request('subjectId')
+                stripslashes(AAM_Core_Request::request('subjectId'))
             ));
         }
 
@@ -58,9 +58,12 @@ class AAM_Backend_View {
         AAM_Backend_Feature_Redirect::register();
         AAM_Backend_Feature_Teaser::register();
         AAM_Backend_Feature_LoginRedirect::register();
+        AAM_Backend_Feature_LogoutRedirect::register();
         AAM_Backend_Feature_Extension::register();
+        AAM_Backend_Feature_Security::register();
         AAM_Backend_Feature_Utility::register();
         AAM_Backend_Feature_Contact::register();
+        AAM_Backend_Feature_404Redirect::register();
         
         //feature registration hook
         do_action('aam-feature-registration');
@@ -89,19 +92,39 @@ class AAM_Backend_View {
      *
      * @access public
      */
-    public function renderMetabox() {
-        global $post;
-        
-        if (is_a($post, 'WP_Post')) {
-            $url = admin_url('admin.php?page=aam&oid=' . $post->ID . '#post');
+    public function renderAccessFrame() {
+        ob_start();
+        require_once(dirname(__FILE__) . '/phtml/frame.phtml');
+        $content = ob_get_contents();
+        ob_end_clean();
 
-            ob_start();
-            require_once(dirname(__FILE__) . '/phtml/metabox.phtml');
-            $content = ob_get_contents();
-            ob_end_clean();
-        } else {
-            $content = null;
-        }
+        return $content;
+    }
+    
+    /**
+     * 
+     * @param type $post
+     * @return type
+     */
+    public function renderPostMetabox($post) {
+        ob_start();
+        require_once(dirname(__FILE__) . '/phtml/post-metabox.phtml');
+        $content = ob_get_contents();
+        ob_end_clean();
+
+        return $content;
+    }
+    
+    /**
+     * 
+     * @param type $term
+     * @return type
+     */
+    public function renderTermMetabox($term) {
+        ob_start();
+        require_once(dirname(__FILE__) . '/phtml/term-metabox.phtml');
+        $content = ob_get_contents();
+        ob_end_clean();
 
         return $content;
     }
@@ -195,27 +218,58 @@ class AAM_Backend_View {
      * @return type
      */
     public function switchToUser() {
-        $user  = new WP_User(AAM_Core_Request::post('user'));
-        $max   = AAM_Core_API::maxLevel(wp_get_current_user()->allcaps);
-        
-        if ($max > AAM_Core_API::maxLevel($user->allcaps)) {
-            AAM_Core_API::updateOption(
-                    'aam-user-switch-' . $user->ID, get_current_user_id()
-            );
-
-            wp_clear_auth_cookie();
-            wp_set_auth_cookie( $user->ID, true );
-            wp_set_current_user( $user->ID );
-            
-            $response = array('status' => 'success', 'redirect' => admin_url());
-        } else {
-            $response = array(
+        $response = array(
                 'status' => 'failure', 
                 'reason' => 'You are not allowed to switch to this user'
-            );
+        );
+        
+        if (self::userCan('aam_switch_users')) { 
+            $user  = new WP_User(AAM_Core_Request::post('user'));
+            $max   = AAM_Core_API::maxLevel(wp_get_current_user()->allcaps);
+
+            if ($max >= AAM_Core_API::maxLevel($user->allcaps)) {
+                AAM_Core_API::updateOption(
+                        'aam-user-switch-' . $user->ID, get_current_user_id()
+                );
+
+                wp_clear_auth_cookie();
+                wp_set_auth_cookie( $user->ID, true );
+                wp_set_current_user( $user->ID );
+
+                $response = array('status' => 'success', 'redirect' => admin_url());
+            }
         }
         
         return json_encode($response);
+    }
+    
+    /**
+     * 
+     * @param type $capability
+     * @return type
+     */
+    public static function userCan($capability) {
+        if (AAM_Core_API::capabilityExists($capability)) {
+            $can = AAM::getUser()->hasCapability($capability);
+        } else {
+            $can = AAM::getUser()->hasCapability(self::getAAMCapability());
+        }
+        
+        return ($can ? 1 : 0);
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public static function getAAMCapability() {
+        if (AAM_Core_API::capabilityExists('aam_manager')) {
+            $cap = 'aam_manager';
+        } else {
+            $cap = AAM_Core_Config::get('page.capability', 'administrator');
+        }
+        
+        return $cap;
     }
     
     /**

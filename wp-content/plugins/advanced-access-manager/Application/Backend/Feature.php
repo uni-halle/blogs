@@ -33,7 +33,7 @@ class AAM_Backend_Feature {
         $response = false;
 
         if (empty($feature->capability)){
-            $cap = AAM_Core_Config::get('page.capability', 'administrator');
+            $cap = AAM_Backend_View::getAAMCapability();
         } else {
             $cap = $feature->capability;
         }
@@ -76,7 +76,7 @@ class AAM_Backend_Feature {
      */
     public static function retriveList() {
         $response = array();
-
+        
         $subject = AAM_Backend_View::getSubject();
         foreach (self::$_features as $feature) {
             if (in_array(get_class($subject), $feature->subjects)) {

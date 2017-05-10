@@ -16,21 +16,6 @@
 class AAM_Backend_Feature_User {
     
     /**
-     * Constructor
-     * 
-     * @return void
-     * 
-     * @access public
-     * @throws Exception
-     */
-    public function __construct() {
-        $cap = AAM_Core_Config::get('page.capability', 'administrator');
-        if (!AAM::getUser()->hasCapability($cap)) {
-            Throw new Exception(__('Access Denied', AAM_KEY));
-        }
-    }
-
-    /**
      * Retrieve list of users
      * 
      * Based on filters, get list of users
@@ -40,24 +25,33 @@ class AAM_Backend_Feature_User {
      * @access public
      */
     public function getTable() {
-        //get total number of users
-        $total  = count_users();
-        $result = $this->query();
-        
-        $response = array(
-            'recordsTotal'    => $total['total_users'],
-            'recordsFiltered' => $result->get_total(),
-            'draw'            => AAM_Core_Request::request('draw'),
-            'data'            => array(),
-        );
-        
-        foreach ($result->get_results() as $user) {
-            $response['data'][] = array(
-                $user->ID,
-                implode(', ', $this->getUserRoles($user->roles)),
-                ($user->display_name ? $user->display_name : $user->user_nicename),
-                implode(',', $this->prepareRowActions($user)),
-                AAM_Core_API::maxLevel($user->allcaps)
+        if (AAM_Backend_View::userCan('list_users')) { 
+            //get total number of users
+            $total  = count_users();
+            $result = $this->query();
+
+            $response = array(
+                'recordsTotal'    => $total['total_users'],
+                'recordsFiltered' => $result->get_total(),
+                'draw'            => AAM_Core_Request::request('draw'),
+                'data'            => array(),
+            );
+
+            foreach ($result->get_results() as $user) {
+                $response['data'][] = array(
+                    $user->ID,
+                    implode(', ', $this->getUserRoles($user->roles)),
+                    ($user->display_name ? $user->display_name : $user->user_nicename),
+                    implode(',', $this->prepareRowActions($user)),
+                    AAM_Core_API::maxLevel($user->allcaps)
+                );
+            }
+        } else {
+            $response = array(
+                'recordsTotal'    => 0,
+                'recordsFiltered' => 0,
+                'draw'            => AAM_Core_Request::request('draw'),
+                'data'            => array(),
             );
         }
 
@@ -106,9 +100,15 @@ class AAM_Backend_Feature_User {
         if ($allowed || ($user->ID == get_current_user_id())) {
             $actions = array('manage');
             
-            $actions[] = ($user->user_status ? 'unlock' : 'lock');
-            $actions[] = 'edit';
-            $actions[] = 'switch';
+            if (AAM_Backend_View::userCan('aam_toggle_users')) {
+                $actions[] = ($user->user_status ? 'unlock' : 'lock');
+            }
+            if (AAM_Backend_View::userCan('edit_users')) {
+                $actions[] = 'edit';
+            }
+            if (AAM_Backend_View::userCan('aam_switch_users')) {
+                $actions[] = 'switch';
+            }
         } else {
             $actions = array();
         }
@@ -152,13 +152,15 @@ class AAM_Backend_Feature_User {
      * @access public
      */
     public function block() {
-        $subject = AAM_Backend_View::getSubject();
+        $result  = false;
+        
+        if (AAM_Backend_View::userCan('aam_toggle_users')) {
+            $subject = AAM_Backend_View::getSubject();
 
-        //user is not allowed to lock himself
-        if ($subject->getId() != get_current_user_id()) {
-            $result = $subject->block();
-        } else {
-            $result = false;
+            //user is not allowed to lock himself
+            if ($subject->getId() != get_current_user_id()) {
+                $result = $subject->block();
+            }
         }
 
         return json_encode(

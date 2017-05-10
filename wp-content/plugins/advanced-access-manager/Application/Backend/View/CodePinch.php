@@ -25,11 +25,6 @@
 class AAM_Backend_View_CodePinch {
 
     /**
-     * Plugin's slug
-     */
-    const SLUG = 'WP Error Fix';
-
-    /**
      * Single instance of itself
      * 
      * @var AAM_Backend_View_CodePinch 
@@ -119,10 +114,7 @@ class AAM_Backend_View_CodePinch {
      * @static
      */
     public static function isInstalled() {
-        return in_array(
-                self::getStatus(), 
-                array('latest_installed', 'update_available')
-        );
+        return self::find();
     }
 
     /**
@@ -133,17 +125,24 @@ class AAM_Backend_View_CodePinch {
      * @access protected
      * @static
      */
-    protected static function getStatus() {
+    protected static function find() {
         static $status = null;
 
         if (is_null($status)) {
-            require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
-
-            $args   = array('slug' => self::SLUG);
-            $plugin = plugins_api('plugin_information', $args);
-            $result = install_plugin_install_status($plugin);
-
-            $status = empty($result) ? 'failed' : $result['status'];
+            $status = false;
+            
+            if (file_exists(ABSPATH . 'wp-admin/includes/plugin.php')) {
+                require_once ABSPATH . 'wp-admin/includes/plugin.php';
+            }
+        
+            if (function_exists('get_plugin_data')) {
+                foreach(get_plugins() as $plugin) {
+                    if ($plugin['Name'] == 'CodePinch') {
+                        $status = true;
+                        break;
+                    }
+                }
+            }
         }
 
         return $status;

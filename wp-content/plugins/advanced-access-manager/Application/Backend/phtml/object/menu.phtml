@@ -3,11 +3,10 @@
         <div class="row">
             <div class="col-xs-12">
                 <p class="aam-info">
-                    <?php echo sprintf(__('Learn how to manage access to the backend menu from %sthis article%s', AAM_KEY),'<a href="https://vasyltech.com/blog/manage-access-to-wordpress-backend-menu" target="_blank">', '</a>'); ?>
+                    <?php echo sprintf(AAM_Backend_View_Helper::preparePhrase('Protect your backend area. The list of menus and submenus is based on list of capabilities that current %s has. For more information about this feature, please check %sHow to manage WordPress backend menu%s.', 'b'), AAM_Backend_View::getSubject()->getUID(), '<a href="https://aamplugin.com/help/how-to-manage-wordpress-backend-menu" target="_blank">', '</a>'); ?>
                 </p>
             </div>
         </div>
-        
         <?php if ($this->isOverwritten()) { ?>
         <div class="row">
             <div class="col-xs-12">
@@ -41,11 +40,18 @@
                                 <div class="row aam-bordered">
                                     <?php echo ($object->has($menu['id']) ? '<div class="aam-lock"></div>' : ''); ?>
                                     <?php foreach ($menu['submenu'] as $j => $submenu) { ?>
-                                        <div class="col-xs-12 col-md-6 aam-submenu-item">
-                                            <label for="menu-item-<?php echo $i . $j; ?>"><?php echo $submenu['name']; ?> <small class="aam-menu-capability"><?php echo $submenu['capability']; ?></small></label>
-                                            <input type="checkbox" class="aam-checkbox-danger" id="menu-item-<?php echo $i . $j; ?>" data-menu-id="<?php echo $submenu['id']; ?>"<?php echo ($object->has($submenu['id']) || $object->has($menu['id']) ? ' checked="checked"' : ''); ?> />
-                                            <label for="menu-item-<?php echo $i . $j; ?>"></label>
-                                        </div>
+                                        <?php if ($submenu['id'] == 'index.php') { ?>
+                                            <div class="col-xs-12 col-md-6 aam-submenu-item">
+                                                <label for="menu-item-<?php echo $i . $j; ?>"><?php echo $submenu['name']; ?> <small class="aam-menu-capability"><?php echo $submenu['capability']; ?></small></label>
+                                                <a href="#dashboard-lockout-modal" data-toggle="modal"><i class="icon-help-circled"></i></a>
+                                            </div>
+                                        <?php } else { ?>
+                                            <div class="col-xs-12 col-md-6 aam-submenu-item">
+                                                <label for="menu-item-<?php echo $i . $j; ?>"><?php echo $submenu['name']; ?> <small class="aam-menu-capability"><?php echo $submenu['capability']; ?></small></label>
+                                                <input type="checkbox" class="aam-checkbox-danger" id="menu-item-<?php echo $i . $j; ?>" data-menu-id="<?php echo $submenu['id']; ?>"<?php echo ($object->has($submenu['id']) || $object->has($menu['id']) ? ' checked="checked"' : ''); ?> />
+                                                <label for="menu-item-<?php echo $i . $j; ?>"></label>
+                                            </div>
+                                        <?php } ?>
                                     <?php } ?>
                                 </div>
                             <?php } ?>
@@ -67,6 +73,25 @@
                     </div>
                 </div>
             <?php } ?>
+        </div>
+        
+        <div class="modal fade" id="dashboard-lockout-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="<?php echo __('Close', AAM_KEY); ?>"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"><?php echo __('Dashboard Lockdown', AAM_KEY); ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-center alert alert-warning"><strong><?php echo __('You cannot restrict access to Dashboard home page.', AAM_KEY); ?></strong></p>
+                        
+                        <p class="aam-outer-top-xs text-center"><?php echo sprintf(__('Dashboard home page is the default page every user is redirected after login. If you need to lockdown user from the entire website dashboard, %splease check this article%s.', AAM_KEY), '<a href="https://aamplugin.com/help/how-to-lockdown-wordpress-backend" target="_blank">', '</a>'); ?></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo __('OK', AAM_KEY); ?></button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 <?php }
