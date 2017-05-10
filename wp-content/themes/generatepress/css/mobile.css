@@ -32,6 +32,22 @@ button.menu-toggle:focus {
 }
 
 @media (max-width: 768px) {
+	.top-bar.top-bar-align-left,
+	.top-bar.top-bar-align-right {
+		text-align: center;
+	}
+	
+	.top-bar .widget {
+		float: none !important;
+		margin: 0 10px !important;
+	}
+	
+	.top-bar .widget_nav_menu li {
+		float: none;
+		display: inline-block;
+		padding: 5px 0;
+	}
+	
 	.sidebar,
 	.content-area,
 	.inside-footer-widgets > div {
@@ -80,15 +96,20 @@ button.menu-toggle:focus {
 	.main-navigation .main-nav ul ul {
 		position: relative;
 		top: 0;
-		left: 0;
+		left: auto;
+		right: auto;
 		width: 100%;
 	}
 	
-	.main-navigation .main-nav .sf-menu > li {
+	.main-navigation .main-nav li {
 		float: none;
 		clear: both;
 		display: block !important;
 		text-align: left !important;
+	}
+	
+	.main-navigation .main-nav li.hide-on-mobile {
+		display: none !important;
 	}
 	
 	.main-navigation .sub-menu.toggled-on,
@@ -119,7 +140,7 @@ button.menu-toggle:focus {
 	
 	.main-navigation .sf-menu > li.menu-item-float-right {
 		float: none !important;
-		display: inline-block;
+		display: inline-block !important;
 	}
 	
 	[class*="nav-float-"] .site-header .inside-header > * {
@@ -196,6 +217,14 @@ button.menu-toggle:focus {
 		padding: 5px 0;
 	}
 	
+	.site-footer .footer-widgets .footer-widgets-container .inside-footer-widgets {
+		margin: 0;
+	}
+	
+	.site-footer .footer-widgets .footer-widgets-container .inner-padding {
+		padding: 0;
+	}
+	
 	.comment .children {
 		padding-left: 10px;
 		margin-left: 0;
@@ -206,22 +235,5 @@ button.menu-toggle:focus {
 		float: none !important;
 		margin-bottom: 1.5em;
 		width: 100% !important;
-	}
-
-	.woocommerce .woocommerce-ordering, 
-	.woocommerce-page .woocommerce-ordering {
-		float: none;
-	}
-	
-	.woocommerce .woocommerce-ordering select {
-		max-width: 100%;
-	}
-	
-	.woocommerce ul.products li.product, 
-	.woocommerce-page ul.products li.product, 
-	.woocommerce-page[class*=columns-] ul.products li.product,
-	.woocommerce[class*=columns-] ul.products li.product {
-		width: 100%;
-		float: none;
 	}
 }

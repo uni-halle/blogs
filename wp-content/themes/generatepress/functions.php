@@ -8,7 +8,7 @@
 // No direct access, please
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'GENERATE_VERSION', '1.3.44' );
+define( 'GENERATE_VERSION', '1.3.46' );
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 
@@ -107,6 +107,9 @@ function generate_get_defaults()
 		'hide_title' => '',
 		'hide_tagline' => '',
 		'logo' => '',
+		'top_bar_width' => 'full',
+		'top_bar_inner_width' => 'contained',
+		'top_bar_alignment' => 'right',
 		'container_width' => '1100',
 		'header_layout_setting' => 'fluid-header',
 		'header_inner_width' => 'contained',
@@ -162,40 +165,23 @@ function generate_widgets_init()
 {
 	// Set up our array of widgets	
 	$widgets = array(
-		'sidebar-1' => array(
-			'name' => __( 'Right Sidebar', 'generatepress' )
-		),
-		'sidebar-2' => array(
-			'name' => __( 'Left Sidebar', 'generatepress' )
-		),
-		'header' => array(
-			'name' => __( 'Header', 'generatepress' )
-		),
-		'footer-1' => array(
-			'name' => __( 'Footer Widget 1', 'generatepress' )
-		),
-		'footer-2' => array(
-			'name' => __( 'Footer Widget 2', 'generatepress' )
-		),
-		'footer-3' => array(
-			'name' => __( 'Footer Widget 3', 'generatepress' )
-		),
-		'footer-4' => array(
-			'name' => __( 'Footer Widget 4', 'generatepress' )
-		),
-		'footer-5' => array(
-			'name' => __( 'Footer Widget 5', 'generatepress' )
-		),
-		'footer-bar' => array(
-			'name' => __( 'Footer Bar','generatepress' )
-		)
+		'sidebar-1' => __( 'Right Sidebar', 'generatepress' ),
+		'sidebar-2' => __( 'Left Sidebar', 'generatepress' ),
+		'header' => __( 'Header', 'generatepress' ),
+		'footer-1' => __( 'Footer Widget 1', 'generatepress' ),
+		'footer-2' => __( 'Footer Widget 2', 'generatepress' ),
+		'footer-3' => __( 'Footer Widget 3', 'generatepress' ),
+		'footer-4' => __( 'Footer Widget 4', 'generatepress' ),
+		'footer-5' => __( 'Footer Widget 5', 'generatepress' ),
+		'footer-bar' => __( 'Footer Bar','generatepress' ),
+		'top-bar' => __( 'Top Bar','generatepress' ),
 	);
 	
 	// Loop through them to create our widget areas
-	foreach ( $widgets as $widget => $id ) {
+	foreach ( $widgets as $id => $name ) {
 		register_sidebar( array(
-			'name'          => $id[ 'name' ],
-			'id'            => $widget,
+			'name'          => $name,
+			'id'            => $id,
 			'before_widget' => '<aside id="%1$s" class="widget inner-padding %2$s">',
 			'after_widget'  => '</aside>',
 			'before_title'  => apply_filters( 'generate_start_widget_title', '<h4 class="widget-title">' ),
@@ -251,9 +237,14 @@ require get_template_directory() . '/inc/add-ons.php';
 require get_template_directory() . '/inc/css.php';
 
 /**
- * Load WooCommerce compatibility
+ * Load plugin compatibility
  */
-require get_template_directory() . '/inc/woocommerce.php';
+require get_template_directory() . '/inc/plugin-compat.php';
+
+/**
+ * Load our deprecated functions
+ */
+require get_template_directory() . '/inc/deprecated.php';
 
 if ( ! function_exists( 'generate_get_min_suffix' ) ) :
 /** 
@@ -286,11 +277,6 @@ function generate_scripts()
 	wp_enqueue_style( 'generate-style-grid', get_template_directory_uri() . "/css/unsemantic-grid{$suffix}.css", false, GENERATE_VERSION, 'all' );
 	wp_enqueue_style( 'generate-style', get_template_directory_uri() . '/style.css', array( 'generate-style-grid' ), GENERATE_VERSION, 'all' );
 	wp_enqueue_style( 'generate-mobile-style', get_template_directory_uri() . "/css/mobile{$suffix}.css", array( 'generate-style' ), GENERATE_VERSION, 'all' );
-	
-	// Enqueue our default CSS styles in a static file
-	if ( generate_include_default_styles() ) {
-		wp_enqueue_style( 'generate-defaults', get_template_directory_uri() . "/css/defaults{$suffix}.css", array( 'generate-style' ), GENERATE_VERSION, 'all' );
-	}
 	
 	// Add the child theme CSS if child theme is active.
 	if ( is_child_theme() ) {
@@ -332,10 +318,10 @@ function generate_scripts()
 	}
 	
 	// IE 8
-	if ( function_exists( 'wp_script_add_data' ) ) :
+	if ( function_exists( 'wp_script_add_data' ) ) {
 		wp_enqueue_script( 'generate-html5', get_template_directory_uri() . "/js/html5shiv{$suffix}.js", array( 'jquery' ), GENERATE_VERSION, true );
 		wp_script_add_data( 'generate-html5', 'conditional', 'lt IE 9' );
-	endif;
+	}
 	
 	// Add the threaded comments script
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -367,27 +353,27 @@ function generate_get_layout()
 	
 	// Set up BuddyPress variable
 	$buddypress = false;
-	if ( function_exists( 'is_buddypress' ) ) :
+	if ( function_exists( 'is_buddypress' ) ) {
 		$buddypress = ( is_buddypress() ) ? true : false;
-	endif;
+	}
 
 	// If we're on the single post page
 	// And if we're not on a BuddyPress page - fixes a bug where BP thinks is_single() is true
-	if ( is_single() && ! $buddypress ) :
+	if ( is_single() && ! $buddypress ) {
 		$layout = null;
 		$layout = $generate_settings['single_layout_setting'];
-	endif;
+	}
 
 	// If the metabox is set, use it instead of the global settings
-	if ( '' !== $layout_meta && false !== $layout_meta ) :
+	if ( '' !== $layout_meta && false !== $layout_meta ) {
 		$layout = $layout_meta;
-	endif;
+	}
 	
 	// If we're on the blog, archive, attachment etc..
-	if ( is_home() || is_archive() || is_search() || is_tax() ) :
+	if ( is_home() || is_archive() || is_search() || is_tax() ) {
 		$layout = null;
 		$layout = $generate_settings['blog_layout_setting'];
-	endif;
+	}
 	
 	// Finally, return the layout
 	return apply_filters( 'generate_sidebar_layout', $layout );
@@ -416,14 +402,14 @@ function generate_get_footer_widgets()
 	$widgets_meta = ( isset( $post ) ) ? get_post_meta( $post->ID, '_generate-footer-widget-meta', true ) : '';
 	
 	// If we're not on a single page or post, the metabox hasn't been set
-	if ( ! is_singular() ) :
+	if ( ! is_singular() ) {
 		$widgets_meta = '';
-	endif;
+	}
 	
 	// If we have a metabox option set, use it
-	if ( '' !== $widgets_meta && false !== $widgets_meta ) :
+	if ( '' !== $widgets_meta && false !== $widgets_meta ) {
 		$widgets = $widgets_meta;
-	endif;
+	}
 	
 	// Finally, return the layout
 	return apply_filters( 'generate_footer_widgets', $widgets );
@@ -448,14 +434,14 @@ function generate_construct_sidebars()
 	$ls = array('left-sidebar','both-sidebars','both-right','both-left');
 	
 	// If left sidebar, show it
-	if ( in_array( $layout, $ls ) ) :
+	if ( in_array( $layout, $ls ) ) {
 		get_sidebar('left'); 
-	endif;
+	}
 	
 	// If right sidebar, show it
-	if ( in_array( $layout, $rs ) ) :
+	if ( in_array( $layout, $rs ) ) {
 		get_sidebar(); 
-	endif;
+	}
 }
 endif;
 
@@ -660,7 +646,7 @@ function generate_show_excerpt()
 	);
 	
 	// Check to see if the more tag is being used
-	$more_tag = apply_filters( 'generate_more_tag', @strpos( $post->post_content, '<!--more-->' ) );
+	$more_tag = apply_filters( 'generate_more_tag', strpos( $post->post_content, '<!--more-->' ) );
 
 	// Check the post format
 	$format = ( false !== get_post_format() ) ? get_post_format() : 'standard';
@@ -729,14 +715,15 @@ function generate_update_logo_setting()
 	$logo = attachment_url_to_postid( $old_value );
 	
 	// Now let's update the new logo setting with our ID.
-	if ( is_int( $logo ) )
+	if ( is_int( $logo ) ) {
 		set_theme_mod( 'custom_logo', $logo );
+	}
 	
 	// Got our custom logo? Time to delete the old value
-	if ( get_theme_mod( 'custom_logo' ) ) :
+	if ( get_theme_mod( 'custom_logo' ) ) {
 		$new_settings[ 'logo' ] = '';
 		$update_settings = wp_parse_args( $new_settings, $generate_settings );
 		update_option( 'generate_settings', $update_settings );
-	endif;
+	}
 }
 endif;

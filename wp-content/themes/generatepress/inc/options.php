@@ -140,10 +140,10 @@ function generate_settings_page()
 										<?php foreach( $modules as $module => $info ) { ?>
 										<div class="add-on activated gp-clear addon-container grid-parent">
 											<div class="addon-name column-addon-name" style="">
-												<a href="<?php echo $info[ 'url' ]; ?>" target="_blank"><?php echo $module; ?></a>
+												<a href="<?php echo esc_url( $info[ 'url' ] ); ?>" target="_blank"><?php echo $module; ?></a>
 											</div>
 											<div class="addon-action addon-addon-action" style="text-align:right;">
-												<a href="<?php echo $info[ 'url' ]; ?>" target="_blank"><?php _e( 'Learn more','generatepress' ); ?></a>
+												<a href="<?php echo esc_url( $info[ 'url' ] ); ?>" target="_blank"><?php _e( 'Learn more','generatepress' ); ?></a>
 											</div>
 										</div>
 										<div class="gp-clear"></div>
@@ -193,7 +193,7 @@ function generate_settings_page()
 											<?php 
 											$warning = 'return confirm("' . __( 'Warning: This will delete your settings.','generatepress' ) . '")';
 											wp_nonce_field( 'generate_reset_customizer_nonce', 'generate_reset_customizer_nonce' );
-											submit_button( __( 'Delete Default Customizer Settings', 'generatepress' ), 'button', 'submit', false, array( 'onclick' => $warning ) ); 
+											submit_button( __( 'Delete Default Settings', 'generatepress' ), 'button', 'submit', false, array( 'onclick' => esc_js( $warning ) ) ); 
 											?>
 										</p>
 											

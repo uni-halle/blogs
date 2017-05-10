@@ -43,12 +43,12 @@ function generate_get_premium_url( $url = 'https://generatepress.com/premium' )
 	
 	// Set up our URL if we have an ID
 	if ( isset( $args[ 'ref' ] ) ) {
-		$url = esc_url( add_query_arg( 'ref', absint( $args[ 'ref' ] ), $url ) );
+		$url = add_query_arg( 'ref', absint( $args[ 'ref' ] ), $url );
 	}
 	
 	// Set up our URL if we have a campaign
 	if ( isset( $args[ 'campaign' ] ) ) {
-		$url = esc_url( add_query_arg( 'campaign', sanitize_text_field( $args[ 'campaign' ] ), $url ) );
+		$url = add_query_arg( 'campaign', sanitize_text_field( $args[ 'campaign' ] ), $url );
 	}
 	
 	// Return our URL with the optional referral ID
@@ -113,33 +113,5 @@ function generate_no_addons()
 		else :
 			return false;
 		endif;
-}
-endif;
-
-if ( ! function_exists( 'generate_include_default_styles' ) ) :
-/** 
- * Check whether we should include our defaults.css file
- * @since 1.3.42
- */
-function generate_include_default_styles() 
-{
-	// If Spacing is activated
-	if ( defined( 'GENERATE_SPACING_VERSION' ) ) {
-		// If we don't have this function, we can't include defaults.css
-		if ( ! function_exists( 'generate_include_spacing_defaults' ) ) {
-			return false;
-		}
-	}
-	
-	// If Typography is activated
-	if ( defined( 'GENERATE_FONT_VERSION' ) ) {
-		// If we don't have this function, we can't include defaults.css
-		if ( ! function_exists( 'generate_include_typography_defaults' ) ) {
-			return false;
-		}
-	}
-	
-	// We made it this far, return true through a filter
-	return apply_filters( 'generate_include_default_styles', true );
 }
 endif;

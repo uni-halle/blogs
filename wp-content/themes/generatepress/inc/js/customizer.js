@@ -171,6 +171,43 @@ function generatepress_classes_live_update( id, classes, selector, prefix ) {
 	generatepress_classes_live_update( 'content_layout_setting', [ 'one-container', 'separate-containers' ], 'body' );
 	
 	/** 
+	 * Top bar width
+	 */
+	wp.customize( 'generate_settings[top_bar_width]', function( value ) {
+		value.bind( function( newval ) {
+			if ( 'full' == newval ) {
+				$( '.top-bar' ).removeClass( 'grid-container' ).removeClass( 'grid-parent' );
+				if ( 'contained' == wp.customize.value('generate_settings[top_bar_inner_width]')() ) {
+					$( '.inside-top-bar' ).addClass( 'grid-container' ).addClass( 'grid-parent' );
+				}
+			}
+			if ( 'contained' == newval ) {
+				$( '.top-bar' ).addClass( 'grid-container' ).addClass( 'grid-parent' );
+				$( '.inside-top-bar' ).removeClass( 'grid-container' ).removeClass( 'grid-parent' );
+			}
+		} );
+	} );
+	
+	/** 
+	 * Inner top bar width
+	 */
+	wp.customize( 'generate_settings[top_bar_inner_width]', function( value ) {
+		value.bind( function( newval ) {
+			if ( 'full' == newval ) {
+				$( '.inside-top-bar' ).removeClass( 'grid-container' ).removeClass( 'grid-parent' );
+			}
+			if ( 'contained' == newval ) {
+				$( '.inside-top-bar' ).addClass( 'grid-container' ).addClass( 'grid-parent' );
+			}
+		} );
+	} );
+	
+	/** 
+	 * Top bar alignment
+	 */
+	generatepress_classes_live_update( 'top_bar_alignment', [ 'left', 'center', 'right' ], '.top-bar', 'top-bar-align-' );
+	
+	/** 
 	 * Header layout
 	 */
 	wp.customize( 'generate_settings[header_layout_setting]', function( value ) {
@@ -248,6 +285,7 @@ function generatepress_classes_live_update( id, classes, selector, prefix ) {
 	 */
 	wp.customize( 'generate_settings[nav_position_setting]', function( value ) {
 		value.bind( function( newval ) {
+			jQuery('body').trigger('generate_navigation_location_updated');
 			if ( $( '.gen-sidebar-nav' ).length ) {
 				wp.customize.preview.send( 'refresh' );
 				return false;
@@ -271,7 +309,11 @@ function generatepress_classes_live_update( id, classes, selector, prefix ) {
 				$( '#site-navigation:first' ).insertAfter( '.site-header' ).show();
 			}
 			if ( 'nav-above-header' == newval ) {
-				$( '#site-navigation:first' ).prependTo( 'body' ).show();
+				if ( $( '.top-bar:not(.secondary-navigation .top-bar)' ).length ) {
+					$( '#site-navigation:first' ).insertAfter( '.top-bar' ).show();
+				} else {
+					$( '#site-navigation:first' ).prependTo( 'body' ).show();
+				}
 			}
 			if ( 'nav-float-right' == newval ) {
 				$( '#site-navigation:first' ).appendTo( '.inside-header' ).show();

@@ -45,22 +45,21 @@ function generate_show_layout_meta_box( $post ) {
     wp_nonce_field( basename( __FILE__ ), 'generate_layout_nonce' );
     $stored_meta = get_post_meta( $post->ID );
 	$stored_meta['_generate-sidebar-layout-meta'][0] = ( isset( $stored_meta['_generate-sidebar-layout-meta'][0] ) ) ? $stored_meta['_generate-sidebar-layout-meta'][0] : '';
-	$checked = ( isset($stored_meta['_generate-sidebar-layout-meta'][0]) && '' == $stored_meta['_generate-sidebar-layout-meta'][0] ) ? 'checked="checked"' : '';
     ?>
  
     <p>
 		<div class="generate_layouts">
 			<label for="meta-generate-layout-global" style="display:block;margin-bottom:10px;">
-				<input type="radio" name="_generate-sidebar-layout-meta" id="meta-generate-layout-global" value="" <?php echo $checked; ?>>
-				<?php _e('Global Layout Settings','generatepress');?>
+				<input type="radio" name="_generate-sidebar-layout-meta" id="meta-generate-layout-global" value="" <?php checked( $stored_meta['_generate-sidebar-layout-meta'][0], '' ); ?>>
+				<?php _e('Default','generatepress');?>
 			</label>
 			<label for="meta-generate-layout-one" style="display:block;margin-bottom:3px;" title="<?php _e('Right Sidebar','generatepress');?>">
 				<input type="radio" name="_generate-sidebar-layout-meta" id="meta-generate-layout-one" value="right-sidebar" <?php checked( $stored_meta['_generate-sidebar-layout-meta'][0], 'right-sidebar' ); ?>>
-				<?php _e('Content','generatepress');?> / <strong><?php _e('Sidebar','generatepress');?></strong>
+				<?php _e('Content','generatepress');?> / <strong><?php _ex( 'Sidebar','Short name for meta box','generatepress' );?></strong>
 			</label>
 			<label for="meta-generate-layout-two" style="display:block;margin-bottom:3px;" title="<?php _e('Left Sidebar','generatepress');?>">
 				<input type="radio" name="_generate-sidebar-layout-meta" id="meta-generate-layout-two" value="left-sidebar" <?php checked( $stored_meta['_generate-sidebar-layout-meta'][0], 'left-sidebar' ); ?>>
-				<strong><?php _e('Sidebar','generatepress');?></strong> / <?php _e('Content','generatepress');?>
+				<strong><?php _ex( 'Sidebar','Short name for meta box','generatepress' );?></strong> / <?php _e('Content','generatepress');?>
 			</label>
 			<label for="meta-generate-layout-three" style="display:block;margin-bottom:3px;" title="<?php _e('No Sidebars','generatepress');?>">
 				<input type="radio" name="_generate-sidebar-layout-meta" id="meta-generate-layout-three" value="no-sidebar" <?php checked( $stored_meta['_generate-sidebar-layout-meta'][0], 'no-sidebar' ); ?>>
@@ -68,15 +67,15 @@ function generate_show_layout_meta_box( $post ) {
 			</label>
 			<label for="meta-generate-layout-four" style="display:block;margin-bottom:3px;" title="<?php _e('Both Sidebars','generatepress');?>">
 				<input type="radio" name="_generate-sidebar-layout-meta" id="meta-generate-layout-four" value="both-sidebars" <?php checked( $stored_meta['_generate-sidebar-layout-meta'][0], 'both-sidebars' ); ?>>
-				<strong><?php _e('Sidebar','generatepress');?></strong> / <?php _e('Content','generatepress');?> / <strong><?php _e('Sidebar','generatepress');?></strong>
+				<strong><?php _ex( 'Sidebar','Short name for meta box','generatepress' );?></strong> / <?php _e('Content','generatepress');?> / <strong><?php _ex( 'Sidebar','Short name for meta box','generatepress' );?></strong>
 			</label>
 			<label for="meta-generate-layout-five" style="display:block;margin-bottom:3px;" title="<?php _e('Both Sidebars on Left','generatepress');?>">
 				<input type="radio" name="_generate-sidebar-layout-meta" id="meta-generate-layout-five" value="both-left" <?php checked( $stored_meta['_generate-sidebar-layout-meta'][0], 'both-left' ); ?>>
-				<strong><?php _e('Sidebar','generatepress');?></strong> / <strong><?php _e('Sidebar','generatepress');?></strong> / <?php _e('Content','generatepress');?>
+				<strong><?php _ex( 'Sidebar','Short name for meta box','generatepress' );?></strong> / <strong><?php _ex( 'Sidebar','Short name for meta box','generatepress' );?></strong> / <?php _e('Content','generatepress');?>
 			</label>
 			<label for="meta-generate-layout-six" style="display:block;margin-bottom:3px;" title="<?php _e('Both Sidebars on Right','generatepress');?>">
 				<input type="radio" name="_generate-sidebar-layout-meta" id="meta-generate-layout-six" value="both-right" <?php checked( $stored_meta['_generate-sidebar-layout-meta'][0], 'both-right' ); ?>>
-				<?php _e('Content','generatepress');?> / <strong><?php _e('Sidebar','generatepress');?></strong> / <strong><?php _e('Sidebar','generatepress');?></strong>
+				<?php _e('Content','generatepress');?> / <strong><?php _ex( 'Sidebar','Short name for meta box','generatepress' );?></strong> / <strong><?php _ex( 'Sidebar','Short name for meta box','generatepress' );?></strong>
 			</label>
 		</div>
 	</p>
@@ -98,6 +97,11 @@ function generate_save_layout_meta($post_id) {
     if ( $is_autosave || $is_revision || ! $is_valid_nonce ) {
         return;
     }
+	
+	// Check that the logged in user has permission to edit this post
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return $post_id;
+	}
  
 	$key   = '_generate-sidebar-layout-meta';
 	$value = filter_input( INPUT_POST, $key, FILTER_SANITIZE_STRING );
@@ -151,14 +155,13 @@ function generate_show_footer_widget_meta_box( $post ) {
     wp_nonce_field( basename( __FILE__ ), 'generate_footer_widget_nonce' );
     $stored_meta = get_post_meta( $post->ID );
 	$stored_meta['_generate-footer-widget-meta'][0] = ( isset( $stored_meta['_generate-footer-widget-meta'][0] ) ) ? $stored_meta['_generate-footer-widget-meta'][0] : '';
-	$checked = ( '' == $stored_meta['_generate-footer-widget-meta'][0] ) ? 'checked="checked"' : '';
     ?>
  
     <p>
 		<div class="generate_footer_widget">
 			<label for="meta-generate-footer-widget-global" style="display:block;margin-bottom:10px;">
-				<input type="radio" name="_generate-footer-widget-meta" id="meta-generate-footer-widget-global" value="" <?php echo $checked; ?>>
-				<?php _e('Global Footer Widget Settings','generatepress');?>
+				<input type="radio" name="_generate-footer-widget-meta" id="meta-generate-footer-widget-global" value="" <?php checked( $stored_meta['_generate-footer-widget-meta'][0], '' ); ?>>
+				<?php _e('Default','generatepress');?>
 			</label>
 			<label for="meta-generate-footer-widget-zero" style="display:block;margin-bottom:3px;" title="<?php _e('0 Widgets','generatepress');?>">
 				<input type="radio" name="_generate-footer-widget-meta" id="meta-generate-footer-widget-zero" value="0" <?php checked( $stored_meta['_generate-footer-widget-meta'][0], '0' ); ?>>
@@ -206,6 +209,11 @@ function generate_save_footer_widget_meta($post_id) {
         return;
     }
 	
+	// Check that the logged in user has permission to edit this post
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return $post_id;
+	}
+	
 	$key   = '_generate-footer-widget-meta';
 	$value = filter_input( INPUT_POST, $key, FILTER_SANITIZE_STRING );
 
@@ -236,12 +244,12 @@ function generate_add_page_builder_meta_box() {
 	foreach ($post_types as $type) {
 		if ( 'attachment' !== $type ) {
 			add_meta_box(  
-				'generate_page_builder_meta_box', // $id  
-				__('Page Builder Integration','generatepress'), // $title   
-				'generate_show_page_builder_meta_box', // $callback  
-				$type, // $page  
-				'side', // $context  
-				'default' // $priority  
+				'generate_page_builder_meta_box', 
+				__( 'Page Builder Container','generatepress' ),  
+				'generate_show_page_builder_meta_box',
+				$type,
+				'side',
+				'default'
 			); 
 		}
 	}
@@ -256,18 +264,30 @@ function generate_show_page_builder_meta_box( $post ) {
 
     wp_nonce_field( basename( __FILE__ ), 'generate_page_builder_nonce' );
     $stored_meta = get_post_meta( $post->ID );
+	
+	// Set up our full width content option
 	$stored_meta['_generate-full-width-content'][0] = ( isset( $stored_meta['_generate-full-width-content'][0] ) ) ? $stored_meta['_generate-full-width-content'][0] : '';
-    ?>
- 
-    <p>
-		<div class="generate_full_width_template">
-			<label for="_generate-full-width-content" style="display:block;margin-bottom:10px;">
-				<input type="checkbox" name="_generate-full-width-content" id="_generate-full-width-content" value="true" <?php checked( $stored_meta['_generate-full-width-content'][0], 'true' ); ?>>
-				<?php _e('Full Width Content','generatepress');?>
-			</label>
-		</div>
+	
+	// Set up our remove content padding option
+	$stored_meta['_generate-remove-content-padding'][0] = ( isset( $stored_meta['_generate-remove-content-padding'][0] ) ) ? $stored_meta['_generate-remove-content-padding'][0] : '';
+	?>
+	<p class="page-builder-content" style="color:#666;font-size:13px;">
+		<?php _e( 'Choose your page builder content container type. Both options remove the content padding for you.', 'generatepress' ) ;?>
 	</p>
- 
+	<p class="generate_full_width_template">
+		<label for="default-content" style="display:block;margin-bottom:10px;">
+			<input type="radio" name="_generate-full-width-content" id="default-content" value="" <?php checked( $stored_meta['_generate-full-width-content'][0], '' ); ?>>
+			<?php _e( 'Default','generatepress' );?>
+		</label>
+		<label id="full-width-content" for="_generate-full-width-content" style="display:block;margin-bottom:10px;">
+			<input type="radio" name="_generate-full-width-content" id="_generate-full-width-content" value="true" <?php checked( $stored_meta['_generate-full-width-content'][0], 'true' ); ?>>
+			<?php _e( 'Full Width','generatepress' );?>
+		</label>
+		<label id="generate-remove-padding" for="_generate-remove-content-padding" style="display:block;margin-bottom:10px;">
+			<input type="radio" name="_generate-full-width-content" id="_generate-remove-content-padding" value="contained" <?php checked( $stored_meta['_generate-full-width-content'][0], 'contained' ); ?>>
+			<?php _e( 'Contained','generatepress' );?>
+		</label>
+	</p>
     <?php
 }
 endif;
@@ -286,6 +306,11 @@ function generate_save_page_builder_meta($post_id) {
     if ( $is_autosave || $is_revision || ! $is_valid_nonce ) {
         return;
     }
+	
+	// Check that the logged in user has permission to edit this post
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return $post_id;
+	}
 	
 	$key   = '_generate-full-width-content';
 	$value = filter_input( INPUT_POST, $key, FILTER_SANITIZE_STRING );

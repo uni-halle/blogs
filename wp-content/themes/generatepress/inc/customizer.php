@@ -289,7 +289,103 @@ function generate_customize_register( $wp_customize ) {
 		)
 	);
 	
-	// Add Layout section
+	// Add Top Bar section
+	$wp_customize->add_section(
+		'generate_top_bar',
+		array(
+			'title' => __( 'Top Bar', 'generatepress' ),
+			'capability' => 'edit_theme_options',
+			'priority' => 15,
+			'panel' => 'generate_layout_panel',
+		)
+	);
+	
+	// Add Top Bar width
+	$wp_customize->add_setting(
+		'generate_settings[top_bar_width]',
+		array(
+			'default' => $defaults['top_bar_width'],
+			'type' => 'option',
+			'sanitize_callback' => 'generate_sanitize_choices',
+			'transport' => 'postMessage'
+		)
+	);
+	
+	// Add Top Bar width control
+	$wp_customize->add_control(
+		'generate_settings[top_bar_width]',
+		array(
+			'type' => 'select',
+			'label' => __( 'Top Bar Width', 'generatepress' ),
+			'section' => 'generate_top_bar',
+			'choices' => array(
+				'full' => __( 'Full', 'generatepress' ),
+				'contained' => __( 'Contained', 'generatepress' )
+			),
+			'settings' => 'generate_settings[top_bar_width]',
+			'priority' => 5,
+			'active_callback' => 'generate_is_top_bar_active',
+		)
+	);
+	
+	// Add Top Bar inner width
+	$wp_customize->add_setting(
+		'generate_settings[top_bar_inner_width]',
+		array(
+			'default' => $defaults['top_bar_inner_width'],
+			'type' => 'option',
+			'sanitize_callback' => 'generate_sanitize_choices',
+			'transport' => 'postMessage'
+		)
+	);
+	
+	// Add Top Bar width control
+	$wp_customize->add_control(
+		'generate_settings[top_bar_inner_width]',
+		array(
+			'type' => 'select',
+			'label' => __( 'Top Bar Inner Width', 'generatepress' ),
+			'section' => 'generate_top_bar',
+			'choices' => array(
+				'full' => __( 'Full', 'generatepress' ),
+				'contained' => __( 'Contained', 'generatepress' )
+			),
+			'settings' => 'generate_settings[top_bar_inner_width]',
+			'priority' => 10,
+			'active_callback' => 'generate_is_top_bar_active',
+		)
+	);
+	
+	// Add top bar alignment
+	$wp_customize->add_setting(
+		'generate_settings[top_bar_alignment]',
+		array(
+			'default' => $defaults['top_bar_alignment'],
+			'type' => 'option',
+			'sanitize_callback' => 'generate_sanitize_choices',
+			'transport' => 'postMessage'
+		)
+	);
+	
+	// Add navigation control
+	$wp_customize->add_control(
+		'generate_settings[top_bar_alignment]',
+		array(
+			'type' => 'select',
+			'label' => __( 'Top Bar Alignment', 'generatepress' ),
+			'section' => 'generate_top_bar',
+			'choices' => array(
+				'left' => __( 'Left', 'generatepress' ),
+				'center' => __( 'Center', 'generatepress' ),
+				'right' => __( 'Right', 'generatepress' )
+			),
+			'settings' => 'generate_settings[top_bar_alignment]',
+			'priority' => 15,
+			'active_callback' => 'generate_is_top_bar_active',
+		)
+	);
+	
+	// Add Header section
 	$wp_customize->add_section(
 		'generate_layout_header',
 		array(
@@ -551,8 +647,8 @@ function generate_customize_register( $wp_customize ) {
 			'label' => __( 'Navigation Search', 'generatepress' ),
 			'section' => 'generate_layout_navigation',
 			'choices' => array(
-				'enable' => __( 'Enabled', 'generatepress' ),
-				'disable' => __( 'Disabled', 'generatepress' )
+				'enable' => __( 'Enable', 'generatepress' ),
+				'disable' => __( 'Disable', 'generatepress' )
 			),
 			'settings' => 'generate_settings[nav_search]',
 			'priority' => 23
@@ -827,8 +923,8 @@ function generate_customize_register( $wp_customize ) {
 			'label' => __( 'Back to Top Button', 'generatepress' ),
 			'section' => 'generate_layout_footer',
 			'choices' => array(
-				'enable' => __( 'Enabled', 'generatepress' ),
-				'' => __( 'Disabled', 'generatepress' )
+				'enable' => __( 'Enable', 'generatepress' ),
+				'' => __( 'Disable', 'generatepress' )
 			),
 			'settings' => 'generate_settings[back_to_top]',
 			'priority' => 50
@@ -902,14 +998,14 @@ endif;
 
 if ( ! function_exists( 'generate_customizer_live_preview' ) ) :
 /**
- * Add our live preview JS
+ * Add our live preview scripts
  *
  * @since 0.1
  */
-add_action( 'customize_preview_init', 'generate_customizer_live_preview' );
+add_action( 'customize_preview_init', 'generate_customizer_live_preview', 100 );
 function generate_customizer_live_preview()
 {
-	wp_enqueue_script( 'generate-themecustomizer', get_template_directory_uri().'/inc/js/customizer.js', array( 'customize-preview' ), GENERATE_VERSION, true );
+	wp_enqueue_script( 'generate-themecustomizer', trailingslashit( get_template_directory_uri() ) . 'inc/js/customizer.js', array( 'customize-preview' ), GENERATE_VERSION, true );
 }
 endif;
 
@@ -947,6 +1043,19 @@ if ( ! function_exists( 'generate_is_footer_bar_active' ) ) :
 function generate_is_footer_bar_active() 
 {
 	return ( is_active_sidebar( 'footer-bar' ) ) ? true : false;
+}
+endif;
+
+if ( ! function_exists( 'generate_is_top_bar_active' ) ) :
+/**
+ * Check to see if the top bar is active
+ *
+ * @since 1.3.45
+ */
+function generate_is_top_bar_active()
+{
+	$top_bar = is_active_sidebar( 'top-bar' ) ? true : false;
+	return apply_filters( 'generate_is_top_bar_active', $top_bar );
 }
 endif;
 

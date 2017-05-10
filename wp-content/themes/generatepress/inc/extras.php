@@ -35,9 +35,6 @@ function generate_body_classes( $classes )
 		generate_get_defaults() 
 	);
 	
-	// Add the GeneratePress class
-	$classes[] = 'generatepress';
-	
 	// Get the layout
 	$layout = generate_get_layout();
 	
@@ -48,8 +45,13 @@ function generate_body_classes( $classes )
 	$widgets = generate_get_footer_widgets();
 	
 	// Full width content
+	// Used for page builders, sets the content to full width and removes the padding
 	$full_width = get_post_meta( get_the_ID(), '_generate-full-width-content', true );
-	$classes[] = ( '' !== $full_width && false !== $full_width && is_singular() ) ? 'full-width-content' : '';
+	$classes[] = ( '' !== $full_width && false !== $full_width && is_singular() && 'true' == $full_width ) ? 'full-width-content' : '';
+	
+	// Contained content
+	// Used for page builders, basically just removes the content padding
+	$classes[] = ( '' !== $full_width && false !== $full_width && is_singular() && 'contained' == $full_width ) ? 'contained-content' : '';
 	
 	// Let us know if a featured image is being used
 	if ( has_post_thumbnail() ) :
@@ -98,6 +100,29 @@ function generate_body_classes( $classes )
 	}
 
 	return $classes;
+}
+endif;
+
+if ( ! function_exists( 'generate_top_bar_classes' ) ) :
+/**
+ * Adds custom classes to the header
+ * @since 0.1
+ */
+add_filter( 'generate_top_bar_class', 'generate_top_bar_classes');
+function generate_top_bar_classes( $classes )
+{
+	
+	$classes[] = 'top-bar';
+
+	if ( 'contained' == generate_get_setting( 'top_bar_width' ) ) :
+		$classes[] = 'grid-container';
+		$classes[] = 'grid-parent';
+	endif;
+	
+	$classes[] = 'top-bar-align-' . generate_get_setting( 'top_bar_alignment' );
+
+	return $classes;
+	
 }
 endif;
 

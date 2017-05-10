@@ -27,6 +27,10 @@ if ( ! function_exists( 'generate_spacing_get_defaults' ) ) :
 function generate_spacing_get_defaults( $filter = true )
 {
 	$generate_spacing_defaults = array(
+		'top_bar_top' => '10',
+		'top_bar_right' => '10',
+		'top_bar_bottom' => '10',
+		'top_bar_left' => '10',
 		'header_top' => '40',
 		'header_right' => '40',
 		'header_bottom' => '40',
@@ -38,7 +42,10 @@ function generate_spacing_get_defaults( $filter = true )
 		'content_right' => '40',
 		'content_bottom' => '40',
 		'content_left' => '40',
-		'mobile_content_padding' => '30',
+		'mobile_content_top' => '30',
+		'mobile_content_right' => '30',
+		'mobile_content_bottom' => '30',
+		'mobile_content_left' => '30',
 		'separator' => '20',
 		'left_sidebar_width' => '25',
 		'right_sidebar_width' => '25',
@@ -80,13 +87,25 @@ function generate_spacing_css()
 	
 	$css = new GeneratePress_CSS;
 	
+	// Top bar padding
+	if ( is_active_sidebar( 'top-bar' ) ) {
+		$css->set_selector( '.inside-top-bar' );
+		$css->add_property( 'padding', generate_padding_css( $spacing_settings[ 'top_bar_top' ], $spacing_settings[ 'top_bar_right' ], $spacing_settings[ 'top_bar_bottom' ], $spacing_settings[ 'top_bar_left' ] ), generate_padding_css( $og_defaults[ 'top_bar_top' ], $og_defaults[ 'top_bar_right' ], $og_defaults[ 'top_bar_bottom' ], $og_defaults[ 'top_bar_left' ] ) );
+	}
+	
 	// Header padding
 	$css->set_selector( '.inside-header' );
 	$css->add_property( 'padding', generate_padding_css( $spacing_settings[ 'header_top' ], $spacing_settings[ 'header_right' ], $spacing_settings[ 'header_bottom' ], $spacing_settings[ 'header_left' ] ), generate_padding_css( $og_defaults[ 'header_top' ], $og_defaults[ 'header_right' ], $og_defaults[ 'header_bottom' ], $og_defaults[ 'header_left' ] ) );
 	
 	// Content padding
-	$css->set_selector( '.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .separate-containers .paging-navigation, .one-container .site-content' );
+	$css->set_selector( '.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .separate-containers .paging-navigation, .one-container .site-content, .inside-page-header' );
 	$css->add_property( 'padding', generate_padding_css( $spacing_settings[ 'content_top' ], $spacing_settings[ 'content_right' ], $spacing_settings[ 'content_bottom' ], $spacing_settings[ 'content_left' ] ), generate_padding_css( $og_defaults[ 'content_top' ], $og_defaults[ 'content_right' ], $og_defaults[ 'content_bottom' ], $og_defaults[ 'content_left' ] ) );
+	
+	// Mobile Content padding
+	$css->start_media_query( apply_filters( 'generate_mobile_media_query', '(max-width:768px)' ) );
+		$css->set_selector( '.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .separate-containers .paging-navigation, .one-container .site-content, .inside-page-header' );
+		$css->add_property( 'padding', generate_padding_css( $spacing_settings[ 'mobile_content_top' ], $spacing_settings[ 'mobile_content_right' ], $spacing_settings[ 'mobile_content_bottom' ], $spacing_settings[ 'mobile_content_left' ] ) );
+	$css->stop_media_query();
 	
 	// One container
 	if ( 'one-container' == generate_get_setting( 'content_layout_setting' ) || is_customize_preview() ) {
@@ -271,11 +290,6 @@ function generate_spacing_css()
 		}
 	}
 	
-	// Add mobile padding to the content
-	$mobile = apply_filters( 'generate_mobile_media_query', '(max-width:768px)' );
-	$mobile_content_padding = ( isset( $spacing_settings[ 'mobile_content_padding' ] ) ) ? absint( $spacing_settings[ 'mobile_content_padding' ] ) : '30';
-	$output .= '@media ' . esc_attr( $mobile ) . ' {.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .separate-containers .paging-navigation, .one-container .site-content {padding: ' . $mobile_content_padding . 'px;}}';
-	
 	// Allow us to hook CSS into our output
 	do_action( 'generate_spacing_css', $css );
 	
@@ -289,8 +303,7 @@ if ( ! function_exists( 'generate_spacing_scripts' ) ) :
  */
 add_action( 'wp_enqueue_scripts', 'generate_spacing_scripts', 50 );
 function generate_spacing_scripts() {
-	$name = ( wp_style_is( 'generate-defaults', 'enqueued' ) ) ? 'generate-defaults' : 'generate-style';
-	wp_add_inline_style( $name, generate_spacing_css() );
+	wp_add_inline_style( 'generate-style', generate_spacing_css() );
 }
 endif;
 
