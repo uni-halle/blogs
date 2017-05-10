@@ -3,7 +3,7 @@
  * Plugin Name: Social Media Widget
  * Plugin URI: http://wordpress.org/extend/plugins/social-media-widget/
  * Description: Adds links to all of your social media and sharing site profiles. Tons of icons come in 3 sizes, 4 icon styles, and 4 animations.
- * Version: 4.0.5
+ * Version: 4.0.6
  * Author: Noah Kagan
  * Author URI: http://sumome.com
  **/
@@ -38,7 +38,7 @@ function socialwidget_load_widgets() {
 class Social_Widget extends WP_Widget {
 
 	/* Widget setup  */
-	function Social_Widget() {
+	function __construct() {
 		/* Widget settings. */
 		$widget_ops = array( 'classname' => 'Social_Widget', 'description' => __('A widget that allows the user to display social media icons in their sidebar', 'smw') );
 
