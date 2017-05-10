@@ -1,8 +1,8 @@
 === Plugin Name ===
-Contributors: kbmcardle, bravenewcode, duanestorey, dalemugford, adamdipardo,
+Contributors: wptouch, duanestorey, dalemugford, adamdipardo, oxymoron
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 4.2
-Stable tag: 4.3.10
+Stable tag: 4.3.16
 Tested up to: 4.7
 License: GPLv2
 
@@ -32,6 +32,41 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 6. Theme settings
 
 == Changelog ==
+
+= Version 4.3.16 (April 25, 2017) =
+
+* Fixed: Bug where backslashes were being stripped from shortcode display.
+
+= Version 4.3.15 (April 10, 2017) =
+
+* Fixed: PHP 7.1.2 error regarding "Process desktop theme shortcodes" option.
+
+= Version 4.3.14 (March 20, 2017) =
+
+* Fixed: Updated functionality for theme incompatibility notice to be permanently dismissed.
+* Fixed: Updated functionality for plugin incompatibility notice to be permanently dismissed.
+* Fixed: Bug where automatically-chosen font colors were wrong.
+
+= Version 4.3.13.1 (March 8, 2017) =
+
+* Fixed: Bug where if you dismissed the newsletter signup outside of the WPtouch settings area it would continue to show the notice.
+
+= Version 4.3.13 (March 6, 2017) =
+
+* Fixed: Bug that didn't allow mobile / desktop switching in specific W3TC configuration.
+* Fixed: Warning that appeared for sites running PHP 7.1+.
+* Speed Improvement: Minimize Bauhaus CSS & JavaScript.
+* New: Added Newsletter Signup option in settings.
+
+= Version 4.3.12 (February 21, 2017) =
+
+* Speed Improvement: Minimize foundation CSS & JavaScript.
+* Speed Improvement: Reduce HTTP requests by inlining small stylesheets.
+* Speed Improvement: Minimize internal module CSS & JavaScript.
+
+= Version 4.3.11 (February 9, 2017) =
+
+* Fixed: Better support for SSL in the WPtouch settings page
 
 = Version 4.3.10 (December 22, 2016) =
 

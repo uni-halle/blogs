@@ -11,7 +11,7 @@ function foundation_media_init() {
 		// Load FitVids
 		wp_enqueue_script(
 			'foundation_media_fitvids',
-			foundation_get_base_module_url() . '/media/fitvids.js',
+			foundation_get_base_module_url() . '/media/fitvids.min.js',
 			array( 'foundation_base' ),
 			md5( FOUNDATION_VERSION ),
 			true
@@ -19,7 +19,7 @@ function foundation_media_init() {
 
 		wp_enqueue_script(
 			'foundation_media_handling',
-			foundation_get_base_module_url() . '/media/media.js',
+			foundation_get_base_module_url() . '/media/media.min.js',
 			false,
 			md5( FOUNDATION_VERSION ),
 			true

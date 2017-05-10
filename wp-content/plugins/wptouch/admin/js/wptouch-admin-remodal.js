@@ -217,8 +217,54 @@ function wptouchHandleLicensePanel() {
 	}
 }
 
+function wptouchHandleNewsletterNoticeDismiss() {
+    jQuery( '#wpbody-content' ).on( 'click', '.js-free-newsletter-notice .notice-dismiss', function () {
+        jQuery.ajax({
+            url: ajaxurl,
+            data: {
+                action: 'disable_newsletter_notice'
+            },
+            done: function() {
+                // Do nothing.
+            }
+        });
+    } );
+}
+
+function wptouchHandleThemeIncompatibilityDismiss() {
+    jQuery( '#wpbody-content' ).on( 'click', '.js-theme-incompatibility-notice .notice-dismiss', function () {
+        jQuery.ajax({
+            url: ajaxurl,
+            data: {
+                action: 'disable_theme_incompatibility_notice'
+            },
+            done: function() {
+                // Do nothing.
+            }
+        });
+    } );
+}
+
+function wptouchHandlePluginIncompatibilityDismiss() {
+    jQuery( '#wpbody-content' ).on( 'click', '.js-plugin-incompatibility-notice .notice-dismiss', function () {
+        jQuery.ajax({
+            url: ajaxurl,
+            data: {
+                action: 'disable_plugin_incompatibility_notice',
+                plugin: jQuery( '.js-wptouch-incompatible-plugin-name' ).val()
+            },
+            done: function() {
+                // Do nothing.
+            }
+        });
+    } );
+}
+
 function wptouchSitewideAdminReady(){
 	wptouchHandleLicensePanel();
+    wptouchHandleNewsletterNoticeDismiss();
+    wptouchHandleThemeIncompatibilityDismiss();
+    wptouchHandlePluginIncompatibilityDismiss();
 }
 
 jQuery( document ).ready( function() {

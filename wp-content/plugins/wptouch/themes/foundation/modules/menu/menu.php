@@ -8,7 +8,7 @@ function foundation_menu_inline_style( $style_data ) {
 	require_once( WPTOUCH_DIR . '/core/file-operations.php' );
 	$dir = foundation_get_base_module_dir();
 
-	return $style_data . wptouch_load_file( $dir . '/menu/menu.css' );
+	return $style_data . wptouch_load_file( $dir . '/menu/menu.min.css' );
 }
 
 function foundation_get_page_walker( $walker, $menu_name ) {
@@ -56,7 +56,7 @@ function foundation_menu_init() {
 
 	wp_enqueue_script(
 		'foundation_menu',
-		foundation_get_base_module_url() . '/menu/menu.js',
+		foundation_get_base_module_url() . '/menu/menu.min.js',
 		array( 'jquery' ),
 		md5( FOUNDATION_VERSION ),
 		true

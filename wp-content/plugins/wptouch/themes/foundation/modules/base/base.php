@@ -34,7 +34,7 @@ function foundation_base_get_script_deps() {
 function foundation_base_init() {
 	wp_enqueue_script(
 		'foundation_base',
-		foundation_get_base_module_url() . '/base/base.js',
+		foundation_get_base_module_url() . '/base/base.min.js',
 		foundation_base_get_script_deps(),
 		md5( FOUNDATION_VERSION ),
 		true
@@ -42,7 +42,7 @@ function foundation_base_init() {
 
 	wp_enqueue_script(
 		'foundation__public_base',
-		foundation_get_base_module_url() . '/base/base-public.js',
+		foundation_get_base_module_url() . '/base/base-public.min.js',
 		foundation_base_get_script_deps(),
 		md5( FOUNDATION_VERSION ),
 		true
@@ -52,7 +52,7 @@ function foundation_base_init() {
 	if ( wptouch_in_preview() ) {
 		wp_enqueue_script(
 			'foundation-preview',
-			foundation_get_base_module_url() . '/base/wptouch-preview.js',
+			foundation_get_base_module_url() . '/base/wptouch-preview.min.js',
 			array( 'foundation_base' ),
 			md5( FOUNDATION_VERSION ),
 			true

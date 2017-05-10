@@ -13,7 +13,7 @@ function foundation_hammer_init() {
 
 	wp_enqueue_script(
 		'foundation_hammer_wptouch',
-		foundation_get_base_module_url() . '/hammer/wptouch.hammer.js',
+		foundation_get_base_module_url() . '/hammer/wptouch.hammer.min.js',
 		array( 'foundation_hammer' ),
 		md5( FOUNDATION_VERSION ),
 		true

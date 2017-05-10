@@ -250,7 +250,9 @@ function wptouch_the_addon_icon() {
 function wptouch_get_addon_icon() {
 	global $wptouch_cur_addon;
 	if ( $wptouch_cur_addon ) {
-		return apply_filters( 'wptouch_addon_icon', $wptouch_cur_addon->screenshot );
+		$wptouch_addon_icon = wptouch_check_url_ssl( $wptouch_cur_addon->screenshot );
+
+		return apply_filters( 'wptouch_addon_icon', $wptouch_addon_icon );
 	}
 
 	return false;

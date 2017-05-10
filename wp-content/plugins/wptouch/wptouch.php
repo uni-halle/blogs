@@ -2,10 +2,10 @@
 /*
 	Plugin Name: WPtouch Mobile Plugin
 	Plugin URI: http://www.wptouch.com/
-	Version: 4.3.10
-	Description: Make a beautiful mobile-friendly version of your website with just a few clicks
-	Author: BraveNewCode Inc.
-	Author URI: http://www.bravenewcode.com/
+	Version: 4.3.16
+	Description: Make a beautiful mobile-friendly version of your website with just a few clicks.
+	Author: WPtouch
+	Author URI: http://www.wptouch.com/
 	Text Domain: wptouch-pro
 	Domain Path: /lang
 	License: GNU General Public License 2.0 (GPL) http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -14,7 +14,7 @@
 
 function wptouch_create_four_object() {
 	if ( !defined( 'WPTOUCH_IS_PRO' ) ) {
-		define( 'WPTOUCH_VERSION', '4.3.10' );
+		define( 'WPTOUCH_VERSION', '4.3.16' );
 
 		define( 'WPTOUCH_BASE_NAME', basename( __FILE__, '.php' ) . '.php' );
 		define( 'WPTOUCH_DIR', WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . basename( __FILE__, '.php' ) );
@@ -140,45 +140,26 @@ function wptouch_free_get_random_site( $amount ) {
 	return $result % $amount;
 }
 
-function wptouch_free_admin_notice() {
-    global $current_user;
-	$user_id = $current_user->ID;
-
-    if ( current_user_can( 'activate_plugins' ) ) {
-		$random_num = wptouch_free_get_random_site( 2 );
-		if ( !get_user_meta( $user_id, 'wptouch_free_message_419', true ) ) {
-			echo '<div style="position:relative;" class="notice notice-success">';
-			switch( $random_num ) {
-				case 0:
-					$current_user = wp_get_current_user();
-					echo '<p><form action="http://wptouch.createsend.com/t/t/s/xurhlk/" method="post" id="subForm"><input id="fieldName" name="cm-name" type="hidden" value="' . $current_user->first_name . ' ' . $current_user->last_name . '" /><input id="fieldEmail" name="cm-xurhlk-xurhlk" type="hidden" value="' . $current_user->user_email . '" />' . sprintf( __( '%sSign-up to to get WPtouch news, updates and changes via your user email address:%s', 'wptouch' ), '<strong>', '</strong>' ) . '<button class="button button-secondary" type="submit" style="margin-left: 10px; margin-top:-5px;">Subscribe &rarr;</button></form></p>';
-			        	echo '<a style="text-decoration:none;" class="notice-dismiss" href="' . admin_url( 'admin.php?page=wptouch-admin-general-settings&wptouch_free_message_419=1' ) . '"></a>';
-					break;
-				case 1:
-					$current_user = wp_get_current_user();
-	  		  		$customizer_url = admin_url( 'customize.php' );
-			        echo '<p>' . sprintf( __( '%sNEW! WPtouch now supports live editing in the WordPress Customizer!%s Check it out: <a href="%s?wptouch_free_message_419=1&utm_source=free_admin&utm_medium=website&utm_term=dale&utm_campaign=admin_notice">Customize WPtouch Now &rarr;</a> %s', 'wptouch' ), '<strong>', '</strong>', $customizer_url, '<a style="text-decoration:none;" class="notice-dismiss" href="' . admin_url( 'admin.php?page=wptouch-admin-general-settings&wptouch_free_message_419=1' ) . '"></a>' ) . '</p>';
-					echo '<p><form action="http://wptouch.createsend.com/t/t/s/xurhlk/" method="post" id="subForm"><input id="fieldName" name="cm-name" type="hidden" value="' . $current_user->first_name . ' ' . $current_user->last_name . '" /><input id="fieldEmail" name="cm-xurhlk-xurhlk" type="hidden" value="' . $current_user->user_email . '" />' . sprintf( __( '%sSign-up to to get WPtouch news, updates and changes via email:%s', 'wptouch' ), '<strong>', '</strong>' ) . '<button class="button button-secondary" type="submit" style="margin-left: 10px; margin-top:-5px;">Subscribe &rarr;</button></form></p>';
-			        	echo '<a style="text-decoration:none;" class="notice-dismiss" href="' . admin_url( 'admin.php?page=wptouch-admin-general-settings&wptouch_free_message_419=1' ) . '"></a>';
-					break;
-			}
-			echo '</div>';
-		}
+/**
+ * Display free newsletter notice + link to users.
+ */
+function wptouch_free_newsletter_notice() {
+	if ( 1 === (int) get_option( 'wptouch-disable-free-newsletter-notice' ) ) {
+		return;
 	}
+	?>
+	<div class="notice notice-info js-free-newsletter-notice is-dismissible">
+		<p><?php echo wp_kses_post( sprintf( __( 'Thanks for using WPtouch! If you\'d like to sign up for news and updates from the team you can %1$ssubscribe to our newsletter%2$s.', 'wptouch-pro' ), '<a href="' . admin_url( 'admin.php?page=wptouch-admin-general-settings#free-newsletter-signup' ) . '">', '</a>' ) ); ?></p>
+		<button type="button" class="notice-dismiss">
+			<span class="screen-reader-text"><?php esc_html_e( 'Dismiss this notice (permanently).', 'wptouch-pro' ); ?></span>
+		</button>
+	</div>
+	<?php
 }
+add_action( 'admin_notices', 'wptouch_free_newsletter_notice' );
 
-function wptouch_free_admin_notice_dismiss() {
-	global $current_user;
-	$user_id = $current_user->ID;
-
-    /* If user clicks to ignore the notice, add that to their user meta */
-    if ( isset( $_GET[ 'wptouch_free_message_419' ] ) && $_GET[ 'wptouch_free_message_419' ] == '1' ) {
-    	setcookie( 'wptouch_customizer_mode', 'mobile', 0, '/' );
-
-    	update_user_meta( $user_id, 'wptouch_free_message_419', '1' );
-	}
-
+function wptouch_disable_free_newsletter_signup_notice() {
+	update_option( 'wptouch-disable-free-newsletter-notice', 1, false );
 }
+add_action( 'wp_ajax_disable_newsletter_notice', 'wptouch_disable_free_newsletter_signup_notice' );
 
-add_action( 'admin_init', 'wptouch_free_admin_notice_dismiss' );
-//add_action( 'admin_notices', 'wptouch_free_admin_notice' );

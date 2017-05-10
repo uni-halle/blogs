@@ -27,7 +27,7 @@ function wptouch_get_remote_icon_packs() {
 				$icon_set->dir_base = $icon_set_info[0];
 				$icon_set->author = $icon_set_info[2];
 				$icon_set->author_url = $icon_set_info[3];
-				$icon_set->thumbnail = 'http://wptouch-pro-3.s3.amazonaws.com/icon-sets/thumbnails/' . $icon_set_info[0] . '.png';
+				$icon_set->thumbnail = wptouch_check_url_ssl( 'http://wptouch-pro-3.s3.amazonaws.com/icon-sets/thumbnails/' . $icon_set_info[0] . '.png' );
 
 				$remote_icon_packs[] = $icon_set;
 			}

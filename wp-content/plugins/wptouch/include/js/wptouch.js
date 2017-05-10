@@ -43,8 +43,6 @@ function doWPtouchReady() {
 			post_nonce: wptouchMain.security_nonce
 		};
 
-		console.log( params );
-
 		jQuery.post( wptouchMain.current_shortcode_url + '&current_time=' + jQuery.now(), params, function( result ) {
 				shortcodeDiv.html( result );
 				jQuery( document ).trigger( 'wptouch_ajax_content_loaded' );

@@ -18,7 +18,7 @@ function foundation_tappable_init() {
 	
 	wp_enqueue_script( 
 		'foundation_tappable_wptouch', 
-		foundation_get_base_module_url() . '/tappable/wptouch.tappable.js',
+		foundation_get_base_module_url() . '/tappable/wptouch.tappable.min.js',
 		array( 'foundation_tappable' ),
 		md5( FOUNDATION_VERSION ),
 		true 

@@ -14,6 +14,7 @@ add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch
 add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_theme_customize_page' );
 add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_addons' );
 add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_addon_settings' );
+add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_subscribe_to_updates' );
 
 function wptouch_render_updates_page( $page_options ) {
 	global $wptouch_pro;
@@ -697,5 +698,23 @@ function wptouch_render_addons( $page_options ) {
 
 function wptouch_render_addon_settings( $page_options ) {
 	$page_options = apply_filters( 'wptouch_addon_options', $page_options );
+	return $page_options;
+}
+
+function wptouch_render_subscribe_to_updates( $page_options ) {
+	wptouch_add_sub_page( WPTOUCH_ADMIN_NEWSLETTER_SIGNUP, 'free-newsletter-signup', $page_options );
+	wptouch_add_page_section(
+		WPTOUCH_ADMIN_NEWSLETTER_SIGNUP,
+		_x( 'Subscribe to updates about new releases and tips', 'wptouch-pro' ),
+		'newsletter-signup',
+		array(
+			wptouch_add_setting(
+				'custom',
+				'free-newsletter-signup'
+			)
+		),
+		$page_options
+	);
+
 	return $page_options;
 }

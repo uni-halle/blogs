@@ -231,7 +231,8 @@ function wptouch_the_theme_icon() {
 function wptouch_get_theme_icon() {
 	global $wptouch_cur_theme;
 	if ( $wptouch_cur_theme ) {
-		return apply_filters( 'wptouch_theme_screenshot', $wptouch_cur_theme->screenshot );
+		$wptouch_theme_icon = wptouch_check_url_ssl( $wptouch_cur_theme->screenshot );
+		return apply_filters( 'wptouch_theme_screenshot', $wptouch_theme_icon );
 	}
 
 	return false;
@@ -364,7 +365,7 @@ function wptouch_the_theme_screenshot() {
 	global $wptouch_theme_screenshot_iterator;
 	global $wptouch_theme_screenshot_item;
 
-	$wptouch_theme_screenshot_item = $wptouch_theme_screenshot_iterator->the_item();
+	$wptouch_theme_screenshot_item = wptouch_check_url_ssl( $wptouch_theme_screenshot_iterator->the_item() );
 
 	return apply_filters( 'wptouch_theme_screenshot', $wptouch_theme_screenshot_item );
 }
@@ -393,5 +394,3 @@ function wptouch_reset_theme_screenshot() {
 
 	$wptouch_theme_screenshot_iterator = false;
 }
-
-

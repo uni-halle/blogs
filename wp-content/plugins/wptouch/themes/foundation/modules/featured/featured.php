@@ -17,7 +17,7 @@ function foundation_featured_init() {
 		if ( $settings->featured_enabled ) {
 			wp_enqueue_script(
 				'foundation_featured',
-				foundation_get_base_module_url() . '/featured/swipe.js',
+				foundation_get_base_module_url() . '/featured/swipe.min.js',
 				false,
 				md5( FOUNDATION_VERSION ),
 				true
@@ -25,7 +25,7 @@ function foundation_featured_init() {
 
 			wp_enqueue_script(
 				'foundation_featured_init',
-				foundation_get_base_module_url() . '/featured/wptouch-swipe.js',
+				foundation_get_base_module_url() . '/featured/wptouch-swipe.min.js',
 				'foundation_featured',
 				md5( FOUNDATION_VERSION ),
 				true
@@ -34,7 +34,7 @@ function foundation_featured_init() {
 	} else {
 		wp_enqueue_script(
 			'foundation_featured',
-			foundation_get_base_module_url() . '/featured/wptouch-owl.js',
+			foundation_get_base_module_url() . '/featured/wptouch-owl.min.js',
 			false,
 			md5( FOUNDATION_VERSION ),
 			true

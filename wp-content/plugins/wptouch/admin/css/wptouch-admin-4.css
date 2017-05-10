@@ -478,6 +478,10 @@ a#preview-theme {
 	width: 20px;
 }
 
+#wptouch-admin-menu ul li a.free-newsletter-signup:before {
+	content: '\e800';
+}
+
 /* @end */
 
 /* @end */
@@ -1220,7 +1224,7 @@ input.checkbox:disabled + label:after {
 	border: 1px solid #e7eaed;
 }
 
-#wptouch-settings-area input[type="text"], #wptouch-settings-area input[type="password"] {
+#wptouch-settings-area input[type="text"], #wptouch-settings-area input[type="password"], #wptouch-settings-area input[type="email"] {
 	border: 1px solid #e7eaed;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
@@ -1232,7 +1236,7 @@ input.checkbox:disabled + label:after {
 	background-color: #f6f8fb;
 }
 
-#wptouch-settings-area input[type="text"]:focus, #wptouch-settings-area textarea:focus {
+#wptouch-settings-area input[type="text"]:focus, #wptouch-settings-area textarea:focus, #wptouch-settings-area input[type="email"]:focus {
 	background-color: #fff;
 	border-color: #55c2e8;
 }
@@ -2384,4 +2388,15 @@ p.deploy-text {
 }
 
 
+/* @end */
+
+/* @group Free Newsletter Subscribe */
+#wptouch-settings-area .newsletter-subscribe-form input {
+	position: relative;
+	top: 0;
+}
+
+.newsletter-subscribe-form .submit-button-container {
+	padding-top: 20px;
+}
 /* @end */

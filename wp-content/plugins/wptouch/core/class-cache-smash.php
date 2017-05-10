@@ -122,7 +122,11 @@ class WPtouchCacheSmash {
 						foreach ( $user_groups as $group ) {
 							if ( $group[ 'enabled' ] && $this->find_in_array_no_case( 'iphone', $group[ 'agents' ] ) && $group[ 'theme' ] == '' && $group[ 'redirect' ] == '' ) {
 								$cache_configured = true;
-								add_filter( 'wptouch_show_mobile_switch_link', '__return_false' );
+
+								$rejected_cookies = $w3_config->get( 'pgcache.reject.cookie' );
+								if ( !$this->find_in_array_no_case( 'wptouch-pro-view', $rejected_cookies ) ) {
+									add_filter( 'wptouch_show_mobile_switch_link', '__return_false' );
+								}
 							}
 						}
 					}

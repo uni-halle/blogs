@@ -58,7 +58,7 @@ function foundation_do_concat( $contents ) {
 			$contents = str_replace( $matches[0][$i], '', $contents );
 		}
 
-		$contents = str_replace( $matches[0][ count( $matches[0] ) - 1 ], "<script type='text/javascript' src='" . WPTOUCH_BASE_CONTENT_URL . $cache_file_suffix . "'></script>", $contents );
+		$contents = str_replace( $matches[0][ count( $matches[0] ) - 1 ], "<script type='text/javascript' src='" . WPTOUCH_BASE_CONTENT_URL . $cache_file_suffix . "' defer='defer'></script>", $contents );
 	}
 
 	return $contents;

@@ -76,7 +76,7 @@ function foundation_google_fonts_init() {
 		if ( $settings->typography_sets != 'default' ) {
 			wp_enqueue_script(
 				'foundation_google_fonts',
-				foundation_get_base_module_url() . '/google-fonts/google-fonts.js',
+				foundation_get_base_module_url() . '/google-fonts/google-fonts.min.js',
 				false,
 				md5( FOUNDATION_VERSION ),
 				true

@@ -10,7 +10,7 @@ global $bauhaus_featured_posts;
 function bauhaus_enqueue_scripts() {
 	wp_enqueue_script(
 		'bauhaus-js',
-		BAUHAUS_URL . '/default/bauhaus.js',
+		BAUHAUS_URL . '/default/bauhaus.min.js',
 		array( 'jquery' ),
 		BAUHAUS_THEME_VERSION,
 		true

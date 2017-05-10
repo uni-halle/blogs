@@ -90,6 +90,7 @@ define( 'WPTOUCH_ADMIN_SETUP_GENERAL', __( 'General', 'wptouch-pro' ) );
 define( 'WPTOUCH_ADMIN_SETUP_COMPAT', __( 'Compatibility', 'wptouch-pro' ) );
 define( 'WPTOUCH_ADMIN_SETUP_DEVICES', __( 'Devices', 'wptouch-pro' ) );
 define( 'WPTOUCH_ADMIN_MENU_MANAGE_ICON_SETS', __( 'Menu Settings', 'wptouch-pro' ) );
+define( 'WPTOUCH_ADMIN_NEWSLETTER_SIGNUP', __( 'Subscribe to Newsletter', 'wptouch-pro' ) );
 define( 'WPTOUCH_PRO_ADMIN_THEME_CUSTOMIZING', __( 'Customize Theme', 'wptouch-pro' ) );
 define( 'WPTOUCH_PRO_ADMIN_THEME_GOPRO', __( 'Go Pro', 'wptouch-pro' ) );
 define( 'WPTOUCH_PRO_ADMIN_THEMES', __( 'Themes', 'wptouch-pro' ) );

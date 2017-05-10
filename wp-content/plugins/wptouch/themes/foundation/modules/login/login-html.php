@@ -6,7 +6,7 @@ $login_args = array(
 	'label_password' => '',
 	'label_remember' => __( 'Remember Me', 'wptouch-pro' ),
 	'value_remember' => true,
-	'label_log_in' => __( 'Log In', 'wptouch-pro' )
+	'label_log_in' => __( 'Log In', 'wptouch-pro' ),
 );
 
 ?>

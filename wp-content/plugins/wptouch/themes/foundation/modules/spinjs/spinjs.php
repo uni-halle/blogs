@@ -14,7 +14,7 @@ function foundation_spinjs_init() {
 
 	wp_enqueue_script(
 		'foundation_spinjs_jquery',
-		foundation_get_base_module_url() . '/spinjs/spin-jquery.js',
+		foundation_get_base_module_url() . '/spinjs/spin-jquery.min.js',
 		array( 'foundation_spinjs' ),
 		md5( FOUNDATION_VERSION ),
 		true

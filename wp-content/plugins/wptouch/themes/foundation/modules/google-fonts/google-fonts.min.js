@@ -1,0 +1,1 @@
+function addGoogleFontClasses(){jQuery(googleBodyEls).addClass("body-font"),jQuery(googleHeadingEls).addClass("heading-font")}var googleBodyEls="form *",googleHeadingEls="h1, h2, h3, h4, h5, h6";jQuery(document).ready(function(){addGoogleFontClasses()}),jQuery(document).ajaxComplete(function(){addGoogleFontClasses()});

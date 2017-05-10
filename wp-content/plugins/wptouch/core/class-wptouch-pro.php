@@ -155,6 +155,11 @@ class WPtouchProFour {
 					}
 				}
 
+				// Delete one off admin notices flags.
+				delete_option( 'wptouch-disable-free-newsletter-notice' );
+				delete_option( '_wptouch-disable-theme-incompat-notice' );
+				delete_option( '_wptouch-disable-plugin-incompat-notice' );
+
 				do_action( 'wptouch_after_self_destruct' );
 			}
 
@@ -413,7 +418,12 @@ class WPtouchProFour {
 							// We can use this shortcode information
 							$should_regenerate = false;
 
-							$content = $shortcode_data->shortcode_content;
+							/**
+							 * Handle backslash fix that occurs.
+							 *
+							 * @see https://github.com/sureswiftcapital/wptouch-pro/pull/36
+							 */
+							$content = str_replace( '_BACKSLASH_', '\\', $shortcode_data->shortcode_content );
 						} else {
 							// Shortcode is not valid
 							delete_post_meta( get_the_ID(), 'wptouch_sc_data' );
@@ -512,11 +522,14 @@ class WPtouchProFour {
 			$post_content = $this->post[ 'post_content' ];
 
 			if ( $post ) {
-				$shortcode_data = get_post_meta( $this->post[ 'post_id' ], 'wptouch_sc_data', true );
+				$shortcode_data = get_post_meta( $this->post['post_id'], 'wptouch_sc_data', true );
+				if ( '' === $shortcode_data ) {
+					$shortcode_data = array();
+				}
 
 				if ( is_object( $shortcode_data ) ) {
-					delete_post_meta( $this->post[ 'post_id'], 'wptouch_sc_data' );
-					$shortcode_data = "";
+					delete_post_meta( $this->post['post_id'], 'wptouch_sc_data' );
+					$shortcode_data = array();
 				}
 
 				// Save data for later
@@ -532,7 +545,13 @@ class WPtouchProFour {
 				$page_shortcode_data->styles = $this->desktop_shortcode_get_assets( $this->post[ 'post_id' ], 'styles' );
 
 				$page_shortcode_data->valid_until = time() + 3600*24;
-				$page_shortcode_data->shortcode_content = $content;
+
+				/**
+				 * Replace backslashes in code before saving. Should be re-replaced on output.
+				 *
+				 * @see https://github.com/sureswiftcapital/wptouch-pro/pull/36
+				 */
+				$page_shortcode_data->shortcode_content = str_replace( '\\', '_BACKSLASH_', $content );
 
 				$shortcode_data[ 'page-' . $page ] = $page_shortcode_data;
 
@@ -2326,7 +2345,7 @@ class WPtouchProFour {
 
 		add_action( 'wp_footer', array( &$this, 'handle_footer' ) );
 
-		wp_enqueue_script( 'wptouch-front-ajax', WPTOUCH_URL . '/include/js/wptouch.js', array( 'jquery' ), md5( WPTOUCH_VERSION ), true );
+		wp_enqueue_script( 'wptouch-front-ajax', WPTOUCH_URL . '/include/js/wptouch.min.js', array( 'jquery' ), md5( WPTOUCH_VERSION ), true );
 
 		if ( defined( 'JSON_HEX_TAG' ) ) {
 			$query_vars = json_encode( $_GET, JSON_HEX_TAG );

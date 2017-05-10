@@ -5,13 +5,13 @@ add_filter( 'wptouch_foundation_menu_options', 'foundation_login_settings' );
 
 function foundation_login_settings( $menu_settings ) {
 	$menu_settings[] = wptouch_add_setting(
-				'checkbox',
-				'show_login_box',
-				__( 'Show login in menu', 'wptouch-pro' ),
-				__( 'Will add login/out links', 'wptouch-pro' ),
-				WPTOUCH_SETTING_BASIC,
-				'2.0'
-			);
+		'checkbox',
+		'show_login_box',
+		__( 'Show login in menu', 'wptouch-pro' ),
+		__( 'Will add login/out links', 'wptouch-pro' ),
+		WPTOUCH_SETTING_BASIC,
+		'2.0'
+	);
 
 	return $menu_settings;
 }

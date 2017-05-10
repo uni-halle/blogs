@@ -5,7 +5,7 @@ add_action( 'foundation_module_init_mobile', 'foundation_fastclick_init' );
 function foundation_fastclick_init() {
 	wp_enqueue_script( 
 		'foundation_fastclick_wptouch', 
-		foundation_get_base_module_url() . '/fastclick/wptouch.fastclick.js',
+		foundation_get_base_module_url() . '/fastclick/wptouch.fastclick.min.js',
 		array( 'jquery' ),
 		md5( FOUNDATION_VERSION ),
 		true 

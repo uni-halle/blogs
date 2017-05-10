@@ -365,34 +365,6 @@ function wptouch_get_current_page_url() {
 	return apply_filters( 'wptouch_current_page_url', $_SERVER['REQUEST_URI'] );
 }
 
-function wptouch_hex_char_to_digit( $hex_char ) {
-	switch( $hex_char ) {
-		case 'a':
-			return 10;
-		case 'b':
-			return 11;
-		case 'c':
-			return 12;
-		case 'd':
-			return 13;
-		case 'e':
-			return 14;
-		case 'f':
-			return 15;
-		default:
-			return $hex_char;
-	}
-}
-
-function wptouch_hex_to_num( $hex ) {
-	$hex = ltrim( $hex, '0' );
-
-	$digit_1 = substr( $hex, 0, 1 );
-	$digit_2 = substr( $hex, 1, 1 );
-
-	return wptouch_hex_char_to_digit( $digit_1 ) * 16 + wptouch_hex_char_to_digit( $digit_2 );
-}
-
 function wptouch_hex_to_luma( $hex ) {
 	// assumes 6 character long hex strings
 	$hex = strtolower( ltrim( $hex, '#' ) );
@@ -407,9 +379,9 @@ function wptouch_hex_to_luma( $hex ) {
 		$blue_hex = substr( $hex, 2, 1) . substr( $hex, 2, 1);
 	}
 
-	$red = wptouch_hex_to_num( $red_hex );
-	$green = wptouch_hex_to_num( $green_hex );
-	$blue = wptouch_hex_to_num( $blue_hex );
+	$red = hexdec( $red_hex );
+	$green = hexdec( $green_hex );
+	$blue = hexdec( $blue_hex );
 
 	$luma = round( 0.30 * $red + 0.59 * $green + 0.11 * $blue );
 

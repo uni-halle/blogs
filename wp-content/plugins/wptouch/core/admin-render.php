@@ -56,7 +56,7 @@
 					<?php } ?>
 				<?php } else { ?>
 				<?php
-						$hide_keys = array( 'Updates Available', 'General', 'Compatibility', 'Customize Theme', 'Devices', 'Themes', 'Extensions', 'Customizer', 'Theme Settings', 'Menu Settings' );
+						$hide_keys = array( 'Updates Available', 'General', 'Compatibility', 'Customize Theme', 'Devices', 'Themes', 'Extensions', 'Customizer', 'Theme Settings', 'Menu Settings', 'Subscribe to Newsletter' );
 						if ( !defined( 'WPTOUCH_IS_FREE' ) ) { $hide_keys[] = 'Go Pro'; }
 						$show_keys = array_diff( array_keys( $panel_options ), $hide_keys );
 					?>
@@ -76,6 +76,7 @@
 							<li><a href="#" class="menu-icons-manage-icon-sets<?php if ( isset( $_COOKIE['wptouch-4-admin-menu'] ) && ( $_COOKIE['wptouch-4-admin-menu'] == 'menu-icons-manage-icon-sets' ) ) { echo ' active'; } ?>" data-page-slug="menu-icons-manage-icon-sets"><?php _e( 'Menu Settings', 'wptouch-pro' ); ?></a></li>
 								<?php if ( wptouch_admin_use_customizer() ) { ?>
 									<li><a href="#" class="<?php wptouch_multisite_page_classes( 'themes' ); ?> foundation-page-theme-customizer<?php if ( isset( $_COOKIE['wptouch-4-admin-menu'] ) && ( $_COOKIE['wptouch-4-admin-menu'] == 'foundation-page-theme-customizer' ) ) { echo ' active'; } ?>" data-page-slug="foundation-page-theme-customizer"><?php _e( 'Customize Theme', 'wptouch-pro' ); ?></a></li>
+                                <li><a href="#" class="free-newsletter-signup<?php if ( isset( $_COOKIE['wptouch-4-admin-menu'] ) && ( $_COOKIE['wptouch-4-admin-menu'] == 'free-newsletter-signup' ) ) { echo ' active'; } ?>" data-page-slug="free-newsletter-signup"><?php _e( 'Subscribe to Newsletter', 'wptouch-pro' ); ?></a></li>
 								<?php } ?>
 						<?php } elseif ( !is_network_admin() ) { ?>
 							<?php if ( wptouch_can_show_page( 'general' ) ) { ?>

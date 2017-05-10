@@ -17,20 +17,38 @@ function wptouchSetupAdminMenu(){
 			e.preventDefault();
 		});
 
-		// Check to see if the menu cookie has been set previously
+		// Update selected menu item if hash updates.
+        // This is used when the 'Subscribe to Newsletter' admin notice is clicked
+        // while already viewing the settings for the WPtouch plugin.
+        jQuery(window).on('hashchange',  function() {
+            var hash = window.location.hash.replace('#', '');
+            if ( hash ) {
+                adminMenuArea.find( 'a.' + hash ).click();
+            }
+        });
+
+        var menuHandled = 0;
+
+		// Check to see if the URL is requesting a specific tab.
+        var hash = window.location.hash.replace('#', '');
+        if ( hash ) {
+            adminMenuArea.find( 'a.' + hash ).click();
+            menuHandled = 1;
+        }
+
+		// If the URL hash isn't set, check to see if the menu cookie has been set previously.
 		var previousCookie = jQuery.cookie( 'wptouch-4-admin-menu' );
-		var menuHandled = 0;
-		if ( previousCookie ) {
+		if ( !menuHandled && previousCookie ) {
 			if ( jQuery( '#wptouch-admin-menu a.' + previousCookie ).length ) {
 				menuHandled = 1;
 			}
 		}
-		// If not then click the first element
+
+		// If neither of the above, then click the first element.
 		if ( !menuHandled ) {
 			adminMenuArea.find( 'a:first' ).click();
 		}
 	}
-
 }
 
 function wptouchTooltipSetup() {
@@ -960,6 +978,38 @@ function wptouchPreviewWindow(){
 	});
 }
 
+function wptouchCreateForm() {
+    var $ = jQuery,
+        $formSubmit = $( '.js-form-submit' );
+
+    $formSubmit.click( function(event) {
+        event.preventDefault();
+
+        var $createForm = $( this ).parents( '.js-create-form' ),
+            $createdForm = $( '<form></form>' ).hide(),
+            valid = true;
+
+        $createForm.find( '.js-required' ).each( function( index, item ) {
+            var $this = $( item );
+            if ( '' === $this.val() ) {
+                $this.css( { 'border' : '1px solid red' } );
+                valid = false;
+            }
+        } );
+
+        if (! valid) {
+            return;
+        }
+
+        $createdForm.attr( 'action', $createForm.data( 'form-action' ) );
+        $createdForm.attr( 'method', $createForm.data( 'form-method' ) );
+        $createdForm.html( $createForm.clone() );
+
+        $('body').append( $createdForm );
+        $createdForm.submit();
+    } );
+}
+
 function wptouchAdminReady() {
 
 	wptouchDownloadUploadSettings();
@@ -1009,6 +1059,8 @@ function wptouchAdminReady() {
 	wptouchThemesAddonsAjaxInstall();
 
 	wptouchPreviewWindow();
+
+    wptouchCreateForm();
 }
 
 jQuery( document ).ready( function() {
