@@ -3,8 +3,8 @@ Contributors: f1logic
 Donate link: http://xyzscripts.com/donate/
 Tags:  social media auto publish, social media publishing, post to facebook, post to twitter, post to linkedin, social network auto publish, social media, social network, add link to facebook, add link to twitter, add link to linkedin, publish to facebook, publish to twitter, publish to linkedin
 Requires at least: 3.0
-Tested up to: 4.6.1
-Stable tag: 1.7
+Tested up to: 4.7.3
+Stable tag: 1.7.1
 License: GPLv2 or later
 
 Publish posts automatically to social media networks like Facebook, Twitter and LinkedIn.
@@ -113,8 +113,7 @@ You may use post title, content, excerpt, permalink, site title and user nicenam
 
 SSL peer verification may not be functioning in your server. Please turn off SSL peer verification in settings of plugin and try again.
 
-
-More questions ? [Drop a mail](http://xyzscripts.com/members/support/ "XYZScripts Support") and we shall get back to you with the answers.
+= More questions ? [Drop a mail](http://xyzscripts.com/support/ "XYZScripts Support") and we shall get back to you with the answers.
 
 
 == Screenshots ==
@@ -126,8 +125,13 @@ More questions ? [Drop a mail](http://xyzscripts.com/members/support/ "XYZScript
 
 == Changelog ==
 
+= Social Media Auto Publish 1.7.1 =
+* utf-8 decoding issue fixed
+* Visual composer compatiblity issue fixed
+* Minor bugs fixed
+
 = Social Media Auto Publish 1.7 =
-* Facebook api updated
+* Facebook api updated(requires PHP version 5.4 or higher)
 * Twitter 140 character exceeding issue fixed
 
 = Social Media Auto Publish 1.6.1 =
@@ -229,7 +233,7 @@ Please read the FAQ first if you are having problems.
 = Requirements =
 
     WordPress 3.0+
-    PHP 5+ 
+    PHP 5.4+ 
 
 = Feedback =
 

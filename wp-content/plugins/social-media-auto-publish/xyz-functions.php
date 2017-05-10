@@ -293,7 +293,8 @@ if (!function_exists("xyz_wp_smap_linkedin_attachment_metas")) {
 		}
 
 		$og_datas = new DOMDocument();
-		@$og_datas->loadHTML($aprv_me_data);
+		@$og_datas->loadHTML('<?xml encoding="UTF-8">'.$aprv_me_data);
+		
 		$xpath = new DOMXPath($og_datas);
 		if(isset($contentln['content']['title']))
 		{
@@ -349,7 +350,7 @@ if (!function_exists("xyz_wp_fbap_attachment_metas")) {
 		}
 
 		$og_datas = new DOMDocument();
-		@$og_datas->loadHTML($aprv_me_data);
+		@$og_datas->loadHTML('<?xml encoding="UTF-8">'.$aprv_me_data);
 		$xpath = new DOMXPath($og_datas);
 		if(isset($attachment['name']))
 		{

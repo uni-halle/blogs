@@ -49,8 +49,6 @@ if(isset($_GET['action']) && $_GET['action']=="edit" && !empty($_GET['post']))  
 	{
 
 		$xyz_smap_include_customposttypes=get_option('xyz_smap_include_customposttypes');
-
-
 		$carr=explode(',', $xyz_smap_include_customposttypes);
 		if(!in_array($posttype,$carr))
 			return;

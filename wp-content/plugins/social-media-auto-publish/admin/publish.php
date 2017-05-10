@@ -258,6 +258,7 @@ function xyz_link_publish($post_ID) {
 			$excerpt = apply_filters('the_excerpt', $excerpt);
 		$excerpt = html_entity_decode($excerpt, ENT_QUOTES, get_bloginfo('charset'));
 		$content = preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', "", $content);
+		$content = preg_replace('/\[.+?\]/', '', $content);
 		$excerpt = preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', "", $excerpt);
 		
 		if($excerpt=="")

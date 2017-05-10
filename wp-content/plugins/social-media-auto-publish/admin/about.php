@@ -310,8 +310,15 @@ Social Media Auto Publish automatically publishes posts from your blog to your  
 	
 	<!-- Addons and Support -->
 	<tr>
-		<td><h4>Addon Features</h4></td>
+		<td rowspan="2"><h4>Addon Features</h4></td>
 		<td>Advanced Autopublish Scheduler</td>
+		<td><img src="<?php echo plugins_url("images/cross.png",__FILE__);?>">
+		</td>
+		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
+		</td>
+		</tr>
+		<tr>
+		<td>URL-Shortener</td>
 		<td><img src="<?php echo plugins_url("images/cross.png",__FILE__);?>">
 		</td>
 		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
