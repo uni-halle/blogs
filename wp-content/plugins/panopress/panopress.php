@@ -3,7 +3,7 @@
 Plugin Name: PanoPress
 Plugin URI:  http://www.panopress.org/
 Description: Embed Flash & HTML5 360° Panoramas & Virtual Tours, 360° Video, Gigapixel Panoramas etc, created using KRPano, Pano2VR, PanoTour Pro, Flashificator, Saladoplayer, and similar panorama applications  on your WordPress site using a simple shortcode.
-Version:     1.2
+Version:     1.3
 Author:      <a href="http://www.omercalev.com">Omer Calev</a> & <a href="http://www.samrohn.com">Sam Rohn</a>
 ************************************************************************
 	Copyright 2011-2014 by the authors.
@@ -33,7 +33,7 @@ Author:      <a href="http://www.omercalev.com">Omer Calev</a> & <a href="http:/
 ***/
 // CONFIG
 define( 'PP_APP_NAME',     'PanoPress' );
-define( 'PP_APP_VERSION', '1.2' );
+define( 'PP_APP_VERSION', '1.3' );
 // defaults
 define( 'PP_DEFAULT_WIDTH',         '640px' );
 define( 'PP_DEFAULT_HEIGHT',        '480px' );

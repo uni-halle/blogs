@@ -1,8 +1,10 @@
 <?php
 $input = filter_input_array ( INPUT_GET );
-if( parse_url ( $input['xml'],  PHP_URL_HOST ) ){
+if( preg_match('/[<>\'"]/', $input['xml']) !== 0 || parse_url ( $input['xml'],  PHP_URL_HOST ) ){
 	exit;
 }
+$input['xml'] = strip_tags($input['xml']);
+$input['xml'] = filter_var($input['xml'], FILTER_SANITIZE_STRING);
 $js = '/' . substr( $input['xml'], 0, strlen( $input['xml'] ) - 3 ) . 'js';
 
 if ( !file_exists ( $_SERVER['DOCUMENT_ROOT'] . $js ) ) {

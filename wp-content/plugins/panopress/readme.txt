@@ -3,8 +3,8 @@ Contributors: omercalev, sam rohn
 Donate link: http://panopress.org
 Tags:  360, 360 degree Photography, 360 degree Panorama, 360 degree Video, 360 Panorama, 360 Photography, 360 Video, 360Cities, CuTy, EasyPano, FFP, Flash, Flash Panorama Player, Flashificator, HTML5, Gigapixel, Gigapan, Lightbox, Kolor, KRPano, Media, Multires, Object Movie, Object VR, Object2VR, Pano, Pano2VR, Panobox, PanoPress, Panorama, Panoramic, Panotour, Panotour Pro, Photo, Photography, Photosynth, PTGui, QuickTime VR, QTVR, Responsive, Salado, Saladoplayer, Shortcode, Silverlight, Tourweaver, Tourwrist, Virtual Tour, Virtual Reality, ViewAt, VR, WebGL, Zoomify
 Requires at least: 3.0.0
-Tested up to: 3.8
-Stable tag: 1.2
+Tested up to: 4.7
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -113,6 +113,9 @@ See the <a href="http://www.panopress.org/forums/">PanoPress Forums</a> for late
 PanoPress 1.2 include security & compatibility updates, recommended for all users.
 
 == Changelog ==
+
+= 1.3 =
+* Security & compatibility updates.
 
 = 1.2 =
 * Add support for Pano2VR 4 tour.
