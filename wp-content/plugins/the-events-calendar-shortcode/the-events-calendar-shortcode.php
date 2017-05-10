@@ -3,12 +3,13 @@
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin (Free Version) by Modern Tribe</a>.
- Version: 1.4.1
+ Version: 1.5.2
  Author: Event Calendar Newsletter
  Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Contributors: Brainchild Media Group, Reddit user miahelf, tallavic, hejeva2
  License: GPL2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ Text Domain: the-events-calendar-shortcode
 */
 
 // Avoid direct calls to this file
@@ -37,7 +38,7 @@ class Events_Calendar_Shortcode
 	 *
 	 * @since 1.0.0
 	 */
-	const VERSION = '1.3';
+	const VERSION = '1.5.2';
 
 	private $admin_page = null;
 
@@ -56,7 +57,15 @@ class Events_Calendar_Shortcode
 		add_action( 'admin_menu', array( $this, 'add_menu_page' ), 1000 );
 		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'add_action_links' ) );
 		add_shortcode( 'ecs-list-events', array( $this, 'ecs_fetch_events' ) );
+		add_action( 'plugins_loaded', array( $this, 'load_languages' ) );
+
 	} // END __construct()
+
+	public function load_languages() {
+		if ( function_exists( 'tecsp_load_textdomain' ) )
+			return;
+		load_plugin_textdomain( 'the-events-calendar-shortcode', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+	}
 
 	public function verify_tec_installed() {
 		if ( ! class_exists( 'Tribe__Events__Main' ) or ! defined( 'Tribe__Events__Main::VERSION' )) {
@@ -68,7 +77,7 @@ class Events_Calendar_Shortcode
 		if ( current_user_can( 'activate_plugins' ) ) {
 			$url = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
 			$title = __( 'The Events Calendar', 'tribe-events-ical-importer' );
-			echo '<div class="error"><p>' . sprintf( __( 'To begin using The Events Calendar Shortcode, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a> and add an event.', 'tec-shortcode' ), esc_url( $url ), esc_attr( $title ) ) . '</p></div>';
+			echo '<div class="error"><p>' . sprintf( esc_html( __( 'To begin using The Events Calendar Shortcode, please install the latest version of %sThe Events Calendar%s and add an event.', 'the-events-calendar-shortcode' ) ), '<a href="' . esc_url( $url ) . '" class="thickbox" title="' . esc_attr( $title ) . '">', '</a>' ) . '</p></div>';
 		}
 	}
 
@@ -77,7 +86,7 @@ class Events_Calendar_Shortcode
 			return;
 		}
 
-		$page_title = esc_html__( 'Shortcode', 'ecs' );
+		$page_title = esc_html__( 'Shortcode', 'the-events-calendar-shortcode' );
 		$menu_title = esc_html__( 'Shortcode', 'tribe-common' );
 		$capability = apply_filters( 'ecs_admin_page_capability', 'install_plugins' );
 
@@ -108,8 +117,8 @@ class Events_Calendar_Shortcode
 	public function add_action_links( $links ) {
 		$mylinks = array();
 		if ( class_exists( 'Tribe__Settings' ) and method_exists( Tribe__Settings::instance(), 'should_setup_pages' ) and Tribe__Settings::instance()->should_setup_pages() )
-			$mylinks[] = '<a href="' . admin_url( 'edit.php?post_type=tribe_events&page=ecs-admin' ) . '">Settings</a>';
-		$mylinks[] = '<a target="_blank" style="color:#3db634; font-weight: bold;" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode/?utm_source=plugin-list&utm_medium=upgrade-link&utm_campaign=plugin-list&utm_content=action-link">Upgrade</a>';
+			$mylinks[] = '<a href="' . admin_url( 'edit.php?post_type=tribe_events&page=ecs-admin' ) . '">' . esc_html__( 'Settings', 'the-events-calendar-shortcode' ) . '</a>';
+		$mylinks[] = '<a target="_blank" style="color:#3db634; font-weight: bold;" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode/?utm_source=plugin-list&utm_medium=upgrade-link&utm_campaign=plugin-list&utm_content=action-link">' . esc_html__( 'Upgrade', 'the-events-calendar-shortcode' ) . '</a>';
 
 		return array_merge( $links, $mylinks );
 	}
@@ -145,6 +154,7 @@ class Events_Calendar_Shortcode
 			'viewall' => 'false',
 			'excerpt' => 'false',
 			'thumb' => 'false',
+			'thumbsize' => '',
 			'thumbwidth' => '',
 			'thumbheight' => '',
 			'contentorder' => apply_filters( 'ecs_default_contentorder', 'title, thumbnail, excerpt, date, venue', $atts ),
@@ -200,8 +210,11 @@ class Events_Calendar_Shortcode
 		);
 
 		// Specific Month
-		if ( $atts['month'] == 'current' ) {
+		if ( 'current' == $atts['month'] ) {
 			$atts['month'] = current_time( 'Y-m' );
+		}
+		if ( 'next' == $atts['month'] ) {
+			$atts['month'] = date( 'Y-m', strtotime( '+1 months', current_time( 'timestamp' ) ) );
 		}
 		if ($atts['month']) {
 			$month_array = explode("-", $atts['month']);
@@ -240,14 +253,21 @@ class Events_Calendar_Shortcode
 			foreach( $posts as $post ) {
 				setup_postdata( $post );
 				$event_output = '';
-				$event_output .= apply_filters( 'ecs_event_start_tag', '<li class="ecs-event">', $atts, $post );
+				$category_slugs = array();
+				$category_list = get_the_terms( $post, 'tribe_events_cat' );
+				if ( is_array( $category_list ) ) {
+					foreach ( (array) $category_list as $category ) {
+						$category_slugs[] = ' ' . $category->slug . '_ecs_category';
+					}
+				}
+				$event_output .= apply_filters( 'ecs_event_start_tag', '<li class="ecs-event' . implode( '', $category_slugs ) . '">', $atts, $post );
 
 				// Put Values into $event_output
 				foreach ( apply_filters( 'ecs_event_contentorder', $atts['contentorder'], $atts, $post ) as $contentorder ) {
 					switch ( trim( $contentorder ) ) {
 						case 'title':
 							$event_output .= apply_filters( 'ecs_event_title_tag_start', '<h4 class="entry-title summary">', $atts, $post ) .
-											'<a href="' . tribe_get_event_link() . '" rel="bookmark">' . apply_filters( 'ecs_event_list_title', get_the_title(), $atts, $post ) . '</a>' .
+											apply_filters( 'ecs_event_list_title_link_start', '<a href="' . tribe_get_event_link() . '" rel="bookmark">', $atts, $post ) . apply_filters( 'ecs_event_list_title', get_the_title(), $atts, $post ) . apply_filters( 'ecs_event_list_title_link_end', '</a>', $atts, $post ) .
 							           apply_filters( 'ecs_event_title_tag_end', '</h4>', $atts, $post );
 							break;
 
@@ -258,7 +278,7 @@ class Events_Calendar_Shortcode
 								if( !empty( $thumbWidth ) && !empty( $thumbHeight ) ) {
 									$event_output .= apply_filters( 'ecs_event_thumbnail', get_the_post_thumbnail( get_the_ID(), apply_filters( 'ecs_event_thumbnail_size', array( $thumbWidth, $thumbHeight ), $atts, $post ) ), $atts, $post );
 								} else {
-									if ( $thumb = get_the_post_thumbnail( get_the_ID(), apply_filters( 'ecs_event_thumbnail_size', 'medium', $atts, $post ) ) ) {
+									if ( $thumb = get_the_post_thumbnail( get_the_ID(), apply_filters( 'ecs_event_thumbnail_size', ( trim( $atts['thumbsize'] ) ? trim( $atts['thumbsize'] ) : 'medium' ), $atts, $post ) ) ) {
 										$event_output .= apply_filters( 'ecs_event_thumbnail_link_start', '<a href="' . tribe_get_event_link() . '">', $atts, $post );
 										$event_output .= apply_filters( 'ecs_event_thumbnail', $thumb, $atts, $post );
 										$event_output .= apply_filters( 'ecs_event_thumbnail_link_end', '</a>', $atts, $post );
