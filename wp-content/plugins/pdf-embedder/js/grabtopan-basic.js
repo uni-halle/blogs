@@ -165,6 +165,11 @@ var pdfembGrabToPan = (function GrabToPanClosure() {
             var yDiff = ticks * MOUSE_WHEEL_DELTA_FACTOR;
             this.element.scrollTop = this.scrollTopStart - yDiff;
             //                this.element.scrollLeft = this.scrollLeftStart - xDiff;
+
+            if (this.element.scrollTop != this.scrollTopStart || yDiff == 0) {
+                event.preventDefault();
+            }
+
             if (!this.overlay.parentNode) {
                 document.body.appendChild(this.overlay);
             }

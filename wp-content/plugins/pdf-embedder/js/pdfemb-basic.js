@@ -1,19 +1,19 @@
+jQuery(document).ready(function($) {
 
-function pdfembGetPDF(url, callback) {
+    var pdfembPagesViewer = PDFEMB_NS.pdfembPagesViewer;
+
+    var pdfembPagesViewerBasic = function () {
+        pdfembPagesViewer.apply(this, arguments);
+    };
+
+    pdfembPagesViewerBasic.prototype = new pdfembPagesViewer();
+
+    PDFEMB_NS.pdfembPagesViewerUsable = pdfembPagesViewerBasic;
+
+});
+
+PDFEMB_NS.pdfembGetPDF = function(url, callback) {
 	    	
 	callback(url, false);
 
 };
-
-function pdfembWantMobile($, divContainer, wantWidth, wantHeight) {
-	return false;
-}
-
-function pdfembMakeMobile($, wantMobile, innerdiv) {
-}
-
-function pdfembAddMoreToolbar($, toolbar, divContainer) {
-}
-
-function pdfembPremiumJumpToTop(divContainer) {
-}

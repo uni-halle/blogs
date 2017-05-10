@@ -3,8 +3,8 @@
 /**
  * Plugin Name: PDF Embedder
  * Plugin URI: http://wp-pdf.com/
- * Description: Embed PDFs straight into your posts and pages, with flexible width and height. No third-party services required. 
- * Version: 2.8
+ * Description: Embed PDFs straight into your posts and pages, with flexible width and height. No third-party services required.
+ * Version: 3.0.1
  * Author: Dan Lester
  * Author URI: http://wp-pdf.com/
  * License: GPL3
@@ -15,11 +15,7 @@ require_once( plugin_dir_path(__FILE__).'/core/core_pdf_embedder.php' );
 
 class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
 
-	protected $PLUGIN_VERSION = '2.8';
-	
-	protected function useminified() {
-		/* using-minified */ return true;
-	}
+	protected $PLUGIN_VERSION = '3.0.1';
 	
 	// Singleton
 	private static $instance = null;
@@ -48,9 +44,13 @@ class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
 
     public function pdfemb_wp_enqueue_scripts() {
 		if (!$this->useminified()) {
-			wp_register_script( 'pdfemb_versionspecific_pdf_js', $this->my_plugin_url().'js/pdfemb-basic.js', array('jquery'), $this->PLUGIN_VERSION);
 			wp_register_script( 'pdfemb_grabtopan_js', $this->my_plugin_url().'js/grabtopan-basic.js', array('jquery'), $this->PLUGIN_VERSION);
-			wp_register_script( 'pdfemb_embed_pdf_js', $this->my_plugin_url().'js/pdfemb-embed-pdf.js', array('pdfemb_versionspecific_pdf_js', 'pdfemb_grabtopan_js', 'jquery'), $this->PLUGIN_VERSION );
+			wp_register_script( 'pdfemb_pv_core_js', $this->my_plugin_url().'js/pdfemb-pv-core.js',
+                array('pdfemb_grabtopan_js', 'jquery'), $this->PLUGIN_VERSION );
+			wp_register_script( 'pdfemb_versionspecific_pdf_js', $this->my_plugin_url().'js/pdfemb-basic.js',
+                array('jquery', 'pdfemb_pv_core_js'), $this->PLUGIN_VERSION);
+			wp_register_script( 'pdfemb_embed_pdf_js', $this->my_plugin_url().'js/pdfemb-embed-pdf.js',
+				array('pdfemb_pv_core_js', 'pdfemb_versionspecific_pdf_js'), $this->PLUGIN_VERSION );
 		}
 		else {
 			wp_register_script( 'pdfemb_embed_pdf_js', $this->my_plugin_url().'js/all-pdfemb-basic.min.js', array('jquery'), $this->PLUGIN_VERSION );
@@ -82,13 +82,6 @@ class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
 
 		<br class="clear" />
 
-		<label for="pdfemb_pageturners" class="textinput"><?php esc_html_e('Page Turners', 'pdf-embedder'); ?></label>
-		<span>
-        <label for="pdfemb_pageturners" class="checkbox plain"><?php esc_html_e('Page turner arrows when hovering over edges of PDF', 'pdf-embedder'); ?></label>
-        </span>
-
-		<br class="clear" />
-
 		<label for="pdfemb_newwindow" class="textinput"><?php esc_html_e('External Links', 'pdf-embedder'); ?></label>
 		<span>
         <label for="pdfemb_newwindow" class="checkbox plain"><?php esc_html_e('Open links in a new browser tab/window', 'pdf-embedder'); ?></label>
@@ -104,9 +97,9 @@ class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
 
 		<br class="clear" />
 
-		<label for="pdfemb_scrolltotop" class="textinput"><?php esc_html_e('Scroll to Top', 'pdf-embedder'); ?></label>
+		<label for="pdfemb_continousscroll" class="textinput"><?php esc_html_e('Continous Page Scrolling', 'pdf-embedder'); ?></label>
 		<span>
-        <label for="pdfemb_scrolltotop" class="checkbox plain"><?php esc_html_e('Scroll to top of page when user clicks next/prev', 'pdf-embedder'); ?></label>
+        <label for="pdfemb_continousscroll" class="checkbox plain"><?php esc_html_e('Allow user to scroll up/down between all pages in the PDF', 'pdf-embedder'); ?></label>
         </span>
 
 		<br class="clear" />
@@ -134,6 +127,9 @@ class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
             the web page by mistake. Click Exit to return to the regular web page.", 'pdf-embedder'); ?>
         </p>
 
+        <p><?php _e("The user can also touch and scroll continuously between all pages of the PDF which is much easier than clicking the next/prev buttons to navigate.", 'pdf-embedder'); ?>
+        </p>
+
         <p><?php printf( __('See our website <a href="%s">wp-pdf.com</a> for more details and purchase options.', 'pdf-embedder'), 'http://wp-pdf.com/premium/?utm_source=PDF%20Settings%20Premium&utm_medium=freemium&utm_campaign=Freemium'); ?>
         </p>
 
@@ -147,10 +143,10 @@ class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
                 <p>Visit <a href="https://wp-pdf.com/?utm_source=Premium%20Sidebar&utm_medium=freemium&utm_campaign=Freemium" target="_blank">wp-pdf.com</a> for premium PDF Embedder features:</p>
                 <ul>
                     <li>Mobile Friendly</li>
+                    <li>Continuous page scrolling</li>
                     <li>Download Button</li>
 	                <li>Full screen button</li>
 	                <li>Working Hyperlinks</li>
-	                <li>Page Turners</li>
                     <li>Jump to page number</li>
 					<li>Track views and downloads</li>
                     <li>Remove link to wp-pdf.com</li>
