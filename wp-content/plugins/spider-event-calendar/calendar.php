@@ -3,11 +3,12 @@
 Plugin Name: Spider Event Calendar
 Plugin URI: https://web-dorado.com/products/wordpress-calendar.html
 Description: Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. Spider Event Calendar is an extraordinary user friendly extension.
-Version: 1.5.49
-Author: https://web-dorado.com/
+Version: 1.5.52
+Author: WebDorado
+Author URI: https://web-dorado.com
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
-$wd_spider_calendar_version="1.5.49";
+$wd_spider_calendar_version="1.5.52";
 // LANGUAGE localization.
 function sp_calendar_language_load() {
   load_plugin_textdomain('sp_calendar', FALSE, basename(dirname(__FILE__)) . '/languages');
@@ -21,6 +22,19 @@ function	sp_cal_registr_some_scripts(){
   wp_register_script("Canlendar_upcoming", plugins_url("elements/calendar.js", __FILE__), array(), $wd_spider_calendar_version);
   wp_register_script("calendnar-setup_upcoming", plugins_url("elements/calendar-setup.js", __FILE__), array(), $wd_spider_calendar_version);
   wp_register_script("calenndar_function_upcoming", plugins_url("elements/calendar_function.js", __FILE__), array(), $wd_spider_calendar_version);
+  
+  if( isset($_GET['page']) && $_GET['page'] == "Uninstall_sp_calendar" ) {
+	wp_enqueue_script("sp_calendar-deactivate-popup", plugins_url('wd/assets/js/deactivate_popup.js', __FILE__), array(), $wd_spider_calendar_version);
+	   $admin_data = wp_get_current_user();
+	   
+		wp_localize_script( 'sp_calendar-deactivate-popup', 'sp_calendarWDDeactivateVars', array(
+			"prefix" => "sp_calendar" ,
+			"deactivate_class" =>  'sp_calendar_deactivate_link',
+			"email" => $admin_data->data->user_email,
+			"plugin_wd_url" => "https://web-dorado.com/products/wordpress-google-maps-plugin.html",
+		));
+	}
+  
 }
 
 // Include widget.
@@ -258,7 +272,6 @@ if(widget!=1)
       'date' => $date,
       'months' => (($default == 'week' || $default == 'week_widget') ? $prev_month . ',' . $this_month . ',' . $next_month : ''),
       'many_sp_calendar' => $many_sp_calendar,
-      'cur_page_url' => urlencode(current_page_url_sc()),
       'widget' => $widget,
 	  'rand' => $many_sp_calendar,
       ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>');</script>
@@ -532,21 +545,20 @@ function sp_calendar_register($plugin_array) {
 
 // Function create in menu.
 function sp_calendar_options_panel() {
-  add_menu_page('Theme page title', 'Calendar', 'manage_options', 'SpiderCalendar', 'Manage_Spider_Calendar', plugins_url("images/calendar_menu.png", __FILE__));
+  if( get_option( "sp_calendar_subscribe_done" ) == 1 ){
+	add_menu_page('Theme page title', 'Calendar', 'manage_options', 'SpiderCalendar', 'Manage_Spider_Calendar', plugins_url("images/calendar_menu.png", __FILE__));
+  }
   $page_calendar = add_submenu_page('SpiderCalendar', 'Calendars', 'Calendars', 'manage_options', 'SpiderCalendar', 'Manage_Spider_Calendar');
   $page_event_category = add_submenu_page('SpiderCalendar', 'Event Category', 'Event Category', 'manage_options', 'spider_calendar_event_category', 'Manage_Spider_Category_Calendar');
   $page_theme = add_submenu_page('SpiderCalendar', 'Calendar Parameters', 'Calendar Themes', 'manage_options', 'spider_calendar_themes', 'spider_calendar_params');
   $page_widget_theme = add_submenu_page('SpiderCalendar', 'Calendar Parameters', 'Widget Themes', 'manage_options', 'spider_widget_calendar_themes', 'spider_widget_calendar_params');
-  $Featured_Plugins = add_submenu_page('SpiderCalendar', 'Featured Plugins', 'Featured Plugins', 'manage_options', 'calendar_Featured_Plugins', 'calendar_Featured_Plugins');
-  $Featured_themes = add_submenu_page('SpiderCalendar', 'Featured Themes', 'Featured Themes', 'manage_options', 'calendar_Featured_themes', 'calendar_Featured_themes');
   add_submenu_page('SpiderCalendar', 'Export', 'Export', 'manage_options', 'calendar_export', 'calendar_export'); 
   add_submenu_page('SpiderCalendar', 'Get Pro', 'Get Pro', 'manage_options', 'Spider_calendar_Licensing', 'Spider_calendar_Licensing');
-  add_submenu_page('SpiderCalendar', 'Uninstall  Spider Event Calendar', 'Uninstall  Spider Event Calendar', 'manage_options', 'Uninstall_sp_calendar', 'Uninstall_sp_calendar'); // uninstall Calendar
-  add_action('admin_print_styles-' . $Featured_Plugins, 'calendar_Featured_Plugins_styles');
-  add_action('admin_print_styles-' . $Featured_themes, 'calendar_Featured_themes_styles');
+  $page_uninstall = add_submenu_page('SpiderCalendar', 'Uninstall  Spider Event Calendar', 'Uninstall  Spider Event Calendar', 'manage_options', 'Uninstall_sp_calendar', 'Uninstall_sp_calendar'); // uninstall Calendar
   add_action('admin_print_styles-' . $page_theme, 'spider_calendar_themes_admin_styles_scripts');
   add_action('admin_print_styles-' . $page_event_category, 'spider_calendar_event_category_admin_styles_scripts');
   add_action('admin_print_styles-' . $page_calendar, 'spider_calendar_admin_styles_scripts');
+  add_action('admin_print_styles-' . $page_uninstall, 'spider_calendar_admin_styles_scripts');
   add_action('admin_print_styles-' . $page_widget_theme, 'spider_widget_calendar_themes_admin_styles_scripts');
 }
 
@@ -583,6 +595,7 @@ function spider_calendar_themes_admin_styles_scripts() {
       wp_enqueue_style("parsetheme_css", plugins_url('style_for_cal/style_for_tables_cal.css', __FILE__), array(), $wd_spider_calendar_version);
     }
   }
+
 }
 
 function spider_widget_calendar_themes_admin_styles_scripts() {
@@ -604,6 +617,10 @@ function spider_calendar_admin_styles_scripts() {
   wp_enqueue_script("calendar-setup", plugins_url("elements/calendar-setup.js", __FILE__), array(), $wd_spider_calendar_version, FALSE);
   wp_enqueue_script("calendar_function", plugins_url("elements/calendar_function.js", __FILE__), array(), $wd_spider_calendar_version, FALSE);
   wp_enqueue_style("Css", plugins_url("elements/calendar-jos.css", __FILE__), array(), $wd_spider_calendar_version, FALSE);
+  
+  if( isset($_GET['page']) && $_GET['page'] == "Uninstall_sp_calendar" ) {
+	 wp_enqueue_style("sp_calendar_deactivate-css", plugins_url("wd/assets/css/deactivate_popup.css", __FILE__), array(), $wd_spider_calendar_version, FALSE);
+  }
 }
 
 function spider_calendar_event_category_admin_styles_scripts(){
@@ -612,7 +629,7 @@ function spider_calendar_event_category_admin_styles_scripts(){
   wp_enqueue_script("calendar-setup", plugins_url("elements/calendar-setup.js", __FILE__), array(), $wd_spider_calendar_version, FALSE);
     wp_enqueue_script('wp-color-picker');
   wp_enqueue_style( 'wp-color-picker' );
-  wp_enqueue_style("Css", plugins_url("elements/calendar-jos.css", __FILE__), array(), $wd_spider_calendar_version, FALSE);
+  wp_enqueue_style("Css", plugins_url("elements/calendar-jos.css", __FILE__), array(), $wd_spider_calendar_version, FALSE);  
   }
 
 add_filter('admin_head', 'spide_ShowTinyMCE');
@@ -637,7 +654,145 @@ function spide_ShowTinyMCE() {
 }
 
 // Add menu.
-add_action('admin_menu', 'sp_calendar_options_panel');
+add_action( 'admin_menu', 'sp_calendar_options_panel' );
+add_action( 'init', "wd_spcal_init" ); 
+
+
+function wd_spcal_init(){
+
+	if( !class_exists("DoradoWeb") ){
+		require_once('wd/start.php');
+	}
+	
+	global $sp_calendar_options;
+	$sp_calendar_options =  array (
+		"prefix" => "sp_calendar",
+		"wd_plugin_id" => 29,
+		"plugin_title" => "Spider Calendar", 
+		"plugin_wordpress_slug" => "spider-event-calendar", 
+		"plugin_dir" => plugins_url('/', __FILE__),
+		"plugin_main_file" => __FILE__,
+		"description" => __('This is the best WordPress event Calendar plugin available in WordPress Directory.', 'sp_calendar'), 
+
+	   // from web-dorado.com
+		"plugin_features" => array(
+				0 => array(
+					"title" => __("Responsive", "sp_calendar"),
+					"description" => __("Spider Calendar plugin is fully responsive and mobile-ready.  Thus a beautiful display on all types of devices and screens is guaranteed.", "sp_calendar"),
+				),
+				1 => array(
+					"title" => __("Unlimited Calendars & Events", "sp_calendar"),
+					"description" => __("The calendar plugin allows you to create as many calendars as you want and add unlimited number of events in each calendar.  Customize the design of each calendar, create events for each calendar separately and show multiple calendars on one page.", "sp_calendar"),
+				),
+				2 => array(
+					"title" => __("Event Categories", "sp_calendar"),
+					"description" => __("You can assign categories to your events by adding titles, descriptions and category colors from the website admin panel. The plugin allows you customize the calendars to show events from all or just a few categories.", "sp_calendar"),
+				), 
+				3 => array(
+					"title" => __("Themes", "sp_calendar"),
+					"description" => __("Choose among 17 different calendar themes to make sure the calendar fits perfectly with your website design. Add your own style to the themes by customizing almost everything or easily create your own theme.", "sp_calendar"),
+				),
+				4 => array(
+					"title" => __("Repeat Events", "sp_calendar"),
+					"description" => __("If you have events in your calendar that occur regularly you can choose to use the recurring events option.  You can set the events to repeat daily, weekly, monthly, yearly on specific days of the week, specific days of the month or year.", "sp_calendar"),
+				)			
+		   ),
+		   // user guide from web-dorado.com
+		 "user_guide" => array(
+			0 => array(
+					"main_title" => __("Creating/Editing Calendars", "sp_calendar"),
+					"url" => "https://web-dorado.com/wordpress-spider-calendar/creating-editing-calendar.html",
+					"titles" => array()
+				),
+			1 => array(
+				"main_title" => __("Creating/Editing Events", "sp_calendar"),
+				"url" => "https://web-dorado.com/wordpress-spider-calendar/creating-editing-events.html",
+				"titles" => array()
+			),
+			2 => array(
+				"main_title" => __("Adding Event Category", "sp_calendar"),
+				"url" => "https://web-dorado.com/wordpress-spider-calendar/adding-event-category.html",
+				"titles" => array()
+			),
+			3 => array(
+				"main_title" => __("Adding Themes", "sp_calendar"),
+				"url" => "https://web-dorado.com/wordpress-spider-calendar/adding-themes.html",
+				"titles" => array(
+					array(
+						"title" => __("General Parameters", "sp_calendar"),
+						"url" => "https://web-dorado.com/wordpress-spider-calendar/adding-themes/general-parameters.html",
+					),
+					array(
+						"title" => __("Header Parameters", "sp_calendar"),
+						"url" => "https://web-dorado.com/wordpress-spider-calendar/adding-themes/header-parameters.html",
+					),
+					array(
+						"title" => __("Body Parameters", "sp_calendar"),
+						"url" => "https://web-dorado.com/wordpress-spider-calendar/adding-themes/body-parameters.html",
+					),
+					array(
+						"title" => __("Popup Window Parameters", "sp_calendar"),
+						"url" => "https://web-dorado.com/wordpress-spider-calendar/adding-themes/popup-window-parameters.html",
+					),
+					array(
+						"title" => __("Other Views Parameters of the Wordpress Calendar", "sp_calendar"),
+						"url" => "https://web-dorado.com/wordpress-spider-calendar/adding-themes/other-views-parameters.html",
+					),					
+				)
+			), 
+			4 => array(
+				"main_title" => __("Adding Themes for a widget view", "sp_calendar"),
+				"url" => "https://web-dorado.com/wordpress-spider-calendar/adding-widget-view-themes.html",
+				"titles" => array(
+					array(
+						"title" => __("General Parameters", "sp_calendar"),
+						"url" => "https://web-dorado.com/wordpress-spider-calendar/adding-widget-view-themes/general-parameters.html",
+					),
+					array(
+						"title" => __("Popup Window Parameters", "sp_calendar"),
+						"url" => "https://web-dorado.com/wordpress-spider-calendar/adding-widget-view-themes/popup-window-parameters.html",
+					),
+					array(
+						"title" => __("Body Parameters", "sp_calendar"),
+						"url" => "https://web-dorado.com/wordpress-spider-calendar/adding-widget-view-themes/body-parameters.html",
+					),
+				)
+			), 
+			5 => array(
+				"main_title" => __("Publishing the Created Calendar in a Page or a Post", "sp_calendar"),
+				"url" => "https://web-dorado.com/wordpress-spider-calendar/publishing-calendar.html",				
+				"titles" => array()
+			), 
+			6 => array(
+				"main_title" => __("Publishing the Created Calendar in the Widget", "sp_calendar"),
+				"url" => "https://web-dorado.com/wordpress-spider-calendar/publishing-calendar-in-widget.html",				
+				"titles" => array()
+			), 
+			7 => array(
+				"main_title" => __("Publishing the Upcoming Events widget", "sp_calendar"),
+				"url" => "https://web-dorado.com/wordpress-spider-calendar/publishing-upcoming-events-widget.html",				
+				"titles" => array()
+			),   
+			
+	   ), 
+	   "video_youtube_id" => "wDrMRAjhgHk",  // e.g. https://www.youtube.com/watch?v=acaexefeP7o youtube id is the acaexefeP7o
+	   "overview_welcome_image" => null,
+	   "plugin_wd_url" => "https://web-dorado.com/products/wordpress-calendar.html", 
+	   "plugin_wd_demo_link" => "http://wpdemo.web-dorado.com/spider-calendar/?_ga=1.67418517.523103993.1473155982", 
+	   "plugin_wd_addons_link" => null, 
+	   "plugin_wizard_link" => null, 
+	   "after_subscribe" => admin_url('admin.php?page=overview_sp_calendar'), // this can be plagin overview page or set up page
+	   "plugin_menu_title" => "Calendar", 
+	   "plugin_menu_icon" => plugins_url('/images/calendar_menu.png', __FILE__) , 
+	   "deactivate" => true, 
+	   "subscribe" => true,
+	   "custom_post" => "SpiderCalendar",  // if true => edit.php?post_type=contact
+	   "menu_capability" => "manage_options",
+       "menu_position" => null,
+					   
+	);
+	dorado_web_init($sp_calendar_options);
+}
 
 require_once("functions_for_xml_and_ajax.php");
 require_once("front_end/bigcalendarday.php");
@@ -673,14 +828,6 @@ add_action('wp_ajax_nopriv_spiderbigcalendar_day_widget', 'big_calendar_day_widg
 add_action('wp_ajax_nopriv_spidercalendarbig', 'spiderbigcalendar');
 add_action('wp_ajax_nopriv_spiderseemore', 'seemore');
 add_action('wp_ajax_nopriv_window', 'php_window');
-
-//notices
-if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
-	require_once( 'spider_calendar_admin_class.php' );
-	include_once('spider_calendar_notices_class.php');
-	require_once('notices.php');
-	add_action( 'plugins_loaded', array( 'SC_Admin', 'get_instance' ) );
-}
 
 
 // Add style head.
@@ -955,18 +1102,21 @@ function spider_calendar_params() {
   }
 }
 
-
 function Uninstall_sp_calendar() {
-  global $wpdb;
+  global $wpdb,  $sp_calendar_options;
+  if(!class_exists("DoradoWebConfig")){
+		require_once("wd/config.php");
+  }
+  $config = new DoradoWebConfig();
+  $config->set_options( $sp_calendar_options );
+  $deactivate_reasons = new DoradoWebDeactivate($config);	
+  $deactivate_reasons->submit_and_deactivate(); 
+	
   $base_name = plugin_basename('Spider_Calendar');
   $base_page = 'admin.php?page=' . $base_name;
   $mode = (isset($_GET['mode']) ? trim($_GET['mode']) : '');
   ?>
-	<div class="page-banner uninstall-banner">
-		<div class="uninstall_icon">
-		</div>
-		<div class="logo-title">Uninstall Spider Calendar</div>
-	</div>	
+	<?php upgrade_pro_sp(); ?>	
 	<br />
 	<div class="goodbye-text">
 		Before uninstalling the plugin, please Contact our <a href="https://web-dorado.com/support/contact-us.html?source=spidercalendar" target= '_blank'>support team</a>. We'll do our best to help you out with your issue. We value each and every user and value what’s right for our users in everything we do.<br>
@@ -1009,16 +1159,16 @@ function Uninstall_sp_calendar() {
         echo '</font><br />';
         echo '</p>';
         echo '</form>';
-        $mode = 'end-UNINSTALL';
-      
+		delete_option('sp_calendar_subscribe_done');
+        $mode = 'end-UNINSTALL';      
     }
   }
+    
   switch ($mode) {
     case 'end-UNINSTALL':
-      $deactivate_url = wp_nonce_url('plugins.php?action=deactivate&amp;plugin=' . plugin_basename(__FILE__), 'deactivate-plugin_' . plugin_basename(__FILE__));
       echo '<div class="wrap">';
       echo '<h2>Uninstall Spider Event Calendar</h2>';
-      echo '<p><strong>' . sprintf('<a href="%s">Click Here</a> To Finish The Uninstallation And Spider Event Calendar Will Be Deactivated Automatically.', $deactivate_url) . '</strong></p>';
+      echo '<p><strong><a href="#"  class="sp_calendar_deactivate_link" data-uninstall="1">Click Here</a> To Finish The Uninstallation And Spider Event Calendar Will Be Deactivated Automatically.</strong></p>';
       echo '</div>';
       break;
     // Main Page
@@ -1035,7 +1185,7 @@ function Uninstall_sp_calendar() {
           </p>
 
           <p style="color: red">
-            <strong><?php echo'WARNING:'; ?></strong><br/>
+            <strong><?php echo'WARNING:'; ?></strong>
             <?php echo 'Once uninstalled, this cannot be undone. You should use a Database Backup plugin of WordPress to back up all the data first.'; ?>
           </p>
 
@@ -1089,560 +1239,9 @@ function Uninstall_sp_calendar() {
         </div>
       </form>
       <?php
+	   
   }
 }
-
-function calendar_Featured_Plugins_styles() {
-  global $wd_spider_calendar_version;
-  wp_enqueue_style("Featured_Plugins", plugins_url("featured_plugins.css", __FILE__), array(), $wd_spider_calendar_version);
-}
-function calendar_Featured_Plugins() { ?>
-<div id="main_featured_plugins_page">
-	<div class="featured_header">
-		<a href="https://web-dorado.com/wordpress-plugins-bundle.html?source=spidercalendar" target="_blank">
-			<h1>GET SPIDER CALENDAR +24 PLUGINS</h1>
-			<h1 class="get_plugins">FOR $99 ONLY <span>- SAVE 80%</span></h1>
-			<div class="try-now">
-				<span>TRY NOW</span>
-			</div>
-		</a>
-	</div>
-	<form method="post">
-		<ul id="featured-plugins-list">
-			<li class="form-maker">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Form Maker</strong>
-				</div>
-				<div class="description">
-					<p>Form Maker is a modern and advanced tool for creating WordPress forms easily and fast.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-form.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="photo-gallery ">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Photo Gallery</strong>
-				</div>
-				<div class="description">
-					<p>Photo Gallery is a fully responsive WordPress Gallery plugin with advanced functionality. </p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-photo-gallery-plugin.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="events-wd">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Event Calendar WD</strong>
-				</div>
-				<div class="description">
-					<p>Organize and publish your events in an easy and elegant way using Event Calendar WD.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-event-calendar-wd.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="slider_wd">
-				 <div class="product"></div>
-				 <div class="title">
-					 <strong class="heading">Slider WD</strong>
-				 </div>
-				<div class="description">
-					<p>Create responsive, highly configurable sliders with various effects for your WordPress site. </p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-slider-plugin.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="google_maps">
-				 <div class="product"></div>
-				 <div class="title">
-					 <strong class="heading">Google Maps WD</strong>
-				 </div>
-				<div class="description">
-					<p>Google Maps WD is a comprehensive plugin that comes with user-friendly and intuitive set of features.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-google-maps-plugin.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="google_analytics">
-				 <div class="product"></div>
-				 <div class="title">
-					 <strong class="heading">Google Analytics WD</strong>
-				 </div>
-				<div class="description">
-					<p>Google Analytics WD is a certified member of Google Analytics Technology Partners Program.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-google-analytics-plugin.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="ecommerce_wd">
-				 <div class="product"></div>
-				 <div class="title">
-					 <strong class="heading">Ecommerce WD</strong>
-				 </div>
-				<div class="description">
-					<p>Are you looking forward to building a robust online store for your site? Ecommerce WD is the best solution here.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-ecommerce.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="mailchimp-wd">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">MailChimp WD</strong>
-				</div>
-				<div class="description">
-					<p>The plugin allows you to integrate MailChimp with your WordPress website, create multiple opt-in and start building mailing lists.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-mailchimp-wd.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="facebook_feed">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Facebook Feed WD</strong>
-				</div>
-				<div class="description">
-					<p>Facebook Feed WD allows you to display photos, videos, events and more.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-facebook-feed-plugin.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="instagram-wd">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Instagram Feed WD</strong>
-				</div>
-				<div class="description">
-					<p>Instagram Feed WD plugin allows to display image feeds from single or multiple Instagram accounts on a WordPress site.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-instagram-feed-wd.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="postslider_wd">
-				 <div class="product"></div>
-				 <div class="title">
-					 <strong class="heading">Post Slider WD</strong>
-				 </div>
-				<div class="description">
-					<p>Post Slider WD is designed to show off the selected posts of your website in a slider.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-post-slider-plugin.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="team_wd">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Team WD</strong>
-				</div>
-				<div class="description">
-					<p>Team WD plugin is a perfect solution to display the members of your staff, team or employees on your WordPress website. </p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-team-wd.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="faq-wd">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">FAQ WD</strong>
-				</div>
-				<div class="description">
-					<p>The FAQ WD plugin will help to add categorizes and include questions in each category.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-faq-wd.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="catalog">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Spider Catalog</strong>
-				</div>
-				<div class="description">
-					<p>Spider Catalog for WordPress is a convenient tool for organizing the products represented on your website into catalogs.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-catalog.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="player">
-				<div class="product"></div>
-				<div class="title">
-						<strong class="heading">Video Player</strong>
-				</div>
-				<div class="description">
-					<p>Spider Video Player for WordPress is a Flash & HTML5 video player plugin that allows you to easily add videos to your website with the possibility</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-player.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="contacts">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Spider Contacts</strong>
-				</div>
-				<div class="description">
-					<p>Spider Contacts helps you to display information about the group of people more intelligible, effective and convenient.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-contacts-plugin.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="facebook">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Spider Facebook</strong>
-				</div>
-				<div class="description">
-					<p>Spider Facebook is a WordPress integration tool for Facebook.It includes all the available Facebook social plugins and widgets.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-facebook.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="faq">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Spider FAQ</strong>
-				</div>
-				<div class="description">
-					<p>The Spider FAQ WordPress plugin is for creating an FAQ (Frequently Asked Questions) section for your website.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-faq-plugin.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="zoom">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Zoom</strong>
-				</div>
-				<div class="description">
-					<p>Zoom enables site users to resize the predefined areas of the web site.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-zoom.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="flash-calendar">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Flash Calendar</strong>
-				</div>
-				<div class="description">
-					<p>Spider Flash Calendar is a highly configurable Flash calendar plugin which allows you to have multiple organized events.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-events-calendar.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="contact-maker">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Contact Form Maker</strong>
-				</div>
-				<div class="description">
-					<p>WordPress Contact Form Maker is an advanced and easy-to-use tool for creating forms.</p>
-				 </div>
-				 <a target="_blank" href="https://web-dorado.com/products/wordpress-contact-form-maker-plugin.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="twitter-widget">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Widget Twitter</strong>
-				</div>
-				<div class="description">
-					<p>The Widget Twitter plugin lets you to fully integrate your WordPress site with your Twitter account.</p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-twitter-integration-plugin.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="contact_form_bulder">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Contact Form Builder</strong>
-				</div>
-				<div class="description">
-					<p>Contact Form Builder is the best tool for quickly arranging a contact form for your clients and visitors. </p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-contact-form-builder.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="folder_menu">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Folder Menu</strong>
-				</div>
-				<div class="description">
-					<p>Folder Menu Vertical is a WordPress Flash menu module for your website, designed to meet your needs and preferences. </p>
-				</div>
-				<a target="_blank" href="https://web-dorado.com/products/wordpress-menu-vertical.html" class="download">Download plugin &#9658;</a>
-			</li>
-			<li class="random_post">
-				<div class="product"></div>
-				<div class="title">
-					<strong class="heading">Random post</strong>
-				</div>
-				<div class="description">
-					<p>Spider Random Post is a small but very smart solution for your WordPress web site. </p>
-			 </div>
-			 <a target="_blank" href="https://web-dorado.com/products/wordpress-random-post.html" class="download">Download plugin &#9658;</a>
-			</li>
-		</ul>
-	</form>
-</div>
-<?php }
-
-function calendar_Featured_themes_styles() {
-  global $wd_spider_calendar_version;
-  wp_enqueue_style("Featured_themes", plugins_url("featured_themes.css", __FILE__), array(), $wd_spider_calendar_version);
-}
-
-function calendar_Featured_themes() {
-
-    $image_url = plugins_url("/images/themes/", __FILE__);
-    $slug="spider-event-calendar";
-    $demo_url = 'http://themedemo.web-dorado.com/';
-    $site_url = 'https://web-dorado.com/wordpress-themes/';
-    ?>
-    <style>
-        @import url(https://fonts.googleapis.com/css?family=Oswald);
-
-        #main_featured_themes_page #featured-themes-list {
-            position:relative;
-            margin:0px auto;
-            height:auto;
-            display:table;
-            list-style:none;
-            text-align: center;
-            width: 100%;
-        }
-        #main_featured_themes_page #featured-themes-list li {
-            display: inline-table;
-            width: 300px;
-            margin: 20px 10px 0px 10px;
-            background: #FFFFFF;
-            border-right: 3px solid #E5E5E5;
-            border-bottom: 3px solid #E5E5E5;
-            position: relative;
-        }
-        @media screen and (min-width: 1600px) {
-            #main_featured_themes_page #featured-themes-list li {
-                width:400px;
-            }
-
-        }
-        #main_featured_themes_page .theme_img img {
-            max-width: 100%;
-        }
-        #main_featured_themes_page .theme_img {
-            display: inline-block;
-            overflow: hidden;
-            outline: 1px solid #D6D1D1;
-            position:relative;
-            /*height: 168px;	*/
-        }
-        #main_featured_themes_page #featured-themes-list li  .title {
-            width: 91%;
-            text-align: center;
-            margin: 0 auto;
-        }
-        #main_featured_themes_page {
-            font-family: Oswald;
-        }
-        #main_featured_themes_page #featured-themes-list li  .title  .heading {
-            display: block;
-            position: relative;
-            font-size: 17px;
-            color: #666666;
-            margin: 13px 0px 13px 0px;
-            text-transform: uppercase;
-        }
-        #main_featured_themes_page #featured-themes-list li  .title  p {
-            font-size:14px;
-            color:#444;
-            margin-left:20px;
-        }
-        #main_featured_themes_page #featured-themes-list li  .description {
-            height:130px;
-            width: 90%;
-            margin: 0 auto;
-        }
-        #main_featured_themes_page #featured-themes-list li  .description  p {
-            text-align: center;
-            width: 100%;
-            color: #666666;
-            font-family: "Open Sans",sans-serif;
-            font-size: 14px;
-        }
-        #main_featured_themes_page #featured-themes-list li .links {
-            border-top: 1px solid #d8d8d8;
-            width: 90%;
-            margin: 0 auto;
-            font-size: 14px;
-            line-height: 40px;
-            font-weight: bolder;
-            text-align: center;
-            padding-top: 9px;
-            padding-bottom: 12px;
-        }
-        #main_featured_themes_page .page_header h1 {
-            margin: 0px;
-            font-family: Segoe UI;
-            padding-bottom: 15px;
-            color: rgb(111, 111, 111);
-            font-size: 24px;
-            text-align:center;
-        }
-        #main_featured_themes_page .page_header {
-            height: 40px;
-            padding: 22px 0px 0px 0px;
-            margin-bottom: 15px;
-            /*border-bottom: rgb(111, 111, 111) solid 1px;*/
-        }
-        #main_featured_themes_page #featured-themes-list li a {
-            outline: none;
-            line-height: 29px;
-            text-decoration: none;
-            color: #134d68;
-            font-family: "Open Sans",sans-serif;
-            text-shadow: 1px 0;
-            display: inline-block;
-            font-size: 15px;
-        }
-        #main_featured_themes_page #featured-themes-list li a.demo {
-            color: #ffffff;
-            background: #F47629;
-            border-radius: 3px;
-            width: 76px;
-            text-align:center;
-            margin-right: 12px;
-        }
-        #main_featured_themes_page #featured-themes-list li a.download {
-            padding-right: 30px;
-            background:url(<?php echo $image_url; ?>down.png) no-repeat right;
-        }
-        #main_featured_themes_page .featured_header{
-            background: #11465F;
-            border-right: 3px solid #E5E5E5;
-            border-bottom: 3px solid #E5E5E5;
-            position: relative;
-            padding: 20px 0;
-        }
-        #main_featured_themes_page .featured_header .try-now {
-            text-align: center;
-        }
-        #main_featured_themes_page .featured_header .try-now span {
-            display: inline-block;
-            padding: 7px 16px;
-            background: #F47629;
-            border-radius: 10px;
-            color: #ffffff;
-            font-size: 23px;
-        }
-        #main_featured_themes_page .featured_container {
-            position: relative;
-            width: 90%;
-            margin: 15px auto 0px auto;
-        }
-        #main_featured_themes_page .featured_container .old_price{
-            color: rgba(180, 180, 180, 0.3);
-            text-decoration: line-through;
-            font-family: Oswald;
-        }
-        #main_featured_themes_page .featured_container .get_themes{
-            color: #FFFFFF;
-            height: 85px;
-            margin: 0;
-            background-size: 95% 100%;
-            background-position: center;
-            line-height: 60px;
-            font-size: 45px;
-            text-align: center;
-            letter-spacing: 3px;
-        }
-        #main_featured_themes_page .featured_header h1{
-            font-size: 45px;
-            text-align: center;
-            color: #ffffff;
-            letter-spacing: 3px;
-            line-height: 10px;
-        }
-        #main_featured_themes_page .featured_header a{
-            text-decoration: none;
-        }
-        @media screen and (max-width: 1035px) {
-            #main_featured_themes_page .featured_header h1{
-                font-size: 37px;
-                line-height: 0;
-            }
-        }
-        @media screen and (max-width: 835px) {
-            #main_featured_themes_page .get_themes span{
-                display: none;
-            }
-        }
-        @media screen and (max-width: 435px) {
-            #main_featured_themes_page .featured_header h1 {
-                font-size: 20px;
-                line-height: 17px;
-            }
-        }
-    </style>
-
-    <?php
-    $WDWThemes = array(
-        "business_elite" => array(
-            "title" => "Business Elite",
-            "description" => __("Business Elite is a robust parallax theme for business websites. The theme uses smooth transitions and many functional sections."),
-            "link" => "business-elite.html",
-            "demo" => "theme-businesselite",
-            "image" => "business_elite.jpg"
-        ),
-        "portfolio" => array(
-            "title" => "Portfolio Gallery",
-            "description" => __("Portfolio Gallery helps to display images using various color schemes and layouts combined with elegant fonts and content parts."),
-            "link" => "portfolio-gallery.html",
-            "demo" => "theme-portfoliogallery",
-            "image" => "portfolio_gallery.jpg"
-        ),
-        "sauron" => array(
-            "title" => "Sauron",
-            "description" => __("Sauron is a multipurpose parallax theme, which uses multiple interactive sections designed for the client-engagement."),
-            "link" => "sauron.html",
-            "demo" => "theme-sauron",
-            "image" => "sauron.jpg"
-        ),
-        "business_world" => array(
-            "title" => "Business World",
-            "description" => __("Business World is an innovative WordPress theme great for Business websites."),
-            "link" => "business-world.html",
-            "demo" => "theme-businessworld",
-            "image" => "business_world.jpg"
-        ),
-        "best_magazine" => array(
-            "title" => "Best Magazine",
-            "description" => __("Best Magazine is an ultimate selection when you are dealing with multi-category news websites."),
-            "link" => "best-magazine.html",
-            "demo" => "theme-bestmagazine",
-            "image" => "best_magazine.jpg"
-        ),
-        "magazine" => array(
-            "title" => "News Magazine",
-            "description" => __("Magazine theme is a perfect solution when creating news and informational websites. It comes with a wide range of layout options."),
-            "link" => "news-magazine.html",
-            "demo" => "theme-newsmagazine",
-            "image" => "news_magazine.jpg"
-        )
-    );
-    ?>
-    <div id="main_featured_themes_page">
-        <div class="featured_container">
-            <div class="page_header">
-                <h1><?php echo __("Featured Themes"); ?></h1>
-            </div>
-            <div class="featured_header">
-                <a target="_blank" href="https://web-dorado.com/wordpress-themes.html?source=<?php echo $slug; ?>">
-                    <h1><?php echo __("WORDPRESS THEMES"); ?></h1>
-                    <h2 class="get_themes"><?php echo __("ALL FOR $40 ONLY "); ?><span>- <?php echo __("SAVE 80%"); ?></span></h2>
-                    <div class="try-now">
-                        <span><?php echo __("TRY NOW"); ?></span>
-                    </div>
-                </a>
-            </div>
-            <ul id="featured-themes-list">
-                <?php foreach($WDWThemes as $key=>$WDWTheme) : ?>
-                    <li class="<?php echo $key; ?>">
-                        <div class="theme_img">
-                            <img src="<?php echo $image_url . $WDWTheme["image"]; ?>">
-                        </div>
-                        <div class="title">
-                            <h3 class="heading"><?php echo $WDWTheme["title"]; ?></h3>
-                        </div>
-                        <div class="description">
-                            <p><?php echo $WDWTheme["description"]; ?></p>
-                        </div>
-                        <div class="links">
-                            <a target="_blank" href="<?php echo $demo_url . $WDWTheme["demo"]."?source=".$slug; ?>" class="demo"><?php echo __("Demo"); ?></a>
-                            <a target="_blank" href="<?php echo $site_url . $WDWTheme["link"]."?source=".$slug; ?>" class="download"><?php echo __("Free Download"); ?></a>
-                        </div>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    </div>
-<?php }
 
 add_action('init', 'spider_calendar_export');
 function spider_calendar_export() {
@@ -1758,13 +1357,83 @@ function spider_calendar_export() {
     }
 }
 
+
+function upgrade_pro_sp($text = false){
+    $page = isset($_GET["page"]) ? $_GET["page"] : "";
+?>
+    <div class="sp_calendar_upgrade wd-clear" >
+        <div class="wd-left">
+        <?php
+            switch($page){
+                case "SpiderCalendar":
+                ?>
+                    <div style="font-size: 14px;">
+                        <?php _e("This section allows you to create calendars.","sp_calendar");?>
+                        <a style="color: #5CAEBD; text-decoration: none;border-bottom: 1px dotted;" target="_blank" href="https://web-dorado.com/wordpress-spider-calendar/creating-editing-calendar.html"><?php _e("Read More in User Manual.","sp_calendar");?></a>
+                    </div>
+                <?php      
+                break;
+				case "spider_calendar_event_category":
+                ?>
+                    <div style="font-size: 14px;">
+                        <?php _e("This section allows you to create event categories.","sp_calendar");?>
+                        <a style="color: #5CAEBD; text-decoration: none;border-bottom: 1px dotted;" target="_blank" href="https://web-dorado.com/wordpress-spider-calendar/adding-event-category.html"><?php _e("Read More in User Manual.","sp_calendar");?></a>
+                    </div>
+                <?php      
+                break;
+                case "calendar_export":
+                ?>
+                    <div style="font-size: 14px;">
+                        <?php _e("This section will allow exporting Spider Calendar data for further import to Event Calendar WD.","sp_calendar");?>
+                        <a style="color: #5CAEBD; text-decoration: none;border-bottom: 1px dotted;" target="_blank" href="https://web-dorado.com/products/wordpress-event-calendar-wd.html"><?php _e("Read More in User Manual.","sp_calendar");?></a>
+                    </div> 
+                <?php      
+                break; 
+				case "Uninstall_sp_calendar":
+                ?>
+                    <div style="font-size: 14px;">
+                        <div class="page-banner uninstall-banner">
+							<div class="uninstall_icon">
+							</div>
+							<div class="logo-title">Uninstall Spider Calendar </div>
+						</div>
+                    </div> 
+                <?php      
+                break;               
+            }
+        ?>
+        </div>
+        <div class="wd-right"> 
+            <div class="wd-table">
+                <div class="wd-cell wd-cell-valign-middle">
+                    <a href="https://wordpress.org/support/plugin/spider-event-calendar" target="_blank">
+                        <img src="<?php echo plugins_url('images/i_support.png', __FILE__); ?>" >
+                        <?php _e("Support Forum", "sp_calendar"); ?>
+                    </a>
+                </div>            
+                <div class="wd-cell wd-cell-valign-middle">
+                    <a href="https://web-dorado.com/products/wordpress-calendar.html" target="_blank">
+                    <?php _e("UPGRADE TO PAID VERSION", "sp_calendar"); ?>
+                     </a> 
+                </div>
+            </div>     
+                            
+        </div>
+    </div>
+    <?php if($text){
+    ?>
+        <div class="wd-text-right wd-row" style="color: #15699F; font-size: 20px; margin-top:10px; padding:0px 15px;">
+            <?php echo sprintf(__("This is FREE version, Customizing %s is available only in the PAID version.","sp_calendar"), $text);?>
+        </div>
+    <?php
+    }
+
+}
+
 function calendar_export() {
     ?>
+	<?php upgrade_pro_sp(); ?>
     <form method="post" style="font-size: 14px; font-weight: bold;">
-		<div id="export_div">
-          This section will allow exporting Spider Calendar data (events, calendars, categories) for further import to Event Calendar WD.
-          <a href="https://web-dorado.com/products/wordpress-event-calendar-wd.html" target="_blank" style="color:blue; text-decoration:none;">More...</a>
-		</div>
         <input type='submit' value='Export' id="export_WD" name='export_spider_calendar' />
     </form>
 	<style>

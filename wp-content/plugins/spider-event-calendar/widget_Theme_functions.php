@@ -9,7 +9,9 @@ function add_theme_calendar_widget() {
 
 function show_theme_calendar_widget() {
   global $wpdb;
-  $order = " ORDER BY title ASC";
+  $order = "title";
+  $asc_desc = "ASC";
+  $order_by = "";
   $sort["default_style"] = "manage-column column-autor sortable desc";
   $sort["sortid_by"] = "title";
   $sort["custom_style"] = "manage-column column-title sorted asc";
@@ -21,12 +23,14 @@ function show_theme_calendar_widget() {
     if (isset($_POST['asc_or_desc']) && ($_POST['asc_or_desc'] == 1)) {
       $sort["custom_style"] = "manage-column column-title sorted asc";
       $sort["1_or_2"] = "2";
-      $order = "ORDER BY " . $sort["sortid_by"] . " ASC";
+	  $order = esc_sql(esc_html($sort["sortid_by"]));
+	  $asc_desc = "ASC";
     }
     else {
       $sort["custom_style"] = "manage-column column-title sorted desc";
       $sort["1_or_2"] = "1";
-      $order = "ORDER BY " . $sort["sortid_by"] . " DESC";
+	  $order = esc_sql(esc_html($sort["sortid_by"]));
+	  $asc_desc = "DESC";
     }
     if ($_POST['page_number']) {
       $limit = ($_POST['page_number'] - 1) * 20;
@@ -45,7 +49,7 @@ function show_theme_calendar_widget() {
     $search_tag = "";
   }
   if ($search_tag) {
-    $where = ' WHERE title LIKE "%%' . like_escape($search_tag) . '%%"';
+    $where = ' WHERE title LIKE "%%' . esc_sql(esc_html($search_tag)) . '%%"';
   }
   else {
     $where = '';
@@ -55,7 +59,9 @@ function show_theme_calendar_widget() {
   $total = $wpdb->get_var($query);
   $pageNav['total'] = $total;
   $pageNav['limit'] = $limit / 20 + 1;
-  $query = $wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spidercalendar_widget_theme" . $where . " " . $order . " " . " LIMIT %d,20", $limit);
+
+  if( $order == "id" || $order == "title" ) $order_by = " ORDER BY " . $order . " " . $asc_desc;
+  $query = $wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spidercalendar_widget_theme" . $where . " " . $order_by . " " . " LIMIT %d,20", $limit);
   $rows = $wpdb->get_results($query);
   html_show_theme_calendar_widget($rows, $pageNav, $sort);
 }

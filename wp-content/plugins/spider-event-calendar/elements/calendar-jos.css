@@ -1,10 +1,11 @@
 .uninstall_icon {
-    background: url("buttons.png") no-repeat 0% 75%;
+    background: url(buttons.png) no-repeat 0% 75%;
     border: none;
     height: 42px;
     width: 37px;
     display: inline-block;
     vertical-align: middle;
+    background-size: 100%;
 }
 
 .uninstall-banner .logo-title {
@@ -20,7 +21,6 @@
 .uninstall-banner {
     background: #fff;
     display: block;
-    padding: 15px 10px;
     height: 38px;
 }
 
@@ -243,4 +243,88 @@ div.calendar {
     position: absolute;
     left: 31px;
 	top: 0px;
+}
+
+/************* upgrade to pro ******************/
+
+.sp_calendar_upgrade{
+    clear: both;
+    padding: 15px;
+    background: #fff;
+    margin: 6px 15px 6px 0px;
+    color: #6e7990;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+.sp_calendar_upgrade .wd-cell:first-child{
+    padding-right: 14px;
+}
+
+.sp_calendar_upgrade .wd-cell:last-child{
+    background: #45A6B7;
+}
+.sp_calendar_upgrade .wd-cell:last-child a{
+    color: #fff !important;
+    padding: 18px;
+} 
+
+
+.sp_calendar_upgrade .wd-cell:first-child{
+    background: transparent
+}
+.sp_calendar_upgrade .wd-cell:first-child img{
+    vertical-align:middle;
+}
+.sp_calendar_upgrade .wd-cell:first-child a{
+   color: #72777c !important;
+}  
+.sp_calendar_upgrade a, .sp_calendar_upgrade a:hover {
+    text-decoration: none !important;
+}
+
+/* general styles */
+
+.wd-cell{
+	display:table-cell;
+}
+.wd-cell-valign-middle{
+	vertical-align:middle;
+}
+.wd-cell-valign-top{
+	vertical-align:top;
+}
+.wd-cell-valign-bottom{
+	vertical-align:bottom;
+}
+.wd-table{
+	display:table;
+}
+.wd-text-right{
+	text-align:right;
+}
+.wd-text-left{
+	text-align:left;
+}
+.wd-text-center{
+	text-align:center;
+}
+.wd-left{
+	float:left;
+}
+.wd-right{
+	float:right;
+}
+.wd-clear:after{
+	clear:both;
+	content:"";
+	display:table;
+}
+.wd-row{
+	margin-bottom:15px;
+}
+
+a:focus{
+	box-shadow: none;
 }

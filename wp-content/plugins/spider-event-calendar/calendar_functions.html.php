@@ -4,6 +4,7 @@ if (function_exists('current_user_can')) {
     die('Access Denied');
   }
 }
+
 function html_show_spider_calendar($rows, $pageNav, $sort) {
   ?>
   <script language="javascript">
@@ -127,30 +128,16 @@ function html_show_spider_calendar($rows, $pageNav, $sort) {
 	  if($def_zone_wd == 0) {
 		$wpdb->query("ALTER TABLE " . $wpdb->prefix . "spidercalendar_calendar ADD def_zone varchar(255) DEFAULT 'Asia/Muscat'");
 	  } ?>
+	  <?php upgrade_pro_sp(); ?>
   <form method="post" onKeyPress="doNothing()" action="admin.php?page=SpiderCalendar" id="admin_form" name="admin_form">
     <?php $sp_cal_nonce = wp_create_nonce('nonce_sp_cal'); ?>
 	<table cellspacing="10" width="100%" id="calendar_table">
       <tr>
-        <td width="100%" style="font-size:14px; font-weight:bold">
-          <a href="https://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a>
-          <br />
-          This section allows you to create calendars. You can add unlimited number of calendars.
-          <a href="https://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a>
-        </td>
-        <td colspan="7" align="right" style="font-size:16px;">
-          <a href="https://web-dorado.com/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
-            <img src="<?php echo plugins_url('images/header.png', __FILE__); ?>" border="0" alt="https://web-dorado.com/files/fromSpiderCalendarWP.php" width="215">
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td style="width:210px"><h2>Calendar Manager</h2></td>
-        <td style="width:90px; text-align:right;">
-          <p class="submit" style="padding:0px; text-align:left">
+        <td><h2>Calendar Manager</h2></td>
+        <td style="text-align: right;">
+          <p class="submit" style="padding:0px; text-align: right;">
             <input type="button" value="Add a Calendar" name="custom_parametrs" onClick="window.location.href='admin.php?page=SpiderCalendar&task=add_calendar'"/>
           </p>
-        </td>
-        <td style="text-align:right;font-size:16px;padding:20px; padding-right:50px">
         </td>
       </tr>
     </table>
@@ -277,20 +264,8 @@ function html_add_spider_calendar() {
 		height: 25px;
 	}
   </style>
+  <?php upgrade_pro_sp(); ?>
   <table width="95%">
-    <tr>
-      <td width="100%" style="font-size:14px; font-weight:bold">
-        <a href="https://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a>
-        <br />
-        This section allows you to create calendars. You can add unlimited number of calendars.
-        <a href="https://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a>
-      </td>
-      <td colspan="7" align="right" style="font-size:16px;">
-        <a href="https://web-dorado.com/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
-          <img src="<?php echo plugins_url('images/header.png', __FILE__); ?>" border="0" alt="https://web-dorado.com/files/fromSpiderCalendarWP.php" width="215">
-        </a>
-      </td>
-    </tr>
     <tr>
       <td width="100%"><h2>Add Calendar</h2></td>
       <td align="right"><input type="button" onClick="submitbutton('Save')" value="Save" class="button-secondary action"></td>
@@ -463,20 +438,8 @@ function html_edit_spider_calendar($row) {
 		height: 25px;
 	}
   </style>
+  <?php upgrade_pro_sp(); ?>
   <table width="95%">
-    <tr>
-      <td width="100%" style="font-size:14px; font-weight:bold">
-        <a href="https://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a>
-        <br />
-        This section allows you to create calendars. You can add unlimited number of calendars.
-        <a href="https://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a>
-      </td>
-      <td colspan="7" align="right" style="font-size:16px;">
-        <a href="https://web-dorado.com/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
-          <img src="<?php echo plugins_url('images/header.png', __FILE__); ?>" border="0" alt="https://web-dorado.com/files/fromSpiderCalendarWP.php" width="215">
-        </a>
-      </td>
-    </tr>
     <tr>
       <td width="100%"><h2>Calendar - <?php echo $row->title; ?></h2></td>
       <td align="right"><input type="button" onClick="submitbutton('Save')" value="Save" class="button-secondary action"></td>
@@ -726,31 +689,16 @@ function show_event_category($rows, $pageNav, $sort){
       return "";
     }
   </script>
+  <?php upgrade_pro_sp(); ?>
   <form method="post" onKeyPress="doNothing()" action="admin.php?page=spider_calendar_event_category" id="admin_form" name="admin_form">
     <?php $sp_cal_nonce = wp_create_nonce('nonce_sp_cal'); ?>
 	<table cellspacing="10" width="100%" id="category_table">
       <tr>
-        <td width="100%" style="font-size:14px; font-weight:bold">
-          <a href="https://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a>
-          <br />
-          This section allows you to create event categories. You can add unlimited number of categories.
-          <a href="https://web-dorado.com/spider-calendar-wordpress-guide-step-4.html" target="_blank" style="color:blue; text-decoration:none;">More...</a>
-        </td>
-		<td colspan="7" align="right" style="font-size:16px;">
-      <a href="https://web-dorado.com/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
-        <img src="<?php echo plugins_url('images/header.png', __FILE__); ?>" border="0" alt="https://web-dorado.com/files/fromSpiderCalendarWP.php" width="215">
-      </a>
-    </td>
-      </tr>
-	  
-      <tr>
-        <td style="width:210px"><h2>Event Category</h2></td>
-        <td style="width:90px; text-align:right;">
+        <td><h2>Event Category</h2></td>
+        <td style="text-align:right;">
           <p class="submit" style="padding:0px; text-align:left">
-            <input type="button" value="Add a Category" name="custom_parametrs" onClick="window.location.href='admin.php?page=spider_calendar_event_category&task=add_category'"/>
+            <input type="button" value="Add a Category" name="custom_parametrs" onClick="window.location.href='admin.php?page=spider_calendar_event_category&task=add_category'" class="wd-right"/>
           </p>
-        </td>
-        <td style="text-align:right;font-size:16px;padding:20px; padding-right:50px">
         </td>
       </tr>
     </table>
@@ -885,23 +833,13 @@ $row=$wpdb->get_row($wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spiderca
 			margin: -4px;
 		}
 		</style>
+		<?php upgrade_pro_sp(); ?>
 		<table cellspacing="10" width="100%" id="category_table">
 		  <tr>
-			<td width="100%" style="font-size:14px; font-weight:bold">
-			  <a href="https://web-dorado.com/spider-calendar-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a>
-			  <br />
-			  This section allows you to create event categories. You can add unlimited number of categories.
-			  <a href="https://web-dorado.com/spider-calendar-wordpress-guide-step-4.html" target="_blank" style="color:blue; text-decoration:none;">More...</a>
-			</td>
-		  </tr>
-		  <tr>
-			<td style="width:210px"><h2>Event Category <?php if(isset($row->title)) echo htmlspecialchars($row->title);  ?></h2></td>
-			<td align="right"><input type="button" onClick="submitbutton('save_category_event')" value="Save" class="button-secondary action"></td>
-			  <td align="right"><input type="button" onClick="submitbutton('apply_event_category')" value="Apply" class="button-secondary action"></td>
-			  <td align="right"><input type="button" onClick="window.location.href='admin.php?page=spider_calendar_event_category'" value="Cancel" class="button-secondary action"  style="margin: 0px 0px 0px -5px;">
-			  </td> 
-			<td style="text-align:right;font-size:16px;padding:20px; padding-right:50px">
-			</td>
+			<td><h2>Event Category <?php if(isset($row->title)) echo htmlspecialchars($row->title);  ?></h2></td>
+			<td align="right" style="width: 45px;"><input type="button" onClick="submitbutton('save_category_event')" value="Save" class="button-secondary action"></td>
+			<td align="right" style="width: 50px;"><input type="button" onClick="submitbutton('apply_event_category')" value="Apply" class="button-secondary action"></td>
+			<td align="right" style="width: 59px;"><input type="button" onClick="window.location.href='admin.php?page=spider_calendar_event_category'" value="Cancel" class="button-secondary action"  style="margin: 0px 0px 0px -5px;"></td> 
 		  </tr>
 		</table>
 
@@ -1297,22 +1235,33 @@ function html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name)
       }
     }
   </script>
+    <div class="sp_calendar_upgrade wd-clear" >
+        <div class="wd-left">
+		  <div style="font-size: 14px;">
+			<?php _e("This section allows you to create/edit the events of a particular calendar.","sp_calendar");?>
+			<a style="color: #5CAEBD; text-decoration: none;border-bottom: 1px dotted;" target="_blank" href="https://web-dorado.com/wordpress-spider-calendar/creating-editing-events.html"><?php _e("Read More in User Manual.","sp_calendar");?></a>
+		  </div>
+		</div>
+        <div class="wd-right"> 
+            <div class="wd-table">
+                <div class="wd-cell wd-cell-valign-middle">
+                    <a href="https://wordpress.org/support/plugin/spider-event-calendar" target="_blank">
+                        <img src="<?php echo plugins_url('images/i_support.png', __FILE__); ?>" >
+                        <?php _e("Support Forum", "sp_calendar"); ?>
+                    </a>
+                </div>            
+                <div class="wd-cell wd-cell-valign-middle">
+                    <a href="https://web-dorado.com/products/wordpress-calendar.html" target="_blank">
+                    <?php _e("UPGRADE TO PAID VERSION", "sp_calendar"); ?>
+                     </a> 
+                </div>
+            </div>     
+                            
+        </div>
+    </div>
   <form method="post" onKeyPress="doNothing()" action="admin.php?page=SpiderCalendar&task=show_manage_event&calendar_id=<?php echo $calendar_id; ?>" id="admin_form" name="admin_form">
     <?php $sp_cal_nonce = wp_create_nonce('nonce_sp_cal'); ?>
 	<table cellspacing="10" width="95%">
-    <tr>
-      <td width="100%" style="font-size:14px; font-weight:bold">
-        <a href="https://web-dorado.com/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br>
-        This section allows you to create/edit the events of a particular calendar.<br/> You can add
-        unlimited number of events for each calendar.
-        <a href="https://web-dorado.com/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">More...</a>
-      </td>
-      <td colspan="7" align="right" style="font-size:16px;">
-        <a href="https://web-dorado.com/files/fromSpiderCalendarWP.php" target="_blank" style="color:red; text-decoration:none;">
-          <img src="<?php echo plugins_url('images/header.png', __FILE__); ?>" border="0" alt="https://web-dorado.com/files/fromSpiderCalendarWP.php" width="215">
-        </a>
-      </td>
-    </tr>
     <tr>
       <td width="100%"><h2>Event Manager for calendar <font style="color:red"><?php echo $cal_name; ?></font></h2></td>
       <td>
@@ -1704,15 +1653,31 @@ function html_add_spider_event($calendar_id, $cal_name) {
 		height: 25px;
 	}
   </style>
+  <div class="sp_calendar_upgrade wd-clear" >
+	<div class="wd-left">
+	  <div style="font-size: 14px;">
+		<?php _e("This section allows you to create/edit the events of a particular calendar.","sp_calendar");?>
+		<a style="color: #5CAEBD; text-decoration: none;border-bottom: 1px dotted;" target="_blank" href="https://web-dorado.com/wordpress-spider-calendar/creating-editing-events.html"><?php _e("Read More in User Manual.","sp_calendar");?></a>
+	  </div>
+	</div>
+	<div class="wd-right"> 
+		<div class="wd-table">
+			<div class="wd-cell wd-cell-valign-middle">
+				<a href="https://wordpress.org/support/plugin/spider-event-calendar" target="_blank">
+					<img src="<?php echo plugins_url('images/i_support.png', __FILE__); ?>" >
+					<?php _e("Support Forum", "sp_calendar"); ?>
+				</a>
+			</div>            
+			<div class="wd-cell wd-cell-valign-middle">
+				<a href="https://web-dorado.com/products/wordpress-calendar.html" target="_blank">
+				<?php _e("UPGRADE TO PAID VERSION", "sp_calendar"); ?>
+				 </a> 
+			</div>
+		</div>     
+						
+	</div>
+ </div>
 <table width="95%">
-  <tr>
-    <td width="100%" style="font-size:14px; font-weight:bold">
-      <a href="https://web-dorado.com/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a>
-      <br />
-      This section allows you to create/edit the events of a particular calendar.<br/> You can add unlimited number of events for each calendar.
-      <a href="https://web-dorado.com/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">More...</a>
-    </td>
-  </tr>
   <tbody>
     <tr>
       <td width="100%"><h2>Add an event for calendar <font style="color:red"><?php echo $cal_name; ?></font></h2></td>
@@ -2184,15 +2149,31 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
 
   $query2 = $wpdb->get_results("SELECT title,id FROM " . $wpdb->prefix . "spidercalendar_event_category");
   ?>
+  <div class="sp_calendar_upgrade wd-clear" >
+	<div class="wd-left">
+	  <div style="font-size: 14px;">
+		<?php _e("This section allows you to create/edit the events of a particular calendar.","sp_calendar");?>
+		<a style="color: #5CAEBD; text-decoration: none;border-bottom: 1px dotted;" target="_blank" href="https://web-dorado.com/wordpress-spider-calendar/creating-editing-events.html"><?php _e("Read More in User Manual.","sp_calendar");?></a>
+	  </div>
+	</div>
+	<div class="wd-right"> 
+		<div class="wd-table">
+			<div class="wd-cell wd-cell-valign-middle">
+				<a href="https://wordpress.org/support/plugin/spider-event-calendar" target="_blank">
+					<img src="<?php echo plugins_url('images/i_support.png', __FILE__); ?>" >
+					<?php _e("Support Forum", "sp_calendar"); ?>
+				</a>
+			</div>            
+			<div class="wd-cell wd-cell-valign-middle">
+				<a href="https://web-dorado.com/products/wordpress-calendar.html" target="_blank">
+				<?php _e("UPGRADE TO PAID VERSION", "sp_calendar"); ?>
+				 </a> 
+			</div>
+		</div>     
+						
+	</div>
+ </div>
   <table width="95%">
-    <tr>
-      <td width="100%" style="font-size:14px; font-weight:bold">
-        <a href="https://web-dorado.com/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a>
-        <br />
-        This section allows you to create/edit the events of a particular calendar.<br/> You can add unlimited number of events for each calendar.
-        <a href="https://web-dorado.com/spider-calendar-wordpress-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">More...</a>
-      </td>
-    </tr>
     <tbody>
       <tr>
         <td width="100%"><h2>Edit an event for calendar <font style="color:red"><?php echo $cal_name; ?></font></h2></td>

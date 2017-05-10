@@ -8,7 +8,6 @@ function big_calendar_week_widget() {
   $theme_id = (isset($_GET['theme_id']) ? (int) $_GET['theme_id'] : 1);
   $date = ((isset($_GET['date']) && IsDate_inputed(esc_html($_GET['date']))) ? esc_html($_GET['date']) : '');
   $view_select = (isset($_GET['select']) ? esc_html($_GET['select']) : 'month,');
-  $path_sp_cal = (isset($_GET['cur_page_url']) ? esc_html($_GET['cur_page_url']) : '');
   $months = (isset($_GET['months']) ? esc_html($_GET['months']) : '');  
   $cat_id = (isset($_GET['cat_id']) ? esc_html($_GET['cat_id']) : '');
   $cat_ids = (isset($_GET['cat_ids']) ? esc_html($_GET['cat_ids']) : '');
@@ -353,7 +352,6 @@ position: relative;
                 'select' => $view_select,
                 'date' => $year . '-' . add_0((Month_num($month))) . '-' . date('d'),
                 'many_sp_calendar' => $many_sp_calendar,
-                'cur_page_url' => $path_sp_cal,
 				'cat_id' => '',
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
@@ -369,7 +367,6 @@ position: relative;
                 'months' => $prev_month . ',' . $this_month . ',' . $next_month,
                 'date' => $year . '-' . add_0((Month_num($month))) . '-' . date('d'),
                 'many_sp_calendar' => $many_sp_calendar,
-                'cur_page_url' => $path_sp_cal,
 				'cat_id' => '',
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
@@ -384,7 +381,6 @@ position: relative;
                 'select' => $view_select,
                 'date' => $year . '-' . add_0((Month_num($month))),
                 'many_sp_calendar' => $many_sp_calendar,
-                'cur_page_url' => $path_sp_cal,
 				'cat_id' => '',
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
@@ -399,7 +395,6 @@ position: relative;
                 'select' => $view_select,
                 'date' => $year . '-' . add_0((Month_num($month))),
                 'many_sp_calendar' => $many_sp_calendar,
-                'cur_page_url' => $path_sp_cal,
 				'cat_id' => '',
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
@@ -434,7 +429,6 @@ position: relative;
                             'date' => $prev_date,
                             'months' => $prev_month . ',' . $this_month . ',' . $next_month,
                             'many_sp_calendar' => $many_sp_calendar,
-                            'cur_page_url' => $path_sp_cal,
 							'cat_id' => '',
 							'cat_ids' => $cat_ids,
                             'widget' => $widget,
@@ -471,7 +465,6 @@ position: relative;
                             'date' => $next_date,
                             'months' => $prev_month . ',' . $this_month . ',' . $next_month,
                             'many_sp_calendar' => $many_sp_calendar,
-                            'cur_page_url' => $path_sp_cal,
 							'cat_id' => '',
 							'cat_ids' => $cat_ids,
                             'widget' => $widget,
@@ -596,7 +589,6 @@ position: relative;
                             'eventID' => $ev_id[$j],
                             'date' => $year . '-' . $month . '-' . (int) $day,
                             'many_sp_calendar' => $many_sp_calendar,
-                            'cur_page_url' => $path_sp_cal,
                             'widget' => $widget,
                             'TB_iframe' => 1,
                             'tbWidth' => $popup_width,
@@ -633,7 +625,6 @@ position: relative;
                     'date' => ($year - 1) . '-' . add_0((Month_num($month_year))),
                     'months' => $prev_month . ',' . $this_month . ',' . $next_month,
                     'many_sp_calendar' => $many_sp_calendar,
-                    'cur_page_url' => $path_sp_cal,
                     'widget' => $widget,
 					'cat_id' => '',
 					'cat_ids' => $cat_ids,
@@ -653,7 +644,6 @@ position: relative;
                     'date' => ($year + 1) . '-' . add_0((Month_num($month_year))),
                     'months' => $prev_month . ',' . $this_month . ',' . $next_month,
                     'many_sp_calendar' => $many_sp_calendar,
-                    'cur_page_url' => $path_sp_cal,
                     'widget' => $widget,
 					'cat_id' => '',
 					'cat_ids' => $cat_ids,
@@ -723,7 +713,6 @@ foreach($categories as $category)
 				'months' => $prev_month . ',' . $this_month . ',' . $next_month,
                 'date' => $year . '-' . $month . '-' . add_0($day),
                 'many_sp_calendar' => $many_sp_calendar,
-                'cur_page_url' => $path_sp_cal,
 				'cat_id' => $category->id,
 				'cat_ids' => $cat_ids,
                 'widget' => $widget,
@@ -741,7 +730,6 @@ if (!empty($categories)) {
 				'months' => $prev_month . ',' . $this_month . ',' . $next_month,
                 'date' => $year . '-' . $month . '-' . add_0($day),
                 'many_sp_calendar' => $many_sp_calendar,
-                'cur_page_url' => $path_sp_cal,
 				'cat_id' => '',
 				'cat_ids' => '',
                 'widget' => $widget,

@@ -174,7 +174,6 @@ function seemore() {
   $widget = ((isset($_GET['widget']) && (int) $_GET['widget']) ? (int) $_GET['widget'] : 0);
   $theme_id = (isset($_GET['theme_id']) ? (int) $_GET['theme_id'] : 1);
   $date = ((isset($_GET['date']) && IsDate_inputed(esc_html($_GET['date']))) ? esc_html($_GET['date']) : '');
-  $path_sp_cal = (isset($_GET['cur_page_url']) ? esc_html($_GET['cur_page_url']) : '');
   if ($date != '' && !IsDate_inputed($date)) {
     $date = date("Y-m-d");
   }
@@ -343,7 +342,6 @@ WHERE " . $wpdb->prefix . "spidercalendar_event.published=1  AND " . $wpdb->pref
                       'eventID' => $ev_id[$i],
                       'date' => $date,
                       'day' => $day,
-                      'cur_page_url' => $path_sp_cal,
                       'widget' => $widget,
                       'TB_iframe' => 1,
                       'tbWidth' => $popup_width,
@@ -365,7 +363,6 @@ WHERE " . $wpdb->prefix . "spidercalendar_event.published=1  AND " . $wpdb->pref
                       'eventID' => $ev_id[$i],
                       'date' => $date,
                       'day' => $day,
-                      'cur_page_url' => $path_sp_cal,
                       'widget' => $widget,
                       'TB_iframe' => 1,
                       'tbWidth' => $popup_width,
@@ -737,36 +734,7 @@ function spiderbigcalendar() {
         <span class="arrow">&gt;</span>
       </td>
     </tr>
-  </table>
-  <?php
-  ////////////////
-  $url_for_page = (isset($_GET['cur_page_url']) ? esc_html($_GET['cur_page_url']) : '');
-  $url_for_page_de = urldecode($url_for_page);
-  if (!strpos($url_for_page_de, '?')) {
-    $cuery_string = '?' . $_SERVER['QUERY_STRING'];
-  }
-  else {
-    $cuery_string = '&' . $_SERVER['QUERY_STRING'];
-  }
-  $url_for_page_de .= $cuery_string;
-  $url_for_page_de = str_replace('theme_id=', 'frst_theme_id=\'', $url_for_page_de);
-  $url_for_page_de = str_replace('calendar_id=', 'frst_calendar_id=\'', $url_for_page_de);
-  $url_for_page_de = str_replace('ev_ids=', 'frst_ev_ids=\'', $url_for_page_de);
-  $url_for_page_de = str_replace('eventID=', 'frst_eventID=\'', $url_for_page_de);
-  $url_for_page_de = str_replace('date=', 'frst_date=\'', $url_for_page_de);
-  $url_for_page_de = str_replace('day=', 'frst_day=\'', $url_for_page_de);
-  if (substr($url_for_page_de, -1) == '&') {
-    $url_for_page_de = substr_replace($url_for_page_de, "", -1);
-  }
-  $zzzzzzzzz = 0;
-  if ($zzzzzzzzz == 1) {
-    ?>
-  <iframe src="//www.facebook.com/plugins/like.php?href=<?php echo urlencode($url_for_page_de); ?>" scrolling="no"
-          frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;"
-          allowTransparency="true"></iframe>
-  <?php
-  }
-   ?>
+   </table>
   </body>
 </html>
 <?php
