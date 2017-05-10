@@ -3,14 +3,14 @@
  * The main file!
  *
  * @package shareaholic
- * @version 7.8.0.4
+ * @version 7.8.0.6
  */
 
 /*
 Plugin Name: Shareaholic | share buttons, analytics, related content
 Plugin URI: https://shareaholic.com/publishers/
 Description: The world's leading all-in-one Content Amplification Platform that helps grow your website traffic, engagement, conversions & monetization. See <a href="admin.php?page=shareaholic-settings">configuration panel</a> for more settings.
-Version: 7.8.0.4
+Version: 7.8.0.6
 Author: Shareaholic
 Author URI: https://shareaholic.com
 Text Domain: shareaholic
@@ -63,7 +63,7 @@ if (!class_exists('Shareaholic')) {
     const CM_API_URL = 'https://cm-web.shareaholic.com'; // uses static IPs for firewall whitelisting
     const REC_API_URL = 'http://recommendations.shareaholic.com';
 
-    const VERSION = '7.8.0.4';
+    const VERSION = '7.8.0.6';
 
     /**
      * Starts off as false so that ::get_instance() returns
@@ -207,8 +207,11 @@ if (!class_exists('Shareaholic')) {
             ShareaholicUtilities::log_event("Upgrade", array ('previous_plugin_version' => ShareaholicUtilities::get_version()));
             ShareaholicUtilities::perform_update();
             ShareaholicUtilities::set_version(self::VERSION);
-            ShareaholicUtilities::notify_content_manager_sitemap();
-            ShareaholicUtilities::notify_content_manager_singledomain();
+            
+            if (ShareaholicUtilities::has_accepted_terms_of_service() && ShareaholicUtilities::get_option('api_key') != NULL) {
+              ShareaholicUtilities::notify_content_manager_sitemap();
+              ShareaholicUtilities::notify_content_manager_singledomain();
+            }
 
             // Call the share counts api to check for connectivity on update
             if (has_action('wp_ajax_nopriv_shareaholic_share_counts_api') && has_action('wp_ajax_shareaholic_share_counts_api')) {
@@ -242,7 +245,7 @@ if (!class_exists('Shareaholic')) {
 
       // workaround: http://codex.wordpress.org/Function_Reference/register_activation_hook
       add_option( 'Activated_Plugin_Shareaholic', 'shareaholic' );
-
+       
       if (ShareaholicUtilities::has_accepted_terms_of_service() && ShareaholicUtilities::get_option('api_key') != NULL){
         ShareaholicUtilities::notify_content_manager_sitemap();
         ShareaholicUtilities::notify_content_manager_singledomain();

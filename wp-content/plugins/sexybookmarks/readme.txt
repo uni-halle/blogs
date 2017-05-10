@@ -1,9 +1,9 @@
 === Shareaholic | share buttons, related posts, social analytics & more ===
 Contributors: shareaholic
-Tags: shareaholic, shareholic, sexybookmarks, recommendations, related content, cookie consent, share buttons, email button, social sharing, social bookmarking, share image, image sharing, follow buttons, floated share buttons, floating share buttons, analytics, social media, social plugin, facebook, twitter, google plus, google bookmarks, gmail, linkedin, pinterest, reddit, tumblr, evernote, digg, delicious, stumbleupon, printfriendly, fancy, amazon, xing, vk, yahoo, mister wong, viadeo, odnoklassniki box.net, diigo, yammer, ycombinator, hotmail, instapaper, mixi, arto, whatsapp, hootsuite, inbound.org, plurk, aim, buffer, meneame, pinboard.in, stumpedia, bitly, blogger, yummly, izeby, kaboodle, weibo, instagram, tinyurl,  typepad, weheartit, flipboard, pocket, wanelo, fark, wykop, symphony, kindle, houzz, youtube, sms, onenote, google classroom, disqus, spotify, zillow, feedly, kik, line, livejournal, baidu
+Tags: share buttons, related content, cookie compliance, eu cookie law, shareaholic, shareholic, sexybookmarks, recommendations, cookie consent, email button, social sharing, social bookmarking, share image, image sharing, follow buttons, floated share buttons, floating share buttons, analytics, social media, social plugin, facebook, twitter, google plus, google bookmarks, gmail, linkedin, pinterest, reddit, tumblr, evernote, digg, delicious, stumbleupon, printfriendly, fancy, amazon, xing, vk, yahoo, mister wong, viadeo, odnoklassniki box.net, diigo, yammer, ycombinator, hotmail, instapaper, mixi, arto, whatsapp, hootsuite, inbound.org, plurk, aim, buffer, meneame, pinboard.in, stumpedia, bitly, blogger, yummly, izeby, kaboodle, weibo, instagram, tinyurl,  typepad, weheartit, flipboard, pocket, wanelo, fark, wykop, symphony, kindle, houzz, youtube, sms, onenote, google classroom, disqus, spotify, zillow, feedly, kik, line, livejournal, baidu
 Requires at least: 3.0
-Tested up to: 4.6
-Stable tag: 7.8.0.4
+Tested up to: 4.7
+Stable tag: 7.8.0.6
 
 World's leading all-in-one Content Amplification Platform that helps grow your site traffic, engagement, conversions & monetization for FREE.
 
@@ -193,6 +193,16 @@ Please see here: [Shareaholic Helpdesk](http://support.shareaholic.com/hc/en-us)
 Please see here: [Usage & Installation Instructions](http://support.shareaholic.com/hc/en-us/categories/200101476-WordPress-Plugin)
 
 == Changelog ==
+
+= 7.8.0.6 =
+* Bugfix: Fixed admin bar link
+* Bugfix: Properly escape meta tags values
+* Enhancement: Better compatibility with caching plugins
+* Enhancement: Better compatibility with Base64 image strings
+* Various performance upgrades
+
+= 7.8.0.5 =
+* Minor enhancements
 
 = 7.8.0.4 =
 * Bugfix: We fixed the code which displays the Facebook share count to accommodate Facebook's new data structure.
@@ -1030,6 +1040,12 @@ Please see here: [Usage & Installation Instructions](http://support.shareaholic.
 
 == Upgrade Notice ==
 
+= 7.8.0.6 =
+Various enhancements
+
+= 7.8.0.5 =
+Minor enhancements
+
 = 7.8.0.4 =
 Various Share Count updates
 
@@ -1092,100 +1108,3 @@ Added Shareaholic navigation bar to the Shareaholic settings pages.
 
 = 7.6.1.0 =
 Fix for security vulnerability. Upgrade immediately.
-
-= 7.6.0.9 =
-Many improvements and bug fixes.
-
-= 7.6.0.8 =
-Added Google API key to authenticate API calls for Google Plus share counts for improved the reliability
-
-= 7.6.0.7 =
-
-Many improvements and bug fixes.
-
-= 7.6.0.6 =
-Improved reliability of Related Content App for cases where the WordPress install is located in a subdirectory or subpath
-
-= 7.6.0.5 =
-
-Modified curl multi to conserve on cpu usage for server side share counts and added garbage collection cron job to clean up expired server side share count transient cache. This is an important update for larger WordPress installations.
-
-= 7.6.0.4 =
-
-Bug fixes
-
-= 7.6.0.3 =
-
-Bug fixes
-
-= 7.6.0.2 =
-
-New Monetization section added to the App Manager! Configure your monetization settings from one place, including Promoted Content, Affiliate Links App, etc.
-
-= 7.6.0.1 =
-
-Bug fixes
-
-= 7.6.0.0 =
-
-Official support for WooCommerce!
-
-= 7.5.1.0 =
-
-Caching improvements, new affiliate linking app, post share window and localization updates!
-  
-= 7.5.0.4 =
-
-Improvements to share count caching.
-
-= 7.5.0.3 =
-
-New post-share follow button services (including Instagram, YouTube and RSS) and additional improvements to the Related Content app.
-  
-= 7.5.0.2 =
-
-Many improvements to the Related Content app.
-
-= 7.5.0.1 =
-
-Many improvements to the Related Content app.
-
-= 7.5.0.0 =
-
-Several usability improvements to the admin UI!
-
-= 7.4.0.8 =
-
-Shareaholic plugin debugger - makes debugging plugin related issues faster and easier.
-
-= 7.4.0.7 =
-
-Bug fixes to make Shareaholic a little better for you.
-
-= 7.4.0.6 =
-
-Many improvements to Facebook sharing and Related Content.
-
-= 7.4.0.5 =
-
-Added cache cleanup support for WP Super Cache, Hyper Cache and Quick Cache plugin's
-
-= 7.4.0.4 =
-
-Reliability improvements to the server side Share Counts API
-
-= 7.4.0.3 =
-
-Added url encoding for server side Share Counts API for added reliability
-
-= 7.4.0.2 =
-
-Miscellaneous performance enhancements for Share Counts
-
-= 7.4.0.1 =
-
-Miscellaneous performance enhancements for Share Counts
-
-= 7.4.0.0 =
-
-Optional and all new server side Share Counts API for share counts for Google+, StumbleUpon, etc! You can toggle this option under the "Advanced Settings" section.

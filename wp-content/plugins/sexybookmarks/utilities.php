@@ -139,7 +139,7 @@ class ShareaholicUtilities {
    		'parent' => 'wp_shareaholic_adminbar_menu',
    		'id' => 'wp_shareaholic_adminbar_submenu-general',
    		'title' => __('Website Settings', 'shareaholic'),
-   		'href' => 'https://shareaholic.com/publisher_tools/'.self::get_option('api_key').'/verify?verification_key='.self::get_option('verification_key').'&redirect_to='.'https://shareaholic.com/publisher_tools/'.self::get_option('api_key').'/websites/edit?verification_key='.self::get_option('verification_key'),
+   		'href' => 'https://shareaholic.com/publisher_tools/'.self::get_option('api_key').'/websites/edit/?verification_key='.self::get_option('verification_key'),
    		'meta' => Array( 'target' => '_blank' )
    	));
    	$wp_admin_bar->add_menu(array(
@@ -354,7 +354,7 @@ class ShareaholicUtilities {
       return 'page';
     } elseif (is_single()) {
       return 'post';
-    } elseif (is_category() || is_author() || is_tag() || is_date()) {
+    } elseif (is_category() || is_author() || is_tag() || is_date() || is_search()) {
       return 'category';
     }
   }
@@ -948,31 +948,34 @@ class ShareaholicUtilities {
    * @param string $post_id
    */
    public static function notify_content_manager_singlepage($post = NULL) {
+     
      if ($post == NULL) {
        return false;
      }
-
-     if (in_array($post->post_status, array('draft', 'pending', 'auto-draft'))) {
-       // Get the correct permalink for a draft
-       $my_post = clone $post;
-       $my_post->post_status = 'published';
-       $my_post->post_name = sanitize_title($my_post->post_name ? $my_post->post_name : $my_post->post_title, $my_post->ID);
-       $post_permalink = get_permalink($my_post);
-     } else {
-       $post_permalink = get_permalink($post->ID);
-     }
      
-     if ($post_permalink != NULL) {
-       $cm_single_page_job_url = Shareaholic::CM_API_URL . '/jobs/uber_single_page';
-       $payload = array (
-         'args' => array (
-           $post_permalink,
-           array ('force' => true)
-          )
-        );
-      $response = ShareaholicCurl::post($cm_single_page_job_url, $payload, 'json');
-     }
-   }
+     if (ShareaholicUtilities::has_accepted_terms_of_service() && ShareaholicUtilities::get_option('api_key') != NULL) {
+       if (in_array($post->post_status, array('draft', 'pending', 'auto-draft'))) {
+         // Get the correct permalink for a draft
+         $my_post = clone $post;
+         $my_post->post_status = 'published';
+         $my_post->post_name = sanitize_title($my_post->post_name ? $my_post->post_name : $my_post->post_title, $my_post->ID);
+         $post_permalink = get_permalink($my_post);
+       } else {
+         $post_permalink = get_permalink($post->ID);
+       }
+       
+       if ($post_permalink != NULL) {
+         $cm_single_page_job_url = Shareaholic::CM_API_URL . '/jobs/uber_single_page';
+         $payload = array (
+           'args' => array (
+             $post_permalink,
+             array ('force' => true)
+            )
+          );
+        $response = ShareaholicCurl::post($cm_single_page_job_url, $payload, 'json');
+      }
+    }
+  }
 
    /**
     * Wrapper for the Shareaholic Content Manager Single Domain worker API
@@ -1185,10 +1188,13 @@ class ShareaholicUtilities {
      $first_img = '';
      if ($post == NULL)
        return false;
-     else {      
-       $output = preg_match_all('/<img[^>]+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-       if(isset($matches[1][0]) ){
-           $first_img = $matches[1][0];
+     else {
+       $output = preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $post->post_content, $matches);
+       if (isset($matches[1][0])) {
+         // Exclude base64 images; meta tags require full URLs
+         if (strpos($matches[1][0], 'data:') === false) {
+             $first_img = $matches[1][0];
+         }
        } else {
          return false;
        }
@@ -1203,19 +1209,23 @@ class ShareaholicUtilities {
   public static function clear_cache() {
     // W3 Total Cache plugin
   	if (function_exists('w3tc_pgcache_flush')) {
-  		w3tc_pgcache_flush(); 
+  		w3tc_pgcache_flush();
   	}
   	// WP Super Cache
     if (function_exists('wp_cache_clear_cache')) {
       wp_cache_clear_cache();
     }
 	  // Hyper Cache
-	  if (function_exists('hyper_cache_invalidate')) {
-	    hyper_cache_invalidate();
+	  if (function_exists('hyper_cache_flush_all')) {
+	    hyper_cache_flush_all();
 	  }
 	  // Quick Cache
 	  if (function_exists('auto_clear_cache')) {
   	  auto_clear_cache();
+	  }
+	  // CometCache
+	  if (class_exists("comet_cache")) {
+  	  comet_cache::clear();
 	  }
   }
   

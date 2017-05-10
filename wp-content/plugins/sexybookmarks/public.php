@@ -169,9 +169,15 @@ class ShareaholicPublic {
    * Draws Shareaholic article meta tags
    */
   private static function draw_article_meta_tag() {
+    
+    if (in_array(ShareaholicUtilities::page_type(), array('index', 'category'))) {
+        echo "<meta name='shareaholic:article_visibility' content='private' />\n";
+        return;
+    }
+    
     if (in_array(ShareaholicUtilities::page_type(), array('page', 'post'))) {
       global $post;
-    
+      
       // Article Publish and Modified Time
       $article_published_time = strtotime($post->post_date_gmt);
       $article_modified_time = strtotime(get_lastpostmodified('GMT'));
@@ -219,7 +225,7 @@ class ShareaholicPublic {
         }
       }
       if (!empty($article_author_name)) {
-        echo "<meta name='shareaholic:article_author_name' content='" . $article_author_name . "' />\n";
+        echo "<meta name='shareaholic:article_author_name' content='" . htmlspecialchars($article_author_name, ENT_QUOTES) . "' />\n";
       }
     }
   }
@@ -279,6 +285,9 @@ class ShareaholicPublic {
       global $post;
       $thumbnail_src = '';
       
+      if (is_attachment()) {
+        $thumbnail_src = wp_get_attachment_thumb_url();
+      }
       if (function_exists('has_post_thumbnail') && has_post_thumbnail($post->ID)) {
         $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'large');
         $thumbnail_src = esc_attr($thumbnail[0]);
@@ -300,7 +309,11 @@ class ShareaholicPublic {
       global $post;
       $thumbnail_src = '';
       $settings = ShareaholicUtilities::get_settings();
-      if (!get_post_meta($post->ID, 'shareaholic_disable_open_graph_tags', true) && (isset($settings['disable_og_tags']) && $settings['disable_og_tags'] == "off")) {        
+      
+      if (!get_post_meta($post->ID, 'shareaholic_disable_open_graph_tags', true) && (isset($settings['disable_og_tags']) && $settings['disable_og_tags'] == "off")) {
+        if (is_attachment()) {
+          $thumbnail_src = wp_get_attachment_thumb_url();
+        }
         if (function_exists('has_post_thumbnail') && has_post_thumbnail($post->ID)) {
           $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'large');
           $thumbnail_src = esc_attr($thumbnail[0]);
