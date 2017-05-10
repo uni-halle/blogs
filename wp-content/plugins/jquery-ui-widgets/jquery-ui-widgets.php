@@ -3,7 +3,7 @@
 Plugin Name: jQuery UI Widgets
 Plugin URI: http://wordpress.org/plugins/jquery-ui-widgets/
 Description: Simple, clean, and flexible way to add jQuery UI widgets to your site pages.
-Version: 0.38
+Version: 0.50
 Author: David Gwyer
 Author URI: http://www.wpgoplugins.com
 License: GPLv2
@@ -94,6 +94,7 @@ function jquiw_add_defaults() {
 					  "chk_inc_draggable"      => "1",
 					  "chk_inc_droppable"      => "1",
 					  "chk_inc_menu"           => "1",
+					  "chk_inc_selectmenu"     => "1",
 					  "chk_inc_mouse"          => "1",
 					  "chk_inc_position"       => "1",
 					  "chk_inc_progressbar"    => "1",
@@ -202,6 +203,9 @@ function jquiw_enqueue_scripts() {
 	}
 	if ( isset( $options['chk_inc_menu'] ) && $options['chk_inc_menu'] ) {
 		wp_enqueue_script( 'jquery-ui-menu' );
+	}
+	if ( isset( $options['chk_inc_selectmenu'] ) && $options['chk_inc_selectmenu'] ) {
+		wp_enqueue_script( 'jquery-ui-selectmenu' );
 	}
 	if ( isset( $options['chk_inc_mouse'] ) && $options['chk_inc_mouse'] ) {
 		wp_enqueue_script( 'jquery-ui-mouse' );
@@ -321,11 +325,17 @@ function jquiw_delete_plugin_options() {
 
 function jquiw_render_form() {
 	?>
+	<style>
+		a:focus{ box-shadow: none;}
+		.pcdm.dashicons { width: 32px; height: 32px; font-size: 32px; }
+		.pcdm.dashicons-yes { color: #1cc31c; }
+		.pcdm.dashicons-no { color: red; }
+	</style>
 	<div class="wrap">
 		<h2><?php _e( 'jQuery UI Widgets Options', 'jquery-ui-widgets' ); ?></h2>
 
-		<div class="notice" style="border: 2px #DAA520 solid;margin: 20px 0;">
-			<p><a href="https://wpgoplugins.com/plugins/jquery-ui-widgets-pro/" target="_blank"><strong>jQuery UI Widgets PRO</strong></a> is now available! Access great new features. <b>Try risk free today with our 100% money back guarantee! <span class="dashicons dashicons-smiley"></span></b></p>
+		<div class="notice" style="border: 2px #32cd32 solid;margin: 20px 0;">
+			<p><a style="color:#32cd32;" href="https://wpgoplugins.com/plugins/jquery-ui-widgets-pro/" target="_blank"><strong>jQuery UI Widgets PRO</strong></a> is now available! Access great new features. <b>Try risk free today with our 100% money back guarantee!</b></p>
 		</div>
 
 		<form method="post" action="options.php">
@@ -409,6 +419,9 @@ function jquiw_render_form() {
 							} ?>> <?php _e( 'Selectable', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/selectable/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 					</td>
 					<td>
+						<label><input name="jquiw_options[chk_inc_selectmenu]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_selectmenu'] ) ) {
+								checked( '1', $options['chk_inc_selectmenu'] );
+							} ?>> <?php _e( 'Selectmenu', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/selectmenu/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
 						<label><input name="jquiw_options[chk_inc_slider]" type="checkbox" value="1" <?php if ( isset( $options['chk_inc_slider'] ) ) {
 								checked( '1', $options['chk_inc_slider'] );
 							} ?>> <?php _e( 'Slider', 'jquery-ui-widgets' ); ?></label><a href="http://api.jqueryui.com/slider/" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/info.png" class="info_image"></a><br>
@@ -579,23 +592,17 @@ function jquiw_render_form() {
 			</p>
 		</form>
 
-		<?php
-
-		$discount_date = "14th August 2014";
-		if( strtotime($discount_date) > strtotime('now') ) {
-			echo '<p style="background: #eee;border: 1px dashed #ccc;font-size: 13px;margin: 0 0 10px 0;padding: 5px 0 5px 8px;">For a limited time only! <strong>Get 50% OFF</strong> the price of our brand new mobile ready, fully responsive <a href="http://www.wpgothemes.com/themes/minn/" target="_blank"><strong>Minn WordPress theme</strong></a>. Simply enter the following code at checkout: <code>MINN50OFF</code></p>';
-		} else {
-			echo '<p style="background: #eee;border: 1px dashed #ccc;font-size: 13px;margin: 0 0 10px 0;padding: 5px 0 5px 8px;">Checkout our other plugins!w mobile ready, fully responsive <a href="http://www.wpgothemes.com/themes/minn/" target="_blank"><strong>Minn WordPress theme</strong></a>. Simply enter the following code at checkout: <code>WPGO30OFF</code></p>';
-		}
-
-		?>
+		<div style="margin-top:15px;">
+			<p style="margin-bottom:10px;">If you use this FREE Plugin on your website <b><em>please</em></b> consider making a <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FHPU3ZABJAX5U" target="_blank">donation</a> to support continued development. Thank you.<span style="margin-left:5px;" class="dashicons dashicons-smiley"></span></p>
+		</div>
 
 		<div style="clear:both;">
-			<p>
-				<a href="http://www.twitter.com/wpgothemes" title="Follow us on Twitter!" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/twitter.png"></a>&nbsp;&nbsp;
-				<input class="button" style="vertical-align:12px;" type="button" value="Visit Our NEW Site!" onClick="window.open('http://www.wpgothemes.com')">
-				<input class="button" style="vertical-align:12px;" type="button" value="Minn, Our Latest Theme" onClick="window.open('http://www.wpgothemes.com/themes/minn')">
-			</p>
+			<span><a href="http://www.twitter.com/dgwyer" title="Follow us on Twitter" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/twitter.png" /></a></span>
+			<span><a href="https://www.facebook.com/wpgoplugins/" title="Our Facebook page" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/facebook.png" /></a></span>
+			<span><a href="https://www.youtube.com/channel/UCWzjTLWoyMgtIfpDgJavrTg" title="View our YouTube channel" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/yt.png" /></a></span>
+			<span><a style="text-decoration:none;" title="Need help with ANY aspect of WordPress? We're here to help!" href="https://wpgoplugins.com/need-help-with-wordpress/" target="_blank"><span style="margin-left:-2px;color:#d41515;font-size:39px;line-height:32px;width:39px;height:39px;" class="dashicons dashicons-sos"></span></a></span>
+			<span style="margin-left:20px;"><input class="button" style="vertical-align:12px;" type="button" value="Visit Our Site" onClick="window.open('http://www.wpgoplugins.com')"></span>
+			<span style="margin-left:3px;"><input class="button" style="vertical-align:12px;" type="button" value="Subscribe (free)" title="Signup today for all the latest plugin news and updates!" onClick="window.open('http://eepurl.com/bXZmmD')"></span>
 		</div>
 
 	</div>

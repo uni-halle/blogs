@@ -2,8 +2,8 @@
 Contributors: dgwyer
 Tags: jQuery UI, jQuery, tabs, accordion, dialog, UI, admin, enqueue, themeroller, styles, themes, widgets, effects, interactions, custom code, customization
 Requires at least: 3.5
-Tested up to: 4.5.2
-Stable tag: 0.38
+Tested up to: 4.8
+Stable tag: 0.50
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,18 @@ Usage:
 11. Add license key to receive automatic plugin updates. (Pro only)
 
 == Changelog ==
+
+*0.50*
+
+* Added support for the Selectmenu jQuery UI widget.
+
+*0.43*
+
+* Fixed broken image links on plugin settings page.
+
+*0.42*
+
+* Plugin settings page updated.
 
 *0.38*
 
