@@ -103,6 +103,7 @@ $opacQuery.=urlencode("nel ".$date." and ");
 // ============================= MENU ===========================================================
 // TODO: archiv-submenu (menü in Funktion auslagern: parameter "von", "bis" -> aufruf: "<li> Archiv <ul> menu($von, $bis) </ul> </li>")
 
+
 echo "<div id='menu'>";
 echo "<ul>";
 $maxyear=date("Y"); if (date("m") < 2) $maxyear=date("Y")-1; // letzter monat soll angezeigt werden darum im januar nur bis zum 12. des letzten jahres
@@ -121,7 +122,7 @@ for($year=2014; $year<=$maxyear; $year++){
         echo "</ul>";
     }
 }
-echo  '<li><a href="?old=1"> 1998-2013</a></li>';
+//echo  '<li><a href="?old=1"> 1998-2013</a></li>';
 echo "</ul>";
 echo "</div>";
 
@@ -149,17 +150,22 @@ echo "</ul>";
 //[menalib_neuerwerbungen]
 function menalib_neuerwerb( $atts ){
 	$lang="en";
+/*
 	if (isset($atts["lang"]))
 		if($atts["lang"]="de") 	$lang="de";
-	    else   if($atts["lang"]="en") 	$lang="en";		
-		
+	    else   if($atts["lang"]="en") 	$lang="en";
+*/
+	if(isset($_COOKIE["qtrans_front_language"]))
+         if($_COOKIE["qtrans_front_language"]=="de")
+          $lang="de";
+
     neuerwerb_content($lang);
-	
-	
-	$text=""; 
+
+
+	$text="";
 	//$text="Hallo Menalib Tabelle!";
 	//$text.=print_r ($atts, true);
-		
+
 	return $text;
 }
 
@@ -172,10 +178,8 @@ wp_enqueue_style('menalib_neuerwerbung');
 //wp_register_script( 'your_css_and_js', plugins_url('your_script.js',__FILE__ ));
 //wp_enqueue_script('your_css_and_js');
 }
+
 add_action( 'wp_enqueue_scripts','menalib_neuerwerbung_css');
-
-
-
 
 add_shortcode( 'menalib_neuerwerbungen', 'menalib_neuerwerb' );
 
