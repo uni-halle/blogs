@@ -365,14 +365,14 @@ span.edit-link,
 
 .commentlist .avatar,
 .avatar-container,
-.icon-replies { 
+.crycon-replies { 
 	float: right; }
 	
 .commentlist .children { 
 	margin-left: 0; 
 	margin-right: 20px; }
 	
-.icon-angle-right:before { 
+.crycon-angle-right:before { 
 	content: '\e833'; 
 }
 

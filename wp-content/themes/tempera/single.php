@@ -12,7 +12,7 @@ get_header();?>
 		<section id="container" class="<?php echo tempera_get_layout_class(); ?>">
 			<div id="content" role="main">
 			<?php cryout_before_content_hook(); ?>
-			
+
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -33,7 +33,7 @@ get_header();?>
 							<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'tempera_author_bio_avatar_size', 60 ) ); ?>
 						</div><!-- #author-avatar -->
 						<div id="author-description">
-							<h2><?php echo esc_attr( get_the_author() ); ?></h2>
+							<h2 class="page-title"><?php echo esc_attr( get_the_author() ); ?></h2>
 							<?php the_author_meta( 'description' ); ?>
 							<div id="author-link">
 								<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
@@ -46,7 +46,7 @@ get_header();?>
 
 					<footer class="entry-meta">
 						<?php tempera_posted_in(); ?>
-						<?php edit_post_link( __( 'Edit', 'tempera' ), '<span class="edit-link"><i class="icon-edit icon-metas"></i> ', '</span>' ); cryout_post_footer_hook(); ?>
+						<?php edit_post_link( __( 'Edit', 'tempera' ), '<span class="edit-link"><i class="crycon-edit crycon-metas"></i> ', '</span>' ); cryout_post_footer_hook(); ?>
 					</footer><!-- .entry-meta -->
 				</div><!-- #post-## -->
 

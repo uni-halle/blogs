@@ -24,20 +24,29 @@ foreach ($temperas as $key => $value) { ${"$key"} = $value; }
 
 <div id="frontpage">
 
-	<?php tempera_ppslider(); ?>
+<?php
+	// Slider
+	if ($tempera_slideType=="Slider Shortcode") { ?>
+		<div class="slider-wrapper">
+			<?php echo do_shortcode( $tempera_slideShortcode ); ?>
+		</div> <?php
+	} else {
+		tempera_ppslider();
+	}
+?>
 
 	<div id="pp-afterslider">
 		<?php
 		// First FrontPage Title
-		if($tempera_fronttext1) {?><div id="front-text1"> <h1><?php echo do_shortcode($tempera_fronttext1) ?> </h1></div><?php }
-		if($tempera_fronttext3) {?><div id="front-text3"> <blockquote><?php echo do_shortcode($tempera_fronttext3) ?> </blockquote></div><?php }
+		if($tempera_fronttext1) {?><div id="front-text1"> <h2><?php echo do_shortcode($tempera_fronttext1) ?> </h2></div><?php }
+		if($tempera_fronttext3) {?><div id="front-text3"> <?php echo do_shortcode($tempera_fronttext3) ?> </div><?php }
 
 		tempera_ppcolumns();
 
 		// Second FrontPage title
-		if($tempera_fronttext2) {?><div id="front-text2"> <h1><?php echo do_shortcode($tempera_fronttext2) ?> </h1></div><?php }
+		if($tempera_fronttext2) {?><div id="front-text2"> <h2><?php echo do_shortcode($tempera_fronttext2) ?> </h2></div><?php }
 		// Frontpage second text area
-		if($tempera_fronttext4) {?><div id="front-text4"> <blockquote><?php echo do_shortcode($tempera_fronttext4) ?> </blockquote></div><?php }
+		if($tempera_fronttext4) {?><div id="front-text4"> <?php echo do_shortcode($tempera_fronttext4) ?> </div><?php }
 
  		remove_filter( 'excerpt_length', 'tempera_excerpt_length_slider', 999 );
  		remove_filter( 'excerpt_more', 'tempera_excerpt_more_slider', 999 );
@@ -50,7 +59,6 @@ foreach ($temperas as $key => $value) { ${"$key"} = $value; }
 <?php function tempera_ppslider() {
 	$temperas= tempera_get_theme_options();
 	foreach ($temperas as $key => $value) { ${"$key"} = $value; }
-    global $post;
     $custom_query = new WP_query();
     $slides = array();
 
@@ -108,7 +116,7 @@ foreach ($temperas as $key => $value) { ${"$key"} = $value; }
 			   if($tempera_slideNumber>0):
                if ( $custom_query->have_posts() ) while ($custom_query->have_posts()) :
                     $custom_query->the_post();
-                	$img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),'slider');
+                	$img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ),'slider');
                 	$slide['image'] = esc_url( $img[0] );
                 	$slide['link'] = esc_url( get_permalink() );
                 	$slide['title'] = get_the_title();
@@ -206,7 +214,7 @@ function tempera_ppcolumns() {
 			if ( $custom_query2->have_posts() )
 			   while ($custom_query2->have_posts()) :
 				   $custom_query2->the_post();
-				   $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),'columns');
+				   $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ),'columns');
 				   $column['image'] = esc_url( $img[0] );
 				   $column['link'] = esc_url( get_permalink() );
 				   $column['text'] = get_the_excerpt();
@@ -225,7 +233,7 @@ function tempera_columns($columns,$nr_columns,$readmore){
 	$temperas = tempera_get_theme_options();
     foreach ($temperas as $key => $value) { ${"$key"} = $value; }
 	?>
- <div id="front-columns">
+ <div id="front-columns" class="pp-columns<?php echo $nr_columns; ?>">
  <?php
 	foreach($columns as $column):
 		if($column['image']) :

@@ -33,12 +33,10 @@ function tempera_presentation_css() {
 	max-width: <?php echo ($tempera_fpsliderwidth) ?>px ;
 	max-height: <?php echo $tempera_fpsliderheight ?>px ;
 <?php if ($tempera_fpslider_bordersize): ?> border:<?php echo $tempera_fpslider_bordersize ;?>px solid <?php echo $tempera_fpsliderbordercolor; ?>; <?php endif; ?> }
-.theme-default .nivo-controlNav {top:-<?php echo $tempera_fpslider_bordersize+33 ?>px;}
+.theme-default .nivo-controlNav {top:-<?php echo $tempera_fpslider_bordersize+40 ?>px;}
 
-#front-text1 h1, #front-text2 h1 {
-	color: <?php echo $tempera_fronttitlecolor; ?>;
-	font-size: <?php echo round(30*(preg_replace("/[^\d]/","",$tempera_headingsfontsize)/100),0) ?>px;
-    line-height: <?php echo round(42*(preg_replace("/[^\d]/","",$tempera_headingsfontsize)/100),0) ?>px; }
+#front-text1 h2, #front-text2 h2 {
+	color: <?php echo $tempera_fronttitlecolor; ?>; }
 
 #front-columns > div, #front-columns > li {
 	width: <?php switch ($tempera_nrcolumns) {
@@ -50,6 +48,7 @@ function tempera_presentation_css() {
 	} ?>%; }
 
 #front-columns > div.column<?php echo $tempera_nrcolumns; ?>, #front-columns > li:nth-child(n+<?php echo $tempera_nrcolumns; ?>) { margin-right: 0; }
+.rtl #front-columns > div.column<?php echo $tempera_nrcolumns; ?>, .rtl #front-columns > li:nth-child(n+<?php echo $tempera_nrcolumns; ?>) { margin-left: 0; }
 
 .column-image {	max-width:<?php echo $tempera_colimagewidth;?>px;margin:0 auto;}
 .column-image img {	max-width:<?php echo $tempera_colimagewidth;?>px;  max-height:<?php echo $tempera_colimageheight;?>px;}
@@ -57,17 +56,12 @@ function tempera_presentation_css() {
 .nivo-caption { background-color: rgba(<?php echo cryout_hex2rgb($tempera_fpslidercaptionbg); ?>,0.7); }
 .nivo-caption, .nivo-caption a { color: <?php echo $tempera_fpslidercaptioncolor; ?>; }
 .theme-default .nivo-controlNav, .theme-default .nivo-directionNav a { background-color:<?php echo $tempera_fpsliderbordercolor; ?>; }
-.slider-bullets .nivo-controlNav a { background-color: <?php echo $tempera_sidetitlebg; ?>; }
-.slider-bullets .nivo-controlNav a:hover { background-color: <?php echo $tempera_menucolorbgdefault; ?>; }
+.slider-bullets .nivo-controlNav a { background-color: <?php echo cryout_hexadder($tempera_fpsliderbordercolor,'-24');?>; }
+.slider-bullets .nivo-controlNav a:hover { background-color:  <?php echo cryout_hexadder($tempera_fpsliderbordercolor,'-44');?>; }
 .slider-bullets .nivo-controlNav a.active {background-color: <?php echo $tempera_accentcolora; ?>; }
 .slider-numbers .nivo-controlNav a { color:<?php echo $tempera_fpslidercaptioncolor; ?>;background-color:<?php echo $tempera_fpslidercaptionbg;?>;}
 .slider-numbers .nivo-controlNav a:hover { color: <?php echo $tempera_accentcolora; ?>; }
 .slider-numbers .nivo-controlNav a.active { color:<?php echo $tempera_accentcolora; ?>;}
-
-
-.column-image h3{ color: <?php echo $tempera_contentcolortxt; ?>; background-color: rgba(<?php echo cryout_hex2rgb($tempera_contentcolorbg); ?>,0.6); }
-.columnmore { background-color: <?php echo $tempera_backcolormain; ?>; }
-#front-columns h3.column-header-noimage { background: <?php echo $tempera_contentcolorbg;?>; }
 
 <?php
 	echo '</style>';

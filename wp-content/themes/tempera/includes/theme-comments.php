@@ -52,7 +52,7 @@ function tempera_comment( $comment, $args, $depth ) {
 
 		<div class="comment-body"><?php comment_text(); ?>
 			<div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => '<i class="icon-reply"></i>'.__('Reply','tempera'), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => '<i class="crycon-reply"></i>'.__('Reply','tempera'), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 			</div><!-- .reply -->
 		</div>
 
@@ -91,11 +91,11 @@ foreach ($temperas as $key => $value) { ${"$key"} = $value; }
 	if ( comments_open() && ! post_password_required() && $tempera_blog_show['comments'] && ! is_single()) :
         echo '<span class="comments-link">';
         comments_popup_link(
-            '<i class="icon-comments icon-metas" title="' . __('Leave a comment', 'tempera') . '"></i><b>0</b>',
-            '<i class="icon-comments icon-metas" title="' .
+            '<i class="crycon-comments crycon-metas" title="' . __('Leave a comment', 'tempera') . '"></i><b>0</b>',
+            '<i class="crycon-comments crycon-metas" title="' .
                 sprintf( _n( 'One Comment', '%1$s Comments', get_comments_number(), 'tempera' ), number_format_i18n( get_comments_number() )) .
              '"></i><b>1</b>',
-            '<i class="icon-comments icon-metas" title="' .
+            '<i class="crycon-comments crycon-metas" title="' .
                 sprintf( _n( 'One Comment', '%1$s Comments', get_comments_number(), 'tempera' ), number_format_i18n( get_comments_number() )) .
             '"></i><b>%</b>',
             '',
@@ -109,7 +109,7 @@ endif;
  * The number of comments title
  */
 function tempera_number_comments() { ?>
-			<h3 id="comments-title"><i class="icon-replies" ></i>
+			<h3 id="comments-title"><i class="crycon-replies" ></i>
 				<?php  printf( _n( 'One Comment:', '%1$s Comments:', get_comments_number(), 'tempera' ),
 				number_format_i18n( get_comments_number() )); ?>
 			</h3>
@@ -123,8 +123,8 @@ add_action('cryout_before_comments_hook','tempera_number_comments');
 function tempera_comments_navigation() {
 if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 			<div class="navigation">
-				<div class="nav-previous"><?php previous_comments_link( '<i class="icon-reply"></i>'.__('Older Comments', 'tempera' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments', 'tempera' ).'<i class="icon-forward"></i>' ); ?></div>
+				<div class="nav-previous"><?php previous_comments_link( '<i class="crycon-reply"></i>'.__('Older Comments', 'tempera' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments', 'tempera' ).'<i class="crycon-forward"></i>' ); ?></div>
 			</div> <!-- .navigation -->
 <?php endif; // check for comment navigation
 }

@@ -99,7 +99,7 @@ if ( ! function_exists('tempera_singlecolumn_output') ):
 function tempera_singlecolumn_output($data){
 	foreach ($data as $key => $value) { ${"$key"} = $value; }
 	?>
-		<div class="column<?php echo $colno; ?>">
+		<div class="pp-column column<?php echo $colno; ?>">
 			<?php if (!empty($image)) {	?>
 				<a href="<?php echo $link; ?>" <?php echo $blank; ?> class="clickable-column">
 					<?php if (!empty($title)) { echo "<h3 class='column-header-image'>".$title."</h3>"; } ?>

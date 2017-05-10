@@ -11,7 +11,7 @@
 function tempera_register_styles() {
 	wp_register_style( 'tempera-style', get_stylesheet_uri(), NULL, _CRYOUT_THEME_VERSION );
 	wp_register_style( 'tempera-fonts', get_template_directory_uri() . '/fonts/fontfaces.css', NULL, _CRYOUT_THEME_VERSION );
-	if (is_rtl()) wp_enqueue_style( 'parabola-rtl', get_template_directory_uri() . '/styles/rtl.css', NULL, _CRYOUT_THEME_VERSION );
+	if ( is_rtl() ) wp_enqueue_style( 'parabola-rtl', get_template_directory_uri() . '/styles/rtl.css', NULL, _CRYOUT_THEME_VERSION );
 }
 
 add_action('init', 'tempera_register_styles' );
@@ -101,13 +101,13 @@ function tempera_scripts_method() {
 		'fitvids' => $tempera_fitvids,
 	);
 	wp_localize_script( 'tempera-frontend', 'tempera_settings', $js_options );
-	
+
 	/* We add some JavaScript to pages with the comment form
 	 * to support sites with threaded comments (when in use).
 	 */
 	if ( is_singular() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
-	
+
 } // tempera_scripts_method()
 
 if( !is_admin() ) { add_action('wp_enqueue_scripts', 'tempera_scripts_method'); }

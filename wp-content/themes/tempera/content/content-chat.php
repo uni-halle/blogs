@@ -16,9 +16,9 @@
 		<?php cryout_post_title_hook(); ?>
 		<div class="entry-meta">
 			<?php	cryout_post_meta_hook();  ?>
-		</div><!-- .entry-meta -->	
+		</div><!-- .entry-meta -->
 		</header><!-- .entry-header -->
-		<?php cryout_post_before_content_hook();  
+		<?php cryout_post_before_content_hook();
 		?><?php if ( is_search() ) : // Only display Excerpts for Search ?>
 		<div class="entry-summary">
 			<?php the_excerpt(); ?>
@@ -30,7 +30,7 @@
 		</div><!-- .entry-content -->
 		<?php endif; ?>
 		<footer class="entry-meta">
-						<h3 class="entry-format"><i class="icon-comment" title="<?php _e( 'Chat', 'tempera' ); ?>"></i></h3>
+						<span class="entry-format"><i class="crycon-comment" title="<?php _e( 'Chat', 'tempera' ); ?>"></i></span>
 			<?php cryout_post_after_content_hook();  ?>
 		</footer>
 

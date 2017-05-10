@@ -4,8 +4,8 @@ Copyright 2013-17 Cryout Creations
 
 Author: Cryout Creations
 Requires at least: 4.0
-Tested up to: 4.6.1
-Stable tag: 1.4.9
+Tested up to: 4.7.3
+Stable tag: 1.5.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: https://www.cryoutcreations.eu/donate/
@@ -107,7 +107,40 @@ Spanish - Carlol, HacKan
 
 == Changelog ==
 
-= 1.4.9 = 
+= 1.5.2 =
+* Fixed changing 'mobile' to 'temobile' class to improve plugin compatibility
+* Fixed header widget overlapping site title/logo (due to changes added in 1.5)
+* Fixed notice of missing $post variable in frontpage.php
+
+= 1.5.1 =
+* Fixed paragraph indent applying to continue reading button
+* Fixed line height option resetting to smallest value after saving theme options since 1.5.0
+* Fixed headings still using fixed pixel-based values; also relaxed the headings CSS identifier to resolve an overlap with WooCommerce
+* Fixed site title / tagline height issue since 1.5.0
+
+= 1.5.0 =
+* PERFORMED A VISUAL REVAMP OF THE THEME TO BRING IT UP TO DATE WITH CURRENT DESIGN TRENDS
+* Changed defaults: site width, slider sizes, featured image sizes, some default colors (submit and reset inputs and widget titles)
+* Changed titles, headings, metas and menus font sizes and line heights
+* Changed most font size and line height units from px to em
+* Increased padding for site content, metas, pagination, comments, header, footer and other elements
+* Increased the default content left/right padding and the value set for Graphic Section > Content Margins > Padding left/right now also applies between content and sidebars
+* Adjusted the comments' look, brought back reply arrow animation and fixed the missing nested comments
+* Slightly altered the continue reading button's design
+* Headings now get their font sizes from the general h1-h6
+* Removed blockquote from the presentation page's text areas for better shortcut/HTML tags support
+* Removed CSS declarations with old browser prefixes, cleaned up '!important' declarations
+* Changed social icon animations to use CSS instead of JS
+* Altered <code> and <pre> tags design (<code> is now inline)
+* Removed main menu top margin
+* Added support for external sliders in the Presentation Page using shortcodes
+* Renamed .mobile body class to .temobile to avoid styling overlap with plugins
+* Renamed all icon-* classes to crycon-* to avoid styling overlapping with plugins
+* Improved responsiveness
+* Improved RTL support
+* Updated theme screenshot
+
+= 1.4.9 =
 * Hid mobile menu placeholder when menu visibility disabled on Presentation Page
 * Fixed social icons URL double sanitization (breaking special cases)
 * Fixed automatically generated menu dropdowns inaccessible on mobile devices with WordPress 4.7+

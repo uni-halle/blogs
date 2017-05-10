@@ -8,7 +8,7 @@ $tempera_defaults = array(
 
 "tempera_side"		=> "2cSr",
 "tempera_sidewidth"	=> 900,
-"tempera_sidebar"	=> 250,
+"tempera_sidebar"	=> 280,
 "tempera_mobile"	=> "Enable",
 "tempera_hcontain"	=> "",
 "tempera_zoom"      => 0,
@@ -18,8 +18,8 @@ $tempera_defaults = array(
 "tempera_frontpostscount" 		=> get_option('posts_per_page'),
 "tempera_frontpostsperrow" 		=> "2",
 "tempera_frontmoreposts"		=> "More Posts",
-"tempera_fpsliderwidth"			=> "1150",
-"tempera_fpsliderheight"		=> "400",
+"tempera_fpsliderwidth"			=> "1180",
+"tempera_fpsliderheight"		=> "410",
 "tempera_fpslideranim"	=> "random",
 "tempera_fpslidertime"	=> "750",
 "tempera_fpsliderpause"	=> "5000",
@@ -28,6 +28,7 @@ $tempera_defaults = array(
 "tempera_fpslider_bordersize"	=> "0",
 "tempera_fpslider_topmargin"	=> "0",
 
+"tempera_slideShortcode" => "", 
 "tempera_slideType"		=> "Custom Slides",
 "tempera_slideCateg"	=> "",
 "tempera_slideNumber"	=> "5",
@@ -73,8 +74,7 @@ $tempera_defaults = array(
 "tempera_fronttext3"	=> "Above and below the columns you have editable titles and text fields. The text fields suppport <em>HTML</em> tags and [shortcodes] so you can turn the
 							Presentation Page into your personal playground. You can add, remove and edit all this and much more from the Tempera Settings page.<br>
 							While you can show your latest posts on the Presentation Page, you can also use the <u>Blog</u> page template to designate another page as your primary
-							blog posts page.<br><br>
-							<div style='text-align:center;'><strong>As you can see, with Tempera the sky's the limit. Just remember to have fun!</strong></div>",
+							blog posts page.",
 "tempera_fronttext2"	=> "",
 "tempera_fronttext4"	=> "",
 
@@ -84,7 +84,7 @@ $tempera_defaults = array(
 "tempera_fronthidefooter"	=> "",
 "tempera_fronthideback"		=> "",
 
-"tempera_hheight"	=> "120",
+"tempera_hheight"	=> "140",
 "tempera_hcenter"	=> 0,
 "tempera_hratio"	=> 0,
 
@@ -118,7 +118,7 @@ $tempera_defaults = array(
 "tempera_paragraphspace"	=> "1.0em",
 "tempera_parindent"		=> "0px",
 "tempera_headingsindent"	=> "Disable",
-"tempera_lineheight"	=> "1.7em",
+"tempera_lineheight"	=> "1.7",
 "tempera_wordspace"		=> "Default",
 "tempera_letterspace"	=> "Default",
 "tempera_uppercasetext"	=> 0,
@@ -130,7 +130,7 @@ $tempera_defaults = array(
 "tempera_backcolorfooterw"	=> "",
 "tempera_backcolorfooter"	=> "#F7F7F7",
 
-"tempera_contentcolortxt"	=> "#444444",
+"tempera_contentcolortxt"	=> "#666666",
 "tempera_contentcolortxtlight"	=> "#999999",
 "tempera_footercolortxt"	=> "#AAAAAA",
 
@@ -155,13 +155,13 @@ $tempera_defaults = array(
 
 "tempera_sidebg"	=> "",
 "tempera_sidetxt"	=> "#333333",
-"tempera_sidetitlebg"	=> "#F7F7F7",
-"tempera_sidetitletxt"	=> "#666666",
+"tempera_sidetitlebg"	=> "#444444",
+"tempera_sidetitletxt"	=> "#EEEEEE",
 
 "tempera_widgetbg"		=> "",
 "tempera_widgettxt"		=> "#333333",
-"tempera_widgettitlebg"		=> "#F7F7F7",
-"tempera_widgettitletxt"	=> "#666666",
+"tempera_widgettitlebg"		=> "#444444",
+"tempera_widgettitletxt"	=> "#EEEEEE",
 
 "tempera_linkcolortext"		=> "#1693A5",
 "tempera_linkcolorhover"	=> "#D6341D",
@@ -176,8 +176,8 @@ $tempera_defaults = array(
 "tempera_socialcolorbghover"	=> "#D6341D",
 
 "tempera_metacoloricons"	=> "#CCCCCC",
-"tempera_metacolorlinks"	=> "#666666",
-"tempera_metacolorlinkshover"	=> "",
+"tempera_metacolorlinks"	=> "#999999",
+"tempera_metacolorlinkshover"	=> "#666666",
 
 "tempera_accentcolora"	=> "#1693A5",
 "tempera_accentcolorb"	=> "#D6341D",
@@ -200,8 +200,8 @@ $tempera_defaults = array(
 	"main" => 1,
 	"footer" => 0,
 	),
-"tempera_contentmargintop" => "20",
-"tempera_contentpadding" => "30",
+"tempera_contentmargintop" => "15",
+"tempera_contentpadding" => "40",
 "tempera_caption"		=> "caption-dark",
 "tempera_image_style"	=> "tempera-image-one",
 "tempera_contentlist"	=> "Show",
@@ -244,9 +244,9 @@ $tempera_defaults = array(
 "tempera_fpostlink" => "1",
 "tempera_fauto" 	=> "Enable",
 "tempera_falign" 	=> "Left",
-"tempera_fwidth" 	=> "250",
-"tempera_fheight" 	=> "150",
-"tempera_fcrop" 	=> "",
+"tempera_fwidth" 	=> "780",
+"tempera_fheight" 	=> "350",
+"tempera_fcrop" 	=> "1",
 "tempera_fheader" 	=> "Disable",
 
 "tempera_social1" 			=> "YouTube",

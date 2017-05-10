@@ -88,7 +88,7 @@ function tempera_import_form(){
 
     <div class="wrap">
 		<div style="width:400px;display:block;margin-left:30px;">
-        <div id="icon-tools" class="icon32"><br></div>
+        <div id="crycon-tools" class="icon32"><br></div>
         <h2><?php echo __( 'Import Tempera Theme Options', 'tempera' );?></h2>
         <form enctype="multipart/form-data" id="import-upload-form" method="post" action="">
         	<p><?php _e('Hi! This is where you import the  Tempera settings.<i> Please remember that this is still an experimental feature.</i>', 'tempera'); ?></p>
@@ -166,7 +166,7 @@ function tempera_import_file() {
 					// try to read the settings array
 					if (isset($settings['tempera_db'])){ ?>
         <div class="wrap">
-        <div id="icon-tools" class="icon32"><br></div>
+        <div id="crycon-tools" class="icon32"><br></div>
         <h2><?php echo __( 'Import Tempera Theme Options ', 'tempera' );?></h2> <?php
 						$settings = array_merge($temperas, $settings);
 						update_option('tempera_settings', $settings);

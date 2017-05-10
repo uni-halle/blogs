@@ -15,7 +15,7 @@
 			<?php cryout_post_title_hook(); ?>
 			<div class="entry-meta">
 				<?php	cryout_post_meta_hook();  ?>
-			</div><!-- .entry-meta -->	
+			</div><!-- .entry-meta -->
 		</header><!-- .entry-header -->
 <?php cryout_post_before_content_hook();  ?>
 		<div class="entry-content">
@@ -23,7 +23,7 @@
 			<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'tempera' ) . '</span>', 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
 		<footer class="entry-meta">
-			<h3 class="entry-format"><i class="icon-image" title="<?php _e( 'Image', 'tempera' ); ?>"></i></h3>
+			<span class="entry-format"><i class="crycon-image" title="<?php _e( 'Image', 'tempera' ); ?>"></i></span>
 			<?php cryout_post_after_content_hook();  ?>
 		</footer>
 	</article><!-- #post-<?php the_ID(); ?> -->

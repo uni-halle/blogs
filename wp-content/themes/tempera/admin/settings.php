@@ -377,8 +377,8 @@ function doAjaxRequest(){
 function cryout_setting_frontslider2_fn() {
 	global $temperas;
 
-     $items = array("Custom Slides", "Latest Posts", "Random Posts", "Sticky Posts", "Latest Posts from Category" , "Random Posts from Category", "Specific Posts","Disabled");
-	$itemsare = array( __("Custom Slides","tempera"), __("Latest Posts","tempera"), __("Random Posts","tempera"),__("Sticky Posts","tempera"), __("Latest Posts from Category","tempera"), __("Random Posts from Category","tempera"), __("Specific Posts","tempera"), __("Disabled","tempera"));
+     $items = array("Slider Shortcode", "Custom Slides", "Latest Posts", "Random Posts", "Sticky Posts", "Latest Posts from Category" , "Random Posts from Category", "Specific Posts","Disabled");
+	$itemsare = array( __("Slider Shortcode","tempera"), __("Custom Slides","tempera"), __("Latest Posts","tempera"), __("Random Posts","tempera"),__("Sticky Posts","tempera"), __("Latest Posts from Category","tempera"), __("Random Posts from Category","tempera"), __("Specific Posts","tempera"), __("Disabled","tempera"));
 	echo __("<strong>Slides content:</strong>","tempera");
 	echo "<select id='tempera_slideType' name='tempera_settings[tempera_slideType]'>";
 	foreach($items as $id=>$item) {
@@ -391,6 +391,11 @@ function cryout_setting_frontslider2_fn() {
      ?>
 
      <div class="underSelector">
+    
+		 <div id="sliderShortcode" class="slideDivs"> 
+			    <span><?php _e('Enter the desired slider plugin shortcode below:','tempera'); ?> </span> 
+					<input id='tempera_slideShortcode' name='tempera_settings[tempera_slideShortcode]' size='44' type='text' value='<?php echo esc_attr( $temperas['tempera_slideShortcode'] ) ?>' /> 
+		  </div> 
           <div id="sliderLatestPosts" class="slideDivs">
                <span><?php _e('Latest posts will be loaded into the slider.','tempera'); ?> </span>
           </div>
@@ -438,7 +443,7 @@ function cryout_setting_frontslider2_fn() {
           </span>
 
           <div id="sliderCustomSlides" class="slideDivs">
-
+		       <span><?php _e('Custom slides are limited to a maximum of 5.','tempera'); ?> </span> 
           <?php
           for ($i=1;$i<=5;$i++):
           // let's generate the slides
@@ -633,7 +638,7 @@ function cryout_setting_fronttext_fn() {
 function  cryout_setting_fontfamily_fn() {
 	global $temperas;
 	global $fonts;
-	$sizes = array ("12px", "13px" , "14px" , "15px" , "16px", "17px", "18px", "19px", "20px");
+	$sizes = array ("10px", "11px", "12px", "13px" , "14px" , "15px" , "16px", "17px", "18px", "19px", "20px");
 	cryout_proto_font(
 		$fonts,
 		$sizes,
@@ -776,9 +781,10 @@ function cryout_setting_headingsindent_fn() {
 //SELECT - Name: tempera_settings[lineheight]
 function  cryout_setting_lineheight_fn() {
 	global $temperas;
+	$temperas['tempera_lineheight'] = str_replace( 'em', '', $temperas['tempera_lineheight'] ); // backwards compatibility for <1.5
 	cryout_proto_field( $temperas, "select", "tempera_lineheight",
-		array("0.8em" , "0.9em", "1.0em" , "1.1em" , "1.2em" , "1.3em", "1.4em" , "1.5em" , "1.6em" , "1.7em" , "1.8em" , "1.9em" , "2.0em", "2.1em", "2.2em", "2.3em", "2.4em", "2.5em", "2.6em", "2.7em", "2.8em"),
-		array( "0.8em" , "0.9em", "1.0em" , "1.1em" , "1.2em" , "1.3em", "1.4em" , "1.5em" , "1.6em" , "1.7em" , "1.8em" , "1.9em" , "2.0em", "2.1em", "2.2em", "2.3em", "2.4em", "2.5em", "2.6em", "2.7em", "2.8em")
+		array("0.8", "0.9", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8" , "1.9", "2.0", "2.1", "2.2", "2.3", "2.4", "2.5", "2.6", "2.7", "2.8"),
+		array( "0.8em", "0.9em", "1.0em", "1.1em", "1.2em", "1.3em", "1.4em", "1.5em", "1.6em", "1.7em", "1.8em", "1.9em", "2.0em", "2.1em", "2.2em", "2.3em", "2.4em", "2.5em", "2.6em", "2.7em", "2.8em")
 	);
 	echo "<div><small>".__("Text line height. The height between 2 rows of text.","tempera")."</small></div>";
 }

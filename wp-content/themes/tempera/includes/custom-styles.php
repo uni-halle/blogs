@@ -46,7 +46,7 @@ add_filter('body_class','tempera_body_classes');
 function tempera_custom_styles() {
 	$temperas= tempera_get_theme_options();
 	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
-	$totalwidth= $tempera_sidewidth+$tempera_sidebar;
+	$totalwidth= $tempera_sidewidth + $tempera_sidebar;
 	$contentSize = $tempera_sidewidth;
 	$sidebarSize= $tempera_sidebar;
 	ob_start();
@@ -60,40 +60,27 @@ function tempera_custom_styles() {
 <?php
 ////////// COLUMNS //////////
 
-$colPadding = 30;
-$contentSize = $contentSize - 60;
+$colPadding = $tempera_contentpadding;
 
 ?>
 #container.one-column { }
 #container.two-columns-right #secondary { width:<?php echo $sidebarSize; ?>px; float:right; }
-#container.two-columns-right #content { width:<?php echo $contentSize-$colPadding; ?>px; float:left; } /*fallback*/
-#container.two-columns-right #content { width:calc(100% - <?php echo $sidebarSize+$colPadding; ?>px); float:left; }
+#container.two-columns-right #content { width:calc(100% - <?php echo $sidebarSize + $colPadding; ?>px); float:left; }
+
 #container.two-columns-left #primary { width:<?php echo $sidebarSize; ?>px; float:left; }
-#container.two-columns-left #content { width:<?php echo $contentSize-$colPadding; ?>px; float:right; } /*fallback*/
-#container.two-columns-left #content { 	width:-moz-calc(100% - <?php echo $sidebarSize+$colPadding; ?>px); float:right;
-										width:-webkit-calc(100% - <?php echo $sidebarSize+$colPadding; ?>px);
-										width:calc(100% - <?php echo $sidebarSize+$colPadding; ?>px); }
+#container.two-columns-left #content { 	width:calc(100% - <?php echo $sidebarSize + $colPadding; ?>px); float:right; }
 
 #container.three-columns-right .sidey { width:<?php echo $sidebarSize/2; ?>px; float:left; }
-#container.three-columns-right #primary { margin-left:<?php echo $colPadding; ?>px; margin-right:<?php echo $colPadding; ?>px; }
-#container.three-columns-right #content { width:<?php echo $contentSize-$colPadding*2; ?>px; float:left; } /*fallback*/
-#container.three-columns-right #content { 	width:-moz-calc(100% - <?php echo $sidebarSize+$colPadding*2; ?>px); float:left;
-											width:-webkit-calc(100% - <?php echo $sidebarSize+$colPadding*2; ?>px);
-											width:calc(100% - <?php echo $sidebarSize+$colPadding*2; ?>px);}
+#container.three-columns-right #primary { margin-left:<?php echo $colPadding/2; ?>px; margin-right:<?php echo $colPadding/2; ?>px; }
+#container.three-columns-right #content { width: calc(100% - <?php echo $sidebarSize+$colPadding; ?>px); float:left;}
 
 #container.three-columns-left .sidey { width:<?php echo $sidebarSize/2; ?>px; float:left; }
-#container.three-columns-left #secondary {margin-left:<?php echo $colPadding; ?>px; margin-right:<?php echo $colPadding; ?>px; }
-#container.three-columns-left #content { width:<?php echo $contentSize-$colPadding*2; ?>px; float:right;} /*fallback*/
-#container.three-columns-left #content { width:-moz-calc(100% - <?php echo $sidebarSize+$colPadding*2; ?>px); float:right;
-										 width:-webkit-calc(100% - <?php echo $sidebarSize+$colPadding*2; ?>px);
-										 width:calc(100% - <?php echo $sidebarSize+$colPadding*2; ?>px); }
+#container.three-columns-left #secondary {margin-left:<?php echo $colPadding/2; ?>px; margin-right:<?php echo $colPadding/2; ?>px; }
+#container.three-columns-left #content { width: calc(100% - <?php echo $sidebarSize+$colPadding; ?>px); float:right; }
 
 #container.three-columns-sided .sidey { width:<?php echo $sidebarSize/2; ?>px; float:left; }
 #container.three-columns-sided #secondary { float:right; }
-#container.three-columns-sided #content { width:<?php echo $contentSize-$colPadding*2; ?>px; float:right; /*fallback*/
-										  width:-moz-calc(100% - <?php echo $sidebarSize+$colPadding*2; ?>px); float:right;
-										  width:-webkit-calc(100% - <?php echo $sidebarSize+$colPadding*2; ?>px); float:right;
-										  width:calc(100% - <?php echo $sidebarSize+$colPadding*2; ?>px); float:right;
+#container.three-columns-sided #content { width: calc(100% - <?php echo $sidebarSize+$colPadding*2; ?>px); float:right;
 		                                  margin: 0 <?php echo ($sidebarSize/2)+$colPadding;?>px 0 <?php echo -($contentSize+$sidebarSize); ?>px; }
 <?php
 ////////// FONTS //////////
@@ -113,10 +100,9 @@ $tempera_headingsfont = cryout_fontname_cleanup($tempera_headingsfont);
 body { font-family: <?php echo ((!$tempera_googlefont)?$tempera_fontfamily:"\"$tempera_googlefont\""); ?>; }
 #content h1.entry-title a, #content h2.entry-title a, #content h1.entry-title , #content h2.entry-title {
 		font-family: <?php echo ((!$tempera_googlefonttitle)?(($tempera_fonttitle == 'General Font')?'inherit':$tempera_fonttitle):"\"$tempera_googlefonttitle\""); ?>; }
-.widget-title, .widget-title a { line-height: normal;
-		font-family: <?php echo ((!$tempera_googlefontside)?(($tempera_fontside == 'General Font')?'inherit':$tempera_fontside):"\"$tempera_googlefontside\"");  ?>;  }
+.widget-title, .widget-title a { font-family: <?php echo ((!$tempera_googlefontside)?(($tempera_fontside == 'General Font')?'inherit':$tempera_fontside):"\"$tempera_googlefontside\"");  ?>;  }
 .entry-content h1, .entry-content h2, .entry-content h3, .entry-content h4, .entry-content h5, .entry-content h6, #comments #reply-title,
-.nivo-caption h2, #front-text1 h1, #front-text2 h1, .column-header-image  {
+.nivo-caption h2, #front-text1 h2, #front-text2 h2, .column-header-image, .column-header-noimage {
 		font-family: <?php echo ((!$tempera_headingsgooglefont)?(($tempera_headingsfont == 'General Font')?'inherit':$tempera_headingsfont):"\"$tempera_headingsgooglefont\"");  ?>; }
 #site-title span a {
 		font-family: <?php echo ((!$tempera_sitetitlegooglefont)?(($tempera_sitetitlefont == 'General Font')?'inherit':$tempera_sitetitlefont):"\"$tempera_sitetitlegooglefont\"");  ?>; }
@@ -139,16 +125,17 @@ a:hover,.entry-meta span a:hover, .comments-link a:hover { color: <?php echo $te
 #access a, #nav-toggle span { color: <?php echo $tempera_menucolortxtdefault; ?>; }
 #access, #nav-toggle {background-color: <?php echo $tempera_menucolorbgdefault; ?>; }
 #access > .menu > ul > li > a > span { border-color: <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>;
--moz-box-shadow: 1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>;
 -webkit-box-shadow: 1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>;
 box-shadow: 1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>; }
+.rtl #access > .menu > ul > li > a > span { -webkit-box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>;
+box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>; }
 #access a:hover {background-color: <?php echo cryout_hexadder($tempera_menucolorbgdefault,'13');?>; }
 #access ul li.current_page_item > a, #access ul li.current-menu-item > a,
 #access ul li.current_page_ancestor > a, #access ul li.current-menu-ancestor > a {
        background-color: <?php echo cryout_hexadder($tempera_menucolorbgdefault,'13');?>; }
 /* Main menu Submenus */
 #access > .menu > ul > li > ul:before {border-bottom-color:<?php echo $tempera_submenucolorbgdefault; ?>;}
-#access ul ul ul:before { border-right-color:<?php echo $tempera_submenucolorbgdefault; ?>;}
+#access ul ul ul li:first-child:before { border-right-color:<?php echo $tempera_submenucolorbgdefault; ?>;}
 #access ul ul li {
 background-color:<?php echo $tempera_submenucolorbgdefault; ?>;
 border-top-color:<?php echo cryout_hexadder($tempera_submenucolorbgdefault,'14');?>;
@@ -166,10 +153,10 @@ background-color:<?php echo cryout_hexadder($tempera_submenucolorbgdefault,'14')
 	box-shadow:3px 0 3px <?php echo cryout_hexadder($tempera_topbarcolorbg,'-40');?>;
 }
 .topmenu ul li a, .topmenu .searchsubmit { color: <?php echo $tempera_topmenucolortxt; ?>; }
-.topmenu ul li a:hover, .topmenu .searchform input[type="search"] { color: <?php echo $tempera_topmenucolortxthover; ?>; border-bottom-color: <?php echo $tempera_accentcolora; ?>; }
+.topmenu ul li a:hover, .topmenu .searchform input[type="search"] { color: <?php echo $tempera_topmenucolortxthover; ?>; border-bottom-color: rgba( <?php echo cryout_hex2rgb( $tempera_accentcolora ); ?>, 0.5); }
 
 #main { background-color: <?php echo $tempera_contentcolorbg; ?>; }
-#author-info, #entry-author-info, .page-title { border-color: <?php echo $tempera_accentcolora; ?>; background: <?php echo $tempera_accentcolore; ?>; }
+#author-info, #entry-author-info, #content .page-title { border-color: <?php echo $tempera_accentcolora; ?>; background: <?php echo $tempera_accentcolore; ?>; }
 #entry-author-info #author-avatar, #author-info #author-avatar { border-color: <?php echo $tempera_accentcolorc; ?>; }
 
 .sidey .widget-container { color: <?php echo $tempera_sidetxt; ?>; background-color: <?php echo $tempera_sidebg; ?>; }
@@ -182,7 +169,7 @@ background-color:<?php echo cryout_hexadder($tempera_submenucolorbgdefault,'14')
  .sticky .entry-header {border-color:<?php echo $tempera_accentcolora; ?> }
 .entry-title, .entry-title a { color: <?php echo $tempera_contentcolortxttitle; ?>; }
 .entry-title a:hover { color: <?php echo $tempera_contentcolortxttitlehover; ?>; }
-#content h3.entry-format { color: <?php echo $tempera_menucolortxtdefault; ?>; background-color: <?php echo $tempera_menucolorbgdefault; ?>; }
+#content span.entry-format { color: <?php echo $tempera_menucolortxtdefault; ?>; background-color: <?php echo $tempera_menucolorbgdefault; ?>; }
 
 #footer { color: <?php echo $tempera_footercolortxt; ?>; background-color: <?php echo $tempera_backcolorfooterw; ?>; }
 #footer2 { color: <?php echo $tempera_footercolortxt; ?>; background-color: <?php echo $tempera_backcolorfooter; ?>;  }
@@ -193,21 +180,20 @@ background-color:<?php echo cryout_hexadder($tempera_submenucolorbgdefault,'14')
 #footer .widget-container { color: <?php echo $tempera_widgettxt; ?>; background-color: <?php echo $tempera_widgetbg; ?>; }
 #footer .widget-title { color: <?php echo $tempera_widgettitletxt; ?>; background-color: <?php echo $tempera_widgettitlebg; ?>;border-color:<?php echo cryout_hexadder($tempera_widgettitlebg,'-40');?> }
 
-a.continue-reading-link, #cryout_ajax_more_trigger { color:<?php echo $tempera_menucolortxtdefault; ?> !important; background:<?php echo $tempera_menucolorbgdefault; ?>; border-bottom-color:<?php echo $tempera_accentcolora; ?>; }
-a.continue-reading-link:after { background-color:<?php echo $tempera_accentcolorb; ?>; }
-a.continue-reading-link i.icon-right-dir {color:<?php echo $tempera_accentcolora; ?>}
-a.continue-reading-link:hover i.icon-right-dir {color:<?php echo $tempera_accentcolorb; ?>}
+a.continue-reading-link, #cryout_ajax_more_trigger { color:<?php echo $tempera_menucolortxtdefault; ?>; background:<?php echo $tempera_menucolorbgdefault; ?>; border-bottom-color:<?php echo $tempera_accentcolora; ?>; }
+a.continue-reading-link:hover { border-bottom-color:<?php echo $tempera_accentcolorb; ?>; }
+a.continue-reading-link i.crycon-right-dir {color:<?php echo $tempera_accentcolora; ?>}
+a.continue-reading-link:hover i.crycon-right-dir {color:<?php echo $tempera_accentcolorb; ?>}
 .page-link a, .page-link > span > em {border-color:<?php echo $tempera_accentcolord;?>}
 
-.columnmore a {background:<?php echo $tempera_accentcolorb;?>;color:<?php echo $tempera_accentcolore; ?>}
-.columnmore a:hover {background:<?php echo $tempera_accentcolora;?>;}
+.columnmore a {background:<?php echo $tempera_accentcolora;?>;color:<?php echo $tempera_accentcolore; ?>}
+.columnmore a:hover {background:<?php echo $tempera_accentcolorb;?>;}
 
-.button, #respond .form-submit input#submit, input[type=submit], input[type=reset] {
-	background-color: <?php echo $tempera_contentcolorbg; ?>;
-	border-color: <?php echo $tempera_accentcolord; ?>;
-    box-shadow: 0 -10px 10px 0 <?php echo $tempera_accentcolore; ?> inset; }
+.button, #respond .form-submit input#submit, input[type="submit"], input[type="reset"] {
+	background-color: <?php echo $tempera_accentcolora; ?>;
+	border-color: <?php echo $tempera_accentcolord; ?>; }
 .button:hover, #respond .form-submit input#submit:hover {
-	background-color: <?php echo $tempera_accentcolore; ?>; }
+	background-color: <?php echo $tempera_accentcolorb; ?>; }
 .entry-content tr th, .entry-content thead th {
 	color: <?php echo $tempera_contentcolortxtheadings; ?>; }
 .entry-content fieldset, #content tr td,#content tr th, #content thead th { border-color: <?php echo $tempera_accentcolord; ?>; }
@@ -220,29 +206,25 @@ input[type="search"],input[type="tel"],input[type="time"],input[type="url"],inpu
     border-color: <?php echo $tempera_accentcolord; ?> <?php echo $tempera_accentcolorc; ?> <?php echo $tempera_accentcolorc; ?> <?php echo $tempera_accentcolord; ?>;
 	color: <?php echo $tempera_contentcolortxt; ?>; }
 input[type="submit"], input[type="reset"] {
-	color: <?php echo $tempera_contentcolortxt; ?>;
-	background-color: <?php echo $tempera_contentcolorbg; ?>;
-	border-color: <?php echo $tempera_accentcolord; ?>;
-	box-shadow: 0 -10px 10px 0 <?php echo $tempera_accentcolore; ?> inset; }
+	color: <?php echo $tempera_contentcolorbg; ?>;
+	background-color: <?php echo $tempera_accentcolora; ?>;
+	border-color: <?php echo $tempera_accentcolord; ?>; }
 input[type="text"]:hover, input[type="password"]:hover, input[type="email"]:hover, textarea:hover,
 input[type="color"]:hover, input[type="date"]:hover, input[type="datetime"]:hover, input[type="datetime-local"]:hover, input[type="month"]:hover, input[type="number"]:hover, input[type="range"]:hover,
 input[type="search"]:hover, input[type="tel"]:hover, input[type="time"]:hover, input[type="url"]:hover, input[type="week"]:hover {
 	<?php if(cryout_hex2rgb($tempera_accentcolore)): ?>background-color: rgba(<?php echo cryout_hex2rgb($tempera_accentcolore); ?>,0.4); <?php endif; ?> }
-.entry-content code {
+.entry-content pre {
 	border-color: <?php echo $tempera_accentcolord; ?>;
 	border-bottom-color:<?php echo $tempera_accentcolora ;?>;}
-.entry-content pre { border-color: <?php echo $tempera_accentcolord; ?>;
-	background-color:<?php echo $tempera_accentcolore; ?>;}
+.entry-content code { background-color:<?php echo $tempera_accentcolore; ?>;}
 .entry-content blockquote {
 	border-color: <?php echo $tempera_accentcolorc; ?>; }
 abbr, acronym { border-color: <?php echo $tempera_contentcolortxt; ?>; }
 .comment-meta a { color: <?php echo $tempera_contentcolortxt; ?>; }
 #respond .form-allowed-tags { color: <?php echo $tempera_contentcolortxtlight; ?>; }
-.comments .reply a{ background-color: <?php echo $tempera_accentcolore; ?>; border-color: <?php echo $tempera_accentcolorc; ?>; }
-.comments .reply a:hover { background-color: <?php echo $tempera_menucolorbgdefault; ?>;color: <?php echo $tempera_linkcolortext; ?>; }
 
-.entry-meta .icon-metas:before {color:<?php echo $tempera_metacoloricons; ?>;}
-.entry-meta span a, .comments-link a {color:<?php echo $tempera_metacolorlinks; ?>;}
+.entry-meta .crycon-metas:before {color:<?php echo $tempera_metacoloricons; ?>;}
+.entry-meta span a, .comments-link a, .entry-meta {color:<?php echo $tempera_metacolorlinks; ?>;}
 .entry-meta span a:hover, .comments-link a:hover {color:<?php echo $tempera_metacolorlinkshover; ?>;}
 
 .nav-next a:hover {}
@@ -267,26 +249,24 @@ abbr, acronym { border-color: <?php echo $tempera_contentcolortxt; ?>; }
 <?php
 ////////// LAYOUT //////////
 ?>
-#content p, #content ul, #content ol, #content, #frontpage blockquote { text-align:<?php echo $tempera_textalign;  ?> ; }
+html { font-size:<?php echo $tempera_fontsize ?>;  line-height:<?php echo (float) $tempera_lineheight; ?>; }
+#content p, #content ul, #content ol, #content, #frontpage blockquote { text-align:<?php echo $tempera_textalign;  ?>; }
 #content p, #content ul, #content ol, #content dl, .widget-area, .widget-area a, table, table td {
-                                font-size:<?php echo $tempera_fontsize ?>;
 								word-spacing:<?php echo $tempera_wordspace ?>; letter-spacing:<?php echo $tempera_letterspace ?>; }
-#content p, #content ul, #content ol, content dl, .widget-area, .widget-area a { line-height:<?php echo $tempera_lineheight ?>; }
-<?php if ($tempera_uppercasetext==1): ?> #site-title a, #site-description, #access a, .topmenu ul li a, .footermenu a, .entry-meta span a, .entry-utility span a, #content h3.entry-format,
+<?php if ($tempera_uppercasetext==1): ?> #site-title a, #site-description, #access a, .topmenu ul li a, .footermenu a, .entry-meta span a, .entry-utility span a, #content span.entry-format,
 span.edit-link, h3#comments-title, h3#reply-title, .comment-author cite, .comments .reply a, .widget-title, #site-info a, .nivo-caption h2, a.continue-reading-link,
 .column-image h3, #front-columns h3.column-header-noimage, .tinynav , .entry-title, .breadcrumbs, .page-link{ text-transform: uppercase; }<?php endif; ?>
 <?php if ($tempera_hcenter): ?> #bg_image {display:block;margin:0 auto;} <?php endif; ?>
 #content h1.entry-title, #content h2.entry-title { font-size:<?php echo $tempera_headfontsize; ?> ;}
 .widget-title, .widget-title a { font-size:<?php echo $tempera_sidefontsize; ?> ;}
-<?php $font_root = 36;
+<?php $font_root = 2.375;
 for($i=1;$i<=6;$i++):
-	echo "#content .entry-content h$i { font-size: ";
-	echo round(($font_root-(4*$i))*(preg_replace("/[^\d]/","",$tempera_headingsfontsize)/100),0);
-	echo "px;} ";
+	echo "h$i { font-size: ";
+	echo round(($font_root-($i*0.27))*(preg_replace("/[^\d]/","",$tempera_headingsfontsize)/100),4);
+	echo "em;} ";
 endfor; ?>
-#site-title span a { font-size:<?php echo $tempera_sitetitlesize; ?> ;}
-#access ul li a { font-size:<?php echo $tempera_menufontsize; ?> ;}
-#access ul ul ul a {font-size:<?php echo (absint($tempera_menufontsize)-2); ?>px;}
+#site-title { font-size:<?php echo $tempera_sitetitlesize; ?> ;}
+#access ul li a, li.menu-main-search .searchform input[type="search"] { font-size:<?php echo $tempera_menufontsize; ?> ;}
 <?php /*if ($tempera_postseparator == "Show") { ?> article.post, article.page { padding-bottom: 10px; border-bottom: 3px solid #EEE; } <?php }*/ ?>
 <?php if ($tempera_contentlist == "Hide") { ?> #content ul li { background-image: none; padding-left: 0; } <?php } ?>
 <?php if ($tempera_comtext == "Hide") { ?> #respond .form-allowed-tags { display:none;} <?php } ?>
@@ -308,7 +288,7 @@ endfor; ?>
 <?php if ($tempera_pagetitle == "Hide") { ?> .page h1.entry-title, .home .page h2.entry-title { display:none; } <?php } ?>
 <?php if ($tempera_categtitle == "Hide") { ?> header.page-header, .archive h1.page-title { display:none; }  <?php } ?>
 #content p, #content ul, #content ol, #content dd, #content pre, #content hr { margin-bottom: <?php echo $tempera_paragraphspace;?>; }
-<?php if ($tempera_parindent != "0px") { ?> #content p { text-indent:<?php echo $tempera_parindent;?>;} <?php } ?>
+<?php if ($tempera_parindent != "0px") { ?> #content p:not(.continue-reading-button) { text-indent:<?php echo $tempera_parindent;?>;} <?php } ?>
 
 <?php if ( ($tempera_metapos == 'Top' || $tempera_metapos == 'Hide') && ! is_single() ) { ?> footer.entry-meta { display: none; } <?php } ?>
 <?php if ( ($tempera_metapos == 'Bottom' || $tempera_metapos == 'Hide') && ! is_single() ) { ?> header.entry-header > .entry-meta { display: none; } <?php } ?>
@@ -336,7 +316,7 @@ endfor; ?>
 	  endswitch; ?>
 #toTop {background:<?php echo $tempera_contentcolorbg; ?>;margin-left:<?php echo $totalwidth+150 ?>px;}
 <?php if (is_rtl() ) { ?> #toTop {margin-right:<?php echo $totalwidth+150 ?>px;-moz-border-radius:10px 0 0 10px;-webkit-border-radius:10px 0 0 10px;border-radius:10px 0 0 10px;}		<?php } ?>
-#toTop:hover .icon-back2top:before {color:<?php echo $tempera_accentcolorb;?>;}
+#toTop:hover .crycon-back2top:before {color:<?php echo $tempera_accentcolorb;?>;}
 
 #main {margin-top:<?php echo $tempera_contentmargintop;?>px; }
 #forbottom {margin-left: <?php echo $tempera_contentpadding;?>px; margin-right: <?php echo $tempera_contentpadding;?>px;}

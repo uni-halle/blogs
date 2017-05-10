@@ -12,9 +12,9 @@ get_header(); ?>
 		<section id="container" class="<?php echo tempera_get_layout_class(); ?>">
 			<div id="content" role="main">
 			<?php cryout_before_content_hook(); ?>
-			
+
 			<?php if ( have_posts() ) : ?>
-			
+
 				<?php
 					/* Queue the first post, that way we know
 					 * what author we're dealing with (if that is the case).
@@ -25,10 +25,6 @@ get_header(); ?>
 					the_post();
 				?>
 
-				<header class="page-header">
-					<h1 class="page-title author"><?php printf( __( 'Author Archives: %s', 'tempera' ), '<span class="vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( "ID" ) ) ) . '" title="' . esc_attr( get_the_author() ) . '" rel="me">' . get_the_author() . '</a></span>' ); ?></h1>
-				</header>
-
 				<?php
 					/* Since we called the_post() above, we need to
 					 * rewind the loop back to the beginning that way
@@ -38,15 +34,15 @@ get_header(); ?>
 
 				// If a user has filled out their description, show a bio on their entries.
 				if ( get_the_author_meta( 'description' ) ) : ?>
-				<div id="author-info">
+				<header id="author-info" class="page-header">
 					<div id="author-avatar">
 						<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'tempera_author_bio_avatar_size', 60 ) ); ?>
 					</div><!-- #author-avatar -->
 					<div id="author-description">
-						<h2><?php echo esc_attr( get_the_author() ); ?></h2>
+						<h1 class="page-title"><?php echo esc_attr( get_the_author() ); ?></h1>
 						<?php the_author_meta( 'description' ); ?>
 					</div><!-- #author-description	-->
-				</div><!-- #entry-author-info -->
+				</header><!-- #entry-author-info -->
 				<?php endif; ?>
 
 				<?php /* Start the Loop */ ?>
@@ -78,7 +74,7 @@ get_header(); ?>
 				</article><!-- #post-0 -->
 
 			<?php endif; ?>
-			
+
 			<?php cryout_after_content_hook(); ?>
 			</div><!-- #content -->
 		<?php tempera_get_sidebar(); ?>

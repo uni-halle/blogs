@@ -9,9 +9,9 @@
 jQuery(document).ready(function() {
 
 	// responsiveness check
-	if (tempera_settings['mobile'] == 1) { 
+	if (tempera_settings['mobile'] == 1) {
 		tempera_mobilemenu_init();
-		
+
 		if (tempera_settings['fitvids'] == 1) jQuery(".entry-content").fitVids();
 	};
 
@@ -61,16 +61,6 @@ jQuery(document).ready(function() {
 
 	/* Social Icons Animation */
 	jQuery(".socialicons").append('<div class="socials-hover"></div>');
-	jQuery(".socialicons").hover(function(){
-			jQuery(this).find(".socials-hover").animate({"width":"26px","height":"26px","top":"2px","left":"2px"},{queue:false,duration:250});
-		},function() {
-			jQuery(this).find(".socials-hover").animate({"width":"0px","height":"0px","top":"50%","left":"50%"},{queue:false,duration:250, complete: function() {
-				/*jQuery(this).css({bottom:"-30px"});*/
-				}
-			});
-		}
-	);
-
 
 	/* Detect and apply custom class for Safari */
 	if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
@@ -80,23 +70,12 @@ jQuery(document).ready(function() {
 });
 /* end document.ready */
 
-
 /* Mobile Menu v2 */
 function tempera_mobilemenu_init() {
 	var state = false;
 	jQuery("#nav-toggle").click(function(){
 		jQuery("#access").slideToggle(function(){ if (state) {jQuery(this).removeAttr( 'style' )}; state = ! state; } );
 	});
-}
-
-/* Columns equalizer, used if at least one sidebar has a bg color */
-function equalizeHeights(){
-    var h1 = jQuery("#primary").height();
-	var h2 = jQuery("#secondary").height();
-	var h3 = jQuery("#content").height();
-    var max = Math.max(h1,h2,h3);
-	if (h1<max) { jQuery("#primary").height(max); };
-	if (h2<max) { jQuery("#secondary").height(max); };
 }
 
 /* FitVids 1.1*/

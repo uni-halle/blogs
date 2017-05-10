@@ -10,13 +10,13 @@
  */
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'indexed' ); ?>>
-	
+
 		<header class="entry-header">
 				<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'tempera' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 			<?php cryout_post_title_hook(); ?>
 			<div class="entry-meta">
 				<?php	cryout_post_meta_hook();  ?>
-			</div><!-- .entry-meta -->		
+			</div><!-- .entry-meta -->
 		</header><!-- .entry-header -->
 <?php cryout_post_before_content_hook();  ?>
 		<div class="entry-content">
@@ -24,7 +24,7 @@
 			<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'tempera' ) . '</span>', 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
 		<footer class="entry-meta">
-						<h3 class="entry-format"><i class="icon-audio" title="<?php _e( 'Audio', 'tempera' ); ?>"></i></h3>
+						<span class="entry-format"><i class="crycon-audio" title="<?php _e( 'Audio', 'tempera' ); ?>"></i></span>
 			<?php cryout_post_after_content_hook();  ?>
 		</footer>
 	</article><!-- #post-<?php the_ID(); ?> -->

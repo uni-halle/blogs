@@ -39,14 +39,14 @@
 			<a id="nav-toggle"><span>&nbsp;</span></a>
 			<nav id="access" role="navigation">
 				<?php cryout_access_hook();?>
-			</nav><!-- #access -->		
+			</nav><!-- #access -->
 		</div><!-- #masthead -->
 	</header><!-- #header -->
 </div><!-- #header-full -->
 
 <div style="clear:both;height:0;"> </div>
 
-<div id="main">
+<div id="main" class="main">
 		<?php cryout_main_hook(); ?>
 	<div  id="forbottom" >
 		<?php cryout_forbottom_hook(); ?>

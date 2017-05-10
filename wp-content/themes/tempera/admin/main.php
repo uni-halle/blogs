@@ -371,7 +371,7 @@ if ($tempera_varalert): ?><div id="varlimitalert"> <?php echo $tempera_varalert;
 
 <script type="text/javascript">
 var reset_confirmation = '<?php echo esc_html(__('Reset Tempera Settings to Defaults?','tempera')); ?>';
-var tempera_help_icon = '<?php echo get_template_directory_uri(); ?>/images/icon-tooltip.png';
+var tempera_help_icon = '<?php echo get_template_directory_uri(); ?>/images/crycon-tooltip.png';
 
 jQuery(document).ready(function(){
 	if (vercomp(jQuery.ui.version,"1.9.0")) {

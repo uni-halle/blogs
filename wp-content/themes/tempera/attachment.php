@@ -72,7 +72,7 @@ get_header(); ?>
 
 					<div class="entry-utility">
 						<?php tempera_posted_in(); ?>
-						<?php edit_post_link( __( 'Edit', 'tempera' ), '<span class="edit-link"><i class="icon-edit"></i> ', '</span>' ); cryout_post_footer_hook(); ?>
+						<?php edit_post_link( __( 'Edit', 'tempera' ), '<span class="edit-link"><i class="crycon-edit"></i> ', '</span>' ); cryout_post_footer_hook(); ?>
 					</div><!-- .entry-utility -->
 
 				</div><!-- #post-## -->

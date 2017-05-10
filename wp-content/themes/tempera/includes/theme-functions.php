@@ -12,7 +12,7 @@
  * Adds HTML5 tags for IE8
  * Used in header.php
 */
-function tempera_header_scripts() { 
+function tempera_header_scripts() {
 	?>
 	<!--[if lt IE 9]>
 	<script>
@@ -157,7 +157,7 @@ endif;
 */
 if ( ! function_exists( 'tempera_back_top' ) ) :
 function tempera_back_top() {
-	echo '<div id="toTop"><i class="icon-back2top"></i> </div>';
+	echo '<div id="toTop"><i class="crycon-back2top"></i> </div>';
 } // tempera_back_top()
 endif;
 
@@ -174,8 +174,8 @@ function tempera_breadcrumbs() {
 	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
 
 	$showOnHome = 0; 									// 1 - show breadcrumbs on the homepage, 0 - don't show
-	$separator = '<i class="icon-angle-right"></i>'; 	// separator between crumbs
-	$home = '<a href="' . esc_url( home_url() ) . '"><i class="icon-homebread"></i><span class="screen-reader-text">' . __("Home", "tempera") . '</span></a>'; // text for the 'Home' link
+	$separator = '<i class="crycon-angle-right"></i>'; 	// separator between crumbs
+	$home = '<a href="' . esc_url( home_url() ) . '"><i class="crycon-homebread"></i><span class="screen-reader-text">' . __("Home", "tempera") . '</span></a>'; // text for the 'Home' link
 	$showCurrent = 1; 									// 1 - show current post/page title in breadcrumbs, 0 - don't show
 	$before = '<span class="current">'; 				// tag before the current crumb
 	$after = '</span>'; 								// tag after the current crumb
@@ -185,7 +185,7 @@ function tempera_breadcrumbs() {
 	if (is_front_page() && $tempera_frontpage=="Enable") { return; }
 	if (is_home() && $tempera_frontpage!="Enable") {
 
-		if ($showOnHome == 1) echo '<div class="breadcrumbs"><a href="' . $homeLink . '"><i class="icon-homebread"></i>' .  __('Home Page','tempera') . '</a></div>';
+		if ($showOnHome == 1) echo '<div class="breadcrumbs"><a href="' . $homeLink . '"><i class="crycon-homebread"></i>' .  __('Home Page','tempera') . '</a></div>';
 
 	} else {
 
@@ -388,7 +388,7 @@ add_filter('wp_link_pages_args','tempera_nextpage_links');
 function tempera_site_info() {
 	$temperas = tempera_get_theme_options();
 	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }	?>
-	<span style="display:block;float:right;text-align:right;padding:5px 20px 5px;text-transform:uppercase;font-size:11px;">
+	<span style="display:block;float:right;text-align:right;padding:0 20px 5px;font-size:.9em;">
 	<?php _e('Powered by','tempera')?> <a target="_blank" href="<?php echo 'http://www.cryoutcreations.eu';?>" title="<?php echo 'Tempera Theme by '.
 			'Cryout Creations';?>"><?php echo 'Tempera' ?></a> &amp; <a target="_blank" href="<?php echo 'http://wordpress.org/'; ?>"
 			title="<?php _e('Semantic Personal Publishing Platform', 'tempera'); ?>"> <?php printf(' %s.', 'WordPress' ); ?>
@@ -544,7 +544,7 @@ function tempera_mobile_body_class($classes){
 	if ($temperas['tempera_mobile']=="Enable"):
 		$browser = (isset($_SERVER['HTTP_USER_AGENT'])?$_SERVER['HTTP_USER_AGENT']:'');
 		$keys = 'mobile|android|mobi|tablet|ipad|opera mini|series 60|s60|blackberry';
-		if (preg_match("/($keys)/i",$browser)): $classes[] = 'mobile'; endif; // mobile browser detected
+		if (preg_match("/($keys)/i",$browser)): $classes[] = 'temobile'; endif; // mobile browser detected
 	endif;
 	return $classes;
 }
@@ -574,7 +574,7 @@ function cryout_fontname_cleanup( $fontid ) {
     } elseif (strpos($fontid,' ')>-1) {
         // if font has space in name, quote it
         return '"' . $fontid . '"';
-    } else return $fontid;  
+    } else return $fontid;
 } // cryout_fontname_cleanup
 
 function cryout_hex2rgb($hex) {

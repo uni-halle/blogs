@@ -20,7 +20,7 @@ echo PHP_EOL;
 
 add_action ('cryout_meta_hook','tempera_mobile_meta');
 
-// Tempera favicon
+// Tempera favcrycon-
 function tempera_fav_icon() {
 global $temperas;
 foreach ($temperas as $key => $value) {

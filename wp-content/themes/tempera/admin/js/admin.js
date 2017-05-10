@@ -1,6 +1,9 @@
-/*!
- * Admin js
- */
+/* 
+ * Tempera Theme admin scripting 
+ * 
+ * Copyright 2014-17, Cryout Creations 
+ * Free to use and abuse under the GPL v3 license. 
+*/ 
 
 jQuery(document).ready(function() {
 
@@ -91,6 +94,10 @@ jQuery('#load-color-scheme').click (function() {
 jQuery('#tempera_slideType').change(function() {
 	jQuery('.slideDivs').hide();
 	switch (jQuery('#tempera_slideType option:selected').val()) {
+		
+		case "Slider Shortcode" : 
+		jQuery('#sliderShortcode').show("normal"); 
+		break; 
 
 		case "Custom Slides" :
  		jQuery('#sliderCustomSlides').show("normal");
@@ -202,7 +209,7 @@ if (vercomp(jQuery.ui.version, '1.11.2')) {
 	jQuery('.form-table').wrap('<div>');
 	
 	if (jQuery( "#accordion h2" ).length > 0) {
-		// wordpress 4.4+ changed headings to h2
+		/* wordpress 4.4+ changed headings to h2 */
 		jQuery( "#accordion" ).accordion({
 			header: 'h2',
 			heightStyle: "content",
@@ -211,7 +218,7 @@ if (vercomp(jQuery.ui.version, '1.11.2')) {
 			active: parseInt(cryout_active_slide)
 		});
 	} else {
-		// older wordpress which still uses h3
+		/* older wordpress which still uses h3 */
 		jQuery( "#accordion" ).accordion({
 			header: 'h3',
 			autoHeight: false, /* for jQueryUI <1.10 */

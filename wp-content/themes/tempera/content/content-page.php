@@ -20,7 +20,7 @@ if ( have_posts()  ) while ( have_posts() ) : the_post(); ?>
 						<?php the_content(); ?>
 						<div style="clear:both;"></div>
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'tempera' ), 'after' => '</div>' ) ); ?>
-						<?php edit_post_link( __( 'Edit', 'tempera' ), '<span class="edit-link"><i class="icon-edit"></i> ', '</span>' ); ?>
+						<?php edit_post_link( __( 'Edit', 'tempera' ), '<span class="edit-link"><i class="crycon-edit"></i> ', '</span>' ); ?>
 					</div><!-- .entry-content -->
 				</div><!-- #post-## -->
 

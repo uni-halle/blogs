@@ -29,7 +29,7 @@ add_filter( 'excerpt_length', 'tempera_excerpt_length' );
  */
 function tempera_continue_reading_link() {
 	global $tempera_excerptcont;
-	return '<p> <a class="continue-reading-link" href="'. esc_url( get_permalink() ) . '">' . wp_kses_post( $tempera_excerptcont ) . '<i class="icon-right-dir"></i></a></p>';
+	return '<p class="continue-reading-button"> <a class="continue-reading-link" href="'. esc_url( get_permalink() ) . '">' . wp_kses_post( $tempera_excerptcont ) . '<i class="crycon-right-dir"></i></a></p>';
 }
 
 /**
@@ -81,7 +81,7 @@ function tempera_more_link($more_link, $more_link_text) {
 	if (preg_match("/custom=(.*)/",$more_link_text,$m) ) {
 		$new_link_text = $m[1];
 	};
-	$more_link = str_replace($more_link_text, $new_link_text . '<i class="icon-right-dir"></i>', $more_link);
+	$more_link = str_replace($more_link_text, $new_link_text . '<i class="crycon-right-dir"></i>', $more_link);
 	$more_link = str_replace('more-link', 'continue-reading-link', $more_link);
 	return $more_link;
 }
@@ -177,7 +177,7 @@ function tempera_posted_on() {
 	// Post Author
 	$output = "";
 	 if ( $tempera_blog_show['author'] ) {
-		$output .= sprintf( '<span class="author vcard" ><i class="icon-author icon-metas" title="' . __( 'Author ','tempera'). '"></i>
+		$output .= sprintf( '<span class="author vcard" ><i class="crycon-author crycon-metas" title="' . __( 'Author ','tempera'). '"></i>
 					<a class="url fn n" rel="author" href="%1$s" title="%2$s">%3$s</a></span>',
 					esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 					sprintf( esc_attr ( __( 'View all posts by %s', 'tempera' ) ), get_the_author() ),
@@ -202,7 +202,7 @@ function tempera_posted_on() {
 		}
 
 		$output.=	'<span>
-						<i class="icon-time icon-metas" title="' . __( "Date", "tempera" ) . '"></i>
+						<i class="crycon-time crycon-metas" title="' . __( "Date", "tempera" ) . '"></i>
 						<time class="onDate date published" datetime="' . get_the_time( 'c' ) . '">
 							<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $date . $separator . $time . '</a>
 						</time>
@@ -211,7 +211,7 @@ function tempera_posted_on() {
 	}
 	// Post categories
      if ( $tempera_blog_show['category'] &&  get_the_category_list() ) {
-			$output .= '<span class="bl_categ"><i class="icon-folder-open icon-metas" title="' . __( "Categories", "tempera" ).'"></i>' . get_the_category_list( ', ' ) . '</span> ' ;
+			$output .= '<span class="bl_categ"><i class="crycon-folder-open crycon-metas" title="' . __( "Categories", "tempera" ).'"></i>' . get_the_category_list( ', ' ) . '</span> ' ;
 		}
 		echo $output;
 
@@ -231,9 +231,9 @@ function tempera_posted_after() {
 
 	$tag_list = get_the_tag_list( '', ', ' );
      if ( $tag_list && ($tempera_blog_show['tag']) ) { ?>
-		<span class="footer-tags"><i class="icon-tag icon-metas" title="<?php _e( 'Tags','tempera'); echo '"> </i>'.$tag_list; ?> </span>
+		<span class="footer-tags"><i class="crycon-tag crycon-metas" title="<?php _e( 'Tags','tempera'); echo '"> </i>'.$tag_list; ?> </span>
      <?php }
-	edit_post_link( __( 'Edit', 'tempera' ), '<span class="edit-link icon-metas"><i class="icon-edit  icon-metas"></i> ', '</span>' );
+	edit_post_link( __( 'Edit', 'tempera' ), '<span class="edit-link crycon-metas"><i class="crycon-edit  crycon-metas"></i> ', '</span>' );
 	cryout_post_footer_hook();  ?>
 <?php
 }; // tempera_posted_after()
@@ -291,10 +291,10 @@ function tempera_posted_in() {
 		$posted_in="";
 		$tag_list = get_the_tag_list( '', ', ' );
 		if ( $tag_list && $tempera_single_show['tag'] ) {
-			$posted_in .=  '<span class="footer-tags"><i class="icon-tag icon-metas" title="'.__( 'Tagged','tempera').'"></i>&nbsp; %2$s.</span>';
+			$posted_in .=  '<span class="footer-tags"><i class="crycon-tag crycon-metas" title="'.__( 'Tagged','tempera').'"></i>&nbsp; %2$s.</span>';
 		}
 		if ($tempera_single_show['bookmark'] ) {
-			$posted_in .= '<span class="bl_bookmark"><i class="icon-bookmark icon-metas" title="'.__(' Bookmark the permalink','tempera').'"></i> <a href="%3$s" title="'.__('Permalink to','tempera').' %4$s" rel="bookmark"> '.__('Bookmark','tempera').'</a>.</span>';
+			$posted_in .= '<span class="bl_bookmark"><i class="crycon-bookmark crycon-metas" title="'.__(' Bookmark the permalink','tempera').'"></i> <a href="%3$s" title="'.__('Permalink to','tempera').' %4$s" rel="bookmark"> '.__('Bookmark','tempera').'</a>.</span>';
 		}
 
 		// Prints the string, replacing the placeholders.
