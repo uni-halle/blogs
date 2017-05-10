@@ -150,7 +150,7 @@ echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>'."\n"; 
 <?php 		} // end else strlen( $post->post_content ) <= 0 ?>
 <?php } // end else no rss_use_excerpt ?>
 		<?php
-		}
+		} // feed maximizer off
 		else // If feed maximizer on
 		{
 		?>

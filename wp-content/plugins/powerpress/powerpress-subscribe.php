@@ -455,7 +455,18 @@ function powerpress_subscribe_shortcode( $attr ) {
 		$html .= '';
 		$html .='<a href="';
 		$html .= esc_url($Settings['itunes_url']);
-		$html .= '" target="itunes_store" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/htmlResources/assets/en_us/images/web/linkmaker/badge_subscribe-lrg.png) no-repeat;width:135px;height:40px;}"></a>';
+		$html .= '" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-lrg.svg) no-repeat;width:165px;height:40px;"></a>';
+		$html .= '</div>';
+		return $html;
+	}
+	
+	if( !empty($attr['itunes_badge']) && !empty($Settings['itunes_url']) )
+	{
+		$html = '<div>';
+		$html .= '';
+		$html .='<a href="';
+		$html .= esc_url($Settings['itunes_url']);
+		$html .= '" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-sm.svg) no-repeat;width:80px;height:15px;"></a>';
 		$html .= '</div>';
 		return $html;
 	}

@@ -3,19 +3,6 @@
 if( !function_exists('add_action') )
 	die("access denied.");
 	
-function powerpress_categories_strict($Categories, $Selected)
-{
-	$Return = $Categories;
-	$StrictArray = array('01-00', '02-00', '04-00', '05-00', '06-00', '07-00', '11-00', '12-00', '13-00', '14-00', '15-00');
-	while( list($index,$remove) = each($StrictArray) )
-	{
-		if( $Selected == $remove )
-			continue;
-		unset($Return[ $remove ]);
-	}
-	return $Return;
-}
-
 function powerpress_languages()
 {
 	// List copied from PodPress:
@@ -863,8 +850,7 @@ $Categories = powerpress_itunes_categories(true);
 
 echo '<option value="">'. __('Select Category', 'powerpress') .'</option>';
 
-$UseCategories = powerpress_categories_strict($Categories, $FeedSettings['itunes_cat_1']);
-while( list($value,$desc) = each($UseCategories) )
+while( list($value,$desc) = each($Categories) )
 	echo "\t<option value=\"$value\"". ($FeedSettings['itunes_cat_1']==$value?' selected':''). ">".htmlspecialchars($desc)."</option>\n";
 
 reset($Categories);
@@ -895,8 +881,7 @@ reset($Categories);
 
 
 echo '<option value="">'. __('Select Category', 'powerpress')  .'</option>';
-$UseCategories = powerpress_categories_strict($Categories, $FeedSettings['itunes_cat_2']);
-while( list($value,$desc) = each($UseCategories) )
+while( list($value,$desc) = each($Categories) )
 	echo "\t<option value=\"$value\"". ($FeedSettings['itunes_cat_2']==$value?' selected':''). ">".htmlspecialchars($desc)."</option>\n";
 
 reset($Categories);
@@ -921,8 +906,7 @@ reset($Categories);
 <?php
 
 echo '<option value="">'. __('Select Category', 'powerpress')  .'</option>';
-$UseCategories = powerpress_categories_strict($Categories, $FeedSettings['itunes_cat_3']);
-while( list($value,$desc) = each($UseCategories) )
+while( list($value,$desc) = each($Categories) )
 	echo "\t<option value=\"$value\"". ($FeedSettings['itunes_cat_3']==$value?' selected':''). ">".htmlspecialchars($desc)."</option>\n";
 
 reset($Categories);

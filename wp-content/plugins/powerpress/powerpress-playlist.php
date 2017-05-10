@@ -160,11 +160,11 @@ function powerpress_playlist_episodes($args)
 		$query .= "AND tr.term_taxonomy_id = '". $TaxonomyObj->term_taxonomy_id ."' ";
 	}
 	
+	$for_query = '';
 	if( !empty( $args['ids'] ) ) {
 		// First santity check make sure we are only working with numbers....
 		if( preg_match('/^[0-9,\s]*$/', $args['ids']) ) {
 			$ids	= explode(',', preg_replace('/(\s)/', '', $args['ids']) );
-			$for_query = '';
 			while( list($index,$id) = each($ids) ) {
 				if( empty($id) )	
 					continue;
@@ -180,7 +180,11 @@ function powerpress_playlist_episodes($args)
 	}
 	
 	$query .= "GROUP BY p.ID ";
-	$query .= "ORDER BY p.post_date DESC ";
+	if( !empty($for_query) ) {
+		$query .= "ORDER BY FIELD('id', $for_query) ";
+	} else {
+		$query .= "ORDER BY p.post_date DESC ";
+	}
 	$query .= "LIMIT 0, %d";
 	
 	$query = $wpdb->prepare($query, ($args['slug'] == 'podcast'?'enclosure': '_'.$args['slug'].':enclosure'), $args['post_type'], $args['limit'] );

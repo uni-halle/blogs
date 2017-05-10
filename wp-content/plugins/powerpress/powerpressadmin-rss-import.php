@@ -89,11 +89,12 @@ class PowerPress_RSS_Podcast_Import extends WP_Importer {
 
 <p><?php echo __('The following tool will import your podcast episodes to this website.', 'powerpress'); ?></p>
 
-<form enctype="multipart/form-data" action="" method="post" name="blogroll">
+<form enctype="multipart/form-data" action="" method="post" name="import-podcast-feed">
 <?php wp_nonce_field('import-powerpress-rss') ?>
 
 <div style="width: 70%; margin: auto; height: 8em;">
 <input type="hidden" name="step" value="1" />
+<input type="hidden" name="import" value="<?php echo( !empty($_REQUEST['import']) ? htmlspecialchars($_REQUEST['import']) : ''); ?>" />
 <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo wp_max_upload_size(); ?>" />
 <div style="width: 48%;" class="alignleft">
 <h3><label for="podcast_feed_url"><?php _e('Podcast Feed URL:', 'powerpress'); ?></label></h3>
@@ -163,36 +164,129 @@ class PowerPress_RSS_Podcast_Import extends WP_Importer {
 				</div>
 			</div>
 		</div>
-		
-		<!-- coming soon -->
-		<!--
+<?php
+	
+	if( !empty($General['channels']) )
+	{
+		// List rall of teh podcast channel feeds
+		$Feeds = array();
+		if( isset($General['custom_feeds']) )
+			$Feeds = $General['custom_feeds'];
+		if( isset($General['custom_feeds']['podcast']) )
+			unset($General['custom_feeds']['podcast']);
+		if( !empty($Feeds) )
+		{
+?>
 		<div class="ppi-option">
-			<label><input type="radio" name="import_to" id="import_to_channel" value="channel" /> <?php echo __('Podcast Channel feed', 'powerpress'); ?></label>
-			<div style="margin: 10px 0 10px 24px;">
-				<label for="channel"><?php echo __('Channel', 'powerpress'); ?></label> &nbsp; <?php
-				wp_dropdown_categories(array('show_option_none' => __( '&mdash; Select &mdash;' ), 'option_none_value' => '', 'hide_empty' => 0, 'id'=>'category', 'name' => 'category', 'orderby' => 'name', 'selected' => '', 'hierarchical' => true));
-				?>
-			</div>
-			<div style="margin: 10px 0 10px 24px;">
-				<label><input type="checkbox" name="import_overwrite_program_info_channel" value="1"> <?php echo __('Import program information', 'powerpress'); ?></label>
-			</div>
-			<div style="margin: 10px 0 10px 24px;">
-				<label><input type="checkbox" name="import_itunes_image_channel" value="1"> <?php echo __('Import iTunes artwork', 'powerpress'); ?></label>
+			<label><input type="radio" name="import_to" id="import_to_channel" value="channel" /> <?php echo __('Podcast Channel feed', 'powerpress'); ?></label><br />
+			<div class="import-to" id="import-to-channel" style="display: none;">
+				<div style="margin: 10px 0 10px 24px;">
+<select id="feed_slug" name="feed_slug" class="large-input">
+<option value=""><?php echo __('Select Channel feed', 'powerpress'); ?></option>
+<?php
+
+	asort($Feeds, SORT_STRING); // Sort feeds 
+	while( list($feed_slug, $feed_title) = each($Feeds) ) {
+	
+	echo "\t<option value=\"$feed_slug\">$feed_title ($feed_slug)</option>\n";
+}
+?>
+</select>
+				</div>
+				<div style="margin: 10px 0 10px 24px;">
+					<label><input type="checkbox" name="import_overwrite_program_info_channel" value="1"> <?php echo __('Import program information', 'powerpress'); ?></label>
+				</div>
+				<div style="margin: 10px 0 10px 24px;">
+					<label><input type="checkbox" name="import_itunes_image_channel" value="1"> <?php echo __('Import iTunes artwork', 'powerpress'); ?></label>
+				</div>
 			</div>
 		</div>
-		-->
-	</div>
+<?php
+		}
+	} // end podcast channel
 	
-<div>
-<?php 
-	//$Settings = get_option('powerpress_general');
-	/*
-	if( !empty($Settings['blubrry_auth']) ) { ?>
-	<label><input type="checkbox" name="migrate_to_blubrry" value="1" checked /> <?php echo __('Migrate Media files to Blubrry Podcast Hosting account', 'powerpress'); ?></label>
-<?php } else { ?>
-	<label><input type="checkbox" name="migrate_to_blubrry" value="1" /> <?php echo __('Migrate Media files to Blubrry Podcast Hosting account', 'powerpress'); ?></label> <a title="<?php echo esc_attr(__('Blubrry Podcast Hosting', 'powerpress')); ?>" href="<?php echo admin_url('admin.php'); ?>?action=powerpress-jquery-hosting&amp;KeepThis=true&amp;TB_iframe=true&amp;modal=false&amp;width=800&amp;height=400" target="_blank" class="thickbox"><?php echo __('Learn More', 'powerpress'); ?></a>
-<?php }
-	*/
+	if( !empty($General['posttype_podcasting']) )
+	{
+?>
+		<div class="ppi-option">
+			<label><input type="radio" name="import_to" id="import_to_post_type" value="post_type" /> <?php echo __('Podcast Post Type feed', 'powerpress'); ?></label>
+			<div class="import-to" id="import-to-post_type" style="display: none;">
+				<div style="margin: 10px 0 10px 24px;">
+					<label for="post_type"><?php echo __('Post type', 'powerpress'); ?></label> &nbsp; 
+					<input type="text" name="post_type" id="post_type" class="medium-text" value="" />
+				</div>
+				<div style="margin: 10px 0 10px 24px;">
+					<label for="post_type_feed_slug"><?php echo __('Feed slug', 'powerpress'); ?></label> &nbsp; 
+					<input type="text" name="post_type_feed_slug" id="post_type_feed_slug" class="medium-text" value="" />
+				</div>
+				<div style="margin: 10px 0 10px 24px;">
+					<label><input type="checkbox" name="import_overwrite_program_info_post_type" value="1"> <?php echo __('Import program information', 'powerpress'); ?></label>
+				</div>
+				<div style="margin: 10px 0 10px 24px;">
+					<label><input type="checkbox" name="import_itunes_image_post_type" value="1"> <?php echo __('Import iTunes artwork', 'powerpress'); ?></label>
+				</div>
+			</div>
+		</div>
+<?php
+	} // end post type
+	
+	if( !empty($General['taxonomy_podcasting']) )
+	{
+		$PowerPressTaxonomies = get_option('powerpress_taxonomy_podcasting');
+		if( empty($PowerPressTaxonomies) )
+			$PowerPressTaxonomies = array();
+		
+?>
+		<div class="ppi-option">
+			<label><input type="radio" name="import_to" id="import_to_taxonomy" value="taxonomy" /> <?php echo __('Podcast Taxonomy feed', 'powerpress'); ?></label>
+			<div class="import-to" id="import-to-taxonomy" style="display: none;">
+				<div style="margin: 10px 0 10px 24px;">
+<?php
+
+if( !empty($PowerPressTaxonomies) ) { // If taxonomy podcasting feeds exist..
+
+	global $wpdb;
+	$tt_ids = '';
+	
+	$SelectOptions = array();
+	while( list($tt_id, $null) = each($PowerPressTaxonomies) ) {
+		if( !empty($tt_ids) )
+			$tt_ids .= ',';
+		$tt_ids .= $tt_id;
+		
+		$term = get_term_by('term_taxonomy_id', $tt_id);
+		if( is_wp_error($term) )
+			continue;
+		$SelectOptions[ $tt_id ] = sprintf('%s (%s)', $term->name, $term->slug);
+	}
+	
+?>
+<select id="podcast_ttid" name="podcast_ttid" style="min-width: 240px;" class="postform">
+<option value=""><?php echo __('Select Taxonomy Podcast', ''); ?></option>
+<?php
+
+	while( list($tt_id, $label) = each($SelectOptions) )
+	{
+		echo "\t<option value=\"$tt_id\">". htmlspecialchars($label). "</option>\n";
+	}
+
+?>
+</select>
+				</div>
+				<div style="margin: 10px 0 10px 24px;">
+					<label><input type="checkbox" name="import_overwrite_program_info_taxonomy" value="1"> <?php echo __('Import program information', 'powerpress'); ?></label>
+				</div>
+				<div style="margin: 10px 0 10px 24px;">
+					<label><input type="checkbox" name="import_itunes_image_taxonomy" value="1"> <?php echo __('Import iTunes artwork', 'powerpress'); ?></label>
+				</div>
+<?php } else { // else no taxonomy feeds have been created yet ?>
+				<div style="margin: 10px 0 10px 24px;">
+					<label><?php echo __('Please create a taxonomy podcast to continue.', 'powerpress'); ?></label>
+				</div>
+<?php } ?>
+			</div>
+<?php
+	} // End if taxonomy podcasting enabled
 ?>
 </div>
 <div class="ppi-option">
@@ -235,13 +329,7 @@ jQuery(document).ready( function() {
 
 //-->
 </script>
-
-<div class="ppi-option">
-	
-</div>
-
 <h3><a href="#" class="pp-expand-section"><?php echo __('Advanced Options', 'powerpress'); ?></a></h3>
-
 <div style="margin-left: 24px; display: none;">
 	<div class="ppi-option">
 		<label><input type="checkbox" name="NULL" value="1" checked disabled> <?php echo __('Match episode by GUID (required)', 'powerpress'); ?></label>
@@ -259,11 +347,26 @@ jQuery(document).ready( function() {
 		<label><input type="checkbox" name="import_blog_posts" value="1" > <?php echo __('Include blog posts', 'powerpress'); ?></label>
 	</div>
 	<div class="ppi-option">
+	<input type="hidden" name="remove_query_string" value="0" />
+		<label><input type="checkbox" name="remove_query_string" value="1" <?php if( !empty($_REQUEST['import']) && $_REQUEST['import'] == 'powerpress-libsyn-rss-podcast' ) {
+			echo 'checked disabled'; } ?> > <?php echo __('Remove query strings from media URLs', 'powerpress'); ?></label>
+	</div>
+	<div class="ppi-option">
+		<label for="import_post_status"><?php echo __('Post Status', 'powerpress'); ?></label> &nbsp;
+		<select id="import_post_status" name="import_post_status" class="medium-text">
+<?php
+	$post_statuses = get_post_statuses();
+	while( list($post_status_slug, $post_status_label) = each($post_statuses) ) {
+	
+	echo "\t<option value=\"$post_status_slug\"". ($post_status_slug=='publish'?' selected':'') .">".  htmlspecialchars("$post_status_label ($post_status_slug)") . "</option>\n";
+}
+?>
+</select>
+	</div>
+	<div class="ppi-option">
 		<label for="import_item_limit"><?php echo __('Item limit', 'powerpress'); ?></label> &nbsp;
 		<input type="text" name="import_item_limit" id="import_item_limit" class="small-text" value="" /> (<?php echo __('leave blank for no limit', 'powerpress'); ?>)
 	</div>
-	
-	
 </div>
 <?php submit_button( __('Import Podcast', 'powerpress' ), 'button-blubrry'); ?>
 </div>
@@ -274,7 +377,6 @@ jQuery(document).ready( function() {
 	
 	var import_type = jQuery("input[name='import_to']:checked").val()
 	jQuery('#import-to-'+import_type).show();
-	//alert(import_type);
 	jQuery("input[name='import_to']").change( function(e) {
 		jQuery('.import-to').hide(400);
 		jQuery('#import-to-'+jQuery(this).val() ).show(400);
@@ -294,10 +396,23 @@ jQuery(document).ready( function() {
 		return '<' . strtolower( $matches[1] );
 	}
 	
-	function import_program_info($channel, $overwrite=false, $download_itunes_image=false, $category_id = '', $feed_slug ='') {
+	function import_program_info($channel, $overwrite=false, $download_itunes_image=false, $category_id = '', $feed_slug ='', $post_type = '', $ttid = '') {
 		$Feed = get_option('powerpress_feed_podcast' );
 		if( empty($Feed) )
 			$Feed = get_option('powerpress_feed');
+		
+		if( !empty($category_id) ) {
+			$Feed = get_option('powerpress_cat_feed_'.$category_id);
+		} else if( !empty($post_type) ) {
+			// TODO
+		} else if( !empty($feed_slug) ) {
+			$Feed = get_option('powerpress_feed_'.$feed_slug);
+		}  else if( !empty($ttid) ) {
+			$Feed = get_option('powerpress_taxonomy_'.$ttid);
+		}
+		
+		if( empty($Feed) ) // Fix the situation where the empty value is not an array so we do not have notice messages
+			$Feed = array();
 		
 		$NewSettings = array();
 		
@@ -504,7 +619,7 @@ jQuery(document).ready( function() {
 		
 		if( !empty($NewSettings) )
 		{
-			if( empty($category_id) && empty($feed_slug) ) {
+			if( empty($category_id) && empty($feed_slug) && empty($post_type) && empty($ttid) ) {
 				// Save here..
 				if( get_option('powerpress_feed_podcast') ) { // If the settings were moved to the podcast channels feature...
 					powerpress_save_settings($NewSettings, 'powerpress_feed_podcast' ); // save a copy here if that is the case.
@@ -530,9 +645,12 @@ jQuery(document).ready( function() {
 					
 					powerpress_save_settings($NewSettings);
 				}
+			} else if ( !empty($post_type) ) {
+				// TODO
 			} else if ( !empty($feed_slug) ) {
-				
-				powerpress_save_settings($NewSettings, 'powerpress_feed_'.$feed_slug ); // save a copy here if that is the case.
+				powerpress_save_settings($NewSettings, 'powerpress_feed_'.$feed_slug );
+			} else if ( !empty($ttid) ) {
+				powerpress_save_settings($NewSettings, 'powerpress_taxonomy_'. $ttid );
 			}
 			
 			
@@ -576,7 +694,7 @@ jQuery(document).ready( function() {
 		}
 	}
 	
-	function import_item($post, $MatchFilter, $import_blog_posts=false, $category_strict='', $feed_slug='') {	
+	function import_item($post, $MatchFilter, $import_blog_posts=false, $category_strict='', $feed_slug='', $post_type = '', $taxonomy = '', $term = '', $remove_query_string = false, $post_status = 'publish') {	
 		global $wpdb;
 		$this->m_item_pos++;
 		
@@ -612,7 +730,6 @@ jQuery(document).ready( function() {
 		}
 		
 		// GUID has to be last, as we will use the media URL as the guid as a last resort
-		
 		$guid = false;
 		if( preg_match('|<guid.*?>(.*?)</guid>|is', $post, $matches) )
 			$guid = $this->_sanatize_tag_value( $matches[1] );
@@ -620,8 +737,12 @@ jQuery(document).ready( function() {
 			$guid = $enclosure['url'];
 		
 		$media_url = '';
-		if( !empty($enclosure['url']) )
+		if( !empty($enclosure['url']) ) {
+			if( !empty($remove_query_string) && !empty($enclosure['url']) && strstr($enclosure['url'], '?') ) {	
+				$enclosure['url'] = strtok($enclosure['url'],'?');  //Tund3r: added for libsyn
+			}
 			$media_url = $enclosure['url'];
+		}
 			
 		$post_date_gmt = false;
 		if( preg_match('|<pubdate>(.*?)</pubdate>|is', $post, $matches) ) {
@@ -690,21 +811,50 @@ jQuery(document).ready( function() {
 		$post_content = str_replace('<br>', '<br />', $post_content);
 		$post_content = str_replace('<hr>', '<hr />', $post_content);
 
-		$post_author = 1;
-		$post_status = 'publish';
+		$post_author = get_current_user_id();
 		
 		// Save this episode to the database...
 		$post_to_save = compact('post_author', 'post_date', 'post_date_gmt', 'post_content', 'post_title', 'post_status', 'guid', 'categories', 'enclosure');
+		
+		if( !empty($post_type) ) // If the post should go into a custom post type...
+		{
+			$post_to_save['post_type'] = $post_type;
+		}
 		$this->m_item_inserted_count++;
+		
+		$post_id = $this->_import_post_to_db($post_to_save, $feed_slug);
+		if( empty($post_id) ) {
+			echo '<span style="color: red; font-weight: bold;">';
+			echo sprintf(__('<i>%s</i> import failed.', 'powerpress'), htmlspecialchars($post_title) );
+			echo '</span>';
+			return false;
+		}
+		
+		if ( is_wp_error( $post_id ) ) {
+			
+			echo '<span style="color: red; font-weight: bold;">';
+			echo sprintf(__('<i>%s</i> import failed: ' , 'powerpress'), htmlspecialchars($post_title) );
+			echo '</span>';
+			return false;
+		}
+		
 		echo '<span style="color: green; font-weight: bold;">';
 		echo sprintf(__('<i>%s</i> imported.', 'powerpress'), htmlspecialchars($post_title) );
 		echo '</span>';
-		$post_id = $this->_import_post_to_db($post_to_save);
+		
+		// Display a link to the blog post
+		echo ' <a href="'. get_permalink($post_id) .'" target="_blank"><i class="wp-menu-image dashicons-before dashicons-admin-links"></i></a>';
 		
 		// Category strict
 		if( !empty($category_strict) )
 		{
 			wp_set_post_categories( $post_id, array($category_strict), true );
+		}
+		
+		// Set specific taxonomy term to this post
+		if( !empty($taxonomy) && !empty($term) )
+		{
+			wp_set_post_terms( $post_id, array($term), $taxonomy, true );
 		}
 		
 		return ( $post_id > 0 );
@@ -725,13 +875,61 @@ jQuery(document).ready( function() {
 		return $value;
 	}
 
-	function import_episodes($MatchFilter, $import_blog_posts=false, $import_item_limit=0, $category='', $feed_slug='') {
+	function import_episodes($MatchFilter, $import_blog_posts=false, $import_item_limit=0, $category='', $feed_slug='', $post_type = '', $ttid = '', $remove_query_string = false, $post_status='publish') {
 		global $wpdb;
 		@set_time_limit(60*15); // Give it 15 minutes
 		$this->m_item_pos = 0;
+		$taxonomy = '';
+		$term = '';
+		if( $ttid )
+		{
+			$TaxTermObj = get_term_by('term_taxonomy_id', $ttid);
+			if( $TaxTermObj )
+			{
+				$term = $TaxTermObj->name;
+				$taxonomy = $TaxTermObj->taxonomy;
+				// Now get the post type if the taxonomy, which may not be "post"...
+				$TaxonomyObj = get_taxonomy($taxonomy);
+				// Set the post type to import into
+				if( !empty($TaxonomyObj->object_type[0]) && $TaxonomyObj->object_type[0] != 'post' ) {
+					$post_type = $TaxonomyObj->object_type[0];
+				}
+				// We should use the term's ID rather than it's name
+				if( !empty($TaxonomyObj->hierarchical) ) {
+					$term = intval($TaxTermObj->term_id);
+				}
+			}
+			else
+			{
+				// Do not go any further, there is an error here!
+				echo '<p><strong>';
+				echo __('Error, unable to locate term taxonomy.', 'powerpress');
+				echo '</strong></p>';
+				return;
+			}
+		}
 		
 		$item_count = substr_count( $this->m_content, '<item>');
 		$item_count += substr_count( $this->m_content, '<ITEM>');
+		
+		echo '<h3>Diagnostic information</h3>';
+		echo '<ul>';
+		if( !empty($ttid) )
+			echo sprintf( '<li>Taxonomy Term ID: %s</li>', $ttid);
+		if( !empty($taxonomy) )
+			echo sprintf( '<li>Taxonomy: %s</li>', $taxonomy);
+		if( !empty($term) )
+			echo sprintf( '<li>Taxonomy Term: %s</li>', $term);
+		if( !empty($post_type) )
+			echo sprintf( '<li>Post Type: %s</li>', $post_type);
+		if( !empty($feed_slug) )
+			echo sprintf( '<li>Feed Slug: %s</li>', $feed_slug);
+		if( !empty($category) )
+			echo sprintf( '<li>Category: %s</li>', $category);
+		
+		echo sprintf( '<li>Remove query string: %s</li>', ( !empty($remove_query_string)?'true':'false') );
+			
+		echo '</ul>';
 		
 		echo '<hr />';
 		echo '<p><strong>';
@@ -761,7 +959,7 @@ jQuery(document).ready( function() {
 			echo '<li>';
 			$new_start = $item_start_pos + mb_strlen('<item>');
 			$item_content = mb_substr($this->m_content, $new_start, $item_end_pos - $new_start);
-			$this->import_item($item_content, $MatchFilter, $import_blog_posts, $category, $feed_slug);
+			$this->import_item($item_content, $MatchFilter, $import_blog_posts, $category, $feed_slug, $post_type, $taxonomy, $term, $remove_query_string, $post_status);
 			echo '</li>';
 			
 			// Extra stop just in case...
@@ -807,13 +1005,74 @@ jQuery(document).ready( function() {
 		
 		$import_blog_posts = (!empty($_POST['import_blog_posts'])?true:false);
 		$import_item_limit  = (!empty($_POST['import_item_limit'])?intval($_POST['import_item_limit']):0);
-		$category  = (!empty($_POST['category'])?intval($_POST['category']):0);
-		$feed_slug  = (!empty($_POST['feed_slug'])?intval($_POST['feed_slug']):0);
-		$import_  = (!empty($_POST['import_item_limit'])?intval($_POST['import_item_limit']):0);
+		$remove_query_string = (!empty($_POST['remove_query_string'])?true:false);
+		$post_status = ( !empty($_POST['import_post_status']) ? $_POST['import_post_status']: 'publish' );
+		$category  = (!empty($_POST['category'])?intval($_POST['category']):'');
+		$feed_slug  = (!empty($_POST['feed_slug'])?($_POST['feed_slug']):'');
+		$post_type = (!empty($_POST['post_type'])?($_POST['post_type']):'');
+		$post_type_feed_slug = (!empty($_POST['post_type_feed_slug'])?($_POST['post_type_feed_slug']):'');
+		$ttid = (!empty($_POST['podcast_ttid'])?intval($_POST['podcast_ttid']):'');
+		//$import_  = (!empty($_POST['import_item_limit'])?intval($_POST['import_item_limit']):0);
 		$import_to = 'default';
 		if( !empty($_POST['import_to']) && $_POST['import_to'] != 'default' )
 			$import_to = $_POST['import_to'];
+		if( !empty($_REQUEST['import']) && $_REQUEST['import'] == 'powerpress-libsyn-rss-podcast' )
+			$remove_query_string = true;
 		
+		// Set the correct parameters going in...
+		switch( $import_to )
+		{
+			case 'category': {
+				$feed_slug = '';
+				$post_type = '';
+				$ttid = '';
+				if( empty($category) ) {
+					echo '<p>No category selected.</p>';
+					return;
+				}
+			}; break;
+			case 'channel': {
+				$category = '';
+				$post_type = '';
+				$ttid = '';
+				if( empty($feed_slug) ) {
+					echo '<p>No podcast channel selected.</p>';
+					return;
+				}
+			}; break;
+			case 'post_type': {
+				$category = '';
+				$feed_slug = $post_type_feed_slug;
+				$ttid = '';
+				
+				if( empty($feed_slug) ) {
+					echo '<p>No feed slug specified.</p>';
+					return;
+				}
+				if( empty($post_type) ) {
+					echo '<p>No post type specified.</p>';
+					return;
+				}
+			}; break;
+			case 'taxonomy': {
+				$category = '';
+				$feed_slug = '';
+				$post_type = '';
+				
+				if( empty($ttid) ) {
+					echo '<p>No taxonomy podcast selected.</p>';
+					return;
+				}
+					
+			}; break;
+			case 'default':
+			default: {
+				$category = '';
+				$feed_slug = '';
+				$post_type = '';
+				$ttid = '';
+			}; break;
+		}
 		
 		// First import program info...
 		if( preg_match('/^(.*)<item>/is', $this->m_content, $matches) )
@@ -833,10 +1092,20 @@ jQuery(document).ready( function() {
 				$import_itunes_image = (!empty($_POST['import_itunes_image_channel'])?true:false);
 				if( $overwrite_program_info || $import_itunes_image )
 					$this->import_program_info($matches[1], $overwrite_program_info, $import_itunes_image, false, $feed_slug);
+			} else if( $import_to == 'post_type' ) {
+				$overwrite_program_info = (!empty($_POST['import_overwrite_program_info_post_type'])?true:false);
+				$import_itunes_image = (!empty($_POST['import_itunes_image_post_type'])?true:false);
+				if( $overwrite_program_info || $import_itunes_image )
+					$this->import_program_info($matches[1], $overwrite_program_info, $import_itunes_image, false, $feed_slug, $post_type);
+			} else if( $import_to == 'taxonomy' ) {
+				$overwrite_program_info = (!empty($_POST['import_overwrite_program_info_taxonomy'])?true:false);
+				$import_itunes_image = (!empty($_POST['import_itunes_image_taxonomy'])?true:false);
+				if( $overwrite_program_info || $import_itunes_image )
+					$this->import_program_info($matches[1], $overwrite_program_info, $import_itunes_image, false, false, false, $ttid);
 			}
 		}
 		
-		$this->import_episodes($MatchFilter, $import_blog_posts, $import_item_limit, $category, $feed_slug);
+		$this->import_episodes($MatchFilter, $import_blog_posts, $import_item_limit, $category, $feed_slug, $post_type, $ttid, $remove_query_string, $post_status);
 		
 		$migrated_to_blubrry = false;
 		if( !empty($_POST['migrate_to_blubrry'])  && !empty($GLOBALS['pp_migrate_media_urls']) ) {
@@ -912,7 +1181,6 @@ jQuery(document).ready( function() {
 		else if( !empty($_GET['step']) )
 			$this->m_step = intval($_GET['step']);
 			
-		
 		// Drop back down a step if not setup for hosting...
 		if( !empty($_POST['migrate_to_blubrry']) ) {
 			$Settings = get_option('powerpress_general');
@@ -1017,7 +1285,7 @@ jQuery(document).ready( function() {
 	{
 		global $wpdb;
 		
-		$meta_key = 'podcast';
+		$meta_key = 'enclosure';
 		if( !empty($feed_slug) && $feed_slug != 'podcast' )
 			$meta_key = '_'. $feed_slug .':enclosure';
 		
@@ -1081,7 +1349,7 @@ jQuery(document).ready( function() {
 		return 0;
 	}
 	
-	function _import_post_to_db($post)
+	function _import_post_to_db($post, $feed_slug = '')
 	{
 		extract($post);
 		$post_id = wp_insert_post($post);
@@ -1091,7 +1359,7 @@ jQuery(document).ready( function() {
 			_e('Couldn&#8217;t get post ID', 'powerpress');
 			return false;
 		}
-
+		
 		if (0 != count($categories))
 			wp_create_categories($categories, $post_id);
 					
@@ -1124,7 +1392,12 @@ jQuery(document).ready( function() {
 				
 			if( !empty($serialize) )
 				$encstring .= "\n". serialize( $serialize );
-			$meta_id = add_post_meta($post_id, 'enclosure', $encstring, true);
+				
+			if( empty($feed_slug) || $feed_slug == 'podcast' ) // 'podcast' == $feed_slug || '' == $feed_slug
+				$meta_id = add_post_meta($post_id, 'enclosure', $encstring, true);
+			else
+				$meta_id = add_post_meta($post_id, '_'. $feed_slug .':enclosure', $encstring, true);
+		
 			if( $meta_id ) {
 				if( empty($GLOBALS['pp_migrate_media_urls']) )
 					$GLOBALS['pp_migrate_media_urls'] = array();
@@ -1184,7 +1457,6 @@ jQuery(document).ready( function() {
 					$enclosure['block'] = 1;
 			}
 			
-			// <itunes:image href="http://example.com/podcasts/everything/AllAboutEverything.jpg" />
 			if( preg_match('/<itunes:image[^h]*href="(.*?)".*(\/>|>.*<\/itunes:image>)/i', $post, $matches) )
 			{
 				$enclosure['itunes_image'] = html_entity_decode( trim( $matches[1] ) );

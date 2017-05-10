@@ -29,9 +29,15 @@ function powerpress_admin_taxonomyfeeds()
 }
 .column-name {
 	width: 30%;
+	min-width: 60px;
+}
+.column-taxonomy {
+	width: 15%;
+	min-width: 60px;
 }
 .column-feed-slug {
 	width: 15%;
+	min-width: 60px;
 }
 .column-episode-count {
 	width: 15%;

@@ -519,6 +519,8 @@ function powerpressplayer_player_audio($content, $media_url, $EpisodeData = arra
 				return $content; // Ogg is handled as video
 		}
 		case 'oga': {
+		
+			$Settings = get_option('powerpress_general');
 			if( !isset($Settings['player']) )
 				$Settings['player'] = 'mediaelement-audio';
 				
@@ -790,12 +792,16 @@ function powerpressplayer_mediaobjects($type, $content, $media_url, $EpisodeData
 	
 	//var_dump($EpisodeData);
 	$post_title = get_the_title();
-	if( !empty($post_title) )
+	if( !empty($post_title) ) {
 		$addhtml .= '<meta itemprop="name" content="'.  htmlspecialchars($post_title) .'" />'.PHP_EOL_WEB;
+	}
+	
 	$addhtml .= '<meta itemprop="encodingFormat" content="'. powerpress_get_contenttype($media_url) .'" />'.PHP_EOL_WEB;
-	$addhtml .= '<meta itemprop="duration" content="'. powerpress_iso8601_duration($EpisodeData['duration']) .'" />'.PHP_EOL_WEB; // http://en.wikipedia.org/wiki/ISO_8601#Durations
-	if( !empty($EpisodeData['subtitle']) )
-	{
+	if( !empty($EpisodeData['duration']) ) {
+		$addhtml .= '<meta itemprop="duration" content="'. powerpress_iso8601_duration($EpisodeData['duration']) .'" />'.PHP_EOL_WEB; // http://en.wikipedia.org/wiki/ISO_8601#Durations
+	}
+	
+	if( !empty($EpisodeData['subtitle']) ) {
 		$addhtml .= '<meta itemprop="description" content="'.  htmlspecialchars($EpisodeData['subtitle']) .'" />'.PHP_EOL_WEB;
 	}
 	else
@@ -1460,58 +1466,6 @@ function powerpressplayer_build_mediaelementaudio($media_url, $EpisodeData=array
 		}
 	}
 	$content .= '</div>'.PHP_EOL_WEB;
-	return $content;
-}
-
-/*
-HTTML 5 Mobile Player
-*/
-function powerpressplayer_build_html5mobile($media_url, $EpisodeData)
-{
-	$content = '';
-	$html5 = true;
-	// Special logic, we need to check if we're dealing with Android 2.2 or older, in which case we don't want to use HTML5 audio/video due to controls bug
-	if( preg_match('/android ([\d\.]+)/i', $_SERVER['HTTP_USER_AGENT'], $matches) )
-	{
-		if( !empty($matches[1]) && version_compare($matches[1], "2.3") < 0 )
-			$html5 = false;
-	}
-	
-	$extension = powerpressplayer_get_extension($media_url);
-	switch( $extension )
-	{
-		case 'mp4':
-		case 'webm':
-		case 'm4v':
-		case 'ogg':
-		case 'ogv': {
-			// Video
-			$Settings = get_option('powerpress_general');
-			
-			// MEJS is not ready for mobile, using native HTML5 performs more efficiently at this point. Someday though we will be able to use MEJS for mobile.
-			if( $html5 && !empty($Settings['video_player']) && $Settings['video_player'] == 'mediaelement-video' )
-				$content .= powerpressplayer_build_mediaelementvideo($media_url, $EpisodeData);
-			else if( $html5 )
-				$content .= powerpressplayer_build_html5video($media_url, $EpisodeData);
-			else
-				$content .= powerpressplayer_build_playimage($media_url, $EpisodeData, true);
-		}; break;
-		case 'mp3':
-		case 'm4a':
-		case 'oga': {
-			// Audio
-			$Settings = get_option('powerpress_general');
-			
-			// MEJS is not ready for mobile, using native HTML5 performs more efficiently at this point. Someday though we will be able to use MEJS for mobile.
-			if( $html5 && !empty($Settings['player']) && $Settings['player'] == 'mediaelement-audio' )
-				$content .= powerpressplayer_build_mediaelementaudio($media_url, $EpisodeData);
-			else if( $html5 )
-				$content .= powerpressplayer_build_html5audio($media_url, $EpisodeData);
-			else
-				$content .= powerpressplayer_build_playimageaudio($media_url, true);
-		}; break;
-	}
-	
 	return $content;
 }
 

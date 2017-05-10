@@ -1373,7 +1373,10 @@ function powerpress_admin_notices()
 	$errors = get_option('powerpress_errors');
 	if( $errors )
 	{
-		delete_option('powerpress_errors');
+		if( !delete_option('powerpress_errors') ) {
+			// If for some reason we cannot delete this record, maybe we can at least update it with a blank value...
+			update_option('powerpress_errors', '');
+		}
 		
 		while( list($null, $error) = each($errors) )
 		{
@@ -1618,7 +1621,7 @@ function powerpress_admin_menu()
 					add_meta_box('powerpress-podcast', __('Podcast Episode', 'powerpress'), 'powerpress_meta_box', $page_type, 'normal');
 			}
 			
-			$post_types = array('post'); // Only apply to default posts
+			$post_types = array('post'); // Only apply to default posts if post type podcasting is disabled
 			if( empty($Powerpress['posttype_podcasting']) )
 				$post_types = powerpress_admin_get_post_types('post'); // Get pages by capability type
 		}
@@ -2429,7 +2432,7 @@ function powerpress_check_url(url)
 	jQuery( '#'+DestDiv ).addClass("error");
 	jQuery( '#'+DestDiv ).removeClass("updated");
 			
-	var validChars = ':0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/-_.';
+	var validChars = ':0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/-_.:';
 
 	for( var x = 0; x < url.length; x++ )
 	{

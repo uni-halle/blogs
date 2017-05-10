@@ -3,24 +3,24 @@
 Plugin Name: Blubrry PowerPress
 Plugin URI: http://create.blubrry.com/resources/powerpress/
 Description: <a href="http://create.blubrry.com/resources/powerpress/" target="_blank">Blubrry PowerPress</a> is the No. 1 Podcasting plugin for WordPress. Developed by podcasters for podcasters; features include Simple and Advanced modes, multiple audio/video player options, subscribe to podcast tools, podcast SEO features, and more! Fully supports iTunes, Google Play, Stitcher, and Blubrry Podcasting directories, as well as all podcast applications and clients.
-Version: 7.0.3
+Version: 7.0.4
 Author: Blubrry
 Author URI: http://www.blubrry.com/
 Requires at least: 3.6
-Tested up to: 4.6.1
+Tested up to: 4.7.3
 Text Domain: powerpress
 Change Log:
 	Please see readme.txt for detailed change log.
 
 Contributors:
-	Angelo Mandato, CIO RawVoice - Plugin founder, architect and lead developer
+	Angelo Mandato, CIO Blubrry - Plugin founder, architect and lead developer
 	See readme.txt for full list of contributors.
 	
 Credits:
 	getID3(), License: GPL 2.0+ by James Heinrich <info [at] getid3.org> http://www.getid3.org
 		Note: getid3.php analyze() function modified to prevent redundant filesize() function call.
 	
-Copyright 2008-2016 RawVoice Inc. (http://www.rawvoice.com)
+Copyright 2008-2017 Blubrry (http://www.blubrry.com)
 
 License: GPL (http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt)
 
@@ -32,7 +32,7 @@ if( !function_exists('add_action') )
 	die("access denied.");
 	
 // WP_PLUGIN_DIR (REMEMBER TO USE THIS DEFINE IF NEEDED)
-define('POWERPRESS_VERSION', '7.0.3' );
+define('POWERPRESS_VERSION', '7.0.4 beta' );
 
 // Translation support:
 if ( !defined('POWERPRESS_ABSPATH') )
@@ -173,6 +173,10 @@ function powerpress_content($content)
 	else if( current_filter() == 'the_content' && $g_powerpress_excerpt_post_id == $post->ID )
 	{
 		return $content; // We don't want to do anything to this excerpt content in this call either...
+	}
+	else if( class_exists('custom_post_widget') && powerpress_in_custom_post_widget() )
+	{
+		return $content; // Custom Post Widget compatibility
 	}
 	
 	
@@ -906,7 +910,7 @@ function powerpress_rss2_item()
 		}
 	}
 	
-	if( empty($summary) ) { // Backwards compatbility with PodPress, the excerpt is used as the itunes summary if set
+	if( empty($summary) ) { // Backwards compatibility with PodPress, the excerpt is used as the itunes summary if set
 		$summary = powerpress_get_the_exerpt( true, !empty($General['feed_action_hook']) ); // Will call powerpress_get_the_content(true) if the excerpt does not exist
 	}
 	
@@ -2827,6 +2831,40 @@ function powerpress_add_redirect_url($MediaURL, $EpisodeData = false) // $channe
 		}
 	}
 	
+	if( !empty($GeneralSettings['taxonomy_podcasting']) )  // Taxonomy Podcasting
+	{
+		$PowerPressTaxonomies = get_option('powerpress_taxonomy_podcasting');
+		if( !empty($PowerPressTaxonomies) )
+		{
+			$terms = get_terms();
+			$ttid_found = 0;
+			$TaxonomySettings = false;
+			
+			while( list($index,$termObj) = each($terms) )
+			{
+				// Skip the default taxonomies
+				if( $termObj->taxonomy == 'category' || $termObj->taxonomy == 'link_category' || $termObj->taxonomy == 'post_tag' || $termObj->taxonomy == 'nav_menu' )
+					continue;
+				
+				if( !empty($PowerPressTaxonomies[ $termObj->term_taxonomy_id ]) )
+				{
+					$ttid_found = $termObj->term_taxonomy_id;
+					
+					$TaxonomySettings = get_option('powerpress_taxonomy_'.$ttid_found);
+					// Found it???
+					if( !empty($TaxonomySettings['redirect']) )
+					{
+						$Redirects['redirect0'] = $TaxonomySettings['redirect'];
+						$Redirects['redirect1'] = '';
+						$Redirects['redirect2'] = '';
+						$Redirects['redirect3'] = '';
+						break;
+					}
+				}
+			}
+		}
+	}
+	
 	// Allow other apps to update the redirects
 	$Redirects = apply_filters('powerpress_redirects', $Redirects, $EpisodeData);
 	
@@ -2864,7 +2902,17 @@ function powerpress_add_redirect_url($MediaURL, $EpisodeData = false) // $channe
 				//if( !in_array($RedirectDomain, $ValidRedirectDomains) )
 				//	continue; // Not a valid domain so lets not add it
 				
-				if( !strstr($NewURL, $RedirectClean) )
+				// Make sure we are no longer doubling up on media.blubrry.com or media.rawvoice.com redirects
+				//if( ($RedirectDomain == 'media.blubrry.com'||$RedirectDomain == 'media.rawvoice.com') && strstr($NewURL, '/'.$RedirectDomain.'/') )
+				//{
+				//	// Strip the media.blubrry.com/XXX/x/ or media.blubrry.com/xxx/ from the URL since we will be replacing it
+				//	if( preg_match('/^(.*\/)media\.(?:blubrry|rawvoice)\.com\/[a-zA-Z0-9_-]{2,60}\/([a-zA-Z0-9]\/)?(.*)$/', $NewURL, $matches) )
+				//	{
+				//		$NewURL = $matches[1].$matches[3];
+				//	}
+				//}
+				
+				if( !strstr($NewURL, $RedirectClean) ) // If the redirect is not already added...
 					$NewURL = $URLScheme. $RedirectClean . str_replace($URLScheme, '', $NewURL);
 			}
 		}
@@ -3091,7 +3139,7 @@ function powerpress_get_enclosure_data($post_id, $feed_slug = 'podcast', $raw_da
 	
 	if( $Serialized )
 	{
-		$ExtraData = unserialize($Serialized);
+		$ExtraData = @unserialize($Serialized);
 		if( $ExtraData && is_array($ExtraData) )
 		{
 			while( list($key,$value) = each($ExtraData) ) {
@@ -3436,6 +3484,28 @@ function powerpress_in_wp_head()
 				// Which calls should we not add the player and links...
 				switch( $call['function'] ) {
 					case 'wp_head': return true; break;
+				}
+			}
+		}
+	}
+	return false;
+}
+
+function powerpress_in_custom_post_widget()
+{
+	if( !class_exists('custom_post_widget') )
+		return false;
+	
+	$e = new Exception();
+	$trace = $e->getTrace();
+	
+	if( !empty($trace) ) {
+		//var_dump($trace);
+		while( list($index,$call) = each($trace) ) {
+			if( isset($call['function']) ) {
+				// Which calls should we not add the player and links...
+				switch( $call['function'] ) {
+					case 'custom_post_widget_shortcode': return true; break;
 				}
 			}
 		}

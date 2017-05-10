@@ -45,12 +45,12 @@ function powerpress_get_news($feed_url, $limit=10)
 	
 	// If the feed was erroneously 
 	if ( !$rss_items ) {
-		$md5 = md5( $this->feed );
+		$md5 = md5( $feed_url ); // This is from simple-pie, look at member variable ->cache_name_function
 		delete_transient( 'feed_' . $md5 );
 		delete_transient( 'feed_mod_' . $md5 );
 		$rss->__destruct();
 		unset($rss);
-		$rss = fetch_feed( $this->feed );
+		$rss = fetch_feed( $feed_url );
 		$rss_items = $rss->get_items( 0, $rss->get_item_quantity( $num ) );
 		$rss->__destruct();
 		unset($rss);
