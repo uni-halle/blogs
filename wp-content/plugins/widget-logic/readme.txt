@@ -3,8 +3,8 @@ Contributors: wpchefgadget, alanft
 Donate link: http://www.justgiving.com/widgetlogic_cancerresearchuk
 Tags: widget, admin, conditional tags, filter, context
 Requires at least: 3.0
-Tested up to: 4.7.4
-Stable tag: 5.7.4
+Tested up to: 4.7.5
+Stable tag: 5.8.1
 License: GPLv2 or later
 
 Widget Logic lets you control on which pages widgets appear using WP's conditional tags. It also adds a 'widget_content' filter.
@@ -118,6 +118,14 @@ Tighten up your definitions with PHPs 'logical AND' &&, for example:
 2. The plugin options are at the foot of the usual widget admin page… `widget_content` filter, `wp_reset_query` option, 'load logic point' and 'evaluate more than once'. You can also export and import your site's WL options as a plain text file for a quick backup/restore and to help troubleshoot issues.
 
 == Changelog ==
+
+= 5.8.1 =
+Fixed the issue of displaying errors under certain conditions.
+
+= 5.8.0 =
+Added full support for WP customizer.
+
+In case of a fatal error in logic, the widget will not be displayed.
 
 = 5.7.4 =
 Fixed the "Warning: Attempt to assign property of non-object" bug.

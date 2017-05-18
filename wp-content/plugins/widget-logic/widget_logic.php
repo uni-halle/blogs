@@ -3,7 +3,7 @@
 Plugin Name:    Widget Logic
 Plugin URI:     http://wordpress.org/extend/plugins/widget-logic/
 Description:    Control widgets with WP's conditional tags is_home etc
-Version:        5.7.4
+Version:        5.8.1
 Author:         wpchefgadget, alanft
 
 Text Domain:   widget-logic
@@ -28,7 +28,9 @@ function widget_logic_activate()
 }
 
 $plugin_dir = basename(dirname(__FILE__));
-global $wl_options;
+global $wl_options, $wl_in_customizer;
+
+$wl_in_customizer = false;
 
 add_action( 'init', 'widget_logic_init' );
 function widget_logic_init()
@@ -62,10 +64,14 @@ if((!$wl_options = get_option('widget_logic')) || !is_array($wl_options) )
 
 if (is_admin())
 {
-	add_filter( 'widget_update_callback', 'widget_logic_ajax_update_callback', 10, 4); 				// widget changes submitted by ajax method
-	add_action( 'sidebar_admin_setup', 'widget_logic_expand_control');								// before any HTML output save widget changes and add controls to each widget on the widget admin page
-	add_action( 'sidebar_admin_page', 'widget_logic_options_control');								// add Widget Logic specific options on the widget admin page
-	add_filter( 'plugin_action_links', 'wl_charity', 10, 2);										// add my justgiving page link to the plugin admin page
+	add_filter( 'in_widget_form', 'widget_logic_extra_control', 10, 3 );
+	add_filter( 'widget_update_callback', 'widget_logic_update_callback', 10, 4);
+	
+	add_action( 'sidebar_admin_setup', 'widget_logic_expand_control');
+	// before any HTML output save widget changes and add controls to each widget on the widget admin page
+	add_action( 'sidebar_admin_page', 'widget_logic_options_control');
+	// add Widget Logic specific options on the widget admin page
+	add_filter( 'plugin_action_links', 'wl_charity', 10, 2);// add my justgiving page link to the plugin admin page
 }
 else
 {
@@ -86,7 +92,13 @@ else
 }
 
 
-
+function widget_logic_in_customizer()
+{
+	global $wl_in_customizer;
+	$wl_in_customizer = true;
+	add_filter( 'widget_display_callback', 'widget_logic_customizer_display_callback', 10, 3 );
+}
+add_action( 'customize_preview_init', 'widget_logic_in_customizer' );
 
 
 function widget_logic_sidebars_widgets_filter_add()
@@ -98,17 +110,11 @@ function widget_logic_sidebars_widgets_filter_add()
 
 
 // CALLED VIA 'widget_update_callback' FILTER (ajax update of a widget)
-function widget_logic_ajax_update_callback($instance, $new_instance, $old_instance, $this_widget)
+function widget_logic_update_callback( $instance, $new_instance, $old_instance, $this_widget )
 {
-	global $wl_options;
-	$widget_id=$this_widget->id;
-	if ( isset($_POST[$widget_id.'-widget_logic']))
-	{
-		$wl_options[$widget_id]=trim($_POST[$widget_id.'-widget_logic']);
-		update_option('widget_logic', $wl_options);
-		
-		unset( $_POST[$widget_id.'-widget_logic'], $_REQUEST[$widget_id.'-widget_logic'] );
-	}
+	if ( isset( $new_instance['widget_logic'] ) )
+		$instance['widget_logic'] = $new_instance['widget_logic'];
+	
 	return $instance;
 }
 
@@ -156,36 +162,7 @@ function widget_logic_expand_control()
 		wp_redirect( admin_url('widgets.php') );
 		exit;
 	}
-
-
-	// ADD EXTRA WIDGET LOGIC FIELD TO EACH WIDGET CONTROL
-	// pop the widget id on the params array (as it's not in the main params so not provided to the callback)
-	foreach ( $wp_registered_widgets as $id => $widget )
-	{	// controll-less widgets need an empty function so the callback function is called.
-		if (!isset($wp_registered_widget_controls[$id]))
-			wp_register_widget_control($id,$widget['name'], 'widget_logic_empty_control');
-		$wp_registered_widget_controls[$id]['callback_wl_redirect']=$wp_registered_widget_controls[$id]['callback'];
-		$wp_registered_widget_controls[$id]['callback']='widget_logic_extra_control';
-		array_push($wp_registered_widget_controls[$id]['params'],$id);
-	}
-
-
-	// UPDATE WIDGET LOGIC WIDGET OPTIONS (via accessibility mode?)
-	if ( 'post' == strtolower($_SERVER['REQUEST_METHOD']) )
-	{
-		$widgt_ids = (array)@$_POST['widget-id'];
-		foreach ( $widgt_ids as $widget_number => $widget_id )
-			if (isset($_POST[$widget_id.'-widget_logic']))
-				$wl_options[$widget_id]=trim($_POST[$widget_id.'-widget_logic']);
-
-		// clean up empty options (in PHP5 use array_intersect_key)
-		$regd_plus_new=array_merge(array_keys($wp_registered_widgets),array_values($widgt_ids),
-			array('widget_logic-options-filter', 'widget_logic-options-wp_reset_query', 'widget_logic-options-load_point', 'widget_logic-options-show_errors'));
-		foreach (array_keys($wl_options) as $key)
-			if (!in_array($key, $regd_plus_new))
-				unset($wl_options[$key]);
-	}
-
+	
 	// UPDATE OTHER WIDGET LOGIC OPTIONS
 	// must update this to use http://codex.wordpress.org/Settings_API
 	if ( isset($_POST['widget_logic-options-submit']) )
@@ -276,36 +253,36 @@ function widget_logic_options_control()
 }
 
 // added to widget functionality in 'widget_logic_expand_control' (above)
-function widget_logic_empty_control() {}
-
-
-
-// added to widget functionality in 'widget_logic_expand_control' (above)
-function widget_logic_extra_control()
-{	global $wp_registered_widget_controls, $wl_options;
-
-	$params=func_get_args();
-	$id=array_pop($params);
-
-	// go to the original control function
-	$callback=$wp_registered_widget_controls[$id]['callback_wl_redirect'];
-	if (is_callable($callback))
-		call_user_func_array($callback, $params);
-
-	$value = !empty( $wl_options[$id ] ) ? htmlspecialchars( stripslashes( $wl_options[$id ] ),ENT_QUOTES ) : '';
-
-	// dealing with multiple widgets - get the number. if -1 this is the 'template' for the admin interface
-	$id_disp=$id;
-	if (!empty($params) && isset($params[0]['number']))
-	{	$number=$params[0]['number'];
-		if ($number==-1) {$number="__i__"; $value="";}
-		$id_disp=$wp_registered_widget_controls[$id]['id_base'].'-'.$number;
+function widget_logic_extra_control( $widget, $return, $instance )
+{
+	global $wl_options;
+	
+	if ( isset( $instance['widget_logic'] ) )
+	{
+		$logic = $instance['widget_logic'];
+		if ( isset( $wl_options[ $widget->id ] ) )
+		{
+			unset( $wl_options[ $widget->id ] );
+			update_option('widget_logic', $wl_options);
+		}
 	}
-	// output our extra widget logic field
-	echo "<p><label for='".$id_disp."-widget_logic'>". __('Widget logic:','widget-logic'). " <textarea class='widefat' type='text' name='".$id_disp."-widget_logic' id='".$id_disp."-widget_logic' >".$value."</textarea></label></p>";
+	elseif ( !empty( $wl_options[ $widget->id ] ) )
+	{
+		$logic = stripslashes( $wl_options[ $widget->id ] );
+	}
+	else
+		$logic = '';
+
+	?>
+		<p>
+			<label for="<?php echo $widget->get_field_id('widget_logic'); ?>">
+				<?php esc_html_e('Widget logic:','widget-logic') ?>
+			</label>
+			<textarea class="widefat" name="<?php echo $widget->get_field_name('widget_logic'); ?>" id="<?php echo $widget->get_field_id('widget_logic'); ?>"><?= esc_textarea( $logic ) ?></textarea>
+		</p>
+	<?php
+	return;
 }
-
-
 
 // CALLED ON 'plugin_action_links' ACTION
 function wl_charity($links, $file)
@@ -321,9 +298,13 @@ function wl_charity($links, $file)
 
 
 // CALLED ON 'sidebars_widgets' FILTER
-function widget_logic_filter_sidebars_widgets($sidebars_widgets)
+function widget_logic_filter_sidebars_widgets( $sidebars_widgets )
 {
-	global $wp_reset_query_is_done, $wl_options;
+	global $wp_reset_query_is_done, $wl_options, $wl_in_customizer;
+	
+	
+	if ( $wl_in_customizer )
+		return $sidebars_widgets;
 
 	// reset any database queries done now that we're about to make decisions based on the context given in the WP query for the page
 	if ( !empty( $wl_options['widget_logic-options-wp_reset_query'] ) && empty( $wp_reset_query_is_done ) )
@@ -331,60 +312,105 @@ function widget_logic_filter_sidebars_widgets($sidebars_widgets)
 		wp_reset_query();
 		$wp_reset_query_is_done=true;
 	}
-
+	
 	// loop through every widget in every sidebar (barring 'wp_inactive_widgets') checking WL for each one
 	foreach($sidebars_widgets as $widget_area => $widget_list)
-	{	if ($widget_area=='wp_inactive_widgets' || empty($widget_list)) continue;
+	{
+		if ($widget_area=='wp_inactive_widgets' || empty($widget_list))
+			continue;
 
 		foreach($widget_list as $pos => $widget_id)
-		{	if (empty($wl_options[$widget_id]))  continue;
-			$wl_value=stripslashes(trim($wl_options[$widget_id]));
-			if (empty($wl_value))  continue;
-
-			$wl_value=apply_filters( "widget_logic_eval_override", $wl_value );
-			if ($wl_value===false)
-			{	unset($sidebars_widgets[$widget_area][$pos]);
+		{
+			if ( !preg_match( '/^(.+)-(\d+)$/', $widget_id, $m ) )
 				continue;
-			}
-			if ($wl_value===true) continue;
-
-			if (stristr($wl_value,"return")===false)
-				$wl_value="return (" . $wl_value . ");";
 			
-			$show_errors = !empty($wl_options['widget_logic-options-show_errors']) && current_user_can('manage_options');
+			$widget_class = $m[1];
+			$widget_i = $m[2];
 			
-			if ( $show_errors )
-				$save = ini_get('display_errors');
-			try {
-				if ( $show_errors )
-					ini_set( 'display_errors', 'On' );
-
-				if (!eval($wl_value))
-					unset($sidebars_widgets[$widget_area][$pos]);
-
-				if ( $show_errors )
-					ini_set( 'display_errors', $save );
-			}
-			catch ( Error $e ) {
-				if ( current_user_can('manage_options') && !empty($wl_options['widget_logic-options-show_errors']) )
-					trigger_error( 'Invalid Widget Logic: '.$e->getMessage(), E_USER_WARNING );
-
-				if ( $show_errors )
-					ini_set( 'display_errors', $save );
-				
+			$info = get_option( 'widget_'.$widget_class );
+			if ( empty( $info[ $widget_i ] ) )
 				continue;
-			}
-
+			
+			$logic = @$info[ $widget_i ]['widget_logic'];
+			if ( !isset( $logic ) && isset( $wl_options[ $widget_id ] ) )
+				$logic = stripslashes( $wl_options[ $widget_id ] );
+			
+			if ( !widget_logic_check_logic( $logic ) )
+				unset($sidebars_widgets[$widget_area][$pos]);
 		}
 	}
 	return $sidebars_widgets;
 }
 
 
+function widget_logic_check_logic( $logic )
+{
+	$logic = @trim( (string)$logic );
+	$logic = apply_filters( "widget_logic_eval_override", $logic );
+	
+	if ( is_bool( $logic ) )
+		return $logic;
+	
+	if ( $logic === '' )
+		return true;
+
+	if ( stristr( $logic, "return" ) === false )
+		$logic = "return ( $logic );";
+	
+	global $wl_options, $wl_in_customizer;
+			
+	
+	set_error_handler( 'widget_logic_error_handler' );
+	
+	try {
+		$show_widget = eval($logic);
+	}
+	catch ( Error $e ) {
+		trigger_error( $e->getMessage(), E_USER_WARNING );
+		
+		$show_widget = false;
+	}
+	
+	restore_error_handler();
+	
+	return $show_widget;
+}
+
+function widget_logic_error_handler( $errno , $errstr )
+{
+	global $wl_options;
+	$show_errors = !empty($wl_options['widget_logic-options-show_errors']) && current_user_can('manage_options');
+	
+	if ( $show_errors )
+		echo 'Invalid Widget Logic: '.$errstr;
+	
+	return true;
+}
 
 // If 'widget_logic-options-filter' is selected the widget_content filter is implemented...
 
-
+function widget_logic_customizer_display_callback( $instance, $widget, $args )
+{
+	if ( empty( $instance['widget_logic'] ) )
+		return $instance;
+	
+	global $wl_options;
+	
+	$show_errors = !empty($wl_options['widget_logic-options-show_errors']) && current_user_can('manage_options');
+	
+	ob_start();
+	$show_widget = widget_logic_check_logic( $instance['widget_logic'] );
+	$error = ob_get_clean();
+	
+	if ( $show_errors && $error ) :
+		?><script>jQuery(function($){$('#<?=$widget->id?>').append( $('<p class="widget-logic-error">').html(<?=json_encode($error)?>) );})</script><?php
+	endif;
+	if ( !$show_widget ):
+		?><script>jQuery(function($){$('#<?=$widget->id?>').children().not('.widget-logic-error').css('opacity', '0.2');})</script><?php
+	endif;
+	
+	return $instance;
+}
 
 // CALLED ON 'dynamic_sidebar_params' FILTER - this is called during 'dynamic_sidebar' just before each callback is run
 // swap out the original call back and replace it with our own
