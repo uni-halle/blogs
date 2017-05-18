@@ -8,10 +8,10 @@ Author URI: http://www.642weather.com/weather/scripts.php
 Text Domain: si-captcha
 Domain Path: /languages
 License: GPLv2 or later
-Version: 3.0.0.16
+Version: 3.0.0.17
 */
 
-$si_captcha_version = '3.0.0.16';
+$si_captcha_version = '3.0.0.17';
 
 /*  Copyright (C) 2008-2017 Mike Challis  (http://www.642weather.com/weather/contact_us.php)
 
@@ -915,8 +915,11 @@ echo '</div>
 
 
 // this function checks the captcha posted with registration page
-function si_captcha_register_post(WP_Error $errors) {
+function si_captcha_register_post( $errors = '' ) {
    global $si_captcha_dir, $si_captcha_dir_ns, $si_captcha_opt, $si_captcha_checkout_validated;
+
+   if ( ! is_wp_error( $errors ) )
+          $errors = new WP_Error();
 
    if ($si_captcha_checkout_validated)
        return $errors; // skip because already validated a captcha at woocommerce checkout, checked the box "Create an account"
@@ -1048,8 +1051,11 @@ echo '</div>
 
 
 // this function checks the captcha posted with lost password page
-function si_captcha_lostpassword_post(WP_Error $errors) {
+function si_captcha_lostpassword_post($errors = '') {
   global $si_captcha_dir, $si_captcha_dir_ns, $si_captcha_opt;
+
+ if ( ! is_wp_error( $errors ) )
+        $errors = new WP_Error();
 
    $validate_result = $this->si_captcha_validate_code('reg', 'unlink');
    if($validate_result != 'valid') {
