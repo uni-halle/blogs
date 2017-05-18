@@ -1,5 +1,5 @@
 <?php
-/*  (c) Copyright 2015  MiKa (wp-osm-plugin.HanBlog.Net)
+/*  (c) Copyright 2017  MiKa (wp-osm-plugin.HanBlog.Net)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -112,7 +112,7 @@ class cOsm_icon
     $a_IconName == "mic_orange_van_01.png" || $a_IconName == "mic_orange_climbing_01.png" ||
     $a_IconName == "mic_green_restaurant_02.png" || $a_IconName == "mic_green_hut_01.png" ||
     $a_IconName == "mic_green_tent_01.png" || $a_IconName == "mic_blue_ski_tour_01.png" ||
-	$a_IconName == "mic_green_hut_02.png"
+    $a_IconName == "mic_green_hut_02.png" || $a_IconName == "mic_green_caravan_01.png"
 ){
     return true;
    }
@@ -236,9 +236,12 @@ private function setIconsize($a_IconName, $a_IconHeight = -1, $a_IconWidth = -1,
 
   public function setIcon($a_IconName = 'mic_blue_pinother_02.png', $a_IconHeight = -1, $a_IconWidth = -1, $a_IconFocus = -1)
   {
+    if ($a_IconName == 'NoName'){
+      $a_IconName = 'mic_blue_pinother_02.png';
+    }
     $this->icon_name = $this->replaceOldIcon($a_IconName);
     $this->setIconsize($this->icon_name, $a_IconHeight, $a_IconWidth, $a_IconFocus);
-	$this->icon_URL = OSM_PLUGIN_ICONS_URL.$this->icon_name;
+    $this->icon_URL = OSM_PLUGIN_ICONS_URL.$this->icon_name;
 }
 
 public function __construct($a_IconName = 'mic_blue_pinother_02.png', $a_IconHeight = -1, $a_IconWidth = -1, $a_IconFocus = -1){
