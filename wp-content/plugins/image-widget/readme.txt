@@ -1,10 +1,10 @@
 === Image Widget ===
-Contributors: ModernTribe, peterchester, borkweb, zbtirrell
+Contributors: ModernTribe, peterchester, borkweb, zbtirrell, aguseo, barry.hughes, cliffpaulick, courane01, GeoffBel, ggwicz, jentheo, neillmcshea, nicosantos, shelbelliott, tribecari, trishasalas, vicskf
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4BSPTNFFY6AL6
-Tags: widget, image, ad, banner, simple, upload, sidebar, admin, thickbox, resize, arabic, brazilian portuguese, dutch, german, hebrew, italian, japanese, polish, spanish, swedish, widget-only
+Tags: widget, image, ad, banner, simple, upload, sidebar, retina, admin, thickbox, resize, arabic, brazilian portuguese, dutch, german, hebrew, italian, japanese, polish, spanish, swedish, widget-only
 Requires at least: 3.5
 Tested up to: 4.7.3
-Stable tag: 4.4.1
+Stable tag: 4.4.3
 
 A simple image widget that uses the native WordPress media manager to add image widgets to your site.
 
@@ -12,7 +12,8 @@ A simple image widget that uses the native WordPress media manager to add image 
 
 Image Widget is a simple plugin that uses the native WordPress media manager to add image widgets to your site.
 
-Need to add slideshows, lightboxes, or random images? Check out [Image Widget Plus](http://m.tri.be/19mc)!
+Need to add slideshows, lightboxes, or random images?
+<strong>Check out [Image Widget Plus](http://m.tri.be/19mc)!</strong>
 
 = Image Widget Features =
 
@@ -32,9 +33,7 @@ Image Widget is developed and maintained by [Modern Tribe](http://m.tri.be/19md)
 
 This plugin is actively supported by our team and contributions from community members. If you see a question in the forum you can help with or have a great idea and want to code it up or submit a patch, that would be awesome! Not only will we shower you with praise and thanks, it’s also a good way to get to know us and lead into options for paid work if you freelance.
 
-= Coming Soon - Image Widget Plus! =
-
-Looking for more features? Our [new Image Widget Plus plugin](http://m.tri.be/19mf) is coming soon!
+= Image Widget Plus! =
 
 Image Widget Plus features include:
 
@@ -206,6 +205,17 @@ define( 'I_HAVE_SUPPORTED_THE_IMAGE_WIDGET', true );
 For more info on the philosophy here, check out our [blog post](http://tri.be/define-i-have-donated-true/)
 
 == Changelog ==
+
+= 4.4.3 =
+
+* Fix - Fixed bug where selecting an image failed to trigger a Save & Publish in the Customizer (props to dsaric-dev for the fix)
+* Tweak - Roll-back to sidebar_admin_setup to enqueue resources for optimal plugin compatibility (props to megamenu for the heads up)
+
+= 4.4.2 =
+
+* Fix - fixed compatibility with WordPress versions prior to 4.4
+* Fix - proportional scaling of image within the widget editor
+* Fix - fix validation by avoiding empty attributes and only specifying sizes with srcset (thanks Zodiak1978)
 
 = 4.4.1 =
 
