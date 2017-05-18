@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-05-05 06:30:36+0000\n"
+"PO-Revision-Date: 2017-05-16 21:32:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,45 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: fr\n"
 "Project-Id-Version: Plugins - Yoast SEO - Stable (latest release)\n"
+
+#: languages/yoast-seo-js.php:38
+msgid "No internal links appear in this page, consider adding some as appropriate."
+msgstr "Aucun lien interne n’apparaît sur cette page, vous devriez en ajouter quelques uns."
+
+#. Translators: %1$s expands to the number of internal links
+#: languages/yoast-seo-js.php:49
+msgid "This page has %1$s internal link(s)."
+msgstr "Cette page possède %1$s lien(s) interne(s)."
+
+#: languages/yoast-seo-js.php:45
+msgid "This page has %1$s nofollowed internal link(s) and %2$s normal internal link(s)."
+msgstr "Cette page possède %1$s liens(s) interne(s) en nofollow et %2$s lien(s) interne(s) classique(s)."
+
+#. Translators: %1$s expands the number of internal links
+#: languages/yoast-seo-js.php:42
+msgid "This page has %1$s internal link(s), all nofollowed."
+msgstr "Cette page possède %1$s lien(s) interne(s), tous en nofollow."
+
+#. translators: %s expands to 'Yoast SEO Premium'.
+#: admin/metabox/class-metabox-add-keyword-tab.php:35
+msgid "Other benefits of %s for you:"
+msgstr "Autres bénéfices de %s pour vous :"
+
+#. translators: %s expands to 'Yoast SEO'.
+#: admin/config-ui/components/class-component-configuration-choices.php:36
+msgid "Configure %s in a few steps"
+msgstr "Configurez %s en quelques étapes"
+
+#. translators: %1$s expands to a 'strong' start tag, %2$s to a 'strong' end
+#. tag.
+#: admin/class-help-center.php:76
+#: admin/metabox/class-metabox-add-keyword-tab.php:45
+msgid "%1$sSocial media preview%2$s: Facebook &amp; Twitter"
+msgstr "%1$sAperçu des réseaux sociaux%2$s: Facebook &amp; Twitter"
+
+#: languages/yoast-seo-js.php:391
+msgid "Scroll to see the preview content."
+msgstr "Faire défiler pour voir l’aperçu du contenu."
 
 #: languages/yoast-components.php:81
 msgid "Enter authorization code here..."
@@ -225,6 +264,14 @@ msgstr "Trouvez des articles similaires super-rapidement"
 msgid "Internal linking suggestions"
 msgstr "Suggestions de liens internes"
 
+#: admin/banner/class-admin-banner-sidebar.php:94
+msgid "Easy redirect manager"
+msgstr "Gestionnaire de redirections facile"
+
+#: admin/banner/class-admin-banner-sidebar.php:94
+msgid "No more dead links"
+msgstr "Il n’y a plus de liens morts"
+
 #: admin/banner/class-admin-banner-sidebar.php:93
 msgid "Increase your SEO reach"
 msgstr "Augmentez votre portée SEO"
@@ -246,9 +293,19 @@ msgstr "Variable"
 msgid "Available variables"
 msgstr "Variables disponibles"
 
+#. translators: %1$s will be a link to a review explanation page. Text between
+#. %2$s and %3$s will be a link to an SEO copywriting course page.
+#: admin/config-ui/fields/class-field-upsell-site-review.php:19
+msgid "If you want more help creating awesome content, check out our %2$sSEO copywriting course%3$s. Do you want to know all about the features of the plugin, consider doing our %1$s!"
+msgstr "Si vous voulez de l’aide pour créer du contenu exceptionnel, consultez notre formation sur le %2$scopywriting SEO%3$s. Voulez-vous tout savoir sur les fonctionnalités de l’extension ? Envisagez de suivre notre %1$s !"
+
 #: admin/class-admin.php:651
 msgid "Scroll to see the table content."
 msgstr "Faire défiler pour voir le contenu du tableau."
+
+#: admin/banner/class-admin-banner-sidebar.php:362
+msgid "Take the online Technical SEO Training course and learn essential technical SEO-concepts!"
+msgstr "Suivez le cours en ligne de technique SEO et découvrez les concepts techniques essentiels au SEO !"
 
 #. Translators: %1$s expands to the keyword density percentage, %2$d expands to
 #. the keyword count, 	   %3$s expands to the maximum keyword density
@@ -861,7 +918,7 @@ msgstr "Voulez-vous apprendre comment améliorer vos classements dans les moteur
 
 #: admin/banner/class-admin-banner-sidebar.php:342
 msgid "Take the online Keyword Research Training course and learn how to rank with your keywords!"
-msgstr "Suivez le cours en ligne Keyword Research et apprenez à vous placez avec vos mots-clés !"
+msgstr "Suivez le cours en ligne de recherche de mots-clés et apprenez à vous placez avec vos mots-clés !"
 
 #: admin/banner/class-admin-banner-sidebar.php:290
 msgid "Courses"

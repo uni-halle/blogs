@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Themes - Omega package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-01-14 06:45:49+0000\n"
+"PO-Revision-Date: 2017-05-17 02:00:10+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: ja_JP\n"
 "Project-Id-Version: Themes - Omega\n"
 
@@ -375,7 +375,7 @@ msgstr "コメント"
 
 #: lib/extensions/class-tgm-plugin-activation.php:3657
 msgid "All plugins installed and activated successfully. %s"
-msgstr "全てのプラグインのインストール・有効化が完了しました：%s"
+msgstr "すべてのプラグインのインストール・有効化が完了しました: %s"
 
 #: lib/extensions/class-tgm-plugin-activation.php:3654
 msgid "Activate installed plugin"

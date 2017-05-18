@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Responsive package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-02-20 00:46:14+0000\n"
+"PO-Revision-Date: 2017-05-17 02:11:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -592,7 +592,7 @@ msgstr "カスタムフロントページが有効化されています。<a hre
 
 #: core/includes/functions-admin.php:119
 msgid "All plugins installed and activated successfully. %s"
-msgstr "全てのプラグインのインストール・有効化が完了しました：%s"
+msgstr "すべてのプラグインのインストール・有効化が完了しました: %s"
 
 #: core/includes/functions-admin.php:106
 msgid "Something went wrong with the plugin API."

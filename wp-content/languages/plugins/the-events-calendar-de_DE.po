@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - The Events Calendar - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-05-07 11:23:06+0000\n"
+"PO-Revision-Date: 2017-05-15 21:40:44+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,7 +25,7 @@ msgstr "Veranstaltungseinstellungen importieren"
 
 #: src/admin-views/aggregator/settings.php:400
 msgid "When importing from a website that uses The Events Calendar, the REST API will attempt to fetch events this far in the future. That website's hosting resources may impact the success of imports. Selecting a shorter time period may improve results."
-msgstr "Beim Importieren von einer Website, die den Veranstaltungskalender verwendet, wird die REST-API versuchen, Ereignisse so weit wie möglich in der Zukunft abzurufen. Die Hosting-Ressourcen/-Performance der Website können den Erfolg der Importe beeinflussen. Die Auswahl eines kürzeren Zeitraums kann die Ergebnisse verbessern."
+msgstr "Beim Importieren von einer Website, die den Veranstaltungskalender verwendet, wird die REST API versuchen, Ereignisse so weit wie möglich in der Zukunft abzurufen. Die Hosting-Ressourcen/-Performance der Website können den Erfolg der Importe beeinflussen. Die Auswahl eines kürzeren Zeitraums kann die Ergebnisse verbessern."
 
 #: src/admin-views/aggregator/origins/url.php:84
 msgid "Enter the url for the calendar, website, or event you would like to import. Event Aggregator will attempt to import events at that location."
@@ -4372,7 +4372,7 @@ msgstr "Zeitzonen Einstellung"
 
 #: src/admin-views/tribe-options-timezones.php:10
 msgid "Click this button to update your database and take advantage of additional timezone capabilities. Please <a href=\"%s\" target=\"_blank\">configure WordPress</a> to use the correct timezone before clicking this button!"
-msgstr "Klicken Sie diesen Button, um die Datenbank zu aktualisieren und die Vorteile der zusätzlichen Zeitzonen Unterstützung zu nutzen. Bitte <a href=\"%s\" target=\"_blank\">konfigurieren Sie in WordPress</a> die korrekte Zeitzone, bevor Sie diesen Button anklicken!"
+msgstr "Klicken Sie diesen Button an, um mehrere Zeitzonen (u.a. im Formular für die Übermittlung von neuen Veranstaltungen) in Ihrem Kalender nutzen zu können. Bitte <a href=\"%s\" target=\"_blank\">konfigurieren Sie in WordPress</a> die korrekte Zeitzone, bevor Sie diesen Button anklicken!"
 
 #: src/admin-views/tribe-options-timezones.php:9
 msgid "Update Timezone Data"

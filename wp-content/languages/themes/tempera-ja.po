@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Tempera package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-03-12 14:58:31+0000\n"
+"PO-Revision-Date: 2017-05-17 00:08:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -398,10 +398,6 @@ msgstr[0] "プラグインの更新を開始する"
 msgid "The following plugin was activated successfully:"
 msgstr "以下のプラグインを有効化しました:"
 
-#: includes/tgm.php:45
-msgid "All plugins installed and activated successfully. %s"
-msgstr "全てのプラグインのインストール・有効化が完了しました：%s"
-
 #: includes/tgm.php:383
 msgid "Install Plugins"
 msgstr "プラグインのインストール"
@@ -409,6 +405,10 @@ msgstr "プラグインのインストール"
 #: includes/tgm.php:382
 msgid "Install Required Plugins"
 msgstr "必要なプラグインをインストールする"
+
+#: includes/tgm.php:45
+msgid "All plugins installed and activated successfully. %s"
+msgstr "すべてのプラグインのインストール・有効化が完了しました: %s"
 
 #. translators: 1: plugin name(s).
 #: includes/tgm.php:41 includes/tgm.php:425
