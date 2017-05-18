@@ -54,7 +54,7 @@ header a.header-center {
 	width: 68%;
 }
 
-header h1 {
+.site-title {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -773,7 +773,7 @@ header img {
 	opacity: .4;
 }
 
-.post-page-head-area.bauhaus h2.post-title {
+.post-page-head-area.bauhaus .post-title {
 	color: rgba(0,0,0,.8);
 	letter-spacing: -.02em;
 	font-size: 180%;
@@ -1137,7 +1137,7 @@ form#commentform label {
 	text-shadow: none;
 }
 
-.dark-post-head .post-page-head-area h2.post-title, .dark-post-head .post-page-head-area select, .dark-post-head .post-page-head-area .archive-text {
+.dark-post-head .post-page-head-area .post-title, .dark-post-head .post-page-head-area select, .dark-post-head .post-page-head-area .archive-text {
 	color: rgba(255,255,255,.9);
 }
 

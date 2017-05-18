@@ -16,7 +16,7 @@
 							<?php if ( comments_open() || wptouch_have_comments() ) comments_number( __( 'no comments', 'wptouch-pro' ), __( '1 comment', 'wptouch-pro' ), __( '% comments', 'wptouch-pro' ) ); ?>
 						<?php } ?>
 					</span>
-					<h2 class="post-title heading-font"><?php wptouch_the_title(); ?></h2>
+					<h1 class="post-title heading-font"><?php wptouch_the_title(); ?></h1>
 					<?php if ( bauhaus_should_show_author() ) { ?>
 						<span class="post-author"><?php the_author(); ?></span>
 					<?php } ?>

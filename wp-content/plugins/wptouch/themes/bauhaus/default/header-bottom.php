@@ -34,7 +34,7 @@
 			<?php if ( foundation_has_logo_image() ) { ?>
 				<img id="header-logo" src="<?php foundation_the_logo_image(); ?>" alt="logo image" />
 			<?php } else { ?>
-				<h1 class="heading-font"><?php wptouch_bloginfo( 'site_title' ); ?></h1>
+				<div class="heading-font site-title"><?php wptouch_bloginfo( 'site_title' ); ?></div>
 			<?php } ?>
 		</a>
 		<div id="menu-toggle" class="menu-btn tappable show-hide-toggle <?php if ( bauhaus_is_menu_position_default() ) { echo 'menu-left'; } else { echo 'menu-right'; } ?>" data-effect-target="menu" data-menu-target="menu" role="button"><!--icon-reorder--></div>

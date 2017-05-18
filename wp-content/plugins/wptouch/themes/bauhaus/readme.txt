@@ -1,8 +1,8 @@
 Theme Name: Bauhaus
 Theme URI: http://www.wptouch.com/themes/bauhaus
-Author: BraveNewCode Inc.
+Author: WPtouch
 Description: Clean, modern, functional design. Great for all types of WordPress sites.
-Version: 2.1
+Version: 2.2.1
 Depends on: 4.3
 Framework: 2.0
 Tags: smartphone
@@ -24,6 +24,14 @@ Bauhaus is one of our more flexible themes, and is designed to easily take on th
 9. http://wptouch-pro-4.s3.amazonaws.com/screenshots/bauhaus/2.0/9.jpg
 
 == Changelog ==
+
+= Version 2.2.1 =
+
+* Bug Fix: Addressed issue with titles not showing when header color was set to dark.
+
+= Version 2.2 =
+
+* SEO Improvement: Update page and post titles to <h1> tags. Change site title away from <h1> tag.
 
 = Version 2.1 =
 

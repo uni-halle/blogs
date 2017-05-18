@@ -342,6 +342,24 @@ function wptouch_render_compat_page( $page_options ) {
 		'wptouch_pro'
 	);
 
+	wptouch_add_page_section(
+		WPTOUCH_ADMIN_SETUP_COMPAT,
+		_x( 'Caching', 'caching services like Varnish can sometimes cause issues with WPtouch.', 'wptouch-pro' ),
+		'caching-compatibility',
+		array(
+			wptouch_add_pro_setting(
+				'checkbox',
+				'disable_no_cache_request_headers',
+				__( 'Stop sending "no cache" request headers for mobile site.', 'wptouch-pro' ),
+				wptouchize_it( __( 'By default WPtouch requests that mobile pages are not cached. This helps prevent the mobile site from being served to desktop users and the desktop site from being served to mobile users.', 'wptouch-pro' ) ),
+				WPTOUCH_SETTING_BASIC,
+				'4.3'
+			),
+		),
+		$page_options,
+		'wptouch_pro'
+	);
+
 	$page_options = apply_filters( 'wptouch_settings_compat', $page_options );
 
     if ( !defined( 'WPTOUCH_IS_FREE' ) ) {

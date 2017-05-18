@@ -258,6 +258,8 @@ class WPtouchProFour {
 		require_once( WPTOUCH_DIR . '/core/class-cache-smash.php' );
 		$this->cache_smash = new WPtouchCacheSmash;
 
+		require_once( WPTOUCH_DIR . '/core/cache.php' );
+
 		if ( is_admin() ) {
 			// New Admin panels
 			require_once( WPTOUCH_DIR . '/core/admin-load.php' );

@@ -59,6 +59,7 @@ class WPtouchDefaultSettings30 extends WPtouchSettings {
 		// Setup - Compatibility
 		$this->process_desktop_shortcodes = false;
 		$this->remove_shortcodes = '';
+		$this->disable_no_cache_request_headers = false;
 
 		$this->url_filter_behaviour = 'disabled';
 		$this->filtered_urls = '';
