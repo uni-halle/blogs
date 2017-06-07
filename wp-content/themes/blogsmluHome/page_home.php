@@ -144,14 +144,7 @@ get_header(); ?>
 					<li><h4>Projektverantwortlicher</h4></li>
 					<li>Robert J&auml;ckel</li>
 					<li><a class="email" href="mailto:blogs@urz.uni-halle.de" title="blogs@LMU-Team kontaktieren">blogs@urz.uni-halle.de</a></li>
-				</ul>
-				<ul>
-					<li><h4>Design</h4></li>
-					<li>Matthias Kretschmann</li>
-					<li><a class="url" href="http://kremalicious.com/blog" title="kremalicious Blog">Blog</a></li>
-					<li><a class="twitter" href="https://twitter.com/kremalicious" title="Twitter">Twitter</a></li>
-				</ul>
-	
+				</ul>	
 			</div>
 	
 		</div><!-- END #project -->
