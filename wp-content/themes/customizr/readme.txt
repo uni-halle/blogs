@@ -40,6 +40,39 @@ The exceptions to this license are as follows:
 
 
 #######################  Changelog ######################
+= 3.5.17 June 18th 2017 =
+* Fix: fix access to undefined tc_rectangular_size class property fixes #971
+* Fix: typo producing Class 'CZR__' not found in classical retro compat fixes #972
+* Imp: exclude helpblock elements from allowed dropcap elements
+
+= 3.5.16 June 17th 2017 =
+* Imp: improve deploying process to avoid headers already sent issues
+* Fix: missing front js custom events: tc-resize, partialRefresh.czr fixes #961
+
+= 3.5.15 June 14th 2017 =
+* Fix: single slide sliders must not be draggable fixes #941
+* Fix: fix menu center resulting aligned to the left on IE fixes #944
+* Fix: fix position of structural hook __before_main_container
+* Fix: fix fpc-container alignment when in #content
+* Fix: by default the loop model should not register the loop item model if 
+* Fix: remove old theme favicon control - is handled in js fixes #954
+* Fix: remove new lines at the end of czr_ classes fixes #957
+* Imp: improve classical grid CSS
+* Imp: fp and grid images always js centered
+* Add: modern-style - add related posts options for single post
+
+= 3.5.14 June 9th 2017 =
+* fix: use of the add_editor_style wp function : needs relative paths fixes #926
+* fix: php 5.2.* when trying to access to a static property of a class which is actually a variable. fixes #928
+* fix: menu style for users started after 3.4.0 is 'aside'
+* fix: fp in static front page not displaying first attachment as thumb
+* improved : add rtl class to the inline font style in the wp editor
+
+= 3.5.13 June 7th 2017 =
+* improved : update select2 plugin to version 4.0.3 the same we use in the customizer
+* improved : improve customizr post meta boxes. Do not add in post types which are not visibile in front. Fire actions when meta boxes are added so that we can enqueue related resources (js/css) only when needed by checking on did_action('relevant_action_hook')
+* added : php, css and js code for modern style design
+
 = 3.5.12 May 5th 2017 =
 * Fix: use wp_sprintf to avoid Warning sprintf(): Too few arguments. Fixes #875
 * Fix: fix header layout center - menu position deps in the customizer. Fixes #879

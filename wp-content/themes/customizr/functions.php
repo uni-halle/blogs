@@ -42,7 +42,8 @@
 */
 
 //Fire Customizr
-require_once( apply_filters( 'czr_init', get_template_directory() . '/inc/czr-init.php' ) );
+require_once( get_template_directory() . '/core/init-base.php' );
+
 
 /**
 * THE BEST AND SAFEST WAY TO EXTEND THE CUSTOMIZR THEME WITH YOUR OWN CUSTOM CODE IS TO CREATE A CHILD THEME.
