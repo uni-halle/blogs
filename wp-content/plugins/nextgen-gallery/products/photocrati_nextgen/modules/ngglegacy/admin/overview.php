@@ -287,16 +287,12 @@ function nggallery_admin_overview()
         <div id="pro" class="ngg-tab">
 
             <h2><?php _e( 'Upgrade to NextGEN Pro!' ); ?></h2>
-            <p class="about-text centered"><?php _e( 'Gorgeous new gallery displays, image protection, full screen lightbox, commenting and social sharing for individual images, proofing, ecommerce, digital downloads, and more. Take your galleries to the next level with the Plus and Pro extensions for NextGEN Gallery. ', 'nggallery' ); ?></p>
-            <h3 class="about-text centered"><?php _e( 'CLICK TO LEARN MORE:', 'nggallery' ); ?></h3>
-            <div class="feature-section two-col">
-                    <div class="col">
-                        <a href="https://www.imagely.com/wordpress-gallery-plugin/nextgen-plus/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/nextgen-plus-ngg.jpg"></a>
-                    </div>
-                    <div class="col">
-                        <a href="https://www.imagely.com/wordpress-gallery-plugin/nextgen-pro/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/nextgen-pro-ngg.jpg"></a>
-                    </div>
+            <p class="about-text centered"><span style="font-weight: bold;"><?php _e( 'The most powerful gallery system ever built for WordPress. ', 'nggallery' ); ?></span><br><?php _e( 'Gorgeous new gallery displays, image protection, full screen lightbox, commenting and social sharing for individual images, proofing, ecommerce, digital downloads, and more.', 'nggallery' ); ?></p>
+            <p class="about-text centered"><a href='https://www.imagely.com/wordpress-gallery-plugin/nextgen-pro/?utm_source=ngg&utm_medium=ngguser&utm_campaign=ngpro' target='_blank' class="button-primary"><?php _e( 'Get NextGEN Pro Now', 'nggallery' ); ?></a></p>
+            <div class="feature-section">
+                <iframe src="https://www.youtube.com/embed/zmA-b_jiXN0" frameborder="0" allowfullscreen></iframe>
             </div>
+
 
         </div>
 

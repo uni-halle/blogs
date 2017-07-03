@@ -92,6 +92,31 @@
 	font-size: 90%;
 	color: #666;
 }
+
+#pro.ngg-tab .button-primary {
+	background-color: #669933;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    padding: 12px 40px;
+    height: 50px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+#pro.ngg-tab .feature-section {
+	text-align: center;
+	margin-top: 50px;
+}
+
+#pro.ngg-tab .feature-section iframe {
+	width: 800px;
+	height: 450px;
+	max-width: 100%;
+}
+
+
+
 /* SETTING FOR FLASH UPLOAD BUTTON */
 .swfupload {
 	position:absolute;
@@ -202,6 +227,7 @@ p#ngg-inlinebutton {
 	margin-bottom: -2px;
 	position: relative;
 	bottom: 4px;
+	right: 0; /* Necessary for RTL languages */
 }
 
 #ngg-listimages .iedit,

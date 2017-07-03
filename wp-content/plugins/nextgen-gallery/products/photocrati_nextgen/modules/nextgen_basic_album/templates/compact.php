@@ -34,7 +34,7 @@
                 $max_width = '';
             } ?>
             <h4>
-                <a class='ngg-album-desc' <?php echo $anchor; echo $max_width; ?>><?php echo_safe_html($gallery->title); ?></a>
+                <a class='ngg-album-desc' <?php echo $anchor; echo $max_width; ?>><?php print wp_kses($gallery->title, M_I18N::get_kses_allowed_html()); ?></a>
             </h4>
             <p class="ngg-album-gallery-image-counter">
                 <?php if (isset($gallery->counter) && $gallery->counter > 0) { ?>

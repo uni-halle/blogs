@@ -104,7 +104,8 @@ class M_NextGen_Basic_Tagcloud extends C_Base_Module
                 'the_posts',
                 array(
                     C_Taxonomy_Controller::get_instance(),
-                    'detect_ngg_tag'),
+                    'detect_ngg_tag'
+                ),
                 -10,
                 2
             );

@@ -1210,8 +1210,8 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
             if ($image_id = $this->object->_image_mapper->save($image)) {
                 try {
                     // Try writing the image
-                    $fp = fopen($abs_filename, 'w');
-                    fwrite($fp, $data);
+                    $fp = fopen($abs_filename, 'wb');
+                    fwrite($fp, $this->maybe_base64_decode($data));
                     fclose($fp);
                     if ($settings->imgBackup) {
                         $this->object->backup_image($image);
@@ -1254,6 +1254,18 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
             @ini_set('memory_limit', $memory_limit . 'M');
         }
         return $retval;
+    }
+    function maybe_base64_decode($data)
+    {
+        $decoded = base64_decode($data);
+        if ($decoded === FALSE) {
+            return $data;
+        } else {
+            if (base64_encode($decoded) == $data) {
+                return base64_decode($data);
+            }
+        }
+        return $data;
     }
     function import_gallery_from_fs($abspath, $gallery_id = FALSE, $create_new_gallerypath = TRUE, $gallery_title = NULL, $filenames = array())
     {
@@ -2611,11 +2623,8 @@ class C_NextGen_Metadata extends C_Component
     function get_saved_meta($object = false)
     {
         $meta = $this->image->meta_data;
-        if (!isset($meta['saved'])) {
-            $meta['saved'] = FALSE;
-        }
-        //check if we already import the meta data to the database
-        if (!is_array($meta) || $meta['saved'] != true) {
+        // Check if we already import the meta data to the database
+        if (!is_array($meta) || !isset($meta['saved']) || $meta['saved'] !== TRUE) {
             return false;
         }
         // return one element if requested

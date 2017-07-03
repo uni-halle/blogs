@@ -202,7 +202,7 @@ class A_WordPress_Routing_App extends Mixin
     function passthru()
     {
         $router = C_Router::get_instance();
-        $_SERVER['ORIG_REQUEST_URI'] = $_SERVER['REQUEST_URI'];
+        $_SERVER['NGG_ORIG_REQUEST_URI'] = $_SERVER['REQUEST_URI'];
         $base_parts = parse_url($router->get_base_url('root'));
         $new_request_uri = $router->join_paths(!empty($base_parts['path']) ? $base_parts['path'] : '', $this->object->strip_param_segments($router->get_request_uri()));
         $new_request_uri = str_replace('index.php/index.php', 'index.php', $new_request_uri);

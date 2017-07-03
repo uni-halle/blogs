@@ -143,9 +143,9 @@ function insert_into_editor(snippet, ref_or_id)
 			jQuery(editor.selection.getNode()).attr('data-shortcode', snippet.substring(1, snippet.length-1));
 		}
 		else {
-			editor.insertContent(snippet);
+			editor.execCommand('mceInsertContent', false, snippet);
 		}
-		editor.selection.collapse(true);
+		editor.selection.collapse(false);
 
 	}
 	else {

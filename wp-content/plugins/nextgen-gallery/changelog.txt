@@ -1,6 +1,33 @@
 NextGEN Gallery
 by Imagely
 
+= V2.2.10 - 06.14.2017 =
+* Fixed:   Ensure that the plugin works when PHP isn't compiled against libxml
+
+= V2.2.9 - 06.14.2017 =
+* Fixed:   WSOD caused by setting $wp_query->is_page to false
+
+= V2.2.8 - 06.13.2017 =
+* Changed: Removed custom Freemius opt-in message
+* Changed: New design and video for Upgrade to Pro page
+* Changed: Added namespacing to NGG-generated transients
+* Fixed:   Better error reporting for the XML-RPC method, ngg.uploadImage
+* Fixed:   Thumbnail editing links missing when locale uses RTL language such as Hebrew
+* Fixed:   Roles and Capabilities discrepancy with displaying NextGEN Gallery UI elements
+* Fixed:   Fancybox lightbox effect not compatible with Pro Mosaic galleries
+* Fixed:   Basic Tagcloud does not honor display type setting when editing in IGW
+* Fixed:   Basic Tagcloud allows selection of Pro display types when NGG Pro is disabled
+* Fixed:   Limit display types available in "Display galleries as" setting for albums
+* Fixed:   Special characters in `show_slideshow_text` parameter causing inserted display to not be editable.
+* Fixed:   NGG Basic Slideshow not honoring transition effect setting
+* Fixed:   Image tags that are no longer should be removed
+* Fixed:   Spacing preserved when our shortcodes are placed with other content
+* Fixed:   Breadcrumbs in albums when slug is shared between gallery and album
+* Fixed:   get_unique_slug() creating invalid SQL query when gallery name contains quote characters
+* Fixed:   /ngg_tags pages displaying comments from all posts
+* Fixed:   PHP warning when saving image meta data
+* Fixed:   Fix incompatibility with WPML pagination due to overriding $_SERVER['REQUEST_URI']
+
 = V2.2.3 - 04.05.2017 =
 * Fixed:    E_WARNING on Gallery Settings page due to improper use of array_combine() on PHP <= 5.3
 
@@ -257,7 +284,7 @@ by Imagely
 * Fixed:   Adjusted album-compact template to always include p.ngg-album-gallery-image-counter
 * Fixed:   Replaced empty gallery rendering in is_feed() with a link
 * Fixed:   Removed default settings for imagerotator, which is no longer supported
-* Fixed:   Optimizated scanning of images when importing a gallery
+* Fixed:   Optimized scanning of images when importing a gallery
 * Fixed:   When a gallery is deleted, ensure that DB and filesystem are purged
 * Fixed:   Removed Insert Gallery Window box shadow
 * Fixed:   Ensure that file_exists() calls are prefixed with @
@@ -779,7 +806,7 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 = V1.9.13 - 06.11.2013 =
 * NEW:     Slideshows are now centered to their content area     
 * Secured: Ensure that only logged in users can upload images
-* Fixed:   Import date is presered are no longer Jan 1 1970
+* Fixed:   Import date is preserved are no longer Jan 1 1970
 * Fixed:   Removed mention of upgrade.php, which no longer exists
 
 = V1.9.12 - 02.15.2013 =

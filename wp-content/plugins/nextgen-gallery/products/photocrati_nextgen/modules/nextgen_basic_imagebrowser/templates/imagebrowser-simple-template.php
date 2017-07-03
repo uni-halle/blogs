@@ -56,7 +56,7 @@
 
         <div class='ngg-imagebrowser-desc'>
             <p>
-                <?php echo $image->description; ?>
+                <?php print wp_kses($image->description, M_I18N::get_kses_allowed_html()); ?>
             </p>
         </div>
 

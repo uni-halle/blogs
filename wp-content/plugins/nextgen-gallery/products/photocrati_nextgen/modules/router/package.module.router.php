@@ -215,8 +215,8 @@ class Mixin_Router extends Mixin
      */
     function get_request_uri($with_params = TRUE)
     {
-        if (!empty($_SERVER['ORIG_REQUEST_URI'])) {
-            $retval = $_SERVER['ORIG_REQUEST_URI'];
+        if (!empty($_SERVER['NGG_ORIG_REQUEST_URI'])) {
+            $retval = $_SERVER['NGG_ORIG_REQUEST_URI'];
         } elseif (!empty($_SERVER['PATH_INFO'])) {
             $retval = $_SERVER['PATH_INFO'];
         } else {

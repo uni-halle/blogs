@@ -7,6 +7,8 @@
 class A_NextGen_API_Ajax extends Mixin
 {
     var $nextgen_api = NULL;
+    var $_nextgen_api_locked = false;
+    var $_shutdown_registered = false;
     function get_nextgen_api()
     {
         if (is_null($this->nextgen_api)) {
@@ -105,7 +107,7 @@ class A_NextGen_API_Ajax extends Mixin
                             break;
                         case 'gallery_remove':
                         case 'gallery_edit':
-                            $query_id = $api->get_query_id($task_query['id']);
+                            $query_id = $api->get_query_id($task_query['id'], $task_list);
                             $gallery = null;
                             // The old NextGEN XMLRPC API had this logic so replicating it here for safety
                             if ($query_id) {
@@ -137,13 +139,26 @@ class A_NextGen_API_Ajax extends Mixin
                     $task_item['auth'] = $task_auth ? 'allow' : 'forbid';
                 }
                 if ($task_count == $auth_count) {
-                    $job_id = $api->add_job(array('user' => $user_obj->ID), $app_config, $task_list);
+                    $job_id = $api->add_job(array('user' => $user_obj->ID, 'clientid' => $this->object->param('clientid')), $app_config, $task_list);
                     if ($job_id != null) {
+                        $post_back = $api->get_job_post_back($job_id);
                         $handler_delay = defined('NGG_API_JOB_HANDLER_DELAY') ? intval(NGG_API_JOB_HANDLER_DELAY) : 0;
                         $handler_delay = $handler_delay > 0 ? $handler_delay : 30;
                         /* in seconds */
                         $response['result'] = 'ok';
-                        $response['result_object'] = array('job_id' => $job_id, 'job_handler_url' => home_url('/photocrati_ajax?action=execute_nextgen_api_task_list'), 'job_handler_delay' => $handler_delay);
+                        $response['result_object'] = array('job_id' => $job_id, 'job_post_back' => $post_back, 'job_handler_url' => home_url('?photocrati_ajax=1&action=execute_nextgen_api_task_list'), 'job_handler_delay' => $handler_delay);
+                        if (!defined('NGG_API_SUPPRESS_QUICK_EXECUTE') || NGG_API_SUPPRESS_QUICK_EXECUTE == false) {
+                            if (!$api->is_execution_locked()) {
+                                $this->_start_locked_execute();
+                                $result = $api->handle_job($job_id, $api->get_job_data($job_id), $app_config, $api->get_job_task_list($job_id));
+                                if ($result) {
+                                    $response['result_object']['job_result'] = $api->get_job_task_list($job_id);
+                                    // everything was finished, remove job
+                                    $api->remove_job($job_id);
+                                }
+                                $this->_stop_locked_execute();
+                            }
+                        }
                     } else {
                         $response['result'] = 'error';
                         $response['error'] = array('code' => C_NextGen_API::ERR_JOB_NOT_ADDED, 'message' => __('Job could not be added.', 'nggallery'));
@@ -162,6 +177,28 @@ class A_NextGen_API_Ajax extends Mixin
         }
         return $response;
     }
+    function _do_shutdown()
+    {
+        if ($this->_nextgen_api_locked) {
+            $this->get_nextgen_api()->set_execution_locked(false);
+        }
+    }
+    function _start_locked_execute()
+    {
+        $api = $this->get_nextgen_api();
+        if (!$this->_shutdown_registered) {
+            register_shutdown_function(array($this, '_do_shutdown'));
+            $this->_shutdown_registered = true;
+        }
+        $api->set_execution_locked(true);
+        $this->_nextgen_api_locked = true;
+    }
+    function _stop_locked_execute()
+    {
+        $api = $this->get_nextgen_api();
+        $api->set_execution_locked(false);
+        $this->_nextgen_api_locked = false;
+    }
     function execute_nextgen_api_task_list_action()
     {
         $api = $this->get_nextgen_api();
@@ -172,25 +209,36 @@ class A_NextGen_API_Ajax extends Mixin
             $response['info'] = array('code' => C_NextGen_API::INFO_EXECUTION_LOCKED, 'message' => __('Job execution is locked.', 'nggallery'));
         } else {
             if ($job_list != null) {
-                $api->set_execution_locked(true);
+                $this->_start_locked_execute();
                 $job_count = count($job_list);
                 $done_count = 0;
+                $client_result = array();
                 foreach ($job_list as $job) {
-                    $result = $api->handle_job($job['id'], $job['data'], $job['app_config'], $job['task_list']);
+                    $job_id = $job['id'];
+                    $job_data = $job['data'];
+                    $result = $api->handle_job($job_id, $job_data, $job['app_config'], $job['task_list']);
                     if ($result) {
                         $done_count++;
+                        if (isset($job_data['clientid']) && $job_data['clientid'] == $this->object->param('clientid')) {
+                            $client_result[$job_id] = $api->get_job_task_list($job_id);
+                        }
+                        // everything was finished, remove job
+                        $api->remove_job($job_id);
                     }
                     if ($api->should_stop_execution()) {
                         break;
                     }
                 }
-                $api->set_execution_locked(false);
+                $this->_stop_locked_execute();
                 if ($done_count == $job_count) {
                     $response['result'] = 'ok';
                     $response['info'] = array('code' => C_NextGen_API::INFO_JOB_LIST_FINISHED, 'message' => __('Job list is finished.', 'nggallery'));
                 } else {
                     $response['result'] = 'ok';
                     $response['info'] = array('code' => C_NextGen_API::INFO_JOB_LIST_UNFINISHED, 'message' => __('Job list is unfinished.', 'nggallery'));
+                }
+                if (!defined('NGG_API_SUPPRESS_QUICK_SUMMARY') || NGG_API_SUPPRESS_QUICK_SUMMARY == false) {
+                    $response['result_object'] = $client_result;
                 }
             } else {
                 $response['result'] = 'ok';
@@ -207,7 +255,7 @@ class A_NextGen_API_Ajax extends Mixin
 class C_NextGen_API extends C_Component
 {
     const CRON_KEY = 'nextgen.api.task_list';
-    /* NOTE: these constants' numeric values are used elsewhere, don't change the values */
+    /* NOTE: these constants' numeric values MUST remain the same, do NOT change the values */
     const ERR_NO_TASK_LIST = 1001;
     const ERR_NOT_AUTHENTICATED = 1002;
     const ERR_NOT_AUTHORIZED = 1003;
@@ -224,7 +272,7 @@ class C_NextGen_API extends C_Component
     public static function get_instance($context = false)
     {
         if (!isset(self::$_instances[$context])) {
-            self::$_instances[$context] = new self($context);
+            self::$_instances[$context] = new C_NextGen_API($context);
         }
         return self::$_instances[$context];
     }
@@ -275,7 +323,7 @@ class C_NextGen_API extends C_Component
         while (isset($job_list[$job_id])) {
             $job_id = uniqid();
         }
-        $job = array('id' => $job_id, 'data' => $job_data, 'app_config' => $app_config, 'task_list' => $task_list);
+        $job = array('id' => $job_id, 'post_back' => array('token' => md5($job_id)), 'data' => $job_data, 'app_config' => $app_config, 'task_list' => $task_list);
         $job_list[$job_id] = $job;
         update_option('ngg_api_job_list', $job_list);
         return $job_id;
@@ -330,11 +378,11 @@ class C_NextGen_API extends C_Component
         }
         return false;
     }
-    function get_job_status_file($job_id)
+    function get_job_post_back($job_id)
     {
         $job = $this->get_job($job_id);
         if ($job != null) {
-            return $job['task_list'];
+            return $job['post_back'];
         }
         return null;
     }
@@ -407,7 +455,7 @@ class C_NextGen_API extends C_Component
         $task_id = $id;
         if (is_object($task_id) || is_array($task_id)) {
             $id = null;
-            // it was specified that the query ID is referencing the result from another task
+            // it was specified that the query ID is referencing the query ID from another task
             if (isset($task_id['target']) && $task_id['target'] == 'task') {
                 if (isset($task_id['id']) && isset($task_list[$task_id['id']])) {
                     $target_task = $task_list[$task_id['id']];
@@ -437,6 +485,7 @@ class C_NextGen_API extends C_Component
         }
         return $id;
     }
+    // Note: handle_job only worries about processing the job, it does NOT remove finished jobs anymore, the responsibility is on the caller to remove the job when handle_job returns true, this is to allow calling get_job_*() methods after handle_job has been called
     function handle_job($job_id, $job_data, $app_config, $task_list)
     {
         $job_user = $job_data['user'];
@@ -468,7 +517,12 @@ class C_NextGen_API extends C_Component
             $wp_fs = $GLOBALS['wp_filesystem'];
             $path_prefix = $full_path;
             if ($wp_fs->method === 'direct') {
-                $path_prefix = str_replace($ftp_path, $root_path, $full_path);
+                if (trim($ftp_path, " \t\n\r\v\\") == '') {
+                    // Note: if ftp_path is empty, we assume the FTP account home dir is on wp-content
+                    $path_prefix = $root_path . $full_path;
+                } else {
+                    $path_prefix = str_replace($ftp_path, $root_path, $full_path);
+                }
             }
         }
         foreach ($task_list as &$task_item) {
@@ -830,8 +884,7 @@ class C_NextGen_API extends C_Component
             // unfinished tasks, return false
             return false;
         } else {
-            // everything was finished, remove job and write status file
-            $this->remove_job($job_id);
+            // everything was finished, write status file
             $status_file = '_ngg_job_status_' . strval($job_id) . '.txt';
             $status_content = json_encode($task_list);
             if ($wp_fs != null) {
@@ -863,7 +916,7 @@ class C_NextGen_API_XMLRPC extends C_Component
     public static function get_instance($context = false)
     {
         if (!isset(self::$_instances[$context])) {
-            self::$_instances[$context] = new self($context);
+            self::$_instances[$context] = new C_NextGen_API_XMLRPC($context);
         }
         return self::$_instances[$context];
     }
@@ -1012,7 +1065,7 @@ class C_NextGen_API_XMLRPC extends C_Component
      *
      * Data is an assoc array:
      *			  o string name
-     *			o string type (optional)
+     *			  o string type (optional)
      *			  o base64 bits
      *			  o bool overwrite (optional)
      *			  o int gallery
@@ -1033,6 +1086,9 @@ class C_NextGen_API_XMLRPC extends C_Component
         if (!isset($data['overwrite'])) {
             $data['overwrite'] = FALSE;
         }
+        if (!isset($data['image_id'])) {
+            $data['image_id'] = FALSE;
+        }
         $data['override'] = $data['overwrite'];
         // Authenticate the user
         if ($this->_login($username, $password, $blog_id)) {
@@ -1043,22 +1099,27 @@ class C_NextGen_API_XMLRPC extends C_Component
                 if ($this->_can_manage_gallery($gallery, TRUE)) {
                     // Upload the image
                     $storage = C_Gallery_Storage::get_instance();
-                    $image = $storage->upload_base64_image($gallery, $data['bits'], $data['name'], $data['image_id'], $data['override']);
-                    if ($image) {
-                        $storage = C_Gallery_Storage::get_instance();
-                        $image->imageURL = $storage->get_image_url($image);
-                        $image->thumbURL = $storage->get_thumb_url($image);
-                        $image->imagePath = $storage->get_image_abspath($image);
-                        $image->thumbPath = $storage->get_thumb_abspath($image);
-                        $retval = $image->get_entity();
-                    } else {
-                        $retval = new IXR_Error(500, "Could not upload image");
+                    try {
+                        $image = $storage->upload_base64_image($gallery, $data['bits'], $data['name'], $data['image_id'], $data['override']);
+                        if ($image) {
+                            $storage = C_Gallery_Storage::get_instance();
+                            $image->imageURL = $storage->get_image_url($image);
+                            $image->thumbURL = $storage->get_thumb_url($image);
+                            $image->imagePath = $storage->get_image_abspath($image);
+                            $image->thumbPath = $storage->get_thumb_abspath($image);
+                            $retval = $image->get_entity();
+                        } else {
+                            $retval = new IXR_Error(500, "Could not upload image");
+                        }
+                    } catch (Exception $exception) {
+                        $retval = new IXR_Error(500, 'Could not upload image: ' . $exception->getMessage());
                     }
                 } else {
-                    $retval = new IXR_Error(403, "You don't have permission to upload to gallery #{$image->galleryid}");
+                    $retval = new IXR_Error(403, "You don't have permission to upload to gallery #{$gallery_id}");
                 }
             } else {
-                $retval = new IXR_Error(404, "Gallery not found (with id #{$image->gallerid}");
+                // No gallery found
+                $retval = new IXR_Error(404, "Gallery not found (with id #{$gallery_id}");
             }
         }
         return $retval;

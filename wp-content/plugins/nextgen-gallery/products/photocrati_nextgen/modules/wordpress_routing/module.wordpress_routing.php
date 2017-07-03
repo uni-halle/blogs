@@ -54,9 +54,9 @@ class M_WordPress_Routing extends C_Base_Module
      */
     function restore_request_uri()
 	{
-		if (isset($_SERVER['ORIG_REQUEST_URI']))
+		if (isset($_SERVER['NGG_ORIG_REQUEST_URI']))
         {
-            $request_uri = $_SERVER['ORIG_REQUEST_URI'];
+            $request_uri = $_SERVER['NGG_ORIG_REQUEST_URI'];
             $_SERVER['UNENCODED_URL'] = $_SERVER['HTTP_X_ORIGINAL_URL'] = $_SERVER['REQUEST_URI'] = $request_uri;
 
             if (isset($_SERVER['ORIG_PATH_INFO'])) {

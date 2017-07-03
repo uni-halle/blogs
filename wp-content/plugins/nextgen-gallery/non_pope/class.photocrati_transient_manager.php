@@ -139,7 +139,8 @@ class C_Photocrati_Transient_Manager
 		if (is_string($group) && !empty($group))
         {
 			global $wpdb;
-			$query = "DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient%' AND option_name LIKE '%{$this->get_group_id($group)}__%'";
+			// Note: The wildcard % matches any number of characters, _ matches a single character and should be escaped
+			$query = "DELETE FROM {$wpdb->options} WHERE option_name LIKE '\_transient%' AND option_name LIKE '%{$this->get_group_id($group)}\_\_%'";
 			$wpdb->query($query);
 			$this->delete_tracked($group);
 		}

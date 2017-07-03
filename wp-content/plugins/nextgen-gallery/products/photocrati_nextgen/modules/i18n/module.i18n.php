@@ -20,7 +20,7 @@ class M_I18N extends C_Base_Module
             'photocrati-i18n',
             'Internationalization',
             "Adds I18N resources and methods",
-            '0.3',
+            '0.4',
             'https://www.imagely.com/languages/',
             'Imagely',
             'https://www.imagely.com'
@@ -333,6 +333,26 @@ class M_I18N extends C_Base_Module
         $path = preg_replace("/[^ ]/u", $separator . "\$0" . $separator, $path);
         $base = basename($path);
         return str_replace($separator, "", $base);
+    }
+
+    static public function get_kses_allowed_html()
+    {
+        global $allowedtags;
+
+        $our_keys = array(
+            'a'      => array('href'  => array(),
+                              'class' => array(),
+                              'title' => array()),
+            'br'     => array(),
+            'em'     => array(),
+            'strong' => array(),
+            'u'      => array(),
+            'p'      => array('class' => array()),
+            'div'    => array('class' => array(), 'id' => array()),
+            'span'   => array('class' => array(), 'id' => array())
+        );
+
+        return array_merge_recursive($allowedtags, $our_keys);
     }
 
     function get_type_list()

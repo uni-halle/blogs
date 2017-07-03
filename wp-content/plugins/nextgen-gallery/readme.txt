@@ -2,8 +2,8 @@
 Contributors: photocrati, imagely
 Tags: wordpress gallery plugin, gallery, nextgen, nextgen gallery, photo gallery, image gallery, photography, slideshow, images, photo, photo album, watermark
 Requires at least: 4.0.0
-Stable tag: 2.2.3
-Tested up to: 4.7.3
+Stable tag: 2.2.10
+Tested up to: 4.8.0
 License: GPLv2
 
 The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 17 million downloads.
@@ -12,21 +12,21 @@ The most popular WordPress gallery plugin and one of the most popular plugins of
 
 = WordPress Gallery Plugin =
 
-NextGEN Gallery has been the industry's standard **WordPress gallery plugin** since 2007 and continues to receive over 1.5 million new downloads per year. It's great for general use, but powerful enough for the most demanding photographers, visual artists, and imaging professionals.
+NextGEN Gallery has been the industry's standard **WordPress gallery plugin** since 2007 and continues to receive over 1.5 million new downloads per year. It's easy for simple photo galleries, but powerful enough for the most demanding photographers, visual artists, and imaging professionals.
 
-On the back end, NextGEN offers a complete WordPress gallery management system with the ability to batch upload, import meta data, add/delete/rearrange/sort images, edit thumbnails, group galleries into albums, and more.
+On the back end, NextGEN offers a complete WordPress gallery management system with the ability to batch upload photos, import meta data, add/delete/rearrange/sort photos, edit thumbnails, group galleries into albums, and more.
 
-On the front end, the free version of NextGEN provides two main display styles (slideshows and thumbnail galleries) and two album styles (compact and extended), all of which come with a wide array of options for controlling size, style, timing, transitions, controls, lightbox effects, and more.
+On the front end, the free version of NextGEN provides two main gallery display styles (slideshows and thumbnail galleries) and two album styles (compact and extended), all of which come with a wide array of options for controlling size, style, timing, transitions, controls, lightbox effects, and more.
 
 Learn more about <a href="https://www.imagely.com/wordpress-gallery-plugin/" target="_blank">NextGEN WordPress Gallery Plugin features.</a>
 
 **Demos**<br>
 *<a href="https://www.imagely.com/wordpress-gallery-plugin/basic-thumbnail-gallery/" target="_blank">Basic Thumbnail Gallery Demo</a><br>
-*<a href="https://www.imagely.com/wordpress-gallery-plugin/basic-slideshow-gallery/" target="_blank">Basic Slideshow Demo</a><br>
+*<a href="https://www.imagely.com/wordpress-gallery-plugin/basic-slideshow-gallery/" target="_blank">Basic Slideshow Gallery Demo</a><br>
 *<a href="https://www.imagely.com/wordpress-gallery-plugin/basic-compact-album/" target="_blank">Basic Compact Album</a><br>
 *<a href="https://www.imagely.com/wordpress-gallery-plugin/basic-extended-album/" target="_blank">Basic List Album</a><br>
 
-**INTRODUCING NEXTGEN GALLERY PRO.** NextGEN Plus and NextGEN Pro are premium WordPress gallery plugin extensions for NextGEN Gallery that add new gallery displays, lightboxes, ecommerce, proofing, and pro support. Learn more about <a href="https://www.imagely.com/wordpress-gallery-plugin/" target="_blank">NextGEN Plus and NextGEN Pro plugin features.</a>
+**INTRODUCING NEXTGEN GALLERY PRO.** NextGEN Plus and NextGEN Pro are premium WordPress gallery plugin extensions for NextGEN Gallery that add new photo gallery displays, lightboxes, ecommerce, proofing, and pro support. Learn more about <a href="https://www.imagely.com/wordpress-gallery-plugin/" target="_blank">NextGEN Plus and NextGEN Pro photo plugin features.</a>
 
 **Demos**<br>
 *<a href="https://www.imagely.com/wordpress-gallery-plugin/pro-mosaic-gallery/" target="_blank">Pro Mosaic Gallery</a><br>
@@ -63,7 +63,7 @@ Imagely 2016
 Photocrati Media 2012-2016<br>
 Alex Rabe 2007-2011
 
-This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+This program is free software. You can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
@@ -71,9 +71,9 @@ You should have received a copy of the GNU General Public License along with thi
 
 == Installation ==
 
-INSTALLATION: The easiest way to enjoy NextGEN Gallery is to login to you WordPress dashboard, go to Plugins >> Add New, search for NextGEN Gallery, and click to install. You can also download the zip file from this page and upload it from the Plugins >> Add New > Upload page.
+INSTALLATION: The easiest way to start uploading your photos is to login to you WordPress dashboard, go to Plugins >> Add New, search for NextGEN Gallery, and click to install. You can also download the zip file from this page and upload it from the Plugins >> Add New > Upload page.
 
-HOW TO USE: Just go to a page or post and click the NextGEN Gallery icon. From our Attach to Post interface, you can create, manage, customize, and display your galleries. You can also manage your galleries and gallery settings from the central options area under the "Gallery" tab on your dashboard menu.
+HOW TO USE: Just go to a page or post and click the NextGEN Gallery icon. From our Insert Gallery Window, you can create, manage, customize, and display your photo galleries. You can also manage your photo galleries and gallery settings from the central options area under the "Gallery" tab on your dashboard menu.
 
 DOCUMENTATION: See <a href="https://www.imagely.com/docs/nextgen-gallery/" target="_blank">NextGEN Gallery Documentation</a>.
 
@@ -95,7 +95,7 @@ https://www.youtube.com/watch?v=qwNr5ZNGavo
 
 == Shortcode ==
 
-NextGEN Gallery 2.x introduces our new Attach to Post interface, which means you never need to work with shortcodes again if you would prefer not too.
+NextGEN Gallery 2.x introduces our new Insert Gallery Window, which means you never need to work with shortcodes again if you would prefer not too.
 
 If you do want to work with shortcodes, we've also introduce a new, more powerful, and more flexible shortcode system with NextGEN Gallery 2.0.
 
@@ -106,7 +106,7 @@ For more information, feel free to visit the official website for the NextGEN Ga
 == Frequently Asked Questions ==
 
 
-= Why are my galleries not opening up in a lightbox after I move my site? =
+= Why are my photo galleries not opening up in a lightbox after I move my site? =
 
 This is often due to the URL paths to the CSS and JavaScript files used by the Lightbox Effects not being changed to relevant addresses based on the new site. This article will help sort out this issue if that is the case: <a href="https://www.imagely.com/docs/galleries-opening-lightbox/" target="_blank">Why are my galleries not opening up in a lightbox?</a>.
 
@@ -120,32 +120,32 @@ Yes. See <a href="https://www.imagely.com/docs/nextgen-gallery/" target="_blank"
 Part of what makes the NextGEN Gallery WordPress gallery plugin so popular is its flexibility - it works with the vast majority of premium and free themes, without requiring any coding.
 
 
-= Are the galleries flash based? =
+= Are the photo galleries flash based? =
 
-No, NextGEN Gallery uses Javascript (J-Query) based displays to ensure compatibility across the widest range of displays possible.
+No, NextGEN Gallery uses Javascript and jQuery based displays to ensure compatibility across the widest range of displays possible.
 
 
 = Are the galleries mobile friendly? =
 
-Yes, since we use Javascript rather than flash, NextGEN Gallery is compatible with Android, iOS, and Blackberry. As of July 2013, all galleries are responsive. NextGEN Pro also includes a full screen, responsive Pro Lightbox with mobile gesture support.
+Yes, since we use Javascript rather than flash, NextGEN Gallery is compatible with Android, iOS, and Blackberry. As of July 2013, all photo galleries are responsive. NextGEN Pro also includes a full screen, responsive Pro Lightbox with mobile gesture support.
 
 
 = What is the difference between a gallery and an album? =
 
-In the simplest of terms, Galleries contain your images and Albums contain your Galleries. Albums act as links and placeholders to quickly and easily navigate your galleries - Galleries will actually display your images.
+In the simplest of terms, Galleries contain your photos and Albums contain your Galleries. Albums act as links and placeholders to quickly and easily navigate your galleries - Galleries will actually display your images.
 
 
 = Can I upload multiple images at once? =
 
-Yes, you can batch upload entire galleries at a time.
+Yes, you can batch upload entire photo galleries at one time.
 
 
 = Can I password protect galleries? =
 
-Yes, WordPress allows you to password protect pages by default - which includes all galleries and content for the entire page. Password protection of pages can be turned on and off at any time, with just a few clicks.
+Yes, WordPress allows you to password protect pages by default - which includes all photo galleries and content for the entire page. Password protection of pages can be turned on and off at any time, with just a few clicks.
 
 
-= Can I add a watermark to the images/slideshows? =
+= Can I add a watermark to the photos/slideshows? =
 
 Yes, you can add text or image watermarks to your gallery images.
 
@@ -155,7 +155,7 @@ Yes, you can add text or image watermarks to your gallery images.
 Yes, each thumbnail image can be individually adjusted to suit your needs.
 
 
-= Is there pagination for galleries? =
+= Is there pagination for photo galleries? =
 
 Yes, and you can adjust the amount of images to be shown on a page at any time.
 
@@ -187,37 +187,64 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 == Changelog ==
 
+= V2.2.10 - 06.14.2017 =
+* Fixed:   Ensure that the plugin works when PHP isn't compiled against libxml
+
+= V2.2.9 - 06.14.2017 =
+* Fixed:   WSOD caused by setting $wp_query->is_page to false
+
+= V2.2.8 - 06.13.2017 =
+* Changed: Removed custom Freemius opt-in message
+* Changed: New design and video for Upgrade to Pro page
+* Changed: Added namespacing to NGG-generated transients
+* Fixed:   Better error reporting for the XML-RPC method, ngg.uploadImage
+* Fixed:   Thumbnail editing links missing when locale uses RTL language such as Hebrew
+* Fixed:   Roles and Capabilities discrepancy with displaying NextGEN Gallery UI elements
+* Fixed:   Fancybox lightbox effect not compatible with Pro Mosaic galleries
+* Fixed:   Basic Tagcloud does not honor display type setting when editing in IGW
+* Fixed:   Basic Tagcloud allows selection of Pro display types when NGG Pro is disabled
+* Fixed:   Limit display types available in "Display galleries as" setting for albums
+* Fixed:   Special characters in `show_slideshow_text` parameter causing inserted display to not be editable.
+* Fixed:   NGG Basic Slideshow not honoring transition effect setting
+* Fixed:   Image tags that are no longer should be removed
+* Fixed:   Spacing preserved when our shortcodes are placed with other content
+* Fixed:   Breadcrumbs in albums when slug is shared between gallery and album
+* Fixed:   get_unique_slug() creating invalid SQL query when gallery name contains quote characters
+* Fixed:   /ngg_tags pages displaying comments from all posts
+* Fixed:   PHP warning when saving image meta data
+* Fixed:   Fix incompatibility with WPML pagination due to overriding $_SERVER['REQUEST_URI']
+
 = V2.2.3 - 04.05.2017 =
 * Fixed:    E_WARNING on Gallery Settings page due to improper use of array_combine() on PHP <= 5.3
 
 = V2.2.2 -  04.04.2017 =
-* Fixed:    Hyperlinks in image descriptions
+* Fixed:    Hyperlinks in image or photo descriptions
 * Fixed:    WordPress SEO sitemap image count
 * Fixed:    Removed id parameter in shortcodes
 * Fixed:    Fatal error in Freemius code
 
 = V2.2.1 - 03.13.2017 =
-* NEW:      Template mechanism for all display types
+* NEW:      Template mechanism for all gallery types
 * NEW:      Review notices
-* Changed:  Updated branding to Imagely
+* Changed:  Updated gallery plugin branding to Imagely
 * Changed:  Added the ability to click on a gallery title and have it open direct to Pro Lightbox
 * Fixed:    Problems with activation after initial installation
 * Fixed:    Don't display legacy shortcodes after creating new galleries
-* Fixed:    false positive malware detection notices against 'eval'
+* Fixed:    False positive malware detection notices against 'eval'
 * Fixed:    Various PHP notices and warnings
-* Fixed:    Issue with dynamic container height for Imagebrowser display types
+* Fixed:    Issue with dynamic container height for Imagebrowser photo galleries
 
 = V2.1.79 - 02.23.2017 =
-* Secured: Resolved vulnerability with tag cloud displays
+* Secured: 	Resolved vulnerability with tag cloud galleries
 
 = V2.1.77 - 01.31.2017 =
 * Changed:  Corrected Facebook link
 * Changed:  Tags in readme.txt
-* Fixed:    Problem with deactivating other plugin
+* Fixed:    Problem deactivating other plugins
 
 = V2.1.69 - 01.18.2017 =
 * Fixed:    Ensured compatibility with WordPress 4.7.1
-* Fixed:    Missing option names on setting pages when Wizard active
+* Fixed:    Missing option names on setting pages when Gallery Wizard active
 * Fixed:    Ensure that NextGEN Gallery is always loaded after it's extension plugins in WP 4.7
 * Fixed:    Pope product uninstaller not running during activation
 
@@ -226,7 +253,7 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Fixed:   The ability to dismiss the gallery wizard notice
 
 = V2.1.61 - 12.14.2016 =
-* NEW:     Gallery creation wizard for new users
+* NEW:     Photo gallery creation wizard for new users
 * Fixed:   Shortcodes in widgets not getting substituted in Divi
 * Fixed:   Ensure that NGG placeholder text doesn't get styled incorrectly by other themes
 * Fixed:   Various thickbox issues on custom post type pages
@@ -239,12 +266,12 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Secured: Ability to customize CSS Styles
 * Changed: readme.txt improvements
 * Fixed:   Compatibility with WordPress 4.7.0
-* Fixed:   IGW-inserted tagclouds are incorrect
+* Fixed:   IGW-inserted tagcloud galleries are incorrect in some cases
 
 = V2.1.57 - 11.14.2016 =
 * Secured: Custom Styles may only be written to specific directories
 * Secured: SQL injection vulnerability for gallery names
-* Changed: Display type icons are now clickable in the Insert Gallery Window
+* Changed: Gallery type icons are now clickable in the Insert Gallery Window
 * Changed: Include backup image files when coping/moving a gallery
 * Changed: Show gallery name in upload notification
 * Changed: Added placeholder text to gallery name field on Add Gallery / Upload Images page
@@ -255,7 +282,7 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Fixed:   Conflict with Easy Digital Downloads
 * Fixed:   Misc invalid HTML tags in admin pages (thanks to kniebremser)
 * Fixed:   Change display:hidden to visibility:hidden in various places
-* Fixed:   Escaping of quotes in gallery titles and urls
+* Fixed:   Escaping of quotes in photo gallery titles and urls
 * Fixed:   Untranslatable strings
 
 
@@ -264,12 +291,12 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 = V2.1.54 - 10.25.2016 =
 * NEW:     Added php docblock directives for code hinting/completion
-* NEW:     Display types can have aliases
+* NEW:     Gallery display types can have aliases
 * NEW:     Visual Shortcodes
 * Changed: Now uses gulp for package compilation & JS/CSS minification
 * Changed: Updated Freemius SDK to 1.2.1
 * Fixed:   Extraneous backslashes being added to gallery titles & descriptions
-* Fixed:   Import folder 'gallery title' field wasn't being used for new gallery titles
+* Fixed:   Import folder 'gallery title' field wasn't being used for new photo gallery titles
 * Fixed:   Settings reset will now redirect to /wp-admin/ to avoid potential activation-related errors
 * Fixed:   Table columns cache becomes out of date between versions
 * Fixed:   Various issues with shortcodes when used in widgets
@@ -280,7 +307,7 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * NEW:     Added the ability to open galleries within albums using a lightbox
 * Changed: Increased freemius opt-in to 100%
 * Changed: Tamara Lackey's biography on the overview page
-* Fixed:   Images not responsive for all display types
+* Fixed:   Images and photos not responsive for all gallery types
 * Fixed:   Compatibility with the Imagely Lightroom plugin
 * Fixed:   Removed Pope tests folder
 * Fixed:   Maximum function nesting level fatal error when displaying two or more albums
@@ -293,13 +320,13 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * NEW:     Added notice for deprecating PHP 5.2
 * NEW:     Option to display child gallery and album descriptions when viewing albums
 * Changed: ATP preview images are smaller with tighter margins to show more images
-* Changed: Content of Upgrade to Pro page
+* Changed: Content of Upgrade to Pro WordPress gallery plugin page
 * Changed: New NextGEN Overview page
 * Changed: Replicate gallery name sanitation of NG legacy for gallery paths
 * Fixed:   Resolved all found PHP warnings/notices/deprecations and strict errors
 * Fixed:   Compatibility on Windows servers with network mounted document roots
 * Fixed:   Ensure EXIF meta data is loaded from the appropriate exif_data array instead of exif_array
-* Fixed:   Gallery Settings toggle not functioning
+* Fixed:   Gallery Settings toggle not functioning in all cases
 * Fixed:   Uploading breaking when thumbnail or image resizing fails due to lack of specific format support for image libraries
 * Fixed:   Warning generated in nggallery.php checking useMediaRSS option
 
@@ -316,8 +343,8 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * NEW:     Gulp build system
 * NEW:     Added "ngg_igw_placeholder_line_2_settings" and "ngg_igw_placeholder_line_1_settings" filters
 * NEW:     Added "ngg_settings_during_image_generation" filter to adjust image generation
-* NEW:     Added "ngg_before_save_thumbnail" filter for image manipulation abilities
-* NEW:     Added the ability to apply GD filters during image generation
+* NEW:     Added "ngg_before_save_thumbnail" filter for image and photo manipulation abilities
+* NEW:     Added the ability to apply GD filters during image and photo generation
 * NEW:     Integrated with WordPress SEO sitemaps to show include NGG images in image counts
 * Changed: Links to manage a gallery after it's been created don't appear in the IGW
 * Fixed:   Freemius code shouldn't be minified
@@ -341,7 +368,7 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 = V2.1.33 - 04.25.2016 =
 * Fixed:   Compatibility with themes and plugins which enqueue underscore.js in the head of the document
-* Fixed:   Ensure that shutter reloaded can find it's image assets
+* Fixed:   Ensure that shutter reloaded can find its image assets
 
 = V2.1.31 - 04.05.2016 =
 * NEW:     Added constant NGG_SCRIPT_VERSION that is either the plugin version or rand() should SCRIPT_DEBUG be on
@@ -352,7 +379,7 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Fixed:   Compatibility with WPML String Translation when uploading images without title or description
 * Fixed:   Made get_image_url() encode gallery directory names 'because%this%is' a valid directory
 * Fixed:   Manage Galleries > Search results not saving when edited
-* Fixed:   Provided imagebrowser legacy templates not using AJAX pagination when enabled
+* Fixed:   Imagebrowser gallery templates not using AJAX pagination when enabled
 * Fixed:   Resource manager breaking the layout of the Multisite Plugin Activation page
 * Fixed:   Static url generation when the nextgen-gallery directory is a symlink outside of the WordPress roots
 
@@ -395,17 +422,17 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Fixed:   Problem deleting interframe communication cookies
 
 = V2.1.15 - 09.09.2015 =
-* Secured: Image uploads
+* Secured: Image, photo, and gallery uploads
 * Fixed:   Don't use esc_attr_e() to prevent translation issues
 * Fixed:   Ensure that deleting a gallery doesn't delete anything it shouldn't
 * Fixed:   get_gallery_abspath() should return NULL if the path doesn't exist
 
 = V2.1.13 - 09.09.2015 =
-* Secured: Image uploads
+* Secured: Image, photo, and gallery uploads
 * Fixed:   Don't use esc_attr_e() to present translation issues
 
 = V2.1.10 - 09.01.2015 =
-* Secured: Escape output of parameters in templates to avoid XSS
+* Secured: Escape output of parameters in gallery templates to avoid XSS
 
 = V2.1.9 - 08.25.2015 =
 * NEW:     Added ngg_manage_galleries_items_per_page filter
@@ -423,10 +450,10 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Fixed:   Cornerstone/X compatibility
 * Fixed:   Recovering images was 'generating' from backup instead of copying
 * Fixed:   Setting post thumbnail more than once on a page/post
-* Fixed:   Permanently hide display types from ATP without an active POPE module
+* Fixed:   Permanently hide gallery types from ATP without an active POPE module
 
 = V2.1.2 - 07.20.2015 =
-* NEW:     Ability to import from Media Library
+* NEW:     Ability to import photos from Media Library
 * NEW:     Added filter 'ngg_datamapper_table_name'
 * NEW:     Added filter `ngg_legacy_template_directories` for legacy template locator (thanks Ross McKay)
 * NEW:     Pagination available onManage Images page
@@ -438,7 +465,7 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Fixed:   Ability to set NextGEN Image as Featured Image
 * Fixed:   Don't use resource manager in download requests for WP Photo Shelter
 * Fixed:   Updated custom jQuery-UI styling to resemble WordPress postbox styling
-* Fixed:   Styled plupload buttons to resemble WordPress buttons
+* Fixed:   Styled plupload photo upload buttons to resemble WordPress buttons
 * Fixed:   Removed 'fixed' class from manage galleries table. Allows columns to adjust to content
 * Fixed:   Removed note about flash support and fixed typoe (thanks Rene Wolf)
 * Fixed:   Fixed typo in nggallery.po
@@ -448,7 +475,7 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Fixed:   Adjusted album-compact template to always include p.ngg-album-gallery-image-counter
 * Fixed:   Replaced empty gallery rendering in is_feed() with a link
 * Fixed:   Removed default settings for imagerotator, which is no longer supported
-* Fixed:   Optimizated scanning of images when importing a gallery
+* Fixed:   Optimized scanning of images and photos when importing a gallery
 * Fixed:   When a gallery is deleted, ensure that DB and filesystem are purged
 * Fixed:   Removed Insert Gallery Window box shadow
 * Fixed:   Ensure that file_exists() calls are prefixed with @
@@ -463,7 +490,7 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * NEW:     Added ngg_manage_images_items_per_page filter
 * NEW:     Added "ngg_get_image_url" filter
 * NEW:     Including Ukranian and Polish translations
-* NEW:     The ability to set template in widgets
+* NEW:     The ability to set template in gallery widgets
 * Changed: Default thumbnail dimensions set to 240x160
 * Changed: Product now adheres to Pope 0.12 and provides get_modules_to_load()
 * Changed: Updated translations
@@ -500,7 +527,7 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Fixed:   Use of C_Gallery_Mapper in C_Image_Wrapper
 * Fixed:   Properly handle themes that don't call wp_footer() or wp_print_footer_scripts()
 * Fixed:   Warning about missing style.php file on Network Admin -> Gallery page
-* Fixed:   Warning about getimagesize() failure when backing up an image
+* Fixed:   Warning about getimagesize() failure when backing up an image or photo
 
 = v2.0.79 - 03.20.2015 =
 * Secured: Sanitized C_Displayed_Gallery->_add_find_in_set_column() third parameter
@@ -511,15 +538,15 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Fixed:   Use of C_Gallery_Mapper in C_Image_Wrapper
 * Fixed:   Properly handle themes that don't call wp_footer() or wp_print_footer_scripts()
 * Fixed:   Warning about missing style.php file on Network Admin -> Gallery page
-* Fixed:   Warning about getimagesize() failure when backing up an image
+* Fixed:   Warning about getimagesize() failure when backing up an image or photo
 
 = V2.0.78 - 03.12.2015 =
-* Secured: AJAX actions for uploading images and importing folders now uses nonce checks
+* Secured: AJAX actions for uploading photos and importing folders now uses nonce checks
 
 = V2.0.77 - 03.05.2015 =
 * NEW:     Added "ngg_get_image_url" filter
 * Changed: Use a more reliable means of excluding Pro/Plus modules from using minified static resources
-* Fixed:   Imagebrowser pagination with custom templates
+* Fixed:   Imagebrowser gallery pagination with custom templates
 * Fixed:   Custom CSS is enqueued late to ensure it's one of the last stylesheets loaded
 * Fixed:   Fixed watermarking PNG images
 * Fixed:   Using the "Import Metadata" bulk action overwrites existing data
@@ -529,7 +556,7 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Fixed:   Restored nggdb->get_random_images(), nggdb->search_for_file, and nggdb->find_all_albums()
 * Fixed:   Allow gallery slug as parameter to nggdb::get_gallery()
 * Fixed:   Don't minify Plupload's i18n JavaScript
-* Fixed:   Custom template images not being given their full effect code attributes
+* Fixed:   Custom template images and photos not being given their full effect code attributes
 
 = V2.0.76 - 02.24.2015 =
 * Fixed:   Compatibility checks for very old versions of NextGEN Pro
@@ -547,13 +574,13 @@ For more information, feel free to visit the official website for the NextGEN Ga
 = V2.0.71 - 02.19.2015 =
 * NEW:     Module files are compiled into a single package file to reduce disk I/O
 * NEW:     All CSS stylesheets and Javascript source files are minified to reduce latency
-* NEW:     All lightboxes are configured using an in-memory management class.
+* NEW:     All photo lightboxes are configured using an in-memory management class.
 * NEW:     Uses Pope 2.0, benefiting from the new caching capabilities
 * NEW:     NextGEN Gallery's functionality is disabled if NextGEN Pro is incompatible
 * NEW:     Added ngg_effect_code filter
 * Changed: Updated FontAwesome to 4.3.0
 * Changed: Updated select2 to 3.5.2
-* Changed: Removed PicLens / CoolIris integration
+* Changed: Removed PicLens / CoolIris gallery integration
 * Changed: Removed JSON API. Please use XML-RPC API instead
 * Changed: For performance reasons, we cache FS & url lookups/calculations
 * Changed: Greatly reduced the # of sql queries, and eliminated anything redundant
@@ -564,25 +591,25 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Changed: Insert Gallery Window is routed using wp-admin/admin_init
 * Changed: Removed unused code from ngglegacy module. Created wrappers for commonly-used functions
 * Changed: LZW module removed
-* Changed: Legacy template drop-down selection now using select2
+* Changed: Legacy gallery template drop-down selection now using select2
 * Secured: Restrict folder browsing to NGG_IMPORT_ROOT constant
 * Fixed:   Compatibility issue with PHP's transparent ZLIB compression
 * Fixed:   Imagebrowser as lightbox effect not working when non-default permalink slug used
 * Fixed:   Angled quotations marks used in shortcode parameters
-* Fixed:   Compatibility between ImageBrowser display type and TwentyFifteen theme
+* Fixed:   Compatibility between ImageBrowser gallery and TwentyFifteen theme
 * Fixed:   Allow pagination to retain query string url parameters when linking to other pages
 * Fixed:   Fixed pagination issues with slideshow galleries displayed as thumbnails
 * Fixed:   Fix C_GalleryStorage_Driver_Base->import_gallery_from_fs() not checking imgBackup
 * Fixed:   Fixed problem with default settings being applied multiple times
-* Fixed:   Fallback to "full" image sizes if "backup" images aren't available
+* Fixed:   Fallback to "full" image / photo sizes if "backup" images aren't available
 * Fixed:   Use M_DataMapper's serialization methods throughout the codebase
 * Fixed:   Conflict with WordPress SEO and get_the_excerpt() call
 * Fixed:   Don't run Resource Manager on wp-login.php or wp-sign.php
-* Fixed:   TinyMCE Image Editor conflict with Insert Gallery Window placeholder images
+* Fixed:   TinyMCE Image Editor conflict with Insert Gallery Window placeholder images/photos
 * Fixed:   Fix Shutter positioning when admin bar is displayed
-* Fixed:   Allow deselection of a legacy template
-* Fixed:   Prevent conflicts when using imagebrowser as a lightbox effect
-* Fixed:   Pagination not working for slideshows using thumbnail integration
+* Fixed:   Allow deselection of a legacy gallery template
+* Fixed:   Prevent conflicts when using imagebrowser gallery as a lightbox effect
+* Fixed:   Pagination not working for slideshow galleries using thumbnail integration
 
 = V2.0.66.33 - 11.24.2014 =
 * Fixed:   Broken NextGEN Pro ecommerce-related shortcodes
@@ -593,11 +620,11 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 = V2.0.66.29 - 09.17.2014 =
 * NEW:     Added skip_excluding_globally_excluded_images property to displayed gallery objects
-* Fixed:   SQL generation for random image selection
+* Fixed:   SQL generation for random photo/image selection
 * Fixed:   Adjust regex for replacing displayed gallery placeholder images
 * Fixed:   Removed filters to home_url needed previously for WMPL compatibility
 * Fixed:   Use canonical redirects when appropriate
-* Fixed:   Ability to override image files using XML-RPC
+* Fixed:   Ability to override image/photo files using XML-RPC
 
 = V2.0.66.27 - 08.18.2014 =
 * Fixed:   Missing class.frame_communication_option_handler.php error
@@ -618,7 +645,7 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Secured: XSS vulnerability on Manage Albums page
 
 = V2.0.66.16 - 07.30.2014 =
-* NEW:     Added new "limit" setting to Slideshow widgets
+* NEW:     Added new "limit" setting to Slideshow gallery widgets
 * NEW:     Added a "ngg_routes" action for other plugins to hook into to provide new routes
 * NEW:     Added NGG_SKIP_LOAD_SCRIPTS constant, which existed in 1.9.x
 * NEW:     Added NGG_GALLERY_ROOT_TYPE constant. Set to 'content' to load galleries from the content_dir / content_url
@@ -632,7 +659,7 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * NEW: 	   Russian (ru_RU) language thanks to SnakeD3
 * NEW: 	   Spanish (es_ES) language thanks to Andrew Kurtis at WebHostingHub
 * Changed: Updated Czech language thanks to Separatista; additional thanks to Martin Krizek for the original translation who was mistakenly unaccredited
-* Changed: "Upgrade to Pro" page has new design, advertises for NextGEN Plus
+* Changed: "Upgrade to Pro" WordPress gallery plugin page has new design, includes NextGEN Plus
 * Changed: Basic Albums templates now given the image counter P element the class 'ngg-album-gallery-image-counter' (by user request)
 * Changed: Gallery widgets now apply height:auto to their element; fixes compatibility with some themes
 * Changed: Random galleries should be substantially faster now (1000% or more for large image tables)
@@ -648,14 +675,14 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Fixed:   Flush 'all' caches when pope_module_list setting changes
 * Fixed:   Don't enqueue related images css in the admin
 * Fixed:   Basic Slideshows fixes WP creating extraneous P element above the slideshow display
-* Fixed:   Basic Singlepic will now display images marked 'excluded' in the admin
+* Fixed:   Basic Singlepic will now display images/photos marked 'excluded' in the admin
 * Fixed:   Admin pages can now update when the "Save" button text has been translated
 
 = V2.0.66 - 05.20.2014 =
-* Secured: Check mime type of image files using a variety of mechanisms
+* Secured: Check mime type of image/photo files using a variety of mechanisms
 
 = V2.0.65 - 05.04.2014 =
-* Secured: Limit uploads to images and zips
+* Secured: Limit uploads to images/photos and zips
 
 = V2.0.63 - 04.29.2014 =
 * NEW:     Translation ready
@@ -666,16 +693,16 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * NEW:	   Bundled Browser+ JavaScript library
 * NEW:     Added NGG_DISABLE_FILTER_THE_CONTENT constant to manage conflicts
 * Changed: Moved jquery.nextgen_radio_toggle.js to NextGEN Admin Module
-* Changed: Original display settings are passed to secondary display types
-* Fixed:   Thumbnail dimension calculations are inaccurate by 1px when maintaining aspect ratio
+* Changed: Original display settings are passed to secondary gallery types
+* Fixed:   Photo thumbnail dimension calculations are inaccurate by 1px when maintaining aspect ratio
 * Fixed:   Copy IPTC data from original to new image when creating new sizes / thumbnails
-* Fixed:   Use correct absolute path when importing images in a multisite environment
+* Fixed:   Use correct absolute path when importing images or photos in a multisite environment
 * Fixed:   Incorrect display of disk space quotas in multisite environments
 * Fixed:   Removed redundant roles form in multisite environments
 * Fixed:   Insert Gallery Window support for multisite environments
-* Fixed:   Incorrect handling of NextGEN Styles in multisite environments
+* Fixed:   Incorrect handling of NextGEN Gallery Styles in multisite environments
 * Fixed:   Not honouring NGG_IMPORT_ROOT constant
-* Fixed:   Fixed inability to edit gallery properties using XMLRPC's edit_gallery method
+* Fixed:   Fixed inability to edit photo gallery properties using XMLRPC's edit_gallery method
 * Fixed:   Alignment issues in Basic Compact Albums caused by subalbums not displaying image 'counter'
 * Fixed:   Display setting forms compatibility issue with WordPress 3.9
 * Fixed;   Compability with jQuery Dialogs in WordPress 3.9
@@ -691,8 +718,8 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Fixed:   Resource manager is manipulating feeds
 * Fixed:   Convert absolute urls to relative urls for lightboxes
 * Fixed:   Start the resource manager as early as we can within the init action
-* Fixed:   Routing problem for galleries with images named 1.jpg, 2.jpg, 3.jpg, etc.
-* Fixed:   Added tooltips to basic slideshow settings
+* Fixed:   Routing problem for photo galleries with images named 1.jpg, 2.jpg, 3.jpg, etc.
+* Fixed:   Added tooltips to basic slideshow gallery settings
 * Fixed:   Remove CKEditor's NextGEN button, which is incompatible with NextGEN Gallery 2.x
 
 = V2.0.61 - 04.01.2014 =
@@ -726,10 +753,10 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Changed: Transients are removed every 30 minutes instead of 60 minutes
 * Changed: Admin Page & Form components refactored to allow custom POST processing
 * Changed: Default path for NEW multisite installations to wp-content/uploads/sites/%BLOG_ID%/nggallery/
-* Fixed:   Ability to upload ZIP files on Windows hosts
+* Fixed:   Ability to upload ZIP files for photos and galleries on Windows hosts
 * Fixed:   Support for filenames with non-ASCII characters
-* Fixed:   Dynamic updates in the Attach to Post interface (interframe communication)
-* Fixed:   Attach to Post interface freezing in IE11
+* Fixed:   Dynamic updates in the Insert Gallery Window (interframe communication)
+* Fixed:   Insert Gallery Window freezing in IE11
 * Fixed:   Path issues on Windows Servers
 * Fixed:   Module installer integrity
 * Fixed:   Database query performance. No more joins to the WP options table
@@ -740,18 +767,18 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Fixed:   Corrupted MediaRSS feeds
 * Fixed:   Padding on Gallery Settings and Other Options pages
 * Fixed:   Routing issues on subdirectory installs
-* Fixed:   Importing galleries using the Attach to Post Interface
+* Fixed:   Importing photo galleries using the Insert Gallery Window
 * Fixed:   Gallery path calculations on Windows web servers
 * Fixed:   Sub-album urls not processed correctly
 * Fixed:   Apply maximum entity count to existing displayed galleries
-* Fixed:   NextGEN Gallery Thumbnail Widget shouldn't use ImageBrowser effect
-* Fixed:   Ability to set shuffle parameter for ImageRotator slideshows
-* Fixed:   PHP warning about HTMLDocument when displaying a SinglePic
-* Fixed:   Sanitization of gallery title
+* Fixed:   NextGEN Gallery Thumbnail Widget shouldn't use ImageBrowser gallery effect
+* Fixed:   Ability to set shuffle parameter for ImageRotator slideshow galleries
+* Fixed:   PHP warning about HTMLDocument when displaying a SinglePic photo
+* Fixed:   Sanitization of photo gallery title
 * Fixed:   Home URL now used instead of Site URL in MediaRSS feed
-* Fixed:   Attach to Post interface broken when WPML is installed
-* Fixed:   Attach to Post interface instructing browser to cache the page
-* Fixed:   Watermarking not working in low-memory environments
+* Fixed:   Insert Gallery Window broken when WPML is installed
+* Fixed:   Insert Gallery Window instructing browser to cache the page
+* Fixed:   Photo watermarking not working in low-memory environments
 * Fixed:   Maximum images limit not being applied for galleries already created.
 * Fixed:   Double forward slashes in static urls
 * Fixed:   Don't sleep when checking if the installer is running
@@ -774,28 +801,28 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * NEW:     Added NGG_IMPORT_ROOT constant. Define and set to TRUE to browse from a custom directory
 * NEW:     Added NGG_DEBUG constant. Define and set to TRUE to display helpful messages for debugging
 * NEW:     Each custom table record will have an associated custom post record for expansion
-* NEW:     Display helpful error messages when there's a problem uploading images
+* NEW:     Display helpful error messages for image and photo upload issues
 * NEW:     Add data-(src|thumbnail|image-id|title|description) attribute to gallery image anchors
-* NEW:     Variant support for displayed gallery sources. Random images is limited to 5 variations
+* NEW:     Variant support for photo gallery sources. Random images is limited to 5 variations
 * Fixed:   Excessive creation of transients for random galleries
-* Fixed:   Many issues prohibiting the ability to upload images
+* Fixed:   Some issues interfering with photo and gallery uploads
 * Fixed:   Compatibility with NextGEN Gallery Export Plugin for Adobe Lightroom (thanks Vladimir!)
-* Fixed:   Sorting in the Attach to Post interface
+* Fixed:   Sorting photos in the Insert Gallery Window interface
 * Fixed:   HTML allowed in gallery/album descriptions
-* Fixed:   Requests for galleries within albums that have numeric names are broken
+* Fixed:   Requests for photo galleries within albums that have numeric names are broken
 * Fixed:   Call to a non-member function get() on WP_Query
-* Fixed:   Ability to sort by Image ID in the Attach to Post interface
-* Fixed:   Isolate the Attach to Post from implicit third-party script inclusion
+* Fixed:   Ability to sort by Image ID in the Insert Gallery Window
+* Fixed:   Isolate the Insert Gallery Window from implicit third-party script inclusion
 * Fixed:   Check for the existance of thumbnails when generating urls, and if missing, generate new ones
 * Fixed:   Compatibility with NextGEN Facebook OpenGraph+ plugin
 * Fixed:   Various XML-RPC issues
-* Fixed:   Widgets stylesheet not included
+* Fixed:   Gallery widget stylesheet not included
 * Fixed:   Issue with color not being pre-selected when previewing Watermark
 * Fixed:   E_NOTICE emitted when cleaning up cached image files
-* Fixed:   E_NOTICE emitted when viewing display type settings
+* Fixed:   E_NOTICE emitted when viewing gallery type settings
 * Fixed:   Typo adjusting pcre.backtrack_limit for shortcodes
-* Fixed:   Content within the tabs of the Attach to Post interface cut-off
-* Fixed:   Routing problem which would cause conflicts with different display types on the same page
+* Fixed:   Content within the tabs of the Insert Gallery Window cut-off
+* Fixed:   Routing problem which would cause conflicts with different gallery types on the same page
 * Fixed:   Broken Dynamic CSS links on GoDaddy
 * Fixed:   Ability to use HTML in gallery/album descriptions
 * Fixed:   Sub-album requests conflicting with paginated galleries on the same page
@@ -803,90 +830,90 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 = V2.0.33 - 10.21.2013 =
 * NEW:     Requests /ngg_tag/[tagname] will create a displayed gallery
-* NEW:     Option added to "Import Gallery" tab to use original images
+* NEW:     Option added to "Import Gallery" tab to use original images and photos
 * Fixed:   Links are broken on the ngg_tags-sitemap.xml file by WordPress SEO
 * Fixed:   PHP notice: Attempt to assign property of non-object
-* Fixed:   Undefined property warnings when using NextGEN Basic Thumbnails
+* Fixed:   Undefined property warnings when using NextGEN Basic Thumbnail gallery
 * Fixed:   Detect if an applying a transient to a displayed gallery was successful
 * Fixed:   Compatibility issues with BJ-Lazy-Load and Colorbox
-* Fixed:   Pagination conflicts for multiple Imagebrowsers on the same page
+* Fixed:   Pagination conflicts for multiple Imagebrowser galleries on the same page
 * Fixed:   Ability to display previous exception with debug mode
-* Fixed:   Tagclouds not working in multisite instances
-* Fixed:   Load widgets.css when a widget is being used
+* Fixed:   Tagcloud galleries not working in multisite instances
+* Fixed:   Load widgets.css when a gallery widget is being used
 * Fixed:   Installer should remove all instances of the component factory
-* Fixed:   Widget settings interface not intuitive
+* Fixed:   Gallery widget settings interface not intuitive
 * Fixed:   Inability to upload images in some Windows host environments
-* Fixed:   Sorting images/galleries using the Attach To Post interface
+* Fixed:   Sorting images/galleries using the Insert Gallery Window
 * Fixed:   Fix detection of HTTPS (pull request by Leonhardt Wille)
 * Fixed:   Compilation errors of regular expressions
 * Fixed:   Pro galleries wouldn't display in environments using PHP 5.3.3 or less
 * Fixed:   Scanning of router slug is now limited to the uri, not the url
 * Fixed:   Show slideshow link isn't required for thumbnail/imagebrowser integration
-* Fixed:   WordPress media-upload with 'singlepic' image size
+* Fixed:   WordPress media-upload with 'singlepic' image and photo sizes
 * Fixed:   Use target=_blank when the link setting is provided for NextGEN Basic Singlepic
 * Fixed:   Only display rendering errors if WP_DEBUG is enabled
 
 = V2.0.31 - 10.03.2013 =
-* NEW:     Restored AJAX pagination for NextGEN Basic ImageBrowser display type
+* NEW:     Restored AJAX gallery pagination for NextGEN Basic ImageBrowser gallery
 * Fixed:   Compatibility with WordPress Local SEO by Yoast
-* Fixed:   Inability to upload images if image_slug field was missing in database
+* Fixed:   Inability to upload images and photos if image_slug field was missing in database
 * Fixed:   Integration of NextGEN Basic Thumbnail and NextGEN Basic Slideshow display types
 * Fixed:   Photocrati Resource Manager further adjusted to be third-party friendly
 * Fixed:   Added the ability to find legacy templates in both the child/parent theme directories
-* Fixed:   JavaScript errors in Attach to Post interface
+* Fixed:   JavaScript errors in Insert Gallery Window
 * Fixed:   Router can handle port numbers in urls
 * Fixed:   Carousel template was linking to NextGEN Basic ImageBrowser view
-* Fixed:   SQL query generated for displayed galleries using tags as source
+* Fixed:   SQL query generated for displayed photo galleries using tags as source
 * Fixed:   3rd party compat: raise & never lower pcre.backtrack_limit
 
 = V2.0.30 - 09.25.2013 =
-* NEW:     Restored the ability to use imagebrowser display type instead of a lightbox effect
-* Changed: Displayed galleries are no longer rendered in RSS feeds
+* NEW:     Restored the ability to use imagebrowser gallery type instead of a lightbox effect
+* Changed: Displayed photo galleries are no longer rendered in RSS feeds
 * Changed: Removed "Plugin Check" widget from overview page
 * Fixed:   Silence PHP warnings/errors in an output buffer for AJAX actions
 * Fixed:   Compatibility issue with WordPress SEO and broken site maps (and large error_logs)
 * Fixed:   Compatibility issue with AJAX Event Calendar (and possibly others)
 * Fixed:   Adjusted Photocrati Resource Manager to be third-party friendly
 * Fixed:   Fixed empty result set for displayed galleries selecting 'All' tags
-* Fixed:   URL generation for imagebrowser pagination links
-* Fixed:   Ensure that image meta is imported on creation
+* Fixed:   URL generation for imagebrowser gallery pagination links
+* Fixed:   Ensure that photo and image meta is imported on creation
 * Fixed:   Ensure that transients are removed when an external object cache is used
-* Fixed:   Don't load pluggable.php. This will fix plugin conflicts
-* Fixed:   In Attach to Post interface, galleries created in one tab weren't showing in another
+* Fixed:   Don't load pluggable.php. This will fix some plugin conflicts
+* Fixed:   In Insert Gallery Window, galleries created in one tab weren't showing in another
 * Fixed:   Don't output frame events cookie for XML-RPC requests
 
 = V2.0.27 - 09.18.2013 =
 * Fixed:   Reduce performance impact of purging displayed gallery transients
 
 = V2.0.25 - 09.18.2013 =
-* Reverting to the 2.0.21 codebase, due to major performance issues in 2.0.23 and 2.0.24
+* Reverting to the 2.0.21 codebase, due to performance issues in 2.0.23 and 2.0.24
 
 = V2.0.23 - 09.16.2013 =
 * NEW:     WP-Cron job to periodically clean-up displayed gallery transients
 * NEW:     Added "excluded_container_ids" as parameter for ngg_images shortcode
-* Fixed:   Lightbox effect is honoured by all display types
-* Fixed:   Highslide displays images from the correct displayed galleries
+* Fixed:   Lightbox effect is honoured by all gallery display types
+* Fixed:   Highslide displays photos from the correct displayed galleries
 * Fixed:   Ensure that sub-albums display correctly when the word "album" is part of a slug
 * Fixed:   Ensure that sub-albums display correctly when numerical slugs are used
 * Fixed:   Related images heading only added when Related Images functionality is enabled
 * Fixed:   PHP Warning about undefined index when viewing basic albums
 * Fixed:   AJAX handling is third-party compatible
-* Fixed:   Image date is no longer overwritten when an image is modified
+* Fixed:   Image date is no longer overwritten when a photo is modified
 * Fixed:   Fixed issue with displayed galleries using source='tags'
 * Fixed:   Problem with transient cache not getting flushed properly from Other Options page
 * Fixed:   Use correct gallery/transient ID when ajax pagination is used
 
 = V2.0.21 - 09.09.2013 =
 * NEW:	   Multisite support
-* Changed: Default image quality set to 100 for generated images
+* Changed: Default image quality set to 100 for generated images and photos
 * Changed: Removed dependence on simplehtmldom library
 * Fixed:   Related images functionality works as it did in 1.9.x
 * Fixed:   Don't compress inline JavaScript in post/page content
-* Fixed:   Click-to-advance slideshow behavior for slideshows
+* Fixed:   Click-to-advance photo slideshow behavior for slideshows
 * Fixed:   Security warnings from VaultPress
-* Fixed:   View as Slideshow link works with AJAX pagination
-* Fixed:   Broken links on Overview page
-* Fixed:   Backup images option
+* Fixed:   View as Slideshow link works with AJAX paginated galleries
+* Fixed:   Broken links on WordPress gallery plugin Overview page
+* Fixed:   Backup images option not working in some cases
 * Fixed:   Stylesheet url generated correctly for Windows hosts
 * Fixed:   Compatibility with NextGen Custom Fields plugin
 * Fixed:   Compatibility with Adsense Explosion plugin
@@ -896,11 +923,11 @@ For more information, feel free to visit the official website for the NextGEN Ga
 Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move files
 
 = V2.0.14 - 08.27.2013 =
-* NEW:     Added the ability to override thumbnail settings for NextGEN Basic Albums
+* NEW:     Added the ability to override photo thumbnail settings for NextGEN Basic Albums
 * NEW:     Shortcode Manager API, which ensures that shortcodes are outputted as intended
 * Changed: Re-added the ability to select the original image size for widgets
 * Fixed:   Ensure that stylesheet url returned is correct for Windows hosts
-* Fixed:   Broken links and lightbox effects with AJAX pagination
+* Fixed:   Broken links and lightbox effects with AJAX gallery pagination
 * Fixed:   Try to ensure that third party plugins don't add content to our dynamic JS
 * Fixed:   Improved reliability of iframely.js
 * Fixed:   Ensure that urls are generated correctly in HTTPs environments
@@ -911,8 +938,8 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 * NEW:     Added "run_ngg_resource_manager" hook to by-pass our resource manager
 * Changed: Removed "Reset & Uninstall" tab, for now
 * Fixed:   Compatibility with W3 Total Cache. Please flush cache after updating.
-* Fixed:   Conflicts with Photocrati Theme Galleries
-* Fixed:   Blank Attach to Post interface window
+* Fixed:   Conflicts with Photocrati Theme galleries
+* Fixed:   Blank Insert Gallery Window occurring in some cases
 * Fixed:   Fixed ability to change Lightbox Effect settings
 * Fixed:   Implemented techniques to ensure WP_Query variables aren't overwritten
 * Fixed:   Enqueuing AJAX JS libraries twice in wp-admin
@@ -921,25 +948,25 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 * Fixed:   Fixed installer issues
 
 = V2.0.7 - 08.09.2013 =
-* NEW:     New resource manager that fixes many plugin and theme incompatibilities
+* NEW:     New resource manager that fixes some plugin and theme incompatibilities
 * NEW:     Styles (custom stylesheets) should reside in wp-content/ngg_styles
 * NEW:     Added option to "Other Options -> Misc" to control maximum images returned
 * Secured: Removed default connector for jQuery FileTree library
 * Changed: Updated the simplehtmldom library to version 1.5
 * Changed: jQuery is now enqueued at the beginning of every request
 * Fixed:   Incompatibilities with BuddyPress
-* Fixed:   Incompatibilities with Events+, bbPress, Custom Permalinks, and many other plugins
+* Fixed:   Incompatibilities with Events+, bbPress, Custom Permalinks, and other plugins
 * Fixed:   Incompcatibilities with Member Access, AMember, Magic Fields, and More Fields
-* Fixed:   Incompatibilities with Elegant Themes, Oxygen, Responsive, and many other themes
-* Fixed:   Ensure that gallery images don't have a border by default
-* Fixed:   Conflict between imagebrowser and album urls
+* Fixed:   Incompatibilities with Elegant Themes, Oxygen, Responsive, and some other themes
+* Fixed:   Ensure that gallery images and photos don't have a border by default
+* Fixed:   Conflict between imagebrowser gallery and album urls
 * Fixed:   Reverted default gallerypath to wp-content/gallery/
 * Fixed:   Upgrade-safe way of overriding Styles
 * Fixed:   Generation of AJAX url is now based on slug
 * Fixed:   Restore nggShowGallery and nggShowSlideshow as wrappers to new API
 * Fixed:   Always use domain as specified by WordPress Site URL
 * Fixed:   Use WordPress Home URL over Site URL when appropriate
-* Fixed:   Numerous pagination issues
+* Fixed:   Numerous gallery pagination issues
 * Fixed:   Adjusted our forms to comply with WordPress Firewalls
 * Fixed:   Correct use of select2 DOM selector for maximum compatibility
 * Fixed:   Path and URL calculations for Windows and UNIX environments
@@ -953,10 +980,10 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 
 = V2.0 - 07.30.2013 =
 * NEW:	   Improved user experience throughout the plugin, settings and usage.
-* NEW:     Plupload queue uploader that allows for bulk and zip uploads within the same interface.
-* NEW:     Complete redesign of the NextGEN options panel
-* NEW:     Added new interface for adding galleries from pages and posts.
-* NEW:     Galleries are now mobile friendly and responsive, which is most noticeable with a responsive theme.
+* NEW:     Plupload queue photo uploader that allows for bulk and zip uploads within the same interface.
+* NEW:     Complete redesign of the NextGEN Gallery options panel
+* NEW:     Added new Insert Gallery Window for adding galleries from pages and posts.
+* NEW:     Galleries are now mobile friendly and responsive (may need a responsive theme).
 * NEW:     Streamlined functionality for displaying galleries based on tags.
 * NEW:     Architecture based on Pope Framework (http://bitbucket.org/photocrati/pope-framework)
 * NEW:     New shortcode, “ngg_images”, and corresponding Attach to Post interface
@@ -968,12 +995,12 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 * Changed: NextGEN styles now override vs replace default styles
 * Changed: NextGEN legacy templates have been deprecated (but still function)
 * FIXED:   The ability to use NextGEN image as a Featured Image.
-* FIXED:   Many bugs and annoyances, such as PHP warnings, errors, etc.
+* FIXED:   Misc bugs and annoyances, such as PHP warnings, errors, etc.
 
 = V1.9.13 - 06.11.2013 =
-* NEW:     Slideshows are now centered to their content area
-* Secured: Ensure that only logged in users can upload images
-* Fixed:   Import date is presered are no longer Jan 1 1970
+* NEW:     Slideshow galleries are now centered to their content area
+* Secured: Ensure that only logged in users can upload images and photos
+* Fixed:   Photo import date is preserved are no longer Jan 1 1970
 * Fixed:   Removed mention of upgrade.php, which no longer exists
 
 = V1.9.12 - 02.15.2013 =
@@ -986,7 +1013,7 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 * Changed: Database schema is automatically updated when out-of-date
 * Fixed:   Fixed several incompatibility issues with Jetpack
 * Fixed:   Empty drop-down for "Page Link To"
-* Fixed:   Alphabetical image sorting
+* Fixed:   Alphabetical image and photo gallery sorting
 * Fixed:   Compatibility with Arjuna X theme
 * Fixed:   â€œCreating default object from empty valueâ€ on album page
 * Fixed:   Compatibility issues with PHP 5.4 on album page
@@ -1002,10 +1029,10 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 * Fixed:   Correct use of register_uninstall_hook
 * Fixed:   CSS and usability issues with the TinyMCE window used to display galleries
 
-* NEW:	   JW ImageRotator v3.17 is now bundled with the plugin and used by default.
+* NEW:	   JW ImageRotator v3.17 is now bundled with the photo plugin and used by default.
 * Changed: Removed database upgrade code for versions of NextGEN Gallery earlier than 1.9.3
 * Fixed:   Compatibility with WordPress v3.5 ( wpdb->prepare() warnings )
-* Fixed:   Sorting by filename now produces expected results using a natural sorting algorithm
+* Fixed:   Sorting by photo filename now produces expected results using a natural sorting algorithm
 
 = V1.9.8 - 12.05.2012 =
 * Secured: Removed bundled version of swfupload. See fix below for SCM information.
@@ -1015,8 +1042,8 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 
 = V1.9.7 - 11.13.2012 =
 * Secured: Removed bundled version of swfupload; using WordPress-bundled version instead for WordPress 3.2 instances
-* Changed: Using JQuery UI for the image sorting interface (thanks TomÃ¡s Soler)
-* Bugfix:  Image uploads work in WP 3.2 when using Safari
+* Changed: Using JQuery UI for the image gallery sorting interface (thanks TomÃ¡s Soler)
+* Bugfix:  Image and photo uploads work in WP 3.2 when using Safari
 * Bugfix:  Adjusted TinyMCE window to use built-in JavaScript libraries
 * Bugfix:  Removed Photocrati acquisition announcement
 * Bugfix:  Fixed incorrect usage of ImageJpeg() function
@@ -1033,7 +1060,7 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 * Changed: Branding changes following Photocrati acquisition (removed donation messages and updated links)
 * Secured: Use WordPress-bundled JavaScript libraries for swfobject and swfupload instead of bundling our own
 * Bugfix: Adjusted thickbox effect styling to ensure that the lightbox is always displayed in the foreground
-* Bugfix: Fixed compatibility issues with Contact Form 7 and other plugins by following WordPress Plugin conventions
+* Bugfix: Fixed compat issues with Contact Form 7 and other plugins by following WordPress Plugin conventions
 * Bugfix: Fixed network-wide activation in WordPress 3.4
 * Bugfix: Plugin is no longer dependent on it's folder name
 
@@ -1041,15 +1068,15 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 * Bugfix : Ensure to set the slug for "all" albums
 * Bugfix : Updated german translation ( THX to Roger Hunziker )
 * Bugfix : Ensure error checking on IPTC array (THX to Kristian Edlund)
-* Bugfix : Handle IE8 cached images better in slideshow
-* Bugfix : Show album preview image if selected  (THX to Kristian Edlund)
+* Bugfix : Handle IE8 cached images better in gallery slideshow
+* Bugfix : Show album preview image or photo if selected  (THX to Kristian Edlund)
 
 = V1.9.2 - 17.01.2012 =
 * NEW : Added more XMLRPC commands (THX to Vladimir Vinogradsky)
 * Changed : Rework Post-thumbnail function (THX to Kristian Edlund)
-* Bugfix : Check first for valid images on unzip (only Mac OS zip-files)
+* Bugfix : Check first for valid images or photos on unzip (only Mac OS zip-files)
 * Bugfix : Increase z-index for twenty eleven theme
-* Bugfix : Support non latin chars in tagcloud
+* Bugfix : Support non latin chars in tagcloud gallery
 * Bugfix : Allow other tinymce intance
 * Bugfix : Better support for WPML translation
 
@@ -1061,16 +1088,16 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 * Bugfix : IE7/IE8 width set correctly for edit album autocomplete field
 
 = V1.9.0 - 27.11.2011 =
-* NEW : Keep images transparency for PNG and GIF format
+* NEW : Keep image transparency for PNG and GIF format
 * NEW : Switch to Plupload, support now HTML5 Upload (only with WordPress 3.3)
-* NEW : Added client side resize feature (only with WordPress 3.3)
+* NEW : Added client side photo resize feature (only with WordPress 3.3)
 * NEW : Support for gallery templates in album shortcodes [ album id=x template="name" gallery="templatename" ]
 * NEW : Added new hook ngg_delete_picture
 * Changed : Updated to jQuery Cycle Version 2.9995
 * Changed : Always cache the single pictures, remove option
 * Bugfix : Couldn't use bulk operation for search results
 * Bugfix : Bugfix for Edit thumbnails under IE 8 + 9
-* Bugfix : Allow empty altext in ngg.editImage
+* Bugfix : Allow empty photo altext in ngg.editImage
 * Bugfix : Various PHP notice fixes
 * Bugfix : Resize fix for Shutter effect and mobile Browser
 * Bugfix : FTP Import missing slug field into database
@@ -1084,10 +1111,10 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 * Bugfix : Sub-Albums in Albums didn't create the correct link
 * Bugfix : AJAX Pagination didn't work anymore
 * Bugfix : Adding index.php to home_url()
-* Bugfix : Preview picture lost on backend gallery page 2 or higher
+* Bugfix : Preview photo lost on backend gallery page 2 or higher
 
 = V1.8.2 - 12.07.2011 =
-* Bugfix : Set pagination variables for search result, otherwise update failed
+* Bugfix : Set gallery pagination variables for search result, otherwise update failed
 * Bugfix : Update failed for paged galleries since WordPress 3.2
 
 = V1.8.1 - 18.06.2011 =
@@ -1098,21 +1125,21 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 
 = V1.8.0 - 12.06.2011 =
 * NEW : Full rework of permalink url structure
-* NEW : Adding Google Sitemaps for Images (require WordPress SEO plugin by YOAST )
+* NEW : Adding Google Sitemaps for images  and photos(require WordPress SEO plugin by YOAST )
 * NEW : Support for WPML ( WordPress Multilingual Plugin )
 * NEW : Adding support for arrow key in shutter effect (THX to Flyvans)
-* NEW : Adding sort operation for galleries overview page
+* NEW : Adding sort operation for WordPress gallery plugin overview page
 * Changed : Updated pagination to new WP3.1 style
 * Bugfix : Create unique slug in a better way
 * Bugfix : Rework screen options filter for gallery and image table
 * Bugfix : Empty values in XMLRPC update calls are ignored
 * Bugfix : Create gallery failed when safe-mode on
-* Bugfix : Permalink didn't work in combination with album & imagebrowser
+* Bugfix : Permalink didn't work in combination with album & imagebrowser gallery
 
 = V1.7.4 - 15.02.2011 =
 * Bugfix : Disallow direct call of ajax file to avoid path disclosure (THX to High-Tech Bridge SA)
 * Bugfix : Rework jQuery Cycle slideshow for IE compat reason (THX to Justin Dickenson)
-* Bugfix : Resize only larger images in slideshow
+* Bugfix : Resize only larger images or photos in slideshow
 * Bugfix : Improved image format detection in gd.thumbnail class (THX to Kupar.b)
 
 = V1.7.3 - 20.01.2011 =
@@ -1124,7 +1151,7 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 * Bugfix : WP3.1 compat issue, show site admin page only on Multisite installation
 
 = V1.7.2 - 13.12.2010 =
-* Bugfix : Adding images to database require slug (NOT NULL)
+* Bugfix : Adding images or photos to database require slug (NOT NULL)
 
 = V1.7.1 - 13.12.2010 =
 * Changed : Disable upgrade for PHP4 user
@@ -1143,35 +1170,35 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 * Bugfix : Install/Upgrade failed when table prefix contain captial letters
 * Bugfix : Fix validation issues in Media-RSS
 * Bugfix : Empty tags in XMP Meta causes PHP error
-* Bugfix : Rework load mechanism for slideshow
-* Bugfix : Copy meta data when image is copied
+* Bugfix : Rework load mechanism for gallery slideshow
+* Bugfix : Copy meta data when image or photo is copied
 * Bugfix : Icon Support for Ozh' Admin Drop Down Menu
-* Bugfix : Use correct sort order in slideshow
+* Bugfix : Use correct sort order in gallery slideshow
 
 = V1.6.2 - 19.09.2010 =
 * NEW : Added constant NGG_SKIP_LOAD_SCRIPTS to avoid script load
 * Bugfix : Load Tags library with core files
-* Bugfix : Slideshow script failed in IE7, load script now in header
-* Bugfix : Load slideshow widget always
+* Bugfix : Photo slideshow script failed in IE7, load script now in header
+* Bugfix : Load gallery slideshow widget always
 * Changed : New admin notice for database upgrade
-* Changed : Rework crop feature for featured images
+* Changed : Rework crop feature for featured images and photos
 * Changed : Use site_url() instead get_option ('siteurl'), required for SSL support
 
 = V1.6.1 - 08.09.2010 =
 * Bugfix : Script load of swfobject.js failed
-* Bugfix : Show sideshow also with 1 or 2 images
+* Bugfix : Show gallery sideshow also with 1 or 2 images
 * Bugfix : Rework null byte check in zip upload
 
 = V1.6.0 - 07.09.2010 =
 * NEW : Wordpress 3.0 Network (Multi-Site) support
-* NEW : Integrate jQuery Cycle as NON-Flash slideshow
+* NEW : Integrate jQuery Cycle as NON-Flash photo slideshow
 * NEW : Adding jQuery File Tree for import folder (THX to Sergey Pasyuk )
 * NEW : Added action hook 'ngg_show_imagebrowser_first' on custom request
 * NEW : Added filter hook 'ngg_slideshow_size' to resize sildeshow for mobile browser plugins
 * Changed : Reorder tabs for upload
 * Changed : New menu icon and screen icon (THX to Ben Dunkle)
 * Changed : Load frontend libs always
-* Changed : Rework of overview page
+* Changed : Rework of WordPress gallery plugin overview page
 * Bugfix : Security bugfix for Zip-Upload (THX to Dominic Szablewski)
 * Bugfix : Allow JPG, PNG, GIF extension
 * Bugfix : New German translation (THX to Martin Kramarz)
@@ -1188,12 +1215,12 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 * Bugfix : Esc_URL in Media RSS
 
 = V1.5.3 - 11.04.2010 =
-* New : Adding pagination to footer
-* Changed : Perpare new filter to replace slideshow
-* Bugfix : Remove non-breaking space from navigation
-* Bugfix : Pagination of galleries
-* Bugfix : Fixed brackets position for old shortcode query
-* Bugfix : Slideshow option 'Show next image on click" has wrong default value
+* NEW:      Adding gallery pagination to footer
+* Changed:  Prepare new filter to replace photo slideshow
+* Bugfix:   Remove non-breaking space from navigation
+* Bugfix:   Pagination of galleries
+* Bugfix:   Fixed brackets position for old shortcode query
+* Bugfix:   Slideshow option 'Show next image on click' has wrong default value
 
 = V1.5.2 - 25.03.2010 =
 * Bugfix : XSS security vulnerability (THX to Core Security Advisories Team , Pedro Varangot)
@@ -1201,13 +1228,13 @@ Fixed:     Match legacy behaviour when changing gallery path, i.e. don't move fi
 
 = V1.5.1 - 23.03.2010 =
 * Bugfix : PHP4 compat issue for Add gallery & options page
-* Bugfix : Gallery widget can now have a empty title
+* Bugfix : WordPress gallery plugin widget can now have a empty title
 * Bugfix : Adding correct stripslash for gallery title
 
 = V1.5.0 - 18.03.2010 =
 * NEW : Support for Post thumbnail feature
-* NEW : Backup and Recover function for images (THX to Simone Fumagalli)
-* NEW : Resize images after upload (THX to Simone Fumagalli)
+* NEW : Backup and Recover function for photos (THX to Simone Fumagalli)
+* NEW : Resize photos after upload (THX to Simone Fumagalli)
 * NEW : Added a JSON class for fetching galleries in a RESTful way (see xml/json.php)
 * NEW : Adding various new capabilities for user roles
 * NEW : Auto downloader for translation file

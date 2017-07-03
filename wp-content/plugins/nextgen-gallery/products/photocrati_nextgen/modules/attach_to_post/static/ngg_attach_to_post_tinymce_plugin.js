@@ -93,7 +93,7 @@
 							window.igw_shortcode=  $(e.target).parents('.nggPlaceholder').data('shortcode');
 							self.render_attach_to_post_interface({
 								key: 'shortcode',
-								val: btoa(window.igw_shortcode),
+								val: Base64.encode(window.igw_shortcode),
 								ref: $(e.target).parents('.nggPlaceholder').attr('id')
 							});
 						}
@@ -158,19 +158,18 @@
 				}
 			});
 
-			/**
-			 * Whenever a request is made to fetch the content of the editor, substitute the IGW placeholders
-			 * with the corresponding shortcode
-			 */
-			editor.on('GetContent', function(event){
-				var $content = $('<div/>').append(event.content);
-				$content.find('.nggPlaceholder').toArray().forEach(function(placeholder){
-					var $placeholder = $(placeholder);
-					var shortcode = $placeholder.data('shortcode');
-					shortcode = '[' + _.unescape(shortcode) + ']';
-					$placeholder.replaceWith(shortcode);
-				});
-				event.content = $content.html();
+            /**
+             * Substitutes the IGW placeholders with the corresponding shortcode
+             */
+			editor.on('PostProcess', function(event) {
+                var $content = $('<div/>').append(event.content);
+                $content.find('.nggPlaceholder').toArray().forEach(function(placeholder){
+                    var $placeholder = $(placeholder);
+                    var shortcode = $placeholder.data('shortcode');
+                    shortcode = "<p>[" + _.unescape(shortcode) + "]</p>";
+                    $placeholder.replaceWith(shortcode);
+                });
+                event.content = $content.html();
 			});
 		},
 

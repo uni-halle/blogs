@@ -104,14 +104,17 @@ class A_NextGen_Basic_Tagcloud_Form extends Mixin_Display_Type_Form
     {
         $types = array();
         $skip_types = array(NGG_BASIC_TAGCLOUD, NGG_BASIC_SINGLEPIC, NGG_BASIC_COMPACT_ALBUM, NGG_BASIC_EXTENDED_ALBUM);
-        if (!isset($display_type->settings['gallery_type'])) {
-            $display_type->settings['gallery_display_type'] = isset($display_type->settings['display_type']) ? $display_type->settings['display_type'] : '';
+        if (empty($display_type->settings['gallery_display_type']) && !empty($display_type->settings['gallery_type'])) {
+            $display_type->settings['gallery_display_type'] = $display_type->settings['display_type'];
         }
         $skip_types = apply_filters('ngg_basic_tagcloud_excluded_display_types', $skip_types);
         $mapper = C_Display_Type_Mapper::get_instance();
         $display_types = $mapper->find_all();
         foreach ($display_types as $dt) {
             if (in_array($dt->name, $skip_types)) {
+                continue;
+            }
+            if (!empty($dt->hidden_from_ui)) {
                 continue;
             }
             $types[$dt->name] = $dt->title;
@@ -267,6 +270,8 @@ class C_Taxonomy_Controller extends C_MVC_Controller
         }
         if ($wp_query_orig !== false) {
             $wp_query = $wp_query_orig;
+            // Commenting this out as it was causing WSOD in 2.2.8
+            //        	$wp_query->is_page = FALSE; // Prevents comments from displaying on our taxonomy 'page'
         }
         return $posts;
     }

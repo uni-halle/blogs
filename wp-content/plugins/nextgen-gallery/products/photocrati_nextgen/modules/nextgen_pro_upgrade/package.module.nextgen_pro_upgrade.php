@@ -48,14 +48,13 @@ class A_NextGen_Pro_Upgrade_Controller extends Mixin
     function get_i18n_strings()
     {
         $i18n = new stdClass();
-        $i18n->plus_title = __('Upgrade to NextGEN Plus or Pro!', 'nggallery');
-        $i18n->pro_title = __('Upgrade to NextGEN Pro!', 'nggallery');
-        $i18n->plus_desc_first = __('Introducing the most powerful gallery system ever made for WordPress.', 'nggallery');
-        $i18n->plus_desc_second = __('Take your galleries to the next level with the Plus and Pro extensions for NextGEN Gallery. ', 'nggallery');
-        $i18n->pro_desc = __('NextGEN Pro now offers proofing and ecommerce! Extend NextGEN Gallery and NextGEN Plus with a complete solution for providing client galleries and for selling prints and digital downloads. Includes unlimited pricelists, PayPal and Stripe integration, and more.', 'nggallery');
-        $i18n->plus_button = __('Learn More About NextGEN Plus', 'nggallery');
-        $i18n->pro_button = __('Learn More About NextGEN Pro', 'nggallery');
-        $i18n->click = __('CLICK TO LEARN MORE:', 'nggallery');
+        $i18n->plus_title = __('Setting a New Standard for WordPress Galleries', 'nggallery');
+        $i18n->pro_title = __('Sell Photos + Adobe Lightroom', 'nggallery');
+        $i18n->plus_desc_first = __('Introducing the most powerful gallery system ever made for WordPress. Watch our 30 second video, or click below to learn more about NextGEN premium extensions and support.', 'nggallery');
+        $i18n->pro_desc = __('You\'re awesome! You\'ve already got NextGEN Plus. But why not go all the way? With NextGEN Pro, you can sell print and digital downloads, provide proofing galleries for clients, manage galleries directly from Adobe Lightroom, and more.', 'nggallery');
+        $i18n->video = __('Psst...watch the video ->', 'nggallery');
+        $i18n->plus_button = __('Get Premium Extensions', 'nggallery');
+        $i18n->pro_button = __('Learn More', 'nggallery');
         return $i18n;
     }
     function index_action()

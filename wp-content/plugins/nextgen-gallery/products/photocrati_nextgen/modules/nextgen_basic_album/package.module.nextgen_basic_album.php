@@ -62,6 +62,11 @@ class A_NextGen_Album_Breadcrumbs extends Mixin
             } else {
                 $ids = $displayed_gallery->container_ids;
             }
+            // Prevent galleries with the same ID as the parent album being displayed as the root
+            // breadcrumb when viewing the album page
+            if (count($ids) == 1 && strpos($ids[0], 'a') !== 0) {
+                $ids = array();
+            }
             if (!empty($ds['original_album_entities'])) {
                 $breadcrumb_entities = $ds['original_album_entities'];
             } else {
@@ -827,7 +832,14 @@ class Mixin_NextGen_Basic_Album_Form extends Mixin_Display_Type_Form
     function _render_nextgen_basic_album_gallery_display_type_field($display_type)
     {
         $mapper = C_Display_Type_Mapper::get_instance();
-        return $this->render_partial('photocrati-nextgen_basic_album#nextgen_basic_album_gallery_display_type', array('display_type_name' => $display_type->name, 'gallery_display_type_label' => __('Display galleries as', 'nggallery'), 'gallery_display_type_help' => __('How would you like galleries to be displayed?', 'nggallery'), 'gallery_display_type' => $display_type->settings['gallery_display_type'], 'galleries_per_page_label' => __('Galleries per page', 'nggallery'), 'galleries_per_page' => $display_type->settings['galleries_per_page'], 'display_types' => $mapper->find_by_entity_type('image')), TRUE);
+        // Disallow hidden or inactive display types
+        $types = $mapper->find_by_entity_type('image');
+        foreach ($types as $ndx => $type) {
+            if (!empty($type->hidden_from_ui) && $type->hidden_from_ui) {
+                unset($types[$ndx]);
+            }
+        }
+        return $this->render_partial('photocrati-nextgen_basic_album#nextgen_basic_album_gallery_display_type', array('display_type_name' => $display_type->name, 'gallery_display_type_label' => __('Display galleries as', 'nggallery'), 'gallery_display_type_help' => __('How would you like galleries to be displayed?', 'nggallery'), 'gallery_display_type' => $display_type->settings['gallery_display_type'], 'galleries_per_page_label' => __('Galleries per page', 'nggallery'), 'galleries_per_page' => $display_type->settings['galleries_per_page'], 'display_types' => $types), TRUE);
     }
     /**
      * Renders the Galleries Per Page field

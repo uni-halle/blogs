@@ -979,7 +979,20 @@ class nggManageGallery {
 					}
 				}
 			}
+
+            // Determine if any WP terms have been orphaned and clean them up
+            global $wpdb;
+            $results = $wpdb->get_col("SELECT t.`term_id` FROM `{$wpdb->term_taxonomy}` tt
+                                       LEFT JOIN `{$wpdb->terms}` t ON tt.`term_id` = t.`term_id`
+                                       WHERE tt.`taxonomy` = 'ngg_tag' AND tt.`count` <= 0");
+            if (!empty($results))
+            {
+                foreach ($results as $term_id) {
+                    wp_delete_term($term_id, 'ngg_tag');
+                }
+            }
 		}
+
 		return $updated;
 	}
 

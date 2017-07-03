@@ -42,8 +42,8 @@ class A_NextGen_Basic_Gallery_Controller extends Mixin
      */
     function get_url_for_alternate_display_type($displayed_gallery, $display_type, $origin_url = FALSE)
     {
-        if (!$origin_url && !empty($displayed_gallery->display_settings['original_display_type']) && !empty($_SERVER['ORIG_REQUEST_URI'])) {
-            $origin_url = $_SERVER['ORIG_REQUEST_URI'];
+        if (!$origin_url && !empty($displayed_gallery->display_settings['original_display_type']) && !empty($_SERVER['NGG_ORIG_REQUEST_URI'])) {
+            $origin_url = $_SERVER['NGG_ORIG_REQUEST_URI'];
         }
         $url = $origin_url ? $origin_url : $this->object->get_routed_url(TRUE);
         $url = $this->object->remove_param_for($url, 'show', $displayed_gallery->id());
@@ -244,9 +244,8 @@ class A_NextGen_Basic_Slideshow_Controller extends Mixin
             $gallery_height = $displayed_gallery->display_settings['gallery_height'];
             $params['aspect_ratio'] = $gallery_width / $gallery_height;
             $params['placeholder'] = $this->object->get_static_url('photocrati-nextgen_basic_gallery#slideshow/placeholder.gif');
-            // There was a problem with the slideFX/cycle_effect parameter not getting set
-            // correctly in previous versions
-            if (!isset($params['display_settings']['cycle_effect']) or !$params['cycle_effect']) {
+            // This was not set correctly in previous versions
+            if (empty($params['cycle_effect'])) {
                 $params['cycle_effect'] = 'fade';
             }
             // Are we to generate a thumbnail link?
@@ -516,15 +515,13 @@ class A_NextGen_Basic_Thumbnails_Controller extends Mixin
             }
             // This setting 1) points all images to an imagebrowser display & 2) disables the lightbox effect
             if ($display_settings['use_imagebrowser_effect']) {
-                //                // this hook *MUST* be removed later; it should not apply to galleries that may come after this one!
-                //                $storage->add_post_hook(
-                //                    'get_image_url',
-                //                    'imagebrowser alternate url replacer',
-                //                    'Hook_NextGen_Basic_Imagebrowser_Alt_URLs',
-                //                    'get_image_url'
-                //                );
-                //                $effect_code = '';
-                $effect_code = "class='use_imagebrowser_effect'";
+                if (!empty($displayed_gallery->display_settings['original_display_type']) && !empty($_SERVER['NGG_ORIG_REQUEST_URI'])) {
+                    $origin_url = $_SERVER['NGG_ORIG_REQUEST_URI'];
+                }
+                $url = !empty($origin_url) ? $origin_url : $this->object->get_routed_url(TRUE);
+                $url = $this->object->remove_param_for($url, 'image');
+                $url = $this->object->set_param_for($url, 'image', '%STUB%', NULL, FALSE);
+                $effect_code = "class='use_imagebrowser_effect' data-imagebrowser-url='{$url}'";
             } else {
                 $effect_code = $this->object->get_effect_code($displayed_gallery);
             }
@@ -576,5 +573,23 @@ class A_NextGen_Basic_Thumbnails_Controller extends Mixin
     function _get_js_lib_url()
     {
         return $this->object->get_static_url('photocrati-nextgen_basic_gallery#thumbnails/nextgen_basic_thumbnails.js');
+    }
+    /**
+     * Override to the MVC method, allows the above imagebrowser-url to return as image/23 instead of image--23
+     *
+     * @param $url
+     * @param $key
+     * @param $value
+     * @param null $id
+     * @param bool $use_prefix
+     * @return string
+     */
+    function set_param_for($url, $key, $value, $id = NULL, $use_prefix = FALSE)
+    {
+        $retval = $this->call_parent('set_param_for', $url, $key, $value, $id, $use_prefix);
+        while (preg_match("#(image)--([^/]+)#", $retval, $matches)) {
+            $retval = str_replace($matches[0], $matches[1] . '/' . $matches[2], $retval);
+        }
+        return $retval;
     }
 }

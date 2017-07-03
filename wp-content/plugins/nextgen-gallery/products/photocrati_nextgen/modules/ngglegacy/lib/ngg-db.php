@@ -950,9 +950,9 @@ class nggdb
         // Generate SQL query
         $query = array();
         $query[] = "SELECT {$field}, SUBSTR({$field}, %d) AS 'i' FROM {$table}";
-        $query[] = "WHERE ({$field} LIKE '{$slug}-%%' AND CONVERT(SUBSTR({$field}, %d), SIGNED) BETWEEN 1 AND %d) OR {$field} = %s";
+        $query[] = "WHERE ({$field} LIKE %s AND CONVERT(SUBSTR({$field}, %d), SIGNED) BETWEEN 1 AND %d) OR {$field} = %s";
         $query[] = "ORDER BY CAST(i AS SIGNED INTEGER) DESC LIMIT 1";
-        $query = $wpdb->prepare(implode(" ", $query), strlen("{$slug}-")+1, strlen("{$slug}-")+1, PHP_INT_MAX, $slug);
+        $query = $wpdb->prepare(implode(" ", $query), strlen("{$slug}-")+1, $wpdb->esc_like("{$slug}-") . '%', strlen("{$slug}-")+1, PHP_INT_MAX, $slug);
 
         // If the above query returns a result, it means that the slug is already taken
         if (($last_slug = $wpdb->get_var($query))) {

@@ -15,7 +15,7 @@
         } ?>
         <div class="ngg-album">
             <div class="ngg-albumtitle">
-                <a <?php echo $anchor; ?>><?php echo_safe_html($gallery->title); ?></a>
+                <a <?php echo $anchor; ?>><?php print wp_kses($gallery->title, M_I18N::get_kses_allowed_html()); ?></a>
             </div>
             <div class="ngg-albumcontent">
                 <div class="ngg-thumbnail">
@@ -26,7 +26,7 @@
                     </a>
                 </div>
                 <div class="ngg-description">
-                    <p><?php echo_safe_html($gallery->galdesc); ?></p>
+                    <p><?php print wp_kses($gallery->galdesc, M_I18N::get_kses_allowed_html()); ?></p>
                     <?php if (isset($gallery->counter) && $gallery->counter > 0) { ?>
                         <p class="ngg-album-gallery-image-counter"><strong><?php echo $gallery->counter; ?></strong>&nbsp;<?php _e('Photos', 'nggallery'); ?></p>
                     <?php } ?>

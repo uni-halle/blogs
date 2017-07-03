@@ -7,10 +7,11 @@ jQuery(function($) {
             var $this   = $(this);
             var image_id   = $this.attr('data-image-id');
             var image_slug = $this.attr('data-image-slug');
+            var image_url  = $this.attr('data-imagebrowser-url');
 
             var url = window.location.toString();
             url = url.split('/' + photocrati_ajax.ngg_param_slug + '/').shift();
-            if (url.substr(-1) == '/')
+            if (url.substr(-1) === '/')
                 url = url.substr(0, url.length - 1);
 
             image_id = image_slug ? image_slug : image_id;
@@ -22,6 +23,10 @@ jQuery(function($) {
             }
 
             if (success) {
+
+                url = image_url.replace('%STUB%', image_id);
+
+                /* TODO: Remove this entire chunk. It should be unecessary.
                 // Custom permalinks are disabled. So we have to redirect to /index.php/nggallery/image/n?qs=1
                 if (photocrati_ajax.wp_root_url.indexOf('index.php') >= 0) {
                     url = photocrati_ajax.wp_root_url + "/" + photocrati_ajax.ngg_param_slug + "/image/" + image_id;
@@ -29,8 +34,9 @@ jQuery(function($) {
                         url += '?'+window.location.toString().split('?').pop();
                 } else {
                     // Just append the slug
-                    url += "/"+photocrati_ajax.ngg_param_slug+"/image/"+image_id;
-                }
+                    url += "/" + photocrati_ajax.ngg_param_slug + "/image/" + image_id;
+                } */
+
                 window.location = url;
             }
         });
