@@ -522,12 +522,12 @@ class AWPCP_Settings_API {
 		return $slug;
 	}
 
-	public function add_section($group, $name, $slug, $priority, $callback) {
+	public function add_section( $group, $name, $slug, $priority, $callback = null ) {
 		$section = new stdClass();
 		$section->name = $name;
 		$section->slug = $slug;
 		$section->priority = $priority;
-		$section->callback = $callback;
+		$section->callback = $callback ? $callback : array( $this, 'section' );
 		$section->settings = array();
 
 		$this->groups[$group]->sections[$slug] = $section;
@@ -535,7 +535,7 @@ class AWPCP_Settings_API {
 		return "$group:$slug";
 	}
 
-	public function add_setting($key, $name, $label, $type, $default, $helptext, $args=array()) {
+	public function add_setting( $key, $name, $label, $type, $default, $helptext = '', $args = array() ) {
 		// add the setting to the right section and group
 
 		list($group, $section) = explode(':', $key);

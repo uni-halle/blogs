@@ -210,7 +210,7 @@ class AWPCP_ReplyToAdPage extends AWPCP_Page {
             $email->subject = sprintf( $subject, $ad_title );
             $email->to = awpcp_admin_recipient_email_address();
             $email->from = awpcp_format_email_address( $from, $sender );
-            $email->headers['Reply-To'] = awpcp_format_email_address( $from, $sender );
+            $email->headers['Reply-To'] = awpcp_format_email_address( $sender_email, $sender_name );
             $email->prepare( $template, $params );
 
             $result = $email->send();

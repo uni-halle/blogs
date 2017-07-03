@@ -229,11 +229,7 @@ class AWPCP_Facebook {
 
         if ( !$redirect_uri ) {
             // Assume $redirect_uri is the current URL sans stuff added by FB.
-            $redirect_uri  = '';
-            $redirect_uri .= $_SERVER['SERVER_PORT'] == 443 ? 'https://' : 'http://';
-            $redirect_uri .= $_SERVER['HTTP_HOST'];
-            $redirect_uri .= $_SERVER['REQUEST_URI'];
-            $redirect_uri = remove_query_arg( array( 'client_id', 'code', 'error', 'error_reason', 'error_description', 'redirect_uri' ), $redirect_uri );
+            $redirect_uri = remove_query_arg( array( 'client_id', 'code', 'error', 'error_reason', 'error_description', 'redirect_uri' ), awpcp_current_url() );
         }
 
         $response = $this->api_request( '/oauth/access_token',

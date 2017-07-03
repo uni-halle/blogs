@@ -3,14 +3,16 @@
 <?php _e('Someone responded to one of the Ads in your website.', 'another-wordpress-classifieds-plugin'); ?>
 
 
+<?php echo sprintf( __( 'Contact name: %s', 'another-wordpress-classifieds-plugin' ), $sender_name ); ?> 
+<?php echo sprintf( __( 'Contact email: %s', 'another-wordpress-classifieds-plugin' ), $sender_email ); ?> 
+
+
 <?php _e("Contacting about", 'another-wordpress-classifieds-plugin'); ?>: <?php echo $ad_title; ?> 
 <?php echo urldecode( $ad_url ); ?> 
 
 <?php _ex("Message", 'reply email', 'another-wordpress-classifieds-plugin'); ?>:
 
     <?php echo $message; ?> 
-
-<?php _e("Reply to", 'another-wordpress-classifieds-plugin'); ?>: <?php echo $sender_name; ?>, <?php echo $sender_email; ?>
 
 
 <?php echo $nameofsite; ?> 

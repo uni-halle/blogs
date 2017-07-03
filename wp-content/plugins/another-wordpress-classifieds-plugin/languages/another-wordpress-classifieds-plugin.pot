@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/another-wordpress-classifieds-"
 "plugin\n"
-"POT-Creation-Date: 2017-04-25 03:16:49+00:00\n"
+"POT-Creation-Date: 2017-05-08 16:43:54+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -591,7 +591,7 @@ msgstr ""
 msgid "The access key was sent to %s."
 msgstr ""
 
-#: admin/admin-panel-listings.php:555 frontend/page-edit-ad.php:519
+#: admin/admin-panel-listings.php:555 frontend/page-edit-ad.php:528
 msgid "There was an error trying to send the email to %s."
 msgstr ""
 
@@ -1873,7 +1873,7 @@ msgstr ""
 msgid "Coupon/Discount"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:93 awpcp.php:922
+#: admin/templates/admin-sidebar.tpl.php:93 awpcp.php:929
 msgid "Subscriptions"
 msgstr ""
 
@@ -2057,63 +2057,67 @@ msgstr ""
 msgid "Google Checkout"
 msgstr ""
 
-#: awpcp.php:929 templates/components/media-manager.tpl.php:46
+#: awpcp.php:922
+msgid "Stripe"
+msgstr ""
+
+#: awpcp.php:936 templates/components/media-manager.tpl.php:46
 msgid "Videos"
 msgstr ""
 
-#: awpcp.php:937
+#: awpcp.php:944
 msgid "XML Sitemap"
 msgstr ""
 
-#: awpcp.php:944
+#: awpcp.php:951
 msgid "ZIP Code Search Module"
 msgstr ""
 
-#: awpcp.php:1220
+#: awpcp.php:1227
 msgid "This field is required."
 msgstr ""
 
-#: awpcp.php:1221 frontend/page-edit-ad.php:128 frontend/page-edit-ad.php:435
+#: awpcp.php:1228 frontend/page-edit-ad.php:128 frontend/page-edit-ad.php:435
 #: includes/settings-api.php:229
 msgid "Please enter a valid email address."
 msgstr ""
 
-#: awpcp.php:1222 awpcp.php:1223
+#: awpcp.php:1229 awpcp.php:1230
 msgid "Please enter a valid URL."
 msgstr ""
 
-#: awpcp.php:1224
+#: awpcp.php:1231
 msgid "Please enter a valid number."
 msgstr ""
 
-#: awpcp.php:1225
+#: awpcp.php:1232
 msgid "Please enter a valid amount."
 msgstr ""
 
-#: awpcp.php:1235
+#: awpcp.php:1242
 msgctxt "[UI Datepicker] Display text for previous month link"
 msgid "&#x3c;Prev"
 msgstr ""
 
-#: awpcp.php:1237
+#: awpcp.php:1244
 msgctxt "[UI Datepicker] Display text for next month link"
 msgid "Next&#x3e;"
 msgstr ""
 
-#: awpcp.php:1252
+#: awpcp.php:1259
 msgctxt "[UI Datepicker] The first day of the week, Sun = 0, Mon = 1, ..."
 msgid "0"
 msgstr ""
 
-#: awpcp.php:1258
+#: awpcp.php:1265
 msgid "There are files currently being uploaded."
 msgstr ""
 
-#: awpcp.php:1259
+#: awpcp.php:1266
 msgid "There are files pending to be uploaded."
 msgstr ""
 
-#: awpcp.php:1260
+#: awpcp.php:1267
 msgid "You haven't uploaded any images or files."
 msgstr ""
 
@@ -2189,7 +2193,7 @@ msgid "Please go to the Ad Management panel to edit your Ads."
 msgstr ""
 
 #: frontend/page-edit-ad.php:46 frontend/page-edit-ad.php:119
-#: frontend/page-edit-ad.php:428
+#: frontend/page-edit-ad.php:491
 msgid "Click here"
 msgstr ""
 
@@ -2197,7 +2201,7 @@ msgstr ""
 msgid "You are not allowed to edit the specified Ad."
 msgstr ""
 
-#: frontend/page-edit-ad.php:118 frontend/page-edit-ad.php:427
+#: frontend/page-edit-ad.php:118 frontend/page-edit-ad.php:490
 msgid ""
 "You are currently not logged in, if you have an account in this website you "
 "can log in and go to the Ad Management panel to edit your Ads."
@@ -2267,13 +2271,13 @@ msgid ""
 "The email address you entered does not match any of the Ads in our system."
 msgstr ""
 
-#: frontend/page-edit-ad.php:478
+#: frontend/page-edit-ad.php:476
 msgid ""
 "The email address you entered does not match any of the listing in our "
 "system."
 msgstr ""
 
-#: frontend/page-edit-ad.php:516
+#: frontend/page-edit-ad.php:525
 msgid "The access keys were sent to %s."
 msgstr ""
 

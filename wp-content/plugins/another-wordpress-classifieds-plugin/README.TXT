@@ -3,9 +3,9 @@ Contributors: awpcp
 Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified theme,wp classified
 Requires at least: 4.3
-Tested up to: 4.7.3
-Last Updated: 2017-Apr-25
-Stable tag: tags/3.7.6
+Tested up to: 4.7.6
+Last Updated: 2017-Jun-5
+Stable tag: 3.7.7
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -239,6 +239,12 @@ Yes it can. AWPCP comes with many user-provided translations under the /language
 Yes it is. However, you cannot "network-activate" the plugin (as this will share the database). Activate it on only the subsites on which you need a directory.  This can be done under Plugins->Add New as the Administrator user.  Do not "network activate" AWPCP as the "super admin".
 
 == Changelog ==
+= Version 3.7.7 =
+* Include Puerto Rico in the list of USA states for payment gateways.
+* Do not show error message before form is submitted.
+* Redirect URI for Facebook API was being generated incorrectly.
+* Fix behavior of contact form.
+
 = Version 3.7.6 =
 * Show server's IP address in Licenses settings tab.
 * Show version of cURL in Debug area

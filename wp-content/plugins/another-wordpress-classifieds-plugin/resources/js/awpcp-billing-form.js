@@ -119,6 +119,7 @@ if (typeof jQuery !== 'undefined') {
                         { code: 'OK', name: 'Oklahoma' },
                         { code: 'OR', name: 'Oregon' },
                         { code: 'PA', name: 'Pennsylvania' },
+                        { code: 'PR', name: 'Puerto Rico' },
                         { code: 'RI', name: 'Rhode Island' },
                         { code: 'SC', name: 'South Carolina' },
                         { code: 'SD', name: 'South Dakota' },
