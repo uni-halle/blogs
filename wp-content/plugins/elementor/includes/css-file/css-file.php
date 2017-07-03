@@ -64,8 +64,9 @@ abstract class CSS_File {
 			$meta['css'] = '';
 		} else {
 			$file_created = false;
+			$is_external_file = ( 'internal' !== get_option( 'elementor_css_print_method' ) );
 
-			if ( wp_is_writable( dirname( $this->path ) ) ) {
+			if ( $is_external_file && wp_is_writable( dirname( $this->path ) ) ) {
 				$file_created = file_put_contents( $this->path, $this->css );
 			}
 
@@ -145,6 +146,7 @@ abstract class CSS_File {
 						$this->fonts[] = $value_to_insert;
 					}
 
+					/** @var Base_Data_Control $control_obj */
 					$control_obj = Plugin::$instance->controls_manager->get_control( $parser_control['type'] );
 
 					$parsed_value = $control_obj->get_style_value( strtolower( $matches[2] ), $value_to_insert );
