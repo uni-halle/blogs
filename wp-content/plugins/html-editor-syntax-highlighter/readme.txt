@@ -1,42 +1,58 @@
 === HTML Editor Syntax Highlighter ===
-Contributors: nixdns, arniebradfo, rraub, collinprice,
+Contributors: nixdns, arniebradfo, rraub, collinprice
 Donate link: https://www.paypal.me/mukhortov/5
-Tags: editor, html editor, text editor, post editor, syntax, highlighting, highlighter, syntax highlighting, syntax highlighter, codemirror, code, code highlighter, code coloring
+Tags: syntax highlighter, codemirror, text editor, code highlighter, code coloring, editor, html editor, theme editor, plugin editor, syntax, highlighting, highlighter, syntax highlighting, codemirror.js, code,
 Requires at least: 4.0.11
-Tested up to: 4.5.2
-Stable tag: 1.7.2
+Tested up to: 4.7.3
+Stable tag: 2.0.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Add syntax highlighting to the HTML editor using Codemirror.js
+Add syntax highlighting to the all WordPress code editors using Codemirror.js
 
 == Description ==
 
-Add syntax highlighting in the WordPress Post & Page HTML/text editor using Codemirror.js
+Add syntax highlighting in the WordPress Post & Page HTML text editor and the Theme & Plugin editors using Codemirror.js
 
 = Features =
 
 * Syntax highlighting in the Post/Page HTML editor
-* _NEW:_ Syntax highlighting for WordPress shortcodes
+* _NEW:_ Syntax highlighting in the Theme & Plugin editors
+* Syntax highlighting for WordPress shortcodes
 * Save your posts and pages pressing Ctrl+S (Cmd+S on Mac)
 * Restore cursor position after page is reloaded
-* _NEW:_ Huge Selection of themes
+* Huge Selection of themes and other customization options
 * Fullscreen mode: toggle with F11/Esc hotkeys
 
 If you like the plugin, please [donate](https://www.paypal.me/mukhortov/5) and leave a review :)
 
 If you would like to contribute to this plugin, view the [github repo](https://github.com/mukhortov/HESH-WordPress-Plugin).
 
+__Browser Support:__
+Everything except Internet Expolorer 10 and under. If you are using Internet Explorer you should get a [better browser](https://www.mozilla.org/en-US/firefox/new/).
+
 == Installation ==
 
-1. Upload the 'html-editor-syntax-highlighter' directory to the '/wp-content/plugins/' directory
+1. Install HTML Editor Syntax Highlighter either via the WordPress.org plugin repository or by uploading the files to your server
 2. Activate the plugin on the 'Plugins' page
+3. Enjoy
 
 == Changelog ==
 
+= 2.0.0 =
+* now adjusts to the _'Enable full-height editor and distraction-free functionality'_ setting
+* syntax highlighting on Theme and Plugin Editor pages
+* fixed bug: native wp editor buttons work on content - no longer overwrites with emulating buttons
+* __Settings:__
+	* added an extendable settings panel
+	* saves settings to WordPress user profile
+	* added more text customization settings
+* basically rewrote the whole codebase
+
 = 1.7.2 =
-* fixed bug: code mirror not initializing properly when new user tries to edit post for the first time
-* fixed bug: CodeMirror no longer trying to load on "All Post" and "All Pages"
+* fixed bug: pre v5.4 php was causing an error - `func_that_returns_array()['index']` syntax is [not allowed](http://php.net/manual/en/language.types.array.php#example-105)
+* fixed bug: CodeMirror not initializing properly when new user tries to edit post for the first time
+* fixed bug: CodeMirror no longer trying to load on "All Posts" and "All Pages"
 * fixed bug: Font and theme were reset to default when switching to the visual editor and back
 
 = 1.7.1 =
@@ -160,8 +176,7 @@ Bug fix (thanks to collinprice):
 Initial release.
 
 
-
-
 == Screenshots ==
 1. Syntax highlighting in the Post/Page HTML editor.
-2. Syntax highlighting in the Post/Page HTML editor - full screen mode.
+2. Settings Panel.
+3. Syntax highlighting in the Theme/Plugin editor.
