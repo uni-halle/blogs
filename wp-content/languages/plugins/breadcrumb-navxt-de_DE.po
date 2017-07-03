@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Breadcrumb NavXT - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-05-02 12:31:14+0000\n"
+"PO-Revision-Date: 2017-06-01 10:11:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -196,7 +196,7 @@ msgstr "Die Einstellungen haben sich nicht geändert, nichts zu speichern."
 #: includes/class.mtekk_adminkit.php:654 includes/class.mtekk_adminkit.php:678
 #: includes/class.mtekk_adminkit.php:695
 msgid "Undo"
-msgstr "Rückgänig machen"
+msgstr "Rückgängig machen"
 
 #: includes/class.mtekk_adminkit.php:536 includes/class.mtekk_adminkit.php:549
 msgid "Undo the options save."
@@ -240,11 +240,11 @@ msgstr "Einstellungen"
 
 #: class.bcn_widget.php:122
 msgid "Hide the trail on the front page"
-msgstr "Verstecke den Trail auf der Startseite"
+msgstr "Den Pfad auf der Startseite verstecken"
 
 #: class.bcn_widget.php:120
 msgid "Reverse the order of the trail"
-msgstr "Die Reihenfolge des Trails umkehren"
+msgstr "Die Reihenfolge des Pfads umkehren"
 
 #: class.bcn_widget.php:118
 msgid "Link the breadcrumbs"
@@ -289,6 +289,10 @@ msgstr "Warnung: Individuelle Seiten-Einstellungen können alle Einstellungen, d
 #: class.bcn_network_admin.php:458 class.bcn_network_admin.php:476
 msgid "Warning: Individual site settings will override any settings set in this page."
 msgstr "Warnung: Individuelle Seiten-Einstellungen überschreiben alle Einstellungen, die auf dieser Seite vorgenommen werden."
+
+#: class.bcn_breadcrumb_trail.php:466
+msgid "$post global is not of type WP_Post"
+msgstr "$post global ist nicht vom Typ WP_Post"
 
 #: class.bcn_breadcrumb_trail.php:102
 msgid "404"

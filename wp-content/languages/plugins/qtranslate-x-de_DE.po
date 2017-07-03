@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Plugins - qTranslate X - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-10-07 19:57:10+0000\n"
+"PO-Revision-Date: 2017-05-22 19:15:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: de\n"
 "Project-Id-Version: Plugins - qTranslate X - Stable (latest release)\n"
 
@@ -118,7 +118,7 @@ msgstr "Erlaubt es dem Besucher, zwischen mehreren Sprachen zu wählen."
 
 #: qtranslate_core.php:1472
 msgid "You may click the link to switch the active language."
-msgstr "Klicken Sie auf den Link, um die aktuelle Sprache zu ändern."
+msgstr "Klicke auf den Link, um die aktuelle Sprache zu ändern."
 
 #: qtranslate_core.php:1471
 msgid "For the sake of viewer convenience, the content is shown below in the alternative language."
@@ -126,7 +126,7 @@ msgstr "Der Inhalt wird unten in einer verfügbaren Sprache angezeigt."
 
 #: qtranslate_core.php:1469
 msgid "You may click one of the links to switch the site language to another available language."
-msgstr "Sie können einen Link anklicken, um zu einer anderen verfügbaren Sprache zu wechseln."
+msgstr "Du kannst einen Link anklicken, um zu einer anderen verfügbaren Sprache zu wechseln."
 
 #: qtranslate_core.php:1466
 msgid "For the sake of viewer convenience, the content is shown below in one of the available alternative languages."
@@ -206,7 +206,7 @@ msgstr "Das neue Format nutzt ausschließlich eckige Klammern (%s) als Steuerzei
 
 #: admin/qtx_import_export.php:194
 msgid "Convert database to the \"square bracket only\" style."
-msgstr "Datenbank in neues Format \"Nur eckige Klammern  \" umwandeln."
+msgstr "Datenbank in neues Format „Nur eckige Klammern“ umwandeln."
 
 #: admin/qtx_import_export.php:193
 msgid "Do not convert database"
@@ -246,7 +246,7 @@ msgstr "Plugin"
 
 #: admin/qtx_import_export.php:109
 msgid "Applicable options have been exported to plugin %s. If you have done some post or page updates after migrating from %s, then \"%s\" operation is also required to convert the content to \"dual language tag\" style in order for plugin %s to function."
-msgstr "Anwendbare Optionen wurden zum %s Plugin exportiert. Falls Sie einige Beiträge oder eine Seiten-Aktualisierung nach der Migration von %s vorgenommen haben, dann  ist Operation \"%s\" ebenfalls erforderlich, um den Inhalt  ins  \"dual language tag\"-Stil zu konvertieren, damit das Plugin %s funktioniert."
+msgstr "Anwendbare Optionen wurden zum %s Plugin exportiert. Falls du Beiträge oder Seiten nach der Migration von %s aktualisiert hast, dann ist der Vorgang „%s“ ebenfalls erforderlich, um den Inhalt in den „dual language tag“-Stil zu konvertieren, damit das Plugin %s funktioniert."
 
 #: admin/qtx_import_export.php:101
 msgid "This is a one-time message, which you will not see again, unless the same import is repeated."
@@ -262,7 +262,7 @@ msgstr "Anwendbare Optionen und Taxonomie-Namen sind vom %s Plugin importiert wo
 
 #: admin/qtx_import_export.php:84
 msgid "Option \"%s\" has also been turned on, as the most common case for importing configuration from %s. You may turn it off manually if your setup does not require it. Refer to %sFAQ%s for more information."
-msgstr "Option \"%s\" wurde ebenfalls eingeschaltet, wie beim häufigsten Fall für den Import der Konfiguration von %s. Sie können ihn manuell auszuschalten wenn Ihre Einstellungen es nicht erfordern. Siehe %sFAQ%s für weitere Informationen."
+msgstr "Die Option „%s“ wurde ebenfalls eingeschaltet, wie beim häufigsten Fall für den Import der Konfiguration von %s. Du kannst ihn manuell ausschalten, wenn deine Einstellungen es nicht erfordern. Siehe %sFAQ%s für weitere Informationen."
 
 #: admin/qtx_configuration.php:699
 msgid "Add Language &raquo;"
@@ -379,7 +379,7 @@ msgstr "Diese Liste wird automatisch aktualisiert, sobald ein qTtranslate-X-Inte
 
 #: admin/qtx_configuration.php:499
 msgid "List of configuration files. Unless prefixed with \"%s\", paths are relative to %s variable: %s. Absolute paths are also acceptable."
-msgstr "Diese Konfigurationsdateien werden eingebunden. Nutzen Sie das Prefix \"%s\" um auf eine Datei im Plugin-Verzeichnis zu verweisen. Ansonsten wird als Basis-Pfad der Pfad der Variable %s verwendet: %s. Absolute Pfade sind ebenfalls erlaubt."
+msgstr "Diese Konfigurationsdateien werden eingebunden. Nutze das Prefix „%s“ um auf eine Datei im Plugin-Verzeichnis zu verweisen. Ansonsten wird als Basis-Pfad der Pfad der Variable %s verwendet: %s. Absolute Pfade sind ebenfalls erlaubt."
 
 #: admin/qtx_configuration.php:495
 msgid "Read %sIntegration Guide%s for more information on how to customize the configuration of %s."
@@ -753,7 +753,7 @@ msgstr "Anklicken, um zu %s zu wechseln."
 
 #: admin/qtx_configuration.php:189
 msgid "Note to developers: ensure that front-end filter %s is also active on admin side, otherwise the changes it makes will not show up here. Having this filter active on admin side does not affect admin pages functionality, except this field."
-msgstr "Hinweis an Entwickler: Bitte stellen Sie sicher, dass der Frontend-Filter %s ebenfalls im Backend-Bereich aktiv ist, sonst sind entsprechende Änderungen hier nicht zu sehen. Diesen Filter im Backend zu aktivieren bringt keine Probleme im Backend, ermöglicht aber die korrekte Anzeige dieser Konfigurations-Überprüfung."
+msgstr "Hinweis an Entwickler: Bitte stelle sicher, dass der Frontend-Filter %s ebenfalls im Backend-Bereich aktiv ist, sonst sind entsprechende Änderungen hier nicht zu sehen. Diesen Filter im Backend zu aktivieren bringt keine Probleme im Backend, ermöglicht aber die korrekte Anzeige dieser Konfigurations-Überprüfung."
 
 #: admin/qtx_configuration.php:187 admin/qtx_configuration.php:503
 #: admin/qtx_configuration.php:512
@@ -1129,15 +1129,15 @@ msgstr "Übersetzungs-Dienst"
 
 #: admin/qtx_activation_hook.php:924
 msgid "Please, help us to make a decision on \"%s\" feature, press the button below."
-msgstr "Bitte helfen Sie uns, über die Zukunft der \"%s\"-Funktion zu entscheiden. Bitte wählen Sie: "
+msgstr "Bitte hilf uns, über die Zukunft der „%s“-Funktion zu entscheiden. Bitte wähle: "
 
 #: admin/qtx_activation_hook.php:910
 msgid "Thank me again in a few months!"
-msgstr "Danken Sie dem Plugin-Entwickler nochmal in ein paar Monaten!"
+msgstr "Danke dem Plugin-Entwickler nochmal in ein paar Monaten!"
 
 #: admin/qtx_activation_hook.php:907
 msgid "%sReview the plugin%s at WordPress site."
-msgstr "%sSchreiben Sie eine Bewertung%s auf Wordpress.org."
+msgstr "%sSchreibe eine Bewertung%s auf Wordpress.org."
 
 #: admin/qtx_activation_hook.php:905
 msgid "%sShare a new idea%s with our community."

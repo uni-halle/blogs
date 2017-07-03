@@ -1,0 +1,288 @@
+# Translation of Plugins - PDF Embedder - Stable (latest release) in Turkish
+# This file is distributed under the same license as the Plugins - PDF Embedder - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-06-03 09:52:25+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: tr\n"
+"Project-Id-Version: Plugins - PDF Embedder - Stable (latest release)\n"
+
+#: pdf_embedder.php:130
+msgid "The user can also touch and scroll continuously between all pages of the PDF which is much easier than clicking the next/prev buttons to navigate."
+msgstr "Kullanıcı PDF'nin sayfaları arasında dokunup kaydırma yöntemi ile de kesintisiz olarak gezinebilir ve bu, sonraki/önceki butonlarını kullanmaktan çok daha kolaydır. "
+
+#: pdf_embedder.php:102
+msgid "Allow user to scroll up/down between all pages in the PDF"
+msgstr "Kullanıcının PDF'nin tüm sayfaları arasında yukarı/aşağı kaydırma ile gezinmesine izin ver."
+
+#: pdf_embedder.php:100
+msgid "Continous Page Scrolling"
+msgstr "Sürekli sayfa kaydırma"
+
+#: pdf_embedder.php:87
+msgid "Open links in a new browser tab/window"
+msgstr "Bağlantıları web tarayıcısının yeni bir sekmesi/penceresinde aç"
+
+#: pdf_embedder.php:85
+msgid "External Links"
+msgstr "Dış bağlantılar"
+
+#: pdf_embedder.php:95
+msgid "Count number of views and downloads"
+msgstr "Görüntülemeleri ve indirilmeleri say"
+
+#: pdf_embedder.php:80
+msgid "Provide PDF download button on toolbar"
+msgstr "Araç çubuğunda bir PDF indirme düğmesi sağla"
+
+#: pdf_embedder.php:76
+msgid "Options only available in Premium versions"
+msgstr "Seçenekler sadece Premium sürümde mevcuttur"
+
+#: pdf_embedder.php:195
+msgid "Downloads/Views"
+msgstr "İndirilmeler/Görüntülemeler"
+
+#: pdf_embedder.php:193
+msgid "Track downloads and views with <a href=\"%s\" target=\"_blank\">PDF Embedder Premium</a>"
+msgstr "İndirmeleri ve görüntülemeleri <a href=\"%s\" target=\"_blank\">PDF Embedder Premium</a> ile takip et"
+
+#: pdf_embedder.php:106
+msgid "Find out more about <a href=\"%s\" target=\"_blank\">Premium Versions of the plugin on our website</a>."
+msgstr "<a href=\"%s\" target=\"_blank\">Eklentinin Premium sürümleri hakkında web sitemizden</a> daha fazla bilgi alabilirsiniz. "
+
+#: pdf_embedder.php:93
+msgid "Track Views/Downloads"
+msgstr "Görüntülemeleri/İndirilmeleri takip et"
+
+#. Author of the plugin/theme
+msgid "Dan Lester"
+msgstr "Dan Lester"
+
+#. Description of the plugin/theme
+msgid "Embed PDFs straight into your posts and pages, with flexible width and height. No third-party services required."
+msgstr "PDF'leri yazılarına ve sayfalarına, esnek genişlik ve yükseklik ile yerleştir. Üçüncü parti hizmetleri kullanmaya gerek yok. "
+
+#. #-#-#-#-#  tmp-pdf-embedder.pot (PDF Embedder 3.0.1)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  tmp-pdf-embedder.pot (PDF Embedder 3.0.1)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "http://wp-pdf.com/"
+msgstr "http://wp-pdf.com/"
+
+#: pdf_embedder.php:121
+msgid ""
+"Our <b>PDF Embedder Premium</b> plugin solves this problem with an intelligent 'full screen' mode.\n"
+"            When the document is smaller than a certain width, the document displays only as a 'thumbnail' with a large\n"
+"            'View in Full Screen' button for the\n"
+"            user to click when they want to study your document.\n"
+"            This opens up the document so it has the full focus of the mobile browser, and the user can move about the\n"
+"            document without hitting other parts of\n"
+"            the web page by mistake. Click Exit to return to the regular web page."
+msgstr ""
+"<b>PDF Embedder Premium</b> eklentimiz bu sorunu akıllı bir 'tam ekran' modu ile çözer.\n"
+"Belge belli bir genişlikten küçük ise kullanıcının belgeyi incelemek istediğinde tıklayabileceği büyük bir \"Tam ekran görüntüle\" düğmesiyle beraber sadece küçük bir resim olarak görünür.\n"
+"Bu, belgeyi mobil tarayıcının tamamını kaplamış şekilde açar ve kullanıcı web sayfasının diğer kısımlarına yanlışlıkla tıklamadan belgenin üzerinde hareket edebilir. Web sayfasının normal haline dönmek için kapata tıklayınız. "
+
+#: pdf_embedder.php:117
+msgid ""
+"This free version of the plugin should work on most mobile browsers, but it will be cumbersome for users with small screens - it is difficult to position\n"
+"            the document entirely within the screen, and your users' fingers may catch the entire browser page when\n"
+"            they're trying only to move about the document..."
+msgstr "Eklentinin bu ücretsiz sürümü çoğu mobil tarayıcıda çalışacaktır ama küçük ekranlı kullanıcılar için uğraştırıcı olacaktır - belgeyi ekrana tam sığacak şekilde yerleştirmek zordur ve kullanıcılarınızın parmakları sadece belgeyi hareket ettirmek isterken tarayıcı sayfasının tamamını yakalayabilir."
+
+#: pdf_embedder.php:116
+msgid "Mobile-friendly embedding using PDF Embedder Premium"
+msgstr "PDF Embedder Premium ile mobil cihazlara uygun PDF yerleştirme. "
+
+#: pdf_embedder.php:78
+msgid "Download Button"
+msgstr "İndirme düğmesi"
+
+#: core/core_pdf_embedder.php:587
+msgid "Settings"
+msgstr "Seçenekler"
+
+#: core/core_pdf_embedder.php:481
+msgid "Settings saved"
+msgstr "Ayarlar Kaydedildi."
+
+#: core/core_pdf_embedder.php:435
+msgid "Unspecified error"
+msgstr "Tanımlanmamış hata"
+
+#: core/core_pdf_embedder.php:429
+msgid "Height must be \"max\" or an integer (number of pixels)"
+msgstr "Yükseklik \"max\" ya da bir tam sayı (piksel sayısı) olmalıdır "
+
+#: core/core_pdf_embedder.php:428
+msgid "Width must be \"max\" or an integer (number of pixels)"
+msgstr "Genişlik \"max\" ya da bir tam sayı (piksel sayısı) olmalıdır "
+
+#: core/core_pdf_embedder.php:382 pdf_embedder.php:133
+msgid "See our website <a href=\"%s\">wp-pdf.com</a> for more details and purchase options."
+msgstr "Detaylı bilgi ve satın alma seçenekleri için web sitemizi <a href=\"%s\">wp-pdf.com</a> ziyaret ediniz. "
+
+#: core/core_pdf_embedder.php:374
+msgid "Protect your PDFs using PDF Embedder Secure"
+msgstr "PDF Embedder Secure kullanarak PDF'lerinizi koruyun"
+
+#: core/core_pdf_embedder.php:350
+msgid "You can override these defaults for specific embeds by modifying the shortcodes - see <a href=\"%s\" target=\"_blank\">instructions</a>."
+msgstr "Belirli yerleştirmeler için kısa kodları düzenleyerek bu varsayılanları geçersiz kılabilirsiniz. <a href=\"%s\" target=\"_blank\">Yönergelere</a> bakın."
+
+#: core/core_pdf_embedder.php:338
+msgid "Toolbar always visible"
+msgstr "Araç çubuğu her zaman görünür olsun"
+
+#: core/core_pdf_embedder.php:333
+msgid "Toolbar appears only on hover over document"
+msgstr "Araç çubuğu sadece imleç belge üzerindeyken görünür"
+
+#: core/core_pdf_embedder.php:330
+msgid "Toolbar Hover"
+msgstr "Araç çubuğu bağlantı vurgusu"
+
+#: core/core_pdf_embedder.php:324
+msgid "Both"
+msgstr "Her ikisi de"
+
+#: core/core_pdf_embedder.php:323
+msgid "Bottom"
+msgstr "Aşağıda"
+
+#: core/core_pdf_embedder.php:322
+msgid "Top"
+msgstr "Yukarda"
+
+#: core/core_pdf_embedder.php:320
+msgid "Toolbar Location"
+msgstr "Araç çubuğu konumu"
+
+#: core/core_pdf_embedder.php:316
+msgid "Enter <b>max</b> or an integer number of pixels"
+msgstr "<b>max</b> değerinde ya da tam sayı bir piksel sayısı giriniz. "
+
+#: core/core_pdf_embedder.php:312
+msgid "Height"
+msgstr "Ağırlık"
+
+#: core/core_pdf_embedder.php:308
+msgid "Width"
+msgstr "Genişlik"
+
+#: core/core_pdf_embedder.php:306
+msgid "Default Viewer Settings"
+msgstr "Görüntüleyicinin varsayılan ayarları "
+
+#: core/core_pdf_embedder.php:278
+msgid "Save Changes"
+msgstr "Kaydet"
+
+#: core/core_pdf_embedder.php:250
+msgid "Mobile"
+msgstr "Mobil"
+
+#: core/core_pdf_embedder.php:249
+msgid "Main Settings"
+msgstr "Ana ayarlar"
+
+#: core/core_pdf_embedder.php:240
+msgid ""
+"From the post editor, click Add Media, and then drag-and-drop your PDF file into the media library.\n"
+"                When you insert the PDF into your post, it will automatically embed using the plugin's viewer."
+msgstr ""
+"Yazı editöründen ortam ekleye tıklayın ve PDF dosyanızı medya kütüphanesine sürükleyip bırakın.\n"
+"PDF'yi yazınıza eklediğinizde, eklentinin görüntüleyicisini kullanarak otomatik olarak yerleşecektir. "
+
+#: core/core_pdf_embedder.php:239
+msgid "To use the plugin, just embed PDFs in the same way as you would normally embed images in your posts/pages - but try with a PDF file instead."
+msgstr "Eklentiyi kullanmak için, PDFleri yazılarınıza/sayfalarınıza normalde nasıl görüntü dosyası ekliyorsanız öyle ekleyin ama bunu bir PDF dosyasıyla yapın. "
+
+#: core/core_pdf_embedder.php:237
+msgid "PDF Embedder setup"
+msgstr "PDF Embedder kurulumu"
+
+#. #-#-#-#-#  tmp-pdf-embedder.pot (PDF Embedder 3.0.1)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: core/core_pdf_embedder.php:212 core/core_pdf_embedder.php:217
+msgid "PDF Embedder"
+msgstr "PDF Embedder"
+
+#: core/core_pdf_embedder.php:212 core/core_pdf_embedder.php:217
+msgid "PDF Embedder settings"
+msgstr "PDF Embedder ayarları"
+
+#: core/core_pdf_embedder.php:68
+msgid "PDF <span class=\"count\">(%s)</span>"
+msgid_plural "PDFs <span class=\"count\">(%s)</span>"
+msgstr[0] "PDF <span class=\"count\">(%s)</span>"
+msgstr[1] "PDFler <span class=\"count\">(%s)</span>"
+
+#: core/core_pdf_embedder.php:68
+msgid "Manage PDFs"
+msgstr "PDF'leri yönet"
+
+#: core/core_pdf_embedder.php:68
+msgid "PDFs"
+msgstr "PDF'ler"
+
+#: core/core_pdf_embedder.php:50
+msgid "View in Full Screen"
+msgstr "Tam ekran görüntüle"
+
+#: core/core_pdf_embedder.php:49
+msgid "PDF page width or height are invalid"
+msgstr "PDF sayfa genişliği ve yüksekliği geçersiz"
+
+#: core/core_pdf_embedder.php:48
+msgid "Click here for more info"
+msgstr "Daha fazla bilgi için buraya tıklayın"
+
+#: core/core_pdf_embedder.php:47
+msgid "Error: URL to the PDF file must be on exactly the same domain as the current web page."
+msgstr "Hata: PDF dosyasının bağlantısı, yerleştirilmek istendiği sayfa ile aynı alan adında olmalıdır. "
+
+#: core/core_pdf_embedder.php:46
+msgid "Full Screen"
+msgstr "Tam Ekran"
+
+#: core/core_pdf_embedder.php:45
+msgid "Download PDF"
+msgstr "PDF'yi indir"
+
+#: core/core_pdf_embedder.php:44 core/core_pdf_embedder.php:251
+msgid "Secure"
+msgstr "Güvenli"
+
+#: core/core_pdf_embedder.php:43
+msgid "Zoom Out"
+msgstr "Küçült"
+
+#: core/core_pdf_embedder.php:42
+msgid "Zoom In"
+msgstr "Büyüt"
+
+#: core/core_pdf_embedder.php:41
+msgid "Next page"
+msgstr "Sonraki sayfa"
+
+#: core/core_pdf_embedder.php:40
+msgid "Previous page"
+msgstr "Önceki sayfa"
+
+#: core/core_pdf_embedder.php:39
+msgid "Zoom"
+msgstr "Yakınlaşma"
+
+#: core/core_pdf_embedder.php:38
+msgid "Page"
+msgstr "Sayfa"
+
+#: core/core_pdf_embedder.php:37
+msgid "Loading..."
+msgstr "Yükleniyor ..."

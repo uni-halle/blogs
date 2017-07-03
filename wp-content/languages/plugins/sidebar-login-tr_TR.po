@@ -1,0 +1,153 @@
+# Translation of Plugins - Sidebar Login - Stable (latest release) in Turkish
+# This file is distributed under the same license as the Plugins - Sidebar Login - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-05-25 08:46:39+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: tr\n"
+"Project-Id-Version: Plugins - Sidebar Login - Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "http://mikejolley.com"
+msgstr "http://mikejolley.com"
+
+#. Author of the plugin/theme
+msgid "Mike Jolley"
+msgstr "Mike Jolley"
+
+#. Description of the plugin/theme
+msgid "Allows you to easily add an ajax-enhanced login widget to the sidebar on your WordPress site."
+msgstr "Wordpres sitenizin yan sütununa kolayca AJAX destekli giriş formu ekleyin."
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/sidebar-login/"
+msgstr "http://wordpress.org/extend/plugins/sidebar-login/"
+
+#: sidebar-login.php:179
+msgid "Please enter your username and password to login."
+msgstr "Giriş yapabilmek için lütfen kullanıcı adı ve şifrenizi giriniz."
+
+#: sidebar-login.php:81
+msgid "Please enter your password"
+msgstr "Lütfen kullanıcı şifrenizi giriniz"
+
+#: sidebar-login.php:80
+msgid "Please enter your username"
+msgstr "Lütfen kullanıcı adınızı giriniz"
+
+#: includes/class-sidebar-login-widget.php:302
+msgid "Login &rarr;"
+msgstr "Giriş &rarr;"
+
+#: includes/class-sidebar-login-widget.php:301
+msgid "Remember Me"
+msgstr "Beni Hatırla"
+
+#: includes/class-sidebar-login-widget.php:300
+msgid "Password"
+msgstr "Şifre"
+
+#: includes/class-sidebar-login-widget.php:299
+msgid "Username"
+msgstr "Kullanıcı Adı"
+
+#: includes/class-sidebar-login-widget.php:204
+msgid "Lost Password"
+msgstr "Şifremi Unuttum"
+
+#: includes/class-sidebar-login-widget.php:187
+#: includes/class-sidebar-login-widget.php:194
+msgid "Register"
+msgstr "Kaydol"
+
+#: includes/class-sidebar-login-widget.php:84
+msgid "Logout Redirect URL"
+msgstr "Çıkış yapanların yönlendirileceği URL"
+
+#: includes/class-sidebar-login-widget.php:79
+msgid "Show logged-in user avatar"
+msgstr "Giriş yapan kullanıcıların resimlerini göster."
+
+#: includes/class-sidebar-login-widget.php:75
+msgid ""
+"Dashboard | %admin_url%\n"
+"Profile | %admin_url%/profile.php\n"
+"Logout | %logout_url%"
+msgstr ""
+"Pano | %admin_url%\n"
+"Profil | %admin_url%/profile.php\n"
+"Çıkış | %logout_url%"
+
+#: includes/class-sidebar-login-widget.php:74
+msgid "<a href=\"%s\">Capability</a> (optional) refers to the type of user who can view the link."
+msgstr "<a href=\"%s\">Erişilebilirlik</a> (opsiyonel) linkin hangi kullanıcı tiplerine gösterileceğini belirtir."
+
+#: includes/class-sidebar-login-widget.php:73
+msgid "Text | HREF | Capability"
+msgstr "Yazı | HREF | Erişilebilirlik"
+
+#: includes/class-sidebar-login-widget.php:69
+#: includes/class-sidebar-login-widget.php:248
+msgid "Welcome %username%"
+msgstr "Merhaba %username%"
+
+#: includes/class-sidebar-login-widget.php:68
+msgid "Logged-in title"
+msgstr "Oturum açanların göreceği başlık"
+
+#: includes/class-sidebar-login-widget.php:62
+#: includes/class-sidebar-login-widget.php:87
+msgid "Current page URL"
+msgstr "Mevcut sayfa URL'si"
+
+#: includes/class-sidebar-login-widget.php:59
+msgid "Login Redirect URL"
+msgstr "Giriş yapanların yönlendirileceği URL"
+
+#: includes/class-sidebar-login-widget.php:54
+msgid "Show \"Remember me\" checkbox"
+msgstr "\"Beni hatırla\" onay kutusunu göster"
+
+#: includes/class-sidebar-login-widget.php:50
+msgid "<a href=\"%s\">Anyone can register</a> must be enabled."
+msgstr "<a href=\"%s\">Herkes kaydolabilir</a> özelliği aktif olmalıdır."
+
+#: includes/class-sidebar-login-widget.php:48
+msgid "Show register link"
+msgstr "Kaydolma linki göster"
+
+#: includes/class-sidebar-login-widget.php:43
+msgid "Show lost password link"
+msgstr "\"Parolamı unuttum\" linki göster"
+
+#: includes/class-sidebar-login-widget.php:38
+msgid "Text | HREF"
+msgstr "Yazı | HREF"
+
+#: includes/class-sidebar-login-widget.php:38
+#: includes/class-sidebar-login-widget.php:73
+msgid "Links"
+msgstr "Linkler"
+
+#: includes/class-sidebar-login-widget.php:34
+#: includes/class-sidebar-login-widget.php:249
+msgid "Login"
+msgstr "Giriş"
+
+#: includes/class-sidebar-login-widget.php:33
+msgid "Logged-out title"
+msgstr "Oturum açmayanların göreceği başlık"
+
+#. #-#-#-#-#  tmp-sidebar-login.pot (Sidebar Login 2.7.3)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: includes/class-sidebar-login-widget.php:23
+msgid "Sidebar Login"
+msgstr "Sidebar Login"
+
+#: includes/class-sidebar-login-widget.php:20
+msgid "Displays a login area in the sidebar."
+msgstr "Yan panelde oturum açma alanı gösterir."

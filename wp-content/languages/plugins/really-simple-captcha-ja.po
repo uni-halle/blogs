@@ -1,0 +1,32 @@
+# Translation of Plugins - Really Simple CAPTCHA - Stable (latest release) in Japanese
+# This file is distributed under the same license as the Plugins - Really Simple CAPTCHA - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-06-03 08:37:58+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: ja_JP\n"
+"Project-Id-Version: Plugins - Really Simple CAPTCHA - Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "https://ideasilo.wordpress.com/"
+msgstr "https://ideasilo.wordpress.com/"
+
+#. Author of the plugin/theme
+msgid "Takayuki Miyoshi"
+msgstr "Takayuki Miyoshi"
+
+#. Description of the plugin/theme
+msgid "Really Simple CAPTCHA is a CAPTCHA module intended to be called from other plugins. It is originally created for my Contact Form 7 plugin."
+msgstr "Really Simple CAPTCHA は他のプラグインから呼び出すことを想定して作られた CAPTCHA モジュールです。もともとは Contact Form 7 プラグインのために作られました。"
+
+#. Plugin URI of the plugin/theme
+msgid "https://contactform7.com/captcha/"
+msgstr "https://contactform7.com/ja/captcha/"
+
+#. Plugin Name of the plugin/theme
+msgid "Really Simple CAPTCHA"
+msgstr "Really Simple CAPTCHA"
