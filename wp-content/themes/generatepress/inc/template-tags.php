@@ -55,8 +55,8 @@ function generate_content_nav( $nav_id ) {
 			if ( function_exists( 'the_posts_pagination' ) ) {
 				the_posts_pagination( array(
 					'mid_size' => apply_filters( 'generate_pagination_mid_size', 1 ),
-					'prev_text' => __( '&larr; Previous', 'generatepress' ),
-					'next_text' => __( 'Next &rarr;', 'generatepress' ),
+					'prev_text' => apply_filters( 'generate_previous_link_text', __( '&larr; Previous', 'generatepress' ) ),
+					'next_text' => apply_filters( 'generate_next_link_text', __( 'Next &rarr;', 'generatepress' ) ),
 				) );
 			}
 			
@@ -175,7 +175,7 @@ function generate_posted_on()
 				esc_attr( get_the_time() ),
 				$time_string
 			)
-		) );
+		), $time_string );
 	}
 	
 	// If our author is enabled, show it
@@ -581,7 +581,7 @@ function generate_construct_logo()
 		esc_url( apply_filters( 'generate_logo_href' , home_url( '/' ) ) ),
 		esc_attr( apply_filters( 'generate_logo_title', get_bloginfo( 'name', 'display' ) ) ),
 		esc_url( apply_filters( 'generate_logo', $logo ) )
-	) );
+	), $logo );
 	
 	do_action( 'generate_after_logo' );
 }
@@ -738,9 +738,9 @@ add_filter( 'get_the_archive_title','generate_filter_the_archive_title' );
 function generate_filter_the_archive_title( $title ) {
 	
 	if ( is_category() ) {
-		$title = single_cat_title();
+		$title = single_cat_title( '', false );
 	} elseif ( is_tag() ) {
-		$title = single_tag_title();
+		$title = single_tag_title( '', false );
 	} elseif ( is_author() ) {
 		/* Queue the first post, that way we know
 		 * what author we're dealing with (if that is the case).
