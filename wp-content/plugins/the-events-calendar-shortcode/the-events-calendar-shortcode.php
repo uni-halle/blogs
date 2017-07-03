@@ -3,7 +3,7 @@
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin (Free Version) by Modern Tribe</a>.
- Version: 1.5.2
+ Version: 1.6
  Author: Event Calendar Newsletter
  Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Contributors: Brainchild Media Group, Reddit user miahelf, tallavic, hejeva2
@@ -38,7 +38,7 @@ class Events_Calendar_Shortcode
 	 *
 	 * @since 1.0.0
 	 */
-	const VERSION = '1.5.2';
+	const VERSION = '1.6';
 
 	private $admin_page = null;
 
@@ -151,6 +151,7 @@ class Events_Calendar_Shortcode
 			'message' => 'There are no upcoming events at this time.',
 			'key' => 'End Date',
 			'order' => 'ASC',
+			'orderby' => 'startdate',
 			'viewall' => 'false',
 			'excerpt' => 'false',
 			'thumb' => 'false',
@@ -199,6 +200,14 @@ class Events_Calendar_Shortcode
 		} else {
 			$atts['key'] = '_EventEndDate';
 		}
+
+		// Orderby
+		if ( str_replace( ' ', '', trim( strtolower( $atts['orderby'] ) ) ) == 'enddate' ) {
+			$atts['orderby'] = '_EventEndDate';
+		} else {
+			$atts['orderby'] = '_EventStartDate';
+		}
+
 		// Date
 		$atts['meta_date'] = array(
 			array(
@@ -239,7 +248,7 @@ class Events_Calendar_Shortcode
 			'hide_upcoming' => true,
 			'posts_per_page' => $atts['limit'],
 			'tax_query'=> $atts['event_tax'],
-			'meta_key' => $atts['key'],
+			'meta_key' => ( trim( $atts['orderby'] ) ? $atts['orderby'] : $atts['key'] ),
 			'orderby' => 'meta_value',
 			'author' => $atts['author'],
 			'order' => $atts['order'],
@@ -330,7 +339,7 @@ class Events_Calendar_Shortcode
 
 			if( self::isValid( $atts['viewall'] ) ) {
 				$output .= apply_filters( 'ecs_view_all_events_tag_start', '<span class="ecs-all-events">', $atts ) .
-				           '<a href="' . apply_filters( 'ecs_event_list_viewall_link', tribe_get_events_link(), $atts ) .'" rel="bookmark">' . translate( 'View All Events', 'tribe-events-calendar' ) . '</a>';
+				           '<a href="' . apply_filters( 'ecs_event_list_viewall_link', tribe_get_events_link(), $atts ) .'" rel="bookmark">' . apply_filters( 'ecs_view_all_events_text', sprintf( __( 'View All %s', 'the-events-calendar' ), tribe_get_event_label_plural() ), $atts ) . '</a>';
 				$output .= apply_filters( 'ecs_view_all_events_tag_end', '</span>' );
 			}
 

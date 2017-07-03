@@ -51,21 +51,25 @@
 					<h3>message</h3>
 					<p><?php echo esc_html( sprintf( __( "Message to show when there are no events. Defaults to '%s'", 'the-events-calendar-shortcode' ), translate( 'There are no upcoming events at this time.', 'tribe-events-calendar' ) ) ); ?></p>
 					<h3>viewall</h3>
-					<p><?php echo esc_html( sprintf( __( "Determines whether to show '%s' or not. Values can be 'true' or 'false'. Default to 'true'", 'the-events-calendar-shortcode' ), translate( 'View all events', 'tribe-events-calendar' ) ) ); ?></p>
+					<?php if ( function_exists( 'tribe_get_event_label_plural' ) ): ?>
+						<p><?php echo esc_html( sprintf( __( "Determines whether to show '%s' or not. Values can be 'true' or 'false'. Default to 'true'", 'the-events-calendar-shortcode' ), sprintf( __( 'View All %s', 'the-events-calendar' ), tribe_get_event_label_plural() ) ) ); ?></p>
+					<?php endif; ?>
 						<blockquote>[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']</blockquote>
 					<h3>contentorder</h3>
 					<p><?php echo esc_html( sprintf( __( 'Manage the order of content with commas. Defaults to %s', 'the-events-calendar-shortcode' ), 'title, thumbnail, excerpt, date, venue' ) ); ?> </p>
 						<blockquote>[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false' contentorder='title, thumbnail, excerpt, date, venue']</blockquote>
 					<h3>month</h3>
-					<p><?php echo esc_html( sprintf( __( "Show only specific Month. Type '%s' for displaying current month only, ie:", 'the-events-calendar-shortcode' ), 'current' ) ); ?></p>
+					<p><?php echo esc_html( sprintf( __( "Show only specific Month. Type '%s' for displaying current month only or '%s' for next month, ie:", 'the-events-calendar-shortcode' ), 'current', 'next' ) ); ?></p>
 						<blockquote>[ecs-list-events cat='festival' month='2015-06']</blockquote>
 					<h3>past</h3>
 					<p><?php echo esc_html( __( 'Show outdated events (ie. events that have already happened)', 'the-events-calendar-shortcode' ) ); ?></p>
 						<blockquote>[ecs-list-events cat='festival' past='yes']</blockquote>
 					<h3>key</h3>
-					<p><?php echo esc_html( __( 'Use to order by the start date instead of the end date', 'the-events-calendar-shortcode' ) ); ?></p>
+					<p><?php echo esc_html( __( 'Use to hide events when the start date has passed, rather than the end date.  Will also change the order of events by start date instead of end date.', 'the-events-calendar-shortcode' ) ); ?></p>
 						<blockquote>[ecs-list-events cat='festival' key='start date']</blockquote>
-
+					<h3>orderby</h3>
+					<p><?php echo esc_html( __( 'Used to order by the end date instead of the start date.', 'the-events-calendar-shortcode' ) ); ?></p>
+						<blockquote>[ecs-list-events orderby='enddate']</blockquote>
 					<?php do_action( 'ecs_admin_page_options_after' ); ?>
 
 				</div>
@@ -98,6 +102,7 @@
 							<p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-1&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/shortcode-default-design-2.png', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo esc_html( __( 'Pro version default design example', 'the-events-calendar-shortcode' ) ); ?></a></p>
 							<p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-2&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/event-calendar-shortcode-compact-design.png', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo esc_html( __( 'Pro version compact design example', 'the-events-calendar-shortcode' ) ); ?></a></p>
 							<p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-grouped&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/the-events-calendar-shortcode-grouped-design.png', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo esc_html( __( 'Pro version grouped design example', 'the-events-calendar-shortcode' ) ); ?></a></p>
+							<p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-calendar&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/the-events-calendar-shortcode-calendar-design.gif', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo esc_html( __( 'Pro version calendar design example', 'the-events-calendar-shortcode' ) ); ?></a></p>
 						</div>
 
 						<h3 class="additional-options"><?php echo esc_html__( "In addition to designs, you'll get more options including:", 'the-events-calendar-shortcode' ); ?></h3>
@@ -105,8 +110,12 @@
 						<p><?php echo esc_html__( 'Choose how many days to show events from, ie. 1 day or a week', 'the-events-calendar-shortcode' ) ?></p>
 						<h4><?php echo esc_html__( 'Tag', 'the-events-calendar-shortcode' ) ?></h4>
 						<p><?php echo esc_html__( 'Filter events listed by one or more tags', 'the-events-calendar-shortcode' ) ?></p>
+						<h4><?php echo esc_html__( 'Location', 'the-events-calendar-shortcode' ) ?></h4>
+						<p><?php echo esc_html__( 'Display events by city, state/province, or country', 'the-events-calendar-shortcode' ) ?></p>
 						<h4><?php echo esc_html__( 'Single Event', 'the-events-calendar-shortcode' ) ?></h4>
 						<p><?php echo esc_html__( 'List the details of a single event by ID, for example on a blog post', 'the-events-calendar-shortcode' ) ?></p>
+						<h4><?php echo esc_html__( 'Button', 'the-events-calendar-shortcode' ) ?></h4>
+						<p><?php echo esc_html__( 'Add an easy to see button link to your event, and customize the colors/text', 'the-events-calendar-shortcode' ) ?></p>
 						<h4><?php echo esc_html__( 'Date', 'the-events-calendar-shortcode' ) ?></h4>
 						<p><?php echo esc_html__( 'Show only events for a specific day (ie. 2017-04-16), great for conferences', 'the-events-calendar-shortcode' ) ?></p>
 						<h4><?php echo esc_html__( 'Year', 'the-events-calendar-shortcode' ) ?></h4>
@@ -115,6 +124,8 @@
 						<p><?php echo esc_html__( 'Skip a certain number of events from the beginning, useful for using multiple shortcodes on the same page or splitting into columns.', 'the-events-calendar-shortcode' ) ?></p>
 						<h4><?php echo esc_html__( 'Full Description', 'the-events-calendar-shortcode' ) ?></h4>
 						<p><?php echo esc_html__( 'Use the full description instead of the excerpt (short description) of an event in the listing', 'the-events-calendar-shortcode' ) ?></p>
+						<h4><?php echo esc_html__( 'Future Only', 'the-events-calendar-shortcode' ) ?></h4>
+						<p><?php echo esc_html__( 'Only show events in the future even when using the month or year option.', 'the-events-calendar-shortcode' ) ?></p>
 						<h4><?php echo esc_html__( 'Custom Design', 'the-events-calendar-shortcode' ) ?></h4>
 						<p><?php echo esc_html__( 'Use the new default or compact designs, or create your own using one or more templates in your theme folder', 'the-events-calendar-shortcode' ) ?></p>
 						<p><?php echo sprintf( esc_html__( '%sGet The Events Calendar Shortcode PRO%s', 'the-events-calendar-shortcode' ), '<a class="ecs-button" target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-after-options&utm_content=description">', '</a>' ); ?></p>
