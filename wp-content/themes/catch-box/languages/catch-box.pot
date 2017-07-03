@@ -1,11 +1,11 @@
-# Copyright (C) 2016 Catch Themes
+# Copyright (C) 2017 Catch Themes
 # This file is distributed under the GNU General Public License v3 or later.
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box 4.5.3\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-01-30 22:42+0545\n"
+"POT-Creation-Date: 2017-06-08 10:26+0545\n"
 "PO-Revision-Date: 2017-01-07 18:46+0545\n"
 "Last-Translator: Catch Themes <info@catchthemes.com>\n"
 "Language-Team: Catch Themes <info@catchthemes.com>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.2\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;"
 "_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;"
 "__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
@@ -53,12 +53,12 @@ msgid ""
 msgstr ""
 
 #: ../archive.php:46 ../author.php:69 ../category.php:45 ../index.php:32
-#: ../page-blog.php:65 ../search.php:39 ../tag.php:45
+#: ../page-blog.php:67 ../search.php:39 ../tag.php:45
 msgid "Nothing Found"
 msgstr ""
 
 #: ../archive.php:50 ../author.php:73 ../category.php:49 ../index.php:36
-#: ../page-blog.php:69 ../tag.php:49
+#: ../page-blog.php:71 ../tag.php:49
 msgid ""
 "Apologies, but no results were found for the requested archive. Perhaps "
 "searching will help find a related post."
@@ -84,26 +84,33 @@ msgid ""
 "This post is password protected. Enter the password to view any comments."
 msgstr ""
 
-#: ../comments.php:33
+#: ../comments.php:36
 #, php-format
-msgid "One thought on &ldquo;%2$s&rdquo;"
-msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgctxt "comments title"
+msgid "One Reply to &ldquo;%s&rdquo;"
+msgstr ""
+
+#: ../comments.php:41
+#, php-format
+msgctxt "comments title"
+msgid "%1$s Reply to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Replies to &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../comments.php:40 ../comments.php:60
+#: ../comments.php:56 ../comments.php:76
 msgid "Comment navigation"
 msgstr ""
 
-#: ../comments.php:41 ../comments.php:61
+#: ../comments.php:57 ../comments.php:77
 msgid "&larr; Older Comments"
 msgstr ""
 
-#: ../comments.php:42 ../comments.php:62
+#: ../comments.php:58 ../comments.php:78
 msgid "Newer Comments &rarr;"
 msgstr ""
 
-#: ../comments.php:72
+#: ../comments.php:88
 msgid "Comments are closed."
 msgstr ""
 
@@ -169,7 +176,7 @@ msgstr ""
 #: ../content-aside.php:56 ../content-featured.php:50 ../content-gallery.php:94
 #: ../content-image.php:71 ../content-link.php:48 ../content-page.php:27
 #: ../content-quote.php:76 ../content-single.php:64 ../content-status.php:49
-#: ../content.php:106 ../functions.php:458 ../functions.php:486 ../image.php:97
+#: ../content.php:106 ../functions.php:457 ../functions.php:485 ../image.php:97
 msgid "Edit"
 msgstr ""
 
@@ -236,7 +243,7 @@ msgid ""
 "title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
 msgstr ""
 
-#: ../content-image.php:42 ../functions.php:524
+#: ../content-image.php:42 ../functions.php:523
 #, php-format
 msgid "View all posts by %s"
 msgstr ""
@@ -310,41 +317,42 @@ msgstr ""
 msgid "Footer Menu"
 msgstr ""
 
-#: ../functions.php:342 ../functions.php:371 ../single.php:15
+#: ../functions.php:342 ../functions.php:371 ../page-blog.php:44
+#: ../single.php:15
 msgid "Post navigation"
 msgstr ""
 
-#: ../functions.php:350 ../functions.php:379
+#: ../functions.php:350 ../functions.php:379 ../page-blog.php:52
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr ""
 
-#: ../functions.php:351 ../functions.php:380
+#: ../functions.php:351 ../functions.php:380 ../page-blog.php:53
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: ../functions.php:458
+#: ../functions.php:457
 msgid "Pingback:"
 msgstr ""
 
-#: ../functions.php:475
+#: ../functions.php:474
 #, php-format
 msgid "%1$s on %2$s <span class=\"says\">said:</span>"
 msgstr ""
 
-#: ../functions.php:481
+#: ../functions.php:480
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: ../functions.php:490
+#: ../functions.php:489
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: ../functions.php:499
+#: ../functions.php:498
 msgid "Reply <span>&darr;</span>"
 msgstr ""
 
-#: ../functions.php:518
+#: ../functions.php:517
 #, php-format
 msgid ""
 "<span class=\"sep\">Posted on </span><a href=\"%1$s\" title=\"%2$s\" rel="
@@ -354,122 +362,108 @@ msgid ""
 "\" rel=\"author\">%7$s</a></span></span>"
 msgstr ""
 
-#: ../functions.php:591
+#: ../functions.php:590
 msgid "ID"
 msgstr ""
 
-#: ../functions.php:639
+#: ../functions.php:638
 msgid "expand child menu"
 msgstr ""
 
-#: ../functions.php:640
+#: ../functions.php:639
 msgid "collapse child menu"
 msgstr ""
 
-#: ../functions.php:715
+#: ../functions.php:714
 msgid "Name"
 msgstr ""
 
-#: ../functions.php:717 ../functions.php:944
-#: ../inc/customizer/customizer.php:624 ../inc/theme-options.php:856
+#: ../functions.php:716 ../functions.php:866
+#: ../inc/customizer/customizer.php:612
 msgid "Email"
 msgstr ""
 
-#: ../functions.php:850
+#: ../functions.php:772
 msgid "Footer Social Links Menu"
 msgstr ""
 
-#: ../functions.php:854 ../inc/customizer/customizer.php:444
-#: ../inc/theme-options.php:567 ../inc/theme-options.php:749
+#: ../functions.php:776 ../inc/customizer/customizer.php:432
 msgid "Facebook"
 msgstr ""
 
-#: ../functions.php:859 ../inc/customizer/customizer.php:454
-#: ../inc/theme-options.php:568 ../inc/theme-options.php:754
+#: ../functions.php:781 ../inc/customizer/customizer.php:442
 msgid "Twitter"
 msgstr ""
 
-#: ../functions.php:864
+#: ../functions.php:786
 msgid "Google Plus"
 msgstr ""
 
-#: ../functions.php:869
+#: ../functions.php:791
 msgid "Linkedin"
 msgstr ""
 
-#: ../functions.php:874 ../inc/customizer/customizer.php:484
-#: ../inc/theme-options.php:772
+#: ../functions.php:796 ../inc/customizer/customizer.php:472
 msgid "Pinterest"
 msgstr ""
 
-#: ../functions.php:879
+#: ../functions.php:801
 msgid "YouTube"
 msgstr ""
 
-#: ../functions.php:884 ../inc/theme-options.php:784
+#: ../functions.php:806
 msgid "RSS Feed"
 msgstr ""
 
-#: ../functions.php:889 ../inc/theme-options.php:790
+#: ../functions.php:811
 msgid "Deviantart"
 msgstr ""
 
-#: ../functions.php:894 ../inc/customizer/customizer.php:524
-#: ../inc/theme-options.php:796
+#: ../functions.php:816 ../inc/customizer/customizer.php:512
 msgid "Tumblr"
 msgstr ""
 
-#: ../functions.php:899 ../inc/customizer/customizer.php:534
-#: ../inc/theme-options.php:802
+#: ../functions.php:821 ../inc/customizer/customizer.php:522
 msgid "Vimeo"
 msgstr ""
 
-#: ../functions.php:904 ../inc/customizer/customizer.php:544
-#: ../inc/theme-options.php:808
+#: ../functions.php:826 ../inc/customizer/customizer.php:532
 msgid "Dribbble"
 msgstr ""
 
-#: ../functions.php:909 ../inc/customizer/customizer.php:554
-#: ../inc/theme-options.php:814
+#: ../functions.php:831 ../inc/customizer/customizer.php:542
 msgid "MySpace"
 msgstr ""
 
-#: ../functions.php:914
+#: ../functions.php:836
 msgid "AIM"
 msgstr ""
 
-#: ../functions.php:919 ../inc/customizer/customizer.php:574
-#: ../inc/theme-options.php:826
+#: ../functions.php:841 ../inc/customizer/customizer.php:562
 msgid "Flickr"
 msgstr ""
 
-#: ../functions.php:924 ../inc/customizer/customizer.php:584
-#: ../inc/theme-options.php:832
+#: ../functions.php:846 ../inc/customizer/customizer.php:572
 msgid "Slideshare"
 msgstr ""
 
-#: ../functions.php:929 ../inc/customizer/customizer.php:594
-#: ../inc/theme-options.php:838
+#: ../functions.php:851 ../inc/customizer/customizer.php:582
 msgid "Instagram"
 msgstr ""
 
-#: ../functions.php:934 ../inc/customizer/customizer.php:604
-#: ../inc/theme-options.php:844
+#: ../functions.php:856 ../inc/customizer/customizer.php:592
 msgid "Skype"
 msgstr ""
 
-#: ../functions.php:939 ../inc/customizer/customizer.php:614
-#: ../inc/theme-options.php:850
+#: ../functions.php:861 ../inc/customizer/customizer.php:602
 msgid "Soundcloud"
 msgstr ""
 
-#: ../functions.php:949 ../inc/customizer/customizer.php:634
-#: ../inc/theme-options.php:861
+#: ../functions.php:871 ../inc/customizer/customizer.php:622
 msgid "Xing"
 msgstr ""
 
-#: ../functions.php:954 ../inc/customizer/customizer.php:644
-#: ../inc/theme-options.php:866
+#: ../functions.php:876 ../inc/customizer/customizer.php:632
 msgid "Meetup"
 msgstr ""
 
@@ -548,12 +542,10 @@ msgid "Mountain"
 msgstr ""
 
 #: ../inc/customizer/customizer-custom-controls.php:18
-#: ../inc/theme-options.php:566
 msgid "Theme Instructions"
 msgstr ""
 
 #: ../inc/customizer/customizer-custom-controls.php:22
-#: ../inc/theme-options.php:564
 msgid "Support"
 msgstr ""
 
@@ -569,110 +561,91 @@ msgstr ""
 msgid "Review"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:33 ../inc/theme-options.php:227
-#: ../inc/theme-options.php:228 ../inc/theme-options.php:584
+#: ../inc/customizer/customizer.php:31
 msgid "Theme Options"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:34
+#: ../inc/customizer/customizer.php:32
 msgid "Basic theme Options"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:38
-msgid "Favicon"
-msgstr ""
-
-#: ../inc/customizer/customizer.php:43
-msgid "Webclip Icon Options"
-msgstr ""
-
-#: ../inc/customizer/customizer.php:44
-msgid ""
-"Web Clip Icon for Apple devices. Recommended Size - Width 144px and Height "
-"144px height, which will support High Resolution Devices like iPad Retina"
-msgstr ""
-
-#: ../inc/customizer/customizer.php:48 ../inc/customizer/customizer.php:241
-#: ../inc/theme-options.php:100
+#: ../inc/customizer/customizer.php:36 ../inc/customizer/customizer.php:229
 msgid "Default Layout"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:53 ../inc/customizer/customizer.php:252
+#: ../inc/customizer/customizer.php:41 ../inc/customizer/customizer.php:240
 msgid "Content Layout"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:58 ../inc/customizer/customizer.php:264
-#: ../inc/theme-options.php:116
+#: ../inc/customizer/customizer.php:46 ../inc/customizer/customizer.php:252
 msgid "Excerpt Length in Words"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:63 ../inc/theme-options.php:128
+#: ../inc/customizer/customizer.php:51
 msgid "Feed Redirect URL"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:68
+#: ../inc/customizer/customizer.php:56
 msgid "Search Text Settings"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:73 ../inc/theme-options.php:155
+#: ../inc/customizer/customizer.php:61
 msgid "Disable Search in Header"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:78
+#: ../inc/customizer/customizer.php:66
 msgid "Mobile Menu Options"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:83 ../inc/customizer/customizer.php:338
-#: ../inc/theme-options.php:181
+#: ../inc/customizer/customizer.php:71 ../inc/customizer/customizer.php:326
 msgid "Custom CSS Styles"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:88
+#: ../inc/customizer/customizer.php:76
 msgid "Scroll Up Options"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:96 ../inc/customizer/customizer.php:97
+#: ../inc/customizer/customizer.php:84 ../inc/customizer/customizer.php:85
 msgid "Featured Slider"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:101 ../inc/theme-options.php:656
+#: ../inc/customizer/customizer.php:89
 msgid "Slider Options"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:106 ../inc/theme-options.php:690
+#: ../inc/customizer/customizer.php:94
 msgid "Slider Effect Options"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:114
+#: ../inc/customizer/customizer.php:102
 msgid "Colors"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:120
+#: ../inc/customizer/customizer.php:108
 msgid "Basic Colors"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:125
+#: ../inc/customizer/customizer.php:113
 msgid "Custom Color Options"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:133 ../inc/theme-options.php:586
+#: ../inc/customizer/customizer.php:121
 msgid "Social Links"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:134
+#: ../inc/customizer/customizer.php:122
 msgid "Add your social links here"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:138
+#: ../inc/customizer/customizer.php:126
 msgid "Predefined Social Icons"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:145 ../inc/customizer/customizer.php:150
-#: ../inc/theme-options.php:590
+#: ../inc/customizer/customizer.php:133 ../inc/customizer/customizer.php:138
 msgid "Webmaster Tools"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:146 ../inc/customizer/customizer.php:151
+#: ../inc/customizer/customizer.php:134 ../inc/customizer/customizer.php:139
 #, php-format
 msgid ""
 "Webmaster Tools falls under Plugins Territory according to Theme Review "
@@ -681,202 +654,194 @@ msgid ""
 "add <a href=\"%s\">Catch Web Tools</a>  plugin."
 msgstr ""
 
-#: ../inc/customizer/customizer.php:220 ../inc/theme-options.php:84
+#: ../inc/customizer/customizer.php:208
 msgid "Color Scheme"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:231 ../inc/theme-options.php:92
+#: ../inc/customizer/customizer.php:219
 msgid "Link Color"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:280
+#: ../inc/customizer/customizer.php:268
 msgid "Feed Redirect url"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:291 ../inc/theme-options.php:376
+#: ../inc/customizer/customizer.php:279
 msgid "Check to move above the Header/Logo Image"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:299 ../inc/theme-options.php:147
+#: ../inc/customizer/customizer.php:287
 msgid "Default Display Text in Search"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:309 ../inc/theme-options.php:406
+#: ../inc/customizer/customizer.php:297
 msgid "Check to Disable"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:318
+#: ../inc/customizer/customizer.php:306
 msgid "Check to enable secondary mobile menu"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:328
+#: ../inc/customizer/customizer.php:316
 msgid "Check to enable footer mobile menu"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:350
+#: ../inc/customizer/customizer.php:338
 msgid "Check to disable scroll up"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:362
+#: ../inc/customizer/customizer.php:350
 msgid "Check to Exclude Slider posts from Homepage posts"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:371 ../inc/theme-options.php:671
+#: ../inc/customizer/customizer.php:359
 msgid "Number of Slides"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:372
+#: ../inc/customizer/customizer.php:360
 msgid ""
 "Customizer page needs to be refreshed after saving if number of slides is "
 "changed"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:387
+#: ../inc/customizer/customizer.php:375
 msgid "Transition Effect"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:395 ../inc/theme-options.php:700
+#: ../inc/customizer/customizer.php:383
 msgid "fade"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:396 ../inc/theme-options.php:701
+#: ../inc/customizer/customizer.php:384
 msgid "wipe"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:397 ../inc/theme-options.php:702
+#: ../inc/customizer/customizer.php:385
 msgid "scrollUp"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:398 ../inc/theme-options.php:703
+#: ../inc/customizer/customizer.php:386
 msgid "scrollDown"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:399 ../inc/theme-options.php:704
+#: ../inc/customizer/customizer.php:387
 msgid "scrollLeft"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:400 ../inc/theme-options.php:705
+#: ../inc/customizer/customizer.php:388
 msgid "scrollRight"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:401 ../inc/theme-options.php:706
+#: ../inc/customizer/customizer.php:389
 msgid "blindX"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:402 ../inc/theme-options.php:707
+#: ../inc/customizer/customizer.php:390
 msgid "blindY"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:403 ../inc/theme-options.php:708
+#: ../inc/customizer/customizer.php:391
 msgid "blindZ"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:404 ../inc/theme-options.php:709
+#: ../inc/customizer/customizer.php:392
 msgid "cover"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:405 ../inc/theme-options.php:710
+#: ../inc/customizer/customizer.php:393
 msgid "shuffle"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:410
+#: ../inc/customizer/customizer.php:398
 msgid "Transition Delay (in seconds)"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:426 ../inc/theme-options.php:725
+#: ../inc/customizer/customizer.php:414
 msgid "Transition Length"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:464
+#: ../inc/customizer/customizer.php:452
 msgid "Google+"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:474 ../inc/theme-options.php:766
+#: ../inc/customizer/customizer.php:462
 msgid "LinkedIn"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:494 ../inc/theme-options.php:778
+#: ../inc/customizer/customizer.php:482
 msgid "Youtube"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:504
+#: ../inc/customizer/customizer.php:492
 msgid "RSS"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:514
+#: ../inc/customizer/customizer.php:502
 msgid "deviantART"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:564 ../inc/theme-options.php:820
+#: ../inc/customizer/customizer.php:552
 msgid "Aim"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:656 ../inc/theme-options.php:892
+#: ../inc/customizer/customizer.php:644
 msgid "Code to display on Header"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:657
+#: ../inc/customizer/customizer.php:645
 msgid ""
 "Here you can put scripts from Google, Facebook etc. which will load on Header"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:667 ../inc/theme-options.php:904
+#: ../inc/customizer/customizer.php:655
 msgid "Code to display on Footer"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:668
+#: ../inc/customizer/customizer.php:656
 msgid ""
 "Here you can put scripts from Google, Facebook etc. which will load on Footer"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:684
-msgid "Fav Icon"
-msgstr ""
-
-#: ../inc/customizer/customizer.php:696
-msgid "Web Clip Icon"
-msgstr ""
-
-#: ../inc/customizer/customizer.php:715 ../inc/theme-options.php:619
+#: ../inc/customizer/customizer.php:672
 msgid "Header Image Location"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:722 ../inc/theme-options.php:622
+#: ../inc/customizer/customizer.php:679
 msgid "Above Header Content"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:723 ../inc/theme-options.php:624
+#: ../inc/customizer/customizer.php:680
 msgid "Between Site Title-Logo"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:724 ../inc/theme-options.php:626
+#: ../inc/customizer/customizer.php:681
 msgid "Below Header Content"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:868
+#: ../inc/customizer/customizer.php:821
 #, php-format
 msgid "#%s Featured Post ID"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:883
+#: ../inc/customizer/customizer.php:836
 msgid ""
 "Caution: Reset all settings to default. Refresh the page after save to view "
 "full effects."
 msgstr ""
 
-#: ../inc/customizer/customizer.php:885
+#: ../inc/customizer/customizer.php:838
 msgid "Reset all settings"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:896
+#: ../inc/customizer/customizer.php:848
 msgid "Check to reset all settings to default"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:906 ../inc/customizer/customizer.php:917
+#: ../inc/customizer/customizer.php:858 ../inc/customizer/customizer.php:869
 msgid "Important Links"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:950
+#: ../inc/customizer/customizer.php:902
 msgid "Refresh the customizer page after saving to view reset effects"
 msgstr ""
 
@@ -952,8 +917,7 @@ msgstr ""
 msgid "Theme: Catch Box by "
 msgstr ""
 
-#: ../inc/default-options.php:237 ../inc/theme-options.php:551
-#: ../inc/theme-options.php:552
+#: ../inc/default-options.php:237
 msgid "Catch Themes"
 msgstr ""
 
@@ -963,245 +927,6 @@ msgstr ""
 
 #: ../inc/default-options.php:248
 msgid "All Rights Reserved"
-msgstr ""
-
-#: ../inc/theme-options.php:65
-msgid "Favicon URL"
-msgstr ""
-
-#: ../inc/theme-options.php:74
-msgid "Web Clip Icon URL"
-msgstr ""
-
-#: ../inc/theme-options.php:108
-msgid "Content layout"
-msgstr ""
-
-#: ../inc/theme-options.php:139
-msgid "Move Site Title and Tagline?"
-msgstr ""
-
-#: ../inc/theme-options.php:163
-msgid "Enable Secondary Mobile Menu"
-msgstr ""
-
-#: ../inc/theme-options.php:171
-msgid "Enable Footer Mobile Menu"
-msgstr ""
-
-#: ../inc/theme-options.php:190
-msgid "Scroll Up"
-msgstr ""
-
-#: ../inc/theme-options.php:252
-msgid "Insert as Favicon"
-msgstr ""
-
-#: ../inc/theme-options.php:252
-msgid "Add/Change Favicon"
-msgstr ""
-
-#: ../inc/theme-options.php:268
-msgid "Insert as Web Clip Icon"
-msgstr ""
-
-#: ../inc/theme-options.php:268
-msgid "Add/Change Web Clip Icon"
-msgstr ""
-
-#: ../inc/theme-options.php:348
-msgid "Words"
-msgstr ""
-
-#: ../inc/theme-options.php:421 ../inc/theme-options.php:435
-msgid "Check to Enable"
-msgstr ""
-
-#: ../inc/theme-options.php:458
-msgid "CSS Tutorial from W3Schools."
-msgstr ""
-
-#: ../inc/theme-options.php:458
-msgid "http://www.w3schools.com/css/default.asp"
-msgstr ""
-
-#: ../inc/theme-options.php:458
-msgid "CSS Tutorial"
-msgstr ""
-
-#: ../inc/theme-options.php:458
-msgid "Click Here to Read"
-msgstr ""
-
-#: ../inc/theme-options.php:472 ../inc/theme-options.php:668
-msgid "Check to disable"
-msgstr ""
-
-#: ../inc/theme-options.php:549
-msgid "Theme Options By"
-msgstr ""
-
-#: ../inc/theme-options.php:551
-msgid "https://catchthemes.com/"
-msgstr ""
-
-#: ../inc/theme-options.php:558
-msgid "https://catchthemes.com/themes/catch-box-pro/"
-msgstr ""
-
-#: ../inc/theme-options.php:558
-msgid "Upgrade to Catch Box Pro"
-msgstr ""
-
-#: ../inc/theme-options.php:563
-msgid "https://catchthemes.com/donate/"
-msgstr ""
-
-#: ../inc/theme-options.php:563
-msgid "Donate"
-msgstr ""
-
-#: ../inc/theme-options.php:564
-msgid "https://catchthemes.com/support/"
-msgstr ""
-
-#: ../inc/theme-options.php:565
-msgid "https://catchthemes.com/support-forum/forum/catch-box-public/"
-msgstr ""
-
-#: ../inc/theme-options.php:565
-msgid "Support Forum"
-msgstr ""
-
-#: ../inc/theme-options.php:566
-msgid "https://catchthemes.com/theme-instructions/catch-box/"
-msgstr ""
-
-#: ../inc/theme-options.php:567
-msgid "https://www.facebook.com/catchthemes/"
-msgstr ""
-
-#: ../inc/theme-options.php:567
-msgid "Like Catch Themes on Facebook"
-msgstr ""
-
-#: ../inc/theme-options.php:568
-msgid "https://twitter.com/catchthemes/"
-msgstr ""
-
-#: ../inc/theme-options.php:568
-msgid "Follow Catch Themes on Twitter"
-msgstr ""
-
-#: ../inc/theme-options.php:569
-msgid "http://wordpress.org/support/view/theme-reviews/catch-box/"
-msgstr ""
-
-#: ../inc/theme-options.php:569
-msgid "Rate us 5 Star on WordPress"
-msgstr ""
-
-#: ../inc/theme-options.php:569
-msgid "5 Star Rating"
-msgstr ""
-
-#: ../inc/theme-options.php:575
-#, php-format
-msgctxt "1: Customizer Link Start, 2: Customizer Link End"
-msgid ""
-"Theme Options Panel will be retired on future versions. Please use %1$s "
-"Customizer %2$s instead."
-msgstr ""
-
-#: ../inc/theme-options.php:585
-msgid "Featured Post Slider"
-msgstr ""
-
-#: ../inc/theme-options.php:602
-msgid "Header Image:"
-msgstr ""
-
-#: ../inc/theme-options.php:611
-msgid "Click here to change Header Image"
-msgstr ""
-
-#: ../inc/theme-options.php:613
-msgid "Click here to add Header Image"
-msgstr ""
-
-#: ../inc/theme-options.php:660 ../inc/theme-options.php:662
-msgid "Post Slider Tutorial"
-msgstr ""
-
-#: ../inc/theme-options.php:662
-msgid ""
-"https://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-"
-"slider/"
-msgstr ""
-
-#: ../inc/theme-options.php:662
-msgid "Click Here to Read Post Slider Tutorial"
-msgstr ""
-
-#: ../inc/theme-options.php:666
-msgid "Exclude Slider post from Home page posts:"
-msgstr ""
-
-#: ../inc/theme-options.php:677
-msgid "Featured Post ID"
-msgstr ""
-
-#: ../inc/theme-options.php:679
-msgid "Click Here To Edit"
-msgstr ""
-
-#: ../inc/theme-options.php:685
-msgid ""
-"<strong>Note</strong>: Here you add in Post IDs which displays on Homepage "
-"Featured Slider."
-msgstr ""
-
-#: ../inc/theme-options.php:686 ../inc/theme-options.php:732
-#: ../inc/theme-options.php:873 ../inc/theme-options.php:917
-msgid "Save"
-msgstr ""
-
-#: ../inc/theme-options.php:695
-msgid "Transition Effect:"
-msgstr ""
-
-#: ../inc/theme-options.php:716
-msgid "Transition Delay"
-msgstr ""
-
-#: ../inc/theme-options.php:719 ../inc/theme-options.php:728
-msgid "second(s)"
-msgstr ""
-
-#: ../inc/theme-options.php:760
-msgid "Google +"
-msgstr ""
-
-#: ../inc/theme-options.php:872
-msgid ""
-"<strong>Note:</strong> Enter the url for correponding social networking "
-"website"
-msgstr ""
-
-#: ../inc/theme-options.php:887
-msgid "Header and Footer Code"
-msgstr ""
-
-#: ../inc/theme-options.php:900
-msgid ""
-"Note: Here you can put scripts from Google, Facebook etc. which will load on "
-"Header"
-msgstr ""
-
-#: ../inc/theme-options.php:912
-msgid ""
-"Note: Here you can put scripts from Google, Facebook, Add This etc. which "
-"will load on footer"
 msgstr ""
 
 #: ../inc/widgets.php:23

@@ -31,7 +31,7 @@
 		</header><!-- .entry-header -->
 
 		 <?php
-		 	$options = catchbox_get_theme_options();
+		 	$options = catchbox_get_options();
 			$current_content_layout = $options['content_layout'];
 			$catchbox_excerpt = get_the_excerpt();
 

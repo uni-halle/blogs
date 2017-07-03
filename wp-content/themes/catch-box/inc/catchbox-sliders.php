@@ -8,21 +8,21 @@
  * This funcition passes the slider effect variables.
  */
 function catchbox_pass_slider_value() {
-	$options = catchbox_get_theme_options();
-	if ( !isset( $options[ 'transition_effect' ] ) ) {
-		$options[ 'transition_effect' ] = "fade";
+	$options = catchbox_get_options();
+	if ( !isset( $options['transition_effect'] ) ) {
+		$options['transition_effect'] = "fade";
 	}
-	if ( !isset( $options[ 'transition_delay' ] ) ) {
-		$options[ 'transition_delay' ] = 4;
+	if ( !isset( $options['transition_delay'] ) ) {
+		$options['transition_delay'] = 4;
 	}
-	if ( !isset( $options[ 'transition_duration' ] ) ) {
-		$options[ 'transition_duration' ] = 1;
+	if ( !isset( $options['transition_duration'] ) ) {
+		$options['transition_duration'] = 1;
 	}
-	$transition_effect = $options[ 'transition_effect' ];
-	$transition_delay = $options[ 'transition_delay' ] * 1000;
-	$transition_duration = $options[ 'transition_duration' ] * 1000;
+	$transition_effect = $options['transition_effect'];
+	$transition_delay = $options['transition_delay'] * 1000;
+	$transition_duration = $options['transition_duration'] * 1000;
 	wp_localize_script(
-		'catchbox_slider',
+		'catchbox-slider',
 		'js_value',
 		array(
 			'transition_effect' => $transition_effect,
@@ -51,10 +51,10 @@ function catchbox_sliders() {
 		echo '<!-- refreshing cache -->';
 
 		// get data value from catchbox_options_slider through theme options
-		$options = catchbox_get_theme_options();
+		$options = catchbox_get_options();
 		// get slider_qty from theme options
 		if ( !isset( $options['slider_qty'] ) || !is_numeric( $options['slider_qty'] ) ) {
-			$options[ 'slider_qty' ] = 4;
+			$options['slider_qty'] = 4;
 		}
 
 		$postperpage = $options['slider_qty'];
@@ -97,7 +97,7 @@ function catchbox_sliders() {
 					$output .= '
 					<div class="'. $classes . '">
 						<a href="'. esc_url ( get_permalink() ).'" title="' . $title_attribute .'" rel="bookmark">
-								' . get_the_post_thumbnail( $loop->ID, 'featured-slider', array( 'title' => $title_attribute, 'alt' => $title_attribute, 'class'	=> 'pngfix' ) ).'
+								' . get_the_post_thumbnail( get_the_ID(), 'featured-slider', array( 'title' => $title_attribute, 'alt' => $title_attribute, 'class'	=> 'pngfix' ) ).'
 						</a>
 						<div class="featured-text">'
 							. the_title( '<span class="slider-title">','</span>', false ).' <span class="sep">:</span>

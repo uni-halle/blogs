@@ -86,7 +86,7 @@ function catchbox_header_style() {
 	$text_color = get_header_textcolor();
 
 	// If no custom options for text are set, let's bail.
-	if ( $text_color == HEADER_TEXTCOLOR )
+	if ( get_theme_support( 'custom-header', 'default-text-color' ) === $text_color )
 		return;
 
 	// If we get this far, we have custom styles. Let's do this.
@@ -150,7 +150,7 @@ function catchbox_admin_header_style() {
 	}
 	<?php
 		// If the user has set a custom color for the text use that
-		if ( get_header_textcolor() != HEADER_TEXTCOLOR ) :
+		if ( get_theme_support( 'custom-header', 'default-text-color' ) !== get_header_textcolor() ) :
 	?>
 		#site-title a,
 		#site-description {
@@ -267,7 +267,7 @@ if ( ! function_exists( 'catchbox_main_header_image_position' ) ) :
  */
 function catchbox_main_header_image_position() {
 	// Getting data from Theme Options
-	$options  = catchbox_get_theme_options();
+	$options  = catchbox_get_options();
 	$position = isset( $options['header_image_position'] ) ? $options['header_image_position'] : 'above';
 
 	if ( 'above' == $position ) {
@@ -315,7 +315,7 @@ if ( ! function_exists( 'catchbox_headerdetails' ) ) :
 function catchbox_headerdetails() {
 
 	// Getting data from Theme Options
-	$options     = catchbox_get_theme_options();
+	$options     = catchbox_get_options();
 	$sitedetails = $options['site_title_above'];
 	$position    = isset( $options['header_image_position'] ) ? $options['header_image_position'] : 'above';
 
@@ -350,9 +350,9 @@ if ( ! function_exists( 'catchbox_header_search' ) ) :
 function catchbox_header_search() {
 
 	// Getting data from Theme Options
-	$options = catchbox_get_theme_options();
+	$options = catchbox_get_options();
 
-	if ( $options ['disable_header_search'] == 0 ) :
+	if ( $options['disable_header_search'] == 0 ) :
     	get_search_form();
     endif;
 

@@ -16,11 +16,9 @@
  * @since Catch Box 3.6.7
  */
 function catchbox_customize_register( $wp_customize ) {
-	$options = catchbox_get_theme_options();
+	$options = catchbox_get_options();
 
-	$defaults = catchbox_get_default_theme_options();
-
-	//print_r($options);
+	$defaults = catchbox_defaults();
 
 	//Custom Controls
 	require trailingslashit( get_template_directory() ) . 'inc/customizer/customizer-custom-controls.php';
@@ -30,62 +28,52 @@ function catchbox_customize_register( $wp_customize ) {
 	$settings_page_tabs = array(
 		'theme_options' => array(
 			'id' 			=> 'theme_options',
-			'title' 		=> __( 'Theme Options', 'catch-box' ),
-			'description' 	=> __( 'Basic theme Options', 'catch-box' ),
+			'title' 		=> esc_html__( 'Theme Options', 'catch-box' ),
+			'description' 	=> esc_html__( 'Basic theme Options', 'catch-box' ),
 			'sections' 		=> array(
-				'favicon' => array(
-					'id' 			=> 'favicon',
-					'title' 		=> __( 'Favicon', 'catch-box' ),
-					'description' 	=> '',
-				),
-				'web_clip_icon_options' => array(
-					'id' 			=> 'web_clip_icon_options',
-					'title' 		=> __( 'Webclip Icon Options', 'catch-box' ),
-					'description' 	=> __( 'Web Clip Icon for Apple devices. Recommended Size - Width 144px and Height 144px height, which will support High Resolution Devices like iPad Retina', 'catch-box' )
-				),
 				'theme_layout' => array(
 					'id' 			=> 'theme_layout',
-					'title' 		=> __( 'Default Layout', 'catch-box' ),
+					'title' 		=> esc_html__( 'Default Layout', 'catch-box' ),
 					'description' 	=> '',
 				),
 				'content_layout' => array(
 					'id' 			=> 'content_layout',
-					'title' 		=> __( 'Content Layout', 'catch-box' ),
+					'title' 		=> esc_html__( 'Content Layout', 'catch-box' ),
 					'description' 	=> '',
 				),
 				'excerpt_length' => array(
 					'id' 			=> 'excerpt_length',
-					'title' 		=> __( 'Excerpt Length in Words', 'catch-box' ),
+					'title' 		=> esc_html__( 'Excerpt Length in Words', 'catch-box' ),
 					'description' 	=> '',
 				),
 				'feed_url' => array(
 					'id' 			=> 'feed_url',
-					'title' 		=> __( 'Feed Redirect URL', 'catch-box' ),
+					'title' 		=> esc_html__( 'Feed Redirect URL', 'catch-box' ),
 					'description' 	=> '',
 				),
 				'search_display_text' => array(
 					'id' 			=> 'search_display_text',
-					'title' 		=> __( 'Search Text Settings', 'catch-box' ),
+					'title' 		=> esc_html__( 'Search Text Settings', 'catch-box' ),
 					'description' 	=> '',
 				),
 				'disable_header_search' => array(
 					'id' 			=> 'disable_header_search',
-					'title' 		=> __( 'Disable Search in Header', 'catch-box' ),
+					'title' 		=> esc_html__( 'Disable Search in Header', 'catch-box' ),
 					'description' 	=> '',
 				),
 				'enable_menus' => array(
 					'id' 			=> 'enable_menus',
-					'title' 		=> __( 'Mobile Menu Options', 'catch-box' ),
+					'title' 		=> esc_html__( 'Mobile Menu Options', 'catch-box' ),
 					'description' 	=> '',
 				),
 				'custom_css' => array(
 					'id' 			=> 'custom_css',
-					'title' 		=> __( 'Custom CSS Styles', 'catch-box' ),
+					'title' 		=> esc_html__( 'Custom CSS Styles', 'catch-box' ),
 					'description' 	=> '',
 				),
 				'scrollup' => array(
 					'id' 			=> 'scrollup',
-					'title' 		=> __( 'Scroll Up Options', 'catch-box' ),
+					'title' 		=> esc_html__( 'Scroll Up Options', 'catch-box' ),
 					'description' 	=> '',
 				),
 			),
@@ -93,17 +81,17 @@ function catchbox_customize_register( $wp_customize ) {
 
 		'featured_slider' => array(
 			'id' 			=> 'featured_slider',
-			'title' 		=> __( 'Featured Slider', 'catch-box' ),
-			'description' 	=> __( 'Featured Slider', 'catch-box' ),
+			'title' 		=> esc_html__( 'Featured Slider', 'catch-box' ),
+			'description' 	=> esc_html__( 'Featured Slider', 'catch-box' ),
 			'sections' 		=> array(
 				'slider_options' => array(
 					'id' 			=> 'slider_options',
-					'title' 		=> __( 'Slider Options', 'catch-box' ),
+					'title' 		=> esc_html__( 'Slider Options', 'catch-box' ),
 					'description' 	=> '',
 				),
 				'slider_effect_options' => array(
 					'id' 			=> 'slider_effect_options',
-					'title' 		=> __( 'Slider Effect Options', 'catch-box' ),
+					'title' 		=> esc_html__( 'Slider Effect Options', 'catch-box' ),
 					'description' 	=> '',
 				),
 			)
@@ -111,18 +99,18 @@ function catchbox_customize_register( $wp_customize ) {
 
 		'colors' => array(
 			'id' 			=> 'colors',
-			'title' 		=> __( 'Colors', 'catch-box' ),
+			'title' 		=> esc_html__( 'Colors', 'catch-box' ),
 			'description' 	=> '',
 			'priority'		=> '10',
 			'sections' 		=> array(
 				'basic_colors' => array(
 					'id' 			=> 'basic_colors',
-					'title' 		=> __( 'Basic Colors', 'catch-box' ),
+					'title' 		=> esc_html__( 'Basic Colors', 'catch-box' ),
 					'description' 	=> '',
 				),
 				'custom_colors' => array(
 					'id' 			=> 'custom_colors',
-					'title' 		=> __( 'Custom Color Options', 'catch-box' ),
+					'title' 		=> esc_html__( 'Custom Color Options', 'catch-box' ),
 					'description' 	=> '',
 				),
 			),
@@ -130,25 +118,25 @@ function catchbox_customize_register( $wp_customize ) {
 
 		'social_links' => array(
 			'id' 			=> 'social_links',
-			'title' 		=> __( 'Social Links', 'catch-box' ),
-			'description' 	=> __( 'Add your social links here', 'catch-box' ),
+			'title' 		=> esc_html__( 'Social Links', 'catch-box' ),
+			'description' 	=> esc_html__( 'Add your social links here', 'catch-box' ),
 			'sections' 		=> array(
 				'predefined_social_icons' => array(
 					'id' 			=> 'predefined_social_icons',
-					'title' 		=> __( 'Predefined Social Icons', 'catch-box' ),
+					'title' 		=> esc_html__( 'Predefined Social Icons', 'catch-box' ),
 					'description' 	=> '',
 				),
 			),
 		),
 		'webmaster_tools' => array(
 			'id' 			=> 'webmaster_tools',
-			'title' 		=> __( 'Webmaster Tools', 'catch-box' ),
-			'description' 	=>  sprintf( __( 'Webmaster Tools falls under Plugins Territory according to Theme Review Guidelines in WordPress.org. This feature will be depreciated in future versions from Catch Box free version. If you want this feature, then you can add <a href="%s">Catch Web Tools</a>  plugin.', 'catch-box' ), esc_url( 'https://wordpress.org/plugins/catch-web-tools/' ) ),
+			'title' 		=> esc_html__( 'Webmaster Tools', 'catch-box' ),
+			'description' 	=>  sprintf( esc_html__( 'Webmaster Tools falls under Plugins Territory according to Theme Review Guidelines in WordPress.org. This feature will be depreciated in future versions from Catch Box free version. If you want this feature, then you can add <a href="%s">Catch Web Tools</a>  plugin.', 'catch-box' ), esc_url( 'https://wordpress.org/plugins/catch-web-tools/' ) ),
 			'sections' 		=> array(
 				'webmaster_tools' => array(
 					'id' 			=> 'webmaster_tools',
-					'title' 		=> __( 'Webmaster Tools', 'catch-box' ),
-					'description' 	=>  sprintf( __( 'Webmaster Tools falls under Plugins Territory according to Theme Review Guidelines in WordPress.org. This feature will be depreciated in future versions from Catch Box free version. If you want this feature, then you can add <a href="%s">Catch Web Tools</a>  plugin.', 'catch-box' ), esc_url( 'https://wordpress.org/plugins/catch-web-tools/' ) ),
+					'title' 		=> esc_html__( 'Webmaster Tools', 'catch-box' ),
+					'description' 	=>  sprintf( esc_html__( 'Webmaster Tools falls under Plugins Territory according to Theme Review Guidelines in WordPress.org. This feature will be depreciated in future versions from Catch Box free version. If you want this feature, then you can add <a href="%s">Catch Web Tools</a>  plugin.', 'catch-box' ), esc_url( 'https://wordpress.org/plugins/catch-web-tools/' ) ),
 				),
 			),
 		),
@@ -217,7 +205,7 @@ function catchbox_customize_register( $wp_customize ) {
 		//Color Scheme
 		'color_scheme' => array(
 			'id' 			=> 'color_scheme',
-			'title' 		=> __( 'Color Scheme', 'catch-box' ),
+			'title' 		=> esc_html__( 'Color Scheme', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'radio',
 			'sanitize' 		=> 'catchbox_sanitize_select',
@@ -228,7 +216,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'link_color' => array(
 			'id' 			=> 'link_color',
-			'title' 		=> __( 'Link Color', 'catch-box' ),
+			'title' 		=> esc_html__( 'Link Color', 'catch-box' ),
 			'description' 	=> '',
 			'field_type' 	=> 'color',
 			'sanitize' 		=> 'sanitize_hex_color',
@@ -238,7 +226,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'theme_layout' => array(
 			'id' 			=> 'theme_layout',
-			'title' 		=> __( 'Default Layout', 'catch-box' ),
+			'title' 		=> esc_html__( 'Default Layout', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'radio',
 			'sanitize' 		=> 'catchbox_sanitize_select',
@@ -249,7 +237,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'content_layout' => array(
 			'id' 			=> 'content_layout',
-			'title' 		=> __( 'Content Layout', 'catch-box' ),
+			'title' 		=> esc_html__( 'Content Layout', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'radio',
 			'sanitize' 		=> 'catchbox_sanitize_select',
@@ -261,7 +249,7 @@ function catchbox_customize_register( $wp_customize ) {
 		//Excerpt length
 		'excerpt_length' => array(
 			'id' 			=> 'excerpt_length',
-			'title' 		=> __( 'Excerpt Length in Words', 'catch-box' ),
+			'title' 		=> esc_html__( 'Excerpt Length in Words', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'number',
 			'sanitize' 		=> 'catchbox_sanitize_number_range',
@@ -277,7 +265,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'feed_url' => array(
 			'id' 				=> 'feed_url',
-			'title' 			=> __( 'Feed Redirect url', 'catch-box' ),
+			'title' 			=> esc_html__( 'Feed Redirect url', 'catch-box' ),
 			'description' 		=> '',
 			'field_type' 		=> 'url',
 			'sanitize' 			=> 'esc_url_raw',
@@ -288,7 +276,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'site_title_above' => array(
 			'id' 			=> 'site_title_above',
-			'title' 		=> __( 'Check to move above the Header/Logo Image', 'catch-box' ),
+			'title' 		=> esc_html__( 'Check to move above the Header/Logo Image', 'catch-box' ),
 			'field_type' 	=> 'checkbox',
 			'sanitize' 		=> 'catchbox_sanitize_checkbox',
 			'section' 		=> 'title_tagline',
@@ -296,7 +284,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'search_display_text' => array(
 			'id' 			=> 'search_display_text',
-			'title' 		=> __( 'Default Display Text in Search', 'catch-box' ),
+			'title' 		=> esc_html__( 'Default Display Text in Search', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'text',
 			'sanitize' 		=> 'sanitize_text_field',
@@ -306,7 +294,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'disable_header_search' => array(
 			'id' 			=> 'disable_header_search',
-			'title' 		=> __( 'Check to Disable', 'catch-box' ),
+			'title' 		=> esc_html__( 'Check to Disable', 'catch-box' ),
 			'field_type' 	=> 'checkbox',
 			'sanitize' 		=> 'catchbox_sanitize_checkbox',
 			'panel' 		=> 'theme_options',
@@ -315,7 +303,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'enable_sec_menu' => array(
 			'id' 			=> 'enable_sec_menu',
-			'title' 		=> __( 'Check to enable secondary mobile menu', 'catch-box' ),
+			'title' 		=> esc_html__( 'Check to enable secondary mobile menu', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'checkbox',
 			'sanitize' 		=> 'catchbox_sanitize_checkbox',
@@ -325,7 +313,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'enable_footer_menu' => array(
 			'id' 			=> 'enable_footer_menu',
-			'title' 				=> __( 'Check to enable footer mobile menu', 'catch-box' ),
+			'title' 				=> esc_html__( 'Check to enable footer mobile menu', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'checkbox',
 			'sanitize' 		=> 'catchbox_sanitize_checkbox',
@@ -335,7 +323,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'custom_css' => array(
 			'id' 			=> 'custom_css',
-			'title' 		=> __( 'Custom CSS Styles', 'catch-box' ),
+			'title' 		=> esc_html__( 'Custom CSS Styles', 'catch-box' ),
 			'description' 	=> '',
 			'field_type' 	=> 'textarea',
 			'sanitize' 		=> 'catchbox_sanitize_custom_css',
@@ -347,7 +335,7 @@ function catchbox_customize_register( $wp_customize ) {
 		//Scroll Up Options
 		'disable_scrollup' => array(
 			'id' 			=> 'disable_scrollup',
-			'title' 		=> __( 'Check to disable scroll up', 'catch-box' ),
+			'title' 		=> esc_html__( 'Check to disable scroll up', 'catch-box' ),
 			'description' 	=> '',
 			'field_type' 	=> 'checkbox',
 			'sanitize' 		=> 'catchbox_sanitize_checkbox',
@@ -359,7 +347,7 @@ function catchbox_customize_register( $wp_customize ) {
 		//Slider Options
 		'exclude_slider_post' => array(
 			'id' 				=> 'exclude_slider_post',
-			'title' 			=> __( 'Check to Exclude Slider posts from Homepage posts', 'catch-box' ),
+			'title' 			=> esc_html__( 'Check to Exclude Slider posts from Homepage posts', 'catch-box' ),
 			'field_type' 		=> 'checkbox',
 			'sanitize' 			=> 'catchbox_sanitize_checkbox',
 			'panel' 			=> 'featured_slider',
@@ -368,8 +356,8 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'slider_qty' => array(
 			'id' 				=> 'slider_qty',
-			'title' 			=> __( 'Number of Slides', 'catch-box' ),
-			'description'		=> __( 'Customizer page needs to be refreshed after saving if number of slides is changed', 'catch-box' ),
+			'title' 			=> esc_html__( 'Number of Slides', 'catch-box' ),
+			'description'		=> esc_html__( 'Customizer page needs to be refreshed after saving if number of slides is changed', 'catch-box' ),
 			'field_type' 		=> 'number',
 			'sanitize' 			=> 'catchbox_sanitize_number_range',
 			'panel' 			=> 'featured_slider',
@@ -384,7 +372,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'transition_effect' => array(
 			'id' 				=> 'transition_effect',
-			'title' 			=> __( 'Transition Effect', 'catch-box' ),
+			'title' 			=> esc_html__( 'Transition Effect', 'catch-box' ),
 			'description'		=> '',
 			'field_type' 		=> 'select',
 			'sanitize' 			=> 'catchbox_sanitize_select',
@@ -392,22 +380,22 @@ function catchbox_customize_register( $wp_customize ) {
 			'section' 			=> 'slider_effect_options',
 			'default' 			=> $defaults['transition_effect'],
 			'choices'			=> array(
-										'fade'			=> __( 'fade', 'catch-box' ),
-										'wipe'			=> __( 'wipe', 'catch-box' ),
-										'scrollUp'		=> __( 'scrollUp', 'catch-box' ),
-										'scrollDown'	=> __( 'scrollDown', 'catch-box' ),
-										'scrollLeft'	=> __( 'scrollLeft', 'catch-box' ),
-										'scrollRight'	=> __( 'scrollRight', 'catch-box' ),
-										'blindX'		=> __( 'blindX', 'catch-box' ),
-										'blindY'		=> __( 'blindY', 'catch-box' ),
-										'blindZ'		=> __( 'blindZ', 'catch-box' ),
-										'cover'			=> __( 'cover', 'catch-box' ),
-										'shuffle'		=> __( 'shuffle', 'catch-box' ),
+										'fade'			=> esc_html__( 'fade', 'catch-box' ),
+										'wipe'			=> esc_html__( 'wipe', 'catch-box' ),
+										'scrollUp'		=> esc_html__( 'scrollUp', 'catch-box' ),
+										'scrollDown'	=> esc_html__( 'scrollDown', 'catch-box' ),
+										'scrollLeft'	=> esc_html__( 'scrollLeft', 'catch-box' ),
+										'scrollRight'	=> esc_html__( 'scrollRight', 'catch-box' ),
+										'blindX'		=> esc_html__( 'blindX', 'catch-box' ),
+										'blindY'		=> esc_html__( 'blindY', 'catch-box' ),
+										'blindZ'		=> esc_html__( 'blindZ', 'catch-box' ),
+										'cover'			=> esc_html__( 'cover', 'catch-box' ),
+										'shuffle'		=> esc_html__( 'shuffle', 'catch-box' ),
 									)
 		),
 		'transition_delay' => array(
 			'id' 				=> 'transition_delay',
-			'title' 			=> __( 'Transition Delay (in seconds)', 'catch-box' ),
+			'title' 			=> esc_html__( 'Transition Delay (in seconds)', 'catch-box' ),
 			'description'		=> '',
 			'field_type' 		=> 'number',
 			'sanitize' 			=> 'catchbox_sanitize_number_range',
@@ -423,7 +411,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'transition_duration' => array(
 			'id' 				=> 'transition_duration',
-			'title' 			=> __( 'Transition Length', 'catch-box' ),
+			'title' 			=> esc_html__( 'Transition Length', 'catch-box' ),
 			'description'		=> '',
 			'field_type' 		=> 'number',
 			'sanitize' 			=> 'catchbox_sanitize_number_range',
@@ -441,7 +429,7 @@ function catchbox_customize_register( $wp_customize ) {
 		//Social Links
 		'social_facebook' => array(
 			'id' 			=> 'social_facebook',
-			'title' 		=> __( 'Facebook', 'catch-box' ),
+			'title' 		=> esc_html__( 'Facebook', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -451,7 +439,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_twitter' => array(
 			'id' 			=> 'social_twitter',
-			'title' 		=> __( 'Twitter', 'catch-box' ),
+			'title' 		=> esc_html__( 'Twitter', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -461,7 +449,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_google' => array(
 			'id' 			=> 'social_google',
-			'title' 		=> __( 'Google+', 'catch-box' ),
+			'title' 		=> esc_html__( 'Google+', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -471,7 +459,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_linkedin' => array(
 			'id' 			=> 'social_linkedin',
-			'title' 		=> __( 'LinkedIn', 'catch-box' ),
+			'title' 		=> esc_html__( 'LinkedIn', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -481,7 +469,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_pinterest' => array(
 			'id' 			=> 'social_pinterest',
-			'title' 		=> __( 'Pinterest', 'catch-box' ),
+			'title' 		=> esc_html__( 'Pinterest', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -491,7 +479,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_youtube' => array(
 			'id' 			=> 'social_youtube',
-			'title' 		=> __( 'Youtube', 'catch-box' ),
+			'title' 		=> esc_html__( 'Youtube', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -501,7 +489,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_rss' => array(
 			'id' 			=> 'social_rss',
-			'title' 		=> __( 'RSS', 'catch-box' ),
+			'title' 		=> esc_html__( 'RSS', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -511,7 +499,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_deviantart' => array(
 			'id' 			=> 'social_deviantart',
-			'title' 		=> __( 'deviantART', 'catch-box' ),
+			'title' 		=> esc_html__( 'deviantART', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -521,7 +509,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_tumblr' => array(
 			'id' 			=> 'social_tumblr',
-			'title' 		=> __( 'Tumblr', 'catch-box' ),
+			'title' 		=> esc_html__( 'Tumblr', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -531,7 +519,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_viemo' => array(
 			'id' 			=> 'social_viemo',
-			'title' 		=> __( 'Vimeo', 'catch-box' ),
+			'title' 		=> esc_html__( 'Vimeo', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -541,7 +529,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_dribbble' => array(
 			'id' 			=> 'social_dribbble',
-			'title' 		=> __( 'Dribbble', 'catch-box' ),
+			'title' 		=> esc_html__( 'Dribbble', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -551,7 +539,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_myspace' => array(
 			'id' 			=> 'social_myspace',
-			'title' 		=> __( 'MySpace', 'catch-box' ),
+			'title' 		=> esc_html__( 'MySpace', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -561,7 +549,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_aim' => array(
 			'id' 			=> 'social_aim',
-			'title' 		=> __( 'Aim', 'catch-box' ),
+			'title' 		=> esc_html__( 'Aim', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -571,7 +559,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_flickr' => array(
 			'id' 			=> 'social_flickr',
-			'title' 		=> __( 'Flickr', 'catch-box' ),
+			'title' 		=> esc_html__( 'Flickr', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -581,7 +569,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_slideshare' => array(
 			'id' 			=> 'social_slideshare',
-			'title' 		=> __( 'Slideshare', 'catch-box' ),
+			'title' 		=> esc_html__( 'Slideshare', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -591,7 +579,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_instagram' => array(
 			'id' 			=> 'social_instagram',
-			'title' 		=> __( 'Instagram', 'catch-box' ),
+			'title' 		=> esc_html__( 'Instagram', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -601,7 +589,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_skype' => array(
 			'id' 			=> 'social_skype',
-			'title' 		=> __( 'Skype', 'catch-box' ),
+			'title' 		=> esc_html__( 'Skype', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'sanitize_text_field',
@@ -611,7 +599,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_soundcloud' => array(
 			'id' 			=> 'social_soundcloud',
-			'title' 		=> __( 'Soundcloud', 'catch-box' ),
+			'title' 		=> esc_html__( 'Soundcloud', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -621,7 +609,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_email' => array(
 			'id' 			=> 'social_email',
-			'title' 		=> __( 'Email', 'catch-box' ),
+			'title' 		=> esc_html__( 'Email', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'sanitize_email',
@@ -631,7 +619,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_xing' => array(
 			'id' 			=> 'social_xing',
-			'title' 		=> __( 'Xing', 'catch-box' ),
+			'title' 		=> esc_html__( 'Xing', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -641,7 +629,7 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'social_meetup' => array(
 			'id' 			=> 'social_meetup',
-			'title' 		=> __( 'Meetup', 'catch-box' ),
+			'title' 		=> esc_html__( 'Meetup', 'catch-box' ),
 			'description'	=> '',
 			'field_type' 	=> 'url',
 			'sanitize' 		=> 'esc_url_raw',
@@ -653,8 +641,8 @@ function catchbox_customize_register( $wp_customize ) {
 		//Webmaster Tools
 		'tracker_header' => array(
 			'id' 				=> 'tracker_header',
-			'title' 			=> __( 'Code to display on Header', 'catch-box' ),
-			'description' 		=> __( 'Here you can put scripts from Google, Facebook etc. which will load on Header', 'catch-box' ),
+			'title' 			=> esc_html__( 'Code to display on Header', 'catch-box' ),
+			'description' 		=> esc_html__( 'Here you can put scripts from Google, Facebook etc. which will load on Header', 'catch-box' ),
 			'field_type' 		=> 'textarea',
 			'sanitize' 			=> 'wp_kses_stripslashes',
 			'panel' 			=> 'webmaster_tools',
@@ -664,8 +652,8 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 		'tracker_footer' => array(
 			'id' 				=> 'tracker_footer',
-			'title' 			=> __( 'Code to display on Footer', 'catch-box' ),
-			'description' 		=> __( 'Here you can put scripts from Google, Facebook etc. which will load on Footer', 'catch-box' ),
+			'title' 			=> esc_html__( 'Code to display on Footer', 'catch-box' ),
+			'description' 		=> esc_html__( 'Here you can put scripts from Google, Facebook etc. which will load on Footer', 'catch-box' ),
 			'field_type' 		=> 'textarea',
 			'sanitize' 			=> 'wp_kses_stripslashes',
 			'panel' 			=> 'webmaster_tools',
@@ -675,53 +663,22 @@ function catchbox_customize_register( $wp_customize ) {
 		),
 	);
 
-	//@remove Remove if block when WordPress 4.8 is released
-	if ( !function_exists( 'has_site_icon' ) ) {
-		$settings_favicon = array(
-			//Favicon
-			'fav_icon' => array(
-				'id' 				=> 'fav_icon',
-				'title' 			=> __( 'Fav Icon', 'catch-box' ),
-				'description'		=> '',
-				'field_type' 		=> 'image',
-				'sanitize' 			=> 'catchbox_sanitize_image',
-				'panel' 			=> 'theme_options',
-				'section' 			=> 'favicon',
-				'default' 			=> '',
-				//'active_callback'	=> 'catchbox_is_site_icon_active',
-			),
-			//Web Clip Icon
-			'web_clip' => array(
-				'id' 				=> 'web_clip',
-				'title' 			=> __( 'Web Clip Icon', 'catch-box' ),
-				'description'		=> '',
-				'field_type' 		=> 'image',
-				'sanitize' 			=> 'catchbox_sanitize_image',
-				'panel' 			=> 'theme_options',
-				'section' 			=> 'web_clip_icon_options',
-				'default' 			=> '',
-				//'active_callback'	=> 'catchbox_is_site_icon_active',
-			),
-		);
-
-		$settings_parameters = array_merge( $settings_parameters, $settings_favicon);
-	}
 
 	if ( function_exists( 'has_custom_logo' ) ) {
 		$settings_header_image = array(
 			//Favicon
 			'header_image_position' => array(
 				'id'          => 'header_image_position',
-				'title'       => __( 'Header Image Location', 'catch-box' ),
+				'title'       => esc_html__( 'Header Image Location', 'catch-box' ),
 				'description' => '',
 				'field_type'  => 'select',
 				'sanitize'    => 'catchbox_sanitize_select',
 				'section'     => 'header_image',
 				'default'     => $defaults['header_image_position'],
 				'choices'     => array(
-					'above'   => __( 'Above Header Content', 'catch-box' ),
-					'between' => __( 'Between Site Title-Logo', 'catch-box' ),
-					'below'   => __( 'Below Header Content', 'catch-box' )
+					'above'   => esc_html__( 'Above Header Content', 'catch-box' ),
+					'between' => esc_html__( 'Between Site Title-Logo', 'catch-box' ),
+					'below'   => esc_html__( 'Below Header Content', 'catch-box' )
 				)
 			)
 		);
@@ -741,7 +698,6 @@ function catchbox_customize_register( $wp_customize ) {
 				$theme_slug . 'options[' . $option['id'] . ']',
 				// parameters array
 				array(
-					'type'				=> 'option',
 					'sanitize_callback'	=> $option['sanitize'],
 					'default'			=> $option['default'],
 				)
@@ -765,7 +721,6 @@ function catchbox_customize_register( $wp_customize ) {
 				$theme_slug . 'options[' . $option['id'] . ']',
 				// parameters array
 				array(
-					'type'				=> 'option',
 					'sanitize_callback'	=> $option['sanitize'],
 					'default'			=> $option['default'],				)
 			);
@@ -802,7 +757,6 @@ function catchbox_customize_register( $wp_customize ) {
 				// parameters array
 				array(
 					'default'			=> $option['default'],
-					'type'				=> 'option',
 					'sanitize_callback'	=> $option['sanitize']
 				)
 			);
@@ -847,17 +801,16 @@ function catchbox_customize_register( $wp_customize ) {
 	}
 
 	if ( !isset( $options['slider_qty'] ) || !is_numeric( $options['slider_qty'] ) ) {
-		$options[ 'slider_qty' ] = 4;
+		$options['slider_qty'] = 4;
 	}
 
     //Add featured post elements with respect to no of featured sliders
-	for ( $i = 1; $i <= $options[ 'slider_qty' ]; $i++ ) {
+	for ( $i = 1; $i <= $options['slider_qty']; $i++ ) {
 		$wp_customize->add_setting(
 			// $id
 			$theme_slug . 'options[featured_slider][' . $i . ']',
 			// parameters array
 			array(
-				'type'				=> 'option',
 				'sanitize_callback'	=> 'catchbox_sanitize_post_id'
 			)
 		);
@@ -865,7 +818,7 @@ function catchbox_customize_register( $wp_customize ) {
 		$wp_customize->add_control(
 			$theme_slug . 'options[featured_slider][' . $i . ']',
 			array(
-				'label'		=> sprintf( __( '#%s Featured Post ID', 'catch-box' ), $i ),
+				'label'		=> sprintf( esc_html__( '#%s Featured Post ID', 'catch-box' ), $i ),
 				'section'   => $theme_slug .'slider_options',
 				'settings'  => $theme_slug . 'options[featured_slider][' . $i . ']',
 				'type'		=> 'text',
@@ -880,20 +833,19 @@ function catchbox_customize_register( $wp_customize ) {
 
 	// Reset all settings to default
 	$wp_customize->add_section( 'catchbox_reset_all_settings', array(
-		'description'	=> __( 'Caution: Reset all settings to default. Refresh the page after save to view full effects.', 'catch-box' ),
+		'description'	=> esc_html__( 'Caution: Reset all settings to default. Refresh the page after save to view full effects.', 'catch-box' ),
 		'priority' 		=> 700,
-		'title'    		=> __( 'Reset all settings', 'catch-box' ),
+		'title'    		=> esc_html__( 'Reset all settings', 'catch-box' ),
 	) );
 
 	$wp_customize->add_setting( 'catchbox_theme_options[reset_all_settings]', array(
 		'capability'		=> 'edit_theme_options',
 		'sanitize_callback' => 'catchbox_sanitize_checkbox',
-		'type'				=> 'option',
 		'transport'			=> 'postMessage',
 	) );
 
 	$wp_customize->add_control( 'catchbox_theme_options[reset_all_settings]', array(
-		'label'    => __( 'Check to reset all settings to default', 'catch-box' ),
+		'label'    => esc_html__( 'Check to reset all settings to default', 'catch-box' ),
 		'section'  => 'catchbox_reset_all_settings',
 		'settings' => 'catchbox_theme_options[reset_all_settings]',
 		'type'     => 'checkbox'
@@ -903,7 +855,7 @@ function catchbox_customize_register( $wp_customize ) {
 	//Important Links
 	$wp_customize->add_section( 'important_links', array(
 		'priority' 		=> 999,
-		'title'   	 	=> __( 'Important Links', 'catch-box' ),
+		'title'   	 	=> esc_html__( 'Important Links', 'catch-box' ),
 	) );
 
 	/**
@@ -914,7 +866,7 @@ function catchbox_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( new CatchBox_Important_Links( $wp_customize, 'important_links', array(
-        'label'   	=> __( 'Important Links', 'catch-box' ),
+        'label'   	=> esc_html__( 'Important Links', 'catch-box' ),
         'section'  	=> 'important_links',
         'settings' 	=> 'important_links',
         'type'     	=> 'important_links',
@@ -932,7 +884,7 @@ add_action( 'customize_register', 'catchbox_customize_register' );
  */
 function catchbox_customize_preview() {
 	//Remove transients on preview
-	catchbox_themeoption_invalidate_caches();
+	catchbox_flush_transients();
 }
 add_action( 'customize_preview_init', 'catchbox_customize_preview' );
 add_action( 'customize_save', 'catchbox_customize_preview' );
@@ -944,7 +896,7 @@ add_action( 'customize_save', 'catchbox_customize_preview' );
  * @since Catch Box 3.3
  */
 function catchbox_customize_scripts() {
-    wp_enqueue_script( 'catchbox_customizer_custom', get_template_directory_uri() . '/inc/customizer-custom-scripts.js', array( 'jquery' ), '20140108', true );
+    wp_enqueue_script( 'catchbox_customizer_custom', get_template_directory_uri() . '/js/customizer-custom-scripts.js', array( 'jquery' ), '20140108', true );
 
     $catchbox_misc_links = array(
 		'reset_message' => esc_html__( 'Refresh the customizer page after saving to view reset effects', 'catch-box' ),
@@ -956,6 +908,26 @@ function catchbox_customize_scripts() {
 add_action( 'customize_controls_enqueue_scripts', 'catchbox_customize_scripts');
 
 
+/**
+ * Function to reset date with respect to condition
+ *
+ * @since Catch Box Pro 4.9
+ */
+function catchbox_reset_data() {
+	$options  = catchbox_get_options();
+    
+    if ( $options['reset_all_settings'] ) {
+    	remove_theme_mods();
+
+    	// Flush out all transients	on reset
+        catchbox_flush_transients();
+
+        return;
+    }
+}
+//add_action( 'customize_save_after', 'catchbox_reset_data' );
+
+
 //Active callbacks for customizer
 require trailingslashit( get_template_directory() ) . 'inc/customizer/customizer-active-callbacks.php';
 
@@ -964,4 +936,3 @@ require trailingslashit( get_template_directory() ) . 'inc/customizer/customizer
 
 // Add Upgrade to Pro Button.
 require trailingslashit( get_template_directory() ) . 'inc/customizer/upgrade-button/class-customize.php';
-

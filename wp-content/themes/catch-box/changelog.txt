@@ -1,8 +1,19 @@
 == Change Log ==
 
-Version 4.6.1
+Version 4.7
+* Bug Fixed: Replaced $object->ID with get_the_ID() as previous gives error
+* Optimized: Images (Reported by: Marius)
+* Code Optimization
+* Compatible with WordPress 4.8
+* Removed: Backward compatibility functions
+* Removed: Theme Options Panel
+* Moved option from theme_options to theme_mod
+* Restructured files and folders
+* Internationalized date() to date_i18n()
+
+Version 4.6.2
 * Bug Fixed: Color scheme not working in child themes. Replaced get_stylesheet_directory_uri with get_template_directory_uri
-* Replaced Theme URI in style.css
+* Replaced: Theme URI in style.css
 
 Version 4.6.1
 * Enhanced: HTML5 structure

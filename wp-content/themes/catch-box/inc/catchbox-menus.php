@@ -69,7 +69,7 @@ if ( ! function_exists( 'catchbox_header_menu' ) ) :
 function catchbox_header_menu() {
     $classes = "mobile-menu-anchor page-menu";
 
-    $options = catchbox_get_theme_options();
+    $options = catchbox_get_options();
 
     // Header Left Mobile Menu Anchor
     if ( has_nav_menu( 'primary' ) ) {
@@ -84,7 +84,7 @@ function catchbox_header_menu() {
         </div><!-- #mobile-header-left-menu -->
             
         <?php
-        if ( !empty ( $options ['enable_sec_menu'] ) && has_nav_menu( 'secondary' ) ) {
+        if ( !empty ( $options['enable_sec_menu'] ) && has_nav_menu( 'secondary' ) ) {
             $menuclass = "mobile-enable"; 
             ?>
             <div id="mobile-header-right-menu" class="mobile-menu-anchor secondary-menu">
@@ -149,11 +149,11 @@ if ( ! function_exists( 'catchbox_footer_menu_display' ) ) :
 function catchbox_footer_menu_display() {
     if ( has_nav_menu( 'footer' ) ) {
         // Check is footer menu is enable or not
-        $options = catchbox_get_theme_options();
+        $options = catchbox_get_options();
 
         $menuclass = "mobile-disable";
         
-        if ( !empty ( $options ['enable_footer_menu'] ) ) {
+        if ( !empty ( $options['enable_footer_menu'] ) ) {
             $menuclass = "mobile-enable";
 
             ?>
@@ -175,7 +175,7 @@ function catchbox_footer_menu_display() {
             </nav>
         </div><!-- .site-footer-menu -->
     <?php 
-    if ( !empty ( $options ['enable_footer_menu'] ) ) { ?>
+    if ( !empty ( $options['enable_footer_menu'] ) ) { ?>
     </div><!-- #mobile-footer-menu -->   
     <?php
         }

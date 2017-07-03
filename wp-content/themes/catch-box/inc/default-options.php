@@ -12,8 +12,8 @@
  *
  * @since Catch Box 1.0
  */
-function catchbox_get_theme_options() {
-	return get_option( 'catchbox_theme_options', catchbox_get_default_theme_options() );
+function catchbox_get_options() {
+	return wp_parse_args( ( array ) get_theme_mod( 'catchbox_theme_options' ), catchbox_defaults() );
 }
 
 
@@ -131,7 +131,7 @@ function catchbox_content_layout() {
  *
  * @since Catch Box 1.0
  */
-function catchbox_get_default_theme_options() {
+function catchbox_defaults() {
 	$default_theme_options = array(
 		'excerpt_length'        => 40,
 		'color_scheme'          => 'light',
@@ -173,7 +173,7 @@ function catchbox_get_default_theme_options() {
 */
 function catchbox_get_default_link_color( $color_scheme = null ) {
 	if ( null === $color_scheme ) {
-		$options = catchbox_get_theme_options();
+		$options = catchbox_get_options();
 		$color_scheme = $options['color_scheme'];
 	}
 
@@ -192,7 +192,7 @@ function catchbox_get_default_link_color( $color_scheme = null ) {
  * @return string
  */
 function catchbox_the_year() {
-    return date( __( 'Y', 'catch-box' ) );
+    return esc_attr( date_i18n( __( 'Y', 'catch-box' ) ) );
 }
 
 
@@ -256,28 +256,10 @@ function catchbox_assets(){
  * @hooked after_setup_theme
  */
 function catchbox_migrate_theme_options(){
-    // Combine slider options with theme options
-	if ( $catchbox_options_slider = get_option( 'catchbox_options_slider' ) ) {
-		$catchbox_theme_options = catchbox_get_theme_options();
-		$catchbox_theme_options = array_merge( $catchbox_theme_options, $catchbox_options_slider );
-		update_option( 'catchbox_theme_options', $catchbox_theme_options );
-		delete_option( 'catchbox_options_slider' );
+    // Move Theme Options to theme mods
+	if ( $catchbox_options = get_option( 'catchbox_theme_options' ) ) {
+		set_theme_mod( 'catchbox_theme_options', $catchbox_options );
+		delete_option( 'catchbox_theme_options' );
 	}
-
-	// Combine social links options with theme options
-	if ( $catchbox_options_social_links = get_option( 'catchbox_options_social_links' ) ) {
-		$catchbox_theme_options = catchbox_get_theme_options();
-		$catchbox_theme_options = array_merge( $catchbox_theme_options, $catchbox_options_social_links );
-		update_option( 'catchbox_theme_options', $catchbox_theme_options );
-		delete_option( 'catchbox_options_social_links' );
-	}
-
-	// Combine webmaster options with theme options
-	if ( $catchbox_options_webmaster = get_option( 'catchbox_options_webmaster' ) ) {
-		$catchbox_theme_options = catchbox_get_theme_options();
-		$catchbox_theme_options = array_merge( $catchbox_theme_options, $catchbox_options_webmaster );
-		update_option( 'catchbox_theme_options', $catchbox_theme_options );
-		delete_option( 'catchbox_options_webmaster' );
-	}
- }
+}
 add_action( 'after_setup_theme', 'catchbox_migrate_theme_options' );

@@ -6,7 +6,7 @@
  * @subpackage Catch Box
  * @since Catch Box 1.0
  */
-$options = catchbox_get_theme_options();
+$options = catchbox_get_options();
 $search_text = esc_attr( $options['search_display_text'] );
 ?>
 	<form role="search" method="get" class="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">

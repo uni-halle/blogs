@@ -6,11 +6,10 @@
 /* Clearing Theme Option Cache
  * @uses delete_transient
  */
-function catchbox_themeoption_invalidate_caches() {
-	delete_transient( 'catchbox_favicon' );	//Favicon
+function catchbox_flush_transients() {
 	delete_transient( 'catchbox_sliders' ); // Featured Slider
 	delete_transient( 'catchbox_socialprofile' ); //Social Profile
-	delete_transient( 'catchbox_webclip' );	//Favicon
+    delete_transient( 'catchbox_footer_content' ); //Footer Content
 }
 
 
