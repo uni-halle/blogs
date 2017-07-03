@@ -5,14 +5,14 @@ Plugin Name: TimeZoneCalculator
 Plugin URI: http://www.bernhard-riedl.com/projects/
 Description: Calculates, displays and automatically updates times and dates in different timezones with respect to daylight saving.
 Author: Dr. Bernhard Riedl
-Version: 3.35
+Version: 3.36
 Author URI: http://www.bernhard-riedl.com/
 */
 
 /*
-Copyright 2005-2016 Dr. Bernhard Riedl
+Copyright 2005-2017 Dr. Bernhard Riedl
 
-Inspirations & Proof-Reading 2007-2016
+Inspirations & Proof-Reading 2007-2017
 by Veronika Grascher
 
 This program is free software:
@@ -1740,13 +1740,11 @@ class TimeZoneCalculator {
 
 	function wp_ajax_calculator() {
 
-		global $user_ID;
-
 		/*
-		load current user's details
+		get current user id
 		*/
 
-		get_currentuserinfo();
+		$user_ID=get_current_user_id();
 
 		/*
 		security check
@@ -1786,13 +1784,11 @@ class TimeZoneCalculator {
 
 	function wp_ajax_calculator_ajax_nonce() {
 
-		global $user_ID;
-
 		/*
-		load current user's details
+		get current user id
 		*/
 
-		get_currentuserinfo();
+		$user_ID=get_current_user_id();
 
 		/*
 		security check
@@ -1823,13 +1819,12 @@ class TimeZoneCalculator {
 	*/
 
 	function calculator_page_timezones_update() {
-		global $user_ID;
 
 		/*
-		load current user's details
+		get current user id
 		*/
 
-		get_currentuserinfo();
+		$user_ID=get_current_user_id();
 
 		/*
 		security check
@@ -2038,7 +2033,7 @@ class TimeZoneCalculator {
 	*/
 
 	function head_meta() {
-		echo("<meta name=\"".$this->get_nicename()."\" content=\"3.35\"/>\n");
+		echo("<meta name=\"".$this->get_nicename()."\" content=\"3.36\"/>\n");
 	}
 
 	/*
@@ -2245,7 +2240,11 @@ class TimeZoneCalculator {
 
 		wp_enqueue_script($this->get_prefix().'calculator');
 
-		global $user_ID;
+		/*
+		get current user id
+		*/
+
+		$user_ID=get_current_user_id();
 
 		/*
 		datepicker
@@ -2271,12 +2270,6 @@ class TimeZoneCalculator {
 
 			</script>');
 		}
-
-		/*
-		load current user's details
-		*/
-
-		get_currentuserinfo();
 
 		$security_string=$this->get_prefix().'calculator'.$user_ID;
 		$_ajax_nonce=wp_create_nonce($security_string);
@@ -2362,16 +2355,10 @@ class TimeZoneCalculator {
 		$params=$this->fill_default_parameters($params);
 
 		/*
-		use user's timezones?
+		get current user id
 		*/
 
-		global $user_ID;
-
-		/*
-		load current user's details
-		*/
-
-		get_currentuserinfo();
+		$user_ID=get_current_user_id();
 
 		/*
 		allow to query for a
@@ -4116,13 +4103,12 @@ class TimeZoneCalculator {
 	*/
 
 	function callback_calculator_calculator() {
-		global $user_ID;
 
 		/*
-		load current user's details
+		get current user id
 		*/
 
-		get_currentuserinfo();
+		$user_ID=get_current_user_id();
 
 		$timezone=apply_filters($this->get_prefix().'calculator_timezone', get_user_option($this->get_prefix().'calculator_timezone', $user_ID));
 
@@ -4278,13 +4264,12 @@ class TimeZoneCalculator {
 	*/
 
 	function callback_calculator_selected_timezones() {
-		global $user_ID;
 
 		/*
-		load current user's details
+		get current user id
 		*/
 
-		get_currentuserinfo();
+		$user_ID=get_current_user_id();
 
 		$timezones_array=get_user_option($this->get_prefix().'timezones', $user_ID);
 
