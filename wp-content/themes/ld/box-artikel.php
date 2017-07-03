@@ -52,6 +52,10 @@ switch ($fields['status']) {
                 foreach ($fields['bibliografischeangaben'] as $key => $value) {
                   echo ' ' . $fields['bibliografischeangaben'][$key]['attribut'] . ' <b>' . $fields['bibliografischeangaben'][$key]['wert'] . '</b>';
                 };
+                // Zusatzinformationen
+                foreach ($fields['zusatzinformationen'] as $key => $value) {
+                  echo ' ' . $fields['zusatzinformationen'][$key]['attribut'] . ' <b>' . $fields['zusatzinformationen'][$key]['wert'] . '</b>';
+                };
               } else {
                 // Zusatzinformationen
                 foreach ($fields['zusatzinformationen'] as $key => $value) {

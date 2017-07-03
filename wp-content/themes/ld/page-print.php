@@ -76,7 +76,7 @@ if (!empty($_GET['range'])) {
 		body {
 			font-family: 'Roboto', sans-serif;
 			font-size: 0;
-			margin: 0;
+			margin: 0 0;
 			padding: 0;
 			width: 21cm;
 	    height: 29.7cm;
@@ -85,8 +85,8 @@ if (!empty($_GET['range'])) {
 			display: inline-block;
 			overflow: hidden;
 			margin: 0;
-			padding: 0.25cm 0.5cm;
-			width: 6cm;
+			padding: 0.25cm 0.6cm;
+			width: 5.8cm;
 			height: 3cm;
 			font-size: 6pt;
 			font-weight: 300;
@@ -106,7 +106,7 @@ if (!empty($_GET['range'])) {
 			overflow: hidden;
 			margin-top: 1.5pt;
 		  line-height: 1.2em;
-		  max-height: 2.4em;
+		  max-height: 2.2em;
 		}
 		#hinweis {
 			display: inline-block;
@@ -136,7 +136,7 @@ if (!empty($_GET['range'])) {
 			font-weight: 500;
 		}
 		@page {
-			margin: 0.9cm 0;
+			margin: 0.85cm 0;
 			size: portrait;
 			size: A4;
 		}
@@ -162,9 +162,9 @@ foreach ( $posts as $post ) {
 			foreach ($fields['autoren'] as $key => $value) { $autoren[] = $fields['autoren'][$key]['name']; }
 			echo '<span class="attribut">' . (count($autoren) > 1 ? 'Autoren' : 'Autor') . '</span><span class="wert">' . implode(', ', $autoren) . '</span>';
 			// Untertitel
-			if ($fields['untertitel']) {
-				echo '<span class="attribut">Untertitel</span><span class="wert">' . $fields['untertitel'] . '</span>';
-			}
+			/* if ($fields['untertitel']) {
+			  echo '<span class="attribut">Untertitel</span><span class="wert">' . $fields['untertitel'] . '</span>';
+			} */
 			// Erscheinungsjahr
 			if ($fields['erscheinungsjahr']) {
 				echo '<span class="attribut">Jahr</span><span class="wert">' . $fields['erscheinungsjahr'] . '</span>';
@@ -172,6 +172,10 @@ foreach ( $posts as $post ) {
 			// Bibliografische Angaben
 			foreach ($fields['bibliografischeangaben'] as $key => $value) {
 				echo '<span class="attribut">' . $fields['bibliografischeangaben'][$key]['attribut'] . '</span><span class="wert">' . $fields['bibliografischeangaben'][$key]['wert'] . '</span>';
+			};
+			// Zusatzinformationen
+			foreach ($fields['zusatzinformationen'] as $key => $value) {
+				echo '<span class="attribut">' . $fields['zusatzinformationen'][$key]['attribut'] . '</span><span class="wert">' . $fields['zusatzinformationen'][$key]['wert'] . '</span>';
 			};
 		} else {
 			// Zusatzinformationen
