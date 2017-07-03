@@ -333,7 +333,7 @@ function graphene_admin_notice_shortcodes() {
 	?>
         <div class="update-nag">
         	<p>
-            	<a class="alignright dismiss button" style="margin-left: 20px" href="<?php echo add_query_arg( 'graphene-dismiss-notice', 'shortcodes' ); ?>">Dismiss</a>
+            	<a class="alignright dismiss button" style="margin-left: 20px" href="<?php echo esc_url( add_query_arg( 'graphene-dismiss-notice', 'shortcodes' ) ); ?>">Dismiss</a>
             	<strong>IMPORTANT:</strong> Message blocks and pullquote shortcodes have been removed from the Graphene theme as required by the WordPress Theme Review Team. To continue using them, download and install the <a href="http://www.graphene-theme.com/?ddownload=3403" target="_blank">Graphene Shortcodes</a> plugin. <a href="http://www.graphene-theme.com/announcement/graphene-1-9-4-update/">Learn more &raquo;</a>
             </p>
         </div>

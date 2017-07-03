@@ -51,7 +51,7 @@ if ( function_exists( 'get_post_format' ) && $post_type->name != 'page' ) {
 		 * and if enabled in the theme option.
 		 */
 		if ( $graphene_settings['print_button'] && is_singular() ) : ?>
-			<?php graphene_print_button(); ?>
+			<?php graphene_print_button( $post_type ); ?>
 		<?php endif; ?>
 		
 		<?php /* Add an email post icon if the WP-Email plugin is installed and activated */

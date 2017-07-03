@@ -24,8 +24,8 @@ function graphene_options_colours() {
         
         <a href="#" class="button delete-colour-preset" data-colourPresetAction="delete"><?php _e( 'Delete preset', 'graphene' ); ?></a>
         <a href="#" class="button-primary save-colour-preset" data-colourPresetAction="save"><?php _e( 'Save current settings as preset', 'graphene' ); ?></a>
-        <a href="<?php echo add_query_arg( 'colour_preset', 'import' ); ?>" class="button"><?php _e( 'Import presets', 'graphene' ); ?></a>
-        <a href="<?php echo add_query_arg( 'colour_preset', 'export' ); ?>" class="button"><?php _e( 'Export presets', 'graphene' ); ?></a>
+        <a href="<?php echo esc_url( add_query_arg( 'colour_preset', 'import' ) ); ?>" class="button"><?php _e( 'Import presets', 'graphene' ); ?></a>
+        <a href="<?php echo esc_url( add_query_arg( 'colour_preset', 'export' ) ); ?>" class="button"><?php _e( 'Export presets', 'graphene' ); ?></a>
         
         <?php foreach ( $graphene_settings['colour_presets'] as $key => $preset ) : ?>
         	<input type="hidden" class="colour-preset-<?php echo $key; ?>" name="graphene_settings[colour_presets][<?php echo $key; ?>][name]" value="<?php echo esc_attr( $preset['name'] ); ?>" />

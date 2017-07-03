@@ -4,9 +4,17 @@ http://www.khairul-syahir.com
 
 CHANGELOG
 
+Version 1.9.4.3
+	* Added: Screen reader text styling
+	* Added: Support for title-tag theme feature
+	* Fixed: Missing argument for print button function
+	* Fixed: Minor styling issue with Map List Pro
+	* Fixed: Potential security vulnerability
+	* Fixed: Issue of loading Google Fonts in WP Editor for HTTPS sites
+	* Updated: Norwegian (nb_NO) translation by Remy Kongsvoll
+
 Version 1.9.4.2
 	* Added rel="nofollow" attribute to footer credit link
-	* Added .screen-reader-text styling to meet WordPress.org themes requirement
 
 Version 1.9.4.1
 	* Fixed fatal error when using column layout with empty sidebars

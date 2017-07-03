@@ -142,7 +142,6 @@ function graphene_admin_scripts() {
     // wp_enqueue_script( 'wp-pointer' );
 	
 	wp_enqueue_script( 'graphene-codemirror', GRAPHENE_ROOTURI . '/js/codemirror/codemirror.js', array(), '', false );
-	wp_deregister_script( 'chosen' );
 	wp_enqueue_script( 'chosen', GRAPHENE_ROOTURI . '/js/chosen/chosen.jquery.min.js', array( 'jquery' ), '', false );
 	
 	if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'display' )

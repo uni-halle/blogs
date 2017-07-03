@@ -723,6 +723,8 @@ add_action( 'wp_head', 'graphene_google_analytics', 1000);
 */
 function graphene_title( $title, $sep = '&raquo;', $seplocation = '' ){
 	global $graphene_settings;
+	if ( ! $graphene_settings['custom_site_title_frontpage'] && ! $graphene_settings['custom_site_title_content'] ) return;
+
 	$default_title = $title;
 	
 	if ( is_feed() ){
@@ -746,7 +748,7 @@ function graphene_title( $title, $sep = '&raquo;', $seplocation = '' ){
 			$title = $graphene_settings['custom_site_title_content'];
 			$title = str_replace( '#site-name', get_bloginfo( 'name' ), $title );
 			$title = str_replace( '#site-desc', get_bloginfo( 'description' ), $title );
-			$title = str_replace( '#post-title', $default_title, $title );
+			$title = str_replace( '#post-title', get_the_title(), $title );
 		} else {
 			$title = $default_title . " &raquo; " . get_bloginfo( 'name' );
 		}
@@ -755,6 +757,7 @@ function graphene_title( $title, $sep = '&raquo;', $seplocation = '' ){
 	return ent2ncr( apply_filters( 'graphene_title', trim( $title ) ) );
 }
 add_filter( 'wp_title', 'graphene_title', 10, 3 );
+add_filter( 'pre_get_document_title', 'graphene_title', 10, 3 );
 
 
 /**

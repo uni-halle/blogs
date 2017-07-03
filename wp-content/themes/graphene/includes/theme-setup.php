@@ -93,9 +93,12 @@ function graphene_setup() {
 		global $content_width;
 		add_editor_style( array( 
 			'editor-style.css',
-			'http://fonts.googleapis.com/css?family=Pontano+Sans' 
+			'//fonts.googleapis.com/css?family=Pontano+Sans' 
 		) );
 	}
+
+
+	add_theme_support( 'title-tag' );
 	
 	// Add default posts and comments RSS feed links to head
 	add_theme_support( 'automatic-feed-links' );
