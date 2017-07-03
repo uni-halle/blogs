@@ -1552,6 +1552,7 @@ module.exports = panels.view.dialog.extend({
 
 },{}],9:[function(require,module,exports){
 var panels = window.panels, $ = jQuery;
+var jsWidget = require( '../view/widgets/js-widget' );
 
 module.exports = panels.view.dialog.extend( {
 
@@ -1709,7 +1710,6 @@ module.exports = panels.view.dialog.extend( {
 			return;
 		}
 
-		var thisView = this;
 		this.$( '.so-content' ).addClass( 'so-panels-loading' );
 
 		var data = {
@@ -1724,22 +1724,31 @@ module.exports = panels.view.dialog.extend( {
 			data,
 			function ( result ) {
 				// Add in the CID of the widget model
-				var html = result.replace( /{\$id}/g, thisView.model.cid );
+				var html = result.replace( /{\$id}/g, this.model.cid );
 
 				// Load this content into the form
-				thisView.$( '.so-content' )
+				var $soContent = this.$( '.so-content' );
+				$soContent
 					.removeClass( 'so-panels-loading' )
 					.html( html );
 
 				// Trigger all the necessary events
-				thisView.trigger( 'form_loaded', thisView );
+				this.trigger( 'form_loaded', this );
 
 				// For legacy compatibility, trigger a panelsopen event
-				thisView.$( '.panel-dialog' ).trigger( 'panelsopen' );
+				this.$( '.panel-dialog' ).trigger( 'panelsopen' );
 
 				// If the main dialog is closed from this point on, save the widget content
-				thisView.on( 'close_dialog', thisView.updateModel, thisView );
-			},
+				this.on( 'close_dialog', this.updateModel, this );
+
+				var widgetContent = $soContent.find( '> .widget-content' );
+				// If there's a widget content wrapper, this is one of the new widgets in WP 4.8 which need some special
+				// handling in JS.
+				if ( widgetContent.length > 0 ) {
+					jsWidget.addWidget( $soContent, this.model.widget_id );
+				}
+
+			}.bind( this ),
 			'html'
 		);
 	},
@@ -1831,7 +1840,7 @@ module.exports = panels.view.dialog.extend( {
 
 } );
 
-},{}],10:[function(require,module,exports){
+},{"../view/widgets/js-widget":30}],10:[function(require,module,exports){
 var panels = window.panels, $ = jQuery;
 
 module.exports = panels.view.dialog.extend( {
@@ -7033,5 +7042,94 @@ module.exports = Backbone.View.extend( {
 	}
 
 } );
+
+},{}],30:[function(require,module,exports){
+var mediaWidget = require( './media-widget' );
+var textWidget = require( './text-widget' );
+
+var jsWidget = {
+	MEDIA_AUDIO: 'media_audio',
+	MEDIA_IMAGE: 'media_image',
+	MEDIA_VIDEO: 'media_video',
+	TEXT: 'text',
+
+	addWidget: function( widgetContainer, widgetId ) {
+		var idBase = widgetContainer.find( '> .id_base' ).val();
+		var widget;
+
+		switch ( idBase ) {
+			case this.MEDIA_AUDIO:
+			case this.MEDIA_IMAGE:
+			case this.MEDIA_VIDEO:
+				widget = mediaWidget;
+				break;
+			case this.TEXT:
+				widget = textWidget;
+				break
+		}
+
+		widget.addWidget( idBase, widgetContainer, widgetId );
+	},
+};
+
+module.exports = jsWidget;
+
+},{"./media-widget":31,"./text-widget":32}],31:[function(require,module,exports){
+var $ = jQuery;
+
+var mediaWidget = {
+	addWidget: function( idBase, widgetContainer, widgetId ) {
+		var component = wp.mediaWidgets;
+
+		var ControlConstructor = component.controlConstructors[ idBase ];
+		if ( ! ControlConstructor ) {
+			return;
+		}
+
+		var ModelConstructor = component.modelConstructors[ idBase ] || component.MediaWidgetModel;
+		var widgetContent = widgetContainer.find( '> .widget-content' );
+		var controlContainer = $( '<div class="media-widget-control"></div>' );
+		widgetContent.before( controlContainer );
+
+		var modelAttributes = {};
+		widgetContent.find( '.media-widget-instance-property' ).each( function() {
+			var input = $( this );
+			modelAttributes[ input.data( 'property' ) ] = input.val();
+		});
+		modelAttributes.widget_id = widgetId;
+
+		var widgetModel = new ModelConstructor( modelAttributes );
+
+		var widgetControl = new ControlConstructor({
+			el: controlContainer,
+			model: widgetModel
+		});
+
+		widgetControl.render();
+
+		return widgetControl;
+	}
+};
+
+module.exports = mediaWidget;
+
+},{}],32:[function(require,module,exports){
+var $ = jQuery;
+
+var textWidget = {
+	addWidget: function( idBase, widgetContainer, widgetId ) {
+		var component = wp.textWidgets;
+
+		var widgetControl = new component.TextWidgetControl({
+			el: widgetContainer
+		});
+
+		widgetControl.initializeEditor();
+
+		return widgetControl;
+	}
+};
+
+module.exports = textWidget;
 
 },{}]},{},[16]);
