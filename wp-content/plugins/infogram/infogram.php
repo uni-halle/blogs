@@ -1,9 +1,9 @@
 <?php
 /*
   Plugin Name: Infogr.am
-  Plugin URI: https://infogr.am/blog/new-infogram-wordpress-plugin/
-  Description: It allows you to insert graphics from the site infogr.am
-  Version: 1.4.8
+  Plugin URI: https://infogram.com/blog/new-infogram-wordpress-plugin/
+  Description: It allows you to insert graphics from the site infogram.com
+  Version: 1.5.1
   Text Domain: infogram
   Tags: infogram, shortcode, iframe, insert, rest api, json
 */
@@ -21,7 +21,7 @@ function infogr_ajax_dialog() {
 
 function infogr_add_pages() {
   //create new top-level menu
-  add_options_page('Infogr.am v1.4.8', 'Infogr.am settings', 'level_0', 'infogram', 'infogr_page');
+  add_options_page('Infogram.com v1.5.1', 'Infogram.com settings', 'level_0', 'infogram', 'infogr_page');
 
   //call register settings function
   add_action('admin_init', 'register_infogr_settings');
@@ -99,7 +99,7 @@ function infogr_add_infographics($atts) {
       $format = 'image';
     }
 
-    return '<div class="infogram-embed" data-id="'.$atts['id'].'" data-type="'.$format.'"></div><script>!function(e,t,s,i){var n="InfogramEmbeds",o=e.getElementsByTagName("script"),d=o[0],r=/^http:/.test(e.location)?"http:":"https:";if(/^\/{2}/.test(i)&&(i=r+i),window[n]&&window[n].initialized)window[n].process&&window[n].process();else if(!e.getElementById(s)){var a=e.createElement("script");a.async=1,a.id=s,a.src=i,d.parentNode.insertBefore(a,d)}}(document,0,"infogram-async","//e.infogr.am/js/dist/embed-loader-min.js");</script>';
+    return '<div class="infogram-embed" data-id="'.$atts['id'].'" data-type="'.$format.'"></div><script>!function(e,t,s,i){var n="InfogramEmbeds",o=e.getElementsByTagName("script"),d=o[0],r=/^http:/.test(e.location)?"http:":"https:";if(/^\/{2}/.test(i)&&(i=r+i),window[n]&&window[n].initialized)window[n].process&&window[n].process();else if(!e.getElementById(s)){var a=e.createElement("script");a.async=1,a.id=s,a.src=i,d.parentNode.insertBefore(a,d)}}(document,0,"infogram-async","//e.infogram.com/js/dist/embed-loader-min.js");</script>';
   } else {
     return 'This code is broken or not exists!';
   }

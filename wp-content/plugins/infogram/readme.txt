@@ -3,7 +3,7 @@ Contributors: Infogram
 Tags: infographics, charts
 Requires at least: 3.0.1
 Tested up to: 4.5.3
-Stable tag: 1.4.8
+Stable tag: 1.5.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -26,7 +26,7 @@ The Infogram WordPress plugin:
 *   Fosters team collaboration by allowing multiple users to post to WordPress with the automatically generated shortcode or the URL
 *   Not an Infogram user yet?
 
-[Join Infogram](https://infogr.am/?utm_source=wordpress&utm_campaign=plugin&utm_content=page) and discover a whole new way to present data on your website! It's free!
+[Join Infogram](https://infogram.com/?utm_source=wordpress&utm_campaign=plugin&utm_content=page) and discover a whole new way to present data on your website! It's free!
 
 [youtube https://www.youtube.com/watch?v=NdnroM2bbAk]
 
@@ -35,6 +35,9 @@ The Infogram WordPress plugin:
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+= 1.5.0 =
+* infogram.com migration
 
 = 1.4.8 =
 * async code updates

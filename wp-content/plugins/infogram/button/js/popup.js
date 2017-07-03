@@ -27,7 +27,7 @@ jQuery(function($){
 
   // input graphics with link
   $('#infogr_embed').submit(function(){
-    var check = ['https://infogr.am/', 'https://e.infogr.am/', '?src=embed', '/'];
+    var check = ['https://infogram.com/', 'https://e.infogram.com/', '?src=embed', '/'];
     var link = $('#infogr_add_embed').val();
 
     if (link.indexOf(check[0]) + 1) {
@@ -72,7 +72,7 @@ jQuery(function($){
   function inforg_error(show) {
     if( show ) {
       if(!$('span').is('.infogr_error')) {
-        $('#infogr_embed').append('<span class="infogr_error">Please use a valid infogr.am URL that contains an infographic.</span>').addClass('infogr_error');
+        $('#infogr_embed').append('<span class="infogr_error">Please use a valid infogram.com URL that contains an infographic.</span>').addClass('infogr_error');
       }
     } else {
       if($('span').is('.infogr_error')) {
