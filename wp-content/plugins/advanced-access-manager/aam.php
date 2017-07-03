@@ -3,7 +3,7 @@
 /**
   Plugin Name: Advanced Access Manager
   Description: All you need to manage access to your WordPress website
-  Version: 4.7.2
+  Version: 4.8
   Author: Vasyl Martyniuk <vasyl@vasyltech.com>
   Author URI: https://vasyltech.com
 
@@ -119,12 +119,17 @@ class AAM {
             AAM_Core_Cache::bootstrap();
             
             //load all installed extension
-            //TODO - Remove in Aug 2017
             AAM_Extension_Repository::getInstance()->load();
             
             //check if user is locked
             if (get_current_user_id() && AAM::getUser()->user_status == 1) {
                 wp_logout();
+            }
+            
+            //check if user's role expired
+            $expire = get_user_option('aam-role-expires');
+            if ($expire && ($expire <= time())) {
+                AAM::getUser()->restoreRoles();
             }
 
             //bootstrap the correct interface
@@ -156,7 +161,7 @@ class AAM {
         if (!empty($extensions)) {
             //grab the server extension list
             AAM_Core_API::updateOption(
-                    'aam-check', AAM_Extension_Server::check(), 'site'
+                    'aam-check', AAM_Core_Server::check(), 'site'
             );
         }
     }

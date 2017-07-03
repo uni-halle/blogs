@@ -27,7 +27,8 @@ return array(
         ),
         'limit' => array(
             'title' => __('Limit', AAM_KEY),
-            'descr' => __('When checked, show defined on the Content Teaser tab teaser message instead of the %s content.', AAM_KEY)
+            'sub'   => '<small>' . sprintf(__('Teaser message: %s', AAM_KEY), '<b data-preview="frontend.teaser" id="post-teaser"></b>' ) . ' <a href="#" class="change-teaser" data-ref="frontend.teaser" data-preview-id="post-teaser">' . __('change', AAM_KEY) . '</a></small>',
+            'descr' => __('When checked, show defined teaser message instead of the %s content.', AAM_KEY)
         ),
         'comment' => array(
             'title' => __('Comment', AAM_KEY),
@@ -36,7 +37,7 @@ return array(
         'redirect' => array(
             'title' => __('Redirect', AAM_KEY),
             'sub'   => '<small>' . sprintf(__('Redirect to: %s', AAM_KEY), '<b data-preview="frontend.location" id="post-location"></b>' ) . ' <a href="#" class="change-location" data-ref="frontend.location" data-preview-id="post-location">' . __('change', AAM_KEY) . '</a></small>',
-            'descr' => __('Redirect user to defined location when user tries to read the %s. Define either valid full URL or public page ID within the website.', AAM_KEY)
+            'descr' => __('Redirect user to defined location when user tries to read the %s. Define either valid full URL or public page ID within the website. The REDIRECT option will be ignored if READ option checked and user will be redirected based on the Access Denied Redirect rule.', AAM_KEY)
         ),
         'protected' => array(
             'title' => __('Password Protected', AAM_KEY),

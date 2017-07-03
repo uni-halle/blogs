@@ -131,6 +131,9 @@ class AAM_Core_Media {
             $path = ABSPATH . $this->request_uri;
         }
         
+        //normalize path and strip all unexpected trails. Thanks to Antonius Hegyes
+        $path = preg_replace('/\?.*$/', '', $path);
+        
         if (empty($mime)) {
             if (function_exists('mime_content_type')) {
                 $mime = mime_content_type($path);

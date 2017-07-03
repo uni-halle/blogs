@@ -51,7 +51,8 @@ class AAM_Backend_Feature_Role {
                             implode(',', $this->prepareRowActions($uc)),
                             $data
                     ),
-                    AAM_Core_API::maxLevel($data['capabilities'])
+                    AAM_Core_API::maxLevel($data['capabilities']),
+                    AAM_Core_API::getOption("aam-role-{$id}-expiration", '')
                 );
             }
         } else {
@@ -135,6 +136,7 @@ class AAM_Backend_Feature_Role {
         
         if (AAM_Backend_View::userCan('aam_create_roles')) {
             $name    = sanitize_text_field(filter_input(INPUT_POST, 'name'));
+            $expire  = filter_input(INPUT_POST, 'expire');
             $roles   = AAM_Core_API::getRoles();
             $role_id = strtolower($name);
 
@@ -151,9 +153,18 @@ class AAM_Backend_Feature_Role {
                         'level' => AAM_Core_API::maxLevel($caps)
                     )
                 );
+                //clone settings if needed
                 if (AAM_Core_Request::post('clone')) {
                     $this->cloneSettings($role, $parent);
                 }
+                
+                //save expiration rule if set
+                if ($expire) {
+                    AAM_Core_API::updateOption("aam-role-{$role_id}-expiration", $expire);
+                } else {
+                    AAM_Core_API::deleteOption("aam-role-{$role_id}-expiration");
+                }
+                
                 do_action('aam-post-add-role-action', $role, $parent);
             }
         }
@@ -205,6 +216,16 @@ class AAM_Backend_Feature_Role {
         if (AAM_Backend_View::userCan('aam_edit_roles')) {
             $role    = AAM_Backend_View::getSubject();
             $role->update(trim(filter_input(INPUT_POST, 'name')));
+            
+            $expire  = filter_input(INPUT_POST, 'expire');
+            //save expiration rule if set
+            if ($expire) {
+                AAM_Core_API::updateOption(
+                        'aam-role-' . $role->getId() .'-expiration', $expire
+                );
+            } else { 
+                AAM_Core_API::deleteOption('aam-role-' . $role->getId() .'-expiration');
+            }
 
             do_action('aam-post-update-role-action', $role);
             

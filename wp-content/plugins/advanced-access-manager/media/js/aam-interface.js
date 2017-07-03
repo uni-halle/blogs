@@ -83,7 +83,7 @@
             }
         },
         columnDefs: [
-            {visible: false, targets: [0, 1, 4]}
+            {visible: false, targets: [0, 1, 4, 5]}
         ],
         language: {
             search: '_INPUT_',
@@ -115,9 +115,10 @@
             $(row).attr('data-id', data[0]);
 
             //add subtitle
+            var expire = (data[5] ? '; <i class="icon-clock"></i>' : '');
             $('td:eq(0)', row).append(
                 $('<i/>', {'class': 'aam-row-subtitle'}).html(
-                    aam.__('Users') + ': <b>' + parseInt(data[1]) + '</b>; ID: <b>' + data[0] + '</b>'
+                    aam.__('Users') + ': <b>' + parseInt(data[1]) + '</b>; ID: <b>' + data[0] + '</b>' + expire
                 )
             );
     
@@ -160,67 +161,68 @@
 
                     case 'edit':
                         if (!aam.isUI()) {
-                        $(container).append($('<i/>', {
-                            'class': 'aam-row-action icon-pencil text-warning'
-                        }).bind('click', function () {
-                            $('#edit-role-btn').data('role', data[0]);
-                            $('#edit-role-name').val(data[2]);
-                            $('#edit-role-modal').modal('show');
-                            fetchRoleList(data[0]);
-                            //TODO - Rerwite JavaScript to support $.aam 
-                            $.aamEditRole = data;
-                        }).attr({
-                            'data-toggle': "tooltip",
-                            'title': aam.__('Edit Role Name')
-                        }));
-                    }
+                            $(container).append($('<i/>', {
+                                'class': 'aam-row-action icon-pencil text-warning'
+                            }).bind('click', function () {
+                                $('#edit-role-btn').data('role', data[0]);
+                                $('#edit-role-name').val(data[2]);
+                                $('#edit-role-expiration').val(data[5]);
+                                $('#edit-role-modal').modal('show');
+                                fetchRoleList(data[0]);
+                                //TODO - Rerwite JavaScript to support $.aam 
+                                $.aamEditRole = data;
+                            }).attr({
+                                'data-toggle': "tooltip",
+                                'title': aam.__('Edit Role Name')
+                            }));
+                        }
                         break;
                     
                     case 'clone':
                         if (!aam.isUI()) {
-                        $(container).append($('<i/>', {
-                            'class': 'aam-row-action icon-clone text-success'
-                        }).bind('click', function () {
-                            //TODO - Rerwite JavaScript to support $.aam 
-                            $.aamEditRole = data;
-                            $('#clone-role').prop('checked', true);
-                            $('#add-role-modal').modal('show');
-                        }).attr({
-                            'data-toggle': "tooltip",
-                            'title': aam.__('Clone Role')
-                        }));
-                    }
+                            $(container).append($('<i/>', {
+                                'class': 'aam-row-action icon-clone text-success'
+                            }).bind('click', function () {
+                                //TODO - Rerwite JavaScript to support $.aam 
+                                $.aamEditRole = data;
+                                $('#clone-role').prop('checked', true);
+                                $('#add-role-modal').modal('show');
+                            }).attr({
+                                'data-toggle': "tooltip",
+                                'title': aam.__('Clone Role')
+                            }));
+                        }
                         break;
 
                     case 'delete':
                         if (!aam.isUI()) {
-                        $(container).append($('<i/>', {
-                            'class': 'aam-row-action icon-trash-empty text-danger'
-                        }).bind('click', {role: data}, function (event) {
-                            $('#delete-role-btn').data('role', data[0]);
-                            var message = $('#delete-role-modal .aam-confirm-message').data('message');
-                            $('#delete-role-modal .aam-confirm-message').html(
-                                message.replace(
-                                    '%s', '<strong>' + event.data.role[2] + '</strong>'
-                                )
-                            );
+                            $(container).append($('<i/>', {
+                                'class': 'aam-row-action icon-trash-empty text-danger'
+                            }).bind('click', {role: data}, function (event) {
+                                $('#delete-role-btn').data('role', data[0]);
+                                var message = $('#delete-role-modal .aam-confirm-message').data('message');
+                                $('#delete-role-modal .aam-confirm-message').html(
+                                    message.replace(
+                                        '%s', '<strong>' + event.data.role[2] + '</strong>'
+                                    )
+                                );
 
-                            $('#delete-role-modal').modal('show');
-                        }).attr({
-                            'data-toggle': "tooltip",
-                            'title': aam.__('Delete Role')
-                        }));
-                    }
+                                $('#delete-role-modal').modal('show');
+                            }).attr({
+                                'data-toggle': "tooltip",
+                                'title': aam.__('Delete Role')
+                            }));
+                        }
                         break;
 
                     default:
                         if (!aam.isUI()) {
-                        aam.triggerHook('role-action', {
-                            container: container,
-                            action   : action,
-                            data     : data
-                        });
-                    }
+                            aam.triggerHook('role-action', {
+                                container: container,
+                                action   : action,
+                                data     : data
+                            });
+                        }
                         break;
                 }
             });
@@ -1331,7 +1333,7 @@
     var filter = {
         type: null
     };
-
+    
     /**
      * 
      * @param {type} type
@@ -1429,8 +1431,9 @@
                             'class': 'aam-row-action ' + checked
                         });
                     } else {
-                        $('[data-preview="' + property + '"]', container).text(
-                                response.access[property]
+                        $('[data-preview="' + property + '"]', container).prop('data-original-value', response.access[property]);
+                        $('[data-preview="' + property + '"]', container).html(
+                                preparePreview(response.access[property])
                         );
                     }
                 }
@@ -1525,6 +1528,23 @@
         });
 
         return result;
+    }
+    
+    /**
+     * 
+     * @param {type} text
+     * @returns {String}
+     */
+    function preparePreview(preview) {
+        if (typeof preview === 'string') { 
+            preview = preview.replace(/<\/?[^>]+(>|$)/g, "");
+
+            if (preview.length > 25) {
+                preview = preview.substring(0, 22)  + '...';
+            }
+        }
+        
+        return preview;
     }
     
     /**
@@ -1872,6 +1892,48 @@
             $('#expiration-modal').modal('hide');
             $(this).text(aam.__('Set'));
         });
+        
+        $('.change-teaser').each(function() {
+            $(this).bind('click', function(event) {
+                event.preventDefault();
+                
+                var teaser = $('#' + $(this).attr('data-preview-id')).prop('data-original-value');
+                $('#teaser-value').val(teaser);
+                
+                $('#change-teaser-btn').attr({
+                    'data-ref': $(this).attr('data-ref'),
+                    'data-preview-id': $(this).attr('data-preview-id')
+                });
+                
+                $('#teaser-modal').modal('show');
+            });
+        });
+        
+        $('#change-teaser-btn').bind('click', function() {
+            $(this).text(aam.__('Saving...'));
+            
+            var teaser = $('#teaser-value').val();
+            var response = save(
+                    $(this).attr('data-ref'),
+                    teaser,
+                    $(this).attr('data-type'),
+                    $(this).attr('data-id')
+            );
+            
+            if (response.status === 'success') {
+                var preview = $('#' + $(this).attr('data-preview-id'));
+                var action  = $('.aam-row-action', preview.parent().parent().parent());
+                
+                preview.prop('data-original-value', teaser);
+                preview.html(preparePreview(teaser));
+                
+                if ($(action).hasClass('icon-check-empty')) {
+                    action.trigger('click');
+                }
+            }
+            $('#teaser-modal').modal('hide');
+            $(this).text(aam.__('Save'));
+        });
     }
 
     aam.addHook('init', initialize);
@@ -2032,10 +2094,15 @@
             });
         });
         
-        $('input[type="text"],select,textarea', container).each(function () {
+        $('input,select,textarea', container).each(function () {
             $(this).bind('change', function () {
+                if ($(this).is('input[type="checkbox"]')) {
+                    var val = $(this).prop('checked') ? $(this).val() : 0;
+                } else {
+                    val = $.trim($(this).val());
+                }
                 //save redirect type
-                save($(this).attr('name'), $(this).val());
+                save($(this).attr('name'), val);
             });
         });
         
@@ -2618,7 +2685,6 @@
         $.ajax(aamLocal.url.site, {
             type: 'POST',
             dataType: 'html',
-            async: false,
             data: {
                 action: 'aamc',
                 _ajax_nonce: aamLocal.nonce,
@@ -2656,4 +2722,45 @@
 
     aam.fetchContent(); //fetch default AAM content
 
+})(jQuery);
+
+/**
+ * Miscellenious features
+ * 
+ */
+(function ($) {
+    $('#subscribe').bind('click', function() {
+        var email = $('#subscribe-email').val();
+        
+        if (email) {
+            $.ajax(aamLocal.ajaxurl, {
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    action: 'aam',
+                    sub_action: 'subscribe',
+                    _ajax_nonce: aamLocal.nonce,
+                    email: email
+                },
+                beforeSend: function () {
+                    $('#subscribe i').attr('class', 'icon-spin4 animate-spin');
+                },
+                success: function(response) {
+                    if (response.status === 'success') {
+                        aam.notification('success', aam.__('Your are subscribed now!'));
+                        $('#subscribe-email').val('');
+                    } else {
+                        aam.notification('danger', response.reason);
+                    }
+                },
+                error: function () {
+                    aam.notification('danger', aam.__('Application Error'));
+                },
+                complete: function() {
+                    $('#subscribe i').attr('class', 'icon-rss');
+                }
+            });
+        }
+    });
+    
 })(jQuery);

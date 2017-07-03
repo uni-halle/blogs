@@ -2,6 +2,9 @@
     <div class="aam-feature" id="teaser-content">
         <div class="row">
             <div class="col-xs-12">
+                <p class="aam-notification">
+                    <?php echo AAM_Backend_View_Helper::preparePhrase('[Warning!] The Content Teaser tab is deprecated and has been moved to the [Posts & Pages tab]. Now you can define teaser message for an individual post, category or all posts for any user, role or visitors. Please adjust your AAM settings because Content Teaser tab will be removed in AAM 5.0. For any feedback of questions, do not hesistate to contact us directly.', 'strong', 'strong'); ?>
+                </p>
                 <?php if ($this->isDefault()) {  ?>
                     <p class="aam-info">
                         <?php echo AAM_Backend_View_Helper::preparePhrase('Define the [default] teaser message for all users, roles and visitors when access is limited to any post on your website.', 'strong'); ?>

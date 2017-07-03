@@ -99,6 +99,7 @@
                                                     <th width="65%"><?php echo __('Role', AAM_KEY); ?></th>
                                                     <th><?php echo __('Action', AAM_KEY); ?></th>
                                                     <th>Level</th>
+                                                    <th>Expiration</th>
                                                 </tr>
                                             </thead>
                                             <tbody></tbody>
@@ -115,6 +116,10 @@
                                                         <div class="form-group">
                                                             <label><?php echo __('Role Name', AAM_KEY); ?><span class="aam-asterix">*</span></label>
                                                             <input type="text" class="form-control" name="name" placeholder="<?php echo __('Enter Role Name', AAM_KEY); ?>" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label><?php echo __('Role Expiration', AAM_KEY); ?> <a href="https://aamplugin.com/help/how-to-manage-wordpress-roles" target="_blank" data-toggle="tooltip" title="For how long user can have this role. Click to learn more."><i class="icon-help-circled"></i></a></label>
+                                                            <input type="text" class="form-control" name="expire" placeholder="<?php echo __('Enter Expiration Rule', AAM_KEY); ?>" />
                                                         </div>
                                                         <?php echo apply_filters('aam-add-role-ui-filter', AAM_Backend_View::getInstance()->loadPartial('role-inheritance.phtml')); ?>
                                                     </div>
@@ -137,6 +142,10 @@
                                                         <div class="form-group">
                                                             <label for="new-role-name"><?php echo __('Role Name', AAM_KEY); ?></label>
                                                             <input type="text" class="form-control" id="edit-role-name" placeholder="<?php echo __('Enter Role Name', AAM_KEY); ?>" name="name" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label><?php echo __('Role Expiration', AAM_KEY); ?> <a href="https://aamplugin.com/help/how-to-manage-wordpress-roles" target="_blank" data-toggle="tooltip" title="For how long user can have this role. Click to learn more."><i class="icon-help-circled"></i></a></label>
+                                                            <input type="text" class="form-control" name="expire" id="edit-role-expiration" placeholder="<?php echo __('Enter Expiration Rule', AAM_KEY); ?>" />
                                                         </div>
                                                         <?php do_action('aam-edit-role-ui-action'); ?>
                                                     </div>
@@ -261,9 +270,24 @@
                             <hr/>
                             
                             <div class="text-center">
-                            <p class="aam-promo"><strong>NEED HELP FASTER?</strong><br/>Get in touch with Google Hangouts.<br/><b>It is free.</b></p>
-                            <a href="mailto:support@aamplugin.com" class="btn btn-success" target="_blank"><i class="icon-chat-empty"></i> support@aamplugin.com</a>
+                                <p class="aam-promo"><strong>NEED HELP FASTER?</strong><br/>Get in touch with Google Hangouts.<br/><b>It is free.</b></p>
+                                <a href="mailto:support@aamplugin.com" class="btn btn-success" target="_blank"><i class="icon-chat-empty"></i> support@aamplugin.com</a>
                             </div>
+                            
+                            <hr/>
+                            
+                            <label for="extension-key"><?php echo __('Subscribe to updates', AAM_KEY); ?></label><a href="#" data-toggle="tooltip" title="<?php echo __('Get once a month the email with the latest AAM features and promo-codes', AAM_KEY) ?>"><i class="icon-help-circled"></i></a>
+                            <div class="row">
+                                <div class="col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="subscribe-email" placeholder="<?php echo __('Your Email Address', AAM_KEY); ?>" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <button class="btn btn-primary btn-block" id="subscribe"><i class="icon-rss"></i> <?php echo __('Submit', AAM_KEY); ?></button>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>

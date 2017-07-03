@@ -327,7 +327,7 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
         //prepare the response object
         if (is_a($object, 'AAM_Core_Object')) {
             foreach($object->getOption() as $key => $value) {
-                if (is_numeric($value) || is_bool($value)) {
+                if (is_bool($value) || in_array($value, array('0', '1'))) {
                     $access[$key] = ($value ? 1 : 0); //TODO - to support legacy
                 } else {
                     $access[$key] = $value;

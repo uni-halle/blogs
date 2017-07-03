@@ -52,6 +52,7 @@
     /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
+.icon-clock:before { content: '\e800' !important; } /* 'î ' */
 .icon-asterisk:before { content: '\e801' !important; } /* 'î ' */
 .icon-spin4:before { content: '\e802' !important; } /* 'î ' */
 .icon-user-secret:before { content: '\e803' !important; } /* 'î ' */
@@ -94,6 +95,7 @@
 .icon-circle:before { content: '\f111' !important; } /* 'ï' */
 .icon-circle-thin:before { content: '\f1db' !important; } /* 'ï' */
 .icon-clone:before { content: '\f24d' !important; } /* 'ï' */
+.icon-rss:before { content: '\f09e' !important; } /* 'ï' */
 
 .animate-spin {
     -moz-animation: spin 2s infinite linear;

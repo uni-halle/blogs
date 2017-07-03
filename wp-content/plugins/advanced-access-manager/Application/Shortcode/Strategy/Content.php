@@ -48,8 +48,11 @@ class AAM_Shortcode_Strategy_Content implements AAM_Shortcode_Strategy_Interface
     }
     
     /**
-     * Process shortcode
+     * Process short-code
      * 
+     * @return string
+     * 
+     * @access public
      */
     public function run() {
         //prepare user
@@ -70,22 +73,77 @@ class AAM_Shortcode_Strategy_Content implements AAM_Shortcode_Strategy_Interface
             $content = $this->content;
             
             //#1. Check if content is restricted for current user
-            if (in_array('all', $hide) || count(array_intersect($user, $hide))) {
+            if (in_array('all', $hide) || $this->check($user, $hide)) {
                 $content = '';
             }
 
             //#2. Check if content is limited for current user
-            if (in_array('all', $limit) || count(array_intersect($user, $limit))) {
+            if (in_array('all', $limit) || $this->check($user, $limit)) {
                 $content = do_shortcode($msg);
             }
 
             //#3. Check if content is allosed for current user
-            if (count(array_intersect($user, $show))) {
+            if ($this->check($user, $show)) {
                 $content = $this->content;
             }
         }
         
         return $content;
+    }
+    
+    /**
+     * 
+     * @param type $user
+     * @param type $conditions
+     * @return type
+     */
+    protected function check($user, $conditions) {
+        $match = false;
+        
+        foreach($conditions as $condition) {
+            if (preg_match('/^[\d\.*\-]+$/', $condition)) {
+                $match = $this->checkIP(
+                        $condition, AAM_Core_Request::server('REMOTE_ADDR')
+                );
+            } else {
+                $match = in_array($condition, $user);
+            }
+            if ($match) {
+                break;
+            }
+        }
+        
+        return $match;
+    }
+    
+    /**
+     * 
+     * @param type $ip
+     * @param type $userIp
+     * @return boolean
+     */
+    protected function checkIP($ip, $userIp) {
+        $match = true;
+        
+        $ipSplit  = preg_split('/[\.:]/', $ip);
+        $uipSplit = preg_split('/[\.:]/', $userIp);
+        
+        foreach($ipSplit as $i => $group) {
+            if (strpos($group, '-') !== false) { //range
+                list($start, $end) = explode('-', $group);
+                if ($uipSplit[$i] < $start || $uipSplit[$i] > $end) {
+                    $match = false;
+                    break;
+                }
+            } elseif ($group !== '*') {
+                if ($group != $uipSplit[$i]) {
+                    $match = false;
+                    break;
+                }
+            }
+        }
+        
+        return $match;
     }
     
     /**

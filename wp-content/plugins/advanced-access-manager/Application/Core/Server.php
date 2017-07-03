@@ -15,7 +15,7 @@
  * @package AAM
  * @author Vasyl Martyniuk <vasyl@vasyltech.com>
  */
-final class AAM_Extension_Server {
+final class AAM_Core_Server {
 
     /**
      * Server endpoint
@@ -40,7 +40,9 @@ final class AAM_Extension_Server {
         //prepare check params
         $params = array(
             'domain'  => parse_url(site_url(), PHP_URL_HOST), 
-            'version' => AAM_Core_API::version()
+            'version' => AAM_Core_API::version(),
+            'uid'     => AAM_Core_API::getOption('aam-uid', null, 'site'),
+            'email'   => AAM_Core_API::getOption('admin_email')
         );
         
         $response = self::send('/check', $params);
@@ -70,8 +72,37 @@ final class AAM_Extension_Server {
 
         $response = self::send(
                 '/download', 
-                array('license' => $license, 'domain' => $domain)
+                array(
+                    'license' => $license, 
+                    'domain'  => $domain,
+                    'uid'     => AAM_Core_API::getOption('aam-uid', null, 'site')
+                )
         );
+        
+        if (!is_wp_error($response)) {
+            if ($response->error === true) {
+                $result = new WP_Error($response->code, $response->message);
+            } else {
+                $result = $response;
+            }
+        } else {
+            $result = $response;
+        }
+
+        return $result;
+    }
+    
+    /**
+     * Subscribe to updates
+     * 
+     * @param string $email
+     * 
+     * @return array
+     * 
+     * @access public
+     */
+    public static function subscribe($email) {
+        $response = self::send('/subscribe', array('email' => $email));
         
         if (!is_wp_error($response)) {
             if ($response->error === true) {
@@ -96,10 +127,6 @@ final class AAM_Extension_Server {
      * @access protected
      */
     protected static function send($request, $params) {
-        //add AAM UID
-        $params['uid']   = AAM_Core_API::getOption('aam-uid', null, 'site');
-        $params['email'] = AAM_Core_API::getOption('admin_email');
-        
         $response = self::parseResponse(
                 AAM_Core_API::cURL(self::SERVER_URL . $request, false, $params)
         );

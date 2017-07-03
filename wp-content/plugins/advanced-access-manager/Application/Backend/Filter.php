@@ -45,6 +45,9 @@ class AAM_Backend_Filter {
         
         //control admin area
         add_action('admin_init', array($this, 'adminInit'));
+        add_action('admin_notices', array($this, 'adminNotices'), -1);
+        add_action('network_admin_notices', array($this, 'adminNotices'), -1);
+        add_action('user_admin_notices', array($this, 'adminNotices'), -1);
         
         //post restrictions
         add_filter('page_row_actions', array($this, 'postRowActions'), 10, 2);
@@ -76,6 +79,20 @@ class AAM_Backend_Filter {
     
     /**
      * 
+     * @global type $wp_filter
+     */
+    public function adminNotices() {
+        if (AAM_Core_API::capabilityExists('show_admin_notices')) {
+            if (!AAM::getUser()->hasCapability('show_admin_notices')) {
+                remove_all_actions('admin_notices');
+                remove_all_actions('network_admin_notices');
+                remove_all_actions('user_admin_notices');
+            }
+        }
+    }
+    
+    /**
+     * 
      * @param type $id
      * @param type $old
      */
@@ -85,6 +102,15 @@ class AAM_Backend_Filter {
         //role changed?
         if (implode('', $user->roles) != implode('', $old->roles)) {
             AAM_Core_Cache::clear($id);
+            
+            //check if role has expiration data set
+            $role   = (is_array($user->roles) ? $user->roles[0] : '');
+            $expire = AAM_Core_API::getOption("aam-role-{$role}-expiration", '');
+            
+            if ($expire) {
+                update_user_option($id, "aam-original-roles", $old->roles);
+                update_user_option($id, "aam-role-expires", strtotime($expire));
+            }
         }
     }
     

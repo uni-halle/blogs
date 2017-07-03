@@ -2,6 +2,14 @@
     <div class="aam-feature" id="capability-content">
         <?php $subject = AAM_Backend_View::getSubject(); ?>
         
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="aam-info">
+                    <?php echo sprintf(AAM_Backend_View_Helper::preparePhrase('Manage list of capabilities for current %s. For more information about concept of capabilities check %sWhat is a WordPress capability%s article.', 'b'), AAM_Backend_View::getSubject()->getUID(), '<a href="https://aamplugin.com/help/what-is-a-wordpress-capability" target="_blank">', '</a>'); ?>
+                </p>
+            </div>
+        </div>
+        
         <div class="aam-feature-top-actions text-right">
             <div class="btn-group">
                 <a href="#" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="capability-filter">

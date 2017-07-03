@@ -33,11 +33,31 @@ class AAM_Backend_Feature_Utility  extends AAM_Backend_Feature_Abstract {
      * 
      * @return type
      */
-    public function getUtilityOptionList() {
-        $filename = dirname(__FILE__) . '/../View/UtilityOptionList.php';
-        $options  = include $filename;
+    public function getUtilityOptionList($category = 'miscellaneous') {
+        static $options = null;
         
-        return apply_filters('aam-utility-option-list-filter', $options);
+        if (is_null($options)) {
+            $filename = dirname(__FILE__) . '/../View/UtilityOptionList.php';
+            $options  = apply_filters(
+                    'aam-utility-option-list-filter', include $filename
+            );
+        }
+        
+        $filtered = array();
+        
+        foreach($options as $id => $option) {
+            if (isset($option['category'])) {
+                $cat = $option['category'];
+            } else {
+                $cat = 'miscellaneous';
+            }
+            
+            if ($cat == $category) {
+                $filtered[$id] = $option;
+            }
+        }
+        
+        return $filtered;
     }
     
     /**

@@ -4,11 +4,11 @@
             <div class="col-xs-12">
                 <?php if ($this->isDefault()) {  ?>
                     <p class="aam-info">
-                        <?php echo AAM_Backend_View_Helper::preparePhrase('Define the [default] login redirect for all users, roles when the authentication completed successfully.', 'strong'); ?>
+                        <?php echo AAM_Backend_View_Helper::preparePhrase('Define the [default] login redirect for all users, roles when the authentication completed successfully. [Please note!] The login redirect works only with the default WordPress login page.', 'strong', 'strong'); ?>
                     </p>
                 <?php } else { ?>
                     <p class="aam-info">
-                        <?php echo sprintf(AAM_Backend_View_Helper::preparePhrase('Customize login redirect for this %s when the authentication completed successfully.'), AAM_Backend_View::getSubject()->getUID()); ?>
+                        <?php echo sprintf(AAM_Backend_View_Helper::preparePhrase('Customize login redirect for this %s when the authentication completed successfully. [Please note!] The login redirect works only with the default WordPress login page.', 'strong'), AAM_Backend_View::getSubject()->getUID()); ?>
                     </p>
                 <?php } ?>
                 <div class="aam-overwrite" id="aam-login-redirect-overwrite" style="display: <?php echo ($this->isOverwritten() ? 'block' : 'none'); ?>">

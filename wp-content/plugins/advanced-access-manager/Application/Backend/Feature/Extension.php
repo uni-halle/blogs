@@ -43,7 +43,7 @@ class AAM_Backend_Feature_Extension extends AAM_Backend_Feature_Abstract {
         $license = AAM_Core_Request::post('license', $storedLicense);
         
         //download the extension from the server first
-        $package = AAM_Extension_Server::download($license);
+        $package = AAM_Core_Server::download($license);
         
         if (is_wp_error($package)) {
             $response = array(

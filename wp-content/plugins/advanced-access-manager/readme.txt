@@ -2,8 +2,8 @@
 Contributors: vasyltech
 Tags: access, role, user, capability, page access, post access, security, login redirect, brute force attack, double authentication, membership, backend lockdown, wp-admin, 404, activity tracking
 Requires at least: 3.8
-Tested up to: 4.7.4
-Stable tag: 4.7.2
+Tested up to: 4.8
+Stable tag: 4.8
 
 Manage access to your website for any user, role or visitors for both frontend and backend.
 
@@ -68,7 +68,7 @@ Protect your website from brute force and dictionary attacks or activate double 
 when user credentials are used from unexpected location.
 
 = Manage Roles =
-Create, edit, clone, delete any role. With AAM Role Hierarchy extension define complex 
+Create, edit, clone, delete any role. Set expiration time to any role. With AAM Role Hierarchy extension define complex 
 role hierarchy tree.
 
 = Single point API =
@@ -109,6 +109,26 @@ Check our [help page](https://aamplugin.com/help) to find out more about AAM.
 11. Improve your website security
 
 == Changelog ==
+
+= 4.8 =
+* Fixed the bug with Media access control reported by Antonius Hegyes
+* Fixed the bug with post access properties preview
+* Fixed the bug with permanent redirects cached by some browsers
+* Fixed the bug with PasswordHash fatal error
+* Added ability to define teaser message for an individual post or category
+* Deprecated Content Teaser tab (will be removed in AAM 5.0)
+* Extended [aam context="content"] shortcode to filter content based on IP address
+* Added ability to set time expiration for roles
+
+= 4.7.6 =
+* Added ability to hide admin notification with show_admin_notices capability
+* Added ability to subscribe to the AAM updates
+* Updated refund policy term
+
+= 4.7.5 =
+* Improved Utilities tab
+* Fixed bug with post search and archive pages
+* Updated localization source
 
 = 4.7.2 =
 * Fixed the bug with Posts & Pages pagination feature

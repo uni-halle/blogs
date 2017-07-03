@@ -3,8 +3,16 @@
         <?php if (!defined('AAM_PLUS_PACKAGE')) { ?>
             <div class="row">
                 <div class="col-xs-12">
+                    <p class="aam-notification">
+                        <?php echo sprintf(AAM_Backend_View_Helper::preparePhrase('You are allowed to manage access to unlimited number of posts, pages or custom post types but only on role, user or visitor levels. Consider to purchase %s[AAM Plus Package]%s extension to have the ability to also manage access to categories and custom taxonomies or to define the default access to all posts, pages or custom post types. For more information about this functionality check %sWhat is a WordPress post%s.', 'b'), '<a href="https://aamplugin.com/help/aam-plus-package-extension" target="_blank">', '</a>', '<a href="https://aamplugin.com/help/what-is-a-wordpress-post" target="_blank">', '</a>'); ?>
+                    </p>
+                </div>
+            </div>
+        <?php } else { ?>
+            <div class="row">
+                <div class="col-xs-12">
                     <p class="aam-info">
-                        <?php echo sprintf(AAM_Backend_View_Helper::preparePhrase('You are allowed to manage access to unlimited number of posts, pages or custom post types but only on role, user or visitor levels. Consider to purchase [AAM Plus Package] extension to have the ability to manage access also to categories or custom taxonomies and to have the ability to define the default access to all posts, pages or custom post types. For more information check %sthis article%s.', 'b'), '<a href="https://aamplugin.com/help/aam-plus-package-extension" target="_blank">', '</a>'); ?>
+                        <?php echo sprintf(__('Manage access to posts, pages and custom post types. For more information about this functionality check %sWhat is a WordPress post%s article.'), '<a href="https://aamplugin.com/help/what-is-a-wordpress-post" target="_blank">', '</a>'); ?>
                     </p>
                 </div>
             </div>

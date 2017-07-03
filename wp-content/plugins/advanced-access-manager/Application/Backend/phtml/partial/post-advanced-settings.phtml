@@ -67,4 +67,31 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="teaser-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="<?php echo __('Close', AAM_KEY); ?>"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><?php echo __('Teaser Message', AAM_KEY); ?></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label><?php echo __('Simple text or valid HTML', AAM_KEY); ?></label>
+                        <textarea class="form-control" id="teaser-value" placeholder="<?php echo __('Enter your teaser', AAM_KEY); ?>" rows="5"></textarea>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input value="1" type="checkbox" id="add-excerpt" />
+                            Add excerpt before teaser message                        
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success extended-post-access-btn" id="change-teaser-btn"><?php echo __('Save', AAM_KEY); ?></button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo __('Close', AAM_KEY); ?></button>
+                </div>
+            </div>
+        </div>
+    </div>
 <?php }

@@ -63,6 +63,27 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
 
         return $response;
     }
+    
+    /**
+     * 
+     */
+    public function restoreRoles() {
+        $roles = get_user_option('aam-original-roles');
+        
+        //remove curren roles
+        foreach((array) $this->roles as $role) {
+            $this->remove_role($role);
+        }
+        
+        //add original roles
+        foreach(($roles ? $roles : array('subscriber')) as $role) {
+            $this->add_role($role);
+        }
+            
+        //delete options
+        delete_user_option($this->getId(), 'aam-role-expires');
+        delete_user_option($this->getId(), 'aam-original-roles');
+    }
 
     /**
      * Retrieve User based on ID

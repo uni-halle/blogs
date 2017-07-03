@@ -264,9 +264,9 @@ final class AAM_Core_API {
      */
     public static function redirect($rule, $args = null) {
         if (filter_var($rule, FILTER_VALIDATE_URL)) {
-            wp_redirect($rule, 301);
+            wp_redirect($rule, 307);
         } elseif (preg_match('/^[\d]+$/', $rule)) {
-            wp_safe_redirect(get_page_link($rule), 301);
+            wp_safe_redirect(get_page_link($rule), 307);
         } elseif (is_callable($rule)) {
             call_user_func($rule, $args);
         } elseif (!empty($args['callback']) && is_callable($args['callback'])) {

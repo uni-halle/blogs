@@ -101,7 +101,7 @@ class AAM_Frontend_Manager {
         if (empty($message) && ($redirect == 'login')) {
             $message = AAM_Core_Config::get(
                 'redirect.login.message', 
-                '<p class="message">Access denied. Please login to get access.</p>'
+                '<p class="message">' . __('Access denied. Please login to get access.', AAM_KEY) . '</p>'
             );
         }
         
@@ -318,6 +318,7 @@ class AAM_Frontend_Manager {
             $object = AAM::getUser()->getObject('post', $post->ID);
 
             if ($object->has('frontend.protected')) {
+                require_once( ABSPATH . 'wp-includes/class-phpass.php' );
                 $hasher = new PasswordHash( 8, true );
                 $hash   = wp_unslash(AAM_Core_Request::cookie('wp-postpass_' . COOKIEHASH));
 
@@ -357,8 +358,9 @@ class AAM_Frontend_Manager {
                         AAM_Core_Config::get("frontend.404redirect.{$type}")
                 );
             }
-        } else {
+        } elseif ($wp_query->is_single || $wp_query->is_page) {
             $post = $this->getCurrentPost();
+            
             if (is_a($post, 'WP_Post')) {
                 $this->checkPostReadAccess($post);
             }
@@ -595,9 +597,14 @@ class AAM_Frontend_Manager {
         if (is_a($post, 'WP_Post')) {
             $object = AAM::getUser()->getObject('post', $post->ID);
             if ($object->has('frontend.limit')) {
-                $teaser  = AAM::getUser()->getObject('teaser');
-                $message = $teaser->get('frontend.teaser.message');
-                $excerpt = $teaser->get('frontend.teaser.excerpt');
+                if ($object->has('frontend.teaser')) {
+                    $message = $object->get('frontend.teaser');
+                    $excerpt = false;
+                } else {
+                    $teaser  = AAM::getUser()->getObject('teaser');
+                    $message = $teaser->get('frontend.teaser.message');
+                    $excerpt = $teaser->get('frontend.teaser.excerpt');
+                }
                 
                 $html  = (intval($excerpt) ? $post->post_excerpt : '');
                 $html .= stripslashes($message);
