@@ -2,8 +2,8 @@
 Contributors: shareaholic
 Tags: share buttons, related content, cookie compliance, eu cookie law, shareaholic, shareholic, sexybookmarks, recommendations, cookie consent, email button, social sharing, social bookmarking, share image, image sharing, follow buttons, floated share buttons, floating share buttons, analytics, social media, social plugin, facebook, twitter, google plus, google bookmarks, gmail, linkedin, pinterest, reddit, tumblr, evernote, digg, delicious, stumbleupon, printfriendly, fancy, amazon, xing, vk, yahoo, mister wong, viadeo, odnoklassniki box.net, diigo, yammer, ycombinator, hotmail, instapaper, mixi, arto, whatsapp, hootsuite, inbound.org, plurk, aim, buffer, meneame, pinboard.in, stumpedia, bitly, blogger, yummly, izeby, kaboodle, weibo, instagram, tinyurl,  typepad, weheartit, flipboard, pocket, wanelo, fark, wykop, symphony, kindle, houzz, youtube, sms, onenote, google classroom, disqus, spotify, zillow, feedly, kik, line, livejournal, baidu
 Requires at least: 3.0
-Tested up to: 4.7
-Stable tag: 7.8.0.6
+Tested up to: 4.8
+Stable tag: 7.10.1.0
 
 World's leading all-in-one Content Amplification Platform that helps grow your site traffic, engagement, conversions & monetization for FREE.
 
@@ -14,7 +14,8 @@ Shareaholic is the world's leading **all-in-one Content Amplification Platform**
 
 = Recent Updates =
 
-* Automatic Google Analytics integration ([setup guide](http://support.shareaholic.com/hc/en-us/articles/205181045-)) for sharing analytics
+* Social Share Count Recovery ([learn more](https://support.shareaholic.com/hc/en-us/articles/115002083586-))
+* Google Analytics integration ([setup guide](http://support.shareaholic.com/hc/en-us/articles/205181045-))
 * [Promoted Content](http://support.shareaholic.com/hc/en-us/articles/202657036)
 * [Post-Share Follow Buttons](https://blog.shareaholic.com/post-share-follow-buttons/)
 * [EU / UK Cookie Compliance Banner App](https://blog.shareaholic.com/cookie-consent-banner-app/)
@@ -193,6 +194,26 @@ Please see here: [Shareaholic Helpdesk](http://support.shareaholic.com/hc/en-us)
 Please see here: [Usage & Installation Instructions](http://support.shareaholic.com/hc/en-us/categories/200101476-WordPress-Plugin)
 
 == Changelog ==
+
+= 7.10.1.0 =
+* **[Social Share Count Recovery](https://blog.shareaholic.com/recover-social-share-counts-https/)** ([learn more](https://blog.shareaholic.com/recover-social-share-counts-https/)) - This setting is for anyone who has had to go through the pain and toil of migrating their domain name or changing over from HTTP to HTTPS and thereby losing all of your social share counts. Whether you are moving your site to HTTPS or migrating your domain name, don't lose your share counts. Once active, Shareaholic will begin to fetch share counts for both URL's, add them together and display the combined total. Voilà - all your hard work and social proof will again be fully accounted for.
+* Enhancement: **Share Buttons for Images** are now smarter when choosing which images to activate on. Support added for images within `<header>` tags.
+* Bugfix: Fixed edge case compatability bug with Google Analytics integration (race condition)
+* Various other performance updates and bug fixes
+
+= 7.9.0.0 =
+* We've been very busy!
+* New: [Bots vs. Humans site analytics](https://support.shareaholic.com/hc/en-us/articles/115002299663)
+* New: Skype share button
+* New: Share Buttons automatically hide when a page is being printed so that it doesn't cover any of your content.
+* New: Emoji support added for Twitter templates! 😁😍😎
+* Enhancement: Added IPV6 support for Cookie Notice App for improved Geo accuracy
+* Enhancement: utf8mb4 support upgrade. This greatly expands the language usability of Shareaholic, especially in countries that use (Han character sets)https://en.wikipedia.org/wiki/Han_unification.
+* Enhancement: Added hide/show functionality to Floated Share Buttons. Your visitors can now hide the Floated Share Bar at any time, for instance, if it is covering content. They're also animated now!
+* Enhancement: Related Content App now "lazy loads". This means the app will only load if a visitor begins to scroll. This enhancement will further speed up load times for your website.
+* Enhancement: Better accessibility / screen reader support
+* Enhancement: Big improvements to the Related Content recommendation engine
+* Various performance updates and bug fixes
 
 = 7.8.0.6 =
 * Bugfix: Fixed admin bar link
@@ -692,353 +713,13 @@ Please see here: [Usage & Installation Instructions](http://support.shareaholic.
 * Cleaned up legacy code for greater efficiency
 * Added Google Analytics Social Tracking Feature
 
-= 4.0.6.8 =
-* Added support for Pinterest
-* Cleaned up directory listing
-* Performance improvements achieved by reducing the number of JavaScript calls
-* Cleaned up depreciated services: Mixx, Google Reader, Google Buzz, Netvibes
-* Minor bug fixes
-
-= 4.0.6.5 =
-* Added support for Google Analytics Social Interaction Analytics
-* Added Awe.sm URL shortener support
-* Limited showing Shareaholic updates to the plugin's admin page
-* Fixed bug: Incorrect url used by TopBar on homepage
-* Fixed bug: Twitter counter in Like button set
-* Fixed bug: SSL conflicts
-* Fixed bug: Bit.ly bug
-
-= 4.0.6.4 =
-* Fixed bug where background image would appear even if it was disabled
-
-= 4.0.6.3 =
-* Added a topbar with sharing options
-* Add Tweet button to the "like button" sharing set
-* Symbolic directory path is now supported as custom path
-* Fixed bug: related to manual mode
-* Fixed bug: related to category pages & manual mode 
-* Fixed bug: related to special characters in page title
-* Optimizations for performance
-
-= 4.0.6.2 =
-* Fixed changelog formatting
-* Enhancements for screen reader accessibility
-
-= 4.0.6.1 =
-* Fixed potential "headers already sent" error
-* Refinements to Open Graph Tags (can now disable on individual posts)
-* Provided accessibility support for SexyBookmarks style sharing icons
-* Removed Propeller from service list (depreciated service)
-
-= 4.0.5.9 =
-* Fixed css
-
-= 4.0.5.8 =
-* Fixed typo/version number
-
-= 4.0.5.7 =
-* Fixed SSL compatibility (all assets now loaded over https when a page is served over https).
-* Fixed Google +1 count issue
-* Fixed Google +1 shared link titles showing properly on Shareaholic.com User Dashboard
-* Fixed jQuery IE bug (will be much more stable in IE)
-* Custom sprite generation certified compatible with WordPress Multisite
-* Shareaholic's proprietary data attributes are now HTML5-compliant.
-* FAQ moved to https://shareaholic.com/tools/wordpress/faq
-* Usage & Installation guide moved to https://shareaholic.com/tools/wordpress/usage-installation
-* Added browser extension promo
-* Added Support for Open Graph Tags (for Facebook and Google +1 sharing) - Featured Image or First Gallery Image in post will be selected for Open Graph Tag
-* Added links to live support in admin panel
-
-= 4.0.5.6 =
-* Many cross platform compatibility enhancements
-* Fixed +1/Like not working in manual mode
-* Fixed role lookup errors affecting older versions of WordPress (ex. v2.7.1)
-* Fixed misc. path and folder permission bugs
-
-= 4.0.5.5 =
-* Updated for handling Window Server related paths
-
-= 4.0.5.4 =
-* Fix for certain settings not being saves in previous release
-
-= 4.0.5.3 =
-* Small bug fix affecting very few
-
-= 4.0.5.2 =
-* Fixes path issues with previous release (critical update if you upgraded to v4.0.5.1)
-
-= 4.0.5.1 =
-* Lots of performance upgrades
-* No longer need to re-CHMOD directories on upgrade!
-* Can now specify custom directory to store Shareaholic custom files
-
-= 4.0.4.2 =
-* Super charged options for Like/Send/+1 Button set
-* Quick bug fixes affecting some themes
-* Ability to disable SexyBookmarks from specific pages now limited to site Editors and Admins only.
-
-= 4.0.4.1 =
-* Bug fixes (highly recommended update)
-
-= 4.0.3 =
-* Quick bug fix affecting some themes
-
-= 4.0.2 =
-* Lots of performance enhancements
-* Now includes Google's +1 Button
-* Now includes Facebook's Send Button
-* Updated translations:
-  * French (by [Maitre Mo](http://maitremo.fr))
-  * Greek (by Daphne Christoforidou)
-  * Estonian (by Cristo Pajust)
-  * German (by Michael S.)
-  * Dutch (by Arend & Adriaan)
-  * Lithuanian (by Aukse)
-  * Bulgarian (by Mladen Gradev)
-  * Hungarian (by Murvai-Buzogány László)
-  * Spanish (by Diego)
-  * Portuguese - Brazil (by Oscar)
-  * Farsi - Persian (by Mohammad)
-* Fix for cases of misaligned Designer Tooltips
-* Fix for potential conflict with Featured Content Gallery plugin
-* Ability to disable SexyBookmarks from specific pages (ex. password protected pages)
-
-= 4.0.1 =
-* Facebook Like Button
-* Plugin Health Status Monitor
-* Designer Tooltips
-* Analytics: meet the people who spread your content the most
-* Faster Twitter loading
-
-= 3.3.12 =
-* Added "Share Count" support for Google Buzz
-* Cleaned up folder structure
-* Tweaks for mobile browsers (iphone, ipod, etc)
-
-= 3.3.11 =
-* Google hosted jQuery now only loads if not already present on page (plugin needs jQuery 1.4.4+)
-* Various bug fixes for "new" mode
-* Added a new default_spritegen directory structure that will fetch the sprite files in case spritegen directory is not accessible
-* Twitter now also opens an overlay on the same page for easier sharing in "old" mode
-
-= 3.3.10 =
-* Added default sprite & css files for added compatibility
-* Fixed short tags php bug that crept in v3.3.9
-
-= 3.3.9 =
-* WP-Minify plugin compatibility mode fix
-* Share Counter bug fix
-* Improved performance by switching to a single JavaScript load instead of two in "new" mode
-
-= 3.3.8 =
-* "New" mode is now turned on by default
-* Added a notice for Admins if spritegen directory isn't writable (http://goo.gl/LjuxD)
-* Twitter now opens an overlay on the same page for easier sharing
-
-= 3.3.7 =
-* Cleaned up spritegen directory structure
-* Correctly encoding foreign language characters in Twitter template
-* Show PHP 5 upgrade message to only admins
-* Misc performance upgrades
-* Updated Arabic translation (by [Modar Soos](http://www.sada-sy.com))
-
-= 3.3.6 =
-* New API endpoint to show the Share Count for your website
-* Compatibility fixes for older WP installs
-
-= 3.3.5 =
-* Fix for PHP 4 users
-
-= 3.3.4 =
-* MAJOR UPDATE: URL shortening now 100% faster, better, smarter -- we moved the shortening function to the Share API for much improved reliability
-* Removed support for unreliable URL shorteners - snip, cligs and tinyarrows
-* Removed support for Yahoo! Buzz (service is shutting down)
-* Updated Arabic translation (by [Modar Soos](http://www.sada-sy.com))
-* Updated all MO translation files
-
-= 3.3.2 =
-* Quick fix for admin menu PHP error
-
-= 3.3.1 =
-* Fix for W3C validation errors (thanks to [Maitre Mo](http://maitremo.fr))
-* Fix for Twitter breaking for certain custom templates
-* Removed support for sl.ly URL shortener due to poor performance
-* Revamped sidebar menu
-
-= 3.2.12 =
-* Updated Twitter definition
-* Various jQuery related bug fixes
-
-= 3.2.11 =
-* Lots of fixes to the beta thanks to your feedback.  We're getting close to switching over completely!
-* Much improved jQuery conflict detection for beta users
-* New alert that reminds users to re-save their settings on upgrade
-* Switched over to use the Share API (http://shareapi.com)
-
-= 3.2.10 =
-* Share Counters for Twitter and Facebook! (beta exclusive)
-* Admin toggle for Shareaholic promo link
-
-= 3.2.9 =
-* Fix for a W3C validation error
-* Updated Arabic translation (by [Modar Soos](http://www.sada-sy.com))
-* Updated French translation (by [Maitre Mo](http://maitremo.fr))
-* Updated Portuguese (Brazil) translation (by [Barukar](http://www.classinoiva.com.br))
-* Includes link to Shareaholic Browser Tools
-
-= 3.2.8 =
-* Fix for Arras theme
-* Depreciating `selfserv_sexy()` function.  It has been replaced with `selfserv_shareaholic()`
-* Admin toggle for Perf script
-
-= 3.2.7 =
-* Adds support for Google's URL shortener (goo.gl)
-* Updated Bit.ly shortening
-* Updated Greek translation (by [Nick Mouratidis](http://www.kepik.gr))
-
-= 3.2.6 =
-* Quick fix for admin area (icons)
-
-= 3.2.5 =
-* Fixes slow page load issue
-* Compatibility fixes for WP v3.0.3
-* xhtml compliance fix
-* Updated "Most Popular" services list
-* Service list now has titles!  Find services in a snap
-
-= 3.2.4.2 =
-* Removed warning messages about WP_FOOTER and WP_HEAD
-
-= 3.2.4.1 =
-* Fixed SAFE_MODE issue regarding fopen()
-* Fixed mkdir() issue by changing to wp_mkdir_p()
-* Fixed $d_tags and $keywords undefined problem
-* Fixed typo in request URL leading to errors being returned
-* Fixed manual mode when using BETA
-* Removed timeout from http request
-
-= 3.2.4 =
-* Complete re-write to increase efficiency and speed
-
-= 3.2.3.1 =
-* Small bug fix for short URLs when cURL not enabled
-* Removed Fleck as it no longer exists
-* Removed "Load scripts in footer" from default settings
-
-= 3.2.3 =
-* Added urldecode() to bitly and supr JSON requests
-* Removed fopen() from the sprite request, now uses the WP http api
-* Updated translation folder definition to filesystem path
-* Updated the Italian translation
-
-= 3.2.2 =
-* Added Portuguese translation (pt_PT)
-* Fixed problem with su.pr short URLs not working
-* Fixed persistent bug from 3.2
-* Fixed error in stylesheet name
-* Added referrer to API request
-
-= 3.2.1.1.2 =
-* Fixed JS counter
-* Complete revamp of naming scheme
-
-= 3.2.1.1.1 =
-* Better activation hook to check old naming scheme
-
-= 3.2.1.1 =
-* Fixed charset problem with htmlspecialchars()
-* Names are now automatically replaced from sexy- to shr- upon upgrade/activation
-* Fixed issue causing one icon to display multiple times
-* Fixed expanding blank space issue
-* Fixed caching issue by adding version number to file names rather than as parameters
-
-= 3.2 =
-* Resolved security issue
-* Added Buzzster!, Yahoo! Mail, Gmail, & Hotmail
-* Fixed GoogleBuzz link (didn't validate)
-* Fixed mailto link
-* Changed jQuery to $ in all scripts (with noconflict)
-* Changed all CSS classes from sexy- to shr- in public css
-* Renamed images from sexy- to shr-
-* Added new Google Reader and Twitter icons
-* Integrated new "configure tweet" method
-* Removed twitter ID field
-* Updated custom mods function with new image names
-* Custom mods function now copies style-dev.css rather than the minified (style.css)
-* Dynamic Sprite Generator API now live for everyone to use!
-* Tested with WP3.0 (passed with flying colors!)
-* Added feature to automagically reset all short URLs when you select a new service
-* Added option to display menu above AND below content
-* Updated translations
-
-= 3.1.3 =
-* Added Settings link to plugin display panel
-* Fixed issue with feed not displaying links properly
-* Small admin changes
-* Final fix for annoying bullets in menu
-
-= 3.1.2 =
-* Fixed accessibility issue with RTL languages
-* Fixed validity issue with links (unescaped ampersands)
-* Fixed issue with icons not appearing correctly for Google Reader and Google Bookmarks
-
-= 3.1.1 =
-* Quick bug fix for the bug that appeared immediately after releasing 3.1
-
-= 3.1 =
-* Many improvements in the coding efficiency
-* Removed Devmarks as it no longer exists
-* Updated the old Google Bookmarks icon
-* Added new feature to Mister-Wong so that now the *.com* extension is replaced dynamically based on your locale
-* Removed DesignMoo and Blogosphere News
-* Added DZone
-* Added Kaevur (Estonian)
-* Added Virb
-* Added Box.net
-* Added Google Reader
-* Added Bonzobox
-* Added Zabox
-* Added OkNotizie (Italian)
-* Added Springpad
-* Added Plaxo
-* Added Viadeo
-* Added Google Buzz
-
-= 3.0.1 =
-* Fix for fatal error if you downloaded v3.0 before `8:30am CST on Feb 1st, 2010`
-* Fix for Google Bookmarks image not displaying correctly
-* Fix for spritegen not working if wordpress installed in subdirectory
-* Spritegen now outputs minified CSS as well
-* Added activation hook to generate sprite automatically upon activating the plugin
-
-= 3.0 =
-* New Sprite Image is generated when you save options (If you have PHP5 or above with PHPGD, & don't have custom mods feature on)
-* Also reduced the size of the images with Smush It
-* Separated Background Images
-* Fixed Translation Strings
-* Added option to load javascript in blog's footer
-* Added compatibility with YOURLS plugin
-* Added Settings link in plugin's information section
-* Many improvements in the coding efficiency
-* Minified public JS
-* Added DZone
-* Added Kaevur (Estonian)
-* Added Virb
-* Added Box.net
-* Removed Devmarks as it no longer exists
-* Added Google Reader
-* Updated the old Google Bookmarks icon
-* Added Bonzobox
-* Added Zabox
-* Added OkNotizie (Italian)
-* Added Springpad
-* Added Plaxo
-* Added Viadeo
-* Added option to allow you to NOT use a URL shortener if you so choose
-* Added new feature to Mister-Wong so that now the *.com* extension is replaced dynamically based on your locale
-* Minified stylesheet to save a couple KB
-
 == Upgrade Notice ==
+
+= 7.10.1.0 =
+New: Share Count Recovery feature! Don't lose your hard work. Recover your social proof.
+
+= 7.9.0.0 =
+This is a major update with lots of new features and enhancements that you'll love!
 
 = 7.8.0.6 =
 Various enhancements
