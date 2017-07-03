@@ -47,7 +47,7 @@ get_header(); ?>
 
 				<?php endwhile; ?>
 
-				<?php if($tempera_pagination=="Enable") tempera_pagination(); else tempera_content_nav( 'nav-below' ); ?>
+				<?php if ( $temperas['tempera_pagination']=="Enable" ) tempera_pagination(); else tempera_content_nav( 'nav-below' ); ?>
 
 			<?php else : ?>
 

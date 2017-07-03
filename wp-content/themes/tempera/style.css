@@ -4,7 +4,7 @@ Theme URI: https://www.cryoutcreations.eu/wordpress-themes/tempera
 Description: We had to follow a very strict recipe to get Tempera just right. We started with a very solid framework of over 200 settings, added a very light user interface, threw in a couple of mobiles and tablets to give it that responsive elasticity, added over 50 fonts, weren't satisfied so we poured all the Google fonts into the mix, then scattered 12 widget areas for consistency, dissolved a slider and unlimited columns into a customizable Presentation Page then mixed it in as well. We then sprinkled all post formats, 8 layouts including magazine and blog, powdered 40+ social icons and even blended in a customizable top bar for extra density. We also made it translation ready and gave it RTL language support for some cultural diversity. The secret ingredient was love and we might've spilled too much of that. But now Tempera has just the right feel and the right texture and is exactly what your empty WordPress canvas needs. NEW! Tempera now comes in 16 different flavors with preset color schemes!
 Author: Cryout Creations
 Author URI: https://www.cryoutcreations.eu
-Version: 1.5.2
+Version: 1.6.1.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Tags: one-column, two-columns, three-columns, right-sidebar, left-sidebar, footer-widgets, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, front-page-post-form, full-width-template,  microformats, post-formats, rtl-language-support,  sticky-post, theme-options, threaded-comments, translation-ready, blog, e-commerce, education, entertainment, food-and-drink, news
@@ -395,6 +395,11 @@ select {
 	border-radius: 4px;
 	-webkit-transition: background-color .2s;
 	transition: background-color .2s;
+}
+
+input:focus,
+textarea:focus {
+	outline: none;
 }
 
 input::-moz-focus-inner {/*Remove button padding in FF*/
@@ -2012,6 +2017,9 @@ li.menu-main-search .searchform input[type="search"] {
 	padding-bottom: .8em;
 	line-height: inherit;
 	height: auto;
+	background: rgba(0,0,0,.06);
+	border: none;
+	border-left: 1px solid transparent;
 }
 
 li.menu-main-search .searchsubmit {
@@ -2249,7 +2257,7 @@ code {
 }
 
 /* The animated square */
-.socials-hover {
+.socials .socials-hover {
 	display: block;
 	position: absolute;
 	width: 0;

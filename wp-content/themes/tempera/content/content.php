@@ -7,12 +7,9 @@
  * @since Tempera 1.0
  */
 
-$options = tempera_get_theme_options();
-foreach ($options as $key => $value) {
-     ${"$key"} = $value ;
-} 
-
-?><?php cryout_before_article_hook(); ?>
+$temperas = tempera_get_theme_options();
+cryout_before_article_hook(); 
+?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class( (( is_sticky() && is_page_template() )?'sticky':'') ); ?>>
 				
@@ -29,7 +26,7 @@ foreach ($options as $key => $value) {
 			<?php cryout_post_before_content_hook();  
 			?><?php if ( is_archive() || is_search() || is_page() ) : // Display excerpts for archives, search and page templates ?>
 			
-						<?php if ($tempera_excerptarchive != "Full Post" ){ ?>
+						<?php if ( $temperas['tempera_excerptarchive'] != "Full Post" ){ ?>
 						<div class="entry-summary">
 						<?php tempera_set_featured_thumb(); ?>
 						<?php the_excerpt(); ?>
@@ -42,8 +39,8 @@ foreach ($options as $key => $value) {
 						<?php }   ?>
 			
 		<?php else : 
-				if (is_sticky() && $tempera_excerptsticky == "Full Post")  $sticky_test=1; else $sticky_test=0;
-				if ($tempera_excerpthome != "Full Post" && $sticky_test==0){ ?>
+				if ( is_sticky() && ($temperas['tempera_excerptsticky'] == "Full Post") )  $sticky_test=1; else $sticky_test=0;
+				if ( ($temperas['tempera_excerpthome'] != "Full Post") && ($sticky_test==0) ){ ?>
 					
 					
 						<div class="entry-summary">

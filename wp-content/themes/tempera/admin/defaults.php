@@ -246,7 +246,7 @@ $tempera_defaults = array(
 "tempera_falign" 	=> "Left",
 "tempera_fwidth" 	=> "780",
 "tempera_fheight" 	=> "350",
-"tempera_fcrop" 	=> "1",
+"tempera_fcrop" 	=> 1,
 "tempera_fheader" 	=> "Disable",
 
 "tempera_social1" 			=> "YouTube",
@@ -286,6 +286,7 @@ $tempera_defaults = array(
 "tempera_iecompat"	=> 0,
 //"tempera_masonry"   => 0,
 "tempera_fitvids"   => 1,
+"tempera_editorstyle"  => 1,
 );
 
 

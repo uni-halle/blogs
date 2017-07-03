@@ -1,26 +1,17 @@
 <?php
+
 // Frontend
+require_once(get_template_directory() . "/admin/defaults.php");					// default options
+require_once(get_template_directory() . "/admin/prototypes.php");				// prototype functions
+require_once(get_template_directory() . "/includes/custom-styles.php");			// custom styling
+require_once(get_template_directory() . "/admin/customizer.php");				// customizer hook
 
-// Default values
-require_once(dirname(__FILE__) . "/defaults.php");
-require_once(dirname(__FILE__) . "/prototypes.php");
-// Custom css
-require_once(dirname(dirname(__FILE__)) . "/includes/custom-styles.php");
-
-// WP customizer handler
-require_once(get_template_directory() . "/admin/customizer.php");
-
-// Admin Side
-
+// Admin side
 if( is_admin() ) {
-	// Settings arrays
-	require_once(dirname(__FILE__) . "/settings.php");
-	// Callback functions
-	require_once(dirname(__FILE__) . "/admin-functions.php");
-	// Sanitize functions
-	require_once(dirname(__FILE__) . "/sanitize.php");
-	// Color scheme presets
-	include(dirname(__FILE__) . "/schemes.php");
+	require_once(get_template_directory() . "/admin/settings.php");				// theme settings
+	require_once(get_template_directory() . "/admin/admin-functions.php");		// admin side functions
+	require_once(get_template_directory() . "/admin/sanitize.php");				// settings sanitizers
+	include(get_template_directory() . "/admin/schemes.php");					// preset color schemes
 }
 
 // Get the theme options and make sure defaults are used if no values are set
@@ -29,26 +20,18 @@ function tempera_get_theme_options() {
 	$optionsTempera = get_option( 'tempera_settings', $tempera_defaults );
 	$optionsTempera = array_merge((array)$tempera_defaults, (array)$optionsTempera);
 	$optionsTempera['id'] = "tempera_settings";
-return $optionsTempera;
+	return $optionsTempera;
 }
-
 $temperas = tempera_get_theme_options();
-foreach ($temperas as $key => $value) {
-     ${"$key"} = $value ;
-}
-
 
 //  Hooks/Filters
 //add_action('admin_init', 'tempera_init_fn' ); // hooked by settings plugin
 add_action('admin_menu', 'tempera_add_page_fn');
 add_action('init', 'tempera_init');
 
-
-$temperas = tempera_get_theme_options();
-
 // Registering and enqueuing all scripts and styles for the init hook
 function tempera_init() {
-		load_theme_textdomain( 'tempera', get_template_directory_uri() . '/languages' );
+	load_theme_textdomain( 'tempera', get_template_directory_uri() . '/languages' );
 }
 
 // Creating the tempera subpage
@@ -232,6 +215,7 @@ function tempera_init_fn(){
 	add_settings_field('tempera_iecompat', __('Internet Explorer Compatibility Tag','tempera') , 'cryout_setting_iecompat_fn', 'tempera-page', 'misc_section');
 	//add_settings_field('tempera_masonry', __('Masonry','tempera') , 'cryout_setting_masonry_fn', 'tempera-page', 'misc_section');
 	add_settings_field('tempera_fitvids', __('FitVids','tempera') , 'cryout_setting_fitvids_fn', 'tempera-page', 'misc_section');
+	add_settings_field('tempera_editorstyle', __('Editor Styling','tempera') , 'cryout_setting_editorstyle_fn', 'tempera-page', 'misc_section');
 	add_settings_field('tempera_copyright', __('Custom Footer Text','tempera') , 'cryout_setting_copyright_fn', 'tempera-page', 'misc_section');
 	add_settings_field('tempera_customcss', __('Custom CSS','tempera') , 'cryout_setting_customcss_fn', 'tempera-page', 'misc_section');
 	add_settings_field('tempera_customjs', __('Custom JavaScript','tempera') , 'cryout_setting_customjs_fn', 'tempera-page', 'misc_section');

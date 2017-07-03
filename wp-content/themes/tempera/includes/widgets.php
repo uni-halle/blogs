@@ -97,7 +97,7 @@ add_action ('admin_print_scripts-widgets.php','tempera_widget_scripts');
  */
 if ( ! function_exists('tempera_singlecolumn_output') ):
 function tempera_singlecolumn_output($data){
-	foreach ($data as $key => $value) { ${"$key"} = $value; }
+	extract($data);
 	?>
 		<div class="pp-column column<?php echo $colno; ?>">
 			<?php if (!empty($image)) {	?>

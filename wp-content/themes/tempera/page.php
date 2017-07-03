@@ -12,7 +12,7 @@
  * @since tempera 0.5
  */
 get_header();
-if ($tempera_frontpage=="Enable" && is_front_page() && 'posts' == get_option( 'show_on_front' )): get_template_part( 'frontpage' );
+if ( ($temperas['tempera_frontpage']=="Enable") && is_front_page() && 'posts' == get_option( 'show_on_front' )): get_template_part( 'frontpage' );
 else :
 ?>
 		<section id="container" class="<?php echo tempera_get_layout_class(); ?>">

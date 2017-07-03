@@ -24,7 +24,7 @@ ul,ol {
 
 .widget-area ul ul li { }
 
-#calendar_wrap { 
+#calendar_wrap {
 	margin-right: 10px;
 }
 
@@ -41,18 +41,31 @@ ul,ol {
 -------------------------------------------------------------- */
 
 #site-title {
-	float: right; 
+	float: right;
 }
 
 #site-description {
 	clear: right;
-	float: right; 
+	float: right;
 }
 
 /* =Menu
 -------------------------------------------------------------- */
 /* =Menu -PRIMARY
 -------------------------------------------------------------- */
+
+ul.menu {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.tempera-menu-left #access > .menu > ul {
+	float: left;
+}
+
+#access ul li {
+	float: right;
+}
 
 #access > .menu > ul > li > a:not(:only-child) span:after {
     left: 5px;
@@ -97,50 +110,50 @@ ul,ol {
 	left: -20px;
 }
 
-.rtl.tempera-menu-center #access > .menu > ul > li > a > span { 
+.rtl.tempera-menu-center #access > .menu > ul > li > a > span {
 	text-align: right;
 }
 
 /* =Menu -SECONDARY
 -------------------------------------------------------------- */
 
-.topmenu { 
+.topmenu {
 	float: left;
 }
 
-.topmenu ul li { 
-	float: right; 
+.topmenu ul li {
+	float: right;
 }
 
-.footermenu { 
-	float: right; 
+.footermenu {
+	float: right;
 }
 
 .footermenu > ul {
 	float: right;
 	margin-left: auto;
-	margin-right: 20px; 
+	margin-right: 20px;
 }
 
-.footermenu ul li { 
+.footermenu ul li {
 	float: right;
 }
 
 .footermenu ul li:after {
 	margin-left: auto;
-	margin-right: 10px; 
+	margin-right: 10px;
 }
 
 
 /* =Content
 -------------------------------------------------------------- */
 
-#content table { 
+#content table {
 	text-align: right;
 }
 
 #content table tr td img {
-	max-width:none; 
+	max-width:none;
 }
 
 #content .format-status .entry-meta2 {
@@ -150,37 +163,37 @@ ul,ol {
 	padding-right: 0;
 }
 
-.status_content { 
-	float:right; 
+.status_content {
+	float:right;
 }
 
 .entry-meta span,
 .entry-meta2 span {
 	float: right;
 	padding-left: 6px;
-	margin-right: 0; 
+	margin-right: 0;
 }
 
-span.edit-link, 
+span.edit-link,
 .comments-link  {
 	float: left;
 	margin-left: 0;
-	margin-right: 10px; 
+	margin-right: 10px;
 }
 
 .comments-link {
 	float: left;
 }
 
-.format-status .avatar { 
+.format-status .avatar {
 	float: right;
 }
 
-#content h3.entry-format { 
+#content h3.entry-format {
 	float: right;
 }
 
-#content .format-status h3.entry-format { 
+#content .format-status h3.entry-format {
 	margin-left: 10px;
 }
 
@@ -189,44 +202,44 @@ span.edit-link,
 	margin-left: 24px;
 	margin-right: 0;
 }
-	
+
 .entry-content blockquote.left {
 	float: right;
 	margin-right: 0;
 	margin-left: 24px;
-	text-align: left; 
+	text-align: left;
 }
-	
+
 .entry-content blockquote.right {
 	float: left;
 	margin-right: 24px;
 	margin-left: 0;
 	text-align: right;
 }
-	
+
 #entry-author-info {
 	border-left: 0;
-	border-right: 3px solid transparent; 
+	border-right: 3px solid transparent;
 }
-	
+
 #entry-author-info #author-avatar {
 	float: right;
-	margin: 0 20px 0 -104px; 
+	margin: 0 20px 0 -104px;
 }
-	
+
 #entry-author-info #author-description {
 	float: right;
-	margin: 0 104px 0 0; 
+	margin: 0 104px 0 0;
 }
-	
-.pagination span, 
+
+.pagination span,
 .pagination a,
-#respond .required  { 
+#respond .required  {
 	float: right;
 }
 
 #respond label,
-#commentform { 
+#commentform {
 	float: right;
 }
 
@@ -234,16 +247,33 @@ span.edit-link,
 	width: 15%;
 }
 
-#respond .comment-notes { 
+#respond .comment-notes {
 	float: right;
-	text-align: right; 
+	text-align: right;
 }
 
-/* Slider 
+/* Continue Reading Links */
+a.continue-reading-link {
+	padding-right: 15px;
+	padding-left: 8px;
+}
+
+a.continue-reading-link i.crycon-right-dir {
+	margin-right: 3px;
+	margin-left: 0;
+}
+
+a.continue-reading-link i.crycon-right-dir::before {
+	top: 1px;
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+/* Slider
 -------------------------------------------------------------- */
 .nivo-caption {
 	left: 60px;
-	right: inherit; 
+	right: inherit;
 }
 
 /* Gallery listing
@@ -256,22 +286,22 @@ span.edit-link,
 
 /* Images
 -------------------------------------------------------------- */
-#content .gallery .gallery-caption { 
+#content .gallery .gallery-caption {
 	margin-right: 0;
 }
 
-#content .gallery .gallery-item { 
+#content .gallery .gallery-item {
 	float: right;
 }
- 
-#content .entry-title { 
-	float: none; 
+
+#content .entry-title {
+	float: none;
 }
 
 /* =Navigation
 -------------------------------------------------------------- */
-.nav-previous { 
-	text-align: left; 
+.nav-previous {
+	text-align: left;
 }
 .nav-next { }
 
@@ -282,23 +312,23 @@ span.edit-link,
 	right: 0;
 	left: auto;
 }
-	
+
 .comment-author .says,
-#comments .pingback .url  { 
+#comments .pingback .url  {
 	font-style: normal;
 }
 
 /* Comments form */
-.children #respond { 
-	margin: 0 0 0 48px; 
+.children #respond {
+	margin: 0 0 0 48px;
 }
 
 /* =Widget Areas
 -------------------------------------------------------------- */
 
 #header-widget-area {
-	right: inherit; 
-	left: 0; 
+	right: inherit;
+	left: 0;
 }
 
 .widget-title {
@@ -307,21 +337,21 @@ span.edit-link,
 	padding-right: 20px !important;
 }
 
-.widget-area ul { 
-	margin-right: 0; 
+.widget-area ul {
+	margin-right: 0;
 }
 
 .widget-area ul ul {
 	margin-right: 1.3em;
-	margin-left: 0; 
+	margin-left: 0;
 }
-	
-#wp-calendar caption { 
+
+#wp-calendar caption {
 	text-align: right;
 }
 
-#wp-calendar tfoot #next { 
-	text-align: left; 
+#wp-calendar tfoot #next {
+	text-align: left;
 }
 
 /* Main sidebars */
@@ -329,16 +359,16 @@ span.edit-link,
 	margin-right: 0;
 	padding: 0 0 0 20px;
 }
-	
+
 #main .widget-area ul ul {
 	margin-right: 1.3em;
-	margin-left: 0; 
+	margin-left: 0;
 }
 
 /* =Footer
 -------------------------------------------------------------- */
-#site-generator { 
-	font-style: normal; 
+#site-generator {
+	font-style: normal;
 }
 
 #site-generator a {
@@ -346,34 +376,34 @@ span.edit-link,
 	padding-right: 20px;
 	padding-left: 0; }
 
-#header-container > div#sheader { 
-	left: 0; 
+#header-container > div#sheader {
+	left: 0;
 	right: auto; }
-	
-.theme-default .nivo-controlNav:before, 
-.theme-default .nivo-controlNav:after { 
+
+.theme-default .nivo-controlNav:before,
+.theme-default .nivo-controlNav:after {
 	display: block; }
-	
-.columnmore { 
-	float: left; 
-	left: -10px; 
+
+.columnmore {
+	float: left;
+	left: -10px;
 	right: inherit; }
-	
-.reply a { 
-	text-align:left; 
+
+.reply a {
+	text-align:left;
 }
 
 .commentlist .avatar,
 .avatar-container,
-.crycon-replies { 
+.crycon-replies {
 	float: right; }
-	
-.commentlist .children { 
-	margin-left: 0; 
+
+.commentlist .children {
+	margin-left: 0;
 	margin-right: 20px; }
-	
-.crycon-angle-right:before { 
-	content: '\e833'; 
+
+.crycon-angle-right:before {
+	content: '\e833';
 }
 
 #toTop {
@@ -381,22 +411,22 @@ span.edit-link,
 	-webkit-border-radius: 4px 0 0 4px;
 	border-radius:  4px 0 0 4px;
 }
-	
-#nav-toggle { 
+
+#nav-toggle {
 	text-align: right !important;
 }
 
-#container.two-columns-right #secondary { 
+#container.two-columns-right #secondary {
 	float: left !important;
 }
 
 #container.two-columns-right #content {
-	float: right !important; 
+	float: right !important;
 }
-	
+
 /* =Magazine Layout
 -------------------------------------------------------------- */
-.magazine-layout #content article.post, 
+.magazine-layout #content article.post,
 .magazine-layout.search #content article {
     float: right;
     margin-right: 0;
@@ -407,9 +437,9 @@ span.edit-link,
 
 /* mobile menu sub-sub items fix */
 @media screen and (max-width: 640px) {
-	body #access > .menu ul ul ul { 
-		right: 0; 
-		left: initial; 
+	body #access > .menu ul ul ul {
+		right: 0;
+		left: initial;
 	}
 }
 

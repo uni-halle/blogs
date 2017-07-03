@@ -44,8 +44,8 @@ function tempera_body_classes($classes) {
 add_filter('body_class','tempera_body_classes');
 
 function tempera_custom_styles() {
-	$temperas= tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
+	$temperas = tempera_get_theme_options();
+	extract ($temperas);
 	$totalwidth= $tempera_sidewidth + $tempera_sidebar;
 	$contentSize = $tempera_sidewidth;
 	$sidebarSize= $tempera_sidebar;
@@ -120,15 +120,16 @@ a:hover,.entry-meta span a:hover, .comments-link a:hover { color: <?php echo $te
 #site-description { color:<?php echo $tempera_descriptioncolor; ?>; <?php if(cryout_hex2rgb($tempera_descriptionbg)): ?>background-color: rgba(<?php echo cryout_hex2rgb($tempera_descriptionbg); ?>,0.3); padding-left: 6px; <?php endif; ?>}
 
 .socials a { background-color: <?php echo $tempera_socialcolorbg; ?>; }
-.socials-hover { background-color: <?php echo $tempera_socialcolorbghover; ?>; }
+.socials .socials-hover { background-color: <?php echo $tempera_socialcolorbghover; ?>; }
 /* Main menu top level */
-#access a, #nav-toggle span { color: <?php echo $tempera_menucolortxtdefault; ?>; }
+#access a, #nav-toggle span, li.menu-main-search .searchform input[type="search"] { color: <?php echo $tempera_menucolortxtdefault; ?>; }
+li.menu-main-search .searchform input[type="search"] { background-color: <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>; border-left-color: <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>; }
 #access, #nav-toggle {background-color: <?php echo $tempera_menucolorbgdefault; ?>; }
 #access > .menu > ul > li > a > span { border-color: <?php echo cryout_hexadder($tempera_menucolorbgdefault,'-30');?>;
 -webkit-box-shadow: 1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>;
 box-shadow: 1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>; }
-.rtl #access > .menu > ul > li > a > span { -webkit-box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>;
-box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>; }
+/*.rtl #access > .menu > ul > li > a > span { -webkit-box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>;
+box-shadow: -1px 0 0 <?php echo cryout_hexadder($tempera_menucolorbgdefault,'24');?>; } */
 #access a:hover {background-color: <?php echo cryout_hexadder($tempera_menucolorbgdefault,'13');?>; }
 #access ul li.current_page_item > a, #access ul li.current-menu-item > a,
 #access ul li.current_page_ancestor > a, #access ul li.current-menu-ancestor > a {
@@ -335,45 +336,111 @@ endfor; ?>
 
 // Tempera function for inserting the Custom CSS into the header
 function tempera_customcss() {
-	$temperas= tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
-	if ($tempera_customcss != "") {
-		echo '<style type="text/css">'.htmlspecialchars_decode($tempera_customcss, ENT_QUOTES).'</style>';
+	$temperas = tempera_get_theme_options();
+	if ($temperas['tempera_customcss'] != "") {
+		echo '<style type="text/css">' . htmlspecialchars_decode( $temperas['tempera_customcss'], ENT_QUOTES) . '</style>';
 	}
 } // tempera_customcss()
 
 // Tempera function for inseting the Custom JS into the header
 function tempera_customjs() {
-	$temperas= tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value; }
-	echo '<script type="text/javascript">';
-	echo 'var cryout_global_content_width = '.$tempera_sidewidth.';';
-	echo 'var cryout_toTop_offset = '.($tempera_sidewidth+$tempera_sidebar).';' ;
-	if (is_rtl())  echo 'var cryout_toTop_offset =  '.($tempera_sidewidth+$tempera_sidebar).';';
-	if ($tempera_customjs != "") {
-		echo PHP_EOL.htmlspecialchars_decode($tempera_customjs, ENT_QUOTES);
-	}
-	echo '</script>';
+	$temperas = tempera_get_theme_options(); ?>
+	<script type="text/javascript">
+	var cryout_global_content_width = <?php echo $temperas['tempera_sidewidth'] ?>;
+	var cryout_toTop_offset = <?php echo ($temperas['tempera_sidewidth']+$temperas['tempera_sidebar']) ?>;
+	<?php if (is_rtl()) { ?>var cryout_toTop_offset = <?php echo ($temperas['tempera_sidewidth']+$temperas['tempera_sidebar']) ?>;<?php } ?>
+	<?php if ($temperas['tempera_customjs'] != "") { ?>
+		<?php echo htmlspecialchars_decode( $temperas['tempera_customjs'], ENT_QUOTES ); ?>
+	<?php } ?>
+	</script> <?php
 } // tempera_customjs()
 
 // tempera function for inserting slider on the presentation page
 function tempera_pp_slider() {
-	$temperas= tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value; } ?>
+	$temperas = tempera_get_theme_options(); ?>
 	<script type="text/javascript">
 	jQuery(document).ready(function() {
 		jQuery('#slider').nivoSlider({
-			effect: '<?php  echo esc_html($tempera_fpslideranim); ?>',
-			animSpeed: <?php echo esc_html($tempera_fpslidertime); ?>,
-			<?php if($tempera_fpsliderarrows=="Hidden"): ?>directionNav: false,<?php endif;
-			if($tempera_fpsliderarrows=="Always Visible"): ?>directionNavHide: false,<?php endif; ?>
+			effect: '<?php  echo esc_html($temperas['tempera_fpslideranim']); ?>',
+			animSpeed: <?php echo esc_html($temperas['tempera_fpslidertime']); ?>,
+			<?php if ($temperas['tempera_fpsliderarrows']=="Hidden"): ?>directionNav: false,<?php endif;
+			if ($temperas['tempera_fpsliderarrows']=="Always Visible"): ?>directionNavHide: false,<?php endif; ?>
 			//controlNavThumbs: true,
-			pauseTime: <?php echo esc_html($tempera_fpsliderpause); ?>
+			pauseTime: <?php echo esc_html($temperas['tempera_fpsliderpause']); ?>
 		});
 	});
 	</script>
 <?php
-}
+} // tempera_pp_slider()
 
-////////// FIN //////////
+/*
+ * Dynamic styles for the admin MCE Editor
+ */
+function tempera_editor_styles() {
+	header( 'Content-type: text/css' );
+	$options = tempera_get_theme_options();
+	extract($options);
+
+	$content_body = floor( (int) $tempera_sidewidth - 40 - (int) $tempera_contentpadding * 2 );
+
+	$tempera_googlefont = str_replace('+',' ',preg_replace('/[:&].*/','',$tempera_googlefont));
+	$tempera_headingsgooglefont = str_replace('+',' ',preg_replace('/[:&].*/','',$tempera_headingsgooglefont));
+	$tempera_fontfamily = cryout_fontname_cleanup($tempera_fontfamily);
+	$tempera_headingsfont = cryout_fontname_cleanup($tempera_headingsfont);
+
+	ob_start();
 ?>
+body.mce-content-body {
+	max-width: <?php echo esc_html( $content_body ); ?>px;
+	font-family: <?php echo ((!$tempera_googlefont)?$tempera_fontfamily:"\"$tempera_googlefont\""); ?>;
+	font-size:<?php echo $tempera_fontsize ?>;
+	line-height:<?php echo (float) $tempera_lineheight; ?>;
+	color: <?php echo $tempera_contentcolortxt; ?>;
+	background-color: <?php echo $tempera_contentcolorbg; ?>; }
+body.mce-content-body * {
+	color: <?php echo $tempera_contentcolortxt; ?>; }
+body.mce-content-body p, body.mce-content-body ul, body.mce-content-body ol, body.mce-content-body select, 
+body.mce-content-body input, body.mce-content-body textarea, ody.mce-content-body input, ody.mce-content-body label {
+	font-family: <?php echo ((!$tempera_googlefont)?$tempera_fontfamily:"\"$tempera_googlefont\""); ?>;
+	font-size:<?php echo $tempera_fontsize ?>; }
+<?php $font_root = 2.375; for ($i=1;$i<=6;$i++) { ?>
+.mce-content-body h<?php echo $i ?> { 
+	font-size: <?php echo round(($font_root-($i*0.27))*(preg_replace("/[^\d]/","",$tempera_headingsfontsize)/100),4); ?>em; } 
+<?php } ?>
+.mce-content-body h1, .mce-content-body h2, .mce-content-body h3, .mce-content-body h4, .mce-content-body h5, .mce-content-body h6 {
+	font-family: <?php echo ((!$tempera_googlefonttitle)?(($tempera_fonttitle == 'General Font')?'inherit':"\"$tempera_fonttitle\""):"\"$tempera_googlefonttitle\""); ?>;
+	color: <?php echo $tempera_contentcolortxtheadings ?>; }
+	
+.mce-content-body pre, .mce-content-body code, .mce-content-body blockquote {
+	max-width: <?php echo esc_html( $content_body ) ?>px; 
+	color: <?php echo $tempera_contentcolortxt; ?>; }
+.mce-content-bodyhr { background-color: <?php echo $tempera_accentcolord; ?>; }
+.mce-content-body input, .mce-content-body select .mce-content-body textarea {
+	background-color: <?php echo $tempera_accentcolore; ?>;
+    border-color: <?php echo $tempera_accentcolord; ?> <?php echo $tempera_accentcolorc; ?> <?php echo $tempera_accentcolorc; ?> <?php echo $tempera_accentcolord; ?>;
+	color: <?php echo $tempera_contentcolortxt; ?>; }
+.mce-content-body input[type="submit"], .mce-content-body input[type="reset"] {
+	color: <?php echo $tempera_contentcolorbg; ?>;
+	background-color: <?php echo $tempera_accentcolora; ?>;
+	border-color: <?php echo $tempera_accentcolord; ?>; }
+.mce-content-body pre {
+	background: transparent;
+	border-color: <?php echo $tempera_accentcolord; ?>;
+	border-bottom-color:<?php echo $tempera_accentcolora ;?>;}
+.mce-content-body code { background-color:<?php echo $tempera_accentcolore; ?>;}
+.mce-content-body blockquote {
+	border-color: <?php echo $tempera_accentcolorc; ?>; }
+.mce-content-body abbr, .mce-content-body acronym { border-color: <?php echo $tempera_contentcolortxt; ?>; }
+
+.mce-content-body a 		{ color: <?php echo esc_html( $tempera_linkcolortext ); ?>; }
+.mce-content-body a:hover	{ color: <?php echo esc_html( $tempera_linkcolorhover ); ?>; }
+
+.mce-content-body p, .mce-content-body ul, .mce-content-body ol, .mce-content-body dd,
+.mce-content-body pre, .mce-content-body hr { margin-bottom: <?php echo esc_html( $tempera_paragraphspace ) ?>; }
+.mce-content-body p { text-indent: <?php echo esc_html( $tempera_parindent ) ?>;}
+
+<?php // end </style>
+	echo apply_filters( 'tempera_editor_styles', ob_get_clean() );
+} // tempera_editor_styles()
+
+// FIN

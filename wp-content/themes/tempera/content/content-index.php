@@ -7,8 +7,6 @@
  * @since Tempera 1.1
  */
 
-$options = tempera_get_theme_options();
-foreach ($options as $key => $value) { ${"$key"} = $value; } 
 ?>
 
 		<section id="container" class="<?php echo tempera_get_layout_class(); ?>">
@@ -26,7 +24,7 @@ foreach ($options as $key => $value) { ${"$key"} = $value; }
 
 				endwhile;
 
-				if($tempera_pagination=="Enable") tempera_pagination(); else tempera_content_nav( 'nav-below' );
+				if ( $temperas['tempera_pagination']=="Enable" ) tempera_pagination(); else tempera_content_nav( 'nav-below' );
 
 			else : ?>
 

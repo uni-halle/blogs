@@ -6,9 +6,7 @@
  * @subpackage Tempera
  * @since Tempera 1.1
  */
-
 $temperas = tempera_get_theme_options();
-foreach ($temperas as $key => $value) { ${"$key"} = $value; } 
 ?>
 
 		<section id="container" class="one-column <?php //echo tempera_get_layout_class(); ?>">
@@ -29,7 +27,7 @@ foreach ($temperas as $key => $value) { ${"$key"} = $value; }
 
 				endwhile;
 
-				if($tempera_pagination=="Enable") tempera_pagination($the_query->max_num_pages); else tempera_content_nav( 'nav-below' );
+				if($temperas['tempera_pagination']=="Enable") tempera_pagination($the_query->max_num_pages); else tempera_content_nav( 'nav-below' );
 
 			else : ?>
 

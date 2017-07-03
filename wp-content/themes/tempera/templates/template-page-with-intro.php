@@ -40,8 +40,7 @@ Template Name: Category page with intro
 		global $more; $more=0; // more gets lost inside page templates
 		get_template_part( 'content/content', get_post_format() );
 	endwhile;
-	if($tempera_pagination=="Enable") tempera_pagination($the_query->max_num_pages); else tempera_content_nav( 'nav-below' );
-	?>
+	if ( $temperas['tempera_pagination']=="Enable" ) tempera_pagination($the_query->max_num_pages); else tempera_content_nav( 'nav-below' ); ?>
 
 	<?php cryout_after_content_hook(); ?>
 	</div><!-- #content -->

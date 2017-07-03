@@ -16,7 +16,7 @@ get_header(); ?>
 			<?php if ( have_posts() ) : ?>
 
 				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'tempera' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-	<div class="contentsearch"><?php get_search_form(); ?></div>
+				<div class="contentsearch"><?php get_search_form(); ?></div>
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
@@ -29,7 +29,7 @@ get_header(); ?>
 				?>
 										<?php endwhile; ?>
 
-				<?php if($tempera_pagination=="Enable") tempera_pagination(); else tempera_content_nav( 'nav-below' ); ?>
+				<?php if ( $temperas['tempera_pagination']=="Enable" ) tempera_pagination(); else tempera_content_nav( 'nav-below' ); ?>
 
 			<?php else : ?>
 

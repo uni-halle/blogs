@@ -4,8 +4,8 @@ Copyright 2013-17 Cryout Creations
 
 Author: Cryout Creations
 Requires at least: 4.0
-Tested up to: 4.7.3
-Stable tag: 1.5.2
+Tested up to: 4.8.0
+Stable tag: 1.6.1.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: https://www.cryoutcreations.eu/donate/
@@ -106,6 +106,44 @@ Spanish - Carlol, HacKan
 
 
 == Changelog ==
+
+= 1.6.1.1 = 
+* Added option to turn off the new TinyMCE editor styling
+* Extended the TinyMCE editor styling to be more exact
+
+= 1.6.1 =
+* Fixed 'read more' button visible on post-based slides since 1.6.0
+* Made socials styling more specific to avoid overlapping with plugins
+* Made 'sidebar empty' messages visible only to users with permissions to manage widgets
+* Fixed TinyMCE editor error on WordPress 4.8
+* Revamped TinyMCE editor styling to match the theme's appearance settings
+
+= 1.6.0 =
+* Added Github and TripAdvisor social icons
+* Added styling to disable Chrome's built-in blue border on focused form elements
+* Added explicit support for WooCommerce 3.0 new product gallery
+* Fixed logo getting cut off at the top on mobile devices
+* Improved options sanitization save procedure
+* Fixed some color options not being protexted to plugin interference
+* Fixed menu items displayed in wrong order on RTL
+* Fixed continue reading button missing on posts with manual excerpts on the Presentation Page
+* Fixed RTL style being enqueued too early
+* Fixed checkbox options cannot be disabled when they default to enabled
+* Fixed using HTML excerpt option disabling continue reading button
+* Deprecated HTML excerpt option and disabled it on new theme installs
+* Improved main menu search box appearance to better fit in
+* Improved formatting of and cleaned up the sanitization code
+* Moved main presentation page code to function
+* Removed the use of individual global options variables and adjusted all functions to use the global options array instead
+* Renamed global $fonts and $socialNetworks variables to use 'tempera_' prefix
+* Cleaned up theme-loop.php; renamed several functions for consistency:
+	tempera_custom_excerpt_more()   -> tempera_excerpt_morelink()
+	tempera_continue_reading_link() -> tempera_excerpt_continuereading_link()
+	tempera_auto_excerpt_more()     -> tempera_excerpt_dots()
+	tempera_trim_excerpt()          -> tempera_excerpt_html()
+	tempera_posted_on()             -> tempera_meta_before()
+	tempera_posted_after()          -> tempera_meta_after()
+	tempera_author_on()             -> tempera_meta_author()
 
 = 1.5.2 =
 * Fixed changing 'mobile' to 'temobile' class to improve plugin compatibility

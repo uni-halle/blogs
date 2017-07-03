@@ -25,7 +25,7 @@ get_header(); ?>
 					<h2 class="entry-title"><?php the_title(); ?></h2>
 
 					<div class="entry-meta">
-						<?php tempera_posted_on();
+						<?php tempera_meta_before();
 						echo "<span class=\"attach-size\">";
 							if ( wp_attachment_is_image() ) {
 								$metadata = wp_get_attachment_metadata();

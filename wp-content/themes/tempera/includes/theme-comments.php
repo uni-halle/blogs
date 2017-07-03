@@ -86,9 +86,8 @@ if ( ! function_exists( 'tempera_comments_on' ) ) :
  * Number of comments on loop post if comments are enabled.
  */
 function tempera_comments_on() {
-global $temperas;
-foreach ($temperas as $key => $value) { ${"$key"} = $value; }
-	if ( comments_open() && ! post_password_required() && $tempera_blog_show['comments'] && ! is_single()) :
+	global $temperas;
+	if ( comments_open() && ! post_password_required() && $temperas['tempera_blog_show']['comments'] && ! is_single()) :
         echo '<span class="comments-link">';
         comments_popup_link(
             '<i class="crycon-comments crycon-metas" title="' . __('Leave a comment', 'tempera') . '"></i><b>0</b>',

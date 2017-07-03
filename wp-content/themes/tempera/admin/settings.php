@@ -637,10 +637,10 @@ function cryout_setting_fronttext_fn() {
 //SELECT - Name: tempera_settings[fontfamily]
 function  cryout_setting_fontfamily_fn() {
 	global $temperas;
-	global $fonts;
+	global $tempera_fonts;
 	$sizes = array ("10px", "11px", "12px", "13px" , "14px" , "15px" , "16px", "17px", "18px", "19px", "20px");
 	cryout_proto_font(
-		$fonts,
+		$tempera_fonts,
 		$sizes,
 		$temperas['tempera_fontsize'],
 		$temperas['tempera_fontfamily'],
@@ -655,10 +655,10 @@ function  cryout_setting_fontfamily_fn() {
 //SELECT - Name: tempera_settings[fonttitle]
 function  cryout_setting_fonttitle_fn() {
 	global $temperas;
-	global $fonts;
+	global $tempera_fonts;
 	$sizes = array ( "14px" , "16px" , "18px" , "20px", "22px" , "24px" , "26px" , "28px" , "30px" , "32px" , "34px" , "36px", "38px" , "40px");
 	cryout_proto_font(
-		$fonts,
+		$tempera_fonts,
 		$sizes,
 		$temperas['tempera_headfontsize'],
 		$temperas['tempera_fonttitle'],
@@ -674,10 +674,10 @@ function  cryout_setting_fonttitle_fn() {
 //SELECT - Name: tempera_settings[fontside]
 function  cryout_setting_fontside_fn() {
 	global $temperas;
-	global $fonts;
+	global $tempera_fonts;
 	for ($i=14;$i<31;$i+=2): $sizes[] = "${i}px"; endfor;
 	cryout_proto_font(
-		$fonts,
+		$tempera_fonts,
 		$sizes,
 		$temperas['tempera_sidefontsize'],
 		$temperas['tempera_fontside'],
@@ -692,10 +692,10 @@ function  cryout_setting_fontside_fn() {
 
 function  cryout_setting_sitetitlefont_fn() {
 	global $temperas;
-	global $fonts;
+	global $tempera_fonts;
 	for ($i=30;$i<51;$i+=2): $sizes[] = "${i}px"; endfor;
 	cryout_proto_font(
-		$fonts,
+		$tempera_fonts,
 		$sizes,
 		$temperas['tempera_sitetitlesize'],
 		$temperas['tempera_sitetitlefont'],
@@ -710,10 +710,10 @@ function  cryout_setting_sitetitlefont_fn() {
 
 function  cryout_setting_menufont_fn() {
 	global $temperas;
-	global $fonts;
+	global $tempera_fonts;
 	$sizes = array ( "8px" , "9px" , "10px" , "11px", "12px" , "13px" , "14px" , "15px" , "16px" , "17px" , "18px", "19px", "20px");
 	cryout_proto_font(
-		$fonts,
+		$tempera_fonts,
 		$sizes,
 		$temperas['tempera_menufontsize'],
 		$temperas['tempera_menufont'],
@@ -730,11 +730,11 @@ function  cryout_setting_menufont_fn() {
 //SELECT - Name: tempera_settings[fontsubheader]
 function  cryout_setting_fontheadings_fn() {
 	global $temperas;
-	global $fonts;
+	global $tempera_fonts;
 	//$sizes = array ( "0.8em", "0.9em","1em","1.1em","1.2em","1.3em","1.4em","1.5em","1.6em","1.7em","1.8em","1.9em","2em");
 	$sizes = array("60%","70%","80%","90%","100%","110%","120%","130%","140%","150%");
 	cryout_proto_font(
-		$fonts,
+		$tempera_fonts,
 		$sizes,
 		$temperas['tempera_headingsfontsize'],
 		$temperas['tempera_headingsfont'],
@@ -1352,17 +1352,20 @@ function cryout_setting_excerptcont_fn() {
 function cryout_setting_excerpttags_fn() {
 	global $temperas;
 	$items = array ("Enable" , "Disable");
-	$itemsare = array( __("Enable","tempera"), __("Disable","tempera"));
-	echo "<select id='tempera_excerpttags' name='tempera_settings[tempera_excerpttags]'>";
-foreach($items as $id=>$item) {
-	echo "<option value='$item'";
-	selected($temperas['tempera_excerpttags'],$item);
-	echo ">$itemsare[$id]</option>";
-}
+	$itemsare = array( __("Enable *UNSUPPORTED*","tempera"), __("Disable","tempera"));
+	echo "<select id='tempera_excerpttags' name='tempera_settings[tempera_excerpttags]'";
+	if ($temperas['tempera_excerpttags'] != 'Enable') echo " disabled='disabled'"; 
+	echo ">";
+	foreach($items as $id=>$item) {
+		echo "<option value='$item'";
+		if ('Enable' == $item) echo " disabled='disabled'"; 
+		selected($temperas['tempera_excerpttags'],$item);
+		echo ">$itemsare[$id]</option>";
+	}
 	echo "</select>";
 	echo "<div><small>".__("By default WordPress excerpts remove all HTML tags (&lt;pre&gt;, &lt;a&gt;, &lt;b&gt and all others) and only clean text is left in the excerpt.
 Enabling this option allows HTML tags to remain in excerpts so all your default formating will be kept.<br /> <b>Just a warning: </b>If HTML tags are enabled, you have to make sure
-they are not left open. So if within your post you have an opened HTML tag but the except ends before that tag closes, the rest of the site will be contained in that HTML tag. -- Leave 'Disable' if unsure -- ","tempera")."</small></div>";
+they are not left open. So if within your post you have an opened HTML tag but the except ends before that tag closes, the rest of the site will be contained in that HTML tag. -- Leave 'Disable' if unsure -- ","tempera").'<br><strong><em style="color:#880000;">'.__('This option is deprecated and no longer supported since Tempera v1.6.0','tempera')."</strong></em></small></div>";
 }
 
 
@@ -1469,9 +1472,9 @@ function cryout_setting_social_master($i) {
 		'',__("You can change the background for your social colors from the colors settings section.",'tempera')
 		);
 	$j=$i+1;
-	global $temperas, $socialNetworks;
+	global $temperas, $tempera_socialNetworks;
 	echo "<select id='tempera_social$i' name='tempera_settings[tempera_social$i]'>";
-	foreach($socialNetworks as $item) {
+	foreach($tempera_socialNetworks as $item) {
 		echo "<option value='$item'";
 		selected($temperas['tempera_social'.$i],$item);
 		echo ">$item</option>";
@@ -1627,3 +1630,19 @@ function cryout_setting_fitvids_fn() {
 	echo "</select>";
 	echo "<div><small>".__("Disable to troubleshoot embedded video resize issues.","tempera")."</small></div>";
 }
+
+function cryout_setting_editorstyle_fn() {
+	global $temperas;
+	$items = array (1, 0);
+	$itemsare = array( __("Enable","tempera"), __("Disable","tempera"));
+	echo "<select id='tempera_editorstyle' name='tempera_settings[tempera_editorstyle]'>";
+	foreach($items as $id=>$item) {
+		echo "<option value='$item'";
+		selected($temperas['tempera_editorstyle'],$item);
+		echo ">$itemsare[$id]</option>";
+	}
+	echo "</select>";
+	echo "<div><small>".__("Disable to turn off the theme's styling in the Visual Editor.","tempera")."</small></div>";
+}
+
+// FIN

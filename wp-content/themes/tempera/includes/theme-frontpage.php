@@ -10,7 +10,7 @@
 
 function tempera_presentation_css() {
 	$temperas= tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value; }
+	extract($temperas);
 	ob_start();
 	echo '<style type="text/css">';
 	if ($tempera_fronthideheader) {?> #branding {display: none;} <?php }
@@ -70,4 +70,4 @@ function tempera_presentation_css() {
 	return $tempera_presentation_page_styling;
 } // tempera_presentation_css()
 
-?>
+// FIN

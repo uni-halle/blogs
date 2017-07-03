@@ -25,7 +25,7 @@ $the_query = new WP_Query( 'post_status=publish&orderby=date&order=desc&posts_pe
 
 				 endwhile; 
 
-				if($tempera_pagination=="Enable") tempera_pagination($the_query->max_num_pages); else tempera_content_nav( 'nav-below' );
+				if ( $temperas['tempera_pagination']=="Enable" ) tempera_pagination($the_query->max_num_pages); else tempera_content_nav( 'nav-below' );
 
 			 else : ?>
 

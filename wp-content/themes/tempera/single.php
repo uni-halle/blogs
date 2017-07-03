@@ -19,7 +19,7 @@ get_header();?>
 					<h1 class="entry-title"><?php the_title(); ?></h1>
 					<?php cryout_post_title_hook(); ?>
 					<div class="entry-meta">
-						<?php tempera_posted_on(); cryout_post_meta_hook(); ?>
+						<?php tempera_meta_before(); cryout_post_meta_hook(); ?>
 					</div><!-- .entry-meta -->
 
 					<div class="entry-content">

@@ -284,20 +284,6 @@ function cryout_maxvarcheck($themevarcount,$debug=false){
      return $return;
 } // cryout_maxvarcheck()
 
-// Synchronizing the tinymce width with the content width
-add_filter('tiny_mce_before_init', 'tempera_dynamic_editor_styles', 10);
-function tempera_dynamic_editor_styles($settings){
-    $settings['content_css'] .= ",".admin_url('admin-ajax.php') ."/?action=dynamic_styles";
-    return $settings;
-}
-
-// add wp_ajax callback
-add_action('wp_ajax_dynamic_styles', 'tempera_dynamic_styles_callback');
-function tempera_dynamic_styles_callback(){
-	global $temperas;
-    echo "html .mceContentBody , .mceContentBody img {max-width:".$temperas['tempera_sidewidth']."px;}";
-}
-
 function cryout_fetch_feed() {
 	$tempera_news = fetch_feed( array( 'http://www.cryoutcreations.eu/cat/wordpress-themes/tempera/feed/') );
 	$maxitems = 0;

@@ -36,24 +36,22 @@ add_action('wp_head','tempera_header_scripts',100);
 */
 function tempera_title_and_description() {
 	$temperas = tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
-	// Header styling and image loading
-	// Check if this is a post or page, if it has a thumbnail, and if it's a big one
 	global $post;
 
+	// Check if this is a post or page, if it has a thumbnail, and if it's a big one
 	if ( get_header_image() != '' ) { $himgsrc = get_header_image(); }
-	if ( is_singular() && has_post_thumbnail( $post->ID ) && $tempera_fheader == "Enable" &&
-		( $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'header' ) ) &&
-		$image[1] >= HEADER_IMAGE_WIDTH ) : $himgsrc= esc_url( $image[0] );
-	endif;
+	if ( is_singular() && has_post_thumbnail( $post->ID ) && 
+		($temperas['tempera_fheader'] == "Enable") &&
+		( $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'header' ) ) && 
+		$image[1] >= HEADER_IMAGE_WIDTH ) {
+			$himgsrc = esc_url( $image[0] );
+	};
 
+	if ( isset( $himgsrc ) && ( $himgsrc != '' ) ) { echo '<img id="bg_image" alt="" title="" src="' . esc_url( $himgsrc ) . '"  />'; } ?>
+	<div id="header-container">
+	<?php
 
-	if ( isset( $himgsrc ) && ( $himgsrc != '' ) ) : echo '<img id="bg_image" alt="" title="" src="' . esc_url( $himgsrc ) . '"  />';  endif;
-?>
-<div id="header-container">
-<?php
-
-	switch ($tempera_siteheader) {
+	switch ($temperas['tempera_siteheader']) {
 		case 'Site Title and Description':
 			echo '<div>';
 			$heading_tag = ( ( is_home() || is_front_page() ) && !is_page() ) ? 'h1' : 'div';
@@ -68,9 +66,9 @@ function tempera_title_and_description() {
 		break;
 
 		case 'Custom Logo' :
-			if (isset($tempera_logoupload) && ($tempera_logoupload != '')) :
+			if ( isset($temperas['tempera_logoupload']) && ($temperas['tempera_logoupload'] != '') ) :
 				echo '<div><a id="logo" href="' . esc_url( home_url( '/' ) ) . '" ><img title="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '" alt="' .
-                    esc_attr( get_bloginfo( 'name', 'display' ) ) . '" src="' . esc_url( $tempera_logoupload ) . '" /></a></div>';
+                    esc_attr( get_bloginfo( 'name', 'display' ) ) . '" src="' . esc_url( $temperas['tempera_logoupload'] ) . '" /></a></div>';
 			endif;
 		break;
 
@@ -83,7 +81,7 @@ function tempera_title_and_description() {
 add_action ( 'cryout_branding_hook', 'tempera_title_and_description' );
 
 
- /**
+/**
  * Add social icons in header / undermneu left / undermenu right / footer / left browser side / right browser side
  * Used in header.php and footer.php
 */
@@ -111,13 +109,13 @@ function tempera_srights_socials() {
 	tempera_set_social_icons('srights');
 }
 
-//Adding socials to the topbar
-if($tempera_socialsdisplay0) add_action('cryout_topbar_hook', 'tempera_header_socials',13);
+// Adding socials to the topbar
+if ( $temperas['tempera_socialsdisplay0'] ) add_action( 'cryout_topbar_hook', 'tempera_header_socials', 13 );
 // Adding socials to the footer
-if($tempera_socialsdisplay3) add_action('cryout_footer_hook', 'tempera_footer_socials',13);
-// Adding socials to the left and right browser sides
-if($tempera_socialsdisplay4) add_action('cryout_wrapper_hook', 'tempera_slefts_socials',13);
-if($tempera_socialsdisplay5) add_action('cryout_wrapper_hook', 'tempera_srights_socials',13);
+if ( $temperas['tempera_socialsdisplay3'] ) add_action( 'cryout_footer_hook', 'tempera_footer_socials', 13 );
+// Adding socials to the left and right sides
+if ( $temperas['tempera_socialsdisplay4'] ) add_action( 'cryout_wrapper_hook', 'tempera_slefts_socials', 13 );
+if ( $temperas['tempera_socialsdisplay5'] ) add_action( 'cryout_wrapper_hook', 'tempera_srights_socials', 13 );
 
 
 if ( ! function_exists( 'tempera_set_social_icons' ) ) :
@@ -127,9 +125,8 @@ if ( ! function_exists( 'tempera_set_social_icons' ) ) :
 function tempera_set_social_icons($idd) {
 	$cryout_special_keys = array('Mail', 'Skype', 'Phone');
 	global $temperas;
-	foreach ($temperas as $key => $value) {
-		${"$key"} = $value ;
-	}
+	extract($temperas);
+	
 	echo '<div class="socials" id="'.$idd.'">';
 	for ($i = 1; $i <= 9; $i+=2) {
 		$j = $i + 1;
@@ -161,7 +158,7 @@ function tempera_back_top() {
 } // tempera_back_top()
 endif;
 
-if ($tempera_backtop=="Enable") add_action ('cryout_main_hook','tempera_back_top');
+if ( $temperas['tempera_backtop']=="Enable" ) add_action( 'cryout_main_hook', 'tempera_back_top' );
 
 
  /**
@@ -171,7 +168,6 @@ if ( ! function_exists( 'tempera_breadcrumbs' ) ) :
 function tempera_breadcrumbs() {
 
 	$temperas = tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
 
 	$showOnHome = 0; 									// 1 - show breadcrumbs on the homepage, 0 - don't show
 	$separator = '<i class="crycon-angle-right"></i>'; 	// separator between crumbs
@@ -182,8 +178,8 @@ function tempera_breadcrumbs() {
 
 	global $post;
 	$homeLink = esc_url( home_url() );
-	if (is_front_page() && $tempera_frontpage=="Enable") { return; }
-	if (is_home() && $tempera_frontpage!="Enable") {
+	if ( is_front_page() && ($temperas['tempera_frontpage']=="Enable") ) { return; }
+	if ( is_home() && ($temperas['tempera_frontpage']!="Enable") ) {
 
 		if ($showOnHome == 1) echo '<div class="breadcrumbs"><a href="' . $homeLink . '"><i class="crycon-homebread"></i>' .  __('Home Page','tempera') . '</a></div>';
 
@@ -259,7 +255,6 @@ function tempera_breadcrumbs() {
 		} elseif ( is_tag() ) {
 			// tag archive
 			echo $before . __('Posts tagged','tempera').' "' . single_tag_title('', false) . '"' . $after;
-
 		} elseif ( is_author() ) {
 			// author archive
 			global $author;
@@ -284,62 +279,48 @@ function tempera_breadcrumbs() {
 
 	}
 
-}// breadcrumbs
+} // breadcrumbs
 endif;
 
-if($tempera_breadcrumbs=="Enable")  add_action ('cryout_before_content_hook','tempera_breadcrumbs');
+if ($temperas['tempera_breadcrumbs']=="Enable") add_action( 'cryout_before_content_hook', 'tempera_breadcrumbs' );
 
 /* Add search box to menus */
-if ( !empty($tempera_searchbar['top']) ) add_filter('wp_nav_menu_items','cryout_search_topmenu', 10, 2);
-if ( !empty($tempera_searchbar['main']) ) add_filter('wp_nav_menu_items','cryout_search_primarymenu', 10, 2);
-if ( !empty($tempera_searchbar['footer']) ) add_filter('wp_nav_menu_items','cryout_search_footermenu', 10, 2);
+if ( !empty($temperas['tempera_searchbar']['top']) ) add_filter('wp_nav_menu_items','cryout_search_topmenu', 10, 2);
+if ( !empty($temperas['tempera_searchbar']['main']) ) add_filter('wp_nav_menu_items','cryout_search_primarymenu', 10, 2);
+if ( !empty($temperas['tempera_searchbar']['footer']) ) add_filter('wp_nav_menu_items','cryout_search_footermenu', 10, 2);
 
 function cryout_search_topmenu( $items, $args ) {
-	$temperas = tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
-
 	if( $args->theme_location == 'top') {
-		$items = $items."<li class='menu-header-search'>
-							<i class='search-icon'></i> "
-							. get_search_form( FALSE ) .
-						"</li>";
+		$items = $items . "<li class='menu-header-search'> <i class='search-icon'></i> " . get_search_form( FALSE ) . "</li>";
 	}
-   return $items;
+	return $items;
 }
 
 function cryout_search_primarymenu( $items, $args ) {
-	$temperas = tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
-
 	if( $args->theme_location == 'primary') {
 		$items = $items . "<li class='menu-main-search'> " . get_search_form( FALSE ) . " </li>";
 	}
-   return $items;
+	return $items;
 }
 
 function cryout_search_footermenu( $items, $args ) {
-	$temperas = tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
-
 	if( $args->theme_location == 'footer') {
-		$items = $items."<li class='menu-footer-search'>" . get_search_form( FALSE ) . "</li>";
+		$items = $items . "<li class='menu-footer-search'> " . get_search_form( FALSE ) . " </li>";
 	}
-   return $items;
+	return $items;
 }
-
 
 if ( ! function_exists( 'tempera_pagination' ) ) :
 /**
  * Creates pagination for blog pages.
  */
-function tempera_pagination($pages = '', $range = 2, $prefix ='')
-{
+function tempera_pagination( $pages = '', $range = 2, $prefix ='' ) {
      $showitems = ($range * 2)+1;
 
      global $paged;
      if(empty($paged)) $paged = 1;
 
-     if($pages == '')
+     if ($pages == '')
      {
          global $wp_query;
          $pages = $wp_query->max_num_pages;
@@ -349,7 +330,7 @@ function tempera_pagination($pages = '', $range = 2, $prefix ='')
          }
      }
 
-     if(1 != $pages)
+     if (1 != $pages)
      {
 		echo "<div class='pagination_container'><nav class='pagination'>";
          if ($prefix) {echo "<span id='paginationPrefix'>$prefix </span>";}
@@ -372,22 +353,20 @@ function tempera_pagination($pages = '', $range = 2, $prefix ='')
 endif;
 
 function tempera_nextpage_links($defaults) {
-$args = array(
-'link_before'      => '<em>',
-'link_after'       => '</em>',
-);
-$r = wp_parse_args($args, $defaults);
-return $r;
+	$args = array(
+		'link_before'	=> '<em>',
+		'link_after'	=> '</em>',
+	);
+	$r = wp_parse_args($args, $defaults);
+	return $r;
 }
-add_filter('wp_link_pages_args','tempera_nextpage_links');
+add_filter( 'wp_link_pages_args', 'tempera_nextpage_links' );
 
 
 /**
  * Site info
  */
-function tempera_site_info() {
-	$temperas = tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }	?>
+function tempera_site_info() { ?>
 	<span style="display:block;float:right;text-align:right;padding:0 20px 5px;font-size:.9em;">
 	<?php _e('Powered by','tempera')?> <a target="_blank" href="<?php echo 'http://www.cryoutcreations.eu';?>" title="<?php echo 'Tempera Theme by '.
 			'Cryout Creations';?>"><?php echo 'Tempera' ?></a> &amp; <a target="_blank" href="<?php echo 'http://wordpress.org/'; ?>"
@@ -396,24 +375,22 @@ function tempera_site_info() {
 	</span><!-- #site-info -->
 	<?php
 } // tempera_site_info()
-
-add_action('cryout_footer_hook', 'tempera_site_info',99);
+add_action( 'cryout_footer_hook', 'tempera_site_info', 99 );
 
 
 /**
  * Copyright text
  */
 function tempera_copyright() {
-	$temperas = tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
-	echo '<div id="site-copyright">' .  wp_kses_post( $tempera_copyright ) . '</div>';
+	global $temperas;
+	echo '<div id="site-copyright">' . wp_kses_post( $temperas['tempera_copyright'] ) . '</div>';
 } // tempera_copyright()
 
 
-if ($tempera_copyright != '') add_action('cryout_footer_hook','tempera_copyright',11);
+if ( $temperas['tempera_copyright'] != '' ) add_action( 'cryout_footer_hook', 'tempera_copyright', 11 );
 
-add_action('wp_ajax_nopriv_do_ajax', 'tempera_ajax_function');
-add_action('wp_ajax_do_ajax', 'tempera_ajax_function');
+add_action( 'wp_ajax_nopriv_do_ajax', 'tempera_ajax_function' );
+add_action( 'wp_ajax_do_ajax', 'tempera_ajax_function' );
 
 if ( ! function_exists( 'tempera_ajax_function' ) ) :
 function tempera_ajax_function(){
@@ -424,7 +401,7 @@ function tempera_ajax_function(){
 
 	switch($_REQUEST['fn']){
 		case 'get_latest_posts':
-			$output = tempera_ajax_get_latest_posts($_REQUEST['count'],$_REQUEST['categName']);
+			$output = tempera_ajax_get_latest_posts( $_REQUEST['count'], $_REQUEST['categName'] );
 		break;
 		default:
 			$output = 'No function specified, check your jQuery.ajax() call';
@@ -435,15 +412,15 @@ function tempera_ajax_function(){
 	// Now, convert $output to JSON and echo it to the browser
 	// That way, we can recapture it with jQuery and run our success function
 
-	$output=json_encode($output);
-	if(is_array($output)) { print_r($output); }
-	                 else { echo $output; }
+	$output = json_encode($output);
+	if ( is_array($output) ) { print_r($output); }
+						else { echo $output; }
 	die;
 } // tempera_ajax_function()
 endif;
 
 if ( ! function_exists( 'tempera_ajax_get_latest_posts' ) ) :
-function tempera_ajax_get_latest_posts($count,$categName){
+function tempera_ajax_get_latest_posts( $count, $categName ){
 	$testVar='';
 	// The Query
 	$the_query = new WP_Query( 'category_name=' . $categName);
@@ -459,9 +436,8 @@ endif;
 
 if ( ! function_exists( 'tempera_get_sidebar' ) ) :
 function tempera_get_sidebar() {
-	$temperas = tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
-	switch($tempera_side) {
+	global $temperas;
+	switch ($temperas['tempera_side']) {
 
 		case '2cSl':
 			get_sidebar('left');
@@ -476,17 +452,14 @@ function tempera_get_sidebar() {
 			get_sidebar('right');
 		break;
 
-		default:
-		break;
 	}
 } // tempera_get_sidebar()
 endif;
 
 if ( ! function_exists( 'tempera_get_layout_class' ) ) :
 function tempera_get_layout_class() {
-	$temperas = tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value ; }
-	switch($tempera_side) {
+	global $temperas;
+	switch ($temperas['tempera_side']) {
 		case '2cSl': return "two-columns-left"; break;
 		case '2cSr': return "two-columns-right"; break;
 		case '3cSl': return "three-columns-left"; break;
@@ -540,7 +513,7 @@ function tempera_get_gallery_images() {
 * @return array list of classes.
 */
 function tempera_mobile_body_class($classes){
-	$temperas = tempera_get_theme_options();
+	global $temperas;
 	if ($temperas['tempera_mobile']=="Enable"):
 		$browser = (isset($_SERVER['HTTP_USER_AGENT'])?$_SERVER['HTTP_USER_AGENT']:'');
 		$keys = 'mobile|android|mobi|tablet|ipad|opera mini|series 60|s60|blackberry';
@@ -548,8 +521,8 @@ function tempera_mobile_body_class($classes){
 	endif;
 	return $classes;
 }
-
 add_filter('body_class', 'tempera_mobile_body_class');
+
 
 ////////// HELPER FUNCTIONS //////////
 
@@ -623,3 +596,5 @@ function cryout_hexadder($hex,$inc) {
    else: return "";  // input string is not a valid hex color code
    endif;
 } // cryout_cryout_hex2rgb()
+
+// FIN

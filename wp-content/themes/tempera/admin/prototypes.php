@@ -81,10 +81,6 @@ function cryout_proto_field($settings,$type,$name,$values,$labels='',$cls='',$ec
 	if ($echo): echo $data; else: return $data;  endif;
 } //cryout_proto_field()
 
-function cryout_proto_css(){
-
-} //cryout_proto_css()
-
 function cryout_color_sanitize( $color ) {
     if ( '' === $color ) return '';
 	$color = trim(wp_kses_data($color));
@@ -95,5 +91,17 @@ function cryout_color_sanitize( $color ) {
 	return '';
 } // cryout_color_sanitize()
 
+function cryout_proto_arrsan($data){
+	$filtered = array();
+	foreach ($data as $key => $value):
+		if (is_array($value)):
+			$value = cryout_proto_arrsan($value);
+		endif;
+		if (is_numeric($value)): $filtered[esc_attr($key)] = esc_attr($value);
+		else: $filtered[esc_attr($key)] = wp_kses_data($value);
+		endif;
+	endforeach;
+	return $filtered;
+} //cryout_proto_arrsan()
 
 // FIN

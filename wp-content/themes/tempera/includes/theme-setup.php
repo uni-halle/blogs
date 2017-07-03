@@ -12,7 +12,7 @@ if ( is_admin() && isset($_GET['activated'] ) && $pagenow == "themes.php" ) {
 	wp_redirect( 'themes.php?page=tempera-page' );
 }*/
 
- $tempera_totalSize = $tempera_sidebar + $tempera_sidewidth;
+ $temperas['tempera_totalSize'] = $temperas['tempera_sidebar'] + $temperas['tempera_sidewidth'];
 
  /**
 
@@ -29,7 +29,7 @@ if ( is_admin() && isset($_GET['activated'] ) && $pagenow == "themes.php" ) {
  * is designed for, generally via the style.css stylesheet.
  */
 if ( ! isset( $content_width ) )
-	$content_width = $tempera_sidewidth;
+	$content_width = $temperas['tempera_sidewidth'];
 
 /** Tell WordPress to run tempera_setup() when the 'after_setup_theme' hook is run. */
 add_action( 'after_setup_theme', 'tempera_setup' );
@@ -44,17 +44,6 @@ if ( ! function_exists( 'tempera_setup' ) ):
  *
  * To override tempera_setup() in a child theme, add your own tempera_setup to your child theme's
  * functions.php file.
- *
- * @uses add_theme_support() To add support for post thumbnails and automatic feed links.
- * @uses register_nav_menus() To add support for navigation menus.
- * @uses add_custom_background() To add support for a custom background.
- * @uses add_editor_style() To style the visual editor.
- * @uses load_theme_textdomain() For translation/localization support.
- * @uses add_custom_image_header() To add support for a custom header.
- * @uses register_default_headers() To register the default custom header images provided with the theme.
- * @uses set_post_thumbnail_size() To set a custom post thumbnail size.
- *
- * @since tempera 0.5
  */
 function tempera_setup() {
 
@@ -70,6 +59,10 @@ function tempera_setup() {
 
 	// WooCommerce compatibility tag
 	add_theme_support( 'woocommerce' );
+	// WooCommerce 3.0 gallery support 
+	add_theme_support( 'wc-product-gallery-zoom' );
+	add_theme_support( 'wc-product-gallery-lightbox' );
+	add_theme_support( 'wc-product-gallery-slider' );
 
 	// Add default posts and comments RSS feed links to head
 	add_theme_support( 'automatic-feed-links' );
@@ -96,26 +89,19 @@ function tempera_setup() {
 	// This theme allows users to set a custom background
 	add_theme_support( 'custom-background' );
 
-	// We'll be using post thumbnails for custom header images on posts and pages.
-	// We want them to be the same size as the header.
-	// Larger images will be auto-cropped to fit, smaller ones will be ignored. See header.php.
-	global $tempera_hheight;
-	$tempera_hheight=(int)$tempera_hheight;
-	global $tempera_totalSize;
-	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'tempera_header_image_width', $tempera_totalSize ) );
-	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'tempera_header_image_height', $tempera_hheight) );
-	//set_post_thumbnail_size( HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
-	add_image_size('header',HEADER_IMAGE_WIDTH,HEADER_IMAGE_HEIGHT,true);	
+	global $temperas;
+	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'tempera_header_image_width', $temperas['tempera_totalSize'] ) );
+	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'tempera_header_image_height', (int)$temperas['tempera_hheight']) );
+	
+	add_image_size( 'header', HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );	
 
-	global $tempera_fpsliderwidth; global $tempera_fpsliderheight;
-	global $tempera_colimageheight; global $tempera_colimagewidth;
-	add_image_size('slider',$tempera_fpsliderwidth,$tempera_fpsliderheight,true);
-	add_image_size('columns',$tempera_colimagewidth,$tempera_colimageheight,true);
+	add_image_size( 'slider', $temperas['tempera_fpsliderwidth'], $temperas['tempera_fpsliderheight'], true );
+	add_image_size( 'columns', $temperas['tempera_colimagewidth'], $temperas['tempera_colimageheight'], true );
+	
 	// Add a way for the custom header to be styled in the admin panel that controls
 	// custom headers. See tempera_admin_header_style(), below.
 	define( 'NO_HEADER_TEXT', true );
 	add_theme_support( 'custom-header' );
-	// ... and thus ends the changeable header business.
 
 	// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
 	register_default_headers( array(
@@ -210,30 +196,30 @@ add_filter( 'wp_page_menu_args', 'tempera_page_menu_args' );
 
 // TOP MENU
 function tempera_top_menu() {
- if ( has_nav_menu( 'top' ) ) 
- wp_nav_menu( array( 'container' => 'nav', 'container_class' => 'topmenu', 'theme_location' => 'top', 'depth' =>1 ) );
- }
-
- add_action ('cryout_topbar_hook','tempera_top_menu');
-
- // MAIN MENU
- function tempera_main_menu() {
-  /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
-<div class="skip-link screen-reader-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'tempera' ); ?>"><?php _e( 'Skip to content', 'tempera' ); ?></a></div>
-<?php /* Main navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */
-wp_nav_menu( array( 'container_class' => 'menu', 'menu_id' =>'prime_nav', 'theme_location' => 'primary', 'link_before' => '<span>', 'link_after' => '</span>' ) );
+	if ( has_nav_menu( 'top' ) ) 
+	wp_nav_menu( array( 'container' => 'nav', 'container_class' => 'topmenu', 'theme_location' => 'top', 'depth' =>1 ) );
 }
+add_action ('cryout_topbar_hook','tempera_top_menu');
 
+// MAIN MENU
+function tempera_main_menu() { ?>
+	<div class="skip-link screen-reader-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'tempera' ); ?>">
+		<?php _e( 'Skip to content', 'tempera' ); ?>
+	</a></div>
+	<?php 
+	/* Main navigation menu. If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  
+	   The menu assiged to the primary position is the one used. 
+	   If none is assigned, the menu with the lowest ID is used. */
+	wp_nav_menu( array( 'container_class' => 'menu', 'menu_id' =>'prime_nav', 'theme_location' => 'primary', 'link_before' => '<span>', 'link_after' => '</span>' ) );
+}
 add_action ('cryout_access_hook','tempera_main_menu');
 
 // FOOTER MENU
 function tempera_footer_menu() {
- if ( has_nav_menu( 'footer' ) ) 
-	wp_nav_menu( array( 'container' => 'nav', 'container_class' => 'footermenu', 'theme_location' => 'footer', 'depth' =>1 ) );
- 
+	if ( has_nav_menu( 'footer' ) ) 
+		wp_nav_menu( array( 'container' => 'nav', 'container_class' => 'footermenu', 'theme_location' => 'footer', 'depth' =>1 ) );
 }
-
-  add_action ('cryout_footer_hook','tempera_footer_menu',98);
+add_action ('cryout_footer_hook','tempera_footer_menu',98);
 
 
 /**
@@ -246,6 +232,8 @@ function tempera_footer_menu() {
  * @uses register_sidebar
  */
 function tempera_widgets_init() {	
+	global $temperas;
+	
 	// Area 1, located at the top of the sidebar.
 	register_sidebar( array(
 		'name' => __( 'Left Sidebar', 'tempera' ),
@@ -344,14 +332,12 @@ function tempera_widgets_init() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
-	global $tempera_colimagewidth;
-	global $tempera_colimageheight;
 	
 	// Area 11, the presentation page columns
 	register_sidebar( array(
 		'name' => __( 'Presentation Page Columns', 'tempera' ),
 		'id' => 'presentation-page-columns-area',
-		'description' => sprintf(__('Only drag [Cryout Column] widgets here. Recommended size for uploaded images: %1$dpx (width) x %2$dpx (height). Go to the Tempera Settings page >> Presentation Page Settings >> Columns to edit sizes and more.','tempera' ),$tempera_colimagewidth,$tempera_colimageheight),
+		'description' => sprintf(__('Only drag [Cryout Column] widgets here. Recommended size for uploaded images: %1$dpx (width) x %2$dpx (height). Go to the Tempera Settings page >> Presentation Page Settings >> Columns to edit sizes and more.','tempera' ), $temperas['tempera_colimagewidth'],$temperas['tempera_colimageheight']),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
@@ -404,32 +390,33 @@ function tempera_footer_sidebar_class() {
 }
 
 
- function tempera_header_widget() {
- if ( is_active_sidebar( 'header-widget-area' )) { ?>
+function tempera_header_widget() {
+	if ( is_active_sidebar( 'header-widget-area' )) { ?>
 		<div id="header-widget-area">
 			<ul class="yoyo">
 				<?php dynamic_sidebar( 'header-widget-area' ); ?>
 			</ul>
 		</div>
-		<?php } }
-		
+	<?php } 
+}
 add_action ('cryout_header_widgets_hook','tempera_header_widget');
 
- function tempera_above_widget() {
- if ( is_active_sidebar( 'above-content-widget-area' )) { ?>
-			<ul class="yoyo">
-				<?php dynamic_sidebar( 'above-content-widget-area' ); ?>
-			</ul>
-		<?php } }
+function tempera_above_widget() {
+	if ( is_active_sidebar( 'above-content-widget-area' )) { ?>
+		<ul class="yoyo">
+			<?php dynamic_sidebar( 'above-content-widget-area' ); ?>
+		</ul>
+	<?php } 
+}
+add_action( 'cryout_before_content_hook', 'tempera_above_widget' );
 
 function tempera_below_widget() {
- if ( is_active_sidebar( 'below-content-widget-area' )) { ?>
-			<ul class="yoyo">
-				<?php dynamic_sidebar( 'below-content-widget-area' ); ?>
-			</ul>
-		<?php } }
+	if ( is_active_sidebar( 'below-content-widget-area' )) { ?>
+		<ul class="yoyo">
+			<?php dynamic_sidebar( 'below-content-widget-area' ); ?>
+		</ul>
+	<?php } 
+}
+add_action( 'cryout_after_content_hook', 'tempera_below_widget' );
 
-add_action ('cryout_before_content_hook','tempera_above_widget');
-add_action ('cryout_after_content_hook','tempera_below_widget');
-
-?>
+// FIN

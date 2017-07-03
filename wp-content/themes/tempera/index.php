@@ -12,9 +12,11 @@
  * @subpackage Tempera
  */
 get_header();
-if ($tempera_frontpage=="Enable" && is_front_page() && 'posts' == get_option( 'show_on_front' )): get_template_part( 'frontpage' );
+if ( ($temperas['tempera_frontpage']=="Enable") && is_front_page() && ('posts' == get_option( 'show_on_front' )) ) {
+	get_template_part( 'frontpage' );
 // if is_page() -> additional check in page.php
-else: get_template_part('content/content', 'index');
-endif;
+} else { 
+	get_template_part('content/content', 'index');
+};
 get_footer();
 ?>

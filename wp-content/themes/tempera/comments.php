@@ -13,10 +13,14 @@
  */
 
 $temperas = tempera_get_theme_options();
-foreach ($temperas as $key => $value) { ${"$key"} = $value; }
-$tempera_comclass='';
+$tempera_comclass = '';
 if ( (!comments_open()) && (get_comments_number()<1) && 
-(($tempera_comclosed=="Hide everywhere") || (is_page() && $tempera_comclosed=="Hide in pages") || (is_single() && $tempera_comclosed=="Hide in posts") )) : $tempera_comclass="hideme"; endif;
+	( ($temperas['tempera_comclosed']=="Hide everywhere") || 
+	  (is_page() && $temperas['tempera_comclosed']=="Hide in pages") || 
+	  (is_single() && $temperas['tempera_comclosed']=="Hide in posts") 
+	) ) {
+	$tempera_comclass="hideme";
+};
 ?> <div id="comments" class="<?php echo $tempera_comclass ?>"> <?php
 if (get_comments_number()<1):
 

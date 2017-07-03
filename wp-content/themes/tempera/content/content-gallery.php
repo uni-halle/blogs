@@ -8,9 +8,7 @@
  * @subpackage Tempera
  * @since Tempera 1.1
  */
-
-$options = tempera_get_theme_options();
-foreach ($options as $key => $value) { ${"$key"} = $value ; }
+$temperas = tempera_get_theme_options();
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -30,8 +28,8 @@ foreach ($options as $key => $value) { ${"$key"} = $value ; }
 				$total_images = count( $images );
 				$image = array_shift( $images );
 
-				if (is_sticky() && $tempera_excerptsticky == "Full Post")  $sticky_test=1; else $sticky_test=0;
-				if ($tempera_excerpthome != "Full Post" && $sticky_test==0):
+				if (is_sticky() && $temperas['tempera_excerptsticky'] == "Full Post")  $sticky_test=1; else $sticky_test=0;
+				if ($temperas['tempera_excerpthome'] != "Full Post" && $sticky_test==0):
 					tempera_set_featured_thumb();
 				?>
 					<p><em><?php printf( _n( 'This gallery contains <a %1$s>%2$s photo</a>.', 'This gallery contains <a %1$s>%2$s photos</a>.', $total_images, 'tempera' ),

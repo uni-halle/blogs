@@ -7,11 +7,9 @@
 if ( 'posts' == get_option( 'show_on_front' )) add_action('pre_get_posts', 'cryout_query_offset', 1 );
 
 function cryout_query_offset(&$query) {
-
 	$temperas = tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value; } 
 
-	if ( !is_front_page() || $tempera_frontpage != "Enable" )  {
+	if ( !is_front_page() || $temperas['tempera_frontpage'] != "Enable" )  {
 		return;
 	}
 
@@ -41,9 +39,8 @@ if (  'posts' == get_option( 'show_on_front' )) add_action('template_redirect', 
 function cryout_ajax_init() {
 	// loading our theme settings
 	$temperas = tempera_get_theme_options();
-	foreach ($temperas as $key => $value) { ${"$key"} = $value; } 
 
-	if(is_front_page() && $tempera_frontpage=="Enable") {  
+	if( is_front_page() && ($temperas['tempera_frontpage']=="Enable") ) {  
 			$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 			$the_query = new WP_Query( array('posts_per_page'=>$temperas['tempera_frontpostscount'],'paged'=> $paged) ); 
 	}
@@ -78,7 +75,7 @@ function cryout_ajax_init() {
 			'page_number_next' => $page_number_next,
 			'page_number_max' => $page_number_max,
 			'page_link_model' => get_pagenum_link(9999999),
-			'load_more_str' => $tempera_frontmoreposts,
+			'load_more_str' => $temperas['tempera_frontmoreposts'],
 			'content_css_selector' => '#content',
 			'pagination_css_selector' =>  '.pagination, .navigation',
 		)

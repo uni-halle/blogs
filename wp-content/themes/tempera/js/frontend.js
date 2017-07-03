@@ -52,12 +52,14 @@ jQuery(document).ready(function() {
 	jQuery("#access ul ul").css({display: "none"}); /* Opera Fix */
 	jQuery("#access > .menu ul li > a:not(:only-child)").attr("aria-haspopup","true");/* IE10 mobile Fix */
 
-	jQuery("#access li").hover(function(){
-		jQuery(this).find('ul:first').stop();
-		jQuery(this).find('ul:first').css({opacity: "0",marginTop:"50px"}).css({visibility: "visible",display: "block",overflow:"visible"}).animate({"opacity":"1",marginTop:"-=50"},{queue:false});
-		},function(){
-		jQuery(this).find('ul:first').css({visibility: "visible",display: "block",overflow:"visible"}).animate({marginTop:"+=50"}, {queue:false}).fadeOut();
-								});
+	jQuery("#access li").hover(
+		function(){
+			jQuery(this).find('ul:first').stop();
+			jQuery(this).find('ul:first').css({opacity: "0",marginTop:"50px"}).css({visibility: "visible",display: "block",overflow:"visible"}).animate({"opacity":"1",marginTop:"-=50"},{queue:false});
+		}, function(){
+			jQuery(this).find('ul:first').css({visibility: "visible",display: "block",overflow:"visible"}).animate({marginTop:"+=50"}, {queue:false}).fadeOut();
+		}
+	);
 
 	/* Social Icons Animation */
 	jQuery(".socialicons").append('<div class="socials-hover"></div>');
