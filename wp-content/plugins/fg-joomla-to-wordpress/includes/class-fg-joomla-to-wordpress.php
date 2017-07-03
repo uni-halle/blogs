@@ -69,7 +69,7 @@ class FG_Joomla_to_WordPress {
 	public function __construct() {
 
 		$this->plugin_name = 'fg-joomla-to-wordpress';
-		$this->version = '3.25.0';
+		$this->version = '3.28.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -178,10 +178,11 @@ class FG_Joomla_to_WordPress {
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'init' );
 		$this->loader->add_action( 'fgj2wp_post_test_database_connection', $plugin_admin, 'test_joomla_1_0', 8 );
 		$this->loader->add_action( 'fgj2wp_post_test_database_connection', $plugin_admin, 'get_joomla_info', 9 );
-		$this->loader->add_action( 'fgj2wp_pre_import_check', $plugin_admin, 'test_joomla_1_0' );
+		$this->loader->add_action( 'fgj2wp_pre_import_check', $plugin_admin, 'test_joomla_1_0', 10, 1 );
 		$this->loader->add_action( 'load-importer-fgj2wp', $plugin_admin, 'add_help_tab', 20 );
 		$this->loader->add_action( 'admin_footer', $plugin_admin, 'display_notices', 20 );
 		$this->loader->add_action( 'wp_ajax_fgj2wp_import', $plugin_admin, 'ajax_importer' );
+		$this->loader->add_filter( 'fgj2wp_pre_import_check', $plugin_admin, 'pre_import_check', 10, 1 );
 		$this->loader->add_action( 'fgj2wp_post_import_categories', $plugin_admin, 'update_categories_hierarchy', 10, 2);
 		
 		/*

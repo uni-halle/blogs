@@ -10,7 +10,7 @@
  * @subpackage FG_Joomla_to_WordPress/admin
  */
 
-if ( !class_exists('FG_Joomla_to_WordPress_Admin', FALSE) ) {
+if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 
 	/**
 	 * The admin-specific functionality of the plugin.
@@ -20,6 +20,8 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', FALSE) ) {
 	 * @author     Frédéric GILLES
 	 */
 	class FG_Joomla_to_WordPress_Admin extends WP_Importer {
+
+		const IMPORT_TIMEOUT = 7200; // Timeout = 2 hours
 
 		/**
 		 * The ID of this plugin.
@@ -54,7 +56,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', FALSE) ) {
 		
 		private $log_file;
 		private $log_file_url;
-		private $test_antiduplicate = FALSE;
+		private $test_antiduplicate = false;
 		private $imported_tags = array();
 
 		/**
@@ -107,12 +109,12 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', FALSE) ) {
 		 */
 		public function enqueue_scripts() {
 
-			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/fg-joomla-to-wordpress-admin.js', array( 'jquery', 'jquery-ui-progressbar' ), $this->version, FALSE );
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/fg-joomla-to-wordpress-admin.js', array( 'jquery', 'jquery-ui-progressbar' ), $this->version, false );
 			wp_localize_script( $this->plugin_name, 'objectL10n', array(
 				'delete_imported_data_confirmation_message' => __( 'All new imported data will be deleted from WordPress.', 'fg-joomla-to-wordpress' ),
 				'delete_all_confirmation_message' => __( 'All content will be deleted from WordPress.', 'fg-joomla-to-wordpress' ),
 				'delete_no_answer_message' => __( 'Please select a remove option.', 'fg-joomla-to-wordpress' ),
-				'import_complete' => __( 'IMPORT COMPLETE', 'fg-joomla-to-wordpress' ),
+				'import_completed' => __( 'IMPORT COMPLETED', 'fg-joomla-to-wordpress' ),
 				'content_removed_from_wordpress' => __( 'Content removed from WordPress', 'fg-joomla-to-wordpress' ),
 				'settings_saved' => __( 'Settings saved', 'fg-joomla-to-wordpress' ),
 				'importing' => __( 'Importing…', 'fg-joomla-to-wordpress' ),
@@ -214,7 +216,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', FALSE) ) {
 				echo $this->get_database_info();
 				
 			} else {
-				ini_set('display_errors', TRUE); // Display the errors that may happen (ex: Allowed memory size exhausted)
+				ini_set('display_errors', true); // Display the errors that may happen (ex: Allowed memory size exhausted)
 				
 				// Empty the log file if we empty the WordPress content
 				if ( ($action == 'empty') || (($action == 'import') && filter_input(INPUT_POST, 'automatic_empty', FILTER_VALIDATE_BOOLEAN)) ) {
@@ -240,11 +242,11 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', FALSE) ) {
 		 * @return object Result to return to the caller
 		 */
 		public function dispatch($action) {
-			set_time_limit(7200); // Timeout = 2 hours
+			set_time_limit(self::IMPORT_TIMEOUT);
 
 			// Suspend the cache during the migration to avoid exhausted memory problem
-			wp_suspend_cache_addition(TRUE);
-			wp_suspend_cache_invalidation(TRUE);
+			wp_suspend_cache_addition(true);
+			wp_suspend_cache_invalidation(true);
 
 			// Default values
 			$this->plugin_options = array(
@@ -317,7 +319,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', FALSE) ) {
 							if ( $this->test_database_connection() ) {
 								return array('status' => 'OK', 'message' => __('Connection successful', 'fg-joomla-to-wordpress'));
 							} else {
-								return array('status' => 'Error', 'message' => __('Connection failed', 'fg-joomla-to-wordpress'));
+								return array('status' => 'Error', 'message' => __('Connection failed', 'fg-joomla-to-wordpress') . '<br />' . __('See the errors in the log below', 'fg-joomla-to-wordpress'));
 							}
 						}
 						break;
@@ -478,7 +480,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', FALSE) ) {
 
 			if ( !class_exists('PDO') ) {
 				$this->display_admin_error(__('PDO is required. Please enable it.', 'fg-joomla-to-wordpress'));
-				return FALSE;
+				return false;
 			}
 			try {
 				$joomla_db = new PDO('mysql:host=' . $this->plugin_options['hostname'] . ';port=' . $this->plugin_options['port'] . ';dbname=' . $this->plugin_options['database'], $this->plugin_options['username'], $this->plugin_options['password'], array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
@@ -487,10 +489,10 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', FALSE) ) {
 				}
 			} catch ( PDOException $e ) {
 				$this->display_admin_error(__('Couldn\'t connect to the Joomla database. Please check your parameters. And be sure the WordPress server can access the Joomla database.', 'fg-joomla-to-wordpress') . "<br />\n" . $e->getMessage() . "<br />\n" . sprintf(__('Please read the <a href="%s" target="_blank">FAQ for the solution</a>.', 'fg-joomla-to-wordpress'), $this->faq_url));
-				return FALSE;
+				return false;
 			}
 			$this->joomla_version = $this->joomla_version();
-			return TRUE;
+			return true;
 		}
 
 		/**
@@ -500,7 +502,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', FALSE) ) {
 		 * @param bool $display_error Display the error?
 		 * @return array Query result
 		 */
-		public function joomla_query($sql, $display_error = TRUE) {
+		public function joomla_query($sql, $display_error = true) {
 			global $joomla_db;
 			$result = array();
 
@@ -529,7 +531,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', FALSE) ) {
 		 */
 		private function empty_database($action) {
 			global $wpdb;
-			$result = TRUE;
+			$result = true;
 
 			$wpdb->show_errors();
 
@@ -696,7 +698,7 @@ SQL;
 			$this->progressbar->set_total_count(0);
 			
 			$wpdb->hide_errors();
-			return ($result !== FALSE);
+			return ($result !== false);
 		}
 
 		/**
@@ -744,30 +746,33 @@ SQL;
 
 					do_action('fgj2wp_post_test_database_connection');
 
-					return TRUE;
+					return true;
 
 				} catch ( PDOException $e ) {
 					$this->display_admin_error(__('Couldn\'t connect to the Joomla database. Please check your parameters. And be sure the WordPress server can access the Joomla database.', 'fg-joomla-to-wordpress') . "<br />\n" . $e->getMessage() . "<br />\n" . sprintf(__('Please read the <a href="%s" target="_blank">FAQ for the solution</a>.', 'fg-joomla-to-wordpress'), $this->faq_url));
-					return FALSE;
+					return false;
 				}
 				$joomla_db = null;
 			}
-			return FALSE;
+			return false;
 		}
 
 		/**
 		 * Test for Joomla version 1.0
 		 *
+		 * @param bool $import_doable Can we start the import?
 		 * @return bool False if Joomla version < 1.5 (for Joomla 1.0 and Mambo)
 		 */
-		public function test_joomla_1_0() {
-			if ( version_compare($this->joomla_version, '1.5', '<') ) {
-				$this->display_admin_error(sprintf(__('Your version of Joomla (probably 1.0) is not supported by this plugin. Please consider upgrading to the <a href="%s" target="_blank">Premium version</a>.', 'fg-joomla-to-wordpress'), 'https://www.fredericgilles.net/fg-joomla-to-wordpress/'));
-				// Deactivate the Joomla info feature
-				remove_action('fgj2wp_post_test_database_connection', array($this, 'get_joomla_info'), 9);
-				return FALSE;
+		public function test_joomla_1_0($import_doable) {
+			if ( $import_doable ) {
+				if ( version_compare($this->joomla_version, '1.5', '<') ) {
+					$this->display_admin_error(sprintf(__('Your version of Joomla (probably 1.0) is not supported by this plugin. Please consider upgrading to the <a href="%s" target="_blank">Premium version</a>.', 'fg-joomla-to-wordpress'), 'https://www.fredericgilles.net/fg-joomla-to-wordpress/'));
+					// Deactivate the Joomla info feature
+					remove_action('fgj2wp_post_test_database_connection', array($this, 'get_joomla_info'), 9);
+					$import_doable = false;
+				}
 			}
-			return TRUE;
+			return $import_doable;
 		}
 
 		/**
@@ -966,15 +971,15 @@ SQL;
 		private function import() {
 			if ( $this->joomla_connect() ) {
 
-				$time_start = microtime(TRUE);
+				$time_start = microtime(true);
 
-				update_option('fgj2wp_stop_import', FALSE, FALSE); // Reset the stop import action
+				update_option('fgj2wp_stop_import', false, false); // Reset the stop import action
 				
 				// To solve the issue of links containing ":" in multisite mode
 				kses_remove_filters();
 
 				// Check prerequesites before the import
-				$do_import = apply_filters('fgj2wp_pre_import_check', TRUE);
+				$do_import = apply_filters('fgj2wp_pre_import_check', true);
 				if ( !$do_import) {
 					return;
 				}
@@ -1030,7 +1035,7 @@ SQL;
 				// Debug info
 				if ( defined('WP_DEBUG') && WP_DEBUG ) {
 					$this->display_admin_notice(sprintf("Memory used: %s bytes<br />\n", number_format(memory_get_usage())));
-					$time_end = microtime(TRUE);
+					$time_end = microtime(true);
 					$this->display_admin_notice(sprintf("Duration: %d sec<br />\n", $time_end - $time_start));
 				}
 
@@ -1040,13 +1045,29 @@ SQL;
 					$this->display_admin_notice("IMPORT STOPPED BY USER");
 					
 				} else {
-					// Import complete
+					// Import completed
 					$this->display_admin_notice(__("Don't forget to modify internal links.", 'fg-joomla-to-wordpress'));
-					$this->display_admin_notice("IMPORT COMPLETE");
+					$this->display_admin_notice("IMPORT COMPLETED");
 				}
 				
 				wp_cache_flush();
 			}
+		}
+
+		/**
+		 * Actions to do before the import
+		 * 
+		 * @param bool $import_doable Can we start the import?
+		 * @return bool Can we start the import?
+		 */
+		public function pre_import_check($import_doable) {
+			if ( $import_doable ) {
+				if ( !$this->plugin_options['skip_media'] && empty($this->plugin_options['url']) ) {
+					$this->display_admin_error(__('The URL field is required to import the media.', 'fg-joomla-to-wordpress'));
+					$import_doable = false;
+				}
+			}
+			return $import_doable;
 		}
 
 		/**
@@ -1191,7 +1212,7 @@ SQL;
 				// Hook before inserting the category
 				$new_category = apply_filters('fgj2wp_pre_insert_category', $new_category, $category);
 				
-				$new_cat_id = wp_insert_category($new_category, TRUE);
+				$new_cat_id = wp_insert_category($new_category, true);
 				
 				// Store the last ID to resume the import where it left off
 				$category_id_without_prefix = preg_replace('/^(\D*)/', '', $category_id);
@@ -1200,7 +1221,7 @@ SQL;
 				if ( is_wp_error($new_cat_id) ) {
 					if ( isset($new_cat_id->error_data['term_exists']) ) {
 						// Store the Joomla category ID
-						add_term_meta($new_cat_id->error_data['term_exists'], $term_metakey, $category_id, FALSE);
+						add_term_meta($new_cat_id->error_data['term_exists'], $term_metakey, $category_id, false);
 					}
 					continue;
 				}
@@ -1209,7 +1230,7 @@ SQL;
 				$this->imported_categories[$category_id] = $new_cat_id;
 
 				// Store the Joomla category ID
-				add_term_meta($new_cat_id, $term_metakey, $category_id, TRUE);
+				add_term_meta($new_cat_id, $term_metakey, $category_id, true);
 				
 				// Hook after inserting the category
 				do_action('fgj2wp_post_insert_category', $new_cat_id, $category);
@@ -1269,7 +1290,7 @@ SQL;
 		 * @param bool $test_mode Test mode active: import only one post
 		 * @return bool Import successful or not
 		 */
-		private function import_posts($test_mode = FALSE) {
+		private function import_posts($test_mode = false) {
 			$step = $test_mode? 1 : $this->chunks_size; // to limit the results
 
 			$this->log(__('Importing posts...', 'fg-joomla-to-wordpress'));
@@ -1286,8 +1307,8 @@ SQL;
 				
 				if ( is_array($posts) ) {
 					foreach ( $posts as $post ) {
-						if ( $this->import_post($post) === FALSE ) {
-							return FALSE;
+						if ( $this->import_post($post) === false ) {
+							return false;
 						}
 					}
 				}
@@ -1299,7 +1320,7 @@ SQL;
 				do_action('fgj2wp_post_import_posts');
 			}
 
-			return TRUE;
+			return true;
 		}
 
 		/**
@@ -1309,18 +1330,18 @@ SQL;
 		 * 
 		 * @param array $post Post data
 		 * @param bool $test_mode Test mode active
-		 * @return int new post ID | FALSE | WP_Error
+		 * @return int new post ID | false | WP_Error
 		 */
-		private function import_post($post, $test_mode = FALSE) {
+		private function import_post($post, $test_mode = false) {
 			// Anti-duplicate
 			if ( !$test_mode && !$this->test_antiduplicate ) {
 				sleep(2);
 				$test_post_id = $this->get_wp_post_id_from_joomla_id($post['id']);
 				if ( !empty($test_post_id) ) {
 					$this->display_admin_error(__('The import process is still running. Please wait before running it again.', 'fg-joomla-to-wordpress'));
-					return FALSE;
+					return false;
 				}
-				$this->test_antiduplicate = TRUE;
+				$this->test_antiduplicate = true;
 			}
 
 			// Hook for modifying the Joomla post before processing
@@ -1410,7 +1431,7 @@ SQL;
 			// Hook for modifying the WordPress post just before the insert
 			$new_post = apply_filters('fgj2wp_pre_insert_post', $new_post, $post);
 
-			$new_post_id = wp_insert_post($new_post, TRUE);
+			$new_post_id = wp_insert_post($new_post, true);
 			
 			// Increment the Joomla last imported post ID
 			update_option('fgj2wp_last_article_id', $post['id']);
@@ -1422,7 +1443,7 @@ SQL;
 				if ( !empty($featured_image_id) ) {
 					$post_media[] = $featured_image_id;
 				}
-				$this->add_post_media($new_post_id, $new_post, $post_media, FALSE);
+				$this->add_post_media($new_post_id, $new_post, $post_media, false);
 				
 				// Set the featured image
 				if ( !empty($featured_image_id) ) {
@@ -1430,7 +1451,7 @@ SQL;
 				}
 
 				// Add the Joomla ID as a post meta in order to modify links after
-				add_post_meta($new_post_id, '_fgj2wp_old_id', $post['id'], TRUE);
+				add_post_meta($new_post_id, '_fgj2wp_old_id', $post['id'], true);
 
 				$this->posts_count++;
 
@@ -1453,7 +1474,7 @@ SQL;
 			foreach ( $tags as $tag ) {
 				$new_term = wp_insert_term($tag, $taxonomy);
 				if ( !is_wp_error($new_term) ) {
-					add_term_meta($new_term['term_id'], '_fgj2wp_imported', 1, TRUE);
+					add_term_meta($new_term['term_id'], '_fgj2wp_imported', 1, true);
 				}
 			}
 		}
@@ -1543,7 +1564,7 @@ SQL;
 		 * 
 		 */
 		public function stop_import() {
-			update_option('fgj2wp_stop_import', TRUE);
+			update_option('fgj2wp_stop_import', true);
 		}
 		
 		/**
@@ -1740,9 +1761,9 @@ SQL;
 		function convert_post_attribs_to_array($attribs) {
 			$attribs = trim($attribs);
 			if ( (substr($attribs, 0, 1) != '{') && (substr($attribs, -1, 1) != '}') ) {
-				$post_attribs = parse_ini_string($attribs, FALSE, INI_SCANNER_RAW);
+				$post_attribs = parse_ini_string($attribs, false, INI_SCANNER_RAW);
 			} else {
-				$post_attribs = json_decode($attribs, TRUE);
+				$post_attribs = json_decode($attribs, true);
 			}
 			return $post_attribs;
 		}
@@ -1771,10 +1792,10 @@ SQL;
 						// Image Alt
 						$image_alt = '';
 						if (preg_match('#alt="(.*?)"#', $other_attributes, $alt_matches) ) {
-							$image_alt = wp_strip_all_tags(stripslashes($alt_matches[1]), TRUE);
+							$image_alt = wp_strip_all_tags(stripslashes($alt_matches[1]), true);
 						}
 						$attachment_id = $this->import_media($image_alt, $filename, $post_date, $options);
-						if ( $attachment_id !== FALSE ) {
+						if ( $attachment_id !== false ) {
 							$media_count++;
 							$media[$filename] = $attachment_id;
 						}
@@ -1794,7 +1815,7 @@ SQL;
 		 * @param string $filename Image URL
 		 * @param date $date Date
 		 * @param array $options Options
-		 * @return int attachment ID or FALSE
+		 * @return int attachment ID or false
 		 */
 		public function import_media($name, $filename, $date, $options=array()) {
 			if ( $date == '0000-00-00 00:00:00' ) {
@@ -1810,7 +1831,7 @@ SQL;
 			
 			$filetype = wp_check_filetype($filename);
 			if ( empty($filetype['type']) || ($filetype['type'] == 'text/html') ) { // Unrecognized file type
-				return FALSE;
+				return false;
 			}
 
 			// Upload the file from the Joomla web site to WordPress upload dir
@@ -1820,7 +1841,7 @@ SQL;
 				) {
 					$old_filename = $filename;
 				} else {
-					return FALSE;
+					return false;
 				}
 			} else {
 				if ( strpos($filename, '/') === 0 ) { // Avoid a double slash
@@ -1837,7 +1858,7 @@ SQL;
 			// Make sure we have an uploads directory.
 			if ( !wp_mkdir_p($upload_path) ) {
 				$this->display_admin_error(sprintf(__("Unable to create directory %s", 'fg-joomla-to-wordpress'), $upload_path));
-				return FALSE;
+				return false;
 			}
 			
 			$new_filename = $filename;
@@ -1863,7 +1884,7 @@ SQL;
 				$error = error_get_last();
 				$error_message = $error['message'];
 				$this->display_admin_error("Can't copy $old_filename to $new_full_filename : $error_message");
-				return FALSE;
+				return false;
 			}
 			
 			$post_title = !empty($name)? $name : preg_replace('/\.[^.]+$/', '', $basename);
@@ -1871,7 +1892,7 @@ SQL;
 			// Image Alt
 			$image_alt = '';
 			if ( !empty($name) ) {
-				$image_alt = wp_strip_all_tags(stripslashes($name), TRUE);
+				$image_alt = wp_strip_all_tags(stripslashes($name), true);
 			}
 			
 			// GUID
@@ -1892,7 +1913,7 @@ SQL;
 		 * @param bool $use_yearmonth_folders Use the Year/Month tree folder
 		 * @return string Upload directory
 		 */
-		private function upload_dir($filename, $date, $use_yearmonth_folders=TRUE) {
+		private function upload_dir($filename, $date, $use_yearmonth_folders=true) {
 			$upload_dir = wp_upload_dir(strftime('%Y/%m', strtotime($date)));
 			if ( $use_yearmonth_folders ) {
 				$upload_path = $upload_dir['path'];
@@ -1916,7 +1937,7 @@ SQL;
 		 * @param date $date Date
 		 * @param string $filetype File type
 		 * @param string $image_alt Image description
-		 * @return int|FALSE Attachment ID or FALSE
+		 * @return int|false Attachment ID or false
 		 */
 		public function insert_attachment($attachment_title, $basename, $new_full_filename, $guid, $date, $filetype, $image_alt='') {
 			$post_name = 'attachment-' . sanitize_title($attachment_title); // Prefix the post name to avoid wrong redirect to a post with the same name
@@ -1941,7 +1962,7 @@ SQL;
 					'post_content'		=> '',
 				);
 				$attachment_id = wp_insert_attachment($attachment_data, $new_full_filename);
-				add_post_meta($attachment_id, '_fgj2wp_imported', 1, TRUE); // To delete the imported attachments
+				add_post_meta($attachment_id, '_fgj2wp_imported', 1, true); // To delete the imported attachments
 			}
 			
 			if ( !empty($attachment_id) ) {
@@ -1959,7 +1980,7 @@ SQL;
 				}
 				return $attachment_id;
 			} else {
-				return FALSE;
+				return false;
 			}
 		}
 		
@@ -1981,7 +2002,7 @@ SQL;
 				return $posts_array[0];
 			}
 			else {
-				return FALSE;
+				return false;
 			}
 		}
 
@@ -2027,7 +2048,7 @@ SQL;
 			if ( is_array($post_media) ) {
 
 				// Get the attachments attributes
-				$attachments_found = FALSE;
+				$attachments_found = false;
 				$medias = array();
 				foreach ( $post_media as $old_filename => $attachment_id ) {
 					$media = array();
@@ -2044,7 +2065,7 @@ SQL;
 						$media['new_url'] = wp_get_attachment_url($attachment_id);
 					}
 					$medias[$old_filename] = $media;
-					$attachments_found = TRUE;
+					$attachments_found = true;
 				}
 				if ( $attachments_found ) {
 
@@ -2078,7 +2099,7 @@ SQL;
 
 											if ( $link_type == 'img' ) { // images only
 												// Define the width and the height of the image if it isn't defined yet
-												if ((strpos($new_link, 'width=') === FALSE) && (strpos($new_link, 'height=') === FALSE)) {
+												if ((strpos($new_link, 'width=') === false) && (strpos($new_link, 'height=') === false)) {
 													$width_assertion = isset($media['width'])? ' width="' . $media['width'] . '"' : '';
 													$height_assertion = isset($media['height'])? ' height="' . $media['height'] . '"' : '';
 												} else {
@@ -2149,8 +2170,8 @@ SQL;
 		 * @param array $post_media Post medias IDs
 		 * @param boolean $set_featured_image Set the featured image?
 		 */
-		public function add_post_media($post_id, $post_data, $post_media, $set_featured_image=TRUE) {
-			$thumbnail_is_set = FALSE;
+		public function add_post_media($post_id, $post_data, $post_media, $set_featured_image=true) {
+			$thumbnail_is_set = false;
 			if ( is_array($post_media) ) {
 				foreach ( $post_media as $attachment_id ) {
 					$attachment = get_post($attachment_id);
@@ -2162,7 +2183,7 @@ SQL;
 						// Set the featured image. If not defined, it is the first image of the content.
 						if ( $set_featured_image && !$thumbnail_is_set ) {
 							set_post_thumbnail($post_id, $attachment_id);
-							$thumbnail_is_set = TRUE;
+							$thumbnail_is_set = true;
 						}
 					}
 				}
@@ -2176,10 +2197,10 @@ SQL;
 		 * @return string Content
 		 */
 		private function process_audio_video_links($content) {
-			if ( strpos($content, '{"video"') !== FALSE ) {
+			if ( strpos($content, '{"video"') !== false ) {
 				$content = preg_replace('/(<p>)?{"video":"(.*?)".*?}(<\/p>)?/', "$2", $content);
 			}
-			if ( strpos($content, '{audio}') !== FALSE ) {
+			if ( strpos($content, '{audio}') !== false ) {
 				$content = preg_replace('#{audio}(.*?){/audio}#', "$1", $content);
 			}
 			return $content;
@@ -2207,10 +2228,11 @@ SQL;
 					'orderby'		=> 'ID',
 					'order'			=> 'ASC',
 					'post_type'		=> 'any',
+					'post_status'	=> 'any',
 				);
 				$posts = get_posts($args);
 				foreach ( $posts as $post ) {
-					$links_found = FALSE;
+					$links_found = false;
 					$post = apply_filters('fgj2wp_post_get_post', $post); // Used to translate the links
 					$content = $post->post_content;
 					if ( preg_match_all('#<a(.*?)href="(.*?)"(.*?)>#', $content, $matches, PREG_SET_ORDER) > 0 ) {
@@ -2243,7 +2265,7 @@ SQL;
 											$new_link .= '#' . $anchor_link;
 										}
 										$content = str_replace("href=\"$link\"", "href=\"$new_link\"", $content);
-										$links_found = TRUE;
+										$links_found = true;
 										$links_count++;
 									}
 								}
@@ -2392,7 +2414,7 @@ SQL;
 		 */
 		private function split_anchor_link($link) {
 			$pos = strpos($link, '#');
-			if ( $pos !== FALSE ) {
+			if ( $pos !== false ) {
 				// anchor link found
 				$link_without_anchor = substr($link, 0, $pos);
 				$anchor_link = substr($link, $pos + 1);
@@ -2414,27 +2436,27 @@ SQL;
 		public function remote_copy($url, $path) {
 
 			/*
-			 * cwg enhancement: if destination already exists, just return TRUE
+			 * cwg enhancement: if destination already exists, just return true
 			 *  this allows rebuilding the wp media db without moving files
 			 */
 			if ( !$this->plugin_options['force_media_import'] && file_exists($path) && (filesize($path) > 0) ) {
-				return TRUE;
+				return true;
 			}
 
 			$response = wp_remote_get($url, array(
 				'timeout' => $this->plugin_options['timeout'],
-				'sslverify' => FALSE,
+				'sslverify' => false,
 			)); // Uses WordPress HTTP API
 
 			if ( is_wp_error($response) ) {
 				trigger_error($response->get_error_message(), E_USER_WARNING);
-				return FALSE;
+				return false;
 			} elseif ( $response['response']['code'] != 200 ) {
 				trigger_error($response['response']['message'], E_USER_WARNING);
-				return FALSE;
+				return false;
 			} else {
 				file_put_contents($path, wp_remote_retrieve_body($response));
-				return TRUE;
+				return true;
 			}
 		}
 
@@ -2453,7 +2475,7 @@ SQL;
 			if ( !empty($terms_taxonomies) ) {
 				return wp_update_term_count_now($terms_taxonomies, $taxonomy);
 			} else {
-				return TRUE;
+				return true;
 			}
 		}
 
@@ -2516,9 +2538,9 @@ SQL;
 			$result = $this->joomla_query($sql);
 			if ( isset($result[0]['params']) ) {
 				if ( (substr($result[0]['params'], 0, 1) != '{') && (substr($result[0]['params'], -1, 1) != '}') ) {
-					$params = parse_ini_string($result[0]['params'], FALSE, INI_SCANNER_RAW);
+					$params = parse_ini_string($result[0]['params'], false, INI_SCANNER_RAW);
 				} else {
-					$params = json_decode($result[0]['params'], TRUE);
+					$params = json_decode($result[0]['params'], true);
 				}
 				if ( array_key_exists('site', $params)) {
 					$lang = $params['site'];
@@ -2649,14 +2671,14 @@ SQL;
 
 				$sql = "SHOW COLUMNS FROM ${prefix}${table} LIKE '$column'";
 				$query = $joomla_db->query($sql, PDO::FETCH_ASSOC);
-				if ( $query !== FALSE ) {
+				if ( $query !== false ) {
 					$result = $query->fetch();
 					return !empty($result);
 				} else {
-					return FALSE;
+					return false;
 				}
 			} catch ( PDOException $e ) {}
-			return FALSE;
+			return false;
 		}
 
 		/**
@@ -2673,14 +2695,14 @@ SQL;
 
 				$sql = "SHOW TABLES LIKE '${prefix}${table}'";
 				$query = $joomla_db->query($sql, PDO::FETCH_ASSOC);
-				if ( $query !== FALSE ) {
+				if ( $query !== false ) {
 					$result = $query->fetch();
 					return !empty($result);
 				} else {
-					return FALSE;
+					return false;
 				}
 			} catch ( PDOException $e ) {}
-			return FALSE;
+			return false;
 		}
 
 		/**
@@ -2712,9 +2734,9 @@ SQL;
 					fputs($fh,"User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.94 Safari/537.36\n\n");
 					$response = fread($fh, 22);
 					fclose($fh);
-					$result = (strpos($response, '200') !== FALSE);
+					$result = (strpos($response, '200') !== false);
 				} else {
-					$result = FALSE;
+					$result = false;
 				}
 			}
 			

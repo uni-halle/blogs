@@ -10,7 +10,7 @@
  * @subpackage FG_Joomla_to_WordPress/admin
  */
 
-if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', FALSE) ) {
+if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 
 	/**
 	 * Class to import the web links
@@ -47,7 +47,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', FALSE) ) {
 
 			$result = $wpdb->query("TRUNCATE $wpdb->links");
 			update_option('fgj2wp_last_link_id', 0);
-			return ($result !== FALSE);
+			return ($result !== false);
 		}
 
 		/**

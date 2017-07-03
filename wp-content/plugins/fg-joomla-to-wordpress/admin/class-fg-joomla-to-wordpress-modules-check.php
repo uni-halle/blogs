@@ -10,7 +10,7 @@
  * @subpackage FG_Joomla_to_WordPress/admin
  */
 
-if ( !class_exists('FG_Joomla_to_WordPress_Modules_Check', FALSE) ) {
+if ( !class_exists('FG_Joomla_to_WordPress_Modules_Check', false) ) {
 
 	/**
 	 * Class to check the modules that are needed
@@ -209,7 +209,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Modules_Check', FALSE) ) {
 		 */
 		private function count_sql($sql) {
 			$count = 0;
-			$result = $this->plugin->joomla_query($sql, FALSE);
+			$result = $this->plugin->joomla_query($sql, false);
 			if ( isset($result[0]['nb']) ) {
 				$count = $result[0]['nb'];
 			}

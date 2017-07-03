@@ -80,10 +80,10 @@
 			    if ( row.substr(0, 7) === '[ERROR]' || row.substr(0, 9) === '[WARNING]' || row === 'IMPORT STOPPED BY USER') {
 				row = '<span class="error_msg">' + row + '</span>'; // Mark the errors in red
 			    }
-			    // Test if the import is complete
-			    else if ( row === 'IMPORT COMPLETE' ) {
-				row = '<span class="complete_msg">' + row + '</span>'; // Mark the complete message in green
-				$('#action_message').html(objectL10n.import_complete)
+			    // Test if the import is completed
+			    else if ( row === 'IMPORT COMPLETED' ) {
+				row = '<span class="completed_msg">' + row + '</span>'; // Mark the completed message in green
+				$('#action_message').html(objectL10n.import_completed)
 				.removeClass('failure').addClass('success');
 			    }
 			    $("#logger").append(row + "<br />\n");
@@ -112,8 +112,12 @@
 		    dataType: 'json'
 		}).always(function(result) {
 		    // Move the progress bar
-		    var progress = Number(result.current) / Number(result.total) * 100;
-		    $('#progressbar').progressbar('option', 'value', progress);
+		    var progress = 0;
+		    if((result.total !== undefined) && (Number(result.total) !== 0)) {
+		      progress = Math.round(Number(result.current) / Number(result.total) * 100);
+		    }
+		    jQuery('#progressbar').progressbar('option', 'value', progress);
+		    jQuery('#progresslabel').html(progress + '%');
 		    if ( that.is_logging ) {
 			that.update_progressbar_timeout = setTimeout(that.update_progressbar, 1000);
 		    }
@@ -391,6 +395,8 @@
 	    
 	    // Display the logs
 	    $('#logger_autorefresh').click(that.display_logs);
+	    
+	    that.update_display();
 	});
 
 	/**

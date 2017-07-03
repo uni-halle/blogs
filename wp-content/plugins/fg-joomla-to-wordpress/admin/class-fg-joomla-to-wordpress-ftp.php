@@ -9,7 +9,7 @@
  * @subpackage FG_Joomla_to_WordPress_Premium/admin
  */
 
-if ( !class_exists('FG_Joomla_to_WordPress_FTP', FALSE) ) {
+if ( !class_exists('FG_Joomla_to_WordPress_FTP', false) ) {
 
 	/**
 	 * Tags class
@@ -119,10 +119,10 @@ if ( !class_exists('FG_Joomla_to_WordPress_FTP', FALSE) ) {
 		 * @return bool Connection successful or not
 		 */
 		public function test_connection() {
-			$result = FALSE;
+			$result = false;
 			if ( $this->login()) {
 				$this->plugin->display_admin_notice(__('FTP connection successful', 'fg-joomla-to-wordpress'));
-				$result = TRUE;
+				$result = true;
 			}
 			return $result;
 		}
@@ -133,7 +133,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_FTP', FALSE) ) {
 		 * @return bool Login successful or not
 		 */
 		public function login() {
-			$result = FALSE;
+			$result = false;
 			
 			if ( !defined('FS_CONNECT_TIMEOUT') ) {
 				define('FS_CONNECT_TIMEOUT', 2);
@@ -141,7 +141,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_FTP', FALSE) ) {
 			$this->ftp = new WP_Filesystem_FTPext($this->plugin->ftp_options);
 			if ( $this->ftp->connect() && $this->ftp->chdir($this->plugin->ftp_options['basedir']) ) {
 				// Connection successful
-				$result = TRUE;
+				$result = true;
 			} else {
 				// Connection error
 				$error_message = '';
@@ -167,7 +167,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_FTP', FALSE) ) {
 			
 			if ( $this->ftp->link) {
 				$full_directory = trailingslashit($this->plugin->ftp_options['basedir']) . $directory;
-				return array_keys($this->ftp->dirlist($full_directory, FALSE));
+				return array_keys($this->ftp->dirlist($full_directory, false));
 			}
 			return $files_list;
 		}
@@ -179,7 +179,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_FTP', FALSE) ) {
 		 * @return bool
 		 */
 		public function chdir($directory) {
-			$result = FALSE;
+			$result = false;
 			if ( $this->ftp->link ) {
 				$full_directory = trailingslashit($this->plugin->ftp_options['basedir']) . $directory;
 				$result = $this->ftp->chdir($full_directory);
@@ -195,12 +195,12 @@ if ( !class_exists('FG_Joomla_to_WordPress_FTP', FALSE) ) {
 		 * @return bool File downloaded or not
 		 */
 		public function get($source, $destination) {
-			$result = FALSE;
+			$result = false;
 			
 			if ( $this->ftp->link) {
 				$file_content = $this->ftp->get_contents($source);
 				if ( $file_content ) {
-					$result = (file_put_contents($destination, $file_content) !== FALSE);
+					$result = (file_put_contents($destination, $file_content) !== false);
 				}
 			}
 			return $result;

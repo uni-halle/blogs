@@ -7,7 +7,9 @@
 				</tr>
 				<tr>
 					<th scope="row"><label for="url"><?php _e('URL of the live Joomla web site', 'fg-joomla-to-wordpress'); ?></label></th>
-					<td><input id="url" name="url" type="text" size="50" value="<?php echo $data['url']; ?>" /></td>
+					<td><input id="url" name="url" type="text" size="50" value="<?php echo $data['url']; ?>" /><br />
+						<small><?php _e('This field is used to pull the media off that site. It must contain the URL of the original site.', 'fg-joomla-to-wordpress'); ?></small>
+					</td>
 				</tr>
 				<tr>
 					<th scope="row" colspan="2"><h3><?php _e('Joomla database parameters', 'fg-joomla-to-wordpress'); ?></h3></th>

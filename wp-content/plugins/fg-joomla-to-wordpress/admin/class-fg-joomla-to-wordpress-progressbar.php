@@ -10,7 +10,7 @@
  * @subpackage FG_Joomla_to_WordPress/admin
  */
 
-if ( !class_exists('FG_Joomla_to_WordPress_ProgressBar', FALSE) ) {
+if ( !class_exists('FG_Joomla_to_WordPress_ProgressBar', false) ) {
 
 	/**
 	 * The Progress Bar class
@@ -65,14 +65,14 @@ if ( !class_exists('FG_Joomla_to_WordPress_ProgressBar', FALSE) ) {
 		 * 
 		 * @since 3.3.0
 		 * 
-		 * @return array|FALSE Array of counters
+		 * @return array|false Array of counters
 		 */
 		private function read_progress() {
 			if ( file_exists($this->filename) ) {
 				$json_content = file_get_contents($this->filename);
 				return json_decode($json_content);
 			} else {
-				return FALSE;
+				return false;
 			}
 		}
 		

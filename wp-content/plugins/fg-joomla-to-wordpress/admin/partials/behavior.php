@@ -18,7 +18,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><?php _e('Medias:', 'fg-joomla-to-wordpress'); ?></th>
+					<th scope="row"><?php _e('Media:', 'fg-joomla-to-wordpress'); ?></th>
 					<td><input id="skip_media" name="skip_media" type="checkbox" value="1" <?php checked($data['skip_media'], 1); ?> /> <label for="skip_media" ><?php _e('Skip media', 'fg-joomla-to-wordpress'); ?></label>
 					<br />
 					<div id="media_import_box">
