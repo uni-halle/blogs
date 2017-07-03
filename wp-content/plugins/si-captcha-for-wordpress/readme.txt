@@ -1,11 +1,11 @@
 === SI CAPTCHA Anti-Spam ===
-Contributors: mikechallis
+Contributors: fastsecure
 Author URI: http://www.642weather.com/weather/scripts.php
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KXJWLPPWZG83S
 Tags: captcha, recaptcha, buddypress, bbpress, woocommerce, wpforo, multisite, jetpack, comment, comments, login, register, anti-spam, spam, security
 Requires at least: 3.6.0
-Tested up to: 4.7.4
-Stable tag: 3.0.0.16
+Tested up to: 4.8
+Stable tag: 3.0.0.19
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -257,9 +257,17 @@ Please read [How to update a translation of SI Captcha Anti-Spam for WordPress](
 
 == Changelog ==
 
+= 3.0.0.20 =
+* (20 Jun 2017) - Fix readme
+
+= 3.0.0.19 =
+* (05 Jun 2017) - Fix duplicate si_captcha_code ID.
+
+= 3.0.0.18 =
+* (05 Jun 2017) - Fix possible empty needle error.
 
 = 3.0.0.17 =
-* (13 May 2017) - Fix possible Catchable fatal error on woocommerce password reset.
+* (13 May 2017) - Fix possible Catchable fatal error on WooCommerce password reset.
 
 = 3.0.0.16 =
 * (09 May 2017) - Fix typo in code causing validation error on WooCommerce checkout. Sorry for any inconvenience.

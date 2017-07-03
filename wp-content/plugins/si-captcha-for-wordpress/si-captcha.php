@@ -3,15 +3,15 @@
 Plugin Name: SI Captcha Anti-Spam
 Plugin URI: https://wordpress.org/plugins/si-captcha-for-wordpress/
 Description: Adds Secure Image CAPTCHA to WordPress pages for comments, login, registration, lost password, BuddyPress register, bbPress register, wpForo register, bbPress New Topic and Reply to Topic Forms, Jetpack Contact Form, and WooCommerce checkout. In order to post comments, login, or register, users will have to pass the CAPTCHA test. Prevents spam from automated bots. Compatible with Akismet and Multisite Network Activate.
-Author: Mike Challis
+Author: fastsecure
 Author URI: http://www.642weather.com/weather/scripts.php
 Text Domain: si-captcha
 Domain Path: /languages
 License: GPLv2 or later
-Version: 3.0.0.17
+Version: 3.0.0.20
 */
 
-$si_captcha_version = '3.0.0.17';
+$si_captcha_version = '3.0.0.20';
 
 /*  Copyright (C) 2008-2017 Mike Challis  (http://www.642weather.com/weather/contact_us.php)
 
@@ -521,7 +521,7 @@ $this->si_captcha_captcha_html('si_image_com','com');
 echo '</div>
 
 ';
-echo '<p id="si_captcha_code">
+echo '<p id="si_captcha_code_p">
 ';
 echo $this->si_captcha_comment_label_html();
 echo '</p>
@@ -562,7 +562,7 @@ $this->si_captcha_captcha_html('si_image_com','com');
 echo '</div>
 
 ';
-echo '<p id="si_captcha_code">
+echo '<p id="si_captcha_code_p">
 ';
 echo $this->si_captcha_comment_label_html();
 echo '</p>
@@ -1299,7 +1299,7 @@ function si_captcha_get_styles(){
     'div#si_captcha_input { display:block; padding-top:15px; padding-bottom:5px; }',
     'label#si_captcha_code_label { margin:0; }',
     'input#si_captcha_code_input { width:65px; }',
-    'p#si_captcha_code { clear: left; padding-top:10px; }',
+    'p#si_captcha_code_p { clear: left; padding-top:10px; }',
     '.si-captcha-jetpack-error { color:#DC3232; }',
       );
       return $styles;
@@ -1400,11 +1400,11 @@ function si_captcha_determine_current_page() {
 		global $pagenow;
 
 		$request_uri = ltrim($_SERVER['REQUEST_URI'], '/');
-        if (strpos($request_uri, $lostpassword_path) === 0) {
+        if (!empty($lostpassword_path) && strpos($request_uri, $lostpassword_path) === 0) {
 			// user is requesting lost password page
 			$this->is_lostpassword = true;
 		}
-		elseif (strpos($request_uri, $register_path) === 0) {
+		elseif (!empty($register_path) && strpos($request_uri, $register_path) === 0) {
 			// user is requesting regular user registration page
 			$this->is_reg = true;
 		}
@@ -1412,7 +1412,7 @@ function si_captcha_determine_current_page() {
             // user is requesting woocommerce registration page
 			$this->is_reg = true;
         }
-		elseif (strpos($request_uri, $login_path) === 0) {
+		elseif (!empty($login_path) && strpos($request_uri, $login_path) === 0) {
 			// user is requesting the wp-login page
 			$this->is_login = true;
 		}
