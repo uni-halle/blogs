@@ -102,7 +102,8 @@ class CustomSidebarsReplacer extends CustomSidebars {
 			$wp_registered_sidebars,
 			$wp_registered_widgets;
 
-		$expl = CustomSidebarsExplain::do_explain();
+		$custom_sidebars_explain = CustomSidebarsExplain::instance();
+		$expl = $custom_sidebars_explain->do_explain();
 
 		$expl && do_action( 'cs_explain', '<h4>Replace sidebars</h4>', true );
 
@@ -185,7 +186,9 @@ class CustomSidebarsReplacer extends CustomSidebars {
 		$sidebars = self::get_options( 'modifiable' );
 		$replacements_todo = sizeof( $sidebars );
 		$replacements = array();
-		$expl = CustomSidebarsExplain::do_explain();
+
+		$custom_sidebars_explain = CustomSidebarsExplain::instance();
+		$expl = $custom_sidebars_explain->do_explain();
 
 		foreach ( $sidebars as $sb ) {
 			$replacements[ $sb ] = false;
@@ -276,20 +279,36 @@ class CustomSidebarsReplacer extends CustomSidebars {
 			// 2 |== Category archive ----------------------------------------------
 
 			$expl && do_action( 'cs_explain', 'Type 2: Category Archive' );
-
-			// 2.1 Start at current category and travel up all parents
+			/**
+			 * 2.1 Category archive
+			 */
+			foreach ( $sidebars as $sb_id ) {
+				if ( ! $replacements[ $sb_id ] && isset( $options['category_archive'][ $sb_id ] ) ) {
+					$replacements[ $sb_id ] = array(
+						$options['category_archive'][ $sb_id ],
+						'category_archive',
+						0,
+					);
+				}
+			}
+			/**
+			 *  2.2 Start at current category and travel up all parents
+			 */
 			$category_object = get_queried_object();
 			$current_category = $category_object->term_id;
-			while ( 0 != $current_category && $replacements_todo > 0 ) {
+
+			if ( 0 != $current_category && $replacements_todo > 0 ) {
 				foreach ( $sidebars as $sb_id ) {
-					if ( $replacements[ $sb_id ] ) { continue; }
-					if ( ! empty( $options['category_archive'][ $current_category ][ $sb_id ] ) ) {
+					if (
+						isset( $options['category_archive'] )
+						&& isset( $options['category_archive'][ $current_category ] )
+						&& isset( $options['category_archive'][ $current_category ][ $sb_id ] )
+					) {
 						$replacements[ $sb_id ] = array(
 							$options['category_archive'][ $current_category ][ $sb_id ],
 							'category_archive',
 							$current_category,
 						);
-						$replacements_todo -= 1;
 					}
 				}
 				$current_category = $category_object->category_parent;
@@ -313,7 +332,7 @@ class CustomSidebarsReplacer extends CustomSidebars {
 					);
 				}
 			}
-		} elseif ( ! is_category() && ! is_singular() && get_post_type() != 'post' ) {
+		} elseif ( ! is_tax() && ! is_404() && ! is_category() && ! is_singular() && get_post_type() != 'post' ) {
 			// 4 |== Post-Tpe Archive ----------------------------------------------
 			// `get_post_type() != 'post'` .. post-archive = post-index (see 7)
 
@@ -482,7 +501,6 @@ class CustomSidebarsReplacer extends CustomSidebars {
 			// 8 |== Tag archive ---------------------------------------------------
 
 			$expl && do_action( 'cs_explain', 'Type 8: Tag Archive' );
-
 			foreach ( $sidebars as $sb_id ) {
 				if ( ! empty( $options['tags'][ $sb_id ] ) ) {
 					$replacements[ $sb_id ] = array(
@@ -540,7 +558,6 @@ class CustomSidebarsReplacer extends CustomSidebars {
 			}
 		} elseif ( is_404() ) {
 			// 11 |== 404 not found ------------------------------------------------
-
 			$expl && do_action( 'cs_explain', 'Type 11: 404 not found' );
 
 			foreach ( $sidebars as $sb_id ) {
@@ -548,6 +565,25 @@ class CustomSidebarsReplacer extends CustomSidebars {
 					$replacements[ $sb_id ] = array(
 						$options['404'][ $sb_id ],
 						'404',
+						-1,
+					);
+				}
+			}
+		} elseif ( is_tax() ) {
+			// 12 |== Taxonomy Archive ----------------------------------------------
+			$current_term = get_queried_object();
+			$taxonomy = $current_term->taxonomy;
+			$taxonomy = apply_filters( 'cs_replace_taxonomy', $taxonomy, 'archive' );
+			$expl && do_action( 'cs_explain', 'Type 12: ' . ucfirst( $taxonomy ) . ' Archive' );
+			foreach ( $sidebars as $sb_id ) {
+				if (
+				   isset( $options['taxonomies_archive'] )
+				   && isset( $options['taxonomies_archive'][ $taxonomy ] )
+				   && isset( $options['taxonomies_archive'][ $taxonomy ][ $sb_id ] )
+				) {
+					$replacements[ $sb_id ] = array(
+						$options['taxonomies_archive'][ $taxonomy ][ $sb_id ],
+						'taxonomies_archive',
 						-1,
 					);
 				}
@@ -565,8 +601,6 @@ class CustomSidebarsReplacer extends CustomSidebars {
 
 		return $replacements;
 	}
-
-
 
 	/**
 	 * Makes sure that the replacement sidebar exists.

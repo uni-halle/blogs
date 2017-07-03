@@ -31,6 +31,20 @@ class CustomSidebarsExplain extends CustomSidebars {
 	private $infos = array();
 
 	/**
+	 * Explain debug status.
+	 *
+	 * @since  3.0.7
+	 */
+	private $debug = false;
+
+	/**
+	 * Current user id
+	 *
+	 * @since  3.0.7
+	 */
+	private $current_user_id = 0;
+
+	/**
 	 * Returns the singleton object.
 	 *
 	 * @since  2.0.9.1
@@ -51,117 +65,26 @@ class CustomSidebarsExplain extends CustomSidebars {
 	 * @since  2.0.9.1
 	 */
 	private function __construct() {
-		$debug = false;
-		if ( isset( $_GET['cs-explain'] ) ) {
-			$debug = true;
-			self::set_explain( $_GET['cs-explain'] );
+		$this->debug = false;
+		$this->current_user_id = get_current_user_id();
+		if ( 0 == $this->current_user_id ) {
+			$this->debug = apply_filters( 'custom_sidebars_explain', $this->debug );
+		} else {
+			$this->debug = (boolean) get_user_meta( $this->current_user_id, 'custom_sidebars_explain', true );
+			$this->set_explain();
 		}
-		if (
-			false === $debug
-			&& isset( $_SESSION )
-			&& isset( $_SESSION['cs-explain'] )
-			&& 'on' == $_SESSION['cs_explain']
-		) {
-			$debug = true;
-		}
-		if ( false === $debug ) {
+		add_action( 'admin_bar_menu', array( $this, 'admin_bar_menu' ), 999 );
+		if ( false === $this->debug ) {
 			return;
 		}
-		if ( ! session_id() ) {
-			session_start();
-		}
-
 		if ( is_admin() ) {
-			add_action(
-				'cs_widget_header',
-				array( $this, 'widget_header' )
-			);
-
-			add_action(
-				'cs_ajax_request',
-				array( $this, 'handle_ajax' )
-			);
-		} else {
-			if ( self::do_explain() ) {
-				add_action(
-					'cs_explain',
-					array( $this, 'add_info' ),
-					10, 2
-				);
-
-				add_action(
-					'wp_footer',
-					array( $this, 'show_infos' )
-				);
-
-				add_action(
-					'dynamic_sidebar_before',
-					array( $this, 'before_sidebar' ),
-					0, 2
-				);
-
-				add_action(
-					'dynamic_sidebar_after',
-					array( $this, 'after_sidebar' ),
-					0, 2
-				);
-			}
+			return;
 		}
-	}
-
-	/**
-	 * Called by action 'cs_widget_header'. Output the export/import button in
-	 * the widget header.
-	 *
-	 * @since  2.0.9.1
-	 */
-	public function widget_header() {
-		/*
-		$state = self::do_explain() ? 'on' : 'off';
-		?>
-		<a href="#"
-			class="cs-action btn-explain"
-			data-status="<?php echo esc_attr( $state ); ?>"
-			data-label-off="<?php _e( 'Show explanations', 'custom-sidebars' ); ?>"
-			data-label-on="<?php _e( 'Hide explanations', 'custom-sidebars' ); ?>">
-		</a>
-		<?php
-		*/
-	}
-
-	/**
-	 * When the custom sidebars section is visible we see if export-action
-	 * needs to be processed.
-	 *
-	 * @since  2.0.9.1
-	 */
-	public function handle_ajax( $ajax_action ) {
-		$handle_it = false;
-		$req = (object) array(
-			'status' => 'ERR',
-		);
-
-		switch ( $ajax_action ) {
-			case 'explain':
-				$handle_it = true;
-				break;
-		}
-
-		if ( ! $handle_it ) {
-			return false;
-		}
-
-		$state = @$_POST['state'];
-
-		switch ( $ajax_action ) {
-			case 'explain':
-				self::set_explain( $state );
-				$req->status = 'OK';
-				$req->state = self::do_explain() ? 'on' : 'off';
-				break;
-		}
-
-		self::json_response( $req );
+		add_action( 'cs_explain', array( $this, 'add_info' ), 10, 2 );
+		add_action( 'wp_footer', array( $this, 'show_infos' ) );
+		add_action( 'dynamic_sidebar_before', array( $this, 'before_sidebar' ), 0, 2 );
+		add_action( 'dynamic_sidebar_after', array( $this, 'after_sidebar' ), 0, 2 );
+		add_action( 'wp_print_styles', array( $this, 'print_styles' ) );
 	}
 
 	/**
@@ -173,11 +96,8 @@ class CustomSidebarsExplain extends CustomSidebars {
 	 * @since  2.0.9.1
 	 * @return boolean
 	 */
-	public static function do_explain() {
-		return
-			isset( $_SESSION['cs-explain'] )
-			&& is_string( $_SESSION['cs-explain'] )
-			&& 'on' == $_SESSION['cs-explain'];
+	public function do_explain() {
+		return $this->debug;
 	}
 
 	/**
@@ -186,11 +106,20 @@ class CustomSidebarsExplain extends CustomSidebars {
 	 * @since 2.0.9.1
 	 * @param string $state [on|off]
 	 */
-	public static function set_explain( $state ) {
-		if ( 'on' != $state ) {
-			$state = 'off';
+	public function set_explain() {
+		if ( ! isset( $_GET['cs-explain'] ) ) {
+			return;
 		}
-		$_SESSION['cs-explain'] = $state;
+		if ( current_user_can( 'manage_options' ) && 'on' == $_GET['cs-explain'] ) {
+			$this->debug = true;
+			$result = add_user_meta( $this->current_user_id, 'custom_sidebars_explain', $this->debug, true );
+			if ( ! $result ) {
+				update_user_meta( $this->current_user_id, 'custom_sidebars_explain', $this->debug );
+			}
+			return;
+		}
+		$this->debug = false;
+		delete_user_meta( $this->current_user_id, 'custom_sidebars_explain' );
 	}
 
 	/**
@@ -221,7 +150,6 @@ class CustomSidebarsExplain extends CustomSidebars {
 			.cs-infos h5 { color: #006; margin: 10px 0 0 -15px; }
 			</style>
 			<h3>Sidebar Infos</h3>
-			<a href="?cs-explain=off" style="float:right;color:#009">Turn off explanations</a>
 			<ul>
 				<?php foreach ( $this->infos as $info ) : ?>
 					<li><?php echo $info; ?></li>
@@ -278,5 +206,49 @@ class CustomSidebarsExplain extends CustomSidebars {
 		<div style="clear:both"> </div>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Added adminbar position for debug
+	 *
+	 * @since 3.0.7
+	 */
+	public function admin_bar_menu( $wp_admin_bar ) {
+		if ( is_admin() ) {
+			return;
+		}
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+		$args = array(
+			'id'    => 'cs-explain',
+			'title' => __( 'Sidebar Debug', 'custom-sidebars' ),
+			'href'  => add_query_arg( 'cs-explain', 'on' ),
+			'parent' => 'top-secondary',
+			'meta' => array(
+				'title' => __( 'Turn on Custom Sidebars explain mode.', 'custom-sidebars' ),
+				'class' => 'debug-is-off',
+			),
+		);
+		if ( $this->debug ) {
+			$args['href'] = add_query_arg( 'cs-explain', 'off' );
+			$args['meta'] = array(
+				'title' => __( 'Turn off Custom Sidebars explain mode.', 'custom-sidebars' ),
+				'class' => 'cs-explain-on',
+			);
+		}
+		$wp_admin_bar->add_node( $args );
+	}
+
+	/**
+	 * Print style for debug
+	 *
+	 * @since 3.0.8
+	 */
+	public function print_styles() {
+		echo '<style type="text/css" media="screen">';
+		echo '#wpadminbar .cs-explain-on{ background-color:#050}';
+		echo 'html body #wpadminbar .ab-top-menu .cs-explain-on:hover>.ab-item{background-color:#251}';
+		echo '</style>';
 	}
 };
