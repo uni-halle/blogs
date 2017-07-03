@@ -398,7 +398,9 @@ class WPtouchProFour {
 	}
 
 	function desktop_shortcode_magic( $content ) {
-		if ( $this->is_mobile_device && $this->showing_mobile_theme ) {
+		global $post;
+
+		if ( $this->is_mobile_device && $this->showing_mobile_theme && empty( $post->post_password ) ) {
 
 			global $woocommerce;
 

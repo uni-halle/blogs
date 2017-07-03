@@ -2,7 +2,7 @@
 Contributors: wptouch, duanestorey, dalemugford, adamdipardo, oxymoron
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 4.2
-Stable tag: 4.3.17
+Stable tag: 4.3.18
 Tested up to: 4.7
 License: GPLv2
 
@@ -32,6 +32,11 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 6. Theme settings
 
 == Changelog ==
+
+= Version 4.3.18 (May 29, 2017) =
+
+* WPML Compatibility:  Allows posts to display for chosen language in mobile blog index.
+* Fixed: Bug where password protected pages would not display properly with 'process desktop shortcodes' option enabled.
 
 = Version 4.3.17 (May 10, 2017) =
 

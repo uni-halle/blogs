@@ -250,3 +250,26 @@ function wptouch_disable_plugin_incompatibility_notice() {
 	update_option( '_wptouch-disable-plugin-incompat-notice', $dismissed_plugin_incompat_notices, false );
 }
 add_action( 'wp_ajax_disable_plugin_incompatibility_notice', 'wptouch_disable_plugin_incompatibility_notice' );
+
+/**
+ * Allows posts in the selected language to display when using a custom Posts page.
+ *
+ * @see https://github.com/sureswiftcapital/wptouch-pro/pull/42
+ *
+ * @param $is_latest_posts_page
+ * @param $latest_posts_page
+ * @param $page_id
+ *
+ * @return bool
+ */
+function wptouch_wpml_latest_posts( $is_latest_posts_page, $latest_posts_page, $page_id ) {
+	if ( function_exists( 'icl_object_id' ) && $page_id != $latest_posts_page ) {
+		$translated_id = icl_object_id( $latest_posts_page, 'page', true );
+		if ( $translated_id == $page_id ) {
+			return true;
+		}
+	}
+
+	return $is_latest_posts_page;
+}
+add_filter( 'foundation_is_custom_latest_posts_page', 'wptouch_wpml_latest_posts', 10, 3 );
