@@ -1,9 +1,9 @@
 === SiteOrigin Widgets Bundle ===
 Tags: bundle, widget, button, slider, image, carousel, price table, google maps, tinymce, social links
 Requires at least: 4.2
-Tested up to: 4.7.4
-Stable tag: 1.8.6
-Build time: 2017-05-11T14:22:04+02:00
+Tested up to: 4.8
+Stable tag: 1.9.1
+Build time: 2017-06-08T19:51:00+02:00
 License: GPLv3 or later
 Contributors: gpriday, braam-genis
 Donate link: https://siteorigin.com/downloads/contribution/
@@ -53,6 +53,37 @@ The SiteOrigin Widgets Bundle is the perfect platform to build widgets for your 
 3. An example of the button widget.
 
 == Changelog ==
+
+= 1.9.2 - 8 June 2017 =
+* Post Carousel: default image for posts without featured images.
+* Social Media Buttons: allow empty colors.
+* Editor: prevent text processing for cache and post content rendering.
+* Post selector field: Fix additional args encoding.
+* Post selector field: Fix taxonomy search.
+
+= 1.9.1 - 1 June 2017 =
+* Fixed Maps widget JS error.
+
+= 1.9 - 30 May 2017 =
+* Compatibility with Visual Composer.
+* Taxonomy widget text display.
+* Price table widget: option to make feature row heights equal.
+* New posts selector field based on other existing fields.
+* New autocomplete field. Currently supports showing results from posts and taxonomies.
+* New date-range field with option to select specific or relative dates.
+* Editor widget: Global widget setting for default 'autop' state.
+* Some layout fixes for widget forms in Elementor.
+* Google Maps: fallback image when maps API not available or returns error.
+* Contact form: Reduced intensity of disabled button styling.
+* Google Maps: Fix markers not displaying when queries are rate limited.
+* Features: Option to use specified icon size for custom icon images.
+* Updated FontAwesome icon set to 4.7.0
+* Updated IcoMoon icon set.
+* Contact form: Allow duplicate forms on same page.
+* Widget temp backup in browser storage.
+* Google Maps: Custom marker icon for each marker.
+* Option to specify default number of visible rows in icon field.
+* Changed PHP LESS compiler to a better maintained version.
 
 = 1.8.6 - 10 May 2017 =
 * Editor widget supports Jetpack Markdown.

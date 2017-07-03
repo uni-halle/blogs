@@ -2,7 +2,7 @@
 /*
 Plugin Name: SiteOrigin Widgets Bundle
 Description: A collection of all widgets, neatly bundled into a single plugin. It's also a framework to code your own widgets on top of.
-Version: 1.8.6
+Version: 1.9.2
 Text Domain: so-widgets-bundle
 Domain Path: /lang
 Author: SiteOrigin
@@ -12,7 +12,7 @@ License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 */
 
-define('SOW_BUNDLE_VERSION', '1.8.6');
+define('SOW_BUNDLE_VERSION', '1.9.2');
 define('SOW_BUNDLE_BASE_FILE', __FILE__);
 
 // Allow JS suffix to be pre-set
@@ -78,6 +78,7 @@ class SiteOrigin_Widgets_Bundle {
 		add_filter( 'siteorigin_panels_prebuilt_layout', array($this, 'load_missing_widgets') );
 		add_filter( 'siteorigin_panels_widget_object', array($this, 'load_missing_widget'), 10, 2 );
 
+		add_filter( 'wp_enqueue_scripts', array($this, 'register_general_scripts') );
 		add_filter( 'wp_enqueue_scripts', array($this, 'enqueue_active_widgets_scripts') );
 	}
 
@@ -698,6 +699,29 @@ class SiteOrigin_Widgets_Bundle {
 		$links['manage'] = '<a href="' . admin_url('plugins.php?page=so-widgets-plugins') . '">'.__('Manage Widgets', 'so-widgets-bundle').'</a>';
 		$links['support'] = '<a href="https://siteorigin.com/thread/" target="_blank">'.__('Support', 'so-widgets-bundle').'</a>';
 		return $links;
+	}
+
+	function register_general_scripts() {
+		wp_register_script( 'sow-fittext',
+			plugin_dir_url( SOW_BUNDLE_BASE_FILE ) . 'js/sow.jquery.fittext' . SOW_BUNDLE_JS_SUFFIX . '.js',
+			array( 'jquery' ),
+			'1.2',
+			true
+		);
+		wp_register_script(
+			'dessandro-imagesLoaded',
+			plugin_dir_url( SOW_BUNDLE_BASE_FILE ) . 'js/lib/imagesloaded.pkgd' . SOW_BUNDLE_JS_SUFFIX . '.js',
+			array( 'jquery' ),
+			'3.2.0',
+			true
+		);
+		wp_register_script(
+			'dessandro-packery',
+			plugin_dir_url( SOW_BUNDLE_BASE_FILE ) . 'js/lib/packery.pkgd' . SOW_BUNDLE_JS_SUFFIX . '.js',
+			array( 'jquery' ),
+			'1.4.3',
+			true
+		);
 	}
 
 	/**

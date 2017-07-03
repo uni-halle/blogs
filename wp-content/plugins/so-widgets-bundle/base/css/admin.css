@@ -16,6 +16,19 @@
   width: 18px;
   height: 18px;
 }
+.siteorigin-widget-form-notification {
+  padding: 8px 12px;
+  border: 1px solid #a4cadd;
+  background-color: #CDE2EC;
+  margin-bottom: 20px;
+}
+.siteorigin-widget-form-notification > span {
+  line-height: 22px;
+}
+.siteorigin-widget-form-notification > a.button.button-small {
+  margin-left: 10px;
+  height: 22px;
+}
 .siteorigin-widget-form {
   display: block !important;
   margin: 15px 0;
@@ -387,7 +400,9 @@
   margin-bottom: 15px;
 }
 .siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .items,
-.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items {
+.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items,
+.siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .posts,
+.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .posts {
   margin: 0;
   padding: 0;
   background: #fff;
@@ -396,7 +411,9 @@
   border: 1px solid #e4e4e4;
 }
 .siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .items li,
-.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items li {
+.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items li,
+.siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .posts li,
+.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .posts li {
   cursor: pointer;
   padding: 5px 10px;
   color: #32373c;
@@ -405,19 +422,27 @@
   font-size: 0.95em;
 }
 .siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .items li.selected,
-.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items li.selected {
+.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items li.selected,
+.siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .posts li.selected,
+.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .posts li.selected {
   background: #e1edfa;
 }
 .siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .items li:hover,
-.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items li:hover {
+.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items li:hover,
+.siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .posts li:hover,
+.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .posts li:hover {
   background: #eaf2fa;
 }
 .siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .items li:last-child,
-.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items li:last-child {
+.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items li:last-child,
+.siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .posts li:last-child,
+.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .posts li:last-child {
   border-bottom: 0;
 }
 .siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .items li span,
-.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items li span {
+.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items li span,
+.siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .posts li span,
+.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .posts li span {
   font-size: 0.9em;
   display: inline-block;
   float: right;
@@ -425,19 +450,25 @@
   margin-left: 10px;
 }
 .siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .items.loading,
-.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items.loading {
+.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items.loading,
+.siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .posts.loading,
+.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .posts.loading {
   min-height: 40px;
   background: #FFFFFF url("img/wpspin_light.gif") center center no-repeat;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .items.loading,
-  .siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items.loading {
+  .siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items.loading,
+  .siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .posts.loading,
+  .siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .posts.loading {
     background-image: url("img/wpspin_light-2x.gif");
     background-size: 16px 16px;
   }
 }
 .siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .items.loading li,
-.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items.loading li {
+.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .items.loading li,
+.siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .posts.loading li,
+.siteorigin-widget-form .siteorigin-widget-field-type-link .existing-content-selector .posts.loading li {
   display: none;
 }
 .siteorigin-widget-form .siteorigin-widget-field-type-autocomplete .existing-content-selector .buttons,
@@ -535,8 +566,8 @@
   margin-left: -11px;
   margin-top: -10px;
   font-size: 21px;
-  text-align: center;
   color: #666666;
+  text-align: center;
 }
 .so-widgets-dialog .so-widgets-dialog-frame {
   top: 80px;
