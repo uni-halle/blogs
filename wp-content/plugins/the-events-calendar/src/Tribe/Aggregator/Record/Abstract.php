@@ -249,7 +249,7 @@ abstract class Tribe__Events__Aggregator__Record__Abstract {
 	 */
 	public function save( $post_id, $args = array(), $meta = array() ) {
 		if ( ! isset( $meta['type'] ) || 'schedule' !== $meta['type'] ) {
-			return tribe_error( 'core:aggregator:invalid-edit-record-type', $type );
+			return tribe_error( 'core:aggregator:invalid-edit-record-type', $meta );
 		}
 
 		$defaults = array(
@@ -369,7 +369,7 @@ abstract class Tribe__Events__Aggregator__Record__Abstract {
 	/**
 	 * Creates a schedule record based on the import record
 	 *
-	 * @return boolean|WP_Error
+	 * @return boolean|Tribe_Error
 	 */
 	public function create_schedule_record() {
 		$post = array(
@@ -419,7 +419,6 @@ abstract class Tribe__Events__Aggregator__Record__Abstract {
 
 		$this->maybe_add_meta_via_pre_wp_44_method( $schedule_id, $post['meta_input'] );
 
-
 		if ( $this->db_errors_happened() ) {
 			wp_delete_post( $schedule_id );
 
@@ -447,7 +446,7 @@ abstract class Tribe__Events__Aggregator__Record__Abstract {
 	/**
 	 * Creates a child record based on the import record
 	 *
-	 * @return boolean|WP_Error|Tribe__Events__Aggregator__Record__Abstract
+	 * @return boolean|Tribe_Error|Tribe__Events__Aggregator__Record__Abstract
 	 */
 	public function create_child_record() {
 		$post = array(
@@ -482,7 +481,6 @@ abstract class Tribe__Events__Aggregator__Record__Abstract {
 
 		// create schedule post
 		$child_id = wp_insert_post( $post );
-
 
 		// if the schedule creation failed, bail
 		if ( is_wp_error( $child_id ) ) {
@@ -980,6 +978,11 @@ abstract class Tribe__Events__Aggregator__Record__Abstract {
 		}
 
 		$parent_record = Tribe__Events__Aggregator__Records::instance()->get_by_post_id( $this->post->post_parent );
+
+		if ( tribe_is_error( $parent_record ) ) {
+			return;
+		}
+
 		$parent_record->update_meta( 'source_name', $source_name );
 	}
 
@@ -1498,7 +1501,7 @@ abstract class Tribe__Events__Aggregator__Record__Abstract {
 			Tribe__Events__Aggregator__Records::instance()->add_record_to_event( $event['ID'], $this->id, $this->origin );
 
 			// Add post parent possibility
-			if ( empty( $event['parent_uid'] ) ) {
+			if ( empty( $event['parent_uid'] ) && ! empty( $unique_field ) ) {
 				$possible_parents[ $event['ID'] ] = $event[ $unique_field['target'] ];
 			}
 
@@ -1790,36 +1793,10 @@ abstract class Tribe__Events__Aggregator__Record__Abstract {
 			return false;
 		}
 
-		require_once( ABSPATH . 'wp-admin/includes/media.php' );
-		require_once( ABSPATH . 'wp-admin/includes/file.php' );
-		require_once( ABSPATH . 'wp-admin/includes/image.php' );
+		$uploader = new Tribe__Image__Uploader( $event['image'] );
+		$thumbnail_id = $uploader->upload_and_get_attachment_id();
 
-		// Set variables for storage, fix file filename for query strings.
-		preg_match( '/[^\?]+\.(jpe?g|jpe|gif|png)\b/i', $event['image'], $matches );
-		if ( ! $matches ) {
-			return false;
-		}
-
-		$file_array         = array();
-		$file_array['name'] = basename( $matches[0] );
-
-		// Download file to temp location.
-		$file_array['tmp_name'] = download_url( $event['image'] );
-
-		// If error storing temporarily, return the error.
-		if ( is_wp_error( $file_array['tmp_name'] ) ) {
-			return false;
-		}
-
-		$id = media_handle_sideload( $file_array, $event['ID'], $event['post_title'] );
-
-		if ( is_wp_error( $id ) ) {
-			@unlink( $file_array['tmp_name'] );
-
-			return false;
-		}
-
-		return (object) array( 'post_id' => $id );
+		return false !== $thumbnail_id ? (object) array( 'post_id' => $thumbnail_id ) : false;
 	}
 
 	/**
