@@ -23,6 +23,13 @@ function responsive_customize_register( $wp_customize ) {
 		'title'                 => __( 'Theme Elements', 'responsive' ),
 		'priority'              => 30
 	) );
+	$wp_customize->add_setting( 'responsive_theme_options[featured_images]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
+	$wp_customize->add_control( 'res_featured_images', array(
+		'label'                 => __( 'Enable featured images?', 'responsive' ),
+		'section'               => 'theme_elements',
+		'settings'              => 'responsive_theme_options[featured_images]',
+		'type'                  => 'checkbox'
+	) );
 	$wp_customize->add_setting( 'responsive_theme_options[breadcrumb]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
 	$wp_customize->add_control( 'res_breadcrumb', array(
 		'label'                 => __( 'Disable breadcrumb list?', 'responsive' ),
@@ -113,6 +120,27 @@ function responsive_customize_register( $wp_customize ) {
 		'settings'              => 'responsive_theme_options[cta_text]',
 		'type'                  => 'text'
 	) );
+        
+        // Call to action button style
+	$wp_customize->add_setting( 'responsive_theme_options[button_style]', array(
+		'default'           => 'Gradient',
+		'type'              => 'option',
+		'sanitize_callback' => 'responsive_pro_button_style_validate'
+	) );
+
+	// Call to action button style
+        $wp_customize->add_control( 'static_page_layout_default', array(
+		'label'    => __( 'Call to Action Button Style', 'responsive' ),
+		'section'  => 'home_page',
+		'settings' => 'responsive_theme_options[button_style]',
+		'type'     => 'select',
+		'choices'  => array(
+			'default'      => __( 'Gradient', 'responsive' ),
+			'flat_style'      => __( 'Flat', 'responsive' )
+			
+		),
+            'priority' => 15
+	) );
 
 	$wp_customize->add_setting( 'responsive_theme_options[featured_content]', array( 'sanitize_callback' => 'responsive_sanitize_textarea', 'type' => 'option' ) );
 	$wp_customize->add_control( 'res_featured_content', array(
@@ -120,7 +148,8 @@ function responsive_customize_register( $wp_customize ) {
 		'section'               => 'home_page',
 		'settings'              => 'responsive_theme_options[featured_content]',
 		'type'                  => 'textarea',
-		'description'           => __( 'Paste your shortcode, video or image source', 'responsive' )
+		'description'           => __( 'Paste your shortcode, video or image source', 'responsive' ),
+                'priority'              => 20
 	) );
 
 
@@ -274,6 +303,28 @@ function responsive_customize_register( $wp_customize ) {
 		'section'           => 'responsive_social_media',
 		'settings'          => 'responsive_theme_options[foursquare_uid]'
 	) ) );
+        
+        /**
+ * Validates the Call to Action Button styles
+ *
+ * @param $input select
+ *
+ * @return string
+ */
+function responsive_pro_button_style_validate( $input ) {
+	// An array of valid results
+	//$valid = responsive_get_valid_featured_area_layouts();
+         $valid = array(
+             'default' => 'Gradient',
+             'flat_style' => 'Flat'
+         );                       
+
+	if( array_key_exists( $input, $valid ) ) {
+		return $input;
+	} else {
+		return '';
+	}
+}
 
 /*--------------------------------------------------------------
 	// CSS Styles

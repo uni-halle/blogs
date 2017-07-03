@@ -55,6 +55,7 @@ function responsive_get_options() {
  */
 function responsive_get_option_defaults() {
 	$defaults = array(
+		'featured_images'                 => false,
 		'breadcrumb'                      => false,
 		'cta_button'                      => false,
 		'minified_css'                    => false,
@@ -88,6 +89,7 @@ function responsive_get_option_defaults() {
 		'static_page_layout_default'      => 'default',
 		'single_post_layout_default'      => 'default',
 		'blog_posts_index_layout_default' => 'default',
+                'button_style'                    => 'default'
 	);
 
 	return apply_filters( 'responsive_option_defaults', $defaults );
