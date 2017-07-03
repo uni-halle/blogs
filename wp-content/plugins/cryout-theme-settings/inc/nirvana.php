@@ -1,10 +1,10 @@
 <?php
 if (function_exists('nirvana_init_fn')):
 	add_action('admin_init', 'nirvana_init_fn');
+	add_action('nirvana_before_righty', 'nirvana_extra');
 endif;
 
 function nirvana_theme_settings_restore($class='') { 
-	global $wp_version;
 	global $cryout_theme_settings;
 ?>
 		<form name="nirvana_form" id="nirvana_form" action="options.php" method="post" enctype="multipart/form-data">
@@ -21,3 +21,7 @@ function nirvana_theme_settings_restore($class='') {
 <?php
 } // nirvana_theme_settings_buttons()
 
+function nirvana_extra() { 
+	$url = plugin_dir_url( dirname(__FILE__) ) . '/media';
+	include_once( plugin_dir_path( __FILE__ ) . 'extra.php' );
+} // nirvana_extra()

@@ -1,6 +1,7 @@
 <?php
 if (function_exists('parabola_init_fn')):
 	add_action('admin_init', 'parabola_init_fn');
+	add_action('parabola_before_righty', 'parabola_extra');
 endif;
 
 function parabola_theme_settings_restore($class='') { 
@@ -19,3 +20,8 @@ function parabola_theme_settings_restore($class='') {
 		</form>
 <?php
 } // parabola_theme_settings_buttons()
+
+function parabola_extra() { 
+	$url = plugin_dir_url( dirname(__FILE__) ) . '/media';
+	include_once( plugin_dir_path( __FILE__ ) . 'extra.php' );
+} // parabola_extra()

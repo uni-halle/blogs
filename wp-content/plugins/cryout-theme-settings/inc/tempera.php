@@ -1,6 +1,7 @@
 <?php
 if (function_exists('tempera_init_fn')):
 	add_action('admin_init', 'tempera_init_fn');
+	add_action('tempera_before_righty', 'tempera_extra');
 endif;
 
 function tempera_theme_settings_restore($class='') { 
@@ -19,3 +20,8 @@ function tempera_theme_settings_restore($class='') {
 		</form>
 <?php
 } // tempera_theme_settings_buttons()
+
+function tempera_extra() { 
+	$url = plugin_dir_url( dirname(__FILE__) ) . '/media';
+	include_once( plugin_dir_path( __FILE__ ) . 'extra.php' );
+} // tempera_extra()

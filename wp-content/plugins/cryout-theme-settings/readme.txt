@@ -1,10 +1,10 @@
 === Plugin Name ===
-Contributors: Cryout Creations, cryout-creations
+Contributors: Cryout Creations
 Donate link: https://www.cryoutcreations.eu/donate/
 Tags: theme, admin
 Requires at least: 4.0
-Tested up to: 4.6
-Stable tag: 0.5.7
+Tested up to: 4.8.0
+Stable tag: 0.5.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -49,6 +49,11 @@ You do not need this plugin if you use do not use any of the listed themes.
 3. Navigate to Appearance > [Theme] Settings to access the restored theme settings page. 
 
 == Changelog ==
+
+= 0.5.8 =
+* Added meta links
+* Updated plugin's about page
+* Added 'featured themes' and 'priority support' panels
 
 = 0.5.7 =
 * Fixed incorrect status for Nirvana versions before 1.2

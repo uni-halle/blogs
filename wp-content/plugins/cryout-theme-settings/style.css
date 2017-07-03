@@ -1,0 +1,33 @@
+/* About page styling */
+
+#post-body-content ul {
+    display: inline-block;
+    margin-bottom: 2em;
+}
+
+#post-body-content ul li {
+    display: inline-block;
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+
+#post-body-content ul li img {
+    width: 90%;
+}
+
+#post-body-content ul li span {
+    font-weight: bold;
+}
+
+#post-body-content ul li img {
+    border: 3px solid #DDD;
+    padding: 3px;
+    width: 90%;
+    -webkit-transition: .2s ease-out all;
+    transition: .2s ease-out all;
+}
+
+#post-body-content ul li:hover img {
+    background-color: #DDD;
+}
