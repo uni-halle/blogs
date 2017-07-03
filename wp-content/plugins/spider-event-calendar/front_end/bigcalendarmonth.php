@@ -531,7 +531,7 @@ echo '<style>
 	  </style>
 	</head>
 	<body>
-  <div  id="afterbig<?php echo $many_sp_calendar; ?>" style="<?php echo $display ?>">
+  <div  id="afterbig<?php echo $many_sp_calendar; ?>" style="<?php echo $display ?>" class="wdc_calendar">
   <div style="width:100%;">
     <table cellpadding="0" cellspacing="0" style="width:100%;">
       <tr>

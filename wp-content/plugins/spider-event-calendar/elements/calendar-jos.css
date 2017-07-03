@@ -328,3 +328,117 @@ div.calendar {
 a:focus{
 	box-shadow: none;
 }
+
+/************* front end ************/
+
+
+#TB_iframeContent{
+	width: 100%;
+	height: inherit !important;
+}
+#TB_window{
+	z-index: 1000000 !important;
+	color: #dfdfdf;
+	top: 100px !important;
+}
+#TB_title{
+	border-bottom: none;
+	height: 0px;
+}
+
+#TB_closeWindowButton,
+.tb-close-icon,
+#TB_closeWindowButton:focus .tb-close-icon{
+	outline:0 !important;
+	box-shadow: 0 0;
+}
+
+.tb-close-icon{
+	left: -17px;
+	top: 11px;
+}
+
+.tb-close-icon:before{
+	content: 'x';
+	font-weight: 300;
+	font-family: monospace;
+}
+
+.screen-reader-text,
+#views_select .arrow-down,
+#views_select .arrow-right{
+	display: none;
+}
+
+html.thickbox_open{
+	overflow: hidden;
+}
+#TB_window iframe{
+	margin-left: 0;
+	margin-top: 0;
+	padding-left: 0;
+	padding-top: 0;
+}
+
+.show_arrow{
+	display: inline-block !important;
+}
+
+.ios_device #TB_window { 
+	height: 90%; 
+	-webkit-overflow-scrolling: touch !important; 
+	overflow: scroll !important; 
+} 
+
+.general_table a,
+.last_table a,
+.week_list a,
+.day_ev a{
+	border: 0;
+	text-decoration: none;
+	box-shadow: 0 0;
+}
+
+
+.wdc_calendar{
+	display: block !important;
+	max-width: 100% !important;
+	border: 0;
+	text-decoration: none;
+	box-shadow: 0 0;
+}
+
+.wdc_calendar li{
+	list-style: none;
+}
+.wdc_calendar p{
+	margin: 0;
+	padding: 0;
+}
+
+.wdc_calendar table{
+	table-layout: auto;
+}
+
+@media screen and (max-width: 768px) {
+	.wdc_calendar #cal_event p:not(.ev_name){
+		 display: block; /* Fallback for non-webkit */
+		 display: -webkit-box;
+		 max-width: 400px;
+		 height: 32px; /* Fallback for non-webkit */
+		 margin: 0 auto;
+		 font-size: 13px;
+		 line-height: 15px;
+		 -webkit-line-clamp: 2;
+		 -webkit-box-orient: vertical;
+		 overflow: hidden;
+		 text-overflow: ellipsis;
+	}
+	div.wdc_calendar{
+		width: 100% !important;
+		margin: 0;
+	}
+	.wdc_calendar .cala_day{
+		max-width: 37px;
+	}
+}

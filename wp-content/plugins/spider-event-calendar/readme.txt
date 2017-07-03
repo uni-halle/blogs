@@ -1,14 +1,14 @@
-=== Calendar by WD – Responsive Event Calendar for WordPress ===  
+=== Calendar by WD - Responsive Event Calendar for WordPress ===  
 Contributors: webdorado  
 Donate link: https://web-dorado.com/products/wordpress-calendar.html  
 Tags: calendar, date, event, event calendar, events, events calendar, meeting, organizer, recurring, reservation, responsive, schedule, calendars, event manager, calendar widget, event registration, event management, agenda,  holiday calendar , scheduling, free calendar, Calender, upcoming events , event widget , event list, calendar localization, editorial calendar, Interactive Calendar, news calendar, appointment, event tracking, event organizer, upcoming events widget, event page, event bookings, recurring events, conference, dates, times, venue, responsive calendar, seminar, summit, facebook integration, widget, online calendar, calendar shortcode, events list, custom calendar, google calendar, event subscription, ical, facebook event calendar, event filter, calendar manager, online reservation, booking calendar, event booking, reservation calendar, customizable calendar, upcoming events calendar, events feed, event ticketing, rsvp, tickets, bookings 
 Requires at least: 3.4  
-Tested up to: 4.7   
-Stable tag: 1.5.52
+Tested up to: 4.8   
+Stable tag: 1.5.53
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
-Event Calendar plugin is a highly configurable product which allows you to have multiple organized events.
+Event Calendar by WD is a responsive calendar plugin for organizing events. This calendar calendar lets you manage and publish unlimited event calendars on your site.
 
 == Description ==    
 WordPress event calendar is a FREE user-friendly responsive calendar plugin to manage multiple recurring events and various display options. This free calendar plugin makes event registration and events management easy and lets you display beautiful responsive calendars, upcoming events and calendar widget. It’s perfect for websites organising seminars,summits, conferences, concerts,meetings, who want to have it displayed in an attractive calendar.   
@@ -19,7 +19,7 @@ WordPress event calendar is a FREE user-friendly responsive calendar plugin to m
 [User Manual](https://web-dorado.com/spider-calendar-wordpress-guide-step-1.html)  
 
 
-Spider Event Calendar is a highly configurable calendar plugin which allows you to have multiple organized events in one calendar. This plugin is one of the best WordPress Calendar available in WordPress Directory. If you have problem with organizing your WordPress Calendar events and displaying them in a calendar format, then Spider WordPress Calendar Plugin is the best solution. Maybe you just want to have a quick look at your WP calendar schedule to remind yourself about the future appointments or reservations? Or you want to bring together your holiday calendar, web calendars, online calendars and events lists? Spider Calendar event plugin comes with advanced calendar manager tools and options. It will be great if calendar extension will be able to show all events, display them in an events widget as a beautiful and customizable calendar on your website. Spider WordPress Calendar is a great online events organizer and events manager plugin which is also an extremely user friendly calendar. It’s a feature rich event manager plugin allowing you to use it as an editorial calendar,news calendar or availability calendar.
+Spider Event Calendar is a highly configurable calendar plugin which allows you to have multiple organized events in one calendar. This plugin is one of the best WordPress Calendar available in WordPress Directory. If you have problem with organizing your WordPress Calendar events and displaying them in a calendar format, then Spider WordPress Calendar Plugin is the best solution. Maybe you just want to have a quick look at your WP calendar schedule to remind yourself about the future appointments or online reservations? Or you want to bring together your holiday calendar, web calendars, online calendars and events lists? Spider Calendar event plugin comes with advanced calendar manager tools and options. It will be great if calendar extension will be able to show all events, display them in an events widget as a beautiful and customizable calendar on your website. Spider WordPress Calendar is a great online events organizer and events manager plugin which is also an extremely user friendly calendar. It’s a feature rich event manager plugin allowing you to use it as an editorial calendar,news calendar or availability calendar.
 
 You can add unlimited number of calendars and events on your website. You can have a separate upcoming events calendar on any page you’d like. 
 There is also a possibility of displaying the events in a list view. The product includes a widget called Upcoming events, allowing to have a specific number of upcoming events arranged in ordered or randomized option. 
@@ -28,7 +28,7 @@ You can display the calendar in a smaller format for all pages using the Calenda
 Different categories created for the calendar will be displayed as a legend below the calendar. This will allow the users to manage the types of the events they are looking for.
 
 
-This advanced events plugin allows you to provide detailed information about the events you have in your interactive calendar. You can provide event dates, time, venue, mention the event organizer,  upload an image or a video for a particular event, and more. If you have an event page on your website you can use the calendar shortcode or event shortcode to display it on the page. Also, that can be a very good place to display an upcoming events widget. For websites with long events lists there is an event filter option in the front end to help your site visitors filter out events they are not interested in.
+This advanced events plugin allows you to provide detailed information about the events you have in your interactive calendar. You can provide event dates, time, venue, mention the event organizers,  upload an image or a video for a particular event, and more. If you have an event page on your website you can use the calendar shortcode or event shortcode to display it on the page. Also, that can be a very good place to display an upcoming events widget. For websites with long events lists there is an event filter option in the front end to help your site visitors filter out events they are not interested in.
 
 Its recurring events option makes event scheduling even easier. You just need to provide the repeating rate of the event and it will automatically be displayed on the calendar.
 Spider Calendar comes with a number of event display options, and calendar themes, but if you want to have custom calendars with your own style you can add new themes with customized settings and options.
@@ -150,6 +150,10 @@ Vietnamese (vi)
 
 
 == Changelog ==
+
+= 1.5.53 =
+Changed: Event popup design  
+Fixed: Generate shortcode popup styles  
 
 = 1.5.52 =
 Fixed: Security issue   
@@ -376,7 +380,9 @@ If you want to update the calendar plugin while preserving your existing calenda
     -Repeat until. Choose the end date for repeating each event.   
 3.10 Save. Click the "Save" button to save the created event.   
 
+Note: Spider Event Calendar is not an online booking calendar and does not come with a booking system or reservation system. It does not support event bookings or event subscriptions. However you can manually add your bookings, Facebook calendar events, outlook appointments, Icalendar ( Ical ) appointment booking, and other events feed to the calendar. If you want to have booking forms, RSVP functionality, Facebook event calendar, or Google Calendar integration, you’ll have to get an appointment booking calendar, a booking plugin or other reservation plugin.
 
+It does not support ticket integration,event ticketing and ticket sale. For this purpose you can check out Event Calendar WD, which allows you to sale event tickets and also provides events calendars Google maps integration. With its events gmap option you’ll be able to mark event location on Google maps. 
    
     
 == Step 4:Spider Event Calendar  ==        
@@ -583,4 +589,6 @@ Select events from list.Click on Add button to specify the events you want to sh
 8.19 Divider Color.Select the color to be used with the divider.   
 8.20 Save the widget.    
     
+
+  
   

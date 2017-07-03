@@ -12,13 +12,14 @@ function php_window() {
               src="<?php echo get_option("siteurl"); ?>/wp-includes/js/jquery/jquery.js"></script>
       <script language="javascript" type="text/javascript"
               src="<?php echo get_option("siteurl"); ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
+	  <link rel="stylesheet" href="<?php echo get_option("siteurl"); ?>/wp-includes/js/tinymce/plugins/compat3x/css/dialog.css" type="text/css" media="all">
       <script language="javascript" type="text/javascript"
               src="<?php echo get_option("siteurl"); ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
       <script language="javascript" type="text/javascript"
               src="<?php echo get_option("siteurl"); ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
       <base target="_self">
     </head>
-    <body id="link" onLoad="tinyMCEPopup.executeOnLoad('init();');document.body.style.display='';" style="" dir="ltr" class="forceColors">
+    <body id="link" dir="ltr" class="forceColors">
       <form name="spider_cat" action="#">
         <div class="tabs" role="tablist" tabindex="-1">
           <ul>
@@ -167,578 +168,522 @@ function php_window() {
 }
 
 function seemore() {
-  require_once("front_end/frontend_functions.php");
-  $calendar = (isset($_GET['calendar_id']) ? (int) $_GET['calendar_id'] : 0);
-  $ev_ids = (isset($_GET['ev_ids']) ? esc_html($_GET['ev_ids']) : '');
-  $eventID = (isset($_GET['eventID']) ? (int) $_GET['eventID'] : '');
-  $widget = ((isset($_GET['widget']) && (int) $_GET['widget']) ? (int) $_GET['widget'] : 0);
-  $theme_id = (isset($_GET['theme_id']) ? (int) $_GET['theme_id'] : 1);
-  $date = ((isset($_GET['date']) && IsDate_inputed(esc_html($_GET['date']))) ? esc_html($_GET['date']) : '');
-  if ($date != '' && !IsDate_inputed($date)) {
-    $date = date("Y-m-d");
-  }
-  else {
-    $date = date("Y") . '-' . php_Month_num_seemore(date("F")) . '-' . date("d");
-  }
-  global $wpdb;
-  if ($widget) {
-    $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_widget_theme WHERE id=%d', $theme_id));
-    $show_event = 0;
-  }
-  else {
-    $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_theme WHERE id=%d', $theme_id));
-    $show_event = $theme->day_start;
-  }
-  
-  $row_cal =  $wpdb->get_row($wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar where published=1 and id=%d",$calendar));
-  
-  $title_color = '#' . str_replace('#','',$theme->title_color);
-  $title_size = $theme->title_font_size;
-  $show_event_bgcolor = '#' . str_replace('#','',$theme->show_event_bgcolor);
-  $popup_width = $theme->popup_width;
-  $popup_height = $theme->popup_height;
-  $show_repeat = $theme->show_repeat;
-  $date_color = '#' . str_replace('#','',$theme->date_color);
-  $date_size = $theme->date_size;
-  $date_font = $theme->date_font;
-  $date_format = $theme->date_format;
-  $all_files = php_showevent_seemore($calendar, $date);
-  $rows = $all_files[0]['rows'];
-	
-  $date_format_array = explode('/', $date_format);
-  $datee = ((isset($_GET['date']) && IsDate_inputed(esc_html($_GET['date']))) ? esc_html($_GET['date']) : date("Y-m-d"));
-  $activedate = explode('-', $datee);
-  $activedatetimestamp = mktime(0, 0, 0, $activedate[1], $activedate[2], $activedate[0]);
-  $activedatestr = '';
+	global $wpdb;
+	require_once("front_end/frontend_functions.php");
+	$calendar = (isset($_GET['calendar_id']) ? (int) $_GET['calendar_id'] : 0);
+	$ev_ids = (isset($_GET['ev_ids']) ? esc_html($_GET['ev_ids']) : '');
+	$eventID = (isset($_GET['eventID']) ? (int) $_GET['eventID'] : '');
+	$widget = ((isset($_GET['widget']) && (int) $_GET['widget']) ? (int) $_GET['widget'] : 0);
+	$theme_id = (isset($_GET['theme_id']) ? (int) $_GET['theme_id'] : 1);
+	$date = ( (isset($_GET['date']) && IsDate_inputed(esc_html($_GET['date']))) ? date("Y-m-d") : date("Y") . '-' . php_Month_num_seemore(date("F")) . '-' . date("d") );
 
-  for ($i = 0; $i < count($date_format_array); $i++) {
-    if ($date_format_array[$i] == 'w') {
-      $date_format_array[$i] = 'l';
-    }
-    if ($date_format_array[$i] == 'm') {
-      $date_format_array[$i] = 'F';
-    }
-    if ($date_format_array[$i] == 'y') {
-      $date_format_array[$i] = 'Y';
-    }
-  }
-  
-  for ($i = 0; $i < count($date_format_array); $i++) {
-    $activedatestr .= __(date("" . $date_format_array[$i] . "", $activedatetimestamp), 'sp_calendar') . ' ';
-  }
+	if ($widget) {
+		$theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_widget_theme WHERE id=%d', $theme_id));
+		$show_event = 0;
+	}
+	else {
+		$theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_theme WHERE id=%d', $theme_id));
+		$show_event = $theme->day_start;
+	}
+	$title_color = '#' . str_replace('#','',$theme->title_color);
+	$title_size = $theme->title_font_size;
+	$show_event_bgcolor = '#' . str_replace('#','',$theme->show_event_bgcolor);
+	$popup_width = $theme->popup_width;
+	$popup_height = $theme->popup_height;
+	$show_repeat = $theme->show_repeat;
+	$date_color = '#' . str_replace('#','',$theme->date_color);
+	$date_size = $theme->date_size;
+	$date_font = $theme->date_font;
+	$date_format = $theme->date_format;
+	$all_files = php_showevent_seemore($calendar, $date);
+	$rows = $all_files[0]['rows'];
 
-  $date = $datee;
-  $day = substr($date, 8);
-  $ev_id = explode(',', $ev_ids);
-  ?>
-  <html>
-	<head>
-	  <script>
-		function next(day_events, ev_id, theme_id, calendar_id, date, day) {
-		  var p = 0;
-		  for (var key in day_events) {
-			p = p + 1;
-			if (day_events[key] == ev_id && day_events[parseInt(key) + 1]) {
-			  window.location = '<?php echo admin_url('admin-ajax.php?action=spidercalendarbig'); ?>&theme_id=' + theme_id + '&calendar_id=' + calendar_id + '&eventID=' + day_events[parseInt(key) + 1] + '&date=' + date + '&day=' + day + '&widget=<?php echo $widget; ?>';
+	$date_format_array = explode('/', $date_format);
+	$date = ((isset($_GET['date']) && IsDate_inputed(esc_html($_GET['date']))) ? esc_html($_GET['date']) : date("Y-m-d"));
+	$day = substr($date, 8);
+	$ev_id = explode(',', $ev_ids);
+	$activedate = explode('-', $date);
+	$activedatetimestamp = mktime(0, 0, 0, $activedate[1], $activedate[2], $activedate[0]);
+	$activedatestr = '';
+
+	for ($i = 0; $i < count($date_format_array); $i++) {
+		if ($date_format_array[$i] == 'w') {
+			$date_format_array[$i] = 'l';
+		}
+		if ($date_format_array[$i] == 'm') {
+			$date_format_array[$i] = 'F';
+		}
+		if ($date_format_array[$i] == 'y') {
+			$date_format_array[$i] = 'Y';
+		}
+	}
+
+	for ($i = 0; $i < count($date_format_array); $i++) {
+		$activedatestr .= __(date("" . $date_format_array[$i] . "", $activedatetimestamp), 'sp_calendar') . ' ';
+	}
+	?>
+	<html>
+		<head>
+			<script>
+			function next(day_events, ev_id, theme_id, calendar_id, date, day) {
+				var p = 0;
+				for (var key in day_events) {
+					p = p + 1;
+					if (day_events[key] == ev_id && day_events[parseInt(key) + 1]) {
+						window.location = '<?php echo admin_url('admin-ajax.php?action=spidercalendarbig'); ?>&theme_id=' + theme_id + '&calendar_id=' + calendar_id + '&eventID=' + day_events[parseInt(key) + 1] + '&date=' + date + '&day=' + day + '&widget=<?php echo $widget; ?>';
+					}
+				}
 			}
-		  }
-		}
-		function change() {
-		  $('#dayevent').ready(function () {
-			$('#dayevent').animate({
-			  opacity:1,
-			  marginLeft:"0in"
-			}, 1000, function () {
-			});
-		  });
-		}
-		jQuery(document).ready(function() {
-		  change();
-		});
-		// window.onload = change();
-		function prev(array1, ev_id, theme_id, calendar_id, date, day) {
-		  var day_events = array1;
-		  for (var key in day_events) {
-			if (day_events[key] == ev_id && day_events[parseInt(key) - 1]) {
-			  window.location = '<?php echo admin_url('admin-ajax.php?action=spidercalendarbig'); ?>&theme_id=' + theme_id + '&calendar_id=' + calendar_id + '&eventID=' + day_events[parseInt(key) - 1] + '&date=' + date + '&day=' + day + '&widget=<?php echo $widget; ?>';
+			function prev(array1, ev_id, theme_id, calendar_id, date, day) {
+				var day_events = array1;
+				for (var key in day_events) {
+					if (day_events[key] == ev_id && day_events[parseInt(key) - 1]) {
+						window.location = '<?php echo admin_url('admin-ajax.php?action=spidercalendarbig'); ?>&theme_id=' + theme_id + '&calendar_id=' + calendar_id + '&eventID=' + day_events[parseInt(key) - 1] + '&date=' + date + '&day=' + day + '&widget=<?php echo $widget; ?>';
+					}
+				}
 			}
-		  }
-		}
-		document.onkeydown = function (evt) {
-		  evt = evt || window.event;
-		  if (evt.keyCode == 27) {
-			window.parent.document.getElementById('sbox-window').close();
-		  }
-		};
-	  </script>
-	  <style>
-	 body{
-		margin:0px;
-		padding:0px;
-	  }
-	  .date_rate{
-		  background-image: url(<?php echo plugins_url( 'images/calendar1.png' , __FILE__ ); ?>);    
-		  background-repeat: no-repeat; 
-		  padding: 5px 0 5px 65px; 
-		  line-height: 30px; 
-		  background-position: 35px center;  
-		  vertical-align:middle;
-		  font-family: <?php echo $date_font; ?>;
-		  float: left;
-	  }
-	  .events *{
-		 font-family: <?php echo $date_font; ?>; 
-	  }
-	  .events a{
-		  float: left;
-		 width: 90%;
-	  }
-	  .events {
-		border: 1px solid #eaeaea;
-		overflow: hidden;
-		margin: -1px 0 0px 0px;
-		position: relative;
-		}
-	  </style>
-  </head>
-  <body class="pop_body">
-  <div style="background-color:<?php echo $show_event_bgcolor; ?>; height:100%; padding:15px;">
-    <?php
-	if(!isset($date_font_style)) $date_font_style = "";
-echo '<div style="font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_style . ';font-weight:bold;text-align:center;color:' . $date_color . '; margin-bottom: 15px;">'.$activedatestr.'</div>';
-
-
-  			
-      for ($i = 0; $i < count($ev_id); $i++) {
-
-
-	  $row = $wpdb->get_row($wpdb->prepare ("SELECT " . $wpdb->prefix . "spidercalendar_event.* , " . $wpdb->prefix . "spidercalendar_event_category.color
-FROM " . $wpdb->prefix . "spidercalendar_event
-LEFT JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category = " . $wpdb->prefix . "spidercalendar_event_category.id
-WHERE " . $wpdb->prefix . "spidercalendar_event.published=1  AND " . $wpdb->prefix . "spidercalendar_event.id=%d",$ev_id[$i]));
-	if($row->repeat=='1')
-
-		$repeat='';
-
-		else
-
-		$repeat=$row->repeat;
-		
- 		$weekdays=explode(',',$row->week);
-
-
-		
-        if ($row->id == $ev_id[$i]) {
-		  echo '<div class="events">';
-          if ($show_event || $widget==1) {		 
-			if(!isset($row->color)) $row->color = "";
-			echo '	<div style="border-right: 2px solid #'.str_replace('#','',$row->color).';display: table-cell;font-size: 25px;background-color: #E8E8E8; position: absolute; height: 100%;">'.($i + 1).'&nbsp;</div>';
-                 echo '<a style=" padding-left: 30px;text-decoration: none;font-size: 20px;color:' . $title_color . '; line-height:30px"
-                    href="' . add_query_arg(array(
-                      'action' => 'spidercalendarbig',
-                      'theme_id' => $theme_id,
-                      'calendar_id' => $calendar,
-                      'ev_ids' => $ev_ids,
-                      'eventID' => $ev_id[$i],
-                      'date' => $date,
-                      'day' => $day,
-                      'widget' => $widget,
-                      'TB_iframe' => 1,
-                      'tbWidth' => $popup_width,
-                      'tbHeight' => $popup_height,
-                      ), admin_url('admin-ajax.php')) . '">&nbsp;';
-					  
-          echo $row->title . '
-                  </a>';
-          }
-		   else
-		  {
-		   echo '<div style="border-right: 2px solid #'.str_replace('#','',$row->color).';display: table-cell;font-size: 25px;background-color: #E8E8E8;">&nbsp; &nbsp;&nbsp;</div>';
-                 echo '<a style="display: table-cell;text-decoration: none;font-size: 20px;color:' . $title_color . '; line-height:30px"
-                    href="' . add_query_arg(array(
-                      'action' => 'spidercalendarbig',
-                      'theme_id' => $theme_id,
-                      'calendar_id' => $calendar,
-                      'ev_ids' => $ev_ids,
-                      'eventID' => $ev_id[$i],
-                      'date' => $date,
-                      'day' => $day,
-                      'widget' => $widget,
-                      'TB_iframe' => 1,
-                      'tbWidth' => $popup_width,
-                      'tbHeight' => $popup_height,
-                      ), admin_url('admin-ajax.php')) . '">&nbsp;';
-					  
-          echo $row->title . '
-                  </a>';
-		 
-		}
-		
-		  $healthy = array("/", "m", "y", "w");
-		  $yummy   = array(" ","F", "Y", "l");
-		  
-		  $format_date = str_replace($healthy, $yummy, $date_format);	
-		  
-          if($row->date_end == "2035-12-12")
-			$date_end = '';
-		  else
-			$date_end = ' - '.date($format_date, strtotime($row->date_end));
-		
-		  $start_day = date($format_date, strtotime($row->date));
-		if($show_repeat){		
-		   if ($row->repeat_method == 'daily') {
-             echo '<div class="date_rate">Date: '.$start_day.''.$date_end.' ('. __('Repeat Every', 'sp_calendar').' ' .$repeat.' '.__('Day', 'sp_calendar').'), '.convert_time($row_cal->time_format, $row->time) .'</div>';
-            }
+			document.onkeydown = function (evt) {
+				evt = evt || window.event;
+				if (evt.keyCode == 27) {
+					window.parent.document.getElementById('sbox-window').close();
+				}
+			};
+			</script>
+			<style>
+			body{
+				margin:0px;
+				padding:0px;
+				font-family: segoe ui;
+			}
+			.date_rate{
+				background-image: url(<?php echo plugins_url( 'images/calendar1.png' , __FILE__ ); ?>);    
+				background-repeat: no-repeat; 
+				<?php if ($show_event || $widget==1){ ?>
+				padding: 15px 0px 3px 70px;
+				background-position: 35px 15px; 
+				<?php } else{ ?>
+				padding: 15px 0 3px 33px;
+				background-position: 5px 15px; 
+				<?php } ?>
+				background-size: 19px;
+				vertical-align:middle;
+				font-size: 14px;
+				font-family: <?php echo $date_font; ?>;
+				float: left;
+			}
+			.events a{
+				float: left;
+				width: 90%;
+			}
+			.events {
+				border: 1px solid #cccccc;
+				overflow: hidden;
+				margin: 5px 0px 7px 0px;
+				position: relative;
+				padding: 10px 0; 
+			}
 			
+			.pop_body .header_date{
+				font-size: <?php echo $date_size; ?>px; 
+				font-family: <?php echo $date_font; ?>; 
+				font-weight:bold;
+				text-align:center;
+				color: <?php echo $date_color; ?>; 
+				margin-bottom: 15px;
+			}
 			
-				if($row->repeat_method=='weekly')
+			.pop_body .general_div{
+				background-color:<?php echo $show_event_bgcolor; ?>; 
+				padding:15px; 
+				font-size: 15px;
+			}
+			</style>
+		</head>
+		<body class="pop_body">
+			<div class="general_div">
+				<div class="header_date"><?php echo $activedatestr; ?></div>
+			<?php
+			for ($i = 0; $i < count($ev_id); $i++) {
+				$row = $wpdb->get_row($wpdb->prepare ("SELECT " . $wpdb->prefix . "spidercalendar_event.* , " . $wpdb->prefix . "spidercalendar_event_category.color	FROM " . $wpdb->prefix . "spidercalendar_event LEFT JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category = " . $wpdb->prefix . "spidercalendar_event_category.id WHERE " . $wpdb->prefix . "spidercalendar_event.published=1  AND " . $wpdb->prefix . "spidercalendar_event.id=%d",$ev_id[$i]));
+				$repeat = ( $row->repeat!='1' ? $row->repeat : "" );
+				$weekdays = explode(',',$row->week);
+				$row_time = ( ( isset($row->time) && $row->time!="" ) ? ', ' .$row->time : "");
+				$row_color = ( (isset($row->color)) ? 'border-left: 2px solid #'.str_replace('#','',$row->color) : "" );
+				if ($row->id == $ev_id[$i]) {
+					echo '<div class="events" style="'.$row_color.';">';
+					if ($show_event || $widget==1) {
+						echo '<div style="display: table-cell; font-size: 17px; position: absolute; padding: 3px 5px;"><b>'.($i + 1).'&nbsp;</b></div>';
+							echo '<a style=" padding-left: 30px;text-decoration: none;font-size: '.$theme->title_font_size.'px;color:' . $title_color . '; "
+							href="' . add_query_arg(array(
+							'action' => 'spidercalendarbig',
+							'theme_id' => $theme_id,
+							'calendar_id' => $calendar,
+							'ev_ids' => $ev_ids,
+							'eventID' => $ev_id[$i],
+							'date' => $date,
+							'day' => $day,
+							'widget' => $widget,
+							'TB_iframe' => 1,
+							'tbWidth' => $popup_width,
+							'tbHeight' => $popup_height,
+							), admin_url('admin-ajax.php')) . '"><b>&nbsp;'.$row->title . '</b></a>';
+					}
+					else
+					{
+						echo '<a style="display: table-cell;text-decoration: none;font-size: '.$theme->title_font_size.'px;color:' . $title_color . '; line-height:30px"
+						href="' . add_query_arg(array(
+						'action' => 'spidercalendarbig',
+						'theme_id' => $theme_id,
+						'calendar_id' => $calendar,
+						'ev_ids' => $ev_ids,
+						'eventID' => $ev_id[$i],
+						'date' => $date,
+						'day' => $day,
+						'widget' => $widget,
+						'TB_iframe' => 1,
+						'tbWidth' => $popup_width,
+						'tbHeight' => $popup_height,
+						), admin_url('admin-ajax.php')) . '">&nbsp;'.$row->title . '</a>';
 
-		{
+					}
 
-		echo '<div class="date_rate">Date: '.$start_day.''.$date_end.' ('. __('Repeat Every', 'sp_calendar').' ' .$repeat.' '.__('Week(s) on', 'sp_calendar').' ';
+					$healthy = array("/", "m", "y", "w");
+					$yummy   = array(" ","F", "Y", "l");
 
-		for ($j=0;$j<count($weekdays);$j++) 
+					$format_date = str_replace($healthy, $yummy, $date_format);	
+					$start_day = date($format_date, strtotime($row->date));
+					$date_end = ( ($row->date_end != "2035-12-12") ?  ' - '.date($format_date, strtotime($row->date_end)) : "");
+					if($show_repeat){		
+						if ($row->repeat_method == 'daily') {
+							echo '<div class="date_rate">Date: '.$start_day.''.$date_end.' ('. __('Repeat Every', 'sp_calendar').' ' .$repeat.' '.__('Day', 'sp_calendar').')'.$row_time .'</div>';
+						}
 
-		{
+						if($row->repeat_method=='weekly'){
+							echo '<div class="date_rate">Date: '.$start_day.''.$date_end.' ('. __('Repeat Every', 'sp_calendar').' ' .$repeat.' '.__('Week(s) on', 'sp_calendar').' ';
+							for ($j=0;$j<count($weekdays);$j++){
+								if($weekdays[$j]!=''){
+									if( $j!=count($weekdays)-2 )
+										echo week_convert($weekdays[$j]).', ';
+									else echo week_convert($weekdays[$j]);
+								}
+							}
+							echo ')'.$row_time .'</div>';
+						}
 
-			if($weekdays[$j]!=''){
+						if($row->repeat_method=='monthly' and $row->month_type==1){
+							echo '<div class="date_rate">Date: '.$start_day.''.$date_end.' ('. __('Repeat Every', 'sp_calendar').' ' .$repeat.' '.__('Month(s) on the', 'sp_calendar').' '.$row->month.')'.$row_time .'</div>';	
+						}
 
-				if($j!=count($weekdays)-2)
 
-					echo week_convert($weekdays[$j]).', ';
+						if($row->repeat_method=='monthly' and $row->month_type==2){
+							echo '<div class="date_rate">Date: '.$start_day.''.$date_end.' ('. __('Repeat Every', 'sp_calendar').' '.$repeat.' '.__('Month(s) on the', 'sp_calendar').' '.week_number($row->monthly_list).' '.week_convert($row->month_week).')'.$row_time . '</div>';
+						}
 
-				else
+						if($row->repeat_method=='yearly' and $row->month_type==1){
+							echo '<div class="date_rate">Date: '.$start_day.''.$date_end.' ('. __('Repeat Every', 'sp_calendar').' ' .$repeat.' '.__('Year(s) in', 'sp_calendar').' '.date('F',mktime(0,0,0,$row->year_month + 1,0,0)).' '.__('on the', 'sp_calendar').' '.$row->month.')'.$row_time .'</div>';
+						}						
 
-					echo week_convert($weekdays[$j]);
 
-			
 
+						if($row->repeat_method=='yearly' and $row->month_type==2){
+							echo '<div class="date_rate">Date: '.$start_day.''.$date_end.' ('. __('Repeat Every', 'sp_calendar').' ' .$repeat.' '.__('Year(s) in', 'sp_calendar').' '.date('F',mktime(0,0,0,$row->year_month + 1,0,0)).' '.__('on the', 'sp_calendar').' '.week_number($row->monthly_list).' '.week_convert($row->month_week).')' .$row_time .'</div>';	
+						}						
+
+						if($row->repeat_method=='no_repeat'){
+							echo '<div class="date_rate">Date: '.$start_day.'' .$row_time .'</div>';	  
+						}
+					}
+					echo '</div>'; 
+				}
 			}
 
-			
-
-		}
-
-		echo '), '.convert_time($row_cal->time_format, $row->time) .'</div>';
-
-		}
-		
-		if($row->repeat_method=='monthly' and $row->month_type==1)
-
-		echo '<div class="date_rate">Date: '.$start_day.''.$date_end.' ('. __('Repeat Every', 'sp_calendar').' ' .$repeat.' '.__('Month(s) on the', 'sp_calendar').' '.$row->month.'), ' .convert_time($row_cal->time_format, $row->time) .'</div>';	
-
-
-
-		if($row->repeat_method=='monthly' and $row->month_type==2)
-
-		echo '<div class="date_rate">Date: '.$start_day.''.$date_end.' ('. __('Repeat Every', 'sp_calendar').' '.$repeat.' '.__('Month(s) on the', 'sp_calendar').' '.week_number($row->monthly_list).' '.week_convert($row->month_week).'), ' .convert_time($row_cal->time_format, $row->time) . '</div>';
-
-
-
-		if($row->repeat_method=='yearly' and $row->month_type==1)
-
-		echo '<div class="date_rate">Date: '.$start_day.''.$date_end.' ('. __('Repeat Every', 'sp_calendar').' ' .$repeat.' '.__('Year(s) in', 'sp_calendar').' '.date('F',mktime(0,0,0,$row->year_month + 1,0,0)).' '.__('on the', 'sp_calendar').' '.$row->month.'), ' .convert_time($row_cal->time_format, $row->time) .'</div>';	
-
-
-
-		if($row->repeat_method=='yearly' and $row->month_type==2)
-
-		echo '<div class="date_rate">Date: '.$start_day.''.$date_end.' ('. __('Repeat Every', 'sp_calendar').' ' .$repeat.' '.__('Year(s) in', 'sp_calendar').' '.date('F',mktime(0,0,0,$row->year_month + 1,0,0)).' '.__('on the', 'sp_calendar').' '.week_number($row->monthly_list).' '.week_convert($row->month_week).'),  ' .convert_time($row_cal->time_format, $row->time) .'</div>';		
-
-
-
-		if($row->repeat_method=='no_repeat')
-
-		echo '<div class="date_rate">Date: '.$start_day.'  ' .convert_time($row_cal->time_format, $row->time) .'</div>';	  
-		}
-		echo '</div>'; 
-        }
-      }
-    
-    ?>
-</div>
-</body>
-</html>
-  <?php
-  die();
+			?>
+			</div>
+		</body>
+	</html>
+	<?php
+	die();
 }
 
 function spiderbigcalendar() {
-  require_once("front_end/frontend_functions.php");
-  $calendar_id = (isset($_GET['calendar_id']) ? (int) $_GET['calendar_id'] : 0);
-  $date = ((isset($_GET['date']) && IsDate_inputed(esc_html($_GET['date']))) ? esc_html($_GET['date']) : date("Y") . '-' . php_Month_num(date("F")) . '-' . date("d"));
-  $ev_ids_inline = (isset($_GET['ev_ids']) ? esc_html($_GET['ev_ids']) : '');
-  $eventID = (isset($_GET['eventID']) ? (int) $_GET['eventID'] : '');
-  $widget = ((isset($_GET['widget']) && (int) $_GET['widget']) ? (int) $_GET['widget'] : 0);
-  $theme_id = (isset($_GET['theme_id']) ? (int) $_GET['theme_id'] : 1);
-  global $wpdb;
-  if ($widget) {
-    $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_widget_theme WHERE id=%d', $theme_id));
-  }
-  else {
-    $theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_theme WHERE id=%d', $theme_id));
-  }
-  
-  $row_cal =  $wpdb->get_row($wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar where published=1 and id=%d",$calendar_id));
-  
-  $title_color = '#' . str_replace('#','',$theme->title_color);
-  $title_size = ((isset($theme->title_font_size) && $theme->title_font_size!="") ? $theme->title_font_size : '21');
-  $title_font = ((isset($theme->title_font) && $theme->title_font!="") ? $theme->title_font : '');
-  $title_style = ((isset($theme->title_style) && $theme->title_style!="") ? $theme->title_style : 'bold');
-  $date_color = '#' . str_replace('#','',$theme->date_color);
-  $date_size = $theme->date_size;
-  $date_font = $theme->date_font;
-  $date_style = $theme->date_style;
-  $next_prev_event_bgcolor = '#' . str_replace('#','',$theme->next_prev_event_bgcolor);
-  $next_prev_event_arrowcolor = '#' . str_replace('#','',$theme->next_prev_event_arrowcolor);
-  $show_event_bgcolor = '#' . str_replace('#','',$theme->show_event_bgcolor);
-  $popup_width = $theme->popup_width;
-  $popup_height = $theme->popup_height;
-  $date_format = $theme->date_format;
-  $show_repeat = $theme->show_repeat;
-  $date_format_array = explode('/', $date_format);
+	global $wpdb;
+	require_once("front_end/frontend_functions.php");
+	$calendar_id = (isset($_GET['calendar_id']) ? (int) $_GET['calendar_id'] : 0);
+	$date = ((isset($_GET['date']) && IsDate_inputed(esc_html($_GET['date']))) ? esc_html($_GET['date']) : date("Y") . '-' . php_Month_num(date("F")) . '-' . date("d"));
+	$ev_ids_inline = (isset($_GET['ev_ids']) ? esc_html($_GET['ev_ids']) : '');
+	$eventID = (isset($_GET['eventID']) ? (int) $_GET['eventID'] : '');
+	$widget = ((isset($_GET['widget']) && (int) $_GET['widget']) ? (int) $_GET['widget'] : 0);
+	$theme_id = (isset($_GET['theme_id']) ? (int) $_GET['theme_id'] : 1);
+	
+	if ($widget) {
+		$theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_widget_theme WHERE id=%d', $theme_id));
+	}
+	else {
+		$theme = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spidercalendar_theme WHERE id=%d', $theme_id));
+	}
 
+	$title_color = '#' . str_replace('#','',$theme->title_color);
+	$title_size = ((isset($theme->title_font_size) && $theme->title_font_size!="") ? $theme->title_font_size : '21');
+	$title_font = ((isset($theme->title_font) && $theme->title_font!="") ? $theme->title_font : '');
+	$title_style = ((isset($theme->title_style) && $theme->title_style!="") ? $theme->title_style : 'bold');
+	$date_color = '#' . str_replace('#','',$theme->date_color);
+	$date_size = $theme->date_size;
+	$date_font = $theme->date_font;
+	$date_style = $theme->date_style;
+	$next_prev_event_bgcolor = '#' . str_replace('#','',$theme->next_prev_event_bgcolor);
+	$next_prev_event_arrowcolor = '#' . str_replace('#','',$theme->next_prev_event_arrowcolor);
+	$show_event_bgcolor = '#' . str_replace('#','',$theme->show_event_bgcolor);
+	$popup_width = $theme->popup_width;
+	$popup_height = $theme->popup_height;
+	$date_format = $theme->date_format;
+	$show_repeat = $theme->show_repeat;
+	$date_format_array = explode('/', $date_format);
+	$date_format_pop = explode('/', $date_format);
+	$date_font_weight = ( ($date_style == "bold" or $date_style == "bold/italic") ? "font-weight: bold" : "font-weight: normal" );
+	$date_font_style = ( ($date_style == "bold" or $date_style == "bold/italic") ? "font-style: italic" : "font-style: inherit" );
+	if ($title_style == "bold" or $title_style == "bold/italic") {
+		$font_weight = "font-weight:bold";
+		$font_style = "font-style:italic";
+	}
+	else {
+		$font_weight = "font-weight:normal";
+		$font_style = "";
+	}
 
-  for ($i = 0; $i < count($date_format_array); $i++) {
-    if ($date_format_array[$i] == 'w') {
-      $date_format_array[$i] = 'l';
-    }
-    if ($date_format_array[$i] == 'm') {
-      $date_format_array[$i] = 'F';
-    }
-    if ($date_format_array[$i] == 'y') {
-      $date_format_array[$i] = 'Y';
-    }
-  }
-  $all_files_cal = php_showevent($calendar_id, $date, $eventID);
-  $row = $all_files_cal[0]['row'];
-  $datte = ((isset($_GET['date']) && IsDate_inputed(esc_html($_GET['date']))) ? esc_html($_GET['date']) : date("Y-m-d"));
-  $activedate = explode('-', $datte);
-  $activedatetimestamp = mktime(0, 0, 0, $activedate[1], $activedate[2], $activedate[0]);
-  $activedatestr = '';
+	$date_format_content = implode("/",$date_format_pop);
+	
+	for ($i = 0; $i < count($date_format_array); $i++) {
+		if ($date_format_array[$i] == 'w') {
+			$date_format_array[$i] = 'l';
+			unset($date_format_pop[$i]);
+		}
+		if ($date_format_array[$i] == 'm') {
+			$date_format_array[$i] = 'F';
+		}
+		if ($date_format_array[$i] == 'y') {
+			$date_format_array[$i] = 'Y';
+			$date_format_pop[$i] = 'Y';
+		}
+	}
 
-  for ($i = 0; $i < count($date_format_array); $i++) {
-    $activedatestr .= __(date("" . $date_format_array[$i] . "", $activedatetimestamp), 'sp_calendar') . ' ';
-  }
-  $date = $datte;
-  $day = substr($date, 8);
-  $ev_id = explode(',', $ev_ids_inline);
-  
-  
-  ?>
-  <html>
-	  <head>
-		  <script>
+	$all_files_cal = php_showevent($calendar_id, $date, $eventID);
+	$row = $all_files_cal[0]['row'];
+	$date = ((isset($_GET['date']) && IsDate_inputed(esc_html($_GET['date']))) ? esc_html($_GET['date']) : date("Y-m-d"));
+	$day = substr($date, 8);
+	$ev_id = explode(',', $ev_ids_inline); 
+	$activedate = explode('-', $date);
+	$activedatetimestamp = mktime(0, 0, 0, $activedate[1], $activedate[2], $activedate[0]);
+	$activedatestr = '';
+	$color = $wpdb->get_results("SELECT " . $wpdb->prefix . "spidercalendar_event.* , " . $wpdb->prefix . "spidercalendar_event_category.color FROM " . $wpdb->prefix . "spidercalendar_event JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category = " . $wpdb->prefix . "spidercalendar_event_category.id WHERE " . $wpdb->prefix . "spidercalendar_event_category.published=1 AND " . $wpdb->prefix . "spidercalendar_event.id='".$row->id."'");
+
+	$row_title = ( isset($row->title) ? $row->title : "" );
+	$row_color = ( isset($color[0]->color) ? $color[0]->color : "" );
+	$pop_content = wpautop($row->text_for_date);
+	$pop_content = do_shortcode($pop_content);
+	
+	$weekdays = explode(',', $row->week);
+	$date_format1 = substr($theme->date_format, 2);
+	$repeat = ( $row->repeat != '1' ? $row->repeat : "");
+	if ($row->date_end == '2035-12-12') {
+		$row->date_end = '';
+	}
+	
+	
+	for ($i = 0; $i < count($date_format_array); $i++) {
+		$activedatestr .= __(date("" . $date_format_array[$i] . "", $activedatetimestamp), 'sp_calendar') . ' ';
+	}
+
+	?>
+	<html>
+		<head>   
+			<script>
 			function next(day_events, ev_id, theme_id, calendar_id, date, day, ev_ids) {
-			  var p = 0;
-			  for (var key in day_events) {
-				p = p + 1;
-				if (day_events[key] == ev_id && day_events[parseInt(key) + 1]) {
-				  window.location = '<?php echo admin_url('admin-ajax.php?action=spidercalendarbig')?>&theme_id=' + theme_id + '&calendar_id=' + calendar_id + '&ev_ids=' + ev_ids + '&eventID=' + day_events[parseInt(key) + 1] + '&date=' + date + '&day=' + day + '&widget=<?php echo $widget; ?>';
+				var p = 0;
+				for (var key in day_events) {
+					p = p + 1;
+					if (day_events[key] == ev_id && day_events[parseInt(key) + 1]) {
+						window.location = '<?php echo admin_url('admin-ajax.php?action=spidercalendarbig')?>&theme_id=' + theme_id + '&calendar_id=' + calendar_id + '&ev_ids=' + ev_ids + '&eventID=' + day_events[parseInt(key) + 1] + '&date=' + date + '&day=' + day + '&widget=<?php echo $widget; ?>';
+					}
 				}
-			  }
 			}
-			function change() {
-			  jQuery('#dayevent').ready(function () {
-				jQuery('#dayevent').animate({
-				  opacity:1,
-				  marginLeft:"0in"
-				}, 1000, function () {
-				});
-			  });
-			}
-			jQuery(document).ready(function() {
-			  change();
-			});
-			// window.onload = change();
 			function prev(array1, ev_id, theme_id, calendar_id, date, day, ev_ids) {
-			  var day_events = array1;
-			  for (var key in day_events) {
-				if (day_events[key] == ev_id && day_events[parseInt(key) - 1]) {
-				  window.location = '<?php echo admin_url('admin-ajax.php?action=spidercalendarbig')?>&theme_id=' + theme_id + '&calendar_id=' + calendar_id + '&ev_ids=' + ev_ids + '&eventID=' + day_events[parseInt(key) - 1] + '&date=' + date + '&day=' + day + '&widget=<?php echo $widget; ?>';
+				var day_events = array1;
+				for (var key in day_events) {
+					if (day_events[key] == ev_id && day_events[parseInt(key) - 1]) {
+						window.location = '<?php echo admin_url('admin-ajax.php?action=spidercalendarbig')?>&theme_id=' + theme_id + '&calendar_id=' + calendar_id + '&ev_ids=' + ev_ids + '&eventID=' + day_events[parseInt(key) - 1] + '&date=' + date + '&day=' + day + '&widget=<?php echo $widget; ?>';
+					}
 				}
-			  }
 			}
 			document.onkeydown = function (evt) {
-			  evt = evt || window.event;
-			  if (evt.keyCode == 27) {
-				window.parent.document.getElementById('sbox-window').close();
-			  }
+				evt = evt || window.event;
+				if (evt.keyCode == 27) {
+					window.parent.document.getElementById('sbox-window').close();
+				}
 			};
-		  </script>	  
-		  <?php 
-		  $color = $wpdb->get_results("SELECT " . $wpdb->prefix . "spidercalendar_event.* , " . $wpdb->prefix . "spidercalendar_event_category.color
-		FROM " . $wpdb->prefix . "spidercalendar_event
-		JOIN " . $wpdb->prefix . "spidercalendar_event_category ON " . $wpdb->prefix . "spidercalendar_event.category = " . $wpdb->prefix . "spidercalendar_event_category.id
-		WHERE " . $wpdb->prefix . "spidercalendar_event_category.published=1 AND " . $wpdb->prefix . "spidercalendar_event.id='".$row->id."'");
-
-		  ?>
-		  <style>
-			#dayevent {
-			  opacity: 1;
+			</script>
+			<style>
+			body{
+				margin:0px;
+				padding: 0px;
+				font-family: segoe ui;
 			}
+
 			#previous,
 			#next {
-			  cursor: pointer;
-			  height: <?php echo $popup_height - 51; ?>px;
-			  width: 5%;
+				cursor: pointer;
+				height: 35px;
+				width: 5%;
 			}
+			
+			#next{
+				float: right;
+			}
+			
+			#previous{
+				float: left;
+			}
+			
+			#pn_arrows{
+			    margin: 10px 0px 20px 0px;
+				display: inline-block;
+				width: 100%;
+				height: 65px;
+			}
+			
 			.arrow {
-			  color: <?php echo $next_prev_event_arrowcolor; ?>;
-			  font-size: 50px;
-			  text-decoration: none;
+				color: <?php echo $next_prev_event_arrowcolor; ?>;				
+				font-size: 29px;
+				text-decoration: none;
+				font-family: monospace;
 			}
-			body{
-			margin:0px;
-			padding:0px;
+			
+			.pop_body table{
+				display: inline-block; 
+				width:100%;
+				font-size: 15px; 
+				background-color: <?php echo $show_event_bgcolor; ?>; 
+				border-spacing: 0; 
+				padding: 15px; 
+				max-width: calc( 100% - 30px);
 			}
-		  </style>
-	 </head>
- <body class="pop_body">
-  <table style="height:100%;width:100%;background-color:<?php echo $show_event_bgcolor; ?>; border-spacing:0" align="center" id="pop_table">
-    <tr>
-      <td id="previous"
-        onClick="prev([<?php echo $ev_ids_inline; ?>],<?php echo $eventID; ?>,<?php echo $theme_id ?>,<?php echo $calendar_id ?>,'<?php echo $date; ?>',<?php echo $day ?>,'<?php echo $ev_ids_inline ?>')"
-        style="<?php if (count($ev_id) == 1 or $eventID == $ev_id[0])
-          echo 'display:none'; ?>;text-align:center"
-        onMouseOver="document.getElementById('previous').style.backgroundColor='<?php echo $next_prev_event_bgcolor ?>'"
-        onMouseOut="document.getElementById('previous').style.backgroundColor=''">
-        <span class="arrow">&lt;</span>
-      </td>
-      <td style="vertical-align:top; width:45%">
-        <?php
-        echo '<div id="dayevent" style="padding:0px 0px 0px 7px ;line-height:30px; padding-top:0px;">
-		';
-        if ($date_style == "bold" or $date_style == "bold/italic") {
-          $date_font_weight = "font-weight:bold";
-        }
-        else {
-          $date_font_weight = "font-weight:normal";
-        }
-        if ($date_style == "italic" or $date_style == "bold/italic") {
-          $date_font_style = "font-style:italic";
-        }
-        else {
-          $date_font_style = "";
-        }
-        echo '<div style="text-align:center;border-bottom:1px solid #F3F3F3;color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_weight . '; ' . $date_font_style . '  ">' . $activedatestr . '</div>';
-        if ($title_style == "bold" or $title_style == "bold/italic") {
-          $font_weight = "font-weight:bold";
-        }
-        else {
-          $font_weight = "font-weight:normal";
-        }
-        if ($title_style == "italic" or $title_style == "bold/italic") {
-          $font_style = "font-style:italic";
-        }
-        else {
-          $font_style = "";
-        }
-        $weekdays = explode(',', $row->week);
-        $date_format1 = substr($theme->date_format, 2);
-        if ($row->repeat == '1') {
-          $repeat = '';
-        }
-        else {
-          $repeat = $row->repeat;
-        }
-        if ($row->date_end == '2035-12-12') {
-          $row->date_end = '';
-        }
-        
-          if ($row->date_end and $row->date_end != '0000-00-00') {
-            echo '<div style="color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_weight . '; ' . $date_font_style . '  ">' . __('Date', 'sp_calendar') . ':' . str_replace("d", substr($row->date, 8, 2), str_replace("m", substr($row->date, 5, 2), str_replace("y", substr($row->date, 0, 4), $date_format1))) . '&nbsp;-&nbsp;' . str_replace("d", substr($row->date_end, 8, 2), str_replace("m", substr($row->date_end, 5, 2), str_replace("y", substr($row->date_end, 0, 4), $date_format1))) . '&nbsp;' . convert_time($row_cal->time_format, $row->time) . '</div>';
-          }
-          else {
-            echo '<div style="color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $font_weight . '; ' . $font_style . '  ">' . convert_time($row_cal->time_format, $row->time) . '</div>';
-          }
-          if ($show_repeat == 1) {
-            if ($row->repeat_method == 'daily') {
+			
+			.pop_body table tbody,
+			.pop_body table tr,
+			.pop_body table td{
+				padding: 0; 
+				display: inline-block; 
+				width: 100%;
+			}
+			
+			#dayevent{
+				padding: 0 0px 7px 0; 
+				line-height:30px;
+			}
+			
+			#dayevent .header_date{
+				padding: 7px 0; 
+				text-align: center; 
+				color: <?php echo $date_color; ?>;
+				font-size: <?php echo $date_size; ?>px; 
+				font-family: <?php echo $date_font; ?>; 
+				<?php echo $date_font_weight; ?>; 
+				<?php echo $date_font_style; ?>
+			}
+			</style>
+		</head>
+		<body class="pop_body">
+			<table align="center" id="pop_table">
+				<tbody>
+					<tr>
+						<td>
+							<div id="dayevent">
+								<div class="header_date"><b><?php echo $activedatestr; ?></b></div>
+							<?php
+							if ($row->date_end and $row->date_end != '0000-00-00') {
+								echo '<div style="color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_weight . '; ' . $date_font_style . '  ">' . __('Date', 'sp_calendar') . ':' . str_replace("d", substr($row->date, 8, 2), str_replace("m", substr($row->date, 5, 2), str_replace("y", substr($row->date, 0, 4), $date_format1))) . '&nbsp;-&nbsp;' . str_replace("d", substr($row->date_end, 8, 2), str_replace("m", substr($row->date_end, 5, 2), str_replace("y", substr($row->date_end, 0, 4), $date_format1))) . '&nbsp;' . $row->time . '</div>';
+							}
+							else {
+								echo '<div style="color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $font_weight . '; ' . $font_style . '  ">' . $row->time . '</div>';
+							}
+							if ($show_repeat == 1) {
+								if ($row->repeat_method == 'daily') {
+									echo '<div style="color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_weight . '; ' . $date_font_style . '  ">' . __('Repeat Every', 'sp_calendar') . ' ' . $repeat . ' ' . __('Day', 'sp_calendar') . '</div>';
+								}
+								if ($row->repeat_method == 'weekly') {
+									echo '<div style="color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_weight . '; ' . $date_font_style . '  ">' . __('Repeat Every', 'sp_calendar') . ' ' . $repeat . ' ' . __('Week(s) on', 'sp_calendar') . ' : ';
+									for ($i = 0; $i < count($weekdays); $i++) {
+										if ($weekdays[$i] != '') {
+											if ($i != count($weekdays) - 2) {
+												echo week_convert($weekdays[$i]) . ', ';
+											}
+											else {
+												echo week_convert($weekdays[$i]);
+											}
+										}
+									}
+									echo '</div>';
+								}
+								if ($row->repeat_method == 'monthly' and $row->month_type == 1) {
+									echo '<div style="color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_weight . '; ' . $date_font_style . '  ">' . __('Repeat Every', 'sp_calendar') . ' ' . $repeat . ' ' . __('Month(s) on the', 'sp_calendar') . ' ' . $row->month . '</div>';
+								}
+								if ($row->repeat_method == 'monthly' and $row->month_type == 2) {
+									echo '<div style="color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_weight . '; ' . $date_font_style . '  ">' . __('Repeat Every', 'sp_calendar') . ' ' . $repeat . ' ' . __('Month(s) on the', 'sp_calendar') . ' ' . week_number($row->monthly_list) . ' ' . week_convert($row->month_week) . '</div>';
+								}
+								if ($row->repeat_method == 'yearly' and $row->month_type == 1) {
+									echo '<div style="color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_weight . '; ' . $date_font_style . '  ">' . __('Repeat Every', 'sp_calendar') . ' ' . $repeat . ' ' . __('Year(s) in', 'sp_calendar') . ' ' . date('F', mktime(0, 0, 0, $row->year_month + 1, 0, 0)) . ' ' . __('on the', 'sp_calendar') . ' ' . $row->month . '</div>';
+								}
+								if ($row->repeat_method == 'yearly' and $row->month_type == 2) {
+									echo '<div style="color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_weight . '; ' . $date_font_style . '  ">' . __('Repeat Every', 'sp_calendar') . ' ' . $repeat . ' ' . __('Year(s) in', 'sp_calendar') . ' ' . date('F', mktime(0, 0, 0, $row->year_month + 1, 0, 0)) . ' ' . __('on the', 'sp_calendar') . ' ' . week_number($row->monthly_list) . ' ' . week_convert($row->month_week) . '</div>';
+								}
+							}
+							echo "<hr style='max-width: 300px; margin-left: 0; background: #97a0a6; height: 1px; border: 0;'>";
 
-              echo '<div style="color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_weight . '; ' . $date_font_style . '  ">' . __('Repeat Every', 'sp_calendar') . ' ' . $repeat . ' ' . __('Day', 'sp_calendar') . '</div>';
-            }
-            if ($row->repeat_method == 'weekly') {
-              echo '<div style="color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_weight . '; ' . $date_font_style . '  ">' . __('Repeat Every', 'sp_calendar') . ' ' . $repeat . ' ' . __('Week(s) on', 'sp_calendar') . ' : ';
-              for ($i = 0; $i < count($weekdays); $i++) {
-                if ($weekdays[$i] != '') {
-                  if ($i != count($weekdays) - 2) {
-                    echo week_convert($weekdays[$i]) . ', ';
-                  }
-                  else {
-                    echo week_convert($weekdays[$i]);
-                  }
-                }
-              }
-              echo '</div>';
-            }
-            if ($row->repeat_method == 'monthly' and $row->month_type == 1) {
-              echo '<div style="color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_weight . '; ' . $date_font_style . '  ">' . __('Repeat Every', 'sp_calendar') . ' ' . $repeat . ' ' . __('Month(s) on the', 'sp_calendar') . ' ' . $row->month . '</div>';
-            }
-            if ($row->repeat_method == 'monthly' and $row->month_type == 2) {
-              echo '<div style="color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_weight . '; ' . $date_font_style . '  ">' . __('Repeat Every', 'sp_calendar') . ' ' . $repeat . ' ' . __('Month(s) on the', 'sp_calendar') . ' ' . week_number($row->monthly_list) . ' ' . week_convert($row->month_week) . '</div>';
-            }
-            if ($row->repeat_method == 'yearly' and $row->month_type == 1) {
-              echo '<div style="color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_weight . '; ' . $date_font_style . '  ">' . __('Repeat Every', 'sp_calendar') . ' ' . $repeat . ' ' . __('Year(s) in', 'sp_calendar') . ' ' . date('F', mktime(0, 0, 0, $row->year_month + 1, 0, 0)) . ' ' . __('on the', 'sp_calendar') . ' ' . $row->month . '</div>';
-            }
-            if ($row->repeat_method == 'yearly' and $row->month_type == 2) {
-              echo '<div style="color:' . $date_color . ';font-size:' . $date_size . 'px; font-family:' . $date_font . '; ' . $date_font_weight . '; ' . $date_font_style . '  ">' . __('Repeat Every', 'sp_calendar') . ' ' . $repeat . ' ' . __('Year(s) in', 'sp_calendar') . ' ' . date('F', mktime(0, 0, 0, $row->year_month + 1, 0, 0)) . ' ' . __('on the', 'sp_calendar') . ' ' . week_number($row->monthly_list) . ' ' . week_convert($row->month_week) . '</div>';
-            }
-          }
-		  if(isset($row->title)) $row_title=$row->title;
-		  else $row_title ="";
-		  if(isset($color[0]->color))
-		  $row_color = $color[0]->color;
-		  else
-		  $row_color = "";
-		  
-          echo '<div style="color:' . $title_color . ';font-size:' . $title_size . 'px; font-family:' . $title_font . '; ' . $font_weight . '; ' . $font_style . '  ">' . $row_title . '</div>';
-		  if ($row->text_for_date != '') {
-
-		  $pop_content = wpautop($row->text_for_date);
-		  $pop_content = do_shortcode($pop_content);
-		  
-          echo '<div style="line-height:20px">' . $pop_content . '</div>';
-		  }
-		   else {
-	
-          echo '<p style="text-align:center">' . __('There Is No Text For This Event', 'sp_calendar') . '</p>';
-        }
-        
-       
-        echo '</div>';
-
-        ?>
-        <div style="height:50px;width:98%;text-align:right;<?php if(count($ev_id) == 1) echo 'display:none;' ?>">
-          <a class="back_cal" style="color:<?php echo $title_color; ?>;font-size:15px; font-family:<?php echo $title_font; ?>;<?php echo $font_weight; ?>;<?php echo $font_style; ?>;"
-            href="<?php echo add_query_arg(array(
-                        'action' => 'spiderseemore',
-                        'theme_id' => $theme_id,
-                        'calendar_id' => $calendar_id,
-                        'ev_ids' => $ev_ids_inline,
-                        'date' => $date,
-                        'widget' => $widget,
-                        'TB_iframe' => 1,
-                        'tbWidth' => $popup_width,
-                        'tbHeight' => $popup_height,
-                        ), admin_url('admin-ajax.php')); ?>"><?php echo __('Back to event list', 'sp_calendar'); ?>
-          </a>
-        </div><br>
-		<br>
-      </td>
-      <td id="next"
-          onclick="next([<?php echo $ev_ids_inline ?>],<?php echo $eventID ?>,<?php echo $theme_id ?>,<?php echo $calendar_id ?>,'<?php echo $date ?>',<?php echo $day ?>,'<?php echo $ev_ids_inline ?>')"
-          style="<?php if (count($ev_id) == 1 or $eventID == end($ev_id))
-            echo 'display:none' ?>;text-align:center"
-          onMouseOver="document.getElementById('next').style.backgroundColor='<?php echo $next_prev_event_bgcolor ?>'"
-          onMouseOut="document.getElementById('next').style.backgroundColor=''">
-        <span class="arrow">&gt;</span>
-      </td>
-    </tr>
-   </table>
-  </body>
-</html>
-<?php
-  die();
-  }
-
-?>
+							echo '<div style="color:' . $title_color . ';font-size:' . $title_size . 'px; font-family:' . $title_font . '; ' . $font_weight . '; ' . $font_style . '  ">' . $row_title . '</div>';
+							if ($row->text_for_date != '') {
+								echo '<div style="line-height:20px">' . $pop_content . '</div>';
+							}
+							else {
+								echo '<p style="text-align:center">' . __('There Is No Text For This Event', 'sp_calendar') . '</p>';
+							}
+							?>
+							</div>
+							<div style="width:98%;text-align:right;<?php if(count($ev_id) == 1) echo 'display:none;' ?>">
+								<a class="back_cal" style="color:<?php echo $title_color; ?>;font-size:15px; font-family:<?php echo $title_font; ?>; <?php echo $font_weight; ?>; <?php echo $font_style; ?>;"
+								href="<?php echo add_query_arg(array(
+								'action' => 'spiderseemore',
+								'theme_id' => $theme_id,
+								'calendar_id' => $calendar_id,
+								'ev_ids' => $ev_ids_inline,
+								'date' => $date,
+								'widget' => $widget,
+								'TB_iframe' => 1,
+								'tbWidth' => $popup_width,
+								'tbHeight' => $popup_height,
+								), admin_url('admin-ajax.php')); ?>"><b><?php echo __('Back to event list', 'sp_calendar'); ?>
+								</b></a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="pn_arrows" style="<?php if ( count($ev_id) == 1 ) echo 'display: none'; ?>;">
+				<div id="previous"
+					onClick="prev([<?php echo $ev_ids_inline; ?>],<?php echo $eventID; ?>,<?php echo $theme_id ?>,<?php echo $calendar_id ?>,'<?php echo $date; ?>',<?php echo $day ?>,'<?php echo $ev_ids_inline ?>')"
+					style="<?php if (count($ev_id) == 1 or $eventID == $ev_id[0]) echo 'display: none'; ?>; text-align: center;"
+					onMouseOver="document.getElementById('previous').style.backgroundColor='<?php echo $next_prev_event_bgcolor ?>'"
+					onMouseOut="document.getElementById('previous').style.backgroundColor=''">
+						<span class="arrow">&lt;</span>
+				</div>
+				<div id="next"
+					onclick="next([<?php echo $ev_ids_inline ?>],<?php echo $eventID ?>,<?php echo $theme_id ?>,<?php echo $calendar_id ?>,'<?php echo $date ?>',<?php echo $day ?>,'<?php echo $ev_ids_inline ?>')"
+					style="<?php if (count($ev_id) == 1 or $eventID == end($ev_id))
+					echo 'display:none' ?>;text-align:center"
+					onMouseOver="document.getElementById('next').style.backgroundColor='<?php echo $next_prev_event_bgcolor ?>'"
+					onMouseOut="document.getElementById('next').style.backgroundColor=''">
+						<span class="arrow">&gt;</span>
+				</div>
+			</div>
+		</body>
+	</html>
+	<?php die(); 
+} ?>

@@ -3,12 +3,12 @@
 Plugin Name: Spider Event Calendar
 Plugin URI: https://web-dorado.com/products/wordpress-calendar.html
 Description: Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. Spider Event Calendar is an extraordinary user friendly extension.
-Version: 1.5.52
+Version: 1.5.53
 Author: WebDorado
 Author URI: https://web-dorado.com
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
-$wd_spider_calendar_version="1.5.52";
+$wd_spider_calendar_version="1.5.53";
 // LANGUAGE localization.
 function sp_calendar_language_load() {
   load_plugin_textdomain('sp_calendar', FALSE, basename(dirname(__FILE__)) . '/languages');
@@ -100,7 +100,7 @@ $themes = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'spid
 }
   $cal_width = $themes->width; ?>
   <input type="hidden" id="cal_width<?php echo $many_sp_calendar ?>" value="<?php echo $cal_width ?>" /> 
-  <div id='bigcalendar<?php echo $many_sp_calendar ?>'></div>
+  <div id='bigcalendar<?php echo $many_sp_calendar ?>' class="wdc_calendar"></div>
   <script> 
     var tb_pathToImage = "<?php echo plugins_url('images/loadingAnimation.gif', __FILE__) ?>";
     var tb_closeImage = "<?php echo plugins_url('images/tb-close.png', __FILE__) ?>"
@@ -154,7 +154,8 @@ if(widget!=1)
 	jQuery('pop_table').css('height','100%');
 }
         var thickDims, tbWidth, tbHeight;
-        jQuery(document).ready(function ($) {			
+        jQuery(document).ready(function ($) {	
+		if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) { jQuery('body').addClass('ios_device'); } 			
 		 setInterval(function(){	
 				if(jQuery("body").hasClass("modal-open")) jQuery("html").addClass("thickbox_open");
 				else jQuery("html").removeClass("thickbox_open");
@@ -275,85 +276,11 @@ if(widget!=1)
       'widget' => $widget,
 	  'rand' => $many_sp_calendar,
       ), admin_url('admin-ajax.php'));?>','<?php echo $many_sp_calendar; ?>','<?php echo $widget; ?>');</script>
-<style>
-html.thickbox_open{
-	overflow: hidden;
-}
-#TB_window iframe{
-	margin-left: 0;
-	margin-top: 0;
-	padding-left: 0;
-	padding-top: 0;
-}
-
-#TB_iframeContent{
-	height: 100% !important;
-	width: 100%;
-}
-#TB_window{
-	z-index: 1000000;
-	color: #dfdfdf;
-	top: 100px !important;
-}
-#TB_title{
-	background: #222;
-}
-
-.screen-reader-text,
-#views_select .arrow-down,
-#views_select .arrow-right{
-	display: none;
-}
-
-#afterbig<?php echo $many_sp_calendar; ?>{
-	display: block !important;
-}
-
-#afterbig<?php echo $many_sp_calendar; ?> li{
-	list-style: none;
-}
-#bigcalendar<?php echo $many_sp_calendar; ?> p{
-	margin: 0;
-	padding: 0;
-}
-
-#bigcalendar<?php echo $many_sp_calendar; ?> table{
-	table-layout: auto;
-}
-
-.general_table a,
-.last_table a,
-.week_list a,
-.day_ev a{
-	border: 0;
-}
-
-.show_arrow{
-	display: inline-block !important;
-}
-@media screen and (max-width: 768px) {
-	#bigcalendar<?php echo $many_sp_calendar; ?> #cal_event p:not(.ev_name){
-		 display: block; /* Fallback for non-webkit */
-		 display: -webkit-box;
-		 max-width: 400px;
-		 height: 32px; /* Fallback for non-webkit */
-		 margin: 0 auto;
-		 font-size: 13px;
-		 line-height: 15px;
-		 -webkit-line-clamp: 2;
-		 -webkit-box-orient: vertical;
-		 overflow: hidden;
-		 text-overflow: ellipsis;
+	<style>
+	#TB_window iframe{
+		background: <?php echo '#'.str_replace('#','',$themes->show_event_bgcolor); ?>;
 	}
-	div#afterbig<?php echo $many_sp_calendar; ?>{
-		width: 100% !important;
-		margin: 0;
-	}
-	#bigcalendar<?php echo $many_sp_calendar; ?> .cala_day{
-		max-width: 37px;
-	}
-}
-</style>
+	</style>
   <?php
   $many_sp_calendar++;
   $calendar = ob_get_contents();
