@@ -1,9 +1,11 @@
 <?php
+if( !defined('ABSPATH') ){ exit();}
 global $current_user;
 $auth_varble=0;
 wp_get_current_user();
 $imgpath= plugins_url()."/social-media-auto-publish/admin/images/";
 $heimg=$imgpath."support.png";
+$ms0="";
 $ms1="";
 $ms2="";
 $ms3="";
@@ -36,6 +38,11 @@ Thanks again for using the plugin. We will never show the message again.
 $erf=0;
 if(isset($_POST['fb']))
 {
+	if (! isset( $_REQUEST['_wpnonce'] )|| ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'xyz_smap_fb_settings_form_nonce' ))
+	{
+		wp_nonce_ays( 'xyz_smap_fb_settings_form_nonce' );
+		exit();
+	}
 	
 	$ss=array();
 	if(isset($_POST['smap_pages_list']))
@@ -65,13 +72,20 @@ if(isset($_POST['fb']))
 	$applidold=get_option('xyz_smap_application_id');
 	$applsecretold=get_option('xyz_smap_application_secret');
 	//$fbidold=get_option('xyz_smap_fb_id');
-	$posting_method=$_POST['xyz_smap_po_method'];
-	$posting_permission=$_POST['xyz_smap_post_permission'];
-	$appid=$_POST['xyz_smap_application_id'];
-	$appsecret=$_POST['xyz_smap_application_secret'];
+	$posting_method=intval($_POST['xyz_smap_po_method']);
+	$xyz_smap_caption_for_fb_attachment=intval($_POST['xyz_smap_caption_for_fb_attachment']);
+	$posting_permission=intval($_POST['xyz_smap_post_permission']);
+	$app_name=sanitize_text_field($_POST['xyz_smap_application_name']);
+	$appid=sanitize_text_field($_POST['xyz_smap_application_id']);
+	$appsecret=sanitize_text_field($_POST['xyz_smap_application_secret']);
 	$messagetopost=$_POST['xyz_smap_message'];
 	//$fbid=$_POST['xyz_smap_fb_id'];
-	if($appid=="" && $posting_permission==1)
+	if($app_name=="" && $posting_permission==1)
+	{
+		$ms0="Please fill facebook application name.";
+		$erf=1;
+	}
+	else if($appid=="" && $posting_permission==1)
 	{
 		$ms1="Please fill facebook application id.";
 		$erf=1;
@@ -103,27 +117,29 @@ if(isset($_POST['fb']))
 		{
 			$messagetopost="New post added at {BLOG_TITLE} - {POST_TITLE}";
 		}
-
+		update_option('xyz_smap_application_name',$app_name);
 		update_option('xyz_smap_application_id',$appid);
 		update_option('xyz_smap_post_permission',$posting_permission);
 		update_option('xyz_smap_application_secret',$appsecret);
 		//update_option('xyz_smap_fb_id',$fbid);
+		update_option('xyz_smap_caption_for_fb_attachment',$xyz_smap_caption_for_fb_attachment);
+		
 		update_option('xyz_smap_po_method',$posting_method);
 		update_option('xyz_smap_message',$messagetopost);
 
-		$url = 'https://graph.facebook.com/'.XYZ_SMAP_FB_API_VERSION.'/me';
-		$contentget=wp_remote_get($url);$page_id="";
-		if(is_array($contentget))
-		{
-			$result1=$contentget['body'];
-			$pagearray = json_decode($result1);
-			if(isset($pagearray->id))
-			$page_id=$pagearray->id;
-		}
+// 		$url = 'https://graph.facebook.com/'.XYZ_SMAP_FB_API_VERSION.'/me';
+// 		$contentget=wp_remote_get($url);$page_id="";
+// 		if(is_array($contentget))
+// 		{
+// 			$result1=$contentget['body'];
+// 			$pagearray = json_decode($result1);
+// 			if(isset($pagearray->id))
+// 			$page_id=$pagearray->id;
+// 		}
 		
 			
 
-		update_option('xyz_smap_fb_numericid',$page_id);
+// 		update_option('xyz_smap_fb_numericid',$page_id);
 
 	}
 }
@@ -141,16 +157,21 @@ $tredirecturl=admin_url('admin.php?page=social-media-auto-publish-settings&autht
 $terf=0;
 if(isset($_POST['twit']))
 {
+	if (! isset( $_REQUEST['_wpnonce'] )|| ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'xyz_smap_tw_settings_form_nonce' ))
+	{
+		wp_nonce_ays( 'xyz_smap_tw_settings_form_nonce' );
+		exit();
+	}
 
 	//$posting_method=$_POST['xyz_smap_po_method'];
-	$tappid=$_POST['xyz_smap_twconsumer_id'];
-	$tappsecret=$_POST['xyz_smap_twconsumer_secret'];
+	$tappid=sanitize_text_field($_POST['xyz_smap_twconsumer_id']);
+	$tappsecret=sanitize_text_field($_POST['xyz_smap_twconsumer_secret']);
 	//$messagetopost=$_POST['xyz_smap_twmessage'];
-	$twid=$_POST['xyz_smap_tw_id'];
-	$taccess_token=$_POST['xyz_smap_current_twappln_token'];
-	$taccess_token_secret=$_POST['xyz_smap_twaccestok_secret'];
-	$tposting_permission=$_POST['xyz_smap_twpost_permission'];
-	$tposting_image_permission=$_POST['xyz_smap_twpost_image_permission'];
+	$twid=sanitize_text_field($_POST['xyz_smap_tw_id']);
+	$taccess_token=sanitize_text_field($_POST['xyz_smap_current_twappln_token']);
+	$taccess_token_secret=sanitize_text_field($_POST['xyz_smap_twaccestok_secret']);
+	$tposting_permission=intval($_POST['xyz_smap_twpost_permission']);
+	$tposting_image_permission=intval($_POST['xyz_smap_twpost_image_permission']);
 	$tmessagetopost=$_POST['xyz_smap_twmessage'];
 	if($tappid=="" && $tposting_permission==1)
 	{
@@ -210,19 +231,24 @@ $lerf=0;
 
 if(isset($_POST['linkdn']))
 {
+	if (! isset( $_REQUEST['_wpnonce'] )|| ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'xyz_smap_ln_settings_form_nonce' ))
+	{
+		wp_nonce_ays( 'xyz_smap_ln_settings_form_nonce' );
+		exit();
+	}
 	//$posting_method=$_POST['xyz_smap_po_method'];
 	$lnappikeyold=get_option('xyz_smap_lnapikey');
 	$lnapisecretold=get_option('xyz_smap_lnapisecret');
 
-	$lnappikey=$_POST['xyz_smap_lnapikey'];
-	$lnapisecret=$_POST['xyz_smap_lnapisecret'];
+	$lnappikey=sanitize_text_field($_POST['xyz_smap_lnapikey']);
+	$lnapisecret=sanitize_text_field($_POST['xyz_smap_lnapisecret']);
 	
 	$lmessagetopost=trim($_POST['xyz_smap_lnmessage']);
 	
-	$lnposting_permission=$_POST['xyz_smap_lnpost_permission'];
-	$xyz_smap_ln_shareprivate=$_POST['xyz_smap_ln_shareprivate'];
-	$xyz_smap_ln_sharingmethod=$_POST['xyz_smap_ln_sharingmethod'];
-	$xyz_smap_lnpost_image_permission=$_POST['xyz_smap_lnpost_image_permission'];
+	$lnposting_permission=intval($_POST['xyz_smap_lnpost_permission']);
+	$xyz_smap_ln_shareprivate=intval($_POST['xyz_smap_ln_shareprivate']);
+	$xyz_smap_ln_sharingmethod=intval($_POST['xyz_smap_ln_sharingmethod']);
+	$xyz_smap_lnpost_image_permission=intval($_POST['xyz_smap_lnpost_image_permission']);
 	if($lnappikey=="" && $lnposting_permission==1)
 	{
 		$lms1="Please fill linkedin api key";
@@ -316,15 +342,15 @@ if((isset($_POST['twit']) && $terf==1)|| (isset($_POST['fb']) && $erf==1) || (is
 	<?php 
 	if(isset($_POST['fb']))
 	{
-		echo $ms1;echo $ms2;echo $ms3;echo $ms4;
+		echo esc_html($ms0);echo esc_html($ms1);echo esc_html($ms2);echo esc_html($ms4);
 	}
 	else if(isset($_POST['twit']))
 	{
-		echo $tms1;echo $tms2;echo $tms3;echo $tms4;echo $tms5;echo $tms6;
+		echo esc_html($tms1);echo esc_html($tms2);echo esc_html($tms3);echo esc_html($tms4);echo esc_html($tms5);echo esc_html($tms6);
 	}
 	else if(isset($_POST['linkdn']))
 	{
-		echo $lms1;echo $lms2;echo $lms3;
+		echo esc_html($lms1);echo esc_html($lms2);echo esc_html($lms3);
 	}
 	?>
 	&nbsp;&nbsp;&nbsp;<span id="system_notice_area_dismiss">Dismiss</span>
@@ -365,12 +391,14 @@ function drpdisplay()
 	$appsecret=get_option('xyz_smap_application_secret');
 	//$fbid=get_option('xyz_smap_fb_id');
 	$posting_method=get_option('xyz_smap_po_method');
+	$xyz_smap_caption_for_fb_attachment=get_option('xyz_smap_caption_for_fb_attachment');
 	$posting_message=get_option('xyz_smap_message');
 	if($af==1 && $appid!="" && $appsecret!="")
 	{
 		?>
 	<span style="color: red;">Application needs authorisation</span> <br>
 	<form method="post">
+	<?php wp_nonce_field( 'xyz_smap_fb_auth_form_nonce' );?>
 
 		<input type="submit" class="submit_smap_new" name="fb_auth"
 			value="Authorize" /><br><br>
@@ -381,7 +409,7 @@ function drpdisplay()
 	{
 		?>
 	<form method="post">
-	
+	<?php wp_nonce_field( 'xyz_smap_fb_auth_form_nonce' );?>
 	<input type="submit" class="submit_smap_new" name="fb_auth"
 	value="Reauthorize" title="Reauthorize the account" /><br><br>
 	
@@ -412,7 +440,7 @@ function drpdisplay()
 		<b><a href="https://developers.facebook.com/apps" target="_blank">Click here</a></b> to create new Facebook application. 
 		<br>In the application page in facebook, navigate to <b>Apps > Settings > Edit settings > Website > Site URL</b>. Set the site url as : 
 		<span style="color: red;"><?php echo  (is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST']; ?></span>
-<br>For detailed step by step instructions <b><a href="http://docs.xyzscripts.com/wordpress-plugins/social-media-auto-publish/creating-facebook-application/" target="_blank">Click here</a></b>.
+<br>For detailed step by step instructions <b><a href="http://help.xyzscripts.com/docs/social-media-auto-publish/faq/how-can-i-create-facebook-application/" target="_blank">Click here</a></b>.
 	</div>
 
 	</td>
@@ -420,6 +448,7 @@ function drpdisplay()
 	</table>
 	
 	<form method="post">
+	<?php wp_nonce_field( 'xyz_smap_fb_settings_form_nonce' );?>
 		<input type="hidden" value="config">
 
 
@@ -428,33 +457,33 @@ function drpdisplay()
 
 			<div style="font-weight: bold;padding: 3px;">All fields given below are mandatory</div> 
 			<table class="widefat xyz_smap_widefat_table" style="width: 99%">
+			<tr valign="top">
+					<td width="50%">Application name
+					</td>
+					<td><input id="xyz_smap_application_name"
+						name="xyz_smap_application_name" type="text"
+						value="<?php if($ms0=="") {echo esc_html(get_option('xyz_smap_application_name'));}?>" />
+						<a href="http://help.xyzscripts.com/docs/social-media-auto-publish/faq/how-can-i-create-facebook-application/" target="_blank">How can I create a Facebook Application?</a>
+					</td>
+				</tr>
 				<tr valign="top">
 					<td width="50%">Application id
 					</td>
 					<td><input id="xyz_smap_application_id"
 						name="xyz_smap_application_id" type="text"
 						value="<?php if($ms1=="") {echo esc_html(get_option('xyz_smap_application_id'));}?>" />
-						<a href="http://docs.xyzscripts.com/wordpress-plugins/social-media-auto-publish/creating-facebook-application" target="_blank">How can I create a Facebook Application?</a>
-					</td>
+						</td>
 				</tr>
 
 				<tr valign="top">
-					<td>Application secret<?php   $apsecret=esc_html(get_option('xyz_smap_application_secret'));?>
+					<td>Application secret<?php   $apsecret=get_option('xyz_smap_application_secret');?>
 						
 					</td>
 					<td><input id="xyz_smap_application_secret"
 						name="xyz_smap_application_secret" type="text"
-						value="<?php if($ms2=="") {echo $apsecret; }?>" />
+						value="<?php if($ms2=="") {echo esc_html($apsecret); }?>" />
 					</td>
 				</tr>
-				<!-- <tr valign="top">
-					<td>Facebook user id 
-					</td>
-					<td><input id="xyz_smap_fb_id" name="xyz_smap_fb_id" type="text"
-						value="<?php if($ms3=="") {echo esc_html(get_option('xyz_smap_fb_id'));}?>" />
-						<a href="http://kb.xyzscripts.com/how-can-i-find-my-facebook-user-id" target="_blank">How can I find my Facebook user id?</a>
-					</td>
-				</tr>-->
 				<tr valign="top">
 					<td>Message format for posting <img src="<?php echo $heimg?>"
 						onmouseover="detdisplay('xyz_fb')" onmouseout="dethide('xyz_fb')">
@@ -479,6 +508,13 @@ function drpdisplay()
 		<textarea id="xyz_smap_message"  name="xyz_smap_message" style="height:80px !important;" ><?php if($ms4==""){ 
 								echo esc_textarea(get_option('xyz_smap_message'));}?></textarea>
 	</td></tr>
+	   <tr valign="top">
+	    <td>Caption for attachments while posting to facebook</td>
+	    <td><select name="xyz_smap_caption_for_fb_attachment" id="xyz_smap_caption_for_fb_attachment">
+           <option value ="1" <?php if($xyz_smap_caption_for_fb_attachment=='1') echo 'selected'; ?> >Site hostname </option>
+           <option value ="2" <?php if($xyz_smap_caption_for_fb_attachment=='2') echo 'selected'; ?> >Site title </option>
+          </select>
+		
 	
 				<tr valign="top">
 					<td>Posting method
@@ -629,10 +665,10 @@ function drpdisplay()
 <td id="bottomBorderNone">
 	<div>
 		<b>Note :</b> You have to create a Twitter application before filling in following fields. 	
-		<br><b><a href="https://dev.twitter.com/apps/new" target="_blank">Click here</a></b> to create new application. Specify the website for the application as :	<span style="color: red;"><?php echo  (is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST']; ?>		 </span> 
+		<br><b><a href="https://apps.twitter.com/app/new" target="_blank">Click here</a></b> to create new application. Specify the website for the application as :	<span style="color: red;"><?php echo  (is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST']; ?>		 </span> 
 		 <br>In the twitter application, navigate to	<b>Settings > Application Type > Access</b>. Select <b>Read and Write</b> option. 
 		 <br>After updating access, navigate to <b>Details > Your access token</b> in the application and	click <b>Create my access token</b> button.
-		<br>For detailed step by step instructions <b><a href="http://docs.xyzscripts.com/wordpress-plugins/social-media-auto-publish/creating-twitter-application/" target="_blank">Click here</a></b>.
+		<br>For detailed step by step instructions <b><a href="http://help.xyzscripts.com/docs/social-media-auto-publish/faq/how-can-i-create-twitter-application/" target="_blank">Click here</a></b>.
 
 	</div>
 </td>
@@ -641,6 +677,7 @@ function drpdisplay()
 
 
 	<form method="post">
+		<?php wp_nonce_field( 'xyz_smap_tw_settings_form_nonce' );?>
 		<input type="hidden" value="config">
 
 
@@ -653,7 +690,7 @@ function drpdisplay()
 					<td><input id="xyz_smap_twconsumer_id"
 						name="xyz_smap_twconsumer_id" type="text"
 						value="<?php if($tms1=="") {echo esc_html(get_option('xyz_smap_twconsumer_id'));}?>" />
-						<a href="http://docs.xyzscripts.com/wordpress-plugins/social-media-auto-publish/creating-twitter-application" target="_blank">How can I create a Twitter Application?</a>
+						<a href="http://help.xyzscripts.com/docs/social-media-auto-publish/faq/how-can-i-create-twitter-application/" target="_blank">How can I create a Twitter Application?</a>
 					</td>
 				</tr>
 
@@ -778,7 +815,7 @@ $lnaf=get_option('xyz_smap_lnaf');
 	
 	<span style="color:red; ">Application needs authorisation</span><br>	
             <form method="post" >
-			
+			<?php wp_nonce_field( 'xyz_smap_ln_auth_form_nonce' );?>
 			<input type="submit" class="submit_smap_new" name="lnauth" value="Authorize	" />
 			<br><br>
 			</form>
@@ -789,7 +826,7 @@ $lnaf=get_option('xyz_smap_lnaf');
 				?>
 			
 			<form method="post" >
-			
+			<?php wp_nonce_field( 'xyz_smap_ln_auth_form_nonce' );?>
 			<input type="submit" class="submit_smap_new" name="lnauth" value="Reauthorize" title="Reauthorize the account" />
 			<br><br>
 			</form>
@@ -810,7 +847,7 @@ $lnaf=get_option('xyz_smap_lnaf');
 		<span style="color: red;"><?php echo  (is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST']; ?></span>
 		<br>Specify the authorized redirect url as :  
 		<span style="color: red;"><?php echo  admin_url().'admin.php'; ?></span>
-<br>For detailed step by step instructions <b><a href="http://docs.xyzscripts.com/wordpress-plugins/social-media-auto-publish/creating-linkedin-application/" target="_blank">Click here</a></b>.
+<br>For detailed step by step instructions <b><a href="http://help.xyzscripts.com/docs/social-media-auto-publish/faq/how-can-i-create-linkedin-application/" target="_blank">Click here</a></b>.
 	</div>
 
 	</td>
@@ -820,7 +857,7 @@ $lnaf=get_option('xyz_smap_lnaf');
 	
 
 	<form method="post" >
-	
+		<?php wp_nonce_field( 'xyz_smap_ln_settings_form_nonce' );?>
 	
 			
 	
@@ -832,7 +869,7 @@ $lnaf=get_option('xyz_smap_lnaf');
 	<td width="50%">Client ID </td>					
 	<td>
 		<input id="xyz_smap_lnapikey" name="xyz_smap_lnapikey" type="text" value="<?php if($lms1=="") {echo esc_html(get_option('xyz_smap_lnapikey'));}?>"/>
-		<a href="http://docs.xyzscripts.com/wordpress-plugins/social-media-auto-publish/creating-linkedin-application" target="_blank">How can I create a Linkedin Application?</a>
+		<a href="http://help.xyzscripts.com/docs/social-media-auto-publish/faq/how-can-i-create-linkedin-application/" target="_blank">How can I create a Linkedin Application?</a>
 	</td></tr>
 	
 
@@ -913,10 +950,14 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 
 	if(isset($_POST['bsettngs']))
 	{
+		if (! isset( $_REQUEST['_wpnonce'] )|| ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'xyz_smap_basic_settings_form_nonce' ))
+		{
+			wp_nonce_ays( 'xyz_smap_basic_settings_form_nonce' );
+			exit();
+		}
 
-
-		$xyz_smap_include_pages=$_POST['xyz_smap_include_pages'];
-		$xyz_smap_include_posts=$_POST['xyz_smap_include_posts'];
+		$xyz_smap_include_pages=intval($_POST['xyz_smap_include_pages']);
+		$xyz_smap_include_posts=intval($_POST['xyz_smap_include_posts']);
 		
 		if($_POST['xyz_smap_cat_all']=="All")
 			$smap_category_ids=$_POST['xyz_smap_cat_all'];//redio btn name
@@ -927,11 +968,11 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 		
         if(isset($_POST['post_types']))
 		$xyz_customtypes=$_POST['post_types'];
-        $xyz_smap_peer_verification=$_POST['xyz_smap_peer_verification'];
-        $xyz_smap_premium_version_ads=$_POST['xyz_smap_premium_version_ads'];
-        $xyz_smap_default_selection_edit=$_POST['xyz_smap_default_selection_edit'];
+        $xyz_smap_peer_verification=intval($_POST['xyz_smap_peer_verification']);
+        $xyz_smap_premium_version_ads=intval($_POST['xyz_smap_premium_version_ads']);
+        $xyz_smap_default_selection_edit=intval($_POST['xyz_smap_default_selection_edit']);
         //$xyz_smap_future_to_publish=$_POST['xyz_smap_future_to_publish'];
-        $xyz_smap_utf_decode_enable=$_POST['xyz_smap_utf_decode_enable'];
+        $xyz_smap_utf_decode_enable=intval($_POST['xyz_smap_utf_decode_enable']);
 		$smap_customtype_ids="";
 		
 		$xyz_smap_applyfilters="";
@@ -982,16 +1023,16 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 	$xyz_smap_include_categories=get_option('xyz_smap_include_categories');
 	$xyz_smap_include_customposttypes=get_option('xyz_smap_include_customposttypes');
 	$xyz_smap_apply_filters=get_option('xyz_smap_std_apply_filters');
-	$xyz_smap_peer_verification=esc_html(get_option('xyz_smap_peer_verification'));
-	$xyz_smap_premium_version_ads=esc_html(get_option('xyz_smap_premium_version_ads'));
-	$xyz_smap_default_selection_edit=esc_html(get_option('xyz_smap_default_selection_edit'));
+	$xyz_smap_peer_verification=get_option('xyz_smap_peer_verification');
+	$xyz_smap_premium_version_ads=get_option('xyz_smap_premium_version_ads');
+	$xyz_smap_default_selection_edit=get_option('xyz_smap_default_selection_edit');
 	$xyz_smap_utf_decode_enable=get_option('xyz_smap_utf_decode_enable');
 	?>
 		<h2>Basic Settings</h2>
 
 
 		<form method="post">
-
+	<?php wp_nonce_field( 'xyz_smap_basic_settings_form_nonce' );?>
 			<table class="widefat xyz_smap_widefat_table" style="width: 99%">
 
 				<tr valign="top">
@@ -1029,7 +1070,7 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 					<td  colspan="1">Select post categories for auto publish
 					</td>
 					<td><input type="hidden"
-						value="<?php echo $xyz_smap_include_categories;?>"
+						value="<?php echo esc_html($xyz_smap_include_categories);?>"
 						name="xyz_smap_sel_cat" id="xyz_smap_sel_cat"> <input type="radio"
 						name="xyz_smap_cat_all" id="xyz_smap_cat_all" value="All"
 						onchange="rd_cat_chn(1,-1)"
@@ -1243,9 +1284,9 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 
 	<script type="text/javascript">
 	//drpdisplay();
-var catval='<?php echo $xyz_smap_include_categories; ?>';
-var custtypeval='<?php echo $xyz_smap_include_customposttypes; ?>';
-var get_opt_cats='<?php echo get_option('xyz_smap_include_posts');?>';
+var catval='<?php echo esc_html($xyz_smap_include_categories); ?>';
+var custtypeval='<?php echo esc_html($xyz_smap_include_customposttypes); ?>';
+var get_opt_cats='<?php echo esc_html(get_option('xyz_smap_include_posts'));?>';
 jQuery(document).ready(function() {
 	  if(catval=="All")
 		  jQuery("#cat_dropdown_span").hide();
@@ -1280,7 +1321,7 @@ document.getElementById('xyz_smap_sel_cat').value=sel_str;
 
 }
 
-var d1='<?php echo $xyz_smap_include_categories;?>';
+var d1='<?php echo esc_html($xyz_smap_include_categories);?>';
 splitText = d1.split(",");
 jQuery.each(splitText, function(k,v) {
 jQuery("#xyz_smap_catlist").children("option[value="+v+"]").attr("selected","selected");

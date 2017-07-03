@@ -1,4 +1,5 @@
 <?php
+if( !defined('ABSPATH') ){ exit();}
 function smap_free_network_install($networkwide) {
 	global $wpdb;
 
@@ -43,6 +44,7 @@ function smap_install_free()
 		$smap_installed_date = time();
 		update_option('smap_installed_date', $smap_installed_date);
 	}
+	add_option('xyz_smap_application_name','');
 	add_option('xyz_smap_application_id','');
 	add_option('xyz_smap_application_secret', '');
 	//add_option('xyz_smap_fb_id', '');
@@ -52,7 +54,8 @@ function smap_install_free()
 	add_option('xyz_smap_current_appln_token', '');
 	add_option('xyz_smap_af', '1'); //authorization flag
 	add_option('xyz_smap_pages_ids','-1');
-
+	add_option('xyz_smap_caption_for_fb_attachment', 1);
+	
 	add_option('xyz_smap_twconsumer_secret', '');
 	add_option('xyz_smap_twconsumer_id','');
 	add_option('xyz_smap_tw_id', '');

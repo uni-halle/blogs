@@ -3,7 +3,7 @@
  Plugin Name: Social Media Auto Publish
 Plugin URI: http://xyzscripts.com/wordpress-plugins/social-media-auto-publish/
 Description:   Publish posts automatically from your blog to social media networks like Facebook, Twitter and LinkedIn. The plugin supports filtering posts by post-types and categories.
-Version: 1.7.1
+Version: 1.7.2
 Author: xyzscripts.com
 Author URI: http://xyzscripts.com/
 License: GPLv2 or later
@@ -24,7 +24,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-
+if( !defined('ABSPATH') ){ exit();}
 if ( !function_exists( 'add_action' ) ) {
 	echo "Hi there!  I'm just a plugin, not much I can do when called directly.";
 	exit;

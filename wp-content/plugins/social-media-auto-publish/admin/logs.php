@@ -1,4 +1,5 @@
 <?php 
+if( !defined('ABSPATH') ){ exit();}
 ?>
 <div >
 
@@ -62,18 +63,18 @@
 							<tr>
 							    <td>&nbsp;</td>
 							    <td  style="vertical-align: middle !important;">
-								<?php echo $postid;	?>
+								<?php echo esc_html($postid);	?>
 								</td>
 								<td  style="vertical-align: middle !important;">
 								<?php echo get_the_title($postid);	?>
 								</td>
 								
 								<td  style="vertical-align: middle !important;">
-								<?php echo $acc_type;?>
+								<?php echo esc_html($acc_type);?>
 								</td>
 								
 								<td style="vertical-align: middle !important;">
-								<?php echo $publishtime;?>
+								<?php echo esc_html($publishtime);?>
 								</td>
 								
 								<td style="vertical-align: middle !important;">
@@ -127,18 +128,18 @@
 								<tr>
 									<td>&nbsp;</td>
 									 <td  style="vertical-align: middle !important;">
-								     <?php echo $postid;	?>
+								     <?php echo esc_html($postid);	?>
 								     </td>
 									<td  style="vertical-align: middle !important;">
 									<?php echo get_the_title($postid);	?>
 									</td>
 									
 									<td  style="vertical-align: middle !important;">
-									<?php echo $acc_type;?>
+									<?php echo esc_html($acc_type);?>
 									</td>
 									
 									<td style="vertical-align: middle !important;">
-									<?php echo $publishtime;?>
+									<?php echo esc_html($publishtime);?>
 									</td>
 									
 									<td style="vertical-align: middle !important;">
@@ -193,18 +194,18 @@
 								<tr>
 									<td>&nbsp;</td>
 									 <td  style="vertical-align: middle !important;">
-								     <?php echo $postid;	?>
+								     <?php echo esc_html($postid);	?>
 								     </td>
 									<td  style="vertical-align: middle !important;">
 									<?php echo get_the_title($postid);	?>
 									</td>
 									
 									<td  style="vertical-align: middle !important;">
-									<?php echo $acc_type;?>
+									<?php echo esc_html($acc_type);?>
 									</td>
 									
 									<td style="vertical-align: middle !important;">
-									<?php echo $publishtime;?>
+									<?php echo esc_html($publishtime);?>
 									</td>
 									
 									<td style="vertical-align: middle !important;">

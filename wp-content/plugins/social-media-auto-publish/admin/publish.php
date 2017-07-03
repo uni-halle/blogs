@@ -1,5 +1,5 @@
 <?php 
-
+if( !defined('ABSPATH') ){ exit();}
 /*add_action('publish_post', 'xyz_link_publish');
 add_action('publish_page', 'xyz_link_publish');
 
@@ -25,11 +25,11 @@ function xyz_link_smap_future_to_publish($new_status, $old_status, $post){
 	$lnpost_permission=get_option('xyz_smap_lnpost_permission');
 	
 	if(isset($_POST['xyz_smap_post_permission']))
-		$post_permissin=$_POST['xyz_smap_post_permission'];
+		$post_permissin=intval($_POST['xyz_smap_post_permission']);
 	if(isset($_POST['xyz_smap_twpost_permission']))
-		$post_twitter_permission=$_POST['xyz_smap_twpost_permission'];
+		$post_twitter_permission=intval($_POST['xyz_smap_twpost_permission']);
 	if(isset($_POST['xyz_smap_lnpost_permission']))
-		$lnpost_permission=$_POST['xyz_smap_lnpost_permission'];
+		$lnpost_permission=intval($_POST['xyz_smap_lnpost_permission']);
 	if(!(isset($_POST['xyz_smap_post_permission']) || isset($_POST['xyz_smap_twpost_permission']) || isset($_POST['xyz_smap_lnpost_permission']))) 
 	{
 	
@@ -73,15 +73,15 @@ function xyz_link_publish($post_ID) {
 	
 	$post_permissin=get_option('xyz_smap_post_permission');
 	if(isset($_POST['xyz_smap_post_permission']))
-		$post_permissin=$_POST['xyz_smap_post_permission'];
+		$post_permissin=intval($_POST['xyz_smap_post_permission']);
 	
 	$post_twitter_permission=get_option('xyz_smap_twpost_permission');
 	if(isset($_POST['xyz_smap_twpost_permission']))
-		$post_twitter_permission=$_POST['xyz_smap_twpost_permission'];
+		$post_twitter_permission=intval($_POST['xyz_smap_twpost_permission']);
 	
 	$lnpost_permission=get_option('xyz_smap_lnpost_permission');
 	if(isset($_POST['xyz_smap_lnpost_permission']))
-		$lnpost_permission=$_POST['xyz_smap_lnpost_permission'];
+		$lnpost_permission=intval($_POST['xyz_smap_lnpost_permission']);
 	
 	if (($post_permissin != 1)&&($post_twitter_permission != 1)&&($lnpost_permission != 1)) {
 		$_POST=$_POST_CPY;
@@ -117,10 +117,11 @@ function xyz_link_publish($post_ID) {
 	
 	$post_twitter_image_permission=get_option('xyz_smap_twpost_image_permission');
 	if(isset($_POST['xyz_smap_twpost_image_permission']))
-		$post_twitter_image_permission=$_POST['xyz_smap_twpost_image_permission'];
+		$post_twitter_image_permission=intval($_POST['xyz_smap_twpost_image_permission']);
 		////////////////////////
 
 	////////////fb///////////
+	$app_name=get_option('xyz_smap_application_name');
 	$appsecret=get_option('xyz_smap_application_secret');
 	$useracces_token=get_option('xyz_smap_fb_token');
 
@@ -134,7 +135,7 @@ function xyz_link_publish($post_ID) {
 	
 	$posting_method=get_option('xyz_smap_po_method');
 	if(isset($_POST['xyz_smap_po_method']))
-		$posting_method=$_POST['xyz_smap_po_method'];
+		$posting_method=intval($_POST['xyz_smap_po_method']);
 		//////////////////////////////
 		
 	////////////linkedin////////////
@@ -147,16 +148,16 @@ function xyz_link_publish($post_ID) {
 	
   $xyz_smap_ln_shareprivate=get_option('xyz_smap_ln_shareprivate'); 
   if(isset($_POST['xyz_smap_ln_shareprivate']))
-  $xyz_smap_ln_shareprivate=$_POST['xyz_smap_ln_shareprivate'];
+  $xyz_smap_ln_shareprivate=intval($_POST['xyz_smap_ln_shareprivate']);
  
   $xyz_smap_ln_sharingmethod=get_option('xyz_smap_ln_sharingmethod');
   if(isset($_POST['xyz_smap_ln_sharingmethod']))
-  $xyz_smap_ln_sharingmethod=$_POST['xyz_smap_ln_sharingmethod'];
+  $xyz_smap_ln_sharingmethod=intval($_POST['xyz_smap_ln_sharingmethod']);
   
 
   $post_ln_image_permission=get_option('xyz_smap_lnpost_image_permission');
   if(isset($_POST['xyz_smap_lnpost_image_permission']))
-  	$post_ln_image_permission=$_POST['xyz_smap_lnpost_image_permission'];
+  	$post_ln_image_permission=intval($_POST['xyz_smap_lnpost_image_permission']);
 
     $lnaf=get_option('xyz_smap_lnaf');
 	
@@ -287,7 +288,14 @@ function xyz_link_publish($post_ID) {
 			$image_found=0;
 		
 		$name = $postpp->post_title;
-		$caption = html_entity_decode(get_bloginfo('title'), ENT_QUOTES, get_bloginfo('charset'));
+		$xyz_smap_caption_for_fb_attachment=get_option('xyz_smap_caption_for_fb_attachment');
+		
+		if($xyz_smap_caption_for_fb_attachment==1)
+			$caption=$_SERVER['HTTP_HOST'];
+			else
+			$caption=get_bloginfo('title');
+			$caption = html_entity_decode($caption, ENT_QUOTES, get_bloginfo('charset'));
+
 		
 		if($tit_flag==1)
 			$name = apply_filters('the_title', $name);
@@ -382,21 +390,91 @@ function xyz_link_publish($post_ID) {
 					if($attachmenturl!="")
 					{
 						
+
 						if($posting_method==5)
 						{
 							try{
-							$albums = $fb->get("/$page_id/albums", array('access_token'  => $acces_token));
+								$album_fount=0;
+								
+								$albums = $fb->get("/$page_id/albums", $acces_token);
+								$arrayResults = $albums->getGraphEdge()->asArray();
+								
+														
 							}
-							catch(Exception $e)
+							catch (Exception $e)
 							{
 								$fb_publish_status[$page_id."/albums"]=$e->getMessage();
-							}
-							foreach ($albums["data"] as $album) {
-								if ($album["type"] == "wall") {
-									$timeline_album = $album; break;
+									}
+							if(isset($arrayResults))
+							{
+								foreach ($arrayResults as $album) {
+									if (isset($album["name"]) && $album["name"] == "Timeline Photos") {
+										$album_fount=1;$timeline_album = $album; break;
+									}
 								}
 							}
 							if (isset($timeline_album) && isset($timeline_album["id"])) $page_id = $timeline_album["id"];
+							if($album_fount==0)
+							{
+								$attachment = array('name' => "Timeline Photos",
+										'access_token' => $acces_token,
+								);
+								try{
+									$album_create=$fb->post('/'.$page_id.'/albums', $attachment);
+									$album_node=$album_create->getGraphNode();
+									if (isset($album_node) && isset($album_node["id"]))
+										$page_id = $album_node["id"];
+								}
+								catch (Exception $e)
+								{
+									$fb_publish_status[$page_id."/albums"]=$e->getMessage();
+										
+								}
+									
+							}
+						}
+						else
+						{
+							try{
+								$album_fount=0;
+								
+								$albums = $fb->get("/$page_id/albums", $acces_token);
+								$arrayResults = $albums->getGraphEdge()->asArray();
+								
+							}
+							catch (Exception $e)
+							{
+								$fb_publish_status[$page_id."/albums"]=$e->getMessage();					
+							}
+							if(isset($arrayResults))
+							{
+								foreach ($arrayResults as $album)
+								{
+									if (isset($album["name"]) && $album["name"] == $app_name) {
+										$album_fount=1;
+										$app_album = $album; break;
+									}
+								}
+						
+							}
+							if (isset($app_album) && isset($app_album["id"])) $page_id = $app_album["id"];
+							if($album_fount==0)
+							{
+								$attachment = array('name' => $app_name,
+										'access_token' => $acces_token,
+								);
+								try{
+									$album_create=$fb->post('/'.$page_id.'/albums', $attachment);
+									$album_node=$album_create->getGraphNode();
+									if (isset($album_node) && isset($album_node["id"]))
+										$page_id = $album_node["id"];
+								}
+								catch (Exception $e)
+								{
+									$fb_publish_status[$page_id."/albums"]=$e->getMessage();
+								}
+									
+							}
 						}
 						
 						

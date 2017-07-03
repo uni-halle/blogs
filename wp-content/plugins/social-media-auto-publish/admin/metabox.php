@@ -1,4 +1,5 @@
 <?php 
+if( !defined('ABSPATH') ){ exit();}
 add_action( 'add_meta_boxes', 'xyz_smap_add_custom_box' );
 $GLOBALS['edit_flag']=0;
 function xyz_smap_add_custom_box()
@@ -192,7 +193,7 @@ function get_categorylist(val)
 		}
 		jQuery('#cat_list').val(cat_list);
 		
-		var xyz_smap_catlist="<?php echo $xyz_smap_catlist;?>";
+		var xyz_smap_catlist="<?php echo esc_html($xyz_smap_catlist);?>";
 		if(xyz_smap_catlist!="All")
 		{
 			cat_list_array=xyz_smap_catlist.split(',');
@@ -501,7 +502,7 @@ Public</option><option value="1" <?php  if(get_option('xyz_smap_ln_shareprivate'
 	function load_edit_action()
 	{
 		document.getElementById("xyz_smap_post").value=1;
-		var xyz_smap_default_selection_edit="<?php echo get_option('xyz_smap_default_selection_edit');?>";
+		var xyz_smap_default_selection_edit="<?php echo esc_html(get_option('xyz_smap_default_selection_edit'));?>";
 		if(xyz_smap_default_selection_edit=="")
 			xyz_smap_default_selection_edit=0;
 		if(xyz_smap_default_selection_edit==1)

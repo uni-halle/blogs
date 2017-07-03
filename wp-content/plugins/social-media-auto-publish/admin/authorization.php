@@ -1,4 +1,5 @@
 <?php
+if( !defined('ABSPATH') ){ exit();}
 $app_id = get_option('xyz_smap_application_id');
 $app_secret = get_option('xyz_smap_application_secret');
 $redirecturl=admin_url('admin.php?page=social-media-auto-publish-settings&auth=1');
@@ -12,6 +13,12 @@ $code = $_REQUEST["code"];
 
 if(isset($_POST['fb_auth']))
 {
+	if (! isset( $_REQUEST['_wpnonce'] )|| ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'xyz_smap_fb_auth_form_nonce' ))
+	{
+		wp_nonce_ays( 'xyz_smap_fb_auth_form_nonce' );
+		exit();
+	}
+	
 		$xyz_smap_session_state = md5(uniqid(rand(), TRUE));
 		setcookie("xyz_smap_session_state",$xyz_smap_session_state,"0","/");
 		
@@ -106,6 +113,17 @@ if(isset($_COOKIE['xyz_smap_session_state']) && isset($_REQUEST['state']) && ($_
            				$newpgs=-1;
 					}
 		update_option('xyz_smap_pages_ids',$newpgs);
+		
+		$url = 'https://graph.facebook.com/'.XYZ_SMAP_FB_API_VERSION.'/me?access_token='.$access_token;
+		$contentget=wp_remote_get($url);$page_id='';
+		if(is_array($contentget))
+		{
+			$result1=$contentget['body'];
+			$pagearray = json_decode($result1);
+			$page_id=$pagearray->id;
+		}
+		update_option('xyz_smap_fb_numericid',$page_id);
+		
 		header("Location:".admin_url('admin.php?page=social-media-auto-publish-settings&auth=1'));
 	}
 	else {
@@ -132,6 +150,11 @@ $redirecturl=urlencode(admin_url('admin.php?page=social-media-auto-publish-setti
 	$lnapisecret=get_option('xyz_smap_lnapisecret');
 	if(isset($_POST['lnauth']))
 	{
+		if (! isset( $_REQUEST['_wpnonce'] )|| ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'xyz_smap_ln_auth_form_nonce' ))
+		{
+			wp_nonce_ays( 'xyz_smap_ln_auth_form_nonce' );
+			exit();
+		}
 		if(!isset($_GET['code']))
 		{
 			$linkedin_auth_url='https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id='.$lnappikey.'&redirect_uri='.$redirecturl.'&state='.$state.'&scope=w_share+rw_company_admin';//rw_groups not included as it requires linkedin partnership agreement

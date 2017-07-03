@@ -1,4 +1,6 @@
-<?php if(get_option('xyz_smap_premium_version_ads')==1){?>
+<?php 
+if( !defined('ABSPATH') ){ exit();}
+if(get_option('xyz_smap_premium_version_ads')==1){?>
 <div id="xyz-wp-smap-premium">
 
 	<div style="float: left; padding: 0 5px">
@@ -118,21 +120,21 @@ Name  :
 <input style="border: 1px solid #3fafe3; margin-right:10px;padding:5px;" type="text" name="field1" value="<?php  
 if ($current_user->user_firstname != "" || $current_user->user_lastname != "") 
 {
-	echo $current_user->user_firstname . " " . $current_user->user_lastname; 
+	echo esc_html($current_user->user_firstname) . " " . esc_html($current_user->user_lastname); 
 } 
 else if (strcasecmp($current_user->display_name, 'admin')!=0 && strcasecmp($current_user->display_name , "administrator")!=0 ) 
 {
-	echo $current_user->display_name;
+	echo esc_html($current_user->display_name);
 } 
 else if (strcasecmp($current_user->user_login ,"admin")!=0 && strcasecmp($current_user->user_login , "administrator")!=0 ) 
 {
-	echo $current_user->user_login;	
+	echo esc_html($current_user->user_login);	
 }
 ?>"  >
 
 Email Address : 
 <input style="border: 1px solid #3fafe3;padding:5px;" name="email"
-type="text" value="<?php 	echo $current_user->user_email; ?>" /><span style="color:#FF0000">*</span>           
+type="text" value="<?php 	echo esc_html($current_user->user_email); ?>" /><span style="color:#FF0000">*</span>           
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input class="submit_smap" type="submit" value="Subscribe" name="Submit"  onclick="javascript: if(!verify_fields()) return false; " />

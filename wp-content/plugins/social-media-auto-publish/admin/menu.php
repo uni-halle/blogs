@@ -1,5 +1,5 @@
 <?php
-
+if( !defined('ABSPATH') ){ exit();}
 add_action('admin_menu', 'xyz_smap_menu');
 
 function xyz_smap_add_admin_scripts()

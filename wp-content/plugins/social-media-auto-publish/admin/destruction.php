@@ -1,5 +1,5 @@
 <?php
-
+if( !defined('ABSPATH') ){ exit();}
 function smap_free_network_destroy($networkwide) {
 	global $wpdb;
 
@@ -28,7 +28,7 @@ function smap_free_destroy()
 	{
 		update_option("xyz_credit_link", '0');
 	}
-	
+	delete_option('xyz_smap_application_name');
 	delete_option('xyz_smap_application_id');
 	delete_option('xyz_smap_application_secret');
 	//delete_option('xyz_smap_fb_id');
@@ -38,6 +38,8 @@ function smap_free_destroy()
 	delete_option('xyz_smap_current_appln_token');
 	delete_option('xyz_smap_af');
 	delete_option('xyz_smap_pages_ids');
+	delete_option('xyz_smap_caption_for_fb_attachment');
+	
 		
 	delete_option('xyz_smap_twconsumer_secret');
 	delete_option('xyz_smap_twconsumer_id');
