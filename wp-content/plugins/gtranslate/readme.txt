@@ -1,10 +1,10 @@
 === Translate Wordpress with GTranslate ===
 Contributors: edo888
 Author: Edvard Ananyan
-Tags: bilingual, multilingual, translate, translation, language, localization, translation proxy, i18n, l10n, localisation, multilanguage, google translate
+Tags: translate wordpress, multilingual, translate, translation, language, bilingual, localization, translation proxy, i18n, l10n, localisation, multilanguage, google translate
 Requires at least: 2.8.1
-Tested up to: 4.7
-Stable tag: 2.8.19
+Tested up to: 4.8
+Stable tag: 2.8.25
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
@@ -35,7 +35,7 @@ Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 * Themes and plugins translation
 * Right to left language support
 * Google language translator widget
-* Available styles Dropdown, Flags, Flags with dropdown, Nice dropdown with flags, Flags with language names, Flags with language codes, Language names, Language codes, Globe
+* Available styles Dropdown, Flags, Flags with dropdown, Nice dropdown with flags, Flags with language names, Flags with language codes, Language names, Language codes, Globe, Popup
 * Floating language selector
 * Language bar with flags in menu
 * WooCommerce shop translation
@@ -46,6 +46,7 @@ Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 **Paid Features**
 
 * Multilingual SEO - Enable search engine indexing
+* Neural machine translations with human level translation quality
 * Increase traffic and AdSense revenue
 * Search engine friendly (SEF) URLs
 * Yoast SEO compatible
@@ -88,10 +89,14 @@ List of supported languages: Afrikaans, Albanian, Amharic, Arabic, Armenian, Aze
 1. There are 4 ways you can use to publish the language selector on your website
 
 **1. Floating Language Selector**
-You can turn on Floating language selector option from Settings &rarr; GTranslate screen and it will show the language selector in appropriate location (Top Right, Bottom Right, Top Left or Bottom Left)
+You can turn on Floating language selector option from Settings &rarr; GTranslate screen and it will show the language selector in appropriate location (Top Right, Bottom Right, Top Left or Bottom Left).
 
 **2. Showing in Menu**
-You can select from the list of available menus in which menu the language selector should appear
+You can select from the list of available menus in which menu the language selector should appear.
+
+**2.1 Showing in Menu as sub-menu dropdown**
+In addition you can create a new Custom Link menu item with URL = #, Link Text = Global and add CSS Classes = gtranslate-parent to the newly created menu item.
+After that you can configure GTranslate and set Widget look = (Flags with language name/Flags with language code/Language names/Language codes) and it will appear as a dropdown when you hover on the newly created menu item.
 
 **3. Use GTranslate shortcode**
 You can use `[gtranslate]` shortcode anywhere on your website including posts, pages, text widgets.
@@ -100,7 +105,7 @@ You can edit your template files and use `<?php echo do_shortcode('[gtranslate]'
 **4. Use GTranslate Widget**
 You can use Appearence &rarr; Widgets screen to publish GTranslate widget inside a sidebar of your template.
 
-If you are using any cache plugin, do not forget to clear your cache.
+Please NOTE: If you are using any cache plugin, do not forget to clear your cache.
 
 If you have any issues, please do not hesitate to use our [Support Forum](https://wordpress.org/support/plugin/gtranslate) or [Live Chat](https://gtranslate.io/?xyz=998#contact)
 
@@ -125,7 +130,9 @@ GTranslate is a multilingual solution for your website.
 Yes! We have free version and paid versions with [advanced features](https://gtranslate.io/?xyz=998#pricing).
 
 = What is the quality of translation? =
-It's Google translation, hence Google quality. We use machine translations provided by Google Translate service. In the paid versions you can refine the translations manually and order professional translations directly from your site.
+We use Google neural machine translations which are very accurate for popular language pairs. In the paid versions you can refine the translations manually and order professional translations directly from your site.
+
+You can read this blog post for more info: https://gtranslate.io/blog/translation-quality-got-better-with-neural-machine-translations
 
 = Are the translations provided free of charge? =
 Yes, we use Google Translate widget for website which provides free machine translations which makes it possible to make your wordpress website multilingual instantly upon installation.
@@ -210,6 +217,31 @@ You need to go to the language you want to edit, for instance, French: http://do
 7. Settings page
 
 == Changelog ==
+
+= 2.8.25 =
+* New widget look added - Popup
+* Native template RTL support added
+
+= 2.8.24 =
+* No-scroll option added for floating language selector
+* Now you can add more than one GTranslate widget to your sidebar
+
+= 2.8.23 =
+* Show native language names option turned off by default
+* Fixed issue with initial rendering of the language selector
+* Documentation updated
+
+= 2.8.22 =
+* Intercom live chat support integrated
+* Gzip compression optimizations
+
+= 2.8.21 =
+* Fix for gzip compression issues on mobile phones
+
+= 2.8.20 =
+* Google neural machine translations, better quality!!!
+* Added gzip compression for communication between server and client
+* Fixed issue with double translation
 
 = 2.8.19 =
 * Render gtranslate selector in a submenu if the menu link has gtranslate-parent class

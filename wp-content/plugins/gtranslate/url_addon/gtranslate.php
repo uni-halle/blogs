@@ -60,7 +60,7 @@ if(!function_exists("getallheaders")) {
 
 $request_headers = getallheaders();
 
-if(isset($request_headers['X-GT-Lang'])) {
+if(isset($request_headers['X-GT-Lang']) or isset($request_headers['X-Gt-Lang']) or isset($request_headers['x-gt-lang'])) {
     echo 'Please remove DNS cname records for GTranslate!';
     exit;
 }
@@ -70,7 +70,11 @@ $request_headers['Host'] = $host;
 if(isset($request_headers['HOST'])) unset($request_headers['HOST']);
 if(isset($request_headers['host'])) unset($request_headers['host']);
 
-$request_headers['Accept-Encoding'] = '';
+if(!function_exists('gzdecode'))
+    $request_headers['Accept-Encoding'] = '';
+else
+    $request_headers['Accept-Encoding'] = 'gzip';
+
 if(isset($request_headers['accept-encoding'])) unset($request_headers['accept-encoding']);
 
 if(isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
@@ -134,13 +138,29 @@ $header_size = $response_info['header_size'];
 $header = substr($response, 0, $header_size);
 $html = substr($response, $header_size);
 
+if(function_exists('gzdecode')) {
+    $return_gz = false;
+    $html_gunzip = @gzdecode($html);
+
+    if($html_gunzip !== false) {
+        $html = $html_gunzip;
+        unset($html_gunzip);
+
+        if(strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false) {
+            $return_gz = true;
+            header('Content-Encoding: gzip');
+            header('Vary: Accept-Encoding');
+        }
+    }
+}
+
 $response_headers = explode(PHP_EOL, $header);
 //print_r($response_headers);
 $headers_sent = '';
 foreach($response_headers as $header) {
-    if(!empty($header) and !preg_match('/Content\-Length|Transfer\-Encoding|Content\-Encoding|Link/', $header)) {
+    if(!empty($header) and !preg_match('/Content\-Length|Transfer\-Encoding|Content\-Encoding|Link/i', $header)) {
 
-        if(preg_match('/^Location:/', $header))
+        if(preg_match('/^Location:/i', $header))
             $header = str_ireplace($host, $_SERVER['HTTP_HOST'] . '/' . $glang, $header);
 
         $headers_sent .= $header;
@@ -170,7 +190,10 @@ if(isset($_GET['language_edit'])) {
     $html = str_replace('/tdn-bin/', $protocol . '://' . $_SERVER['HTTP_HOST'] . '/' . $glang . '/tdn-bin/', $html);
 }
 
-echo $html;
+if(function_exists('gzencode') and isset($return_gz) and $return_gz)
+    echo gzencode($html);
+else
+    echo $html;
 
 function http_build_query_for_curl($arrays, &$new = array(), $prefix = null) { // flatten multidimentional array for post
     if(is_object($arrays)) {

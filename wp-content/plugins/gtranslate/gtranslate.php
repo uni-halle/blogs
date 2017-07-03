@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: https://gtranslate.io/?xyz=998
 Description: Makes your website <strong>multilingual</strong> and available to the world using Google Translate. For support visit <a href="https://wordpress.org/support/plugin/gtranslate">GTranslate Support</a>.
-Version: 2.8.19
+Version: 2.8.25
 Author: Edvard Ananyan
 Author URI: https://gtranslate.io
 Text Domain: gtranslate
@@ -93,6 +93,11 @@ class GTranslate extends WP_Widget {
 
     public static function load_textdomain() {
         load_plugin_textdomain('gtranslate');
+
+        // set correct language direction
+        global $text_direction;
+        if(isset($_SERVER['HTTP_X_GT_LANG']) and in_array($_SERVER['HTTP_X_GT_LANG'], array('ar', 'iw', 'fa')))
+            $text_direction = 'rtl';
     }
 
     public function widget($args, $instance) {
@@ -163,8 +168,9 @@ class GTranslate extends WP_Widget {
     }
 
     public static function register() {
-        wp_register_sidebar_widget('gtranslate', 'GTranslate', array('GTranslate', 'widget2'), array('description' => __('Google Automatic Translations')));
-        wp_register_widget_control('gtranslate', 'GTranslate', array('GTranslate', 'control'));
+        register_widget('GTranslateWidget');
+        //wp_register_sidebar_widget('gtranslate', 'GTranslate', array('GTranslate', 'widget2'), array('description' => __('Google Automatic Translations')));
+        //wp_register_widget_control('gtranslate', 'GTranslate', array('GTranslate', 'control'));
     }
 
     public static function admin_menu() {
@@ -185,6 +191,7 @@ class GTranslate extends WP_Widget {
         GTranslate::load_defaults($data);
 
         wp_enqueue_script('jquery-ui-sortable');
+        wp_enqueue_script('jquery-effects-core');
 
         $site_url = site_url();
         $wp_plugin_url = plugins_url() . '/gtranslate';
@@ -242,7 +249,7 @@ function RefreshDoWidgetCode() {
     var analytics = jQuery('#analytics:checked').length > 0 ? true : false;
 
     // make sure default language is on
-    if(widget_look == 'flags_dropdown' || widget_look == 'dropdown_with_flags' || widget_look == 'flags' || widget_look == 'flags_name' || widget_code == 'flags_code')
+    if(widget_look == 'flags_dropdown' || widget_look == 'dropdown_with_flags' || widget_look == 'flags' || widget_look == 'flags_name' || widget_code == 'flags_code' || widget_look == 'popup')
         jQuery('#fincl_langs'+default_language).prop('checked', true);
     if(widget_look == 'dropdown' || widget_look == 'globe' || widget_look == 'lang_names' || widget_look == 'lang_codes')
         jQuery('#incl_langs'+default_language).prop('checked', true);
@@ -268,7 +275,7 @@ function RefreshDoWidgetCode() {
         jQuery('#alternative_flags_option').hide();
     }
 
-    if(widget_look == 'flags' || widget_look == 'flags_dropdown' || widget_look == 'dropdown_with_flags' || widget_look == 'flags_name' || widget_look == 'flags_code') {
+    if(widget_look == 'flags' || widget_look == 'flags_dropdown' || widget_look == 'dropdown_with_flags' || widget_look == 'flags_name' || widget_look == 'flags_code' || widget_look == 'popup') {
         jQuery('#flag_languages_option').show();
         jQuery('#alternative_flags_option').show();
     } else {
@@ -490,6 +497,120 @@ function hideGSatelites($) {
             widget_preview += '<\/script>'+new_line;
         }
 
+        if(widget_look == 'popup') {
+            widget_preview += '<a href="#" class="switcher-popup glink nturl notranslate" onclick="openGTPopup()">';
+
+            if(default_language == 'en' && jQuery('#alt_us:checked').length)
+                widget_preview += '<img src="{$wp_plugin_url}/flags/'+flag_size+'/en-us.png" height="'+flag_size+'" width="'+flag_size+'" alt="en" /> <span>'+gt_lang_array[default_language]+'</span><span style="color:#666;font-size:8px;font-weight:bold;">&#9660;</span></a>'+new_line;
+            else if(default_language == 'en' && jQuery('#alt_ca:checked').length)
+                widget_preview += '<img src="{$wp_plugin_url}/flags/'+flag_size+'/en-ca.png" height="'+flag_size+'" width="'+flag_size+'" alt="en" /> <span>'+gt_lang_array[default_language]+'</span><span style="color:#666;font-size:8px;font-weight:bold;">&#9660;</span></a>'+new_line;
+            else if(default_language == 'pt' && jQuery('#alt_br:checked').length)
+                widget_preview += '<img src="{$wp_plugin_url}/flags/'+flag_size+'/pt-br.png" height="'+flag_size+'" width="'+flag_size+'" alt="pt" /> <span>'+gt_lang_array[default_language]+'</span><span style="color:#666;font-size:8px;font-weight:bold;">&#9660;</span></a>'+new_line;
+            else if(default_language == 'es' && jQuery('#alt_mx:checked').length)
+                widget_preview += '<img src="{$wp_plugin_url}/flags/'+flag_size+'/es-mx.png" height="'+flag_size+'" width="'+flag_size+'" alt="es" /> <span>'+gt_lang_array[default_language]+'</span><span style="color:#666;font-size:8px;font-weight:bold;">&#9660;</span></a>'+new_line;
+            else if(default_language == 'es' && jQuery('#alt_ar:checked').length)
+                widget_preview += '<img src="{$wp_plugin_url}/flags/'+flag_size+'/es-ar.png" height="'+flag_size+'" width="'+flag_size+'" alt="es" /> <span>'+gt_lang_array[default_language]+'</span><span style="color:#666;font-size:8px;font-weight:bold;">&#9660;</span></a>'+new_line;
+            else if(default_language == 'es' && jQuery('#alt_co:checked').length)
+                widget_preview += '<img src="{$wp_plugin_url}/flags/'+flag_size+'/es-co.png" height="'+flag_size+'" width="'+flag_size+'" alt="es" /> <span>'+gt_lang_array[default_language]+'</span><span style="color:#666;font-size:8px;font-weight:bold;">&#9660;</span></a>'+new_line;
+            else if(default_language == 'fr' && jQuery('#alt_qc:checked').length)
+                widget_preview += '<img src="{$wp_plugin_url}/flags/'+flag_size+'/fr-qc.png" height="'+flag_size+'" width="'+flag_size+'" alt="fr" /> <span>'+gt_lang_array[default_language]+'</span><span style="color:#666;font-size:8px;font-weight:bold;">&#9660;</span></a>'+new_line;
+            else
+                widget_preview += '<img src="{$wp_plugin_url}/flags/'+flag_size+'/'+default_language+'.png" height="'+flag_size+'" width="'+flag_size+'" alt="'+default_language+'" /> <span>'+gt_lang_array[default_language]+'</span><span style="color:#666;font-size:8px;font-weight:bold;">&#9660;</span></a>'+new_line;
+
+            // lightbox and content
+            widget_preview += '<div id="gt_fade" class="gt_black_overlay"></div>'+new_line;
+            widget_preview += '<div id="gt_lightbox" class="gt_white_content notranslate">'+new_line;
+            widget_preview += '<div style="position:relative;height:14px;"><span onclick="closeGTPopup()" style="position:absolute;right:2px;top:2px;font-weight:bold;font-size:12px;cursor:pointer;color:#444;font-family:cursive;">X</span></div>'+new_line;
+            widget_preview += '<div class="gt_languages">'+new_line;
+
+            var count_languages = 0;
+
+            jQuery.each(language_codes, function(i, val) {
+                lang = language_codes[i];
+                if(jQuery('#fincl_langs'+lang+':checked').length) {
+                    lang_name = gt_lang_array[lang];
+
+                    var href = '#';
+                    if(pro_version)
+                        href = (lang == default_language) ? '$site_url' : '$site_url'.replace('$site_url'.split('/').slice(0, 3).join('/'), '$site_url'.split('/').slice(0, 3).join('/')+'/'+lang);
+                    else if(enterprise_version)
+                        href = (lang == default_language) ? '$site_url' : '$site_url'.replace('$site_url'.split('/').slice(2, 3)[0].replace('www.', ''), lang + '.' + '$site_url'.split('/').slice(2, 3)[0].replace('www.', '')).replace('://www.', '://');
+
+                    widget_preview += '<a href="'+href+'" onclick="changeGTLanguage(\''+default_language+'|'+lang+'\', this);return false;" title="'+lang_name+'" class="glink nturl'+(default_language == lang ? ' selected' : '')+'">';
+
+                    if(lang == 'en' && jQuery('#alt_us:checked').length)
+                        widget_preview += '<img src="{$wp_plugin_url}/flags/'+flag_size+'/en-us.png" height="'+flag_size+'" width="'+flag_size+'" alt="en" /> <span>'+lang_name+'</span></a>';
+                    else if(lang == 'en' && jQuery('#alt_ca:checked').length)
+                        widget_preview += '<img src="{$wp_plugin_url}/flags/'+flag_size+'/en-ca.png" height="'+flag_size+'" width="'+flag_size+'" alt="en" /> <span>'+lang_name+'</span></a>';
+                    else if(lang == 'pt' && jQuery('#alt_br:checked').length)
+                        widget_preview += '<img src="{$wp_plugin_url}/flags/'+flag_size+'/pt-br.png" height="'+flag_size+'" width="'+flag_size+'" alt="pt" /> <span>'+lang_name+'</span></a>';
+                    else if(lang == 'es' && jQuery('#alt_mx:checked').length)
+                        widget_preview += '<img src="{$wp_plugin_url}/flags/'+flag_size+'/es-mx.png" height="'+flag_size+'" width="'+flag_size+'" alt="es" /> <span>'+lang_name+'</span></a>';
+                    else if(lang == 'es' && jQuery('#alt_ar:checked').length)
+                        widget_preview += '<img src="{$wp_plugin_url}/flags/'+flag_size+'/es-ar.png" height="'+flag_size+'" width="'+flag_size+'" alt="es" /> <span>'+lang_name+'</span></a>';
+                    else if(lang == 'es' && jQuery('#alt_co:checked').length)
+                        widget_preview += '<img src="{$wp_plugin_url}/flags/'+flag_size+'/es-co.png" height="'+flag_size+'" width="'+flag_size+'" alt="es" /> <span>'+lang_name+'</span></a>';
+                    else if(lang == 'fr' && jQuery('#alt_qc:checked').length)
+                        widget_preview += '<img src="{$wp_plugin_url}/flags/'+flag_size+'/fr-qc.png" height="'+flag_size+'" width="'+flag_size+'" alt="fr" /> <span>'+lang_name+'</span></a>';
+                    else
+                        widget_preview += '<img src="{$wp_plugin_url}/flags/'+flag_size+'/'+lang+'.png" height="'+flag_size+'" width="'+flag_size+'" alt="'+lang+'" /> <span>'+lang_name+'</span></a>';
+
+                    count_languages++;
+                }
+            });
+
+            widget_preview += '</div>'+new_line;
+            widget_preview += '</div>'+new_line;
+
+            console.log('Count: ' + count_languages);
+
+            flag_size = parseInt(flag_size);
+            console.log('Flag size: ' + flag_size);
+
+            var popup_height = 25 + count_languages * ((flag_size > 16 ? flag_size : 20) + 10 + 1);
+
+            console.log('height: ' + popup_height);
+
+            var popup_columns = Math.ceil(popup_height / 375);
+
+            console.log('Cols: ' + popup_columns);
+
+            if(popup_height > 375)
+                popup_height = 375;
+
+            var popup_width = popup_columns * (326 + 15);
+
+            console.log('Width: ' + popup_width);
+
+            if(popup_width > 980)
+                popup_width = 980;
+
+            if(popup_columns > 5)
+                popup_columns = 5;
+
+            // style
+            widget_preview += '<style type="text/css">'+new_line;
+            widget_preview += '.gt_black_overlay {display:none;position:fixed;top:0%;left:0%;width:100%;height:100%;background-color:black;z-index:2017;-moz-opacity:0.8;opacity:.80;filter:alpha(opacity=80);}'+new_line;
+            widget_preview += '.gt_white_content {display:none;position:fixed;top:50%;left:50%;width:'+popup_width+'px;height:'+popup_height+'px;margin:-'+(popup_height/2)+'px 0 0 -'+(popup_width/2)+'px;padding:6px 16px;border-radius:5px;background-color:white;color:black;z-index:19881205;overflow:auto;text-align:left;}'+new_line;
+            widget_preview += '.gt_white_content a {display:block;padding:5px 0;border-bottom:1px solid #e7e7e7;white-space:nowrap;}'+new_line;
+            widget_preview += '.gt_white_content a:last-of-type {border-bottom:none;}'+new_line;
+            widget_preview += '.gt_white_content a.selected {background-color:#ffc;}'+new_line;
+            widget_preview += '.gt_white_content .gt_languages {column-count:'+popup_columns+';column-gap:10px;}'+new_line;
+            widget_preview += '.gt_white_content::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 3px rgba(0,0,0,0.3);border-radius:5px;background-color:#F5F5F5;}'+new_line;
+            widget_preview += '.gt_white_content::-webkit-scrollbar {width:5px;}'+new_line;
+            widget_preview += '.gt_white_content::-webkit-scrollbar-thumb {border-radius:5px;-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.3);background-color:#888;}'+new_line;
+            widget_preview += '</style>'+new_line+new_line;
+
+            // javascript
+            widget_preview += '<script type="text/javascript">'+new_line;
+            widget_preview += "function openGTPopup() {document.getElementById('gt_lightbox').style.display='block';document.getElementById('gt_fade').style.display='block';}"+new_line;
+            widget_preview += "function closeGTPopup() {document.getElementById('gt_lightbox').style.display='none';document.getElementById('gt_fade').style.display='none';}"+new_line;
+            widget_preview += "function changeGTLanguage(pair, a) {doGTranslate(pair);jQuery('a.switcher-popup').html(jQuery(a).html()+'<span style=\"color:#666;font-size:8px;font-weight:bold;\">&#9660;</span>');closeGTPopup();}"+new_line;
+            widget_preview += "jQuery('#gt_fade').mousedown(function(e) {if(jQuery('#gt_lightbox').is(':visible')) {closeGTPopup()}});"+new_line;
+            widget_preview += '<\/script>'+new_line;
+
+        }
+
         if(widget_look == 'dropdown_with_flags') {
             // Adding slider html
             widget_preview += '<div class="switcher notranslate">'+new_line;
@@ -696,7 +817,7 @@ if('$widget_look' == 'globe') {
     jQuery('#alternative_flags_option').hide();
 }
 
-if('$widget_look' == 'flags' || '$widget_look' == 'flags_dropdown' || '$widget_look' == 'dropdown_with_flags' || '$widget_look' == 'flags_name' || '$widget_look' == 'flags_code') {
+if('$widget_look' == 'flags' || '$widget_look' == 'flags_dropdown' || '$widget_look' == 'dropdown_with_flags' || '$widget_look' == 'flags_name' || '$widget_look' == 'flags_code' || '$widget_look' == 'popup') {
     jQuery('#flag_languages_option').show();
     jQuery('#alternative_flags_option').show();
 } else {
@@ -716,11 +837,6 @@ if('$widget_look' == 'dropdown_with_flags' || '$widget_look' == 'dropdown' || '$
 } else {
     jQuery('#flag_size_option').show();
 }
-
-if(jQuery('#widget_code').val() == '')
-    RefreshDoWidgetCode();
-else
-    ShowWidgetPreview(jQuery('#widget_code').val());
 
 if(jQuery('#native_language_names:checked').length) {
     jQuery('.en_names').hide();
@@ -763,6 +879,13 @@ foreach($incl_langs as $lang)
 // alt flags
 foreach($alt_flags as $flag)
     $script .= "jQuery('#alt_$flag').attr('checked', true);\n";
+
+$script .= <<<EOT
+if(jQuery('#widget_code').val() == '')
+    RefreshDoWidgetCode();
+else
+    ShowWidgetPreview(jQuery('#widget_code').val());
+EOT;
 ?>
 
         <form id="gtranslate" name="form1" method="post" class="notranslate" action="<?php echo admin_url('options-general.php?page=gtranslate_options'); ?>" onsubmit="return gt_validate_form();">
@@ -778,15 +901,16 @@ foreach($alt_flags as $flag)
                         <td class="option_name"><?php _e('Widget look', 'gtranslate'); ?>:</td>
                         <td>
                             <select id="widget_look" name="widget_look" onChange="RefreshDoWidgetCode()">
-                                <option value="flags_dropdown"><?php _e('Flags and dropdown', 'gtranslate'); ?></option>
                                 <option value="dropdown_with_flags"><?php _e('Nice dropdown with flags', 'gtranslate'); ?></option>
+                                <option value="flags_dropdown"><?php _e('Flags and dropdown', 'gtranslate'); ?></option>
                                 <option value="dropdown"><?php _e('Dropdown', 'gtranslate'); ?></option>
                                 <option value="flags"><?php _e('Flags', 'gtranslate'); ?></option>
                                 <option value="flags_name"><?php _e('Flags with language name', 'gtranslate'); ?></option>
                                 <option value="flags_code"><?php _e('Flags with language code', 'gtranslate'); ?></option>
                                 <option value="lang_names"><?php _e('Language names', 'gtranslate'); ?></option>
                                 <option value="lang_codes"><?php _e('Language codes', 'gtranslate'); ?></option>
-                                <option value="globe">(new) <?php _e('Globe', 'gtranslate'); ?></option>
+                                <option value="globe"><?php _e('Globe', 'gtranslate'); ?></option>
+                                <option value="popup">(beta) <?php _e('Popup', 'gtranslate'); ?></option>
                             </select>
                         </td>
                     </tr>
@@ -907,11 +1031,11 @@ foreach($alt_flags as $flag)
                     </tr>
                     <tr>
                         <td class="option_name">* <?php _e('Sub-directory URL structure', 'gtranslate'); ?>:<br><code><small>http://example.com/<b>ru</b>/</small></code></td>
-                        <td><input id="pro_version" name="pro_version" value="1" type="checkbox" onclick="if(jQuery('#pro_version').is(':checked') && jQuery('#enterprise_version').is(':checked'))jQuery('#enterprise_version').prop('checked', false);RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/> <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank">* <?php _e('paid plans only', 'gtranslate'); ?></a></td>
+                        <td><input id="pro_version" name="pro_version" value="1" type="checkbox" onclick="if(jQuery('#pro_version').is(':checked') && jQuery('#enterprise_version').is(':checked'))jQuery('#enterprise_version').prop('checked', false);RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/> <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank" title="If you already have a subscription, you can enable this.">* <?php _e('paid plans only', 'gtranslate'); ?></a></td>
                     </tr>
                     <tr>
                         <td class="option_name">* <?php _e('Sub-domain URL structure', 'gtranslate'); ?>:<br><code><small>http://<b>es</b>.example.com/</small></code></td>
-                        <td><input id="enterprise_version" name="enterprise_version" value="1" type="checkbox" onclick="if(jQuery('#pro_version').is(':checked') && jQuery('#enterprise_version').is(':checked'))jQuery('#pro_version').prop('checked', false);RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/> <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank">* <?php _e('paid plans only', 'gtranslate'); ?></a></td>
+                        <td><input id="enterprise_version" name="enterprise_version" value="1" type="checkbox" onclick="if(jQuery('#pro_version').is(':checked') && jQuery('#enterprise_version').is(':checked'))jQuery('#pro_version').prop('checked', false);RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/> <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank" title="If you already have a subscription, you can enable this.">* <?php _e('paid plans only', 'gtranslate'); ?></a></td>
                     </tr>
                     <tr id="url_translation_option" style="display:none;">
                         <td class="option_name"><?php _e('Enable URL Translation', 'gtranslate'); ?>:</td>
@@ -939,9 +1063,13 @@ foreach($alt_flags as $flag)
                             <select id="floating_language_selector" name="floating_language_selector">
                                 <option value="no"><?php _e('No', 'gtranslate'); ?></option>
                                 <option value="top_left"><?php _e('Top left', 'gtranslate'); ?></option>
+                                <option value="top_left_sticky"><?php _e('Top left (no-scroll)', 'gtranslate'); ?></option>
                                 <option value="top_right"><?php _e('Top right', 'gtranslate'); ?></option>
+                                <option value="top_right_sticky"><?php _e('Top right (no-scroll)', 'gtranslate'); ?></option>
                                 <option value="bottom_left"><?php _e('Bottom left', 'gtranslate'); ?></option>
+                                <option value="bottom_left_sticky"><?php _e('Bottom left (no-scroll)', 'gtranslate'); ?></option>
                                 <option value="bottom_right"><?php _e('Bottom right', 'gtranslate'); ?></option>
+                                <option value="bottom_right_sticky"><?php _e('Bottom right (no-scroll)', 'gtranslate'); ?></option>
                             </select>
                         </td>
                     </tr>
@@ -1015,8 +1143,9 @@ foreach($alt_flags as $flag)
 
         <div id="poststuff">
             <div class="postbox">
-                <h3 id="settings"><?php _e('Widget code', 'gtranslate'); ?></h3>
+                <h3 id="settings"><?php _e('Widget code (for advanced users)', 'gtranslate'); ?></h3>
                 <div class="inside">
+                    <p><?php _e('This area is for advanced users ONLY who know HTML/CSS/Javascript and do not want to use "Show floating language selector" option.', 'gtranslate'); ?></p>
                     <?php _e('You can edit this if you wish', 'gtranslate'); ?>:<br />
                     <textarea id="widget_code" name="widget_code" onchange="ShowWidgetPreview(this.value)" style="font-family:Monospace;font-size:11px;height:150px;width:565px;"><?php echo $widget_code; ?></textarea><br />
                     <span style="color:red;"><?php _e('DO NOT COPY THIS INTO YOUR POSTS OR PAGES! Use [GTranslate] shortcode inside the post/page <br />or add a GTranslate widget into your sidebar from Appearance -> Widgets instead.', 'gtranslate'); ?></span><br /><br />
@@ -1032,6 +1161,8 @@ foreach($alt_flags as $flag)
         <p><label for="use_encoding" title="Turn this on if you are not able to Save Changes, this will help.">I have issues saving</label> <input type="checkbox" id="use_encoding" name="use_encoding" value="1" /></p>
 
         <p class="submit"><input type="submit" class="button-primary" name="save" value="<?php _e('Save Changes'); ?>" /></p>
+
+        <p style="margin-top:-10px;"><a target="_blank" href="https://wordpress.org/support/plugin/gtranslate/reviews/?filter=5"><?php _e('Love GTranslate? Give us 5 stars on WordPress.org :)', 'gtranslate'); ?></a></p>
 
         </div>
 
@@ -1064,13 +1195,14 @@ foreach($alt_flags as $flag)
                         <ul style="list-style-type:square;padding-left:20px;">
                             <li style="margin:0;"><?php _e('Enable search engine indexing', 'gtranslate'); ?></li>
                             <li style="margin:0;"><?php _e('Search engine friendly (SEF) URLs', 'gtranslate'); ?></li>
-                            <li style="margin:0;"><?php _e('Increase traffic and AdSense revenue', 'gtranslate'); ?></li>
-                            <li style="margin:0;"><?php _e('Meta data translation', 'gtranslate'); ?></li>
+                            <li style="margin:0;"><?php _e('Human level neural translations', 'gtranslate'); ?></li>
                             <li style="margin:0;"><?php _e('Edit translations manually', 'gtranslate'); ?></li>
+                            <li style="margin:0;"><?php _e('Meta data translation', 'gtranslate'); ?></li>
                             <li style="margin:0;"><?php _e('URL/slug translation', 'gtranslate'); ?></li>
                             <li style="margin:0;"><?php _e('Language hosting (example.fr, example.es)', 'gtranslate'); ?></li>
                             <li style="margin:0;"><?php _e('Seamless updates', 'gtranslate'); ?></li>
-                            <li style="margin:0;"><?php _e('SSL support', 'gtranslate'); ?></li>
+                            <li style="margin:0;"><?php _e('Increase traffic and AdSense revenue', 'gtranslate'); ?></li>
+                            <li style="margin:0;"><?php _e('Works for visitors from China', 'gtranslate'); ?></li>
                         </ul>
 
                         <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank"><?php _e('15 day free trial', 'gtranslate'); ?></a> | <a href="https://gtranslate.io/?xyz=998#faq" target="_blank"><?php _e('FAQ', 'gtranslate'); ?></a> | <a href="https://gtranslate.io/?xyz=998#contact" target="_blank"><?php _e('Live Chat', 'gtranslate'); ?></a>
@@ -1082,7 +1214,7 @@ foreach($alt_flags as $flag)
                 <div class="postbox">
                     <h3 id="settings"><?php _e('Do you like GTranslate?', 'gtranslate'); ?></h3>
                     <div class="inside">
-                        <p><?php _e('Please write a review on', 'gtranslate'); ?> <a href="https://wordpress.org/support/plugin/gtranslate/reviews/?filter=5">WordPress.org</a>.</p>
+                        <p><?php _e('Give us 5 stars on', 'gtranslate'); ?> <a href="https://wordpress.org/support/plugin/gtranslate/reviews/?filter=5">WordPress.org</a> :)</p>
 
                         <div id="fb-root"></div>
                         <script>(function(d, s, id) {
@@ -1100,19 +1232,36 @@ foreach($alt_flags as $flag)
 
             <div id="poststuff">
                 <div class="postbox">
-                    <h3 id="settings"><?php _e('GTranslate Tour Video', 'gtranslate'); ?></h3>
+                    <h3 id="settings"><?php _e('Useful links', 'gtranslate'); ?></h3>
                     <div class="inside">
-                        <iframe width="480" height="270" src="https://www.youtube.com/embed/R4mfiKGZh_g" frameborder="0" allowfullscreen></iframe>
-                        <!--iframe src="//player.vimeo.com/video/30132555?title=1&amp;byline=0&amp;portrait=0" width="568" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe-->
+                        <ul style="list-style-type:square;padding-left:20px;">
+                            <li style="margin:0;"><a style="text-decoration:none;" href="https://wordpress.org/plugins/gtranslate/#installation" target="_blank"><?php _e('Quick instructions', 'gtranslate'); ?></a></li>
+                            <li style="margin:0;"><a style="text-decoration:none;" href="https://gtranslate.io/videos" target="_blank"><?php _e('Videos', 'gtranslate'); ?></a></li>
+                            <li style="margin:0;"><a style="text-decoration:none;" href="https://gtranslate.io/?xyz=998#faq" target="_blank"><?php _e('FAQ', 'gtranslate'); ?></a></li>
+                            <li style="margin:0;"><a style="text-decoration:none;" href="https://gtranslate.io/forum/" target="_blank"><?php _e('Support forum', 'gtranslate'); ?></a></li>
+                            <li style="margin:0;"><a style="text-decoration:none;" href="https://gtranslate.io/?xyz=998#pricing" target="_blank"><?php _e('Compare plans', 'gtranslate'); ?></a></li>
+                            <li style="margin:0;"><a style="text-decoration:none;" href="https://gtranslate.io/about-us" target="_blank"><?php _e('About GTranslate team', 'gtranslate'); ?></a></li>
+                            <li style="margin:0;"><a style="text-decoration:none;" href="https://wordpress.org/support/plugin/gtranslate/reviews/" target="_blank"><?php _e('Reviews', 'gtranslate'); ?></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
+
             <div id="poststuff">
                 <div class="postbox">
-                    <h3 id="settings"><?php _e('Translation Delivery Network', 'gtranslate'); ?></h3>
+                    <h3 id="settings"><?php _e('GTranslate Tour Video', 'gtranslate'); ?></h3>
                     <div class="inside">
-                        <iframe width="480" height="270" src="https://www.youtube.com/embed/1o5PkECOj-U" frameborder="0" allowfullscreen></iframe>
-                        <!--iframe src="//player.vimeo.com/video/38686858?title=1&amp;byline=0&amp;portrait=0" width="568" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe-->
+                        <iframe width="480" height="270" src="https://www.youtube.com/embed/R4mfiKGZh_g" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div id="poststuff">
+                <div class="postbox">
+                    <h3 id="settings"><?php _e('Live chat', 'gtranslate'); ?></h3>
+                    <div class="inside">
+                        <p>9am - 6pm (Mon - Fri) New York Time</p>
+                        <p>We try to help everyone.</p>
                     </div>
                 </div>
             </div>
@@ -1138,6 +1287,16 @@ foreach($alt_flags as $flag)
         .connectedSortable1, .connectedSortable1 li, .connectedSortable2, .connectedSortable2 li {margin:0;padding:0;}
         .connectedSortable1 li label, .connectedSortable2 li label {cursor:move;}
         </style>
+
+        <?php $user_info = wp_get_current_user(); ?>
+        <script>window.intercomSettings = {app_id: "r70azrgx", 'email': '<?php echo addslashes($user_info->user_email); ?>', 'name': '<?php echo addslashes($user_info->first_name . ' ' . $user_info->last_name); ?>', 'website': '<?php echo addslashes(get_site_url()); ?>', 'translate_from': '<?php echo $default_language; ?>', 'is_sub_directory': <?php echo (empty($pro_version) ? '0' : '1'); ?>, 'is_sub_domain': <?php echo (empty($enterprise_version) ? '0' : '1'); ?>};(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/r70azrgx';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+        <script>
+        var intercom_timeout = setInterval(function() {
+        var intercom_box = jQuery('#intercom-container .intercom-launcher-frame');
+        jQuery({bottom: 500}).animate({bottom: 20}, {duration: 1000, easing: 'easeOutBounce', step: function() {intercom_box.css('cssText', 'bottom: ' + this.bottom + 'px !important;') }});
+        }, 15000);
+        Intercom('onShow', function() {clearInterval(intercom_timeout);});
+        </script>
 
         <?php
         /*
@@ -1225,7 +1384,7 @@ foreach($alt_flags as $flag)
         $data['new_window'] = isset($data['new_window']) ? $data['new_window'] : '';
         $data['show_in_menu'] = isset($data['show_in_menu']) ? $data['show_in_menu'] : ((isset($data['show_in_primary_menu']) and $data['show_in_primary_menu'] == 1) ? 'primary' : '');
         $data['floating_language_selector'] = isset($data['floating_language_selector']) ? $data['floating_language_selector'] : 'no';
-        $data['native_language_names'] = isset($data['native_language_names']) ? $data['native_language_names'] : 1;
+        $data['native_language_names'] = isset($data['native_language_names']) ? $data['native_language_names'] : '';
         $data['analytics'] = isset($data['analytics']) ? $data['analytics'] : '';
         $data['add_new_line'] = isset($data['add_new_line']) ? $data['add_new_line'] : '1';
 
@@ -1251,6 +1410,54 @@ foreach($alt_flags as $flag)
         if(strlen($data['language_codes']) < strlen($data['language_codes2']))
             $data['language_codes'] = $data['language_codes2'];
     }
+}
+
+class GTranslateWidget extends WP_Widget {
+
+    function __construct() {
+        parent::__construct('gtranslate', esc_html__('GTranslate', 'gtranslate'), array('description' => esc_html__('GTranslate language switcher', 'gtranslate')));
+    }
+
+    public function widget($args, $instance) {
+        echo $args['before_widget'];
+
+        if(!empty($instance['title'])) {
+            echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
+        }
+
+        $data = get_option('GTranslate');
+        GTranslate::load_defaults($data);
+
+        if(empty($data['widget_code']))
+            _e('<b>Notice:</b> Please configure GTranslate from WP-Admin -> Settings -> GTranslate to see it in action.', 'gtranslate');
+        else
+            echo $data['widget_code'];
+
+        // avoid caching issues
+        if($data['widget_look'] == 'dropdown_with_flags' and ($data['pro_version'] or $data['enterprise_version'])) {
+            echo '<script>jQuery(document).ready(function() {jQuery(\'.switcher div.selected a\').html(jQuery(".switcher div.option a[onclick*=\'|"+jQuery(\'html\').attr(\'lang\')+"\']").html())});</script>';
+        }
+
+        echo $args['after_widget'];
+    }
+
+    public function form($instance) {
+        $title = !empty($instance['title']) ? $instance['title'] : '';
+        ?>
+        <p>
+        <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_attr_e('Title:', 'gtranslate'); ?></label>
+        <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text" value="<?php echo esc_attr($title); ?>">
+        </p>
+        <?php
+    }
+
+    public function update($new_instance, $old_instance) {
+        $instance = array();
+        $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
+
+        return $instance;
+    }
+
 }
 
 class GTranslate_Notices {
@@ -1459,6 +1666,7 @@ class GTranslate_Notices {
     }
 
     public function gt_admin_notices() {
+        /*
         $one_week_support = esc_url(add_query_arg(array($this->prefix . '_admin_notice_ignore' => 'one_week_support')));
 
         $notices['one_week_support'] = array(
@@ -1469,9 +1677,10 @@ class GTranslate_Notices {
                     '<li><span class="dashicons dashicons-dismiss"></span><a href="' . $one_week_support . '">' . __('Never show again', 'gtranslate') . '</a></li>',
           'int' => 1
         );
+        */
 
         $two_week_review_ignore = esc_url(add_query_arg(array($this->prefix . '_admin_notice_ignore' => 'two_week_review')));
-        $two_week_review_temp = esc_url(add_query_arg(array($this->prefix . '_admin_notice_temp_ignore' => 'two_week_review', 'gt_int' => 14)));
+        $two_week_review_temp = esc_url(add_query_arg(array($this->prefix . '_admin_notice_temp_ignore' => 'two_week_review', 'gt_int' => 6)));
 
         $notices['two_week_review'] = array(
             'title' => __('Please Leave a Review', 'gtranslate'),
@@ -1488,9 +1697,19 @@ class GTranslate_Notices {
         GTranslate::load_defaults($data);
 
         $upgrade_tips_ignore = esc_url(add_query_arg(array($this->prefix . '_admin_notice_ignore' => 'upgrade_tips')));
-        $upgrade_tips_temp = esc_url(add_query_arg(array($this->prefix . '_admin_notice_temp_ignore' => 'upgrade_tips', 'gt_int' => 5)));
+        $upgrade_tips_temp = esc_url(add_query_arg(array($this->prefix . '_admin_notice_temp_ignore' => 'upgrade_tips', 'gt_int' => 7)));
 
         if($data['pro_version'] != '1' and $data['enterprise_version'] != '1') {
+            $notices['upgrade_tips'][] = array(
+                'title' => __('Did you know?', 'gtranslate'),
+                'msg' => __('You can have <b>neural machine translations</b> which are human level by upgrading your GTranslate.', 'gtranslate'),
+                'link' => '<li><span class="dashicons dashicons-external"></span><a href="https://gtranslate.io/?xyz=998#pricing" target="_blank">' . __('Learn more', 'gtranslate') . '</a></li>' .
+                          '<li><span class="dashicons dashicons-calendar-alt"></span><a href="' . $upgrade_tips_temp . '">' . __('Maybe later', 'gtranslate') . '</a></li>' .
+                          '<li><span class="dashicons dashicons-dismiss"></span><a href="' . $upgrade_tips_ignore . '">' . __('Never show again', 'gtranslate') . '</a></li>',
+                'later_link' => $upgrade_tips_temp,
+                'int' => 5
+            );
+
             $notices['upgrade_tips'][] = array(
                 'title' => __('Did you know?', 'gtranslate'),
                 'msg' => __('You can <b>increase</b> your international <b>traffic</b> by upgrading your GTranslate.', 'gtranslate'),
@@ -1498,7 +1717,7 @@ class GTranslate_Notices {
                           '<li><span class="dashicons dashicons-calendar-alt"></span><a href="' . $upgrade_tips_temp . '">' . __('Maybe later', 'gtranslate') . '</a></li>' .
                           '<li><span class="dashicons dashicons-dismiss"></span><a href="' . $upgrade_tips_ignore . '">' . __('Never show again', 'gtranslate') . '</a></li>',
                 'later_link' => $upgrade_tips_temp,
-                'int' => 1
+                'int' => 5
             );
 
             $notices['upgrade_tips'][] = array(
@@ -1508,7 +1727,7 @@ class GTranslate_Notices {
                           '<li><span class="dashicons dashicons-calendar-alt"></span><a href="' . $upgrade_tips_temp . '">' . __('Maybe later', 'gtranslate') . '</a></li>' .
                           '<li><span class="dashicons dashicons-dismiss"></span><a href="' . $upgrade_tips_ignore . '">' . __('Never show again', 'gtranslate') . '</a></li>',
                 'later_link' => $upgrade_tips_temp,
-                'int' => 1
+                'int' => 5
             );
 
             $notices['upgrade_tips'][] = array(
@@ -1518,7 +1737,7 @@ class GTranslate_Notices {
                           '<li><span class="dashicons dashicons-calendar-alt"></span><a href="' . $upgrade_tips_temp . '">' . __('Maybe later', 'gtranslate') . '</a></li>' .
                           '<li><span class="dashicons dashicons-dismiss"></span><a href="' . $upgrade_tips_ignore . '">' . __('Never show again', 'gtranslate') . '</a></li>',
                 'later_link' => $upgrade_tips_temp,
-                'int' => 1
+                'int' => 5
             );
 
             $notices['upgrade_tips'][] = array(
@@ -1528,18 +1747,7 @@ class GTranslate_Notices {
                           '<li><span class="dashicons dashicons-calendar-alt"></span><a href="' . $upgrade_tips_temp . '">' . __('Maybe later', 'gtranslate') . '</a></li>' .
                           '<li><span class="dashicons dashicons-dismiss"></span><a href="' . $upgrade_tips_ignore . '">' . __('Never show again', 'gtranslate') . '</a></li>',
                 'later_link' => $upgrade_tips_temp,
-                'int' => 1
-            );
-
-            $notices['upgrade_tips'][] = array(
-                'title' => __('Did you know?', 'gtranslate'),
-                'msg' => __('You can use our <b>Live Chat</b> or <b>Support Forum</b> if you have any questions.', 'gtranslate'),
-                'link' => '<li><span class="dashicons dashicons-external"></span><a href="https://gtranslate.io/?xyz=998#contact" target="_blank">' . __('Live Chat', 'gtranslate') . '</a></li>' .
-                          '<li><span class="dashicons dashicons-external"></span><a href="https://wordpress.org/support/plugin/gtranslate" target="_blank">' . __('Support Forum', 'gtranslate') . '</a></li>' .
-                          '<li><span class="dashicons dashicons-calendar-alt"></span><a href="' . $upgrade_tips_temp . '">' . __('Maybe later', 'gtranslate') . '</a></li>' .
-                          '<li><span class="dashicons dashicons-dismiss"></span><a href="' . $upgrade_tips_ignore . '">' . __('Never show again', 'gtranslate') . '</a></li>',
-                'later_link' => $upgrade_tips_temp,
-                'int' => 1
+                'int' => 5
             );
 
             shuffle($notices['upgrade_tips']);
@@ -1614,7 +1822,7 @@ if($data['floating_language_selector'] != 'no' and !is_admin()) {
         GTranslate::load_defaults($data);
 
         if($data['widget_look'] == 'dropdown_with_flags')
-            if(is_admin_bar_showing() and ($data['floating_language_selector'] == 'top_left' or $data['floating_language_selector'] == 'top_right'))
+            if(is_admin_bar_showing() and ($data['floating_language_selector'] == 'top_left' or $data['floating_language_selector'] == 'top_right' or $data['floating_language_selector'] == 'top_left_sticky' or $data['floating_language_selector'] == 'top_right_sticky'))
                 $vertical_location = '32px';
             else
                 $vertical_location = '0';
@@ -1623,9 +1831,13 @@ if($data['floating_language_selector'] != 'no' and !is_admin()) {
 
         switch($data['floating_language_selector']) {
             case 'top_left': $html = '<div style="position:fixed;top:'.$vertical_location.';left:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
+            case 'top_left_sticky': $html = '<div style="position:absolute;top:'.$vertical_location.';left:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
             case 'top_right': $html = '<div style="position:fixed;top:'.$vertical_location.';right:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
+            case 'top_right_sticky': $html = '<div style="position:absolute;top:'.$vertical_location.';right:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
             case 'bottom_left': $html = '<div style="position:fixed;bottom:'.$vertical_location.';left:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
+            case 'bottom_left_sticky': $html = '<div style="position:absolute;bottom:'.$vertical_location.';left:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
             case 'bottom_right': $html = '<div style="position:fixed;bottom:'.$vertical_location.';right:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
+            case 'bottom_right_sticky': $html = '<div style="position:absolute;bottom:'.$vertical_location.';right:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
             default: $html = ''; break;
         }
 
