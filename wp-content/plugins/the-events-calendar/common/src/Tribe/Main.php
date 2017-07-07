@@ -17,8 +17,7 @@ class Tribe__Main {
 	const OPTIONNAME          = 'tribe_events_calendar_options';
 	const OPTIONNAMENETWORK   = 'tribe_events_calendar_network_options';
 
-	const VERSION             = '4.5.7';
-
+	const VERSION             = '4.5.2';
 	const FEED_URL            = 'https://theeventscalendar.com/feed/';
 
 	protected $plugin_context;
@@ -161,14 +160,11 @@ class Tribe__Main {
 		Tribe__Debug::instance();
 		tribe( 'settings.manager' );
 		tribe( 'tracker' );
-		tribe( 'plugins.api' );
 		$this->pue_notices();
 
 		require_once $this->plugin_path . 'src/functions/utils.php';
 		require_once $this->plugin_path . 'src/functions/template-tags/general.php';
 		require_once $this->plugin_path . 'src/functions/template-tags/date.php';
-
-		tribe( 'ajax.dropdown' );
 
 		// Starting the log manager needs to wait until after the tribe_*_option() functions have loaded
 		$this->log = new Tribe__Log();
@@ -178,7 +174,7 @@ class Tribe__Main {
 	 * Registers resources that can/should be enqueued
 	 */
 	public function load_assets() {
-		// These ones are only registered
+		// These ones are only registred
 		tribe_assets(
 			$this,
 			array(
@@ -202,7 +198,6 @@ class Tribe__Main {
 				array( 'tribe-dropdowns', 'dropdowns.js', array( 'jquery', 'underscore', 'tribe-select2' ) ),
 				array( 'tribe-jquery-timepicker', 'vendor/jquery-timepicker/jquery.timepicker.js', array( 'jquery' ) ),
 				array( 'tribe-jquery-timepicker-css', 'vendor/jquery-timepicker/jquery.timepicker.css' ),
-
 			)
 		);
 
@@ -219,19 +214,7 @@ class Tribe__Main {
 			),
 			'admin_enqueue_scripts',
 			array(
-				'conditionals' => array( $this, 'should_load_common_admin_css' ),
-			)
-		);
-
-		$datepicker_months = array_values( Tribe__Date_Utils::get_localized_months_full() );
-
-		tribe_asset(
-			$this,
-			'tribe-common',
-			'tribe-common.js',
-			array( 'tribe-clipboard' ),
-			'admin_enqueue_scripts',
-			array(
+				'filter' => array( Tribe__Admin__Helpers::instance(), 'is_post_type_screen' ),
 				'localize' => (object) array(
 					'name' => 'tribe_system_info',
 					'data' => array(
@@ -242,6 +225,16 @@ class Tribe__Main {
 					),
 				),
 			)
+		);
+
+		$datepicker_months = array_values( Tribe__Date_Utils::get_localized_months_full() );
+
+		tribe_asset(
+			$this,
+			'tribe-common',
+			'tribe-common.js',
+			array( 'tribe-clipboard' ),
+			'admin_enqueue_scripts'
 		);
 
 		tribe( 'tribe.asset.data' )->add( 'tribe_l10n_datatables', array(
@@ -318,32 +311,6 @@ class Tribe__Main {
 		} )( document.body );
 		</script>
 		<?php
-	}
-
-	/**
-	 * Tells us if we're on an admin screen that needs the Common admin CSS.
-	 *
-	 * Currently this includes post type screens, the Plugins page, Settings pages
-	 * and tabs, Tribe App Shop page, and the Help screen.
-	 *
-	 * @since 4.5.7
-	 *
-	 * @return bool
-	 */
-	public function should_load_common_admin_css() {
-		$helper = Tribe__Admin__Helpers::instance();
-
-		// Are we on a post type screen?
-		$is_post_type = $helper->is_post_type_screen();
-
-		// Are we on the Plugins page?
-		$is_plugins = $helper->is_screen( 'plugins' );
-
-		// Are we viewing a generic Tribe screen?
-		// Includes: Events > Settings, Events > Help, App Shop page, and more.
-		$is_tribe_screen = $helper->is_screen();
-
-		return $is_post_type || $is_plugins || $is_tribe_screen;
 	}
 
 	/**
@@ -523,10 +490,7 @@ class Tribe__Main {
 		tribe_singleton( 'settings.manager', 'Tribe__Settings_Manager' );
 		tribe_singleton( 'settings', 'Tribe__Settings', array( 'hook' ) );
 		tribe_singleton( 'tribe.asset.data', 'Tribe__Asset__Data', array( 'hook' ) );
-		tribe_singleton( 'ajax.dropdown', 'Tribe__Ajax__Dropdown', array( 'hook' ) );
 		tribe_singleton( 'tracker', 'Tribe__Tracker', array( 'hook' ) );
 		tribe_singleton( 'chunker', 'Tribe__Meta__Chunker', array( 'set_post_types', 'hook' ) );
-		tribe_singleton( 'cache', 'Tribe__Cache' );
-		tribe_singleton( 'plugins.api', 'Tribe__Plugins_API', array( 'hook' ) );
 	}
 }

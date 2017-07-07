@@ -80,9 +80,9 @@ if ( ! function_exists( 'tribe_resource_url' ) ) {
 	 **/
 	function tribe_resource_url( $resource, $echo = false, $root_dir = null, $origin = null ) {
 		$extension = pathinfo( $resource, PATHINFO_EXTENSION );
-		$resource_path = $root_dir;
+		$resource_path = '';
 
-		if ( is_null( $resource_path ) ) {
+		if ( is_null( $root_dir ) ) {
 			$resources_path = 'src/resources/';
 			switch ( $extension ) {
 				case 'css':
@@ -98,6 +98,8 @@ if ( ! function_exists( 'tribe_resource_url' ) ) {
 					$resource_path = $resources_path;
 					break;
 			}
+		} else {
+			$resource_path = $root_dir;
 		}
 
 		$path = $resource_path . $resource;
@@ -108,10 +110,13 @@ if ( ! function_exists( 'tribe_resource_url' ) ) {
 			$plugin_path = trailingslashit( dirname( dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) ) );
 		}
 
-		$file = wp_normalize_path( $plugin_path . $path );
+		$file = $plugin_path . $path;
 
 		// Turn the Path into a URL
-		$url = plugins_url( basename( $file ), $file );
+		$url = str_replace( wp_normalize_path( WP_CONTENT_DIR ), content_url(), $file );
+
+		// Make it compatible with Windows and other OS
+		$url = str_replace( DIRECTORY_SEPARATOR, '/', $url );
 
 		/**
 		 * Filters the resource URL
@@ -122,7 +127,7 @@ if ( ! function_exists( 'tribe_resource_url' ) ) {
 		$url = apply_filters( 'tribe_resource_url', $url, $resource );
 
 		/**
-		 * Deprecated the tribe_events_resource_url filter in 4.0 in favor of tribe_resource_url. Remove in 5.0
+		 * Deprected the tribe_events_resource_url filter in 4.0 in favor of tribe_resource_url. Remove in 5.0
 		 */
 		$url = apply_filters( 'tribe_events_resource_url', $url, $resource );
 
@@ -181,28 +186,14 @@ if ( ! function_exists( 'tribe_get_datetime_format' ) ) {
 	 * @return mixed|void
 	 */
 	function tribe_get_datetime_format( $with_year = false ) {
-
-		$raw_separator = tribe_get_option( 'dateTimeSeparator', ' @ ' );
-		$separator     = (array) str_split( $raw_separator );
-
-		if ( empty( $raw_separator ) ) {
-		    /**
-			 * Filterable fallback for when the dateTimeSeparator is an empty string. Defaults to a space.
-			 *
-			 * @since 4.5.6
-			 *
-			 * @param string $fallback The string to use as the fallback.
-			 * @param string $raw_separator The raw value of the dateTimeSeparator option.
-			 * @return string
-			 */
-			$separator[0] = apply_filters( 'tribe_empty_datetime_separator_fallback', ' ', $raw_separator );
-		}
+		$separator = (array) str_split( tribe_get_option( 'dateTimeSeparator', ' @ ' ) );
 
 		$format = tribe_get_date_format( $with_year );
 		$format .= ( ! empty( $separator ) ? '\\' : '' ) . implode( '\\', $separator );
 		$format .= get_option( 'time_format' );
 
 		return apply_filters( 'tribe_datetime_format', $format );
+
 	}
 }//end if
 
@@ -536,8 +527,6 @@ function tribe_asset( $origin, $slug, $file, $deps = array(), $action = null, $a
 /**
  * Function to include more the one asset, based on `tribe_asset`
  *
- * @since 4.3
- *
  * @param  object   $origin     The main Object for the plugin you are enqueueing the script/style for
  * @param  array    $assets     {
  *    Indexed array, don't use any associative key.
@@ -547,7 +536,7 @@ function tribe_asset( $origin, $slug, $file, $deps = array(), $action = null, $a
  *    @type  string   $file       Which file will be loaded, either CSS or JS
  *    @type  array    $deps       (optional) Dependencies
  * }
- * @param  string   $action     A WordPress hook that will automatically enqueue this asset once fired
+ * @param  string   $action     A WordPress Action, needs to happen after: `wp_enqueue_scripts`, `admin_enqueue_scripts`, or `login_enqueue_scripts`
  * @param  array    $arguments  Look at `Tribe__Assets::register()` for more info
  *
  * @return array             Which Assets were registered

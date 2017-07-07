@@ -20,26 +20,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 do_action( 'tribe_events_organizer_before_metabox', $post );
 ?>
 <?php if ( empty( $hide_organizer_title ) ): ?>
-	<tr class="organizer tribe-linked-type-organizer-name">
+	<tr class="organizer">
 		<td><?php printf( esc_html__( '%s Name:', 'the-events-calendar' ), tribe_get_organizer_label_singular() ); ?></td>
 		<td>
 			<input tabindex="<?php tribe_events_tab_index(); ?>" type='text' name='organizer[Organizer]' size='25' value='<?php echo isset( $organizer_title ) ? esc_attr( $organizer_title ) : ''; ?>' />
 		</td>
 	</tr>
 <?php endif; ?>
-<tr class="organizer tribe-linked-type-organizer-phone">
+<tr class="organizer">
 	<td><?php esc_html_e( 'Phone:', 'the-events-calendar' ); ?></td>
 	<td>
 		<input tabindex="<?php tribe_events_tab_index(); ?>" type='text' id='OrganizerPhone' name='organizer[Phone]' size='25' value='<?php echo isset( $_OrganizerPhone ) ? esc_attr( $_OrganizerPhone ) : ''; ?>' />
 	</td>
 </tr>
-<tr class="organizer tribe-linked-type-organizer-website">
+<tr class="organizer">
 	<td><?php esc_html_e( 'Website:', 'the-events-calendar' ); ?></td>
 	<td>
 		<input tabindex="<?php tribe_events_tab_index(); ?>" type='text' id='OrganizerWebsite' name='organizer[Website]' size='25' value='<?php echo isset( $_OrganizerWebsite ) ? esc_attr( $_OrganizerWebsite ) : ''; ?>' />
 	</td>
 </tr>
-<tr class="organizer tribe-linked-type-organizer-email">
+<tr class="organizer">
 	<td><?php esc_html_e( 'Email:', 'the-events-calendar' ); ?>
 	</td>
 	<small><?php esc_html_e( 'The e-mail address will be obfuscated on your site to avoid it getting harvested by spammers.', 'the-events-calendar' ); ?></small>

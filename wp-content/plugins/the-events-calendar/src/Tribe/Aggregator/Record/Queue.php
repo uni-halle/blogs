@@ -128,11 +128,6 @@ class Tribe__Events__Aggregator__Record__Queue {
 	}
 
 	public function load_queue() {
-		if ( empty( $this->record->meta[ self::$queue_key ] ) ) {
-			$this->is_fetching = false;
-			$this->items = array();
-		}
-
 		$this->items = $this->record->meta[ self::$queue_key ];
 
 		if ( 'fetch' === $this->items ) {
@@ -214,8 +209,7 @@ class Tribe__Events__Aggregator__Record__Queue {
 		// If we have a parent also update that
 		if ( ! empty( $this->record->post->post_parent ) ) {
 			$parent = Tribe__Events__Aggregator__Records::instance()->get_by_post_id( $this->record->post->post_parent );
-
-			if ( ! tribe_is_error( $parent ) && isset( $parent->meta[ self::$activity_key ] ) ) {
+			if ( isset( $parent->meta[ self::$activity_key ] ) ) {
 				$activity = $parent->meta[ self::$activity_key ];
 
 				if ( $activity instanceof Tribe__Events__Aggregator__Record__Activity ) {
