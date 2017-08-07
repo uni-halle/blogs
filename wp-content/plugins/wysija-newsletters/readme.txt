@@ -1,16 +1,14 @@
-=== MailPoet Newsletters ===
+=== MailPoet 2 ===
 Contributors: wysija
 Tags: newsletter, newsletters, email newsletter, email subscription, newsletter signup, post notification, autoresponder, newsletter alert, auto newsletter, automatic post notification, email newsletters, email signup, auto post notifications, newsletter widget, newsletter builder, subscribe widget, signup widget, email subscription, newsletter plugin, widget, subscription, emailing, mailpoet, wysija, mandrill, sendgrid
 Requires at least: 3.5
-Tested up to: 4.7.4
-Stable tag: 2.7.10
+Tested up to: 4.8
+Stable tag: 2.7.11.3
 Send newsletters post notifications or autoresponders from WordPress easily, and beautifully. Start to capture subscribers with our widget now.
 
 == Description ==
 
-Create newsletters, automated emails, post notifications and autoresponders. Capture subscribers with our signup widget. Drop your posts, images, social icons in your newsletter. Change fonts and colors on the fly. A simple newsletter solution for WordPress. Finally!
-
-We built it with the idea that newsletters in WordPress should be easy. Not hard. Forget MailChimp, Aweber, etc. We're the good guys inside your WordPress.
+Our lovely plugin is changing for the better. Version 2 will start being replaced by [MailPoet version 3](https://wordpress.org/plugins/mailpoet/) this September. We encourage you all to switch now.
 
 [Try the demo.](http://demo.mailpoet.com/launch/)
 
@@ -131,6 +129,12 @@ Our [support site](http://support.mailpoet.com/) has plenty of articles and a ti
 7. Importing subscribers with a CSV.
 
 == Changelog ==
+
+= 2.7.11.3 - 2017-07-21 =
+* Fixed Premium version download link
+
+= 2.7.11.1 - 2017-07-17 =
+* Improved welcome and update pages
 
 = 2.7.10 - 2017-04-20 =
 * Introduced minor changes to the premium page

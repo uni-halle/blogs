@@ -2817,9 +2817,9 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
 				?>
 					<div id="update-page" class="about-wrap mpoet-page">
 
-						<h1><?php echo sprintf(__('Welcome to %1$s', WYSIJA), '<span class="version">MailPoet '.WYSIJA::get_version())."</span>"; ?></h1>
+						<h1><?php echo __('Try the new (and much better) MailPoet now', WYSIJA); ?></h1>
 
-						<div class="about-text"><?php echo $data['abouttext'] ?></div>
+						<div class="about-text" style="visibility:hidden"><?php echo $data['abouttext'] ?></div>
 						<?php
 						foreach ($data['sections'] as $section) {
 
@@ -2834,7 +2834,7 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
 								<div class="changelog <?php echo $class_added ?>">
 									<h2><?php echo $section['title'] . $link_hide ?></h2>
 
-									<div class="feature-section <?php echo $section['format'] ?>">
+									<div class="feature-sec tion <?php echo $section['format'] ?>">
 										<?php
 										switch ($section['format']) {
 											case 'three-col':
@@ -2875,7 +2875,7 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
 			}
 			?>
 
-						<a class="button-primary" href="admin.php?page=wysija_campaigns"><?php _e('Thanks! Now take me to MailPoet.', WYSIJA); ?></a>
+						<a class="button-primary" href="admin.php?page=wysija_campaigns"><?php _e("No thanks! I'll use MailPoet version 2 for now", WYSIJA); ?></a>
 
 					</div>
 
@@ -2883,6 +2883,20 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
 			<?php
 			}
 
+      public function replace_link_shortcode($text, $url) {
+        $count = 1;
+        return preg_replace(
+          '/\[\/link\]/',
+          '</a>',
+          preg_replace(
+            '/\[link\]/',
+            sprintf('<a href="%s">', $url),
+            $text,
+            $count
+          ),
+          $count
+        );
+      }
 			function whats_new($data) {
 
 				$helper_readme = WYSIJA::get('readme', 'helper');
@@ -2910,6 +2924,7 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
                                 }else{
                                     $data['abouttext'] = __('You updated! It\'s like having the next gadget, but better.', WYSIJA);
                                 }
+                                $data['abouttext'] = '';
 
 
 				// this is a flag to have a pretty clean update page where teh only call to action is our survey
@@ -2918,6 +2933,44 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
 				$is_multisite = is_multisite();
 				$is_network_admin = WYSIJA::current_user_can('manage_network');
 
+        $data['sections'][] = array(
+          'title' => __('A new and better MailPoet is coming this September', WYSIJA),
+          'format' => 'title-content',
+          'content' => '
+<iframe src="https://player.vimeo.com/video/223581490" width="640" height="360" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+<ul><li>'.__('MailPoet version 3 is completely rewritten', WYSIJA).'</li>
+<li>'.__('New email designer', WYSIJA).'</li>
+<li>'.__('Responsive templates', WYSIJA).'</li>
+<li>'.__('Fast user interface', WYSIJA).'</li>
+<li>'.__('Same easy configuration', WYSIJA).'</li>
+<li>'.__('Weekly releases', WYSIJA).'</li>
+<li>'.__('Version 2 and 3 can live side by side', WYSIJA).'</li>
+<li><a href="http://beta.docs.mailpoet.com/article/189-comparison-of-mailpoet-2-and-3?utm_source=mp2&amp;utm_medium=welcomeupdate&amp;utm_campaign=comparison">'.__('Comparison table of both versions', WYSIJA).'</a></li>
+<li>'.$this->replace_link_shortcode(__('Try [link]the online demo[/link]', WYSIJA), 'http://demo3.mailpoet.com/launch/?utm_source=mp2&amp;utm_medium=updatewelcome&amp;utm_campaign=demo3').'</li>
+<li>'.__('Multisite works, but not officially supported. Please test MailPoet 3 on a staging server', WYSIJA).'</li>
+<li>'.__('Right-to-left languages works, but can be improved', WYSIJA).'</li>
+<li>'.
+$this->replace_link_shortcode(
+  $this->replace_link_shortcode(
+    __('Get in touch in the [link]forums[/link] for further help. Customers can reach via our [link]support page[/link]', WYSIJA),
+    'https://wordpress.org/support/plugin/wysija-newsletters'
+  ),
+  'https://www.mailpoet.com/support/'
+).'</li>
+</ul>
+<br>
+<h3><strong>'.__('Comes with a 1-click migration tool:', WYSIJA).'</strong></h3>
+<ul> 
+  <li>'.__('Your subscribers, lists, forms and settings will be migrated', WYSIJA).'</li>
+  <li>'.__('Automatic emails will not be migrated', WYSIJA).'</li>
+  <li>'.__('Archive of sent emails will not be migrated', WYSIJA).'</li>
+  <li>'.__('Your statistics will not be migrated', WYSIJA).'</li>
+  
+  
+</ul>
+<a class="button-primary" href="plugin-install.php?s=mailpoet&tab=search&type=author">'.__('Download MailPoet 3 now', WYSIJA).'</a>
+          '
+        );
 
 				if ($is_multisite) {
 					if ($is_network_admin) {
@@ -2955,6 +3008,7 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
 
 
 				$msg = $model_config->getValue('ignore_msgs');
+        /*
 				if ( !isset($msg['ctaupdate']) && $show_survey === false ) {
 					$data['sections'][] = array(
 						'title' => __('Keep this plugin essentially free', WYSIJA),
@@ -2971,6 +3025,7 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
 						'format' => 'review-follow',
 					);
 				}
+         */
 
 /*                                if( $show_survey ){
                                     $data['sections'][] = array(

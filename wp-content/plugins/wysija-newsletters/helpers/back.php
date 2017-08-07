@@ -343,10 +343,11 @@ class WYSIJA_help_back extends WYSIJA_help{
         $truelinkhelp .= '<p>'.__('MailPoet Version: ',WYSIJA).'<strong>'.WYSIJA::get_version().'</strong></p>';
 
         $this->menus=array(
-            'campaigns'=>array('title'=>'MailPoet'),
+            'campaigns'=>array('title'=>'MailPoet'. ' <span class="update-plugins"><span class="update-count">1</span></span>'),
             'subscribers'=>array('title'=>__('Subscribers',WYSIJA)), // if the key "subscribers" is changed, please change in the filter "wysija_menus" as well.
             'config'=>array('title'=>__('Settings',WYSIJA)),
-            'premium'=>array('title'=>__('Premium',WYSIJA))
+            'premium'=>array('title'=>__('Premium',WYSIJA)),
+            'mp3'=>array('title'=>__('Try MailPoet 3 Now!',WYSIJA))
         );
         $this->menus = apply_filters('wysija_menus', $this->menus);
         $this->menuHelp = $truelinkhelp;

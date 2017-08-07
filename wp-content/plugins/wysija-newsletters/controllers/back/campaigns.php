@@ -115,69 +115,43 @@ class WYSIJA_control_back_campaigns extends WYSIJA_control_back {
 			$welcome_video_link = $video_language['en_EN'];
 		}
 
-		$this->data['sections'][] = array(
-			'title' => __('Stay up to date! Subscribe to our newsletters', WYSIJA) . '<span id="poll_result"></span>',
-			'format' => 'normal',
-			'paragraphs' => array('<div class="mpoet-update-subscribe" ><h4></h4><div class="mpoet-update-subscribe-left"> <p>'.__('We send a monthly newsletter with the following:',WYSIJA).'</p>' .
-                                                                                                    '<ul>' .
-                                                                                                            '<li>'.__('Important plugin updates',WYSIJA).'</li>' .
-                                                                                                            '<li>'.__('Coupons',WYSIJA).'</li>' .
-                                                                                                            '<li>'.__('Tips for you, or your customers',WYSIJA).'</li>' .
-                                                                                                            '<li>'.__('What we’re working on',WYSIJA).'</li>' .
-                                                                                                            '<li>'.__('News from us, the team',WYSIJA).'</li>' .
-                                                                                                    '</ul>
-                                                                                                     <p>View <a target="_blank" href="http://www.mailpoet.com/?wysija-page=1&controller=email&action=view&email_id=1181&wysijap=subscriptions-3">an example blog post email</a> and <a target="_blank" href="http://www.mailpoet.com/?wysija-page=1&controller=email&action=view&email_id=64&wysijap=subscriptions-2">an example newsletter</a>.</p>
-                                                                                                        </div>' .
-                                                                                            '<div class="mpoet-update-subscribe-right">' .
-
-                                                                                            '<iframe width="380" scrolling="no" frameborder="0" src="http://www.mailpoet.com/?wysija-page=1&controller=subscribers&action=wysija_outter&wysija_form=5&external_site=1&wysijap=subscriptions-3" class="iframe-wysija" vspace="0" tabindex="0" style="position: static; top: 0pt; margin: 0px; border-style: none; height: 180px; left: 0pt; visibility: visible; background-color: #f1f1f1!important;" marginwidth="0" marginheight="0" hspace="0" allowtransparency="true" title="Subscription Wysija"></iframe>
-                                                                                                </div>
-                                                                                                <div style="clear:both;"></div>
-
-                                                                                                </div>',
-			)
-		);
-
-		$this->data['sections'][]=array(
-			'title'=>__('First Time? See it in Action',WYSIJA),
-			'format'=>'normal',
-			'paragraphs'=>array(
-					__('You can start by watching this video by one of our users.',WYSIJA),
-					$welcome_video_link
-				)
-			);
-
-		// Check if user is already sharing data, and hide the share link.
-		if (!$model_config->getValue('analytics')) {
-		  $share_section = array(
-			'title' => __('Share your data', WYSIJA),
-			'content' => str_replace(
-			  array('[link]', '[/link]', '[ajaxlink]', '[/ajaxlink]'), array('<a title="Anonymous Data" target="_blank" href="http://support.mailpoet.com/knowledgebase/share-your-data/?utm_source=wpadmin&utm_campaign=welcome_page">', '</a>', '<a id="share_analytics" href="javascript:;">', '</a>'), __("We know too little about our users. We're looking for [link]anonymous data[/link] to build a better plugin. [ajaxlink]Yes, count me in![/ajaxlink]", WYSIJA))
-			);
-		  } else {
-			$share_section = array(
-			  'title' => __('Share your data', WYSIJA),
-			  'content' => str_replace(
-				array('[link]', '[/link]'), array('<a title="Anonymous Data" target="_blank" href="http://support.mailpoet.com/knowledgebase/share-your-data/?utm_source=wpadmin&utm_campaign=welcome_page">', '</a>', '<a id="share_analytics" href="javascript:;">', '</a>'), __("We know too little about our users. We're looking for [link]anonymous data[/link] to build a better plugin. Thanks, you're already sharing!", WYSIJA))
-			  );
-		  }
-
-		$this->data['sections'][] = array(
-			'title' => __('What You Can Do', WYSIJA),
-			'cols' => array(
-				array(
-					'title' => __('5 minute newbie guide', WYSIJA),
-					'content' => __('Your MailPoet comes with an example newsletter. You\'ll see it when you close this welcome page. Edit it to start playing with it.', WYSIJA)
-				  ),
-				$share_section,
-				array(
-					'title' => __('Help yourself. Or let us help you.', WYSIJA),
-					'content' => str_replace(
-							array('[link]', '[/link]'), array('<a href="http://support.mailpoet.com/" target="_blank" title="On our blog!">', '</a>'), __('We got documentation and a ticket system on [link]support.mailpoet.com[/link]. We answer within 24h.', WYSIJA))
-				)
-			),
-			'format' => 'three-col',
-		);
+        $this->data['sections'][] = array(
+          'title' => __('A new and better MailPoet is coming this September', WYSIJA),
+          'format' => 'title-content',
+          'paragraphs' => array('
+<iframe src="https://player.vimeo.com/video/223581490" width="640" height="360" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+<ul style="list-style: disc inside none">
+  <li>'.__('MailPoet version 3 is completely rewritten', WYSIJA).'</li>
+  <li>'.__('New email designer', WYSIJA).'</li>
+  <li>'.__('Responsive templates', WYSIJA).'</li>
+  <li>'.__('Fast user interface', WYSIJA).'</li>
+  <li>'.__('Same easy configuration', WYSIJA).'</li>
+  <li>'.__('Weekly releases', WYSIJA).'</li>
+  <li>'.__('Version 2 and 3 can live side by side', WYSIJA).'</li>
+  <li><a href="http://beta.docs.mailpoet.com/article/189-comparison-of-mailpoet-2-and-3?utm_source=mp2&amp;utm_medium=welcomeupdate&amp;utm_campaign=comparison">'.__('Comparison table of both versions', WYSIJA).'</a></li>
+  <li>'.$this->viewObj->replace_link_shortcode(__('Try [link]the online demo[/link]', WYSIJA), 'http://demo3.mailpoet.com/launch/?utm_source=mp2&amp;utm_medium=updatewelcome&amp;utm_campaign=demo3').'</li>
+  <li>'.__('Multisite works, but not officially supported. Please test MailPoet 3 on a staging server', WYSIJA).'</li>
+  <li>'.__('Right-to-left languages works, but can be improved', WYSIJA).'</li>
+  <li>'.
+  $this->viewObj->replace_link_shortcode(
+    $this->viewObj->replace_link_shortcode(
+      __('Get in touch in the [link]forums[/link] for further help. Customers can reach via our [link]support page[/link]', WYSIJA),
+      'https://wordpress.org/support/plugin/wysija-newsletters'
+    ),
+    'https://www.mailpoet.com/support/'
+  ).'</li>
+</ul>
+<br>
+<h3 style="font-size: 25px; color: #626262; font-weight: 600;"><strong>'.__('Comes with a 1-click migration tool:', WYSIJA).'</strong></h3>
+<ul style="list-style: disc inside none"> 
+  <li>'.__('Your subscribers, lists, forms and settings will be migrated', WYSIJA).'</li>
+  <li>'.__('Automatic emails will not be migrated', WYSIJA).'</li>
+  <li>'.__('Archive of sent emails will not be migrated', WYSIJA).'</li>
+  <li>'.__('Your statistics will not be migrated', WYSIJA).'</li>
+</ul>
+<a class="button-primary" href="plugin-install.php?s=mailpoet&tab=search&type=author">'.__('Download MailPoet 3 now', WYSIJA).'</a>
+          ')
+        );
 
 		$this->viewObj->skip_header = true;
 

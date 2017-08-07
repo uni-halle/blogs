@@ -86,18 +86,16 @@ class WJ_Upgrade extends WYSIJA_object {
 	}
 
 	public function iframe_intercept( $current_screen ) {
-		if ( $current_screen->base !== 'mailpoet_page_wysija_config' ){
-			return;
-		}
+        $is_mailpoet_page = preg_match('/^mailpoet.*?_page_wysija_config$/i', $current_screen->base);
+        $is_packager_switcher = (isset( $_GET['action'] ) && $_GET['action'] === 'packager-switch');
 
-		if ( ! isset( $_GET['action'] ) || $_GET['action'] !== 'packager-switch' ){
+        if(!$is_mailpoet_page || !$is_packager_switcher) {
 			return;
-		}
+        }
 
-		// Verify if it's has been created within the last 12 hours (nonce)
-		if ( wp_verify_nonce( $_GET['_wpnonce'], $_GET['action'] ) !== 1 ){
-			return;
-		}
+        if (!(wp_verify_nonce( $_GET['_wpnonce'], $_GET['action'] ) === 1)) {
+            return;
+        }
 
 		// Require the Updater classes
 		include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';

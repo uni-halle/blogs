@@ -1001,10 +1001,9 @@ class WYSIJA_help_mailer extends PHPMailer {
 					}
 				}
 			}else{
-				//make sure that broken url don't fuck the reidrection up like a space before http://
 				$email_url=trim($email_url);
 				if($modelConf->getValue('urlstats_base64')){
-					$cururl=base64_encode($email_url);
+					$cururl=rtrim(base64_encode($email_url), '=');
 				}else{
 					$cururl=$email_url;
 				}
