@@ -3,12 +3,12 @@
 Plugin Name: Spider Event Calendar
 Plugin URI: https://web-dorado.com/products/wordpress-calendar.html
 Description: Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. Spider Event Calendar is an extraordinary user friendly extension.
-Version: 1.5.53
+Version: 1.5.54
 Author: WebDorado
 Author URI: https://web-dorado.com
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
-$wd_spider_calendar_version="1.5.53";
+$wd_spider_calendar_version="1.5.54";
 // LANGUAGE localization.
 function sp_calendar_language_load() {
   load_plugin_textdomain('sp_calendar', FALSE, basename(dirname(__FILE__)) . '/languages');
@@ -1385,6 +1385,24 @@ function calendar_export() {
     <?php
 }
 
+function spidercal_activate($networkwide){
+	if (function_exists('is_multisite') && is_multisite()) {
+		// Check if it is a network activation - if so, run the activation function for each blog id.
+		if ($networkwide) {
+			global $wpdb;
+			// Get all blog ids.
+			$blogids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
+			foreach ($blogids as $blog_id) {
+				switch_to_blog($blog_id);
+				SpiderCalendar_activate();
+				restore_current_blog();
+			}
+			return;
+		}
+	}
+	SpiderCalendar_activate();
+}
+
 // Activate plugin.
 function SpiderCalendar_activate() {
   global $wpdb;
@@ -1433,7 +1451,7 @@ $spider_category_event_table = "CREATE TABLE IF NOT EXISTS `" . $wpdb->prefix . 
   require_once "spider_calendar_update.php";
   spider_calendar_chech_update();
 }
-register_activation_hook(__FILE__, 'SpiderCalendar_activate');
+register_activation_hook(__FILE__, 'spidercal_activate');
 
 function spider_calendar_ajax_func() {
   ?>
