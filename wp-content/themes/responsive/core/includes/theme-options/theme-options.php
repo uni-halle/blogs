@@ -93,6 +93,12 @@ add_action( 'wp_footer', 'responsive_inline_js_footer' );
  * Create the options page
  */
 function responsive_theme_options_do_page() {
+	$options_posts = array();
+	$options_posts_obj = get_posts('posts_per_page=-1');
+	$options_posts[''] = esc_html(__( 'Choose Post', 'responsive' ));
+	foreach ( $options_posts_obj as $posts ) {
+		$options_posts[$posts->ID] = $posts->post_title;
+	}
 	
 	if ( !isset( $_REQUEST['settings-updated'] ) ) {
 		$_REQUEST['settings-updated'] = false;
@@ -209,6 +215,7 @@ function responsive_theme_options_do_page() {
 	 * @placeholder The placeholder for text and textarea
 	 * @options array used by select dropdown lists
 	 */
+	
 	$options = apply_filters( 'responsive_options_filter', array(
 		'theme_elements' => array(
 			array(
@@ -370,8 +377,82 @@ function responsive_theme_options_do_page() {
 				'id'          => 'featured_content',
 				'description' => __( 'Paste your shortcode, video or image source', 'responsive' ),
 				'placeholder' => "<img class='aligncenter' src='" . get_template_directory_uri() . "'/core/images/featured-image.png' width='440' height='300' alt='' />"
-			)
-
+			),
+			array(
+					'title'       => __( 'Enable Testimonial Section', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'checkbox',
+					'id'          => 'testimonials',					
+					'placeholder' => ''
+			),
+			array(
+					'title'       => __( 'Testimonial Title', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'testimonial_title',
+					'description' => __( 'Enter your testimonial title', 'responsive' ),
+					'placeholder' => __( 'Testimonial', 'responsive' )
+			),
+			array(
+					'title'       => __( 'Select Post for testimonial', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'select',
+					'id'          => 'testimonial_val',
+					'description' => '',
+					'placeholder' => '',
+					'options'     => Responsive_Options::options_posts()
+			),
+			array(
+					'title'       => __( 'Enable Team Section', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'checkbox',
+					'id'          => 'team',
+					'placeholder' => ''
+			),
+			array(
+					'title'       => __( 'Team Title', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'team_title',
+					'description' => __( 'Enter your team title', 'responsive' ),
+					'placeholder' => __( 'Team', 'responsive' )
+			),
+			array(
+					'title'       => __( 'Select Post for team member1', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'select',
+					'id'          => 'teammember1',
+					'description' => '',
+					'placeholder' => '',
+					'options'     => Responsive_Options::options_posts()
+			),
+			array(
+					'title'       => __( 'Select Post for team member2', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'select',
+					'id'          => 'teammember2',
+					'description' => '',
+					'placeholder' => '',
+					'options'     => Responsive_Options::options_posts()
+			),
+			array(
+					'title'       => __( 'Select Post for team member3', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'select',
+					'id'          => 'teammember3',
+					'description' => '',
+					'placeholder' => '',
+					'options'     => Responsive_Options::options_posts()
+			),
+			
 		),
 		'layouts' => array(
 			array(
@@ -613,6 +694,7 @@ function responsive_theme_options_validate( $input ) {
 					'cta_text',
 					'cta_url',
 					'featured_content',
+					'testimonial_title',
 				) as $content ) {
 			$input[$content] = ( in_array( $input[$content], array( $defaults[$content], '' ) ) ? $defaults[$content] : wp_kses_stripslashes( $input[$content] ) );
 		}

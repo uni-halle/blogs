@@ -71,7 +71,14 @@ function responsive_customize_register( $wp_customize ) {
 /*--------------------------------------------------------------
 	// Home Page
 --------------------------------------------------------------*/
-
+	/* Option list of all post */
+	$options_posts = array();
+	$options_posts_obj = get_posts('posts_per_page=-1');
+	$options_posts[''] = esc_html(__( 'Choose Post', 'responsive' ));
+	foreach ( $options_posts_obj as $posts ) {
+		$options_posts[$posts->ID] = $posts->post_title;
+	}
+		
 	$wp_customize->add_section( 'home_page', array(
 		'title'                 => __( 'Home Page', 'responsive' ),
 		'priority'              => 30
@@ -151,7 +158,80 @@ function responsive_customize_register( $wp_customize ) {
 		'description'           => __( 'Paste your shortcode, video or image source', 'responsive' ),
                 'priority'              => 20
 	) );
-
+	$wp_customize->add_setting( 'responsive_theme_options[testimonials]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
+	$wp_customize->add_control( 'testimonial_front_page', array(
+			'label'                 => __( 'Enable Testimonial Section', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[testimonials]',
+			'type'                  => 'checkbox',
+			'priority' => 25			
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[testimonial_title]', array( 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'postMessage','default' => __( 'Testimonial', 'responsive' ), 'type' => 'option' ));
+	$wp_customize->add_control( 'testimonial_title', array(
+			'label'                 => __( 'Testimonial Title', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[testimonial_title]',
+			'type'                  => 'text',
+			'priority' => 30
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[testimonial_val]', array( 'sanitize_callback' => 'responsive_sanitize_posts', 'type' => 'option' ) );
+	$wp_customize->add_control( 'testimonial_val', array(
+			'label'                 => __( 'Select Post', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[testimonial_val]',
+			'description'           => __( 'The featured image, title and content from the posts will be used to display the client testimonials. Recommended image size for the featured images: 164 x 164px', 'responsive' ),
+			'type'                  => 'select',
+			'choices'               => $options_posts,
+			'priority' => 35
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[team]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
+	$wp_customize->add_control( 'team_front_page', array(
+			'label'                 => __( 'Enable Team Section', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[team]',
+			'type'                  => 'checkbox',
+			'priority' => 36
+	) );
+	//$wp_customize->add_setting( 'responsive_theme_options[team_title]', array( 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'postMessage','default' => __( 'Team', 'responsive' ), 'type' => 'option' ));
+	$wp_customize->add_setting( 'responsive_theme_options[team_title]', array( 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'postMessage','default' => __( 'team', 'responsive' ), 'type' => 'option' ));
+	$wp_customize->add_control( 'team_title', array(
+			'label'                 => __( 'Team Title', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[team_title]',
+			'type'                  => 'text',
+			'priority' => 37
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[teammember1]', array( 'sanitize_callback' => 'responsive_sanitize_posts', 'type' => 'option' ) );
+	$wp_customize->add_control( 'teammember1', array(
+			'label'                 => __( 'Select post for team member1', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[teammember1]',
+			'description'           => __( 'The featured image, title and content from the posts will be used to display the team member. Recommended image size for the featured images: 164 x 164px', 'responsive' ),
+			'type'                  => 'select',
+			'choices'               => $options_posts,
+			'priority' => 38
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[teammember2]', array( 'sanitize_callback' => 'responsive_sanitize_posts', 'type' => 'option' ) );
+	$wp_customize->add_control( 'teammember2', array(
+			'label'                 => __( 'Select post for team member2', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[teammember2]',
+			'description'           => __( 'The featured image, title and content from the posts will be used to display the team member. Recommended image size for the featured images: 164 x 164px', 'responsive' ),
+			'type'                  => 'select',
+			'choices'               => $options_posts,
+			'priority' => 39
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[teammember3]', array( 'sanitize_callback' => 'responsive_sanitize_posts', 'type' => 'option' ) );
+	$wp_customize->add_control( 'teammember3', array(
+			'label'                 => __( 'Select post for team member3', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[teammember3]',
+			'description'           => __( 'The featured image, title and content from the posts will be used to display the team member. Recommended image size for the featured images: 164 x 164px', 'responsive' ),
+			'type'                  => 'select',
+			'choices'               => $options_posts,
+			'priority' => 40
+	) );
+	
 
 /*--------------------------------------------------------------
 	// Default Layouts
@@ -410,6 +490,21 @@ function responsive_sanitize_checkbox( $input ) {
 function responsive_sanitize_textarea( $input ) {
 	global $allowedposttags;	
 	$output = wp_kses( $input, $allowedposttags);	
+	return $output;
+}
+
+function responsive_sanitize_posts( $input ) {
+	$output = '';
+	$options_posts = array();
+	$options_posts_obj = get_posts('posts_per_page=-1');
+	$options_posts[''] = esc_html(__( 'Choose Post', 'responsive' ));
+	foreach ( $options_posts_obj as $posts ) {
+		$options_posts[$posts->ID] = $posts->post_title;
+	}
+	$option = $options_posts;
+	if ( array_key_exists( $input, $option ) ) {
+		$output = $input;
+	}
 	return $output;
 }
 

@@ -14,6 +14,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 $template_directory = get_template_directory();
 
+//require( $template_directory . '/core/includes/functions-feedback.php' );
 require( $template_directory . '/core/includes/functions.php' );
 require( $template_directory . '/core/includes/functions-update.php' );
 require( $template_directory . '/core/includes/functions-about.php' );
@@ -23,6 +24,7 @@ require( $template_directory . '/core/includes/functions-admin.php' );
 require( $template_directory . '/core/includes/functions-extras.php' );
 require( $template_directory . '/core/includes/functions-extentions.php' );
 require( $template_directory . '/core/includes/theme-options/theme-options.php' );
+require( $template_directory . '/core/includes/functions-feedback.php' );
 require( $template_directory . '/core/includes/post-custom-meta.php' );
 require( $template_directory . '/core/includes/tha-theme-hooks.php' );
 require( $template_directory . '/core/includes/hooks.php' );
@@ -75,9 +77,16 @@ function responsiveedit_customize_register( $wp_customize ){
 	$wp_customize->selective_refresh->add_partial( 'responsive_theme_options[banner_image]', array(
 			'selector' => '#featured',
 	) );
+$wp_customize->selective_refresh->add_partial( 'responsive_theme_options[testimonial_title]', array(
+		'selector' => '#testimonial_div .section_title',
+) );
+$wp_customize->selective_refresh->add_partial( 'responsive_theme_options[team_title]', array(
+		'selector' => '#team_div .section_title',
+) );
 	$wp_customize->selective_refresh->add_partial( 'nav_menu_locations[top]', array(
 			'selector' => '.main-nav',
 	) );
+
 	$wp_customize->selective_refresh->add_partial( 'sidebars_widgets[home-widget-1]', array(
 			'selector' => '#home_widget_1',
 			 
@@ -125,4 +134,26 @@ if( !function_exists('responsive_page_featured_image') ) :
 					<?php }  
 	}
 
+endif;
+
+if( !function_exists('responsive_get_attachment_id_from_url') ) :
+function responsive_get_attachment_id_from_url( $attachment_url = '' ) {
+	global $wpdb;
+	$attachment_id = false;
+	// If there is no url, return.
+	if ( '' == $attachment_url )
+		return;
+	// Get the upload directory paths
+	$upload_dir_paths = wp_upload_dir();
+	// Make sure the upload path base directory exists in the attachment URL, to verify that we're working with a media library image
+	if ( false !== strpos( $attachment_url, $upload_dir_paths['baseurl'] ) ) {
+		// If this is the URL of an auto-generated thumbnail, get the URL of the original image
+		$attachment_url = preg_replace( '/-\d+x\d+(?=\.(jpg|jpeg|png|gif)$)/i', '', $attachment_url );
+		// Remove the upload path base directory from the attachment URL
+		$attachment_url = str_replace( $upload_dir_paths['baseurl'] . '/', '', $attachment_url );
+		// Finally, run a custom database query to get the attachment ID from the modified attachment URL
+		$attachment_id = $wpdb->get_var( $wpdb->prepare( "SELECT wposts.ID FROM $wpdb->posts wposts, $wpdb->postmeta wpostmeta WHERE wposts.ID = wpostmeta.post_id AND wpostmeta.meta_key = '_wp_attached_file' AND wpostmeta.meta_value = '%s' AND wposts.post_type = 'attachment'", $attachment_url ) );
+	}
+	return $attachment_id;
+}
 endif;
