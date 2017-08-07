@@ -3433,6 +3433,7 @@ module.exports = Backbone.Model.extend( {
 			cloneValues.builder_id = Math.random().toString( 36 ).substr( 2 );
 		}
 
+		clone.set( 'widget_id', '' );
 		clone.set( 'values', cloneValues, {silent: true} );
 		clone.set( 'collection', cell.get('widgets'), {silent: true} );
 		clone.cell = cell;
@@ -5428,6 +5429,7 @@ module.exports = Backbone.View.extend( {
 			// This triggers once everything is visible
 			this.trigger( 'open_dialog_complete' );
 			this.builder.trigger( 'open_dialog', this );
+			$( document ).trigger( 'open_dialog', this );
 		}
 	},
 
@@ -7087,12 +7089,12 @@ var mediaWidget = {
 		}
 
 		var ModelConstructor = component.modelConstructors[ idBase ] || component.MediaWidgetModel;
-		var widgetContent = widgetContainer.find( '> .widget-content' );
+		var syncContainer = widgetContainer.find( '> .widget-content' );
 		var controlContainer = $( '<div class="media-widget-control"></div>' );
-		widgetContent.before( controlContainer );
+		syncContainer.before( controlContainer );
 
 		var modelAttributes = {};
-		widgetContent.find( '.media-widget-instance-property' ).each( function() {
+		syncContainer.find( '.media-widget-instance-property' ).each( function() {
 			var input = $( this );
 			modelAttributes[ input.data( 'property' ) ] = input.val();
 		});
@@ -7102,7 +7104,8 @@ var mediaWidget = {
 
 		var widgetControl = new ControlConstructor({
 			el: controlContainer,
-			model: widgetModel
+			syncContainer: syncContainer,
+			model: widgetModel,
 		});
 
 		widgetControl.render();
@@ -7120,9 +7123,28 @@ var textWidget = {
 	addWidget: function( idBase, widgetContainer, widgetId ) {
 		var component = wp.textWidgets;
 
-		var widgetControl = new component.TextWidgetControl({
-			el: widgetContainer
-		});
+		var options = {};
+		var visualField = widgetContainer.find( '.visual' );
+		// 'visual' field and syncContainer were introduced together in 4.8.1
+		if ( visualField.length > 0 ) {
+			// If 'visual' field has no value it's a legacy text widget.
+			if ( ! visualField.val() ) {
+				return null;
+			}
+
+			var fieldContainer = $( '<div></div>' );
+			var syncContainer = widgetContainer.find( '.widget-content:first' );
+			syncContainer.before( fieldContainer );
+
+			options = {
+				el: fieldContainer,
+				syncContainer: syncContainer,
+			};
+		} else {
+			options = { el: widgetContainer };
+		}
+
+		var widgetControl = new component.TextWidgetControl( options );
 
 		widgetControl.initializeEditor();
 
