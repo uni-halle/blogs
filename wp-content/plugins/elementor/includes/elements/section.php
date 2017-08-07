@@ -1,7 +1,9 @@
 <?php
 namespace Elementor;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 class Element_Section extends Element_Base {
 
@@ -23,11 +25,11 @@ class Element_Section extends Element_Base {
 			],
 			'save' => [
 				'title' => sprintf( __( 'Save %s', 'elementor' ), $section_label ),
-				'icon' => 'floppy-o',
+				'icon' => 'save',
 			],
 			'remove' => [
 				'title' => sprintf( __( 'Remove %s', 'elementor' ), $section_label ),
-				'icon' => 'times',
+				'icon' => 'close',
 			],
 		];
 	}
@@ -135,8 +137,6 @@ class Element_Section extends Element_Base {
 				'label' => __( 'Stretch Section', 'elementor' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => '',
-				'label_on' => __( 'Yes', 'elementor' ),
-				'label_off' => __( 'No', 'elementor' ),
 				'return_value' => 'section-stretched',
 				'prefix_class' => 'elementor-',
 				'render_type' => 'template',
@@ -258,7 +258,7 @@ class Element_Section extends Element_Base {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'custom_height_inner',
 			[
 				'label' => __( 'Minimum Height', 'elementor' ),
@@ -327,13 +327,16 @@ class Element_Section extends Element_Base {
 			'div',
 		];
 
+		$options = [
+			'' => __( 'Default', 'elementor' ),
+		] + array_combine( $possible_tags, $possible_tags );
+
 		$this->add_control(
 			'html_tag',
 			[
 				'label' => __( 'HTML Tag', 'elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'section',
-				'options' => array_combine( $possible_tags, $possible_tags ),
+				'options' => $options,
 			]
 		);
 
@@ -426,7 +429,7 @@ class Element_Section extends Element_Base {
 
 		// Background Overlay
 		$this->start_controls_section(
-			'background_overlay_section',
+			'section_background_overlay',
 			[
 				'label' => __( 'Background Overlay', 'elementor' ),
 				'tab' => Controls_Manager::TAB_STYLE,
@@ -450,9 +453,6 @@ class Element_Section extends Element_Base {
 			[
 				'name' => 'background_overlay',
 				'selector' => '{{WRAPPER}} > .elementor-background-overlay',
-				'condition' => [
-					'background_background' => [ 'none', 'classic', 'gradient', 'video' ],
-				],
 			]
 		);
 
@@ -640,7 +640,7 @@ class Element_Section extends Element_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}}' => 'transition: background {{background_hover_transition.SIZE}}s, border {{SIZE}}s, border-radius {{SIZE}}s, box-shadow {{SIZE}}s',
-					'{{WRAPPER}} > .elementor-background-overlay' => 'transition: background {{background_overlay_hover_transition.SIZE}}s, border-radius {{SIZE}}s',
+					'{{WRAPPER}} > .elementor-background-overlay' => 'transition: background {{background_overlay_hover_transition.SIZE}}s, border-radius {{SIZE}}s, opacity {{background_overlay_hover_transition.SIZE}}s',
 				],
 			]
 		);
@@ -667,10 +667,13 @@ class Element_Section extends Element_Base {
 		];
 
 		foreach ( Shapes::get_shapes() as $shape_name => $shape_props ) {
-		    $shapes_options[ $shape_name ] = $shape_props['title'];
+			$shapes_options[ $shape_name ] = $shape_props['title'];
 		}
 
-		foreach ( [ 'top' => __( 'Top', 'elementor' ), 'bottom' => __( 'Bottom', 'elementor' ) ] as $side => $side_label ) {
+		foreach ( [
+			'top' => __( 'Top', 'elementor' ),
+			'bottom' => __( 'Bottom', 'elementor' ),
+		] as $side => $side_label ) {
 			$base_control_key = "shape_divider_$side";
 
 			$this->start_controls_tab(
@@ -714,6 +717,12 @@ class Element_Section extends Element_Base {
 					'default' => [
 						'unit' => '%',
 					],
+					'tablet_default' => [
+						'unit' => '%',
+					],
+					'mobile_default' => [
+						'unit' => '%',
+					],
 					'range' => [
 						'%' => [
 							'min' => 100,
@@ -753,8 +762,6 @@ class Element_Section extends Element_Base {
 				[
 					'label' => __( 'Flip', 'elementor' ),
 					'type' => Controls_Manager::SWITCHER,
-					'label_off' => __( 'No', 'elementor' ),
-					'label_on' => __( 'Yes', 'elementor' ),
 					'condition' => [
 						"shape_divider_$side" => array_keys( Shapes::filter_shapes( 'has_flip' ) ),
 					],
@@ -769,8 +776,6 @@ class Element_Section extends Element_Base {
 				[
 					'label' => __( 'Invert', 'elementor' ),
 					'type' => Controls_Manager::SWITCHER,
-					'label_off' => __( 'No', 'elementor' ),
-					'label_on' => __( 'Yes', 'elementor' ),
 					'frontend_available' => true,
 					'condition' => [
 						"shape_divider_$side" => array_keys( Shapes::filter_shapes( 'has_negative' ) ),
@@ -784,8 +789,6 @@ class Element_Section extends Element_Base {
 				[
 					'label' => __( 'Bring to Front', 'elementor' ),
 					'type' => Controls_Manager::SWITCHER,
-					'label_off' => __( 'No', 'elementor' ),
-					'label_on' => __( 'Yes', 'elementor' ),
 					'selectors' => [
 						"{{WRAPPER}} > .elementor-shape-$side" => 'z-index: 2; pointer-events: none',
 					],
@@ -1038,8 +1041,6 @@ class Element_Section extends Element_Base {
 				'type' => Controls_Manager::SWITCHER,
 				'default' => '',
 				'prefix_class' => 'elementor-',
-				'label_on' => __( 'Yes', 'elementor' ),
-				'label_off' => __( 'No', 'elementor' ),
 				'return_value' => 'reverse-mobile',
 				'description' => __( 'Reverse column order - When on mobile, the column order is reversed, so the last column appears on top and vice versa.', 'elementor' ),
 			]
@@ -1111,14 +1112,14 @@ class Element_Section extends Element_Base {
 		?>
 		<div class="elementor-element-overlay">
 			<ul class="elementor-editor-element-settings elementor-editor-section-settings">
-				<li class="elementor-editor-element-setting elementor-editor-element-trigger elementor-active" title="<?php printf( __( 'Edit %s', 'elementor' ),  __( 'Section', 'elementor' ) ); ?>"><i class="fa fa-bars"></i></li>
+				<li class="elementor-editor-element-setting elementor-editor-element-trigger elementor-active" title="<?php printf( __( 'Edit %s', 'elementor' ),  __( 'Section', 'elementor' ) ); ?>"><i class="eicon-section"></i></li>
 				<?php foreach ( Element_Section::get_edit_tools() as $edit_tool_name => $edit_tool ) : ?>
 					<?php if ( 'add' === $edit_tool_name ) : ?>
 						<# if ( ! isInner ) { #>
 					<?php endif; ?>
 					<li class="elementor-editor-element-setting elementor-editor-element-<?php echo $edit_tool_name; ?>" title="<?php echo $edit_tool['title']; ?>">
 						<span class="elementor-screen-only"><?php echo $edit_tool['title']; ?></span>
-						<i class="fa fa-<?php echo $edit_tool['icon']; ?>"></i>
+						<i class="eicon-<?php echo $edit_tool['icon']; ?>"></i>
 					</li>
 					<?php if ( 'add' === $edit_tool_name ) : ?>
 						<# } #>
@@ -1148,7 +1149,7 @@ class Element_Section extends Element_Base {
 	public function before_render() {
 		$settings = $this->get_settings();
 		?>
-		<<?php echo $settings['html_tag'] . ' ' . $this->get_render_attribute_string( '_wrapper' ); ?>>
+		<<?php echo $this->get_html_tag() . ' ' . $this->get_render_attribute_string( '_wrapper' ); ?>>
 			<?php
 			if ( 'video' === $settings['background_background'] ) :
 				if ( $settings['background_video_link'] ) :
@@ -1161,15 +1162,18 @@ class Element_Section extends Element_Base {
 							<video class="elementor-background-video-hosted elementor-html5-video" autoplay loop muted></video>
 						<?php endif; ?>
 					</div>
-				<?php endif;
+				<?php
+				endif;
 			endif;
 
 			$has_background_overlay = in_array( $settings['background_overlay_background'], [ 'classic', 'gradient' ] ) ||
-		                              in_array( $settings['background_overlay_hover_background'], [ 'classic', 'gradient' ] );
+									  in_array( $settings['background_overlay_hover_background'], [ 'classic', 'gradient' ] );
 
-			if ( $has_background_overlay ) : ?>
+			if ( $has_background_overlay ) :
+			?>
 				<div class="elementor-background-overlay"></div>
-			<?php endif;
+			<?php
+			endif;
 
 			if ( $settings['shape_divider_top'] ) {
 				$this->print_shape_divider( 'top' );
@@ -1177,7 +1181,8 @@ class Element_Section extends Element_Base {
 
 			if ( $settings['shape_divider_bottom'] ) {
 				$this->print_shape_divider( 'bottom' );
-			} ?>
+			}
+			?>
 			<div class="elementor-container elementor-column-gap-<?php echo esc_attr( $settings['gap'] ); ?>">
 				<div class="elementor-row">
 		<?php
@@ -1187,19 +1192,21 @@ class Element_Section extends Element_Base {
 		?>
 				</div>
 			</div>
-		</<?php echo $this->get_settings( 'html_tag' ); ?>>
+		</<?php echo $this->get_html_tag(); ?>>
 		<?php
 	}
 
 	protected function _add_render_attributes() {
-	    parent::_add_render_attributes();
+		parent::_add_render_attributes();
 
-	    $section_type = $this->get_data( 'isInner' ) ? 'inner' : 'top';
+		$section_type = $this->get_data( 'isInner' ) ? 'inner' : 'top';
 
-		$this->add_render_attribute( '_wrapper', 'class', [
-			'elementor-section',
-			'elementor-' . $section_type . '-section',
-		] );
+		$this->add_render_attribute(
+			'_wrapper', 'class', [
+				'elementor-section',
+				'elementor-' . $section_type . '-section',
+			]
+		);
 
 		$this->add_render_attribute( '_wrapper', 'data-element_type', $this->get_name() );
 	}
@@ -1208,11 +1215,21 @@ class Element_Section extends Element_Base {
 		return Plugin::$instance->elements_manager->get_element_types( 'column' );
 	}
 
+	private function get_html_tag() {
+		$html_tag = $this->get_settings( 'html_tag' );
+
+		if ( empty( $html_tag ) ) {
+			$html_tag = 'section';
+		}
+
+		return $html_tag;
+	}
+
 	private function print_shape_divider( $side ) {
-	    $settings = $this->get_active_settings();
-	    $base_setting_key = "shape_divider_$side";
+		$settings = $this->get_active_settings();
+		$base_setting_key = "shape_divider_$side";
 		$negative = ! empty( $settings[ $base_setting_key . '_negative' ] );
-	    ?>
+		?>
 		<div class="elementor-shape elementor-shape-<?php echo $side; ?>" data-negative="<?php echo var_export( $negative ); ?>">
 			<?php include Shapes::get_shape_path( $settings[ $base_setting_key ], ! empty( $settings[ $base_setting_key . '_negative' ] ) ); ?>
 		</div>

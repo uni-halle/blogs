@@ -1,11 +1,13 @@
 <?php
 namespace Elementor\TemplateLibrary;
 
+use Elementor\Core\Settings\Manager as SettingsManager;
 use Elementor\TemplateLibrary\Classes\Import_Images;
-use Elementor\PageSettings\Manager as PageSettingsManager;
 use Elementor\Plugin;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 class Manager {
 
@@ -98,7 +100,8 @@ class Manager {
 		$args['content'] = json_decode( stripslashes( $args['content'] ), true );
 
 		if ( 'page' === $args['type'] ) {
-			$page = PageSettingsManager::get_page( $args['post_id'] );
+			$page = SettingsManager::get_settings_managers( 'page' )->get_model( $args['post_id'] );
+
 			$args['page_settings'] = $page->get_data( 'settings' );
 		}
 
@@ -112,14 +115,13 @@ class Manager {
 	}
 
 	public function update_template( array $template_data ) {
-		// TODO: Temp patch since 1.5.0
+		// TODO: Temp patch since 1.5.0.
 		if ( isset( $template_data['data'] ) ) {
 			$template_data['content'] = $template_data['data'];
 
 			unset( $template_data['data'] );
 		}
-		// END Patch
-
+		// END Patch.
 		$validate_args = $this->ensure_args( [ 'source', 'content', 'type' ], $template_data );
 
 		if ( is_wp_error( $validate_args ) ) {
@@ -199,7 +201,7 @@ class Manager {
 	}
 
 	public function export_template( array $args ) {
-		// TODO: Add nonce for security
+		// TODO: Add nonce for security.
 		$validate_args = $this->ensure_args( [ 'source', 'template_id' ], $args );
 
 		if ( is_wp_error( $validate_args ) ) {
@@ -212,7 +214,7 @@ class Manager {
 			return new \WP_Error( 'template_error', 'Template source not found.' );
 		}
 
-		// If you reach this line, the export was not successful
+		// If you reach this line, the export was not successful.
 		return $source->export_template( $args['template_id'] );
 	}
 
@@ -236,17 +238,12 @@ class Manager {
 	}
 
 	private function register_default_sources() {
-		include( ELEMENTOR_PATH . 'includes/template-library/classes/class-import-images.php' );
-		include( ELEMENTOR_PATH . 'includes/template-library/sources/base.php' );
-
 		$sources = [
 			'local',
 			'remote',
 		];
 
 		foreach ( $sources as $source_filename ) {
-			include( ELEMENTOR_PATH . 'includes/template-library/sources/' . $source_filename . '.php' );
-
 			$class_name = ucwords( $source_filename );
 			$class_name = str_replace( '-', '_', $class_name );
 

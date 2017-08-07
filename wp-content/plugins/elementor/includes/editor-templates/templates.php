@@ -1,7 +1,9 @@
 <?php
 namespace Elementor;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 ?>
 <script type="text/template" id="tmpl-elementor-template-library-header">
 	<div id="elementor-template-library-header-logo-area"></div>
@@ -45,7 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			<div class="elementor-loader-box"></div>
 			<div class="elementor-loader-box"></div>
 		</div>
-		<div class="elementor-loading-title"><?php _e( 'Loading', 'elementor' ) ?></div>
+		<div class="elementor-loading-title"><?php _e( 'Loading', 'elementor' ); ?></div>
 	</div>
 </script>
 
@@ -86,7 +88,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 <script type="text/template" id="tmpl-elementor-template-library-template-local">
 	<div class="elementor-template-library-template-icon">
-		<i class="fa fa-{{ 'section' === type ? 'columns' : 'file-text-o' }}"></i>
+		<i class="eicon-{{ 'section' === type ? 'section' : 'document-file' }}"></i>
 	</div>
 	<div class="elementor-template-library-template-name">{{{ title }}}</div>
 	<div class="elementor-template-library-template-type">{{{ elementor.translate( type ) }}}</div>

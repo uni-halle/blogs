@@ -1,7 +1,9 @@
 <?php
 namespace Elementor;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 class Tools extends Settings_Page {
 
@@ -63,16 +65,22 @@ class Tools extends Settings_Page {
 
 		$plugin_slug = basename( ELEMENTOR__FILE__, '.php' );
 
-		$rollback = new Rollback( [
-			'version' => ELEMENTOR_PREVIOUS_STABLE_VERSION,
-			'plugin_name' => ELEMENTOR_PLUGIN_BASE,
-			'plugin_slug' => $plugin_slug,
-			'package_url' => sprintf( 'https://downloads.wordpress.org/plugin/%s.%s.zip', $plugin_slug, ELEMENTOR_PREVIOUS_STABLE_VERSION ),
-		] );
+		$rollback = new Rollback(
+			[
+				'version' => ELEMENTOR_PREVIOUS_STABLE_VERSION,
+				'plugin_name' => ELEMENTOR_PLUGIN_BASE,
+				'plugin_slug' => $plugin_slug,
+				'package_url' => sprintf( 'https://downloads.wordpress.org/plugin/%s.%s.zip', $plugin_slug, ELEMENTOR_PREVIOUS_STABLE_VERSION ),
+			]
+		);
 
 		$rollback->run();
 
-		wp_die( '', __( 'Rollback to Previous Version', 'elementor' ), [ 'response' => 200 ] );
+		wp_die(
+			'', __( 'Rollback to Previous Version', 'elementor' ), [
+				'response' => 200,
+			]
+		);
 	}
 
 	public function __construct() {
@@ -186,6 +194,12 @@ class Tools extends Settings_Page {
 				],
 			],
 		];
+	}
+
+	public function display_settings_page() {
+		wp_enqueue_script( 'elementor-dialog' );
+
+		parent::display_settings_page();
 	}
 
 	protected function get_page_title() {

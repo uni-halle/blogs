@@ -1,7 +1,9 @@
 <?php
 namespace Elementor;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 class Group_Control_Box_Shadow extends Group_Control_Base {
 
@@ -17,8 +19,6 @@ class Group_Control_Box_Shadow extends Group_Control_Base {
 		$controls['box_shadow_type'] = [
 			'label' => _x( 'Box Shadow', 'Box Shadow Control', 'elementor' ),
 			'type' => Controls_Manager::SWITCHER,
-			'label_on' => __( 'Yes', 'elementor' ),
-			'label_off' => __( 'No', 'elementor' ),
 			'return_value' => 'yes',
 			'separator' => 'before',
 			'render_type' => 'ui',
@@ -30,7 +30,9 @@ class Group_Control_Box_Shadow extends Group_Control_Base {
 			'condition' => [
 				'box_shadow_type!' => '',
 			],
-			'render_type' => 'ui',
+			'selectors' => [
+				'{{SELECTOR}}' => 'box-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{SPREAD}}px {{COLOR}} {{box_shadow_position.VALUE}};',
+			],
 		];
 
 		$controls['box_shadow_position'] = [
@@ -44,9 +46,7 @@ class Group_Control_Box_Shadow extends Group_Control_Base {
 				'box_shadow_type!' => '',
 			],
 			'default' => ' ',
-			'selectors' => [
-				'{{SELECTOR}}' => 'box-shadow: {{box_shadow.HORIZONTAL}}px {{box_shadow.VERTICAL}}px {{box_shadow.BLUR}}px {{box_shadow.SPREAD}}px {{box_shadow.COLOR}} {{VALUE}};',
-			],
+			'render_type' => 'ui',
 		];
 
 		return $controls;

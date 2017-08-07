@@ -3,7 +3,7 @@ Contributors: pojo.me, KingYes, ariel.k, jzaltzberg, mati1000, pojosh, yehudah
 Tags: page builder, editor, landing page, drag-and-drop, elementor, visual editor, wysiwyg, design, maintenance mode, coming soon, under construction, website builder, landing page builder, front-end builder
 Requires at least: 4.5
 Tested up to: 4.8
-Stable tag: 1.5.1
+Stable tag: 1.6.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -182,6 +182,84 @@ No. Elementor supports WordPress 4.5 or greater, and is compatible with PHP 5.4 
 7. **Shape Divider.** Choose from a wide array of shape dividers and separate your sections in endless ways, that until now were simply not possible.
 
 == Changelog ==
+
+= 1.6.3 - 06.08.2017 =
+* Fix! - Lightbox for Image Carousel ([#2135](https://github.com/pojome/elementor/issues/2135))
+* Fix! - Allow to dismiss message asking to share anonymous usage data ([#2136](https://github.com/pojome/elementor/issues/2136))
+* Fix! - Conflict with Advanced TinyMCE plugin ([Topic](https://wordpress.org/support/topic/tinymce-unbreakable-space-not-display/))
+
+= 1.6.2 - 03.08.2017 =
+* Fix! - More compatibility for some server configuration ([#2119](https://github.com/pojome/elementor/issues/2119))
+* Fix! - Added lightobx control for image gallery widget ([#2121](https://github.com/pojome/elementor/issues/2121))
+* Fix! - Conflict with TablePress and other plugins that add buttons to TinyMCE ([Topic](https://wordpress.org/support/topic/cant-view-editor-in-1-6-after-update/))
+
+= 1.6.1 - 02.08.2017 =
+* Fix! - Conflict with Contact Form module by Jetpack ([#2125](https://github.com/pojome/elementor/issues/2125))
+* Fix! - Conflict with Popup Maker plugin
+* Fix! - Updated previous stable version for rollback
+* Fix! - Checking if the content area not found before anything else
+* Fix! - Condition hidden for section control didn't work well
+* Fix! - Reset border for iFrame in video lightbox ([#2121](https://github.com/pojome/elementor/issues/2121))
+
+= 1.6.0 - 02.08.2017 =
+* [Read more in the release post](https://elementor.com/v160-image-lightbox/)
+* New! - Added native Lightbox for images and galleries ([#218](https://github.com/pojome/elementor/issues/218))
+* New! - Added Text Shadow control ([#1696](https://github.com/pojome/elementor/issues/1696)) ([Developer API](https://github.com/pojome/elementor/blob/master/docs/content/controls/_text-shadow.md))
+* New! - Added Text Shadow option for Heading widget ([#1940](https://github.com/pojome/elementor/issues/1940))
+* New! - Added bulk import / export for template library ([#1241](https://github.com/pojome/elementor/issues/1241))
+* New! - Added `elementor/widgets/wordpress/widget_args` filter to customize WP widget markup ([#2052](https://github.com/pojome/elementor/issues/2052))
+* Tweak! - The editor loading now in the wp-admin area instead of the front-end
+* Tweak! - Replaced editor icons from FontAwesome to Eicons for beautiful sharpness
+* Tweak! - Added library access to all users with `edit_pages` capability
+* Tweak! - Loading scripts from the preview for more accurate front-end simulation and fix some issues
+* Tweak! - Replaced textarea input with WYSIWYG control for Testimonial widget ([#1321](https://github.com/pojome/elementor/issues/1321))
+* Tweak! - Changed default play icon for Video widget
+* Tweak! - First step to move Autoloader classes method
+* Tweak! - Switcher control `label_on` and `label_off` is not required anymore ([Developer API](https://github.com/pojome/elementor/blob/master/docs/content/controls/_switcher.md))
+* Tweak! - Style settings now also in the editor (under > menu > general settings)
+* Tweak! - Changed the colors of editor loading screen to positive design
+* Tweak! - Added Mute option for YouTube in Video widget ([#1897](https://github.com/pojome/elementor/issues/1897))
+* Twaek! - Added compatibility for Polylang plugin ([#1959](https://github.com/pojome/elementor/issues/1959))
+* Fix! - Unknown text input in Group Controls ([#1926](https://github.com/pojome/elementor/issues/1926))
+* Fix! - Show edit with elementor button on admin bar in regular posts
+* Fix! - Inherit style for select field from field
+* Fix! - Conflict with ManageWP on Multisite ([#1600](https://github.com/pojome/elementor/issues/1600), [#1456](https://github.com/pojome/elementor/issues/1456))
+* Deprecated! - `elementor/controls/get_available_tabs_controls` filter, please use `\Elementor\Controls_Manager::add_tab( $tab_name, $tab_title )` instead of
+
+= 1.5.5 - 18.07.2017 =
+* Fix! - Page Settings data gets corrupted on revision save ([#2031](https://github.com/pojome/elementor/issues/2031))
+
+= 1.5.4 - 17.07.2017 =
+* Tweak! - Re-organized SCSS files for the editor panel
+* Tweak! - Added example how to remove some styles from front-end ([#1992](https://github.com/pojome/elementor/issues/1992))
+* Tweak! - Added `do_action( 'elementor/preview/enqueue_scripts' );` for loading scripts in the preview only
+* Tweak! - Added `panel/widgets/{WIDGET_TYPE}/controls/wp_widget/loaded` JS action to handle WP widget controls ([#1886](https://github.com/pojome/elementor/issues/1886))
+* Tweak! - Changed Image placeholder
+* Tweak! - Return `checkbox` control as deprecated in v1.5 ([#2003](https://github.com/pojome/elementor/issues/2003))
+* Fix! - Changed carousel breakpoints for better responsiveness (Based on [#1785](https://github.com/pojome/elementor/issues/2003))
+* Fix! - After v1.5 some default unit in mobile editing set as pixel instead of the original default
+* Fix! - Removed `wptexturize` from Elementor content to avoid some plugins wrong texturize
+
+= 1.5.3 - 09.07.2017 =
+* Tweak! - Google Fonts list updated with 17 new fonts
+* Tweak! - Added responsive control for min-height in Column widget
+* Tweak! - Added default value for HTML Tags
+* Tweak! - Added editor compatibility for some themes
+* Fix! - Added `latin-ext` subset in Font control for Polish language
+* Fix! - Updated control condition on Skin
+* Fix! - Glitch CSS in video iFrame
+* Fix! - Hover effect opacity transition
+* Fix! - Column background overlay condition in front-end
+* Fix! - Shape divider width units for tablet and mobile ([#1817](https://github.com/pojome/elementor/issues/1817))
+* Fix! - Video Background position center of section ([#1925](https://github.com/pojome/elementor/issues/1925))
+* Fix! - Toggle & Accordion glitch in the editor
+* Fix! - Hide errors for control without selector ([#1923](https://github.com/pojome/elementor/issues/1923))
+
+= 1.5.2 - 02.07.2017 =
+* Fix! - Library dialog not loading in different languages
+* Fix! - Removed duplicate data from editor loading
+* Fix! - Navigation condition in Image Carousel widget ([#1920](https://github.com/pojome/elementor/issues/1920))
+* Fix! – Added `latin-ext` subset in Font control for Romanian language ([#1915](https://github.com/pojome/elementor/issues/1915))
 
 = 1.5.1 - 29.06.2017 =
 * Tweak! - Show the fallback image until video playback starts ([#1901](https://github.com/pojome/elementor/issues/1901))

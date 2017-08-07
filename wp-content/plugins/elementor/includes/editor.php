@@ -1,11 +1,15 @@
 <?php
 namespace Elementor;
 
-use Elementor\PageSettings\Manager as PageSettingsManager;
+use Elementor\Core\Settings\Manager as SettingsManager;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 class Editor {
+
+	private $_post_id;
 
 	private $_is_edit_mode;
 
@@ -17,10 +21,23 @@ class Editor {
 		'editor-templates/templates.php',
 	];
 
-	public function init() {
-		if ( is_admin() || ! $this->is_edit_mode() ) {
+	public function init( $die = true ) {
+		if ( empty( $_REQUEST['post'] ) ) { // WPCS: CSRF ok.
 			return;
 		}
+
+		$this->_post_id = absint( $_REQUEST['post'] );
+
+		if ( ! $this->is_edit_mode( $this->_post_id ) ) {
+			return;
+		}
+
+		// Send MIME Type header like WP admin-header.
+		@header( 'Content-Type: ' . get_option( 'html_type' ) . '; charset=' . get_option( 'blog_charset' ) );
+
+		query_posts( [ 'p' => $this->_post_id, 'post_type' => get_post_type( $this->_post_id ) ] );
+
+		Plugin::$instance->db->switch_to_post( $this->_post_id );
 
 		add_filter( 'show_admin_bar', '__return_false' );
 
@@ -48,14 +65,12 @@ class Editor {
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ], 999999 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ], 999999 );
 
-		$post_id = get_the_ID();
-
 		// Change mode to Builder
-		Plugin::$instance->db->set_is_elementor_page( $post_id );
+		Plugin::$instance->db->set_is_elementor_page( $this->_post_id );
 
 		// Post Lock
-		if ( ! $this->get_locked_user( $post_id ) ) {
-			$this->lock_post( $post_id );
+		if ( ! $this->get_locked_user( $this->_post_id ) ) {
+			$this->lock_post( $this->_post_id );
 		}
 
 		// Setup default heartbeat options
@@ -69,29 +84,40 @@ class Editor {
 
 		// Print the panel
 		$this->print_panel_html();
+
+		// From the action it's an empty string, from tests its `false`
+		if ( false !== $die ) {
+			die;
+		}
+	}
+
+	public function redirect_to_new_url() {
+		if ( ! isset( $_GET['elementor'] ) ) {
+			return;
+		}
+
+		$post_id = get_the_ID();
+
+		if ( ! User::is_current_user_can_edit( $post_id ) || ! Plugin::$instance->db->is_built_with_elementor( $post_id ) ) {
+			return;
+		}
+
+		wp_redirect( Utils::get_edit_link( $post_id ) );
 		die;
 	}
 
-	public function is_edit_mode() {
+	public function is_edit_mode( $post_id = null ) {
 		if ( null !== $this->_is_edit_mode ) {
 			return $this->_is_edit_mode;
 		}
 
-		if ( ! User::is_current_user_can_edit() ) {
+		if ( ! User::is_current_user_can_edit( $post_id ) ) {
 			return false;
-		}
-
-		if ( isset( $_GET['elementor'] ) ) {
-			return true;
-		}
-
-		// In some Apache configurations, in the Home page, the $_GET['elementor'] is not set
-		if ( '/?elementor' === $_SERVER['REQUEST_URI'] ) {
-			return true;
 		}
 
 		// Ajax request as Editor mode
 		$actions = [
+			'elementor',
 			'elementor_render_widget',
 
 			// Templates
@@ -146,14 +172,12 @@ class Editor {
 	public function enqueue_scripts() {
 		global $wp_styles, $wp_scripts;
 
-		$post_id = get_the_ID();
-
 		// Set the global data like $authordata and etc
-		setup_postdata( $post_id );
+		setup_postdata( $this->_post_id );
 
 		$plugin = Plugin::$instance;
 
-		$editor_data = $plugin->db->get_builder( $post_id, DB::STATUS_DRAFT );
+		$editor_data = $plugin->db->get_builder( $this->_post_id, DB::STATUS_DRAFT );
 
 		// Reset global variable
 		$wp_styles = new \WP_Styles();
@@ -171,12 +195,6 @@ class Editor {
 			'4.0.2',
 			true
 		);
-
-		// Enqueue frontend scripts too
-		$plugin->frontend->register_scripts();
-		$plugin->frontend->enqueue_scripts();
-
-		$plugin->widgets_manager->enqueue_widgets_scripts();
 
 		wp_register_script(
 			'backbone-marionette',
@@ -273,6 +291,16 @@ class Editor {
 		);
 
 		wp_register_script(
+			'elementor-dialog',
+			ELEMENTOR_ASSETS_URL . 'lib/dialog/dialog' . $suffix . '.js',
+			[
+				'jquery-ui-position',
+			],
+			'3.2.3',
+			true
+		);
+
+		wp_register_script(
 			'elementor-editor',
 			ELEMENTOR_ASSETS_URL . 'js/editor' . $suffix . '.js',
 			[
@@ -282,13 +310,13 @@ class Editor {
 				'backbone-marionette',
 				'backbone-radio',
 				'perfect-scrollbar',
-				//'jquery-easing',
 				'nprogress',
 				'tipsy',
 				'imagesloaded',
 				'heartbeat',
 				'jquery-select2',
 				'jquery-simple-dtpicker',
+				'elementor-dialog',
 				'ace',
 				'jquery-hover-intent',
 			],
@@ -298,12 +326,16 @@ class Editor {
 
 		do_action( 'elementor/editor/before_enqueue_scripts' );
 
+		// Remove all TinyMCE plugins.
+		remove_all_filters( 'mce_buttons', 10 );
+		remove_all_filters( 'mce_external_plugins', 10 );
+
 		wp_enqueue_script( 'elementor-editor' );
 
 		// Tweak for WP Admin menu icons
 		wp_print_styles( 'editor-buttons' );
 
-		$locked_user = $this->get_locked_user( $post_id );
+		$locked_user = $this->get_locked_user( $this->_post_id );
 
 		if ( $locked_user ) {
 			$locked_user = $locked_user->display_name;
@@ -315,14 +347,12 @@ class Editor {
 			$page_title_selector = 'h1.entry-title';
 		}
 
-		$page_settings_instance = PageSettingsManager::get_page( $post_id );
-
 		$config = [
 			'version' => ELEMENTOR_VERSION,
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 			'home_url' => home_url(),
 			'nonce' => wp_create_nonce( 'elementor-editing' ),
-			'preview_link' => add_query_arg( 'elementor-preview', '', remove_query_arg( 'elementor' ) ),
+			'preview_link' => set_url_scheme( add_query_arg( 'elementor-preview', '', get_permalink( $this->_post_id ) ) ),
 			'elements_categories' => $plugin->elements_manager->get_categories(),
 			'controls' => $plugin->controls_manager->get_controls_data(),
 			'elements' => $plugin->elements_manager->get_element_types_config(),
@@ -333,15 +363,11 @@ class Editor {
 			],
 			'default_schemes' => $plugin->schemes_manager->get_schemes_defaults(),
 			'revisions' => Revisions_Manager::get_revisions(),
-			'revisions_enabled' => ( $post_id && wp_revisions_enabled( get_post() ) ),
-			'page_settings' => [
-				'controls' => $page_settings_instance->get_controls(),
-				'tabs' => $page_settings_instance->get_tabs_controls(),
-				'settings' => $page_settings_instance->get_settings(),
-			],
+			'revisions_enabled' => ( $this->_post_id && wp_revisions_enabled( get_post( $this->_post_id ) ) ),
+			'settings' => SettingsManager::get_settings_managers_config(),
 			'system_schemes' => $plugin->schemes_manager->get_system_schemes(),
 			'wp_editor' => $this->_get_wp_editor_config(),
-			'post_id' => $post_id,
+			'post_id' => $this->_post_id,
 			'settings_page_link' => Settings::get_url(),
 			'elementor_site' => 'https://go.elementor.com/about-elementor/',
 			'help_the_content_url' => 'https://go.elementor.com/the-content-missing/',
@@ -397,11 +423,11 @@ class Editor {
 				'no_revisions_1' => __( 'Revision history lets you save your previous versions of your work, and restore them any time.', 'elementor' ),
 				'no_revisions_2' => __( 'Start designing your page and you\'ll be able to see the entire revision history here.', 'elementor' ),
 				'revisions_disabled_1' => __( 'It looks like the post revision feature is unavailable in your website.', 'elementor' ),
+				// translators: %s: WordPress Revision docs.
 				'revisions_disabled_2' => sprintf( __( 'Learn more about <a targe="_blank" href="%s">WordPress revisions</a>', 'elementor' ), 'https://codex.wordpress.org/Revisions#Revision_Options)' ),
 				'revision' => __( 'Revision', 'elementor' ),
 				'autosave' => __( 'Autosave', 'elementor' ),
 				'preview' => __( 'Preview', 'elementor' ),
-				'page_settings' => __( 'Page Settings', 'elementor' ),
 				'back_to_editor' => __( 'Back to Editor', 'elementor' ),
 				'import_template_dialog_header' => __( 'Import Page Settings', 'elementor' ),
 				'import_template_dialog_message' => __( 'Do you want to also import the page settings of the template?', 'elementor' ),
@@ -410,6 +436,12 @@ class Editor {
 				'yes' => __( 'Yes', 'elementor' ),
 			],
 		];
+
+		$localized_settings = apply_filters( 'elementor/editor/localize_settings', [] );
+
+		if ( ! empty( $localized_settings ) ) {
+			$config = array_replace_recursive( $config, $localized_settings );
+		}
 
 		echo '<script type="text/javascript">' . PHP_EOL;
 		echo '/* <![CDATA[ */' . PHP_EOL;
@@ -509,6 +541,9 @@ class Editor {
 		do_action( 'elementor/editor/wp_head' );
 	}
 
+	/**
+	 * @param string $template_path - Can be either a link to template file or template HTML content
+	 */
 	public function add_editor_template( $template_path ) {
 		$this->_editor_templates[] = $template_path;
 	}
@@ -523,7 +558,11 @@ class Editor {
 		$plugin->schemes_manager->print_schemes_templates();
 
 		foreach ( $this->_editor_templates as $editor_template ) {
-			include $editor_template;
+			if ( stream_resolve_include_path( $editor_template ) ) {
+				include $editor_template;
+			} else {
+				echo $editor_template;
+			}
 		}
 
 		do_action( 'elementor/editor/footer' );
@@ -537,6 +576,7 @@ class Editor {
 	}
 
 	public function __construct() {
-		add_action( 'template_redirect', [ $this, 'init' ] );
+		add_action( 'admin_action_elementor', [ $this, 'init' ] );
+		add_action( 'template_redirect', [ $this, 'redirect_to_new_url' ] );
 	}
 }

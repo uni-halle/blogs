@@ -1,7 +1,11 @@
 <?php
 namespace Elementor;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+use Elementor\Core\Settings\Manager as SettingsManager;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 class Frontend {
 
@@ -14,7 +18,7 @@ class Frontend {
 	private $_is_frontend_mode = false;
 	private $_has_elementor_in_page = false;
 	private $_is_excerpt = false;
-	private $content_removed_filters =[];
+	private $content_removed_filters = [];
 
 	public function init() {
 		if ( Plugin::$instance->editor->is_edit_mode() ) {
@@ -126,7 +130,7 @@ class Frontend {
 			[
 				'jquery-ui-position',
 			],
-			'3.2.1',
+			'3.2.3',
 			true
 		);
 
@@ -134,8 +138,9 @@ class Frontend {
 			'elementor-frontend',
 			ELEMENTOR_ASSETS_URL . 'js/frontend' . $suffix . '.js',
 			[
+				'elementor-dialog',
 				'elementor-waypoints',
-
+				'jquery-swiper',
 			],
 			ELEMENTOR_VERSION,
 			true
@@ -192,8 +197,8 @@ class Frontend {
 		$post = get_post();
 
 		$elementor_frontend_config = [
-			'isEditMode' => Plugin::$instance->editor->is_edit_mode(),
-			'stretchedSectionContainer' => get_option( 'elementor_stretched_section_container', '' ),
+			'isEditMode' => Plugin::$instance->preview->is_preview_mode(),
+			'settings' => SettingsManager::get_settings_frontend_config(),
 			'is_rtl' => is_rtl(),
 			'post' => [
 				'id' => $post->ID,
@@ -205,18 +210,19 @@ class Frontend {
 			],
 		];
 
-		$elements_manager = Plugin::$instance->elements_manager;
+		if ( Plugin::$instance->preview->is_preview_mode() ) {
+			$elements_manager = Plugin::$instance->elements_manager;
 
-		$elements_frontend_keys = [
-			'section' => $elements_manager->get_element_types( 'section' )->get_frontend_settings_keys(),
-			'column' => $elements_manager->get_element_types( 'column' )->get_frontend_settings_keys(),
-		];
+			$elements_frontend_keys = [
+				'section' => $elements_manager->get_element_types( 'section' )->get_frontend_settings_keys(),
+				'column' => $elements_manager->get_element_types( 'column' )->get_frontend_settings_keys(),
+			];
 
-		$elements_frontend_keys += Plugin::$instance->widgets_manager->get_widgets_frontend_settings_keys();
+			$elements_frontend_keys += Plugin::$instance->widgets_manager->get_widgets_frontend_settings_keys();
 
-		if ( Plugin::$instance->editor->is_edit_mode() ) {
 			$elementor_frontend_config['elements'] = [
 				'data' => (object) [],
+				'editSettings' => (object) [],
 				'keys' => $elements_frontend_keys,
 			];
 		}
@@ -279,6 +285,8 @@ class Frontend {
 				'vi' => 'vietnamese',
 				'uk' => 'cyrillic',
 				'cs_CZ' => 'latin-ext',
+				'ro_RO' => 'latin-ext',
+				'pl_PL' => 'latin-ext',
 			];
 			$locale = get_locale();
 
@@ -307,14 +315,16 @@ class Frontend {
 		}
 
 		switch ( $font_type ) {
-			case Fonts::GOOGLE :
-				if ( ! in_array( $font, $this->google_fonts ) )
+			case Fonts::GOOGLE:
+				if ( ! in_array( $font, $this->google_fonts ) ) {
 					$this->google_fonts[] = $font;
+				}
 				break;
 
-			case Fonts::EARLYACCESS :
-				if ( ! in_array( $font, $this->google_early_access_fonts ) )
+			case Fonts::EARLYACCESS:
+				if ( ! in_array( $font, $this->google_early_access_fonts ) ) {
 					$this->google_early_access_fonts[] = $font;
+				}
 				break;
 		}
 
@@ -374,7 +384,7 @@ class Frontend {
 
 		ob_start();
 
-		// Handle JS and Customizer requests, with css inline
+		// Handle JS and Customizer requests, with css inline.
 		if ( is_customize_preview() || Utils::is_ajax() ) {
 			$with_css = true;
 		}
@@ -404,7 +414,7 @@ class Frontend {
 	public function add_menu_in_admin_bar( \WP_Admin_Bar $wp_admin_bar ) {
 		$post_id = get_the_ID();
 
-		$is_builder_mode = is_singular() && User::is_current_user_can_edit( $post_id ) || Plugin::$instance->db->is_built_with_elementor( $post_id );
+		$is_builder_mode = is_singular() && User::is_current_user_can_edit( $post_id ) && Plugin::$instance->db->is_built_with_elementor( $post_id );
 
 		if ( ! $is_builder_mode ) {
 			return;
@@ -468,10 +478,11 @@ class Frontend {
 		$filters = [
 			'wpautop',
 			'shortcode_unautop',
+			'wptexturize',
 		];
 
 		foreach ( $filters as $filter ) {
-			// Check if another plugin/theme do not already removed the filter
+			// Check if another plugin/theme do not already removed the filter.
 			if ( has_filter( 'the_content', $filter ) ) {
 				remove_filter( 'the_content', $filter );
 				$this->content_removed_filters[] = $filter;
@@ -487,8 +498,8 @@ class Frontend {
 	}
 
 	public function __construct() {
-		// We don't need this class in admin side, but in AJAX requests
-		if ( is_admin() && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+		// We don't need this class in admin side, but in AJAX requests.
+		if ( is_admin() && ! Utils::is_ajax() ) {
 			return;
 		}
 
@@ -497,7 +508,7 @@ class Frontend {
 		add_action( 'wp_enqueue_scripts', [ $this, 'register_styles' ], 5 );
 		add_filter( 'the_content', [ $this, 'apply_builder_in_content' ], self::THE_CONTENT_FILTER_PRIORITY );
 
-		// Hack to avoid enqueue post css while it's a `the_excerpt` call
+		// Hack to avoid enqueue post css while it's a `the_excerpt` call.
 		add_filter( 'get_the_excerpt', [ $this, 'start_excerpt_flag' ], 1 );
 		add_filter( 'get_the_excerpt', [ $this, 'end_excerpt_flag' ], 20 );
 	}

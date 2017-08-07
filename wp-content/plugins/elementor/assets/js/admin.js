@@ -1,4 +1,4 @@
-/*! elementor - v1.5.1 - 29-06-2017 */
+/*! elementor - v1.6.3 - 06-08-2017 */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 ( function( $ ) {
 	'use strict';
@@ -165,7 +165,12 @@
 					dialogsManager = new DialogsManager.Instance();
 
 				dialogsManager.createWidget( 'confirm', {
-					message: ElementorAdminConfig.rollback_confirm,
+					headerMessage: ElementorAdminConfig.i18n.rollback_to_previous_version,
+					message: ElementorAdminConfig.i18n.rollback_confirm,
+					strings: {
+						confirm: ElementorAdminConfig.i18n.yes,
+						cancel: ElementorAdminConfig.i18n.cancel
+					},
 					onConfirm: function() {
 						$this.addClass( 'loading' );
 
@@ -430,6 +435,12 @@ var Module = function() {
 		}
 
 		return self.setSettings( keyStack.join( '.' ), value, settingsContainer[ currentKey ] );
+	};
+
+	this.forceMethodImplementation = function( methodArguments ) {
+		var functionName = methodArguments.callee.name;
+
+		throw new ReferenceError( 'The method ' + functionName + ' must to be implemented in the inheritor child.' );
 	};
 
 	this.on = function( eventName, callback ) {

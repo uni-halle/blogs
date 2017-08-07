@@ -1,7 +1,9 @@
 <?php
 namespace Elementor;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 ?>
 <script type="text/template" id="tmpl-elementor-panel">
 	<div id="elementor-mode-switcher"></div>
@@ -108,18 +110,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			</span>
 			<?php _e( 'Save', 'elementor' ); ?>
 		</button>
-		<?php /*<div class="elementor-panel-footer-sub-menu-wrapper">
-			<div class="elementor-panel-footer-sub-menu">
-				<div id="elementor-panel-footer-publish" class="elementor-panel-footer-sub-menu-item">
-					<i class="elementor-icon fa fa-check-circle"></i>
-					<span class="elementor-title"><?php _e( 'Publish', 'elementor' ); ?></span>
-				</div>
-				<div id="elementor-panel-footer-discard" class="elementor-panel-footer-sub-menu-item">
-					<i class="elementor-icon fa fa-times-circle"></i>
-					<span class="elementor-title"><?php _e( 'Discard', 'elementor' ); ?></span>
-				</div>
-			</div>
-		</div>*/ ?>
 	</div>
 </script>
 
@@ -184,7 +174,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 		$google_fonts = Fonts::get_fonts_by_groups( [ Fonts::GOOGLE, Fonts::EARLYACCESS ] );
 
-		foreach ( $scheme_fields as $option_name => $option ) : ?>
+		foreach ( $scheme_fields as $option_name => $option ) :
+		?>
 			<div class="elementor-panel-scheme-typography-item">
 				<div class="elementor-panel-scheme-item-title elementor-control-title"><?php echo $option['label']; ?></div>
 				<div class="elementor-panel-scheme-typography-item-value">
@@ -252,17 +243,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		</div>
 		<div id="elementor-revisions-list" class="elementor-panel-box-content"></div>
 	</div>
-</script>
-
-<script type="text/template" id="tmpl-elementor-panel-page-settings">
-	<div class="elementor-panel-navigation">
-		<# _.each( elementor.config.page_settings.tabs, function( tabTitle, tabSlug ) { #>
-			<div class="elementor-panel-navigation-tab elementor-tab-control-{{ tabSlug }}" data-tab="{{ tabSlug }}">
-				<a href="#">{{{ tabTitle }}}</a>
-			</div>
-			<# } ); #>
-	</div>
-	<div id="elementor-panel-page-settings-controls"></div>
 </script>
 
 <script type="text/template" id="tmpl-elementor-panel-revisions-no-revisions">
