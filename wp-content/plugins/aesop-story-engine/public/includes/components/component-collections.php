@@ -16,7 +16,8 @@ if ( ! function_exists( 'aesop_collection_shortcode' ) ) {
 			'limit'   		=> -1,
 			'splash'  		=> '',
 			'loadmore'      => 'off',
-			'order'         => 'default' 
+			'order'         => 'default',
+			'revealfx'    => ''
 		);
 		$atts = apply_filters( 'aesop_collection_defaults', shortcode_atts( $defaults, $atts ) );
 
@@ -33,6 +34,11 @@ if ( ! function_exists( 'aesop_collection_shortcode' ) ) {
 
 		// custom classes
 		$classes = function_exists( 'aesop_component_classes' ) ? aesop_component_classes( 'collections', '' ) : null;
+		
+		$hidden ="";
+		if (aesop_revealfx_set($atts)) {
+			$hidden ='style="visibility:hidden;"';
+		}
 
 		do_action( 'aesop_collection_before', $atts, $unique ); // action
 
@@ -75,7 +81,7 @@ if ( ! function_exists( 'aesop_collection_shortcode' ) ) {
 
 								foreach ( $cats as $cat ) {
 
-									?><div class="aesop-collection-item aesop-collection-category-<?php echo $cat->slug;?>">
+									?><div class="aesop-collection-item aesop-collection-category-<?php echo $cat->slug;?>" <?php echo $hidden;?>>
 														<?php do_action( 'aesop_collection_inside_category_item_top', $atts, $unique ); // action ?>
 														<a class="aesop-collection-item-link" href="<?php echo get_category_link( $cat->term_id );?>">
 															<div class="aesop-collection-item-inner">
@@ -117,7 +123,7 @@ if ( ! function_exists( 'aesop_collection_shortcode' ) ) {
 
 						$coverimg   = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
 
-						?><div class="aesop-collection-item <?php if ($coverimg) {echo "aesop-has-image";} ?>">
+						?><div class="aesop-collection-item <?php if ($coverimg) {echo "aesop-has-image";} ?>" <?php echo $hidden;?>>
 													<?php do_action( 'aesop_collection_inside_item_top', $atts, $unique ); // action ?>
 													<a class="aesop-fader aesop-collection-item-link" href="<?php the_permalink();?>">
 														<div class="aesop-collection-item-inner">
