@@ -29,6 +29,25 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 	$import_export_standalone_nonce = isset($_GET['_wpnonce']) ? $_GET['_wpnonce'] : '';
 	if (! wp_verify_nonce($import_export_standalone_nonce, 'import-export-standalone-nonce') ) die("".__('Security check failed - please call this function from the according admin page!','lmm')."");
 
+	/**
+	 * Sanitizes first character of string fields to prevent command injections
+	 *
+	 * @since  3.12.1
+	 * @access public
+	 * @static
+	 *
+	 * @return string
+	 */
+	function sanitize_excel($string) {
+		$filter = array('=', '+', '-', '@');
+		$first_char = substr($string, 0, 1);
+		$string = substr($string, 1);
+		if (in_array($first_char, $filter)) {
+			$first_char = "'" . $first_char . "'";
+		}
+		return $first_char . $string;
+	}
+
 	global $wpdb, $current_user;
 	$table_name_markers = $wpdb->prefix.'leafletmapsmarker_markers';
 	$table_name_layers = $wpdb->prefix.'leafletmapsmarker_layers';
@@ -53,23 +72,28 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				<body><p style="margin:0.5em 0 0 0;">';
 
 		//info: get available caching methods for import/export prepare forms
-		/* temporarily disabled due to https://github.com/PHPOffice/PHPExcel/issues/1085
-		if ( function_exists('sqlite_open') ){ //info: SQLite2
-			$caching_sqlite2_disabled = '';
-			$caching_sqlite2_disabled_css = '';
+		if (version_compare(phpversion(),"5.6.29","!=")){ //info: https://github.com/PHPOffice/PHPExcel/issues/1085
+			if ( function_exists('sqlite_open') ){ //info: SQLite2
+				$caching_sqlite2_disabled = '';
+				$caching_sqlite2_disabled_css = '';
+			} else {
+				$caching_sqlite2_disabled = 'disabled="disabled"';
+				$caching_sqlite2_disabled_css = 'style="color:#CCCCCC;" title="' . esc_attr__('this caching method is currently not available on your server','lmm') . '"';
+			}
+			if ( class_exists('SQLite3',FALSE) === TRUE ) { //info:SQLite3
+				$caching_sqlite3_disabled = '';
+				$caching_sqlite3_disabled_css = '';
+			} else {
+				$caching_sqlite3_disabled = 'disabled="disabled"';
+				$caching_sqlite3_disabled_css = 'style="color:#CCCCCC;" title="' . esc_attr__('this caching method is currently not available on your server','lmm') . '"';
+			}
 		} else {
 			$caching_sqlite2_disabled = 'disabled="disabled"';
 			$caching_sqlite2_disabled_css = 'style="color:#CCCCCC;" title="' . esc_attr__('this caching method is currently not available on your server','lmm') . '"';
-		}
-		if ( class_exists('SQLite3',FALSE) === TRUE ) { //info:SQLite3
-			$caching_sqlite3_disabled = '';
-			$caching_sqlite3_disabled_css = '';
-		} else {
 			$caching_sqlite3_disabled = 'disabled="disabled"';
 			$caching_sqlite3_disabled_css = 'style="color:#CCCCCC;" title="' . esc_attr__('this caching method is currently not available on your server','lmm') . '"';
 		}
-		*/
-		if ( function_exists('apc_store') && (apc_sma_info() === TRUE) ) { //info: APC
+		if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_to_apc) === TRUE ) { //info: APC
 			$caching_apc_disabled = '';
 			$caching_apc_disabled_css = '';
 		} else {
@@ -296,13 +320,11 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 						<input id="caching-auto" type="radio" name="caching-method" value="auto" checked="checked" disabled="disabled" /> <label for="caching-auto">' . __('automatic','lmm') . '</label>
 
 						<a href="#" id="show-more-link" onclick="document.getElementById(\'caching-options-more\').style.display = \'block\';document.getElementById(\'show-more-link\').style.display = \'none\';"> - ' . __('show more options','lmm') . '</a>
-						<div id="caching-options-more" style="display:none;">'.
-						/* temporarily disabled due to https://github.com/PHPOffice/PHPExcel/issues/1085
+						<div id="caching-options-more" style="display:none;">
 						<span ' . $caching_sqlite2_disabled_css . '><input id="caching-sqlite2" type="radio" name="caching-method" value="sqlite2" ' . $caching_sqlite2_disabled . ' /> <label for="caching-sqlite2">SQLite2 <a href="http://www.sqlite.org/" title="http://www.sqlite.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('very low','lmm'), __('low','lmm')) . ')</label></span><br/>
 
 						<span ' . $caching_sqlite3_disabled_css . '><input id="caching-sqlite3" type="radio" name="caching-method" value="sqlite3" ' . $caching_sqlite3_disabled . ' /> <label for="caching-sqlite3">SQLite3 <a href="http://www.sqlite.org/" title="http://www.sqlite.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('very low','lmm'), __('very low','lmm')) . ')</label></span><br/>
-						*/
-						'<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
+						<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
 						<label for="caching-apc-timeout" style="margin-left:24px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-apc-timeout" type="input" name="caching-apc-timeout" value="600" style="width:30px;" ' . $caching_apc_disabled . ' /></label></span><br/>
 
 						<span ' . $caching_wincache_disabled_css . '><input id="caching-wincache" type="radio" name="caching-method" value="wincache" ' . $caching_wincache_disabled . ' /> <label for="caching-wincache">Wincache <a href="http://sourceforge.net/projects/wincache/" title="http://sourceforge.net/projects/wincache/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
@@ -429,13 +451,11 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 						<input id="caching-auto" type="radio" name="caching-method" value="auto" checked="checked" disabled="disabled" /> <label for="caching-auto">' . __('automatic','lmm') . '</label>
 
 						<a href="#" id="show-more-link" onclick="document.getElementById(\'caching-options-more\').style.display = \'block\';document.getElementById(\'show-more-link\').style.display = \'none\';"> - ' . __('show more options','lmm') . '</a>
-						<div id="caching-options-more" style="display:none;">'.
-						/* temporarily disabled due to https://github.com/PHPOffice/PHPExcel/issues/1085
+						<div id="caching-options-more" style="display:none;">
 						<span ' . $caching_sqlite2_disabled_css . '><input id="caching-sqlite2" type="radio" name="caching-method" value="sqlite2" ' . $caching_sqlite2_disabled . ' disabled="disabled" /> <label for="caching-sqlite2">SQLite2 <a href="http://www.sqlite.org/" title="http://www.sqlite.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('very low','lmm'), __('low','lmm')) . ')</label></span><br/>
 
 						<span ' . $caching_sqlite3_disabled_css . '><input id="caching-sqlite3" type="radio" name="caching-method" value="sqlite3" ' . $caching_sqlite3_disabled . ' disabled="disabled" /> <label for="caching-sqlite3">SQLite3 <a href="http://www.sqlite.org/" title="http://www.sqlite.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('very low','lmm'), __('very low','lmm')) . ')</label></span><br/>
-						*/
-						'<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' disabled="disabled" /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
+						<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' disabled="disabled" /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
 						<label for="caching-apc-timeout" style="margin-left:24px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-apc-timeout" type="input" name="caching-apc-timeout" value="600" style="width:30px;" ' . $caching_apc_disabled . ' disabled="disabled" /></label></span><br/>
 
 						<span ' . $caching_wincache_disabled_css . '><input id="caching-wincache" type="radio" name="caching-method" value="wincache" ' . $caching_wincache_disabled . ' disabled="disabled" /> <label for="caching-wincache">Wincache <a href="http://sourceforge.net/projects/wincache/" title="http://sourceforge.net/projects/wincache/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
@@ -576,13 +596,11 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 						<input id="caching-auto" type="radio" name="caching-method" value="auto" checked="checked" /> <label for="caching-auto">' . __('automatic','lmm') . '</label>
 
 						<a href="#" id="show-more-link" onclick="document.getElementById(\'caching-options-more\').style.display = \'block\';document.getElementById(\'show-more-link\').style.display = \'none\';"> - ' . __('show more options','lmm') . '</a>
-						<div id="caching-options-more" style="display:none;">'.
-						/* temporarily disabled due to https://github.com/PHPOffice/PHPExcel/issues/1085
+						<div id="caching-options-more" style="display:none;">
 						<span ' . $caching_sqlite2_disabled_css . '><input id="caching-sqlite2" type="radio" name="caching-method" value="sqlite2" ' . $caching_sqlite2_disabled . ' /> <label for="caching-sqlite2">SQLite2 <a href="http://www.sqlite.org/" title="http://www.sqlite.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('very low','lmm'), __('low','lmm')) . ')</label></span><br/>
 
 						<span ' . $caching_sqlite3_disabled_css . '><input id="caching-sqlite3" type="radio" name="caching-method" value="sqlite3" ' . $caching_sqlite3_disabled . ' /> <label for="caching-sqlite3">SQLite3 <a href="http://www.sqlite.org/" title="http://www.sqlite.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('very low','lmm'), __('very low','lmm')) . ')</label></span><br/>
-						*/
-						'<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
+						<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
 						<label for="caching-apc-timeout" style="margin-left:24px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-apc-timeout" type="input" name="caching-apc-timeout" value="600" style="width:30px;" ' . $caching_apc_disabled . ' /></label></span><br/>
 
 						<span ' . $caching_wincache_disabled_css . '><input id="caching-wincache" type="radio" name="caching-method" value="wincache" ' . $caching_wincache_disabled . ' /> <label for="caching-wincache">Wincache <a href="http://sourceforge.net/projects/wincache/" title="http://sourceforge.net/projects/wincache/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
@@ -678,13 +696,11 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 						<input id="caching-auto" type="radio" name="caching-method" value="auto" checked="checked" /> <label for="caching-auto">' . __('automatic','lmm') . '</label>
 
 						<a href="#" id="show-more-link" onclick="document.getElementById(\'caching-options-more\').style.display = \'block\';document.getElementById(\'show-more-link\').style.display = \'none\';"> - ' . __('show more options','lmm') . '</a>
-						<div id="caching-options-more" style="display:none;">'.
-						/* temporarily disabled due to https://github.com/PHPOffice/PHPExcel/issues/1085
+						<div id="caching-options-more" style="display:none;">
 						<span ' . $caching_sqlite2_disabled_css . '><input id="caching-sqlite2" type="radio" name="caching-method" value="sqlite2" ' . $caching_sqlite2_disabled . ' /> <label for="caching-sqlite2">SQLite2 <a href="http://www.sqlite.org/" title="http://www.sqlite.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('very low','lmm'), __('low','lmm')) . ')</label></span><br/>
 
 						<span ' . $caching_sqlite3_disabled_css . '><input id="caching-sqlite3" type="radio" name="caching-method" value="sqlite3" ' . $caching_sqlite3_disabled . ' /> <label for="caching-sqlite3">SQLite3 <a href="http://www.sqlite.org/" title="http://www.sqlite.org/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('very low','lmm'), __('very low','lmm')) . ')</label></span><br/>
-						*/
-						'<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
+						<span ' . $caching_apc_disabled_css . '><input id="caching-apc" type="radio" name="caching-method" value="apc" ' . $caching_apc_disabled . ' /> <label for="caching-apc">APC <a href="http://pecl.php.net/package/APC" title="http://pecl.php.net/package/APC" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
 						<label for="caching-apc-timeout" style="margin-left:24px;">' . __('timeout in seconds','lmm') . ' </label> <input id="caching-apc-timeout" type="input" name="caching-apc-timeout" value="600" style="width:30px;" ' . $caching_apc_disabled . ' /></label></span><br/>
 
 						<span ' . $caching_wincache_disabled_css . '><input id="caching-wincache" type="radio" name="caching-method" value="wincache" ' . $caching_wincache_disabled . ' /> <label for="caching-wincache">Wincache <a href="http://sourceforge.net/projects/wincache/" title="http://sourceforge.net/projects/wincache/" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-menu-external.png" width="10" height="10"/></a> (' . sprintf(__('Memory usage: %1$s, performance: %2$s','lmm'), __('low','lmm'), __('medium','lmm')) . ')<br/>
@@ -735,54 +751,92 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 		//info: prepare caching - http://phpexcel.codeplex.com/discussions/234150
 		$user_cache = $_POST['caching-method'];
 		if ($user_cache == 'auto') {
-			/* temporarily disabled due to https://github.com/PHPOffice/PHPExcel/issues/1085
-			if ( function_exists('sqlite_open') ){ //info: SQLite2
-				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_sqlite;
-				PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
-				$cache_method_for_log = 'automatic (SQLite2)';
-			} else if ( class_exists('SQLite3',FALSE) === TRUE ) { //info:SQLite3
-				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_sqlite3;
-				PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
-				$cache_method_for_log = 'automatic (SQLite3)';
-			*/
-			if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_to_apc) === TRUE ) { //info: APC
-				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_apc;
-				$cacheSettings = array( 'cacheTime' => 600 );
-				PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
-				$cache_method_for_log = 'automatic (APC)';
-			} else if ( function_exists('wincache_ucache_add') ) { //info: Wincache
-				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_wincache;
-				$cacheSettings = array( 'cacheTime' => 600 );
-				PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
-				$cache_method_for_log = 'automatic (Wincache)';
-			} else if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_in_memory_gzip) === TRUE ) { //info: MemoryGZip
-				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_in_memory_gzip;
-				PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
-				$cache_method_for_log = 'automatic (MemoryGZip)';
-			} else if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_to_discISAM) === TRUE ) { //info: DiscISAM
-				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_discISAM;
-				PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
-				$cache_method_for_log = 'automatic (DiscISAM)';
-			} else if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_to_phpTemp) === TRUE ) { //info: PHPTemp
-				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_phpTemp;
-				$cacheSettings = array( 'memoryCacheSize'  => '8MB' );
-				PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
-				$cache_method_for_log = 'automatic (PHPTemp)';
-			} else if ( function_exists('igbinary_serialize') ) { //info: Igbinary
-				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_igbinary;
-				PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
-				$cache_method_for_log = 'automatic (Igbinary)';
-			} else if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_in_memory_serialized) === TRUE ) { //info: MemorySerialized
-				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_in_memory_serialized;
-				PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
-				$cache_method_for_log = 'automatic (MemorySerialized)';
-			} else { //info: Cache in Memory
-				$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_in_memory;
-				PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
-				$cache_method_for_log = 'automatic (Memory)';
+			if (version_compare(phpversion(),"5.6.29","!=")){ //info: https://github.com/PHPOffice/PHPExcel/issues/1085
+				if ( function_exists('sqlite_open') ){ //info: SQLite2
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_sqlite;
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
+					$cache_method_for_log = 'automatic (SQLite2)';
+				} else if ( class_exists('SQLite3',FALSE) === TRUE ) { //info:SQLite3
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_sqlite3;
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
+					$cache_method_for_log = 'automatic (SQLite3)';
+				} else if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_to_apc) === TRUE ) { //info: APC
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_apc;
+					$cacheSettings = array( 'cacheTime' => 600 );
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
+					$cache_method_for_log = 'automatic (APC)';
+				} else if ( function_exists('wincache_ucache_add') ) { //info: Wincache
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_wincache;
+					$cacheSettings = array( 'cacheTime' => 600 );
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
+					$cache_method_for_log = 'automatic (Wincache)';
+				} else if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_in_memory_gzip) === TRUE ) { //info: MemoryGZip
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_in_memory_gzip;
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
+					$cache_method_for_log = 'automatic (MemoryGZip)';
+				} else if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_to_discISAM) === TRUE ) { //info: DiscISAM
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_discISAM;
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
+					$cache_method_for_log = 'automatic (DiscISAM)';
+				} else if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_to_phpTemp) === TRUE ) { //info: PHPTemp
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_phpTemp;
+					$cacheSettings = array( 'memoryCacheSize'  => '8MB' );
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
+					$cache_method_for_log = 'automatic (PHPTemp)';
+				} else if ( function_exists('igbinary_serialize') ) { //info: Igbinary
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_igbinary;
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
+					$cache_method_for_log = 'automatic (Igbinary)';
+				} else if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_in_memory_serialized) === TRUE ) { //info: MemorySerialized
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_in_memory_serialized;
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
+					$cache_method_for_log = 'automatic (MemorySerialized)';
+				} else { //info: Cache in Memory
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_in_memory;
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
+					$cache_method_for_log = 'automatic (Memory)';
+				}
+
+			} else { //info: is PHP 5.6.29 = no SQLite2 & SQLite3
+
+				if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_to_apc) === TRUE ) { //info: APC
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_apc;
+					$cacheSettings = array( 'cacheTime' => 600 );
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
+					$cache_method_for_log = 'automatic (APC)';
+				} else if ( function_exists('wincache_ucache_add') ) { //info: Wincache
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_wincache;
+					$cacheSettings = array( 'cacheTime' => 600 );
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
+					$cache_method_for_log = 'automatic (Wincache)';
+				} else if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_in_memory_gzip) === TRUE ) { //info: MemoryGZip
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_in_memory_gzip;
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
+					$cache_method_for_log = 'automatic (MemoryGZip)';
+				} else if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_to_discISAM) === TRUE ) { //info: DiscISAM
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_discISAM;
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
+					$cache_method_for_log = 'automatic (DiscISAM)';
+				} else if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_to_phpTemp) === TRUE ) { //info: PHPTemp
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_phpTemp;
+					$cacheSettings = array( 'memoryCacheSize'  => '8MB' );
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
+					$cache_method_for_log = 'automatic (PHPTemp)';
+				} else if ( function_exists('igbinary_serialize') ) { //info: Igbinary
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_igbinary;
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
+					$cache_method_for_log = 'automatic (Igbinary)';
+				} else if ( PHPExcel_Settings::setCacheStorageMethod(PHPExcel_CachedObjectStorageFactory::cache_in_memory_serialized) === TRUE ) { //info: MemorySerialized
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_in_memory_serialized;
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
+					$cache_method_for_log = 'automatic (MemorySerialized)';
+				} else { //info: Cache in Memory
+					$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_in_memory;
+					PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
+					$cache_method_for_log = 'automatic (Memory)';
+				}
 			}
 		//info: perpare custom cache selection
-		/* temporarily disabled due to https://github.com/PHPOffice/PHPExcel/issues/1085
 		} else if ($user_cache == 'sqlite2') {
 			$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_sqlite;
 			PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
@@ -791,7 +845,6 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_sqlite3;
 			PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
 			$cache_method_for_log = 'SQLite3';
-		*/
 		} else if ($user_cache == 'apc') {
 			$caching_apc_timeout = intval($_POST['caching-apc-timeout']);
 			$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_apc;
@@ -838,7 +891,6 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			$cache_method_for_log = 'Memory';
 			PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
 		}
-
 		$objPHPExcel = new PHPExcel();
 
 		if ($action_standalone == 'export') {
@@ -929,60 +981,60 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			$export_format = $_POST['export-format'];
 
 			while ($array_count_current < $array_count_total) {
-				$objPHPExcel->getActiveSheet()->setCellValue('A'.$rowNumber,$export_rows[$array_count_current]['id']);
+				$objPHPExcel->getActiveSheet()->setCellValue('A'.$rowNumber,intval($export_rows[$array_count_current]['id']));
 				if ($export_format != 'csv') {
 					$objPHPExcel->getActiveSheet()->getStyle('B'.$rowNumber)->getAlignment()->setWrapText(true);
 				}
-				$objPHPExcel->getActiveSheet()->setCellValue('B'.$rowNumber,stripslashes($export_rows[$array_count_current]['markername']));
+				$objPHPExcel->getActiveSheet()->setCellValue('B'.$rowNumber,stripslashes(sanitize_excel($export_rows[$array_count_current]['markername'])));
 				if ($export_format == 'csv') {
 					$popuptext_prepare_escape1 = preg_replace('/(\015\012)|(\015)|(\012)/','<br/>',$export_rows[$array_count_current]['popuptext']);
 					$popuptext_prepare_escape2 = str_replace("'", "'", $popuptext_prepare_escape1);
 					$popuptext_prepare_escape3 = str_replace('"', '\'', $popuptext_prepare_escape2);
 					$popuptext_escaped = $popuptext_prepare_escape3;
-					$objPHPExcel->getActiveSheet()->setCellValue('C'.$rowNumber,$popuptext_escaped);
+					$objPHPExcel->getActiveSheet()->setCellValue('C'.$rowNumber,sanitize_excel($popuptext_escaped));
 				} else {
 					$objPHPExcel->getActiveSheet()->getStyle('C'.$rowNumber)->getAlignment()->setWrapText(true);
-					$objPHPExcel->getActiveSheet()->setCellValue('C'.$rowNumber,stripslashes(preg_replace('/(\015\012)|(\015)|(\012)/','<br/>',$export_rows[$array_count_current]['popuptext'])));
+					$objPHPExcel->getActiveSheet()->setCellValue('C'.$rowNumber,stripslashes(preg_replace('/(\015\012)|(\015)|(\012)/','<br/>',sanitize_excel($export_rows[$array_count_current]['popuptext']))));
 				}
-				$objPHPExcel->getActiveSheet()->setCellValue('D'.$rowNumber,$export_rows[$array_count_current]['openpopup']);
+				$objPHPExcel->getActiveSheet()->setCellValue('D'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['openpopup']));
 				if ($export_format == 'csv') {
-					$objPHPExcel->getActiveSheet()->setCellValue('E'.$rowNumber,$export_rows[$array_count_current]['address']);
+					$objPHPExcel->getActiveSheet()->setCellValue('E'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['address']));
 				} else {
 					$objPHPExcel->getActiveSheet()->getStyle('C'.$rowNumber)->getAlignment()->setWrapText(true);
-					$objPHPExcel->getActiveSheet()->setCellValue('E'.$rowNumber,stripslashes($export_rows[$array_count_current]['address']));
+					$objPHPExcel->getActiveSheet()->setCellValue('E'.$rowNumber,stripslashes(sanitize_excel($export_rows[$array_count_current]['address'])));
 				}
-				$objPHPExcel->getActiveSheet()->setCellValue('F'.$rowNumber,$export_rows[$array_count_current]['lat']);
-				$objPHPExcel->getActiveSheet()->setCellValue('G'.$rowNumber,$export_rows[$array_count_current]['lon']);
-				$objPHPExcel->getActiveSheet()->setCellValue('H'.$rowNumber,$export_rows[$array_count_current]['layer']);
-				$objPHPExcel->getActiveSheet()->setCellValue('I'.$rowNumber,$export_rows[$array_count_current]['zoom']);
-				$objPHPExcel->getActiveSheet()->setCellValue('J'.$rowNumber,$export_rows[$array_count_current]['icon']);
-				$objPHPExcel->getActiveSheet()->setCellValue('K'.$rowNumber,$export_rows[$array_count_current]['mapwidth']);
-				$objPHPExcel->getActiveSheet()->setCellValue('L'.$rowNumber,$export_rows[$array_count_current]['mapwidthunit']);
-				$objPHPExcel->getActiveSheet()->setCellValue('M'.$rowNumber,$export_rows[$array_count_current]['mapheight']);
-				$objPHPExcel->getActiveSheet()->setCellValue('N'.$rowNumber,$export_rows[$array_count_current]['basemap']);
-				$objPHPExcel->getActiveSheet()->setCellValue('O'.$rowNumber,$export_rows[$array_count_current]['panel']);
-				$objPHPExcel->getActiveSheet()->setCellValue('P'.$rowNumber,$export_rows[$array_count_current]['controlbox']);
-				$objPHPExcel->getActiveSheet()->setCellValue('Q'.$rowNumber,$export_rows[$array_count_current]['createdby']);
-				$objPHPExcel->getActiveSheet()->setCellValue('R'.$rowNumber,$export_rows[$array_count_current]['createdon']);
-				$objPHPExcel->getActiveSheet()->setCellValue('S'.$rowNumber,$export_rows[$array_count_current]['updatedby']);
-				$objPHPExcel->getActiveSheet()->setCellValue('T'.$rowNumber,$export_rows[$array_count_current]['updatedon']);
-				$objPHPExcel->getActiveSheet()->setCellValue('U'.$rowNumber,$export_rows[$array_count_current]['kml_timestamp']);
-				$objPHPExcel->getActiveSheet()->setCellValue('V'.$rowNumber,$export_rows[$array_count_current]['overlays_custom']);
-				$objPHPExcel->getActiveSheet()->setCellValue('W'.$rowNumber,$export_rows[$array_count_current]['overlays_custom2']);
-				$objPHPExcel->getActiveSheet()->setCellValue('X'.$rowNumber,$export_rows[$array_count_current]['overlays_custom3']);
-				$objPHPExcel->getActiveSheet()->setCellValue('Y'.$rowNumber,$export_rows[$array_count_current]['overlays_custom4']);
-				$objPHPExcel->getActiveSheet()->setCellValue('Z'.$rowNumber,$export_rows[$array_count_current]['wms']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AA'.$rowNumber,$export_rows[$array_count_current]['wms2']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AB'.$rowNumber,$export_rows[$array_count_current]['wms3']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AC'.$rowNumber,$export_rows[$array_count_current]['wms4']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AD'.$rowNumber,$export_rows[$array_count_current]['wms5']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AE'.$rowNumber,$export_rows[$array_count_current]['wms6']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AF'.$rowNumber,$export_rows[$array_count_current]['wms7']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AG'.$rowNumber,$export_rows[$array_count_current]['wms8']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AH'.$rowNumber,$export_rows[$array_count_current]['wms9']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AI'.$rowNumber,$export_rows[$array_count_current]['wms10']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AJ'.$rowNumber,$export_rows[$array_count_current]['gpx_url']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AK'.$rowNumber,$export_rows[$array_count_current]['gpx_panel']);
+				$objPHPExcel->getActiveSheet()->setCellValue('F'.$rowNumber,floatval($export_rows[$array_count_current]['lat']));
+				$objPHPExcel->getActiveSheet()->setCellValue('G'.$rowNumber,floatval($export_rows[$array_count_current]['lon']));
+				$objPHPExcel->getActiveSheet()->setCellValue('H'.$rowNumber,intval($export_rows[$array_count_current]['layer']));
+				$objPHPExcel->getActiveSheet()->setCellValue('I'.$rowNumber,intval($export_rows[$array_count_current]['zoom']));
+				$objPHPExcel->getActiveSheet()->setCellValue('J'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['icon']));
+				$objPHPExcel->getActiveSheet()->setCellValue('K'.$rowNumber,intval($export_rows[$array_count_current]['mapwidth']));
+				$objPHPExcel->getActiveSheet()->setCellValue('L'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['mapwidthunit']));
+				$objPHPExcel->getActiveSheet()->setCellValue('M'.$rowNumber,intval($export_rows[$array_count_current]['mapheight']));
+				$objPHPExcel->getActiveSheet()->setCellValue('N'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['basemap']));
+				$objPHPExcel->getActiveSheet()->setCellValue('O'.$rowNumber,intval($export_rows[$array_count_current]['panel']));
+				$objPHPExcel->getActiveSheet()->setCellValue('P'.$rowNumber,intval($export_rows[$array_count_current]['controlbox']));
+				$objPHPExcel->getActiveSheet()->setCellValue('Q'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['createdby']));
+				$objPHPExcel->getActiveSheet()->setCellValue('R'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['createdon']));
+				$objPHPExcel->getActiveSheet()->setCellValue('S'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['updatedby']));
+				$objPHPExcel->getActiveSheet()->setCellValue('T'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['updatedon']));
+				$objPHPExcel->getActiveSheet()->setCellValue('U'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['kml_timestamp']));
+				$objPHPExcel->getActiveSheet()->setCellValue('V'.$rowNumber,intval($export_rows[$array_count_current]['overlays_custom']));
+				$objPHPExcel->getActiveSheet()->setCellValue('W'.$rowNumber,intval($export_rows[$array_count_current]['overlays_custom2']));
+				$objPHPExcel->getActiveSheet()->setCellValue('X'.$rowNumber,intval($export_rows[$array_count_current]['overlays_custom3']));
+				$objPHPExcel->getActiveSheet()->setCellValue('Y'.$rowNumber,intval($export_rows[$array_count_current]['overlays_custom4']));
+				$objPHPExcel->getActiveSheet()->setCellValue('Z'.$rowNumber,intval($export_rows[$array_count_current]['wms']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AA'.$rowNumber,intval($export_rows[$array_count_current]['wms2']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AB'.$rowNumber,intval($export_rows[$array_count_current]['wms3']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AC'.$rowNumber,intval($export_rows[$array_count_current]['wms4']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AD'.$rowNumber,intval($export_rows[$array_count_current]['wms5']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AE'.$rowNumber,intval($export_rows[$array_count_current]['wms6']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AF'.$rowNumber,intval($export_rows[$array_count_current]['wms7']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AG'.$rowNumber,intval($export_rows[$array_count_current]['wms8']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AH'.$rowNumber,intval($export_rows[$array_count_current]['wms9']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AI'.$rowNumber,intval($export_rows[$array_count_current]['wms10']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AJ'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['gpx_url']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AK'.$rowNumber,intval($export_rows[$array_count_current]['gpx_panel']));
 				$rowNumber++;
 				$array_count_current++;
 			}
@@ -1111,50 +1163,50 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			$export_format = $_POST['export-format'];
 
 			while ($array_count_current < $array_count_total) {
-				$objPHPExcel->getActiveSheet()->setCellValue('A'.$rowNumber,$export_rows[$array_count_current]['id']);
+				$objPHPExcel->getActiveSheet()->setCellValue('A'.$rowNumber,intval($export_rows[$array_count_current]['id']));
 				if ($export_format != 'csv') {
 					$objPHPExcel->getActiveSheet()->getStyle('B'.$rowNumber)->getAlignment()->setWrapText(true);
 				}
-				$objPHPExcel->getActiveSheet()->setCellValue('B'.$rowNumber,stripslashes($export_rows[$array_count_current]['name']));
+				$objPHPExcel->getActiveSheet()->setCellValue('B'.$rowNumber,stripslashes(sanitize_excel($export_rows[$array_count_current]['name'])));
 				if ($export_format == 'csv') {
-					$objPHPExcel->getActiveSheet()->setCellValue('C'.$rowNumber,$export_rows[$array_count_current]['address']);
+					$objPHPExcel->getActiveSheet()->setCellValue('C'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['address']));
 				} else {
 					$objPHPExcel->getActiveSheet()->getStyle('C'.$rowNumber)->getAlignment()->setWrapText(true);
-					$objPHPExcel->getActiveSheet()->setCellValue('C'.$rowNumber,stripslashes($export_rows[$array_count_current]['address']));
+					$objPHPExcel->getActiveSheet()->setCellValue('C'.$rowNumber,stripslashes(sanitize_excel($export_rows[$array_count_current]['address'])));
 				}
-				$objPHPExcel->getActiveSheet()->setCellValue('D'.$rowNumber,$export_rows[$array_count_current]['layerviewlat']);
-				$objPHPExcel->getActiveSheet()->setCellValue('E'.$rowNumber,$export_rows[$array_count_current]['layerviewlon']);
-				$objPHPExcel->getActiveSheet()->setCellValue('F'.$rowNumber,$export_rows[$array_count_current]['layerzoom']);
-				$objPHPExcel->getActiveSheet()->setCellValue('G'.$rowNumber,$export_rows[$array_count_current]['mapwidth']);
-				$objPHPExcel->getActiveSheet()->setCellValue('H'.$rowNumber,$export_rows[$array_count_current]['mapwidthunit']);
-				$objPHPExcel->getActiveSheet()->setCellValue('I'.$rowNumber,$export_rows[$array_count_current]['mapheight']);
-				$objPHPExcel->getActiveSheet()->setCellValue('J'.$rowNumber,$export_rows[$array_count_current]['basemap']);
-				$objPHPExcel->getActiveSheet()->setCellValue('K'.$rowNumber,$export_rows[$array_count_current]['panel']);
-				$objPHPExcel->getActiveSheet()->setCellValue('L'.$rowNumber,$export_rows[$array_count_current]['clustering']);
-				$objPHPExcel->getActiveSheet()->setCellValue('M'.$rowNumber,$export_rows[$array_count_current]['listmarkers']);
-				$objPHPExcel->getActiveSheet()->setCellValue('N'.$rowNumber,$export_rows[$array_count_current]['multi_layer_map']);
-				$objPHPExcel->getActiveSheet()->setCellValue('O'.$rowNumber,$export_rows[$array_count_current]['multi_layer_map_list']);
-				$objPHPExcel->getActiveSheet()->setCellValue('P'.$rowNumber,$export_rows[$array_count_current]['controlbox']);
-				$objPHPExcel->getActiveSheet()->setCellValue('Q'.$rowNumber,$export_rows[$array_count_current]['createdby']);
-				$objPHPExcel->getActiveSheet()->setCellValue('R'.$rowNumber,$export_rows[$array_count_current]['createdon']);
-				$objPHPExcel->getActiveSheet()->setCellValue('S'.$rowNumber,$export_rows[$array_count_current]['updatedby']);
-				$objPHPExcel->getActiveSheet()->setCellValue('T'.$rowNumber,$export_rows[$array_count_current]['updatedon']);
-				$objPHPExcel->getActiveSheet()->setCellValue('U'.$rowNumber,$export_rows[$array_count_current]['overlays_custom']);
-				$objPHPExcel->getActiveSheet()->setCellValue('V'.$rowNumber,$export_rows[$array_count_current]['overlays_custom2']);
-				$objPHPExcel->getActiveSheet()->setCellValue('W'.$rowNumber,$export_rows[$array_count_current]['overlays_custom3']);
-				$objPHPExcel->getActiveSheet()->setCellValue('X'.$rowNumber,$export_rows[$array_count_current]['overlays_custom4']);
-				$objPHPExcel->getActiveSheet()->setCellValue('Y'.$rowNumber,$export_rows[$array_count_current]['wms']);
-				$objPHPExcel->getActiveSheet()->setCellValue('Z'.$rowNumber,$export_rows[$array_count_current]['wms2']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AA'.$rowNumber,$export_rows[$array_count_current]['wms3']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AB'.$rowNumber,$export_rows[$array_count_current]['wms4']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AC'.$rowNumber,$export_rows[$array_count_current]['wms5']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AD'.$rowNumber,$export_rows[$array_count_current]['wms6']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AE'.$rowNumber,$export_rows[$array_count_current]['wms7']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AF'.$rowNumber,$export_rows[$array_count_current]['wms8']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AG'.$rowNumber,$export_rows[$array_count_current]['wms9']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AH'.$rowNumber,$export_rows[$array_count_current]['wms10']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AI'.$rowNumber,$export_rows[$array_count_current]['gpx_url']);
-				$objPHPExcel->getActiveSheet()->setCellValue('AJ'.$rowNumber,$export_rows[$array_count_current]['gpx_panel']);
+				$objPHPExcel->getActiveSheet()->setCellValue('D'.$rowNumber,floatval($export_rows[$array_count_current]['layerviewlat']));
+				$objPHPExcel->getActiveSheet()->setCellValue('E'.$rowNumber,floatval($export_rows[$array_count_current]['layerviewlon']));
+				$objPHPExcel->getActiveSheet()->setCellValue('F'.$rowNumber,intval($export_rows[$array_count_current]['layerzoom']));
+				$objPHPExcel->getActiveSheet()->setCellValue('G'.$rowNumber,intval($export_rows[$array_count_current]['mapwidth']));
+				$objPHPExcel->getActiveSheet()->setCellValue('H'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['mapwidthunit']));
+				$objPHPExcel->getActiveSheet()->setCellValue('I'.$rowNumber,intval($export_rows[$array_count_current]['mapheight']));
+				$objPHPExcel->getActiveSheet()->setCellValue('J'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['basemap']));
+				$objPHPExcel->getActiveSheet()->setCellValue('K'.$rowNumber,intval($export_rows[$array_count_current]['panel']));
+				$objPHPExcel->getActiveSheet()->setCellValue('L'.$rowNumber,intval($export_rows[$array_count_current]['clustering']));
+				$objPHPExcel->getActiveSheet()->setCellValue('M'.$rowNumber,intval($export_rows[$array_count_current]['listmarkers']));
+				$objPHPExcel->getActiveSheet()->setCellValue('N'.$rowNumber,intval($export_rows[$array_count_current]['multi_layer_map']));
+				$objPHPExcel->getActiveSheet()->setCellValue('O'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['multi_layer_map_list']));
+				$objPHPExcel->getActiveSheet()->setCellValue('P'.$rowNumber,intval($export_rows[$array_count_current]['controlbox']));
+				$objPHPExcel->getActiveSheet()->setCellValue('Q'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['createdby']));
+				$objPHPExcel->getActiveSheet()->setCellValue('R'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['createdon']));
+				$objPHPExcel->getActiveSheet()->setCellValue('S'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['updatedby']));
+				$objPHPExcel->getActiveSheet()->setCellValue('T'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['updatedon']));
+				$objPHPExcel->getActiveSheet()->setCellValue('U'.$rowNumber,intval($export_rows[$array_count_current]['overlays_custom']));
+				$objPHPExcel->getActiveSheet()->setCellValue('V'.$rowNumber,intval($export_rows[$array_count_current]['overlays_custom2']));
+				$objPHPExcel->getActiveSheet()->setCellValue('W'.$rowNumber,intval($export_rows[$array_count_current]['overlays_custom3']));
+				$objPHPExcel->getActiveSheet()->setCellValue('X'.$rowNumber,intval($export_rows[$array_count_current]['overlays_custom4']));
+				$objPHPExcel->getActiveSheet()->setCellValue('Y'.$rowNumber,intval($export_rows[$array_count_current]['wms']));
+				$objPHPExcel->getActiveSheet()->setCellValue('Z'.$rowNumber,intval($export_rows[$array_count_current]['wms2']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AA'.$rowNumber,intval($export_rows[$array_count_current]['wms3']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AB'.$rowNumber,intval($export_rows[$array_count_current]['wms4']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AC'.$rowNumber,intval($export_rows[$array_count_current]['wms5']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AD'.$rowNumber,intval($export_rows[$array_count_current]['wms6']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AE'.$rowNumber,intval($export_rows[$array_count_current]['wms7']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AF'.$rowNumber,intval($export_rows[$array_count_current]['wms8']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AG'.$rowNumber,intval($export_rows[$array_count_current]['wms9']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AH'.$rowNumber,intval($export_rows[$array_count_current]['wms10']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AI'.$rowNumber,sanitize_excel($export_rows[$array_count_current]['gpx_url']));
+				$objPHPExcel->getActiveSheet()->setCellValue('AJ'.$rowNumber,intval($export_rows[$array_count_current]['gpx_panel']));
 				$rowNumber++;
 				$array_count_current++;
 			}

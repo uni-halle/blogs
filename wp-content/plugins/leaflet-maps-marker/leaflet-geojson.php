@@ -29,7 +29,8 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 } else {
 	//info: set php header to allow calls from other (sub)domains
 	header('Access-Control-Allow-Origin: *');
-	global $wpdb, $locale;
+	global $wpdb, $locale, $allowedposttags;
+	$additionaltags = array('iframe' => array('id' => true,'name' => true,'src' => true,'class' => true,'style' => true,'frameborder' => true,'scrolling' => true,'align' => true,'width' => true,'height' => true,'marginwidth' => true,'marginheight' => true),'style' => array('media' => true,'scoped' => true,'type' => true));
 	$table_name_markers = $wpdb->prefix.'leafletmapsmarker_markers';
 	$table_name_layers = $wpdb->prefix.'leafletmapsmarker_layers';
 	$lmm_options = get_option( 'leafletmapsmarker_options' );
@@ -142,6 +143,10 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 									preg_replace('/[\x00-\x1F\x7F]/', '',
 									preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', $marker['mpopuptext'])
 								)))));
+				//info: strip evil scripts
+				if ($lmm_options['wp_kses_status'] == 'enabled') {
+					$mpopuptext = wp_kses($mpopuptext, array_merge($allowedposttags, $additionaltags));
+				}
 				if ($lmm_options['directions_popuptext_panel'] == 'yes') {
 
 					$mpopuptext_css = ($marker['mpopuptext'] != NULL) ? "border-top:1px solid #f0f0e7;padding-top:5px;margin-top:5px;clear:both;" : "";
@@ -305,6 +310,10 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 									preg_replace('/[\x00-\x1F\x7F]/', '',
 									preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', $marker['mpopuptext'])
 								)))));
+				//info: strip evil scripts
+				if ($lmm_options['wp_kses_status'] == 'enabled') {
+					$mpopuptext = wp_kses($mpopuptext, array_merge($allowedposttags, $additionaltags));
+				}
 				$mpopuptext = $mpopuptext . "<div class='popup-directions' style='" . $mpopuptext_css . "'>" . $maddress . " (";
 
 				if ($lmm_options['directions_provider'] == 'googlemaps') {

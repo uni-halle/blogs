@@ -2847,7 +2847,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-control',
 			'title'   => __('Fullscreen button','lmm') . $pro_button_link,
-			'desc'    => __('Whether to add a button for displaying maps in fullscreen via HTML5','lmm') . '<br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-fullscreen.png" width="83" height="115" /><a style="background:#f99755;display:block;padding:3px;text-decoration:none;color:#2702c6;width:635px;margin:10px 0;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a>',
+			'desc'    => __('Whether to add a button for displaying maps in fullscreen via HTML5','lmm') . '<br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-fullscreen.png" width="87" height="99" /><a style="background:#f99755;display:block;padding:3px;text-decoration:none;color:#2702c6;width:635px;margin:10px 0;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a>',
 			'type'    => 'radio-pro',
 			'std'     => 'false',
 			'choices' => array(
@@ -5369,6 +5369,19 @@ $this->_settings['clustering_helptext2'] = array(
 			'std'     => '2',
 			'type'    => 'text-pro'
 		);
+		$this->_settings['basemaps_nowrap_enabled'] = array(
+			'version' => 'p3.1',
+			'pane'    => 'basemaps',
+			'section' => 'basemaps-basemap_global_settings',
+			'title'   => __('Enable nowrap?','lmm') . $pro_button_link,
+			'desc'    => __('If set to true, the tiles just will not load outside the world width (-180 to 180 longitude) instead of repeating.','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'false',
+			'choices' => array(
+				'false' => __('false','lmm'),
+				'true' => __('true','lmm')
+			)
+		);
 		/* Retina display detection */
 		$this->_settings['map_retina_detection'] = array(
 			'version' => '2.7.1',
@@ -5579,7 +5592,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'basemaps',
 			'section' => 'basemaps-google_js_api',
 			'title'   => __('Google Maps leaflet implementation','lmm') . $pro_button_link,
-			'desc'    => sprintf(__('GoogleMutant plugin is recommended although not supported on Internet Explorer 10 or lower and several older browsers versions (maps will automatically switch to OpenStreetMap for those users).<br/>Current browser market share for affected browsers: about %1$s and declining steadily. If you do not want Google basemaps to automatically switch to OpenStreetMap for those outdated browsers, please activate the legacy plugin.','lmm'), '7% (02/2017)'),
+			'desc'    => sprintf(__('GoogleMutant plugin is recommended although not supported on Internet Explorer 10 or lower and several older browsers versions (maps will automatically switch to OpenStreetMap for those users).<br/>Current browser market share for affected browsers: about %1$s and declining steadily. If you do not want Google basemaps to automatically switch to OpenStreetMap for those outdated browsers, please activate the legacy plugin.','lmm'), '2% (02/2017)'),
 			'type'    => 'radio-pro',
 			'std'     => 'google_legacy',
 			'choices' => array(
@@ -5604,7 +5617,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'version' => '3.10.6',
 			'pane'    => 'basemaps',
 			'section' => 'basemaps-google_js_api',
-			'title'   => __('Deregister Google Maps API scripts enqueued by third parties','lmm'),
+			'title'   => __('Dequeue Google Maps API scripts by third parties','lmm'),
 			'desc'    => __('Only enable this compatibility option if you see the admin notice that another plugin or theme also embedds the Google Maps API (which can cause maps and address search to break if that implementation does not properly send the Google API key which is mandatory since June 22nd 2016!)','lmm') . '<br/><br/><div style="height:40px;"></div>',
 			'type'    => 'radio',
 			'std'     => 'disabled',
@@ -10664,7 +10677,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'version' => 'p2.5',
 			'pane'    => 'misc',
 			'section' => 'misc-permissions',
-			'title'   => __( 'User role needed for viewing markers/layers from other users', 'lmm' ) . $pro_button_link,
+			'title'   => __( 'User role needed for viewing markers/layers from other users (applies only to backend access)', 'lmm' ) . $pro_button_link,
 			'desc'    => '',
 			'type'    => 'radio-pro',
 			'std'     => 'edit_posts',
@@ -10947,6 +10960,28 @@ $this->_settings['clustering_helptext2'] = array(
 			'desc'    => sprintf(__('Please only enable this setting if (Google) maps do not show markers but the following error in the browser console instead: %1$s','lmm'), '"Uncaught Map has no maxZoom specified"'),
 			'type'    => 'radio',
 			'std'     => 'disabled',
+			'choices' => array(
+				'enabled' => __('enabled','lmm'),
+				'disabled' => __('disabled','lmm')
+			)
+		);
+		$this->_settings['rewrite_baseurl'] = array(
+			'version' => 'p3.0.1',
+			'pane'    => 'misc',
+			'section' => 'misc-compatibility',
+			'title'   => __('Permalinks base URL','lmm') . $pro_button_link,
+			'desc'    => __('Needed for creating pretty links to fullscreen maps or API endpoints.','lmm') . '<br/>' . __('Only set this option to the URL of your WordPress folder if you are experiencing issues or recommended so by support!','lmm') . '<br/>' . sprintf(esc_attr__('If empty, "WordPress Address (URL)" - %1$s - will be used.','lmm'), get_site_url()),
+			'type'    => 'text-pro',
+			'std'     => ''
+		);
+		$this->_settings['wp_kses_status'] = array(
+			'version' => '3.12.1',
+			'pane'    => 'misc',
+			'section' => 'misc-compatibility',
+			'title'   => __('HTML filter for popuptexts','lmm') . ' (wp_kses)',
+			'desc'    => sprintf(__('If enabled, unsupported code tags are stripped from popuptexts to prevent injection of malicious code (<a href="%1$s" target="_blank">reference of supported code tags</a>).','lmm'), 'https://core.trac.wordpress.org/browser/tags/4.7.3/src/wp-includes/kses.php#L53') . '<br/>' . __('Disabling this option allows you to display unfiltered popuptexts and is only recommended if special HTML tags are needed.','lmm'),
+			'type'    => 'radio',
+			'std'     => 'enabled',
 			'choices' => array(
 				'enabled' => __('enabled','lmm'),
 				'disabled' => __('disabled','lmm')
@@ -11648,9 +11683,24 @@ $this->_settings['clustering_helptext2'] = array(
 		$options_new = array_merge($options_current, $new_options_defaults);
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
+		//info:  set defaults for options introduced in v3.12.1
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.12','='))
+		{
+			$new_options_defaults = array();
+			foreach ( $this->settings as $id => $setting )
+			{
+				if ( $setting['type'] != 'heading' && $setting['type'] != 'helptext' && $setting['type'] != 'helptext-twocolumn' && $setting['type'] != 'checkbox-pro' && $setting['type'] != 'select-pro' && $setting['type'] != 'radio-pro' && $setting['type'] != 'radio-reverse-pro' && $setting['type'] != 'textarea-pro' && $setting['type'] != 'text-pro' && $setting['type'] != 'text-reverse-pro' && $setting['version'] == '3.12.1')
+				{
+				$new_options_defaults[$id] = $setting['std'];
+				}
+			}
+		$options_current = get_option( 'leafletmapsmarker_options' );
+		$options_new = array_merge($options_current, $new_options_defaults);
+		update_option( 'leafletmapsmarker_options', $options_new );
+		}
 		/* template for plugin updates
 		//info:  set defaults for options introduced in v3.13
-		if (version_compare(get_option('leafletmapsmarker_version'),'3.12','='))
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.12.1','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )

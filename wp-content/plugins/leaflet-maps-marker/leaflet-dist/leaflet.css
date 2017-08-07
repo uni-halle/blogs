@@ -12,7 +12,7 @@
 	border:none;
 }
 .lmm-listmarkers img {
-	max-width:440px !important;
+	max-width:100% !important;
 	height:auto;
 	margin: 0px !important;
 	padding: 0px !important;

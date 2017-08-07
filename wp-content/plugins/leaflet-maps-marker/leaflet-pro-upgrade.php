@@ -380,6 +380,10 @@ if ( $action == NULL ) {
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v3.0p" target="_blank">' . sprintf(__('Pretty permalinks with customizable slug for fullscreen maps and APIs (e.g. %1$s)','lmm'), get_site_url() . '/<strong>maps</strong>/fullscreen/marker/1') . '</a></li>
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v3.0p" target="_blank">' . __('support for tooltips to display the marker name as small text on top of marker icons','lmm') . '</a></li>
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v3.0p" target="_blank">' . __('AMP support: show placeholder image for map with link to fullscreen view on AMP enabled pages','lmm') . '</a></li>
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v3.1p" target="_blank">' . __('new widget "show latest marker map"','lmm') . '</a></li>
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v3.1p" target="_blank">' . __('list all markers page enhancement: dropdown added to filter markers by layer','lmm') . '</a></li>
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v3.1p" target="_blank">' . __('loading indicator for GeoJSON download and marker clustering','lmm') . '</a></li>
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v3.1p" target="_blank">' . __('global basemap setting "nowrap": (if set to true, tiles will not load outside the world width instead of repeating, default: false)','lmm') . '</a></li>
 				</ul>
 				</div>
 				<p><a href="#top" class="upgrade-top-link">' . __('back to top to start free 30-day-trial','lmm') . '</a></p>

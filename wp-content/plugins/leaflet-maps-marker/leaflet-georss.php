@@ -26,7 +26,8 @@ function lmm_is_plugin_active_for_network( $plugin ) {
 if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 	echo sprintf(__('The plugin "Leaflet Maps Marker" is inactive on this site and therefore this API link is not working.<br/><br/>Please contact the site owner (%1s) who can activate this plugin again.','lmm'), antispambot(get_bloginfo('admin_email')) );
 } else {
-	global $wpdb, $allowedtags;
+	global $wpdb, $allowedposttags;
+	$additionaltags = array('iframe' => array('id' => true,'name' => true,'src' => true,'class' => true,'style' => true,'frameborder' => true,'scrolling' => true,'align' => true,'width' => true,'height' => true,'marginwidth' => true,'marginheight' => true),'style' => array('media' => true,'scoped' => true,'type' => true));
 	$table_name_markers = $wpdb->prefix.'leafletmapsmarker_markers';
 	$table_name_layers = $wpdb->prefix.'leafletmapsmarker_layers';
 	$lmm_options = get_option( 'leafletmapsmarker_options' );
@@ -73,7 +74,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				die('Error: a layer with that ID does not exist!');
 			}
 		}
-		$sql = 'SELECT m.id as mid, m.markername as mmarkername, m.layer as mlayer, CONCAT(m.lon,\',\',m.lat) AS mcoords, m.icon as micon, m.createdby as mcreatedby, m.createdon as mcreatedon, m.updatedby as mupdatedby, m.updatedon as mupdatedon, m.lat as mlat, m.lon as mlon, m.popuptext as mpopuptext, m.address as maddress, l.id as lid, l.createdby as lcreatedby, l.createdon as lcreatedon, l.updatedby as lupdatedby, l.updatedon as lupdatedon, l.name AS lname FROM `'.$table_name_markers.'` AS m INNER JOIN `'.$table_name_layers.'` AS l ON m.layer=l.id '.$q;
+		$sql = 'SELECT m.id as mid, m.markername as mmarkername, m.layer as mlayer, CONCAT(m.lon,\',\',m.lat) AS mcoords, m.icon as micon, m.createdby as mcreatedby, m.createdon as mcreatedon, m.updatedby as mupdatedby, m.updatedon as mupdatedon, m.lat as mlat, m.lon as mlon, m.popuptext as mpopuptext, m.address as maddress, l.id as lid, l.createdby as lcreatedby, l.createdon as lcreatedon, l.updatedby as lupdatedby, l.updatedon as lupdatedon, l.name AS lname FROM `'.$table_name_markers.'` AS m INNER JOIN `'.$table_name_layers.'` AS l ON m.layer=l.id '.$q.' GROUP BY m.id';
 		$markers = $wpdb->get_results($sql, ARRAY_A);
 		//info: output as atom - part 1
 		if ($format == 'atom') {
@@ -122,7 +123,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				echo '<id>' . LEAFLET_PLUGIN_URL . 'leaflet-georss.php?marker=' . $marker['mid'] . '</id>'.PHP_EOL;
 				echo '<updated>' . date("Y-m-d", $date_kml) . 'T' . date("h:m:s", $time_kml) . $plus_minus . $offset_kml . '</updated>'.PHP_EOL;
 				echo '<author><name>' . stripslashes($marker['mcreatedby']) . '</name></author>'.PHP_EOL;
-				echo '<content><![CDATA[' . stripslashes(wp_kses($marker['mpopuptext'], $allowedtags)) . ']]></content>'.PHP_EOL;
+				echo '<content><![CDATA[' . stripslashes(wp_kses($marker['mpopuptext'], array_merge($allowedposttags, $additionaltags))) . ']]></content>'.PHP_EOL;
 				echo '<georss:where>'.PHP_EOL;
 				//info: add if srsnames are verified - <gml:Point srsName="' . $srsname . '">
 				echo '<gml:Point>'.PHP_EOL;
@@ -195,7 +196,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 					'</ul>',
 					'</ol>'
 				);
-				$popuptext_sanitized = preg_replace($sanitize_popuptext_from, $sanitize_popuptext_to, stripslashes(preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', wp_kses($marker['mpopuptext'], $allowedtags))));
+				$popuptext_sanitized = preg_replace($sanitize_popuptext_from, $sanitize_popuptext_to, stripslashes(preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', wp_kses($marker['mpopuptext'], array_merge($allowedposttags, $additionaltags)))));
 				echo '<description><![CDATA[' . $popuptext_sanitized . ']]></description>'.PHP_EOL;
 				echo '<source url="' . home_url() . '">' . home_url() . '</source>'.PHP_EOL;
 				echo '<georss:where>'.PHP_EOL;
@@ -230,7 +231,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			}
 		}		
 		//info: added left outer join to also show markers without a layer
-		$sql = 'SELECT m.layer as mlayer,m.icon as micon,m.popuptext as mpopuptext,m.id as mid,m.markername as mmarkername,m.createdby as mcreatedby, m.createdon as mcreatedon, m.lat as mlat, m.lon as mlon, m.address as maddress FROM `'.$table_name_markers.'` AS m LEFT OUTER JOIN `'.$table_name_layers.'` AS l ON m.layer=l.id '.$q;
+		$sql = 'SELECT m.layer as mlayer,m.icon as micon,m.popuptext as mpopuptext,m.id as mid,m.markername as mmarkername,m.createdby as mcreatedby, m.createdon as mcreatedon, m.lat as mlat, m.lon as mlon, m.address as maddress FROM `'.$table_name_markers.'` AS m LEFT OUTER JOIN `'.$table_name_layers.'` AS l ON m.layer=l.id '.$q.' GROUP BY m.id';
 		$markers = $wpdb->get_results($sql, ARRAY_A);
 		//info: output as atom - part 1
 		if ($format == 'atom') {
@@ -274,7 +275,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				echo '<name>' . stripslashes($marker['mcreatedby']) . '</name>'.PHP_EOL;
 				echo '</author>'.PHP_EOL;				
 				echo '<updated>' . date("Y-m-d", $date_kml) . 'T' . date("h:m:s", $time_kml) . $plus_minus . $offset_kml . '</updated>'.PHP_EOL;
-				echo '<content><![CDATA[' . stripslashes(wp_kses($marker['mpopuptext'], $allowedtags)) . ']]></content>'.PHP_EOL;
+				echo '<content><![CDATA[' . stripslashes(wp_kses($marker['mpopuptext'], array_merge($allowedposttags, $additionaltags))) . ']]></content>'.PHP_EOL;
 				echo '<georss:where>'.PHP_EOL;
 				//info: add if srsnames are verified - <gml:Point srsName="' . $srsname . '">
 				echo '<gml:Point>'.PHP_EOL;
@@ -339,7 +340,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 					'</ul>',
 					'</ol>'
 				);
-				$popuptext_sanitized = preg_replace($sanitize_popuptext_from, $sanitize_popuptext_to, stripslashes(preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', wp_kses($marker['mpopuptext'], $allowedtags))));
+				$popuptext_sanitized = preg_replace($sanitize_popuptext_from, $sanitize_popuptext_to, stripslashes(preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', wp_kses($marker['mpopuptext'], array_merge($allowedposttags, $additionaltags)))));
 				echo '<description><![CDATA[' . $popuptext_sanitized . ']]></description>'.PHP_EOL;
 				echo '<source url="' . home_url() . '">' . home_url() . '</source>'.PHP_EOL;
 				echo '<georss:where>'.PHP_EOL;

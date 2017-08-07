@@ -996,6 +996,16 @@ if (version_compare(get_option('leafletmapsmarker_version'),'3.11.2','=')) {
 		update_option( 'leafletmapsmarker_options', $options_updated_geocoding_provider_fallback );
 	}
 
+}
+if (version_compare(get_option('leafletmapsmarker_version'),'3.12','=')) {
+	$save_defaults_for_new_options = new Class_leaflet_options();
+	$save_defaults_for_new_options->save_defaults_for_new_options();
+	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
+	if ( $version_before_update === FALSE ) {
+		set_transient( 'leafletmapsmarker_version_before_update', 'MapsMarker-transient-for-dynamic-changelog', 60 );
+		update_option('leafletmapsmarker_version_before_update', '3.12');
+	}
+	update_option('leafletmapsmarker_version', '3.12.1');
 	//info: redirect to create marker page only on first plugin activation, otherwise redirect is also done on bulk plugin activations
 	if (get_option('leafletmapsmarker_redirect') == 'true')	{
 		update_option('leafletmapsmarker_redirect', 'false');
@@ -1015,12 +1025,11 @@ if (version_compare(get_option('leafletmapsmarker_version'),'3.11.2','=')) {
 	$delete_transient_query_2 = "DELETE FROM `" . $table_options . "` WHERE `" . $table_options . "`.`option_name` LIKE '_transient_timeout_leafletmapsmarker_install_update_cache%';";
 	$wpdb->query($delete_transient_query_2);
 	//info: re-add latest install-update-transient so routine is not run twice - UPDATE ON EACH RELEASE
-	set_transient( 'leafletmapsmarker_install_update_cache_v312', 'execute install and update-routine only once a day', 60*60*24 );
+	set_transient( 'leafletmapsmarker_install_update_cache_v3121', 'execute install and update-routine only once a day', 60*60*24 );
 }
 
 /* template for plugin updates
 if (version_compare(get_option('leafletmapsmarker_version'),'x.xbefore','=')) {
-	//2do - optional: add code for sql updates (no ddl - done by dbdelta!)
 	//2do - mandatory if new options in class-leaflet-options.php were added & update /inc/class-leaflet-options.php update routine
 	$save_defaults_for_new_options = new Class_leaflet_options();
 	$save_defaults_for_new_options->save_defaults_for_new_options();
@@ -1030,6 +1039,7 @@ if (version_compare(get_option('leafletmapsmarker_version'),'x.xbefore','=')) {
 		update_option('leafletmapsmarker_version_before_update', 'x.xbefore'); //2do - update to version before update
 	}
 	update_option('leafletmapsmarker_version', 'x.xnew');
+	//2do - optional: add code for sql updates (no ddl - done by dbdelta!)
 	//2do - mandatory: move code for redirect-on-first-activation-check and hide changelog for new installs to here
 	//2do - mandatory: change install-and-update-transient to current version
 	//2do - mandatory: set $current_version in leaflet-maps-marker.php / function lmm_install_and_updates()
@@ -1037,4 +1047,3 @@ if (version_compare(get_option('leafletmapsmarker_version'),'x.xbefore','=')) {
 	//2do - mandatory (if released together): update pro version (install-and-updates, class-leaflet-options...)
 }
 */
-?>

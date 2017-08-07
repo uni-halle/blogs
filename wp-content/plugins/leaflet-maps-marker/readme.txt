@@ -1,13 +1,13 @@
 === Leaflet Maps Marker (Google Maps, OpenStreetMap, Bing Maps) ===
-Contributors:      harmr, waseem_senjer
+Contributors:      harmr, tgelz, waseem_senjer
 Plugin Name:       Leaflet Maps Marker
 Plugin URI:        https://www.mapsmarker.com
 Tags:              Google Maps, googlemaps, OpenStreetMap, bing, map, maps, mapping, gpx, route, location, store locator, placemarker
 Author URI:        https://www.mapsmarker.com
 Author:            MapsMarker.com e.U.
 Requires at least: 3.3
-Tested up to:      4.7.3
-Stable tag:        3.12
+Tested up to:      4.8.1
+Stable tag:        3.12.1
 License:           GPLv2
 
 The most comprehensive & user-friendly mapping solution for WordPress
@@ -213,6 +213,10 @@ For full credits of each translations please visit [https://www.mapsmarker.com/l
 * [Pretty permalinks with customizable slug for fullscreen maps and APIs (e.g. yourdomain.com/maps/fullscreen/marker/1)](https://www.mapsmarker.com/v3.0p)
 * [support for tooltips to display the marker name as small text on top of marker icons](https://www.mapsmarker.com/v3.0p)
 * [support for AMP optimized mobile pages](https://www.mapsmarker.com/v3.0p)
+* [new widget "show latest marker map"](https://www.mapsmarker.com/v3.1p)
+* [list all markers page enhancement: dropdown added to filter markers by layer](https://www.mapsmarker.com/v3.1p)
+* [loading indicator for GeoJSON download and marker clustering](https://www.mapsmarker.com/v3.1p)
+* [global basemap setting "nowrap": (if set to true, tiles will not load outside the world width instead of repeating, default: false)](https://www.mapsmarker.com/v3.1p)
 * **frequent updates**
 * **dedicated and priority support** from the plugin author
 * non-expiring license keys
@@ -226,7 +230,7 @@ Leaflet Maps Marker also includes a pro upgrader which allows you to start a fre
 = Plugin's Official Site =
 https://www.mapsmarker.com
 
-* [Affiliate program](https://www.mapsmarker.com/affiliates/) - [Reseller program](https://www.mapsmarker.com/reseller) - [FAQ](https://www.mapsmarker.com/faq/) - [Docs](https://www.mapsmarker.com/docs/) - [Support](https://www.mapsmarker.com/support/) - [Twitter](https://twitter.com/mapsmarker) - [Facebook](https://facebook.com/mapsmarker) - [Google+](https://www.mapsmarker.com/+) - [Translations](https://translate.mapsmarker.com/projects/lmm)
+* [Affiliate program](https://affiliates.mapsmarker.com/) - [Reseller program](https://www.mapsmarker.com/reseller) - [FAQ](https://www.mapsmarker.com/faq/) - [Docs](https://www.mapsmarker.com/docs/) - [Support](https://www.mapsmarker.com/support/) - [Twitter](https://twitter.com/mapsmarker) - [Facebook](https://facebook.com/mapsmarker) - [Google+](https://www.mapsmarker.com/+) - [Translations](https://translate.mapsmarker.com/projects/lmm) - [Hackerone](https://www.mapsmarker.com/hackerone)
 
 == Installation ==
 
@@ -352,10 +356,10 @@ MapsMarker &reg;
 Copyright 2011-2017, MapsMarker.com e.U., All Rights Reserved
 
 == Upgrade Notice ==
-= v3.12 =
-update to leaflet.js 0.7.7, optimiziations and bugfixes - see https://www.mapsmarker.com/v3.12 for more details
+= 3.12.1 =
+No manual actions needed for updating to this version. If you experience any issues, please [create a new topic in the support forum](https://wordpress.org/support/plugin/leaflet-maps-marker).
 
 == Changelog ==
-[blog post with details about v3.12](https://www.mapsmarker.com/v3.12)
+compatibility & security fixes - see [https://www.mapsmarker.com/v3.12.1](https://www.mapsmarker.com/v3.12.1) for more details
 
 [changelog for all versions](https://www.mapsmarker.com/changelog)

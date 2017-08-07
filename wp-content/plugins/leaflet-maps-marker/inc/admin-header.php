@@ -6,16 +6,16 @@
 if (basename($_SERVER['SCRIPT_FILENAME']) == 'admin-header.php') { die ("Please do not access this file directly. Thanks!<br/><a href='https://www.mapsmarker.com/go'>www.mapsmarker.com</a>"); }
 
 //info: workaround for vertical scrolling on mobiles #276
-if (function_exists('wp_is_mobile')) { 
-	if (wp_is_mobile()) { 
-		$wrap_style = 'style="overflow: scroll;"'; 
+if (function_exists('wp_is_mobile')) {
+	if (wp_is_mobile()) {
+		$wrap_style = 'overflow:scroll;clear:both;';
 	} else {
-		$wrap_style=''; //info: otherwise scrollbar gets hidden on desktop
+		$wrap_style='clear:both;'; //info: otherwise scrollbar gets hidden on desktop
 	}
 } else {
-	$wrap_style='';
+	$wrap_style='clear:both;';
 }
-echo '<div class="wrap" ' . $wrap_style . '>';
+echo '<div class="wrap" style="' . $wrap_style . '">';
 
 //info: dont show on save (remove with AJAX ;-)
 $action = isset($_POST['action']) ? $_POST['action'] : (isset($_GET['action']) ? $_GET['action'] : '');

@@ -11,9 +11,10 @@ class Class_leaflet_recent_marker_widget extends WP_Widget {
 			'classname' => 'Class_leaflet_recent_marker_widget',
 			'description' => __('Widget to show the most recent markers', 'lmm'));
 		$control_options = array();
-		parent::__construct( __CLASS__, '<span>' . __('Leaflet Maps Marker - recent markers', 'lmm') . '</span>', $widget_options, $control_options);
+		parent::__construct( __CLASS__, '<span>' . __('Leaflet Maps Marker - recent markers list', 'lmm') . '</span>', $widget_options, $control_options);
 	}
 	public function form($instance) {
+		global $allowedposttags;
 		$instance = wp_parse_args((array) $instance, array(
 			'lmm-widget-title' => __('Recent markers','lmm'),
 			'lmm-widget-howmany' => '5',
@@ -34,7 +35,7 @@ class Class_leaflet_recent_marker_widget extends WP_Widget {
 		echo '<p><label for="lmm-widget-title">' . __('Title', 'lmm') . ':</label>';
 		echo '<input type="text" value="' . $instance['lmm-widget-title'] . '" name="' . $this->get_field_name('lmm-widget-title') . '" id="' . $this->get_field_id('lmm-widget-title') . '" class="widefat" /></p>';
 		echo '<p><label for="lmm-widget-textbeforelist">' . __('Text before list of markers', 'lmm') . ':</label>';
-		echo '<input type="text" value="' . $instance['lmm-widget-textbeforelist'] . '" name="' . $this->get_field_name('lmm-widget-textbeforelist') . '" id="' . $this->get_field_id('lmm-widget-textbeforelist') . '" class="widefat" /></p>';
+		echo '<input type="text" value="' . wp_kses($instance['lmm-widget-textbeforelist'], $allowedposttags) . '" name="' . $this->get_field_name('lmm-widget-textbeforelist') . '" id="' . $this->get_field_id('lmm-widget-textbeforelist') . '" class="widefat" /></p>';
 		echo '<p><label for="lmm-widget-markerstoshow">' . __('Number of markers to display', 'lmm') . ':&nbsp;</label>';
 		echo '<input style="width:40px;" type="text" value="' . $instance['lmm-widget-howmany'] . '" name="' . $this->get_field_name('lmm-widget-howmany') . '" id="' . $this->get_field_id('lmm-widget-howmany') . '" class="widefat" /></p>';
 		echo '<p><div style="float:right"><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/pro-feature-banner-small.png" width="68" height="9" border="0"></a></div><label for="lmm-widget-included-layers">' . __('Included layers', 'lmm') . '  <img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-question-mark.png" width="12" height="12" border="0" title="' . esc_attr__('If empty, markers from all layers are selected.','lmm') . ' ' . esc_attr__('To select only markers from a layer, please enter the layer ID. Use commas to separate multiple layers. Use 0 for markers not assigned to a layer.','lmm') . '" />:</label>';
@@ -85,7 +86,7 @@ class Class_leaflet_recent_marker_widget extends WP_Widget {
 		echo '<option value="asc" ' . selected($orderbysortorder, 'asc', false) . '>' . __('asc','lmm') . '</option></select></p>';
 		echo '<hr style="border:0;height:1px;background-color:#d8d8d8;">';
 		echo '<p><label for="lmm-widget-textafterlist">' . __('Text after list of markers', 'lmm') . ':</label>';
-		echo '<input type="text" value="' . $instance['lmm-widget-textafterlist'] . '" name="' . $this->get_field_name('lmm-widget-textafterlist') . '" id="' . $this->get_field_id('lmm-widget-textafterlist') . '" class="widefat" /></p>';
+		echo '<input type="text" value="' . wp_kses($instance['lmm-widget-textafterlist'], $allowedposttags) . '" name="' . $this->get_field_name('lmm-widget-textafterlist') . '" id="' . $this->get_field_id('lmm-widget-textafterlist') . '" class="widefat" /></p>';
 		$georss = $instance['lmm-widget-georss'];
 		echo '<p><label for="lmm-widget-georss"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-georss.png" /> ' . __('Show GeoRSS subscribe link', 'lmm') . ':&nbsp;</label>';
 		echo '<input type="checkbox" name="' . $this->get_field_name('lmm-widget-georss') . '" ' . checked($georss, 'on', false) . ' /></p>';
@@ -94,6 +95,7 @@ class Class_leaflet_recent_marker_widget extends WP_Widget {
 		echo '<input type="checkbox" name="' . $this->get_field_name('lmm-widget-attributionlink') . '" ' . checked($attributionlink, 'on', false) . ' disabled="disabled" readonly="readonly" />&nbsp;&nbsp;&nbsp;<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/pro-feature-banner-small.png" width="68" height="9" border="0"></a></p>';
 	}//info: END function form($instance)
 	public function update($new_instance, $old_instance) {
+		global $allowedposttags;
 		$instance = $old_instance;
 		if ( isset($instance['lmm-widget-attributionlink']) && ($instance['lmm-widget-attributionlink'] == 'off') ) {
 			$new_instance = wp_parse_args((array) $new_instance, array(
@@ -115,10 +117,10 @@ class Class_leaflet_recent_marker_widget extends WP_Widget {
 			));
 		}
 		$instance['lmm-widget-title'] = (string) strip_tags($new_instance['lmm-widget-title']);
-		$instance['lmm-widget-textbeforelist'] = (string) strip_tags($new_instance['lmm-widget-textbeforelist']);
+		$instance['lmm-widget-textbeforelist'] = (string) wp_kses($new_instance['lmm-widget-textbeforelist'], $allowedposttags);
 		$instance['lmm-widget-howmany'] = (int) strip_tags($new_instance['lmm-widget-howmany']);
 		$instance['lmm-widget-showicons'] = (string) strip_tags($new_instance['lmm-widget-showicons']);
-		$instance['lmm-widget-showpopuptext'] = (string) strip_tags($new_instance['lmm-widget-showpopuptext']);
+		$instance['lmm-widget-showpopuptext'] = (string) wp_kses($new_instance['lmm-widget-showpopuptext'], $allowedposttags);
 		$instance['lmm-widget-linktarget'] = (string) strip_tags($new_instance['lmm-widget-linktarget']);
 		$instance['lmm-widget-createdon'] = (string) strip_tags($new_instance['lmm-widget-createdon']);
 		$instance['lmm-widget-createdonformat'] = (string) strip_tags($new_instance['lmm-widget-createdonformat']);
@@ -126,7 +128,7 @@ class Class_leaflet_recent_marker_widget extends WP_Widget {
 		$instance['lmm-widget-separatorlinecolor'] = (string) strip_tags($new_instance['lmm-widget-separatorlinecolor']);
 		$instance['lmm-widget-orderby'] = (string) strip_tags($new_instance['lmm-widget-orderby']);
 		$instance['lmm-widget-orderby-sortorder'] = (string) strip_tags($new_instance['lmm-widget-orderby-sortorder']);
-		$instance['lmm-widget-textafterlist'] = (string) strip_tags($new_instance['lmm-widget-textafterlist']);
+		$instance['lmm-widget-textafterlist'] = (string) wp_kses($new_instance['lmm-widget-textafterlist'], $allowedposttags);
 		$instance['lmm-widget-georss'] = (string) strip_tags($new_instance['lmm-widget-georss']);
 		$instance['lmm-widget-attributionlink'] = (string) strip_tags($new_instance['lmm-widget-attributionlink']);
 		return $instance;
@@ -134,7 +136,7 @@ class Class_leaflet_recent_marker_widget extends WP_Widget {
 	public function widget($args, $instance) {
 		extract($args);
 		echo $before_widget;
-		global $wpdb;
+		global $wpdb, $allowedposttags;
 		$table_name_markers = $wpdb->prefix.'leafletmapsmarker_markers';
 		if ($instance['lmm-widget-howmany']){
 			$limiter = (int)$instance['lmm-widget-howmany'];
@@ -149,7 +151,7 @@ class Class_leaflet_recent_marker_widget extends WP_Widget {
 			echo $before_title . $title . $after_title;
 		}
 		if (!empty($instance['lmm-widget-textbeforelist'])) {
-			echo '<p style="margin-bottom:5px;">' . $instance['lmm-widget-textbeforelist'] . '</p>';
+			echo '<p style="margin-bottom:5px;">' . wp_kses($instance['lmm-widget-textbeforelist'], $allowedposttags) . '</p>';
 		}
 		if ($result != NULL) {
 			$lmm_options = get_option( 'leafletmapsmarker_options' );
@@ -211,7 +213,7 @@ class Class_leaflet_recent_marker_widget extends WP_Widget {
 			echo '<p style="margin-bottom:5px;">' . __('No marker created yet','lmm') . '</p>';
 		}
 		if (!empty($instance['lmm-widget-textafterlist'])) {
-			echo '<p style="margin:0;">' . $instance['lmm-widget-textafterlist'] . '</p>';
+			echo '<p style="margin:0;">' . wp_kses($instance['lmm-widget-textafterlist'], $allowedposttags) . '</p>';
 		}
 		if ($instance['lmm-widget-georss'] == 'on') {
 			echo '<p style="margin:0;"><a target="_blank" href="' . LEAFLET_PLUGIN_URL . 'leaflet-georss.php?layer=all" title="' . esc_attr__('via GeoRSS - please use RSS Reader like http://google.com/reader for example','lmm') . '"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-georss.png" alt="GeoRSS-Logo" /></a> <a target="_blank" href="' . LEAFLET_PLUGIN_URL . 'leaflet-georss.php?layer=all" title="' . esc_attr__('via GeoRSS - please use RSS Reader like http://google.com/reader for example','lmm') . '">' . __('Subscribe to markers','lmm') . '</a></p>';

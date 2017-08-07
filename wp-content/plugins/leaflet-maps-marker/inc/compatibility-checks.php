@@ -138,7 +138,7 @@ if (is_plugin_active('siteorigin-panels/siteorigin-panels.php') ) {
 	$pagebuilder_metadata = get_plugin_data(WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'siteorigin-panels' . DIRECTORY_SEPARATOR . 'siteorigin-panels.php');
 	if (version_compare($pagebuilder_metadata['Version'],"2.1","<")){
 		if ($lmm_options['misc_javascript_header_footer_pro'] == 'footer') {
-			echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('Warning: you are using the Plugin %1$s which is causing maps to break! To fix this, please navigate to <a href="%2$s">Settings / Misc / General Settings</a> and set the Option "Where to insert Javascript files on frontend?" to "header (+ inline javascript)".','lmm'), '"Page Builder by SiteOrigin"', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc' ) . '</div></p>';
+			echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('Warning: you are using the Plugin %1$s which is causing maps to break! To fix this, please navigate to <a href="%2$s">Settings / Misc / Compatibility Settings</a> and set the Option "Where to insert Javascript files on frontend?" to "header (+ inline javascript)".','lmm'), '"Page Builder by SiteOrigin"', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-compatibility' ) . '</div></p>';
 		}
 	}
 }
@@ -156,6 +156,9 @@ if (is_plugin_active('autoptimize/autoptimize.php') ) {
 		$conf = autoptimizeConfig::instance();
 		if ( ($conf->get('autoptimize_js') == 'on') && (strpos($conf->get('autoptimize_js_exclude'), 'leaflet.js') === false) ) { 
 			echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin "Autoptimize" which is currently causing maps to break!<br/>To fix this, please navigate to <a href="%1$s">Autoptimize settings</a>, click on button "Show advanced settings" and add the following to the end the option "Exclude scripts from Autoptimize:": %2$s','lmm'), LEAFLET_WP_ADMIN_URL . 'options-general.php?page=autoptimize', '<strong>,leaflet.js</strong>') . '</div></p>';
+		}
+		if ($conf->get('autoptimize_js_include_inline') == 'on') {
+			echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin "Autoptimize" which is currently causing maps to break!<br/>To fix this, please navigate to <a href="%1$s">Autoptimize settings</a> and uncheck the option "Also aggregate inline JS?"','lmm'), LEAFLET_WP_ADMIN_URL . 'options-general.php?page=autoptimize') . '</div></p>';
 		}
 	} else {
 		echo '<p><div class="notice notice-info" style="padding:10px;">' . __('Warning: you seem to be using an old version of the plugin "Autoptimize" which can currently cause maps to break!<br/>Please update this plugin to the latest version to prevent potential issues.','lmm') . '</div></p>';	
@@ -225,5 +228,31 @@ if (is_plugin_active('async-javascript/async-javascript.php') ) {
 		if ( (strpos($aj_exclusions, 'leaflet-core.js') === false) || (strpos($aj_exclusions, 'leaflet-core.js') === false) || (strpos($aj_exclusions, 'mq-map.js') === false )) { 
 			echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin "Async Javascript" which is currently causing maps to break!<br/>To fix this, please navigate to <a href="%1$s">Async JavaScript Settings</a> and add the following to the end the option "Exclusions": %2$s','lmm'), LEAFLET_WP_ADMIN_URL . 'options-general.php?page=async-javascript', '<strong><code>,leaflet-core.js,leaflet-addons.js,mq-map.js</code></strong>') . '</div></p>';
 		}
+	}
+}
+//info: WP Super Cache debug check
+if (is_plugin_active('wp-super-cache/wp-cache.php') ) {
+	global $wp_super_cache_debug, $wp_super_cache_comments;
+	if ( (checked( 1, $wp_super_cache_debug, false )) && (checked( 1, $wp_super_cache_comments, false )) ) {
+		echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin "WP Super Cache" which is currently causing layer maps to break!<br/>To fix this, please navigate to <a href="%1$s">WP Super Cache Settings / Debug</a> and disable debugging or the checkbox above "Display comments at the end of every page like this:"','lmm'), LEAFLET_WP_ADMIN_URL . 'options-general.php?page=wpsupercache&tab=debug') . '</div></p>';
+	} 
+}
+//info: Admin Custom Login
+if (is_plugin_active('admin-custom-login/admin-custom-login.php') ) {
+	echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin "%1$s" which is currently causing the navigation on %2$s settings page to break!<br/>To fix this, please temporarily deactivate this plugin if you want change the settings!','lmm'), 'Admin Custom Login', 'Leaflet Maps Marker') . '</div></p>';
+}
+//info: Fast Velocity Minify
+if (is_plugin_active('fast-velocity-minify/fvm.php') ) {
+	if ( get_option( 'fastvelocity_min_disable_js_merge' ) == NULL ) {
+		$fvm_options = get_option('fastvelocity_min_ignore');
+		if ((strpos($fvm_options, 'leaflet-core.js') === false) || (strpos($fvm_options, 'leaflet-addons.js') === false) || (strpos($fvm_options, 'mq-map.js') === false))  {
+			echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin "%1$s" which is currently causing maps to break!<br/>To fix this, please navigate to <a href="%2$s">Advanced settings tab</a>, section "JS and CSS Exceptions" and add the following text to the "Ignore List": %3$s','lmm'), 'Fast Velocity Minify', LEAFLET_WP_ADMIN_URL . 'options-general.php?page=fastvelocity-min&tab=adv', '<br/><strong><code>leaflet-core.js</code><br/><code>leaflet-addons.js</code><br/><code>mq-map.js</code></strong>') . '</div></p>';
+		}
+	}
+}
+//info: divi theme script check
+if ( (wp_get_theme()->Name == 'Divi') && (version_compare(wp_get_theme()->Version, '3', '>') === TRUE) ) {
+	if ($lmm_options['misc_javascript_header_footer'] == 'footer') {
+		echo '<p><div class="notice notice-error" style="padding:10px;">' . sprintf(__('Warning: you are using the theme "%1$s" which is currently causing maps to break!<br/>To fix this, please navigate to <a href="%2$s">Settings / Misc / Compatibility Settings</a> and set the Option "Where to insert Javascript files on frontend?" to "header (+ inline javascript)".','lmm'), 'Divi (v' . wp_get_theme()->Version . ')', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-compatibility') . '</div></p>';
 	}
 }

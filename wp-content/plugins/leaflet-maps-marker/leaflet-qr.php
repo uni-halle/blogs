@@ -49,7 +49,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 		}
 	//info: Google QR settings
 	} else if ($lmm_options['qrcode_provider'] == 'google') {
-		$google_qr_link = 'https://chart.googleapis.com/chart?chs=' . $lmm_options[ 'misc_qrcode_size' ] . 'x' . $lmm_options[ 'misc_qrcode_size' ] . '&cht=qr&chl=' . $url;
+		$google_qr_link = 'https://chart.googleapis.com/chart?chs=' . intval($lmm_options[ 'misc_qrcode_size' ]) . 'x' . intval($lmm_options[ 'misc_qrcode_size' ]) . '&cht=qr&chl=' . $url;
 		echo '<script type="text/javascript">window.location.href = "' . $google_qr_link . '";</script>  ';
 	}
 } //info: end plugin active check
