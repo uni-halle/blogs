@@ -10,405 +10,890 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.2\n"
+"Project-Id-Version: si-captcha\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/si-captcha-for-wordpress\n"
-"POT-Creation-Date: 2008-12-14 17:48+0000\n"
-"PO-Revision-Date: 2009-11-24 15:35+0700\n"
+"POT-Creation-Date: 2017-07-25 21:44-0400\n"
+"PO-Revision-Date: 2017-07-25 21:44-0400\n"
 "Last-Translator: Masino Sinaga <masino_sinaga@posindonesia.co.id>\n"
 "Language-Team: \n"
+"Language: id_ID\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-KeywordsList: __;_e;_n\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: si-captcha.php:44
-#: si-captcha.php:45
-#: si-captcha.php:48
-#: si-captcha.php:199
-msgid "SI Captcha Options"
-msgstr "Pilihan SI Captcha"
-
-#: si-captcha.php:134
+#: si-captcha-admin.php:15
 msgid "You do not have permissions for managing this option"
 msgstr "Anda tidak memiliki ijin untuk mengatur pilihan ini"
 
-#: si-captcha.php:196
-msgid "Options saved."
-msgstr "Pilihan telah disimpan."
+#: si-captcha-admin.php:93
+msgid "Your settings have been saved."
+msgstr ""
 
-#: si-captcha.php:212
+#: si-captcha-admin.php:96 si-captcha.php:54
+msgid "SI Captcha Anti-Spam settings"
+msgstr ""
+
+#: si-captcha-admin.php:124
+msgid ""
+"SI Captcha Anti-Spam is Network Activated and Main site configured. It is "
+"not necessary to change any settings here."
+msgstr ""
+
+#: si-captcha-admin.php:125
+msgid ""
+"Settings are controlled at the main site and are Networkwide. If you want "
+"individual sites to each have their own unique settings: go to the main site "
+"SI Captcha Anti-Spam settings and enable \"Allow Multisite network activated "
+"sites to have individual SI Captcha Anti-Spam settings\"."
+msgstr ""
+
+#: si-captcha-admin.php:162
+#, php-format
+msgid "Downloaded %s times"
+msgstr ""
+
+#: si-captcha-admin.php:168 si-captcha-admin.php:176
+#, php-format
+msgid "(Average rating based on %s ratings)"
+msgstr ""
+
+#: si-captcha-admin.php:170
+msgid "5 stars"
+msgstr ""
+
+#: si-captcha-admin.php:171
+msgid "4 stars"
+msgstr ""
+
+#: si-captcha-admin.php:172
+msgid "3 stars"
+msgstr ""
+
+#: si-captcha-admin.php:173
+msgid "2 stars"
+msgstr ""
+
+#: si-captcha-admin.php:174
+msgid "1 star"
+msgstr ""
+
+#: si-captcha-admin.php:176
+msgid "rate"
+msgstr ""
+
+#: si-captcha-admin.php:187
+#, php-format
+msgid "a newer version is available: %s"
+msgstr ""
+
+#: si-captcha-admin.php:189
+#, php-format
+msgid "A newer version of SI Captcha Anti-Spam is available: %s"
+msgstr ""
+
+#: si-captcha-admin.php:192
+msgid "(latest version)"
+msgstr ""
+
+#: si-captcha-admin.php:198
+msgid "Version:"
+msgstr ""
+
+#: si-captcha-admin.php:199
 msgid "Changelog"
 msgstr "Catatan perubahan"
 
-#: si-captcha.php:213
+#: si-captcha-admin.php:200
 msgid "FAQ"
 msgstr "FAQ"
 
-#: si-captcha.php:214
+#: si-captcha-admin.php:201 si-captcha-admin.php:572
 msgid "Rate This"
 msgstr "Nilai Ini"
 
-#: si-captcha.php:215
+#: si-captcha-admin.php:202 si-captcha.php:60
 msgid "Support"
 msgstr "Dukung"
 
-#: si-captcha.php:216
-#: si-captcha.php:224
+#: si-captcha-admin.php:203 si-captcha-admin.php:549 si-captcha.php:61
 msgid "Donate"
 msgstr "Donasi"
 
-#: si-captcha.php:217
-msgid "Free PHP Scripts"
-msgstr "Skrip PHP Gratis"
+#: si-captcha-admin.php:204
+msgid "Mikes Free PHP Scripts"
+msgstr ""
 
-#: si-captcha.php:218
-msgid "Contact"
-msgstr "Kontak"
+#: si-captcha-admin.php:216
+msgid ""
+"<strong>Individual Site Settings Enabled</strong><br />Note: SI Captcha Anti-"
+"Spam is not Network Activated, this means each site will have individual SI "
+"Captcha Anti-Spam settings."
+msgstr ""
 
-#: si-captcha.php:235
-msgid "If you find this plugin useful to you, please consider making a small donation to help contribute to further development. Thanks for your kind support!"
-msgstr "Jika plugin ini bermanfaat buat Anda, mohon berikan sumbangan untuk membantu pengembangan lebih lanjut. Terima kasih untuk dukungan Anda!"
+#: si-captcha-admin.php:217
+msgid ""
+"If you want it this way, that is OK, but if you want the master site to "
+"control all the sites: go to the main site, then Network Activate this "
+"plugin, then go to SI Captcha Anti-Spam settings and disable \"Allow "
+"Multisite network activated sites to have individual SI Captcha Anti-Spam "
+"settings\"."
+msgstr ""
 
-#: si-captcha.php:256
-msgid "I have donated to help contribute for the development of this plugin."
-msgstr "Saya sudah menyumbang untuk membantu kontribusi pengembangan plugin ini."
+#: si-captcha-admin.php:224 si-captcha-admin.php:528
+msgid "Save Changes"
+msgstr ""
 
-#: si-captcha.php:259
-msgid "Usage"
-msgstr "Penggunaan"
+#: si-captcha-admin.php:227
+msgid ""
+"If you do not like image captcha and code entry, you can uninstall this "
+"plugin and try my new plugin:"
+msgstr ""
 
-#: si-captcha.php:262
-msgid "Your theme must have a"
-msgstr "Theme Anda harus mendukung"
+#: si-captcha-admin.php:227
+msgid "Fast Secure reCAPTCHA with Google No CAPTCHA reCAPTCHA"
+msgstr ""
 
-#: si-captcha.php:262
-msgid "tag inside your comments.php form. Most themes do."
-msgstr "tag di dalam file form comments.php. Umumnya theme bisa."
+#: si-captcha-admin.php:236
+msgid "Enable CAPTCHA:"
+msgstr ""
 
-#: si-captcha.php:263
-msgid "The best place to locate the tag is before the comment textarea, you may want to move it if it is below the comment textarea, or the captcha image and captcha code entry might display after the submit button."
-msgstr "Tempat terbaik untuk menempatkan tag tersebut sebelum textarea komentar, Anda mungkin ingin memindahkannya jika dia di bawah textarea komentar, atau entri gambar captcha dan kode captcha dapat ditampilkan setelah tombol Submit."
+#: si-captcha-admin.php:240
+msgid "Login form."
+msgstr ""
 
-#: si-captcha.php:266
-msgid "Options"
-msgstr "Pilihan"
-
-#: si-captcha.php:269
-#: si-captcha.php:402
-msgid "Update Options"
-msgstr "Pilihan Update"
-
-#: si-captcha.php:276
-msgid "CAPTCHA Support Test:"
-msgstr "Tes Dukungan CAPTCHA:"
-
-#: si-captcha.php:278
-msgid "Test if your PHP installation will support the CAPTCHA"
-msgstr "Tes jika installasi PHP Anda mendukung CAPTCHA"
-
-#: si-captcha.php:283
-msgid "CAPTCHA on Login Form:"
-msgstr "CAPTCHA pada Form Login:"
-
-#: si-captcha.php:286
-msgid "Enable CAPTCHA on the login form."
-msgstr "Aktifkan CAPTCHA pada form login."
-
-#: si-captcha.php:287
-#: si-captcha.php:324
-#: si-captcha.php:352
-#: si-captcha.php:384
-msgid "Click for Help!"
-msgstr "Klik untuk Bantuan!"
-
-#: si-captcha.php:287
-#: si-captcha.php:324
-#: si-captcha.php:352
-#: si-captcha.php:384
+#: si-captcha-admin.php:241 si-captcha-admin.php:249 si-captcha-admin.php:257
+#: si-captcha-admin.php:265 si-captcha-admin.php:273 si-captcha-admin.php:281
+#: si-captcha-admin.php:289 si-captcha-admin.php:297 si-captcha-admin.php:305
+#: si-captcha-admin.php:313 si-captcha-admin.php:321 si-captcha-admin.php:329
+#: si-captcha-admin.php:346 si-captcha-admin.php:365 si-captcha-admin.php:383
+#: si-captcha-admin.php:391 si-captcha-admin.php:428 si-captcha-admin.php:448
+#: si-captcha-admin.php:498
 msgid "help"
 msgstr "bantuan"
 
-#: si-captcha.php:289
-msgid "The Login form captcha is not enabled by default because it might be annoying to users. Only enable it if you are having spam problems related to bots automatically logging in."
-msgstr "Captcha di form login tidak diaktifkan secara standar karena dapat menyulitkan pengguna. Hanya aktifkan jika Anda memiliki masalah spam terkait dengan bots yang otomatis dapat masuk."
+#: si-captcha-admin.php:243
+msgid "Require that the user pass a CAPTCHA test before login."
+msgstr ""
 
-#: si-captcha.php:295
-msgid "CAPTCHA on Register Form:"
-msgstr "CAPTCHA pada Form Registrasi:"
+#: si-captcha-admin.php:248
+msgid "Register form."
+msgstr ""
 
-#: si-captcha.php:298
-msgid "Enable CAPTCHA on the register form."
-msgstr "Aktifkan CAPTCHA pada form pendaftaran."
+#: si-captcha-admin.php:251
+msgid "Require that the user pass a CAPTCHA test before registering."
+msgstr ""
 
-#: si-captcha.php:303
-msgid "CAPTCHA on Comment Form:"
-msgstr "CAPTCHA pada Form Komentar:"
+#: si-captcha-admin.php:256
+msgid "Lost password form."
+msgstr ""
 
-#: si-captcha.php:306
-msgid "Enable CAPTCHA on the comment form."
-msgstr "Aktifkan CAPTCHA pada form komentar."
+#: si-captcha-admin.php:259
+msgid "Require that the user pass a CAPTCHA test before lost password request."
+msgstr ""
 
-#: si-captcha.php:309
-msgid "Hide CAPTCHA for"
-msgstr "Sembunyikan CAPTCHA untuk"
+#: si-captcha-admin.php:264
+msgid "Comment form."
+msgstr ""
 
-#: si-captcha.php:310
-msgid "registered"
-msgstr "terdaftar"
+#: si-captcha-admin.php:267
+msgid "Require that the user pass a CAPTCHA test before posting comments."
+msgstr ""
 
-#: si-captcha.php:311
-msgid "users who can:"
-msgstr "pengguna yang dapat:"
+#: si-captcha-admin.php:272
+msgid "Multisite register form."
+msgstr ""
 
-#: si-captcha.php:314
-msgid "CSS class name for CAPTCHA input field on the comment form"
-msgstr "Nama class CSS untuk field masukan CAPTCHA pada form komentar"
+#: si-captcha-admin.php:275
+msgid ""
+"Require that the user pass a CAPTCHA test before registering in Multisite."
+msgstr ""
 
-#: si-captcha.php:315
-msgid "(Enter a CSS class name only if your theme uses one for comment text inputs. Default is blank for none.)"
-msgstr "(Masukkan nama class CSS hanya jika theme Anda menggunakannya untuk masukan teks komentar. Standarnya kosong untuk tidak ada.)"
+#: si-captcha-admin.php:280
+msgid "BuddyPress register form."
+msgstr ""
 
-#: si-captcha.php:320
-msgid "Comment Form Rearrange:"
-msgstr "Pengaturan Kembali Form Komentar:"
+#: si-captcha-admin.php:283
+msgid ""
+"Require that the user pass a CAPTCHA test before registering in BuddyPress."
+msgstr ""
 
-#: si-captcha.php:323
-msgid "Change the display order of the catpcha input field on the comment form."
-msgstr "Ganti urutan tampilan field masukan captcha pada form komentar."
+#: si-captcha-admin.php:288
+msgid "wpForo Forum register form."
+msgstr ""
 
-#: si-captcha.php:326
-msgid "Problem:"
-msgstr "Permasalahan:"
+#: si-captcha-admin.php:291
+msgid ""
+"Require that the user pass a CAPTCHA test before registering in wpForo Forum."
+msgstr ""
 
-#: si-captcha.php:327
-msgid "Sometimes the captcha image and captcha input field are displayed AFTER the submit button on the comment form."
-msgstr "Kadang-kadang gambar captcha dan field masukan captcha ditampilkan SETELAH tombol Submit pada form komentar."
+#: si-captcha-admin.php:296
+msgid "WooCommerce checkout."
+msgstr ""
 
-#: si-captcha.php:328
-msgid "Fix:"
-msgstr "Perbaikan:"
+#: si-captcha-admin.php:299
+msgid ""
+"Require that the user pass a CAPTCHA test on WooCommerce checkout form when "
+"not logged in."
+msgstr ""
 
-#: si-captcha.php:329
-msgid "Edit your current theme comments.php file and locate this line:"
-msgstr "Ubah file comments.php theme Anda dan cari baris ini:"
+#: si-captcha-admin.php:304
+msgid "Jetpack Contact Form."
+msgstr ""
 
-#: si-captcha.php:331
-msgid "This tag is exactly where the captcha image and captcha code entry will display on the form, so move the line to BEFORE the comment textarea, uncheck the option box above, and the problem should be fixed."
-msgstr "Tag ini tepat di mana gambar captcha dan entri kode captcha akan ditampilkan pada form, jadi pindahkan baris tersebut SEBELUM textarea komentar, hapus tanda centang pada kotak pilihan di atas, dan masalah tadi seharusnya bisa diatasi."
+#: si-captcha-admin.php:307
+msgid "Require that the user pass a CAPTCHA test on Jetpack Contact Form."
+msgstr ""
 
-#: si-captcha.php:332
-msgid "Alernately you can just check the box above and javascript will attempt to rearrange it for you, but editing the comments.php, moving the tag, and unchecking this box is the best solution."
-msgstr "Alternatif lain, Anda dapat mencentang kotak di atas dan javascript akan berusaha mengatur kembali untuk Anda, tapi mengubah comments.php, memindahkan tag, dan menghapus tanda centang pada kotak di atas adalah solusi yang terbaik."
+#: si-captcha-admin.php:312
+msgid "bbPress New Topic Form."
+msgstr ""
 
-#: si-captcha.php:333
-msgid "Why is it better to uncheck this and move the tag? because the XHTML will no longer validate on the comment page if it is checked."
-msgstr "Mengapa lebih baik menghapus tanda centang dan memindahkan tag tersebut? Karena XHMTL tidak lagi memvalidasi halaman komentar jika dia dicentang."
+#: si-captcha-admin.php:315
+msgid "Require that the user pass a CAPTCHA test on bbPress New Topic Form."
+msgstr ""
 
-#: si-captcha.php:340
-msgid "CAPTCHA Options:"
-msgstr "Pilihan CAPTCHA:"
+#: si-captcha-admin.php:320
+msgid "bbPress Reply to Topic Form."
+msgstr ""
 
-#: si-captcha.php:343
-msgid "Enable Flash Audio for the CAPTCHA."
-msgstr "Aktifkan Audio Flash untuk CAPTCHA."
+#: si-captcha-admin.php:323
+msgid ""
+"Require that the user pass a CAPTCHA test on bbPress Reply to Topic Form."
+msgstr ""
 
-#: si-captcha.php:348
-msgid "Accessibility:"
-msgstr "Aksebilitas:"
+#: si-captcha-admin.php:328
+msgid "No comment form CAPTCHA for logged in users"
+msgstr ""
 
-#: si-captcha.php:351
-msgid "Enable aria-required tags for screen readers"
-msgstr "Aktifkan tag aria-required untuk layar pembaca."
+#: si-captcha-admin.php:331
+msgid "Logged in users will not have to pass a CAPTCHA test on comments form."
+msgstr ""
 
-#: si-captcha.php:354
-msgid "aria-required is a form input WAI ARIA tag. Screen readers use it to determine which fields are required. Enabling this is good for accessability, but will cause the HTML to fail the W3C Validation (there is no attribute \"aria-required\"). WAI ARIA attributes are soon to be accepted by the HTML validator, so you can safely ignore the validation error it will cause."
-msgstr "aria-required adalah sebuah tag masukan form WAI ARIA. Layar pembaca menggunakannya untuk menentukan field yang dibutuhkan. Mengaktifkan hal ini baik untuk kemampuan pengaksesan, tapi akan menyebabkan HTML gagal melakukan Validasi W3C (tidak ada atribut \"aria-required\"). Atribut WAI ARIA akan segera diterima oleh pemvalidasi HTML, sehingga Anda dapat mengabaikannya supaya tidak menyebabkan error."
+#: si-captcha-admin.php:345 si-captcha-admin.php:364
+msgid ""
+"Allow Multisite network activated sites to have individual SI Captcha Anti-"
+"Spam settings."
+msgstr ""
 
-#: si-captcha.php:361
-msgid "Click for Advanced Options"
-msgstr "Klik untuk Pilihan Mahir"
+#: si-captcha-admin.php:348 si-captcha-admin.php:367
+msgid ""
+"Enabling this setting allows: individual site settings for this plugin on "
+"multisite with network activation turned on. The default is for all sites to "
+"use the master site settings."
+msgstr ""
 
-#: si-captcha.php:367
-msgid "Inline CSS Style:"
-msgstr "Gaya CSS Dalam Baris:"
+#: si-captcha-admin.php:358
+msgid ""
+"SI Captcha Anti-Spam is Network Activated and individual site configured. "
+"The next setting can only be modified by the main site settings menu."
+msgstr ""
 
-#: si-captcha.php:371
-msgid "Reset the styles to default."
-msgstr "Riset gaya ke standar."
+#: si-captcha-admin.php:363
+msgid "Main site admin enabled:"
+msgstr ""
 
-#: si-captcha.php:373
-msgid "CSS style for CAPTCHA div:"
-msgstr "Gaya CSS untuk CAPTCHA div:"
+#: si-captcha-admin.php:363
+msgid "Main site admin disabled:"
+msgstr ""
 
-#: si-captcha.php:374
-msgid "CSS style for CAPTCHA image:"
-msgstr "Gaya CSS untuk CAPTCHA image:"
+#: si-captcha-admin.php:378
+msgid "Style:"
+msgstr ""
 
-#: si-captcha.php:375
-msgid "CSS style for Audio image:"
-msgstr "Gaya CSS untuk Audio image:"
+#: si-captcha-admin.php:382
+msgid "Enable small size CAPTCHA image."
+msgstr ""
 
-#: si-captcha.php:376
-msgid "CSS style for Refresh image:"
-msgstr "Gaya CSS untuk Refresh image:"
+#: si-captcha-admin.php:385
+msgid "Makes the CAPTCHA image size small instead of large."
+msgstr ""
 
-#: si-captcha.php:382
-msgid "Text Labels:"
-msgstr "Label Teks:"
+#: si-captcha-admin.php:390
+msgid "Enable external CAPTCHA CSS."
+msgstr ""
 
-#: si-captcha.php:386
-msgid "Some people wanted to change the text labels. These fields can be filled in to override the standard text labels."
-msgstr "Beberapa orang menginginkan perubahan label teks. Field-field ini dapat diisi untuk menimpa label teks standar."
+#: si-captcha-admin.php:393
+msgid ""
+"Enable to not load this plugin CSS into wp_head. This allows you to load "
+"your own modified CSS into your theme instead."
+msgstr ""
 
-#: si-captcha.php:389
-#: si-captcha.php:493
-#: si-captcha.php:543
-#: si-captcha.php:588
-#: si-captcha.php:617
-#: si-captcha.php:660
-#: si-captcha.php:692
-msgid "CAPTCHA Code"
-msgstr "Kode CAPTCHA"
+#: si-captcha-admin.php:395
+msgid "External Style Sheet CSS starting point for custom setup:"
+msgstr ""
 
-#: si-captcha.php:390
-#: si-captcha.php:847
-#: si-captcha.php:849
-msgid "CAPTCHA Image"
-msgstr "Gambar CAPTCHA"
+#: si-captcha-admin.php:410
+msgid "CAPTCHA input label position on the comment form:"
+msgstr ""
 
-#: si-captcha.php:391
-#: si-captcha.php:866
-#: si-captcha.php:869
-msgid "CAPTCHA Audio"
-msgstr "Audio CAPTCHA"
+#: si-captcha-admin.php:414
+msgid "input-label-required"
+msgstr ""
 
-#: si-captcha.php:392
-#: si-captcha.php:876
-#: si-captcha.php:879
-msgid "Refresh Image"
-msgstr "Segarkan Gambar"
+#: si-captcha-admin.php:415
+msgid "label-required-input"
+msgstr ""
 
-#: si-captcha.php:407
-msgid "More WordPress plugins by Mike Challis:"
-msgstr "Plugin WordPress lainnya oleh Mike Challis:"
+#: si-captcha-admin.php:416
+msgid "label-required-linebreak-input"
+msgstr ""
 
-#: si-captcha.php:409
-msgid "Fast and Secure Contact Form"
-msgstr "Fast and Secure Contact Form"
+#: si-captcha-admin.php:417
+msgid "label-input-required"
+msgstr ""
 
-#: si-captcha.php:410
-msgid "SI CAPTCHA Anti-Spam"
-msgstr "SI CAPTCHA Anti-Spam"
+#: si-captcha-admin.php:430
+msgid ""
+"Changes position of the CAPTCHA input labels on the comment form. Some "
+"themes have different label positions on the comment form. After changing "
+"this setting, be sure to view the comments to verify the setting is correct."
+msgstr ""
 
-#: si-captcha.php:411
-msgid "Visitor Maps and Who's Online"
-msgstr "Visitor Maps and Who's Online"
+#: si-captcha-admin.php:442
+msgid "Options:"
+msgstr ""
 
-#: si-captcha.php:421
-msgid "All registered users"
-msgstr "Semua pengguna terdaftar"
+#: si-captcha-admin.php:447
+msgid "Enable PHP sessions."
+msgstr ""
 
-#: si-captcha.php:422
-msgid "Edit posts"
-msgstr "Ubah tulisan"
+#: si-captcha-admin.php:450
+msgid ""
+"Enables PHP session handling. Only enable this if you have CAPTCHA token "
+"errors. Enable this setting to use PHP sessions for the CAPTCHA. PHP "
+"Sessions must be supported by your web host or there may be session errors."
+msgstr ""
 
-#: si-captcha.php:423
-msgid "Publish Posts"
-msgstr "Publikasikan Tulisan"
+#: si-captcha-admin.php:461 si-captcha-admin.php:469
+msgid "There is a problem with the directory"
+msgstr ""
 
-#: si-captcha.php:424
-msgid "Moderate Comments"
-msgstr "Moderasi Komentar"
+#: si-captcha-admin.php:463
+msgid ""
+"The directory is not found, a <a href=\"http://codex.wordpress.org/"
+"Changing_File_Permissions\" target=\"_blank\">permissions</a> problem may "
+"have prevented this directory from being created."
+msgstr ""
 
-#: si-captcha.php:425
-msgid "Administer site"
-msgstr "Pengaturan Situs"
+#: si-captcha-admin.php:465 si-captcha-admin.php:477
+msgid ""
+"Fixing the actual problem is recommended, but you can check this setting on "
+"the SI CAPTCHA options page: \"Use PHP sessions\" and the captcha will work "
+"(if PHP sessions are supported by your web host)."
+msgstr ""
 
-#: si-captcha.php:443
-msgid "ERROR: si-captcha.php plugin says GD image support not detected in PHP!"
-msgstr "KESALAHAN: plugin si-captcha.php mengatakan bahwa dukungan GD image tidak terdeteksi di PHP!"
+#: si-captcha-admin.php:470
+msgid ""
+"The directory Unwritable (<a href=\"http://codex.wordpress.org/"
+"Changing_File_Permissions\" target=\"_blank\">fix permissions</a>)"
+msgstr ""
 
-#: si-captcha.php:444
-msgid "Contact your web host and ask them why GD image support is not enabled for PHP."
-msgstr "Hubungi hosting situs anda dan tanyakan mereka mengapa dukungan GD image tidak diaktifkan untuk PHP."
+#: si-captcha-admin.php:471
+msgid "Permissions are: "
+msgstr ""
 
-#: si-captcha.php:448
-msgid "ERROR: si-captcha.php plugin says imagepng function not detected in PHP!"
-msgstr "KESALAHAN: plugin si-captcha.php mengatakan bahwa fungsi imagepng tidak terdeteksi di PHP!"
+#: si-captcha-admin.php:475
+msgid ""
+"Fixing this may require assigning 0755 permissions or higher (e.g. 0777 on "
+"some hosts. Try 0755 first, because 0777 is sometimes too much and will not "
+"work.)"
+msgstr ""
 
-#: si-captcha.php:449
-msgid "Contact your web host and ask them why imagepng function is not enabled for PHP."
-msgstr "Hubungai hosting situs Anda dan tanyakan mereka mengapa fungsi imagepng tidak diaktifkan di PHP."
+#: si-captcha-admin.php:493
+msgid "Error Messages:"
+msgstr ""
 
-#: si-captcha.php:453
-msgid "ERROR: si-captcha.php plugin says captcha_library not found."
-msgstr "KESALAHAN: plugin si-captcha.php mengatakan bahwa captcha_library tidak ditemukan."
+#: si-captcha-admin.php:497
+msgid "Customize Text:"
+msgstr ""
 
-#: si-captcha.php:515
-msgid "Submit Comment"
-msgstr "Kirim Komentar"
+#: si-captcha-admin.php:498
+msgid "Click for Help!"
+msgstr "Klik untuk Bantuan!"
 
-#: si-captcha.php:711
-#: si-captcha.php:740
-#: si-captcha.php:769
-#: si-captcha.php:819
-#: si-captcha.php:948
-msgid "Could not read CAPTCHA cookie. Make sure you have cookies enabled and not blocking in your web browser settings. Or another plugin is conflicting. See plugin FAQ."
-msgstr "Tidak dapat membaca cookie CAPTCHA. Pastikan Anda telah mengaktifkan cookies dan tidak diblok di pengaturan browser Anda. Atau plugin lainnya bentrok. Lihat FAQ plugin."
+#: si-captcha-admin.php:500
+msgid ""
+"These fields can be filled in to override the error message that displays "
+"when the form is submitted and the CAPTCHA does not pass validation."
+msgstr ""
 
-#: si-captcha.php:715
-#: si-captcha.php:744
-#: si-captcha.php:773
-#: si-captcha.php:941
-msgid "Please complete the CAPTCHA."
-msgstr "Silahkan isi CAPTCHA."
+#: si-captcha-admin.php:505
+msgid "Required"
+msgstr ""
 
-#: si-captcha.php:727
-#: si-captcha.php:756
-#: si-captcha.php:786
-#: si-captcha.php:960
-msgid "That CAPTCHA was incorrect. Make sure you have not disabled cookies."
-msgstr "CAPTCHA tidak benar. Pastikan Anda tidak menonaktifkan cookies."
+#: si-captcha-admin.php:506
+msgid "Possible spam bot"
+msgstr ""
 
-#: si-captcha.php:740
-#: si-captcha.php:744
-#: si-captcha.php:756
-#: si-captcha.php:769
-#: si-captcha.php:773
-#: si-captcha.php:786
-#: si-captcha.php:819
-#: si-captcha.php:941
-#: si-captcha.php:948
-#: si-captcha.php:960
+#: si-captcha-admin.php:507 si-captcha.php:1188 si-captcha.php:1258
+#: si-captcha.php:1281
+msgid "Wrong CAPTCHA"
+msgstr ""
+
+#: si-captcha-admin.php:508 si-captcha.php:1236 si-captcha.php:1242
+msgid "Empty CAPTCHA"
+msgstr ""
+
+#: si-captcha-admin.php:509 si-captcha.php:1244
+msgid "Missing CAPTCHA token"
+msgstr ""
+
+#: si-captcha-admin.php:510
+msgid "Unreadable CAPTCHA token"
+msgstr ""
+
+#: si-captcha-admin.php:511 si-captcha.php:1268
+msgid "Unreadable CAPTCHA cookie"
+msgstr ""
+
+#: si-captcha-admin.php:512 si-captcha.php:690 si-captcha.php:815
+#: si-captcha.php:930 si-captcha.php:1062 si-captcha.php:1140
 msgid "ERROR"
 msgstr "KESALAHAN"
 
-#: si-captcha.php:822
-msgid "Error: You did not enter a Captcha phrase. Press your browsers back button and try again."
-msgstr "Kesalahan: Anda tidak memasukkan frase Captcha. Tekan tombol Back di browser Anda lalu coba lagi."
+#: si-captcha-admin.php:513 si-captcha.php:641 si-captcha.php:720
+#: si-captcha.php:754 si-captcha.php:786 si-captcha.php:851 si-captcha.php:902
+#: si-captcha.php:964 si-captcha.php:1012 si-captcha.php:1041
+#: si-captcha.php:1123 si-captcha.php:1208
+msgid "CAPTCHA Code"
+msgstr "Kode CAPTCHA"
 
-#: si-captcha.php:833
-msgid "Error: You entered in the wrong Captcha phrase. Press your browsers back button and try again."
-msgstr "Kesalahan: Anda memasukkan frase Captcha yang salah. Tekan tombol Back di browser Anda lalu coba lagi."
+#: si-captcha-admin.php:514
+msgid "CAPTCHA Image"
+msgstr "Gambar CAPTCHA"
 
-#: si-captcha.php:894
+#: si-captcha-admin.php:515
+msgid "Refresh Image"
+msgstr "Segarkan Gambar"
+
+#: si-captcha-admin.php:524
+msgid ""
+"I have donated to help contribute for the development of this plugin. This "
+"checkbox makes the donate button go away"
+msgstr ""
+
+#: si-captcha-admin.php:533
+msgid "Don't Forget to Test the CAPTCHA"
+msgstr ""
+
+#: si-captcha-admin.php:536
+msgid ""
+"After installing or updating plugins and themes, be sure to test the CAPTCHA "
+"on each form where it is enabled. It should display, allow actions on valid "
+"code, and block actions on invalid code."
+msgstr ""
+
+#: si-captcha-admin.php:552
+msgid ""
+"If you find this plugin useful to you, please consider making a donation to "
+"help contribute to my time invested and to further development. Thanks for "
+"your kind support!"
+msgstr ""
+
+#: si-captcha-admin.php:553
+msgid "You have 1 message from Mike Challis"
+msgstr ""
+
+#: si-captcha-admin.php:570
+msgid ""
+"Mike Challis says: \"Hello, I have many hours coding this plugin just for "
+"you. Please consider making a donation. If you are not able to, that is OK."
+msgstr ""
+
+#: si-captcha-admin.php:571
+msgid "Please also rate my plugin.\""
+msgstr ""
+
+#: si-captcha-admin.php:574
+msgid "Close this message"
+msgstr ""
+
+#: si-captcha-admin.php:582
+msgid "WordPress plugins by Mike Challis:"
+msgstr ""
+
+#: si-captcha-admin.php:584
+msgid "Fast Secure Contact Form"
+msgstr ""
+
+#: si-captcha-admin.php:585
+msgid "Fast Secure reCAPTCHA"
+msgstr ""
+
+#: si-captcha-admin.php:586
+msgid "SI CAPTCHA Anti-Spam"
+msgstr "SI CAPTCHA Anti-Spam"
+
+#: si-captcha-admin.php:587
+msgid "Visitor Maps and Who's Online"
+msgstr "Visitor Maps and Who's Online"
+
+#: si-captcha.php:54
+msgid "SI Captcha Anti-Spam"
+msgstr ""
+
+#: si-captcha.php:73
 msgid "Settings"
 msgstr "Pengaturan"
 
-#: si-captcha.php:935
-msgid "<strong>ERROR</strong>: The username field is empty."
-msgstr "<strong>KESALAHAN</strong>: Field nama pengguna masih kosong."
+#: si-captcha.php:304
+msgid "ERROR: si-captcha.php plugin: GD image support not detected in PHP!"
+msgstr ""
 
-#: si-captcha.php:938
-msgid "<strong>ERROR</strong>: The password field is empty."
-msgstr "<strong>KESALAHAN</strong>: Field kata sandi masih kosong."
+#: si-captcha.php:305
+msgid "Contact your web host and ask them to enable GD image support for PHP."
+msgstr ""
 
-#: si-captcha.php:968
+#: si-captcha.php:309
+msgid "ERROR: si-captcha.php plugin: imagepng function not detected in PHP!"
+msgstr ""
+
+#: si-captcha.php:310
+msgid "Contact your web host and ask them to enable imagepng for PHP."
+msgstr ""
+
+#: si-captcha.php:314
+msgid "ERROR: si-captcha.php plugin: securimage.php not found."
+msgstr ""
+
+#: si-captcha.php:362 si-captcha.php:364
+msgid "CAPTCHA"
+msgstr ""
+
+#: si-captcha.php:372 si-captcha.php:379
+msgid "Refresh"
+msgstr ""
+
+#: si-captcha.php:584
+msgid "Submit Comment"
+msgstr "Kirim Komentar"
+
+#: si-captcha.php:1261
+msgid "Unreadable CAPTCHA token file"
+msgstr ""
+
+#: si-captcha.php:1375
 #, php-format
-msgid "<strong>ERROR</strong>: Invalid username. <a href=\"%s\" title=\"Password Lost and Found\">Lost your password</a>?"
-msgstr "<strong>KESALAHAN</strong>: Nama pengguna tidak valid. <a href=\"%s\" title=\"Lupa Password\">Lupa kata sandi Anda</a>?"
+msgid ""
+"<strong>SI CAPTCHA needs your attention:</strong> To make it work, you need "
+"to configure the settings. <br />You can do so at the <a href=\"%s\">SI "
+"CAPTCHA settings page</a>."
+msgstr ""
 
-#: si-captcha.php:977
-#, php-format
-msgid "<strong>ERROR</strong>: Incorrect password. <a href=\"%s\" title=\"Password Lost and Found\">Lost your password</a>?"
-msgstr "<strong>KESALAHAN</strong>: Kata sandi tidak tepat. <a href=\"%s\" title=\"Lupa Password\">Lupa kata sandi Anda</a>?"
+#~ msgid "SI Captcha Options"
+#~ msgstr "Pilihan SI Captcha"
 
+#~ msgid "Options saved."
+#~ msgstr "Pilihan telah disimpan."
+
+#~ msgid "Free PHP Scripts"
+#~ msgstr "Skrip PHP Gratis"
+
+#~ msgid "Contact"
+#~ msgstr "Kontak"
+
+#~ msgid ""
+#~ "If you find this plugin useful to you, please consider making a small "
+#~ "donation to help contribute to further development. Thanks for your kind "
+#~ "support!"
+#~ msgstr ""
+#~ "Jika plugin ini bermanfaat buat Anda, mohon berikan sumbangan untuk "
+#~ "membantu pengembangan lebih lanjut. Terima kasih untuk dukungan Anda!"
+
+#~ msgid ""
+#~ "I have donated to help contribute for the development of this plugin."
+#~ msgstr ""
+#~ "Saya sudah menyumbang untuk membantu kontribusi pengembangan plugin ini."
+
+#~ msgid "Usage"
+#~ msgstr "Penggunaan"
+
+#~ msgid "Your theme must have a"
+#~ msgstr "Theme Anda harus mendukung"
+
+#~ msgid "tag inside your comments.php form. Most themes do."
+#~ msgstr "tag di dalam file form comments.php. Umumnya theme bisa."
+
+#~ msgid ""
+#~ "The best place to locate the tag is before the comment textarea, you may "
+#~ "want to move it if it is below the comment textarea, or the captcha image "
+#~ "and captcha code entry might display after the submit button."
+#~ msgstr ""
+#~ "Tempat terbaik untuk menempatkan tag tersebut sebelum textarea komentar, "
+#~ "Anda mungkin ingin memindahkannya jika dia di bawah textarea komentar, "
+#~ "atau entri gambar captcha dan kode captcha dapat ditampilkan setelah "
+#~ "tombol Submit."
+
+#~ msgid "Options"
+#~ msgstr "Pilihan"
+
+#~ msgid "Update Options"
+#~ msgstr "Pilihan Update"
+
+#~ msgid "CAPTCHA Support Test:"
+#~ msgstr "Tes Dukungan CAPTCHA:"
+
+#~ msgid "Test if your PHP installation will support the CAPTCHA"
+#~ msgstr "Tes jika installasi PHP Anda mendukung CAPTCHA"
+
+#~ msgid "CAPTCHA on Login Form:"
+#~ msgstr "CAPTCHA pada Form Login:"
+
+#~ msgid "Enable CAPTCHA on the login form."
+#~ msgstr "Aktifkan CAPTCHA pada form login."
+
+#~ msgid ""
+#~ "The Login form captcha is not enabled by default because it might be "
+#~ "annoying to users. Only enable it if you are having spam problems related "
+#~ "to bots automatically logging in."
+#~ msgstr ""
+#~ "Captcha di form login tidak diaktifkan secara standar karena dapat "
+#~ "menyulitkan pengguna. Hanya aktifkan jika Anda memiliki masalah spam "
+#~ "terkait dengan bots yang otomatis dapat masuk."
+
+#~ msgid "CAPTCHA on Register Form:"
+#~ msgstr "CAPTCHA pada Form Registrasi:"
+
+#~ msgid "Enable CAPTCHA on the register form."
+#~ msgstr "Aktifkan CAPTCHA pada form pendaftaran."
+
+#~ msgid "CAPTCHA on Comment Form:"
+#~ msgstr "CAPTCHA pada Form Komentar:"
+
+#~ msgid "Enable CAPTCHA on the comment form."
+#~ msgstr "Aktifkan CAPTCHA pada form komentar."
+
+#~ msgid "Hide CAPTCHA for"
+#~ msgstr "Sembunyikan CAPTCHA untuk"
+
+#~ msgid "registered"
+#~ msgstr "terdaftar"
+
+#~ msgid "users who can:"
+#~ msgstr "pengguna yang dapat:"
+
+#~ msgid "CSS class name for CAPTCHA input field on the comment form"
+#~ msgstr "Nama class CSS untuk field masukan CAPTCHA pada form komentar"
+
+#~ msgid ""
+#~ "(Enter a CSS class name only if your theme uses one for comment text "
+#~ "inputs. Default is blank for none.)"
+#~ msgstr ""
+#~ "(Masukkan nama class CSS hanya jika theme Anda menggunakannya untuk "
+#~ "masukan teks komentar. Standarnya kosong untuk tidak ada.)"
+
+#~ msgid "Comment Form Rearrange:"
+#~ msgstr "Pengaturan Kembali Form Komentar:"
+
+#~ msgid ""
+#~ "Change the display order of the catpcha input field on the comment form."
+#~ msgstr "Ganti urutan tampilan field masukan captcha pada form komentar."
+
+#~ msgid "Problem:"
+#~ msgstr "Permasalahan:"
+
+#~ msgid ""
+#~ "Sometimes the captcha image and captcha input field are displayed AFTER "
+#~ "the submit button on the comment form."
+#~ msgstr ""
+#~ "Kadang-kadang gambar captcha dan field masukan captcha ditampilkan "
+#~ "SETELAH tombol Submit pada form komentar."
+
+#~ msgid "Fix:"
+#~ msgstr "Perbaikan:"
+
+#~ msgid "Edit your current theme comments.php file and locate this line:"
+#~ msgstr "Ubah file comments.php theme Anda dan cari baris ini:"
+
+#~ msgid ""
+#~ "This tag is exactly where the captcha image and captcha code entry will "
+#~ "display on the form, so move the line to BEFORE the comment textarea, "
+#~ "uncheck the option box above, and the problem should be fixed."
+#~ msgstr ""
+#~ "Tag ini tepat di mana gambar captcha dan entri kode captcha akan "
+#~ "ditampilkan pada form, jadi pindahkan baris tersebut SEBELUM textarea "
+#~ "komentar, hapus tanda centang pada kotak pilihan di atas, dan masalah "
+#~ "tadi seharusnya bisa diatasi."
+
+#~ msgid ""
+#~ "Alernately you can just check the box above and javascript will attempt "
+#~ "to rearrange it for you, but editing the comments.php, moving the tag, "
+#~ "and unchecking this box is the best solution."
+#~ msgstr ""
+#~ "Alternatif lain, Anda dapat mencentang kotak di atas dan javascript akan "
+#~ "berusaha mengatur kembali untuk Anda, tapi mengubah comments.php, "
+#~ "memindahkan tag, dan menghapus tanda centang pada kotak di atas adalah "
+#~ "solusi yang terbaik."
+
+#~ msgid ""
+#~ "Why is it better to uncheck this and move the tag? because the XHTML will "
+#~ "no longer validate on the comment page if it is checked."
+#~ msgstr ""
+#~ "Mengapa lebih baik menghapus tanda centang dan memindahkan tag tersebut? "
+#~ "Karena XHMTL tidak lagi memvalidasi halaman komentar jika dia dicentang."
+
+#~ msgid "CAPTCHA Options:"
+#~ msgstr "Pilihan CAPTCHA:"
+
+#~ msgid "Enable Flash Audio for the CAPTCHA."
+#~ msgstr "Aktifkan Audio Flash untuk CAPTCHA."
+
+#~ msgid "Accessibility:"
+#~ msgstr "Aksebilitas:"
+
+#~ msgid "Enable aria-required tags for screen readers"
+#~ msgstr "Aktifkan tag aria-required untuk layar pembaca."
+
+#~ msgid ""
+#~ "aria-required is a form input WAI ARIA tag. Screen readers use it to "
+#~ "determine which fields are required. Enabling this is good for "
+#~ "accessability, but will cause the HTML to fail the W3C Validation (there "
+#~ "is no attribute \"aria-required\"). WAI ARIA attributes are soon to be "
+#~ "accepted by the HTML validator, so you can safely ignore the validation "
+#~ "error it will cause."
+#~ msgstr ""
+#~ "aria-required adalah sebuah tag masukan form WAI ARIA. Layar pembaca "
+#~ "menggunakannya untuk menentukan field yang dibutuhkan. Mengaktifkan hal "
+#~ "ini baik untuk kemampuan pengaksesan, tapi akan menyebabkan HTML gagal "
+#~ "melakukan Validasi W3C (tidak ada atribut \"aria-required\"). Atribut WAI "
+#~ "ARIA akan segera diterima oleh pemvalidasi HTML, sehingga Anda dapat "
+#~ "mengabaikannya supaya tidak menyebabkan error."
+
+#~ msgid "Click for Advanced Options"
+#~ msgstr "Klik untuk Pilihan Mahir"
+
+#~ msgid "Inline CSS Style:"
+#~ msgstr "Gaya CSS Dalam Baris:"
+
+#~ msgid "Reset the styles to default."
+#~ msgstr "Riset gaya ke standar."
+
+#~ msgid "CSS style for CAPTCHA div:"
+#~ msgstr "Gaya CSS untuk CAPTCHA div:"
+
+#~ msgid "CSS style for CAPTCHA image:"
+#~ msgstr "Gaya CSS untuk CAPTCHA image:"
+
+#~ msgid "CSS style for Audio image:"
+#~ msgstr "Gaya CSS untuk Audio image:"
+
+#~ msgid "CSS style for Refresh image:"
+#~ msgstr "Gaya CSS untuk Refresh image:"
+
+#~ msgid "Text Labels:"
+#~ msgstr "Label Teks:"
+
+#~ msgid ""
+#~ "Some people wanted to change the text labels. These fields can be filled "
+#~ "in to override the standard text labels."
+#~ msgstr ""
+#~ "Beberapa orang menginginkan perubahan label teks. Field-field ini dapat "
+#~ "diisi untuk menimpa label teks standar."
+
+#~ msgid "CAPTCHA Audio"
+#~ msgstr "Audio CAPTCHA"
+
+#~ msgid "More WordPress plugins by Mike Challis:"
+#~ msgstr "Plugin WordPress lainnya oleh Mike Challis:"
+
+#~ msgid "Fast and Secure Contact Form"
+#~ msgstr "Fast and Secure Contact Form"
+
+#~ msgid "All registered users"
+#~ msgstr "Semua pengguna terdaftar"
+
+#~ msgid "Edit posts"
+#~ msgstr "Ubah tulisan"
+
+#~ msgid "Publish Posts"
+#~ msgstr "Publikasikan Tulisan"
+
+#~ msgid "Moderate Comments"
+#~ msgstr "Moderasi Komentar"
+
+#~ msgid "Administer site"
+#~ msgstr "Pengaturan Situs"
+
+#~ msgid ""
+#~ "ERROR: si-captcha.php plugin says GD image support not detected in PHP!"
+#~ msgstr ""
+#~ "KESALAHAN: plugin si-captcha.php mengatakan bahwa dukungan GD image tidak "
+#~ "terdeteksi di PHP!"
+
+#~ msgid ""
+#~ "Contact your web host and ask them why GD image support is not enabled "
+#~ "for PHP."
+#~ msgstr ""
+#~ "Hubungi hosting situs anda dan tanyakan mereka mengapa dukungan GD image "
+#~ "tidak diaktifkan untuk PHP."
+
+#~ msgid ""
+#~ "ERROR: si-captcha.php plugin says imagepng function not detected in PHP!"
+#~ msgstr ""
+#~ "KESALAHAN: plugin si-captcha.php mengatakan bahwa fungsi imagepng tidak "
+#~ "terdeteksi di PHP!"
+
+#~ msgid ""
+#~ "Contact your web host and ask them why imagepng function is not enabled "
+#~ "for PHP."
+#~ msgstr ""
+#~ "Hubungai hosting situs Anda dan tanyakan mereka mengapa fungsi imagepng "
+#~ "tidak diaktifkan di PHP."
+
+#~ msgid "ERROR: si-captcha.php plugin says captcha_library not found."
+#~ msgstr ""
+#~ "KESALAHAN: plugin si-captcha.php mengatakan bahwa captcha_library tidak "
+#~ "ditemukan."
+
+#~ msgid ""
+#~ "Could not read CAPTCHA cookie. Make sure you have cookies enabled and not "
+#~ "blocking in your web browser settings. Or another plugin is conflicting. "
+#~ "See plugin FAQ."
+#~ msgstr ""
+#~ "Tidak dapat membaca cookie CAPTCHA. Pastikan Anda telah mengaktifkan "
+#~ "cookies dan tidak diblok di pengaturan browser Anda. Atau plugin lainnya "
+#~ "bentrok. Lihat FAQ plugin."
+
+#~ msgid "Please complete the CAPTCHA."
+#~ msgstr "Silahkan isi CAPTCHA."
+
+#~ msgid "That CAPTCHA was incorrect. Make sure you have not disabled cookies."
+#~ msgstr "CAPTCHA tidak benar. Pastikan Anda tidak menonaktifkan cookies."
+
+#~ msgid ""
+#~ "Error: You did not enter a Captcha phrase. Press your browsers back "
+#~ "button and try again."
+#~ msgstr ""
+#~ "Kesalahan: Anda tidak memasukkan frase Captcha. Tekan tombol Back di "
+#~ "browser Anda lalu coba lagi."
+
+#~ msgid ""
+#~ "Error: You entered in the wrong Captcha phrase. Press your browsers back "
+#~ "button and try again."
+#~ msgstr ""
+#~ "Kesalahan: Anda memasukkan frase Captcha yang salah. Tekan tombol Back di "
+#~ "browser Anda lalu coba lagi."
+
+#~ msgid "<strong>ERROR</strong>: The username field is empty."
+#~ msgstr "<strong>KESALAHAN</strong>: Field nama pengguna masih kosong."
+
+#~ msgid "<strong>ERROR</strong>: The password field is empty."
+#~ msgstr "<strong>KESALAHAN</strong>: Field kata sandi masih kosong."
+
+#~ msgid ""
+#~ "<strong>ERROR</strong>: Invalid username. <a href=\"%s\" title=\"Password "
+#~ "Lost and Found\">Lost your password</a>?"
+#~ msgstr ""
+#~ "<strong>KESALAHAN</strong>: Nama pengguna tidak valid. <a href=\"%s\" "
+#~ "title=\"Lupa Password\">Lupa kata sandi Anda</a>?"
+
+#~ msgid ""
+#~ "<strong>ERROR</strong>: Incorrect password. <a href=\"%s\" title="
+#~ "\"Password Lost and Found\">Lost your password</a>?"
+#~ msgstr ""
+#~ "<strong>KESALAHAN</strong>: Kata sandi tidak tepat. <a href=\"%s\" title="
+#~ "\"Lupa Password\">Lupa kata sandi Anda</a>?"

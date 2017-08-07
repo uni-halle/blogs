@@ -10,393 +10,867 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.0.6\n"
+"Project-Id-Version: si-captcha\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/si-captcha-for-wordpress\n"
-"POT-Creation-Date: 2008-12-14 17:48+0000\n"
-"PO-Revision-Date: 2009-10-12 17:40+0100\n"
+"POT-Creation-Date: 2017-07-25 21:37-0400\n"
+"PO-Revision-Date: 2017-07-25 21:37-0400\n"
 "Last-Translator: Radovan Fišer <rfiser@gmail.com>\n"
 "Language-Team: \n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-KeywordsList: __;_e;_n\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: si-captcha.php:36
-#: si-captcha.php:37
-#: si-captcha.php:40
-#: si-captcha.php:180
-msgid "SI Captcha Options"
-msgstr "Nastavení SI Captcha"
-
-#: si-captcha.php:116
+#: si-captcha-admin.php:15
 msgid "You do not have permissions for managing this option"
 msgstr "Nemáte uživatelská práva k nastavení této položky"
 
-#: si-captcha.php:177
-msgid "Options saved."
-msgstr "Nastavení bylo uloženo"
+#: si-captcha-admin.php:93
+msgid "Your settings have been saved."
+msgstr ""
 
-#: si-captcha.php:193
+#: si-captcha-admin.php:96 si-captcha.php:54
+msgid "SI Captcha Anti-Spam settings"
+msgstr ""
+
+#: si-captcha-admin.php:124
+msgid ""
+"SI Captcha Anti-Spam is Network Activated and Main site configured. It is "
+"not necessary to change any settings here."
+msgstr ""
+
+#: si-captcha-admin.php:125
+msgid ""
+"Settings are controlled at the main site and are Networkwide. If you want "
+"individual sites to each have their own unique settings: go to the main site "
+"SI Captcha Anti-Spam settings and enable \"Allow Multisite network activated "
+"sites to have individual SI Captcha Anti-Spam settings\"."
+msgstr ""
+
+#: si-captcha-admin.php:162
+#, php-format
+msgid "Downloaded %s times"
+msgstr ""
+
+#: si-captcha-admin.php:168 si-captcha-admin.php:176
+#, php-format
+msgid "(Average rating based on %s ratings)"
+msgstr ""
+
+#: si-captcha-admin.php:170
+msgid "5 stars"
+msgstr ""
+
+#: si-captcha-admin.php:171
+msgid "4 stars"
+msgstr ""
+
+#: si-captcha-admin.php:172
+msgid "3 stars"
+msgstr ""
+
+#: si-captcha-admin.php:173
+msgid "2 stars"
+msgstr ""
+
+#: si-captcha-admin.php:174
+msgid "1 star"
+msgstr ""
+
+#: si-captcha-admin.php:176
+msgid "rate"
+msgstr ""
+
+#: si-captcha-admin.php:187
+#, php-format
+msgid "a newer version is available: %s"
+msgstr ""
+
+#: si-captcha-admin.php:189
+#, php-format
+msgid "A newer version of SI Captcha Anti-Spam is available: %s"
+msgstr ""
+
+#: si-captcha-admin.php:192
+msgid "(latest version)"
+msgstr ""
+
+#: si-captcha-admin.php:198
+msgid "Version:"
+msgstr ""
+
+#: si-captcha-admin.php:199
 msgid "Changelog"
 msgstr "Seznam změn"
 
-#: si-captcha.php:194
+#: si-captcha-admin.php:200
 msgid "FAQ"
 msgstr "FAQ"
 
-#: si-captcha.php:195
+#: si-captcha-admin.php:201 si-captcha-admin.php:572
 msgid "Rate This"
 msgstr "Ohodnotit"
 
-#: si-captcha.php:196
+#: si-captcha-admin.php:202 si-captcha.php:60
 msgid "Support"
 msgstr "Podpora"
 
-#: si-captcha.php:197
-#: si-captcha.php:205
+#: si-captcha-admin.php:203 si-captcha-admin.php:549 si-captcha.php:61
 msgid "Donate"
 msgstr "Odměnit"
 
-#: si-captcha.php:198
-msgid "Free PHP Scripts"
-msgstr "PHP skripty zdarma"
+#: si-captcha-admin.php:204
+msgid "Mikes Free PHP Scripts"
+msgstr ""
 
-#: si-captcha.php:199
-msgid "Contact"
-msgstr "Kontakt"
+#: si-captcha-admin.php:216
+msgid ""
+"<strong>Individual Site Settings Enabled</strong><br />Note: SI Captcha Anti-"
+"Spam is not Network Activated, this means each site will have individual SI "
+"Captcha Anti-Spam settings."
+msgstr ""
 
-#: si-captcha.php:216
-msgid "If you find this plugin useful to you, please consider making a small donation to help contribute to further development. Thanks for your kind support!"
-msgstr "Pokud je pro vás plugin užitečný, zvažte poslání menší finanční odměny jeho autorovi, čímž pomůžete dalšímu vývoji tohoto pluginu. Díky za laskavou pomoc!"
+#: si-captcha-admin.php:217
+msgid ""
+"If you want it this way, that is OK, but if you want the master site to "
+"control all the sites: go to the main site, then Network Activate this "
+"plugin, then go to SI Captcha Anti-Spam settings and disable \"Allow "
+"Multisite network activated sites to have individual SI Captcha Anti-Spam "
+"settings\"."
+msgstr ""
 
-#: si-captcha.php:237
-msgid "I have donated to help contribute for the development of this plugin."
-msgstr "Poslal(a) jsem autorovi odměnu, abych pomohl(a) s vývojem tohoto pluginu."
+#: si-captcha-admin.php:224 si-captcha-admin.php:528
+msgid "Save Changes"
+msgstr ""
 
-#: si-captcha.php:240
-msgid "Usage"
-msgstr "Použití"
+#: si-captcha-admin.php:227
+msgid ""
+"If you do not like image captcha and code entry, you can uninstall this "
+"plugin and try my new plugin:"
+msgstr ""
 
-#: si-captcha.php:243
-msgid "Your theme must have a"
-msgstr "Vaše šablona musí mít kus kódu"
+#: si-captcha-admin.php:227
+msgid "Fast Secure reCAPTCHA with Google No CAPTCHA reCAPTCHA"
+msgstr ""
 
-#: si-captcha.php:243
-msgid "tag inside your comments.php form. Most themes do."
-msgstr "v souboru comments.php u formuláře. Většina šablon ho tam má."
+#: si-captcha-admin.php:236
+msgid "Enable CAPTCHA:"
+msgstr ""
 
-#: si-captcha.php:244
-msgid "The best place to locate the tag is before the comment textarea, you may want to move it if it is below the comment textarea, or the captcha image and captcha code entry might display after the submit button."
-msgstr "Nejlepší je umístit kód před políčko na psaní komentáře textarea. Můžete ho ale umístit i jinam, zejména pokud se vám kontrolní kód (captcha) ukazuje za tlačítkem pro odeslání formuláře. "
+#: si-captcha-admin.php:240
+msgid "Login form."
+msgstr ""
 
-#: si-captcha.php:247
-msgid "Options"
-msgstr "Nastavení"
-
-#: si-captcha.php:250
-#: si-captcha.php:374
-msgid "Update Options"
-msgstr "Uložit nastavení"
-
-#: si-captcha.php:257
-msgid "CAPTCHA Support Test:"
-msgstr "Test fungování CAPTCHA"
-
-#: si-captcha.php:259
-msgid "Test if your PHP installation will support the CAPTCHA"
-msgstr "Vyzkoušejte, jestli PHP na vašem serveru podporuje CAPTCHA"
-
-#: si-captcha.php:264
-msgid "CAPTCHA on Login Form:"
-msgstr "CAPTCHA na přihlašovacím formuláři"
-
-#: si-captcha.php:267
-msgid "Enable CAPTCHA on the login form."
-msgstr "Povolit CAPTCHU na přihlašovacím formuláři"
-
-#: si-captcha.php:268
-#: si-captcha.php:305
-#: si-captcha.php:325
-#: si-captcha.php:356
-msgid "Click for Help!"
-msgstr "Klepni pro zobrazení nápovědy"
-
-#: si-captcha.php:268
-#: si-captcha.php:305
-#: si-captcha.php:325
-#: si-captcha.php:356
+#: si-captcha-admin.php:241 si-captcha-admin.php:249 si-captcha-admin.php:257
+#: si-captcha-admin.php:265 si-captcha-admin.php:273 si-captcha-admin.php:281
+#: si-captcha-admin.php:289 si-captcha-admin.php:297 si-captcha-admin.php:305
+#: si-captcha-admin.php:313 si-captcha-admin.php:321 si-captcha-admin.php:329
+#: si-captcha-admin.php:346 si-captcha-admin.php:365 si-captcha-admin.php:383
+#: si-captcha-admin.php:391 si-captcha-admin.php:428 si-captcha-admin.php:448
+#: si-captcha-admin.php:498
 msgid "help"
 msgstr "pomoc"
 
-#: si-captcha.php:270
-msgid "The Login form captcha is not enabled by default because it might be annoying to users. Only enable it if you are having spam problems related to bots automatically logging in."
-msgstr "CAPTCHA na přihlašovacím formuláři není nastavena z výroby, protože její vyplňování při každém přihlášení může být poněkud otravné. Povolte ji, pouze pokud máte problémy se spamujícími roboty."
-
-#: si-captcha.php:276
-msgid "CAPTCHA on Register Form:"
-msgstr "CAPTCHA na registračním formuláři"
-
-#: si-captcha.php:279
-msgid "Enable CAPTCHA on the register form."
-msgstr "Povolit CAPTCHU na registračním formuláři"
-
-#: si-captcha.php:284
-msgid "CAPTCHA on Comment Form:"
-msgstr "CAPTCHA u formuláře na komentáře"
-
-#: si-captcha.php:287
-msgid "Enable CAPTCHA on the comment form."
-msgstr "Povolit CAPTCHU na formuláři pro psaní komentářů"
-
-#: si-captcha.php:290
-msgid "Hide CAPTCHA for"
-msgstr "Skrýt CAPTCHU pro"
-
-#: si-captcha.php:291
-msgid "registered"
-msgstr "registrované"
-
-#: si-captcha.php:292
-msgid "users who can:"
-msgstr "uživatele, kteří mohou "
-
-#: si-captcha.php:295
-msgid "CSS class name for CAPTCHA input field on the comment form"
-msgstr "CSS třída pro políčko formuláře, do něhož se píše kontrolní kód"
-
-#: si-captcha.php:296
-msgid "(Enter a CSS class name only if your theme uses one for comment text inputs. Default is blank for none.)"
-msgstr "(Napište název CSS třídy, pokud vaše šablona nějaké používá pro textová políčka formulářů, jinak ne.)"
-
-#: si-captcha.php:301
-msgid "Comment Form Rearrange:"
-msgstr "Změna uspořádání komentářového formuláře"
-
-#: si-captcha.php:304
-msgid "Change the display order of the catpcha input field on the comment form."
-msgstr "Změnit umístění CATPCHA na formuláři pro psaní komentářů"
-
-#: si-captcha.php:307
-msgid "Problem:"
-msgstr "Problém"
-
-#: si-captcha.php:308
-msgid "Sometimes the captcha image and captcha input field are displayed AFTER the submit button on the comment form."
-msgstr "Někdy se stane, že obrázek CAPTCHA a políčko input jsou zobrazeny až za tlačítkem submit pro odeslání formuláře."
-
-#: si-captcha.php:309
-msgid "Fix:"
-msgstr "Řešení:"
-
-#: si-captcha.php:310
-msgid "Edit your current theme comments.php file and locate this line:"
-msgstr "Změňte pár řádku v šabloně comments.php. Najděte tento řádek:"
-
-#: si-captcha.php:312
-msgid "This tag is exactly where the captcha image and captcha code entry will display on the form, so move the line to BEFORE the comment textarea, uncheck the option box above, and the problem should be fixed."
-msgstr "Přesně na místo tohoto kódu přijde obrázek CAPTCHA  a políčko input. Přesuňte tedy tento kód před značku textarea a problém vy měl být vyřešen. Políčko uvedené výše nezaškrtávejte."
-
-#: si-captcha.php:313
-msgid "Alernately you can just check the box above and javascript will attempt to rearrange it for you, but editing the comments.php, moving the tag, and unchecking this box is the best solution."
-msgstr "Anebo můžete zaškrtnout výše uvedené políčko a javascript se pokusí formulář přeskládat automaticky. Ruční úprava souboru comments.php popsaná výše je ale sázka na jistotu. "
-
-#: si-captcha.php:314
-msgid "Why is it better to uncheck this and move the tag? because the XHTML will no longer validate on the comment page if it is checked."
-msgstr "Proč je lepší ruční úprava? Protože s tímto javascriptem vaše stránka už nebude XHTML validní."
-
-#: si-captcha.php:321
-msgid "Accessibility:"
-msgstr "Přístupnost:"
-
-#: si-captcha.php:324
-msgid "Enable aria-required tags for screen readers"
-msgstr "Povolit značky, které pro čtecí zařízení vyžaduje ARIA."
-
-#: si-captcha.php:327
-msgid "aria-required is a form input WAI ARIA tag. Screen readers use it to determine which fields are required. Enabling this is good for accessability, but will cause the HTML to fail the W3C Validation (there is no attribute \"aria-required\"). WAI ARIA attributes are soon to be accepted by the HTML validator, so you can safely ignore the validation error it will cause."
-msgstr "Tato možnost umožní použít fomrulářové značky WAI ARIA. Čtecí zařízení díky nim poznají, které políčko musí být vyplněno. Povolení této možnosti je dobré přo přístupnost, ale způsobí ztrátu HTML validity (díky tomu, že neexistuje zde použitý atribut \"aria-required\"). V budoucnu by ale tento atribut měl být zaveden, takže můžete problém s validací směle ignorovat.  "
-
-#: si-captcha.php:334
-msgid "Click for Advanced Options"
-msgstr "Klepni pro pokročilé nastavení"
-
-#: si-captcha.php:340
-msgid "Inline CSS Style:"
-msgstr "Inline CSS"
-
-#: si-captcha.php:344
-msgid "Reset the styles to default."
-msgstr "Obnovit tovární nastavení kaskádových stylů"
-
-#: si-captcha.php:346
-msgid "CSS style for CAPTCHA image:"
-msgstr "CSS styl pro CAPTCHA obrázek"
-
-#: si-captcha.php:347
-msgid "CSS style for Audio image:"
-msgstr "CSS styl pro obrázek s reproduktorem"
-
-#: si-captcha.php:348
-msgid "CSS style for Refresh image:"
-msgstr "CSS styl pro obrázek pro načtení jiného kódu"
-
-#: si-captcha.php:354
-msgid "Text Labels:"
-msgstr "Popisky"
-
-#: si-captcha.php:358
-msgid "Some people wanted to change the text labels. These fields can be filled in to override the standard text labels."
-msgstr "Zde vyplněné položky přepíšou tovární nastavení"
-
-#: si-captcha.php:361
-#: si-captcha.php:469
-#: si-captcha.php:520
-#: si-captcha.php:551
-#: si-captcha.php:584
-#: si-captcha.php:614
-#: si-captcha.php:646
-msgid "CAPTCHA Code"
-msgstr "Opište kontrolní kód"
-
-#: si-captcha.php:362
-#: si-captcha.php:801
-#: si-captcha.php:803
-msgid "CAPTCHA Image"
-msgstr "Kontrolní text"
-
-#: si-captcha.php:363
-#: si-captcha.php:806
-#: si-captcha.php:809
-msgid "CAPTCHA Audio"
-msgstr "Přečíst kontrolní kód"
-
-#: si-captcha.php:364
-#: si-captcha.php:815
-#: si-captcha.php:818
-msgid "Refresh Image"
-msgstr "Ukaž jiný obrázek, tento je nečitelný"
-
-#: si-captcha.php:379
-msgid "More WordPress plugins by Mike Challis:"
-msgstr "Další pluginy pro Wordpress od Mika Challise:"
-
-#: si-captcha.php:381
-msgid "Fast and Secure Contact Form"
+#: si-captcha-admin.php:243
+msgid "Require that the user pass a CAPTCHA test before login."
 msgstr ""
 
-#: si-captcha.php:382
-msgid "SI CAPTCHA Anti-Spam"
-msgstr "SI CAPTCHA Anti-Spam"
-
-#: si-captcha.php:383
-msgid "Visitor Maps and Who's Online"
+#: si-captcha-admin.php:248
+msgid "Register form."
 msgstr ""
 
-#: si-captcha.php:393
-msgid "All registered users"
-msgstr "Všicni registrovaní uživatelé"
+#: si-captcha-admin.php:251
+msgid "Require that the user pass a CAPTCHA test before registering."
+msgstr ""
 
-#: si-captcha.php:394
-msgid "Edit posts"
-msgstr "Upravovat příspěvky"
+#: si-captcha-admin.php:256
+msgid "Lost password form."
+msgstr ""
 
-#: si-captcha.php:395
-msgid "Publish Posts"
-msgstr "Publikovat příspěvky"
+#: si-captcha-admin.php:259
+msgid "Require that the user pass a CAPTCHA test before lost password request."
+msgstr ""
 
-#: si-captcha.php:396
-msgid "Moderate Comments"
-msgstr "Spravovat komentáře"
+#: si-captcha-admin.php:264
+msgid "Comment form."
+msgstr ""
 
-#: si-captcha.php:397
-msgid "Administer site"
-msgstr "Spravovat celý web"
+#: si-captcha-admin.php:267
+msgid "Require that the user pass a CAPTCHA test before posting comments."
+msgstr ""
 
-#: si-captcha.php:415
-msgid "ERROR: si-captcha.php plugin says GD image support not detected in PHP!"
-msgstr "ERROR: plugin říká, že v PHP nebyla zjištěna podpora GD!"
+#: si-captcha-admin.php:272
+msgid "Multisite register form."
+msgstr ""
 
-#: si-captcha.php:416
-msgid "Contact your web host and ask them why GD image support is not enabled for PHP."
-msgstr "Kontaktujte svůj webhosting a zeptejte se na podporu GD v PHP."
+#: si-captcha-admin.php:275
+msgid ""
+"Require that the user pass a CAPTCHA test before registering in Multisite."
+msgstr ""
 
-#: si-captcha.php:420
-msgid "ERROR: si-captcha.php plugin says imagepng function not detected in PHP!"
-msgstr "ERROR: plugin říká, že v PHP nenašel funkci imagepng!"
+#: si-captcha-admin.php:280
+msgid "BuddyPress register form."
+msgstr ""
 
-#: si-captcha.php:421
-msgid "Contact your web host and ask them why imagepng function is not enabled for PHP."
-msgstr "Kontaktujte svůj webhosting a zeptejte se na podporu imagepng v PHP."
+#: si-captcha-admin.php:283
+msgid ""
+"Require that the user pass a CAPTCHA test before registering in BuddyPress."
+msgstr ""
 
-#: si-captcha.php:425
-msgid "ERROR: si-captcha.php plugin says captcha_library not found."
-msgstr "ERROR: plugin říká, že nenašel captcha_library."
+#: si-captcha-admin.php:288
+msgid "wpForo Forum register form."
+msgstr ""
 
-#: si-captcha.php:488
-msgid "Submit Comment"
-msgstr "Odeslat komentář"
+#: si-captcha-admin.php:291
+msgid ""
+"Require that the user pass a CAPTCHA test before registering in wpForo Forum."
+msgstr ""
 
-#: si-captcha.php:665
-#: si-captcha.php:694
-#: si-captcha.php:723
-#: si-captcha.php:773
-#: si-captcha.php:884
-msgid "Could not read CAPTCHA cookie. Make sure you have cookies enabled and not blocking in your web browser settings. Or another plugin is conflicting. See plugin FAQ."
-msgstr "Nepodařilo se načíst CAPTCHA cookie. Ujistěte se, že máte ve svém prohlížeči povolena cookies. Nebo že by konflikt s jiným pluginem? Podívejte se do sekce FAQ."
+#: si-captcha-admin.php:296
+msgid "WooCommerce checkout."
+msgstr ""
 
-#: si-captcha.php:669
-#: si-captcha.php:698
-#: si-captcha.php:727
-#: si-captcha.php:877
-msgid "Please complete the CAPTCHA."
-msgstr "Vyplňte prosím kontrolní kód CAPTCHA"
+#: si-captcha-admin.php:299
+msgid ""
+"Require that the user pass a CAPTCHA test on WooCommerce checkout form when "
+"not logged in."
+msgstr ""
 
-#: si-captcha.php:681
-#: si-captcha.php:710
-#: si-captcha.php:740
-#: si-captcha.php:896
-msgid "That CAPTCHA was incorrect. Make sure you have not disabled cookies."
-msgstr "Kontrolní kód jste zadali chybně. Ujistěte se, že ve svém prohlížeči nemáte zakázána cookies."
+#: si-captcha-admin.php:304
+msgid "Jetpack Contact Form."
+msgstr ""
 
-#: si-captcha.php:694
-#: si-captcha.php:698
-#: si-captcha.php:710
-#: si-captcha.php:723
-#: si-captcha.php:727
-#: si-captcha.php:740
-#: si-captcha.php:773
-#: si-captcha.php:877
-#: si-captcha.php:884
-#: si-captcha.php:896
+#: si-captcha-admin.php:307
+msgid "Require that the user pass a CAPTCHA test on Jetpack Contact Form."
+msgstr ""
+
+#: si-captcha-admin.php:312
+msgid "bbPress New Topic Form."
+msgstr ""
+
+#: si-captcha-admin.php:315
+msgid "Require that the user pass a CAPTCHA test on bbPress New Topic Form."
+msgstr ""
+
+#: si-captcha-admin.php:320
+msgid "bbPress Reply to Topic Form."
+msgstr ""
+
+#: si-captcha-admin.php:323
+msgid ""
+"Require that the user pass a CAPTCHA test on bbPress Reply to Topic Form."
+msgstr ""
+
+#: si-captcha-admin.php:328
+msgid "No comment form CAPTCHA for logged in users"
+msgstr ""
+
+#: si-captcha-admin.php:331
+msgid "Logged in users will not have to pass a CAPTCHA test on comments form."
+msgstr ""
+
+#: si-captcha-admin.php:345 si-captcha-admin.php:364
+msgid ""
+"Allow Multisite network activated sites to have individual SI Captcha Anti-"
+"Spam settings."
+msgstr ""
+
+#: si-captcha-admin.php:348 si-captcha-admin.php:367
+msgid ""
+"Enabling this setting allows: individual site settings for this plugin on "
+"multisite with network activation turned on. The default is for all sites to "
+"use the master site settings."
+msgstr ""
+
+#: si-captcha-admin.php:358
+msgid ""
+"SI Captcha Anti-Spam is Network Activated and individual site configured. "
+"The next setting can only be modified by the main site settings menu."
+msgstr ""
+
+#: si-captcha-admin.php:363
+msgid "Main site admin enabled:"
+msgstr ""
+
+#: si-captcha-admin.php:363
+msgid "Main site admin disabled:"
+msgstr ""
+
+#: si-captcha-admin.php:378
+msgid "Style:"
+msgstr ""
+
+#: si-captcha-admin.php:382
+msgid "Enable small size CAPTCHA image."
+msgstr ""
+
+#: si-captcha-admin.php:385
+msgid "Makes the CAPTCHA image size small instead of large."
+msgstr ""
+
+#: si-captcha-admin.php:390
+msgid "Enable external CAPTCHA CSS."
+msgstr ""
+
+#: si-captcha-admin.php:393
+msgid ""
+"Enable to not load this plugin CSS into wp_head. This allows you to load "
+"your own modified CSS into your theme instead."
+msgstr ""
+
+#: si-captcha-admin.php:395
+msgid "External Style Sheet CSS starting point for custom setup:"
+msgstr ""
+
+#: si-captcha-admin.php:410
+msgid "CAPTCHA input label position on the comment form:"
+msgstr ""
+
+#: si-captcha-admin.php:414
+msgid "input-label-required"
+msgstr ""
+
+#: si-captcha-admin.php:415
+msgid "label-required-input"
+msgstr ""
+
+#: si-captcha-admin.php:416
+msgid "label-required-linebreak-input"
+msgstr ""
+
+#: si-captcha-admin.php:417
+msgid "label-input-required"
+msgstr ""
+
+#: si-captcha-admin.php:430
+msgid ""
+"Changes position of the CAPTCHA input labels on the comment form. Some "
+"themes have different label positions on the comment form. After changing "
+"this setting, be sure to view the comments to verify the setting is correct."
+msgstr ""
+
+#: si-captcha-admin.php:442
+msgid "Options:"
+msgstr ""
+
+#: si-captcha-admin.php:447
+msgid "Enable PHP sessions."
+msgstr ""
+
+#: si-captcha-admin.php:450
+msgid ""
+"Enables PHP session handling. Only enable this if you have CAPTCHA token "
+"errors. Enable this setting to use PHP sessions for the CAPTCHA. PHP "
+"Sessions must be supported by your web host or there may be session errors."
+msgstr ""
+
+#: si-captcha-admin.php:461 si-captcha-admin.php:469
+msgid "There is a problem with the directory"
+msgstr ""
+
+#: si-captcha-admin.php:463
+msgid ""
+"The directory is not found, a <a href=\"http://codex.wordpress.org/"
+"Changing_File_Permissions\" target=\"_blank\">permissions</a> problem may "
+"have prevented this directory from being created."
+msgstr ""
+
+#: si-captcha-admin.php:465 si-captcha-admin.php:477
+msgid ""
+"Fixing the actual problem is recommended, but you can check this setting on "
+"the SI CAPTCHA options page: \"Use PHP sessions\" and the captcha will work "
+"(if PHP sessions are supported by your web host)."
+msgstr ""
+
+#: si-captcha-admin.php:470
+msgid ""
+"The directory Unwritable (<a href=\"http://codex.wordpress.org/"
+"Changing_File_Permissions\" target=\"_blank\">fix permissions</a>)"
+msgstr ""
+
+#: si-captcha-admin.php:471
+msgid "Permissions are: "
+msgstr ""
+
+#: si-captcha-admin.php:475
+msgid ""
+"Fixing this may require assigning 0755 permissions or higher (e.g. 0777 on "
+"some hosts. Try 0755 first, because 0777 is sometimes too much and will not "
+"work.)"
+msgstr ""
+
+#: si-captcha-admin.php:493
+msgid "Error Messages:"
+msgstr ""
+
+#: si-captcha-admin.php:497
+msgid "Customize Text:"
+msgstr ""
+
+#: si-captcha-admin.php:498
+msgid "Click for Help!"
+msgstr "Klepni pro zobrazení nápovědy"
+
+#: si-captcha-admin.php:500
+msgid ""
+"These fields can be filled in to override the error message that displays "
+"when the form is submitted and the CAPTCHA does not pass validation."
+msgstr ""
+
+#: si-captcha-admin.php:505
+msgid "Required"
+msgstr ""
+
+#: si-captcha-admin.php:506
+msgid "Possible spam bot"
+msgstr ""
+
+#: si-captcha-admin.php:507 si-captcha.php:1188 si-captcha.php:1258
+#: si-captcha.php:1281
+msgid "Wrong CAPTCHA"
+msgstr ""
+
+#: si-captcha-admin.php:508 si-captcha.php:1236 si-captcha.php:1242
+msgid "Empty CAPTCHA"
+msgstr ""
+
+#: si-captcha-admin.php:509 si-captcha.php:1244
+msgid "Missing CAPTCHA token"
+msgstr ""
+
+#: si-captcha-admin.php:510
+msgid "Unreadable CAPTCHA token"
+msgstr ""
+
+#: si-captcha-admin.php:511 si-captcha.php:1268
+msgid "Unreadable CAPTCHA cookie"
+msgstr ""
+
+#: si-captcha-admin.php:512 si-captcha.php:690 si-captcha.php:815
+#: si-captcha.php:930 si-captcha.php:1062 si-captcha.php:1140
 msgid "ERROR"
 msgstr "CHYBA"
 
-#: si-captcha.php:776
-msgid "Error: You did not enter a Captcha phrase. Press your browsers back button and try again."
-msgstr "Error: nevyplnili jste kontrolní kód z obrázku CAPTCHA. Zmáčkněte tlačítko Zpět a zkuste to znovu. "
+#: si-captcha-admin.php:513 si-captcha.php:641 si-captcha.php:720
+#: si-captcha.php:754 si-captcha.php:786 si-captcha.php:851 si-captcha.php:902
+#: si-captcha.php:964 si-captcha.php:1012 si-captcha.php:1041
+#: si-captcha.php:1123 si-captcha.php:1208
+msgid "CAPTCHA Code"
+msgstr "Opište kontrolní kód"
 
-#: si-captcha.php:787
-msgid "Error: You entered in the wrong Captcha phrase. Press your browsers back button and try again."
-msgstr "Error: kontrolní kód jste z obrázku opsali špatně. Zmáčkněte tlačítko Zpět a zkuste to prosím znovu."
+#: si-captcha-admin.php:514
+msgid "CAPTCHA Image"
+msgstr "Kontrolní text"
 
-#: si-captcha.php:833
+#: si-captcha-admin.php:515
+msgid "Refresh Image"
+msgstr "Ukaž jiný obrázek, tento je nečitelný"
+
+#: si-captcha-admin.php:524
+msgid ""
+"I have donated to help contribute for the development of this plugin. This "
+"checkbox makes the donate button go away"
+msgstr ""
+
+#: si-captcha-admin.php:533
+msgid "Don't Forget to Test the CAPTCHA"
+msgstr ""
+
+#: si-captcha-admin.php:536
+msgid ""
+"After installing or updating plugins and themes, be sure to test the CAPTCHA "
+"on each form where it is enabled. It should display, allow actions on valid "
+"code, and block actions on invalid code."
+msgstr ""
+
+#: si-captcha-admin.php:552
+msgid ""
+"If you find this plugin useful to you, please consider making a donation to "
+"help contribute to my time invested and to further development. Thanks for "
+"your kind support!"
+msgstr ""
+
+#: si-captcha-admin.php:553
+msgid "You have 1 message from Mike Challis"
+msgstr ""
+
+#: si-captcha-admin.php:570
+msgid ""
+"Mike Challis says: \"Hello, I have many hours coding this plugin just for "
+"you. Please consider making a donation. If you are not able to, that is OK."
+msgstr ""
+
+#: si-captcha-admin.php:571
+msgid "Please also rate my plugin.\""
+msgstr ""
+
+#: si-captcha-admin.php:574
+msgid "Close this message"
+msgstr ""
+
+#: si-captcha-admin.php:582
+msgid "WordPress plugins by Mike Challis:"
+msgstr ""
+
+#: si-captcha-admin.php:584
+msgid "Fast Secure Contact Form"
+msgstr ""
+
+#: si-captcha-admin.php:585
+msgid "Fast Secure reCAPTCHA"
+msgstr ""
+
+#: si-captcha-admin.php:586
+msgid "SI CAPTCHA Anti-Spam"
+msgstr "SI CAPTCHA Anti-Spam"
+
+#: si-captcha-admin.php:587
+msgid "Visitor Maps and Who's Online"
+msgstr ""
+
+#: si-captcha.php:54
+msgid "SI Captcha Anti-Spam"
+msgstr ""
+
+#: si-captcha.php:73
 msgid "Settings"
 msgstr "Nastavení"
 
-#: si-captcha.php:871
-msgid "<strong>ERROR</strong>: The username field is empty."
-msgstr "<strong>ERROR</strong>: pole s uživatelským jménem je prázdné."
+#: si-captcha.php:304
+msgid "ERROR: si-captcha.php plugin: GD image support not detected in PHP!"
+msgstr ""
 
-#: si-captcha.php:874
-msgid "<strong>ERROR</strong>: The password field is empty."
-msgstr "<strong>ERROR</strong>: pole s heslem je prázdné."
+#: si-captcha.php:305
+msgid "Contact your web host and ask them to enable GD image support for PHP."
+msgstr ""
 
-#: si-captcha.php:904
+#: si-captcha.php:309
+msgid "ERROR: si-captcha.php plugin: imagepng function not detected in PHP!"
+msgstr ""
+
+#: si-captcha.php:310
+msgid "Contact your web host and ask them to enable imagepng for PHP."
+msgstr ""
+
+#: si-captcha.php:314
+msgid "ERROR: si-captcha.php plugin: securimage.php not found."
+msgstr ""
+
+#: si-captcha.php:362 si-captcha.php:364
+msgid "CAPTCHA"
+msgstr ""
+
+#: si-captcha.php:372 si-captcha.php:379
+msgid "Refresh"
+msgstr ""
+
+#: si-captcha.php:584
+msgid "Submit Comment"
+msgstr "Odeslat komentář"
+
+#: si-captcha.php:1261
+msgid "Unreadable CAPTCHA token file"
+msgstr ""
+
+#: si-captcha.php:1375
 #, php-format
-msgid "<strong>ERROR</strong>: Invalid username. <a href=\"%s\" title=\"Password Lost and Found\">Lost your password</a>?"
-msgstr "<strong>ERROR</strong>: nesprávné uživatelské jméno. <a href=\"%s\" title=\"Ztráty a nálezy hesel\">Zapomněli jste heslo</a>?"
+msgid ""
+"<strong>SI CAPTCHA needs your attention:</strong> To make it work, you need "
+"to configure the settings. <br />You can do so at the <a href=\"%s\">SI "
+"CAPTCHA settings page</a>."
+msgstr ""
 
-#: si-captcha.php:913
-#, php-format
-msgid "<strong>ERROR</strong>: Incorrect password. <a href=\"%s\" title=\"Password Lost and Found\">Lost your password</a>?"
-msgstr "<strong>ERROR</strong>: neprávné heslo. <a href=\"%s\" title=\"Ztráty a nálezy hesel\">Zapomněli jste heslo</a>?"
+#~ msgid "SI Captcha Options"
+#~ msgstr "Nastavení SI Captcha"
 
+#~ msgid "Options saved."
+#~ msgstr "Nastavení bylo uloženo"
+
+#~ msgid "Free PHP Scripts"
+#~ msgstr "PHP skripty zdarma"
+
+#~ msgid "Contact"
+#~ msgstr "Kontakt"
+
+#~ msgid ""
+#~ "If you find this plugin useful to you, please consider making a small "
+#~ "donation to help contribute to further development. Thanks for your kind "
+#~ "support!"
+#~ msgstr ""
+#~ "Pokud je pro vás plugin užitečný, zvažte poslání menší finanční odměny "
+#~ "jeho autorovi, čímž pomůžete dalšímu vývoji tohoto pluginu. Díky za "
+#~ "laskavou pomoc!"
+
+#~ msgid ""
+#~ "I have donated to help contribute for the development of this plugin."
+#~ msgstr ""
+#~ "Poslal(a) jsem autorovi odměnu, abych pomohl(a) s vývojem tohoto pluginu."
+
+#~ msgid "Usage"
+#~ msgstr "Použití"
+
+#~ msgid "Your theme must have a"
+#~ msgstr "Vaše šablona musí mít kus kódu"
+
+#~ msgid "tag inside your comments.php form. Most themes do."
+#~ msgstr "v souboru comments.php u formuláře. Většina šablon ho tam má."
+
+#~ msgid ""
+#~ "The best place to locate the tag is before the comment textarea, you may "
+#~ "want to move it if it is below the comment textarea, or the captcha image "
+#~ "and captcha code entry might display after the submit button."
+#~ msgstr ""
+#~ "Nejlepší je umístit kód před políčko na psaní komentáře textarea. Můžete "
+#~ "ho ale umístit i jinam, zejména pokud se vám kontrolní kód (captcha) "
+#~ "ukazuje za tlačítkem pro odeslání formuláře. "
+
+#~ msgid "Options"
+#~ msgstr "Nastavení"
+
+#~ msgid "Update Options"
+#~ msgstr "Uložit nastavení"
+
+#~ msgid "CAPTCHA Support Test:"
+#~ msgstr "Test fungování CAPTCHA"
+
+#~ msgid "Test if your PHP installation will support the CAPTCHA"
+#~ msgstr "Vyzkoušejte, jestli PHP na vašem serveru podporuje CAPTCHA"
+
+#~ msgid "CAPTCHA on Login Form:"
+#~ msgstr "CAPTCHA na přihlašovacím formuláři"
+
+#~ msgid "Enable CAPTCHA on the login form."
+#~ msgstr "Povolit CAPTCHU na přihlašovacím formuláři"
+
+#~ msgid ""
+#~ "The Login form captcha is not enabled by default because it might be "
+#~ "annoying to users. Only enable it if you are having spam problems related "
+#~ "to bots automatically logging in."
+#~ msgstr ""
+#~ "CAPTCHA na přihlašovacím formuláři není nastavena z výroby, protože její "
+#~ "vyplňování při každém přihlášení může být poněkud otravné. Povolte ji, "
+#~ "pouze pokud máte problémy se spamujícími roboty."
+
+#~ msgid "CAPTCHA on Register Form:"
+#~ msgstr "CAPTCHA na registračním formuláři"
+
+#~ msgid "Enable CAPTCHA on the register form."
+#~ msgstr "Povolit CAPTCHU na registračním formuláři"
+
+#~ msgid "CAPTCHA on Comment Form:"
+#~ msgstr "CAPTCHA u formuláře na komentáře"
+
+#~ msgid "Enable CAPTCHA on the comment form."
+#~ msgstr "Povolit CAPTCHU na formuláři pro psaní komentářů"
+
+#~ msgid "Hide CAPTCHA for"
+#~ msgstr "Skrýt CAPTCHU pro"
+
+#~ msgid "registered"
+#~ msgstr "registrované"
+
+#~ msgid "users who can:"
+#~ msgstr "uživatele, kteří mohou "
+
+#~ msgid "CSS class name for CAPTCHA input field on the comment form"
+#~ msgstr "CSS třída pro políčko formuláře, do něhož se píše kontrolní kód"
+
+#~ msgid ""
+#~ "(Enter a CSS class name only if your theme uses one for comment text "
+#~ "inputs. Default is blank for none.)"
+#~ msgstr ""
+#~ "(Napište název CSS třídy, pokud vaše šablona nějaké používá pro textová "
+#~ "políčka formulářů, jinak ne.)"
+
+#~ msgid "Comment Form Rearrange:"
+#~ msgstr "Změna uspořádání komentářového formuláře"
+
+#~ msgid ""
+#~ "Change the display order of the catpcha input field on the comment form."
+#~ msgstr "Změnit umístění CATPCHA na formuláři pro psaní komentářů"
+
+#~ msgid "Problem:"
+#~ msgstr "Problém"
+
+#~ msgid ""
+#~ "Sometimes the captcha image and captcha input field are displayed AFTER "
+#~ "the submit button on the comment form."
+#~ msgstr ""
+#~ "Někdy se stane, že obrázek CAPTCHA a políčko input jsou zobrazeny až za "
+#~ "tlačítkem submit pro odeslání formuláře."
+
+#~ msgid "Fix:"
+#~ msgstr "Řešení:"
+
+#~ msgid "Edit your current theme comments.php file and locate this line:"
+#~ msgstr "Změňte pár řádku v šabloně comments.php. Najděte tento řádek:"
+
+#~ msgid ""
+#~ "This tag is exactly where the captcha image and captcha code entry will "
+#~ "display on the form, so move the line to BEFORE the comment textarea, "
+#~ "uncheck the option box above, and the problem should be fixed."
+#~ msgstr ""
+#~ "Přesně na místo tohoto kódu přijde obrázek CAPTCHA  a políčko input. "
+#~ "Přesuňte tedy tento kód před značku textarea a problém vy měl být "
+#~ "vyřešen. Políčko uvedené výše nezaškrtávejte."
+
+#~ msgid ""
+#~ "Alernately you can just check the box above and javascript will attempt "
+#~ "to rearrange it for you, but editing the comments.php, moving the tag, "
+#~ "and unchecking this box is the best solution."
+#~ msgstr ""
+#~ "Anebo můžete zaškrtnout výše uvedené políčko a javascript se pokusí "
+#~ "formulář přeskládat automaticky. Ruční úprava souboru comments.php "
+#~ "popsaná výše je ale sázka na jistotu. "
+
+#~ msgid ""
+#~ "Why is it better to uncheck this and move the tag? because the XHTML will "
+#~ "no longer validate on the comment page if it is checked."
+#~ msgstr ""
+#~ "Proč je lepší ruční úprava? Protože s tímto javascriptem vaše stránka už "
+#~ "nebude XHTML validní."
+
+#~ msgid "Accessibility:"
+#~ msgstr "Přístupnost:"
+
+#~ msgid "Enable aria-required tags for screen readers"
+#~ msgstr "Povolit značky, které pro čtecí zařízení vyžaduje ARIA."
+
+#~ msgid ""
+#~ "aria-required is a form input WAI ARIA tag. Screen readers use it to "
+#~ "determine which fields are required. Enabling this is good for "
+#~ "accessability, but will cause the HTML to fail the W3C Validation (there "
+#~ "is no attribute \"aria-required\"). WAI ARIA attributes are soon to be "
+#~ "accepted by the HTML validator, so you can safely ignore the validation "
+#~ "error it will cause."
+#~ msgstr ""
+#~ "Tato možnost umožní použít fomrulářové značky WAI ARIA. Čtecí zařízení "
+#~ "díky nim poznají, které políčko musí být vyplněno. Povolení této možnosti "
+#~ "je dobré přo přístupnost, ale způsobí ztrátu HTML validity (díky tomu, že "
+#~ "neexistuje zde použitý atribut \"aria-required\"). V budoucnu by ale "
+#~ "tento atribut měl být zaveden, takže můžete problém s validací směle "
+#~ "ignorovat.  "
+
+#~ msgid "Click for Advanced Options"
+#~ msgstr "Klepni pro pokročilé nastavení"
+
+#~ msgid "Inline CSS Style:"
+#~ msgstr "Inline CSS"
+
+#~ msgid "Reset the styles to default."
+#~ msgstr "Obnovit tovární nastavení kaskádových stylů"
+
+#~ msgid "CSS style for CAPTCHA image:"
+#~ msgstr "CSS styl pro CAPTCHA obrázek"
+
+#~ msgid "CSS style for Audio image:"
+#~ msgstr "CSS styl pro obrázek s reproduktorem"
+
+#~ msgid "CSS style for Refresh image:"
+#~ msgstr "CSS styl pro obrázek pro načtení jiného kódu"
+
+#~ msgid "Text Labels:"
+#~ msgstr "Popisky"
+
+#~ msgid ""
+#~ "Some people wanted to change the text labels. These fields can be filled "
+#~ "in to override the standard text labels."
+#~ msgstr "Zde vyplněné položky přepíšou tovární nastavení"
+
+#~ msgid "CAPTCHA Audio"
+#~ msgstr "Přečíst kontrolní kód"
+
+#~ msgid "More WordPress plugins by Mike Challis:"
+#~ msgstr "Další pluginy pro Wordpress od Mika Challise:"
+
+#~ msgid "All registered users"
+#~ msgstr "Všicni registrovaní uživatelé"
+
+#~ msgid "Edit posts"
+#~ msgstr "Upravovat příspěvky"
+
+#~ msgid "Publish Posts"
+#~ msgstr "Publikovat příspěvky"
+
+#~ msgid "Moderate Comments"
+#~ msgstr "Spravovat komentáře"
+
+#~ msgid "Administer site"
+#~ msgstr "Spravovat celý web"
+
+#~ msgid ""
+#~ "ERROR: si-captcha.php plugin says GD image support not detected in PHP!"
+#~ msgstr "ERROR: plugin říká, že v PHP nebyla zjištěna podpora GD!"
+
+#~ msgid ""
+#~ "Contact your web host and ask them why GD image support is not enabled "
+#~ "for PHP."
+#~ msgstr "Kontaktujte svůj webhosting a zeptejte se na podporu GD v PHP."
+
+#~ msgid ""
+#~ "ERROR: si-captcha.php plugin says imagepng function not detected in PHP!"
+#~ msgstr "ERROR: plugin říká, že v PHP nenašel funkci imagepng!"
+
+#~ msgid ""
+#~ "Contact your web host and ask them why imagepng function is not enabled "
+#~ "for PHP."
+#~ msgstr ""
+#~ "Kontaktujte svůj webhosting a zeptejte se na podporu imagepng v PHP."
+
+#~ msgid "ERROR: si-captcha.php plugin says captcha_library not found."
+#~ msgstr "ERROR: plugin říká, že nenašel captcha_library."
+
+#~ msgid ""
+#~ "Could not read CAPTCHA cookie. Make sure you have cookies enabled and not "
+#~ "blocking in your web browser settings. Or another plugin is conflicting. "
+#~ "See plugin FAQ."
+#~ msgstr ""
+#~ "Nepodařilo se načíst CAPTCHA cookie. Ujistěte se, že máte ve svém "
+#~ "prohlížeči povolena cookies. Nebo že by konflikt s jiným pluginem? "
+#~ "Podívejte se do sekce FAQ."
+
+#~ msgid "Please complete the CAPTCHA."
+#~ msgstr "Vyplňte prosím kontrolní kód CAPTCHA"
+
+#~ msgid "That CAPTCHA was incorrect. Make sure you have not disabled cookies."
+#~ msgstr ""
+#~ "Kontrolní kód jste zadali chybně. Ujistěte se, že ve svém prohlížeči "
+#~ "nemáte zakázána cookies."
+
+#~ msgid ""
+#~ "Error: You did not enter a Captcha phrase. Press your browsers back "
+#~ "button and try again."
+#~ msgstr ""
+#~ "Error: nevyplnili jste kontrolní kód z obrázku CAPTCHA. Zmáčkněte "
+#~ "tlačítko Zpět a zkuste to znovu. "
+
+#~ msgid ""
+#~ "Error: You entered in the wrong Captcha phrase. Press your browsers back "
+#~ "button and try again."
+#~ msgstr ""
+#~ "Error: kontrolní kód jste z obrázku opsali špatně. Zmáčkněte tlačítko "
+#~ "Zpět a zkuste to prosím znovu."
+
+#~ msgid "<strong>ERROR</strong>: The username field is empty."
+#~ msgstr "<strong>ERROR</strong>: pole s uživatelským jménem je prázdné."
+
+#~ msgid "<strong>ERROR</strong>: The password field is empty."
+#~ msgstr "<strong>ERROR</strong>: pole s heslem je prázdné."
+
+#~ msgid ""
+#~ "<strong>ERROR</strong>: Invalid username. <a href=\"%s\" title=\"Password "
+#~ "Lost and Found\">Lost your password</a>?"
+#~ msgstr ""
+#~ "<strong>ERROR</strong>: nesprávné uživatelské jméno. <a href=\"%s\" title="
+#~ "\"Ztráty a nálezy hesel\">Zapomněli jste heslo</a>?"
+
+#~ msgid ""
+#~ "<strong>ERROR</strong>: Incorrect password. <a href=\"%s\" title="
+#~ "\"Password Lost and Found\">Lost your password</a>?"
+#~ msgstr ""
+#~ "<strong>ERROR</strong>: neprávné heslo. <a href=\"%s\" title=\"Ztráty a "
+#~ "nálezy hesel\">Zapomněli jste heslo</a>?"

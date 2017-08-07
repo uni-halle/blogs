@@ -2,214 +2,760 @@ msgid ""
 msgstr ""
 "Project-Id-Version: si-captcha-for-wordpress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-19 18:08+0100\n"
+"POT-Creation-Date: 2017-07-25 21:36-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Sebastian Kreideweiß <kreideweiss@cps-it.de>\n"
+"Language-Team: \n"
+"Language: be\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Belorussian\n"
-"X-Poedit-Country: Belarus\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2;plural=n != 1;\n"
-"X-Poedit-KeywordsList: __;_c;_e;__ngettext:1,2;__ngettext_noop:1,2\n"
-"Language-Team: \n"
+"X-Poedit-KeywordsList: __;_c;_e;_n\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPath-1: ./captcha-secureimage\n"
 
-#: si-captcha.php:38
-#: si-captcha.php:95
-msgid "SI Captcha Options"
-msgstr "SI Captcha функцыі"
-
-#: si-captcha.php:61
+#: si-captcha-admin.php:15
 msgid "You do not have permissions for managing this option"
 msgstr "У вас няма дазволу на кірованне гэтай опцыяй"
 
-#: si-captcha.php:92
-msgid "Options saved."
-msgstr "Опцыі захаваны"
+#: si-captcha-admin.php:93
+msgid "Your settings have been saved."
+msgstr ""
 
-#: si-captcha.php:98
-msgid "Your theme must have a"
-msgstr "Ваша тэма павінна мець"
+#: si-captcha-admin.php:96 si-captcha.php:54
+msgid "SI Captcha Anti-Spam settings"
+msgstr ""
 
-#: si-captcha.php:98
-msgid "tag inside your comments.php form. Most themes do."
-msgstr "пазнакі ўсярэдзіне вашых каментаў у форме php.  Большасць тэм рабіць такім чынам."
+#: si-captcha-admin.php:124
+msgid ""
+"SI Captcha Anti-Spam is Network Activated and Main site configured. It is "
+"not necessary to change any settings here."
+msgstr ""
 
-#: si-captcha.php:99
-msgid "The best place to locate the tag is before the comment textarea, you may want to move it if it is below the comment textarea, or the captcha image and captcha code entry might display after the submit button."
-msgstr "Самае лепшае месца, каб знайсці пазнаку прадстаўлены каментар textarea, вы можаце перанесці яе, калі яна ніжэй каментар textarea або скажоным малюнкам і скажоным кода можа адлюстроўваць пасля кнопку \"адправіць\"."
+#: si-captcha-admin.php:125
+msgid ""
+"Settings are controlled at the main site and are Networkwide. If you want "
+"individual sites to each have their own unique settings: go to the main site "
+"SI Captcha Anti-Spam settings and enable \"Allow Multisite network activated "
+"sites to have individual SI Captcha Anti-Spam settings\"."
+msgstr ""
 
-#: si-captcha.php:111
-msgid "CAPTCHA on Register Form:"
-msgstr " CAPTCHA Рэгістрацыя па форме:"
+#: si-captcha-admin.php:162
+#, php-format
+msgid "Downloaded %s times"
+msgstr ""
 
-#: si-captcha.php:115
-msgid "Enable CAPTCHA on the register form."
-msgstr "Уключыць CAPTCHA па рэгістру формы."
+#: si-captcha-admin.php:168 si-captcha-admin.php:176
+#, php-format
+msgid "(Average rating based on %s ratings)"
+msgstr ""
 
-#: si-captcha.php:120
-msgid "CAPTCHA on Comment Form:"
-msgstr "CAPTCHA каментарый па форме:"
+#: si-captcha-admin.php:170
+msgid "5 stars"
+msgstr ""
 
-#: si-captcha.php:123
-msgid "Enable CAPTCHA on the comment form."
-msgstr "Актываваць CAPTCHA у формае каментару"
+#: si-captcha-admin.php:171
+msgid "4 stars"
+msgstr ""
 
-#: si-captcha.php:126
-msgid "Hide CAPTCHA for"
-msgstr "Схаваць CAPTCHA для"
+#: si-captcha-admin.php:172
+msgid "3 stars"
+msgstr ""
 
-# grammatisk fejl
-#: si-captcha.php:127
-msgid "registered"
-msgstr "зарэгістраваны"
+#: si-captcha-admin.php:173
+msgid "2 stars"
+msgstr ""
 
-#: si-captcha.php:128
-msgid "users who can:"
-msgstr "карыстальнікі, якія могуць:"
+#: si-captcha-admin.php:174
+msgid "1 star"
+msgstr ""
 
-#: si-captcha.php:134
-msgid "Comment Form Rearrange:"
-msgstr "Парадак формы каментара:"
+#: si-captcha-admin.php:176
+msgid "rate"
+msgstr ""
 
-#: si-captcha.php:138
-msgid "Change the display order of the catpcha input field on the comment form. (see note below)."
-msgstr "Змена парадку адлюстравання ў поле ўводу catpcha у форме каментара (гл. заўвагу ніжэй)."
+#: si-captcha-admin.php:187
+#, php-format
+msgid "a newer version is available: %s"
+msgstr ""
 
-#: si-captcha.php:145
-msgid "Problem:"
-msgstr "Праблема:"
+#: si-captcha-admin.php:189
+#, php-format
+msgid "A newer version of SI Captcha Anti-Spam is available: %s"
+msgstr ""
 
-#: si-captcha.php:146
-msgid "Sometimes the captcha image and captcha input field are displayed AFTER the submit button on the comment form."
-msgstr "Часам скажоны малюнм і скажонае поле адлюстроўваецца ПАСЛЯ кнопкі \"адправіць\" у форме каментара"
+#: si-captcha-admin.php:192
+msgid "(latest version)"
+msgstr ""
 
-#: si-captcha.php:147
-msgid "Fix:"
-msgstr "Выпраўлена:"
+#: si-captcha-admin.php:198
+msgid "Version:"
+msgstr ""
 
-#: si-captcha.php:148
-msgid "Edit your current theme comments.php file and locate this line:"
-msgstr "Змяніць бягучую тэму comments.php файла  і знайдзіце гэты радок:"
+#: si-captcha-admin.php:199
+msgid "Changelog"
+msgstr ""
 
-#: si-captcha.php:150
-msgid "This tag is exactly where the captcha image and captcha code entry will display on the form, so move the line to BEFORE the comment textarea, uncheck the option box above, and the problem should be fixed."
-msgstr "Гэты тэг скажоным малюнкам і скажоным кодам будзе адлюстроўвацца на форме, так што перайдзіцеі на лінію да пачатку каментара textarea, зніміце опцыю  вышэй поля, і гэтая праблема павінна быць выпраўлена. >  памяняць		 		Гэты тэг сапраўды дзе скажоным малюнкам і скажоным кода будзе адлюстроўвацца на форме, так што перайсці на лінію да пачатку каментара textarea, зніміце опцыю поле вышэй, і гэтая праблема павінна быць выпраўленая. >  памяняць		 	"
+#: si-captcha-admin.php:200
+msgid "FAQ"
+msgstr ""
 
-#: si-captcha.php:151
-msgid "Alernately you can just check the box above and javascript will attempt to rearrange it for you, but editing the comments.php, moving the tag, and unchecking this box is the best solution."
-msgstr "Як альтэрнатыва, можна просто усталяваць флажок вышэй, і JavaScript будзе прдпрынята спроба змяніць гэта для вас, але рэдагаванне comments.php, рухаючы тэг і прыбраўшы гэта поле, з'яўляецца найлепшым рашэннем."
+#: si-captcha-admin.php:201 si-captcha-admin.php:572
+msgid "Rate This"
+msgstr ""
 
-#: si-captcha.php:152
-msgid "Why is it better to uncheck this and move the tag? because the XHTML will no longer validate on the comment page if it is checked."
-msgstr "Чаму лепш зняць  і перамясціць пазнаку? таму што XHTML больш не будзе правяраць, кал ён устаноўлены, старонку каментара."
+#: si-captcha-admin.php:202 si-captcha.php:60
+msgid "Support"
+msgstr ""
 
-# GSA
-#: si-captcha.php:155
-msgid "Update Options"
-msgstr "Абнаўленне функцый"
+#: si-captcha-admin.php:203 si-captcha-admin.php:549 si-captcha.php:61
+msgid "Donate"
+msgstr ""
 
-#: si-captcha.php:165
-msgid "All registered users"
-msgstr "Усе зарэгстраваныя карыстальнікі"
+#: si-captcha-admin.php:204
+msgid "Mikes Free PHP Scripts"
+msgstr ""
 
-#: si-captcha.php:166
-msgid "Edit posts"
-msgstr "Рэдагаваць пасты"
+#: si-captcha-admin.php:216
+msgid ""
+"<strong>Individual Site Settings Enabled</strong><br />Note: SI Captcha Anti-"
+"Spam is not Network Activated, this means each site will have individual SI "
+"Captcha Anti-Spam settings."
+msgstr ""
 
-#: si-captcha.php:167
-msgid "Publish Posts"
-msgstr "Публікаваць пасты"
+#: si-captcha-admin.php:217
+msgid ""
+"If you want it this way, that is OK, but if you want the master site to "
+"control all the sites: go to the main site, then Network Activate this "
+"plugin, then go to SI Captcha Anti-Spam settings and disable \"Allow "
+"Multisite network activated sites to have individual SI Captcha Anti-Spam "
+"settings\"."
+msgstr ""
 
-#: si-captcha.php:168
-msgid "Moderate Comments"
-msgstr "Мадэраваць каметары"
+#: si-captcha-admin.php:224 si-captcha-admin.php:528
+msgid "Save Changes"
+msgstr ""
 
-#: si-captcha.php:169
-msgid "Administer site"
-msgstr "Адміністраванне сайта"
+#: si-captcha-admin.php:227
+msgid ""
+"If you do not like image captcha and code entry, you can uninstall this "
+"plugin and try my new plugin:"
+msgstr ""
 
-#: si-captcha.php:188
-msgid "ERROR: si-captcha.php plugin says GD image support not detected in PHP!"
-msgstr "ПАМЫЛКА: SI-captcha.php плагін кажа, што  падтрымка  GD малюнак не выяўленая ў PHP!"
+#: si-captcha-admin.php:227
+msgid "Fast Secure reCAPTCHA with Google No CAPTCHA reCAPTCHA"
+msgstr ""
 
-#: si-captcha.php:189
-msgid "Contact your web host and ask them why GD image support is not enabled for PHP."
-msgstr "Звярніцеся да пастаўшчыка паслуг хостынгу і спытайць, чаму падтрымка GD малюнак не ўключана ў PHP."
+#: si-captcha-admin.php:236
+msgid "Enable CAPTCHA:"
+msgstr ""
 
-# GSA typo
-#: si-captcha.php:193
-msgid "ERROR: si-captcha.php plugin says imagepng function not detected in PHP!"
-msgstr "ПАМЫЛКА: SI-captcha.php плагін кажа, што функцыя  imagepng не выяўлена ў PHP!"
+#: si-captcha-admin.php:240
+msgid "Login form."
+msgstr ""
 
-#: si-captcha.php:194
-msgid "Contact your web host and ask them why imagepng function is not enabled for PHP."
-msgstr "Звярніцеся да пастаўшчыка паслуг хостынгу і спытайце іх, чаму функцыя imagepng не ўключана ў PHP."
+#: si-captcha-admin.php:241 si-captcha-admin.php:249 si-captcha-admin.php:257
+#: si-captcha-admin.php:265 si-captcha-admin.php:273 si-captcha-admin.php:281
+#: si-captcha-admin.php:289 si-captcha-admin.php:297 si-captcha-admin.php:305
+#: si-captcha-admin.php:313 si-captcha-admin.php:321 si-captcha-admin.php:329
+#: si-captcha-admin.php:346 si-captcha-admin.php:365 si-captcha-admin.php:383
+#: si-captcha-admin.php:391 si-captcha-admin.php:428 si-captcha-admin.php:448
+#: si-captcha-admin.php:498
+msgid "help"
+msgstr ""
 
-#: si-captcha.php:198
-msgid "ERROR: si-captcha.php plugin says captcha_library not found."
-msgstr "ПАМЫЛКА: SI-captcha.php плагін кажа, што captcha_library не знойдзена.ПАМЫЛКА: SI-captcha.php убудова кажа captcha_library не знойдзена."
+#: si-captcha-admin.php:243
+msgid "Require that the user pass a CAPTCHA test before login."
+msgstr ""
 
-#: si-captcha.php:232
-#: si-captcha.php:288
-msgid "CAPTCHA Image"
-msgstr "CAPTCHA-billede"
+#: si-captcha-admin.php:248
+msgid "Register form."
+msgstr ""
 
-#: si-captcha.php:233
-#: si-captcha.php:289
-msgid "Audible Version of CAPTCHA"
-msgstr "Звуковая версія CAPTCHA"
+#: si-captcha-admin.php:251
+msgid "Require that the user pass a CAPTCHA test before registering."
+msgstr ""
 
-#: si-captcha.php:234
-#: si-captcha.php:290
-msgid "Audio Version"
-msgstr "Аудыё версія"
+#: si-captcha-admin.php:256
+msgid "Lost password form."
+msgstr ""
 
-#: si-captcha.php:236
-#: si-captcha.php:292
-msgid "Refresh Image"
-msgstr "Абнавіць малюнак"
+#: si-captcha-admin.php:259
+msgid "Require that the user pass a CAPTCHA test before lost password request."
+msgstr ""
 
-#: si-captcha.php:238
-#: si-captcha.php:294
-msgid "Reload Image"
-msgstr "Перезагрузіць малюнак"
+#: si-captcha-admin.php:264
+msgid "Comment form."
+msgstr ""
 
-#: si-captcha.php:243
-#: si-captcha.php:299
-msgid "CAPTCHA Code (required)"
-msgstr "CAPTCHA код (абавязкова)"
+#: si-captcha-admin.php:267
+msgid "Require that the user pass a CAPTCHA test before posting comments."
+msgstr ""
 
-#: si-captcha.php:261
-msgid "Submit Comment"
-msgstr "Дадаць каментар"
+#: si-captcha-admin.php:272
+msgid "Multisite register form."
+msgstr ""
 
-#: si-captcha.php:313
-#: si-captcha.php:327
-#: si-captcha.php:337
-#: si-captcha.php:350
+#: si-captcha-admin.php:275
+msgid ""
+"Require that the user pass a CAPTCHA test before registering in Multisite."
+msgstr ""
+
+#: si-captcha-admin.php:280
+msgid "BuddyPress register form."
+msgstr ""
+
+#: si-captcha-admin.php:283
+msgid ""
+"Require that the user pass a CAPTCHA test before registering in BuddyPress."
+msgstr ""
+
+#: si-captcha-admin.php:288
+msgid "wpForo Forum register form."
+msgstr ""
+
+#: si-captcha-admin.php:291
+msgid ""
+"Require that the user pass a CAPTCHA test before registering in wpForo Forum."
+msgstr ""
+
+#: si-captcha-admin.php:296
+msgid "WooCommerce checkout."
+msgstr ""
+
+#: si-captcha-admin.php:299
+msgid ""
+"Require that the user pass a CAPTCHA test on WooCommerce checkout form when "
+"not logged in."
+msgstr ""
+
+#: si-captcha-admin.php:304
+msgid "Jetpack Contact Form."
+msgstr ""
+
+#: si-captcha-admin.php:307
+msgid "Require that the user pass a CAPTCHA test on Jetpack Contact Form."
+msgstr ""
+
+#: si-captcha-admin.php:312
+msgid "bbPress New Topic Form."
+msgstr ""
+
+#: si-captcha-admin.php:315
+msgid "Require that the user pass a CAPTCHA test on bbPress New Topic Form."
+msgstr ""
+
+#: si-captcha-admin.php:320
+msgid "bbPress Reply to Topic Form."
+msgstr ""
+
+#: si-captcha-admin.php:323
+msgid ""
+"Require that the user pass a CAPTCHA test on bbPress Reply to Topic Form."
+msgstr ""
+
+#: si-captcha-admin.php:328
+msgid "No comment form CAPTCHA for logged in users"
+msgstr ""
+
+#: si-captcha-admin.php:331
+msgid "Logged in users will not have to pass a CAPTCHA test on comments form."
+msgstr ""
+
+#: si-captcha-admin.php:345 si-captcha-admin.php:364
+msgid ""
+"Allow Multisite network activated sites to have individual SI Captcha Anti-"
+"Spam settings."
+msgstr ""
+
+#: si-captcha-admin.php:348 si-captcha-admin.php:367
+msgid ""
+"Enabling this setting allows: individual site settings for this plugin on "
+"multisite with network activation turned on. The default is for all sites to "
+"use the master site settings."
+msgstr ""
+
+#: si-captcha-admin.php:358
+msgid ""
+"SI Captcha Anti-Spam is Network Activated and individual site configured. "
+"The next setting can only be modified by the main site settings menu."
+msgstr ""
+
+#: si-captcha-admin.php:363
+msgid "Main site admin enabled:"
+msgstr ""
+
+#: si-captcha-admin.php:363
+msgid "Main site admin disabled:"
+msgstr ""
+
+#: si-captcha-admin.php:378
+msgid "Style:"
+msgstr ""
+
+#: si-captcha-admin.php:382
+msgid "Enable small size CAPTCHA image."
+msgstr ""
+
+#: si-captcha-admin.php:385
+msgid "Makes the CAPTCHA image size small instead of large."
+msgstr ""
+
+#: si-captcha-admin.php:390
+msgid "Enable external CAPTCHA CSS."
+msgstr ""
+
+#: si-captcha-admin.php:393
+msgid ""
+"Enable to not load this plugin CSS into wp_head. This allows you to load "
+"your own modified CSS into your theme instead."
+msgstr ""
+
+#: si-captcha-admin.php:395
+msgid "External Style Sheet CSS starting point for custom setup:"
+msgstr ""
+
+#: si-captcha-admin.php:410
+msgid "CAPTCHA input label position on the comment form:"
+msgstr ""
+
+#: si-captcha-admin.php:414
+msgid "input-label-required"
+msgstr ""
+
+#: si-captcha-admin.php:415
+msgid "label-required-input"
+msgstr ""
+
+#: si-captcha-admin.php:416
+msgid "label-required-linebreak-input"
+msgstr ""
+
+#: si-captcha-admin.php:417
+msgid "label-input-required"
+msgstr ""
+
+#: si-captcha-admin.php:430
+msgid ""
+"Changes position of the CAPTCHA input labels on the comment form. Some "
+"themes have different label positions on the comment form. After changing "
+"this setting, be sure to view the comments to verify the setting is correct."
+msgstr ""
+
+#: si-captcha-admin.php:442
+msgid "Options:"
+msgstr ""
+
+#: si-captcha-admin.php:447
+msgid "Enable PHP sessions."
+msgstr ""
+
+#: si-captcha-admin.php:450
+msgid ""
+"Enables PHP session handling. Only enable this if you have CAPTCHA token "
+"errors. Enable this setting to use PHP sessions for the CAPTCHA. PHP "
+"Sessions must be supported by your web host or there may be session errors."
+msgstr ""
+
+#: si-captcha-admin.php:461 si-captcha-admin.php:469
+msgid "There is a problem with the directory"
+msgstr ""
+
+#: si-captcha-admin.php:463
+msgid ""
+"The directory is not found, a <a href=\"http://codex.wordpress.org/"
+"Changing_File_Permissions\" target=\"_blank\">permissions</a> problem may "
+"have prevented this directory from being created."
+msgstr ""
+
+#: si-captcha-admin.php:465 si-captcha-admin.php:477
+msgid ""
+"Fixing the actual problem is recommended, but you can check this setting on "
+"the SI CAPTCHA options page: \"Use PHP sessions\" and the captcha will work "
+"(if PHP sessions are supported by your web host)."
+msgstr ""
+
+#: si-captcha-admin.php:470
+msgid ""
+"The directory Unwritable (<a href=\"http://codex.wordpress.org/"
+"Changing_File_Permissions\" target=\"_blank\">fix permissions</a>)"
+msgstr ""
+
+#: si-captcha-admin.php:471
+msgid "Permissions are: "
+msgstr ""
+
+#: si-captcha-admin.php:475
+msgid ""
+"Fixing this may require assigning 0755 permissions or higher (e.g. 0777 on "
+"some hosts. Try 0755 first, because 0777 is sometimes too much and will not "
+"work.)"
+msgstr ""
+
+#: si-captcha-admin.php:493
+msgid "Error Messages:"
+msgstr ""
+
+#: si-captcha-admin.php:497
+msgid "Customize Text:"
+msgstr ""
+
+#: si-captcha-admin.php:498
+msgid "Click for Help!"
+msgstr ""
+
+#: si-captcha-admin.php:500
+msgid ""
+"These fields can be filled in to override the error message that displays "
+"when the form is submitted and the CAPTCHA does not pass validation."
+msgstr ""
+
+#: si-captcha-admin.php:505
+msgid "Required"
+msgstr ""
+
+#: si-captcha-admin.php:506
+msgid "Possible spam bot"
+msgstr ""
+
+#: si-captcha-admin.php:507 si-captcha.php:1188 si-captcha.php:1258
+#: si-captcha.php:1281
+msgid "Wrong CAPTCHA"
+msgstr ""
+
+#: si-captcha-admin.php:508 si-captcha.php:1236 si-captcha.php:1242
+msgid "Empty CAPTCHA"
+msgstr ""
+
+#: si-captcha-admin.php:509 si-captcha.php:1244
+msgid "Missing CAPTCHA token"
+msgstr ""
+
+#: si-captcha-admin.php:510
+msgid "Unreadable CAPTCHA token"
+msgstr ""
+
+#: si-captcha-admin.php:511 si-captcha.php:1268
+msgid "Unreadable CAPTCHA cookie"
+msgstr ""
+
+#: si-captcha-admin.php:512 si-captcha.php:690 si-captcha.php:815
+#: si-captcha.php:930 si-captcha.php:1062 si-captcha.php:1140
 msgid "ERROR"
 msgstr "Памылка"
 
-#: si-captcha.php:313
-#: si-captcha.php:337
-msgid "Please complete the CAPTCHA."
-msgstr "Калі ласка, запоўніце CAPTCHA."
+#: si-captcha-admin.php:513 si-captcha.php:641 si-captcha.php:720
+#: si-captcha.php:754 si-captcha.php:786 si-captcha.php:851 si-captcha.php:902
+#: si-captcha.php:964 si-captcha.php:1012 si-captcha.php:1041
+#: si-captcha.php:1123 si-captcha.php:1208
+msgid "CAPTCHA Code"
+msgstr ""
+
+#: si-captcha-admin.php:514
+msgid "CAPTCHA Image"
+msgstr "CAPTCHA-billede"
+
+#: si-captcha-admin.php:515
+msgid "Refresh Image"
+msgstr "Абнавіць малюнак"
+
+#: si-captcha-admin.php:524
+msgid ""
+"I have donated to help contribute for the development of this plugin. This "
+"checkbox makes the donate button go away"
+msgstr ""
+
+#: si-captcha-admin.php:533
+msgid "Don't Forget to Test the CAPTCHA"
+msgstr ""
+
+#: si-captcha-admin.php:536
+msgid ""
+"After installing or updating plugins and themes, be sure to test the CAPTCHA "
+"on each form where it is enabled. It should display, allow actions on valid "
+"code, and block actions on invalid code."
+msgstr ""
+
+#: si-captcha-admin.php:552
+msgid ""
+"If you find this plugin useful to you, please consider making a donation to "
+"help contribute to my time invested and to further development. Thanks for "
+"your kind support!"
+msgstr ""
+
+#: si-captcha-admin.php:553
+msgid "You have 1 message from Mike Challis"
+msgstr ""
+
+#: si-captcha-admin.php:570
+msgid ""
+"Mike Challis says: \"Hello, I have many hours coding this plugin just for "
+"you. Please consider making a donation. If you are not able to, that is OK."
+msgstr ""
+
+#: si-captcha-admin.php:571
+msgid "Please also rate my plugin.\""
+msgstr ""
+
+#: si-captcha-admin.php:574
+msgid "Close this message"
+msgstr ""
+
+#: si-captcha-admin.php:582
+msgid "WordPress plugins by Mike Challis:"
+msgstr ""
+
+#: si-captcha-admin.php:584
+msgid "Fast Secure Contact Form"
+msgstr ""
+
+#: si-captcha-admin.php:585
+msgid "Fast Secure reCAPTCHA"
+msgstr ""
+
+#: si-captcha-admin.php:586
+msgid "SI CAPTCHA Anti-Spam"
+msgstr ""
+
+#: si-captcha-admin.php:587
+msgid "Visitor Maps and Who's Online"
+msgstr ""
+
+#: si-captcha.php:54
+msgid "SI Captcha Anti-Spam"
+msgstr ""
+
+#: si-captcha.php:73
+msgid "Settings"
+msgstr ""
+
+#: si-captcha.php:304
+msgid "ERROR: si-captcha.php plugin: GD image support not detected in PHP!"
+msgstr ""
+
+#: si-captcha.php:305
+msgid "Contact your web host and ask them to enable GD image support for PHP."
+msgstr ""
+
+#: si-captcha.php:309
+msgid "ERROR: si-captcha.php plugin: imagepng function not detected in PHP!"
+msgstr ""
+
+#: si-captcha.php:310
+msgid "Contact your web host and ask them to enable imagepng for PHP."
+msgstr ""
+
+#: si-captcha.php:314
+msgid "ERROR: si-captcha.php plugin: securimage.php not found."
+msgstr ""
+
+#: si-captcha.php:362 si-captcha.php:364
+msgid "CAPTCHA"
+msgstr ""
+
+#: si-captcha.php:372 si-captcha.php:379
+msgid "Refresh"
+msgstr ""
+
+#: si-captcha.php:584
+msgid "Submit Comment"
+msgstr "Дадаць каментар"
+
+#: si-captcha.php:1261
+msgid "Unreadable CAPTCHA token file"
+msgstr ""
+
+#: si-captcha.php:1375
+#, php-format
+msgid ""
+"<strong>SI CAPTCHA needs your attention:</strong> To make it work, you need "
+"to configure the settings. <br />You can do so at the <a href=\"%s\">SI "
+"CAPTCHA settings page</a>."
+msgstr ""
+
+#~ msgid "SI Captcha Options"
+#~ msgstr "SI Captcha функцыі"
+
+#~ msgid "Options saved."
+#~ msgstr "Опцыі захаваны"
+
+#~ msgid "Your theme must have a"
+#~ msgstr "Ваша тэма павінна мець"
+
+#~ msgid "tag inside your comments.php form. Most themes do."
+#~ msgstr ""
+#~ "пазнакі ўсярэдзіне вашых каментаў у форме php.  Большасць тэм рабіць "
+#~ "такім чынам."
+
+#~ msgid ""
+#~ "The best place to locate the tag is before the comment textarea, you may "
+#~ "want to move it if it is below the comment textarea, or the captcha image "
+#~ "and captcha code entry might display after the submit button."
+#~ msgstr ""
+#~ "Самае лепшае месца, каб знайсці пазнаку прадстаўлены каментар textarea, "
+#~ "вы можаце перанесці яе, калі яна ніжэй каментар textarea або скажоным "
+#~ "малюнкам і скажоным кода можа адлюстроўваць пасля кнопку \"адправіць\"."
+
+#~ msgid "CAPTCHA on Register Form:"
+#~ msgstr " CAPTCHA Рэгістрацыя па форме:"
+
+#~ msgid "Enable CAPTCHA on the register form."
+#~ msgstr "Уключыць CAPTCHA па рэгістру формы."
+
+#~ msgid "CAPTCHA on Comment Form:"
+#~ msgstr "CAPTCHA каментарый па форме:"
+
+#~ msgid "Enable CAPTCHA on the comment form."
+#~ msgstr "Актываваць CAPTCHA у формае каментару"
+
+#~ msgid "Hide CAPTCHA for"
+#~ msgstr "Схаваць CAPTCHA для"
+
+# grammatisk fejl
+#~ msgid "registered"
+#~ msgstr "зарэгістраваны"
+
+#~ msgid "users who can:"
+#~ msgstr "карыстальнікі, якія могуць:"
+
+#~ msgid "Comment Form Rearrange:"
+#~ msgstr "Парадак формы каментара:"
+
+#~ msgid ""
+#~ "Change the display order of the catpcha input field on the comment form. "
+#~ "(see note below)."
+#~ msgstr ""
+#~ "Змена парадку адлюстравання ў поле ўводу catpcha у форме каментара (гл. "
+#~ "заўвагу ніжэй)."
+
+#~ msgid "Problem:"
+#~ msgstr "Праблема:"
+
+#~ msgid ""
+#~ "Sometimes the captcha image and captcha input field are displayed AFTER "
+#~ "the submit button on the comment form."
+#~ msgstr ""
+#~ "Часам скажоны малюнм і скажонае поле адлюстроўваецца ПАСЛЯ кнопкі "
+#~ "\"адправіць\" у форме каментара"
+
+#~ msgid "Fix:"
+#~ msgstr "Выпраўлена:"
+
+#~ msgid "Edit your current theme comments.php file and locate this line:"
+#~ msgstr "Змяніць бягучую тэму comments.php файла  і знайдзіце гэты радок:"
+
+#~ msgid ""
+#~ "This tag is exactly where the captcha image and captcha code entry will "
+#~ "display on the form, so move the line to BEFORE the comment textarea, "
+#~ "uncheck the option box above, and the problem should be fixed."
+#~ msgstr ""
+#~ "Гэты тэг скажоным малюнкам і скажоным кодам будзе адлюстроўвацца на "
+#~ "форме, так што перайдзіцеі на лінію да пачатку каментара textarea, "
+#~ "зніміце опцыю  вышэй поля, і гэтая праблема павінна быць выпраўлена. >  "
+#~ "памяняць\t\t \t\tГэты тэг сапраўды дзе скажоным малюнкам і скажоным кода "
+#~ "будзе адлюстроўвацца на форме, так што перайсці на лінію да пачатку "
+#~ "каментара textarea, зніміце опцыю поле вышэй, і гэтая праблема павінна "
+#~ "быць выпраўленая. >  памяняць\t\t \t"
+
+#~ msgid ""
+#~ "Alernately you can just check the box above and javascript will attempt "
+#~ "to rearrange it for you, but editing the comments.php, moving the tag, "
+#~ "and unchecking this box is the best solution."
+#~ msgstr ""
+#~ "Як альтэрнатыва, можна просто усталяваць флажок вышэй, і JavaScript будзе "
+#~ "прдпрынята спроба змяніць гэта для вас, але рэдагаванне comments.php, "
+#~ "рухаючы тэг і прыбраўшы гэта поле, з'яўляецца найлепшым рашэннем."
+
+#~ msgid ""
+#~ "Why is it better to uncheck this and move the tag? because the XHTML will "
+#~ "no longer validate on the comment page if it is checked."
+#~ msgstr ""
+#~ "Чаму лепш зняць  і перамясціць пазнаку? таму што XHTML больш не будзе "
+#~ "правяраць, кал ён устаноўлены, старонку каментара."
+
+# GSA
+#~ msgid "Update Options"
+#~ msgstr "Абнаўленне функцый"
+
+#~ msgid "All registered users"
+#~ msgstr "Усе зарэгстраваныя карыстальнікі"
+
+#~ msgid "Edit posts"
+#~ msgstr "Рэдагаваць пасты"
+
+#~ msgid "Publish Posts"
+#~ msgstr "Публікаваць пасты"
+
+#~ msgid "Moderate Comments"
+#~ msgstr "Мадэраваць каметары"
+
+#~ msgid "Administer site"
+#~ msgstr "Адміністраванне сайта"
+
+#~ msgid ""
+#~ "ERROR: si-captcha.php plugin says GD image support not detected in PHP!"
+#~ msgstr ""
+#~ "ПАМЫЛКА: SI-captcha.php плагін кажа, што  падтрымка  GD малюнак не "
+#~ "выяўленая ў PHP!"
+
+#~ msgid ""
+#~ "Contact your web host and ask them why GD image support is not enabled "
+#~ "for PHP."
+#~ msgstr ""
+#~ "Звярніцеся да пастаўшчыка паслуг хостынгу і спытайць, чаму падтрымка GD "
+#~ "малюнак не ўключана ў PHP."
+
+# GSA typo
+#~ msgid ""
+#~ "ERROR: si-captcha.php plugin says imagepng function not detected in PHP!"
+#~ msgstr ""
+#~ "ПАМЫЛКА: SI-captcha.php плагін кажа, што функцыя  imagepng не выяўлена ў "
+#~ "PHP!"
+
+#~ msgid ""
+#~ "Contact your web host and ask them why imagepng function is not enabled "
+#~ "for PHP."
+#~ msgstr ""
+#~ "Звярніцеся да пастаўшчыка паслуг хостынгу і спытайце іх, чаму функцыя "
+#~ "imagepng не ўключана ў PHP."
+
+#~ msgid "ERROR: si-captcha.php plugin says captcha_library not found."
+#~ msgstr ""
+#~ "ПАМЫЛКА: SI-captcha.php плагін кажа, што captcha_library не знойдзена."
+#~ "ПАМЫЛКА: SI-captcha.php убудова кажа captcha_library не знойдзена."
+
+#~ msgid "Audible Version of CAPTCHA"
+#~ msgstr "Звуковая версія CAPTCHA"
+
+#~ msgid "Audio Version"
+#~ msgstr "Аудыё версія"
+
+#~ msgid "Reload Image"
+#~ msgstr "Перезагрузіць малюнак"
+
+#~ msgid "CAPTCHA Code (required)"
+#~ msgstr "CAPTCHA код (абавязкова)"
+
+#~ msgid "Please complete the CAPTCHA."
+#~ msgstr "Калі ласка, запоўніце CAPTCHA."
 
 # GSA ingen punktum
-#: si-captcha.php:327
-#: si-captcha.php:350
-msgid "That CAPTCHA was incorrect."
-msgstr "Гэты CAPTCHA няслушны."
+#~ msgid "That CAPTCHA was incorrect."
+#~ msgstr "Гэты CAPTCHA няслушны."
 
-#: si-captcha.php:385
-msgid "Error: You did not enter a Captcha phrase. Press your browsers back button and try again."
-msgstr "Памылка: Вы не паказалі Captcha фразу. Прэс вашага браўзэра кнопку назад і паспрабуйце зноў."
+#~ msgid ""
+#~ "Error: You did not enter a Captcha phrase. Press your browsers back "
+#~ "button and try again."
+#~ msgstr ""
+#~ "Памылка: Вы не паказалі Captcha фразу. Прэс вашага браўзэра кнопку назад "
+#~ "і паспрабуйце зноў."
 
-#: si-captcha.php:397
-msgid "Error: You entered in the wrong Captcha phrase. Press your browsers back button and try again."
-msgstr "Памылка: Вы няправiльна увялi сiмвалы з Captcha. Нажмiце у вашым браузеры кнопку \"Назад\" i паспрабуйце зноу"
-
+#~ msgid ""
+#~ "Error: You entered in the wrong Captcha phrase. Press your browsers back "
+#~ "button and try again."
+#~ msgstr ""
+#~ "Памылка: Вы няправiльна увялi сiмвалы з Captcha. Нажмiце у вашым браузеры "
+#~ "кнопку \"Назад\" i паспрабуйце зноу"
