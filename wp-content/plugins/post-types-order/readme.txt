@@ -4,13 +4,13 @@ Donate link: http://www.nsp-code.com/donate.php
 Tags: post order, posts order, sort, post sort, posts sort, post type order, custom order, admin posts order
 Requires at least: 2.8
 Tested up to: 4.8
-Stable tag: 1.9.3.1
+Stable tag: 1.9.3.3
 
 Post Order and custom Post Type Objects (custom post types) using a Drag and Drop Sortable JavaScript AJAX interface or default WordPress dashboard. 
 
 == Description ==
 
-<strong>Over 2.3 MILLIONS DOWNLOADS and near PERFECT rating out of 150 REVIEWS</strong>. <br />
+<strong>Over 2.5 MILLIONS DOWNLOADS and near PERFECT rating out of 200 REVIEWS</strong>. <br />
 A powerful plugin, Order Posts and Post Types Objects using a Drag and Drop Sortable JavaScript capability. 
 
 The order can be customized within **default WordPress post type archive list page** or **a separate Re-Order interface** which display all objects.
@@ -92,6 +92,13 @@ Consider upgrading to our advanced version of this plugin at a very resonable pr
 
 
 == Change Log ==
+
+= 1.9.3.3 =
+  - Plugin option to include query argument ASC / DESC
+
+= 1.9.3.2 =
+  - Include ASC / DESC if there is a query order argument
+  - Avada fix 'product_orderby' ignore
 
 = 1.9.3.1 =
   - WordPress 4.8 compatibility notice
