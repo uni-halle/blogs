@@ -189,7 +189,7 @@ function tempera_ppcolumns() {
 			 case 'Specific Posts' :
 				  // Transform string separated by commas into array
 				  $pieces_array = explode(",", $tempera_columnSpecific);
-				  $custom_query2->query(array( 'post_type' => 'any', 'post__in' => $pieces_array, 'ignore_sticky_posts' => 1,'orderby' => 'post__in' ));
+				  $custom_query2->query(array( 'post_type' => 'any', 'post__in' => $pieces_array, 'ignore_sticky_posts' => 1,'orderby' => 'post__in', 'showposts' => -1 ));
 				  break;
 			 case 'Widget Columns':
 			 case 'Disabled':

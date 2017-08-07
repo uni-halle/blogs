@@ -287,6 +287,9 @@ if ($tempera_varalert): ?><div id="varlimitalert"> <?php echo $tempera_varalert;
 
 
 <div id="righty" ><!-- Right side of page - Coffee, RSS tips and others -->
+
+	<?php do_action('tempera_before_righty') ?>
+
 	<div id="tempera-donate" class="postbox donate">
 	 <div title="Click to toggle" class="handlediv"><br /></div>
 		<h3 class="hndle"> Coffee Break </h3>
@@ -306,10 +309,16 @@ if ($tempera_varalert): ?><div id="varlimitalert"> <?php echo $tempera_varalert;
 			</div>
 
 			<p>Or socially smother, caress and embrace us:</p>
-			<div style="display:table;float:none;margin:0 auto;">
-				<div id="fb-root"></div><div class="fb-like" data-href="https://www.facebook.com/CryoutCreations" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
-				<a href="https://twitter.com/cryoutcreations" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @cryoutcreations</a>
-				<script src="https://apis.google.com/js/platform.js" async defer></script> <div class="g-plusone" data-href="https://plus.google.com/+CryoutcreationsEuCR2"  data-size="medium" data-annotation="none"></div>
+			<div class="social-buttons">
+				<a href="https://www.facebook.com/cryoutcreations" target="_blank" title="Follow us on Facebook">
+					<img src="<?php echo get_template_directory_uri() . '/admin/images/icon-facebook.png' ?>" alt="Facebook">
+				</a>
+				<a href="https://twitter.com/cryoutcreations" target="_blank" title="Follow us on Twitter">
+					<img src="<?php echo get_template_directory_uri() . '/admin/images/icon-twitter.png' ?>" alt="Twitter">
+				</a>
+				<a href="https://plus.google.com/106863427325889416242" target="_blank" title="Follow us on Google+">
+					<img src="<?php echo get_template_directory_uri() . '/admin/images/icon-googleplus.png' ?>" alt="Google+">
+				</a>
 			</div>
 
 		</div><!-- inside -->
@@ -348,7 +357,8 @@ if ($tempera_varalert): ?><div id="varlimitalert"> <?php echo $tempera_varalert;
 
             </div><!-- inside -->
     </div><!-- news -->
-
+	
+	<?php do_action('tempera_after_righty') ?>
 
 </div><!--  righty -->
 </div><!--  wrap -->

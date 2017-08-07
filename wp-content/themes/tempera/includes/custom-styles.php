@@ -191,8 +191,7 @@ a.continue-reading-link:hover i.crycon-right-dir {color:<?php echo $tempera_acce
 .columnmore a:hover {background:<?php echo $tempera_accentcolorb;?>;}
 
 .button, #respond .form-submit input#submit, input[type="submit"], input[type="reset"] {
-	background-color: <?php echo $tempera_accentcolora; ?>;
-	border-color: <?php echo $tempera_accentcolord; ?>; }
+	background-color: <?php echo $tempera_accentcolora; ?>; }
 .button:hover, #respond .form-submit input#submit:hover {
 	background-color: <?php echo $tempera_accentcolorb; ?>; }
 .entry-content tr th, .entry-content thead th {
@@ -208,8 +207,7 @@ input[type="search"],input[type="tel"],input[type="time"],input[type="url"],inpu
 	color: <?php echo $tempera_contentcolortxt; ?>; }
 input[type="submit"], input[type="reset"] {
 	color: <?php echo $tempera_contentcolorbg; ?>;
-	background-color: <?php echo $tempera_accentcolora; ?>;
-	border-color: <?php echo $tempera_accentcolord; ?>; }
+	background-color: <?php echo $tempera_accentcolora; ?>; }
 input[type="text"]:hover, input[type="password"]:hover, input[type="email"]:hover, textarea:hover,
 input[type="color"]:hover, input[type="date"]:hover, input[type="datetime"]:hover, input[type="datetime-local"]:hover, input[type="month"]:hover, input[type="number"]:hover, input[type="range"]:hover,
 input[type="search"]:hover, input[type="tel"]:hover, input[type="time"]:hover, input[type="url"]:hover, input[type="week"]:hover {
@@ -399,20 +397,20 @@ body.mce-content-body {
 	background-color: <?php echo $tempera_contentcolorbg; ?>; }
 body.mce-content-body * {
 	color: <?php echo $tempera_contentcolortxt; ?>; }
-body.mce-content-body p, body.mce-content-body ul, body.mce-content-body ol, body.mce-content-body select, 
+body.mce-content-body p, body.mce-content-body ul, body.mce-content-body ol, body.mce-content-body select,
 body.mce-content-body input, body.mce-content-body textarea, ody.mce-content-body input, ody.mce-content-body label {
 	font-family: <?php echo ((!$tempera_googlefont)?$tempera_fontfamily:"\"$tempera_googlefont\""); ?>;
 	font-size:<?php echo $tempera_fontsize ?>; }
 <?php $font_root = 2.375; for ($i=1;$i<=6;$i++) { ?>
-.mce-content-body h<?php echo $i ?> { 
-	font-size: <?php echo round(($font_root-($i*0.27))*(preg_replace("/[^\d]/","",$tempera_headingsfontsize)/100),4); ?>em; } 
+.mce-content-body h<?php echo $i ?> {
+	font-size: <?php echo round(($font_root-($i*0.27))*(preg_replace("/[^\d]/","",$tempera_headingsfontsize)/100),4); ?>em; }
 <?php } ?>
 .mce-content-body h1, .mce-content-body h2, .mce-content-body h3, .mce-content-body h4, .mce-content-body h5, .mce-content-body h6 {
 	font-family: <?php echo ((!$tempera_googlefonttitle)?(($tempera_fonttitle == 'General Font')?'inherit':"\"$tempera_fonttitle\""):"\"$tempera_googlefonttitle\""); ?>;
 	color: <?php echo $tempera_contentcolortxtheadings ?>; }
-	
+
 .mce-content-body pre, .mce-content-body code, .mce-content-body blockquote {
-	max-width: <?php echo esc_html( $content_body ) ?>px; 
+	max-width: <?php echo esc_html( $content_body ) ?>px;
 	color: <?php echo $tempera_contentcolortxt; ?>; }
 .mce-content-bodyhr { background-color: <?php echo $tempera_accentcolord; ?>; }
 .mce-content-body input, .mce-content-body select .mce-content-body textarea {

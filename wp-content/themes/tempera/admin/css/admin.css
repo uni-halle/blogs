@@ -925,6 +925,20 @@ input:-moz-placeholder, input::-moz-placeholder {color:#666;}
 	background:#FFF;
 }
 
+.social-buttons {  
+    text-align: center; 
+} 
+.social-buttons a { 
+    display: inline-block; 
+} 
+.social-buttons a img { 
+    max-width: 32px; 
+    max-height: 32px; 
+} 
+.social-buttons a img + img { 
+    margin-left: 10px; 
+} 
+
 
 br.colors-br {display:block;margin-bottom:10px;}
 

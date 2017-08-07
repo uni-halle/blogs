@@ -5,7 +5,7 @@ Copyright 2013-17 Cryout Creations
 Author: Cryout Creations
 Requires at least: 4.0
 Tested up to: 4.8.0
-Stable tag: 1.6.1.1
+Stable tag: 1.6.1.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: https://www.cryoutcreations.eu/donate/
@@ -106,6 +106,11 @@ Spanish - Carlol, HacKan
 
 
 == Changelog ==
+
+= 1.6.1.2 =
+* Removed border and added padding to submit and reset inputs and buttons
+* Fixed columns from posts listed by IDs limited by WordPress' global post count limit 
+* Removed social scripts in the theme's admin page and replaced with simple social profile links
 
 = 1.6.1.1 = 
 * Added option to turn off the new TinyMCE editor styling
