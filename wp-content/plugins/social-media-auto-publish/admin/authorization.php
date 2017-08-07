@@ -37,7 +37,7 @@ if(isset($_COOKIE['xyz_smap_session_state']) && isset($_REQUEST['state']) && ($_
 	. "&client_secret=" . $app_secret . "&code=" . $code;
 	
 	$params = null;$access_token="";
-	$response = wp_remote_get($token_url);
+	$response = wp_remote_get($token_url,array('sslverify'=> (get_option('xyz_smap_peer_verification')=='1') ? true : false));
 	
 	if(is_array($response))
 	{
@@ -64,7 +64,7 @@ if(isset($_COOKIE['xyz_smap_session_state']) && isset($_REQUEST['state']) && ($_
 		do
 		{
 			$result1="";$pagearray1="";
-			$pp=wp_remote_get("https://graph.facebook.com/".XYZ_SMAP_FB_API_VERSION."/me/accounts?access_token=$access_token&limit=$limit&offset=$offset");
+			$pp=wp_remote_get("https://graph.facebook.com/".XYZ_SMAP_FB_API_VERSION."/me/accounts?access_token=$access_token&limit=$limit&offset=$offset",array('sslverify'=> (get_option('xyz_smap_peer_verification')=='1') ? true : false));
 			if(is_array($pp))
 			{
 				$result1=$pp['body'];
@@ -115,7 +115,7 @@ if(isset($_COOKIE['xyz_smap_session_state']) && isset($_REQUEST['state']) && ($_
 		update_option('xyz_smap_pages_ids',$newpgs);
 		
 		$url = 'https://graph.facebook.com/'.XYZ_SMAP_FB_API_VERSION.'/me?access_token='.$access_token;
-		$contentget=wp_remote_get($url);$page_id='';
+		$contentget=wp_remote_get($url,array('sslverify'=> (get_option('xyz_smap_peer_verification')=='1') ? true : false));$page_id='';
 		if(is_array($contentget))
 		{
 			$result1=$contentget['body'];
@@ -172,10 +172,13 @@ $redirecturl=urlencode(admin_url('admin.php?page=social-media-auto-publish-setti
 	else if(isset($_GET['code']) && isset($_GET['state']) && $_GET['state']==$state)
 	{
 
-		$fields='grant_type=authorization_code&code='.$_GET['code'].'&redirect_uri='.$redirecturl.'&client_id='.$lnappikey.'&client_secret='.$lnapisecret;
-		$ln_acc_tok_json=xyzsmap_getpage('https://www.linkedin.com/uas/oauth2/accessToken', '', false, $fields);
-		$ln_acc_tok_json=$ln_acc_tok_json['content'];
-		
+// 		$fields='grant_type=authorization_code&code='.$_GET['code'].'&redirect_uri='.$redirecturl.'&client_id='.$lnappikey.'&client_secret='.$lnapisecret;
+// 		$ln_acc_tok_json=xyzsmap_getpage('https://www.linkedin.com/uas/oauth2/accessToken', '', false, $fields);
+// 		$ln_acc_tok_json=$ln_acc_tok_json['content'];
+		$url = 'https://www.linkedin.com/uas/oauth2/accessToken?grant_type=authorization_code&code='.$_GET['code'].'&redirect_uri='.$redirecturl.'&client_id='.$lnappikey.'&client_secret='.$lnapisecret;
+		$response = wp_remote_post( $url, array('method' => 'POST',
+							'sslverify'=> (get_option('xyz_smap_peer_verification')=='1') ? true : false));	// Access Token request
+		$ln_acc_tok_json=$response['body'];
 		update_option('xyz_smap_application_lnarray', $ln_acc_tok_json);
 		update_option('xyz_smap_lnaf',0);
 		header("Location:".admin_url('admin.php?page=social-media-auto-publish-settings&msg=4'));

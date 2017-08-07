@@ -107,156 +107,6 @@ function xyz_smap_getimage($post_ID,$description_org)
 
 }
 
-if (!function_exists("xyzsmap_getpage")){
-		function xyzsmap_getpage($url, $ref='', $ctOnly=false, $fields='', $advSettings='',$ch=false) {
-			
-		if(!$ch)
-		$ch = curl_init($url);
-		else 
-			curl_setopt($ch, CURLOPT_URL, $url);
-		
-		$ccURL = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
-		static $curl_loops = 0; static $curl_max_loops = 20; global $xyzsmap_gCookiesArr; 
-		
-		$cookies = ''; 
-		if (is_array($xyzsmap_gCookiesArr)) 
-		foreach ($xyzsmap_gCookiesArr as $cName=>$cVal)
-			$cookies .= $cName.'='.$cVal.'; ';
-		
-		
-		if ($curl_loops++ >= $curl_max_loops){
-			$curl_loops = 0; curl_close($ch);return false;
-		}
-		$headers = array(); 
-		
-		if ($fields!='')
-			$field_type="POST";
-		else	
-		$field_type="GET";
-		
-
-		$headers[] = 'Cache-Control: max-age=0';
-		$headers[] = 'Connection: Keep-Alive';
-		$headers[]='Referer: '.$url; 
-		$headers[]='User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.22 Safari/537.36';
-		if($field_type=='POST') 
-			$headers[]='Content-Type: application/x-www-form-urlencoded';
-		
-		if (isset($advSettings['liXMLHttpRequest'])) {
-			$headers[] = 'X-Requested-With: XMLHttpRequest';
-		}
-		if (isset($advSettings['Origin'])) {
-			$headers[] = 'Origin: '.$advSettings['Origin'];
-		}
-		if ($field_type=='GET')
-			 $headers[]='Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8';
-		else 
-			$headers[]='Accept: */*';
-
-		$headers[]='Accept-Encoding: deflate,sdch';
-		$headers[] = 'Accept-Language: en-US,en;q=0.8';
-		
-		
-		
-		if(isset($advSettings['noSSLSec'])){
-			curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, 0); curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, 0);
-		}
-		
-		if(isset($advSettings['proxy']) && $advSettings['proxy']['host']!='' && $advSettings['proxy']['port']!==''){
-			curl_setopt($ch, CURLOPT_TIMEOUT, 4);  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4);
-			curl_setopt( $ch, CURLOPT_PROXYTYPE, CURLPROXY_HTTP ); curl_setopt( $ch, CURLOPT_PROXY, $advSettings['proxy']['host'] ); 
-			curl_setopt( $ch, CURLOPT_PROXYPORT, $advSettings['proxy']['port'] );
-			if ( isset($advSettings['proxy']['up']) && $advSettings['proxy']['up']!='' ) {
-				curl_setopt( $ch, CURLOPT_PROXYAUTH, CURLAUTH_ANY ); curl_setopt( $ch, CURLOPT_PROXYUSERPWD, $advSettings['proxy']['up'] );
-			}
-		}
-		if(isset($advSettings['headers'])){
-			$headers = array_merge($headers, $advSettings['headers']);
-		}
-		curl_setopt($ch, CURLOPT_HEADER, true);     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_COOKIE, $cookies); curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		curl_setopt($ch, CURLINFO_HEADER_OUT, true);  if (is_string($ref) && $ref!='') curl_setopt($ch, CURLOPT_REFERER, $ref);
-		curl_setopt($ch, CURLOPT_USERAGENT, (( isset( $advSettings['UA']) && $advSettings['UA']!='')?$advSettings['UA']:"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.44 Safari/537.36"));
-		
-		if ($fields!=''){
-			curl_setopt($ch, CURLOPT_POST, true);curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
-		} else { curl_setopt($ch, CURLOPT_POST, false); curl_setopt($ch, CURLOPT_POSTFIELDS, '');  curl_setopt($ch, CURLOPT_HTTPGET, true);
-		}
-		
-		curl_setopt($ch, CURLOPT_TIMEOUT, 60);  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 60);
-		$content = curl_exec($ch);
-
-		$errmsg = curl_error($ch);  if (isset($errmsg) && stripos($errmsg, 'SSL')!==false) {
-			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);  $content = curl_exec($ch);
-		}
-		if (strpos($content, "\n\n")!=false && strpos($content, "\n\n")<100)  
-			$content = substr_replace($content, "\n", strpos($content,"\n\n"), strlen("\n\n"));
-		if (strpos($content, "\r\n\r\n")!=false && strpos($content, "\r\n\r\n")<100) 
-			$content = substr_replace($content, "\r\n", strpos($content,"\r\n\r\n"), strlen("\r\n\r\n"));
-		$ndel = strpos($content, "\n\n"); $rndel = strpos($content, "\r\n\r\n"); 
-		if ($ndel==false) $ndel = 1000000; if ($rndel==false) $rndel = 1000000; $rrDel = $rndel<$ndel?"\r\n\r\n":"\n\n";
-		list($header, $content) = explode($rrDel, $content, 2);
-		if ($ctOnly!==true) {
-			$fullresponse = curl_getinfo($ch); $err = curl_errno($ch); $errmsg = curl_error($ch); $fullresponse['errno'] = $err;  
-			$fullresponse['errmsg'] = $errmsg;  $fullresponse['headers'] = $header; $fullresponse['content'] = $content;
-		}
-		$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE); $headers = curl_getinfo($ch); 
-		
-		if (empty($headers['request_header'])) $headers['request_header'] = 'Host: None'."\n";
-		
-		$results = array(); preg_match_all('|Host: (.*)\n|U', $headers['request_header'], $results); 
-		$ckDomain = str_replace('.', '_', $results[1][0]);  $ckDomain = str_replace("\r", "", $ckDomain); 
-		$ckDomain = str_replace("\n", "", $ckDomain);
-		
-
-		$results = array(); $cookies = '';  preg_match_all('|Set-Cookie: (.*);|U', $header, $results); $carTmp = $results[1];
-		preg_match_all('/Set-Cookie: (.*)\b/', $header, $xck); $xck = $xck[1]; 
-		//$clCook = array();
-		if (isset($advSettings['cdomain']) &&  $advSettings['cdomain']!=''){
-			foreach ($carTmp as $iii=>$cTmp)
-				 if (stripos($xck[$iii],'Domain=')===false || stripos($xck[$iii],'Domain=.'.$advSettings['cdomain'].';')!==false){
-				$temp = explode('=',$cTmp,2); $xyzsmap_gCookiesArr[$temp[0]]=$temp[1];
-			}
-		}
-		else { 
-		 	foreach ($carTmp as $cTmp){
-				$temp = explode('=',$cTmp,2);
-				 $xyzsmap_gCookiesArr[$temp[0]]=$temp[1];
-		    }
-		}
-		
-		/*foreach ($carTmp as $cTmp){
-			$temp = explode('=',$cTmp,2);
-		}*/
-		
-		$rURL = '';
-
-		if ($http_code == 200 && stripos($content, 'http-equiv="refresh" content="0; url=&#39;')!==false ) {
-			$http_code=301; $rURL = xyzsmap_substring($content, 'http-equiv="refresh" content="0; url=&#39;','&#39;"');
-			 $xyzsmap_gCookiesArr = array();
-		}
-		elseif ($http_code == 200 && stripos($content, 'location.replace')!==false ) {
-			$http_code=301; $rURL = xyzsmap_substring($content, 'location.replace("','"');
-		}
-		if ($http_code == 301 || $http_code == 302 || $http_code == 303){
-			if ($rURL!='') {
-				$rURL = str_replace('\x3d','=',$rURL); $rURL = str_replace('\x26','&',$rURL);
-				$url = @parse_url($rURL);
-			} else { $matches = array(); preg_match('/Location:(.*?)\n/', $header, $matches); $url = @parse_url(trim(array_pop($matches)));
-			} $rURL = '';
-			if (!$url){
-				$curl_loops = 0;curl_close($ch); return ($ctOnly===true)?$content:$fullresponse;
-			}
-			$last_urlX = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL); $last_url = @parse_url($last_urlX);
-			if (!$url['scheme']) $url['scheme'] = $last_url['scheme'];  if (!$url['host']) $url['host'] = $last_url['host']; 
-			if (!$url['path']) $url['path'] = $last_url['path']; if (!isset($url['query'])) $url['query'] = '';
-			$new_url = $url['scheme'] . '://' . $url['host'] . $url['path'] . ($url['query']?'?'.$url['query']:''); 
-			
-			 return xyzsmap_getpage($new_url, $last_urlX, $ctOnly, '', $advSettings, $ch);
-		} else { $curl_loops=0;curl_close($ch); return ($ctOnly===true)?$content:$fullresponse;
-		}
-	}
-}
 /* Local time formating */
 if(!function_exists('xyz_smap_local_date_time')){
 	function xyz_smap_local_date_time($format,$timestamp){
@@ -282,7 +132,7 @@ if (!function_exists("xyz_wp_smap_linkedin_attachment_metas")) {
 	function xyz_wp_smap_linkedin_attachment_metas($contentln,$url)
 	{
 		$content_title='';$content_desc='';$utf="UTF-8";$content_img='';
-		$aprv_me_data=wp_remote_get($url);
+		$aprv_me_data=wp_remote_get($url,array('sslverify'=> (get_option('xyz_smap_peer_verification')=='1') ? true : false));
 		if( is_array($aprv_me_data) ) {
 			$aprv_me_data = $aprv_me_data['body']; // use the content
 		}
@@ -339,7 +189,7 @@ if (!function_exists("xyz_wp_fbap_attachment_metas")) {
 	function xyz_wp_fbap_attachment_metas($attachment,$url)
 	{
 		$name='';$description_li='';$content_img='';$utf="UTF-8";
-		$aprv_me_data=wp_remote_get($url);
+		$aprv_me_data=wp_remote_get($url,array('sslverify'=> (get_option('xyz_smap_peer_verification')=='1') ? true : false));
 		if( is_array($aprv_me_data) ) {
 			$aprv_me_data = $aprv_me_data['body']; // use the content
 		}

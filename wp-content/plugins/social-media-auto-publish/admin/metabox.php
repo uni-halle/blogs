@@ -306,7 +306,8 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 							- Insert the excerpt of your post.<br />{POST_CONTENT} - Insert
 							the description of your post.<br />{BLOG_TITLE} - Insert the name
 							of your blog.<br />{USER_NICENAME} - Insert the nicename
-							of the author.
+							of the author.<br />{POST_ID} - Insert the ID of your post.
+							<br />{POST_PUBLISH_DATE} - Insert the publish date of your post.
 						</div>
 		</td>
 	<td>
@@ -318,6 +319,8 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 		<option value ="4">{POST_CONTENT}   </option>
 		<option value ="5">{BLOG_TITLE}   </option>
 		<option value ="6">{USER_NICENAME}   </option>
+		<option value ="7">{POST_ID}   </option>
+		<option value ="8">{POST_PUBLISH_DATE}   </option>
 		</select> </td></tr>
 		
 		<tr id="fpmftarea"><td>&nbsp;</td><td>
@@ -382,7 +385,8 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 							- Insert the excerpt of your post.<br />{POST_CONTENT} - Insert
 							the description of your post.<br />{BLOG_TITLE} - Insert the name
 							of your blog.<br />{USER_NICENAME} - Insert the nicename
-							of the author.
+							of the author.<br />{POST_ID} - Insert the ID of your post.
+							<br />{POST_PUBLISH_DATE} - Insert the publish date of your post.
 						</div>
 		</td>
 		
@@ -396,6 +400,8 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 		<option value ="4">{POST_CONTENT}   </option>
 		<option value ="5">{BLOG_TITLE}   </option>
 		<option value ="6">{USER_NICENAME}   </option>
+		<option value ="7">{POST_ID}   </option>
+		<option value ="8">{POST_PUBLISH_DATE}   </option>
 		</select> </td></tr>
 		
 		<tr id="twmftarea"><td>&nbsp;</td><td>
@@ -467,7 +473,8 @@ Public</option><option value="1" <?php  if(get_option('xyz_smap_ln_shareprivate'
 							- Insert the excerpt of your post.<br />{POST_CONTENT} - Insert
 							the description of your post.<br />{BLOG_TITLE} - Insert the name
 							of your blog.<br />{USER_NICENAME} - Insert the nicename
-							of the author.
+							of the author.<br />{POST_ID} - Insert the ID of your post.
+							<br />{POST_PUBLISH_DATE} - Insert the publish date of your post.
 						</div>
 		</td>
 	<td>
@@ -479,6 +486,8 @@ Public</option><option value="1" <?php  if(get_option('xyz_smap_ln_shareprivate'
 		<option value ="4">{POST_CONTENT}   </option>
 		<option value ="5">{BLOG_TITLE}   </option>
 		<option value ="6">{USER_NICENAME}   </option>
+		<option value ="7">{POST_ID}   </option>
+		<option value ="8">{POST_PUBLISH_DATE}   </option>
 		</select> </td></tr>
 		
 		<tr id="lnmftarea"><td>&nbsp;</td><td>

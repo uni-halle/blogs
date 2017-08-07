@@ -2,6 +2,21 @@
 if( !defined('ABSPATH') ){ exit();}
 ?>
 <style>
+.buy-button {
+	display:block;
+	color:white;
+    padding:5px 21px;
+    background: #545454;
+    border: 0;
+    border-bottom: 2px solid #545454;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0 -2px #545454;
+    box-shadow: inset 0 -2px #545454;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius:3px;
+}
 </style>
 
 <h1 style="visibility: visible;">Social Media Auto Publish (V <?php echo xyz_smap_plugin_get_version(); ?>)</h1>
@@ -70,7 +85,7 @@ Social Media Auto Publish automatically publishes posts from your blog to your  
 	
 		<!-- Posting Options  -->
 	<tr>
-		<td rowspan="12"><h4>Posting Options</h4></td>
+		<td rowspan="13"><h4>Posting Options</h4></td>
 		<td>Publish to facebook profile/pages</td>
 		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
 		</td>
@@ -157,6 +172,13 @@ Social Media Auto Publish automatically publishes posts from your blog to your  
 		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
 		</td>
 	</tr>
+	<tr>
+		<td>Option to use post tags as hash tags</td>
+		<td><img src="<?php echo plugins_url("images/cross.png",__FILE__);?>">
+		</td>
+		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
+		</td>
+	</tr>
 	
 	<tr>
 		<td>Enable/Disable SSL peer verification</td>
@@ -169,14 +191,13 @@ Social Media Auto Publish automatically publishes posts from your blog to your  
 	<!-- Image Options  -->
 	
 	<tr>
-	<td rowspan="3"><h4>Image Options</h4></td>
+	<td rowspan="5"><h4>Image Options</h4></td>
 		<td>Publish images along with post content</td>
 		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
 		</td>
 		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
 		</td>
 	</tr>
-	
 	
 	<tr>
 		<td>Separate default image url for publishing to multiple social media accounts</td>
@@ -194,10 +215,44 @@ Social Media Auto Publish automatically publishes posts from your blog to your  
 		</td>
 	</tr>
 	
+	<tr>
+		<td>Publish multiple images to facebook and twitter along with post content</td>
+		<td><img src="<?php echo plugins_url("images/cross.png",__FILE__);?>">
+		</td>
+		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
+		</td>
+	</tr>
+	
+	<tr>
+		<td>Option to specify multiphoto preference from post content and post meta</td>
+		<td><img src="<?php echo plugins_url("images/cross.png",__FILE__);?>">
+		</td>
+		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
+		</td>
+	</tr>
+	
+	<!-- Video Options  -->
+	
+	<tr>
+	<td rowspan="2"><h4>Video Options</h4></td>
+		<td>Publish video to facebook and twitter along with post content</td>
+		<td><img src="<?php echo plugins_url("images/cross.png",__FILE__);?>">
+		</td>
+		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
+		</td>
+	</tr>
+	
+	<tr>
+		<td>Option to specify preference from post content, post meta and open graph tags</td>
+		<td><img src="<?php echo plugins_url("images/cross.png",__FILE__);?>">
+		</td>
+		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
+		</td>
+	</tr>
 	<!-- Filter Options  -->
 		
 	<tr>
-	<td rowspan="6"><h4>Filter Options</h4></td>
+	<td rowspan="7"><h4>Filter Options</h4></td>
 		<td>Filter posts to publish based on categories</td>
 		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
 		</td>
@@ -239,6 +294,13 @@ Social Media Auto Publish automatically publishes posts from your blog to your  
 	
 	<tr>
 		<td>Enable/Disable page publishing for individual accounts</td>
+		<td><img src="<?php echo plugins_url("images/cross.png",__FILE__);?>">
+		</td>
+		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
+		</td>
+	</tr>
+	<tr>
+		<td>Override auto publish scheduling for individual accounts</td>
 		<td><img src="<?php echo plugins_url("images/cross.png",__FILE__);?>">
 		</td>
 		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
@@ -323,6 +385,18 @@ Social Media Auto Publish automatically publishes posts from your blog to your  
 		<td><img src="<?php echo plugins_url("images/cross.png",__FILE__);?>">
 		</td>
 		<td><img src="<?php echo plugins_url("images/tick.png",__FILE__);?>">
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="2"><h4>Other</h4></td>
+		<td>Price</td>
+		<td>FREE</td>
+		<td>Starts from 39 USD</td>
+	</tr>
+	<tr>
+		<td>Purchase</td>
+		<td></td>
+		<td style="padding: 2px" ><a target="_blank"href="https://xyzscripts.com/members/product/purchase/XYZWPSMPPRE"  class="buy-button">Buy Now</a>
 		</td>
 	</tr>
 		

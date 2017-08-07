@@ -57,4 +57,24 @@ function xyz_smap_logs()
 	require( dirname( __FILE__ ) . '/footer.php' );
 }
 
+add_action('wp_head', 'xyz_smap_insert_og_image_tag_for_fb');
+function xyz_smap_insert_og_image_tag_for_fb(){
+
+	global $post;
+	$postid= $post->ID;
+	if(isset($postid ) && $postid>0)
+	{
+		$get_post_meta_insert_og=0;
+		$get_post_meta_insert_og=get_post_meta($postid,"xyz_smap_insert_og",true); 
+		if (($get_post_meta_insert_og==1)&&(strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false))
+		{
+			$attachmenturl=xyz_smap_getimage($postid, $post->post_content);
+			if(!empty($attachmenturl))
+			{
+				echo '<meta property="og:image" content="'.$attachmenturl.'" />';
+				update_post_meta($postid, "xyz_smap_insert_og", "0");
+			}
+		}
+	}
+}
 ?>

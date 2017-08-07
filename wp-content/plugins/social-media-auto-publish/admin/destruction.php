@@ -77,6 +77,8 @@ function smap_free_destroy()
 	delete_option('xyz_smap_premium_version_ads');
 	delete_option('xyz_smap_default_selection_edit');
 	delete_option('xyz_smap_utf_decode_enable');
+	delete_option('xyz_smap_dnt_shw_notice');
+	delete_option('smap_installed_date');
 }
 
 register_uninstall_hook(XYZ_SMAP_PLUGIN_FILE,'smap_free_network_destroy');

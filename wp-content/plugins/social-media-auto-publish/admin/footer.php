@@ -7,7 +7,7 @@ if(get_option('xyz_smap_premium_version_ads')==1){?>
 		<h2 style="vertical-align: middle;">
 			<a target="_blank"
 				href="http://xyzscripts.com/wordpress-plugins/social-media-auto-publish/features">Fully
-				Featured XYZ WP SMAP Premium Plugin</a> - Just 29 USD
+				Featured XYZ WP SMAP Premium Plugin</a> - Just 39 USD
 		</h2>
 	</div>
 	<div style="float: left; margin-top: 3px">
@@ -165,7 +165,10 @@ Our Plugins :
 	<a target="_blank"	href="http://wordpress.org/plugins/quick-box-popup/">Quick Box Popup</a> ★
 	<a target="_blank"	href="http://wordpress.org/plugins/social-media-auto-publish/">Social Media Auto Publish</a> ★
 	<a target="_blank"	href="http://wordpress.org/plugins/twitter-auto-publish/">Twitter Auto Publish</a> ★
-	<a target="_blank"	href="http://wordpress.org/plugins/custom-field-manager/">Custom Field Manager</a>
+	<a target="_blank"	href="http://wordpress.org/plugins/custom-field-manager/">Custom Field Manager</a> ★
+	<a target="_blank"	href="http://wordpress.org/plugins/wp-filter-posts/">WP Filter Posts</a> ★
+	<a target="_blank"	href="https://wordpress.org/plugins/wp-gallery-manager/">WP Gallery Manager</a>
+
 </div>
   
   <div style="padding-top: 10px;text-align: center;">
