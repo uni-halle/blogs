@@ -1783,6 +1783,7 @@ SQL;
 			$media_count = 0;
 			$matches = array();
 			$alt_matches = array();
+			$title_matches = array();
 			
 			if ( preg_match_all('#<(img|a)(.*?)(src|href)="(.*?)"(.*?)>#s', $content, $matches, PREG_SET_ORDER) > 0 ) {
 				if ( is_array($matches) ) {
@@ -1794,7 +1795,12 @@ SQL;
 						if (preg_match('#alt="(.*?)"#', $other_attributes, $alt_matches) ) {
 							$image_alt = wp_strip_all_tags(stripslashes($alt_matches[1]), true);
 						}
-						$attachment_id = $this->import_media($image_alt, $filename, $post_date, $options);
+						// Image caption
+						$image_caption = '';
+						if (preg_match('#title="(.*?)"#', $other_attributes, $title_matches) ) {
+							$image_caption = $title_matches[1];
+						}
+						$attachment_id = $this->import_media($image_alt, $filename, $post_date, $options, $image_caption);
 						if ( $attachment_id !== false ) {
 							$media_count++;
 							$media[$filename] = $attachment_id;
@@ -1815,9 +1821,10 @@ SQL;
 		 * @param string $filename Image URL
 		 * @param date $date Date
 		 * @param array $options Options
+		 * @param string $image_caption Image caption
 		 * @return int attachment ID or false
 		 */
-		public function import_media($name, $filename, $date, $options=array()) {
+		public function import_media($name, $filename, $date, $options=array(), $image_caption='') {
 			if ( $date == '0000-00-00 00:00:00' ) {
 				$date = date('Y-m-d H:i:s');
 			}
@@ -1899,7 +1906,7 @@ SQL;
 			$upload_dir = wp_upload_dir();
 			$guid = str_replace($upload_dir['basedir'], $upload_dir['baseurl'], $new_full_filename);
 			
-			$attachment_id = $this->insert_attachment($post_title, $basename, $new_full_filename, $guid, $date, $filetype['type'], $image_alt);
+			$attachment_id = $this->insert_attachment($post_title, $basename, $new_full_filename, $guid, $date, $filetype['type'], $image_alt, $image_caption);
 			return $attachment_id;
 		}
 		
@@ -1937,9 +1944,10 @@ SQL;
 		 * @param date $date Date
 		 * @param string $filetype File type
 		 * @param string $image_alt Image description
+		 * @param string $image_caption Image caption
 		 * @return int|false Attachment ID or false
 		 */
-		public function insert_attachment($attachment_title, $basename, $new_full_filename, $guid, $date, $filetype, $image_alt='') {
+		public function insert_attachment($attachment_title, $basename, $new_full_filename, $guid, $date, $filetype, $image_alt='', $image_caption='') {
 			$post_name = 'attachment-' . sanitize_title($attachment_title); // Prefix the post name to avoid wrong redirect to a post with the same name
 			
 			// If the attachment does not exist yet, insert it in the database
@@ -1960,6 +1968,7 @@ SQL;
 					'post_title'		=> $attachment_title,
 					'post_status'		=> 'inherit',
 					'post_content'		=> '',
+					'post_excerpt'		=> $image_caption,
 				);
 				$attachment_id = wp_insert_attachment($attachment_data, $new_full_filename);
 				add_post_meta($attachment_id, '_fgj2wp_imported', 1, true); // To delete the imported attachments
