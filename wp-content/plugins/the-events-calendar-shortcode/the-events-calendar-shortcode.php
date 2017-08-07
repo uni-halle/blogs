@@ -3,7 +3,7 @@
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin (Free Version) by Modern Tribe</a>.
- Version: 1.6
+ Version: 1.6.1
  Author: Event Calendar Newsletter
  Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Contributors: Brainchild Media Group, Reddit user miahelf, tallavic, hejeva2
@@ -38,7 +38,7 @@ class Events_Calendar_Shortcode
 	 *
 	 * @since 1.0.0
 	 */
-	const VERSION = '1.6';
+	const VERSION = '1.6.1';
 
 	private $admin_page = null;
 
@@ -168,22 +168,25 @@ class Events_Calendar_Shortcode
 				$atts['cats'] = explode( ",", $atts['cat'] );
 				$atts['cats'] = array_map( 'trim', $atts['cats'] );
 			} else {
-				$atts['cats'] = $atts['cat'];
+				$atts['cats'] = array( trim( $atts['cat'] ) );
 			}
 
 			$atts['event_tax'] = array(
 				'relation' => 'OR',
-				array(
+			);
+
+			foreach ( $atts['cats'] as $cat ) {
+				$atts['event_tax'][] = array(
 					'taxonomy' => 'tribe_events_cat',
 					'field' => 'name',
-					'terms' => $atts['cats'],
-				),
-				array(
+					'terms' => $cat,
+				);
+				$atts['event_tax'][] = array(
 					'taxonomy' => 'tribe_events_cat',
 					'field' => 'slug',
-					'terms' => $atts['cats'],
-				)
-			);
+					'terms' => $cat,
+				);
+			}
 		}
 
 		// Past Event
@@ -264,12 +267,13 @@ class Events_Calendar_Shortcode
 				$event_output = '';
 				$category_slugs = array();
 				$category_list = get_the_terms( $post, 'tribe_events_cat' );
+				$featured_class = ( get_post_meta( get_the_ID(), '_tribe_featured', true ) ? ' ecs-featured-event' : '' );
 				if ( is_array( $category_list ) ) {
 					foreach ( (array) $category_list as $category ) {
 						$category_slugs[] = ' ' . $category->slug . '_ecs_category';
 					}
 				}
-				$event_output .= apply_filters( 'ecs_event_start_tag', '<li class="ecs-event' . implode( '', $category_slugs ) . '">', $atts, $post );
+				$event_output .= apply_filters( 'ecs_event_start_tag', '<li class="ecs-event' . implode( '', $category_slugs ) . $featured_class . '">', $atts, $post );
 
 				// Put Values into $event_output
 				foreach ( apply_filters( 'ecs_event_contentorder', $atts['contentorder'], $atts, $post ) as $contentorder ) {

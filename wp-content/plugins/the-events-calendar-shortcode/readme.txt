@@ -3,7 +3,7 @@ Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
 Tested up to: 4.8
-Stable tag: 1.6
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,11 +45,13 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 <li>date - Show only events for a specific day [ecs-list-events date='2017-04-16']</li>
 <li>tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.</li>
 <li>city, state, country - Display events by location.</li>
+<li>featured only - Show only events marked as "featured"</li>
 <li>id - Show a single event, useful for displaying details of the event on a blog post or page</li>
 <li>description - Use the full description instead of the excerpt of an event in the listing</li>
 <li>raw_description - Avoid filtering any HTML (spacing, links, bullet points, etc) in the description</li>
 <li>raw_excerpt - Avoid filtering any HTML (spacing, links, etc) in the excerpt</li>
 <li>year - Show only events for a specific year</li>
+<li>date range - Show only events between certain days</li>
 <li>timeonly - To show just the start time of the event. [ecs-list-events timeonly='true']</li>
 <li>offset - Skip a certain number of events from the beginning, useful for using multiple shortcodes on the same page (with ads in between) or splitting into columns</li>
 <li>custom design - Create one or more of your own templates for use with the shortcode</li>
@@ -104,8 +106,10 @@ With [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the
 * description - Use the full description instead of the excerpt of an event in the listing
 * raw_description - Avoid filtering any HTML (spacing, links, bullet points, etc) in the description
 * raw_excerpt - Avoid filtering any HTML (spacing, links, etc) in the excerpt
+* featured only - Show only events marked as "featured"
 * date - Show only events for a specific day `[ecs-list-events date='2017-04-16']`
 * year - Show only events for a specific year `[ecs-list-events year='2017']`
+* date range - Show only events between certain days `[ecs-list-events fromdate='2017-05-31' todate='2017-06-15']`
 * timeonly - To show just the start time of the event. `[ecs-list-events timeonly='true']`
 * offset - Skip a certain number of events from the beginning, useful for using multiple shortcodes on the same page (with ads in between) or splitting into columns
 * custom design - Create one or more of your own templates for use with the shortcode
@@ -123,7 +127,7 @@ If a regular text widget doesn't work, put the shortcode in a <a href="https://w
 By default the plugin does not include styling. Events are listed in ul li tags with appropriate classes for styling with a bit of CSS.
 
 * ul class="ecs-event-list"
-* li class="ecs-event"
+* li class="ecs-event" and "ecs-featured-event" (if featured)
 * event title link is H4 class="entry-title summary"
 * date class is time
 * venue class is venue
@@ -149,6 +153,10 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 3. Many settings you can use in the shortcode to change what details appear in the events listing
 
 == Upgrade Notice ==
+
+= 1.6.1 =
+* Added ecs-featured-event class if event is featured
+* Internal changes to filtering by one or more categories
 
 = 1.6 =
 * Changes default ordering by the start date, use orderby="enddate" for previous default ordering
@@ -214,6 +222,10 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 1.6.1 =
+* Added ecs-featured-event class if event is featured
+* Internal changes to filtering by one or more categories
 
 = 1.6 =
 * Changes default ordering by the start date, use orderby="enddate" for previous default ordering
