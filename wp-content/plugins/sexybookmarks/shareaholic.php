@@ -3,14 +3,14 @@
  * The main file!
  *
  * @package shareaholic
- * @version 7.10.1.0
+ * @version 8.0.1
  */
 
 /*
 Plugin Name: Shareaholic | share buttons, analytics, related content
 Plugin URI: https://shareaholic.com/publishers/
 Description: The world's leading all-in-one Content Amplification Platform that helps grow your website traffic, engagement, conversions & monetization. See <a href="admin.php?page=shareaholic-settings">configuration panel</a> for more settings.
-Version: 7.10.1.0
+Version: 8.0.1
 Author: Shareaholic
 Author URI: https://shareaholic.com
 Text Domain: shareaholic
@@ -63,7 +63,7 @@ if (!class_exists('Shareaholic')) {
     const CM_API_URL = 'https://cm-web.shareaholic.com'; // uses static IPs for firewall whitelisting
     const REC_API_URL = 'http://recommendations.shareaholic.com';
 
-    const VERSION = '7.10.1.0';
+    const VERSION = '8.0.1';
 
     /**
      * Starts off as false so that ::get_instance() returns
@@ -89,6 +89,10 @@ if (!class_exists('Shareaholic')) {
       add_action('wp_ajax_nopriv_shareaholic_permalink_list',   array('ShareaholicPublic', 'permalink_list'));
       add_action('wp_ajax_shareaholic_permalink_list',          array('ShareaholicPublic', 'permalink_list'));
 
+      // SDK Badge
+      add_action('wp_ajax_nopriv_shareaholic_sdk_info',   array('ShareaholicPublic', 'sdk_info'));
+      add_action('wp_ajax_shareaholic_sdk_info',          array('ShareaholicPublic', 'sdk_info'));
+      
       // Permalink info for Related Content index
       add_action('wp_ajax_nopriv_shareaholic_permalink_info',   array('ShareaholicPublic', 'permalink_info'));
       add_action('wp_ajax_shareaholic_permalink_info',          array('ShareaholicPublic', 'permalink_info'));
@@ -284,7 +288,6 @@ if (!class_exists('Shareaholic')) {
 /* PLUGIN SPECIFIC CODE STARTS HERE */
   add_action('update_option_active_plugins', 'sexybookmarks_update_primary_plugin');
 }
-
 function sexybookmarks_update_primary_plugin() {
   deactivate_plugins(plugin_basename( __FILE__ ));
 }

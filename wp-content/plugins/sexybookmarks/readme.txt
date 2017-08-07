@@ -3,7 +3,7 @@ Contributors: shareaholic
 Tags: share buttons, related content, cookie compliance, eu cookie law, shareaholic, shareholic, sexybookmarks, recommendations, cookie consent, email button, social sharing, social bookmarking, share image, image sharing, follow buttons, floated share buttons, floating share buttons, analytics, social media, social plugin, facebook, twitter, google plus, google bookmarks, gmail, linkedin, pinterest, reddit, tumblr, evernote, digg, delicious, stumbleupon, printfriendly, fancy, amazon, xing, vk, yahoo, mister wong, viadeo, odnoklassniki box.net, diigo, yammer, ycombinator, hotmail, instapaper, mixi, arto, whatsapp, hootsuite, inbound.org, plurk, aim, buffer, meneame, pinboard.in, stumpedia, bitly, blogger, yummly, izeby, kaboodle, weibo, instagram, tinyurl,  typepad, weheartit, flipboard, pocket, wanelo, fark, wykop, symphony, kindle, houzz, youtube, sms, onenote, google classroom, disqus, spotify, zillow, feedly, kik, line, livejournal, baidu
 Requires at least: 3.0
 Tested up to: 4.8
-Stable tag: 7.10.1.0
+Stable tag: 8.0.1
 
 World's leading all-in-one Content Amplification Platform that helps grow your site traffic, engagement, conversions & monetization for FREE.
 
@@ -194,6 +194,9 @@ Please see here: [Shareaholic Helpdesk](http://support.shareaholic.com/hc/en-us)
 Please see here: [Usage & Installation Instructions](http://support.shareaholic.com/hc/en-us/categories/200101476-WordPress-Plugin)
 
 == Changelog ==
+
+= 8.0.1 =
+* Version 8 is here bringing with it a brand new revamped and streamlined UI!
 
 = 7.10.1.0 =
 * **[Social Share Count Recovery](https://blog.shareaholic.com/recover-social-share-counts-https/)** ([learn more](https://blog.shareaholic.com/recover-social-share-counts-https/)) - This setting is for anyone who has had to go through the pain and toil of migrating their domain name or changing over from HTTP to HTTPS and thereby losing all of your social share counts. Whether you are moving your site to HTTPS or migrating your domain name, don't lose your share counts. Once active, Shareaholic will begin to fetch share counts for both URL's, add them together and display the combined total. Voilà - all your hard work and social proof will again be fully accounted for.
@@ -714,6 +717,8 @@ Please see here: [Usage & Installation Instructions](http://support.shareaholic.
 * Added Google Analytics Social Tracking Feature
 
 == Upgrade Notice ==
+= 8.0.1 =
+Version 8 is here bringing with it a brand new revamped and streamlined UI!
 
 = 7.10.1.0 =
 New: Share Count Recovery feature! Don't lose your hard work. Recover your social proof.

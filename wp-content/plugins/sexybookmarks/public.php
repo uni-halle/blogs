@@ -641,6 +641,34 @@ class ShareaholicPublic {
   }
   
   /**
+   * Function to return relevant info for the SDK Badge
+   *
+   * @return sdk info in JSON
+   */
+  public static function sdk_info() {
+
+    if (!current_user_can('activate_plugins')) {
+      $info = array(
+        'sdk_info' => array(
+          'message' => "Unauthorized",
+        ),
+      );
+    } else {
+      $info = array(
+        'sdk_info' => array(
+          'site_id' => ShareaholicUtilities::get_option('api_key'),
+          'verification_key' => ShareaholicUtilities::get_option('verification_key'),
+          'wp_user_info' => ShareaholicUtilities::user_info(),
+        ),
+      );
+    }
+    
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($info);
+    exit;
+  }
+  
+  /**
    * Function to return relevant info for a given permalink for the Related Content index
    *
    * @return page info in JSON

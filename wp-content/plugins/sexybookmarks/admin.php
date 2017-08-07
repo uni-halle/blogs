@@ -29,6 +29,7 @@ class ShareaholicAdmin {
          ShareaholicUtilities::share_counts_api_connectivity_check();
        }
     }
+    self::check_redirect_url();
     self::check_review_dismissal();
     self::check_plugin_review();
   }
@@ -48,7 +49,60 @@ class ShareaholicAdmin {
 
     add_site_option(self::REVIEW_DISMISS_OPTION, true);
   }
-
+  
+  /**
+   * Redirect to Plans
+   *
+   */
+  public static function go_premium() {
+    echo <<<JQUERY
+<script type="text/javascript">
+window.location = "https://shareaholic.com/plans";
+</script>
+JQUERY;
+  }
+  
+  /**
+   * Redirection Utility (used by SDK - Badge)
+   *
+   */
+  public static function check_redirect_url() {
+    
+    $redirect_url = isset($_GET['shareaholic_redirect_url']) ? strtolower($_GET['shareaholic_redirect_url']) : NULL;
+    
+    if ($redirect_url != NULL) {
+      
+      // exit if redirect is not to shareaholic.com
+      $redirect_url_host = parse_url($redirect_url, PHP_URL_HOST);
+      
+      if ($redirect_url_host != "shareaholic.com" && $redirect_url_host != "stageaholic.com" && $redirect_url_host != "spreadaholic.com") {
+        wp_redirect(admin_url('admin.php?page=shareaholic-settings'));
+        exit;
+      }
+      
+      // Get User Email
+      $current_user = wp_get_current_user();
+      $user_email = urlencode($current_user->user_email);
+      
+      // Pass verification_key only if current wp user has permission to the key
+      if (current_user_can('activate_plugins')) {
+        $verification_key = ShareaholicUtilities::get_option('verification_key');
+      } else {
+        $verification_key = "unauthorized";
+      }
+      
+      $enriched_redirect_url = add_query_arg( array(
+          'site_id' => ShareaholicUtilities::get_option('api_key'),
+          'verification_key' => $verification_key,
+          'email' => $user_email,
+          'ref' => 'wordpress',
+      ), $redirect_url);
+      
+      wp_redirect($enriched_redirect_url);
+      exit;
+    }
+  }
+  
   /**
    * Check if we should display the review message days after the
    * plugin has been activated
@@ -81,7 +135,7 @@ class ShareaholicAdmin {
       <p>' . __('You have been using the ', 'shareaholic') . '<a href="' . admin_url('admin.php?page=shareaholic-settings') . '">Shareaholic plugin</a>' . __(' for some time now, do you like it? If so, please consider leaving us a review on WordPress.org! It would help us out a lot and we would really appreciate it.', 'shareaholic') . '
         <br />
         <br />
-        <a onclick="location.href=\'' . esc_url($dismiss_url) . '\';" class="button button-primary" href="' . esc_url('https://wordpress.org/support/view/plugin-reviews/shareaholic?rate=5#postform') . '" target="_blank">' . __('Leave a Review', 'shareaholic') . '</a>
+        <a onclick="location.href=\'' . esc_url($dismiss_url) . '\';" class="button button-primary" href="' . esc_url('https://wordpress.org/support/plugin/shareaholic/reviews/?rate=5#new-post') . '" target="_blank">' . __('Leave a Review', 'shareaholic') . '</a>
         <a href="' . esc_url($dismiss_url) . '">' . __('No thanks', 'shareaholic') . '</a>
       </p>
     </div>';
@@ -200,7 +254,6 @@ class ShareaholicAdmin {
     }
   }
 
-
   /**
    * The actual function in charge of drawing the meta boxes.
    */
@@ -251,7 +304,6 @@ class ShareaholicAdmin {
       }
     }
   }
-  
 
   /**
    * Enqueing styles and scripts for the admin panel
@@ -260,11 +312,9 @@ class ShareaholicAdmin {
    */
   public static function enqueue_scripts() {
     if (isset($_GET['page']) && preg_match('/shareaholic/', $_GET['page'])) {
-      wp_enqueue_style('shareaholic_application_css', ShareaholicUtilities::asset_url_admin('assets/application.css'), false,  ShareaholicUtilities::get_version());
       wp_enqueue_style('shareaholic_bootstrap_css', plugins_url('assets/css/bootstrap.css', __FILE__), false,  ShareaholicUtilities::get_version());
+      wp_enqueue_style('shareaholic_reveal_css', plugins_url('assets/css/reveal.css', __FILE__), false,  ShareaholicUtilities::get_version());
       wp_enqueue_style('shareaholic_main_css', plugins_url('assets/css/main.css', __FILE__), false,  ShareaholicUtilities::get_version());
-      wp_enqueue_style('shareaholic_open_sans_css', '//fonts.googleapis.com/css?family=Open+Sans:400,300,700');
-
       wp_enqueue_script('shareholic_utilities_js', ShareaholicUtilities::asset_url_admin('assets/pub/utilities.js'), false, ShareaholicUtilities::get_version());
       wp_enqueue_script('shareholic_bootstrap_js', plugins_url('assets/js/bootstrap.min.js', __FILE__), false,  ShareaholicUtilities::get_version());
       wp_enqueue_script('shareholic_jquery_custom_js', plugins_url('assets/js/jquery_custom.js', __FILE__), false,  ShareaholicUtilities::get_version());
@@ -279,13 +329,16 @@ class ShareaholicAdmin {
    * Puts a new menu item under Settings.
    */
   public static function admin_menu() {
+    
+    $icon_svg = ShareaholicUtilities::get_icon_svg();
+    
     add_menu_page(
       __('Shareaholic Settings', 'shareaholic'),
       __('Shareaholic', 'shareaholic'),
       'manage_options',
       'shareaholic-settings',
       array('ShareaholicAdmin', 'admin'),
-      SHAREAHOLIC_ASSET_DIR . 'img/shareaholic_16x16_2.png'
+      $icon_svg
     );
     add_submenu_page(
       'shareaholic-settings',
@@ -303,7 +356,15 @@ class ShareaholicAdmin {
       'shareaholic-advanced',
       array('ShareaholicAdmin', 'advanced_admin')
     );
-  }
+    add_submenu_page(
+      'shareaholic-settings',
+      __('Go Premium', 'shareaholic'),
+      __('<span style="color: #FCB214;">Go Premium</span>', 'shareaholic'),
+      'activate_plugins',
+      'shareaholic-premium',
+      array('ShareaholicAdmin', 'go_premium')
+    );
+  }  
 
   /**
    * Updates the information if passed in and sets save message.
@@ -370,7 +431,7 @@ class ShareaholicAdmin {
         'image_url' => SHAREAHOLIC_ASSET_DIR . 'img'
       ));
     }
-
+    
     if(isset($_POST['reset_settings'])
       && $_POST['reset_settings'] == 'Y'
       && check_admin_referer($action, 'nonce_field')) {

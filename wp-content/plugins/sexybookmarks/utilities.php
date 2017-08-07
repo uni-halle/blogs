@@ -97,7 +97,14 @@ class ShareaholicUtilities {
    * @return array
    */
   public static function admin_plugin_action_links($links) {
-  	$links[] = '<a href="admin.php?page=shareaholic-settings">'.__('Settings', 'shareaholic').'</a>';
+    $settings_link = '<a href="'.esc_url(admin_url('admin.php?page=shareaholic-settings')).'">'.__('Settings', 'shareaholic').'</a>';
+    $premium_link = '<a href="https://shareaholic.com/plans" target="_blank" rel="noopener noreferrer">'.__('Upgrade to Premium', 'shareaholic').'</a>';
+    $helpdesk_link = '<a href="https://support.shareaholic.com/" target="_blank" rel="noopener noreferrer">'.__('FAQ', 'shareaholic').'</a>';
+    
+    array_unshift($links, $helpdesk_link);
+    array_unshift($links, $settings_link);
+    array_unshift($links, $premium_link);
+    
   	return $links;
   }
 
@@ -115,7 +122,7 @@ class ShareaholicUtilities {
    	$wp_admin_bar->add_menu(array(
    		'id' => 'wp_shareaholic_adminbar_menu',
    		'title' => __('Shareaholic', 'shareaholic'),
-   		'href' => admin_url('admin.php?page=shareaholic-settings'),
+   		'href' => esc_url(admin_url('admin.php?page=shareaholic-settings')),
    	));
 
    	/*
@@ -146,7 +153,7 @@ class ShareaholicUtilities {
    		'parent' => 'wp_shareaholic_adminbar_menu',
    		'id' => 'wp_shareaholic_adminbar_submenu-help',
    		'title' => __('FAQ & Support', 'shareaholic'),
-   		'href' => 'http://support.shareaholic.com/',
+   		'href' => 'https://support.shareaholic.com/',
    		'meta' => Array( 'target' => '_blank' )
    	));
    }
@@ -358,6 +365,21 @@ class ShareaholicUtilities {
       return 'category';
     }
   }
+  
+	/**
+	 * Returns a base64 URL for the svg for use in the menu
+	 *
+	 * @param bool $base64 Whether or not to return base64'd output.
+	 * @return string
+	 */
+	public static function get_icon_svg ($base64=true) {
+		$svg = '<svg id="svg2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.51 21.49"><defs><style>.cls-1{fill:#92ce23;}.cls-2{fill:#3c9c6a;}</style></defs><title>logo</title><path id="path14" class="cls-1" d="M18.8,2.68H8.73V12.76H18.8ZM7.27,15.44a1.15,1.15,0,0,1-.86-.37,1.19,1.19,0,0,1-.35-.85v-13A1.21,1.21,0,0,1,7.27,0h13a1.21,1.21,0,0,1,1.21,1.21v13a1.21,1.21,0,0,1-1.21,1.22h-13"/><path id="path16" class="cls-2" d="M12.76,8.72H2.68V18.8H12.76ZM1.21,21.49a1.23,1.23,0,0,1-.86-.35A1.25,1.25,0,0,1,0,20.28v-13A1.21,1.21,0,0,1,1.21,6h13a1.21,1.21,0,0,1,1.21,1.21v13a1.22,1.22,0,0,1-1.21,1.21h-13"/><path id="path18" class="cls-1" d="M18.8,12.76H6.06v1.46a1.19,1.19,0,0,0,.35.85,1.15,1.15,0,0,0,.86.37h13a1.21,1.21,0,0,0,1.21-1.22V12.76H18.8"/></svg>';
+
+		if ($base64) {
+			return 'data:image/svg+xml;base64,' . base64_encode($svg);
+		}
+		return $svg;
+	}
 
   /**
    * Returns the appropriate asset path for environment
@@ -1359,7 +1381,7 @@ class ShareaholicUtilities {
     }
 
     $user_caps = $current_user->get_role_caps();
-
+    
     $caps = array('switch_themes', 'edit_themes', 'activate_plugins',
       'edit_plugins', 'manage_options', 'unfiltered_html', 'edit_dashboard',
       'update_plugins', 'delete_plugins', 'install_plugins', 'update_themes',
@@ -1368,6 +1390,8 @@ class ShareaholicUtilities {
     );
 
     $user_info = array(
+      'username' => $current_user->user_login,
+      'email' => $current_user->user_email,
       'roles' => $current_user->roles,
       'capabilities' => array(),
       'is_super_admin' => is_super_admin()

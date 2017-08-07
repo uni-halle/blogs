@@ -1,68 +1,109 @@
 /*	--------------------------------------------------
 	Reveal Modals
 	-------------------------------------------------- */
-		
-	.reveal-modal-bg { 
-		position: fixed; 
-		height: 100%;
-		width: 100%;
-		background: #000;
-		background: rgba(0,0,0,.7);
-		z-index: 100;
-		display: none;
-		top: 0;
-		left: 0; 
-		}
-	
-	.reveal-modal {
-		visibility: hidden;
-		top: 100px; 
-		left: 50%;
-		margin-left: -300px;
-		width: 520px;
-		background: #eee url(modal-gloss.png) no-repeat -200px -80px;
-		position: absolute;
-		z-index: 101;
-		padding: 30px 40px 34px;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
-		border-radius: 5px;
-		-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
-		-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
-		-box-shadow: 0 0 10px rgba(0,0,0,.4);
-		}
-		
-	.reveal-modal.small 		{ width: 200px; margin-left: -140px;}
-	.reveal-modal.medium 		{ width: 400px; margin-left: -240px;}
-	.reveal-modal.large 		{ width: 600px; margin-left: -340px;}
-	.reveal-modal.xlarge 		{ width: 800px; margin-left: -440px;}
-	
-	.reveal-modal .close-reveal-modal {
-		font-size: 22px;
-		line-height: .5;
-		position: absolute;
-		top: 8px;
-		right: 11px;
-		color: #aaa;
-		text-shadow: 0 -1px 1px rbga(0,0,0,.6);
-		font-weight: bold;
-		text-decoration: none;
-		cursor: pointer;
-		}
+.reveal-modal-bg {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  display: none;
+  top: 0;
+  left: 0; }
 
+/* use super high z-index so that no other WP plugins will override */
+.reveal-modal {
+  background: #fff url(modal-gloss.png) no-repeat -200px -80px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  left: 50%;
+  margin-left: -300px;
+  position: fixed;
+  padding: 30px 20px 30px;
+  top: 150px;
+  visibility: hidden;
+  width: 500px;
+  z-index: 1000000; }
+  .reveal-modal form {
+    margin: 0; }
+  .reveal-modal h2 {
+    font: 600 18px/1 "open sans", "helvetica neue", helvetica, arial, sans-serif;
+    margin: 0 0 18px 0; }
+  .reveal-modal p {
+    font: 400 14px/1 "open sans", "helvetica neue", helvetica, arial, sans-serif;
+    margin: 0 0 14px 0; }
+    .reveal-modal p.note {
+      color: #888;
+      font-size: 12px; }
+  .reveal-modal p.signup-tos {
+    font: 400 10px/2 "open sans", "helvetica neue", helvetica, arial, sans-serif; }
+  .reveal-modal input[type="submit"] {
+    margin: 14px 0 0 0; }
+  .reveal-modal .config {
+    margin: 0 0 14px 0; }
+    .reveal-modal .config label {
+      display: block;
+      font: 600 12px/1 "open sans", "helvetica neue", helvetica, arial, sans-serif;
+      margin: 0 0 4px 0; }
+    .reveal-modal .config input[type="checkbox"] + label {
+      display: inline-block; }
+
+.reveal-modal-iframe {
+  background: #fff;
+  border-radius: 5px;
+  padding: 0; }
+
+.reveal-modal-iframe iframe {
+  border: 0; }
+
+.reveal-modal.small {
+  width: 200px;
+  margin-left: -140px; }
+
+.reveal-modal.medium {
+  width: 400px;
+  margin-left: -240px; }
+
+.reveal-modal.large {
+  width: 600px;
+  margin-left: -340px; }
+
+.reveal-modal.xlarge {
+  width: 800px;
+  margin-left: -440px; }
+
+.reveal-modal .close-reveal-modal {
+  font-size: 22px;
+  line-height: .5;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #aaa;
+  text-shadow: 0 -1px 1px rbga(0, 0, 0, 0.6);
+  font-weight: bold;
+  cursor: pointer; }
+
+@media all and (max-width: 520px) {
+  .reveal-modal {
+    left: 50%;
+    margin-left: -160px;
+    padding: 30px 10px 0 10px;
+    top: 30px;
+    width: 300px; } }
 	/*
-		
+
 	NOTES
-	
+
 	Close button entity is &#215;
-	
+
 	Example markup
-	
+
 	<div id="myModal" class="reveal-modal">
 		<h2>Awesome. I have it.</h2>
 		<p class="lead">Your couch.  I it's mine.</p>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultrices aliquet placerat. Duis pulvinar orci et nisi euismod vitae tempus lorem consectetur. Duis at magna quis turpis mattis venenatis eget id diam. </p>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
-	
+
 	*/
