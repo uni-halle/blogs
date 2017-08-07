@@ -144,6 +144,12 @@ if (!empty($_GET['range'])) {
   </head>
   <body>
 <?php
+if (!empty($_GET['offset'])) {
+	$offset = preg_replace('/[^\d]/', '', $_GET['offset']);
+	for ($m = 0; $m < $offset; $m++) {
+		echo '<div class="label"></div>';
+	}
+}
 $args = array (
 	'posts_per_page' => -1,
 	'include' => $include
@@ -163,16 +169,16 @@ foreach ( $posts as $post ) {
 			echo '<span class="attribut">' . (count($autoren) > 1 ? 'Autoren' : 'Autor') . '</span><span class="wert">' . implode(', ', $autoren) . '</span>';
 			// Untertitel
 			/* if ($fields['untertitel']) {
-			  echo '<span class="attribut">Untertitel</span><span class="wert">' . $fields['untertitel'] . '</span>';
-			} */
+			echo '<span class="attribut">Untertitel</span><span class="wert">' . $fields['untertitel'] . '</span>';
+      } */
 			// Erscheinungsjahr
 			if ($fields['erscheinungsjahr']) {
 				echo '<span class="attribut">Jahr</span><span class="wert">' . $fields['erscheinungsjahr'] . '</span>';
 			}
 			// Bibliografische Angaben
-			foreach ($fields['bibliografischeangaben'] as $key => $value) {
-				echo '<span class="attribut">' . $fields['bibliografischeangaben'][$key]['attribut'] . '</span><span class="wert">' . $fields['bibliografischeangaben'][$key]['wert'] . '</span>';
-			};
+			/* foreach ($fields['bibliografischeangaben'] as $key => $value) {
+			echo '<span class="attribut">' . $fields['bibliografischeangaben'][$key]['attribut'] . '</span><span class="wert">' . $fields['bibliografischeangaben'][$key]['wert'] . '</span>';
+		  }; */
 			// Zusatzinformationen
 			foreach ($fields['zusatzinformationen'] as $key => $value) {
 				echo '<span class="attribut">' . $fields['zusatzinformationen'][$key]['attribut'] . '</span><span class="wert">' . $fields['zusatzinformationen'][$key]['wert'] . '</span>';

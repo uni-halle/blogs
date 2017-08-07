@@ -24,12 +24,16 @@
 			  <div class="box-body">
 				<div class="row">
 				<div class="col-sm-4">
-
           <div class="form-group">
             <label>Artikelnummer</label>
             <input type="text" class="form-control" name="range" placeholder="von-bis, einzeln">
           </div>
-
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>Labelversatz</label>
+            <input type="text" class="form-control" name="offset" placeholder="0">
+          </div>
         </div>
 				</div>
 				<!-- /.row -->

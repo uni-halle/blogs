@@ -56,11 +56,15 @@ switch ($fields['status']) {
                 foreach ($fields['zusatzinformationen'] as $key => $value) {
                   echo ' ' . $fields['zusatzinformationen'][$key]['attribut'] . ' <b>' . $fields['zusatzinformationen'][$key]['wert'] . '</b>';
                 };
+                // Ort
+                echo ' Ort <b>' . $fields['ort'] . '</b>';
               } else {
                 // Zusatzinformationen
                 foreach ($fields['zusatzinformationen'] as $key => $value) {
                   echo ' ' . $fields['zusatzinformationen'][$key]['attribut'] . ' <b>' . $fields['zusatzinformationen'][$key]['wert'] . '</b>';
                 };
+                // Ort
+                echo ' Ort <b>' . $fields['ort'] . '</b>';
               }
               ?>
             </div>
