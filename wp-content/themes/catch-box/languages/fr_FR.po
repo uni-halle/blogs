@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box 4.6.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-08 10:26+0545\n"
-"PO-Revision-Date: 2017-06-08 10:26+0545\n"
+"POT-Creation-Date: 2017-07-03 23:53+0545\n"
+"PO-Revision-Date: 2017-07-03 23:53+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: D'CLIC, L Capronnier <contact@dclic.info, lcapronnier@yahoo."
 "Com>\n"
@@ -1031,11 +1031,6 @@ msgstr ""
 "Désolé, aucun résultat n'a été trouvé pour votre recherche. Veuillez essayer "
 "de saisir des mots-clés différents."
 
-#: ../searchform.php:14
-msgctxt "label"
-msgid "Search for:"
-msgstr "Rechercher&nbsp;:"
-
 #: ../searchform.php:17
 msgctxt "submit button"
 msgid "Search"
@@ -1081,6 +1076,10 @@ msgstr "Suivant <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Archives des mots-clés&nbsp;: %s"
+
+#~ msgctxt "label"
+#~ msgid "Search for:"
+#~ msgstr "Rechercher&nbsp;:"
 
 #~ msgid "One thought on &ldquo;%2$s&rdquo;"
 #~ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-06-08 10:27+0545\n"
-"PO-Revision-Date: 2017-06-08 10:27+0545\n"
+"POT-Creation-Date: 2017-07-03 23:53+0545\n"
+"PO-Revision-Date: 2017-07-03 23:53+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: a.baudrez@gmail.com\n"
 "Language: en\n"
@@ -698,11 +698,6 @@ msgid ""
 msgstr ""
 "Sorry, maar niks gevonden dat aan de zoekcriteria voldeed. Probeer opnieuw "
 "met andere zoektermen."
-
-#: ../searchform.php:14
-msgctxt "label"
-msgid "Search for:"
-msgstr ""
 
 #: ../searchform.php:17
 msgctxt "submit button"

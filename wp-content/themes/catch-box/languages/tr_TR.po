@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-06-08 10:28+0545\n"
-"PO-Revision-Date: 2017-06-08 10:28+0545\n"
+"POT-Creation-Date: 2017-07-03 23:54+0545\n"
+"PO-Revision-Date: 2017-07-03 23:54+0545\n"
 "Last-Translator: \n"
 "Language-Team: Catch Themes <info@catchthemes.com>\n"
 "Language: tr\n"
@@ -695,11 +695,6 @@ msgstr ""
 "Üzgünüm, arama kriterlerinizle örtüşen sonuç bulunamadı. Farklı anahtar "
 "kelimelerle tekrar deneyin."
 
-#: ../searchform.php:14
-msgctxt "label"
-msgid "Search for:"
-msgstr "Ara:"
-
 #: ../searchform.php:17
 msgctxt "submit button"
 msgid "Search"
@@ -745,6 +740,10 @@ msgstr "Sonraki <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Etiket arşivi: %s"
+
+#~ msgctxt "label"
+#~ msgid "Search for:"
+#~ msgstr "Ara:"
 
 #~ msgid "Theme Options"
 #~ msgstr "Tema Seçenekleri"

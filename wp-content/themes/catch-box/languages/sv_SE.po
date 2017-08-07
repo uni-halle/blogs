@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-06-08 10:27+0545\n"
-"PO-Revision-Date: 2017-06-08 10:27+0545\n"
+"POT-Creation-Date: 2017-07-03 23:54+0545\n"
+"PO-Revision-Date: 2017-07-03 23:54+0545\n"
 "Last-Translator: Johnny Eriksson <info@johnnysblogg.se>\n"
 "Language-Team: Johnny Eriksson <info@johnnysblogg.se>\n"
 "Language: sv\n"
@@ -702,11 +702,6 @@ msgstr ""
 "Tyv&auml;rr - din s&ouml;kning gav inga tr&auml;ffar. F&ouml;rs&ouml;k igen "
 "med andra s&ouml;kord "
 
-#: ../searchform.php:14
-msgctxt "label"
-msgid "Search for:"
-msgstr "S&ouml;k efter:"
-
 #: ../searchform.php:17
 msgctxt "submit button"
 msgid "Search"
@@ -751,6 +746,10 @@ msgstr "Senare <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Etikett-arkiv: %s"
+
+#~ msgctxt "label"
+#~ msgid "Search for:"
+#~ msgstr "S&ouml;k efter:"
 
 #~ msgid "Theme Options"
 #~ msgstr "Temainst&auml;llningar"

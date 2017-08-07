@@ -952,9 +952,10 @@ add_action( 'catchbox_site_generator', 'catchbox_footer_content', 15 );
  * @uses catchbox_after action
  */
 function catchbox_scrollup() {
-
-	echo '<a href="#branding" id="scrollup"><span class="screen-reader-text">Go to Header Section</span></a>';
-
+	$options = catchbox_get_options();
+	if ( ! $options['disable_scrollup'] ) {
+		echo '<a href="#branding" id="scrollup"><span class="screen-reader-text">Go to Header Section</span></a>';
+	}
 }
 add_action( 'catchbox_after', 'catchbox_scrollup', 10 );
 
@@ -1002,7 +1003,7 @@ function catchbox_enqueue_color_scheme() {
 	$color_scheme = $options['color_scheme'];
 
 	$enqueue_schemes = array( 'dark', 'blue', 'green', 'red', 'brown', 'orange' );
-	
+
 	if ( in_array( $color_scheme, $enqueue_schemes ) ) {
 		wp_enqueue_style( $color_scheme, get_template_directory_uri() . '/colors/' . $color_scheme . '.css', array( 'catchbox-style' ), null );
 	}

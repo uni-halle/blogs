@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-06-08 10:26+0545\n"
-"PO-Revision-Date: 2017-06-08 10:26+0545\n"
+"POT-Creation-Date: 2017-07-03 23:53+0545\n"
+"PO-Revision-Date: 2017-07-03 23:53+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: wiki10.net, Ali Akbar Kaviani <persian@wiki10.net>\n"
 "Language: fa\n"
@@ -694,11 +694,6 @@ msgid ""
 msgstr ""
 "متاسفانه برای شرایط جستجوی شما نتیجه‌ای پیدا نشد. لطفا با واژگان دیگری جستجو "
 "کنید"
-
-#: ../searchform.php:14
-msgctxt "label"
-msgid "Search for:"
-msgstr ""
 
 #: ../searchform.php:17
 msgctxt "submit button"

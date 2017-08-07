@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-06-08 10:27+0545\n"
-"PO-Revision-Date: 2017-06-08 10:27+0545\n"
+"POT-Creation-Date: 2017-07-03 23:54+0545\n"
+"PO-Revision-Date: 2017-07-03 23:54+0545\n"
 "Last-Translator: Marius Tirteu <admin@mannius.ro>\n"
 "Language-Team: Marius Tirteu <admin@mannius.ro>\n"
 "Language: en\n"
@@ -693,11 +693,6 @@ msgid ""
 msgstr ""
 "Ne pare rău, dar nimic nu s-a potrivit criteriilor de căutare. Vă rugăm să "
 "încercați din nou folosind niște cuvinte cheie diferite."
-
-#: ../searchform.php:14
-msgctxt "label"
-msgid "Search for:"
-msgstr ""
 
 #: ../searchform.php:17
 msgctxt "submit button"

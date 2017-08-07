@@ -915,7 +915,7 @@ add_action( 'customize_controls_enqueue_scripts', 'catchbox_customize_scripts');
  */
 function catchbox_reset_data() {
 	$options  = catchbox_get_options();
-    
+
     if ( $options['reset_all_settings'] ) {
     	remove_theme_mods();
 

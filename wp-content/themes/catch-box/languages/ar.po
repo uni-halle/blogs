@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box theme\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-06-08 10:26+0545\n"
+"POT-Creation-Date: 2017-07-03 23:53+0545\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: www.ed3s.com <master@ed3s.com>\n"
@@ -686,11 +686,6 @@ msgid ""
 msgstr ""
 "عذراً , لا يوجد شئ يطابق معايير البحث التي طلبتها ، فضلاً استخدم كلمات بحث "
 "اخرى."
-
-#: ../searchform.php:14
-msgctxt "label"
-msgid "Search for:"
-msgstr ""
 
 #: ../searchform.php:17
 msgctxt "submit button"

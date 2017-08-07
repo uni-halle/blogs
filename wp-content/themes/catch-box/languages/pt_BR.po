@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-06-08 10:27+0545\n"
-"PO-Revision-Date: 2017-06-08 10:27+0545\n"
+"POT-Creation-Date: 2017-07-03 23:54+0545\n"
+"PO-Revision-Date: 2017-07-03 23:54+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: Valdir Trombini <valdirtrombini@hotmail.com>\n"
 "Language: pt_BR\n"
@@ -706,11 +706,6 @@ msgstr ""
 "alguma palavras-chave diferente, use também a semelhança entre as palavras "
 "procuradas."
 
-#: ../searchform.php:14
-msgctxt "label"
-msgid "Search for:"
-msgstr "Pesquisar por:"
-
 #: ../searchform.php:17
 msgctxt "submit button"
 msgid "Search"
@@ -753,6 +748,10 @@ msgstr "Próximo <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Arquivos da Tag: %s"
+
+#~ msgctxt "label"
+#~ msgid "Search for:"
+#~ msgstr "Pesquisar por:"
 
 #~ msgid "Theme Options"
 #~ msgstr "Opções do Tema"

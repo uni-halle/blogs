@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-06-08 10:28+0545\n"
-"PO-Revision-Date: 2017-06-08 10:28+0545\n"
+"POT-Creation-Date: 2017-07-03 23:54+0545\n"
+"PO-Revision-Date: 2017-07-03 23:54+0545\n"
 "Last-Translator: Alexandr Baryshnyev <abb@eksi.net>\n"
 "Language-Team: Eksi.Net <info@eksi.net>\n"
 "Language: uk\n"
@@ -704,11 +704,6 @@ msgstr ""
 "Вибачте, нічого не знайдено такого, що б відповідало вашому запиту. Будь "
 "ласка, спробуйте використати інші ключові слова."
 
-#: ../searchform.php:14
-msgctxt "label"
-msgid "Search for:"
-msgstr "Шукати:"
-
 #: ../searchform.php:17
 msgctxt "submit button"
 msgid "Search"
@@ -753,6 +748,10 @@ msgstr "Наступна публікація <span class=\"meta-nav\">&rarr;</s
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Архіви за ключовими словами: %s"
+
+#~ msgctxt "label"
+#~ msgid "Search for:"
+#~ msgstr "Шукати:"
 
 #~ msgid "Theme Options"
 #~ msgstr "Налаштування теми"

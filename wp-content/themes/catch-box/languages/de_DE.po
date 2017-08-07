@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-06-08 10:26+0545\n"
-"PO-Revision-Date: 2017-06-08 10:26+0545\n"
+"POT-Creation-Date: 2017-07-03 23:53+0545\n"
+"PO-Revision-Date: 2017-07-03 23:53+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: H.P. Brinkmann\n"
 "Language: de_DE\n"
@@ -817,11 +817,6 @@ msgstr ""
 "Entschuldigen Sie bitte, es gibt keine passenden Ergebnisse nach Ihren "
 "Suchkriterien. Bitte versuchen Sie es mit anderen Suchbegriffen."
 
-#: ../searchform.php:14
-msgctxt "label"
-msgid "Search for:"
-msgstr "Suche nach:"
-
 #: ../searchform.php:17
 msgctxt "submit button"
 msgid "Search"
@@ -868,6 +863,10 @@ msgstr "vor <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Schlagwörter-Archiv: %s"
+
+#~ msgctxt "label"
+#~ msgid "Search for:"
+#~ msgstr "Suche nach:"
 
 # @ catchbox
 #~ msgid "Theme Options"
