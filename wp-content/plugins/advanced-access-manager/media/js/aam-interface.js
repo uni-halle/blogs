@@ -1584,6 +1584,15 @@
                 infoFiltered: '',
                 lengthMenu: '_MENU_'
             },
+            initComplete: function () {
+                $('#post-list_filter .form-control').bind('change', function() {
+                    if ($(this).val()) {
+                        $(this).addClass('highlight');
+                    } else {
+                        $(this).removeClass('highlight');
+                    }
+                });
+            },
             rowCallback: function (row, data) {
                 //object type icon
                 switch (data[2]) {
@@ -2094,7 +2103,7 @@
             });
         });
         
-        $('input,select,textarea', container).each(function () {
+        $('input[type="text"],select,textarea', container).each(function () {
             $(this).bind('change', function () {
                 if ($(this).is('input[type="checkbox"]')) {
                     var val = $(this).prop('checked') ? $(this).val() : 0;
@@ -2491,6 +2500,10 @@
             );
             $('#extension-notification-modal').modal('hide');
         });
+        
+        if(/(Version)\/(\d+)\.(\d+)(?:\.(\d+))?.*Safari\//.test(navigator.userAgent)) {
+            $('#safari-download-notification').removeClass('hidden');
+        }
     }
 
     aam.addHook('init', initialize);
@@ -2584,6 +2597,96 @@
                     aam.notification('danger', aam.__('Application Error'));
                 }
             });
+        });
+        
+        $('#export-aam').bind('click', function () {
+            $.ajax(aamLocal.ajaxurl, {
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    action: 'aam',
+                    sub_action: 'Utility.export',
+                    _ajax_nonce: aamLocal.nonce
+                },
+                beforeSend: function () {
+                    $('#export-aam').attr('data-lable', $('#export-aam').text());
+                    $('#export-aam').html('<i class="icon-spin4 animate-spin"></i>');
+                },
+                success: function(response) {
+                    if (response.status === 'success') {
+                        download(
+                            'data:text/plain;base64,' + response.content,
+                            'aam-export.json',
+                            'text/plain'
+                        );
+                    }
+                },
+                error: function () {
+                    aam.notification('danger', aam.__('Application Error'));
+                },
+                complete: function () {
+                    $('#export-aam').html($('#export-aam').attr('data-lable'));
+                }
+            });
+        });
+        
+        $('#import-aam').bind('click', function () {
+            if (typeof FileReader !== 'undefined') { 
+                $('#aam-import-file').trigger('click');
+            } else {
+                aam.notification('danger', 'Your browser does not support FileReader functionality');
+            }
+        });
+        
+        $('#aam-import-file').bind('change', function () {
+            var file = $(this)[0].files[0];
+            var json = null;
+            
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                json = reader.result;
+                
+                try {
+                    //validate the content
+                    var loaded = JSON.parse(json);
+                    if (loaded.plugin && loaded.plugin == 'advanced-access-manager') {
+                        $.ajax(aamLocal.ajaxurl, {
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {
+                                action: 'aam',
+                                sub_action: 'Utility.import',
+                                _ajax_nonce: aamLocal.nonce,
+                                json: json
+                            },
+                            beforeSend: function () {
+                                $('#import-aam').attr('data-lable', $('#import-aam').text());
+                                $('#import-aam').html('<i class="icon-spin4 animate-spin"></i>');
+                            },
+                            success: function(response) {
+                                if (response.status === 'success') {
+                                    aam.notification('success', 'Data Imported Successfully');
+                                   // location.reload();
+                                } else {
+                                    aam.notification('danger', aam.__('Invalid data format'));
+                                }
+                            },
+                            error: function () {
+                                aam.notification('danger', aam.__('Application Error'));
+                            },
+                            complete: function () {
+                                $('#import-aam').html($('#import-aam').attr('data-lable'));
+                            }
+                        });
+                    } else {
+                        throw 'Invalid format'; 
+                    }
+                } catch (e) {
+                     aam.notification('danger', 'Invalid file format');
+                }
+            };
+            reader.readAsText(file);
+            
         });
     }
 

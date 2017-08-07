@@ -92,24 +92,32 @@ class AAM_Core_Media {
             $media = $this->findMedia();
             $area  = (is_admin() ? 'backend' : 'frontend');
             
-            if (empty($media) || !$media->has("{$area}.read")) {
-                $this->printMedia($media);
-            } elseif (!empty($media)) {
-                $args = array(
-                    'hook'   => 'media_read', 
-                    'action' => "{$area}.read", 
-                    'post'   => $media->getPost()
-                );
-                    
-                if ($default = AAM_Core_Config::get('media.restricted.default')) {
-                    do_action('aam-rejected-action', $area, $args);
-                    $this->printMedia(get_post($default));
+            if (empty($media)) {
+                $this->printMedia();
+            } else {
+                $read   = $media->has('frontend.read');
+                $others = $media->has('frontend.read_others');
+                $author = ($media->post_author == get_current_user_id());
+                
+                if ($read || ($others && !$author)) {
+                    $args = array(
+                        'hook'   => 'media_read', 
+                        'action' => "{$area}.read", 
+                        'post'   => $media->getPost()
+                    );
+
+                    if ($default = AAM_Core_Config::get('media.restricted.default')) {
+                        do_action('aam-rejected-action', $area, $args);
+                        $this->printMedia(get_post($default));
+                    } else {
+                        AAM_Core_API::reject($area, $args);
+                    }
                 } else {
-                    AAM_Core_API::reject($area, $args);
+                    $this->printMedia($media);
                 }
             }
         } else {
-            $this->printMedia();
+            $this->printMedia($media);
         }
     }
     
@@ -126,8 +134,10 @@ class AAM_Core_Media {
         
         if (!empty($media)) {
             $mime = $media->post_mime_type;
-            $path = get_attached_file($media->ID); 
-        } else {
+            $path = get_attached_file($media->ID); // This can be buggy!
+        }
+        
+        if (empty($path) || !file_exists($path)) {
             $path = ABSPATH . $this->request_uri;
         }
         

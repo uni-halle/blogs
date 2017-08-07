@@ -78,6 +78,9 @@ class AAM_Frontend_Manager {
             //login process
             add_filter('login_message', array($this, 'loginMessage'));
             
+            //manage password check expiration
+            add_filter('post_password_expires', array($this, 'postPasswordExpires'));
+            
             //admin bar
             $this->checkAdminBar();
         }
@@ -88,6 +91,21 @@ class AAM_Frontend_Manager {
         
         //security controls
         add_action('login_form_login', array($this, 'loginSubmit'), 1);
+    }
+    
+    /**
+     * 
+     * @param type $expire
+     * @return type
+     */
+    public function postPasswordExpires($expire) {
+        $overwrite = AAM_Core_Config::get('post.password.expires', null);
+        
+        if ($overwrite !== null) {
+            $expire = ($overwrite ? time() + strtotime($overwrite) : 0);
+        }
+        
+        return $expire;
     }
     
     /**
@@ -222,7 +240,7 @@ class AAM_Frontend_Manager {
      * @access public
      */
     public function authenticate($user) {
-        if ($user->user_status == 1) {
+        if (is_a($user, 'WP_User') && $user->user_status == 1) {
             $user = new WP_Error();
             
             $message  = '[ERROR]: User is locked. Please contact your website ';
@@ -358,7 +376,8 @@ class AAM_Frontend_Manager {
                         AAM_Core_Config::get("frontend.404redirect.{$type}")
                 );
             }
-        } elseif ($wp_query->is_single || $wp_query->is_page) {
+        } elseif ($wp_query->is_single || $wp_query->is_page 
+                                || $wp_query->is_posts_page || $wp_query->is_home) {
             $post = $this->getCurrentPost();
             
             if (is_a($post, 'WP_Post')) {

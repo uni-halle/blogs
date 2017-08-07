@@ -77,6 +77,31 @@ class AAM_Backend_Feature_Utility  extends AAM_Backend_Feature_Abstract {
     }
     
     /**
+     * 
+     * @return type
+     */
+    public function export() {
+        $exporter = new AAM_Core_Exporter(AAM_Core_Config::get(
+            'export', array('system' => 'roles,utilities,configpress')
+        ));
+        
+        return json_encode(array(
+            'status'  => 'success',
+            'content' => base64_encode($exporter->run())
+        ));
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function import() {
+        $importer = new AAM_Core_Importer(filter_input(INPUT_POST, 'json'));
+        
+        return json_encode(array('status'  => $importer->run()));
+    }
+    
+    /**
      * Clear all AAM settings
      * 
      * @global wpdb $wpdb
@@ -141,7 +166,9 @@ class AAM_Backend_Feature_Utility  extends AAM_Backend_Feature_Abstract {
                 'capability' => $cap,
                 'subjects'   => array(
                     'AAM_Core_Subject_Role',
-                    'AAM_Core_Subject_Visitor'
+                    'AAM_Core_Subject_User',
+                    'AAM_Core_Subject_Visitor',
+                    'AAM_Core_Subject_Default'
                 ),
                 'view'       => __CLASS__
             ));

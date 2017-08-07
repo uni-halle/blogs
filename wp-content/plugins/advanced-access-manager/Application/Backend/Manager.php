@@ -144,8 +144,18 @@ class AAM_Backend_Manager {
         $uid = get_current_user_id();
         
         if ($uid && AAM_Core_API::capabilityExists('access_dashboard')) {
-            if (empty(AAM::getUser()->allcaps['access_dashboard'])) {
-                AAM_Core_API::reject('backend', array('hook' => 'access_dashboard'));
+            $caps = AAM::getUser()->allcaps;
+            if (empty($caps['access_dashboard'])) {
+                //also additionally check for AJAX calls
+                if (defined('DOING_AJAX') && empty($caps['allow_ajax_calls'])) {
+                    AAM_Core_API::reject(
+                            'backend', array('hook' => 'access_dashboard')
+                    );
+                } elseif (!defined('DOING_AJAX')) {
+                    AAM_Core_API::reject(
+                            'backend', array('hook' => 'access_dashboard')
+                    );
+                }
             }
         }
     }

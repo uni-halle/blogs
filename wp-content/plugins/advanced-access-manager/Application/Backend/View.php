@@ -41,13 +41,15 @@ class AAM_Backend_View {
      * @access protected
      */
     protected function __construct() {
-        $classname = 'AAM_Core_Subject_' . ucfirst(
-                        AAM_Core_Request::request('subject')
-        );
-        if (class_exists($classname)) {
-            $this->setSubject(new $classname(
-                stripslashes(AAM_Core_Request::request('subjectId'))
-            ));
+        if (AAM_Core_Request::request('subject')) {
+            $classname = 'AAM_Core_Subject_' . ucfirst(
+                            AAM_Core_Request::request('subject')
+            );
+            if (class_exists($classname)) {
+                $this->setSubject(new $classname(
+                    stripslashes(AAM_Core_Request::request('subjectId'))
+                ));
+            }
         }
 
         //register default features

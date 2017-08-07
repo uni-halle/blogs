@@ -119,6 +119,20 @@ class AAM_Backend_Feature_Extension extends AAM_Backend_Feature_Abstract {
     }
     
     /**
+     * 
+     * @return type
+     */
+    public function canShowLicense() {
+        $result = true;
+        
+        if (AAM_Core_API::capabilityExists('aam_display_license')) {
+            $result = !empty(AAM::getUser()->allcaps['aam_display_license']);
+        }
+        
+        return $result;
+    }
+    
+    /**
      * Install extension failure response
      * 
      * In case the file system fails, AAM allows to download the extension for

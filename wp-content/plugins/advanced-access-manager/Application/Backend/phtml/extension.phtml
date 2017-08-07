@@ -43,7 +43,7 @@
                                     <tr>
                                         <td>
                                             <span class='aam-setting-title'><?php echo $product['title'], (!empty($product['new']) ? ' <span class="badge">NEW</span> ' : ''), (!empty($product['version']) ? ' <small class="text-muted">v' . $product['version'] . '</small>' : ''); ?></span>
-                                            <?php if (!empty($product['license'])) { ?><small class="aam-license-key"><b>License:</b> <?php echo $product['license'] . (!empty($product['expire']) ? " (expires {$product['expire']})" : ''); ?></small><?php } ?>
+                                            <?php if (!empty($product['license']) && $this->canShowLicense()) { ?><small class="aam-license-key"><b>License:</b> <?php echo $product['license'] . (!empty($product['expire']) ? " (expires {$product['expire']})" : ''); ?></small><?php } ?>
                                             <p class="aam-extension-description">
                                                 <?php echo $product['description']; ?>
                                             </p>
@@ -110,6 +110,10 @@
                             <li><?php echo AAM_Backend_View_Helper::preparePhrase('Create [aam/extension] folder inside [wp-content] and make sure it is writable by your server', 'b', 'b'); ?>;</li>
                             <li><?php echo AAM_Backend_View_Helper::preparePhrase('Unzip downloaded archive and upload the folder inside the [wp-content/aam/extension] folder', 'b'); ?>.</li>
                         </ul>
+                        
+                        <p class="aam-notification hidden" id="safari-download-notification">
+                            <?php echo AAM_Backend_View_Helper::preparePhrase('[PLEASE NOTE!] Your browser may not support the latest HTML5 attribures and if downloaded file is not .ZIP archive, simply rename the file by adding .zip extension.', 'b'); ?>
+                        </p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" id="download-extension"><?php echo __('Download', AAM_KEY); ?></button>

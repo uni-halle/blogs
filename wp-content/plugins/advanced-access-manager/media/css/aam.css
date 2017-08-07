@@ -264,6 +264,10 @@ div.error {
     border-radius: 0;
 }
 
+.form-control.highlight {
+    border: 2px solid #f0ad4e;
+}
+
 .list-group li {
     cursor: pointer;
     font-size: 1.1em;

@@ -1,9 +1,9 @@
 === Advanced Access Manager ===
 Contributors: vasyltech
-Tags: access, role, user, capability, page access, post access, security, login redirect, brute force attack, double authentication, membership, backend lockdown, wp-admin, 404, activity tracking
+Tags: access, role, user, capability, page access, post access, comments, security, login redirect, brute force attack, double authentication, membership, backend lockdown, wp-admin, 404, activity tracking
 Requires at least: 3.8
 Tested up to: 4.8
-Stable tag: 4.8
+Stable tag: 4.9
 
 Manage access to your website for any user, role or visitors for both frontend and backend.
 
@@ -109,6 +109,19 @@ Check our [help page](https://aamplugin.com/help) to find out more about AAM.
 11. Improve your website security
 
 == Changelog ==
+
+= 4.9 =
+* Fixed bug with Login Redirect duplicate settings saving
+* Added ability to hide license key with aam_display_license capability
+* Added ability to export/import AAM settings
+* Improved AAM UI
+* Added ability to restrict access to the Hope page
+* Added ability to manage access to frontend ajax calls with allow_ajax_calls cap
+
+= 4.8.1 =
+* Added ability to control post_password_expires with post.password.expires config
+* Improved media access
+* Improved UI
 
 = 4.8 =
 * Fixed the bug with Media access control reported by Antonius Hegyes
