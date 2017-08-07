@@ -27,7 +27,10 @@
 		function __construct()
 		{
 			// Empty for now
-			$this->m_UserAgent = 'Blubrry PowerPress/'.POWERPRESS_VERSION;
+			if( defined('POWERPRESS_VERSION') )
+				$this->m_UserAgent = 'Blubrry PowerPress/'.POWERPRESS_VERSION;
+			else
+				$this->m_UserAgent = 'Blubrry PowerPress';
 		}
 		
 		/*
@@ -132,7 +135,12 @@
 					$headerlength = getid3_lib::BigEndian2Int(substr($id3header, 6, 4), 1)+10;
 					
 					// Awesome, now we need to download the file based on this size...
-					$this->m_DownloadBytesLimit = $headerlength +100000; // Add 100k to find valid MPEG synch
+					if( $headerlength > 50 ) { // Do we have enough bytes?
+						$this->m_DownloadBytesLimit = $headerlength +100000; // Add 100k to find valid MPEG synch
+					} else {
+						$this->m_DownloadBytesLimit = $CurrentLimit; // Best we can do is use the default limit
+					}
+					
 					$success = $this->Download($url);
 					$this->m_DownloadBytesLimit = $CurrentLimit;
 					
@@ -550,7 +558,7 @@
 			$LocalFile = false;
 			
 			// If the URL starts with a http:// or https:// and ends with an mp3, then lets try the smart id3 method...
-			if( defined('POWERPRESS_GETID3_EXPERIMENTAL') && preg_match('/^https?:\/\/.*\.mp3$/i', $File) !== false )
+			if( preg_match('/^https?:\/\/.*\.mp3$/i', $File) !== false )
 			{
 				$LocalFile = $this->DownloadID3Headers($File);
 				if( $LocalFile === false )

@@ -945,7 +945,7 @@ function powerpress_admin_migrate()
 
 <?php if( $Step > 0 ) { ?>
 <p>
- <?php echo __('Migration can take a while, please be patient. Please contact support if you do not see results within 48 hours. You may repeat these steps if additional episdoes have been added after to starting migration.', 'powepress'); ?>
+ <?php echo __('Migration can take a while, please be patient. Please contact support if you do not see results within 48 hours. You may repeat these steps if additional episodes have been added after to starting migration.', 'powepress'); ?>
 </p>
 <p><a href="<?php echo admin_url(); echo wp_nonce_url( "admin.php?page=powerpress/powerpressadmin_migrate.php&amp;migrate_action=reset_migrate_media&amp;action=powerpress-migrate-media", 'powerpress-migrate-media'); ?>" onclick="return confirm('<?php echo esc_js(__('Reset migration, are you sure?','powerpress')); ?>');"><?php echo __('Reset Migration', 'powerpress'); ?></a> 
 <?php  ?>

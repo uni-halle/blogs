@@ -859,6 +859,19 @@ self.parent.tb_remove();
 			powerpress_admin_jquery_footer();
 			exit;
 		}; break;
+		case 'powerpress-jquery-pts': {
+			if( function_exists('powerpress_ajax_pts') )
+				powerpress_ajax_pts($Settings);
+			else
+				echo "Error";
+			exit;
+		}; break;
+		case 'powerpress-jquery-pts-post': {
+			if( function_exists('powerpress_ajax_pts_post') )
+				powerpress_ajax_pts_post($Settings);
+			else
+				echo "Error";
+		}; break;
 	}
 	
 }

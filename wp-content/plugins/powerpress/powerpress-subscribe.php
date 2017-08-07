@@ -16,11 +16,17 @@ function powerpresssubscribe_get_itunes_url($Settings)
 		// Make URL https://, always add ?mt=2 to end of itunes.apple.com URLs, include l1 to load iTunes store if installed, and always remove uo=X if it's there
 		return preg_replace("/^http:\/\//i", "https://", add_query_arg( array('uo' => false, 'mt' => '2', 'ls' => '1'), trim($Settings['itunes_url']) ) );
 	}
-
-	if( !empty($Settings['feed_url']) ) // && !empty($Settings['itpc']) )
-		return preg_replace('/(^https?:\/\/)/i', 'itpc://', $Settings['feed_url']); // Still better than nothing at this point.
 	
 	return '';
+}
+
+function powerpresssubscribe_add_guid_to_itunes_url($url, $guid)
+{
+	if( !empty($guid) && preg_match('/^https:\/\/itunes\.apple\.com.*/i', $url, $matches) ) {
+		return $url . '#episodeGuid='. urlencode($guid);
+	}
+	
+	return $url;
 }
 
 function powerpresssubscribe_get_settings($ExtraData, $detect_category=true)
@@ -255,12 +261,11 @@ function powerpressplayer_link_subscribe_pre($content, $media_url, $ExtraData = 
 		
 	$feed_url = $SubscribeSettings['feed_url'];
 	$itunes_url = trim($SubscribeSettings['itunes_url']);
-	if( empty($itunes_url) )
-		$itunes_url = preg_replace('/(^https?:\/\/)/i', 'itpc://', $feed_url);
-
+	
 	$links_array = array();
 	if( !empty($itunes_url) ) {
-		$links_array[] = "<a href=\"".  htmlspecialchars($itunes_url) ."\" class=\"powerpress_link_subscribe powerpress_link_subscribe_itunes\" title=\"". __('Subscribe on iTunes', 'powerpress') ."\" rel=\"nofollow\">". __('iTunes','powerpress') ."</a>".PHP_EOL_WEB;
+		$guid = get_the_guid();
+		$links_array[] = "<a href=\"".  htmlspecialchars( powerpresssubscribe_add_guid_to_itunes_url($itunes_url, $guid) ) ."\" class=\"powerpress_link_subscribe powerpress_link_subscribe_itunes\" title=\"". __('Subscribe on Apple Podcasts', 'powerpress') ."\" rel=\"nofollow\">". __('Apple Podcasts','powerpress') ."</a>".PHP_EOL_WEB;
 	}
 	
 	if( preg_match('/^(https?:\/\/)(.*)$/i', $feed_url, $matches ) ) {
@@ -364,6 +369,11 @@ function powerpress_subscribe_shortcode( $attr ) {
 	*/
 	
 	/**/
+	if( !is_array($attr) ) // Convert to an array to avoid php notice messages
+	{
+		$attr = array();
+	}
+	
 	if( empty($attr['slug']) && !empty($attr['feed']) )
 		$attr['slug'] = $attr['feed'];
 	else if( empty($attr['slug']) && !empty($attr['channel']) )
@@ -552,7 +562,7 @@ function powerpress_do_subscribe_widget($settings)
 				$html .= '<img class="pp-sub-l" src="'. esc_url( $settings['image_url'] ) .'" '. (!empty($settings['title'])?' title="'.  esc_attr($settings['title']).'" ':'') .'/>';
 				$html .= '<div class="pp-sub-btns">';
 				if( !empty($settings['itunes_url']) ) {
-					$html .= '<a href="'.  esc_url( $settings['itunes_url'] ) .'" class="pp-sub-btn pp-sub-itunes" title="'.  esc_attr( __('Subscribe on iTunes', 'powerpress') ) .'"><span class="pp-sub-ic"></span>'.  esc_html( __('on iTunes', 'powerpress') ) .'</a>';
+					$html .= '<a href="'.  esc_url( $settings['itunes_url'] ) .'" class="pp-sub-btn pp-sub-itunes" title="'.  esc_attr( __('Subscribe on Apple Podcasts', 'powerpress') ) .'"><span class="pp-sub-ic"></span>'.  esc_html( __('on Apple Podcasts', 'powerpress') ) .'</a>';
 				}
 				
 				if( preg_match('/^(https?:\/\/)(.*)$/i', $settings['feed_url'], $matches ) ) {
@@ -617,7 +627,7 @@ function powerpress_do_subscribe_sidebar_widget($settings)
 	$html = '';
 	$html .= '<div class="pp-ssb-widget pp-ssb-widget-'. esc_attr($settings['style']) .'">';
 		if( !empty($settings['itunes_url']) ) {
-			$html .= '<a href="'.  esc_url( $settings['itunes_url'] ) .'" class="pp-ssb-btn pp-ssb-itunes" title="'.  esc_attr( __('Subscribe on iTunes', 'powerpress') ) .'"><span class="pp-ssb-ic"></span>'.  esc_html( __('on iTunes', 'powerpress') ) .'</a>';
+			$html .= '<a href="'.  esc_url( $settings['itunes_url'] ) .'" class="pp-ssb-btn pp-ssb-itunes" title="'.  esc_attr( __('Subscribe on Apple Podcasts', 'powerpress') ) .'"><span class="pp-ssb-ic"></span>'.  esc_html( __('on Apple Podcasts', 'powerpress') ) .'</a>';
 		}
 		
 		if( preg_match('/^(https?:\/\/)(.*)$/i', $settings['feed_url'], $matches ) ) {

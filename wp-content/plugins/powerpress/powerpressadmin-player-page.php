@@ -342,9 +342,6 @@ table.html5formats tr > td:first-child {
 ?>
 			</p>
 			<?php powerpressplayer_mediaelement_info(); ?>
-			<div style="margin: 30px 0;">
-			<?php powerpresspartner_clammr_info(false); ?>
-			</div>
 		</li>
 		
 		<li><label><input type="radio" name="Player[player]" id="player_html5audio" value="html5audio" <?php if( $General['player'] == 'html5audio' ) echo 'checked'; ?> /> <?php echo __('HTML5 Audio Player', 'powerpress'); ?>  </label>
@@ -980,6 +977,15 @@ function audio_player_defaults()
 		</th>
 		<td>
 			<?php print_blubrry_player_demo(); ?>
+			
+			<!-- <p><input name="General[itunes_image_audio]" type="hidden" value="0"/><input name="General[itunes_image_audio]" type="checkbox" value="1" <?php echo ($General['itunes_image_audio']?'checked':''); ?> /> <?php echo __('Use episode iTunes image if set', 'powerpress'); ?> </p> -->
+			
+			<p>
+				<?php echo __('Episode level iTunes image if set will be displayed in the player. The URLs to the images must be https:// in order to appear on social networking sites.', 'powerpress'); ?>
+			</p>
+			
+			<p><input name="General[episode_box_itunes_image]" type="hidden" value="0"/><input name="General[episode_box_itunes_image]" type="checkbox" value="1" <?php echo ($General['episode_box_itunes_image']?'checked':''); ?> /> <?php echo __('Display iTunes episode image field', 'powerpress'); ?> </p>
+			
 		</td>
 	</tr>
 
@@ -1017,7 +1023,6 @@ function audio_player_defaults()
 		<td valign="top">
 				<input type="text" style="width: 50px;" id="audio_player_max_width" name="General[audio_player_max_width]" class="player-width" value="<?php echo esc_attr($General['audio_player_max_width']); ?>" maxlength="4" />
 			<?php echo __('Width of Audio mp3 player (leave blank for max width)', 'powerpress'); ?>
-			<?php powerpresspartner_clammr_info(); ?>
 		</td>
 	</tr>
 	
@@ -1315,7 +1320,7 @@ function print_blubrry_player_demo()
 		</p>
 			<div style="border: 1px solid #000000; height: 138px; box-shadow: inset 0 0 10px black, 0 0 6px black; margin: 20px 0;">
 			<?php
-			echo powerpressplayer_build_blubrryaudio_by_id(12559710); // Special episdoe where we talk about the new player
+			echo powerpressplayer_build_blubrryaudio_by_id(12559710); // Special episode where we talk about the new player
 			?></div>
 			<p>
 				<?php echo __('Modern podcast audio player complete with subscribe and share tools.', 'powerpress'); ?>
@@ -1326,4 +1331,4 @@ function print_blubrry_player_demo()
 <?php
 }
 
-?>
+// eof

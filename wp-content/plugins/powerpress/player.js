@@ -1,21 +1,22 @@
 /** 
- * jsMediaPlayer 1.5.0 for Blubrry PowerPress
+ * jsMediaPlayer 1.6.0 for Blubrry PowerPress
  * 
  * http://www.blubrry.com/powepress/
  *
- * Copyright (c) 2008-2015 Angelo Mandato (angelo [at] mandato {period} com)
+ * Copyright (c) 2008-2017 Angelo Mandato (angelo [at] mandato {period} com)
  *
  * Released under Aoache 2 license:
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * version 1.5.0	- 04/23/2016 - Removed pp_embed_quicktime function (Preventive measure due to security issues with Quicktime) and removed pp_embed_swf, and show embed function enhanced to toggle.
+ * version 1.6.0 - 06/14/2017 - Added code to deal with IE/Edge preloading media for the mediaelement.js player. Removed windows media player support.
+ * version 1.5.0 - 04/23/2016 - Removed pp_embed_quicktime function (Preventive measure due to security issues with Quicktime) and removed pp_embed_swf, and show embed function enhanced to toggle.
  * version 1.4.0 - 09/08/2015 - Removed the pp_flashembed function (we are no longer using flash for fallback).
  * version 1.3.0 - 02/18/2011 - Adding HTML5 audio/video tags if format possibly supported around default video embed.
  * version 1.2.0 - 07/20/2009 - Major rewrite, we're now replying less upon this javascript to make way for flexibility for adding future players.
  * version 1.1.3 - 03/23/2009 - Added code to support FlowPlayer v3.
  * version 1.1.2 - 03/04/2009 - Added options to set the width for audio, width and height for video.
- * version 1.1.1 - 12/22/20008 - Minor change to support Windows Media in Firefox. Includes link to preferred Firefox Windows Media Player plugin.
- * version 1.1.0 - 11/25/20008 - Major re-write, object now stored in this include file, auto play is no longer a member variable and is determined by function call.
+ * version 1.1.1 - 12/22/2008 - Minor change to support Windows Media in Firefox. Includes link to preferred Firefox Windows Media Player plugin.
+ * version 1.1.0 - 11/25/2008 - Major re-write, object now stored in this include file, auto play is no longer a member variable and is determined by function call.
  * version 1.0.3 - 11/02/2008 - Added option for playing quicktime files in an intermediate fashion with an image to click to play.
  * version 1.0.2 - 07/26/2008 - Fixed pop up player bug caused by v 1.0.1
  * version 1.0.1 - 07/28/2008 - fixed flow player looping playback, flash player no longer loops.
@@ -157,35 +158,23 @@ function powerpress_embed_html5a(id,media_url)
 }
 
 /**
-	Insert embed for windows media within specified div
-	
-	@div - specific div to insert embed into
-	@media_url - URL of media file to play
-	@width - width of player
-	@height - height of player
+	PowerPress on page load, make sure IE 9+/Edge use a custom flag for playback
 */
-function powerpress_embed_winplayer(div,media_url,width,height)
-{
-	if( document.getElementById(div) )
-	{
-		var Html = '';
-		Html += '<object id="winplayer" classid="clsid:6BF52A52-394A-11d3-B153-00C04F79FAA6" width="'+ width +'" height="'+ height +'" standby="loading..." type="application/x-oleobject">\n';
-		Html += '	<param name="url" value="'+ media_url +'" />\n';
-		Html += '	<param name="AutoStart" value="true" />\n';
-		Html += '	<param name="AutoSize" value="true" />\n';
-		Html += '	<param name="AllowChangeDisplaySize" value="true" />\n';
-		Html += '	<param name="standby" value="Media is loading..." />\n';
-		Html += '	<param name="AnimationAtStart" value="true" />\n';
-		Html += '	<param name="scale" value="aspect" />\n';
-		Html += '	<param name="ShowControls" value="true" />\n';
-		Html += '	<param name="ShowCaptioning" value="false" />\n';
-		Html += '	<param name="ShowDisplay" value="false" />\n';
-		Html += '	<param name="ShowStatusBar" value="false" />\n';
-		Html += '	<embed type="application/x-mplayer2" src="'+ media_url +'" width="'+ width +'" height="'+ height +'" scale="aspect" AutoStart="true" ShowDisplay="0" ShowStatusBar="0" AutoSize="1" AnimationAtStart="1" AllowChangeDisplaySize="1" ShowControls="1"></embed>\n';
-		Html += '</object>\n';
-		document.getElementById(div).innerHTML = Html;
-		return false; // stop the default link from proceeding
+function powerpress_onload() {
+	var x = document.getElementsByTagName("audio");
+	for(i in x) {
+		x[i].addEventListener("play", function(e) {
+			var found = this.src.match( /media.(blubrry|rawvoice).(net|biz|com)\/[a-zA-Z_]{3,30}\/p\//i );
+			if( found.length > 0 ) {
+				this.pause();
+				this.src = this.src.replace( found[0], found[0].replace('/p/', '/e/') );
+				this.load();
+				this.play();
+			}
+		}, true);
 	}
-	return true; // let the default link to the media open...
 }
 
+if ( window.navigator.userAgent.match( /(MSIE|Edge|Trident)\//i )	!== null && window.addEventListener) {
+	window.addEventListener('load', powerpress_onload, false);
+}

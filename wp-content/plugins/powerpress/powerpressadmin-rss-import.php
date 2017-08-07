@@ -510,6 +510,10 @@ jQuery(document).ready( function() {
 			// download the image then save it locally...
 			if( $download_itunes_image ) {
 				
+				echo '<hr />';
+				echo '<p><strong>'. __('Program iTunes image', 'powerpress') .'</strong></p>';
+				echo '<ul class="ul-disc">';
+				
 				$upload_path = false;
 				$upload_url = false;
 				$UploadArray = wp_upload_dir();
@@ -540,6 +544,7 @@ jQuery(document).ready( function() {
 					$response = wp_safe_remote_get($itunes_image, $options);
 					if ( !is_wp_error( $response ) ) {
 						$image_data = wp_remote_retrieve_body( $response );
+					} else {
 						$this->addError( __('Error downloading itunes image.', 'powerpress') );
 					}
 		
@@ -547,8 +552,17 @@ jQuery(document).ready( function() {
 						file_put_contents($upload_path.$filename, $image_data);
 						$NewSettings['itunes_image'] = $upload_url . $filename;
 						$NewSettings['rss2_image'] = $itunes_image;
+						echo sprintf('iTunes image saved to %s.', ($upload_url . $filename) );
+					} else {
+						$this->addError( __('No iTunes image downloaded.', 'powerpress') );
+						echo 'Error occurred downloading iTunes image.';
 					}
+				} else {
+					echo 'Unable to save image to local folder.';
 				}
+				
+				echo '</li>';
+				echo '</ul>';
 			} else if( $overwrite || empty($Feed['itunes_image']) ) {
 				$NewSettings['itunes_image'] = $itunes_image;
 				$NewSettings['rss2_image'] = $itunes_image;
@@ -636,6 +650,8 @@ jQuery(document).ready( function() {
 				if( !in_array($category_id, $CurrentSettings['custom_cat_feeds']) )
 				{
 					$NewSettings = array();
+					if( !empty($CurrentSettings['custom_cat_feeds']) )
+						$NewSettings['custom_cat_feeds'] = $CurrentSettings['custom_cat_feeds'];
 					$NewSettings['custom_cat_feeds'][] = $category_id;
 					if( empty($CurrentSettings['cat_casting']) ) {
 						$NewSettings['cat_casting'] = 1; // Turn on category podcasting if not enabled
@@ -1410,6 +1426,15 @@ jQuery(document).ready( function() {
 	function _parse_enclosure($string, $post, $category_strict='')
 	{
 		global $wpdb;
+		
+		// Create an XML parser
+		if ( ! function_exists( 'xml_parser_create' ) ) {
+			// These are WordPress strings, no need to use our namespace for these messages.
+			trigger_error( __( "PHP's XML extension is not available. Please contact your hosting provider to enable PHP's XML extension." ) );
+			wp_die( __( "PHP's XML extension is not available. Please contact your hosting provider to enable PHP's XML extension." ) );
+		}
+
+
 		$p = xml_parser_create();
 		xml_parse_into_struct($p, $string, $vals, $index);
 		xml_parser_free($p);

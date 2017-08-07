@@ -155,6 +155,11 @@ function powerpress_admin_editfeed($type='', $type_value = '', $feed_slug = fals
 			$feed_slug = $type_value;
 			$FeedAttribs['feed_slug'] = $type_value;
 			$FeedSettings = powerpress_get_settings('powerpress_feed_'.$feed_slug);
+			if( !$FeedSettings && $type_value == 'podcast' ) // We are editing the default podcast channel
+			{
+				$FeedSettings = powerpress_get_settings('powerpress_feed');
+			}
+			
 			if( !$FeedSettings )
 			{
 				$FeedSettings = array();
@@ -760,7 +765,9 @@ function powerpressadmin_edit_itunes_feed($FeedSettings, $General, $FeedAttribs 
 		$FeedSettings['itunes_new_feed_url_podcast'] = '';
 	if( !isset($FeedSettings['itunes_new_feed_url']) )
 		$FeedSettings['itunes_new_feed_url'] = '';
-	
+	if( !isset($FeedSettings['itunes_type']) )
+		$FeedSettings['itunes_type'] = '';
+		
 	$AdvancediTunesSettings = !empty($FeedSettings['itunes_summary']);
 	if( !empty($FeedSettings['itunes_subtitle']) )
 		$AdvancediTunesSettings = true;
@@ -973,6 +980,30 @@ while( list($value,$desc) = each($explicit) )
 <td>
 <input type="text" name="Feed[email]" class="bpp_input_med" value="<?php echo esc_attr($FeedSettings['email']); ?>" maxlength="255" />
 <div>(<?php echo __('iTunes will email this address when your podcast is accepted into the iTunes Directory.', 'powerpress'); ?>)</div>
+</td>
+</tr>
+
+<tr valign="top">
+<th scope="row">
+<?php echo __('iTunes Type', 'powerpress'); ?> 
+<?php echo powerpressadmin_new(); ?>
+</th>
+<td>
+<select name="Feed[itunes_type]" class="bpp_input_med">
+<?php
+$types = array(''=> __('No option selected', 'powerpress'), 'episodic'=>__('Episodic (default)', 'powerpress'), 'serial'=>__('Serial', 'powerpress'));
+
+while( list($value,$desc) = each($types) )
+	echo "\t<option value=\"$value\"". ($FeedSettings['itunes_type']==$value?' selected':''). ">$desc</option>\n";
+
+?>
+</select>
+			<p>
+				<em><?php echo __('Episodic: displays latest episode first.', 'powerpress'); ?></em>
+			</p>
+			<p>
+				<em><?php echo __('Serial: displays latest episode last.', 'powerpress'); ?></em>
+			</p>
 </td>
 </tr>
 </table>

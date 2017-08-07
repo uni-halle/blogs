@@ -3,11 +3,11 @@
 Plugin Name: Blubrry PowerPress
 Plugin URI: http://create.blubrry.com/resources/powerpress/
 Description: <a href="http://create.blubrry.com/resources/powerpress/" target="_blank">Blubrry PowerPress</a> is the No. 1 Podcasting plugin for WordPress. Developed by podcasters for podcasters; features include Simple and Advanced modes, multiple audio/video player options, subscribe to podcast tools, podcast SEO features, and more! Fully supports iTunes, Google Play, Stitcher, and Blubrry Podcasting directories, as well as all podcast applications and clients.
-Version: 7.0.4
+Version: 7.1
 Author: Blubrry
 Author URI: http://www.blubrry.com/
 Requires at least: 3.6
-Tested up to: 4.7.3
+Tested up to: 4.8.1
 Text Domain: powerpress
 Change Log:
 	Please see readme.txt for detailed change log.
@@ -32,7 +32,7 @@ if( !function_exists('add_action') )
 	die("access denied.");
 	
 // WP_PLUGIN_DIR (REMEMBER TO USE THIS DEFINE IF NEEDED)
-define('POWERPRESS_VERSION', '7.0.4 beta' );
+define('POWERPRESS_VERSION', '7.1' );
 
 // Translation support:
 if ( !defined('POWERPRESS_ABSPATH') )
@@ -243,6 +243,9 @@ function powerpress_content($content)
 	if( current_filter() == 'the_excerpt' && empty($GeneralSettings['display_player_excerpt']) )
 		return $content; // We didn't want to modify this since the user didn't enable it for excerpts
 		
+	if( !empty($GeneralSettings['hide_player_more']) && strstr($content, 'class="more-link"') )
+		return $content; // We do not want to add players and links if the read-more class found
+		
 	// Figure out which players are alerady in the body of the page...
 	$ExcludePlayers = array();
 	if( isset($GeneralSettings['disable_player']) )
@@ -422,6 +425,8 @@ function powerpress_pinw(pinw_url){window.open(pinw_url, 'PowerPressPlayer','too
 				echo '<link rel="alternate" type="' . feed_content_type() . '" title="' . esc_attr( $title ) . '" href="' . esc_url( $href ) . '" />' . "\n";
 		}
 		reset($Powerpress['custom_feeds']);
+		
+		// TODO: Add logic to add category, post type and taxonomy feeds as well
 	}
 }
 
@@ -471,8 +476,8 @@ function powerpress_rss2_ns()
 	}
 	if( !defined('POWERPRESS_GOOGLEPLAY_RSS') || POWERPRESS_GOOGLEPLAY_RSS != false )
 	{
-		//echo 'xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"'.PHP_EOL;
-		echo 'xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0/play-podcasts.xsd"'.PHP_EOL;
+		echo 'xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"'.PHP_EOL;
+		//echo 'xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0/play-podcasts.xsd"'.PHP_EOL;
 	}
 }
 
@@ -592,6 +597,10 @@ function powerpress_rss2_head()
 		echo "\t".'<itunes:image href="' . powerpress_url_in_feed(powerpress_get_root_url()) . 'itunes_default.jpg" />'.PHP_EOL;
 	}
 	
+	if( !empty($Feed['itunes_type']) ) {
+		echo "\t".'<itunes:type>'. esc_html($Feed['itunes_type']) .'</itunes:type>'.PHP_EOL;
+	}
+	
 	if( !empty($Feed['email']) )
 	{
 		echo "\t".'<itunes:owner>'.PHP_EOL;
@@ -656,53 +665,23 @@ function powerpress_rss2_head()
 	{
 		$CatDesc = $Categories[$Cat1.'-00'];
 		$SubCatDesc = $Categories[$Cat1.'-'.$SubCat1];
-		if( $Cat1 != $Cat2 && $SubCat1 == '00' )
-		{
-			echo "\t".'<itunes:category text="'. esc_html($CatDesc) .'" />'.PHP_EOL;
-		}
-		else
-		{
-			echo "\t".'<itunes:category text="'. esc_html($CatDesc) .'">'.PHP_EOL;
-			if( $SubCat1 != '00' )
-				echo "\t\t".'<itunes:category text="'. esc_html($SubCatDesc) .'" />'.PHP_EOL;
-			
-			// End this category set
-			if( $Cat1 != $Cat2 )
-				echo "\t".'</itunes:category>'.PHP_EOL;
-		}
+		echo "\t".'<itunes:category text="'. esc_html($CatDesc) .'">'.PHP_EOL;
+		if( $SubCat1 != '00' )
+			echo "\t\t".'<itunes:category text="'. esc_html($SubCatDesc) .'"></itunes:category>'.PHP_EOL;
+		
+		// End this category set
+		echo "\t".'</itunes:category>'.PHP_EOL;
 	}
  
 	if( $Cat2 )
 	{
 		$CatDesc = $Categories[$Cat2.'-00'];
 		$SubCatDesc = $Categories[$Cat2.'-'.$SubCat2];
-	 
-		// It's a continuation of the last category...
-		if( $Cat1 == $Cat2 )
-		{
-			if( $SubCat2 != '00' )
-				echo "\t\t".'<itunes:category text="'. esc_html($SubCatDesc) .'" />'.PHP_EOL;
-			
-			// End this category set
-			if( $Cat2 != $Cat3 )
-				echo "\t".'</itunes:category>'.PHP_EOL;
-		}
-		else // This is not a continuation, lets start a new category set
-		{
-			if( $Cat2 != $Cat3 && $SubCat2 == '00' )
-			{
-				echo "\t".'<itunes:category text="'. esc_html($CatDesc) .'" />'.PHP_EOL;
-			}
-			else // We have nested values
-			{
-				if( $Cat1 != $Cat2 ) // Start a new category set
-					echo "\t".'<itunes:category text="'. esc_html($CatDesc) .'">'.PHP_EOL;
-				if( $SubCat2 != '00' )
-				echo "\t\t".'<itunes:category text="'. esc_html($SubCatDesc) .'" />'.PHP_EOL;
-				if( $Cat2 != $Cat3 ) // End this category set
-					echo "\t".'</itunes:category>'.PHP_EOL;
-			}
-		}
+
+		echo "\t".'<itunes:category text="'. esc_html($CatDesc) .'">'.PHP_EOL;
+		if( $SubCat2 != '00' )
+			echo "\t\t".'<itunes:category text="'. esc_html($SubCatDesc) .'"></itunes:category>'.PHP_EOL;
+		echo "\t".'</itunes:category>'.PHP_EOL;
 	}
  
 	if( $Cat3 )
@@ -710,33 +689,14 @@ function powerpress_rss2_head()
 		$CatDesc = $Categories[$Cat3.'-00'];
 		$SubCatDesc = $Categories[$Cat3.'-'.$SubCat3];
 	 
-		// It's a continuation of the last category...
-		if( $Cat2 == $Cat3 )
-		{
-			if( $SubCat3 != '00' )
-				echo "\t\t".'<itunes:category text="'. esc_html($SubCatDesc) .'" />'.PHP_EOL;
-			
-			// End this category set
-			echo "\t".'</itunes:category>'.PHP_EOL;
-		}
-		else // This is not a continuation, lets start a new category set
-		{
-			if( $Cat2 != $Cat3 && $SubCat3 == '00' )
-			{
-				echo "\t".'<itunes:category text="'. esc_html($CatDesc) .'" />'.PHP_EOL;
-			}
-			else // We have nested values
-			{
-				if( $Cat2 != $Cat3 ) // Start a new category set
-					echo "\t".'<itunes:category text="'. esc_html($CatDesc) .'">'.PHP_EOL;
-				if( $SubCat3 != '00' )
-					echo "\t\t".'<itunes:category text="'. esc_html($SubCatDesc) .'" />'.PHP_EOL;
-				// End this category set
-				echo "\t".'</itunes:category>'.PHP_EOL;
-			}
-		}
+		echo "\t".'<itunes:category text="'. esc_html($CatDesc) .'">'.PHP_EOL;
+		if( $SubCat3 != '00' )
+			echo "\t\t".'<itunes:category text="'. esc_html($SubCatDesc) .'"></itunes:category>'.PHP_EOL;
+		// End this category set
+		echo "\t".'</itunes:category>'.PHP_EOL;
 	}
 	// End Handle iTunes categories
+	
 	if( !empty($Feed['googleplay_email']) )
 	{
 		echo "\t".'<googleplay:email>' . esc_html($Feed['googleplay_email']) . '</googleplay:email>'.PHP_EOL;
@@ -939,11 +899,27 @@ function powerpress_rss2_item()
 		echo "\t\t".'<itunes:image href="' . esc_html( powerpress_url_in_feed(str_replace(' ', '+', $powerpress_feed['itunes_image'])), 'double') . '" />'.PHP_EOL;
 	}
 	
+	if( !empty($EpisodeData['season']) ) {
+		echo "\t\t".'<itunes:season>'. esc_html($EpisodeData['season']) .'</itunes:season>'.PHP_EOL;
+	}
+	
+	if( !empty($EpisodeData['episode_no']) ) {
+		echo "\t\t".'<itunes:episode>'. esc_html($EpisodeData['episode_no']) .'</itunes:episode>'.PHP_EOL;
+	}
+	
+	if( !empty($EpisodeData['episode_title']) ) {
+		echo "\t\t".'<itunes:title>'. esc_html($EpisodeData['episode_title']) .'</itunes:title>'.PHP_EOL;
+	}
+	
+	if( !empty($EpisodeData['episode_type']) ) {
+		echo "\t\t".'<itunes:episodeType>'. esc_html($EpisodeData['episode_type']) .'</itunes:episodeType>'.PHP_EOL;
+	}
+	
 	if( !empty($explicit) && $explicit != 'no' ) {
 		echo "\t\t<itunes:explicit>" . $explicit . '</itunes:explicit>'.PHP_EOL;
 	}
 	
-	if( $EpisodeData['duration'] && preg_match('/^(\d{1,2}:){0,2}\d{1,2}$/i', ltrim($EpisodeData['duration'], '0:') ) ) { // Include duration if it is valid
+	if( !empty($EpisodeData['duration']) && preg_match('/^(\d{1,2}:){0,2}\d{1,2}$/i', ltrim($EpisodeData['duration'], '0:') ) ) { // Include duration if it is valid
 		echo "\t\t<itunes:duration>" . ltrim($EpisodeData['duration'], '0:') . '</itunes:duration>'.PHP_EOL;
 	}
 		
@@ -2547,15 +2523,26 @@ function powerpress_get_root_url()
 	return $plugin_url . '/';
 }
 
-function powerpress_get_the_exerpt($for_summary = false, $no_filters = false)
+function powerpress_get_the_exerpt($for_summary = false, $no_filters = false, $post_id = false)
 {
 	if( $no_filters ) {
-		global $post;
-		$subtitle = $post->post_excerpt;
-		if ( $subtitle == '') {
-			$subtitle = strip_shortcodes( $post->post_content );
-			$subtitle = str_replace(']]>', ']]&gt;', $subtitle);
-			$subtitle = strip_tags($subtitle);
+		if( $post_id > 0 ) {
+			$post = get_post($post_id);
+			$subtitle = $post->post_excerpt;
+			if ( $subtitle == '') {
+				$subtitle = strip_shortcodes( $post->post_content );
+				$subtitle = str_replace(']]>', ']]&gt;', $subtitle);
+				$subtitle = strip_tags($subtitle);
+			}
+		}
+		else if( is_object($GLOBALS['post']) )
+		{
+			$subtitle = $GLOBALS['post']->post_excerpt;
+			if ( $subtitle == '') {
+				$subtitle = strip_shortcodes( $GLOBALS['post']->post_content );
+				$subtitle = str_replace(']]>', ']]&gt;', $subtitle);
+				$subtitle = strip_tags($subtitle);
+			}
 		}
 	} else {
 		$subtitle = get_the_excerpt();
@@ -2888,7 +2875,7 @@ function powerpress_add_redirect_url($MediaURL, $EpisodeData = false) // $channe
 				
 				// Check that redirect is either media.blubrry.com, media.techpodcasts.com, media.rawvoice.com, or *.podtrac.com
 				$ValidRedirectDomains = array('media.blubrry.com', 'media.rawvoice.com', 'media.techpodcasts.com', 'www.podtrac.com', 'podtrac.com');
-				$ValidRedirectDomainsPattern = '/^(media\.blubrry\.com|media\.rawvoice\.com|media\.techpodcasts\.com|.*\.podtrac\.com)$/';
+				$ValidRedirectDomainsPattern = '/^(media\.blubrry\.com|media\.rawvoice\.com|media\.techpodcasts\.com|.*\.podtrac\.com|traffic\.cast\.plus)$/';
 				if( $URLScheme == 'https://' ) {
 					$ValidRedirectDomains = array('media.blubrry.com', 'media.rawvoice.com'); // Only URLs that support https:// to an https:// media file
 					$ValidRedirectDomainsPattern = '/^(media\.blubrry\.com|media\.rawvoice\.com)$/';
@@ -2933,7 +2920,10 @@ Code contributed from upekshapriya on the Blubrry Forums
 */
 function powerpress_byte_size($ppbytes) 
 {
-	$ppsize = $ppbytes / 1024;
+	$ppbytes = intval($ppbytes);
+	if( empty($ppbytes) )
+		return '';
+	$ppsize = intval($ppbytes) / 1024;
 	if($ppsize < 1024)
 	{
 		$ppsize = number_format($ppsize, 1);
@@ -3180,6 +3170,12 @@ function powerpress_get_enclosure_data($post_id, $feed_slug = 'podcast', $raw_da
 				}
 			}
 		}
+	}
+	
+	// If the URL is using Blubrry hosting, then lets pump it up to https...
+	if( is_ssl() && preg_match('/^http:\/\/(.*\/content\.blubrry\.com\/.*)$/i', $Data['url'], $matches) )
+	{
+		$Data['url'] = 'https://'. $matches[1];
 	}
 	
 	// Check that the content type is a valid one...
@@ -3534,7 +3530,10 @@ if( defined('POWERPRESS_NEW_CODE') && POWERPRESS_NEW_CODE && file_exists(POWERPR
 	require_once(POWERPRESS_ABSPATH.'/powerpress-new-code.php');
 }
 
-
+if( defined('POWERPRESS_PTS') && POWERPRESS_PTS && file_exists(POWERPRESS_ABSPATH.'/powerpressadmin-pts.php') )
+{
+	require_once(POWERPRESS_ABSPATH.'/powerpressadmin-pts.php');
+}
 
 if( defined('POWERPRESS_PREMIUM_GROUPS_PLUGIN') ) {
 

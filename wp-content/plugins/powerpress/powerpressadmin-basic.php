@@ -502,7 +502,7 @@ function powerpressadmin_edit_entry_options($General)
 						(<?php echo __('Leave unchecked to use your feed\'s explicit setting', 'powerpress'); ?>)</p>
 					
 						
-					<p style="margin-top: 15px;"><label><input id="episode_box_itunes_image" class="episode_box_option" name="General[episode_box_itunes_image]" type="checkbox" value="1"<?php if( !empty($General['episode_box_itunes_image']) ) echo ' checked'; ?> /> <?php echo __('iTunes Episode Image Field', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?>
+					<p style="margin-top: 15px;"><label><input id="episode_box_itunes_image" class="episode_box_option" name="General[episode_box_itunes_image]" type="checkbox" value="1"<?php if( !empty($General['episode_box_itunes_image']) ) echo ' checked'; ?> /> <?php echo __('iTunes Episode Image Field', 'powerpress'); ?></label>
 						(<?php echo __('Leave unchecked to use the image embedded into your media files.', 'powerpress'); ?>)</p>	
 						
 					<p style="margin-top: 15px;"><label><input id="episode_box_closed_captioned" class="episode_box_option" name="General[episode_box_closed_captioned]" type="checkbox" value="1"<?php if( !empty($General['episode_box_closed_captioned']) ) echo ' checked'; ?> /> <?php echo __('iTunes Closed Captioned', 'powerpress'); ?></label> 
@@ -513,6 +513,14 @@ function powerpressadmin_edit_entry_options($General)
 						<em><strong><?php echo __('If conflicting values are present the directories will use the default ordering.', 'powerpress'); ?></strong></em><br />
 						<em><strong><?php echo __('This feature only applies to the default podcast feed and Custom Podcast Channel feeds added by PowerPress.', 'powerpress'); ?></strong></em>
 					
+					<input type="hidden" name="General[episode_box_itunes_title]' value="0" />
+					<p style="margin-top: 15px;"><label><input id="episode_box_itunes_title" class="episode_box_option" name="General[episode_box_itunes_title]" type="checkbox" value="1"<?php if( !empty($General['episode_box_itunes_title']) ) echo ' checked'; ?> /> <?php echo __('iTunes Episode Title Field', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?></p>
+						<em><strong><?php echo __('Specify iTunes episode title separate from podcast feed title.', 'powerpress'); ?></strong></em>
+					
+					<input type="hidden" name="General[episode_box_itunes_nst]' value="0" />
+					<p style="margin-top: 15px;"><label><input id="episode_box_itunes_nst" class="episode_box_option" name="General[episode_box_itunes_nst]" type="checkbox" value="1"<?php if( !empty($General['episode_box_itunes_nst']) ) echo ' checked'; ?> /> <?php echo __('iTunes Episode Number, Season and Type Fields', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?></p>
+						<em><strong><?php echo __('Enter specifics about episode including episode number, season number and type (full, trailer, or bonus).', 'powerpress'); ?></strong></em>	
+				
 					<p style="margin-top: 15px;"><label><input id="episode_box_feature_in_itunes" class="episode_box_option" name="General[episode_box_feature_in_itunes]" type="checkbox" value="1"<?php if( !empty($General['episode_box_feature_in_itunes']) ) echo ' checked'; ?> /> <?php echo __('Feature Episode in iTunes and Google Play Music', 'powerpress'); ?></label>
 						(<?php echo __('Display selected episode at top of your iTunes and Google Play Music directory listings', 'powerpress'); ?>)</p>
 						<em><strong><?php echo __('All other episodes will be listed following the featured episode.', 'powerpress'); ?></strong></em><br />
@@ -1199,7 +1207,11 @@ function powerpressadmin_appearance($General=false, $Feed = false)
 			</li></ul>
 		</li>
 	</ul>
-	<p><input name="General[display_player_excerpt]" type="checkbox" value="1" <?php if( !empty($General['display_player_excerpt']) ) echo 'checked '; ?>/> <?php echo __('Display media / links in:', 'powerpress'); ?> <a href="http://codex.wordpress.org/Template_Tags/the_excerpt" title="<?php echo __('WordPress Excerpts', 'powerpress'); ?>" target="_blank"><?php echo __('WordPress Excerpts', 'powerpress'); ?></a>  (<?php echo __('e.g. search results', 'powerpress'); ?>)</p>
+	<p><input name="General[display_player_excerpt]" type="checkbox" value="1" <?php if( !empty($General['display_player_excerpt']) ) echo 'checked '; ?>/> <?php echo __('Display player / links:', 'powerpress'); ?> <a href="http://codex.wordpress.org/Template_Tags/the_excerpt" title="<?php echo __('WordPress Excerpts', 'powerpress'); ?>" target="_blank"><?php echo __('WordPress Excerpts', 'powerpress'); ?></a>  (<?php echo __('e.g. search results', 'powerpress'); ?>)</p>
+	
+	<input type="hidden" name="General[hide_player_more]" value="0" />
+	<p><input name="General[hide_player_more]" type="checkbox" value="1" <?php if( !empty($General['hide_player_more']) ) echo 'checked '; ?>/> <?php echo __('Hide player / links:', 'powerpress'); ?> <a href="https://en.support.wordpress.com/more-tag/" title="<?php echo __('Read More tagged posts', 'powerpress'); ?>" target="_blank"><?php echo __('Read More tagged posts', 'powerpress'); ?></a></p>
+	
 </td>
 </tr>
 </table>

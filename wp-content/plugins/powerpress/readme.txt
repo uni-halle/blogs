@@ -2,8 +2,8 @@
 Contributors: amandato, blubrry
 Tags: podcasting, podcast, podcaster, powerpress, itunes, google play music, google play, enclosure, professional, apple, apple tv, ipad, iphone, soundcloud, squarespace, youtube, viddler, ustream, podcasting, audio, video, rss2, feed, player, media, rss, mp3, music, embed, feedburner, statistics, stats, flv, flash, id3, episodes, blubrry, mp4, m4v, wordpressmu, mu, wordpress mu, multisite, multi site, mediacaster, post, plugin, posts, simple, social, dashboard, TSG, Buzzsprout, MTR, WP-boxCast, CastMyBlog, tgs podcasting,  simple podcasting, seriously simple podcasting, seriously-simple-podcasting, serious, seriously, ssp, podlove, podcast.de, clammr, clammr radio, audio player, stitcher, tunein, show, shows, series, docs, documentation, support, free, add-ons, extensions, addons, libsyn, libsyn-podcasting, podbean, podomatic, spreaker
 Requires at least: 3.6
-Tested up to: 4.7.3
-Stable tag: 7.0.4
+Tested up to: 4.8.1
+Stable tag: 7.1
 Donate link: https://www.patreon.com/blubrry?ty=h
 License: GPLv2 or later
 
@@ -232,6 +232,32 @@ To install Blubrry PowerPress manually, follow these steps:
 
 = Fan of PowerPress and want to show your support? =
 If you are a fan of PowerPress, we would greatly appreciate it if you could take a moment and [leave us a review on WordPress.org](https://wordpress.org/support/plugin/powerpress/reviews/?rate=5#new-post). Your support is greatly appreciated!
+
+
+= 7.1 =
+* Released on 7/11/2017
+* Added support for iOS 11!
+* iTunes type added, specifcy episodic or serial for your podcast program (for iOS 11).
+* iTunes episode title, number, season and type added for your episodes (for iOS 11).
+* Subscribe on iTunes changed to Subscribe on Apple Podcasts, links have been enhanced to highlight episodes.
+* Blubrry Podcast Media Hosting and HTTPS: Media URLs are now automatically converted to HTTPS.
+* Added compatibility for the SG CachePress plugin. PowerPress will clear the cache if there was an error. (Thanks @grudesky for getting us in touch with developers!)
+* Fixed error with creating the subscribe page in some languages (Thanks @edithmayerhofer for bringing to our attention).
+* Better error reporting when importing podcast feed images.
+* Verify media option improvements, mp3 duration is now detected even faster in most cases!
+* Added logic to prevent notice messages with the subscribe_shortcode and newest versions of PHP. (Thanks @mahe for bringing to our attention)
+* Added "Hide player / links: Read more tagged posts" option, hides the player and links on pages with the read more link. (Thanks @calebsg0 for the suggestion!)
+* Google play schema URL updated.
+* Added "redirect_rule" list of post types not used for podcasting. For compatibility with the "Safe Redirect Manager" plugin.
+* Blubrry Player now uses the episode itunes image if set. The URLs to the images must be https:// in order to appear on social networking sites.
+* Windows Media Player in browser support has been removed. Microsoft Edge browser does not support Windows Media Player in the browser.
+* New logic added for dealing with Internet Explorer / Edge browser preloading media when using the MediaElement.js player.
+* Fixed PHP warning message if media size in bytes is zero when displaying file size with player links.
+* No longer using self closing XML for iTunes Categories.
+* iTunes subscribe itpc:// links are no longer supported.
+* Editing default podcast channel now imports global settings by default if blank. (Thanks Robin for bringing to our attention!)
+* RSS Podcast feed Import error message added when the PHP XML library is not available. (Thanks @hgetrost for bringing to our attention!)
+
 
 = 7.0.4 =
 * Released on 2/18/2017

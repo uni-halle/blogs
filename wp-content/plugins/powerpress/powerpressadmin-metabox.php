@@ -370,6 +370,50 @@ function powerpress_meta_box($object, $box)
 <?php
 		}
 		
+		$DoNST = ( !empty($ExtraData['episode_no']) || !empty($ExtraData['episode_season']) || !empty($ExtraData['episode_type']) || !empty($GeneralSettings['episode_box_itunes_nst']) );
+		if( $DoNST ) {
+			echo '<div class="powerpress_row">';
+			echo '<label>'. __('iTunes Episode', 'powerpress') .'</label>';
+			echo '<div class="powerpress_row_content">';
+		
+			if( empty($ExtraData['episode_no']) ) {
+				$ExtraData['episode_no'] = '';
+			}
+			if( empty($ExtraData['episode_season']) ) {
+				$ExtraData['episode_season'] = '';
+			}
+			if( empty($ExtraData['episode_type']) ) {
+				$ExtraData['episode_type'] = '';
+			}
+			
+			
+				// itunes:episode
+?>
+			<span for="powerpress_episode_episode_no_<?php echo $FeedSlug; ?>">Number: </span>
+			<input type="number" id="powerpress_episode_episode_no_<?php echo $FeedSlug; ?>" style="vertical-align: middle; width: 80px;" name="Powerpress[<?php echo $FeedSlug; ?>][episode_no]" value="<?php echo esc_attr($ExtraData['episode_no']); ?>" />
+<?php
+				// itunes:season
+?>
+			<span for="powerpress_episode_season_<?php echo $FeedSlug; ?>" style="margin-left: 10px;">Season: </span>
+			<input type="number" id="powerpress_episode_season_<?php echo $FeedSlug; ?>" style="vertical-align: middle; width: 80px;" name="Powerpress[<?php echo $FeedSlug; ?>][season]" value="<?php echo esc_attr($ExtraData['season']); ?>" />
+<?php				
+				// itunes:episodeType
+?>
+				<span for="powerpress_episode_type_<?php echo $FeedSlug; ?>" style="margin-left: 10px;">Type: </span>
+				<select id="powerpress_episode_type_<?php echo $FeedSlug; ?>" style="vertical-align: middle; width: 120px" name="Powerpress[<?php echo $FeedSlug; ?>][episode_type]">
+<?php
+$type_array = array(''=>__('Full (default)', 'powerpress'), 'full'=>__('Full', 'powerpress'),'trailer'=>__('Trailer', 'powerpress'), 'bonus'=>__('Bonus', 'powerpress') );
+
+while( list($value,$desc) = each($type_array) )
+	echo "\t<option value=\"$value\"". ($ExtraData['episode_type']==$value?' selected':''). ">$desc</option>\n";
+unset($cc_array);
+?>
+					</select>
+<?php
+			echo '</div>'; // end powerpress_row_content
+			echo '</div>'; // end powerpress_row
+		}
+		
 		if( $iTunesKeywords )
 		{
 ?>
@@ -380,6 +424,23 @@ function powerpress_meta_box($object, $box)
 			</div>
 			<div class="powerpress_row_content">
 				<em><?php echo __('Feature Deprecated by Apple. Keywords above are for your reference only.', 'powerpress'); ?></em>
+			</div>
+		</div>
+<?php
+		}
+		
+		if( !empty($ExtraData['episode_title']) || !empty($GeneralSettings['episode_box_itunes_title']) ) {
+			if( empty($ExtraData['episode_title']) )
+				$ExtraData['episode_title'] = '';
+			// itunes:title
+?>
+		<div class="powerpress_row">
+			<label for="Powerpress[<?php echo $FeedSlug; ?>][episode_title]"><?php echo __('iTunes Title', 'powerpress'); ?></label>
+			<div class="powerpress_row_content">
+				<input type="text" id="powerpress_episode_title_<?php echo $FeedSlug; ?>" name="Powerpress[<?php echo $FeedSlug; ?>][episode_title]" value="<?php echo esc_attr($ExtraData['episode_title']); ?>" style="width: 90%; font-size: 90%;" maxlength="255" />
+			</div>
+			<div class="powerpress_row_content">
+				<em><?php echo __('Apple recommends you not specify your podcast title, episode number, or season number.', 'powerpress'); ?></em>
 			</div>
 		</div>
 <?php
