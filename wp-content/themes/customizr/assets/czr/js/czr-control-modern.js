@@ -120,6 +120,36 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
             });
       }
 
+
+      /*****************************************************************************
+      * OBSERVE UBIQUE CONTROL'S PANELS EXPANSION
+      *****************************************************************************/
+      if ( 'function' === typeof api.Panel ) {
+            api.section.bind( 'add', function( _sec ) {
+                  if ( _sec.params.ubq_panel && _sec.params.ubq_panel.panel ) {
+                        _sec.params.original_priority = _sec.params.priority;
+                        _sec.params.original_panel  = _sec.params.panel;
+
+                        api.panel.when( _sec.params.ubq_panel.panel, function( _panel_instance ) {
+                                _panel_instance.expanded.bind( function( expanded ) {
+                                      if ( expanded ) {
+                                            if ( _sec.params.ubq_panel.priority ) {
+                                                  _sec.priority( _sec.params.ubq_panel.priority );
+                                            }
+                                            _sec.panel( _sec.params.ubq_panel.panel );
+                                      }
+                                      else {
+                                            _sec.priority( _sec.params.original_priority );
+                                            _sec.panel( _sec.params.original_panel );
+                                      }
+                                });
+
+                        } );
+                  }
+            });
+      }
+
+
       /*****************************************************************************
       * CLOSE THE MOD OPTION PANEL ( if exists ) ON : section change, panel change, skope switch
       *****************************************************************************/
@@ -343,7 +373,19 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
       * ADD PRO BEFORE SPECIFIC SECTIONS AND PANELS
       *****************************************************************************/
       if ( serverControlParams.isPro ) {
-            _.each( [ 'tc_font_customizer_settings', 'header_image_sec', 'content_blog_sec', 'static_front_page', 'content_single_sec' ], function( _secId ) {
+            _.each( [
+                  'tc_font_customizer_settings',//WFC
+
+                  'header_image_sec',//hueman pro
+                  'content_blog_sec',//hueman pro
+                  'static_front_page',//hueman pro
+                  'content_single_sec',//hueman pro
+
+                  'tc_fpu',//customizr-pro
+                  'nav',//customizr-pro
+                  'post_lists_sec'//customizr-pro
+
+            ], function( _secId ) {
                   _.delay( function() {
                       api.section.when( _secId, function( _sec_ ) {
                             if ( 1 >= _sec_.headContainer.length ) {
@@ -352,7 +394,14 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
                       });
                   }, 1000 );
             });
-            _.each( ['hu-header-panel', 'hu-content-panel' ], function( _secId ) {
+            _.each( [
+                  'hu-header-panel',//hueman pro
+                  'hu-content-panel',//hueman pro
+
+                  'tc-header-panel',//customizr-pro
+                  'tc-content-panel',//customizr-pro
+                  'tc-footer-panel'//customizr-pro
+            ], function( _secId ) {
                   api.panel.when( _secId, function( _sec_ ) {
                         if ( 1 >= _sec_.headContainer.length ) {
                             _sec_.headContainer.find('.accordion-section-title').prepend( '<span class="pro-title-block">Pro</span>' );
@@ -363,7 +412,7 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
 
 
       /*****************************************************************************
-      * ADD PRO BEFORE SPECIFIC SECTIONS AND PANELS
+      * PRO SECTION CONSTRUCTOR
       *****************************************************************************/
       if ( ! serverControlParams.isPro && _.isFunction( api.Section ) ) {
             proSectionConstructor = api.Section.extend( {
@@ -10750,7 +10799,10 @@ $.extend( CZRLayoutSelectMths , {
 
             /* CHECKBOXES */
             api.czrSetupCheckbox = function( controlId, refresh ) {
-                  $('input[type=checkbox]', api.control(controlId).container ).each( function() {
+                  var _ctrl = api.control( controlId );
+                  $('input[type=checkbox]', _ctrl.container ).each( function() {
+                        if ( 'tc_font_customizer_settings' == _ctrl.params.section )
+                          return;
                         if ( 0 === $(this).val() || '0' == $(this).val() || 'off' == $(this).val() || _.isEmpty($(this).val() ) ) {
                               $(this).prop('checked', false);
                         } else {
@@ -10783,8 +10835,11 @@ $.extend( CZRLayoutSelectMths , {
 
             /* NUMBER INPUT */
             api.czrSetupStepper = function( controlId, refresh ) {
-                  $('input[type="number"]', api.control(controlId).container ).each( function() {
-                        $(this).stepper();
+                  var _ctrl = api.control( controlId );
+                  $('input[type="number"]', _ctrl.container ).each( function() {
+                        if ( 'tc_font_customizer_settings' != _ctrl.params.section ) {
+                            $(this).stepper();
+                        }
                   });
             };//api.czrSetupStepper()
 
@@ -10941,7 +10996,7 @@ $.extend( CZRLayoutSelectMths , {
 
                                   if ( 'tc_posts_slider' == to ) {
                                     if ( 0 !== $_label.length && ! $('.czr-notice' , $_label ).length ) {
-                                      var $_notice = $('<span>', { class: 'czr-notice', html : serverControlParams.translatedStrings.postSliderNote || '' } );
+                                      var $_notice = $('<span>', { class: 'czr-notice', html : serverControlParams.i18n.postSliderNote || '' } );
                                       $_label.append( $_notice );
                                     }
                                     else {
@@ -11009,6 +11064,22 @@ $.extend( CZRLayoutSelectMths , {
                             },
                     },
                     {
+                            dominus : 'tc_gc_enabled',
+                            servi   : [
+                              'tc_gc_limit_excerpt_length',
+                              'tc_gc_effect',
+                              'tc_gc_title_caps',
+                              'tc_gc_transp_bg',
+                              'tc_gc_random',
+                              'tc_gc_title_location',
+                              'tc_gc_title_color',
+                              'tc_gc_title_custom_color'
+                            ],
+                            visibility : function( to ) {
+                                  return _is_checked(to) && 'grid' == api( api.CZR_Helpers.build_setId( 'tc_post_list_grid' ) )();
+                            },
+                    },
+                    {
                             dominus : 'tc_post_list_grid',
                             servi   : [
                               'tc_grid_columns',
@@ -11023,11 +11094,39 @@ $.extend( CZRLayoutSelectMths , {
                               'tc_grid_num_words',
                               'tc_post_list_thumb_position',
                               'tc_post_list_thumb_alternate',
+                              'tc_post_list_thumb_shape',
+
                               'tc_post_list_grid',//trick, see the actions
+
+                              'tc_post_list_thumb_placeholder',
+
+                              'tc_post_list_use_attachment_as_thumb',
+                              'tc_masonry_columns',
+                              'tc_gc_enabled',
+                              'tc_gc_limit_excerpt_length',
+                              'tc_gc_effect',
+                              'tc_gc_title_caps',
+                              'tc_gc_transp_bg',
+                              'tc_gc_random',
+                              'tc_gc_title_location',
+                              'tc_gc_title_color',
+                              'tc_gc_title_custom_color'
                             ],
                             visibility : function( to, servusShortId ) {
                                   if ( 'tc_post_list_grid' == servusShortId )
                                       return true;
+                                  if ( 'tc_masonry_columns' == servusShortId )
+                                      return 'masonry' == to;
+                                  if (  -1 != servusShortId.indexOf( 'tc_gc_' ) ) {
+                                      if ( 'tc_gc_enabled' == servusShortId ) {
+                                          return 'grid' == to;
+                                      } else {
+                                          return 'grid' == to && '1' == api( api.CZR_Helpers.build_setId( 'tc_gc_enabled' ) )();
+                                      }
+                                  }
+                                  if ( 'tc_post_list_thumb_placeholder' == servusShortId ) {
+                                      return 'grid' == to;
+                                  }
 
                                   if ( _.contains( serverControlParams.gridDesignControls, servusShortId ) ) {
                                       _bool =  $('.tc-grid-toggle-controls').hasClass('open') && 'grid' == to;
@@ -11037,8 +11136,13 @@ $.extend( CZRLayoutSelectMths , {
                                       }
                                       return _bool;
                                   }
-                                  if ( 0 > servusShortId.indexOf('grid') ) {
-
+                                  if ( 'tc_post_list_thumb_position' == servusShortId || 'tc_post_list_thumb_alternate' == servusShortId || 'tc_post_list_thumb_shape' == servusShortId ) {
+                                    return 'alternate' == to && _is_checked( api( api.CZR_Helpers.build_setId( 'tc_post_list_show_thumb' ) )() ) ;
+                                  }
+                                  if ( 'tc_post_list_use_attachment_as_thumb' == servusShortId ) {
+                                    return -1 == to.indexOf('plain');
+                                  }
+                                  if ( -1 == servusShortId.indexOf('grid') ) {
                                     return 'grid' != to;
                                   }
                                   return 'grid' == to;
@@ -11313,7 +11417,7 @@ $.extend( CZRLayoutSelectMths , {
                                     var $_container = api.control(api.CZR_Helpers.build_setId( servusShortId )).container;
                                         $_notice    = $_container.children('.czr-notice');
                                     if ( 0 === $_notice.length ) {
-                                      $_notice = $('<span>', { class: 'czr-notice', html : serverControlParams.translatedStrings.sidenavNote || '' } );
+                                      $_notice = $('<span>', { class: 'czr-notice', html : serverControlParams.i18n.sidenavNote || '' } );
 
                                       $_container.append( $_notice );
                                     }
@@ -11355,58 +11459,50 @@ $.extend( CZRLayoutSelectMths , {
                                   return _is_checked(to);
                             }
                     },
+                    {
+                            dominus : 'tc_header_mobile_menu_layout',
+                            servi   : ['nav_menu_locations[mobile]'],
+                            visibility: function (to) {
+                                  return 'mobile_menu' == to;
+                            }
+                    }
+
                 ]//dominiDeps {}
           );//_.extend()
 
-}) ( wp.customize, jQuery, _);(function (wp, $) {
-        /* Pro section init */
-        var api = api || wp.customize,
-            proSectionConstructor;
+}) ( wp.customize, jQuery, _);//global serverControlParams
+(function (wp, $) {
+        var api = api || wp.customize;
 
-        if ( 'function' === typeof api.Section ) {
-            proSectionConstructor = api.Section.extend( {
-                  active : true,
-                  attachEvents: function () {},
-                  isContextuallyActive: function () {
-                    return this.active();
-                  },
-                  _toggleActive: function(){ return true; },
-
-            } );
-
-            $.extend( api.sectionConstructor, {
-                  'czr-customize-section-pro' : proSectionConstructor
-            });
-        }
         $( function($) {
-                /* GRID */
-                var _build_control_id = function( _control ) {
-                  return [ '#' , 'customize-control-tc_theme_options-', _control ].join('');
-                };
+              /* GRID */
+              var _build_control_id = function( _control ) {
+                    return [ '#' , 'customize-control-tc_theme_options-', _control ].join('');
+              };
 
-                var _get_grid_design_controls = function() {
-                  return $( serverControlParams.gridDesignControls.map( function( _control ) {
-                    return _build_control_id( _control );
-                  }).join(',') );
-                };
-                $( _get_grid_design_controls() ).addClass('tc-grid-design').hide();
+              var _get_grid_design_controls = function() {
+                    return $( serverControlParams.gridDesignControls.map( function( _control ) {
+                          return _build_control_id( _control );
+                    }).join(',') );
+              };
+              $( _get_grid_design_controls() ).addClass('tc-grid-design').hide();
 
-                $('.tc-grid-toggle-controls').on( 'click', function() {
-                  $( _get_grid_design_controls() ).slideToggle('fast');
-                  $(this).toggleClass('open');
-                } );
+              $('.tc-grid-toggle-controls').on( 'click', function() {
+                    $( _get_grid_design_controls() ).slideToggle('fast');
+                    $(this).toggleClass('open');
+              } );
 
-                /* ADD GOOGLE IN TITLE */
-                $g_logo = $('<img>' , {class : 'tc-title-google-logo' , src : '//www.google.com/images/logos/google_logo_41.png' , height : 20 });
-                $('#accordion-section-fonts_sec').prepend($g_logo);
+              /* ADD GOOGLE IN TITLE */
+              $g_logo = $('<img>' , {class : 'tc-title-google-logo' , src : '//www.google.com/images/logos/google_logo_41.png' , height : 20 });
+              $('#accordion-section-fonts_sec').prepend($g_logo);
 
-                /*
-                * Override select2 Results Adapter in order to select on highlight
-                * deferred needed cause the selects needs to be instantiated when this override is complete
-                * selec2.amd.require is asynchronous
-                */
-                var selectFocusResults = $.Deferred();
-                if ( 'undefined' !== typeof $.fn.select2 && 'undefined' !== typeof $.fn.select2.amd && 'function' === typeof $.fn.select2.amd.require ) {
+              /*
+              * Override select2 Results Adapter in order to select on highlight
+              * deferred needed cause the selects needs to be instantiated when this override is complete
+              * selec2.amd.require is asynchronous
+              */
+              var selectFocusResults = $.Deferred();
+              if ( 'undefined' !== typeof $.fn.select2 && 'undefined' !== typeof $.fn.select2.amd && 'function' === typeof $.fn.select2.amd.require ) {
                     $.fn.select2.amd.require(['select2/results', 'select2/utils'], function (Result, Utils) {
                       var ResultsAdapter = function($element, options, dataAdapter) {
                         ResultsAdapter.__super__.constructor.call(this, $element, options, dataAdapter);
@@ -11425,51 +11521,129 @@ $.extend( CZRLayoutSelectMths , {
                       };
                       selectFocusResults.resolve( ResultsAdapter );
                     });
-                }
-                else {
-                  selectFocusResults.resolve( false );
-                }
+              }
+              else {
+                    selectFocusResults.resolve( false );
+              }
 
-                $.when( selectFocusResults ).done( function( customResultsAdapter ) {
-                    var _skin_select2_params = {
-                        minimumResultsForSearch: -1, //no search box needed
-                        templateResult: paintSkinOptionElement,
-                        templateSelection: paintSkinOptionElement,
-                        escapeMarkup: function(m) { return m; }
-                    },
-                        _fonts_select2_params = {
-                        minimumResultsForSearch: -1, //no search box needed
-                        templateResult: paintFontOptionElement,
-                        templateSelection: paintFontOptionElement,
-                        escapeMarkup: function(m) { return m; },
-                    };
-                    /*
-                    * Maybe use custom adapter
+
+
+              $.when( selectFocusResults ).done( function( customResultsAdapter ) {
+                      var _skin_select2_params = {
+                          minimumResultsForSearch: -1, //no search box needed
+                          templateResult: paintSkinOptionElement,
+                          templateSelection: paintSkinOptionElement,
+                          escapeMarkup: function(m) { return m; }
+                      },
+                      _fonts_select2_params = {
+                          minimumResultsForSearch: -1, //no search box needed
+                          templateResult: paintFontOptionElement,
+                          templateSelection: paintFontOptionElement,
+                          escapeMarkup: function(m) { return m; },
+                      };
+                      /*
+                      * Maybe use custom adapter
+                      */
+                      if ( customResultsAdapter ) {
+                            $.extend( _skin_select2_params, {
+                                  resultsAdapter: customResultsAdapter,
+                                  closeOnSelect: false,
+                            } );
+                            $.extend( _fonts_select2_params, {
+                                  resultsAdapter: customResultsAdapter,
+                                  closeOnSelect: false,
+                            } );
+                      }
+                      $('select[data-customize-setting-link="tc_theme_options[tc_skin]"]').select2( _skin_select2_params );
+                      function paintSkinOptionElement(state) {
+                        console.log( 'here' );
+                              if (!state.id) return state.text; // optgroup
+                              return '<span class="tc-select2-skin-color" style="background:' + $(state.element).data('hex') + '">' + $(state.element).data('hex') + '<span>';
+                      }
+                      $('select[data-customize-setting-link="tc_theme_options[tc_fonts]"]').select2( _fonts_select2_params );
+
+                      function paintFontOptionElement(state) {
+                            if ( ! state.id && ( -1 != state.text.indexOf('Google') ) )
+                              return '<img class="tc-google-logo" src="//www.google.com/images/logos/google_logo_41.png" height="20"/> Font pairs'; // google font optgroup
+                            else if ( ! state.id )
+                              return state.text;// optgroup different than google font
+                            return '<span class="tc-select2-font">' + state.text + '</span>';
+                      }
+              });//$.when( selectFocusResults )
+
+
+              if ( ! serverControlParams.isModernStyle ) {
+                    /**
+                    * Dependency between the header layout and the horizontal menu positions
+                    * What this does:
+                    * 1) enable/disale the 'pull-menu-center' among the select option for the horizontal menus position
+                    *    this option is available only when the header layout is "centered" (logo centered)
+                    * 2) reset to default the horizontal menus position ONLY if the user switches from an header
+                    *    centered layout to a logo right/left layout.
+                    *
                     */
-                    if ( customResultsAdapter ) {
-                        $.extend( _skin_select2_params, {
-                          resultsAdapter: customResultsAdapter,
-                          closeOnSelect: false,
-                        } );
-                        $.extend( _fonts_select2_params, {
-                          resultsAdapter: customResultsAdapter,
-                          closeOnSelect: false,
-                        } );
-                    }
-                    $('select[data-customize-setting-link="tc_theme_options[tc_skin]"]').select2( _skin_select2_params );
-                    function paintSkinOptionElement(state) {
-                        if (!state.id) return state.text; // optgroup
-                        return '<span class="tc-select2-skin-color" style="background:' + $(state.element).data('hex') + '">' + $(state.element).data('hex') + '<span>';
-                    }
-                    $('select[data-customize-setting-link="tc_theme_options[tc_fonts]"]').select2( _fonts_select2_params );
+                    (function() {
+                        var _hm_primary_position_option    = 'tc_theme_options[tc_menu_position]',
 
-                    function paintFontOptionElement(state) {
-                        if ( ! state.id && ( -1 != state.text.indexOf('Google') ) )
-                          return '<img class="tc-google-logo" src="//www.google.com/images/logos/google_logo_41.png" height="20"/> Font pairs'; // google font optgroup
-                        else if ( ! state.id )
-                          return state.text;// optgroup different than google font
-                        return '<span class="tc-select2-font">' + state.text + '</span>';
-                    }
-                });
+                            _hm_secondary_position_option  = 'tc_theme_options[tc_second_menu_position]',
+                            _header_layout_setting         = api( 'tc_theme_options[tc_header_layout]' );
+                        if ( 'centered' != _header_layout_setting.get() ) {
+                              toggle_select_option_visibility( false );
+                        }
+                        _header_layout_setting.callbacks.add( function(to, from ) {
+                              if ( 'centered' != to && 'centered' == from ) {
+                                    reset_menu_position_option();
+                              }
+                              toggle_select_option_visibility( 'centered' == to );
+
+                        } );
+
+                        function reset_menu_position_option() {
+                              _.each( [ _hm_primary_position_option, _hm_secondary_position_option], function( option ) {
+                                    if ( 'pull-menu-center' == api( option ).get() ) {
+                                        api( option ).set( serverControlParams.isRTL ? 'pull-menu-left' : 'pull-menu-right' );
+                                    }
+                              });
+                        }
+
+                        function toggle_select_option_visibility( is_header_centered ) {
+                              _.each( [ _hm_primary_position_option, _hm_secondary_position_option], function( option ) {
+                                    var $_select = api.control( option ).container.find("select");
+                                    $_select.find( 'option[value="pull-menu-center"]' )[ is_header_centered ? 'removeAttr': 'attr']('disabled', 'disabled');
+                                    $_select.selecter( 'destroy' ).selecter();
+                              });
+                        }
+                    })();
+              }//if ( serverControlParams.isModernStyle )
+
+        });//$( function($) {} )
+        api.when( 'tc_theme_options[tc_style]', function( _set ) {
+              _set.bind( function() {
+                    api.previewer.save().always( function() {
+                          if ( _wpCustomizeSettings && _wpCustomizeSettings.url && _wpCustomizeSettings.url.parent ) {
+                                var url = [ _wpCustomizeSettings.url.parent ];
+                                url.push( 'customize.php?&autofocus%5Bcontrol%5D=' + _set.id );
+                                _.delay( function() {
+                                      window.location.href = url.join('');
+                                }, 500 );
+                          } else {
+                                _.delay( function() {
+                                      window.parent.location.reload();
+                                });
+                          }
+                    });
+              });
+              _set.validate = function( value ) {
+                    return serverControlParams.isChildTheme ? _set() : value;
+              };
+              api.control.when( _set.id, function( _ctrl ) {
+                    _ctrl.deferred.embedded.done( function() {
+                          api.section( _ctrl.section() ).expanded.bind( function() {
+                                if ( serverControlParams.isChildTheme ) {
+                                      _ctrl.container.find( 'select, .selecter' ).hide();
+                                }
+                          });
+                    });
+              } );
         });
 }) ( wp, jQuery );

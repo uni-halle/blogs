@@ -201,23 +201,39 @@
 } )( wp.customize, jQuery, _ );(function (api, $, _ ) {
       var $_body    = $( 'body' ),
           setting_cbs = api.CZR_preview.prototype.setting_cbs || {},
-          subsetting_cbs = api.CZR_preview.prototype.subsetting_cbs || {},
-          _settings_cbs;
+          input_cbs = api.CZR_preview.prototype.input_cbs || {},
+          _settingsCbsExtend = {},
+          _inputCbsExtend = {};
 
+      _inputCbsExtend = {
+          'tc_social_links' : {
+                'social-size' : function( data ) {
+                      if ( ! _.isObject( data ) || _.isUndefined( data.value ) || ! $('.social-icon', '.socials').length )
+                        return;
+                      $('.social-icon', '.socials').css( 'font-size', data.value + 'px');
+                },
+                'social-color' : function( data ) {
+                      if ( ! _.isObject( data ) || _.isUndefined( data.value ) || _.isUndefined( data.input_parent_id ) )
+                        return;
+                      if ( ! $('.socials').find('.social-icon[data-model-id=' + data.input_parent_id +']').length )
+                        return;
+                      $('.socials').find('.social-icon[data-model-id=' + data.input_parent_id +']').css( 'color', data.value );
+                }
+          }
+      };
 
-
-    _settings_cbs = {
+    _settingsCbsExtend = {
         /******************************************
         * GLOBAL SETTINGS
         ******************************************/
           'blogname' : function(to) {
-            $( 'a.site-title' ).text( to );
+            $( 'a.navbar-brand-sitename span' ).text( to );
           },
           'blogdescription' : function(to) {
             //do nothing if this setting has partial refresh
-            if ( _customizePartialRefreshExports && 'undefined' !== typeof _customizePartialRefreshExports.partials && 'undefined' !== typeof _customizePartialRefreshExports.partials.blogdescription )
+            if ( _customizePartialRefreshExports && ! _.isUndefined( _customizePartialRefreshExports.partials ) && ! _.isUndefined( _customizePartialRefreshExports.partials.blogdescription ) )
               return;
-            $( '.navbar-brand-tagline ' ).text( to );
+            $( '.header-tagline' ).text( to );
           },
           'tc_skin' : function( to ) {
             if ( CZRPreviewParams && CZRPreviewParams.themeFolder ) {
@@ -236,21 +252,47 @@
             }
           },
           'tc_fonts' : function( to ) {
-            var font_groups = CZRPreviewParams.fontPairs;
-            $.each( font_groups , function( key, group ) {
-              if ( group.list[to]) {
-                if ( -1 != to.indexOf('_g_') )
-                  _addGfontLink( group.list[to][1] );
-                _toStyle( group.list[to][1] );
-              }
-            });
+              var font_groups = CZRPreviewParams.fontPairs;
+              $.each( font_groups , function( key, group ) {
+                if ( group.list[to]) {
+                  if ( -1 != to.indexOf('_g_') )
+                    _addGfontLink( group.list[to][1] );
+                  _toStyle( group.list[to][1] );
+                }
+              });
+
+              _.delay( function() {
+                  czrapp.$_header.trigger( 'refresh-sticky-header' );
+              }, 100 );
           },
           'tc_body_font_size' : function( to ) {
             var fontSelectors  = CZRPreviewParams.fontSelectors;
-            $( fontSelectors.body ).css( {
-              'font-size' : to + 'px',
-              'line-height' : '1.6em'
+            var $font_size_style_element = ( 0 === $('#live-font-size-css').length ) ? $('<style>' , { id : 'live-font-size-css' , type : "text/css" }) : $('#live-font-size-css');
+            if (  0 === $('#live-font-size-css').length )
+                $('head').append( $font_size_style_element );
+
+            $.when( $font_size_style_element.html( [
+                  fontSelectors.body,
+                  '{',
+                  'font-size:',
+                  to + 'px!important',
+                  '}'
+              ].join('') ) ).done( function() {
+                  _.delay( function() {
+                      czrapp.$_header.trigger( 'refresh-sticky-header' );
+                  }, 100 );
             });
+
+            // $.when( $( fontSelectors.body ).attr( 'style', 'font-size: ' + to + 'px!important' ) ).done( function() {
+            //       czrapp.$_header.trigger( 'refresh-sticky-header' );
+            // });
+            // $.when( $( fontSelectors.body ).attr( 'style', 'font-size: ' + to + 'px!important' ) ).done( function() {
+            //       czrapp.$_header.trigger( 'refresh-sticky-header' );
+            // });
+            // $( fontSelectors.body ).css( {
+            //   'font-size' : to + 'px',
+            //   'line-height' : '1.5em'
+            // });
           },
           'tc_link_hover_effect' : function( to ) {
             if ( false === to )
@@ -631,7 +673,7 @@
         if ( false === $_post_metas.length > 0 )
           return;
 
-        _settings_cbs['tc_show_post_metas_' + this._context] = function( to ) {
+        _settingsCbsExtend['tc_show_post_metas_' + this._context] = function( to ) {
           if ( false === to ){
             $_post_metas.hide('slow');
             $_body.addClass('hide-post-metas');
@@ -658,7 +700,7 @@
         if ( false === $_post_nav.length > 0 )
           return;
 
-        _settings_cbs[ 'tc_show_post_navigation_' + this._context ] = function( to ) {
+        _settingsCbsExtend[ 'tc_show_post_navigation_' + this._context ] = function( to ) {
           if ( false === to )
             $_post_nav.hide('slow').addClass('hide-post-navigation');
           else
@@ -668,7 +710,8 @@
       });
 
       $.extend( api.CZR_preview.prototype, {
-          setting_cbs : $.extend( setting_cbs, _settings_cbs )
+          setting_cbs : $.extend( setting_cbs, _settingsCbsExtend ),
+          input_cbs : $.extend( input_cbs, _inputCbsExtend )
       });
 
     /******************************************

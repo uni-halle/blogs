@@ -1,11 +1,90 @@
 <?php
 class CZR_header_model_class extends CZR_Model {
-  public $elements_container_class;
+
+  public $primary_nbwrapper_class;
+  public $topbar_nbwrapper_class;
+  public $mobile_nbwrapper_class;
+
   public $navbar_template;
+
+
+  function __construct( $model = array() ) {
+    parent::__construct( $model );
+
+    $children = array(
+      //* Registered as children here as they need to filter the header class and add custom style css */
+      array( 'id' => 'logo', 'model_class' => 'header/parts/logo',  ),
+      array( 'model_class' => 'header/parts/title', 'id' => 'title' ),
+
+
+      //primary menu in the navbar
+      array(
+        'id' => 'navbar_primary_menu',
+        'model_class' => 'header/parts/menu',
+        'args' => array(
+          'czr_menu_location' => 'primary_navbar'
+        )
+      ),
+
+      //secondary menu in the navbar
+      array(
+        'id' => 'navbar_secondary_menu',
+        'model_class' => 'header/parts/menu',
+        'args' => array(
+          'czr_menu_location' => 'secondary_navbar'
+        ),
+      ),
+
+      //topbar menu
+      array(
+        'id' => 'topbar_menu',
+        'model_class' => 'header/parts/menu',
+        'args' => array(
+          'czr_menu_location' => 'topbar'
+        ),
+      ),
+
+      //sidenav menu
+      array(
+        'id' => 'sidenav_menu',
+        'model_class' => 'header/parts/menu',
+        'args' => array(
+          'czr_menu_location' => 'sidenav'
+        ),
+      ),
+
+      //mobile menu
+      array(
+        'id' => 'mobile_menu',
+        'model_class' => 'header/parts/menu',
+        'args' => array(
+          'czr_menu_location' => 'mobile'
+        ),
+      ),
+
+    );
+
+    //register a single woocommerce cart model in the header
+    //needs to be registered early to use 'woocommerce_add_to_cart_fragments'
+    if ( apply_filters( 'tc_woocommerce_options_enabled', false )  ) {
+
+        if ( 'none' != esc_attr( czr_fn_opt( 'tc_header_desktop_wc_cart' ) ) || esc_attr( czr_fn_opt( 'tc_header_mobile_wc_cart' ) ) ) {
+            $children[] =  array(
+              'model_class' => 'header/parts/woocommerce_cart',
+              'id'          => 'woocommerce_cart',
+          );
+        }
+    }
+
+    foreach ( $children as $child_model ) {
+        CZR() -> collection -> czr_fn_register( $child_model );
+    }//foreach
+  }//_construct
+
 
   /**
   * @override
-  * fired before the model properties are parsed
+  * fired before the model properties are parsed in the constructor
   *
   * return model params array()
   */
@@ -41,7 +120,6 @@ class CZR_header_model_class extends CZR_Model {
     }
 
     $element_class            = array( $element_class );
-    $elements_container_class = array();
 
 
     /* Is the header absolute ? add absolute and header-transparent classes
@@ -54,37 +132,56 @@ class CZR_header_model_class extends CZR_Model {
     * c.1) not in front page
     */
     //if ( !is_404() && ( 'absolute' == esc_attr( czr_fn_opt( 'tc_header_type' ) ) /*||
-    //    ( 'full' == esc_attr( czr_fn_opt( 'tc_heading' ) ) && ! czr_fn_is_home() ) */ ) )
+    //    ( 'full' == esc_attr( czr_fn_opt( 'tc_heading' ) ) && ! czr_fn_is_real_home() ) */ ) )
     //  array_push( $element_class, 'header-absolute', 'header-transparent' );
 
 
-    //regular menu
-    //if ( 'side' != esc_attr( czr_fn_opt( 'tc_menu_style') ) )
-    //  array_push( $element_class, 'czr-regular-menu' );
-
-
-    //header class for the secondary menu
-    //if ( czr_fn_is_secondary_menu_enabled() )
-    //  array_push(  $element_class,
-    //    'czr-second-menu-on',
-    //    'czr-second-menu-' . esc_attr( czr_fn_opt( 'tc_second_menu_resp_setting' ) ) . '-when-mobile'
-    //  );
-
-
     /* Sticky header treatment */
-    /*$_sticky_header  = esc_attr( czr_fn_opt( "tc_sticky_header") ) || czr_fn_is_customizing();
+    //Classes added here to the header will be the used in CSS and JS to obtain the desired style/effect
+    array_push( $element_class,
+        0 != esc_attr( czr_fn_opt( 'tc_sticky_shrink_title_logo') ) ? 'sticky-brand-shrink-on' : '',
+        0 != esc_attr( czr_fn_opt( 'tc_sticky_transparent_on_scroll') ) ? 'sticky-transparent' : ''
+    );
 
-    if ( $_sticky_header ) {
-      array_push( $element_class,
-        0 != esc_attr( czr_fn_opt( 'tc_sticky_mobile' ) ) ? 'czr-sticky-mobile' : '',
-        0 != esc_attr( czr_fn_opt( 'tc_woocommerce_header_cart_sticky' ) ) ? 'czr-wccart-on' : 'czr-wccart-off',
-        0 != esc_attr( czr_fn_opt( 'tc_sticky_show_tagline') ) ? 'czr-tagline-on' : 'czr-tagline-off',
-        0 != esc_attr( czr_fn_opt( 'tc_sticky_show_menu') ) ? 'czr-menu-on' : 'czr-menu-off',
-        0 != esc_attr( czr_fn_opt( 'tc_sticky_shrink_title_logo') ) ? 'czr-shrink-on' : 'czr-shrink-off',
-        0 != esc_attr( czr_fn_opt( 'tc_sticky_show_title_logo') ) ? 'czr-title-logo-on' : 'czr-title-logo-off'
-      );
-      array_push( $elements_container_class, 'navbar-to-stick' );
-    }*/
+    /*
+    * Set the desktop and mobile navbar classes (bp visibility and stickiness )
+    * TODO: allow breakpoint changes
+    */
+    $_desktop_primary_navbar_class  = array( 'hidden-md-down' );
+    $_desktop_topbar_navbar_class   = array( 'hidden-md-down' );
+    $_mobile_navbar_class           = array( 'hidden-lg-up' );
+
+    /*
+    * Informations about the current active blocks in the primary header navbar :
+    * => do we have the tagline ? is there a secondary horizontal menu, do we have a primary sidebar menu ? etc.
+    */
+    if ( czr_fn_is_registered_or_possible( 'navbar_primary_menu' ) && has_nav_menu( 'main') ) {
+        $_desktop_primary_navbar_class[] = 'has-horizontal-menu';
+    }
+    if ( has_nav_menu( 'secondary') && czr_fn_is_registered_or_possible( 'navbar_secondary_menu' ) ) {
+        $_desktop_primary_navbar_class[] = 'has-horizontal-menu';
+    }
+    if ( czr_fn_is_registered_or_possible( 'branding_tagline' ) && 'brand_next' == czr_fn_opt( 'tc_header_desktop_tagline' ) ) {
+        $_desktop_primary_navbar_class[] = 'has-tagline-aside';
+    }
+    /*
+    * Desktop sticky header
+    */
+    if ( 'no_stick' != esc_attr( czr_fn_opt( 'tc_header_desktop_sticky' ) ) ) {
+      if (  'topbar' == esc_attr( czr_fn_opt( 'tc_header_desktop_to_stick' ) ) )
+        $_desktop_topbar_navbar_class[] = 'desktop-sticky';
+      else
+        $_desktop_primary_navbar_class[] = 'desktop-sticky';
+    }
+
+    /*
+    * Mobile sticky header
+    */
+    if ( 'no_stick' != esc_attr( czr_fn_opt( 'tc_header_mobile_sticky' ) ) ) {
+      $_mobile_navbar_class[] = 'mobile-sticky';
+    }
+
+
 
     /* TOP BORDER */
     if ( 1 == esc_attr( czr_fn_opt( 'tc_top_border') ) ) {
@@ -101,33 +198,14 @@ class CZR_header_model_class extends CZR_Model {
     }
 
     return array_merge( $model, array(
-      'element_class'            => array_filter( apply_filters( 'czr_header_class', $element_class ) ),
-      'elements_container_class' => array_filter( apply_filters( 'czr_header_elements_container_class', $elements_container_class ) ),
-      'navbar_template'          => $navbar_template
-     ) );
+        'element_class'                 => array_filter( apply_filters( 'czr_header_class', $element_class ) ),
+        'navbar_template'               => $navbar_template,
+        'primary_nbwrapper_class'       => $_desktop_primary_navbar_class,
+        'topbar_nbwrapper_class'        => $_desktop_topbar_navbar_class,
+        'mobile_nbwrapper_class'        => $_mobile_navbar_class
+    ) );
   }
 
-
-  function czr_fn_setup_children() {
-    $children = array(
-      //* Registered as children here as they need to filter the header class and add custom style css */
-      array( 'id' => 'logo', 'model_class' => 'header/logo',  ),
-      array( 'id' => 'sticky_logo', 'model_class' => array( 'parent' => 'header/logo', 'name' => 'header/logo_sticky') ),
-      array( 'model_class' => 'header/title', 'id' => 'title' ),
-      //secondary and primary menu registered here because of the extending
-      array( 'id' => 'navbar_primary_menu', 'model_class' => array( 'parent' => 'header/menu', 'name' => 'header/navbar_primary_menu' ) ),
-      array( 'id' => 'navbar_secondary_menu', 'model_class' => array( 'parent' => 'header/menu', 'name' => 'header/navbar_secondary_menu' ) ),
-
-      array( 'id' => 'topbar_menu', 'model_class' => 'header/menu' ),
-
-      array( 'id' => 'sidenav_menu', 'model_class' => 'header/menu' ),
-
-      //here because it acts on the header class
-      array( 'id' => 'tagline', 'model_class' => 'header/tagline' ),
-    );
-
-    return $children;
-  }
 
 
   /**
@@ -151,8 +229,7 @@ class CZR_header_model_class extends CZR_Model {
       $_css = sprintf("%s%s",
         $_css,
         "
-        .czr-sticky-mobile .nav-collapse.active.limited-height,
-        .navbar-sticky, .header-absolute .topnav_navbars__wrapper {
+        .tc-header{
           z-index:{$_custom_z_index}
         }"
       );

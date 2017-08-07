@@ -4,7 +4,7 @@
 */
 ?>
 <article <?php czr_fn_echo('article_selectors') ?> <?php czr_fn_echo('element_attributes') ?>>
-  <div class="grid__item">
+  <div class="grid__item flex-wrap flex-lg-nowrap flex-row">
     <?php
       czr_fn_render_template(
         'content/common/media',
@@ -12,6 +12,7 @@
           'model_args' => array(
               'element_class'         => czr_fn_get_property('media_cols'),
               'media_type'            => 'czr-thumb',
+              'thumb_size'            => 'tc-sq-thumb',
               'use_thumb_placeholder' => true
           )
         )

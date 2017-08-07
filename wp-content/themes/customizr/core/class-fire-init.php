@@ -34,33 +34,36 @@ if ( ! class_exists( 'CZR_init' ) ) :
           add_action( 'after_setup_theme'       , array( $this , 'czr_fn_base_customizr_setup' ));
 
           //add classes to body tag : fade effect on link hover, is_customizing. Since v3.2.0
-          add_filter('body_class'                              , array( $this , 'czr_fn_set_body_classes') );
+          add_filter('body_class'               , array( $this , 'czr_fn_set_body_classes') );
           //Add the context
-          add_filter ( 'body_class'                            , 'czr_fn_set_post_list_context_class' );
+          add_filter ( 'body_class'             , 'czr_fn_set_post_list_context_class' );
 
           //Add custom search form
-          add_filter( 'get_search_form'                        , array( $this, 'czr_fn_search_form' ), 0 );
+          add_filter( 'get_search_form'         , array( $this, 'czr_fn_search_form' ), 0 );
 
+          add_action( 'template_redirect'       , array( $this, 'czr_fn_ajax_response' ) );
+
+          $right_sidebar_text_alignment = is_rtl() ? 'text-md-left' : 'text-md-right';
           //Default layout settings
           $this -> global_layout      = array(
               'r' => array(
                   'content'       => 'col-12 col-md-9',
                   'l-sidebar'     => false,
-                  'r-sidebar'     => 'col-12 col-md-3',
+                  'r-sidebar'     => 'col-12 col-md-3 ' . $right_sidebar_text_alignment,
                   'customizer'    => __( 'Right sidebar' , 'customizr' ),
                   'metabox'       => __( 'Right sidebar' , 'customizr' ),
               ),
               'l' => array(
-                  'content'       => 'col-12 col-md-9 push-md-3',
-                  'l-sidebar'     => 'col-12 col-md-3 pull-md-9',
+                  'content'       => 'col-12 col-md-9',
+                  'l-sidebar'     => 'col-12 col-md-3 order-md-first',
                   'r-sidebar'     => false,
                   'customizer'    => __( 'Left sidebar' , 'customizr' ),
                   'metabox'       => __( 'Left sidebar' , 'customizr' ),
               ),
               'b' => array(
-                  'content'       => 'col-12 col-md-6 push-md-3',
-                  'l-sidebar'     => 'col-12 col-md-3 pull-md-6',
-                  'r-sidebar'     => 'col-12 col-md-3',
+                  'content'       => 'col-12 col-md-6',
+                  'l-sidebar'     => 'col-12 col-md-3 order-md-first',
+                  'r-sidebar'     => 'col-12 col-md-3 ' . $right_sidebar_text_alignment,
                   'customizer'    => __( '2 sidebars : Right and Left' , 'customizr' ),
                   'metabox'       => __( '2 sidebars : Right and Left' , 'customizr' ),
               ),
@@ -74,7 +77,7 @@ if ( ! class_exists( 'CZR_init' ) ) :
           );
 
           $this -> font_selectors     = array(
-              'titles' => implode(',' , apply_filters( 'czr-titles-font-selectors' , array('.navbar-brand' , '.navbar-brand-tagline', 'h1', 'h2', 'h3', '.tc-dropcap' ) ) ),
+              'titles' => implode(',' , apply_filters( 'czr-titles-font-selectors' , array('.navbar-brand' , '.header-tagline', 'h1', 'h2', 'h3', '.tc-dropcap' ) ) ),
               'body'   => implode(',' , apply_filters( 'czr-body-font-selectors' , array('body') ) )
           );
 
@@ -119,8 +122,8 @@ if ( ! class_exists( 'CZR_init' ) ) :
 
           $_classes = is_array( $_classes ) ? $_classes : array();
 
-          if ( 0 != esc_attr( czr_fn_opt( 'tc_link_hover_effect' ) ) )
-            $_classes[] = 'czr-fade-hover-links';
+          $_classes[] = 0 != esc_attr( czr_fn_opt( 'tc_link_hover_effect' ) ) ? 'czr-link-hover-underline' : 'czr-link-hover-underline-off';
+
           if ( czr_fn_is_customizing() )
             $_classes[] = 'is-customizing';
           if ( wp_is_mobile() )
@@ -130,8 +133,12 @@ if ( ! class_exists( 'CZR_init' ) ) :
 
 
           //header and footer skins
-          $_classes[] = 'header-skin-' . ( esc_attr( czr_fn_opt( 'tc_header_skin' ) ) );
-          $_classes[] = 'footer-skin-' . ( esc_attr( czr_fn_opt( 'tc_footer_skin' ) ) );
+          $header_skin_opt = esc_attr( czr_fn_opt( 'tc_header_skin' ) );
+          $footer_skin_opt = esc_attr( czr_fn_opt( 'tc_footer_skin' ) );
+
+          //set header and footer skin with default fallback
+          $_classes[] = sprintf( 'header-skin-%1$s', $header_skin_opt ? $header_skin_opt : 'light' );
+          $_classes[] = sprintf( 'footer-skin-%1$s', $footer_skin_opt ? $footer_skin_opt : 'dark' );
 
           //adds the layout
           $_layout = czr_fn_get_layout( czr_fn_get_id() , 'sidebar' );
@@ -152,9 +159,10 @@ if ( ! class_exists( 'CZR_init' ) ) :
           //SIDENAV POSITIONING
           if ( czr_fn_is_possible('sidenav') ) {
 
-            $header_layouts = esc_attr( czr_fn_opt( 'tc_header_layout' ) );
+            $header_layouts  = esc_attr( czr_fn_opt( 'tc_header_layout' ) );
+            $direction_class = strstr( $header_layouts, is_rtl() ? 'left' : 'right' ) ? 'sn-left' : 'sn-right';
 
-            $_classes[] = apply_filters( 'tc_sidenav_body_class', strstr( $header_layouts, 'right' ) ? 'sn-left' : 'sn-right' );
+            $_classes[] = apply_filters( 'tc_sidenav_body_class', $direction_class );
 
           }
 
@@ -205,25 +213,12 @@ if ( ! class_exists( 'CZR_init' ) ) :
           if ( is_array( $tags_data ) ) {
             foreach ( $tags_data as &$tag_data ) {
               if ( is_array( $tag_data ) ) {
-                $tag_data['class'] = array_key_exists( 'class', $tag_data ) ? "{$tag_data['class']} btn btn-skin-darkest-oh inverted" : "btn btn-dark inverted";
+                $tag_data['class'] = array_key_exists( 'class', $tag_data ) ? "{$tag_data['class']} btn btn-skin-dark-oh inverted" : "btn btn-skin-dark-oh inverted";
               }
             }
           }
           return $tags_data;
       }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -240,6 +235,40 @@ if ( ! class_exists( 'CZR_init' ) ) :
           $form = ob_get_clean();
 
           return $form;
+      }
+
+      //@return void()
+      //hook : template_redirect
+      function czr_fn_ajax_response() {
+          //check
+          if ( ! czr_fn_is_ajax() )
+              return false;
+
+          //do nothing if not doing a specific huajax call
+          if ( ! ( isset( $_GET[ 'czrajax' ] ) && $_GET[ 'czrajax' ] ) )
+              return false;
+
+          // Require an action parameter
+          if ( ! isset( $_REQUEST['action'] ) || empty( $_REQUEST['action'] ) )
+              die( '0' );
+
+          // Will be used by hu_is_ajax();
+          if ( ! defined( 'DOING_AJAX' ) )
+              define( 'DOING_AJAX', true );
+
+          //Nonce is not needed as long as we don't write in the db
+          //Furthermore, when a cache plugin is used, front nonces can not be used.
+          //@see https://github.com/presscustomizr/hueman/issues/512
+          //'frontNonce'   => array( 'id' => 'CZRFrontNonce', 'handle' => wp_create_nonce( 'czr-front-nonce' ) )
+          if ( isset( $_REQUEST['withNonce'] ) && true == $_REQUEST['withNonce'] )
+            check_ajax_referer( 'czr-front-nonce', 'CZRFrontNonce' );
+
+          @header( 'Content-Type: text/html; charset=' . get_option( 'blog_charset' ) );
+          send_nosniff_header();
+
+          $action = $_REQUEST['action'];//we know it is set at this point
+          do_action( "czr_ajax_{$action}"  );
+          die( '0' );
       }
 
 

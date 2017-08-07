@@ -24,8 +24,9 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
         public $tc_thumb_size;
         public $slider_full_size;
         public $slider_size;
-        public $tc_grid_full_size;
+
         public $tc_grid_size;
+        public $tc_grid_full_size;
 
         //print comments template once : plugins compatibility
         public static $comments_rendered = false;
@@ -34,8 +35,13 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
             //init properties
             add_action( 'after_setup_theme'       , array( $this , 'czr_fn_init_properties') );
 
+            //Set image options set by user @since v3.2.0
+            //! must be available in admin for plugins like regenerate thumbnails
+            add_action( 'after_setup_theme'       , array( $this, 'czr_fn_set_user_defined_settings'));
+
+
             //add the text domain, various theme supports : editor style, automatic-feed-links, post formats, post-thumbnails
-            add_action( 'after_setup_theme'       , array( $this , 'czr_fn_base_customizr_setup' ));
+            add_action( 'after_setup_theme'       , array( $this , 'czr_fn_base_customizr_setup' ) );
 
             //IMPORTANT : this callback needs to be ran AFTER czr_fn_init_properties.
             add_action( 'after_setup_theme'       , array( $this , 'czr_fn_cache_theme_setting_list' ), 100 );
@@ -51,9 +57,6 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
             //Javascript detection
             add_action( 'wp_head'                 , array( $this, 'czr_fn_javascript_detection'), 0 );
 
-            //Set image options set by user @since v3.2.0
-            //! must be available in admin for plugins like regenerate thumbnails
-            add_action( 'after_setup_theme'       , array( $this, 'czr_fn_set_user_defined_settings'));
 
             //registers the menus
             add_action( 'after_setup_theme'       , array( $this, 'czr_fn_register_menus'));
@@ -68,9 +71,13 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
             //Default images sizes
             $this -> tc_thumb_size      = array( 'width' => 270 , 'height' => 250, 'crop' => true ); //size name : tc-thumb
             $this -> slider_full_size   = array( 'width' => 9999 , 'height' => 500, 'crop' => true ); //size name : slider-full
-            $this -> slider_size        = array( 'width' => 1170 , 'height' => 500, 'crop' => true ); //size name : slider
-            $this -> tc_grid_full_size  = array( 'width' => 1170 , 'height' => 350, 'crop' => true ); //size name : tc-grid-full
+
+            //The actual bootstrap4 container width is 1110, while it was 1170 in bootstrap2
+            $this -> slider_size        = array( 'width' => CZR_IS_MODERN_STYLE ? 1110 : 1170 , 'height' => 500, 'crop' => true ); //size name : slider
+
             $this -> tc_grid_size       = array( 'width' => 570 , 'height' => 350, 'crop' => true ); //size name : tc-grid
+            //Default images sizes
+            $this -> tc_grid_full_size  = array( 'width' => CZR_IS_MODERN_STYLE ? 1110 : 1170 , 'height' => CZR_IS_MODERN_STYLE ? 444 : 350, 'crop' => true ); //size name : tc-grid-full
 
             //Main skin color array : array( link color, link hover color )
             $this -> skin_classic_color_map     = apply_filters( 'tc_skin_color_map' , array(
@@ -321,6 +328,33 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
             $slider_size      = apply_filters( 'tc_slider_size' , CZR___::$instance -> slider_size );
             add_image_size( 'slider' , $slider_size['width'] , $slider_size['height'], $slider_size['crop'] );
 
+
+            //thumbs defined only for the modern style
+            if ( CZR_IS_MODERN_STYLE ) {
+              /*
+              * Do we want these to be filterable?
+              * I don't think som as we want this aspect ratio to be preserved!
+              */
+              //square thumb used in post list alternate for standard posts and regular shape
+              //also used in related posts
+              $tc_sq_thumb_size = apply_filters( 'tc_square_thumb_size' , CZR() -> tc_sq_thumb_size );
+              add_image_size( 'tc-sq-thumb' , $tc_sq_thumb_size['width'] , $tc_sq_thumb_size['height'], $tc_sq_thumb_size['crop'] );
+
+              //wide screen thumb (16:9) used in post list alternate for image and galleries post formats
+              $tc_ws_thumb_size = apply_filters( 'tc_ws_thumb_size' , CZR() -> tc_ws_thumb_size );
+              add_image_size( 'tc-ws-thumb' , $tc_ws_thumb_size['width'] , $tc_ws_thumb_size['height'], $tc_ws_thumb_size['crop'] );
+
+              //wide screen small thumb (16:9)
+              //used by wp as responsive image of tc-ws-thumb
+              $tc_ws_small_thumb_size = apply_filters( 'tc_ws_small_thumb_size' , CZR() -> tc_ws_small_thumb_size );
+              add_image_size( 'tc-ws-small-thumb' , $tc_ws_small_thumb_size['width'] , $tc_ws_small_thumb_size['height'], $tc_ws_small_thumb_size['crop'] );
+
+              //used by wp as responsive image of tc-slider tc-slider-full
+              $tc_slider_small_size = apply_filters( 'tc_slider_small_size' , CZR() -> tc_slider_small_size  );
+              add_image_size( 'tc-slider-small' , $tc_slider_small_size['width'] , $tc_slider_small_size['height'], $tc_slider_small_size['crop'] );
+
+            }
+
             //add support for svg and svgz format in media upload
             add_filter( 'upload_mimes'                        , array( $this , 'czr_fn_custom_mtypes' ) );
 
@@ -357,6 +391,7 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
             register_nav_menu( 'secondary' , __( 'Secondary (horizontal) Menu' , 'customizr' ) );
             if ( CZR_IS_MODERN_STYLE ) {
               register_nav_menu( 'topbar' , __( 'Topnav (horizontal) Menu' , 'customizr' ) );
+              register_nav_menu( 'mobile' , __( 'Mobile Menu' , 'customizr' ) );
             }
         }
 
@@ -681,9 +716,17 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
             $_options = get_option('tc_theme_options');
 
             if ( isset ( $_options['tc_slider_change_default_img_size'] ) && 0 != esc_attr( $_options['tc_slider_change_default_img_size'] ) && isset ( $_options['tc_slider_default_height'] ) && 500 != esc_attr( $_options['tc_slider_default_height'] ) ) {
-                add_filter( 'tc_slider_full_size'    , array($this,  'czr_fn_set_slider_img_height') );
-                add_filter( 'tc_slider_size'         , array($this,  'czr_fn_set_slider_img_height') );
+                add_filter( 'tc_slider_full_size'          , array($this,  'czr_fn_set_slider_img_height') );
+                add_filter( 'tc_slider_size'               , array($this,  'czr_fn_set_slider_img_height') );
+
+                //ONLY FOR MODERN STYLE
+                if ( CZR_IS_MODERN_STYLE ) {
+                    add_filter( 'tc_slider_small_size'         , array($this,  'czr_fn_set_slider_small_img_height') );
+                }
             }
+
+            $tc_grid_full_size     = $this -> tc_grid_full_size;
+            $tc_grid_size          = $this -> tc_grid_size;
 
             //ONLY FOR CLASSICAL STYLE
             if ( ! CZR_IS_MODERN_STYLE ) {
@@ -697,27 +740,32 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
                   );
                   add_image_size( 'tc_rectangular_size' , $_rectangular_size['width'] , $_rectangular_size['height'], $_rectangular_size['crop'] );
                 }
+
+
+                /***********
+                *** GRID ***
+                ***********/
+                if ( isset( $_options['tc_grid_thumb_height'] ) ) {
+                    $_user_height  = esc_attr( $_options['tc_grid_thumb_height'] );
+                }
+
+                $_user_grid_height     = isset( $_options['tc_grid_thumb_height'] ) && is_numeric( $_options['tc_grid_thumb_height'] ) ? esc_attr( $_options['tc_grid_thumb_height'] ) : $tc_grid_full_size['height'];
+
+                add_image_size( 'tc-grid-full', $tc_grid_full_size['width'], $_user_grid_height, $tc_grid_full_size['crop'] );
+                add_image_size( 'tc-grid', $tc_grid_size['width'], $_user_grid_height, $tc_grid_size['crop'] );
+
+                if ( $_user_grid_height != $tc_grid_full_size['height'] )
+                  add_filter( 'tc_grid_full_size', array( $this,  'czr_fn_set_grid_img_height') );
+                if ( $_user_grid_height != $tc_grid_size['height'] )
+                  add_filter( 'tc_grid_size'     , array( $this,  'czr_fn_set_grid_img_height') );
+            }
+            else {
+              //Modern style: not custom height option available
+              add_image_size( 'tc-grid-full', $tc_grid_full_size['width'], $tc_grid_full_size['height'], $tc_grid_full_size['crop'] );
+              add_image_size( 'tc-grid', $tc_grid_size['width'], $tc_grid_size['height'], $tc_grid_size['crop'] );
+
             }
 
-
-            /***********
-            *** GRID ***
-            ***********/
-            if ( isset( $_options['tc_grid_thumb_height'] ) ) {
-                $_user_height  = esc_attr( $_options['tc_grid_thumb_height'] );
-
-            }
-            $tc_grid_full_size     = $this -> tc_grid_full_size;
-            $tc_grid_size          = $this -> tc_grid_size;
-            $_user_grid_height     = isset( $_options['tc_grid_thumb_height'] ) && is_numeric( $_options['tc_grid_thumb_height'] ) ? esc_attr( $_options['tc_grid_thumb_height'] ) : $tc_grid_full_size['height'];
-
-            add_image_size( 'tc-grid-full', $tc_grid_full_size['width'], $_user_grid_height, $tc_grid_full_size['crop'] );
-            add_image_size( 'tc-grid', $tc_grid_size['width'], $_user_grid_height, $tc_grid_size['crop'] );
-
-            if ( $_user_grid_height != $tc_grid_full_size['height'] )
-              add_filter( 'tc_grid_full_size', array( $this,  'czr_fn_set_grid_img_height') );
-            if ( $_user_grid_height != $tc_grid_size['height'] )
-              add_filter( 'tc_grid_size'     , array( $this,  'czr_fn_set_grid_img_height') );
         }
 
 
@@ -733,6 +781,7 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
             $_options = get_option('tc_theme_options');
 
             $_default_size['height'] = esc_attr( $_options['tc_slider_default_height'] );
+
             return $_default_size;
         }
 
@@ -754,14 +803,29 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
 
 
 
+        /*
+        * Slider small thumbs
+        */
+        //@hook 'tc_slider_small_size'
+        function czr_fn_set_slider_small_img_height( $_default_size ) {
+
+            $_options                     = get_option('tc_theme_options');
+
+            //original slider size
+            $_slider_size                 = CZR() -> slider_size;
+            $_custom_height               = esc_attr( $_options['tc_slider_default_height'] );
 
 
 
+            if ( isset( $_slider_size[ 'height'] ) && $_slider_size[ 'height'] != 0 ) {
 
+                $_default_size['height']  = $_default_size['height'] * $_custom_height /  $_slider_size[ 'height' ];
 
+            }
 
+            return $_default_size;
 
-
+        }
 
 
 
@@ -781,8 +845,14 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
         * @since Customizr 3.2.3
         */
         function czr_fn_init_properties() {
-              self::$theme_name         = CZR_SANITIZED_THEMENAME;
+              //fire an action hook before theme main properties have been set up
+              // theme_name
+              // db_options
+              // default_options
+              // started using customizr(-pro) transient
+              do_action( 'czr_before_caching_options' );
 
+              self::$theme_name         = CZR_SANITIZED_THEMENAME;
               self::$db_options         = false === get_option( CZR_THEME_OPTIONS ) ? array() : (array)get_option( CZR_THEME_OPTIONS );
               self::$default_options    = czr_fn_get_default_options();
               $_trans                   = CZR_IS_PRO ? 'started_using_customizr_pro' : 'started_using_customizr';
@@ -790,14 +860,59 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
               //What was the theme version when the user started to use Customizr?
               //new install = no options yet
               //very high duration transient, this transient could actually be an option but as per the themes guidelines, too much options are not allowed.
-              if ( 1 >= count( self::$db_options ) || ! esc_attr( get_transient( $_trans ) ) ) {
-                set_transient(
-                  $_trans,
-                  sprintf('%s|%s' , 1 >= count( self::$db_options ) ? 'with' : 'before', CUSTOMIZR_VER ),
-                  60*60*24*9999
-                );
+              $is_customizr_free_or_pro_fresh_install = 1 >= count( self::$db_options );
+
+              if ( $is_customizr_free_or_pro_fresh_install ) {
+                  set_transient(
+                      $_trans,
+                      sprintf('%s|%s' , 'with', CUSTOMIZR_VER ),
+                      60*60*24*9999
+                  );
+              }
+              //it can be a fresh install of the pro because the free options are not enough to check
+              else if ( ! esc_attr( get_transient( $_trans ) ) ) {
+                  //this might be :
+                  //1) a free user updating to pro => with
+                  //2) a free user updating and has cleaned transient (edge case but possible ) => before
+                  //3) a pro user updating and has cleaned transient ( edge also ) => before
+                  //How do make the difference between 1) and ( 2 or 3 )
+                  //=> we need something written by the pro => the last update notice in options
+                  if ( CZR_IS_PRO ) {
+                      $is_already_pro_user = array_key_exists( 'last_update_notice_pro', self::$db_options );
+                      $is_pro_fresh_install = ! $is_already_pro_user;
+                      if ( $is_already_pro_user ) {
+                          $pro_infos = self::$db_options['last_update_notice_pro'];
+                          $is_pro_fresh_install = is_array( $pro_infos ) && array_key_exists( 'version', $pro_infos ) && $pro_infos['version'] == CUSTOMIZR_VER;
+                      }
+                      $user_starter_with_this_version = $is_pro_fresh_install;
+                      if ( $is_already_pro_user && ! $is_pro_fresh_install ) {
+                        $user_starter_with_this_version = false;
+                      }
+
+                      //if already pro user, we are in the case of the transient that have been cleaned in db
+                      //if not, then it's a free user upgrading to pro
+                      set_transient(
+                          $_trans,
+                          sprintf('%s|%s' , $user_starter_with_this_version ? 'with' : 'before', CUSTOMIZR_VER ),
+                          60*60*24*9999
+                      );
+                  } else {
+                      $has_already_installed_free = array_key_exists( 'last_update_notice', self::$db_options );
+                      //we are in the case of a free user updating the free theme but has previously cleaned the transients in db
+                      set_transient(
+                          $_trans,
+                          sprintf('%s|%s' , $has_already_installed_free ? 'before' : 'with', CUSTOMIZR_VER ),
+                          60*60*24*9999
+                      );
+                  }
               }
 
+              //fire an action hook after theme main properties have been set up
+              // theme_name
+              // db_options
+              // default_options
+              // started using customizr(-pro) transient
+              do_action( 'czr_after_caching_options' );
         }
 
 
@@ -810,7 +925,11 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
           if ( is_array(self::$theme_setting_list) && ! empty( self::$theme_setting_list ) )
             return;
 
+          //fire an action hook before caching theme settomgs list
+          do_action( 'czr_before_caching_theme_settings_list' );
           self::$theme_setting_list = czr_fn_generate_theme_setting_list();
+          //fire an action hook after caching theme settomgs list
+          do_action( 'czr_after_caching_theme_settings_list' );
         }
 
 
@@ -853,9 +972,4 @@ if ( file_exists( get_template_directory() . '/core/init-pro.php' ) )
 
 //setup constants
 czr_fn_setup_constants();
-
-if ( czr_fn_is_modern_style() ) {
-    require_once( get_template_directory() . '/core/init.php' );
-} else {
-    require_once( get_template_directory() . '/inc/czr-init.php' );
-}
+require_once( get_template_directory() . ( czr_fn_is_ms() ? '/core/init.php' : '/inc/czr-init-ccat.php' ) );

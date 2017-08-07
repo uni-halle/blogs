@@ -40,6 +40,46 @@ The exceptions to this license are as follows:
 
 
 #######################  Changelog ######################
+= 4.0.5 August 2nd 2017 =
+* Fix: fix woocommerce generatinc php notice. fixes #1120
+* Fix: fix CSS conflict with ui-datepicker-calendar. fixes #1123
+* Fix: sticky logo option was not displayed in the customizer. fixes #1119
+* Fix: display notice for socials in header in the right context. fixes #1118
+
+= 4.0.4 July 26th 2017 =
+* Fix: fix fp noy showing up in old php versions
+* Fix: Fix slider loader gif path can be parsed by Google bots
+* Fix: Potential submenu viewport overflow in firefox when fading fixes #1083
+* Fix: fix missing max-width style for logo w forced dims fixes #1101
+* Fix: same indentation for ul and ol
+* Fix: fix sidebars list widgets indetation + various rtl fixes
+* Fix: CSS handling of screen reader text fixes #1103 bullet 3
+* Imp: code improvements related to the post lists layout dependency
+* Imp: add menu button if not menu visible in the header
+* Imp: allow loading magnific-popup js in footer and minified
+* Add: add magnific popup js minified version
+* Add: an option to make the dark overlay optional in the modern style slider
+
+= 4.0.3 July 24th 2017 =
+* Fix: fix grid 1 column max height fixes #1088
+* Fix: submenus not sensible to the hover while fading + correctly handle the header z-index (user option)
+
+= 4.0.2 July 23rd 2017 =
+* fixed : child theme stylesheet wrongly enqueued
+* Imp: main content mobile blocks reorder via flexbox
+* Imp: fix comments date alignment fixes #1073
+
+= 4.0.1 July 23rd 2017 =
+* Fix : WooCommerce compatibility : Grid title truncation might affect products in product archives ( fixes #996 )
+* Fix : Added back the menu locations customizer section
+* Fix : grid caption background issue on mouse hover
+* Fix : fix non existing function as __ID filter callback
+* Added : style option in the customizer
+
+= 3.5.18 June 20th 2017 =
+* Fix: in singulars, no full width featured image if slider on fixes #988
+* Fix: typo producing Class 'CZR__' not found in classical retro compat
+
 = 3.5.17 June 18th 2017 =
 * Fix: fix access to undefined tc_rectangular_size class property fixes #971
 * Fix: typo producing Class 'CZR__' not found in classical retro compat fixes #972
@@ -54,12 +94,12 @@ The exceptions to this license are as follows:
 * Fix: fix menu center resulting aligned to the left on IE fixes #944
 * Fix: fix position of structural hook __before_main_container
 * Fix: fix fpc-container alignment when in #content
-* Fix: by default the loop model should not register the loop item model if 
+* Fix: by default the loop model should not register the loop item model if
 * Fix: remove old theme favicon control - is handled in js fixes #954
 * Fix: remove new lines at the end of czr_ classes fixes #957
 * Imp: improve classical grid CSS
 * Imp: fp and grid images always js centered
-* Add: modern-style - add related posts options for single post
+* Add: add related posts options for single post
 
 = 3.5.14 June 9th 2017 =
 * fix: use of the add_editor_style wp function : needs relative paths fixes #926

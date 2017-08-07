@@ -22,10 +22,10 @@
           czr_fn_link_pages();
         ?>
         <?php
-          if ( czr_fn_has('social_share') ) :
+          if ( czr_fn_is_registered_or_possible('social_share') ) :
         ?>
           <div class="entry-meta clearfix">
-            <div class="post-share float-sm-right">
+            <div class="post-share">
               <!-- fake need to have social links somewhere -->
               <?php czr_fn_render_template( 'modules/common/social_block', array( 'model_id' => 'social_share' ) ) ?>
             </div>

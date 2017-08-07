@@ -70,7 +70,7 @@ They do not necessarily need to be a file, but in most of the cases they are, as
 to render pure html code (model's property $html )
 
 A template can be:
-a) rendered on fly ( core/functions.php czr_fn_render_template(...) ) directly from another template
+a) rendered on fly ( core/functions-ccat.php czr_fn_render_template(...) ) directly from another template
 b) rendered at a specific hook and priority
 
 A template can access models data through two functions
@@ -88,16 +88,16 @@ file path of the template we're about to render.
 
 
 *** Loading a page ***
-In core/init.php at wp action hook we register the main set of models that we'll render afterwards from our main templates (main-templates/index.php|header.php etc. etc.)
+In core/init.php at wp action hook we register the main set of models that we'll render afterwards from our main templates (templates/index.php|header.php etc. etc.)
 This set of models consists of:
 1) the header
 2) the content (contains the logic to retrieve which model/template needs to be passed to the loop)
 3) the footer
 
-Each model then can register, at instantiation time, a set of children models.
+Each model then can register, at instantiation time, a set of models
 For instance, in the content model we register the grid wrapper or the slider's model as they need to act on the user options style.
 
-See main-templates/index.php for rendering flow.
+See templates/index.php for rendering flow.
 
 */
 /**
@@ -127,35 +127,80 @@ if ( ! class_exists( 'CZR___' ) ) :
         private $existing_files     = array();
         private $not_existing_files = array();
 
+        public $tc_sq_thumb_size;
+        public $tc_ws_thumb_size;
+        public $tc_ws_small_thumb_size;
+
+        public $tc_slider_small_size;
+
+        public $slider_resp_shrink_ratio;
+
+
+
         function __construct( $_args = array()) {
-
-            //call CZR_BASE constructor
-            parent::__construct( $_args );
-
             //allow modern_style templates
-            add_filter( 'czr_modern_style'             , '__return_true' );
+            add_filter( 'czr_ms'             , '__return_true' );
             //define a constant we can use everywhere
             //that will tell us we're in the new Customizr:
             //Will be highly used during the transion between the two themes
             if( ! defined( 'CZR_IS_MODERN_STYLE' ) ) define( 'CZR_IS_MODERN_STYLE' , true );
 
+
+            //call CZR_BASE constructor
+            parent::__construct( $_args );
+
             //this action callback is the one responsible to load new czr main templates
-            add_action( 'czr_modern_style_tmpl'       , array( $this , 'czr_fn_modern_template_redirect' ), 10 , 1 );
+            //Those templates have no models there are invoked from the WP templates with this kind of syntax : do_action( 'czr_ms_tmpl', 'header' );
+            add_action( 'czr_ms_tmpl'       , array( $this , 'czr_fn_load_modern_template_with_no_model' ), 10 , 1 );
 
             //filters to 'the_content', 'wp_title' => in utils
             add_action( 'wp_head' , 'czr_fn_wp_filters' );
 
             add_action( 'czr_dev_notice', array( $this, 'czr_fn_print_r') );
 
+            //Slider responsive ratio
+            $this -> slider_resp_shrink_ratio = apply_filters( 'czr_slider_resp_shrink_ratios',
+              array( '1199' => 0.77 , '991' => 0.618, '767' => 0.5, '575' => 0.38, '320' => 0.28 )
+            );
+
+
+            //Default images sizes
+            //Thumbs definition
+            $this -> tc_sq_thumb_size            = array( 'width' => 510  , 'height' => 510, 'crop' => true ); //size name : tc-sq-thumb
+
+            //The actual bootstrap4 container width is 1110, while it was 1170 in bootstrap2
+            $this -> tc_ws_thumb_size            = array( 'width' => 1110 , 'height' => 624, 'crop' => true ); //size name : tc-ws-thumb, replaces also tc_grid_full_size for modern style
+
+            //Small thumbs : (set at a viewport of 575px : upper limit for extra small devices )
+            $this -> tc_ws_small_thumb_size      = array( 'width' => 528  , 'height' => 297, 'crop' => true ); //size name : tc-ws-small-thumb, used by wp as responsive image of tc-ws-thumb
+
+            //Slider's small thumb
+
+            //The actual bootstrap4 container width is 1110, while it was 1170 in bootstrap2
+            //to keep the same aspect ratio of the slider boxed thumb we set the width to 517px
+            //and the height as as 517 * 500 (default height) / 1110 (default width) = (around) 422
+            //NOTE: we'll use the same small size both for the full and the boxed slider layout
+            $this -> tc_slider_small_size        = array( 'width' => 517  , 'height' => 235, 'crop' => true ); //size name : tc-slider-small
+
+            add_action( 'czr_after_load'         , array( $this, 'czr_maybe_prevdem') );
+
         }
 
 
+        //fired at the bottom of core/init.php
         public static function czr_fn_instance() {
             if ( ! isset( self::$instance ) && ! ( self::$instance instanceof CZR___ ) ) {
               self::$instance = new CZR___();
 
               self::$instance -> czr_fn_setup_loading();
+
+              //fire an action hook before loading the theme class groups
+              do_action( 'czr_before_load' );
+
               self::$instance -> czr_fn_load();
+
+              //fire an action hook after loading the theme class groups
+              do_action( 'czr_after_load' );
 
               //FMK
               self::$instance -> collection = new CZR_Collection();
@@ -173,13 +218,14 @@ if ( ! class_exists( 'CZR___' ) ) :
 
 
         /**
-        * The purpose of this callback is to load the modern style main templates
+        * The purpose of this callback is to load the modern style main templates located at the root of /templates
+        * No model is associated with template called by this code.
         * hook : czr_modern_style_tmpl
         * @return  void
         */
-        public function czr_fn_modern_template_redirect( $template = null ) {
+        public function czr_fn_load_modern_template_with_no_model( $template = null ) {
             $template = $template ? $template : 'index';
-            $this -> czr_fn_require_once( CZR_MAIN_TEMPLATES_PATH . $template . '.php' );
+            $this -> czr_fn_require_once( CZR_MAIN_TEMPLATES_PATH . $template . '-no-model.php' );
         }
 
 
@@ -227,17 +273,17 @@ if ( ! class_exists( 'CZR___' ) ) :
         * @since Customizr 3.0
         */
         function czr_fn_load( $_to_load = array(), $_no_filter = false ) {
-            require_once( CZR_BASE_CHILD . 'core/core-settings-map.php' );
+            require_once( CZR_BASE . CZR_CORE_PATH . 'core-settings-map.php' );
 
             //loads utils
             if ( CZR_DEV_MODE ) {
-                require_once( CZR_BASE_CHILD . 'core/_utils/fn-0-base.php' );
-                require_once( CZR_BASE_CHILD . 'core/_utils/fn-1-utils.php' );
-                require_once( CZR_BASE_CHILD . 'core/_utils/fn-2-query.php' );
-                require_once( CZR_BASE_CHILD . 'core/_utils/fn-3-thumbnails.php' );
-                require_once( CZR_BASE_CHILD . 'core/_utils/fn-4-colors.php' );
+                require_once( CZR_BASE . CZR_CORE_PATH . '_dev/_utils/fn-0-base.php' );
+                require_once( CZR_BASE . CZR_CORE_PATH . '_dev/_utils/fn-1-utils.php' );
+                require_once( CZR_BASE . CZR_CORE_PATH . '_dev/_utils/fn-2-query.php' );
+                require_once( CZR_BASE . CZR_CORE_PATH . '_dev/_utils/fn-3-thumbnails.php' );
+                require_once( CZR_BASE . CZR_CORE_PATH . '_dev/_utils/fn-4-colors.php' );
             } else {
-                require_once( get_template_directory() . '/core/functions.php' );
+                require_once( CZR_BASE . CZR_CORE_PATH . 'functions-ccat.php' );
             }
 
             do_action( 'czr_load' );
@@ -271,7 +317,6 @@ if ( ! class_exists( 'CZR___' ) ) :
                 }
             }
 
-
             //load the new framework classes
             if ( CZR_DEV_MODE ) {
                 $this -> czr_fn_require_once( CZR_FRAMEWORK_PATH . 'class-model.php' );
@@ -279,7 +324,7 @@ if ( ! class_exists( 'CZR___' ) ) :
                 $this -> czr_fn_require_once( CZR_FRAMEWORK_PATH . 'class-view.php' );
                 $this -> czr_fn_require_once( CZR_FRAMEWORK_PATH . 'class-controllers.php' );
             } else {
-                $this -> czr_fn_require_once( CZR_CORE_PATH . 'fmk.php' );
+                $this -> czr_fn_require_once( CZR_CORE_PATH . 'fmk-ccat.php' );
             }
 
             //load front templates tags files
@@ -288,7 +333,7 @@ if ( ! class_exists( 'CZR___' ) ) :
 
             //may be load pro
             if ( CZR_IS_PRO ) {
-                new CZR_init_pro(CZR___::$theme_name );
+                new CZR_init_pro( CZR___::$theme_name );
             }
 
         }//czf_fn_load()
@@ -310,40 +355,28 @@ if ( ! class_exists( 'CZR___' ) ) :
             return apply_filters(
                 'czr_model_map',
                 array(
+                    /*********************************************
+                    * HEADER
+                    *********************************************/
+                    array(
+                      'model_class'    => 'header',
+                      'id'             => 'header'
+                    ),
 
-                  /*********************************************
-                  * HEADER
-                  *********************************************/
-                  array(
-                    'model_class'    => 'header',
-                    'id'             => 'header'
-                  ),
-
-                  /*********************************************
-                  * Featured Pages
-                  *********************************************/
-                  /* contains the featured page item registration */
-                  array(
-                    'id'          => 'featured_pages',
-                    'model_class' => 'modules/featured-pages/featured_pages',
-                  ),
-                  /** end featured pages **/
-
-                  /*********************************************
-                  * CONTENT
-                  *********************************************/
-                  array(
-                    'id'             => 'main_content',
-                    'model_class'    => 'main_content',
-                  ),
-
-                  /*********************************************
-                  * FOOTER
-                  *********************************************/
-                  array(
-                    'id'           => 'footer',
-                    'model_class'  => 'footer',
-                  ),
+                    /*********************************************
+                    * CONTENT
+                    *********************************************/
+                    array(
+                      'id'             => 'main_content',
+                      'model_class'    => 'main_content',
+                    ),
+                    /*********************************************
+                    * FOOTER
+                    *********************************************/
+                    array(
+                      'id'           => 'footer',
+                      'model_class'  => 'footer',
+                    )
                 )
             );
         }
@@ -374,27 +407,27 @@ if ( ! class_exists( 'CZR___' ) ) :
             //---2.2) IS RIGHT PANEL => preview
             if ( ! czr_fn_is_customizing() ) {
                 if ( is_admin() ) {
-                  //load
-                  czr_fn_require_once( CZR_CORE_PATH . 'czr-admin.php' );
+                    //load
+                    czr_fn_require_once( CZR_CORE_PATH . 'czr-admin-ccat.php' );
 
-                  //if doing ajax, we must not exclude the placeholders
-                  //because ajax actions are fired by admin_ajax.php where is_admin===true.
-                  if ( defined( 'DOING_AJAX' ) )
-                    $_to_load = $this -> czr_fn_unset_core_classes( $_to_load, array( 'header' , 'content' , 'footer' ), array( 'admin|core/back|customize' ) );
-                  else
-                    $_to_load = $this -> czr_fn_unset_core_classes( $_to_load, array( 'header' , 'content' , 'footer' ), array( 'admin|core/back|customize', 'fire|core|placehloders' ) );
+                    //if doing ajax, we must not exclude the placeholders
+                    //because ajax actions are fired by admin_ajax.php where is_admin===true.
+                    if ( defined( 'DOING_AJAX' ) )
+                      $_to_load = $this -> czr_fn_unset_core_classes( $_to_load, array( 'header' , 'content' , 'footer' ), array( 'admin|core/back|customize' ) );
+                    else
+                      $_to_load = $this -> czr_fn_unset_core_classes( $_to_load, array( 'header' , 'content' , 'footer' ), array( 'admin|core/back|customize', 'fire|core|placehloders' ) );
                 }
                 else {
-                  //Skips all admin classes
-                  $_to_load = $this -> czr_fn_unset_core_classes( $_to_load, array( 'admin' ), array( 'fire|core/admin|admin_init', 'fire|core/admin|admin_page') );
+                    //Skips all admin classes
+                    $_to_load = $this -> czr_fn_unset_core_classes( $_to_load, array( 'admin' ), array( 'fire|core/admin|admin_init', 'fire|core/admin|admin_page') );
                 }
             }
             //Customizing
             else
               {
                 //load
-                czr_fn_require_once( CZR_CORE_PATH . 'czr-admin.php' );
-                czr_fn_require_once( CZR_CORE_PATH . 'czr-customize.php' );
+                czr_fn_require_once( CZR_CORE_PATH . 'czr-admin-ccat.php' );
+                czr_fn_require_once( CZR_CORE_PATH . 'czr-customize-ccat.php' );
                 //new CZR_customize();
 
                 //left panel => skip all front end classes
@@ -635,6 +668,14 @@ if ( ! class_exists( 'CZR___' ) ) :
             <?php
         }
 
+        //hook : 'czr_after_init'
+        function czr_maybe_prevdem() {
+            if ( ! czr_fn_isprevdem() )
+              return;
+            $this -> czr_fn_require_once( CZR_CORE_PATH . 'class-fire-prevdem.php' );
+            if (  class_exists('CZR_prevdem') )
+              new CZR_prevdem();
+        }
   }//end of class
 endif;//endif;
 
@@ -649,6 +690,9 @@ if ( ! function_exists( 'CZR' ) ) {
       return CZR___::czr_fn_instance();
     }
 }
-
+//fire an action hook before init the theme
+do_action( 'czr_before_init' );
 // Fire Customizr
 CZR();
+//fire an action hook after init the theme
+do_action( 'czr_after_init' );

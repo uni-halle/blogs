@@ -57,6 +57,7 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
       add_theme_support( 'disqus' );
       add_theme_support( 'uris' );
       add_theme_support( 'tc-unlimited-featured-pages' );
+      add_theme_support( 'learnpress' );
     }
 
 
@@ -136,11 +137,15 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
       /* Ultimate Responsive Image Slider  */
       if ( current_theme_supports( 'uris' ) && $this -> czr_fn_is_plugin_active('ultimate-responsive-image-slider/ultimate-responsive-image-slider.php') )
         $this -> czr_fn_set_uris_compat();
+
+      /* LearnPress  */
+      if ( current_theme_supports( 'learnpress' ) && $this -> czr_fn_is_plugin_active('learnpress/learnpress.php') )
+        $this -> czr_fn_set_lp_compat();
     }//end of plugin compatibility function
 
 
     /*
-    * Same in czr3
+    * Same in czr classic
     */
 
     /**
@@ -242,7 +247,7 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
 
 
     /*
-    * Same in czr3 except for comments enabled filter prefix (tc_ -> czr_)
+    * Same in czr classic except for comments enabled filter prefix (tc_ -> czr_)
     */
     /**
     * BuddyPress compat hooks
@@ -275,7 +280,7 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
 
 
     /*
-    * same in czr3 with filter prefixes change ( tc_ -> czr_ )
+    * same in czr classic with filter prefixes change ( tc_ -> czr_ )
     */
     /**
     * QtranslateX compat hooks
@@ -363,7 +368,7 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
 
 
     /*
-    * same in czr3
+    * same in czr classic
     */
     /**
     * Polylang compat hooks
@@ -379,7 +384,7 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
 
       function czr_fn_pll_strings_setup() {
         // grab theme options
-        $tc_options = czr_fn__f('__options');
+        $tc_options = czr_fn_get_theme_options();
         // grab settings map, useful for some options labels
         $tc_settings_map = czr_fn_get_customizer_map( $get_default = true );
         $tc_controls_map = $tc_settings_map['add_setting_control'];
@@ -452,7 +457,7 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
     }//end polylang compat
 
     /*
-    * same in czr3
+    * same in czr classic
     */
     /**
     * WPML compat hooks
@@ -594,7 +599,7 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
           $tc_wpml_options     = array_keys($tc_wpml_option_name);
 
           // grab theme options
-          $tc_options = czr_fn__f('__options');
+          $tc_options = czr_fn_get_theme_options();
 
           // build array of options to translate
           foreach ( $tc_wpml_options as $tc_wpml_option )
@@ -860,10 +865,6 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
         return ( function_exists('is_woocommerce') && is_woocommerce() && function_exists('is_shop') && is_shop() ) ? true : $bool;
       }
 
-      function czr_fn_woocommerce_wc_cart_enabled() {
-        return 1 == esc_attr( czr_fn_opt( 'tc_woocommerce_header_cart' ) );
-      }
-
       //when in the woocommerce shop page use the "shop" id
       add_filter( 'czr_id', 'czr_fn_woocommerce_shop_page_id' );
 
@@ -915,14 +916,6 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
       add_filter( 'tc_woocommerce_options_enabled', 'czr_fn_woocommerce_options_enabled_cb' );
       function czr_fn_woocommerce_options_enabled_cb() {
         return '__return_true';
-      }
-
-      if ( ! is_admin() )
-        //register wc cart in front
-        add_action( 'wp', 'czr_fn_woocommerce_register_wc_cart' );
-
-      function czr_fn_woocommerce_register_wc_cart() {
-        czr_fn_register( array( 'model_class' => 'header/woocommerce_cart', 'id' => 'woocommerce_cart', 'controller' => 'czr_fn_woocommerce_wc_cart_enabled' ) );
       }
 
       //additional woocommerce skin style
@@ -1078,7 +1071,7 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
 
 
     /*
-    * same in czr3 except for the filter prefix (tc_ -> czr_)
+    * same in czr classic except for the filter prefix (tc_ -> czr_)
     */
     /**
     * Visual Composer compat hooks
@@ -1142,7 +1135,7 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
     }//end disqus compat
 
     /*
-    * same in czr3 except for the filter prefix (tc_ -> czr_)
+    * same in czr classic except for the filter prefix (tc_ -> czr_)
     */
     /**
     * Ultimate Responsive Image Slider compat hooks
@@ -1169,7 +1162,66 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
     }//end uris compat
 
 
-    /* same in czr3 */
+    /**
+    * LearnPress compat hooks
+    *
+    * @package Customizr
+    * @since Customizr 3.5+
+    */
+    private function czr_fn_set_lp_compat() {
+      //do nothing if is admin
+      if ( is_admin() ) {
+        return;
+      }
+      //Helpers
+      if ( ! function_exists( 'tc_lp_is_learnpress' ) ):
+        function tc_lp_is_learnpress() {
+          return function_exists( 'is_learnpress' ) && is_learnpress();
+        }
+      endif;
+      if ( ! function_exists( 'tc_lp_is_learnpress_disable' ) ):
+        function tc_lp_is_learnpress_disable( $bool ) {
+          return tc_lp_is_learnpress() ? false : $bool;
+        }
+      endif;
+      if ( ! function_exists( 'tc_lp_is_learnpress_enable' ) ):
+        function tc_lp_is_learnpress_enable( $bool ) {
+          return tc_lp_is_learnpress() ? true : $bool;
+        }
+      endif;
+
+
+
+      //lp filters template_include falling back on the page.php theme template
+      //without checking its existence, since we have no page.php template, we have to fall back
+      //on index.php if what that filter returns is false ().
+      //is_learnpress() function should be our reference conditional tag
+      if ( ! function_exists( 'tc_lp_maybe_fall_back_on_index' ) ):
+        function tc_lp_maybe_fall_back_on_index( $template ) {
+          if ( ! tc_lp_is_learnpress() )
+            return $template;
+
+          if ( ! empty( $template ) )
+            return $template;
+
+          return get_template_part( 'index' );
+        }
+      endif;
+      add_filter( 'template_include', 'tc_lp_maybe_fall_back_on_index' );
+
+      // Disable post lists and single views in lp contexts
+      add_filter( 'czr_is_list_of_posts', 'tc_lp_is_learnpress_disable');
+
+      //enable page view for lp archives
+      add_filter( 'czr_is_single_page', 'tc_lp_is_learnpress_enable');
+      //todo: display arhive title, do ot display metas in lp archives
+
+      //disable lp breadcrumb, we'll use our own
+      remove_action( 'learn_press_before_main_content', 'learn_press_breadcrumb' );
+
+    }//end lp compat
+
+    /* same in czr classic */
     /**
     * TC Unlimited Featured Pages compat hooks
     * Since Customizr 3.4.24 we changed the functions and class prefixes
@@ -1228,19 +1280,12 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
     /* no archive headings */
     function czr_fn_mainwrapper_start() {
 
-      /* SLIDERS : standard or slider of posts */
-      if ( czr_fn_has('main_slider') ) {
-        czr_fn_render_template( 'modules/slider/slider', array( 'model_id' => 'main_slider') );
-      }
-
-      elseif( czr_fn_has( 'main_posts_slider' ) ) {
-        czr_fn_render_template( 'modules/slider/slider', array( 'model_id' => 'main_posts_slider') );
-      }
-
-
-      do_action('__before_main_wrapper');
-
+        // This hook is used to render the following elements(ordered by priorities) :
+        // slider
+        // singular thumbnail
+        do_action('__before_main_wrapper')
       ?>
+
       <div id="main-wrapper" class="section">
 
 
@@ -1249,14 +1294,14 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
             //this was the previous implementation of the big heading.
             //The next one will be implemented with the slider module
           ?>
-        <?php  if ( apply_filters( 'big_heading_enabled', false && ! czr_fn_is_home() && ! is_404() ) ): ?>
+        <?php  if ( apply_filters( 'big_heading_enabled', false && ! czr_fn_is_real_home() && ! is_404() ) ): ?>
           <div class="container-fluid">
             <?php
-              if ( czr_fn_has( 'archive_heading' ) )
+              if ( czr_fn_is_registered_or_possible( 'archive_heading' ) )
                 $_heading_template = 'content/post-lists/headings/archive_heading';
-              elseif ( czr_fn_has( 'search_heading' ) )
+              elseif ( czr_fn_is_registered_or_possible( 'search_heading' ) )
                 $_heading_template = 'content/post-lists/headings/search_heading';
-              elseif ( czr_fn_has('post_heading') )
+              elseif ( czr_fn_is_registered_or_possible('post_heading') )
                 $_heading_template = 'content/singular/headings/post_heading';
               else //pages and fallback
                 $_heading_template = 'content/singular/headings/page_heading';
@@ -1266,19 +1311,13 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
           </div>
         <?php endif ?>
 
-        <?php do_action('__before_main_container') ?>
-
         <?php
-          /* FEATURED PAGES */
-          if ( czr_fn_has( 'featured_pages' ) )
-            czr_fn_render_template( 'modules/featured-pages/featured_pages' );
+          /*
+          * Featured Pages | 10
+          * Breadcrumbs | 20
+          */
+          do_action('__before_main_container')
         ?>
-
-        <?php if ( czr_fn_has('breadcrumb') ) : ?>
-          <div class="container">
-            <?php czr_fn_render_template( 'modules/common/breadcrumb' ) ?>
-          </div>
-        <?php endif ?>
 
 
         <div class="<?php czr_fn_main_container_class() ?>" role="main">
@@ -1309,10 +1348,10 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
               */
               /* By design do not display sidebars in 404 or home empty */
               if ( ! ( czr_fn_is_home_empty() || is_404() ) ) {
-                if ( czr_fn_has('left_sidebar') )
+                if ( czr_fn_is_registered_or_possible('left_sidebar') )
                   get_sidebar( 'left' );
 
-                if ( czr_fn_has('right_sidebar') )
+                if ( czr_fn_is_registered_or_possible('right_sidebar') )
                   get_sidebar( 'right' );
 
               }
@@ -1324,7 +1363,6 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
         </div><!-- .container -->
 
         <?php do_action('__after_main_container'); ?>
-        <?php if ( czr_fn_has('footer_push') ) czr_fn_render_template('footer/footer_push', 'footer_push') ?>
 
       </div><!-- #main-wrapper -->
 
@@ -1370,7 +1408,7 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
       return false;
     }
 
-    /* same in czr3 */
+    /* same in czr classic */
     public function czr_fn_get_string_options_to_translate() {
       $string_options = array(
         'tc_front_slider',

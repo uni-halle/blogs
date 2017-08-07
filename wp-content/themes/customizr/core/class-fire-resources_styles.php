@@ -8,37 +8,32 @@
 */
 if ( ! class_exists( 'CZR_resources_styles' ) ) :
    class CZR_resources_styles {
-         //Access any method or var of the class with classname::$instance -> var or method():
-         static $instance;
+        //Access any method or var of the class with classname::$instance -> var or method():
+        static $instance;
 
-         private $_is_css_minified;
-         private $_resources_version;
+        private $_is_css_minified;
+        private $_resources_version;
 
-         function __construct () {
+        function __construct () {
+            self::$instance =& $this;
+            //setup version param and is_css_minified bool
+            add_action( 'after_setup_theme'                   , array( $this, 'czr_fn_setup_properties' ), 20 );
+            add_action( 'wp_enqueue_scripts'                  , array( $this , 'czr_fn_enqueue_front_styles' ) );
+            add_filter( 'czr_user_options_style'              , array( $this , 'czr_fn_write_custom_css') , apply_filters( 'czr_custom_css_priority', 9999 ) );
+            add_filter( 'czr_user_options_style'              , array( $this , 'czr_fn_maybe_write_skin_inline_css') );
 
-               self::$instance =& $this;
-
-               //setup version param and is_css_minified bool
-               add_action( 'after_setup_theme'                   , array( $this, 'czr_fn_setup_properties' ), 20 );
-
-               add_action( 'wp_enqueue_scripts'                  , array( $this , 'czr_fn_enqueue_front_styles' ) );
-
-               add_filter( 'czr_user_options_style'              , array( $this , 'czr_fn_write_custom_css') , apply_filters( 'czr_custom_css_priority', 9999 ) );
-
-               add_filter( 'czr_user_options_style'              , array( $this , 'czr_fn_maybe_write_skin_inline_css') );
-
-         }
+        }
 
 
-         //hook: after_setup_theme
-         function czr_fn_setup_properties() {
+        //hook: after_setup_theme
+        function czr_fn_setup_properties() {
 
-               $this->_resouces_version        = CZR_DEBUG_MODE || CZR_DEV_MODE ? CUSTOMIZR_VER . time() : CUSTOMIZR_VER;
+              $this->_resouces_version        = CZR_DEBUG_MODE || CZR_DEV_MODE ? CUSTOMIZR_VER . time() : CUSTOMIZR_VER;
 
-               $this->_is_css_minified              = CZR_DEBUG_MODE || CZR_DEV_MODE ? false : true ;
-               $this->_is_css_minified              = esc_attr( czr_fn_opt( 'tc_minified_skin' ) ) ? $this->_is_css_minified : false;
+              $this->_is_css_minified              = CZR_DEBUG_MODE || CZR_DEV_MODE ? false : true ;
+              $this->_is_css_minified              = esc_attr( czr_fn_opt( 'tc_minified_skin' ) ) ? $this->_is_css_minified : false;
 
-         }
+        }
 
 
 
@@ -48,31 +43,33 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
          * @since Customizr 1.1
          */
          function czr_fn_enqueue_front_styles() {
+              $_path       = CZR_ASSETS_PREFIX . 'front/css/';
+              $_ver        = $this->_resouces_version;
+              $_ext        = $this->_is_css_minified ? '.min.css' : '.css';
 
-               $_path       = CZR_ASSETS_PREFIX . 'front/css/';
+              wp_enqueue_style( 'customizr-flickity'       , czr_fn_get_theme_file_url( "{$_path}flickity{$_ext}" ), array(), $_ver, 'all' );
+              wp_enqueue_style( 'customizr-magnific'       , czr_fn_get_theme_file_url( "{$_path}magnific-popup{$_ext}" ), array(), $_ver, 'all' );
+              wp_enqueue_style( 'customizr-scrollbar'      , czr_fn_get_theme_file_url( "{$_path}jquery.mCustomScrollbar.min.css" ), array(), $_ver, 'all' );
 
-               $_ver        = $this->_resouces_version;
+              $main_theme_file_name  = is_rtl() ? 'rtl' : 'style';
 
-               $_ext        = $this->_is_css_minified ? '.min.css' : '.css';
-
-               wp_enqueue_style( 'customizr-bs'             , czr_fn_get_theme_file_url( "{$_path}custom-bs/custom-bootstrap{$_ext}" ) , array(), $_ver, 'all' );
-
-               wp_enqueue_style( 'customizr-flickity'       , czr_fn_get_theme_file_url( "{$_path}flickity{$_ext}" ), array(), $_ver, 'all' );
-
-               wp_enqueue_style( 'customizr-magnific'       , czr_fn_get_theme_file_url( "{$_path}magnific-popup{$_ext}" ), array(), $_ver, 'all' );
-
-               wp_enqueue_style( 'customizr-scrollbar'      , czr_fn_get_theme_file_url( "{$_path}jquery.mCustomScrollbar.min.css" ), array(), $_ver, 'all' );
-
-               //Customizr main stylesheet
-               wp_enqueue_style( 'customizr-common'         , czr_fn_get_theme_file_url( "{$_path}style{$_ext}"), array(), $_ver, 'all' );
+              //Customizr main stylesheets
+              wp_enqueue_style( 'customizr-main'         , czr_fn_get_theme_file_url( "{$_path}{$main_theme_file_name}{$_ext}"), array(), $_ver, 'all' );
 
 
-               //Customizer user defined style options : the custom CSS is written with a high priority here
-               wp_add_inline_style( 'customizr-common'      , apply_filters( 'czr_user_options_style' , '' ) );
+              //Modular scale resopnd
+              //Customizr main stylesheet
+              if ( 1 == esc_attr( czr_fn_opt( 'tc_ms_respond_css' ) ) ) {
+                  wp_enqueue_style( 'customizr-ms-respond'     , czr_fn_get_theme_file_url( "{$_path}style-modular-scale{$_ext}"), array(), $_ver, 'all' );
+              }
 
-               //Customizr stylesheet (style.css)
-               wp_enqueue_style( 'customizr-style'          , czr_fn_get_theme_file_url( "style{$_ext}"), array(), $_ver, 'all' );
+              //Customizer user defined style options : the custom CSS is written with a high priority here
+              wp_add_inline_style( 'customizr-main'      , apply_filters( 'czr_user_options_style' , '' ) );
 
+              //Customizr stylesheet (style.css)
+              if ( czr_fn_is_child() ) {
+                  wp_enqueue_style( 'customizr-style'          , czr_fn_get_theme_file_url( "style.css"), array(), $_ver, 'all' );
+              }
          }
 
          /**
@@ -167,7 +164,7 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
                                        "[class*='grid-container__'] .entry-title a.czr-title:hover",
                                  ),
                                  'border-color' => array(
-                                       '.czr-slider-loader-wrapper .czr-css-loader > div ',
+                                       '.czr-css-loader > div ',
                                        '.btn-skin',
                                        '.btn-skin:active',
                                        '.btn-skin:focus',
@@ -189,6 +186,7 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
                                        '.btn-skin-h-dark.inverted:active',
                                        '.btn-skin-h-dark.inverted:focus',
                                        '.btn-skin-h-dark.inverted:hover',
+                                       '.sidebar .widget-title::after'
                                  )
                            )
                      ),
@@ -254,16 +252,6 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
                                  ),
                            )
                      ),
-
-                     'skin_lightest_color_shade_high' => array(
-                           'color'  => $skin_lightest_color_shade_high,
-                           'rules'  => array(
-                                 'background-color' => array(
-                                       '.post-navigation',
-                                 )
-                           )
-                     ),
-
 
                      'skin_dark_color' => array(
                            'color'  => $skin_dark_color,

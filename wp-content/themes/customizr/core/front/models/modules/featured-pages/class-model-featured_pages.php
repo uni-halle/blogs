@@ -96,6 +96,8 @@ class CZR_featured_pages_model_class extends CZR_Model {
   }
 
 
+
+
   function czr_fn_get_the_featured_pages( $fp_nb, $fp_ids, $show_thumb ) {
         $featured_pages = array();
 
@@ -126,10 +128,10 @@ class CZR_featured_pages_model_class extends CZR_Model {
           $customizr_link                 = '';
 
         if ( ! czr_fn_is_customizing() && is_user_logged_in() && current_user_can('edit_theme_options') ) {
-            $customizr_link              = sprintf( '<a href="%1$s" title="%2$s">%3$s</a>',
+            $customizr_link              = sprintf( '<br/><a href="%1$s" title="%2$s" style="text-decoration:underline;font-weight:bold;padding-top: 1em;padding-top: 1em;display: inline-block;display: inline-block;text-transform:uppercase;">%3$s</a>',
                 czr_fn_get_customizer_url( array( 'control' => 'tc_featured_text_'.$fp_single_id, 'section' => 'frontpage_sec') ),
                 __( 'Customizer screen' , 'customizr' ),
-                __( 'Edit now.' , 'customizr' )
+                __( 'Customize it now' , 'customizr' )
             );
             $featured_page_link          = apply_filters( 'czr_fp_link_url', czr_fn_get_customizer_url( array( 'control' => 'tc_featured_page_'.$fp_single_id, 'section' => 'frontpage_sec') ) );
           }
@@ -246,6 +248,16 @@ class CZR_featured_pages_model_class extends CZR_Model {
         if ( $autoadvance )
           next( $this -> featured_pages );
 
+        /*
+        * Allow img parsing
+        * E.g. for the smartloading
+        * The filter callback is added at wp_head in CZR___::__construct
+        */
+        if ( is_array($fp) && isset( $fp[ 'fp_img' ] ) ) {
+          //this filter is defined is primarily used in czr_fn_get_thumbnail_model()
+          $fp[ 'fp_img' ] = apply_filters( 'czr_thumb_html', $fp[ 'fp_img' ], $requested_size = 'tc-thumb', $post_id = null , $custom_thumb_id = null, $_img_attr = null, $tc_thumb_size = null );
+        }
+
         return $fp;
   }
 
@@ -269,8 +281,12 @@ class CZR_featured_pages_model_class extends CZR_Model {
   *******************************/
   function czr_fn_get_fp_img( $fp_img_size, $featured_page_id, $fp_custom_img_id ){
         //try to get "tc_thumb" , "tc_thumb_height" , "tc_thumb_width"
-        //czr_fn_get_thumbnail_model( $requested_size = null, $_post_id = null , $_thumb_id = null )
-        $_fp_img_model = czr_fn_get_thumbnail_model( $fp_img_size, $featured_page_id, $fp_custom_img_id );
+        //czr_fn_get_thumbnail_model defined in core/functions.php
+        $_fp_img_model = czr_fn_get_thumbnail_model( array(
+            'requested_size' => $fp_img_size,
+            'post_id'        => $featured_page_id,
+            'thumb_id'       => $fp_custom_img_id
+        ));
 
       //finally we define a default holder if no thumbnail found or page is protected
         if ( isset( $_fp_img_model["tc_thumb"]) && ! empty( $_fp_img_model["tc_thumb"] ) && ! post_password_required( $featured_page_id ) )

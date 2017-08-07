@@ -10,6 +10,84 @@ class CZR_main_content_model_class extends CZR_Model {
 
             //in singular context we might want to display the featured image for standard headings
             $this -> czr_fn_process_singular_thumbnail();
+
+
+            $children = array(
+
+                  array(
+
+                        //registered here also because we access to its properties from other templates
+                        //which as of now is only possibile with already registered models
+                        'model_class' => 'content/post-metas/post_metas',
+                        'id' => 'post_metas',
+
+                  ),
+
+                  /*********************************************
+                  * SLIDER
+                  *********************************************/
+                  /* Need to be registered before rendering because of the custom style*/
+                  array(
+
+                        'template'    => 'modules/slider/slider',
+                        'id'          => 'main_slider',
+                        'hook'        => '__before_main_wrapper',
+                        'priority'    => 10
+
+                  ),
+                  //slider of posts
+                  array(
+
+                        'id'          => 'main_posts_slider',
+                        'model_class' => array( 'parent' => 'modules/slider/slider', 'name' => 'modules/slider/slider_of_posts' ),
+                        'template'    => 'modules/slider/slider',
+                        'hook'        => '__before_main_wrapper',
+                        'priority'    => 10
+                  ),
+
+                  /** end slider **/
+
+                  /*********************************************
+                  * Featured Pages
+                  *********************************************/
+                  /* contains the featured page item registration */
+                  array(
+                        'id'          => 'featured_pages',
+                        'template'    => 'modules/featured-pages/featured_pages',
+                        'hook'        => '__before_main_container',
+                        'priority'    => 10
+                  ),
+                  /** end featured pages **/
+
+                  /*********************************************
+                  * Breadcrumbs
+                  *********************************************/
+                  /* contains the featured page item registration */
+                  array(
+                        'id'          => 'breadcrumb',
+                        'template'    => 'modules/common/breadcrumb',
+                        'hook'        => '__before_main_container',
+                        'priority'    => 20
+                  ),
+                  /** end featured pages **/
+
+
+                  /* Needs to access the czr_user_options_style */
+                  /*********************************************
+                  * GRID (POST LIST)
+                  *********************************************/
+                  array(
+
+                        'id'          => 'post_list_grid',
+                        'model_class' => 'modules/grid/grid_wrapper',
+
+                  ),
+                  /* END GRID */
+            );
+
+            foreach ( $children as $id => $model ) {
+              CZR() -> collection -> czr_fn_register( $model );
+            }//foreach
       }
 
 
@@ -22,7 +100,7 @@ class CZR_main_content_model_class extends CZR_Model {
             $context =  is_single() ? 'post' : 'page';
 
             //do nothing if we don't display regular {context} heading
-            if ( ! czr_fn_has( "regular_{$context}_heading" ) )
+            if ( ! czr_fn_is_registered_or_possible( "regular_{$context}_heading" ) )
                   return;
 
             //__before_main_wrapper, 200
@@ -56,7 +134,6 @@ class CZR_main_content_model_class extends CZR_Model {
             $_hook                = array_key_exists( $_hook, $_compat_location_hook_map ) ? $_compat_location_hook_map[ $_hook ] : '__before_regular_heading_title';
 
 
-
             //let's prepare the thumb
             //register the model and the template for displaying the thumbnail at a specific hook
             $singular_thumb_model_id = czr_fn_register( array( 'template' => 'content/common/media',
@@ -68,75 +145,25 @@ class CZR_main_content_model_class extends CZR_Model {
                         'media_type'               => 'wp_thumb',
                         'has_permalink'            => false,
                         'has_lightbox'             => false,
-                        'element_class'            => 'tc-single-post-thumbnail-wrapper tc-singular-thumbnail-wrapper'
-                        //TODO: img size depending on the location?
-                        //consider that we decided to not have image sizes for the slider so...
+                        'element_class'            => 'tc-singular-thumbnail-wrapper',
+                        //slider full when __before_main_wrapper otherwise take the original one
+                        'thumb_size'               => '__before_main_wrapper' == $_hook ? 'slider-full' : null
                   ),
+                  'priority'   => 15,
                   'controller' => 'singular_thumbnail'
             ) );
 
-            //control the vsibility
+            //control the visibility
             add_filter( "czr_do_render_view_{$singular_thumb_model_id}", array( $this, 'czr_fn_display_view_singular_thumbnail' ), 100, 2 );
 
             //css
-            //needed only when not __after_regular_heading_title
-            if ( '__after_regular_heading_title' != $_hook ) {
+            //needed only when not __after_regular_heading_title?
+            //if ( '__after_regular_heading_title' != $_hook ) {
 
-                  add_filter( 'czr_user_options_style'    , array( $this , 'czr_fn_write_thumbnail_inline_css') );
+            add_filter( 'czr_user_options_style'    , array( $this , 'czr_fn_write_thumbnail_inline_css') );
 
-            }
+            //}
 
-      }
-
-
-
-      function czr_fn_setup_children() {
-
-            $children = array(
-
-                  array(
-
-                        //registered here also because we access to its properties from other templates
-                        //which as of now is only possibile with already registered models
-                        'model_class' => 'content/post-metas/post_metas',
-                        'id' => 'post_metas',
-
-                  ),
-
-                  /*********************************************
-                  * SLIDER
-                  *********************************************/
-                  /* Need to be registered before rendering because of the custom style*/
-                  array(
-
-                        'model_class' => 'modules/slider/slider',
-                        'id'          => 'main_slider'
-
-                  ),
-                  //slider of posts
-                  array(
-
-                        'id'          => 'main_posts_slider',
-                        'model_class' => array( 'parent' => 'modules/slider/slider', 'name' => 'modules/slider/slider_of_posts' )
-
-                  ),
-                  /** end slider **/
-
-                  /* Needs to access the czr_user_options_style */
-                  /*********************************************
-                  * GRID (POST LIST)
-                  *********************************************/
-                  array(
-
-                        'id'          => 'post_list_grid',
-                        'model_class' => 'modules/grid/grid_wrapper',
-
-                  ),
-                  /* END GRID */
-
-            );
-
-            return $children;
       }
 
 
@@ -157,7 +184,7 @@ class CZR_main_content_model_class extends CZR_Model {
         if ( !$_hook )
           return $bool;
 
-        $_slider_shown = ( did_action( '__after_main_slider' ) || did_action( '__after_main_posts_slider' ) );
+        $_slider_shown = ( did_action( '__after_carousel_inner' ) );
 
         return '__before_main_wrapper' == $_hook && $_slider_shown ? false : true;
 
@@ -175,14 +202,6 @@ class CZR_main_content_model_class extends CZR_Model {
               ".tc-singular-thumbnail-wrapper .entry-media__wrapper {
                 max-height: {$_thumb_height}px;
                 height :{$_thumb_height}px
-              }\n
-              .tc-singular-thumbnail-wrapper .js-centering.entry-media__wrapper img {
-                opacity : 0;
-                -webkit-transition: opacity .5s ease-in-out;
-                -moz-transition: opacity .5s ease-in-out;
-                -ms-transition: opacity .5s ease-in-out;
-                -o-transition: opacity .5s ease-in-out;
-                transition: opacity .5s ease-in-out;
               }\n"
             );
       }
