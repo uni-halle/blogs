@@ -276,7 +276,20 @@ class C_Widget_Slideshow extends WP_Widget
     {
         $registry = C_Component_Registry::get_instance();
         $renderer = C_Displayed_Gallery_Renderer::get_instance();
-        $params = array('container_ids' => $galleryID, 'display_type' => 'photocrati-nextgen_basic_slideshow', 'gallery_width' => $irWidth, 'gallery_height' => $irHeight, 'source' => 'galleries', 'slug' => 'widget-' . $args['widget_id'], 'entity_types' => array('image'), 'show_thumbnail_link' => FALSE, 'show_slideshow_link' => FALSE, 'use_imagebrowser_effect' => FALSE, 'ngg_triggers_display' => 'never');
+        $params = array(
+            'container_ids' => $galleryID,
+            'display_type' => 'photocrati-nextgen_basic_slideshow',
+            'gallery_width' => $irWidth,
+            'gallery_height' => $irHeight,
+            'source' => 'galleries',
+            'slug' => 'widget-' . $args['widget_id'],
+            'entity_types' => array('image'),
+            'show_thumbnail_link' => FALSE,
+            'show_slideshow_link' => FALSE,
+            'use_imagebrowser_effect' => FALSE,
+            // just to be safe
+            'ngg_triggers_display' => 'never',
+        );
         if (0 === $galleryID) {
             $params['source'] = 'random_images';
             $params['maximum_entity_count'] = $limit;

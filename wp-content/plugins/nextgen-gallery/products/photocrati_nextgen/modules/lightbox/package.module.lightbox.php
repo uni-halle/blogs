@@ -14,7 +14,13 @@ class C_Lightbox_Installer
     }
     function install_lightbox($name, $title, $code, $stylesheet_paths = array(), $script_paths = array(), $values = array(), $i18n = array())
     {
-        $lightbox = new C_NGG_Lightbox($name, array('title' => $title, 'code' => $code, 'styles' => is_array($stylesheet_paths) ? implode("\n", $stylesheet_paths) : $stylesheet_paths, 'scripts' => is_array($script_paths) ? implode("\n", $script_paths) : $script_paths, 'values' => $values, 'i18n' => $i18n));
+        if (!is_array($stylesheet_paths) && is_string($stylesheet_paths) && FALSE !== strpos($stylesheet_paths, "\n")) {
+            $stylesheet_paths = explode("\n", $stylesheet_paths);
+        }
+        if (!is_array($script_paths) && is_string($script_paths) && FALSE !== strpos($script_paths, "\n")) {
+            $script_paths = explode("\n", $script_paths);
+        }
+        $lightbox = new C_NGG_Lightbox($name, array('title' => $title, 'code' => $code, 'styles' => $stylesheet_paths, 'scripts' => $script_paths, 'values' => $values, 'i18n' => $i18n));
         C_Lightbox_Library_Manager::get_instance()->register($name, $lightbox);
     }
 }
@@ -183,7 +189,14 @@ class C_Lightbox_Library_Manager
         }
         // Make the path to the static resources available for libraries
         // Shutter-Reloaded in particular depends on this
-        $this->_add_script_data('ngg_common', 'nextgen_lightbox_settings', array('static_path' => $router->get_static_url('', 'photocrati-lightbox'), 'context' => $thumbEffectContext), TRUE, TRUE);
+        $this->_add_script_data(
+            'ngg_common',
+            // TODO: Should this be ngg_lightbox_context instead?
+            'nextgen_lightbox_settings',
+            array('static_path' => $router->get_static_url('', 'photocrati-lightbox'), 'context' => $thumbEffectContext),
+            TRUE,
+            TRUE
+        );
         // Enqueue lightbox resources, only if we have a configured lightbox
         if ($lightbox) {
             // Add lightbox script data

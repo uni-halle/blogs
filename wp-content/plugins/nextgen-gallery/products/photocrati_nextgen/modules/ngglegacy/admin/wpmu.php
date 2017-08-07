@@ -30,7 +30,7 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
         $ngg_options['gallerypath']    = trailingslashit($ngg_options['gallerypath']);
 		update_site_option('ngg_options', $ngg_options);
         
-	 	$messagetext = __('Update successfully','nggallery');
+	 	$messagetext = __('Updated successfully','nggallery');
 	}		
 
     // Show donation message only one time.

@@ -124,6 +124,8 @@ class M_Third_Party_Compat extends C_Base_Module
         add_filter('run_ngg_resource_manager', array($this, 'run_ngg_resource_manager'));
         add_filter('wpseo_sitemap_urlimages', array($this, 'add_wpseo_xml_sitemap_images'), 10, 2);
 
+        if ($this->is_ngg_page()) add_action('admin_enqueue_scripts', array(&$this, 'dequeue_spider_calendar_resources'));
+
         // WPML fix
         if (class_exists('SitePress')) {
             M_WordPress_Routing::$_use_canonical_redirect = FALSE;
@@ -134,6 +136,16 @@ class M_Third_Party_Compat extends C_Base_Module
         // TODO: Only needed for NGG Pro 1.0.10 and lower
         add_action('the_post', array(&$this, 'add_ngg_pro_page_parameter'));
 
+    }
+
+    function is_ngg_page()
+    {
+        return (is_admin() && isset($_REQUEST['page']) && strpos($_REQUEST['page'], 'ngg') !== FALSE);
+    }
+
+    function dequeue_spider_calendar_resources()
+    {
+        remove_filter('admin_head', 'spide_ShowTinyMCE');
     }
 
     /**

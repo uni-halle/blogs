@@ -1635,7 +1635,7 @@ msgstr "Fuskar du?"
 #: products/photocrati_nextgen/modules/ngglegacy/admin/album.php:180
 #: products/photocrati_nextgen/modules/ngglegacy/admin/album.php:209
 #: products/photocrati_nextgen/modules/ngglegacy/admin/album.php:253
-msgid "Update Successfully"
+msgid "Updated Successfully"
 msgstr "Uppdatering klar"
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/album.php:227
@@ -2317,10 +2317,6 @@ msgstr "Bilder har tagits bort"
 msgid "Tags changed"
 msgstr "Etiketter ändrade"
 
-#: products/photocrati_nextgen/modules/ngglegacy/admin/manage.php:818
-msgid "Update successful"
-msgstr "Uppdatering klar"
-
 #: products/photocrati_nextgen/modules/ngglegacy/admin/manage.php:853
 msgid "New gallery page ID"
 msgstr "ID för ny gallerisida"
@@ -2878,7 +2874,7 @@ msgid "These are maximum values"
 msgstr "Dessa är maximivärden"
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/wpmu.php:33
-msgid "Update successfully"
+msgid "Updated successfully"
 msgstr "Uppdatering klar"
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/wpmu.php:48

@@ -2,11 +2,11 @@
 Contributors: photocrati, imagely
 Tags: wordpress gallery plugin, gallery, nextgen, nextgen gallery, photo gallery, image gallery, photography, slideshow, images, photo, photo album, watermark
 Requires at least: 4.0.0
-Stable tag: 2.2.10
+Stable tag: 2.2.12
 Tested up to: 4.8.0
 License: GPLv2
 
-The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 17 million downloads.
+The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 18 million downloads.
 
 == Description ==
 
@@ -186,6 +186,16 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 
 == Changelog ==
+
+= V2.2.12 - 08.01.2017 =
+* Secured: Disabled Flash backend in plupload
+* Changed: Upgraded PHP-Parser version used when building plugin zips
+* Changed: Added DESC as an option to nggTags::find_images_for_tags()
+* Fixed:   Fixed useage of parse_str for PHP 7 (thanks Bodo Graumann)
+* Fixed:   Made transients manager flush only expired transients
+* Fixed:   Compatibility with Spider Calendar
+* Fixed:   Problem with validation code of DataMapper Models
+* Fixed:   Convert script/style urls to arrays in the lightbox installer
 
 = V2.2.10 - 06.14.2017 =
 * Fixed:   Ensure that the plugin works when PHP isn't compiled against libxml

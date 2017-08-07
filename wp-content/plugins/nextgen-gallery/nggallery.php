@@ -3,8 +3,8 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 
 /**
  * Plugin Name: NextGEN Gallery
- * Description: The most popular gallery plugin for WordPress and one of the most popular plugins of all time with over 17 million downloads.
- * Version: 2.2.10
+ * Description: The most popular gallery plugin for WordPress and one of the most popular plugins of all time with over 18 million downloads.
+ * Version: 2.2.12
  * Author: Imagely
  * Plugin URI: https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/
  * Author URI: https://www.imagely.com
@@ -178,10 +178,17 @@ class C_NextGEN_Bootstrap
 		// Load caching component
 		include_once('non_pope/class.photocrati_transient_manager.php');
 
-		if (isset($_REQUEST['ngg_flush']) OR isset($_REQUEST['ngg_flush_expired'])) {
+		if (isset($_REQUEST['ngg_flush']))
+		{
 			C_Photocrati_Transient_Manager::flush();
 			die("Flushed all caches");
 		}
+
+        if (isset($_REQUEST['ngg_flush_expired']))
+        {
+            C_Photocrati_Transient_Manager::get_instance()->flush_expired();
+            die("Flushed all expired caches");
+        }
 
 		// Load Settings Manager
 		include_once('non_pope/class.photocrati_settings_manager.php');
@@ -385,7 +392,7 @@ class C_NextGEN_Bootstrap
 		// Delete displayed gallery transients periodically
 		if (NGG_CRON_ENABLED) {
 			add_filter('cron_schedules', array(&$this, 'add_ngg_schedule'));
-			add_action('ngg_delete_expired_transients', array(&$this, 'delete_expired_transients'));
+			add_action('ngg_delete_expired_transients', array($this, 'delete_expired_transients'));
 			add_action('wp', array(&$this, 'schedule_cron_jobs'));
 		}
 
@@ -494,7 +501,7 @@ class C_NextGEN_Bootstrap
 	 */
 	function delete_expired_transients()
 	{
-		C_Photocrati_Transient_Manager::flush();
+        C_Photocrati_Transient_Manager::get_instance()->flush_expired();
 	}
 
 	/**
@@ -637,7 +644,7 @@ class C_NextGEN_Bootstrap
 		define('NGG_PRODUCT_URL', path_join(str_replace("\\", '/', NGG_PLUGIN_URL), 'products'));
 		define('NGG_MODULE_URL', path_join(str_replace("\\", '/', NGG_PRODUCT_URL), 'photocrati_nextgen/modules'));
 		define('NGG_PLUGIN_STARTED_AT', microtime());
-		define('NGG_PLUGIN_VERSION', '2.2.10');
+		define('NGG_PLUGIN_VERSION', '2.2.12');
 
 		if (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG)
 			define('NGG_SCRIPT_VERSION', (string)mt_rand(0, mt_getrandmax()));

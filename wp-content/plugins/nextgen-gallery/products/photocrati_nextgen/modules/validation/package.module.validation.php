@@ -83,7 +83,7 @@ class Mixin_Validation extends Mixin
     function get_errors($property = FALSE)
     {
         $retval = $property ? $this->object->errors_for($property) : $this->object->_errors;
-        if (!$retval || is_array($retval)) {
+        if (!$retval || !is_array($retval)) {
             $retval = array();
         }
         return $retval;

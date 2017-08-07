@@ -1652,7 +1652,7 @@ msgstr ""
 #: products/photocrati_nextgen/modules/ngglegacy/admin/album.php:180
 #: products/photocrati_nextgen/modules/ngglegacy/admin/album.php:209
 #: products/photocrati_nextgen/modules/ngglegacy/admin/album.php:253
-msgid "Update Successfully"
+msgid "Updated Successfully"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/album.php:227
@@ -2232,7 +2232,7 @@ msgid "Alt & Title Text / Description"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/manage.php:213
-msgid "Exclude ?"
+msgid "Exclude?"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/manage.php:298
@@ -2326,10 +2326,6 @@ msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/manage.php:778
 msgid "Tags changed"
-msgstr ""
-
-#: products/photocrati_nextgen/modules/ngglegacy/admin/manage.php:818
-msgid "Update successful"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/manage.php:853
@@ -2450,7 +2446,7 @@ msgid "Server Settings"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:97
-msgid "NextGEN Gallery is one of the most popular WordPress plugins of all time with over 17 million downloads."
+msgid "NextGEN Gallery is one of the most popular WordPress plugins of all time with over 18 million downloads."
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:97
@@ -2887,7 +2883,7 @@ msgid "These are maximum values"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/wpmu.php:33
-msgid "Update successfully"
+msgid "Updated successfully"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/wpmu.php:48

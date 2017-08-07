@@ -106,65 +106,130 @@ class C_Photocrati_Transient_Manager
 	function _track_key($key)
 	{
 		global $_wp_using_ext_object_cache;
-		if ($_wp_using_ext_object_cache) {
+		if ($_wp_using_ext_object_cache)
+		{
 			$parts = explode('__', $key);
 			$group = $parts[0];
 			$id = $parts[1];
-			if (!isset($this->_tracker[$group])) $this->_tracker[$group] = array();
+			if (!isset($this->_tracker[$group]))
+			    $this->_tracker[$group] = array();
 			$this->_tracker[$group][] = $id;
 		}
 	}
 
-	function set($key, $value, $ttl=0)
+    public function set($key, $value, $ttl=0)
 	{
 		$retval = FALSE;
 		$enabled = TRUE;
-		if (defined('PHOTOCRATI_CACHE')) $enabled = PHOTOCRATI_CACHE;
-		if (defined('PHOTOCRATI_CACHE_TTL') && !$ttl) $ttl = PHOTOCRATI_CACHE_TTL;
-		if ($enabled) {
+
+		if (defined('PHOTOCRATI_CACHE'))
+		    $enabled = PHOTOCRATI_CACHE;
+		if (defined('PHOTOCRATI_CACHE_TTL')
+            && !$ttl) $ttl = PHOTOCRATI_CACHE_TTL;
+
+		if ($enabled)
+		{
 			$retval = set_transient($key, json_encode($value), $ttl);
-			if ($retval) $this->_track_key($key);
+			if ($retval)
+			    $this->_track_key($key);
 		}
 
 		return $retval;
 	}
 
-	function delete($key)
+    public function delete($key)
 	{
 		return delete_transient($key);
 	}
 
-	function clear($group=NULL)
+    /**
+     * Clears all (or only expired) transients managed by this utility
+     *
+     * @param string $group Group name to purge
+     * @param bool $expired Whether to clear all transients (FALSE) or to clear expired transients (TRUE)
+     */
+    public function clear($group = NULL, $expired = FALSE)
 	{
+	    if ($group === '__counter')
+	        return;
+
 		if (is_string($group) && !empty($group))
         {
 			global $wpdb;
-			// Note: The wildcard % matches any number of characters, _ matches a single character and should be escaped
-			$query = "DELETE FROM {$wpdb->options} WHERE option_name LIKE '\_transient%' AND option_name LIKE '%{$this->get_group_id($group)}\_\_%'";
-			$wpdb->query($query);
-			$this->delete_tracked($group);
+
+			// A little query building is necessary here..
+            // Clear transients for "the" site or for the current multisite instance
+			$expired_sql = '';
+            $params = array($wpdb->esc_like('_transient_') . '%',
+                            '%' . $wpdb->esc_like("{$this->get_group_id($group)}__") . '%',
+                            $wpdb->esc_like('_transient_timeout_') . '%');
+			if ($expired)
+            {
+                $params[] = time();
+                $expired_sql = $expired ? "AND b.option_value < %d" : '';
+            }
+
+            $sql = "DELETE a, b
+                    FROM {$wpdb->options} a, {$wpdb->options} b
+                    WHERE a.option_name LIKE %s
+                    AND a.option_name LIKE %s
+                    AND a.option_name NOT LIKE %s
+                    AND b.option_name = CONCAT('_transient_timeout_', SUBSTRING(a.option_name, 12))
+                    {$expired_sql}";
+
+            $wpdb->query($wpdb->prepare($sql, $params));
+
+            // Clear transients for the main site of a multisite network
+            if (is_main_site() && is_main_network())
+            {
+                $expired_sql = '';
+                $params = array($wpdb->esc_like('_site_transient_') . '%',
+                                '%' . $wpdb->esc_like("{$this->get_group_id($group)}__") . '%',
+                                $wpdb->esc_like('_site_transient_timeout_') . '%');
+                if ($expired)
+                {
+                    $params[] = time();
+                    $expired_sql = $expired ? "AND b.option_value < %d" : '';
+                }
+                $sql = "DELETE a, b
+                        FROM {$wpdb->options} a, {$wpdb->options} b
+                        WHERE a.option_name LIKE %s
+                        AND a.option_name LIKE %s
+                        AND a.option_name NOT LIKE %s
+                        AND b.option_name = CONCAT('_site_transient_timeout_', SUBSTRING(a.option_name, 17))
+                        {$expired_sql}";
+                $wpdb->query($wpdb->prepare($sql, $params));
+            }
+
+			if ($expired)
+			    $this->delete_tracked($group);
 		}
 		else foreach ($this->_groups as $name => $params) {
-			$this->clear($name);
+			$this->clear($name, $expired);
 		}
 	}
 
-	static function update($key, $value, $ttl=NULL)
+    public static function update($key, $value, $ttl=NULL)
 	{
 		return self::get_instance()->set($key, $value, $ttl);
 	}
 
-	static function fetch($key, $default=NULL)
+    public static function fetch($key, $default=NULL)
 	{
 		return self::get_instance()->get($key, $default);
 	}
 
-	static function flush($group=NULL)
+	public static function flush($group = NULL)
 	{
-		return self::get_instance()->clear($group);
+		self::get_instance()->clear($group);
 	}
 
-	static function create_key($group, $params=array())
+    public static function flush_expired($group = NULL)
+    {
+        self::get_instance()->clear($group, TRUE);
+    }
+
+	public static function create_key($group, $params=array())
 	{
 		return self::get_instance()->generate_key($group, $params);
 	}

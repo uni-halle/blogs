@@ -257,33 +257,37 @@ class C_Attach_Controller extends C_NextGen_Admin_Page_Controller
             add_action('wp_print_scripts', array($this, '_handle_scripts'), 9999);
         }
     }
+    function get_script_dependencies($handle)
+    {
+        $retval = array();
+        global $wp_scripts;
+        if (($index = array_search($handle, $wp_scripts->registered)) !== FALSE) {
+            $registered_script = $wp_scripts->registered[$index];
+            if ($registered_script->deps) {
+                foreach ($registered_script->deps as $dep) {
+                    $retval[] = $dep;
+                    $retval = array_merge($retval, $this->get_script_dependencies($handle));
+                }
+            }
+        }
+        return $retval;
+    }
+    function get_marked_scripts()
+    {
+        $retval = $this->_marked_scripts;
+        foreach ($this->_marked_scripts as $handle) {
+            $retval = array_merge($retval, $this->get_script_dependencies($handle));
+        }
+        return array_unique($retval);
+    }
     function _handle_scripts()
     {
-        if (is_admin() && $this->_is_rendering) {
+        if (M_Attach_To_Post::is_atp_url()) {
             global $wp_scripts;
-            $queue = $wp_scripts->queue;
-            $marked = $this->_marked_scripts;
-            foreach ($marked as $tag => $value) {
-                $this->_handle_script($tag, $queue);
-            }
-            foreach ($queue as $extra) {
-                wp_dequeue_script($extra);
-            }
-        }
-    }
-    function _handle_script($tag, &$queue)
-    {
-        global $wp_scripts;
-        $registered = $wp_scripts->registered;
-        $idx = array_search($tag, $queue);
-        if ($idx !== false) {
-            unset($queue[$idx]);
-        }
-        if (isset($registered[$tag])) {
-            $script = $registered[$tag];
-            if ($script->deps) {
-                foreach ($script->deps as $dep) {
-                    $this->_handle_script($dep, $queue);
+            $marked_scripts = $this->get_marked_scripts();
+            foreach ($wp_scripts->queue as $handle) {
+                if (array_search($handle, $marked_scripts) === FALSE) {
+                    wp_dequeue_script($handle);
                 }
             }
         }
@@ -311,9 +315,9 @@ class Mixin_Attach_To_Post extends Mixin
             $this->object->_displayed_gallery = $mapper->create();
         }
     }
-    function mark_script($script_tag)
+    function mark_script($handle)
     {
-        $this->object->_marked_scripts[$script_tag] = true;
+        $this->object->_marked_scripts[] = $handle;
     }
     function enqueue_display_tab_js()
     {
@@ -356,7 +360,7 @@ class Mixin_Attach_To_Post extends Mixin
         usort($display_types, array($this->object, '_display_type_list_sort'));
         wp_enqueue_script('ngg_display_tab', $this->get_static_url('photocrati-attach_to_post#display_tab.js'), array('jquery', 'backbone', 'underscore.string', 'photocrati_ajax'));
         $this->object->mark_script('ngg_display_tab');
-        wp_localize_script('ngg_display_tab', 'igw_data', array('displayed_gallery_preview_url' => $settings->gallery_preview_url, 'displayed_gallery' => $this->object->_displayed_gallery->get_entity(), 'sources' => $sources->get_all(), 'gallery_primary_key' => $gallery_mapper->get_primary_key_column(), 'galleries' => $gallery_mapper->find_all(), 'albums' => $album_mapper->find_all(), 'tags' => $tags, 'display_types' => $display_types, 'sec_token' => $security->get_request_token('nextgen_edit_displayed_gallery')->get_json(), 'image_primary_key' => $image_mapper->get_primary_key_column(), 'display_type_priority_base' => NGG_DISPLAY_PRIORITY_BASE, 'display_type_priority_step' => NGG_DISPLAY_PRIORITY_STEP, 'shortcode_ref' => isset($_REQUEST['ref']) ? floatval($_REQUEST['ref']) : null, 'i18n' => array('sources' => __('Sources', 'nggallery'), 'optional' => __('(optional)', 'nggallery'), 'slug_tooltip' => __('Sets an SEO-friendly name to this gallery for URLs. Currently only in use by the Pro Lightbox', 'nggallery'), 'slug_label' => __('Slug', 'nggallery'), 'no_entities' => __('No entities to display for this source', 'nggallery'), 'exclude_question' => __('Exlude?', 'nggallery'), 'select_gallery' => __('Select a gallery', 'nggallery'), 'galleries' => __('Galleries', 'nggallery'), 'albums' => __('Albums', 'nggallery'))));
+        wp_localize_script('ngg_display_tab', 'igw_data', array('displayed_gallery_preview_url' => $settings->gallery_preview_url, 'displayed_gallery' => $this->object->_displayed_gallery->get_entity(), 'sources' => $sources->get_all(), 'gallery_primary_key' => $gallery_mapper->get_primary_key_column(), 'galleries' => $gallery_mapper->find_all(), 'albums' => $album_mapper->find_all(), 'tags' => $tags, 'display_types' => $display_types, 'sec_token' => $security->get_request_token('nextgen_edit_displayed_gallery')->get_json(), 'image_primary_key' => $image_mapper->get_primary_key_column(), 'display_type_priority_base' => NGG_DISPLAY_PRIORITY_BASE, 'display_type_priority_step' => NGG_DISPLAY_PRIORITY_STEP, 'shortcode_ref' => isset($_REQUEST['ref']) ? floatval($_REQUEST['ref']) : null, 'i18n' => array('sources' => __('Sources', 'nggallery'), 'optional' => __('(optional)', 'nggallery'), 'slug_tooltip' => __('Sets an SEO-friendly name to this gallery for URLs. Currently only in use by the Pro Lightbox', 'nggallery'), 'slug_label' => __('Slug', 'nggallery'), 'no_entities' => __('No entities to display for this source', 'nggallery'), 'exclude_question' => __('Exclude?', 'nggallery'), 'select_gallery' => __('Select a gallery', 'nggallery'), 'galleries' => __('Galleries', 'nggallery'), 'albums' => __('Albums', 'nggallery'))));
     }
     function enqueue_backend_resources()
     {

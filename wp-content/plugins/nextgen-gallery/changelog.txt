@@ -1,6 +1,16 @@
 NextGEN Gallery
 by Imagely
 
+= V2.2.12 - 08.01.2017 =
+* Secured: Disabled Flash backend in plupload
+* Changed: Upgraded PHP-Parser version used when building plugin zips
+* Changed: Added DESC as an option to nggTags::find_images_for_tags()
+* Fixed:   Fixed useage of parse_str for PHP 7 (thanks Bodo Graumann)
+* Fixed:   Made transients manager flush only expired transients
+* Fixed:   Compatibility with Spider Calendar
+* Fixed:   Problem with validation code of DataMapper Models
+* Fixed:   Convert script/style urls to arrays in the lightbox installer
+
 = V2.2.10 - 06.14.2017 =
 * Fixed:   Ensure that the plugin works when PHP isn't compiled against libxml
 

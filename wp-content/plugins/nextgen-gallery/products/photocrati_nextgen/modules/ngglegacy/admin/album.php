@@ -176,7 +176,7 @@ class nggManageAlbum {
 				$this->currentID = $_REQUEST['act_album'] = $album->{$album->id_field};
 				$this->albums[$this->currentID] = $album;
 				do_action('ngg_add_album', $this->currentID);
-					nggGallery::show_message(__('Update Successfully','nggallery'));
+					nggGallery::show_message(__('Updated Successfully','nggallery'));
 			}
 			else {
 				$this->currentID = $_REQUEST['act_album'] = 0;
@@ -184,17 +184,17 @@ class nggManageAlbum {
 		}
 
 		else if ( isset($_POST['update']) && isset($_REQUEST['act_album']) && $this->currentID = intval($_REQUEST['act_album']) ) {
-
-            $gid = array();
+		
+			$sortorder = array();
 
 			// Get the current album being updated
 			$album = $this->_get_album($this->currentID);
 
 			// Get the list of galleries/sub-albums to be added to this album
-			parse_str($_REQUEST['sortorder']);
+			parse_str($_REQUEST['sortorder'], $sortorder);
 
 			// Set the new sortorder
-			$album->sortorder = $gid;
+			$album->sortorder = $sortorder['gid'];
 
 			// Ensure that a preview pic has been sent
 			$this->_set_album_preview_pic($album);
@@ -205,7 +205,7 @@ class nggManageAlbum {
             //hook for other plugins
             do_action('ngg_update_album_sortorder', $this->currentID);
 
-			nggGallery::show_message(__('Update Successfully','nggallery'));
+			nggGallery::show_message(__('Updated Successfully','nggallery'));
 
 		}
 
@@ -249,7 +249,7 @@ class nggManageAlbum {
 		do_action('ngg_update_album', $this->currentID, $_POST);
 
 		if ($result)
-			nggGallery::show_message(__('Update Successfully','nggallery'));
+			nggGallery::show_message(__('Updated Successfully','nggallery'));
 	}
 
 	function get_available_preview_images($album)

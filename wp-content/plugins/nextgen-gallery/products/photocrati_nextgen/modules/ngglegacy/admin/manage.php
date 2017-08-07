@@ -832,7 +832,7 @@ class nggManageGallery {
 			//hook for other plugin to update the fields
 			do_action('ngg_update_gallery', $this->gid, $_POST);
 
-			nggGallery::show_message(__('Update successful', 'nggallery'));
+			nggGallery::show_message(__('Updated successfully', 'nggallery'));
 		}
 
 		if (isset ($_POST['scanfolder']))  {

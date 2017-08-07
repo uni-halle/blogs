@@ -458,6 +458,7 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
             return $output;
         } else {
             if ($album = $this->param('album')) {
+                // Are we to display a sub-album?
                 $mapper = C_Album_Mapper::get_instance();
                 $result = $mapper->select()->where(array('slug = %s', $album))->limit(1)->run_query();
                 $result = array_pop($result);

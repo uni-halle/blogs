@@ -2118,7 +2118,59 @@ class C_Image_Wrapper
             $columns = 0;
         }
         // Public variables
-        $defaults = array('errmsg' => '', 'error' => FALSE, 'imageURL' => '', 'thumbURL' => '', 'imagePath' => '', 'thumbPath' => '', 'href' => '', 'thumbPrefix' => 'thumbs_', 'thumbFolder' => '/thumbs/', 'galleryid' => 0, 'pid' => 0, 'filename' => '', 'description' => '', 'alttext' => '', 'imagedate' => '', 'exclude' => '', 'thumbcode' => '', 'name' => '', 'path' => '', 'title' => '', 'pageid' => 0, 'previewpic' => 0, 'style' => $columns > 0 ? 'style="width:' . floor(100 / $columns) . '%;"' : '', 'hidden' => FALSE, 'permalink' => '', 'tags' => '');
+        $defaults = array(
+            'errmsg' => '',
+            // Error message to display, if any
+            'error' => FALSE,
+            // Error state
+            'imageURL' => '',
+            // URL Path to the image
+            'thumbURL' => '',
+            // URL Path to the thumbnail
+            'imagePath' => '',
+            // Server Path to the image
+            'thumbPath' => '',
+            // Server Path to the thumbnail
+            'href' => '',
+            // A href link code
+            // Mostly constant
+            'thumbPrefix' => 'thumbs_',
+            // FolderPrefix to the thumbnail
+            'thumbFolder' => '/thumbs/',
+            // Foldername to the thumbnail
+            // Image Data
+            'galleryid' => 0,
+            // Gallery ID
+            'pid' => 0,
+            // Image ID
+            'filename' => '',
+            // Image filename
+            'description' => '',
+            // Image description
+            'alttext' => '',
+            // Image alttext
+            'imagedate' => '',
+            // Image date/time
+            'exclude' => '',
+            // Image exclude
+            'thumbcode' => '',
+            // Image effect code
+            // Gallery Data
+            'name' => '',
+            // Gallery name
+            'path' => '',
+            // Gallery path
+            'title' => '',
+            // Gallery title
+            'pageid' => 0,
+            // Gallery page ID
+            'previewpic' => 0,
+            // Gallery preview pic
+            'style' => $columns > 0 ? 'style="width:' . floor(100 / $columns) . '%;"' : '',
+            'hidden' => FALSE,
+            'permalink' => '',
+            'tags' => '',
+        );
         // convert the image to an array and apply the defaults
         $this->_orig_image = $image;
         $image = (array) $image;

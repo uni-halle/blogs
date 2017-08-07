@@ -294,44 +294,50 @@ class nggTags {
 	}
 
 	/**
-	* Get images corresponding to a list of tags
-	*/
-	/**
+	 * Get images corresponding to a list of tags
+	 *
 	 * nggTags::find_images_for_tags()
 	 *
-	 * @param mixed $taglist
-	 * @param string $mode could be 'ASC' or 'RAND'
+	 * @param mixed  $taglist
+	 * @param string $mode could be 'ASC', 'DESC' or 'RAND'
+	 *
 	 * @return array of images
 	 */
-	static function find_images_for_tags($taglist, $mode = "ASC") {
+	static function find_images_for_tags( $taglist, $mode = "ASC" ) {
 		// return the images based on the tag
 		global $wpdb;
 
 		// extract it into a array
-		$taglist = explode(",", $taglist);
+		$taglist = explode( ",", $taglist );
 
-		if ( !is_array($taglist) )
-			$taglist = array($taglist);
+		if ( ! is_array( $taglist ) ) {
+			$taglist = array( $taglist );
+		}
 
-		$taglist = array_map('trim', $taglist);
-		$new_slugarray = array_map('sanitize_title', $taglist);
-		$sluglist = implode("', '", $new_slugarray);
+		$taglist       = array_map( 'trim', $taglist );
+		$new_slugarray = array_map( 'sanitize_title', $taglist );
+		$sluglist      = implode( "', '", $new_slugarray );
 
-		//Treat % as a litteral in the database, for unicode support
-		$sluglist = str_replace("%","%%",$sluglist);
+		//Treat % as a literal in the database, for unicode support
+		$sluglist = str_replace( "%", "%%", $sluglist );
 
 		// first get all $term_ids with this tag
-		$term_ids = $wpdb->get_col( $wpdb->prepare("SELECT term_id FROM $wpdb->terms WHERE slug IN (%s) ORDER BY term_id ASC ", $sluglist));
-		$picids = get_objects_in_term($term_ids, 'ngg_tag');
+		$term_ids = $wpdb->get_col( $wpdb->prepare( "SELECT term_id FROM $wpdb->terms WHERE slug IN (%s) ORDER BY term_id ASC ", $sluglist ) );
+		$picids   = get_objects_in_term( $term_ids, 'ngg_tag' );
 
-		if ($mode == 'RAND')
-			shuffle($picids);
+		if ( $mode == 'RAND' ) {
+			shuffle( $picids );
+		}
 
 		// Now lookup in the database
 		$mapper = C_Image_Mapper::get_instance();
 		$images = array();
-		foreach ($picids as $image_id) {
-			$images[] = $mapper->find($image_id);
+		foreach ( $picids as $image_id ) {
+			$images[] = $mapper->find( $image_id );
+		}
+
+		if ( 'DESC' == $mode ) {
+			$images = array_reverse( $images );
 		}
 
 		return $images;

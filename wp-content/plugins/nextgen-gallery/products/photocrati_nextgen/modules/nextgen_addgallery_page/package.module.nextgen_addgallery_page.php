@@ -431,7 +431,7 @@ class A_Upload_Images_Form extends Mixin
     function get_plupload_options()
     {
         $retval = array();
-        $retval['runtimes'] = 'gears,browserplus,html5,flash,silverlight,html4';
+        $retval['runtimes'] = 'browserplus,html5,silverlight,html4';
         $retval['max_file_size'] = strval(round((int) wp_max_upload_size() / 1024)) . 'kb';
         $retval['filters'] = $this->object->get_plupload_filters();
         $retval['flash_swf_url'] = includes_url('js/plupload/plupload.flash.swf');
