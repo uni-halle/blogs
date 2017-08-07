@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - qTranslate X - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-06-10 09:21:19+0000\n"
+"PO-Revision-Date: 2017-06-12 16:44:03+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -304,10 +304,6 @@ msgstr "L'attivazione di una lingua potrebbe fare in modo che qTranslate aggiorn
 msgid "Pre-Defined"
 msgstr "Predefinito"
 
-#: admin/qtx_configuration.php:629
-msgid "Default"
-msgstr "Default"
-
 #: admin/qtx_configuration.php:627
 msgid "%s Flag"
 msgstr "Bandiera %s"
@@ -416,6 +412,14 @@ msgstr "Se il tuo tema o qualche plugin non sono completamente integrati con %s,
 #: admin/qtx_configuration.php:468
 msgid "The color in use is taken from your profile option %s, the third color."
 msgstr "Il colore usato è preso dall'opzione %s del tuo profilo, terzo colore."
+
+#: admin/qtx_configuration.php:458 admin/qtx_configuration.php:460
+msgid "Outline border around translatable fields."
+msgstr "Disegna un bordo intorno ai campi traducibili."
+
+#: admin/qtx_configuration.php:454 admin/qtx_configuration.php:456
+msgid "Show a shadow on the left of translatable fields."
+msgstr "Mostra un'ombra sul bordo sinistro dei campi traducibili."
 
 #: admin/qtx_configuration.php:450 admin/qtx_configuration.php:452
 msgid "Draw a border around translatable fields."
@@ -1243,6 +1247,10 @@ msgstr "È la prima volta che usi il plugin %s?"
 #: admin/qtx_activation_hook.php:927 admin/qtx_activation_hook.php:987
 msgid "I have already done it, dismiss this message."
 msgstr "L'ho già fatto, rimuovi questo messaggio."
+
+#: admin/qtx_activation_hook.php:646
+msgid "Read Integration Guide"
+msgstr "Leggi la Guida di Attivazione"
 
 #: admin/qtx_activation_hook.php:641
 msgid "Option \"%s\" for plugin %s has been auto-adjusted after recent changes in the site configuration. It might be a good idea to %sreview the changes%s in the list of configuration files."

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.8.x - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-06-13 17:08:24+0000\n"
+"PO-Revision-Date: 2017-07-30 10:51:58+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -48,7 +48,7 @@ msgstr "Ist es Ihnen auch schon passiert, dass sich ein Link (oder der Text in d
 
 #: wp-admin/about.php:117
 msgid "This feature deserves a parade down the center of town! Rich-text editing capabilities are now native for Text widgets. Add a widget anywhere and format away. Create lists, add emphasis, and quickly and easily insert links. Have fun with your newfound formatting powers, and watch what you can accomplish in a short amount of time."
-msgstr "Diese Funktion verdient eine Parade durch die Stadt! Die Möglichkeit zur visuellen Textbearbeitung ist jetzt im Text-Widget integriert. Fügen Sie irgendwo ein Widget ein und formatieren Sie los. Erstellen Sie Listen, Hervorhebungen und fügen Sie einfach Links ein. Viel Spaß mit Ihren neuen Formatierungskräften. Du werden sehen, was Sie damit in kürzester Zeit verwirklichen können."
+msgstr "Diese Funktion verdient eine Parade durch die Stadt! Die Möglichkeit zur visuellen Textbearbeitung ist jetzt im Text-Widget integriert. Fügen Sie irgendwo ein Widget ein und formatieren Sie los. Erstellen Sie Listen, Hervorhebungen und fügen Sie einfach Links ein. Viel Spaß mit Ihren neuen Formatierungskräften. Sie werden sehen, was Sie damit in kürzester Zeit verwirklichen können."
 
 #: wp-admin/about.php:109
 msgid "A welcome video is a great way to humanize the branding of your website. You can now add any video from the Media Library to a sidebar on your site with the new Video widget. Use this to showcase a welcome video to introduce visitors to your site or promote your latest and greatest content."
@@ -92,7 +92,7 @@ msgstr "JavaScript-API für den Text-Editor"
 
 #: wp-admin/about.php:195
 msgid "Multisite Updates"
-msgstr "Multisite-Neuerungen"
+msgstr "Netzwerk-Neuerungen"
 
 #: wp-admin/about.php:192
 msgid "As fewer and fewer browsers support Silverlight, file formats which require the presence of the Silverlight plugin are being removed from core support. Files will still display as a download link, but will no longer be embedded automatically."
@@ -226,6 +226,10 @@ msgstr "Noch mehr Erfreuliches für Entwickler %s"
 msgid "Sorry, you are not allowed to delete users."
 msgstr "Sie sind leider nicht berechtigt, Benutzer zu löschen."
 
+#: wp-admin/user-new.php:23 wp-admin/user-new.php:117
+msgid "Sorry, you are not allowed to create users."
+msgstr "Sie sind leider nicht berechtigt, diesen Benutzer zu erstellen."
+
 #: wp-admin/customize.php:163
 msgid "The Customizer allows you to preview changes to your site before publishing them. You can navigate to different pages on your site within the preview. Edit shortcuts are shown for some editable elements."
 msgstr "Der Customizer ermöglicht Ihnen eine Vorschau der Änderungen an Ihrer Website vor dem Veröffentlichen. Sie können innerhalb der Vorschau unterschiedliche Seiten Ihrer Website ansteuern. Es werden Buttons neben den editierbaren Elementen angezeigt."
@@ -246,7 +250,7 @@ msgstr "Position im Theme"
 #. translators: 1: user id, 2: user login
 #: wp-admin/users.php:378
 msgid "ID #%1$s: %2$s <strong>Sorry, you are not allowed to remove this user.</strong>"
-msgstr "ID #%1$s: %2$s <strong>Du bist leider nicht berechtigt diesen Benutzer zu entfernen.</strong>"
+msgstr "ID #%1$s: %2$s <strong>Sie sind leider nicht berechtigt diesen Benutzer zu entfernen.</strong>"
 
 #: wp-admin/user-edit.php:47
 msgid "You can select the language you wish to use while using the WordPress administration screen without affecting the language site visitors see."
@@ -466,9 +470,9 @@ msgstr "Die Suche nach installierten Plugins sucht nach Begriffen im Namen, in d
 msgid "Custom Logo"
 msgstr "Individuelles Logo"
 
-#: wp-admin/user-new.php:23 wp-admin/user-new.php:117
-msgid "Sorry, you are not allowed to create users."
-msgstr "Sie sind leider nicht berechtigt, Benutzer zu erstellen."
+#: wp-admin/users.php:317 wp-admin/users.php:348
+msgid "Sorry, you are not allowed to remove users."
+msgstr "Sie sind leider nicht berechtigt, Benutzer zu entfernen."
 
 #: wp-admin/user-new.php:16 wp-admin/user-new.php:56
 msgid "Sorry, you are not allowed to add users to this network."
@@ -480,7 +484,7 @@ msgstr "Bitte bestätigen Sie die Verwendung des potentiell schwachen Passwortes
 
 #: wp-admin/customize.php:33
 msgid "Sorry, you are not allowed to edit this changeset."
-msgstr "Du bist leider nicht berechtigt, diesen Änderungssatz zu bearbeiten."
+msgstr "Sie sind leider nicht berechtigt, diesen Änderungssatz zu bearbeiten."
 
 #: wp-admin/includes/ajax-actions.php:3488 wp-admin/update.php:172
 #: wp-admin/update.php:193
@@ -661,21 +665,17 @@ msgstr "Das wird den aktuellen Editor-Inhalt mit dem Inhalt der letzten gespeich
 msgid "Close media attachment panel"
 msgstr "„Medien hinzufügen“-Bedienfeld schließen"
 
-#: wp-admin/users.php:317 wp-admin/users.php:348
-msgid "Sorry, you are not allowed to remove users."
-msgstr "Sie sind leider nicht berechtigt, Benutzer zu entfernen."
-
 #: wp-admin/includes/ms.php:1096
 msgid "Info"
 msgstr "Info"
 
 #: wp-admin/includes/meta-boxes.php:872
 msgid "Need help? Use the Help tab above the screen title."
-msgstr "Brauchen Sie Hilfe? Benutzen Sie bitte den „Hilfe“-Tab oben am Bildschirm."
+msgstr "Brauchen Sie Hilfe? Benutzen Sie bitte den Tab &#8222;Hilfe&#8220; oben am Bildschirm."
 
 #: wp-admin/includes/menu.php:342 wp-admin/my-sites.php:16
 msgid "Sorry, you are not allowed to access this page."
-msgstr "Sie sind leider nicht berechtigt, auf diese Website zuzugreifen."
+msgstr "Sie sind leider nicht berechtigt, auf diese Seite zuzugreifen."
 
 #: wp-admin/includes/file.php:50
 msgid "Embed Footer Template"
@@ -1197,16 +1197,16 @@ msgstr "Papierkorb"
 msgid "The ssh2 PHP extension is available, however, we require the PHP5 function %s"
 msgstr "Die PHP-Erweiterung ssh2 ist zwar verfügbar, wir benötigen jedoch die PHP5-Funktion %s"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:588
+#: wp-admin/includes/class-wp-comments-list-table.php:593
 msgid "Quick edit this comment inline"
 msgstr "Schnellanpassung dieses Kommentars inline vornehmen"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:584
+#: wp-admin/includes/class-wp-comments-list-table.php:589
 #: wp-admin/includes/dashboard.php:634
 msgid "Edit this comment"
 msgstr "Diesen Kommentar bearbeiten"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:570
+#: wp-admin/includes/class-wp-comments-list-table.php:575
 msgid "Restore this comment from the spam"
 msgstr "Diesen Kommentar aus dem Spamfilter wiederherstellen"
 
@@ -1257,11 +1257,11 @@ msgstr "Bilder sollten mindestens %s breit sein."
 
 #: wp-admin/user-new.php:470
 msgid "Send the new user an email about their account."
-msgstr "Senden Sie dem neuen Benutzer eine E-Mail zu dem Konto."
+msgstr "Der Benutzer soll eine E-Mail zu seinem Konto erhalten."
 
 #: wp-admin/user-new.php:467
 msgid "Send User Notification"
-msgstr "Benutzer-Benachrichtigung senden"
+msgstr "Benutzer benachrichtigen"
 
 #. translators: %s: menu name
 #: wp-admin/nav-menus.php:822
@@ -1716,7 +1716,7 @@ msgstr "Keine ausstehenden Kommentare"
 msgid "Failed to initialize a SFTP subsystem session with the SSH2 Server %s"
 msgstr "Die Initialisierung einer SFTP-Subsystem-Sitzung mit dem SSH2-Server %s ist fehlgeschlagen."
 
-#: wp-admin/includes/class-wp-comments-list-table.php:405
+#: wp-admin/includes/class-wp-comments-list-table.php:410
 msgctxt "column name"
 msgid "Submitted On"
 msgstr "Eingereicht am"
@@ -1872,7 +1872,7 @@ msgstr "Das aktuell verwendete Theme unterstützt nicht das Hochladen eines eige
 
 #. translators: %s: comment link
 #: wp-admin/comment.php:187
-#: wp-admin/includes/class-wp-comments-list-table.php:648
+#: wp-admin/includes/class-wp-comments-list-table.php:653
 msgid "In reply to %s."
 msgstr "Als Antwort auf %s."
 
@@ -1967,7 +1967,7 @@ msgstr "Passwort bestätigen"
 msgid "While you are editing your %1$s file, take a moment to make sure you have all 8 keys and that they are unique. You can generate these using the <a href=\"%2$s\">WordPress.org secret key service</a>."
 msgstr "Während Sie Ihre %1$s Datei bearbeiten, nehmen Sie sich bitte einen Moment Zeit und stellen sicher, dass Sie alle acht Schlüssel haben und diese spezifisch sind. Sie können sie generieren, indem Sie den <a href=\"%2$s\">WordPress.org Secret Key Service</a> nutzen."
 
-#: wp-admin/includes/class-wp-comments-list-table.php:616
+#: wp-admin/includes/class-wp-comments-list-table.php:621
 #: wp-admin/includes/class-wp-list-table.php:523
 #: wp-admin/includes/class-wp-list-table.php:1324
 #: wp-admin/includes/update.php:687
@@ -2209,7 +2209,7 @@ msgstr "<a href=\"https://codex.wordpress.org/Comment_Spam\">Dokumentation zu Ko
 
 #: wp-admin/options-general.php:342
 msgid "<a href=\"https://codex.wordpress.org/Formatting_Date_and_Time\">Documentation on date and time formatting</a>."
-msgstr "<a href=\"https://codex.wordpress.org/Formatting_Date_and_Time\">Dokumentation zur  Formatierung von Datum und Uhrzeit (engl.)</a>"
+msgstr "<a href=\"https://codex.wordpress.org/de:Formatierung_von_Datum_und_Uhrzeit\">Dokumentation zur  Formatierung von Datum und Uhrzeit</a>"
 
 #: wp-admin/update-core.php:183
 msgid "<strong>Important:</strong> before updating, please <a href=\"https://codex.wordpress.org/WordPress_Backups\">back up your database and files</a>. For help with updates, visit the <a href=\"https://codex.wordpress.org/Updating_WordPress\">Updating WordPress</a> Codex page."
@@ -2748,7 +2748,7 @@ msgstr "d.m.Y G:i:s"
 
 #. translators: column name or table row header
 #: wp-admin/comment.php:169
-#: wp-admin/includes/class-wp-comments-list-table.php:402
+#: wp-admin/includes/class-wp-comments-list-table.php:407
 msgid "In Response To"
 msgstr "Als Antwort auf"
 
@@ -2869,7 +2869,7 @@ msgstr "%s wurde abgemeldet."
 msgid "You are now logged out everywhere else."
 msgstr "Sie sind nun von allen anderen Geräten abgemeldet."
 
-#: wp-admin/includes/class-wp-comments-list-table.php:327
+#: wp-admin/includes/class-wp-comments-list-table.php:332
 msgid "Filter by comment type"
 msgstr "Nach Kommentarart filtern"
 
@@ -3153,7 +3153,7 @@ msgstr "Sie können das Originalbild proportional skalieren. Für das beste Erge
 msgid "To crop the image, click on it and drag to make your selection."
 msgstr "Um das Bild zu beschneiden, klicken Sie darauf und ziehen, um die Auswahl zu treffen."
 
-#: wp-admin/includes/class-wp-comments-list-table.php:329
+#: wp-admin/includes/class-wp-comments-list-table.php:334
 msgid "All comment types"
 msgstr "Alle Kommentararten"
 
@@ -4149,7 +4149,7 @@ msgstr "Menüverwaltung"
 
 #: wp-admin/nav-menus.php:536
 msgid "You can assign theme locations to individual menus by <strong>selecting the desired settings</strong> at the bottom of the menu editor. To assign menus to all theme locations at once, <strong>visit the Manage Locations tab</strong> at the top of the screen."
-msgstr "Sie können ein Menü einem Menübereich im Theme zuweisen, indem Sie die <strong>gewünschten Einstellungen unten im Menüeditor auswählen</strong>. Um Menüs allen Bereichen auf einmal zuzuordnen, gehen Sie auf den <strong>&#8222;Positionen verwalten&#8220;-Tab</strong> oben am Bildschirm."
+msgstr "Sie können ein Menü einem Menübereich im Theme zuweisen, indem Sie die <strong>gewünschten Einstellungen unten im Menüeditor auswählen</strong>. Um Menüs allen Bereichen auf einmal zuzuordnen, gehen Sie auf den <strong>Tab &#8222;Positionen verwalten&#8220;</strong> oben am Bildschirm."
 
 #: wp-admin/nav-menus.php:534
 msgid "To edit an existing menu, <strong>choose a menu from the drop down and click Select</strong>"
@@ -4689,7 +4689,7 @@ msgstr "Schlagwörter können selektiv mithilfe des <a href=\"%s\">Schlagwort-zu
 msgid "Select %s"
 msgstr "%s auswählen"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:627
+#: wp-admin/includes/class-wp-comments-list-table.php:632
 msgid "Select comment"
 msgstr "Kommentar auswählen"
 
@@ -4911,7 +4911,7 @@ msgid "%s ago"
 msgstr "vor %s"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:300
-#: wp-admin/includes/class-wp-comments-list-table.php:574
+#: wp-admin/includes/class-wp-comments-list-table.php:579
 #: wp-admin/includes/class-wp-media-list-table.php:144
 #: wp-admin/includes/class-wp-media-list-table.php:715
 #: wp-admin/includes/class-wp-posts-list-table.php:397
@@ -6441,11 +6441,15 @@ msgid ""
 "\n"
 "As a new WordPress user, you should go to <a href=\"%s\">your dashboard</a> to delete this page and create new pages for your content. Have fun!"
 msgstr ""
-"Dies ist ein Beispiel einer statischen Seite. Sie können sie bearbeiten und beispielsweise Infos über Sie oder ihre Website eingeben, damit die Leser wissen, woher Sie kommen und was Sie machen.\n"
+"Dies ist eine Beispiel-Seite. Sie unterscheidet sich von Beiträgen, da sie stets an derselben Stelle bleibt und (bei den meisten Themes) in der Navigation angezeigt wird. Viele Menschen starten mit einem Impressum oder einer &#8222;Über uns&#8220;-Seite, auf der sie sich oder ihr Unternehmen den Besuchern der Website vorstellen. Dort könnte zum Beispiel stehen:\n"
 "\n"
-"Sie können entweder beliebig viele Hauptseiten (wie diese hier) anlegen – oder auch Unterseiten, die sich in der Hierachiestruktur den Hauptseiten unterordnen. Sie können diese alle innerhalb von WordPress ändern und verwalten.\n"
+"<blockquote>Hallo! Tagsüber arbeite ich als Fahrradkurier, nachts bin ich ein aufstrebender Schauspieler und dies hier ist meine Website. Ich lebe in Berlin, habe eine Katze namens Slash, mag Sarah Lesch und ein kühles Bier.</blockquote>\n"
 "\n"
-"Als stolzer Besitzer einer neuen WordPress-Seite sollten Sie jetzt zur Übersichtsseite, dem <a href=\"%s\">Dashboard</a> gehen, diese Seite hier löschen und damit loslegen, eigene Inhalte zu erstellen. Viel Spaß!"
+"...oder sowas wie:\n"
+"\n"
+"<blockquote>Unsere Firma N/A wurde 1971 gegründet und hat seither eine Menge hochqualitativen Dings für die Öffentlichkeit produziert. Ansässig in Paradise City, hat N/A mittlerweile 2718 Mitarbeiter und entwickelt immer wieder großartige Dinge für die ganze Paradise Gemeinschaft.</blockquote>\n"
+"\n"
+"Als neuer WordPress-Nutzer sollten Sie das <a href=\"%s\">Dashboard</a> aufrufen, um diese Seite zu löschen und stattdessen eine neue Seite mit ihren eigenen Inhalten erstellen. Viel Spaß!"
 
 #: wp-admin/user-edit.php:380
 msgid "Super admin privileges cannot be removed because this user has the network admin email."
@@ -6453,7 +6457,7 @@ msgstr "Diesem Benutzer können nicht die Super-Administratoren-Rechte entzogen 
 
 #: wp-admin/includes/class-wp-themes-list-table.php:108
 msgid "You only have one theme installed right now. Live a little! You can choose from over 1,000 free themes in the WordPress Theme Directory at any time: just click on the <a href=\"%s\">Install Themes</a> tab above."
-msgstr "Sie haben derzeit nur ein Theme installiert. Um etwas Abwechslung in Ihren Blog zu bringen, haben Sie jederzeit Zugriff auf über 1.000 kostenlose Themes des Theme-Verzeichnisses von WordPress.org: Klicken Sie einfach auf den Link <a href=\"%s\">Themes installieren</a>."
+msgstr "Sie haben derzeit nur ein Theme installiert. Um etwas Abwechslung in Ihren Blog zu bringen, haben Sie jederzeit Zugriff auf über 1.000 kostenlose Themes des Theme-Verzeichnisses von WordPress.org: Klicken Sie einfach auf den Tab <a href=\"%s\">Themes hinzufügen</a>."
 
 #: wp-admin/maint/repair.php:160
 msgid "One or more database tables are unavailable. To allow WordPress to attempt to repair these tables, press the &#8220;Repair Database&#8221; button. Repairing can take a while, so please be patient."
@@ -7108,12 +7112,12 @@ msgstr "Header-Bild beschneiden"
 msgid "Default Images"
 msgstr "Vorgegebene Bilder"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:578
+#: wp-admin/includes/class-wp-comments-list-table.php:583
 #: wp-admin/includes/dashboard.php:639
 msgid "Delete this comment permanently"
 msgstr "Diesen Kommentar unwiderruflich löschen"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:574
+#: wp-admin/includes/class-wp-comments-list-table.php:579
 msgid "Restore this comment from the Trash"
 msgstr "Diesen Kommentar aus dem Papierkorb wiederherstellen"
 
@@ -7224,7 +7228,7 @@ msgid "You have version %1$s installed. Update to %2$s."
 msgstr "Sie haben Version %1$s installiert. Aktualisiere auf Version %2$s."
 
 #: wp-admin/includes/class-wp-comments-list-table.php:302
-#: wp-admin/includes/class-wp-comments-list-table.php:570
+#: wp-admin/includes/class-wp-comments-list-table.php:575
 msgctxt "comment"
 msgid "Not Spam"
 msgstr "Kein Spam"
@@ -9112,7 +9116,7 @@ msgstr "Sichtbar"
 msgid "Relationship"
 msgstr "Beziehung"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:398
+#: wp-admin/includes/class-wp-comments-list-table.php:403
 #: wp-admin/includes/class-wp-post-comments-list-table.php:28
 msgctxt "column name"
 msgid "Comment"
@@ -9136,7 +9140,7 @@ msgctxt "column name"
 msgid "Title"
 msgstr "Titel"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:588
+#: wp-admin/includes/class-wp-comments-list-table.php:593
 #: wp-admin/includes/class-wp-posts-list-table.php:1253
 #: wp-admin/includes/class-wp-terms-list-table.php:449
 msgid "Quick&nbsp;Edit"
@@ -10064,36 +10068,36 @@ msgstr "[Ausstehend]"
 msgid "From %1$s on %2$s %3$s"
 msgstr "Von %1$s zu %2$s %3$s"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:580
+#: wp-admin/includes/class-wp-comments-list-table.php:585
 #: wp-admin/includes/dashboard.php:641
 msgid "Move this comment to the Trash"
 msgstr "Diesen Kommentar in den Papierkorb legen"
 
 #. translators: mark as spam link
-#: wp-admin/includes/class-wp-comments-list-table.php:568
+#: wp-admin/includes/class-wp-comments-list-table.php:573
 #: wp-admin/includes/dashboard.php:636
 msgctxt "verb"
 msgid "Spam"
 msgstr "Spam"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:568
+#: wp-admin/includes/class-wp-comments-list-table.php:573
 #: wp-admin/includes/dashboard.php:636
 msgid "Mark this comment as spam"
 msgstr "Diesen Kommentar als Spam markieren"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:590
+#: wp-admin/includes/class-wp-comments-list-table.php:595
 #: wp-admin/includes/dashboard.php:635
 msgid "Reply to this comment"
 msgstr "Auf diesen Kommentar antworten"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:558
-#: wp-admin/includes/class-wp-comments-list-table.php:564
+#: wp-admin/includes/class-wp-comments-list-table.php:563
+#: wp-admin/includes/class-wp-comments-list-table.php:569
 #: wp-admin/includes/dashboard.php:633
 msgid "Unapprove this comment"
 msgstr "Kommentar zurückweisen"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:560
-#: wp-admin/includes/class-wp-comments-list-table.php:563
+#: wp-admin/includes/class-wp-comments-list-table.php:565
+#: wp-admin/includes/class-wp-comments-list-table.php:568
 #: wp-admin/includes/dashboard.php:632
 msgid "Approve this comment"
 msgstr "Diesen Kommentar genehmigen"
@@ -10647,24 +10651,24 @@ msgstr "Benutzerdefiniertes Feld aktualisiert."
 msgid "No comments found."
 msgstr "Es wurden keine Kommentare gefunden."
 
-#: wp-admin/includes/class-wp-comments-list-table.php:359
+#: wp-admin/includes/class-wp-comments-list-table.php:364
 #: wp-admin/includes/class-wp-media-list-table.php:181
 #: wp-admin/includes/class-wp-posts-list-table.php:493
 msgid "Empty Trash"
 msgstr "Papierkorb leeren"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:359
+#: wp-admin/includes/class-wp-comments-list-table.php:364
 msgid "Empty Spam"
 msgstr "Spam leeren"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:354
+#: wp-admin/includes/class-wp-comments-list-table.php:359
 #: wp-admin/includes/class-wp-links-list-table.php:115
 #: wp-admin/includes/class-wp-media-list-table.php:177
 #: wp-admin/includes/class-wp-posts-list-table.php:488
 msgid "Filter"
 msgstr "Auswahl einschränken"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:340
+#: wp-admin/includes/class-wp-comments-list-table.php:345
 #: wp-admin/includes/class-wp-posts-list-table.php:1612
 msgid "Pings"
 msgstr "Pings"
@@ -10677,15 +10681,15 @@ msgid "Move to Trash"
 msgstr "In Papierkorb legen"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:295
-#: wp-admin/includes/class-wp-comments-list-table.php:560
-#: wp-admin/includes/class-wp-comments-list-table.php:563
+#: wp-admin/includes/class-wp-comments-list-table.php:565
+#: wp-admin/includes/class-wp-comments-list-table.php:568
 #: wp-admin/includes/dashboard.php:632
 msgid "Approve"
 msgstr "Genehmigen"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:293
-#: wp-admin/includes/class-wp-comments-list-table.php:558
-#: wp-admin/includes/class-wp-comments-list-table.php:564
+#: wp-admin/includes/class-wp-comments-list-table.php:563
+#: wp-admin/includes/class-wp-comments-list-table.php:569
 #: wp-admin/includes/dashboard.php:633
 msgid "Unapprove"
 msgstr "Zurückweisen"

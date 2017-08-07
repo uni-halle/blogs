@@ -1,15 +1,15 @@
-# Translation of WordPress - 4.7.x - Continents & Cities in Chinese (China)
-# This file is distributed under the same license as the WordPress - 4.7.x - Continents & Cities package.
+# Translation of WordPress - 4.8.x - Continents & Cities in Chinese (China)
+# This file is distributed under the same license as the WordPress - 4.8.x - Continents & Cities package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-12-07 21:09:52+0000\n"
+"PO-Revision-Date: 2017-07-23 20:28:54+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: zh_CN\n"
-"Project-Id-Version: WordPress - 4.7.x - Continents & Cities\n"
+"Project-Id-Version: WordPress - 4.8.x - Continents & Cities\n"
 
 #: wp-admin/includes/continents-cities.php:537
 msgid "Pohnpei"
@@ -217,7 +217,7 @@ msgstr "瑙鲁"
 
 #: wp-admin/includes/continents-cities.php:529
 msgid "Midway"
-msgstr "中途"
+msgstr "中途岛"
 
 #: wp-admin/includes/continents-cities.php:528
 msgid "Marquesas"
@@ -285,7 +285,7 @@ msgstr "埃法特岛"
 
 #: wp-admin/includes/continents-cities.php:512
 msgid "Easter"
-msgstr "复活节"
+msgstr "圣诞岛"
 
 #: wp-admin/includes/continents-cities.php:510
 msgid "Chatham"
@@ -721,7 +721,7 @@ msgstr "格林威治标准时间"
 
 #: wp-admin/includes/continents-cities.php:392
 msgid "Etc"
-msgstr "其他"
+msgstr "Etc"
 
 #: wp-admin/includes/continents-cities.php:390
 msgid "Yancowinna"
@@ -745,7 +745,7 @@ msgstr "悉尼"
 
 #: wp-admin/includes/continents-cities.php:385
 msgid "South"
-msgstr "南美洲"
+msgstr "南部"
 
 #: wp-admin/includes/continents-cities.php:384
 msgid "Queensland"
@@ -761,7 +761,7 @@ msgstr "新南威尔士州"
 
 #: wp-admin/includes/continents-cities.php:382
 msgid "North"
-msgstr "北美洲"
+msgstr "北部"
 
 #: wp-admin/includes/continents-cities.php:380
 msgid "Melbourne"

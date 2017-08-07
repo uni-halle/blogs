@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - bbPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-06-15 13:17:34+0000\n"
+"PO-Revision-Date: 2017-07-13 07:59:44+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -43,7 +43,7 @@ msgstr "Keymaster"
 
 #. Author of the plugin/theme
 msgid "The bbPress Community"
-msgstr "Die bbPress Community"
+msgstr "Die bbPress-Community"
 
 #. Plugin Name of the plugin/theme
 msgid "bbPress"
@@ -53,9 +53,9 @@ msgstr "bbPress"
 msgid "bbPress is forum software with a twist from the creators of WordPress."
 msgstr "bbPress ist eine Forensoftware von den Machern von WordPress."
 
-#. #-#-#-#-#  tmp-bbpress.pot (bbPress 2.5.12)  #-#-#-#-#
+#. #-#-#-#-#  bbpress-code.pot (bbPress 2.5.13)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  tmp-bbpress.pot (bbPress 2.5.12)  #-#-#-#-#
+#. #-#-#-#-#  bbpress-code.pot (bbPress 2.5.13)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "https://bbpress.org"
 msgstr "https://bbpress.org"
@@ -305,7 +305,7 @@ msgstr "Profil aktualisieren"
 
 #: templates/default/bbpress/form-user-edit.php:156
 msgid "Grant this user super admin privileges for the Network."
-msgstr "Gewähre diesem Benutzer Super-Admin-Privilegien für das Netzwerk."
+msgstr "Diesem Benutzer Super-Administrator-Rechte für das Netzwerk gewähren."
 
 #: templates/default/bbpress/form-user-edit.php:153
 msgid "Network Role"
@@ -318,7 +318,7 @@ msgstr "Benutzerrolle"
 
 #: templates/default/bbpress/form-user-edit.php:133
 msgid "Your password should be at least ten characters long. Use upper and lower case letters, numbers, and symbols to make it even stronger."
-msgstr "Dein Passwort sollte eine Mindestlänge von zehn Zeichen haben. Verwende Groß-und Kleinbuchstaben, sowie Zahlen und Symbole, um die Passwortstärke zu erhöhen."
+msgstr "Dein Passwort sollte eine Mindestlänge von zehn Zeichen haben. Verwende Groß- und Kleinbuchstaben, sowie Zahlen und Symbole, um die Passwortstärke zu erhöhen."
 
 #: templates/default/bbpress/form-user-edit.php:130
 msgid "Type your new password again."
@@ -334,7 +334,7 @@ msgstr "Neues Passwort"
 
 #: templates/default/bbpress/form-user-edit.php:115
 msgid "There is a pending email address change to <code>%1$s</code>. <a href=\"%2$s\">Cancel</a>"
-msgstr "Es gibt einen anstehenden E-mailadressenwechsel zur Adresse <code>%1$s</code>. <a href=\"%2$s\">Abbrechen</a>"
+msgstr "Es gibt eine anstehende Änderung zur E-Mail-Adresse <code>%1$s</code>. <a href=\"%2$s\">Abbrechen</a>"
 
 #: templates/default/bbpress/form-user-edit.php:90
 #: templates/default/bbpress/form-user-edit.php:93
@@ -406,11 +406,11 @@ msgstr "Dieses Forum ist für neue Themen gesperrt, aber deine Berechtigungen er
 
 #: templates/default/bbpress/form-topic.php:43
 msgid "Create New Topic in &ldquo;%s&rdquo;"
-msgstr "Erstelle neues Thema in &#8222;%s&#8220;"
+msgstr "Neues Thema in &#8222;%s&#8220; erstellen"
 
 #: templates/default/bbpress/form-topic-tag.php:101
 msgid "Are you sure you want to delete the \"%s\" tag? This is permanent and cannot be undone."
-msgstr "Bist du sicher, dass du das \"%s\"-Schlagwort löschen möchtest? Diese Aktion kann nicht rückgängig gemacht werden."
+msgstr "Bist du sicher, dass du das Schlagwort „%s“ löschen möchtest? Diese Aktion kann nicht rückgängig gemacht werden."
 
 #: templates/default/bbpress/form-topic-tag.php:95
 msgid "Any links to this tag will no longer function."
@@ -426,7 +426,7 @@ msgstr "Dies löscht nicht deine Themen. Nur das Schlagwort selbst wird gelösch
 
 #: templates/default/bbpress/form-topic-tag.php:73
 msgid "Are you sure you want to merge the \"%s\" tag into the tag you specified?"
-msgstr "Bist du sicher, dass du das \"%s\" Schlagwort in dieses Schlagwort einfügen willst?"
+msgstr "Bist du sicher, dass du das Schlagwort „%s“ mit diesem Schlagwort zusammenführen willst?"
 
 #: templates/default/bbpress/form-topic-tag.php:68
 msgid "Existing tag:"
@@ -434,7 +434,7 @@ msgstr "Existierendes Schlagwort:"
 
 #: templates/default/bbpress/form-topic-tag.php:62
 msgid "Merging tags together cannot be undone."
-msgstr "Das Vermischen von Schlagwörtern kann nicht rückgängig gemacht werden."
+msgstr "Das Zusammenführen von Schlagwörtern kann nicht rückgängig gemacht werden."
 
 #: templates/default/bbpress/form-topic-tag.php:45
 msgid "Update"
@@ -458,27 +458,27 @@ msgstr "Umbenennen"
 
 #: templates/default/bbpress/form-topic-tag.php:18
 msgid "Manage Tag: \"%s\""
-msgstr "Schlagwort verwalten: \"%s\""
+msgstr "Schlagwort verwalten: „%s“"
 
 #: templates/default/bbpress/form-topic-split.php:85
 msgid "Copy topic tags to the new topic"
-msgstr "Kopiere Schlagwörter zu dem neuen Thema"
+msgstr "Schlagwörter zum neuen Thema kopieren"
 
 #: templates/default/bbpress/form-topic-split.php:80
 msgid "Copy favoriters to the new topic"
-msgstr "Kopiere Favoriten zu dem neuen Thema"
+msgstr "Favoriten zum neuen Thema kopieren"
 
 #: templates/default/bbpress/form-topic-split.php:75
 msgid "Copy subscribers to the new topic"
-msgstr "Kopiere Abonnenten zu dem neuen Thema"
+msgstr "Abonnenten zum neuen Thema kopieren"
 
 #: templates/default/bbpress/form-topic-split.php:42
 msgid "Split: %s"
-msgstr "%s teilen"
+msgstr "%s aufteilen"
 
 #: templates/default/bbpress/form-topic-split.php:37
 msgid "Split Method"
-msgstr "Teilen-Methode"
+msgstr "Art der Aufteilung"
 
 #: templates/default/bbpress/form-topic-split.php:33
 msgid "If you use the existing topic option, replies within both topics will be merged chronologically. The order of the merged replies is based on the time and date they were posted."
@@ -490,7 +490,7 @@ msgstr "Wenn du ein Thema teilst, beginnt die Teilung mit der Antwort, die du au
 
 #: templates/default/bbpress/form-topic-split.php:24
 msgid "Split topic \"%s\""
-msgstr "Thema \"%s\" aufteilen"
+msgstr "Thema „%s“ aufteilen"
 
 #: templates/default/bbpress/form-topic-merge.php:106
 #: templates/default/bbpress/form-topic-split.php:110
@@ -545,7 +545,7 @@ msgstr "Wähle das Thema in das du dieses einfügen willst. Das Ziel-Thema bleib
 
 #: templates/default/bbpress/form-topic-merge.php:24
 msgid "Merge topic \"%s\""
-msgstr "Thema \"%s\" zusammenführen"
+msgstr "Thema „%s“ zusammenführen"
 
 #: templates/default/bbpress/form-search.php:14
 msgid "Search for:"
@@ -638,7 +638,7 @@ msgstr "Du kannst aus dieser Antwort entweder ein neues Thema mit einem neuen Ti
 
 #: templates/default/bbpress/form-reply-move.php:24
 msgid "Move reply \"%s\""
-msgstr "Verschiebe die Antwort \"%s\""
+msgstr "Antwort „%s“ verschieben"
 
 #: templates/default/bbpress/form-protected.php:14
 msgid "Protected"
@@ -681,7 +681,7 @@ msgstr "Du kannst diese <abbr title=\"HyperText Markup Language\">HTML</abbr> Ta
 
 #: templates/default/bbpress/form-forum.php:67
 msgid "Forum Name (Maximum Length: %d):"
-msgstr "Forum-Name (Maximale Länge: %d):"
+msgstr "Name des Forums (maximale Länge: %d):"
 
 #: templates/default/bbpress/form-forum.php:55
 #: templates/default/bbpress/form-reply.php:44
@@ -784,11 +784,11 @@ msgstr "&mdash; Keine Rolle für diese Website &mdash;"
 
 #: includes/users/template.php:1188
 msgid "This user has super admin privileges."
-msgstr "Dieser Benutzer hat Super-Admin-Privilegien."
+msgstr "Dieser Benutzer hat Super-Administrator-Rechte."
 
 #: includes/users/template.php:1188
 msgid "You have super admin privileges."
-msgstr "Du hast Super-Admin-Privilegien."
+msgstr "Du hast Super-Administrator-Rechte."
 
 #: includes/users/template.php:1163
 msgid "User updated."
@@ -1777,11 +1777,11 @@ msgstr "Erstelle ein Diskussionsforum, damit sich alle Mitglieder dieser Gruppe 
 msgid "Group Forum Settings"
 msgstr "Forum-Einstellungen für Gruppen"
 
-#: includes/extend/buddypress/activity.php:565
+#: includes/extend/buddypress/activity.php:566
 msgid "%1$s replied to the topic %2$s in the forum %3$s"
 msgstr "%1$s antwortete zum Thema %2$s im Forum %3$s"
 
-#: includes/extend/buddypress/activity.php:420
+#: includes/extend/buddypress/activity.php:421
 msgid "%1$s started the topic %2$s in the forum %3$s"
 msgstr "%1$s hat das Thema %2$s im Forum %3$s eröffnet"
 
@@ -1807,7 +1807,7 @@ msgstr "Akismet konnte diesen Beitrag (Antwort: %s) nicht überprüfen, wird es 
 
 #: includes/extend/akismet.php:475
 msgid "Akismet cleared this post as not spam"
-msgstr "Akismet hat diesen Beitrag als spamfrei freigegeben"
+msgstr "Akismet hat diesen Beitrag als Nicht-Spam freigegeben"
 
 #: includes/extend/akismet.php:467 includes/extend/akismet.php:482
 msgid "Post status was changed to %s"
@@ -1823,7 +1823,7 @@ msgstr "Keine Antwort"
 
 #: includes/extend/akismet.php:316
 msgid "%1$s reported this %2$s as not spam"
-msgstr "%1$s hat diesen %2$s als kein Spam gemeldet"
+msgstr "%1$s hat diesen %2$s als Nicht-Spam gemeldet"
 
 #: includes/extend/akismet.php:309
 msgid "%1$s reported this %2$s as spam"
@@ -1940,7 +1940,7 @@ msgstr "Themen-Autor anzeigen"
 
 #: includes/common/widgets.php:889 includes/common/widgets.php:1236
 msgid "Show post date:"
-msgstr "Zeige Beitragsdatum:"
+msgstr "Beitragsdatum anzeigen:"
 
 #: includes/common/widgets.php:877
 msgid "Maximum topics to show:"
@@ -2141,7 +2141,7 @@ msgstr "Bearbeiten"
 #: templates/default/extras/taxonomy-topic-tag-edit.php:17
 #: templates/default/extras/taxonomy-topic-tag.php:17
 msgid "Topic Tag: %s"
-msgstr "Thema-Schlagwort: %s"
+msgstr "Themen-Schlagwort: %s"
 
 #: includes/common/template.php:2208
 msgid "(Edit)"
@@ -2163,7 +2163,7 @@ msgstr "Keine Foren verfügbar"
 msgid "No topics available"
 msgstr "Keine Themen verfügbar"
 
-#: includes/common/functions.php:2024
+#: includes/common/functions.php:2026
 msgid "Conditional query tags do not work before the query is run. Before then, they always return false."
 msgstr "Konditionale Abfrage-Schlagwörter funktionieren nicht, bevor die Abfrage läuft. Vorher geben sie immer ein false wieder."
 
@@ -2314,7 +2314,7 @@ msgstr "Ändern"
 
 #: includes/admin/users.php:138 includes/admin/users.php:140
 msgid "Change forum role to&hellip;"
-msgstr "Ändere Foren-Rolle zu&nbsp;&hellip;"
+msgstr "Foren-Rolle ändern in &nbsp;&hellip;"
 
 #: includes/admin/users.php:96 includes/admin/users.php:100
 #: includes/users/template.php:1290
@@ -2328,15 +2328,15 @@ msgstr "Forum-Rolle"
 
 #: includes/admin/topics.php:953
 msgid "Topic draft updated. <a target=\"_blank\" href=\"%s\">Preview topic</a>"
-msgstr "Themenentwurf aktualisieren. <a target=\"_blank\" href=\"%s\">Thema Vorschau</a>"
+msgstr "Themenentwurf aktualisiert. <a target=\"_blank\" href=\"%s\">Vorschau</a>"
 
 #: includes/admin/topics.php:946
 msgid "Topic scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview topic</a>"
-msgstr "Thema geplant für: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Thema Vorschau</a>"
+msgstr "Thema geplant für: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Vorschau</a>"
 
 #: includes/admin/topics.php:943
 msgid "Topic submitted. <a target=\"_blank\" href=\"%s\">Preview topic</a>"
-msgstr "Thema abgeschickt. <a target=\"_blank\" href=\"%s\">Thema Vorschau</a>"
+msgstr "Thema abgeschickt. <a target=\"_blank\" href=\"%s\">Vorschau</a>"
 
 #: includes/admin/topics.php:940
 msgid "Topic saved."
@@ -2365,7 +2365,7 @@ msgstr "Dieses Thema als Spam markieren"
 
 #: includes/admin/topics.php:807
 msgid "Mark the topic as not spam"
-msgstr "Thema als Kein-Spam markieren"
+msgstr "Thema als Nicht-Spam markieren"
 
 #: includes/admin/topics.php:800 includes/topics/template.php:2747
 msgid "(to front)"
@@ -2389,7 +2389,7 @@ msgstr "Dieses Thema oben lösen"
 
 #: includes/admin/topics.php:797
 msgid "Unstick this topic"
-msgstr "Entpinne dieses Thema"
+msgstr "Dieses Thema lösen"
 
 #: includes/admin/topics.php:788
 msgctxt "Open a Topic"
@@ -2398,7 +2398,7 @@ msgstr "Öffnen"
 
 #: includes/admin/topics.php:788
 msgid "Open this topic"
-msgstr "Öffne dieses Thema"
+msgstr "Dieses Thema öffnen"
 
 #: includes/admin/topics.php:786
 msgctxt "Close a Topic"
@@ -2407,7 +2407,7 @@ msgstr "Schließen"
 
 #: includes/admin/topics.php:786
 msgid "Close this topic"
-msgstr "Schließe dieses Thema"
+msgstr "Dieses Thema schließen"
 
 #: includes/admin/topics.php:729 includes/topics/template.php:2064
 msgid "No Replies"
@@ -2424,59 +2424,59 @@ msgstr "Teilnehmer"
 
 #: includes/admin/topics.php:599
 msgid "Topic \"%1$s\" successfully unmarked as spam."
-msgstr "Die Spam-Markierung des Themas \"%1$s\" wurde erfolgreich entfernt."
+msgstr "Die Spam-Markierung des Themas „%1$s“ wurde erfolgreich entfernt."
 
 #: includes/admin/topics.php:599
 msgid "There was a problem unmarking the topic \"%1$s\" as spam."
-msgstr "Es gab ein Problem, die Spam-Markierung des Themas \"%1$s\" zu entfernen."
+msgstr "Es gab ein Problem, die Spam-Markierung des Themas „%1$s“ zu entfernen."
 
 #: includes/admin/topics.php:595
 msgid "Topic \"%1$s\" successfully marked as spam."
-msgstr "Das Thema \"%1$s\" wurde erfolgreich als Spam markiert."
+msgstr "Das Thema „%1$s“ wurde erfolgreich als Spam markiert."
 
 #: includes/admin/topics.php:595
 msgid "There was a problem marking the topic \"%1$s\" as spam."
-msgstr "Es gab ein Problem, das Thema \"%1$s\" als Spam zu markieren."
+msgstr "Es gab ein Problem, das Thema „%1$s“ als Spam zu markieren."
 
 #: includes/admin/topics.php:591
 msgid "Topic \"%1$s\" successfully unsticked."
-msgstr "Fixierung des Themas \"%1$s\" wurde erfolgreich entfernt."
+msgstr "Fixierung des Themas „%1$s“ wurde erfolgreich entfernt."
 
 #: includes/admin/topics.php:591
 msgid "There was a problem unsticking the topic \"%1$s\"."
-msgstr "Es gab ein Problem, das Thema \"%1$s\" oben abzulösen."
+msgstr "Es gab ein Problem, das Thema „%1$s“ oben abzulösen."
 
 #: includes/admin/topics.php:587
 msgid "Topic \"%1$s\" successfully sticked."
-msgstr "Thema \"%1$s\" erfolgreich fixiert."
+msgstr "Thema „%1$s“ erfolgreich oben angeheftet."
 
 #: includes/admin/topics.php:587
 msgid "There was a problem sticking the topic \"%1$s\"."
-msgstr "Es gab ein Problem, das Thema \"%1$s\" oben anzuheften."
+msgstr "Es gab ein Problem, das Thema „%1$s“ oben anzuheften."
 
 #: includes/admin/topics.php:583
 msgid "Topic \"%1$s\" successfully sticked to front."
-msgstr "Thema \"%1$s\" erfolgreich auf der Startseite angepinnt."
+msgstr "Thema „%1$s“ erfolgreich auf der Startseite angepinnt."
 
 #: includes/admin/topics.php:583
 msgid "There was a problem sticking the topic \"%1$s\" to front."
-msgstr "Es gab ein Problem, beim oben Anheften von Thema \"%1$s\" auf die Startseite."
+msgstr "Es gab ein Problem, das Thema „%1$s“ auf der Startseite oben anzuheften."
 
 #: includes/admin/topics.php:579
 msgid "Topic \"%1$s\" successfully closed."
-msgstr "Das Thema \"%1$s\" wurde erfolgreich geschlossen."
+msgstr "Das Thema „%1$s“ wurde erfolgreich geschlossen."
 
 #: includes/admin/topics.php:579
 msgid "There was a problem closing the topic \"%1$s\"."
-msgstr "Es gab ein Problem beim Schließen des Themas \"%1$s\"."
+msgstr "Es gab ein Problem beim Schließen des Themas „%1$s“."
 
 #: includes/admin/topics.php:575
 msgid "Topic \"%1$s\" successfully opened."
-msgstr "Das Thema \"%1$s\" wurde erfolgreich geöffnet."
+msgstr "Das Thema „%1$s“ wurde erfolgreich geöffnet."
 
 #: includes/admin/topics.php:575
 msgid "There was a problem opening the topic \"%1$s\"."
-msgstr "Es gab ein Problem beim Öffnen des Themas \"%1$s\"."
+msgstr "Es gab ein Problem beim Öffnen des Themas „%1$s“."
 
 #: includes/admin/topics.php:485
 msgid "The topic was not found!"
@@ -2544,7 +2544,7 @@ msgstr "<strong>Schließen</strong> markiert das gewählte Thema als &#8222;gesc
 
 #: includes/admin/topics.php:160
 msgid "<strong>Preview</strong> will show you what your draft topic will look like if you publish it. View will take you to your live site to view the topic. Which link is available depends on your topic&#8217;s status."
-msgstr "<strong>Vorschau</strong> zeig Ihnen wie ihr Thema aussehen wird wenn Sie es veröffentlichen. Ihr Thema wird direkt auf Ihrer Seite gezeigt. Welchen Link ihr Thema haben wird hängt von ihrem Themenstatus ab."
+msgstr "<strong>Vorschau</strong> zeigt dir, wie dein Thema aussehen wird, sobald du es veröffentlichst. „Anschauen“ bringt dich auf die Live-Seite, uwo du das Thema anschauen kannst. Welcher Link verfügbar ist, hängt vom Status deines Themas ab."
 
 #: includes/admin/topics.php:159
 msgid "<strong>Spam</strong> removes your topic from this list and places it in the spam queue, from which you can permanently delete it."
@@ -2564,7 +2564,7 @@ msgstr "Fahre mit der Maus über ein Themenfeld, um Verwaltungsmöglichkeiten de
 
 #: includes/admin/topics.php:146
 msgid "You can refine the list to show only topics from a specific month by using the dropdown menus above the topics list. Click the Filter button after making your selection. You also can refine the list by clicking on the topic creator in the topics list."
-msgstr "Sie können die Liste verfeinern um nur Themen von einem bestimmten Monat anzuzeigen, indem Sie das Ausklappmenü oberhalb der Themenliste verwenden. Klicken Sie auf den Filter nachdem Sie Ihre Auswahl getroffen haben. Sie können die Liste auch verfeinern, indem Sie auf den Themenerzeuger in der Themenliste klicken."
+msgstr "Du kannst die Liste verfeinern um nur Themen von einem bestimmten Monat anzuzeigen, indem Du das Ausklappmenü oberhalb der Themenliste verwendest. Klicke auf den Filter, nachdem du deine Auswahl getroffen hast. Du kannst die Liste auch verfeinern, indem du auf den Themenerzeuger in der Themenliste klickst."
 
 #: includes/admin/topics.php:145
 msgid "You can filter the list of topics by topic status using the text links in the upper left to show All, Published, or Trashed topics. The default view is to show all topics."
@@ -2580,7 +2580,7 @@ msgstr "Dieser Bildschirm zeigt die einzelnen Themen deiner Website. Du kannst d
 
 #: includes/admin/tools.php:1370
 msgid "Deleting Roles and Capabilities&hellip; %s"
-msgstr "Lösche Rollen und Fähigkeiten&nbsp;&hellip; %s"
+msgstr "Lösche Rollen und Berechtigungen&nbsp;&hellip; %s"
 
 #: includes/admin/tools.php:1364
 msgid "Deleting Settings&hellip; %s"
@@ -2632,7 +2632,7 @@ msgstr "Dieser Vorgang kann nicht rückgängig gemacht werden."
 
 #: includes/admin/tools.php:1240
 msgid "Are you sure you want to do this?"
-msgstr "Bist Du sicher, dass Du das tun möchtest?"
+msgstr "Bist du sicher, dass du das tun möchtest?"
 
 #: includes/admin/tools.php:1235
 msgid "Note: Resetting without this checked will delete the meta-data necessary to delete these users."
@@ -2640,7 +2640,7 @@ msgstr "Hinweis: Das Zurücksetzen, ohne hier einen Haken zu setzen, wird die Me
 
 #: includes/admin/tools.php:1234
 msgid "This option will delete all previously imported users, and cannot be undone."
-msgstr "Diese Option wird alle vorherigen importierten Nutzer löschen und kann nicht rückgängig gemacht werden."
+msgstr "Diese Option wird alle vorher importierten Nutzer löschen und kann nicht rückgängig gemacht werden."
 
 #: includes/admin/tools.php:1233 includes/admin/tools.php:1243
 msgid "Say it ain't so!"
@@ -2818,15 +2818,15 @@ msgstr "Aktuellen Nutzern des Forums Standard-Rollen zuordnen"
 
 #: includes/admin/tools.php:177
 msgid "Remove trashed forums from user subscriptions"
-msgstr "Entferne gelöschte Foren aus Benutzer-Abonnements"
+msgstr "Gelöschte Foren aus Benutzer-Abonnements entfernen"
 
 #: includes/admin/tools.php:176
 msgid "Remove trashed topics from user subscriptions"
-msgstr "Entferne die in den Papierkorb verschobenen Themen aus den Abonnements des Nutzers"
+msgstr "Die in den Papierkorb verschobenen Themen aus den Abonnements des Nutzers entfernen"
 
 #: includes/admin/tools.php:175
 msgid "Remove trashed topics from user favorites"
-msgstr "Entferne die in den Müll verschobenen Themen aus den Favoriten des Nutzers"
+msgstr "Die in den Müll verschobenen Themen aus den Favoriten des Nutzers entfernen"
 
 #: includes/admin/tools.php:174
 msgid "Count replies for each user"
@@ -2862,7 +2862,7 @@ msgstr "Repariere die Beziehungen der BuddyPress-Unterforen"
 
 #: includes/admin/tools.php:165
 msgid "Recalculate the sticky relationship of each topic"
-msgstr "Berechne die Sticky-Beziehungen jedes Themas neu"
+msgstr "Sticky-Beziehungen jedes Themas neu berechnen"
 
 #: includes/admin/tools.php:164
 msgid "Recalculate last activity in each topic and forum"
@@ -2870,15 +2870,15 @@ msgstr "Aktivitäten in jedem Thema und Forum neu berechnen"
 
 #: includes/admin/tools.php:163
 msgid "Recalculate private and hidden forums"
-msgstr "Berechne private und versteckte Foren neu."
+msgstr "Private und versteckte Foren neu berechnen."
 
 #: includes/admin/tools.php:162
 msgid "Recalculate the parent forum for each post"
-msgstr "Berechne das übergeordnete Forum für jeden Beitrag"
+msgstr "Übergeordnetes Forum für jeden Beitrag neu berechnen"
 
 #: includes/admin/tools.php:161
 msgid "Recalculate the parent topic for each post"
-msgstr "Berechne das übergeordnete Thema für jeden Beitrag neu"
+msgstr "Übergeordnetes Thema für jeden Beitrag neu berechnen"
 
 #: includes/admin/tools.php:61
 msgid "Repair Items"
@@ -2974,15 +2974,15 @@ msgstr "Im Falle einer Titelform-Kollision mit WordPress oder BuddyPress wird ei
 
 #: includes/admin/settings.php:1589
 msgid "\"Single Slugs\" are used as a prefix when viewing an individual forum, topic, reply, user, or view."
-msgstr "\"Einzelne Titelformen\" werden als Präfixe für die Ansicht von individuellen Foren, Themen, Antworten, Benutzer oder Anzeige genutzt."
+msgstr "„Einzelne Titelformen“ werden als Präfixe für die Ansicht von individuellen Foren, Themen, Antworten, Benutzer oder Anzeige genutzt."
 
 #: includes/admin/settings.php:1588
 msgid "\"Archive Slugs\" are used as the \"root\" for your forums and topics. If you combine these values with existing page slugs, bbPress will attempt to output the most correct title and content."
-msgstr "\"Archiv-Titelformen\" werden als Stammverzeichnisse für deine Foren und Themen genutzt. Wenn du diese Werte mit existierenden Seiten-Titelformen kombinierst, wird bbPress versuchen, Titel und Inhalt möglichst korrekt auszugeben."
+msgstr "„Archiv-Titelformen“ werden als Stammverzeichnisse für deine Foren und Themen genutzt. Wenn du diese Werte mit existierenden Seiten-Titelformen kombinierst, wird bbPress versuchen, Titel und Inhalt möglichst korrekt auszugeben."
 
 #: includes/admin/settings.php:1587
 msgid "The Slugs section allows you to control the permalink structure for your forums."
-msgstr "Der \"Titelformen\"-Abschnitt ermöglicht dir die Kontrolle über die Permalink-Struktur für deine Foren."
+msgstr "Der „Titelformen“-Abschnitt ermöglicht dir die Kontrolle über die Permalink-Struktur für deine Foren."
 
 #: includes/admin/settings.php:1586
 msgid "Slugs"
@@ -2994,7 +2994,7 @@ msgstr "Diese sind in zwei separate Gruppen aufgeteilt: eine für das, was in de
 
 #: includes/admin/settings.php:1579
 msgid "This is comparable to the WordPress \"Reading Settings\" page, where you can set the number of posts that should show on blog pages and in feeds."
-msgstr "Das ist vergleichbar mit der WordPress \"Lesen-Einstellungen\"-Seite, wo du die Anzahl der Beiträge, die auf den Blog- bzw. Website-Seiten und in den Feeds angezeigt werden, einstellen kannst."
+msgstr "Das ist vergleichbar mit der WordPress „Lesen-Einstellungen“-Seite, wo du die Anzahl der Beiträge, die auf den Blog- bzw. Website-Seiten und in den Feeds angezeigt werden, einstellen kannst."
 
 #: includes/admin/settings.php:1578
 msgid "Per Page settings allow you to control the number of topics and replies appear on each page."
@@ -3006,7 +3006,7 @@ msgstr "Pro Seite"
 
 #: includes/admin/settings.php:1571
 msgid "You must click the Save Changes button at the bottom of the screen for new settings to take effect."
-msgstr "Du musst auf \"Änderungen speichern\" am Ende der Anzeige klicken, damit die neuen Einstellungen wirksam werden."
+msgstr "Du musst auf „Änderungen speichern“ am Ende der Anzeige klicken, damit die neuen Einstellungen wirksam werden."
 
 #: includes/admin/settings.php:1568
 msgid "Auto-embed will embed the media content from a URL directly into the replies. For example: links to Flickr and YouTube."
@@ -3018,7 +3018,7 @@ msgstr "Der Fancy-Editor bringt den Luxus des visuellen und des HTML-Editors des
 
 #: includes/admin/settings.php:1566
 msgid "\"Anonymous Posting\" allows guest users who do not have accounts on your site to both create topics as well as replies."
-msgstr "\"Anonymes Veröffentlichen\" erlaubt Gästen, die kein Benutzerkonto haben, das Erstellen und Beantworten von Themen."
+msgstr "„Anonymes Veröffentlichen“ erlaubt Gästen, die kein Benutzerkonto haben, das Erstellen und Beantworten von Themen."
 
 #: includes/admin/settings.php:1565
 msgid "Topic-Tags allow users to filter topics between forums. This is enabled by default."
@@ -3034,7 +3034,7 @@ msgstr "Favoriten bieten den Benutzern die Möglichkeit, Themen zu speichern und
 
 #: includes/admin/settings.php:1562
 msgid "\"Throttle time\" is the amount of time required between posts from a single author. The higher the throttle time, the longer a user will need to wait between posting to the forum."
-msgstr "\"Zeit drosseln\" ist die erforderliche Zeitspanne zwischen Beiträgen desselben Autoren. Je höher die Zeitdrosselung ist, umso länger muss der Benutzer warten, bis er einen neuen Beitrag veröffentlichen kann."
+msgstr "„Zeit drosseln“ ist die erforderliche Zeitspanne zwischen Beiträgen desselben Autoren. Je höher die Zeitdrosselung ist, umso länger muss der Benutzer warten, bis er einen neuen Beitrag veröffentlichen kann."
 
 #: includes/admin/settings.php:1561
 msgid "You can choose to lock a post after a certain number of minutes. \"Locking post editing\" will prevent the author from editing some amount of time after saving a post."
@@ -3256,11 +3256,11 @@ msgstr "Themen dürfen Schlagwörter haben"
 
 #: includes/admin/settings.php:581
 msgid "Allow users to subscribe to forums and topics"
-msgstr " Erlaube Benutzern, Foren und Themen zu abonnieren  "
+msgstr "Benutzern erlauben, Foren und Themen zu abonnieren  "
 
 #: includes/admin/settings.php:565
 msgid "Allow users to mark topics as favorites"
-msgstr "Erlaube Benutzern, Themen als Favoriten zu markieren"
+msgstr "Benutzern erlauben, Themen als Favoriten zu markieren"
 
 #: includes/admin/settings.php:549
 msgid "Forum features that can be toggled on and off"
@@ -3300,7 +3300,7 @@ msgstr "Gruppen-Foren aktivieren"
 
 #: includes/admin/settings.php:378
 msgid "Topic Subscriptions"
-msgstr "Thema Abos"
+msgstr "Themen-Abos"
 
 #: includes/admin/settings.php:370 includes/extend/buddypress/loader.php:285
 msgid "Favorite Topics"
@@ -3492,7 +3492,7 @@ msgstr "Papierkorb"
 #: includes/admin/replies.php:749 includes/admin/topics.php:819
 #: includes/replies/template.php:2049 includes/topics/template.php:2630
 msgid "Move this item to the Trash"
-msgstr "Lege dieses Objekt in den Papierkorb"
+msgstr "Dieses Objekt in den Papierkorb legen"
 
 #: includes/admin/replies.php:747 includes/admin/topics.php:817
 #: includes/replies/template.php:2035 includes/topics/template.php:2616
@@ -3556,19 +3556,19 @@ msgstr "Titel"
 
 #: includes/admin/replies.php:536
 msgid "Reply \"%1$s\" successfully unmarked as spam."
-msgstr "Antwort \"%1$s\" erfolgreich als Spam markiert."
+msgstr "Antwort „%1$s“ erfolgreich als Spam markiert."
 
 #: includes/admin/replies.php:536
 msgid "There was a problem unmarking the reply \"%1$s\" as spam."
-msgstr "Es ist ein Problem beim Aufheben der Markierung als Spam von Antwort \"%1$s\" aufgetreten."
+msgstr "Beim Aufheben der Spam-Markierung von Antwort „%1$s“ ist ein Problem aufgetreten."
 
 #: includes/admin/replies.php:532
 msgid "Reply \"%1$s\" successfully marked as spam."
-msgstr "Antwort \"%1$s\" erfolgreich als Spam markiert."
+msgstr "Antwort „%1$s“ erfolgreich als Spam markiert."
 
 #: includes/admin/replies.php:532
 msgid "There was a problem marking the reply \"%1$s\" as spam."
-msgstr "Es ist ein Problem beim Markieren von \"%1$s\" als Spam aufgetreten."
+msgstr "Beim Markieren von ¡%1$s¡ als Spam ist ein Problem aufgetreten."
 
 #: includes/admin/replies.php:464 includes/admin/topics.php:488
 msgid "You do not have the permission to do that!"
@@ -3821,8 +3821,8 @@ msgstr "Nutzer und Moderation"
 #: includes/topics/template.php:3367
 msgid "Topic Tag"
 msgid_plural "Topic Tags"
-msgstr[0] "Thema-Schlagwort"
-msgstr[1] "Thema-Schlagwörter"
+msgstr[0] "Themen-Schlagwort"
+msgstr[1] "Themen-Schlagwörter"
 
 #: includes/admin/metaboxes.php:84 includes/admin/settings.php:325
 #: includes/replies/template.php:49 includes/replies/template.php:1621
@@ -3849,7 +3849,7 @@ msgstr "Diskussion"
 
 #: includes/admin/forums.php:563
 msgid "Forum draft updated. <a target=\"_blank\" href=\"%s\">Preview forum</a>"
-msgstr "Forum Entwurf aktualisiert. <a target=\"_blank\" href=\"%s\">Vorschau Forum</a>"
+msgstr "Foren-Entwurf aktualisiert. <a target=\"_blank\" href=\"%s\">Vorschau</a>"
 
 #. translators: Publish box date format, see http://php.net/date
 #: includes/admin/forums.php:558 includes/admin/replies.php:878
@@ -3859,11 +3859,11 @@ msgstr "d.m.Y @ H:i"
 
 #: includes/admin/forums.php:556
 msgid "Forum scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview forum</a>"
-msgstr "Forum geplant für: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Vorschau Forum</a>"
+msgstr "Forum geplant für: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Vorschau</a>"
 
 #: includes/admin/forums.php:553
 msgid "Forum submitted. <a target=\"_blank\" href=\"%s\">Preview forum</a>"
-msgstr "Forum übermittelt. <a target=\"_blank\" href=\"%s\">Vorschau Forum</a>"
+msgstr "Forum übermittelt. <a target=\"_blank\" href=\"%s\">Vorschau</a>"
 
 #: includes/admin/forums.php:550
 msgid "Forum saved."
@@ -3920,7 +3920,7 @@ msgstr "Ersteller"
 #: includes/admin/forums.php:411 includes/admin/settings.php:230
 #: includes/admin/settings.php:251 includes/admin/topics.php:634
 #: includes/core/theme-compat.php:646
-#: includes/extend/buddypress/activity.php:355
+#: includes/extend/buddypress/activity.php:356
 #: includes/forums/template.php:2665 includes/replies/template.php:47
 #: includes/replies/template.php:48
 #: templates/default/bbpress/content-statistics.php:32
@@ -3933,7 +3933,7 @@ msgstr "Antworten"
 
 #: includes/admin/forums.php:410 includes/admin/settings.php:222
 #: includes/admin/settings.php:243 includes/admin/topics.php:632
-#: includes/extend/buddypress/activity.php:354
+#: includes/extend/buddypress/activity.php:355
 #: includes/forums/template.php:2601 includes/topics/template.php:47
 #: includes/topics/template.php:48
 #: templates/default/bbpress/content-statistics.php:27
@@ -3977,11 +3977,11 @@ msgstr "<strong>Typ</strong> zeigt an ob das Forum eine Kategorie ist oder ein F
 
 #: includes/admin/forums.php:205
 msgid "Select the attributes that your forum should have:"
-msgstr "Wähle die Attribute die dein Forum haben soll:"
+msgstr "Wähle die Attribute, die dein Forum haben soll:"
 
 #: includes/admin/forums.php:203 includes/admin/forums.php:243
 msgid "Forum Attributes"
-msgstr "Forum-Attribute"
+msgstr "Foren-Attribute"
 
 #: includes/admin/forums.php:198
 msgid "<strong>Featured Image</strong> - This allows you to associate an image with your forum without inserting it. This is usually useful only if your theme makes use of the featured image as a forum thumbnail on the home page, a custom header, etc."
@@ -4124,7 +4124,7 @@ msgstr "Berechne übergeordnete reply_to Elemente (%1$s - %2$s)"
 
 #: includes/admin/converter.php:511
 msgid "No reply_to parents to convert"
-msgstr "Keine übergeordnete reply_to Elemente zum umwandeln"
+msgstr "Keine übergeordneten reply_to-Elemente zum Konvertieren vorhanden"
 
 #: includes/admin/converter.php:500
 msgid "Converting replies (%1$s - %2$s)"
@@ -4132,7 +4132,7 @@ msgstr "Konvertiere Antworten (%1$s - %2$s)"
 
 #: includes/admin/converter.php:496
 msgid "No replies to convert"
-msgstr "Keine Antworten zu konvertieren"
+msgstr "Keine Antworten zum Konvertieren vorhanden"
 
 #: includes/admin/converter.php:485
 msgid "Converting topic tags (%1$s - %2$s)"
@@ -4140,7 +4140,7 @@ msgstr "Konvertiere Themen-Schlagwörter (%1$s - %2$s)"
 
 #: includes/admin/converter.php:481
 msgid "No tags to convert"
-msgstr "Keine Schlagwörter zu konvertieren"
+msgstr "Keine Schlagwörter zum Konvertieren vorhanden"
 
 #: includes/admin/converter.php:470
 msgid "Calculating topic super stickies (%1$s - %2$s)"
@@ -4148,7 +4148,7 @@ msgstr "Berechne Super-Stickies (%1$s - %2$s) "
 
 #: includes/admin/converter.php:466
 msgid "No super stickies to stick"
-msgstr "Keine Super-Stickies zum Anheften"
+msgstr "Keine Super-Stickies zum Anheften vorhanden"
 
 #: includes/admin/converter.php:455
 msgid "Calculating topic stickies (%1$s - %2$s)"
@@ -4172,7 +4172,7 @@ msgstr "Berechnung der Foren-Hierarchie (%1$s - %2$s)"
 
 #: includes/admin/converter.php:421
 msgid "No forum parents to convert"
-msgstr "Keine zu konvertierende übergeordneten Foren"
+msgstr "Keine zu konvertierenden übergeordneten Foren vorhanden"
 
 #: includes/admin/converter.php:410
 msgid "Converting forums (%1$s - %2$s)"
@@ -4216,7 +4216,7 @@ msgstr "Konvertierung gestartet"
 
 #: includes/admin/converter.php:134
 msgid "Purge Previous Import"
-msgstr "Bereinige vorherigen Import"
+msgstr "Vorherigen Import verwerfen"
 
 #: includes/admin/converter.php:130
 msgid "Start Over"
@@ -4349,7 +4349,7 @@ msgstr "bbPress ist von einem weltweiten Schwarm eifriger, eifriger Bienen erste
 
 #: includes/admin/admin.php:867
 msgid "Project Leaders"
-msgstr "Projektleiter"
+msgstr "Projektleitung"
 
 #: bbpress.php:581
 msgctxt "post"
@@ -4443,7 +4443,7 @@ msgstr "Foren zurücksetzen"
 
 #: includes/admin/admin.php:219
 msgid "Forum Reset"
-msgstr "Forum zurücksetzen"
+msgstr "Forum zurückgesetzt"
 
 #: includes/admin/admin.php:233 includes/admin/admin.php:234
 #: includes/admin/admin.php:244 includes/admin/admin.php:245
@@ -4498,7 +4498,7 @@ msgstr "Danksagungen"
 
 #: includes/admin/admin.php:789
 msgid "Forum Subscriptions"
-msgstr "Forum-Abonnements"
+msgstr "Foren-Abonnements"
 
 #: includes/admin/admin.php:793
 msgid "Subscribe to Forums"
@@ -4510,7 +4510,7 @@ msgstr "Jetzt können deine Nutzer neue Themen in spezifischen Foren abonnieren.
 
 #: includes/admin/admin.php:798
 msgid "Manage Subscriptions"
-msgstr "Verwalte Abonnements"
+msgstr "Abonnements verwalten"
 
 #: includes/admin/admin.php:799
 msgid "Your users can manage all of their subscriptions in one convenient location."
@@ -4542,7 +4542,7 @@ msgstr "Benutzerrollen und -rechte wurden überarbeitet, aufgeräumt und vereinf
 
 #: includes/admin/admin.php:877
 msgid "Lead Developer"
-msgstr "Leitender Entwickler"
+msgstr "Leitende Entwicklung"
 
 #: includes/admin/admin.php:872
 msgid "Founding Developer"

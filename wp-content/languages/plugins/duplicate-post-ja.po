@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Duplicate Post - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-04-24 15:10:10+0000\n"
+"PO-Revision-Date: 2017-07-11 10:49:32+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,9 +15,17 @@ msgstr ""
 msgid "https://duplicate-post.lopo.it/"
 msgstr "https://duplicate-post.lopo.it/"
 
+#: duplicate-post-options.php:235
+msgid "you probably want this unchecked, unless you have very special requirements"
+msgstr "特別な要件でない限り、チェックしないことをお勧めします"
+
 #: duplicate-post-admin.php:653 duplicate-post-options.php:91
 msgid "Documentation"
 msgstr "ドキュメンテーション"
+
+#: duplicate-post-admin.php:196
+msgid "Help me develop the plugin and provide support by <a href=\"%s\">donating even a small sum</a>."
+msgstr "プラグイン開発をサポートしてください。<a href=\"%s\">少しの寄付</a>でも助かります。"
 
 #: duplicate-post-admin.php:195
 msgid "Duplicate Post is now also compatible with WPML!"
@@ -99,7 +107,7 @@ msgstr "望ましくないユーザーや訪問者に対し、パスワード保
 
 #: duplicate-post-options.php:292
 msgid "Show/hide private taxonomies"
-msgstr "タクソノミーの表示/非表示を切り替える"
+msgstr "タクソノミーの表示 / 非表示を切り替える"
 
 #: duplicate-post-options.php:274
 msgid "Add this number to the original menu order (blank or zero to retain the value)"

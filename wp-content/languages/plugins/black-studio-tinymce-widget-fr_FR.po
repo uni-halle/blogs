@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Black Studio TinyMCE Widget - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-03-03 10:41:04+0000\n"
+"PO-Revision-Date: 2017-08-04 19:34:20+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,12 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: fr\n"
 "Project-Id-Version: Plugins - Black Studio TinyMCE Widget - Stable (latest release)\n"
+
+#. translators: warning message shown when when visual editor is disabled in
+#. current user's profile settings
+#: includes/class-admin.php:454
+msgid "Visual Editor is disabled in your Profile settings. You need to enable it in order to use the Visual Editor widget at its full potential."
+msgstr "L’éditeur visuel est désactivé dans les réglages de votre profil. Vous devez l’activer pour utiliser le widget à son plein potentiel."
 
 #. Author URI of the plugin/theme
 msgid "http://www.blackstudio.it"
@@ -54,42 +60,42 @@ msgid "HTML"
 msgstr "HTML"
 
 #. translators: text used for the icon that shows the plugin links
-#: includes/class-admin.php:364
+#: includes/class-admin.php:368
 msgid "About Black Studio TinyMCE Widget plugin"
 msgstr "À propos de l’extension Black Studio TinyMCE Widget"
 
 #. translators: text used for donation link
-#: includes/class-admin.php:344
+#: includes/class-admin.php:348
 msgid "Donate"
 msgstr "Faire un don"
 
 #. translators: text used for follow on twitter link
-#: includes/class-admin.php:342
+#: includes/class-admin.php:346
 msgid "Follow"
 msgstr "Suivre"
 
 #. translators: text used for reviews link
-#: includes/class-admin.php:340
+#: includes/class-admin.php:344
 msgid "Rate"
 msgstr "Donner un avis"
 
 #. translators: text used for support forum link
-#: includes/class-admin.php:338
+#: includes/class-admin.php:342
 msgid "Support"
 msgstr "Support"
 
 #. translators: text used for support faq link
-#: includes/class-admin.php:336
+#: includes/class-admin.php:340
 msgid "FAQ"
 msgstr "FAQ"
 
 #. translators: text used for plugin home link
-#: includes/class-admin.php:334
+#: includes/class-admin.php:338
 msgid "Home"
 msgstr "Accueil"
 
 #. translators: error message shown when a duplicated widget ID is detected
-#: includes/class-admin.php:246
+#: includes/class-admin.php:250
 msgid "ERROR: Duplicate widget ID detected. To avoid content loss, please create a new widget with the same content and then delete this one."
 msgstr "ERREUR : ID de widget en double détecté. Pour éviter la perte de votre contenu, veuillez créer un nouveau widget avec le même contenu et supprimez celui-ci."
 
@@ -98,12 +104,12 @@ msgstr "ERREUR : ID de widget en double détecté. Pour éviter la perte de vot
 msgid "The Visual Editor widget allows you to insert rich text and media objects in your sidebars"
 msgstr "Le widget « Éditeur Visuel » permet d’insérer du texte riche et des médias dans vos colonnes latérales."
 
-#. #-#-#-#-#  tmp-black-studio-tinymce-widget.pot (Black Studio TinyMCE Widget
-#. 2.3.2)  #-#-#-#-#
+#. #-#-#-#-#  black-studio-tinymce-widget-code.pot (Black Studio TinyMCE Widget
+#. 2.4.2)  #-#-#-#-#
 #. translators: title for the dismissable admin pointer tooltip (same as plugin
 #. name)
-#. #-#-#-#-#  tmp-black-studio-tinymce-widget.pot (Black Studio TinyMCE Widget
-#. 2.3.2)  #-#-#-#-#
+#. #-#-#-#-#  black-studio-tinymce-widget-code.pot (Black Studio TinyMCE Widget
+#. 2.4.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: includes/class-admin-pointer.php:165
 msgid "Black Studio TinyMCE Widget"

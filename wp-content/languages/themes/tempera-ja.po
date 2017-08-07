@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Tempera package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-06-29 11:13:20+0000\n"
+"PO-Revision-Date: 2017-07-30 22:30:00+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,7 +17,7 @@ msgstr "Tempera"
 
 #: admin/settings.php:381
 msgid "Slider Shortcode"
-msgstr "スライダー・ショートコード"
+msgstr "スライダーのショートコード"
 
 #: admin/customizer.php:102
 msgid "%1$s Theme by %2$s"
@@ -62,7 +62,7 @@ msgstr[0] "%1$s件のコメント"
 
 #: includes/theme-comments.php:93
 msgid "Leave a comment"
-msgstr "コメントする"
+msgstr "コメントをする"
 
 #: searchform.php:11
 msgid "Search for:"
@@ -125,7 +125,7 @@ msgstr "404 エラー"
 
 #: includes/theme-functions.php:262
 msgid "Articles posted by"
-msgstr "著者別アーカイブ:"
+msgstr "記事投稿者: "
 
 #: includes/theme-functions.php:257
 msgid "Posts tagged"
@@ -137,7 +137,7 @@ msgstr "検索結果 "
 
 #: includes/theme-functions.php:194
 msgid "Archive by category"
-msgstr "カテゴリ別アーカイブ"
+msgstr "カテゴリー別アーカイブ"
 
 #. translators: 1: plugin name, 2: action number 3: total number of actions.
 #: includes/tgm.php:3575
@@ -306,7 +306,7 @@ msgstr "更新が推奨されています"
 
 #: includes/tgm.php:2385
 msgid "Requires Update"
-msgstr "更新が必要です"
+msgstr "要更新"
 
 #: includes/tgm.php:2382
 msgid "Required Update not Available"
@@ -351,7 +351,7 @@ msgstr "と"
 
 #: includes/tgm.php:992
 msgid "The remote plugin package consists of more than one file, but the files are not packaged in a folder."
-msgstr "リモートプラグインパッケージは複数のファイルで構成されていますが、ファイルは1つのフォルダ内にパッケージされていません。"
+msgstr "リモートプラグインパッケージは複数のファイルで構成されていますが、ファイルは1つのフォルダー内にパッケージされていません。"
 
 #: includes/tgm.php:989 includes/tgm.php:992
 msgid "Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines."
@@ -359,7 +359,7 @@ msgstr "プラグイン開発者に連絡し、WordPress のガイドライン�
 
 #: includes/tgm.php:989
 msgid "The remote plugin package does not contain a folder with the desired slug and renaming did not work."
-msgstr "リモートプラグインパッケージには、指定されたスラッグのフォルダがないため、名前の変更ができませんでした。"
+msgstr "リモートプラグインパッケージには、指定されたスラッグのフォルダーがないため、名前の変更ができませんでした。"
 
 #: includes/tgm.php:441 includes/tgm.php:882 includes/tgm.php:2588
 #: includes/tgm.php:3635
@@ -399,16 +399,16 @@ msgstr "操作を実行しませんでした。プラグイン %1$s はすでに
 
 #: includes/tgm.php:443 includes/tgm.php:3007
 msgid "The following plugin was activated successfully:"
-msgstr "以下のプラグインを有効化しました:"
+msgstr "以下のプラグインを有効化しました: "
 
 #: includes/tgm.php:430
 msgid "Begin updating plugin"
 msgid_plural "Begin updating plugins"
-msgstr[0] "プラグインの更新を開始する"
+msgstr[0] "プラグインの更新を開始"
 
 #: includes/tgm.php:383
 msgid "Install Plugins"
-msgstr "プラグインのインストール"
+msgstr "プラグインをインストール"
 
 #: includes/tgm.php:382
 msgid "Install Required Plugins"
@@ -465,16 +465,16 @@ msgstr[0] "必須プラグインが現在無効です: %1$s。"
 #: includes/tgm.php:35
 msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
 msgid_plural "Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed."
-msgstr[0] "申し訳ありませんが　あなたの権限では、%s  プラグインのインストールをすることが出来ません。サイト管理者に連絡を取り、助言を求めてください"
+msgstr[0] "%sプラグインをインストールする適切な権限がありません。プラグインをインストールするには、サイトの管理者にお問い合わせください。"
 
 #: includes/tgm.php:32 includes/tgm.php:388
 msgid "Something went wrong with the plugin API."
-msgstr "Plugin API で問題が発生しました。"
+msgstr "プラグイン API で問題が発生しました。"
 
 #. translators: %s: plugin name.
 #: includes/tgm.php:31 includes/tgm.php:385
 msgid "Installing Plugin: %s"
-msgstr "インストールしているプラグイン: %s"
+msgstr "プラグインのインストール中: %s"
 
 #: includes/tgm.php:30
 msgid " Plugins"
@@ -707,7 +707,7 @@ msgstr "名前"
 
 #: includes/theme-comments.php:154
 msgid "Comments are closed."
-msgstr "コメントは停止中です。"
+msgstr "コメントは受け付けていません。"
 
 #: includes/theme-comments.php:126
 msgid "Newer Comments"
@@ -827,7 +827,7 @@ msgstr "前の画像"
 #: content/content-video.php:24 content/content.php:37 content/content.php:53
 #: single.php:27 templates/template-page-with-intro.php:17
 msgid "Pages:"
-msgstr "ページ: "
+msgstr "ページ:"
 
 #: attachment.php:86
 msgid "Continue reading"
@@ -893,7 +893,7 @@ msgstr "古いバージョンの Internet Explorer との互換性を保つた�
 
 #: admin/settings.php:1588
 msgid "Insert your custom Javascript code here. (Google Analytics and any other forms of Analytic software)."
-msgstr "カスタムJavaScriptを入力してください。（Googleアナリティクスやその他の解析ソフトなど。）"
+msgstr "カスタム JavaScript を入力してください。（Google アナリティクスやその他の解析ソフトなど。）"
 
 #: admin/settings.php:1581
 msgid "Insert your custom CSS here. Any CSS declarations made here will overwrite Tempera's (even the custom options specified right here in the Tempera Settings page). <br /> Your custom CSS will be preserved when updating the theme."
@@ -1025,7 +1025,7 @@ msgstr "メインページでの抜粋。「標準」フォーマットにのみ
 
 #: admin/settings.php:1287 admin/settings.php:1302 admin/settings.php:1318
 msgid "Full Post"
-msgstr "全ての投稿"
+msgstr "すべての投稿"
 
 #: admin/settings.php:1287 admin/settings.php:1302 admin/settings.php:1318
 msgid "Excerpt"
@@ -1122,7 +1122,7 @@ msgstr "コンテンツエリア（投稿、ページなど）の中の箇条書
 #: admin/settings.php:1105 admin/settings.php:1122 admin/settings.php:1137
 #: admin/settings.php:1236 admin/settings.php:1251 admin/settings.php:1267
 msgid "Show"
-msgstr "表示する"
+msgstr "表示"
 
 #: admin/settings.php:1098
 msgid "The border style for your images. Only images inserted in your posts and pages will be affected. "
@@ -1268,7 +1268,7 @@ msgstr "サイドバーウィジェットリンク"
 
 #: admin/settings.php:944
 msgid "Sidebar Widgets:"
-msgstr "サイドバーウィジェット："
+msgstr "サイドバーウィジェット: "
 
 #: admin/settings.php:943
 msgid "General Links Hover"
@@ -1457,7 +1457,7 @@ msgstr "一般テキスト"
 #: admin/settings.php:844 admin/settings.php:867 admin/settings.php:892
 #: admin/settings.php:921 admin/settings.php:933
 msgid "Text:"
-msgstr "テキスト:"
+msgstr "テキスト: "
 
 #: admin/settings.php:843
 msgid "Footer Background"
@@ -1498,11 +1498,11 @@ msgstr "段落間の間隔を選択します。"
 
 #: admin/settings.php:809
 msgid "The space between <i>letters</i>. Leave 'Default' for normal settings (size value will be as set in the CSS)."
-msgstr "<i>文字</i>の間隔。通常はデフォルトを選択してください。（CSSで設定した値が使われます。）"
+msgstr "<i>文字</i>の間隔。通常はデフォルトを選択してください。（CSS で設定した値が使われます。）"
 
 #: admin/settings.php:799
 msgid "The space between <i>words</i>. Leave 'Default' for normal settings (size value will be as set in the CSS)."
-msgstr "<i>単語</i>の間隔。通常はデフォルトを選択してください。（CSSで設定した値が使われます。）"
+msgstr "<i>単語</i>の間隔。通常はデフォルトを選択してください。（CSS で設定した値が使われます。）"
 
 #: admin/settings.php:789
 msgid "Text line height. The height between 2 rows of text."
@@ -1542,23 +1542,25 @@ msgstr "デフォルト"
 
 #: admin/settings.php:747
 msgid "Select the font family and size or insert the Google Font name you want your headings to have (h1 - h6 tags will be affected). Leave 'General Font' and the general font values you selected will be used."
-msgstr "見出し（h1～h6タグ）に使いたいフォントファミリとサイズ、またはGoogleフォント名を選択してください。「既定のフォント」にしておくと「既定のフォント」で選択したものを使用します。"
+msgstr "見出し（h1～h6タグ）に使いたいフォントファミリとサイズ、または Google フォント名を選択してください。「既定のフォント」にしておくと「既定のフォント」で選択したものを使用します。"
 
 #: admin/settings.php:726
 msgid "Select the font family and size or insert the Google Font name you want your main menu to use. Leave 'General Font' and the general font values you selected will be used."
-msgstr "メインメニューで使いたいフォントファミリとサイズ、またはGoogleフォント名を選択してください。「既定のフォント」にしておくと「既定のフォント」で選択したものを使用します。"
+msgstr "メインメニューで使いたいフォントファミリとサイズ、または Google フォント名を選択してください。「既定のフォント」にしておくと「既定のフォント」で選択したものを使用します。"
 
 #: admin/settings.php:708
 msgid "Select the font family and size or insert the Google Font name you want your site title and tagline to use. Leave 'General Font' and the general font values you selected will be used."
-msgstr "サイトタイトルおよびタグラインで使いたいフォントファミリとサイズ、またはGoogleフォント名を選択してください。「既定のフォント」にしておくと「既定のフォント」で選択したものを使用します。"
+msgstr ""
+"サイトタイトルおよびタグラインで使いたいフォントファミリとサイズ、または\n"
+" Google フォント名を選択してください。「既定のフォント」にしておくと「既定のフォント」で選択したものを使用します。"
 
 #: admin/settings.php:690
 msgid "Select the font family and size or insert the Google Font name you want your widget titles to have. Leave 'General Font' and the general font values you selected will be used."
-msgstr "ウィジェットタイトルで使いたいフォントファミリとサイズ、またはGoogleフォント名を選択してください。「既定のフォント」にしておくと「既定のフォント」で選択したものを使用します。"
+msgstr "ウィジェットタイトルで使いたいフォントファミリとサイズ、または Google フォント名を選択してください。「既定のフォント」にしておくと「既定のフォント」で選択したものを使用します。"
 
 #: admin/settings.php:671
 msgid "Select the font family and size or insert the Google Font name you want for your titles. It will affect post titles and page titles. Leave 'General Font' and the general font values you selected will be used."
-msgstr "タイトルで使いたいフォントファミリとサイズ、またはGoogleフォント名を選択してください。この設定はすべての投稿タイトルとページタイトルに適用されます。「既定のフォント」にしておくと「既定のフォント」で選択したものを使用します。"
+msgstr "タイトルで使いたいフォントファミリとサイズ、または Google フォント名を選択してください。この設定はすべての投稿タイトルとページタイトルに適用されます。「既定のフォント」にしておくと「既定のフォント」で選択したものを使用します。"
 
 #: admin/settings.php:652
 msgid "Select the general font family and size or insert the Google Font name you'll use in your blog. This will affect all text except the one controlled by the options below. "
@@ -1626,19 +1628,19 @@ msgstr "コラム画像のサイズ。幅はサイト全体の幅によって自
 
 #: admin/settings.php:574
 msgid "Width: "
-msgstr "幅: "
+msgstr "幅:"
 
 #: admin/settings.php:573
 msgid "Height: "
-msgstr "高さ: "
+msgstr "高さ:"
 
 #: admin/settings.php:572
 msgid "Image Size:"
-msgstr "画像サイズ: "
+msgstr "画像サイズ:"
 
 #: admin/settings.php:562
 msgid "Columns per row:"
-msgstr "1行あたりのコラム数: "
+msgstr "1行あたりのコラム数："
 
 #: admin/settings.php:560
 msgid "How to display your Presentation Page Columns."
@@ -1658,7 +1660,7 @@ msgstr "アニメーション表示"
 
 #: admin/settings.php:550
 msgid "Column Display:"
-msgstr "コラムの表示: "
+msgstr "コラムの表示:"
 
 #: admin/settings.php:521
 msgid "Load your custom Widgets as columns. Go to <a>Appearance >> Widgets</a> and create your custom columns using the Columns widget. You can use as many as you want."
@@ -1670,11 +1672,11 @@ msgstr "固定表示に設定された投稿だけをコラムに読み込みま
 
 #: admin/settings.php:508
 msgid "Random posts from the category you choose will be loaded into the columns."
-msgstr "選択したカテゴリ内の投稿をコラムにランダムに読み込みます。"
+msgstr "選択したカテゴリー内の投稿をコラムにランダムに読み込みます。"
 
 #: admin/settings.php:504
 msgid "Latest posts from the category you choose will be loaded in the columns."
-msgstr "選択したカテゴリ内の最新の投稿をコラムに読み込みます。"
+msgstr "選択したカテゴリー内の最新の投稿をコラムに読み込みます。"
 
 #: admin/settings.php:500
 msgid "Random posts will be loaded into the columns."
@@ -1822,7 +1824,7 @@ msgstr "スライダーの矢印: "
 
 #: admin/settings.php:294
 msgid "Your slider navigation type. Shown under the slider."
-msgstr "スライダのナビゲーションタイプ。スライダの下部に表示されます。"
+msgstr "スライダーのナビゲーションタイプ。スライダの下部に表示されます。"
 
 #: admin/settings.php:286
 msgid "None"
@@ -1934,7 +1936,7 @@ msgstr "アニメーション: "
 
 #: admin/settings.php:261
 msgid "The dimensions of your slider. Make sure your images are of the same size."
-msgstr "スライダの解像度。画像と同じサイズを設定してください。"
+msgstr "スライダーの解像度。画像と同じサイズを設定してください。"
 
 #: admin/settings.php:260
 msgid "height"
@@ -1994,11 +1996,11 @@ msgstr "60%"
 
 #: admin/settings.php:189
 msgid "Limitations: It has to be an image. It should be max 64x64 pixels in dimensions. Recommended file extensions .ico and .png. <br> <strong>Note that some browsers do not display the changed favicon instantly.</strong>"
-msgstr "制限事項：設定できるのは解像度が64x64ピクセルの画像のみです。推奨ファイル拡張子は .ico および .png です。<br><strong>ブラウザによっては変更したfaviconをすぐには表示できないものがあります。<strong>"
+msgstr "制限事項: 設定できるのは解像度が64x64ピクセルの画像のみです。推奨ファイル拡張子は .ico および .png です。<br><strong>ブラウザによっては変更したfaviconをすぐには表示できないものがあります。</strong>"
 
 #: admin/settings.php:180
 msgid "Select the top and left spacing for the header content. Use it to better position your site title and description or custom logo inside the header. "
-msgstr "ヘッダ内容の上と左のマージンを設定してください。サイトタイトルやカスタムロゴのヘッダ内での位置を調整するのに使用します。"
+msgstr "ヘッダー内容の上と左のマージンを設定してください。サイトタイトルやカスタムロゴのヘッダー内での位置を調整するのに使用します。"
 
 #: admin/settings.php:179
 msgid "left"
@@ -2014,7 +2016,7 @@ msgstr "画像を選択 / アップロード"
 
 #: admin/settings.php:172
 msgid "Custom Logo upload. The logo will appear over the header image if you have used one."
-msgstr "カスタムロゴをアップロードします。ヘッダ画像を使用している場合、ログはヘッダ画像の上に表示されます。"
+msgstr "カスタムロゴをアップロードします。ヘッダー画像を使用している場合、ログはヘッダー画像の上に表示されます。"
 
 #: admin/settings.php:164
 msgid "Choose what to display inside your header area."
@@ -2130,39 +2132,39 @@ msgstr "1カラム（サイドバーなし）"
 msgid "or Google font"
 msgstr "または Google フォント"
 
-#: admin/main.php:357
+#: admin/main.php:367
 msgid "Reset Tempera Settings to Defaults?"
 msgstr "Tempera の設定を初期状態に戻しますか ?"
 
-#: admin/main.php:346
+#: admin/main.php:355
 msgid "Tempera Latest News"
 msgstr "Tempera の最新ニュース"
 
-#: admin/main.php:338
+#: admin/main.php:347
 msgid "A collection of preset color schemes to use as the starting point for your site. Just load one up and see your blog in a different light."
 msgstr "デフォルトで用意されているカラースキームの中から、サイトで使いたいものを選択してください。読み込んでブログの雰囲気が変わるのをお楽しみください。"
 
-#: admin/main.php:337
+#: admin/main.php:346
 msgid "Color Schemes"
 msgstr "配色"
 
-#: admin/main.php:332
+#: admin/main.php:341
 msgid "Without the import, the export would just be a fool's exercise. Make sure you have the exported file ready and see you after the mouse click."
 msgstr "インポートのためにエクスポートがあるのです。エクスポートしたファイルを用意してクリックしてください。"
 
-#: admin/main.php:331
+#: admin/main.php:340
 msgid "Import Theme options"
 msgstr "テーマ設定のインポート"
 
-#: admin/main.php:326
+#: admin/main.php:335
 msgid "It's that easy: a mouse click away - the ability to export your Tempera settings and save them on your computer. Feeling safer? You should!"
 msgstr "マウスをクリックするだけ。それでTemperaの設定はコンピュータ上に保存されます。これで安心！"
 
-#: admin/main.php:325
+#: admin/main.php:334
 msgid "Export Theme options"
 msgstr "テーマ設定をエクスポート"
 
-#: admin/main.php:320
+#: admin/main.php:329
 msgid "Import/Export Settings"
 msgstr "インポート / エクスポート設定"
 
@@ -2300,7 +2302,7 @@ msgstr "テーブルを隠す"
 
 #: admin/main.php:178
 msgid "Category Titles"
-msgstr "カテゴリタイトル"
+msgstr "カテゴリータイトル"
 
 #: admin/main.php:177
 msgid "Page Titles"
@@ -2497,7 +2499,7 @@ msgstr "レスポンシブ対応"
 
 #: admin/main.php:113
 msgid "Content / Sidebar Width"
-msgstr "コンテンツ/サイドバー幅"
+msgstr "コンテンツ / サイドバー幅"
 
 #: admin/main.php:112
 msgid "Main Layout"
@@ -2561,15 +2563,15 @@ msgstr "新しいアイテムはありません。"
 
 #: admin/admin-functions.php:243
 msgid "Load Color Scheme"
-msgstr "カラースキームの読み込み"
+msgstr "配色の読み込み"
 
 #: admin/admin-functions.php:219
 msgid "Select one of the preset color schemes and press the Load button.<br> <b> CAUTION! </b> When loading a color scheme, the Tempera theme settings under Text and Color Settings will be overriden. All other settings will remain intact.<br> <u>SUGGESTION:</u> It's always better to export your current theme settings before loading a color scheme."
-msgstr "内蔵のカラースキームを選択して読み込みボタンを押してください。<br><b>【警告】</b>カラースキームを読み込むと、Temperaテーマ設定の中のテキスト設定およびカラー設定はすべて上書きされます。それ以外の設定には影響ありません。<br><u>【推奨】</u> カラースキームを読み込む前に現在の設定をエクスポートしておくことをお薦めします。"
+msgstr "内蔵のカラースキームを選択して読み込みボタンを押してください。<br><b>【警告】</b>カラースキームを読み込むと、Tempera テーマ設定の中のテキスト設定およびカラー設定はすべて上書きされます。それ以外の設定には影響ありません。<br><u>【推奨】</u> カラースキームを読み込む前に現在の設定をエクスポートしておくことをお薦めします。"
 
 #: admin/admin-functions.php:214
 msgid "Are you sure you want to load a new color scheme? \\nAll current saved settings under Text and Color Settings will be lost."
-msgstr "本当に新しいカラースキームを読み込みますか？\\nテキスト設定およびカラー設定にある現在の設定はすべて上書きされます。"
+msgstr "本当に新しいカラースキームを読み込みますか ? \\nテキスト設定およびカラー設定にある現在の設定はすべて上書きされます。"
 
 #: admin/admin-functions.php:205
 msgid "ERROR: You are not authorised to perform that operation"
@@ -2577,7 +2579,7 @@ msgstr "エラー: この操作を実行する権限がありません。"
 
 #: admin/admin-functions.php:199
 msgid "Oops! The file is empty or there was no file. This error could also be caused by uploads being disabled in your php.ini or by post_max_size being defined as smaller than upload_max_filesize in php.ini."
-msgstr "ファイルの中身がないかファイルが存在しません。このエラーはphp.iniでアップロードが無効に設定されている場合やpost_max_sizeがupload_max_filesizeより小さい値に設定されている場合にも出ることがあります。"
+msgstr "ファイルの中身がないかファイルが存在しません。このエラーは php.ini でアップロードが無効に設定されている場合や post_max_size が upload_max_filesize より小さい値に設定されている場合にも出ることがあります。"
 
 #: admin/admin-functions.php:190
 msgid "The uploaded file is not supported. Make sure the file was exported from the Tempera page and that it is a text file."
@@ -2589,7 +2591,9 @@ msgstr "アップロードされたファイルを読むことができません
 
 #: admin/admin-functions.php:178
 msgid "The uploaded file does not contain valid Tempera options. Make sure the file is exported from the Tempera Options page."
-msgstr "アップロードされたファイルには正しいTempera設定が含まれていません。Tempera設定ページからエクスポートされたファイルを使用してください。"
+msgstr ""
+"アップロードされたファイルには正しい Tempera 設定が含まれていません。Tempera\n"
+" 設定ページからエクスポートされたファイルを使用してください。"
 
 #: admin/admin-functions.php:177 admin/admin-functions.php:183
 #: admin/admin-functions.php:189
@@ -2618,7 +2622,7 @@ msgstr "コンピュータ上のファイルを選択してください："
 
 #: admin/admin-functions.php:94
 msgid "Hi! This is where you import the  Tempera settings.<i> Please remember that this is still an experimental feature.</i>"
-msgstr "ここでTemperaの設定をインポートできます。<i>この機能はまだ試験運用中です。</i>"
+msgstr "ここで Tempera の設定をインポートできます。<i>この機能はまだ試験運用中です。</i>"
 
 #: admin/admin-functions.php:92
 msgid "Import Tempera Theme Options"

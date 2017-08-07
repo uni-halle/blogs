@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - TinyMCE Advanced - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-01-29 16:24:01+0000\n"
+"PO-Revision-Date: 2017-08-05 16:16:31+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,10 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: de\n"
 "Project-Id-Version: Plugins - TinyMCE Advanced - Stable (latest release)\n"
+
+#: tadv_admin.php:333
+msgid "Replace the size setting available for fonts with: %s."
+msgstr "Ersetze die für Schriften verfügbare Größeneinstellung mit: %s."
 
 #: tadv_admin.php:380
 msgid "To use this option, add editor-style.css to your theme or a child theme. Enabling this option will also load that stylesheet in the editor."
@@ -61,7 +65,7 @@ msgstr "Erstelle CSS-Klassen Menü"
 
 #: tadv_admin.php:332
 msgid "Font sizes"
-msgstr "Schriftgröße"
+msgstr "Schriftgrößen"
 
 #: tadv_admin.php:327
 msgid "Open the TinyMCE link dialog when using the link button on the toolbar or the link menu item."

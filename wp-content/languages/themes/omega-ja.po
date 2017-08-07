@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Omega package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-05-17 02:00:10+0000\n"
+"PO-Revision-Date: 2017-07-02 05:25:10+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -55,7 +55,7 @@ msgstr "最初の投稿をする準備ができましたか ?  <a href=\"%1$s\">
 
 #: partials/no-results.php:11
 msgid "Nothing Found"
-msgstr "見つかりません"
+msgstr "見つかりませんでした"
 
 #: partials/entry-footer.php:3
 msgid "Tagged: %s"
@@ -71,7 +71,7 @@ msgstr "編集"
 
 #: partials/comments-loop.php:2
 msgid "One Comment"
-msgstr "コメント"
+msgstr "1件のコメント"
 
 #: partials/comments-loop-nav.php:5
 msgid "Next &rarr;"
@@ -87,7 +87,7 @@ msgstr "&larr; 前へ"
 
 #: partials/comments-loop-error.php:4
 msgid "Comments are closed."
-msgstr "コメントは停止中です。"
+msgstr "コメントは受け付けていません。"
 
 #: partials/comments-loop-error.php:2
 msgid "Comments are closed, but <a href=\"%s\" title=\"Trackback URL for this post\">trackbacks</a> and pingbacks are open."
@@ -238,11 +238,11 @@ msgstr "作者別: %s"
 
 #: lib/functions/hooks.php:275
 msgid "Search Results for: %s"
-msgstr "検索結果: %s"
+msgstr "「%s」の検索結果"
 
 #: partials/entry.php:33
 msgid "Pages:"
-msgstr "ページ:"
+msgstr "ページ: "
 
 #: lib/functions/hooks.php:135 lib/functions/hooks.php:137
 msgid " WordPress Theme by "
@@ -385,21 +385,21 @@ msgstr[0] "インストール済みプラグインを有効化"
 #: lib/extensions/class-tgm-plugin-activation.php:3652
 msgid "Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated."
 msgid_plural "Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated."
-msgstr[0] "申し訳ありませんが　あなたの権限では、%s  プラグインのアップデートをすることが出来ません。サイト管理者に連絡を取り、助言を求めてください"
+msgstr[0] "%sプラグインを更新する適切な権限がありません。プラグインを更新するには、サイトの管理者にお問い合わせください。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:3650
 msgid "Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated."
 msgid_plural "Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated."
-msgstr[0] "申し訳ありませんが　あなたの権限では、%s  プラグインのアクティブ設定をすることが出来ません。サイト管理者に連絡を取り、助言を求めてください"
+msgstr[0] "%sプラグインを有効化する適切な権限がありません。プラグインを有効化する方法については、このサイトの管理者にお問い合わせください。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:3647
 msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
 msgid_plural "Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed."
-msgstr[0] "申し訳ありませんが　あなたの権限では、%s  プラグインのインストールをすることが出来ません。サイト管理者に連絡を取り、助言を求めてください"
+msgstr[0] "%sプラグインをインストールする適切な権限がありません。プラグインをインストールするには、サイトの管理者にお問い合わせください。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:3380
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
-msgstr "プラグインをインストールしています %1$s (%2$d/%3$d)"
+msgstr "プラグインをインストール中 %1$s (%2$d/%3$d)"
 
 #: lib/extensions/class-tgm-plugin-activation.php:3379
 msgid "All installations have been completed."
@@ -415,7 +415,7 @@ msgstr "更新プロセスを開始しています。サーバーによっては
 
 #: lib/extensions/class-tgm-plugin-activation.php:3374
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
-msgstr "プラグインをインストール、有効化しています %1$s (%2$d/%3$d)"
+msgstr "プラグインをインストール、有効化中 %1$s (%2$d/%3$d)"
 
 #: lib/extensions/class-tgm-plugin-activation.php:3373
 msgid "All installations and activations have been completed."
@@ -449,7 +449,7 @@ msgstr "<strong>%2$s</strong>%1$s のインストール中にエラーが発生�
 
 #: lib/extensions/class-tgm-plugin-activation.php:3364
 msgid "Updating Plugin %1$s (%2$d/%3$d)"
-msgstr "プラグインの更新: %1$s (%2$d/%3$d)"
+msgstr "プラグインの更新中 %1$s (%2$d/%3$d)"
 
 #: lib/extensions/class-tgm-plugin-activation.php:3030
 msgid "Plugin activation failed."
@@ -473,7 +473,7 @@ msgstr "現時点でインストールできるプラグインはありません
 
 #: lib/extensions/class-tgm-plugin-activation.php:2647
 msgid "No plugins were selected to be updated. No action taken."
-msgstr "アップデートするプラグインが選択されていません。何も実行しませんでした。"
+msgstr "更新するプラグインが選択されていません。何も実行しませんでした。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2645
 msgid "No plugins were selected to be installed. No action taken."
@@ -508,7 +508,7 @@ msgstr "%2$s を更新"
 #: lib/extensions/class-tgm-plugin-activation.php:2493
 msgctxt "%2$s = plugin name in screen reader markup"
 msgid "Install %2$s"
-msgstr "インストール %2$s"
+msgstr "%2$s をインストール"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2445
 msgid "Status"
@@ -524,7 +524,7 @@ msgstr "タイプ"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2439
 msgid "Source"
-msgstr "取得方法"
+msgstr "ソース"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2438
 msgid "Plugin"
@@ -540,11 +540,11 @@ msgstr "利用可能なバージョン:"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2389
 msgid "Minimum required version:"
-msgstr "最低要求バージョン:"
+msgstr "最低要求バージョン: "
 
 #: lib/extensions/class-tgm-plugin-activation.php:2381
 msgid "Installed version:"
-msgstr "インストールしたバージョン:"
+msgstr "インストールしたバージョン: "
 
 #: lib/extensions/class-tgm-plugin-activation.php:2373
 msgctxt "as in: \"version nr unknown\""
@@ -599,7 +599,7 @@ msgstr "停止中"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2211
 msgid "Not Installed"
-msgstr "インストールされていません"
+msgstr "未インストール"
 
 #: lib/extensions/class-tgm-plugin-activation.php:2194
 msgid "Pre-Packaged"
@@ -634,16 +634,16 @@ msgstr "と"
 
 #: lib/extensions/class-tgm-plugin-activation.php:940
 msgid "The remote plugin package consists of more than one file, but the files are not packaged in a folder."
-msgstr "リモートプラグインパッケージは複数のファイルで構成されていますが、ファイルは1つのフォルダ内にパッケージされていません。"
+msgstr "リモートプラグインパッケージは複数のファイルで構成されていますが、ファイルは1つのフォルダー内にパッケージされていません。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:937
 #: lib/extensions/class-tgm-plugin-activation.php:940
 msgid "Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines."
-msgstr "プラグイン開発者に連絡し、WordPress のガイドラインに従ってプラグインをパッケージ化するように依頼してください。"
+msgstr "プラグイン開発者に連絡し、WordPress のガイドラインに沿ったプラグインのパッケージ化を依頼してください。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:937
 msgid "The remote plugin package does not contain a folder with the desired slug and renaming did not work."
-msgstr "リモートプラグインパッケージには、指定されたスラッグのフォルダがないため、名前の変更ができませんでした。"
+msgstr "リモートプラグインパッケージには、指定されたスラッグのフォルダーがないため、名前の変更ができませんでした。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:830
 #: lib/extensions/class-tgm-plugin-activation.php:3440
@@ -710,7 +710,7 @@ msgstr[0] "プラグインの有効化を開始"
 #: lib/extensions/class-tgm-plugin-activation.php:387
 msgid "Begin updating plugin"
 msgid_plural "Begin updating plugins"
-msgstr[0] "プラグインの更新を開始する"
+msgstr[0] "プラグインの更新を開始"
 
 #: lib/extensions/class-tgm-plugin-activation.php:382
 #: lib/extensions/class-tgm-plugin-activation.php:3653
@@ -738,7 +738,7 @@ msgstr[0] "必須プラグインが現在無効です: %1$s。"
 #: lib/extensions/class-tgm-plugin-activation.php:362
 msgid "Sorry, but you do not have the correct permissions to update the %1$s plugin."
 msgid_plural "Sorry, but you do not have the correct permissions to update the %1$s plugins."
-msgstr[0] "%1$s プラグインをインストールするための適切な権限がありません。"
+msgstr[0] "%1$s プラグインを更新する権限がありません。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:357
 msgid "There is an update available for: %1$s."
@@ -749,7 +749,7 @@ msgstr[0] "プラグインの更新が利用可能です (%1$s) 。"
 #: lib/extensions/class-tgm-plugin-activation.php:3651
 msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
 msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
-msgstr[0] "%1$s プラグインは、このテーマとの互換性を最大限に確保するために、最新バージョンにアップデートする必要があります"
+msgstr[0] "%1$s プラグインは、このテーマとの互換性を完全にするために最新バージョンへの更新が必要です。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:347
 msgid "Sorry, but you do not have the correct permissions to install the %1$s plugin."
@@ -771,12 +771,12 @@ msgstr[0] "このテーマは、以下のプラグインの利用が必要です
 #: lib/extensions/class-tgm-plugin-activation.php:336
 #: lib/extensions/class-tgm-plugin-activation.php:3644
 msgid "Something went wrong with the plugin API."
-msgstr "Plugin API で問題が発生しました。"
+msgstr "プラグイン API で問題が発生しました。"
 
 #: lib/extensions/class-tgm-plugin-activation.php:335
 #: lib/extensions/class-tgm-plugin-activation.php:3643
 msgid "Installing Plugin: %s"
-msgstr "インストールしているプラグイン: %s"
+msgstr "プラグインをインストール中: %s"
 
 #: lib/extensions/class-tgm-plugin-activation.php:334
 #: lib/extensions/class-tgm-plugin-activation.php:3642
@@ -786,7 +786,7 @@ msgstr "プラグインのインストール"
 #: lib/extensions/class-tgm-plugin-activation.php:333
 #: lib/extensions/class-tgm-plugin-activation.php:3641
 msgid "Install Required Plugins"
-msgstr "必要なプラグインをインストールする"
+msgstr "必要なプラグインのインストール"
 
 #. Translators: Media dimensions - 1 is width and 2 is height.
 #: lib/functions/template-media.php:94

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Catch Box package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-06-16 11:36:27+0000\n"
+"PO-Revision-Date: 2017-07-10 05:25:13+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -42,11 +42,11 @@ msgstr "モバイルメニュー設定"
 
 #: functions.php:639
 msgid "collapse child menu"
-msgstr "子メニューをたたむ"
+msgstr "サブメニューを閉じる"
 
 #: functions.php:638
 msgid "expand child menu"
-msgstr "子メニューの展開"
+msgstr "サブメニューを展開"
 
 #: inc/customizer/upgrade-button/class-customize.php:77
 msgid "Upgrade Now"
@@ -514,7 +514,7 @@ msgstr "テーマの説明"
 msgid "Support"
 msgstr "サポート"
 
-#. #-#-#-#-#  catch-box.pot (Catch Box 4.7)  #-#-#-#-#
+#. #-#-#-#-#  catch-box.pot (Catch Box 4.7.1)  #-#-#-#-#
 #. Author of the plugin/theme
 #: inc/default-options.php:237
 msgid "Catch Themes"
@@ -536,7 +536,7 @@ msgstr "全文を表示"
 msgid "Show excerpt"
 msgstr "抜粋を表示"
 
-#. #-#-#-#-#  catch-box.pot (Catch Box 4.7)  #-#-#-#-#
+#. #-#-#-#-#  catch-box.pot (Catch Box 4.7.1)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: inc/default-options.php:97
 msgid "One-column, no sidebar"

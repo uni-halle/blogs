@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.8.x - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-06-15 07:29:14+0000\n"
+"PO-Revision-Date: 2017-08-04 08:40:32+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,39 +26,39 @@ msgctxt "start of week"
 msgid "1"
 msgstr "1"
 
-#: wp-admin/about.php:196
+#: wp-admin/about.php:218
 msgid "New capabilities have been introduced to 4.8 with an eye towards removing calls to <code>is_super_admin()</code>. Additionally, new hooks and tweaks to more granularly control site and user counts per network have been added."
 msgstr "Alla 4.8 sono state aggiunte nuove capacità con un occhio rivolto alla rimozione delle chiamate a <code>is_super_admin()</code>. Inoltre, sono stati aggiunti nuovi hook e ritocchi per avere un controllo più granulare per il sito e conteggio utenti per il network."
 
-#: wp-admin/about.php:151
+#: wp-admin/about.php:173
 msgid "Being part of the community can help you improve your WordPress skills and network with people you wouldn&#8217;t otherwise meet. Now you can easily find your local events just by logging in to your dashboard and looking at the new Events and News dashboard widget."
 msgstr "Essere parte della community può contribuire a migliorare le tue competenze e a stabilire nuove relazioni con persone che diversamente non incontreresti. Ora puoi trovare facilmente gli eventi organizzati vicino a te, semplicemente entrando nella tua bacheca e dando un'occhiata al nuovo widget Eventi e News."
 
-#: wp-admin/about.php:149
+#: wp-admin/about.php:171
 msgid "This is quickly becoming one of our favorite features. While you are in the dashboard (because you&#8217;re running updates and writing posts, right?) all upcoming WordCamps and WordPress Meetups &mdash; local to you &mdash; will be displayed."
 msgstr "Questa nuova funzionalità è una delle nostre preferite. Mentre sei nella bacheca per gestire il tuo sito, ora potrai vedere anche tutti i WordCamp e i WordPress Meetup organizzati vicino a te!"
 
-#: wp-admin/about.php:147
+#: wp-admin/about.php:169
 msgid "Did you know that WordPress has a thriving offline community with groups meeting regularly in more than 400 cities around the world? WordPress now draws your attention to the events that help you continue improving your WordPress skills, meet friends, and, of course, publish!"
 msgstr "Lo sai che WordPress ha una community fantastica che si riunisce regolarmente in più di 400 città del mondo? WordPress ora mette in evidenza gli eventi che ti consentono di migliorare le tue abilità con WordPress, incontrare gli amici e, naturalmente, pubblicare!"
 
-#: wp-admin/about.php:126
+#: wp-admin/about.php:148
 msgid "Have you ever tried updating a link, or the text around a link, and found you can&#8217;t seem to edit it correctly? When you edit the text after the link, your new text also ends up linked. Or you edit the text in the link, but your text ends up outside of it. This can be frustrating! With link boundaries, a great new feature, the process is streamlined and your links will work well. You’ll be happier. We promise."
 msgstr "Hai mai provato ad aggiornare un link o il testo collegato ad un link e di avere la sensazione di non riuscire a modificarli correttamente? Cerchi di aggiungere una parola dopo un link ed il nuovo testo appare come parte del link? Oppure provi ad aggiungere più parole ad un link ma queste finiscono fuori dal link stesso? È frustrante! Questa nuova caratteristica rende più lineare questo procedimento e l'inserimento dei link funzionerà meglio. Ti piacerà. Promesso."
 
-#: wp-admin/about.php:117
+#: wp-admin/about.php:139
 msgid "This feature deserves a parade down the center of town! Rich-text editing capabilities are now native for Text widgets. Add a widget anywhere and format away. Create lists, add emphasis, and quickly and easily insert links. Have fun with your newfound formatting powers, and watch what you can accomplish in a short amount of time."
 msgstr "Questa funzionalità merita l'organizzazione di una parata trionfale nella via principale della città! La possibilità di scrivere un testo utilizzando la formattazione è ora disponibile per il widget Testo. Aggiungi il widget dove vuoi e formatta il testo come preferisci. Crea liste, sottolinea ed enfatizza con il grassetto o il corsivo e inserisci link. Divertiti a usare la nuova funzione di formattazione e guarda i risultati che puoi ottenere in poco tempo."
 
-#: wp-admin/about.php:109
+#: wp-admin/about.php:131
 msgid "A welcome video is a great way to humanize the branding of your website. You can now add any video from the Media Library to a sidebar on your site with the new Video widget. Use this to showcase a welcome video to introduce visitors to your site or promote your latest and greatest content."
 msgstr "Un video di benvenuto è un ottimo modo per rendere più accogliente il tuo sito. Ora puoi aggiungere qualsiasi video dalla tua Libreria dei media nella barra laterale, usando il nuovo widget Video. Usa questa opzione per mostrare un video di benvenuto e introdurre i visitatori al tuo sito o per promuovere i tuoi migliori e più recenti contenuti."
 
-#: wp-admin/about.php:105
+#: wp-admin/about.php:127
 msgid "Adding an image to a widget is now a simple task that is achievable for any WordPress user without needing to know code. Simply insert your image right within the widget settings. Try adding something like a headshot or a photo of your latest weekend adventure &mdash; and see it appear automatically."
 msgstr "Aggiungere una immagine ad un widget è ora una operazione alla portata di ogni utente WordPress, senza bisogno di saper programmare. Basta inserire l'immagine direttamente dalla impostazioni del widget. Prova ad aggiungere una foto e la vedrai apparire automaticamente."
 
-#: wp-admin/about.php:50
+#: wp-admin/about.php:72
 msgid "Though some updates seem minor, they&#8217;ve been built by hundreds of contributors with <em>you</em> in mind. Get ready for new features you&#8217;ll welcome like an old friend: link improvements, <em>three</em> new media widgets covering images, audio, and video, an updated text widget that supports visual editing, and an upgraded news section in your dashboard which brings in nearby and upcoming WordPress events."
 msgstr "Anche se sembrano minori, gli aggiornamenti introdotti sono stati sviluppati <em>pensando a te</em>. Ecco le nuove caratteristiche di cui non potrai più fare a meno: la gestione dei link è stata migliorata, sono stati aggiunti tre nuovi widget media per immagini, audio e video, c'è un aggiornamento al widget di testo che ora supporta l'editor visuale e, infine, è stata aggiornata la sezione novità della bacheca che ora segnala gli eventi WordPress in programma vicino a te."
 
@@ -66,59 +66,59 @@ msgstr "Anche se sembrano minori, gli aggiornamenti introdotti sono stati svilup
 msgid "Thank you for updating to the latest version! WordPress %s adds more ways for you to express yourself and represent your brand."
 msgstr "Grazie per l'aggiornamento! WordPress %s aggiunge nuovi strumenti per esprimere al meglio te stesso e la tua attività."
 
-#: wp-admin/about.php:204
+#: wp-admin/about.php:226
 msgid "The introduction of a new base media widget REST API schema to 4.8 opens up possibilities for even more media widgets (like galleries or playlists) in the future. The three new media widgets are powered by a shared base class that covers most of the interactions with the media modal. That class also makes it easier to create new media widgets and paves the way for more to come."
 msgstr "L'introduzione nella 4.8 di un nuovo schema REST API per il widget base per i media, apre la possibilità in futuro di avere molti altri widget media (come ad esempio per le gallerie di foto o per le playlist). I tre nuovi widget media sono gestiti da una classe condivisa che copre la maggior parte delle interazioni coi media. Questa classe permette una facile creazione di nuovi widget media e apre la strada per un futuro."
 
-#: wp-admin/about.php:203
+#: wp-admin/about.php:225
 msgid "Media Widgets API"
 msgstr "API per i widget multimediali"
 
-#: wp-admin/about.php:208
+#: wp-admin/about.php:230
 msgid "Rejoice! New responsive breakpoints have been added to the customizer sidebar to make it wider on high-resolution screens. Customizer controls should use percentage-based widths instead of pixels."
 msgstr "Rallegrati! Nuovi breakpoint responsive sono stati aggiunti alla barra laterale in Personalizza per renderla più ampia su schermi ad alta risoluzione. I controlli di Personalizza dovrebbero utilizzare larghezze basate sulla percentuali invece che sui pixel."
 
-#: wp-admin/about.php:207
+#: wp-admin/about.php:229
 msgid "Customizer Width Variable"
 msgstr "Larghezza variabile di Personalizza"
 
-#: wp-admin/about.php:200
+#: wp-admin/about.php:222
 msgid "With the addition of TinyMCE to the text widget in 4.8 comes a new JavaScript API for instantiating the editor after page load. This can be used to add an editor instance to any text area, and customize it with buttons and functions. Great for plugin authors!"
 msgstr "Con l'aggiunta alla 4.8 di TinyMCE al widget di testo arriva anche una nuova API JavaScript per istanziare l'editor dopo il caricamento della pagina. Questo può essere usato per aggiungere un editor a qualsiasi area di testo e personalizzarlo con pulsanti e funzioni."
 
-#: wp-admin/about.php:199
+#: wp-admin/about.php:221
 msgid "Text-Editor JavaScript API"
 msgstr "Javascript API per l'editor di testo"
 
-#: wp-admin/about.php:195
+#: wp-admin/about.php:217
 msgid "Multisite Updates"
 msgstr "Aggiornamenti multisito"
 
-#: wp-admin/about.php:192
+#: wp-admin/about.php:214
 msgid "As fewer and fewer browsers support Silverlight, file formats which require the presence of the Silverlight plugin are being removed from core support. Files will still display as a download link, but will no longer be embedded automatically."
 msgstr "Poiché sempre meno browser supportano Silverlight, i formati di file che richiedono la presenza del plugin Silverlight sono stati rimossi dal codice. I file verranno ancora visualizzati come link di download ma non verranno più incorporati automaticamente."
 
-#: wp-admin/about.php:191
+#: wp-admin/about.php:213
 msgid "Removal of Core Support for WMV and WMA Files"
 msgstr "Rimozione del supporto del core a WMV e ai file WMA"
 
-#: wp-admin/about.php:188
+#: wp-admin/about.php:210
 msgid "New CSS rules mean extraneous content (like &ldquo;Add New&rdquo; links) no longer need to be included in admin-area headings. These panel headings improve the experience for people using assistive technologies."
 msgstr "Nuove regole CSS non rendono più necessario includere codice estraneo (come i link &ldquo;Aggiungi nuovo&rdquo;) nell'area della testata dell'amministrazione. Ciò migliora l'accessibilità da parte di chi utilizza tecnologie assistive."
 
-#: wp-admin/about.php:187
+#: wp-admin/about.php:209
 msgid "More Accessible Admin Panel Headings"
 msgstr "Intestazioni del pannello di amministrazione più accessibili"
 
-#: wp-admin/about.php:56
+#: wp-admin/about.php:78
 msgid "Exciting Widget Updates"
 msgstr "Grandi novità per i widget"
 
-#: wp-admin/about.php:49
+#: wp-admin/about.php:71
 msgid "WordPress 4.8 adds some great new features. Gear up for a more intuitive WordPress!"
 msgstr "WordPress 4.8 aggiunge alcune nuove fantastiche funzionalità &mdash; preparati per un WordPress più intuitivo!"
 
-#: wp-admin/about.php:48
+#: wp-admin/about.php:70
 msgid "An Update with You in Mind"
 msgstr "Lo abbiamo aggiornato pensando a te"
 
@@ -127,19 +127,19 @@ msgstr "Lo abbiamo aggiornato pensando a te"
 msgid "There aren&#8217;t any events scheduled near you at the moment. Would you like to <a href=\"%s\">organize one</a>?"
 msgstr "In questo momento non ci sono eventi programmati vicino a te. Ti piacerebbe <a href=\"%s\">organizzarne uno</a>? "
 
-#: wp-admin/about.php:145
+#: wp-admin/about.php:167
 msgid "Nearby WordPress Events"
 msgstr "Eventi di WordPress vicino a te"
 
-#: wp-admin/about.php:116
+#: wp-admin/about.php:138
 msgid "Rich Text Widget"
 msgstr "Widget Testo"
 
-#: wp-admin/about.php:113
+#: wp-admin/about.php:135
 msgid "Are you a podcaster, musician, or avid blogger? Adding a widget with your audio file has never been easier. Upload your audio file to the Media Library, go to the widget settings, select your file, and you&#8217;re ready for listeners. This would be a easy way to add a more personal welcome message, too!"
 msgstr "Sei un podcaster, un musicista o un blogger appassionato? Aggiungere un widget con i tuoi file audio non è mai stato così semplice. Carica il tuo file audio nella libreria media, vai nelle impostazioni del widget, seleziona il tuo file ed è tutto. Questo è anche un ottimo metodo per aggiungere un messaggio di benvenuto  più personale!"
 
-#: wp-admin/about.php:125
+#: wp-admin/about.php:147
 msgid "Link Boundaries"
 msgstr "Link"
 
@@ -218,7 +218,7 @@ msgid "Assign a parent term to create a hierarchy. The term Jazz, for example, w
 msgstr "Per creare una gerarchia assegna un termine genitore. Ad esempio il termine Jazz potrebbe essere genitore di Bebop e Big Band."
 
 #. translators: %s: smiling face with smiling eyes emoji
-#: wp-admin/about.php:180
+#: wp-admin/about.php:202
 msgid "Even More Developer Happiness %s"
 msgstr "Sviluppatori ancora più felici %s"
 
@@ -1197,16 +1197,16 @@ msgstr "Cestino"
 msgid "The ssh2 PHP extension is available, however, we require the PHP5 function %s"
 msgstr "L'estensione ssh2 di PHP è disponibile, comunque, è richiesta la funzione %s di PHP5"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:588
+#: wp-admin/includes/class-wp-comments-list-table.php:593
 msgid "Quick edit this comment inline"
 msgstr "Modifica veloce in linea del commento "
 
-#: wp-admin/includes/class-wp-comments-list-table.php:584
+#: wp-admin/includes/class-wp-comments-list-table.php:589
 #: wp-admin/includes/dashboard.php:634
 msgid "Edit this comment"
 msgstr "Modifica questo commento"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:570
+#: wp-admin/includes/class-wp-comments-list-table.php:575
 msgid "Restore this comment from the spam"
 msgstr "Ripristina il commento dallo spam"
 
@@ -1275,7 +1275,7 @@ msgid "Welcome to %s. This is your first post. Edit or delete it, then start blo
 msgstr "Benvenuto in %s. Questo è il tuo primo articolo. Modificalo o eliminalo, poi inizia a scrivere il tuo blog!"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:242
+#: wp-admin/about.php:264
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "La <strong>versione %s</strong> corregge un problema di sicurezza."
 
@@ -1292,15 +1292,15 @@ msgstr "Puoi cambiare la tua immagine profilo su <a href=\"%s\">Gravatar</a>."
 msgid "Profile Picture"
 msgstr "Immagine profilo"
 
-#: wp-admin/about.php:239
+#: wp-admin/about.php:261
 msgid "Maintenance and Security Releases"
 msgstr "Versioni di manutenzione e sicurezza"
 
-#: wp-admin/about.php:236
+#: wp-admin/about.php:258
 msgid "Security Releases"
 msgstr "Versioni di sicurezza"
 
-#: wp-admin/about.php:233
+#: wp-admin/about.php:255
 msgid "Maintenance Releases"
 msgstr "Versioni di manutenzione"
 
@@ -1716,7 +1716,7 @@ msgstr "Nessun commento in attesa"
 msgid "Failed to initialize a SFTP subsystem session with the SSH2 Server %s"
 msgstr "Inizializzazione di una sessione subsystem SFTP con il server SSH2 %s non riuscita"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:405
+#: wp-admin/includes/class-wp-comments-list-table.php:410
 msgctxt "column name"
 msgid "Submitted On"
 msgstr "Inviato il"
@@ -1872,7 +1872,7 @@ msgstr "Il tema attuale non prevede il caricamento di un immagine personalizzata
 
 #. translators: %s: comment link
 #: wp-admin/comment.php:187
-#: wp-admin/includes/class-wp-comments-list-table.php:648
+#: wp-admin/includes/class-wp-comments-list-table.php:653
 msgid "In reply to %s."
 msgstr "In risposta a %s."
 
@@ -1967,7 +1967,7 @@ msgstr "Conferma password"
 msgid "While you are editing your %1$s file, take a moment to make sure you have all 8 keys and that they are unique. You can generate these using the <a href=\"%2$s\">WordPress.org secret key service</a>."
 msgstr "Mentre stai modificando il file %1$s, cogli l'occasione per verificare che di avere tutte le 8 chiavi e che queste siano univoche. Puoi generarle utilizzando il servizio <a href=\"%2$s\">Secret Key Generator di WordPress.org</a>"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:616
+#: wp-admin/includes/class-wp-comments-list-table.php:621
 #: wp-admin/includes/class-wp-list-table.php:523
 #: wp-admin/includes/class-wp-list-table.php:1324
 #: wp-admin/includes/update.php:687
@@ -2755,7 +2755,7 @@ msgstr "d/m/Y g:i:s"
 
 #. translators: column name or table row header
 #: wp-admin/comment.php:169
-#: wp-admin/includes/class-wp-comments-list-table.php:402
+#: wp-admin/includes/class-wp-comments-list-table.php:407
 msgid "In Response To"
 msgstr "In risposta a"
 
@@ -2876,7 +2876,7 @@ msgstr "%s è stato disconnesso."
 msgid "You are now logged out everywhere else."
 msgstr "Ora sei scollegato dappertutto."
 
-#: wp-admin/includes/class-wp-comments-list-table.php:327
+#: wp-admin/includes/class-wp-comments-list-table.php:332
 msgid "Filter by comment type"
 msgstr "Filtra per tipo di commento"
 
@@ -3158,7 +3158,7 @@ msgstr "Puoi scalare proporzionalmente l&#8217;immagine originale. Per un miglio
 msgid "To crop the image, click on it and drag to make your selection."
 msgstr "Per ritagliare l&#8217;immagine, clicca e trascina il mouse per effettuare una selezione."
 
-#: wp-admin/includes/class-wp-comments-list-table.php:329
+#: wp-admin/includes/class-wp-comments-list-table.php:334
 msgid "All comment types"
 msgstr "Tutti i tipi di commento"
 
@@ -4698,7 +4698,7 @@ msgstr "I tag possono venir selettivamente convertiti in categorie utilizzando i
 msgid "Select %s"
 msgstr "Seleziona %s"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:627
+#: wp-admin/includes/class-wp-comments-list-table.php:632
 msgid "Select comment"
 msgstr "Seleziona un commento"
 
@@ -4920,7 +4920,7 @@ msgid "%s ago"
 msgstr "%s fa"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:300
-#: wp-admin/includes/class-wp-comments-list-table.php:574
+#: wp-admin/includes/class-wp-comments-list-table.php:579
 #: wp-admin/includes/class-wp-media-list-table.php:144
 #: wp-admin/includes/class-wp-media-list-table.php:715
 #: wp-admin/includes/class-wp-posts-list-table.php:397
@@ -5389,7 +5389,7 @@ msgid "Contributing Developers"
 msgstr "Sviluppatori"
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:247
+#: wp-admin/about.php:52 wp-admin/about.php:269
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>La versione %1$s</strong> corregge %2$s bug."
@@ -5397,20 +5397,20 @@ msgstr[1] "<strong>La versione %1$s</strong> corregge %2$s bug."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:255
+#: wp-admin/about.php:277
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>La versione %1$s</strong> corregge alcuni problemi di sicurezza e %2$s bug."
 msgstr[1] "<strong>La versione %1$s</strong> corregge alcuni problemi di sicurezza e %2$s bug."
 
 #. translators: %s: Codex URL
-#: wp-admin/about.php:259
+#: wp-admin/about.php:63 wp-admin/about.php:281
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Per ulteriori informazioni consulta <a href=\"%s\">le note di versione</a>."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:251
+#: wp-admin/about.php:273
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>La versione %1$s</strong> corregge un problema di sicurezza e %2$s bug."
@@ -5421,15 +5421,15 @@ msgid "Welcome to your WordPress Dashboard! This is the screen you will see when
 msgstr "Benvenuto nella tua Bacheca di WordPress! Questa è la schermata che vedi quando esegui il login al sito e ti permette di accedere a tutte le funzionalità per la gestione di WordPress. Puoi ottenere aiuto per qualsiasi sezione facendo clic sulla scheda Aiuto presente sopra il titolo della schermata."
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:244
+#: wp-admin/about.php:266
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>La versione %s</strong> corregge alcuni problemi di sicurezza."
 
-#: wp-admin/about.php:232
+#: wp-admin/about.php:47 wp-admin/about.php:254
 msgid "Maintenance Release"
 msgstr "Aggiornamento di manutenzione"
 
-#: wp-admin/about.php:235
+#: wp-admin/about.php:257
 msgid "Security Release"
 msgstr "Aggiornamento di sicurezza"
 
@@ -5437,7 +5437,7 @@ msgstr "Aggiornamento di sicurezza"
 msgid "What&#8217;s New"
 msgstr "Che novità ci sono"
 
-#: wp-admin/about.php:238
+#: wp-admin/about.php:260
 msgid "Maintenance and Security Release"
 msgstr "Aggiornamento di sicurezza e manutenzione"
 
@@ -5449,7 +5449,7 @@ msgstr "Questa schermata permette di scegliere la propria struttura di permalink
 msgid "Welcome to WordPress %1$s. <a href=\"%2$s\">Learn more</a>."
 msgstr "Benvenuto in WordPress%1$s. <a href=\"%2$s\"> Ulteriori informazioni</a>."
 
-#: wp-admin/about.php:218
+#: wp-admin/about.php:240
 msgid "Return to Updates"
 msgstr "Torna alla pagina degli aggiornamenti"
 
@@ -5729,11 +5729,11 @@ msgstr "Probabile inclusione diretta di wp-admin/includes/template.php allo scop
 msgid "Welcome to WordPress %s"
 msgstr "Benvenuto su WordPress %s"
 
-#: wp-admin/about.php:218
+#: wp-admin/about.php:240
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "Ritorna alla bacheca &rarr; Aggiornamenti"
 
-#: wp-admin/about.php:221
+#: wp-admin/about.php:243
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Vai alla bacheca &rarr; Home"
 
@@ -6617,7 +6617,7 @@ msgstr "Ricerca temi installati"
 
 #: wp-admin/update-core.php:348
 msgid "<strong>Please Note:</strong> Any customizations you have made to theme files will be lost. Please consider using <a href=\"%s\">child themes</a> for modifications."
-msgstr "<strong>Nota:</strong> ogni personalizzazione effettuata ai file del tema verrà perduta. Per risolvere questo problema potresti considerare di utilizzare <a href=\"%s\">i temi figli (child themes)</a>."
+msgstr "<strong>Nota:</strong> ogni personalizzazione effettuata ai file del tema verrà perduta. Per risolvere questo problema utilizza <a href=\"%s\">i temi figli (child themes)</a>."
 
 #: wp-admin/includes/class-wp-posts-list-table.php:366
 msgctxt "posts"
@@ -7110,12 +7110,12 @@ msgstr "Ritaglio immagine della testata"
 msgid "Default Images"
 msgstr "Immagine predefinita"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:578
+#: wp-admin/includes/class-wp-comments-list-table.php:583
 #: wp-admin/includes/dashboard.php:639
 msgid "Delete this comment permanently"
 msgstr "Elimina definitivamente questo commento"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:574
+#: wp-admin/includes/class-wp-comments-list-table.php:579
 msgid "Restore this comment from the Trash"
 msgstr "Ripristina questo commento dal cestino"
 
@@ -7226,7 +7226,7 @@ msgid "You have version %1$s installed. Update to %2$s."
 msgstr "Stai utilizzando la versione %1$s. Aggiorna alla versione %2$s."
 
 #: wp-admin/includes/class-wp-comments-list-table.php:302
-#: wp-admin/includes/class-wp-comments-list-table.php:570
+#: wp-admin/includes/class-wp-comments-list-table.php:575
 msgctxt "comment"
 msgid "Not Spam"
 msgstr "Non è spam"
@@ -7601,7 +7601,7 @@ msgstr "Mostra tutti"
 msgid "Please enter a valid menu name."
 msgstr "Inserire un nome di menu valido."
 
-#: wp-admin/about.php:221
+#: wp-admin/about.php:243
 msgid "Go to Dashboard"
 msgstr "Vai alla bacheca"
 
@@ -9114,7 +9114,7 @@ msgstr "Visibile"
 msgid "Relationship"
 msgstr "Relazione"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:398
+#: wp-admin/includes/class-wp-comments-list-table.php:403
 #: wp-admin/includes/class-wp-post-comments-list-table.php:28
 msgctxt "column name"
 msgid "Comment"
@@ -9138,7 +9138,7 @@ msgctxt "column name"
 msgid "Title"
 msgstr "Titolo"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:588
+#: wp-admin/includes/class-wp-comments-list-table.php:593
 #: wp-admin/includes/class-wp-posts-list-table.php:1253
 #: wp-admin/includes/class-wp-terms-list-table.php:449
 msgid "Quick&nbsp;Edit"
@@ -10066,36 +10066,36 @@ msgstr "[In sospeso]"
 msgid "From %1$s on %2$s %3$s"
 msgstr "Da %1$s su %2$s %3$s"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:580
+#: wp-admin/includes/class-wp-comments-list-table.php:585
 #: wp-admin/includes/dashboard.php:641
 msgid "Move this comment to the Trash"
 msgstr "Sposta questo commento nel cestino."
 
 #. translators: mark as spam link
-#: wp-admin/includes/class-wp-comments-list-table.php:568
+#: wp-admin/includes/class-wp-comments-list-table.php:573
 #: wp-admin/includes/dashboard.php:636
 msgctxt "verb"
 msgid "Spam"
 msgstr "Spam"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:568
+#: wp-admin/includes/class-wp-comments-list-table.php:573
 #: wp-admin/includes/dashboard.php:636
 msgid "Mark this comment as spam"
 msgstr "Marca questo commento come spam"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:590
+#: wp-admin/includes/class-wp-comments-list-table.php:595
 #: wp-admin/includes/dashboard.php:635
 msgid "Reply to this comment"
 msgstr "Rispondi a questo commento"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:558
-#: wp-admin/includes/class-wp-comments-list-table.php:564
+#: wp-admin/includes/class-wp-comments-list-table.php:563
+#: wp-admin/includes/class-wp-comments-list-table.php:569
 #: wp-admin/includes/dashboard.php:633
 msgid "Unapprove this comment"
 msgstr "Non approvare questo commento"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:560
-#: wp-admin/includes/class-wp-comments-list-table.php:563
+#: wp-admin/includes/class-wp-comments-list-table.php:565
+#: wp-admin/includes/class-wp-comments-list-table.php:568
 #: wp-admin/includes/dashboard.php:632
 msgid "Approve this comment"
 msgstr "Approva questo commento"
@@ -10649,24 +10649,24 @@ msgstr "Aggiornato campo personalizzato."
 msgid "No comments found."
 msgstr "Nessun commento trovato."
 
-#: wp-admin/includes/class-wp-comments-list-table.php:359
+#: wp-admin/includes/class-wp-comments-list-table.php:364
 #: wp-admin/includes/class-wp-media-list-table.php:181
 #: wp-admin/includes/class-wp-posts-list-table.php:493
 msgid "Empty Trash"
 msgstr "Svuota il cestino"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:359
+#: wp-admin/includes/class-wp-comments-list-table.php:364
 msgid "Empty Spam"
 msgstr "Svuotare lo spam"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:354
+#: wp-admin/includes/class-wp-comments-list-table.php:359
 #: wp-admin/includes/class-wp-links-list-table.php:115
 #: wp-admin/includes/class-wp-media-list-table.php:177
 #: wp-admin/includes/class-wp-posts-list-table.php:488
 msgid "Filter"
 msgstr "Filtra"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:340
+#: wp-admin/includes/class-wp-comments-list-table.php:345
 #: wp-admin/includes/class-wp-posts-list-table.php:1612
 msgid "Pings"
 msgstr "Ping"
@@ -10679,15 +10679,15 @@ msgid "Move to Trash"
 msgstr "Sposta nel cestino"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:295
-#: wp-admin/includes/class-wp-comments-list-table.php:560
-#: wp-admin/includes/class-wp-comments-list-table.php:563
+#: wp-admin/includes/class-wp-comments-list-table.php:565
+#: wp-admin/includes/class-wp-comments-list-table.php:568
 #: wp-admin/includes/dashboard.php:632
 msgid "Approve"
 msgstr "Approva"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:293
-#: wp-admin/includes/class-wp-comments-list-table.php:558
-#: wp-admin/includes/class-wp-comments-list-table.php:564
+#: wp-admin/includes/class-wp-comments-list-table.php:563
+#: wp-admin/includes/class-wp-comments-list-table.php:569
 #: wp-admin/includes/dashboard.php:633
 msgid "Unapprove"
 msgstr "Non approvare"

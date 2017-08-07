@@ -1,15 +1,15 @@
-# Translation of Plugins - MailPoet Newsletters - Stable (latest release) in Japanese
-# This file is distributed under the same license as the Plugins - MailPoet Newsletters - Stable (latest release) package.
+# Translation of Plugins - MailPoet 2 - Stable (latest release) in Japanese
+# This file is distributed under the same license as the Plugins - MailPoet 2 - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-02-18 02:41:18+0000\n"
+"PO-Revision-Date: 2017-08-04 11:23:30+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: ja_JP\n"
-"Project-Id-Version: Plugins - MailPoet Newsletters - Stable (latest release)\n"
+"Project-Id-Version: Plugins - MailPoet 2 - Stable (latest release)\n"
 
 #. Author of the plugin/theme
 msgid "MailPoet"
@@ -255,7 +255,7 @@ msgstr "承認済の購読者だけをエクスポート"
 
 #: views/back/subscribers.php:419
 msgid "Excel for Windows"
-msgstr "Windows Excelファイル"
+msgstr "Windows Excel ファイル"
 
 #: views/back/subscribers.php:417
 msgid "CSV file"
@@ -502,7 +502,7 @@ msgstr "売買についての質問がありますか? [link]連絡してくだ�
 
 #: views/back/premium.php:186
 msgid "Already paid?"
-msgstr "支払はお済ですか?"
+msgstr "支払い済みですか ?"
 
 #: views/back/premium.php:182
 msgid "Buy Now"
@@ -1348,7 +1348,7 @@ msgstr "購読申込みがあったとき"
 
 #: views/back/config.php:430
 msgid "View all"
-msgstr "全て見る"
+msgstr "すべて表示"
 
 #: views/back/config.php:375
 msgid "Roles and permissions"
@@ -2075,7 +2075,7 @@ msgstr "統計"
 
 #: views/back/campaigns.php:478 views/back/config.php:189
 msgid "Preview"
-msgstr "プレヴュー"
+msgstr "プレビュー"
 
 #: views/back/campaigns.php:430
 msgid "Scheduled to be sent on %1$s"
@@ -4673,7 +4673,7 @@ msgstr "送信"
 #: views/back/campaigns.php:1591 views/back/campaigns.php:1592
 #: views/back/premium.php:186
 msgid "Activate now"
-msgstr "すぐにアクティベートする"
+msgstr "今すぐ有効化"
 
 #: controllers/back/campaigns.php:661
 msgid "Schedule"
