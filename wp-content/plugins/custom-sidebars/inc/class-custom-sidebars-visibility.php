@@ -52,7 +52,11 @@ class CustomSidebarsVisibility extends CustomSidebars {
 				$url = explode( '/', $_SERVER['SCRIPT_NAME'] );
 				$url = array_pop( $url );
 			}
-			lib3()->ui->add( CSB_JS_URL . 'cs-visibility.min.js', $url );
+			$javascript_file = 'cs-visibility.min.js';
+			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+				$javascript_file = 'cs-visibility.js';
+			}
+			lib3()->ui->add( CSB_JS_URL . $javascript_file, $url );
 			lib3()->ui->add( CSB_CSS_URL . 'cs-visibility.css', $url );
 
 			// Custom Sidebars Ajax request.
@@ -149,7 +153,7 @@ class CustomSidebarsVisibility extends CustomSidebars {
 			$membership_levels = $this->get_membership_levels();
 			$membership2_items = $this->get_membership2_items();
 			$pagetype_list = array(
-				'frontpage' => __( 'aFront Page', 'custom-sidebars' ),
+				'frontpage' => __( 'Front Page', 'custom-sidebars' ),
 				'home' => __( 'Post Index', 'custom-sidebars' ),
 				'single' => __( 'Single page', 'custom-sidebars' ),
 				//'posts' => __( 'Posts page', 'custom-sidebars' ),  "Posts page" is same as "Post Index"...

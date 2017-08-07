@@ -1,4 +1,4 @@
-/*! Custom Sidebars - v3.0.8
+/*! Custom Sidebars - v3.0.9
  * https://premium.wpmudev.org/project/custom-sidebars-pro/
  * Copyright (c) 2017; * Licensed GPLv2+ */
 /*global window:false */
@@ -932,11 +932,11 @@ window.csSidebars = null;
 			// Deletes the sidebar and closes the confirmation popup.
 			function delete_sidebar() {
 				popup.loading( true );
-
 				ajax.reset()
 					.data({
 						'do': 'delete',
-						'sb': id
+						'sb': id,
+						'_wpnonce': $('#_wp_nonce_cs_delete_sidebar').val()
 					})
 					.ondone( handle_done )
 					.load_json();
@@ -1558,3 +1558,27 @@ jQuery.fn.sortElements = (function(){
 
 })();
 
+
+/*global console:false */
+/*global document:false */
+/*global ajaxurl:false */
+
+/**
+ * Handle "Custom sidebars configuration is allowed for:" option on
+ * widgets screen options.
+ */
+(function($){
+    jQuery(document).ready( function($) {
+        $('#screen-options-wrap .cs-roles input[type=checkbox]').on( 'change', function() {
+            var data = {
+                'action': 'custom_sidebars_metabox_roles',
+                '_wpnonce': $('#custom_sidebars_metabox_roles').val(),
+                'fields': {}
+            };
+            $('#screen-options-wrap .cs-roles input[type=checkbox]').each( function() {
+                data.fields[$(this).val()] = this.checked;
+            });
+            $.post( ajaxurl, data );
+        });
+    });
+})(jQuery);
