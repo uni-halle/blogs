@@ -203,7 +203,7 @@ function mlublogs_nutzungsbedingungen() { ?>
 	<label for="tos">Bedingungen:</label>
 	<label class="checklabel">
 	<input type="checkbox" name="tos" value="1">
-	Ich akzeptiere die <a href="/dienst/nutzungsbedingungen/" target="_blank" title="Nutzungsbedingungen Blogs@MLU">&uuml;beraus spannenden Nutzungsbedingungen</a>
+	Ich akzeptiere die <a href="/dienst/nutzungsbedingungen/" target="_blank" title="Nutzungsbedingungen Blogs@MLU">Nutzungsbedingungen</a>. 
 	</label>
 	</p>
 	<!-- END UNSERE NUTZUNGSBEDINGUNGEN -->
