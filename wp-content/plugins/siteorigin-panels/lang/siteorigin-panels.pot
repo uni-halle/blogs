@@ -721,7 +721,7 @@ msgstr ""
 msgid "Theme"
 msgstr ""
 
-#: tmp/inc/styles-admin.php:174, tmp/inc/styles.php:251, tmp/inc/styles.php:279
+#: tmp/inc/styles-admin.php:174, tmp/inc/styles.php:252, tmp/inc/styles.php:281
 msgid "Top"
 msgstr ""
 
@@ -729,7 +729,7 @@ msgstr ""
 msgid "Right"
 msgstr ""
 
-#: tmp/inc/styles-admin.php:182, tmp/inc/styles.php:253, tmp/inc/styles.php:281
+#: tmp/inc/styles-admin.php:182, tmp/inc/styles.php:254, tmp/inc/styles.php:283
 msgid "Bottom"
 msgstr ""
 
@@ -913,55 +913,55 @@ msgstr ""
 msgid "Right on Top"
 msgstr ""
 
-#: tmp/inc/styles.php:247
+#: tmp/inc/styles.php:248
 msgid "Cell Vertical Alignment"
 msgstr ""
 
-#: tmp/inc/styles.php:252, tmp/inc/styles.php:280, tmp/widgets/widgets/button/button.php:31
+#: tmp/inc/styles.php:253, tmp/inc/styles.php:282, tmp/widgets/widgets/button/button.php:31
 msgid "Center"
 msgstr ""
 
-#: tmp/inc/styles.php:254, tmp/inc/styles.php:282
+#: tmp/inc/styles.php:255, tmp/inc/styles.php:284
 msgid "Stretch"
 msgstr ""
 
-#: tmp/inc/styles.php:271
+#: tmp/inc/styles.php:273
 msgid "Cell"
 msgstr ""
 
-#: tmp/inc/styles.php:274
+#: tmp/inc/styles.php:276
 msgid "Vertical Alignment"
 msgstr ""
 
-#: tmp/inc/styles.php:278
+#: tmp/inc/styles.php:280
 msgid "Use row setting"
 msgstr ""
 
-#: tmp/inc/styles.php:288, tmp/inc/styles.php:319
+#: tmp/inc/styles.php:290, tmp/inc/styles.php:321
 msgid "Font Color"
 msgstr ""
 
-#: tmp/inc/styles.php:291
+#: tmp/inc/styles.php:293
 msgid "Color of text inside this cell."
 msgstr ""
 
-#: tmp/inc/styles.php:296, tmp/inc/styles.php:327
+#: tmp/inc/styles.php:298, tmp/inc/styles.php:329
 msgid "Links Color"
 msgstr ""
 
-#: tmp/inc/styles.php:299
+#: tmp/inc/styles.php:301
 msgid "Color of links inside this cell."
 msgstr ""
 
-#: tmp/inc/styles.php:314, tmp/tpl/js-templates.php:69
+#: tmp/inc/styles.php:316, tmp/tpl/js-templates.php:69
 msgid "Widget"
 msgstr ""
 
-#: tmp/inc/styles.php:322
+#: tmp/inc/styles.php:324
 msgid "Color of text inside this widget."
 msgstr ""
 
-#: tmp/inc/styles.php:330
+#: tmp/inc/styles.php:332
 msgid "Color of links inside this widget."
 msgstr ""
 

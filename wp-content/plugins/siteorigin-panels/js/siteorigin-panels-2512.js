@@ -2313,6 +2313,9 @@ module.exports = {
 	},
 
 	processTemplate: function ( s ) {
+		if ( _.isUndefined( s ) || _.isNull( s ) ) {
+			return '';
+		}
 		s = s.replace( /{{%/g, '<%' );
 		s = s.replace( /%}}/g, '%>' );
 		s = s.trim();
@@ -4152,6 +4155,13 @@ module.exports = Backbone.View.extend( {
 
 		// Hide the standard content editor
 		$( '#wp-content-wrap' ).hide();
+
+
+		$( '#editor-expand-toggle' ).on( 'change.editor-expand', function () {
+			if ( ! $( this ).prop( 'checked' ) ) {
+				$( '#wp-content-wrap' ).hide();
+			}
+		} );
 
 		// Show page builder and the inside div
 		this.metabox.show().find( '> .inside' ).show();
