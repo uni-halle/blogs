@@ -66,9 +66,9 @@ class ShareaholicCron {
         ShareaholicUtilities::log('Transient Query Error!!!');
       }
     }
-
+    // Cleanup leftover mutex
+    ShareaholicUtilities::delete_mutex();
+    
     ShareaholicUtilities::log('End of Shareaholic transient cleanup');
   }
-
-
 }

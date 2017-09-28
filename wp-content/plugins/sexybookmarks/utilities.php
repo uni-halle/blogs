@@ -84,7 +84,7 @@ class ShareaholicUtilities {
     return array(
       'disable_admin_bar_menu' => 'off',
       'disable_debug_info' => 'off',
-      'disable_internal_share_counts_api' => 'off',
+      'disable_internal_share_counts_api' => 'on',
       'api_key' => '',
       'verification_key' => '',
     );
@@ -187,7 +187,7 @@ class ShareaholicUtilities {
    *
    * @return mixed
    */
-  public static function get_option($option) {
+  public static function get_option($option) {    
     $settings = self::get_settings();
     return (isset($settings[$option]) ? $settings[$option] : array());
   }
@@ -330,22 +330,39 @@ class ShareaholicUtilities {
    * This is the function that will perform the update.
    */
   public static function perform_update() {
-    if (self::get_version() && intval(self::get_version()) <= 6) {
-      // an update so big, it gets it's own class!
-      ShareaholicSixToSeven::update();
-    }
-    if (self::get_option('metakey_6to7_upgraded') != 'true') {
-      global $wpdb;
-      $results = $wpdb->query( "UPDATE $wpdb->postmeta SET `meta_key` = 'shareaholic_disable_open_graph_tags' WHERE `meta_key` = 'Hide OgTags'" );
-      $results = $wpdb->query( "UPDATE $wpdb->postmeta SET `meta_key` = 'shareaholic_disable_share_buttons' WHERE `meta_key` = 'Hide SexyBookmarks'" );
-      self::update_options(array('metakey_6to7_upgraded' => 'true'));
-    }
     
-    $version = ShareaholicUtilities::get_version();
-    if (!empty($version)){
+    if (!self::is_locked('perform_update')) {
+      self::set_lock('perform_update');
+      
+      // Upgrade v6 users
+      if (self::get_version() && intval(self::get_version()) <= 6) {
+        ShareaholicSixToSeven::update();
+      }
+    
+      // Re-acquire site content. Important: Run ONLY if API KEY is set
+      /*
+      $api_key = ShareaholicUtilities::get_option('api_key');
+      if (ShareaholicUtilities::has_accepted_terms_of_service() && !empty($api_key)) {
+        ShareaholicUtilities::notify_content_manager_sitemap();
+        ShareaholicUtilities::notify_content_manager_singledomain();
+      }
+      */
+    
+      // Check for SS Share Counts API connectivity
+      if (has_action('wp_ajax_nopriv_shareaholic_share_counts_api') && has_action('wp_ajax_shareaholic_share_counts_api')) {
+        ShareaholicUtilities::share_counts_api_connectivity_check();
+      }
+
+      // Activate Shareaholic Cron job
+      ShareaholicCron::activate();
+      
+      // Clear site cache
       ShareaholicUtilities::clear_cache();
+      
+      // add other things that need to run on version change here
+      
+      self::unlock('perform_update');
     }
-    // any other things that need to be updated
   }
 
   /**
@@ -590,6 +607,15 @@ class ShareaholicUtilities {
   public static function unlock($name) {
     delete_option('shareaholic_' . $name);
   }
+  
+  /**
+   * Clears all mutex
+   *
+   */
+  public static function delete_mutex() {
+    delete_option('shareaholic_get_or_create_api_key');
+    delete_option('shareaholic_perform_update');
+  }
 
   /**
    * Checks whether a plugin is active
@@ -670,7 +696,7 @@ class ShareaholicUtilities {
         $data,
         'json'
       );
-
+      
       if ($response && preg_match('/20*/', $response['response']['code'])) {
         self::update_options(array(
           'api_key' => $response['body']['api_key'],
@@ -680,6 +706,8 @@ class ShareaholicUtilities {
 
         if (isset($response['body']['location_name_ids']) && is_array($response['body']['location_name_ids'])) {
           self::set_default_location_settings($response['body']['location_name_ids']);
+          
+          ShareaholicAdmin::welcome_email();
           ShareaholicUtilities::clear_cache();
         } else {
           ShareaholicUtilities::log_bad_response('FailedToCreateApiKey', $response);
@@ -975,7 +1003,8 @@ class ShareaholicUtilities {
        return false;
      }
      
-     if (ShareaholicUtilities::has_accepted_terms_of_service() && ShareaholicUtilities::get_option('api_key') != NULL) {
+     $api_key = ShareaholicUtilities::get_option('api_key');
+     if (ShareaholicUtilities::has_accepted_terms_of_service() && !empty($api_key)) {
        if (in_array($post->post_status, array('draft', 'pending', 'auto-draft'))) {
          // Get the correct permalink for a draft
          $my_post = clone $post;
@@ -994,6 +1023,7 @@ class ShareaholicUtilities {
              array ('force' => true)
             )
           );
+                    
         $response = ShareaholicCurl::post($cm_single_page_job_url, $payload, 'json');
       }
     }
@@ -1014,6 +1044,7 @@ class ShareaholicUtilities {
           array ('force' => true)
         )
       );
+      
       $response = ShareaholicCurl::post($cm_sitemap_job_url, $payload, 'json');
     }
     
@@ -1035,6 +1066,7 @@ class ShareaholicUtilities {
             array ('force' => true)
            )
          );
+                  
        $response = ShareaholicCurl::post($cm_single_domain_job_url, $payload, 'json');
       }
     }
@@ -1081,6 +1113,24 @@ class ShareaholicUtilities {
   	$event_params = array('name' => "WordPress:".$event_name, 'data' => json_encode($event_metadata) );
 
     $response = ShareaholicCurl::post($event_api_url, $event_params, '', true);
+  }
+  
+  /**
+   * Deletes the api key
+   *
+   */
+   public static function delete_api_key () {
+     $payload = array(
+  		'site_id' => self::get_option('api_key'),
+  		'verification_key' => self::get_option('verification_key')
+    );    
+    
+    $response = ShareaholicCurl::post(
+      Shareaholic::API_URL . '/integrations/plugin/delete',
+      $payload,
+      'json',
+      true
+    );
   }
 
   /**
@@ -1229,26 +1279,63 @@ class ShareaholicUtilities {
    *
    */
   public static function clear_cache() {
-    // W3 Total Cache plugin
-  	if (function_exists('w3tc_pgcache_flush')) {
-  		w3tc_pgcache_flush();
-  	}
-  	// WP Super Cache
-    if (function_exists('wp_cache_clear_cache')) {
-      wp_cache_clear_cache();
+    
+    // Default WordPress
+    if (function_exists('wp_cache_flush')) {
+      wp_cache_flush();
     }
-	  // Hyper Cache
-	  if (function_exists('hyper_cache_flush_all')) {
-	    hyper_cache_flush_all();
-	  }
-	  // Quick Cache
+    // W3 Total Cache plugin
+    if (function_exists('w3tc_pgcache_flush')) {
+      w3tc_pgcache_flush();
+    }
+    // WP Super Cache
+    if (function_exists('wp_cache_clear_cache')) {
+      if (is_multisite()) {
+        $blog_id = get_current_blog_id();
+        wp_cache_clear_cache($blog_id);
+      } else {
+        wp_cache_clear_cache();
+      }
+    }
+    // Hyper Cache
+    if (function_exists('hyper_cache_flush_all')) {
+      hyper_cache_flush_all();
+    }
+    // WP Fastest Cache
+    if (class_exists('WpFastestCache')) {
+      $WpFastestCache = new WpFastestCache();
+      if (method_exists($WpFastestCache, 'deleteCache')) {
+        $WpFastestCache->deleteCache();
+      }
+    }
+    // WPEngine
+    if (class_exists('WpeCommon')) {
+      if (method_exists('WpeCommon', 'purge_memcached')) {
+        WpeCommon::purge_memcached();
+      }
+      if (method_exists('WpeCommon','clear_maxcdn_cache')) {  
+        WpeCommon::clear_maxcdn_cache();
+      }
+      if (method_exists('WpeCommon', 'purge_varnish_cache')) {
+        WpeCommon::purge_varnish_cache();   
+      }
+    }
+    // Cachify Cache
+    if (has_action('cachify_flush_cache')) {
+      do_action('cachify_flush_cache');
+    }
+    // Quick Cache
 	  if (function_exists('auto_clear_cache')) {
-  	  auto_clear_cache();
-	  }
-	  // CometCache
-	  if (class_exists("comet_cache")) {
-  	  comet_cache::clear();
-	  }
+      auto_clear_cache();
+    }
+    // Zencache
+    if (class_exists('zencache')) {
+      zencache::clear();
+    }
+    // CometCache
+    if (class_exists('comet_cache')) {
+      comet_cache::clear();
+    }
   }
   
   /**
@@ -1365,13 +1452,12 @@ class ShareaholicUtilities {
    * Call the content manager for a post before it is updated
    *
    * We do this because a user may change their permalink
-   * and so we tell CM that the old permalink is not longer valid
+   * and so we tell CM that the old permalink is no longer valid
    *
    */
   public static function before_post_is_updated($post_id) {
     ShareaholicUtilities::notify_content_manager_singlepage(get_post($post_id));
   }
-
 
   public static function user_info() {
     $current_user = wp_get_current_user();

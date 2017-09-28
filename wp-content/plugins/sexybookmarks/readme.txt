@@ -3,7 +3,7 @@ Contributors: shareaholic
 Tags: share buttons, related content, cookie compliance, eu cookie law, shareaholic, shareholic, sexybookmarks, recommendations, cookie consent, email button, social sharing, social bookmarking, share image, image sharing, follow buttons, floated share buttons, floating share buttons, analytics, social media, social plugin, facebook, twitter, google plus, google bookmarks, gmail, linkedin, pinterest, reddit, tumblr, evernote, digg, delicious, stumbleupon, printfriendly, fancy, amazon, xing, vk, yahoo, mister wong, viadeo, odnoklassniki box.net, diigo, yammer, ycombinator, hotmail, instapaper, mixi, arto, whatsapp, hootsuite, inbound.org, plurk, aim, buffer, meneame, pinboard.in, stumpedia, bitly, blogger, yummly, izeby, kaboodle, weibo, instagram, tinyurl,  typepad, weheartit, flipboard, pocket, wanelo, fark, wykop, symphony, kindle, houzz, youtube, sms, onenote, google classroom, disqus, spotify, zillow, feedly, kik, line, livejournal, baidu
 Requires at least: 3.0
 Tested up to: 4.8
-Stable tag: 8.2.0
+Stable tag: 8.4.4
 
 World's leading all-in-one Content Amplification Platform that helps grow your site traffic, engagement, conversions & monetization for FREE.
 
@@ -195,19 +195,42 @@ Please see here: [Shareaholic Helpdesk](http://support.shareaholic.com/hc/en-us)
 Please see here: [Usage & Installation Instructions](http://support.shareaholic.com/hc/en-us/categories/200101476-WordPress-Plugin)
 
 == Changelog ==
+= 8.4.4 (2017-09-21) =
+* Another critical bugfix for users of the SG Optimizer plugin (SiteGround hosting). This update will seamlessly allow you to re-activate Shareaholic.
 
-= 8.2.0 =
+= 8.4.3 (2017-09-20) =
+* Critical bugfix for users of SG Optimizer plugin
+
+= 8.4.2 (2017-09-20) =
+* Enhancement: More robust cache busting. Added support for WPEngine cache engine (Memcached, MaxCDN, Varnish), SG Optimizer, Cachify Cache, Zencache, etc.
+
+= 8.4.1 (2017-09-19) =
+* Critical bugfix for older versions of PHP
+
+= 8.4.0 (2017-09-19) =
+* Bugfix: Mark 404 pages as not recommendable
+* Various other performance updates and bug fixes
+
+= 8.3.1 (2017-09-15) =
+* Enhancement: Added page type tag to shareaholic:keywords (you will soon be able to exclude or include Related Content based on page type ie. page, post, etc)
+* Bugfix: Fixed issue where plugin version was not getting updated in some cases
+
+= 8.3.0 (2017-09-13) =
+* Bugfix: Fixed issue where Share Buttons and Related Content apps were not showing after excerpts
+* Various other performance updates and bug fixes
+
+= 8.2.0 (2017-09-11) =
 * New: **[Share Buttons for Images (Image Sharer)](https://blog.shareaholic.com/new-share-buttons-for-images-plugin/)** enhancements - you can now fully customize where these share buttons appear on your images and exactly how they will look and function, including setting opacity, offsets, icon padding, position, custom icon colors, size, and a lot more. All this, without touching ANY code! Also adds support for Facebook, Google+, Twitter, LinkedIn, Email, Fancy.com, Yummly and Houzz.
 * New: **[Shareaholic Teams](https://blog.shareaholic.com/shareaholic-teams-work-together-to-manage-your-website/)** – multi-user permissions to enable your team to work together to manage your website
 * Enhancement: **[Social Share Count Recovery](https://blog.shareaholic.com/recover-social-share-counts-https/)** - adds support to recover social share counts in case where permalink structure changes
 * Various other performance updates and bug fixes
 
-= 8.1.0 =
+= 8.1.0 (2017-07-24) =
 * New: Introducing the **[Tools Badge](https://support.shareaholic.com/hc/en-us/categories/115001014006-Tools-Badge)**! ([learn more](https://support.shareaholic.com/hc/en-us/categories/115001014006-Tools-Badge)) Introducing a brand new way to launch the Shareaholic Console without ever leaving your website! Contains quick-links to your site analytics, help center, and much more to help you manage your site with greater ease. If you'd rather hide this badge or change its location, you can do so from your settings. It is 100% configurable.
 * Bugfix: Resolved the 403 Forbidden error that some admins were getting upon clicking the Dashboard link. Affected only sites on cPanel with mod_security enabled ex. HostGator
 * Enhancement: Google+ share count is now also available to sites that do not enable Server Side Share counts API
 
-= 8.0.1 =
+= 8.0.1 (2017-07-10) =
 * Version 8 is here bringing with it a brand new revamped and streamlined UI!
 
 = 7.10.1.0 =
@@ -636,6 +659,26 @@ Please see here: [Usage & Installation Instructions](http://support.shareaholic.
 * Show Related Posts data status
 
 == Upgrade Notice ==
+= 8.4.4 =
+* Another critical bugfix for users of the SG Optimizer plugin (SiteGround hosting). This update will seamlessly allow you to re-activate Shareaholic.
+
+= 8.4.3 =
+Critical bugfix for users of SG Optimizer plugin
+
+= 8.4.2 =
+More robust cache busting. Added support for WPEngine cache engine (Memcached, MaxCDN, Varnish), WP Fastest Cache, SG Optimizer, Cachify Cache, Zencache, etc.
+
+= 8.4.1 =
+Critical bugfix for older versions of PHP
+
+= 8.4.0 =
+Various bug fixes and enhancements
+
+= 8.3.1 =
+Various bug fixes and enhancements
+
+= 8.3.0 =
+Various bug fixes and enhancements
 
 = 8.2.0 =
 * Must Upgrade! Enhancements to Social Share Count Recovery - adds support for case where permalink structure changes, Share Buttons for Images (Image Sharer) and introducing Teams.

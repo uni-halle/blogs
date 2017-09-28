@@ -64,7 +64,7 @@ class ShareaholicCurl {
     ShareaholicUtilities::log($method);
     ShareaholicUtilities::log('-----------------');
     $timeout = 15;	  
-    $useragent = 'WordPress/' . get_bloginfo('version') . '; '. 'PHP/' . phpversion() . '; ' . 'SHR_WP/' . Shareaholic::VERSION . '; ' . get_bloginfo( 'url' );
+    $useragent = 'WordPress/' . get_bloginfo('version') . ' ('. 'PHP/' . phpversion() . '; ' . 'SHR_WP/' . Shareaholic::VERSION . '; +' . get_bloginfo( 'url' ) . ')';
     if ($method == 'GET') {
       $response = wp_remote_get($url, array('body' => $data, 'sslverify'=>false, 'user-agent'=>$useragent, 'timeout'=>$timeout));
     } elseif ($method == 'POST') {
@@ -78,6 +78,7 @@ class ShareaholicCurl {
         $request['body'] = $data;
       }
       $request['headers']['Accept'] = 'application/json';
+      $request['headers']['user-agent'] = $useragent;
       $request['sslverify'] = false;
       $request['timeout'] = $timeout;
       $response = wp_remote_post($url, $request);

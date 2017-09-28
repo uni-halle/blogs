@@ -551,11 +551,11 @@ JQUERY;
   /**
    * This function is in charge of determining whether to send the "get started" email
    */
-   public static function welcome_email() {
+   public static function welcome_email() {     
      // check whether email has been sent
-     if (ShareaholicUtilities::get_option('welcome_email_sent') != true) {
+     if (ShareaholicUtilities::get_option('welcome_email_sent') != "y") { 
        // set flag that the email has been sent
-       ShareaholicUtilities::update_options(array('welcome_email_sent' => true));
+       ShareaholicUtilities::update_options(array('welcome_email_sent' => "y"));
        // send email
        ShareaholicAdmin::send_welcome_email();
      }
@@ -566,47 +566,48 @@ JQUERY;
    * This function is in charge of sending the "get started" email
    */
   public static function send_welcome_email() {
-    $site_url = get_bloginfo('url');
-    $api_key = ShareaholicUtilities::get_option('api_key');
-    $payment_url = 'https://shareaholic.com/user-settings/payments';
-    $shr_wp_dashboard_url = admin_url('admin.php?page=shareaholic-settings');
-    $sign_up_link = esc_url(admin_url("admin.php?shareaholic_redirect_url=shareaholic.com/signup/"));    
-    $to = get_bloginfo('admin_email');
-    $subject = 'Thank you for installing Shareaholic for WordPress!';
-    $message = "
-    <p>Hi there,</p>
+    if (function_exists('wp_mail')) {
+      $site_url = get_bloginfo('url');
+      $api_key = ShareaholicUtilities::get_option('api_key');
+      $payment_url = 'https://shareaholic.com/user-settings/payments';
+      $shr_wp_dashboard_url = esc_url(admin_url("admin.php?page=shareaholic-settings"));
+      $sign_up_link = esc_url(admin_url("admin.php?shareaholic_redirect_url=shareaholic.com/signup/"));    
+      $to = get_bloginfo('admin_email');
+      $subject = 'Thank you for installing Shareaholic Plugin for WordPress!';
+      $message = "
+      <p>Hi there,</p>
     
-    <p>Thank you for installing Shareaholic on $site_url! You are one step closer to growing your website. Completing your set-up is easy, just follow these three easy steps and you'll be ready to go:</p>
+      <p>Thank you for installing Shareaholic on $site_url! You are one step closer to growing your website. Completing your set-up is easy, just follow these three easy steps and you'll be ready to go:</p>
         
-    <p><strong>Step 1. Customize to your needs</strong><br /><br />
+      <p><strong>Step 1. Customize to your needs</strong><br /><br />
     
-    Personalize the various apps (ex. Share Buttons and Related Content) to match your website design using the \"Customize\" buttons in your <a href='$shr_wp_dashboard_url'>Shareaholic App Manager in WordPress</a>, then choose where you want them to appear on your website using the checkboxes!
+      Personalize the various apps (ex. Share Buttons and Related Content) to match your website design using the \"Customize\" buttons in your <a href='$shr_wp_dashboard_url'>Shareaholic App Manager in WordPress</a>, then choose where you want them to appear on your website using the checkboxes!
             
-    <p><strong>Step 2: Create your free Shareaholic account</strong><br /><br />
+      <p><strong>Step 2: Create your free Shareaholic account</strong><br /><br />
     
-    This will enable you to add more features like Analytics, Floating Share Buttons, Share Buttons for Images, Follow Buttons and more. <strong><a href='$sign_up_link'>Click here to sign-up</a></strong>, or <a href='$sign_up_link'>login to an existing Shareaholic account</a> and we'll automatically sync the plugin settings with your account.</p>
+      This will enable you to add more features like Analytics, Floating Share Buttons, Share Buttons for Images, Follow Buttons and more. <strong><a href='$sign_up_link'>Click here to sign-up</a></strong>, or <a href='$sign_up_link'>login to an existing Shareaholic account</a> and we'll automatically sync the plugin settings with your account.</p>
     
-    <p><strong>Step 3: Control your earnings and setup how you would like to get paid</strong><br /><br />
+      <p><strong>Step 3: Control your earnings and setup how you would like to get paid</strong><br /><br />
     
-    Decide how much you would like to earn from Promoted Content (native ads that appear in the Related Content app) and other monetization apps by editing your settings in the \"Monetization\" section of the plugin. Next, visit the \"Payments\" <a href='$payment_url'>section of your Shareaholic.com account</a> to add your PayPal information, so you can collect the revenue your site earns.</p>
+      Decide how much you would like to earn from Promoted Content (native ads that appear in the Related Content app) and other monetization apps by editing your settings in the \"Monetization\" section of the plugin. Next, visit the \"Payments\" <a href='$payment_url'>section of your Shareaholic.com account</a> to add your PayPal information, so you can collect the revenue your site earns.</p>
     
-    <p>Have questions? Simply reply to this email and we will help you out!</p>
+      <p>Have questions? Simply reply to this email and we will help you out!</p>
 
-    <p>Let's get started,<br /><br />
+      <p>Let's get started,<br /><br />
     
-    The Shareaholic Team<br />
-    <a href='http://support.shareaholic.com'>support.shareaholic.com</a><br /><br />
-    <img width='200' height='36' src='https://shareaholic.com/assets/layouts/shareaholic-logo.png' alt='Shareaholic' title='Shareaholic' /><br />
-    <p style='font-size:12px;color:#C3C2C2;'>This is an automated, one-time e-mail sent by your WordPress CMS directly to the website admin</p><br />
-    <img width='0' height='0' src='https://www.google-analytics.com/collect?v=1&tid=UA-12964573-6&cid=$api_key&t=event&ec=email&ea=open&el=$site_url-$api_key&cs=lifecycle&cm=email&cn=wp_welcome_email' />";
+      The Shareaholic Team<br />
+      <a href='http://support.shareaholic.com'>support.shareaholic.com</a><br /><br />
+      <img width='200' height='36' src='https://shareaholic.com/assets/layouts/shareaholic-logo.png' alt='Shareaholic' title='Shareaholic' /><br />
+      <p style='font-size:12px;color:#C3C2C2;'>This is an automated, one-time e-mail sent by your WordPress CMS directly to the website admin</p><br />
+      <img width='0' height='0' src='https://www.google-analytics.com/collect?v=1&tid=UA-12964573-6&cid=$api_key&t=event&ec=email&ea=open&el=$site_url-$api_key&cs=lifecycle&cm=email&cn=wp_welcome_email' />";
         
-    $headers = "From: Shareaholic <hello@shareaholic.com>\r\n";
-    $headers.= "Reply-To: Customer Happiness <hello@shareaholic.com>\r\n";
-    $headers.= "X-Mailer: PHP/" . phpversion() . "\r\n";
-    $headers.= "MIME-Version: 1.0\r\n";
-    $headers.= "Content-type: text/html; charset=utf-8\r\n";
-    
-    if (function_exists('wp_mail')){
+      $headers = "From: Shareaholic <hello@shareaholic.com>\r\n";
+      $headers.= "Reply-To: Shareaholic <hello@shareaholic.com>\r\n";
+      $headers.= "X-Mailer: PHP/" . phpversion() . "\r\n";
+      $headers.= "MIME-Version: 1.0\r\n";
+      $headers.= "Content-type: text/html; charset=utf-8\r\n";
+      
+      // Send email
       wp_mail($to, $subject, $message, $headers);
     }
   }
@@ -615,7 +616,7 @@ JQUERY;
     global $pagenow;
     if ($pagenow == 'options-permalink.php') {
       $css_class = 'error';
-      $message = 'WARNING: changing the permalink structure will reset the share counts for your pages.';
+      $message = 'WARNING: Updating your permalink structure will reset the social share counts for your pages. <a href="https://shareaholic.com/plans">Upgrade to Shareaholic Premium</a> to enable <a href="https://support.shareaholic.com/hc/en-us/articles/115002083586">Share Count Recovery</a>.';
       echo "<div class='$css_class'><p style='font-weight: bold;'>";
       _e($message, 'Shareaholic');
       echo '</p></div>';

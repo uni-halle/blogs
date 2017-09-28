@@ -37,7 +37,7 @@
                   <?php if (isset($settings['disable_internal_share_counts_api'])) { ?>
                     <?php echo ($settings['disable_internal_share_counts_api'] == 'on' ? 'checked' : '') ?>
                     <?php } ?>>
-                  <label class="font-normal" for="share_counts"> <?php echo sprintf(__('Disable server-side Share Counts API', 'shareaholic')); ?> <?php echo sprintf(__('(unless there are issues with calling the service, it is recommended NOT to disable this API)', 'shareaholic')); ?></label>
+                  <label class="font-normal" for="share_counts"> <?php echo sprintf(__('Disable server-side Share Counts API', 'shareaholic')); ?> <?php echo sprintf(__('(This feature uses server resources. When "enabled" share counts will appear for <a href="https://github.com/shareaholic/shareaholic-api-docs/blob/master/api_share.md" target="_blank">additional social networks</a>.)', 'shareaholic')); ?></label>
                 <p>
                   <input type='submit' class="btn btn-primary btn-medium" onclick="this.value='<?php echo sprintf(__('Saving Changes...', 'shareaholic')); ?>';" value='<?php echo sprintf(__('Save Changes', 'shareaholic')); ?>'>
                 </p>

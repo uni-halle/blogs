@@ -3,14 +3,14 @@
  * The main file!
  *
  * @package shareaholic
- * @version 8.2.0
+ * @version 8.4.4
  */
 
 /*
 Plugin Name: Shareaholic | share buttons, analytics, related content
 Plugin URI: https://shareaholic.com/publishers/
 Description: The world's leading all-in-one Content Amplification Platform that helps grow your website traffic, engagement, conversions & monetization. See <a href="admin.php?page=shareaholic-settings">configuration panel</a> for more settings.
-Version: 8.2.0
+Version: 8.4.4
 Author: Shareaholic
 Author URI: https://shareaholic.com
 Text Domain: shareaholic
@@ -63,7 +63,7 @@ if (!class_exists('Shareaholic')) {
     const CM_API_URL = 'https://cm-web.shareaholic.com'; // uses static IPs for firewall whitelisting
     const REC_API_URL = 'http://recommendations.shareaholic.com';
 
-    const VERSION = '8.2.0';
+    const VERSION = '8.4.4';
 
     /**
      * Starts off as false so that ::get_instance() returns
@@ -90,8 +90,8 @@ if (!class_exists('Shareaholic')) {
       add_action('wp_ajax_shareaholic_permalink_list',          array('ShareaholicPublic', 'permalink_list'));
 
       // SDK Badge
-      add_action('wp_ajax_nopriv_shareaholic_sdk_info',   array('ShareaholicPublic', 'sdk_info'));
-      add_action('wp_ajax_shareaholic_sdk_info',          array('ShareaholicPublic', 'sdk_info'));
+      add_action('wp_ajax_nopriv_shareaholic_sdk_info',         array('ShareaholicPublic', 'sdk_info'));
+      add_action('wp_ajax_shareaholic_sdk_info',                array('ShareaholicPublic', 'sdk_info'));
       
       // Permalink info for Related Content index
       add_action('wp_ajax_nopriv_shareaholic_permalink_info',   array('ShareaholicPublic', 'permalink_info'));
@@ -101,13 +101,15 @@ if (!class_exists('Shareaholic')) {
       add_action('wp_ajax_nopriv_shareaholic_permalink_related',   array('ShareaholicPublic', 'permalink_related'));
       add_action('wp_ajax_shareaholic_permalink_related',          array('ShareaholicPublic', 'permalink_related'));
 
-      add_action('init',                array('ShareaholicPublic', 'init'));
-      add_action('after_setup_theme',   array('ShareaholicPublic', 'after_setup_theme'));
-      add_action('the_content',         array('ShareaholicPublic', 'draw_canvases'));
-      add_action('wp_head',             array('ShareaholicPublic', 'wp_head'), 6);
-      add_shortcode('shareaholic',      array('ShareaholicPublic', 'shortcode'));
+      add_action('wp_loaded',                         array('ShareaholicPublic', 'init'));
+      add_action('after_setup_theme',                 array('ShareaholicPublic', 'after_setup_theme'));
+      add_action('the_content',                       array('ShareaholicPublic', 'draw_canvases'));
+      add_action('the_excerpt',                       array('ShareaholicPublic', 'draw_canvases'));
+      
+      add_action('wp_head',                           array('ShareaholicPublic', 'wp_head'), 6);
+      add_shortcode('shareaholic',                    array('ShareaholicPublic', 'shortcode'));
 
-      add_action('plugins_loaded',  array($this, 'shareaholic_init'));
+      add_action('plugins_loaded',                    array($this, 'shareaholic_init'));
 
       add_action('admin_init',                        array('ShareaholicAdmin', 'admin_init'));
       add_action('admin_enqueue_scripts',             array('ShareaholicAdmin', 'admin_header'));
@@ -116,10 +118,6 @@ if (!class_exists('Shareaholic')) {
       add_action('save_post',                         array('ShareaholicAdmin', 'save_post'));
       add_action('admin_enqueue_scripts',             array('ShareaholicAdmin', 'enqueue_scripts'));
       add_action('admin_menu',                        array('ShareaholicAdmin', 'admin_menu'));
-
-      if (!ShareaholicUtilities::has_accepted_terms_of_service()) {
-        add_action('admin_notices', array('ShareaholicAdmin', 'show_terms_of_service'));
-      }
 
       // add_action('publish_post', array('ShareaholicNotifier', 'post_notify'));
       // add_action('publish_page', array('ShareaholicNotifier', 'post_notify'));
@@ -142,10 +140,15 @@ if (!class_exists('Shareaholic')) {
       // do something before a site's permalink structure changes
       add_action('update_option_permalink_structure', array('ShareaholicUtilities', 'notify_content_manager_sitemap'));
 
+      // Show ToS notice
+      if (!ShareaholicUtilities::has_accepted_terms_of_service()) {
+        add_action('admin_notices', array('ShareaholicAdmin', 'show_terms_of_service'));
+      }
+      
       // use the admin notice API
       add_action('admin_notices', array('ShareaholicAdmin', 'admin_notices'));
 
-      // ShortCode UI specific hooks to prevent duplicate app rendering
+      // ShortCode UI plugin specific hooks to prevent duplicate app rendering
       // https://wordpress.org/support/topic/custom-post-type-exclude-issue?replies=10#post-3370550
       add_action('scui_external_hooks_remove', array($this, 'remove_apps'));
       add_action('scui_external_hooks_return', array($this, 'return_apps'));
@@ -153,10 +156,12 @@ if (!class_exists('Shareaholic')) {
 
     public static function remove_apps() {
       remove_filter('the_content', array('ShareaholicPublic', 'draw_canvases'));
+      remove_filter('the_excerpt', array('ShareaholicPublic', 'draw_canvases'));
     }
 
     public static function return_apps() {
       add_filter('the_content', array('ShareaholicPublic', 'draw_canvases'));
+      add_filter('the_excerpt', array('ShareaholicPublic', 'draw_canvases'));
     }
 
     /**
@@ -179,10 +184,6 @@ if (!class_exists('Shareaholic')) {
      */
     public static function init() {
       self::update();
-      if (ShareaholicUtilities::has_accepted_terms_of_service() &&
-        isset($_GET['page']) && preg_match('/shareaholic/', $_GET['page'])) {
-        ShareaholicUtilities::get_or_create_api_key();
-      }
     }
 
     /**
@@ -190,42 +191,21 @@ if (!class_exists('Shareaholic')) {
      */
     public function shareaholic_init() {
       ShareaholicUtilities::localize();
-
-      // Send Welcome email if we haven't sent it already (check whenever a new site ID is set)
-      if (ShareaholicUtilities::get_option('api_key') != NULL) {
-        ShareaholicAdmin::welcome_email();
+            
+      if (ShareaholicUtilities::has_accepted_terms_of_service() &&
+        isset($_GET['page']) && preg_match('/shareaholic/', $_GET['page'])) {
+        ShareaholicUtilities::get_or_create_api_key();
       }
     }
-
+    
     /**
-     * Runs any update code if the version is different from what's
-     * stored in the settings. This will only run if we are on the
-     * shareaholic admin page to minimize any concurrency issues.
+     * Runs any update code if the plugin version is different from what is stored in the settings.
      */
     public static function update() {
-      if (isset($_GET['page']) && preg_match('/shareaholic/', $_GET['page'])) {
-        if (!ShareaholicUtilities::has_accepted_terms_of_service()) {
-          add_action('admin_notices', array('ShareaholicAdmin', 'show_terms_of_service'));
-        } else {
-          if (ShareaholicUtilities::get_version() != self::VERSION) {
-            ShareaholicUtilities::log_event("Upgrade", array ('previous_plugin_version' => ShareaholicUtilities::get_version()));
-            ShareaholicUtilities::perform_update();
-            ShareaholicUtilities::set_version(self::VERSION);
-            
-            if (ShareaholicUtilities::has_accepted_terms_of_service() && ShareaholicUtilities::get_option('api_key') != NULL) {
-              ShareaholicUtilities::notify_content_manager_sitemap();
-              ShareaholicUtilities::notify_content_manager_singledomain();
-            }
-
-            // Call the share counts api to check for connectivity on update
-            if (has_action('wp_ajax_nopriv_shareaholic_share_counts_api') && has_action('wp_ajax_shareaholic_share_counts_api')) {
-              ShareaholicUtilities::share_counts_api_connectivity_check();
-            }
-
-            // Activate the Shareaholic Cron job for existing plugin users
-            ShareaholicCron::activate();
-          }
-        }
+      if (ShareaholicUtilities::get_version() != Shareaholic::VERSION) {
+        ShareaholicUtilities::log_event("Upgrade", array ('previous_plugin_version' => ShareaholicUtilities::get_version()));
+        ShareaholicUtilities::perform_update();
+        ShareaholicUtilities::set_version(Shareaholic::VERSION);
       }
     }
 
@@ -244,13 +224,16 @@ if (!class_exists('Shareaholic')) {
      * This function fires after the plugin has been activated.
      */
     public function after_activation() {
+      // Cleanup leftover mutex
+      ShareaholicUtilities::delete_mutex();
+      
       $this->terms_of_service();
       ShareaholicUtilities::log_event("Activate");
 
       // workaround: http://codex.wordpress.org/Function_Reference/register_activation_hook
       add_option( 'Activated_Plugin_Shareaholic', 'shareaholic' );
-       
-      if (ShareaholicUtilities::has_accepted_terms_of_service() && ShareaholicUtilities::get_option('api_key') != NULL){
+      $api_key = ShareaholicUtilities::get_option('api_key');
+      if (ShareaholicUtilities::has_accepted_terms_of_service() && !empty($api_key)) {
         ShareaholicUtilities::notify_content_manager_sitemap();
         ShareaholicUtilities::notify_content_manager_singledomain();
       }
@@ -270,6 +253,7 @@ if (!class_exists('Shareaholic')) {
       ShareaholicUtilities::log_event("Deactivate");
       ShareaholicUtilities::clear_cache();
       ShareaholicCron::deactivate();
+      ShareaholicUtilities::delete_mutex();
     }
 
     /**
@@ -277,7 +261,9 @@ if (!class_exists('Shareaholic')) {
      */
     public function uninstall() {
       ShareaholicUtilities::log_event("Uninstall");
+      ShareaholicUtilities::delete_api_key();
       delete_option('shareaholic_settings');
+      ShareaholicUtilities::delete_mutex();
     }
   }
 
