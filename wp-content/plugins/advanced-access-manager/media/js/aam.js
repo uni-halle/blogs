@@ -145,10 +145,12 @@
         );
 
         //highlight screen if the same level
-        if (parseInt(level) >= aamLocal.level) {
+        if (parseInt(level) >= aamLocal.level || type === 'default') {
             $('.aam-current-subject').addClass('danger');
+            $('#wpcontent').css('background-color', '#FAEBEA');
         } else {
             $('.aam-current-subject').removeClass('danger');
+            $('#wpcontent').css('background-color', '#FFFFFF');
         }
 
         this.triggerHook('setSubject');
@@ -224,7 +226,7 @@
                 subjectId: this.getSubject().id,
                 object: object
             },
-            success: function (response) {
+            success: function () {
                 aam.fetchContent();
             },
             error: function () {

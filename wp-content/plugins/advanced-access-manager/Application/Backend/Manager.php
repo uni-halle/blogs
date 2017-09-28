@@ -152,6 +152,9 @@ class AAM_Backend_Manager {
         return $text;
     }
     
+    /**
+     * 
+     */
     public function registerLoginWidget() {
         register_widget('AAM_Backend_Widget_Login');
     }
@@ -239,7 +242,10 @@ class AAM_Backend_Manager {
             );
         }
         
-        if (AAM::getUser()->hasCapability($cap)) {
+        $frontend = AAM_Core_Config::get('frontend-access-control', true);
+        $backend  = AAM_Core_Config::get('backend-access-control', true);
+        
+        if (($frontend || $backend) && AAM::getUser()->hasCapability($cap)) {
             add_meta_box(
                 'aam-acceess-manager', 
                 __('Access Manager', AAM_KEY) . ' <small style="color:#999999;">by AAM plugin</small>', 
@@ -277,8 +283,11 @@ class AAM_Backend_Manager {
                         $option, AAM_Backend_View::getAAMCapability()
                 );
             }
+            
+            $frontend = AAM_Core_Config::get('frontend-access-control', true);
+            $backend  = AAM_Core_Config::get('backend-access-control', true);
 
-            if (AAM::getUser()->hasCapability($cap)) {
+            if (($frontend || $backend) && AAM::getUser()->hasCapability($cap)) {
                 echo AAM_Backend_View::getInstance()->renderTermMetabox($term);
             }
         }

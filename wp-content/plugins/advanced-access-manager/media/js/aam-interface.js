@@ -46,7 +46,7 @@
             },
             success: function (response) {
                 $('.inherit-role-list').html(
-                    '<option value="">' + aam.__('Select Role') + '</option>'
+                    '<option value="">' + aam.__('No Role') + '</option>'
                 );
                 for (var i in response) {
                     $('.inherit-role-list').append(
@@ -767,6 +767,34 @@
 
     /**
      * 
+     * @param {type} param
+     * @param {type} value
+     * @returns {undefined}
+     */
+    function save(items, status, successCallback) {
+        $.ajax(aamLocal.ajaxurl, {
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                action: 'aam',
+                sub_action: 'Menu.save',
+                subject: aam.getSubject().type,
+                subjectId: aam.getSubject().id,
+                _ajax_nonce: aamLocal.nonce,
+                items: items,
+                status: status
+            },
+            success: function(response) {
+                successCallback(response);
+            },
+            error: function () {
+                aam.notification('danger', aam.__('Application Error'));
+            }
+        });
+    }
+
+    /**
+     * 
      * @returns {undefined}
      */
     function initialize() {
@@ -779,15 +807,18 @@
 
                     $('i', _this).attr('class', 'icon-spin4 animate-spin');
 
-                    aam.save(_this.data('menu-id'), status, 'menu', null, function(result) {
+                    var items = new Array(_this.data('menu-id'));
+
+                    $('input', target).each(function () {
+                        $(this).attr('checked', status ? true : false);
+                        items.push($(this).data('menu-id'));
+                    });
+
+                    save(items, status, function(result) {
                         if (result.status === 'success') {
                             $('#aam-menu-overwrite').show();
     
                             if (status) { //locked the menu
-                                $('input', target).each(function () {
-                                    $(this).attr('checked', true);
-                                    aam.save($(this).data('menu-id'), status, 'menu');
-                                });
                                 $('.aam-bordered', target).append(
                                         $('<div/>', {'class': 'aam-lock'})
                                 );
@@ -799,10 +830,6 @@
                                 });
                                 $('.panel-title', target + '-heading').append(ind);
                             } else {
-                                $('input', target).each(function () {
-                                    $(this).attr('checked', false);
-                                    aam.save($(this).data('menu-id'), status, 'menu');
-                                });
                                 $('.aam-lock', target).remove();
                                 _this.removeClass('btn-primary').addClass('btn-danger');
                                 _this.html(
@@ -825,7 +852,6 @@
                         'menu',
                         null,
                         function(result) {
-                            console.log('Callback');
                             if (result.status === 'success') {
                                 $('#aam-menu-overwrite').show();
                             }

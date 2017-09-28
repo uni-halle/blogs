@@ -16,6 +16,24 @@
 class AAM_Backend_Feature_Menu extends AAM_Backend_Feature_Abstract {
 
     /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function save() {
+       $items  = AAM_Core_Request::post('items', array());
+       $status = AAM_Core_Request::post('status');
+
+       $object = AAM_Backend_View::getSubject()->getObject('menu');
+
+       foreach($items as $item) {
+           $object->save($item, $status);
+       }
+
+       return json_encode(array('status' => 'success'));
+    }
+
+    /**
      * Get subject's menu
      * 
      * Based on the list of capabilities that current subject has, prepare
@@ -198,6 +216,7 @@ class AAM_Backend_Feature_Menu extends AAM_Backend_Feature_Abstract {
                 'AAM_Core_Subject_User',
                 'AAM_Core_Subject_Default'
             ),
+            'option'     => 'backend-access-control',
             'view'       => __CLASS__
         ));
     }

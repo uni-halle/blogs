@@ -37,13 +37,34 @@ class AAM_Backend_Feature {
         } else {
             $cap = $feature->capability;
         }
+        
+        if (isset($feature->option)) {
+            $show = self::isVisible($feature->option);
+        } else {
+            $show = true;
+        }
 
-        if (AAM::getUser()->hasCapability($cap)) {
+        if ($show && AAM::getUser()->hasCapability($cap)) {
             self::$_features[] = $feature;
             $response = true;
         }
 
         return $response;
+    }
+    
+    /**
+     * 
+     * @param type $options
+     * @return type
+     */
+    protected static function isVisible($options) {
+        $count = 0;
+        
+        foreach(explode(',', $options) as $option) {
+            $count += AAM_Core_Config::get($option, true);
+        }
+        
+        return ($count > 0);
     }
 
     /**

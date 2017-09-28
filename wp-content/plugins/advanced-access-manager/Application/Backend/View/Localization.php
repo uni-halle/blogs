@@ -21,7 +21,7 @@ return array(
     '_TOTAL_ object(s)' => __('_TOTAL_ object(s)', AAM_KEY),
     'Failed' => __('Failed', AAM_KEY),
     'Loading...' => __('Loading...', AAM_KEY),
-    'Select Role' => __('Select Role', AAM_KEY),
+    'No Role' => __('No Role', AAM_KEY),
     'Search Role' => __('Search Role', AAM_KEY),
     '_TOTAL_ role(s)' => __('_TOTAL_ role(s)', AAM_KEY),
     'Create' => __('Create', AAM_KEY),

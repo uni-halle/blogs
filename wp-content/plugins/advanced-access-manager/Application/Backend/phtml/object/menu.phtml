@@ -46,7 +46,7 @@
                                         <?php } else { ?>
                                             <div class="col-xs-12 col-md-6 aam-submenu-item">
                                                 <label for="menu-item-<?php echo $i . $j; ?>"><?php echo $submenu['name']; ?> <small class="aam-menu-capability"><?php echo $submenu['capability']; ?></small></label>
-                                                <input type="checkbox" class="aam-checkbox-danger" id="menu-item-<?php echo $i . $j; ?>" data-menu-id="<?php echo $submenu['id']; ?>"<?php echo ($object->has($submenu['id']) || $object->has($menu['id']) ? ' checked="checked"' : ''); ?> />
+                                                <input type="checkbox" class="aam-checkbox-danger" id="menu-item-<?php echo $i . $j; ?>" data-menu-id="<?php echo $submenu['id']; ?>"<?php echo ($object->has($submenu['id']) ? ' checked="checked"' : ''); ?> />
                                                 <label for="menu-item-<?php echo $i . $j; ?>"></label>
                                             </div>
                                         <?php } ?>

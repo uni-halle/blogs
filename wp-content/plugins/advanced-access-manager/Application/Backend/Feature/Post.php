@@ -472,6 +472,7 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
                 'AAM_Core_Subject_Visitor',
                 'AAM_Core_Subject_Default'
             ),
+            'option'     => 'backend-access-control,frontend-access-control',
             'view'       => __CLASS__
         ));
     }

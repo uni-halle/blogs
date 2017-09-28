@@ -54,16 +54,39 @@ class AAM_Core_Object_Menu extends AAM_Core_Object {
      */
     public function filter() {
         global $menu, $submenu;
-        
+
         foreach ($menu as $id => $item) {
-            // cover scenario like with Visual Composer where landing page
-            // is defined dynamically
-            if ($this->has('menu-' . $item[2]) || $this->has($item[2])) {
-                unset($menu[$id]);
+            if (!empty($submenu[$item[2]])) {
+                $subs = $this->filterSubmenu($item[2]);
+            } else {
+                $subs = array();
             }
 
-            if (!empty($submenu[$item[2]])) {
-                $this->filterSubmenu($item[2]);
+            // cover scenario like with Visual Composer where landing page
+            // is defined dynamically
+            if ($this->has('menu-' . $item[2])) {
+                unset($menu[$id]);
+            } elseif ($this->has($item[2])) {
+                if (count($subs)) {
+                    $menu[$id][2] = $subs[0][2];
+                    $submenu[$menu[$id][2]] = $subs;
+                } else {
+                    unset($menu[$id]);
+                }
+            }
+        }
+
+        // remove duplicated separators
+        $count = 0;
+        foreach ($menu as $id => $item) {
+            if (preg_match('/^separator/', $item[2])) {
+                if ($count === 0) {
+                    $count++;
+                } else {
+                    unset($menu[$id]);
+                }
+            } else {
+                $count = 0;
             }
         }
     }
@@ -95,11 +118,17 @@ class AAM_Core_Object_Menu extends AAM_Core_Object {
     protected function filterSubmenu($parent) {
         global $submenu;
 
+        $filtered = array();
+
         foreach ($submenu[$parent] as $id => $item) {
             if ($this->has($this->normalizeItem($item[2]))) {
                 unset($submenu[$parent][$id]);
+            } else {
+                $filtered[] = $submenu[$parent][$id];
             }
         }
+
+        return $filtered;
     }
 
     /**
@@ -127,6 +156,7 @@ class AAM_Core_Object_Menu extends AAM_Core_Object {
     public function save($menu, $granted) {
         $option = $this->getOption();
         $option[$menu] = $granted;
+        $this->setOption($option);
 
         return $this->getSubject()->updateOption($option, 'menu');
     }
