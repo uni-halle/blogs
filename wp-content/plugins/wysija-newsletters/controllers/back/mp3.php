@@ -20,17 +20,7 @@ class WYSIJA_control_back_mp3 extends WYSIJA_control_back {
     }
 
     function defaultDisplay() {
-        $this->jsTrans['premium_activate'] = __('Already paid? Click here to activate', WYSIJA);
-        $this->jsTrans['premium_activating'] = __('Checking license', WYSIJA);
-    }
-
-    function premium_ben() {
-        $this->jsTrans['premium_activate'] = __('Already paid? Click here to activate', WYSIJA);
-        $this->jsTrans['premium_activating'] = __('Checking license', WYSIJA);
-    }
-
-    function premium_kim() {
-        $this->jsTrans['premium_activate'] = __('Already paid? Click here to activate', WYSIJA);
+        $this->jsTrans['premium_activate'] = __('Activate now', WYSIJA);
         $this->jsTrans['premium_activating'] = __('Checking license', WYSIJA);
     }
 }

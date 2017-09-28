@@ -19,13 +19,14 @@ class WYSIJA_view_back_mp3 extends WYSIJA_view_back{
 
         <div class="wrap about-wrap mpoet-page">
 <div class="changelog removeme">
-	<h2 style="font-size: 25px; color: #626262; font-weight: 600;"><?php echo __('A new and better MailPoet is coming this September', WYSIJA ); ?></h2>
+	<h2 style="font-size: 25px; color: #626262; font-weight: 600;"><?php echo __("We're changing. So should you.", WYSIJA ); ?></h2>
 
 <iframe src="https://player.vimeo.com/video/223581490" width="640" height="360" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
 
 <div class="feature-section">
 <ul style="list-style: disc inside none">
 
+<li><?php echo $this->replace_link_shortcode(__("[link]Read the FAQ[/link] on what's going to happen to this current version of MailPoet (version 2)", WYSIJA), 'http://www.mailpoet.com/faq-mailpoet-version-2/') ?></li>
 <li><?php echo __('MailPoet version 3 is completely rewritten', WYSIJA); ?></li>
 <li><?php echo __('New email designer', WYSIJA); ?></li>
 <li><?php echo __('Responsive templates', WYSIJA); ?></li>
@@ -48,7 +49,7 @@ class WYSIJA_view_back_mp3 extends WYSIJA_view_back{
 
 <br>
 <h3 style="font-size: 25px; color: #626262; font-weight: 600;"><strong>Comes with a 1-click migration tool:</strong></h3>
-<ul style="list-style: disc inside none"> 
+<ul style="list-style: disc inside none">
   <li><?php echo __('Your subscribers, lists, forms and settings will be migrated', WYSIJA); ?></li>
   <li><?php echo __('Automatic emails will not be migrated', WYSIJA); ?></li>
   <li><?php echo __('Archive of sent emails will not be migrated', WYSIJA); ?></li>

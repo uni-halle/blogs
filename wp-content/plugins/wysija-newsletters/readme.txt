@@ -1,16 +1,16 @@
 === MailPoet 2 ===
 Contributors: wysija
-Tags: newsletter, newsletters, email newsletter, email subscription, newsletter signup, post notification, autoresponder, newsletter alert, auto newsletter, automatic post notification, email newsletters, email signup, auto post notifications, newsletter widget, newsletter builder, subscribe widget, signup widget, email subscription, newsletter plugin, widget, subscription, emailing, mailpoet, wysija, mandrill, sendgrid
+Tags: newsletter, email, welcome email, post notification, autoresponder, signup, subscription, SMTP
 Requires at least: 3.5
 Tested up to: 4.8
-Stable tag: 2.7.11.3
+Stable tag: 2.7.12.1
 Send newsletters post notifications or autoresponders from WordPress easily, and beautifully. Start to capture subscribers with our widget now.
 
 == Description ==
 
-Our lovely plugin is changing for the better. Version 2 will start being replaced by [MailPoet version 3](https://wordpress.org/plugins/mailpoet/) this September. We encourage you all to switch now.
+Our lovely plugin is changing for the better: MailPoet 2 is being replaced by [MailPoet 3](https://wordpress.org/plugins/mailpoet/).
 
-[Try the demo.](http://demo.mailpoet.com/launch/)
+Version 2 will remain available right here on the repository. [Read more the complete FAQ.](https://www.mailpoet.com/faq-mailpoet-version-2/)
 
 = Check out this 2 minute video. =
 
@@ -18,24 +18,11 @@ https://vimeo.com/130151897
 
 = Features =
 
-* Drag-and-drop newsletter designer
-* Send your latest posts automatically
-* Autoresponders (e.g., "send email 3 days after someone subscribes")
-* Send emails to your WordPress users
-* Start collecting subscribers in 2-clicks with our subscription widget
-* Your choice of single or double opt-in
-* Import subscribers in 2 easy steps
-* Get statistics for your newsletters: opens, clicks, unsubscribes
-* Drag-and-drop subscription form designer
-* Perfect rendering that makes your newsletters look the same on mobile devices (iPhone, Android) and desktop/web email clients (Gmail, Outlooki, Yahoo, Hotmai, etc.)
-* Send with your own web host or, third-party SMTP (e.g., SendGrid, Amazon SES, Gmail, etc.), or third-party API (SendGrid, Elastic EMail, etc.)
-* Segment your lists based on unopened, opened and clicked rates
-* [Selection of over 70 themes](http://www.mailpoet.com/newsletter-templates-wordpress/). Photoshop files included!
-* Sending newsletters in the free version is limited to 2000 subscribers
+Please visit [MailPoet version 3 features](https://wordpress.org/plugins/mailpoet/) instead.
 
 = Premium version =
 
-[MailPoet Premium](http://www.mailpoet.com/premium/) offers these nifty extra features:
+MailPoet Premium offers these nifty extra features:
 
 * Send to more than 2000 subscribers
 * A beautiful statistics dashboard to compare your newsletters and subscribers
@@ -44,19 +31,13 @@ https://vimeo.com/130151897
 * Test your SPAM score before you send a newsletter to your subscribers
 * Improve deliverability with DKIM signature
 * Simple install process
-* Priority support: let us optimize your settings!
-
-[Visit our Premium page](http://www.mailpoet.com/premium/).
+* Priority support
 
 = Support =
 
-Find over 80 articles in our documentation:
-
-[support.mailpoet.com](http://support.mailpoet.com/)
+This version is no longer officially supported. Paying customer will continue to be supported until further notice.
 
 = Translations in your language =
-
-[Get a Premium plugin license in exchange for your help in translation](http://support.mailpoet.com/knowledgebase/translations-in-your-language/)
 
 * Arabic
 * Basque
@@ -116,7 +97,9 @@ There are 3 ways to install this plugin:
 
 = Got questions? =
 
-Our [support site](http://support.mailpoet.com/) has plenty of articles and a ticketing system.
+Our [support site](https://www.mailpoet.com/support) has plenty of articles and a ticketing system.
+
+[Read more the complete FAQ on version 2.](https://www.mailpoet.com/faq-mailpoet-version-2/)
 
 == Screenshots ==
 
@@ -129,6 +112,9 @@ Our [support site](http://support.mailpoet.com/) has plenty of articles and a ti
 7. Importing subscribers with a CSV.
 
 == Changelog ==
+
+= 2.7.12.1 - 2017-09-19 =
+* Update messages in regards to official launch of MailPoet version 3
 
 = 2.7.11.3 - 2017-07-21 =
 * Fixed Premium version download link

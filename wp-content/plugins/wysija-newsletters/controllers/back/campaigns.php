@@ -116,11 +116,12 @@ class WYSIJA_control_back_campaigns extends WYSIJA_control_back {
 		}
 
         $this->data['sections'][] = array(
-          'title' => __('A new and better MailPoet is coming this September', WYSIJA),
+          'title' => __("We're changing. So should you.", WYSIJA),
           'format' => 'title-content',
           'paragraphs' => array('
 <iframe src="https://player.vimeo.com/video/223581490" width="640" height="360" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
 <ul style="list-style: disc inside none">
+  <li>'.$this->viewObj->replace_link_shortcode(__("[link]Read the FAQ[/link] on what's going to happen to this current version of MailPoet (version 2)", WYSIJA), 'http://www.mailpoet.com/faq-mailpoet-version-2/').'</li>
   <li>'.__('MailPoet version 3 is completely rewritten', WYSIJA).'</li>
   <li>'.__('New email designer', WYSIJA).'</li>
   <li>'.__('Responsive templates', WYSIJA).'</li>
