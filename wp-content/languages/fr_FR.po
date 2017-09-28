@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.8.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-08-26 13:28:48+0000\n"
+"PO-Revision-Date: 2017-09-26 06:44:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -42,7 +42,7 @@ msgstr "Ce widget semble contenir du code qui fonctionnerait sans doute mieux da
 
 #: wp-includes/widgets/class-wp-widget-text.php:419
 msgid "Hey there, looks like you just pasted HTML into the &#8220;Visual&#8221; tab of the Text widget. You may want to paste your code into the &#8220;Text&#8221; tab instead. Alternately, try out the new &#8220;Custom HTML&#8221; widget!"
-msgstr "Bonjour, il semblerait que vous ayez collé du code HTML dans l’onglet « Visuel » du widget texte. Vous souhaitiez peut-être le coller dans l'onglet « Texte ». Vous pouvez également essayer le nouveau widget « HTML personnalisé » !"
+msgstr "Bonjour, il semblerait que vous ayez collé du code HTML dans l’onglet « Visuel » du widget texte. Vous souhaitiez peut-être le coller dans l’onglet « Texte ». Vous pouvez également essayer le nouveau widget « HTML personnalisé » !"
 
 #: wp-includes/widgets/class-wp-widget-text.php:418
 msgid "Did you just paste HTML?"
@@ -54,7 +54,7 @@ msgstr "Dites, avez-vous entendu parler de notre nouveau widget « HTML personn
 
 #: wp-includes/widgets/class-wp-widget-text.php:401
 msgid "Hey, did you hear we have a &#8220;Custom HTML&#8221; widget now? You can find it by pressing the &#8220;<a class=\"add-widget\" href=\"#\">Add a Widget</a>&#8221; button and searching for &#8220;HTML&#8221;. Check it out to add some custom code to your site!"
-msgstr "Dites, avez-vous entendu parler de notre nouveau widget « HTML personnalisé » ? Vous pouvez le trouver en cliquant sur le bouton « <a class=\"add-widget\" href=\"#\">Ajoutez un widget </a> » et en cherchant « HTML ». Utilisez-le pour ajouter du code personnalisé à votre site !"
+msgstr "Dites, avez-vous entendu parler de notre nouveau widget « HTML personnalisé » ? Vous pouvez le trouver en cliquant sur le bouton « <a class=\"add-widget\" href=\"#\">Ajoutez un widget</a> » et en cherchant « HTML ». Utilisez-le pour ajouter du code personnalisé à votre site !"
 
 #: wp-includes/widgets/class-wp-widget-text.php:399
 msgid "New Custom HTML Widget"
@@ -1950,7 +1950,7 @@ msgstr "Le contenu pour cet objet."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1208
 msgid "User agent for the object author."
-msgstr "Agent utilisateur pour l‘objet author."
+msgstr "Agent utilisateur pour l’objet author."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1202
 msgid "URL for the object author."
@@ -2757,7 +2757,7 @@ msgstr "Suppression..."
 
 #: wp-includes/script-loader.php:700
 msgid "Caution: These themes may be active on other sites in the network. Are you sure you want to proceed?"
-msgstr "Attention : Ces thèmes peuvent être actifs sur d’autres sites dans le réseau. Confirmez-vous vouloir vraiment faire cela ?"
+msgstr "Attention : Ces thèmes peuvent être actifs sur d’autres sites dans le réseau. Confirmez-vous la suppression ?"
 
 #: wp-includes/script-loader.php:699
 msgid "Are you sure you want to delete the selected plugins and their data?"
@@ -9015,7 +9015,7 @@ msgstr "Publié le :"
 
 #: wp-includes/script-loader.php:557
 msgid "Schedule for:"
-msgstr "Planifier pour :"
+msgstr "Planifié pour le :"
 
 #: wp-includes/script-loader.php:556
 msgid "Publish on:"

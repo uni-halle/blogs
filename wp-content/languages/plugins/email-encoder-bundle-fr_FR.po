@@ -2,14 +2,18 @@
 # This file is distributed under the same license as the Plugins - Email Encoder Bundle - Protect Email Address - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-09-08 14:58:08+0000\n"
+"PO-Revision-Date: 2017-09-13 17:18:32+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: fr\n"
 "Project-Id-Version: Plugins - Email Encoder Bundle - Protect Email Address - Stable (latest release)\n"
+
+#: includes/class-eeb-admin.php:255
+msgid "Future, end of support..."
+msgstr "Futur, fin du support &hellip;"
 
 #. Author URI of the plugin/theme
 msgid "http://www.freelancephp.net"
@@ -21,7 +25,7 @@ msgstr "Victor Villaverde Laan"
 
 #. Description of the plugin/theme
 msgid "Protect email addresses on your site and hide them from spambots by using an encoding method. Easy to use, flexible ."
-msgstr "Protégez les adresses électroniques sur votre site et cachez-les des robots collecteurs d’e-mails en utilisant une méthode de chiffrement. Simple et pratique à utiliser."
+msgstr "Protégez les adresses e-mail sur votre site et cachez-les des robots collecteurs d’e-mails en utilisant une méthode de chiffrement. Simple et pratique à utiliser."
 
 #. Plugin URI of the plugin/theme
 msgid "http://www.freelancephp.net/email-encoder-php-class-wp-plugin/"
@@ -29,7 +33,7 @@ msgstr "http://www.freelancephp.net/email-encoder-php-class-wp-plugin/"
 
 #. Plugin Name of the plugin/theme
 msgid "Email Encoder Bundle - Protect Email Address"
-msgstr "Email Encoder Bundle - Protect Email Address"
+msgstr "Email Encoder Bundle - Protégez vos adresses e-mail"
 
 #: includes/class-eeb-site.php:443
 msgid "Successfully Encoded"

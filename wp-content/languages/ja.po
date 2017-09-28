@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.8.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-08-03 23:23:50+0000\n"
+"PO-Revision-Date: 2017-09-28 01:39:39+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -478,7 +478,7 @@ msgstr "アイキャッチ画像に設定"
 #: wp-includes/post.php:1388
 msgctxt "post"
 msgid "Set featured image"
-msgstr "アイキャッチ画像に設定"
+msgstr "アイキャッチ画像を設定"
 
 #: wp-includes/post.php:1387
 msgctxt "page"

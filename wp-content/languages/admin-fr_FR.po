@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.8.x - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-09-13 19:34:52+0000\n"
+"PO-Revision-Date: 2017-09-26 06:49:15+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -52,11 +52,11 @@ msgstr "Cette fonctionnalité mérite un défilé en centre-ville&nbsp;! Les wid
 
 #: wp-admin/about.php:131
 msgid "A welcome video is a great way to humanize the branding of your website. You can now add any video from the Media Library to a sidebar on your site with the new Video widget. Use this to showcase a welcome video to introduce visitors to your site or promote your latest and greatest content."
-msgstr "Une vidéo de bienvenue est un excellent moyen d'humaniser l'image de marque de votre site. Vous pouvez maintenant ajouter n'importe quelle vidéo de la Bibliothèque de médias à une barre latérale sur votre site avec le nouveau widget Vidéo. Utilisez ceci pour diffuser une vidéo de bienvenue afin de présenter votre site aux visiteurs ou promouvoir votre dernier et meilleur contenu."
+msgstr "Une vidéo de bienvenue est un excellent moyen d’humaniser l’image de marque de votre site. Vous pouvez maintenant ajouter n’importe quelle vidéo de la bibliothèque de médias à une colonne latérale sur votre site avec le nouveau widget vidéo. Utilisez-le pour diffuser une vidéo de bienvenue afin de présenter votre site aux visiteurs ou promouvoir votre dernier et meilleur contenu."
 
 #: wp-admin/about.php:127
 msgid "Adding an image to a widget is now a simple task that is achievable for any WordPress user without needing to know code. Simply insert your image right within the widget settings. Try adding something like a headshot or a photo of your latest weekend adventure &mdash; and see it appear automatically."
-msgstr "Ajouter une image à un widget est maintenant un jeu d’enfant, à la portée de n&rsquo;importe quel utilisateur WordPress, sans qu'il ait besoin de savoir coder. Insérez simplement votre image dans les réglages du widget. Essayez d&rsquo;ajouter un portrait ou une photo des aventures de votre dernier week-end et voyez comme l’image apparaît automatiquement."
+msgstr "Ajouter une image à un widget est maintenant un jeu d’enfant, à la portée de n’importe quel utilisateur WordPress, sans qu’il ait besoin de savoir coder. Insérez simplement votre image dans les réglages du widget. Essayez d’ajouter un portrait ou une photo des aventures de votre dernier week-end et voyez comme l’image apparaît automatiquement."
 
 #: wp-admin/about.php:72
 msgid "Though some updates seem minor, they&#8217;ve been built by hundreds of contributors with <em>you</em> in mind. Get ready for new features you&#8217;ll welcome like an old friend: link improvements, <em>three</em> new media widgets covering images, audio, and video, an updated text widget that supports visual editing, and an upgraded news section in your dashboard which brings in nearby and upcoming WordPress events."
@@ -64,11 +64,11 @@ msgstr "Même si certaines mises à jour ont l&rsquo;air mineures, elles ont ét
 
 #: wp-admin/about.php:37 wp-admin/credits.php:23 wp-admin/freedoms.php:22
 msgid "Thank you for updating to the latest version! WordPress %s adds more ways for you to express yourself and represent your brand."
-msgstr "Merci à vous d’avoir mis à jour dans la dernière version ! WordPress %s ajoute encore plus de façons de vous exprimer et de représenter votre marque."
+msgstr "Merci à vous d’avoir mis à jour dans la dernière version ! WordPress %s ajoute encore plus de façons de vous exprimer et de représenter votre marque."
 
 #: wp-admin/about.php:226
 msgid "The introduction of a new base media widget REST API schema to 4.8 opens up possibilities for even more media widgets (like galleries or playlists) in the future. The three new media widgets are powered by a shared base class that covers most of the interactions with the media modal. That class also makes it easier to create new media widgets and paves the way for more to come."
-msgstr "L'intégration dans la version 4.8 d'un nouveau schéma de l’API REST dédié aux widgets médias offre, à l’avenir, beaucoup de possibilités aux widgets de médias (tels que des galeries ou les playlists). Les trois nouveaux widgets multimédias sont gérés par une même classe qui recouvre la plupart des interactions avec le mode média. Cette classe facilite également la création de nouveaux widgets de médias et ouvre la voie à bien plus encore."
+msgstr "L’intégration dans la version 4.8 d’un nouveau schéma de l’API REST dédié aux widgets médias offre, à l’avenir, beaucoup de possibilités aux widgets de médias (tels que des galeries ou les playlists). Les trois nouveaux widgets multimédias sont gérés par une même classe qui recouvre la plupart des interactions avec le mode média. Cette classe facilite également la création de nouveaux widgets de médias et ouvre la voie à bien plus encore."
 
 #: wp-admin/about.php:225
 msgid "Media Widgets API"
@@ -76,15 +76,15 @@ msgstr "API pour les Widgets Media"
 
 #: wp-admin/about.php:230
 msgid "Rejoice! New responsive breakpoints have been added to the customizer sidebar to make it wider on high-resolution screens. Customizer controls should use percentage-based widths instead of pixels."
-msgstr "Réjouissez vous ! De nouveaux points d'arrêt responsives ont été ajoutés à la barre latérale de la personnalisation afin de l'élargir sur les écrans haute résolution. Les contrôles ajoutés à l’outil de personnalisation devraient utiliser des largeurs en pourcentage plutôt que des dimensions en pixels."
+msgstr "Réjouissez-vous ! De nouveaux points d’arrêt responsives ont été ajoutés à la colonne latérale de la personnalisation afin de l’élargir sur les écrans haute résolution. Les contrôles ajoutés à l’outil de personnalisation devraient utiliser des largeurs en pourcentage plutôt que des dimensions en pixels."
 
 #: wp-admin/about.php:229
 msgid "Customizer Width Variable"
-msgstr "Largeur variable de l'Outil de personnalisation"
+msgstr "Largeur variable de l’outil de personnalisation"
 
 #: wp-admin/about.php:222
 msgid "With the addition of TinyMCE to the text widget in 4.8 comes a new JavaScript API for instantiating the editor after page load. This can be used to add an editor instance to any text area, and customize it with buttons and functions. Great for plugin authors!"
-msgstr "L’ajout de TinyMCE au widget texte dans la version 4.8 embarque une nouvelle API JavaScript chargée d’instancier l’éditeur après le chargement de la page. Cette API peut être utilisée pour ajouter une instance de l’éditeur à n'importe quelle zone de texte et la personnaliser avec des boutons et des fonctions. C'est super pour les auteurs d’extension !"
+msgstr "L’ajout de TinyMCE au widget texte dans la version 4.8 embarque une nouvelle API JavaScript chargée d’instancier l’éditeur après le chargement de la page. Cette API peut être utilisée pour ajouter une instance de l’éditeur à n’importe quelle zone de texte et la personnaliser avec des boutons et des fonctions. C’est super pour les auteurs d’extension !"
 
 #: wp-admin/about.php:221
 msgid "Text-Editor JavaScript API"
@@ -125,7 +125,7 @@ msgstr "Une mise à jour sur laquelle nous avons pensé à vous"
 #. translators: meetup organization documentation URL.
 #: wp-admin/includes/dashboard.php:1262
 msgid "There aren&#8217;t any events scheduled near you at the moment. Would you like to <a href=\"%s\">organize one</a>?"
-msgstr "Il n’y a aucun évènement planifié proche de vous pour le moment. Voulez vous en <a href=\"%s\">organiser un</a> ?"
+msgstr "Il n’y a aucun évènement planifié proche de vous pour le moment. Voulez-vous en <a href=\"%s\">organiser un</a> ?"
 
 #: wp-admin/about.php:167
 msgid "Nearby WordPress Events"
@@ -160,7 +160,7 @@ msgstr "https://make.wordpress.org/community/handbook/meetup-organizer/welcome/"
 #. documentation URL
 #: wp-admin/includes/dashboard.php:1254
 msgid "There aren&#8217;t any events scheduled near %1$s at the moment. Would you like to <a href=\"%2$s\">organize one</a>?"
-msgstr "Il n’y a aucun évènement planifié près de  %1$s pour le moment. Voudriez vous <a href=\"%2$s\">en organiser un</a> ?"
+msgstr "Il n’y a aucun évènement planifié près de  %1$s pour le moment. Voulez-vous <a href=\"%2$s\">en organiser un</a> ?"
 
 #. translators: %s is a placeholder for the name of a city.
 #: wp-admin/includes/dashboard.php:1211
@@ -228,7 +228,7 @@ msgstr "Désolé, vous n’avez pas l’autorisation de supprimer des utilisateu
 
 #: wp-admin/user-new.php:23 wp-admin/user-new.php:117
 msgid "Sorry, you are not allowed to create users."
-msgstr "Désolé, vous n’avez pas l'autorisation de créer des utilisateurs."
+msgstr "Désolé, vous n’avez pas l’autorisation de créer des utilisateurs."
 
 #: wp-admin/customize.php:163
 msgid "The Customizer allows you to preview changes to your site before publishing them. You can navigate to different pages on your site within the preview. Edit shortcuts are shown for some editable elements."
@@ -454,7 +454,7 @@ msgstr "Par défaut, les nouveaux utilisateurs recevront un message leur indiqua
 
 #: wp-admin/user-new.php:185
 msgid "New users are automatically assigned a password, which they can change after logging in. You can view or edit the assigned password by clicking the Show Password button. The username cannot be changed once the user has been added."
-msgstr "Les nouveaux utilisateurs reçoivent automatiquement un mot de passe, qui peut être changé après connexion. Vous pouvez afficher le mot de passe ou le modifier en cliquant sur le bouton «&nbsp;Afficher le mot de passe&nbsp;». L'identifiant ne peut pas être modifié une fois que le compte utilisateur a été créé."
+msgstr "Les nouveaux utilisateurs reçoivent automatiquement un mot de passe, qui peut être changé après connexion. Vous pouvez afficher le mot de passe ou le modifier en cliquant sur le bouton « Afficher le mot de passe ». L’identifiant ne peut pas être modifié une fois que le compte utilisateur a été créé."
 
 #. translators: %s: Plugin name
 #: wp-admin/includes/update.php:747
@@ -600,7 +600,7 @@ msgstr "%s extension mise à jour."
 #. translators: 1: Codex URL to release notes, 2: new WordPress version
 #: wp-admin/includes/update.php:257
 msgid "<a href=\"%1$s\">WordPress %2$s</a> is available! Please notify the site administrator."
-msgstr "<a href=\"%1$s\">WordPress %2$s</a> est disponible ! Veuillez informer l’administrateur du site."
+msgstr "<a href=\"%1$s\">WordPress %2$s</a> est disponible ! Veuillez informer l’administrateur du site."
 
 #: wp-admin/includes/update.php:252
 msgid "Please update WordPress now"
@@ -615,7 +615,7 @@ msgstr "https://codex.wordpress.org/Version_%s"
 #. to network admin, 4: accessibility text
 #: wp-admin/includes/update.php:244
 msgid "<a href=\"%1$s\">WordPress %2$s</a> is available! <a href=\"%3$s\" aria-label=\"%4$s\">Please update now</a>."
-msgstr "<a href=\"%1$s\">WordPress %2$s</a> est disponible ! <a href=\"%3$s\" aria-label=\"%4$s\">Veuillez le mettre à jour maintenant</a>."
+msgstr "<a href=\"%1$s\">WordPress %2$s</a> est disponible ! <a href=\"%3$s\" aria-label=\"%4$s\">Veuillez le mettre à jour maintenant</a>."
 
 #: wp-admin/includes/theme.php:280
 msgid "Portfolio"
@@ -671,7 +671,7 @@ msgstr "Info"
 
 #: wp-admin/includes/meta-boxes.php:872
 msgid "Need help? Use the Help tab above the screen title."
-msgstr "Besoin d’aide ? Utilisez l’onglet Aide au dessus du titre de l’écran."
+msgstr "Besoin d’aide ? Utilisez l’onglet « Aide » au dessus du titre de l’écran."
 
 #: wp-admin/includes/menu.php:342 wp-admin/my-sites.php:16
 msgid "Sorry, you are not allowed to access this page."
@@ -1855,7 +1855,7 @@ msgstr "Dans la colonne <strong>Envoyé le</strong>, vous trouverez la date et l
 
 #: wp-admin/edit-comments.php:177
 msgid "In the <strong>Comment</strong> column, hovering over any comment gives you options to approve, reply (and approve), quick edit, edit, spam mark, or trash that comment."
-msgstr "Dans la colonne <strong>Commentaire</strong>, survolez n&rsquo;importe quel commentaire avec votre souris afin d'afficher les liens pour approuver ce commentaire, y répondre (en l&rsquo;approuvant), le modifier rapidement, le marquer comme indésirable, ou le mettre à la corbeille."
+msgstr "Dans la colonne <strong>Commentaire</strong>, survolez n’importe quel commentaire avec votre souris afin d’afficher les liens pour approuver ce commentaire, y répondre (en l’approuvant), le modifier rapidement, le marquer comme indésirable, ou le mettre à la corbeille."
 
 #. translators: 1: comments count 2: post title
 #: wp-admin/edit-comments.php:141
@@ -2473,15 +2473,15 @@ msgid ""
 msgstr ""
 "Chèr·e ###USERNAME###,\n"
 "\n"
-"Vous avez récemment cliqué sur le lien « Supprimer le site » pour votre propre site, \n"
+"Vous avez récemment cliqué sur le lien « Supprimer le site » pour votre propre site, \n"
 "et avez complété le formulaire présent sur cette même page.\n"
 "\n"
 "Si vous confirmez la suppression de votre site, cliquez sur le lien ci-dessous.\n"
 "Aucune confirmation ne vous sera demandée par la suite, soyez donc totalement \n"
-"certain·e de ce que vous faites :\n"
+"certain·e de ce que vous faites :\n"
 "###URL_DELETE###\n"
 "\n"
-"Si vous effacez votre site, n’hésitez pas à revenir créer un autre site à l’avenir ! \n"
+"Si vous effacez votre site, n’hésitez pas à revenir créer un autre site à l’avenir ! \n"
 "(mais souvenez-vous que votre site actuel et votre identifiant\n"
 "ne seront plus jamais disponibles)\n"
 "\n"
@@ -2631,16 +2631,16 @@ msgid ""
 "\n"
 "Thanks! -- The WordPress Team"
 msgstr ""
-"BETA TESTEUR ?\n"
+"BETA TESTEUR ?\n"
 "==============\n"
 "\n"
-"Ce message de débogage est envoyé lorsque vous utilisez une version de développement de WordPress.\n"
+"Cet e-mail de débogage est envoyé lorsque vous utilisez une version de développement de WordPress.\n"
 "\n"
-"Si vous pensez que ces erreurs puissent être dues à un problème du côté de WordPress, pourriez-vous nous les signaler ?\n"
-"* Ouvrez une discussion sur le forum de support en anglais : https://wordpress.org/support/forum/alphabeta\n"
-"* Ou, si rédiger un rapport de bogue ne vous fait pas peur : http://core.trac.wordpress.org/\n"
+"Si vous pensez que ces erreurs puissent être dues à un problème du côté de WordPress, pourriez-vous nous les signaler ?\n"
+"* Ouvrez une discussion sur le forum de support en anglais : https://wordpress.org/support/forum/alphabeta\n"
+"* Ou, si rédiger un rapport de bug ne vous fait pas peur : http://core.trac.wordpress.org/\n"
 "\n"
-"Merci ! -- L’équipe WordPress"
+"Merci ! -- L’équipe WordPress"
 
 #: wp-admin/includes/class-wp-automatic-updater.php:856
 msgid ""
@@ -2767,7 +2767,7 @@ msgstr "Envoyé le"
 
 #: wp-admin/edit-form-advanced.php:369
 msgid "You can enable distraction-free writing mode using the icon to the right. This feature is not available for old browsers or devices with small screens, and requires that the full-height editor be enabled in Screen Options."
-msgstr "Vous pouvez activer le mode d’écriture sans distraction en cliquant sur l’icône à droite. Cette fonctionnalité n’est pas disponible pour les anciens navigateurs ou les appareils à petits écrans, et requiert l’activation de l'éditeur plein-écran dans les options de l’écran."
+msgstr "Vous pouvez activer le mode d’écriture sans distraction en cliquant sur l’icône à droite. Cette fonctionnalité n’est pas disponible pour les anciens navigateurs ou les appareils à petits écrans, et requiert l’activation de l’éditeur plein-écran dans les options de l’écran."
 
 #: wp-admin/includes/plugin-install.php:351
 msgid "These suggestions are based on the plugins you and other users have installed."
@@ -2805,24 +2805,24 @@ msgid ""
 "--The WordPress Team\n"
 "https://wordpress.org/\n"
 msgstr ""
-"Votre nouveau site WordPress a bien été installé à l’adresse :\n"
+"Votre nouveau site WordPress a bien été installé à l’adresse :\n"
 "\n"
 "%1$s\n"
 "\n"
-"Vous pouvez vous y connecter en tant qu’administrateur avec les informations suivantes :\n"
+"Vous pouvez vous y connecter en tant qu’administrateur avec les informations suivantes :\n"
 "\n"
-"Identifiant : %2$s\n"
-"Mot de passe : %3$s\n"
-"Connectez-vous ici : %4$s\n"
+"Identifiant : %2$s\n"
+"Mot de passe : %3$s\n"
+"Connectez-vous ici : %4$s\n"
 "\n"
-"Nous espérons que vous aimerez votre nouveau site ! Merci à vous !\n"
+"Nous espérons que vous aimerez votre nouveau site ! Merci à vous !\n"
 "\n"
 "--L’équipe WordPress\n"
 "https://wordpress.org/\n"
 
 #: wp-admin/install.php:128
 msgid "Usernames can have only alphanumeric characters, spaces, underscores, hyphens, periods, and the @ symbol."
-msgstr "Les identifiants ne peuvent utiliser que des caractères alphanumériques, des espaces, des tirets bas (\"_\"), des traits d'union (\"-\"), des points et le symbole @."
+msgstr "Les identifiants ne peuvent utiliser que des caractères alphanumériques, des espaces, des tirets bas (\"_\"), des traits d’union (\"-\"), des points et le symbole @."
 
 #: wp-admin/options-discussion.php:229
 msgid "Mystery Person"
@@ -3146,7 +3146,7 @@ msgstr "Les proportions d&rsquo;une image sont le rapport entre sa largeur et sa
 
 #: wp-admin/edit-form-advanced.php:370
 msgid "Keyboard users: When you&#8217;re working in the visual editor, you can use <kbd>Alt + F10</kbd> to access the toolbar."
-msgstr "Utilisateurs du clavier&nbsp;: lorsque vous travaillez dans l&rsquo;éditeur visuel, vous pouvez utiliser <kbd>Alt + F10</kbd> pour accéder à la barre d'outils."
+msgstr "Utilisateurs du clavier : lorsque vous travaillez dans l’éditeur visuel, vous pouvez utiliser <kbd>Alt + F10</kbd> pour accéder à la barre d’outils."
 
 #: wp-admin/edit-comments.php:175
 msgid "A red bar on the left means the comment is waiting for you to moderate it."
@@ -3478,7 +3478,7 @@ msgid ""
 msgstr ""
 "Confirmez-vous la suppression de ce thème ?\n"
 "\n"
-"« Annuler » pour arrêter, « OK » pour supprimer."
+"« Annuler » pour arrêter, « OK » pour supprimer."
 
 #: wp-admin/index.php:72
 msgid "<strong>Quick Draft</strong> &mdash; Allows you to create a new post and save it as a draft. Also displays links to the 5 most recent draft posts you've started."
@@ -3644,7 +3644,7 @@ msgstr "Pour des questions de sécurité, il est important de garder votre site 
 
 #: wp-admin/includes/class-wp-automatic-updater.php:682
 msgid "Please check out your site now. It's possible that everything is working. If it says you need to update, you should do so:"
-msgstr "Veuillez vérifier votre site immédiatement. Il se peut que tout fonctionne. S’il affiche que vous devez faire une mise à jour, vous devriez suivre son conseil :"
+msgstr "Veuillez vérifier votre site immédiatement. Il se peut que tout fonctionne. S’il affiche que vous devez faire une mise à jour, vous devriez suivre son conseil :"
 
 #: wp-admin/includes/class-wp-automatic-updater.php:680
 msgid "This means your site may be offline or broken. Don't panic; this can be fixed."
@@ -3677,7 +3677,7 @@ msgstr "Vous n’avez rien de plus à faire."
 
 #: wp-admin/includes/class-wp-automatic-updater.php:641
 msgid "Howdy! Your site at %1$s has been updated automatically to WordPress %2$s."
-msgstr "Salutations ! Votre site à l’adresse %1$s a été automatiquement mis à jour vers WordPress %2$s."
+msgstr "Salutations ! Votre site à l’adresse %1$s a été automatiquement mis à jour vers WordPress %2$s."
 
 #. translators: 1: Site name.
 #: wp-admin/includes/class-wp-automatic-updater.php:626
@@ -3687,7 +3687,7 @@ msgstr "[%1$s] URGENT : suite à une mise à jour échouée, votre site est peut
 #. translators: 1: Site name, 2: WordPress version number.
 #: wp-admin/includes/class-wp-automatic-updater.php:621
 msgid "[%1$s] WordPress %2$s is available. Please update!"
-msgstr "[%1$s] WordPress %2$s est disponible. Veuillez faire une mise à jour !"
+msgstr "[%1$s] WordPress %2$s est disponible. Veuillez faire une mise à jour !"
 
 #. translators: 1: Site name, 2: WordPress version number.
 #: wp-admin/includes/class-wp-automatic-updater.php:615
@@ -5244,12 +5244,12 @@ msgstr "WordPress &rsaquo; Fichier de configuration"
 #. translators: %s: install.php
 #: wp-admin/setup-config.php:64
 msgid "The file 'wp-config.php' already exists one level above your WordPress installation. If you need to reset any of the configuration items in this file, please delete it first. You may try <a href='%s'>installing now</a>."
-msgstr "Le fichier 'wp-config.php' existe déjà, un niveau au-dessus de votre installation WordPress. Si vous devez mettre à zéro vos éléments de configuration, veuillez d&rsquo;abord effacer ce fichier. Vous pouvez essayer de <a href='%s'>lancer l&rsquo;installation</a>."
+msgstr "Le fichier 'wp-config.php' existe déjà, un niveau au-dessus de votre installation WordPress. Si vous devez mettre à zéro vos éléments de configuration, veuillez d’abord effacer ce fichier. Vous pouvez essayer de <a href='%s'>lancer l’installation</a>."
 
 #. translators: %s: install.php
 #: wp-admin/setup-config.php:55
 msgid "The file 'wp-config.php' already exists. If you need to reset any of the configuration items in this file, please delete it first. You may try <a href='%s'>installing now</a>."
-msgstr "Le fichier <code>wp-config.php</code> existe déjà. Si vous devez mettre à zéro n&rsquo;importe quelle valeur de configuration dans ce fichier, veuillez commencer par le supprimer. Vous pouvez <a href='%s'>essayer l&rsquo;installation maintenant</a>."
+msgstr "Le fichier <code>wp-config.php</code> existe déjà. Si vous devez mettre à zéro n’importe quelle valeur de configuration dans ce fichier, veuillez commencer par le supprimer. Vous pouvez <a href='%s'>essayer l’installation maintenant</a>."
 
 #: wp-admin/setup-config.php:49
 msgid "Sorry, I need a wp-config-sample.php file to work from. Please re-upload this file to your WordPress installation."
@@ -5325,7 +5325,7 @@ msgstr "Dans les versions précédentes de WordPress, tous les importateurs éta
 
 #: wp-admin/includes/image-edit.php:227
 msgid "There are unsaved changes that will be lost. 'OK' to continue, 'Cancel' to return to the Image Editor."
-msgstr "Les modifications qui n’ont pas été enregistrées seront perdues. « OK » pour continuer, « Annuler » pour revenir à l’éditeur d’images."
+msgstr "Les modifications qui n’ont pas été enregistrées seront perdues. « OK » pour continuer, « Annuler » pour revenir à l’éditeur d’images."
 
 #: wp-admin/options-writing.php:30
 msgid "Post via email settings allow you to send your WordPress install an email with the content of your post. You must set up a secret email account with POP3 access to use this, and any mail received at this address will be posted, so it&#8217;s a good idea to keep this address very secret."
@@ -5763,9 +5763,9 @@ msgid ""
 msgstr ""
 "Bonjour,\n"
 "\n"
-"Vous avez été invité·e à rejoindre « %1$s » sur\n"
+"Vous avez été invité·e à rejoindre « %1$s » sur\n"
 "%2$s en tant que %3$s. \n"
-"Veuillez cliquer sur le lien suivant pour confirmer l’invitation :\n"
+"Veuillez cliquer sur le lien suivant pour confirmer l’invitation :\n"
 "%4$s"
 
 #: wp-admin/credits.php:124
@@ -6146,12 +6146,12 @@ msgid ""
 "%%s"
 msgstr ""
 "Bonjour,\n"
-"Vous avez été invité·e à rejoindre « %1$s » sur\n"
+"Vous avez été invité·e à rejoindre « %1$s » sur\n"
 "%2$s en tant que %3$s. \n"
 "Si vous ne souhaitez pas rejoindre ce site, veuillez ignorer\n"
-"ce message. L’invitation expirera dans quelques jours.\n"
+"cet e-mail. L’invitation expirera dans quelques jours.\n"
 "\n"
-"Veuillez cliquer sur le lien suivant pour activer votre compte utilisateur :\n"
+"Veuillez cliquer sur le lien suivant pour activer votre compte utilisateur :\n"
 "%%s"
 
 #: wp-admin/includes/theme.php:257
@@ -7326,7 +7326,7 @@ msgstr "Les autres utilisateurs ont été supprimés."
 
 #: wp-admin/users.php:464
 msgid "You can't remove the current user."
-msgstr "Vous ne pouvez pas supprimer l&rsquo;utilisateur courant."
+msgstr "Vous ne pouvez pas supprimer l’utilisateur courant."
 
 #: wp-admin/users.php:391
 msgid "There are no valid users selected for removal."
@@ -8009,8 +8009,8 @@ msgid ""
 "You are about to delete this theme '%s'\n"
 "  'Cancel' to stop, 'OK' to delete."
 msgstr ""
-"Vous êtes sur le point de supprimer le thème « %s ».\n"
-"  « Annuler » pour arrêter, « OK » pour supprimer."
+"Vous êtes sur le point de supprimer le thème « %s ».\n"
+"« Annuler » pour arrêter, « OK » pour supprimer."
 
 #: wp-admin/includes/theme.php:656 wp-admin/themes.php:451
 msgid "Current Theme"
@@ -9502,8 +9502,8 @@ msgid ""
 "You are about to delete this link '%s'\n"
 "  'Cancel' to stop, 'OK' to delete."
 msgstr ""
-"Vous êtes sur le point de supprimer le lien « %s ».\n"
-"« Annuler » pour arrêter, « OK » pour supprimer."
+"Vous êtes sur le point de supprimer le lien « %s ».\n"
+"« Annuler » pour arrêter, « OK » pour supprimer."
 
 #: wp-admin/includes/meta-boxes.php:908
 msgid "Keep this link private"

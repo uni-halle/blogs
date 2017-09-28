@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Duplicate Post - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-05-21 08:44:40+0000\n"
+"PO-Revision-Date: 2017-09-17 17:22:59+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,7 +17,7 @@ msgstr "https://duplicate-post.lopo.it/"
 
 #: duplicate-post-options.php:235
 msgid "you probably want this unchecked, unless you have very special requirements"
-msgstr "il est mieux que vous laissez cette case vide, à moins d’avoir des exigences particulières"
+msgstr "mieux vaut que vous laissiez cette case vide, à moins d’avoir des exigences particulières"
 
 #: duplicate-post-admin.php:653 duplicate-post-options.php:91
 msgid "Documentation"
@@ -45,7 +45,7 @@ msgstr "Actions groupées"
 
 #: duplicate-post-options.php:285
 msgid "You can use * to match zero or more alphanumeric characters or underscores: e.g. field*"
-msgstr "Vous pouvez utiliser * pour remplacer zéro ou plusieurs caractères alphanumériques ou tirets du bas : par ex. champ*"
+msgstr "Vous pouvez utiliser * pour remplacer zéro ou plusieurs caractères alphanumériques ou tirets du bas : par ex. champ*."
 
 #: duplicate-post-options.php:244
 msgid "Menu order"
@@ -88,7 +88,7 @@ msgstr[1] "%s éléments copiés."
 
 #: duplicate-post-options.php:373
 msgid "You can also use the template tag duplicate_post_clone_post_link( $link, $before, $after, $id ). More info <a href=\"%s\">here</a>"
-msgstr "Vous pouvez aussi utiliser le marqueur de modèle duplicate_post_clone_post_link( $link, $before, $after, $id ). Plus d’info <a href=\"%s\">ici</a>"
+msgstr "Vous pouvez aussi utiliser le marqueur de modèle duplicate_post_clone_post_link( $link, $before, $after, $id ). Plus d’info <a href=\"%s\">ici</a>."
 
 #: duplicate-post-options.php:346 duplicate-post-options.php:372
 msgid "Whether the links are displayed for custom post types registered by themes or plugins depends on their use of standard WordPress UI elements"
@@ -96,7 +96,7 @@ msgstr "L’affichage des liens pour les types de contenu personnalisés déclar
 
 #: duplicate-post-options.php:345
 msgid "Select the post types you want the plugin to be enabled"
-msgstr "Sélectionnez les types de contenus que vous autorisez l’extension à dupliquer"
+msgstr "Sélectionnez les types de contenus que vous autorisez l’extension à dupliquer."
 
 #: duplicate-post-options.php:336
 msgid "Enable for these post types"
@@ -104,11 +104,11 @@ msgstr "Activer pour ces types de contenus"
 
 #: duplicate-post-options.php:330
 msgid "Passwords and contents of password-protected posts may become visible to undesired users and visitors"
-msgstr "Les mots de passe et le contenu des articles/pages protégés par mot de passe peuvent devenir visibles aux yeux de tous les utilisateurs et des visiteurs"
+msgstr "Les mots de passe et le contenu des articles/pages protégés par mot de passe peuvent devenir visibles aux yeux de tous les utilisateurs et des visiteurs."
 
 #: duplicate-post-options.php:292
 msgid "Show/hide private taxonomies"
-msgstr "Afficher/cacher les taxinomies privées"
+msgstr "Afficher/cacher les taxonomies privées"
 
 #: duplicate-post-options.php:274
 msgid "Add this number to the original menu order (blank or zero to retain the value)"
@@ -164,7 +164,7 @@ msgstr "Titre"
 
 #: duplicate-post-options.php:198
 msgid "Post/page elements to copy"
-msgstr "Articles/pages à copier"
+msgstr "Éléments à copier"
 
 #: duplicate-post-options.php:190
 msgid "Display"
@@ -228,7 +228,7 @@ msgstr "Montrer les liens dans "
 
 #: duplicate-post-options.php:329
 msgid "Warning: users will be able to copy all posts, even those of other users"
-msgstr "Avertissement : ces utilisateurs pourront copier tous les articles/pages, même ceux des autres auteurs"
+msgstr "Avertissement : ces utilisateurs pourront copier tous les contenus, même ceux des autres auteurs."
 
 #: duplicate-post-options.php:319
 msgid "Roles allowed to copy"
@@ -236,7 +236,7 @@ msgstr "Rôles autorisés à copier"
 
 #: duplicate-post-options.php:264
 msgid "Suffix to be added after the title, e.g. \"(dup)\" (blank for no suffix)"
-msgstr "Suffixe à ajouter après le titre, par ex : « dup » (laissez vide pour ne pas ajouter de suffixe)"
+msgstr "Suffixe à ajouter après le titre, par ex : « dup » (laissez vide pour ne pas ajouter de suffixe)."
 
 #: duplicate-post-options.php:259
 msgid "Title suffix"
@@ -244,7 +244,7 @@ msgstr "Suffixe du titre"
 
 #: duplicate-post-options.php:254
 msgid "Prefix to be added before the title, e.g. \"Copy of\" (blank for no prefix)"
-msgstr "Préfixe à ajouter devant le titre, par ex : « Copie de » (laissez vide pour ne pas ajouter de préfixe)"
+msgstr "Préfixe à ajouter devant le titre, par ex : « Copie de » (laissez vide pour ne pas ajouter de préfixe)."
 
 #: duplicate-post-options.php:249
 msgid "Title prefix"
@@ -252,15 +252,15 @@ msgstr "Préfixe du titre"
 
 #: duplicate-post-options.php:309
 msgid "Select the taxonomies you don't want to be copied"
-msgstr "Sélectionnez les taxinomies que vous ne voulez pas copier"
+msgstr "Sélectionnez les taxonomies que vous ne voulez pas copier"
 
 #: duplicate-post-options.php:290
 msgid "Do not copy these taxonomies"
-msgstr "Ne pas copier ces taxinomies"
+msgstr "Ne pas copier ces taxonomies"
 
 #: duplicate-post-options.php:284
 msgid "Comma-separated list of meta fields that must not be copied"
-msgstr "Liste séparée par des virgules de champs meta qui ne doivent pas être copiés"
+msgstr "Liste séparée par des virgules de champs meta qui ne doivent pas être copiés."
 
 #: duplicate-post-options.php:279
 msgid "Do not copy these fields"
@@ -286,7 +286,7 @@ msgstr "Faire un don"
 
 #: duplicate-post-admin.php:319
 msgid "Copy creation failed, could not find original:"
-msgstr "Echec de la duplication, impossible de trouver l'original"
+msgstr "Échec de la copie, impossible de trouver l’original :"
 
 #: duplicate-post-admin.php:280
 msgid "No post to duplicate has been supplied!"

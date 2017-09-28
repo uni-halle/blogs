@@ -1,0 +1,54 @@
+# Translation of Plugins - WPMU Plugin Stats - Stable (latest release) in German
+# This file is distributed under the same license as the Plugins - WPMU Plugin Stats - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-09-12 21:03:29+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: de\n"
+"Project-Id-Version: Plugins - WPMU Plugin Stats - Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "https://www.wpstore.io"
+msgstr "https://www.wpstore.io"
+
+#. Author of the plugin/theme
+msgid "WPStore.io"
+msgstr "WPStore.io"
+
+#. Description of the plugin/theme
+msgid "Gives network admins an easy way to see what plugins are actively used on the sites of a multisite installation"
+msgstr "Gibt Network Admins eine Übersicht über die Nutzung der Plugins auf den Seiten einer Multisite Installation"
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/wpmu-plugin-stats/"
+msgstr "https://de.wordpress.org/plugins/wpmu-plugin-stats/"
+
+#. Plugin Name of the plugin/theme
+msgid "WPMU Plugin Stats"
+msgstr "WPMU Plugin Stats"
+
+#: wpmu-plugin-stats.php:323
+msgid "This plugin only runs on multisite installations. The functionality makes no sense for WP single sites."
+msgstr "Dieses Plugin läuft nur auf Multisite Installationen. Die Funktion ist für Einzelinstallationen nicht geeignet."
+
+#: wpmu-plugin-stats.php:187
+msgid "Active on %2$s %1$d site %3$s"
+msgid_plural "Active on %2$s %1$d sites %3$s"
+msgstr[0] "Aktiv auf %2$s %1$d Seite %3$s"
+msgstr[1] "Aktiv auf %2$s %1$d Seiten %3$s"
+
+#: wpmu-plugin-stats.php:182
+msgid "Active on all sites"
+msgstr "Aktiv auf allen Seiten"
+
+#: wpmu-plugin-stats.php:178
+msgid "Not Active on any site"
+msgstr "Auf keiner Seite aktiv"
+
+#: wpmu-plugin-stats.php:151
+msgid "Usage"
+msgstr "Nutzung"

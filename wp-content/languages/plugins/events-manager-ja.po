@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Events Manager - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-09-10 07:28:32+0000\n"
+"PO-Revision-Date: 2017-09-27 08:09:30+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,6 +14,10 @@ msgstr ""
 #: templates/forms/event/recurring-when.php:55
 msgid "fifth"
 msgstr "第 5"
+
+#: templates/forms/event/recurring-when.php:20
+msgid "Modifications to event dates will cause all recurrences of this event to be deleted and recreated, previous bookings will be deleted."
+msgstr "開催日を変更すると、このイベントのすべての繰り返しが削除されたのちに再構築されます。これによって、すでに入っている予約の情報も滅失してしまいます。"
 
 #: classes/em-event.php:2599
 msgid "the fifth %s of the month"
@@ -37,7 +41,7 @@ msgstr "迷子イベントを削除"
 
 #: admin/em-options.php:732
 msgid "Orphaned events may show on your event lists but not point to real event pages, and can be deleted. %d potentially orphaned events have been found."
-msgstr "%d 件の迷子イベントが検出されました。迷子イベントとは、イベント一覧には表示されているが、対応するイベント詳細ページが削除された等の原因でどのイベント詳細ページにも紐付いていないイベントです。"
+msgstr "現在 %d 件の迷子イベントが存在します。迷子イベントとは「イベント一覧には表示されているものの、対応するイベント詳細ページが削除された等の原因で、どのイベント詳細ページにも紐付いていないイベント」をさします。「迷子イベントを削除」ボタンを押すと、これらの迷子イベントをクリーンアップします。"
 
 #: admin/em-options.php:738
 msgid "Are you sure you want to proceed? We recommend you back up your database first, just in case!"
@@ -59,6 +63,10 @@ msgstr "現在の繰り返し規則: %s"
 msgid "Modify Recurring Event Tickets "
 msgstr "繰り返しイベントのチケットを編集"
 
+#: templates/forms/event/bookings.php:149
+msgid "Cancel Ticket Recreation"
+msgstr "チケットの再生成をキャンセル"
+
 #: templates/emails/bookingsummary.php:61
 msgid "Surcharges (After Taxes)"
 msgstr "手数料(税加算後)"
@@ -67,25 +75,93 @@ msgstr "手数料(税加算後)"
 msgid "Surcharges Before Taxes"
 msgstr "課税前の追加料金"
 
+#: events-manager.php:370 templates/forms/event/bookings.php:36
+msgid "Modifications to event tickets will cause all bookings to individual recurrences of this event to be deleted."
+msgstr "イベントチケットを編集すると、すべての予約情報において、このイベントの個別の繰り返しが削除されます。"
+
+#: events-manager.php:365
+msgid "Modifications to event times will cause all recurrences of this event to be deleted and recreated, previous bookings will be deleted."
+msgstr "開催時刻を変更すると、このイベントのすべての繰り返し部分が削除されたのち再構築され、それによって既存の予約情報が滅失してしまいます。"
+
+#: events-manager.php:364 events-manager.php:366 events-manager.php:369
+msgid "Are you sure you want to continue?"
+msgstr "本当によろしいですか?"
+
+#: classes/em-event-posts-admin.php:305
+msgid "You can edit individual recurrences and disassociate them with a recurring event to prevent getting overwritten."
+msgstr "上書きされないようにするには、繰り返しイベントのうち編集したいものだけを個別に編集して、一連の繰り返しイベントと切り離します。"
+
+#: classes/em-event-posts-admin.php:68 em-template-tags.php:242
+msgid "You are viewing individual recurrences of recurring event %s."
+msgstr "現在表示しているのは、以下の繰り返しイベントに含まれる個別の繰り返し部分です。：%s"
+
+#: classes/em-event-post-admin.php:41 classes/em-event-posts-admin.php:69
+#: em-template-tags.php:243 templates/forms/event/bookings.php:39
+#: templates/forms/event/recurring-when.php:23
+msgid "You can edit individual recurrences and disassociate them with this recurring event."
+msgstr "繰り返し部分を個別に編集することで、親繰り返しイベントから切り離すことができます。"
+
+#: classes/em-event-post-admin.php:40 classes/em-event-posts-admin.php:302
+#: events-manager.php:368
+msgid "Bookings to individual event recurrences will be preserved if event times and ticket settings are not modified."
+msgstr "開催時間およびチケットの設定を変更しない場合は、個別の繰り返しイベントの予約情報は保持されます。"
+
+#: classes/em-event-post-admin.php:39 classes/em-event-posts-admin.php:301
+#: events-manager.php:367
+msgid "Modifications to recurring events will be applied to all recurrences and will overwrite any changes made to those individual event recurrences."
+msgstr "繰り返しイベントを編集すると、変更した箇所の情報がすべての繰り返しに適用され、以下の既存の各繰り返しイベントにも新しい情報が上書きされます。"
+
 #: admin/settings/tabs/formats.php:448
 msgid "Google Maps Styling Wizard"
 msgstr "Google マップのスタイルウィザード"
 
 #: admin/settings/tabs/formats.php:448
+msgid "You can add styles to your maps to give them a unique look. Build one using the %s or choose from the many free templates on %s paste the generated JSON code here."
+msgstr "個性的なマップにするために、スタイルを設定できます。%sを使うか、 %s にある多彩な無料テンプレートをここにコピペすることで JSON コードを生成できます。"
+
+#: admin/settings/tabs/formats.php:448
 msgid "Google Maps Style"
 msgstr "Google マップのスタイル"
 
+#: admin/settings/tabs/formats.php:107
+msgid "Search form will be pre-selected with this country."
+msgstr "検索フォームで基準とする国を設定します。前項で「国で検索」が有効でない場合は、ここで選択した国に関する結果のみが表示されます。"
+
+#: admin/settings/tabs/emails.php:108
+msgid "%s is replaced by username, %s is replaced by the user password and %s is replaced by a link to create a password."
+msgstr "%s はユーザー名、%s はパスワード、%s はパスワード生成画面へのリンクに置き換えられます。"
+
+#: admin/settings/tabs/bookings.php:136
+msgid "The option below allows you to disable user accounts, yet you will still see the supplied personal information for each booking."
+msgstr "以下のオプションで、予約申込み時の利用者認証 (ログイン) を無効にします。ただし、申込者の情報は予約情報の一部としてが記録されているので、予約の詳細を参照すれば申込者個人の特定が可能です。"
+
+#: admin/em-options.php:709
+msgid "Export your Events Manager settings and restore them here or on another website running this plugin."
+msgstr "左のボタンを押すと、Events Manager の設定をダウンロードします。エクスポートした設定は、このサイトの設定の復元や、Events Manager を実行している別のサイトへのインポートに使用できます。"
+
 #: admin/em-options.php:707
 msgid "Export Settings"
-msgstr "エクスポート設定"
+msgstr "エクスポート"
+
+#: admin/em-options.php:691
+msgid "Choose a settings file saved from a backup or another Events Manager installation and click the '%s' button."
+msgstr "「ファイルを選択」ボタンで設定ファイルを選択し、左の「%s」ボタンを押すと、このサイトへ設定をインポートします。"
 
 #: admin/em-options.php:687 admin/em-options.php:691
 msgid "Import Settings"
-msgstr "インポート設定"
+msgstr "インポート"
+
+#: admin/em-options.php:682
+msgid "Within the network admin area, only network-specific settings will be exported or imported. For individual site settings please visit the relevant site within your network."
+msgstr "エクスポート／インポートされる設定は、サーバーやデータベースを特定した内容になっています。このサイトからエクスポートした設定をこのサイトへインポートする場合は問題ありませんが、このサイトからエクスポートした設定を別のサイトでインポートする場合は、インポート先のサイトのサーバーおよびデータベース設定に応じて設定ファイルを編集してください。"
 
 #: admin/em-options.php:680
 msgid "Import/Export Settings"
-msgstr "インポート / エクスポート設定"
+msgstr "設定のインポート / エクスポート"
+
+#: admin/em-options.php:215
+msgid "Please upload a valid txt file containing Events Manager import settings."
+msgstr "Events Manager からエクスポートした適切な設定ファイル (テキスト形式) を選択してください。"
 
 #: admin/em-options.php:210
 msgid "Settings imported."
@@ -618,7 +694,7 @@ msgstr "一度に予約できる席数の上限"
 
 #: templates/forms/event/bookings.php:164
 msgid "Individual tickets with remaining spaces will not be available if total booking spaces reach this limit. Leave blank for no limit."
-msgstr "すべての券種を合わせた全体の総定員数です。まだ席数が残っているチケットがあっても、総席数に達するとそれ以降は予約できません。(例／30名定員のチケットが5種類ある場合でも、総席数が100であれば、5券種合わせて100席までしか予約できません)　半角数字のみ。総席数を制限しない場合は空白にします。"
+msgstr "すべての券種を合わせた総定員数です。まだ残席のあるチケットがあっても、総席数に達するとそれ以降は予約できません。(例／30名定員のチケットが5種類ある場合でも、総席数が100であれば、5券種合わせて100席までしか予約できません)　半角数字のみ。総席数を制限しない場合は空白にします。"
 
 #: templates/forms/event/bookings.php:162
 msgid "Total Spaces"
@@ -698,7 +774,7 @@ msgstr "メンバー"
 
 #: templates/forms/event/bookings-ticket-form.php:86
 msgid "Everyone"
-msgstr "誰でも"
+msgstr "制限なし"
 
 #: templates/forms/event/bookings-ticket-form.php:84
 msgid "Available for"
@@ -706,7 +782,7 @@ msgstr "利用できる最低権限"
 
 #: templates/forms/event/bookings-ticket-form.php:79
 msgid "Required?"
-msgstr "必須選択のチケット ?"
+msgstr "必ず選択"
 
 #: templates/forms/event/bookings-ticket-form.php:79
 msgid "If checked every booking must select one or the minimum number of this ticket."
@@ -714,7 +790,7 @@ msgstr "チェックした場合、すべての予約は一つまたは最小の
 
 #: templates/forms/event/bookings-ticket-form.php:59
 msgid "Available until"
-msgstr "予約終了日時"
+msgstr "受付終了日時"
 
 #: templates/forms/event/bookings-ticket-form.php:54
 #: templates/forms/event/bookings-ticket-form.php:73
@@ -754,7 +830,7 @@ msgstr "日"
 
 #: templates/forms/event/bookings-ticket-form.php:40
 msgid "Available from"
-msgstr "予約開始日時"
+msgstr "受付開始日時"
 
 #: templates/forms/event/bookings-ticket-form.php:39
 #: templates/forms/event/bookings-ticket-form.php:58
@@ -820,7 +896,7 @@ msgstr "予約可能な席数"
 #: templates/forms/event/attributes.php:83
 #: templates/forms/location/attributes.php:83
 msgid "In order to use attributes, you must define some in your templates, otherwise they'll never show. Go to Events > Settings > General to add attribute placeholders."
-msgstr "オプション項目を使用するには、まずページのテンプレートに定義する必要があります。<br />まず、[イベント]→[設定]→[基本設定]→[全般的な設定]で、「イベント(または開催場所)のオプション項目を有効にしますか？」を「はい」にし、「イベント(または開催場所)のオプション項目」の記入欄にオプション項目のキー値を追加します。<br />次に、[イベント]→[設定]→[書式設定]→[イベント(または開催場所)]で、オプション項目を表示したい箇所に、イベントの場合は<code>_ATT{キー値}</code>、開催場所の場合は<code>_LATT{キー値}</code>の形で挿入します。<br />以上の処理が完了するとこのメッセージは消え、代わりにオプション項目の記入欄が表示されるようになります。"
+msgstr "オプション項目を使用するには、ページのテンプレートにキー値を定義しておく必要があります。(1) まず、[イベント] --> [設定] --> [基本設定] --> [全般的な設定]で、「イベント (または開催場所) のオプション項目を有効にしますか？」を「はい」にし、「イベント (または開催場所) のオプション項目」の記入欄にオプション項目のキー値を追加します。(2) 次に、[イベント] --> [設定] --> [書式設定] --> [イベント (または開催場所)] で、オプション項目を表示したい箇所に、イベントの場合は<code>_ATT{キー値}</code>、開催場所の場合は<code>_LATT{キー値}</code>の形で挿入します。以上の処理が完了するとこのメッセージは消え、代わりにオプション項目の記入欄が表示されるようになります。"
 
 #: templates/forms/event/attributes.php:51
 msgid "If you see any attributes under here, that means they're not used in Events Manager formats. To add them, you need to add the custom attribute again to a formatting option in the settings page. To remove any of these deprecated attributes, give it a blank value and save."
@@ -1538,7 +1614,7 @@ msgstr "<span style=\"color: #ff0000;\"><strong>エラー</strong>: このユー
 
 #: em-functions.php:426
 msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
-msgstr "<span style=\"color: #ff0000;\"><strong>エラー</strong>: ユーザ名が無効です。正しいユーザ名を入力してください。(半角英数のみ)</span>"
+msgstr "<strong>エラー</strong>: ユーザー名が無効です。正しいユーザー名を入力してください。(半角英数のみ)"
 
 #: em-functions.php:424
 msgid "<strong>ERROR</strong>: Please enter a username."
@@ -2019,11 +2095,11 @@ msgstr "このイベントのデータを編集して保存すると、繰り返
 
 #: classes/em-event-post-admin.php:44
 msgid "WARNING: This is a recurrence in a set of recurring events."
-msgstr "警告:これは繰り返しイベントの繰り返し部分です。"
+msgstr "注意: このイベントは、繰り返しイベントの一部です。"
 
 #: classes/em-event-post-admin.php:38
 msgid "WARNING: This is a recurring event."
-msgstr "警告:これは繰り返しイベントです。"
+msgstr "注意: このイベントは、親繰り返しイベントです。"
 
 #: classes/em-categories-taxonomy.php:73
 msgid "Choose an image for your category, which can be displayed using the %s placeholder."
@@ -2055,7 +2131,7 @@ msgstr "不測のエラーが発生しました。"
 
 #: classes/em-bookings.php:312 classes/em-bookings.php:318
 msgid "Bookings %s. Mails Sent."
-msgstr "%sを予約し、メールを送信しました。"
+msgstr "予約を%sし、メールを送信しました。"
 
 #: classes/em-bookings.php:124
 msgid "%s created."
@@ -2075,7 +2151,7 @@ msgstr "表示中のイベント"
 
 #: classes/em-bookings-table.php:391
 msgid "%s Rows"
-msgstr "%sの列"
+msgstr "%s行"
 
 #: classes/em-bookings-table.php:376
 msgid "Export these bookings."
@@ -2087,15 +2163,15 @@ msgstr "エクスポートするカラム"
 
 #: classes/em-bookings-table.php:295
 msgid "If your events have multiple tickets, enabling this will show a separate row for each ticket within a booking."
-msgstr "イベントに複数のチケットがある場合にこれを「はい」にすると、各チケットを列ごとに分けて表示します。"
+msgstr "イベントに複数のチケットがある場合にここをチェックすると、チケットごとに行をまとめて出力します。"
 
 #: classes/em-bookings-table.php:294
 msgid "Split bookings by ticket type"
-msgstr "予約をチケット種別に分ける"
+msgstr "チケット種別ごとに分ける"
 
 #: classes/em-bookings-table.php:292
 msgid "Select the options below and export all the bookings you have currently filtered (all pages) into a CSV spreadsheet format."
-msgstr "現在のフィルターに該当するすべての予約情報をCSV形式でエクスポートするには、下のオプションを選択します。"
+msgstr "現在のフィルターに該当するすべての予約情報を CSV 形式でエクスポートします。エクスポートするカラムは右のグループから左のグループへ、エクスポートしないカラムは左のグループから右のグループへドラッグします。項目の並び順もドラッグして変更できます。"
 
 #: classes/em-bookings-table.php:290 events-manager.php:340
 msgid "Export Bookings"
@@ -2725,7 +2801,7 @@ msgstr "上で割り当てた%sページと URL が競合する場合は、ア�
 
 #: admin/settings/tabs/pages.php:75 admin/settings/tabs/pages.php:230
 msgid "%s custom post types can have archives, just like normal WordPress posts. If enabled, should you visit your base slug url %s and you will see an post-formatted archive of previous %s"
-msgstr "%sのカスタム投稿タイプは、WordPress 標準の「投稿」と同様、アーカイブを作成できます。これを有効にすると、スラッグの URL %s で、%s の旧書式の投稿のアーカイブを閲覧できます。"
+msgstr "%sのカスタム投稿タイプは、WordPress 標準の「投稿」と同様、アーカイブを作成できます。これを有効にすると、スラッグの URL %s で、%s の書式適用済みの投稿アーカイブを閲覧できます。"
 
 #: admin/settings/tabs/pages.php:74 admin/settings/tabs/pages.php:229
 msgid "WordPress %s Archives"
@@ -4091,7 +4167,7 @@ msgstr "イベント一覧の見出し列の書式"
 
 #: admin/settings/tabs/formats.php:16 admin/settings/tabs/formats.php:139
 msgid "Date and Time formats follow the <a href=\"%s\">WordPress time formatting conventions</a>"
-msgstr "日時書式の規則は <a href=\"%s\">WordPress の日付と時刻の書式</a>に準拠します。"
+msgstr "日時の書式の規則は <a href=\"%s\">WordPress の日付と時刻の書式</a>に準拠します。"
 
 #: admin/settings/tabs/formats.php:16
 msgid "Choose how to format your group heading dates. Leave blank for default."
@@ -4103,11 +4179,11 @@ msgstr "まとめ表示の日付の書式"
 
 #: admin/settings/tabs/formats.php:15
 msgid "#s will be replaced by the date format below"
-msgstr "#s を次項で設定する日付書式に置換します。"
+msgstr "#s を次項で設定する日付の書式に置換します。"
 
 #: admin/settings/tabs/formats.php:15
 msgid "Choose how to format your group headings."
-msgstr "まとめ方の見出し(年間、月間、週間など)の文字書式を設定します。"
+msgstr "まとめ方の見出し(年間、月間、週間など)の表示書式を設定します。"
 
 #: admin/settings/tabs/formats.php:15
 msgid "Events page grouping header"
@@ -4154,7 +4230,7 @@ msgstr "なし"
 
 #: admin/settings/tabs/formats.php:10
 msgid "These formats will be used on your events page. This will also be used if you do not provide specified formats in other event lists, like in shortcodes."
-msgstr "イベント一覧ページで使用する書式です。イベント一覧ページ以外の場所でショートコードを使って一覧を表示する場合にも、この書式を用います。"
+msgstr "イベント一覧ページで使用する書式です。イベント一覧ページ以外の場所でショートコードを使って一覧を表示する場合にも、この書式が適用されます。"
 
 #: admin/settings/tabs/formats.php:9 admin/settings/tabs/formats.php:242
 #: admin/settings/tabs/formats.php:299 admin/settings/tabs/formats.php:337
@@ -4858,23 +4934,23 @@ msgstr "Events Manager を完全にアンインストールする場合は、以
 
 #: admin/em-options.php:743
 msgid "Uninstall/Reset"
-msgstr "アンインストール/リセット"
+msgstr "アンインストール / リセット"
 
 #: admin/em-options.php:674
 msgid "If you would like to download a dev version, but just as a one-off, you can force a dev version check by clicking the button below. If there is one available, it should appear in your plugin updates page as a regular update."
-msgstr "開発者版をダウンロードしたい場合、左のボタンを押すと、通常のアップデートと同様にプラグインの更新ページに表示されます。ただし、この機能は1回限りしか使えません。"
+msgstr "開発者版を使用している場合、左のボタンを押すと、開発者版の更新があるかどうかを確認できます。更新がある場合は、一般のプラグインの更新と同様、プラグイン更新ページに表示されます。"
 
 #: admin/em-options.php:673
 msgid "Check Dev Versions"
-msgstr "開発者版アップデートの確認"
+msgstr "開発者版の更新を確認"
 
 #: admin/em-options.php:670
 msgid "If you would like to check and see if there is a new stable update."
-msgstr "新しい安定版があるかどうか確認するには、左のボタンを押してください。"
+msgstr "安定版を使用している場合、左のボタンを押すと、使用中のバージョンが最新版かどうかをチェックします。"
 
 #: admin/em-options.php:669
 msgid "Re-Check Updates"
-msgstr "安定版アップデートの再確認"
+msgstr "安定版の更新の再確認"
 
 #: admin/em-options.php:667
 msgid "If enabled, the latest dev version will always be checked instead of the latest stable version of the plugin."
@@ -4911,23 +4987,23 @@ msgstr "グローバル権限を適用しますか?"
 
 #: admin/em-options.php:584
 msgid "User can upload images along with their events and locations."
-msgstr "この権限のあるユーザは、イベントと開催場所に関する画像をアップロードできます。"
+msgstr "この権限のあるユーザーは、イベントと開催場所に関する画像をアップロードできます。"
 
 #: admin/em-options.php:583
 msgid "User can use and manage bookings with their events."
-msgstr "この権限のあるユーザは、予約モードを使ったり管理することができます。"
+msgstr "この権限のあるユーザーは、予約モードを使ったり管理することができます。"
 
 #: admin/em-options.php:582
 msgid "User can manage other users individual bookings and event booking settings."
-msgstr "この権限のあるユーザは、他のユーザの予約やイベント予約設定を管理できます。"
+msgstr "この権限のあるユーザーは、他のユーザーの予約やイベント予約設定を管理できます。"
 
 #: admin/em-options.php:580
 msgid "User can edit %s categories and tags."
-msgstr "この権限のあるユーザは、%sのカテゴリーとタグを編集できます。"
+msgstr "この権限のあるユーザーは、%sのカテゴリーとタグを編集できます。"
 
 #: admin/em-options.php:579
 msgid "User can delete %s categories and tags."
-msgstr "この権限のあるユーザは、%sのカテゴリーとタグを削除できます。"
+msgstr "この権限のあるユーザーは、%sのカテゴリーとタグを削除できます。"
 
 #: admin/em-options.php:577 admin/settings/tabs/general.php:76
 #: admin/settings/tabs/pages.php:541
@@ -4936,7 +5012,7 @@ msgstr "その他"
 
 #: admin/em-options.php:574
 msgid "User can use other user locations for their events."
-msgstr "この権限のあるユーザは、他のユーザが作成した開催場所を使うことができます。"
+msgstr "この権限のあるユーザーは、他のユーザーが作成した開催場所を使うことができます。"
 
 #: admin/em-options.php:560 admin/em-options.php:561 admin/em-options.php:562
 #: admin/em-options.php:563 admin/em-options.php:564 events-manager.php:415
@@ -4955,23 +5031,23 @@ msgstr "ユーザーはプライベート%sを見ることができます。"
 
 #: admin/em-options.php:554 admin/em-options.php:564 admin/em-options.php:572
 msgid "User can create and edit %s"
-msgstr "この権限のあるユーザは、%sの作成や編集ができます。"
+msgstr "この権限のあるユーザーは、%sの作成や編集ができます。"
 
 #: admin/em-options.php:553 admin/em-options.php:563 admin/em-options.php:571
 msgid "User can delete their own %s"
-msgstr "この権限のあるユーザは、自分の%sを削除できます。"
+msgstr "この権限のあるユーザーは、自分の%sを削除できます。"
 
 #: admin/em-options.php:552 admin/em-options.php:562 admin/em-options.php:570
 msgid "User can edit other users %s"
-msgstr "この権限のあるユーザは、他のユーザの%sを編集できます。"
+msgstr "この権限のあるユーザーは、他のユーザーの%sを編集できます。"
 
 #: admin/em-options.php:551 admin/em-options.php:561 admin/em-options.php:569
 msgid "User can delete other users %s"
-msgstr "この権限のあるユーザは、他のユーザの%sを削除できます。"
+msgstr "この権限のあるユーザーは、他のユーザーの%sを削除できます。"
 
 #: admin/em-options.php:550 admin/em-options.php:560 admin/em-options.php:568
 msgid "Users can publish %s and skip any admin approval"
-msgstr "この権限のあるユーザは、サイト管理者の承認なしに%sを公開できます。"
+msgstr "この権限のあるユーザーは、サイト管理者の承認なしに%sを公開できます。"
 
 #: admin/em-options.php:548 admin/em-options.php:558 admin/em-options.php:566
 #: admin/em-options.php:577
@@ -4984,7 +5060,7 @@ msgstr "以下で、イベント、繰り返しイベント、開催場所、そ
 
 #: admin/em-options.php:542
 msgid "Warning: Changing these values may result in exposing previously hidden information to all users."
-msgstr "警告: これらの値を変えることで、変更前は非表示としていた情報が、変更後にすべてのユーザーに開示される可能性があります。権限レベルと、付与する権限内容に十分注意して設定してください。"
+msgstr "警告: これらの値を変えると、変更前は非表示にしていた情報が、変更後にすべてのユーザーに開示される可能性があります。権限レベルと、付与する権限内容に十分注意して設定してください。"
 
 #: admin/em-options.php:538
 msgid "User Capabilities"
@@ -5040,7 +5116,7 @@ msgstr "サーバーの設定によって、いずれかの送信方法は使用
 
 #: admin/em-options.php:479
 msgid "If set to yes, your emails will be sent in HTML format, otherwise plaintext."
-msgstr "「はい」の場合、HTML形式でメールを送信します。「いいえ」の場合はプレーンテキスト形式で送信します。"
+msgstr "「はい」の場合は HTML 形式、「いいえ」の場合はテキスト形式でメールを送信します。"
 
 #: admin/em-options.php:479
 msgid "Send HTML Emails?"
@@ -5246,7 +5322,7 @@ msgstr "グローバル%sをメインサイトに表示しますか？"
 
 #: admin/em-ms-options.php:160
 msgid "If you would prefer all your locations to belong to your main blog, users in sub-sites will still be able to create locations, but the actual locations are created and reside in the main blog."
-msgstr "すべての開催場所を親サイトで管理する場合、子サイトのユーザが作成した開催場所はすべて、親サイトの開催場所として保存されます。"
+msgstr "すべての開催場所を親サイトで管理する場合、子サイトのユーザーが作成した開催場所はすべて、親サイトの開催場所として保存されます。"
 
 #: admin/em-ms-options.php:160 admin/em-ms-options.php:165
 #: admin/em-ms-options.php:166 admin/em-ms-options.php:167
@@ -5730,7 +5806,7 @@ msgstr "このサイトでは WPML が有効になっています。 Events Mana
 
 #: admin/em-admin.php:202
 msgid "Dev Mode active: Just a friendly reminder that you are updating to development versions. Only admins see this message, and it will go away when you disable this <a href=\"#pro-api\">here</a> in your settings."
-msgstr "開発者版を使用中：このメッセージは、管理者のみに表示されています。設定画面で<a href=\"#pro-api\">開発者版アップデートを無効</a>にすると、メッセージは表示されなくなります。"
+msgstr "開発者版を使用中：このメッセージは、管理者のみに表示されています。 Events Manager の設定で<a href=\"#pro-api\">開発者版アップデートを無効</a>にすると、メッセージは表示されなくなります。"
 
 #: admin/em-admin.php:194
 msgid "Whilst they will still appear using placeholders, you need to <a href=\"%s\">migrate your location and event images</a> in order for them to appear in your edit forms and media library. <a href=\"%s\">Dismiss message</a>"
@@ -5905,7 +5981,7 @@ msgstr "確認されていない予約"
 #: admin/bookings/em-person.php:124 classes/em-bookings-table.php:609
 #: classes/em-bookings-table.php:618
 msgid "Reject"
-msgstr "拒否"
+msgstr "取消"
 
 #: admin/bookings/em-confirmed.php:114 admin/bookings/em-person.php:118
 #: classes/em-bookings-table.php:617
@@ -5974,7 +6050,7 @@ msgstr "予約者"
 #: admin/bookings/em-pending.php:70 admin/bookings/em-person.php:57
 #: admin/bookings/em-rejected.php:55
 msgid "Decline"
-msgstr "拒否する"
+msgstr "取り消す"
 
 #: admin/bookings/em-cancelled.php:52 admin/bookings/em-confirmed.php:53
 #: admin/bookings/em-pending.php:67 admin/bookings/em-pending.php:132
