@@ -2,11 +2,11 @@
 
 /*
 Plugin Name: TimeZoneCalculator
-Plugin URI: http://www.bernhard-riedl.com/projects/
+Plugin URI: https://www.bernhard-riedl.com/projects/
 Description: Calculates, displays and automatically updates times and dates in different timezones with respect to daylight saving.
 Author: Dr. Bernhard Riedl
-Version: 3.36
-Author URI: http://www.bernhard-riedl.com/
+Version: 3.37
+Author URI: https://www.bernhard-riedl.com/
 */
 
 /*
@@ -2033,7 +2033,7 @@ class TimeZoneCalculator {
 	*/
 
 	function head_meta() {
-		echo("<meta name=\"".$this->get_nicename()."\" content=\"3.36\"/>\n");
+		echo("<meta name=\"".$this->get_nicename()."\" content=\"3.37\"/>\n");
 	}
 
 	/*
@@ -2768,7 +2768,7 @@ class TimeZoneCalculator {
 
 		/*
 		inspired from Derick's talk
-		http://talks.php.net/show/time-ffm2006/28
+		https://talks.php.net/show/time-ffm2006/28
 
 		lookup array until
 		current transition has been found
@@ -3485,7 +3485,7 @@ class TimeZoneCalculator {
 
 		<a class="<?php echo($this->get_prefix()); ?>button_donate" title="Donate to <?php echo($this->get_nicename()); ?>" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=J6ZGWTZT4M29U">Donate</a><br /><br />
 
-		Maybe you also want to <?php if (current_user_can('manage_links') && ((!has_filter('default_option_link_manager_enabled') || get_option( 'link_manager_enabled')))) { ?><a href="link-add.php"><?php } ?>add a link<?php if (current_user_can('manage_links') && ((!has_filter('default_option_link_manager_enabled') || get_option( 'link_manager_enabled')))) { ?></a><?php } ?> to <a target="_blank" href="http://www.bernhard-riedl.com/projects/">http://www.bernhard-riedl.com/projects/</a>.<?php if(strpos($_SERVER['HTTP_HOST'], 'journeycalculator.com')===false) { ?><br /><br />
+		Maybe you also want to <?php if (current_user_can('manage_links') && ((!has_filter('default_option_link_manager_enabled') || get_option( 'link_manager_enabled')))) { ?><a href="link-add.php"><?php } ?>add a link<?php if (current_user_can('manage_links') && ((!has_filter('default_option_link_manager_enabled') || get_option( 'link_manager_enabled')))) { ?></a><?php } ?> to <a target="_blank" href="https://www.bernhard-riedl.com/projects/">https://www.bernhard-riedl.com/projects/</a>.<?php if(strpos($_SERVER['HTTP_HOST'], 'journeycalculator.com')===false) { ?><br /><br />
 
 		Plan your travels with the free <a target="_blank" href="https://www.journeycalculator.com/">JourneyCalculator</a> which is based on TimeZoneCalculator.<?php } ?><br /><br />
 	<?php }
@@ -3499,7 +3499,7 @@ class TimeZoneCalculator {
 	*/
 
 	function callback_settings_intro() { ?>
-		Welcome to the Settings-Page of <a target="_blank" href="http://www.bernhard-riedl.com/projects/"><?php echo($this->get_nicename()); ?></a>. This plugin calculates, displays and automatically updates times and dates in different timezones with respect to daylight saving.
+		Welcome to the Settings-Page of <a target="_blank" href="https://www.bernhard-riedl.com/projects/"><?php echo($this->get_nicename()); ?></a>. This plugin calculates, displays and automatically updates times and dates in different timezones with respect to daylight saving.
 	<?php }
 
 	/*
@@ -3874,7 +3874,7 @@ class TimeZoneCalculator {
 	*/
 
 	function callback_settings_format() { ?>
-		In this section you can customize the layout of <?php echo($this->get_section_link($this->options_page_sections, 'preview', $this->get_nicename().'\'s output')); ?> after saving your changes by clicking on <strong>Save Changes</strong>. Tutorials, references and examples about <abbr title="HyperText Markup Language">HTML</abbr> and <abbr title="Cascading Style Sheets">CSS</abbr> can be found on <a target="_blank" href="http://www.w3schools.com/">W3Schools</a>.
+		In this section you can customize the layout of <?php echo($this->get_section_link($this->options_page_sections, 'preview', $this->get_nicename().'\'s output')); ?> after saving your changes by clicking on <strong>Save Changes</strong>. Tutorials, references and examples about <abbr title="HyperText Markup Language">HTML</abbr> and <abbr title="Cascading Style Sheets">CSS</abbr> can be found on <a target="_blank" href="https://www.w3schools.com/">W3Schools</a>.
 
 		<ul>
 			<li>The timezones-list will be wrapped within <em>before List</em> and <em>after List</em>. Each timezone-entry is based on <em>Format of TimeZone-Entry</em>. The following fields will be replaced by the attributes of each timezone-entry:<ul>
@@ -4117,7 +4117,7 @@ class TimeZoneCalculator {
 		$time_format=apply_filters($this->get_prefix().'calculator_format_time',  $this->get_default('format_datetime'));
 		?>
 
-		Choose your current timezone, then pick your date/time in the calendar/drop-down or enter it manually in the date field by using one of these formats: <a target="_blank" href="http://www.w3.org/QA/Tips/iso-date">ISO (yyyy-mm-dd)</a>, <a target="_blank" href="https://en.wikipedia.org/wiki/Calendar_date#Gregorian.2C_month-day-year">US (mm/dd/yyyy)</a> or <a target="_blank" href="https://secure.php.net/manual/en/function.strtotime.php">any English textual datetime description</a> (tomorrow 3 pm or 2009-04-23 16:30). Let's start!<br /><br />
+		Choose your current timezone, then pick your date/time in the calendar/drop-down or enter it manually in the date field by using one of these formats: <a target="_blank" href="https://www.w3.org/QA/Tips/iso-date">ISO (yyyy-mm-dd)</a>, <a target="_blank" href="https://en.wikipedia.org/wiki/Calendar_date#Gregorian.2C_month-day-year">US (mm/dd/yyyy)</a> or <a target="_blank" href="https://secure.php.net/manual/en/function.strtotime.php">any English textual datetime description</a> (tomorrow 3 pm or 2009-04-23 16:30). Let's start!<br /><br />
 
 		<div id="<?php echo($this->get_prefix()); ?>calculator_input" style="margin-right:20px">
 			<div class="<?php echo($this->get_prefix()); ?>calculator_row">
@@ -4681,7 +4681,7 @@ class TimeZoneCalculator_DateTimeZone extends DateTimeZone {
 
 		/*
 		inspired from Derick's talk
-		http://talks.php.net/show/time-ffm2006/28
+		https://talks.php.net/show/time-ffm2006/28
 
 		lookup array until current
 		transition has been found

@@ -33,9 +33,9 @@ Please find the version for WordPress
 * 2.8 to 3.2 [here](https://downloads.wordpress.org/plugin/timezonecalculator.wordpress2.8-3.2.zip)
 * 1.5 to 2.7 [here](https://downloads.wordpress.org/plugin/timezonecalculator.wordpress1.5-2.7.zip)
 
-**Plugin's website:** [http://www.bernhard-riedl.com/projects/](http://www.bernhard-riedl.com/projects/)
+**Plugin's website:** [https://www.bernhard-riedl.com/projects/](https://www.bernhard-riedl.com/projects/)
 
-**Author's website:** [http://www.bernhard-riedl.com/](http://www.bernhard-riedl.com/)
+**Author's website:** [https://www.bernhard-riedl.com/](https://www.bernhard-riedl.com/)
 
 == Installation ==
 
@@ -47,7 +47,7 @@ Please find the version for WordPress
 
 4. If you have widget functionality just drag and drop TimeZoneCalculator on your widget area in the Appearance Menu. Add additional [function and shortcode calls](https://wordpress.org/plugins/timezonecalculator/other_notes/) according to your desires.
 
-5. Be happy and celebrate! (and maybe you want to add a link to [http://www.bernhard-riedl.com/projects/](http://www.bernhard-riedl.com/projects/))
+5. Be happy and celebrate! (and maybe you want to add a link to [https://www.bernhard-riedl.com/projects/](https://www.bernhard-riedl.com/projects/))
 
 == Frequently Asked Questions ==
 
@@ -216,6 +216,10 @@ This is a general code clean-up. - Please note that for TimeZoneCalculator v3.00
 This is not only a feature but also a security update. - Thus, I'd strongly recommend all users of TimeZoneCalculator which have at least an environment of WordPress 2.8 or higher and PHP 5 to install this version!
 
 == Changelog ==
+
+= 3.37 =
+
+* SSLified further links
 
 = 3.36 =
 
