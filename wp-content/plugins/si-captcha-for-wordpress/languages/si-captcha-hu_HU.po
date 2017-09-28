@@ -1,903 +1,426 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: si-captcha\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/si-captcha-for-wordpress\n"
-"POT-Creation-Date: 2017-07-25 21:43-0400\n"
+"POT-Creation-Date: 2008-12-14 17:48+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: vil\n"
 "Language-Team: \n"
-"Language: hu_HU\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
-"X-Poedit-KeywordsList: __;_e;_n\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Language: Hungarian\n"
+"X-Poedit-Country: HUNGARY\n"
 
-#: si-captcha-admin.php:15
+#: si-captcha.php:44
+#: si-captcha.php:45
+#: si-captcha.php:48
+#: si-captcha.php:201
+msgid "SI Captcha Options"
+msgstr "SI Captcha Opciók"
+
+#: si-captcha.php:135
 msgid "You do not have permissions for managing this option"
 msgstr "Nincs jogosultságod kezelni ezt az opciót"
 
-#: si-captcha-admin.php:93
-msgid "Your settings have been saved."
-msgstr ""
+#: si-captcha.php:198
+msgid "Options saved."
+msgstr "Opciók mentve."
 
-#: si-captcha-admin.php:96 si-captcha.php:54
-msgid "SI Captcha Anti-Spam settings"
-msgstr ""
-
-#: si-captcha-admin.php:124
-msgid ""
-"SI Captcha Anti-Spam is Network Activated and Main site configured. It is "
-"not necessary to change any settings here."
-msgstr ""
-
-#: si-captcha-admin.php:125
-msgid ""
-"Settings are controlled at the main site and are Networkwide. If you want "
-"individual sites to each have their own unique settings: go to the main site "
-"SI Captcha Anti-Spam settings and enable \"Allow Multisite network activated "
-"sites to have individual SI Captcha Anti-Spam settings\"."
-msgstr ""
-
-#: si-captcha-admin.php:162
-#, php-format
-msgid "Downloaded %s times"
-msgstr ""
-
-#: si-captcha-admin.php:168 si-captcha-admin.php:176
-#, php-format
-msgid "(Average rating based on %s ratings)"
-msgstr ""
-
-#: si-captcha-admin.php:170
-msgid "5 stars"
-msgstr ""
-
-#: si-captcha-admin.php:171
-msgid "4 stars"
-msgstr ""
-
-#: si-captcha-admin.php:172
-msgid "3 stars"
-msgstr ""
-
-#: si-captcha-admin.php:173
-msgid "2 stars"
-msgstr ""
-
-#: si-captcha-admin.php:174
-msgid "1 star"
-msgstr ""
-
-#: si-captcha-admin.php:176
-msgid "rate"
-msgstr ""
-
-#: si-captcha-admin.php:187
-#, php-format
-msgid "a newer version is available: %s"
-msgstr ""
-
-#: si-captcha-admin.php:189
-#, php-format
-msgid "A newer version of SI Captcha Anti-Spam is available: %s"
-msgstr ""
-
-#: si-captcha-admin.php:192
-msgid "(latest version)"
-msgstr ""
-
-#: si-captcha-admin.php:198
-msgid "Version:"
-msgstr ""
-
-#: si-captcha-admin.php:199
+#: si-captcha.php:214
 msgid "Changelog"
 msgstr "Változások logja"
 
-#: si-captcha-admin.php:200
+#: si-captcha.php:215
 msgid "FAQ"
 msgstr "GYIK"
 
-#: si-captcha-admin.php:201 si-captcha-admin.php:572
+#: si-captcha.php:216
 msgid "Rate This"
 msgstr "Értékeld"
 
-#: si-captcha-admin.php:202 si-captcha.php:60
+#: si-captcha.php:217
 msgid "Support"
 msgstr "Támogatás"
 
-#: si-captcha-admin.php:203 si-captcha-admin.php:549 si-captcha.php:61
+#: si-captcha.php:218
+#: si-captcha.php:226
 msgid "Donate"
 msgstr "Adományozás"
 
-#: si-captcha-admin.php:204
-msgid "Mikes Free PHP Scripts"
-msgstr ""
+#: si-captcha.php:219
+msgid "Free PHP Scripts"
+msgstr "Ingyenes PHP szkript"
 
-#: si-captcha-admin.php:216
-msgid ""
-"<strong>Individual Site Settings Enabled</strong><br />Note: SI Captcha Anti-"
-"Spam is not Network Activated, this means each site will have individual SI "
-"Captcha Anti-Spam settings."
-msgstr ""
+#: si-captcha.php:220
+msgid "Contact"
+msgstr "Kapcsolat"
 
-#: si-captcha-admin.php:217
-msgid ""
-"If you want it this way, that is OK, but if you want the master site to "
-"control all the sites: go to the main site, then Network Activate this "
-"plugin, then go to SI Captcha Anti-Spam settings and disable \"Allow "
-"Multisite network activated sites to have individual SI Captcha Anti-Spam "
-"settings\"."
-msgstr ""
+#: si-captcha.php:237
+msgid "If you find this plugin useful to you, please consider making a small donation to help contribute to further development. Thanks for your kind support!"
+msgstr "Ha haszonsnak találtad ezt a plugint, egy kis adománnyal segíthetsz a fejlesztésében. Köszönjük a támogatásod!"
 
-#: si-captcha-admin.php:224 si-captcha-admin.php:528
-msgid "Save Changes"
-msgstr ""
+#: si-captcha.php:258
+msgid "I have donated to help contribute for the development of this plugin."
+msgstr "Adományoztam ennek a pluginnek a fejlesztéséért."
 
-#: si-captcha-admin.php:227
-msgid ""
-"If you do not like image captcha and code entry, you can uninstall this "
-"plugin and try my new plugin:"
-msgstr ""
+#: si-captcha.php:261
+msgid "Usage"
+msgstr "Használat"
 
-#: si-captcha-admin.php:227
-msgid "Fast Secure reCAPTCHA with Google No CAPTCHA reCAPTCHA"
-msgstr ""
+#: si-captcha.php:264
+msgid "Your theme must have a"
+msgstr "A sablonodnak rendelkeznie kell"
 
-#: si-captcha-admin.php:236
-msgid "Enable CAPTCHA:"
-msgstr ""
+#: si-captcha.php:264
+msgid "tag inside your comments.php form. Most themes do."
+msgstr "cimkével a comment.php formjában. A legtöbb sablon rendelkezik ilyennel."
 
-#: si-captcha-admin.php:240
-msgid "Login form."
-msgstr ""
+#: si-captcha.php:265
+msgid "The best place to locate the tag is before the comment textarea, you may want to move it if it is below the comment textarea, or the captcha image and captcha code entry might display after the submit button."
+msgstr "A legjobb a megjegyzés szövegmezője elé tenni."
 
-#: si-captcha-admin.php:241 si-captcha-admin.php:249 si-captcha-admin.php:257
-#: si-captcha-admin.php:265 si-captcha-admin.php:273 si-captcha-admin.php:281
-#: si-captcha-admin.php:289 si-captcha-admin.php:297 si-captcha-admin.php:305
-#: si-captcha-admin.php:313 si-captcha-admin.php:321 si-captcha-admin.php:329
-#: si-captcha-admin.php:346 si-captcha-admin.php:365 si-captcha-admin.php:383
-#: si-captcha-admin.php:391 si-captcha-admin.php:428 si-captcha-admin.php:448
-#: si-captcha-admin.php:498
-msgid "help"
-msgstr "segítség"
+#: si-captcha.php:268
+msgid "Options"
+msgstr "Opciók"
 
-#: si-captcha-admin.php:243
-msgid "Require that the user pass a CAPTCHA test before login."
-msgstr ""
+#: si-captcha.php:271
+#: si-captcha.php:426
+msgid "Update Options"
+msgstr "Opciók frissítése"
 
-#: si-captcha-admin.php:248
-msgid "Register form."
-msgstr ""
+#: si-captcha.php:278
+msgid "CAPTCHA Support Test:"
+msgstr "CAPTCHA teszt:"
 
-#: si-captcha-admin.php:251
-msgid "Require that the user pass a CAPTCHA test before registering."
-msgstr ""
+#: si-captcha.php:280
+msgid "Test if your PHP installation will support the CAPTCHA"
+msgstr "Próbáld ki, hogy a PHP installációd támogatja-e a CAPTCHA-t"
 
-#: si-captcha-admin.php:256
-msgid "Lost password form."
-msgstr ""
+#: si-captcha.php:285
+msgid "CAPTCHA difficulty:"
+msgstr "CAPTCHA nehézség:"
 
-#: si-captcha-admin.php:259
-msgid "Require that the user pass a CAPTCHA test before lost password request."
-msgstr ""
+#: si-captcha.php:287
+msgid "CAPTCHA difficulty level:"
+msgstr "CAPTCHA nehézségi szint:"
 
-#: si-captcha-admin.php:264
-msgid "Comment form."
-msgstr ""
+#: si-captcha.php:291
+msgid "Low"
+msgstr "Alacsony"
 
-#: si-captcha-admin.php:267
-msgid "Require that the user pass a CAPTCHA test before posting comments."
-msgstr ""
+#: si-captcha.php:292
+msgid "Medium"
+msgstr "Közepes"
 
-#: si-captcha-admin.php:272
-msgid "Multisite register form."
-msgstr ""
+#: si-captcha.php:293
+msgid "High"
+msgstr "Magas"
 
-#: si-captcha-admin.php:275
-msgid ""
-"Require that the user pass a CAPTCHA test before registering in Multisite."
-msgstr ""
+#: si-captcha.php:307
+msgid "CAPTCHA on Login Form:"
+msgstr "CAPTCHA a bejelentkezési formon:"
 
-#: si-captcha-admin.php:280
-msgid "BuddyPress register form."
-msgstr ""
+#: si-captcha.php:310
+msgid "Enable CAPTCHA on the login form."
+msgstr "CAPTCHA engedélyezése a bejelentkezési formon."
 
-#: si-captcha-admin.php:283
-msgid ""
-"Require that the user pass a CAPTCHA test before registering in BuddyPress."
-msgstr ""
-
-#: si-captcha-admin.php:288
-msgid "wpForo Forum register form."
-msgstr ""
-
-#: si-captcha-admin.php:291
-msgid ""
-"Require that the user pass a CAPTCHA test before registering in wpForo Forum."
-msgstr ""
-
-#: si-captcha-admin.php:296
-msgid "WooCommerce checkout."
-msgstr ""
-
-#: si-captcha-admin.php:299
-msgid ""
-"Require that the user pass a CAPTCHA test on WooCommerce checkout form when "
-"not logged in."
-msgstr ""
-
-#: si-captcha-admin.php:304
-msgid "Jetpack Contact Form."
-msgstr ""
-
-#: si-captcha-admin.php:307
-msgid "Require that the user pass a CAPTCHA test on Jetpack Contact Form."
-msgstr ""
-
-#: si-captcha-admin.php:312
-msgid "bbPress New Topic Form."
-msgstr ""
-
-#: si-captcha-admin.php:315
-msgid "Require that the user pass a CAPTCHA test on bbPress New Topic Form."
-msgstr ""
-
-#: si-captcha-admin.php:320
-msgid "bbPress Reply to Topic Form."
-msgstr ""
-
-#: si-captcha-admin.php:323
-msgid ""
-"Require that the user pass a CAPTCHA test on bbPress Reply to Topic Form."
-msgstr ""
-
-#: si-captcha-admin.php:328
-msgid "No comment form CAPTCHA for logged in users"
-msgstr ""
-
-#: si-captcha-admin.php:331
-msgid "Logged in users will not have to pass a CAPTCHA test on comments form."
-msgstr ""
-
-#: si-captcha-admin.php:345 si-captcha-admin.php:364
-msgid ""
-"Allow Multisite network activated sites to have individual SI Captcha Anti-"
-"Spam settings."
-msgstr ""
-
-#: si-captcha-admin.php:348 si-captcha-admin.php:367
-msgid ""
-"Enabling this setting allows: individual site settings for this plugin on "
-"multisite with network activation turned on. The default is for all sites to "
-"use the master site settings."
-msgstr ""
-
-#: si-captcha-admin.php:358
-msgid ""
-"SI Captcha Anti-Spam is Network Activated and individual site configured. "
-"The next setting can only be modified by the main site settings menu."
-msgstr ""
-
-#: si-captcha-admin.php:363
-msgid "Main site admin enabled:"
-msgstr ""
-
-#: si-captcha-admin.php:363
-msgid "Main site admin disabled:"
-msgstr ""
-
-#: si-captcha-admin.php:378
-msgid "Style:"
-msgstr ""
-
-#: si-captcha-admin.php:382
-msgid "Enable small size CAPTCHA image."
-msgstr ""
-
-#: si-captcha-admin.php:385
-msgid "Makes the CAPTCHA image size small instead of large."
-msgstr ""
-
-#: si-captcha-admin.php:390
-msgid "Enable external CAPTCHA CSS."
-msgstr ""
-
-#: si-captcha-admin.php:393
-msgid ""
-"Enable to not load this plugin CSS into wp_head. This allows you to load "
-"your own modified CSS into your theme instead."
-msgstr ""
-
-#: si-captcha-admin.php:395
-msgid "External Style Sheet CSS starting point for custom setup:"
-msgstr ""
-
-#: si-captcha-admin.php:410
-msgid "CAPTCHA input label position on the comment form:"
-msgstr ""
-
-#: si-captcha-admin.php:414
-msgid "input-label-required"
-msgstr ""
-
-#: si-captcha-admin.php:415
-msgid "label-required-input"
-msgstr ""
-
-#: si-captcha-admin.php:416
-msgid "label-required-linebreak-input"
-msgstr ""
-
-#: si-captcha-admin.php:417
-msgid "label-input-required"
-msgstr ""
-
-#: si-captcha-admin.php:430
-msgid ""
-"Changes position of the CAPTCHA input labels on the comment form. Some "
-"themes have different label positions on the comment form. After changing "
-"this setting, be sure to view the comments to verify the setting is correct."
-msgstr ""
-
-#: si-captcha-admin.php:442
-msgid "Options:"
-msgstr ""
-
-#: si-captcha-admin.php:447
-msgid "Enable PHP sessions."
-msgstr ""
-
-#: si-captcha-admin.php:450
-msgid ""
-"Enables PHP session handling. Only enable this if you have CAPTCHA token "
-"errors. Enable this setting to use PHP sessions for the CAPTCHA. PHP "
-"Sessions must be supported by your web host or there may be session errors."
-msgstr ""
-
-#: si-captcha-admin.php:461 si-captcha-admin.php:469
-msgid "There is a problem with the directory"
-msgstr ""
-
-#: si-captcha-admin.php:463
-msgid ""
-"The directory is not found, a <a href=\"http://codex.wordpress.org/"
-"Changing_File_Permissions\" target=\"_blank\">permissions</a> problem may "
-"have prevented this directory from being created."
-msgstr ""
-
-#: si-captcha-admin.php:465 si-captcha-admin.php:477
-msgid ""
-"Fixing the actual problem is recommended, but you can check this setting on "
-"the SI CAPTCHA options page: \"Use PHP sessions\" and the captcha will work "
-"(if PHP sessions are supported by your web host)."
-msgstr ""
-
-#: si-captcha-admin.php:470
-msgid ""
-"The directory Unwritable (<a href=\"http://codex.wordpress.org/"
-"Changing_File_Permissions\" target=\"_blank\">fix permissions</a>)"
-msgstr ""
-
-#: si-captcha-admin.php:471
-msgid "Permissions are: "
-msgstr ""
-
-#: si-captcha-admin.php:475
-msgid ""
-"Fixing this may require assigning 0755 permissions or higher (e.g. 0777 on "
-"some hosts. Try 0755 first, because 0777 is sometimes too much and will not "
-"work.)"
-msgstr ""
-
-#: si-captcha-admin.php:493
-msgid "Error Messages:"
-msgstr ""
-
-#: si-captcha-admin.php:497
-msgid "Customize Text:"
-msgstr ""
-
-#: si-captcha-admin.php:498
+#: si-captcha.php:311
+#: si-captcha.php:348
+#: si-captcha.php:376
+#: si-captcha.php:408
 msgid "Click for Help!"
 msgstr "Ide kattints segítségért!"
 
-#: si-captcha-admin.php:500
-msgid ""
-"These fields can be filled in to override the error message that displays "
-"when the form is submitted and the CAPTCHA does not pass validation."
-msgstr ""
+#: si-captcha.php:311
+#: si-captcha.php:348
+#: si-captcha.php:376
+#: si-captcha.php:408
+msgid "help"
+msgstr "segítség"
 
-#: si-captcha-admin.php:505
-msgid "Required"
-msgstr ""
+#: si-captcha.php:313
+msgid "The Login form captcha is not enabled by default because it might be annoying to users. Only enable it if you are having spam problems related to bots automatically logging in."
+msgstr "A bejelentkezési formon nincs engedélyezve alapértelmezettként a captcha, mivel zavarhatja a felhasználókat. Csak akkor érdemes bekapcsolnod, ha spam problémáid adódnak, amiket bot-ok automatikus bejelentkezése okoz."
 
-#: si-captcha-admin.php:506
-msgid "Possible spam bot"
-msgstr ""
+#: si-captcha.php:319
+msgid "CAPTCHA on Register Form:"
+msgstr "CAPTCHA a regisztrációs formon:"
 
-#: si-captcha-admin.php:507 si-captcha.php:1188 si-captcha.php:1258
-#: si-captcha.php:1281
-msgid "Wrong CAPTCHA"
-msgstr ""
+#: si-captcha.php:322
+msgid "Enable CAPTCHA on the register form."
+msgstr "CAPTCHA engedélyezése a regisztrációs formon."
 
-#: si-captcha-admin.php:508 si-captcha.php:1236 si-captcha.php:1242
-msgid "Empty CAPTCHA"
-msgstr ""
+#: si-captcha.php:327
+msgid "CAPTCHA on Comment Form:"
+msgstr "CAPTCHA a megjegyések formon:"
 
-#: si-captcha-admin.php:509 si-captcha.php:1244
-msgid "Missing CAPTCHA token"
-msgstr ""
+#: si-captcha.php:330
+msgid "Enable CAPTCHA on the comment form."
+msgstr "CAPTCHA engedélyezése a megjegyzések formon."
 
-#: si-captcha-admin.php:510
-msgid "Unreadable CAPTCHA token"
-msgstr ""
+#: si-captcha.php:333
+msgid "Hide CAPTCHA for"
+msgstr "CAPTCHA elrejtése"
 
-#: si-captcha-admin.php:511 si-captcha.php:1268
-msgid "Unreadable CAPTCHA cookie"
-msgstr ""
+#: si-captcha.php:334
+msgid "registered"
+msgstr "regisztrált"
 
-#: si-captcha-admin.php:512 si-captcha.php:690 si-captcha.php:815
-#: si-captcha.php:930 si-captcha.php:1062 si-captcha.php:1140
-msgid "ERROR"
-msgstr "HIBA"
+#: si-captcha.php:335
+msgid "users who can:"
+msgstr "felhasználóknak, akik:"
 
-#: si-captcha-admin.php:513 si-captcha.php:641 si-captcha.php:720
-#: si-captcha.php:754 si-captcha.php:786 si-captcha.php:851 si-captcha.php:902
-#: si-captcha.php:964 si-captcha.php:1012 si-captcha.php:1041
-#: si-captcha.php:1123 si-captcha.php:1208
+#: si-captcha.php:338
+msgid "CSS class name for CAPTCHA input field on the comment form"
+msgstr "CSS osztály név CAPTCHA beviteli mező számára a megyjegyzés form-on"
+
+#: si-captcha.php:339
+msgid "(Enter a CSS class name only if your theme uses one for comment text inputs. Default is blank for none.)"
+msgstr "(Csak a CSS osztály nevét írd be, abban az esetben, ha a sablonod használ ilyet a megjegyzések szöveges beviteli mezőihez. Alapértelmezettként üres.)"
+
+#: si-captcha.php:344
+msgid "Comment Form Rearrange:"
+msgstr "Megjegyzések form újrarendezése"
+
+#: si-captcha.php:347
+msgid "Change the display order of the catpcha input field on the comment form."
+msgstr "Megváltoztatja a CAPTCHA beviteli mező megjelenítési sorrendjét a megjegyzések formon"
+
+#: si-captcha.php:350
+msgid "Problem:"
+msgstr "Probléma:"
+
+#: si-captcha.php:351
+msgid "Sometimes the captcha image and captcha input field are displayed AFTER the submit button on the comment form."
+msgstr "Bizonyos esetekben a captcha kép és beviteli mező nem jelenik mega a jóváhagyó gomb UTÁN a megjegyzés form-on."
+
+#: si-captcha.php:352
+msgid "Fix:"
+msgstr "Megoldás:"
+
+#: si-captcha.php:353
+msgid "Edit your current theme comments.php file and locate this line:"
+msgstr "Módosítsd az aktuális sablonban a comments.php file-t az alábbi sornál:"
+
+#: si-captcha.php:355
+msgid "This tag is exactly where the captcha image and captcha code entry will display on the form, so move the line to BEFORE the comment textarea, uncheck the option box above, and the problem should be fixed."
+msgstr "Pontosan ez az a tag, ahol a captcha kép és kód megjelenik a form-on, ezért vidd a sort a megjegyzés szövegmező ELÉ, kapcsold ki az alábbi jelölőnégyzetet, és a probléma valószínűleg megoldódik."
+
+#: si-captcha.php:356
+msgid "Alernately you can just check the box above and javascript will attempt to rearrange it for you, but editing the comments.php, moving the tag, and unchecking this box is the best solution."
+msgstr "Alternatívaként jelöld be ezt az opciót, és javascript fogja átrendezni ezt számodra, de a legjobb, ha szerkeszted a comments.php-t és a megfelelő helyre teszed a cimkét, és nem pipálod be ezt a funkciót."
+
+#: si-captcha.php:357
+msgid "Why is it better to uncheck this and move the tag? because the XHTML will no longer validate on the comment page if it is checked."
+msgstr "Miért jobb kikapcsolva hagyni és a tag-et áthelyezni? mert az XHTML nem validál a megjegyzések oldalán, ha be van kapcsolva."
+
+#: si-captcha.php:364
+msgid "CAPTCHA Options:"
+msgstr "CAPTCHA Opciók:"
+
+#: si-captcha.php:367
+msgid "Enable Flash Audio for the CAPTCHA."
+msgstr "Flash Audio engedéjezése a CAPTCHA-hoz."
+
+#: si-captcha.php:372
+msgid "Accessibility:"
+msgstr "Kezelhetőség:"
+
+#: si-captcha.php:375
+msgid "Enable aria-required tags for screen readers"
+msgstr "Aria-required tag-ek engedélyezése screen reader-ek számára"
+
+#: si-captcha.php:378
+msgid "aria-required is a form input WAI ARIA tag. Screen readers use it to determine which fields are required. Enabling this is good for accessability, but will cause the HTML to fail the W3C Validation (there is no attribute \"aria-required\"). WAI ARIA attributes are soon to be accepted by the HTML validator, so you can safely ignore the validation error it will cause."
+msgstr "Az aria-required egy form beviteli WAI ARIA tag. A screen reader-ek használják annak megállapítására, hogy mely mezők kitöltése kötelező. A jó kezelhetőség érekében érdemes engedélyezni, de lehet, hogy így a HTML okozhat W3C-s validációs problémákat.(there is no attribute \"aria-required\"). A WAI ARIA attribútumot hamarosan támogatni fogják a HTML validátorok, így nyugodtan figyelmen kívül hagyhatod ezt a hibát."
+
+#: si-captcha.php:385
+msgid "Click for Advanced Options"
+msgstr "További opciókért kattints ide"
+
+#: si-captcha.php:391
+msgid "Inline CSS Style:"
+msgstr "Inline CSS Stílus:"
+
+#: si-captcha.php:395
+msgid "Reset the styles to default."
+msgstr "Alapértelmezett értékek visszaállítása"
+
+#: si-captcha.php:397
+msgid "CSS style for CAPTCHA div:"
+msgstr "CSS stílus CAPTCHA div cimke számára:"
+
+#: si-captcha.php:398
+msgid "CSS style for CAPTCHA image:"
+msgstr "CSS stílus CAPTCHA kép számára:"
+
+#: si-captcha.php:399
+msgid "CSS style for Audio image:"
+msgstr "CSS stílus Audio kép számára:"
+
+#: si-captcha.php:400
+msgid "CSS style for Refresh image:"
+msgstr "CSS stílus frissítési kép számára:"
+
+#: si-captcha.php:406
+msgid "Text Labels:"
+msgstr "Szövegcimkék:"
+
+#: si-captcha.php:410
+msgid "Some people wanted to change the text labels. These fields can be filled in to override the standard text labels."
+msgstr "Vannak, akik szeretnének változtatni a szövegcimkéken. Ezek a mezők segítségével felül lehet írni az alapértelmezett cimkéket."
+
+#: si-captcha.php:413
+#: si-captcha.php:517
+#: si-captcha.php:567
+#: si-captcha.php:612
+#: si-captcha.php:641
+#: si-captcha.php:684
+#: si-captcha.php:716
 msgid "CAPTCHA Code"
 msgstr "CAPTCHA Kód"
 
-#: si-captcha-admin.php:514
+#: si-captcha.php:414
+#: si-captcha.php:878
+#: si-captcha.php:880
 msgid "CAPTCHA Image"
 msgstr "CAPTCHA Kép"
 
-#: si-captcha-admin.php:515
+#: si-captcha.php:415
+#: si-captcha.php:899
+#: si-captcha.php:902
+msgid "CAPTCHA Audio"
+msgstr "CAPTCHA Hang"
+
+#: si-captcha.php:416
+#: si-captcha.php:909
+#: si-captcha.php:912
 msgid "Refresh Image"
 msgstr "Kép frissítése"
 
-#: si-captcha-admin.php:524
-msgid ""
-"I have donated to help contribute for the development of this plugin. This "
-"checkbox makes the donate button go away"
-msgstr ""
+#: si-captcha.php:431
+msgid "More WordPress plugins by Mike Challis:"
+msgstr "Mégtöbb WordPress plugin Mike Challis-tól:"
 
-#: si-captcha-admin.php:533
-msgid "Don't Forget to Test the CAPTCHA"
-msgstr ""
+#: si-captcha.php:433
+msgid "Fast and Secure Contact Form"
+msgstr "Fast and Secure Contact Form"
 
-#: si-captcha-admin.php:536
-msgid ""
-"After installing or updating plugins and themes, be sure to test the CAPTCHA "
-"on each form where it is enabled. It should display, allow actions on valid "
-"code, and block actions on invalid code."
-msgstr ""
-
-#: si-captcha-admin.php:552
-msgid ""
-"If you find this plugin useful to you, please consider making a donation to "
-"help contribute to my time invested and to further development. Thanks for "
-"your kind support!"
-msgstr ""
-
-#: si-captcha-admin.php:553
-msgid "You have 1 message from Mike Challis"
-msgstr ""
-
-#: si-captcha-admin.php:570
-msgid ""
-"Mike Challis says: \"Hello, I have many hours coding this plugin just for "
-"you. Please consider making a donation. If you are not able to, that is OK."
-msgstr ""
-
-#: si-captcha-admin.php:571
-msgid "Please also rate my plugin.\""
-msgstr ""
-
-#: si-captcha-admin.php:574
-msgid "Close this message"
-msgstr ""
-
-#: si-captcha-admin.php:582
-msgid "WordPress plugins by Mike Challis:"
-msgstr ""
-
-#: si-captcha-admin.php:584
-msgid "Fast Secure Contact Form"
-msgstr ""
-
-#: si-captcha-admin.php:585
-msgid "Fast Secure reCAPTCHA"
-msgstr ""
-
-#: si-captcha-admin.php:586
+#: si-captcha.php:434
 msgid "SI CAPTCHA Anti-Spam"
 msgstr "SI CAPTCHA Anti-Spam"
 
-#: si-captcha-admin.php:587
+#: si-captcha.php:435
 msgid "Visitor Maps and Who's Online"
 msgstr "Visitor Maps és Who's Online"
 
-#: si-captcha.php:54
-msgid "SI Captcha Anti-Spam"
-msgstr ""
+#: si-captcha.php:445
+msgid "All registered users"
+msgstr "Minden regisztrált felhasználó"
 
-#: si-captcha.php:73
-msgid "Settings"
-msgstr "Beállítások"
+#: si-captcha.php:446
+msgid "Edit posts"
+msgstr "Bejegyzés szerkesztése"
 
-#: si-captcha.php:304
-msgid "ERROR: si-captcha.php plugin: GD image support not detected in PHP!"
-msgstr ""
+#: si-captcha.php:447
+msgid "Publish Posts"
+msgstr "Bejegyzés közzététele"
 
-#: si-captcha.php:305
-msgid "Contact your web host and ask them to enable GD image support for PHP."
-msgstr ""
+#: si-captcha.php:448
+msgid "Moderate Comments"
+msgstr "Megjegyzések moderálása"
 
-#: si-captcha.php:309
-msgid "ERROR: si-captcha.php plugin: imagepng function not detected in PHP!"
-msgstr ""
+#: si-captcha.php:449
+msgid "Administer site"
+msgstr "Site adminisztrálása"
 
-#: si-captcha.php:310
-msgid "Contact your web host and ask them to enable imagepng for PHP."
-msgstr ""
+#: si-captcha.php:467
+msgid "ERROR: si-captcha.php plugin says GD image support not detected in PHP!"
+msgstr "HIBA: a si-captcha.php plugin azt mondja, nem találja a GD image PHP szolgáltatást!"
 
-#: si-captcha.php:314
-msgid "ERROR: si-captcha.php plugin: securimage.php not found."
-msgstr ""
+#: si-captcha.php:468
+msgid "Contact your web host and ask them why GD image support is not enabled for PHP."
+msgstr "Lépj kapcsolatba a webszolgáltatóval, és informálódj, miért nincs engedélyezve az PHP GD image szolgáltatás."
 
-#: si-captcha.php:362 si-captcha.php:364
-msgid "CAPTCHA"
-msgstr ""
+#: si-captcha.php:472
+msgid "ERROR: si-captcha.php plugin says imagepng function not detected in PHP!"
+msgstr "HIBA: a si-captcha.php plugin azt mondja, nem találja a imagepng PHP függvényt!"
 
-#: si-captcha.php:372 si-captcha.php:379
-msgid "Refresh"
-msgstr ""
+#: si-captcha.php:473
+msgid "Contact your web host and ask them why imagepng function is not enabled for PHP."
+msgstr "Lépj kapcsolatba a webszolgáltatóval, és informálódj, miért nincs engedélyezve az PHP imagepng függvény."
 
-#: si-captcha.php:584
+#: si-captcha.php:477
+msgid "ERROR: si-captcha.php plugin says captcha_library not found."
+msgstr "HIBA: a si-captcha.php plugin azt mondja, nem találja a captcha_library-t."
+
+#: si-captcha.php:539
 msgid "Submit Comment"
 msgstr "Megjegyzés elküldése"
 
-#: si-captcha.php:1261
-msgid "Unreadable CAPTCHA token file"
-msgstr ""
+#: si-captcha.php:735
+#: si-captcha.php:764
+#: si-captcha.php:793
+#: si-captcha.php:843
+#: si-captcha.php:981
+msgid "Could not read CAPTCHA cookie. Make sure you have cookies enabled and not blocking in your web browser settings. Or another plugin is conflicting. See plugin FAQ."
+msgstr "Nem tudom olvasni a CAPTCHA cookie-t. Győződj meg róla, hogy a cookie-k engedélyezve vannak-e a böngésződben. Lehet, hogy másik plugin-nel áll fenn konfliktus. Nézd meg a plugin GYIK-ját."
 
-#: si-captcha.php:1375
+#: si-captcha.php:739
+#: si-captcha.php:768
+#: si-captcha.php:797
+#: si-captcha.php:974
+msgid "Please complete the CAPTCHA."
+msgstr "Kérlek töltsd ki a CAPTCHA mezőt"
+
+#: si-captcha.php:751
+#: si-captcha.php:780
+#: si-captcha.php:810
+#: si-captcha.php:993
+msgid "That CAPTCHA was incorrect. Make sure you have not disabled cookies."
+msgstr "Ez a Captcha hibás. Győződj meg róla, hogy a cookie-k nincsenek-e letiltva."
+
+#: si-captcha.php:764
+#: si-captcha.php:768
+#: si-captcha.php:780
+#: si-captcha.php:793
+#: si-captcha.php:797
+#: si-captcha.php:810
+#: si-captcha.php:843
+#: si-captcha.php:974
+#: si-captcha.php:981
+#: si-captcha.php:993
+msgid "ERROR"
+msgstr "HIBA"
+
+#: si-captcha.php:846
+msgid "Error: You did not enter a Captcha phrase. Press your browsers back button and try again."
+msgstr "Hiba: Nem írtad be a Captcha kifejezést. Kattints a böngésződ vissza gombjára, és próbáld újra."
+
+#: si-captcha.php:857
+msgid "Error: You entered in the wrong Captcha phrase. Press your browsers back button and try again."
+msgstr "Hiba: Rosszul adtad meg a Captcha kifejezést. Kattints a böngésződ vissza gombjára, és próbáld újra."
+
+#: si-captcha.php:927
+msgid "Settings"
+msgstr "Beállítások"
+
+#: si-captcha.php:968
+msgid "<strong>ERROR</strong>: The username field is empty."
+msgstr "<strong>HIBA</strong>: A felhasználónév mezője üres."
+
+#: si-captcha.php:971
+msgid "<strong>ERROR</strong>: The password field is empty."
+msgstr "<strong>HIBA</strong>: A jelszó mezője üres."
+
+#: si-captcha.php:1001
 #, php-format
-msgid ""
-"<strong>SI CAPTCHA needs your attention:</strong> To make it work, you need "
-"to configure the settings. <br />You can do so at the <a href=\"%s\">SI "
-"CAPTCHA settings page</a>."
-msgstr ""
+msgid "<strong>ERROR</strong>: Invalid username. <a href=\"%s\" title=\"Password Lost and Found\">Lost your password</a>?"
+msgstr "<strong>HIBA</strong>: Érvénytelen felhasználónév. <a href=\"%s\" title=\"Password Lost and Found\">Elfelejtetted a jelszavad</a>?"
 
-#~ msgid "SI Captcha Options"
-#~ msgstr "SI Captcha Opciók"
+#: si-captcha.php:1010
+#, php-format
+msgid "<strong>ERROR</strong>: Incorrect password. <a href=\"%s\" title=\"Password Lost and Found\">Lost your password</a>?"
+msgstr "<strong>HIBA</strong>: Érvénytelen jelszó. <a href=\"%s\" title=\"Password Lost and Found\">Elfelejtetted a jelszavad</a>?"
 
-#~ msgid "Options saved."
-#~ msgstr "Opciók mentve."
-
-#~ msgid "Free PHP Scripts"
-#~ msgstr "Ingyenes PHP szkript"
-
-#~ msgid "Contact"
-#~ msgstr "Kapcsolat"
-
-#~ msgid ""
-#~ "If you find this plugin useful to you, please consider making a small "
-#~ "donation to help contribute to further development. Thanks for your kind "
-#~ "support!"
-#~ msgstr ""
-#~ "Ha haszonsnak találtad ezt a plugint, egy kis adománnyal segíthetsz a "
-#~ "fejlesztésében. Köszönjük a támogatásod!"
-
-#~ msgid ""
-#~ "I have donated to help contribute for the development of this plugin."
-#~ msgstr "Adományoztam ennek a pluginnek a fejlesztéséért."
-
-#~ msgid "Usage"
-#~ msgstr "Használat"
-
-#~ msgid "Your theme must have a"
-#~ msgstr "A sablonodnak rendelkeznie kell"
-
-#~ msgid "tag inside your comments.php form. Most themes do."
-#~ msgstr ""
-#~ "cimkével a comment.php formjában. A legtöbb sablon rendelkezik ilyennel."
-
-#~ msgid ""
-#~ "The best place to locate the tag is before the comment textarea, you may "
-#~ "want to move it if it is below the comment textarea, or the captcha image "
-#~ "and captcha code entry might display after the submit button."
-#~ msgstr "A legjobb a megjegyzés szövegmezője elé tenni."
-
-#~ msgid "Options"
-#~ msgstr "Opciók"
-
-#~ msgid "Update Options"
-#~ msgstr "Opciók frissítése"
-
-#~ msgid "CAPTCHA Support Test:"
-#~ msgstr "CAPTCHA teszt:"
-
-#~ msgid "Test if your PHP installation will support the CAPTCHA"
-#~ msgstr "Próbáld ki, hogy a PHP installációd támogatja-e a CAPTCHA-t"
-
-#~ msgid "CAPTCHA difficulty:"
-#~ msgstr "CAPTCHA nehézség:"
-
-#~ msgid "CAPTCHA difficulty level:"
-#~ msgstr "CAPTCHA nehézségi szint:"
-
-#~ msgid "Low"
-#~ msgstr "Alacsony"
-
-#~ msgid "Medium"
-#~ msgstr "Közepes"
-
-#~ msgid "High"
-#~ msgstr "Magas"
-
-#~ msgid "CAPTCHA on Login Form:"
-#~ msgstr "CAPTCHA a bejelentkezési formon:"
-
-#~ msgid "Enable CAPTCHA on the login form."
-#~ msgstr "CAPTCHA engedélyezése a bejelentkezési formon."
-
-#~ msgid ""
-#~ "The Login form captcha is not enabled by default because it might be "
-#~ "annoying to users. Only enable it if you are having spam problems related "
-#~ "to bots automatically logging in."
-#~ msgstr ""
-#~ "A bejelentkezési formon nincs engedélyezve alapértelmezettként a captcha, "
-#~ "mivel zavarhatja a felhasználókat. Csak akkor érdemes bekapcsolnod, ha "
-#~ "spam problémáid adódnak, amiket bot-ok automatikus bejelentkezése okoz."
-
-#~ msgid "CAPTCHA on Register Form:"
-#~ msgstr "CAPTCHA a regisztrációs formon:"
-
-#~ msgid "Enable CAPTCHA on the register form."
-#~ msgstr "CAPTCHA engedélyezése a regisztrációs formon."
-
-#~ msgid "CAPTCHA on Comment Form:"
-#~ msgstr "CAPTCHA a megjegyések formon:"
-
-#~ msgid "Enable CAPTCHA on the comment form."
-#~ msgstr "CAPTCHA engedélyezése a megjegyzések formon."
-
-#~ msgid "Hide CAPTCHA for"
-#~ msgstr "CAPTCHA elrejtése"
-
-#~ msgid "registered"
-#~ msgstr "regisztrált"
-
-#~ msgid "users who can:"
-#~ msgstr "felhasználóknak, akik:"
-
-#~ msgid "CSS class name for CAPTCHA input field on the comment form"
-#~ msgstr "CSS osztály név CAPTCHA beviteli mező számára a megyjegyzés form-on"
-
-#~ msgid ""
-#~ "(Enter a CSS class name only if your theme uses one for comment text "
-#~ "inputs. Default is blank for none.)"
-#~ msgstr ""
-#~ "(Csak a CSS osztály nevét írd be, abban az esetben, ha a sablonod használ "
-#~ "ilyet a megjegyzések szöveges beviteli mezőihez. Alapértelmezettként "
-#~ "üres.)"
-
-#~ msgid "Comment Form Rearrange:"
-#~ msgstr "Megjegyzések form újrarendezése"
-
-#~ msgid ""
-#~ "Change the display order of the catpcha input field on the comment form."
-#~ msgstr ""
-#~ "Megváltoztatja a CAPTCHA beviteli mező megjelenítési sorrendjét a "
-#~ "megjegyzések formon"
-
-#~ msgid "Problem:"
-#~ msgstr "Probléma:"
-
-#~ msgid ""
-#~ "Sometimes the captcha image and captcha input field are displayed AFTER "
-#~ "the submit button on the comment form."
-#~ msgstr ""
-#~ "Bizonyos esetekben a captcha kép és beviteli mező nem jelenik mega a "
-#~ "jóváhagyó gomb UTÁN a megjegyzés form-on."
-
-#~ msgid "Fix:"
-#~ msgstr "Megoldás:"
-
-#~ msgid "Edit your current theme comments.php file and locate this line:"
-#~ msgstr ""
-#~ "Módosítsd az aktuális sablonban a comments.php file-t az alábbi sornál:"
-
-#~ msgid ""
-#~ "This tag is exactly where the captcha image and captcha code entry will "
-#~ "display on the form, so move the line to BEFORE the comment textarea, "
-#~ "uncheck the option box above, and the problem should be fixed."
-#~ msgstr ""
-#~ "Pontosan ez az a tag, ahol a captcha kép és kód megjelenik a form-on, "
-#~ "ezért vidd a sort a megjegyzés szövegmező ELÉ, kapcsold ki az alábbi "
-#~ "jelölőnégyzetet, és a probléma valószínűleg megoldódik."
-
-#~ msgid ""
-#~ "Alernately you can just check the box above and javascript will attempt "
-#~ "to rearrange it for you, but editing the comments.php, moving the tag, "
-#~ "and unchecking this box is the best solution."
-#~ msgstr ""
-#~ "Alternatívaként jelöld be ezt az opciót, és javascript fogja átrendezni "
-#~ "ezt számodra, de a legjobb, ha szerkeszted a comments.php-t és a "
-#~ "megfelelő helyre teszed a cimkét, és nem pipálod be ezt a funkciót."
-
-#~ msgid ""
-#~ "Why is it better to uncheck this and move the tag? because the XHTML will "
-#~ "no longer validate on the comment page if it is checked."
-#~ msgstr ""
-#~ "Miért jobb kikapcsolva hagyni és a tag-et áthelyezni? mert az XHTML nem "
-#~ "validál a megjegyzések oldalán, ha be van kapcsolva."
-
-#~ msgid "CAPTCHA Options:"
-#~ msgstr "CAPTCHA Opciók:"
-
-#~ msgid "Enable Flash Audio for the CAPTCHA."
-#~ msgstr "Flash Audio engedéjezése a CAPTCHA-hoz."
-
-#~ msgid "Accessibility:"
-#~ msgstr "Kezelhetőség:"
-
-#~ msgid "Enable aria-required tags for screen readers"
-#~ msgstr "Aria-required tag-ek engedélyezése screen reader-ek számára"
-
-#~ msgid ""
-#~ "aria-required is a form input WAI ARIA tag. Screen readers use it to "
-#~ "determine which fields are required. Enabling this is good for "
-#~ "accessability, but will cause the HTML to fail the W3C Validation (there "
-#~ "is no attribute \"aria-required\"). WAI ARIA attributes are soon to be "
-#~ "accepted by the HTML validator, so you can safely ignore the validation "
-#~ "error it will cause."
-#~ msgstr ""
-#~ "Az aria-required egy form beviteli WAI ARIA tag. A screen reader-ek "
-#~ "használják annak megállapítására, hogy mely mezők kitöltése kötelező. A "
-#~ "jó kezelhetőség érekében érdemes engedélyezni, de lehet, hogy így a HTML "
-#~ "okozhat W3C-s validációs problémákat.(there is no attribute \"aria-"
-#~ "required\"). A WAI ARIA attribútumot hamarosan támogatni fogják a HTML "
-#~ "validátorok, így nyugodtan figyelmen kívül hagyhatod ezt a hibát."
-
-#~ msgid "Click for Advanced Options"
-#~ msgstr "További opciókért kattints ide"
-
-#~ msgid "Inline CSS Style:"
-#~ msgstr "Inline CSS Stílus:"
-
-#~ msgid "Reset the styles to default."
-#~ msgstr "Alapértelmezett értékek visszaállítása"
-
-#~ msgid "CSS style for CAPTCHA div:"
-#~ msgstr "CSS stílus CAPTCHA div cimke számára:"
-
-#~ msgid "CSS style for CAPTCHA image:"
-#~ msgstr "CSS stílus CAPTCHA kép számára:"
-
-#~ msgid "CSS style for Audio image:"
-#~ msgstr "CSS stílus Audio kép számára:"
-
-#~ msgid "CSS style for Refresh image:"
-#~ msgstr "CSS stílus frissítési kép számára:"
-
-#~ msgid "Text Labels:"
-#~ msgstr "Szövegcimkék:"
-
-#~ msgid ""
-#~ "Some people wanted to change the text labels. These fields can be filled "
-#~ "in to override the standard text labels."
-#~ msgstr ""
-#~ "Vannak, akik szeretnének változtatni a szövegcimkéken. Ezek a mezők "
-#~ "segítségével felül lehet írni az alapértelmezett cimkéket."
-
-#~ msgid "CAPTCHA Audio"
-#~ msgstr "CAPTCHA Hang"
-
-#~ msgid "More WordPress plugins by Mike Challis:"
-#~ msgstr "Mégtöbb WordPress plugin Mike Challis-tól:"
-
-#~ msgid "Fast and Secure Contact Form"
-#~ msgstr "Fast and Secure Contact Form"
-
-#~ msgid "All registered users"
-#~ msgstr "Minden regisztrált felhasználó"
-
-#~ msgid "Edit posts"
-#~ msgstr "Bejegyzés szerkesztése"
-
-#~ msgid "Publish Posts"
-#~ msgstr "Bejegyzés közzététele"
-
-#~ msgid "Moderate Comments"
-#~ msgstr "Megjegyzések moderálása"
-
-#~ msgid "Administer site"
-#~ msgstr "Site adminisztrálása"
-
-#~ msgid ""
-#~ "ERROR: si-captcha.php plugin says GD image support not detected in PHP!"
-#~ msgstr ""
-#~ "HIBA: a si-captcha.php plugin azt mondja, nem találja a GD image PHP "
-#~ "szolgáltatást!"
-
-#~ msgid ""
-#~ "Contact your web host and ask them why GD image support is not enabled "
-#~ "for PHP."
-#~ msgstr ""
-#~ "Lépj kapcsolatba a webszolgáltatóval, és informálódj, miért nincs "
-#~ "engedélyezve az PHP GD image szolgáltatás."
-
-#~ msgid ""
-#~ "ERROR: si-captcha.php plugin says imagepng function not detected in PHP!"
-#~ msgstr ""
-#~ "HIBA: a si-captcha.php plugin azt mondja, nem találja a imagepng PHP "
-#~ "függvényt!"
-
-#~ msgid ""
-#~ "Contact your web host and ask them why imagepng function is not enabled "
-#~ "for PHP."
-#~ msgstr ""
-#~ "Lépj kapcsolatba a webszolgáltatóval, és informálódj, miért nincs "
-#~ "engedélyezve az PHP imagepng függvény."
-
-#~ msgid "ERROR: si-captcha.php plugin says captcha_library not found."
-#~ msgstr ""
-#~ "HIBA: a si-captcha.php plugin azt mondja, nem találja a captcha_library-t."
-
-#~ msgid ""
-#~ "Could not read CAPTCHA cookie. Make sure you have cookies enabled and not "
-#~ "blocking in your web browser settings. Or another plugin is conflicting. "
-#~ "See plugin FAQ."
-#~ msgstr ""
-#~ "Nem tudom olvasni a CAPTCHA cookie-t. Győződj meg róla, hogy a cookie-k "
-#~ "engedélyezve vannak-e a böngésződben. Lehet, hogy másik plugin-nel áll "
-#~ "fenn konfliktus. Nézd meg a plugin GYIK-ját."
-
-#~ msgid "Please complete the CAPTCHA."
-#~ msgstr "Kérlek töltsd ki a CAPTCHA mezőt"
-
-#~ msgid "That CAPTCHA was incorrect. Make sure you have not disabled cookies."
-#~ msgstr ""
-#~ "Ez a Captcha hibás. Győződj meg róla, hogy a cookie-k nincsenek-e "
-#~ "letiltva."
-
-#~ msgid ""
-#~ "Error: You did not enter a Captcha phrase. Press your browsers back "
-#~ "button and try again."
-#~ msgstr ""
-#~ "Hiba: Nem írtad be a Captcha kifejezést. Kattints a böngésződ vissza "
-#~ "gombjára, és próbáld újra."
-
-#~ msgid ""
-#~ "Error: You entered in the wrong Captcha phrase. Press your browsers back "
-#~ "button and try again."
-#~ msgstr ""
-#~ "Hiba: Rosszul adtad meg a Captcha kifejezést. Kattints a böngésződ vissza "
-#~ "gombjára, és próbáld újra."
-
-#~ msgid "<strong>ERROR</strong>: The username field is empty."
-#~ msgstr "<strong>HIBA</strong>: A felhasználónév mezője üres."
-
-#~ msgid "<strong>ERROR</strong>: The password field is empty."
-#~ msgstr "<strong>HIBA</strong>: A jelszó mezője üres."
-
-#~ msgid ""
-#~ "<strong>ERROR</strong>: Invalid username. <a href=\"%s\" title=\"Password "
-#~ "Lost and Found\">Lost your password</a>?"
-#~ msgstr ""
-#~ "<strong>HIBA</strong>: Érvénytelen felhasználónév. <a href=\"%s\" title="
-#~ "\"Password Lost and Found\">Elfelejtetted a jelszavad</a>?"
-
-#~ msgid ""
-#~ "<strong>ERROR</strong>: Incorrect password. <a href=\"%s\" title="
-#~ "\"Password Lost and Found\">Lost your password</a>?"
-#~ msgstr ""
-#~ "<strong>HIBA</strong>: Érvénytelen jelszó. <a href=\"%s\" title="
-#~ "\"Password Lost and Found\">Elfelejtetted a jelszavad</a>?"

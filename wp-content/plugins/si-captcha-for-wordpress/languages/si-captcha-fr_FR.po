@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: SI CAPTCHA Anti-Spam\n"
+"Project-Id-Version: SI CAPTCHA Anti-Spam 3.0.0.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/si-captcha-for-wordpress\n"
-"POT-Creation-Date: 2017-07-25 21:42-0400\n"
-"PO-Revision-Date: 2017-07-25 21:42-0400\n"
+"POT-Creation-Date: 2017-02-13 02:05+0100\n"
+"PO-Revision-Date: 2017-02-13 02:18+0100\n"
 "Last-Translator: Bonaldi <bonaldi.fr>\n"
 "Language-Team: Bonaldi <bonaldi.fr>\n"
 "Language: fr\n"
@@ -11,25 +11,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n\n"
+"X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: si-captcha-admin.php:15
 msgid "You do not have permissions for managing this option"
 msgstr "Vous n'avez pas les droits nécessaires pour gérer cette option"
 
-#: si-captcha-admin.php:93
+#: si-captcha-admin.php:90
 msgid "Your settings have been saved."
 msgstr "Vos réglages ont été enregistrés."
 
-#: si-captcha-admin.php:96 si-captcha.php:54
+#: si-captcha-admin.php:93 si-captcha.php:50
 msgid "SI Captcha Anti-Spam settings"
 msgstr "Réglages SI Captcha Anti-Spam"
 
-#: si-captcha-admin.php:124
+#: si-captcha-admin.php:121
 msgid ""
 "SI Captcha Anti-Spam is Network Activated and Main site configured. It is "
 "not necessary to change any settings here."
@@ -37,7 +37,7 @@ msgstr ""
 "SI Captcha Anti-Spam est activé sur le réseau et le site principal est "
 "configuré. Il n'est pas nécessaire de modifier le réglages ici."
 
-#: si-captcha-admin.php:125
+#: si-captcha-admin.php:122
 msgid ""
 "Settings are controlled at the main site and are Networkwide. If you want "
 "individual sites to each have their own unique settings: go to the main site "
@@ -50,83 +50,83 @@ msgstr ""
 "Captcha Anti-Spam et activez \"Autoriser les sites activés sur le réseau "
 "multisite à disposer de paramètres SI Captcha Anti-Spam individuels\"."
 
-#: si-captcha-admin.php:162
+#: si-captcha-admin.php:159
 #, php-format
 msgid "Downloaded %s times"
 msgstr "Téléchargé %s fois"
 
-#: si-captcha-admin.php:168 si-captcha-admin.php:176
+#: si-captcha-admin.php:165 si-captcha-admin.php:173
 #, php-format
 msgid "(Average rating based on %s ratings)"
 msgstr "(Notation moyenne basée sur %s votes)"
 
-#: si-captcha-admin.php:170
+#: si-captcha-admin.php:167
 msgid "5 stars"
 msgstr "5 étoiles"
 
-#: si-captcha-admin.php:171
+#: si-captcha-admin.php:168
 msgid "4 stars"
 msgstr "4 étoiles"
 
-#: si-captcha-admin.php:172
+#: si-captcha-admin.php:169
 msgid "3 stars"
 msgstr "3 étoiles"
 
-#: si-captcha-admin.php:173
+#: si-captcha-admin.php:170
 msgid "2 stars"
 msgstr "2 étoiles"
 
-#: si-captcha-admin.php:174
+#: si-captcha-admin.php:171
 msgid "1 star"
 msgstr "1 étoile"
 
-#: si-captcha-admin.php:176
+#: si-captcha-admin.php:173
 msgid "rate"
 msgstr "votez!"
 
-#: si-captcha-admin.php:187
+#: si-captcha-admin.php:184
 #, php-format
 msgid "a newer version is available: %s"
 msgstr "une nouvelle version est disponible: %s"
 
-#: si-captcha-admin.php:189
+#: si-captcha-admin.php:186
 #, php-format
 msgid "A newer version of SI Captcha Anti-Spam is available: %s"
 msgstr "Une nouvelle version de SI Captcha Anti-Spam est disponible: %s"
 
-#: si-captcha-admin.php:192
+#: si-captcha-admin.php:189
 msgid "(latest version)"
 msgstr "(dernière version)"
 
-#: si-captcha-admin.php:198
+#: si-captcha-admin.php:195
 msgid "Version:"
 msgstr "Version:"
 
-#: si-captcha-admin.php:199
+#: si-captcha-admin.php:196
 msgid "Changelog"
 msgstr "Changelog"
 
-#: si-captcha-admin.php:200
+#: si-captcha-admin.php:197
 msgid "FAQ"
 msgstr "FAQ"
 
-#: si-captcha-admin.php:201 si-captcha-admin.php:572
+#: si-captcha-admin.php:198 si-captcha-admin.php:544
 msgid "Rate This"
 msgstr "Notez Ceci"
 
-#: si-captcha-admin.php:202 si-captcha.php:60
+#: si-captcha-admin.php:199
 msgid "Support"
 msgstr "Support"
 
-#: si-captcha-admin.php:203 si-captcha-admin.php:549 si-captcha.php:61
+#: si-captcha-admin.php:200 si-captcha-admin.php:522
 msgid "Donate"
 msgstr "Donation"
 
-#: si-captcha-admin.php:204
+#: si-captcha-admin.php:201
 msgid "Mikes Free PHP Scripts"
 msgstr "Mikes Scripts PHP Gratuits"
 
-#: si-captcha-admin.php:216
+#: si-captcha-admin.php:213
 msgid ""
 "<strong>Individual Site Settings Enabled</strong><br />Note: SI Captcha Anti-"
 "Spam is not Network Activated, this means each site will have individual SI "
@@ -136,7 +136,7 @@ msgstr ""
 "Captcha Anti-Spam n'est pas activé sur le réseau, cela signifie que chaque "
 "site aura des paramètres individuels de SI Captcha Anti-Spam."
 
-#: si-captcha-admin.php:217
+#: si-captcha-admin.php:214
 msgid ""
 "If you want it this way, that is OK, but if you want the master site to "
 "control all the sites: go to the main site, then Network Activate this "
@@ -150,151 +150,120 @@ msgstr ""
 "et désactivez \"Autoriser les sites activés du réseau Multisite à avoir des "
 "réglages individuels de SI Captcha Anti-Spam\"."
 
-#: si-captcha-admin.php:224 si-captcha-admin.php:528
+#: si-captcha-admin.php:221 si-captcha-admin.php:501
 msgid "Save Changes"
 msgstr "Enregistrer"
 
-#: si-captcha-admin.php:227
-msgid ""
-"If you do not like image captcha and code entry, you can uninstall this "
-"plugin and try my new plugin:"
-msgstr ""
+#: si-captcha-admin.php:224 si-captcha-admin.php:557
+msgid "Fast Secure reCAPTCHA"
+msgstr "Fast Secure reCAPTCHA"
 
-#: si-captcha-admin.php:227
-msgid "Fast Secure reCAPTCHA with Google No CAPTCHA reCAPTCHA"
-msgstr ""
+#: si-captcha-admin.php:233
+msgid "Forms:"
+msgstr "Formulaires:"
 
-#: si-captcha-admin.php:236
-msgid "Enable CAPTCHA:"
-msgstr ""
+#: si-captcha-admin.php:237
+msgid "Enable CAPTCHA on the login form."
+msgstr "Activer le Code Anti-spam sur le formulaire de connexion."
 
-#: si-captcha-admin.php:240
-msgid "Login form."
-msgstr ""
-
-#: si-captcha-admin.php:241 si-captcha-admin.php:249 si-captcha-admin.php:257
-#: si-captcha-admin.php:265 si-captcha-admin.php:273 si-captcha-admin.php:281
-#: si-captcha-admin.php:289 si-captcha-admin.php:297 si-captcha-admin.php:305
-#: si-captcha-admin.php:313 si-captcha-admin.php:321 si-captcha-admin.php:329
-#: si-captcha-admin.php:346 si-captcha-admin.php:365 si-captcha-admin.php:383
-#: si-captcha-admin.php:391 si-captcha-admin.php:428 si-captcha-admin.php:448
-#: si-captcha-admin.php:498
+#: si-captcha-admin.php:238 si-captcha-admin.php:246 si-captcha-admin.php:254
+#: si-captcha-admin.php:262 si-captcha-admin.php:270 si-captcha-admin.php:278
+#: si-captcha-admin.php:286 si-captcha-admin.php:294 si-captcha-admin.php:302
+#: si-captcha-admin.php:319 si-captcha-admin.php:338 si-captcha-admin.php:356
+#: si-captcha-admin.php:364 si-captcha-admin.php:401 si-captcha-admin.php:421
+#: si-captcha-admin.php:471
 msgid "help"
 msgstr "aide"
 
-#: si-captcha-admin.php:243
+#: si-captcha-admin.php:240
 msgid "Require that the user pass a CAPTCHA test before login."
 msgstr ""
 "Exiger que l'utilisateur passe un test Code Anti-spam avant la connexion."
 
-#: si-captcha-admin.php:248
-msgid "Register form."
-msgstr ""
+#: si-captcha-admin.php:245
+msgid "Enable CAPTCHA on the register form."
+msgstr "Activer le Code Anti-spam sur le formulaire d'inscription."
 
-#: si-captcha-admin.php:251
+#: si-captcha-admin.php:248
 msgid "Require that the user pass a CAPTCHA test before registering."
 msgstr ""
 "Exiger que l'utilisateur passe un test Code Anti-spam avant de s'inscrire."
 
-#: si-captcha-admin.php:256
-msgid "Lost password form."
-msgstr ""
+#: si-captcha-admin.php:253
+msgid "Enable CAPTCHA on the lost password form."
+msgstr "Activer le Code Anti-spam sur le formulaire de mot-de-passe perdu."
 
-#: si-captcha-admin.php:259
+#: si-captcha-admin.php:256
 msgid "Require that the user pass a CAPTCHA test before lost password request."
 msgstr ""
 "Exiger que l'utilisateur passe un test Code Anti-spam avant la demande de "
 "mot de passe perdu."
 
-#: si-captcha-admin.php:264
-msgid "Comment form."
-msgstr ""
+#: si-captcha-admin.php:261
+msgid "Enable CAPTCHA on the comment form."
+msgstr "Activer le Code Anti-spam sur le formulaire de commentaire."
 
-#: si-captcha-admin.php:267
+#: si-captcha-admin.php:264
 msgid "Require that the user pass a CAPTCHA test before posting comments."
 msgstr ""
 "Exiger que l'utilisateur passe un test Code Anti-spam avant de poster des "
 "commentaires."
 
-#: si-captcha-admin.php:272
-msgid "Multisite register form."
-msgstr ""
+#: si-captcha-admin.php:269
+msgid "Enable CAPTCHA on Multisite register form."
+msgstr "Activez Code Anti-spam sur le formulaire d'enregistrement Multisite."
 
-#: si-captcha-admin.php:275
+#: si-captcha-admin.php:272
 msgid ""
 "Require that the user pass a CAPTCHA test before registering in Multisite."
 msgstr ""
 "Exiger que l'utilisateur passe un test Code Anti-spam avant de s'inscrire en "
 "Multisite."
 
-#: si-captcha-admin.php:280
-msgid "BuddyPress register form."
-msgstr ""
+#: si-captcha-admin.php:277
+msgid "Enable CAPTCHA on BuddyPress register form."
+msgstr "Activer Code Anti-spam sur le formulaire d'enregistrement BuddyPress."
 
-#: si-captcha-admin.php:283
+#: si-captcha-admin.php:280
 msgid ""
 "Require that the user pass a CAPTCHA test before registering in BuddyPress."
 msgstr ""
 "Exiger que l'utilisateur passe un test Code Anti-spam avant de s'inscrire "
 "dans BuddyPress."
 
-#: si-captcha-admin.php:288
-msgid "wpForo Forum register form."
+#: si-captcha-admin.php:285
+msgid "Enable CAPTCHA on wpForo Forum register form."
 msgstr ""
+"Activer Code Anti-spam sur le formulaire d'enregistrement du forum wpForo."
 
-#: si-captcha-admin.php:291
+#: si-captcha-admin.php:288
 msgid ""
 "Require that the user pass a CAPTCHA test before registering in wpForo Forum."
 msgstr ""
 "Exiger que l'utilisateur passe un test Code Anti-spam avant de s'inscrire "
 "sur le Forum wpForo."
 
+#: si-captcha-admin.php:293
+msgid "Enable CAPTCHA on WooCommerce checkout."
+msgstr "Activer Code Anti-spam sur la commande WooCommerce."
+
 #: si-captcha-admin.php:296
-msgid "WooCommerce checkout."
+msgid "Require that the user pass a CAPTCHA test on WooCommerce checkout form."
 msgstr ""
+"Exiger que l'utilisateur passe un test Code Anti-spam sur le formulaire de "
+"paiement WooCommerce."
 
-#: si-captcha-admin.php:299
-msgid ""
-"Require that the user pass a CAPTCHA test on WooCommerce checkout form when "
-"not logged in."
-msgstr ""
-
-#: si-captcha-admin.php:304
-msgid "Jetpack Contact Form."
-msgstr ""
-
-#: si-captcha-admin.php:307
-msgid "Require that the user pass a CAPTCHA test on Jetpack Contact Form."
-msgstr ""
-
-#: si-captcha-admin.php:312
-msgid "bbPress New Topic Form."
-msgstr ""
-
-#: si-captcha-admin.php:315
-msgid "Require that the user pass a CAPTCHA test on bbPress New Topic Form."
-msgstr ""
-
-#: si-captcha-admin.php:320
-msgid "bbPress Reply to Topic Form."
-msgstr ""
-
-#: si-captcha-admin.php:323
-msgid ""
-"Require that the user pass a CAPTCHA test on bbPress Reply to Topic Form."
-msgstr ""
-
-#: si-captcha-admin.php:328
+#: si-captcha-admin.php:301
 msgid "No comment form CAPTCHA for logged in users"
 msgstr "Pas de Code Anti-spam de commentaire pour les utilisateurs connectés"
 
-#: si-captcha-admin.php:331
+#: si-captcha-admin.php:304
 msgid "Logged in users will not have to pass a CAPTCHA test on comments form."
 msgstr ""
 "Les utilisateurs connectés n'auront pas à passer un test Code Anti-spam pour "
 "les commentaires."
 
-#: si-captcha-admin.php:345 si-captcha-admin.php:364
+#: si-captcha-admin.php:318 si-captcha-admin.php:337
 msgid ""
 "Allow Multisite network activated sites to have individual SI Captcha Anti-"
 "Spam settings."
@@ -302,7 +271,7 @@ msgstr ""
 "Autoriser les sites activés sur le réseau multisite à disposer de paramètres "
 "individuels SI Captcha Anti-Spam."
 
-#: si-captcha-admin.php:348 si-captcha-admin.php:367
+#: si-captcha-admin.php:321 si-captcha-admin.php:340
 msgid ""
 "Enabling this setting allows: individual site settings for this plugin on "
 "multisite with network activation turned on. The default is for all sites to "
@@ -312,7 +281,7 @@ msgstr ""
 "cette extension sur multisite avec activation réseau activée. La valeur par "
 "défaut est que tous les sites utilisent les paramètres du site principal."
 
-#: si-captcha-admin.php:358
+#: si-captcha-admin.php:331
 msgid ""
 "SI Captcha Anti-Spam is Network Activated and individual site configured. "
 "The next setting can only be modified by the main site settings menu."
@@ -321,31 +290,31 @@ msgstr ""
 "individuel. Le paramètre suivant ne peut être modifié que par le menu des "
 "paramètres principaux du site."
 
-#: si-captcha-admin.php:363
+#: si-captcha-admin.php:336
 msgid "Main site admin enabled:"
 msgstr "Administrateur principal du site activé:"
 
-#: si-captcha-admin.php:363
+#: si-captcha-admin.php:336
 msgid "Main site admin disabled:"
 msgstr "Administrateur principal du site désactivé:"
 
-#: si-captcha-admin.php:378
+#: si-captcha-admin.php:351
 msgid "Style:"
 msgstr "Style:"
 
-#: si-captcha-admin.php:382
+#: si-captcha-admin.php:355
 msgid "Enable small size CAPTCHA image."
 msgstr "Activer l'image Code Anti-spam de petite taille."
 
-#: si-captcha-admin.php:385
+#: si-captcha-admin.php:358
 msgid "Makes the CAPTCHA image size small instead of large."
 msgstr "Réduis la taille de l'image Code Anti-spam, petite au lieu de grande."
 
-#: si-captcha-admin.php:390
+#: si-captcha-admin.php:363
 msgid "Enable external CAPTCHA CSS."
 msgstr "Activez CSS externe de Code Anti-spam."
 
-#: si-captcha-admin.php:393
+#: si-captcha-admin.php:366
 msgid ""
 "Enable to not load this plugin CSS into wp_head. This allows you to load "
 "your own modified CSS into your theme instead."
@@ -353,33 +322,33 @@ msgstr ""
 "Activer pour ne pas charger le CSS de l'extension dans wp_head. Cela vous "
 "permet de charger votre propre CSS modifié dans votre thème à la place."
 
-#: si-captcha-admin.php:395
+#: si-captcha-admin.php:368
 msgid "External Style Sheet CSS starting point for custom setup:"
 msgstr ""
 "Feuille de style externe CSS point de départ pour une configuration "
 "personnalisée:"
 
-#: si-captcha-admin.php:410
+#: si-captcha-admin.php:383
 msgid "CAPTCHA input label position on the comment form:"
 msgstr "Position de l'étiquette d'entrée sur le formulaire de commentaires:"
 
-#: si-captcha-admin.php:414
+#: si-captcha-admin.php:387
 msgid "input-label-required"
 msgstr "entrée-étiquette-requise"
 
-#: si-captcha-admin.php:415
+#: si-captcha-admin.php:388
 msgid "label-required-input"
 msgstr "étiquette-requise-entrée"
 
-#: si-captcha-admin.php:416
+#: si-captcha-admin.php:389
 msgid "label-required-linebreak-input"
 msgstr "étiquette-requise-saut de ligne-entrée"
 
-#: si-captcha-admin.php:417
+#: si-captcha-admin.php:390
 msgid "label-input-required"
 msgstr "étiquette-entrée-requise"
 
-#: si-captcha-admin.php:430
+#: si-captcha-admin.php:403
 msgid ""
 "Changes position of the CAPTCHA input labels on the comment form. Some "
 "themes have different label positions on the comment form. After changing "
@@ -391,15 +360,15 @@ msgstr ""
 "assurez-vous de voir les commentaires et de vérifier que le réglage soit "
 "correct."
 
-#: si-captcha-admin.php:442
+#: si-captcha-admin.php:415
 msgid "Options:"
 msgstr "Options:"
 
-#: si-captcha-admin.php:447
+#: si-captcha-admin.php:420
 msgid "Enable PHP sessions."
 msgstr "Activer les sessions PHP."
 
-#: si-captcha-admin.php:450
+#: si-captcha-admin.php:423
 msgid ""
 "Enables PHP session handling. Only enable this if you have CAPTCHA token "
 "errors. Enable this setting to use PHP sessions for the CAPTCHA. PHP "
@@ -411,11 +380,11 @@ msgstr ""
 "être prises en charge par votre hébergeur ou il peut y avoir des erreurs de "
 "session."
 
-#: si-captcha-admin.php:461 si-captcha-admin.php:469
+#: si-captcha-admin.php:434 si-captcha-admin.php:442
 msgid "There is a problem with the directory"
 msgstr "Il y a un problème avec le dossier"
 
-#: si-captcha-admin.php:463
+#: si-captcha-admin.php:436
 msgid ""
 "The directory is not found, a <a href=\"http://codex.wordpress.org/"
 "Changing_File_Permissions\" target=\"_blank\">permissions</a> problem may "
@@ -425,7 +394,7 @@ msgstr ""
 "org/Changing_File_Permissions\" target=\"_blank\">permissions</a> a pû "
 "empécher sa création."
 
-#: si-captcha-admin.php:465 si-captcha-admin.php:477
+#: si-captcha-admin.php:438 si-captcha-admin.php:450
 msgid ""
 "Fixing the actual problem is recommended, but you can check this setting on "
 "the SI CAPTCHA options page: \"Use PHP sessions\" and the captcha will work "
@@ -436,7 +405,7 @@ msgstr ""
 "Code Anti-spam fonctionnera (si les sessions PHP sont pris en charge par "
 "votre hébergeur)."
 
-#: si-captcha-admin.php:470
+#: si-captcha-admin.php:443
 msgid ""
 "The directory Unwritable (<a href=\"http://codex.wordpress.org/"
 "Changing_File_Permissions\" target=\"_blank\">fix permissions</a>)"
@@ -444,11 +413,11 @@ msgstr ""
 "Le dossier bloqué en écriture (<a href=\"http://codex.wordpress.org/"
 "Changing_File_Permissions\" target=\"_blank\">corriger permissions</a>)"
 
-#: si-captcha-admin.php:471
+#: si-captcha-admin.php:444
 msgid "Permissions are: "
 msgstr "Les permissions sont:"
 
-#: si-captcha-admin.php:475
+#: si-captcha-admin.php:448
 msgid ""
 "Fixing this may require assigning 0755 permissions or higher (e.g. 0777 on "
 "some hosts. Try 0755 first, because 0777 is sometimes too much and will not "
@@ -458,19 +427,19 @@ msgstr ""
 "sur certains serveurs. Essayez 0755 d'abord, car 0777 est parfois trop élevé "
 "et ne fonctionne pas."
 
-#: si-captcha-admin.php:493
+#: si-captcha-admin.php:466
 msgid "Error Messages:"
 msgstr "Messages d'Erreur:"
 
-#: si-captcha-admin.php:497
+#: si-captcha-admin.php:470
 msgid "Customize Text:"
 msgstr "Personnaliser le texte:"
 
-#: si-captcha-admin.php:498
+#: si-captcha-admin.php:471
 msgid "Click for Help!"
 msgstr "Cliquez pour obtenir de l'aide!"
 
-#: si-captcha-admin.php:500
+#: si-captcha-admin.php:473
 msgid ""
 "These fields can be filled in to override the error message that displays "
 "when the form is submitted and the CAPTCHA does not pass validation."
@@ -479,56 +448,54 @@ msgstr ""
 "s'affiche lorsque le formulaire est soumis et que le Code Anti-spam ne passe "
 "pas la validation."
 
-#: si-captcha-admin.php:505
+#: si-captcha-admin.php:478
 msgid "Required"
 msgstr "Requis"
 
-#: si-captcha-admin.php:506
+#: si-captcha-admin.php:479
 msgid "Possible spam bot"
 msgstr "Robot de spam possible"
 
-#: si-captcha-admin.php:507 si-captcha.php:1188 si-captcha.php:1258
-#: si-captcha.php:1281
+#: si-captcha-admin.php:480 si-captcha.php:1036 si-captcha.php:1061
 msgid "Wrong CAPTCHA"
 msgstr "Mauvais Code Anti-spam"
 
-#: si-captcha-admin.php:508 si-captcha.php:1236 si-captcha.php:1242
+#: si-captcha-admin.php:481 si-captcha.php:1015 si-captcha.php:1020
 msgid "Empty CAPTCHA"
 msgstr "Code Anti-spam vide"
 
-#: si-captcha-admin.php:509 si-captcha.php:1244
+#: si-captcha-admin.php:482 si-captcha.php:1022
 msgid "Missing CAPTCHA token"
 msgstr "Jeton Code Anti-spam manquant"
 
-#: si-captcha-admin.php:510
+#: si-captcha-admin.php:483
 msgid "Unreadable CAPTCHA token"
 msgstr "Jeton Code Anti-spam illisible"
 
-#: si-captcha-admin.php:511 si-captcha.php:1268
+#: si-captcha-admin.php:484 si-captcha.php:1046
 msgid "Unreadable CAPTCHA cookie"
 msgstr "Cookie Code Anti-spam illisible"
 
-#: si-captcha-admin.php:512 si-captcha.php:690 si-captcha.php:815
-#: si-captcha.php:930 si-captcha.php:1062 si-captcha.php:1140
+#: si-captcha-admin.php:485 si-captcha.php:604 si-captcha.php:734
+#: si-captcha.php:835 si-captcha.php:969
 msgid "ERROR"
 msgstr "ERREUR"
 
-#: si-captcha-admin.php:513 si-captcha.php:641 si-captcha.php:720
-#: si-captcha.php:754 si-captcha.php:786 si-captcha.php:851 si-captcha.php:902
-#: si-captcha.php:964 si-captcha.php:1012 si-captcha.php:1041
-#: si-captcha.php:1123 si-captcha.php:1208
+#: si-captcha-admin.php:486 si-captcha.php:496 si-captcha.php:551
+#: si-captcha.php:636 si-captcha.php:672 si-captcha.php:705 si-captcha.php:770
+#: si-captcha.php:817 si-captcha.php:872 si-captcha.php:921 si-captcha.php:951
 msgid "CAPTCHA Code"
 msgstr "Code Anti-spam"
 
-#: si-captcha-admin.php:514
+#: si-captcha-admin.php:487
 msgid "CAPTCHA Image"
 msgstr "Image Anti-spam"
 
-#: si-captcha-admin.php:515
+#: si-captcha-admin.php:488
 msgid "Refresh Image"
 msgstr "Rafraîchir l'image"
 
-#: si-captcha-admin.php:524
+#: si-captcha-admin.php:497
 msgid ""
 "I have donated to help contribute for the development of this plugin. This "
 "checkbox makes the donate button go away"
@@ -536,11 +503,11 @@ msgstr ""
 "J'ai fait un don pour contribuer au développement de cette extension. Cette "
 "case permet de faire disparaître le bouton de don"
 
-#: si-captcha-admin.php:533
+#: si-captcha-admin.php:506
 msgid "Don't Forget to Test the CAPTCHA"
 msgstr "N'oubliez pas de tester le Code Anti-spam"
 
-#: si-captcha-admin.php:536
+#: si-captcha-admin.php:509
 msgid ""
 "After installing or updating plugins and themes, be sure to test the CAPTCHA "
 "on each form where it is enabled. It should display, allow actions on valid "
@@ -551,7 +518,7 @@ msgstr ""
 "doit s'afficher, autoriser les actions sur le code valide et bloquer les "
 "actions sur le code non valide."
 
-#: si-captcha-admin.php:552
+#: si-captcha-admin.php:525
 msgid ""
 "If you find this plugin useful to you, please consider making a donation to "
 "help contribute to my time invested and to further development. Thanks for "
@@ -561,11 +528,11 @@ msgstr ""
 "faire un don pour aider à contribuer au temps investi en développement. "
 "Merci pour votre aimable soutien!"
 
-#: si-captcha-admin.php:553
+#: si-captcha-admin.php:525
 msgid "You have 1 message from Mike Challis"
 msgstr "Vous avez 1 message de Mike Challis"
 
-#: si-captcha-admin.php:570
+#: si-captcha-admin.php:542
 msgid ""
 "Mike Challis says: \"Hello, I have many hours coding this plugin just for "
 "you. Please consider making a donation. If you are not able to, that is OK."
@@ -574,84 +541,76 @@ msgstr ""
 "juste pour vous. S'il vous plaît envisagez de faire un don. Si vous ne "
 "pouvez pas, c'est OK."
 
-#: si-captcha-admin.php:571
+#: si-captcha-admin.php:543
 msgid "Please also rate my plugin.\""
 msgstr "Veuillez également évaluer mon extension.\""
 
-#: si-captcha-admin.php:574
+#: si-captcha-admin.php:546
 msgid "Close this message"
 msgstr "Fermer ce message"
 
-#: si-captcha-admin.php:582
+#: si-captcha-admin.php:554
 msgid "WordPress plugins by Mike Challis:"
 msgstr "Extension WordPress par Mike Challis:"
 
-#: si-captcha-admin.php:584
+#: si-captcha-admin.php:556
 msgid "Fast Secure Contact Form"
 msgstr "Fast Secure Contact Form"
 
-#: si-captcha-admin.php:585
-msgid "Fast Secure reCAPTCHA"
-msgstr "Fast Secure reCAPTCHA"
-
-#: si-captcha-admin.php:586
+#: si-captcha-admin.php:558
 msgid "SI CAPTCHA Anti-Spam"
 msgstr "SI Captcha Anti-Spam"
 
-#: si-captcha-admin.php:587
+#: si-captcha-admin.php:559
 msgid "Visitor Maps and Who's Online"
 msgstr "Visitor Maps et Who's Online"
 
-#: si-captcha.php:54
+#: si-captcha.php:50
 msgid "SI Captcha Anti-Spam"
 msgstr "SI Captcha Anti-Spam"
 
-#: si-captcha.php:73
+#: si-captcha.php:61
 msgid "Settings"
 msgstr "Réglages"
 
-#: si-captcha.php:304
+#: si-captcha.php:259
 msgid "ERROR: si-captcha.php plugin: GD image support not detected in PHP!"
 msgstr ""
 "ERREUR: extension si-captcha.php: support d'image GD non détecté en PHP!"
 
-#: si-captcha.php:305
+#: si-captcha.php:260
 msgid "Contact your web host and ask them to enable GD image support for PHP."
 msgstr ""
 "Contactez votre hébergeur et demandez-lui d'activer la prise en charge de "
 "l'image GD pour PHP."
 
-#: si-captcha.php:309
+#: si-captcha.php:264
 msgid "ERROR: si-captcha.php plugin: imagepng function not detected in PHP!"
 msgstr ""
 "ERREUR: extension si-captcha.php: imagepng fonction non détectée en PHP!"
 
-#: si-captcha.php:310
+#: si-captcha.php:265
 msgid "Contact your web host and ask them to enable imagepng for PHP."
 msgstr ""
 "Contactez votre hébergeur et demandez-lui d'activer l'imagepng pour PHP."
 
-#: si-captcha.php:314
+#: si-captcha.php:269
 msgid "ERROR: si-captcha.php plugin: securimage.php not found."
 msgstr "ERREUR: extension si-captcha.php: securimage.php introuvable."
 
-#: si-captcha.php:362 si-captcha.php:364
+#: si-captcha.php:319 si-captcha.php:321
 msgid "CAPTCHA"
 msgstr "Code Anti-spam"
 
-#: si-captcha.php:372 si-captcha.php:379
+#: si-captcha.php:329 si-captcha.php:336
 msgid "Refresh"
 msgstr "Rafraîchir"
 
-#: si-captcha.php:584
-msgid "Submit Comment"
-msgstr ""
-
-#: si-captcha.php:1261
+#: si-captcha.php:1039
 msgid "Unreadable CAPTCHA token file"
 msgstr "Fichier jeton Code Anti-spam illisible"
 
-#: si-captcha.php:1375
+#: si-captcha.php:1150
 #, php-format
 msgid ""
 "<strong>SI CAPTCHA needs your attention:</strong> To make it work, you need "
@@ -661,39 +620,3 @@ msgstr ""
 "<strong>SI Captcha a besoin de votre attention:</strong> Pour le faire "
 "fonctionner, vous devez configurer les paramètres.<br />Vous pouvez le faire "
 "à la <a href=\"%s\">Page de réglages SI Captcha </a>."
-
-#~ msgid "Forms:"
-#~ msgstr "Formulaires:"
-
-#~ msgid "Enable CAPTCHA on the login form."
-#~ msgstr "Activer le Code Anti-spam sur le formulaire de connexion."
-
-#~ msgid "Enable CAPTCHA on the register form."
-#~ msgstr "Activer le Code Anti-spam sur le formulaire d'inscription."
-
-#~ msgid "Enable CAPTCHA on the lost password form."
-#~ msgstr "Activer le Code Anti-spam sur le formulaire de mot-de-passe perdu."
-
-#~ msgid "Enable CAPTCHA on the comment form."
-#~ msgstr "Activer le Code Anti-spam sur le formulaire de commentaire."
-
-#~ msgid "Enable CAPTCHA on Multisite register form."
-#~ msgstr ""
-#~ "Activez Code Anti-spam sur le formulaire d'enregistrement Multisite."
-
-#~ msgid "Enable CAPTCHA on BuddyPress register form."
-#~ msgstr ""
-#~ "Activer Code Anti-spam sur le formulaire d'enregistrement BuddyPress."
-
-#~ msgid "Enable CAPTCHA on wpForo Forum register form."
-#~ msgstr ""
-#~ "Activer Code Anti-spam sur le formulaire d'enregistrement du forum wpForo."
-
-#~ msgid "Enable CAPTCHA on WooCommerce checkout."
-#~ msgstr "Activer Code Anti-spam sur la commande WooCommerce."
-
-#~ msgid ""
-#~ "Require that the user pass a CAPTCHA test on WooCommerce checkout form."
-#~ msgstr ""
-#~ "Exiger que l'utilisateur passe un test Code Anti-spam sur le formulaire "
-#~ "de paiement WooCommerce."

