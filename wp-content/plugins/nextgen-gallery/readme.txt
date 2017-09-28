@@ -2,8 +2,8 @@
 Contributors: photocrati, imagely
 Tags: wordpress gallery plugin, gallery, nextgen, nextgen gallery, photo gallery, image gallery, photography, slideshow, images, photo, photo album, watermark
 Requires at least: 4.0.0
-Stable tag: 2.2.12
-Tested up to: 4.8.0
+Stable tag: 2.3.0
+Tested up to: 4.8.1
 License: GPLv2
 
 The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 18 million downloads.
@@ -186,6 +186,10 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 
 == Changelog ==
+
+= V2.2.14 - 09.18.2017 =
+* NEW:   EXIF and IPTC metadata are copied to new images when generating thumbnails, watermarks, or new sizes
+* Fixed: Metadata is read and preserved when "Resized images after upload" feature is enabled
 
 = V2.2.12 - 08.01.2017 =
 * Secured: Disabled Flash backend in plupload

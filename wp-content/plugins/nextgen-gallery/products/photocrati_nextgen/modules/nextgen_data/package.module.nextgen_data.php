@@ -235,6 +235,19 @@ class Mixin_Album_Mapper extends Mixin
         }
     }
 }
+class C_Exif_Writer_Wrapper
+{
+    // Because our C_Exif_Writer class relies on PEL (a library which uses namespaces) we wrap
+    // its use through this method which performs a PHP version check before loading the class file
+    public static function copy_metadata($old_file, $new_file)
+    {
+        if (version_compare(phpversion(), '5.3.0', '<')) {
+            return;
+        }
+        require_once __DIR__ . DIRECTORY_SEPARATOR . 'pel-0.9.6' . DIRECTORY_SEPARATOR . 'class.exif_writer.php';
+        C_Exif_Writer::copy_metadata($old_file, $new_file);
+    }
+}
 class Mixin_NextGen_Gallery_Validation
 {
     /**
@@ -1206,46 +1219,51 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
             if (!is_writable($upload_dir)) {
                 throw new E_InsufficientWriteAccessException(FALSE, $upload_dir, FALSE);
             }
-            // Save the image
-            if ($image_id = $this->object->_image_mapper->save($image)) {
-                try {
-                    // Try writing the image
-                    $fp = fopen($abs_filename, 'wb');
-                    fwrite($fp, $this->maybe_base64_decode($data));
-                    fclose($fp);
-                    if ($settings->imgBackup) {
-                        $this->object->backup_image($image);
-                    }
-                    if ($settings->imgAutoResize) {
-                        $this->object->generate_image_clone($abs_filename, $abs_filename, $this->object->get_image_size_params($image_id, 'full'));
-                    }
-                    // Ensure that fullsize dimensions are added to metadata array
-                    $dimensions = getimagesize($abs_filename);
-                    $full_meta = array('width' => $dimensions[0], 'height' => $dimensions[1], 'md5' => $this->object->get_image_checksum($image, 'full'));
-                    if (!isset($image->meta_data) or is_string($image->meta_data) && strlen($image->meta_data) == 0) {
-                        $image->meta_data = array();
-                    }
-                    $image->meta_data = array_merge($image->meta_data, $full_meta);
-                    $image->meta_data['full'] = $full_meta;
-                    // Generate a thumbnail for the image
-                    $this->object->generate_thumbnail($image);
-                    // Set gallery preview image if missing
-                    C_Gallery_Mapper::get_instance()->set_preview_image($gallery, $image_id, TRUE);
-                    // Notify other plugins that an image has been added
-                    do_action('ngg_added_new_image', $image);
-                    // delete dirsize after adding new images
-                    delete_transient('dirsize_cache');
-                    // Seems redundant to above hook. Maintaining for legacy purposes
-                    do_action('ngg_after_new_images_added', $gallery_id, array($image->{$image_key}));
-                } catch (E_No_Image_Library_Exception $ex) {
-                    throw $ex;
-                } catch (E_Clean_Exit $ex) {
-                    // pass
-                } catch (Exception $ex) {
-                    throw new E_InsufficientWriteAccessException(FALSE, $abs_filename, FALSE, $ex);
+            try {
+                // Try writing the image
+                $fp = fopen($abs_filename, 'wb');
+                fwrite($fp, $this->maybe_base64_decode($data));
+                fclose($fp);
+                // Save the image
+                $image_id = $this->object->_image_mapper->save($image);
+                if (!$image_id) {
+                    throw new E_InvalidEntityException();
                 }
-            } else {
-                throw new E_InvalidEntityException();
+                if ($settings->imgBackup) {
+                    $this->object->backup_image($image);
+                }
+                if ($settings->imgAutoResize) {
+                    $this->object->generate_image_clone($abs_filename, $abs_filename, $this->object->get_image_size_params($image_id, 'full'));
+                }
+                $this->object->_image_mapper->_use_cache = FALSE;
+                $image = $this->object->_image_mapper->find($image_id);
+                $this->object->_image_mapper->_use_cache = TRUE;
+                // Ensure that fullsize dimensions are added to metadata array
+                $dimensions = getimagesize($abs_filename);
+                $full_meta = array('width' => $dimensions[0], 'height' => $dimensions[1], 'md5' => $this->object->get_image_checksum($image, 'full'));
+                if (!isset($image->meta_data) or is_string($image->meta_data) && strlen($image->meta_data) == 0) {
+                    $image->meta_data = array();
+                }
+                $image->meta_data = array_merge($image->meta_data, $full_meta);
+                $image->meta_data['full'] = $full_meta;
+                // Don't forget to append the 'full' entry in meta_data in the db
+                $this->object->_image_mapper->save($image);
+                // Generate a thumbnail for the image
+                $this->object->generate_thumbnail($image);
+                // Set gallery preview image if missing
+                C_Gallery_Mapper::get_instance()->set_preview_image($gallery, $image_id, TRUE);
+                // Notify other plugins that an image has been added
+                do_action('ngg_added_new_image', $image);
+                // delete dirsize after adding new images
+                delete_transient('dirsize_cache');
+                // Seems redundant to above hook. Maintaining for legacy purposes
+                do_action('ngg_after_new_images_added', $gallery_id, array($image->{$image_key}));
+            } catch (E_No_Image_Library_Exception $ex) {
+                throw $ex;
+            } catch (E_Clean_Exit $ex) {
+                // pass
+            } catch (Exception $ex) {
+                throw new E_InsufficientWriteAccessException(FALSE, $abs_filename, FALSE, $ex);
             }
         } else {
             throw new E_EntityNotFoundException();
@@ -1643,6 +1661,7 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
      * @param string $image_path
      * @param string $clone_path
      * @param array $params
+     * @param bool $save Whether to call the image save() method
      * @return object
      */
     function generate_image_clone($image_path, $clone_path, $params)
@@ -1777,13 +1796,7 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
                 }
                 $thumbnail = apply_filters('ngg_before_save_thumbnail', $thumbnail);
                 $thumbnail->save($destpath, $quality);
-                // IF the original contained IPTC metadata we should attempt to copy it
-                if (isset($detailed_size['APP13']) && function_exists('iptcembed')) {
-                    $metadata = @iptcembed($detailed_size['APP13'], $destpath);
-                    $fp = @fopen($destpath, 'wb');
-                    @fwrite($fp, $metadata);
-                    @fclose($fp);
-                }
+                C_Exif_Writer_Wrapper::copy_metadata($image_path, $destpath);
             }
         }
         return $thumbnail;
@@ -1958,7 +1971,7 @@ class Mixin_Gallery_Image_Mapper extends Mixin
     function _save_entity($entity)
     {
         $entity->updated_at = time();
-        // If successfully saved, then import metadata and
+        // If successfully saved then import metadata
         $retval = $this->call_parent('_save_entity', $entity);
         if ($retval) {
             include_once NGGALLERY_ABSPATH . '/admin/functions.php';

@@ -89,12 +89,7 @@ class A_NextGen_Basic_Tagcloud_Form extends Mixin_Display_Type_Form
     }
     function enqueue_static_resources()
     {
-        $path = 'photocrati-nextgen_basic_tagcloud#settings.css';
-        wp_enqueue_style('nextgen_basic_tagcloud_settings-css', $this->get_static_url($path), FALSE, NGG_SCRIPT_VERSION);
-        $atp = C_Attach_Controller::get_instance();
-        if (!is_null($atp)) {
-            $atp->mark_script($path);
-        }
+        $this->object->enqueue_style('nextgen_basic_tagcloud_settings-css', $this->get_static_url('photocrati-nextgen_basic_tagcloud#settings.css'));
     }
     function _render_nextgen_basic_tagcloud_number_field($display_type)
     {

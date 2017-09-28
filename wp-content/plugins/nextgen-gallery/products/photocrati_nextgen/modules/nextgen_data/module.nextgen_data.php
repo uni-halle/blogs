@@ -50,6 +50,7 @@ class M_NextGen_Data extends C_Base_Module
     function get_type_list()
     {
         return array(
+            'C_Exif_Writer_Wrapper' => 'class.exif_writer_wrapper.php',
             'A_Attachment_Datamapper' => 'adapter.attachment_datamapper.php',
             'A_Customtable_Sorting_Datamapper' => 'adapter.customtable_sorting_datamapper.php',
             'A_Nextgen_Data_Factory' => 'adapter.nextgen_data_factory.php',
