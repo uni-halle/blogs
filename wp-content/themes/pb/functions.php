@@ -1,5 +1,10 @@
 <?php
 
+// Standardrouten entfernen und individuelle Routen erstellen
+remove_action('rest_api_init', 'create_initial_rest_routes', 99);
+remove_action('rest_api_init', 'wp_oembed_register_route');
+require_once 'api.php';
+
 // Als Parameter übergebene Filter
 $GLOBALS['filterParameter'] = array(
 	'kategorie' => 'kategorie',
