@@ -3,7 +3,7 @@
 Plugin Name: Blubrry PowerPress
 Plugin URI: http://create.blubrry.com/resources/powerpress/
 Description: <a href="http://create.blubrry.com/resources/powerpress/" target="_blank">Blubrry PowerPress</a> is the No. 1 Podcasting plugin for WordPress. Developed by podcasters for podcasters; features include Simple and Advanced modes, multiple audio/video player options, subscribe to podcast tools, podcast SEO features, and more! Fully supports iTunes, Google Play, Stitcher, and Blubrry Podcasting directories, as well as all podcast applications and clients.
-Version: 7.1
+Version: 7.1.1
 Author: Blubrry
 Author URI: http://www.blubrry.com/
 Requires at least: 3.6
@@ -32,7 +32,7 @@ if( !function_exists('add_action') )
 	die("access denied.");
 	
 // WP_PLUGIN_DIR (REMEMBER TO USE THIS DEFINE IF NEEDED)
-define('POWERPRESS_VERSION', '7.1' );
+define('POWERPRESS_VERSION', '7.1.1' );
 
 // Translation support:
 if ( !defined('POWERPRESS_ABSPATH') )
@@ -1647,6 +1647,14 @@ function powerpress_w3tc_can_print_comment($settings)
 	 return false; 
 }
 
+// Disable minifying if W3TC is enabled
+function powerpress_w3tc_minify_enable($enable)
+{
+	if( is_feed() )
+		return false;
+	return $enable;
+}
+
 // Load the general feed settings for feeds handled by powerpress
 function powerpress_load_general_feed_settings()
 {
@@ -1674,6 +1682,11 @@ function powerpress_load_general_feed_settings()
 			if( is_feed() && defined('W3TC') && empty($GeneralSettings['allow_feed_comments']) )
 			{
 				add_filter( 'w3tc_can_print_comment', 'powerpress_w3tc_can_print_comment', 10, 1 );
+			}
+			
+			if( is_feed() && defined('W3TC') )
+			{
+				add_filter( 'w3tc_minify_enable', 'powerpress_w3tc_minify_enable');
 			}
 			
 			// If we're in advanced mode and we're dealing with a category feed we're extending, lets work with it...

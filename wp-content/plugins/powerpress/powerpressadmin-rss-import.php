@@ -725,8 +725,9 @@ jQuery(document).ready( function() {
 			
 		// Look for an enclosure, if not found skip it...
 		$enclosure_data = false;
-		if( !preg_match('|<enclosure(.*?)/>|is', $post, $enclosure_data) ) {
+		if( !preg_match('#<enclosure(.*?)(/>|</enclosure>)#is', $post, $enclosure_data) ) {
 			echo sprintf(__('No Media found for item %d', 'powerpress'), $this->m_item_pos);
+			//echo '<pre>'.htmlspecialchars($post).'</pre>'; // Uncomment for debugging
 			if( empty($import_blog_posts) ) {
 				$this->m_item_skipped_count++;
 				return false;

@@ -457,7 +457,7 @@ function powerpress_subscribe_shortcode( $attr ) {
 		return '';	
 		
 	$Settings['itunes_url'] = powerpresssubscribe_get_itunes_url($Settings);
-	wp_enqueue_style( 'powerpress-subscribe-style' );
+	wp_enqueue_style( 'powerpress-subscribe-style', plugin_dir_url( __FILE__ ) . 'css/subscribe.css' );
 	
 	if( !empty($attr['itunes_button']) && !empty($Settings['itunes_url']) )
 	{

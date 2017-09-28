@@ -92,7 +92,7 @@
 	<p>
 		<?php echo __('The largest podcast directory in the World!', 'powerpress'); ?>
 	</p><p>
-		<?php echo sprintf(__('Once listed, %s to expand your podcast distribution to Blubrry\'s SmartTV Apps (e.g. Roku) and apply to be on Spotify.', 'powerpress'), '<a href="http://create.blubrry.com/resources/blubrry-podcast-directory/get-featured-on-blubrry/" target="_blank">'. __('Get Featured', 'powerpress').'</a>' ); ?>
+		<?php echo sprintf(__('Once listed, %s to expand your podcast distribution to Blubrry\'s SmartTV Apps (e.g. Roku) and apply to be on Spotify.', 'powerpress'), '<a href="http://create.blubrry.com/resources/blubrry-podcast-directory/" target="_blank">'. __('Get Featured', 'powerpress').'</a>' ); ?>
 	</p>
 	<label for="blubrry_url" style="font-size: 120%; display: block; font-weight: bold;"><?php echo __('Blubrry Listing URL', 'powerpress'); ?></label>
 	<input type="text" class="bpp-input-normal" id="blubrry_url" name="Feed[blubrry_url]" value="<?php echo esc_attr($FeedSettings['blubrry_url']); ?>" maxlength="255" />

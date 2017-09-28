@@ -1348,8 +1348,11 @@ function powerpressplayer_build_blubrryaudio($media_url, $EpisodeData=array(), $
 					$url.= '&amp;podcast_link='. urlencode($permalink);
 			}
 			if( !empty($EpisodeData['itunes_image']) ) {
-				$url.= '&amp;artwork_url='. urlencode($EpisodeData['itunes_image']);
+                $GeneralSettings = get_option('powerpress_general');
+                if(isset($GeneralSettings['bp_episode_image']) && $GeneralSettings['bp_episode_image'] != false)
+				    $url.= '&amp;artwork_url='. urlencode($EpisodeData['itunes_image']);
 			}
+
 		}
 		return '<iframe src="'. $url .'" scrolling="no" width="100%" height="138px" frameborder="0"></iframe>';
 	}

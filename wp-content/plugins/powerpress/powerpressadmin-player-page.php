@@ -978,14 +978,14 @@ function audio_player_defaults()
 		<td>
 			<?php print_blubrry_player_demo(); ?>
 			
-			<!-- <p><input name="General[itunes_image_audio]" type="hidden" value="0"/><input name="General[itunes_image_audio]" type="checkbox" value="1" <?php echo ($General['itunes_image_audio']?'checked':''); ?> /> <?php echo __('Use episode iTunes image if set', 'powerpress'); ?> </p> -->
+			<!-- <p><input name="General[itunes_image_audio]" type="hidden" value="0"/><input name="General[itunes_image_audio]" type="checkbox" value="1" <?php echo ( !empty($General['itunes_image_audio'])?'checked':''); ?> /> <?php echo __('Use episode iTunes image if set', 'powerpress'); ?> </p> -->
 			
 			<p>
 				<?php echo __('Episode level iTunes image if set will be displayed in the player. The URLs to the images must be https:// in order to appear on social networking sites.', 'powerpress'); ?>
 			</p>
 			
-			<p><input name="General[episode_box_itunes_image]" type="hidden" value="0"/><input name="General[episode_box_itunes_image]" type="checkbox" value="1" <?php echo ($General['episode_box_itunes_image']?'checked':''); ?> /> <?php echo __('Display iTunes episode image field', 'powerpress'); ?> </p>
-			
+			<p><input name="General[episode_box_itunes_image]" type="hidden" value="0" /><input name="General[episode_box_itunes_image]" type="checkbox" value="1" <?php echo ( !empty($General['episode_box_itunes_image']) ?'checked':''); ?> /> <?php echo __('Display iTunes episode image field', 'powerpress'); ?> </p>
+			<p><input name="General[bp_episode_image]" type="hidden" value="0" /><input name="General[bp_episode_image]" type="checkbox" value="1" <?php echo ( !empty($General['bp_episode_image']) ?'checked':''); ?> /> <?php echo __('Use iTunes episode image with player', 'powerpress'); ?> </p>
 		</td>
 	</tr>
 

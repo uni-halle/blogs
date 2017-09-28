@@ -362,7 +362,8 @@
 			{
 				curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2 );
 				curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true );
-				curl_setopt($curl, CURLOPT_CAINFO, ABSPATH . WPINC . '/certificates/ca-bundle.crt');
+				if( defined('ABSPATH') && defined('WPINC') )
+					curl_setopt($curl, CURLOPT_CAINFO, ABSPATH . WPINC . '/certificates/ca-bundle.crt');
 			}
 			
 			if ( !ini_get('safe_mode') && !ini_get('open_basedir') )
@@ -472,7 +473,8 @@
 				{
 					curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2 );
 					curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true );
-					curl_setopt($curl, CURLOPT_CAINFO, ABSPATH . WPINC . '/certificates/ca-bundle.crt');
+					if( defined('ABSPATH') && defined('WPINC') )
+						curl_setopt($curl, CURLOPT_CAINFO, ABSPATH . WPINC . '/certificates/ca-bundle.crt');
 				}
 				
 				if ( !ini_get('safe_mode') && !ini_get('open_basedir') )
@@ -558,7 +560,7 @@
 			$LocalFile = false;
 			
 			// If the URL starts with a http:// or https:// and ends with an mp3, then lets try the smart id3 method...
-			if( preg_match('/^https?:\/\/.*\.mp3$/i', $File) !== false )
+			if( preg_match('/^https?:\/\/.*\.mp3$/i', $File) != false )
 			{
 				$LocalFile = $this->DownloadID3Headers($File);
 				if( $LocalFile === false )
@@ -767,8 +769,10 @@
 			
 			if( defined('POWERPRESS_GETID3_LIBRARY') && is_file(POWERPRESS_GETID3_LIBRARY) )
 				require_once(POWERPRESS_GETID3_LIBRARY);
-			else
+			else if( defined('POWERPRESS_ABSPATH') )
 				require_once(POWERPRESS_ABSPATH.'/getid3/getid3.php');
+			else if( file_exists( dirname(__FILE__) .'/getid3/getid3.php' ) )
+				require_once( dirname(__FILE__) .'/getid3/getid3.php');
 				
 			define('POWERPRESS_GETID3_LOADED', true);
 			return true;
@@ -788,7 +792,7 @@
 	/*
 	// Example usage:
 	$Mp3Info = new Mp3Info();
-	$file = 'http://www.podcampohio.com/podpress_trac/web/177/0/TS-107667.mp3';
+	$file = 'http://content.blubrry.com/geeknewscentral/GNC-2017-07-06.mp3';
 	if( $Data = $Mp3Info->GetMp3Info($file) )
 	{
 		echo 'Success: ';
@@ -805,4 +809,4 @@
 	}
 	*/
 	
-?>
+// eof

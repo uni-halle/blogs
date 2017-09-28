@@ -3,7 +3,7 @@ Contributors: amandato, blubrry
 Tags: podcasting, podcast, podcaster, powerpress, itunes, google play music, google play, enclosure, professional, apple, apple tv, ipad, iphone, soundcloud, squarespace, youtube, viddler, ustream, podcasting, audio, video, rss2, feed, player, media, rss, mp3, music, embed, feedburner, statistics, stats, flv, flash, id3, episodes, blubrry, mp4, m4v, wordpressmu, mu, wordpress mu, multisite, multi site, mediacaster, post, plugin, posts, simple, social, dashboard, TSG, Buzzsprout, MTR, WP-boxCast, CastMyBlog, tgs podcasting,  simple podcasting, seriously simple podcasting, seriously-simple-podcasting, serious, seriously, ssp, podlove, podcast.de, clammr, clammr radio, audio player, stitcher, tunein, show, shows, series, docs, documentation, support, free, add-ons, extensions, addons, libsyn, libsyn-podcasting, podbean, podomatic, spreaker
 Requires at least: 3.6
 Tested up to: 4.8.1
-Stable tag: 7.1
+Stable tag: 7.1.1
 Donate link: https://www.patreon.com/blubrry?ty=h
 License: GPLv2 or later
 
@@ -228,10 +228,21 @@ To install Blubrry PowerPress manually, follow these steps:
 
 = Next Major Release Announcements =
 * Facebook Instant Articles for podcasting coming in next release!
-* We are looking for beta testers! If you would like to beta test future versions of PowerPress, please [contact us](http://www.blubrry.com/contact.php) with your name and email.
+* We are looking for beta testers! If you would like to beta test future versions of PowerPress, please [contact us](http://www.blubrry.com/contact.php#feedback) with your name and email.
 
 = Fan of PowerPress and want to show your support? =
 If you are a fan of PowerPress, we would greatly appreciate it if you could take a moment and [leave us a review on WordPress.org](https://wordpress.org/support/plugin/powerpress/reviews/?rate=5#new-post). Your support is greatly appreciated!
+
+= 7.1.1 =
+* Released on 08/24/2017
+* NOTE: There is no urgency to update to this version unless you can benefit from bug fixes listed.
+* BETA COMING SOON: PowerPress 7.2 Beta will be available within 24-72 hours. Please visit https://create.blubrry.com/resources/powerpress/powerpress-beta/ for more details.
+* Added logic to prevent the W3 Total Cache plugin from minifying podcast feeds. (Thanks @allimaple for bringing to our attention)
+* Fixed warning messages in the getid3 library so they comply with PHP 7.1+. (Thanks @mahe for letting us know about the problem)
+* Fixed error verifying URLs for file formats not supported by iTunes.
+* Feed import now compatible with Spreaker podcast feeds.
+* Added code when including the subscribe CSS file to make sure it's always included with various WordPress updates (Thanks Tim for the code fix!)
+* Added checkbox in Blubrry Player configuration for making iTunes Episode image use optional with player. Unchecked by default.
 
 
 = 7.1 =
@@ -584,7 +595,7 @@ Nicolas Bouliane, [Personal Blog](http://nicolasbouliane.com/) - contributed cod
 
 == Translators ==
 * Danish translation for v1.0.11+ by [Team Blogos](http://wordpress.blogos.dk/s%C3%B8g-efter-downloads/?did=280) - Latest translation available [here](http://wordpress.blogos.dk/s%C3%B8g-efter-downloads/?did=280)
-* French translation for v1.0.11+ by [Aureien Denis](http://wpchannel.com/) - Aurélien is looking for assistance maintaining the French translation, email wpchannel [at] gmail.com if interested.
+* French translation for v1.0.11+ by [Aureien Denis](http://wpchannel.com/) - Aurï¿½lien is looking for assistance maintaining the French translation, email wpchannel [at] gmail.com if interested.
 * Simplified Chinese for v1.0.12+ by [webmote](http://codeex.cn) - From webmote: Welcome to use the plugin. Very good! and then hope you to access my site.
 * Italian translation for v2.0.4+ by [Umberto Sartori](http://veneziadoc.net/)
 * Romanian translation for v2.0.4+ by Alexander Ovsov (Web Geek Sciense: http://webhostinggeeks.com/science/)
