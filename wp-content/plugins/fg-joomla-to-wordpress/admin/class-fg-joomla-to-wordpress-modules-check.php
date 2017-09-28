@@ -73,6 +73,10 @@ if ( !class_exists('FG_Joomla_to_WordPress_Modules_Check', false) ) {
 					'fg-joomla-to-wordpress-premium-joomfish-module/fgj2wp-joomfish.php',
 					sprintf($message_addon, __('some Joom!Fish translations', 'fg-joomla-to-wordpress'), $premium_url, $premium_url . 'joomfish/', __('Joom!Fish add-on', 'fg-joomla-to-wordpress'))
 				),
+				array('falang_content', 10,
+					'fg-joomla-to-wordpress-premium-joomfish-module/fgj2wp-joomfish.php',
+					sprintf($message_addon, __('some Falang translations', 'fg-joomla-to-wordpress'), $premium_url, $premium_url . 'joomfish/', __('Joom!Fish add-on', 'fg-joomla-to-wordpress'))
+				),
 				array('zoo_item', 10,
 					'fg-joomla-to-wordpress-premium-zoo-module/fgj2wp-zoo.php',
 					sprintf($message_addon, __('some Zoo items', 'fg-joomla-to-wordpress'), $premium_url, $premium_url . 'zoo/', __('Zoo add-on', 'fg-joomla-to-wordpress'))

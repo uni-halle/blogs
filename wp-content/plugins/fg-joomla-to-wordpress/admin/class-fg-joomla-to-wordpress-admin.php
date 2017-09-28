@@ -209,28 +209,31 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 		 * @since    3.0.0
 		 */
 		public function ajax_importer() {
-			$action = filter_input(INPUT_POST, 'plugin_action', FILTER_SANITIZE_STRING);
-			
-			if ( $action == 'update_wordpress_info') {
-				// Update the WordPress database info
-				echo $this->get_database_info();
-				
-			} else {
-				ini_set('display_errors', true); // Display the errors that may happen (ex: Allowed memory size exhausted)
-				
-				// Empty the log file if we empty the WordPress content
-				if ( ($action == 'empty') || (($action == 'import') && filter_input(INPUT_POST, 'automatic_empty', FILTER_VALIDATE_BOOLEAN)) ) {
-					file_put_contents($this->log_file, '');
-				}
+			$current_user = wp_get_current_user();
+			if ( !empty($current_user) && $current_user->has_cap('import') ) {
+				$action = filter_input(INPUT_POST, 'plugin_action', FILTER_SANITIZE_STRING);
 
-				$time_start = date('Y-m-d H:i:s');
-				$this->display_admin_notice("=== START $action $time_start ===");
-				$result = $this->dispatch($action);
-				if ( !empty($result) ) {
-					echo json_encode($result); // Send the result to the AJAX caller
+				if ( $action == 'update_wordpress_info') {
+					// Update the WordPress database info
+					echo $this->get_database_info();
+
+				} else {
+					ini_set('display_errors', true); // Display the errors that may happen (ex: Allowed memory size exhausted)
+
+					// Empty the log file if we empty the WordPress content
+					if ( ($action == 'empty') || (($action == 'import') && filter_input(INPUT_POST, 'automatic_empty', FILTER_VALIDATE_BOOLEAN)) ) {
+						file_put_contents($this->log_file, '');
+					}
+
+					$time_start = date('Y-m-d H:i:s');
+					$this->display_admin_notice("=== START $action $time_start ===");
+					$result = $this->dispatch($action);
+					if ( !empty($result) ) {
+						echo json_encode($result); // Send the result to the AJAX caller
+					}
+					$time_end = date('Y-m-d H:i:s');
+					$this->display_admin_notice("=== END $action $time_end ===\n");
 				}
-				$time_end = date('Y-m-d H:i:s');
-				$this->display_admin_notice("=== END $action $time_end ===\n");
 			}
 			wp_die();
 		}
@@ -306,16 +309,18 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 					
 					// Save database options
 					case 'save':
-						$this->save_plugin_options();
-						$this->display_admin_notice(__('Settings saved', 'fg-joomla-to-wordpress'));
+						if ( check_admin_referer( 'parameters_form', 'fgj2wp_nonce' ) ) { // Security check
+							$this->save_plugin_options();
+							$this->display_admin_notice(__('Settings saved', 'fg-joomla-to-wordpress'));
+						}
 						break;
 					
 					// Test the database connection
 					case 'test_database':
-						// Save database options
-						$this->save_plugin_options();
-
 						if ( check_admin_referer( 'parameters_form', 'fgj2wp_nonce' ) ) { // Security check
+							// Save database options
+							$this->save_plugin_options();
+
 							if ( $this->test_database_connection() ) {
 								return array('status' => 'OK', 'message' => __('Connection successful', 'fg-joomla-to-wordpress'));
 							} else {
@@ -326,10 +331,10 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 					
 					// Run the import
 					case 'import':
-						// Save database options
-						$this->save_plugin_options();
-
 						if ( check_admin_referer( 'parameters_form', 'fgj2wp_nonce' ) ) { // Security check
+							// Save database options
+							$this->save_plugin_options();
+
 							if ( $this->test_database_connection() ) {
 								// Automatic empty
 								if ( $this->plugin_options['automatic_empty'] ) {
@@ -349,7 +354,9 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 					
 					// Stop the import
 					case 'stop_import':
-						$this->stop_import();
+						if ( check_admin_referer( 'parameters_form', 'fgj2wp_nonce' ) ) { // Security check
+							$this->stop_import();
+						}
 						break;
 					
 					// Modify internal links
@@ -934,7 +941,7 @@ SQL;
 		 */
 		private function validate_form_info() {
 			// Add http:// before the URL if it is missing
-			$url = filter_input(INPUT_POST, 'url', FILTER_SANITIZE_URL);
+			$url = esc_url(filter_input(INPUT_POST, 'url', FILTER_SANITIZE_URL));
 			if ( !empty($url) && (preg_match('#^https?://#', $url) == 0) ) {
 				$url = 'http://' . $url;
 			}
