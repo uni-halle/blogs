@@ -2,8 +2,9 @@
 Contributors: pputzer
 Tags: typography, hyphenation, smart quotes, quote marks, formatting, typogrify, quotes, prettify, widows, orphans, small caps, diacritics
 Requires at least: 4.4
+Requires PHP: 5.6
 Tested up to: 4.8
-Stable tag: 4.2.2
+Stable tag: 5.0.4
 
 Improve your web typography with: hyphenation, space control, intelligent character replacement, and CSS hooks.
 
@@ -33,15 +34,14 @@ Improve your web typography with:
     * numbers,
     * initial quotes & guillemets.
 
-
 == Installation ==
 
 = Requirements =
 
 wp‐Typography has the following requirements:
 
-* the host server must run PHP 5.4.0 or later
-* your installation of PHP 5.4.0+ must include the [mbstring extension](http://us3.php.net/manual/en/mbstring.installation.php) (most do)
+* the host server must run PHP 5.6.0 or later
+* your installation of PHP must include the [mbstring extension](http://us3.php.net/manual/en/mbstring.installation.php) (most do)
 * text must be encoded UTF‐8
 
 
@@ -75,7 +75,56 @@ Please install the [wp-Typography Disable ACF Integration plugin](https://wordpr
 4. wp-Typography "Space Control" settings page.
 4. wp-Typography "Add CSS Hooks" settings page.
 
+== Upgrade Notice ==
+
+= 5.0.4 =
+The plugin now requires at least PHP 5.6. If you are still running an earlier version,
+please upgrade PHP or continue to use version 4.2.2.
+
+= 5.0.3 =
+The plugin now requires at least PHP 5.6. If you are still running an earlier version,
+please upgrade PHP or continue to use version 4.2.2.
+
+= 5.0.2 =
+The plugin now requires at least PHP 5.6. If you are still running an earlier version,
+please upgrade PHP or continue to use version 4.2.2.
+
+= 5.0.1 =
+The plugin now requires at least PHP 5.6. If you are still running an earlier version,
+please upgrade PHP or continue to use version 4.2.2.
+
+= 5.0.0 =
+The plugin now requires at least PHP 5.6. If you are still running an earlier version,
+please upgrade PHP or continue to use version 4.2.2.
+
 == Changelog ==
+
+= 5.0.4 - September 09, 2017 =
+* _Bugfix_: Ensure proper typing for cached language plugin lists.
+
+= 5.0.3 - September 03, 2017 =
+* _Bugfix_: Lower database write load by reducing option updates (props @jerzyk).
+
+= 5.0.2 - September 02, 2017 =
+* _Bugfix_: "Clear Cache" and "Restore Defaults" admin notices are now shown again.
+* _Bugfix_: Object caching errors don't crash the site anymore.
+
+= 5.0.1 - August 28, 2017 =
+* _Bugfix_: Fatal error on PHP 5.6.x (caused by using `__METHOD__` as a variable function) fixed (`mundschenk-at/php-typography` 5.0.2).
+
+= 5.0.0 - August 27, 2017 =
+* _Feature_: Proper multilingual support (automatic language switching). Tested with
+  - [Polylang](https://wordpress.org/plugins/polylang/),
+  - [MultilingualPress](https://wordpress.org/plugins/multilingual-press/), and
+  - [WPML](https://wpml.org).
+* _Feature_: Language-specific default settings.
+* _Feature_: [Several new hooks](https://code.mundschenk.at/wp-typography/api/) added (including `typo_settings` to directly filter the settings).
+* _Change_: Updated to use version 5.0.1 of the new standalone composer package `mundschenk-at/php-typography`.
+* _Change_: Minimum PHP version increased to 5.6.0
+* _Change:_ Updated list of valid top-level domains.
+* _Bugfix_: French punctuation spacing after links (and other inline tags) fixed.
+* _Bugfix_: Lone ampersands are treated as single-character words.
+* _Bugfix_: Hyphenated words are properly de-widowed.
 
 = 4.2.2 - June 18, 2017 =
 * _Bugfix_: Properly clear cache on upgrade.
@@ -94,18 +143,3 @@ Please install the [wp-Typography Disable ACF Integration plugin](https://wordpr
   - Latin
   - Latin (Liturgical)
 * _Change:_ Updated list of valid top-level domains.
-
-= 4.1.2 - May 26, 2017 =
-* _Bugfix_: Hyphenation patterns at the end of word were accidentally ignored.
-* _Bugfix_: Diacritics replacement does not count soft hyphens as word boundaries anymore.
-
-= 4.1.1 - March 19, 2017 =
-* _Bugfix_: Performance issue accidentally introduced in 4.1.0 fixed.
-
-= 4.1.0 - March 18, 2017 =
-* _Feature_: Hyphenator instance has been made cacheable.
-* _Feature_: Workaround for broken GoDaddy APC object cache.
-* _Bugfix_: Incorrect replacement of initial hyphens fixed.
-* _Bugfix_: French spacing rules improved.
-* _Bugfix_: Proper dashes for German date intervals.
-* _Bugfix_: `WP_Typography::get_user_settings` and `WP_Typography::process_title` now work correctly (props @roopemerikukka).
