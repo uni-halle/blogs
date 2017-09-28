@@ -1,0 +1,201 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: blogsmlu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-03 19:20+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Matthias Kretschmann <krema@jpberlin.de>\n"
+"Language-Team: Matthias Kretschmann <krema@jpberlin.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../admin-menu.php:10
+msgid "User ID"
+msgstr "Nutzerkennzeichen"
+
+#: ../admin-menu.php:12
+msgid "Password"
+msgstr "Passwort"
+
+#: ../admin-menu.php:15
+msgid "Remember me"
+msgstr "Erinnere dich an mich"
+
+#: ../admin-menu.php:16
+#: ../admin-menu.php:23
+msgid "Login"
+msgstr "Anmelden"
+
+#: ../admin-menu.php:20
+msgid "Recover Password"
+msgstr "Passwort vergessen?"
+
+#: ../admin-menu.php:54
+msgid "Blog Dashboard"
+msgstr "Blog-Dashboard"
+
+#: ../admin-menu.php:55
+msgid "Your Profile"
+msgstr "Dein Benutzer-Profil"
+
+#: ../admin-menu.php:58
+msgid "New Post"
+msgstr "Neuer Artikel"
+
+#: ../admin-menu.php:61
+msgid "New Page"
+msgstr "Neue Seite"
+
+#: ../admin-menu.php:64
+msgid "Upload Files"
+msgstr "Medien hochladen"
+
+#: ../admin-menu.php:65
+msgid "Sidebar Widgets"
+msgstr "Sidebar Widgets"
+
+#: ../admin-menu.php:71
+msgid "Add New User"
+msgstr "Neuen Benutzer hinzuf&uuml;gen"
+
+#: ../admin-menu.php:75
+msgid "Logout"
+msgstr "Abmelden"
+
+#: ../admin-menu.php:78
+msgid "Admin Menu"
+msgstr "Admin Men&uuml;"
+
+#: ../archive.php:50
+msgid "[ Read On ... ]"
+msgstr "[ Weiterlesen ... ]"
+
+#: ../comments.php:77
+msgid "Dein Name"
+msgstr "Your name"
+
+#: ../comments.php:81
+msgid "Deine E-Mail (bleibt geheim)"
+msgstr "Your e-mail"
+
+#: ../comments.php:85
+msgid "Deine Website"
+msgstr "Your website"
+
+#: ../comments.php:91
+msgid "Dein Kommentar"
+msgstr "Your comment"
+
+#: ../index.php:38
+#, fuzzy
+msgid "Nicht gefunden."
+msgstr "Nichts gefunden."
+
+#: ../index.php:40
+msgid "Sorry, aber du suchst nach etwas, das nicht hier ist."
+msgstr ""
+
+#: ../single.php:49
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+
+#~ msgid "Username"
+#~ msgstr "Benutzername"
+#~ msgid "Error 404 - Not found"
+#~ msgstr "Fehler 404 - Nicht gefunden"
+#~ msgid "Sorry, but something went wrong."
+#~ msgstr "Sorry, aber irgendwas ging schief."
+#~ msgid "Maybe try a search:"
+#~ msgstr "Vielleicht hilft eine Suche weiter:"
+#~ msgid "Recent Entries"
+#~ msgstr "Letzte Beitr&auml;ge"
+#~ msgid "Or have a look at the recent entries:"
+#~ msgstr "Oder wirf einen Blick auf die letzten Beitr&auml;ge"
+#~ msgid "Category "
+#~ msgstr "Kategorie "
+#~ msgid "All posts tagged"
+#~ msgstr "All Artikel mit Schlagwort "
+#~ msgid "Day Archive for "
+#~ msgstr "Tages-Archiv f&uuml;r den "
+#~ msgid "Month Archive for "
+#~ msgstr "Monats-Archiv f&uuml;r "
+#~ msgid "Year Archive for "
+#~ msgstr "Jahres-Archiv f&uuml;r "
+#~ msgid "All posts by "
+#~ msgstr "Alle Artikel von "
+#~ msgid "Written by "
+#~ msgstr "Verfasst von "
+#~ msgid "No Comments"
+#~ msgstr "Keine Kommentare"
+#~ msgid "1 Comment"
+#~ msgstr "1 Kommentar"
+#~ msgid "% Comments"
+#~ msgstr "% Kommentare"
+#~ msgid "Edit "
+#~ msgstr "Bearbeiten"
+#~ msgid "&laquo; Older Entries"
+#~ msgstr "&laquo; &Auml;ltere Beitr&auml;ge"
+#~ msgid "Newer Entries &raquo;"
+#~ msgstr "Neuere Beitr&auml;ge &raquo;"
+#~ msgid "Comments are closed."
+#~ msgstr "Kommentare sind geschlossen."
+#~ msgid "Leave a Reply"
+#~ msgstr "Kommentieren"
+#~ msgid "Leave a Reply to %s"
+#~ msgstr "Kommentiere %s"
+#~ msgid "You must be logged in to post a comment. "
+#~ msgstr "Du musst angemeldet sein, um einen Kommentar zu hinterlassen. "
+#~ msgid "Logged in as "
+#~ msgstr "Angemeldet als "
+#~ msgid "Submit"
+#~ msgstr "Absenden"
+#~ msgid "is using the blogs@URZ Default Theme"
+#~ msgstr "verwendet das Blogs@URZ Default Theme"
+#~ msgid "Pages"
+#~ msgstr "Seiten"
+#~ msgid "Tags"
+#~ msgstr "Schlagworte"
+#~ msgid "Subscribe to RSS-Feed"
+#~ msgstr "RSS-Feed abonnieren"
+#~ msgid ""
+#~ "Sorry, but you are looking for something that isn't here. Try something "
+#~ "else."
+#~ msgstr ""
+#~ "Sorry, aber du suchst nach etwas, das nicht existiert. Versuche etwas "
+#~ "anderes."
+#~ msgid "Pages: "
+#~ msgstr "Seiten: "
+#~ msgid "All Results &raquo;"
+#~ msgstr "Alle Ergebnisse &raquo;"
+#~ msgid "Nothing found."
+#~ msgstr "Nichts gefunden."
+#~ msgid "Try a different search?"
+#~ msgstr "Probiere eine andere Suche?"
+#~ msgid "Search results for "
+#~ msgstr "Suchergebnisse f&uuml;r "
+#~ msgid "Search"
+#~ msgstr "Suche"
+#~ msgid "Categories"
+#~ msgstr "Kategorien"
+#~ msgid "Archives"
+#~ msgstr "Archiv"
+#~ msgid "Blogroll"
+#~ msgstr "Blogroll"
+#~ msgid "Tags: "
+#~ msgstr "Schlagworte: "
+#~ msgid "More Services"
+#~ msgstr "Weitere Dienste"
+#~ msgid "Oh snap, no entries found."
+#~ msgstr "Ups, keine Beitr&auml;ge gefunden."
+#~ msgid "Hide"
+#~ msgstr "Verstecken"
+#~ msgid "Meta"
+#~ msgstr "Meta"
+

@@ -1,0 +1,236 @@
+/*
+Blogs@MLU Custom Admin Area Styles > WP 3.2
+Author: Matthias Kretschmann
+Author URI: http://kremalicious.com
+*/
+
+#wpwrap {
+	background: #f7f7f7;
+	background: -moz-linear-gradient(top, #f7f7f7 0%, #ffffff 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#ffffff));
+	background: -webkit-linear-gradient(top, #f7f7f7 0%,#ffffff 100%);
+	background: -o-linear-gradient(top, #f7f7f7 0%,#ffffff 100%);
+	background: -ms-linear-gradient(top, #f7f7f7 0%,#ffffff 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#ffffff',GradientType=0 );
+	background: linear-gradient(top, #f7f7f7 0%,#ffffff 100%);
+}
+
+@font-face {
+	font-family: 'TitilliumMaps26L500wt';
+	src: url('/wp-content/themes/blogsmluHome/style/fonts/TitilliumMaps26L002.eot');
+	src: url('/wp-content/themes/blogsmluHome/style/fonts/TitilliumMaps26L002.woff') format('woff'), 
+		 url('/wp-content/themes/blogsmluHome/style/fonts/TitilliumMaps26L002.otf') format('opentype'), 
+		 url('/wp-content/themes/blogsmluHome/style/fonts/TitilliumMaps26L002.svg#TitilliumMaps26L-500wt') format('svg');
+	font-weight: normal;
+}
+
+#adminmenuback, #adminmenuwrap {
+	background-color: #f3f3f3 !important;
+	height: 100%;
+}
+
+#footer {
+	position: relative;
+}
+
+a, #adminmenu a, #poststuff #edButtonPreview, #poststuff #edButtonHTML, #the-comment-list p.comment-author strong a, #media-upload a.del-link, #media-items a.delete, .plugins a.delete, .ui-tabs-nav a {
+	color: #6AA101 !important;
+	text-decoration: none !important;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+a:hover, a:focus {
+	color: #6AA101 !important;
+	background-color: rgb(234, 242, 250) !important;
+	text-decoration: none !important;
+}
+
+a:focus,
+#adminmenu a {
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-o-transition: none !important;
+	transition: none !important;
+}
+
+a:active,
+#wphead #site-heading a:active,
+#user_info p a:active,
+#adminmenu a.menu-top:active,
+#adminmenu li.wp-has-current-submenu ul li a:active {
+	color: #fff !important;
+	background: black !important;
+	text-shadow: none;
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-o-transition: none !important;
+	transition: none !important;
+}
+
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, #adminmenu li.current a.menu-top, .folded #adminmenu li.wp-has-current-submenu, .folded #adminmenu li.current.menu-top, #adminmenu .wp-menu-arrow, #adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head,
+#adminmenu .wp-menu-arrow div,
+#adminmenu li.menu-top:hover > a, #adminmenu li.menu-top.focused > a, #adminmenu li.menu-top > a:focus {
+	background: #005b30 !important;
+	background: -moz-linear-gradient(top, #006e2e 0%, #005b30 100%) !important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#006e2e), color-stop(100%,#005b30)) !important;
+	background: -webkit-linear-gradient(top, #006e2e 0%,#005b30 100%) !important;
+	background: -o-linear-gradient(top, #006e2e 0%,#005b30 100%) !important;
+	background: -ms-linear-gradient(top, #006e2e 0%,#005b30 100%) !important;
+	background: linear-gradient(top, #006e2e 0%,#005b30 100%) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006e2e', endColorstr='#005b30',GradientType=0 );
+	color: #fff !important;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.5) !important;
+}
+
+#adminmenu li.wp-not-current-submenu .wp-menu-arrow {
+	border-bottom: none
+}
+
+#adminmenu a,
+#adminmenu a.menu-top, #adminmenu .wp-submenu-head {
+	font-size: 14px;
+	padding: 6px 2px;
+}
+
+#header-logo {
+	background-image: url(../images/favicon.png) !important;
+	margin: 9px 0;
+}
+
+h1, h2, h3, h4, h5, h6, .feature, .tab-menu a, a.rsswidget, a.menu-top {
+	text-decoration: none;
+	font-family: TitilliumMaps26L500wt, 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif !important;
+	letter-spacing: 0.02em;
+	font-style: normal !important;
+	font-weight: normal !important;
+}
+
+.widget .widget-top, .postbox h3, .stuffbox h3, .postbox .hndle {
+	background: #EBF3DB;
+	background: -moz-linear-gradient(top, #ffffff 1%, #f4fce5 2%, #ebf3db 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(2%,#f4fce5), color-stop(100%,#ebf3db));
+	background: -webkit-linear-gradient(top, #ffffff 1%,#f4fce5 2%,#ebf3db 100%);
+	background: -o-linear-gradient(top, #ffffff 1%,#f4fce5 2%,#ebf3db 100%);
+	background: -ms-linear-gradient(top, #ffffff 1%,#f4fce5 2%,#ebf3db 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4fce5', endColorstr='#ebf3db',GradientType=0 );
+	background: linear-gradient(top, #ffffff 1%,#f4fce5 2%,#ebf3db 100%);
+	-webkit-box-shadow: rgba(0,0,0, 0.05) 0 1px 3px;
+	-moz-box-shadow: rgba(0,0,0, 0.05) 0 1px 3px;
+	box-shadow: rgba(0,0,0, 0.05) 0 1px 3px;
+	color: #777f68;
+}
+
+.postbox {
+	background: #fdfdfd !important;
+	border-color: #f0f0f0 !important;
+}
+
+/*The Buttons*/
+
+input.button-primary, button.button-primary, a.button-primary {
+	background: #005133 !important;
+	background: -moz-linear-gradient(top, #00905c 0%, #005133 100%) !important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00905c), color-stop(100%,#005133)) !important;
+	background: -webkit-linear-gradient(top, #00905c 0%,#005133 100%) !important;
+	background: -o-linear-gradient(top, #00905c 0%,#005133 100%) !important;
+	background: -ms-linear-gradient(top, #00905c 0%,#005133 100%) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00905c', endColorstr='#005133',GradientType=0 ) !important;
+	background: linear-gradient(top, #00905c 0%,#005133 100%) !important;
+	border: 1px solid #005133 !important;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.4);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.4);
+	box-shadow: 0 1px 2px rgba(0,0,0,.4);
+	color: #fff !important;
+	text-shadow:  0 -1px 0 #000;
+}
+
+input.button-primary:hover, button.button-primary:hover, a.button-primary:hover {
+	background: #00AE6F !important;
+	background: -moz-linear-gradient(top, #00ae6f 0%, #007047 100%) !important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00ae6f), color-stop(100%,#007047)) !important;
+	background: -webkit-linear-gradient(top, #00ae6f 0%,#007047 100%) !important;
+	background: -o-linear-gradient(top, #00ae6f 0%,#007047 100%) !important;
+	background: -ms-linear-gradient(top, #00ae6f 0%,#007047 100%) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ae6f', endColorstr='#007047',GradientType=0 ) !important;
+	background: linear-gradient(top, #00ae6f 0%,#007047 100%) !important;
+	text-decoration: none !important;
+	-webkit-box-shadow: 0 0 4px rgba(0, 81, 51, .6);
+	-moz-box-shadow: 0 0 4px rgba(0, 81, 51, .6);
+	box-shadow: 0 0 4px rgba(0, 81, 51, .6);
+}
+
+input.button-primary:active, button.button-primary:active, a.button-primary:active {
+	background: #00AE6F !important;
+	background: -moz-linear-gradient(top, #007047 0%, #00ae6f 100%) !important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#007047), color-stop(100%,#00ae6f)) !important;
+	background: -webkit-linear-gradient(top, #007047 0%,#00ae6f 100%) !important;
+	background: -o-linear-gradient(top, #007047 0%,#00ae6f 100%) !important;
+	background: -ms-linear-gradient(top, #007047 0%,#00ae6f 100%) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007047', endColorstr='#00ae6f',GradientType=0 ) !important;
+	background: linear-gradient(top, #007047 0%,#00ae6f 100%) !important;
+}
+
+.wrap .add-new-h2 {
+	font-weight: bold;
+	padding: 5px 20px;
+}
+
+#site-heading a, 
+#footer a.smoothbutton {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background: #f1f1f1;
+	font-style: normal;
+	padding: 1px 10px;
+}
+
+#footer a.smoothbutton {
+	display: inline-block;
+}
+
+#footer a.smoothbutton:active {
+	color: #fff !important;
+	text-shadow: none;
+}
+
+/*mluBlogs Quickstart Dashboard Widget*/
+
+#mlublogs-quickstart p {
+	overflow:  hidden;
+}
+
+#mlublogs-quickstart ul {
+	clear: both;
+	float: none;
+	margin-top: 15px;
+}
+
+#mlublogs-quickstart ul li a {
+	font-size: 13px;
+	line-height: 1.7em;
+	padding: 3px 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-weight: bold;
+	display: block;
+	background: #f7f7f7;
+}
+
+#mlublogs-quickstart .everything {
+	padding-top: 5px;
+}
+
+
+/* 
+   Add User Fix 
+   Hide all buttons which circumvent the LDAP plugin user creation
+*/
+
+.users-php .add-new-h2 {
+	display: none
+}

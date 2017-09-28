@@ -1,0 +1,305 @@
+/*
+Blogs@MLU Custom Admin Area Styles
+Author: Matthias Kretschmann
+Author URI: http://kremalicious.com
+*/
+
+@font-face {
+	font-family: 'TitilliumMaps26L500wt';
+	src: url('/wp-content/themes/blogsmluHome/style/fonts/TitilliumMaps26L002.eot');
+	src: url('/wp-content/themes/blogsmluHome/style/fonts/TitilliumMaps26L002.woff') format('woff'), 
+		 url('/wp-content/themes/blogsmluHome/style/fonts/TitilliumMaps26L002.otf') format('opentype'), 
+		 url('/wp-content/themes/blogsmluHome/style/fonts/TitilliumMaps26L002.svg#TitilliumMaps26L-500wt') format('svg');
+	font-weight: normal;
+}
+
+a {
+	color: #6AA101 !important;
+	text-decoration: none !important;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+a:hover, a:focus {
+	color: #6AA101 !important;
+	background-color: rgb(234, 242, 250) !important;
+	text-decoration: none !important;
+}
+
+a:focus {
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-o-transition: none !important;
+	transition: none !important;
+}
+
+a:active,
+#wphead #site-heading a:active,
+#user_info p a:active,
+#adminmenu a.menu-top:active,
+#adminmenu li.wp-has-current-submenu ul li a:active {
+	color: #fff !important;
+	background: black !important;
+	text-shadow: none;
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-o-transition: none !important;
+	transition: none !important;
+}
+
+#wpwrap {
+	top: -4px;
+	position: relative;
+	background: #fff !important;
+}
+
+#wpcontent {
+	background: #fff url(/wp-content/themes/blogsmluHome/style/images/content-gradient.png) repeat-x left 20px;
+	background: -moz-linear-gradient(top, #d9d9d9 0%, #FFFFFF 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d9d9d9), color-stop(100%,#FFFFFF));
+	-moz-background-size: 100% 149px;
+	-webkit-background-size: 100% 149px;
+	-o-background-size: 100% 149px;
+	background-size: 100% 149px;
+	background-repeat: repeat-x;
+	overflow: hidden;
+}
+
+#wpbody {
+	text-shadow: 0 1px 0 #fff;
+}
+
+#header-logo {
+	background-image: url(/wp-content/themes/blogsmluHome/style/images/blogsmlu-logo32px.png) !important;
+	margin-top: 3px;
+}
+
+#wphead {
+	height: 39px;
+	background: #9bc34b !important;
+	background: -moz-linear-gradient(top, #9BC34B 0%, #9CC44D 77%, #98BF4A 97%, #C3ED7B 100%) !important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9BC34B), color-stop(77%,#9CC44D), color-stop(97%,#98BF4A), color-stop(100%,#C3ED7B)) !important;
+	border-bottom: 1px solid #9ba091;
+	-webkit-box-shadow: -4px 1px 4px #a2a4a4;
+	-moz-box-shadow: -4px 1px 4px #a2a4a4;
+	box-shadow: -4px 1px 4px #a2a4a4;
+	position: relative;
+	bottom: -4px;
+	border-bottom: none !important;
+}
+
+#site-heading {
+	padding-top: 5px !important;
+}
+
+#wphead #site-heading a,
+#user_info p,
+#user_info p a {
+	color: #4c5f2a !important;
+	text-shadow:  0 1px 0 rgba(255, 255, 255, .7);
+}
+
+#wphead #site-heading a {
+	padding-right: 5px;
+	padding-left: 5px;
+	text-shadow:  0 1px 0 rgba(255, 255, 255, .7);
+	color: #4c5f2a !important;
+}
+
+#wphead #site-heading a:hover {
+	text-decoration: none;
+}
+
+#wphead a {
+	color: #fff !important;
+	text-shadow: 0 1px 0 rgba(0,0,0,.5);
+}
+
+#wphead a:hover, #footer a:hover {
+	color: #000 !important
+}
+
+#user_info p a {
+	font-weight: bold;
+}
+
+#favorite-actions a,
+#favorite-first a {
+	color: #6AA101 !important;
+	text-shadow: 0 1px 0 #fff !important;
+}
+
+#favorite-inside {
+	background: #f6f6f6 url(/wp-content/themes/blogsmluHome/style/images/gradient-bottom.png) repeat-x left bottom !important;
+}
+
+#favorite-actions a:active {
+	color: #fff !important;
+	text-shadow: none !important;
+}
+
+#site-visit-button {
+	color: #e8eaea !important;
+	line-height: 19px !important;
+	margin-top: -4px;
+}
+
+.wrap h2 {
+	
+}
+
+#footer {
+	background: #ccc url(/wp-content/themes/blogsmluHome/style/images/community-shadow.png) repeat-x left top;
+	text-shadow: 0 1px 0 rgba(255,255,255,.7);
+}
+
+#footer a {
+	color: #777777 !important;
+}
+
+#footer a.smoothbutton {
+	font-family: 'Lucida Grande', Verdana, Arial, 'Bitstream Vera Sans', sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 2px 10px;
+	display: inline-block;
+	border: 1px solid #adadad;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background: #ccc;
+	background: -moz-linear-gradient(top, 
+					#fff 0%, 
+					#D6D6D6 3%, 
+					#cccccc 100%);
+	background: -webkit-gradient(linear, left top, left bottom, 
+					color-stop(0%,#fff), 
+					color-stop(3%,#D6D6D6), 
+					color-stop(100%,#cccccc));
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#D6D6D6', endColorstr='#cccccc',GradientType=0 );
+	font-style: normal;
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 0 rgba(0,0,0,.2);
+	box-shadow: 0 1px 0 rgba(0,0,0,.2);
+}
+
+#footer a.smoothbutton:hover {
+	text-decoration: none !important;
+	background: #B4D278;
+	background: -moz-linear-gradient(top, 
+					#fff 0%, 
+					#bbdc7e 3%, 
+					#9FC553 100%);
+	background: -webkit-gradient(linear, left top, left bottom, 
+					color-stop(0%,#fff), 
+					color-stop(3%,#bbdc7e), 
+					color-stop(100%,#9FC553));
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bbdc7e', endColorstr='#9FC553',GradientType=0 );
+}
+
+#footer a.smoothbutton:active {
+	color: #fff !important;
+	text-shadow: none;
+}
+
+#footer-upgrade {
+	background-color: transparent ;
+}
+
+#adminmenu a {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+#adminmenu a:hover,
+#screen-meta a:hover {
+	background-color: transparent !important;
+}
+
+#adminmenu a.wp-menu-open {
+	font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6, .feature, .tab-menu a, a.rsswidget, a.menu-top {
+	text-decoration: none;
+	font-family: TitilliumMaps26L500wt, 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif !important;
+	letter-spacing: 0.02em;
+	font-style: normal !important;
+	font-weight: normal !important;
+}
+
+.widget .widget-top, .postbox h3, .stuffbox h3, .postbox .hndle {
+	background: #EBF3DB;
+	background: -moz-linear-gradient(top, #EBF3DB 0%, #D2E0C5 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EBF3DB), color-stop(100%,#D2E0C5));
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EBF3DB', endColorstr='#D2E0C5',GradientType=0 );
+	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+}
+
+input.button-primary, button.button-primary, a.button-primary {
+	background: #005133 !important;
+	background: -moz-linear-gradient(top, #00905C 0%, #005133 100%) !important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00905C), color-stop(100%,#005133)) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00905C', endColorstr='#005133',GradientType=0 ) !important;
+	border-color: #005133;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.4);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.4);
+	box-shadow: 0 1px 2px rgba(0,0,0,.4);
+	color: #fff !important;
+	text-shadow:  0 -1px 0 #000;
+}
+
+input.button-primary:hover, button.button-primary:hover, a.button-primary:hover {
+	background: #00AE6F !important;
+	background: -moz-linear-gradient(top, #00AE6F 0%, #007047 100%) !important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00AE6F), color-stop(100%,#007047)) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00AE6F', endColorstr='#007047',GradientType=0 ) !important;
+	text-decoration: none !important;
+	-webkit-box-shadow: 0 0 4px rgba(0, 81, 51, .6);
+	-moz-box-shadow: 0 0 4px rgba(0, 81, 51, .6);
+	box-shadow: 0 0 4px rgba(0, 81, 51, .6);
+}
+
+input.button-primary:active, button.button-primary:active, a.button-primary:active {
+	background: #00AE6F !important;
+	background: -moz-linear-gradient(top, #007047 0%, #00AE6F 100%) !important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#007047), color-stop(100%,#00AE6F)) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007047', endColorstr='#00AE6F',GradientType=0 ) !important;
+}
+
+/*mluBlogs Quickstart Dashboard Widget*/
+
+#mlublogs-quickstart p {
+	overflow:  hidden;
+}
+
+#mlublogs-quickstart ul {
+	clear: both;
+	float: none;
+	margin-top: 15px;
+}
+
+#mlublogs-quickstart ul li a {
+	font-size: 13px;
+	line-height: 1.7em;
+	padding: 3px 10px;
+	border: 1px solid #dfdfdf;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-weight: bold;
+	display: block;
+	background: #f7f7f7;
+}
+
+#mlublogs-quickstart .everything {
+	padding-top: 5px;
+}
