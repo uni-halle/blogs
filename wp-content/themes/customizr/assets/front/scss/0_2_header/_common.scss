@@ -190,14 +190,14 @@
   //make the orizontal scrollbar appear!
  .czr-submenu-fade & {
     .menu-item-has-children {
-      @include perspective(1000px);      
+      @include perspective(1000px);
       > ul {
         position: fixed;
         opacity: 0;
         visibility: hidden;
         display: block;
         @include transition( all 0.25s ease-in-out );
-        @include transform( translate( 0, -20px ) );        
+        @include transform( translate( 0, -20px ) );
       }
 
       &:not(.show) {
@@ -205,7 +205,7 @@
         //the perspective thing seems to not work with this browser
         //need further investigation
         overflow: hidden;
-        
+
         //because of the fact the submenu is displayed
         //it might still grab the the hover while fading out
         //let's avoid this resetting its pointer-events
@@ -350,3 +350,42 @@
 }
 
 // end ham
+
+
+/* ADMIN BAR
+-------------------------------------------------- */
+#wp-admin-bar-tc-customizr-help .ab-item:before, li#wp-admin-bar-tc-customizr-help a:before {
+  font-family: "FontAwesome";
+  speak: none;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  font-style: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#wp-admin-bar-tc-customizr-help .ab-item:before,
+li#wp-admin-bar-tc-customizr-help a:before {
+  content: "\f1cd";
+  color: #FFF;
+  padding-right: 0px;
+  margin-right: 0;
+  top: 2px;
+  position: relative;
+}
+li#wp-admin-bar-tc-customizr-help a {
+  color: #FFF;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #8DA65A;
+  background-image: -moz-linear-gradient(top, #008ec2,#006799);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#008ec2), to(#006799));
+  background-image: -webkit-linear-gradient(top, #008ec2,#006799);
+  background-image: -o-linear-gradient(top, #008ec2,#006799);
+  background-image: linear-gradient(to bottom,#008ec2,#006799);
+  background-repeat: repeat-x;
+  border-color: #006799;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}

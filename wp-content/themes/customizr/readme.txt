@@ -40,6 +40,31 @@ The exceptions to this license are as follows:
 
 
 #######################  Changelog ######################
+= 4.0.8 September 17th 2017 =
+* Fix: handle user's singular featured image height in singular. Fixes #1166.
+* Fix: correct horizontal positioning of the primary navbar menu. Fixes #1175.
+* Fix: fix slider textual fields wrong truncation. Fixes #1168.
+* Imp : Gallery img sizes. Fixes #1165.
+* Imp : improved customizer js code
+* Updated : about admin page
+
+= 4.0.7 September 7th 2017 =
+* Fix: menu centered wrongly displayed in ie/edge. Fixes #1163
+* Fix: Menu centered in desktop => scrolling up and down close to top is not well handled. Fixes #1161
+* Fix: RTL : search icon not properly left aligned on full screen search. Fixes #1159
+* Imp: Submenus items on mouse hover - reveal faster. Fixes #1154
+
+= 4.0.6 August 31st 2017 =
+* Fix: add menu btn was not shown when secondary menu associated but no sidenav shown. fixes #1125
+* Fix: fix singular thumbnail vertical spacing. fixes #1127
+* Fix: fix tagline cut off. fixes #1128
+* Fix: fp imgs always centered, fix handling slider not js centered
+* Fix: js-centering class to the classical grid figure to better target them in js
+* Fix: fix author meta displaying nicename instead of displayname. fixes #1148
+* Imp: allow search full page close on escape key pressed
+* Imp: implement new form style. fixes #1122
+* Imp: add entry-media__holder class to the grid figure (homogeneity)
+
 = 4.0.5 August 2nd 2017 =
 * Fix: fix woocommerce generatinc php notice. fixes #1120
 * Fix: fix CSS conflict with ui-datepicker-calendar. fixes #1123

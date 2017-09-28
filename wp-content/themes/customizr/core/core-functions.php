@@ -1238,6 +1238,21 @@ function czr_fn_is_no_results() {
 }
 
 
+
+/*-----------------------------------------------------------
+/* PREVIOUSLY IN core/functions-ccat.php
+/*----------------------------------------------------------*/
+
+function czr_fn_is_list_of_posts() {
+    //must be archive or search result. Returns false if home is empty in options.
+    return apply_filters( 'czr_is_list_of_posts',
+      ! is_singular()
+      && ! is_404()
+      && ! czr_fn_is_home_empty()
+      && ! is_admin()
+    );
+}
+
 /*-----------------------------------------------------------
 /* PREVIOUSLY IN inc/czr-init-ccat.php (class-fire-utils_settings_map.php) and core/functions-ccat.php
 /*----------------------------------------------------------*/
@@ -1512,3 +1527,38 @@ function czr_fn_booleanize_checkbox_val( $val ) {
       default : return false;
     }
 }
+
+if ( ! function_exists( 'czr_fn_text_truncate' ) ):
+  /**
+  * Helper
+  * Returns the passed text truncated at $text_length char.
+  * with the $more text added
+  *
+  * @return string
+  *
+  */
+  function czr_fn_text_truncate( $text, $max_text_length, $more, $strip_tags = true ) {
+      if ( ! $text )
+          return '';
+
+      if ( $strip_tags )
+        $text       = strip_tags( $text );
+      
+      if ( ! $max_text_length )
+          return $text;
+
+      $end_substr = $text_length = strlen( $text );
+      if ( $text_length > $max_text_length ) {
+          $text      .= ' ';
+          $end_substr = strpos( $text, ' ' , $max_text_length);
+          $end_substr = ( FALSE !== $end_substr ) ? $end_substr : $max_text_length;
+          $text       = trim( substr( $text , 0 , $end_substr ) );
+      }
+
+      if ( $more && $end_substr < $text_length )
+        return $text . ' ' .$more;
+
+      return $text;
+    
+  }
+endif;

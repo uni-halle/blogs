@@ -84,8 +84,8 @@ class CZR_featured_pages_model_class extends CZR_Model {
 
         $model['fps_text']              = is_array( $model['fps_text'] ) ? $model['fps_text'] : array();
         $model['fps_text']              = array_pad( $model['fps_text'], $model['fp_nb'], '' );
-
-        $model['element_class']         = $_center_imgs ? 'center-images-enabled' : 'center-images-disabled';
+        //force image centering
+        $model['element_class']         = 'center-images-enabled'; //$_center_imgs ? 'center-images-enabled' : 'center-images-disabled';
 
         //to transform the $model array items in object fields
         $this -> czr_fn_update( $model );
@@ -173,8 +173,7 @@ class CZR_featured_pages_model_class extends CZR_Model {
 
         //limit text to 200 car
           $default_fp_text_length         = apply_filters( 'czr_fp_text_length', $this->text_length, $fp_single_id, $featured_page_id );
-          $text                           = ( strlen($text) > $default_fp_text_length ) ? substr( $text , 0 , strpos( $text, ' ' , $default_fp_text_length) ). ' ...' : $text;
-
+          $text                           = czr_fn_text_truncate( $text, $default_fp_text_length, $more = '...', $strip_tags = false ); //tags already stripped
 
           if ( $show_thumb ) {
             //set the image : uses thumbnail if any then >> the first attached image then >> a holder script

@@ -2472,6 +2472,8 @@ function czr_fn_popul_section_map( $_sections ) {
         ----------------------------------------------------------------------------------------------*/
         'go_pro_sec'   => array(
                             'title'         => esc_html__( 'Upgrade to Customizr Pro', 'customizr' ),
+                            'pro_subtitle'  => esc_html__( 'Discover the features and benefits' , 'customizr'),
+                            'pro_doc_url'   => sprintf('%scustomizr-pro/?ref=a', CZR_WEBSITE ),
                             'pro_text'      => esc_html__( 'Go Pro', 'customizr' ),
                             'pro_url'       => sprintf('%scustomizr-pro/', CZR_WEBSITE ),
                             'priority'      => 0,

@@ -145,7 +145,7 @@ class CZR_main_content_model_class extends CZR_Model {
                         'media_type'               => 'wp_thumb',
                         'has_permalink'            => false,
                         'has_lightbox'             => false,
-                        'element_class'            => 'tc-singular-thumbnail-wrapper',
+                        'element_class'            => array('tc-singular-thumbnail-wrapper', $_hook),
                         //slider full when __before_main_wrapper otherwise take the original one
                         'thumb_size'               => '__before_main_wrapper' == $_hook ? 'slider-full' : null
                   ),
@@ -194,7 +194,7 @@ class CZR_main_content_model_class extends CZR_Model {
       function czr_fn_write_thumbnail_inline_css( $_css ) {
             $context =  is_single() ? 'post' : 'page';
 
-            $_thumb_height   = apply_filters( "tc_${context}_post_thumb_height", esc_attr( czr_fn_opt( "tc_{$context}_post_thumb_height" ) ) );
+            $_thumb_height   = apply_filters( "tc_single_{$context}_thumb_height", esc_attr( czr_fn_opt( "tc_single_{$context}_thumb_height" ) ) );
             $_thumb_height   = (! $_thumb_height || ! is_numeric($_thumb_height) ) ? 250 : $_thumb_height;
 
             return sprintf("%s\n%s",

@@ -3777,7 +3777,8 @@ if ( ! class_exists( 'CZR_featured_pages' ) ) :
 
             //limit text to 200 car
             $default_fp_text_length         = apply_filters( 'tc_fp_text_length', 200, $fp_single_id, $featured_page_id );
-            $text                           = ( strlen($text) > $default_fp_text_length ) ? substr( $text , 0 , strpos( $text, ' ' , $default_fp_text_length) ). ' ...' : $text;
+            $text                           = czr_fn_text_truncate( $text, $default_fp_text_length, $more = '...', $strip_tags = false ); //tags already stripped
+
 
             //set the image : uses thumbnail if any then >> the first attached image then >> a holder script
             $fp_img_size                    = apply_filters( 'tc_fp_img_size' , 'tc-thumb', $fp_single_id, $featured_page_id );
@@ -5261,23 +5262,26 @@ class CZR_post_list {
     if ( ! $this -> czr_fn_post_list_controller() )
       return;
     //displays the article with filtered layout : content + thumbnail
-    add_action ( '__loop'               , array( $this , 'czr_fn_prepare_section_view') );
+    add_action ( '__loop'                    , array( $this , 'czr_fn_prepare_section_view') );
+
+    //ARTICLE CONTAINER CSS CLASSES
+    add_filter( 'tc_article_container_class' , array( $this, 'czr_fn_article_container_set_classes' ) );
 
     //page help blocks
-    add_filter( '__before_loop'         , array( $this , 'czr_fn_maybe_display_img_smartload_help') );
+    add_filter( '__before_loop'              , array( $this , 'czr_fn_maybe_display_img_smartload_help') );
 
     //based on customizer user options
-    add_filter( 'tc_post_list_layout'   , array( $this , 'czr_fn_set_post_list_layout') );
-    add_filter( 'post_class'            , array( $this , 'czr_fn_set_content_class') );
-    add_filter( 'excerpt_length'        , array( $this , 'czr_fn_set_excerpt_length') , 999 );
-    add_filter( 'post_class'            , array( $this , 'czr_fn_add_thumb_shape_name') );
+    add_filter( 'tc_post_list_layout'        , array( $this , 'czr_fn_set_post_list_layout') );
+    add_filter( 'post_class'                 , array( $this , 'czr_fn_set_content_class') );
+    add_filter( 'excerpt_length'             , array( $this , 'czr_fn_set_excerpt_length') , 999 );
+    add_filter( 'post_class'                 , array( $this , 'czr_fn_add_thumb_shape_name') );
 
     //add current context to the body class
-    add_filter( 'body_class'            , array( $this , 'czr_fn_add_post_list_context') );
+    add_filter( 'body_class'                 , array( $this , 'czr_fn_add_post_list_context') );
     //Set thumb shape with customizer options (since 3.2.0)
-    add_filter( 'tc_post_thumb_wrapper' , array( $this , 'czr_fn_set_thumb_shape'), 10 , 2 );
+    add_filter( 'tc_post_thumb_wrapper'      , array( $this , 'czr_fn_set_thumb_shape'), 10 , 2 );
 
-    add_filter( 'tc_the_content'        , array( $this , 'czr_fn_add_support_for_shortcode_special_chars') );
+    add_filter( 'tc_the_content'             , array( $this , 'czr_fn_add_support_for_shortcode_special_chars') );
 
     // => filter the thumbnail inline style tc_post_thumb_inline_style and replace width:auto by width:100%
     // 3 args = $style, $_width, $_height
@@ -5382,6 +5386,7 @@ class CZR_post_list {
   */
   private function czr_fn_render_section_view( $_layout, $_content_model, $_thumb_model ) {
     global $wp_query;
+    echo '<div class="grid__item">';
     //Renders the filtered layout for content + thumbnail
     if ( isset($_layout['alternate']) && $_layout['alternate'] ) {
       if ( 0 == $wp_query->current_post % 2 ) {
@@ -5404,6 +5409,7 @@ class CZR_post_list {
 
     //renders the hr separator after each article
     echo apply_filters( 'tc_post_list_separator', '<hr class="featurette-divider '.current_filter().'">' );
+    echo '</div>';
   }
 
 
@@ -5517,6 +5523,13 @@ class CZR_post_list {
   }
 
 
+  /*
+  * hook : tc_article_container_class
+  */
+  public function czr_fn_article_container_set_classes( $_classes ) {
+    $_classes[] = 'grid-container'; //used by the pro infinite scroll
+    return $_classes;
+  }
 
 
   /**
@@ -5709,6 +5722,10 @@ if ( ! class_exists( 'CZR_post_list_grid' ) ) :
           //Updates the array of font sizes for a given sidebar layout
           add_filter( 'tc_get_grid_font_sizes'      , array( $this , 'czr_fn_set_layout_font_size' ), 10, 4 );
 
+
+          //Layout filter (must filter also the grid cols used in the inline style)
+          add_filter( 'tc_get_grid_cols'            , array( $this, 'czr_fn_set_grid_section_cols'), 20 , 2 );
+
           //append inline style to the custom stylesheet
           //! tc_user_options_style filter is shared by several classes => must always check the local context inside the callback before appending new css
           //fired on hook : wp_enqueue_scripts
@@ -5737,8 +5754,7 @@ if ( ! class_exists( 'CZR_post_list_grid' ) ) :
           add_filter( 'tc_content_title_icon'       , '__return_false', 50 );
           //icon option
           add_filter( 'tc-grid-thumb-html'          , array( $this, 'czr_fn_set_grid_icon_visibility') );
-          //Layout filter
-          add_filter( 'tc_get_grid_cols'            , array( $this, 'czr_fn_set_grid_section_cols'), 20 , 2 );
+
           //pre loop hooks
           add_action( '__before_article_container'  , array( $this, 'czr_fn_set_grid_before_loop_hooks'), 5 );
           //loop hooks
@@ -5906,6 +5922,7 @@ if ( ! class_exists( 'CZR_post_list_grid' ) ) :
         */
         private function czr_fn_grid_render_single_post( $_classes, $_thumb_html, $_post_content_html ) {
           ob_start();
+            echo '<div class="grid__item">';
             do_action( '__before_grid_single_post');//<= open <section> and maybe display title + metas
 
               echo apply_filters( 'tc_grid_single_post_thumb_content',
@@ -5916,7 +5933,7 @@ if ( ! class_exists( 'CZR_post_list_grid' ) ) :
                 )
               );
             do_action('__after_grid_single_post');//<= close </section> and maybe display title + metas
-
+            echo '</div>';
           $html = ob_get_contents();
           if ($html) ob_end_clean();
 
@@ -6067,8 +6084,8 @@ if ( ! class_exists( 'CZR_post_list_grid' ) ) :
         * hook : tc_post_list_selectors
         */
         function czr_fn_grid_set_article_selectors($selectors){
-          $_class = sprintf( '%1$s tc-grid span%2$s',
-            apply_filters( 'tc_grid_add_expanded_class', $this -> czr_fn_force_current_post_expansion() ) ? 'expanded' : '',
+          $_class = sprintf( '%1$stc-grid span%2$s',
+            apply_filters( 'tc_grid_add_expanded_class', $this -> czr_fn_force_current_post_expansion() ) ? 'expanded ' : '',
             is_numeric( $this -> czr_fn_get_grid_section_cols() ) ? 12 / $this -> czr_fn_get_grid_section_cols() : 6
           );
           return str_replace( 'row-fluid', $_class, $selectors );
@@ -6211,10 +6228,13 @@ if ( ! class_exists( 'CZR_post_list_grid' ) ) :
           //GENERATE THE MEDIA QUERY CSS FOR FONT-SIZES
           $_current_col_media_css   = $this -> czr_fn_get_grid_font_css( $_col_nb );
 
-          $_css = sprintf("%s\n%s\n%s\n",
+          $_grid_border_skinned_css = $this -> czr_fn_get_grid_boder_skinned_css();
+
+          $_css = sprintf("%s\n%s\n%s\n%s\n",
               $_css,
               $_current_col_media_css,
-              $_current_col_figure_css
+              $_current_col_figure_css,
+              $_grid_border_skinned_css
           );
           return $_css;
         }
@@ -6239,6 +6259,7 @@ if ( ! class_exists( 'CZR_post_list_grid' ) ) :
           else
             return $_html;
         }
+
 
 
 
@@ -6468,6 +6489,23 @@ if ( ! class_exists( 'CZR_post_list_grid' ) ) :
 
 
 
+        /**
+        * @return string
+        * returns the skinned border css rule
+        */
+        private function czr_fn_get_grid_boder_skinned_css() {
+          //add this reset rule for custom skin users
+          $_reset_old_skinned_border = '.tc-grid-border .tc-grid { border-bottom: none }';
+          $_skin_main_color          = CZR_utils::$instance -> czr_fn_get_skin_color();
+
+          return sprintf( "%s\n%s",
+            $_reset_old_skinned_border,
+            '.tc-grid-border .grid__item { border-bottom: 3px solid ' . $_skin_main_color .'}'
+          );
+        }
+
+
+
         /******************************
         VARIOUS HELPERS
         *******************************/
@@ -6543,33 +6581,40 @@ if ( ! class_exists( 'CZR_post_list_grid' ) ) :
           global $wp_query, $wpdb;
           $query = ( $query ) ? $query : $wp_query;
 
-          if ( ! $query->is_main_query() )
+          if ( ! $query->is_main_query() ) {
               return false;
+          }
           if ( ! ( ( is_home() && 'posts' == get_option('show_on_front') ) ||
                   $wp_query->is_posts_page ) )
               return false;
 
           $_expand_feat_post_opt = apply_filters( 'tc_grid_expand_featured', esc_attr( czr_fn_opt( 'tc_grid_expand_featured') ) );
 
-          if ( ! $this -> expanded_sticky ) {
-            $_sticky_posts = get_option('sticky_posts');
-            // get last published sticky post
-            if ( is_array($_sticky_posts) && ! empty( $_sticky_posts ) ) {
-              $_where = implode(',', $_sticky_posts );
-              $this -> expanded_sticky = $wpdb->get_var(
-                     "
-                     SELECT ID
-                     FROM $wpdb->posts
-                     WHERE ID IN ( $_where )
-                     ORDER BY post_date DESC
-                     LIMIT 1
-                     "
-              );
-            }else
-              $this -> expanded_sticky = null;
+          if ( $_expand_feat_post_opt ) {
+
+            if ( ! $this -> expanded_sticky ) {
+              $_sticky_posts = get_option('sticky_posts');
+              // get last published sticky post
+              if ( is_array($_sticky_posts) && ! empty( $_sticky_posts ) ) {
+                $_where = implode(',', $_sticky_posts );
+                $this -> expanded_sticky = $wpdb->get_var(
+                       "
+                       SELECT ID
+                       FROM $wpdb->posts
+                       WHERE ID IN ( $_where )
+                       ORDER BY post_date DESC
+                       LIMIT 1
+                       "
+                );
+              }else
+                $this -> expanded_sticky = null;
+            }
+
+          }else {
+                $this -> expanded_sticky = null;
           }
 
-          if ( ! ( $_expand_feat_post_opt && $this -> expanded_sticky ) )
+          if ( ! $this -> expanded_sticky )
               return false;
 
           return true;
@@ -8192,17 +8237,17 @@ class CZR_slider {
     //title
     $title                  = esc_attr(get_post_meta( $id, $key = 'slide_title_key' , $single = true ));
     $default_title_length   = apply_filters( 'tc_slide_title_length', 80 );
-    $title                  = $this -> czr_fn_trim_text( $title, $default_title_length, '...' );
+    $title                  = czr_fn_text_truncate( $title, $default_title_length, '...' );
 
     //lead text
     $text                   = get_post_meta( $id, $key = 'slide_text_key' , $single = true );
     $default_text_length    = apply_filters( 'tc_slide_text_length', 250 );
-    $text                   = $this -> czr_fn_trim_text( $text, $default_text_length, '...' );
+    $text                   = czr_fn_text_truncate( $text, $default_text_length, '...' );
 
     //button text
     $button_text            = esc_attr(get_post_meta( $id, $key = 'slide_button_key' , $single = true ));
     $default_button_length  = apply_filters( 'tc_slide_button_length', 80 );
-    $button_text            = $this -> czr_fn_trim_text( $button_text, $default_button_length, '...' );
+    $button_text            = czr_fn_text_truncate( $button_text, $default_button_length, '...' );
 
     //link post id
     $link_id                = apply_filters( 'tc_slide_link_id', esc_attr(get_post_meta( $id, $key = 'slide_link_key' , $single = true )), $id, $slider_name_id );
@@ -9402,7 +9447,7 @@ class CZR_slider {
     $button_text_length  = apply_filters( 'tc_posts_slider_button_text_length', 80 );
     $more                = apply_filters( 'tc_post_slide_more', '...');
     $button_text         = apply_filters( 'tc_posts_slider_button_text_pre_trim' , $button_text );
-    return $this -> czr_fn_trim_text( $button_text, $button_text_length, $more );
+    return czr_fn_text_truncate( $button_text, $button_text_length, $more );
   }
 
   /**
@@ -9427,7 +9472,7 @@ class CZR_slider {
     }
 
     $title = apply_filters( 'tc_post_title_pre_trim' , $title );
-    return $this -> czr_fn_trim_text( $title, $default_title_length, $more);
+    return czr_fn_text_truncate( $title, $default_title_length, $more);
   }
 
 
@@ -9463,39 +9508,7 @@ class CZR_slider {
     $excerpt = str_replace(']]>', ']]&gt;', $excerpt );
 
     $excerpt = apply_filters( 'tc_post_excerpt_pre_trim' , $excerpt );
-    return $this -> czr_fn_trim_text( $excerpt, $default_text_length, $more);
-  }
-
-
-  /**
-  * Helper
-  * Returns the passed text trimmed at $text_length char.
-  * with the $more text added
-  *
-  * @return string
-  *
-  * @package Customizr
-  * @since Customizr 3.4.9
-  *
-  */
-  // move this into CZR_utils?
-  function czr_fn_trim_text( $text, $text_length, $more ) {
-    if ( ! $text )
-      return '';
-
-    $text       = trim( strip_tags( $text ) );
-
-    if ( ! $text_length )
-      return $text;
-
-    $end_substr = $_text_length = strlen( $text );
-
-    if ( $_text_length > $text_length ){
-      $end_substr = strpos( $text, ' ' , $text_length);
-      $end_substr = ( $end_substr !== FALSE ) ? $end_substr : $text_length;
-      $text = substr( $text , 0 , $end_substr );
-    }
-    return ( ( $end_substr < $text_length ) && $more ) ? $text : $text . ' ' .$more ;
+    return czr_fn_text_truncate( $excerpt, $default_text_length, $more);
   }
 
 } //end of class

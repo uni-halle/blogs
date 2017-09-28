@@ -531,61 +531,43 @@ if ( ! class_exists( 'CZR_admin_page' ) ) :
         ?>
         <div id="customizr-admin-panel" class="wrap about-wrap">
           <?php
-            if ( $is_help ) {
-              printf( '<h1 style="font-size: 2.5em;" class="need-help-title">%1$s %2$s ?</h1>',
-                __( "Need help with", "customizr" ),
-                $_theme_name
-              );
-            } else {
-              printf( '<h1 class="need-help-title">%1$s %2$s %3$s</h1>',
-                __( "Welcome to", "customizr" ),
-                $_theme_name,
-                CUSTOMIZR_VER
-              );
-            }
+            printf( '<h1 class="need-help-title">%1$s %2$s %3$s</h1>',
+              __( "Thank you for using", "customizr" ),
+              $_theme_name,
+              CUSTOMIZR_VER
+            );
           ?>
 
-          <?php if ( $is_help ) : ?>
+          <?php if ( $is_help && ! CZR_IS_PRO ) : ?>
 
-            <div class="changelog">
-              <div class="about-text tc-welcome">
-              <?php
-                printf( '<p>%1$s</p>',
-                  sprintf( __( "The best way to start is to read the %s." , "customizr" ),
-                    sprintf('<a href="%1$s" title="%2$s" target="_blank">%2$s</a>', esc_url('docs.presscustomizr.com'), __("documentation" , "customizr") )
-                  )
-                );
-                printf( '<p>%1$s</p><p><strong>%2$s</strong></p>',
-                  __( "If you don't find an answer to your issue in the documentation, don't panic! The Customizr theme is used by a growing community of webmasters reporting bugs and making continuous improvements. If you have a problem with the theme, chances are that it's already been reported and fixed in the support forums.", "customizr" ),
-                  CZR_IS_PRO ? '' : sprintf( __( "The easiest way to search in the support forums is to use our Google powered search engine on our %s.", "customizr" ),
-                    sprintf('<a href="%1$s" title="%2$s" target="_blank">%2$s</a>', esc_url('presscustomizr.com'), __("home page" , "customizr") )
-                  )
-                );
-                ?>
-              </div>
-              <div class="feature-section col two-col">
-                <div class="col">
-                   <br/>
-                    <a class="button-secondary customizr-help" title="documentation" href="<?php echo esc_url('docs.presscustomizr.com/') ?>" target="_blank"><?php _e( 'Read the documentation','customizr' ); ?></a>
+              <div class="changelog">
+                <div class="about-text tc-welcome">
+                <?php
+                  printf( '<p>%1$s</p>',
+                    sprintf( __( "The best way to start is to read the %s." , "customizr" ),
+                      sprintf('<a href="%1$s" title="%2$s" target="_blank">%2$s</a>', esc_url('docs.presscustomizr.com'), __("documentation" , "customizr") )
+                    )
+                  );
+                  printf( '<p>%1$s</p>',
+                    __( "If you don't find an answer to your issue in the documentation, don't panic! The Customizr theme is used by a growing community of webmasters reporting bugs and making continuous improvements. If you have a problem with the theme, chances are that it's already been reported and fixed in the support forums.", "customizr" )
+                  );
+                  ?>
                 </div>
-                <div class="last-feature col">
-                  <br/>
-                    <a class="button-secondary customizr-help" title="faq" href="<?php echo $_faq_url; ?>" target="_blank"><?php _e( 'Check the FAQ','customizr' ); ?></a>
-                 </div>
-              </div><!-- .two-col -->
-              <div class="feature-section col two-col">
-                 <div class="col">
-                    <a class="button-secondary customizr-help" title="code snippets" href="<?php echo CZR_WEBSITE ?>code-snippets/" target="_blank"><?php _e( 'Code snippets for developers','customizr' ); ?></a>
-                </div>
-                 <div class="last-feature col">
-                    <a class="button-secondary customizr-help" title="help" href="<?php echo $_support_url; ?>" target="_blank">
-                      <?php CZR_IS_PRO ? _e( 'Get support','customizr' ) : _e( 'Get help in the free support forum','customizr' ); ?>
-                    </a>
-                 </div>
-              </div><!-- .two-col -->
-            </div><!-- .changelog -->
 
-          <?php else: ?>
+                    <div class="feature-section col two-col">
+                      <div class="col">
+                         <br/>
+                          <a class="button-secondary customizr-help" title="documentation" href="<?php echo esc_url('docs.presscustomizr.com/') ?>" target="_blank"><?php _e( 'Read the documentation','customizr' ); ?></a>
+                      </div>
+                      <div class="last-feature col">
+                          <a class="button-secondary customizr-help" title="help" href="<?php echo esc_url('wordpress.org/support/theme/customizr'); ?>" target="_blank">
+                            <?php _e( 'Get help in the free support forum','customizr' ); ?>
+                          </a>
+                      </div>
+                    </div><!-- .two-col -->
+              </div><!-- .changelog -->
+
+          <?php else : ?>
 
             <div class="about-text tc-welcome">
               <?php
@@ -2018,13 +2000,7 @@ if ( ! class_exists( 'CZR_meta_boxes' ) ) :
          if(!in_array( 'slide_title_key' ,get_post_custom_keys( $postid))) {
            $title_value = $default_title;
          }
-         if (strlen( $title_value) > $default_title_length) {
-           $title_value = substr( $title_value,0,strpos( $title_value, ' ' , $default_title_length));
-           $title_value = esc_html( $title_value) . ' ...';
-         }
-         else {
-           $title_value = esc_html( $title_value);
-         }
+         $title_value = esc_html( czr_fn_text_truncate( $title_value, $default_title_length, '...' ) );
 
 
          //text_field setup : sanitize and limit length
@@ -2036,14 +2012,8 @@ if ( ! class_exists( 'CZR_meta_boxes' ) ) :
           //check if we already have a custom key created for this field, if not apply default value
          if(!in_array( 'slide_text_key' ,get_post_custom_keys( $postid)))
            $text_value = $default_description;
+         $text_value = czr_fn_text_truncate( $text_value, $default_text_length, '...' );
 
-         if (strlen( $text_value) > $default_text_length) {
-           $text_value = substr( $text_value,0,strpos( $text_value, ' ' ,$default_text_length));
-           $text_value = $text_value . ' ...';
-         }
-         else {
-           $text_value = $text_value;
-         }
 
           //Color field setup
          $color_id       = 'slide_color_field';
@@ -2052,16 +2022,12 @@ if ( ! class_exists( 'CZR_meta_boxes' ) ) :
          //button field setup
          $button_id      = 'slide_button_field';
          $button_value   = esc_attr(get_post_meta( $postid, $key = 'slide_button_key' , $single = true ));
+
          //we define a filter for the slide text_button length
          $default_button_length   = apply_filters( 'czr_slide_button_length', 80 );
+         $button_value   = czr_fn_text_truncate( $button_value, $default_button_length, '...' );
 
-         if (strlen( $button_value) > $default_button_length) {
-           $button_value = substr( $button_value,0,strpos( $button_value, ' ' ,$default_button_length));
-           $button_value = $button_value . ' ...';
-         }
-         else {
-           $button_value = $button_value;
-         }
+
 
          //link field setup
          $link_id        = 'slide_link_field';
@@ -2279,18 +2245,23 @@ if ( ! class_exists( 'CZR_meta_boxes' ) ) :
            foreach ( $tc_slider_fields as $tcid => $tckey) {
                if ( isset( $_POST[$tcid])) {
                  $mydata = sanitize_text_field( $_POST[$tcid] );
+
                   switch ( $tckey) {
                     //different sanitizations
                     case 'slide_text_key':
                         $default_text_length = apply_filters( 'czr_slide_text_length', 250 );
-                        if (strlen( $mydata) > $default_text_length) {
-                          $mydata = substr( $mydata,0,strpos( $mydata, ' ' ,$default_text_length));
-                          $mydata = esc_html( $mydata) . ' ...';
-                        }
-                        else {
-                          $mydata = esc_html( $mydata);
-                        }
-                      break;
+                        $mydata = esc_html( czr_fn_text_truncate( $mydata, $default_text_length, '...' ) );
+                    break;
+
+                    case 'slide_title_key':
+                        $default_title_length = apply_filters( 'czr_slide_title_length', 80 );
+                        $mydata = esc_html( czr_fn_text_truncate( $mydata, $default_title_length, '...' ) );
+                    break;
+
+                    case 'slide_button_key':
+                        $default_button_text_length = apply_filters( 'czr_slide_button_length', 80 );
+                        $mydata = esc_html( czr_fn_text_truncate( $mydata, $default_button_text_length, '...' ) );
+                    break;
 
                     case 'slide_custom_link_key':
                         $mydata = esc_url( $_POST[$tcid] );
@@ -2301,15 +2272,8 @@ if ( ! class_exists( 'CZR_meta_boxes' ) ) :
                         $mydata = esc_attr( $mydata );
                     break;
 
-                    default://for button, color, title and post link field (actually not a link but an id)
-                        $default_title_length = apply_filters( 'czr_slide_title_length', 80 );
-                       if (strlen( $mydata) > $default_title_length) {
-                        $mydata = substr( $mydata,0,strpos( $mydata, ' ' , $default_title_length));
-                        $mydata = esc_attr( $mydata) . ' ...';
-                        }
-                        else {
-                          $mydata = esc_attr( $mydata);
-                        }
+                    default://for color, post link field (actually not a link but an id)
+                        $mydata = esc_attr( $mydata );
                       break;
                   }//end switch
                  //write in DB

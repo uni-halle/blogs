@@ -661,7 +661,7 @@ var czrapp = czrapp || {};
                   }
             },
             centerImages : function() {
-                  var $wrappersOfCenteredImagesCandidates = $('.tc-grid-figure, .widget-front .tc-thumbnail, .js-centering.entry-media__holder, .js-centering.entry-media__wrapper');
+                  var $wrappersOfCenteredImagesCandidates = $('.widget-front .tc-thumbnail, .js-centering.entry-media__holder, .js-centering.entry-media__wrapper');
                   _css_loader = '<div class="czr-css-loader czr-mr-loader" style="display:none"><div></div><div></div><div></div></div>';
                   $.when( $wrappersOfCenteredImagesCandidates.each( function() {
                         $( this ).append(  _css_loader ).find('.czr-css-loader').fadeIn( 'slow');
@@ -1163,12 +1163,14 @@ var czrapp = czrapp || {};
                     } else if ( 'up' == self.scrollDirection() ) {
                           self.stickyStage( 'up' );
                           self.stickyMenuDown( true ).done( function() {});
-                          self.isFixedPositionned( to > self.topStickPoint() );
+                          if ( self.isFixedPositionned() ) {
+                                self.isFixedPositionned( to > self.topStickPoint() );
+                          }
                     }
               };
               this.scrollPosition.bind( function( to, from ) {
                     _setStickynessStatesOnScroll( to, from );
-                    czrapp.$_header.toggleClass( 'can-shrink-brand', to > czrapp.$_header[0].getBoundingClientRect().height * 2 );
+                    czrapp.$_header.toggleClass( 'can-shrink-brand', self.isFixedPositionned() ); //was to > czrapp.$_header[0].getBoundingClientRect().height * 2 );
               } );
               var _maybeResetTop = function() {
                     if ( 'up' == self.scrollDirection() )
@@ -1544,32 +1546,30 @@ var czrapp = czrapp || {};
       },
       formFocusAction : function() {
             var _input_types       = [
-                  'input[type="url"]',
-                  'input[type="email"]',
-                  'input[type="text"]',
-                  'input[type="password"]',
-                  'textarea'
-            ],
-            _focusable_class    = 'czr-focus',
-            _parent_selector    = '.'+_focusable_class,
-            _focus_class        = 'in-focus',
-            _czr_form_class     = 'czr-form',
-            _inputs             = _.map( _input_types, function( _input_type ){ return _parent_selector + ' ' + _input_type ; } ).join(),
-            $_focusable_inputs  = $( _input_types.join() );
-            _maybe_fire         = $_focusable_inputs.length > 0;
-            if ( _maybe_fire ) {
-                  $_focusable_inputs.each( function() {
-                     var $_this = $(this);
-                     if ( !$_this.attr('placeholder') && ( $_this.closest( '#buddypress' ).length < 1 ) ) {
-                        $(this)
-                              .addClass('czr-focusable')
-                              .parent().addClass(_focusable_class)
-                              .closest('form').addClass(_czr_form_class);
-                     }
-                  });
-            } else {
-                  return;
-            }
+                      'input[type="url"]',
+                      'input[type="email"]',
+                      'input[type="text"]',
+                      'input[type="password"]',
+                      'textarea'
+                ],
+                _focusable_class        = 'czr-focus',
+                _focusable_field_class  = 'czr-focusable',
+                _focus_class            = 'in-focus',
+                _czr_form_class         = 'czr-form',
+                _parent_selector        = '.'+ _czr_form_class + ' .'+_focusable_class,
+                _inputs                 = _.map( _input_types, function( _input_type ){ return _parent_selector + ' ' + _input_type ; } ).join(),
+                $_focusable_inputs      = $( _input_types.join() );
+
+            if ( $_focusable_inputs.length <= 0 )
+              return;
+            $_focusable_inputs.each( function() {
+               var $_this = $(this);
+               if ( !$_this.attr('placeholder') && ( $_this.closest( '#buddypress' ).length < 1 ) ) {
+                  $(this)
+                        .addClass(_focusable_field_class)
+                        .parent().addClass(_focusable_class);
+               }
+            });
 
             var _toggleThisFocusClass = function( evt ) {
                 var $_el       = $(this),
@@ -1585,19 +1585,70 @@ var czrapp = czrapp || {};
             czrapp.$_body.on( 'in-focus-load.czr-focus focusin focusout', _inputs, _toggleThisFocusClass );
             $(_inputs).trigger( 'in-focus-load.czr-focus' );
             czrapp.$_body.on( 'click tap', '.icn-close', function() {
-                $(this).closest('form').find('.czr-search-field').val('').focus();
+                  var $_search_field = $(this).closest('form').find('.czr-search-field');
+
+                  if ( $_search_field.length ) {
+                        if ( $_search_field.val() ) {
+                              $_search_field.val('').focus();
+                        }
+                        else {
+                              $_search_field.blur();
+                        }
+                  }
+
             });
+      },
+      onEscapeKeyPressed : function() {
+            var ESCAPE_KEYCODE                  = 27, // KeyboardEvent.which value for Escape (Esc) key
+
+                Event = {
+                      KEYEVENT          : 'keydown', //or keyup, if we want to react to the release event
+                      SIDENAV_CLOSE     : 'sn-close',
+                      OVERLAY_TOGGLER   : 'click',
+                      SIDENAV_TOGGLER   : 'click'
+                },
+
+                ClassName = {
+                      SEARCH_FIELD      : 'czr-search-field',
+                      OLVERLAY_SHOWN    : 'czr-overlay-opened',
+                      SIDENAV_SHOWN     : 'tc-sn-visible'
+                },
+
+                Selector = {
+                      OVERLAY           : '.czr-overlay',
+                      SIDENAV           : '#tc-sn',
+                      OVERLAY_TOGGLER   : '.czr-overlay-toggle_btn',
+                      SIDENAV_TOGGLER   : '[data-toggle="sidenav"]'
+                };
+
+
+            czrapp.$_body.on( Event.KEYEVENT, function(evt) {
+
+                  if ( ESCAPE_KEYCODE == evt.which ) {
+                        if ( $(evt.target).hasClass( ClassName.SEARCH_FIELD ) ) {
+                              $( evt.target ).val('').blur();
+                              return;
+                        }
+                        if ( $( Selector.OVERLAY ).length && czrapp.$_body.hasClass( ClassName.OLVERLAY_SHOWN ) ) {
+                              $( Selector.OVERLAY ).find( Selector.OVERLAY_TOGGLER ).trigger( Event.OVERLAY_TOGGLER );
+                              return;
+                        }
+                        if ( $( Selector.SIDENAV ).length  && czrapp.$_body.hasClass( ClassName.SIDENAV_SHOWN ) ) {
+
+                              $( Selector.SIDENAV ).find( Selector.SIDENAV_TOGGLER ).trigger( Event.SIDENAV_TOGGLER );
+                              return;
+                        }
+                  }
+
+            });
+
       },
 
       variousHeaderActions : function() {
             var _mobile_viewport                   = 992;
-            czrapp.$_body.on( 'click tap', '.desktop_search__link', function(evt) {
+            czrapp.$_body.on( 'click tap', '.search-toggle_btn', function(evt) {
                   evt.preventDefault();
-                  czrapp.$_body.toggleClass('full-search-opened');
-            });
-            czrapp.$_body.on( 'click tap', '.search-close_btn', function(evt) {
-                  evt.preventDefault();
-                  czrapp.$_body.removeClass('full-search-opened');
+                  czrapp.$_body.toggleClass( 'full-search-opened czr-overlay-opened' );
             });
             if ( 'function' == typeof $.fn.mCustomScrollbar ) {
                   czrapp.$_body.on( 'shown.czr.czrDropdown', '.nav__woocart', function() {
@@ -1870,41 +1921,6 @@ var czrapp = czrapp || {};
 
 })(jQuery, czrapp);var czrapp = czrapp || {};
 (function($, czrapp) {
-    var _methods =  {
-
-        initOnCzrReady : function() {
-
-            if ( typeof undefined === typeof $.fn.masonry )
-                  return;
-                  
-            var $grid_container = $('.masonry__wrapper'),
-                masonryReady = $.Deferred();
-            
-            if ( 1 > $grid_container.length ) {
-                  czrapp.errorLog('Masonry container does not exist in the DOM.');
-                  return;
-            }
-
-            $grid_container.bind( 'masonry-init.customizr', function() {
-                  masonryReady.resolve();
-            });
-            $grid_container.imagesLoaded( function() {
-                  $grid_container.masonry({
-                        itemSelector: '.grid-item',
-                  })
-                  .on( 'smartload simple_load', 'img', function() {
-                        $grid_container.masonry('layout');
-                  })
-                  .trigger( 'masonry-init.customizr' );
-            });
-          
-        }
-    };//_methods{}
-
-    czrapp.methods.MasonryGrid = {};
-    $.extend( czrapp.methods.MasonryGrid , _methods );
-})(jQuery, czrapp);var czrapp = czrapp || {};
-(function($, czrapp) {
   var _methods =  {
     initOnDomReady : function() {
       this._sidenav_selector        = '#tc-sn';
@@ -2113,7 +2129,6 @@ var czrapp = czrapp || {};
       function _addOpenClass ( evt ) {
 
         var $_el = $(this);
-
         _debounced_addOpenClass = _.debounce( function() {
           if( 'static' == $_el.find( '.'+self.ClassName.DROPDOWN ).css( 'position' ) )
             return false;
@@ -2128,14 +2143,14 @@ var czrapp = czrapp || {};
                 $_data_toggle[0].setAttribute('aria-expanded', 'true');
           }
 
-        }, 150);
+        }, 30);
 
         _debounced_addOpenClass();
       }
+      
       function _removeOpenClass () {
 
         var $_el = $(this);
-
         _debounced_removeOpenClass = _.debounce( function() {
 
           if ( $_el.find("ul li:hover").length < 1 && ! $_el.closest('ul').find('li:hover').is( $_el ) ) {
@@ -2148,7 +2163,7 @@ var czrapp = czrapp || {};
                 $_data_toggle[0].setAttribute('aria-expanded', 'false');
           }
 
-        }, 150);
+        }, 30);
 
         _debounced_removeOpenClass();
       }
@@ -2798,12 +2813,6 @@ var czrapp = czrapp || {};
                             'dropdownPlacement'//snake
                       ]
                 },
-                masonry : {
-                      ctor  : czrapp.Base.extend( czrapp.methods.MasonryGrid ),
-                      ready : [
-                            'initOnCzrReady',
-                      ]
-                },
                 userXP : {
                       ctor : czrapp.Base.extend( czrapp.methods.UserXP ),
                       ready : [
@@ -2817,6 +2826,7 @@ var czrapp = czrapp || {};
                             'formFocusAction',
                             'variousHeaderActions',
                             'smoothScroll',
+                            'onEscapeKeyPressed',
 
                             'featuredPagesAlignment',
                             'bttArrow',

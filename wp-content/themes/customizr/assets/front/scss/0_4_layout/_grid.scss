@@ -202,10 +202,7 @@ a.czr-format-link {
 .post-info {
     .row {
       margin: 0 -8px;
-      -webkit-box-align: center;
-          -webkit-align-items: center;
-          -ms-flex-align: center;
-          align-items: center;
+      @include flex-align-items-center();
       & [class*=col] {
           padding: .1em 8px;
       }
@@ -297,9 +294,9 @@ a.czr-format-link {
 
 /* ALTERNATE */
 .grid-container__alternate {
-  .tc-content {
-    font-size: 90%;
-  }
+  // .tc-content {
+  //   font-size: 90%;
+  // }
 
   h2.entry-title { margin-top:$base-line-height/2; }
 
