@@ -129,6 +129,127 @@ function awpcp_paypal_verify_received_data($data=array(), &$errors=array()) {
     return $response;
 }
 
+/**
+ * Validate the data received from PayFast.
+ *
+ * @since 3.7.8
+ */
+function awpcp_payfast_verify_received_data( $data = array() ) {
+    $content = '';
+
+    foreach ( $data as $key => $value ) {
+        if ( $key == 'signature' ) {
+            continue;
+        }
+
+        $content .= $key . '=' . urlencode( stripslashes( $value ) ) . '&';
+    }
+
+    $content = rtrim( $content, '&' );
+    $response = 'ERROR';
+
+    if (in_array('curl', get_loaded_extensions())) {
+        // try using custom CA information -- included with the plugin
+        $response = awpcp_payfast_verify_received_data_with_curl( $content, true );
+
+        // try using default CA information -- installed in the server
+        if ( strcmp( $response, 'ERROR' ) === 0 ) {
+            $response = awpcp_payfast_verify_received_data_with_curl( $content, false );
+        }
+    }
+
+    if ( strcmp( $response, 'ERROR' ) === 0 ) {
+        $response = awpcp_payfast_verify_received_data_with_fsockopen( $content, $errors );
+    }
+
+    return $response;
+}
+
+/**
+ * @since 3.7.8
+ */
+function awpcp_payfast_verify_received_data_with_curl( $content = '', $cainfo = false ) {
+    if ( get_awpcp_option( 'paylivetestmode' ) ) {
+        $host = 'sandbox.payfast.co.za';
+    } else {
+        $host = 'www.payfast.co.za';
+    }
+
+    $ch = curl_init();
+
+    curl_setopt( $ch, CURLOPT_USERAGENT, 'Another WordPress Classifieds Plugin' );
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+    curl_setopt( $ch, CURLOPT_HEADER, false );
+    curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 2 );
+    curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
+
+    curl_setopt( $ch, CURLOPT_URL, 'https://'. $host .'/eng/query/validate' );
+    curl_setopt( $ch, CURLOPT_POST, true );
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $content );
+    curl_setopt( $ch, CURLOPT_TIMEOUT, 30 );
+
+    if ( $cainfo ) {
+        curl_setopt( $ch, CURLOPT_CAINFO, AWPCP_DIR . '/cacert.pem' );
+    }
+
+    $response = explode( "\r\n", curl_exec( $ch ) );
+    $response = trim( $response[0] );
+
+    curl_close( $ch );
+
+    if ( in_array( $response, array( 'VALID', 'INVALID' ) ) ) {
+        $response = $response;
+    } else {
+        $response = 'ERROR';
+    }
+
+    return $response;
+}
+
+/**
+ * @since 3.7.8
+ */
+function awpcp_payfast_verify_received_data_with_fsockopen( $content ) {
+    if ( get_awpcp_option( 'paylivetestmode' ) ) {
+        $host = 'sandbox.payfast.co.za';
+    } else {
+        $host = 'www.payfast.co.za';
+    }
+
+    $header_processed = false;
+    $response = '';
+
+    $header = "POST /eng/query/validate HTTP/1.0\r\n";
+    $header .= "Host: ". $host ."\r\n";
+    $header .= "User-Agent: Another WordPress Classifieds Plugin\r\n";
+    $header .= "Content-Type: application/x-www-form-urlencoded\r\n";
+    $header .= "Content-Length: " . strlen( $content ) . "\r\n\r\n";
+
+    $socket = fsockopen( 'ssl://'. $host, 443, $errno, $errstr, 30 );
+
+    fputs( $socket, $header . $content );
+
+    while( ! feof( $socket ) ) {
+        $line = fgets( $socket, 1024 );
+
+        if ( strcmp( $line, "\r\n" ) == 0 ) {
+            $header_processed = true;
+        } else if ( $header_processed ) {
+            $response .= $line;
+        }
+    }
+
+    $response = explode( "\r\n", curl_exec( $ch ) );
+    $response = trim( $response[0] );
+
+    if ( in_array( $response, array( 'VALID', 'INVALID' ) ) ) {
+        $response = $response;
+    } else {
+        $response = 'ERROR';
+    }
+
+    return $response;
+}
 
 /**
  * email the administrator and the user to notify that the payment process was failed

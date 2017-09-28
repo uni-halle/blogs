@@ -140,8 +140,8 @@ function showad( $adid=null, $omitmenu=false, $preview=false, $send_email=true, 
 			$content_before_page = apply_filters( 'awpcp-content-before-listing-page', '' );
 			$content_after_page = apply_filters( 'awpcp-content-after-listing-page', '' );
 
-			$output = '<div id="classiwrapper">%s%s<!--awpcp-single-ad-layout-->%s</div><!--close classiwrapper-->';
-			$output = sprintf( $output, $content_before_page, $omitmenu ? '' : awpcp_menu_items(), $content_after_page );
+			$output = '<div id="classiwrapper">%s<!--awpcp-single-ad-layout-->%s</div><!--close classiwrapper-->';
+			$output = sprintf( $output, $content_before_page, $content_after_page );
 
 			if (!$is_moderator && !$is_ad_owner && !$preview && $ad->disabled == 1) {
 				$message = __('The Ad you are trying to view is pending approval. Once the Administrator approves it, it will be active and visible.', 'another-wordpress-classifieds-plugin');

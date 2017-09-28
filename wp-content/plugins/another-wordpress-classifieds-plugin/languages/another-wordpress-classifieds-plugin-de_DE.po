@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Another WordPress Classifieds Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/another-wordpress-classifieds-plugin\n"
-"POT-Creation-Date: 2017-04-25 03:16:49+00:00\n"
-"PO-Revision-Date: 2017-04-25 03:17+0000\n"
+"POT-Creation-Date: 2017-09-24 22:29:10+00:00\n"
+"PO-Revision-Date: 2017-09-24 22:29+0000\n"
 "Last-Translator: Willington Vega <wvega@wvega.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/wp-translations/another-wordpress-classifieds-plugin/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: admin/admin-panel-fees-table.php:112
 #: admin/templates/admin-panel-credit-plans-entry-form.tpl.php:9
 #: admin/templates/admin-panel-fees-entry-form.tpl.php:17
-#: includes/settings/class-payment-general-settings.php:9
+#: includes/settings/class-payment-general-settings.php:15
 msgid "Name"
 msgstr "Name"
 
@@ -46,8 +46,8 @@ msgstr "Credits"
 #: admin/admin-panel-fees-table.php:120
 #: admin/templates/admin-panel-credit-plans-entry-form.tpl.php:19
 #: admin/templates/admin-panel-fees-entry-form.tpl.php:25
-#: frontend/placeholders.php:447 frontend/templates/page-search-ads.tpl.php:46
-#: includes/settings/class-payment-general-settings.php:10
+#: frontend/placeholders.php:452 frontend/templates/page-search-ads.tpl.php:46
+#: includes/settings/class-payment-general-settings.php:16
 msgid "Price"
 msgstr "Preis"
 
@@ -65,7 +65,7 @@ msgid "Edit"
 msgstr "Bearbeiten"
 
 #: admin/admin-panel-credit-plans.php:43 admin/admin-panel-fees.php:46
-#: admin/admin-panel-listings-table.php:229 admin/admin-panel-listings.php:92
+#: admin/admin-panel-listings-table.php:232 admin/admin-panel-listings.php:92
 #: admin/templates/admin-panel-fees-delete-form.tpl.php:13
 #: admin/templates/delete_form.tpl.php:12
 msgid "Delete"
@@ -147,7 +147,7 @@ msgstr "Daten importieren"
 
 #: admin/admin-panel-fees-table.php:114
 #: admin/templates/admin-panel-fees-entry-form.tpl.php:35
-#: includes/settings/class-payment-general-settings.php:12
+#: includes/settings/class-payment-general-settings.php:18
 msgid "Duration"
 msgstr "Dauer"
 
@@ -158,7 +158,7 @@ msgstr "Einheiten"
 
 #: admin/admin-panel-fees-table.php:116
 #: admin/templates/admin-panel-fees-entry-form.tpl.php:58
-#: includes/settings/class-payment-general-settings.php:11
+#: includes/settings/class-payment-general-settings.php:17
 msgid "Images Allowed"
 msgstr "Bilder erlaubt"
 
@@ -180,7 +180,7 @@ msgid "Categories"
 msgstr "Kategorien verwalten"
 
 #: admin/admin-panel-fees-table.php:127
-#: admin/templates/admin-sidebar.tpl.php:103 awpcp.php:865
+#: admin/templates/admin-sidebar.tpl.php:103 awpcp.php:878
 msgid "Featured Ads"
 msgstr "Anzeigen"
 
@@ -278,14 +278,14 @@ msgstr "Titel"
 #: frontend/templates/email-send-ad-access-key.tpl.php:6
 #: frontend/templates/email-send-all-ad-access-keys.tpl.php:8
 msgid "Access Key"
-msgstr "Zugangscode für die Anzeige"
+msgstr "Zugangscode"
 
-#: admin/admin-panel-listings-table.php:180
+#: admin/admin-panel-listings-table.php:180 frontend/page-place-ad.php:755
 #: templates/admin/import-listings-admin-page-configuration-form.tpl.php:23
 msgid "Start Date"
 msgstr "Anfangsdatum"
 
-#: admin/admin-panel-listings-table.php:181
+#: admin/admin-panel-listings-table.php:181 frontend/page-place-ad.php:757
 #: templates/admin/import-listings-admin-page-configuration-form.tpl.php:33
 msgid "End Date"
 msgstr "Enddatum"
@@ -307,8 +307,8 @@ msgid "Payment Status"
 msgstr "Zahlungsstatus"
 
 #: admin/admin-panel-listings-table.php:188
-#: admin/admin-panel-listings-table.php:254
-#: admin/admin-panel-listings-table.php:431
+#: admin/admin-panel-listings-table.php:268
+#: admin/admin-panel-listings-table.php:444
 msgid "Featured"
 msgstr "Anzeigen"
 
@@ -324,122 +324,122 @@ msgstr "Aktivieren"
 msgid "Disable"
 msgstr "Deaktivieren"
 
-#: admin/admin-panel-listings-table.php:218 admin/admin-panel-listings.php:111
-msgid "Make Featured"
-msgstr "Anzeigen"
-
-#: admin/admin-panel-listings-table.php:219
-msgid "Make Non Featured"
-msgstr "Nicht Anzeigen"
-
-#: admin/admin-panel-listings-table.php:220
+#: admin/admin-panel-listings-table.php:218
 msgid "Renew"
 msgstr "Anzeige erneuern"
 
-#: admin/admin-panel-listings-table.php:221
+#: admin/admin-panel-listings-table.php:219
 msgid "Mark as SPAM"
 msgstr "Als SPAM markieren"
 
-#: admin/admin-panel-listings-table.php:226 admin/admin-panel-listings.php:134
+#: admin/admin-panel-listings-table.php:223 admin/admin-panel-listings.php:111
+msgid "Make Featured"
+msgstr "Anzeigen"
+
+#: admin/admin-panel-listings-table.php:224
+msgid "Make Non Featured"
+msgstr "Nicht Anzeigen"
+
+#: admin/admin-panel-listings-table.php:229 admin/admin-panel-listings.php:134
 msgid "Send to Facebook"
 msgstr "Share on Facebook"
 
-#: admin/admin-panel-listings-table.php:250
+#: admin/admin-panel-listings-table.php:253
 msgid "New"
 msgstr "Neu"
 
-#: admin/admin-panel-listings-table.php:251
+#: admin/admin-panel-listings-table.php:254
 msgid "Expired"
 msgstr "abgelaufen"
 
-#: admin/admin-panel-listings-table.php:252
+#: admin/admin-panel-listings-table.php:259
 msgid "Ads Awaiting Approval"
 msgstr "Anzeigen die auf Freischaltung warten"
 
-#: admin/admin-panel-listings-table.php:253
+#: admin/admin-panel-listings-table.php:263
 msgid "Images Awaiting Approval"
 msgstr "Bilder die auf Freischaltung warten"
 
-#: admin/admin-panel-listings-table.php:255
+#: admin/admin-panel-listings-table.php:269
 msgid "Flagged"
 msgstr "Markierte Anzeigen"
 
-#: admin/admin-panel-listings-table.php:256
+#: admin/admin-panel-listings-table.php:270
 msgid "Incomplete"
 msgstr "Nicht komplett"
 
-#: admin/admin-panel-listings-table.php:257
+#: admin/admin-panel-listings-table.php:271
 msgid "Unverified"
 msgstr "Nicht überprüft"
 
-#: admin/admin-panel-listings-table.php:258
+#: admin/admin-panel-listings-table.php:272
 msgid "Completed"
 msgstr "Abgeschlossen"
 
-#: admin/admin-panel-listings-table.php:269
+#: admin/admin-panel-listings-table.php:282
 msgid "Search by"
 msgstr "Nach Schlüsselwort suchen"
 
-#: admin/admin-panel-listings-table.php:271
+#: admin/admin-panel-listings-table.php:284
 msgid "Ad ID"
 msgstr "Anzeigen-ID"
 
-#: admin/admin-panel-listings-table.php:272
+#: admin/admin-panel-listings-table.php:285
 msgid "Ad Title"
 msgstr "Titel der Anzeige"
 
-#: admin/admin-panel-listings-table.php:273
+#: admin/admin-panel-listings-table.php:286
 msgid "Keyword"
 msgstr "Nach Schlüsselwort suchen"
 
-#: admin/admin-panel-listings-table.php:274 frontend/page-show-ad.php:58
-#: frontend/placeholders.php:573
+#: admin/admin-panel-listings-table.php:287 frontend/page-show-ad.php:58
+#: frontend/placeholders.php:578
 msgid "Location"
 msgstr "Ort"
 
-#: admin/admin-panel-listings-table.php:275 frontend/placeholders.php:664
+#: admin/admin-panel-listings-table.php:288 frontend/placeholders.php:670
 msgid "Phone"
 msgstr "Telefonnummer"
 
-#: admin/admin-panel-listings-table.php:278
+#: admin/admin-panel-listings-table.php:291
 msgid "Payer Email"
-msgstr "Bezahl- e-Mail-Adresse"
+msgstr "Bezahl- E-Mail-Adresse"
 
-#: admin/admin-panel-listings-table.php:281
+#: admin/admin-panel-listings-table.php:294
 #: frontend/templates/page-place-ad-details-step.tpl.php:36
 #: frontend/templates/page-place-ad-order-step.tpl.php:43
 msgid "User"
 msgstr "Benutzer"
 
-#: admin/admin-panel-listings-table.php:322
+#: admin/admin-panel-listings-table.php:335
 msgctxt "admin listings table"
 msgid "Filter"
 msgstr "Seitenfilter einschalten"
 
-#: admin/admin-panel-listings-table.php:367
+#: admin/admin-panel-listings-table.php:380
 msgid "View Ad."
 msgstr "Anzeige ansehen"
 
-#: admin/admin-panel-listings-table.php:395
+#: admin/admin-panel-listings-table.php:408
 msgid "Mark as Verified"
-msgstr "E-Mail Adresse manuell bestätigen"
+msgstr "E-Mail-Adresse manuell bestätigen"
 
-#: admin/admin-panel-listings-table.php:404
+#: admin/admin-panel-listings-table.php:417
 msgid "Disabled"
 msgstr "Deaktiviert"
 
-#: admin/admin-panel-listings-table.php:404
+#: admin/admin-panel-listings-table.php:417
 #: templates/components/media-manager.tpl.php:19
 #: templates/components/media-manager.tpl.php:58
 #: templates/components/media-manager.tpl.php:100
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: admin/admin-panel-listings-table.php:418
+#: admin/admin-panel-listings-table.php:431
 msgid "Mark as Paid"
 msgstr "Als bezahlt markieren"
 
-#: admin/admin-panel-listings-table.php:431
+#: admin/admin-panel-listings-table.php:444
 msgid "Not Featured"
 msgstr "Nicht anzeigen"
 
@@ -479,7 +479,7 @@ msgstr "Eigenschaften abwählen"
 
 #: admin/admin-panel-listings.php:113
 msgid "Send Access Key"
-msgstr "Zugangscode für die Anzeige erneut senden"
+msgstr "Zugangscode erneut senden"
 
 #: admin/admin-panel-listings.php:123
 #: frontend/templates/page-place-ad-preview-step.tpl.php:15
@@ -509,7 +509,7 @@ msgstr "Es wurde keine Anzeigen-ID angegeben"
 
 #: admin/admin-panel-listings.php:305 frontend/ad-functions.php:242
 #: frontend/page-edit-ad.php:171 frontend/page-edit-ad.php:229
-#: frontend/page-edit-ad.php:362 frontend/page-edit-ad.php:390
+#: frontend/page-edit-ad.php:367 frontend/page-edit-ad.php:395
 msgid "The specified Ad doesn't exists."
 msgstr "Die ausgewählte Anzeige existiert nicht."
 
@@ -549,7 +549,7 @@ msgstr "Die Anzeige wurde freigegeben."
 
 #: admin/admin-panel-listings.php:444
 msgid "The Ad was marked as verified."
-msgstr "Die Kleinanzeige wurde überprüft."
+msgstr "Die Anzeige wurde überprüft."
 
 #: admin/admin-panel-listings.php:454
 msgid "The Ad has been marked as paid."
@@ -587,19 +587,23 @@ msgstr "Es gab einen Fehler %d Anzeigen zu deaktivieren"
 
 #: admin/admin-panel-listings.php:528
 msgid "The listing was marked as reviewed."
-msgstr "Die Kleinanzeige wurde überprüft."
+msgstr "Die Anzeige wurde überprüft."
 
 #: admin/admin-panel-listings.php:530
 msgid "The listing couldn't marked as reviewed."
 msgstr "Die Anzeige konnte nicht als überprüft markiert werden."
 
+#: admin/admin-panel-listings.php:545
+msgid "Access Key for \"%s\""
+msgstr ""
+
 #: admin/admin-panel-listings.php:553
 msgid "The access key was sent to %s."
-msgstr "Die Zugangsdaten wurde an  %s gesendet."
+msgstr "Die Zugangsdaten wurden an  %s gesendet."
 
-#: admin/admin-panel-listings.php:555 frontend/page-edit-ad.php:519
+#: admin/admin-panel-listings.php:555 frontend/page-edit-ad.php:533
 msgid "There was an error trying to send the email to %s."
-msgstr "Es gab einen Fehler beim Versuch eine Email an %s zu senden."
+msgstr "Es gab einen Fehler beim Versuch eine E-Mail an %s zu senden."
 
 #: admin/admin-panel-listings.php:632
 msgid "%d of %d Ads were deleted. %d generated errors."
@@ -753,7 +757,7 @@ msgid "Manage Extra Fields"
 msgstr "Extrafelder bearbeiten"
 
 #: admin/admin-panel.php:315 admin/templates/admin-sidebar.tpl.php:108
-#: awpcp.php:858
+#: awpcp.php:871
 msgid "Extra Fields"
 msgstr "Extrafelder Modul"
 
@@ -981,7 +985,7 @@ msgstr "Name"
 #: admin/form-fields/class-form-fields-table.php:30
 msgctxt "form field slug"
 msgid "Slug"
-msgstr "Schnecke"
+msgstr "Kurzbezeichnung"
 
 #: admin/import/class-csv-importer-delegate.php:122
 msgid "Missing value for required column <em>%s</em>."
@@ -999,7 +1003,7 @@ msgid ""
 "No user could be assigned to this listing. A new user couldn't be created "
 "because the contact_email column has an empty value. Please include a "
 "contact_email or select a default user."
-msgstr "Kein Benutzer konnte dieser Anzeige zugeordnet werden. Ein neuer Benutzer konnte nicht angelegt werden weil die Spalte mit der Emailadresse contact_email leer ist. Bitte schreiben Sie in die Spalte \"contact_email\" eine E-Mailadresse oder wählen Sie den Standardbenutzer aus."
+msgstr "Kein Benutzer konnte dieser Anzeige zugeordnet werden. Ein neuer Benutzer konnte nicht angelegt werden weil die Spalte mit der E-Mail-Adresse leer ist. Bitte schreiben Sie in die Spalte E-Mail-Adresse eine E-Mail-Adresse oder wählen Sie den Standardbenutzer aus."
 
 #: admin/import/class-csv-importer-delegate.php:337
 msgid ""
@@ -1009,7 +1013,7 @@ msgstr "Kein Benutzer konnte dieser Anzeige zugeordnet werden. Der Versuch einen
 
 #: admin/import/class-csv-importer-delegate.php:345
 msgid "A new user '%s' with email address '%s' and password '%s' was created."
-msgstr "Ein neuer Benutzer '%s' mit der E-Mail Adresse '%s' und dem Passwort '%s' wurde erstellt."
+msgstr "Ein neuer Benutzer '%s' mit der E-Mail-Adresse '%s' und dem Passwort '%s' wurde erstellt."
 
 #: admin/import/class-csv-importer-delegate.php:370
 msgid "Item price is not a numeric value."
@@ -1077,7 +1081,7 @@ msgstr "Sie haben keine Freigabe um diese Aktion durchzuführen."
 #: admin/pointers/class-drip-autoresponder-ajax-handler.php:39
 msgctxt "drip-autoresponder"
 msgid "The email address entered is not valid."
-msgstr "Die e-Mail-Adresse die Sie eingegeben haben ist leider ungültig."
+msgstr "Die E-Mail-Adresse die Sie eingegeben haben ist leider ungültig."
 
 #: admin/pointers/class-drip-autoresponder-ajax-handler.php:114
 msgctxt "drip-autoresponder"
@@ -1108,7 +1112,7 @@ msgstr "Nein Danke"
 #: admin/pointers/class-drip-autoresponder.php:64
 msgctxt "drip-autoresponder"
 msgid "Want to know the Secrets of Building an Awesome Classifieds Website?"
-msgstr "Möchten Sie die Geheimnisse einer Super Kleinanzeigenseite kennenlernen?"
+msgstr "Möchten Sie die Geheimnisse einer Super Anzeigenseite kennen lernen?"
 
 #: admin/pointers/class-drip-autoresponder.php:65
 msgctxt "drip-autoresponder"
@@ -1116,11 +1120,11 @@ msgid ""
 "Find out how to create a compelling, thriving classifieds site from scratch "
 "in this ridiculously actionable (and free) 5-part email course. Get a "
 "premium module (AWPCP XML Sitemap) for free just for signing up."
-msgstr "Finde heraus wie man eine ansprechende, aufregende Kleinanzeigeseite von Grundauf erstellt. 5-teiliger E-Mail Kurs. Bei Registrierung erhalten Sie ein Premiummodul (AWPCP XML Sitemap) umsonst dazu."
+msgstr "Finde heraus wie man eine ansprechende, aufregende Anzeigeseite von Grundauf erstellt. 5-teiliger E-Mail Kurs. Bei Registrierung erhalten Sie ein Premiummodul (AWPCP XML Sitemap) umsonst dazu."
 
 #: admin/pointers/class-drip-autoresponder.php:69
 msgid "Email Address"
-msgstr "E-Mail Adresse"
+msgstr "E-Mail-Adresse"
 
 #: admin/templates/admin-panel-credit-plans-entry-form.tpl.php:6
 msgctxt "credit plans form"
@@ -1451,7 +1455,7 @@ msgid ""
 "You currently have your system configured to run in free mode. To change to "
 "'pay' mode go to %s and Check the box labeled 'Charge Listing Fee? (Pay "
 "Mode).'"
-msgstr "Ihr System ist momentan für den kostenlosen Modus konfiguriert. Um den kostenpflichtigen Modus einzuschalten, haken Sie die Checkbox 'Einstellgebühren verlangen' auf %s? (Kostenpflichtiger Modus)'."
+msgstr "Ihr System ist momentan für den kostenlosen Modus konfiguriert. Um den kostenpflichtigen Modus einzuschalten, aktivieren Sie bitte 'Einstellgebühren verlangen' auf %s? (Kostenpflichtiger Modus)'."
 
 #: admin/templates/admin-panel-home.tpl.php:71
 #: admin/templates/admin-panel-home.tpl.php:117
@@ -1487,7 +1491,7 @@ msgid ""
 "You currently have your system configured to run in pay mode. To change to "
 "'free' mode go to %s and uncheck the box labeled 'Charge Listing Fee? (Pay "
 "Mode).'"
-msgstr "Ihr System ist momentan für den kostenpflichtigen Modus konfiguriert. Um den kostenlosen Modus einzuschalten, haken Sie die Checkbox 'Einstellgebühren verlangen? (Kostenpflichtiger Modus)' unter %s "
+msgstr "Ihr System ist momentan für den kostenpflichtigen Modus konfiguriert. Um den kostenpflichtigen Modus einzuschalten, aktivieren Sie bitte 'Einstellgebühren verlangen' (Kostenpflichtiger Modus)' unter %s "
 
 #: admin/templates/admin-panel-home.tpl.php:127
 msgid ""
@@ -1511,7 +1515,7 @@ msgstr "Kategorie"
 
 #: admin/templates/admin-panel-listings-view.tpl.php:17
 msgid "Manage Listing"
-msgstr "Eintrag verwalten:"
+msgstr "Anzeige verwalten:"
 
 #: admin/templates/admin-panel-listings.tpl.php:11
 #: frontend/page-search-ads.php:12
@@ -1709,7 +1713,7 @@ msgstr "Seite: %s (Defaultname: %s)."
 msgid ""
 "If you are having problems with your plugin pages, you can delete them and "
 "use the Restore button to have the plugin create them again."
-msgstr "Wenn Sie mit den Plugin Seiten Probleme haben, dann löschen sie diese und nutzen den \"Restore\"-Button um sie mit dem Plugin wieder zu erzeugen."
+msgstr "Wenn Sie mit den Plugin Seiten Probleme haben, dann löschen sie diese und nutzen den \"Seiten-Wiederherstellen\"-Button um sie mit dem Plugin wieder zu erzeugen."
 
 #: admin/templates/admin-panel-settings-pages-settings.tpl.php:63
 msgid "Restore Pages"
@@ -1845,19 +1849,19 @@ msgstr "Premium Modul kaufen"
 msgid "Get a Premium Module!"
 msgstr "Kaufen Sie jetzt ein Premium Modul!"
 
-#: admin/templates/admin-sidebar.tpl.php:46 awpcp.php:830
+#: admin/templates/admin-sidebar.tpl.php:46 awpcp.php:843
 msgid "Campaign Manager"
 msgstr "Kampagnien Manager"
 
-#: admin/templates/admin-sidebar.tpl.php:52 awpcp.php:887
+#: admin/templates/admin-sidebar.tpl.php:52 awpcp.php:900
 msgid "Mark as Sold"
 msgstr "Als verkauft markieren"
 
-#: admin/templates/admin-sidebar.tpl.php:58 awpcp.php:908
+#: admin/templates/admin-sidebar.tpl.php:58 awpcp.php:928
 msgid "Restricted Categories"
 msgstr "Limitierte Kategorien"
 
-#: admin/templates/admin-sidebar.tpl.php:63 awpcp.php:823
+#: admin/templates/admin-sidebar.tpl.php:63 awpcp.php:836
 msgid "BuddyPress Listings"
 msgstr "BuddyPress Anzeigen "
 
@@ -1865,15 +1869,15 @@ msgstr "BuddyPress Anzeigen "
 msgid "Comments/Ratings"
 msgstr "Kommentare/Bewertungen"
 
-#: admin/templates/admin-sidebar.tpl.php:73 awpcp.php:809
+#: admin/templates/admin-sidebar.tpl.php:73 awpcp.php:822
 msgid "Attachments"
 msgstr "Anhänge"
 
-#: admin/templates/admin-sidebar.tpl.php:78 awpcp.php:816
+#: admin/templates/admin-sidebar.tpl.php:78 awpcp.php:829
 msgid "Authorize.Net"
 msgstr "Authorize.Net"
 
-#: admin/templates/admin-sidebar.tpl.php:83 awpcp.php:894
+#: admin/templates/admin-sidebar.tpl.php:83 awpcp.php:914
 msgid "PayPal Pro"
 msgstr "PayPal Pro"
 
@@ -1881,7 +1885,7 @@ msgstr "PayPal Pro"
 msgid "Coupon/Discount"
 msgstr "Gutschein"
 
-#: admin/templates/admin-sidebar.tpl.php:93 awpcp.php:922
+#: admin/templates/admin-sidebar.tpl.php:93 awpcp.php:949
 msgid "Subscriptions"
 msgstr "Abos"
 
@@ -1889,15 +1893,15 @@ msgstr "Abos"
 msgid "Fee Per Category"
 msgstr "Gebühr für Kategorie "
 
-#: admin/templates/admin-sidebar.tpl.php:113 awpcp.php:837
+#: admin/templates/admin-sidebar.tpl.php:113 awpcp.php:850
 msgid "Category Icons"
 msgstr "Kategoriebildermodul"
 
-#: admin/templates/admin-sidebar.tpl.php:118 awpcp.php:901
+#: admin/templates/admin-sidebar.tpl.php:118 awpcp.php:921
 msgid "Regions Control"
 msgstr "Regionskontrollmodul"
 
-#: admin/templates/admin-sidebar.tpl.php:123 awpcp.php:915
+#: admin/templates/admin-sidebar.tpl.php:123 awpcp.php:935
 msgid "RSS"
 msgstr "RSS Modul"
 
@@ -2034,100 +2038,108 @@ msgstr "Anzeigen-Verwaltung"
 msgid "Manage Ad Listings"
 msgstr "Anzeigen verwalten"
 
-#: awpcp.php:697
+#: awpcp.php:710
 msgid "AWPCP"
 msgstr "AWPCP Support Website"
 
-#: awpcp.php:792
+#: awpcp.php:805
 msgid ""
 "AWPCP requires the graphics processing library GD and it is not installed. "
 "Contact your web host to fix this."
 msgstr "AWPCP erfordert die Grafik-Bibliothek GD welche nicht installiert ist. Kontaktieren Sie Ihren Web-Host, dies zu beheben."
 
-#: awpcp.php:793
+#: awpcp.php:806
 #: includes/placeholders/class-placeholders-installation-verifier.php:31
 msgid "Warning"
 msgstr "Warnung"
 
-#: awpcp.php:844
+#: awpcp.php:857
 msgid "Comments & Ratings"
 msgstr "Kommentare und Bewertungen"
 
-#: awpcp.php:851
+#: awpcp.php:864
 msgid "Coupons/Discount"
 msgstr "Gutscheine"
 
-#: awpcp.php:872
+#: awpcp.php:885
 msgid "Fee per Category"
 msgstr "Gebühr pro Kategorie Module"
 
-#: awpcp.php:879
+#: awpcp.php:892
 msgid "Google Checkout"
 msgstr "Google Checkout"
 
-#: awpcp.php:929 templates/components/media-manager.tpl.php:46
+#: awpcp.php:907
+msgid "PayFast"
+msgstr "Schnelle Bezahlung"
+
+#: awpcp.php:942
+msgid "Stripe"
+msgstr "Stripe"
+
+#: awpcp.php:956 templates/components/media-manager.tpl.php:46
 msgid "Videos"
 msgstr "Videos"
 
-#: awpcp.php:937
+#: awpcp.php:964
 msgid "XML Sitemap"
 msgstr "XML Sitemap"
 
-#: awpcp.php:944
+#: awpcp.php:971
 msgid "ZIP Code Search Module"
 msgstr "ZIP Code Search Modul"
 
-#: awpcp.php:1220
+#: awpcp.php:1247
 msgid "This field is required."
 msgstr "Pflichtfeld"
 
-#: awpcp.php:1221 frontend/page-edit-ad.php:128 frontend/page-edit-ad.php:435
-#: includes/settings-api.php:229
+#: awpcp.php:1248 frontend/page-edit-ad.php:128 frontend/page-edit-ad.php:440
+#: includes/settings-api.php:238
 msgid "Please enter a valid email address."
-msgstr "Bitte geben Sie Ihre Emailadresse ein!"
+msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein!"
 
-#: awpcp.php:1222 awpcp.php:1223
+#: awpcp.php:1249 awpcp.php:1250
 msgid "Please enter a valid URL."
 msgstr "Bitte geben Sie eine gültige URL (Webseitenadresse) ein!"
 
-#: awpcp.php:1224
+#: awpcp.php:1251
 msgid "Please enter a valid number."
 msgstr "Bitte geben Sie eine Zahl ein!"
 
-#: awpcp.php:1225
+#: awpcp.php:1252
 msgid "Please enter a valid amount."
 msgstr "Bitte geben Sie eine Menge ein!"
 
-#: awpcp.php:1235
+#: awpcp.php:1262
 msgctxt "[UI Datepicker] Display text for previous month link"
 msgid "&#x3c;Prev"
 msgstr "&#x3c;Prev"
 
-#: awpcp.php:1237
+#: awpcp.php:1264
 msgctxt "[UI Datepicker] Display text for next month link"
 msgid "Next&#x3e;"
 msgstr "Next&#x3e;"
 
-#: awpcp.php:1252
+#: awpcp.php:1279
 msgctxt "[UI Datepicker] The first day of the week, Sun = 0, Mon = 1, ..."
 msgid "0"
 msgstr "0"
 
-#: awpcp.php:1258
+#: awpcp.php:1285
 msgid "There are files currently being uploaded."
 msgstr "Es werden gerade Dateien hochgeladen."
 
-#: awpcp.php:1259
+#: awpcp.php:1286
 msgid "There are files pending to be uploaded."
 msgstr "Dateien sind in der Warteschlange zum Upload."
 
-#: awpcp.php:1260
+#: awpcp.php:1287
 msgid "You haven't uploaded any images or files."
 msgstr "Sie haben noch keine Bilder oder Dateien hochgeladen."
 
 #: cron.php:102
 msgid "Listing Details"
-msgstr "Details des Eintrags"
+msgstr "Details der Anzeige"
 
 #: cron.php:104
 msgid "Ad Title:"
@@ -2139,17 +2151,17 @@ msgstr "Erstellt:"
 
 #: cron.php:111
 msgid "Renew your ad by visiting:"
-msgstr "Verlängern Sie Ihre Anzeige durch einen Besuch von:"
+msgstr "Verlängern Sie Ihre Anzeige durch einen Klick auf:"
 
 #: frontend/ad-functions.php:156
 msgid "The classifieds listing \"%s\" has been successfully renewed."
-msgstr "Der Eintrag \"%s\" wurde erfolgreich erneuert."
+msgstr "Ihre Anzeige \"%s\" wurde erfolgreich erneuert."
 
 #: frontend/ad-functions.php:183 frontend/page-renew-ad.php:133
 msgid "The Ad has been successfully renewed. New expiration date is %s. "
 msgstr "Ihre Anzeige wurde erfolgreich erneuert. Das neue Ablaufdatum ist %s."
 
-#: frontend/ad-functions.php:221 frontend/page-place-ad.php:143
+#: frontend/ad-functions.php:221 frontend/page-place-ad.php:145
 msgid ""
 "You do not have permission to perform the function you are trying to "
 "perform. Access to this page has been denied"
@@ -2197,7 +2209,7 @@ msgid "Please go to the Ad Management panel to edit your Ads."
 msgstr "Bitte gehen Sie zur Anzeigenbearbeitung um Ihre Anzeigen zu bearbeiten."
 
 #: frontend/page-edit-ad.php:46 frontend/page-edit-ad.php:119
-#: frontend/page-edit-ad.php:428
+#: frontend/page-edit-ad.php:496
 msgid "Click here"
 msgstr "Hier drücken"
 
@@ -2205,7 +2217,7 @@ msgstr "Hier drücken"
 msgid "You are not allowed to edit the specified Ad."
 msgstr "Sie haben nicht die Berechtigung um die ausgewählte Anzeige zu bearbeiten."
 
-#: frontend/page-edit-ad.php:118 frontend/page-edit-ad.php:427
+#: frontend/page-edit-ad.php:118 frontend/page-edit-ad.php:495
 msgid ""
 "You are currently not logged in, if you have an account in this website you "
 "can log in and go to the Ad Management panel to edit your Ads."
@@ -2215,17 +2227,17 @@ msgstr "Sie sind im Moment nicht eingeloggt. Wenn Sie auf dieser Webseite ein Ko
 msgid ""
 "Please enter the email address you used when you created your Ad in addition"
 " to the Ad access key that was emailed to you after your Ad was submitted."
-msgstr "Bitte geben Sie die Email-Adresse ein, die Sie bei der Erstellung der Anzeige verwendet haben. Ausserdem benötigen Sie den Zugangscode, der Ihnen nach der Eingabe der Anzeige zugeschickt wurde"
+msgstr "Bitte geben Sie die E-Mail-Adresse ein, die Sie bei der Erstellung der Anzeige verwendet haben. Außerdem benötigen Sie den Zugangscode, der Ihnen nach der Eingabe der Anzeige zugeschickt wurde"
 
 #: frontend/page-edit-ad.php:132
 msgid "Please enter your Ad access key."
-msgstr "Geben Sie Ihren Zugangscode für die Anzeige ein:"
+msgstr "Bitte geben Sie Ihren Zugangscode ein:"
 
 #: frontend/page-edit-ad.php:138
 msgid ""
 "The email address and access key you entered does not match any of the Ads "
 "in our system."
-msgstr "Die Emailadresse und der Zugangscode passen leider nicht."
+msgstr "Die E-Mail-Adresse und der Zugangscode passen leider nicht."
 
 #: frontend/page-edit-ad.php:208
 msgid "Manage Attachments"
@@ -2235,346 +2247,350 @@ msgstr "Anhänge bearbeiten"
 msgid "Go to the %s section to manage the Images and Attachments for this Ad."
 msgstr "Gehe zu %s um die Bilder und Anhänge für diese Anzeige zu bearbeiten."
 
-#: frontend/page-edit-ad.php:275 frontend/page-place-ad.php:1114
+#: frontend/page-edit-ad.php:280 frontend/page-place-ad.php:1157
 msgid ""
 "There was an unexpected error trying to save your Ad details. Please try "
 "again or contact an administrator."
 msgstr "Es gab ein Problem mit dem Speichern der Anzeige. Bitte probieren Sie es noch einmal oder kontaktieren Sie den Webseiten-Betreiber!"
 
-#: frontend/page-edit-ad.php:297 frontend/page-place-ad.php:1181
+#: frontend/page-edit-ad.php:302 frontend/page-place-ad.php:1224
 msgid "The specified Ad doesn't exists. No images can be added at this time."
 msgstr "Die Anzeige existiert nicht. Das Bild kann nicht hinzugefügt werden."
 
-#: frontend/page-edit-ad.php:350
+#: frontend/page-edit-ad.php:355
 #: frontend/templates/page-place-ad-preview-step.tpl.php:17
 #: includes/helpers/widgets/class-listing-form-steps-component.php:69
 #: templates/admin/import-listings-admin-page-import-form.tpl.php:30
 msgid "Finish"
 msgstr "Abschließen  - ANZEIGE VERÖFFENTLICHEN"
 
-#: frontend/page-edit-ad.php:369
+#: frontend/page-edit-ad.php:374
 msgid ""
 "The Ad has been edited successfully. <a href=\"%s\">Go back to view "
 "listings</a>."
 msgstr "Die Anzeige wurde erfolgreich bearbeitet. <a href=\"%s\">Zurück zu den Anzeigen</a>"
 
-#: frontend/page-edit-ad.php:395
+#: frontend/page-edit-ad.php:400
 msgid "There was a problem trying to delete your Ad. The Ad was not deleted."
 msgstr "Es gab ein Problem beim Löschen Ihrer Anzeige. Die Anzeige wurde nicht gelöscht."
 
-#: frontend/page-edit-ad.php:407
+#: frontend/page-edit-ad.php:412
 msgid "Your Ad has been successfully deleted."
 msgstr "Ihre Anzeige wurde erfolgreich gelöscht."
 
-#: frontend/page-edit-ad.php:433
+#: frontend/page-edit-ad.php:438
 msgid "Please enter the email address you used when you created your Ad."
-msgstr "Bitte geben Sie die Emailadresse ein die Sie beim Erstellen der Anzeige verwendet haben."
+msgstr "Bitte geben Sie die E-Mail-Adresse ein die Sie beim Erstellen der Anzeige verwendet haben."
 
-#: frontend/page-edit-ad.php:442
+#: frontend/page-edit-ad.php:447
 msgid ""
 "The email address you entered does not match any of the Ads in our system."
-msgstr "Die Emailadresse die Sie eingegeben haben ist leider unbekannt."
+msgstr "Die E-Mail-Adresse die Sie eingegeben haben ist leider unbekannt."
 
-#: frontend/page-edit-ad.php:478
+#: frontend/page-edit-ad.php:481
 msgid ""
 "The email address you entered does not match any of the listing in our "
 "system."
-msgstr ""
+msgstr "Ihre E-Mail-Adresse ist nicht in unserem System."
 
-#: frontend/page-edit-ad.php:516
+#: frontend/page-edit-ad.php:530
 msgid "The access keys were sent to %s."
-msgstr "Die Zugangsdaten wurde an  %s gesendet."
+msgstr "Die Zugangsdaten wurden an  %s gesendet."
 
-#: frontend/page-place-ad.php:57
+#: frontend/page-place-ad.php:59
 #: includes/views/class-verify-transaction-exists-step-decorator.php:17
 msgid ""
 "There was an error processing your Payment Request. Please try again or "
 "contact an Administrator."
 msgstr "Es gab ein Problem mit Ihrer Zahlung. Bitte probieren Sie es noch einmal oder kontaktieren Sie den Webseiten-Betreiber!"
 
-#: frontend/page-place-ad.php:111
+#: frontend/page-place-ad.php:113
 msgid "Please select a category."
 msgstr "Bitte eine Kategorie wählen."
 
-#: frontend/page-place-ad.php:112
+#: frontend/page-place-ad.php:114
 msgid "Please select the Ad's owner."
 msgstr "Bitte wählen Sie einen Besitzer für diese Anzeige"
 
-#: frontend/page-place-ad.php:113
+#: frontend/page-place-ad.php:115
 msgid "Please select a payment term."
 msgstr "Bitte eine Zahlungsart auswählen"
 
-#: frontend/page-place-ad.php:117
+#: frontend/page-place-ad.php:119
 msgid "Please type in a title for your Ad."
 msgstr "Bitte geben Sie eine Überschrift für Ihre Anzeige ein!"
 
-#: frontend/page-place-ad.php:118
+#: frontend/page-place-ad.php:120
 msgid "Please type in a valid URL."
 msgstr "Bitte geben Sie eine gültige URL (Webseitenadresse) ein!"
 
-#: frontend/page-place-ad.php:119
+#: frontend/page-place-ad.php:121
 msgid "Please type in the name of the person to contact."
 msgstr "Wer ist der Ansprechpartner?"
 
-#: frontend/page-place-ad.php:120
+#: frontend/page-place-ad.php:122
 msgid "Please type in the email address of the person to contact."
-msgstr "Bitte geben Sie die Emailadresse des Ansprechpartners an."
+msgstr "Bitte geben Sie die E-Mail-Adresse des Ansprechpartners an."
 
-#: frontend/page-place-ad.php:121
+#: frontend/page-place-ad.php:123
 msgid "Please type in the phone number of the person to contact."
 msgstr "Bitte geben Sie die Telefonnummer des Ansprechpartners an."
 
-#: frontend/page-place-ad.php:122
+#: frontend/page-place-ad.php:124
 msgid "The country is a required field."
 msgstr "Das Land-Feld ist ein Mussfeld."
 
-#: frontend/page-place-ad.php:123
+#: frontend/page-place-ad.php:125
 msgid "The county is a required field."
 msgstr "Das Land-Feld ist ein Mussfeld."
 
-#: frontend/page-place-ad.php:124
+#: frontend/page-place-ad.php:126
 msgid "The state is a required field."
 msgstr "Das Bundesland fehlt."
 
-#: frontend/page-place-ad.php:125
+#: frontend/page-place-ad.php:127
 msgid "The city is a required field."
 msgstr "Das Bundesland fehlt."
 
-#: frontend/page-place-ad.php:126
+#: frontend/page-place-ad.php:128
 msgid "Please type in a price for your Ad."
 msgstr "Bitte geben Sie einen Preis ein!"
 
-#: frontend/page-place-ad.php:127
+#: frontend/page-place-ad.php:129
 msgid "Please type in the details of your Ad."
 msgstr "Bitte geben Sie die Details zu Ihrer Anzeige ein!"
 
-#: frontend/page-place-ad.php:128 frontend/page-reply-to-ad.php:52
+#: frontend/page-place-ad.php:130 frontend/page-reply-to-ad.php:52
 msgid "Please type in the result of the operation."
 msgstr "Bitte tragen Sie das Ergebnis ein."
 
-#: frontend/page-place-ad.php:157 frontend/page-renew-ad.php:59
+#: frontend/page-place-ad.php:159 frontend/page-renew-ad.php:59
 msgid ""
 "You are trying to post an Ad using a transaction created for a different "
 "purpose. Please go back to the <a href=\"%s\">%s</a> page.<br>If you think "
 "this is an error please contact the administrator and provide the following "
 "transaction ID: %s"
-msgstr ""
+msgstr "Sie versuchen eine Anzeige zu veröffentlichen die mit einer anderen Transaktion erstellt wurde. Bitte gehen Sie zurück zu <a href=\"%s\">%s</a>. <br>Bitte kontaktieren Sie den Webseiten-Betreiber wenn dies ein Fehler ist. Teilen Sie ihm diese Transaktions-ID %s mit!"
 
-#: frontend/page-place-ad.php:166
+#: frontend/page-place-ad.php:168
 msgid ""
 "You can't post an Ad at this time because the payment associated with this "
 "transaction failed (see reasons below)."
 msgstr "Sie können in diesem Moment keine Anzeige aufgeben weil die Zahlung fehlgeschlagen ist (Gründe siehe unten)."
 
-#: frontend/page-place-ad.php:243
+#: frontend/page-place-ad.php:245
 msgid "Ad Category field is required"
 msgstr "Bitte Kategorie auswählen"
 
-#: frontend/page-place-ad.php:254
+#: frontend/page-place-ad.php:256
 msgid ""
 "You cannot list your Ad in top level categories. You need to select a sub-"
 "category of category %s."
 msgstr "Sie können keine Anzeige in den Top-Kategorieren veröffentlichen. Sie müssen eine Kategorie aus den Untergruppen %s auswählen!"
 
-#: frontend/page-place-ad.php:259
+#: frontend/page-place-ad.php:261
 msgid "You should select an owner for this Ad."
 msgstr "Sie müssen einen Besitzer für diese Anzeige auswählen."
 
-#: frontend/page-place-ad.php:263 frontend/page-renew-ad.php:153
+#: frontend/page-place-ad.php:265 frontend/page-renew-ad.php:153
 msgid "You should choose one of the available Payment Terms."
 msgstr "Bitte wählen Sie eine der möglichen Bezahlmöglichkeiten aus"
 
-#: frontend/page-place-ad.php:267
+#: frontend/page-place-ad.php:269
 msgid "The Payment Term you selected is not valid for the category %s"
 msgstr "Die Bezahlart ist nicht gültig für die Kategorie %s"
 
-#: frontend/page-place-ad.php:272
+#: frontend/page-place-ad.php:274
 msgid ""
 "The Payment Term you selected is not available for non-administrator users."
 msgstr "Die Bezahlart ist nicht gültig."
 
-#: frontend/page-place-ad.php:282
+#: frontend/page-place-ad.php:284
 msgid ""
 "Hi, You need to be a registered user to post Ads in this website. Please use"
 " the form below to login or click the link to register."
 msgstr "Hallo, Sie müssen registriert sein um eine Anzeige auf dieser Seite zu veröffentlichen. Bitte benutzen Sie das Formular unten um sich einzuloggen oder registrieren Sie sich!"
 
-#: frontend/page-place-ad.php:386 frontend/page-place-ad.php:724
+#: frontend/page-place-ad.php:388 frontend/page-place-ad.php:726
 #: frontend/page-renew-ad.php:229
 msgid ""
 "You are logged in as an administrator. Any payment steps will be skipped."
 msgstr "Sie sind als Administrator eingeloggt. Bezahlungen werden ausgeschaltet."
 
-#: frontend/page-place-ad.php:440 frontend/page-renew-ad.php:275
+#: frontend/page-place-ad.php:442 frontend/page-renew-ad.php:275
 #: includes/views/class-verify-payment-can-be-processed-step-decorator.php:17
 msgid ""
 "We can't process payments for this Payment Transaction at this time. Please "
 "contact the website administrator and provide the following transaction ID: "
 "%s"
-msgstr "Wir können die Bezahlung für diese Bezahl-Transaktion nicht bearbeiten. Bitte kontaktieren Sie den Webseitenbetreiber und teilen ihm folgende Transaktions-ID %s mit!"
+msgstr "Wir können die Bezahlung für diese Bezahl-Transaktion nicht bearbeiten. Bitte kontaktieren Sie den Webseiten-Betreiber und teilen ihm folgende Transaktions-ID %s mit!"
 
-#: frontend/page-place-ad.php:722
+#: frontend/page-place-ad.php:724
 msgid ""
 "Your Ad details have been filled out in the form below. Make any changes "
 "needed and then resubmit the Ad to update it."
 msgstr "Unten sehen Sie die Details Ihrer Anzeige. Machen Sie Ihre Änderungen und stellen Sie die geänderte Anzeige erneut ein"
 
-#: frontend/page-place-ad.php:726
+#: frontend/page-place-ad.php:728
 msgid "Fill out the form below to post your classified Ad."
 msgstr "Bitte tragen Sie Ihre Anzeigendaten in dieses Formular ein!"
 
-#: frontend/page-place-ad.php:730
+#: frontend/page-place-ad.php:732
 msgid ""
 "We found errors in the details you submitted. A detailed error message is "
 "shown in front or below each invalid field. Please fix the errors and submit"
 " the form again."
 msgstr "Wir haben Fehler in den den eingegebenen Details gefunden. Eine detailierte Fehlermeldung ist vor oder unter jedem Feld angezeigt. Bitte beheben Sie die Fehler und übermitteln dann Ihre Daten erneut!"
 
-#: frontend/page-place-ad.php:820
+#: frontend/page-place-ad.php:753
+msgid "Start & End Date"
+msgstr "Start und Ende der Anzeige"
+
+#: frontend/page-place-ad.php:858
 msgid ""
 "Hi, Payment is required for posting Ads in this website and we couldn't find"
 " a Payment Transaction assigned to you. You can't post Ads this time. If you"
 " think this is an error please contact the website Administrator."
-msgstr "Hallo, um Anzeigen zu veröffentlichen ist eine Zahlung notwendig. Wir konnten keine Bezahlung in Ihrem Benutzerkonto finden. Sie können zu diesem Zeitpunkt keine Anzeigen posten. Wenn Sie denken dass dies ein Fehler ist, dann wenden Sie sich bitte an den Webseitenbetreiber."
+msgstr "Hallo, um Anzeigen zu veröffentlichen ist eine Zahlung notwendig. Wir konnten keine Bezahlung in Ihrem Benutzerkonto finden. Sie können zu diesem Zeitpunkt keine Anzeigen posten. Wenn Sie denken dass dies ein Fehler ist, dann wenden Sie sich bitte an den Webseiten-Betreiber."
 
-#: frontend/page-place-ad.php:847
+#: frontend/page-place-ad.php:885
 msgid ""
 "You did not select a Payment Term. Please select a Payment Term for this Ad."
 msgstr "Sie haben keine Bezahlart für Ihre Anzeige ausgewählt. "
 
-#: frontend/page-place-ad.php:852
+#: frontend/page-place-ad.php:890
 msgid "Please enter a start date for the Ad."
 msgstr "Sie haben kein Startdatum für Ihre Anzeige ausgewählt. "
 
-#: frontend/page-place-ad.php:857
+#: frontend/page-place-ad.php:895
 msgid "Please enter an end date for the Ad."
 msgstr "Sie haben keine Zahlungsart für Ihre Anzeige ausgewählt."
 
-#: frontend/page-place-ad.php:861
+#: frontend/page-place-ad.php:899
 msgid "The start date must occur before the end date."
 msgstr "Das Startdatum muss vor dem Endatum sein!"
 
-#: frontend/page-place-ad.php:866
+#: frontend/page-place-ad.php:904
 msgid "You did not enter a title for your Ad"
 msgstr "Sie haben Ihrer Anzeige keinen Titel gegeben."
 
-#: frontend/page-place-ad.php:871
+#: frontend/page-place-ad.php:909
 msgid ""
 "You did not enter any text for your Ad. Please enter some text for your Ad."
 msgstr "Sie haben keinen Text für Ihre Anzeige eingegeben."
 
-#: frontend/page-place-ad.php:876
+#: frontend/page-place-ad.php:914
 msgid ""
 "You did not select a category for your Ad. Please select a category for your"
 " Ad."
 msgstr "Sie haben keine Kategorie für Ihre Anzeige ausgewählt. "
 
-#: frontend/page-place-ad.php:884
+#: frontend/page-place-ad.php:922
 msgid ""
 "You did not enter your website address. Your website address is required."
 msgstr "Sie haben keine Website-Adresse eingegeben. "
 
-#: frontend/page-place-ad.php:890
+#: frontend/page-place-ad.php:928
 msgid ""
 "Your website address is not properly formatted. Please make sure you have "
 "included the http:// part of your website address"
 msgstr "Die Website-Adresse ist nicht richtig formatiert. Bitte vergewissern Sie sich, dass http:// am Anfang der Adresse steht"
 
-#: frontend/page-place-ad.php:895
+#: frontend/page-place-ad.php:933
 msgid "You did not enter your name. Your name is required."
 msgstr "Sie haben Ihren Namen nicht eingegeben."
 
-#: frontend/page-place-ad.php:900
+#: frontend/page-place-ad.php:938
 msgid "You did not enter your email. Your email is required."
-msgstr "Sie haben Ihre Email-Adresse nicht eingegeben. "
+msgstr "Sie haben Ihre E-Mail-Adresse nicht eingegeben. "
 
-#: frontend/page-place-ad.php:905 frontend/page-reply-to-ad.php:118
+#: frontend/page-place-ad.php:943 frontend/page-reply-to-ad.php:118
 msgid ""
 "The email address you entered was not a valid email address. Please check "
 "for errors and try again."
-msgstr "Die Emailadresse ist ungültig. Bitte überprüfen Sie die Adresse und versuchen es noch einmal."
+msgstr "Die E-Mail-Adresse ist ungültig. Bitte überprüfen Sie die Adresse und versuchen es noch einmal."
 
-#: frontend/page-place-ad.php:907
+#: frontend/page-place-ad.php:945
 msgid ""
 "The email address you entered is not allowed in this website. Please use an "
 "email address from one of the following domains: %s."
-msgstr "Die Emailadresse ist ungültig. Bitte verwenden Sie eine Emailadresse von folgenden Domains:  %s."
+msgstr "Die E-Mail-Adresse ist ungültig. Bitte verwenden Sie eine E-Mail-Adresse von folgenden Domains:  %s."
 
-#: frontend/page-place-ad.php:918
+#: frontend/page-place-ad.php:956
 msgid "You did not enter your phone number. Your phone number is required."
 msgstr "Sie haben Ihre Telefonnummer nicht eingegeben."
 
-#: frontend/page-place-ad.php:936
+#: frontend/page-place-ad.php:974
 #: includes/helpers/widgets/multiple-region-selector.php:126
 msgid "You did not enter your country. Your country is required."
 msgstr "Sie haben Ihr Land nicht eingegeben. "
 
-#: frontend/page-place-ad.php:945
+#: frontend/page-place-ad.php:983
 #: includes/helpers/widgets/multiple-region-selector.php:127
 msgid "You did not enter your state. Your state is required."
 msgstr "Sie haben Ihr Bundesland nicht eingegeben."
 
-#: frontend/page-place-ad.php:954
+#: frontend/page-place-ad.php:992
 #: includes/helpers/widgets/multiple-region-selector.php:129
 msgid "You did not enter your city. Your city is required."
 msgstr "Sie haben Ihre Stadt nicht eingegeben."
 
-#: frontend/page-place-ad.php:963
+#: frontend/page-place-ad.php:1001
 #: includes/helpers/widgets/multiple-region-selector.php:128
 msgid ""
 "You did not enter your county/village. Your county/village is required."
 msgstr "Sie haben Ihren Adresszusatz nicht eingegeben. "
 
-#: frontend/page-place-ad.php:970
+#: frontend/page-place-ad.php:1008
 msgid "You did not enter the price of your item. The item price is required."
 msgstr "Sie haben keinen Preis eingegeben. "
 
-#: frontend/page-place-ad.php:976
+#: frontend/page-place-ad.php:1014
 msgid ""
 "You have entered an invalid item price. Make sure your price contains "
 "numbers only. Please do not include currency symbols."
 msgstr "Sie haben einen ungültigen Preis eingegeben. Der Preis darf nur aus Zahlen bestehen. Bitte kein Währungssymbol mit eingeben."
 
-#: frontend/page-place-ad.php:994
+#: frontend/page-place-ad.php:1032
 msgid "You did not accept the terms of service"
 msgstr "Sie haben die  allgemeinen Geschäftsbedingungen und unserer Datenschutzerklärung nicht anerkannt."
 
-#: frontend/page-place-ad.php:1010
+#: frontend/page-place-ad.php:1048
 msgid ""
 "Your Ad was flagged as spam. Please contact the administrator of this site."
 msgstr "Ihre Nachricht wurde als SPAM identifiziert. Bitte kontaktieren Sie den Administrator der Website."
 
-#: frontend/page-place-ad.php:1110
+#: frontend/page-place-ad.php:1153
 msgid "There was an error trying to save your listing details:"
 msgstr "Es gab einen Fehler beim Speichern Ihrer Anzeige:"
 
-#: frontend/page-place-ad.php:1174
+#: frontend/page-place-ad.php:1217
 msgid ""
 "We were unable to find a Payment Transaction assigned to this operation. No "
 "images can be added at this time."
 msgstr "Wir konnten keine Bezahl-Transaktion zu diesem Vorgang finden. Bilder können nicht hinzugefügt werden."
 
-#: frontend/page-place-ad.php:1237
+#: frontend/page-place-ad.php:1280
 msgctxt "upload listing images form"
 msgid "Preview Ad"
-msgstr "Kleinanzeige Vorschau"
+msgstr "Anzeigen-Vorschau"
 
-#: frontend/page-place-ad.php:1239
+#: frontend/page-place-ad.php:1282
 msgctxt "upload listing images form"
 msgid "Place Ad"
 msgstr "Anzeige aufgeben"
 
-#: frontend/page-place-ad.php:1241
+#: frontend/page-place-ad.php:1284
 msgctxt "upload listing images form"
 msgid "Checkout"
 msgstr "Buchung abschließen"
 
-#: frontend/page-place-ad.php:1260 frontend/page-place-ad.php:1311
+#: frontend/page-place-ad.php:1303 frontend/page-place-ad.php:1354
 msgid ""
 "We were unable to find a Payment Transaction assigned to this operation."
 msgstr "Wir können keine Bezahl-Transaktion für diesen Vorgang finden."
 
-#: frontend/page-place-ad.php:1267 frontend/page-place-ad.php:1318
+#: frontend/page-place-ad.php:1310 frontend/page-place-ad.php:1361
 #: frontend/page-renew-ad.php:337
 msgid "The Ad associated with this transaction doesn't exists."
 msgstr "Die Anzeige mit dieser Transaktion existiert nicht."
@@ -2593,7 +2609,7 @@ msgstr "Die Anzeige muss nicht erneuert werden."
 msgid ""
 "There was an error trying to renew your Ad. The URL is not valid. Please "
 "contact the Administrator of this site for further assistance."
-msgstr "Es gab ein Problem mit dem Erneuern Ihrer Kleinanzeige. Bitte probieren Sie es noch einmal oder kontaktieren Sie den Webseiten-Betreiber!"
+msgstr "Es gab ein Problem mit dem Erneuern Ihrer Anzeige. Bitte probieren Sie es noch einmal oder kontaktieren Sie den Webseiten-Betreiber!"
 
 #: frontend/page-renew-ad.php:66
 msgid ""
@@ -2605,7 +2621,7 @@ msgstr "Sie können Ihre Anzeige nicht erneuern da die Bezahlung die mit dieser 
 msgid ""
 "The Ad was posted under a Payment Term that no longer exists or is disabled."
 " The Ad can't be renewed."
-msgstr "Die Anzeige wurde mit einer Gebühr eingestellt die es nicht länger gibt. Die Anzeige kann nicht erneuert werden!"
+msgstr "Die Anzeige wurde mit einer Gebühr eingestellt die es nicht länger gibt oder deaktiviert wurde. Die Anzeige kann nicht erneuert werden!"
 
 #: frontend/page-renew-ad.php:126
 msgid "You can see your Ad here"
@@ -2627,7 +2643,7 @@ msgstr "Geben Sie Ihren Namen ein."
 
 #: frontend/page-reply-to-ad.php:50
 msgid "Please enter your email address."
-msgstr "Bitte geben Sie Ihre Emailadresse ein!"
+msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein!"
 
 #: frontend/page-reply-to-ad.php:51
 msgid "The message cannot be empty."
@@ -2645,7 +2661,7 @@ msgstr "Die ausgewählte Anzeige existiert nicht."
 
 #: frontend/page-reply-to-ad.php:116
 msgid "Please enter your email."
-msgstr "Bitte geben Sie Ihre Email-Adresse ein"
+msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein"
 
 #: frontend/page-reply-to-ad.php:122
 msgid "There was no text in your message. Please enter a message."
@@ -2677,38 +2693,32 @@ msgid ""
 "administrator."
 msgstr "Es gab ein Problem beim Versand Ihrer Nachricht. Bitte versuchen Sie es noch einmal. Wenn das Problem bestehen bleibt, wenden Sie sich bitte an den Betreiber der Website."
 
-#: frontend/page-search-ads.php:31 frontend/page-search-ads.php:68
-msgid ""
-"You did not enter a keyword or phrase to search for. You must at the very "
-"least provide a keyword or phrase to search for."
-msgstr "Sie haben keinen Suchbegriff eingegeben. Bitte geben Sie einen Begriff ein, nach dem gesucht werden soll."
-
-#: frontend/page-search-ads.php:72
+#: frontend/page-search-ads.php:69
 msgid ""
 "You have entered a keyword that is too short to search on. Search keywords "
 "must be at least 3 letters in length. Please try another term."
 msgstr "Sie haben ein für die Suche zu kurzes Schlüsselwort eingegeben. Suchwörter müssen mindestens 3 Zeichen lang sein. Bitte mit einem anderen Suchbegriff noch einmal versuchen."
 
-#: frontend/page-search-ads.php:76
+#: frontend/page-search-ads.php:73
 msgid ""
 "You have entered an invalid minimum price. Make sure your price contains "
 "numbers only. Please do not include currency symbols."
 msgstr "Sie haben einen ungültigen Mindestpreis eingegeben. Stellen Sie sicher, dass der Mindestpreis nur Zahlen enthält. Bitte keine Währungssymbole eingeben."
 
-#: frontend/page-search-ads.php:80
+#: frontend/page-search-ads.php:77
 msgid ""
 "You have entered an invalid maximum price. Make sure your price contains "
 "numbers only. Please do not include currency symbols."
 msgstr "Sie haben einen ungültigen Höchstpreis eingegeben. Stellen Sie sicher, dass der Höchstpreis nur Zahlen enthält. Bitte keine Währungssymbole eingeben."
 
-#: frontend/page-search-ads.php:98
+#: frontend/page-search-ads.php:95
 msgid ""
 "Use the form below to select the fields on which you want to search. Adding "
 "more fields makes for a more specific search. Using fewer fields will make "
 "for a broader search."
 msgstr "Bitte verwenden Sie das Formular um die Felder auszuwählen in denen Sie suchen möchten. Wenn Sie weitere Felder hinzufügen wird die Suche weiter eingeschränkt."
 
-#: frontend/page-search-ads.php:166
+#: frontend/page-search-ads.php:165
 msgid "Return to Search"
 msgstr "Zurück zur Suche"
 
@@ -2738,7 +2748,7 @@ msgstr "Diese Anzeige ist noch nicht freigeschaltet. Sobald der Administrator di
 
 #: frontend/page-show-ad.php:152
 msgid "Your email address was successfully verified."
-msgstr "Ihre E-Mail Adresse wurde erfolgreich bestätigt!"
+msgstr "Ihre E-Mail-Adresse wurde erfolgreich bestätigt!"
 
 #: frontend/page-show-ad.php:156
 msgid ""
@@ -2750,7 +2760,7 @@ msgstr "Diese Anzeige ist im Moment deaktiviert da sie noch vom Administrator ge
 msgid ""
 "This Ad is currently disabled until you verify the email address used for "
 "the contact information. Only you (the author) can see it."
-msgstr "Diese Anzeige ist im Moment deaktiviert da Ihre E-Mailadresse noch von Ihnen bestätigt werden muss. Nur Sie (der Besitzer) können diese Anzeige sehen. "
+msgstr "Diese Anzeige ist im Moment deaktiviert da Ihre E-Mail-Adresse noch von Ihnen bestätigt werden muss. Nur Sie (der Besitzer) können diese Anzeige sehen. "
 
 #: frontend/page-show-ad.php:162
 msgid ""
@@ -2758,33 +2768,33 @@ msgid ""
 "(the author) can see it."
 msgstr "Diese Anzeige ist im Moment deaktiviert da sie noch vom Administrator genehmigt werden muss. Nur Sie (der Besitzer) können die Anzeige sehen. "
 
-#: frontend/placeholders.php:389
+#: frontend/placeholders.php:394
 msgid "Seller"
 msgstr "Verkäufer"
 
-#: frontend/placeholders.php:412
+#: frontend/placeholders.php:417
 msgid "Visit Website"
-msgstr "Webseite des Anbieters"
+msgstr "Webseite"
 
-#: frontend/placeholders.php:609
+#: frontend/placeholders.php:614
 msgid "This Ad has been viewed %d time."
 msgid_plural "This Ad has been viewed %d times."
 msgstr[0] "Anzeigenaufrufe: %d."
 msgstr[1] "Anzeigenaufrufe: %d."
 
-#: frontend/placeholders.php:613
+#: frontend/placeholders.php:618
 msgid "Total views: %d"
 msgstr "Aufrufe: %d"
 
-#: frontend/placeholders.php:721
+#: frontend/placeholders.php:729
 msgid "Flag Ad"
 msgstr "Merken"
 
-#: frontend/placeholders.php:736
+#: frontend/placeholders.php:744
 msgid "Tweet This"
 msgstr "Tweet This"
 
-#: frontend/placeholders.php:767
+#: frontend/placeholders.php:775
 msgid "Share on Facebook"
 msgstr "Share on Facebook"
 
@@ -2800,7 +2810,7 @@ msgstr "Sie haben zur Zeit keine Anzeigen"
 msgid ""
 "Your listing has not been fully submitted yet. To complete the process you "
 "need to click the link below."
-msgstr "Ihr Eintrag ist noch nicht ganz vollständig. Klicken Sie auf untenstehenden Link um den Prozess abzuschließen."
+msgstr "Ihre Anzeige ist noch nicht ganz vollständig. Klicken Sie auf den Link unten um den Prozess abzuschließen."
 
 #: frontend/templates/checkout-form-google-checkout.tpl.php:14
 msgid "Pay With Google Checkout"
@@ -2826,7 +2836,7 @@ msgstr "Login"
 
 #: frontend/templates/email-abort-payment-admin.tpl.php:11
 msgid "User Email"
-msgstr "Email-Format"
+msgstr "E-Mail-Format"
 
 #: frontend/templates/email-abort-payment-admin.tpl.php:15
 msgid "Payment Term Type"
@@ -2858,14 +2868,14 @@ msgid ""
 "process you have to verify your email address. Please click the link below "
 "to complete the verification process. You will be redirected to the website "
 "where you can see your Ad."
-msgstr "Sie haben die Anzeige \"%s\" in %s veröffentlicht. Damit die Anzeigeschaltung komplett ist, müssen Sie Ihre Email verifizieren. Bitte klicken Sie auf den Link unten um die Kleinanzeige zu verifizieren. Sie werden dann auf die Webseite umgeleitet und Sie können Ihre fertige Anzeige betrachten!"
+msgstr "Sie haben die Anzeige \"%s\" in %s veröffentlicht. Damit die Anzeigeschaltung komplett ist, müssen Sie Ihre E-Mail verifizieren. Bitte klicken Sie auf den Link unten um die Anzeige zu verifizieren. Sie werden dann auf die Webseite umgeleitet und Sie können Ihre fertige Anzeige betrachten!"
 
 #: frontend/templates/email-ad-awaiting-verification.tpl.php:9
 msgid ""
 "After you verify your email address, the administrator will be notified "
 "about the new Ad. If moderation is enabled, your Ad will remain in a "
 "disabled status until the administrator approves it."
-msgstr "Nachdem Sie Ihre e-Mail-Adresse bestätigt haben wird der Administrator über Ihre Anzeige benachrichtigt. Eventuell wird die Nachricht erst nach Freischaltung durch den Administrator angezeigt."
+msgstr "Nachdem Sie Ihre E-Mail-Adresse bestätigt haben wird der Administrator über Ihre Anzeige benachrichtigt. Eventuell wird die Nachricht erst nach Freischaltung durch den Administrator angezeigt."
 
 #: frontend/templates/email-ad-enabled-user.tpl.php:4
 msgid ""
@@ -2884,31 +2894,31 @@ msgstr "Eine neue Anzeige wurde eingegeben. Die Kopie der Details, die an den Be
 #: frontend/templates/email-place-ad-success-user.tpl.php:3
 #: includes/form-fields/class-listing-title-form-field.php:18
 msgid "Listing Title"
-msgstr "Titel des Eintrags"
+msgstr "Titel der Anzeige"
 
 #: frontend/templates/email-ad-renewed-success-user.tpl.php:7
 #: frontend/templates/email-ad-updated-user.tpl.php:10
 #: frontend/templates/email-place-ad-success-user.tpl.php:4
 msgid "Listing URL"
-msgstr "URL des Eintrags"
+msgstr "URL der Anzeige"
 
 #: frontend/templates/email-ad-renewed-success-user.tpl.php:9
 #: frontend/templates/email-ad-updated-user.tpl.php:11
 #: frontend/templates/email-place-ad-success-user.tpl.php:5
 msgid "Listing ID"
-msgstr "ID des Eintrags"
+msgstr "ID der Anzeige"
 
 #: frontend/templates/email-ad-renewed-success-user.tpl.php:11
 #: frontend/templates/email-ad-updated-user.tpl.php:12
 #: frontend/templates/email-place-ad-success-user.tpl.php:6
 msgid "Listing Edit Email"
-msgstr "Bearbeitungs-Email des Eintrags"
+msgstr "Bearbeitungs-E-Mail der Anzeige"
 
 #: frontend/templates/email-ad-renewed-success-user.tpl.php:14
 #: frontend/templates/email-ad-updated-user.tpl.php:14
 #: frontend/templates/email-place-ad-success-user.tpl.php:8
 msgid "Listing Edit Key"
-msgstr "Zugangscode des Eintrags"
+msgstr "Zugangscode der Anzeige"
 
 #: frontend/templates/email-ad-renewed-success-user.tpl.php:17
 msgid "Listing End Date"
@@ -2916,7 +2926,7 @@ msgstr "Ende der Anzeige"
 
 #: frontend/templates/email-ad-renewed-success-user.tpl.php:22
 msgid "If you have questions about your listing, please contact %s."
-msgstr "Wenn Sie Fragen zu Ihrem Eintrag haben, wenden Sie sich bitte an %s."
+msgstr "Wenn Sie Fragen zu Ihrer Anzeige haben, wenden Sie sich bitte an %s."
 
 #: frontend/templates/email-ad-renewed-success-user.tpl.php:27
 msgid "Thank you for your business"
@@ -2935,7 +2945,7 @@ msgstr "Anzeigen-Infos"
 msgid ""
 "If you have questions about your listing contact %s. Thank you for your "
 "business."
-msgstr "Wenn Sie Fragen zu Ihrem Eintrag haben, wenden Sie sich bitte an %s."
+msgstr "Wenn Sie Fragen zu Ihrer Anzeige haben, wenden Sie sich bitte an %s."
 
 #: frontend/templates/email-place-ad-success-admin.tpl.php:1
 msgid ""
@@ -2963,7 +2973,7 @@ msgstr "Gesamtbetrag (credits)"
 
 #: frontend/templates/email-place-ad-success-user.tpl.php:25
 msgid "The next link will take you to a page where you can edit the listing:"
-msgstr "Der nächste Link wird Sie zur Seite weiterleiten wo Sie die Anzeige editieren können:"
+msgstr "Hier können Sie Ihre Anzeige editieren:"
 
 #: frontend/templates/email-reply-to-ad-admin.tpl.php:3
 msgid "Someone responded to one of the Ads in your website."
@@ -2971,29 +2981,34 @@ msgstr "Jemand hat auf eine der Anzeigen Ihrer Webseite geantwortet."
 
 #: frontend/templates/email-reply-to-ad-admin.tpl.php:6
 #: frontend/templates/email-reply-to-ad-user.tpl.php:6
+msgid "Contact name: %s"
+msgstr "Kontakt Name:%s"
+
+#: frontend/templates/email-reply-to-ad-admin.tpl.php:7
+#: frontend/templates/email-reply-to-ad-user.tpl.php:7
+msgid "Contact email: %s"
+msgstr "Kontakt E-Mail: %s"
+
+#: frontend/templates/email-reply-to-ad-admin.tpl.php:10
+#: frontend/templates/email-reply-to-ad-user.tpl.php:10
 msgid "Contacting about"
 msgstr "Es geht um"
 
-#: frontend/templates/email-reply-to-ad-admin.tpl.php:9
-#: frontend/templates/email-reply-to-ad-user.tpl.php:9
+#: frontend/templates/email-reply-to-ad-admin.tpl.php:13
+#: frontend/templates/email-reply-to-ad-user.tpl.php:13
 msgctxt "reply email"
 msgid "Message"
 msgstr "Nachricht"
-
-#: frontend/templates/email-reply-to-ad-admin.tpl.php:13
-#: frontend/templates/email-reply-to-ad-user.tpl.php:13
-msgid "Reply to"
-msgstr "Antwort an"
 
 #: frontend/templates/email-send-ad-access-key.tpl.php:3
 msgid ""
 "Below you will find the access key for your Ad \"%s\" associated to the "
 "email address %s."
-msgstr "Unten finden Sie den Zugangscode für Ihre Anzeige \"%s\". Diese Anzeige ist registriert auf die Emailadresse (Login): %s."
+msgstr "Unten finden Sie den Zugangscode für Ihre Anzeige \"%s\". Diese Anzeige ist registriert auf die E-Mail-Adresse (Login): %s."
 
 #: frontend/templates/email-send-all-ad-access-keys.tpl.php:4
 msgid "Total ads found sharing your email address"
-msgstr "Anzahl Anzeigen mit dieser Email-Adresse"
+msgstr "Anzahl Anzeigen mit dieser E-Mail-Adresse"
 
 #: frontend/templates/html-widget-multiple-region-selector.tpl.php:14
 #: templates/admin/profile/contact-information-region-selector.tpl.php:15
@@ -3003,11 +3018,11 @@ msgstr "...laden..."
 
 #: frontend/templates/login-form.tpl.php:2
 msgid "Please check your email for the password and then return to log in."
-msgstr "Bitte prüfen Sie Ihre Emailadresse für die Bearbeitung und loggen sich danach erneut ein!"
+msgstr "Bitte prüfen Sie Ihre E-Mail-Adresse für die Bearbeitung und loggen sich danach erneut ein!"
 
 #: frontend/templates/login-form.tpl.php:4
 msgid "Please check your email to reset your password."
-msgstr "Bitte prüfen Sie Ihre Emails um Ihr Passwort zurückzusetzen!"
+msgstr "Bitte prüfen Sie Ihre E-Mails um Ihr Passwort zurückzusetzen!"
 
 #: frontend/templates/login-form.tpl.php:16
 msgid "Register"
@@ -3025,7 +3040,7 @@ msgstr "Haben Sie Ihr Passwort vergessen?"
 
 #: frontend/templates/main-menu.tpl.php:3
 msgid "Classifieds Menu"
-msgstr "Menüeinträge"
+msgstr "Anzeigen"
 
 #: frontend/templates/page-buy-credits-checkout-step.tpl.php:1
 msgctxt "add credit checkout step"
@@ -3050,20 +3065,20 @@ msgstr "weiter"
 
 #: frontend/templates/page-edit-ad-email-key-step.tpl.php:19
 msgid "Ad email and access key"
-msgstr "Geben Sie Ihren Zugangscode und Ihre e-Mail-Adresse für die Anzeige ein!"
+msgstr "Bitte geben Sie Ihren Zugangscode und Ihre E-Mail-Adresse für die Anzeige ein!"
 
 #: frontend/templates/page-edit-ad-email-key-step.tpl.php:22
 #: frontend/templates/page-edit-ad-send-access-key-step.tpl.php:22
 msgid "Enter your email address"
-msgstr "Geben Sie Ihre Email-Adresse ein"
+msgstr "Geben Sie Ihre E-Mail-Adresse ein"
 
 #: frontend/templates/page-edit-ad-email-key-step.tpl.php:28
 msgid "Enter your Ad access key"
-msgstr "Geben Sie Ihren Zugangscode für die Anzeige ein"
+msgstr "Bitte geben Sie Ihren Zugangscode ein"
 
 #: frontend/templates/page-edit-ad-email-key-step.tpl.php:31
 msgid "Click here to have your Ad access keys sent to you."
-msgstr "Hier klicken um eine Zugangscode zu erhalten."
+msgstr "Zugangscode vergessen? Hier wird Ihnen der Zugangscode erneut zugesendet."
 
 #: frontend/templates/page-edit-ad-email-key-step.tpl.php:34
 msgctxt "enter email and access key form"
@@ -3072,7 +3087,7 @@ msgstr "weiter"
 
 #: frontend/templates/page-edit-ad-send-access-key-step.tpl.php:19
 msgid "Resend Ad access key"
-msgstr "Zugangscode für die Anzeige erneut senden"
+msgstr "Zugangscode erneut senden"
 
 #: frontend/templates/page-edit-ad-send-access-key-step.tpl.php:27
 msgctxt "send ad access key form"
@@ -3097,45 +3112,41 @@ msgstr "Besitzer der Anzeige"
 msgid "Select an User owner for this Ad"
 msgstr "Wählen Sie einen Benutzer für diese Anzeige!"
 
-#: frontend/templates/page-place-ad-details-step.tpl.php:50
-msgid "Start & End Date"
-msgstr "Start und Ende der Anzeige"
-
-#: frontend/templates/page-place-ad-details-step.tpl.php:53
+#: frontend/templates/page-place-ad-details-step.tpl.php:54
 msgctxt "ad details form"
 msgid "Start Date"
 msgstr "Startdatum"
 
-#: frontend/templates/page-place-ad-details-step.tpl.php:61
+#: frontend/templates/page-place-ad-details-step.tpl.php:64
 msgctxt "ad details form"
 msgid "End Date"
 msgstr "Enddatum"
 
-#: frontend/templates/page-place-ad-details-step.tpl.php:70
+#: frontend/templates/page-place-ad-details-step.tpl.php:72
 msgid "Add Details and Contact Information"
 msgstr "Details und Kontaktinformationen der Anzeige hinzufügen"
 
-#: frontend/templates/page-place-ad-details-step.tpl.php:94
+#: frontend/templates/page-place-ad-details-step.tpl.php:96
 msgctxt "ad details form"
 msgid "Read our Terms of Service"
 msgstr "Bitte lesen Sie unsere Allgemeine Geschäftsbedingungen und Datenschutzerklärung!"
 
-#: frontend/templates/page-place-ad-details-step.tpl.php:96
+#: frontend/templates/page-place-ad-details-step.tpl.php:98
 msgctxt "ad details form"
 msgid "Terms of service:"
 msgstr "Allgemeine Geschäftsbedingungen und Datenschutzerklärung:"
 
-#: frontend/templates/page-place-ad-details-step.tpl.php:101
+#: frontend/templates/page-place-ad-details-step.tpl.php:103
 msgctxt "ad details form"
 msgid "I agree to the terms of service"
 msgstr "Ich akzeptiere die Allgemeinen Geschäftsbedingungen und Datenschutzerklärung."
 
-#: frontend/templates/page-place-ad-details-step.tpl.php:116
+#: frontend/templates/page-place-ad-details-step.tpl.php:118
 msgctxt "listing details form"
 msgid "Preview Ad"
-msgstr "Kleinanzeige Vorschau"
+msgstr "Anzeigen-Vorschau"
 
-#: frontend/templates/page-place-ad-details-step.tpl.php:118
+#: frontend/templates/page-place-ad-details-step.tpl.php:120
 msgctxt "listing details form"
 msgid "Continue"
 msgstr "weiter"
@@ -3182,7 +3193,7 @@ msgstr "weiter"
 msgid ""
 "This is a preview of your Ad. Use the buttons below to go back and edit your"
 " Ad, manage the uploaded images or finish the posting process."
-msgstr "Diese ist eine Vorschau auf Ihre Kleinanzeige. Nutzen Sie bitte die Schaltflächen um zurück zu den Einstellungen zu gelangen. "
+msgstr "Diese ist eine Vorschau auf Ihre Anzeige. Nutzen Sie bitte die Schaltflächen um zurück zu den Einstellungen zu gelangen. "
 
 #: frontend/templates/page-place-ad-preview-step.tpl.php:13
 msgid "Edit Details"
@@ -3229,7 +3240,7 @@ msgstr "Ihr Name"
 
 #: frontend/templates/page-reply-to-ad.tpl.php:24
 msgid "Your email address"
-msgstr "Geben Sie Ihre Email-Adresse ein"
+msgstr "Geben Sie Ihre E-Mail-Adresse ein"
 
 #: frontend/templates/page-reply-to-ad.tpl.php:30
 msgid "Your message"
@@ -3321,7 +3332,7 @@ msgstr "Postleitzahl"
 
 #: frontend/templates/payments-billing-form.tpl.php:113
 msgid "Email"
-msgstr "Email"
+msgstr "E-Mail"
 
 #: frontend/templates/payments-checkout-page.tpl.php:9
 msgctxt "checkout step"
@@ -3531,7 +3542,7 @@ msgstr "Im Moment sind keine Anzeigen vorhanden."
 
 #: frontend/widget-latest-ads.php:101
 msgid "Read more"
-msgstr "weiter lesen"
+msgstr "weiterlesen"
 
 #: frontend/widget-random-ad.php:9
 msgid "AWPCP Random Ads"
@@ -3704,15 +3715,15 @@ msgstr "Zusätzlich können Sie die Bilder in der Bildverwaltung freigeben. Hier
 
 #: functions.php:2741
 msgid "Email sent %s."
-msgstr "Diese Email wurde gesendet am: %s"
+msgstr "Diese E-Mail wurde gesendet am: %s"
 
 #: functions.php:2919
 msgid "SSL Support: Yes."
-msgstr ""
+msgstr "SSL Support: Ja."
 
 #: functions.php:2921
 msgid "SSL Support: No."
-msgstr ""
+msgstr "SSL Support: Nein."
 
 #: includes/class-edit-listing-link-placeholder.php:32
 msgctxt "text for edit listing link"
@@ -3724,13 +3735,13 @@ msgctxt "title attribute for edit listing link"
 msgid "Edit <listing-title>"
 msgstr "Bearbeite <listing-title>"
 
-#: includes/class-exceptions.php:23
+#: includes/class-exceptions.php:15
 msgid ""
 "The error was: <previous-message>. Contact <support-link>customer "
 "support</a> for further assistance."
 msgstr "Der Fehler war: <previous-message>. Kontakieren Sie den <support-link>Support</a> für weitere Hilfe."
 
-#: includes/class-exceptions.php:48
+#: includes/class-exceptions.php:40
 msgid ""
 "Your license for <module-name> is valid, but is already active on another "
 "site. Contact <support-link>customer support</a> for further assistance."
@@ -3745,7 +3756,7 @@ msgid ""
 "You need to verify the email address used as the contact email address for "
 "this Ad. The Ad will remain in a disabled status until you verify you "
 "address. A verification email has been sent to you."
-msgstr "Sie müssen die E-Mail Adresse die Sie als Kontaktadresse verwendet haben bestätigen. Die Anzeige bleibt solange deaktiviert bis Sie Ihre E-Mail Adresse bestätigt haben. Eine Bestätigungs-E-Mail mit einem Link wurde Ihnen zugesendet."
+msgstr "Sie müssen die E-Mail-Adresse die Sie als Kontaktadresse verwendet haben bestätigen. Die Anzeige bleibt solange deaktiviert bis Sie Ihre E-Mail-Adresse bestätigt haben. Eine Bestätigungs-E-Mail mit einem Link wurde Ihnen zugesendet."
 
 #: includes/class-listings-api.php:190
 msgid ""
@@ -3755,7 +3766,7 @@ msgstr "Wenn Sie Bilder hochgeladen haben, werden sie erst angezeigt, wenn sie d
 
 #: includes/class-listings-collection.php:43
 msgid "No Listing was found with id: %d."
-msgstr "Es wurde keine Kleinanzeige mit der ID: %d gefunden."
+msgstr "Es wurde keine Anzeige mit der ID: %d gefunden."
 
 #: includes/class-roles-and-capabilities.php:70
 msgid "Classifieds Moderator"
@@ -3808,7 +3819,7 @@ msgstr "Komplett/Fertig"
 
 #: includes/cron/class-tasks-collection.php:26
 msgid "There was an error trying to save the task to the database."
-msgstr "Fehler beim Speichern der Aufgabe in die Datenbank"
+msgstr "Fehler beim Speichern  in die Datenbank"
 
 #: includes/cron/class-tasks-collection.php:39
 msgid "There was an error trying to find tasks in the database."
@@ -3821,14 +3832,14 @@ msgstr "Es gibt keinen Task mit der ID %d."
 #: includes/form-fields/class-listing-contact-email-form-field.php:20
 msgctxt "ad details form"
 msgid "Contact Person's Email"
-msgstr "E-Mailadresse Ansprechpartner"
+msgstr "E-Mail-Adresse Ansprechpartner"
 
 #: includes/form-fields/class-listing-contact-email-form-field.php:24
 msgctxt "ad details form"
 msgid ""
 "(Please enter a valid email. The codes needed to edit your Ad will be sent "
 "to your email address)"
-msgstr "Bitte geben Sie eine gültige e-Mail-Adresse an. Nur damit können Sie Ihre Anzeige bearbeiten und werden über Anfragen informiert. Die e-Mail-Adresse ist nicht in der Anzeige sichtbar."
+msgstr "Bitte geben Sie eine gültige E-Mail-Adresse an. Nur damit können Sie Ihre Anzeige bearbeiten und werden über Anfragen informiert. Die e-Mail-Adresse ist nicht in der Anzeige sichtbar."
 
 #: includes/form-fields/class-listing-contact-name-form-field.php:20
 msgctxt "ad details form"
@@ -3843,7 +3854,7 @@ msgstr "Telefonnummer des Ansprechpartners - Achtung: Diese Nummer ist dann im I
 #: includes/form-fields/class-listing-details-form-field.php:20
 msgctxt "ad details form"
 msgid "Ad Details"
-msgstr "Beschreibung des Gegenstandes"
+msgstr "Anzeigendetails"
 
 #: includes/form-fields/class-listing-details-form-field.php:31
 #: includes/form-fields/class-listing-title-form-field.php:25
@@ -3881,12 +3892,11 @@ msgid "There were no ads found"
 msgstr "Es wurden keine Anzeigen gefunden"
 
 #: includes/functions/deprecated.php:143
-#: templates/frontend/category-selector.tpl.php:12
 msgid "Change Category"
 msgstr "Starten"
 
 #: includes/functions/deprecated.php:151
-#: templates/frontend/category-selector.tpl.php:17
+#: templates/frontend/category-selector.tpl.php:15
 msgid "Category: "
 msgstr "Kategorie:"
 
@@ -4033,7 +4043,7 @@ msgstr "Vorschaubild von [ %s ] konnte nicht erstellt werden."
 
 #: includes/functions/format.php:61
 msgid "Classifieds Management System"
-msgstr "AWPCP Kleinanzeigensystem"
+msgstr "AWPCP Anzeigensystem"
 
 #: includes/functions/legacy.php:188
 msgid "Top Level Category"
@@ -4041,7 +4051,7 @@ msgstr "Hauptkategorie"
 
 #: includes/functions/notifications.php:33
 msgid "New classified listing created"
-msgstr "Eine neue Kleinanzeige wurde erstellt"
+msgstr "Eine neue Anzeige wurde erstellt"
 
 #: includes/functions/notifications.php:71
 msgid "Listing \"%s\" was updated"
@@ -4059,7 +4069,7 @@ msgstr "Die Anzeige \"%s\" wartet auf Freischaltung"
 msgid "Listing <listing-title> was flagged"
 msgstr "Die Anzeige <listing-title> wurde markiert"
 
-#: includes/functions/payments.php:155
+#: includes/functions/payments.php:276
 msgid "Customer attempt to pay has failed"
 msgstr "Der Versuch eines Benutzers, für eine Anzeige zu bezahlen schlug fehl."
 
@@ -4116,13 +4126,77 @@ msgid ""
 "There was an error trying to check the license status for <module-name>."
 msgstr "Es gab einen Fehler bei der Überprüfung des Lizenzstatus für <module-name>."
 
-#: includes/helpers/class-easy-digital-downloads.php:101
+#: includes/helpers/class-easy-digital-downloads.php:49
+msgid "Missing License Status parameter"
+msgstr "Fehlende Lizenzparameter"
+
+#: includes/helpers/class-easy-digital-downloads.php:53
+msgid "License Status parameter was set to <strong>Failed</strong>"
+msgstr "Lizenzparamteter <strong>ungültigt</strong> gesetzt"
+
+#: includes/helpers/class-easy-digital-downloads.php:57
+msgid "item_name_mismatch"
+msgstr "item_name_mismatch"
+
+#: includes/helpers/class-easy-digital-downloads.php:81
+msgid "Unknown. The response didn't include a meaningful error message."
+msgstr "Unbekannt. Die Rückmeldung enthält keinen gültigen Fehlercode."
+
+#: includes/helpers/class-easy-digital-downloads.php:96
 msgid "There was an error trying to activate your <module-name> license."
 msgstr "Es gab einen Fehler die Lizenz für das Modul <module-name> zu aktivieren."
 
-#: includes/helpers/class-easy-digital-downloads.php:123
+#: includes/helpers/class-easy-digital-downloads.php:118
 msgid "There was an error trying to deactivate your <module-name> license."
 msgstr "Es gab einen Fehler die Lizenz für das Modul <module-name> zu deaktivieren."
+
+#: includes/helpers/class-http.php:29
+msgid "The server returned a 403 Forbidden error."
+msgstr "The server returned a 403 Forbidden error."
+
+#: includes/helpers/class-http.php:31 includes/helpers/class-http.php:66
+msgid ""
+"It look's like your server is not authorized to make requests to <host>. "
+"Please contact support and ask them to add your IP address <ip-address> to "
+"the whitelist."
+msgstr "It look's like your server is not authorized to make requests to <host>. Please contact support and ask them to add your IP address <ip-address> to the whitelist."
+
+#: includes/helpers/class-http.php:33 includes/helpers/class-http.php:68
+msgid "Include this error message with your report."
+msgstr "Include this error message with your report."
+
+#: includes/helpers/class-http.php:62
+msgid ""
+"It was not possible to establish a connection with <host>. The connection "
+"failed with the following error:"
+msgstr "It was not possible to establish a connection with <host>. The connection failed with the following error:"
+
+#: includes/helpers/class-http.php:75
+msgid ""
+"It was not possible to establish a connection with <host>. A problem "
+"occurred in the SSL/TSL handshake:"
+msgstr "It was not possible to establish a connection with <host>. A problem occurred in the SSL/TSL handshake:"
+
+#: includes/helpers/class-http.php:80
+msgid ""
+"To ensure the security of our systems and adhere to industry best practices,"
+" we require that your server uses a recent version of cURL and a version of "
+"OpenSSL that supports TLSv1.2 (minimum version with support is OpenSSL "
+"1.0.1c)."
+msgstr "To ensure the security of our systems and adhere to industry best practices, we require that your server uses a recent version of cURL and a version of OpenSSL that supports TLSv1.2 (minimum version with support is OpenSSL 1.0.1c)."
+
+#: includes/helpers/class-http.php:82
+msgid ""
+"Upgrading your system will not only allow you to communicate with our "
+"servers but also help you prepare your website to interact with services "
+"using the latest security standards."
+msgstr "Upgrading your system will not only allow you to communicate with our servers but also help you prepare your website to interact with services using the latest security standards."
+
+#: includes/helpers/class-http.php:84
+msgid ""
+"Please contact your hosting provider and ask them to upgrade your system. "
+"Include this message if necesary."
+msgstr "Please contact your hosting provider and ask them to upgrade your system. Include this message if necesary."
 
 #: includes/helpers/class-modules-manager.php:160
 msgid ""
@@ -4237,7 +4311,7 @@ msgstr "Der User Access Token ist gültig, hat aber nicht die notwendige Freigab
 msgid "No Facebook page is selected (missing page id or token)."
 msgstr "Keine Facebook-Seite angewählt (fehlende Seiten-ID oder Token)"
 
-#: includes/helpers/page.php:50
+#: includes/helpers/page.php:51
 msgid "Template not found."
 msgstr "Template nicht gefunden."
 
@@ -4303,17 +4377,17 @@ msgstr "Anzeige veröffentlichen"
 
 #: includes/helpers/widgets/class-listing-form-steps-component.php:51
 #: includes/helpers/widgets/class-listing-form-steps-component.php:66
-#: includes/settings-api.php:202
+#: includes/settings-api.php:211
 msgid "Payment"
 msgstr "Zahlungseinstellungen"
 
 #: includes/helpers/widgets/class-listing-form-steps-component.php:54
 msgid "Enter Listing Details"
-msgstr "Kleinanzeigedetails bearbeiten"
+msgstr "Anzeigendetails bearbeiten"
 
 #: includes/helpers/widgets/class-listing-form-steps-component.php:61
 msgid "Preview Listing"
-msgstr "Kleinanzeigen-Vorschau"
+msgstr "Anzeigen-Vorschau"
 
 #: includes/helpers/widgets/class-user-field.php:37
 msgid "Select an User"
@@ -4349,7 +4423,7 @@ msgstr "Region abwählen"
 
 #: includes/listings/class-delete-listing-action.php:6
 msgid "Delete Listing"
-msgstr "Eintrag löschen"
+msgstr "Anzeige löschen"
 
 #: includes/listings/class-delete-listing-action.php:14
 msgid "You can use this button to delete your listing."
@@ -4499,11 +4573,11 @@ msgstr "Sie können <videos-left> Videos mit jeweils einer maximalen Größe von
 
 #: includes/media/class-media-uploaded-notification.php:117
 msgid "New media was uploaded to listing: <listing-title>"
-msgstr ""
+msgstr "Neue Dateien wurden zur Anzeige <listing-title> hochgeladen."
 
 #: includes/media/class-media-uploaded-notification.php:119
 msgid "New media is awaiting approval in listing: <listing-title>"
-msgstr ""
+msgstr "Neue Dateien warten auf eine Bestätigung <listing-title>"
 
 #: includes/media/class-upload-generated-thumbnail-ajax-handler.php:44
 msgid "Trying to upload a thumbnail for an unknown file."
@@ -4734,7 +4808,7 @@ msgstr "Postleitzahl fehlt!"
 
 #: includes/payment-gateway.php:94
 msgid "The Email is required."
-msgstr "Emailadresse fehlt!"
+msgstr "E-Mail-Adresse fehlt!"
 
 #: includes/payment-term-fee-type.php:8
 msgctxt "payment term type"
@@ -4743,7 +4817,7 @@ msgstr "Gebühren"
 
 #: includes/payment-term-fee-type.php:35
 msgid "Free Listing"
-msgstr "Kostenloser Eintrag"
+msgstr "Kostenlose Anzeige"
 
 #: includes/payment-term-fee.php:108
 msgid "The Fee doesn't exist."
@@ -4959,7 +5033,7 @@ msgid ""
 "Your Payment has been processed successfully. However, the payment gateway "
 "didn't return a payment status that allows us to continue with the process. "
 "Please contact the website administrator to solve this issue."
-msgstr "Ihre Bezahlung war erfolgreich. Es gab jedoch einen Fehler mit der Rückmeldung Ihrer Bezahlung. Bitte kontaktieren Sie den Webseitenbetreiber!"
+msgstr "Ihre Bezahlung war erfolgreich. Es gab jedoch einen Fehler mit der Rückmeldung Ihrer Bezahlung. Bitte kontaktieren Sie den Webseiten-Betreiber!"
 
 #: includes/payments-api.php:654 includes/payments-api.php:687
 msgid "Payment Canceled"
@@ -4988,7 +5062,7 @@ msgstr "Zahlungsfehler"
 msgid ""
 "There was an error processing your payment. The payment status couldn't be "
 "found. Please contact the website admin to solve this issue."
-msgstr "Es gab ein Problem mit Ihrer Bezahlung. Der Bezahlstatus konnte nicht gefunden werden. Bitte kontaktieren Sie den Webseitenbetreiber."
+msgstr "Es gab ein Problem mit der Bezahlung. Der Bezahl-Status konnte nicht gefunden werden. Bitte kontaktieren Sie den Webseiten-Betreiber."
 
 #: includes/payments-api.php:689
 msgid "Payment Not Verified"
@@ -5020,19 +5094,19 @@ msgstr "Credit Systen aktivieren"
 
 #: includes/settings/class-credit-system-settings.php:24
 msgid ""
-"The Credit System allow users to purchase credit that can later be used to "
+"The Credit System allows users to purchase credit that can later be used to "
 "pay for placing Ads."
-msgstr "Das Credit System erlaubt es Benutzer Credits zu erwerben welche später für die Bezahlung der Anzeigen verwendet werden können."
+msgstr "Das Kredit-System erlaubt es Benutzer Kredits zu kaufen die später verwendet werden um Anzeigen zu erstellen."
 
-#: includes/settings/class-credit-system-settings.php:25
+#: includes/settings/class-credit-system-settings.php:29
 msgid "Accepted payment type"
 msgstr "Akzeptierte Zahlungsweise"
 
-#: includes/settings/class-credit-system-settings.php:25
+#: includes/settings/class-credit-system-settings.php:32
 msgid "Select the type of payment that can be used to purchase Ads."
-msgstr "Wählen Sie die Zahlungsweisen für Kleinanzeigen aus."
+msgstr "Wählen Sie die Zahlungsweisen für Anzeigen aus."
 
-#: includes/settings/class-credit-system-settings.php:35
+#: includes/settings/class-credit-system-settings.php:44
 msgid ""
 "You cannot configure Credits as the only accepted payment type unless you "
 "enable the Credit System as well. The setting was set to accept both "
@@ -5064,187 +5138,187 @@ msgstr "Wenn angewählt öffnet sich automatisch ein PopUp-Fenster wenn ein Benu
 msgid "Uploads Directory"
 msgstr "Upload-Verzeichnis"
 
-#: includes/settings/class-files-settings.php:42
+#: includes/settings/class-files-settings.php:40
 msgid "Uploads folder name"
 msgstr "Upload Ordnername"
 
-#: includes/settings/class-files-settings.php:42
+#: includes/settings/class-files-settings.php:40
 msgid ""
 "Upload folder name. (Folder must exist and be located in your wp-content "
 "directory)"
 msgstr "Upload Ordner-Name (Ordner muss existieren und innerhalb des wp-content Ordners sein)"
 
-#: includes/settings/class-files-settings.php:43
+#: includes/settings/class-files-settings.php:47
 msgid "File permissions for uploads directory"
 msgstr "Zugriffrechte für das Upload Verzeichnis"
 
-#: includes/settings/class-files-settings.php:43
+#: includes/settings/class-files-settings.php:50
 msgid ""
 "File permissions applied to the uploads directory and sub-directories so "
 "that the plugin is allowed to write to those directories."
 msgstr "Dateifreigabe zum Schreiben in den Upload Ordner und Unterordner. Das AWPCP Plugin benötigt die Freigabe um in diese Ordner zu schreiben."
 
-#: includes/settings/class-files-settings.php:47
+#: includes/settings/class-files-settings.php:56
 #: templates/components/media-manager.tpl.php:7
 msgid "Images"
 msgstr "Bilder"
 
-#: includes/settings/class-files-settings.php:63
+#: includes/settings/class-files-settings.php:72
 msgid "Allowed image extensions"
 msgstr "Erlaubte Datei-Endungen"
 
-#: includes/settings/class-files-settings.php:69
+#: includes/settings/class-files-settings.php:78
 msgid "Hide images until admin approves them"
 msgstr "Bilder erst anzeigen wenn von Administrator genehmigt."
 
-#: includes/settings/class-files-settings.php:70
+#: includes/settings/class-files-settings.php:79
 msgid "Disable AWPCP Lightbox feature"
 msgstr "AWPCP Lightbox deaktivieren"
 
-#: includes/settings/class-files-settings.php:70
+#: includes/settings/class-files-settings.php:79
 msgid ""
 "Turn off the lightbox/thickbox element used by AWPCP. Some themes cannot "
 "handle it and a conflict results."
 msgstr "AWPCP Lightbox/Thickbox ausschalten. Bei einigen Themes funktioniert das AWPCP Lightbox/Thickbox nicht oder führt zu Problemen."
 
-#: includes/settings/class-files-settings.php:71
+#: includes/settings/class-files-settings.php:80
 msgid "Show click to enlarge link?"
 msgstr "Auf Bild klicken um zu vergrößern."
 
-#: includes/settings/class-files-settings.php:72
+#: includes/settings/class-files-settings.php:81
 msgid "Number of images allowed if payments are disabled (Free Mode)"
 msgstr "Anzahl Bilder für kostenlose Anzeigen"
 
-#: includes/settings/class-files-settings.php:72
+#: includes/settings/class-files-settings.php:81
 msgid ""
 "If images are allowed and payments are disabled, users will be allowed "
 "upload this amount of images."
 msgstr "Wenn Bilder erlaubt sind und Zahlungsweisen deaktivert sind, sind Benutzer in der Lage diese Anzahl von Bildern hochzuladen."
 
-#: includes/settings/class-files-settings.php:76
+#: includes/settings/class-files-settings.php:85
 msgid "Number of columns of thumbnails to show in Show Ad page."
 msgstr "Anzahl der Spalten mit Vorschaubildern die in der Anzeigenseite angezeigt werden."
 
-#: includes/settings/class-files-settings.php:76
+#: includes/settings/class-files-settings.php:85
 msgid "Zero means there will be as many thumbnails as possible per row."
 msgstr "0 bedeutet, dass so viele Vorschaubilder pro Reihe wie möglich angezeigt werden."
 
-#: includes/settings/class-files-settings.php:78
+#: includes/settings/class-files-settings.php:87
 msgid "Hide No Image placeholder"
 msgstr "Verstecke den Kein Bild Platzhalter"
 
-#: includes/settings/class-files-settings.php:79
+#: includes/settings/class-files-settings.php:88
 msgid "Override the No Image placeholder image with my own"
 msgstr "Verwende mein eigenes Bild statt des Standard Platzhalterbildes"
 
-#: includes/settings/class-files-settings.php:80
+#: includes/settings/class-files-settings.php:89
 msgid "No Image Placeholder URL"
-msgstr "Keine Platzhalterbild URL"
+msgstr "Platzhalterbild URL"
 
-#: includes/settings/class-files-settings.php:80
+#: includes/settings/class-files-settings.php:89
 msgid ""
 "Put the URL of an existing image on your site to use.  The size of this "
 "image should match the thumbnail size settings on this tab"
 msgstr "Setzen Sie die URL eines Bildes auf Ihrer Seite in dieses Feld. Die Größe des Bildes sollte gleich wie die Einstellungen für das Vorschaubild sein. "
 
-#: includes/settings/class-files-settings.php:88
+#: includes/settings/class-files-settings.php:97
 msgid "Image File Size"
 msgstr "Dateigröße"
 
-#: includes/settings/class-files-settings.php:90
+#: includes/settings/class-files-settings.php:99
 msgid "Maximum file size per image"
 msgstr "Bild-Dateigröße Max"
 
-#: includes/settings/class-files-settings.php:90
+#: includes/settings/class-files-settings.php:99
 msgid ""
 "Maximum file size, in bytes, for files user can upload to system. 1 MB = "
 "1000000 bytes. You can google \"x MB to bytes\" to get an accurate "
 "conversion."
 msgstr "Maximale Dateigröße in Bytes für den Dateiupload. 1 MB = 1000000 bytes. "
 
-#: includes/settings/class-files-settings.php:91
+#: includes/settings/class-files-settings.php:100
 msgid "Minimum file size per image"
 msgstr "Bild-Dateigröße Min"
 
-#: includes/settings/class-files-settings.php:91
+#: includes/settings/class-files-settings.php:100
 msgid ""
 "Minimum file size, in bytes, for files user can upload to system. 1 MB = "
 "1000000 bytes. You can google \"x MB to bytes\" to get an accurate "
 "conversion."
 msgstr "Minimale Dateigröße in Bytes für den Dateiupload. 1 MB = 1000000 bytes. "
 
-#: includes/settings/class-files-settings.php:92
+#: includes/settings/class-files-settings.php:101
 msgid "Minimum image width"
 msgstr "Bild-Breite Min "
 
-#: includes/settings/class-files-settings.php:92
+#: includes/settings/class-files-settings.php:101
 msgid "Minimum width for images."
 msgstr "Bildbreite Min"
 
-#: includes/settings/class-files-settings.php:93
+#: includes/settings/class-files-settings.php:102
 msgid "Minimum image height"
 msgstr "Bild-Höhe Min"
 
-#: includes/settings/class-files-settings.php:93
+#: includes/settings/class-files-settings.php:102
 msgid "Minimum height for images."
 msgstr "Bildhöhe Min"
 
-#: includes/settings/class-files-settings.php:94
+#: includes/settings/class-files-settings.php:103
 msgid "Maximum image width"
 msgstr "Maximale Bildbreite"
 
-#: includes/settings/class-files-settings.php:94
+#: includes/settings/class-files-settings.php:103
 msgid ""
 "Maximum width for images. Images wider than settings are automatically "
 "resized upon upload."
 msgstr "Maximale Breite für Bilder. Bilder die größer sind werden automatisch beim Hochladen verkleinert."
 
-#: includes/settings/class-files-settings.php:95
+#: includes/settings/class-files-settings.php:104
 msgid "Maximum image height"
 msgstr "Maximale Bildhöhe"
 
-#: includes/settings/class-files-settings.php:95
+#: includes/settings/class-files-settings.php:104
 msgid ""
 "Maximum height for images. Images taller than settings are automatically "
 "resized upon upload."
 msgstr "Maximale Höhe für Bilder. Bilder die größer sind werden automatisch verkleinert."
 
-#: includes/settings/class-files-settings.php:99
+#: includes/settings/class-files-settings.php:108
 #: templates/components/media-manager.tpl.php:39
 msgid "Primary Image"
-msgstr "Vorschaubild"
+msgstr "Erstes Vorschaubild"
 
-#: includes/settings/class-files-settings.php:101
+#: includes/settings/class-files-settings.php:110
 msgid "Thumbnail width (Ad Listings page)"
 msgstr "Vorschaubild Breite  (Listendarstellung)"
 
-#: includes/settings/class-files-settings.php:101
+#: includes/settings/class-files-settings.php:110
 msgid ""
 "Width of the thumbnail for the primary image shown in Ad Listings view."
 msgstr "Breite der Vorschaubilder für die Anzeige in der Einzelansicht."
 
-#: includes/settings/class-files-settings.php:102
+#: includes/settings/class-files-settings.php:111
 msgid "Thumbnail width (Primary Image)"
 msgstr "Vorschaubild Breite  (Erstes Bild)"
 
-#: includes/settings/class-files-settings.php:102
+#: includes/settings/class-files-settings.php:111
 msgid "Width of the thumbnail for the primary image shown in Single Ad view."
 msgstr "Breite der Vorschaubilder für die Anzeige in der Einzelansicht."
 
-#: includes/settings/class-files-settings.php:103
+#: includes/settings/class-files-settings.php:112
 msgid "Thumbnail height (Primary Image)"
 msgstr "Vorschaubild Höhe (Erstes Bild)"
 
-#: includes/settings/class-files-settings.php:103
+#: includes/settings/class-files-settings.php:112
 msgid "Height of the thumbnail for the primary image shown in Single Ad view."
 msgstr "Höhe der Vorschaubilder für die Anzeige in der Einzelansicht."
 
-#: includes/settings/class-files-settings.php:104
+#: includes/settings/class-files-settings.php:113
 msgid "Crop primary image thumbnails?"
 msgstr "Vorschaubild beschneiden (crop)?"
 
-#: includes/settings/class-files-settings.php:104
-#: includes/settings/class-files-settings.php:112
+#: includes/settings/class-files-settings.php:113
+#: includes/settings/class-files-settings.php:121
 msgctxt "settings"
 msgid ""
 "If you decide to crop thumbnails, images will match exactly the dimensions "
@@ -5254,41 +5328,41 @@ msgid ""
 "uploaded images, thumbnails may have different heights."
 msgstr "Wenn Sie sich entscheiden Vorschaubilder abzuschneiden so werden die Bilder exakt die Größe haben die Sie oben festgelegt haben. Allerdings wird ein Teil des Bildes abgeschnitten. Wenn Sie die Bilder verkleinern so werden die Vorschaubilder proportional zu Ihrer Größe verkleinert. Allerdings kann es sein, dass die Bilder dann eine unterschiedliche Höhe haben."
 
-#: includes/settings/class-files-settings.php:108
+#: includes/settings/class-files-settings.php:117
 msgid "Thumbnails"
-msgstr "Vorschaubilder"
+msgstr "Weitere Vorschaubilder"
 
-#: includes/settings/class-files-settings.php:110
+#: includes/settings/class-files-settings.php:119
 msgid "Thumbnail width"
 msgstr "Breite der Vorschaubilder"
 
-#: includes/settings/class-files-settings.php:110
+#: includes/settings/class-files-settings.php:119
 msgid "Width of the thumbnail images."
 msgstr "Breite der Vorschaubilder"
 
-#: includes/settings/class-files-settings.php:111
+#: includes/settings/class-files-settings.php:120
 msgid "Thumbnail height"
 msgstr "Höhe der Vorschaubilder"
 
-#: includes/settings/class-files-settings.php:111
+#: includes/settings/class-files-settings.php:120
 msgid "Height of the thumbnail images."
 msgstr "Höhe der Vorschaubilder"
 
-#: includes/settings/class-files-settings.php:112
+#: includes/settings/class-files-settings.php:121
 msgid "Crop thumbnail images?"
 msgstr "Vorschaubilder abschneiden (crop)?"
 
-#: includes/settings/class-files-settings.php:116
+#: includes/settings/class-files-settings.php:125
 msgid ""
 "The primary image is the one displayed as the thumbnail in the list view and"
 " the largest one shown when the detail view of the listing is clicked."
 msgstr "Das Vorschaubild ist das Bild welches für die Anzeige verwendet wird. "
 
-#: includes/settings/class-files-settings.php:120
+#: includes/settings/class-files-settings.php:129
 msgid ""
 "These are the remaining images that are not primary ones, if you have more "
 "than one image allowed per listing."
-msgstr "Dies sind die verbleibenden Bilder, die keine Vorschaubilder sind, wenn Sie mehr als ein Bild pro Kleinanzeige zulassen."
+msgstr "Dies sind die verbleibenden Bilder, die keine Vorschaubilder sind, wenn Sie mehr als ein Bild pro Anzeige zulassen."
 
 #: includes/settings/class-form-fields-settings.php:10
 #: templates/admin/form-fields-admin-page.tpl.php:5
@@ -5301,7 +5375,7 @@ msgstr "Formularschritte"
 
 #: includes/settings/class-form-fields-settings.php:17
 msgid "Show Form Steps"
-msgstr "Zeigen Formularschritte"
+msgstr "Formular-Schritte anzeigen"
 
 #: includes/settings/class-form-fields-settings.php:20
 msgid ""
@@ -5332,11 +5406,11 @@ msgid ""
 " number of users. If your website has a lot of registered users, however, "
 "the dropdown may take too long to render and using the autocomplete version "
 "may be a better idea."
-msgstr "Das Benutzerfeld kann mit einem HTML-Dropdown-Menü oder einem Autocomplete verwendet werden. Das Dropdown-Menü ist schneller bei einer kleinen Anzahl von Benutzer. Wenn Ihre Anzeige einen große Anzahl an registrierten Benutzer hat, dann ist das Dropdown-Menü langsamer und die Autocomplete-Version ist besser."
+msgstr "Das Benutzerfeld kann mit einem HTML-Dropdown-Menü oder einer Automatischen Eingabe verwendet werden. Das Dropdown-Menü ist schneller bei einer kleinen Anzahl von Benutzern. Wenn Ihre Webseite eine große Anzahl an registrierten Benutzern hat, dann ist das Dropdown-Menü langsamer und die Automatische-Eingabe-Version besser."
 
 #: includes/settings/class-form-fields-settings.php:29
 msgid "Show User Field on Search"
-msgstr "Benutzerfeld bei Anzeige anzeigen"
+msgstr "Benutzerfeld in der Suche anzeigen"
 
 #: includes/settings/class-form-fields-settings.php:29
 msgid "Show as \"Posted By\" in search form?"
@@ -5374,7 +5448,7 @@ msgstr "Kontakt-Felder"
 
 #: includes/settings/class-form-fields-settings.php:64
 msgid "Allow logged in users to overwrite Contact Name and Contact Email"
-msgstr "Erlaube eingeloggten Benutzern den Kontaktnamen und die Kontaktemail zu verändern."
+msgstr "Erlaube eingeloggten Benutzern den Kontaktnamen und die Kontakt-E-Mail zu verändern."
 
 #: includes/settings/class-form-fields-settings.php:67
 msgid ""
@@ -5383,7 +5457,7 @@ msgid ""
 "only and pre-filled with the information from each user's profile. If this "
 "setting is enabled, logged in users will be allowed to overwrite those "
 "fields."
-msgstr "Normal registrierte Benutzer sind nicht Administratoren und daher nicht erlaubt die e-Mail-Adresse oder den Kontaktnamen zu ändern. Die Felder werder als schreibgeschützt verwendet. Wenn diese Einstellung aktiviert ist sind angemeldete Benutzer in der Lage die Felder zu überschreiben."
+msgstr "Normal registrierte Benutzer sind nicht Administratoren und haben daher nicht die Erlaubnis die E-Mail-Adresse oder den Kontaktnamen zu ändern. Die Felder können dann nicht geändert werden. Wenn diese Einstellung aktiviert ist sind angemeldete Benutzer in der Lage die Felder zu ändern."
 
 #: includes/settings/class-form-fields-settings.php:72
 msgid "Phone Field"
@@ -5587,7 +5661,7 @@ msgid "Enable User Ad Management Panel"
 msgstr "AWPCP Anzeigen-Verwaltung für Benutzer aktivieren"
 
 #: includes/settings/class-general-settings.php:28
-#: includes/settings-api.php:408
+#: includes/settings-api.php:417
 msgid "General Settings"
 msgstr "Globale Einstellungen"
 
@@ -5771,7 +5845,7 @@ msgid ""
 "If empty, the plugin will attempt to show one of the standard symbols for "
 "the selected currency code, but if the plugin doesn't know the symbol for "
 "your currency, it will use an uppercase version of the currency code."
-msgstr "Einstellungen um das Währungssysmbol in den Kleinanzeigenseiten zu überschreiben. Wenn es leer ist, wird das Plugin versuchen das Standardsymbol für die Währung zu verwenden. Wenn das Plugin Ihre Währung nicht kennt, wird es die GROSSBUCHSTABEN-Version der Währung verwenden."
+msgstr "Einstellungen um das Währungssysmbol in den Anzeigenseiten zu überschreiben. Wenn es leer ist, wird das Plugin versuchen das Standardsymbol für die Währung zu verwenden. Wenn das Plugin Ihre Währung nicht kennt, wird es die GROSSBUCHSTABEN-Version der Währung verwenden."
 
 #: includes/settings/class-general-settings.php:94
 msgid "Thousands separator"
@@ -5854,35 +5928,27 @@ msgstr "Allgemeine Geschäftsbedingungen und Datenschutzerklärung um Anzeigen z
 msgid "Anti-SPAM"
 msgstr "Anti-SPAM"
 
-#: includes/settings/class-general-settings.php:135
-msgid "reCAPTCHA (recommended)"
-msgstr "reCAPTCHA (empfohlen)"
-
-#: includes/settings/class-general-settings.php:136
-msgid "Math"
-msgstr "Mathematik"
-
-#: includes/settings/class-general-settings.php:150
+#: includes/settings/class-general-settings.php:145
 msgid "Use Akismet in Place Ad form"
 msgstr "Verwende Akisment im Anzeige erstellen Formular"
 
-#: includes/settings/class-general-settings.php:153
+#: includes/settings/class-general-settings.php:148
 msgid "Use Akismet for Posting Ads (strong anti-spam)."
 msgstr "Verwende Akismet für die Erstellung von Anzeigen (Anti-SPAM)"
 
-#: includes/settings/class-general-settings.php:159
+#: includes/settings/class-general-settings.php:154
 msgid "Use Akismet in Reply to Ad form"
 msgstr "Verwende Akisment wenn auf Anzeigen geantwortet wird"
 
-#: includes/settings/class-general-settings.php:162
+#: includes/settings/class-general-settings.php:157
 msgid "Use Akismet for Contact Responses (strong anti-spam)."
 msgstr "Verwende Akismet bei Kontaktanfragen (Anti-SPAM)"
 
-#: includes/settings/class-general-settings.php:170
+#: includes/settings/class-general-settings.php:165
 msgid "Enable CAPTCHA in Place Ad form"
 msgstr "Verwende CAPTCHA bei Anzeigenveröffentlichungen"
 
-#: includes/settings/class-general-settings.php:173
+#: includes/settings/class-general-settings.php:168
 msgid ""
 "A CAPTCHA is a program to ensure only humans are posting Ads to your "
 "website. Using a CAPTCHA will reduce the SPAM and prevent bots from posting "
@@ -5890,58 +5956,66 @@ msgid ""
 "Place Ad form."
 msgstr "Ein CAPTCHA ist ein Programm dass sicherstellt dass nur Menschen auf Ihr Anzeigensystem antworten. Wenn CAPTCHA verwendet wird, werden SPAM und automatische Eintragungen von Robots vermieden. Wenn angewählt wird ein zusätzliches Eingabefeld in den Anzeigen erscheinen."
 
-#: includes/settings/class-general-settings.php:179
+#: includes/settings/class-general-settings.php:174
 msgid "Enable CAPTCHA in Reply to Ad form"
 msgstr "Verwende CAPTCHA wenn auf Anzeigen geantwortet wird"
 
-#: includes/settings/class-general-settings.php:182
+#: includes/settings/class-general-settings.php:177
 msgid ""
 "If checked, an additional form field will be added to the Reply to Ad form."
 msgstr "Wenn angewählt wird ein zusätzliches Formularfeld zu den Auf-Anzeige-Antworten Formularen hinzugefügt "
 
-#: includes/settings/class-general-settings.php:185
+#: includes/settings/class-general-settings.php:181
+msgid "reCAPTCHA (recommended)"
+msgstr "reCAPTCHA (empfohlen)"
+
+#: includes/settings/class-general-settings.php:182
+msgid "Math"
+msgstr "Mathematik"
+
+#: includes/settings/class-general-settings.php:188
 msgid "Type of CAPTCHA"
 msgstr "CAPTCHA Typ"
 
-#: includes/settings/class-general-settings.php:185
+#: includes/settings/class-general-settings.php:191
 msgid ""
 "reCAPTCHA: Uses distorted images that only humans should be able to read "
 "(recommended)."
 msgstr "reCAPTCHA: Verzerrte Bilder verwenden die nur von Menschen gelesen werden können (empfohlen)."
 
-#: includes/settings/class-general-settings.php:185
+#: includes/settings/class-general-settings.php:191
 msgid "Math: Asks user to solve a simple arithmetic operation."
 msgstr "Mathematik: Der Benutzer muss eine einfache Rechenaufgabe lösen."
 
-#: includes/settings/class-general-settings.php:187
+#: includes/settings/class-general-settings.php:195
 msgid "Max number used in Math CAPTCHA"
 msgstr "Maximale Nummer die im Mathematik-CAPTCHA verwendet wird."
 
-#: includes/settings/class-general-settings.php:187
+#: includes/settings/class-general-settings.php:195
 msgid "Highest number used in aithmetic operation."
 msgstr "Höchtes Nummer die in der Rechenaufgabe verwendet wird."
 
-#: includes/settings/class-general-settings.php:190
+#: includes/settings/class-general-settings.php:198
 msgid "You can get an API key from %s."
 msgstr "Sie können den API-Schlüssel hier erhalten: %s."
 
-#: includes/settings/class-general-settings.php:192
+#: includes/settings/class-general-settings.php:200
 msgid "reCAPTCHA Site Key"
 msgstr "reCAPTCHA Site Key"
 
-#: includes/settings/class-general-settings.php:193
+#: includes/settings/class-general-settings.php:201
 msgid "reCAPTCHA Secret Key"
 msgstr "reCAPTCHA Secret Key"
 
-#: includes/settings/class-general-settings.php:197
+#: includes/settings/class-general-settings.php:205
 msgid "SEO Settings"
 msgstr "SEO Einstellungen"
 
-#: includes/settings/class-general-settings.php:199
+#: includes/settings/class-general-settings.php:207
 msgid "Turn on Search Engine Friendly URLs"
 msgstr "Suchmaschinenoptimierte URLs verwenden"
 
-#: includes/settings/class-general-settings.php:199
+#: includes/settings/class-general-settings.php:207
 msgid "Turn on Search Engine Friendly URLs? (SEO Mode)"
 msgstr "Suchmaschinenoptimierte URLs verwenden (SEO Mode)"
 
@@ -5953,7 +6027,7 @@ msgstr "Den Titel in die URL einfügen."
 msgid ""
 "Include the title in the URL that points to the page of an individual "
 "listing."
-msgstr "Den Titel in die URL der Kleinanzeige einfügen."
+msgstr "Den Titel in die URL der Anzeige einfügen."
 
 #: includes/settings/class-listing-url-settings.php:24
 msgid "Include the name of the category in the listing URL"
@@ -5963,7 +6037,7 @@ msgstr "Kategoriename in URL"
 msgid ""
 "Include the name of the category in the URL that points to the page of an "
 "individual listing."
-msgstr "Den Kategorienamen in die URL der Kleinanzeige einbinden."
+msgstr "Den Kategorie-Namen in die URL der Anzeige einbinden."
 
 #: includes/settings/class-listing-url-settings.php:33
 msgid "Include the name of the country in the listing URL"
@@ -5973,7 +6047,7 @@ msgstr "Das Land in die URL einfügen."
 msgid ""
 "Include the name of the country in the URL that points to the page of an "
 "individual listing."
-msgstr "Den Ländernamen in die URL der Kleinanzeige einfügen."
+msgstr "Den Länder-Namen in die URL der Anzeige einfügen."
 
 #: includes/settings/class-listing-url-settings.php:42
 msgid "Include the name of the state in the listing URL"
@@ -5983,7 +6057,7 @@ msgstr "Das Bundesland in die URL einfügen."
 msgid ""
 "Include the name of the state in the URL that points to the page of an "
 "individual listing."
-msgstr "Den Bundesländernamen in die URL der Kleinanzeige einfügen."
+msgstr "Den Bundesländer-Namen in die URL der Anzeige einfügen."
 
 #: includes/settings/class-listing-url-settings.php:51
 msgid "Include the name of the city in the listing URL"
@@ -5993,7 +6067,7 @@ msgstr "Den Stadtnamen in die URL einfügen."
 msgid ""
 "Include the name of the city in the URL that points to the page of an "
 "individual listing."
-msgstr "Den Stadtnamen in die URL der Kleinanzeige einfügen."
+msgstr "Den Städte-Namen in die URL der Anzeige einfügen."
 
 #: includes/settings/class-listing-url-settings.php:60
 msgid "Include the name of the county in the listing URL"
@@ -6003,14 +6077,14 @@ msgstr "Das Land in die URL einfügen."
 msgid ""
 "Include the name of the county in the URL that points to the page of an "
 "individual listing."
-msgstr "Den Ländernamen in die URL der Kleinanzeige einfügen."
+msgstr "Den Länder-Namen in die URL der Anzeige einfügen."
 
 #: includes/settings/class-listing-url-settings.php:68
 msgctxt "listing url settings section"
 msgid ""
 "These settings affect the URL path shown for the listing. You can include or"
 " remove certain elements for SEO purposes"
-msgstr "Diese Einstellung hat Einfluß auf die URL der Kleinanzeige. Sie können hier Elemente für SEO-Zwecke hinzufügen oder ausschließen."
+msgstr "Diese Einstellung hat Einfluß auf die URL der Anzeige. Sie können hier Elemente für SEO-Zwecke hinzufügen oder ausschließen."
 
 #: includes/settings/class-listing-url-settings.php:71
 msgctxt "listing url settings section"
@@ -6056,18 +6130,18 @@ msgstr "Anzeige aktivieren in denen die Zahlung offen ist."
 #: includes/settings/class-listings-moderation-settings.php:31
 msgid ""
 "Have non-registered users verify the email address used to post new Ads"
-msgstr "Nicht registrierte Benutzer müssen Ihre E-Mail Adresse bestätigen um Kleinanzeigen zu veröffentlichen (Double Opt-In)"
+msgstr "Nicht registrierte Benutzer müssen Ihre E-Mail-Adresse bestätigen um Anzeigen zu veröffentlichen (Double Opt-In)"
 
 #: includes/settings/class-listings-moderation-settings.php:31
 msgid ""
 "A message with an email verification link will be sent to the email address "
 "used in the contact information. New Ads will remain disabled until the user"
 " clicks the verification link."
-msgstr "Double-Opt-In: Eine Bestätigungsemail wird an die Kontaktadresse geschickt. Neue Anzeigen bleiben solange deaktiviert bis die Emailadresse durch den Benutzer bestätigt wurde."
+msgstr "Double-Opt-In: Eine Bestätigungs-E-Mail wird an die Kontaktadresse geschickt. Neue Anzeigen bleiben solange deaktiviert bis die E-Mail-Adresse durch den Benutzer bestätigt wurde."
 
 #: includes/settings/class-listings-moderation-settings.php:32
 msgid "Number of days before the verification email is sent again"
-msgstr "Tage bis Bestätigungsemail erneut gesendet wird."
+msgstr "Tage bis Bestätigungs-E-Mail erneut gesendet wird."
 
 #: includes/settings/class-listings-moderation-settings.php:33
 msgid ""
@@ -6101,7 +6175,7 @@ msgid ""
 "Only email addresses with a domain in the list above will be allowed. "
 "*.foo.com will match a.foo.com, b.foo.com, etc. but foo.com will match "
 "foo.com only. Please type a domain per line."
-msgstr "Nur Emailadresse mit einer Domain aus der obigen Liste sind erlaubt. *.foo.com kann als Platzhalter für a.foo.com, b.foo.com, usw. benutz werden.  Foo.com ist nur foo.com. Bitte eine Domain pro Zeile!"
+msgstr "Nur E-Mail-Adresse mit einer Domain aus der obigen Liste sind erlaubt. *.foo.com kann als Platzhalter für a.foo.com, b.foo.com, usw. benutz werden.  Foo.com ist nur foo.com. Bitte eine Domain pro Zeile!"
 
 #: includes/settings/class-listings-moderation-settings.php:42
 msgid "Duration of listings in free mode (in days)"
@@ -6136,68 +6210,72 @@ msgid "Number of days before expired listings are deleted"
 msgstr "Anzahl der Tage bis ausgelaufene Anzeigen gelöscht werden."
 
 #: includes/settings/class-listings-moderation-settings.php:79
+msgid "Allow users to edit the start date of their listings?"
+msgstr "Benutzern das Ändern des Startdatums ihrer Anzeigen erlauben?"
+
+#: includes/settings/class-listings-moderation-settings.php:88
 msgid ""
 "Email verification was disabled because you enabled Require Registration. "
 "Registered users don't need to verify the email address used for contact "
 "information."
-msgstr "Die E-Mail Bestätigung wurde deaktiviert weil die Registrierung eingeschaltet wurde. Registrierte Benutzer müssen die E-Mail Adresse immer bestätigen."
+msgstr "Die E-Mail Bestätigung wurde deaktiviert weil die Registrierung eingeschaltet wurde. Registrierte Benutzer müssen die E-Mail-Adresse immer bestätigen."
 
-#: includes/settings/class-listings-moderation-settings.php:90
+#: includes/settings/class-listings-moderation-settings.php:99
 msgid ""
 "Email verification was not enabled because Require Registration is on. "
 "Registered users don't need to verify the email address used for contact "
 "information."
-msgstr "Die E-Mail Bestätigung wurde nicht aktiviert weil die Registrierung eingeschaltet ist. Registrierte Benutzer müssen die E-Mail Adresse immer bestätigen."
+msgstr "Die E-Mail Bestätigung wurde nicht aktiviert weil die Registrierung eingeschaltet ist. Registrierte Benutzer müssen die E-Mail-Adresse immer bestätigen."
 
 #: includes/settings/class-payment-general-settings.php:6
 msgid "Payment Settings"
 msgstr " Zahlungseinstellungen"
 
-#: includes/settings/class-payment-general-settings.php:16
-msgid "Ascending"
-msgstr "Aufsteigend"
-
-#: includes/settings/class-payment-general-settings.php:17
-msgid "Descending"
-msgstr "Absteigend"
-
-#: includes/settings/class-payment-general-settings.php:21
+#: includes/settings/class-payment-general-settings.php:9
 msgid ""
 "When this is turned on, people will use <manage-fees-link>fee plans</a> to "
 "pay for your classifieds. Leave it off if you never want to charge for any "
 "ads."
-msgstr "Wenn eingeschaltet können Benutzer mit <manage-fees-link> Anzeigengebühren </a> ihre Anzeigen bezahlen. Nicht auswählen wenn Sie keine Gebühr für Kleinanzeigen verlangen möchten."
+msgstr "Wenn eingeschaltet können Benutzer mit <manage-fees-link> Anzeigengebühren </a> ihre Anzeigen bezahlen. Nicht auswählen wenn Sie keine Gebühr für Anzeigen verlangen möchten."
+
+#: includes/settings/class-payment-general-settings.php:12
+msgid "Charge Listing Fee?"
+msgstr "Anzeigengebühr erheben?"
 
 #: includes/settings/class-payment-general-settings.php:24
-msgid "Charge Listing Fee?"
-msgstr "Eintragungsgebühr erheben?"
-
-#: includes/settings/class-payment-general-settings.php:25
 msgid "Fee Plan sort order"
 msgstr "Bezahloptionen Sortierung"
 
-#: includes/settings/class-payment-general-settings.php:25
+#: includes/settings/class-payment-general-settings.php:27
 msgid "The order used to sort Fees in the payment screens."
 msgstr "Reihenfolge um Bezahloptionen zu Sortieren."
 
-#: includes/settings/class-payment-general-settings.php:26
+#: includes/settings/class-payment-general-settings.php:32
+msgid "Ascending"
+msgstr "Aufsteigend"
+
+#: includes/settings/class-payment-general-settings.php:33
+msgid "Descending"
+msgstr "Absteigend"
+
+#: includes/settings/class-payment-general-settings.php:39
 msgid "Fee Plan sort direction"
 msgstr "Bezahloptionen Sortierung (hoch/runter)"
 
-#: includes/settings/class-payment-general-settings.php:26
+#: includes/settings/class-payment-general-settings.php:42
 msgid "The direction used to sort Fees in the payment screens."
 msgstr "Richtungs-Vorwahl wir Bezahloptionen sortiert angezeigt werden sollen."
 
-#: includes/settings/class-payment-general-settings.php:31
+#: includes/settings/class-payment-general-settings.php:49
 msgid "Hide all fee plans if no category is selected"
 msgstr "Alle Gebührenpläne verstecken wenn keine Kategorie ausgewählt ist."
 
-#: includes/settings/class-payment-general-settings.php:37
+#: includes/settings/class-payment-general-settings.php:55
 msgctxt "settings"
 msgid "Pay before entering Ad details"
-msgstr "Zahlen bevor Anzeigen details eingegeben werden können"
+msgstr "Der Benutzer muss die Anzeige bezahlen bevor Anzeigen-Details eingegeben werden können"
 
-#: includes/settings/class-payment-general-settings.php:37
+#: includes/settings/class-payment-general-settings.php:55
 msgctxt "settings"
 msgid ""
 "Check to ask for payment before entering Ad details. Uncheck if you want "
@@ -6205,27 +6283,27 @@ msgid ""
 "uploaded."
 msgstr "Zahlungsinformationen vor Eingabe der Anzeigendetails abfragen. Wählen Sie diese Option ab wenn Sie möchten dass die Benutzer erst bezahlen wenn die Bilder hochgeladen wurden (am Ende der Eingabe)."
 
-#: includes/settings/class-payment-general-settings.php:38
+#: includes/settings/class-payment-general-settings.php:56
 msgid "Put payment gateways in test mode?"
 msgstr "Bezahl-Gateways in Demo-Mode schalten?"
 
-#: includes/settings/class-payment-general-settings.php:38
+#: includes/settings/class-payment-general-settings.php:56
 msgid ""
 "Leave this OFF to accept real payments, turn it on to perform payment tests."
 msgstr "Bezahlungen im TESTmodus."
 
-#: includes/settings/class-payment-general-settings.php:39
+#: includes/settings/class-payment-general-settings.php:57
 msgid "Force secure URLs on payment pages"
 msgstr "Sichere https URLS für Bezahlseiten aktivieren"
 
-#: includes/settings/class-payment-general-settings.php:39
+#: includes/settings/class-payment-general-settings.php:57
 msgid ""
 "If checked all classifieds pages that involve payments will be accessed "
 "through a secure (HTTPS) URL. Do not enable this feature if your server does"
 " not support HTTPS."
 msgstr "Payment-Zahlungen über HTTPS-Verbindung aktivieren. Ihr Server muss HTTPS bereitstellen, damit dieses Feature funktioniert!"
 
-#: includes/settings/class-payment-general-settings.php:46
+#: includes/settings/class-payment-general-settings.php:64
 msgid ""
 "Force Secure URLs was not enabled because your website couldn't be accessed "
 "using a secure connection."
@@ -6291,7 +6369,7 @@ msgstr "Anzeige erstellt"
 #: includes/settings/class-user-notifications-settings.php:24
 #: includes/settings/class-user-notifications-settings.php:82
 msgid "An email will be sent when a listing is created."
-msgstr "Eine Email wird gesendet wenn eine Anzeige erstellt wurde"
+msgstr "Eine E-Mail wird gesendet wenn eine Anzeige erstellt wurde"
 
 #: includes/settings/class-user-notifications-settings.php:27
 msgid "Listing Enabled"
@@ -6309,7 +6387,7 @@ msgstr "Anzeigen welche erneuert werden müssen"
 msgid ""
 "An email will be sent to remind the user to Renew the Ad when the Ad is "
 "about to expire."
-msgstr "Erinnerungsemail an Benutzer wenn Anzeige ausläuft."
+msgstr "Erinnerungs-E-Mail an Benutzer wenn Anzeige ausläuft."
 
 #: includes/settings/class-user-notifications-settings.php:33
 msgid "When should AWPCP send the expiration notice?"
@@ -6317,7 +6395,7 @@ msgstr "Wann soll AWPCP eine Ablaufnachricht schicken?"
 
 #: includes/settings/class-user-notifications-settings.php:36
 msgid "Enter the number of days before the ad expires to send the email."
-msgstr "Tage vor dem Senden der Erneuerungsemail."
+msgstr "Tage vor dem Senden der Erneuerungs-E-Mail."
 
 #: includes/settings/class-user-notifications-settings.php:39
 #: includes/settings/class-user-notifications-settings.php:85
@@ -6327,7 +6405,7 @@ msgstr "Anzeige ist abgelaufen"
 #: includes/settings/class-user-notifications-settings.php:39
 #: includes/settings/class-user-notifications-settings.php:85
 msgid "An email will be sent when the Ad expires."
-msgstr "Eine Email wird gesendet wenn die Anzeige deaktiviert/abgelaufen ist."
+msgstr "Eine E-Mail wird gesendet wenn die Anzeige deaktiviert/abgelaufen ist."
 
 #: includes/settings/class-user-notifications-settings.php:43
 msgid "Moderator Notifications"
@@ -6335,7 +6413,7 @@ msgstr "Moderator Benachrichtigung"
 
 #: includes/settings/class-user-notifications-settings.php:51
 msgid "An email will be sent to moderators when a listing is created."
-msgstr "Eine Email wird an den Moderator gesendet wenn eine Anzeige erstellt wurde."
+msgstr "Eine E-Mail wird an den Moderator gesendet wenn eine Anzeige erstellt wurde."
 
 #: includes/settings/class-user-notifications-settings.php:57
 #: includes/settings/class-user-notifications-settings.php:90
@@ -6344,7 +6422,7 @@ msgstr "Anzeige wurde editiert"
 
 #: includes/settings/class-user-notifications-settings.php:60
 msgid "An email will be sent to moderators when a listing is edited."
-msgstr "Eine Email wird an den Moderator gesendet wenn eine Anzeige editiert wurde."
+msgstr "Eine E-Mail wird an den Moderator gesendet wenn eine Anzeige editiert wurde."
 
 #: includes/settings/class-user-notifications-settings.php:66
 #: includes/settings/class-user-notifications-settings.php:99
@@ -6355,7 +6433,7 @@ msgstr "Anzeigen die auf Freischaltung warten"
 msgid ""
 "An email will be sent to moderator users every time a listing needs to be "
 "approved."
-msgstr "Eine Email wird an den Moderator gesendet wenn eine Anzeige genehmigt werden muss."
+msgstr "Eine E-Mail wird an den Moderator gesendet wenn eine Anzeige genehmigt werden muss."
 
 #: includes/settings/class-user-notifications-settings.php:74
 msgid "Admin Notifications"
@@ -6363,13 +6441,13 @@ msgstr "Administrator Benachrichtigungen"
 
 #: includes/settings/class-user-notifications-settings.php:93
 msgid "An email will be sent to administrator when a listing is edited."
-msgstr "Eine Email wird an den Administrator gesendet wenn eine Anzeige editiert wurde."
+msgstr "Eine E-Mail wird an den Administrator gesendet wenn eine Anzeige editiert wurde."
 
 #: includes/settings/class-user-notifications-settings.php:102
 msgid ""
 "An email will be sent to administrator users every time a listing needs to "
 "be approved."
-msgstr "Eine Email wird an den Administrator gesendet wenn eine Anzeige genehmigt werden muss."
+msgstr "Eine E-Mail wird an den Administrator gesendet wenn eine Anzeige genehmigt werden muss."
 
 #: includes/settings/class-user-notifications-settings.php:108
 msgid "Listing Was Flagged"
@@ -6378,17 +6456,17 @@ msgstr "Die Anzeige wurde markiert."
 #: includes/settings/class-user-notifications-settings.php:111
 msgid ""
 "An email will be sent to administrator users when a listing is flagged."
-msgstr "Eine Email wird an den Administrator gesendet wenn eine Anzeige markiert wurde."
+msgstr "Eine E-Mail wird an den Administrator gesendet wenn eine Anzeige markiert wurde."
 
 #: includes/settings/class-user-notifications-settings.php:117
 msgid "New media was uploaded"
-msgstr ""
+msgstr "Eine neue Datei wurde hochgeladen."
 
 #: includes/settings/class-user-notifications-settings.php:120
 msgid ""
 "An email will be sent to administrator users when new media is added to a "
 "listing."
-msgstr ""
+msgstr "Eine E-Mail wird an den Administrator gesendet wenn eine neue Datei zu einer Anzeige hinzugefügt wird."
 
 #: includes/settings/class-window-title-settings.php:12
 msgid "Window Title"
@@ -6589,7 +6667,7 @@ msgid ""
 "have been uploaded and before the user is asked to pay. The user is allowed "
 "to go back and edit the Ad details and uploaded images or proceed with the "
 "posting process."
-msgstr "Preview Kleinanzeige wenn Bilder hochgeladen wurden. Der Benutzer kann dann noch mal zurückgehen und die Kleinanzeige bearbeiten."
+msgstr "Anzeigen-Vorschau wenn Bilder hochgeladen wurden. Der Benutzer kann dann noch mal zurückgehen und die Anzeige zu bearbeiten."
 
 #: includes/settings-api.php:75
 msgid "Allow HTML in Ad text"
@@ -6787,7 +6865,7 @@ msgstr "Zeige Anzeigenbesuche"
 msgid ""
 "Show the number of times the ad has been viewed (simple count made by AWPCP "
 "&endash; warning, may not be accurate!)"
-msgstr "Anzahl der Kleinanzeigenzugriffe anzeigen"
+msgstr "Anzahl der Anzeigen-Betrachtungen anzeigen"
 
 #: includes/settings-api.php:188
 msgid "Make URLs in ad text clickable"
@@ -6798,147 +6876,151 @@ msgid "Add no follow to links in Ads"
 msgstr "\"no follow\" in Links von Anzeigen verwenden."
 
 #: includes/settings-api.php:193
-msgid "Menu Items"
-msgstr "Menüeinträge"
+msgid "Classifieds Bar"
+msgstr "Anzeigen Menü"
 
-#: includes/settings-api.php:195
+#: includes/settings-api.php:198
+msgid "Show Classifieds Bar"
+msgstr "Zeige Anzeigen Menü"
+
+#: includes/settings-api.php:204
 msgid "Show Place Ad menu item"
 msgstr "Zeige \"Anzeige erstellen\" Menüeintrag"
 
-#: includes/settings-api.php:196
+#: includes/settings-api.php:205
 msgid "Show Edit Ad menu item"
 msgstr "Zeige \"Anzeige bearbeiten\" Menüeintrag"
 
-#: includes/settings-api.php:197
+#: includes/settings-api.php:206
 msgid "Show Browse Ads menu item"
-msgstr "Zeige \"Anzeigen Durchsuchen\" als Menüeintrag"
+msgstr "Zeige \"in Anzeigen stöbern\" als Menü-Eintrag"
 
-#: includes/settings-api.php:198
+#: includes/settings-api.php:207
 msgid "Show Search Ads menu item"
 msgstr "Zeige \"Anzeigen Suchen\" als Menüeintrag"
 
-#: includes/settings-api.php:206
+#: includes/settings-api.php:215
 msgid "PayPal Settings"
 msgstr "PayPal Einstellungen"
 
-#: includes/settings-api.php:208
+#: includes/settings-api.php:217
 msgid "Activate PayPal?"
 msgstr "PayPal aktivieren?"
 
-#: includes/settings-api.php:213
+#: includes/settings-api.php:222
 msgid "PayPal receiver email"
-msgstr "PayPal Empfängeremail"
+msgstr "PayPal Empfänger-E-Mail"
 
-#: includes/settings-api.php:216
+#: includes/settings-api.php:225
 msgid ""
 "Email address for PayPal payments (if running in pay mode and if PayPal is "
 "activated)."
-msgstr "Emailadresse für PayPal Zahlungen (nur wenn im Bezahlmodus und wenn PayPal aktiviert ist)."
+msgstr "E-Mail-Adresse für PayPal Zahlungen (nur wenn im Bezahlmodus und wenn PayPal aktiviert ist)."
 
-#: includes/settings-api.php:222
+#: includes/settings-api.php:231
 msgid "PayPal Merchant ID"
-msgstr ""
+msgstr "PayPal Merchant ID"
 
-#: includes/settings-api.php:236
+#: includes/settings-api.php:245
 msgid "PayPal currency code"
 msgstr "PayPal Währungscode"
 
-#: includes/settings-api.php:239
+#: includes/settings-api.php:248
 msgid "The currency in which you would like to receive your PayPal payments"
 msgstr "Währung in der Sie Ihre PayPal Zahlungen erhalten möchten."
 
-#: includes/settings-api.php:243
+#: includes/settings-api.php:252
 msgid "The PayPal Currency Code must be one of <currency-codes>."
 msgstr "Die PayPal Währung muss eine von den folgenden sein: <currency-codes>."
 
-#: includes/settings-api.php:252
+#: includes/settings-api.php:261
 msgid "2Checkout Settings"
-msgstr "Checkout Einstellungen"
+msgstr "2Checkout Einstellungen"
 
-#: includes/settings-api.php:254
+#: includes/settings-api.php:263
 msgid "Activate 2Checkout"
-msgstr "Checkout Einstellungen"
+msgstr "2Checkout aktivieren"
 
-#: includes/settings-api.php:254
+#: includes/settings-api.php:263
 msgid "Activate 2Checkout?"
-msgstr "Checkout Einstellungen"
+msgstr "2Checkout aktivieren?"
 
-#: includes/settings-api.php:256
+#: includes/settings-api.php:265
 msgid "2Checkout account"
-msgstr "Checkout Einstellungen"
+msgstr "2Checkout-Konto"
 
-#: includes/settings-api.php:256
+#: includes/settings-api.php:265
 msgid "Account for 2Checkout payments."
 msgstr "Benutzerkonto für 2Checkout Bezahlungen."
 
-#: includes/settings-api.php:261
+#: includes/settings-api.php:270
 msgid "2Checkout Currency Code"
 msgstr "2Checkout Currency Code"
 
-#: includes/settings-api.php:261
+#: includes/settings-api.php:270
 msgid ""
 "The currency in which you would like to receive your 2Checkout payments"
 msgstr "Die Währung in der Sie Ihre 2Checkout Zahlungen erhalten möchten."
 
-#: includes/settings-api.php:268
+#: includes/settings-api.php:277
 msgid "AdSense"
 msgstr "AdSense"
 
-#: includes/settings-api.php:272
+#: includes/settings-api.php:281
 msgid "AdSense Settings"
 msgstr "AdSense Einstellungen"
 
-#: includes/settings-api.php:275
+#: includes/settings-api.php:284
 msgid "Above Ad text."
 msgstr "Über dem Anzeigentext."
 
-#: includes/settings-api.php:276
+#: includes/settings-api.php:285
 msgid "Under Ad text."
 msgstr "Unter dem Anzeigentext."
 
-#: includes/settings-api.php:277
+#: includes/settings-api.php:286
 msgid "Below Ad images."
 msgstr "Unter den Anzeigenbildern."
 
-#: includes/settings-api.php:280
+#: includes/settings-api.php:289
 msgid "Activate AdSense"
 msgstr "AdSense aktivieren."
 
-#: includes/settings-api.php:281
+#: includes/settings-api.php:290
 msgid "AdSense code"
 msgstr "AdSense Code"
 
-#: includes/settings-api.php:281
+#: includes/settings-api.php:290
 msgid "Your AdSense code (Best if 468x60 text or banner.)"
 msgstr "AdSense code (Optimal 468x60 Text oder Banner)"
 
-#: includes/settings-api.php:282
+#: includes/settings-api.php:291
 msgid "Show AdSense at position"
 msgstr "Zeige AdSense an folgender Position"
 
-#: includes/settings-api.php:286
+#: includes/settings-api.php:295
 msgid "Registration"
 msgstr " Registrierungs-Einstellungen"
 
-#: includes/settings-api.php:294
+#: includes/settings-api.php:303
 msgid "General Email Settings"
-msgstr "Allgemeine Email-Einstellungen"
+msgstr "Allgemeine E-Mail-Einstellungen"
 
-#: includes/settings-api.php:296
+#: includes/settings-api.php:305
 msgid "TO email address for outgoing emails"
-msgstr "AN Emailadresse für ausgehende Emails"
+msgstr "AN E-Mail-Adresse für ausgehende E-Mails"
 
-#: includes/settings-api.php:296
+#: includes/settings-api.php:305
 msgid ""
 "Emails are sent to your WordPress admin email. If you prefere to receive "
 "emails in a different address, please enter it here."
-msgstr "Emails werden an Ihre Wordpress Admin Emailadresse verschickt. Wenn Sie die Emails an eine andere Emailadresse verschicken möchten so geben Sie diese bitte hier ein."
+msgstr "E-Mails werden an Ihre Wordpress Admin E-Mail-Adresse verschickt. Wenn Sie die E-Mails an eine andere E-Mail-Adresse verschicken möchten so geben Sie diese bitte hier ein."
 
-#: includes/settings-api.php:301
+#: includes/settings-api.php:310
 msgid "FROM email address for outgoing emails"
-msgstr "VON Emailadresse für ausgehende Emails."
+msgstr "VON E-Mail-Adresse für ausgehende E-Mails."
 
-#: includes/settings-api.php:304
+#: includes/settings-api.php:313
 msgid ""
 "Emails go out using your WordPress admin email. If you prefer to use a "
 "different email enter it here. Some servers will not process outgoing emails"
@@ -6948,28 +7030,28 @@ msgid ""
 "with your hosting account in the FROM field. If you are with such a webhost "
 "you need to make sure your WordPress admin email address is tied to your "
 "hosting account."
-msgstr "Ausgehende E-Mails werden mit Ihrem WordPress Admin E-Mail Account verschickt. Wenn Sie eine andere E-Mail Adresse wünschen, dann geben Sie diese hier ein. Einige Server werden ausgehende E-Mails nicht weiterleiten wenn die angezeigte e-Mail-Adresse mit der tatsächlichen e-Mail-Adresse nicht übereinstimmt - SPAM-Schutz. In diesen Fällen ist es wichtig, dass Sie Ihre WordPress Admin-e-Mail-Adresse verwenden."
+msgstr "Ausgehende E-Mails werden mit Ihrem WordPress Admin E-Mail-Account verschickt. Wenn Sie eine andere E-Mail-Adresse wünschen, dann geben Sie diese hier ein. Einige Server werden ausgehende E-Mails nicht weiterleiten wenn die angezeigte E-Mail-Adresse mit der tatsächlichen E-Mail-Adresse nicht übereinstimmt (SPAM-Schutz). In diesen Fällen ist es wichtig, dass Sie Ihre WordPress Admin-E-Mail-Adresse verwenden."
 
-#: includes/settings-api.php:307
+#: includes/settings-api.php:316
 msgid ""
 "Use wordpress@<website-domain> as the FROM email address for outgoing "
 "emails."
-msgstr "Verwende wordpress@<website-domain> als VON E-Mail Adresse für ausgehende E-Mails."
+msgstr "Verwende wordpress@<website-domain> als VON E-Mail-Adresse für ausgehende E-Mails."
 
-#: includes/settings-api.php:316
+#: includes/settings-api.php:325
 msgid ""
 "That's the address WordPress uses to send its emails. If you are receiving "
 "the registration emails and other WordPress notifications succesfully, then "
 "you may want to enable this setting to use the same email address for all "
 "the outgoing messages. If enabled, the FROM email address for outgoing "
 "emails setting is ignored."
-msgstr "Dies ist die E-Mail Adresse die Word Press verwendet um E-Mails zu verschicken. Wenn Sie die Registrierungs-E-Mails und andere E-Mails von Wordpress richtig erhalten haben dann ist es sinnvoll diese E-Mail Adresse als Ihre Ausgangs-Adresse zu verwenden. Wenn aktiviert wird die FROM/VON E-Mail Adresse für ausgehende E-Mails ignoriert."
+msgstr "Dies ist die E-Mail-Adresse die Word Press verwendet um E-Mails zu verschicken. Wenn Sie die Registrierungs-E-Mails und andere E-Mails von Wordpress richtig erhalten haben dann ist es sinnvoll diese E-Mail-Adresse als Ihre Ausgangs-Adresse zu verwenden. Wenn aktiviert wird die FROM/VON E-Mail Adresse für ausgehende E-Mails ignoriert."
 
-#: includes/settings-api.php:319
+#: includes/settings-api.php:328
 msgid "Use sender email for reply messages"
 msgstr "Absender bei Antworten auf Anzeigen ist Besucher"
 
-#: includes/settings-api.php:319
+#: includes/settings-api.php:328
 msgid ""
 "Check this to use the name and email of the sender in the FROM field when "
 "someone replies to an ad. When unchecked the messages go out with the "
@@ -6981,457 +7063,457 @@ msgid ""
 " you are with such a webhost you need to leave this option unchecked and "
 "make sure your WordPress admin email address is tied to your hosting "
 "account."
-msgstr "Anwählen wenn sie den Namen und die Emailadresse des Absenders im VON Feld der Email zu verwenden wenn jemand auf eine Anzeige antwortet. Wenn diese Option abgewählt ist so wird die Email mit dem Wordpress Admin verschickt. Manche Server leiten Emails mit unterschiedlichen Emailadressen NICHT weiter.  Daher ist es in der Regel sicherer wenn Sie diese Option abwählen!"
+msgstr "Anwählen wenn sie den Namen und die E-Mail-Adresse des Absenders im VON Feld der E-Mail zu verwenden wenn jemand auf eine Anzeige antwortet. Wenn diese Option abgewählt ist so wird die E-Mail mit dem Wordpress Admin verschickt. Manche Server leiten E-Mails mit unterschiedlichen E-Mail-Adressen NICHT weiter.  Daher ist es in der Regel sicherer wenn Sie diese Option abwählen!"
 
-#: includes/settings-api.php:329
+#: includes/settings-api.php:338
 msgid "Include the name of the recipient in the email address"
-msgstr "Den Namen vom Empfänger in der E-Mailadresse einfügen"
+msgstr "Den Namen vom Empfänger in der E-Mail-Adresse einfügen"
 
-#: includes/settings-api.php:335
+#: includes/settings-api.php:344
 msgid "Include Ad access key in email messages"
-msgstr "Zugangsdaten in Email anzeigen?"
+msgstr "Zugangsdaten in E-Mail anzeigen?"
 
-#: includes/settings-api.php:335
+#: includes/settings-api.php:344
 msgid ""
 "Include Ad access key in email notifications. You may want to uncheck this "
 "option if you are using the Ad Management panel, but is not necessary."
-msgstr "Email MIT Zugangsdaten. Kann abgewählt werden, wenn das Modul \"Ad Management Panel\" verwendet wird."
+msgstr "E-Mail MIT Zugangsdaten. Kann abgewählt werden, wenn das Modul \"Ad Management Panel\" verwendet wird."
 
-#: includes/settings-api.php:339
+#: includes/settings-api.php:348
 msgid "Ad Posted Message"
-msgstr "Anzeige eingestellt - Email"
+msgstr "Anzeige erstellt - E-Mail"
 
-#: includes/settings-api.php:341
+#: includes/settings-api.php:350
 msgid "Subject for Ad posted notification email"
-msgstr "Betreff-Zeile für Emails \"Anzeige eingestellt\""
+msgstr "Betreff-Zeile für E-Mails \"Anzeige erstellt\""
 
-#: includes/settings-api.php:341
+#: includes/settings-api.php:350
 msgid "Your Classified Ad listing has been submitted"
 msgstr "Ihre Anzeige wurde erstellt"
 
-#: includes/settings-api.php:341
+#: includes/settings-api.php:350
 msgid "Subject line for email sent out when someone posts an Ad"
-msgstr "Betreff-Zeile für Emails \"Anzeige eingestellt\""
+msgstr "Betreff-Zeile für E-Mails wenn jemand eine Anzeige erstellt hat."
 
-#: includes/settings-api.php:342
+#: includes/settings-api.php:351
 msgid "Body for Ad posted notification email"
-msgstr "Text für \"Anzeige erstellt\" Benachrichtigungsemail"
+msgstr "Text für \"Anzeige erstellt\" Benachrichtigungs-E-Mail"
 
-#: includes/settings-api.php:342
+#: includes/settings-api.php:351
 msgid ""
 "Thank you for submitting your Classified Ad. The details of your ad are "
 "shown below."
 msgstr "Vielen Dank für Ihre Anzeige. Die Detailinformationen sehen Sie unten."
 
-#: includes/settings-api.php:342
+#: includes/settings-api.php:351
 msgid "Message body text for email sent out when someone posts an Ad"
-msgstr "Nachrichtentext für Emails \"Anzeige aufgeben\""
+msgstr "Nachrichtentext für E-Mails \"Anzeige aufgeben\""
 
-#: includes/settings-api.php:346
+#: includes/settings-api.php:355
 msgid "Reply to Ad Message"
 msgstr "Antworte auf die Anzeigennachricht"
 
-#: includes/settings-api.php:348
+#: includes/settings-api.php:357
 msgid "Subject for Reply to Ad email"
-msgstr "Betreff für Antwort Email"
+msgstr "Betreff für Antwort E-Mail"
 
-#: includes/settings-api.php:348
+#: includes/settings-api.php:357
 msgid "Response to your AWPCP Demo Ad"
 msgstr "Antworten Sie auf Ihre AWPCP Demo Anzeige."
 
-#: includes/settings-api.php:348
+#: includes/settings-api.php:357
 msgid "Subject line for email sent out when someone replies to Ad"
-msgstr "Betreff-Zeile für Emails \"Antwort auf Anzeige\""
+msgstr "Betreff-Zeile für E-Mails \"Antwort auf Anzeige\""
 
-#: includes/settings-api.php:349
+#: includes/settings-api.php:358
 msgid "Body for Reply to Ad email"
-msgstr "Textfeld für Antwort Email"
+msgstr "Textfeld für Antwort E-Mail"
 
-#: includes/settings-api.php:349
+#: includes/settings-api.php:358
 msgid "Someone has responded to your AWPCP Demo Ad"
 msgstr "Jemand hat auf Ihre AWPCP Demo Anzeige geantwortet."
 
-#: includes/settings-api.php:349
+#: includes/settings-api.php:358
 msgid "Message body text for email sent out when someone replies to Ad"
-msgstr "Nachrichtentext für Emails \"Auf Anzeige antworten\""
+msgstr "Nachrichtentext für E-Mails \"Auf Anzeige antworten\""
 
-#: includes/settings-api.php:350
+#: includes/settings-api.php:359
 msgid "Notify admin about contact message"
-msgstr "Administrator Email-Kopie senden wenn jemand auf eine Anzeige antwortet."
+msgstr "Administrator E-Mail-Kopie senden wenn jemand auf eine Anzeige antwortet."
 
-#: includes/settings-api.php:350
+#: includes/settings-api.php:359
 msgid ""
 "An email will be sent to the administrator every time a visitor sends a "
 "message to one of the Ad posters through the Reply to Ad page."
-msgstr "Eine Email wird an den Administrator gesendet wenn ein Besucher auf eine der Anzeigen antwortet."
+msgstr "Eine E-Mail wird an den Administrator gesendet wenn ein Besucher auf eine der Anzeigen antwortet."
 
-#: includes/settings-api.php:354
+#: includes/settings-api.php:363
 msgid "Resend Access Key Message"
-msgstr "Zugangscode für die Anzeige erneut senden"
+msgstr "Zugangscode erneut senden"
 
-#: includes/settings-api.php:356
+#: includes/settings-api.php:365
 msgid "Subject for Request Ad Access Key email"
-msgstr "Betreff für \"Zugangscode für die Anzeige\" erneut senden"
+msgstr "Betreff für Zugangscode erneut senden"
 
-#: includes/settings-api.php:356
+#: includes/settings-api.php:365
 msgid "The Classified Ad's ad access key you requested"
 msgstr "Der Bearbeitungs-Key für Ihre Anzeige"
 
-#: includes/settings-api.php:356
+#: includes/settings-api.php:365
 msgid ""
 "Subject line for email sent out when someone requests their ad access key "
 "resent"
-msgstr "Betreff-Zeile für Emails \"Zugangscode erneut senden\""
+msgstr "Betreff-Zeile für E-Mails \"Zugangscode erneut senden\""
 
-#: includes/settings-api.php:357
+#: includes/settings-api.php:366
 msgid "Body for Request Ad Access Key email"
-msgstr "Textfeld Zugangscode für die Anzeige erneut senden"
+msgstr "Textfeld Zugangscode erneut senden"
 
-#: includes/settings-api.php:357
+#: includes/settings-api.php:366
 msgid ""
 "You asked to have your Classified Ad's access key resent. Below are all the "
 "Ad access keys in the system that are tied to the email address you provided"
-msgstr "Sie haben uns aufgefordert Ihren Bearbeitungs-Key erneut zu senden. Unten sehen Sie alle Zugangs-Keys welche Ihrer Emailadresse zugeordnet sind."
+msgstr "Sie haben uns aufgefordert Ihren Bearbeitungs-Key erneut zu senden. Unten sehen Sie alle Zugangs-Keys welche Ihrer E-Mail-Adresse zugeordnet sind."
 
-#: includes/settings-api.php:357
+#: includes/settings-api.php:366
 msgid ""
 "Message body text for email sent out when someone requests their ad access "
 "key resent"
-msgstr "Nachrichtentext für Emails \"Zugangscode erneut senden\""
+msgstr "Nachrichtentext für E-Mails \"Zugangscode erneut senden\""
 
-#: includes/settings-api.php:361
+#: includes/settings-api.php:370
 msgid "Verify Email Message"
 msgstr "Bestätigungs-E-Mail Nachricht"
 
-#: includes/settings-api.php:363
+#: includes/settings-api.php:372
 msgid "Subject for Verification email"
 msgstr "Bestätigungs-E-Mail Betreff"
 
-#: includes/settings-api.php:363
+#: includes/settings-api.php:372
 msgid "Verify the email address used for Ad $title"
-msgstr "Bestätigen Sie Ihre E-Mail Adresse für die Anzeige $title"
+msgstr "Bestätigen Sie Ihre E-Mail-Adresse für die Anzeige $title"
 
-#: includes/settings-api.php:363
+#: includes/settings-api.php:372
 msgid "Subject line for email sent out to verify the email address."
 msgstr "Betreff-Zeile für Bestätigungs-E-Mail."
 
-#: includes/settings-api.php:364
+#: includes/settings-api.php:373
 msgid "Body for Verification email"
-msgstr "Textfeld für Bestätigungs-Email"
+msgstr "Textfeld für Bestätigungs-E-Mail"
 
-#: includes/settings-api.php:364
+#: includes/settings-api.php:373
 msgid ""
 "You can use the following placeholders to personalize the body of the email:"
 " $title, $author_name,$verification_email, $website_name, $website_url."
 msgstr "Sie können folgende Platzhalter im Nachrichtentext zur Personalisierung von E-Mails verwenden: $title, $author_name,$verification_email, $website_name, $website_url."
 
-#: includes/settings-api.php:368
+#: includes/settings-api.php:377
 msgid "Incomplete Payment Message"
 msgstr "Zahlung ist nicht abgeschlossen"
 
-#: includes/settings-api.php:370
+#: includes/settings-api.php:379
 msgid "Subject for Incomplete Payment email"
 msgstr "Betreff für Zahlung ist nicht abgeschlossen"
 
-#: includes/settings-api.php:370
+#: includes/settings-api.php:379
 msgid "There was a problem processing your payment"
-msgstr "Es gab einen Fehler mit Ihrer Bezahlung."
+msgstr "Es gab ein Problem mit der Bezahlung."
 
-#: includes/settings-api.php:370
+#: includes/settings-api.php:379
 msgid ""
 "Subject line for email sent out when the payment processing does not "
 "complete"
-msgstr "Betreff-Zeile für Emails \"Bezahlung offen\""
+msgstr "Betreff-Zeile für E-Mails \"Bezahlung offen\""
 
-#: includes/settings-api.php:371
+#: includes/settings-api.php:380
 msgid "Body for Incomplete Payment email"
 msgstr "Textfeld für Zahlung ist nicht abgeschlossen"
 
-#: includes/settings-api.php:371
+#: includes/settings-api.php:380
 msgid ""
 "There was a problem encountered during your attempt to submit payment. If "
 "funds were removed from the account you tried to use to make a payment "
 "please contact the website admin or the payment website customer service for"
 " assistance."
-msgstr "Es gab ein Problem während des Bezahlvorgangs. Wenn Geld von Ihrem Konto abgebucht wurde, so kontaktieren Sie btte den Webseitenbetrieber für Hilfe. Wir werden Ihnen selbstverständlich das Geld zurückzahlen."
+msgstr "Es gab ein Problem während des Bezahlvorgangs. Wenn Geld von Ihrem Konto abgebucht wurde, so kontaktieren Sie bitte den Webseiten-Betreiber für weitere Hilfe. Wir werden Ihnen selbstverständlich das Geld zurückzahlen."
 
-#: includes/settings-api.php:371
+#: includes/settings-api.php:380
 msgid ""
 "Message body text for email sent out when the payment processing does not "
 "complete"
-msgstr "Nachrichtentext für Emails \"Bezahlung offen\""
+msgstr "Nachrichtentext für E-Mails \"Bezahlung offen\""
 
-#: includes/settings-api.php:375
+#: includes/settings-api.php:384
 msgid "Renew Ad Message"
-msgstr "Anzeige erneuern - Email"
+msgstr "Anzeige erneuern - E-Mail"
 
-#: includes/settings-api.php:377
+#: includes/settings-api.php:386
 msgid "Subject for Renew Ad email"
-msgstr "Betreffzeile für Erneuerungs-Anzeige-Email"
+msgstr "Betreffzeile für Erneuerungs-Anzeige-E-Mail"
 
-#: includes/settings-api.php:377
+#: includes/settings-api.php:386
 msgid "Your classifieds listing Ad will expire in %d days."
 msgstr "Ihr Anzeige wird in %d Tagen ablaufen."
 
-#: includes/settings-api.php:377
+#: includes/settings-api.php:386
 msgid "Subject line for email sent out when an Ad is about to expire."
-msgstr "Betreff-Zeile für Emails \"Anzeige wird ablaufen\""
+msgstr "Betreff-Zeile für E-Mails \"Anzeige wird ablaufen\""
 
-#: includes/settings-api.php:378 includes/settings-api.php:385
+#: includes/settings-api.php:387 includes/settings-api.php:394
 msgid "Body for Renew Ad email"
-msgstr "Textfeld für Erneuerungs-Anzeige-Email"
+msgstr "Textfeld für Erneuerungs-Anzeige-E-Mail"
 
-#: includes/settings-api.php:378
+#: includes/settings-api.php:387
 msgid ""
 "This is an automated notification that your Classified Ad will expire in %d "
 "days."
 msgstr "Dies ist eine automatische Benachrichtigung dass Ihre Anzeige in %d Tagen abläuft."
 
-#: includes/settings-api.php:378
+#: includes/settings-api.php:387
 msgid ""
 "Message body text for email sent out when an Ad is about to expire. Use %d "
 "as placeholder for the number of days before the Ad expires."
-msgstr "Nachrichtentext für Emails \"Anzeige wird ablaufen\". Nutzen Sie %d als Platzhalter für die Anzahl der Tage bevor die Anzeige abgelaufen ist."
+msgstr "Nachrichtentext für E-Mails \"Anzeige wird ablaufen\". Nutzen Sie %d als Platzhalter für die Anzahl der Tage bevor die Anzeige abgelaufen ist."
 
-#: includes/settings-api.php:382
+#: includes/settings-api.php:391
 msgid "Ad Renewed Message"
-msgstr "Anzeige erneuert - Email"
+msgstr "Anzeige erneuert - E-Mail"
 
-#: includes/settings-api.php:384
+#: includes/settings-api.php:393
 msgid "Subject for Ad Renewed email"
-msgstr "Betreffzeile für Erneuerungs-Anzeige-Email"
+msgstr "Betreffzeile für Erneuerungs-Anzeige-E-Mail"
 
-#: includes/settings-api.php:384
+#: includes/settings-api.php:393
 msgid "Your classifieds listing \"%s\" has been successfully renewed."
-msgstr "Der Eintrag \"%s\" wurde erfolgreich erneuert."
+msgstr "Ihre Anzeige \"%s\" wurde erfolgreich erneuert."
 
-#: includes/settings-api.php:384
+#: includes/settings-api.php:393
 msgid "Subject line for email sent out when an Ad is successfully renewed."
-msgstr "Betreffzeile für Emails \"Anzeige erneuert\"."
+msgstr "Betreffzeile für E-Mails \"Anzeige erneuert\"."
 
-#: includes/settings-api.php:385
+#: includes/settings-api.php:394
 msgid ""
 "Your classifieds listing Ad has been successfully renewed. More information "
 "below:"
-msgstr "Der Eintrag \"%s\" wurde erfolgreich erneuert. Mehr Informationen siehe unten:"
+msgstr "Ihre Anzeige \"%s\" wurde erfolgreich erneuert. Weitere Informationen siehe unten:"
 
-#: includes/settings-api.php:385
+#: includes/settings-api.php:394
 msgid ""
 "Message body text for email sent out when an Ad is successfully renewed. "
-msgstr "Nachrichtentext für Emails \"Anzeige erneuert\""
+msgstr "Nachrichtentext für E-Mails \"Anzeige erneuert\""
 
-#: includes/settings-api.php:389
+#: includes/settings-api.php:398
 msgid "Ad Expired Message"
-msgstr "Anzeige abgelaufen Nachricht"
+msgstr "Nachricht für Anzeige abgelaufen"
 
-#: includes/settings-api.php:391
+#: includes/settings-api.php:400
 msgid "Subject for Ad Expired email"
-msgstr "Betreffzeile für abgelaufene Anzeige-Email"
+msgstr "Betreffzeile für abgelaufene Anzeigen-E-Mail"
 
-#: includes/settings-api.php:391
+#: includes/settings-api.php:400
 msgid "Your classifieds listing at %s has expired"
-msgstr "Ihre Anzeige auf \"%s\" ist abgelaufen."
+msgstr "Ihre Anzeige auf %s ist abgelaufen."
 
-#: includes/settings-api.php:391
+#: includes/settings-api.php:400
 msgid "Subject line for email sent out when an ad has auto-expired"
-msgstr "Betreff-Zeile für Emails \"Anzeige abgelaufen\""
+msgstr "Betreff-Zeile für E-Mails \"Anzeige abgelaufen\""
 
-#: includes/settings-api.php:392
+#: includes/settings-api.php:401
 msgid "Body for Ad Expired email"
-msgstr "Textfeld für Anzeige abgelaufen - Email"
+msgstr "Textfeld für Anzeige abgelaufen - E-Mail"
 
-#: includes/settings-api.php:392
+#: includes/settings-api.php:401
 msgid "This is an automated notification that your Classified Ad has expired."
 msgstr "Dies ist eine automatische Benachrichtigung dass Ihre Anzeige abgelaufen ist."
 
-#: includes/settings-api.php:392
+#: includes/settings-api.php:401
 msgid "Message body text for email sent out when an ad has auto-expired"
-msgstr "Email-Text für Benachrichtigung Anzeige abgelaufen."
+msgstr "E-Mail-Text für Benachrichtigung Anzeige abgelaufen."
 
-#: includes/settings-api.php:396
+#: includes/settings-api.php:405
 msgid "Advanced Email Configuration"
-msgstr " Erweiterte Email-Text-Einstellungen"
+msgstr " Erweiterte E-Mail-Text-Einstellungen"
 
-#: includes/settings-api.php:398
+#: includes/settings-api.php:407
 msgid "Enable external SMTP server"
 msgstr "Externen SMTP Server aktivieren"
 
-#: includes/settings-api.php:398
+#: includes/settings-api.php:407
 msgid "Enabled external SMTP server (if emails not processing normally)."
-msgstr "Aktiviert externen SMTP Server (falls Emails nicht ordnungsgemäß bearbeitet werden)"
+msgstr "Aktiviert externen SMTP Server (falls E-Mails nicht ordnungsgemäß bearbeitet werden)"
 
-#: includes/settings-api.php:399
+#: includes/settings-api.php:408
 msgid "SMTP host"
 msgstr "SMTP host"
 
-#: includes/settings-api.php:399
+#: includes/settings-api.php:408
 msgid "SMTP host (if emails not processing normally)."
 msgstr "SMTP Server"
 
-#: includes/settings-api.php:400
+#: includes/settings-api.php:409
 msgid "SMTP port"
 msgstr "SMTP port"
 
-#: includes/settings-api.php:400
+#: includes/settings-api.php:409
 msgid "SMTP port (if emails not processing normally)."
 msgstr "SMTP Port"
 
-#: includes/settings-api.php:401
+#: includes/settings-api.php:410
 msgid "SMTP username"
 msgstr "SMTP username"
 
-#: includes/settings-api.php:401
+#: includes/settings-api.php:410
 msgid "SMTP username (if emails not processing normally)."
 msgstr "SMTP Benutzername"
 
-#: includes/settings-api.php:402
+#: includes/settings-api.php:411
 msgid "SMTP password"
 msgstr "SMTP password"
 
-#: includes/settings-api.php:402
+#: includes/settings-api.php:411
 msgid "SMTP password (if emails not processing normally)."
 msgstr "SMTP Passwort"
 
-#: includes/settings-api.php:410
+#: includes/settings-api.php:419
 msgid "Send Ads to Facebook Automatically"
 msgstr "Anzeigen automatisch an Facebook senden."
 
-#: includes/settings-api.php:410
+#: includes/settings-api.php:419
 msgid ""
 "If checked, Ads will be posted to Facebook shortly after they are posted, "
 "enabled or edited, whichever occurs first. Ads will be posted only once. "
 "Please note that disabled Ads cannot be posted to Facebook."
 msgstr "Wenn angewählt werden Anzeigen auf Facebook veröffentlich nachdem sie erstellt, freigeschalten oder editiert wurden. Anzeigen werden nur einmal gepostet. Bitte beachten Sie dass deaktivierte Anzeigen nicht auf Facebook gepostet werden!"
 
-#: includes/settings-api.php:601
+#: includes/settings-api.php:610
 msgid "<module-name> License Key"
 msgstr "<module-name> Lizenzschlüssel"
 
-#: includes/settings-api.php:610
+#: includes/settings-api.php:619
 msgid "Licenses"
 msgstr "Lizenzen"
 
-#: includes/settings-api.php:750
+#: includes/settings-api.php:759
 msgid ""
 "Require Registration setting was enabled automatically because you activated"
 " the User Ad Management panel."
 msgstr "Die Registrierung als Benutzer ist automatisch eingeschalten worden, weil Sie die Benutzer Anzeigen Management Info aktiviert haben."
 
-#: includes/settings-api.php:767
+#: includes/settings-api.php:776
 msgid ""
 "Akismet SPAM control cannot be enabled because Akismet plugin is not "
 "installed or activated."
 msgstr "Sie können die Akismet SPAM-Kontrolle nicht aktivieren, weil Akismet nicht installiert oder aktiviert ist."
 
-#: includes/settings-api.php:771
+#: includes/settings-api.php:780
 msgid ""
 "Akismet SPAM control cannot be enabled because Akismet is not properly "
 "configured."
 msgstr "Akismet SPAM kann nicht aktiviert werden weil Akismet nicht richtig konfiguriert ist."
 
-#: includes/settings-api.php:794
+#: includes/settings-api.php:803
 msgid ""
 "reCAPTCHA can't be used because the public key and private key settings are "
 "required for reCAPTCHA to work properly."
 msgstr "reCAPTCHA kann nicht benutzt werden weil der Öffentliche und Private Schlüssel fehlen."
 
-#: includes/settings-api.php:796
+#: includes/settings-api.php:805
 msgid ""
 "reCAPTCHA can't be used because the public key setting is required for "
 "reCAPTCHA to work properly."
 msgstr "reCAPTCHA kann nicht benutzt werden weil der Öffentliche Schlüssel fehlt."
 
-#: includes/settings-api.php:798
+#: includes/settings-api.php:807
 msgid ""
 "reCAPTCHA can't be used because the private key setting is required for "
 "reCAPTCHA to work properly."
 msgstr "reCAPTCHA kann nicht benutzt werden weil der Private Schlüssel fehlt."
 
-#: includes/settings-api.php:811
+#: includes/settings-api.php:820
 msgid ""
 "User Ad Management panel was automatically deactivated because you disabled "
 "Require Registration setting."
 msgstr "Die Registrierung als Benutzer ist automatisch ausgeschalten worden, weil Sie die Benutzer Anzeigen Management Info deaktiviert haben."
 
-#: includes/settings-api.php:816
+#: includes/settings-api.php:825
 msgid ""
 "Credit System was automatically disabled because you disabled Require "
 "Registration setting."
 msgstr "Die Registrierung als Benutzer ist automatisch ausgeschalten worden, weil Sie die Benutzer Anzeigen Management Info deaktiviert haben."
 
-#: includes/settings-api.php:832
+#: includes/settings-api.php:841
 msgid ""
 "There is a problem with the PayPal Currency Code you have entered. It does "
 "not match any of the codes in our list of curencies supported by PayPal."
 msgstr "Es gibt ein Problem mit dem von Ihnen eingegebenen Währungscode. Er passt nicht zu einer von PayPal akzeptierten Währungen."
 
-#: includes/settings-api.php:833
+#: includes/settings-api.php:842
 msgid "The available currency codes are"
 msgstr "Die gültigen Währungen sind"
 
-#: includes/settings-api.php:842
+#: includes/settings-api.php:851
 msgid ""
 "Require Registration setting was enabled automatically because you activated"
 " the Credit System."
 msgstr "Die Registrierung als Benutzer ist automatisch eingeschalten worden, weil Sie das Credit System aktiviert haben."
 
-#: includes/settings-api.php:847
+#: includes/settings-api.php:856
 msgid ""
 "Charge Listing Fee setting was enabled automatically because you activated "
 "the Credit System."
 msgstr "Die Anzeigen sind automatisch auf Bezahlung eingeschalten worden, weil Sie das Credit System aktiviert haben."
 
-#: includes/settings-api.php:853
+#: includes/settings-api.php:862
 msgid ""
 "Credit System was disabled automatically because you disabled Charge Listing"
 " Fee."
 msgstr "Das Credit System wurde automatisch deaktivert weil Sie die Bezahlung der Anzeigen abgeschaltet haben."
 
-#: includes/settings-api.php:1095
+#: includes/settings-api.php:1104
 msgid "Deactivate"
 msgstr "Deaktivieren"
 
-#: includes/settings-api.php:1096
+#: includes/settings-api.php:1105
 msgid "active"
 msgstr "aktiv"
 
-#: includes/settings-api.php:1096 includes/settings-api.php:1099
-#: includes/settings-api.php:1109 includes/settings-api.php:1111
-#: includes/settings-api.php:1113
+#: includes/settings-api.php:1105 includes/settings-api.php:1108
+#: includes/settings-api.php:1118 includes/settings-api.php:1120
+#: includes/settings-api.php:1122
 msgid "Status: <license-status>"
 msgstr "Status: <license-status>"
 
-#: includes/settings-api.php:1098 includes/settings-api.php:1101
+#: includes/settings-api.php:1107 includes/settings-api.php:1110
 msgid "Activate"
 msgstr "Aktivieren"
 
-#: includes/settings-api.php:1099
+#: includes/settings-api.php:1108
 msgid "inactive"
 msgstr "inaktiv"
 
-#: includes/settings-api.php:1104
+#: includes/settings-api.php:1113
 msgid ""
 "Click the button above to check the status of your license. Please <contact-"
 "link>contact customer support</a> if you think the reported status is wrong."
 msgstr "Drücken Sie den Button um den Status Ihrer Lizenz zu prüfen. Bitte kontaktieren Sie den <contact-link>Kundendienst</a> wenn Sie einen falschen Lizenzstatus haben."
 
-#: includes/settings-api.php:1109
+#: includes/settings-api.php:1118
 msgid "expired"
 msgstr "abgelaufen"
 
-#: includes/settings-api.php:1111
+#: includes/settings-api.php:1120
 msgid "disabled"
 msgstr "deaktiviert"
 
-#: includes/settings-api.php:1113
+#: includes/settings-api.php:1122
 msgid "unknown"
 msgstr "unbekannt"
 
-#: includes/settings-api.php:1190
+#: includes/settings-api.php:1161
 msgid "Documentation on date and time formatting"
 msgstr "Datums und Uhrzeits Formatierung"
 
-#: includes/settings-api.php:1211
+#: includes/settings-api.php:1182
 msgid "Setting <setting-name> not available."
 msgstr "Einstellung  <setting-name> ist nicht verfügbar."
 
@@ -7574,7 +7656,7 @@ msgstr "Es gab einen Fehler bei der Aktualisierung der Datenbank."
 
 #: includes/views/class-file-action-ajax-handler.php:47
 msgid "The specified file is not associated with Listing with ID %d."
-msgstr "Die Bild-Datei ist nicht mit der Eintrags-ID %d verknüpft."
+msgstr "Die Bild-Datei ist nicht mit der Anzeigen-ID %d verknüpft."
 
 #: includes/views/class-payment-step-decorator.php:40
 #: includes/views/frontend/buy-credits/class-buy-credits-page.php:74
@@ -7583,7 +7665,7 @@ msgid ""
 "purpose. Please go back to the <a href=\"%s\">%s</a> page.<br>If you think "
 "this is an error please contact the administrator and provide the following "
 "transaction ID: %s"
-msgstr "Sie versuchen Credits für eine andere Transaktion zu kaufen. Bitte gehen Sie zurück zur Seite <a href=\"%s\">%s</a>  <br> Wenn Sie denken dass diese Meldung falsch ist, dann kontaktieren Sie bitte den Webseitenbetreiber mit folgender Transaktions-ID: %s"
+msgstr "Sie versuchen Credits für eine andere Transaktion zu kaufen. Bitte gehen Sie zurück zur Seite <a href=\"%s\">%s</a>  <br> Wenn Sie denken dass diese Meldung falsch ist, dann kontaktieren Sie bitte den Webseiten-Betreiber mit folgender Transaktions-ID: %s"
 
 #: includes/views/class-payment-step-decorator.php:55
 msgid ""
@@ -7644,7 +7726,7 @@ msgid ""
 "create a listing. Use the six-dots icons at the end of each row to drag the "
 "form fields around and modify the order in which those fields appear in the "
 "Ad Details form."
-msgstr "Die Tabelle unten zeigt alle Formularfelder die ein Benutzer ausfüllen darf um eine Kleinanzeige zu erstellen. Die Reihenfolge kann mit DragNDrop verändert werden."
+msgstr "Die Tabelle unten zeigt alle Formularfelder die ein Benutzer ausfüllen darf um eine Anzeige zu erstellen. Die Reihenfolge kann mit DragNDrop verändert werden."
 
 #: templates/admin/form-fields-admin-page.tpl.php:7
 msgid ""
@@ -7658,7 +7740,7 @@ msgstr "Gehe zu <form-fields-settings-link> um die Mussfelder festzulegen. Wenn 
 #: templates/admin/import-listings-admin-page-import-form.tpl.php:2
 #: templates/admin/import-listings-admin-page-upload-files-form.tpl.php:2
 msgid "Import Listings"
-msgstr "Import Kleinanzeigen"
+msgstr "Import Anzeigen"
 
 #: templates/admin/import-listings-admin-page-configuration-form.tpl.php:6
 msgid "Configure"
@@ -7774,7 +7856,7 @@ msgstr "Drücke die Taste unten um den aktuellen Import zu unterbrechen und die 
 msgid ""
 "You're currently testing the import operation. No listings will be created "
 "or modified in the database."
-msgstr ""
+msgstr "Sie testen im Moment nur den Import. Anzeigen werden in der Datenbank nicht erstellt oder geändert."
 
 #: templates/admin/import-listings-admin-page-import-form.tpl.php:25
 msgid "Change Configuration & Restart"
@@ -7831,20 +7913,20 @@ msgstr "Kleinazeigen anschauen"
 
 #: templates/admin/missing-paypal-merchant-id-setting-notice.tpl.php:2
 msgid "What's your PayPal Merchant ID?"
-msgstr ""
+msgstr "Wie lautet Ihre PayPal Merchant ID?"
 
 #: templates/admin/missing-paypal-merchant-id-setting-notice.tpl.php:3
 msgid ""
 "In order to verify payments made through PayPal, Another WordPress "
 "Classifieds Plugin needs to know your PayPal Merchant ID."
-msgstr ""
+msgstr "Damit Zahlungen über PayPal durchgeführt werden können benötigt  AWPCP Ihre PayPal Merchant ID."
 
 #: templates/admin/missing-paypal-merchant-id-setting-notice.tpl.php:5
 msgid ""
 "Go to <paypal-link> to obtain the Merchant ID and then go to the <payment-"
 "settings-link>Payment Settings</payment-settings-link> page to enter the "
 "value."
-msgstr ""
+msgstr "Gehen Sie zu <paypal-link>  um einen Merchant ID zu erhalten. Danach gehen Sie zu den <payment-settings-link>Zahlungseinstellungen</payment-settings-link> um Ihre ID einzugeben."
 
 #: templates/admin/profile/contact-information-fields.tpl.php:1
 msgid "Classifieds Contact Information"
@@ -7857,6 +7939,14 @@ msgstr "Telefonnummer des Ansprechpartners - Achtung: Diese Nummer ist dann im I
 #: templates/admin/profile/contact-information-fields.tpl.php:16
 msgid "Address"
 msgstr "Adresse"
+
+#: templates/components/classifieds-search-bar.tpl.php:8
+msgid "Find Listings"
+msgstr ""
+
+#: templates/components/classifieds-search-bar.tpl.php:10
+msgid "Advanced Search"
+msgstr "Erweiterte Suche"
 
 #: templates/components/media-manager.tpl.php:24
 msgid "This is the Primary Image"
@@ -7947,11 +8037,11 @@ msgstr "Keine Zahlungsmethode möglich."
 
 #: templates/email/listing-is-about-to-expire-notification.plain.tpl.php:3
 msgid "Listing Details are below:"
-msgstr "Details des Eintrags"
+msgstr "Details der Anzeige siehe unten:"
 
 #: templates/email/listing-is-about-to-expire-notification.plain.tpl.php:6
 msgid "Posted on"
-msgstr "Eingestellt am"
+msgstr "Erstellt am"
 
 #: templates/email/listing-is-about-to-expire-notification.plain.tpl.php:7
 msgid "Expires on"
@@ -7959,7 +8049,7 @@ msgstr "Verfällt am"
 
 #: templates/email/listing-is-about-to-expire-notification.plain.tpl.php:9
 msgid "You can renew your Ad visiting this link: %s"
-msgstr "Verlängern Sie Ihre Anzeige durch einen Besuch von diesem Link: %s"
+msgstr "Verlängern Sie Ihre Anzeige durch einen Klick auf diesem Link: %s"
 
 #: templates/email/listing-media-awaiting-approval.plain.tpl.php:1
 #: templates/email/listing-was-flagged.plain.tpl.php:1
@@ -7969,33 +8059,33 @@ msgstr "Hallo"
 #: templates/email/listing-media-upload-notification.plain.tpl.php:1
 msgctxt "listing media uploaded notification"
 msgid "Hello,"
-msgstr ""
+msgstr "Hallo, "
 
 #: templates/email/listing-media-upload-notification.plain.tpl.php:5
 msgctxt "listing media uploaded notification"
 msgid ""
 "The following media files were recently uploaded to listing \"<listing-"
 "title>\":"
-msgstr ""
+msgstr "Die folgenden Dateien wurden zu der Anzeige \"<listing-title>\": hochgeladen: "
 
 #: templates/email/listing-media-upload-notification.plain.tpl.php:16
 msgctxt "listing media uploaded notification"
 msgid ""
 "The following media files were recently uploaded to listing \"<listing-"
 "title>\" and are awaiting approval:"
-msgstr ""
+msgstr "Die folgenden Dateien wurden zu der Anzeige \"<listing-title>\": hochgeladen und warten auf eine Bestätigung: "
 
 #: templates/email/listing-media-upload-notification.plain.tpl.php:26
 msgctxt "listing media uploaded notification"
 msgid ""
 "Click here to manage media uploaded to the listing: <manage-listing-media-"
 "url>."
-msgstr ""
+msgstr "Hier drücken um die Dateien zur Anzeige zu bearbeiten: <manage-listing-media-url>."
 
 #: templates/email/listing-media-upload-notification.plain.tpl.php:31
 msgctxt "listing media uploaded notification"
 msgid "Click here to view the listing: <view-listing-url>."
-msgstr ""
+msgstr "Hier klicken um die Anzeige zu sehen: <view-listing-url>."
 
 #: templates/email/listing-updated-nofitication-moderators.plain.tpl.php:2
 msgid ""
@@ -8009,7 +8099,7 @@ msgstr "Die Anzeige  \"<listing-title>\" wurde bearbeitet. Die Kopie der Details
 msgid ""
 "You have pending flagged listings to review at <site-name>. Please check "
 "them out here <flagged-listings-url>."
-msgstr "Sie haben gekennzeichnete Kleinanzeigen auf der Seite <site-name>. Bitte prüfen Sie Ihre Anzeigen hier: <flagged-listing-url>."
+msgstr "Sie haben gekennzeichnete Anzeigen auf der Seite <site-name>. Bitte prüfen Sie Ihre Anzeigen hier: <flagged-listing-url>."
 
 #: templates/frontend/edit-listing-page-delete-listing-confirmation.tpl.php:7
 msgid "Return to main classifieds"

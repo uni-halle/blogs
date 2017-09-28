@@ -6,7 +6,7 @@
     <?php endif; ?>
 
     <?php if ( $options['show_menu_items'] ): ?>
-    <?php echo awpcp_menu_items(); ?>
+    <?php echo awpcp_render_classifieds_bar( $options['classifieds_bar_components'] ); ?>
     <?php endif; ?>
 
     <?php echo implode( '', $before_pagination ); ?>

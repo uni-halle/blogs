@@ -3,9 +3,10 @@ Contributors: awpcp
 Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified theme,wp classified
 Requires at least: 4.3
-Tested up to: 4.7.6
-Last Updated: 2017-Jun-5
-Stable tag: 3.7.7
+Requires PHP: 5.6
+Tested up to: 4.8.1
+Last Updated: 2017-Sep-26
+Stable tag: 3.8.1
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -239,6 +240,37 @@ Yes it can. AWPCP comes with many user-provided translations under the /language
 Yes it is. However, you cannot "network-activate" the plugin (as this will share the database). Activate it on only the subsites on which you need a directory.  This can be done under Plugins->Add New as the Administrator user.  Do not "network activate" AWPCP as the "super admin".
 
 == Changelog ==
+
+= Version 3.8.1 =
+* Allow HTML tags in listing's excerpts.
+* Avoid numbered placeholders in $wpdb::prepare().
+* Add 'Find Listings' to POT file.
+* Fix appearance problems in Classifieds Bar.
+* Add missing string to translation files.
+
+= Version 3.8 =
+* Hide Awaiting Approval views for Subscribers.
+* Remove 'Change Category' button, no longer necessary.
+* Add support PayFast module.
+* Add support Stripe module.
+* Add support ZIP Search module.
+* Replace Main Menu with Classifieds Bar.
+* Replace dropdowns with four or less options with a list of radio buttons.
+* Do not query for regions options if field is a textfield.
+* Prevent Stripe from always being in test mode.
+* Fix typo in settings for Credit System.
+* Fix copy-paste error in awpcp\_get\_server\_ip\_address().
+* Add more descriptive errors for license issues.
+* Make all fields in Search Listings screen optional.
+* Hide listings with start date set in the future.
+* Fix conflict with Simple Facebook OpenGraph Tags.
+* The feature that turns URLs in the listing details into links, now supports HTTPS URLs as well.
+* Fix multiple errors in the Spanish translation.
+* Update Spanish translation for 'Ad Category'.
+* Add awpcp-listing-primary-image-thumbnail CSS class.
+* Make Start Date editable by subscribers.
+* Do not show Featured Ads actions unnecessarily.
+
 = Version 3.7.7 =
 * Include Puerto Rico in the list of USA states for payment gateways.
 * Do not show error message before form is submitted.

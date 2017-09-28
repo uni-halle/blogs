@@ -108,7 +108,10 @@ class AWPCP_ModulesUpdater {
         try {
             $information = $this->get_information_for_module( $this->modules[ $args->slug ] );
         } catch ( AWPCP_Easy_Digital_Downloads_Exception $e ) {
-            awpcp_flash( $e->getMessage() );
+            awpcp_flash( $e->getMessage(), array( 'notice', 'notice-error' ) );
+            return $response;
+        } catch ( AWPCP_HTTP_Exception $e ) {
+            awpcp_flash( $e->getMessage(), array( 'notice', 'notice-error' ) );
             return $response;
         }
 

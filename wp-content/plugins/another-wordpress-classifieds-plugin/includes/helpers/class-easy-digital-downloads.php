@@ -46,18 +46,15 @@ class AWPCP_EasyDigitalDownloads {
         $response = $this->request( $params );
 
         if ( ! isset( $response->license ) ) {
-            $exception = $this->exceptions->easy_digital_downloads_exception( 'Missing License Status parameter' );
-            throw $exception;
+            throw new AWPCP_Easy_Digital_Downloads_Exception( __( 'Missing License Status parameter', 'another-wordpress-classifieds-plugin' ) );
         }
 
         if ( $response->license === 'failed' ) {
-            $exception = $this->exceptions->easy_digital_downloads_exception( 'License Status parameter was set to <strong>Failed</strong>' );
-            throw $exception;
+            throw new AWPCP_Easy_Digital_Downloads_Exception( __( 'License Status parameter was set to <strong>Failed</strong>', 'another-wordpress-classifieds-plugin' ) );
         }
 
         if ( $response->license === 'item_name_mismatch' ) {
-            $exception = $this->exceptions->easy_digital_downloads_exception( 'item_name_mismatch' );
-            throw $exception;
+            throw new AWPCP_Easy_Digital_Downloads_Exception( __( 'item_name_mismatch', 'another-wordpress-classifieds-plugin' ) );
         }
 
         return $response;
@@ -71,20 +68,18 @@ class AWPCP_EasyDigitalDownloads {
         $params = urlencode_deep( $params );
         $url = add_query_arg( $params, $this->settings->get_runtime_option( 'easy-digital-downloads-store-url' ) );
 
-        try {
-            $response = $this->http->get( $url, array(
-                'timeout' => 15,
-                'sslverify' => false,
-            ) );
+        $response = $this->http->get( $url, array(
+            'timeout' => 15,
+            'sslverify' => false,
+        ) );
 
-            $decoded_data = json_decode( wp_remote_retrieve_body( $response ) );
-        } catch ( AWPCP_WPError $e ) {
-            throw new AWPCP_Easy_Digital_Downloads_Exception( $e->wp_error->get_error_message() );
-        }
+        $decoded_data = json_decode( wp_remote_retrieve_body( $response ) );
 
-        if ( isset( $decoded_data->error ) ) {
-            $exception = $this->exceptions->easy_digital_downloads_exception( $decoded_data->error );
-            throw $exception;
+        if ( isset( $decoded_data->error ) && ! empty( $decoded_data->error ) ) {
+            throw new AWPCP_Easy_Digital_Downloads_Exception( $decoded_data->error );
+        } else if ( isset( $decoded_data->error ) ) {
+            $message = __( "Unknown. The response didn't include a meaningful error message.", 'another-wordpress-classifieds-plugin' );
+            throw new AWPCP_Easy_Digital_Downloads_Exception( $message );
         }
 
         return $decoded_data;

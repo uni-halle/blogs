@@ -6,14 +6,6 @@ function awpcp_exceptions() {
 
 class AWPCP_Exceptions {
 
-    public function easy_digital_downloads_exception( $message ) {
-        if ( empty( $message ) ) {
-            $message = "Unknown. The response didn't include a meaningful error message.";
-        }
-
-        return new AWPCP_Easy_Digital_Downloads_Exception( $message );
-    }
-
     public function license_request_exception( $specific_message, $module_name, $previous_message = '', $code = 0, $previous_exception = null ) {
         $placeholders = array(
             'module-name' => $this->strong( $module_name ),

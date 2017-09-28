@@ -45,10 +45,11 @@
 
         <?php endif; ?>
 
-        <?php if ($ui['start-end-date']): ?>
+        <?php if ( $ui['show-start-date-field'] || $ui['show-end-date-field'] ): ?>
+        <h3><?php echo esc_html( $ui['date-fields-title'] ); ?></h3>
+        <?php endif; ?>
 
-        <h3><?php echo esc_html( __( 'Start & End Date', 'another-wordpress-classifieds-plugin' ) ); ?></h3>
-
+        <?php if ( $ui['show-start-date-field'] ): ?>
         <p class="awpcp-form-spacer">
             <label for="start-date"><?php echo esc_html( _x( 'Start Date', 'ad details form', 'another-wordpress-classifieds-plugin' ) ); ?><?php echo $required['start-date'] ? '*' : ''; ?></label>
             <?php $date = awpcp_datetime( 'awpcp-date', $form['start_date'] ); ?>
@@ -56,7 +57,9 @@
             <input type="hidden" name="start_date" value="<?php echo esc_attr( awpcp_datetime( 'Y/m/d', $form['start_date'] ) ); ?>" />
             <?php echo awpcp_form_error('start_date', $errors); ?>
         </p>
+        <?php endif; ?>
 
+        <?php if ( $ui['show-end-date-field'] ): ?>
         <p class="awpcp-form-spacer">
             <label for="end-date"><?php echo esc_html( _x( 'End Date', 'ad details form', 'another-wordpress-classifieds-plugin' ) ); ?><?php echo $required['end-date'] ? '*' : ''; ?></label>
             <?php $date = awpcp_datetime( 'awpcp-date', $form['end_date'] ); ?>
@@ -64,7 +67,6 @@
             <input type="hidden" name="end_date" value="<?php echo esc_attr( awpcp_datetime( 'Y/m/d', $form['end_date'] ) ); ?>" />
             <?php echo awpcp_form_error('end_date', $errors); ?>
         </p>
-
         <?php endif; ?>
 
         <h3><?php echo esc_html( __( 'Add Details and Contact Information', 'another-wordpress-classifieds-plugin' ) ); ?></h3>

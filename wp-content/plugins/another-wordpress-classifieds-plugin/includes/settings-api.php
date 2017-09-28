@@ -188,9 +188,18 @@ class AWPCP_Settings_API {
 		$this->add_setting( $key, 'hyperlinkurlsinadtext', __( 'Make URLs in ad text clickable', 'another-wordpress-classifieds-plugin' ), 'checkbox', 0, '' );
 		$this->add_setting( $key, 'visitwebsitelinknofollow', __( 'Add no follow to links in Ads', 'another-wordpress-classifieds-plugin' ), 'checkbox', 1, '' );
 
-		// Section: Ad/Listings - Menu Items
+        // Section: Ad/Listings - Classifieds Bar
 
-		$key = $this->add_section( $group, __( 'Menu Items', 'another-wordpress-classifieds-plugin' ), 'menu-items', 60, array( $this, 'section' ) );
+        $key = $this->add_section( $group, __( 'Classifieds Bar', 'another-wordpress-classifieds-plugin' ), 'classifieds-bar', 60, array( $this, 'section' ) );
+
+        $this->add_setting(
+            $key,
+            'show-classifieds-bar',
+            __( 'Show Classifieds Bar', 'another-wordpress-classifieds-plugin' ),
+            'checkbox',
+            1,
+            ''
+        );
 
 		$this->add_setting( $key, 'show-menu-item-place-ad', __( 'Show Place Ad menu item', 'another-wordpress-classifieds-plugin' ), 'checkbox', 1, '' );
 		$this->add_setting( $key, 'show-menu-item-edit-ad', __( 'Show Edit Ad menu item', 'another-wordpress-classifieds-plugin' ), 'checkbox', 1, '' );
@@ -1135,7 +1144,7 @@ class AWPCP_Settings_API {
      * @since 3.7.6
      */
     private function get_licenses_section_description() {
-        $ip_address = $this->get_server_ip_address();
+        $ip_address = awpcp_get_server_ip_address();
 
         if ( ! $ip_address ) {
             return '';
@@ -1145,44 +1154,6 @@ class AWPCP_Settings_API {
         $description = str_replace( '<ip-address>', '<strong>' . $ip_address . '</strong>', $description );
 
         return $description;
-    }
-
-    /**
-     * @since 3.7.6
-     */
-    private function get_server_ip_address() {
-        $ip_address = get_transient( 'awpcp-server-ip-address' );
-
-        if ( $ip_address ) {
-            return $ip_address;
-        }
-
-        $ip_address = $this->figure_out_server_ip_address();
-
-        if ( $ip_address ) {
-            set_transient( 'awpcp-server-ip-address', $ip_address, HOUR_IN_SECONDS );
-        }
-
-        return $ip_address;
-    }
-
-    /**
-     * @since 3.7.6
-     */
-    private function figure_out_server_ip_address() {
-        $response = wp_remote_get( 'https://httpbin.org/ip' );
-
-        if ( is_wp_error( $response ) ) {
-            return null;
-        }
-
-        $body = json_decode( wp_remote_retrieve_body( $response ) );
-
-        if ( ! isset( $body->origin ) ) {
-            return null;
-        }
-
-        return $body->origin;
     }
 
 	public function section_date_time_format($args) {

@@ -284,7 +284,7 @@ if (typeof jQuery !== 'undefined') {
                 });
             },
 
-            selectionChanged: function(type, value) {
+            selectionChanged: function( type, value, mode ) {
                 var next = this.getNextPartials(type),
                     first, hidden, i, n;
 
@@ -292,6 +292,10 @@ if (typeof jQuery !== 'undefined') {
 
                 // return if there are no more fileds to process
                 if (0 === next.length) {
+                    return;
+                }
+
+                if ( 'textfield' === mode ) {
                     return;
                 }
 
@@ -417,7 +421,7 @@ if (typeof jQuery !== 'undefined') {
             // notify other fields when a new value is selected/provided
             self.selected.subscribe(function(value) {
                 if (self.previousValue !== value && (self.showSelectField() || self.showTextField())) {
-                    self.region.selectionChanged(self.type, value);
+                    self.region.selectionChanged( self.type, value, self.showSelectField() ? 'dropdown' : 'textfield' );
                 }
             });
         };

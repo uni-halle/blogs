@@ -4,7 +4,7 @@
  * Plugin Name: Another WordPress Classifieds Plugin (AWPCP)
  * Plugin URI: http://www.awpcp.com
  * Description: AWPCP - A plugin that provides the ability to run a free or paid classified ads service on your WP site. <strong>!!!IMPORTANT!!!</strong> It's always a good idea to do a BACKUP before you upgrade AWPCP!
- * Version: 3.7.7
+ * Version: 3.8.1
  * Author: D. Rodenbaugh
  * License: GPLv2 or any later version
  * Author URI: http://www.skylineconsult.com
@@ -104,10 +104,11 @@ require_once( AWPCP_DIR . '/includes/compatibility/class-mashshare-plugin-integr
 require_once( AWPCP_DIR . '/includes/compatibility/class-plugin-integrations.php' );
 require( AWPCP_DIR . "/includes/compatibility/class-profile-builder-plugin-integration.php");
 require( AWPCP_DIR . "/includes/compatibility/class-profile-builder-login-form-implementation.php");
-require_once( AWPCP_DIR . "/includes/compatibility/class-yoast-wordpress-seo-plugin-integration.php" );
+require( AWPCP_DIR . '/includes/compatibility/class-simple-facebook-opengrap-tags-plugin-integration.php' );
 require_once( AWPCP_DIR . "/includes/compatibility/class-woocommerce-plugin-integration.php" );
 require( AWPCP_DIR . "/includes/compatibility/class-wp-members-login-form-implementation.php");
 require( AWPCP_DIR . "/includes/compatibility/class-wp-members-plugin-integration.php");
+require_once( AWPCP_DIR . "/includes/compatibility/class-yoast-wordpress-seo-plugin-integration.php" );
 
 require_once( AWPCP_DIR . "/includes/functions/settings.php" );
 
@@ -176,6 +177,10 @@ require_once(AWPCP_DIR . "/includes/models/payment-transaction.php");
 
 require_once( AWPCP_DIR . "/includes/db/class-database-column-creator.php" );
 require( AWPCP_DIR . "/includes/db/class-database-helper.php" );
+
+require( AWPCP_DIR . '/includes/ui/class-classifieds-bar.php' );
+require( AWPCP_DIR . '/includes/ui/class-classifieds-search-bar-component.php' );
+require( AWPCP_DIR . '/includes/ui/class-classifieds-menu-component.php' );
 
 require_once( AWPCP_DIR . "/includes/views/class-ajax-handler.php" );
 require_once( AWPCP_DIR . "/includes/views/class-base-page.php" );
@@ -599,7 +604,15 @@ class AWPCP {
 	}
 
     public function register_plugin_integrations() {
-        $this->plugin_integrations->add_plugin_integration( 'mashsharer/mashshare.php', 'awpcp_mashshare_plugin_integration' );
+        $this->plugin_integrations->add_plugin_integration(
+            'mashsharer/mashshare.php',
+            'awpcp_mashshare_plugin_integration'
+        );
+
+        $this->plugin_integrations->add_plugin_integration(
+            'wonderm00ns-simple-facebook-open-graph-tags/wonderm00n-open-graph.php',
+            'awpcp_simple_facebook_opengraph_tags_plugin_integration'
+        );
     }
 
 	public function init() {
@@ -889,6 +902,13 @@ class AWPCP {
                     'installed' => defined( 'AWPCP_MARK_AS_SOLD_MODULE' ),
                     'version' => 'AWPCP_MARK_AS_SOLD_MODULE_DB_VERSION',
                     'required' => '3.6',
+                ),
+                'payfast' => array(
+                    'name' => __( 'PayFast', 'another-wordpress-classifieds-plugin' ),
+                    'url' => 'http://awpcp.com/downloads/regions-module/?ref=panel',
+                    'installed' => defined( 'AWPCP_PAYFAST_MODULE_DB_VERSION' ),
+                    'version' => 'AWPCP_PAYFAST_MODULE_DB_VERSION',
+                    'required' => '1.0',
                 ),
 				'paypal-pro' => array(
 					'name' => __(  'PayPal Pro', 'another-wordpress-classifieds-plugin'  ),

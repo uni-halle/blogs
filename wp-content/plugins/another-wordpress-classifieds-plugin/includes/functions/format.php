@@ -69,3 +69,32 @@ function awpcp_get_digits_from_string( $string ) {
 
     return implode( '', $matches[0] );
 }
+
+function awpcp_trim_html_content( $content, $word_count ) {
+    $allowed_tags = array_keys( wp_kses_allowed_html( 'post' ) );
+    $allowed_tags = '<' . implode( '>,<', $allowed_tags ) . '>';
+
+    $content = strip_shortcodes( $content );
+    $content = strip_tags( $content, $allowed_tags );
+
+    $tokens = array();
+    $output = '';
+    $words = 0;
+
+    // Divide the string into tokens; HTML tags, or words, followed by any whitespace
+    preg_match_all( '/(<[^>]+>|[^<>\s]+)\s*/u', $content, $tokens );
+
+    foreach ( $tokens[0] as $token ) {
+        // Limit reached, continue until , ; ? . or ! occur at the end
+        if ( $words >= $word_count && preg_match( '/[\,\;\?\.\!]\s*$/uS', $token ) ) {
+            $output .= trim( $token );
+            break;
+        }
+
+        $output .= $token;
+        $words = $words + 1;
+    }
+
+    return trim( force_balance_tags( $output ) );
+}
+

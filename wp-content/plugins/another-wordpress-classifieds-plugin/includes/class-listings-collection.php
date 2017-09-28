@@ -119,7 +119,10 @@ class AWPCP_ListingsCollection {
     }
 
     private function make_enabled_listings_query( $query ) {
-        return $this->make_valid_listings_query( array_merge( $query, array( 'disabled' => false ) ) );
+        return $this->make_valid_listings_query( array_merge( $query, array(
+            'disabled' => false,
+            'start_date' => array( 'compare' => '<', 'value' => current_time( 'mysql' ) ),
+        ) ) );
     }
 
     private function make_valid_listings_query( $query ) {
@@ -261,10 +264,14 @@ class AWPCP_ListingsCollection {
      * @since 3.3.2
      */
     public function count_enabled_listings_in_category( $category_id ) {
-        $category_condition = '( ad_category_id = %1$d OR ad_category_parent_id = %1$d )';
+        $category_condition = '( ad_category_id = %d OR ad_category_parent_id = %d )';
 
         $conditions = array(
-            $this->db->prepare( $category_condition, $category_id ),
+            $this->db->prepare(
+                $category_condition,
+                $category_id,
+                $category_id
+            ),
             'disabled = 0',
         );
 

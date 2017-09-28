@@ -20,6 +20,8 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
     public function __construct($page='awpcp-place-ad', $title=null) {
         parent::__construct($page, $title);
 
+        $this->show_menu_items = false;
+        
         $this->authorization = awpcp_listing_authorization();
         $this->listing_upload_limits = awpcp_listing_upload_limits();
     }
@@ -731,6 +733,12 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             $errors = array_merge(array($message), $errors);
         }
 
+        if ( isset( $this->ad ) && is_object( $this->ad ) ) {
+            $current_listing = $this->ad;
+        } else {
+            $current_listing = null;
+        }
+
         $ui = array();
         // TODO: add form validation
         // TODO: strip slashes from title, details
@@ -738,7 +746,17 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         // show categories dropdown if $category is not set
         $ui['category-field'] = ( $edit || empty( $form['ad_category'] ) ) && $is_moderator;
         $ui['user-dropdown'] = $edit && $is_admin_user;
-        $ui['start-end-date'] = $edit && $is_moderator;
+        $ui['show-start-date-field'] = $this->user_can_modify_start_date( $current_listing, $edit, $is_moderator );
+        $ui['show-end-date-field'] = $edit && $is_moderator;
+
+        if ( $ui['show-start-date-field'] && $ui['show-end-date-field'] ) {
+            $ui['date-fields-title'] = __( 'Start & End Date', 'another-wordpress-classifieds-plugin' );
+        } else if ( $ui['show-start-date-field'] ) {
+            $ui['date-fields-title'] = __( 'Start Date', 'another-wordpress-classifieds-plugin' );
+        } else if ( $ui['show-end-date-field'] ) {
+            $ui['date-fields-title'] = __( 'End Date', 'another-wordpress-classifieds-plugin' );
+        }
+
         // $ui['payment-term-dropdown'] = !$pay_first || ($is_admin_user && !$edit && $payments_enabled);
         $ui['website-field'] = get_awpcp_option('displaywebsitefield') == 1;
         $ui['website-field-required'] = get_awpcp_option('displaywebsitefieldreqop') == 1;
@@ -776,11 +794,31 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
 
         $params = compact('transaction', 'page', 'ui', 'messages', 'form', 'hidden', 'required', 'url', 'edit', 'preview', 'errors');
 
-        if ( isset( $this->ad ) && is_object( $this->ad ) ) {
-            $params['listing'] = $this->ad;
+        if ( $current_listing ) {
+            $params['listing'] = $current_listing;
         }
 
         return $this->render($template, $params);
+    }
+
+    protected function user_can_modify_start_date( $listing, $is_editing, $is_moderator ) {
+        if ( ! awpcp_get_option( 'allow-start-date-modification' ) ) {
+            return $is_editing && $is_moderator;
+        }
+
+        if ( ! $is_editing || $is_moderator ) {
+            return true;
+        }
+
+        if ( ! isset( $listing->ad_startdate ) ) {
+            return false;
+        }
+
+        if ( strtotime( $listing->ad_startdate ) > current_time( 'timestamp' ) ) {
+            return true;
+        }
+
+        return false;
     }
 
     public function details_step_form($transaction, $form=array(), $errors=array()) {
@@ -1073,12 +1111,6 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             $ad->ad_transaction_id = $transaction->id;
             $ad->ad_fee_paid = $totals['money'];
             $ad->ad_key = AWPCP_Ad::generate_key();
-
-            $timestamp = awpcp_datetime( 'timestamp', $now );
-            $payment_term = $ad->get_payment_term();
-
-            $ad->set_start_date($now);
-            $ad->set_end_date($payment_term->calculate_end_date($timestamp));
             $ad->ad_postdate = $now;
 
             $ad->disabled = true;
@@ -1100,6 +1132,17 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             $ad->is_featured_ad = $data['is_featured_ad'];
             $ad->ad_last_updated = $now;
             $ad->posterip = awpcp_getip();
+
+            if ( $this->user_can_modify_start_date( null, false, awpcp_current_user_is_moderator() ) ) {
+                $start_date = $data['start_date'];
+            } else {
+                $start_date = $now;
+            }
+
+            $start_date_timestamp = awpcp_datetime( 'timestamp', $start_date );
+
+            $ad->set_start_date( $start_date );
+            $ad->set_end_date( $payment_term->calculate_end_date( $start_date_timestamp ) );
 
             $ad = apply_filters( 'awpcp-before-save-listing', $ad, $data );
 

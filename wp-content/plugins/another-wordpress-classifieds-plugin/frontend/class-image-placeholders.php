@@ -77,6 +77,7 @@ class AWPCP_Image_Placeholders {
                 // listings
                 $image_attributes = array(
                     'attributes' => array(
+                        'class' => 'awpcp-listing-primary-image-thumbnail',
                         'alt' => awpcp_esc_attr( $ad->ad_title ),
                         'src' => esc_attr( $thumbnail ),
                         'width' => $thumbnail_width,
@@ -161,6 +162,7 @@ class AWPCP_Image_Placeholders {
 
 			$image_attributes = array(
 				'attributes' => array(
+                    'class' => 'awpcp-listing-primary-image-thumbnail',
 					'alt' => awpcp_esc_attr( $ad->ad_title ),
 					'src' => esc_attr( $thumbnail ),
 					'width' => esc_attr( $thumbnail_width ),

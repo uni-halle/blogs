@@ -13,6 +13,35 @@ function( $ ) {
     } );
 } );
 
+AWPCP.run( 'awpcp/init-category-selector', [ 'jquery' ],
+function( $ ) {
+    $( function() {
+        var $selectors = $( '.awpcp-category-selector .awpcp-category-dropdown' );
+
+        $.subscribe( '/category/updated', function( event, $dropdown, category_id ) {
+            if ( -1 === $selectors.index( $dropdown ) ) {
+                return;
+            }
+
+            // TODO: This is a hack. We should be able to detect only real change
+            // events, not artificial events fired to let other parts of the UI
+            // know what's the current value when the page loads.
+            var previous_value = $dropdown.data( 'awpcp-category-selector-previous-value' );
+            $dropdown.data( 'awpcp-category-selector-previous-value', category_id );
+
+            if ( typeof previous_value === 'undefined' ) {
+                return;
+            }
+
+            if ( category_id === previous_value ) {
+                return;
+            }
+
+            $dropdown.closest( 'form' ).submit();
+        } );
+    } );
+} );
+
 AWPCP.run( 'awpcp/reload-payment-completed-page', ['jquery'],
 function( $ ) {
     $( function() {

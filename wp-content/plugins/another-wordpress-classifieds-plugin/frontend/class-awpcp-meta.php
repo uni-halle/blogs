@@ -14,6 +14,7 @@ class AWPCP_Meta {
 
     public $ad = null;
     public $properties = array();
+    public $metadata = array();
     public $category_id = null;
 
     public $title_builder;
@@ -167,16 +168,28 @@ class AWPCP_Meta {
             $this->meta_tags_genertor->generate_opengraph_meta_tags( $metadata )
         );
 
-        $this->render_meta_tags( $meta_tags );
+        $this->render_meta_tags( $meta_tags, 'Open Graph' );
     }
 
-    private function render_meta_tags( $meta_tags ) {
+    private function render_meta_tags( $meta_tags, $group_name ) {
+        echo '<!-- START - Another WordPress Classifieds Plugin ' . $group_name . ' meta tags -->' . PHP_EOL;
+
         foreach ( $meta_tags as $tag ) {
             echo $tag . PHP_EOL;
         }
+
+        echo '<!-- END - Another WordPress Classifieds Plugin ' . $group_name . ' meta tags -->' . PHP_EOL;
     }
 
     public function get_listing_metadata() {
+        if ( empty( $this->metadata ) ) {
+            $this->metadata = $this->generate_listing_metadata();
+        }
+
+        return $this->metadata;
+    }
+
+    private function generate_listing_metadata() {
         $metadata = array(
             'http://ogp.me/ns#type' => 'article',
             'http://ogp.me/ns#url' => $this->properties['url'],
@@ -198,11 +211,22 @@ class AWPCP_Meta {
         return $metadata;
     }
 
+    public function get_listing_metadata_property( $property, $default = '' ) {
+        $metadata = $this->get_listing_metadata();
+
+        if ( isset( $metadata[ $property ] ) ) {
+            return $metadata[ $property ];
+        }
+
+        return $title;
+    }
+
+
     public function generate_basic_meta_tags() {
         $metadata = $this->get_listing_metadata();
         $meta_tags = $this->meta_tags_genertor->generate_basic_meta_tags( $metadata );
 
-        $this->render_meta_tags( $meta_tags );
+        $this->render_meta_tags( $meta_tags, 'Basic' );
     }
 
     public function get_the_date( $the_date, $d = '' ) {

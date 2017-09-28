@@ -9,6 +9,7 @@ function awpcp_display_listings( $query, $context, $options ) {
         'show_menu_items' => false,
         'show_category_selector' => false,
         'show_pagination' => false,
+        'classifieds_bar_components' => array(),
         'before_content' => '',
         'before_pagination' => '',
         'before_list' => '',
@@ -93,4 +94,11 @@ function awpcp_display_listings_in_page( $query, $context, $options = array() ) 
     ) );
 
     return awpcp_display_listings( $query, $context, $options );
+}
+
+/**
+ * @since 4.0
+ */
+function awpcp_render_classifieds_bar( $components = array() ) {
+    return awpcp_classifieds_bar()->render( $components );
 }

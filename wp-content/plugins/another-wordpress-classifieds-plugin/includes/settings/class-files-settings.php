@@ -37,10 +37,19 @@ class AWPCP_FilesSettings {
 
         $key = $settings->add_section( $group, __( 'Uploads Directory', 'another-wordpress-classifieds-plugin' ), 'uploads-directory', 10, array( $settings, 'section' ) );
 
+        $settings->add_setting( $key, 'uploadfoldername', __( 'Uploads folder name', 'another-wordpress-classifieds-plugin' ), 'textfield', 'uploads', __( 'Upload folder name. (Folder must exist and be located in your wp-content directory)', 'another-wordpress-classifieds-plugin' ) );
+
         $permissions = array( '0755' => '0755', '0777' => '0777' );
 
-        $settings->add_setting( $key, 'uploadfoldername', __( 'Uploads folder name', 'another-wordpress-classifieds-plugin' ), 'textfield', 'uploads', __( 'Upload folder name. (Folder must exist and be located in your wp-content directory)', 'another-wordpress-classifieds-plugin' ) );
-        $settings->add_setting( $key, 'upload-directory-permissions', __( 'File permissions for uploads directory', 'another-wordpress-classifieds-plugin' ), 'select', '0755', __( 'File permissions applied to the uploads directory and sub-directories so that the plugin is allowed to write to those directories.', 'another-wordpress-classifieds-plugin' ), array( 'options' => $permissions ) );
+        $settings->add_setting(
+            $key,
+            'upload-directory-permissions',
+            __( 'File permissions for uploads directory', 'another-wordpress-classifieds-plugin' ),
+            'radio',
+            '0755',
+            __( 'File permissions applied to the uploads directory and sub-directories so that the plugin is allowed to write to those directories.', 'another-wordpress-classifieds-plugin' ),
+            array( 'options' => $permissions )
+        );
 
         // Section: Image Settings
 

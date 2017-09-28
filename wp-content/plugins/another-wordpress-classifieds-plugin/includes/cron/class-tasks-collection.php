@@ -52,6 +52,9 @@ class AWPCP_TasksCollection {
         return $this->get_task_from_query( sprintf( '%s LIMIT 1', $pending_tasks_query ) );
     }
 
+    /**
+     * TODO: Update to use $wpdb->prepare().
+     */
     private function get_tasks_query( $conditions, $order = 'ASC' ) {
         $sql = 'SELECT * FROM ' . AWPCP_TABLE_TASKS . ' WHERE %1$s ORDER BY priority %2$s, execute_after %2$s, created_at %2$s';
         $sql = sprintf( $sql, implode( ' AND ', $conditions ), $order );

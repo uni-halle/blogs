@@ -3,6 +3,7 @@
 class AWPCP_Page {
 
     protected $show_menu_items = true;
+    public $classifieds_bar_components = array();
 
     protected $template = 'frontend/templates/page.tpl.php';
     protected $action = false;

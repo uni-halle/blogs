@@ -131,11 +131,6 @@ class AWPCP_GeneralSettings {
 
         $key = $settings->add_section($group, __( 'Anti-SPAM', 'another-wordpress-classifieds-plugin' ), 'anti-spam', 10, array( $settings, 'section' ) );
 
-        $options = array(
-            'recaptcha' => __( 'reCAPTCHA (recommended)', 'another-wordpress-classifieds-plugin' ),
-            'math' => __( 'Math', 'another-wordpress-classifieds-plugin' ),
-        );
-
         if ( ! $settings->option_exists( 'useakismet' ) ) {
             $is_akismet_installed = function_exists( 'akismet_init' );
             $is_akismet_key_set = strlen( get_option( 'wordpress_api_key' ) ) > 0;
@@ -182,7 +177,20 @@ class AWPCP_GeneralSettings {
             __( 'If checked, an additional form field will be added to the Reply to Ad form.', 'another-wordpress-classifieds-plugin' )
         );
 
-        $settings->add_setting( $key, 'captcha-provider', __( 'Type of CAPTCHA', 'another-wordpress-classifieds-plugin' ), 'select', 'math', __( 'reCAPTCHA: Uses distorted images that only humans should be able to read (recommended).', 'another-wordpress-classifieds-plugin' ) . '<br/>' . __( 'Math: Asks user to solve a simple arithmetic operation.', 'another-wordpress-classifieds-plugin' ), array( 'options' => $options ) );
+        $options = array(
+            'recaptcha' => __( 'reCAPTCHA (recommended)', 'another-wordpress-classifieds-plugin' ),
+            'math' => __( 'Math', 'another-wordpress-classifieds-plugin' ),
+        );
+
+        $settings->add_setting(
+            $key,
+            'captcha-provider',
+            __( 'Type of CAPTCHA', 'another-wordpress-classifieds-plugin' ),
+            'radio',
+            'math',
+            __( 'reCAPTCHA: Uses distorted images that only humans should be able to read (recommended).', 'another-wordpress-classifieds-plugin' ) . '<br/>' . __( 'Math: Asks user to solve a simple arithmetic operation.', 'another-wordpress-classifieds-plugin' ),
+            array( 'options' => $options )
+        );
 
         $settings->add_setting( $key, 'math-captcha-max-number', __( 'Max number used in Math CAPTCHA', 'another-wordpress-classifieds-plugin' ), 'textfield', $settings->get_option( 'contactformcheckhumanhighnumval', 10 ), __( 'Highest number used in aithmetic operation.', 'another-wordpress-classifieds-plugin') );
 

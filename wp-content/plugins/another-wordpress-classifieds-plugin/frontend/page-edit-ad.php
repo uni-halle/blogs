@@ -261,6 +261,11 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         if ( awpcp_current_user_is_moderator() ) {
             $ad->ad_startdate = awpcp_set_datetime_date( $ad->ad_startdate, $data['start_date'] );
             $ad->ad_enddate = awpcp_set_datetime_date( $ad->ad_enddate, $data['end_date'] );
+        } elseif ( $this->user_can_modify_start_date( $ad, true, false ) ) {
+            $start_date_timestamp = awpcp_datetime( 'timestamp', $data['start_date'] );
+
+            $ad->set_start_date( $data['start_date'] );
+            $ad->set_end_date( $payment_term->calculate_end_date( $start_date_timestamp ) );
         }
 
         if ( awpcp_current_user_is_moderator() && ! empty( $data['ad_category'] ) ) {

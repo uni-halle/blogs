@@ -2925,3 +2925,34 @@ function awpcp_get_curl_info() {
 
     return implode( '<br>', $output );
 }
+
+/**
+ * @since 3.7.8
+ */
+function awpcp_get_server_ip_address() {
+    $ip_address = get_transient( 'awpcp-server-ip-address' );
+
+    if ( $ip_address ) {
+        return $ip_address;
+    }
+
+    $response = wp_remote_get( 'https://httpbin.org/ip' );
+
+    if ( is_wp_error( $response ) ) {
+        return $ip_address;
+    }
+
+    $body = json_decode( wp_remote_retrieve_body( $response ) );
+
+    if ( ! isset( $body->origin ) ) {
+        return $ip_address;
+    }
+
+    $ip_address = $body->origin;
+
+    if ( $ip_address ) {
+        set_transient( 'awpcp-server-ip-address', $ip_address, HOUR_IN_SECONDS );
+    }
+
+    return $ip_address;
+}

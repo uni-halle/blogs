@@ -72,6 +72,15 @@ class AWPCP_ListingsModerationSettings {
             $days_before_expired_listings_are_deleted_description
         );
         $settings->add_behavior( $key, 'days-before-expired-listings-are-deleted', 'shownUnless', 'autoexpiredisabledelete' );
+
+        $settings->add_setting(
+            $key,
+            'allow-start-date-modification',
+            __( 'Allow users to edit the start date of their listings?', 'another-wordpress-classifieds-plugin' ),
+            'checkbox',
+            0,
+            ''
+        );
     }
 
     public function validate_all_settings( $options, $group ) {

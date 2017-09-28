@@ -36,6 +36,7 @@ class AWPCP_PointersManager {
         }
 
         wp_enqueue_script( 'awpcp-admin-pointers' );
+        wp_enqueue_style( 'awpcp-admin-style' );
         wp_enqueue_style( 'wp-pointer' );
 
         $this->javascript->set( 'pointers', $pointers );

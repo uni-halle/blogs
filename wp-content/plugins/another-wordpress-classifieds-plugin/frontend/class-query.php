@@ -16,6 +16,10 @@ class AWPCP_Query {
         return $this->is_page_that_has_shortcode( 'AWPCPPLACEAD' );
     }
 
+    public function is_edit_listing_page() {
+        return $this->is_page_that_has_shortcode( 'AWPCPEDITAD' );
+    }
+
     public function is_single_listing_page() {
         return apply_filters( 'awpcp-is-single-listing-page', $this->is_page_that_has_shortcode( 'AWPCPSHOWAD' ) );
     }

@@ -77,6 +77,7 @@ class AWPCP_ListingsFinder {
             'payer_email' => null,
 
             'disabled_date' => null,
+            'start_date' => null,
             'end_date' => null,
 
             'disabled' => null,
@@ -187,8 +188,8 @@ class AWPCP_ListingsFinder {
         $conditions = array();
 
         if ( ! empty( $query['keyword'] ) ) {
-            $sql = '( ad_title LIKE \'%%%1$s%%\' OR ad_details LIKE \'%%%1$s%%\' )';
-            $conditions[] = $this->db->prepare( $sql, $query['keyword'] );
+            $sql = '( ad_title LIKE \'%%%s%%\' OR ad_details LIKE \'%%%s%%\' )';
+            $conditions[] = $this->db->prepare( $sql, $query['keyword'], $query['keyword'] );
         }
 
         return apply_filters( 'awpcp-find-listings-keyword-conditions', $conditions, $query );
@@ -420,6 +421,7 @@ class AWPCP_ListingsFinder {
     private function build_dates_condition( $query ) {
         $conditions = array_merge(
             $this->build_date_condition( 'disabled_date', $query['disabled_date'] ),
+            $this->build_date_condition( 'ad_startdate', $query['start_date'] ),
             $this->build_date_condition( 'ad_enddate', $query['end_date'] )
         );
 
@@ -434,6 +436,8 @@ class AWPCP_ListingsFinder {
         } else if ( isset( $sub_query['compare'] ) ) {
             if ( $sub_query['compare'] == '<' ) {
                 $conditions[] = $this->db->prepare( "$column_name < %s", $sub_query['value'] );
+            } else if ( $sub_query['compare'] == '>' ) {
+                $conditions[] = $this->db->prepare( "$column_name > %s", $sub_query['value'] );
             }
         }
 
@@ -552,6 +556,9 @@ class AWPCP_ListingsFinder {
         }
     }
 
+    /**
+     * TODO: Should we use $wpdb->prepare() to create the SQL queries?
+     */
     private function build_order_by_clause( $orderby, $order, $query ) {
         $basedate = 'CASE WHEN renewed_date IS NULL THEN ad_startdate ELSE GREATEST(ad_startdate, renewed_date) END';
         $is_paid = 'CASE WHEN ad_fee_paid > 0 THEN 1 ELSE 0 END';

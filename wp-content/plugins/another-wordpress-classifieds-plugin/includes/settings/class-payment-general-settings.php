@@ -5,6 +5,12 @@ class AWPCP_PaymentGeneralSettings {
     public function register_settings( $settings ) {
         $key = $settings->add_section( 'payment-settings', __( 'Payment Settings', 'another-wordpress-classifieds-plugin' ), 'default', 10, array( $settings, 'section' ) );
 
+        $link = sprintf( '<a href="%s">', esc_attr( awpcp_get_admin_fees_url() ) );
+        $helptext = __( 'When this is turned on, people will use <manage-fees-link>fee plans</a> to pay for your classifieds. Leave it off if you never want to charge for any ads.', 'another-wordpress-classifieds-plugin' );
+        $helptext = str_replace( '<manage-fees-link>', $link, $helptext );
+
+        $settings->add_setting( $key, 'freepay', __( 'Charge Listing Fee?', 'another-wordpress-classifieds-plugin' ), 'checkbox', 0, $helptext );
+
         $order_options = array(
             1 => __( 'Name', 'another-wordpress-classifieds-plugin' ),
             2 => __( 'Price', 'another-wordpress-classifieds-plugin' ),
@@ -12,18 +18,30 @@ class AWPCP_PaymentGeneralSettings {
             5 => __( 'Duration', 'another-wordpress-classifieds-plugin' ),
         );
 
+        $settings->add_setting(
+            $key,
+            'fee-order',
+            __( 'Fee Plan sort order', 'another-wordpress-classifieds-plugin' ),
+            'radio',
+            1,
+            __( 'The order used to sort Fees in the payment screens.', 'another-wordpress-classifieds-plugin' ),
+            array( 'options' => $order_options )
+        );
+
         $direction_options = array(
             'ASC' => __( 'Ascending', 'another-wordpress-classifieds-plugin' ),
             'DESC' => __( 'Descending', 'another-wordpress-classifieds-plugin' ),
         );
 
-        $link = sprintf( '<a href="%s">', esc_attr( awpcp_get_admin_fees_url() ) );
-        $helptext = __( 'When this is turned on, people will use <manage-fees-link>fee plans</a> to pay for your classifieds. Leave it off if you never want to charge for any ads.', 'another-wordpress-classifieds-plugin' );
-        $helptext = str_replace( '<manage-fees-link>', $link, $helptext );
-
-        $settings->add_setting( $key, 'freepay', __( 'Charge Listing Fee?', 'another-wordpress-classifieds-plugin' ), 'checkbox', 0, $helptext );
-        $settings->add_setting( $key, 'fee-order', __( 'Fee Plan sort order', 'another-wordpress-classifieds-plugin' ), 'select', 1, __( 'The order used to sort Fees in the payment screens.', 'another-wordpress-classifieds-plugin' ), array( 'options' => $order_options ) );
-        $settings->add_setting( $key, 'fee-order-direction', __( 'Fee Plan sort direction', 'another-wordpress-classifieds-plugin' ), 'select', 'ASC', __( 'The direction used to sort Fees in the payment screens.', 'another-wordpress-classifieds-plugin' ), array( 'options' => $direction_options ) );
+        $settings->add_setting(
+            $key,
+            'fee-order-direction',
+            __( 'Fee Plan sort direction', 'another-wordpress-classifieds-plugin' ),
+            'radio',
+            'ASC',
+            __( 'The direction used to sort Fees in the payment screens.', 'another-wordpress-classifieds-plugin' ),
+            array( 'options' => $direction_options )
+       );
 
         $settings->add_setting(
             $key,

@@ -21,8 +21,17 @@ class AWPCP_CreditSystemSettings {
             'both' => __( 'Currency & Credits', 'another-wordpress-classifieds-plugin' ),
         );
 
-        $settings->add_setting( $key, 'enable-credit-system', __( 'Enable Credit System', 'another-wordpress-classifieds-plugin'), 'checkbox', 0, __( 'The Credit System allow users to purchase credit that can later be used to pay for placing Ads.', 'another-wordpress-classifieds-plugin' ) );
-        $settings->add_setting( $key, 'accepted-payment-type', __( 'Accepted payment type', 'another-wordpress-classifieds-plugin' ), 'select', 'both', __( 'Select the type of payment that can be used to purchase Ads.', 'another-wordpress-classifieds-plugin' ), array( 'options' => $options ) );
+        $settings->add_setting( $key, 'enable-credit-system', __( 'Enable Credit System', 'another-wordpress-classifieds-plugin'), 'checkbox', 0, __( 'The Credit System allows users to purchase credit that can later be used to pay for placing Ads.', 'another-wordpress-classifieds-plugin' ) );
+
+        $settings->add_setting(
+            $key,
+            'accepted-payment-type',
+            __( 'Accepted payment type', 'another-wordpress-classifieds-plugin' ),
+            'radio',
+            'both',
+            __( 'Select the type of payment that can be used to purchase Ads.', 'another-wordpress-classifieds-plugin' ),
+            array( 'options' => $options )
+        );
     }
 
     public function validate_credit_system_settings( $options, $group ) {
