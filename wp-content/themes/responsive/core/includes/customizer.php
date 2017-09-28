@@ -23,6 +23,13 @@ function responsive_customize_register( $wp_customize ) {
 		'title'                 => __( 'Theme Elements', 'responsive' ),
 		'priority'              => 30
 	) );
+	$wp_customize->add_setting( 'responsive_theme_options[override_woo]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
+	$wp_customize->add_control( 'res_override_woo', array(
+		'label'                 => __( 'Override WooCommerce Templates?', 'responsive' ),
+		'section'               => 'theme_elements',
+		'settings'              => 'responsive_theme_options[override_woo]',
+		'type'                  => 'checkbox'
+	) );
 	$wp_customize->add_setting( 'responsive_theme_options[featured_images]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
 	$wp_customize->add_control( 'res_featured_images', array(
 		'label'                 => __( 'Enable featured images?', 'responsive' ),
@@ -37,6 +44,17 @@ function responsive_customize_register( $wp_customize ) {
 		'settings'              => 'responsive_theme_options[breadcrumb]',
 		'type'                  => 'checkbox'
 	) );
+	$wp_customize->add_setting( 'responsive_theme_options[site_layout_option]', array( 'sanitize_callback' => 'responsive_validate_site_layout', 'type' => 'option' ) );
+	$wp_customize->add_control( 'site_layout_option', array(
+			'label'                 => __( 'Choose Site Layout', 'responsive' ),
+			'section'               => 'theme_elements',
+			'settings'              => 'responsive_theme_options[site_layout_option]',
+			'type'                  => 'select',
+			'choices'               => array(
+								'default-layout'  => __('Default','responsive'),
+					            'full-width-layout' => __('Full Width Layout','responsive'),   
+							)	 
+			));
 	$wp_customize->add_setting( 'responsive_theme_options[cta_button]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
 	$wp_customize->add_control( 'res_cta_button', array(
 		'label'                 => __( 'Disable Call to Action Button?', 'responsive' ),
@@ -158,6 +176,96 @@ function responsive_customize_register( $wp_customize ) {
 		'description'           => __( 'Paste your shortcode, video or image source', 'responsive' ),
                 'priority'              => 20
 	) );
+	$wp_customize->add_setting( 'responsive_theme_options[about]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
+	$wp_customize->add_control( 'about', array(
+			'label'                 => __( 'Enable About Section', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[about]',
+			'type'                  => 'checkbox',
+			'priority' => 22
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[about_title]', array( 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'postMessage','default' => __( 'About Box Title', 'responsive' ), 'type' => 'option' ));
+	$wp_customize->add_control( 'about_title', array(
+			'label'                 => __( 'About Title', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[about_title]',
+			'type'                  => 'text',
+			'priority' => 22
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[about_text]', array( 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'postMessage', 'type' => 'option' ));
+	$wp_customize->add_control( 'about_text', array(
+			'label'                 => __( 'About Text', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[about_text]',
+			'type'                  => 'text',
+			'priority' => 22
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[about_cta_text]', array( 'sanitize_callback' => 'sanitize_text_field', 'default' => 'Call to Action','transport' => 'postMessage', 'type' => 'option') );
+	$wp_customize->add_control( 'about_cta_text', array(
+			'label'                 => __( 'Call to Action (Text)', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[about_cta_text]',
+			'type'                  => 'text',
+			'priority' => 22
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[about_cta_url]', array( 'sanitize_callback' => 'esc_url_raw','default' => '#','transport' => 'postMessage', 'type' => 'option' ) );
+	$wp_customize->add_control( 'about_cta_url', array(
+			'label'                 => __( 'Call to Action (URL)', 'responsive' ),
+			'section'               => 'home_page',
+			'description'           => __( 'Enter url as http://www.example.com', 'responsive' ),
+			'settings'              => 'responsive_theme_options[about_cta_url]',
+			'type'                  => 'text',
+			'priority' => 22
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[feature]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
+	$wp_customize->add_control( 'feature_front_page', array(
+			'label'                 => __( 'Enable Feature Section', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[feature]',
+			'type'                  => 'checkbox',
+			'priority' => 23
+	) );
+	
+	$wp_customize->add_setting( 'responsive_theme_options[feature_title]', array( 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'postMessage','default' => __( 'Features', 'responsive' ), 'type' => 'option' ));
+	$wp_customize->add_control( 'feature_title', array(
+			'label'                 => __( 'Feature Title', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[feature_title]',
+			'type'                  => 'text',
+			'priority' => 23
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[feature1]', array( 'sanitize_callback' => 'responsive_sanitize_posts', 'type' => 'option' ) );
+	$wp_customize->add_control( 'feature1', array(
+			'label'                 => __( 'Select post for feature 1', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[feature1]',
+			'description'           => __( 'The featured image, title and content from the posts will be used to display the feature. Recommended image size for the featured images: 130 x 130px', 'responsive' ),
+			'type'                  => 'select',
+			'choices'               => $options_posts,
+			'priority' => 23
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[feature2]', array( 'sanitize_callback' => 'responsive_sanitize_posts', 'type' => 'option' ) );
+	$wp_customize->add_control( 'feature2', array(
+			'label'                 => __( 'Select post for feature 2', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[feature2]',
+			'description'           => __( 'The featured image, title and content from the posts will be used to display the feature. Recommended image size for the featured images: 130 x 130px', 'responsive' ),
+			'type'                  => 'select',
+			'choices'               => $options_posts,
+			'priority' => 23
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[feature3]', array( 'sanitize_callback' => 'responsive_sanitize_posts', 'type' => 'option' ) );
+	$wp_customize->add_control( 'feature3', array(
+			'label'                 => __( 'Select post for feature 3', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[feature3]',
+			'description'           => __( 'The featured image, title and content from the posts will be used to display the feature. Recommended image size for the featured images: 130 x 130px', 'responsive' ),
+			'type'                  => 'select',
+			'choices'               => $options_posts,
+			'priority' => 23
+	) );
+	
+	
 	$wp_customize->add_setting( 'responsive_theme_options[testimonials]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
 	$wp_customize->add_control( 'testimonial_front_page', array(
 			'label'                 => __( 'Enable Testimonial Section', 'responsive' ),
@@ -179,7 +287,7 @@ function responsive_customize_register( $wp_customize ) {
 			'label'                 => __( 'Select Post', 'responsive' ),
 			'section'               => 'home_page',
 			'settings'              => 'responsive_theme_options[testimonial_val]',
-			'description'           => __( 'The featured image, title and content from the posts will be used to display the client testimonials. Recommended image size for the featured images: 164 x 164px', 'responsive' ),
+			'description'           => __( 'The featured image, title and content from the posts will be used to display the client testimonials. Recommended image size for the featured images: 178 x 178px', 'responsive' ),
 			'type'                  => 'select',
 			'choices'               => $options_posts,
 			'priority' => 35
@@ -206,7 +314,7 @@ function responsive_customize_register( $wp_customize ) {
 			'label'                 => __( 'Select post for team member1', 'responsive' ),
 			'section'               => 'home_page',
 			'settings'              => 'responsive_theme_options[teammember1]',
-			'description'           => __( 'The featured image, title and content from the posts will be used to display the team member. Recommended image size for the featured images: 164 x 164px', 'responsive' ),
+			'description'           => __( 'The featured image, title and content from the posts will be used to display the team member. Recommended image size for the featured images: 178 x 178px', 'responsive' ),
 			'type'                  => 'select',
 			'choices'               => $options_posts,
 			'priority' => 38
@@ -216,7 +324,7 @@ function responsive_customize_register( $wp_customize ) {
 			'label'                 => __( 'Select post for team member2', 'responsive' ),
 			'section'               => 'home_page',
 			'settings'              => 'responsive_theme_options[teammember2]',
-			'description'           => __( 'The featured image, title and content from the posts will be used to display the team member. Recommended image size for the featured images: 164 x 164px', 'responsive' ),
+			'description'           => __( 'The featured image, title and content from the posts will be used to display the team member. Recommended image size for the featured images: 178 x 178px', 'responsive' ),
 			'type'                  => 'select',
 			'choices'               => $options_posts,
 			'priority' => 39
@@ -226,11 +334,12 @@ function responsive_customize_register( $wp_customize ) {
 			'label'                 => __( 'Select post for team member3', 'responsive' ),
 			'section'               => 'home_page',
 			'settings'              => 'responsive_theme_options[teammember3]',
-			'description'           => __( 'The featured image, title and content from the posts will be used to display the team member. Recommended image size for the featured images: 164 x 164px', 'responsive' ),
+			'description'           => __( 'The featured image, title and content from the posts will be used to display the team member. Recommended image size for the featured images: 178 x 178px', 'responsive' ),
 			'type'                  => 'select',
 			'choices'               => $options_posts,
 			'priority' => 40
 	) );
+	
 	
 
 /*--------------------------------------------------------------
@@ -406,6 +515,21 @@ function responsive_pro_button_style_validate( $input ) {
 	}
 }
 
+function responsive_validate_site_layout( $input ) {
+	// An array of valid results
+	
+	$valid = array(
+			'default-layout' => 'Default',
+			'full-width-layout' => 'Full Width Layout'
+	);
+
+	if( array_key_exists( $input, $valid ) ) {
+		return $input;
+	} else {
+		return '';
+	}
+}
+
 /*--------------------------------------------------------------
 	// CSS Styles
 --------------------------------------------------------------*/
@@ -463,7 +587,8 @@ $wp_customize->add_section( 'footer_section', array(
 		'label'                 => __( 'Copyright text', 'responsive' ),
 		'section'               => 'footer_section',
 		'settings'              => 'responsive_theme_options[copyright_textbox]',
-		'type'                  => 'text'
+		'type'                  => 'text',
+		'priority' => 1
 	) );
 
 	$wp_customize->add_setting( 'responsive_theme_options[poweredby_link]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
@@ -471,7 +596,65 @@ $wp_customize->add_section( 'footer_section', array(
 		'label'                 => __( 'Display Powered By WordPress Link', 'responsive' ),
 		'section'               => 'footer_section',
 		'settings'              => 'responsive_theme_options[poweredby_link]',
-		'type'                  => 'checkbox'
+		'type'                  => 'checkbox',
+		'priority' => 2	
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[contact]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
+	$wp_customize->add_control( 'contact_front_page', array(
+			'label'                 => __( 'Enable Contact Section', 'responsive' ),
+			'section'               => 'footer_section',
+			'settings'              => 'responsive_theme_options[contact]',
+			'type'                  => 'checkbox',
+			'priority' => 3
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[contact_title]', array( 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'postMessage','default' => __( 'Contact Us', 'responsive' ), 'type' => 'option' ));
+	$wp_customize->add_control( 'contact_title', array(
+			'label'                 => __( 'Contact section Title', 'responsive' ),
+			'section'               => 'footer_section',
+			'settings'              => 'responsive_theme_options[contact_title]',
+			'type'                  => 'text',
+			'priority' => 4
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[contact_subtitle]', array( 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'postMessage','default' => __( 'Contact subtitle', 'responsive' ), 'type' => 'option' ));
+	$wp_customize->add_control( 'contact_subtitle', array(
+			'label'                 => __( 'Contact section Subtitle', 'responsive' ),
+			'section'               => 'footer_section',
+			'settings'              => 'responsive_theme_options[contact_subtitle]',
+			'type'                  => 'text',
+			'priority' => 5
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[contact_add]', array( 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'postMessage', 'type' => 'option' ));
+	$wp_customize->add_control( 'contact_add', array(
+			'label'                 => __( 'Address', 'responsive' ),
+			'section'               => 'footer_section',
+			'settings'              => 'responsive_theme_options[contact_add]',
+			'type'                  => 'text',
+			'priority' => 6
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[contact_email]', array( 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'postMessage', 'type' => 'option' ));
+	$wp_customize->add_control( 'contact_email', array(
+			'label'                 => __( 'Email', 'responsive' ),
+			'section'               => 'footer_section',
+			'settings'              => 'responsive_theme_options[contact_email]',
+			'type'                  => 'text',
+			'priority' => 9
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[contact_ph]', array( 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'postMessage', 'type' => 'option' ));
+	$wp_customize->add_control( 'contact_ph', array(
+			'label'                 => __( 'Phone no', 'responsive' ),
+			'section'               => 'footer_section',
+			'settings'              => 'responsive_theme_options[contact_ph]',
+			'type'                  => 'text',
+			'priority' => 10
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[contact_content]', array( 'sanitize_callback' => 'sanitize_text_field','transport' => 'postMessage', 'type' => 'option' ) );
+	$wp_customize->add_control( 'contact_content', array(
+			'label'                 => __( 'Contact form shortcode', 'responsive' ),
+			'section'               => 'footer_section',
+			'settings'              => 'responsive_theme_options[contact_content]',
+			'description'           => __( 'You can put Contact Form 7 shortcode here.', 'responsive' ),
+			'type'                  => 'text',
+			'priority' => 11
 	) );
 
 

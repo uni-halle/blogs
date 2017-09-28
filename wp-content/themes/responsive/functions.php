@@ -57,7 +57,21 @@ if ( ! function_exists( '_wp_render_title_tag' ) ) :
     add_action( 'wp_head', 'responsive_free_render_title' );
 endif;
 
+add_filter( 'body_class', 'add_site_layout_classes' );
 
+function add_site_layout_classes( $classes ){
+
+	global $responsive_options;
+
+	if ( !empty( $responsive_options['site_layout_option'] ) ) :
+
+		$classes[] = $responsive_options['site_layout_option'];
+		
+	endif;
+
+	return $classes;
+
+}
 function responsiveedit_customize_register( $wp_customize ){
 	$wp_customize->selective_refresh->add_partial( 'blogname', array(
 			'selector' => '.site-name a'
@@ -77,6 +91,18 @@ function responsiveedit_customize_register( $wp_customize ){
 	$wp_customize->selective_refresh->add_partial( 'responsive_theme_options[banner_image]', array(
 			'selector' => '#featured',
 	) );
+	$wp_customize->selective_refresh->add_partial( 'responsive_theme_options[about_title]', array(
+			'selector' => '#about_div .section_title',
+	) );
+	$wp_customize->selective_refresh->add_partial( 'responsive_theme_options[about_text]', array(
+			'selector' => '.about_text',
+	) );
+	$wp_customize->selective_refresh->add_partial( 'responsive_theme_options[about_cta_text]', array(
+			'selector' => '.about-cta-button',
+	) );
+	$wp_customize->selective_refresh->add_partial( 'responsive_theme_options[feature_title]', array(
+			'selector' => '#feature_div .section_title',
+	) );	
 $wp_customize->selective_refresh->add_partial( 'responsive_theme_options[testimonial_title]', array(
 		'selector' => '#testimonial_div .section_title',
 ) );
@@ -110,6 +136,30 @@ $wp_customize->selective_refresh->add_partial( 'responsive_theme_options[team_ti
 	$wp_customize->selective_refresh->add_partial( 'responsive_theme_options[copyright_textbox]', array(
 			'selector' => '.copyright',
 			 
+	) );
+	$wp_customize->selective_refresh->add_partial( 'responsive_theme_options[contact_title]', array(
+			'selector' => '.contact_title',
+	
+	) );
+	$wp_customize->selective_refresh->add_partial( 'responsive_theme_options[contact_subtitle]', array(
+			'selector' => '.contact_subtitle',
+	
+	) );
+	$wp_customize->selective_refresh->add_partial( 'responsive_theme_options[contact_add]', array(
+			'selector' => '.contact_add',
+	
+	) );
+	$wp_customize->selective_refresh->add_partial( 'responsive_theme_options[contact_email]', array(
+			'selector' => '.contact_email',
+	
+	) );
+	$wp_customize->selective_refresh->add_partial( 'responsive_theme_options[contact_ph]', array(
+			'selector' => '.contact_ph',
+	
+	) );
+	$wp_customize->selective_refresh->add_partial( 'responsive_theme_options[contact_content]', array(
+			'selector' => '.contact_right',
+	
 	) );
 	$wp_customize->selective_refresh->add_partial( 'header_image', array(
 			'selector' => '#logo',
@@ -157,3 +207,13 @@ function responsive_get_attachment_id_from_url( $attachment_url = '' ) {
 	return $attachment_id;
 }
 endif;
+
+
+/* Lightbox support for woocommerce templates */
+	$responsive_options = responsive_get_options();
+	if ( isset($responsive_options['override_woo']) && 1 == $responsive_options['override_woo'] )
+	{
+		add_theme_support( 'wc-product-gallery-zoom' );
+		add_theme_support( 'wc-product-gallery-lightbox' );
+		add_theme_support( 'wc-product-gallery-slider' );
+	}

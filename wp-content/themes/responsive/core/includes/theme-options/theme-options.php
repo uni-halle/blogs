@@ -219,6 +219,15 @@ function responsive_theme_options_do_page() {
 	$options = apply_filters( 'responsive_options_filter', array(
 		'theme_elements' => array(
 			array(
+				'title'       => __( 'Override WooCommerce Templates?', 'responsive' ),
+				'subtitle'    => '',
+				'heading'     => '',
+				'type'        => 'checkbox',
+				'id'          => 'override_woo',
+				'description' => __( 'Check to enable', 'responsive' ),
+				'placeholder' => ''
+			),
+			array(
 				'title'       => __( 'Enable Featured images?', 'responsive' ),
 				'subtitle'    => '',
 				'heading'     => '',
@@ -235,6 +244,19 @@ function responsive_theme_options_do_page() {
 				'id'          => 'breadcrumb',
 				'description' => __( 'Check to disable', 'responsive' ),
 				'placeholder' => ''
+			),
+			array(
+				'title'       => __( 'Choose Site Layout', 'responsive' ),
+				'subtitle'    => '',
+				'heading'     => '',
+				'type'        => 'select',
+				'id'          => 'site_layout_option',
+				'description' => '',
+				'placeholder' => '',
+				'options'     => array(
+						'default-layout'  => __( 'Default', 'responsive' ),
+						'full-width-layout' => __( 'Full Width Layout', 'responsive' )
+				)
 			),
 			array(
 				'title'       => __( 'Disable Call to Action Button?', 'responsive' ),
@@ -288,6 +310,66 @@ function responsive_theme_options_do_page() {
 				'id'          => 'poweredby_link',
 				'description' => '',
 				'placeholder' => ''
+			),
+			array(
+					'title'       => __( 'Enable Contact Section', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'checkbox',
+					'id'          => 'contact',
+					'description' => '',
+					'placeholder' => ''
+			),
+			array(
+					'title'       => __( 'Contact section Title', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'contact_title',
+					'description' => '',
+					'placeholder' => __( 'Contact', 'responsive' )
+			),
+			array(
+					'title'       => __( 'Contact section Subtitle', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'contact_subtitlet',
+					'description' => '',
+					'placeholder' => __( 'Contact subtitle', 'responsive' )
+			),
+			array(
+					'title'       => __( 'Address', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'contact_add',
+					'description' => '',					
+			),
+			array(
+					'title'       => __( 'Email', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'contact_email',
+					'description' => '',					
+			),
+			array(
+					'title'       => __( 'Phone no', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'contact_ph',
+					'description' => '',					
+			),
+			array(
+					'title'       => __( 'Contact form shortcode', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'contact_content',
+					'description' => __( 'You can put Contact Form 7 shortcode here', 'responsive' ),
+					'placeholder' => ''
 			)
 		),
 		'logo_upload' => array(
@@ -377,6 +459,91 @@ function responsive_theme_options_do_page() {
 				'id'          => 'featured_content',
 				'description' => __( 'Paste your shortcode, video or image source', 'responsive' ),
 				'placeholder' => "<img class='aligncenter' src='" . get_template_directory_uri() . "'/core/images/featured-image.png' width='440' height='300' alt='' />"
+			),
+			array(
+					'title'       => __( 'Enable About Section', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'checkbox',
+					'id'          => 'about',
+					'placeholder' => ''
+			),
+			array(
+					'title'       => __( 'About Title', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'about_title',					
+					'placeholder' => __( 'About Box Title', 'responsive' )
+			),
+			array(
+					'title'       => __( 'About Text', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'about_text'					
+			),	
+			array(
+					'title'       => __( 'Call to Action (Text)', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'about_cta_text'					
+			),
+			array(
+					'title'       => __( 'Call to Action (URL)', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'description' => __('Enter url as http://www.example.com','responsive'),
+					'id'          => 'about_cta_url'					
+			),
+			array(
+					'title'       => __( 'Enable Feature Section', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'checkbox',
+					'id'          => 'feature',
+					'placeholder' => ''
+			),
+			array(
+					'title'       => __( 'Feature', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'feature_title',
+					'description' => __( 'Enter your feature title', 'responsive' ),
+					'placeholder' => __( 'Feature', 'responsive' )
+			),
+			array(
+					'title'       => __( 'Select Post for feature 1', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'select',
+					'id'          => 'feature1',
+					'description' => '',
+					'placeholder' => '',
+					'options'     => Responsive_Options::options_posts()
+			),
+			array(
+					'title'       => __( 'Select Post for feature 2', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'select',
+					'id'          => 'feature2',
+					'description' => '',
+					'placeholder' => '',
+					'options'     => Responsive_Options::options_posts()
+			),
+			array(
+					'title'       => __( 'Select Post for feature 3', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'select',
+					'id'          => 'feature3',
+					'description' => '',
+					'placeholder' => '',
+					'options'     => Responsive_Options::options_posts()
 			),
 			array(
 					'title'       => __( 'Enable Testimonial Section', 'responsive' ),
