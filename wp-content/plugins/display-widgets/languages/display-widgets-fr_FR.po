@@ -1,133 +1,149 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Display Widgets v2.04\n"
+"Project-Id-Version: Display Widgets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-08-20 01:40:43+0000\n"
+"POT-Creation-Date: 2017-09-06 21:48-0400\n"
+"PO-Revision-Date: 2017-09-06 21:48-0400\n"
 "Last-Translator: manooweb <ehesry@yahoo.com>\n"
 "Language-Team: \n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: CSL v1.x\n"
-"X-Poedit-Language: \n"
-"X-Poedit-Country: \n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
-"X-Poedit-Basepath: \n"
-"X-Poedit-Bookmarks: \n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Textdomain-Support: yes"
 
-#: display-widgets.php:602
-#@ display-widgets
-msgid "Front"
-msgstr ""
-
-#: display-widgets.php:603
-#@ display-widgets
-msgid "Blog"
-msgstr "Blog"
-
-#: display-widgets.php:604
-#@ default
-msgid "Archives"
-msgstr "Archives"
-
-#: display-widgets.php:605
-#@ default
-msgid "Single Post"
-msgstr "Billet"
-
-#: display-widgets.php:607
-#@ default
-msgid "Search"
-msgstr "Recherche"
-
-#: display-widgets.php:338
-#@ default
-msgid "Pages"
-msgstr "Pages"
-
-#: display-widgets.php:384
-#@ default
-msgid "Categories"
-msgstr "Categories"
-
-#: display-widgets.php:326
-#@ display-widgets
-msgid "Miscellaneous"
-msgstr "Divers"
-
-#: display-widgets.php:435
-#@ display-widgets
-msgid "Comma Separated list of IDs of posts not listed above"
-msgstr "Id des billets séparés par une virgule qui ne figurent pas ci-dessus"
-
-#: display-widgets.php:355
-#@ display-widgets
-msgid "Custom Post Types"
-msgstr "Champs personnalisés des billets"
-
-#: display-widgets.php:402
-#@ display-widgets
-msgid "Taxonomies"
-msgstr "Taxonomies"
-
-#: display-widgets.php:418
-#@ display-widgets
-msgid "Languages"
-msgstr "Langues"
-
-#: display-widgets.php:310
-#@ display-widgets
+# @ display-widgets
+#: display-widgets.php:349
 msgid "Show Widget for:"
 msgstr "Afficher le widget pour:"
 
-#: display-widgets.php:312
-#@ display-widgets
+# @ display-widgets
+#: display-widgets.php:351
 msgid "Everyone"
 msgstr "Tout le monde"
 
-#: display-widgets.php:313
-#@ display-widgets
+# @ display-widgets
+#: display-widgets.php:352
 msgid "Logged-out users"
 msgstr "Utilisateurs déconnectés"
 
-#: display-widgets.php:314
-#@ display-widgets
+# @ display-widgets
+#: display-widgets.php:353
 msgid "Logged-in users"
 msgstr "Utilisateurs connectés"
 
-#: display-widgets.php:320
-#@ display-widgets
+# @ display-widgets
+#: display-widgets.php:359
 msgid "Hide on checked pages"
 msgstr "Masquer sur les pages cochées"
 
-#: display-widgets.php:321
-#@ display-widgets
+# @ display-widgets
+#: display-widgets.php:360
 msgid "Show on checked pages"
 msgstr "Afficher sur les pages cochées"
 
-#: display-widgets.php:368
-#@ display-widgets
+# @ display-widgets
+#: display-widgets.php:365
+msgid "Miscellaneous"
+msgstr "Divers"
+
+# @ default
+#: display-widgets.php:377
+msgid "Pages"
+msgstr "Pages"
+
+# @ display-widgets
+#: display-widgets.php:394
+msgid "Custom Post Types"
+msgstr "Champs personnalisés des billets"
+
+# @ display-widgets
+#: display-widgets.php:407
 msgid "Custom Post Type Archives"
 msgstr ""
 
-#: display-widgets.php:379
-#@ display-widgets
+# @ display-widgets
+#: display-widgets.php:418
 msgid "Archive"
 msgstr ""
 
-#: display-widgets.php:388
-#@ display-widgets
+# @ default
+#: display-widgets.php:423
+msgid "Categories"
+msgstr "Categories"
+
+# @ display-widgets
+#: display-widgets.php:427
 msgid "All Categories"
 msgstr ""
 
-#: display-widgets.php:732
+# @ display-widgets
+#: display-widgets.php:441
+msgid "Taxonomies"
+msgstr "Taxonomies"
+
+# @ display-widgets
+#: display-widgets.php:457
+msgid "Languages"
+msgstr "Langues"
+
+#: display-widgets.php:474
+msgid "Countries"
+msgstr ""
+
+#: display-widgets.php:476
+msgid "Comma separated list of Country Codes (us, en-gb, ...)"
+msgstr ""
+
+#: display-widgets.php:481
+msgid "Comma separated list of IDs of posts not listed above"
+msgstr ""
+
+# @ display-widgets
+#: display-widgets.php:664
+msgid "Front"
+msgstr ""
+
+# @ display-widgets
+#: display-widgets.php:665
+msgid "Blog"
+msgstr "Blog"
+
+# @ default
+#: display-widgets.php:666
+msgid "Archives"
+msgstr "Archives"
+
+# @ default
+#: display-widgets.php:667
+msgid "Single Post"
+msgstr "Billet"
+
+# @ default
+#: display-widgets.php:669
+msgid "Search"
+msgstr "Recherche"
+
+#: display-widgets.php:771
+msgid "Turn GeoIP2 On"
+msgstr ""
+
+#: display-widgets.php:775
+msgid "Turn GeoIP2 Off"
+msgstr ""
+
+# @ display-widgets
+#: display-widgets.php:810
 #, php-format
-#@ display-widgets
 msgid "#%d (no title)"
 msgstr ""
 
+# @ display-widgets
+#~ msgid "Comma Separated list of IDs of posts not listed above"
+#~ msgstr "Id des billets séparés par une virgule qui ne figurent pas ci-dessus"
