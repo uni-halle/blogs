@@ -1,145 +1,133 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Display Widgets\n"
+"Project-Id-Version: Display Widgets v2.04\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/display-widgets\n"
-"POT-Creation-Date: 2017-09-06 21:46-0400\n"
-"PO-Revision-Date: 2017-09-06 21:46-0400\n"
+"POT-Creation-Date: 2010-08-26 12:29+0200\n"
+"PO-Revision-Date: 2015-08-20 01:40:33+0000\n"
 "Last-Translator: Alicia García Holgado <alicia.alicia1986gh@gmail.com>\n"
 "Language-Team: Alicia García Holgado <aliciagh@usal.es>\n"
-"Language: es_ES\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.12\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-Basepath: ..\n"
-"X-Textdomain-Support: yes\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: SPAIN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
 
-# @ display-widgets
-#: display-widgets.php:349
-msgid "Show Widget for:"
-msgstr ""
-
-# @ display-widgets
-#: display-widgets.php:351
-msgid "Everyone"
-msgstr ""
-
-# @ display-widgets
-#: display-widgets.php:352
-msgid "Logged-out users"
-msgstr ""
-
-# @ display-widgets
-#: display-widgets.php:353
-msgid "Logged-in users"
-msgstr ""
-
-# @ display-widgets
-#: display-widgets.php:359
-msgid "Hide on checked pages"
-msgstr ""
-
-# @ display-widgets
-#: display-widgets.php:360
-msgid "Show on checked pages"
-msgstr ""
-
-# @ display-widgets
-#: display-widgets.php:365
-msgid "Miscellaneous"
-msgstr "Miscelánea"
-
-# @ default
-#: display-widgets.php:377
+#: display-widgets.php:338
+#@ default
 msgid "Pages"
 msgstr "Páginas"
 
-# @ display-widgets
-#: display-widgets.php:394
-msgid "Custom Post Types"
-msgstr ""
-
-# @ display-widgets
-#: display-widgets.php:407
-msgid "Custom Post Type Archives"
-msgstr ""
-
-# @ display-widgets
-#: display-widgets.php:418
-msgid "Archive"
-msgstr ""
-
-# @ default
-#: display-widgets.php:423
+#: display-widgets.php:384
+#@ default
 msgid "Categories"
 msgstr "Categorías"
 
-# @ display-widgets
-#: display-widgets.php:427
-msgid "All Categories"
-msgstr ""
+#: display-widgets.php:326
+#@ display-widgets
+msgid "Miscellaneous"
+msgstr "Miscelánea"
 
-# @ display-widgets
-#: display-widgets.php:441
-msgid "Taxonomies"
-msgstr ""
-
-# @ display-widgets
-#: display-widgets.php:457
-msgid "Languages"
-msgstr ""
-
-#: display-widgets.php:474
-msgid "Countries"
-msgstr ""
-
-#: display-widgets.php:476
-msgid "Comma separated list of Country Codes (us, en-gb, ...)"
-msgstr ""
-
-#: display-widgets.php:481
-msgid "Comma separated list of IDs of posts not listed above"
-msgstr ""
-
-# @ display-widgets
-#: display-widgets.php:664
+#: display-widgets.php:602
+#@ display-widgets
 msgid "Front"
 msgstr ""
 
-# @ display-widgets
-#: display-widgets.php:665
+#: display-widgets.php:603
+#@ display-widgets
 msgid "Blog"
 msgstr ""
 
-# @ default
-#: display-widgets.php:666
+#: display-widgets.php:604
+#@ default
 msgid "Archives"
 msgstr ""
 
-# @ default
-#: display-widgets.php:667
+#: display-widgets.php:605
+#@ default
 msgid "Single Post"
 msgstr ""
 
-# @ default
-#: display-widgets.php:669
+#: display-widgets.php:607
+#@ default
 msgid "Search"
 msgstr ""
 
-#: display-widgets.php:771
-msgid "Turn GeoIP2 On"
+#: display-widgets.php:355
+#@ display-widgets
+msgid "Custom Post Types"
 msgstr ""
 
-#: display-widgets.php:775
-msgid "Turn GeoIP2 Off"
+#: display-widgets.php:402
+#@ display-widgets
+msgid "Taxonomies"
 msgstr ""
 
-# @ display-widgets
-#: display-widgets.php:810
+#: display-widgets.php:435
+#@ display-widgets
+msgid "Comma Separated list of IDs of posts not listed above"
+msgstr ""
+
+#: display-widgets.php:418
+#@ display-widgets
+msgid "Languages"
+msgstr ""
+
+#: display-widgets.php:310
+#@ display-widgets
+msgid "Show Widget for:"
+msgstr ""
+
+#: display-widgets.php:312
+#@ display-widgets
+msgid "Everyone"
+msgstr ""
+
+#: display-widgets.php:313
+#@ display-widgets
+msgid "Logged-out users"
+msgstr ""
+
+#: display-widgets.php:314
+#@ display-widgets
+msgid "Logged-in users"
+msgstr ""
+
+#: display-widgets.php:320
+#@ display-widgets
+msgid "Hide on checked pages"
+msgstr ""
+
+#: display-widgets.php:321
+#@ display-widgets
+msgid "Show on checked pages"
+msgstr ""
+
+#: display-widgets.php:368
+#@ display-widgets
+msgid "Custom Post Type Archives"
+msgstr ""
+
+#: display-widgets.php:379
+#@ display-widgets
+msgid "Archive"
+msgstr ""
+
+#: display-widgets.php:388
+#@ display-widgets
+msgid "All Categories"
+msgstr ""
+
+#: display-widgets.php:732
 #, php-format
+#@ display-widgets
 msgid "#%d (no title)"
 msgstr ""
+

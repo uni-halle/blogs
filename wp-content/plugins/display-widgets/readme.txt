@@ -1,10 +1,9 @@
 === Display Widgets ===
-Contributors: displaywidget
+Contributors: displaywidget, sswells
 Tags: widget, widgets, admin, show, hide, page, sidebar, content, wpmu, plugin, post, posts, content, filter, widget logic, widget context
-Text Domain: display-widgets
-Requires at least: 3.8
-Tested up to: 4.8
-Stable tag: 2.6.3.1
+Requires at least: 3.1
+Tested up to: 4.3
+Stable tag: 2.05
 
 Simply hide widgets on specified pages. Adds checkboxes to each widget to either show or hide it on every site page.
 
@@ -12,7 +11,11 @@ Simply hide widgets on specified pages. Adds checkboxes to each widget to either
 
 Change your sidebar content for different pages, categories, custom taxonomies, and WPML languages. Avoid creating multiple sidebars and duplicating widgets by adding check boxes to each widget in the admin (as long as it is written in the WordPress version 2.8 format) which will either show or hide the widgets on every site page. Great for avoiding extra coding and keeping your sidebars clean.
 
-This plugin allows you to hide/show widgets based on your visitors' Country of origin. It uses *our own implementation* of an Ip2Location-based online API to determine your visitors' Country, which we called GeoIP2.io. You can read our [terms and conditions](http://geoip2.io/terms.html) for more information on our data collection and retention policy. Please note: no calls to external providers will be performed when this feature is deactivated. See the WordPress Plugins page for the toggle to activate or deactivate it. A field in the widget's configuration panel allows you to list all the ISO Alpha-2 country codes (us, gb, it, etc) for which the widget itself should be visible or hidden. You can find a list of [country codes here](http://www.nationsonline.org/oneworld/country_code_list.htm).
+By default, 'Hide on checked pages' is selected with no boxes checked, so all current widgets will continue to display on all pages. 
+
+If you'd like to contribute, you can find a development version on ([GitHub](https://github.com/Strategy11/display-widgets "GitHub"))
+
+Check out our other plugins, [Formidable Forms](https://wordpress.org/plugins/formidable "Formidable Forms") to create drag and drop forms, and [Formidable Pro](https://formidablepro.com "Formidable Forms Pro") to build robust applications with your collected data.
 
 == Installation ==
 
@@ -24,45 +27,24 @@ This plugin allows you to hide/show widgets based on your visitors' Country of o
 
 == Frequently Asked Questions ==
 
+= Why aren't the options showing up on my widget? =
+
+This is a known limitation. Widgets written in the pre-2.8 format don't work the same way, and don't have the hooks. Sorry.
+
 = My widgets aren't showing when I activate =
 
-With some plugins and themes, you may need to adjust when the widget calls start. You can add the following code to your theme's functions.php:
+With some plugins and themes, you may need to adjust when the widget checking starts. You can add this to your theme functions.php or a new plugin.
 
-`add_filter('dw_callback_trigger', 'dw_callback_trigger');
+add_filter('dw_callback_trigger', 'dw_callback_trigger');
 function dw_callback_trigger(){
     return 'wp_head'; //change to: plugins_loaded, after_setup_theme, wp_loaded, wp_head, or a hook of your choice
 }
-`
 
 == Screenshots ==
 
 1. The extra widget options added.
 
 == Changelog ==
-= 2.6.3.1 =
-* I'm starting to clean up the source code and get back on track with localizations. Please post a message in the forum if you would like to update one of the localization files! Your help is very much appreciated.
-
-= 2.6.3 =
-* Fixed a vulnerability highlighted [by one of our users](http://www.phpbuilt.com/display-widgets-plugin-vulnerability.pdf). I encourage all my users to upgrade as soon as possible.
-
-= 2.6.2.1 =
-* Fixed a compatibility issue experienced by some users, when using other plugins to handle their widgets.
-
-= 2.6.2 =
-* I added a link to the GeoIP2.io's (an IP2Location-based service) [terms and conditions](http://geoip2.io/terms.html) to comply with the WordPress' repository guidelines. A big thank you to the moderators for their guidance.
-* I am working on implementing full compatibility with WPML (thank you, Merceded, for reaching out to me).
-
-= 2.6.1 =
-* Apparently this is a typical initiation ritual: before getting better, things have to get worse, and allow the protagonist to redeem himself and look at the bright future in front of him. Well, that's what happened to me. I hit a small bump along the way, and I thank all loyal users for sticking with me while I fixed some of the bugs.
-* The idea of downloading 50Mb worth of data from MaxMind was not well received by some of this plugin's users, who came to the forums to protest and ask me to get rid of it. Fair enough. The idea was to add a new feature to allow you to hide/show widgets based on the visitor's country, a first attempt to extend this plugin's functionality in many new exciting ways.
-* The new approach uses Ip2Location-based online API to retrieve your visitor's Country, if you decide to enable this functionality. No calls to external providers are performed when this feature is deactivated. See WordPress Plugins page for the toggle to activate or deactivate it. A new field in the widget's configuration panel allows you to list all the ISO Alpha-2 country codes (us, gb, it, etc) for which the widget itself should be visible or hidden. You can find a list of [country codes here](http://www.nationsonline.org/oneworld/country_code_list.htm).
-
-= 2.6 =
-* We're back! The development of this plugin has been resumed. I'm working on adding new features and supporting existing bug and pending requests. Thank you for all your kind support!
-* Optimizations have been applied throughout the source code, to improve performance. Class declarations are now standardized and functions are easier to read and manage.
-* Add new experimental geolocation widget to greet your visitors with the name of the city they're connecting from. This is very much work in progress, and your feedback on how to improve it, is more than welcome. You can find the widget under Appearance > Widgets.
-* We had to skip a few version numbers because of a mistake in numbering our previous release: PHP evaluates 2.05 as 2.5, so in order to release an update, we had to start from 2.6
-
 = 2.05 =
 * Add "Text Domain" to the plugin header to enable translations
 * Add Brazilian Portuguese translation
@@ -103,3 +85,99 @@ function dw_callback_trigger(){
 * Added support for custom post type archive pages (contribution from [tomoki](http://wordpress.org/support/profile/tomoki "tomoki") )
 * Removed 'include', 'login', and 'logout' fallbacks to further alleviate conflicts
 * Added Italian translation
+
+= 1.24 =
+* Fixed bug preventing boxes unchecking for some users
+
+= 1.23 =
+* Switched WPML language support from highest to lowest priority when determining whether to show or hide
+* Reduced database size of options saved
+* Changed 'login' to 'dw_login' parameter naming to remove conflicts with certain widgets
+* Added French, Tagalog, and Polish translations
+
+= 1.22 =
+* Added WPML support
+* Fix to allow more than 5 taxonomies
+* Fix to allow more than 99 pages
+* Changed 'include' to 'dw_include' parameter naming to remove conflict with Suffusion widget
+* Added Albanian translation ([Taulant](http://wporacle.com/ "Taulant"))
+* Added Bahasa Malaysian translation (100webhosting.com)
+
+= 1.21 =
+* Added Romanian translation (Nobelcom)
+* Added Chinese translation ([Hanolex](http://hanolex.org "Hanolex"))
+
+= 1.20 =
+* Added Hebrew translation ([Ariel](http://arielk.net "Ariel"))
+* Fix css typo to correctly show the pointer cursor to show/hide option under the headings
+
+= 1.19 =
+* Fixed option to insert IDs to work with posts
+
+= 1.18 =
+* Added custom taxonomy support
+* Show category options even if there are no posts in them 
+* Fixed expand and collapse bug in widget options
+
+= 1.17 =
+* Added Spanish translation ([Alicia García Holgado](http://grial.usal.es/pfcgrial "Alicia García Holgado"))
+* Added Russian translation ([Serhij](http://darmoid.ru "Serhij"))
+
+= 1.16 =
+* Corrected naming of the Japanese translation files
+* Added Dutch translation (Alanya Hotels)
+
+= 1.15 =
+* Added custom post type support
+* Added German translation ([Caspar Hübinger](http://glueckpress.com "Caspar Hübinger"))
+
+= 1.14 =
+* Added Japanese translation ([BNG NET](http://staff.blog.bng.net/ "BNG NET"))
+
+= 1.13 = 
+* Added a PO file for translators
+
+= 1.12 =
+* Show only published pages, and increase the displayed page limit
+* Toggle sections
+* Added check boxes to hide/show for logged-in users
+* Added text field to list post ids for posts not displayed
+
+= 1.11 =
+* WordPress 3.0 compatibility
+* Fixed PHP notices
+
+= 1.10 =
+* Improved admin widget page efficiency and load time
+* Fixed bug preventing widgets from being hidden/shown correctly on some subpages
+
+= 1.9 =
+* Add check box for front page
+* Change category checkbox to apply not only to the category page, but also to posts in that category
+
+= 1.8 =
+* Added check box for search page under "Miscellaneous"
+
+= 1.7 =
+* Update for 2.9 compatibility
+
+= 1.6 =
+* Added category checkboxes
+
+= 1.5 =
+* Added "404 Page" checkbox
+
+= 1.4 =
+* Changed "Home Page" check box to "Blog Page"
+
+= 1.3 =
+* Added check box for Home page if it is the blog page
+* Added check boxes for single post and archive pages
+* Save hide/show option correctly for more widgets
+
+= 1.2 =
+* Save page check boxes for more widgets
+
+= 1.1 =
+* Fixed bug that prevented other widget options to be displayed
+

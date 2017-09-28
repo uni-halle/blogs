@@ -1,21 +1,28 @@
 <?php
 /*
 Plugin Name: Display Widgets
-Plugin URI: https://wordpress.org/plugins/display-widgets/
-Description: Adds checkboxes to each widget to show or hide on site pages. Please refer to our <a href="http://geoip2.io/terms.html">terms and conditions</a> for more information about our free GeoLocation service.
-Version: 2.6.3.1
-Author: displaywidget
+Plugin URI: http://strategy11.com/display-widgets/
+Description: Adds checkboxes to each widget to show or hide on site pages.
+Author: Strategy11
+Author URI: http://strategy11.com
+Version: 2.05
 Text Domain: display-widgets
-Domain Path: /languages
-Committers: displaywidget
 */
+
+/*
+// Change the hook this is triggered on with a bit of custom code. Copy and paste into your theme functions.php or a new plugin.
+add_filter('dw_callback_trigger', 'dw_callback_trigger');
+function dw_callback_trigger(){
+    return 'wp_head'; //plugins_loaded, after_setup_theme, wp_loaded, wp_head
+}
+*/
+
 
 class DWPlugin{
 	var $transient_name = 'dw_details';
 	var $checked = array();
 	var $id_base = '';
 	var $number = '';
-	var $options = array();
     
 	// pages on site
 	var $pages = array();
@@ -32,7 +39,7 @@ class DWPlugin{
 	// WPML languages
 	var $langs = array();
     
-	function __construct() {
+	function __construct(){
 		add_filter( 'widget_display_callback', array( &$this, 'show_widget' ) );
         
 		// change the hook that triggers widget check
@@ -44,47 +51,19 @@ class DWPlugin{
 		add_action( 'wp_ajax_dw_show_widget', array( &$this, 'show_widget_options' ) );
 		add_action( 'admin_footer', array( &$this, 'load_js' ) );
         
-		// when a post/page is saved
-		add_action( 'save_post', array( &$this, 'delete_transient' ) );
+		// when a page is saved
+		add_action( 'save_post_page', array( &$this, 'delete_transient' ) );
         
 		// when a new category/taxonomy is created
 		add_action( 'created_term', array( &$this, 'delete_transient' ) );
-        add_action( 'edited_term', array( &$this, 'delete_transient' ), 10, 3 );
-		add_action( 'delete_term', array( &$this, 'delete_transient' ), 10, 3 );
-
+        
 		// when a custom post type is added
 		add_action( 'update_option_rewrite_rules', array( &$this, 'delete_transient' ) );
-
+        
 		// reset transient after activating the plugin
 		register_activation_hook( dirname(__FILE__) . '/display-widgets.php', array( &$this, 'delete_transient' ) );
- 
+        
 		add_action( 'plugins_loaded', array( &$this, 'load_lang' ) );
-
-		// Link to deactivate geolocation feature
-		add_filter( 'plugin_action_links_display-widgets/display-widgets.php', array( &$this, 'dw_settings_link' ) );
-
-		$this->options = get_option( 'displaywidgets_options', array() );
-		if ( !is_array( $this->options ) ) {
-			$this->options = array();
-		}
-
-		// Handle Geolocation Toggle
-		if ( !empty( $_GET[ 'dwgeolocationtoggle' ] ) ) {
-			switch ( $_GET[ 'dwgeolocationtoggle' ] ) {
-				case 'on':
-					$this->options[ 'enable_geolocation' ] = true;
-					break;
-
-				case 'off':
-					$this->options[ 'enable_geolocation' ] = false;
-					break;
-
-				default:
-					break;
-			}
-
-			update_option( 'displaywidgets_options', $this->options, false );
-		}
 
 		// get custom Page Walker
 		$this->page_list = new DW_Walker_Page_List();
@@ -113,7 +92,7 @@ class DWPlugin{
 			if ( ! $show && $post_id ) {
 				$show = isset( $instance[ 'page-' . $post_id ] ) ? $instance[ 'page-' . $post_id ] : false;
 			}
-
+            
 			// check if blog page is front page too
 			if ( ! $show && is_front_page() && isset( $instance['page-front'] ) ) {
 				$show = $instance['page-front'];
@@ -172,8 +151,6 @@ class DWPlugin{
 			$show = false;
 		}
 
-		$show = (bool) $show;
-
 		if ( $post_id && ! $show && isset( $instance['other_ids'] ) && ! empty( $instance['other_ids'] ) ) {
 			$other_ids = explode( ',', $instance['other_ids'] );
 			foreach ( $other_ids as $other_id ) {
@@ -183,31 +160,20 @@ class DWPlugin{
 			}
 		}
 
-		if ( !$show && defined( 'ICL_LANGUAGE_CODE' ) ) {
+		$show = apply_filters( 'dw_instance_visibility', $show, $instance );
+	
+		if ( ! $show && defined( 'ICL_LANGUAGE_CODE' ) ) {
 			// check for WPML widgets
-			$show = (bool) isset( $instance[ 'lang-' . ICL_LANGUAGE_CODE ] ) ? $instance[ 'lang-' . ICL_LANGUAGE_CODE ] : false;
+			$show = isset( $instance[ 'lang-' . ICL_LANGUAGE_CODE ] ) ? $instance[ 'lang-' . ICL_LANGUAGE_CODE ] : false;
 		}
 
-		if ( !isset( $show ) ) {
+		if ( ! isset( $show ) ) {
 			$show = false;
 		}
 
-		// Geolocation
-		if ( !empty( $instance[ 'countries' ] ) && is_array( $this->options ) && !empty( $this->options[ 'enable_geolocation' ] ) && $this->options[ 'enable_geolocation' ] === true ) {
-			$show = $show && self::show_geolocation( $instance['countries'] );
-		}
-
-		$show = apply_filters( 'dw_instance_visibility', $show, $instance );
-
 		$instance['dw_include'] = isset( $instance['dw_include'] ) ? $instance['dw_include'] : 0;
-
-		if ( $instance['dw_include'] == 0 ) {
-			$show = !$show;
-		}
-
-		// dw_include = 0 : hide on checked pages, dw_include = 1 : show on checked pages
-
-		if ( !$show ) {
+        
+		if ( ( $instance['dw_include'] && false == $show ) || ( 0 == $instance['dw_include'] && $show ) ) {
 			return false;
 		} else if ( defined('ICL_LANGUAGE_CODE') && $instance['dw_include'] && $show && ! isset( $instance[ 'lang-' . ICL_LANGUAGE_CODE ] ) ) {
 			//if the widget has to be visible here, but the current language has not been checked, return false
@@ -292,7 +258,6 @@ class DWPlugin{
 		$instance['dw_include'] = isset( $instance['dw_include'] ) ? $instance['dw_include'] : 0;
 		$instance['dw_logged'] = self::show_logged( $instance );
 		$instance['other_ids'] = isset( $instance['other_ids'] ) ? $instance['other_ids'] : '';
-		$instance['countries'] = isset( $instance['countries'] ) ? $instance['countries'] : '';
 ?>
 <div class="dw_opts">
 	<input type="hidden" name="<?php echo esc_attr( $widget->get_field_name('dw_include') ); ?>" id="<?php echo esc_attr( $widget->get_field_id('dw_include') ); ?>" value="<?php echo esc_attr( $instance['dw_include'] ) ?>" />
@@ -307,13 +272,11 @@ class DWPlugin{
 		if ( strpos( $k, 'page-' ) === 0 || strpos( $k, 'type-' ) === 0 || strpos( $k, 'cat-' ) === 0 || strpos( $k, 'tax-' ) === 0 || strpos( $k, 'lang-' ) === 0 ) {
     ?>
 	<input type="hidden" id="<?php echo esc_attr( $widget->get_field_id( $k ) ); ?>" name="<?php echo esc_attr( $widget->get_field_name( $k ) ); ?>" value="<?php echo esc_attr( $v ) ?>"  />
-
     <?php
     	}
     } ?>
     
 	<input type="hidden" name="<?php echo esc_attr( $widget->get_field_name('other_ids') ); ?>" id="<?php echo esc_attr( $widget->get_field_id('other_ids') ); ?>" value="<?php echo esc_attr( $instance['other_ids'] ) ?>" />
-	<input type="hidden" name="<?php echo esc_attr( $widget->get_field_name('countries') ); ?>" id="<?php echo esc_attr( $widget->get_field_id('countries') ); ?>" value="<?php echo esc_attr( $instance['countries'] ) ?>" />
 </div>
 <?php
     }
@@ -343,7 +306,6 @@ class DWPlugin{
 		$instance['dw_include'] = isset( $instance['dw_include'] ) ? $instance['dw_include'] : 0;
 		$instance['dw_logged'] = self::show_logged( $instance );
 		$instance['other_ids'] = isset( $instance['other_ids'] ) ? $instance['other_ids'] : '';
-		$instance['countries'] = isset( $instance['countries'] ) ? $instance['countries'] : '';
 ?>   
     <p>
         <label for="<?php echo esc_attr( $widget->get_field_id('dw_include') ); ?>"><?php _e( 'Show Widget for:', 'display-widgets' ) ?></label>
@@ -471,17 +433,10 @@ class DWPlugin{
     </div>
     <?php } ?>
     
-    <h4 class="dw_toggle" style="cursor:pointer;"><?php _e( 'Countries', 'display-widgets' ) ?> +/-</h4>
-    <div class="dw_collapse">
-	    <p><label for="<?php echo esc_attr( $widget->get_field_id('countries') ); ?>"><?php _e( 'Comma separated list of Country Codes (us, en-gb, ...)', 'display-widgets' ) ?>:</label>
-		<input type="text" value="<?php echo esc_attr( $instance['countries'] ) ?>" name="<?php echo esc_attr( $widget->get_field_name('countries') ); ?>" id="<?php echo esc_attr( $widget->get_field_id('countries') ); ?>" style="width:100%"/>
-	    </p>
-	</div>
-
-	<p><label for="<?php echo esc_attr( $widget->get_field_id('other_ids') ); ?>"><?php _e( 'Comma separated list of IDs of posts not listed above', 'display-widgets' ) ?>:</label>
+	<p><label for="<?php echo esc_attr( $widget->get_field_id('other_ids') ); ?>"><?php _e( 'Comma Separated list of IDs of posts not listed above', 'display-widgets' ) ?>:</label>
 	<input type="text" value="<?php echo esc_attr( $instance['other_ids'] ) ?>" name="<?php echo esc_attr( $widget->get_field_name('other_ids') ); ?>" id="<?php echo esc_attr( $widget->get_field_id('other_ids') ); ?>" />
     </p>
-</div>
+    </div>
 <?php
     }
 
@@ -563,7 +518,6 @@ class DWPlugin{
 		$instance['dw_include'] = ( isset( $new_instance['dw_include'] ) && $new_instance['dw_include'] ) ? 1 : 0;
 		$instance['dw_logged'] = ( isset( $new_instance['dw_logged'] ) && $new_instance['dw_logged'] ) ? $new_instance['dw_logged'] : '';
 		$instance['other_ids'] = ( isset( $new_instance['other_ids'] ) && $new_instance['other_ids'] ) ? $new_instance['other_ids'] : '';
-		$instance['countries'] = ( isset( $new_instance['countries'] ) && $new_instance['countries'] ) ? $new_instance['countries'] : '';
         
 		$page_types = self::page_types();
 		foreach ( array_keys( $page_types ) as $page ) {
@@ -644,21 +598,6 @@ function dw_toggle(){jQuery(this).next('.dw_collapse').toggle();}
         return $instance['dw_logged'];
     }
     
-    function show_geolocation( $_csv_countries = '' ) {
-		if ( !class_exists( 'dw_geolocation_connector' ) ) {
-			return true;
-		}
-
-		$user_country = dw_geolocation_connector::get_country();
-
-		if ( !empty( $_csv_countries ) && stripos( $_csv_countries, $user_country ) !== false ) {
-			return true;
-		}
-
-		return false;
-
-    }
-
     function page_types(){
         $page_types = array(
             'front'     => __( 'Front', 'display-widgets' ),
@@ -740,7 +679,7 @@ function dw_toggle(){jQuery(this).next('.dw_collapse').toggle();}
 			'pages'     => $this->pages,
 			'cats'      => $this->cats,
 			'cposts'    => $this->cposts,
-			'taxes'     => $this->taxes
+			'taxes'     => $this->taxes,
 		), 60*60*24*7 );
 
 		if ( empty( $this->checked ) ) {
@@ -765,22 +704,6 @@ function dw_toggle(){jQuery(this).next('.dw_collapse').toggle();}
 		return $id;
 	}
 
-	// Add settings link on plugin page
-	function dw_settings_link( $links ) {
-		if ( !isset( $this->options[ 'enable_geolocation' ] ) || $this->options[ 'enable_geolocation' ] == false ) {
-			$label = __( 'Turn GeoIP2 On', 'display-widgets' );
-			$switch = 'on';
-		}
-		else {
-			$label = __( 'Turn GeoIP2 Off', 'display-widgets' );
-			$switch = 'off';
-		}
-
-		$mylinks = array( 
-			'<a href="' . admin_url( 'plugins.php?dwgeolocationtoggle=' . $switch ) . '">' . $label . '</a>'
-		);
-		return array_merge( $links, $mylinks );
-	}
 }
 
 /*
@@ -822,11 +745,11 @@ class DW_Walker_Page_List extends Walker_Page {
 
 }
 
-// Static Class that defines all the geolocation functionality
-$displayw_plugin_instance = new DWPlugin();
-include_once( plugin_dir_path( __FILE__ ) . '/geolocation.php' );
+new DWPlugin();
 
-/* custom Page Walker CSS */
+/*
+custom Page Walker CSS
+*/
 function dw_widgets_style() {
 	echo '<style>';
 	// use next line for normal indent instead of &mdash:
