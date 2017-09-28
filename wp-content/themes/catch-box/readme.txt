@@ -71,11 +71,17 @@ dark, light, blue, white, black, gray, one-column, two-columns, left-sidebar, ri
 == Installation ==
 
 1. Primary: Login to your wp-admin area and go to Appearance -> Themes. Select Install tab and click on Upload link. Select theme .zip and ckick on Install now button. If you have any errors, use alternate method.
-2. Alternate: Unzip the template file (catch-box.zip) that you have downloaded. Via FTP, upload the whole folder (catchresponsive) to your server and place it in the /wp-content/themes/ folder. Do not change directory name. The template files should thus be here now: /wp-content/themes/catch-box/index.php (for example).
+2. Alternate: Unzip the template file (catch-box.zip) that you have downloaded. Via FTP, upload the whole folder (catch-box) to your server and place it in the /wp-content/themes/ folder. Do not change directory name. The template files should thus be here now: /wp-content/themes/catch-box/index.php (for example).
 3. Log into your WP admin panel and click on the Design tab. Now click on the Catch Box theme to activate it.
 4. Complete all of the required inputs on the Catch Box Options page (in the WP admin panel) and click "Save Changes".
 
 == Change Log ==
+
+= 4.7.2 (Released: August 23, 2017) =
+* Added: goodreads, github and vk Social Icons
+* Bug Fixed: Missed string internationalization
+* Bug Fixed: Missing images for custom meta box options
+* Enhanced: Single post navigation (replaced previous_post_link and next_post_link with the_post_navigation)
 
 = 4.7.1 (Released: July 03, 2017) =
 * Bug Fixed: Scrollup disable not working

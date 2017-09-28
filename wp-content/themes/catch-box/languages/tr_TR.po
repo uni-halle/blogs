@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-07-03 23:54+0545\n"
-"PO-Revision-Date: 2017-07-03 23:54+0545\n"
+"POT-Creation-Date: 2017-09-05 10:55+0545\n"
+"PO-Revision-Date: 2017-09-05 10:55+0545\n"
 "Last-Translator: \n"
 "Language-Team: Catch Themes <info@catchthemes.com>\n"
 "Language: tr\n"
@@ -13,9 +13,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;esc_attr_e;esc_attr__\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;esc_attr_e;esc_attr__;"
+"esc_html_x\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
@@ -331,7 +332,7 @@ msgstr "İkincil Mönü"
 msgid "Footer Menu"
 msgstr "Site Altı Menüsü"
 
-#: ../functions.php:342 ../functions.php:371 ../single.php:15
+#: ../functions.php:342 ../functions.php:371
 msgid "Post navigation"
 msgstr "Yazı dolaşımı"
 
@@ -471,6 +472,18 @@ msgstr "Xing"
 msgid "Meetup"
 msgstr "Meetup"
 
+#: ../functions.php:882
+msgid "Goodreads"
+msgstr ""
+
+#: ../functions.php:888
+msgid "Github"
+msgstr ""
+
+#: ../functions.php:894
+msgid "VK"
+msgstr ""
+
 #: ../image.php:15
 msgid "Image navigation"
 msgstr "Görsel dolaşım"
@@ -566,71 +579,51 @@ msgstr "Görünüm"
 msgid "Light"
 msgstr "Açık"
 
-#: ../inc/default-options.php:35
+#: ../inc/default-options.php:34
 msgid "Dark"
 msgstr "Koyu"
 
-#: ../inc/default-options.php:41
+#: ../inc/default-options.php:39
 msgid "Blue"
 msgstr "Mavi"
 
-#: ../inc/default-options.php:47
+#: ../inc/default-options.php:44
 msgid "Green"
 msgstr "Yeşil"
 
-#: ../inc/default-options.php:53
+#: ../inc/default-options.php:49
 msgid "Red"
 msgstr "Kırmızı"
 
-#: ../inc/default-options.php:59
+#: ../inc/default-options.php:54
 msgid "Brown"
 msgstr "Kahverengi"
 
-#: ../inc/default-options.php:65
+#: ../inc/default-options.php:59
 msgid "Orange"
 msgstr "Turuncu"
 
-#: ../inc/default-options.php:85
-msgid "Content on left"
-msgstr "İçerik solda"
-
-#: ../inc/default-options.php:91
-msgid "Content on right"
-msgstr "İçerik sağda"
-
-#: ../inc/default-options.php:97
-msgid "One-column, no sidebar"
-msgstr "Tek kolon, yan sütun yok"
-
-#: ../inc/default-options.php:115
-msgid "Show excerpt"
-msgstr "Özeti göster"
-
-#: ../inc/default-options.php:120
-msgid "Show full content"
-msgstr "Tüm içeriği göster"
-
-#: ../inc/default-options.php:195
+#: ../inc/default-options.php:183
 msgid "Y"
 msgstr "Y"
 
-#: ../inc/default-options.php:216
+#: ../inc/default-options.php:204
 msgid "WordPress"
 msgstr "WordPress"
 
-#: ../inc/default-options.php:226
+#: ../inc/default-options.php:214
 msgid "Theme: Catch Box by "
 msgstr "Tema: Catch Box"
 
-#: ../inc/default-options.php:237
+#: ../inc/default-options.php:225
 msgid "Catch Themes"
 msgstr "Catch Temaları"
 
-#: ../inc/default-options.php:248
+#: ../inc/default-options.php:236
 msgid "Copyright"
 msgstr "Telif Hakları"
 
-#: ../inc/default-options.php:248
+#: ../inc/default-options.php:236
 msgid "All Rights Reserved"
 msgstr "Tüm Hakları Saklıdır"
 
@@ -695,6 +688,13 @@ msgstr ""
 "Üzgünüm, arama kriterlerinizle örtüşen sonuç bulunamadı. Farklı anahtar "
 "kelimelerle tekrar deneyin."
 
+#: ../searchform.php:14
+#, fuzzy
+#| msgctxt "label"
+#| msgid "Search for:"
+msgid "Search for:"
+msgstr "Ara:"
+
 #: ../searchform.php:17
 msgctxt "submit button"
 msgid "Search"
@@ -728,22 +728,45 @@ msgstr ""
 msgid "Archives"
 msgstr "Arşiv"
 
-#: ../single.php:16
-msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+#: ../single.php:26
+#, fuzzy
+#| msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgid "Next <span class=\"nav-icon\">&rarr;</span>"
+msgstr "Sonraki <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../single.php:27
+msgid "Next post:"
+msgstr ""
+
+#: ../single.php:29
+#, fuzzy
+#| msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgid "<span class=\"nav-icon\">&larr;</span> Previous"
 msgstr "<span class=\"meta-nav\">&larr;</span> Önceki"
 
-#: ../single.php:17
-msgid "Next <span class=\"meta-nav\">&rarr;</span>"
-msgstr "Sonraki <span class=\"meta-nav\">&rarr;</span>"
+#: ../single.php:30
+msgid "Previous post:"
+msgstr ""
 
 #: ../tag.php:16
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Etiket arşivi: %s"
 
-#~ msgctxt "label"
-#~ msgid "Search for:"
-#~ msgstr "Ara:"
+#~ msgid "Content on left"
+#~ msgstr "İçerik solda"
+
+#~ msgid "Content on right"
+#~ msgstr "İçerik sağda"
+
+#~ msgid "One-column, no sidebar"
+#~ msgstr "Tek kolon, yan sütun yok"
+
+#~ msgid "Show excerpt"
+#~ msgstr "Özeti göster"
+
+#~ msgid "Show full content"
+#~ msgstr "Tüm içeriği göster"
 
 #~ msgid "Theme Options"
 #~ msgstr "Tema Seçenekleri"

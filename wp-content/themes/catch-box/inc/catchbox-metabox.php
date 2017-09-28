@@ -54,19 +54,19 @@ $sidebar_layout = array(
 		'id'        => 'catchbox-sidebarlayout',
 		'value'     => 'right-sidebar',
 		'label'     => __( 'Right sidebar', 'catch-box' ),
-		'thumbnail' => get_template_directory_uri() . '/inc/images/content-sidebar.png'
+		'thumbnail' => get_template_directory_uri() . '/images/right-sidebar.png'
 	),
 	'left-sidebar' => array(
 		'id'		=> 'catchbox-sidebarlayout',
 		'value' 	=> 'left-sidebar',
 		'label' 	=> __( 'Left sidebar', 'catch-box' ),
-		'thumbnail' => get_template_directory_uri() . '/inc/images/sidebar-content.png'
+		'thumbnail' => get_template_directory_uri() . '/images/left-sidebar.png'
 	),
 	'no-sidebar-one-column' => array(
 		'id'		=> 'catchbox-sidebarlayout',
 		'value' 	=> 'no-sidebar-one-column',
 		'label' 	=> __( 'No Sidebar, One Column', 'catch-box' ),
-		'thumbnail' => get_template_directory_uri() . '/inc/images/content.png'
+		'thumbnail' => get_template_directory_uri() . '/images/no-sidebar.png'
 	)
 );
 

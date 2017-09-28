@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-07-03 23:54+0545\n"
-"PO-Revision-Date: 2017-07-03 23:54+0545\n"
+"POT-Creation-Date: 2017-09-05 10:55+0545\n"
+"PO-Revision-Date: 2017-09-05 10:55+0545\n"
 "Last-Translator: Johnny Eriksson <info@johnnysblogg.se>\n"
 "Language-Team: Johnny Eriksson <info@johnnysblogg.se>\n"
 "Language: sv\n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../404.php:14
@@ -331,7 +331,7 @@ msgstr "Sidomeny"
 msgid "Footer Menu"
 msgstr "Sidfots meny"
 
-#: ../functions.php:342 ../functions.php:371 ../single.php:15
+#: ../functions.php:342 ../functions.php:371
 msgid "Post navigation"
 msgstr "Inl&auml;ggsnavigering"
 
@@ -476,6 +476,18 @@ msgstr "Xing"
 msgid "Meetup"
 msgstr "Meetup"
 
+#: ../functions.php:882
+msgid "Goodreads"
+msgstr ""
+
+#: ../functions.php:888
+msgid "Github"
+msgstr ""
+
+#: ../functions.php:894
+msgid "VK"
+msgstr ""
+
 #: ../image.php:15
 msgid "Image navigation"
 msgstr "Bildnavigering"
@@ -571,71 +583,51 @@ msgstr "Recension"
 msgid "Light"
 msgstr "Ljus"
 
-#: ../inc/default-options.php:35
+#: ../inc/default-options.php:34
 msgid "Dark"
 msgstr "M&ouml;rk"
 
-#: ../inc/default-options.php:41
+#: ../inc/default-options.php:39
 msgid "Blue"
 msgstr "Bl&aring;"
 
-#: ../inc/default-options.php:47
+#: ../inc/default-options.php:44
 msgid "Green"
 msgstr "Gr&ouml;n"
 
-#: ../inc/default-options.php:53
+#: ../inc/default-options.php:49
 msgid "Red"
 msgstr "R&ouml;d"
 
-#: ../inc/default-options.php:59
+#: ../inc/default-options.php:54
 msgid "Brown"
 msgstr "Brun"
 
-#: ../inc/default-options.php:65
+#: ../inc/default-options.php:59
 msgid "Orange"
 msgstr "Orange"
 
-#: ../inc/default-options.php:85
-msgid "Content on left"
-msgstr "Inneh&aring;ll till v&auml;nster"
-
-#: ../inc/default-options.php:91
-msgid "Content on right"
-msgstr "Inneh&aring;ll till h&ouml;ger"
-
-#: ../inc/default-options.php:97
-msgid "One-column, no sidebar"
-msgstr "En kolumn utan sidof&auml;lt"
-
-#: ../inc/default-options.php:115
-msgid "Show excerpt"
-msgstr "Visa inl&auml;ggsinledningar"
-
-#: ../inc/default-options.php:120
-msgid "Show full content"
-msgstr "Visa hela inl&auml;gg"
-
-#: ../inc/default-options.php:195
+#: ../inc/default-options.php:183
 msgid "Y"
 msgstr "Y"
 
-#: ../inc/default-options.php:216
+#: ../inc/default-options.php:204
 msgid "WordPress"
 msgstr "WordPress"
 
-#: ../inc/default-options.php:226
+#: ../inc/default-options.php:214
 msgid "Theme: Catch Box by "
 msgstr "Tema: Catch Box av "
 
-#: ../inc/default-options.php:237
+#: ../inc/default-options.php:225
 msgid "Catch Themes"
 msgstr "Catch Themes"
 
-#: ../inc/default-options.php:248
+#: ../inc/default-options.php:236
 msgid "Copyright"
 msgstr "Copyright"
 
-#: ../inc/default-options.php:248
+#: ../inc/default-options.php:236
 msgid "All Rights Reserved"
 msgstr "Alla r&auml;ttigheter f&ouml;rbeh&aring;lls / All Rights Reserved"
 
@@ -734,18 +726,45 @@ msgstr ""
 msgid "Archives"
 msgstr "Arkiv"
 
-#: ../single.php:16
-msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+#: ../single.php:26
+#, fuzzy
+#| msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgid "Next <span class=\"nav-icon\">&rarr;</span>"
+msgstr "Senare <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../single.php:27
+msgid "Next post:"
+msgstr ""
+
+#: ../single.php:29
+#, fuzzy
+#| msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgid "<span class=\"nav-icon\">&larr;</span> Previous"
 msgstr "<span class=\"meta-nav\">&larr;</span> Tidigare"
 
-#: ../single.php:17
-msgid "Next <span class=\"meta-nav\">&rarr;</span>"
-msgstr "Senare <span class=\"meta-nav\">&rarr;</span>"
+#: ../single.php:30
+msgid "Previous post:"
+msgstr ""
 
 #: ../tag.php:16
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Etikett-arkiv: %s"
+
+#~ msgid "Content on left"
+#~ msgstr "Inneh&aring;ll till v&auml;nster"
+
+#~ msgid "Content on right"
+#~ msgstr "Inneh&aring;ll till h&ouml;ger"
+
+#~ msgid "One-column, no sidebar"
+#~ msgstr "En kolumn utan sidof&auml;lt"
+
+#~ msgid "Show excerpt"
+#~ msgstr "Visa inl&auml;ggsinledningar"
+
+#~ msgid "Show full content"
+#~ msgstr "Visa hela inl&auml;gg"
 
 #~ msgctxt "label"
 #~ msgid "Search for:"

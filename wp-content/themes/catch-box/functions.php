@@ -876,6 +876,24 @@ function catchbox_socialprofile() {
 						$catchbox_socialprofile .= '<li class="meetup"><a href="'. esc_url( $options['social_meetup'] ) .'"><span class="screen-reader-text">'. esc_attr__( 'Meetup', 'catch-box' ) .'</span></a></li>';
 					}
 
+					//Goodreads
+					if ( !empty( $options['social_goodreads'] ) ) {
+						$catchbox_socialprofile .=
+							'<li class="goodreads"><a href="'.esc_url( $options['social_goodreads'] ).'" title="'. esc_attr__( 'Goodreads', 'catch-box' ) .'" target="_blank">'. esc_attr__( 'Goodreads', 'catch-box' ) .'</a></li>';
+					}
+
+					//Github
+					if ( !empty( $options['social_github'] ) ) {
+						$catchbox_socialprofile .=
+							'<li class="github"><a href="'.esc_url( $options['social_github'] ).'" title="'. esc_attr__( 'Github', 'catch-box' ) .'" target="_blank">'. esc_attr__( 'Github', 'catch-box' ) .'</a></li>';
+					}
+
+					//VK
+					if ( !empty( $options['social_vk'] ) ) {
+						$catchbox_socialprofile .=
+							'<li class="vk"><a href="'.esc_url( $options['social_vk'] ).'" title="'. esc_attr__( 'VK', 'catch-box' ) .'" target="_blank">'. esc_attr__( 'VK', 'catch-box' ) .'</a></li>';
+					}	
+
 					$catchbox_socialprofile .= '
 				</ul>
 			</nav><!-- .social-profile -->';
@@ -954,7 +972,7 @@ add_action( 'catchbox_site_generator', 'catchbox_footer_content', 15 );
 function catchbox_scrollup() {
 	$options = catchbox_get_options();
 	if ( ! $options['disable_scrollup'] ) {
-		echo '<a href="#branding" id="scrollup"><span class="screen-reader-text">Go to Header Section</span></a>';
+		echo '<a href="#branding" id="scrollup"><span class="screen-reader-text">' . esc_html__( 'Scroll Up', 'catch-box' ) . '</span></a>';
 	}
 }
 add_action( 'catchbox_after', 'catchbox_scrollup', 10 );
@@ -988,7 +1006,7 @@ if ( ! function_exists( 'catchbox_skiptocontain' ) ) :
 	 * Display Skip to Contain Link
 	 */
 	function catchbox_skiptocontain() {
-		echo '<a href="#main" class="skip-link screen-reader-text">Skip to content</a>';
+		echo '<a href="#main" class="skip-link screen-reader-text">' . esc_html__( 'Skip to content', 'catch-box' ) . '</a>';
 	}
 endif; // catchbox_breadcrumb_display
 add_action( 'catchbox_before_header', 'catchbox_skiptocontain', 10 );

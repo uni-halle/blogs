@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-07-03 23:53+0545\n"
-"PO-Revision-Date: 2017-07-03 23:53+0545\n"
+"POT-Creation-Date: 2017-09-05 10:54+0545\n"
+"PO-Revision-Date: 2017-09-05 10:54+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: H.P. Brinkmann\n"
 "Language: de_DE\n"
@@ -17,7 +17,7 @@ msgstr ""
 "esc_attr_e;esc_attr__\n"
 "X-Poedit-Basepath: .\n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 # @ catchbox
@@ -392,7 +392,7 @@ msgid "Footer Menu"
 msgstr "Seitenfuß-Menü"
 
 # @ catchbox
-#: ../functions.php:342 ../functions.php:371 ../single.php:15
+#: ../functions.php:342 ../functions.php:371
 msgid "Post navigation"
 msgstr "Beitragsnavigation"
 
@@ -560,6 +560,18 @@ msgstr "Xing"
 msgid "Meetup"
 msgstr "Meetup"
 
+#: ../functions.php:882
+msgid "Goodreads"
+msgstr ""
+
+#: ../functions.php:888
+msgid "Github"
+msgstr ""
+
+#: ../functions.php:894
+msgid "VK"
+msgstr ""
+
 # @ catchbox
 #: ../image.php:15
 msgid "Image navigation"
@@ -668,78 +680,53 @@ msgid "Light"
 msgstr "Hell"
 
 # @ catchbox
-#: ../inc/default-options.php:35
+#: ../inc/default-options.php:34
 msgid "Dark"
 msgstr "Dunkel"
 
 # @ catchbox
-#: ../inc/default-options.php:41
+#: ../inc/default-options.php:39
 msgid "Blue"
 msgstr "Blau"
 
-#: ../inc/default-options.php:47
+#: ../inc/default-options.php:44
 msgid "Green"
 msgstr "Green"
 
-#: ../inc/default-options.php:53
+#: ../inc/default-options.php:49
 msgid "Red"
 msgstr "Red"
 
-#: ../inc/default-options.php:59
+#: ../inc/default-options.php:54
 msgid "Brown"
 msgstr "Brown"
 
-#: ../inc/default-options.php:65
+#: ../inc/default-options.php:59
 msgid "Orange"
 msgstr "Orange"
 
-# @ catchbox
-#: ../inc/default-options.php:85
-msgid "Content on left"
-msgstr "Inhalt links"
-
-# @ catchbox
-#: ../inc/default-options.php:91
-msgid "Content on right"
-msgstr "Inhalt rechts"
-
-# @ catchbox
-#: ../inc/default-options.php:97
-msgid "One-column, no sidebar"
-msgstr "1 Spalte, keine Seitenleiste"
-
-# @ catchbox
-#: ../inc/default-options.php:115
-msgid "Show excerpt"
-msgstr "Zeige Textausschnitt"
-
-# @ catchbox
-#: ../inc/default-options.php:120
-msgid "Show full content"
-msgstr "Zeige ganzen Inhalt"
-
-#: ../inc/default-options.php:195
+#: ../inc/default-options.php:183
 msgid "Y"
 msgstr "Y"
 
-#: ../inc/default-options.php:216
+#: ../inc/default-options.php:204
 msgid "WordPress"
 msgstr "WordPress"
 
-#: ../inc/default-options.php:226
+#: ../inc/default-options.php:214
 msgid "Theme: Catch Box by "
 msgstr "Theme: Catch Box by "
 
 # @ catchbox
-#: ../inc/default-options.php:237
+#: ../inc/default-options.php:225
 msgid "Catch Themes"
 msgstr "Catch Themes"
 
-#: ../inc/default-options.php:248
+#: ../inc/default-options.php:236
 msgid "Copyright"
 msgstr "Copyright"
 
-#: ../inc/default-options.php:248
+#: ../inc/default-options.php:236
 msgid "All Rights Reserved"
 msgstr "Alle Rechte vorbehalten"
 
@@ -849,20 +836,52 @@ msgid "Archives"
 msgstr "Archiv"
 
 # @ catchbox
-#: ../single.php:16
-msgid "<span class=\"meta-nav\">&larr;</span> Previous"
-msgstr "<span class=\"meta-nav\">&larr;</span> zurück"
+#: ../single.php:26
+#, fuzzy
+#| msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgid "Next <span class=\"nav-icon\">&rarr;</span>"
+msgstr "vor <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../single.php:27
+msgid "Next post:"
+msgstr ""
 
 # @ catchbox
-#: ../single.php:17
-msgid "Next <span class=\"meta-nav\">&rarr;</span>"
-msgstr "vor <span class=\"meta-nav\">&rarr;</span>"
+#: ../single.php:29
+#, fuzzy
+#| msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgid "<span class=\"nav-icon\">&larr;</span> Previous"
+msgstr "<span class=\"meta-nav\">&larr;</span> zurück"
+
+#: ../single.php:30
+msgid "Previous post:"
+msgstr ""
 
 # @ catchbox
 #: ../tag.php:16
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Schlagwörter-Archiv: %s"
+
+# @ catchbox
+#~ msgid "Content on left"
+#~ msgstr "Inhalt links"
+
+# @ catchbox
+#~ msgid "Content on right"
+#~ msgstr "Inhalt rechts"
+
+# @ catchbox
+#~ msgid "One-column, no sidebar"
+#~ msgstr "1 Spalte, keine Seitenleiste"
+
+# @ catchbox
+#~ msgid "Show excerpt"
+#~ msgstr "Zeige Textausschnitt"
+
+# @ catchbox
+#~ msgid "Show full content"
+#~ msgstr "Zeige ganzen Inhalt"
 
 #~ msgctxt "label"
 #~ msgid "Search for:"

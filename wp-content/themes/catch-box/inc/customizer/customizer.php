@@ -637,6 +637,36 @@ function catchbox_customize_register( $wp_customize ) {
 			'section' 		=> 'predefined_social_icons',
 			'default' 		=> ''
 		),
+		'social_goodreads' => array(
+			'id' 			=> 'social_goodreads',
+			'title' 		=> esc_html__( 'Goodreads', 'catch-box' ),
+			'description'	=> '',
+			'field_type' 	=> 'url',
+			'sanitize' 		=> 'esc_url_raw',
+			'panel' 		=> 'social_links',
+			'section' 		=> 'predefined_social_icons',
+			'default' 		=> ''
+		),
+		'social_github' => array(
+			'id' 			=> 'social_github',
+			'title' 		=> esc_html__( 'Github', 'catch-box' ),
+			'description'	=> '',
+			'field_type' 	=> 'url',
+			'sanitize' 		=> 'esc_url_raw',
+			'panel' 		=> 'social_links',
+			'section' 		=> 'predefined_social_icons',
+			'default' 		=> ''
+		),
+		'social_vk' => array(
+			'id' 			=> 'social_vk',
+			'title' 		=> esc_html__( 'VK', 'catch-box' ),
+			'description'	=> '',
+			'field_type' 	=> 'url',
+			'sanitize' 		=> 'esc_url_raw',
+			'panel' 		=> 'social_links',
+			'section' 		=> 'predefined_social_icons',
+			'default' 		=> ''
+		),						
 
 		//Webmaster Tools
 		'tracker_header' => array(

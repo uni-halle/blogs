@@ -5,20 +5,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box 4.5.3\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-07-03 23:53+0545\n"
+"POT-Creation-Date: 2017-09-05 10:53+0545\n"
 "PO-Revision-Date: 2017-01-07 18:46+0545\n"
 "Last-Translator: Catch Themes <info@catchthemes.com>\n"
 "Language-Team: Catch Themes <info@catchthemes.com>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;"
 "_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;"
-"__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"__ngettext_noop:1,2;_c,_nc:4c,1,2;esc_html_x\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: .\n"
 "X-Textdomain-Support: yes\n"
 "X-Generator: \n"
@@ -318,7 +318,6 @@ msgid "Footer Menu"
 msgstr ""
 
 #: ../functions.php:342 ../functions.php:371 ../page-blog.php:44
-#: ../single.php:15
 msgid "Post navigation"
 msgstr ""
 
@@ -465,6 +464,26 @@ msgstr ""
 
 #: ../functions.php:876 ../inc/customizer/customizer.php:632
 msgid "Meetup"
+msgstr ""
+
+#: ../functions.php:882 ../inc/customizer/customizer.php:642
+msgid "Goodreads"
+msgstr ""
+
+#: ../functions.php:888 ../inc/customizer/customizer.php:652
+msgid "Github"
+msgstr ""
+
+#: ../functions.php:894 ../inc/customizer/customizer.php:662
+msgid "VK"
+msgstr ""
+
+#: ../functions.php:975
+msgid "Scroll Up"
+msgstr ""
+
+#: ../functions.php:1009
+msgid "Skip to content"
 msgstr ""
 
 #: ../image.php:15
@@ -784,64 +803,64 @@ msgstr ""
 msgid "Aim"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:644
+#: ../inc/customizer/customizer.php:674
 msgid "Code to display on Header"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:645
+#: ../inc/customizer/customizer.php:675
 msgid ""
 "Here you can put scripts from Google, Facebook etc. which will load on Header"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:655
+#: ../inc/customizer/customizer.php:685
 msgid "Code to display on Footer"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:656
+#: ../inc/customizer/customizer.php:686
 msgid ""
 "Here you can put scripts from Google, Facebook etc. which will load on Footer"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:672
+#: ../inc/customizer/customizer.php:702
 msgid "Header Image Location"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:679
+#: ../inc/customizer/customizer.php:709
 msgid "Above Header Content"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:680
+#: ../inc/customizer/customizer.php:710
 msgid "Between Site Title-Logo"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:681
+#: ../inc/customizer/customizer.php:711
 msgid "Below Header Content"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:821
+#: ../inc/customizer/customizer.php:851
 #, php-format
 msgid "#%s Featured Post ID"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:836
+#: ../inc/customizer/customizer.php:866
 msgid ""
 "Caution: Reset all settings to default. Refresh the page after save to view "
 "full effects."
 msgstr ""
 
-#: ../inc/customizer/customizer.php:838
+#: ../inc/customizer/customizer.php:868
 msgid "Reset all settings"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:848
+#: ../inc/customizer/customizer.php:878
 msgid "Check to reset all settings to default"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:858 ../inc/customizer/customizer.php:869
+#: ../inc/customizer/customizer.php:888 ../inc/customizer/customizer.php:899
 msgid "Important Links"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:902
+#: ../inc/customizer/customizer.php:932
 msgid "Refresh the customizer page after saving to view reset effects"
 msgstr ""
 
@@ -857,75 +876,75 @@ msgstr ""
 msgid "Light"
 msgstr ""
 
-#: ../inc/default-options.php:35
+#: ../inc/default-options.php:34
 msgid "Dark"
 msgstr ""
 
-#: ../inc/default-options.php:41
+#: ../inc/default-options.php:39
 msgid "Blue"
 msgstr ""
 
-#: ../inc/default-options.php:47
+#: ../inc/default-options.php:44
 msgid "Green"
 msgstr ""
 
-#: ../inc/default-options.php:53
+#: ../inc/default-options.php:49
 msgid "Red"
 msgstr ""
 
-#: ../inc/default-options.php:59
+#: ../inc/default-options.php:54
 msgid "Brown"
 msgstr ""
 
-#: ../inc/default-options.php:65
+#: ../inc/default-options.php:59
 msgid "Orange"
 msgstr ""
 
-#: ../inc/default-options.php:85
+#: ../inc/default-options.php:78
 msgid "Content on left"
 msgstr ""
 
-#: ../inc/default-options.php:91
+#: ../inc/default-options.php:83
 msgid "Content on right"
 msgstr ""
 
-#: ../inc/default-options.php:97
+#: ../inc/default-options.php:88
 msgid "One-column, no sidebar"
 msgstr ""
 
-#: ../inc/default-options.php:115
+#: ../inc/default-options.php:105
 msgid "Show excerpt"
 msgstr ""
 
-#: ../inc/default-options.php:120
+#: ../inc/default-options.php:109
 msgid "Show full content"
 msgstr ""
 
-#: ../inc/default-options.php:146
+#: ../inc/default-options.php:134
 msgid "Search"
 msgstr ""
 
-#: ../inc/default-options.php:195
+#: ../inc/default-options.php:183
 msgid "Y"
 msgstr ""
 
-#: ../inc/default-options.php:216
+#: ../inc/default-options.php:204
 msgid "WordPress"
 msgstr ""
 
-#: ../inc/default-options.php:226
+#: ../inc/default-options.php:214
 msgid "Theme: Catch Box by "
 msgstr ""
 
-#: ../inc/default-options.php:237
+#: ../inc/default-options.php:225
 msgid "Catch Themes"
 msgstr ""
 
-#: ../inc/default-options.php:248
+#: ../inc/default-options.php:236
 msgid "Copyright"
 msgstr ""
 
-#: ../inc/default-options.php:248
+#: ../inc/default-options.php:236
 msgid "All Rights Reserved"
 msgstr ""
 
@@ -988,6 +1007,10 @@ msgid ""
 "different keywords."
 msgstr ""
 
+#: ../searchform.php:14
+msgid "Search for:"
+msgstr ""
+
 #: ../searchform.php:17
 msgctxt "submit button"
 msgid "Search"
@@ -1015,12 +1038,20 @@ msgstr ""
 msgid "Archives"
 msgstr ""
 
-#: ../single.php:16
-msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+#: ../single.php:26
+msgid "Next <span class=\"nav-icon\">&rarr;</span>"
 msgstr ""
 
-#: ../single.php:17
-msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+#: ../single.php:27
+msgid "Next post:"
+msgstr ""
+
+#: ../single.php:29
+msgid "<span class=\"nav-icon\">&larr;</span> Previous"
+msgstr ""
+
+#: ../single.php:30
+msgid "Previous post:"
 msgstr ""
 
 #: ../tag.php:16

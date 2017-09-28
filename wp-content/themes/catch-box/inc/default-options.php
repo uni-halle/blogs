@@ -27,43 +27,36 @@ function catchbox_color_schemes() {
 		'light' 					=> array(
 			'value'					=> 'light',
 			'label'					=> __( 'Light', 'catch-box' ),
-			'thumbnail'				=> get_template_directory_uri() . '/inc/images/light.png',
 			'default_link_color'	=> '#1b8be0',
 		),
 		'dark' 						=> array(
 			'value'					=> 'dark',
 			'label'					=> __( 'Dark', 'catch-box' ),
-			'thumbnail'				=> get_template_directory_uri() . '/inc/images/dark.png',
 			'default_link_color'	=> '#e4741f',
 		),
 		'blue' 						=> array(
 			'value'					=> 'blue',
 			'label'					=> __( 'Blue', 'catch-box' ),
-			'thumbnail'				=> get_template_directory_uri() . '/inc/images/blue.png',
 			'default_link_color'	=> '#326693',
 		),
 		'green' 						=> array(
 			'value'					=> 'green',
 			'label'					=> __( 'Green', 'catch-box' ),
-			'thumbnail'				=> get_template_directory_uri() . '/inc/images/green.png',
 			'default_link_color'	=> '#3e6107',
 		),
 		'red' 						=> array(
 			'value'					=> 'red',
 			'label'					=> __( 'Red', 'catch-box' ),
-			'thumbnail'				=> get_template_directory_uri() . '/inc/images/red.png',
 			'default_link_color'	=> '#a6201d',
 		),
 		'brown' 					=> array(
 			'value'					=> 'brown',
 			'label'					=> __( 'Brown', 'catch-box' ),
-			'thumbnail'				=> get_template_directory_uri() . '/inc/images/brown.png',
 			'default_link_color'	=> '#5e3929',
 		),
 		'orange' 					=> array(
 			'value'					=> 'orange',
 			'label'					=> __( 'Orange', 'catch-box' ),
-			'thumbnail'				=> get_template_directory_uri() . '/inc/images/orange.png',
 			'default_link_color'	=> '#802602',
 		)
 	);
@@ -82,20 +75,17 @@ function catchbox_layouts() {
 		'content-sidebar' 	=> array(
 			'old_value'		=> 'content-sidebar',
 			'value' 		=> 'right-sidebar',
-			'label'			=> __( 'Content on left', 'catch-box' ),
-			'thumbnail'		=> get_template_directory_uri() . '/inc/images/content-sidebar.png',
+			'label'			=> esc_html__( 'Content on left', 'catch-box' ),
 		),
 		'sidebar-content' 	=> array(
 			'old_value'		=> 'sidebar-content',
 			'value'			=> 'left-sidebar',
-			'label'			=> __( 'Content on right', 'catch-box' ),
-			'thumbnail'		=> get_template_directory_uri() . '/inc/images/sidebar-content.png',
+			'label'			=> esc_html__( 'Content on right', 'catch-box' ),
 		),
 		'content-onecolumn'	=> array(
 			'old_value'		=> 'content-onecolumn',
 			'value'			=> 'no-sidebar-one-column',
-			'label'			=> __( 'One-column, no sidebar', 'catch-box' ),
-			'thumbnail'		=> get_template_directory_uri() . '/inc/images/content.png',
+			'label'			=> esc_html__( 'One-column, no sidebar', 'catch-box' ),
 		)
 	);
 
@@ -112,13 +102,11 @@ function catchbox_content_layout() {
 	$content_options = array(
 		'excerpt'			=> array(
 			'value'			=> 'excerpt',
-			'label'			=> __( 'Show excerpt', 'catch-box' ),
-			'thumbnail'		=> get_template_directory_uri() . '/inc/images/excerpt.png',
+			'label'			=> esc_html__( 'Show excerpt', 'catch-box' ),
 		),
 		'full-content'		=> array(
 			'value'			=> 'full-content',
-			'label'			=> __( 'Show full content', 'catch-box' ),
-			'thumbnail'		=> get_template_directory_uri() . '/inc/images/full-content.png',
+			'label'			=> esc_html__( 'Show full content', 'catch-box' ),
 		)
 	);
 

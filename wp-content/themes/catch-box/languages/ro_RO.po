@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-07-03 23:54+0545\n"
-"PO-Revision-Date: 2017-07-03 23:54+0545\n"
+"POT-Creation-Date: 2017-09-05 10:55+0545\n"
+"PO-Revision-Date: 2017-09-05 10:55+0545\n"
 "Last-Translator: Marius Tirteu <admin@mannius.ro>\n"
 "Language-Team: Marius Tirteu <admin@mannius.ro>\n"
 "Language: en\n"
@@ -14,7 +14,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../404.php:14
@@ -326,7 +326,7 @@ msgstr "Meniu secundar"
 msgid "Footer Menu"
 msgstr "Meniu subsol"
 
-#: ../functions.php:342 ../functions.php:371 ../single.php:15
+#: ../functions.php:342 ../functions.php:371
 msgid "Post navigation"
 msgstr "Navigație articole"
 
@@ -471,6 +471,18 @@ msgstr "Xing"
 msgid "Meetup"
 msgstr "Meetup"
 
+#: ../functions.php:882
+msgid "Goodreads"
+msgstr ""
+
+#: ../functions.php:888
+msgid "Github"
+msgstr ""
+
+#: ../functions.php:894
+msgid "VK"
+msgstr ""
+
 #: ../image.php:15
 msgid "Image navigation"
 msgstr "Navigare imagini"
@@ -565,71 +577,51 @@ msgstr ""
 msgid "Light"
 msgstr "Alb"
 
-#: ../inc/default-options.php:35
+#: ../inc/default-options.php:34
 msgid "Dark"
 msgstr "Negru"
 
-#: ../inc/default-options.php:41
+#: ../inc/default-options.php:39
 msgid "Blue"
 msgstr "Albastru"
 
-#: ../inc/default-options.php:47
+#: ../inc/default-options.php:44
 msgid "Green"
 msgstr "Verde"
 
-#: ../inc/default-options.php:53
+#: ../inc/default-options.php:49
 msgid "Red"
 msgstr "Roșu"
 
-#: ../inc/default-options.php:59
+#: ../inc/default-options.php:54
 msgid "Brown"
 msgstr "Maro"
 
-#: ../inc/default-options.php:65
+#: ../inc/default-options.php:59
 msgid "Orange"
 msgstr "Portocaliu"
 
-#: ../inc/default-options.php:85
-msgid "Content on left"
-msgstr "Continutul pe stânga"
-
-#: ../inc/default-options.php:91
-msgid "Content on right"
-msgstr "Continutul pe dreapta"
-
-#: ../inc/default-options.php:97
-msgid "One-column, no sidebar"
-msgstr "O coloana, fără bară laterală"
-
-#: ../inc/default-options.php:115
-msgid "Show excerpt"
-msgstr "Arată rezumat"
-
-#: ../inc/default-options.php:120
-msgid "Show full content"
-msgstr "Arată conținutul întreg"
-
-#: ../inc/default-options.php:195
+#: ../inc/default-options.php:183
 msgid "Y"
 msgstr "Y"
 
-#: ../inc/default-options.php:216
+#: ../inc/default-options.php:204
 msgid "WordPress"
 msgstr "WordPress"
 
-#: ../inc/default-options.php:226
+#: ../inc/default-options.php:214
 msgid "Theme: Catch Box by "
 msgstr "Theme: Catch Box by "
 
-#: ../inc/default-options.php:237
+#: ../inc/default-options.php:225
 msgid "Catch Themes"
 msgstr "Catch Themes"
 
-#: ../inc/default-options.php:248
+#: ../inc/default-options.php:236
 msgid "Copyright"
 msgstr "Copyright"
 
-#: ../inc/default-options.php:248
+#: ../inc/default-options.php:236
 msgid "All Rights Reserved"
 msgstr "Toate drepturile rezervate"
 
@@ -721,18 +713,45 @@ msgstr ""
 msgid "Archives"
 msgstr "Arhive"
 
-#: ../single.php:16
-msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+#: ../single.php:26
+#, fuzzy
+#| msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgid "Next <span class=\"nav-icon\">&rarr;</span>"
+msgstr "Următorul <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../single.php:27
+msgid "Next post:"
+msgstr ""
+
+#: ../single.php:29
+#, fuzzy
+#| msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgid "<span class=\"nav-icon\">&larr;</span> Previous"
 msgstr "<span class=\"meta-nav\">&larr;</span> Precedentul"
 
-#: ../single.php:17
-msgid "Next <span class=\"meta-nav\">&rarr;</span>"
-msgstr "Următorul <span class=\"meta-nav\">&rarr;</span>"
+#: ../single.php:30
+msgid "Previous post:"
+msgstr ""
 
 #: ../tag.php:16
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Arhive etichete: %s"
+
+#~ msgid "Content on left"
+#~ msgstr "Continutul pe stânga"
+
+#~ msgid "Content on right"
+#~ msgstr "Continutul pe dreapta"
+
+#~ msgid "One-column, no sidebar"
+#~ msgstr "O coloana, fără bară laterală"
+
+#~ msgid "Show excerpt"
+#~ msgstr "Arată rezumat"
+
+#~ msgid "Show full content"
+#~ msgstr "Arată conținutul întreg"
 
 #~ msgid "Theme Options"
 #~ msgstr "Opțiuni temă"
