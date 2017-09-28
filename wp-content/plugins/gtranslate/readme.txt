@@ -4,7 +4,7 @@ Author: Edvard Ananyan
 Tags: translate wordpress, multilingual, translate, translation, language, bilingual, localization, translation proxy, i18n, l10n, localisation, multilanguage, google translate
 Requires at least: 2.8.1
 Tested up to: 4.8
-Stable tag: 2.8.25
+Stable tag: 2.8.27
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
@@ -217,6 +217,19 @@ You need to go to the language you want to edit, for instance, French: http://do
 7. Settings page
 
 == Changelog ==
+
+= 2.8.27 =
+* Fixed issue for some mobile phones related to nice looking dropdown selector staying open
+* Fixed issue related to Cloudflare 1000 error
+* Fixed caching issue with modified translations
+
+= 2.8.26 =
+* Fixed relative path issue in .htaccess file for some websites which use mixed https and http
+* Fixed IE javascript error on GTranslate Settings page preventing correct rendering of options
+* Fixed popup view issue to show the selected language correctly
+* Fixed issue when changing language from language with 3 letter language code to another
+* A hint on re-ordering the languages list for better user experience was added
+* Reset widget code to default button was added
 
 = 2.8.25 =
 * New widget look added - Popup

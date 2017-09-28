@@ -6,8 +6,9 @@ if(!isset($_GET['glang']) or !isset($_GET['gurl']))
 
 $glang = $_GET['glang'];
 
-shuffle($servers);
-$server = $servers[1];
+// pick a server based on hostname
+$server_id = intval(substr(md5(preg_replace('/^www\./', '', $_SERVER['HTTP_HOST'])), 0, 5), 16) % count($servers);
+$server = $servers[$server_id];
 
 $page_url = '/'.$_GET['gurl'];
 
@@ -89,7 +90,11 @@ if(isset($request_headers['Content-Type']) and strpos($request_headers['Content-
 
 $headers = array();
 foreach($request_headers as $key => $val) {
-    $headers[] = $key . ': ' . $val;
+    // remove cloudflare CF headers: CF-IPCountry, CF-Ray, etc...
+    if(preg_match('/^CF-/i', $key))
+        continue;
+    else
+        $headers[] = $key . ': ' . $val;
 }
 
 //print_r($headers);
