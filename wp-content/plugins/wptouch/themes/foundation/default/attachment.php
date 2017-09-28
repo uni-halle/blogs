@@ -7,7 +7,7 @@
 		<?php wptouch_the_post(); ?>
 
 		<?php if ( $post->post_parent > 0 ) {
-			echo '<a id="gallery_back_to_post" href="' . get_permalink( $post->post_parent ) . '">' . sprintf( __( 'Back to %s', 'wptouch-pro' ), get_the_title( $post->post_parent ) ) . '</a>';
+			echo '<a id="gallery_back_to_post" href="' . esc_url( get_permalink( $post->post_parent ) ) . '">' . sprintf( __( 'Back to %s', 'wptouch-pro' ), get_the_title( $post->post_parent ) ) . '</a>';
 		} ?>
 
 		<?php

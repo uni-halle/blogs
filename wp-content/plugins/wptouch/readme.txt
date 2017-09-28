@@ -1,8 +1,8 @@
-=== Plugin Name ===
-Contributors: wptouch, duanestorey, dalemugford, adamdipardo, oxymoron
+=== WPtouch ===
+Contributors: wptouch, sureswiftcapital, duanestorey, dalemugford, adamdipardo, oxymoron
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 4.2
-Stable tag: 4.3.18
+Stable tag: 4.3.19
 Tested up to: 4.7
 License: GPLv2
 
@@ -32,6 +32,10 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 6. Theme settings
 
 == Changelog ==
+
+= Version 4.3.19 (August 21, 2017) =
+
+* Security: Added escaping to untrusted output.
 
 = Version 4.3.18 (May 29, 2017) =
 

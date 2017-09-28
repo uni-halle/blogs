@@ -51,14 +51,14 @@
 		<h3><?php comment_form_title( __( 'Leave a Reply', 'wptouch-pro' ), __( 'Leave a Reply to %s', 'wptouch-pro' ) ); ?></h3>
 
 	<?php if ( get_option( 'comment_registration' ) && !is_user_logged_in() ) { ?>
-		<p><?php echo sprintf( __( 'You must be %slogged in%s to post a comment.', 'wptouch-pro' ), '<a class="login-req" href="' . wp_login_url( get_permalink() ) . '">', '</a>' ); ?></p>
+		<p><?php echo sprintf( __( 'You must be %slogged in%s to post a comment.', 'wptouch-pro' ), '<a class="login-req" href="' . esc_url( wp_login_url( get_permalink() ) ) . '">', '</a>' ); ?></p>
 	<?php } else { ?>
 		<form action="<?php wptouch_bloginfo( 'wpurl' ); ?>/wp-comments-post.php" method="post" id="commentform">
 
 			<?php comment_id_fields(); ?>
 
 			<?php if ( is_user_logged_in() ) { ?>
-				<p><?php _e( 'Logged in as', 'wptouch-pro' ); ?> <?php echo $user_identity; ?>. <a href="<?php echo wp_logout_url( esc_url_raw( $_SERVER['REQUEST_URI'], array( 'http', 'https' ) ) ); ?>" title="Log out"><?php _e( 'Log out', 'wptouch-pro' ); ?> &raquo;</a></p>
+				<p><?php _e( 'Logged in as', 'wptouch-pro' ); ?> <?php echo $user_identity; ?>. <a href="<?php echo esc_url( wp_logout_url( esc_url_raw( $_SERVER['REQUEST_URI'], array( 'http', 'https' ) ) ) ); ?>" title="Log out"><?php _e( 'Log out', 'wptouch-pro' ); ?> &raquo;</a></p>
 
 			<?php } else { ?>
 

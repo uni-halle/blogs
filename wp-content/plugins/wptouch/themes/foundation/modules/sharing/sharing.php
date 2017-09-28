@@ -47,7 +47,7 @@ function foundation_sharing_classes() {
 
 	$share_classes[] = 'style-' . $settings->share_colour_scheme;
 
-	echo implode( ' ', apply_filters( 'foundation_share_classes', $share_classes ) );
+	echo esc_html( implode( ' ', apply_filters( 'foundation_share_classes', $share_classes ) ) );
 }
 
 function foundation_sharing_content() {

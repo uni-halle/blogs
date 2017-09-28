@@ -240,7 +240,7 @@ function foundation_has_logo_image() {
 function foundation_the_logo_image() {
 	$settings = foundation_get_settings();
 
-	echo foundation_prepare_uploaded_file_url( $settings->logo_image );
+	echo esc_url( foundation_prepare_uploaded_file_url( $settings->logo_image ) );
 }
 
 function foundation_enqueue_color_data() {
@@ -282,7 +282,7 @@ function foundation_handle_footer() {
 			$output_message = $message;
 		}
 
-		echo apply_filters( 'foundation_footer_message_output', $output_message );
+		echo wp_kses_post( apply_filters( 'foundation_footer_message_output', $output_message ) );
 	}
 }
 
@@ -570,7 +570,7 @@ function foundation_maybe_output_homescreen_icon( $image, $width, $height, $pixe
 			$size_string = '';
 		}
 
-		echo '<link rel="apple-touch-icon-precomposed" ' . $size_string . ' href="' . foundation_prepare_uploaded_file_url( $image ) . '" />' . "\n";
+		echo '<link rel="apple-touch-icon-precomposed" ' . $size_string . ' href="' . esc_url( foundation_prepare_uploaded_file_url( $image ) ) . '" />' . "\n";
 	}
 }
 
@@ -830,25 +830,25 @@ function wptouch_fdn_comments_pagination() {
 function wptouch_fdn_get_previous_post_link() {
 	$excluded = wptouch_fdn_convert_catname_to_id();
 	$prev_post = get_adjacent_post( false, $excluded, true );
-	echo get_permalink( $prev_post->ID );
+	echo esc_url( get_permalink( $prev_post->ID ) );
 }
 
 function wptouch_fdn_get_next_post_link() {
 	$excluded = wptouch_fdn_convert_catname_to_id();
 	$next_post = get_adjacent_post( false, $excluded, false );
-	echo get_permalink( $next_post->ID );
+	echo esc_url( get_permalink( $next_post->ID ) );
 }
 
 function wptouch_fdn_get_previous_post_link_w_title() {
 	$excluded = wptouch_fdn_convert_catname_to_id();
 	$prev_post = get_adjacent_post( false, $excluded, true );
-	echo '<a class="prev-post" href="' . get_permalink( $prev_post->ID ) . '">' . $prev_post->post_title . '</a>';
+	echo '<a class="prev-post" href="' . esc_url( get_permalink( $prev_post->ID ) ) . '">' . $prev_post->post_title . '</a>';
 }
 
 function wptouch_fdn_get_next_post_link_w_title() {
 	$excluded = wptouch_fdn_convert_catname_to_id();
 	$next_post = get_adjacent_post( false, $excluded, false );
-	echo '<a class="next-post" href="' . get_permalink( $next_post->ID ) . '">' . $next_post->post_title . '</a>';
+	echo '<a class="next-post" href="' . esc_url( get_permalink( $next_post->ID ) ) . '">' . $next_post->post_title . '</a>';
 }
 
 function wptouch_fdn_if_next_post_link(){
@@ -895,7 +895,6 @@ function wptouch_fdn_archive_title_text() {
 	} elseif ( is_year() ) {
 		echo sprintf( __( "Archives &rsaquo; %s", "wptouch-pro" ),  get_the_time( 'Y' ) );
 	} elseif ( get_post_type() ) {
-//		echo get_post_type( $post->ID );
 	}
 	if ( !( is_home() || is_single() ) ) {
 		echo '</div>';
@@ -1261,7 +1260,7 @@ function foundation_add_meta_theme_color() {
 	$header_color = apply_filters( 'wptouch_theme_color', '' );
 
 	if ( strlen( $header_color ) ) {
-		echo '<meta name="theme-color" content="' . $header_color . '">';
+		echo '<meta name="theme-color" content="' . esc_html( $header_color ) . '">';
 	}
 
 }

@@ -3,7 +3,7 @@
 		<div class="item-information">
 			<?php if ( wptouch_get_theme_icon() ) { ?>
 			<div class="image-wrapper">
-				<img src="<?php wptouch_the_theme_icon(); ?>" alt="<?php wptouch_the_theme_title(); ?>" id="<?php echo wptouch_convert_to_class_name( wptouch_get_theme_title() ); ?>" />
+				<img src="<?php wptouch_the_theme_icon(); ?>" alt="<?php wptouch_the_theme_title(); ?>" id="<?php echo esc_attr( wptouch_convert_to_class_name( wptouch_get_theme_title() ) ); ?>" />
 			</div><!-- image-wrapper -->
 			<?php } ?>
 			<h2>

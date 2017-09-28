@@ -868,7 +868,6 @@ function wptouchTriggerSave( callback ) {
 		success: function() {
 			// Done saving, allow reload
 			saving = false;
-		//	console.log( 'saved' )
 			// Animate the admin spinner out
 			jQuery( '#admin-spinner' ).animate({
 				opacity: 0
